@@ -15,6 +15,6 @@ Application:
 		Lobby server + player action relay (does not run the game simulation)
 
 C++ coding styles:
-	let the flame wars begin; see subdirectory 'coding_style'
+	let the flame wars begin; see subdirectory 'code_style'
 
 Code documentation: Doxygen
