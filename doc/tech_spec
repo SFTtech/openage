@@ -1,0 +1,20 @@
+Original Age of Empires Graphics/Sounds/Resources:
+	Are extracted by the setup script (Python) and converted to a directory structure in a suitable format (TBD)
+
+Build system:
+	cmake
+
+Application:
+	Client:
+		C++, using SDL2. Rendering via the SDL2 2D engine
+		Audio via SDL2
+		Networking via SDL2
+		No threading (for the beginning)
+	Server:
+		C++, very minimal
+		Lobby server + player action relay (does not run the game simulation)
+
+C++ coding styles:
+	let the flame wars begin; see subdirectory 'coding_style'
+
+Code documentation: Doxygen
