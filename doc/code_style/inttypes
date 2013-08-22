@@ -1,0 +1,8 @@
+if integer width does not matter (most cases):
+	int, unsigned
+
+if integer width matters:
+	(u)intXX_t
+
+for machine width integers (in memory management):
+	size_t
