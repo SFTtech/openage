@@ -1,0 +1,10 @@
+*.o
+*~
+.*.swp
+\#*
+*.a
+*.so
+*.pyc
+*.pyo
+__pycache__
+resources
