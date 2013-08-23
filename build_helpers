@@ -1,0 +1,26 @@
+#!/bin/bash
+#source this script for helpers that simplify compiler invocations
+
+PROJ_ROOT="`pwd`"
+
+function run_in_root() {
+	(cd "$PROJ_ROOT/$1"; shift; $@)
+}
+
+function make() {
+	run_in_root bin /usr/bin/make $@
+}
+
+function run() {
+	run_in_root data ../bin/openage $@
+}
+
+function rls() {
+	run_in_root . mkdir -p bin
+	run_in_root bin cmake -DCMAKE_BUILD_TYPE=Release .. $@
+}
+
+function dbg() {
+	run_in_root . mkdir -p bin
+	run_in_root bin cmake -DCMAKE_BUILD_TYPE=Debug .. $@
+}

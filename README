@@ -10,3 +10,23 @@ microsoft(r) age of empires II (tm)
 
 
 this project is released under the GNU GPLv3 or later.
+
+how to build
+============
+
+on POSIX:
+
+source the file build_helpers
+
+then type (depending on what build configuration you want):
+	rls
+or
+	dbg
+
+then type
+	make
+
+to run the binary, type
+	run
+
+note that you can use these instructions everywhere, independent of your pwd.
