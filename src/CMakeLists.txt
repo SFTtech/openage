@@ -1,8 +1,8 @@
 include_directories(${CMAKEDEMO_SOURCE_DIR}/src)
 link_directories(${CMAKEDEMO_BINARY_DIR}/src)
 
-#find_package(OpenGL)
-
+find_package(OpenGL)
+#findpackage sdl2
 
 add_executable(${PROJECT_NAME}
 	main.cpp
@@ -10,6 +10,6 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
 	m
-	#TODO: sdl2
+	SDL2
 	#${OPENGL_LIBRARY}
 )
