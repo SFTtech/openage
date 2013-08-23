@@ -12,7 +12,7 @@ function make() {
 }
 
 function run() {
-	run_in_root data ../bin/openage $@
+	run_in_root data ../bin/game $@
 }
 
 function rls() {

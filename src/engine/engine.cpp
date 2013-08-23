@@ -1,8 +1,13 @@
+#include "engine.h"
+
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include <GL/gl.h>
 
 #include "texture.h"
+
+namespace openage {
+namespace engine {
 
 int main() {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -90,3 +95,6 @@ int main() {
 	SDL_Quit();
 	return 0;
 }
+
+} //namespace engine
+} //namespace openage

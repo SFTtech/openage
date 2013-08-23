@@ -4,6 +4,8 @@
 
 #include "texture.h"
 
+namespace openage {
+namespace engine {
 
 GLuint load_texture(const char *filename, int *width, int *height) {
 
@@ -24,11 +26,11 @@ GLuint load_texture(const char *filename, int *width, int *height) {
 		printf("created texture %s successfully\n", filename);
 	}
 
-	// glTexImage2D format determination
-	if (surface->format->BytesPerPixel == 3) { // RGB 24bit
+	//glTexImage2D format determination
+	if (surface->format->BytesPerPixel == 3) { //RGB 24bit
 		mode = GL_RGB;
 	}
-	else if (surface->format->BytesPerPixel == 4) { // RGBA 32bit
+	else if (surface->format->BytesPerPixel == 4) { //RGBA 32bit
 		mode = GL_RGBA;
 	}
 	else {
@@ -43,10 +45,10 @@ GLuint load_texture(const char *filename, int *width, int *height) {
 
 	glBindTexture(GL_TEXTURE_2D, textureid);
 
-	// sdl surface -> opengl texture
+	//sdl surface -> opengl texture
 	glTexImage2D(GL_TEXTURE_2D, 0, mode, surface->w, surface->h, 0, mode, GL_UNSIGNED_BYTE, surface->pixels);
 
-	// later drawing settings
+	//later drawing settings
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 
@@ -78,3 +80,6 @@ void draw_texture(int x, int y, GLuint textureid, int width, int height) {
 
 	glDisable(GL_TEXTURE_2D);
 }
+
+} //namespace engine
+} //namespace openage
