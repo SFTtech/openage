@@ -1,15 +1,42 @@
 #include "game.h"
 
-#include "engine/engine.h"
+#include <SDL2/SDL.h>
 
-int main() {
-	return openage::main();
-}
+#include "engine/engine.h"
+#include "engine/texture.h"
 
 namespace openage {
 
-int main() {
-	return engine::main();
+engine::Texture *gaben;
+
+void input_handler(SDL_Event *e) {
+	if (e->type == SDL_QUIT) {
+		engine::running = false;
+	}
+}
+
+void draw_method() {
+	gaben->draw(0, 0);
+}
+
+int mainmethod() {
+	//init engine
+	engine::init(draw_method, input_handler);
+
+	//load textures and stuff
+	gaben = new engine::Texture("gaben.bmp");
+
+	//run main loop
+	engine::loop();
+
+	//de-init engine
+	engine::destroy();
+
+	return 0;
 }
 
 } //namespace openage
+
+int main() {
+	return openage::mainmethod();
+}

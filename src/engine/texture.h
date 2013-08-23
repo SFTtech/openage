@@ -6,9 +6,18 @@
 namespace openage {
 namespace engine {
 
-GLuint load_texture(const char *filename, int *width, int *height);
+class Texture {
+public:
+	int w;
+	int h;
 
-void draw_texture(int x, int y, GLuint textureid, int width, int height);
+	Texture(const char *filename);
+	~Texture();
+
+	void draw(int posx, int posy);
+private:
+	GLuint gl_id;
+};
 
 } //namespace engine
 } //namespace openage

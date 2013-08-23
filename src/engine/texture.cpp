@@ -1,18 +1,15 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
-#include <unistd.h> //for getcwd
 
 #include "texture.h"
 
 namespace openage {
 namespace engine {
 
-GLuint load_texture(const char *filename, int *width, int *height) {
-
+Texture::Texture(const char *filename) {
 	SDL_Surface *surface;
 	GLuint textureid;
 	int mode;
-
 
 	printf("generating texture %s\n", filename);
 
@@ -20,7 +17,8 @@ GLuint load_texture(const char *filename, int *width, int *height) {
 
 	if (!surface) {
 		printf("failed generating texture %s\n", filename);
-		return 0;
+		//TODO exception
+		return;
 	}
 	else {
 		printf("created texture %s successfully\n", filename);
@@ -34,12 +32,12 @@ GLuint load_texture(const char *filename, int *width, int *height) {
 		mode = GL_RGBA;
 	}
 	else {
-		SDL_FreeSurface(surface);
-		return 0;
+		//TODO exception
+		return;
 	}
 
-	*width=surface->w;
-	*height=surface->h;
+	this->w = surface->w;
+	this->h = surface->h;
 
 	glGenTextures(1, &textureid);
 
@@ -54,12 +52,15 @@ GLuint load_texture(const char *filename, int *width, int *height) {
 
 	SDL_FreeSurface(surface);
 
-	return textureid;
+	this->gl_id = textureid;
 }
 
-void draw_texture(int x, int y, GLuint textureid, int width, int height) {
+Texture::~Texture() {
+	//TODO free OpenGL ressource...
+}
 
-	glBindTexture(GL_TEXTURE_2D, textureid);
+void Texture::draw(int x, int y) {
+	glBindTexture(GL_TEXTURE_2D, gl_id);
 	glEnable(GL_TEXTURE_2D);
 
 	glBegin(GL_QUADS);
@@ -68,13 +69,13 @@ void draw_texture(int x, int y, GLuint textureid, int width, int height) {
 	glVertex3f(x, y, 0);
 
 	glTexCoord2i(1, 0);
-	glVertex3f(x+width, y, 0);
+	glVertex3f(x + w, y, 0);
 
 	glTexCoord2i(1, 1);
-	glVertex3f(x+width, y+height, 0);
+	glVertex3f(x + w, y + h, 0);
 
 	glTexCoord2i(0, 1);
-	glVertex3f(x, y+height, 0);
+	glVertex3f(x, y + h, 0);
 
 	glEnd();
 
