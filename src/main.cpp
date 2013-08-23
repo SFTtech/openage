@@ -1,20 +1,9 @@
-// main source for openage
-
-
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include <GL/gl.h>
 
 #include "texture.h"
 
-
-
-
-/*!
-  entry function for openage.
-
-  you may not have expected it, but this is actually the main function.
- */
 int main() {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		printf("SDL initialization: %s\n", SDL_GetError());
