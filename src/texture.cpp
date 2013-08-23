@@ -5,7 +5,7 @@
 #include "texture.h"
 
 
-GLuint load_texture(char *filename, int *width, int *height) {
+GLuint load_texture(const char *filename, int *width, int *height) {
 
 	SDL_Surface *surface;
 	GLuint textureid;
@@ -14,13 +14,7 @@ GLuint load_texture(char *filename, int *width, int *height) {
 
 	printf("generating texture %s\n", filename);
 
-	char *path=NULL;
-	size_t size;
-	path=getcwd(path, size);
-	printf("current path = %s\n", path);
-
 	surface = SDL_LoadBMP(filename);
-
 
 	if (!surface) {
 		printf("failed generating texture %s\n", filename);
