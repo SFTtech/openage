@@ -11,5 +11,5 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
 	m
 	SDL2
-	#${OPENGL_LIBRARY}
+	${OPENGL_LIBRARY}
 )
