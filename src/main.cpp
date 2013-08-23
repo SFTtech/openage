@@ -36,7 +36,8 @@ int main() {
 	//vsync on
 	SDL_GL_SetSwapInterval(1);
 
-	int loopc = 0;
+	unsigned frames = 0;
+	unsigned starttime = SDL_GetTicks();
 
 	//main loop
 	while (true) {
@@ -61,16 +62,14 @@ int main() {
 		glClear ( GL_COLOR_BUFFER_BIT );
 		SDL_GL_SwapWindow(window);
 
-		printf("loop...\n");
-		loopc += 1;
+		frames += 1;
 	}
+
+	unsigned fps = (1000 * frames) / (SDL_GetTicks() - starttime);
+	printf("fps: %d\n", fps);
 
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
-
-	printf("number of loop iterations: %d\n", loopc);
-	printf("runtime: %d\n", SDL_GetTicks());
-
 	SDL_Quit();
 	return 0;
 }
