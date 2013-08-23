@@ -5,6 +5,11 @@
 #include <SDL2/SDL.h>
 #include <GL/gl.h>
 
+#include "texture.h"
+
+
+
+
 /*!
   entry function for openage.
 
@@ -36,6 +41,14 @@ int main() {
 	//vsync on
 	SDL_GL_SetSwapInterval(1);
 
+	//enable alpha blending
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	int texw, texh;
+	GLuint testtex = load_texture("./ressources/testtex.bmp", &texw, &texh);
+
+
 	unsigned frames = 0;
 	unsigned starttime = SDL_GetTicks();
 
@@ -48,18 +61,33 @@ int main() {
 			}
 		}
 
-		glClearColor ( 1.0, 0.0, 0.0, 1.0 );
-		glClear ( GL_COLOR_BUFFER_BIT );
-		//swap buffer
-		SDL_GL_SwapWindow(window);
-		//SDL_Delay(2000);
+		//TODO: dynamic viewport adaption
 
-		glClearColor ( 0.0, 1.0, 0.0, 1.0 );
+		glClearColor ( 0.0, 0.0, 0.0, 1.0 );
 		glClear ( GL_COLOR_BUFFER_BIT );
-		SDL_GL_SwapWindow(window);
 
-		glClearColor ( 0.0, 0.0, 1.0, 1.0 );
-		glClear ( GL_COLOR_BUFFER_BIT );
+		glColor3f(1, 1, 0);
+
+		glBegin(GL_QUADS);
+		glVertex3f(0.0, 0.0, 0.0);
+		glVertex3f(-1.0, 0.0, 0.0);
+		glVertex3f(-1.0, -1.0, 0.0);
+		glVertex3f(0.0, -1.0, 0.0);
+		glEnd();
+
+		glColor3f(1, 0, 0);
+
+		glBegin(GL_QUADS);
+		glVertex3f(0.0, 0.0, 0.0);
+		glVertex3f(-1.0, 0.0, 0.0);
+		glVertex3f(-1.0, 1.0, 0.0);
+		glVertex3f(0.0, 1.0, 0.0);
+		glEnd();
+
+		glColor3f(1, 1, 1);
+
+		draw_texture(0, 0, testtex, 1, 1);
+
 		SDL_GL_SwapWindow(window);
 
 		frames += 1;
