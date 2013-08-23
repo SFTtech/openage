@@ -17,3 +17,18 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g -O0")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3 -Werror")
 
 add_subdirectory("src")
+
+# Doxygen integration
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+	#this adds the correct folder to INPUT= :
+	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+
+	#add doc target
+	add_custom_target(doc
+		${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+		COMMENT "generating docs with Doxygen" VERBATIM
+	)
+endif(DOXYGEN_FOUND)
+
