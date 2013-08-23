@@ -35,7 +35,7 @@ int main() {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	int texw, texh;
-	GLuint testtex = load_texture("./ressources/testtex.bmp", &texw, &texh);
+	GLuint testtex = load_texture("gaben.bmp", &texw, &texh);
 
 
 	unsigned frames = 0;
