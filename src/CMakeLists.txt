@@ -9,6 +9,7 @@ add_executable(${PROJECT_NAME}
 	engine/engine.cpp
 	engine/texture.cpp
 	log/log.cpp
+	util/fps.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}

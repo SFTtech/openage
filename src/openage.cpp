@@ -4,10 +4,14 @@
 
 #include "engine/engine.h"
 #include "engine/texture.h"
+#include "log/log.h"
+#include "util/fps.h"
 
 namespace openage {
 
 engine::Texture *gaben;
+
+util::FrameCounter fpscounter;
 
 void input_handler(SDL_Event *e) {
 	if (e->type == SDL_QUIT) {
@@ -17,6 +21,9 @@ void input_handler(SDL_Event *e) {
 
 void draw_method() {
 	gaben->draw(0, 0);
+
+	fpscounter.frame();
+	log::msg("fps: %f", fpscounter.fps);
 }
 
 int mainmethod() {
