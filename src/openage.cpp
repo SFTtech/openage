@@ -1,4 +1,4 @@
-#include "game.h"
+#include "openage.h"
 
 #include <SDL2/SDL.h>
 
