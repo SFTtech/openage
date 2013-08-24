@@ -19,7 +19,7 @@ elif file_version == 59:
 # long file_offset; //offset of first file
 #};
 #
-drs_header = Struct(copyright_size + "s 4s 12s l l")
+drs_header = Struct(str(copyright_size) + "s 4s 12s l l")
 
 #struct table_info {
 # char file_type;
@@ -46,6 +46,10 @@ drs_file_info = Struct("l l l")
 
 def main():
 	print("welcome to the extaordinary epic age2 media file converter")
+	with open("../resources/age2/graphics.drs", "rb") as drsfile:
+		buf = drsfile.read(drs_header.size) # read header size bytes from file
+		header = drs_header.unpack_from(buf)
+		print(header)
 
 
 main()
