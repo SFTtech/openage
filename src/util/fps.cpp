@@ -31,6 +31,8 @@ void FrameCounter::frame() {
 	} else {
 		fps = 1000.0 * frame_count_weighted / frame_length_sum_weighted;
 	}
+
+	count += 1;
 }
 
 } //namespace util
