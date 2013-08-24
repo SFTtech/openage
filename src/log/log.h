@@ -1,9 +1,6 @@
 #ifndef _LOG_LOG_H_
 #define _LOG_LOG_H_
 
-#include <cstdio>
-#include <cstdarg>
-
 namespace openage {
 namespace log {
 
