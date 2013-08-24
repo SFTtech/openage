@@ -88,6 +88,7 @@ void engine_input_handler(SDL_Event *e) {
 }
 
 void loop() {
+	int glerrorstate;
 	running = true;
 	while (running) {
 		SDL_Event e;
@@ -102,6 +103,12 @@ void loop() {
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		draw_method();
+
+		glerrorstate = glGetError();
+		if (glerrorstate != 0) {
+			log::fatal("opengl error %d", glerrorstate);
+			return;
+		}
 
 		SDL_GL_SwapWindow(window);
 	}
