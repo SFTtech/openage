@@ -8,6 +8,7 @@ add_executable(game
 	game.cpp
 	engine/engine.cpp
 	engine/texture.cpp
+	log/log.cpp
 )
 
 target_link_libraries(game
