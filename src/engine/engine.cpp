@@ -77,15 +77,14 @@ void loop() {
 	while (running) {
 		SDL_Event e;
 		if (SDL_PollEvent(&e)) {
+			//first, handle the event ourselves (e.g.: detect window resize)
 			engine_input_handler(&e);
+			//now, give the event to the user of the engine
 			input_handler(&e);
 		}
 
-		//TODO: dynamic viewport adaption
-		//(catch some of the events)
-
-		glClearColor ( 0.0, 0.0, 0.0, 1.0 );
-		glClear ( GL_COLOR_BUFFER_BIT );
+		glClearColor(0.0, 0.0, 0.0, 1.0);
+		glClear(GL_COLOR_BUFFER_BIT);
 
 		draw_method();
 
