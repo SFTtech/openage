@@ -1,7 +1,7 @@
 #!/bin/bash
 #source this script for helpers that simplify compiler invocations
 
-PROJ_ROOT="`pwd`"
+PROJ_ROOT=$( cd "$( dirname "$0" )" && pwd )
 
 function run_in_root() {
 	(cd "$PROJ_ROOT/$1"; shift; $@)
@@ -12,7 +12,7 @@ function make() {
 }
 
 function run() {
-	run_in_root data ../bin/game $@
+	run_in_root data ../bin/openage $@
 }
 
 function rls() {
