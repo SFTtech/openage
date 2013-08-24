@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 #include <GL/gl.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 #include "texture.h"
 #include "../log/log.h"
@@ -42,6 +44,17 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 		return;
 	}
 
+
+	// load support for the JPG and PNG image formats
+	int wanted_image_formats = IMG_INIT_JPG | IMG_INIT_PNG;
+	int sdlimg_inited = IMG_Init(wanted_image_formats);
+	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
+		log::fatal("IMG_Init: Failed to init required jpg and png support!\n");
+		log::fatal("IMG_Init: %s\n", IMG_GetError());
+		//TODO exception
+		return;
+	}
+
 	glcontext = SDL_GL_CreateContext(window);
 
 	//vsync on
@@ -62,6 +75,7 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 void destroy() {
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
+	IMG_Quit();
 	SDL_Quit();
 }
 

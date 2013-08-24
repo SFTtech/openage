@@ -78,7 +78,7 @@ int mainmethod() {
 	init();
 
 	//load textures and stuff
-	gaben = new engine::Texture("gaben.bmp");
+	gaben = new engine::Texture("gaben.png");
 
 	//run main loop
 	engine::loop();

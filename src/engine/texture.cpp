@@ -1,6 +1,7 @@
 #include "texture.h"
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <stdio.h>
 
 #include "../log/log.h"
@@ -13,10 +14,10 @@ Texture::Texture(const char *filename) {
 	GLuint textureid;
 	int mode;
 
-	surface = SDL_LoadBMP(filename);
+	surface = IMG_Load(filename);
 
 	if (!surface) {
-		log::warn("failed to load texture from '%s'", filename);
+		log::warn("failed to load texture from '%s': %s", filename, IMG_GetError());
 		//TODO exception
 		return;
 	}
