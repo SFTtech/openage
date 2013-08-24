@@ -65,16 +65,16 @@ void Texture::draw(int x, int y) {
 
 	glBegin(GL_QUADS);
 
-	glTexCoord2i(0, 0);
+	glTexCoord2i(0, 1);
 	glVertex3f(x, y, 0);
 
-	glTexCoord2i(1, 0);
+	glTexCoord2i(1, 1);
 	glVertex3f(x + w, y, 0);
 
-	glTexCoord2i(1, 1);
+	glTexCoord2i(1, 0);
 	glVertex3f(x + w, y + h, 0);
 
-	glTexCoord2i(0, 1);
+	glTexCoord2i(0, 0);
 	glVertex3f(x, y + h, 0);
 
 	glEnd();
