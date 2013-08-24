@@ -39,6 +39,7 @@ Texture::Texture(const char *filename) {
 	this->w = surface->w;
 	this->h = surface->h;
 
+	//generate 1 texture handle
 	glGenTextures(1, &textureid);
 
 	glBindTexture(GL_TEXTURE_2D, textureid);
@@ -47,8 +48,8 @@ Texture::Texture(const char *filename) {
 	glTexImage2D(GL_TEXTURE_2D, 0, mode, surface->w, surface->h, 0, mode, GL_UNSIGNED_BYTE, surface->pixels);
 
 	//later drawing settings
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	SDL_FreeSurface(surface);
 
