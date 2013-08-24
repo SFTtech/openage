@@ -59,10 +59,14 @@ void destroy() {
 
 void engine_window_resized(unsigned w, unsigned h) {
 	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 	glViewport(0, 0, w, h);
+
 	// set orthographic projection: left, right, bottom, top, nearVal, farVal
 	glOrtho(0, w, 0, h, 9001, -1);
-	glMatrixMode(GL_VIEWPORT);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 
 	log::dbg("engine window has been resized to %ux%u\n", w, h);
 }
