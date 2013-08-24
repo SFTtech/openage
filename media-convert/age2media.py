@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 
-import Struct from struct
+from struct import Struct
 
 #version of the drs file, hardcoded for now
-file_version = 59
+file_version = 57
 
 if file_version == 57:
 	copyright_size = 40
-else:
+elif file_version == 59:
 	copyright_size = 60
-
 
 
 #struct drs_header {
@@ -17,38 +16,33 @@ else:
 # char version[4];
 # char type[12];
 # long table_count;
-# long file_offset;
+# long file_offset; //offset of first file
 #};
 #
 drs_header = Struct(copyright_size + "s 4s 12s l l")
 
 #struct table_info {
 # char file_type;
-# char ext3;  //extension string not null terminated
-# char ext2;  //so read character by character-exactly 3 & reverse order
-# char ext1;
-# int fileInfoOffset;
-# int numFiles;
+# char file_extension[3]; //reversed extension
+# int file_info_offset;   //table offset
+# int num_files;          //number of files in table
 #};
-table_info = Struct("c c c c i i")
+drs_table_info = Struct("c 3s i i")
+
+#struct drs_table {
+# int numfiles;
+# file_info* files;  //number of files uncertain-array for holding file info
+# long lower_resid; //the resid range stored in this table
+# long upper_resid; //useful for quickly locating table containing a res.
+#};
+drs_table = Struct("i P l l")
 
 #struct file_info {
 # long file_id;
 # long file_data_offset;
 # long file_size;
 #};
-file_info = Struct("l l l")
-
-#struct drs_table {
-# int numfiles;
-# fileInfo* files;  //number of files uncertain-array for holding file info
-# long lower_resid; //the resid range stored in this table
-# long upper_resid; //useful for quickly locating table containing a res.
-#};
-drs_table = Struct("i P l l")
-
-
-
+drs_file_info = Struct("l l l")
 
 def main():
 	print("welcome to the extaordinary epic age2 media file converter")
