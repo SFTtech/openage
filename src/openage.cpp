@@ -10,7 +10,7 @@
 
 namespace openage {
 
-engine::Texture *gaben;
+engine::Texture *gaben, *town_center, *castle_0;
 
 util::FrameCounter fpscounter;
 
@@ -52,22 +52,33 @@ void input_handler(SDL_Event *e) {
 void draw_method() {
 	gaben->draw(0, 0);
 
+
 	glPushMatrix();
 	{
 		glColor3f(1, 1, 1);
-		glTranslatef(lmbx, lmby, 0);
-		glRotatef(100, 0, 0, -1);
-		glBegin(GL_QUADS);
-		{
-			glVertex3f(0, 0, 0);
-			glVertex3f(0, 100, 0);
-			glVertex3f(100, 100, 0);
-			glVertex3f(100, 0, 0);
-		}
-		glEnd();
+		glTranslatef(lmbx - town_center->w/2, lmby - town_center->h/2, 0);
+
+		town_center->draw(0, 0);
 	}
 	glPopMatrix();
+	glPushMatrix();
+	{
+		glColor3f(1, 1, 1);
+		glTranslatef(rmbx - town_center->w/2, rmby - town_center->h/2, 0);
 
+		castle_0->draw(0, 0);
+	}
+	glPopMatrix();
+	/*
+	glBegin(GL_QUADS);
+	{
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, 100, 0);
+		glVertex3f(100, 100, 0);
+		glVertex3f(100, 0, 0);
+	}
+	glEnd();
+	*/
 	fpscounter.frame();
 	//log::msg("fps: %f", fpscounter.fps);
 }
@@ -79,6 +90,9 @@ int mainmethod() {
 
 	//load textures and stuff
 	gaben = new engine::Texture("gaben.png");
+
+	town_center = new engine::Texture("base.png");
+	castle_0 = new engine::Texture("castle_0.png");
 
 	//run main loop
 	engine::loop();
