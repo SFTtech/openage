@@ -1,7 +1,9 @@
+#include "texture.h"
+
 #include <SDL2/SDL.h>
 #include <stdio.h>
 
-#include "texture.h"
+#include "../log/log.h"
 
 namespace openage {
 namespace engine {
@@ -11,17 +13,15 @@ Texture::Texture(const char *filename) {
 	GLuint textureid;
 	int mode;
 
-	printf("generating texture %s\n", filename);
-
 	surface = SDL_LoadBMP(filename);
 
 	if (!surface) {
-		printf("failed generating texture %s\n", filename);
+		log::warn("failed to load texture from '%s'", filename);
 		//TODO exception
 		return;
 	}
 	else {
-		printf("created texture %s successfully\n", filename);
+		log::msg("loaded texture from '%s'", filename);
 	}
 
 	//glTexImage2D format determination

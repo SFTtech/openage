@@ -4,6 +4,7 @@
 #include <GL/gl.h>
 
 #include "texture.h"
+#include "../log/log.h"
 
 namespace openage {
 namespace engine {
@@ -19,7 +20,7 @@ bool running;
 
 void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		printf("SDL initialization: %s\n", SDL_GetError());
+		log::fatal("SDL initialization: %s\n", SDL_GetError());
 		//TODO exception
 		return;
 	}
@@ -32,7 +33,7 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	window = SDL_CreateWindow("openage", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
 
 	if (window == nullptr) {
-		printf("SDL window creation: %s\n", SDL_GetError());
+		log::fatal("SDL window creation: %s\n", SDL_GetError());
 		//TODO exception
 		return;
 	}
@@ -57,12 +58,13 @@ void destroy() {
 }
 
 void engine_window_resized(unsigned w, unsigned h) {
-	printf("engine window has been resized to %ux%u\n", w, h);
 	glMatrixMode(GL_PROJECTION);
 	glViewport(0, 0, w, h);
 	// set orthographic projection: left, right, bottom, top, nearVal, farVal
 	glOrtho(0, w, 0, h, 9001, -1);
 	glMatrixMode(GL_VIEWPORT);
+
+	log::dbg("engine window has been resized to %ux%u\n", w, h);
 }
 
 void engine_input_handler(SDL_Event *e) {
