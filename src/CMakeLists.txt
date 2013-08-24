@@ -8,6 +8,7 @@ add_executable(${PROJECT_NAME}
 	openage.cpp
 	engine/engine.cpp
 	engine/texture.cpp
+	log/log.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}
