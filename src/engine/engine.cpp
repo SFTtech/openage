@@ -17,6 +17,10 @@ draw_method_ptr draw_method;
 input_handler_ptr input_handler;
 
 bool running;
+unsigned window_x = 800;
+unsigned window_y = 600;
+
+
 
 void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -30,7 +34,7 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
-	window = SDL_CreateWindow("openage", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow("openage", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_x, window_y, SDL_WINDOW_OPENGL);
 
 	if (window == nullptr) {
 		log::fatal("SDL window creation: %s\n", SDL_GetError());
@@ -62,6 +66,11 @@ void destroy() {
 }
 
 void engine_window_resized(unsigned w, unsigned h) {
+
+	//store the current window size
+	window_x = w;
+	window_y = h;
+
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, w, h);
@@ -92,7 +101,7 @@ void loop() {
 	running = true;
 	while (running) {
 		SDL_Event e;
-		if (SDL_PollEvent(&e)) {
+		while (SDL_PollEvent(&e)) {
 			//first, handle the event ourselves (e.g.: detect window resize)
 			engine_input_handler(&e);
 			//now, give the event to the user of the engine

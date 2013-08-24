@@ -56,6 +56,17 @@ to be set to false to stop the engine.
 */
 extern bool running;
 
+/**
+x size of the current window.
+*/
+extern unsigned window_x;
+
+/**
+y size of the current window.
+*/
+extern unsigned window_y;
+
+
 } //namespace engine
 } //namespace openage
 
