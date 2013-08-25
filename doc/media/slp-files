@@ -1,0 +1,185 @@
+SLP media files
+===============
+
+
+slp files are stored in the graphics.drs
+
+they contain all the (animation) textures.
+
+
+slp files for movable objects
+-----------------------------
+
+for unit slp files, 5 states are stored:
+
+0) Attacking
+1) Standing Ground
+2) Dying
+3) Rotting
+4) Moving
+
+each state has ~50 textures for the animation -> ~250 textures per unit
+
+for each animation, 5 directions of it are stored.
+
+villagers have way more than the 5 animations, boats have 2.
+
+
+slp files for static objects
+----------------------------
+
+contain the image of the building..
+
+some static objects have multiple chunks, as moving creep can pass them somehow.
+
+
+slp files for weapons
+----------------------
+
+for dust, arrows, etc.
+
+
+slp files for shadows
+---------------------
+
+every object in game has a shadow. moving units have frames for their shadow in the same slp,
+but buildings and other objects have their shadows in seperate slps.
+
+-> large numbers of shadow SLPs unidentifable.
+
+
+
+SLP file format
+===============
+
+the slp file starts with a header:
+
+struct slp_header {
+ char  version[4];
+ int   num_frames;
+ char  comment[24];
+};
+
+slp_header = Struct("< 4s i 24s")
+
+
+after the header, there are num_frames entries of slp_frame_info.
+
+struct slp_frame_info {
+ unsigned int qdl_table_offset;
+ unsigned int outline_table_offset;
+ unsigned int palette_offset;
+ unsigned int properties; //changes palette to use, but still unknown..
+ int          width;
+ int          height;
+ int          hotspot_x; //center of the unit
+ int          hotspot_y; //is referenced as the unit location by the engine
+};
+
+slp_frame_info = Struct("< I I I I i i i i")
+
+
+slp_frame_info stores metainformation about one single frame (texture) within the slp.
+
+
+after the frame infos, num_frames of images follow.
+
+
+one image of size width x height has height rows.
+
+slp_frame_row_edge begins one row.
+
+struct slp_frame_row_edge {
+ short left;
+ short right;
+};
+
+slp_frame_row_edge = Struct("< h h")
+
+
+if no command precedes a row, slp_frame_row_edge defines the blank space surrounding a unit.
+
+the right and left value is 0x8000 if the row is completely transparent.
+
+no command bytes end a row.
+
+
+after the padding struct, an array of int follows, they define the offset for commands for each row.
+
+these are not actually necessary to check, the commands can be read sequentially.
+the command locations can be used for checking purposes though.
+
+Now comes the command data itself.
+
+
+
+slp drawing commands
+====================
+
+the image is drawn line by line, a line is finished with command eol.
+
+a command is a one-byte number followed by command-specific data.
+
+the command byte can contain command data.
+
+e.g. color_list command (0x00) only checks the least-significant bits to  command type and the rest of the byte is the number of palette indices to follow.
+a command is parsed, data values after it are drawn, then the next command byte is reached.
+
+each commands triggers a drawing method for n=pixel_count pixels.
+
+
+pixel_count value:
+  next           = next_byte after command
+  >>2            = cmd_byte shifted 2 times right
+  >>n|next       = pixel_count = cmd_byte >> n; if pixel_count == 0: pixel_count = next_byte
+                   -> 8-n most significant bits of cmd_byte if they are != 0, else next byte.
+  >>4*256 + next = (cmd_byte & 0xf0 << 4) + next_byte
+
+
+command_name       value  pixel_count     description
+-----------------------------------------------------
+color_list         = 0x00, >>2            for count: palette_index=next, then draw it
+skip               = 0x01, >>2|next       specified number of pixels are transparent
+big_color_list     = 0x02, 4*256 + next   for count: palette_index=next, draw more with this
+big_skip           = 0x03, 4*256 + next   more transparent pixels
+player_color_list  = 0x06, 4|next         player color idx array. for count: palette_index=next+(player*16)+16
+fill               = 0x07, 4|next         fill n pixels with following palette_index
+player_color_span  = 0x0A, 4|next         fill n pixels with player color formula
+shadow_transparent = 0x0B, 4|next         shadow for a unit
+shadow_player      = 0x0E, next           does unknown things..
+eol                = 0x0F, 0              end of commands for this row
+selected           = 0x4E, 1              this single pixel gets replaced with the player color if obstructed
+selected_span      = 0x5E  next           same obstruction, supporting multiple pixels
+
+0x6E == 0x4E -> same opcode
+0x7E == 0x5E
+
+drawing shadows is like drawing black, but with alpha=0.5 or so.
+
+
+with this information it's possible to draw palette_index correctly, but what is palette_index?
+
+
+palette_index
+=============
+
+the drawing palette is stored inside the interfac.drs.
+
+the offset is 50500+x, the palettes (color tables) are stored there.
+
+x is the palette index, which should be 0, experiment with [1,10]...
+
+interfac.drs contains many of these files, but the ingame art uses offset 50500.
+
+the palette is a jasc paint shop pro file, starting with "JASC-PAL\r\n".
+read this line at the offset to verify existance.
+next line stores version information, can be ignored.
+next line stores number of entries, important.
+
+now follow "x y z\r\n" lines, storing 24bit a color tuple.
+
+index these, they are the references in the slp file.
+
+
+
+you should now be able to draw stuff.
