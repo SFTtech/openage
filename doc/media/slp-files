@@ -66,7 +66,7 @@ slp_header = Struct("< 4s i 24s")
 after the header, there are num_frames entries of slp_frame_info.
 
 struct slp_frame_info {
- unsigned int qdl_table_offset;
+ unsigned int cmd_table_offset;
  unsigned int outline_table_offset;
  unsigned int palette_offset;
  unsigned int properties; //changes palette to use, but still unknown..
@@ -87,29 +87,31 @@ after the frame infos, num_frames of images follow.
 
 one image of size width x height has height rows.
 
-slp_frame_row_edge begins one row.
+at outline_table_offset, an array of slp_frame_row_edge structs begins, length = height.
 
 struct slp_frame_row_edge {
- short left;
- short right;
+ unsigned short left;
+ unsigned short right;
 };
 
-slp_frame_row_edge = Struct("< h h")
+slp_frame_row_edge = Struct("< H H")
+
+the right or left value is 0x8000 if the row is completely transparent.
+no command bytes end these transparent rows.
+
+else, left and right specify the number of transparent pixel, from each side to the center.
 
 
-if no command precedes a row, slp_frame_row_edge defines the blank space surrounding a unit.
-
-the right and left value is 0x8000 if the row is completely transparent.
-
-no command bytes end a row.
-
-
-after the padding struct, an array of int follows, they define the offset for commands for each row.
+after those padding frames, an array of 4byte-ints follows, length = height.
+each int defines the offset for commands for each row.
+int[0] is the first drawing command for the image.
 
 these are not actually necessary to check, the commands can be read sequentially.
 the command locations can be used for checking purposes though.
 
-Now comes the command data itself.
+
+
+at cmd_table_offset the command data itself begins.
 
 
 
@@ -136,23 +138,35 @@ pixel_count value:
   >>4*256 + next = (cmd_byte & 0xf0 << 4) + next_byte
 
 
-command_name       value  pixel_count     description
+command_name     cmd_byte  pixel_count     description
 -----------------------------------------------------
-color_list         = 0x00, >>2            for count: palette_index=next, then draw it
-skip               = 0x01, >>2|next       specified number of pixels are transparent
-big_color_list     = 0x02, 4*256 + next   for count: palette_index=next, draw more with this
-big_skip           = 0x03, 4*256 + next   more transparent pixels
-player_color_list  = 0x06, 4|next         player color idx array. for count: palette_index=next+(player*16)+16
-fill               = 0x07, 4|next         fill n pixels with following palette_index
-player_color_span  = 0x0A, 4|next         fill n pixels with player color formula
-shadow_transparent = 0x0B, 4|next         shadow for a unit
-shadow_player      = 0x0E, next           does unknown things..
+color_list         = 0x00, >>2            for count: (palette_index=next, draw color)
+skip               = 0x01, >>2|next       for count: (draw transparent pixel)
+big_color_list     = 0x02, 4*256 + next   for count: (palette_index=next, draw this color)
+big_skip           = 0x03, 4*256 + next   for count: (draw even more transparent pixels)
+player_color_list  = 0x06, >>4|next       for count: (palette_index=next+(player*16))
+fill               = 0x07, >>4|next       palette_index=next, for count: (draw)
+fill_player_color  = 0x0A, >>4|next       palette_index=next+(player*16), for count: (draw)
+shadow_transparent = 0x0B, >>4|next       for count: (draw transparent shadow)
 eol                = 0x0F, 0              end of commands for this row
+ -extended cmds:
+shadow_player      = 0x0E, next           draw if sprite !xflipped (undocumented)
+shadow_player      = 0x1E, next           draw if sprite xflipped  (undocumented)
+shadow_player      = 0x2E, next           transform color tables   (undocumented)
 selected           = 0x4E, 1              this single pixel gets replaced with the player color if obstructed
+                                           -> op==4E: palette_index = 0
+                                           -> op==6E: palette_index = player_index = player*16
 selected_span      = 0x5E  next           same obstruction, supporting multiple pixels
+                                           -> op==5E: palette_index = 0
+                                           -> op==7E: player_color = palette_index = player*16
 
-0x6E == 0x4E -> same opcode
+
+0x3E == 0x2E -> same opcode
+0x6E == 0x4E
 0x7E == 0x5E
+
+note that commands with pixel_count == >>n do reuse the most significant bits of cmd_byte.
+=> check the match for 8-n least significant bits only!
 
 drawing shadows is like drawing black, but with alpha=0.5 or so.
 
