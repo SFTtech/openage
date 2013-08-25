@@ -1,8 +1,8 @@
-SLP media files
-===============
+SLP media file specification
+============================
 
 
-slp files are stored in the graphics.drs
+slp files are stored in the .drs files.
 
 they contain all the (animation) textures.
 
@@ -130,9 +130,12 @@ a command is parsed, data values after it are drawn, then the next command byte 
 each commands triggers a drawing method for n=pixel_count pixels.
 
 
-pixel_count value:
+all the commands tell you to draw a palette_index, for n pixels.
+
+
+the pixel_count value is stored at these locations:
   next           = next_byte after command
-  >>2            = cmd_byte shifted 2 times right
+  >>2            = cmd_byte shifted 2 times right (most significant bits used as data value)
   >>n|next       = pixel_count = cmd_byte >> n; if pixel_count == 0: pixel_count = next_byte
                    -> 8-n most significant bits of cmd_byte if they are != 0, else next byte.
   >>4*256 + next = (cmd_byte & 0xf0 << 4) + next_byte
@@ -147,37 +150,37 @@ big_skip           = 0x03, 4*256 + next   for count: (draw even more transparent
 player_color_list  = 0x06, >>4|next       for count: (palette_index=next+(player*16))
 fill               = 0x07, >>4|next       palette_index=next, for count: (draw)
 fill_player_color  = 0x0A, >>4|next       palette_index=next+(player*16), for count: (draw)
-shadow_transparent = 0x0B, >>4|next       for count: (draw transparent shadow)
-eol                = 0x0F, 0              end of commands for this row
- -extended cmds:
-shadow_player      = 0x0E, next           draw if sprite !xflipped (undocumented)
-shadow_player      = 0x1E, next           draw if sprite xflipped  (undocumented)
-shadow_player      = 0x2E, next           transform color tables   (undocumented)
-selected           = 0x4E, 1              this single pixel gets replaced with the player color if obstructed
-                                           -> op==4E: palette_index = 0
-                                           -> op==6E: palette_index = player_index = player*16
-selected_span      = 0x5E  next           same obstruction, supporting multiple pixels
-                                           -> op==5E: palette_index = 0
-                                           -> op==7E: player_color = palette_index = player*16
+shadow_transparent = 0x0B, >>4|next       for count: (draw shadow pixel, transparent)
+eol                = 0x0F, 0              end of commands for this row, row is complete.
 
+ -extended cmds, for outlines behind trees:
+render_hint_xflip  = 0x0E, 0              draw the following command if sprite is not flipped upside down
+render_h_notxflip  = 0x1E, 0              draw following command if this sprite is xflipped
+table_use_normal   = 0x2E, 0              transform color table: for regular cmd_bytes -> set to normal table
+table_use_alternat = 0x3E, 0              transform color table: -> set to alternate table
+obstruct_black     = 0x4E, 1 (spec_col=1) palette_index = 0, if pixel obstructed, replace next cmd with outline
+obstruct_playercol = 0x6E, 1 (spec_col=2) palette_index = player_index = player * 16, if obstructed, player col.
+obstruct_span      = 0x5E, next           palette_index = 0, same as obstruct_black, but >=1 pixel.
+obstruct_span_plc  = 0x7E, next           palette_index = player_index = player * 16
 
-0x3E == 0x2E -> same opcode
-0x6E == 0x4E
-0x7E == 0x5E
+spec_col == special_color: 1 means player color, 2 is black for enhancing the outline.
+NOT sure yet whether spec_col==1 => player color or black!!
+the obstruction check is also NOT sure, go for just drawing the special color first.
 
-note that commands with pixel_count == >>n do reuse the most significant bits of cmd_byte.
-=> check the match for 8-n least significant bits only!
+note that commands with pixel_count == >>i do reuse the most significant bits of cmd_byte.
+=> check the match for 8-i least significant bits only!
 
 drawing shadows is like drawing black, but with alpha=0.5 or so.
 
 
-with this information it's possible to draw palette_index correctly, but what is palette_index?
+with this information it's possible to draw a line by several palette_index colors correctly,
+what real color is one palette_index?
 
 
 palette_index
 =============
 
-the drawing palette is stored inside the interfac.drs.
+the drawing palette is stored inside the interfac.drs, its an indexed list of (r g b) tuples.
 
 the offset is 50500+x, the palettes (color tables) are stored there.
 
@@ -187,7 +190,7 @@ interfac.drs contains many of these files, but the ingame art uses offset 50500.
 
 the palette is a jasc paint shop pro file, starting with "JASC-PAL\r\n".
 read this line at the offset to verify existance.
-next line stores version information, can be ignored.
+next line stores version information, should be "0100".
 next line stores number of entries, important.
 
 now follow "x y z\r\n" lines, storing 24bit a color tuple.
