@@ -1,0 +1,73 @@
+about drs-files
+===============
+
+Gamedata.drs:
+	contains information on map types, like where to place resources, in what numbers, etc, as well as AI scripts. AI scripts tell the computer what to do, such as build units, gather resources, and generally make it "smart".
+
+Graphics.drs
+	contains almost every graphic you see in the game; this includes units, buildings, resources, and animals.
+
+Interfac.drs:
+	contains the main interface graphics of the game. All of the the borders, buttons, logos, main game screen, etc you see when entering the game to starting one can be found within this file.
+
+Sounds.drs:
+	contains every sound in Age of Kings; from the war horn sounding off to the ringing town bell, it's all stored here.
+
+Terrain.drs:
+	contains all the terrain, in diamond shaped pieces. For each terrain, there are 100 pieces.
+
+
+
+DRS format
+==========
+
+drs files contain search structures for archiving the media files.
+
+
+
+at the beginning, the file starts with it's main header:
+
+
+const int copyright_size = 40; // for age2:aok this is 40.
+struct drs_header {
+	char copyright[copyright_size];
+	char version[4];
+	char ftype[12];
+	int table_count;
+	int file_offset; //offset of first file
+};
+
+drs_header = Struct("< " + str(copyright_size) + "s 4s 12s i i")
+
+
+it stores how many drs_table_info structs will follow the main header.
+
+
+one drs_table_info struct is stored for each file type (means: animation, ai script, whatever)
+
+struct drs_table_info {
+	char file_type;
+	char file_extension[3]; //reversed extension
+	int file_info_offset;   //table offset
+	int num_files;          //number of files in table
+};
+
+drs_table_info = Struct("< c 3s i i")
+
+
+the drs_table_info tells us, how many files are stored for the file_type.
+
+for each file, there exists a drs_file_info entry,
+the drs_file_info tables start at position file_info_offset:
+
+struct drs_file_info {
+	int file_id;
+	int file_data_offset;
+	int file_size;
+};
+
+drs_file_info = Struct("< i i i")
+
+
+for every file, the offset in the .drs is stored, and also it's size.
+the unique id can be seen as the filename.
