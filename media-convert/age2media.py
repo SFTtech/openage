@@ -14,30 +14,7 @@ elif file_version == 59:
 #we force the endianness to little endian by "<",
 #as this is the byte-order in the drs file
 
-#struct drs_header {
-# char copyright[copyright-size];
-# char version[4];
-# char ftype[12];
-# int table_count;
-# int file_offset; //offset of first file
-#};
-#
-drs_header = Struct("< " + str(copyright_size) + "s 4s 12s i i")
 
-#struct table_info {
-# char file_type;
-# char file_extension[3]; //reversed extension
-# int file_info_offset;   //table offset
-# int num_files;          //number of files in table
-#};
-drs_table_info = Struct("< c 3s i i")
-
-#struct file_info {
-# int file_id;
-# int file_data_offset;
-# int file_size;
-#};
-drs_file_info = Struct("< i i i")
 
 #struct slp_header {
 # char version[4];
@@ -76,65 +53,91 @@ def convert_slp(file_id, buf):
 		print("\t" + str(frame_info))
 
 
+class DRS:
+	#struct drs_header {
+	# char copyright[copyright-size];
+	# char version[4];
+	# char ftype[12];
+	# int table_count;
+	# int file_offset; //offset of first file
+	#};
+	#
+	drs_header = Struct("< " + str(copyright_size) + "s 4s 12s i i")
+
+	#struct table_info {
+	# char file_type;
+	# char file_extension[3]; //reversed extension
+	# int file_info_offset;   //table offset
+	# int num_files;          //number of files in table
+	#};
+	drs_table_info = Struct("< c 3s i i")
+
+	#struct file_info {
+	# int file_id;
+	# int file_data_offset;
+	# int file_size;
+	#};
+	drs_file_info = Struct("< i i i")
+
+	def __init__(self, path):
+		self.path = path
+		self.in_file = None
+
+	def __del__(self):
+		if self.in_file:
+			self.in_file.close()
+	
+	def read(self):
+		self.in_file = open(self.path, "rb")
+
+		self.read_header()
+		self.read_table_info()
+		self.read_file_info()
+
+		print("header:\n\t" + str(self.header))
+		print("tables:")
+		for table in self.table_info:
+			print("\t" + str(table))
+
+	def read_header(self):
+		buf = self.in_file.read(DRS.drs_header.size)
+		self.header = DRS.drs_header.unpack(buf)
+	
+	def read_table_info(self):
+		table_count = self.header[3]
+
+		self.table_info = []
+
+		buf = self.in_file.read(table_count * DRS.drs_table_info.size)
+		for i in range(table_count):
+			table_info = DRS.drs_table_info.unpack_from(buf, i * DRS.drs_table_info.size)
+			self.table_info.append(table_info)
+	
+	def read_file_info(self):
+		self.file_info = {}
+
+		for table in self.table_info:
+			file_type, file_extension, file_info_offset, num_files = table
+			file_info = []
+			
+			self.in_file.seek(file_info_offset)
+			buf = self.in_file.read(num_files * DRS.drs_file_info.size)
+			
+			for i in range(num_files):
+				info = DRS.drs_file_info.unpack_from(buf, i * DRS.drs_file_info.size)
+				file_info.append(info)
+
+			self.file_info[table] = file_info
+
+
+
+
+
 def main():
 	print("welcome to the extaordinary epic age2 media file converter")
 
-	with open("../resources/age2/graphics.drs", "rb") as drsfile:
-		# read header size bytes from file
-		buf = drsfile.read(drs_header.size)
-
-		header = drs_header.unpack(buf)
-		print("header of graphics.drs:\n\t" + str(header))
-		copyright, version, ftype, table_count, file_offset = header
-
-		table_infos = []
-
-		#the main header defines the number of tables, each for one file type
-		for i in range(table_count):
-			buf = drsfile.read(drs_table_info.size)
-
-			#the table_info describes one file type, and stores the number of files saved for it
-			table_info = drs_table_info.unpack(buf)
-			table_infos.append(table_info)
-			print("table info %d:\n\t%s" % (i, str(table_info)))
-
-		table_file_infos = {}
-
-		for table_info in table_infos:
-			file_type, file_extension, file_info_offset, num_files = table_info
-
-			infos = []
-
-			#goto the beginning of the file_info tables
-			drsfile.seek(file_info_offset)
-			buf = drsfile.read(num_files * drs_file_info.size)
-
-			#iterate over all saved files, and store their file_info data
-			for j in range(num_files):
-				file_info = drs_file_info.unpack_from(buf, j * drs_file_info.size)
-				infos.append(file_info)
-				
-			table_file_infos[table_info] = infos
-
-		for table_info, file_infos in table_file_infos.items():
-			print("table info: " + str(table_info))
-			
-			file_type, file_extension, file_info_offset, num_files = table_info
-			ext = file_extension.decode("utf-8")[::-1]
-
-			i = 0
-			for file_info in file_infos:
-				if i == 5:
-					break
-			
-				file_id, file_data_offset, file_size = file_info
-				
-				drsfile.seek(file_data_offset)
-				buf = drsfile.read(file_size)
-
-				convert_slp(file_id, buf)
-				i = i + 1
-
+	drs_file = DRS("../resources/age2/graphics.drs")
+	drs_file.read()
 
 
 main()
