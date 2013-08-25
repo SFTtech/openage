@@ -81,7 +81,24 @@ def main():
 
 		for table_info, file_infos in table_file_infos.items():
 			print("table info: " + str(table_info))
+			
+			file_type, file_extension, file_info_offset, num_files = table_info
+			ext = file_extension.decode("utf-8")[::-1]
+
+			i = 0
 			for file_info in file_infos:
+				if i == 5:
+					break
 				print("\tfile: " + str(file_info))
+			
+				file_id, file_data_offset, file_size = file_info
+				
+				drsfile.seek(file_data_offset)
+				buf = drsfile.read(file_size)
+
+				with open("/tmp/agetest/%d.%s" % (file_id, ext), "wb") as f:
+					f.write(buf)
+				i = i + 1
+
 
 main()
