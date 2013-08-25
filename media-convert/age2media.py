@@ -39,6 +39,43 @@ drs_table_info = Struct("< c 3s i i")
 #};
 drs_file_info = Struct("< i i i")
 
+#struct slp_header {
+# char version[4];
+# int num_frames;
+# char comment[24];
+#};
+slp_header = Struct("< 4s i 24s") 
+
+#struct slp_frame_info {
+#unsigned int	qdl_table_offset;
+#unsigned int	outline_table_offset;
+#unsigned int	palette_offset;
+#unsigned int	properties;
+#int	width;
+#int	height;
+#int	hotspot_x;
+#int	hotspot_y;
+#};
+slp_frame_info = Struct("< I I I I i i i i")
+
+
+def convert_slp(file_id, buf):
+	header = slp_header.unpack_from(buf)
+	print("slp %d header:\n\t%s" % (file_id, str(header)))
+
+	version, num_frames, comment = header
+	
+	frame_infos = []
+
+	for i in range(num_frames):
+		frame_info = slp_frame_info.unpack_from(buf,
+				slp_header.size + i * slp_frame_info.size)
+		frame_infos.append(frame_info)
+	
+	for frame_info in frame_infos:
+		print("\t" + str(frame_info))
+
+
 def main():
 	print("welcome to the extaordinary epic age2 media file converter")
 
@@ -89,16 +126,15 @@ def main():
 			for file_info in file_infos:
 				if i == 5:
 					break
-				print("\tfile: " + str(file_info))
 			
 				file_id, file_data_offset, file_size = file_info
 				
 				drsfile.seek(file_data_offset)
 				buf = drsfile.read(file_size)
 
-				with open("/tmp/agetest/%d.%s" % (file_id, ext), "wb") as f:
-					f.write(buf)
+				convert_slp(file_id, buf)
 				i = i + 1
+
 
 
 main()
