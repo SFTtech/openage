@@ -212,7 +212,7 @@ class SLPFrame:
 
 	#shadow and transparency colors
 	shadow = EnumVal("#")
-	transparent = EnumVal(" ")
+	transparent = EnumVal("( )")
 
 	#struct slp_frame_row_edge {
 	# unsigned short left_space;
@@ -233,6 +233,9 @@ class SLPFrame:
 
 		self.boundaries = [] #for each row, contains the (left, right) number of boundary pixels
 		self.cmd_offsets = [] #for each row, store the file offset to the first drawing command
+
+		self.pcolor = {} #matrix that contains all the palette indices drawn by commands, key: rowid
+
 		self.process(data)
 
 	def process(self, data):
@@ -242,7 +245,7 @@ class SLPFrame:
 		self.process_cmd_table(data)
 		print("cmd_offsets:\n" + str(self.cmd_offsets))
 
-		self.create_palette_index_table(data)
+		self.create_palette_color_table(data)
 
 	def process_boundary_tables(self, data):
 		for i in range(self.height):
@@ -264,28 +267,42 @@ class SLPFrame:
 
 			self.cmd_offsets.append(cmd_offset)
 
+	def create_palette_color_table(self, data):
+		self.palette_color_table = []
+
+		for i in range(self.height):
+			palette_color_row = self.create_palette_color_row(data, i, self.boundaries[i][0], self.boundaries[i][1], self.cmd_offsets[i])
+
+			self.palette_color_table.append(palette_color_row)
+		pass
+
+	def create_palette_color_row(self, data, rowid, left_boundary, right_boundary, first_cmd_offset):
+
+		#list of the palette colors in this row
+		self.pcolor[rowid] = []
+
+		#start drawing the left transparent space
+		self.draw_palette(rowid, self.transparent, left_boundary)
+
+		#process the drawing commands for this row.
+		row_palette_colors = self.process
+
+		#finish by filling up the righ transparent space
+		self.draw_palette(rowid, self.transparent, right_boundary)
+
+		got = len(self.pcolor[rowid])
+		if got != self.width:
+			missing = self.width - got
+			raise Exception("got fewer pixels than expected: " + str(got) + "/" + str(self.width) + ", missing: " + str(missing))
+		return row_palette_colors
+
 	def process_drawing_cmds(self, data):
 		pass
 
-
-
-	def create_palette_index_table(self, data):
-		pass
-
-	def create_palette_index_row(self, data, left_boundary, right_boundary):
-
-		#list of the palette colors in this row
-		row_palette_colors = []
-
-		#start drawing the left transparent space
-		draw_palette(transparent, left_boundary)
-
-		#process the drawing commands for this row.
-
-		#finish by filling up the righ transparent space
-		draw_palette(transparent, right_boundary)
-
-		return row_palette_colors
+	def draw_palette(self, rowid, color, count=1):
+		#print("drawing " + str(count) + " times " + repr(color))
+		result = [color] * count
+		self.pcolor[rowid] = self.pcolor[rowid] + result
 
 
 def main():
