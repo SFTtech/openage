@@ -158,7 +158,7 @@ render_hint_xflip  = 0x0E, 0              draw the following command if sprite i
 render_h_notxflip  = 0x1E, 0              draw following command if this sprite is xflipped
 table_use_normal   = 0x2E, 0              transform color table: for regular cmd_bytes -> set to normal table
 table_use_alternat = 0x3E, 0              transform color table: -> set to alternate table
-obstruct_black     = 0x4E, 1 (spec_col=1) palette_index = 0, if pixel obstructed, replace next cmd with outline
+obstruct_black     = 0x4E, 1 (spec_col=1) palette_index = 0, if pixel obstructed, draw this pixel as outline
 obstruct_playercol = 0x6E, 1 (spec_col=2) palette_index = player_index = player * 16, if obstructed, player col.
 obstruct_span      = 0x5E, next           palette_index = 0, same as obstruct_black, but >=1 pixel.
 obstruct_span_plc  = 0x7E, next           palette_index = player_index = player * 16
@@ -172,9 +172,12 @@ note that commands with pixel_count == >>i do reuse the most significant bits of
 
 drawing shadows is like drawing black, but with alpha=0.5 or so.
 
+command 0x{4,5,6,7}E  indicate that the following command are outlines of the graphic.
+the engine should only draw them as the player color/black, if the pixel(s) are obstructed.
 
-with this information it's possible to draw a line by several palette_index colors correctly,
-what real color is one palette_index?
+
+with all this information it's possible to draw a line by several palette_index colors correctly,
+but what real color must be drawn for one palette_index?
 
 
 palette_index
@@ -189,6 +192,9 @@ x is the palette index, which should be 0, experiment with [1,10]...
 interfac.drs contains many of these files, but the ingame art uses offset 50500.
 
 the palette is a jasc paint shop pro file, starting with "JASC-PAL\r\n".
+(i lol'd hard when seeing the "\r": they compress the slps in this totally retarded 'compression' format,
+but use a useless \r in all palettes...)
+
 read this line at the offset to verify existance.
 next line stores version information, should be "0100".
 next line stores number of entries, important.
