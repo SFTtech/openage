@@ -22,6 +22,8 @@ each state has ~50 textures for the animation -> ~250 textures per unit
 
 for each animation, 5 directions of it are stored.
 
+the other 3 directions are generated later by flipping the sprite on the y axis.
+
 villagers have way more than the 5 animations, boats have 2.
 
 
