@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import sys
+
 from struct import Struct
 
 #version of the drs file, hardcoded for now
@@ -44,7 +46,9 @@ class DRS:
 	def __init__(self, path):
 		self.path = path
 		self.in_file = None
-		self.files = {}
+		self.files = {}       #key: file id, value: file_data_offset, file_size, file_extension
+		self.file_info = {}   #key: table, value: list of drs_file_info tuples for this table
+		self.file_table = {}  #key: id, value: drs_table_info tuple of this file
 
 	def __del__(self):
 		if self.in_file:
@@ -74,13 +78,20 @@ class DRS:
 		buf = self.in_file.read(table_count * DRS.drs_table_info.size)
 		for i in range(table_count):
 			table_info = DRS.drs_table_info.unpack_from(buf, i * DRS.drs_table_info.size)
+
+			file_type, file_extension, file_info_offset, num_files = table_info
+			#flip the extension... it's stored like that..
+			file_extension = file_extension.decode('utf8')[::-1]
+			table_info = file_type, file_extension, file_info_offset, num_files
+
 			self.table_info.append(table_info)
 
 	def read_file_info(self):
-		self.file_info = {}
 
 		for table in self.table_info:
+
 			file_type, file_extension, file_info_offset, num_files = table
+
 			file_info_list = []
 
 			self.in_file.seek(file_info_offset)
@@ -90,17 +101,30 @@ class DRS:
 				info = DRS.drs_file_info.unpack_from(buf, i * DRS.drs_file_info.size)
 				file_id, file_data_offset, file_size = info
 
-				self.files[ int(file_id) ] = file_data_offset, file_size
+				self.files[ int(file_id) ] = file_data_offset, file_size, file_extension
+				self.file_table[ int(file_id) ] = table
 
 				file_info_list.append(info)
 
 			self.file_info[table] = file_info_list
 
-	def get_raw_file(self, fid):
-		if fid not in self.files:
-			raise Exception("id " + fid + " not stored in this drs.")
 
-		file_data_offset, file_size = self.files[fid]
+	def exists_file(self, fid, abort=False):
+		if fid not in self.files:
+			if abort:
+				raise Exception("id " + str(fid) + " not stored in this drs.")
+			else:
+				return True
+		return True
+
+	def get_file_table(self, fid):
+		self.exists_file(fid, True)
+		return self.file_table[fid]
+
+	def get_raw_file(self, fid):
+		self.exists_file(fid, True)
+
+		file_data_offset, file_size, file_extension = self.files[fid]
 
 		self.in_file.seek(file_data_offset)
 		return self.in_file.read(file_size)
@@ -135,6 +159,10 @@ class SLP:
 		self.header = SLP.slp_header.unpack_from(self.rawdata)
 		self.version, self.num_frames, self.comment = self.header
 
+		self.read_header()
+		self.create_frames()
+
+	def read_header(self):
 		print("slp " + str(self.file_id) + " header:")
 		print("\t" + str(self.header))
 		print("\t-> " + str(self.num_frames) + " frame(s):")
@@ -148,6 +176,7 @@ class SLP:
 			frame_info = SLP.slp_frame_info.unpack_from(self.rawdata, info_position)
 			self.frame_infos.append(frame_info)
 
+	def create_frames(self):
 		print("\tcmd_table_offset, outline_table_offset, palette_offset, properties, width, height, hotspot_x, hotspot_y")
 
 		#the list of all frames included in this slp
@@ -187,26 +216,34 @@ def main():
 	print("welcome to the extaordinary epic age2 media file converter")
 
 	drs_file = DRS("../resources/age2/graphics.drs")
+	#drs_file = DRS("../resources/age2/interfac.drs")
 	drs_file.read()
 
-	print("drs files:" + str(drs_file.file_info[drs_file.table_info[0]][1:20]))
+	print("\n\nfile ids in this drs:" + str(sorted(drs_file.files.keys())))
 
 	print("\n=========\nfound " + str(len(drs_file.files)) + " files in the drs.\n=========\n")
 
 
 	print("\n\neuropean castle:")
-	slp_castle = SLP(drs_file.get_raw_file(302), 302) #get european castle
+	#slp_castle = SLP(drs_file.get_raw_file(302), 302) #get european castle
 	print("done with the european castle.\n\n")
 
 
-	create_all = True
+	create_all = ( len(sys.argv) > 1 and sys.argv[1] == "all")
 
 	#create all graphics?
 	if create_all:
 		graphics_slps = {}
+
 		for i in drs_file.files.keys():
-			gslp = SLP(drs_file.get_raw_file(i), i)
-			graphics_slps[i] = gslp
+			#only process slp files so far
+			file_extension = drs_file.get_file_table(i)[1]
+			if "slp" == file_extension:
+				gslp = SLP(drs_file.get_raw_file(i), i)
+				graphics_slps[i] = gslp
+
+			else:
+				raise Exception("file" + str(i) + " has a unknown file extension: " + file_extension)
 
 
 main()
