@@ -171,8 +171,8 @@ render_hint_xflip  = 0x0E, 0              draw the following command if sprite i
 render_h_notxflip  = 0x1E, 0              draw following command if this sprite is xflipped
 table_use_normal   = 0x2E, 0              transform color table: for regular cmd_bytes -> set to normal table
 table_use_alternat = 0x3E, 0              transform color table: -> set to alternate table
-outline_1          = 0x4E, 1 (spec_col=1) palette_index = 0, if pixel obstructed, draw this pixel as outline
-outline_2          = 0x6E, 1 (spec_col=2) palette_index = player_index = player * 16, if obstructed, player col.
+outline_1          = 0x4E, 1 (spec_col=1) palette_index = 0, if pixel obstructed, draw this pixel as outline, else transparent
+outline_2          = 0x6E, 1 (spec_col=2) palette_index = player_index = player * 16, if obstructed, player col, else transparent
 outline_span_2     = 0x5E, next           palette_index = 0, same as obstruct_black, but >=1 pixel.
 outline_span_2     = 0x7E, next           palette_index = player_index = player * 16
 
@@ -194,12 +194,16 @@ rrrrrs00 == 0x00  s == 1
 rrrrrs01 == 0x01  s == 1
 rrrr0010 == 0x02  rrrr << 4
 rrrr0011 == 0x03  rrrr << 4
-rrrr0110 == 0x06  0x04 and 0x05 was left out, because it would conflict with 0x00 and 0x01 as a prefix
-rrrr0111 == 0x07  you can read the prefix from right to left, and for 0x00 and 0x04 it would be 0brrrrx100,
-00001000 == 0x08   where x could be 0, which conflicts.
-00001001 == 0x09  for the same reason, 0x0C and 0x0D are missing, the prefix woule be 0b0000xx{00,01}
-00001010 == 0x0A   where xx could be 11 for command 0x00/0x01, that'd conflict with 0x0C/0x0D
+----0100          0x04 and 0x05 was left out, because it would conflict with 0x00 and 0x01 as a prefix
+----0101           you can read the prefix from right to left, and for 0x00 and 0x04 it would be 0brrrrx100,
+rrrr0110 == 0x06   where x could be 0, which conflicts.
+rrrr0111 == 0x07
+00001000 == 0x08
+00001001 == 0x09
+00001010 == 0x0A
 00001011 == 0x0B
+----1100          for the same reason, 0x0C and 0x0D are missing, the prefix woule be 0b0000xx{00,01}
+----1101           where xx could be 11 for command 0x00/0x01, that'd conflict with 0x0C/0x0D
 xxxx1110 == 0x0E  xxxx = the extended command identifier
 00001111 == 0x0F
 
@@ -209,6 +213,8 @@ drawing shadows is like drawing black, but with alpha=0.5 or so.
 command 0x{4,5,6,7}E  indicate that the following command(s) are outlines of the graphic.
 this is a potential outline pixel, it's what you see when a unit is behind something.
 the engine should only draw them as the player color/black, if the pixel(s) are obstructed.
+if they are not obstructed, draw them as transparent.
+=> the e.g. left outline is one pixel more to the left than the first color.
 
 for our purpose, these outline pixels should be stored to a second image, which is rendered
 ontop of the tree/building by the fragment shader.
