@@ -157,15 +157,15 @@ command_name     cmd_byte  pixel_count     description
 color_list         = 0x00, >>2            for count: (palette_index=next, draw color)
 skip               = 0x01, >>2|next       for count: (draw transparent pixel)
 big_color_list     = 0x02, <<4 + next     for count: (palette_index=next, draw this color)
-big_skip           = 0x03, <<4 + next   for count: (draw even more transparent pixels)
+big_skip           = 0x03, <<4 + next     for count: (draw even more transparent pixels)
 player_color_list  = 0x06, >>4|next       for count: (palette_index=next+(player*16))
 fill               = 0x07, >>4|next       palette_index=next, for count: (draw)
 fill_player_color  = 0x0A, >>4|next       palette_index=next+(player*16), for count: (draw)
-shadow_transparent = 0x0B, >>4|next       for count: (draw shadow pixel, transparent)
+shadow             = 0x0B, >>4|next       for count: (draw shadow pixel, transparent)
 eol                = 0x0F, 0              end of commands for this row, row is complete.
 
- -extended cmds, for outlines behind trees:
-render_hint_xflip  = 0x0E, 0              draw the following command if sprite is not flipped upside down
+ -extended cmds, for outlines behind trees/buildings
+render_hint_xflip  = 0x0E, 0              draw the following command if sprite is not flipped right to left
 render_h_notxflip  = 0x1E, 0              draw following command if this sprite is xflipped
 table_use_normal   = 0x2E, 0              transform color table: for regular cmd_bytes -> set to normal table
 table_use_alternat = 0x3E, 0              transform color table: -> set to alternate table
@@ -185,16 +185,34 @@ n is a next_byte bit. next_byte = nnnnnnnn
 <=> ccccnnnnnnnn
 this number is then used as pixel_count.
 
+bit double-using list for all commands:
+r or s means this bit (may) be reused in this command:
+
+rrrrrs00 == 0x00  s == 1
+rrrrrs01 == 0x01  s == 1
+rrrr0010 == 0x02  rrrr << 4
+rrrr0011 == 0x03  rrrr << 4
+rrrr0110 == 0x06  0x04 and 0x05 was left out, because it would conflict with 0x00 and 0x01 as a prefix
+rrrr0111 == 0x07  you can read the prefix from right to left, and for 0x00 and 0x04 it would be 0brrrrx100,
+00001000 == 0x08   where x could be 0, which conflicts.
+00001001 == 0x09  for the same reason, 0x0C and 0x0D are missing, the prefix woule be 0b0000xx{00,01}
+00001010 == 0x0A   where xx could be 11 for command 0x00/0x01, that'd conflict with 0x0C/0x0D
+00001011 == 0x0B
+xxxx1110 == 0x0E  xxxx = the extended command identifier
+00001111 == 0x0F
+
+
 drawing shadows is like drawing black, but with alpha=0.5 or so.
 
-spec_col == special_color: 1 means black (enhance the outline, toonlike), 2 is player color.
-NOT sure yet whether spec_col==1 => player color or black!!
 command 0x{4,5,6,7}E  indicate that the following command(s) are outlines of the graphic.
 this is a potential outline pixel, it's what you see when a unit is behind something.
 the engine should only draw them as the player color/black, if the pixel(s) are obstructed.
 
 for our purpose, these outline pixels should be stored to a second image, which is rendered
 ontop of the tree/building by the fragment shader.
+
+spec_col == special_color: 1 means black (enhance the outline, toonlike), 2 is player color.
+maybe it is the other way round, 2 could be black, 1 the player color..
 
 
 with all this information it's possible to draw a line by several palette_index colors correctly,
@@ -213,8 +231,6 @@ x is the palette index, which should be 0, experiment with [1,10]...
 interfac.drs contains many of these files, but the ingame art uses offset 50500.
 
 the palette is a jasc paint shop pro file, starting with "JASC-PAL\r\n".
-(i lol'd hard when seeing the "\r": they compress the slps in this totally retarded 'compression' format,
-but use a useless \r in all palettes...)
 
 read this line at the offset to verify existance.
 next line stores version information, should be "0100".
