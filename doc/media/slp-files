@@ -78,40 +78,51 @@ struct slp_frame_info {
 
 slp_frame_info = Struct("< I I I I i i i i")
 
-
 slp_frame_info stores metainformation about one single frame (texture) within the slp.
 
 
-after the frame infos, num_frames of images follow.
+palette offset is probably unused.
+properties is more or less unused, but:
+  0x10 means "default game palette",
+  0x00 means "global color palette"
 
+they are probably the same, you can ignore it.
 
-one image of size width x height has height rows.
+one image of size width x height has height rows, of course.
 
-at outline_table_offset, an array of slp_frame_row_edge structs begins, length = height.
+at outline_table_offset (after the frame_infos),
+an array of slp_frame_row_edge structs begins, length = height.
 
 struct slp_frame_row_edge {
- unsigned short left;
- unsigned short right;
+ unsigned short left_space;
+ unsigned short right_space;
 };
 
 slp_frame_row_edge = Struct("< H H")
 
 the right or left value is 0x8000 if the row is completely transparent.
-no command bytes end these transparent rows.
+no command bytes will end these transparent rows, you have to skip them later.
 
-else, left and right specify the number of transparent pixel, from each side to the center.
+else, left and right specify the number of transparent pixels, from each side to the center.
 
+width-left-right = number of pixels in this line.
 
-after those padding frames, an array of 4byte-ints follows, length = height.
-each int defines the offset for commands for each row.
-int[0] is the first drawing command for the image.
+after those padding frames, at cmd_table_offset, an array of 4byte-ints begins, length = height.
+
+struct slp_command_offset {
+ unsigned int offset;
+}
+
+slp_command_offset = Struct("< I")
+
+each table/int defines the offset (beginning) of the first command of a row.
+int[0] is offset to the first drawing command for the image.
 
 these are not actually necessary to check, the commands can be read sequentially.
 the command locations can be used for checking purposes though.
 
 
-
-at cmd_table_offset the command data itself begins.
+at cmd_table_offset + 4*height the command data itself begins.
 
 
 
@@ -145,8 +156,8 @@ command_name     cmd_byte  pixel_count     description
 -----------------------------------------------------
 color_list         = 0x00, >>2            for count: (palette_index=next, draw color)
 skip               = 0x01, >>2|next       for count: (draw transparent pixel)
-big_color_list     = 0x02, 4*256 + next   for count: (palette_index=next, draw this color)
-big_skip           = 0x03, 4*256 + next   for count: (draw even more transparent pixels)
+big_color_list     = 0x02, <<4 + next     for count: (palette_index=next, draw this color)
+big_skip           = 0x03, <<4 + next   for count: (draw even more transparent pixels)
 player_color_list  = 0x06, >>4|next       for count: (palette_index=next+(player*16))
 fill               = 0x07, >>4|next       palette_index=next, for count: (draw)
 fill_player_color  = 0x0A, >>4|next       palette_index=next+(player*16), for count: (draw)
@@ -158,22 +169,32 @@ render_hint_xflip  = 0x0E, 0              draw the following command if sprite i
 render_h_notxflip  = 0x1E, 0              draw following command if this sprite is xflipped
 table_use_normal   = 0x2E, 0              transform color table: for regular cmd_bytes -> set to normal table
 table_use_alternat = 0x3E, 0              transform color table: -> set to alternate table
-obstruct_black     = 0x4E, 1 (spec_col=1) palette_index = 0, if pixel obstructed, draw this pixel as outline
-obstruct_playercol = 0x6E, 1 (spec_col=2) palette_index = player_index = player * 16, if obstructed, player col.
-obstruct_span      = 0x5E, next           palette_index = 0, same as obstruct_black, but >=1 pixel.
-obstruct_span_plc  = 0x7E, next           palette_index = player_index = player * 16
-
-spec_col == special_color: 1 means player color, 2 is black for enhancing the outline.
-NOT sure yet whether spec_col==1 => player color or black!!
-the obstruction check is also NOT sure, go for just drawing the special color first.
+outline_1          = 0x4E, 1 (spec_col=1) palette_index = 0, if pixel obstructed, draw this pixel as outline
+outline_2          = 0x6E, 1 (spec_col=2) palette_index = player_index = player * 16, if obstructed, player col.
+outline_span_2     = 0x5E, next           palette_index = 0, same as obstruct_black, but >=1 pixel.
+outline_span_2     = 0x7E, next           palette_index = player_index = player * 16
 
 note that commands with pixel_count == >>i do reuse the most significant bits of cmd_byte.
 => check the match for 8-i least significant bits only!
 
+"<<4 + next" also double-uses the more significant bits, but now a 16-bit number is composed:
+let c be an cmd_byte bit. cmd_byte = cccccccc
+n is a next_byte bit. next_byte = nnnnnnnn
+    <<4 + next = (cmd_byte & 0xf0) << 4 + next_byte
+<=> cccc0000 << 4 + nnnnnnnn
+<=> ccccnnnnnnnn
+this number is then used as pixel_count.
+
 drawing shadows is like drawing black, but with alpha=0.5 or so.
 
-command 0x{4,5,6,7}E  indicate that the following command are outlines of the graphic.
+spec_col == special_color: 1 means black (enhance the outline, toonlike), 2 is player color.
+NOT sure yet whether spec_col==1 => player color or black!!
+command 0x{4,5,6,7}E  indicate that the following command(s) are outlines of the graphic.
+this is a potential outline pixel, it's what you see when a unit is behind something.
 the engine should only draw them as the player color/black, if the pixel(s) are obstructed.
+
+for our purpose, these outline pixels should be stored to a second image, which is rendered
+ontop of the tree/building by the fragment shader.
 
 
 with all this information it's possible to draw a line by several palette_index colors correctly,
