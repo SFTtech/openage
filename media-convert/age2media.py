@@ -13,8 +13,17 @@ elif file_version == 59:
 	copyright_size = 60
 
 
-#we force the endianness to little endian by "<",
+#we force the endianness to little endian by "<" in the Struct() format
 #as this is the byte-order in the drs file
+
+
+class EnumVal:
+	def __init__(self, representation, **kw):
+		self.representation = representation
+		self.__dict__.update(kw)
+
+	def __repr__(self):
+		return self.representation
 
 
 class DRS:
@@ -142,14 +151,14 @@ class SLP:
 	slp_header = Struct("< 4s i 24s")
 
 	#struct slp_frame_info {
-	#unsigned int	qdl_table_offset;
-	#unsigned int	outline_table_offset;
-	#unsigned int	palette_offset;
-	#unsigned int	properties;
-	#int	width;
-	#int	height;
-	#int	hotspot_x;
-	#int	hotspot_y;
+	# unsigned int qdl_table_offset;
+	# unsigned int outline_table_offset;
+	# unsigned int palette_offset;
+	# unsigned int properties;
+	# int          width;
+	# int          height;
+	# int          hotspot_x;
+	# int          hotspot_y;
 	#};
 	slp_frame_info = Struct("< I I I I i i i i")
 
@@ -197,19 +206,86 @@ class SLP:
 
 class SLPFrame:
 
+	#special colors for extended commands
+	special_1 = EnumVal("S1P") #normally the player color
+	special_2 = EnumVal("S2@") #black
+
+	#shadow and transparency colors
+	shadow = EnumVal("#")
+	transparent = EnumVal(" ")
+
+	#struct slp_frame_row_edge {
+	# unsigned short left_space;
+	# unsigned short right_space;
+	#};
+	slp_frame_row_edge = Struct("< H H")
+
+	#struct slp_command_offset {
+	# unsigned int offset;
+	#}
+	slp_command_offset = Struct("< I")
+
 	def __init__(self, frame_info, data):
 
 		self.cmd_table_offset, self.outline_table_offset,\
 		self.palette_offset, self.properties, self.width,\
 		self.height, self.hotspot_x, self.hotspot_y = frame_info
 
+		self.boundaries = [] #for each row, contains the (left, right) number of boundary pixels
+		self.cmd_offsets = [] #for each row, store the file offset to the first drawing command
+		self.process(data)
 
-	def create_palette_index_table(self):
+	def process(self, data):
+		self.process_boundary_tables(data)
+		#print("boundary values:\n" + str(self.boundaries))
+
+		self.process_cmd_table(data)
+		print("cmd_offsets:\n" + str(self.cmd_offsets))
+
+		self.create_palette_index_table(data)
+
+	def process_boundary_tables(self, data):
+		for i in range(self.height):
+			outline_entry_position = self.outline_table_offset + i * SLPFrame.slp_frame_row_edge.size
+
+			left, right = SLPFrame.slp_frame_row_edge.unpack_from(data, outline_entry_position)
+
+			#is this row completely transparent?
+			if left == 0x8000 or right == 0x8000:
+				self.boundaries.append( "transparent" ) #TODO: -1 or like should be enough
+			else:
+				self.boundaries.append( (left, right) )
+
+	def process_cmd_table(self, data):
+		for i in range(self.height):
+			cmd_table_position = self.cmd_table_offset + i * SLPFrame.slp_command_offset.size
+
+			cmd_offset, = SLPFrame.slp_command_offset.unpack_from(data, cmd_table_position)
+
+			self.cmd_offsets.append(cmd_offset)
+
+	def process_drawing_cmds(self, data):
 		pass
 
-	def create_palette_index_row(self):
+
+
+	def create_palette_index_table(self, data):
 		pass
 
+	def create_palette_index_row(self, data, left_boundary, right_boundary):
+
+		#list of the palette colors in this row
+		row_palette_colors = []
+
+		#start drawing the left transparent space
+		draw_palette(transparent, left_boundary)
+
+		#process the drawing commands for this row.
+
+		#finish by filling up the righ transparent space
+		draw_palette(transparent, right_boundary)
+
+		return row_palette_colors
 
 
 def main():
@@ -224,9 +300,9 @@ def main():
 	print("\n=========\nfound " + str(len(drs_file.files)) + " files in the drs.\n=========\n")
 
 
-	print("\n\neuropean castle:")
-	#slp_castle = SLP(drs_file.get_raw_file(302), 302) #get european castle
-	print("done with the european castle.\n\n")
+	print("\n\nnorth/central european castle:")
+	slp_castle = SLP(drs_file.get_raw_file(302), 302) #get european castle
+	print("done with the north european castle.\n\n")
 
 
 	create_all = ( len(sys.argv) > 1 and sys.argv[1] == "all")
