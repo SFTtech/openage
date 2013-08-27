@@ -3,6 +3,7 @@
 import sys
 import pprint
 
+from PIL import Image, ImageDraw
 from struct import Struct, unpack_from
 
 #version of the drs file, hardcoded for now
@@ -216,6 +217,15 @@ class SLP:
 			#create the frame.
 			self.frames.append(SLPFrame(self, frame_info, fcnt, self.rawdata))
 			fcnt = fcnt + 1
+	
+	def get_frame_count(self):
+		return len(self.frames)
+
+	def get_frame(self, index):
+		return self.frames[index]
+
+	def get_frames(self):
+		return self.frames
 
 	def __repr__(self):
 		#TODO: lookup the image content description
@@ -228,34 +238,38 @@ class SLPFrame:
 	transparent = EnumVal("( )")
 
 	#player color class to preserve the player number variable
-	class PlayerColor:
-		def __init__(self, color):
-			#print("creating player color " + str(color))
-			self.color = color
-
-		def get_pcolor_for_player(self, player):
-			#apply player value to scale the palette color.
-			return color + player * 16 #maybe player + 1
-
-		def __repr__(self):
-			return "P" + str(self.color)
+#	class PlayerColor:
+#		def __init__(self, color):
+#			#print("creating player color " + str(color))
+#			self.color = color
+#
+#		def get_pcolor_for_player(self, player):
+#			#apply player value to scale the palette color.
+#			return self.color + player * 16 #maybe player + 1
+#
+#		def __repr__(self):
+#			return "P" + str(self.color)
 
 	#player color class to preserve the player number variable
 	class SpecialColor:
-		def __init__(self, color):
+		player_color = EnumVal("P")
+		black_color = EnumVal("||")
+
+		def __init__(self, special_id, base_color=0):
 			#print("creating special color " + str(color))
-			self.color = color
+			self.special_id = special_id
+			self.base_color = base_color
 
 		def get_pcolor_for_player(self, player):
-			if color == 1:
+			if self.special_id == 1 or self.special_id == self.black_color:
 				return 0
-			elif color == 2:
-				return 16 * player
+			elif self.special_id == 2 or self.special_id == self.player_color:
+				return 16 * player + self.base_color
 			else:
 				raise Exception("unknown special color")
 
 		def __repr__(self):
-			return "S" + str(self.color)
+			return "S" + str(self.special_id) + str(self.base_color)
 
 	#struct slp_frame_row_edge {
 	# unsigned short left_space;
@@ -280,10 +294,10 @@ class SLPFrame:
 		self.boundaries = [] #for each row, contains the (left, right) number of boundary pixels
 		self.cmd_offsets = [] #for each row, store the file offset to the first drawing command
 
-		self.pcolor = {} #matrix that contains all the palette indices drawn by commands, key: rowid
+		self.pcolor = [] #matrix that contains all the palette indices drawn by commands, key: rowid
 
 		self.process(data)
-
+	
 	def process(self, data):
 		self.process_boundary_tables(data)
 		#print("boundary values:\n" + str(self.boundaries))
@@ -314,11 +328,11 @@ class SLPFrame:
 			self.cmd_offsets.append(cmd_offset)
 
 	def create_palette_color_table(self, data):
-
+		self.pcolor = []
 		for i in range(self.height):
 			palette_color_row = self.create_palette_color_row(data, i)
 
-			self.pcolor[i] = palette_color_row
+			self.pcolor.append( palette_color_row )
 
 	def create_palette_color_row(self, data, rowid):
 
@@ -436,8 +450,9 @@ class SLPFrame:
 					dpos = dpos + 1
 					color = self.get_byte_at(data, dpos)
 
-					#the PlayerColor class preserves the calculation with player*16+color
-					pcolor_list = pcolor_list + [ SLPFrame.PlayerColor(color) ]
+					#the SpecialColor class preserves the calculation with player*16+color
+					entry = SLPFrame.SpecialColor(special_id = SLPFrame.SpecialColor.player_color, base_color = color)
+					pcolor_list = pcolor_list + [ entry ]
 
 			elif lower_nibble == 0x07:
 				#fill command
@@ -462,8 +477,9 @@ class SLPFrame:
 				#TODO: verify this. might be incorrect.
 				color = ((color & 0b11001100) | 0b00110011)
 
-				#PlayerColor class preserves the calculation of player*16 + color
-				pcolor_list = pcolor_list + [ SLPFrame.PlayerColor(color) ] * pixel_count
+				#SpecialColor class preserves the calculation of player*16 + color
+				entry = SLPFrame.SpecialColor(special_id = SLPFrame.SpecialColor.player_color, base_color = color)
+				pcolor_list = pcolor_list + [ entry ] * pixel_count
 
 			elif lower_nibble == 0x0B:
 				#shadow command
@@ -529,10 +545,9 @@ class SLPFrame:
 
 			dpos = dpos + 1
 
-		print("file %d, frame %d, row %d: " % (self.slpfile.file_id, self.frame_id, rowid) + str(pcolor_list))
+		#print("file %d, frame %d, row %d: " % (self.slpfile.file_id, self.frame_id, rowid) + str(pcolor_list))
 		#end of row reached, return the created pixel array.
 		return pcolor_list
-
 
 	def get_byte_at(self, data, offset):
 		return int(unpack_from("B", data, offset)[0]) #unpack returns len==1 tuple..
@@ -554,12 +569,13 @@ class SLPFrame:
 
 		self.pcolor[rowid] = self.pcolor[rowid] + color_list
 
+	def get_picture_data(self):
+		return self.pcolor
 
 
 class ColorTable():
-	def __init__(self, interfac_drs_file, pindex):
-		raw_color_palette = interfac_drs_file.get_raw_file(palette_index).decode("utf-8")
-		self.process(raw_color_palette)
+	def __init__(self, raw_color_palette):
+		self.process(raw_color_palette.decode("utf-8"))
 
 	def process(self, raw_color_palette):
 		palette_lines = raw_color_palette.split("\r\n") #WHYYYY WINDOWS LINE ENDINGS YOU IDIOTS
@@ -580,8 +596,50 @@ class ColorTable():
 			#one entry looks like "13 37 42", where 13 is the red value, 37 green and 42 blue.
 			self.palette.append(tuple(map(int, palette_lines[i+3].split(' '))))
 
+	def __getitem__(self, index):
+		return self.palette[index]
+
 	def __str__(self):
 		return "color palette: \n" + str(self.palette)
+
+
+class PNG():
+	def __init__(self, player_number, color_table, picture_data):
+		self.player_number = player_number
+		self.color_table = color_table
+		self.picture_data = picture_data
+
+	def create(self):
+		width = len(self.picture_data[0])
+		height = len(self.picture_data)
+		self.image = Image.new('RGBA', (width, height), (255, 255, 255, 0))
+		draw = ImageDraw.ImageDraw(self.image)
+		self.draw_picture(draw)
+
+	def draw_picture(self, draw):
+		# TODO draw lines, more efficient picture_data
+		for y, picture_row in enumerate(self.picture_data):
+			for x, color_data in enumerate(picture_row):
+				if type(color_data) == int:
+					color = self.color_table[color_data]
+				#elif type(color_data) == SLPFrame.PlayerColor:
+				#	color = self.color_table[color_data.get_pcolor_for_player(self.player_number)]
+				elif type(color_data) == SLPFrame.SpecialColor:
+					color = self.color_table[color_data.get_pcolor_for_player(self.player_number)]
+				elif color_data == SLPFrame.transparent:
+					color = (0, 0, 0, 0)
+				elif color_data == SLPFrame.shadow:
+					color = (0, 0, 0, 100)
+				else:
+					raise Exception("Unknown color: " + str(color_data))
+
+				draw.point((x, y), fill=color)
+
+		#	self.draw.line((x, y, x + amount, y), fill=color)
+
+	def get_image(self):
+		return self.image
+																														
 
 
 def main():
@@ -595,7 +653,7 @@ def main():
 
 	# the ingame graphics color palette is stored in the interfac.drs file at file index 50500
 	palette_index = 50500
-	color_table = ColorTable(interfac_drs_file, palette_index)
+	color_table = ColorTable(interfac_drs_file.get_raw_file(palette_index))
 
 	print(str(color_table))
 
@@ -605,10 +663,16 @@ def main():
 
 
 	print("\n\nnorth/central european castle:")
-	testfile = 302
-	drs_file.print_file_info(testfile)
-	drs_file.write_raw_file(testfile)
-	#slp_castle = SLP(drs_file.get_raw_file(testfile), testfile) #get european castle
+	testfile_id = 302
+	drs_file.print_file_info(testfile_id)
+	drs_file.write_raw_file(testfile_id)
+	slp_castle = SLP(drs_file.get_raw_file(testfile_id), testfile_id) #get european castle
+
+	player_color = 1
+	png_castle = PNG(player_color, color_table, slp_castle.get_frame(0).get_picture_data())
+	png_castle.create()
+	png_castle.get_image().save("./castle.png")
+
 	#cmd_table starts at 5103238 + 1832 = 5105070 in the file.
 	#first row cmd starts at 5103238 + 3600 = 5106838 in the file.
 	print("done with the north european castle.\n\n")
@@ -623,7 +687,7 @@ def main():
 		for i in drs_file.files.keys():
 			#only process slp files so far
 			file_extension = drs_file.get_file_table(i)[1]
-			if "slp" == file_extension:
+			if file_extension == "slp":
 				gslp = SLP(drs_file.get_raw_file(i), i)
 				graphics_slps[i] = gslp
 
