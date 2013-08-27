@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
 import sys
+import pprint
 
-from struct import Struct
+from struct import Struct, unpack_from
 
 #version of the drs file, hardcoded for now
 file_version = 57
@@ -24,7 +25,6 @@ class EnumVal:
 
 	def __repr__(self):
 		return self.representation
-
 
 class DRS:
 	#struct drs_header {
@@ -138,6 +138,24 @@ class DRS:
 		self.in_file.seek(file_data_offset)
 		return self.in_file.read(file_size)
 
+	def write_raw_file(self, fid):
+		self.exists_file(fid, True)
+
+		fo, fs, fe = self.files[fid]
+
+		fname = "%09d-%d.%s" % (fid, fs, fe)
+		with open(fname, "wb") as f:
+			f.write(self.get_raw_file(fid))
+
+		print(fname + " written")
+
+	def print_file_info(self, fid):
+		self.exists_file(fid, True)
+
+		fo, fs, fe = self.files[fid]
+
+		print("file %d = offset: %#x / %d, size = %#x / %d, extension = %s" % (fid, fo, fo, fs, fs, fe))
+
 
 
 
@@ -211,8 +229,38 @@ class SLPFrame:
 	special_2 = EnumVal("S2@") #black
 
 	#shadow and transparency colors
-	shadow = EnumVal("#")
+	shadow      = EnumVal("#")
 	transparent = EnumVal("( )")
+
+	#player color class to preserve the player number variable
+	class PlayerColor:
+		def __init__(self, color):
+			print("creating special color " + str(color))
+			self.color = color
+
+		def get_pcolor_for_player(self, player):
+			#apply player value to scale the palette color.
+			return color + player * 16 #maybe player + 1
+
+		def __repr__(self):
+			return "P" + str(self.color)
+
+	#player color class to preserve the player number variable
+	class SpecialColor:
+		def __init__(self, color):
+			print("creating special color " + str(color))
+			self.color = color
+
+		def get_pcolor_for_player(self, player):
+			if color == 1:
+				return 0
+			elif color == 2:
+				return 16 * player
+			else:
+				raise Exception("unknown special color")
+
+		def __repr__(self):
+			return "S" + str(self.color)
 
 	#struct slp_frame_row_edge {
 	# unsigned short left_space;
@@ -243,7 +291,7 @@ class SLPFrame:
 		#print("boundary values:\n" + str(self.boundaries))
 
 		self.process_cmd_table(data)
-		print("cmd_offsets:\n" + str(self.cmd_offsets))
+		#print("cmd_offsets:\n" + str(self.cmd_offsets))
 
 		self.create_palette_color_table(data)
 
@@ -255,7 +303,7 @@ class SLPFrame:
 
 			#is this row completely transparent?
 			if left == 0x8000 or right == 0x8000:
-				self.boundaries.append( "transparent" ) #TODO: -1 or like should be enough
+				self.boundaries.append( self.transparent ) #TODO: -1 or like should be enough
 			else:
 				self.boundaries.append( (left, right) )
 
@@ -268,41 +316,245 @@ class SLPFrame:
 			self.cmd_offsets.append(cmd_offset)
 
 	def create_palette_color_table(self, data):
-		self.palette_color_table = []
 
 		for i in range(self.height):
-			palette_color_row = self.create_palette_color_row(data, i, self.boundaries[i][0], self.boundaries[i][1], self.cmd_offsets[i])
+			palette_color_row = self.create_palette_color_row(data, i)
 
-			self.palette_color_table.append(palette_color_row)
-		pass
+			self.pcolor[i] = palette_color_row
 
-	def create_palette_color_row(self, data, rowid, left_boundary, right_boundary, first_cmd_offset):
+	def create_palette_color_row(self, data, rowid):
 
-		#list of the palette colors in this row
-		self.pcolor[rowid] = []
+		first_cmd_offset = self.cmd_offsets[rowid]
+
+		bounds = self.boundaries[rowid]
+		if bounds == self.transparent:
+			return [self.transparent] * self.width
+
+		left_boundary, right_boundary = bounds
+
+		missing_pixels = self.width - left_boundary - right_boundary
 
 		#start drawing the left transparent space
-		self.draw_palette(rowid, self.transparent, left_boundary)
+		pcolor_row_beginning = [ self.transparent ] * left_boundary
 
 		#process the drawing commands for this row.
-		row_palette_colors = self.process
+		pcolor_row_content = self.process_drawing_cmds(data, rowid, first_cmd_offset, missing_pixels, left_boundary)
 
-		#finish by filling up the righ transparent space
-		self.draw_palette(rowid, self.transparent, right_boundary)
+		#finish by filling up the right transparent space
+		pcolor_row_trailing = [ self.transparent ] * right_boundary
 
-		got = len(self.pcolor[rowid])
+		pcolor = pcolor_row_beginning + pcolor_row_content + pcolor_row_trailing
+
+		got = len(pcolor)
 		if got != self.width:
-			missing = self.width - got
-			raise Exception("got fewer pixels than expected: " + str(got) + "/" + str(self.width) + ", missing: " + str(missing))
-		return row_palette_colors
+			tooless = self.width - got
+			summary = "%d/%d -> row %d, offset %d / %#x" % (got, self.width, rowid, first_cmd_offset, first_cmd_offset)
+			txt = " pixels than expected: "
+			if got < self.width:
+				txt = "LESS" + txt
+				raise Exception("got " + txt + summary + ", missing: %d" % tooless)
+			else:
+				txt = "MORE" + txt
+				raise Exception("got " + txt + summary + ": %d " % (-tooless))
 
-	def process_drawing_cmds(self, data):
-		pass
 
-	def draw_palette(self, rowid, color, count=1):
+		return pcolor
+
+	def process_drawing_cmds(self, data, rowid, first_cmd_offset, missing_pixels, leftpx):
+		dpos = first_cmd_offset #position in the data blob, we start at the first command of this row
+
+		pcolor_list = [] #this array gets filled with palette indices by the cmds
+
+		eor = False
+		#work through commands till end of row.
+		while not eor:
+
+			if len(pcolor_list) > missing_pixels:
+				print("#### row is getting too long!!")
+				#raise Exception("Only %d pixels should be drawn in row %d!" % (missing_pixels, rowid))
+			cmd = self.get_byte_at(data, dpos)
+
+			lower_nibble  = 0x0f       & cmd
+			higher_nibble = 0xf0       & cmd
+			lower_bits    = 0b00000011 & cmd
+
+			print("opcode: %#x, rowlength: %d, rowid: %d" % (cmd, len(pcolor_list) + leftpx, rowid))
+
+			if lower_nibble == 0x0f:
+				#eol command, this row is finished now.
+
+				print("end of row reached.")
+				eor = True
+				continue
+
+			elif lower_bits == 0b00000000:
+				#color_list command
+				#draw the following bytes as palette colors
+
+				pixel_count = cmd >> 2
+				print("draw %d" % pixel_count)
+				for i in range(pixel_count):
+					dpos = dpos + 1
+					color = self.get_byte_at(data, dpos)
+					pcolor_list = pcolor_list + [ int(color) ]
+
+			elif lower_bits == 0b00000001:
+				#skip command
+				#draw 'count' transparent pixels
+				#count = cmd >> 2; if count == 0: count = nextbyte
+
+				pixel_count, dpos = self.cmd_or_next(cmd, 2, data, dpos)
+				pcolor_list = pcolor_list + [self.transparent] * pixel_count
+
+			elif lower_nibble == 0x02:
+				#big_color_list command
+				#draw higher_nibble << 4 + nextbyte times the following palette colors
+
+				dpos = dpos + 1
+				nextbyte = self.get_byte_at(data, dpos)
+				pixel_count = (higher_nibble << 4) + nextbyte
+
+				for i in range(pixel_count):
+					dpos = dpos + 1
+					color = self.get_byte_at(data, dpos)
+					pcolor_list = pcolor_list + [ int(color) ]
+
+			elif lower_nibble == 0x03:
+				#big_skip command
+				#draw higher_nibble << 4 + nextbyte times the transparent pixel
+
+				dpos = dpos + 1
+				nextbyte = self.get_byte_at(data, dpos)
+				pixel_count = (higher_nibble << 4) + nextbyte
+
+				pcolor_list = pcolor_list + [self.transparent] * pixel_count
+
+			elif lower_nibble == 0x06:
+				#player_color_list command
+				#we have to draw the player color for cmd>>4 times,
+				#or if that is 0, as often as the next byte says.
+
+				pixel_count, dpos = self.cmd_or_next(cmd, 4, data, dpos)
+				print("0x06 opcode drawing %d times " % pixel_count)
+				for i in range(pixel_count):
+					dpos = dpos + 1
+					color = self.get_byte_at(data, dpos)
+
+					#the PlayerColor class preserves the calculation with player*16+color
+					pcolor_list = pcolor_list + [ SLPFrame.PlayerColor(color) ]
+
+			elif lower_nibble == 0x07:
+				#fill command
+				#draw 'count' pixels with color of next byte
+
+				pixel_count, dpos = self.cmd_or_next(cmd, 4, data, dpos)
+
+				dpos = dpos + 1
+				color = self.get_byte_at(data, dpos)
+
+				pcolor_list = pcolor_list + [color] * pixel_count
+
+			elif lower_nibble == 0x0A:
+				#fill player color command
+				#draw the player color for 'count' times
+
+				pixel_count, dpos = self.cmd_or_next(cmd, 4, data, dpos)
+
+				dpos = dpos + 1
+				color = self.get_byte_at(data, dpos)
+
+				#PlayerColor class preserves the calculation of player*16 + color
+				pcolor_list = pcolor_list + [ SLPFrame.PlayerColor(color) ] * pixel_count
+
+			elif lower_nibble == 0x0B:
+				#shadow command
+				#draw a transparent shadow pixel for 'count' times
+
+				pixel_count, dpos = self.cmd_or_next(cmd, 4, data, dpos)
+
+				pcolor_list = pcolor_list + [ self.shadow ] * pixel_count
+
+			elif lower_nibble == 0x0E:
+				if higher_nibble == 0x00:
+					#render hint xflip command
+					#render hint: only draw the following command, if this sprite is not flipped left to right
+					print("render hint: xfliptest")
+
+				elif higher_nibble == 0x10:
+					#render h notxflip command
+					#render hint: only draw the following command, if this sprite IS flipped left to right.
+					print("render hint: !xfliptest")
+
+				elif higher_nibble == 0x20:
+					#table use normal command
+					#set the transform color table to normal, for the standard drawing commands
+					print("image wants normal color table now")
+
+				elif higher_nibble == 0x30:
+					#table use alternat command
+					#set the transform color table to alternate, this affects all following standard commands
+					print("image wants alternate color table now")
+
+				elif higher_nibble == 0x40:
+					#outline_1 command
+					#the next pixel shall be drawn as special color 1, if it is obstructed later in rendering
+					pcolor_list = pcolor_list + [ SLPFrame.SpecialColor(1) ]
+
+				elif higher_nibble == 0x60:
+					#outline_2 command
+					#same as above, but special color 2
+					pcolor_list = pcolor_list + [ SLPFrame.SpecialColor(2) ]
+
+				elif higher_nibble == 0x50:
+					#outline_span_1 command
+					#same as above, but span special color 1 nextbyte times.
+
+					dpos = dpos + 1
+					pixel_count = self.get_byte_at(data, dpos)
+
+					pcolor_list = pcolor_list + [ SLPFrame.SpecialColor(1) ] * pixel_count
+
+
+				elif higher_nibble == 0x70:
+					#outline_span_2 command
+					#same as above, using special color 2
+
+					dpos = dpos + 1
+					pixel_count = self.get_byte_at(data, dpos)
+
+					pcolor_list = pcolor_list + [ SLPFrame.SpecialColor(2) ] * pixel_count
+
+			else:
+				print("stored in this row so far: " + str(pcolor_list))
+				raise Exception("wtf! unknown slp drawing command read: %#x in row %d" % (cmd, rowid) )
+
+			dpos = dpos + 1
+
+		print("this row: " + str(pcolor_list))
+		#end of row reached, return the created pixel array.
+		return pcolor_list
+
+
+	def get_byte_at(self, data, offset):
+		return int(unpack_from("B", data, offset)[0]) #unpack returns len==1 tuple..
+
+	def cmd_or_next(self, cmd, n, data, pos):
+		packed_in_cmd = cmd >> n
+
+		if packed_in_cmd != 0:
+			return packed_in_cmd, pos
+
+		else:
+			pos = pos + 1
+			return self.get_byte_at(data, pos), pos
+
+	def draw_pcolor_to_row(self, rowid, color_list, count=1):
 		#print("drawing " + str(count) + " times " + repr(color))
-		result = [color] * count
-		self.pcolor[rowid] = self.pcolor[rowid] + result
+		if type(color_list) != list:
+			color_list = [color_list] * count
+
+		self.pcolor[rowid] = self.pcolor[rowid] + color_list
+
 
 
 def main():
@@ -318,7 +570,12 @@ def main():
 
 
 	print("\n\nnorth/central european castle:")
-	slp_castle = SLP(drs_file.get_raw_file(302), 302) #get european castle
+	testfile = 302
+	drs_file.print_file_info(testfile)
+	drs_file.write_raw_file(testfile)
+	slp_castle = SLP(drs_file.get_raw_file(testfile), testfile) #get european castle
+	#cmd_table starts at 5103238 + 1832 = 5105070 in the file.
+	#first row cmd starts at 5103238 + 3600 = 5106838 in the file.
 	print("done with the north european castle.\n\n")
 
 
