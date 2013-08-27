@@ -561,41 +561,43 @@ class SLPFrame:
 
 
 
+class ColorTable():
+	def __init__(self, data):
+		text_data = data.decode("utf8")
+
+
 def main():
 	print("welcome to the extaordinary epic age2 media file converter")
 
 	drs_file = DRS("../resources/age2/graphics.drs")
 	drs_file.read()
 
-	print("\n\nfile ids in this drs:" + str(sorted(drs_file.files.keys())))
+	#print("\n\nfile ids in this drs:" + str(sorted(drs_file.files.keys())))
 
 	print("\n=========\nfound " + str(len(drs_file.files)) + " files in the drs.\n=========\n")
 
+	interfac_drs_file = DRS("../resources/age2/interfac.drs")
+	interfac_drs_file.read()
 
+	#this is the game color palette.
+	palette_index = 50500
+	raw_color_palette = interfac_drs_file.get_raw_file(palette_index).decode("utf8")
+	print(str(raw_color_palette))
 
-#	interfac_drs_file = DRS("../resources/age2/interfac.drs")
-#	interfac_drs_file.read()
+	palette_lines = raw_color_palette.split("\r\n") #WHYYYY WINDOWS LINE ENDINGS YOU IDIOTS
 
-#	print("\n\nfile ids in interfac.drs:" + str(sorted(interfac_drs_file.files.keys())))
+	# check for palette header
+	if palette_lines[0] != "JASC-PAL":
+		raise Exception('No palette header "JASC-PAL" found, instead: %r' % palette_lines[0])
+	version = palette_lines[1]
+	entries = int(palette_lines[2])
 
-#	print("\n======\nfound " + str(len(interfac_drs_file.files)) + " files in the interfac.drs\n======\n")
+	palette = {}
 
-#	bestguess = 0
-#	for i in interfac_drs_file.files.keys():
-#		foffset, fsize, fextension = interfac_drs_file.files[i]
+	for index in range(entries):
+		palette[index] = tuple(map(int, palette_lines[index+3].split(' ')))
 
-#		if foffset < 50500:
-#			bestguess = foffset
-#			bestid = i
-#			bestsize = fsize
-#			bestextension = fextension
-
-#		print("entry %d: offset: %#x / %d, size: %d, extension: %s" % (i, foffset, foffset, fsize, fextension))
-
-#	print("foffset that is nearest to color table: %d, %d, %d, %s" % (bestguess, bestid, bestsize, bestextension))
-	# => foffset that is nearest to color table: 29946, 50089, 637, bin
-	# the color table is contained in this bin file..
-
+	print("complete palette: \n" + str(palette))
 
 	print("\n\nnorth/central european castle:")
 	testfile = 302
