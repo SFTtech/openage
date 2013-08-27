@@ -195,16 +195,16 @@ rrrrrr00 == 0x00
 rrrrrr01 == 0x01
 rrrr0010 == 0x02  rrrr << 4
 rrrr0011 == 0x03  rrrr << 4
-----0100          0x04 and 0x05 was left out, because it would conflict with 0x00 and 0x01 as a prefix
-----0101           you can read the prefix from right to left, and for 0x00 and 0x04 it would be 0brrrrx100,
+----0100 == 0x04  0x04 and 0x05 was left out, because it would conflict with 0x00 and 0x01 as a prefix
+----0101 == 0x05   you can read the prefix from right to left, and for 0x00 and 0x04 it would be 0brrrrx100,
 rrrr0110 == 0x06   where x could be 0, which conflicts.
 rrrr0111 == 0x07
-00001000 == 0x08
-00001001 == 0x09
+----1000 == 0x08  = cmd 0x00, draw 2 times. 0x08 and 0x09 are also missing, because of the conflict from above
+----1001 == 0x09  = cmd 0x01, draw 2 times.
 00001010 == 0x0A
 00001011 == 0x0B
-----1100          for the same reason, 0x0C and 0x0D are missing, the prefix woule be 0b0000xx{00,01}
-----1101           where xx could be 11 for command 0x00/0x01, that'd conflict with 0x0C/0x0D
+----1100 == 0x0C  for the same reason, 0x0C and 0x0D are missing, the prefix woule be 0b0000xx{00,01}
+----1101 == 0x0D   where xx could be 11 for command 0x00/0x01, that'd conflict with 0x0C/0x0D
 xxxx1110 == 0x0E  xxxx = the extended command identifier
 00001111 == 0x0F
 
