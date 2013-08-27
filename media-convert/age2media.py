@@ -217,7 +217,7 @@ class SLP:
 			#create the frame.
 			self.frames.append(SLPFrame(self, frame_info, fcnt, self.rawdata))
 			fcnt = fcnt + 1
-	
+
 	def get_frame_count(self):
 		return len(self.frames)
 
@@ -236,19 +236,6 @@ class SLPFrame:
 	#shadow and transparency colors
 	shadow      = EnumVal("#")
 	transparent = EnumVal("( )")
-
-	#player color class to preserve the player number variable
-#	class PlayerColor:
-#		def __init__(self, color):
-#			#print("creating player color " + str(color))
-#			self.color = color
-#
-#		def get_pcolor_for_player(self, player):
-#			#apply player value to scale the palette color.
-#			return self.color + player * 16 #maybe player + 1
-#
-#		def __repr__(self):
-#			return "P" + str(self.color)
 
 	#player color class to preserve the player number variable
 	class SpecialColor:
@@ -297,7 +284,7 @@ class SLPFrame:
 		self.pcolor = [] #matrix that contains all the palette indices drawn by commands, key: rowid
 
 		self.process(data)
-	
+
 	def process(self, data):
 		self.process_boundary_tables(data)
 		#print("boundary values:\n" + str(self.boundaries))
