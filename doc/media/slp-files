@@ -252,11 +252,11 @@ palette_index
 
 the drawing palette is stored inside the interfac.drs, its an indexed list of (r g b) tuples.
 
-the offset is 50500+x, the palettes (color tables) are stored there.
+the file id is 50500+x, the palettes (color tables) are stored the same way as slps are.
 
 x is the palette index, which should be 0, experiment with [1,10]...
 
-interfac.drs contains many of these files, but the ingame art uses offset 50500.
+interfac.drs contains many of these files, but the ingame art uses id 50500.
 
 the palette is a jasc paint shop pro file, starting with "JASC-PAL\r\n".
 
