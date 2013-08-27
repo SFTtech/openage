@@ -131,6 +131,10 @@ class DRS:
 		self.exists_file(fid, True)
 		return self.file_table[fid]
 
+    def get_file_info(self, fid):
+		self.exists_file(fid, True)
+		return self.files[fid]
+
 	def get_raw_file(self, fid):
 		self.exists_file(fid, True)
 
@@ -140,9 +144,7 @@ class DRS:
 		return self.in_file.read(file_size)
 
 	def write_raw_file(self, fid):
-		self.exists_file(fid, True)
-
-		fo, fs, fe = self.files[fid]
+		fo, fs, fe = self.get_file_info(fid)
 
 		fname = "%09d-%d.%s" % (fid, fs, fe)
 		with open(fname, "wb") as f:
@@ -151,9 +153,7 @@ class DRS:
 		print(fname + " written")
 
 	def print_file_info(self, fid):
-		self.exists_file(fid, True)
-
-		fo, fs, fe = self.files[fid]
+		fo, fs, fe = self.get_file_info(fid)
 
 		print("file %d = offset: %#x / %d, size = %#x / %d, extension = %s" % (fid, fo, fo, fs, fs, fe))
 
@@ -639,6 +639,9 @@ class PNG():
 
 	def get_image(self):
 		return self.image
+
+	def store_image_to(self, filename):
+		return self.image.save(filename)
 
 
 base_path = "../resources/age2_generated"
