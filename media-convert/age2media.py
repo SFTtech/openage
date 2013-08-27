@@ -235,7 +235,7 @@ class SLPFrame:
 	#player color class to preserve the player number variable
 	class PlayerColor:
 		def __init__(self, color):
-			print("creating special color " + str(color))
+			#print("creating player color " + str(color))
 			self.color = color
 
 		def get_pcolor_for_player(self, player):
@@ -248,7 +248,7 @@ class SLPFrame:
 	#player color class to preserve the player number variable
 	class SpecialColor:
 		def __init__(self, color):
-			print("creating special color " + str(color))
+			#print("creating special color " + str(color))
 			self.color = color
 
 		def get_pcolor_for_player(self, player):
@@ -378,12 +378,12 @@ class SLPFrame:
 			higher_nibble = 0xf0       & cmd
 			lower_bits    = 0b00000011 & cmd
 
-			print("opcode: %#x, rowlength: %d, rowid: %d" % (cmd, len(pcolor_list) + leftpx, rowid))
+			#print("opcode: %#x, rowlength: %d, rowid: %d" % (cmd, len(pcolor_list) + leftpx, rowid))
 
 			if lower_nibble == 0x0f:
 				#eol command, this row is finished now.
 
-				print("end of row reached.")
+				#print("end of row reached.")
 				eor = True
 				continue
 
@@ -392,7 +392,6 @@ class SLPFrame:
 				#draw the following bytes as palette colors
 
 				pixel_count = cmd >> 2
-				print("draw %d" % pixel_count)
 				for i in range(pixel_count):
 					dpos = dpos + 1
 					color = self.get_byte_at(data, dpos)
@@ -435,7 +434,6 @@ class SLPFrame:
 				#or if that is 0, as often as the next byte says.
 
 				pixel_count, dpos = self.cmd_or_next(cmd, 4, data, dpos)
-				print("0x06 opcode drawing %d times " % pixel_count)
 				for i in range(pixel_count):
 					dpos = dpos + 1
 					color = self.get_byte_at(data, dpos)
