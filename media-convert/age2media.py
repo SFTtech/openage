@@ -214,7 +214,7 @@ class SLP:
 			print("\t\t" + str(fcnt) + " => " + str(frame_info))
 
 			#create the frame.
-			self.frames.append(SLPFrame(frame_info, self.rawdata))
+			self.frames.append(SLPFrame(self, frame_info, fcnt, self.rawdata))
 			fcnt = fcnt + 1
 
 	def __repr__(self):
@@ -273,11 +273,14 @@ class SLPFrame:
 	#}
 	slp_command_offset = Struct("< I")
 
-	def __init__(self, frame_info, data):
+	def __init__(self, containingfile, frame_info, frame_id, data):
 
+		self.slpfile = containingfile
 		self.cmd_table_offset, self.outline_table_offset,\
 		self.palette_offset, self.properties, self.width,\
 		self.height, self.hotspot_x, self.hotspot_y = frame_info
+
+		self.frame_id = frame_id
 
 		self.boundaries = [] #for each row, contains the (left, right) number of boundary pixels
 		self.cmd_offsets = [] #for each row, store the file offset to the first drawing command
@@ -461,6 +464,9 @@ class SLPFrame:
 				dpos = dpos + 1
 				color = self.get_byte_at(data, dpos)
 
+				#TODO: verify this. might be incorrect.
+				color = ((color & 0b11001100) | 0b00110011)
+
 				#PlayerColor class preserves the calculation of player*16 + color
 				pcolor_list = pcolor_list + [ SLPFrame.PlayerColor(color) ] * pixel_count
 
@@ -528,7 +534,7 @@ class SLPFrame:
 
 			dpos = dpos + 1
 
-		print("this row: " + str(pcolor_list))
+		print("file %d, frame %d, row %d: " % (self.slpfile.file_id, self.frame_id, rowid) + str(pcolor_list))
 		#end of row reached, return the created pixel array.
 		return pcolor_list
 
