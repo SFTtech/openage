@@ -156,11 +156,11 @@ the pixel_count value is stored at these locations:
 
 command_name     cmd_byte  pixel_count     description
 -----------------------------------------------------
-color_list         = 0x00, >>2            for count: (palette_index=next, draw color)
+color_list         = 0x00, >>2            for count: (palette_index=next, draw color); count < 2^6 == 64
 skip               = 0x01, >>2|next       for count: (draw transparent pixel)
 big_color_list     = 0x02, <<4 + next     for count: (palette_index=next, draw this color)
 big_skip           = 0x03, <<4 + next     for count: (draw even more transparent pixels)
-player_color_list  = 0x06, >>4|next       for count: (palette_index=next+(player*16))
+player_color_list  = 0x06, >>4|next       for count: (palette_index=(next | player_color [0,15])) (maybe next+player*16)?
 fill               = 0x07, >>4|next       palette_index=next, for count: (draw)
 fill_player_color  = 0x0A, >>4|next       palette_index=next+(player*16), for count: (draw)
 shadow             = 0x0B, >>4|next       for count: (draw shadow pixel, transparent)
@@ -176,6 +176,7 @@ outline_2          = 0x6E, 1 (spec_col=2) palette_index = player_index = player 
 outline_span_2     = 0x5E, next           palette_index = 0, same as obstruct_black, but >=1 pixel.
 outline_span_2     = 0x7E, next           palette_index = player_index = player * 16
 
+
 note that commands with pixel_count == >>i do reuse the most significant bits of cmd_byte.
 => check the match for 8-i least significant bits only!
 
@@ -190,8 +191,8 @@ this number is then used as pixel_count.
 bit double-using list for all commands:
 r or s means this bit (may) be reused in this command:
 
-rrrrrs00 == 0x00  s == 1
-rrrrrs01 == 0x01  s == 1
+rrrrrr00 == 0x00
+rrrrrr01 == 0x01
 rrrr0010 == 0x02  rrrr << 4
 rrrr0011 == 0x03  rrrr << 4
 ----0100          0x04 and 0x05 was left out, because it would conflict with 0x00 and 0x01 as a prefix
@@ -208,7 +209,26 @@ xxxx1110 == 0x0E  xxxx = the extended command identifier
 00001111 == 0x0F
 
 
-drawing shadows is like drawing black, but with alpha=0.5 or so.
+0x06 comment addition:
+player_color: index into the palette, range 0-15.
+
+0x0A comment addition:
+also called transform_block, may behave different than described above:
+color = next
+for count:
+ draw = ((color & 0xff00ff00) | 0x00ff00ff).
+0xnn.. are masks used to draw shadow effects, but 0xffffff makes no sense for and and or with a byte.
+it's may be used for overlaying the checkerboard shadow sprite onto the current frame.
+you'll see that when placing a buildings.
+
+0x0B:
+destination pixels already in the buffer are used as a lookup into a shadow_table
+this lookup pixel is then used to draw into the buffer.
+
+shadow table: color-tinted variation of the real color table
+also used to draw things like the red-tinted checkerboard when placing buildings at forbidden places
+(drawing real shadows is like drawing black, but with alpha=e.g. 0.5)
+
 
 command 0x{4,5,6,7}E  indicate that the following command(s) are outlines of the graphic.
 this is a potential outline pixel, it's what you see when a unit is behind something.
