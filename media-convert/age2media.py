@@ -127,7 +127,7 @@ class DRS:
 				return True
 		return True
 
-	def get_file_table(self, fid):
+	def get_file_info(self, fid):
 		self.exists_file(fid, True)
 		return self.file_table[fid]
 
@@ -686,7 +686,7 @@ def main():
 
 		for i in drs_file.files.keys():
 			#only process slp files so far
-			file_extension = drs_file.get_file_table(i)[1]
+			file_extension = drs_file.get_file_info(i)[1]
 			if file_extension == "slp":
 				gslp = SLP(drs_file.get_raw_file(i), i)
 				graphics_slps[i] = gslp
