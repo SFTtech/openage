@@ -668,7 +668,7 @@ def main():
 	drs_file.write_raw_file(testfile_id)
 	slp_castle = SLP(drs_file.get_raw_file(testfile_id), testfile_id) #get european castle
 
-	player_color = 1
+	player_color = 4 #yellow
 	png_castle = PNG(player_color, color_table, slp_castle.get_frame(0).get_picture_data())
 	png_castle.create()
 	png_castle.get_image().save("./castle.png")
