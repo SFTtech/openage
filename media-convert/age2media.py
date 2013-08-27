@@ -90,7 +90,7 @@ class DRS:
 
 			file_type, file_extension, file_info_offset, num_files = table_info
 			#flip the extension... it's stored like that..
-			file_extension = file_extension.decode('utf8')[::-1]
+			file_extension = file_extension.decode('utf-8')[::-1]
 			table_info = file_type, file_extension, file_info_offset, num_files
 
 			self.table_info.append(table_info)
@@ -223,11 +223,6 @@ class SLP:
 
 
 class SLPFrame:
-
-	#special colors for extended commands
-	special_1 = EnumVal("S1P") #normally the player color
-	special_2 = EnumVal("S2@") #black
-
 	#shadow and transparency colors
 	shadow      = EnumVal("#")
 	transparent = EnumVal("( )")
@@ -562,8 +557,31 @@ class SLPFrame:
 
 
 class ColorTable():
-	def __init__(self, data):
-		text_data = data.decode("utf8")
+	def __init__(self, interfac_drs_file, pindex):
+		raw_color_palette = interfac_drs_file.get_raw_file(palette_index).decode("utf-8")
+		self.process(raw_color_palette)
+
+	def process(self, raw_color_palette):
+		palette_lines = raw_color_palette.split("\r\n") #WHYYYY WINDOWS LINE ENDINGS YOU IDIOTS
+
+		self.header = palette_lines[0]
+		self.version = palette_lines[1]
+		self.num_entries = int(palette_lines[2])
+
+		# check for palette header
+		if self.header != "JASC-PAL":
+			raise Exception("No palette header 'JASC-PAL' found, instead: %r" % palette_lines[0])
+		if self.version != "0100":
+			raise Exception("palette version mispatch, got %s" % palette_lines[1])
+
+		self.palette = []
+
+		for i in range(self.num_entries):
+			#one entry looks like "13 37 42", where 13 is the red value, 37 green and 42 blue.
+			self.palette.append(tuple(map(int, palette_lines[i+3].split(' '))))
+
+	def __str__(self):
+		return "color palette: \n" + str(self.palette)
 
 
 def main():
@@ -572,33 +590,19 @@ def main():
 	drs_file = DRS("../resources/age2/graphics.drs")
 	drs_file.read()
 
+	interfac_drs_file = DRS("../resources/age2/interfac.drs")
+	interfac_drs_file.read()
+
+	# the ingame graphics color palette is stored in the interfac.drs file at file index 50500
+	palette_index = 50500
+	color_table = ColorTable(interfac_drs_file, palette_index)
+
+	print(str(color_table))
+
 	#print("\n\nfile ids in this drs:" + str(sorted(drs_file.files.keys())))
 
 	print("\n=========\nfound " + str(len(drs_file.files)) + " files in the drs.\n=========\n")
 
-	interfac_drs_file = DRS("../resources/age2/interfac.drs")
-	interfac_drs_file.read()
-
-	#this is the game color palette.
-	palette_index = 50500
-	raw_color_palette = interfac_drs_file.get_raw_file(palette_index).decode("utf8")
-	print(str(raw_color_palette))
-
-	palette_lines = raw_color_palette.split("\r\n") #WHYYYY WINDOWS LINE ENDINGS YOU IDIOTS
-
-	# check for palette header
-	if palette_lines[0] != "JASC-PAL":
-		raise Exception("No palette header 'JASC-PAL' found, instead: %r" % palette_lines[0])
-	if palette_lines[1] != "0100":
-		raise Exception("palette version mispatch, got %s" % palette_lines[1])
-	entries = int(palette_lines[2])
-
-	palette = {}
-
-	for index in range(entries):
-		palette[index] = tuple(map(int, palette_lines[index+3].split(' ')))
-
-	print("complete palette: \n" + str(palette))
 
 	print("\n\nnorth/central european castle:")
 	testfile = 302
