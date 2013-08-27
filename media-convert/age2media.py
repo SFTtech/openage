@@ -565,7 +565,6 @@ def main():
 	print("welcome to the extaordinary epic age2 media file converter")
 
 	drs_file = DRS("../resources/age2/graphics.drs")
-	#drs_file = DRS("../resources/age2/interfac.drs")
 	drs_file.read()
 
 	print("\n\nfile ids in this drs:" + str(sorted(drs_file.files.keys())))
@@ -573,11 +572,36 @@ def main():
 	print("\n=========\nfound " + str(len(drs_file.files)) + " files in the drs.\n=========\n")
 
 
+
+#	interfac_drs_file = DRS("../resources/age2/interfac.drs")
+#	interfac_drs_file.read()
+
+#	print("\n\nfile ids in interfac.drs:" + str(sorted(interfac_drs_file.files.keys())))
+
+#	print("\n======\nfound " + str(len(interfac_drs_file.files)) + " files in the interfac.drs\n======\n")
+
+#	bestguess = 0
+#	for i in interfac_drs_file.files.keys():
+#		foffset, fsize, fextension = interfac_drs_file.files[i]
+
+#		if foffset < 50500:
+#			bestguess = foffset
+#			bestid = i
+#			bestsize = fsize
+#			bestextension = fextension
+
+#		print("entry %d: offset: %#x / %d, size: %d, extension: %s" % (i, foffset, foffset, fsize, fextension))
+
+#	print("foffset that is nearest to color table: %d, %d, %d, %s" % (bestguess, bestid, bestsize, bestextension))
+	# => foffset that is nearest to color table: 29946, 50089, 637, bin
+	# the color table is contained in this bin file..
+
+
 	print("\n\nnorth/central european castle:")
 	testfile = 302
 	drs_file.print_file_info(testfile)
 	drs_file.write_raw_file(testfile)
-	slp_castle = SLP(drs_file.get_raw_file(testfile), testfile) #get european castle
+	#slp_castle = SLP(drs_file.get_raw_file(testfile), testfile) #get european castle
 	#cmd_table starts at 5103238 + 1832 = 5105070 in the file.
 	#first row cmd starts at 5103238 + 3600 = 5106838 in the file.
 	print("done with the north european castle.\n\n")
