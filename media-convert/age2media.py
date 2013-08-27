@@ -475,7 +475,7 @@ class SLPFrame:
 				color = self.get_byte_at(data, dpos)
 
 				#TODO: verify this. might be incorrect.
-				color = ((color & 0b11001100) | 0b00110011)
+				#color = ((color & 0b11001100) | 0b00110011)
 
 				#SpecialColor class preserves the calculation of player*16 + color
 				entry = SLPFrame.SpecialColor(special_id = SLPFrame.SpecialColor.player_color, base_color = color)
