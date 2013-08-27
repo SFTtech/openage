@@ -588,8 +588,9 @@ def main():
 
 	# check for palette header
 	if palette_lines[0] != "JASC-PAL":
-		raise Exception('No palette header "JASC-PAL" found, instead: %r' % palette_lines[0])
-	version = palette_lines[1]
+		raise Exception("No palette header 'JASC-PAL' found, instead: %r" % palette_lines[0])
+	if palette_lines[1] != "0100":
+		raise Exception("palette version mispatch, got %s" % palette_lines[1])
 	entries = int(palette_lines[2])
 
 	palette = {}
