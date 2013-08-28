@@ -602,20 +602,43 @@ class ColorTable():
 			#one entry looks like "13 37 42", where 13 is the red value, 37 green and 42 blue.
 			self.palette.append(tuple(map(int, palette_lines[i+3].split(' '))))
 
-	def to_image(self, filename):
+	def to_image(self, filename, squaresize=100):
 		#writes this color table (palette) to a png image.
-		imgside = math.ceil(math.sqrt(self.num_entries))
+		imgside_length = math.ceil(math.sqrt(self.num_entries))
+		imgsize = imgside_length * squaresize
 
-		palette_image = Image.new('RGBA', (imgside, imgside), (255, 255, 255, 0))
+		print("generating palette image with size %dx%d" % (imgsize, imgsize))
+
+		palette_image = Image.new('RGBA', (imgsize, imgsize), (255, 255, 255, 0))
 		draw = ImageDraw.ImageDraw(palette_image)
 
+		#.text(xy,message,fill=None,font=None) #if squaresize > enough.
+
 		drawn = 0
-		for x in range(imgside):
-			for y in range(imgside):
-				if drawn < self.num_entries:
-					r,g,b = self.palette[drawn]
-					draw.point((x, y), fill=(r, g, b, 255))
-					drawn = drawn + 1
+
+		if squaresize == 1:
+			for x in range(imgside_length):
+					for y in range(imgside_length):
+						if drawn < self.num_entries:
+							r,g,b = self.palette[drawn]
+							draw.point((x, y), fill=(r, g, b, 255))
+							drawn = drawn + 1
+
+		elif squaresize > 1:
+			for x in range(imgside_length):
+					for y in range(imgside_length):
+						if drawn < self.num_entries:
+							sx = x * squaresize - 1
+							sy = y * squaresize - 1
+							ex = sx + squaresize - 1
+							ey = sy + squaresize
+							r,g,b = self.palette[drawn]
+							vertices = [(sx, sy), (ex, sy), (ex, ey), (sx, ey)] #(begin top-left, go clockwise)
+							draw.polygon(vertices, fill=(r, g, b, 255))
+							drawn = drawn + 1
+
+		else:
+			raise Exception("fak u, no negative values for the squaresize pls.")
 
 		palette_image.save(filename)
 
