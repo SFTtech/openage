@@ -63,7 +63,8 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	//enable alpha blending
 	glEnable(GL_BLEND);
 
-	//order of drawind relevant for depth
+	//order of drawing relevant for depth
+	//what gets drawn last is displayed on top.
 	glDisable(GL_DEPTH_TEST);
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
