@@ -235,6 +235,50 @@ class SLP:
 	def get_frames(self):
 		return self.frames
 
+	def save_pngs(self, destination_path, color_table, overwrite_existing=False):
+
+		destination_path = os.path.join(destination_path, "%06d.slp" % self.file_id)
+
+		#create the folder where the pngs will be saved to
+		os.makedirs(destination_path, exist_ok=True)
+
+		#TODO: do something like
+		#http://wiki.wesnoth.org/Team_Color_Shifting
+		player_id = 4 #yellow
+
+		#TODO: another idea:
+		#store the base_color at it's point (with alpha = 254 as marker?)
+		#then let the fragment shader do the color transformation ((player*16)+base_color)
+		#and let it only draw an outline pixel if there's an obstruction (use alpha = 253 as marker?)
+
+		#TODO: combine all slp frames to one single png, much more efficient loading and editing possible..
+		#-> another converter script for packing and unpacking those
+		#the number of frames must be encoded in the filename ideally
+		#
+		#concept:
+		#im = Image.new("RGB", (500,500), "white")
+		#draw = ImageDraw.ImageDraw(im)
+		#part = Image.open("part.png") #why that?
+		#x, y = part.size
+		#im.paste(part, (0,0,x,y))  [=part.getbbox()]
+		#im.save("test.png")
+
+		#TODO: save the hotspot_x and y in the filename
+
+
+		for frame in self.get_frames():
+			png_filename = "%06d_%03d_%02d.png" % (self.file_id, frame.frame_id, player_id)
+			frame_path = os.path.join(destination_path, png_filename)
+
+			png = PNG(player_id, color_table, frame.get_picture_data())
+			png.create()
+
+			if not overwrite_existing and os.path.exists(frame_path):
+				raise Exception("file " + frame_path + " is already existing and I won't overwrite!")
+
+			png.save_to(frame_path)
+
+
 	def __repr__(self):
 		#TODO: lookup the image content description
 		return "SLP image, " + str(len(self.frames)) + " Frames"
@@ -722,52 +766,9 @@ class PNG():
 	def get_image(self):
 		return self.image
 
-	def store_image_to(self, filename):
+	def save_to(self, filename):
 		return self.image.save(filename)
 
-
-base_path = "../resources/age2_generated"
-base_graphics_path = os.path.join(base_path, "graphics.drs")
-
-
-def create_slp_pngs(slp_file, color_table, overwrite_existing=False):
-	base_slp_path = os.path.join(base_graphics_path, "%06d.slp" % slp_file.file_id)
-	os.makedirs(base_slp_path, exist_ok=True)
-
-	#TODO: do something like
-	#http://wiki.wesnoth.org/Team_Color_Shifting
-	player_id = 4 #yellow
-
-	#TODO: another idea:
-	#store the base_color at it's point (with alpha = 254 as marker?)
-	#then let the fragment shader do the color transformation ((player*16)+base_color)
-	#and let it only draw an outline pixel if there's an obstruction (use alpha = 253 as marker?)
-
-	#TODO: combine all slp frames to one single png, much more efficient loading and editing possible..
-	#-> another converter script for packing and unpacking those
-	#the number of frames must be encoded in the filename ideally
-	#
-	#concept:
-	#im = Image.new("RGB", (500,500), "white")
-	#draw = ImageDraw.ImageDraw(im)
-	#part = Image.open("part.png") #why that?
-	#x, y = part.size
-	#im.paste(part, (0,0,x,y))  [=part.getbbox()]
-	#im.save("test.jpg", "JPEG")
-
-    #TODO: save the hotspot_x and y in the filename
-
-
-	for frame in slp_file.get_frames():
-		frame_path = os.path.join(base_slp_path, "%06d_%03d_%02d.png" % (slp_file.file_id, frame.frame_id, player_id))
-
-		png = PNG(player_id, color_table, frame.get_picture_data())
-		png.create()
-
-		if not overwrite_existing and os.path.exists(frame_path):
-			raise Exception("file " + frame_path + " is already existing and I won't overwrite!")
-
-		png.get_image().save(frame_path)
 
 
 def main():
@@ -796,17 +797,18 @@ def main():
 	test_building = True
 	test_unit = True
 
+	export_path = "../resources/age2_generated"
+	export_graphics_path = os.path.join(base_path, "graphics.drs")
+
 	#create all graphics?
 	if create_all:
-		os.makedirs(base_graphics_path, exist_ok=True)
-
 		for table in graphics_drs_file.table_info:
 			extension = table[1]
 			if extension == 'slp':
 				for file_info in graphics_drs_file.file_info[table]:
 					file_id = file_info[0]
 					slp_file = SLP(graphics_drs_file.get_raw_file(file_id), file_id)
-					create_slp_pngs(slp_file, color_table)
+					slp_file.save_pngs(export_graphics_path, color_table)
 			else:
 				pass
 
@@ -816,14 +818,13 @@ def main():
 			uni_id = 3836
 			uni_slp = SLP(graphics_drs_file.get_raw_file(uni_id), uni_id)
 
-			create_slp_pngs(uni_slp, color_table, True)
+			uni_slp.save_pngs(export_graphics_path, color_table, True)
 
 		if test_unit:
 			#only create a hussar
 			hussar_id = 4857
 			hussar_slp = SLP(graphics_drs_file.get_raw_file(hussar_id), hussar_id)
 
-			create_slp_pngs(hussar_slp, color_table, True)
-
+			hussar_slp.save_pngs(export_graphics_path, color_table, True)
 
 main()
