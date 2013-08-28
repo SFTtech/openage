@@ -615,8 +615,6 @@ class PNG():
 			for x, color_data in enumerate(picture_row):
 				if type(color_data) == int:
 					color = self.color_table[color_data]
-				#elif type(color_data) == SLPFrame.PlayerColor:
-				#	color = self.color_table[color_data.get_pcolor_for_player(self.player_number)]
 				elif type(color_data) == SLPFrame.SpecialColor:
 					color = self.color_table[color_data.get_pcolor_for_player(self.player_number)]
 				elif color_data == SLPFrame.transparent:
@@ -639,6 +637,28 @@ class PNG():
 
 base_path = "../resources/age2_generated"
 base_graphics_path = os.path.join(base_path, "graphics.drs")
+
+
+def create_slp_pngs(slp_file, color_table):
+	base_slp_path = os.path.join(base_graphics_path, "%06d.slp" % slp_file.file_id)
+	os.makedirs(base_slp_path)
+
+	#TODO: do something like
+	#http://wiki.wesnoth.org/Team_Color_Shifting
+	player_id = 4 #yellow
+
+	#TODO: another idea:
+	#store the base_color at it's point (with alpha = 254 as marker?)
+	#then let the fragment shader do the color transformation ((player*16)+base_color)
+	#and let it only draw an outline pixel if there's an obstruction (use alpha = 253 as marker?)
+
+
+	for frame in slp_file.get_frames():
+		frame_path = os.path.join(base_slp_path, "%06d_%03d_%02d.png" % (slp_file.file_id, frame.frame_id, player_id))
+
+		png = PNG(player_id, color_table, frame.get_picture_data())
+		png.create()
+		png.get_image().save(frame_path)
 
 
 def main():
@@ -672,24 +692,9 @@ def main():
 				for file_info in graphics_drs_file.file_info[table]:
 					file_id = file_info[0]
 					slp_file = SLP(graphics_drs_file.get_raw_file(file_id), file_id)
-					create_slp(slp_file, color_table)
+					create_slp_pngs(slp_file, color_table)
 			else:
 				pass
-
-
-def create_slp(slp_file, color_table):
-	base_slp_path = os.path.join(base_graphics_path, "%06d.slp" % slp_file.file_id)
-	os.makedirs(base_slp_path)
-
-	player_id = 4 #yellow
-
-	for frame in slp_file.get_frames():
-		frame_path = os.path.join(base_slp_path, "%06d_%03d_%02d.png" %
-				(slp_file.file_id, frame.frame_id, player_id))
-
-		png = PNG(player_id, color_table, frame.get_picture_data())
-		png.create()
-		png.get_image().save(frame_path)
 
 
 main()
