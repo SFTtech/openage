@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
+import os
 import sys
-import pprint
 
 from PIL import Image, ImageDraw
 from struct import Struct, unpack_from
@@ -127,7 +127,7 @@ class DRS:
 				return True
 		return True
 
-	def get_file_info(self, fid):
+	def get_file_table_info(self, fid):
 		self.exists_file(fid, True)
 		return self.file_table[fid]
 
@@ -639,14 +639,17 @@ class PNG():
 
 	def get_image(self):
 		return self.image
-																														
+
+
+base_path = "../resources/age2_generated"
+base_graphics_path = os.path.join(base_path, "graphics.drs")
 
 
 def main():
 	print("welcome to the extaordinary epic age2 media file converter")
 
-	drs_file = DRS("../resources/age2/graphics.drs")
-	drs_file.read()
+	graphics_drs_file = DRS("../resources/age2/graphics.drs")
+	graphics_drs_file.read()
 
 	interfac_drs_file = DRS("../resources/age2/interfac.drs")
 	interfac_drs_file.read()
@@ -659,40 +662,56 @@ def main():
 
 	#print("\n\nfile ids in this drs:" + str(sorted(drs_file.files.keys())))
 
-	print("\n=========\nfound " + str(len(drs_file.files)) + " files in the drs.\n=========\n")
+	print("\n=========\nfound " + str(len(graphics_drs_file.files)) + " files in the graphics.drs.\n=========\n")
 
 
-	print("\n\nnorth/central european castle:")
-	testfile_id = 302
-	drs_file.print_file_info(testfile_id)
-	drs_file.write_raw_file(testfile_id)
-	slp_castle = SLP(drs_file.get_raw_file(testfile_id), testfile_id) #get european castle
-
-	player_color = 4 #yellow
-	png_castle = PNG(player_color, color_table, slp_castle.get_frame(0).get_picture_data())
-	png_castle.create()
-	png_castle.get_image().save("./castle.png")
-
-	#cmd_table starts at 5103238 + 1832 = 5105070 in the file.
-	#first row cmd starts at 5103238 + 3600 = 5106838 in the file.
-	print("done with the north european castle.\n\n")
-
+#	print("\n\nnorth/central european castle:")
+#	testfile_id = 302
+#	drs_file.print_file_info(testfile_id)
+#	drs_file.write_raw_file(testfile_id)
+#	slp_castle = SLP(drs_file.get_raw_file(testfile_id), testfile_id) #get european castle
+#
+#	player_color = 4 #yellow
+#	png_castle = PNG(player_color, color_table, slp_castle.get_frame(0).get_picture_data())
+#	png_castle.create()
+#	png_castle.get_image().save("./castle.png")
+#
+#	#cmd_table starts at 5103238 + 1832 = 5105070 in the file.
+#	#first row cmd starts at 5103238 + 3600 = 5106838 in the file.
+#	print("done with the north european castle.\n\n")
 
 	create_all = ( len(sys.argv) > 1 and sys.argv[1] == "all")
 
 	#create all graphics?
 	if create_all:
-		graphics_slps = {}
 
-		for i in drs_file.files.keys():
-			#only process slp files so far
-			file_extension = drs_file.get_file_info(i)[1]
-			if file_extension == "slp":
-				gslp = SLP(drs_file.get_raw_file(i), i)
-				graphics_slps[i] = gslp
 
+		os.makedirs(base_graphics_path, exist_ok=True)
+
+		for table in graphics_drs_file.table_info:
+			extension = table[1]
+			if extension == 'slp':
+				for file_info in graphics_drs_file.file_info[table]:
+					file_id = file_info[0]
+					slp_file = SLP(graphics_drs_file.get_raw_file(file_id), file_id)
+					create_slp(slp_file, color_table)
 			else:
-				raise Exception("file" + str(i) + " has a unknown file extension: " + file_extension)
+				pass
+
+
+def create_slp(slp_file, color_table):
+	base_slp_path = os.path.join(base_graphics_path, "%06d.slp" % slp_file.file_id)
+	os.makedirs(base_slp_path)
+
+	player_id = 4 #yellow
+
+	for frame in slp_file.get_frames():
+		frame_path = os.path.join(base_slp_path, "%06d_%03d_%02d.png" %
+				(slp_file.file_id, frame.frame_id, player_id))
+
+		png = PNG(player_id, color_table, frame.get_picture_data())
+		png.create()
+		png.get_image().save(frame_path)
 
 
 main()
