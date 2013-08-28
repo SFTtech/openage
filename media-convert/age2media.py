@@ -685,7 +685,22 @@ class PNG():
 				if type(color_data) == int:
 					color = self.color_table[color_data]
 				elif type(color_data) == SLPFrame.SpecialColor:
-					color = self.color_table[color_data.get_pcolor_for_player(self.player_number)]
+					base_pcolor, is_outline = color_data.get_pcolor()
+					if is_outline:
+						alpha = 253  #mark this pixel as outline
+					else:
+						alpha = 254  #mark this pixel as player color
+
+					#get rgb base color from the color table
+					#store it as blue (1st) player colors (in the table: [18,23]
+					preview_player = 1
+					r, g, b = self.color_table[base_pcolor+16*preview_player]
+					color = (r, g, b, alpha)
+
+					#this now ensures the fragment shader is able to replace the base_color
+					#with the real player color, and only display outline pixels,
+					#if they are obstructed.
+
 				elif color_data == SLPFrame.transparent:
 					color = (0, 0, 0, 0)
 				elif color_data == SLPFrame.shadow:
