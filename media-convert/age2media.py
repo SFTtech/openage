@@ -3,6 +3,7 @@
 import os
 import os.path
 import sys
+import math
 
 from PIL import Image, ImageDraw
 from struct import Struct, unpack_from
@@ -586,7 +587,6 @@ class ColorTable():
 
 		self.header = palette_lines[0]
 		self.version = palette_lines[1]
-		self.num_entries = int(palette_lines[2])
 
 		# check for palette header
 		if self.header != "JASC-PAL":
@@ -594,17 +594,40 @@ class ColorTable():
 		if self.version != "0100":
 			raise Exception("palette version mispatch, got %s" % palette_lines[1])
 
+		self.num_entries = int(palette_lines[2])
+
 		self.palette = []
 
 		for i in range(self.num_entries):
 			#one entry looks like "13 37 42", where 13 is the red value, 37 green and 42 blue.
 			self.palette.append(tuple(map(int, palette_lines[i+3].split(' '))))
 
+	def to_image(self, filename):
+		#writes this color table (palette) to a png image.
+		imgside = math.ceil(math.sqrt(self.num_entries))
+
+		palette_image = Image.new('RGBA', (imgside, imgside), (255, 255, 255, 0))
+		draw = ImageDraw.ImageDraw(palette_image)
+
+		drawn = 0
+		for x in range(imgside):
+			for y in range(imgside):
+				if drawn < self.num_entries:
+					r,g,b = self.palette[drawn]
+					draw.point((x, y), fill=(r, g, b, 255))
+					drawn = drawn + 1
+
+		palette_image.save(filename)
+
+
 	def __getitem__(self, index):
 		return self.palette[index]
 
+	def __repr__(self):
+		return "color palette: %d entries." % self.num_entries
+
 	def __str__(self):
-		return "color palette: \n" + str(self.palette)
+		return repr(self) + "\n" + str(self.palette)
 
 
 class PNG():
@@ -637,7 +660,7 @@ class PNG():
 
 				draw.point((x, y), fill=color)
 
-		#	self.draw.line((x, y, x + amount, y), fill=color)
+				#self.draw.line((x, y, x + amount, y), fill=color)
 
 	def get_image(self):
 		return self.image
@@ -693,7 +716,8 @@ def main():
 	palette_index = 50500
 	color_table = ColorTable(interfac_drs_file.get_raw_file(palette_index))
 
-	#print(str(color_table))
+	color_table.to_image("../resources/colortable" + str(palette_index) + ".pal.png")
+	#print("using " + str(color_table))
 
 	#print("\n\nfile ids in this drs:" + str(sorted(drs_file.files.keys())))
 
