@@ -785,6 +785,10 @@ def main():
 
 	create_all = ( len(sys.argv) > 1 and sys.argv[1] == "all")
 
+	#test university and hussar creation
+	test_building = True
+	test_unit = True
+
 	#create all graphics?
 	if create_all:
 		os.makedirs(base_graphics_path, exist_ok=True)
@@ -800,11 +804,19 @@ def main():
 				pass
 
 	else:
-		#only create a barrack
-		barrack_id = 145
-		barrack_slp = SLP(graphics_drs_file.get_raw_file(barrack_id), barrack_id)
+		if test_building:
+			#only create a university
+			uni_id = 3836
+			uni_slp = SLP(graphics_drs_file.get_raw_file(uni_id), uni_id)
 
-		create_slp_pngs(barrack_slp, color_table, True)
+			create_slp_pngs(uni_slp, color_table, True)
+
+		if test_unit:
+			#only create a hussar
+			hussar_id = 4857
+			hussar_slp = SLP(graphics_drs_file.get_raw_file(hussar_id), hussar_id)
+
+			create_slp_pngs(hussar_slp, color_table, True)
 
 
 main()
