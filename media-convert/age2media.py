@@ -618,16 +618,16 @@ class ColorTable():
 		drawn = 0
 
 		if squaresize == 1:
-			for x in range(imgside_length):
-					for y in range(imgside_length):
+			for y in range(imgside_length):
+					for x in range(imgside_length):
 						if drawn < self.num_entries:
 							r,g,b = self.palette[drawn]
 							draw.point((x, y), fill=(r, g, b, 255))
 							drawn = drawn + 1
 
 		elif squaresize > 1:
-			for x in range(imgside_length):
-					for y in range(imgside_length):
+			for y in range(imgside_length):
+					for x in range(imgside_length):
 						if drawn < self.num_entries:
 							sx = x * squaresize - 1
 							sy = y * squaresize - 1
