@@ -664,28 +664,10 @@ def main():
 
 	print("\n=========\nfound " + str(len(graphics_drs_file.files)) + " files in the graphics.drs.\n=========\n")
 
-
-#	print("\n\nnorth/central european castle:")
-#	testfile_id = 302
-#	drs_file.print_file_info(testfile_id)
-#	drs_file.write_raw_file(testfile_id)
-#	slp_castle = SLP(drs_file.get_raw_file(testfile_id), testfile_id) #get european castle
-#
-#	player_color = 4 #yellow
-#	png_castle = PNG(player_color, color_table, slp_castle.get_frame(0).get_picture_data())
-#	png_castle.create()
-#	png_castle.get_image().save("./castle.png")
-#
-#	#cmd_table starts at 5103238 + 1832 = 5105070 in the file.
-#	#first row cmd starts at 5103238 + 3600 = 5106838 in the file.
-#	print("done with the north european castle.\n\n")
-
 	create_all = ( len(sys.argv) > 1 and sys.argv[1] == "all")
 
 	#create all graphics?
 	if create_all:
-
-
 		os.makedirs(base_graphics_path, exist_ok=True)
 
 		for table in graphics_drs_file.table_info:
