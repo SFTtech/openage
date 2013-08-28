@@ -602,7 +602,7 @@ class ColorTable():
 			#one entry looks like "13 37 42", where 13 is the red value, 37 green and 42 blue.
 			self.palette.append(tuple(map(int, palette_lines[i+3].split(' '))))
 
-	def to_image(self, filename, squaresize=100):
+	def to_image(self, filename, draw_text=True, squaresize=100):
 		#writes this color table (palette) to a png image.
 		imgside_length = math.ceil(math.sqrt(self.num_entries))
 		imgsize = imgside_length * squaresize
@@ -612,7 +612,8 @@ class ColorTable():
 		palette_image = Image.new('RGBA', (imgsize, imgsize), (255, 255, 255, 0))
 		draw = ImageDraw.ImageDraw(palette_image)
 
-		#.text(xy,message,fill=None,font=None) #if squaresize > enough.
+		text_padlength = len(str(self.num_entries)) #dirty, i know.
+		text_format = "%0" + str(text_padlength) + "d"
 
 		drawn = 0
 
@@ -635,7 +636,18 @@ class ColorTable():
 							r,g,b = self.palette[drawn]
 							vertices = [(sx, sy), (ex, sy), (ex, ey), (sx, ey)] #(begin top-left, go clockwise)
 							draw.polygon(vertices, fill=(r, g, b, 255))
+
+							if draw_text and squaresize > 40:
+								#draw the color id
+
+								ctext = text_format % drawn #insert current color id into string
+								tcolor = (255-r, 255-b, 255-g, 255)
+
+								#draw the text  #TODO: use customsized font
+								draw.text((sx+3, sy+1),ctext,fill=tcolor,font=None)
+
 							drawn = drawn + 1
+
 
 		else:
 			raise Exception("fak u, no negative values for the squaresize pls.")
