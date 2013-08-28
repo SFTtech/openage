@@ -733,6 +733,8 @@ def create_slp_pngs(slp_file, color_table, overwrite_existing=False):
 	#im.paste(part, (0,0,x,y))  [=part.getbbox()]
 	#im.save("test.jpg", "JPEG")
 
+    #TODO: save the hotspot_x and y in the filename
+
 
 	for frame in slp_file.get_frames():
 		frame_path = os.path.join(base_slp_path, "%06d_%03d_%02d.png" % (slp_file.file_id, frame.frame_id, player_id))
