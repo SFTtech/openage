@@ -71,11 +71,6 @@ class DRS:
 		self.read_table_info()
 		self.read_file_info()
 
-		print("header:\n\t" + str(self.header))
-		print("tables:")
-		for table in self.table_info:
-			print("\t" + str(table))
-
 	def read_header(self):
 		buf = self.in_file.read(DRS.drs_header.size)
 		self.header = DRS.drs_header.unpack(buf)
@@ -131,7 +126,7 @@ class DRS:
 		self.exists_file(fid, True)
 		return self.file_table[fid]
 
-    def get_file_info(self, fid):
+	def get_file_info(self, fid):
 		self.exists_file(fid, True)
 		return self.files[fid]
 
@@ -157,6 +152,17 @@ class DRS:
 
 		print("file %d = offset: %#x / %d, size = %#x / %d, extension = %s" % (fid, fo, fo, fs, fs, fe))
 
+	def __repr__():
+		return "DRS file %s" % self.path
+
+	def __str__(self):
+		ret = repr(self)
+		ret = ret + "\nheader:\n\t" + str(self.header)
+		ret = ret + "\ttables:\n"
+		for table in self.table_info:
+			ret = ret + "\t" + str(table)
+
+		return res
 
 
 
@@ -648,7 +654,7 @@ def main():
 	palette_index = 50500
 	color_table = ColorTable(interfac_drs_file.get_raw_file(palette_index))
 
-	print(str(color_table))
+	#print(str(color_table))
 
 	#print("\n\nfile ids in this drs:" + str(sorted(drs_file.files.keys())))
 
