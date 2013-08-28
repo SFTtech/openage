@@ -1,19 +1,21 @@
 about drs-files
 ===============
 
-Gamedata.drs:
+gamedata.drs:
 	contains information on map types, like where to place resources, in what numbers, etc, as well as AI scripts. AI scripts tell the computer what to do, such as build units, gather resources, and generally make it "smart".
 
-Graphics.drs
-	contains almost every graphic you see in the game; this includes units, buildings, resources, and animals.
+graphics.drs
+	contains almost every graphic you see in the game; this includes units, buildings, resources, animals, cliffs and shadows.
 
-Interfac.drs:
-	contains the main interface graphics of the game. All of the the borders, buttons, logos, main game screen, etc you see when entering the game to starting one can be found within this file.
+interfac.drs:
+	contains the main interface graphics of the game.
+	all of the the borders, buttons, logos, main game screen, etc you see when entering the game to starting one can be found within this file.
+	the drawing color palettes are also stored in this file.
 
-Sounds.drs:
+sounds.drs:
 	contains every sound in Age of Kings; from the war horn sounding off to the ringing town bell, it's all stored here.
 
-Terrain.drs:
+terrain.drs:
 	contains all the terrain, in diamond shaped pieces. For each terrain, there are 100 pieces.
 
 
@@ -28,7 +30,7 @@ drs files contain search structures for archiving the media files.
 at the beginning, the file starts with it's main header:
 
 
-const int copyright_size = 40; // for age2:aok this is 40.
+const int copyright_size = 40; // for age2:aoc this is 40.
 struct drs_header {
 	char copyright[copyright_size];
 	char version[4];
