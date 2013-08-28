@@ -258,7 +258,17 @@ class SLPFrame:
 			if self.special_id == 1 or self.special_id == self.black_color:
 				return 0
 			elif self.special_id == 2 or self.special_id == self.player_color:
-				return 16 * player + self.base_color
+				return 16 * player + self.base_color #return final color for outline or player
+			else:
+				raise Exception("unknown special color")
+
+		def get_pcolor(self):
+			if self.special_id == 1 or self.special_id == self.black_color:
+				return (0, True) #outline pixel, we will probably never encounter this.
+			elif self.special_id == 2:
+				return (self.base_color, True) #this is an outline pixel
+			elif self.special_id == self.player_color:
+				return (self.base_color, False) #this is a playercolor pixel base color
 			else:
 				raise Exception("unknown special color")
 
