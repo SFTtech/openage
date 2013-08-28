@@ -700,9 +700,8 @@ class PNG():
 						alpha = 254  #mark this pixel as player color
 
 					#get rgb base color from the color table
-					#store it as blue (1st) player colors (in the table: [18,23]
-					preview_player = 1
-					r, g, b = self.color_table[base_pcolor+16*preview_player]
+					#store it the preview player color (in the table: [16*player,16*player+7]
+					r, g, b = self.color_table[base_pcolor + 16 * self.player_number]
 					color = (r, g, b, alpha)
 
 					#this now ensures the fragment shader is able to replace the base_color
