@@ -724,6 +724,14 @@ def create_slp_pngs(slp_file, color_table, overwrite_existing=False):
 	#TODO: combine all slp frames to one single png, much more efficient loading and editing possible..
 	#-> another converter script for packing and unpacking those
 	#the number of frames must be encoded in the filename ideally
+	#
+	#concept:
+	#im = Image.new("RGB", (500,500), "white")
+	#draw = ImageDraw.ImageDraw(im)
+	#part = Image.open("part.png") #why that?
+	#x, y = part.size
+	#im.paste(part, (0,0,x,y))  [=part.getbbox()]
+	#im.save("test.jpg", "JPEG")
 
 
 	for frame in slp_file.get_frames():
