@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import os.path
 import sys
 
 from PIL import Image, ImageDraw
@@ -639,9 +640,9 @@ base_path = "../resources/age2_generated"
 base_graphics_path = os.path.join(base_path, "graphics.drs")
 
 
-def create_slp_pngs(slp_file, color_table):
+def create_slp_pngs(slp_file, color_table, overwrite_existing=False):
 	base_slp_path = os.path.join(base_graphics_path, "%06d.slp" % slp_file.file_id)
-	os.makedirs(base_slp_path)
+	os.makedirs(base_slp_path, exist_ok=True)
 
 	#TODO: do something like
 	#http://wiki.wesnoth.org/Team_Color_Shifting
@@ -652,12 +653,20 @@ def create_slp_pngs(slp_file, color_table):
 	#then let the fragment shader do the color transformation ((player*16)+base_color)
 	#and let it only draw an outline pixel if there's an obstruction (use alpha = 253 as marker?)
 
+	#TODO: combine all slp frames to one single png, much more efficient loading and editing possible..
+	#-> another converter script for packing and unpacking those
+	#the number of frames must be encoded in the filename ideally
+
 
 	for frame in slp_file.get_frames():
 		frame_path = os.path.join(base_slp_path, "%06d_%03d_%02d.png" % (slp_file.file_id, frame.frame_id, player_id))
 
 		png = PNG(player_id, color_table, frame.get_picture_data())
 		png.create()
+
+		if not overwrite_existing and os.path.exists(frame_path):
+			raise Exception("file " + frame_path + " is already existing and I won't overwrite!")
+
 		png.get_image().save(frame_path)
 
 
@@ -695,6 +704,13 @@ def main():
 					create_slp_pngs(slp_file, color_table)
 			else:
 				pass
+
+	else:
+		#only create a barrack
+		barrack_id = 145
+		barrack_slp = SLP(graphics_drs_file.get_raw_file(barrack_id), barrack_id)
+
+		create_slp_pngs(barrack_slp, color_table, True)
 
 
 main()
