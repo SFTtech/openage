@@ -250,24 +250,31 @@ class SLPFrame:
 		player_color = EnumVal("P")
 		black_color = EnumVal("||")
 
-		def __init__(self, special_id, base_color=0):
-			#print("creating special color " + str(color))
+		#base_color: value for the base player color
+		#used for outlines.
+		#2 is lighter and suits better for outline display.
+		#try to experiment with [0,7]..
+		def __init__(self, special_id, base_color=2):
+			#print("creating special color " + str(base_color))
 			self.special_id = special_id
 			self.base_color = base_color
 
 		def get_pcolor_for_player(self, player):
-			if self.special_id == 1 or self.special_id == self.black_color:
-				return 0
-			elif self.special_id == 2 or self.special_id == self.player_color:
+			if self.special_id == 2 or self.special_id == self.black_color:
+				return -16 #this ensures palette[16 -16] will be taken
+			elif self.special_id == 1 or self.special_id == self.player_color:
 				return 16 * player + self.base_color #return final color for outline or player
 			else:
 				raise Exception("unknown special color")
 
 		def get_pcolor(self):
-			if self.special_id == 1 or self.special_id == self.black_color:
-				return (0, True) #outline pixel, we will probably never encounter this.
-			elif self.special_id == 2:
-				return (self.base_color, True) #this is an outline pixel
+			#@returns (base_color, is_outline_pixel)
+			if self.special_id == 2 or self.special_id == self.black_color:
+				#black outline pixel, we will probably never encounter this.
+				# -16 ensures palette[16 -16] will be used.
+				return (-16, True)
+			elif self.special_id == 1:
+				return (self.base_color, True) #this is an player-colored outline pixel
 			elif self.special_id == self.player_color:
 				return (self.base_color, False) #this is a playercolor pixel base color
 			else:
@@ -688,6 +695,7 @@ class PNG():
 					base_pcolor, is_outline = color_data.get_pcolor()
 					if is_outline:
 						alpha = 253  #mark this pixel as outline
+						#print("drawing outline base %d" % base_pcolor)
 					else:
 						alpha = 254  #mark this pixel as player color
 

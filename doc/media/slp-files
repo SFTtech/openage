@@ -171,10 +171,10 @@ render_hint_xflip  = 0x0E, 0              draw the following command if sprite i
 render_h_notxflip  = 0x1E, 0              draw following command if this sprite is xflipped
 table_use_normal   = 0x2E, 0              transform color table: for regular cmd_bytes -> set to normal table
 table_use_alternat = 0x3E, 0              transform color table: -> set to alternate table
-outline_1          = 0x4E, 1 (spec_col=1) palette_index = 0, if pixel obstructed, draw this pixel as outline, else transparent
-outline_2          = 0x6E, 1 (spec_col=2) palette_index = player_index = player * 16, if obstructed, player col, else transparent
-outline_span_2     = 0x5E, next           palette_index = 0, same as obstruct_black, but >=1 pixel.
-outline_span_2     = 0x7E, next           palette_index = player_index = player * 16
+outline_1          = 0x4E, 1 (spec_col=1) palette_index = player_index = player * 16, if obstructed, player col, else transparent
+outline_2          = 0x6E, 1 (spec_col=2) palette_index = 0, if pixel obstructed, draw a pixel as black outline, else transparent
+outline_span_2     = 0x5E, next           palette_index = player_index = player * 16, can be >=1 pixel
+outline_span_2     = 0x7E, next           palette_index = 0, same as obstruct_black, >=1 pixel
 
 
 note that commands with pixel_count == >>i do reuse the most significant bits of cmd_byte.
@@ -239,8 +239,8 @@ if they are not obstructed, draw them as transparent.
 for our purpose, these outline pixels should be stored to a second image, which is rendered
 ontop of the tree/building by the fragment shader.
 
-spec_col == special_color: 1 means black (enhance the outline, toonlike), 2 is player color.
-maybe it is the other way round, 2 could be black, 1 the player color..
+spec_col == special_color: 2 means black (enhance the outline, cartoonlike), 1 is player color.
+
 
 
 with all this information it's possible to draw a line by several palette_index colors correctly,
