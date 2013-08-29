@@ -798,7 +798,7 @@ def main():
 	test_unit = True
 
 	export_path = "../resources/age2_generated"
-	export_graphics_path = os.path.join(base_path, "graphics.drs")
+	export_graphics_path = os.path.join(export_path, "graphics.drs")
 
 	#create all graphics?
 	if create_all:
