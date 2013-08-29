@@ -11,6 +11,15 @@ microsoft(r) age of empires II (tm)
 
 this project is released under the GNU GPLv3 or later.
 
+
+
+dependencies
+============
+
+python imaging library (PIL) -> pillow
+opengl 2.1
+
+
 how to build
 ============
 
