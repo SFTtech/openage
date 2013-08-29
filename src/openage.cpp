@@ -10,7 +10,7 @@
 
 namespace openage {
 
-engine::Texture *gaben, *town_center, *castle_0;
+engine::Texture *gaben, *university;
 
 util::FrameCounter fpscounter;
 
@@ -21,6 +21,18 @@ void init() {
 	lmby = 0;
 	rmbx = 0;
 	rmby = 0;
+
+	//load textures and stuff
+	gaben = new engine::Texture("gaben.png");
+
+	//TODO: dynamic generation of the file path
+	//sync this with media-convert/age2media.py !
+
+	university = new engine::Texture("../resources/age2_generated/graphics.drs/003836.slp/003836_000_04.png");
+}
+
+void deinit() {
+	log::msg("openage shutting down...");
 }
 
 void input_handler(SDL_Event *e) {
@@ -56,30 +68,15 @@ void draw_method() {
 	glPushMatrix();
 	{
 		glColor3f(1, 1, 1);
-		glTranslatef(lmbx - town_center->w/2, lmby - town_center->h/2, 0);
+		//this translation equals the hotspot of an image!
+		glTranslatef(lmbx - university->w/2, lmby - university->h/2, 0);
 
-		town_center->draw(0, 0);
+		university->draw(0, 0);
 	}
 	glPopMatrix();
-	glPushMatrix();
-	{
-		glColor3f(1, 1, 1);
-		glTranslatef(rmbx - town_center->w/2, rmby - town_center->h/2, 0);
 
-		castle_0->draw(0, 0);
-	}
-	glPopMatrix();
-	/*
-	glBegin(GL_QUADS);
-	{
-		glVertex3f(0, 0, 0);
-		glVertex3f(0, 100, 0);
-		glVertex3f(100, 100, 0);
-		glVertex3f(100, 0, 0);
-	}
-	glEnd();
-	*/
 	fpscounter.frame();
+	//TODO: draw text in framebuffer!
 	//log::msg("fps: %f", fpscounter.fps);
 }
 
@@ -88,17 +85,12 @@ int mainmethod() {
 	engine::init(draw_method, input_handler);
 	init();
 
-	//load textures and stuff
-	gaben = new engine::Texture("gaben.png");
-
-	town_center = new engine::Texture("base.png");
-	castle_0 = new engine::Texture("castle_0.png");
-
 	//run main loop
 	engine::loop();
 
 	//de-init engine
 	engine::destroy();
+	deinit();
 
 	return 0;
 }
