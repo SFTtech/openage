@@ -1,7 +1,8 @@
-include_directories(${CMAKEDEMO_SOURCE_DIR}/src)
-link_directories(${CMAKEDEMO_BINARY_DIR}/src)
+#include_directories(${CMAKEDEMO_SOURCE_DIR}/src)
+#link_directories(${CMAKEDEMO_BINARY_DIR}/src)
 
 find_package(OpenGL)
+find_package(GLEW)
 #findpackage sdl2
 
 add_executable(${PROJECT_NAME}
@@ -11,6 +12,7 @@ add_executable(${PROJECT_NAME}
 	log/log.cpp
 	util/fps.cpp
 	util/filetools.cpp
+	engine/shader.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}
@@ -18,4 +20,5 @@ target_link_libraries(${PROJECT_NAME}
 	SDL2
 	SDL2_image
 	${OPENGL_LIBRARY}
+	${GLEW_LIBRARIES}
 )
