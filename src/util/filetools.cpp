@@ -8,8 +8,8 @@
 
 #include "../log/log.h"
 
-using namespace openage;
-using namespace util;
+namespace openage {
+namespace util {
 
 char* read_whole_file(const char *filename) {
 
@@ -36,4 +36,7 @@ char* read_whole_file(const char *filename) {
 
 	//return the file contents
 	return str;
+}
+
+}
 }
