@@ -13,7 +13,6 @@ void main()
 {
 	vec4 pixel = texture2D(texture, gl_TexCoord[0].xy);
 	float replacement_alpha = alpha_marker;
-	replacement_alpha = 254.0/255.0; //hardcoded for now.
 
 	//create epsilon environment for float comparison
 	float epsilon = 0.001;
@@ -21,8 +20,12 @@ void main()
 		// TODO: calculate the real player color with base color "pixel"
 		// use player_number * 16 + pixel  somehow..
 
-		// for now, some pink
-		pixel = vec4(255.0/255.0, 20.0/255.0, 147.0/255.0, 1.0);
+		if (player_number == 1) {
+			pixel = vec4(255.0/255.0, 20.0/255.0, 147.0/255.0, 1.0);
+		}
+		else if (player_number == 2) {
+			pixel = vec4(0.0/255.0, 255.0/255.0, 16.0/255.0, 1.0);
+		}
 	}
 
 	gl_FragColor = pixel;

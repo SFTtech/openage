@@ -1,6 +1,7 @@
 #include "openage.h"
 
 #include <SDL2/SDL.h>
+#include <GL/glew.h>
 #include <GL/gl.h>
 #include <unistd.h>
 
@@ -16,6 +17,7 @@ engine::Texture *gaben, *university;
 
 engine::shader::Shader *teamcolor_vert, *teamcolor_frag;
 engine::shader::Program *teamcolorshader;
+GLint player_texshader_var, alpha_marker_var;
 
 util::FrameCounter fpscounter;
 
@@ -61,6 +63,14 @@ void init() {
 		log::err("failed linking the texture program");
 		exit(1);
 	}
+
+	player_texshader_var = teamcolorshader->get_uniform_id("player_number");
+	alpha_marker_var = teamcolorshader->get_uniform_id("alpha_marker");
+
+	teamcolorshader->use();
+	//keep in sync with media converter script:
+	glUniform1f(alpha_marker_var, 254.0/255.0);
+	teamcolorshader->stopusing();
 }
 
 void deinit() {
@@ -96,14 +106,23 @@ void input_handler(SDL_Event *e) {
 void draw_method() {
 	gaben->draw(0, 0);
 
-
 	teamcolorshader->use();
 	glPushMatrix();
 	{
 		glColor3f(1, 1, 1);
+		glUniform1i(player_texshader_var, 1);
 		//this translation equals the hotspot of an image!
 		glTranslatef(lmbx - university->w/2, lmby - university->h/2, 0);
 
+		university->draw(0, 0);
+	}
+	glPopMatrix();
+
+	glPushMatrix();
+	{
+		glColor3f(1, 1, 1);
+		glUniform1i(player_texshader_var, 2);
+		glTranslatef(rmbx - university->w/2, rmby - university->h/2, 0);
 		university->draw(0, 0);
 	}
 	glPopMatrix();
