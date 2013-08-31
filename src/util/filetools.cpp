@@ -29,7 +29,7 @@ char* read_whole_file(const char *filename) {
 
 	//read the whole content
 	char *str = (char *) malloc(st.st_size);
-	if (NULL == fgets(str, st.st_size, filehandle)) {
+	if (((unsigned long) st.st_size) != fread(str, 1, st.st_size, filehandle)) {
 		log::fatal("failed reading the file %s", filename);
 		exit(1);
 	}
