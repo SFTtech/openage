@@ -35,7 +35,7 @@ void init() {
 	//TODO: dynamic generation of the file path
 	//sync this with media-convert/age2media.py !
 
-	university = new engine::Texture("../resources/age2_generated/graphics.drs/003836.slp/003836_000_04.png");
+	university = new engine::Texture("../resources/age2_generated/graphics.drs/003836.slp/003836_000_01.png");
 
 	teamcolor_vert = new engine::shader::Shader(engine::shader::shader_vertex, "texturevshader");
 	teamcolor_vert->load_from_file("./shaders/maptexture.vert.glsl");
@@ -110,7 +110,7 @@ void draw_method() {
 	glPushMatrix();
 	{
 		glColor3f(1, 1, 1);
-		glUniform1i(player_texshader_var, 1);
+		glUniform1i(player_texshader_var, 4);
 		//this translation equals the hotspot of an image!
 		glTranslatef(lmbx - university->w/2, lmby - university->h/2, 0);
 

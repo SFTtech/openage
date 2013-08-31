@@ -244,7 +244,7 @@ class SLP:
 
 		#TODO: do something like
 		#http://wiki.wesnoth.org/Team_Color_Shifting
-		player_id = 4 #yellow
+		player_id = 1 #blue
 
 		#TODO: another idea:
 		#store the base_color at it's point (with alpha = 254 as marker?)
@@ -791,7 +791,16 @@ def main():
 
 	print("\n=========\nfound " + str(len(graphics_drs_file.files)) + " files in the graphics.drs.\n=========\n")
 
-	create_all = ( len(sys.argv) > 1 and sys.argv[1] == "all")
+	create_all = False
+	create_player_color_entries = False
+
+	if len(sys.argv) > 1:
+		if sys.argv[1] == "all":
+			create_all = True
+		elif sys.argv[1] == "playercolorentries":
+			create_player_color_entries = True
+
+	create_single = (not create_all) and (not create_player_color_entries)
 
 	#test university and hussar creation
 	test_building = True
@@ -812,7 +821,7 @@ def main():
 			else:
 				pass
 
-	else:
+	elif create_single:
 		if test_building:
 			#only create a university
 			uni_id = 3836
@@ -826,5 +835,42 @@ def main():
 			hussar_slp = SLP(graphics_drs_file.get_raw_file(hussar_id), hussar_id)
 
 			hussar_slp.save_pngs(export_graphics_path, color_table, True)
+
+	elif create_player_color_entries:
+		#experiments with the color table, getting the math behind player colors:
+
+		#each player has 8 subcolors, where 0 is the darkest and 7 is the lightest
+		players = range(1, 9);
+		psubcolors = range(8);
+		for i in players:
+			print("//colors for player %d" % i)
+			for subcol in psubcolors:
+				r,g,b = color_table[16 * i + subcol]
+				print("const vec4 player%d_color_%d = vec4(%d.0/255.0, %d.0/255.0, %d.0/255.0, 1.0);" % (i, subcol, r, g, b))
+
+		print("\n\n//generating get_color(basecolor, playernum):\n")
+		print("vec4 get_color(int base, int playernum) {")
+
+
+		#TODO: use switch()
+		for i in players:
+			if i != 1:
+				p_else = "else "
+			else:
+				p_else = ""
+
+			print("\t%sif (playernum == %d) {" % (p_else, i))
+			for subcol in psubcolors:
+				if subcol != 0:
+					s_else = "else "
+				else:
+					s_else = ""
+				print("\t\t%sif (base == %d) {" % (s_else, subcol))
+				print("\t\t\treturn player%d_color_%d;" % (i, subcol))
+				print("\t\t}")
+
+			print("\t}")
+
+		print("}")
 
 main()
