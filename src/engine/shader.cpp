@@ -54,6 +54,10 @@ void Shader::load_from_file(const char* filename) {
 	free(srctext);
 }
 
+void Shader::compile() {
+	glCompileShader(this->id);
+}
+
 int Shader::check() {
 	GLenum what_to_check = GL_COMPILE_STATUS;
 	GLint status;
@@ -84,11 +88,11 @@ int Shader::check() {
 		this->get_log(infolog, status);
 
 		if (succeded) {
-			log::msg("%s was %sed successfully: %s", this->repr(), whattext, infolog);
+			log::msg("%s was %sed successfully:\n%s", this->repr(), whattext, infolog);
 			delete[] infolog;
 			return 0;
 		} else if (failed) {
-			log::err("failed %sing %s: %s", whattext, this->repr(), infolog);
+			log::err("failed %sing %s:\n%s", whattext, this->repr(), infolog);
 			delete[] infolog;
 			return 1;
 		} else {
@@ -101,10 +105,6 @@ int Shader::check() {
 		log::err("empty program info log of %s", this->repr());
 		return 1;
 	}
-}
-
-void Shader::compile() {
-	glCompileShader(this->id);
 }
 
 void Shader::get_info(GLenum pname, GLint *params) {
@@ -157,6 +157,28 @@ int Program::attach_shader(Shader *s) {
 	return 0;
 }
 
+int Program::link() {
+	if ( !hasfshader || !hasvshader) {
+		log::err("program %s does not have vertex and fragment shader yet, cannot be linked.", this->name);
+		return 1;
+	}
+
+	glLinkProgram(this->id);
+
+	int err, err2;
+	if ((err = this->check(GL_LINK_STATUS)) == 0) {
+		glValidateProgram(this->id);
+		if ((err2 = this->check(GL_VALIDATE_STATUS)) == 0) {
+			return 0;
+		} else {
+			return 1;
+		}
+	} else {
+		log::err("linking of program %s failed.", this->name);
+		return 1;
+	}
+}
+
 int Program::check(GLenum what_to_check) {
 	GLint status;
 
@@ -186,43 +208,21 @@ int Program::check(GLenum what_to_check) {
 		this->get_log(infolog, status);
 
 		if (succeded) {
-			log::msg("%s was %sed successfully: %s", this->repr(), whattext, infolog);
+			log::msg("%s was %sed successfully:\n%s", this->repr(), whattext, infolog);
 			delete[] infolog;
 			return 0;
 		} else if (failed) {
-			log::err("failed %sing %s: %s", whattext, this->repr(), infolog);
+			log::err("failed %sing %s:\n%s", whattext, this->repr(), infolog);
 			delete[] infolog;
 			return 1;
 		} else {
-			log::err("%s %sing status unknown. log: %s", this->repr(), whattext, infolog);
+			log::err("%s %sing status unknown. log:\n%s", this->repr(), whattext, infolog);
 			delete[] infolog;
 			return 1;
 		}
 
 	} else {
 		log::err("empty program info log of %s", this->repr());
-		return 1;
-	}
-}
-
-int Program::link() {
-	if ( !hasfshader || !hasvshader) {
-		log::err("program %s does not have vertex and fragment shader yet, cannot be linked.", this->name);
-		return 1;
-	}
-
-	glLinkProgram(this->id);
-
-	int err, err2;
-	if ((err = this->check(GL_LINK_STATUS)) == 0) {
-		glValidateProgram(this->id);
-		if ((err2 = this->check(GL_VALIDATE_STATUS)) == 0) {
-			return 0;
-		} else {
-			return 1;
-		}
-	} else {
-		log::err("linking of program %s failed.", this->name);
 		return 1;
 	}
 }

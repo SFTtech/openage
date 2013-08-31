@@ -23,9 +23,9 @@ public:
 	void load(const char *source);
 	void load_from_file(const char *filename);
 
-	int check();
-
 	void compile();
+
+	int check();
 
 	void get_info(GLenum pname, GLint *destination);
 	void get_log(char *destination, GLsizei maxlength);
@@ -46,9 +46,9 @@ public:
 
 	int attach_shader(Shader *s);
 
-	int check(GLenum check_link_or_validate_status);
-
 	int link();
+
+	int check(GLenum check_link_or_validate_status);
 
 	void get_info(GLenum pname, GLint *destination);
 	void get_log(char *destination, GLsizei maxlength);
