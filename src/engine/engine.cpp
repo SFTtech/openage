@@ -1,6 +1,7 @@
 #include "engine.h"
 
 #include <stdio.h>
+#include <GL/glew.h>
 #include <GL/gl.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -56,6 +57,18 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	}
 
 	glcontext = SDL_GL_CreateContext(window);
+
+	//initialize glew, for shaders n shit
+	GLenum glew_state = glewInit();
+	if (glew_state != GLEW_OK) {
+		log::fatal("glew failed to initialize!");
+		return;
+	}
+
+	if (!GLEW_VERSION_2_1) {
+		log::fatal("OpenGL 2.1 could not be initialized!");
+		return;
+	}
 
 	//vsync on
 	SDL_GL_SetSwapInterval(1);
