@@ -57,6 +57,8 @@ public:
 	void use();
 	void stopusing();
 
+	GLint get_uniform_id(const char *name);
+
 private:
 	const char* name;
 	bool hasvshader = false, hasfshader = false;

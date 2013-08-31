@@ -251,3 +251,7 @@ void Program::use() {
 void Program::stopusing() {
 	glUseProgram((GLuint) 0);
 }
+
+GLint Program::get_uniform_id(const char *name) {
+	return glGetUniformLocation(this->id, name);
+}
