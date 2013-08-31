@@ -2,15 +2,20 @@
 
 #include <SDL2/SDL.h>
 #include <GL/gl.h>
+#include <unistd.h>
 
 #include "engine/engine.h"
 #include "engine/texture.h"
+#include "engine/shader.h"
 #include "log/log.h"
 #include "util/fps.h"
 
 namespace openage {
 
 engine::Texture *gaben, *university;
+
+engine::shader::Shader *teamcolor_vert, *teamcolor_frag;
+engine::shader::Program *teamcolorshader;
 
 util::FrameCounter fpscounter;
 
@@ -29,6 +34,33 @@ void init() {
 	//sync this with media-convert/age2media.py !
 
 	university = new engine::Texture("../resources/age2_generated/graphics.drs/003836.slp/003836_000_04.png");
+
+	teamcolor_vert = new engine::shader::Shader(engine::shader::shader_vertex, "texturevshader");
+	teamcolor_vert->load_from_file("./shaders/maptexture.vert.glsl");
+
+	teamcolor_frag = new engine::shader::Shader(engine::shader::shader_fragment, "texturefshader");
+	teamcolor_frag->load_from_file("./shaders/teamcolors.frag.glsl");
+
+	teamcolor_vert->compile();
+	if (teamcolor_vert->check()) {
+		log::err("failed when checking texture vertex shader");
+		exit(1);
+	}
+
+	teamcolor_frag->compile();
+	if (teamcolor_frag->check()) {
+		log::err("failed when checking teamcolor fragment shader");
+		exit(1);
+	}
+
+	teamcolorshader = new engine::shader::Program("teamcolors");
+	teamcolorshader->attach_shader(teamcolor_vert);
+	teamcolorshader->attach_shader(teamcolor_frag);
+
+	if(teamcolorshader->link()) {
+		log::err("failed linking the texture program");
+		exit(1);
+	}
 }
 
 void deinit() {
@@ -65,6 +97,7 @@ void draw_method() {
 	gaben->draw(0, 0);
 
 
+	teamcolorshader->use();
 	glPushMatrix();
 	{
 		glColor3f(1, 1, 1);
@@ -74,6 +107,7 @@ void draw_method() {
 		university->draw(0, 0);
 	}
 	glPopMatrix();
+	teamcolorshader->stopusing();
 
 	fpscounter.frame();
 	//TODO: draw text in framebuffer!
