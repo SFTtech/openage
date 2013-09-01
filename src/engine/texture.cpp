@@ -64,7 +64,7 @@ Texture::Texture(const char *filename) {
 
 	SDL_FreeSurface(surface);
 
-	this->gl_id = textureid;
+	this->id = textureid;
 
 	this->centered = true;
 }
@@ -78,7 +78,7 @@ void Texture::draw(int x, int y, unsigned player, bool mirrored) {
 	glColor3f(1, 1, 1);
 	glUniform1i(teamcolor_shader::player_id_var, player);
 
-	glBindTexture(GL_TEXTURE_2D, gl_id);
+	glBindTexture(GL_TEXTURE_2D, this->id);
 	glEnable(GL_TEXTURE_2D);
 
 	int left, right, top, bottom;
