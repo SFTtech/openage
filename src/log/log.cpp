@@ -2,6 +2,10 @@
 
 #include <cstdio>
 #include <cstdarg>
+#include <cstring>
+#include <cstdlib>
+
+#include "../util/format.h"
 
 namespace openage {
 namespace log {
@@ -22,16 +26,39 @@ void log(const char *fmt, ...) {
 	const char *name = loglevels[lvl].name;
 	const char *col = loglevels[lvl].col;
 
-	printf("\x1b[%sm%s\x1b[m ", col, name);
+	char *tmp0 = util::format("\x1b[%sm%s\x1b[m", col, name);
 
-	va_list vl;
-	va_start(vl, fmt);
-	vprintf(fmt, vl);
-	va_end(vl);
+	va_list ap;
+	va_start(ap, fmt);
+	char *tmp1 = util::vformat(fmt, ap);
+	va_end(ap);
 
-	printf("\n");
+	char *buf = util::format("%s %s", tmp0, tmp1);
 
-	//TODO: store the log message into an array, which can then be read by the engine, for rendering the log text as an overlay
+	free((void *) tmp0);
+	free((void *) tmp1);
+
+	//right-strip buf
+	size_t strippos = strlen(buf);
+
+	while(strippos > 0) {
+		if (
+			buf[strippos - 1] == '\n' or
+			buf[strippos - 1] == ' ' or
+			buf[strippos - 1] == '\t') {
+
+			strippos -= 1;
+		} else {
+			break;
+		}
+	}
+
+	buf[strippos] = '\0';
+
+	puts(buf);
+	free(buf);
+
+	//TODO: store buf into an array, which can then be evaluated and displayed by the engine
 }
 
 //this function exists purely to make the compiler

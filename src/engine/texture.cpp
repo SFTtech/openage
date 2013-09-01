@@ -2,12 +2,22 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+
 #include <stdio.h>
 
 #include "../log/log.h"
 
 namespace openage {
 namespace engine {
+
+namespace teamcolor_shader {
+
+shader::Shader *vert;
+shader::Shader *frag;
+shader::Program *program;
+GLint player_id_var, alpha_marker_var;
+
+} //namespace teamcolor_shader
 
 Texture::Texture(const char *filename) {
 	SDL_Surface *surface;
@@ -55,32 +65,60 @@ Texture::Texture(const char *filename) {
 	SDL_FreeSurface(surface);
 
 	this->gl_id = textureid;
+
+	this->centered = true;
 }
 
 Texture::~Texture() {
 	//TODO free OpenGL ressource...
 }
 
-void Texture::draw(int x, int y) {
+void Texture::draw(int x, int y, unsigned player, bool mirrored) {
+	teamcolor_shader::program->use();
+	glColor3f(1, 1, 1);
+	glUniform1i(teamcolor_shader::player_id_var, player);
+
 	glBindTexture(GL_TEXTURE_2D, gl_id);
 	glEnable(GL_TEXTURE_2D);
 
+	int left, right, top, bottom;
+
+	//TODO do we have pixel-accuracy (rounding errors if w%2 == 1...)?
+	left = x;
+	top = y;
+
+	if (centered) {
+		left -= w / 2;
+		top -= h / 2;
+	}
+
+	right = left + w;
+	bottom = top + h;
+
+	if (mirrored) {
+		int tmp = right;
+		right = left;
+		left = tmp;
+	}
+
+
 	glBegin(GL_QUADS); {
 		glTexCoord2i(0, 1);
-		glVertex3f(x, y, 0);
+		glVertex3f(left, top, 0);
 
 		glTexCoord2i(1, 1);
-		glVertex3f(x + w, y, 0);
+		glVertex3f(right, top, 0);
 
 		glTexCoord2i(1, 0);
-		glVertex3f(x + w, y + h, 0);
+		glVertex3f(right, bottom, 0);
 
 		glTexCoord2i(0, 0);
-		glVertex3f(x, y + h, 0);
+		glVertex3f(left, bottom, 0);
 	}
 	glEnd();
 
 	glDisable(GL_TEXTURE_2D);
+	teamcolor_shader::program->stopusing();
 }
 
 } //namespace engine

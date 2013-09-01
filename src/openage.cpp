@@ -7,17 +7,15 @@
 
 #include "engine/engine.h"
 #include "engine/texture.h"
-#include "engine/shader.h"
+#include "engine/shader/shader.h"
+#include "engine/shader/program.h"
 #include "log/log.h"
 #include "util/fps.h"
+#include "util/error.h"
 
 namespace openage {
 
 engine::Texture *gaben, *university;
-
-engine::shader::Shader *teamcolor_vert, *teamcolor_frag;
-engine::shader::Program *teamcolorshader;
-GLint player_texshader_var, alpha_marker_var;
 
 util::FrameCounter fpscounter;
 
@@ -31,46 +29,48 @@ void init() {
 
 	//load textures and stuff
 	gaben = new engine::Texture("gaben.png");
+	gaben->centered = false;
 
 	//TODO: dynamic generation of the file path
 	//sync this with media-convert/age2media.py !
 
 	university = new engine::Texture("../resources/age2_generated/graphics.drs/003836.slp/003836_000_01.png");
 
-	teamcolor_vert = new engine::shader::Shader(engine::shader::shader_vertex, "texturevshader");
-	teamcolor_vert->load_from_file("./shaders/maptexture.vert.glsl");
+	engine::teamcolor_shader::vert = new engine::shader::Shader(engine::shader::shader_vertex, "texturevshader");
+	engine::teamcolor_shader::vert->load_from_file("./shaders/maptexture.vert.glsl");
 
-	teamcolor_frag = new engine::shader::Shader(engine::shader::shader_fragment, "texturefshader");
-	teamcolor_frag->load_from_file("./shaders/teamcolors.frag.glsl");
+	engine::teamcolor_shader::frag = new engine::shader::Shader(engine::shader::shader_fragment, "texturefshader");
+	engine::teamcolor_shader::frag->load_from_file("./shaders/teamcolors.frag.glsl");
 
-	teamcolor_vert->compile();
-	if (teamcolor_vert->check()) {
+	engine::teamcolor_shader::vert->compile();
+	if (engine::teamcolor_shader::vert->check()) {
 		log::err("failed when checking texture vertex shader");
 		exit(1);
 	}
 
-	teamcolor_frag->compile();
-	if (teamcolor_frag->check()) {
+	engine::teamcolor_shader::frag->compile();
+	if (engine::teamcolor_shader::frag->check()) {
 		log::err("failed when checking teamcolor fragment shader");
 		exit(1);
 	}
 
-	teamcolorshader = new engine::shader::Program("teamcolors");
-	teamcolorshader->attach_shader(teamcolor_vert);
-	teamcolorshader->attach_shader(teamcolor_frag);
+	engine::teamcolor_shader::program = new engine::shader::Program("teamcolors");
+	engine::teamcolor_shader::program->attach_shader(engine::teamcolor_shader::vert);
+	engine::teamcolor_shader::program->attach_shader(engine::teamcolor_shader::frag);
 
-	if(teamcolorshader->link()) {
+	if(engine::teamcolor_shader::program->link()) {
 		log::err("failed linking the texture program");
 		exit(1);
 	}
 
-	player_texshader_var = teamcolorshader->get_uniform_id("player_number");
-	alpha_marker_var = teamcolorshader->get_uniform_id("alpha_marker");
+	engine::teamcolor_shader::player_id_var = engine::teamcolor_shader::program->get_uniform_id("player_number");
+	engine::teamcolor_shader::alpha_marker_var = engine::teamcolor_shader::program->get_uniform_id("alpha_marker");
 
-	teamcolorshader->use();
+	engine::teamcolor_shader::program->use();
+	//TODO do we really need this as a variable?
 	//keep in sync with media converter script:
-	glUniform1f(alpha_marker_var, 254.0/255.0);
-	teamcolorshader->stopusing();
+	glUniform1f(engine::teamcolor_shader::alpha_marker_var, 254.0/255.0);
+	engine::teamcolor_shader::program->stopusing();
 }
 
 void deinit() {
@@ -99,38 +99,17 @@ void input_handler(SDL_Event *e) {
 		}
 		break;
 	}
-
-
 }
 
 void draw_method() {
-	gaben->draw(0, 0);
+	gaben->draw(0, 0, 0, false);
 
-	teamcolorshader->use();
-	glPushMatrix();
-	{
-		glColor3f(1, 1, 1);
-		glUniform1i(player_texshader_var, 4);
-		//this translation equals the hotspot of an image!
-		glTranslatef(lmbx - university->w/2, lmby - university->h/2, 0);
-
-		university->draw(0, 0);
-	}
-	glPopMatrix();
-
-	glPushMatrix();
-	{
-		glColor3f(1, 1, 1);
-		glUniform1i(player_texshader_var, 2);
-		glTranslatef(rmbx - university->w/2, rmby - university->h/2, 0);
-		university->draw(0, 0);
-	}
-	glPopMatrix();
-	teamcolorshader->stopusing();
+	university->draw(lmbx, lmby, 1, false);
+	university->draw(rmbx, rmby, 2, true);
 
 	fpscounter.frame();
 	//TODO: draw text in framebuffer!
-	//log::msg("fps: %f", fpscounter.fps);
+	log::msg("fps: %f", fpscounter.fps);
 }
 
 int mainmethod() {
@@ -151,5 +130,11 @@ int mainmethod() {
 } //namespace openage
 
 int main() {
+	try {
+
 	return openage::mainmethod();
+
+	} catch (openage::util::Error e) {
+		openage::log::fatal("Exception: %s", e.str());
+	}
 }

@@ -28,15 +28,17 @@ char* read_whole_file(const char *filename) {
 	}
 
 	//read the whole content
-	char *str = (char *) malloc(st.st_size);
+	char *str = (char *) malloc(st.st_size + 1);
 	if (((unsigned long) st.st_size) != fread(str, 1, st.st_size, filehandle)) {
 		log::fatal("failed reading the file %s", filename);
 		exit(1);
 	}
 
+	str[(size_t) st.st_size] = '\0';
+
 	//return the file contents
 	return str;
 }
 
-}
-}
+} //namespace util
+} //namespace openage
