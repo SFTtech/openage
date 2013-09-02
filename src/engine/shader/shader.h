@@ -30,7 +30,7 @@ public:
 
 	void get_info(GLenum pname, GLint *destination);
 	void get_log(char *destination, GLsizei maxlength);
-	const char *repr();
+	char *repr();
 
 private:
 	const char *name;

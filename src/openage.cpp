@@ -34,13 +34,13 @@ void init() {
 	//TODO: dynamic generation of the file path
 	//sync this with media-convert/age2media.py !
 
-	university = new engine::Texture("../resources/age2_generated/graphics.drs/003836.slp/003836_000_01.png");
+	university = new engine::Texture("age/graphics.drs/003836.slp/003836_000_01.png");
 
 	engine::teamcolor_shader::vert = new engine::shader::Shader(engine::shader::shader_vertex, "texturevshader");
-	engine::teamcolor_shader::vert->load_from_file("./shaders/maptexture.vert.glsl");
+	engine::teamcolor_shader::vert->load_from_file("shaders/maptexture.vert.glsl");
 
 	engine::teamcolor_shader::frag = new engine::shader::Shader(engine::shader::shader_fragment, "texturefshader");
-	engine::teamcolor_shader::frag->load_from_file("./shaders/teamcolors.frag.glsl");
+	engine::teamcolor_shader::frag->load_from_file("shaders/teamcolors.frag.glsl");
 
 	engine::teamcolor_shader::vert->compile();
 	if (engine::teamcolor_shader::vert->check()) {
@@ -58,10 +58,7 @@ void init() {
 	engine::teamcolor_shader::program->attach_shader(engine::teamcolor_shader::vert);
 	engine::teamcolor_shader::program->attach_shader(engine::teamcolor_shader::frag);
 
-	if(engine::teamcolor_shader::program->link()) {
-		log::err("failed linking the texture program");
-		exit(1);
-	}
+	engine::teamcolor_shader::program->link();
 
 	engine::teamcolor_shader::player_id_var = engine::teamcolor_shader::program->get_uniform_id("player_number");
 	engine::teamcolor_shader::alpha_marker_var = engine::teamcolor_shader::program->get_uniform_id("alpha_marker");
@@ -131,10 +128,9 @@ int mainmethod() {
 
 int main() {
 	try {
-
-	return openage::mainmethod();
-
+		return openage::mainmethod();
 	} catch (openage::util::Error e) {
 		openage::log::fatal("Exception: %s", e.str());
+		return 1;
 	}
 }

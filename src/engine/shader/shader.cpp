@@ -8,6 +8,7 @@
 #include "../../log/log.h"
 #include "../../util/error.h"
 #include "../../util/filetools.h"
+#include "../../util/strings.h"
 
 namespace openage {
 namespace engine {
@@ -43,7 +44,7 @@ void Shader::load_from_file(const char *filename) {
 	//load the source into the opengl shader
 	this->load(srctext);
 	//this copies the source code, so we can free it now.
-	free(srctext);
+	free((void *) srctext);
 }
 
 void Shader::compile() {
@@ -58,15 +59,17 @@ int Shader::check() {
 	bool failed = (status == GL_FALSE);
 	bool succeded = (status == GL_TRUE);
 
-	char *whattext;
+	const char *whattext;
 	if (what_to_check == GL_LINK_STATUS) {
-		whattext = (char*) "link";
+		whattext = "link";
 	} else if (what_to_check == GL_VALIDATE_STATUS) {
-		whattext = (char*) "validat";
+		whattext = "validat";
 	} else if (what_to_check == GL_COMPILE_STATUS) {
-		whattext = (char*) "compil";
+		whattext = "compil";
 	} else {
-		log::err("don't know what to check for in %s: %d", this->repr(), what_to_check);
+		char *repr = this->repr();
+		log::err("don't know what to check for in %s: %d", repr, what_to_check);
+		free(repr);
 		return 1;
 	}
 
@@ -80,21 +83,29 @@ int Shader::check() {
 		this->get_log(infolog, status);
 
 		if (succeded) {
-			log::msg("%s was %sed successfully:\n%s", this->repr(), whattext, infolog);
+			char *repr = this->repr();
+			log::msg("%s was %sed successfully:\n%s", repr, whattext, infolog);
+			free(repr);
 			delete[] infolog;
 			return 0;
 		} else if (failed) {
-			log::err("failed %sing %s:\n%s", whattext, this->repr(), infolog);
+			char *repr = this->repr();
+			log::err("failed %sing %s:\n%s", whattext, repr, infolog);
+			free(repr);
 			delete[] infolog;
 			return 1;
 		} else {
-			log::err("%s %sing status unknown. log: %s", this->repr(), whattext, infolog);
+			char *repr = this->repr();
+			log::err("%s %sing status unknown. log: %s", repr, whattext, infolog);
+			free(repr);
 			delete[] infolog;
 			return 1;
 		}
 
 	} else {
-		log::err("empty program info log of %s", this->repr());
+		char *repr = this->repr();
+		log::err("empty program info log of %s", repr);
+		free(repr);
 		return 1;
 	}
 }
@@ -107,28 +118,24 @@ void Shader::get_log(char *destination, GLsizei maxlength) {
 	glGetShaderInfoLog(this->id, maxlength, NULL, destination);
 }
 
-const char *Shader::repr() {
-	std::string repr;
-
+char *Shader::repr() {
+	const char *type_name;
 	switch (this->type) {
 	case shader_vertex:
-		repr = "vertex";
+		type_name = "vertex";
 		break;
 	case shader_fragment:
-		repr = "fragment";
+		type_name = "fragment";
 		break;
 	case shader_geometry:
-		repr = "geometry";
+		type_name = "geometry";
 		break;
 	default:
-		repr = "unknown";
+		type_name = "unknown";
 		break;
 	}
 
-	repr += " shader: ";
-	repr += this->name;
-
-	return repr.c_str();
+	return util::format("%s shader: %s", type_name, this->name);
 }
 
 } //namespace shader

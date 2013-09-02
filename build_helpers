@@ -15,6 +15,14 @@ function run() {
 	run_in_root data ../bin/openage $@
 }
 
+function gdb() {
+	run_in_root data /usr/bin/gdb ../bin/openage $@
+}
+
+function valgrind() {
+	run_in_root data /usr/bin/valgrind --leak-check=full --track-origins=yes -v ../bin/openage $@
+}
+
 function rls() {
 	run_in_root . mkdir -p bin
 	run_in_root bin cmake -DCMAKE_BUILD_TYPE=Release .. $@

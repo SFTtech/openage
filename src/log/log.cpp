@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cstdlib>
 
-#include "../util/format.h"
+#include "../util/strings.h"
 
 namespace openage {
 namespace log {
@@ -38,27 +38,13 @@ void log(const char *fmt, ...) {
 	free((void *) tmp0);
 	free((void *) tmp1);
 
-	//right-strip buf
-	size_t strippos = strlen(buf);
-
-	while(strippos > 0) {
-		if (
-			buf[strippos - 1] == '\n' or
-			buf[strippos - 1] == ' ' or
-			buf[strippos - 1] == '\t') {
-
-			strippos -= 1;
-		} else {
-			break;
-		}
-	}
-
-	buf[strippos] = '\0';
+	util::rstrip(buf);
 
 	puts(buf);
-	free(buf);
 
 	//TODO: store buf into an array, which can then be evaluated and displayed by the engine
+
+	free(buf);
 }
 
 //this function exists purely to make the compiler

@@ -7,6 +7,8 @@
 
 #include "../../log/log.h"
 #include "../../util/filetools.h"
+#include "../../util/strings.h"
+#include "../../util/error.h"
 
 namespace openage {
 namespace engine {
@@ -20,7 +22,7 @@ Program::~Program() {
 	glDeleteProgram(this->id);
 }
 
-int Program::attach_shader(Shader *s) {
+void Program::attach_shader(Shader *s) {
 	glAttachShader(this->id, s->id);
 
 	if (s->type == shader_fragment) {
@@ -28,99 +30,64 @@ int Program::attach_shader(Shader *s) {
 	} else if (s->type == shader_vertex) {
 		this->hasvshader = true;
 	}
-
-	return 0;
 }
 
-int Program::link() {
+void Program::link() {
 	if ( !hasfshader || !hasvshader) {
-		log::err("program %s does not have vertex and fragment shader yet, cannot be linked.", this->name);
-		return 1;
+		throw util::Error("Program %s is missing a vertex and/or fragment shader and can not be linked", this->name);
 	}
 
 	glLinkProgram(this->id);
 
-	int err, err2;
-	if ((err = this->check(GL_LINK_STATUS)) == 0) {
-		glValidateProgram(this->id);
-		if ((err2 = this->check(GL_VALIDATE_STATUS)) == 0) {
-			return 0;
-		} else {
-			return 1;
-		}
-	} else {
-		log::err("linking of program %s failed.", this->name);
-		return 1;
-	}
+	this->check(GL_LINK_STATUS);
+	this->check(GL_VALIDATE_STATUS);
 }
 
-int Program::check(GLenum what_to_check) {
-	GLint status;
+void Program::check(GLenum what_to_check) {
+	GLint status = get_info(what_to_check); //GL_FALSE or GL_TRUE
+	if (status != GL_TRUE) {
+		char *infolog = this->get_log();
 
-	this->get_info(what_to_check, &status);
-	bool failed = (status == GL_FALSE);
-	bool succeded = (status == GL_TRUE);
-
-	char* whattext;
-	if (what_to_check == GL_LINK_STATUS) {
-		whattext = (char*) "link";
-	} else if (what_to_check == GL_VALIDATE_STATUS) {
-		whattext = (char*) "validat";
-	} else if (what_to_check == GL_COMPILE_STATUS) {
-		whattext = (char*) "compil";
-	} else {
-		log::err("don't know what to check for in %s: %d", this->repr(), what_to_check);
-		return 1;
-	}
-
-	// get length of compilation log
-	this->get_info(GL_INFO_LOG_LENGTH, &status);
-
-	if (status > 0) {
-		char* infolog = new char[status];
-
-		// populate reserved text with compilation log
-		this->get_log(infolog, status);
-
-		if (succeded) {
-			log::msg("%s was %sed successfully:\n%s", this->repr(), whattext, infolog);
-			delete[] infolog;
-			return 0;
-		} else if (failed) {
-			log::err("failed %sing %s:\n%s", whattext, this->repr(), infolog);
-			delete[] infolog;
-			return 1;
-		} else {
-			log::err("%s %sing status unknown. log:\n%s", this->repr(), whattext, infolog);
-			delete[] infolog;
-			return 1;
+		const char *what_str;
+		switch(what_to_check) {
+		case GL_LINK_STATUS:
+			what_str = "linking";
+			break;
+		case GL_VALIDATE_STATUS:
+			what_str = "validation";
+			break;
+		case GL_COMPILE_STATUS:
+			what_str = "compiliation";
+			break;
+		default:
+			what_str = "<unknown task>";
+			break;
 		}
 
-	} else {
-		log::err("empty program info log of %s", this->repr());
-		return 1;
+		throw util::Error("Program %s %s failed\n%s", name, what_str, infolog);
+		//TODO memory leak here (infolog can not be freed after throwing Error)
+		//(solve by using cppstrings everywhere?)
 	}
 }
 
-void Program::get_info(GLenum pname, GLint *params) {
-	glGetProgramiv(this->id, pname, params);
+GLint Program::get_info(GLenum pname) {
+	GLint result;
+	glGetProgramiv(this->id, pname, &result);
+	return result;
 }
 
-void Program::get_log(char *destination, GLsizei maxlength) {
-	glGetProgramInfoLog(this->id, maxlength, NULL, destination);
-}
-
-const char *Program::repr() {
-	std::string repr = "program ";
-	repr += this->name;
-	return repr.c_str();
+char *Program::get_log() {
+	GLint loglen = this->get_info(GL_INFO_LOG_LENGTH);
+	char *result = (char *) malloc(loglen);
+	glGetProgramInfoLog(this->id, loglen, NULL, result);
+	return result;
 }
 
 void Program::use() {
 	if (glIsProgram(this->id) == GL_TRUE) {
 		glUseProgram(this->id);
 	} else {
-		log::err("error using a program %s ", this->repr());
+		throw util::Error("Could not use program %s", this->name);
 	}
 }
 

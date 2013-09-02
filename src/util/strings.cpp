@@ -1,7 +1,8 @@
-#include "format.h"
+#include "strings.h"
 
 #include <cstdlib>
 #include <cstdio>
+#include <cstring>
 
 namespace openage {
 namespace util {
@@ -29,6 +30,35 @@ char *vformat(const char *fmt, va_list ap) {
 	vsnprintf(result, sz, fmt, ap);
 
 	return result;
+}
+
+char *copy(const char *s) {
+	size_t sz = strlen(s) + 1;
+
+	char *result = (char *) malloc(sz);
+	memcpy(result, s, sz);
+
+	return result;
+}
+
+size_t rstrip(char *s) {
+	size_t strippedlen = strlen(s);
+
+	while(strippedlen > 0) {
+		if (
+			s[strippedlen - 1] == '\n' or
+			s[strippedlen - 1] == ' ' or
+			s[strippedlen - 1] == '\t') {
+
+			strippedlen -= 1;
+		} else {
+			break;
+		}
+	}
+
+	s[strippedlen] = '\0';
+
+	return strippedlen;
 }
 
 } //namespace util

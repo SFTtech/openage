@@ -7,10 +7,10 @@ find_package(GLEW)
 
 add_executable(${PROJECT_NAME}
 	log/log.cpp
-	util/format.cpp
 	util/error.cpp
-	util/fps.cpp
 	util/filetools.cpp
+	util/fps.cpp
+	util/strings.cpp
 	openage.cpp
 	engine/engine.cpp
 	engine/texture.cpp

@@ -6,6 +6,7 @@
 #include <stdio.h>
 
 #include "../log/log.h"
+#include "../util/error.h"
 
 namespace openage {
 namespace engine {
@@ -27,24 +28,23 @@ Texture::Texture(const char *filename) {
 	surface = IMG_Load(filename);
 
 	if (!surface) {
-		log::warn("failed to load texture from '%s': %s", filename, IMG_GetError());
-		//TODO exception
-		return;
+		throw util::Error("Could not load texture from '%s': %s", filename, IMG_GetError());
 	}
 	else {
-		log::msg("loaded texture from '%s'", filename);
+		log::dbg1("Loaded texture from '%s'", filename);
 	}
 
 	//glTexImage2D format determination
-	if (surface->format->BytesPerPixel == 3) { //RGB 24bit
+	switch (surface->format->BytesPerPixel) {
+	case 3: //RGB 24 bit
 		mode = GL_RGB;
-	}
-	else if (surface->format->BytesPerPixel == 4) { //RGBA 32bit
+		break;
+	case 4: //RGBA 32 bit
 		mode = GL_RGBA;
-	}
-	else {
-		//TODO exception
-		return;
+		break;
+	default:
+		throw util::Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename, surface->format->BytesPerPixel);
+		break;
 	}
 
 	this->w = surface->w;

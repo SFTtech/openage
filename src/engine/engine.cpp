@@ -8,6 +8,7 @@
 
 #include "texture.h"
 #include "../log/log.h"
+#include "../util/error.h"
 
 namespace openage {
 namespace engine {
@@ -27,9 +28,7 @@ unsigned window_y = 600;
 
 void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		log::fatal("SDL initialization: %s\n", SDL_GetError());
-		//TODO exception
-		return;
+		throw util::Error("SDL initialization: %s", SDL_GetError());
 	}
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
@@ -40,9 +39,7 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	window = SDL_CreateWindow("openage", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_x, window_y, SDL_WINDOW_OPENGL);
 
 	if (window == nullptr) {
-		log::fatal("SDL window creation: %s\n", SDL_GetError());
-		//TODO exception
-		return;
+		throw util::Error("SDL window creation: %s", SDL_GetError());
 	}
 
 
@@ -50,24 +47,18 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	int wanted_image_formats = IMG_INIT_JPG | IMG_INIT_PNG;
 	int sdlimg_inited = IMG_Init(wanted_image_formats);
 	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		log::fatal("IMG_Init: Failed to init required jpg and png support!\n");
-		log::fatal("IMG_Init: %s\n", IMG_GetError());
-		//TODO exception
-		return;
+		throw util::Error("Failed to init JPG/PNG support: %s", IMG_GetError());
 	}
 
 	glcontext = SDL_GL_CreateContext(window);
 
-	//initialize glew, for shaders n shit
+	//initialize glew, for shaders n stuff
 	GLenum glew_state = glewInit();
 	if (glew_state != GLEW_OK) {
-		log::fatal("glew failed to initialize!");
-		return;
+		throw util::Error("GLEW initialization failed");
 	}
-
 	if (!GLEW_VERSION_2_1) {
-		log::fatal("OpenGL 2.1 could not be initialized!");
-		return;
+		throw util::Error("OpenGL 2.1 not available");
 	}
 
 	//vsync on
@@ -143,8 +134,7 @@ void loop() {
 
 		glerrorstate = glGetError();
 		if (glerrorstate != 0) {
-			log::fatal("opengl error %d", glerrorstate);
-			return;
+			throw util::Error("OpenGL error state after running draw method: %d", glerrorstate);
 		}
 
 		SDL_GL_SwapWindow(window);

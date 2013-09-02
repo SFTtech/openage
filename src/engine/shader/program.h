@@ -19,15 +19,14 @@ public:
 	GLuint id;
 
 
-	int attach_shader(Shader *s);
+	void attach_shader(Shader *s);
 
-	int link();
+	void link();
 
-	int check(GLenum check_link_or_validate_status);
+	void check(GLenum what_to_check);
 
-	void get_info(GLenum pname, GLint *destination);
-	void get_log(char *destination, GLsizei maxlength);
-	const char *repr();
+	GLint get_info(GLenum pname);
+	char *get_log();
 
 	void use();
 	void stopusing();
