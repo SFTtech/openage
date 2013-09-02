@@ -38,8 +38,8 @@ void Program::link() {
 	}
 
 	glLinkProgram(this->id);
-
 	this->check(GL_LINK_STATUS);
+	glValidateProgram(this->id);
 	this->check(GL_VALIDATE_STATUS);
 }
 
@@ -64,7 +64,10 @@ void Program::check(GLenum what_to_check) {
 			break;
 		}
 
-		throw util::Error("Program %s %s failed\n%s", name, what_str, infolog);
+		log::dbg("GL_TRUE == %d", GL_TRUE);
+		log::dbg("GL_FALSE == %d", GL_FALSE);
+
+		throw util::Error("Program %s %s failed with status %d\n%s", name, what_str, status, infolog);
 		//TODO memory leak here (infolog can not be freed after throwing Error)
 		//(solve by using cppstrings everywhere?)
 	}
