@@ -32,7 +32,7 @@ public:
 	void draw(int x, int y, unsigned player, bool mirrored);
 
 private:
-	GLuint gl_id;
+	GLuint id;
 };
 
 } //namespace engine
