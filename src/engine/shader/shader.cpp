@@ -15,15 +15,15 @@ namespace engine {
 namespace shader {
 
 Shader::Shader(shadertype type, const char *name) : type(type), name(name) {
-	switch(type) {
+	switch(this->type) {
 	case shader_vertex:
-		id = glCreateShader(GL_VERTEX_SHADER);
+		this->id = glCreateShader(GL_VERTEX_SHADER);
 		break;
 	case shader_fragment:
-		id = glCreateShader(GL_FRAGMENT_SHADER);
+		this->id = glCreateShader(GL_FRAGMENT_SHADER);
 		break;
 	case shader_geometry:
-		id = glCreateShader(GL_GEOMETRY_SHADER);
+		this->id = glCreateShader(GL_GEOMETRY_SHADER);
 		break;
 	default:
 		throw util::Error("Unknown shader ID: %d", type);
