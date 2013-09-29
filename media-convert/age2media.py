@@ -837,40 +837,26 @@ def main():
 			hussar_slp.save_pngs(export_graphics_path, color_table, True)
 
 	elif create_player_color_entries:
-		#experiments with the color table, getting the math behind player colors:
+		#creates the color section for the teamcolor shader.
 
 		#each player has 8 subcolors, where 0 is the darkest and 7 is the lightest
 		players = range(1, 9);
 		psubcolors = range(8);
+		print("//color entries for the teamcolor shader")
+		numpcolors = len(players) * len(psubcolors)
+		print("const vec4 player_color[%d] = vec4[%d](" % (numpcolors, numpcolors))
+
 		for i in players:
-			print("//colors for player %d" % i)
+			print("\n\t//colors for player %d" % i)
 			for subcol in psubcolors:
 				r,g,b = color_table[16 * i + subcol]
-				print("const vec4 player%d_color_%d = vec4(%d.0/255.0, %d.0/255.0, %d.0/255.0, 1.0);" % (i, subcol, r, g, b))
+				cid = (i-1) * len(players) + subcol  #each entry has this index
+				print("\tvec4(%d.0/255.0, %d.0/255.0, %d.0/255.0, 1.0), //[%d] = player %d color %d" % (r, g, b, cid, i, subcol))
 
-		print("\n\n//generating get_color(basecolor, playernum):\n")
-		print("vec4 get_color(int base, int playernum) {")
+		print(");")
 
-
-		#TODO: use switch()
-		for i in players:
-			if i != 1:
-				p_else = "else "
-			else:
-				p_else = ""
-
-			print("\t%sif (playernum == %d) {" % (p_else, i))
-			for subcol in psubcolors:
-				if subcol != 0:
-					s_else = "else "
-				else:
-					s_else = ""
-				print("\t\t%sif (base == %d) {" % (s_else, subcol))
-				print("\t\t\treturn player%d_color_%d;" % (i, subcol))
-				print("\t\t}")
-
-			print("\t}")
-
+		print("\n\nvec4 get_color(int playernum, int subcolor) {")
+		print("\treturn player_color[((playernum-1) * %d) + subcolor];" % len(players))
 		print("}")
 
 main()
