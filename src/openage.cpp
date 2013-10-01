@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
+#include <FTGL/ftgl.h>
 #include <unistd.h>
 
 #include "engine/engine.h"
@@ -13,10 +14,12 @@
 #include "util/fps.h"
 #include "util/error.h"
 #include "util/filetools.h"
+#include "util/strings.h"
 
 namespace openage {
 
 engine::Texture *gaben, *university;
+FTGLTextureFont *t_font;
 
 util::FrameCounter fpscounter;
 
@@ -27,6 +30,13 @@ void init() {
 	lmby = 0;
 	rmbx = 0;
 	rmby = 0;
+
+	//load fonts
+	// TODO: don't hardcode font path, make it dynamic..
+	t_font = new FTGLTextureFont("/usr/share/fonts/dejavu/DejaVuSerif.ttf");
+	if(t_font->Error())
+		throw util::Error("failed creating the ftgl UI font");
+	t_font->FaceSize(20);
 
 	//load textures and stuff
 	gaben = new engine::Texture("gaben.png");
@@ -143,8 +153,14 @@ void draw_method() {
 	university->draw(rmbx, rmby, 2, true);
 
 	fpscounter.frame();
-	//TODO: draw text in framebuffer!
-	//log::msg("fps: %f", fpscounter.fps);
+
+	glPushMatrix();
+	{
+		glTranslatef(engine::window_x - 100, 15, 0);
+		t_font->Render(util::format("%.1f fps", fpscounter.fps));
+	}
+	glPopMatrix();
+
 }
 
 int mainmethod() {
