@@ -72,6 +72,7 @@ class DRS:
 		self.read_header()
 		self.read_table_info()
 		self.read_file_info()
+		print("========= found " + str(len(self.files)) + " files in " + self.path + ". =========")
 
 	def read_header(self):
 		buf = self.in_file.read(DRS.drs_header.size)
@@ -639,11 +640,11 @@ class ColorTable():
 		self.header = palette_lines[0]
 		self.version = palette_lines[1]
 
-		# check for palette header
+		# check for palette header, JASC-PAL = Jasc Paint Shop Pro palette
 		if self.header != "JASC-PAL":
-			raise Exception("No palette header 'JASC-PAL' found, instead: %r" % palette_lines[0])
+			raise Exception("No palette header 'JASC-PAL' found, instead: %r" % self.header)
 		if self.version != "0100":
-			raise Exception("palette version mispatch, got %s" % palette_lines[1])
+			raise Exception("palette version mispatch, got %s" % self.version)
 
 		self.num_entries = int(palette_lines[2])
 
@@ -658,7 +659,7 @@ class ColorTable():
 		imgside_length = math.ceil(math.sqrt(self.num_entries))
 		imgsize = imgside_length * squaresize
 
-		print("generating palette image with size %dx%d" % (imgsize, imgsize))
+		print("generating palette image with size %dx%d..." % (imgsize, imgsize))
 
 		palette_image = Image.new('RGBA', (imgsize, imgsize), (255, 255, 255, 0))
 		draw = ImageDraw.ImageDraw(palette_image)
@@ -692,9 +693,9 @@ class ColorTable():
 								#draw the color id
 
 								ctext = text_format % drawn #insert current color id into string
-								tcolor = (255-r, 255-b, 255-g, 255)
+								tcolor = (255-r, 255-b, 255-g, 255) #'inverse' drawing color for the color id
 
-								#draw the text  #TODO: use customsized font
+								#draw the text  #TODO: use customsized font and size
 								draw.text((sx+3, sy+1),ctext,fill=tcolor,font=None)
 
 							drawn = drawn + 1
@@ -704,6 +705,44 @@ class ColorTable():
 			raise Exception("fak u, no negative values for the squaresize pls.")
 
 		palette_image.save(filename)
+
+	def playercolors_to_file(self, filename):
+		#exports the player colors of the game palette
+		#each player has 8 subcolors, where 0 is the darkest and 7 is the lightest
+		out = "#aoe player color palette\n"
+		out = out + "#entry id = ((playernum-1) * 8) + subcolor\n"
+		i = 0
+
+		players = range(1, 9);
+		psubcolors = range(8);
+
+		numpcolors = len(players) * len(psubcolors)
+		out = out + "n=%d\n" % numpcolors
+
+		for i in players:
+			for subcol in psubcolors:
+				r,g,b = self.palette[16 * i + subcol] #player i subcolor
+				cid = (i-1) * len(players) + subcol  #each entry has this index
+				out = out + "%d=%d,%d,%d,255\n" % (cid, r, g, b)
+
+		with open(filename, "w") as f:
+			f.write(out)
+
+	def to_file(self, filename):
+		#exports the palette
+		out = "#aoe player color palette\n"
+		i = 0
+
+		numpcolors = len(self.palette)
+		out = out + "n=%d\n" % numpcolors
+
+		for r,g,b in self.palette:
+			out = out + "%d=%d,%d,%d,255\n" % (i, r, g, b)
+			i = i + 1
+
+		with open(filename, "w") as f:
+			f.write(out)
+
 
 
 	def __getitem__(self, index):
@@ -774,43 +813,42 @@ class PNG():
 def main():
 	print("welcome to the extaordinary epic age2 media file converter")
 
+	resource_files = {}
+
+	#all unit graphics etc are stored in graphics.drs
 	graphics_drs_file = DRS("../resources/age2/graphics.drs")
 	graphics_drs_file.read()
+	resource_files["graphics"] = graphics_drs_file
 
+	#user interface stuff and color tables are in interfac.drs
 	interfac_drs_file = DRS("../resources/age2/interfac.drs")
 	interfac_drs_file.read()
+	resource_files["interfac"] = interfac_drs_file
 
-	# the ingame graphics color palette is stored in the interfac.drs file at file index 50500
+	#the ingame graphics color palette is stored in the interfac.drs file at file index 50500
 	palette_index = 50500
 	color_table = ColorTable(interfac_drs_file.get_raw_file(palette_index))
+	resource_files["palette"] = color_table
 
-	color_table.to_image("../resources/colortable" + str(palette_index) + ".pal.png")
-	#print("using " + str(color_table))
+	extract_all = False
 
-	#print("\n\nfile ids in this drs:" + str(sorted(drs_file.files.keys())))
-
-	print("\n=========\nfound " + str(len(graphics_drs_file.files)) + " files in the graphics.drs.\n=========\n")
-
-	create_all = False
-	create_player_color_entries = False
 
 	if len(sys.argv) > 1:
 		if sys.argv[1] == "all":
-			create_all = True
-		elif sys.argv[1] == "playercolorentries":
-			create_player_color_entries = True
+			extract_all = True
 
-	create_single = (not create_all) and (not create_player_color_entries)
-
-	#test university and hussar creation
-	test_building = True
-	test_unit = True
 
 	export_path = "../resources/age2_generated"
 	export_graphics_path = os.path.join(export_path, "graphics.drs")
 
-	#create all graphics?
-	if create_all:
+	color_table.to_image(export_path + "/color_table" + str(palette_index) + ".pal.png")
+
+
+	#extract all needed resources from aoc data files?
+	if extract_all:
+		#this routine exports all graphics, sounds and other shit
+		#from the original media files. this mode must be used
+		#for the installation procedure.
 		for table in graphics_drs_file.table_info:
 			extension = table[1]
 			if extension == 'slp':
@@ -821,42 +859,26 @@ def main():
 			else:
 				pass
 
-	elif create_single:
+	else:
+		#test university and hussar creation
+		test_building = True
+		test_unit = True
+
 		if test_building:
-			#only create a university
+			#create a university
 			uni_id = 3836
 			uni_slp = SLP(graphics_drs_file.get_raw_file(uni_id), uni_id)
 
 			uni_slp.save_pngs(export_graphics_path, color_table, True)
 
 		if test_unit:
-			#only create a hussar
+			#create a hussar
 			hussar_id = 4857
 			hussar_slp = SLP(graphics_drs_file.get_raw_file(hussar_id), hussar_id)
 
 			hussar_slp.save_pngs(export_graphics_path, color_table, True)
 
-	elif create_player_color_entries:
-		#creates the color section for the teamcolor shader.
+		color_table.playercolors_to_file(export_path + "/player_color_palette.pal")
 
-		#each player has 8 subcolors, where 0 is the darkest and 7 is the lightest
-		players = range(1, 9);
-		psubcolors = range(8);
-		print("//color entries for the teamcolor shader")
-		numpcolors = len(players) * len(psubcolors)
-		print("const vec4 player_color[%d] = vec4[%d](" % (numpcolors, numpcolors))
-
-		for i in players:
-			print("\n\t//colors for player %d" % i)
-			for subcol in psubcolors:
-				r,g,b = color_table[16 * i + subcol]
-				cid = (i-1) * len(players) + subcol  #each entry has this index
-				print("\tvec4(%d.0/255.0, %d.0/255.0, %d.0/255.0, 1.0), //[%d] = player %d color %d" % (r, g, b, cid, i, subcol))
-
-		print(");")
-
-		print("\n\nvec4 get_color(int playernum, int subcolor) {")
-		print("\treturn player_color[((playernum-1) * %d) + subcolor];" % len(players))
-		print("}")
 
 main()

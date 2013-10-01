@@ -12,6 +12,7 @@
 #include "log/log.h"
 #include "util/fps.h"
 #include "util/error.h"
+#include "util/filetools.h"
 
 namespace openage {
 
@@ -62,11 +63,48 @@ void init() {
 
 	engine::teamcolor_shader::player_id_var = engine::teamcolor_shader::program->get_uniform_id("player_number");
 	engine::teamcolor_shader::alpha_marker_var = engine::teamcolor_shader::program->get_uniform_id("alpha_marker");
+	engine::teamcolor_shader::player_color_var = engine::teamcolor_shader::program->get_uniform_id("player_color");
+
+	//get the player colors from the sub-palette exported by script
+	char *pcolor_file = util::read_whole_file("age/player_color_palette.pal");
+
+	const uint num_pcolors = 64;
+	GLfloat playercolors[num_pcolors*4];
+
+	char *currentline = pcolor_file;
+
+	for(; *pcolor_file != '\0'; pcolor_file++) {
+
+		if (*pcolor_file == '\n') {
+			*pcolor_file = '\0';
+
+			if (*currentline != '#') {
+				int n, r, g, b, a, idx;
+
+				//TODO raise exception if stuff is specified multiple times.
+				//alternatively, simply dont use indices, raise exception if values are > 255 or < 0, or if idx is < 0 or > 63
+
+				if(sscanf(currentline, "n=%d", &n) == 1) {
+					if (n != num_pcolors) {
+						throw util::Error("the player colortable must have %d entries!", num_pcolors);
+					}
+				} else if(sscanf(currentline, "%d=%d,%d,%d,%d", &idx, &r, &g, &b, &a)) {
+					playercolors[idx*4] = r / 255.0;
+					playercolors[idx*4 + 1] = g / 255.0;
+					playercolors[idx*4 + 2] = b / 255.0;
+					playercolors[idx*4 + 3] = a / 255.0;
+				} else {
+					throw util::Error("unknown line content reading the player color table");
+				}
+			}
+			currentline = pcolor_file + 1;
+		}
+	}
 
 	engine::teamcolor_shader::program->use();
-	//TODO do we really need this as a variable?
 	//keep in sync with media converter script:
 	glUniform1f(engine::teamcolor_shader::alpha_marker_var, 254.0/255.0);
+	glUniform4fv(engine::teamcolor_shader::player_color_var, 64, playercolors);
 	engine::teamcolor_shader::program->stopusing();
 }
 
@@ -106,7 +144,7 @@ void draw_method() {
 
 	fpscounter.frame();
 	//TODO: draw text in framebuffer!
-	log::msg("fps: %f", fpscounter.fps);
+	//log::msg("fps: %f", fpscounter.fps);
 }
 
 int mainmethod() {
