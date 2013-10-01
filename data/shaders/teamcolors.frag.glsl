@@ -42,33 +42,17 @@ void main()
 
 		pixel[3] = 1.0; //set it for the comparison
 
-		//dont replace the color if it's already player 1 (blue)
+		//don't replace the colors if it's already player 1 (blue)
+		//as the media convert scripts generates blue-player sprites
 		if (player_number != 1) {
-			if (is_color(pixel, player_color[0])) {
-				pixel = get_color(player_number, 0);
+			bool found = false;
+			for(int i = 0; i <= 7; i++) {
+				if (is_color(pixel, player_color[i])) {
+					pixel = get_color(player_number, i);
+					found = true;
+				}
 			}
-			else if (is_color(pixel, player_color[1])) {
-				pixel = get_color(player_number, 1);
-			}
-			else if (is_color(pixel, player_color[2])) {
-				pixel = get_color(player_number, 2);
-			}
-			else if (is_color(pixel, player_color[3])) {
-				pixel = get_color(player_number, 3);
-			}
-			else if (is_color(pixel, player_color[4])) {
-				pixel = get_color(player_number, 4);
-			}
-			else if (is_color(pixel, player_color[5])) {
-				pixel = get_color(player_number, 5);
-			}
-			else if (is_color(pixel, player_color[6])) {
-				pixel = get_color(player_number, 6);
-			}
-			else if (is_color(pixel, player_color[7])) {
-				pixel = get_color(player_number, 7);
-			}
-			else {
+			if (!found) {
 				//unknown base color gets pink muhahaha
 				pixel = vec4(255.0/255.0, 20.0/255.0, 147.0/255.0, 1.0);
 			}
