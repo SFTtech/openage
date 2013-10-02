@@ -15,6 +15,7 @@
 #include "util/error.h"
 #include "util/filetools.h"
 #include "util/strings.h"
+#include "util/timer.h"
 
 namespace openage {
 
@@ -22,17 +23,21 @@ engine::Texture *gaben, *university;
 FTGLTextureFont *t_font;
 
 util::FrameCounter fpscounter;
+util::Timer *timer;
 
 unsigned lmbx, lmby, rmbx, rmby;
 
 void init() {
+	timer = new util::Timer();
+	timer->start();
+
 	lmbx = 0;
 	lmby = 0;
 	rmbx = 0;
 	rmby = 0;
 
 	//load fonts
-	// TODO: don't hardcode font path, make it dynamic..
+	// TODO: don't hardcode font path, make it dynamic (sounds like a job for cmake)..
 	t_font = new FTGLTextureFont("/usr/share/fonts/dejavu/DejaVuSerif.ttf");
 	if(t_font->Error())
 		throw util::Error("failed creating the dejavu font with ftgl");
@@ -41,6 +46,7 @@ void init() {
 	//load textures and stuff
 	gaben = new engine::Texture("gaben.png");
 	gaben->centered = false;
+
 
 	//TODO: dynamic generation of the file path
 	//sync this with media-convert/age2media.py !
@@ -118,6 +124,8 @@ void init() {
 	glUniform1f(engine::teamcolor_shader::alpha_marker_var, 254.0/255.0);
 	glUniform4fv(engine::teamcolor_shader::player_color_var, 64, playercolors);
 	engine::teamcolor_shader::program->stopusing();
+
+	log::msg("Time for startup: %.4f s", timer->measure()/1000.0);
 }
 
 void deinit() {

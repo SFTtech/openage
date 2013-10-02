@@ -11,6 +11,7 @@ add_executable(${PROJECT_NAME}
 	util/filetools.cpp
 	util/fps.cpp
 	util/strings.cpp
+	util/timer.cpp
 	openage.cpp
 	engine/engine.cpp
 	engine/texture.cpp
