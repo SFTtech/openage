@@ -656,8 +656,8 @@ class ColorTable():
 
 	def to_image(self, filename, draw_text=True, squaresize=100):
 		#writes this color table (palette) to a png image.
-		imgside_length = math.ceil(math.sqrt(self.num_entries))
-		imgsize = imgside_length * squaresize
+		imgside_length = int(math.ceil(math.sqrt(self.num_entries)))
+		imgsize = int(imgside_length * squaresize)
 
 		print("generating palette image with size %dx%d..." % (imgsize, imgsize))
 
