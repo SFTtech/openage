@@ -122,6 +122,13 @@ void init() {
 
 void deinit() {
 	log::msg("openage shutting down...");
+
+	delete t_font;
+	delete gaben;
+	delete university;
+	delete engine::teamcolor_shader::vert;
+	delete engine::teamcolor_shader::frag;
+	delete engine::teamcolor_shader::program;
 }
 
 void input_handler(SDL_Event *e) {
