@@ -839,6 +839,7 @@ def main():
 
 
 	export_path = "../resources/age2_generated"
+	os.makedirs(export_path, exist_ok=True)
 	export_graphics_path = os.path.join(export_path, "graphics.drs")
 
 	color_table.to_image(export_path + "/color_table" + str(palette_index) + ".pal.png")
