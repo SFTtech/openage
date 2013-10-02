@@ -89,16 +89,16 @@ void init() {
 			*pcolor_file = '\0';
 
 			if (*currentline != '#') {
-				int n, r, g, b, a, idx;
+				uint n, r, g, b, a, idx;
 
 				//TODO raise exception if stuff is specified multiple times.
 				//alternatively, simply dont use indices, raise exception if values are > 255 or < 0, or if idx is < 0 or > 63
 
-				if(sscanf(currentline, "n=%d", &n) == 1) {
+				if(sscanf(currentline, "n=%u", &n) == 1) {
 					if (n != num_pcolors) {
-						throw util::Error("the player colortable must have %d entries!", num_pcolors);
+						throw util::Error("the player colortable must have %u entries!", num_pcolors);
 					}
-				} else if(sscanf(currentline, "%d=%d,%d,%d,%d", &idx, &r, &g, &b, &a)) {
+				} else if(sscanf(currentline, "%u=%u,%u,%u,%u", &idx, &r, &g, &b, &a)) {
 					playercolors[idx*4] = r / 255.0;
 					playercolors[idx*4 + 1] = g / 255.0;
 					playercolors[idx*4 + 2] = b / 255.0;
