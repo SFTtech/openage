@@ -50,6 +50,7 @@ void main()
 				if (is_color(pixel, player_color[i])) {
 					pixel = get_color(player_number, i);
 					found = true;
+					break;
 				}
 			}
 			if (!found) {
