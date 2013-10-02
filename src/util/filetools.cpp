@@ -28,7 +28,7 @@ char* read_whole_file(const char *filename) {
 	}
 
 	//read the whole content
-	char *str = (char *) malloc(st.st_size + 1);
+	char *str = new char[st.st_size + 1];
 	if (((unsigned long) st.st_size) != fread(str, 1, st.st_size, filehandle)) {
 		log::fatal("failed reading the file %s", filename);
 		exit(1);

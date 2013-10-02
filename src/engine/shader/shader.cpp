@@ -44,7 +44,7 @@ void Shader::load_from_file(const char *filename) {
 	//load the source into the opengl shader
 	this->load(srctext);
 	//this copies the source code, so we can free it now.
-	free((void *) srctext);
+	delete[] srctext;
 }
 
 void Shader::compile() {
@@ -69,7 +69,7 @@ int Shader::check() {
 	} else {
 		char *repr = this->repr();
 		log::err("don't know what to check for in %s: %d", repr, what_to_check);
-		free(repr);
+		delete[] repr;
 		return 1;
 	}
 
@@ -85,19 +85,19 @@ int Shader::check() {
 		if (succeded) {
 			char *repr = this->repr();
 			log::msg("%s was %sed successfully:\n%s", repr, whattext, infolog);
-			free(repr);
+			delete[] repr;
 			delete[] infolog;
 			return 0;
 		} else if (failed) {
 			char *repr = this->repr();
 			log::err("failed %sing %s:\n%s", whattext, repr, infolog);
-			free(repr);
+			delete[] repr;
 			delete[] infolog;
 			return 1;
 		} else {
 			char *repr = this->repr();
 			log::err("%s %sing status unknown. log: %s", repr, whattext, infolog);
-			free(repr);
+			delete[] repr;
 			delete[] infolog;
 			return 1;
 		}
@@ -105,7 +105,7 @@ int Shader::check() {
 	} else {
 		char *repr = this->repr();
 		log::err("empty program info log of %s", repr);
-		free(repr);
+		delete[] repr;
 		return 1;
 	}
 }

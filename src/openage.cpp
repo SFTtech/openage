@@ -110,6 +110,8 @@ void init() {
 			currentline = pcolor_file + 1;
 		}
 	}
+	//TODO free the pcolor_file...
+	//delete[] pcolor_file;
 
 	engine::teamcolor_shader::program->use();
 	//keep in sync with media converter script:

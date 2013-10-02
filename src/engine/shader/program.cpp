@@ -81,7 +81,7 @@ GLint Program::get_info(GLenum pname) {
 
 char *Program::get_log() {
 	GLint loglen = this->get_info(GL_INFO_LOG_LENGTH);
-	char *result = (char *) malloc(loglen);
+	char *result = new char[loglen];
 	glGetProgramInfoLog(this->id, loglen, NULL, result);
 	return result;
 }
