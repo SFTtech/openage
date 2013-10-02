@@ -35,7 +35,7 @@ void init() {
 	// TODO: don't hardcode font path, make it dynamic..
 	t_font = new FTGLTextureFont("/usr/share/fonts/dejavu/DejaVuSerif.ttf");
 	if(t_font->Error())
-		throw util::Error("failed creating the ftgl UI font");
+		throw util::Error("failed creating the dejavu font with ftgl");
 	t_font->FaceSize(20);
 
 	//load textures and stuff
@@ -47,10 +47,10 @@ void init() {
 
 	university = new engine::Texture("age/graphics.drs/003836.slp/003836_000_01.png");
 
-	engine::teamcolor_shader::vert = new engine::shader::Shader(engine::shader::shader_vertex, "texturevshader");
+	engine::teamcolor_shader::vert = new engine::shader::Shader(engine::shader::shader_vertex, "texture-vertexshader");
 	engine::teamcolor_shader::vert->load_from_file("shaders/maptexture.vert.glsl");
 
-	engine::teamcolor_shader::frag = new engine::shader::Shader(engine::shader::shader_fragment, "texturefshader");
+	engine::teamcolor_shader::frag = new engine::shader::Shader(engine::shader::shader_fragment, "teamcolor-fragmentshader");
 	engine::teamcolor_shader::frag->load_from_file("shaders/teamcolors.frag.glsl");
 
 	engine::teamcolor_shader::vert->compile();
