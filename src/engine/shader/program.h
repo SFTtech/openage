@@ -12,21 +12,12 @@ namespace shader {
 
 class Program {
 public:
-	Program(const char *name);
+	Program();
 	~Program();
-
-	Shader *vertex, *fragment;
-	GLuint id;
-
 
 	void attach_shader(Shader *s);
 
 	void link();
-
-	void check(GLenum what_to_check);
-
-	GLint get_info(GLenum pname);
-	char *get_log();
 
 	void use();
 	void stopusing();
@@ -34,8 +25,12 @@ public:
 	GLint get_uniform_id(const char *name);
 
 private:
-	const char *name;
 	bool hasvshader = false, hasfshader = false;
+	GLuint id;
+
+	void check(GLenum what_to_check);
+	GLint get_info(GLenum pname);
+	char *get_log();
 };
 
 

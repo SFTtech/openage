@@ -14,128 +14,50 @@ namespace openage {
 namespace engine {
 namespace shader {
 
-Shader::Shader(shadertype type, const char *name) : type(type), name(name) {
-	switch(type) {
-	case shader_vertex:
-		id = glCreateShader(GL_VERTEX_SHADER);
-		break;
-	case shader_fragment:
-		id = glCreateShader(GL_FRAGMENT_SHADER);
-		break;
-	case shader_geometry:
-		id = glCreateShader(GL_GEOMETRY_SHADER);
-		break;
+const char *type_to_string(GLenum type) {
+	switch (type) {
+	case GL_VERTEX_SHADER:
+		return "vertex";
+	case GL_FRAGMENT_SHADER:
+		return "fragment";
+	case GL_GEOMETRY_SHADER:
+		return "geometry";
 	default:
-		throw util::Error("Unknown shader ID: %d", type);
+		return "unknown";
+	}
+}
+
+Shader::Shader(GLenum type, const char *source) {
+	//create shader
+	id = glCreateShader(type);
+
+	//load shader source
+	glShaderSource(id, 1, &source, NULL);
+
+	//compile shader source
+	glCompileShader(id);
+
+	//check compiliation result
+	GLint status;
+	glGetShaderiv(id, GL_COMPILE_STATUS, &status);
+
+	if (status != GL_TRUE) {
+		GLint loglen;
+		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &loglen);
+
+		char *infolog = (char *) malloc(loglen);
+		glGetShaderInfoLog(id, loglen, NULL, infolog);
+
+		util::Error e("Failed to compile %s shader\n%s", type_to_string(type), infolog);
+		free(infolog);
+		glDeleteShader(id);
+
+		throw e;
 	}
 }
 
 Shader::~Shader() {
-	glDeleteShader(this->id);
-}
-
-void Shader::load(const char *source) {
-	//copy the given source code to the opengl shader.
-	glShaderSource(this->id, 1, (const char **) &source, NULL);
-}
-
-void Shader::load_from_file(const char *filename) {
-	char *srctext = util::read_whole_file(filename);
-	//load the source into the opengl shader
-	this->load(srctext);
-	//this copies the source code, so we can free it now.
-	free((void *) srctext);
-}
-
-void Shader::compile() {
-	glCompileShader(this->id);
-}
-
-int Shader::check() {
-	GLenum what_to_check = GL_COMPILE_STATUS;
-	GLint status;
-
-	this->get_info(what_to_check, &status);
-	bool failed = (status == GL_FALSE);
-	bool succeded = (status == GL_TRUE);
-
-	const char *whattext;
-	if (what_to_check == GL_LINK_STATUS) {
-		whattext = "link";
-	} else if (what_to_check == GL_VALIDATE_STATUS) {
-		whattext = "validat";
-	} else if (what_to_check == GL_COMPILE_STATUS) {
-		whattext = "compil";
-	} else {
-		char *repr = this->repr();
-		log::err("don't know what to check for in %s: %d", repr, what_to_check);
-		free(repr);
-		return 1;
-	}
-
-	// get length of compilation log
-	this->get_info(GL_INFO_LOG_LENGTH, &status);
-
-	if (status > 0) {
-		char* infolog = new char[status];
-
-		// populate reserved text with compilation log
-		this->get_log(infolog, status);
-
-		if (succeded) {
-			char *repr = this->repr();
-			log::msg("%s was %sed successfully:\n%s", repr, whattext, infolog);
-			free(repr);
-			delete[] infolog;
-			return 0;
-		} else if (failed) {
-			char *repr = this->repr();
-			log::err("failed %sing %s:\n%s", whattext, repr, infolog);
-			free(repr);
-			delete[] infolog;
-			return 1;
-		} else {
-			char *repr = this->repr();
-			log::err("%s %sing status unknown. log: %s", repr, whattext, infolog);
-			free(repr);
-			delete[] infolog;
-			return 1;
-		}
-
-	} else {
-		char *repr = this->repr();
-		log::err("empty program info log of %s", repr);
-		free(repr);
-		return 1;
-	}
-}
-
-void Shader::get_info(GLenum pname, GLint *params) {
-	glGetShaderiv(this->id, pname, params);
-}
-
-void Shader::get_log(char *destination, GLsizei maxlength) {
-	glGetShaderInfoLog(this->id, maxlength, NULL, destination);
-}
-
-char *Shader::repr() {
-	const char *type_name;
-	switch (this->type) {
-	case shader_vertex:
-		type_name = "vertex";
-		break;
-	case shader_fragment:
-		type_name = "fragment";
-		break;
-	case shader_geometry:
-		type_name = "geometry";
-		break;
-	default:
-		type_name = "unknown";
-		break;
-	}
-
-	return util::format("%s shader: %s", type_name, this->name);
+	glDeleteShader(id);
 }
 
 } //namespace shader

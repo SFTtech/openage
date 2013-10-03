@@ -1,6 +1,6 @@
 //total basic standard texture mapping fragment shader
 
-uniform sampler2D texure;
+uniform sampler2D texture;
 
 void main (void) {
 	//this sets the fragment color to the corresponding texel.

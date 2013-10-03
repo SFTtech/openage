@@ -14,39 +14,34 @@ namespace openage {
 namespace engine {
 namespace shader {
 
-Program::Program(const char *name) : name(name) {
-	this->id = glCreateProgram();
+Program::Program() {
+	id = glCreateProgram();
 }
 
 Program::~Program() {
-	glDeleteProgram(this->id);
+	glDeleteProgram(id);
 }
 
 void Program::attach_shader(Shader *s) {
-	glAttachShader(this->id, s->id);
-
-	if (s->type == shader_fragment) {
-		this->hasfshader = true;
-	} else if (s->type == shader_vertex) {
-		this->hasvshader = true;
-	}
+	glAttachShader(id, s->id);
 }
 
 void Program::link() {
-	if ( !hasfshader || !hasvshader) {
-		throw util::Error("Program %s is missing a vertex and/or fragment shader and can not be linked", this->name);
-	}
-
-	glLinkProgram(this->id);
+	glLinkProgram(id);
 	this->check(GL_LINK_STATUS);
-	glValidateProgram(this->id);
+	glValidateProgram(id);
 	this->check(GL_VALIDATE_STATUS);
 }
 
 void Program::check(GLenum what_to_check) {
-	GLint status = get_info(what_to_check); //GL_FALSE or GL_TRUE
+	GLint status;
+	glGetProgramiv(id, what_to_check, &status);
+
 	if (status != GL_TRUE) {
-		char *infolog = this->get_log();
+		GLint loglen;
+		glGetProgramiv(id, GL_INFO_LOG_LENGTH, &loglen);
+		char *infolog = (char *) malloc(loglen);
+		glGetProgramInfoLog(id, loglen, NULL, infolog);
 
 		const char *what_str;
 		switch(what_to_check) {
@@ -67,31 +62,14 @@ void Program::check(GLenum what_to_check) {
 		log::dbg("GL_TRUE == %d", GL_TRUE);
 		log::dbg("GL_FALSE == %d", GL_FALSE);
 
-		throw util::Error("Program %s %s failed with status %d\n%s", name, what_str, status, infolog);
-		//TODO memory leak here (infolog can not be freed after throwing Error)
-		//(solve by using cppstrings everywhere?)
+		util::Error e("Program %s failed\n%s", what_str, infolog);
+		free(infolog);
+		throw e;
 	}
-}
-
-GLint Program::get_info(GLenum pname) {
-	GLint result;
-	glGetProgramiv(this->id, pname, &result);
-	return result;
-}
-
-char *Program::get_log() {
-	GLint loglen = this->get_info(GL_INFO_LOG_LENGTH);
-	char *result = (char *) malloc(loglen);
-	glGetProgramInfoLog(this->id, loglen, NULL, result);
-	return result;
 }
 
 void Program::use() {
-	if (glIsProgram(this->id) == GL_TRUE) {
-		glUseProgram(this->id);
-	} else {
-		throw util::Error("Could not use program %s", this->name);
-	}
+	glUseProgram(id);
 }
 
 void Program::stopusing() {
@@ -99,7 +77,7 @@ void Program::stopusing() {
 }
 
 GLint Program::get_uniform_id(const char *name) {
-	return glGetUniformLocation(this->id, name);
+	return glGetUniformLocation(id, name);
 }
 
 } //namespace shader

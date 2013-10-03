@@ -8,32 +8,14 @@ namespace openage {
 namespace engine {
 namespace shader {
 
-enum shadertype {
-	shader_vertex, shader_fragment, shader_geometry
-};
+const char *type_to_string(GLenum type);
 
 class Shader {
 public:
-	Shader(shadertype type, const char *name);
+	Shader(GLenum type, const char *source);
 	~Shader();
 
-	shadertype type;
 	GLuint id;
-
-
-	void load(const char *source);
-	void load_from_file(const char *filename);
-
-	void compile();
-
-	int check();
-
-	void get_info(GLenum pname, GLint *destination);
-	void get_log(char *destination, GLsizei maxlength);
-	char *repr();
-
-private:
-	const char *name;
 };
 
 } //namespace shader

@@ -12,6 +12,7 @@
 #include "log/log.h"
 #include "util/fps.h"
 #include "util/error.h"
+#include "util/filetools.h"
 
 namespace openage {
 
@@ -36,25 +37,15 @@ void init() {
 
 	university = new engine::Texture("age/graphics.drs/003836.slp/003836_000_01.png");
 
-	engine::teamcolor_shader::vert = new engine::shader::Shader(engine::shader::shader_vertex, "texturevshader");
-	engine::teamcolor_shader::vert->load_from_file("shaders/maptexture.vert.glsl");
+	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
+	engine::teamcolor_shader::vert = new engine::shader::Shader(GL_VERTEX_SHADER, texturevshader_code);
+	free(texturevshader_code);
 
-	engine::teamcolor_shader::frag = new engine::shader::Shader(engine::shader::shader_fragment, "texturefshader");
-	engine::teamcolor_shader::frag->load_from_file("shaders/teamcolors.frag.glsl");
+	char *texturefshader_code = util::read_whole_file("shaders/teamcolors.frag.glsl");
+	engine::teamcolor_shader::frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, texturefshader_code);
+	free(texturefshader_code);
 
-	engine::teamcolor_shader::vert->compile();
-	if (engine::teamcolor_shader::vert->check()) {
-		log::err("failed when checking texture vertex shader");
-		exit(1);
-	}
-
-	engine::teamcolor_shader::frag->compile();
-	if (engine::teamcolor_shader::frag->check()) {
-		log::err("failed when checking teamcolor fragment shader");
-		exit(1);
-	}
-
-	engine::teamcolor_shader::program = new engine::shader::Program("teamcolors");
+	engine::teamcolor_shader::program = new engine::shader::Program();
 	engine::teamcolor_shader::program->attach_shader(engine::teamcolor_shader::vert);
 	engine::teamcolor_shader::program->attach_shader(engine::teamcolor_shader::frag);
 
@@ -65,7 +56,6 @@ void init() {
 
 	engine::teamcolor_shader::program->use();
 	//TODO do we really need this as a variable?
-	//keep in sync with media converter script:
 	glUniform1f(engine::teamcolor_shader::alpha_marker_var, 254.0/255.0);
 	engine::teamcolor_shader::program->stopusing();
 }
