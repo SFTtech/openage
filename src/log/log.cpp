@@ -35,8 +35,8 @@ void log(const char *fmt, ...) {
 
 	char *buf = util::format("%s %s", tmp0, tmp1);
 
-	free((void *) tmp0);
-	free((void *) tmp1);
+	delete[] tmp0;
+	delete[] tmp1;
 
 	util::rstrip(buf);
 
@@ -44,7 +44,7 @@ void log(const char *fmt, ...) {
 
 	//TODO: store buf into an array, which can then be evaluated and displayed by the engine
 
-	free(buf);
+	delete[] buf;
 }
 
 //this function exists purely to make the compiler

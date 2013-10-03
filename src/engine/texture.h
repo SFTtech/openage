@@ -15,7 +15,7 @@ namespace teamcolor_shader {
 extern shader::Shader *vert;
 extern shader::Shader *frag;
 extern shader::Program *program;
-extern GLint player_id_var, alpha_marker_var;
+extern GLint player_id_var, alpha_marker_var, player_color_var;
 
 } //namespace teamcolor_shader
 

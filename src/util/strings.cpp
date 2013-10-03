@@ -25,7 +25,7 @@ char *vformat(const char *fmt, va_list ap) {
 	size_t sz = vsnprintf(NULL, 0, fmt, aq) + 1;
 	va_end(aq);
 
-	char *result = (char *) malloc(sz);
+	char *result = new char[sz];
 
 	vsnprintf(result, sz, fmt, ap);
 
@@ -35,7 +35,7 @@ char *vformat(const char *fmt, va_list ap) {
 char *copy(const char *s) {
 	size_t sz = strlen(s) + 1;
 
-	char *result = (char *) malloc(sz);
+	char *result = new char[sz];
 	memcpy(result, s, sz);
 
 	return result;

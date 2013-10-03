@@ -22,7 +22,7 @@ Error::Error(Error const &other) {
 }
 
 Error &Error::operator=(Error const &other) {
-	free(buf);
+	delete[] buf;
 	buf = copy(other.buf);
 	return *this;
 }
@@ -34,7 +34,7 @@ Error::Error(Error &&other) {
 
 
 Error::~Error() {
-	free((void *) buf);
+	delete[] buf;
 }
 
 const char *Error::str() {

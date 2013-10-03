@@ -16,8 +16,11 @@ this project is released under the GNU GPLv3 or later.
 dependencies
 ============
 
-python imaging library (PIL) -> pillow
+python3 imaging library (PIL) -> pillow
 opengl 2.1
+ftgl
+dejavu font
+freetype2
 
 
 how to build

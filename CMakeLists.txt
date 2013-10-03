@@ -4,7 +4,7 @@ project(openage)
 
 #main build configuration file
 
-#eventually use clang
+#maybe use clang
 #set(CMAKE_CXX_COMPILER "clang++" )
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++11")

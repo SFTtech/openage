@@ -1,4 +1,4 @@
-#include_directories(${CMAKEDEMO_SOURCE_DIR}/src)
+include_directories(/usr/include/freetype2)
 #link_directories(${CMAKEDEMO_BINARY_DIR}/src)
 
 find_package(OpenGL)
@@ -11,6 +11,7 @@ add_executable(${PROJECT_NAME}
 	util/filetools.cpp
 	util/fps.cpp
 	util/strings.cpp
+	util/timer.cpp
 	openage.cpp
 	engine/engine.cpp
 	engine/texture.cpp
@@ -24,4 +25,5 @@ target_link_libraries(${PROJECT_NAME}
 	SDL2_image
 	${OPENGL_LIBRARY}
 	${GLEW_LIBRARIES}
+	ftgl
 )
