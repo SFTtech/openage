@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import os
 import os.path
 import sys
@@ -7,292 +5,20 @@ import math
 
 from PIL import Image, ImageDraw
 from struct import Struct, unpack_from
+from util import NamedObject
 
-#version of the drs file, hardcoded for now
-file_version = 57
-
-if file_version == 57:
-	copyright_size = 40
-elif file_version == 59:
-	copyright_size = 60
-
-
-#we force the endianness to little endian by "<" in the Struct() format
-#as this is the byte-order in the drs file
-
-
-class EnumVal:
-	def __init__(self, representation, **kw):
-		self.representation = representation
-		self.__dict__.update(kw)
-
-	def __repr__(self):
-		return self.representation
-
-class DRS:
-	#struct drs_header {
-	# char copyright[copyright-size];
-	# char version[4];
-	# char ftype[12];
-	# int table_count;
-	# int file_offset; //offset of first file
-	#};
-	#
-	drs_header = Struct("< " + str(copyright_size) + "s 4s 12s i i")
-
-	#struct table_info {
-	# char file_type;
-	# char file_extension[3]; //reversed extension
-	# int file_info_offset;   //table offset
-	# int num_files;          //number of files in table
-	#};
-	drs_table_info = Struct("< c 3s i i")
-
-	#struct file_info {
-	# int file_id;
-	# int file_data_offset;
-	# int file_size;
-	#};
-	drs_file_info = Struct("< i i i")
-
-	def __init__(self, path):
-		self.path = path
-		self.in_file = None
-		self.files = {}       #key: file id, value: file_data_offset, file_size, file_extension
-		self.file_info = {}   #key: table, value: list of drs_file_info tuples for this table
-		self.file_table = {}  #key: id, value: drs_table_info tuple of this file
-
-	def __del__(self):
-		if self.in_file:
-			self.in_file.close()
-
-	def read(self):
-		self.in_file = open(self.path, "rb")
-
-		self.read_header()
-		self.read_table_info()
-		self.read_file_info()
-
-	def read_header(self):
-		buf = self.in_file.read(DRS.drs_header.size)
-		self.header = DRS.drs_header.unpack(buf)
-
-	def read_table_info(self):
-		table_count = self.header[3]
-
-		self.table_info = []
-
-		buf = self.in_file.read(table_count * DRS.drs_table_info.size)
-		for i in range(table_count):
-			table_info = DRS.drs_table_info.unpack_from(buf, i * DRS.drs_table_info.size)
-
-			file_type, file_extension, file_info_offset, num_files = table_info
-			#flip the extension... it's stored like that..
-			file_extension = file_extension.decode('utf-8')[::-1]
-			table_info = file_type, file_extension, file_info_offset, num_files
-
-			self.table_info.append(table_info)
-
-	def read_file_info(self):
-
-		for table in self.table_info:
-
-			file_type, file_extension, file_info_offset, num_files = table
-
-			file_info_list = []
-
-			self.in_file.seek(file_info_offset)
-			buf = self.in_file.read(num_files * DRS.drs_file_info.size)
-
-			for i in range(num_files):
-				info = DRS.drs_file_info.unpack_from(buf, i * DRS.drs_file_info.size)
-				file_id, file_data_offset, file_size = info
-
-				self.files[ int(file_id) ] = file_data_offset, file_size, file_extension
-				self.file_table[ int(file_id) ] = table
-
-				file_info_list.append(info)
-
-			self.file_info[table] = file_info_list
-
-
-	def exists_file(self, fid, abort=False):
-		if fid not in self.files:
-			if abort:
-				raise Exception("id " + str(fid) + " not stored in this drs.")
-			else:
-				return True
-		return True
-
-	def get_file_table_info(self, fid):
-		self.exists_file(fid, True)
-		return self.file_table[fid]
-
-	def get_file_info(self, fid):
-		self.exists_file(fid, True)
-		return self.files[fid]
-
-	def get_raw_file(self, fid):
-		self.exists_file(fid, True)
-
-		file_data_offset, file_size, file_extension = self.files[fid]
-
-		self.in_file.seek(file_data_offset)
-		return self.in_file.read(file_size)
-
-	def write_raw_file(self, fid):
-		fo, fs, fe = self.get_file_info(fid)
-
-		fname = "%09d-%d.%s" % (fid, fs, fe)
-		with open(fname, "wb") as f:
-			f.write(self.get_raw_file(fid))
-
-		print(fname + " written")
-
-	def print_file_info(self, fid):
-		fo, fs, fe = self.get_file_info(fid)
-
-		print("file %d = offset: %#x / %d, size = %#x / %d, extension = %s" % (fid, fo, fo, fs, fs, fe))
-
-	def __repr__():
-		return "DRS file %s" % self.path
-
-	def __str__(self):
-		ret = repr(self)
-		ret = ret + "\nheader:\n\t" + str(self.header)
-		ret = ret + "\ttables:\n"
-		for table in self.table_info:
-			ret = ret + "\t" + str(table)
-
-		return res
-
-
-
-class SLP:
-
-	#struct slp_header {
-	# char version[4];
-	# int num_frames;
-	# char comment[24];
-	#};
-	slp_header = Struct("< 4s i 24s")
-
-	#struct slp_frame_info {
-	# unsigned int qdl_table_offset;
-	# unsigned int outline_table_offset;
-	# unsigned int palette_offset;
-	# unsigned int properties;
-	# int          width;
-	# int          height;
-	# int          hotspot_x;
-	# int          hotspot_y;
-	#};
-	slp_frame_info = Struct("< I I I I i i i i")
-
-	def __init__(self, buf, file_id):
-		self.rawdata = buf
-		self.file_id = file_id
-		self.header = SLP.slp_header.unpack_from(self.rawdata)
-		self.version, self.num_frames, self.comment = self.header
-
-		self.read_header()
-		self.create_frames()
-
-	def read_header(self):
-		print("slp " + str(self.file_id) + " header:")
-		print("\t" + str(self.header))
-		print("\t-> " + str(self.num_frames) + " frame(s):")
-
-		self.frame_infos = []
-
-		#read all slp_frame_info structs
-		for i in range(self.num_frames):
-			info_position = SLP.slp_header.size + i * SLP.slp_frame_info.size
-
-			frame_info = SLP.slp_frame_info.unpack_from(self.rawdata, info_position)
-			self.frame_infos.append(frame_info)
-
-	def create_frames(self):
-		print("\tcmd_table_offset, outline_table_offset, palette_offset, properties, width, height, hotspot_x, hotspot_y")
-
-		#the list of all frames included in this slp
-		self.frames = []
-
-		fcnt = 0
-		for frame_info in self.frame_infos:
-			print("\t\t" + str(fcnt) + " => " + str(frame_info))
-
-			#create the frame.
-			self.frames.append(SLPFrame(self, frame_info, fcnt, self.rawdata))
-			fcnt = fcnt + 1
-
-	def get_frame_count(self):
-		return len(self.frames)
-
-	def get_frame(self, index):
-		return self.frames[index]
-
-	def get_frames(self):
-		return self.frames
-
-	def save_pngs(self, destination_path, color_table, overwrite_existing=False):
-
-		destination_path = os.path.join(destination_path, "%06d.slp" % self.file_id)
-
-		#create the folder where the pngs will be saved to
-		os.makedirs(destination_path, exist_ok=True)
-
-		#TODO: do something like
-		#http://wiki.wesnoth.org/Team_Color_Shifting
-		player_id = 1 #blue
-
-		#TODO: another idea:
-		#store the base_color at it's point (with alpha = 254 as marker?)
-		#then let the fragment shader do the color transformation ((player*16)+base_color)
-		#and let it only draw an outline pixel if there's an obstruction (use alpha = 253 as marker?)
-
-		#TODO: combine all slp frames to one single png, much more efficient loading and editing possible..
-		#-> another converter script for packing and unpacking those
-		#the number of frames must be encoded in the filename ideally
-		#
-		#concept:
-		#im = Image.new("RGB", (500,500), "white")
-		#draw = ImageDraw.ImageDraw(im)
-		#part = Image.open("part.png") #why that?
-		#x, y = part.size
-		#im.paste(part, (0,0,x,y))  [=part.getbbox()]
-		#im.save("test.png")
-
-		#TODO: save the hotspot_x and y in the filename
-
-
-		for frame in self.get_frames():
-			png_filename = "%06d_%03d_%02d.png" % (self.file_id, frame.frame_id, player_id)
-			frame_path = os.path.join(destination_path, png_filename)
-
-			png = PNG(player_id, color_table, frame.get_picture_data())
-			png.create()
-
-			if not overwrite_existing and os.path.exists(frame_path):
-				raise Exception("file " + frame_path + " is already existing and I won't overwrite!")
-
-			png.save_to(frame_path)
-
-
-	def __repr__(self):
-		#TODO: lookup the image content description
-		return "SLP image, " + str(len(self.frames)) + " Frames"
-
+#little endian byte order
+endianness = "< "
 
 class SLPFrame:
 	#shadow and transparency colors
-	shadow      = EnumVal("#")
-	transparent = EnumVal("( )")
+	shadow      = NamedObject("#")
+	transparent = NamedObject("( )")
 
 	#player color class to preserve the player number variable
 	class SpecialColor:
-		player_color = EnumVal("P")
-		black_color = EnumVal("||")
+		player_color = NamedObject("P")
+		black_color = NamedObject("||")
 
 		#base_color: value for the base player color
 		#used for outlines.
@@ -331,12 +57,12 @@ class SLPFrame:
 	# unsigned short left_space;
 	# unsigned short right_space;
 	#};
-	slp_frame_row_edge = Struct("< H H")
+	slp_frame_row_edge = Struct(endianness + "H H")
 
 	#struct slp_command_offset {
 	# unsigned int offset;
 	#}
-	slp_command_offset = Struct("< I")
+	slp_command_offset = Struct(endianness + "I")
 
 	def __init__(self, containingfile, frame_info, frame_id, data):
 
