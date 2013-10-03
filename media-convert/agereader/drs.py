@@ -1,6 +1,6 @@
-#!/usr/bin/python3
 from struct import Struct, unpack_from
-from util import NamedObject, args
+from util import NamedObject, dbg
+from binascii import hexlify
 
 #version of the drs file, hardcoded for now
 file_version = 57
@@ -10,7 +10,8 @@ if file_version == 57:
 elif file_version == 59:
 	copyright_size = 60
 
-#"<" in the Struct() format marks the integer format as little endian
+#little endian byte-order
+endianness = "< "
 
 class DRS:
 	#struct drs_header {
@@ -21,7 +22,7 @@ class DRS:
 	# int file_offset; //offset of first file
 	#};
 	#
-	drs_header = Struct("< " + str(copyright_size) + "s 4s 12s i i")
+	drs_header = Struct(endianness + str(copyright_size) + "s 4s 12s i i")
 
 	#struct table_info {
 	# char file_type;
@@ -29,14 +30,14 @@ class DRS:
 	# int file_info_offset;   //table offset
 	# int num_files;          //number of files in table
 	#};
-	drs_table_info = Struct("< c 3s i i")
+	drs_table_info = Struct(endianness + "c 3s i i")
 
 	#struct file_info {
 	# int file_id;
 	# int file_data_offset;
 	# int file_size;
 	#};
-	drs_file_info = Struct("< i i i")
+	drs_file_info = Struct(endianness + "i i i")
 
 	def __init__(self, path):
 		self.files = {}   #(extension, id): (data offset, size)
@@ -47,14 +48,13 @@ class DRS:
 		buf = f.read(DRS.drs_header.size)
 		self.header = DRS.drs_header.unpack(buf)
 
-		if args.verbose >= 1:
-			print("DRS header [" + path + "]")
-			print("  copyright:          " + self.header[0].decode('latin-1'))
-			print("  version:            " + self.header[1].decode('latin-1'))
-			print("  ftype:              " + self.header[2].decode('latin-1'))
-			print("  table count:        " + str(self.header[3]))
-			print("  file offset:        " + str(self.header[4]))
-			print("")
+		dbg("DRS header [" + path + "]")
+		dbg("  copyright:          " + self.header[0].decode('latin-1'))
+		dbg("  version:            " + self.header[1].decode('latin-1'))
+		dbg("  ftype:              " + self.header[2].decode('latin-1'))
+		dbg("  table count:        " + str(self.header[3]))
+		dbg("  file offset:        " + str(self.header[4]))
+		dbg("")
 
 		#read table info
 		table_count = self.header[3]
@@ -67,13 +67,12 @@ class DRS:
 			#flip the extension... it's stored that way...
 			file_extension = file_extension.decode('latin-1').lower()[::-1]
 
-			if args.verbose >= 1:
-				print("  Table header [" + str(i) + "]")
-				print("    file type:        " + str(file_type))
-				print("    file extension:   " + file_extension)
-				print("    file_info_offset: " + str(file_info_offset))
-				print("    num_files:        " + str(num_files))
-				print("")
+			dbg("  Table header [" + str(i) + "]")
+			dbg("    file type:        0x" + hexlify(file_type).decode('utf-8'))
+			dbg("    file extension:   " + file_extension)
+			dbg("    file_info_offset: " + str(file_info_offset))
+			dbg("    num_files:        " + str(num_files))
+			dbg("")
 
 			f.seek(file_info_offset)
 			file_info_buf = f.read(num_files * DRS.drs_file_info.size)
@@ -82,12 +81,11 @@ class DRS:
 				file_header = DRS.drs_file_info.unpack_from(file_info_buf, j * DRS.drs_file_info.size)
 				file_id, file_data_offset, file_size = file_header
 
-				if args.verbose >= 2:
-					print("    File info header [" + str(j) + "]")
-					print("      file id:        " + str(file_id))
-					print("      data offset:    " + str(file_data_offset))
-					print("      file size:      " + str(file_size))
-					print("")
+				dbg("    File info header [" + str(j) + "]", 2)
+				dbg("      file id:        " + str(file_id), 2)
+				dbg("      data offset:    " + str(file_data_offset), 2)
+				dbg("      file size:      " + str(file_size), 2)
+				dbg("", 2)
 
 				self.files[(file_extension, file_id)] = file_data_offset, file_size
 

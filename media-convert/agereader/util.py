@@ -20,3 +20,8 @@ p.add_argument("destdir", help = "The openage root/data/age directory")
 p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
 
 args = p.parse_args()
+
+def dbg(msg, lvl = 1):
+	if args.verbose < lvl:
+		return
+	print(msg)
