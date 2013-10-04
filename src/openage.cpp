@@ -3,7 +3,6 @@
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
-#include <FTGL/ftgl.h>
 #include <unistd.h>
 
 #include "engine/engine.h"
@@ -11,18 +10,14 @@
 #include "engine/shader/shader.h"
 #include "engine/shader/program.h"
 #include "log/log.h"
-#include "util/fps.h"
 #include "util/error.h"
 #include "util/filetools.h"
-#include "util/strings.h"
 #include "util/timer.h"
 
 namespace openage {
 
 engine::Texture *gaben, *university;
-FTGLTextureFont *t_font;
 
-util::FrameCounter fpscounter;
 util::Timer *timer;
 
 unsigned lmbx, lmby, rmbx, rmby;
@@ -35,13 +30,6 @@ void init() {
 	lmby = 0;
 	rmbx = 0;
 	rmby = 0;
-
-	//load fonts
-	// TODO: don't hardcode font path, make it dynamic (sounds like a job for cmake)..
-	t_font = new FTGLTextureFont("/usr/share/fonts/dejavu/DejaVuSerif.ttf");
-	if(t_font->Error())
-		throw util::Error("failed creating the dejavu font with ftgl");
-	t_font->FaceSize(20);
 
 	//load textures and stuff
 	gaben = new engine::Texture("gaben.png");
@@ -121,7 +109,6 @@ void init() {
 void deinit() {
 	log::msg("openage shutting down...");
 
-	delete t_font;
 	delete gaben;
 	delete university;
 	delete engine::teamcolor_shader::vert;
@@ -168,14 +155,6 @@ void draw_method() {
 	university->draw(lmbx, lmby, 1, false);
 	university->draw(rmbx, rmby, 2, true);
 
-	fpscounter.frame();
-
-	glPushMatrix();
-	{
-		glTranslatef(engine::window_x - 100, 15, 0);
-		t_font->Render(util::format("%.1f fps", fpscounter.fps));
-	}
-	glPopMatrix();
 
 }
 

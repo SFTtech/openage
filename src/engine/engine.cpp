@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
+#include <FTGL/ftgl.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
@@ -10,6 +11,8 @@
 #include "console.h"
 #include "../log/log.h"
 #include "../util/error.h"
+#include "../util/fps.h"
+#include "../util/strings.h"
 
 namespace openage {
 namespace engine {
@@ -17,6 +20,8 @@ namespace engine {
 //global engine variables; partially accesible via engine.h
 SDL_GLContext glcontext;
 SDL_Window *window;
+
+FTGLTextureFont *t_font;
 
 Console *console;
 
@@ -27,7 +32,7 @@ bool running;
 unsigned window_x = 800;
 unsigned window_y = 600;
 
-
+util::FrameCounter fpscounter;
 bool console_activated = false;
 
 
@@ -82,14 +87,22 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	engine::draw_method = draw_method;
 	engine::input_handler = input_handler;
 
+	//load font for drawing texts
+	// TODO: don't hardcode font path, make it dynamic (sounds like a job for cmake)..
+	t_font = new FTGLTextureFont("/usr/share/fonts/dejavu/DejaVuSerif.ttf");
+	if(t_font->Error())
+		throw util::Error("failed creating the dejavu font with ftgl");
+	t_font->FaceSize(20);
+
 	//initialize the visual debug console
-	console = new Console(util::Color(255, 255, 255, 180), util::Color(0,0,0,0));
+	console = new Console(util::Color(255, 255, 255, 180), util::Color(0, 0, 0, 255));
 }
 
 void destroy() {
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
 	delete console;
+	delete t_font;
 	IMG_Quit();
 	SDL_Quit();
 }
@@ -146,10 +159,14 @@ void loop() {
 
 	while (running) {
 
+		fpscounter.frame();
+
+
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		//tick the gamelogic here
+		//tick(magic);
 
 		while (SDL_PollEvent(&e)) {
 			//first, handle the event ourselves (e.g.: detect window resize)
@@ -169,6 +186,14 @@ void loop() {
 		if (console_activated) {
 			console->draw();
 		}
+
+		glPushMatrix();
+		{
+			glTranslatef(engine::window_x - 100, 15, 0);
+			t_font->Render(util::format("%.1f fps", fpscounter.fps));
+		}
+		glPopMatrix();
+
 
 		glerrorstate = glGetError();
 		if (glerrorstate != 0) {

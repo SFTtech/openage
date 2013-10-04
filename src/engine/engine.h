@@ -3,6 +3,7 @@
 
 #include "console.h"
 
+#include <FTGL/ftgl.h>
 #include <SDL2/SDL.h>
 
 namespace openage {
@@ -57,6 +58,11 @@ extern SDL_Window *window;
 the debug console
 */
 extern Console *console;
+
+/**
+the text font used for (can you believe it?) texts.
+*/
+extern FTGLTextureFont *t_font;
 
 /**
 to be set to false to stop the engine.
