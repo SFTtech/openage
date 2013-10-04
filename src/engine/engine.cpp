@@ -190,6 +190,7 @@ void loop() {
 		glPushMatrix();
 		{
 			glTranslatef(engine::window_x - 100, 15, 0);
+			glColor4f(1.0, 1.0, 1.0, 1.0);
 			t_font->Render(util::format("%.1f fps", fpscounter.fps));
 		}
 		glPopMatrix();
