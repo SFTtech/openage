@@ -1,6 +1,8 @@
 #ifndef _ENGINE_ENGINE_H_
 #define _ENGINE_ENGINE_H_
 
+#include "console.h"
+
 #include <SDL2/SDL.h>
 
 namespace openage {
@@ -50,6 +52,11 @@ void engine_input_handler(SDL_Event *e);
 SDL window of the engine.
 */
 extern SDL_Window *window;
+
+/**
+the debug console
+*/
+extern Console *console;
 
 /**
 to be set to false to stop the engine.

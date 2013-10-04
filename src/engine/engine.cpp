@@ -7,6 +7,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "texture.h"
+#include "console.h"
 #include "../log/log.h"
 #include "../util/error.h"
 
@@ -17,12 +18,17 @@ namespace engine {
 SDL_GLContext glcontext;
 SDL_Window *window;
 
+Console *console;
+
 draw_method_ptr draw_method;
 input_handler_ptr input_handler;
 
 bool running;
 unsigned window_x = 800;
 unsigned window_y = 600;
+
+
+bool console_activated = false;
 
 
 
@@ -75,11 +81,15 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 
 	engine::draw_method = draw_method;
 	engine::input_handler = input_handler;
+
+	//initialize the visual debug console
+	console = new Console();
 }
 
 void destroy() {
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
+	delete console;
 	IMG_Quit();
 	SDL_Quit();
 }
@@ -89,6 +99,8 @@ void engine_window_resized(unsigned w, unsigned h) {
 	//store the current window size
 	window_x = w;
 	window_y = h;
+
+	console->set_winsize(w, h);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -112,25 +124,51 @@ void engine_input_handler(SDL_Event *e) {
 			break;
 		}
 		break;
+
+	case SDL_KEYUP:
+		break;
+
+	case SDL_KEYDOWN:
+		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
+		case SDLK_BACKQUOTE:
+			console_activated = !console_activated;
+			break;
+		}
+		break;
 	}
+
 }
 
 void loop() {
-	int glerrorstate;
+	int glerrorstate = 0;
 	running = true;
+	SDL_Event e;
+
 	while (running) {
-		SDL_Event e;
-		while (SDL_PollEvent(&e)) {
-			//first, handle the event ourselves (e.g.: detect window resize)
-			engine_input_handler(&e);
-			//now, give the event to the user of the engine
-			input_handler(&e);
-		}
 
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		//tick the gamelogic here
+
+		while (SDL_PollEvent(&e)) {
+			//first, handle the event ourselves (e.g.: detect window resize)
+			engine_input_handler(&e);
+
+			if (!console_activated) {
+				//now, give the event to the user of the engine
+				input_handler(&e);
+			}
+			else {
+				console->input_handler(&e);
+			}
+		}
+
 		draw_method();
+
+		if (console_activated) {
+			console->draw();
+		}
 
 		glerrorstate = glGetError();
 		if (glerrorstate != 0) {

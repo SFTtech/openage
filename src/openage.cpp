@@ -150,6 +150,15 @@ void input_handler(SDL_Event *e) {
 			log::dbg("right button pressed at %d,%d", e->button.x, e->button.y);
 		}
 		break;
+	case SDL_KEYUP:
+		//switch (e->keysym.sym) {
+		//case SDLK_a:
+		//	break;
+		//}
+		break;
+	case SDL_KEYDOWN:
+
+		break;
 	}
 }
 

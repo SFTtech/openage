@@ -14,6 +14,7 @@ add_executable(${PROJECT_NAME}
 	util/timer.cpp
 	openage.cpp
 	engine/engine.cpp
+	engine/console.cpp
 	engine/texture.cpp
 	engine/shader/shader.cpp
 	engine/shader/program.cpp
