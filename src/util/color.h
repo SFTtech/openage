@@ -6,6 +6,10 @@ namespace util {
 
 class Color {
 public:
+	Color(unsigned r, unsigned g, unsigned b, unsigned a);
+	Color();
+	~Color();
+
 	unsigned int r, g, b, a;
 };
 

@@ -1,12 +1,16 @@
 #include "console.h"
 
+#include "../util/color.h"
+
 #include <GL/glew.h>
 #include <GL/gl.h>
 
 namespace openage {
 namespace engine {
 
-Console::Console() : lx(0), ly(0), rx(0), ry(0) {}
+Console::Console() : Console(util::Color(255,255,255,255), util::Color(0,0,0,0)) {}
+
+Console::Console(util::Color bg, util::Color text, int lx, int ly, int rx, int ry) : bgcolor(bg), textcolor(text), lx(lx), ly(ly), rx(rx), ry(ry) {}
 
 Console::~Console() {}
 
@@ -16,6 +20,14 @@ void Console::set_winsize(int w, int h) {
 	this->ly = 50;
 	this->rx = w - 50;
 	this->ry = h - 50;
+}
+
+void Console::set_bgcolor(util::Color newcolor) {
+	this->bgcolor = newcolor;
+}
+
+void Console::set_textcolor(util::Color newcolor) {
+	this->textcolor = newcolor;
 }
 
 void Console::input_handler(SDL_Event *e) {
@@ -32,7 +44,9 @@ void Console::input_handler(SDL_Event *e) {
 void Console::draw() {
 	glPushMatrix();
 	{
-		glColor4f(1.0, 1.0, 1.0, 0.5);
+		//TODO: use glColor4i
+		glColor4f(this->bgcolor.r/255.0, this->bgcolor.g/255.0, this->bgcolor.g/255.0, this->bgcolor.a/255.0);
+
 		glBegin(GL_QUADS);
 		{
 			glVertex2i(lx, ly);

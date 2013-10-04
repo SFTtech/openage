@@ -83,7 +83,7 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	engine::input_handler = input_handler;
 
 	//initialize the visual debug console
-	console = new Console();
+	console = new Console(util::Color(255, 255, 255, 180), util::Color(0,0,0,0));
 }
 
 void destroy() {

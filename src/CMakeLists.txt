@@ -7,6 +7,7 @@ find_package(GLEW)
 
 add_executable(${PROJECT_NAME}
 	log/log.cpp
+	util/color.cpp
 	util/error.cpp
 	util/filetools.cpp
 	util/fps.cpp
