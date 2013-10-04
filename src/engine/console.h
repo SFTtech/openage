@@ -3,9 +3,12 @@
 
 #include "../util/color.h"
 
+#include <vector>
+#include <string>
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
+#include <FTGL/ftgl.h>
 
 namespace openage {
 namespace engine {
@@ -14,6 +17,10 @@ class Console {
 private:
 	util::Color bgcolor, textcolor;
 	int lx, ly, rx, ry;
+	std::vector<std::string> messages;
+	FTGLTextureFont *font;
+
+	int spacing;
 
 public:
 	Console();
@@ -23,6 +30,10 @@ public:
 	void set_winsize(int w, int h);
 	void set_bgcolor(util::Color newcolor);
 	void set_textcolor(util::Color newcolor);
+
+	void add_message(std::string text);
+	void add_message(const char *text);
+
 	void draw();
 
 	void input_handler(SDL_Event *e);

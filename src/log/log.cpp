@@ -6,6 +6,7 @@
 #include <cstdlib>
 
 #include "../util/strings.h"
+#include "../engine/engine.h"
 
 namespace openage {
 namespace log {
@@ -41,6 +42,7 @@ void log(const char *fmt, ...) {
 	util::rstrip(buf);
 
 	puts(buf);
+	engine::console->add_message(buf);
 
 	//TODO: store buf into an array, which can then be evaluated and displayed by the engine
 
