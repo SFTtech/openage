@@ -72,18 +72,20 @@ void Console::draw() {
 
 		glBegin(GL_QUADS);
 		{
-			glVertex2i(lx, ly);
-			glVertex2i(rx, ly);
-			glVertex2i(rx, ry);
-			glVertex2i(lx, ry);
+			glVertex2i(this->lx, this->ly);
+			glVertex2i(this->rx, this->ly);
+			glVertex2i(this->rx, this->ry);
+			glVertex2i(this->lx, this->ry);
 		}
 		glEnd();
 
 		glColor4f(this->textcolor.r/255.0, this->textcolor.g/255.0, this->textcolor.g/255.0, this->textcolor.a/255.0);
 		glTranslatef(lx + 10, ly + 10, 0);
 
-		//display all stored messages
+
 		int px = 0, py = 0;
+
+		//display all stored messages
 		for (auto msg = this->messages.crbegin(); msg != this->messages.crend(); ++msg) {
 			const char *cmsg = msg->c_str();
 
@@ -93,8 +95,14 @@ void Console::draw() {
 			FTPoint lower = bbox.Lower();
 			FTPoint upper = bbox.Upper();
 
-			float w = upper.Xf() - lower.Xf();
+			//TODO: linewrap if text too wide
+			//float w = upper.Xf() - lower.Xf();
 			float h = upper.Yf() - lower.Yf();
+
+			//stop displaying older messages no longer fitting on screen
+			if ((py + h + this->spacing) > (this->ry - this->ly)) {
+				break;
+			}
 
 			this->font->Render(cmsg, -1, FTPoint(px, py));
 
