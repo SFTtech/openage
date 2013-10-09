@@ -26,7 +26,9 @@ Console::Console(util::Color bg, util::Color text, int lx, int ly, int rx, int r
 	this->font->FaceSize(12);
 }
 
-Console::~Console() {}
+Console::~Console() {
+	delete this->font;
+}
 
 void Console::set_winsize(int w, int h) {
 	//TODO: maybe use only the top part of the screen
