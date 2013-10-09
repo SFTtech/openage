@@ -7,7 +7,6 @@
 #include "../log/log.h"
 
 #include <vector>
-#include <string>
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <FTGL/ftgl.h>
@@ -28,6 +27,11 @@ Console::Console(util::Color bg, util::Color text, int lx, int ly, int rx, int r
 
 Console::~Console() {
 	delete this->font;
+
+	for (auto elem : this->messages) {
+		delete[] elem;
+	}
+	this->messages.clear();
 }
 
 void Console::set_winsize(int w, int h) {
@@ -46,12 +50,9 @@ void Console::set_textcolor(util::Color newcolor) {
 	this->textcolor = newcolor;
 }
 
-void Console::add_message(std::string text) {
-	this->messages.push_back(text);
-}
-
 void Console::add_message(const char *text) {
-	this->add_message(std::string(text));
+	char *store_text = util::copy(text);
+	this->messages.push_back(store_text);
 }
 
 
@@ -89,7 +90,7 @@ void Console::draw() {
 
 		//display all stored messages
 		for (auto msg = this->messages.crbegin(); msg != this->messages.crend(); ++msg) {
-			const char *cmsg = msg->c_str();
+			const char *cmsg = *msg;
 
 			//get the font metrics
 			FTBBox bbox = this->font->BBox(cmsg);
