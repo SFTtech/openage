@@ -20,7 +20,9 @@ GLint player_id_var, alpha_marker_var, player_color_var;
 
 } //namespace teamcolor_shader
 
-Texture::Texture(const char *filename) {
+Texture::Texture(const char *filename, bool player_colored) {
+	this->use_player_color_tinting = player_colored;
+
 	SDL_Surface *surface;
 	GLuint textureid;
 	int mode;
@@ -66,17 +68,22 @@ Texture::Texture(const char *filename) {
 
 	this->id = textureid;
 
+	//TODO: get metadata from texture description file
 	this->centered = true;
 }
 
 Texture::~Texture() {
-	//TODO free OpenGL ressource...
+	glDeleteTextures(1, &this->id);
 }
 
-void Texture::draw(int x, int y, unsigned player, bool mirrored) {
-	teamcolor_shader::program->use();
+void Texture::draw(int x, int y, unsigned player, bool mirrored, int subid) {
+
+	if (this->use_player_color_tinting) {
+		teamcolor_shader::program->use();
+		glUniform1i(teamcolor_shader::player_id_var, player);
+	}
+
 	glColor3f(1, 1, 1);
-	glUniform1i(teamcolor_shader::player_id_var, player);
 
 	glBindTexture(GL_TEXTURE_2D, this->id);
 	glEnable(GL_TEXTURE_2D);
@@ -118,7 +125,10 @@ void Texture::draw(int x, int y, unsigned player, bool mirrored) {
 	glEnd();
 
 	glDisable(GL_TEXTURE_2D);
-	teamcolor_shader::program->stopusing();
+
+	if (use_player_color_tinting) {
+		teamcolor_shader::program->stopusing();
+	}
 }
 
 } //namespace engine
