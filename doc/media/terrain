@@ -1,0 +1,75 @@
+terrain documentation
+=====================
+
+
+this file describes the research done on terrain rendering.
+
+
+contents of terrain.drs:
+
+27 slp files for terrain data, each slp stores one terrain type with all tiles.
+
+015000.slp - 100 tiles - brown dirty earth
+015001.slp - 100 tiles - more dry grass
+015002.slp - 100 tiles - light water
+015004.slp -  36 tiles - full grown farm field
+015005.slp -  36 tiles - decaying farm field
+015006.slp - 100 tiles - dirt with little grass
+015007.slp - 100 tiles - dry grass
+015008.slp - 100 tiles - dark grass
+015009.slp - 100 tiles - normal grass
+015010.slp - 100 tiles - desert
+015011.slp - 100 tiles - sandy dry grass
+015014.slp - 100 tiles - swamp
+015015.slp - 100 tiles - deep water
+015016.slp - 100 tiles - ocean
+015017.slp - 100 tiles - sandy sand
+015018.slp - 100 tiles - ancient building fundaments
+015019.slp - 100 tiles - dirt ancient bulding fundaments
+015021.slp -   9 tiles - ready and empty farm field
+015022.slp -   9 tiles - stage 0 plants on farm field
+015023.slp -   9 tiles - stage 1 plants on farm field
+015024.slp - 100 tiles - ice
+015026.slp - 100 tiles - snow
+015027.slp - 100 tiles - dirt with snow
+015028.slp - 100 tiles - grass with snow
+015029.slp - 100 tiles - grass with snow
+015030.slp - 100 tiles - ancient building fundaments with snow
+015031.slp - 100 tiles - grass ancient building fundaments
+
+
+one terrain tile is a paralellogram with equal side lengths
+and the same angles in edges on opposing sides.
+
+tile image height = 97
+tile image width  = 49
+
+
+half-tile structure:
+                                                #
+                                              #####
+                                            #########
+                                          #############
+                                        #################
+                                      #####################
+                                    #########################
+                                  #############################
+                                #################################
+                              #####################################
+                            #########################################
+                          #############################################
+                        #################################################
+                      #####################################################
+                    #########################################################
+                  #############################################################
+                #################################################################
+              #####################################################################
+            #########################################################################
+          #############################################################################
+        #################################################################################
+      #####################################################################################
+    #########################################################################################
+  #############################################################################################
+################################################@################################################ <- 97 pixels, 25th row
+
+@ is the center pixel
