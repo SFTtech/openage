@@ -62,15 +62,17 @@ void init() {
 	//get the player colors from the sub-palette exported by script
 	char *pcolor_file = util::read_whole_file("age/player_color_palette.pal");
 
+	char *pcolor_seeker = pcolor_file;
+	char *currentline = pcolor_file;
+
+	//hardcoded for now.
 	const uint num_pcolors = 64;
 	GLfloat playercolors[num_pcolors*4];
 
-	char *currentline = pcolor_file;
+	for(; *pcolor_seeker != '\0'; pcolor_seeker++) {
 
-	for(; *pcolor_file != '\0'; pcolor_file++) {
-
-		if (*pcolor_file == '\n') {
-			*pcolor_file = '\0';
+		if (*pcolor_seeker == '\n') {
+			*pcolor_seeker = '\0';
 
 			if (*currentline != '#') {
 				uint n, r, g, b, a, idx;
@@ -91,11 +93,11 @@ void init() {
 					throw util::Error("unknown line content reading the player color table");
 				}
 			}
-			currentline = pcolor_file + 1;
+			currentline = pcolor_seeker + 1;
 		}
 	}
-	//TODO free the pcolor_file...
-	//delete[] pcolor_file;
+
+	delete[] pcolor_file;
 
 	engine::teamcolor_shader::program->use();
 	//keep in sync with media converter script:
