@@ -43,11 +43,11 @@ void init() {
 
 	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
 	engine::teamcolor_shader::vert = new engine::shader::Shader(GL_VERTEX_SHADER, texturevshader_code);
-	free(texturevshader_code);
+	delete[] texturevshader_code;
 
 	char *texturefshader_code = util::read_whole_file("shaders/teamcolors.frag.glsl");
 	engine::teamcolor_shader::frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, texturefshader_code);
-	free(texturefshader_code);
+	delete[] texturefshader_code;
 
 	engine::teamcolor_shader::program = new engine::shader::Program();
 	engine::teamcolor_shader::program->attach_shader(engine::teamcolor_shader::vert);
