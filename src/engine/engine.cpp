@@ -191,7 +191,9 @@ void loop() {
 		{
 			glTranslatef(engine::window_x - 100, 15, 0);
 			glColor4f(1.0, 1.0, 1.0, 1.0);
-			t_font->Render(util::format("%.1f fps", fpscounter.fps));
+			char *fpstext = util::format("%.1f fps", fpscounter.fps);
+			t_font->Render(fpstext);
+			delete[] fpstext;
 		}
 		glPopMatrix();
 
