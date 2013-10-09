@@ -1,0 +1,9 @@
+#!/bin/bash
+
+outname=/tmp/sdl2memleaktest
+
+g++ -std=c++11 -lSDL2 sdlmemleak_minimalexample.cpp -o $outname || exit 1
+
+valgrind --leak-check=full --show-reachable=no --track-origins=yes -v $outname || exit 2
+
+
