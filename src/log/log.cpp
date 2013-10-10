@@ -42,7 +42,10 @@ void log(const char *fmt, ...) {
 	util::rstrip(buf);
 
 	puts(buf);
-	engine::console->add_message(buf);
+
+	if (engine::running) {
+		engine::console->add_message(buf);
+	}
 
 	//TODO: store buf into an array, which can then be evaluated and displayed by the engine
 
