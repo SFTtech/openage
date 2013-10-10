@@ -12,7 +12,7 @@ class NamedObject:
 
 p = argparse.ArgumentParser()
 p.add_argument("srcdir", help = "The Age of Empires II root directory")
-p.add_argument("destdir", help = "The openage root/data/age directory")
+p.add_argument("destdir", help = "The openage root directory")
 p.add_argument("extract", nargs = "*", help = "A specific extraction rule, such as graphics:*.slp, or *:*.wav. If no rules are specified, *:*.* is assumed")
 p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
 
@@ -46,7 +46,7 @@ def mkdirs(path):
 
 def file_getpath(fname, write = False):
 	if write:
-		basedir = args.destdir
+		basedir = args.destdir + "/data/age"
 	else:
 		basedir = args.srcdir
 
