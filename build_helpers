@@ -19,7 +19,7 @@ function gdb() {
 	run_in_root data /usr/bin/gdb ../bin/openage $@
 }
 
-function valgrind() {
+function runmem() {
 	run_in_root data /usr/bin/valgrind --leak-check=full --track-origins=yes -v ../bin/openage $@
 }
 
