@@ -1,0 +1,8 @@
+sample invocation to extract only the hussar and university sprites:
+./convert -vv ~/.wine-age/drive_c/age ../data/age graphics:3836.slp graphics:4857.slp
+
+sample invocation to extract everything:
+./convert -vv ~/.wine-age/drive_c/age ../data/age
+
+sample invocation to extract all terrain sprites:
+./convert -vv ~/.wine-age/drive_c/age ../data/age terrain:*.slp

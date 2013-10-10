@@ -1,14 +1,95 @@
 import os
-import os.path
 import sys
 import math
 
 from PIL import Image, ImageDraw
 from struct import Struct, unpack_from
-from util import NamedObject
+from util import NamedObject, dbg
 
 #little endian byte order
 endianness = "< "
+
+class SLP:
+	#struct slp_header {
+	# char version[4];
+	# int num_frames;
+	# char comment[24];
+	#};
+	slp_header = Struct(endianness + "4s i 24s")
+
+	#struct slp_frame_info {
+	# unsigned int qdl_table_offset;
+	# unsigned int outline_table_offset;
+	# unsigned int palette_offset;
+	# unsigned int properties;
+	# int          width;
+	# int          height;
+	# int          hotspot_x;
+	# int          hotspot_y;
+	#};
+	slp_frame_info = Struct(endianness + "I I I I i i i i")
+
+	def __init__(self, data):
+		self.data = data
+		header = SLP.slp_header.unpack_from(self.data)
+		version, num_frames, comment = header
+
+		dbg("SLP header", 2, push = "slp")
+		dbg("version:     " + version.decode('ascii'))
+		dbg("frame count: " + str(num_frames))
+		dbg("comment:     " + comment.decode('ascii'))
+		dbg("")
+
+		self.frames = []
+
+		dbg(FrameInfo.repr_header())
+
+		#read all slp_frame_info structs
+		for i in range(num_frames):
+			frame_header_offset = SLP.slp_header.size + i * SLP.slp_frame_info.size
+
+			frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(self.data, frame_header_offset))
+			dbg(frame_info)
+			self.frames.append(SLPFrame(frame_info, self.data))
+
+		dbg("", pop = "slp")
+
+	def draw_frames(self, color_table):
+		#player-specific colors will be in color blue, but with an alpha of 254
+		player_id = 1
+
+		for frame in self.frames:
+			png = PNG(player_id, color_table, frame.get_picture_data())
+			png.create()
+
+			yield png.image, frame.info.size, frame.info.hotspot
+
+	def __repr__(self):
+		#TODO: lookup the image content description
+		return "SLP image, " + str(len(self.frames)) + " Frames"
+
+class FrameInfo:
+	def __init__(self, qdl_table_offset, outline_table_offset, palette_offset, properties, width, height, hotspot_x, hotspot_y):
+		self.qdl_table_offset = qdl_table_offset
+		self.outline_table_offset = outline_table_offset
+		#TODO this field is not checked
+		self.palette_offset = palette_offset
+		#TODO what are properties good for?
+		self.properties = properties
+		self.size = (width, height)
+		self.hotspot = (hotspot_x, hotspot_y)
+
+	def repr_header():
+		return "offset (qdl table|outline table|palette) | properties | width x height | hotspot x/y"
+
+	def __repr__(self):
+		result = "        % 9d|" % self.qdl_table_offset
+		result += "% 13d|" % self.outline_table_offset
+		result += "% 7d) | " % self.palette_offset
+		result += "% 10d | " % self.properties
+		result += "% 5d x% 7d | " % self.size
+		result += "% 4d /% 5d" % self.hotspot
+		return result
 
 class SLPFrame:
 	#shadow and transparency colors
@@ -24,8 +105,8 @@ class SLPFrame:
 		#used for outlines.
 		#2 is lighter and suits better for outline display.
 		#try to experiment with [0,7]..
-		def __init__(self, special_id, base_color=2):
-			#print("creating special color " + str(base_color))
+		def __init__(self, special_id, base_color = 2):
+			#dbg("creating special color " + str(base_color))
 			self.special_id = special_id
 			self.base_color = base_color
 
@@ -64,34 +145,19 @@ class SLPFrame:
 	#}
 	slp_command_offset = Struct(endianness + "I")
 
-	def __init__(self, containingfile, frame_info, frame_id, data):
-
-		self.slpfile = containingfile
-		self.cmd_table_offset, self.outline_table_offset,\
-		self.palette_offset, self.properties, self.width,\
-		self.height, self.hotspot_x, self.hotspot_y = frame_info
-
-		self.frame_id = frame_id
+	def __init__(self, frame_info, data):
+		self.info = frame_info
 
 		self.boundaries = [] #for each row, contains the (left, right) number of boundary pixels
 		self.cmd_offsets = [] #for each row, store the file offset to the first drawing command
 
 		self.pcolor = [] #matrix that contains all the palette indices drawn by commands, key: rowid
 
-		self.process(data)
+		dbg(push = "frame", lvl = 3)
 
-	def process(self, data):
-		self.process_boundary_tables(data)
-		#print("boundary values:\n" + str(self.boundaries))
-
-		self.process_cmd_table(data)
-		#print("cmd_offsets:\n" + str(self.cmd_offsets))
-
-		self.create_palette_color_table(data)
-
-	def process_boundary_tables(self, data):
-		for i in range(self.height):
-			outline_entry_position = self.outline_table_offset + i * SLPFrame.slp_frame_row_edge.size
+		#process bondary table
+		for i in range(self.info.size[1]):
+			outline_entry_position = self.info.outline_table_offset + i * SLPFrame.slp_frame_row_edge.size
 
 			left, right = SLPFrame.slp_frame_row_edge.unpack_from(data, outline_entry_position)
 
@@ -101,20 +167,25 @@ class SLPFrame:
 			else:
 				self.boundaries.append( (left, right) )
 
-	def process_cmd_table(self, data):
-		for i in range(self.height):
-			cmd_table_position = self.cmd_table_offset + i * SLPFrame.slp_command_offset.size
+		dbg("boundary values: " + str(self.boundaries), 3)
+
+		#process cmd table
+		for i in range(self.info.size[1]):
+			cmd_table_position = self.info.qdl_table_offset + i * SLPFrame.slp_command_offset.size
 
 			cmd_offset, = SLPFrame.slp_command_offset.unpack_from(data, cmd_table_position)
 
 			self.cmd_offsets.append(cmd_offset)
 
-	def create_palette_color_table(self, data):
+		dbg("cmd_offsets:     " + str(self.cmd_offsets))
+
 		self.pcolor = []
-		for i in range(self.height):
+		for i in range(self.info.size[1]):
 			palette_color_row = self.create_palette_color_row(data, i)
 
 			self.pcolor.append( palette_color_row )
+
+		dbg(pop = "frame")
 
 	def create_palette_color_row(self, data, rowid):
 
@@ -122,11 +193,11 @@ class SLPFrame:
 
 		bounds = self.boundaries[rowid]
 		if bounds == self.transparent:
-			return [self.transparent] * self.width
+			return [self.transparent] * self.info.size[0]
 
 		left_boundary, right_boundary = bounds
 
-		missing_pixels = self.width - left_boundary - right_boundary
+		missing_pixels = self.info.size[0] - left_boundary - right_boundary
 
 		#start drawing the left transparent space
 		pcolor_row_beginning = [ self.transparent ] * left_boundary
@@ -140,11 +211,11 @@ class SLPFrame:
 		pcolor = pcolor_row_beginning + pcolor_row_content + pcolor_row_trailing
 
 		got = len(pcolor)
-		if got != self.width:
-			tooless = self.width - got
+		if got != self.info.size[0]:
+			tooless = self.info.size[0] - got
 			summary = "%d/%d -> row %d, offset %d / %#x" % (got, self.width, rowid, first_cmd_offset, first_cmd_offset)
 			txt = " pixels than expected: "
-			if got < self.width:
+			if got < self.info.size[0]:
 				txt = "LESS" + txt
 				raise Exception("got " + txt + summary + ", missing: %d" % tooless)
 			else:
@@ -162,9 +233,8 @@ class SLPFrame:
 		eor = False
 		#work through commands till end of row.
 		while not eor:
-
 			if len(pcolor_list) > missing_pixels:
-				print("#### row is getting too long!!")
+				dbg("#### row is getting too long!!")
 				#raise Exception("Only %d pixels should be drawn in row %d!" % (missing_pixels, rowid))
 			cmd = self.get_byte_at(data, dpos)
 
@@ -172,12 +242,12 @@ class SLPFrame:
 			higher_nibble = 0xf0       & cmd
 			lower_bits    = 0b00000011 & cmd
 
-			#print("opcode: %#x, rowlength: %d, rowid: %d" % (cmd, len(pcolor_list) + leftpx, rowid))
+			#dbg("opcode: %#x, rowlength: %d, rowid: %d" % (cmd, len(pcolor_list) + leftpx, rowid))
 
 			if lower_nibble == 0x0f:
 				#eol command, this row is finished now.
 
-				#print("end of row reached.")
+				#dbg("end of row reached.")
 				eor = True
 				continue
 
@@ -275,22 +345,22 @@ class SLPFrame:
 				if higher_nibble == 0x00:
 					#render hint xflip command
 					#render hint: only draw the following command, if this sprite is not flipped left to right
-					print("render hint: xfliptest")
+					dbg("render hint: xfliptest")
 
 				elif higher_nibble == 0x10:
 					#render h notxflip command
 					#render hint: only draw the following command, if this sprite IS flipped left to right.
-					print("render hint: !xfliptest")
+					dbg("render hint: !xfliptest")
 
 				elif higher_nibble == 0x20:
 					#table use normal command
 					#set the transform color table to normal, for the standard drawing commands
-					print("image wants normal color table now")
+					dbg("image wants normal color table now")
 
 				elif higher_nibble == 0x30:
 					#table use alternat command
 					#set the transform color table to alternate, this affects all following standard commands
-					print("image wants alternate color table now")
+					dbg("image wants alternate color table now")
 
 				elif higher_nibble == 0x40:
 					#outline_1 command
@@ -322,12 +392,12 @@ class SLPFrame:
 					pcolor_list = pcolor_list + [ SLPFrame.SpecialColor(2) ] * pixel_count
 
 			else:
-				print("stored in this row so far: " + str(pcolor_list))
+				dbg("stored in this row so far: " + str(pcolor_list))
 				raise Exception("wtf! unknown slp drawing command read: %#x in row %d" % (cmd, rowid) )
 
 			dpos = dpos + 1
 
-		#print("file %d, frame %d, row %d: " % (self.slpfile.file_id, self.frame_id, rowid) + str(pcolor_list))
+		#dbg("file %d, frame %d, row %d: " % (self.slpfile.file_id, self.frame_id, rowid) + str(pcolor_list))
 		#end of row reached, return the created pixel array.
 		return pcolor_list
 
@@ -345,7 +415,7 @@ class SLPFrame:
 			return self.get_byte_at(data, pos), pos
 
 	def draw_pcolor_to_row(self, rowid, color_list, count=1):
-		#print("drawing " + str(count) + " times " + repr(color))
+		#dbg("drawing " + str(count) + " times " + repr(color))
 		if type(color_list) != list:
 			color_list = [color_list] * count
 
@@ -354,95 +424,7 @@ class SLPFrame:
 	def get_picture_data(self):
 		return self.pcolor
 
-
-class ColorTable():
-	def __init__(self, raw_color_palette):
-		self.process(raw_color_palette.decode("utf-8"))
-
-	def process(self, raw_color_palette):
-		palette_lines = raw_color_palette.split("\r\n") #WHYYYY WINDOWS LINE ENDINGS YOU IDIOTS
-
-		self.header = palette_lines[0]
-		self.version = palette_lines[1]
-
-		# check for palette header
-		if self.header != "JASC-PAL":
-			raise Exception("No palette header 'JASC-PAL' found, instead: %r" % palette_lines[0])
-		if self.version != "0100":
-			raise Exception("palette version mispatch, got %s" % palette_lines[1])
-
-		self.num_entries = int(palette_lines[2])
-
-		self.palette = []
-
-		for i in range(self.num_entries):
-			#one entry looks like "13 37 42", where 13 is the red value, 37 green and 42 blue.
-			self.palette.append(tuple(map(int, palette_lines[i+3].split(' '))))
-
-	def to_image(self, filename, draw_text=True, squaresize=100):
-		#writes this color table (palette) to a png image.
-		imgside_length = math.ceil(math.sqrt(self.num_entries))
-		imgsize = imgside_length * squaresize
-
-		print("generating palette image with size %dx%d" % (imgsize, imgsize))
-
-		palette_image = Image.new('RGBA', (imgsize, imgsize), (255, 255, 255, 0))
-		draw = ImageDraw.ImageDraw(palette_image)
-
-		text_padlength = len(str(self.num_entries)) #dirty, i know.
-		text_format = "%0" + str(text_padlength) + "d"
-
-		drawn = 0
-
-		if squaresize == 1:
-			for y in range(imgside_length):
-					for x in range(imgside_length):
-						if drawn < self.num_entries:
-							r,g,b = self.palette[drawn]
-							draw.point((x, y), fill=(r, g, b, 255))
-							drawn = drawn + 1
-
-		elif squaresize > 1:
-			for y in range(imgside_length):
-					for x in range(imgside_length):
-						if drawn < self.num_entries:
-							sx = x * squaresize - 1
-							sy = y * squaresize - 1
-							ex = sx + squaresize - 1
-							ey = sy + squaresize
-							r,g,b = self.palette[drawn]
-							vertices = [(sx, sy), (ex, sy), (ex, ey), (sx, ey)] #(begin top-left, go clockwise)
-							draw.polygon(vertices, fill=(r, g, b, 255))
-
-							if draw_text and squaresize > 40:
-								#draw the color id
-
-								ctext = text_format % drawn #insert current color id into string
-								tcolor = (255-r, 255-b, 255-g, 255)
-
-								#draw the text  #TODO: use customsized font
-								draw.text((sx+3, sy+1),ctext,fill=tcolor,font=None)
-
-							drawn = drawn + 1
-
-
-		else:
-			raise Exception("fak u, no negative values for the squaresize pls.")
-
-		palette_image.save(filename)
-
-
-	def __getitem__(self, index):
-		return self.palette[index]
-
-	def __repr__(self):
-		return "color palette: %d entries." % self.num_entries
-
-	def __str__(self):
-		return repr(self) + "\n" + str(self.palette)
-
-
-class PNG():
+class PNG:
 	def __init__(self, player_number, color_table, picture_data):
 		self.player_number = player_number
 		self.color_table = color_table
@@ -465,7 +447,7 @@ class PNG():
 					base_pcolor, is_outline = color_data.get_pcolor()
 					if is_outline:
 						alpha = 253  #mark this pixel as outline
-						#print("drawing outline base %d" % base_pcolor)
+						#dbg("drawing outline base %d" % base_pcolor)
 					else:
 						alpha = 254  #mark this pixel as player color
 
@@ -488,115 +470,3 @@ class PNG():
 				draw.point((x, y), fill=color)
 
 				#self.draw.line((x, y, x + amount, y), fill=color)
-
-	def get_image(self):
-		return self.image
-
-	def save_to(self, filename):
-		return self.image.save(filename)
-
-
-
-def main():
-	print("welcome to the extaordinary epic age2 media file converter")
-
-	graphics_drs_file = DRS("../resources/age2/graphics.drs")
-	graphics_drs_file.read()
-
-	interfac_drs_file = DRS("../resources/age2/interfac.drs")
-	interfac_drs_file.read()
-
-	# the ingame graphics color palette is stored in the interfac.drs file at file index 50500
-	palette_index = 50500
-	color_table = ColorTable(interfac_drs_file.get_raw_file(palette_index))
-
-	color_table.to_image("../resources/colortable" + str(palette_index) + ".pal.png")
-	#print("using " + str(color_table))
-
-	#print("\n\nfile ids in this drs:" + str(sorted(drs_file.files.keys())))
-
-	print("\n=========\nfound " + str(len(graphics_drs_file.files)) + " files in the graphics.drs.\n=========\n")
-
-	create_all = False
-	create_player_color_entries = False
-
-	if len(sys.argv) > 1:
-		if sys.argv[1] == "all":
-			create_all = True
-		elif sys.argv[1] == "playercolorentries":
-			create_player_color_entries = True
-
-	create_single = (not create_all) and (not create_player_color_entries)
-
-	#test university and hussar creation
-	test_building = True
-	test_unit = True
-
-	export_path = "../resources/age2_generated"
-	export_graphics_path = os.path.join(export_path, "graphics.drs")
-
-	#create all graphics?
-	if create_all:
-		for table in graphics_drs_file.table_info:
-			extension = table[1]
-			if extension == 'slp':
-				for file_info in graphics_drs_file.file_info[table]:
-					file_id = file_info[0]
-					slp_file = SLP(graphics_drs_file.get_raw_file(file_id), file_id)
-					slp_file.save_pngs(export_graphics_path, color_table)
-			else:
-				pass
-
-	elif create_single:
-		if test_building:
-			#only create a university
-			uni_id = 3836
-			uni_slp = SLP(graphics_drs_file.get_raw_file(uni_id), uni_id)
-
-			uni_slp.save_pngs(export_graphics_path, color_table, True)
-
-		if test_unit:
-			#only create a hussar
-			hussar_id = 4857
-			hussar_slp = SLP(graphics_drs_file.get_raw_file(hussar_id), hussar_id)
-
-			hussar_slp.save_pngs(export_graphics_path, color_table, True)
-
-	elif create_player_color_entries:
-		#experiments with the color table, getting the math behind player colors:
-
-		#each player has 8 subcolors, where 0 is the darkest and 7 is the lightest
-		players = range(1, 9);
-		psubcolors = range(8);
-		for i in players:
-			print("//colors for player %d" % i)
-			for subcol in psubcolors:
-				r,g,b = color_table[16 * i + subcol]
-				print("const vec4 player%d_color_%d = vec4(%d.0/255.0, %d.0/255.0, %d.0/255.0, 1.0);" % (i, subcol, r, g, b))
-
-		print("\n\n//generating get_color(basecolor, playernum):\n")
-		print("vec4 get_color(int base, int playernum) {")
-
-
-		#TODO: use switch()
-		for i in players:
-			if i != 1:
-				p_else = "else "
-			else:
-				p_else = ""
-
-			print("\t%sif (playernum == %d) {" % (p_else, i))
-			for subcol in psubcolors:
-				if subcol != 0:
-					s_else = "else "
-				else:
-					s_else = ""
-				print("\t\t%sif (base == %d) {" % (s_else, subcol))
-				print("\t\t\treturn player%d_color_%d;" % (i, subcol))
-				print("\t\t}")
-
-			print("\t}")
-
-		print("}")
-
-main()
