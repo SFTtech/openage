@@ -1,5 +1,5 @@
 from struct import Struct, unpack_from
-from util import NamedObject, dbg
+from util import NamedObject, dbg, file_open
 from binascii import hexlify
 
 #version of the drs file, hardcoded for now
@@ -39,21 +39,22 @@ class DRS:
 	#};
 	drs_file_info = Struct(endianness + "i i i")
 
-	def __init__(self, path):
+	def __init__(self, fname):
 		self.files = {}   #(extension, id): (data offset, size)
 
-		f = open(path, "rb")
+		self.fname = fname
+		f = file_open(fname, binary = True, write = False)
 
 		#read header
 		buf = f.read(DRS.drs_header.size)
 		self.header = DRS.drs_header.unpack(buf)
 
-		dbg("DRS header [" + path + "]")
-		dbg("  copyright:          " + self.header[0].decode('latin-1'))
-		dbg("  version:            " + self.header[1].decode('latin-1'))
-		dbg("  ftype:              " + self.header[2].decode('latin-1'))
-		dbg("  table count:        " + str(self.header[3]))
-		dbg("  file offset:        " + str(self.header[4]))
+		dbg("DRS header [" + fname + "]", 1, push = "drs")
+		dbg("copyright:          " + self.header[0].decode('latin-1'))
+		dbg("version:            " + self.header[1].decode('latin-1'))
+		dbg("ftype:              " + self.header[2].decode('latin-1'))
+		dbg("table count:        " + str(self.header[3]))
+		dbg("file offset:        " + str(self.header[4]))
 		dbg("")
 
 		#read table info
@@ -67,11 +68,11 @@ class DRS:
 			#flip the extension... it's stored that way...
 			file_extension = file_extension.decode('latin-1').lower()[::-1]
 
-			dbg("  Table header [" + str(i) + "]")
-			dbg("    file type:        0x" + hexlify(file_type).decode('utf-8'))
-			dbg("    file extension:   " + file_extension)
-			dbg("    file_info_offset: " + str(file_info_offset))
-			dbg("    num_files:        " + str(num_files))
+			dbg("Table header [" + str(i) + "]", 1, push = "table")
+			dbg("file type:        0x" + hexlify(file_type).decode('utf-8'))
+			dbg("file extension:   " + file_extension)
+			dbg("file_info_offset: " + str(file_info_offset))
+			dbg("num_files:        " + str(num_files))
 			dbg("")
 
 			f.seek(file_info_offset)
@@ -81,15 +82,20 @@ class DRS:
 				file_header = DRS.drs_file_info.unpack_from(file_info_buf, j * DRS.drs_file_info.size)
 				file_id, file_data_offset, file_size = file_header
 
-				dbg("    File info header [" + str(j) + "]", 2)
-				dbg("      file id:        " + str(file_id), 2)
-				dbg("      data offset:    " + str(file_data_offset), 2)
-				dbg("      file size:      " + str(file_size), 2)
-				dbg("", 2)
+				dbg("File info header [" + str(j) + "]", 2, push = "fileinfo")
+				dbg("file id:        " + str(file_id))
+				dbg("data offset:    " + str(file_data_offset))
+				dbg("file size:      " + str(file_size))
+				dbg("")
 
 				self.files[(file_extension, file_id)] = file_data_offset, file_size
+				dbg(pop = "fileinfo")
+
+			dbg(pop = "table")
 
 		self.f = f
+
+		dbg(pop = "drs")
 
 	def get_file_data(self, file_extension, file_id):
 		file_data_offset, file_size = self.files[(file_extension, file_id)]

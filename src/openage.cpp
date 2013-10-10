@@ -39,7 +39,7 @@ void init() {
 	//TODO: dynamic generation of the file path
 	//sync this with media-convert/age2media.py !
 
-	university = new engine::Texture("age/graphics.drs/003836.slp/003836_000_01.png");
+	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.0.png");
 
 	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
 	engine::teamcolor_shader::vert = new engine::shader::Shader(GL_VERTEX_SHADER, texturevshader_code);
@@ -60,7 +60,7 @@ void init() {
 	engine::teamcolor_shader::player_color_var = engine::teamcolor_shader::program->get_uniform_id("player_color");
 
 	//get the player colors from the sub-palette exported by script
-	char *pcolor_file = util::read_whole_file("age/player_color_palette.pal");
+	char *pcolor_file = util::read_whole_file("age/processed/player_color_palette.pal");
 
 	char *pcolor_seeker = pcolor_file;
 	char *currentline = pcolor_file;

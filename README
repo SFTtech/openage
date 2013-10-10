@@ -42,3 +42,18 @@ to run the binary, type
 	run
 
 note that you can use these instructions everywhere, independent of your pwd.
+
+how to convert gamedata
+=======================
+
+note that to actually run openage, you need to invoke the convert py script,
+which will convert game data from an installation of the original game to the
+openage format.
+
+to do so, type
+
+python3 convert $PATH_TO_YOUR_AOC_INSTALLATION .
+
+e.g.:
+
+python3 convert ~/.wine-age/drive_c/age/ .
