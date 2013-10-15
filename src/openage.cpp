@@ -131,12 +131,12 @@ void input_handler(SDL_Event *e) {
 		if (e->button.button == SDL_BUTTON_LEFT) {
 			lmbx = e->button.x;
 			lmby = engine::window_y - e->button.y;
-			log::dbg("left button pressed at %d,%d", e->button.x, e->button.y);
+			log::dbg("left button pressed at %d,%d", lmbx, lmby);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
 			rmbx = e->button.x;
 			rmby = engine::window_y - e->button.y;
-			log::dbg("right button pressed at %d,%d", e->button.x, e->button.y);
+			log::dbg("right button pressed at %d,%d", lmbx, lmby);
 		}
 		break;
 	case SDL_KEYUP:
@@ -154,9 +154,8 @@ void input_handler(SDL_Event *e) {
 void draw_method() {
 	gaben->draw(0, 0, 0, false);
 
-	university->draw(lmbx, lmby, 1, false);
-	university->draw(rmbx, rmby, 2, true);
-
+	university->draw(lmbx, lmby, 1, false, 0);
+	university->draw(rmbx, rmby, 2, true, 0);
 
 }
 

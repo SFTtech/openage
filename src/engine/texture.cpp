@@ -68,6 +68,23 @@ Texture::Texture(const char *filename, bool player_colored) {
 
 	this->id = textureid;
 
+	this->subtexture_count = 1;
+
+	this->subtextures = new struct subtexture[this->subtexture_count];
+
+	for (int i = 0; i < this->subtexture_count; i++) {
+		struct subtexture subtext;
+		//TODO parse subtexture specification file
+		subtext.x = 0;
+		subtext.y = 0;
+		subtext.w = this->w;
+		subtext.h = this->h;
+
+		subtext.cx = 50;
+		subtext.cy = 50;
+		this->subtextures[i] = subtext;
+	}
+
 	//TODO: get metadata from texture description file
 	this->centered = true;
 }
@@ -88,19 +105,23 @@ void Texture::draw(int x, int y, unsigned player, bool mirrored, int subid) {
 	glBindTexture(GL_TEXTURE_2D, this->id);
 	glEnable(GL_TEXTURE_2D);
 
+	struct subtexture tx;
+
+	if (subid <= this->subtexture_count && subid >= 0) {
+		tx = this->subtextures[subid];
+	}
+	else {
+		throw util::Error("requested unknown subtexture %d", subid);
+	}
+
 	int left, right, top, bottom;
 
 	//TODO do we have pixel-accuracy (rounding errors if w%2 == 1...)?
-	left = x;
-	top = y;
 
-	if (centered) {
-		left -= w / 2;
-		top -= h / 2;
-	}
-
-	right = left + w;
-	bottom = top + h;
+	left    = x      - tx.cx;
+	right   = left   + tx.w;
+	top     = y      - tx.cy;
+	bottom  = top    + tx.h;
 
 	if (mirrored) {
 		int tmp = right;
@@ -108,18 +129,23 @@ void Texture::draw(int x, int y, unsigned player, bool mirrored, int subid) {
 		left = tmp;
 	}
 
+	float txl, txr, txh, txb;
+	txl = (tx.x)/this->w;
+	txr = (tx.x + tx.w)/this->w;
+	txh = (tx.y + tx.h)/this->h;
+	txb = (tx.y)/this->h;
 
-	glBegin(GL_QUADS); {
-		glTexCoord2i(0, 1);
+	glBegin(GL_QUADS); { //stückbreite/textbreite
+		glTexCoord2f(txl, txh);
 		glVertex3f(left, top, 0);
 
-		glTexCoord2i(1, 1);
+		glTexCoord2f(txr, txh);
 		glVertex3f(right, top, 0);
 
-		glTexCoord2i(1, 0);
+		glTexCoord2f(txr, txb);
 		glVertex3f(right, bottom, 0);
 
-		glTexCoord2i(0, 0);
+		glTexCoord2f(txl, txb);
 		glVertex3f(left, bottom, 0);
 	}
 	glEnd();

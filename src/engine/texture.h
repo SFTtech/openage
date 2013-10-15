@@ -58,7 +58,7 @@ public:
 private:
 	GLuint id;
 	struct subtexture *subtextures;
-	int num_subtextures;
+	int subtexture_count;
 	bool use_player_color_tinting;
 };
 
