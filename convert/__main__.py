@@ -31,9 +31,28 @@ def main():
 
 			if file_extension == 'slp':
 				s = SLP(file_data)
-				for idx, (image, (width, height), (hotspot_x, hotspot_y)) in enumerate(s.draw_frames(palette)):
-					file_write(fname + '.' + str(idx) + '.png', image)
-					file_write(fname + '.' + str(idx) + '.txt', "#hotspot x y\n" + str(hotspot_x) + " " + str(hotspot_y) + "\n")
+
+
+				#TODO: intelligent merging of all the frames to one texture plane
+				for idx, (png, (width, height), (hotspot_x, hotspot_y)) in enumerate(s.draw_frames(palette)):
+					filename = fname + '.' + str(idx)
+					file_write(filename + '.png', png.image)
+
+					#x,y of lower left origin
+					#width and height of the subtexture
+					tx = 0
+					ty = 0
+					tw = width
+					th = height
+
+					#metadata writing
+					meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y \n"
+					meta_out = meta_out + "n=1\n"
+					meta_out = meta_out + "%d=" % idx
+					meta_out = meta_out + "%d,%d,%d,%d," % (tx, ty, tw, th)
+					meta_out = meta_out + "%d,%d\n" % (hotspot_x, hotspot_y)
+
+					file_write(filename + '.docx', meta_out)
 			else:
 				#this type is unknown or does not require conversion
 				file_write(fname, file_data)

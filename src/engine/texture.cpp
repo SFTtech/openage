@@ -7,6 +7,7 @@
 
 #include "../log/log.h"
 #include "../util/error.h"
+#include "../util/filetools.h"
 
 namespace openage {
 namespace engine {
@@ -20,7 +21,7 @@ GLint player_id_var, alpha_marker_var, player_color_var;
 
 } //namespace teamcolor_shader
 
-Texture::Texture(const char *filename, bool player_colored) {
+Texture::Texture(const char *filename, bool player_colored, bool multi_texture) {
 	this->use_player_color_tinting = player_colored;
 
 	SDL_Surface *surface;
@@ -68,28 +69,98 @@ Texture::Texture(const char *filename, bool player_colored) {
 
 	this->id = textureid;
 
-	this->subtexture_count = 1;
+	if (multi_texture) {
+		//change the suffix to .docx (lol)
+		size_t f_len = strlen(filename);
+		char *meta_filename = new char[f_len+2];
+		strcpy(meta_filename, filename);
 
-	this->subtextures = new struct subtexture[this->subtexture_count];
+		meta_filename[f_len-3] = 'd';
+		meta_filename[f_len-2] = 'o';
+		meta_filename[f_len-1] = 'c';
+		meta_filename[f_len-0] = 'x';
+		meta_filename[f_len+1] = '\0';
 
-	for (int i = 0; i < this->subtexture_count; i++) {
+
+		log::msg("loading meta file %s", meta_filename);
+
+		//get subtexture information by meta file exported by script
+		char *texture_meta_file = util::read_whole_file(meta_filename);
+
+		delete[] meta_filename;
+
+		char *tmeta_seeker = texture_meta_file;
+		char *currentline = texture_meta_file;
+
+		bool wanting_count = true;
+
+		for(; *tmeta_seeker != '\0'; tmeta_seeker++) {
+
+			if (*tmeta_seeker == '\n') {
+				*tmeta_seeker = '\0';
+
+				if (*currentline != '#') {
+					//count, index, x, y, width, height, hotspotx, hotspoty
+					uint n, idx, tx, ty, tw, th, hx, hy;
+
+					if(sscanf(currentline, "n=%u", &n) == 1) {
+						this->subtexture_count = n;
+						this->subtextures = new struct subtexture[n];
+						wanting_count = false;
+					}
+					else {
+						if (wanting_count) {
+							throw util::Error("texture meta line found, but no count set yet in %s", meta_filename);
+						}
+						else if(sscanf(currentline, "%u=%u,%u,%u,%u,%u,%u", &idx, &tx, &ty, &tw, &th, &hx, &hy)) {
+							struct subtexture subtext;
+
+							//lower left coordinates, origin
+							subtext.x = tx;
+							subtext.y = ty;
+
+							//width and height from lower left origin
+							subtext.w = tw;
+							subtext.h = th;
+
+							//hotspot/center coordinates
+							subtext.cx = hx;
+							subtext.cy = hy;
+
+							this->subtextures[idx] = subtext;
+						}
+						else {
+							throw util::Error("unknown line content reading texture meta file %s", meta_filename);
+						}
+					}
+				}
+				currentline = tmeta_seeker + 1;
+			}
+		}
+
+		delete[] texture_meta_file;
+	}
+	else {
 		struct subtexture subtext;
-		//TODO parse subtexture specification file
+
 		subtext.x = 0;
 		subtext.y = 0;
 		subtext.w = this->w;
 		subtext.h = this->h;
+		subtext.cx = 0;
+		subtext.cy = 0;
 
-		subtext.cx = 50;
-		subtext.cy = 50;
-		this->subtextures[i] = subtext;
+		this->subtexture_count = 1;
+		this->subtextures = new struct subtexture[1];
+		this->subtextures[0] = subtext;
 	}
 
-	//TODO: get metadata from texture description file
+	//deprecated..
 	this->centered = true;
 }
 
 Texture::~Texture() {
+	delete[] this->subtextures;
 	glDeleteTextures(1, &this->id);
 }
 
@@ -118,10 +189,11 @@ void Texture::draw(int x, int y, unsigned player, bool mirrored, int subid) {
 
 	//TODO do we have pixel-accuracy (rounding errors if w%2 == 1...)?
 
+	//coordinates where the texture will be drawn on screen.
 	left    = x      - tx.cx;
 	right   = left   + tx.w;
-	top     = y      - tx.cy;
-	bottom  = top    + tx.h;
+	bottom  = y      - tx.cy;
+	top     = bottom + tx.h;
 
 	if (mirrored) {
 		int tmp = right;
@@ -129,24 +201,28 @@ void Texture::draw(int x, int y, unsigned player, bool mirrored, int subid) {
 		left = tmp;
 	}
 
-	float txl, txr, txh, txb;
-	txl = (tx.x)/this->w;
+	//subtexture coordinates
+	//left, right, top and bottom bounds as coordinates
+	//of the texture plane, these pick the area out of the big texture.
+	float txl, txr, txt, txb;
+	txl = (tx.x)       /this->w;
 	txr = (tx.x + tx.w)/this->w;
-	txh = (tx.y + tx.h)/this->h;
-	txb = (tx.y)/this->h;
+	txt = (tx.y + tx.h)/this->h;
+	txb = (tx.y)       /this->h;
 
-	glBegin(GL_QUADS); { //stückbreite/textbreite
-		glTexCoord2f(txl, txh);
+	//TODO:replate with vertex buffer/uniforms for vshader
+	glBegin(GL_QUADS); {
+		glTexCoord2f(txl, txb);
 		glVertex3f(left, top, 0);
 
-		glTexCoord2f(txr, txh);
-		glVertex3f(right, top, 0);
+		glTexCoord2f(txl, txt);
+		glVertex3f(left, bottom, 0);
 
-		glTexCoord2f(txr, txb);
+		glTexCoord2f(txr, txt);
 		glVertex3f(right, bottom, 0);
 
-		glTexCoord2f(txl, txb);
-		glVertex3f(left, bottom, 0);
+		glTexCoord2f(txr, txb);
+		glVertex3f(right, top, 0);
 	}
 	glEnd();
 

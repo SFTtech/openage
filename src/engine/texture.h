@@ -50,7 +50,7 @@ public:
 
 	bool centered;
 
-	Texture(const char *filename, bool player_colored=true);
+	Texture(const char *filename, bool player_colored=false, bool multi_texture=false);
 	~Texture();
 
 	void draw(int x, int y, unsigned player, bool mirrored=false, int subid=0);

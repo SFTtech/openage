@@ -62,7 +62,7 @@ class SLP:
 			png = PNG(player_id, color_table, frame.get_picture_data())
 			png.create()
 
-			yield png.image, frame.info.size, frame.info.hotspot
+			yield png, frame.info.size, frame.info.hotspot
 
 	def __repr__(self):
 		#TODO: lookup the image content description
