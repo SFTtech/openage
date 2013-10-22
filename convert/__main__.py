@@ -46,7 +46,7 @@ def main():
 					th = height
 
 					#metadata writing
-					meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y \n"
+					meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
 					meta_out = meta_out + "n=1\n"
 					meta_out = meta_out + "%d=" % idx
 					meta_out = meta_out + "%d,%d,%d,%d," % (tx, ty, tw, th)
