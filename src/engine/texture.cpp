@@ -187,48 +187,46 @@ void Texture::draw(int x, int y, unsigned player, bool mirrored, int subid) {
 
 	int left, right, top, bottom;
 
-	//TODO do we have pixel-accuracy (rounding errors if w%2 == 1...)?
-
 	//coordinates where the texture will be drawn on screen.
-	left    = x      - tx.cx;
-	right   = left   + tx.w;
 	bottom  = y      - tx.cy;
 	top     = bottom + tx.h;
 
-	if (mirrored) {
-		int tmp = right;
-		right = left;
-		left = tmp;
+	if (!mirrored) {
+		left  = x    - tx.cx;
+		right = left + tx.w;
+	} else {
+		left  = x    + tx.cx;
+		right = left - tx.w;
 	}
 
 	//subtexture coordinates
 	//left, right, top and bottom bounds as coordinates
-	//of the texture plane, these pick the area out of the big texture.
+	//these pick the requested area out of the big texture.
 	float txl, txr, txt, txb;
 	txl = (tx.x)       /this->w;
 	txr = (tx.x + tx.w)/this->w;
-	txt = (tx.y + tx.h)/this->h;
-	txb = (tx.y)       /this->h;
+	txt = (tx.y)       /this->h;
+	txb = (tx.y + tx.h)/this->h;
 
 	//TODO:replate with vertex buffer/uniforms for vshader
 	glBegin(GL_QUADS); {
-		glTexCoord2f(txl, txb);
+		glTexCoord2f(txl, txt);
 		glVertex3f(left, top, 0);
 
-		glTexCoord2f(txl, txt);
+		glTexCoord2f(txl, txb);
 		glVertex3f(left, bottom, 0);
 
-		glTexCoord2f(txr, txt);
+		glTexCoord2f(txr, txb);
 		glVertex3f(right, bottom, 0);
 
-		glTexCoord2f(txr, txb);
+		glTexCoord2f(txr, txt);
 		glVertex3f(right, top, 0);
 	}
 	glEnd();
 
 	glDisable(GL_TEXTURE_2D);
 
-	if (use_player_color_tinting) {
+	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->stopusing();
 	}
 }
