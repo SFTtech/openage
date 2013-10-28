@@ -71,15 +71,15 @@ Texture::Texture(const char *filename, bool player_colored, bool multi_texture) 
 
 	if (multi_texture) {
 		//change the suffix to .docx (lol)
-		size_t f_len = strlen(filename);
-		char *meta_filename = new char[f_len+2];
-		strcpy(meta_filename, filename);
+		size_t m_len = strlen(filename) + 2;
+		char *meta_filename = new char[m_len];
+		strncpy(meta_filename, filename, m_len);
 
-		meta_filename[f_len-3] = 'd';
-		meta_filename[f_len-2] = 'o';
-		meta_filename[f_len-1] = 'c';
-		meta_filename[f_len-0] = 'x';
-		meta_filename[f_len+1] = '\0';
+		meta_filename[m_len-5] = 'd';
+		meta_filename[m_len-4] = 'o';
+		meta_filename[m_len-3] = 'c';
+		meta_filename[m_len-2] = 'x';
+		meta_filename[m_len-1] = '\0';
 
 
 		log::msg("loading meta file %s", meta_filename);
@@ -140,7 +140,7 @@ Texture::Texture(const char *filename, bool player_colored, bool multi_texture) 
 
 		delete[] texture_meta_file;
 	}
-	else {
+	else { //this texture does not contain subtextures
 		struct subtexture subtext;
 
 		subtext.x = 0;
