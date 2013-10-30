@@ -4,7 +4,7 @@ import math
 
 from PIL import Image, ImageDraw
 from struct import Struct, unpack_from
-from util import NamedObject, dbg
+from util import NamedObject, dbg, ifdbg
 
 #little endian byte order
 endianness = "< "
@@ -193,6 +193,9 @@ class SLPFrame:
 
 			self.pcolor.append( palette_color_row )
 
+		if ifdbg(4):
+			dbg("frame color index data:\n" + str(self.pcolor), 4)
+
 		dbg(pop = "frame")
 
 	def create_palette_color_row(self, data, rowid):
@@ -250,12 +253,12 @@ class SLPFrame:
 			higher_nibble = 0xf0       & cmd
 			lower_bits    = 0b00000011 & cmd
 
-			#dbg("opcode: %#x, rowlength: %d, rowid: %d" % (cmd, len(pcolor_list) + leftpx, rowid))
+			dbg("opcode: %#x, rowlength: %d, rowid: %d" % (cmd, len(pcolor_list) + leftpx, rowid), 4)
 
 			if lower_nibble == 0x0f:
 				#eol command, this row is finished now.
 
-				#dbg("end of row reached.")
+				dbg("end of row reached.", 4)
 				eor = True
 				continue
 
@@ -353,22 +356,22 @@ class SLPFrame:
 				if higher_nibble == 0x00:
 					#render hint xflip command
 					#render hint: only draw the following command, if this sprite is not flipped left to right
-					dbg("render hint: xfliptest")
+					dbg("render hint: xfliptest", 2)
 
 				elif higher_nibble == 0x10:
 					#render h notxflip command
 					#render hint: only draw the following command, if this sprite IS flipped left to right.
-					dbg("render hint: !xfliptest")
+					dbg("render hint: !xfliptest", 2)
 
 				elif higher_nibble == 0x20:
 					#table use normal command
 					#set the transform color table to normal, for the standard drawing commands
-					dbg("image wants normal color table now")
+					dbg("image wants normal color table now", 2)
 
 				elif higher_nibble == 0x30:
 					#table use alternat command
 					#set the transform color table to alternate, this affects all following standard commands
-					dbg("image wants alternate color table now")
+					dbg("image wants alternate color table now", 2)
 
 				elif higher_nibble == 0x40:
 					#outline_1 command
@@ -400,12 +403,11 @@ class SLPFrame:
 					pcolor_list = pcolor_list + [ SLPFrame.SpecialColor(2) ] * pixel_count
 
 			else:
-				dbg("stored in this row so far: " + str(pcolor_list))
+				dbg("stored in this row so far: " + str(pcolor_list), 2)
 				raise Exception("wtf! unknown slp drawing command read: %#x in row %d" % (cmd, rowid) )
 
 			dpos = dpos + 1
 
-		#dbg("file %d, frame %d, row %d: " % (self.slpfile.file_id, self.frame_id, rowid) + str(pcolor_list))
 		#end of row reached, return the created pixel array.
 		return pcolor_list
 
