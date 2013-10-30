@@ -27,17 +27,29 @@ def ifdbg(lvl):
 	else:
 		return False
 
-def dbg(msg = None, lvl = None, push = None, pop = None, end = "\n"):
+def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "\n"):
 	global verbose
 
 	if lvl == None:
 		#if no level is set, use the level on top of the debug stack
 		lvl = dbgstack[-1][1]
 
+	if lazymsg != None:
+		if msg != None:
+			raise Exception("debug message called with message and lazy message!")
+
+		if callable(lazymsg):
+			msg = lazymsg()
+		else:
+			raise Exception("the lazy message must be a callable (lambda)")
+
 	if verbose >= lvl and msg != None:
+		#msg may be a lambda for lazy dbg message generation:
 		print((len(dbgstack) - 1) * "  " + str(msg), end = end)
+
 	if push != None:
 		dbgstack.append([push, lvl])
+
 	if pop != None:
 		if pop == True:
 			if dbgstack.pop()[0] == None:
