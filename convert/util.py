@@ -44,7 +44,6 @@ def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "
 			raise Exception("the lazy message must be a callable (lambda)")
 
 	if verbose >= lvl and msg != None:
-		#msg may be a lambda for lazy dbg message generation:
 		print((len(dbgstack) - 1) * "  " + str(msg), end = end)
 
 	if push != None:
