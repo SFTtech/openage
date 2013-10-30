@@ -1,6 +1,5 @@
 import os
 from PIL import Image
-from extractionrule import ExtractionRule
 
 class NamedObject:
 	def __init__(self, name, **kw):
@@ -12,11 +11,21 @@ class NamedObject:
 
 dbgstack = [[None, 0]]
 
+readpath = "/dev/null"
+writepath = "/dev/null"
+verbose = 0
+
+def set_verbosity(newlevel):
+	global verbose
+	verbose = newlevel
+
 def dbg(msg = None, lvl = None, push = None, pop = None):
+	global verbose
+
 	if lvl == None:
 		lvl = dbgstack[-1][1]
 
-	if args.verbose >= lvl and msg != None:
+	if verbose >= lvl and msg != None:
 		print((len(dbgstack) - 1) * "  " + str(msg))
 	if push != None:
 		dbgstack.append([push, lvl])
@@ -27,16 +36,20 @@ def dbg(msg = None, lvl = None, push = None, pop = None):
 			raise Exception(str(pop) + " is not on top of the debug stack")
 
 def mkdirs(path):
-	try:
-		os.makedirs(path)
-	except FileExistsError:
-		pass
+	os.makedirs(path, exist_ok = True)
 
-def file_getpath(fname, write = False):
-	if write:
-		basedir = args.destdir + "/data/age"
+def set_dir(dirname, is_writedir):
+	global writepath, readpath
+	if is_writedir:
+		writepath = dirname
 	else:
-		basedir = args.srcdir
+		readpath = dirname
+
+def file_get_path(fname, write = False):
+	if write:
+		basedir = writepath + "/data/age"
+	else:
+		basedir = readpath
 
 	path = basedir + '/' + fname
 
@@ -46,9 +59,7 @@ def file_getpath(fname, write = False):
 
 	return path
 
-def file_open(fname, binary = True, write = False):
-	path = file_getpath(fname, write = write)
-
+def file_open(path, binary = True, write = False):
 	if write:
 		flags = 'w'
 	else:
@@ -65,7 +76,7 @@ def file_write(fname, data):
 	elif type(data) == str:
 		file_open(fname, binary = False, write = True).write(data)
 	elif type(data) == Image.Image:
-		data.save(file_getpath(fname, write = True))
+		data.save(fname)
 	else:
 		raise Exception("Unknown data type for writing: " + str(type(data)))
 
@@ -76,6 +87,6 @@ def file_read(fname, datatype = str):
 	elif datatype == str:
 		return file_open(fname, binary = False, write = False).read()
 	elif datatype == Image.Image:
-		return Image.open(file_getpath(fname, write = False)).convert('RGBA')
+		return Image.open(fname).convert('RGBA')
 	else:
 		raise Exception("Unknown data type for reading: " + str(datatype))

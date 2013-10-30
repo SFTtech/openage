@@ -1,5 +1,5 @@
 from struct import Struct, unpack_from
-from util import NamedObject, dbg, file_open
+from util import NamedObject, dbg, file_open, file_get_path
 from binascii import hexlify
 
 #version of the drs file, hardcoded for now
@@ -43,6 +43,7 @@ class DRS:
 		self.files = {}   #(extension, id): (data offset, size)
 
 		self.fname = fname
+		fname = file_get_path(fname, write = False)
 		f = file_open(fname, binary = True, write = False)
 
 		#read header
