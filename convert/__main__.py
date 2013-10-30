@@ -3,8 +3,25 @@ from util import file_write, dbg, args
 from drs import DRS
 from slp import SLP, PNG
 from colortable import ColorTable
+import argparse
 
 def main():
+
+	p = argparse.ArgumentParser()
+	p.add_argument("srcdir", help = "The Age of Empires II root directory")
+	p.add_argument("destdir", help = "The openage root directory")
+	p.add_argument("extract", nargs = "*", help = "A specific extraction rule, such as graphics:*.slp, or *:*.wav. If no rules are specified, *:*.* is assumed")
+	p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
+
+	args = p.parse_args()
+
+	#assume to extract all files when nothing specified.
+	if args.extract == []:
+		args.extract.append('*:*.*')
+
+	args.extractionrules = [ ExtractionRule(e) for e in args.extract ]
+
+
 	drsfiles = {
 		"graphics": DRS("Data/graphics.drs"),
 		"interface": DRS("Data/interfac.drs"),
