@@ -64,9 +64,17 @@ class SLP:
 
 			yield png, frame.info.size, frame.info.hotspot
 
+	def __str__(self):
+		ret = repr(self) + "\n"
+
+		ret = ret + FrameInfo.repr_header() + "\n"
+		for frame in self.frames:
+			ret = ret + repr(frame) + "\n"
+		return ret
+
 	def __repr__(self):
 		#TODO: lookup the image content description
-		return "SLP image, " + str(len(self.frames)) + " Frames"
+		return "<SLP image, " + str(len(self.frames)) + " Frames>"
 
 class FrameInfo:
 	def __init__(self, qdl_table_offset, outline_table_offset, palette_offset, properties, width, height, hotspot_x, hotspot_y):
@@ -122,7 +130,7 @@ class SLPFrame:
 			#@returns (base_color, is_outline_pixel)
 			if self.special_id == 2 or self.special_id == self.black_color:
 				#black outline pixel, we will probably never encounter this.
-				# -16 ensures palette[16 -16] will be used.
+				# -16 ensures palette[16+(-16)=0] will be used.
 				return (-16, True)
 			elif self.special_id == 1:
 				return (self.base_color, True) #this is an player-colored outline pixel
@@ -423,6 +431,9 @@ class SLPFrame:
 
 	def get_picture_data(self):
 		return self.pcolor
+
+	def __repr__(self):
+		return repr(self.info)
 
 class PNG:
 	def __init__(self, player_number, color_table, picture_data):

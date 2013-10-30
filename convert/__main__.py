@@ -6,7 +6,7 @@ from extractionrule import ExtractionRule
 from os import system, remove
 from os.path import join
 from slp import SLP, PNG
-from util import file_write, dbg, set_dir, set_verbosity, file_get_path
+from util import file_write, dbg, ifdbg, set_dir, set_verbosity, file_get_path
 
 def main():
 
@@ -16,7 +16,7 @@ def main():
 	p.add_argument("-o", "--destdir", help = "The openage root directory", default='/dev/null')
 
 	p.add_argument("srcdir", help = "The Age of Empires II root directory")
-	p.add_argument("extract", metavar = "resource", nargs = "*", help = "A specific extraction rule, such as graphics:*.slp, or *:*.wav. If no rules are specified, *:*.* is assumed")
+	p.add_argument("extract", metavar = "resource", nargs = "*", help = "A specific extraction rule, such as graphics:*.slp, terrain:15008.slp or *:*.wav. If no rules are specified, *:*.* is assumed")
 
 	args = p.parse_args()
 
@@ -69,12 +69,15 @@ def main():
 				fbase = file_get_path('raw/' + drsfile.fname + '/' + str(file_id), write=True)
 				fname = fbase + '.' + file_extension
 
-				dbg("Extracting " + fname, 1)
+				dbg("Extracting to " + fname + "...", 2)
 
 			file_data = drsfile.get_file_data(file_extension, file_id)
 
 			if file_extension == 'slp':
 				s = SLP(file_data)
+
+				#if ifdbg(2):
+				#	dbg(str(s), 2)
 
 				if write_enabled:
 
@@ -98,11 +101,13 @@ def main():
 						meta_out = meta_out + "%d,%d\n" % (hotspot_x, hotspot_y)
 
 						file_write(filename + '.docx', meta_out)
+						dbg(drsname + ": " + str(file_id) + "." + file_extension + " -> extracting frame %3d...\r" % (idx), 1, end="")
+					dbg("", 1)
 
 			elif file_extension == 'wav':
 
 				if write_enabled:
-				#do opus conversion
+
 					file_write(fname, file_data)
 
 					use_opus = False

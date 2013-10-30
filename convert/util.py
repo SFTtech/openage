@@ -19,19 +19,29 @@ def set_verbosity(newlevel):
 	global verbose
 	verbose = newlevel
 
-def dbg(msg = None, lvl = None, push = None, pop = None):
+def ifdbg(lvl):
+	global verbose
+
+	if verbose >= lvl:
+		return True
+	else:
+		return False
+
+def dbg(msg = None, lvl = None, push = None, pop = None, end = "\n"):
 	global verbose
 
 	if lvl == None:
+		#if no level is set, use the level on top of the debug stack
 		lvl = dbgstack[-1][1]
 
 	if verbose >= lvl and msg != None:
-		print((len(dbgstack) - 1) * "  " + str(msg))
+		print((len(dbgstack) - 1) * "  " + str(msg), end = end)
 	if push != None:
 		dbgstack.append([push, lvl])
 	if pop != None:
 		if pop == True:
-			dbgstack.pop()
+			if dbgstack.pop()[0] == None:
+				raise Exception("stack underflow in debug stack!")
 		elif dbgstack.pop()[0] != pop:
 			raise Exception(str(pop) + " is not on top of the debug stack")
 
