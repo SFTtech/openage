@@ -9,7 +9,7 @@ class NamedObject:
 	def __repr__(self):
 		return self.name
 
-dbgstack = [[None, 0]]
+dbgstack = [(None, 0)]
 
 readpath = "/dev/null"
 writepath = "/dev/null"
@@ -38,16 +38,18 @@ def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "
 		if msg != None:
 			raise Exception("debug message called with message and lazy message!")
 
-		if callable(lazymsg):
-			msg = lazymsg()
-		else:
-			raise Exception("the lazy message must be a callable (lambda)")
 
-	if verbose >= lvl and msg != None:
+	if verbose >= lvl:
+		if lazymsg != None:
+			if callable(lazymsg):
+				msg = lazymsg()
+			else:
+				raise Exception("the lazy message must be a callable (lambda)")
+
 		print((len(dbgstack) - 1) * "  " + str(msg), end = end)
 
 	if push != None:
-		dbgstack.append([push, lvl])
+		dbgstack.append((push, lvl))
 
 	if pop != None:
 		if pop == True:
