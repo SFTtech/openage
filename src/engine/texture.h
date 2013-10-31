@@ -54,6 +54,7 @@ public:
 	~Texture();
 
 	void draw(int x, int y, bool mirrored=false, int subid=0, unsigned player=0);
+	int get_subtexture_count();
 
 private:
 	GLuint id;

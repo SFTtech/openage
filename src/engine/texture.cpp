@@ -231,5 +231,9 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	}
 }
 
+int Texture::get_subtexture_count() {
+	return this->subtexture_count;
+}
+
 } //namespace engine
 } //namespace openage
