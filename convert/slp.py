@@ -267,7 +267,7 @@ class SLPFrame:
 			else:
 				self.boundaries.append( (left, right) )
 
-		dbg("boundary values: " + str(self.boundaries), 3)
+		dbg("boundary values: " + str(self.boundaries))
 
 		#process cmd table
 		for i in range(self.info.size[1]):
@@ -277,7 +277,7 @@ class SLPFrame:
 
 			self.cmd_offsets.append(cmd_offset)
 
-		dbg("cmd_offsets:     " + str(self.cmd_offsets), 3)
+		dbg("cmd_offsets:     " + str(self.cmd_offsets))
 
 		self.pcolor = []
 		for i in range(self.info.size[1]):
