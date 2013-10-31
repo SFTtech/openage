@@ -64,6 +64,98 @@ class SLP:
 
 			yield png, frame.info.size, frame.info.hotspot
 
+	def draw_frames_merged(self, color_table):
+		#merge all frames of this slp to a single png file.
+
+		#TODO: actually optimize free space on the texture.
+		#if you ever wanted to implement a combinatoric optimisation
+		#algorithm, go for it, this function just waits for you.
+		#https://en.wikipedia.org/wiki/Bin_packing_problem
+
+		#for now, using max values for solving bin packing problem
+
+
+		#player-specific colors will be in color blue, but with an alpha of 254
+		player_id = 1
+
+		max_width  = 0
+		max_height = 0
+
+		slp_pngs = []
+		for frame in self.frames:
+			png = PNG(player_id, color_table, frame.get_picture_data())
+			png.create()
+
+			if png.width > max_width:
+				max_width = png.width
+
+			if png.height > max_height:
+				max_height = png.height
+
+			slp_pngs.append((png, frame.info.size, frame.info.hotspot))
+
+		#now we collected all sprites and can start merging them to one
+		#big texture atlas.
+
+		max_per_row = math.ceil(math.sqrt(len(slp_pngs)))
+
+		width  = math.ceil(max_width * max_per_row)
+		height = math.ceil(max_height * (len(slp_pngs) / max_per_row))
+
+		atlas = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+
+		pos_x = 0
+		pos_y = 0
+
+		drawn_pngs = []
+		drawn_current_row = 0
+
+		for (sub_png, size, hotspot) in slp_pngs:
+			subtexture = sub_png.image
+			sub_w = subtexture.size[0]
+			sub_h = subtexture.size[1]
+			box = (pos_x, pos_y, pos_x + sub_w, pos_y + sub_h)
+
+			atlas.paste(subtexture, box, mask=subtexture)
+			dbg("drew frame %d at %dx%d " % (len(drawn_pngs), pos_x, pos_y), 2)
+
+			drawn_subtexture_meta = {
+				'tx': pos_x,
+				'ty': pos_y,
+				'tw': sub_w,
+				'th': sub_h,
+				'hx': hotspot[0],
+				'hy': hotspot[1]
+			}
+			drawn_pngs.append(drawn_subtexture_meta)
+
+			drawn_current_row = drawn_current_row + 1
+
+			pos_x = pos_x + sub_w
+			if drawn_current_row > max_per_row - 1:
+				drawn_current_row = 0
+				pos_x = 0
+				pos_y = pos_y + sub_h
+
+
+		meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
+		meta_out = meta_out + "n=%d\n" % (len(slp_pngs))
+
+		for idx, drawn_st_meta in enumerate(drawn_pngs):
+			tx = drawn_st_meta["tx"]
+			ty = drawn_st_meta["ty"]
+			tw = drawn_st_meta["tw"]
+			th = drawn_st_meta["th"]
+			hotspot_x = drawn_st_meta["hx"]
+			hotspot_y = drawn_st_meta["hy"]
+
+			meta_out = meta_out + "%d=" % idx
+			meta_out = meta_out + "%d,%d,%d,%d," % (tx, ty, tw, th)
+			meta_out = meta_out + "%d,%d\n" % (hotspot_x, hotspot_y)
+
+
+		return atlas, (width, height), meta_out
+
 	def __repr__(self):
 		#TODO: lookup the image content description
 		return "SLP image, " + str(len(self.frames)) + " Frames"
@@ -431,9 +523,9 @@ class PNG:
 		self.picture_data = picture_data
 
 	def create(self):
-		width = len(self.picture_data[0])
-		height = len(self.picture_data)
-		self.image = Image.new('RGBA', (width, height), (255, 255, 255, 0))
+		self.width = len(self.picture_data[0])
+		self.height = len(self.picture_data)
+		self.image = Image.new('RGBA', (self.width, self.height), (255, 255, 255, 0))
 		draw = ImageDraw.ImageDraw(self.image)
 		self.draw_picture(draw)
 
@@ -442,6 +534,7 @@ class PNG:
 		for y, picture_row in enumerate(self.picture_data):
 			for x, color_data in enumerate(picture_row):
 				if type(color_data) == int:
+					#simply look up the color index in the table
 					color = self.color_table[color_data]
 				elif type(color_data) == SLPFrame.SpecialColor:
 					base_pcolor, is_outline = color_data.get_pcolor()

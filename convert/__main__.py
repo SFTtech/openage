@@ -14,6 +14,7 @@ def main():
 	p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
 	p.add_argument("-l", "--info", help = "Show information about the resources", action='store_true')
 	p.add_argument("-o", "--destdir", help = "The openage root directory", default='/dev/null')
+	p.add_argument("-m", "--merge", help = "Merge frames of slps onto a single texture atlas", action='store_true')
 
 	p.add_argument("srcdir", help = "The Age of Empires II root directory")
 	p.add_argument("extract", metavar = "resource", nargs = "*", help = "A specific extraction rule, such as graphics:*.slp, or *:*.wav. If no rules are specified, *:*.* is assumed")
@@ -28,6 +29,8 @@ def main():
 
 	#write mode is disabled by default, unless destdir is set
 	write_enabled = False
+
+	merge_images = args.merge
 
 	#set path in utility class
 	print("setting age2 input directory to " + args.srcdir)
@@ -78,26 +81,31 @@ def main():
 
 				if write_enabled:
 
-					#TODO: intelligent merging of all the frames to one texture plane
-					for idx, (png, (width, height), (hotspot_x, hotspot_y)) in enumerate(s.draw_frames(palette)):
-						filename = fname + '.' + str(idx)
-						file_write(filename + '.png', png.image)
+					if merge_images:
+						png, (width, height), metadata = s.draw_frames_merged(palette)
+						file_write(fname + ".png", png)
+						file_write(fname + '.docx', metadata)
 
-						#x,y of lower left origin
-						#width and height of the subtexture
-						tx = 0
-						ty = 0
-						tw = width
-						th = height
+					else:
+						for idx, (png, (width, height), (hotspot_x, hotspot_y)) in enumerate(s.draw_frames(palette)):
+							filename = fname + '.' + str(idx)
+							file_write(filename + '.png', png.image)
 
-						#metadata writing
-						meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
-						meta_out = meta_out + "n=1\n"
-						meta_out = meta_out + "%d=" % idx
-						meta_out = meta_out + "%d,%d,%d,%d," % (tx, ty, tw, th)
-						meta_out = meta_out + "%d,%d\n" % (hotspot_x, hotspot_y)
+							#x,y of lower left origin
+							#width and height of the subtexture
+							tx = 0
+							ty = 0
+							tw = width
+							th = height
 
-						file_write(filename + '.docx', meta_out)
+							#metadata writing
+							meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
+							meta_out = meta_out + "n=1\n"
+							meta_out = meta_out + "%d=" % idx
+							meta_out = meta_out + "%d,%d,%d,%d," % (tx, ty, tw, th)
+							meta_out = meta_out + "%d,%d\n" % (hotspot_x, hotspot_y)
+
+							file_write(filename + '.docx', meta_out)
 
 			elif file_extension == 'wav':
 
@@ -105,7 +113,7 @@ def main():
 				#do opus conversion
 					file_write(fname, file_data)
 
-					use_opus = False
+					use_opus = True
 
 					if use_opus:
 					#opusenc invokation (TODO: ffmpeg?)
