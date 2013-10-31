@@ -46,7 +46,8 @@ def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "
 			else:
 				raise Exception("the lazy message must be a callable (lambda)")
 
-		print((len(dbgstack) - 1) * "  " + str(msg), end = end)
+		if msg != None:
+			print((len(dbgstack) - 1) * "  " + str(msg), end = end)
 
 	if push != None:
 		dbgstack.append((push, lvl))
