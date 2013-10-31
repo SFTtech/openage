@@ -69,7 +69,7 @@ class DRS:
 			#flip the extension... it's stored that way...
 			file_extension = file_extension.decode('latin-1').lower()[::-1]
 
-			dbg("Table header [" + str(i) + "]", 1, push = "table")
+			dbg("Table header [" + str(i) + "]", 2, push = "table")
 			dbg("file type:        0x" + hexlify(file_type).decode('utf-8'))
 			dbg("file extension:   " + file_extension)
 			dbg("file_info_offset: " + str(file_info_offset))
@@ -83,7 +83,7 @@ class DRS:
 				file_header = DRS.drs_file_info.unpack_from(file_info_buf, j * DRS.drs_file_info.size)
 				file_id, file_data_offset, file_size = file_header
 
-				dbg("File info header [" + str(j) + "]", 2, push = "fileinfo")
+				dbg("File info header [" + str(j) + "]", 3, push = "fileinfo")
 				dbg("file id:        " + str(file_id))
 				dbg("data offset:    " + str(file_data_offset))
 				dbg("file size:      " + str(file_size))
