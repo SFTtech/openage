@@ -53,7 +53,7 @@ public:
 	Texture(const char *filename, bool player_colored=false, bool multi_texture=false);
 	~Texture();
 
-	void draw(int x, int y, unsigned player, bool mirrored=false, int subid=0);
+	void draw(int x, int y, bool mirrored=false, int subid=0, unsigned player=0);
 
 private:
 	GLuint id;

@@ -164,7 +164,7 @@ Texture::~Texture() {
 	glDeleteTextures(1, &this->id);
 }
 
-void Texture::draw(int x, int y, unsigned player, bool mirrored, int subid) {
+void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->use();
@@ -176,10 +176,10 @@ void Texture::draw(int x, int y, unsigned player, bool mirrored, int subid) {
 	glBindTexture(GL_TEXTURE_2D, this->id);
 	glEnable(GL_TEXTURE_2D);
 
-	struct subtexture tx;
+	struct subtexture *tx;
 
-	if (subid <= this->subtexture_count && subid >= 0) {
-		tx = this->subtextures[subid];
+	if (subid < this->subtexture_count && subid >= 0) {
+		tx = &this->subtextures[subid];
 	}
 	else {
 		throw util::Error("requested unknown subtexture %d", subid);
@@ -188,25 +188,25 @@ void Texture::draw(int x, int y, unsigned player, bool mirrored, int subid) {
 	int left, right, top, bottom;
 
 	//coordinates where the texture will be drawn on screen.
-	bottom  = y      - tx.cy;
-	top     = bottom + tx.h;
+	bottom  = y      - tx->cy;
+	top     = bottom + tx->h;
 
 	if (!mirrored) {
-		left  = x    - tx.cx;
-		right = left + tx.w;
+		left  = x    - tx->cx;
+		right = left + tx->w;
 	} else {
-		left  = x    + tx.cx;
-		right = left - tx.w;
+		left  = x    + tx->cx;
+		right = left - tx->w;
 	}
 
 	//subtexture coordinates
 	//left, right, top and bottom bounds as coordinates
 	//these pick the requested area out of the big texture.
 	float txl, txr, txt, txb;
-	txl = (tx.x)       /this->w;
-	txr = (tx.x + tx.w)/this->w;
-	txt = (tx.y)       /this->h;
-	txb = (tx.y + tx.h)/this->h;
+	txl = (tx->x)         /this->w;
+	txr = (tx->x + tx->w) /this->w;
+	txt = (tx->y)         /this->h;
+	txb = (tx->y + tx->h) /this->h;
 
 	//TODO:replate with vertex buffer/uniforms for vshader
 	glBegin(GL_QUADS); {
