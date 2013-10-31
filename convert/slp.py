@@ -117,7 +117,7 @@ class SLP:
 			box = (pos_x, pos_y, pos_x + sub_w, pos_y + sub_h)
 
 			atlas.paste(subtexture, box, mask=subtexture)
-			dbg("drew frame %d at %dx%d " % (len(drawn_pngs), pos_x, pos_y), 2)
+			dbg("drew frame on atlas %d at %dx%d " % (len(drawn_pngs), pos_x, pos_y), 3)
 
 			drawn_subtexture_meta = {
 				'tx': pos_x,
@@ -277,7 +277,7 @@ class SLPFrame:
 
 			self.cmd_offsets.append(cmd_offset)
 
-		dbg("cmd_offsets:     " + str(self.cmd_offsets))
+		dbg("cmd_offsets:     " + str(self.cmd_offsets), 3)
 
 		self.pcolor = []
 		for i in range(self.info.size[1]):
