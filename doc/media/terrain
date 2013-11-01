@@ -40,6 +40,7 @@ contents of terrain.drs:
 
 one terrain tile is a paralellogram with equal side lengths
 and the same angles in edges on opposing sides.
+this is also known as a rhombus.
 
 tile image height = 97
 tile image width  = 49
