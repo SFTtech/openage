@@ -3,9 +3,10 @@ import argparse
 from colortable import ColorTable
 from drs import DRS
 from extractionrule import ExtractionRule
-from os import system, remove
+from os import remove
 from os.path import join
 from slp import SLP, PNG
+import subprocess
 from util import file_write, dbg, ifdbg, set_dir, set_verbosity, file_get_path
 
 def main():
@@ -106,9 +107,17 @@ def main():
 
 					if use_opus:
 					#opusenc invokation (TODO: ffmpeg?)
-						opus_convert_call = 'opusenc "' + fname + '" "' + fbase + '.opus"'
-						print("converting... : " + opus_convert_call)
-						system(opus_convert_call)
+						opus_convert_call = ['opusenc', fname, fbase + '.opus']
+						dbg("converting... : " + fname + " to opus.", 1)
+
+						oc = subprocess.Popen(opus_convert_call, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+						oc_out, oc_err = oc.communicate()
+
+						if ifdbg(2):
+							oc_out = oc_out.decode("utf-8")
+							oc_err = oc_err.decode("utf-8")
+
+							dbg(oc_out + "\n" + oc_err, 2)
 
 						#remove original wave file
 						remove(fname)
