@@ -131,7 +131,7 @@ class SLP:
 			sub_h = subtexture.size[1]
 			box = (pos_x, pos_y, pos_x + sub_w, pos_y + sub_h)
 
-			atlas.paste(subtexture, box, mask=subtexture)
+			atlas.paste(subtexture, box) #, mask=subtexture)
 			dbg("drew frame on atlas %d at %dx%d " % (len(drawn_pngs), pos_x, pos_y), 3)
 
 			drawn_subtexture_meta = {
