@@ -14,7 +14,7 @@ def main():
 	p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
 	p.add_argument("-l", "--info", help = "Show information about the resources", action='store_true')
 	p.add_argument("-o", "--destdir", help = "The openage root directory", default='/dev/null')
-	p.add_argument("-m", "--merge", help = "Merge frames of slps onto a single texture atlas", action='store_true')
+	p.add_argument("-s", "--nomerge", help = "Don't merge frames of slps onto a texture atlas, create single files instead", action='store_true')
 
 	p.add_argument("srcdir", help = "The Age of Empires II root directory")
 	p.add_argument("extract", metavar = "resource", nargs = "*", help = "A specific extraction rule, such as graphics:*.slp, terrain:15008.slp or *:*.wav. If no rules are specified, *:*.* is assumed")
@@ -27,19 +27,19 @@ def main():
 
 	args.extractionrules = [ ExtractionRule(e) for e in args.extract ]
 
-	#write mode is disabled by default, unless destdir is set
-	write_enabled = False
-
-	merge_images = args.merge
+	merge_images = not args.nomerge
 
 	#set path in utility class
 	print("setting age2 input directory to " + args.srcdir)
 	set_dir(args.srcdir, is_writedir=False)
 
+	#write mode is disabled by default, unless destdir is set
 	if args.destdir != '/dev/null':
 		print("setting write dir to " + args.destdir)
 		set_dir(args.destdir, is_writedir=True)
 		write_enabled = True
+	else:
+		write_enabled = False
 
 	if args.info == True:
 		print("information mode")
