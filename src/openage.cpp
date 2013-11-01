@@ -39,7 +39,7 @@ void init() {
 	//TODO: dynamic generation of the file path
 	//sync this with media-convert/age2media.py !
 
-	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.0.png", true, true);
+	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.png", true, true);
 	grass = new engine::Texture("age/raw/Data/terrain.drs/15008.slp.png", true, true);
 
 	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
