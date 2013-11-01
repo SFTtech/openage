@@ -58,11 +58,26 @@ class SLP:
 		#player-specific colors will be in color blue, but with an alpha of 254
 		player_id = 1
 
-		for frame in self.frames:
+		for idx, frame in enumerate(self.frames):
 			png = PNG(player_id, color_table, frame.get_picture_data())
 			png.create()
 
-			yield png, frame.info.size, frame.info.hotspot
+			#this sprite png only contains one texture, therefore x and y are 0
+			tx = 0
+			ty = 0
+			tw = frame.info.size[0]
+			th = frame.info.size[1]
+			hx = frame.info.hotspot[0]
+			hy = frame.info.hotspot[1]
+
+			#metadata writing
+			meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
+			meta_out = meta_out + "n=1\n"
+			meta_out = meta_out + "%d=" % idx
+			meta_out = meta_out + "%d,%d,%d,%d," % (tx, ty, tw, th)
+			meta_out = meta_out + "%d,%d\n" % (hx, hy)
+
+			yield png, meta_out
 
 	def draw_frames_merged(self, color_table):
 		#merge all frames of this slp to a single png file.

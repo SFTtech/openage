@@ -79,36 +79,20 @@ def main():
 			if file_extension == 'slp':
 				s = SLP(file_data)
 
-				#if ifdbg(2):
-				#	dbg(str(s), 2)
-
 				if write_enabled:
 
 					if merge_images:
 						png, (width, height), metadata = s.draw_frames_merged(palette)
 						file_write(fname + ".png", png)
 						file_write(fname + '.docx', metadata)
+						dbg(drsname + ": " + str(file_id) + "." + file_extension + " -> saving packed atlas", 1)
 
 					else:
-						for idx, (png, (width, height), (hotspot_x, hotspot_y)) in enumerate(s.draw_frames(palette)):
+						for idx, (png, metadata) in enumerate(s.draw_frames(palette)):
 							filename = fname + '.' + str(idx)
 							file_write(filename + '.png', png.image)
+							file_write(filename + '.docx', metadata)
 
-							#x,y of lower left origin
-							#width and height of the subtexture
-							tx = 0
-							ty = 0
-							tw = width
-							th = height
-
-							#metadata writing
-							meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
-							meta_out = meta_out + "n=1\n"
-							meta_out = meta_out + "%d=" % idx
-							meta_out = meta_out + "%d,%d,%d,%d," % (tx, ty, tw, th)
-							meta_out = meta_out + "%d,%d\n" % (hotspot_x, hotspot_y)
-
-							file_write(filename + '.docx', meta_out)
 							dbg(drsname + ": " + str(file_id) + "." + file_extension + " -> extracting frame %3d...\r" % (idx), 1, end="")
 						dbg("", 1)
 
