@@ -130,13 +130,13 @@ void input_handler(SDL_Event *e) {
 		//a mouse button was pressed...
 		//subtract value from window height to get position relative to lower right (0,0).
 		if (e->button.button == SDL_BUTTON_LEFT) {
-			lmbx = e->button.x;
-			lmby = engine::window_y - e->button.y;
+			lmbx = e->button.x - engine::view_x;
+			lmby = engine::window_y - e->button.y - engine::view_y;
 			log::dbg("left button pressed at %d,%d", lmbx, lmby);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
-			rmbx = e->button.x;
-			rmby = engine::window_y - e->button.y;
+			rmbx = e->button.x - engine::view_x;
+			rmby = engine::window_y - e->button.y - engine::view_y;
 			log::dbg("right button pressed at %d,%d", lmbx, lmby);
 		}
 		break;
@@ -147,6 +147,22 @@ void input_handler(SDL_Event *e) {
 		//}
 		break;
 	case SDL_KEYDOWN:
+
+		//moving arround the view with hardcoded arrow keys
+		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
+		case SDLK_LEFT:
+			engine::view_x -= 20;
+			break;
+		case SDLK_RIGHT:
+			engine::view_x += 20;
+			break;
+		case SDLK_UP:
+			engine::view_y += 20;
+			break;
+		case SDLK_DOWN:
+			engine::view_y -= 20;
+			break;
+		}
 
 		break;
 	}

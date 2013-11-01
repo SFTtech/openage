@@ -79,6 +79,18 @@ y size of the current window.
 */
 extern unsigned window_y;
 
+/**
+view position x.
+This represents the scrolling x position of the user.
+*/
+extern int view_x;
+
+/**
+view position y.
+This represents the scrolling y position of the user.
+*/
+extern int view_y;
+
 
 } //namespace engine
 } //namespace openage

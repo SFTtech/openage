@@ -32,6 +32,9 @@ bool running;
 unsigned window_x = 800;
 unsigned window_y = 600;
 
+int view_x = 0;
+int view_y = 0;
+
 util::FrameCounter fpscounter;
 bool console_activated = false;
 
@@ -54,11 +57,11 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 	}
 
 
-	// load support for the JPG and PNG image formats
-	int wanted_image_formats = IMG_INIT_JPG | IMG_INIT_PNG;
+	// load support for the PNG image formats, jpg: IMG_INIT_JPG | IMG_INIT_PNG
+	int wanted_image_formats = IMG_INIT_PNG;
 	int sdlimg_inited = IMG_Init(wanted_image_formats);
 	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		throw util::Error("Failed to init JPG/PNG support: %s", IMG_GetError());
+		throw util::Error("Failed to init PNG support: %s", IMG_GetError());
 	}
 
 	glcontext = SDL_GL_CreateContext(window);
@@ -181,7 +184,12 @@ void loop() {
 			}
 		}
 
-		draw_method();
+		glPushMatrix();
+		{
+			glTranslatef(engine::view_x, engine::view_y, 0);
+			draw_method();
+		}
+		glPopMatrix();
 
 		if (console_activated) {
 			console->draw();
