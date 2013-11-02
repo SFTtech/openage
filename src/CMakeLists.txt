@@ -16,6 +16,7 @@ add_executable(${PROJECT_NAME}
 	openage.cpp
 	engine/engine.cpp
 	engine/console.cpp
+	engine/terrain.cpp
 	engine/texture.cpp
 	engine/shader/shader.cpp
 	engine/shader/program.cpp
