@@ -27,7 +27,7 @@ one sprite included in the "texture atlas" has.
 */
 struct subtexture {
 	/** x,y starting coordinates and width/height of the subtexture */
-	float x, y, w, h;
+	int x, y, w, h;
 
 	/** hotspot coordinates. */
 	unsigned int cx, cy;
@@ -55,7 +55,7 @@ public:
 
 	void draw(int x, int y, bool mirrored=false, int subid=0, unsigned player=0);
 	int get_subtexture_count();
-	void get_subtexture_size(int subid, float *w, float *h);
+	void get_subtexture_size(int subid, int *w, int *h);
 
 private:
 	GLuint id;

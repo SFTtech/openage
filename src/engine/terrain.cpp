@@ -55,7 +55,7 @@ void Terrain::render() {
 			int terrain_id = this->tile_at(i, j);
 
 			int x, y, space;
-			float tw, th;
+			int tw, th;
 			this->texture->get_subtexture_size(terrain_id, &tw, &th);
 
 			space = (this->size - this->tiles_in_row(i)) * (tw/2);

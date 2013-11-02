@@ -203,10 +203,10 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	//left, right, top and bottom bounds as coordinates
 	//these pick the requested area out of the big texture.
 	float txl, txr, txt, txb;
-	txl = (tx->x)         /this->w;
-	txr = (tx->x + tx->w) /this->w;
-	txt = (tx->y)         /this->h;
-	txb = (tx->y + tx->h) /this->h;
+	txl = ((float)tx->x)           /this->w;
+	txr = ((float)(tx->x + tx->w)) /this->w;
+	txt = ((float)tx->y)           /this->h;
+	txb = ((float)(tx->y + tx->h)) /this->h;
 
 	//TODO:replate with vertex buffer/uniforms for vshader
 	glBegin(GL_QUADS); {
@@ -235,7 +235,7 @@ int Texture::get_subtexture_count() {
 	return this->subtexture_count;
 }
 
-void Texture::get_subtexture_size(int subid, float *w, float *h) {
+void Texture::get_subtexture_size(int subid, int *w, int *h) {
 	if (subid > this->get_subtexture_count() -1) {
 		throw util::Error("Requested nonexistant subtexture %d", subid);
 	}
