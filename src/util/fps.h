@@ -11,8 +11,12 @@ public:
 
 	/** auto-updated to always contain the current FPS value */
 	float fps;
+
 	/** contains the number of completed frames */
 	unsigned count;
+
+	/** milliseconds used for the last frame */
+	unsigned int msec_lastframe;
 
 private:
 	float frame_count_weighted;
