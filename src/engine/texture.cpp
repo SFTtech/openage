@@ -21,7 +21,7 @@ GLint player_id_var, alpha_marker_var, player_color_var;
 
 } //namespace teamcolor_shader
 
-Texture::Texture(const char *filename, bool player_colored, bool multi_texture) {
+Texture::Texture(const char *filename, bool player_colored, bool use_metafile) {
 	this->use_player_color_tinting = player_colored;
 
 	SDL_Surface *surface;
@@ -69,7 +69,7 @@ Texture::Texture(const char *filename, bool player_colored, bool multi_texture) 
 
 	this->id = textureid;
 
-	if (multi_texture) {
+	if (use_metafile) {
 		//change the suffix to .docx (lol)
 		size_t m_len = strlen(filename) + 2;
 		char *meta_filename = new char[m_len];
@@ -234,6 +234,16 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 int Texture::get_subtexture_count() {
 	return this->subtexture_count;
 }
+
+void Texture::get_subtexture_size(int subid, float *w, float *h) {
+	if (subid > this->get_subtexture_count() -1) {
+		throw util::Error("Requested nonexistant subtexture %d", subid);
+	}
+
+	*w = this->subtextures[subid].w;
+	*h = this->subtextures[subid].h;
+}
+
 
 } //namespace engine
 } //namespace openage

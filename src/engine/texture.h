@@ -50,11 +50,12 @@ public:
 
 	bool centered;
 
-	Texture(const char *filename, bool player_colored=false, bool multi_texture=false);
+	Texture(const char *filename, bool player_colored=false, bool use_metafile=false);
 	~Texture();
 
 	void draw(int x, int y, bool mirrored=false, int subid=0, unsigned player=0);
 	int get_subtexture_count();
+	void get_subtexture_size(int subid, float *w, float *h);
 
 private:
 	GLuint id;
