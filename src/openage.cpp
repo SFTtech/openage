@@ -200,16 +200,16 @@ void view_translation_method() {
 	float mx = 0;
 	float my = 0;
 	if (sc_left) {
-		mx -= 1;
-	}
-	if (sc_right) {
 		mx += 1;
 	}
+	if (sc_right) {
+		mx -= 1;
+	}
 	if (sc_up) {
-		my += 1;
+		my -= 1;
 	}
 	if (sc_down) {
-		my -= 1;
+		my += 1;
 	}
 
 	float threshold = 0.5;
