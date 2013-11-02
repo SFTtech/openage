@@ -25,8 +25,10 @@ FTGLTextureFont *t_font;
 
 Console *console;
 
-draw_method_ptr draw_method;
+noparam_method_ptr view_translation_method;
+noparam_method_ptr draw_method;
 input_handler_ptr input_handler;
+
 
 bool running;
 unsigned window_x = 800;
@@ -38,12 +40,12 @@ int visible_x_left = 0, visible_x_right = 0;
 int visible_y_top = 0, visible_y_bottom = 0;
 
 
-util::FrameCounter fpscounter;
+util::FrameCounter *fpscounter;
 bool console_activated = false;
 
 
 
-void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
+void init(noparam_method_ptr view_translation_method, noparam_method_ptr draw_method, input_handler_ptr input_handler) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw util::Error("SDL initialization: %s", SDL_GetError());
 	}
@@ -90,6 +92,7 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	engine::view_translation_method = view_translation_method;
 	engine::draw_method = draw_method;
 	engine::input_handler = input_handler;
 
@@ -102,11 +105,15 @@ void init(draw_method_ptr draw_method, input_handler_ptr input_handler) {
 
 	//initialize the visual debug console
 	console = new Console(util::Color(255, 255, 255, 180), util::Color(0, 0, 0, 255));
+
+	//initialize the fps counter
+	fpscounter = new util::FrameCounter();
 }
 
 void destroy() {
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
+	delete fpscounter;
 	delete console;
 	delete t_font;
 	IMG_Quit();
@@ -146,6 +153,10 @@ void move_view(int delta_x, int delta_y) {
 
 }
 
+void move_view(float threshold, float x, float y) {
+	move_view(threshold * x, threshold * y);
+}
+
 void engine_input_handler(SDL_Event *e) {
 	switch(e->type) {
 	case SDL_WINDOWEVENT:
@@ -177,7 +188,7 @@ void loop() {
 
 	while (running) {
 
-		fpscounter.frame();
+		fpscounter->frame();
 
 
 		glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -199,6 +210,8 @@ void loop() {
 			}
 		}
 
+		view_translation_method();
+
 		glPushMatrix();
 		{
 			glTranslatef(engine::view_x, engine::view_y, 0);
@@ -214,7 +227,7 @@ void loop() {
 		{
 			glTranslatef(engine::window_x - 100, 15, 0);
 			glColor4f(1.0, 1.0, 1.0, 1.0);
-			char *fpstext = util::format("%.1f fps", fpscounter.fps);
+			char *fpstext = util::format("%.1f fps", fpscounter->fps);
 			t_font->Render(fpstext);
 			delete[] fpstext;
 		}

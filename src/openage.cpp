@@ -24,6 +24,9 @@ util::Timer *timer;
 
 unsigned lmbx, lmby, rmbx, rmby;
 
+
+bool sc_left, sc_right, sc_up, sc_down;
+
 void init() {
 	timer = new util::Timer();
 	timer->start();
@@ -32,6 +35,11 @@ void init() {
 	lmby = 0;
 	rmbx = 0;
 	rmby = 0;
+
+	sc_left = false;
+	sc_right = false;
+	sc_up = false;
+	sc_down = false;
 
 	//load textures and stuff
 	gaben = new engine::Texture("gaben.png");
@@ -148,33 +156,69 @@ void input_handler(SDL_Event *e) {
 			rmby = engine::window_y - e->button.y - engine::view_y;
 			log::dbg("right button pressed at %d,%d", lmbx, lmby);
 		}
+
 		break;
 	case SDL_KEYUP:
-		//switch (e->keysym.sym) {
-		//case SDLK_a:
-		//	break;
-		//}
-		break;
-	case SDL_KEYDOWN:
-
-		//moving arround the view with hardcoded arrow keys
 		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
 		case SDLK_LEFT:
-			engine::move_view(-20, 0);
+			sc_left = false;
 			break;
 		case SDLK_RIGHT:
-			engine::move_view(20, 0);
+			sc_right = false;
 			break;
 		case SDLK_UP:
-			engine::move_view(0, 20);
+			sc_up = false;
 			break;
 		case SDLK_DOWN:
-			engine::move_view(0, -20);
+			sc_down = false;
+			break;
+		}
+
+		break;
+	case SDL_KEYDOWN:
+		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
+
+		case SDLK_LEFT:
+			sc_left = true;
+			break;
+		case SDLK_RIGHT:
+			sc_right = true;
+			break;
+		case SDLK_UP:
+			sc_up = true;
+			break;
+		case SDLK_DOWN:
+			sc_down = true;
 			break;
 		}
 
 		break;
 	}
+}
+
+void view_translation_method() {
+	float mx = 0;
+	float my = 0;
+	if (sc_left) {
+		mx -= 1;
+	}
+	if (sc_right) {
+		mx += 1;
+	}
+	if (sc_up) {
+		my += 1;
+	}
+	if (sc_down) {
+		my -= 1;
+	}
+
+	float threshold = 0.5;
+	float scalefactor = threshold * engine::fpscounter->msec_lastframe;
+
+	mx *= scalefactor;
+	my *= scalefactor;
+
+	engine::move_view(mx, my);
 }
 
 void draw_method() {
@@ -188,7 +232,7 @@ void draw_method() {
 
 int mainmethod() {
 	//init engine
-	engine::init(draw_method, input_handler);
+	engine::init(view_translation_method, draw_method, input_handler);
 	init();
 
 	//run main loop
