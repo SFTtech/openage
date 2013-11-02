@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 #include "engine/engine.h"
+#include "engine/terrain.h"
 #include "engine/texture.h"
 #include "engine/shader/shader.h"
 #include "engine/shader/program.h"
@@ -17,6 +18,7 @@
 namespace openage {
 
 engine::Texture *gaben, *university, *grass;
+engine::Terrain *terrain;
 
 util::Timer *timer;
 
@@ -40,7 +42,14 @@ void init() {
 	//sync this with media-convert/age2media.py !
 
 	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.png", true, true);
-	grass = new engine::Texture("age/raw/Data/terrain.drs/15008.slp.png", true, true);
+	grass = new engine::Texture("age/raw/Data/terrain.drs/15008.slp.png", false, true);
+
+	terrain = new engine::Terrain(10);
+	terrain->set_texture(grass);
+
+	for (unsigned int i=0; i<terrain->get_tile_count(); i++) {
+		terrain->set_tile_at(i, i);
+	}
 
 	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
 	engine::teamcolor_shader::vert = new engine::shader::Shader(GL_VERTEX_SHADER, texturevshader_code);
@@ -151,16 +160,16 @@ void input_handler(SDL_Event *e) {
 		//moving arround the view with hardcoded arrow keys
 		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
 		case SDLK_LEFT:
-			engine::view_x -= 20;
+			engine::move_view(-20, 0);
 			break;
 		case SDLK_RIGHT:
-			engine::view_x += 20;
+			engine::move_view(20, 0);
 			break;
 		case SDLK_UP:
-			engine::view_y += 20;
+			engine::move_view(0, 20);
 			break;
 		case SDLK_DOWN:
-			engine::view_y -= 20;
+			engine::move_view(0, -20);
 			break;
 		}
 
@@ -168,19 +177,10 @@ void input_handler(SDL_Event *e) {
 	}
 }
 
-int lol = 0;
 void draw_method() {
 	gaben->draw(0, 0, 0);
 
-	int middle_x = engine::window_x/2;
-	int middle_y = engine::window_y/2;
-
-	grass->draw(middle_x, middle_y, false, lol);
-	grass->draw(middle_x+(97/2), middle_y-(49/2), false, 1);
-	grass->draw(middle_x+(97/2), middle_y+(49/2), false, 2);
-	grass->draw(middle_x+97, middle_y, false, 3);
-
-	lol = ++lol % grass->get_subtexture_count();
+	terrain->render();
 
 	university->draw(lmbx, lmby, false, 0, 1);
 	university->draw(rmbx, rmby, true, 0, 2);
