@@ -45,6 +45,11 @@ internal method that is automatically called whenever the window is resized.
 void engine_window_resized(unsigned w, unsigned h);
 
 /**
+move the view by a given amount of pixels.
+*/
+void move_view(int delta_x, int delta_y);
+
+/**
 internal method that is called whenever an input event is registered.
 */
 void engine_input_handler(SDL_Event *e);
@@ -90,6 +95,12 @@ view position y.
 This represents the scrolling y position of the user.
 */
 extern int view_y;
+
+/**
+positions visible in viewport.
+*/
+extern int visible_x_left, visible_x_right, visible_y_top, visible_y_bottom;
+
 
 
 } //namespace engine

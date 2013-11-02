@@ -34,6 +34,9 @@ unsigned window_y = 600;
 
 int view_x = 0;
 int view_y = 0;
+int visible_x_left = 0, visible_x_right = 0;
+int visible_y_top = 0, visible_y_bottom = 0;
+
 
 util::FrameCounter fpscounter;
 bool console_activated = false;
@@ -129,6 +132,18 @@ void engine_window_resized(unsigned w, unsigned h) {
 	glLoadIdentity();
 
 	log::dbg("engine window has been resized to %ux%u\n", w, h);
+}
+
+void move_view(int delta_x, int delta_y) {
+
+	engine::view_x += delta_x;
+	engine::view_y += delta_y;
+
+	engine::visible_x_left   = engine::view_x;
+	engine::visible_x_right  = engine::view_x + engine::window_x;
+	engine::visible_y_top    = engine::view_y + engine::window_y;
+	engine::visible_y_bottom = engine::view_y;
+
 }
 
 void engine_input_handler(SDL_Event *e) {
