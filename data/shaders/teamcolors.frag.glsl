@@ -35,19 +35,25 @@ bool is_color(vec4 c1, vec4 reference) {
 
 void main()
 {
+	//get the texel from the uniform texture.
 	vec4 pixel = texture2D(texture, gl_TexCoord[0].xy);
-	float replacement_alpha = alpha_marker;
 
-	if (pixel[3] >= replacement_alpha - epsilon && pixel[3] <= replacement_alpha + epsilon) {
+	//check if this texel has an alpha marker, so we can replace it's rgb values.
+	if (pixel[3] >= alpha_marker - epsilon && pixel[3] <= alpha_marker + epsilon) {
 
-		pixel[3] = 1.0; //set it for the comparison
+		//set alpha to 1 for the comparison
+		pixel[3] = 1.0;
 
 		//don't replace the colors if it's already player 1 (blue)
 		//as the media convert scripts generates blue-player sprites
 		if (player_number != 1) {
 			bool found = false;
+
+			//try to find the base color, there are 8 of them.
 			for(int i = 0; i <= 7; i++) {
 				if (is_color(pixel, player_color[i])) {
+					//base color found, now replace it with the same color
+					//but player_number tinted.
 					pixel = get_color(player_number, i);
 					found = true;
 					break;
@@ -59,6 +65,7 @@ void main()
 			}
 		}
 	}
+	//else the texel had no marker so we can just draw it without player coloring
 
 	gl_FragColor = pixel;
 }
