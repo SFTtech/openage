@@ -14,6 +14,7 @@ def main():
 	p = argparse.ArgumentParser()
 	p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
 	p.add_argument("-l", "--info", help = "Show information about the resources", action='store_true')
+	p.add_argument("-e", "--extrafiles", help = "Extract extra files that are not needed, but useful (mainly visualizations).", action='store_true')
 	p.add_argument("-o", "--destdir", help = "The openage root directory", default='/dev/null')
 	p.add_argument("-s", "--nomerge", help = "Don't merge frames of slps onto a texture atlas, create single files instead", action='store_true')
 
@@ -57,10 +58,13 @@ def main():
 		"terrain":   DRS("Data/terrain.drs")
 	}
 
+	palette = ColorTable(drsfiles["interface"].get_file_data('bin', 50500))
+
 	if write_enabled:
-		palette = ColorTable(drsfiles["interface"].get_file_data('bin', 50500))
-		file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
 		file_write(file_get_path('processed/player_color_palette.pal', write=True), palette.gen_player_color_palette())
+		if args.extrafiles:
+			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
+
 
 	files_extracted = 0
 
@@ -82,11 +86,13 @@ def main():
 
 				if write_enabled:
 
+					out_file_tmp = drsname + ": " + str(file_id) + "." + file_extension
+
 					if merge_images:
 						png, (width, height), metadata = s.draw_frames_merged(palette)
 						file_write(fname + ".png", png)
 						file_write(fname + '.docx', metadata)
-						dbg(drsname + ": " + str(file_id) + "." + file_extension + " -> saving packed atlas", 1)
+						dbg(out_file_tmp + " -> saved packed atlas", 1)
 
 					else:
 						for idx, (png, metadata) in enumerate(s.draw_frames(palette)):
@@ -94,8 +100,8 @@ def main():
 							file_write(filename + '.png', png.image)
 							file_write(filename + '.docx', metadata)
 
-							dbg(drsname + ": " + str(file_id) + "." + file_extension + " -> extracting frame %3d...\r" % (idx), 1, end="")
-						dbg("", 1)
+							dbg(out_file_tmp + " -> extracting frame %3d...\r" % (idx), 1, end="")
+						dbg(out_file_tmp + " -> saved single frame(s)", 1)
 
 			elif file_extension == 'wav':
 
