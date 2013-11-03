@@ -204,7 +204,7 @@ void input_handler(SDL_Event *e) {
 	}
 }
 
-void view_translation_method() {
+void view_translation() {
 	float mx = 0;
 	float my = 0;
 	if (sc_left) {
@@ -240,7 +240,7 @@ void draw_method() {
 
 int mainmethod() {
 	//init engine
-	engine::init(view_translation_method, draw_method, input_handler);
+	engine::init(view_translation, draw_method, input_handler);
 	init();
 
 	//run main loop

@@ -28,7 +28,7 @@ FTGLTextureFont *t_font;
 
 Console *console;
 
-noparam_method_ptr view_translation_method;
+noparam_method_ptr view_translation;
 noparam_method_ptr draw_method;
 input_handler_ptr input_handler;
 
@@ -48,7 +48,7 @@ bool console_activated = false;
 
 
 
-void init(noparam_method_ptr view_translation_method, noparam_method_ptr draw_method, input_handler_ptr input_handler) {
+void init(noparam_method_ptr view_translation, noparam_method_ptr draw_method, input_handler_ptr input_handler) {
 
 	//set global random seed
 	srand(time(NULL));
@@ -99,7 +99,7 @@ void init(noparam_method_ptr view_translation_method, noparam_method_ptr draw_me
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	engine::view_translation_method = view_translation_method;
+	engine::view_translation = view_translation;
 	engine::draw_method = draw_method;
 	engine::input_handler = input_handler;
 
@@ -219,7 +219,7 @@ void loop() {
 			}
 		}
 
-		view_translation_method();
+		view_translation();
 
 		glPushMatrix();
 		{

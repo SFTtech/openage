@@ -17,14 +17,14 @@ using input_handler_ptr = void (*) (SDL_Event *e);
 /**
 engine initialization method.
 opens a window and initializes the OpenGL context.
-@param view_translation_method
+@param view_translation
 	pointer to a method that translates the engine view
 @param draw_method
 	pointer to the rendering method, which is called each iteration of the main loop
 @param input_handler
 	pointer to the input handler, which is called each time an input event is registered
 */
-void init(noparam_method_ptr view_translation_method, noparam_method_ptr draw_method, input_handler_ptr input_handler);
+void init(noparam_method_ptr view_translation, noparam_method_ptr draw_method, input_handler_ptr input_handler);
 
 /**
 engine de-initialization method.
