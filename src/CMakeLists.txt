@@ -15,6 +15,7 @@ add_executable(${PROJECT_NAME}
 	util/timer.cpp
 	openage.cpp
 	engine/engine.cpp
+	engine/font.cpp
 	engine/console.cpp
 	engine/terrain.cpp
 	engine/texture.cpp

@@ -1,15 +1,17 @@
 #include "console.h"
 
+#include <vector>
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <FTGL/ftgl.h>
+
 #include "engine.h"
+#include "font.h"
 #include "../util/color.h"
 #include "../util/error.h"
 #include "../util/strings.h"
 #include "../log/log.h"
 
-#include <vector>
-#include <GL/glew.h>
-#include <GL/gl.h>
-#include <FTGL/ftgl.h>
 
 namespace openage {
 namespace engine {
@@ -17,7 +19,10 @@ namespace engine {
 Console::Console() : Console(util::Color(255,255,255,255), util::Color(0,0,0,1)) {}
 
 Console::Console(util::Color bg, util::Color text, int lx, int ly, int rx, int ry) : bgcolor(bg), textcolor(text), lx(lx), ly(ly), rx(rx), ry(ry), spacing(7) {
-	this->font = new FTGLTextureFont("/usr/share/fonts/dejavu/DejaVuSerif.ttf");
+
+	char *font_filename = get_font_filename("DejaVu Serif", "Book");
+	this->font = new FTGLTextureFont(font_filename);
+	delete[] font_filename;
 
 	if(this->font->Error())
 		throw util::Error("failed creating the console font");
