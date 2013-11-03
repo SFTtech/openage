@@ -63,8 +63,9 @@ try
 	python3 convert --help
 to see the usage, as you probably don't want to convert all the files (we don't use them yet..)
 
+for converting only media files we do use at the moment, execute this:
+	python3 convert -o . $aoe2-installpath $(make medialist)
 
-the invocation in the section below includes the invocation for media files we do use at the moment.
 
 
 how to compile && run
@@ -74,11 +75,14 @@ on POSIX:
 
 	./configure <release|debug>
 	make
-	python3 convert -o . $(aoe2-installpath) terrain:15008.slp graphics:3836.slp graphics:4857.slp
+	make AGE2DIR=~/.wine-age/drive_c/programs/ms-games/aoe2 media
 	cd data && ../bin/openage
 
+for other make targets, see:
+	make help
 
-alternate method: get developer aliases by sourcing "build_helpers":
+
+alternate method: get developer function aliases by sourcing "build_helpers":
 	source build_helpers
 
 then type (depending on what build configuration you want):
