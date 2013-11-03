@@ -114,9 +114,11 @@ class SLP:
 
 		max_per_row = math.ceil(math.sqrt(len(slp_pngs)))
 
-		width  = math.ceil(max_width * max_per_row)
-		height = math.ceil(max_height * (len(slp_pngs) / max_per_row))
+		#we leave 1 pixel free in between two sprites
+		width  = math.ceil((max_width+1) * max_per_row)
+		height = math.ceil((max_height+2) * (len(slp_pngs) / max_per_row))
 
+		#create the big atlas image where the small ones will be placed on
 		atlas = Image.new('RGBA', (width, height), (0, 0, 0, 0))
 
 		pos_x = 0
@@ -146,11 +148,14 @@ class SLP:
 
 			drawn_current_row = drawn_current_row + 1
 
-			pos_x = pos_x + sub_w
+			#place the subtexture with a 1px border
+			pos_x = pos_x + max_width + 1
+
+			#see if we have to start a new row now
 			if drawn_current_row > max_per_row - 1:
 				drawn_current_row = 0
 				pos_x = 0
-				pos_y = pos_y + sub_h
+				pos_y = pos_y + max_height + 1
 
 
 		meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
