@@ -47,7 +47,11 @@ util::FrameCounter *fpscounter;
 bool console_activated = false;
 
 
+/**
+initialize the openage game engine.
 
+this creates the SDL window, the opengl context, reads shaders, the fps counter, ...
+*/
 void init(noparam_method_ptr view_translation, noparam_method_ptr draw_method, input_handler_ptr input_handler) {
 
 	//set global random seed
@@ -119,6 +123,11 @@ void init(noparam_method_ptr view_translation, noparam_method_ptr draw_method, i
 	fpscounter = new util::FrameCounter();
 }
 
+/**
+destroys everything created upon creation of the engine.
+
+deletes opengl context, the SDL window, and engine variables.
+*/
 void destroy() {
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
@@ -129,6 +138,11 @@ void destroy() {
 	SDL_Quit();
 }
 
+/**
+method that's called when the SDL window is resized.
+
+this adjusts the opengl viewport and calls for visible area recalculation.
+*/
 void engine_window_resized(unsigned w, unsigned h) {
 
 	//store the current window size
@@ -147,9 +161,17 @@ void engine_window_resized(unsigned w, unsigned h) {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+	//this is called to recalculate the visible area.
+	move_view(0, 0);
+
 	log::dbg("engine window has been resized to %ux%u\n", w, h);
 }
 
+/**
+call this to move the visible area by a given amount of pixels.
+
+the method also recalculates the new visible area on screen.
+*/
 void move_view(int delta_x, int delta_y) {
 
 	engine::view_x += delta_x;
@@ -162,10 +184,22 @@ void move_view(int delta_x, int delta_y) {
 
 }
 
+/**
+moves the view by float values, scaled by a constant.
+
+do not use for now.
+*/
 void move_view(float threshold, float x, float y) {
 	move_view(threshold * x, threshold * y);
 }
 
+/**
+handles some keys directly in preference over the game input handler.
+
+this is mainly for high-priority events.
+at the moment, it handles window resizing events,
+and opening/closing the in-game terminal.
+*/
 void engine_input_handler(SDL_Event *e) {
 	switch(e->type) {
 	case SDL_WINDOWEVENT:
@@ -190,6 +224,12 @@ void engine_input_handler(SDL_Event *e) {
 
 }
 
+/**
+the main engine loop.
+
+the loop invokes fps counting, SDL event handling,
+view translation, and calling the main draw_method.
+*/
 void loop() {
 	int glerrorstate = 0;
 	running = true;
@@ -200,6 +240,8 @@ void loop() {
 		fpscounter->frame();
 
 
+		//clear the framebuffer to black
+		//in the future, we might disable it for lazy drawing
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT);
 
