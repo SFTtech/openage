@@ -21,7 +21,7 @@ opengl 2.1
 ftgl
 dejavu font
 freetype2
-
+fontconfig
 
 how to build
 ============

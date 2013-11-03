@@ -29,4 +29,5 @@ target_link_libraries(${PROJECT_NAME}
 	${OPENGL_LIBRARY}
 	${GLEW_LIBRARIES}
 	ftgl
+	fontconfig
 )

@@ -1,5 +1,6 @@
 #include "engine.h"
 
+#include <fontconfig/fontconfig.h>
 #include <stdio.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
@@ -97,8 +98,42 @@ void init(noparam_method_ptr view_translation_method, noparam_method_ptr draw_me
 	engine::input_handler = input_handler;
 
 	//load font for drawing texts
-	// TODO: don't hardcode font path, make it dynamic (sounds like a job for cmake)..
-	t_font = new FTGLTextureFont("/usr/share/fonts/dejavu/DejaVuSerif.ttf");
+	//using fontconfig for that.
+	if (!FcInit()) {
+		throw util::Error("Failed to initialize fontconfig.");
+	}
+
+	//prepare pattern, it looks for dejavu serif.
+	//FcPattern *font_pattern = FcNameParse((const unsigned char *)"DejaVu Serif medium");
+	FcPattern *font_pattern = FcPatternBuild(nullptr, FC_FAMILY, FcTypeString, "DejaVu Serif", nullptr);
+	FcPatternBuild(font_pattern, FC_STYLE, FcTypeString, "Book", nullptr);
+
+	FcChar8 *query_string = FcNameUnparse(font_pattern);
+	log::dbg2("queried font: %s", query_string);
+	free(query_string);
+
+	FcResult font_match_result;
+	FcPattern *font_match = FcFontMatch(nullptr, font_pattern, &font_match_result);
+
+	/*
+	FcChar8 *match_string = FcNameUnparse(font_match);
+	log::dbg2("resulting font: %s", match_string);
+	free(match_string);
+	*/
+
+	unsigned char *font_filename;
+	if (FcPatternGetString(font_match, FC_FILE, 0, &font_filename) != FcResultMatch) {
+		throw util::Error("fontconfig could not provide dejavu serif font");
+	}
+
+	log::dbg("loading font file %s", (char *)font_filename);
+	t_font = new FTGLTextureFont((char *)font_filename);
+
+	//deinitialize fontconfig.
+	FcPatternDestroy(font_match);
+	FcPatternDestroy(font_pattern);
+	FcFini();
+
 	if(t_font->Error())
 		throw util::Error("failed creating the dejavu font with ftgl");
 	t_font->FaceSize(20);
