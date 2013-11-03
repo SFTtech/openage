@@ -11,7 +11,6 @@ resources
 CMakeFiles
 cmake_install.cmake
 CMakeCache.txt
-Makefile
 bin
 lib
 data/age

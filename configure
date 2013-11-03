@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#totally braindead and stupid configure file for openage
+#
+#rewrite it if you got any better plan.
+
+function rls() {
+	mkdir -p bin¬
+	cd bin && cmake -DCMAKE_BUILD_TYPE=Release .. $@
+}
+
+function dbg() {
+	mkdir -p bin
+	cd bin && cmake -DCMAKE_BUILD_TYPE=Debug .. $@
+}
+
+function help() {
+	echo -e "openage configure script"
+	echo -e ""
+	echo -e "initializes cmake so you can compile the project afterwards"
+	echo -e ""
+	echo -e "usage:"
+	echo -e "\t./configure <mode>"
+	echo -e ""
+	echo -e "\tmode:\t<debug|release>"
+	echo -e "\t\tdebug: build project with debug symbols and without optimisation"
+	echo -e "\t\trelease: build project with optimisations and no debug support"
+}
+
+
+if [[ $# -eq 1 ]]; then
+	if [[ $1 == "debug" ]]; then
+		dbg
+	elif [[ $1 == "release" ]]; then
+		rls
+	else
+		help
+	fi
+else
+	help
+fi
