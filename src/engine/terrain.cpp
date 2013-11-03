@@ -42,6 +42,11 @@ Terrain::Terrain(unsigned int size) {
 
 	this->tiles = new int[this->tile_count];
 
+	//set the tile index to 0 by default.
+	for (unsigned int i = 0; i < this->tile_count; i++) {
+		this->tiles[i] = 0;
+	}
+
 	log::dbg("created terrain: %lu size, %lu rows, %lu tiles", this->size, this->num_rows, this->tile_count);
 }
 

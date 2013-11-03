@@ -11,6 +11,7 @@ add_executable(${PROJECT_NAME}
 	util/error.cpp
 	util/filetools.cpp
 	util/fps.cpp
+	util/misc.cpp
 	util/strings.cpp
 	util/timer.cpp
 	openage.cpp

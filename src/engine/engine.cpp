@@ -1,6 +1,8 @@
 #include "engine.h"
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <FTGL/ftgl.h>
@@ -47,6 +49,10 @@ bool console_activated = false;
 
 
 void init(noparam_method_ptr view_translation_method, noparam_method_ptr draw_method, input_handler_ptr input_handler) {
+
+	//set global random seed
+	srand(time(NULL));
+
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw util::Error("SDL initialization: %s", SDL_GetError());
 	}

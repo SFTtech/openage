@@ -13,6 +13,7 @@
 #include "log/log.h"
 #include "util/error.h"
 #include "util/filetools.h"
+#include "util/misc.h"
 #include "util/timer.h"
 
 namespace openage {
@@ -52,11 +53,12 @@ void init() {
 	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.png", true, true);
 	grass = new engine::Texture("age/raw/Data/terrain.drs/15008.slp.png", false, true);
 
-	terrain = new engine::Terrain(10);
+	terrain = new engine::Terrain(20);
 	terrain->set_texture(grass);
 
+	//set all terrain tiles to a random id.
 	for (unsigned int i=0; i<terrain->get_tile_count(); i++) {
-		terrain->set_tile_at(i, i);
+		terrain->set_tile_at(util::random_range(0, grass->get_subtexture_count()-1), i);
 	}
 
 	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
@@ -189,6 +191,12 @@ void input_handler(SDL_Event *e) {
 			break;
 		case SDLK_DOWN:
 			sc_down = true;
+			break;
+
+		case SDLK_SPACE:
+			for (unsigned int i=0; i<terrain->get_tile_count(); i++) {
+				terrain->set_tile_at(util::random_range(0, grass->get_subtexture_count()-1), i);
+			}
 			break;
 		}
 
