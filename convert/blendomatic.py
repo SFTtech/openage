@@ -64,7 +64,7 @@ class Blendomatic:
 				bmode_tiles.append(pixels)
 
 			bmode_data = dict()
-			bmode_data["pxcoun"] = tile_size
+			bmode_data["pxcount"] = tile_size
 			bmode_data["tiles"]  = bmode_tiles
 			#bmode_data["alphamasks"] = alpha_masks
 
