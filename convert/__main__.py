@@ -65,6 +65,10 @@ def main():
 		if args.extrafiles:
 			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
 
+			import blendomatic
+			blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
+			#print(str(blend_data))
+
 
 	files_extracted = 0
 
