@@ -56,17 +56,19 @@ class Blendomatic:
 			for j in range(tile_count):
 				tile_buf = f.read(tile_size)
 
-				#get the pixels, interprete them in isometric tile format
+				#get the alpha value pixels, interprete them in isometric tile format
 				#  *
 				# ***
-				#***** etc
+				#*****
+				# ***
+				#  *   like this, only bigger.. 97x49 drawpane, 48x49 actually drawn
 				pixels = unpack_from("%dB" % tile_size, tile_buf)
 				bmode_tiles.append(pixels)
 
 			bmode_data = dict()
 			bmode_data["pxcount"] = tile_size
 			bmode_data["tiles"]  = bmode_tiles
-			#bmode_data["alphamasks"] = alpha_masks
+			bmode_data["alphamasks"] = alpha_masks
 
 			self.blending_modes.append(bmode_data)
 
