@@ -67,7 +67,7 @@ def main():
 			blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
 
 			for (png, modeidx, tileidx) in blend_data.draw_frames():
-				fname = 'alphamask/mode%d/mask%d.png' % (modeidx, tileidx)
+				fname = 'alphamask/mode%02d/mask%02d.png' % (modeidx, tileidx)
 				filename = file_get_path(fname, write=True)
 				file_write(filename, png.image)
 
