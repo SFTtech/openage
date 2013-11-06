@@ -46,7 +46,14 @@ class Blendomatic:
 
 			dbg("tile in this blending mode %d has %d pixels" % (i, tile_size), 2)
 
+
+			#as we draw in isometric tile format, this is the row count
+			row_count = int(math.sqrt(tile_size)) + 1  #49
+			half_row_count = int(row_count/2)
+
+
 			bmode_tiles = []
+			bmode_bittiles = []
 
 			#TODO
 			#4*tile_size bytes -> 32 interleaved tiles => 1 bit masks
@@ -54,10 +61,15 @@ class Blendomatic:
 			alpha_masks_buf = f.read(tile_size * 4)
 			alpha_masks = unpack_from("%dB" % (tile_size * 4), alpha_masks_buf)
 
-
-			#as we draw in isometric tile format, this is the row count
-			row_count = int(math.sqrt(tile_size)) + 1  #49
-			half_row_count = int(row_count/2)
+			#alpha_masks is an array of bytes that will draw 32 bit masked images.
+			#
+			#a tile has 2353 pixels.
+			#4 * 8bit * 2353 pixels = 75296 bitpixels
+			#==> 75296/(32 images) = 2353 bitpixel/image
+			#
+			#this means if we interprete the 75296 bitpixels as 32 images,
+			#each of these images gets 2353 bit as data.
+			#TODO: why 32? isn't that dependant on tile_count?
 
 			#draw mask tiles for this blending mode
 			for j in range(tile_count):
@@ -125,10 +137,27 @@ class Blendomatic:
 				#print(str(tilerows))
 				#break
 
+
+			bitvalues = []
+			for i in alpha_masks:
+				bit0 = i & 0b00000001
+				bit1 = i & 0b00000010
+				bit2 = i & 0b00000100
+				bit3 = i & 0b00001000
+				bit4 = i & 0b00010000
+				bit5 = i & 0b00100000
+				bit6 = i & 0b01000000
+				bit7 = i & 0b10000000
+
+				bitvalues = bitvalues + [bit0, bit1, bit2, bit3, bit4, bit5, bit6, bit7]
+
+			#TODO: convert these bitvalues to an usable array
+
+
 			bmode_data = dict()
 			bmode_data["pxcount"] = tile_size
 			bmode_data["tiles"] = bmode_tiles
-			bmode_data["alphamasks"] = alpha_masks
+			bmode_data["alphamasks"] = bmode_bittiles
 
 			self.blending_modes.append(bmode_data)
 
