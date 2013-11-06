@@ -1,0 +1,48 @@
+blendomatic
+===========
+
+
+or: how to merge terrain tile edges.
+
+
+
+alpha masks, that hide parts of terrain tiles, are stored in blendomatic.dat.
+
+
+blendomatic file format
+-----------------------
+
+struct blendomatic_header {
+	unsigned int nr_blending_modes;
+	unsigned int nr_tiles;
+};
+
+for i in range(nr_blending_modes):
+
+	struct blending_mode {
+		unsigned int  tile_size;      //normally 2353
+		unsigned char tile_flags[31];
+		unsigned char alpha_bitmasks[4*tile_size]; //32 interleaved tiles, 1 bit alpha masks
+	};
+
+	for j in range(nr_of_tiles):
+		char pixeldata[tile_size];
+
+
+this is our drawing goal (of course a bit bigger).
+
+    *
+  *****
+*********
+  *****
+    *
+
+the pixeldata array contains values to be drawn as *
+we have to add the spaces ourselve.
+
+each * is a pixel, with one byte value, which just is an alpha value.
+
+with the default tile_size, we end up drawing the rhombus with 49 rows.
+
+
+this is then used to overlay on a regular terrain tile, so that parts are alphamasked.
