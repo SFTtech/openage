@@ -13,7 +13,7 @@ def main():
 
 	p = argparse.ArgumentParser()
 	p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
-	p.add_argument("-l", "--info", help = "Show information about the resources", action='store_true')
+	p.add_argument("-l", "--listfiles", help = "List files in the DRS archives matching 'resource', or all", action='store_true')
 	p.add_argument("-e", "--extrafiles", help = "Extract extra files that are not needed, but useful (mainly visualizations).", action='store_true')
 	p.add_argument("-o", "--destdir", help = "The openage root directory", default='/dev/null')
 	p.add_argument("-s", "--nomerge", help = "Don't merge frames of slps onto a texture atlas, create single files instead", action='store_true')
@@ -36,16 +36,13 @@ def main():
 	set_dir(args.srcdir, is_writedir=False)
 
 	#write mode is disabled by default, unless destdir is set
-	if args.destdir != '/dev/null':
+	if args.destdir != '/dev/null' and not args.listfiles:
 		print("setting write dir to " + args.destdir)
 		set_dir(args.destdir, is_writedir=True)
 		write_enabled = True
 	else:
 		write_enabled = False
 
-	if args.info == True:
-		print("information mode")
-		return
 
 	#set verbose value in util
 	set_verbosity(args.verbose)
@@ -80,6 +77,10 @@ def main():
 	for drsname, drsfile in drsfiles.items():
 		for file_extension, file_id in drsfile.files:
 			if not any((er.matches(drsname, file_id, file_extension) for er in args.extractionrules)):
+				continue
+
+			if args.listfiles:
+				print("%s:%s.%s" % (drsfile.fname, file_id, file_extension))
 				continue
 
 			if write_enabled:
