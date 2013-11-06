@@ -62,12 +62,17 @@ def main():
 
 	if write_enabled:
 		file_write(file_get_path('processed/player_color_palette.pal', write=True), palette.gen_player_color_palette())
+
 		if args.extrafiles:
 			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
 
 			import blendomatic
 			blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
-			#print(str(blend_data))
+
+			for (png, modeidx, tileidx) in blend_data.draw_frames():
+				fname = 'alphamask/mode%d/mask%d.png' % (modeidx, tileidx)
+				filename = file_get_path(fname, write=True)
+				file_write(filename, png.image)
 
 
 	files_extracted = 0
