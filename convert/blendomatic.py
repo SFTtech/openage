@@ -15,11 +15,6 @@ class Blendomatic:
 	#};
 	blendomatic_header = Struct(endianness + "I I")
 
-	#struct blending_mode {
-	# unsigned int tile_size;
-	# unsigned char tile_flags[31];
-	#};
-	blending_mode = Struct(endianness + "I 31B")
 
 	def __init__(self, fname):
 		self.fname = fname
@@ -38,9 +33,12 @@ class Blendomatic:
 		self.blending_modes = []
 
 		for i in range(blending_mode_count):
-			blending_mode_buf = f.read(Blendomatic.blending_mode.size)
 
-			bmode_header = Blendomatic.blending_mode.unpack_from(blending_mode_buf)
+			blending_mode = Struct(endianness + "I %dB" % (tile_count))
+
+			blending_mode_buf = f.read(blending_mode.size)
+
+			bmode_header = blending_mode.unpack_from(blending_mode_buf)
 			#should be 2353 -> number of pixels (single alpha byte values)
 			tile_size = bmode_header[0]
 
