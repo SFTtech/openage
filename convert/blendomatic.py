@@ -49,126 +49,143 @@ class Blendomatic:
 
 			#as we draw in isometric tile format, this is the row count
 			row_count = int(math.sqrt(tile_size)) + 1  #49
-			half_row_count = int(row_count/2)
 
 
-			bmode_tiles = []
-			bmode_bittiles = []
-
-			#TODO
-			#4*tile_size bytes -> 32 interleaved tiles => 1 bit masks
-			dbg("reading 1bit masks -> %d bytes" % (tile_size * 4), 2)
-			alpha_masks_buf = f.read(tile_size * 4)
-			alpha_masks = unpack_from("%dB" % (tile_size * 4), alpha_masks_buf)
-
-			#alpha_masks is an array of bytes that will draw 32 bit masked images.
+			#alpha_masks_raw is an array of bytes that will draw 32 images,
+			#which are bit masks.
 			#
-			#a tile has 2353 pixels.
+			#one of these masks also has 2353 pixels (like terraintile or alpha mask)
+			#the storage of the bit masks is 4*tilesize, here's why:
+			#
 			#4 * 8bit * 2353 pixels = 75296 bitpixels
 			#==> 75296/(32 images) = 2353 bitpixel/image
 			#
 			#this means if we interprete the 75296 bitpixels as 32 images,
 			#each of these images gets 2353 bit as data.
-			#TODO: why 32? isn't that dependant on tile_count?
+			#TODO: why 32 images? isn't that depending on tile_count?
+
+			bitmask_buf_size = tile_size * 4
+			dbg("reading 1bit masks -> %d bytes" % (bitmask_buf_size), 2)
+			alpha_masks_buf = f.read(bitmask_buf_size)
+			alpha_masks_raw = unpack_from("%dB" % (bitmask_buf_size), alpha_masks_buf)
+
+
+			#list of alpha-mask tiles
+			bmode_tiles = []
+
+			dbg("reading 8bit masks for %d tiles -> %d bytes" % (tile_count, tile_size * tile_count), 2)
 
 			#draw mask tiles for this blending mode
 			for j in range(tile_count):
 				tile_buf = f.read(tile_size)
+				pixels = unpack_from("%dB" % tile_size, tile_buf)
 
-				dbg("tile has %d alpha value bytes" % (tile_size), 3)
+				tile = self.get_tile_from_data(row_count, pixels)
 
-				#get the alpha value pixels, interprete them in isometric tile format
-				#    *
-				#  *****
-				#*********
-				#  *****
-				#    *    like this, only bigger..
-				#
-				# we end up drawing the rhombus with 49 rows,
-				# and a dynamic space to the left of the data.
-
-				read_so_far = 0
-				max_width = 0
-				tilerows = []
-
-				for y in range(row_count):
-
-					if y < half_row_count:
-						#upper half of the tile
-						#row i+1 has 4 more pixels than row i
-						# +1 for the middle one
-						read_values = 1 + (4 * y)
-					else:
-						#lower half of tile
-						read_values = ((row_count*2) - 1) - (4 * (y - half_row_count))
-
-					#how many empty pixels on the left
-					#before the real data begins
-					space_count = row_count - 1 - int(read_values/2)
-
-					#insert as padding to the left (0 for fully transparent)
-					space_left = (0,) * space_count
-
-
-					if read_values > (tile_size - read_so_far):
-						raise Exception("reading more bytes than tile has left")
-
-					if read_values < 0:
-						raise Exception("wanted to read a negative amount of bytes: %d" % read_values)
-
-					#read the real pixel data here
-					pixels = unpack_from("%dB" % read_values, tile_buf, read_so_far)
-					pixels = space_left + pixels
-					read_so_far = read_so_far + read_values
-
-					if len(pixels) > max_width:
-						max_width = len(pixels)
-
-					#dbg("extracted %d values, %d so far, %d left" % (read_values, read_so_far, (tile_size-read_so_far)), 4)
-
-					tilerows.append(pixels)
-
-				tiledata = {
-					"data": tilerows,
-					"height": row_count,
-					"width": max_width
-				}
-				bmode_tiles.append(tiledata)
-				#print(str(tilerows))
-				#break
+				bmode_tiles.append(tile)
 
 
 			bitvalues = []
-			for i in alpha_masks:
-				bit0 = i & 0b00000001
-				bit1 = i & 0b00000010
-				bit2 = i & 0b00000100
-				bit3 = i & 0b00001000
-				bit4 = i & 0b00010000
-				bit5 = i & 0b00100000
-				bit6 = i & 0b01000000
-				bit7 = i & 0b10000000
+			for i in alpha_masks_raw:
+				for b_id in range(8):
+					#bitmask from 0b00000001 to 0b10000000
+					bit_mask = 2 ** b_id
+					bit = i & bit_mask
+					bitvalues.append(bit)
 
-				bitvalues = bitvalues + [bit0, bit1, bit2, bit3, bit4, bit5, bit6, bit7]
+			#list of bit-mask tiles
+			bmode_bittiles = []
 
-			#TODO: convert these bitvalues to an usable array
+			#TODO: again, is 32 really hardcoded?
+			for i in range(32):
+				data_begin =  i    * tile_size
+				data_end   = (i+1) * tile_size
+				pixels = bitvalues[ data_begin : data_end ]
+
+				tile = self.get_tile_from_data(row_count, pixels)
+
+				bmode_bittiles.append(tile)
 
 
 			bmode_data = dict()
 			bmode_data["pxcount"] = tile_size
-			bmode_data["tiles"] = bmode_tiles
-			bmode_data["alphamasks"] = bmode_bittiles
+			bmode_data["alphamasks"] = bmode_tiles
+			bmode_data["bitmasks"] = bmode_bittiles
 
 			self.blending_modes.append(bmode_data)
 
 		dbg(pop = "blendomatic")
 
 
+	#get the data pixels, interprete them in isometric tile format
+	#    *
+	#  *****
+	#*********
+	#  *****
+	#    *    like this, only bigger..
+	#
+	# we end up drawing the rhombus with 49 rows,
+	# and a dynamic space to the left of the data.
+	def get_tile_from_data(self, row_count, data):
+		half_row_count = int(row_count/2)
+		tile_size = len(data)
+
+		read_so_far = 0
+		max_width = 0
+		tilerows = []
+
+		for y in range(row_count):
+
+			if y < half_row_count:
+				#upper half of the tile
+				#row i+1 has 4 more pixels than row i
+				# +1 for the middle one
+				read_values = 1 + (4 * y)
+			else:
+				#lower half of tile
+				read_values = ((row_count * 2) - 1) - (4 * (y - half_row_count))
+
+			#how many empty pixels on the left
+			#before the real data begins
+			space_count = row_count - 1 - int(read_values/2)
+
+			#insert as padding to the left (0 for fully transparent)
+			space_left = [0] * space_count
+
+
+			if read_values > (tile_size - read_so_far):
+				raise Exception("reading more bytes than tile has left")
+
+			if read_values < 0:
+				raise Exception("wanted to read a negative amount of bytes: %d" % read_values)
+
+			pdata_start = read_so_far
+			pdata_end   = read_so_far + read_values
+
+			pixels = list(data[ pdata_start : pdata_end ])
+			pixels = space_left + pixels
+
+			read_so_far = read_so_far + read_values
+
+			if len(pixels) > max_width:
+				max_width = len(pixels)
+
+			#dbg("extracted %d values, %d so far, %d left" % (read_values, read_so_far, (tile_size-read_so_far)), 4)
+
+			tilerows.append(pixels)
+
+		tiledata = {
+			"data": tilerows,
+			"height": row_count,
+			"width": max_width
+		}
+		return tiledata
+
 	def draw_frames(self):
 
 		for idx, bmode in enumerate(self.blending_modes):
 
-			for tidx, tile in enumerate(bmode["tiles"]):
+			for tidx, tile in enumerate(bmode["alphamasks"]):
 				png = PNG(0, None, tile["data"])
 				png.create(tile["width"], tile["height"], True)
 
