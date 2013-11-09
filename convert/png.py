@@ -27,8 +27,8 @@ class PNG:
 		for y, picture_row in enumerate(self.picture_data):
 
 			for x, alpha_data in enumerate(picture_row):
-				val = alpha_data
-				if alpha_data == 0:
+				val = 255 - alpha_data*2
+				if alpha_data == -1:
 					alpha = 0
 				else:
 					alpha = 255

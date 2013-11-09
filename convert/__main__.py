@@ -66,10 +66,16 @@ def main():
 			import blendomatic
 			blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
 
-			for (png, modeidx, tileidx) in blend_data.draw_frames():
+			for (png, modeidx, tileidx) in blend_data.draw_alpha_frames():
 				fname = 'alphamask/mode%02d/mask%02d.png' % (modeidx, tileidx)
 				filename = file_get_path(fname, write=True)
 				file_write(filename, png.image)
+
+			#for (png, modeidx, tileidx) in blend_data.draw_bit_frames():
+			#	fname = 'alphamask/mode%02d/bitmask%02d.png' % (modeidx, tileidx)
+			#	filename = file_get_path(fname, write=True)
+			#	file_write(filename, png.image)
+
 
 
 	files_extracted = 0

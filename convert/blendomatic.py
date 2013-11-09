@@ -87,7 +87,7 @@ class Blendomatic:
 
 			bitvalues = []
 			for i in alpha_masks_raw:
-				for b_id in range(8):
+				for b_id in range(7, -1, -1):
 					#bitmask from 0b00000001 to 0b10000000
 					bit_mask = 2 ** b_id
 					bit = i & bit_mask
@@ -150,7 +150,7 @@ class Blendomatic:
 			space_count = row_count - 1 - int(read_values/2)
 
 			#insert as padding to the left (0 for fully transparent)
-			space_left = [0] * space_count
+			space_left = [-1] * space_count
 
 
 			if read_values > (tile_size - read_so_far):
@@ -174,6 +174,9 @@ class Blendomatic:
 
 			tilerows.append(pixels)
 
+		if read_so_far != tile_size:
+			raise Exception("got leftover bytes: %d" % (tile_size-read_so_far))
+
 		tiledata = {
 			"data": tilerows,
 			"height": row_count,
@@ -181,11 +184,19 @@ class Blendomatic:
 		}
 		return tiledata
 
-	def draw_frames(self):
-
+	def draw_alpha_frames(self):
 		for idx, bmode in enumerate(self.blending_modes):
 
 			for tidx, tile in enumerate(bmode["alphamasks"]):
+				png = PNG(0, None, tile["data"])
+				png.create(tile["width"], tile["height"], True)
+
+				yield png, idx, tidx
+
+	def draw_bit_frames(self):
+		for idx, bmode in enumerate(self.blending_modes):
+
+			for tidx, tile in enumerate(bmode["bitmasks"]):
 				png = PNG(0, None, tile["data"])
 				png.create(tile["width"], tile["height"], True)
 
