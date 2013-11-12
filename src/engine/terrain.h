@@ -17,10 +17,13 @@ public:
 	~Terrain();
 
 	void render();
-	void set_tile_at(int index, int row, int offset);
+	void set_tile_at(int index, int x, int y);
+	void set_tile_at_row(int index, int row, int offset);
 	void set_tile_at(int index, int position);
-	int  tile_at(int row, int offset);
-	size_t tile_position(unsigned int row, unsigned int offset);
+	int  tile_at(int x, int y);
+	int  tile_at_row(int row, int offset);
+	size_t tile_position_diag(unsigned int row, unsigned int offset);
+	size_t tile_position(unsigned int x, unsigned int y);
 	size_t get_tile_count();
 	void set_texture(engine::Texture *t);
 	size_t tiles_in_row(unsigned int row);

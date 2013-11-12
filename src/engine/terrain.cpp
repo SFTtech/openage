@@ -15,15 +15,15 @@ Terrain::Terrain(unsigned int size) {
 	//calculate the number of tiles for the given (tile) height of the rhombus.
 
 	/* height = 5:
-	0      #
-	1     # #
-	2    # * #
-	3   # # # #
-	4  # # # # #
-	5   # # # *
-	6    # # #
-	7     # #
-	8      #
+	0          #
+	1        #   #
+	2      #   *   #
+	3    #   #   #   #
+	4  #   #   #   #   #
+	5    #   #   #   *
+	6      #   #   #
+	7        #   #
+	8          #
 	count = 25
 
 	count = n + 2*(n-1) + 2*(n-2) + ... + 2*1
@@ -55,25 +55,29 @@ Terrain::~Terrain() {
 }
 
 void Terrain::render() {
-	for (unsigned int i = 0; i < this->num_rows; i++) {
-		for (unsigned int j = 0; j < this->tiles_in_row(i); j++) {
+	for (unsigned int i = 0; i < this->size; i++) {
+		for (unsigned int j = 0; j < this->size; j++) {
 			int terrain_id = this->tile_at(i, j);
 
-			int x, y, space;
+			int x, y;
 			int tw, th;
 			this->texture->get_subtexture_size(terrain_id, &tw, &th);
 
-			space = (this->size - this->tiles_in_row(i)) * (tw/2);
-			x = space + j * tw;
-			y = i * (th/2);
+			x = i * (tw/2) + j * (tw/2);
+			y = i * (th/2) - j * (th/2);
 
 			this->texture->draw(x, y, false, terrain_id);
 		}
 	}
 }
 
-void Terrain::set_tile_at(int index, int row, int offset) {
-	size_t pos = this->tile_position(row, offset);
+void Terrain::set_tile_at(int index, int x, int y) {
+	size_t pos = this->tile_position(x, y);
+	this->tiles[pos] = index;
+}
+
+void Terrain::set_tile_at_row(int index, int row, int offset) {
+	size_t pos = this->tile_position_diag(row, offset);
 	this->tiles[pos] = index;
 }
 
@@ -81,15 +85,61 @@ void Terrain::set_tile_at(int index, int position) {
 	this->tiles[position] = index;
 }
 
-int Terrain::tile_at(int row, int offset) {
-	size_t pos = tile_position(row, offset);
+int Terrain::tile_at_row(int row, int offset) {
+	size_t pos = tile_position_diag(row, offset);
 	return this->tiles[pos];
 }
 
+int Terrain::tile_at(int x, int y) {
+	size_t pos = tile_position(x, y);
+	return this->tiles[pos];
+}
+
+
+
 /**
 calculates the memory position of a given tile location.
+
+give this function isometric coordinates, it returns the tile index.
+
+# is a single terrain tile:
+
+         3
+       2   #
+     1   #   #
+x= 0   #   *   #
+     #   #   #   #
+y= 0   #   #   #
+     1   #   #
+       2   #
+         3
+
+
+   1
+ 0   #
+   #   #
+ 0   #
+   1
+
+for example, * is at position (2, 1)
+the returned index would be 6 (count for each x row, starting at y=0)
 */
-size_t Terrain::tile_position(unsigned int row, unsigned int offset) {
+size_t Terrain::tile_position(unsigned int x, unsigned int y) {
+	if (x >= this->size || y >= this->size) {
+		throw util::Error("requested tile (%d, %d) that's not on this terrain.", x, y);
+	}
+
+	return y * this->size + x;
+}
+
+/**
+calculates the memory position of a given diagonal tile location.
+
+this does not respect the isometric coordinates, it's for drawn rows.
+
+@OBSOLETE FOR NOW
+*/
+size_t Terrain::tile_position_diag(unsigned int row, unsigned int offset) {
 	int so_far; //number of tiles in memory before the row
 	unsigned int in_row; //number of tiles in the destination row
 
