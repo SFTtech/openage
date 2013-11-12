@@ -27,6 +27,7 @@ public:
 	size_t get_tile_count();
 	void set_texture(unsigned int index, engine::Texture *t);
 	size_t tiles_in_row(unsigned int row);
+	size_t get_size();
 
 private:
 	size_t size;

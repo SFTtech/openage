@@ -201,6 +201,10 @@ size_t Terrain::tiles_in_row(unsigned int row) {
 	return in_row;
 }
 
+size_t Terrain::get_size() {
+	return this->size;
+}
+
 
 } //namespace engine
 } //namespace openage
