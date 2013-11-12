@@ -79,7 +79,7 @@ void init() {
 		terrain_textures[i] = new_texture;
 		terrain->set_texture(i, new_texture);
 
-		delete terraintex_filename;
+		delete[] terraintex_filename;
 	}
 
 	//set all terrain tiles to grass id (15008 -> 7th element in terrain_ids)
@@ -162,6 +162,10 @@ void deinit() {
 	delete engine::teamcolor_shader::vert;
 	delete engine::teamcolor_shader::frag;
 	delete engine::teamcolor_shader::program;
+
+	for (unsigned int i = 0; i < terrain_texture_count; i++) {
+		delete terrain_textures[i];
+	}
 }
 
 void input_handler(SDL_Event *e) {
