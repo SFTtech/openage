@@ -1,9 +1,8 @@
 import os
 import sys
-import math
 
 from struct import Struct, unpack_from
-from util import NamedObject, dbg, ifdbg
+from util import NamedObject, dbg, ifdbg, merge_frames, generate_meta_text
 from png import PNG
 from PIL import Image, ImageDraw
 
@@ -64,32 +63,21 @@ class SLP:
 			png.create()
 
 			#this sprite png only contains one texture, therefore x and y are 0
-			tx = 0
-			ty = 0
-			tw = frame.info.size[0]
-			th = frame.info.size[1]
-			hx = frame.info.hotspot[0]
-			hy = frame.info.hotspot[1]
+			drawn_meta = {
+				'tx': 0,
+				'ty': 0,
+				'tw': frame.info.size[0],
+				'th': frame.info.size[1],
+				'hx': frame.info.hotspot[0],
+				'hy': frame.info.hotspot[1]
+			}
 
-			#metadata writing
-			meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
-			meta_out = meta_out + "n=1\n"
-			meta_out = meta_out + "%d=" % idx
-			meta_out = meta_out + "%d,%d,%d,%d," % (tx, ty, tw, th)
-			meta_out = meta_out + "%d,%d\n" % (hx, hy)
+			meta_out = generate_meta_text([drawn_meta])
 
 			yield png, meta_out
 
 	def draw_frames_merged(self, color_table):
-		#merge all frames of this slp to a single png file.
-
-		#TODO: actually optimize free space on the texture.
-		#if you ever wanted to implement a combinatoric optimisation
-		#algorithm, go for it, this function just waits for you.
-		#https://en.wikipedia.org/wiki/Bin_packing_problem
-
-		#for now, using max values for solving bin packing problem
-
+		#generate all frames, them merge them on one big texture
 
 		#player-specific colors will be in color blue, but with an alpha of 254
 		player_id = 1
@@ -112,68 +100,9 @@ class SLP:
 
 		#now we collected all sprites and can start merging them to one
 		#big texture atlas.
+		atlas, atlas_meta, (width, height) = merge_frames(slp_pngs, max_width, max_height)
 
-		max_per_row = math.ceil(math.sqrt(len(slp_pngs)))
-
-		#we leave 1 pixel free in between two sprites
-		width  = math.ceil((max_width+1) * max_per_row)
-		height = math.ceil((max_height+2) * (len(slp_pngs) / max_per_row))
-
-		#create the big atlas image where the small ones will be placed on
-		atlas = Image.new('RGBA', (width, height), (0, 0, 0, 0))
-
-		pos_x = 0
-		pos_y = 0
-
-		drawn_pngs = []
-		drawn_current_row = 0
-
-		for (sub_png, size, hotspot) in slp_pngs:
-			subtexture = sub_png.image
-			sub_w = subtexture.size[0]
-			sub_h = subtexture.size[1]
-			box = (pos_x, pos_y, pos_x + sub_w, pos_y + sub_h)
-
-			atlas.paste(subtexture, box) #, mask=subtexture)
-			dbg("drew frame on atlas %d at %dx%d " % (len(drawn_pngs), pos_x, pos_y), 3)
-
-			drawn_subtexture_meta = {
-				'tx': pos_x,
-				'ty': pos_y,
-				'tw': sub_w,
-				'th': sub_h,
-				'hx': hotspot[0],
-				'hy': hotspot[1]
-			}
-			drawn_pngs.append(drawn_subtexture_meta)
-
-			drawn_current_row = drawn_current_row + 1
-
-			#place the subtexture with a 1px border
-			pos_x = pos_x + max_width + 1
-
-			#see if we have to start a new row now
-			if drawn_current_row > max_per_row - 1:
-				drawn_current_row = 0
-				pos_x = 0
-				pos_y = pos_y + max_height + 1
-
-
-		meta_out = "#texture meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
-		meta_out = meta_out + "n=%d\n" % (len(slp_pngs))
-
-		for idx, drawn_st_meta in enumerate(drawn_pngs):
-			tx = drawn_st_meta["tx"]
-			ty = drawn_st_meta["ty"]
-			tw = drawn_st_meta["tw"]
-			th = drawn_st_meta["th"]
-			hotspot_x = drawn_st_meta["hx"]
-			hotspot_y = drawn_st_meta["hy"]
-
-			meta_out = meta_out + "%d=" % idx
-			meta_out = meta_out + "%d,%d,%d,%d," % (tx, ty, tw, th)
-			meta_out = meta_out + "%d,%d\n" % (hotspot_x, hotspot_y)
-
+		meta_out = generate_meta_text(atlas_meta)
 
 		return atlas, (width, height), meta_out
 

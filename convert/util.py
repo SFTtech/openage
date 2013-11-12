@@ -1,4 +1,6 @@
+import math
 import os
+
 from PIL import Image
 
 class NamedObject:
@@ -114,3 +116,99 @@ def file_read(fname, datatype = str):
 		return Image.open(fname).convert('RGBA')
 	else:
 		raise Exception("Unknown data type for reading: " + str(datatype))
+
+
+def merge_frames(frames, max_width = None, max_height = None):
+	"""
+	merge all given frames of this slp to a single image file.
+
+	frames = [(PNG, (width, height), (hotspot_x, hotspot_y)), ... ]
+	"""
+
+	#TODO: actually optimize free space on the texture.
+	#if you ever wanted to implement a combinatoric optimisation
+	#algorithm, go for it, this function just waits for you.
+	#https://en.wikipedia.org/wiki/Bin_packing_problem
+
+	#for now, using max values for solving bin packing problem
+
+	#if not predefined, get maximum frame size by checking all frames
+	if max_width == None or max_height == None:
+		for (_, (w, h), _) in frames:
+			if w > max_width:
+				max_width = w
+			if h > max_height:
+				max_height = h
+
+	max_per_row = math.ceil(math.sqrt(len(frames)))
+
+	#we leave 1 pixel free in between two sprites
+	width  = math.ceil((max_width+1) * max_per_row)
+	height = math.ceil((max_height+2) * (len(frames) / max_per_row))
+
+	#create the big atlas image where the small ones will be placed on
+	atlas = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+
+	pos_x = 0
+	pos_y = 0
+
+	drawn_frames_meta = []
+	drawn_current_row = 0
+
+	for (sub_frame, size, hotspot) in frames:
+		subtexture = sub_frame.image
+		sub_w = subtexture.size[0]
+		sub_h = subtexture.size[1]
+		box = (pos_x, pos_y, pos_x + sub_w, pos_y + sub_h)
+
+		atlas.paste(subtexture, box) #, mask=subtexture)
+		dbg("drew frame %03d on atlas at %dx%d " % (len(drawn_frames_meta), pos_x, pos_y), 3)
+
+		drawn_subtexture_meta = {
+			'tx': pos_x,
+			'ty': pos_y,
+			'tw': sub_w,
+			'th': sub_h,
+			'hx': hotspot[0],
+			'hy': hotspot[1]
+		}
+		drawn_frames_meta.append(drawn_subtexture_meta)
+
+		drawn_current_row = drawn_current_row + 1
+
+		#place the subtexture with a 1px border
+		pos_x = pos_x + max_width + 1
+
+		#see if we have to start a new row now
+		if drawn_current_row > max_per_row - 1:
+			drawn_current_row = 0
+			pos_x = 0
+			pos_y = pos_y + max_height + 1
+
+	return atlas, drawn_frames_meta, (width, height)
+
+
+def generate_meta_text(metadata, header = None):
+	#generate texture atlas metadata file
+
+	meta_out = ""
+
+	if header:
+		meta_out += "#" + header
+
+	meta_out += "#meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
+	meta_out += "n=%d\n" % (len(metadata))
+
+	for idx, frame_meta in enumerate(metadata):
+		tx = frame_meta["tx"]
+		ty = frame_meta["ty"]
+		tw = frame_meta["tw"]
+		th = frame_meta["th"]
+		hotspot_x = frame_meta["hx"]
+		hotspot_y = frame_meta["hy"]
+
+		meta_out += "%d=" % idx
+		meta_out += "%d,%d,%d,%d," % (tx, ty, tw, th)
+		meta_out += "%d,%d\n" % (hotspot_x, hotspot_y)
+
+	return meta_out
