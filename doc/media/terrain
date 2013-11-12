@@ -76,3 +76,29 @@ half-tile structure:
 ################################################@################################################ <- 97 pixels, 25th row
 
 @ is the center pixel
+
+
+
+
+drawing smooth uniform terrain is simple:
+
+# is a single terrain tile.
+this illustration shows the coordinate grid we use for the tile drawing.
+
+         3
+       2   #
+     1   #   #
+x= 0   #   *   #
+     #   #   #   #
+y= 0   #   #   #
+     1   #   #
+       2   #
+         3
+
+
+tile * is at (2, 1).
+the formula for selecting the correct terrain slp frame index at position x,y:
+
+frame_id = (x % 10) + ((y % 10) * 10)
+
+(this only works for the 100-frame terrains, for the others TODO :)
