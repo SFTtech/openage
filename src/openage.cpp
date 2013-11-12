@@ -178,6 +178,8 @@ void init() {
 	glUniform4fv(engine::teamcolor_shader::player_color_var, 64, playercolors);
 	engine::teamcolor_shader::program->stopusing();
 
+	engine::move_view(0, 400);
+
 	log::msg("Time for startup: %.4f s", timer->measure()/1000.0);
 }
 
