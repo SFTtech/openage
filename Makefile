@@ -35,6 +35,9 @@ medialist:
 run: openage
 	@cd data && ../bin/openage
 
+runmem: openage
+	@cd data && valgrind --leak-check=full --track-origins=yes -v ../bin/openage
+
 doc:
 	@make -C bin/ doc
 
