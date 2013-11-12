@@ -14,12 +14,15 @@
 #include "util/error.h"
 #include "util/filetools.h"
 #include "util/misc.h"
+#include "util/strings.h"
 #include "util/timer.h"
 
 namespace openage {
 
-engine::Texture *gaben, *university, *grass;
+engine::Texture *gaben, *university, **terrain_textures;
 engine::Terrain *terrain;
+
+unsigned int terrain_texture_count;
 
 util::Timer *timer;
 
@@ -48,18 +51,40 @@ void init() {
 
 
 	//TODO: dynamic generation of the file path
-	//sync this with media-convert/age2media.py !
+	//sync this with convert .py script !
 
 	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.png", true, true);
-	grass = new engine::Texture("age/raw/Data/terrain.drs/15008.slp.png", false, true);
 
-	terrain = new engine::Terrain(20);
-	terrain->set_texture(grass);
+	//a list of all terrain slp ids. we'll get them from the .dat files later.
+	int terrain_ids[] = {
+		15000, 15001, 15002, 15004, 15005,
+		15006, 15007, 15008, 15009, 15010,
+		15011, 15014, 15015, 15016, 15017,
+		15018, 15019, 15021, 15022, 15023,
+		15024, 15026, 15027, 15028, 15029,
+		15030, 15031
+	};
 
-	//set all terrain tiles to a random id.
-	for (unsigned int i=0; i<terrain->get_tile_count(); i++) {
-		//terrain->set_tile_at(util::random_range(0, grass->get_subtexture_count()-1), i);
-		terrain->set_tile_at(i % grass->get_subtexture_count(), i);
+
+	terrain_texture_count = sizeof(terrain_ids)/sizeof(int);
+	terrain_textures = new engine::Texture*[terrain_texture_count];
+	terrain = new engine::Terrain(20, terrain_texture_count);
+
+	for (unsigned int i = 0; i < terrain_texture_count; i++) {
+		int current_id = terrain_ids[i];
+		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", current_id);
+
+		auto new_texture = new engine::Texture(terraintex_filename, false, true);
+
+		terrain_textures[i] = new_texture;
+		terrain->set_texture(i, new_texture);
+
+		delete terraintex_filename;
+	}
+
+	//set all terrain tiles to grass id (15008 -> 7th element in terrain_ids)
+	for (unsigned int i = 0; i < terrain->get_tile_count(); i++) {
+		terrain->set_tile_at(7, i);
 	}
 
 	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
@@ -196,7 +221,7 @@ void input_handler(SDL_Event *e) {
 
 		case SDLK_SPACE:
 			for (unsigned int i=0; i<terrain->get_tile_count(); i++) {
-				terrain->set_tile_at(util::random_range(0, grass->get_subtexture_count()-1), i);
+				terrain->set_tile_at(util::random_range(0, 10), i);
 			}
 			break;
 		}

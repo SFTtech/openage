@@ -10,7 +10,7 @@
 namespace openage {
 namespace engine {
 
-Terrain::Terrain(unsigned int size) {
+Terrain::Terrain(unsigned int size, unsigned int maxtextures) {
 
 	//calculate the number of tiles for the given (tile) height of the rhombus.
 
@@ -41,6 +41,7 @@ Terrain::Terrain(unsigned int size) {
 	this->tile_count = size * size;
 
 	this->tiles = new int[this->tile_count];
+	this->textures = new engine::Texture*[maxtextures];
 
 	//set the tile index to 0 by default.
 	for (unsigned int i = 0; i < this->tile_count; i++) {
@@ -52,23 +53,38 @@ Terrain::Terrain(unsigned int size) {
 
 Terrain::~Terrain() {
 	delete[] this->tiles;
+	delete[] this->textures;
 }
 
 void Terrain::render() {
 	for (unsigned int i = 0; i < this->size; i++) {
 		for (unsigned int j = 0; j < this->size; j++) {
 			int terrain_id = this->tile_at(i, j);
+			int sub_id = this->get_subtexture_id(i, j);
+
+			auto texture = this->textures[terrain_id];
 
 			int x, y;
 			int tw, th;
-			this->texture->get_subtexture_size(terrain_id, &tw, &th);
+			texture->get_subtexture_size(sub_id, &tw, &th);
 
 			x = i * (tw/2) + j * (tw/2);
 			y = i * (th/2) - j * (th/2);
 
-			this->texture->draw(x, y, false, terrain_id);
+			texture->draw(x, y, false, sub_id);
 		}
 	}
+}
+
+
+/**
+returns the terrain subtexture id for a given position.
+
+this function returns always the right value, so that neighbor tiles
+of the same terrain (like grass-grass) are matching (without blendomatic).
+*/
+int Terrain::get_subtexture_id(unsigned int x, unsigned int y) {
+	return ((x % 10) + (10 * (y % 10)));
 }
 
 void Terrain::set_tile_at(int index, int x, int y) {
@@ -113,13 +129,6 @@ y= 0   #   #   #
      1   #   #
        2   #
          3
-
-
-   1
- 0   #
-   #   #
- 0   #
-   1
 
 for example, * is at position (2, 1)
 the returned index would be 6 (count for each x row, starting at y=0)
@@ -172,8 +181,8 @@ size_t Terrain::get_tile_count() {
 	return this->tile_count;
 }
 
-void Terrain::set_texture(engine::Texture *t) {
-	this->texture = t;
+void Terrain::set_texture(unsigned int index, engine::Texture *t) {
+	this->textures[index] = t;
 }
 
 size_t Terrain::tiles_in_row(unsigned int row) {

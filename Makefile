@@ -7,7 +7,7 @@ AGE2DIR = /dev/null
 
 media_path = data/age/raw/Data
 
-needed_media = graphics:3836.slp graphics:4857.slp terrain:15008.slp
+needed_media = graphics:3836.slp graphics:4857.slp terrain:*.slp
 
 #TODO: check if all needed media files have been extracare present in filesystem
 #media_file_list = $(patsubst %, media_path/% ,$(subst :, .drs/, text))
