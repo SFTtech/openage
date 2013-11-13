@@ -232,33 +232,43 @@ void Terrain::render() {
 					break;
 				}
 
+				//TODO:
 				int blendmode = 5;     //get_blending_mode(priority, base)
+
+				int mask_count = 0;
+				int draw_masks[4];
 
 				if (adjacent_mask_id < 0) {
 					if (binfdiagonal == 0) {
 						throw util::Error("influence detected with unknown directions: %u = 0x%02X", binf, binf);
-					} else {
-						//ignore diagonal masks for now
-						continue;
 					}
+				} else {
+					draw_masks[mask_count] = adjacent_mask_id;
+					mask_count += 1;
 				}
 
-				//TODO: diagonal influences
-				/*else {
-				if (binf & 0b00000100) {
+				if (binf & 0x04) {  //0b00000100
+					draw_masks[mask_count] = 16;
+					mask_count += 1;
 				}
-				if (binf & 0b00010000) {
+				if (binf & 0x10) {  //0b00010000
+					draw_masks[mask_count] = 17;
+					mask_count += 1;
 				}
-				if (binf & 0b00000001) {
+				if (binf & 0x01) {  //0b00000001
+					draw_masks[mask_count] = 18;
+					mask_count += 1;
 				}
-				if (binf & 0b00100000) {
+				if (binf & 0x40) {  //0b00100000
+					draw_masks[mask_count] = 19;
+					mask_count += 1;
 				}
-				}
-				*/
 
-				//mask, to be applied on neighbor_terrain_id tile
-				this->blendmasks[blendmode]->draw(x, y, false, adjacent_mask_id);
-				//this->textures[neighbor_terrain_id]->draw(x, y, false, sub_id);
+				for (int k = 0; k < mask_count; k++) {
+					//mask, to be applied on neighbor_terrain_id tile
+					this->blendmasks[blendmode]->draw(x, y, false, draw_masks[k]);
+					//this->textures[neighbor_terrain_id]->draw(x, y, false, sub_id);
+				}
 			}
 			delete[] influences;
 		}
