@@ -196,15 +196,15 @@ void Terrain::render() {
 				continue;
 			}
 
-			log::dbg2("influence count for tile %d,%d: %d", i, j, num_influences);
+			//log::dbg2("influence count for tile %d,%d: %d", i, j, num_influences);
 
 			//influences to consider when drawing overlays
 			struct influence_meta draw_influences[8];
 
 			for (int k = 0; k < num_influences; k++) {
 				draw_influences[k] = influences[ influence_tids[k] ];
-				struct influence_meta m = draw_influences[k];
-				log::dbg2("influence %d: prio=%d dir=%d id=%d", k, m.priority, m.direction, m.terrain_id);
+				//struct influence_meta m = draw_influences[k];
+				//log::dbg2("influence %d: prio=%d dir=%d id=%d", k, m.priority, m.direction, m.terrain_id);
 			}
 
 			//order the influences by their priority
@@ -230,7 +230,7 @@ void Terrain::render() {
 			struct draw_mask draw_masks[8 * 4]; //8 different influences with max 4 masks per influence.
 
 			//for each possible influence (max 8 as we have 8 neighbors)
-			for (unsigned int k = 0; k < num_influences; k++) {
+			for (int k = 0; k < num_influences; k++) {
 				unsigned int binf = draw_influences[k].direction & 0xFF; //0b11111111
 				if (binf == 0) {
 					continue;
@@ -306,6 +306,8 @@ void Terrain::render() {
 				//TODO:
 				int blend_mode = 5;     //get_blending_mode(priority, base)
 
+				bool adjacent_mask_existing = false;
+
 				if (adjacent_mask_id < 0) {
 					if (respect_adjacent_influence && !respect_diagonal_influence && binfdiagonal == 0) {
 						throw util::Error("influence detected with unknown directions: %u = 0x%02X", binf, binf);
@@ -314,34 +316,34 @@ void Terrain::render() {
 					draw_masks[mask_count].mask_id    = adjacent_mask_id;
 					draw_masks[mask_count].blend_mode = blend_mode;
 					mask_count += 1;
+					adjacent_mask_existing = true;
 				}
 
 				if (respect_diagonal_influence) {
-					if (binf & 0x04) {  //0b00000100
+					if (binf & 0x04 && (!adjacent_mask_existing)) {  //0b00000100
 						draw_masks[mask_count].mask_id    = 16;
 						draw_masks[mask_count].blend_mode = blend_mode;
 						mask_count += 1;
 					}
-					if (binf & 0x10) {  //0b00010000
+					if (binf & 0x10 && (!adjacent_mask_existing)) {  //0b00010000
 						draw_masks[mask_count].mask_id    = 17;
 						draw_masks[mask_count].blend_mode = blend_mode;
 						mask_count += 1;
 					}
-					if (binf & 0x01) {  //0b00000001
+					if (binf & 0x01 && (!adjacent_mask_existing)) {  //0b00000001
 						draw_masks[mask_count].mask_id    = 18;
 						draw_masks[mask_count].blend_mode = blend_mode;
 						mask_count += 1;
 					}
-					if (binf & 0x40) {  //0b00100000
+					if (binf & 0x40 && (!adjacent_mask_existing)) {  //0b00100000
 						draw_masks[mask_count].mask_id    = 19;
 						draw_masks[mask_count].blend_mode = blend_mode;
 						mask_count += 1;
 					}
 				}
-
 			}
 
-			log::dbg2("drawing %d masks for tile %d,%d", mask_count, i, j);
+			//log::dbg2("drawing %d masks for tile %d,%d", mask_count, i, j);
 			for (int k = 0; k < mask_count; k++) {
 				//mask, to be applied on neighbor_terrain_id tile
 				this->blendmasks[draw_masks[k].blend_mode]->draw(x, y, false, draw_masks[k].mask_id);
