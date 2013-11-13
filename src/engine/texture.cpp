@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include <math.h>
 #include <stdio.h>
 
 #include "../log/log.h"
@@ -243,6 +244,18 @@ void Texture::get_subtexture_size(int subid, int *w, int *h) {
 	*w = this->subtextures[subid].w;
 	*h = this->subtextures[subid].h;
 }
+
+/**
+returns the terrain subtexture id for a given position.
+
+this function returns always the right value, so that neighbor tiles
+of the same terrain (like grass-grass) are matching (without blendomatic).
+*/
+int Texture::get_subtexture_id(int x, int y) {
+	int mod = sqrt(this->subtexture_count);
+	return ((x % mod) + (mod * (y % mod)));
+}
+
 
 
 } //namespace engine

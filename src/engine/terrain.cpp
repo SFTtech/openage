@@ -63,10 +63,10 @@ void Terrain::render() {
 	for (unsigned int i = 0; i < this->size; i++) {
 		for (unsigned int j = 0; j < this->size; j++) {
 			int terrain_id = this->tile_at(i, j);
-			int sub_id = this->get_subtexture_id(i, j);
-			int base_priority = 2;
-
 			auto texture = this->textures[terrain_id];
+
+			int sub_id = texture->get_subtexture_id(i, j);
+			int base_priority = 2;
 
 			int x, y;
 			int tw, th;
@@ -82,6 +82,7 @@ void Terrain::render() {
 			if (!this->blending_enabled) {
 				continue;
 			}
+
 			//blendomatic!!111
 			// see doc/media/blendomatic for the idea behind this.
 
@@ -92,7 +93,7 @@ void Terrain::render() {
 			};
 
 			auto influences = new struct influence_meta[this->texture_count];
-			for (int k = 0; k < this->texture_count; k++) {
+			for (unsigned int k = 0; k < this->texture_count; k++) {
 				influences[k] = {0, 0};
 			}
 
@@ -140,14 +141,12 @@ void Terrain::render() {
 					throw util::Error("unknown neighbor requested!");
 				}
 
-				//log::dbg2("testing neighbor %d at %d %d", neigh_id, neigh_x, neigh_y);
-
-				//neighbor only interesting if it's a different terrain than @
-				if (neigh_x < 0 || neigh_x >= this->size || neigh_y < 0 || neigh_y >= this->size) {
+				if (neigh_x < 0 || neigh_x >= (int)this->size || neigh_y < 0 || neigh_y >= (int)this->size) {
 					//this neighbor is on the neighbor chunk, skip it for now.
 					continue;
 				}
 
+				//neighbor only interesting if it's a different terrain than @
 				int neighbor_terrain_id = this->tile_at(neigh_x, neigh_y);
 				if (neighbor_terrain_id != terrain_id) {
 
@@ -162,7 +161,7 @@ void Terrain::render() {
 			}
 
 			//for each possible priority
-			for (int k = 0; k < this->texture_count; k++) {
+			for (unsigned int k = 0; k < this->texture_count; k++) {
 				unsigned int binf = influences[k].direction & 0xFF; //0b11111111
 				if (binf == 0) {
 					continue;
@@ -173,7 +172,8 @@ void Terrain::render() {
 
 				//log::dbg2("priority %d => mask %d, terrain %d", k, binf, neighbor_terrain_id);
 
-				/*    0
+				/* neighbor ids:
+				      0
 				    7   1      => 8 neighbours that can have influence on
 				  6   @   2         the mask id selection.
 				    5   3
@@ -186,16 +186,16 @@ void Terrain::render() {
 
 				switch (binfadjacent) {
 				case 0x08:  //0b00001000
-					adjacent_mask_id = 0; //random 0..3
+					adjacent_mask_id = 0  + ((i + j) % 4);  //0..3
 					break;
 				case 0x02:  //0b00000010
-					adjacent_mask_id = 4; //random 0..7
+					adjacent_mask_id = 4  + ((i + j) % 4);  //0..7
 					break;
 				case 0x20:  //0b00100000
-					adjacent_mask_id = 8; //random 8..11
+					adjacent_mask_id = 8  + ((i + j) % 4);  //8..11
 					break;
 				case 0x80:  //0b10000000
-					adjacent_mask_id = 12; //random 12..15
+					adjacent_mask_id = 12 + ((i + j) % 4);  //12..15
 					break;
 				case 0x22:  //0b00100010
 					adjacent_mask_id = 20;
@@ -265,16 +265,6 @@ void Terrain::render() {
 	}
 }
 
-
-/**
-returns the terrain subtexture id for a given position.
-
-this function returns always the right value, so that neighbor tiles
-of the same terrain (like grass-grass) are matching (without blendomatic).
-*/
-int Terrain::get_subtexture_id(unsigned int x, unsigned int y) {
-	return ((x % 10) + (10 * (y % 10)));
-}
 
 void Terrain::set_tile_at(int index, int x, int y) {
 	size_t pos = this->tile_position(x, y);
