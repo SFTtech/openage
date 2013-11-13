@@ -13,6 +13,8 @@ terrain class represents the drawn terrain.
 */
 class Terrain {
 public:
+	bool blending_enabled;
+
 	Terrain(unsigned int height, size_t maxtextures, size_t maxblendmodes);
 	~Terrain();
 
@@ -29,6 +31,7 @@ public:
 	size_t tiles_in_row(unsigned int row);
 	size_t get_size();
 	void set_mask(unsigned int modeid, engine::Texture *m);
+	void set_blending(bool enabled);
 
 private:
 	size_t size;
@@ -39,6 +42,7 @@ private:
 	size_t texture_count, blendmode_count;
 	engine::Texture **textures;
 	engine::Texture **blendmasks;
+
 
 	int get_subtexture_id(unsigned int x, unsigned int y);
 

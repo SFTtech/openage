@@ -279,9 +279,7 @@ void input_handler(SDL_Event *e) {
 			break;
 
 		case SDLK_SPACE:
-			for (unsigned int i=0; i<terrain->get_tile_count(); i++) {
-				terrain->set_tile_at(util::random_range(0, 10), i);
-			}
+			terrain->blending_enabled = !terrain->blending_enabled;
 			break;
 		}
 

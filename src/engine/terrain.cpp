@@ -44,6 +44,8 @@ Terrain::Terrain(unsigned int size, size_t maxtextures, size_t maxblendmodes) : 
 	this->textures = new engine::Texture*[maxtextures];
 	this->blendmasks = new engine::Texture*[maxblendmodes];
 
+	this->blending_enabled = true;
+
 	//set the terrain id to 0 by default.
 	for (unsigned int i = 0; i < this->tile_count; i++) {
 		this->tiles[i] = 0;
@@ -62,6 +64,7 @@ void Terrain::render() {
 		for (unsigned int j = 0; j < this->size; j++) {
 			int terrain_id = this->tile_at(i, j);
 			int sub_id = this->get_subtexture_id(i, j);
+			int base_priority = 2;
 
 			auto texture = this->textures[terrain_id];
 
@@ -72,7 +75,199 @@ void Terrain::render() {
 			x = i * (tw/2) + j * (tw/2);
 			y = i * (th/2) - j * (th/2);
 
+			//draw the base texture
 			texture->draw(x, y, false, sub_id);
+
+
+			if (!this->blending_enabled) {
+				continue;
+			}
+			//blendomatic!!111
+			// see doc/media/blendomatic for the idea behind this.
+
+			//storage for influences by neighbor tile
+			struct influence_meta {
+				int direction;
+				int terrain_id;
+			};
+
+			auto influences = new struct influence_meta[this->texture_count];
+			for (int k = 0; k < this->texture_count; k++) {
+				influences[k] = {0, 0};
+			}
+
+			//first step: gather information about possible influences
+			//look at every neighbor tile for that
+			for (int neigh_id = 0; neigh_id < 8; neigh_id++) {
+				int neigh_x, neigh_y;
+				int neighbor_priority = 8;
+
+				//get the tile coordinates of the current neighbor
+				switch (neigh_id) {
+				case 0:
+					neigh_x = i + 1;
+					neigh_y = j - 1;
+					break;
+				case 1:
+					neigh_x = i + 1;
+					neigh_y = j;
+					break;
+				case 2:
+					neigh_x = i + 1;
+					neigh_y = j + 1;
+					break;
+				case 3:
+					neigh_x = i;
+					neigh_y = j + 1;
+					break;
+				case 4:
+					neigh_x = i - 1;
+					neigh_y = j + 1;
+					break;
+				case 5:
+					neigh_x = i - 1;
+					neigh_y = j;
+					break;
+				case 6:
+					neigh_x = i - 1;
+					neigh_y = j - 1;
+					break;
+				case 7:
+					neigh_x = i;
+					neigh_y = j - 1;
+					break;
+				default:
+					throw util::Error("unknown neighbor requested!");
+				}
+
+				//log::dbg2("testing neighbor %d at %d %d", neigh_id, neigh_x, neigh_y);
+
+				//neighbor only interesting if it's a different terrain than @
+				if (neigh_x < 0 || neigh_x >= this->size || neigh_y < 0 || neigh_y >= this->size) {
+					//this neighbor is on the neighbor chunk, skip it for now.
+					continue;
+				}
+
+				int neighbor_terrain_id = this->tile_at(neigh_x, neigh_y);
+				if (neighbor_terrain_id != terrain_id) {
+
+					//neighbor draws over the base if it's priority is greater
+					if (neighbor_priority > base_priority) {
+						//as tile i has influence for this priority
+						// => bit i is set to 1 by 2^i
+						influences[neighbor_priority].direction |= 1 << neigh_id;
+						influences[neighbor_priority].terrain_id = neighbor_terrain_id;
+
+						int current_influence = influences[neighbor_priority].direction;
+						log::dbg("setting bit %d for priority %d => %d", neigh_id, neighbor_priority, current_influence);
+					}
+				}
+			}
+
+			//for each possible priority
+			for (int k = 0; k < this->texture_count; k++) {
+				unsigned int binf = influences[k].direction & 0b11111111;
+				if (binf == 0) {
+					continue;
+				}
+
+				int neighbor_terrain_id = influences[k].terrain_id;
+				int adjacent_mask_id = -1;
+
+				log::dbg2("priority %d => mask %d, terrain %d", k, binf, neighbor_terrain_id);
+
+				/*    0
+				    7   1      => 8 neighbours that can have influence on
+				  6   @   2         the mask id selection.
+				    5   3
+				      4
+				*/
+
+				//ignore diagonal influences for adjacent influences
+				int binfadjacent = binf & 0b10101010;
+				int binfdiagonal = binf & 0b01010101;
+
+				switch (binfadjacent) {
+				case 0b00001000:
+					adjacent_mask_id = 0; //random 0..3
+					break;
+				case 0b00000010:
+					adjacent_mask_id = 4; //random 0..7
+					break;
+				case 0b00100000:
+					adjacent_mask_id = 8; //random 8..11
+					break;
+				case 0b10000000:
+					log::dbg("===> adjacent = %x", binfadjacent);
+					adjacent_mask_id = 12; //random 12..15
+					log::dbg("===> maskid = %d", adjacent_mask_id);
+					break;
+				case 0b00100010:
+					adjacent_mask_id = 20;
+					break;
+				case 0b10001000:
+					adjacent_mask_id = 21;
+					break;
+				case 0b10100000:
+					adjacent_mask_id = 22;
+					break;
+				case 0b10000010:
+					adjacent_mask_id = 23;
+					break;
+				case 0b00101000:
+					adjacent_mask_id = 24;
+					break;
+				case 0b00001010:
+					adjacent_mask_id = 25;
+					break;
+				case 0b00101010:
+					adjacent_mask_id = 26;
+					break;
+				case 0b10101000:
+					adjacent_mask_id = 27;
+					break;
+				case 0b10100010:
+					adjacent_mask_id = 28;
+					break;
+				case 0b10001010:
+					adjacent_mask_id = 29;
+					break;
+				case 0b10101010:
+					adjacent_mask_id = 30;
+					break;
+				}
+
+				int blendmode = 5;     //get_blending_mode(priority, base)
+
+				log::dbg("===> adjacent mask id = %d", adjacent_mask_id);
+
+				if (adjacent_mask_id < 0) {
+					if (binfdiagonal == 0) {
+						throw util::Error("influence detected with unknown directions: %u = 0x%x", binf, binf);
+					} else {
+						//ignore diagonal masks for now
+						continue;
+					}
+				}
+
+				//TODO: diagonal influences
+				/*else {
+				if (binf & 0b00000100) {
+				}
+				if (binf & 0b00010000) {
+				}
+				if (binf & 0b00000001) {
+				}
+				if (binf & 0b00100000) {
+				}
+				}
+				*/
+
+				//mask, to be applied on neighbor_terrain_id tile
+				this->blendmasks[blendmode]->draw(x, y, false, adjacent_mask_id);
+				//this->textures[neighbor_terrain_id]->draw(x, y, false, sub_id);
+			}
+			delete[] influences;
 		}
 	}
 }
