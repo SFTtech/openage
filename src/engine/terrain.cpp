@@ -10,7 +10,7 @@
 namespace openage {
 namespace engine {
 
-Terrain::Terrain(unsigned int size, unsigned int maxtextures) {
+Terrain::Terrain(unsigned int size, size_t maxtextures, size_t maxblendmodes) : texture_count(maxtextures), blendmode_count(maxblendmodes) {
 
 	//calculate the number of tiles for the given (tile) height of the rhombus.
 
@@ -42,8 +42,9 @@ Terrain::Terrain(unsigned int size, unsigned int maxtextures) {
 
 	this->tiles = new int[this->tile_count];
 	this->textures = new engine::Texture*[maxtextures];
+	this->blendmasks = new engine::Texture*[maxblendmodes];
 
-	//set the tile index to 0 by default.
+	//set the terrain id to 0 by default.
 	for (unsigned int i = 0; i < this->tile_count; i++) {
 		this->tiles[i] = 0;
 	}
@@ -204,6 +205,11 @@ size_t Terrain::tiles_in_row(unsigned int row) {
 size_t Terrain::get_size() {
 	return this->size;
 }
+
+void Terrain::set_mask(unsigned int modeid, engine::Texture *m) {
+	this->blendmasks[modeid] = m;
+}
+
 
 
 } //namespace engine

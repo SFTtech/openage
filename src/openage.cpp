@@ -19,10 +19,12 @@
 
 namespace openage {
 
-engine::Texture *gaben, *university, **terrain_textures;
+engine::Texture *gaben, *university;
+engine::Texture **terrain_textures, **blending_textures;
+
 engine::Terrain *terrain;
 
-unsigned int terrain_texture_count;
+unsigned int terrain_texture_count, blend_mode_count;
 
 util::Timer *timer;
 
@@ -89,10 +91,12 @@ void init() {
 		15030, 15031
 	};
 
+	//hardcoded for now
+	blend_mode_count = 9;
 
 	terrain_texture_count = sizeof(terrain_ids)/sizeof(int);
 	terrain_textures = new engine::Texture*[terrain_texture_count];
-	terrain = new engine::Terrain(20, terrain_texture_count);
+	terrain = new engine::Terrain(20, terrain_texture_count, blend_mode_count);
 
 	for (unsigned int i = 0; i < terrain_texture_count; i++) {
 		int current_id = terrain_ids[i];
@@ -106,6 +110,23 @@ void init() {
 		delete[] terraintex_filename;
 	}
 
+	//add the blendomatic masks to the terrain
+	blending_textures = new engine::Texture*[blend_mode_count];
+
+	for (unsigned int i = 0; i < blend_mode_count; i++) {
+		char *mask_filename = util::format("age/alphamask/mode%02d.png", i);
+
+		auto new_texture = new engine::Texture(mask_filename, false, true);
+
+		blending_textures[i] = new_texture;
+		terrain->set_mask(i, new_texture);
+
+		delete[] mask_filename;
+	}
+
+
+
+
 	//set the terrain types according to the data array.
 	for (unsigned int i = 0; i < terrain->get_size(); i++) {
 		for (unsigned int j = 0; j < terrain->get_size(); j++) {
@@ -113,6 +134,7 @@ void init() {
 			terrain->set_tile_at(texid, i, j);
 		}
 	}
+
 
 	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
 	engine::teamcolor_shader::vert = new engine::shader::Shader(GL_VERTEX_SHADER, texturevshader_code);
@@ -195,6 +217,10 @@ void deinit() {
 	for (unsigned int i = 0; i < terrain_texture_count; i++) {
 		delete terrain_textures[i];
 	}
+	for (unsigned int i = 0; i < blend_mode_count; i++) {
+		delete blending_textures[i];
+	}
+
 }
 
 void input_handler(SDL_Event *e) {
