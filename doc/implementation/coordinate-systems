@@ -1,25 +1,86 @@
-Window coordinates [CWINDOW]: 2D (x,y), integers
-	1 pixel per unit
-	Origin is top left corner of window (0, 0)
-	Bottom right corner: (width, height)
+COMPREHENSIVE LIST OF ALL COORDINATE SYSTEMS
 
-SDL Mouse coordinates [CSDL]: 2D (x,y), integers
-	Identical to CWINDOW
+coord_sdl
+	SDL coordinates
+	orthonormal 2D (x,y), integers, in pixels
 
-HUD coordinates [CHUD]: 2D (x,y), integers
-	Identical to CWINDOW
+	Origin is top left corner of window
+	positive in right and down directions
 
-Game coordinates [CGAME]: 3D (NE,SE,Up), fixed-point
-	NE (North east) and SE (South east) diagonal to the window coordinates
-	Position of the camera is given in Game coordinates
-	Positions of all in-game objects (terrain tiles, units, projectiles, ...) are given in this format
-	All physics calculations are done in game coordinates
+	mouse coordinates and window size are received from SDL
+	in this coordinate system
 
-Camera coordinates [CCAMERA]: 2D (x,y), floating point
-	Shifted version of CWINDOW
+coord_phys
+	Game (physics) coordinates
+	orthonormal 3D (NE,SE,Up), fixed-point, in tu/thu
+
+	Origin is in the middle of the central (0,0) 'origin' tile
+	a unit that is located at (0.5, 0.5) stands on the east corner of the
+	central tile.
+
+	NE: north-east, in tu
+	SE: south-east, in tu
+	Up: guess what, in thu
+
+	tu: tile unit; the length of one tile
+	thu: tile height unit; the difference of elevation
+
+	first assumption: 1 thu = 1 tu / sqrt(8) (determined from aspect ratio calculations)
+
+	objects given in coord_phys:
+		camera
+		all units
+		all terrain tiles
+		projectiles
+		buildings
+		...
+
+	physics are done exclusively in this coordinate system
+
+coord_hud
+	HUD coordinates
+	orthonormal 2D (x,y), float, in pixels
+
+	Origin is top left corner of window
+	positive in right and down directions
+
+	objects given in coord_hud can be directly passed to OpenGL,
+	during HUD rendering
+
+coord_camera
+	Camera coordinates
+	orthonormal 2D (x,y), float, in pixels
+
 	Origin is center of window (CWINDOW position: width/2, height/2)
+	positive in right and down directions
 
-When rendering an object that is given in Game coordinates, the camera position is first subtracted.
-The remaining value, which should be pretty close to (0,0,0) for all objects that are visible on the screen,
-is then converted to float, transformed to camera coordinates and passed to the OpenGL renderer.
-This way, floating point errors far out from the center of the map are avoided.
+	objects given in coord_camera can be directly passed to OpenGL,
+	during game rendering
+
+
+
+CONVERSIONS
+
+
+
+for rendering
+	depending on where they are rendered,
+	objects are transformed to coord_camera or coord_hud
+
+for input processing
+	depending on whether they happened on a HUD object,
+	mouse clicks are transformed to coord_phys or coord_hud
+
+	idea: HUD drawing code will register HUD objects with the engine
+	the engine then memorizes the areas where HUD objects are drawn,
+	and checks whether the mouse click lies within one of the rectangles
+
+conversion from coord_phys to coord_camera:
+	subtract camera coordinates from a
+	a should now be very close to 0, minimizing floating point errors.
+
+	now, use transformation matrix to convert to coord_camera
+
+conversion coord_camera a -> coord_phys b:
+	use transformation matrix to convert to coord_camera
+	add camera coordinates
