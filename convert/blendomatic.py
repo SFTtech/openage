@@ -2,7 +2,7 @@
 
 import math
 from struct import Struct, unpack_from
-from util import NamedObject, dbg, file_open, file_get_path
+from util import NamedObject, dbg, file_open, file_get_path, merge_frames, generate_meta_text
 from png import PNG
 
 endianness = "< "
@@ -192,6 +192,33 @@ class Blendomatic:
 				png.create(tile["width"], tile["height"], True)
 
 				yield png, idx, tidx
+
+	def draw_alpha_frames_merged(self):
+		for idx, bmode in enumerate(self.blending_modes):
+
+			max_w = 0
+			max_h = 0
+
+			blendomatic_frames = []
+
+			for tile in bmode["alphamasks"]:
+				frame = PNG(0, None, tile["data"])
+				tw = tile["width"]
+				th = tile["height"]
+				frame.create(tw, th, True)
+
+				if tw > max_w:
+					max_w = tw
+				if th > max_h:
+					max_h = th
+
+				blendomatic_frames.append((frame, None, (0, 0)))
+
+			atlas, atlas_meta, (width, height) = merge_frames(blendomatic_frames, max_w, max_h)
+			meta_out = generate_meta_text(atlas_meta)
+
+			yield idx, atlas, (width, height), meta_out
+
 
 	def draw_bit_frames(self):
 		for idx, bmode in enumerate(self.blending_modes):
