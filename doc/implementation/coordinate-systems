@@ -1,21 +1,21 @@
-Window coordinates [CWINDOW]: 2D (x,y)
+Window coordinates [CWINDOW]: 2D (x,y), integers
 	1 pixel per unit
 	Origin is top left corner of window (0, 0)
 	Bottom right corner: (width, height)
 
-SDL Mouse coordinates [CSDL]: 2D (x,y)
+SDL Mouse coordinates [CSDL]: 2D (x,y), integers
 	Identical to CWINDOW
 
-HUD coordinates [CHUD]: 2D (x,y)
+HUD coordinates [CHUD]: 2D (x,y), integers
 	Identical to CWINDOW
 
-Game coordinates [CGAME]: 3D (NE,SE,Up)
+Game coordinates [CGAME]: 3D (NE,SE,Up), fixed-point
 	NE (North east) and SE (South east) diagonal to the window coordinates
 	Position of the camera is given in Game coordinates
 	Positions of all in-game objects (terrain tiles, units, projectiles, ...) are given in this format
 	All physics calculations are done in game coordinates
 
-Camera coordinates [CCAMERA]: 2D (x,y)
+Camera coordinates [CCAMERA]: 2D (x,y), floating point
 	Shifted version of CWINDOW
 	Origin is center of window (CWINDOW position: width/2, height/2)
 
