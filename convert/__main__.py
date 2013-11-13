@@ -60,18 +60,18 @@ def main():
 	if write_enabled:
 		file_write(file_get_path('processed/player_color_palette.pal', write=True), palette.gen_player_color_palette())
 
+		import blendomatic
+		blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
+
+		for (modeidx, png, size, metadata) in blend_data.draw_alpha_frames_merged():
+			fname = 'alphamask/mode%02d' % (modeidx)
+			filename = file_get_path(fname, write=True)
+			file_write(filename + ".png", png)
+			file_write(filename + ".docx", metadata)
+			dbg("blending mode%02d -> saved packed atlas" % (modeidx), 1)
+
 		if args.extrafiles:
 			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
-
-			import blendomatic
-			blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
-
-			for (modeidx, png, size, metadata) in blend_data.draw_alpha_frames_merged():
-				fname = 'alphamask/mode%02d' % (modeidx)
-				filename = file_get_path(fname, write=True)
-				file_write(filename + ".png", png)
-				file_write(filename + ".docx", metadata)
-				dbg("blending mode%02d -> saved packed atlas" % (modeidx), 1)
 
 
 	files_extracted = 0

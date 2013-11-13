@@ -31,7 +31,7 @@ class PNG:
 				if alpha_data == -1:
 					alpha = 0
 				else:
-					alpha = 255
+					alpha = 100
 
 				draw.point((x, y), fill=(val, val, val, alpha))
 
