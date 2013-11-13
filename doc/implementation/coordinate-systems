@@ -12,20 +12,21 @@ coord_sdl
 
 coord_phys
 	Game (physics) coordinates
-	orthonormal 3D (NE,SE,Up), fixed-point, in tu/thu
+	orthonormal 3D (NE,SE,Up), fixed-point, in tu/teu
 
 	Origin is in the middle of the central (0,0) 'origin' tile
 	a unit that is located at (0.5, 0.5) stands on the east corner of the
 	central tile.
+	positive in north-east, south-east and up directions
 
 	NE: north-east, in tu
 	SE: south-east, in tu
-	Up: guess what, in thu
+	Up: guess what, in teu
 
 	tu: tile unit; the length of one tile
-	thu: tile height unit; the difference of elevation
+	teu: tile elevation unit; the difference of elevation
 
-	first assumption: 1 thu = 1 tu / sqrt(8) (determined from aspect ratio calculations)
+	first assumption: 1 teu = 1 tu / sqrt(8) (determined from aspect ratio calculations)
 
 	objects given in coord_phys:
 		camera
