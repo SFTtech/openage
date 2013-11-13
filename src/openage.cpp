@@ -24,14 +24,13 @@ engine::Texture **terrain_textures, **blending_textures;
 
 engine::Terrain *terrain;
 
-unsigned int terrain_texture_count, blend_mode_count;
-
 util::Timer *timer;
 
+unsigned int terrain_texture_count, blend_mode_count;
 unsigned lmbx, lmby, rmbx, rmby;
-
 bool sc_left, sc_right, sc_up, sc_down;
 
+int *terrain_priority_list;
 
 unsigned int terrain_data[20][20] = {
 	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
@@ -95,8 +94,39 @@ void init() {
 	blend_mode_count = 9;
 
 	terrain_texture_count = sizeof(terrain_ids)/sizeof(int);
+	terrain_priority_list = new int[terrain_texture_count];
 	terrain_textures = new engine::Texture*[terrain_texture_count];
-	terrain = new engine::Terrain(20, terrain_texture_count, blend_mode_count);
+
+	//set terrain priorities, TODO: get them from media files
+	terrain_priority_list[0]  = 70;
+	terrain_priority_list[1]  = 102;
+	terrain_priority_list[2]  = 139;
+	terrain_priority_list[3]  = 155;
+	terrain_priority_list[4]  = 157;
+	terrain_priority_list[5]  = 101;
+	terrain_priority_list[6]  = 106;
+	terrain_priority_list[7]  = 90;
+	terrain_priority_list[8]  = 100;
+	terrain_priority_list[9]  = 80;
+	terrain_priority_list[10] = 92;
+	terrain_priority_list[11] = 60;
+	terrain_priority_list[12] = 140;
+	terrain_priority_list[13] = 141;
+	terrain_priority_list[14] = 110;
+	terrain_priority_list[15] = 122;
+	terrain_priority_list[16] = 123;
+	terrain_priority_list[17] = 150;
+	terrain_priority_list[18] = 151;
+	terrain_priority_list[19] = 152;
+	terrain_priority_list[20] = 40;
+	terrain_priority_list[21] = 130;
+	terrain_priority_list[22] = 132;
+	terrain_priority_list[23] = 134;
+	terrain_priority_list[24] = 136;
+	terrain_priority_list[25] = 162;
+	terrain_priority_list[26] = 120;
+
+	terrain = new engine::Terrain(20, terrain_texture_count, blend_mode_count, terrain_priority_list);
 
 	for (unsigned int i = 0; i < terrain_texture_count; i++) {
 		int current_id = terrain_ids[i];
@@ -123,8 +153,6 @@ void init() {
 
 		delete[] mask_filename;
 	}
-
-
 
 
 	//set the terrain types according to the data array.
@@ -220,7 +248,7 @@ void deinit() {
 	for (unsigned int i = 0; i < blend_mode_count; i++) {
 		delete blending_textures[i];
 	}
-
+	delete[] terrain_priority_list;
 }
 
 void input_handler(SDL_Event *e) {

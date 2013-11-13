@@ -15,7 +15,7 @@ class Terrain {
 public:
 	bool blending_enabled;
 
-	Terrain(unsigned int height, size_t maxtextures, size_t maxblendmodes);
+	Terrain(unsigned int height, size_t maxtextures, size_t maxblendmodes, int *priority_list);
 	~Terrain();
 
 	void render();
@@ -43,6 +43,7 @@ private:
 	engine::Texture **textures;
 	engine::Texture **blendmasks;
 
+	int *terrain_id_priority_map;
 
 	int get_subtexture_id(unsigned int x, unsigned int y);
 
