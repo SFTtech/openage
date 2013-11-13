@@ -4,9 +4,12 @@
 #include <stddef.h>
 
 #include "texture.h"
+#include "coordinates.h"
 
 namespace openage {
 namespace engine {
+
+extern coord::camera_delta tile_halfsize;
 
 /**
 terrain class represents the drawn terrain.

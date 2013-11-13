@@ -10,6 +10,8 @@
 namespace openage {
 namespace engine {
 
+coord::camera_delta tile_halfsize = {48.f, 24.f};
+
 Terrain::Terrain(unsigned int size, unsigned int maxtextures) {
 
 	//calculate the number of tiles for the given (tile) height of the rhombus.

@@ -10,6 +10,7 @@
 #include "engine/texture.h"
 #include "engine/shader/shader.h"
 #include "engine/shader/program.h"
+#include "engine/coordinates.h"
 #include "log/log.h"
 #include "util/error.h"
 #include "util/filetools.h"
@@ -178,8 +179,6 @@ void init() {
 	glUniform4fv(engine::teamcolor_shader::player_color_var, 64, playercolors);
 	engine::teamcolor_shader::program->stopusing();
 
-	engine::move_view(0, 400);
-
 	log::msg("Time for startup: %.4f s", timer->measure()/1000.0);
 }
 
@@ -204,20 +203,32 @@ void input_handler(SDL_Event *e) {
 		engine::running = false;
 		break;
 
-	case SDL_MOUSEBUTTONDOWN:
+	case SDL_MOUSEBUTTONDOWN: {
 		//a mouse button was pressed...
 		//subtract value from window height to get position relative to lower right (0,0).
+		engine::coord::sdl mousepos_sdl;
+		mousepos_sdl.x = (engine::coord::sdl_t) e->button.x;
+		mousepos_sdl.y = (engine::coord::sdl_t) e->button.y;
+		engine::coord::phys mousepos_phys = engine::coord::sdl_to_phys(mousepos_sdl);
+
 		if (e->button.button == SDL_BUTTON_LEFT) {
-			lmbx = e->button.x - engine::view_x;
-			lmby = engine::window_y - e->button.y - engine::view_y;
-			log::dbg("left button pressed at %d,%d", lmbx, lmby);
+			log::dbg("LMB clicked (%hd, %hd)", mousepos_sdl.x, mousepos_sdl.y);
+			log::dbg("phys: NE %f SE %f UP %f",
+				((float) mousepos_phys.ne) / (1 << 16),
+				((float) mousepos_phys.se) / (1 << 16),
+				((float) mousepos_phys.up) / (1 << 16));
+			//TODO move blue university to mousepos_phys
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
-			rmbx = e->button.x - engine::view_x;
-			rmby = engine::window_y - e->button.y - engine::view_y;
-			log::dbg("right button pressed at %d,%d", lmbx, lmby);
+			log::dbg("LMB clicked (%hd, %hd)", mousepos_sdl.x, mousepos_sdl.y);
+			log::dbg("phys: NE %f SE %f UP %f",
+				((float) mousepos_phys.ne) / (1 << 16),
+				((float) mousepos_phys.se) / (1 << 16),
+				((float) mousepos_phys.up) / (1 << 16));
+			//TODO move red university to mousepos_phys
 		}
 
+		}
 		break;
 	case SDL_KEYUP:
 		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
@@ -263,29 +274,37 @@ void input_handler(SDL_Event *e) {
 	}
 }
 
-void view_translation() {
-	float mx = 0;
-	float my = 0;
+void move_camera() {
+	//read camera movement input keys, and move camera
+	//accordingly.
+
+	//camera movement speed, in pixels per millisecond
+	//one pixel per millisecond equals 14.3 tiles/second
+	float camera_movement_speed_keyboard = 0.5;
+
+	engine::coord::camera_delta camera_delta = {0, 0};
 	if (sc_left) {
-		mx += 1;
+		camera_delta.x += camera_movement_speed_keyboard;
 	}
 	if (sc_right) {
-		mx -= 1;
+		camera_delta.x -= camera_movement_speed_keyboard;
 	}
 	if (sc_up) {
-		my -= 1;
+		camera_delta.y += camera_movement_speed_keyboard;
 	}
 	if (sc_down) {
-		my += 1;
+		camera_delta.y -= camera_movement_speed_keyboard;
 	}
 
-	float threshold = 0.5;
-	float scalefactor = threshold * engine::fpscounter->msec_lastframe;
+	//calculate camera position delta from velocity and frame duration
+	camera_delta *= (float) engine::fpscounter->msec_lastframe;
 
-	mx *= scalefactor;
-	my *= scalefactor;
+	//update camera phys position
+	engine::camera_pos_phys += engine::coord::camera_to_phys(camera_delta);
+}
 
-	engine::move_view(mx, my);
+void on_engine_tick() {
+	move_camera();
 }
 
 void draw_method() {
@@ -299,7 +318,7 @@ void draw_method() {
 
 int mainmethod() {
 	//init engine
-	engine::init(view_translation, draw_method, input_handler);
+	engine::init(on_engine_tick, draw_method, input_handler);
 	init();
 
 	//run main loop

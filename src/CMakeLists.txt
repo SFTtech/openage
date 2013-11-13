@@ -20,6 +20,7 @@ add_executable(${PROJECT_NAME}
 	engine/console.cpp
 	engine/terrain.cpp
 	engine/texture.cpp
+	engine/coordinates.cpp
 	engine/shader/shader.cpp
 	engine/shader/program.cpp
 )
