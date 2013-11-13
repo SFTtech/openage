@@ -157,16 +157,13 @@ void Terrain::render() {
 						// => bit i is set to 1 by 2^i
 						influences[neighbor_priority].direction |= 1 << neigh_id;
 						influences[neighbor_priority].terrain_id = neighbor_terrain_id;
-
-						int current_influence = influences[neighbor_priority].direction;
-						log::dbg("setting bit %d for priority %d => %d", neigh_id, neighbor_priority, current_influence);
 					}
 				}
 			}
 
 			//for each possible priority
 			for (int k = 0; k < this->texture_count; k++) {
-				unsigned int binf = influences[k].direction & 0b11111111;
+				unsigned int binf = influences[k].direction & 0xFF; //0b11111111
 				if (binf == 0) {
 					continue;
 				}
@@ -174,7 +171,7 @@ void Terrain::render() {
 				int neighbor_terrain_id = influences[k].terrain_id;
 				int adjacent_mask_id = -1;
 
-				log::dbg2("priority %d => mask %d, terrain %d", k, binf, neighbor_terrain_id);
+				//log::dbg2("priority %d => mask %d, terrain %d", k, binf, neighbor_terrain_id);
 
 				/*    0
 				    7   1      => 8 neighbours that can have influence on
@@ -184,66 +181,62 @@ void Terrain::render() {
 				*/
 
 				//ignore diagonal influences for adjacent influences
-				int binfadjacent = binf & 0b10101010;
-				int binfdiagonal = binf & 0b01010101;
+				int binfadjacent = binf & 0xAA; //0b10101010
+				int binfdiagonal = binf & 0x55; //0b01010101
 
 				switch (binfadjacent) {
-				case 0b00001000:
+				case 0x08:  //0b00001000
 					adjacent_mask_id = 0; //random 0..3
 					break;
-				case 0b00000010:
+				case 0x02:  //0b00000010
 					adjacent_mask_id = 4; //random 0..7
 					break;
-				case 0b00100000:
+				case 0x20:  //0b00100000
 					adjacent_mask_id = 8; //random 8..11
 					break;
-				case 0b10000000:
-					log::dbg("===> adjacent = %x", binfadjacent);
+				case 0x80:  //0b10000000
 					adjacent_mask_id = 12; //random 12..15
-					log::dbg("===> maskid = %d", adjacent_mask_id);
 					break;
-				case 0b00100010:
+				case 0x22:  //0b00100010
 					adjacent_mask_id = 20;
 					break;
-				case 0b10001000:
+				case 0x88:  //0b10001000
 					adjacent_mask_id = 21;
 					break;
-				case 0b10100000:
+				case 0xA0:  //0b10100000
 					adjacent_mask_id = 22;
 					break;
-				case 0b10000010:
+				case 0x82:  //0b10000010
 					adjacent_mask_id = 23;
 					break;
-				case 0b00101000:
+				case 0x28:  //0b00101000
 					adjacent_mask_id = 24;
 					break;
-				case 0b00001010:
+				case 0x0A:  //0b00001010
 					adjacent_mask_id = 25;
 					break;
-				case 0b00101010:
+				case 0x2A:  //0b00101010
 					adjacent_mask_id = 26;
 					break;
-				case 0b10101000:
+				case 0xA8:  //0b10101000
 					adjacent_mask_id = 27;
 					break;
-				case 0b10100010:
+				case 0xA2:  //0b10100010
 					adjacent_mask_id = 28;
 					break;
-				case 0b10001010:
+				case 0x8A:  //0b10001010
 					adjacent_mask_id = 29;
 					break;
-				case 0b10101010:
+				case 0xAA:  //0b10101010
 					adjacent_mask_id = 30;
 					break;
 				}
 
 				int blendmode = 5;     //get_blending_mode(priority, base)
 
-				log::dbg("===> adjacent mask id = %d", adjacent_mask_id);
-
 				if (adjacent_mask_id < 0) {
 					if (binfdiagonal == 0) {
-						throw util::Error("influence detected with unknown directions: %u = 0x%x", binf, binf);
+						throw util::Error("influence detected with unknown directions: %u = 0x%02X", binf, binf);
 					} else {
 						//ignore diagonal masks for now
 						continue;
