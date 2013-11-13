@@ -140,11 +140,15 @@ def merge_frames(frames, max_width = None, max_height = None):
 			if h > max_height:
 				max_height = h
 
+
 	max_per_row = math.ceil(math.sqrt(len(frames)))
+	num_rows    = math.ceil(len(frames) / max_per_row)
 
 	#we leave 1 pixel free in between two sprites
-	width  = math.ceil((max_width+1) * max_per_row)
-	height = math.ceil((max_height+2) * (len(frames) / max_per_row))
+	width  = math.ceil((max_width  + 1) * max_per_row)
+	height = math.ceil((max_height + 2) * num_rows)
+
+	dbg("merging %d frames to %dx%d atlas, %d pics per row, %d rows." % (len(frames), width, height, max_per_row, num_rows), 2)
 
 	#create the big atlas image where the small ones will be placed on
 	atlas = Image.new('RGBA', (width, height), (0, 0, 0, 0))

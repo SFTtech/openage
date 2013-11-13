@@ -66,16 +66,12 @@ def main():
 			import blendomatic
 			blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
 
-			for (png, modeidx, tileidx) in blend_data.draw_alpha_frames():
-				fname = 'alphamask/mode%02d/mask%02d.png' % (modeidx, tileidx)
+			for (modeidx, png, size, metadata) in blend_data.draw_alpha_frames_merged():
+				fname = 'alphamask/mode%02d' % (modeidx)
 				filename = file_get_path(fname, write=True)
-				file_write(filename, png.image)
-
-			#for (png, modeidx, tileidx) in blend_data.draw_bit_frames():
-			#	fname = 'alphamask/mode%02d/bitmask%02d.png' % (modeidx, tileidx)
-			#	filename = file_get_path(fname, write=True)
-			#	file_write(filename, png.image)
-
+				file_write(filename + ".png", png)
+				file_write(filename + ".docx", metadata)
+				dbg("blending mode%02d -> saved packed atlas" % (modeidx), 1)
 
 
 	files_extracted = 0
