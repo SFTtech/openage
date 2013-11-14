@@ -167,8 +167,12 @@ size_t Terrain::get_tile_count() {
 	return this->tile_count;
 }
 
-void Terrain::set_texture(unsigned int index, engine::Texture *t) {
+void Terrain::set_texture(size_t index, engine::Texture *t) {
 	this->textures[index] = t;
+}
+
+engine::Texture *Terrain::get_texture(size_t index) {
+	return this->textures[index];
 }
 
 size_t Terrain::tiles_in_row(unsigned int row) {

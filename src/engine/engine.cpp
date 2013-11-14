@@ -29,7 +29,7 @@ FTGLTextureFont *t_font;
 Console *console;
 
 noparam_method_ptr on_engine_tick;
-noparam_method_ptr draw_method;
+noparam_method_ptr draw_method, hud_draw_method;
 input_handler_ptr input_handler;
 
 
@@ -47,7 +47,7 @@ initialize the openage game engine.
 
 this creates the SDL window, the opengl context, reads shaders, the fps counter, ...
 */
-void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, input_handler_ptr input_handler) {
+void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, noparam_method_ptr hud_draw_method, input_handler_ptr input_handler) {
 
 	//set global random seed
 	srand(time(NULL));
@@ -100,6 +100,7 @@ void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, inp
 
 	engine::on_engine_tick = on_engine_tick;
 	engine::draw_method = draw_method;
+	engine::hud_draw_method = hud_draw_method;
 	engine::input_handler = input_handler;
 
 
@@ -240,16 +241,17 @@ void loop() {
 		}
 		glPopMatrix();
 
-		if (console_activated) {
-			console->draw();
-		}
-
-		glPushMatrix();
+		//the hud coordinate system is now established
 		{
-			//here, it is possible to directly draw in the HUD coordinate
-			//system
+			//draw user hud
+			hud_draw_method();
 
-			//draw the FPS counter
+			//draw console
+			if (console_activated) {
+				console->draw();
+			}
+
+			//draw FPS counter
 			glPushMatrix();
 			{
 				//top left corner
@@ -263,9 +265,8 @@ void loop() {
 			}
 			glPopMatrix();
 		}
-		glPopMatrix();
 
-
+		//the rendering is done
 		glerrorstate = glGetError();
 		if (glerrorstate != GL_NO_ERROR) {
 

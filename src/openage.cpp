@@ -23,8 +23,6 @@ namespace openage {
 engine::Texture *gaben, *university, **terrain_textures;
 engine::Terrain *terrain;
 
-unsigned int terrain_texture_count;
-
 util::Timer *timer;
 
 struct building {
@@ -36,6 +34,8 @@ struct building {
 std::vector<building> buildings;
 
 bool sc_left, sc_right, sc_up, sc_down;
+
+size_t editor_current_terrain = 0;
 
 unsigned int terrain_data[20][20] = {
 	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
@@ -60,6 +60,17 @@ unsigned int terrain_data[20][20] = {
 	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7}
 };
 
+//a list of all terrain slp ids. we'll get them from the .dat files later.
+int terrain_ids[] = {
+	15000, 15001, 15002, 15004, 15005,
+	15006, 15007, 15008, 15009, 15010,
+	15011, 15014, 15015, 15016, 15017,
+	15018, 15019, 15021, 15022, 15023,
+	15024, 15026, 15027, 15028, 15029,
+	15030, 15031
+};
+
+constexpr size_t terrain_texture_count = sizeof(terrain_ids)/sizeof(int);
 
 void init() {
 	timer = new util::Timer();
@@ -81,18 +92,6 @@ void init() {
 
 	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.png", true, true);
 
-	//a list of all terrain slp ids. we'll get them from the .dat files later.
-	int terrain_ids[] = {
-		15000, 15001, 15002, 15004, 15005,
-		15006, 15007, 15008, 15009, 15010,
-		15011, 15014, 15015, 15016, 15017,
-		15018, 15019, 15021, 15022, 15023,
-		15024, 15026, 15027, 15028, 15029,
-		15030, 15031
-	};
-
-
-	terrain_texture_count = sizeof(terrain_ids)/sizeof(int);
 	terrain_textures = new engine::Texture*[terrain_texture_count];
 	terrain = new engine::Terrain(20, terrain_texture_count);
 
@@ -222,6 +221,7 @@ void input_handler(SDL_Event *e) {
 				((float) mousepos_phys.ne) / (1 << 16),
 				((float) mousepos_phys.se) / (1 << 16));
 			log::dbg("LMB tile no:     NE %8ld SE %8ld", mousepos_tileno.ne, mousepos_tileno.se);
+			terrain->set_tile(mousepos_tileno, editor_current_terrain);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
 			//check whether an building already exists at this pos
@@ -246,6 +246,10 @@ void input_handler(SDL_Event *e) {
 
 		}
 		break;
+	case SDL_MOUSEWHEEL:
+		editor_current_terrain = util::mod<size_t>(editor_current_terrain + e->wheel.y, terrain_texture_count);
+		break;
+
 	case SDL_KEYUP:
 		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
 		case SDLK_LEFT:
@@ -318,18 +322,27 @@ void on_engine_tick() {
 }
 
 void draw_method() {
+	//draw gaben, our great and holy protector, bringer of the half-life 3.
 	gaben->draw(0, 0, 0);
 
+	//draw terrain
 	terrain->draw();
 
+	//draw each building
 	for(auto &building : buildings){
 		building.tex->draw(engine::coord::tileno_to_phys(building.pos), false, 0, building.player);
 	}
 }
 
+void hud_draw_method() {
+	//draw the currently selected editor texture tile
+	//ASDF
+	terrain->get_texture(editor_current_terrain)->draw(15, 60);
+}
+
 int mainmethod() {
 	//init engine
-	engine::init(on_engine_tick, draw_method, input_handler);
+	engine::init(on_engine_tick, draw_method, hud_draw_method, input_handler);
 	init();
 
 	//run main loop

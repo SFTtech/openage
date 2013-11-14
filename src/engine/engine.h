@@ -21,11 +21,15 @@ opens a window and initializes the OpenGL context.
 @param on_engine_tick
 	pointer to a method that is executed on every engine tick (after input handling, before rendering)
 @param draw_method
-	pointer to the rendering method, which is called each iteration of the main loop
+	pointer to the drawing method, which is called each iteration of the main loop,
+	with coord_camera set as the OpenGL coordinate system
+@param hud_draw_method
+	pointer to the rendering method, which is called each iteration of the main loop,
+	with coord_hud set as the OpenGL coordinate system
 @param input_handler
 	pointer to the input handler, which is called each time an input event is registered
 */
-void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, input_handler_ptr input_handler);
+void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, noparam_method_ptr hud_draw_method, input_handler_ptr input_handler);
 
 /**
 engine de-initialization method.
