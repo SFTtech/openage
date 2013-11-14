@@ -168,6 +168,7 @@ void Terrain::draw() {
 
 			//no blending necessary for this tile, it has no external influences.
 			if (num_influences <= 0) {
+				delete[] influences;
 				continue;
 			}
 
@@ -199,7 +200,7 @@ void Terrain::draw() {
 			};
 
 			int mask_count = 0;
-			struct draw_mask draw_masks[5 * 4]; //max 5 different influences with max 4 masks per influence.
+			struct draw_mask draw_masks[4+4]; //maximum 4 diagonal and 4 adjacent masks
 
 			//for each possible influence (max 8 as we have 8 neighbors)
 			for (int k = 0; k < num_influences; k++) {
