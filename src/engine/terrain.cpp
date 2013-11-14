@@ -6,12 +6,14 @@
 #include "texture.h"
 #include "../log/log.h"
 #include "../util/error.h"
+#include "../util/misc.h"
 
 namespace openage {
 namespace engine {
 
-Terrain::Terrain(unsigned int size, size_t maxtextures, size_t maxblendmodes, int *priority_list) : texture_count(maxtextures), blendmode_count(maxblendmodes), terrain_id_priority_map(priority_list) {
+coord::camera_delta tile_halfsize = {48.f, 24.f};
 
+Terrain::Terrain(unsigned int size, size_t maxtextures, size_t maxblendmodes, int *priority_list) : texture_count(maxtextures), blendmode_count(maxblendmodes), terrain_id_priority_map(priority_list) {
 	//calculate the number of tiles for the given (tile) height of the rhombus.
 
 	/* height = 5:
@@ -59,27 +61,32 @@ Terrain::~Terrain() {
 	delete[] this->textures;
 }
 
-void Terrain::render() {
+coord::tileno_delta const neigh_offsets[] = {
+	{ 1, -1, 0},
+	{ 1,  0, 0},
+	{ 1,  1, 0},
+	{ 0,  1, 0},
+	{-1,  1, 0},
+	{-1,  0, 0},
+	{-1, -1, 0},
+	{ 0, -1, 0}
+};
+
+void Terrain::draw() {
 	const bool respect_diagonal_influence = true;
 	const bool respect_adjacent_influence = true;
 
-	for (unsigned int i = 0; i < this->size; i++) {
-		for (unsigned int j = 0; j < this->size; j++) {
-			int x, y;
-			int tw, th;
-			int terrain_id = this->tile_at(i, j);
+	coord::tileno tileno = {0, 0, 0};
+	for (; tileno.ne < (int) this->size; tileno.ne++) {
+		for (tileno.se = 0; tileno.se < (int) this->size; tileno.se++) {
+			int terrain_id = this->get_tile(tileno);
 			int base_priority = this->terrain_id_priority_map[terrain_id];
 
 			auto texture = this->textures[terrain_id];
-			int sub_id = texture->get_subtexture_id(i, j);
-
-			texture->get_subtexture_size(sub_id, &tw, &th);
-
-			x = i * (tw/2) + j * (tw/2);
-			y = i * (th/2) - j * (th/2);
+			int sub_id = get_subtexture_id(tileno, texture->atlas_dimensions);
 
 			//draw the base texture
-			texture->draw(x, y, false, sub_id);
+			texture->draw(coord::tileno_to_phys(tileno), false, sub_id);
 
 			if (!this->blending_enabled) {
 				continue;
@@ -116,8 +123,6 @@ void Terrain::render() {
 			//first step: gather information about possible influences
 			//look at every neighbor tile for that
 			for (int neigh_id = 0; neigh_id < 8; neigh_id++) {
-				int neigh_x, neigh_y;
-
 				if (!respect_diagonal_influence && (neigh_id % 2) == 0) {
 					continue;
 				}
@@ -126,53 +131,20 @@ void Terrain::render() {
 					continue;
 				}
 
-				//get the tile coordinates of the current neighbor
-				switch (neigh_id) {
-				case 0:
-					neigh_x = i + 1;
-					neigh_y = j - 1;
-					break;
-				case 1:
-					neigh_x = i + 1;
-					neigh_y = j;
-					break;
-				case 2:
-					neigh_x = i + 1;
-					neigh_y = j + 1;
-					break;
-				case 3:
-					neigh_x = i;
-					neigh_y = j + 1;
-					break;
-				case 4:
-					neigh_x = i - 1;
-					neigh_y = j + 1;
-					break;
-				case 5:
-					neigh_x = i - 1;
-					neigh_y = j;
-					break;
-				case 6:
-					neigh_x = i - 1;
-					neigh_y = j - 1;
-					break;
-				case 7:
-					neigh_x = i;
-					neigh_y = j - 1;
-					break;
-				default:
-					throw util::Error("unknown neighbor requested!");
-				}
+				//calculate the pos of the neighbor tile
+				coord::tileno neigh_pos = tileno + neigh_offsets[neigh_id];
 
-				if (neigh_x < 0 || neigh_x >= (int)this->size || neigh_y < 0 || neigh_y >= (int)this->size) {
+				if (neigh_pos.ne < 0 || neigh_pos.ne >= (int)this->size || neigh_pos.se < 0 || neigh_pos.se >= (int)this->size) {
 					//this neighbor is on the neighbor chunk, skip it for now.
 					continue;
 				}
 
-				int neighbor_terrain_id = this->tile_at(neigh_x, neigh_y);
+				int neighbor_terrain_id = this->get_tile(neigh_pos);
 				int neighbor_priority = this->terrain_id_priority_map[neighbor_terrain_id];
 
 				//neighbor only interesting if it's a different terrain than @
+				//comment by mci_e: this is also checked in the next if condition.
+				//if it is the same priority, the neigh priority is not higher.
 				if (neighbor_terrain_id != terrain_id) {
 
 					//neighbor draws over the base if it's priority is greater
@@ -243,7 +215,7 @@ void Terrain::render() {
 
 				/* neighbor ids:
 				      0
-				    7   1      => 8 neighbours that can have influence on
+				    7   1      => 8 neighbors that can have influence on
 				  6   @   2         the mask id selection.
 				    5   3
 				      4
@@ -253,19 +225,20 @@ void Terrain::render() {
 				int binfadjacent = binf & 0xAA; //0b10101010
 				int binfdiagonal = binf & 0x55; //0b01010101
 
+				//comment by mic_e TODO replace this by a lookup table
 				if(respect_adjacent_influence) {
 					switch (binfadjacent) {
 					case 0x08:  //0b00001000
-						adjacent_mask_id = 0  + ((i + j) % 4);  //0..3
+						adjacent_mask_id = 0 + util::mod<coord::tileno_t>(tileno.ne + tileno.se, 4);  //0..3
 						break;
 					case 0x02:  //0b00000010
-						adjacent_mask_id = 4  + ((i + j) % 4);  //0..7
+						adjacent_mask_id = 4 + util::mod<coord::tileno_t>(tileno.ne + tileno.se, 4);  //4..7
 						break;
 					case 0x20:  //0b00100000
-						adjacent_mask_id = 8  + ((i + j) % 4);  //8..11
+						adjacent_mask_id = 8 + util::mod<coord::tileno_t>(tileno.ne + tileno.se, 4);  //8..11
 						break;
 					case 0x80:  //0b10000000
-						adjacent_mask_id = 12 + ((i + j) % 4);  //12..15
+						adjacent_mask_id = 12 + util::mod<coord::tileno_t>(tileno.ne + tileno.se, 4);  //12..15
 						break;
 					case 0x22:  //0b00100010
 						adjacent_mask_id = 20;
@@ -346,7 +319,7 @@ void Terrain::render() {
 			//log::dbg2("drawing %d masks for tile %d,%d", mask_count, i, j);
 			for (int k = 0; k < mask_count; k++) {
 				//mask, to be applied on neighbor_terrain_id tile
-				this->blendmasks[draw_masks[k].blend_mode]->draw(x, y, false, draw_masks[k].mask_id);
+				this->blendmasks[draw_masks[k].blend_mode]->draw(coord::tileno_to_phys(tileno), false, draw_masks[k].mask_id);
 				//this->textures[neighbor_terrain_id]->draw(x, y, false, sub_id);
 			}
 			delete[] influences;
@@ -355,31 +328,29 @@ void Terrain::render() {
 }
 
 
-void Terrain::set_tile_at(int index, int x, int y) {
-	size_t pos = this->tile_position(x, y);
-	this->tiles[pos] = index;
+/**
+returns the terrain subtexture id for a given position.
+
+this function returns always the right value, so that neighbor tiles
+of the same terrain (like grass-grass) are matching (without blendomatic).
+*/
+unsigned Terrain::get_subtexture_id(coord::tileno pos, unsigned atlas_size) {
+	unsigned result = 0;
+
+	result += util::mod<coord::tileno_t>(pos.se, atlas_size);
+	result *= atlas_size;
+	result += util::mod<coord::tileno_t>(pos.ne, atlas_size);
+
+	return result;
 }
 
-void Terrain::set_tile_at_row(int index, int row, int offset) {
-	size_t pos = this->tile_position_diag(row, offset);
-	this->tiles[pos] = index;
+void Terrain::set_tile(coord::tileno pos, int tile) {
+	tiles[tile_position(pos)] = tile;
 }
 
-void Terrain::set_tile_at(int index, int position) {
-	this->tiles[position] = index;
+int Terrain::get_tile(coord::tileno pos) {
+	return tiles[tile_position(pos)];
 }
-
-int Terrain::tile_at_row(int row, int offset) {
-	size_t pos = tile_position_diag(row, offset);
-	return this->tiles[pos];
-}
-
-int Terrain::tile_at(int x, int y) {
-	size_t pos = tile_position(x, y);
-	return this->tiles[pos];
-}
-
-
 
 /**
 calculates the memory position of a given tile location.
@@ -401,12 +372,12 @@ y= 0   #   #   #
 for example, * is at position (2, 1)
 the returned index would be 6 (count for each x row, starting at y=0)
 */
-size_t Terrain::tile_position(unsigned int x, unsigned int y) {
-	if (x >= this->size || y >= this->size) {
-		throw util::Error("requested tile (%d, %d) that's not on this terrain.", x, y);
+size_t Terrain::tile_position(coord::tileno pos) {
+	if (pos.ne >= (int) this->size || pos.ne < 0 || pos.se >= (int) this->size || pos.se < 0) {
+		throw util::Error("requested tile (%ld, %ld) that's not on this terrain.", pos.ne, pos.se);
 	}
 
-	return y * this->size + x;
+	return pos.se * this->size + pos.ne;
 }
 
 /**
@@ -449,8 +420,12 @@ size_t Terrain::get_tile_count() {
 	return this->tile_count;
 }
 
-void Terrain::set_texture(unsigned int index, engine::Texture *t) {
+void Terrain::set_texture(size_t index, engine::Texture *t) {
 	this->textures[index] = t;
+}
+
+engine::Texture *Terrain::get_texture(size_t index) {
+	return this->textures[index];
 }
 
 size_t Terrain::tiles_in_row(unsigned int row) {
@@ -476,8 +451,6 @@ size_t Terrain::get_size() {
 void Terrain::set_mask(unsigned int modeid, engine::Texture *m) {
 	this->blendmasks[modeid] = m;
 }
-
-
 
 } //namespace engine
 } //namespace openage

@@ -4,9 +4,12 @@
 #include <stddef.h>
 
 #include "texture.h"
+#include "coordinates.h"
 
 namespace openage {
 namespace engine {
+
+extern coord::camera_delta tile_halfsize;
 
 /**
 terrain class represents the drawn terrain.
@@ -18,16 +21,18 @@ public:
 	Terrain(unsigned int height, size_t maxtextures, size_t maxblendmodes, int *priority_list);
 	~Terrain();
 
-	void render();
-	void set_tile_at(int index, int x, int y);
-	void set_tile_at_row(int index, int row, int offset);
-	void set_tile_at(int index, int position);
-	int  tile_at(int x, int y);
-	int  tile_at_row(int row, int offset);
+	void draw();
+
+	void set_tile(coord::tileno pos, int tile);
+	int  get_tile(coord::tileno pos);
+
+
 	size_t tile_position_diag(unsigned int row, unsigned int offset);
-	size_t tile_position(unsigned int x, unsigned int y);
+	size_t tile_position(coord::tileno pos);
 	size_t get_tile_count();
-	void set_texture(unsigned int index, engine::Texture *t);
+
+	void set_texture(size_t index, engine::Texture *t);
+	engine::Texture *get_texture(size_t index);
 	size_t tiles_in_row(unsigned int row);
 	size_t get_size();
 	void set_mask(unsigned int modeid, engine::Texture *m);
@@ -45,8 +50,7 @@ private:
 
 	int *terrain_id_priority_map;
 
-	int get_subtexture_id(unsigned int x, unsigned int y);
-
+	unsigned get_subtexture_id(coord::tileno pos, unsigned atlas_size);
 };
 
 } //namespace engine

@@ -26,11 +26,19 @@ engine::Terrain *terrain;
 
 util::Timer *timer;
 
-unsigned int terrain_texture_count, blend_mode_count;
-unsigned lmbx, lmby, rmbx, rmby;
+unsigned int blend_mode_count;
 bool sc_left, sc_right, sc_up, sc_down;
 
 int *terrain_priority_list;
+struct building {
+	engine::coord::tileno pos;
+	unsigned player;
+	engine::Texture *tex;
+};
+
+std::vector<building> buildings;
+
+size_t editor_current_terrain = 0;
 
 unsigned int terrain_data[20][20] = {
 	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
@@ -39,7 +47,7 @@ unsigned int terrain_data[20][20] = {
 	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7, 11, 11, 11,  7,  7,  7,  7,  7},
 	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7, 11, 11, 11, 11, 11,  7,  7,  7},
 	{  7,  7, 20, 20, 20,  7,  7,  7,  7,  7,  7,  7, 11, 11, 11, 11, 11, 11,  7,  7},
-	{  7,  7, 20,  7, 07, 20, 20,  7,  7,  7,  7,  7, 11, 11, 11, 11, 11,  7,  7,  7},
+	{  7,  7, 20,  7,  7, 20, 20,  7,  7,  7,  7,  7, 11, 11, 11, 11, 11,  7,  7,  7},
 	{  7,  7, 20,  7,  7,  7,  7,  7,  7,  7,  7,  7, 11, 11, 11,  7,  7,  7,  7,  7},
 	{  7, 20, 20, 20,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
 	{  7,  7, 20,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
@@ -55,16 +63,23 @@ unsigned int terrain_data[20][20] = {
 	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  3,  3,  7,  7,  7}
 };
 
+//a list of all terrain slp ids. we'll get them from the .dat files later.
+int terrain_ids[] = {
+	15000, 15001, 15002, 15004, 15005,
+	15006, 15007, 15008, 15009, 15010,
+	15011, 15014, 15015, 15016, 15017,
+	15018, 15019, 15021, 15022, 15023,
+	15024, 15026, 15027, 15028, 15029,
+	15030, 15031
+};
+
+constexpr size_t terrain_texture_count = sizeof(terrain_ids)/sizeof(int);
 
 void init() {
 	timer = new util::Timer();
 	timer->start();
 
-	lmbx = 0;
-	lmby = 0;
-	rmbx = 0;
-	rmby = 0;
-
+	//TODO move input tracking into engine
 	sc_left = false;
 	sc_right = false;
 	sc_up = false;
@@ -80,24 +95,13 @@ void init() {
 
 	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.png", true, true);
 
-	//a list of all terrain slp ids. we'll get them from the .dat files later.
-	int terrain_ids[] = {
-		15000, 15001, 15002, 15004, 15005,
-		15006, 15007, 15008, 15009, 15010,
-		15011, 15014, 15015, 15016, 15017,
-		15018, 15019, 15021, 15022, 15023,
-		15024, 15026, 15027, 15028, 15029,
-		15030, 15031
-	};
-
 	//hardcoded for now
 	blend_mode_count = 9;
 
-	terrain_texture_count = sizeof(terrain_ids)/sizeof(int);
 	terrain_priority_list = new int[terrain_texture_count];
 	terrain_textures = new engine::Texture*[terrain_texture_count];
 
-	//set terrain priorities, TODO: get them from media files
+	//set terrain priorities, TODO: get them from media files. hardcoded for now.
 	terrain_priority_list[0]  = 70;
 	terrain_priority_list[1]  = 102;
 	terrain_priority_list[2]  = 139;
@@ -156,10 +160,11 @@ void init() {
 
 
 	//set the terrain types according to the data array.
-	for (unsigned int i = 0; i < terrain->get_size(); i++) {
-		for (unsigned int j = 0; j < terrain->get_size(); j++) {
-			int texid = terrain_data[i][j];
-			terrain->set_tile_at(texid, i, j);
+	engine::coord::tileno pos = {0, 0, 0};
+	for (; pos.ne < (int) terrain->get_size(); pos.ne++) {
+		for (pos.se = 0; pos.se < (int) terrain->get_size(); pos.se++) {
+			int texid = terrain_data[pos.ne][pos.se];
+			terrain->set_tile(pos, texid);
 		}
 	}
 
@@ -228,8 +233,6 @@ void init() {
 	glUniform4fv(engine::teamcolor_shader::player_color_var, 64, playercolors);
 	engine::teamcolor_shader::program->stopusing();
 
-	engine::move_view(0, 400);
-
 	log::msg("Time for startup: %.4f s", timer->measure()/1000.0);
 }
 
@@ -258,21 +261,52 @@ void input_handler(SDL_Event *e) {
 		engine::running = false;
 		break;
 
-	case SDL_MOUSEBUTTONDOWN:
+	case SDL_MOUSEBUTTONDOWN: {
 		//a mouse button was pressed...
 		//subtract value from window height to get position relative to lower right (0,0).
+		engine::coord::sdl mousepos_sdl;
+		mousepos_sdl.x = (engine::coord::sdl_t) e->button.x;
+		mousepos_sdl.y = (engine::coord::sdl_t) e->button.y;
+		engine::coord::phys mousepos_phys = engine::coord::sdl_to_phys(mousepos_sdl);
+		engine::coord::camera mousepos_camera = engine::coord::sdl_to_camera(mousepos_sdl);
+		engine::coord::tileno mousepos_tileno = engine::coord::phys_to_tileno(mousepos_phys);
+
 		if (e->button.button == SDL_BUTTON_LEFT) {
-			lmbx = e->button.x - engine::view_x;
-			lmby = engine::window_y - e->button.y - engine::view_y;
-			log::dbg("left button pressed at %d,%d", lmbx, lmby);
+			log::dbg("LMB coord_sdl:   x %9hd y %9hd", mousepos_sdl.x, mousepos_sdl.y);
+			log::dbg("LMB coord_cam:   x %9d y %9d", (int) mousepos_camera.x, (int) mousepos_camera.y);
+			log::dbg("LMB corod_phys:  NE %8.3f SE %8.3f",
+				((float) mousepos_phys.ne) / (1 << 16),
+				((float) mousepos_phys.se) / (1 << 16));
+			log::dbg("LMB tile no:     NE %8ld SE %8ld", mousepos_tileno.ne, mousepos_tileno.se);
+			terrain->set_tile(mousepos_tileno, editor_current_terrain);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
-			rmbx = e->button.x - engine::view_x;
-			rmby = engine::window_y - e->button.y - engine::view_y;
-			log::dbg("right button pressed at %d,%d", lmbx, lmby);
+			//check whether an building already exists at this pos
+			bool found = false;
+
+			for(unsigned i = 0; i < buildings.size(); i++) {
+				if (buildings[i].pos == mousepos_tileno) {
+					buildings.erase(buildings.begin() + i);
+					found = true;
+					break;
+				}
+			}
+
+			if(!found) {
+				building newbuilding;
+				newbuilding.player = 1 + (buildings.size() % 8);
+				newbuilding.pos = mousepos_tileno;
+				newbuilding.tex = university;
+				buildings.push_back(newbuilding);
+			}
 		}
 
+		}
 		break;
+	case SDL_MOUSEWHEEL:
+		editor_current_terrain = util::mod<size_t>(editor_current_terrain + e->wheel.y, terrain_texture_count);
+		break;
+
 	case SDL_KEYUP:
 		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
 		case SDLK_LEFT:
@@ -305,7 +339,6 @@ void input_handler(SDL_Event *e) {
 		case SDLK_DOWN:
 			sc_down = true;
 			break;
-
 		case SDLK_SPACE:
 			terrain->blending_enabled = !terrain->blending_enabled;
 			break;
@@ -315,43 +348,61 @@ void input_handler(SDL_Event *e) {
 	}
 }
 
-void view_translation() {
-	float mx = 0;
-	float my = 0;
+void move_camera() {
+	//read camera movement input keys, and move camera
+	//accordingly.
+
+	//camera movement speed, in pixels per millisecond
+	//one pixel per millisecond equals 14.3 tiles/second
+	float camera_movement_speed_keyboard = 0.5;
+
+	engine::coord::camera_delta camera_delta = {0, 0};
 	if (sc_left) {
-		mx += 1;
+		camera_delta.x -= camera_movement_speed_keyboard;
 	}
 	if (sc_right) {
-		mx -= 1;
+		camera_delta.x += camera_movement_speed_keyboard;
 	}
 	if (sc_up) {
-		my -= 1;
+		camera_delta.y -= camera_movement_speed_keyboard;
 	}
 	if (sc_down) {
-		my += 1;
+		camera_delta.y += camera_movement_speed_keyboard;
 	}
 
-	float threshold = 0.5;
-	float scalefactor = threshold * engine::fpscounter->msec_lastframe;
+	//calculate camera position delta from velocity and frame duration
+	camera_delta *= (float) engine::fpscounter->msec_lastframe;
 
-	mx *= scalefactor;
-	my *= scalefactor;
+	//update camera phys position
+	engine::camera_pos_phys += engine::coord::camera_to_phys(camera_delta);
+}
 
-	engine::move_view(mx, my);
+void on_engine_tick() {
+	move_camera();
 }
 
 void draw_method() {
+	//draw gaben, our great and holy protector, bringer of the half-life 3.
 	gaben->draw(0, 0, 0);
 
-	terrain->render();
+	//draw terrain
+	terrain->draw();
 
-	university->draw(lmbx, lmby, false, 0, 1);
-	university->draw(rmbx, rmby, true, 0, 2);
+	//draw each building
+	for(auto &building : buildings){
+		building.tex->draw(engine::coord::tileno_to_phys(building.pos), false, 0, building.player);
+	}
+}
+
+void hud_draw_method() {
+	//draw the currently selected editor texture tile
+	//ASDF
+	terrain->get_texture(editor_current_terrain)->draw(15, 60);
 }
 
 int mainmethod() {
 	//init engine
-	engine::init(view_translation, draw_method, input_handler);
+	engine::init(on_engine_tick, draw_method, hud_draw_method, input_handler);
 	init();
 
 	//run main loop

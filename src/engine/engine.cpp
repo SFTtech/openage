@@ -28,31 +28,26 @@ FTGLTextureFont *t_font;
 
 Console *console;
 
-noparam_method_ptr view_translation;
-noparam_method_ptr draw_method;
+noparam_method_ptr on_engine_tick;
+noparam_method_ptr draw_method, hud_draw_method;
 input_handler_ptr input_handler;
 
 
 bool running;
-unsigned window_x = 800;
-unsigned window_y = 600;
 
-int view_x = 0;
-int view_y = 0;
-int visible_x_left = 0, visible_x_right = 0;
-int visible_y_top = 0, visible_y_bottom = 0;
-
+coord::sdl window_size = {800, 600};
+coord::phys camera_pos_phys = {0, 0, 0};
+coord::sdl camera_pos_sdl = {400, 300};
 
 util::FrameCounter *fpscounter;
 bool console_activated = false;
-
 
 /**
 initialize the openage game engine.
 
 this creates the SDL window, the opengl context, reads shaders, the fps counter, ...
 */
-void init(noparam_method_ptr view_translation, noparam_method_ptr draw_method, input_handler_ptr input_handler) {
+void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, noparam_method_ptr hud_draw_method, input_handler_ptr input_handler) {
 
 	//set global random seed
 	srand(time(NULL));
@@ -66,7 +61,7 @@ void init(noparam_method_ptr view_translation, noparam_method_ptr draw_method, i
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
-	window = SDL_CreateWindow("openage", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_x, window_y, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow("openage", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_size.x, window_size.y, SDL_WINDOW_OPENGL);
 
 	if (window == nullptr) {
 		throw util::Error("SDL window creation: %s", SDL_GetError());
@@ -103,8 +98,9 @@ void init(noparam_method_ptr view_translation, noparam_method_ptr draw_method, i
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	engine::view_translation = view_translation;
+	engine::on_engine_tick = on_engine_tick;
 	engine::draw_method = draw_method;
+	engine::hud_draw_method = hud_draw_method;
 	engine::input_handler = input_handler;
 
 
@@ -144,53 +140,26 @@ method that's called when the SDL window is resized.
 this adjusts the opengl viewport and calls for visible area recalculation.
 */
 void engine_window_resized(unsigned w, unsigned h) {
-
-	//store the current window size
-	window_x = w;
-	window_y = h;
-
+	//update window size
+	window_size.x = w;
+	window_size.y = h;
+	//update camera SDL coordinates
+	camera_pos_sdl.x = w / 2;
+	camera_pos_sdl.y = h / 2;
+	//update console window size
 	console->set_winsize(w, h);
-
+	//update OpenGL viewport and projection
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, w, h);
 
 	// set orthographic projection: left, right, bottom, top, nearVal, farVal
-	glOrtho(0, w, 0, h, 9001, -1);
+	glOrtho(0, w, h, 0, 9001, -1);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	//this is called to recalculate the visible area.
-	move_view(0, 0);
-
 	log::dbg("engine window has been resized to %ux%u\n", w, h);
-}
-
-/**
-call this to move the visible area by a given amount of pixels.
-
-the method also recalculates the new visible area on screen.
-*/
-void move_view(int delta_x, int delta_y) {
-
-	engine::view_x += delta_x;
-	engine::view_y += delta_y;
-
-	engine::visible_x_left   = engine::view_x;
-	engine::visible_x_right  = engine::view_x + engine::window_x;
-	engine::visible_y_top    = engine::view_y + engine::window_y;
-	engine::visible_y_bottom = engine::view_y;
-
-}
-
-/**
-moves the view by float values, scaled by a constant.
-
-do not use for now.
-*/
-void move_view(float threshold, float x, float y) {
-	move_view(threshold * x, threshold * y);
 }
 
 /**
@@ -221,7 +190,6 @@ void engine_input_handler(SDL_Event *e) {
 		}
 		break;
 	}
-
 }
 
 /**
@@ -245,9 +213,6 @@ void loop() {
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		//tick the gamelogic here
-		//tick(magic);
-
 		while (SDL_PollEvent(&e)) {
 			//first, handle the event ourselves (e.g.: detect window resize)
 			engine_input_handler(&e);
@@ -257,34 +222,51 @@ void loop() {
 				input_handler(&e);
 			}
 			else {
+				//or, give it to the console, if that is opened
 				console->input_handler(&e);
 			}
 		}
 
-		view_translation();
+		//tick the gamelogic here
+		//tick(magic);
+		//call the registered callback method
+		on_engine_tick();
 
 		glPushMatrix();
 		{
-			glTranslatef(engine::view_x, engine::view_y, 0);
+			//after this transformation, it is possible to directly
+			//draw in the camera coordinate system.
+			glTranslatef(camera_pos_sdl.x, camera_pos_sdl.y, 0);
 			draw_method();
 		}
 		glPopMatrix();
 
-		if (console_activated) {
-			console->draw();
-		}
-
-		glPushMatrix();
+		//the hud coordinate system is now established
 		{
-			glTranslatef(engine::window_x - 100, 15, 0);
-			glColor4f(1.0, 1.0, 1.0, 1.0);
-			char *fpstext = util::format("%.1f fps", fpscounter->fps);
-			t_font->Render(fpstext);
-			delete[] fpstext;
+			//draw user hud
+			hud_draw_method();
+
+			//draw console
+			if (console_activated) {
+				console->draw();
+			}
+
+			//draw FPS counter
+			glPushMatrix();
+			{
+				//top left corner
+				glTranslatef(15, 30, 0);
+				glScalef(1,-1,1);
+				//white
+				glColor4f(1.0, 1.0, 1.0, 1.0);
+				char *fpstext = util::format("%.1f fps", fpscounter->fps);
+				t_font->Render(fpstext);
+				delete[] fpstext;
+			}
+			glPopMatrix();
 		}
-		glPopMatrix();
 
-
+		//the rendering is done
 		glerrorstate = glGetError();
 		if (glerrorstate != GL_NO_ERROR) {
 

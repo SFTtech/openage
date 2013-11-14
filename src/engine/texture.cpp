@@ -106,6 +106,7 @@ Texture::Texture(const char *filename, bool player_colored, bool use_metafile) {
 
 					if(sscanf(currentline, "n=%u", &n) == 1) {
 						this->subtexture_count = n;
+						this->atlas_dimensions = sqrt(n);
 						this->subtextures = new struct subtexture[n];
 						wanting_count = false;
 					}
@@ -165,6 +166,11 @@ Texture::~Texture() {
 	glDeleteTextures(1, &this->id);
 }
 
+void Texture::draw(coord::phys pos, bool mirrored, int subid, unsigned player) {
+	coord::camera campos = coord::phys_to_camera(pos);
+	this->draw(campos.x, campos.y, mirrored, subid, player);
+}
+
 void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 
 	if (this->use_player_color_tinting) {
@@ -212,16 +218,16 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	//TODO:replate with vertex buffer/uniforms for vshader
 	glBegin(GL_QUADS); {
 		glTexCoord2f(txl, txt);
-		glVertex3f(left, top, 0);
-
-		glTexCoord2f(txl, txb);
 		glVertex3f(left, bottom, 0);
 
+		glTexCoord2f(txl, txb);
+		glVertex3f(left, top, 0);
+
 		glTexCoord2f(txr, txb);
-		glVertex3f(right, bottom, 0);
+		glVertex3f(right, top, 0);
 
 		glTexCoord2f(txr, txt);
-		glVertex3f(right, top, 0);
+		glVertex3f(right, bottom, 0);
 	}
 	glEnd();
 
@@ -244,19 +250,6 @@ void Texture::get_subtexture_size(int subid, int *w, int *h) {
 	*w = this->subtextures[subid].w;
 	*h = this->subtextures[subid].h;
 }
-
-/**
-returns the terrain subtexture id for a given position.
-
-this function returns always the right value, so that neighbor tiles
-of the same terrain (like grass-grass) are matching (without blendomatic).
-*/
-int Texture::get_subtexture_id(int x, int y) {
-	int mod = sqrt(this->subtexture_count);
-	return ((x % mod) + (mod * (y % mod)));
-}
-
-
 
 } //namespace engine
 } //namespace openage

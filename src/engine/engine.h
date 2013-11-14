@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 
 #include "console.h"
+#include "coordinates.h"
 #include "../util/fps.h"
 
 
@@ -17,14 +18,18 @@ using input_handler_ptr = void (*) (SDL_Event *e);
 /**
 engine initialization method.
 opens a window and initializes the OpenGL context.
-@param view_translation
-	pointer to a method that translates the engine view
+@param on_engine_tick
+	pointer to a method that is executed on every engine tick (after input handling, before rendering)
 @param draw_method
-	pointer to the rendering method, which is called each iteration of the main loop
+	pointer to the drawing method, which is called each iteration of the main loop,
+	with coord_camera set as the OpenGL coordinate system
+@param hud_draw_method
+	pointer to the rendering method, which is called each iteration of the main loop,
+	with coord_hud set as the OpenGL coordinate system
 @param input_handler
 	pointer to the input handler, which is called each time an input event is registered
 */
-void init(noparam_method_ptr view_translation, noparam_method_ptr draw_method, input_handler_ptr input_handler);
+void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, noparam_method_ptr hud_draw_method, input_handler_ptr input_handler);
 
 /**
 engine de-initialization method.
@@ -46,16 +51,6 @@ internal method that is automatically called whenever the window is resized.
 	height
 */
 void engine_window_resized(unsigned w, unsigned h);
-
-/**
-move the view by a given amount of pixels.
-*/
-void move_view(int delta_x, int delta_y);
-
-/**
-move the view by a threshold [0..1] in direction of <x,y> (x=[0..1], y=[0..1])
-*/
-void move_view(float threshold, float x, float y);
 
 /**
 internal method that is called whenever an input event is registered.
@@ -83,37 +78,24 @@ to be set to false to stop the engine.
 extern bool running;
 
 /**
-x size of the current window.
+size of the game window, in coord_sdl
 */
-extern unsigned window_x;
+extern coord::sdl window_size;
 
 /**
-y size of the current window.
+position of the camera, in coord_phys
 */
-extern unsigned window_y;
+extern coord::phys camera_pos_phys;
 
 /**
-view position x.
-This represents the scrolling x position of the user.
+position of the camera, in coord_sdl
 */
-extern int view_x;
-
-/**
-view position y.
-This represents the scrolling y position of the user.
-*/
-extern int view_y;
-
-/**
-positions visible in viewport.
-*/
-extern int visible_x_left, visible_x_right, visible_y_top, visible_y_bottom;
+extern coord::sdl camera_pos_sdl;
 
 /**
 the frame counter measuring fps.
 */
 extern util::FrameCounter *fpscounter;
-
 
 } //namespace engine
 } //namespace openage
