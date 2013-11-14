@@ -15,33 +15,33 @@ namespace engine {
 namespace shader {
 
 Program::Program() {
-	id = glCreateProgram();
+	this->id = glCreateProgram();
 }
 
 Program::~Program() {
-	glDeleteProgram(id);
+	glDeleteProgram(this->id);
 }
 
 void Program::attach_shader(Shader *s) {
-	glAttachShader(id, s->id);
+	glAttachShader(this->id, s->id);
 }
 
 void Program::link() {
-	glLinkProgram(id);
+	glLinkProgram(this->id);
 	this->check(GL_LINK_STATUS);
-	glValidateProgram(id);
+	glValidateProgram(this->id);
 	this->check(GL_VALIDATE_STATUS);
 }
 
 void Program::check(GLenum what_to_check) {
 	GLint status;
-	glGetProgramiv(id, what_to_check, &status);
+	glGetProgramiv(this->id, what_to_check, &status);
 
 	if (status != GL_TRUE) {
 		GLint loglen;
-		glGetProgramiv(id, GL_INFO_LOG_LENGTH, &loglen);
-		char *infolog = (char *) malloc(loglen);
-		glGetProgramInfoLog(id, loglen, NULL, infolog);
+		glGetProgramiv(this->id, GL_INFO_LOG_LENGTH, &loglen);
+		char *infolog = new char[loglen];
+		glGetProgramInfoLog(this->id, loglen, NULL, infolog);
 
 		const char *what_str;
 		switch(what_to_check) {
@@ -59,17 +59,14 @@ void Program::check(GLenum what_to_check) {
 			break;
 		}
 
-		log::dbg("GL_TRUE == %d", GL_TRUE);
-		log::dbg("GL_FALSE == %d", GL_FALSE);
-
 		util::Error e("Program %s failed\n%s", what_str, infolog);
-		free(infolog);
+		delete[] infolog;
 		throw e;
 	}
 }
 
 void Program::use() {
-	glUseProgram(id);
+	glUseProgram(this->id);
 }
 
 void Program::stopusing() {
@@ -77,7 +74,7 @@ void Program::stopusing() {
 }
 
 GLint Program::get_uniform_id(const char *name) {
-	return glGetUniformLocation(id, name);
+	return glGetUniformLocation(this->id, name);
 }
 
 } //namespace shader
