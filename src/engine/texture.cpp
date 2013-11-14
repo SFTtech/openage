@@ -13,21 +13,32 @@
 namespace openage {
 namespace engine {
 
-namespace teamcolor_shader {
+//real definition of the shaders,
+//they are "external" in the header.
+namespace shared_shaders {
+shader::Shader *maptexture;
+} //namespace shared_shaders
 
-shader::Shader *vert;
+namespace teamcolor_shader {
 shader::Shader *frag;
 shader::Program *program;
 GLint player_id_var, alpha_marker_var, player_color_var;
-
 } //namespace teamcolor_shader
 
-Texture::Texture(const char *filename, bool player_colored, bool use_metafile) {
-	this->use_player_color_tinting = player_colored;
+namespace alphamask_shader {
+shader::Shader *frag;
+shader::Program *program;
+} //namespace alphamask_shader
+
+
+Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
+
+	this->use_player_color_tinting = 0 < mode & PLAYERCOLORED;
+	this->use_alpha_masking        = 0 < mode & ALPHAMASKED;
 
 	SDL_Surface *surface;
 	GLuint textureid;
-	int mode;
+	int texture_format;
 
 	surface = IMG_Load(filename);
 
@@ -41,10 +52,10 @@ Texture::Texture(const char *filename, bool player_colored, bool use_metafile) {
 	//glTexImage2D format determination
 	switch (surface->format->BytesPerPixel) {
 	case 3: //RGB 24 bit
-		mode = GL_RGB;
+		texture_format = GL_RGB;
 		break;
 	case 4: //RGBA 32 bit
-		mode = GL_RGBA;
+		texture_format = GL_RGBA;
 		break;
 	default:
 		throw util::Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename, surface->format->BytesPerPixel);
@@ -56,11 +67,10 @@ Texture::Texture(const char *filename, bool player_colored, bool use_metafile) {
 
 	//generate 1 texture handle
 	glGenTextures(1, &textureid);
-
 	glBindTexture(GL_TEXTURE_2D, textureid);
 
 	//sdl surface -> opengl texture
-	glTexImage2D(GL_TEXTURE_2D, 0, mode, surface->w, surface->h, 0, mode, GL_UNSIGNED_BYTE, surface->pixels);
+	glTexImage2D(GL_TEXTURE_2D, 0, texture_format, surface->w, surface->h, 0, texture_format, GL_UNSIGNED_BYTE, surface->pixels);
 
 	//later drawing settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -183,6 +193,8 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->use();
 		glUniform1i(teamcolor_shader::player_id_var, player);
+	} else if (this->use_alpha_masking) {
+		alphamask_shader::program->use();
 	}
 
 	glColor3f(1, 1, 1);
@@ -242,6 +254,8 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->stopusing();
+	} else if (this->use_alpha_masking) {
+		alphamask_shader::program->stopusing();
 	}
 }
 

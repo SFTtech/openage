@@ -11,14 +11,25 @@
 namespace openage {
 namespace engine {
 
-namespace teamcolor_shader {
+namespace shared_shaders {
+extern shader::Shader *maptexture;
+} //namespace shared_shaders
 
-extern shader::Shader *vert;
+namespace teamcolor_shader {
 extern shader::Shader *frag;
 extern shader::Program *program;
 extern GLint player_id_var, alpha_marker_var, player_color_var;
-
 } //namespace teamcolor_shader
+
+namespace alphamask_shader {
+extern shader::Shader *frag;
+extern shader::Program *program;
+} //namespace alphamask_shader
+
+
+constexpr int PLAYERCOLORED = 1 << 0;
+constexpr int ALPHAMASKED   = 1 << 1;
+
 
 /**
 one sprite.
@@ -57,7 +68,7 @@ public:
 	*/
 	size_t atlas_dimensions;
 
-	Texture(const char *filename, bool player_colored = false, bool use_metafile = false);
+	Texture(const char *filename, bool use_metafile = false, unsigned int mode = 0);
 	~Texture();
 
 	void draw(coord::phys pos, bool mirrored = false, int subid = 0, unsigned player = 0);
@@ -77,6 +88,7 @@ private:
 	struct subtexture *subtextures;
 	int subtexture_count;
 	bool use_player_color_tinting;
+	bool use_alpha_masking;
 };
 
 } //namespace engine

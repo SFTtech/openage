@@ -64,7 +64,7 @@ unsigned int terrain_data[20][20] = {
 };
 
 //a list of all terrain slp ids. we'll get them from the .dat files later.
-int terrain_ids[] = {
+constexpr int terrain_ids[] = {
 	15000, 15001, 15002, 15004, 15005,
 	15006, 15007, 15008, 15009, 15010,
 	15011, 15014, 15015, 15016, 15017,
@@ -93,7 +93,7 @@ void init() {
 	//TODO: dynamic generation of the file path
 	//sync this with convert .py script !
 
-	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.png", true, true);
+	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.png", true, engine::PLAYERCOLORED);
 
 	//hardcoded for now
 	blend_mode_count = 9;
@@ -136,7 +136,7 @@ void init() {
 		int current_id = terrain_ids[i];
 		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", current_id);
 
-		auto new_texture = new engine::Texture(terraintex_filename, false, true);
+		auto new_texture = new engine::Texture(terraintex_filename, true, engine::ALPHAMASKED);
 		new_texture->fix_hotspots(48, 24);
 
 		terrain_textures[i] = new_texture;
@@ -151,7 +151,7 @@ void init() {
 	for (unsigned int i = 0; i < blend_mode_count; i++) {
 		char *mask_filename = util::format("age/alphamask/mode%02d.png", i);
 
-		auto new_texture = new engine::Texture(mask_filename, false, true);
+		auto new_texture = new engine::Texture(mask_filename, true);
 		new_texture->fix_hotspots(48, 24);
 
 		blending_textures[i] = new_texture;
@@ -172,22 +172,30 @@ void init() {
 
 
 	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
-	engine::teamcolor_shader::vert = new engine::shader::Shader(GL_VERTEX_SHADER, texturevshader_code);
+	engine::shared_shaders::maptexture = new engine::shader::Shader(GL_VERTEX_SHADER, texturevshader_code);
 	delete[] texturevshader_code;
 
-	char *texturefshader_code = util::read_whole_file("shaders/teamcolors.frag.glsl");
-	engine::teamcolor_shader::frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, texturefshader_code);
-	delete[] texturefshader_code;
+	char *teamcolor_code = util::read_whole_file("shaders/teamcolors.frag.glsl");
+	engine::teamcolor_shader::frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, teamcolor_code);
+	delete[] teamcolor_code;
+
+	char *alphamask_code = util::read_whole_file("shaders/alphamask.frag.glsl");
+	engine::alphamask_shader::frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, alphamask_code);
+	delete[] alphamask_code;
+
 
 	engine::teamcolor_shader::program = new engine::shader::Program();
-	engine::teamcolor_shader::program->attach_shader(engine::teamcolor_shader::vert);
+	engine::teamcolor_shader::program->attach_shader(engine::shared_shaders::maptexture);
 	engine::teamcolor_shader::program->attach_shader(engine::teamcolor_shader::frag);
-
 	engine::teamcolor_shader::program->link();
-
 	engine::teamcolor_shader::player_id_var = engine::teamcolor_shader::program->get_uniform_id("player_number");
 	engine::teamcolor_shader::alpha_marker_var = engine::teamcolor_shader::program->get_uniform_id("alpha_marker");
 	engine::teamcolor_shader::player_color_var = engine::teamcolor_shader::program->get_uniform_id("player_color");
+
+	engine::alphamask_shader::program = new engine::shader::Program();
+	engine::alphamask_shader::program->attach_shader(engine::shared_shaders::maptexture);
+	engine::alphamask_shader::program->attach_shader(engine::alphamask_shader::frag);
+	engine::alphamask_shader::program->link();
 
 	//get the player colors from the sub-palette exported by script
 	char *pcolor_file = util::read_whole_file("age/processed/player_color_palette.pal");
@@ -243,9 +251,11 @@ void deinit() {
 
 	delete gaben;
 	delete university;
-	delete engine::teamcolor_shader::vert;
+	delete engine::shared_shaders::maptexture;
 	delete engine::teamcolor_shader::frag;
 	delete engine::teamcolor_shader::program;
+	delete engine::alphamask_shader::frag;
+	delete engine::alphamask_shader::program;
 
 	for (unsigned int i = 0; i < terrain_texture_count; i++) {
 		delete terrain_textures[i];
