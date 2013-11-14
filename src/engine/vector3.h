@@ -11,6 +11,10 @@ struct vector3 {
 	T len_square() {
 		return ne * ne + se * se + up * up;
 	}
+
+	bool operator==(vector3 v) {
+		return (ne == v.ne && se == v.se && up == v.up);
+	}
 };
 
 template<typename T>

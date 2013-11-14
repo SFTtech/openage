@@ -10,6 +10,21 @@ returns a random number in the given range
 */
 int random_range(int lower, int upper);
 
+/**
+implements the 'correct' version of the modulo operator,
+which always returns positive values
+*/
+template <typename T>
+T mod(T x, T m) {
+	T r = x % m;
+
+	if(r < 0) {
+		return r + m;
+	} else {
+		return r;
+	}
+}
+
 } //namespace util
 } //namespace openage
 

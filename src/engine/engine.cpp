@@ -153,7 +153,7 @@ void engine_window_resized(unsigned w, unsigned h) {
 	glViewport(0, 0, w, h);
 
 	// set orthographic projection: left, right, bottom, top, nearVal, farVal
-	glOrtho(0, w, 0, h, 9001, -1);
+	glOrtho(0, w, h, 0, 9001, -1);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -233,10 +233,9 @@ void loop() {
 
 		glPushMatrix();
 		{
-			//TODO do the neccesary translations so that
-			//stuff drawn at (0, 0) is drawn in the center of the window
-			//(at engine::camera_pos_sdl)
-			glTranslatef(0, 0, 0);
+			//after this transformation, it is possible to directly
+			//draw in the camera coordinate system.
+			glTranslatef(camera_pos_sdl.x, camera_pos_sdl.y, 0);
 			draw_method();
 		}
 		glPopMatrix();
@@ -247,11 +246,22 @@ void loop() {
 
 		glPushMatrix();
 		{
-			glTranslatef(engine::window_size.x - 100, 15, 0);
-			glColor4f(1.0, 1.0, 1.0, 1.0);
-			char *fpstext = util::format("%.1f fps", fpscounter->fps);
-			t_font->Render(fpstext);
-			delete[] fpstext;
+			//here, it is possible to directly draw in the HUD coordinate
+			//system
+
+			//draw the FPS counter
+			glPushMatrix();
+			{
+				//top left corner
+				glTranslatef(15, 30, 0);
+				glScalef(1,-1,1);
+				//white
+				glColor4f(1.0, 1.0, 1.0, 1.0);
+				char *fpstext = util::format("%.1f fps", fpscounter->fps);
+				t_font->Render(fpstext);
+				delete[] fpstext;
+			}
+			glPopMatrix();
 		}
 		glPopMatrix();
 

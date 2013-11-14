@@ -164,6 +164,11 @@ Texture::~Texture() {
 	glDeleteTextures(1, &this->id);
 }
 
+void Texture::draw(coord::phys pos, bool mirrored, int subid, unsigned player) {
+	coord::camera campos = coord::phys_to_camera(pos);
+	this->draw(campos.x, campos.y, mirrored, subid, player);
+}
+
 void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 
 	if (this->use_player_color_tinting) {
@@ -211,16 +216,16 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	//TODO:replate with vertex buffer/uniforms for vshader
 	glBegin(GL_QUADS); {
 		glTexCoord2f(txl, txt);
-		glVertex3f(left, top, 0);
-
-		glTexCoord2f(txl, txb);
 		glVertex3f(left, bottom, 0);
 
+		glTexCoord2f(txl, txb);
+		glVertex3f(left, top, 0);
+
 		glTexCoord2f(txr, txb);
-		glVertex3f(right, bottom, 0);
+		glVertex3f(right, top, 0);
 
 		glTexCoord2f(txr, txt);
-		glVertex3f(right, top, 0);
+		glVertex3f(right, bottom, 0);
 	}
 	glEnd();
 

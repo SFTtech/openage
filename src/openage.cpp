@@ -27,10 +27,15 @@ unsigned int terrain_texture_count;
 
 util::Timer *timer;
 
-unsigned lmbx, lmby, rmbx, rmby;
+struct building {
+	engine::coord::tileno pos;
+	unsigned player;
+	engine::Texture *tex;
+};
+
+std::vector<building> buildings;
 
 bool sc_left, sc_right, sc_up, sc_down;
-
 
 unsigned int terrain_data[20][20] = {
 	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
@@ -60,11 +65,7 @@ void init() {
 	timer = new util::Timer();
 	timer->start();
 
-	lmbx = 0;
-	lmby = 0;
-	rmbx = 0;
-	rmby = 0;
-
+	//TODO move input tracking into engine
 	sc_left = false;
 	sc_right = false;
 	sc_up = false;
@@ -108,10 +109,11 @@ void init() {
 	}
 
 	//set the terrain types according to the data array.
-	for (unsigned int i = 0; i < terrain->get_size(); i++) {
-		for (unsigned int j = 0; j < terrain->get_size(); j++) {
-			int texid = terrain_data[i][j];
-			terrain->set_tile_at(texid, i, j);
+	engine::coord::tileno pos = {0, 0, 0};
+	for (; pos.ne < (int) terrain->get_size(); pos.ne++) {
+		for (pos.se = 0; pos.se < (int) terrain->get_size(); pos.se++) {
+			int texid = terrain_data[pos.ne][pos.se];
+			terrain->set_tile(pos, texid);
 		}
 	}
 
@@ -210,22 +212,36 @@ void input_handler(SDL_Event *e) {
 		mousepos_sdl.x = (engine::coord::sdl_t) e->button.x;
 		mousepos_sdl.y = (engine::coord::sdl_t) e->button.y;
 		engine::coord::phys mousepos_phys = engine::coord::sdl_to_phys(mousepos_sdl);
+		engine::coord::camera mousepos_camera = engine::coord::sdl_to_camera(mousepos_sdl);
+		engine::coord::tileno mousepos_tileno = engine::coord::phys_to_tileno(mousepos_phys);
 
 		if (e->button.button == SDL_BUTTON_LEFT) {
-			log::dbg("LMB clicked (%hd, %hd)", mousepos_sdl.x, mousepos_sdl.y);
-			log::dbg("phys: NE %f SE %f UP %f",
+			log::dbg("LMB coord_sdl:   x %9hd y %9hd", mousepos_sdl.x, mousepos_sdl.y);
+			log::dbg("LMB coord_cam:   x %9d y %9d", (int) mousepos_camera.x, (int) mousepos_camera.y);
+			log::dbg("LMB corod_phys:  NE %8.3f SE %8.3f",
 				((float) mousepos_phys.ne) / (1 << 16),
-				((float) mousepos_phys.se) / (1 << 16),
-				((float) mousepos_phys.up) / (1 << 16));
-			//TODO move blue university to mousepos_phys
+				((float) mousepos_phys.se) / (1 << 16));
+			log::dbg("LMB tile no:     NE %8ld SE %8ld", mousepos_tileno.ne, mousepos_tileno.se);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
-			log::dbg("LMB clicked (%hd, %hd)", mousepos_sdl.x, mousepos_sdl.y);
-			log::dbg("phys: NE %f SE %f UP %f",
-				((float) mousepos_phys.ne) / (1 << 16),
-				((float) mousepos_phys.se) / (1 << 16),
-				((float) mousepos_phys.up) / (1 << 16));
-			//TODO move red university to mousepos_phys
+			//check whether an building already exists at this pos
+			bool found = false;
+
+			for(unsigned i = 0; i < buildings.size(); i++) {
+				if (buildings[i].pos == mousepos_tileno) {
+					buildings.erase(buildings.begin() + i);
+					found = true;
+					break;
+				}
+			}
+
+			if(!found) {
+				building newbuilding;
+				newbuilding.player = 1 + (buildings.size() % 8);
+				newbuilding.pos = mousepos_tileno;
+				newbuilding.tex = university;
+				buildings.push_back(newbuilding);
+			}
 		}
 
 		}
@@ -262,12 +278,6 @@ void input_handler(SDL_Event *e) {
 		case SDLK_DOWN:
 			sc_down = true;
 			break;
-
-		case SDLK_SPACE:
-			for (unsigned int i=0; i<terrain->get_tile_count(); i++) {
-				terrain->set_tile_at(util::random_range(0, 10), i);
-			}
-			break;
 		}
 
 		break;
@@ -284,16 +294,16 @@ void move_camera() {
 
 	engine::coord::camera_delta camera_delta = {0, 0};
 	if (sc_left) {
-		camera_delta.x += camera_movement_speed_keyboard;
-	}
-	if (sc_right) {
 		camera_delta.x -= camera_movement_speed_keyboard;
 	}
+	if (sc_right) {
+		camera_delta.x += camera_movement_speed_keyboard;
+	}
 	if (sc_up) {
-		camera_delta.y += camera_movement_speed_keyboard;
+		camera_delta.y -= camera_movement_speed_keyboard;
 	}
 	if (sc_down) {
-		camera_delta.y -= camera_movement_speed_keyboard;
+		camera_delta.y += camera_movement_speed_keyboard;
 	}
 
 	//calculate camera position delta from velocity and frame duration
@@ -310,10 +320,11 @@ void on_engine_tick() {
 void draw_method() {
 	gaben->draw(0, 0, 0);
 
-	terrain->render();
+	terrain->draw();
 
-	university->draw(lmbx, lmby, false, 0, 1);
-	university->draw(rmbx, rmby, true, 0, 2);
+	for(auto &building : buildings){
+		building.tex->draw(engine::coord::tileno_to_phys(building.pos), false, 0, building.player);
+	}
 }
 
 int mainmethod() {

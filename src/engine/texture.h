@@ -4,6 +4,7 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 
+#include "coordinates.h"
 #include "shader/shader.h"
 #include "shader/program.h"
 
@@ -50,10 +51,11 @@ public:
 
 	bool centered;
 
-	Texture(const char *filename, bool player_colored=false, bool use_metafile=false);
+	Texture(const char *filename, bool player_colored = false, bool use_metafile = false);
 	~Texture();
 
-	void draw(int x, int y, bool mirrored=false, int subid=0, unsigned player=0);
+	void draw(coord::phys pos, bool mirrored = false, int subid = 0, unsigned player = 0);
+	void draw(int x, int y, bool mirrored = false, int subid = 0, unsigned player = 0);
 	int get_subtexture_count();
 	void get_subtexture_size(int subid, int *w, int *h);
 

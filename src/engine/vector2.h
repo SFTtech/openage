@@ -12,6 +12,10 @@ struct vector2 {
 	T len_square() {
 		return x * x + y * y;
 	}
+
+	bool operator==(vector2 v) {
+		return (x == v.x && y == v.y);
+	}
 };
 
 template<typename T>

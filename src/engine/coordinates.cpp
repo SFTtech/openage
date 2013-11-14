@@ -198,6 +198,30 @@ camera_delta hud_to_camera(hud_delta in) {
 	return camera_delta {(camera_t) in.x, (camera_t) in.y};
 }
 
+//helper for the method below
+//this method works for positive d, and all signs of n
+template <typename T>
+int divide_round_to_closest_int(T n, T d)
+{
+	if (n < 0) {
+		return (n - d/2)/d;
+	} else {
+		return (n + d/2)/d;
+	}
+}
+
+tileno phys_to_tileno(phys in) {
+	tileno result;
+	result.ne = divide_round_to_closest_int<phys_t>(in.ne, 1 << 16);
+	result.se = divide_round_to_closest_int<phys_t>(in.se, 1 << 16);
+	result.up = divide_round_to_closest_int<phys_t>(in.up, 1 << 16);
+	return result;
+}
+
+phys tileno_to_phys(tileno in) {
+	return phys {in.ne, in.se, in.up} * (phys_t) (1 << 16);
+}
+
 } //namespace coord
 } //namespace engine
 } //namespace openage
