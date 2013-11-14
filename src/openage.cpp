@@ -321,6 +321,10 @@ void input_handler(SDL_Event *e) {
 		case SDLK_DOWN:
 			sc_down = false;
 			break;
+		case SDLK_ESCAPE:
+			//stop the game
+			engine::running = false;
+			break;
 		}
 
 		break;
