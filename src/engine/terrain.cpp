@@ -76,17 +76,21 @@ void Terrain::draw() {
 	const bool respect_diagonal_influence = true;
 	const bool respect_adjacent_influence = true;
 
-	coord::tileno tileno = {0, 0, 0};
-	for (; tileno.ne < (int) this->size; tileno.ne++) {
-		for (tileno.se = 0; tileno.se < (int) this->size; tileno.se++) {
-			int terrain_id = this->get_tile(tileno);
+	if (!respect_adjacent_influence && !respect_diagonal_influence) {
+		this->blending_enabled = false;
+	}
+
+	coord::tileno tilepos = {0, 0, 0};
+	for (; tilepos.ne < (int) this->size; tilepos.ne++) {
+		for (tilepos.se = 0; tilepos.se < (int) this->size; tilepos.se++) {
+			int terrain_id = this->get_tile(tilepos);
 			int base_priority = this->terrain_id_priority_map[terrain_id];
 
-			auto texture = this->textures[terrain_id];
-			int sub_id = this->get_subtexture_id(tileno, texture->atlas_dimensions);
+			auto base_texture = this->textures[terrain_id];
+			int sub_id = this->get_subtexture_id(tilepos, base_texture->atlas_dimensions);
 
 			//draw the base texture
-			texture->draw(coord::tileno_to_phys(tileno), false, sub_id);
+			base_texture->draw(coord::tileno_to_phys(tilepos), false, sub_id);
 
 			if (!this->blending_enabled) {
 				continue;
@@ -132,7 +136,7 @@ void Terrain::draw() {
 				}
 
 				//calculate the pos of the neighbor tile
-				coord::tileno neigh_pos = tileno + neigh_offsets[neigh_id];
+				coord::tileno neigh_pos = tilepos + neigh_offsets[neigh_id];
 
 				if (neigh_pos.ne < 0 || neigh_pos.ne >= (int)this->size || neigh_pos.se < 0 || neigh_pos.se >= (int)this->size) {
 					//this neighbor is on the neighbor chunk or not existing, skip it for now.
@@ -280,7 +284,7 @@ void Terrain::draw() {
 
 				//if it's the plain adjacent mask, use all of the 4 possible masks.
 				if (adjacent_mask_id <= 12 && adjacent_mask_id % 4 == 0) {
-					int anti_redundancy_offset = util::mod<coord::tileno_t>(tileno.ne + tileno.se, 4);
+					int anti_redundancy_offset = util::mod<coord::tileno_t>(tilepos.ne + tilepos.se, 4);
 					adjacent_mask_id += anti_redundancy_offset;
 				}
 
@@ -324,8 +328,11 @@ void Terrain::draw() {
 			for (int k = 0; k < mask_count; k++) {
 				//mask, to be applied on neighbor_terrain_id tile
 				auto draw_mask = &draw_masks[k];
-				this->blendmasks[draw_mask->blend_mode]->draw(coord::tileno_to_phys(tileno), false, draw_mask->mask_id);
-				//this->textures[draw_mask->terrain_id]->draw(coord::tileno_to_phys(tileno), false, sub_id);
+				auto overlay_texture = this->textures[draw_mask->terrain_id];
+				int neighbor_sub_id = this->get_subtexture_id(tilepos, overlay_texture->atlas_dimensions);
+
+				this->blendmasks[draw_mask->blend_mode]->draw(coord::tileno_to_phys(tilepos), false, draw_mask->mask_id);
+				overlay_texture->draw(coord::tileno_to_phys(tilepos), false, neighbor_sub_id);
 			}
 		}
 	}
