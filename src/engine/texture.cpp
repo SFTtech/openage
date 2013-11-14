@@ -166,6 +166,13 @@ Texture::~Texture() {
 	glDeleteTextures(1, &this->id);
 }
 
+void Texture::fix_hotspots(unsigned x, unsigned y) {
+	for(int i = 0; i < subtexture_count; i++) {
+		subtextures[i].cx = x;
+		subtextures[i].cy = y;
+	}
+}
+
 void Texture::draw(coord::phys pos, bool mirrored, int subid, unsigned player) {
 	coord::camera campos = coord::phys_to_camera(pos);
 	this->draw(campos.x, campos.y, mirrored, subid, player);

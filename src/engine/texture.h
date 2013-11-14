@@ -65,6 +65,13 @@ public:
 	int get_subtexture_count();
 	void get_subtexture_size(int subid, int *w, int *h);
 
+	/**
+	fixes the hotspots of all subtextures to (x,y).
+	this is a temporary workaround; such fixes should actually be done in the
+	convert script.
+	*/
+	void fix_hotspots(unsigned x, unsigned y);
+
 private:
 	GLuint id;
 	struct subtexture *subtextures;

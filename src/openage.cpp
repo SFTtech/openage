@@ -137,6 +137,7 @@ void init() {
 		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", current_id);
 
 		auto new_texture = new engine::Texture(terraintex_filename, false, true);
+		new_texture->fix_hotspots(48, 24);
 
 		terrain_textures[i] = new_texture;
 		terrain->set_texture(i, new_texture);
@@ -151,6 +152,7 @@ void init() {
 		char *mask_filename = util::format("age/alphamask/mode%02d.png", i);
 
 		auto new_texture = new engine::Texture(mask_filename, false, true);
+		new_texture->fix_hotspots(48, 24);
 
 		blending_textures[i] = new_texture;
 		terrain->set_mask(i, new_texture);
@@ -400,8 +402,7 @@ void draw_method() {
 
 void hud_draw_method() {
 	//draw the currently selected editor texture tile
-	//ASDF
-	terrain->get_texture(editor_current_terrain)->draw(15, 60);
+	terrain->get_texture(editor_current_terrain)->draw(63, 84);
 }
 
 int mainmethod() {
