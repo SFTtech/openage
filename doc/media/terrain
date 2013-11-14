@@ -9,35 +9,35 @@ contents of terrain.drs:
 
 27 slp files for terrain data, each slp stores one terrain type with all tiles.
 
- id  filename   | tilecount | description
+ id  filename   | priority | tilecount | description
 ---------------------------------------------------------------------
-  0  015000.slp - 100 tiles - brown dirty earth
-  1  015001.slp - 100 tiles - more dry grass
-  2  015002.slp - 100 tiles - light water
-  3  015004.slp -  36 tiles - full grown farm field
-  4  015005.slp -  36 tiles - decaying farm field
-  5  015006.slp - 100 tiles - dirt with little grass
-  6  015007.slp - 100 tiles - dry grass
-  7  015008.slp - 100 tiles - dark grass
-  8  015009.slp - 100 tiles - normal grass
-  9  015010.slp - 100 tiles - desert
- 10  015011.slp - 100 tiles - sandy dry grass
- 11  015014.slp - 100 tiles - swamp
- 12  015015.slp - 100 tiles - deep water
- 13  015016.slp - 100 tiles - ocean
- 14  015017.slp - 100 tiles - sandy sand
- 15  015018.slp - 100 tiles - ancient building fundaments
- 16  015019.slp - 100 tiles - dirt ancient bulding fundaments
- 17  015021.slp -   9 tiles - ready and empty farm field
- 18  015022.slp -   9 tiles - stage 0 plants on farm field
- 19  015023.slp -   9 tiles - stage 1 plants on farm field
- 20  015024.slp - 100 tiles - ice
- 21  015026.slp - 100 tiles - snow
- 22  015027.slp - 100 tiles - dirt with snow
- 23  015028.slp - 100 tiles - grass with snow
- 24  015029.slp - 100 tiles - grass with snow
- 25  015030.slp - 100 tiles - ancient building fundaments with snow
- 26  015031.slp - 100 tiles - grass ancient building fundaments
+  0  015000.slp -       70 - 100 tiles - brown dirty earth
+  1  015001.slp -      102 - 100 tiles - more dry grass
+  2  015002.slp -      139 - 100 tiles - light water
+  3  015004.slp -      155 -  36 tiles - full grown farm field
+  4  015005.slp -      157 -  36 tiles - decaying farm field
+  5  015006.slp -      101 - 100 tiles - dirt with little grass
+  6  015007.slp -      106 - 100 tiles - dry grass
+  7  015008.slp -       90 - 100 tiles - dark grass
+  8  015009.slp -      100 - 100 tiles - normal grass
+  9  015010.slp -       80 - 100 tiles - desert
+ 10  015011.slp -       92 - 100 tiles - sandy dry grass
+ 11  015014.slp -       60 - 100 tiles - swamp
+ 12  015015.slp -      140 - 100 tiles - deep water
+ 13  015016.slp -      141 - 100 tiles - ocean
+ 14  015017.slp -      110 - 100 tiles - sandy sand
+ 15  015018.slp -      122 - 100 tiles - ancient building fundaments
+ 16  015019.slp -      123 - 100 tiles - dirt ancient bulding fundaments
+ 17  015021.slp -      150 -   9 tiles - ready and empty farm field
+ 18  015022.slp -      151 -   9 tiles - stage 0 plants on farm field
+ 19  015023.slp -      152 -   9 tiles - stage 1 plants on farm field
+ 20  015024.slp -       40 - 100 tiles - ice
+ 21  015026.slp -      130 - 100 tiles - snow
+ 22  015027.slp -      132 - 100 tiles - dirt with snow
+ 23  015028.slp -      134 - 100 tiles - grass with snow
+ 24  015029.slp -      136 - 100 tiles - grass with snow
+ 25  015030.slp -      162 - 100 tiles - ancient building fundaments with snow
+ 26  015031.slp -      120 - 100 tiles - grass ancient building fundaments
 
 
 one terrain tile is a paralellogram with equal side lengths
