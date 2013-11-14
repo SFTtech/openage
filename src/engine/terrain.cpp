@@ -92,13 +92,11 @@ unsigned Terrain::get_subtexture_id(coord::tileno pos, unsigned atlas_size) {
 }
 
 void Terrain::set_tile(coord::tileno pos, int tile) {
-	size_t idx = this->tile_position(pos.ne, pos.se);
-	this->tiles[idx] = tile;
+	tiles[tile_position(pos)] = tile;
 }
 
 int Terrain::get_tile(coord::tileno pos) {
-	size_t idx = tile_position(pos.ne, pos.se);
-	return this->tiles[idx];
+	return tiles[tile_position(pos)];
 }
 
 /**
@@ -121,12 +119,12 @@ y= 0   #   #   #
 for example, * is at position (2, 1)
 the returned index would be 6 (count for each x row, starting at y=0)
 */
-size_t Terrain::tile_position(unsigned int x, unsigned int y) {
-	if (x >= this->size || y >= this->size) {
-		throw util::Error("requested tile (%d, %d) that's not on this terrain.", x, y);
+size_t Terrain::tile_position(coord::tileno pos) {
+	if (pos.ne >= (int) this->size || pos.ne < 0 || pos.se >= (int) this->size || pos.se < 0) {
+		throw util::Error("requested tile (%ld, %ld) that's not on this terrain.", pos.ne, pos.se);
 	}
 
-	return y * this->size + x;
+	return pos.se * this->size + pos.ne;
 }
 
 /**

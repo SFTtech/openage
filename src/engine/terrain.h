@@ -26,7 +26,7 @@ public:
 
 
 	size_t tile_position_diag(unsigned int row, unsigned int offset);
-	size_t tile_position(unsigned int x, unsigned int y);
+	size_t tile_position(coord::tileno pos);
 	size_t get_tile_count();
 	void set_texture(unsigned int index, engine::Texture *t);
 	size_t tiles_in_row(unsigned int row);
