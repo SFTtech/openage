@@ -83,7 +83,7 @@ void Terrain::draw() {
 			int base_priority = this->terrain_id_priority_map[terrain_id];
 
 			auto texture = this->textures[terrain_id];
-			int sub_id = get_subtexture_id(tileno, texture->atlas_dimensions);
+			int sub_id = this->get_subtexture_id(tileno, texture->atlas_dimensions);
 
 			//draw the base texture
 			texture->draw(coord::tileno_to_phys(tileno), false, sub_id);
@@ -197,6 +197,7 @@ void Terrain::draw() {
 			struct draw_mask {
 				int mask_id;
 				int blend_mode;
+				int terrain_id;
 			};
 
 			int mask_count = 0;
@@ -295,6 +296,7 @@ void Terrain::draw() {
 				} else if (respect_adjacent_influence) {
 					draw_masks[mask_count].mask_id    = adjacent_mask_id;
 					draw_masks[mask_count].blend_mode = blend_mode;
+					draw_masks[mask_count].terrain_id = neighbor_terrain_id;
 					mask_count += 1;
 					adjacent_mask_existing = true;
 				}
@@ -312,17 +314,18 @@ void Terrain::draw() {
 						if (binf & bdiaginf) {
 							draw_masks[mask_count].mask_id    = diag_mask_id_map[l];
 							draw_masks[mask_count].blend_mode = blend_mode;
+							draw_masks[mask_count].terrain_id = neighbor_terrain_id;
 							mask_count += 1;
 						}
 					}
 				}
 			}
 
-			//log::dbg2("drawing %d masks for tile %d,%d", mask_count, i, j);
 			for (int k = 0; k < mask_count; k++) {
 				//mask, to be applied on neighbor_terrain_id tile
-				this->blendmasks[draw_masks[k].blend_mode]->draw(coord::tileno_to_phys(tileno), false, draw_masks[k].mask_id);
-				//this->textures[neighbor_terrain_id]->draw(x, y, false, sub_id);
+				auto draw_mask = &draw_masks[k];
+				this->blendmasks[draw_mask->blend_mode]->draw(coord::tileno_to_phys(tileno), false, draw_mask->mask_id);
+				//this->textures[draw_mask->terrain_id]->draw(coord::tileno_to_phys(tileno), false, sub_id);
 			}
 		}
 	}
