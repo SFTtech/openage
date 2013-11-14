@@ -4,6 +4,7 @@
 #TODO   proper pydoc
 from struct import unpack_from, Struct
 from collections import defaultdict
+from langcodes import langcodes
 import os
 
 #PE file
@@ -268,6 +269,8 @@ class PEFile:
 
 			#the stringtable might exist in multiple languages
 			for langid, stringtable in languages.items():
+				langcode = langcodes[langid]
+
 				#parse the stringtable
 
 				#position is in bytes from start of this stringtable
@@ -283,11 +286,18 @@ class PEFile:
 					pos = stringend
 
 					if len(string) > 0:
-						result[langid][baseidx + tableidx] = string
+						result[langcode][baseidx + tableidx] = string
 
 				if pos != len(stringtable):
 					raise Exception("stringtable invalid: " + str((tableid, langid)))
 
+		return result
+
+	def rsrc_strings_to_textfile(self, lang):
+		result = ""
+		for stringid, string in sorted(self.strings[lang].items()):
+			result += str(stringid) + ':' + lang + ':' + str(string.count('\n') + 1) + '\n'
+			result += string + '\n'
 		return result
 
 	def read_rsrc_tree(self, pos, recdepth = 0):
@@ -334,7 +344,7 @@ class PEFile:
 
 		return entries
 
-	def restodir(self, dirname, node = None):
+	def rsrc_tree_to_dir(self, dirname, node = None):
 		"""
 		writes the ressource tree to the filesystem as a directory tree
 		"""
@@ -353,7 +363,7 @@ class PEFile:
 					f.write(e)
 
 #example usage #TODO call from convert main.py
-#pe = PEFile("language.dll")
-#f = open('/tmp/strings', 'w')
-#for strid, string in sorted(pe.strings[1031].items()):
-#	f.write(str(strid) + '\n' + string + '\n')
+pe = PEFile("/tmp/language.dll")
+rsrc_tree_to_dir('/tmp/language.dll.rsrcs')
+#f = open('/tmp/strings_en', 'w')
+#f.write(pe.rsrc_strings_to_textfile('de_DE'))
