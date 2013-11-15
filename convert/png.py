@@ -30,8 +30,9 @@ class PNG:
 				val = 255 - alpha_data*2
 				if alpha_data == -1:
 					alpha = 0
+					val = 0
 				else:
-					alpha = 100
+					alpha = 255
 
 				draw.point((x, y), fill=(val, val, val, alpha))
 
