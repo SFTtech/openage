@@ -14,7 +14,7 @@ namespace openage {
 namespace engine {
 namespace shader {
 
-Program::Program() {
+Program::Program() : is_linked(false) {
 	this->id = glCreateProgram();
 }
 
@@ -31,6 +31,7 @@ void Program::link() {
 	this->check(GL_LINK_STATUS);
 	glValidateProgram(this->id);
 	this->check(GL_VALIDATE_STATUS);
+	this->is_linked = true;
 }
 
 void Program::check(GLenum what_to_check) {
@@ -78,9 +79,13 @@ GLint Program::get_uniform_id(const char *name) {
 }
 
 GLint Program::get_attribute_id(const char *name) {
-	return glGetAttribLocation(this->id, name);
+	if (this->is_linked) {
+		return glGetAttribLocation(this->id, name);
+	}
+	else {
+		throw util::Error("queried attribute id before program was linked.");
+	}
 }
-
 
 } //namespace shader
 } //namespace engine

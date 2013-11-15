@@ -26,7 +26,7 @@ public:
 	GLint get_attribute_id(const char *name);
 
 private:
-	bool hasvshader = false, hasfshader = false;
+	bool is_linked;
 	GLuint id;
 
 	void check(GLenum what_to_check);

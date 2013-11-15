@@ -194,12 +194,12 @@ void Texture::draw(coord::phys pos, bool mirrored, int subid, unsigned player) {
 }
 
 void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
+	alphamask_shader::program->use();
 
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->use();
 		glUniform1i(teamcolor_shader::player_id_var, player);
 	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
-		alphamask_shader::program->use();
 
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, this->alpha_texture->get_texture_id());
@@ -209,7 +209,6 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, this->id);
-	glEnable(GL_TEXTURE_2D);
 
 	struct subtexture *tx = this->get_subtexture(subid);
 
@@ -233,29 +232,41 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	float txl, txr, txt, txb;
 	this->get_subtexture_coordinates(tx, &txl, &txr, &txt, &txb);
 
-	//TODO:replate with vertex buffer/uniforms for vshader
-	glBegin(GL_QUADS); {
-		glTexCoord2f(txl, txt);
-		glVertex3f(left, bottom, 0);
 
-		glTexCoord2f(txl, txb);
-		glVertex3f(left, top, 0);
+	int vertices[] = {
+		left, bottom, 0, 0,
+		left, top, 0, 0,
+		right, top, 0, 0,
+		right, bottom, 0, 0
+	};
+	//float texcoords[] = {txl, txt, txl, txb, txr, txb, txr, txt};
 
-		glTexCoord2f(txr, txb);
-		glVertex3f(right, top, 0);
+	GLuint vao;
+	GLuint vbuf;
 
-		glTexCoord2f(txr, txt);
-		glVertex3f(right, bottom, 0);
+	glGenBuffers(1, &vbuf);
+	glBindBuffer(GL_ARRAY_BUFFER, vbuf);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
+
+	GLint pos = alphamask_shader::program->get_attribute_id("vposition");
+	if (pos == -1) {
+		throw util::Error("vertex attribute position could not be found! pos = %d", pos);
 	}
-	glEnd();
 
-	glDisable(GL_TEXTURE_2D);
+	glVertexAttribPointer(pos, 4, GL_INT, 0, 0, 0);
+	glEnableVertexAttribArray(pos);
+
+	glDrawArrays(GL_QUADS, 0, 4);
+
 
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->stopusing();
 	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
-		alphamask_shader::program->stopusing();
 	}
+	alphamask_shader::program->stopusing();
 }
 
 
