@@ -19,5 +19,6 @@ void main()
 	//force to pink
 	//base_pixel = vec4(255.0/255.0, 20.0/255.0, 147.0/255.0, 1.0);
 
+	//vec4 draw_pixel = vec4(base_pixel.r, base_pixel.g, base_pixel.b, 0.5);
 	gl_FragColor = base_pixel;
 }

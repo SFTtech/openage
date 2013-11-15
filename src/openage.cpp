@@ -196,6 +196,8 @@ void init() {
 	engine::alphamask_shader::program->attach_shader(engine::shared_shaders::maptexture);
 	engine::alphamask_shader::program->attach_shader(engine::alphamask_shader::frag);
 	engine::alphamask_shader::program->link();
+	engine::alphamask_shader::base_texture = engine::alphamask_shader::program->get_uniform_id("base_texture");
+	engine::alphamask_shader::mask_texture = engine::alphamask_shader::program->get_uniform_id("mask_texture");
 
 	//get the player colors from the sub-palette exported by script
 	char *pcolor_file = util::read_whole_file("age/processed/player_color_palette.pal");
@@ -242,6 +244,11 @@ void init() {
 	glUniform1f(engine::teamcolor_shader::alpha_marker_var, 254.0/255.0);
 	glUniform4fv(engine::teamcolor_shader::player_color_var, 64, playercolors);
 	engine::teamcolor_shader::program->stopusing();
+
+	engine::alphamask_shader::program->use();
+	glUniform1i(engine::alphamask_shader::base_texture, 0);
+	glUniform1i(engine::alphamask_shader::mask_texture, 1);
+	engine::alphamask_shader::program->stopusing();
 
 	log::msg("Time for startup: %.4f s", timer->measure()/1000.0);
 }

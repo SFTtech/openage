@@ -331,8 +331,9 @@ void Terrain::draw() {
 				auto overlay_texture = this->textures[draw_mask->terrain_id];
 				int neighbor_sub_id = this->get_subtexture_id(tilepos, overlay_texture->atlas_dimensions);
 
-				this->blendmasks[draw_mask->blend_mode]->draw(coord::tileno_to_phys(tilepos), false, draw_mask->mask_id);
+				overlay_texture->activate_alphamask(this->blendmasks[draw_mask->blend_mode], draw_mask->mask_id);
 				overlay_texture->draw(coord::tileno_to_phys(tilepos), false, neighbor_sub_id);
+				overlay_texture->disable_alphamask();
 			}
 		}
 	}

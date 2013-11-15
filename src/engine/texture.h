@@ -24,6 +24,7 @@ extern GLint player_id_var, alpha_marker_var, player_color_var;
 namespace alphamask_shader {
 extern shader::Shader *frag;
 extern shader::Program *program;
+extern GLint base_texture, mask_texture;
 } //namespace alphamask_shader
 
 
@@ -83,12 +84,31 @@ public:
 	*/
 	void fix_hotspots(unsigned x, unsigned y);
 
+	/**
+	activates the influence of a given alpha mask to this texture.
+	*/
+	void activate_alphamask(Texture *mask, int subid);
+
+	/**
+	disable a previously activated alpha mask.
+	*/
+	void disable_alphamask();
+
+	/**
+	returns the opengl texture id of this texture.
+	*/
+	GLuint get_texture_id();
+
 private:
 	GLuint id;
 	struct subtexture *subtextures;
 	int subtexture_count;
 	bool use_player_color_tinting;
 	bool use_alpha_masking;
+
+	bool alpha_mask_active;
+	Texture *alpha_texture;
+	int alpha_subid;
 };
 
 } //namespace engine

@@ -28,13 +28,17 @@ GLint player_id_var, alpha_marker_var, player_color_var;
 namespace alphamask_shader {
 shader::Shader *frag;
 shader::Program *program;
+GLint base_texture, mask_texture;
 } //namespace alphamask_shader
 
 
 Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 
-	this->use_player_color_tinting = 0 < mode & PLAYERCOLORED;
-	this->use_alpha_masking        = 0 < mode & ALPHAMASKED;
+	this->use_player_color_tinting = 0 < (mode & PLAYERCOLORED);
+	this->use_alpha_masking        = 0 < (mode & ALPHAMASKED);
+
+	this->alpha_subid = -1;
+	this->alpha_texture = nullptr;
 
 	SDL_Surface *surface;
 	GLuint textureid;
@@ -178,8 +182,8 @@ Texture::~Texture() {
 
 void Texture::fix_hotspots(unsigned x, unsigned y) {
 	for(int i = 0; i < subtexture_count; i++) {
-		subtextures[i].cx = x;
-		subtextures[i].cy = y;
+		this->subtextures[i].cx = x;
+		this->subtextures[i].cy = y;
 	}
 }
 
@@ -193,12 +197,16 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->use();
 		glUniform1i(teamcolor_shader::player_id_var, player);
-	} else if (this->use_alpha_masking) {
+	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
 		alphamask_shader::program->use();
+
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, this->alpha_texture->get_texture_id());
 	}
 
 	glColor3f(1, 1, 1);
 
+	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, this->id);
 	glEnable(GL_TEXTURE_2D);
 
@@ -254,7 +262,7 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->stopusing();
-	} else if (this->use_alpha_masking) {
+	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
 		alphamask_shader::program->stopusing();
 	}
 }
@@ -271,6 +279,21 @@ void Texture::get_subtexture_size(int subid, int *w, int *h) {
 	*w = this->subtextures[subid].w;
 	*h = this->subtextures[subid].h;
 }
+
+void Texture::activate_alphamask(Texture *mask, int subid) {
+	this->alpha_texture = mask;
+	this->alpha_subid = subid;
+}
+
+void Texture::disable_alphamask() {
+	this->alpha_texture = nullptr;
+	this->alpha_subid = -1;
+}
+
+GLuint Texture::get_texture_id() {
+	return this->id;
+}
+
 
 } //namespace engine
 } //namespace openage
