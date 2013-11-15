@@ -75,8 +75,12 @@ public:
 
 	void draw(coord::phys pos, bool mirrored = false, int subid = 0, unsigned player = 0);
 	void draw(int x, int y, bool mirrored = false, int subid = 0, unsigned player = 0);
+
+	struct subtexture *get_subtexture(int subid);
 	int get_subtexture_count();
 	void get_subtexture_size(int subid, int *w, int *h);
+	void get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb);
+	void get_subtexture_coordinates(struct subtexture *subtex, float *txl, float *txr, float *txt, float *txb);
 
 	/**
 	fixes the hotspots of all subtextures to (x,y).

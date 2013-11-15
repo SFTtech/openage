@@ -211,14 +211,7 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	glBindTexture(GL_TEXTURE_2D, this->id);
 	glEnable(GL_TEXTURE_2D);
 
-	struct subtexture *tx;
-
-	if (subid < this->subtexture_count && subid >= 0) {
-		tx = &this->subtextures[subid];
-	}
-	else {
-		throw util::Error("requested unknown subtexture %d", subid);
-	}
+	struct subtexture *tx = this->get_subtexture(subid);
 
 	int left, right, top, bottom;
 
@@ -238,10 +231,7 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	//left, right, top and bottom bounds as coordinates
 	//these pick the requested area out of the big texture.
 	float txl, txr, txt, txb;
-	txl = ((float)tx->x)           /this->w;
-	txr = ((float)(tx->x + tx->w)) /this->w;
-	txt = ((float)tx->y)           /this->h;
-	txb = ((float)(tx->y + tx->h)) /this->h;
+	this->get_subtexture_coordinates(tx, &txl, &txr, &txt, &txb);
 
 	//TODO:replate with vertex buffer/uniforms for vshader
 	glBegin(GL_QUADS); {
@@ -268,17 +258,45 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	}
 }
 
+
+struct subtexture *Texture::get_subtexture(int subid) {
+	if (subid < this->subtexture_count && subid >= 0) {
+		return &this->subtextures[subid];
+	}
+	else {
+		throw util::Error("requested unknown subtexture %d", subid);
+	}
+}
+
+
+/**
+get atlas subtexture coordinates.
+
+left, right, top and bottom bounds as coordinates
+these pick the requested area out of the big texture.
+returned as floats in range 0.0 to 1.0
+*/
+void Texture::get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) {
+	struct subtexture *tx = this->get_subtexture(subid);
+	this->get_subtexture_coordinates(tx, txl, txr, txt, txb);
+}
+
+void Texture::get_subtexture_coordinates(struct subtexture *tx, float *txl, float *txr, float *txt, float *txb) {
+	*txl = ((float)tx->x)           /this->w;
+	*txr = ((float)(tx->x + tx->w)) /this->w;
+	*txt = ((float)tx->y)           /this->h;
+	*txb = ((float)(tx->y + tx->h)) /this->h;
+}
+
+
 int Texture::get_subtexture_count() {
 	return this->subtexture_count;
 }
 
 void Texture::get_subtexture_size(int subid, int *w, int *h) {
-	if (subid > this->get_subtexture_count() -1) {
-		throw util::Error("Requested nonexistant subtexture %d", subid);
-	}
-
-	*w = this->subtextures[subid].w;
-	*h = this->subtextures[subid].h;
+	struct subtexture *subtex = this->get_subtexture(subid);
+	*w = subtex->w;
+	*h = subtex->h;
 }
 
 void Texture::activate_alphamask(Texture *mask, int subid) {
