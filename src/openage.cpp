@@ -179,9 +179,13 @@ void init() {
 	engine::teamcolor_shader::frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, teamcolor_code);
 	delete[] teamcolor_code;
 
-	char *alphamask_code = util::read_whole_file("shaders/alphamask.frag.glsl");
-	engine::alphamask_shader::frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, alphamask_code);
-	delete[] alphamask_code;
+	char *alphamask_vert_code = util::read_whole_file("shaders/alphamask.vert.glsl");
+	engine::alphamask_shader::vert = new engine::shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
+	delete[] alphamask_vert_code;
+
+	char *alphamask_frag_code = util::read_whole_file("shaders/alphamask.frag.glsl");
+	engine::alphamask_shader::frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
+	delete[] alphamask_frag_code;
 
 
 	engine::teamcolor_shader::program = new engine::shader::Program();
