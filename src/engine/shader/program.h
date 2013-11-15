@@ -23,6 +23,7 @@ public:
 	void stopusing();
 
 	GLint get_uniform_id(const char *name);
+	GLint get_attribute_id(const char *name);
 
 private:
 	bool hasvshader = false, hasfshader = false;

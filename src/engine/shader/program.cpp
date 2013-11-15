@@ -77,6 +77,11 @@ GLint Program::get_uniform_id(const char *name) {
 	return glGetUniformLocation(this->id, name);
 }
 
+GLint Program::get_attribute_id(const char *name) {
+	return glGetAttribLocation(this->id, name);
+}
+
+
 } //namespace shader
 } //namespace engine
 } //namespace openage
