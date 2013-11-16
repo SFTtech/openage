@@ -80,11 +80,20 @@ GLint Program::get_uniform_id(const char *name) {
 
 GLint Program::get_attribute_id(const char *name) {
 	if (this->is_linked) {
-		return glGetAttribLocation(this->id, name);
+		GLuint aid = glGetAttribLocation(this->id, name);
+		if (aid == -1) {
+			throw util::Error("queried attribute '%s' not found.", name);
+		} else {
+			return aid;
+		}
 	}
 	else {
-		throw util::Error("queried attribute id before program was linked.");
+		throw util::Error("queried attribute '%s' id before program was linked.");
 	}
+}
+
+GLuint Program::get_id() {
+	return this->id;
 }
 
 } //namespace shader

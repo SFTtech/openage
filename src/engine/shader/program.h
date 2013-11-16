@@ -25,6 +25,8 @@ public:
 	GLint get_uniform_id(const char *name);
 	GLint get_attribute_id(const char *name);
 
+	GLuint get_id();
+
 private:
 	bool is_linked;
 	GLuint id;
