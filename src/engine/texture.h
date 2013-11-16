@@ -25,7 +25,7 @@ namespace alphamask_shader {
 extern shader::Shader *vert;
 extern shader::Shader *frag;
 extern shader::Program *program;
-extern GLint base_texture, mask_texture;
+extern GLint base_texture, mask_texture, pos_id, base_coord, mask_coord;
 } //namespace alphamask_shader
 
 
@@ -61,8 +61,6 @@ class Texture {
 public:
 	int w;
 	int h;
-
-	bool centered;
 
 	/**
 	terrain atlas dimensions (floor(sqrt(subtexture count)))

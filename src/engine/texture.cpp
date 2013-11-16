@@ -29,7 +29,7 @@ namespace alphamask_shader {
 shader::Shader *vert;
 shader::Shader *frag;
 shader::Program *program;
-GLint base_texture, mask_texture;
+GLint base_texture, mask_texture, pos_id, base_coord, mask_coord;
 } //namespace alphamask_shader
 
 
@@ -171,9 +171,6 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		this->subtextures = new struct subtexture[1];
 		this->subtextures[0] = subtext;
 	}
-
-	//deprecated..
-	this->centered = true;
 }
 
 Texture::~Texture() {
@@ -194,13 +191,11 @@ void Texture::draw(coord::phys pos, bool mirrored, int subid, unsigned player) {
 }
 
 void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
-	alphamask_shader::program->use();
-
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->use();
 		glUniform1i(teamcolor_shader::player_id_var, player);
 	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
-
+		alphamask_shader::program->use();
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, this->alpha_texture->get_texture_id());
 	}
@@ -233,40 +228,49 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	this->get_subtexture_coordinates(tx, &txl, &txr, &txt, &txb);
 
 
+	/*
 	int vertices[] = {
-		left, bottom, 0, 0,
-		left, top, 0, 0,
-		right, top, 0, 0,
-		right, bottom, 0, 0
+		left, bottom,
+		left, top,
+		right, top,
+		right, bottom,
 	};
-	//float texcoords[] = {txl, txt, txl, txb, txr, txb, txr, txt};
+	float texcoords[] = {
+		txl, txt,
+		txl, txb,
+		txr, txb,
+		txr, txt
+	};
+	*/
 
-	GLuint vao;
-	GLuint vbuf;
+	GLint *pos    = &alphamask_shader::pos_id;
+	GLint *bcoord = &alphamask_shader::base_coord;
+	GLint *mcoord = &alphamask_shader::mask_coord;
 
-	glGenBuffers(1, &vbuf);
-	glBindBuffer(GL_ARRAY_BUFFER, vbuf);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBegin(GL_QUADS); {
+		glTexCoord2f(txl, txt);
+		glVertexAttrib4f(*pos, left, bottom, 0, 0);
+		glVertex3f(left, bottom, 0);
 
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
+		glTexCoord2f(txl, txb);
+		glVertexAttrib4f(*pos, left, top, 0, 0);
+		glVertex3f(left, top, 0);
 
-	GLint pos = alphamask_shader::program->get_attribute_id("vposition");
-	if (pos == -1) {
-		throw util::Error("vertex attribute position could not be found! pos = %d", pos);
+		glTexCoord2f(txr, txb);
+		glVertexAttrib4f(*pos, right, top, 0, 0);
+		glVertex3f(right, top, 0);
+
+		glTexCoord2f(txr, txt);
+		glVertexAttrib4f(*pos, right, bottom, 0, 0);
+		glVertex3f(right, bottom, 0);
 	}
-
-	glVertexAttribPointer(pos, 4, GL_INT, 0, 0, 0);
-	glEnableVertexAttribArray(pos);
-
-	glDrawArrays(GL_QUADS, 0, 4);
-
+	glEnd();
 
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->stopusing();
 	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
+		alphamask_shader::program->stopusing();
 	}
-	alphamask_shader::program->stopusing();
 }
 
 
