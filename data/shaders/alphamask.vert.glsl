@@ -24,6 +24,9 @@ void main(void) {
 	if (position.x < 0) {
 		colortest = vec4(1.0, 0.0, 1.0, 1.0);
 	}
+	else {
+		colortest = vec4(0.0, 0.0, 0.0, 1.0);
+	}
 
 	//gl_Position = projection_matrix * modelview_matrix * gl_Vertex;
 	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;

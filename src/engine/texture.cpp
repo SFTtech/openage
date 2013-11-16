@@ -191,18 +191,20 @@ void Texture::draw(coord::phys pos, bool mirrored, int subid, unsigned player) {
 }
 
 void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
+	glEnable(GL_TEXTURE_2D);
+
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->use();
 		glUniform1i(teamcolor_shader::player_id_var, player);
 	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
 		alphamask_shader::program->use();
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, this->alpha_texture->get_texture_id());
+		//glActiveTexture(GL_TEXTURE1);
+		//glBindTexture(GL_TEXTURE_2D, this->alpha_texture->get_texture_id());
 	}
 
 	glColor3f(1, 1, 1);
 
-	glActiveTexture(GL_TEXTURE0);
+	//glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, this->id);
 
 	struct subtexture *tx = this->get_subtexture(subid);
@@ -266,31 +268,13 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	}
 	glEnd();
 
-	glPushMatrix(); {
-		glColor3f(0.0, 0.0, 1.0);
-		glBegin(GL_QUADS); {
-			glVertexAttrib4f(*pos, 10, 0, 0, 0);
-			glVertex3f(-50, -50, 0);
-
-			glVertexAttrib4f(*pos, -10, 0, 0, 0);
-			glVertex3f(-50, 50, 0);
-
-			glVertexAttrib4f(*pos, 10, 0, 0, 0);
-			glVertex3f(50, 50, 0);
-
-			glVertexAttrib4f(*pos, -10, 0, 0, 0);
-			glVertex3f(50, -50, 0);
-		}
-		glEnd();
-		glColor3f(1.0, 1.0, 1.0);
-	}
-	glPopMatrix();
 
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->stopusing();
 	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
 		alphamask_shader::program->stopusing();
 	}
+	glDisable(GL_TEXTURE_2D);
 }
 
 
