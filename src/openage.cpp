@@ -197,7 +197,7 @@ void init() {
 	engine::teamcolor_shader::player_color_var = engine::teamcolor_shader::program->get_uniform_id("player_color");
 
 	engine::alphamask_shader::program = new engine::shader::Program();
-	engine::alphamask_shader::program->attach_shader(engine::shared_shaders::maptexture);
+	engine::alphamask_shader::program->attach_shader(engine::alphamask_shader::vert);
 	engine::alphamask_shader::program->attach_shader(engine::alphamask_shader::frag);
 	engine::alphamask_shader::program->link();
 	engine::alphamask_shader::base_texture = engine::alphamask_shader::program->get_uniform_id("base_texture");
