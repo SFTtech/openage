@@ -80,7 +80,7 @@ GLint Program::get_uniform_id(const char *name) {
 
 GLint Program::get_attribute_id(const char *name) {
 	if (this->is_linked) {
-		GLuint aid = glGetAttribLocation(this->id, name);
+		GLint aid = glGetAttribLocation(this->id, name);
 		if (aid == -1) {
 			throw util::Error("queried attribute '%s' not found.", name);
 		} else {
@@ -88,7 +88,7 @@ GLint Program::get_attribute_id(const char *name) {
 		}
 	}
 	else {
-		throw util::Error("queried attribute '%s' id before program was linked.");
+		throw util::Error("queried attribute '%s' id before program was linked.", name);
 	}
 }
 
