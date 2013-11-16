@@ -15,12 +15,14 @@ attribute vec4 position;
 varying vec2 base_texture_pos;
 varying vec2 mask_texture_pos;
 
+varying vec4 colortest;
+
 void main(void) {
 	base_texture_pos = base_tex_coords;
 	mask_texture_pos = mask_tex_coords;
 
-	if (position.x > 9001) {
-		base_texture_pos = vec2(0, 0);
+	if (position.x < 0) {
+		colortest = vec4(1.0, 0.0, 1.0, 1.0);
 	}
 
 	//gl_Position = projection_matrix * modelview_matrix * gl_Vertex;

@@ -266,6 +266,26 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	}
 	glEnd();
 
+	glPushMatrix(); {
+		glColor3f(0.0, 0.0, 1.0);
+		glBegin(GL_QUADS); {
+			glVertexAttrib4f(*pos, 10, 0, 0, 0);
+			glVertex3f(-50, -50, 0);
+
+			glVertexAttrib4f(*pos, -10, 0, 0, 0);
+			glVertex3f(-50, 50, 0);
+
+			glVertexAttrib4f(*pos, 10, 0, 0, 0);
+			glVertex3f(50, 50, 0);
+
+			glVertexAttrib4f(*pos, -10, 0, 0, 0);
+			glVertex3f(50, -50, 0);
+		}
+		glEnd();
+		glColor3f(1.0, 1.0, 1.0);
+	}
+	glPopMatrix();
+
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->stopusing();
 	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
