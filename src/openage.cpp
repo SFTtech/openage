@@ -186,17 +186,13 @@ void init() {
 	delete[] alphamask_frag_code;
 
 
-	engine::teamcolor_shader::program = new engine::shader::Program();
-	engine::teamcolor_shader::program->attach_shader(maptexture);
-	engine::teamcolor_shader::program->attach_shader(teamcolor_frag);
+	engine::teamcolor_shader::program = new engine::shader::Program(maptexture, teamcolor_frag);
 	engine::teamcolor_shader::program->link();
 	engine::teamcolor_shader::player_id_var = engine::teamcolor_shader::program->get_uniform_id("player_number");
 	engine::teamcolor_shader::alpha_marker_var = engine::teamcolor_shader::program->get_uniform_id("alpha_marker");
 	engine::teamcolor_shader::player_color_var = engine::teamcolor_shader::program->get_uniform_id("player_color");
 
-	engine::alphamask_shader::program = new engine::shader::Program();
-	engine::alphamask_shader::program->attach_shader(alphamask_vert);
-	engine::alphamask_shader::program->attach_shader(alphamask_frag);
+	engine::alphamask_shader::program = new engine::shader::Program(alphamask_vert, alphamask_frag);
 	engine::alphamask_shader::program->link();
 	engine::alphamask_shader::base_texture = engine::alphamask_shader::program->get_uniform_id("base_texture");
 	engine::alphamask_shader::mask_texture = engine::alphamask_shader::program->get_uniform_id("mask_texture");

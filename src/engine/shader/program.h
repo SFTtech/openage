@@ -13,6 +13,7 @@ namespace shader {
 class Program {
 public:
 	Program();
+	Program(Shader *s0, Shader *s1);
 	~Program();
 
 	void attach_shader(Shader *s);

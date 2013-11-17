@@ -18,6 +18,11 @@ Program::Program() : is_linked(false), vert(nullptr), frag(nullptr), geom(nullpt
 	this->id = glCreateProgram();
 }
 
+Program::Program(Shader *s0, Shader *s1) : Program{} {
+	this->attach_shader(s0);
+	this->attach_shader(s1);
+}
+
 Program::~Program() {
 	glDeleteProgram(this->id);
 	if (this->vert != nullptr) {
