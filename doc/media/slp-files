@@ -241,6 +241,10 @@ ontop of the tree/building by the fragment shader.
 
 spec_col == special_color: 2 means black (enhance the outline, cartoonlike), 1 is player color.
 
+for later drawing, a graphics file needs flags for:
+* object has outline
+* can show objects behind by outline
+* both of them
 
 
 with all this information it's possible to draw a line by several palette_index colors correctly,
