@@ -147,7 +147,6 @@ void Terrain::draw() {
 				int neighbor_priority = this->terrain_id_priority_map[neighbor_terrain_id];
 
 				//neighbor only interesting if it's a different terrain than @
-				//comment by mci_e: this is also checked in the next if condition.
 				//if it is the same priority, the neigh priority is not higher.
 				if (neighbor_terrain_id != terrain_id) {
 
@@ -291,8 +290,6 @@ void Terrain::draw() {
 				//TODO:
 				int blend_mode = 5;     //get_blending_mode(priority, base)
 
-				bool adjacent_mask_existing = false;
-
 				if (adjacent_mask_id < 0) {
 					if (respect_adjacent_influence && !respect_diagonal_influence && binfdiagonal == 0) {
 						throw util::Error("influence detected with unknown directions: %u = 0x%02X", binf, binf);
@@ -302,10 +299,9 @@ void Terrain::draw() {
 					draw_masks[mask_count].blend_mode = blend_mode;
 					draw_masks[mask_count].terrain_id = neighbor_terrain_id;
 					mask_count += 1;
-					adjacent_mask_existing = true;
 				}
 
-				if (respect_diagonal_influence && !adjacent_mask_existing) {
+				if (respect_diagonal_influence) {
 					for (int l = 0; l < 4; l++) {
 						//generate the neighbor id bit.
 						int bdiaginf = 1 << (l*2);
