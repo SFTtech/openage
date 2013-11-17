@@ -30,7 +30,7 @@ class PNG:
 				val = 255 - alpha_data*2
 				if alpha_data == -1:
 					alpha = 0
-					val = 0
+					val = 255
 				else:
 					alpha = 255
 

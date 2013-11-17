@@ -262,10 +262,6 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	};
 
 
-	GLint *pos    = &alphamask_shader::pos_id;
-	GLint *bcoord = &alphamask_shader::base_coord;
-	GLint *mcoord = &alphamask_shader::mask_coord;
-
 	glBegin(GL_QUADS); {
 		for (int i = 0; i < 4; i++) {
 			if (use_alphashader) {
