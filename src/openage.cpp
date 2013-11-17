@@ -196,9 +196,12 @@ void init() {
 	engine::alphamask_shader::program->link();
 	engine::alphamask_shader::base_texture = engine::alphamask_shader::program->get_uniform_id("base_texture");
 	engine::alphamask_shader::mask_texture = engine::alphamask_shader::program->get_uniform_id("mask_texture");
-	engine::alphamask_shader::pos_id     = engine::alphamask_shader::program->get_attribute_id("vposition");
-	//engine::alphamask_shader::base_coord = engine::alphamask_shader::program->get_attribute_id("btexc");
-	//engine::alphamask_shader::mask_coord = engine::alphamask_shader::program->get_attribute_id("mtexc");
+	//engine::alphamask_shader::pos_id       = engine::alphamask_shader::program->get_attribute_id("vposition");
+	//engine::alphamask_shader::base_coord   = engine::alphamask_shader::program->get_attribute_id("btexc");
+	//engine::alphamask_shader::mask_coord   = engine::alphamask_shader::program->get_attribute_id("mtexc");
+
+	//GLuint ash_id = engine::alphamask_shader::program->get_id();
+	//GLint vpos_id = glGetAttribLocation(ash_id, "vposition")
 
 
 	//get the player colors from the sub-palette exported by script

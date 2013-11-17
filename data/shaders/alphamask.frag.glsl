@@ -8,23 +8,17 @@
 uniform sampler2D base_texture;
 uniform sampler2D mask_texture;
 
-varying vec2 base_texture_pos;
-varying vec2 mask_texture_pos;
-
-varying vec4 colortest;
-
 void main()
 {
 	//get the texel from the uniform texture.
-	vec4 base_pixel = texture2D(base_texture, base_texture_pos);
-	vec4 mask_pixel = texture2D(mask_texture, mask_texture_pos);
+	vec4 base_pixel = texture2D(base_texture, gl_TexCoord[0].xy);
+	vec4 mask_pixel = texture2D(mask_texture, gl_TexCoord[1].xy);
+
+	float factor = 1.0 - mask_pixel.x;
+
+	vec4 blended_pixel = vec4(base_pixel.r - factor, base_pixel.g - factor, base_pixel.b - factor, base_pixel.a - factor);
 
 	//force to pink
 	//base_pixel = vec4(255.0/255.0, 20.0/255.0, 147.0/255.0, 1.0);
-
-	//use vertex attribute color test
-	base_pixel = colortest;
-
-	//vec4 draw_pixel = vec4(base_pixel.r, base_pixel.g, base_pixel.b, 0.5);
-	gl_FragColor = base_pixel;
+	gl_FragColor = blended_pixel;
 }

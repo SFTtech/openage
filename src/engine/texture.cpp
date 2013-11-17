@@ -193,6 +193,9 @@ void Texture::draw(coord::phys pos, bool mirrored, int subid, unsigned player) {
 void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	glColor3f(1, 1, 1);
 
+	bool use_alphashader = false;
+	struct subtexture *mtx;
+
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->use();
 		glUniform1i(teamcolor_shader::player_id_var, player);
@@ -201,6 +204,9 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 		glActiveTexture(GL_TEXTURE1);
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, this->alpha_texture->get_texture_id());
+		use_alphashader = true;
+
+		mtx = this->alpha_texture->get_subtexture(this->alpha_subid);
 	}
 
 	glActiveTexture(GL_TEXTURE0);
@@ -229,6 +235,10 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	float txl, txr, txt, txb;
 	this->get_subtexture_coordinates(tx, &txl, &txr, &txt, &txb);
 
+	float mtxl, mtxr, mtxt, mtxb;
+	if (use_alphashader) {
+		this->alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
+	}
 
 	int vertices[] = {
 		left, bottom,
@@ -244,6 +254,13 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 		txr, txt
 	};
 
+	float texcoords_mask[] = {
+		mtxl, mtxt,
+		mtxl, mtxb,
+		mtxr, mtxb,
+		mtxr, mtxt
+	};
+
 
 	GLint *pos    = &alphamask_shader::pos_id;
 	GLint *bcoord = &alphamask_shader::base_coord;
@@ -251,8 +268,11 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 
 	glBegin(GL_QUADS); {
 		for (int i = 0; i < 4; i++) {
-			glTexCoord2f(texcoords[i*2], texcoords[i*2 +1]);
-			glVertexAttrib4f(*pos, vertices[i*2], vertices[i*2 +1], 0, 1);
+			if (use_alphashader) {
+				glMultiTexCoord2f(GL_TEXTURE1, texcoords_mask[i*2], texcoords_mask[i*2 +1]);
+			}
+			glMultiTexCoord2f(GL_TEXTURE0, texcoords[i*2], texcoords[i*2 +1]);
+			//glVertexAttrib4f(*pos, vertices[i*2], vertices[i*2 +1], 0, 1);
 			glVertex3f(vertices[i*2], vertices[i*2 +1], 0);
 		}
 	}
@@ -261,7 +281,7 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->stopusing();
-	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
+	} else if (use_alphashader) {
 		alphamask_shader::program->stopusing();
 		glActiveTexture(GL_TEXTURE1);
 		glDisable(GL_TEXTURE_2D);
