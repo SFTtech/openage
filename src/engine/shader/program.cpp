@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <string>
 
 #include "../../log/log.h"
 #include "../../util/filetools.h"
