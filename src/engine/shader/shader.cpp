@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <string>
 
 #include "../../log/log.h"
 #include "../../util/error.h"
@@ -29,24 +28,24 @@ const char *type_to_string(GLenum type) {
 
 Shader::Shader(GLenum type, const char *source) {
 	//create shader
-	id = glCreateShader(type);
+	this->id = glCreateShader(type);
 
 	//load shader source
-	glShaderSource(id, 1, &source, NULL);
+	glShaderSource(this->id, 1, &source, NULL);
 
 	//compile shader source
-	glCompileShader(id);
+	glCompileShader(this->id);
 
 	//check compiliation result
 	GLint status;
-	glGetShaderiv(id, GL_COMPILE_STATUS, &status);
+	glGetShaderiv(this->id, GL_COMPILE_STATUS, &status);
 
 	if (status != GL_TRUE) {
 		GLint loglen;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &loglen);
+		glGetShaderiv(this->id, GL_INFO_LOG_LENGTH, &loglen);
 
 		char *infolog = (char *) malloc(loglen);
-		glGetShaderInfoLog(id, loglen, NULL, infolog);
+		glGetShaderInfoLog(this->id, loglen, NULL, infolog);
 
 		util::Error e("Failed to compile %s shader\n%s", type_to_string(type), infolog);
 		free(infolog);
