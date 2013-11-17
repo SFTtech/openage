@@ -13,21 +13,18 @@ in vec4 btexc;
 in vec4 mtexc;
 
 //the interpolated fragment positions for both textures
-varying out vec2 base_texture_pos;
-varying out vec2 mask_texture_pos;
+varying vec2 base_texture_pos;
+varying vec2 mask_texture_pos;
 
-varying out vec4 colortest;
+varying vec4 colortest;
 
 void main(void) {
 	base_texture_pos = btexc.xy;
 	mask_texture_pos = mtexc.xy;
 
-	if (vposition.x == gl_Vertex.x) {
-		colortest = vec4(1.0, 0.0, 1.0, 1.0);
-	}
-	else {
-		colortest = vec4(0.0, 1.0, 0.0, 1.0);
-	}
+	if (gl_Vertex.x == 0) {}
+
+	colortest = vec4(0.0, 1.0, 0.0, 1.0);
 
 	//gl_Position = projection_matrix * modelview_matrix * vposition;
 	gl_Position = gl_ModelViewProjectionMatrix * vposition; //gl_Vertex
