@@ -102,7 +102,7 @@ blendomatic stores the following alpha masks:
 id is the tile number for the 31 tiles within one blending mode.
 
 
-0 means: keep this base tile pixel                     (mask 0)
+0 means: keep the base tile pixel, don't overdraw      (mask 0)
 # means: use this pixel from the dominant neighbor     (mask 1)
          to draw over the base tile
 
@@ -192,9 +192,10 @@ for @ in alltiles:
 			#else, ignore this neighbor
 			if i.priority > @.priority:
 
-				#as tile i has influence for this blending mode
+				#as tile i has influence for this priority
 				# => bit i is set to 1 by 2^i
-				influence[i.priority] &= 2**i
+				#each priority is drawn seperately later.
+				influence[i.priority] |= 2**i
 
 	#sort influences by priority, so that higher priorities get drawn last.
 	influence = sorted(influence)
@@ -233,7 +234,7 @@ for @ in alltiles:
 		diagonal_mask_id.add(16)    if binf  & 0b00000100 > 0
 		                     17     if binf  & 0b00010000 > 0
 		                     18     if binf  & 0b00000001 > 0
-		                     19     if binf  & 0b00100000 > 0
+		                     19     if binf  & 0b01000000 > 0
 
 
 		#which of the 9 blending modes to use?

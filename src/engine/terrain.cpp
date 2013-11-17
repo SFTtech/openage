@@ -76,17 +76,21 @@ void Terrain::draw() {
 	const bool respect_diagonal_influence = true;
 	const bool respect_adjacent_influence = true;
 
-	coord::tileno tileno = {0, 0, 0};
-	for (; tileno.ne < (int) this->size; tileno.ne++) {
-		for (tileno.se = 0; tileno.se < (int) this->size; tileno.se++) {
-			int terrain_id = this->get_tile(tileno);
+	if (!respect_adjacent_influence && !respect_diagonal_influence) {
+		this->blending_enabled = false;
+	}
+
+	coord::tileno tilepos = {0, 0, 0};
+	for (; tilepos.ne < (int) this->size; tilepos.ne++) {
+		for (tilepos.se = 0; tilepos.se < (int) this->size; tilepos.se++) {
+			int terrain_id = this->get_tile(tilepos);
 			int base_priority = this->terrain_id_priority_map[terrain_id];
 
-			auto texture = this->textures[terrain_id];
-			int sub_id = get_subtexture_id(tileno, texture->atlas_dimensions);
+			auto base_texture = this->textures[terrain_id];
+			int sub_id = this->get_subtexture_id(tilepos, base_texture->atlas_dimensions);
 
 			//draw the base texture
-			texture->draw(coord::tileno_to_phys(tileno), false, sub_id);
+			base_texture->draw(coord::tileno_to_phys(tilepos), false, sub_id);
 
 			if (!this->blending_enabled) {
 				continue;
@@ -132,10 +136,10 @@ void Terrain::draw() {
 				}
 
 				//calculate the pos of the neighbor tile
-				coord::tileno neigh_pos = tileno + neigh_offsets[neigh_id];
+				coord::tileno neigh_pos = tilepos + neigh_offsets[neigh_id];
 
 				if (neigh_pos.ne < 0 || neigh_pos.ne >= (int)this->size || neigh_pos.se < 0 || neigh_pos.se >= (int)this->size) {
-					//this neighbor is on the neighbor chunk, skip it for now.
+					//this neighbor is on the neighbor chunk or not existing, skip it for now.
 					continue;
 				}
 
@@ -149,35 +153,37 @@ void Terrain::draw() {
 
 					//neighbor draws over the base if it's priority is greater
 					if (neighbor_priority > base_priority) {
-						if (influences[neighbor_terrain_id].priority == -1) {
+						auto influence = &influences[neighbor_terrain_id];
+
+						//this terrain id has no influence yet:
+						if (influence->priority == -1) {
 							influence_tids[num_influences] = neighbor_terrain_id;
 							num_influences += 1;
 						}
 
 						//as tile i has influence for this priority
 						// => bit i is set to 1 by 2^i
-						influences[neighbor_terrain_id].direction |= 1 << neigh_id;
-						influences[neighbor_terrain_id].priority = neighbor_priority;
-						influences[neighbor_terrain_id].terrain_id = neighbor_terrain_id;
+						influence->direction |= 1 << neigh_id;
+						influence->priority = neighbor_priority;
+						influence->terrain_id = neighbor_terrain_id;
 					}
 				}
 			}
 
 			//no blending necessary for this tile, it has no external influences.
 			if (num_influences <= 0) {
+				delete[] influences;
 				continue;
 			}
-
-			//log::dbg2("influence count for tile %d,%d: %d", i, j, num_influences);
 
 			//influences to consider when drawing overlays
 			struct influence_meta draw_influences[8];
 
+			//remove the influences terrain_id grouping
 			for (int k = 0; k < num_influences; k++) {
 				draw_influences[k] = influences[ influence_tids[k] ];
-				//struct influence_meta m = draw_influences[k];
-				//log::dbg2("influence %d: prio=%d dir=%d id=%d", k, m.priority, m.direction, m.terrain_id);
 			}
+			delete[] influences;
 
 			//order the influences by their priority
 			for (int k = 0; k < num_influences; k++) {
@@ -192,14 +198,14 @@ void Terrain::draw() {
 				draw_influences[l + 1] = tmp_influence;
 			}
 
-
 			struct draw_mask {
 				int mask_id;
 				int blend_mode;
+				int terrain_id;
 			};
 
 			int mask_count = 0;
-			struct draw_mask draw_masks[8 * 4]; //8 different influences with max 4 masks per influence.
+			struct draw_mask draw_masks[4+4]; //maximum 4 diagonal and 4 adjacent masks
 
 			//for each possible influence (max 8 as we have 8 neighbors)
 			for (int k = 0; k < num_influences; k++) {
@@ -226,19 +232,19 @@ void Terrain::draw() {
 				int binfdiagonal = binf & 0x55; //0b01010101
 
 				//comment by mic_e TODO replace this by a lookup table
-				if(respect_adjacent_influence) {
+				if (respect_adjacent_influence) {
 					switch (binfadjacent) {
 					case 0x08:  //0b00001000
-						adjacent_mask_id = 0 + util::mod<coord::tileno_t>(tileno.ne + tileno.se, 4);  //0..3
+						adjacent_mask_id = 0;  //0..3
 						break;
 					case 0x02:  //0b00000010
-						adjacent_mask_id = 4 + util::mod<coord::tileno_t>(tileno.ne + tileno.se, 4);  //4..7
+						adjacent_mask_id = 4;  //4..7
 						break;
 					case 0x20:  //0b00100000
-						adjacent_mask_id = 8 + util::mod<coord::tileno_t>(tileno.ne + tileno.se, 4);  //8..11
+						adjacent_mask_id = 8;  //8..11
 						break;
 					case 0x80:  //0b10000000
-						adjacent_mask_id = 12 + util::mod<coord::tileno_t>(tileno.ne + tileno.se, 4);  //12..15
+						adjacent_mask_id = 12; //12..15
 						break;
 					case 0x22:  //0b00100010
 						adjacent_mask_id = 20;
@@ -276,6 +282,12 @@ void Terrain::draw() {
 					}
 				}
 
+				//if it's the plain adjacent mask, use all of the 4 possible masks.
+				if (adjacent_mask_id <= 12 && adjacent_mask_id % 4 == 0) {
+					int anti_redundancy_offset = util::mod<coord::tileno_t>(tilepos.ne + tilepos.se, 4);
+					adjacent_mask_id += anti_redundancy_offset;
+				}
+
 				//TODO:
 				int blend_mode = 5;     //get_blending_mode(priority, base)
 
@@ -288,41 +300,41 @@ void Terrain::draw() {
 				} else if (respect_adjacent_influence) {
 					draw_masks[mask_count].mask_id    = adjacent_mask_id;
 					draw_masks[mask_count].blend_mode = blend_mode;
+					draw_masks[mask_count].terrain_id = neighbor_terrain_id;
 					mask_count += 1;
 					adjacent_mask_existing = true;
 				}
 
-				if (respect_diagonal_influence) {
-					if (binf & 0x04 && (!adjacent_mask_existing)) {  //0b00000100
-						draw_masks[mask_count].mask_id    = 16;
-						draw_masks[mask_count].blend_mode = blend_mode;
-						mask_count += 1;
-					}
-					if (binf & 0x10 && (!adjacent_mask_existing)) {  //0b00010000
-						draw_masks[mask_count].mask_id    = 17;
-						draw_masks[mask_count].blend_mode = blend_mode;
-						mask_count += 1;
-					}
-					if (binf & 0x01 && (!adjacent_mask_existing)) {  //0b00000001
-						draw_masks[mask_count].mask_id    = 18;
-						draw_masks[mask_count].blend_mode = blend_mode;
-						mask_count += 1;
-					}
-					if (binf & 0x40 && (!adjacent_mask_existing)) {  //0b00100000
-						draw_masks[mask_count].mask_id    = 19;
-						draw_masks[mask_count].blend_mode = blend_mode;
-						mask_count += 1;
+				if (respect_diagonal_influence && !adjacent_mask_existing) {
+					for (int l = 0; l < 4; l++) {
+						//generate the neighbor id bit.
+						int bdiaginf = 1 << (l*2);
+						const int diag_mask_id_map[4] = {18, 16, 17, 19};
+
+						// l == 0: pos = 0b000000001, mask = 18
+						// l == 1: pos = 0b000000100, mask = 16
+						// l == 2: pos = 0b000010000, mask = 17
+						// l == 3: pos = 0b001000000, mask = 19
+						if (binf & bdiaginf) {
+							draw_masks[mask_count].mask_id    = diag_mask_id_map[l];
+							draw_masks[mask_count].blend_mode = blend_mode;
+							draw_masks[mask_count].terrain_id = neighbor_terrain_id;
+							mask_count += 1;
+						}
 					}
 				}
 			}
 
-			//log::dbg2("drawing %d masks for tile %d,%d", mask_count, i, j);
 			for (int k = 0; k < mask_count; k++) {
 				//mask, to be applied on neighbor_terrain_id tile
-				this->blendmasks[draw_masks[k].blend_mode]->draw(coord::tileno_to_phys(tileno), false, draw_masks[k].mask_id);
-				//this->textures[neighbor_terrain_id]->draw(x, y, false, sub_id);
+				auto draw_mask = &draw_masks[k];
+				auto overlay_texture = this->textures[draw_mask->terrain_id];
+				int neighbor_sub_id = this->get_subtexture_id(tilepos, overlay_texture->atlas_dimensions);
+
+				overlay_texture->activate_alphamask(this->blendmasks[draw_mask->blend_mode], draw_mask->mask_id);
+				overlay_texture->draw(coord::tileno_to_phys(tilepos), false, neighbor_sub_id);
+				overlay_texture->disable_alphamask();
 			}
-			delete[] influences;
 		}
 	}
 }

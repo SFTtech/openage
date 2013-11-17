@@ -13,21 +13,37 @@
 namespace openage {
 namespace engine {
 
-namespace teamcolor_shader {
+//real definition of the shaders,
+//they are "external" in the header.
+namespace shared_shaders {
+shader::Shader *maptexture;
+} //namespace shared_shaders
 
-shader::Shader *vert;
+namespace teamcolor_shader {
 shader::Shader *frag;
 shader::Program *program;
 GLint player_id_var, alpha_marker_var, player_color_var;
-
 } //namespace teamcolor_shader
 
-Texture::Texture(const char *filename, bool player_colored, bool use_metafile) {
-	this->use_player_color_tinting = player_colored;
+namespace alphamask_shader {
+shader::Shader *vert;
+shader::Shader *frag;
+shader::Program *program;
+GLint base_texture, mask_texture, pos_id, base_coord, mask_coord;
+} //namespace alphamask_shader
+
+
+Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
+
+	this->use_player_color_tinting = 0 < (mode & PLAYERCOLORED);
+	this->use_alpha_masking        = 0 < (mode & ALPHAMASKED);
+
+	this->alpha_subid = -1;
+	this->alpha_texture = nullptr;
 
 	SDL_Surface *surface;
 	GLuint textureid;
-	int mode;
+	int texture_format;
 
 	surface = IMG_Load(filename);
 
@@ -41,10 +57,10 @@ Texture::Texture(const char *filename, bool player_colored, bool use_metafile) {
 	//glTexImage2D format determination
 	switch (surface->format->BytesPerPixel) {
 	case 3: //RGB 24 bit
-		mode = GL_RGB;
+		texture_format = GL_RGB;
 		break;
 	case 4: //RGBA 32 bit
-		mode = GL_RGBA;
+		texture_format = GL_RGBA;
 		break;
 	default:
 		throw util::Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename, surface->format->BytesPerPixel);
@@ -56,11 +72,10 @@ Texture::Texture(const char *filename, bool player_colored, bool use_metafile) {
 
 	//generate 1 texture handle
 	glGenTextures(1, &textureid);
-
 	glBindTexture(GL_TEXTURE_2D, textureid);
 
 	//sdl surface -> opengl texture
-	glTexImage2D(GL_TEXTURE_2D, 0, mode, surface->w, surface->h, 0, mode, GL_UNSIGNED_BYTE, surface->pixels);
+	glTexImage2D(GL_TEXTURE_2D, 0, texture_format, surface->w, surface->h, 0, texture_format, GL_UNSIGNED_BYTE, surface->pixels);
 
 	//later drawing settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -156,9 +171,6 @@ Texture::Texture(const char *filename, bool player_colored, bool use_metafile) {
 		this->subtextures = new struct subtexture[1];
 		this->subtextures[0] = subtext;
 	}
-
-	//deprecated..
-	this->centered = true;
 }
 
 Texture::~Texture() {
@@ -168,8 +180,8 @@ Texture::~Texture() {
 
 void Texture::fix_hotspots(unsigned x, unsigned y) {
 	for(int i = 0; i < subtexture_count; i++) {
-		subtextures[i].cx = x;
-		subtextures[i].cy = y;
+		this->subtextures[i].cx = x;
+		this->subtextures[i].cy = y;
 	}
 }
 
@@ -179,25 +191,29 @@ void Texture::draw(coord::phys pos, bool mirrored, int subid, unsigned player) {
 }
 
 void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
+	glColor3f(1, 1, 1);
+
+	bool use_alphashader = false;
+	struct subtexture *mtx;
 
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->use();
 		glUniform1i(teamcolor_shader::player_id_var, player);
+	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
+		alphamask_shader::program->use();
+		glActiveTexture(GL_TEXTURE1);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, this->alpha_texture->get_texture_id());
+		use_alphashader = true;
+
+		mtx = this->alpha_texture->get_subtexture(this->alpha_subid);
 	}
 
-	glColor3f(1, 1, 1);
-
-	glBindTexture(GL_TEXTURE_2D, this->id);
+	glActiveTexture(GL_TEXTURE0);
 	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, this->id);
 
-	struct subtexture *tx;
-
-	if (subid < this->subtexture_count && subid >= 0) {
-		tx = &this->subtextures[subid];
-	}
-	else {
-		throw util::Error("requested unknown subtexture %d", subid);
-	}
+	struct subtexture *tx = this->get_subtexture(subid);
 
 	int left, right, top, bottom;
 
@@ -217,46 +233,114 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	//left, right, top and bottom bounds as coordinates
 	//these pick the requested area out of the big texture.
 	float txl, txr, txt, txb;
-	txl = ((float)tx->x)           /this->w;
-	txr = ((float)(tx->x + tx->w)) /this->w;
-	txt = ((float)tx->y)           /this->h;
-	txb = ((float)(tx->y + tx->h)) /this->h;
+	this->get_subtexture_coordinates(tx, &txl, &txr, &txt, &txb);
 
-	//TODO:replate with vertex buffer/uniforms for vshader
+	float mtxl, mtxr, mtxt, mtxb;
+	if (use_alphashader) {
+		this->alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
+	}
+
+	int vertices[] = {
+		left, bottom,
+		left, top,
+		right, top,
+		right, bottom,
+	};
+
+	float texcoords[] = {
+		txl, txt,
+		txl, txb,
+		txr, txb,
+		txr, txt
+	};
+
+	float texcoords_mask[] = {
+		mtxl, mtxt,
+		mtxl, mtxb,
+		mtxr, mtxb,
+		mtxr, mtxt
+	};
+
+
 	glBegin(GL_QUADS); {
-		glTexCoord2f(txl, txt);
-		glVertex3f(left, bottom, 0);
-
-		glTexCoord2f(txl, txb);
-		glVertex3f(left, top, 0);
-
-		glTexCoord2f(txr, txb);
-		glVertex3f(right, top, 0);
-
-		glTexCoord2f(txr, txt);
-		glVertex3f(right, bottom, 0);
+		for (int i = 0; i < 4; i++) {
+			if (use_alphashader) {
+				glMultiTexCoord2f(GL_TEXTURE1, texcoords_mask[i*2], texcoords_mask[i*2 +1]);
+			}
+			glMultiTexCoord2f(GL_TEXTURE0, texcoords[i*2], texcoords[i*2 +1]);
+			//glVertexAttrib4f(*pos, vertices[i*2], vertices[i*2 +1], 0, 1);
+			glVertex3f(vertices[i*2], vertices[i*2 +1], 0);
+		}
 	}
 	glEnd();
 
-	glDisable(GL_TEXTURE_2D);
 
 	if (this->use_player_color_tinting) {
 		teamcolor_shader::program->stopusing();
+	} else if (use_alphashader) {
+		alphamask_shader::program->stopusing();
+		glActiveTexture(GL_TEXTURE1);
+		glDisable(GL_TEXTURE_2D);
+	}
+	glActiveTexture(GL_TEXTURE0);
+	glDisable(GL_TEXTURE_2D);
+}
+
+
+struct subtexture *Texture::get_subtexture(int subid) {
+	if (subid < this->subtexture_count && subid >= 0) {
+		return &this->subtextures[subid];
+	}
+	else {
+		throw util::Error("requested unknown subtexture %d", subid);
 	}
 }
+
+
+/**
+get atlas subtexture coordinates.
+
+left, right, top and bottom bounds as coordinates
+these pick the requested area out of the big texture.
+returned as floats in range 0.0 to 1.0
+*/
+void Texture::get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) {
+	struct subtexture *tx = this->get_subtexture(subid);
+	this->get_subtexture_coordinates(tx, txl, txr, txt, txb);
+}
+
+void Texture::get_subtexture_coordinates(struct subtexture *tx, float *txl, float *txr, float *txt, float *txb) {
+	*txl = ((float)tx->x)           /this->w;
+	*txr = ((float)(tx->x + tx->w)) /this->w;
+	*txt = ((float)tx->y)           /this->h;
+	*txb = ((float)(tx->y + tx->h)) /this->h;
+}
+
 
 int Texture::get_subtexture_count() {
 	return this->subtexture_count;
 }
 
 void Texture::get_subtexture_size(int subid, int *w, int *h) {
-	if (subid > this->get_subtexture_count() -1) {
-		throw util::Error("Requested nonexistant subtexture %d", subid);
-	}
-
-	*w = this->subtextures[subid].w;
-	*h = this->subtextures[subid].h;
+	struct subtexture *subtex = this->get_subtexture(subid);
+	*w = subtex->w;
+	*h = subtex->h;
 }
+
+void Texture::activate_alphamask(Texture *mask, int subid) {
+	this->alpha_texture = mask;
+	this->alpha_subid = subid;
+}
+
+void Texture::disable_alphamask() {
+	this->alpha_texture = nullptr;
+	this->alpha_subid = -1;
+}
+
+GLuint Texture::get_texture_id() {
+	return this->id;
+}
+
 
 } //namespace engine
 } //namespace openage

@@ -35,17 +35,15 @@ class Blendomatic:
 		for i in range(blending_mode_count):
 
 			blending_mode = Struct(endianness + "I %dB" % (tile_count))
-
 			blending_mode_buf = f.read(blending_mode.size)
-
 			bmode_header = blending_mode.unpack_from(blending_mode_buf)
+
 			#should be 2353 -> number of pixels (single alpha byte values)
 			tile_size = bmode_header[0]
 
 			#tile_flags = bmode_header[1:]  #TODO
 
 			dbg("tile in this blending mode %d has %d pixels" % (i, tile_size), 2)
-
 
 			#as we draw in isometric tile format, this is the row count
 			row_count = int(math.sqrt(tile_size)) + 1  #49

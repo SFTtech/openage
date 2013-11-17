@@ -36,7 +36,7 @@ input_handler_ptr input_handler;
 bool running;
 
 coord::sdl window_size = {800, 600};
-coord::phys camera_pos_phys = {0, 0, 0};
+coord::phys camera_pos_phys = {(1<<16) * 10, (1<<16) * 10, 0};
 coord::sdl camera_pos_sdl = {400, 300};
 
 util::FrameCounter *fpscounter;

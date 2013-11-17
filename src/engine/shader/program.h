@@ -13,6 +13,7 @@ namespace shader {
 class Program {
 public:
 	Program();
+	Program(Shader *s0, Shader *s1);
 	~Program();
 
 	void attach_shader(Shader *s);
@@ -23,14 +24,19 @@ public:
 	void stopusing();
 
 	GLint get_uniform_id(const char *name);
+	GLint get_attribute_id(const char *name);
+
+	GLuint get_id();
 
 private:
-	bool hasvshader = false, hasfshader = false;
+	bool is_linked;
 	GLuint id;
 
 	void check(GLenum what_to_check);
 	GLint get_info(GLenum pname);
 	char *get_log();
+
+	Shader *vert, *frag, *geom;
 };
 
 
