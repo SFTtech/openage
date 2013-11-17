@@ -34,6 +34,8 @@ private:
 	void check(GLenum what_to_check);
 	GLint get_info(GLenum pname);
 	char *get_log();
+
+	Shader *vert, *frag, *geom;
 };
 
 

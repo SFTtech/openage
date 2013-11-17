@@ -16,6 +16,7 @@ public:
 	~Shader();
 
 	GLuint id;
+	GLenum type;
 };
 
 } //namespace shader

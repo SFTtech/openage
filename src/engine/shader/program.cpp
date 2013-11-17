@@ -14,15 +14,35 @@ namespace openage {
 namespace engine {
 namespace shader {
 
-Program::Program() : is_linked(false) {
+Program::Program() : is_linked(false), vert(nullptr), frag(nullptr), geom(nullptr) {
 	this->id = glCreateProgram();
 }
 
 Program::~Program() {
 	glDeleteProgram(this->id);
+	if (this->vert != nullptr) {
+		delete this->vert;
+	}
+	if (this->frag != nullptr) {
+		delete this->frag;
+	}
+	if (this->geom != nullptr) {
+		delete this->geom;
+	}
 }
 
 void Program::attach_shader(Shader *s) {
+	switch (s->type) {
+	case GL_VERTEX_SHADER:
+		this->vert = s;
+		break;
+	case GL_FRAGMENT_SHADER:
+		this->frag = s;
+		break;
+	case GL_GEOMETRY_SHADER:
+		this->geom = s;
+		break;
+	}
 	glAttachShader(this->id, s->id);
 }
 

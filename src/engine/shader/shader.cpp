@@ -30,6 +30,9 @@ Shader::Shader(GLenum type, const char *source) {
 	//create shader
 	this->id = glCreateShader(type);
 
+	//store type
+	this->type = type;
+
 	//load shader source
 	glShaderSource(this->id, 1, &source, NULL);
 

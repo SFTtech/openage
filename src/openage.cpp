@@ -170,33 +170,33 @@ void init() {
 
 
 	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
-	engine::shared_shaders::maptexture = new engine::shader::Shader(GL_VERTEX_SHADER, texturevshader_code);
+	auto maptexture = new engine::shader::Shader(GL_VERTEX_SHADER, texturevshader_code);
 	delete[] texturevshader_code;
 
 	char *teamcolor_code = util::read_whole_file("shaders/teamcolors.frag.glsl");
-	engine::teamcolor_shader::frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, teamcolor_code);
+	auto teamcolor_frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, teamcolor_code);
 	delete[] teamcolor_code;
 
 	char *alphamask_vert_code = util::read_whole_file("shaders/alphamask.vert.glsl");
-	engine::alphamask_shader::vert = new engine::shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
+	auto alphamask_vert = new engine::shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
 	delete[] alphamask_vert_code;
 
 	char *alphamask_frag_code = util::read_whole_file("shaders/alphamask.frag.glsl");
-	engine::alphamask_shader::frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
+	auto alphamask_frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
 	delete[] alphamask_frag_code;
 
 
 	engine::teamcolor_shader::program = new engine::shader::Program();
-	engine::teamcolor_shader::program->attach_shader(engine::shared_shaders::maptexture);
-	engine::teamcolor_shader::program->attach_shader(engine::teamcolor_shader::frag);
+	engine::teamcolor_shader::program->attach_shader(maptexture);
+	engine::teamcolor_shader::program->attach_shader(teamcolor_frag);
 	engine::teamcolor_shader::program->link();
 	engine::teamcolor_shader::player_id_var = engine::teamcolor_shader::program->get_uniform_id("player_number");
 	engine::teamcolor_shader::alpha_marker_var = engine::teamcolor_shader::program->get_uniform_id("alpha_marker");
 	engine::teamcolor_shader::player_color_var = engine::teamcolor_shader::program->get_uniform_id("player_color");
 
 	engine::alphamask_shader::program = new engine::shader::Program();
-	engine::alphamask_shader::program->attach_shader(engine::alphamask_shader::vert);
-	engine::alphamask_shader::program->attach_shader(engine::alphamask_shader::frag);
+	engine::alphamask_shader::program->attach_shader(alphamask_vert);
+	engine::alphamask_shader::program->attach_shader(alphamask_frag);
 	engine::alphamask_shader::program->link();
 	engine::alphamask_shader::base_texture = engine::alphamask_shader::program->get_uniform_id("base_texture");
 	engine::alphamask_shader::mask_texture = engine::alphamask_shader::program->get_uniform_id("mask_texture");
