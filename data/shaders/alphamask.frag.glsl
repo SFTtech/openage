@@ -5,7 +5,6 @@
 //applies an alpha mask texture to a base texture,
 //then draws the masked texture.
 
-
 uniform sampler2D base_texture;
 uniform sampler2D mask_texture;
 
@@ -22,6 +21,8 @@ void main()
 
 	//force to pink
 	//base_pixel = vec4(255.0/255.0, 20.0/255.0, 147.0/255.0, 1.0);
+
+	//use vertex attribute color test
 	base_pixel = colortest;
 
 	//vec4 draw_pixel = vec4(base_pixel.r, base_pixel.g, base_pixel.b, 0.5);

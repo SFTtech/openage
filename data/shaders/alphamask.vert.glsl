@@ -1,36 +1,36 @@
 //vertex shader for applying an alpha mask to a texture
 #version 120
 
-//uniform mat4 projection_matrix;
-//uniform mat4 modelview_matrix;
 
-//attributes for the texture coordinates
-attribute vec2 base_tex_coords;
-attribute vec2 mask_tex_coords;
+uniform mat4 projection_matrix;
+uniform mat4 modelview_matrix;
 
 //the position in space of this vertex
-attribute vec4 position;
+in vec4 vposition;
+
+//attributes for the texture coordinates
+in vec4 btexc;
+in vec4 mtexc;
 
 //the interpolated fragment positions for both textures
-varying vec2 base_texture_pos;
-varying vec2 mask_texture_pos;
+varying out vec2 base_texture_pos;
+varying out vec2 mask_texture_pos;
 
-varying vec4 colortest;
+varying out vec4 colortest;
 
 void main(void) {
-	base_texture_pos = base_tex_coords;
-	mask_texture_pos = mask_tex_coords;
+	base_texture_pos = btexc.xy;
+	mask_texture_pos = mtexc.xy;
 
-	if (position.x < 0) {
+	if (vposition.x == gl_Vertex.x) {
 		colortest = vec4(1.0, 0.0, 1.0, 1.0);
 	}
 	else {
-		colortest = vec4(0.0, 0.0, 0.0, 1.0);
+		colortest = vec4(0.0, 1.0, 0.0, 1.0);
 	}
 
-	//gl_Position = projection_matrix * modelview_matrix * gl_Vertex;
-	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
-	//gl_Position = gl_ModelViewProjectionMatrix * position;
+	//gl_Position = projection_matrix * modelview_matrix * vposition;
+	gl_Position = gl_ModelViewProjectionMatrix * vposition; //gl_Vertex
 
 	gl_FrontColor = gl_Color;
 }
