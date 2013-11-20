@@ -202,3 +202,23 @@ blkedge.dat: replace 94 with 47, otherwise same format.
 
 each 'spans' == pixels from (x0,y) to (x1,y) (inclusive) to set to 1;
 => 17*94 tiles, each 97x73 1-bit pixels
+
+
+
+patternmasks.dat format
+-----------------------
+
+no idea what this data is for, also the format's not verified yet.
+filesize = 164000 bytes = 2^5 * 5^3 * 41 bytes
+
+164000 bytes / 16 = 10250 bytes
+
+64 * 64 * 40 bytes = 163840 bytes, 160 bytes left then.
+(64 * 64 + 4) * 40 bytes = 164000 => win.
+
+struct patternmasks {
+	struct {
+		uint_32 unknown;  //4 bytes: 0x00100000 => wenn uint32: 1048576
+		char data[64*64];
+	} mask[40];
+}
