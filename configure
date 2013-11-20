@@ -5,7 +5,7 @@
 #rewrite it if you got any better plan.
 
 function rls() {
-	mkdir -p bin¬
+	mkdir -p bin
 	cd bin && cmake -DCMAKE_BUILD_TYPE=Release .. $@
 }
 
