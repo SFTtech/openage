@@ -9,19 +9,12 @@ endianness = '< '
 
 class Empires2X1P1Convert:
 	#version, NumTerRest, NumTer
-	empires_header = Struct(endianness + "8s H H")
-	#TerRestOff:Int[NumTerRest]
-	#TerRestOff2:Int[NumTerRest]
-	#DatTerRest[NumTerRest]: float[NumTer]TerAccessibles, TerPassGraphic[NumTer]
-	#TerPassGraphic: Buildable, GraphicIdF, GraphicIdS, ReplicationNum
-	terrain_pass_graphics = Struct(endianness + "i i i i")
+	initial_information= Struct(endianness + "8s H H")
 
 	def __init__(self,fname):
 		self.fname = fname
 		print("reading empires2x1p1 from %s" % fname)
 
-		#fname = file_get_path(fname, write = False)
-		#f = file_open(fname, binary = True, write = False)
 		f = open(fname, mode='rb')
 
 		content = zlib.decompress( f.read(), -15)
@@ -31,23 +24,28 @@ class Empires2X1P1Convert:
 		#do the extracting
 		#header
 		offset = 0
-		self.empires_header = Empires2X1P1Convert.empires_header.unpack_from(content,offset)
-		offset += Empires2X1P1Convert.empires_header.size
-		version, terrain_restriction_count, terrain_count = self.empires_header
-		print("version: %s, TerRestCount: %d, TerCount: %d" % (version, terrain_restriction_count, terrain_count))
+		empires_header = Empires2X1P1Convert.initial_information.unpack_from(content,offset)
+		offset += Empires2X1P1Convert.initial_information.size
+		self.version, self.terrain_restriction_count, self.terrain_count = empires_header
+		print("version: %s, TerRestCount: %d, TerCount: %d" % (self.version, self.terrain_restriction_count, self.terrain_count))
 
 		#terrain_rest_offsets
-		struct_terrain_restriction_offset = Struct(endianness + "%di %di" % (terrain_restriction_count, terrain_restriction_count))
+		struct_terrain_restriction_offset = Struct(endianness + "%di" % (2*self.terrain_restriction_count))
 		#theoratically there are 2 different sets of offsets
 		self.terrain_restriction_offsets = struct_terrain_restriction_offset.unpack_from(content,offset)
 		offset += struct_terrain_restriction_offset.size
-		print("%s ", self.terrain_restriction_offsets)
+		print('TerrainRestrictionOffsets:', self.terrain_restriction_offsets)
 
 		#TerrainRestrictions
 		self.terrain_restrictions = []
-		for i in range(terrain_count):
+		for i in range(self.terrain_count):
 			self.terrain_restrictions.append(TerrainRestriction())
-			offset = self.terrain_restrictions[i].read_data(terrain_count, content, offset)
+			offset = self.terrain_restrictions[i].read_data(self.terrain_count, content, offset)
+		print('TerRest[0]: \n' + str(self.terrain_restrictions[0]))
+		print('TerRest[1]: \n' + str(self.terrain_restrictions[1]))
+		print('TerRest[2]: \n' + str(self.terrain_restrictions[2]))
+		print('TerRest[3]: \n' + str(self.terrain_restrictions[3]))
+		print('TerRest[4]: \n' + str(self.terrain_restrictions[4]))
 
 
 class TerrainRestriction:
@@ -65,9 +63,8 @@ class TerrainRestriction:
 		#return the updated offset
 		return offset
 
-
-
-
+	def __str__(self):
+		return '[TerrainRestriction: ' + str(self.terrain_accessibles) + ' , ' + str(self.terrain_pass_graphic) + ' ]'
 
 
 if __name__ == "__main__":
