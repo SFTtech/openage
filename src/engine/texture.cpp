@@ -266,14 +266,13 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	float txl, txr, txt, txb;
 	this->get_subtexture_coordinates(tx, &txl, &txr, &txt, &txb);
 
-	float mtxl, mtxr, mtxt, mtxb;
+	float mtxl=0, mtxr=0, mtxt=0, mtxb=0;
 	if (use_alphashader) {
 		this->alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
 	}
 
 	//this array will be uploaded to the GPU.
 	//it contains all dynamic vertex data (position, tex coordinates, mask coordinates)
-	//undefined values won't be accessed by the GPU.
 	float vdata[] {
 		leftf,  bottomf,
 		leftf,  topf,
