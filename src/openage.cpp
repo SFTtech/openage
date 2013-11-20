@@ -287,12 +287,6 @@ void init() {
 	delete alphamask_vert;
 	delete alphamask_frag;
 
-
-	//setting non-changing uniform values for the shaders:
-
-
-
-
 	log::msg("Time for startup: %.4f s", timer->measure()/1000.0);
 }
 

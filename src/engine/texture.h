@@ -43,7 +43,7 @@ struct subtexture {
 	int x, y, w, h;
 
 	/** hotspot coordinates. */
-	unsigned int cx, cy;
+	int cx, cy;
 };
 
 

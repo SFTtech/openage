@@ -238,7 +238,7 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 
 	struct subtexture *tx = this->get_subtexture(subid);
 
-	float left, right, top, bottom;
+	int left, right, top, bottom;
 
 	//coordinates where the texture will be drawn on screen.
 	bottom  = y      - tx->cy;
@@ -252,6 +252,14 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 		right = left - tx->w;
 	}
 
+	//convert the texture boundaries to float
+	//these will be the vertex coordinates.
+	float leftf, rightf, topf, bottomf;
+	leftf   = (float) left;
+	rightf  = (float) right;
+	topf    = (float) top;
+	bottomf = (float) bottom;
+
 	//subtexture coordinates
 	//left, right, top and bottom bounds as coordinates
 	//these pick the requested area out of the big texture.
@@ -263,19 +271,22 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 		this->alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
 	}
 
+	//this array will be uploaded to the GPU.
+	//it contains all dynamic vertex data (position, tex coordinates, mask coordinates)
+	//undefined values won't be accessed by the GPU.
 	float vdata[] {
-		left, bottom,
-		left, top,
-		right, top,
-		right, bottom,
-		txl, txt,
-		txl, txb,
-		txr, txb,
-		txr, txt,
-		mtxl, mtxt,
-		mtxl, mtxb,
-		mtxr, mtxb,
-		mtxr, mtxt
+		leftf,  bottomf,
+		leftf,  topf,
+		rightf, topf,
+		rightf, bottomf,
+		txl,    txt,
+		txl,    txb,
+		txr,    txb,
+		txr,    txt,
+		mtxl,   mtxt,
+		mtxl,   mtxb,
+		mtxr,   mtxb,
+		mtxr,   mtxt
 	};
 
 
