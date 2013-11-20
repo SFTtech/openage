@@ -58,6 +58,7 @@ void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, nop
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
@@ -76,6 +77,10 @@ void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, nop
 	}
 
 	glcontext = SDL_GL_CreateContext(window);
+
+	if (glcontext == nullptr) {
+		throw util::Error("Failed to create OpenGL context!");
+	}
 
 	//initialize glew, for shaders n stuff
 	GLenum glew_state = glewInit();

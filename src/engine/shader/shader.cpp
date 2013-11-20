@@ -47,19 +47,19 @@ Shader::Shader(GLenum type, const char *source) {
 		GLint loglen;
 		glGetShaderiv(this->id, GL_INFO_LOG_LENGTH, &loglen);
 
-		char *infolog = (char *) malloc(loglen);
+		char *infolog = new char[loglen];
 		glGetShaderInfoLog(this->id, loglen, NULL, infolog);
 
 		util::Error e("Failed to compile %s shader\n%s", type_to_string(type), infolog);
-		free(infolog);
-		glDeleteShader(id);
+		delete[] infolog;
+		glDeleteShader(this->id);
 
 		throw e;
 	}
 }
 
 Shader::~Shader() {
-	glDeleteShader(id);
+	glDeleteShader(this->id);
 }
 
 } //namespace shader
