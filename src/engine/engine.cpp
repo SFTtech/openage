@@ -319,6 +319,9 @@ void loop() {
 				//cause an internal stack to overflow.
 				errormsg = "stack overflow";
 				break;
+			default:
+				//unknown error state
+				errormsg = "unknown error";
 			}
 			throw util::Error("OpenGL error state after running draw method: %d\n\t%s", glerrorstate, errormsg);
 		}
