@@ -27,6 +27,7 @@ dependencies
 python3
 python3 imaging library (PIL) -> pillow
 opengl 2.1
+glew
 ftgl
 dejavu font
 freetype2
