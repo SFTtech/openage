@@ -24,14 +24,14 @@ or create free media files yourself.
 dependencies
 ============
 
-python3
-python3 imaging library (PIL) -> pillow
-opengl 2.1
-glew
-ftgl
-dejavu font
-freetype2
-fontconfig
+	python3
+	python3 imaging library (PIL) -> pillow
+	opengl 2.1
+	glew
+	ftgl
+	dejavu font
+	freetype2
+	fontconfig
 
 
 
@@ -81,6 +81,7 @@ on POSIX:
 	cd data && ../bin/openage
 
 for other make targets, see:
+
 	make help
 
 
@@ -88,16 +89,21 @@ alternate method: get developer function aliases by sourcing "build_helpers":
 	source build_helpers
 
 then type (depending on what build configuration you want):
+
 	rls
+
 or
+
 	dbg
 
 to compile the sources, type:
+
 	make
 
 to convert the media files, see above.
 
 to run the binary, type:
+
 	run
 
 note that you can use these instructions everywhere, independent of your pwd (aliases, remember?)
@@ -126,14 +132,19 @@ the dynamic docs tend to only describe stuff you could also understand by readin
 so don't expect too much, use the static docs instead.
 
 after you configured the project, you can invoke
+
 	make doc
 
 to create doxygen html and LaTeX files.
 
+
 after creation, view them in a browser by
+
 	$(browser) bin/doc/html/index.html
 
+
 or, if you want to create LaTeX documents:
+
 	make -C bin/doc/latex/ pdf
 	$(pdfviewer) bin/doc/latex/refman.pdf
 
