@@ -73,6 +73,7 @@ how to compile && run
 =====================
 
 on POSIX:
+---------
 
 	./configure <release|debug>
 	make
@@ -103,11 +104,26 @@ note that you can use these instructions everywhere, independent of your pwd (al
 
 
 on WINDOWS:
+-----------
+
 if you are keen on porting the game, go for it.
 
 
 documentation
 =============
+
+static docs
+-----------
+
+general documentation files reside in the doc/ directory.
+you can find ideas, milestones, planning and workflow descriptions etc in there.
+
+dynamic docs
+------------
+
+dynamic documentation files are generated from comments in the source code, using doxygen.
+the dynamic docs tend to only describe stuff you could also understand by reading the code itself,
+so don't expect too much, use the static docs instead.
 
 after you configured the project, you can invoke
 	make doc
@@ -118,12 +134,35 @@ after creation, view them in a browser by
 	$(browser) bin/doc/html/index.html
 
 or, if you want to create LaTeX documents:
-    make -C bin/doc/latex/ pdf
-    $(pdfviewer) bin/doc/latex/refman.pdf
+	make -C bin/doc/latex/ pdf
+	$(pdfviewer) bin/doc/latex/refman.pdf
 
 
 i'd recommend looking at the source, as we try do write stuff as readable as possible.
 
+
+contributing
+============
+
+* we hate people, so don't even think about helping
+* i'm sure that nobody out there likes age of empires
+* none of you is interested in making this project more awesome
+* as always, this free software project has NO interest in creating a community
+* so please don't even think about helping us
+
+guidelines:
+* don't write **bugreports**, openage is totally bugfree, of course
+* don't **fix bugs** yourself, see above, we don't have bugs
+* don't implement **new features**, they are crap anyway
+* don't EVER send **pull-requests**!
+* don't note the irony, you idiot
+
+contact
+=======
+
+currently you can use these communication channels to reach us morons:
+IRC:  #sfttech on freenode.org
+XMPP: openage@chat.sft.mx
 
 
 cheers, happy hecking.
