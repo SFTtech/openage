@@ -172,8 +172,8 @@ contact
 =======
 
 currently you can use these communication channels to reach us morons:
-IRC:  #sfttech on freenode.org
-XMPP: openage@chat.sft.mx
+* IRC:  #sfttech on freenode.org
+* XMPP: openage@chat.sft.mx
 
 
 cheers, happy hecking.
