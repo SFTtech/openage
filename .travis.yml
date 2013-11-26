@@ -1,0 +1,10 @@
+#travis ci config script
+#we can't use it for now as we need gcc 4.8
+#and travis has gcc 4.6.
+
+language: cpp
+compiler:
+  - gcc
+  - clang
+
+script: ./configure dbg && make
