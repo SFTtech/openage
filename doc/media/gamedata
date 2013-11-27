@@ -209,8 +209,340 @@ struct {
 		uint16_t units_count;
 		int32_t[unit_count] unit_offsets;
 		struct {
-			//TODO
+			struct {
+				char type;
+				/*
+				object = 10
+				flag = 20
+				dead_fish = 30
+				bird = 40
+				projectile = 60
+				creatable = 70
+				building = 80
+				tree = 90
+				*/
+				uint16_t name_length;
+				int16_t id0;
+				uint16_t language_dll_name;
+				uint16_t language_dll_creation;
+				int16_t unit_class;
+				int16_t standing_graphic0;
+				int16_t standing_graphic1;
+				int16_t dying_graphic0;
+				int16_t dying_graphic1;
+				char death_mode;
+				int16_t hit_points;
+				float line_of_sight;
+				char garnison_capacity;
+				float radius_size0;
+				float radius_size1;
+				float hp_bar_height0;
+				int16_t train_sound0;
+				int16_t train_sound1;
+				int16_t dead_unit_id;
+				char placement_mode;
+				char air_mode;
+				int16_t icon_id;
+				char hidden_in_editor;
+				int16_t unknown;
+				int16_t enabled;
+				int16_t placement_by_pass_terrain0;
+				int16_t placement_by_pass_terrain1;
+				int16_t placement_terrain0;
+				int16_t placement_terrain1;
+				float editor_radius0;
+				float editor_radius1;
+				char building_mode;
+				char visible_in_fog;
+				int16_t terrain_restriction;
+				char fly_mode;
+				int16_t resource_capacity;
+				float resource_decay;
+				char blast_type;
+				char unknown;
+				char interaction_mode;
+				char minimap_mode;
+				int16_t command_attribute;
+				int16_t unknown;
+				int16_t unknown;
+				uint16_t language_dll_help;
+				int16_t[4] hot_keys;
+				char unknown;
+				char unknown;
+				bool unselectable;
+				char unknown;
+				char unknown;
+				char unknown;
+				char selection_mask;
+				char selection_shape_type;
+				char selection_shape;
+				char attribute;
+				char civilisation;
+				int16_t unknown;
+				char selection_effect;
+				char editor_selection_color;
+				float selection_radius0;
+				float selection_radius1;
+				float hp_bar_height1;
+			} header;
+			struct {
+				int16_t a;
+				float b;
+				char c;
+			} resource_storage[3];
+			char damage_graphics_count;
+			struct {
+				int16_t graphic_id;
+				char damage_percent;
+				char unknown;
+				char unknown;
+			} damage_grapic[damage_graphics_count];
+			int16_t selection_sound;
+			int16_t dying_sound;
+			int16_t attack_sound;
+			char[header.name_length] name;
+			int16_t id1;
+			int16_t id2;
+
+			//if (header.type == unit_type.tree = 90) {
+			//done;
+			//}
+			//if (header.type >= unit_type.flag = 20) {
+			float speed;
+			//} else { done; }
+			//if (header.type >= unit_type.dead_fish = 30) {
+			struct {
+				int16_t walking_graphics0;
+				int16_t walking_graphics1;
+				float rotation_speed;
+				char unknown;
+				int16_t tracking_unit;
+				bool tracking_unit_used;
+				float tracking_unit_density;
+				float unknown;
+				char[17] unknown;
+			} dead_fish;
+			//}
+			//if (header.type >= unit_type.bird = 40) {
+			struct {
+				int16_t sheep_conversion;
+				float search_radius;
+				float work_rate;
+				int16_t drop_site0;
+				int16_t drop_site1;
+				char villager_mode;
+				int16_t move_sound;
+				int16_t stop_sound;
+				char animal_mode;
+			} bird;
+			//}
+			//if (header.type >= unit_type.projectile = 60) {
+			struct {
+				char unknown;
+				char unknown;
+				uint16_t attack_count;
+				struct {
+					int16_t class;
+					int16_t attack;
+				} attack[attack_count];
+				uint16_t armor_count;
+				struct {
+					int16_t class;
+					int16_t armor;
+				} attack[armor_count];
+				int16_t unknown;
+				float max_range;
+				float blast_radius;
+				float reload_time0;
+				int16_t projectile_unit_id;
+				int16_t accuracy_percent;
+				char tower_mode;
+				int16_t delay;
+				float[3] graphics_displacement;
+				char unknown;
+				float min_range;
+				float garnison_recovery_rate;
+				int16_t attack_graphic;
+				int16_t melee_armor_displayed;
+				int16_t attack_displayed;
+				int16_t range_displayed;
+				float reload_time1;
+			} projectile;
+			//}
+			//if (header.type == unit_type.projectile = 60) {
+			struct {
+				char stretch_mode;
+				char compensation_mode;
+				char drop_animation_mode;
+				char penetration_mode;
+				char unknown;
+				float projectile_arc;
+			} projectile_only;
+			//}
+			//if (header.type >= unit_type.creatable = 70) {
+			struct {
+				struct {
+					int16_t type;
+					int16_t amount;
+					int16_t enabled;
+				} ressource_cost[3];
+				int16_t train_time;
+				int16_t train_location_id;
+				char button_id;
+				char unknown;
+				int16_t[3] unknown;
+				char unknown;
+				char missile_graphic_delay;
+				char hero_mode;
+				int16_t garnison_graphic0;
+				int16_t garnison_graphic1;
+				float attack_missile_duplication0;
+				char attack_missile_duplication1;
+				float[3] attack_missile_duplication_spawning;
+				int32_t attack_missile_duplication_unit;
+				int32_t attack_missile_duplication_graphic;
+				char unknown;
+				int16_t pierce_armor_displayed;
+			} creatable;
+			//}
+			//if (header.type >= unit_type.building = 80) {
+			struct {
+				int16_t construction_graphic_id;
+				int16_t snow_graphic_id;
+				int16_t adjacent_mode;
+				char unknown;
+				char unknown;
+				int16_t stack_unit_id;
+				int16_t terrain_id;
+				int16_t unknown;
+				int16_t research_id;
+				char unknown;
+				struct {
+					int16_t unit_id;
+					float misplaced0;
+					float misplaced1;
+				} building_annex[4];
+				int16_t head_unit;
+				int16_t transform_unit;
+				int16_t unknown;
+				int16_t construction_sound_id;
+				char garnison_type;
+				float garnison_heal_rate;
+				int32_t unknown;
+				int16_t unknown;
+				char[6] unknown;
+			} building;
+			//}
 		} unit[unit_count];
 	} civ[civ_count];
 
+
+	uint16_t research_count;
+	struct {
+		int16_t[6] required_techs;
+		struct {
+			int16_t a;
+			int16_t b;
+			int8_t c;
+
+		} research_resource_cost[3];
+		int16_t required_tech_count;
+		int16_t civilisation;
+		int16_t full_tech_mode;
+		int16_t research_location;
+		uint16_t language_dll_name;
+		uint16_t language_dll_description;
+		int16_t research_time;
+		int16_t tech_id;
+		int16_t tech_type;
+		int16_t icon_id;
+		char button_id;
+		int32_t[3] pointers;
+		uint16_t name_length;
+		char[name_length] name;
+	} research[research_count];
+
+	int32_t[7] pre_tech_tree_unknown;
+
+	struct {
+		char age_count;
+		char building_count;
+		char unit_count;
+		char research_count;
+		struct {
+			int32_t unknown;
+			int32_t id;
+			int8_t unknown;
+			char building_count;
+			int32_t[building_count] buildings;
+			char unit_count;
+			int32_t[unit_count] units;
+			char research_count;
+			int32_t[research_count] researches;
+			int32_t unknown;
+			int32_t unknown;
+			int16_t[49] zeroes;
+		} age_tech_tree[age_count];
+		int32_t unknown;
+		struct {
+			int32_t id;
+			int8_t unknown;
+			char building_count;
+			int32_t[building_count] buildings;
+			char unit_count;
+			int32_t[unit_count] units;
+			char research_count;
+			int32_t[research_count] researches;
+			int32_t age;
+			int32_t unit_or_research0;
+			int32_t unit_or_research1;
+			int32_t[8] unknown;
+			int32_t mode0;
+			int32_t mode1;
+			int32_t[7] unknown;
+			int8_t[11] unknown;
+			int32_t connections;
+			int32_t enabling_research;
+		} building_connection[building_count];
+		struct {
+			int32_t id;
+			int8_t unknown;
+			int32_t upper_building;
+			int32_t required_researches;
+			int32_t age;
+			int32_t unit_or_research0;
+			int32_t unit_or_research1;
+			int32_t[8] unknown;
+			int32_t mode0;
+			int32_t mode1;
+			int32_t[7] unknown;
+			int32_t vertical_line;
+			char unit_count;
+			int32_t[unit_count] units;
+			int32_t location_in_age;
+			int32_t required_research;
+			int32_t line_mode;
+			int32_t enabling_research;
+		} unit_connection[unit_count];
+		struct {
+			int32_t id;
+			int8_t unknown;
+			int32_t upper_building;
+			char building_count;
+			int32_t[building_count] buildings;
+			char unit_count;
+			int32_t[unit_count] units;
+			char research_count;
+			int32_t[research_count] researches;
+			int32_t required_research;
+			int32_t age;
+			int32_t upper_research;
+			int32_t[9] unknown;
+			int32_t line_mode;
+			int32_t[8] unknown;
+			int32_t vertical_line;
+			int32_t location_in_age;
+			int32_t unknown;
+		} research_connection[research_count];
+	} tech_tree;
 } empires2_x1_p1;
