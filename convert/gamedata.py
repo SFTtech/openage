@@ -19,6 +19,7 @@ class Empires2X1P1Convert:
 		f = file_open(fname, binary = True, write = False)
 
 		#decompress content with zlib (note the magic -15)
+		#-15: - -> there is no header, 15 is the max windowsize
 		content = zlib.decompress( f.read(), -15)
 		f.close()
 
@@ -60,7 +61,7 @@ class TerrainRestriction:
 		struct_terrain_accessibles = Struct(endianness + '%df' % (num_ter))
 		struct_terrain_pass_graphic = Struct(endianness + 'i i i i')
 		self.terrain_accessibles = struct_terrain_accessibles.unpack_from(content, offset)
-		offset += struct_terrain_pass_graphic.size
+		offset += struct_terrain_accessibles.size
 		toplist = []
 		for i in range(num_ter):
 			sublist = struct_terrain_pass_graphic.unpack_from(content, offset)
