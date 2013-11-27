@@ -15,6 +15,7 @@ def main():
 	p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
 	p.add_argument("-l", "--listfiles", help = "List files in the DRS archives matching 'resource', or all", action='store_true')
 	p.add_argument("-e", "--extrafiles", help = "Extract extra files that are not needed, but useful (mainly visualizations).", action='store_true')
+	p.add_argument("-d", "--development", help = "Execute extracting routines being in development.", action='store_true')
 	p.add_argument("-o", "--destdir", help = "The openage root directory", default='/dev/null')
 	p.add_argument("-s", "--nomerge", help = "Don't merge frames of slps onto a texture atlas, create single files instead", action='store_true')
 
@@ -30,6 +31,7 @@ def main():
 	args.extractionrules = [ ExtractionRule(e) for e in args.extract ]
 
 	merge_images = not args.nomerge
+	exec_dev = args.development
 
 	#set path in utility class
 	print("setting age2 input directory to " + args.srcdir)
@@ -58,6 +60,14 @@ def main():
 	palette = ColorTable(drsfiles["interface"].get_file_data('bin', 50500))
 
 	if write_enabled:
+
+		if exec_dev:
+			import gamedata
+
+			gamedata.test("Data/empires2_x1_p1.dat")
+			return
+
+
 		file_write(file_get_path('processed/player_color_palette.pal', write=True), palette.gen_player_color_palette())
 
 		import blendomatic
@@ -72,6 +82,9 @@ def main():
 
 		if args.extrafiles:
 			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
+	else:
+		if not exec_dev:
+			raise Exception("development mode requires write access")
 
 
 	files_extracted = 0

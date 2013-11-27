@@ -11,15 +11,19 @@ class Empires2X1P1Convert:
 	#version, NumTerRest, NumTer
 	initial_information= Struct(endianness + "8s H H")
 
-	def __init__(self,fname):
+	def __init__(self, fname):
 		self.fname = fname
-		print("reading empires2x1p1 from %s" % fname)
+		dbg("reading empires2x1p1 from %s" % fname, 1)
 
-		f = open(fname, mode='rb')
+		fname = file_get_path(fname, write = False)
+		f = file_open(fname, binary = True, write = False)
 
+		#decompress content with zlib (note the magic -15)
 		content = zlib.decompress( f.read(), -15)
-		print("decompressed data from %s" % fname)
-		print( "length of that data: %d" % sys.getsizeof(content) )
+		f.close()
+
+		dbg("decompressed data from %s" % fname, 1)
+		dbg( "length of that data: %d" % sys.getsizeof(content), 1)
 
 		#do the extracting
 		#header
@@ -27,25 +31,28 @@ class Empires2X1P1Convert:
 		empires_header = Empires2X1P1Convert.initial_information.unpack_from(content,offset)
 		offset += Empires2X1P1Convert.initial_information.size
 		self.version, self.terrain_restriction_count, self.terrain_count = empires_header
-		print("version: %s, TerRestCount: %d, TerCount: %d" % (self.version, self.terrain_restriction_count, self.terrain_count))
+		dbg("version: %s, TerRestCount: %d, TerCount: %d" % (self.version, self.terrain_restriction_count, self.terrain_count), 1)
 
 		#terrain_rest_offsets
 		struct_terrain_restriction_offset = Struct(endianness + "%di" % (2*self.terrain_restriction_count))
 		#theoratically there are 2 different sets of offsets
 		self.terrain_restriction_offsets = struct_terrain_restriction_offset.unpack_from(content,offset)
 		offset += struct_terrain_restriction_offset.size
-		print('TerrainRestrictionOffsets:', self.terrain_restriction_offsets)
+		dbg("TerrainRestrictionOffsets: " + str(self.terrain_restriction_offsets), 1)
 
 		#TerrainRestrictions
 		self.terrain_restrictions = []
 		for i in range(self.terrain_count):
 			self.terrain_restrictions.append(TerrainRestriction())
 			offset = self.terrain_restrictions[i].read_data(self.terrain_count, content, offset)
-		print('TerRest[0]: \n' + str(self.terrain_restrictions[0]))
-		print('TerRest[1]: \n' + str(self.terrain_restrictions[1]))
-		print('TerRest[2]: \n' + str(self.terrain_restrictions[2]))
-		print('TerRest[3]: \n' + str(self.terrain_restrictions[3]))
-		print('TerRest[4]: \n' + str(self.terrain_restrictions[4]))
+
+		#dump the first 5 terrain restrictions
+		for i in range(5):
+			dbg('TerRest[%d]: \n%s' % (i, self.terrain_restrictions[i]), 1)
+
+	def __str__(self):
+		ret = "[age2x1p1]" #TODO moar information
+		return ret
 
 
 class TerrainRestriction:
@@ -67,6 +74,13 @@ class TerrainRestriction:
 		return '[TerrainRestriction: ' + str(self.terrain_accessibles) + ' , ' + str(self.terrain_pass_graphic) + ' ]'
 
 
+def test(datfile):
+	dbg("converting the empires2_x1_p1 main game data file...")
+	tryit = Empires2X1P1Convert(datfile)
+	dbg("result:\n" + str(tryit), 1)
+
 if __name__ == "__main__":
-	tryit = Empires2X1P1Convert("../Age_of_Empires_Files/Data/empires2_x1_p1.dat")
+	#fak u frank
+	import os
+	os.system("python convert -o .. -d -vv ../Age_of_Empires_Files/")
 
