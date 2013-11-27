@@ -4,210 +4,213 @@ gamedata
 the contents of empires2_x1_p1.dat
 
 struct {
-	char[8] versionstr
+	char[8] versionstr;
 
-	uint16_t terrain_restriction_count
-	uint16_t terrain_count
-	int32_t [terrain_restriction_count] terrain_restriction_offset0
-	int32_t [terrain_restriction_count] terrain_restriction_offset1
+	uint16_t terrain_restriction_count;
+	uint16_t terrain_count;
+	int32_t[terrain_restriction_count] terrain_restriction_offset0;
+	int32_t[terrain_restriction_count] terrain_restriction_offset1;
 	struct {
-		float[terrain_count] terrain_accessibles
+		float[terrain_count] terrain_accessibles;
 		struct {
-			int32_t buildable
-			int32_t graphic_id_first
-			int32_t graphic_id_second
-			int32_t replication_amount
-		} terrain_pass_graphic [terrain_count]
-	} terrain_restriction [terrain_restriction_count]
+			int32_t buildable;
+			int32_t graphic_id_first;
+			int32_t graphic_id_second;
+			int32_t replication_amount;
+		} terrain_pass_graphic[terrain_count];
+	} terrain_restriction[terrain_restriction_count];
 
-	uint16_t player_color_count
-	struct{
-		int32_t id
-		int32_t palette
-		int32_t color
-		int32_t unknown0
-		int32_t unknown1
-		int32_t minimap_color
-		int32_t unknown2
-		int32_t unknown3
-		int32_t unknown4
-	} player_color [player_color_count]
-
-	uint16_t sound_count
+	uint16_t player_color_count;
 	struct {
-		int32_t id
-		uint16_t item_count
-		int32_t unknown0
-		struct {
-			char[13] filename //really 13?
-			int32_t resource_id
-			int16_t probability
-			int16_t civilisation
-			int16_t unknown0
-		} sound_item [item_count]
-	} sound [sound_count]
+		int32_t id;
+		int32_t palette;
+		int32_t color;
+		int32_t unknown;
+		int32_t unknown;
+		int32_t minimap_color;
+		int32_t unknown;
+		int32_t unknown;
+		int32_t unknown;
+	} player_color[player_color_count];
 
-	int16_t graphic_count
-	int32_t [graphic_count] graphic_offset
+	uint16_t sound_count;
+	struct {
+		int32_t id;
+		uint16_t item_count;
+		int32_t unknown;
+		struct {
+			char[13] filename;
+			int32_t resource_id;
+			int16_t probability;
+			int16_t civilisation;
+			int16_t unknown;
+		} sound_item[item_count];
+	} sound[sound_count];
+
+	int16_t graphic_count;
+	int32_t[graphic_count] graphic_offset;
 	struct {
 		struct {
-			char[21] name0
-			char[13] name1
-			int32_t slp
-			char unknown0
-			char unknown1
-			char layer
-			char unknown2
-			char unknown3
-			char replay
-			int16_t[4] coordinates
-			uint16_t delta_count
-			int16_t sound_id
-			bool attack_sound_used
-			uint16_t frame_count
-			uint16_t angle_count
-			float unknown4
-			float frame_rate
-			float replay_delay
-			char sequence_type
-			int16_t id
-			int16_t type
-		} graphic_header
+			char[21] name0;
+			char[13] name1;
+			int32_t slp;
+			char unknown;
+			char unknown;
+			char layer;
+			char unknown;
+			char unknown;
+			char replay;
+			int16_t[4] coordinates;
+			uint16_t delta_count;
+			int16_t sound_id;
+			bool attack_sound_used;
+			uint16_t frame_count;
+			uint16_t angle_count;
+			float unknown;
+			float frame_rate;
+			float replay_delay;
+			char sequence_type;
+			int16_t id;
+			int16_t type;
+		} graphic_header;
+
 		struct {
-			int16_t graphic_id
-			int16_t unknown0
-			int16_t unknown1
-			int16_t unknown2
-			int16_t direction_x
-			int16_t direction_y
-			int16_t unknown3
-			int16_t unknown4
-		} graphic_delta [graphic_header.delta_count]
-		//if(graphic_header.attack_sound_used):
+			int16_t graphic_id;
+			int16_t unknown;
+			int16_t unknown;
+			int16_t unknown;
+			int16_t direction_x;
+			int16_t direction_y;
+			int16_t unknown;
+			int16_t unknown;
+		} graphic_delta[graphic_header.delta_count];
+
+		//if(graphic_header.attack_sound_used) {
 		struct {
 			struct {
-				int16_t sound_delay
-				int16_t sound_id
-			} sound_props [3]
-		} graphic_attack_sound [graphic_header.angle_count]
-	} graphic [graphic_count]
-	char [138] graphic_rendering
-
-	struct {
-		int16_t unknown0
-		int16_t unknown1
-		char[13] name0
-		char[13] name1
-		int32_t slp_id
-		int32_t unknown2
-		int32_t sound_id
-		int32_t blend_priority
-		int32_t blend_type
-		char[3] color
-		int16_t unknown3
-		int16_t unknown4
-		char[23] unknown5
-		int16_t frame_count
-		int16_t[2] unknown6
-		int16_t[54] unknown7
-		int16_t terrain_replacement_id
-		int16_t terrain_dimensions0
-		int16_t terrain_dimensions1
-		char[84] unknown8
-		int16_t[30] terrain_unit_id
-		int16_t[30] terrain_unit_density
-		char[30] unknown9
-		int16_t terrain_units_used_count
-	} terrain [terrain_count]
-
-	char[438] unknown0
-
-	struct {
-		int16_t enabled
-		char[13] name0
-		char[13] name1
-		int ressource_id
-		int unknown
-		int unknown1
-		char[3] color
-		char unknown
-		int unknown
-		int unknown
-		struct {
-			int16_t frame_id
-			int16_t flag0
-			int16_t flag1
-		} frame_data [230]
-		int16_t frame_count
-		int16_t unknown
-		int16_t unknown
-		int16_t unknown
-	} terrrain_borders [16]
-
-	char[28] zero
-	uint16_t terrain_count1
-	char[12722] rendering_etc
-
-	uint32_t tech_count
-	struct {
-		char[31] name
-		uint16_t effect_count
-		struct {
-			signed char type
-			int16_t unit
-			int16_t class
-			int16_t attribute
-			float amount
-		} effect [effect_count]
-	} tech [tech_count]
-
-	uint32_t unit_count
-	struct {
-		bool exists
-		//if(exists) {
-		uint16_t command_count
-		struct {
-			int16_t one
-			int16_t id
-			char unknown
-			int16_t type
-			int16_t class_id
-			int16_t unit_id
-			int16_t unknown
-			int16_t ressource_in
-			int16_t sub_type
-			int16_t ressource_out
-			int16_t unknown
-			float unknown
-			float execution_radius
-			float unknown
-			char unknown
-			float unknown
-			char unknown
-			char unknown
-			char unknown
-			int16_t unknown
-			int16_t unknown
-			char unknown
-			int16_t[6] graphic
-		} unit_command [command_count]
+				int16_t sound_delay;
+				int16_t sound_id;
+			} sound_props[3];
+		} graphic_attack_sound[graphic_header.angle_count];
 		//}
-	} unit_header [unit_count]
+	} graphic[graphic_count];
+	char[138] graphic_rendering;
 
-	uint16_t civ_count
 	struct {
-		char one
-		char[20] name
-		uint16_t ressources_count
-		int16_t tech_tree_id
-		int16_t team_bonus_id
-		float[ressources_count] ressources
-		char graphic_set
-		uint16_t units_count
-		int32_t[unit_count] unit_offsets
+		int16_t unknown;
+		int16_t unknown;
+		char[13] name0;
+		char[13] name1;
+		int32_t slp_id;
+		int32_t unknown;
+		int32_t sound_id;
+		int32_t blend_priority;
+		int32_t blend_type;
+		char[3] color;
+		int16_t unknown;
+		int16_t unknown;
+		char[23] unknown;
+		int16_t frame_count;
+		int16_t[2] unknown;
+		int16_t[54] unknown;
+		int16_t terrain_replacement_id;
+		int16_t terrain_dimensions0;
+		int16_t terrain_dimensions1;
+		char[84] unknown;
+		int16_t[30] terrain_unit_id;
+		int16_t[30] terrain_unit_density;
+		char[30] unknown;
+		int16_t terrain_units_used_count;
+	} terrain[terrain_count];
+
+	char[438] unknown;
+
+	struct {
+		int16_t enabled;
+		char[13] name0;
+		char[13] name1;
+		int ressource_id;
+		int unknown;
+		int unknown;
+		char[3] color;
+		char unknown;
+		int unknown;
+		int unknown;
+		struct {
+			int16_t frame_id;
+			int16_t flag0;
+			int16_t flag1;
+		} frame_data[230];
+		int16_t frame_count;
+		int16_t unknown;
+		int16_t unknown;
+		int16_t unknown;
+	} terrrain_borders[16];
+
+	char[28] zero;
+	uint16_t terrain_count1;
+	char[12722] rendering_etc;
+
+	uint32_t tech_count;
+	struct {
+		char[31] name;
+		uint16_t effect_count;
+		struct {
+			signed char type;
+			int16_t unit;
+			int16_t class;
+			int16_t attribute;
+			float amount;
+		} effect[effect_count];
+	} tech[tech_count];
+
+	uint32_t unit_count;
+	struct {
+		bool exists;
+		//if(exists) {
+		uint16_t command_count;
+		struct {
+			int16_t one;
+			int16_t id;
+			char unknown;
+			int16_t type;
+			int16_t class_id;
+			int16_t unit_id;
+			int16_t unknown;
+			int16_t ressource_in;
+			int16_t sub_type;
+			int16_t ressource_out;
+			int16_t unknown;
+			float unknown;
+			float execution_radius;
+			float unknown;
+			char unknown;
+			float unknown;
+			char unknown;
+			char unknown;
+			char unknown;
+			int16_t unknown;
+			int16_t unknown;
+			char unknown;
+			int16_t[6] graphic;
+		} unit_command[command_count];
+		//}
+	} unit_header[unit_count];
+
+	uint16_t civ_count;
+	struct {
+		char one;
+		char[20] name;
+		uint16_t ressources_count;
+		int16_t tech_tree_id;
+		int16_t team_bonus_id;
+		float[ressources_count] ressources;
+		char graphic_set;
+		uint16_t units_count;
+		int32_t[unit_count] unit_offsets;
 		struct {
 			//TODO
-		} unit [unit_count]
-	} civ [civ_count]
+		} unit[unit_count];
+	} civ[civ_count];
 
-} empires2_x1_p1
+} empires2_x1_p1;
