@@ -54,7 +54,12 @@ class Empires2X1P1:
 		from gamedata import playercolor
 		t = playercolor.PlayerColorData()
 		offset = t.read(raw, offset)
-		self.data["playercolor"] = t.data
+		self.data["color"] = t.data
+
+		from gamedata import sound
+		t = sound.SoundData()
+		offset = t.read(raw, offset)
+		self.data["sound"] = t.data
 
 
 	def __str__(self):
