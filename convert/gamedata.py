@@ -7,7 +7,7 @@ from util import dbg, file_get_path, file_open
 
 endianness = '< '
 
-class Empires2X1P1Convert:
+class Empires2X1P1:
 	#version, NumTerRest, NumTer
 	initial_information= Struct(endianness + "8s H H")
 
@@ -29,8 +29,8 @@ class Empires2X1P1Convert:
 		#do the extracting
 		#header
 		offset = 0
-		empires_header = Empires2X1P1Convert.initial_information.unpack_from(content,offset)
-		offset += Empires2X1P1Convert.initial_information.size
+		empires_header = Empires2X1P1.initial_information.unpack_from(content,offset)
+		offset += Empires2X1P1.initial_information.size
 		self.version, self.terrain_restriction_count, self.terrain_count = empires_header
 		dbg("version: %s, TerRestCount: %d, TerCount: %d" % (self.version, self.terrain_restriction_count, self.terrain_count), 1)
 
@@ -77,7 +77,7 @@ class TerrainRestriction:
 
 def test(datfile):
 	dbg("converting the empires2_x1_p1 main game data file...")
-	tryit = Empires2X1P1Convert(datfile)
+	tryit = Empires2X1P1(datfile)
 	dbg("result:\n" + str(tryit), 1)
 
 if __name__ == "__main__":
