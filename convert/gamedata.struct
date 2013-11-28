@@ -1,17 +1,12 @@
-gamedata
-========
-
-the contents of empires2_x1_p1.dat
-
 struct {
-	char[8] versionstr;
+	char versionstr[8];
 
 	uint16_t terrain_restriction_count;
 	uint16_t terrain_count;
-	int32_t[terrain_restriction_count] terrain_restriction_offset0;
-	int32_t[terrain_restriction_count] terrain_restriction_offset1;
+	int32_t terrain_restriction_offset0[terrain_restriction_count];
+	int32_t terrain_restriction_offset1[terrain_restriction_count];
 	struct {
-		float[terrain_count] terrain_accessibles;
+		float terrain_accessibles[terrain_count];
 		struct {
 			int32_t buildable;
 			int32_t graphic_id_first;
@@ -39,7 +34,7 @@ struct {
 		uint16_t item_count;
 		int32_t unknown;
 		struct {
-			char[13] filename;
+			char filename[13];
 			int32_t resource_id;
 			int16_t probability;
 			int16_t civilisation;
@@ -48,11 +43,11 @@ struct {
 	} sound[sound_count];
 
 	int16_t graphic_count;
-	int32_t[graphic_count] graphic_offset;
+	int32_t graphic_offset[graphic_count];
 	struct {
 		struct {
-			char[21] name0;
-			char[13] name1;
+			char name0[21];
+			char name1[13];
 			int32_t slp;
 			uint8_t unknown;
 			uint8_t unknown;
@@ -60,7 +55,7 @@ struct {
 			uint8_t unknown;
 			uint8_t unknown;
 			uint8_t replay;
-			int16_t[4] coordinates;
+			int16_t coordinates[4];
 			uint16_t delta_count;
 			int16_t sound_id;
 			bool attack_sound_used;
@@ -99,40 +94,40 @@ struct {
 	struct {
 		int16_t unknown;
 		int16_t unknown;
-		char[13] name0;
-		char[13] name1;
+		char name0[13];
+		char name1[13];
 		int32_t slp_id;
 		int32_t unknown;
 		int32_t sound_id;
 		int32_t blend_priority;
 		int32_t blend_type;
-		uint8_t[3] color;
+		uint8_t color[3];
 		int16_t unknown;
 		int16_t unknown;
-		uint8_t[23] unknown;
+		uint8_t unknown[23];
 		int16_t frame_count;
-		int16_t[2] unknown;
-		int16_t[54] unknown;
+		int16_t unknown[2];
+		int16_t unknown[54];
 		int16_t terrain_replacement_id;
 		int16_t terrain_dimensions0;
 		int16_t terrain_dimensions1;
-		uint8_t[84] unknown;
-		int16_t[30] terrain_unit_id;
-		int16_t[30] terrain_unit_density;
-		uint8_t[30] unknown;
+		uint8_t unknown[84];
+		int16_t terrain_unit_id[30];
+		int16_t terrain_unit_density[30];
+		uint8_t unknown[30];
 		int16_t terrain_units_used_count;
 	} terrain[terrain_count];
 
-	uint8_t[438] unknown;
+	uint8_t unknown[438];
 
 	struct {
 		int16_t enabled;
-		char[13] name0;
-		char[13] name1;
+		char name0[13];
+		char name1[13];
 		int ressource_id;
 		int unknown;
 		int unknown;
-		uint8_t[3] color;
+		uint8_t color[3];
 		uint8_t unknown;
 		int unknown;
 		int unknown;
@@ -147,13 +142,13 @@ struct {
 		int16_t unknown;
 	} terrrain_borders[16];
 
-	uint8_t[28] zero;
+	uint8_t zero[28];
 	uint16_t terrain_count1;
-	uint8_t[12722] rendering_etc;
+	uint8_t rendering_etc[12722];
 
 	uint32_t tech_count;
 	struct {
-		char[31] name;
+		char name[31];
 		uint16_t effect_count;
 		struct {
 			int8_t type;
@@ -192,7 +187,7 @@ struct {
 			int16_t unknown;
 			int16_t unknown;
 			uint8_t unknown;
-			int16_t[6] graphic;
+			int16_t graphic[6];
 		} unit_command[command_count];
 		//}
 	} unit_header[unit_count];
@@ -200,14 +195,15 @@ struct {
 	uint16_t civ_count;
 	struct {
 		uint8_t one;
-		char[20] name;
+		char name[20];
 		uint16_t ressources_count;
 		int16_t tech_tree_id;
 		int16_t team_bonus_id;
 		float[ressources_count] ressources;
 		uint8_t graphic_set;
 		uint16_t units_count;
-		int32_t[unit_count] unit_offsets;
+		int32_t unit_offsets[unit_count];
+
 		struct {
 			struct {
 				uint8_t type;
@@ -285,11 +281,13 @@ struct {
 				float selection_radius1;
 				float hp_bar_height1;
 			} header;
+
 			struct {
 				int16_t a;
 				float b;
 				uint8_t c;
 			} resource_storage[3];
+
 			uint8_t damage_graphics_count;
 			struct {
 				int16_t graphic_id;
@@ -297,10 +295,11 @@ struct {
 				uint8_t unknown;
 				uint8_t unknown;
 			} damage_grapic[damage_graphics_count];
+
 			int16_t selection_sound;
 			int16_t dying_sound;
 			int16_t attack_sound;
-			char[header.name_length] name;
+			char name[header.name_length];
 			int16_t id1;
 			int16_t id2;
 
@@ -310,6 +309,7 @@ struct {
 			//if (header.type >= unit_type.flag = 20) {
 			float speed;
 			//} else { done; }
+
 			//if (header.type >= unit_type.dead_fish = 30) {
 			struct {
 				int16_t walking_graphics0;
@@ -320,9 +320,10 @@ struct {
 				bool tracking_unit_used;
 				float tracking_unit_density;
 				float unknown;
-				uint8_t[17] unknown;
+				uint8_t unknown[17];
 			} dead_fish;
 			//}
+
 			//if (header.type >= unit_type.bird = 40) {
 			struct {
 				int16_t sheep_conversion;
@@ -336,6 +337,7 @@ struct {
 				uint8_t animal_mode;
 			} bird;
 			//}
+
 			//if (header.type >= unit_type.projectile = 60) {
 			struct {
 				uint8_t unknown;
@@ -358,7 +360,7 @@ struct {
 				int16_t accuracy_percent;
 				uint8_t tower_mode;
 				int16_t delay;
-				float[3] graphics_displacement;
+				float graphics_displacement[3];
 				uint8_t unknown;
 				float min_range;
 				float garnison_recovery_rate;
@@ -369,6 +371,7 @@ struct {
 				float reload_time1;
 			} projectile;
 			//}
+
 			//if (header.type == unit_type.projectile = 60) {
 			struct {
 				uint8_t stretch_mode;
@@ -379,6 +382,7 @@ struct {
 				float projectile_arc;
 			} projectile_only;
 			//}
+
 			//if (header.type >= unit_type.creatable = 70) {
 			struct {
 				struct {
@@ -390,7 +394,7 @@ struct {
 				int16_t train_location_id;
 				uint8_t button_id;
 				uint8_t unknown;
-				int16_t[3] unknown;
+				int16_t unknown[3];
 				uint8_t unknown;
 				uint8_t missile_graphic_delay;
 				uint8_t hero_mode;
@@ -398,13 +402,14 @@ struct {
 				int16_t garnison_graphic1;
 				float attack_missile_duplication0;
 				uint8_t attack_missile_duplication1;
-				float[3] attack_missile_duplication_spawning;
+				float attack_missile_duplication_spawning[3];
 				int32_t attack_missile_duplication_unit;
 				int32_t attack_missile_duplication_graphic;
 				uint8_t unknown;
 				int16_t pierce_armor_displayed;
 			} creatable;
 			//}
+
 			//if (header.type >= unit_type.building = 80) {
 			struct {
 				int16_t construction_graphic_id;
@@ -430,12 +435,11 @@ struct {
 				float garnison_heal_rate;
 				int32_t unknown;
 				int16_t unknown;
-				uint8_t[6] unknown;
+				uint8_t unknown[6];
 			} building;
 			//}
 		} unit[unit_count];
 	} civ[civ_count];
-
 
 	uint16_t research_count;
 	struct {
@@ -444,7 +448,6 @@ struct {
 			int16_t a;
 			int16_t b;
 			int8_t c;
-
 		} research_resource_cost[3];
 		int16_t required_tech_count;
 		int16_t civilisation;
@@ -457,12 +460,12 @@ struct {
 		int16_t tech_type;
 		int16_t icon_id;
 		uint8_t button_id;
-		int32_t[3] pointers;
+		int32_t pointers[3];
 		uint16_t name_length;
-		char[name_length] name;
+		char name[name_length];
 	} research[research_count];
 
-	int32_t[7] pre_tech_tree_unknown;
+	int32_t unknown[7];
 
 	struct {
 		uint8_t age_count;
@@ -474,36 +477,38 @@ struct {
 			int32_t id;
 			int8_t unknown;
 			uint8_t building_count;
-			int32_t[building_count] buildings;
+			int32_t buildings[building_count];
 			uint8_t unit_count;
-			int32_t[unit_count] units;
+			int32_t units[unit_count];
 			uint8_t research_count;
-			int32_t[research_count] researches;
+			int32_t researches[research_count];
 			int32_t unknown;
 			int32_t unknown;
-			int16_t[49] zeroes;
+			int16_t zeroes[49];
 		} age_tech_tree[age_count];
 		int32_t unknown;
+
 		struct {
 			int32_t id;
 			int8_t unknown;
 			uint8_t building_count;
-			int32_t[building_count] buildings;
+			int32_t buildings[building_count];
 			uint8_t unit_count;
-			int32_t[unit_count] units;
+			int32_t units[unit_count];
 			uint8_t research_count;
-			int32_t[research_count] researches;
+			int32_t researches[research_count];
 			int32_t age;
 			int32_t unit_or_research0;
 			int32_t unit_or_research1;
-			int32_t[8] unknown;
+			int32_t unknown[8];
 			int32_t mode0;
 			int32_t mode1;
-			int32_t[7] unknown;
-			int8_t[11] unknown;
+			int32_t unknown[7];
+			int8_t unknown[11];
 			int32_t connections;
 			int32_t enabling_research;
 		} building_connection[building_count];
+
 		struct {
 			int32_t id;
 			int8_t unknown;
@@ -512,34 +517,35 @@ struct {
 			int32_t age;
 			int32_t unit_or_research0;
 			int32_t unit_or_research1;
-			int32_t[8] unknown;
+			int32_t unknown[8];
 			int32_t mode0;
 			int32_t mode1;
-			int32_t[7] unknown;
+			int32_t unknown[7];
 			int32_t vertical_line;
 			uint8_t unit_count;
-			int32_t[unit_count] units;
+			int32_t units[unit_count];
 			int32_t location_in_age;
 			int32_t required_research;
 			int32_t line_mode;
 			int32_t enabling_research;
 		} unit_connection[unit_count];
+
 		struct {
 			int32_t id;
 			int8_t unknown;
 			int32_t upper_building;
 			uint8_t building_count;
-			int32_t[building_count] buildings;
+			int32_t buildings[building_count];
 			uint8_t unit_count;
-			int32_t[unit_count] units;
+			int32_t units[unit_count];
 			uint8_t research_count;
-			int32_t[research_count] researches;
+			int32_t researches[research_count];
 			int32_t required_research;
 			int32_t age;
 			int32_t upper_research;
-			int32_t[9] unknown;
+			int32_t unknown[9];
 			int32_t line_mode;
-			int32_t[8] unknown;
+			int32_t unknown[8];
 			int32_t vertical_line;
 			int32_t location_in_age;
 			int32_t unknown;
