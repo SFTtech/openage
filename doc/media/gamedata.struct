@@ -48,7 +48,7 @@ struct {
 		struct {
 			char name0[21];
 			char name1[13];
-			int32_t slp;
+			int32_t slp_id;
 			uint8_t unknown;
 			uint8_t unknown;
 			uint8_t layer;
@@ -100,7 +100,7 @@ struct {
 		int32_t unknown;
 		int32_t sound_id;
 		int32_t blend_priority;
-		int32_t blend_type;
+		int32_t blend_mode;
 		uint8_t color[3];
 		int16_t unknown;
 		int16_t unknown;
