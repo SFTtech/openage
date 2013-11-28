@@ -61,8 +61,8 @@ class TerrainPassGraphic:
 		self.data = dict()
 
 		#int32_t buildable;
-		#int32_t graphic_id_first;
-		#int32_t graphic_id_second;
+		#int32_t graphic_id0;
+		#int32_t graphic_id1;
 		#int32_t replication_amount;
 		terrain_pass_graphic_struct = Struct(endianness + "i i i i")
 

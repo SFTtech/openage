@@ -10,7 +10,7 @@ struct {
 		struct {
 			int32_t buildable;
 			int32_t graphic_id0;
-			int32_t graphic_id0;
+			int32_t graphic_id1;
 			int32_t replication_amount;
 		} terrain_pass_graphic[terrain_count];
 	} terrain_restriction[terrain_restriction_count];
