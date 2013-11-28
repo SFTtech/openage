@@ -8,6 +8,8 @@ from util import dbg, file_get_path, file_open
 endianness = '< '
 
 class Empires2X1P1:
+	"""represents the compressed empires2_x1_p1.dat"""
+
 	#version, NumTerRest, NumTer
 	initial_information= Struct(endianness + "8s H H")
 
@@ -24,7 +26,7 @@ class Empires2X1P1:
 		f.close()
 
 		dbg("decompressed data from %s" % fname, 1)
-		dbg( "length of that data: %d" % sys.getsizeof(content), 1)
+		dbg("length of that data: %d" % sys.getsizeof(content), 1)
 
 		#do the extracting
 		#header

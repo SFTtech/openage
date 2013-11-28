@@ -62,9 +62,8 @@ def main():
 	if write_enabled:
 
 		if exec_dev:
-			import gamedata
-
-			gamedata.test("Data/empires2_x1_p1.dat")
+			import gamedata.empiresdat
+			gamedata.empiresdat.test("Data/empires2_x1_p1.dat")
 			return
 
 
