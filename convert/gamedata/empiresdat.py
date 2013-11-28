@@ -85,5 +85,5 @@ def test(datfile):
 if __name__ == "__main__":
 	#fak u frank
 	import os
-	os.system("python convert -o .. -d -vv ../Age_of_Empires_Files/")
+	os.system("python convert -o ../../ -d -vv ../../Age_of_Empires_Files/")
 
