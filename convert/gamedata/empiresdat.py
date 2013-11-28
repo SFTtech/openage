@@ -47,9 +47,14 @@ class Empires2X1P1:
 		dbg("version: %s" % (self.data["version"]), 1)
 
 		from gamedata import terrain
-		t = terrain.TerrainHeader()
+		t = terrain.TerrainHeaderData()
 		offset = t.read(raw, offset)
 		self.data["terrain"] = t.data
+
+		from gamedata import playercolor
+		t = playercolor.PlayerColorData()
+		offset = t.read(raw, offset)
+		self.data["playercolor"] = t.data
 
 
 	def __str__(self):

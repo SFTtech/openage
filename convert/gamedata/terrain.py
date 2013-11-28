@@ -4,9 +4,10 @@ from util import dbg
 endianness = '< '
 
 
-class TerrainHeader:
+class TerrainHeaderData:
 	def read(self, raw, offset):
 		self.data = dict()
+
 		#uint16_t terrain_restriction_count;
 		#uint16_t terrain_count;
 		header_struct = Struct(endianness + "h h")
@@ -56,17 +57,17 @@ class TerrainRestriction:
 
 
 class TerrainPassGraphic:
-	def __init__(self):
+	def read(self, raw, offset):
+		self.data = dict()
+
 		#int32_t buildable;
 		#int32_t graphic_id_first;
 		#int32_t graphic_id_second;
 		#int32_t replication_amount;
-		self.terrain_pass_graphic_struct = Struct(endianness + "i i i i")
+		terrain_pass_graphic_struct = Struct(endianness + "i i i i")
 
-	def read(self, raw, offset):
-		self.data = dict()
-		pg = self.terrain_pass_graphic_struct.unpack_from(raw, offset)
-		offset += self.terrain_pass_graphic_struct.size
+		pg = terrain_pass_graphic_struct.unpack_from(raw, offset)
+		offset += terrain_pass_graphic_struct.size
 
 		self.data["buildable"]          = pg[0]
 		self.data["graphic_id0"]        = pg[1]
