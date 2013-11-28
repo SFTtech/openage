@@ -6,11 +6,11 @@ struct {
 	int32_t terrain_restriction_offset0[terrain_restriction_count];
 	int32_t terrain_restriction_offset1[terrain_restriction_count];
 	struct {
-		float terrain_accessibles[terrain_count];
+		float terrain_accessible[terrain_count];
 		struct {
 			int32_t buildable;
-			int32_t graphic_id_first;
-			int32_t graphic_id_second;
+			int32_t graphic_id0;
+			int32_t graphic_id0;
 			int32_t replication_amount;
 		} terrain_pass_graphic[terrain_count];
 	} terrain_restriction[terrain_restriction_count];
