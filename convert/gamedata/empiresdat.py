@@ -1,5 +1,3 @@
-import os
-import sys
 import zlib
 
 from struct import Struct, unpack_from
@@ -20,18 +18,27 @@ class Empires2X1P1:
 		fname = file_get_path(fname, write = False)
 		f = file_open(fname, binary = True, write = False)
 
+		dbg("decompressing data from %s" % fname, 1)
+
+		compressed_data = f.read()
 		#decompress content with zlib (note the magic -15)
 		#-15: - -> there is no header, 15 is the max windowsize
-		content = zlib.decompress( f.read(), -15)
+		self.content = zlib.decompress(compressed_data, -15)
 		f.close()
 
-		dbg("decompressed data from %s" % fname, 1)
-		dbg("length of that data: %d" % sys.getsizeof(content), 1)
+		compressed_size   = len(compressed_data)
+		decompressed_size = len(self.content)
+
+		del compressed_data
+
+		dbg("length of compressed data: %d = %d kB" % (compressed_size, compressed_size/1024), 1)
+		dbg("length of decompressed data: %d = %d kB" % (decompressed_size, decompressed_size/1024), 1)
+
 
 		#do the extracting
 		#header
 		offset = 0
-		empires_header = Empires2X1P1.initial_information.unpack_from(content,offset)
+		empires_header = Empires2X1P1.initial_information.unpack_from(self.content, offset)
 		offset += Empires2X1P1.initial_information.size
 		self.version, self.terrain_restriction_count, self.terrain_count = empires_header
 		dbg("version: %s, TerRestCount: %d, TerCount: %d" % (self.version, self.terrain_restriction_count, self.terrain_count), 1)
@@ -39,7 +46,7 @@ class Empires2X1P1:
 		#terrain_rest_offsets
 		struct_terrain_restriction_offset = Struct(endianness + "%di" % (2*self.terrain_restriction_count))
 		#theoratically there are 2 different sets of offsets
-		self.terrain_restriction_offsets = struct_terrain_restriction_offset.unpack_from(content,offset)
+		self.terrain_restriction_offsets = struct_terrain_restriction_offset.unpack_from(self.content, offset)
 		offset += struct_terrain_restriction_offset.size
 		dbg("TerrainRestrictionOffsets: " + str(self.terrain_restriction_offsets), 1)
 
@@ -47,7 +54,7 @@ class Empires2X1P1:
 		self.terrain_restrictions = []
 		for i in range(self.terrain_count):
 			self.terrain_restrictions.append(TerrainRestriction())
-			offset = self.terrain_restrictions[i].read_data(self.terrain_count, content, offset)
+			offset = self.terrain_restrictions[i].read_data(self.terrain_count, self.content, offset)
 
 		#dump the first 5 terrain restrictions
 		for i in range(5):
