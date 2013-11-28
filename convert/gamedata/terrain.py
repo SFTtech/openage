@@ -10,7 +10,7 @@ class TerrainHeaderData:
 
 		#uint16_t terrain_restriction_count;
 		#uint16_t terrain_count;
-		header_struct = Struct(endianness + "h h")
+		header_struct = Struct(endianness + "H H")
 
 		header = header_struct.unpack_from(raw, offset)
 		offset += header_struct.size
