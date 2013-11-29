@@ -61,6 +61,11 @@ class Empires2X1P1:
 		offset = t.read(raw, offset)
 		self.data["sound"] = t.data
 
+		from gamedata import graphic
+		t = graphic.GraphicData()
+		offset = t.read(raw, offset)
+		self.data["graphic"] = t.data
+
 
 	def __str__(self):
 		ret = "[age2x1p1]\n"
