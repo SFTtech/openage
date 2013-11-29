@@ -49,24 +49,23 @@ struct {
 			char name0[21];
 			char name1[13];
 			int32_t slp_id;
-			uint8_t unknown;
-			uint8_t unknown;
-			uint8_t layer;
-			uint8_t unknown;
-			uint8_t unknown;
-			uint8_t replay;
+			int8_t unknown;
+			int8_t unknown;
+			int8_t layer;
+			int16_t player_color;
+			bool replay;
 			int16_t coordinates[4];
 			uint16_t delta_count;
 			int16_t sound_id;
 			bool attack_sound_used;
 			uint16_t frame_count;
 			uint16_t angle_count;
-			float unknown;
+			float new_speed;
 			float frame_rate;
 			float replay_delay;
-			uint8_t sequence_type;
+			int8_t sequence_type;
 			int16_t id;
-			int16_t type;
+			int16_t mirroring_mode;
 		} graphic_header;
 
 		struct {
@@ -85,11 +84,11 @@ struct {
 			struct {
 				int16_t sound_delay;
 				int16_t sound_id;
-			} sound_props[3];
+			} sound_prop[3];
 		} graphic_attack_sound[graphic_header.angle_count];
 		//}
 	} graphic[graphic_count];
-	uint8_t[138] graphic_rendering;
+	int8_t[138] graphic_rendering;
 
 	struct {
 		int16_t unknown;
@@ -104,21 +103,21 @@ struct {
 		uint8_t color[3];
 		int16_t unknown;
 		int16_t unknown;
-		uint8_t unknown[23];
+		int8_t unknown[23];
 		int16_t frame_count;
 		int16_t unknown[2];
 		int16_t unknown[54];
 		int16_t terrain_replacement_id;
 		int16_t terrain_dimensions0;
 		int16_t terrain_dimensions1;
-		uint8_t unknown[84];
+		int8_t unknown[84];
 		int16_t terrain_unit_id[30];
 		int16_t terrain_unit_density[30];
-		uint8_t unknown[30];
+		int8_t unknown[30];
 		int16_t terrain_units_used_count;
 	} terrain[terrain_count];
 
-	uint8_t unknown[438];
+	int8_t unknown[438];
 
 	struct {
 		int16_t enabled;
@@ -128,7 +127,7 @@ struct {
 		int unknown;
 		int unknown;
 		uint8_t color[3];
-		uint8_t unknown;
+		int8_t unknown;
 		int unknown;
 		int unknown;
 		struct {
@@ -142,9 +141,9 @@ struct {
 		int16_t unknown;
 	} terrrain_borders[16];
 
-	uint8_t zero[28];
+	int8_t zero[28];
 	uint16_t terrain_count1;
-	uint8_t rendering_etc[12722];
+	int8_t rendering_etc[12722];
 
 	uint32_t tech_count;
 	struct {
@@ -167,7 +166,7 @@ struct {
 		struct {
 			int16_t one;
 			int16_t id;
-			uint8_t unknown;
+			int8_t unknown;
 			int16_t type;
 			int16_t class_id;
 			int16_t unit_id;
@@ -179,14 +178,14 @@ struct {
 			float unknown;
 			float execution_radius;
 			float unknown;
-			uint8_t unknown;
+			int8_t unknown;
 			float unknown;
-			uint8_t unknown;
-			uint8_t unknown;
-			uint8_t unknown;
+			int8_t unknown;
+			int8_t unknown;
+			int8_t unknown;
 			int16_t unknown;
 			int16_t unknown;
-			uint8_t unknown;
+			int8_t unknown;
 			int16_t graphic[6];
 		} unit_command[command_count];
 		//}
@@ -194,19 +193,19 @@ struct {
 
 	uint16_t civ_count;
 	struct {
-		uint8_t one;
+		int8_t one;
 		char name[20];
 		uint16_t ressources_count;
 		int16_t tech_tree_id;
 		int16_t team_bonus_id;
 		float[ressources_count] ressources;
-		uint8_t graphic_set;
+		int8_t graphic_set;
 		uint16_t units_count;
 		int32_t unit_offsets[unit_count];
 
 		struct {
 			struct {
-				uint8_t type;
+				int8_t type;
 				/*
 				object = 10
 				flag = 20
@@ -226,20 +225,20 @@ struct {
 				int16_t standing_graphic1;
 				int16_t dying_graphic0;
 				int16_t dying_graphic1;
-				uint8_t death_mode;
+				int8_t death_mode;
 				int16_t hit_points;
 				float line_of_sight;
-				uint8_t garnison_capacity;
+				int8_t garnison_capacity;
 				float radius_size0;
 				float radius_size1;
 				float hp_bar_height0;
 				int16_t train_sound0;
 				int16_t train_sound1;
 				int16_t dead_unit_id;
-				uint8_t placement_mode;
-				uint8_t air_mode;
+				int8_t placement_mode;
+				int8_t air_mode;
 				int16_t icon_id;
-				uint8_t hidden_in_editor;
+				int8_t hidden_in_editor;
 				int16_t unknown;
 				int16_t enabled;
 				int16_t placement_by_pass_terrain0;
@@ -248,34 +247,34 @@ struct {
 				int16_t placement_terrain1;
 				float editor_radius0;
 				float editor_radius1;
-				uint8_t building_mode;
-				uint8_t visible_in_fog;
+				int8_t building_mode;
+				int8_t visible_in_fog;
 				int16_t terrain_restriction;
-				uint8_t fly_mode;
+				int8_t fly_mode;
 				int16_t resource_capacity;
 				float resource_decay;
-				uint8_t blast_type;
-				uint8_t unknown;
-				uint8_t interaction_mode;
-				uint8_t minimap_mode;
+				int8_t blast_type;
+				int8_t unknown;
+				int8_t interaction_mode;
+				int8_t minimap_mode;
 				int16_t command_attribute;
 				int16_t unknown;
 				int16_t unknown;
 				uint16_t language_dll_help;
 				int16_t[4] hot_keys;
-				uint8_t unknown;
-				uint8_t unknown;
+				int8_t unknown;
+				int8_t unknown;
 				bool unselectable;
-				uint8_t unknown;
-				uint8_t unknown;
-				uint8_t unknown;
-				uint8_t selection_mask;
-				uint8_t selection_shape_type;
-				uint8_t selection_shape;
-				uint8_t attribute;
-				uint8_t civilisation;
+				int8_t unknown;
+				int8_t unknown;
+				int8_t unknown;
+				int8_t selection_mask;
+				int8_t selection_shape_type;
+				int8_t selection_shape;
+				int8_t attribute;
+				int8_t civilisation;
 				int16_t unknown;
-				uint8_t selection_effect;
+				int8_t selection_effect;
 				uint8_t editor_selection_color;
 				float selection_radius0;
 				float selection_radius1;
@@ -285,15 +284,15 @@ struct {
 			struct {
 				int16_t a;
 				float b;
-				uint8_t c;
+				int8_t c;
 			} resource_storage[3];
 
-			uint8_t damage_graphics_count;
+			int8_t damage_graphics_count;
 			struct {
 				int16_t graphic_id;
-				uint8_t damage_percent;
-				uint8_t unknown;
-				uint8_t unknown;
+				int8_t damage_percent;
+				int8_t unknown;
+				int8_t unknown;
 			} damage_grapic[damage_graphics_count];
 
 			int16_t selection_sound;
@@ -315,12 +314,12 @@ struct {
 				int16_t walking_graphics0;
 				int16_t walking_graphics1;
 				float rotation_speed;
-				uint8_t unknown;
+				int8_t unknown;
 				int16_t tracking_unit;
 				bool tracking_unit_used;
 				float tracking_unit_density;
 				float unknown;
-				uint8_t unknown[17];
+				int8_t unknown[17];
 			} dead_fish;
 			//}
 
@@ -331,17 +330,17 @@ struct {
 				float work_rate;
 				int16_t drop_site0;
 				int16_t drop_site1;
-				uint8_t villager_mode;
+				int8_t villager_mode;
 				int16_t move_sound;
 				int16_t stop_sound;
-				uint8_t animal_mode;
+				int8_t animal_mode;
 			} bird;
 			//}
 
 			//if (header.type >= unit_type.projectile = 60) {
 			struct {
-				uint8_t unknown;
-				uint8_t unknown;
+				int8_t unknown;
+				int8_t unknown;
 				uint16_t attack_count;
 				struct {
 					int16_t class;
@@ -358,10 +357,10 @@ struct {
 				float reload_time0;
 				int16_t projectile_unit_id;
 				int16_t accuracy_percent;
-				uint8_t tower_mode;
+				int8_t tower_mode;
 				int16_t delay;
 				float graphics_displacement[3];
-				uint8_t unknown;
+				int8_t unknown;
 				float min_range;
 				float garnison_recovery_rate;
 				int16_t attack_graphic;
@@ -374,11 +373,11 @@ struct {
 
 			//if (header.type == unit_type.projectile = 60) {
 			struct {
-				uint8_t stretch_mode;
-				uint8_t compensation_mode;
-				uint8_t drop_animation_mode;
-				uint8_t penetration_mode;
-				uint8_t unknown;
+				int8_t stretch_mode;
+				int8_t compensation_mode;
+				int8_t drop_animation_mode;
+				int8_t penetration_mode;
+				int8_t unknown;
 				float projectile_arc;
 			} projectile_only;
 			//}
@@ -392,20 +391,20 @@ struct {
 				} ressource_cost[3];
 				int16_t train_time;
 				int16_t train_location_id;
-				uint8_t button_id;
-				uint8_t unknown;
+				int8_t button_id;
+				int8_t unknown;
 				int16_t unknown[3];
-				uint8_t unknown;
-				uint8_t missile_graphic_delay;
-				uint8_t hero_mode;
+				int8_t unknown;
+				int8_t missile_graphic_delay;
+				int8_t hero_mode;
 				int16_t garnison_graphic0;
 				int16_t garnison_graphic1;
 				float attack_missile_duplication0;
-				uint8_t attack_missile_duplication1;
+				int8_t attack_missile_duplication1;
 				float attack_missile_duplication_spawning[3];
 				int32_t attack_missile_duplication_unit;
 				int32_t attack_missile_duplication_graphic;
-				uint8_t unknown;
+				int8_t unknown;
 				int16_t pierce_armor_displayed;
 			} creatable;
 			//}
@@ -415,13 +414,13 @@ struct {
 				int16_t construction_graphic_id;
 				int16_t snow_graphic_id;
 				int16_t adjacent_mode;
-				uint8_t unknown;
-				uint8_t unknown;
+				int8_t unknown;
+				int8_t unknown;
 				int16_t stack_unit_id;
 				int16_t terrain_id;
 				int16_t unknown;
 				int16_t research_id;
-				uint8_t unknown;
+				int8_t unknown;
 				struct {
 					int16_t unit_id;
 					float misplaced0;
@@ -431,11 +430,11 @@ struct {
 				int16_t transform_unit;
 				int16_t unknown;
 				int16_t construction_sound_id;
-				uint8_t garnison_type;
+				int8_t garnison_type;
 				float garnison_heal_rate;
 				int32_t unknown;
 				int16_t unknown;
-				uint8_t unknown[6];
+				int8_t unknown[6];
 			} building;
 			//}
 		} unit[unit_count];
@@ -459,7 +458,7 @@ struct {
 		int16_t tech_id;
 		int16_t tech_type;
 		int16_t icon_id;
-		uint8_t button_id;
+		int8_t button_id;
 		int32_t pointers[3];
 		uint16_t name_length;
 		char name[name_length];
@@ -468,19 +467,19 @@ struct {
 	int32_t unknown[7];
 
 	struct {
-		uint8_t age_count;
-		uint8_t building_count;
-		uint8_t unit_count;
-		uint8_t research_count;
+		int8_t age_count;
+		int8_t building_count;
+		int8_t unit_count;
+		int8_t research_count;
 		struct {
 			int32_t unknown;
 			int32_t id;
 			int8_t unknown;
-			uint8_t building_count;
+			int8_t building_count;
 			int32_t buildings[building_count];
-			uint8_t unit_count;
+			int8_t unit_count;
 			int32_t units[unit_count];
-			uint8_t research_count;
+			int8_t research_count;
 			int32_t researches[research_count];
 			int32_t unknown;
 			int32_t unknown;
@@ -491,11 +490,11 @@ struct {
 		struct {
 			int32_t id;
 			int8_t unknown;
-			uint8_t building_count;
+			int8_t building_count;
 			int32_t buildings[building_count];
-			uint8_t unit_count;
+			int8_t unit_count;
 			int32_t units[unit_count];
-			uint8_t research_count;
+			int8_t research_count;
 			int32_t researches[research_count];
 			int32_t age;
 			int32_t unit_or_research0;
@@ -522,7 +521,7 @@ struct {
 			int32_t mode1;
 			int32_t unknown[7];
 			int32_t vertical_line;
-			uint8_t unit_count;
+			int8_t unit_count;
 			int32_t units[unit_count];
 			int32_t location_in_age;
 			int32_t required_research;
@@ -534,11 +533,11 @@ struct {
 			int32_t id;
 			int8_t unknown;
 			int32_t upper_building;
-			uint8_t building_count;
+			int8_t building_count;
 			int32_t buildings[building_count];
-			uint8_t unit_count;
+			int8_t unit_count;
 			int32_t units[unit_count];
-			uint8_t research_count;
+			int8_t research_count;
 			int32_t researches[research_count];
 			int32_t required_research;
 			int32_t age;
