@@ -1,5 +1,5 @@
 from struct import Struct, unpack_from
-from util import dbg
+from util import dbg, zstr
 
 endianness = '< '
 
@@ -62,7 +62,7 @@ class SoundItem:
 		pc = sound_item_struct.unpack_from(raw, offset)
 		offset += sound_item_struct.size
 
-		self.data["filename"]      = pc[0]
+		self.data["filename"]      = zstr(pc[0])
 		self.data["resource_id"]   = pc[1]
 		self.data["probablilty"]   = pc[2]
 		self.data["civilisation"]  = pc[3]

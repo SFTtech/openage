@@ -1,5 +1,5 @@
 from struct import Struct, unpack_from
-from util import dbg
+from util import dbg, zstr
 
 endianness = '< '
 
@@ -91,8 +91,8 @@ class GraphicHeader:
 		pc = graphic_header_struct.unpack_from(raw, offset)
 		offset += graphic_header_struct.size
 
-		self.data["name0"]             = pc[0]
-		self.data["name1"]             = pc[1]
+		self.data["name0"]             = zstr(pc[0])
+		self.data["name1"]             = zstr(pc[1])
 		self.data["slp_id"]            = pc[2]
 		#self.data[""] = pc[3]
 		#self.data[""] = pc[4]
