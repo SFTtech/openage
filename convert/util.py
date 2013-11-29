@@ -216,3 +216,13 @@ def generate_meta_text(metadata, header = None):
 		meta_out += "%d,%d\n" % (hotspot_x, hotspot_y)
 
 	return meta_out
+
+
+def zstr(data):
+	"""
+	returns the utf8 string representation of a byte array.
+
+	terminates on end of string, or when \0 is reached.
+	"""
+
+	return data.decode("utf-8").rstrip("\x00")
