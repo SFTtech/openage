@@ -37,6 +37,8 @@ class Empires2X1P1:
 		offset = 0
 		offset = self.read(self.content, offset)
 
+		print("finished reading empires*.dat at %d of %d bytes (%f%%)." % (offset, decompressed_size, 100*(offset/decompressed_size)))
+
 	def read(self, raw, offset):
 
 		#char versionstr[8];
@@ -70,6 +72,8 @@ class Empires2X1P1:
 		t = terrain.TerrainData(self.data["terrain"]["terrain_count"])
 		offset = t.read(raw, offset)
 		self.data["terrain"].update(t.data)
+
+		return offset
 
 
 	def __str__(self):
