@@ -88,7 +88,7 @@ struct {
 		} graphic_attack_sound[graphic_header.angle_count];
 		//}
 	} graphic[graphic_count];
-	int8_t[138] graphic_rendering;
+	int8_t[138] rendering_data;
 
 	struct {
 		int16_t unknown;
