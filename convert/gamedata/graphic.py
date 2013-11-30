@@ -31,9 +31,6 @@ class GraphicData:
 			offset = t.read(raw, offset)
 			self.data["graphic"] += [t.data]
 
-			if i > 7016:
-				break
-
 		return offset
 
 
