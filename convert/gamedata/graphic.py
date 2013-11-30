@@ -31,6 +31,12 @@ class GraphicData:
 			offset = t.read(raw, offset)
 			self.data["graphic"] += [t.data]
 
+		#int8_t[138] rendering_data;
+		rendering_data_struct = Struct(endianness + "138c")
+
+		self.data["rendering_data"] = rendering_data_struct.unpack_from(raw, offset)
+		offset += rendering_data_struct.size
+
 		return offset
 
 
