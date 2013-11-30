@@ -66,6 +66,11 @@ class Empires2X1P1:
 		offset = t.read(raw, offset)
 		self.data["graphic"] = t.data
 
+		from gamedata import terrain
+		t = terrain.TerrainData(self.data["terrain"]["terrain_count"])
+		offset = t.read(raw, offset)
+		self.data["terrain"].update(t.data)
+
 
 	def __str__(self):
 		ret = "[age2x1p1]\n"
