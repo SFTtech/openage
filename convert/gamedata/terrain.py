@@ -1,5 +1,5 @@
 from struct import Struct, unpack_from
-from util import dbg
+from util import dbg, zstr
 
 endianness = '< '
 
@@ -128,8 +128,8 @@ class Terrain:
 
 		#self.data[""] = pc[0]
 		#self.data[""] = pc[1]
-		self.data["name0"]                    = pc[2]
-		self.data["name1"]                    = pc[3]
+		self.data["name0"]                    = zstr(pc[2])
+		self.data["name1"]                    = zstr(pc[3])
 		self.data["slp_id"]                   = pc[4]
 		#self.data[""] = pc[5]
 		self.data["sound_id"]                 = pc[6]
@@ -199,8 +199,8 @@ class TerrainBorder:
 		offset += terrain_border_struct0.size
 
 		self.data["enabled"]      = pc[0]
-		self.data["name0"]        = pc[1]
-		self.data["name1"]        = pc[2]
+		self.data["name0"]        = zstr(pc[1])
+		self.data["name1"]        = zstr(pc[2])
 		self.data["ressource_id"] = pc[3]
 		#self.data[""] = pc[4]
 		#self.data[""] = pc[5]
