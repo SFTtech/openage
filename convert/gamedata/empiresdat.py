@@ -31,6 +31,11 @@ class Empires2X1P1:
 		dbg("length of compressed data: %d = %d kB" % (compressed_size, compressed_size/1024), 1)
 		dbg("length of decompressed data: %d = %d kB" % (decompressed_size, decompressed_size/1024), 1)
 
+
+		from util import file_write
+		print("saving uncompressed dat file...")
+		file_write(file_get_path('info/empires2x1p1.raw', write=True), self.content)
+
 		#the main data storage
 		self.data = dict()
 
@@ -85,6 +90,11 @@ class Empires2X1P1:
 		t = tech.TechData()
 		offset = t.read(raw, offset)
 		self.data["tech"] = t.data
+
+		from gamedata import unit
+		t = unit.UnitHeaderData()
+		offset = t.read(raw, offset)
+		self.data["unit"] = t.data
 
 		return offset
 
