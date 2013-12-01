@@ -73,6 +73,14 @@ class Empires2X1P1:
 		offset = t.read(raw, offset)
 		self.data["terrain"].update(t.data)
 
+		tmp_struct = Struct(endianness + "438c")
+		offset += tmp_struct.size
+
+		from gamedata import terrain
+		t = terrain.TerrainBorderData()
+		offset = t.read(raw, offset)
+		self.data["terrain"].update(t.data)
+
 		return offset
 
 

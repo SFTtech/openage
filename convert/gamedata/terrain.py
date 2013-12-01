@@ -153,3 +153,99 @@ class Terrain:
 		self.data["terrain_units_used_count"] = pc[271]
 
 		return offset
+
+
+class TerrainBorderData:
+	def read(self, raw, offset):
+		self.data = dict()
+
+		self.data["terrain_border"] = list()
+		for i in range(16):
+			t = TerrainBorder()
+			offset = t.read(raw, offset)
+			self.data["terrain_border"] += [t.data]
+
+		#int8_t zero[28];
+		#uint16_t terrain_count_additional;
+		zero_terrain_count_struct = Struct(endianness + "28c H")
+		pc = zero_terrain_count_struct.unpack_from(raw, offset)
+		offset += zero_terrain_count_struct.size
+
+		self.data["terrain_count_additional"] = pc[28]
+
+		tmp_struct = Struct(endianness + "12722c")
+		offset += tmp_struct.size
+
+		return offset
+
+
+class TerrainBorder:
+	def read(self, raw, offset):
+		self.data = dict()
+
+		#int16_t enabled;
+		#char name0[13];
+		#char name1[13];
+		#int32_t ressource_id;
+		#int32_t unknown;
+		#int32_t unknown;
+		#uint8_t color[3];
+		#int8_t unknown;
+		#int32_t unknown;
+		#int32_t unknown;
+		terrain_border_struct0 = Struct(endianness + "h 13s 13s 3i 3B b 2i")
+
+		pc = terrain_border_struct0.unpack_from(raw, offset)
+		offset += terrain_border_struct0.size
+
+		self.data["enabled"]      = pc[0]
+		self.data["name0"]        = pc[1]
+		self.data["name1"]        = pc[2]
+		self.data["ressource_id"] = pc[3]
+		#self.data[""] = pc[4]
+		#self.data[""] = pc[5]
+		self.data["color"]        = pc[6:(6+3)]
+		#self.data[""] = pc[9]
+		#self.data[""] = pc[10]
+		#self.data[""] = pc[11]
+
+		self.data["frame_data"] = list()
+		for i in range(230):
+			t = FrameData()
+			offset = t.read(raw, offset)
+			self.data["frame_data"] += [t.data]
+
+		#int16_t frame_count;
+		#int16_t unknown;
+		#int16_t unknown;
+		#int16_t unknown;
+		terrain_border_struct1 = Struct(endianness + "4h")
+
+		pc = terrain_border_struct1.unpack_from(raw, offset)
+		offset += terrain_border_struct1.size
+
+		self.data["frame_count"] = pc[0]
+		#self.data[""] = pc[1]
+		#self.data[""] = pc[2]
+		#self.data[""] = pc[3]
+
+		return offset
+
+
+class FrameData:
+	def read(self, raw, offset):
+		self.data = dict()
+
+		#int16_t frame_id;
+		#int16_t flag0;
+		#int16_t flag1;
+		frame_data_struct = Struct(endianness + "3h")
+
+		pc = frame_data_struct.unpack_from(raw, offset)
+		offset += frame_data_struct.size
+
+		self.data["frame_id"] = pc[0]
+		self.data["flag0"]    = pc[1]
+		self.data["flag1"]    = pc[2]
+
+		return offset
