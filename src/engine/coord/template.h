@@ -1,15 +1,20 @@
 #error "this file is a template for creating coordinate classes"
 
+#ifndef _ENGINE_COORD_[NAME]_H_
+#define _ENGINE_COORD_[NAME]_H_
+
 #include <stdint.h>
 
-#define MEMBERS x, y
-#define RELATIVE_TYPE my_system_delta
-#define ABSOLUTE_TYPE my_system
-#define SCALAR_TYPE int16_t
+#define MEMBERS [memberlist]
+#define SCALAR_TYPE [scalaralias]
+#define RELATIVE_TYPE [name]_delta
+#define ABSOLUTE_TYPE [name]
 
 namespace openage {
 namespace engine {
 namespace coord {
+
+using SCALAR_TYPE = [scalartype];
 
 struct ABSOLUTE_TYPE;
 struct RELATIVE_TYPE;
@@ -28,13 +33,18 @@ struct RELATIVE_TYPE {
 
 #include "ops/free.h"
 
+#ifdef GEN_IMPL
+#undef GEN_IMPL
+#include "ops/impl.h"
+#endif //GEN_IMPL
+
 } //namespace coord
 } //namespace engine
 } //namespace openage
 
-#ifndef KEEP_DEFS
 #undef MEMBERS
 #undef RELATIVE_TYPE
 #undef ABSOLUTE_TYPE
 #undef SCALAR_TYPE
-#endif //KEEP_DEFS
+
+#endif //_ENGINE_COORD_[NAME]_H_

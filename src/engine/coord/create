@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#this script creates types for all coordinate systems defined in
+#doc/implementation/coordinate-systems
+
+./create.py phys2 phys_t int64_t ne se
+./create.py phys3 phys_t int64_t ne se up
+./create.py tile tile_t int64_t ne se
+./create.py tile3 tile_t int64_t ne se up
+./create.py chunk chunk_t int64_t ne se
+
+./create.py window window_t int16_t x y
+./create.py camgame window_t int16_t x y
+./create.py camhud window_t int16_t x y

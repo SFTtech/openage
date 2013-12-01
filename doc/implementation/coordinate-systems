@@ -1,62 +1,75 @@
 COMPREHENSIVE LIST OF ALL COORDINATE SYSTEMS
 
-coord_sdl
-	SDL coordinates
-	orthonormal 2D (x,y), integers, in pixels
+phys2/phys3
+	Physics coordinates
+	orthonormal 2D/3D (NE,SE)/(NE,SE,UP), fixed-point, in tu/teu
 
-	Origin is top left corner of window
+	origin is in the middle of tile (0,0) (at elevation 0)
+	positive in NE, SE, UP directions
+
+	a unit at (0.5,0.5) stands on the east corner of tile (0,0)
+
+	NE: north-east, in tu (terrain length unit)
+	SE: south-east, in tu (terrain length unit)
+	UP: guess what, in teu (terrain elevation unit)
+
+	we believe that 1 teu = 1 tu / sqrt(8) (from aspect ration calculations)
+	the actual relation is pretty irrelevant, though.
+
+	given in these systems:
+		Camera
+		Units
+		Projectiles
+
+tile/tile3
+	Tile coordinates
+	orthonormal 2D/3D (NE,SE)/(NE,SE,UP), integer, in tu/teu
+
+	identical to phys2/phys3 systems, but uses integers
+
+	given in these systems:
+		Terrain tiles
+		Buildings
+
+chunk
+	Chunk coordinates
+	orthonormal 2D (NE,SE), integer, in 16tu/16teu
+
+	similar to tile system, but describes chunks of 16x16 tiles
+
+	given in these systems:
+		Chunks
+
+window
+	Window coordinates
+	orthonormal 2D (x,y), integer, in pixels
+
+	origin is top left corner of window
 	positive in right and down directions
 
-	mouse coordinates and window size are received from SDL
-	in this coordinate system
+	given in this system:
+		SDL mouse
+		OpenGL viewport
 
-coord_phys
-	Game (physics) coordinates
-	orthonormal 3D (NE,SE,Up), fixed-point, in tu/teu
+camgame
+	game camera coordinates
+	orthonormal 2D (x,y), integer, in pixels
 
-	Origin is in the middle of the central (0,0) 'origin' tile
-	a unit that is located at (0.5, 0.5) stands on the east corner of the
-	central tile.
-	positive in north-east, south-east and up directions
+	origin is center of window
+	positive in up, right directions
 
-	NE: north-east, in tu
-	SE: south-east, in tu
-	Up: guess what, in teu
+	while in game rendering mode, the renderer accepts
+	coordinates of this type.
 
-	tu: tile unit; the length of one tile
-	teu: tile elevation unit; the difference of elevation
+camhud
+	game camera coordinates
+	orthonormal 2D (x,y), integer, in pixels
 
-	first assumption: 1 teu = 1 tu / sqrt(8) (determined from aspect ratio calculations)
+	origin is bottom left corner of window
+	positive in up, right directions
 
-	objects given in coord_phys:
-		camera
-		all units
-		all terrain tiles
-		projectiles
-		buildings
-		...
-
-	physics are done exclusively in this coordinate system
-
-coord_hud
-	HUD coordinates
-	orthonormal 2D (x,y), float, in pixels
-
-	Origin is top left corner of window
-	positive in right and down directions
-
-	objects given in coord_hud can be directly passed to OpenGL,
-	during HUD rendering
-
-coord_camera
-	Camera coordinates
-	orthonormal 2D (x,y), float, in pixels
-
-	Origin is center of window (CWINDOW position: width/2, height/2)
-	positive in right and down directions
-
-	objects given in coord_camera can be directly passed to OpenGL,
-	during game rendering
+	while in hud rendering mode, the renderer accepts
+	coordinates of this type.
 
 
 
