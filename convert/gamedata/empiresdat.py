@@ -81,6 +81,11 @@ class Empires2X1P1:
 		offset = t.read(raw, offset)
 		self.data["terrain"].update(t.data)
 
+		from gamedata import tech
+		t = tech.TechData()
+		offset = t.read(raw, offset)
+		self.data["tech"] = t.data
+
 		return offset
 
 
