@@ -18,3 +18,6 @@
 
 ./create.py vec2    int64_t  x y
 ./create.py vec3    int64_t  x y z
+
+./create.py vec2f   float    x y
+./create.py vec3f   float    x y z

@@ -55,6 +55,11 @@ struct vec2_delta;
 struct vec3;
 struct vec3_delta;
 
+struct vec2f;
+struct vec2f_delta;
+struct vec3f;
+struct vec3f_delta;
+
 } //namespace coord
 } //namespace engine
 } //namespace openage
