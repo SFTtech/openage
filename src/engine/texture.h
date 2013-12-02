@@ -4,7 +4,6 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 
-#include "coordinates.h"
 #include "shader/shader.h"
 #include "shader/program.h"
 
@@ -71,8 +70,8 @@ public:
 	Texture(const char *filename, bool use_metafile = false, unsigned int mode = 0);
 	~Texture();
 
-	void draw(coord::phys pos, bool mirrored = false, int subid = 0, unsigned player = 0);
-	void draw(int x, int y, bool mirrored = false, int subid = 0, unsigned player = 0);
+	template<class coordsystem>
+	void draw(coordsystem pos, bool mirrored = false, int subid = 0, unsigned player = 0);
 
 	struct subtexture *get_subtexture(int subid);
 	int get_subtexture_count();

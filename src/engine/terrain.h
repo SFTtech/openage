@@ -4,12 +4,13 @@
 #include <stddef.h>
 
 #include "texture.h"
-#include "coordinates.h"
+#include "coord/camgame.h"
+#include "coord/tile.h"
 
 namespace openage {
 namespace engine {
 
-extern coord::camera_delta tile_halfsize;
+extern coord::camgame_delta tile_halfsize;
 
 /**
 terrain class represents the drawn terrain.
@@ -23,12 +24,12 @@ public:
 
 	void draw();
 
-	void set_tile(coord::tileno pos, int tile);
-	int  get_tile(coord::tileno pos);
+	void set_tile(coord::tile pos, int tile);
+	int  get_tile(coord::tile pos);
 
 
 	size_t tile_position_diag(unsigned int row, unsigned int offset);
-	size_t tile_position(coord::tileno pos);
+	size_t tile_position(coord::tile pos);
 	size_t get_tile_count();
 
 	void set_texture(size_t index, engine::Texture *t);
@@ -50,7 +51,7 @@ private:
 
 	int *terrain_id_priority_map;
 
-	unsigned get_subtexture_id(coord::tileno pos, unsigned atlas_size);
+	unsigned get_subtexture_id(coord::tile pos, unsigned atlas_size);
 };
 
 } //namespace engine

@@ -5,8 +5,9 @@
 #include <SDL2/SDL.h>
 
 #include "console.h"
-#include "coordinates.h"
 #include "../util/fps.h"
+#include "coord/window.h"
+#include "coord/phys3.h"
 
 
 namespace openage {
@@ -80,17 +81,24 @@ extern bool running;
 /**
 size of the game window, in coord_sdl
 */
-extern coord::sdl window_size;
+extern coord::window window_size;
 
 /**
-position of the camera, in coord_phys
+position of the game camera, in the phys3 system
+(the position that it is rendered at camgame {0, 0})
 */
-extern coord::phys camera_pos_phys;
+extern coord::phys3 camgame_phys;
+/**
+position of the game camera, in the window system
+(the position where the camgame {0, 0} is rendered)
+*/
+extern coord::window camgame_window;
 
 /**
-position of the camera, in coord_sdl
+position of the hud camera, in the window system
+(the position where camhud {0, 0} is rendered)
 */
-extern coord::sdl camera_pos_sdl;
+extern coord::window camhud_window;
 
 /**
 the frame counter measuring fps.

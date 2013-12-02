@@ -2,12 +2,15 @@ COMPREHENSIVE LIST OF ALL COORDINATE SYSTEMS
 
 phys2/phys3
 	Physics coordinates
-	orthonormal 2D/3D (NE,SE)/(NE,SE,UP), fixed-point, in tu/teu
+	orthonormal 2D/3D (NE, SE)/(NE, SE, UP), in tu/teu
+	fixed-point integer with a 16-bit fractional part
 
-	origin is in the middle of tile (0,0) (at elevation 0)
+	origin is in the west corner of tile (0, 0) (at sea level),
+	and the west corner of chunk (0, 0)
 	positive in NE, SE, UP directions
 
-	a unit at (0.5,0.5) stands on the east corner of tile (0,0)
+	a unit at (0.5, 0.5) stands at the center of tile (0, 0)
+	a unit at (8, 8) stands at the center of chunk (0, 0)
 
 	NE: north-east, in tu (terrain length unit)
 	SE: south-east, in tu (terrain length unit)
@@ -23,7 +26,7 @@ phys2/phys3
 
 tile/tile3
 	Tile coordinates
-	orthonormal 2D/3D (NE,SE)/(NE,SE,UP), integer, in tu/teu
+	orthonormal 2D/3D (NE, SE)/(NE, SE, UP), integer, in tu/teu
 
 	identical to phys2/phys3 systems, but uses integers
 
@@ -33,7 +36,7 @@ tile/tile3
 
 chunk
 	Chunk coordinates
-	orthonormal 2D (NE,SE), integer, in 16tu/16teu
+	orthonormal 2D (NE, SE), integer, in 16tu/16teu
 
 	similar to tile system, but describes chunks of 16x16 tiles
 
@@ -42,7 +45,7 @@ chunk
 
 window
 	Window coordinates
-	orthonormal 2D (x,y), integer, in pixels
+	orthonormal 2D (x, y), integer, in pixels
 
 	origin is top left corner of window
 	positive in right and down directions
@@ -53,20 +56,20 @@ window
 
 camgame
 	game camera coordinates
-	orthonormal 2D (x,y), integer, in pixels
+	orthonormal 2D (x, y), integer, in pixels
 
 	origin is center of window
-	positive in up, right directions
+	positive in right and up directions
 
 	while in game rendering mode, the renderer accepts
 	coordinates of this type.
 
 camhud
 	game camera coordinates
-	orthonormal 2D (x,y), integer, in pixels
+	orthonormal 2D (x, y), integer, in pixels
 
 	origin is bottom left corner of window
-	positive in up, right directions
+	positive in right and up directions
 
 	while in hud rendering mode, the renderer accepts
 	coordinates of this type.
@@ -76,25 +79,17 @@ camhud
 CONVERSIONS
 
 
-
 for rendering
-	depending on where they are rendered,
-	objects are transformed to coord_camera or coord_hud
+	depending on whether objects are rendered as part of hud or by the game
+	camera, their coordinates are transformed to camgame or camhud
 
 for input processing
-	depending on whether they happened on a HUD object,
-	mouse clicks are transformed to coord_phys or coord_hud
+	again depending on whether inputs were aimed at an HUD object or an
+	entity rendered by the game camera, they (i.e. mouse clicks) are
+	transformed to camgame or camhud.
+	camgame coordinates can then further be converted to phys coordinates,
+	for mapping the inputs to physics objects.
 
 	idea: HUD drawing code will register HUD objects with the engine
 	the engine then memorizes the areas where HUD objects are drawn,
 	and checks whether the mouse click lies within one of the rectangles
-
-conversion from coord_phys to coord_camera:
-	subtract camera coordinates from a
-	a should now be very close to 0, minimizing floating point errors.
-
-	now, use transformation matrix to convert to coord_camera
-
-conversion coord_camera a -> coord_phys b:
-	use transformation matrix to convert to coord_camera
-	add camera coordinates

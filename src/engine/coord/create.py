@@ -4,13 +4,12 @@
 #
 #while there is no need to use it in any stage of development or building,
 #it greatly simplifies the creation of new coordinate system/vector types.
-#it has been developed in lieu of the erroneous manifold copy-pasting of the
-#template files
+#it has been developed in lieu of the erroneous manifold copy-pasting and
+#adjusting of the template files
 #
 #argv[1]  struct name
-#argv[2]  scalar type alias
-#argv[3]  scalar type name
-#argv[4:] member variables
+#argv[2]  scalar type name
+#argv[3:] member variables
 
 def readtemplate(fname):
 	with open(fname) as f:
@@ -25,15 +24,15 @@ templatecpp = readtemplate('template.cpp')
 #read command-line arguments
 import sys
 name = sys.argv[1]
-scalaralias = sys.argv[2]
-scalartype = sys.argv[3]
-memberlist = ', '.join(sys.argv[4:])
+scalartype = sys.argv[2]
+memberlist = ', '.join(sys.argv[3:])
 
 #generate template replacement dict
 replace = {
 	'name': name,
+	'absname': name,
+	'relname': name + '_delta',
 	'NAME': name.upper(),
-	'scalaralias': scalaralias,
 	'scalartype': scalartype,
 	'memberlist': memberlist
 }

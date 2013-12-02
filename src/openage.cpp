@@ -31,7 +31,7 @@ bool sc_left, sc_right, sc_up, sc_down;
 
 int *terrain_priority_list;
 struct building {
-	engine::coord::tileno pos;
+	engine::coord::tile pos;
 	unsigned player;
 	engine::Texture *tex;
 };
@@ -160,7 +160,7 @@ void init() {
 
 
 	//set the terrain types according to the data array.
-	engine::coord::tileno pos = {0, 0, 0};
+	engine::coord::tile pos = {0, 0, 0};
 	for (; pos.ne < (int) terrain->get_size(); pos.ne++) {
 		for (pos.se = 0; pos.se < (int) terrain->get_size(); pos.se++) {
 			int texid = terrain_data[pos.ne][pos.se];
@@ -293,7 +293,7 @@ void input_handler(SDL_Event *e) {
 		mousepos_sdl.y = (engine::coord::sdl_t) e->button.y;
 		engine::coord::phys mousepos_phys = engine::coord::sdl_to_phys(mousepos_sdl);
 		engine::coord::camera mousepos_camera = engine::coord::sdl_to_camera(mousepos_sdl);
-		engine::coord::tileno mousepos_tileno = engine::coord::phys_to_tileno(mousepos_phys);
+		engine::coord::tile mousepos_tileno = engine::coord::phys_to_tileno(mousepos_phys);
 
 		if (e->button.button == SDL_BUTTON_LEFT) {
 			log::dbg("LMB coord_sdl:   x %9hd y %9hd", mousepos_sdl.x, mousepos_sdl.y);

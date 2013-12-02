@@ -1,33 +1,33 @@
-#ifndef _ENGINE_COORD_WINDOW_H_
-#define _ENGINE_COORD_WINDOW_H_
+#ifndef _ENGINE_COORD_CAMGAME_H_
+#define _ENGINE_COORD_CAMGAME_H_
 
 #include "decl.h"
 
 #define MEMBERS x, y
 #define SCALAR_TYPE pixel_t
-#define ABSOLUTE_TYPE window
-#define RELATIVE_TYPE window_delta
+#define ABSOLUTE_TYPE camgame
+#define RELATIVE_TYPE camgame_delta
 
 namespace openage {
 namespace engine {
 namespace coord {
 
-struct window {
+struct camgame {
 	pixel_t x, y;
 
 	#include "ops/abs.h"
 
-	camgame to_camgame();
-	camhud to_camhud();
+	phys3 to_phys3(phys_t up = 0);
+	window to_window();
 };
 
-struct window_delta {
+struct camgame_delta {
 	pixel_t x, y;
 
 	#include "ops/rel.h"
 
-	camgame_delta to_camgame();
-	camhud_delta to_camhud();
+	phys3_delta to_phys3(phys_t up = 0);
+	window_delta to_window();
 };
 
 #include "ops/free.h"
@@ -46,4 +46,4 @@ struct window_delta {
 #undef ABSOLUTE_TYPE
 #undef SCALAR_TYPE
 
-#endif //_ENGINE_COORD_WINDOW_H_
+#endif //_ENGINE_COORD_CAMGAME_H_

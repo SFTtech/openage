@@ -3,30 +3,25 @@
 #ifndef _ENGINE_COORD_[NAME]_H_
 #define _ENGINE_COORD_[NAME]_H_
 
-#include <stdint.h>
+#include "decl.h"
 
 #define MEMBERS [memberlist]
-#define SCALAR_TYPE [scalaralias]
-#define RELATIVE_TYPE [name]_delta
-#define ABSOLUTE_TYPE [name]
+#define SCALAR_TYPE [scalartype]
+#define ABSOLUTE_TYPE [absname]
+#define RELATIVE_TYPE [relname]
 
 namespace openage {
 namespace engine {
 namespace coord {
 
-using SCALAR_TYPE = [scalartype];
-
-struct ABSOLUTE_TYPE;
-struct RELATIVE_TYPE;
-
-struct ABSOLUTE_TYPE {
-	SCALAR_TYPE MEMBERS;
+struct [absname] {
+	[scalartype] [memberlist];
 
 	#include "ops/abs.h"
 };
 
-struct RELATIVE_TYPE {
-	SCALAR_TYPE MEMBERS;
+struct [relname] {
+	[scalartype] [memberlist];
 
 	#include "ops/rel.h"
 };
