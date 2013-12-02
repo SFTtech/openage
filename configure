@@ -10,8 +10,10 @@ import argparse
 
 cmake_binary = "cmake"
 
-aboutmsg = "openage configure script\n\ninitializes cmake so you can compile the project afterwards"
-ap = argparse.ArgumentParser(description=aboutmsg)
+aboutmsg = "openage configure script, initializes cmake so you can compile the project afterwards"
+epilogmsg = "this script honors the CXX environment variable, but it has a lower priority than the --compiler option."
+
+ap = argparse.ArgumentParser(description=aboutmsg, epilog=epilogmsg)
 ap.add_argument("--mode", "-m", choices=["debug", "release"], default="release", help="an integer for the accumulator")
 ap.add_argument("--compiler", "-c", help="the compiler to use: clang++, g++")
 
@@ -29,12 +31,12 @@ def get_build_type(t):
 		res = prefix + "Release"
 	else:
 		raise Exception("unknown build type %s" % t)
-	return res
+	return [res]
 
 def get_compiler(t):
 	prefix = "-DCMAKE_CXX_COMPILER="
 	res = prefix + t
-	return res
+	return [res]
 
 
 if __name__ == "__main__":
@@ -43,10 +45,14 @@ if __name__ == "__main__":
 
 	cmake_args = []
 	if args.mode != None:
-		cmake_args += [get_build_type(args.mode)]
+		cmake_args += get_build_type(args.mode)
 
-	if args.compiler != None:
-		cmake_args += [get_compiler(args.compiler)]
+	cxx = args.compiler
+	if cxx == None:
+		if "CXX" in os.environ:
+			cxx = os.environ['CXX']
+	if cxx != None:
+		cmake_args += get_compiler(cxx)
 
 	cmake_call = cmake_binary + " " + " ".join(cmake_args) + " .."
 	os.system(cmake_call)
