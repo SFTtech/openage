@@ -163,7 +163,7 @@ void engine_window_resized(unsigned w, unsigned h) {
 	glViewport(0, 0, w, h);
 
 	// set orthographic projection: left, right, bottom, top, nearVal, farVal
-	glOrtho(0, w, h, 0, 9001, -1);
+	glOrtho(0, w, 0, h, 9001, -1);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -263,9 +263,8 @@ void loop() {
 			//draw FPS counter
 			glPushMatrix();
 			{
-				//top left corner
-				glTranslatef(15, 30, 0);
-				glScalef(1,-1,1);
+				//bottom left corner
+				glTranslatef(window_size.x - 100, 15, 0);
 				//white
 				glColor4f(1.0, 1.0, 1.0, 1.0);
 				char *fpstext = util::format("%.1f fps", fpscounter->fps);
