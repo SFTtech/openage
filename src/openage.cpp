@@ -173,39 +173,6 @@ void init() {
 	}
 
 
-	char *texturevshader_code = util::read_whole_file("shaders/maptexture.vert.glsl");
-	auto maptexture = new engine::shader::Shader(GL_VERTEX_SHADER, texturevshader_code);
-	delete[] texturevshader_code;
-
-	char *teamcolor_code = util::read_whole_file("shaders/teamcolors.frag.glsl");
-	auto teamcolor_frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, teamcolor_code);
-	delete[] teamcolor_code;
-
-	char *alphamask_vert_code = util::read_whole_file("shaders/alphamask.vert.glsl");
-	auto alphamask_vert = new engine::shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
-	delete[] alphamask_vert_code;
-
-	char *alphamask_frag_code = util::read_whole_file("shaders/alphamask.frag.glsl");
-	auto alphamask_frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
-	delete[] alphamask_frag_code;
-
-
-	engine::teamcolor_shader::program = new engine::shader::Program(maptexture, teamcolor_frag);
-	engine::teamcolor_shader::program->link();
-	engine::teamcolor_shader::player_id_var = engine::teamcolor_shader::program->get_uniform_id("player_number");
-	engine::teamcolor_shader::alpha_marker_var = engine::teamcolor_shader::program->get_uniform_id("alpha_marker");
-	engine::teamcolor_shader::player_color_var = engine::teamcolor_shader::program->get_uniform_id("player_color");
-
-	engine::alphamask_shader::program = new engine::shader::Program(alphamask_vert, alphamask_frag);
-	engine::alphamask_shader::program->link();
-	engine::alphamask_shader::base_texture = engine::alphamask_shader::program->get_uniform_id("base_texture");
-	engine::alphamask_shader::mask_texture = engine::alphamask_shader::program->get_uniform_id("mask_texture");
-	//engine::alphamask_shader::pos_id       = engine::alphamask_shader::program->get_attribute_id("vposition");
-	//engine::alphamask_shader::base_coord   = engine::alphamask_shader::program->get_attribute_id("btexc");
-	//engine::alphamask_shader::mask_coord   = engine::alphamask_shader::program->get_attribute_id("mtexc");
-
-	//GLuint ash_id = engine::alphamask_shader::program->get_id();
-	//GLint vpos_id = glGetAttribLocation(ash_id, "vposition")
 
 
 	//get the player colors from the sub-palette exported by script
@@ -215,7 +182,7 @@ void init() {
 	char *currentline = pcolor_file;
 
 	//hardcoded for now.
-	const uint num_pcolors = 64;
+	const unsigned int num_pcolors = 64;
 	GLfloat playercolors[num_pcolors*4];
 
 	for(; *pcolor_seeker != '\0'; pcolor_seeker++) {
@@ -248,16 +215,81 @@ void init() {
 
 	delete[] pcolor_file;
 
+
+	//shader initialisation
+
+	//read shader source codes and create shader objects for wrapping them.
+
+	char *texture_vert_code = util::read_whole_file("shaders/maptexture.vert.glsl");
+	auto plaintexture_vert = new engine::shader::Shader(GL_VERTEX_SHADER, texture_vert_code);
+	delete[] texture_vert_code;
+
+	char *texture_frag_code = util::read_whole_file("shaders/maptexture.frag.glsl");
+	auto plaintexture_frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, texture_frag_code);
+	delete[] texture_frag_code;
+
+	char *teamcolor_frag_code = util::read_whole_file("shaders/teamcolors.frag.glsl");
+	auto teamcolor_frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, teamcolor_frag_code);
+	delete[] teamcolor_frag_code;
+
+	char *alphamask_vert_code = util::read_whole_file("shaders/alphamask.vert.glsl");
+	auto alphamask_vert = new engine::shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
+	delete[] alphamask_vert_code;
+
+	char *alphamask_frag_code = util::read_whole_file("shaders/alphamask.frag.glsl");
+	auto alphamask_frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
+	delete[] alphamask_frag_code;
+
+
+
+	//create program for rendering simple textures
+	engine::texture_shader::program = new engine::shader::Program(plaintexture_vert, plaintexture_frag);
+	engine::texture_shader::program->link();
+	engine::texture_shader::texture   = engine::texture_shader::program->get_uniform_id("texture");
+	engine::texture_shader::tex_coord = engine::texture_shader::program->get_attribute_id("tex_coordinates");
+	engine::texture_shader::program->use();
+	glUniform1i(engine::texture_shader::texture, 0);
+	engine::texture_shader::program->stopusing();
+
+
+	//create program for tinting textures at alpha-marked pixels
+	//with team colors
+	engine::teamcolor_shader::program = new engine::shader::Program(plaintexture_vert, teamcolor_frag);
+	engine::teamcolor_shader::program->link();
+	engine::teamcolor_shader::texture          = engine::teamcolor_shader::program->get_uniform_id("texture");
+	engine::teamcolor_shader::tex_coord        = engine::teamcolor_shader::program->get_attribute_id("tex_coordinates");
+	engine::teamcolor_shader::player_id_var    = engine::teamcolor_shader::program->get_uniform_id("player_number");
+	engine::teamcolor_shader::alpha_marker_var = engine::teamcolor_shader::program->get_uniform_id("alpha_marker");
+	engine::teamcolor_shader::player_color_var = engine::teamcolor_shader::program->get_uniform_id("player_color");
 	engine::teamcolor_shader::program->use();
-	//keep in sync with media converter script:
+	glUniform1i(engine::teamcolor_shader::texture, 0);
 	glUniform1f(engine::teamcolor_shader::alpha_marker_var, 254.0/255.0);
+	//fill the teamcolor shader's player color table:
 	glUniform4fv(engine::teamcolor_shader::player_color_var, 64, playercolors);
 	engine::teamcolor_shader::program->stopusing();
 
+
+	//create program for drawing textures that are alpha-masked before
+	engine::alphamask_shader::program = new engine::shader::Program(alphamask_vert, alphamask_frag);
+	engine::alphamask_shader::program->link();
+	engine::alphamask_shader::base_coord   = engine::alphamask_shader::program->get_attribute_id("base_tex_coordinates");
+	engine::alphamask_shader::mask_coord   = engine::alphamask_shader::program->get_attribute_id("mask_tex_coordinates");
+	engine::alphamask_shader::show_mask    = engine::alphamask_shader::program->get_uniform_id("show_mask");
+	engine::alphamask_shader::base_texture = engine::alphamask_shader::program->get_uniform_id("base_texture");
+	engine::alphamask_shader::mask_texture = engine::alphamask_shader::program->get_uniform_id("mask_texture");
 	engine::alphamask_shader::program->use();
 	glUniform1i(engine::alphamask_shader::base_texture, 0);
 	glUniform1i(engine::alphamask_shader::mask_texture, 1);
 	engine::alphamask_shader::program->stopusing();
+
+
+
+	//after linking, the shaders are no longer necessary
+	delete plaintexture_vert;
+	delete plaintexture_frag;
+	delete teamcolor_frag;
+	delete alphamask_vert;
+	delete alphamask_frag;
 
 	log::msg("Time for startup: %.4f s", timer->measure()/1000.0);
 }
@@ -265,12 +297,12 @@ void init() {
 void deinit() {
 	log::msg("openage shutting down...");
 
+	//oh noes, release hl3 before that!
 	delete gaben;
+
 	delete university;
-	delete engine::shared_shaders::maptexture;
-	delete engine::teamcolor_shader::frag;
+	delete engine::texture_shader::program;
 	delete engine::teamcolor_shader::program;
-	delete engine::alphamask_shader::frag;
 	delete engine::alphamask_shader::program;
 
 	for (unsigned int i = 0; i < terrain_texture_count; i++) {

@@ -7,14 +7,14 @@ project(openage)
 #maybe use clang
 #set(CMAKE_CXX_COMPILER "clang++" )
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++11")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++11 -march=native -mtune=native")
 
 set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin")
 set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/lib")
 
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g -O0")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3 -Werror")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g -Og")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -Werror -O3 -flto=4")
 
 add_subdirectory("src")
 

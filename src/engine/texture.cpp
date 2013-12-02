@@ -15,21 +15,20 @@ namespace engine {
 
 //real definition of the shaders,
 //they are "external" in the header.
-namespace shared_shaders {
-shader::Shader *maptexture;
-} //namespace shared_shaders
+namespace texture_shader {
+shader::Program *program;
+GLint texture, tex_coord;
+} //namespace texture_shader
 
 namespace teamcolor_shader {
-shader::Shader *frag;
 shader::Program *program;
+GLint texture, tex_coord;
 GLint player_id_var, alpha_marker_var, player_color_var;
 } //namespace teamcolor_shader
 
 namespace alphamask_shader {
-shader::Shader *vert;
-shader::Shader *frag;
 shader::Program *program;
-GLint base_texture, mask_texture, pos_id, base_coord, mask_coord;
+GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 } //namespace alphamask_shader
 
 
@@ -171,6 +170,7 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		this->subtextures = new struct subtexture[1];
 		this->subtextures[0] = subtext;
 	}
+	glGenBuffers(1, &this->vertbuf);
 }
 
 Texture::~Texture() {
@@ -194,22 +194,45 @@ void Texture::draw(coord::camgame pos, bool mirrored, int subid, unsigned player
 }
 
 void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
-	glColor3f(1, 1, 1);
+	glColor4f(1, 1, 1, 1);
 
+	bool use_playercolors = false;
 	bool use_alphashader = false;
 	struct subtexture *mtx;
 
-	if (this->use_player_color_tinting) {
-		teamcolor_shader::program->use();
-		glUniform1i(teamcolor_shader::player_id_var, player);
-	} else if (this->alpha_subid >= 0 && this->use_alpha_masking) {
+	int *pos_id, *texcoord_id, *masktexcoord_id;
+
+	//is this texture drawn with an alpha mask?
+	if (this->alpha_subid >= 0 && this->use_alpha_masking) {
 		alphamask_shader::program->use();
+
+		//bind the alpha mask texture to slot 1
 		glActiveTexture(GL_TEXTURE1);
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, this->alpha_texture->get_texture_id());
-		use_alphashader = true;
 
+		//get the alphamask subtexture (the blend mask!)
 		mtx = this->alpha_texture->get_subtexture(this->alpha_subid);
+		pos_id = &alphamask_shader::program->pos_id;
+		texcoord_id = &alphamask_shader::base_coord;
+		masktexcoord_id = &alphamask_shader::mask_coord;
+		use_alphashader = true;
+	}
+	//is this texure drawn with replaced pixels for team coloring?
+	else if (this->use_player_color_tinting) {
+		teamcolor_shader::program->use();
+
+		//set the desired player id in the shader
+		glUniform1i(teamcolor_shader::player_id_var, player);
+		pos_id = &teamcolor_shader::program->pos_id;
+		texcoord_id = &teamcolor_shader::tex_coord;
+		use_playercolors = true;
+	}
+	//mkay, we just draw the plain texture otherwise.
+	else {
+		texture_shader::program->use();
+		pos_id = &texture_shader::program->pos_id;
+		texcoord_id = &texture_shader::tex_coord;
 	}
 
 	glActiveTexture(GL_TEXTURE0);
@@ -232,59 +255,84 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 		right = left - tx->w;
 	}
 
+	//convert the texture boundaries to float
+	//these will be the vertex coordinates.
+	float leftf, rightf, topf, bottomf;
+	leftf   = (float) left;
+	rightf  = (float) right;
+	topf    = (float) top;
+	bottomf = (float) bottom;
+
 	//subtexture coordinates
 	//left, right, top and bottom bounds as coordinates
 	//these pick the requested area out of the big texture.
 	float txl, txr, txt, txb;
 	this->get_subtexture_coordinates(tx, &txl, &txr, &txt, &txb);
 
-	float mtxl, mtxr, mtxt, mtxb;
+	float mtxl=0, mtxr=0, mtxt=0, mtxb=0;
 	if (use_alphashader) {
 		this->alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
 	}
 
-	int vertices[] = {
-		left, bottom,
-		left, top,
-		right, top,
-		right, bottom,
-	};
-
-	float texcoords[] = {
-		txl, txt,
-		txl, txb,
-		txr, txb,
-		txr, txt
-	};
-
-	float texcoords_mask[] = {
-		mtxl, mtxt,
-		mtxl, mtxb,
-		mtxr, mtxb,
-		mtxr, mtxt
+	//this array will be uploaded to the GPU.
+	//it contains all dynamic vertex data (position, tex coordinates, mask coordinates)
+	float vdata[] {
+		leftf,  bottomf,
+		leftf,  topf,
+		rightf, topf,
+		rightf, bottomf,
+		txl,    txt,
+		txl,    txb,
+		txr,    txb,
+		txr,    txt,
+		mtxl,   mtxt,
+		mtxl,   mtxb,
+		mtxr,   mtxb,
+		mtxr,   mtxt
 	};
 
 
-	glBegin(GL_QUADS); {
-		for (int i = 0; i < 4; i++) {
-			if (use_alphashader) {
-				glMultiTexCoord2f(GL_TEXTURE1, texcoords_mask[i*2], texcoords_mask[i*2 +1]);
-			}
-			glMultiTexCoord2f(GL_TEXTURE0, texcoords[i*2], texcoords[i*2 +1]);
-			//glVertexAttrib4f(*pos, vertices[i*2], vertices[i*2 +1], 0, 1);
-			glVertex3f(vertices[i*2], vertices[i*2 +1], 0);
-		}
+	//store vertex buffer data, TODO: prepare this sometime earlier.
+	glBindBuffer(GL_ARRAY_BUFFER, this->vertbuf);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vdata), vdata, GL_STREAM_DRAW);
+
+	//enable vertex buffer and bind it to the vertex attribute
+	glEnableVertexAttribArray(*pos_id);
+	glEnableVertexAttribArray(*texcoord_id);
+	if (use_alphashader) {
+		glEnableVertexAttribArray(*masktexcoord_id);
 	}
-	glEnd();
 
+	//set data types, offsets in the vdata array
+	glVertexAttribPointer(*pos_id,      2, GL_FLOAT, GL_FALSE, 0, (void *)(0));
+	glVertexAttribPointer(*texcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(sizeof(float) * 8));
+	if (use_alphashader) {
+		glVertexAttribPointer(*masktexcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(sizeof(float) * 8 * 2));
+	}
 
-	if (this->use_player_color_tinting) {
+	//draw the vertex array
+	glDrawArrays(GL_QUADS, 0, 4);
+
+	//unbind the current buffer
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	glDisableVertexAttribArray(*pos_id);
+	glDisableVertexAttribArray(*texcoord_id);
+	if (use_alphashader) {
+		glDisableVertexAttribArray(*masktexcoord_id);
+	}
+
+	//disable the shaders.
+	if (use_playercolors) {
 		teamcolor_shader::program->stopusing();
 	} else if (use_alphashader) {
 		alphamask_shader::program->stopusing();
 		glActiveTexture(GL_TEXTURE1);
 		glDisable(GL_TEXTURE_2D);
+	} else {
+		texture_shader::program->stopusing();
 	}
+
 	glActiveTexture(GL_TEXTURE0);
 	glDisable(GL_TEXTURE_2D);
 }

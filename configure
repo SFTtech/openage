@@ -1,41 +1,58 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
 #totally braindead and stupid configure file for openage
 #
-#rewrite it if you got any better plan.
-
-function rls() {
-	mkdir -p bin¬
-	cd bin && cmake -DCMAKE_BUILD_TYPE=Release .. $@
-}
-
-function dbg() {
-	mkdir -p bin
-	cd bin && cmake -DCMAKE_BUILD_TYPE=Debug .. $@
-}
-
-function help() {
-	echo -e "openage configure script"
-	echo -e ""
-	echo -e "initializes cmake so you can compile the project afterwards"
-	echo -e ""
-	echo -e "usage:"
-	echo -e "\t./configure <mode>"
-	echo -e ""
-	echo -e "\tmode:\t<debug|release>"
-	echo -e "\t\tdebug: build project with debug symbols and without optimisation"
-	echo -e "\t\trelease: build project with optimisations and no debug support"
-}
+#rewrite it if you got any better idea.
 
 
-if [[ $# -eq 1 ]]; then
-	if [[ $1 == "debug" ]]; then
-		dbg
-	elif [[ $1 == "release" ]]; then
-		rls
-	else
-		help
-	fi
-else
-	help
-fi
+import os
+import argparse
+
+cmake_binary = "cmake"
+
+aboutmsg = "openage configure script, initializes cmake so you can compile the project afterwards"
+epilogmsg = "this script honors the CXX environment variable, but it has a lower priority than the --compiler option."
+
+ap = argparse.ArgumentParser(description=aboutmsg, epilog=epilogmsg)
+ap.add_argument("--mode", "-m", choices=["debug", "release"], default="release", help="an integer for the accumulator")
+ap.add_argument("--compiler", "-c", help="the compiler to use: clang++, g++")
+
+
+def prepare_binfolder():
+	os.makedirs("bin", exist_ok=True)
+	os.chdir("bin/")
+
+def get_build_type(t):
+	prefix = "-DCMAKE_BUILD_TYPE="
+	res = ""
+	if t == "debug":
+		res = prefix + "Debug"
+	elif t == "release":
+		res = prefix + "Release"
+	else:
+		raise Exception("unknown build type %s" % t)
+	return [res]
+
+def get_compiler(t):
+	prefix = "-DCMAKE_CXX_COMPILER="
+	res = prefix + t
+	return [res]
+
+
+if __name__ == "__main__":
+	args = ap.parse_args()
+	prepare_binfolder()
+
+	cmake_args = []
+	if args.mode != None:
+		cmake_args += get_build_type(args.mode)
+
+	cxx = args.compiler
+	if cxx == None:
+		if "CXX" in os.environ:
+			cxx = os.environ['CXX']
+	if cxx != None:
+		cmake_args += get_compiler(cxx)
+
+	cmake_call = cmake_binary + " " + " ".join(cmake_args) + " .."
+	os.system(cmake_call)

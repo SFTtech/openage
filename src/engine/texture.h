@@ -12,30 +12,29 @@
 namespace openage {
 namespace engine {
 
-namespace shared_shaders {
-extern shader::Shader *maptexture;
-} //namespace shared_shaders
+namespace texture_shader {
+extern shader::Program *program;
+extern GLint texture, tex_coord;
+} //namespace texture_shader
 
 namespace teamcolor_shader {
-extern shader::Shader *frag;
 extern shader::Program *program;
+extern GLint texture, tex_coord;
 extern GLint player_id_var, alpha_marker_var, player_color_var;
 } //namespace teamcolor_shader
 
 namespace alphamask_shader {
-extern shader::Shader *vert;
-extern shader::Shader *frag;
 extern shader::Program *program;
-extern GLint base_texture, mask_texture, pos_id, base_coord, mask_coord;
+extern GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 } //namespace alphamask_shader
 
-
+//bitmasks for shader modes
 constexpr int PLAYERCOLORED = 1 << 0;
 constexpr int ALPHAMASKED   = 1 << 1;
 
 
 /**
-one sprite.
+one sprite, as part of a texture atlas.
 
 this struct stores information about what position and size
 one sprite included in the "texture atlas" has.
@@ -45,7 +44,7 @@ struct subtexture {
 	int x, y, w, h;
 
 	/** hotspot coordinates. */
-	unsigned int cx, cy;
+	int cx, cy;
 };
 
 
@@ -105,13 +104,12 @@ public:
 	GLuint get_texture_id();
 
 private:
-	GLuint id;
+	GLuint id, vertbuf;
 	struct subtexture *subtextures;
 	int subtexture_count;
 	bool use_player_color_tinting;
 	bool use_alpha_masking;
 
-	bool alpha_mask_active;
 	Texture *alpha_texture;
 	int alpha_subid;
 };
