@@ -277,10 +277,10 @@ void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
 	//this array will be uploaded to the GPU.
 	//it contains all dynamic vertex data (position, tex coordinates, mask coordinates)
 	float vdata[] {
-		leftf,  bottomf,
 		leftf,  topf,
-		rightf, topf,
+		leftf,  bottomf,
 		rightf, bottomf,
+		rightf, topf,
 		txl,    txt,
 		txl,    txb,
 		txr,    txb,
