@@ -20,14 +20,7 @@ Console::Console() : Console(util::Color(255,255,255,255), util::Color(0,0,0,1))
 
 Console::Console(util::Color bg, util::Color text, int lx, int ly, int rx, int ry) : bgcolor(bg), textcolor(text), lx(lx), ly(ly), rx(rx), ry(ry), spacing(7) {
 
-	char *font_filename = get_font_filename("DejaVu Serif", "Book");
-	this->font = new FTGLTextureFont(font_filename);
-	delete[] font_filename;
-
-	if(this->font->Error())
-		throw util::Error("failed creating the console font");
-
-	this->font->FaceSize(12);
+	font = new Font("DejaVu Sans Mono", "Book", 12);
 }
 
 Console::~Console() {
@@ -98,7 +91,7 @@ void Console::draw() {
 			const char *cmsg = *msg;
 
 			//get the font metrics
-			FTBBox bbox = this->font->BBox(cmsg);
+			FTBBox bbox = this->font->internal_font->BBox(cmsg);
 
 			FTPoint lower = bbox.Lower();
 			FTPoint upper = bbox.Upper();
@@ -112,7 +105,7 @@ void Console::draw() {
 				break;
 			}
 
-			this->font->Render(cmsg, -1, FTPoint(px, py));
+			this->font->render_static(px, py, cmsg);
 
 			py += this->spacing + h;
 		}

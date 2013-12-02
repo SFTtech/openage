@@ -65,11 +65,11 @@ Font::Font(const char *family, const char *style, unsigned size) {
 	internal_font = new FTGLTextureFont(font_filename);
 
 	if(internal_font->Error()) {
-		throw util::Error("failed to create FTGL texture font from %s", font_filename);
+		throw util::Error("Failed to create FTGL texture font from %s", font_filename);
 	}
 
 	if (!internal_font->FaceSize(size)) {
-		throw util::Error("failed to set font face size to %s", font_filename);
+		throw util::Error("Failed to set font face size to %u", size);
 	}
 }
 

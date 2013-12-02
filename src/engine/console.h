@@ -7,7 +7,8 @@
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
-#include <FTGL/ftgl.h>
+
+#include "font.h"
 
 namespace openage {
 namespace engine {
@@ -17,7 +18,7 @@ private:
 	util::Color bgcolor, textcolor;
 	int lx, ly, rx, ry;
 	std::vector<const char *> messages;
-	FTGLTextureFont *font;
+	Font *font;
 
 	int spacing;
 
