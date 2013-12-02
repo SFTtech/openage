@@ -61,10 +61,14 @@ You will then find the converted files in ./data/age/
 
 
 try
+
 	python3 convert --help
+
 to see the usage, as you probably don't want to convert all the files (we don't use them yet..)
 
+
 for converting only media files we do use at the moment, execute this:
+
 	python3 convert -o . $aoe2-installpath $(make medialist)
 
 
@@ -75,7 +79,7 @@ how to compile && run
 on POSIX:
 ---------
 
-	./configure <release|debug>
+	./configure --mode=release
 	make
 	make AGE2DIR=~/.wine-age/drive_c/programs/ms-games/aoe2 media
 	cd data && ../bin/openage
@@ -83,31 +87,6 @@ on POSIX:
 for other make targets, see:
 
 	make help
-
-
-alternate method: get developer function aliases by sourcing "build_helpers":
-	source build_helpers
-
-then type (depending on what build configuration you want):
-
-	rls
-
-or
-
-	dbg
-
-to compile the sources, type:
-
-	make
-
-to convert the media files, see above.
-
-to run the binary, type:
-
-	run
-
-note that you can use these instructions everywhere, independent of your pwd (aliases, remember?)
-
 
 on WINDOWS:
 -----------
