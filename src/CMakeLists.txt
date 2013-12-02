@@ -30,6 +30,10 @@ add_executable(${PROJECT_NAME}
 	engine/coord/camgame.cpp
 	engine/coord/camhud.cpp
 	engine/coord/window.cpp
+	engine/coord/vec2.cpp
+	engine/coord/vec2f.cpp
+	engine/coord/vec3.cpp
+	engine/coord/vec3f.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}

@@ -14,6 +14,7 @@
 #include "engine/coord/tile.h"
 #include "engine/coord/window.h"
 #include "engine/coord/phys3.h"
+#include "engine/coord/vec2f.h"
 #include "log/log.h"
 #include "util/error.h"
 #include "util/filetools.h"
@@ -422,27 +423,42 @@ void move_camera() {
 
 	//camera movement speed, in pixels per millisecond
 	//one pixel per millisecond equals 14.3 tiles/second
-	float camera_movement_speed_keyboard = 0.5;
+	float cam_movement_speed_keyboard = 0.5;
 
-	engine::coord::camgame_delta camera_delta = {0, 0};
+	engine::coord::vec2f cam_movement {0.0, 0.0};
+
 	if (sc_left) {
-		camera_delta.x -= camera_movement_speed_keyboard;
+		cam_movement.x -= cam_movement_speed_keyboard;
 	}
 	if (sc_right) {
-		camera_delta.x += camera_movement_speed_keyboard;
-	}
-	if (sc_up) {
-		camera_delta.y -= camera_movement_speed_keyboard;
+		cam_movement.x += cam_movement_speed_keyboard;
 	}
 	if (sc_down) {
-		camera_delta.y += camera_movement_speed_keyboard;
+		cam_movement.y -= cam_movement_speed_keyboard;
+	}
+	if (sc_up) {
+		cam_movement.y += cam_movement_speed_keyboard;
 	}
 
+	cam_movement *= (float) engine::fpscounter->msec_lastframe;
+
 	//calculate camera position delta from velocity and frame duration
-	camera_delta *= (float) engine::fpscounter->msec_lastframe;
+	engine::coord::camgame_delta cam_delta;
+	cam_delta.x = cam_movement.x;
+	cam_delta.y = cam_movement.y;
+
+	log::dbg("camera_deltagame_phys: ne %9.2f se %9.2f up %9.2f",
+		((float) engine::camgame_phys.ne) / engine::coord::phys_per_tile,
+		((float) engine::camgame_phys.se) / engine::coord::phys_per_tile,
+		((float) engine::camgame_phys.up) / engine::coord::phys_per_tile);
 
 	//update camera phys position
-	engine::camgame_phys += camera_delta.to_phys3();
+	engine::camgame_phys += cam_delta.to_phys3();
+
+	log::dbg("camgame_phys: ne %9.2f se %9.2f up %9.2f",
+		((float) engine::camgame_phys.ne) / engine::coord::phys_per_tile,
+		((float) engine::camgame_phys.se) / engine::coord::phys_per_tile,
+		((float) engine::camgame_phys.up) / engine::coord::phys_per_tile);
 }
 
 void on_engine_tick() {
