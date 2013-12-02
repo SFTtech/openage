@@ -2,6 +2,7 @@
 #define _ENGINE_COORD_TILE_H_
 
 #include "decl.h"
+#include "phys2.h"
 
 #define MEMBERS ne, se
 #define SCALAR_TYPE tile_t
@@ -17,8 +18,8 @@ struct tile {
 
 	#include "ops/abs.h"
 
-	tile3 to_tile3(tile_t up);
-	phys2 to_phys2(phys2_delta frac);
+	tile3 to_tile3(tile_t up = 0);
+	phys2 to_phys2(phys2_delta frac = {phys_per_tile / 2, phys_per_tile / 2});
 	chunk to_chunk();
 	tile_delta get_pos_on_chunk();
 };
@@ -28,7 +29,7 @@ struct tile_delta {
 
 	#include "ops/rel.h"
 
-	tile3_delta to_tile3(tile_t up);
+	tile3_delta to_tile3(tile_t up = 0);
 };
 
 #include "ops/free.h"

@@ -10,6 +10,9 @@
 namespace openage {
 namespace engine {
 
+/**
+half the size of one terrain tile, in camgame
+*/
 extern coord::camgame_delta tile_halfsize;
 
 /**

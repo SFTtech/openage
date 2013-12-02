@@ -185,9 +185,12 @@ void Texture::fix_hotspots(unsigned x, unsigned y) {
 	}
 }
 
-void Texture::draw(coord::phys pos, bool mirrored, int subid, unsigned player) {
-	coord::camera campos = coord::phys_to_camera(pos);
-	this->draw(campos.x, campos.y, mirrored, subid, player);
+void Texture::draw(coord::camhud pos, bool mirrored, int subid, unsigned player) {
+	this->draw(pos.x, pos.y, mirrored, subid, player);
+}
+
+void Texture::draw(coord::camgame pos, bool mirrored, int subid, unsigned player) {
+	this->draw(pos.x, pos.y, mirrored, subid, player);
 }
 
 void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {

@@ -10,6 +10,10 @@
 #include "engine/texture.h"
 #include "engine/shader/shader.h"
 #include "engine/shader/program.h"
+#include "engine/coord/tile3.h"
+#include "engine/coord/tile.h"
+#include "engine/coord/window.h"
+#include "engine/coord/phys3.h"
 #include "log/log.h"
 #include "util/error.h"
 #include "util/filetools.h"
@@ -160,7 +164,7 @@ void init() {
 
 
 	//set the terrain types according to the data array.
-	engine::coord::tile pos = {0, 0, 0};
+	engine::coord::tile pos = {0, 0};
 	for (; pos.ne < (int) terrain->get_size(); pos.ne++) {
 		for (pos.se = 0; pos.se < (int) terrain->get_size(); pos.se++) {
 			int texid = terrain_data[pos.ne][pos.se];
@@ -286,30 +290,34 @@ void input_handler(SDL_Event *e) {
 		break;
 
 	case SDL_MOUSEBUTTONDOWN: {
+		using namespace engine;
+		using namespace engine::coord;
+
 		//a mouse button was pressed...
 		//subtract value from window height to get position relative to lower right (0,0).
-		engine::coord::sdl mousepos_sdl;
-		mousepos_sdl.x = (engine::coord::sdl_t) e->button.x;
-		mousepos_sdl.y = (engine::coord::sdl_t) e->button.y;
-		engine::coord::phys mousepos_phys = engine::coord::sdl_to_phys(mousepos_sdl);
-		engine::coord::camera mousepos_camera = engine::coord::sdl_to_camera(mousepos_sdl);
-		engine::coord::tile mousepos_tileno = engine::coord::phys_to_tileno(mousepos_phys);
+		coord::window mousepos_window {(pixel_t) e->button.x, (pixel_t) e->button.y};
+		coord::camgame mousepos_camgame = mousepos_window.to_camgame();
+		//TODO once the terrain elevation milestone is implemented, use a method
+		//more suitable for converting camgame to phys3
+		coord::phys3 mousepos_phys3 = mousepos_camgame.to_phys3();
+		coord::tile mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
 		if (e->button.button == SDL_BUTTON_LEFT) {
-			log::dbg("LMB coord_sdl:   x %9hd y %9hd", mousepos_sdl.x, mousepos_sdl.y);
-			log::dbg("LMB coord_cam:   x %9d y %9d", (int) mousepos_camera.x, (int) mousepos_camera.y);
-			log::dbg("LMB corod_phys:  NE %8.3f SE %8.3f",
-				((float) mousepos_phys.ne) / (1 << 16),
-				((float) mousepos_phys.se) / (1 << 16));
-			log::dbg("LMB tile no:     NE %8ld SE %8ld", mousepos_tileno.ne, mousepos_tileno.se);
-			terrain->set_tile(mousepos_tileno, editor_current_terrain);
+			log::dbg("LMB [window]:    x %9hd y %9hd", mousepos_window.x, mousepos_window.y);
+			log::dbg("LMB [camgame]:   x %9hd y %9hd", mousepos_camgame.x, mousepos_camgame.y);
+			log::dbg("LMB [phys3]:     NE %8.3f SE %8.3f UP %8.3f",
+				((float) mousepos_phys3.ne) / phys_per_tile,
+				((float) mousepos_phys3.se) / phys_per_tile,
+				((float) mousepos_phys3.up) / phys_per_tile);
+			log::dbg("LMB [tile]:      NE %8ld SE %8ld", mousepos_tile.ne, mousepos_tile.se);
+			terrain->set_tile(mousepos_tile, editor_current_terrain);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
 			//check whether an building already exists at this pos
 			bool found = false;
 
 			for(unsigned i = 0; i < buildings.size(); i++) {
-				if (buildings[i].pos == mousepos_tileno) {
+				if (buildings[i].pos == mousepos_tile) {
 					buildings.erase(buildings.begin() + i);
 					found = true;
 					break;
@@ -319,7 +327,7 @@ void input_handler(SDL_Event *e) {
 			if(!found) {
 				building newbuilding;
 				newbuilding.player = 1 + (buildings.size() % 8);
-				newbuilding.pos = mousepos_tileno;
+				newbuilding.pos = mousepos_tile;
 				newbuilding.tex = university;
 				buildings.push_back(newbuilding);
 			}
@@ -384,7 +392,7 @@ void move_camera() {
 	//one pixel per millisecond equals 14.3 tiles/second
 	float camera_movement_speed_keyboard = 0.5;
 
-	engine::coord::camera_delta camera_delta = {0, 0};
+	engine::coord::camgame_delta camera_delta = {0, 0};
 	if (sc_left) {
 		camera_delta.x -= camera_movement_speed_keyboard;
 	}
@@ -402,7 +410,7 @@ void move_camera() {
 	camera_delta *= (float) engine::fpscounter->msec_lastframe;
 
 	//update camera phys position
-	engine::camera_pos_phys += engine::coord::camera_to_phys(camera_delta);
+	engine::camgame_phys += camera_delta.to_phys3();
 }
 
 void on_engine_tick() {
@@ -411,20 +419,20 @@ void on_engine_tick() {
 
 void draw_method() {
 	//draw gaben, our great and holy protector, bringer of the half-life 3.
-	gaben->draw(0, 0, 0);
+	gaben->draw(engine::coord::camgame {0, 0});
 
 	//draw terrain
 	terrain->draw();
 
 	//draw each building
 	for(auto &building : buildings){
-		building.tex->draw(engine::coord::tileno_to_phys(building.pos), false, 0, building.player);
+		building.tex->draw(building.pos.to_tile3().to_phys3().to_camgame(), false, 0, building.player);
 	}
 }
 
 void hud_draw_method() {
 	//draw the currently selected editor texture tile
-	terrain->get_texture(editor_current_terrain)->draw(63, 84);
+	terrain->get_texture(editor_current_terrain)->draw(engine::coord::window{63, 84}.to_camhud());
 }
 
 int mainmethod() {

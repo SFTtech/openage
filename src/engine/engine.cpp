@@ -35,9 +35,10 @@ input_handler_ptr input_handler;
 
 bool running;
 
-coord::sdl window_size = {800, 600};
-coord::phys camera_pos_phys = {(1<<16) * 10, (1<<16) * 10, 0};
-coord::sdl camera_pos_sdl = {400, 300};
+coord::window window_size = {800, 600};
+coord::phys3 camgame_phys = {10 * coord::phys_per_tile, 10 * coord::phys_per_tile, 0};
+coord::window camgame_window = {400, 300};
+coord::window camhud_window = {0, 600};
 
 util::FrameCounter *fpscounter;
 bool console_activated = false;
@@ -143,9 +144,12 @@ void engine_window_resized(unsigned w, unsigned h) {
 	//update window size
 	window_size.x = w;
 	window_size.y = h;
-	//update camera SDL coordinates
-	camera_pos_sdl.x = w / 2;
-	camera_pos_sdl.y = h / 2;
+	//update camgame window position
+	camgame_window.x = w / 2;
+	camgame_window.y = h / 2;
+	//update camhud window position
+	camhud_window.x = 0;
+	camhud_window.y = h;
 	//update console window size
 	console->set_winsize(w, h);
 	//update OpenGL viewport and projection
@@ -236,7 +240,7 @@ void loop() {
 		{
 			//after this transformation, it is possible to directly
 			//draw in the camera coordinate system.
-			glTranslatef(camera_pos_sdl.x, camera_pos_sdl.y, 0);
+			glTranslatef(camgame_window.x, camgame_window.y, 0);
 			draw_method();
 		}
 		glPopMatrix();

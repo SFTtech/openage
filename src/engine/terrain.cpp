@@ -1,17 +1,19 @@
 #include "terrain.h"
 
-
-
 #include "engine.h"
 #include "texture.h"
 #include "../log/log.h"
 #include "../util/error.h"
 #include "../util/misc.h"
+#include "coord/tile.h"
+#include "coord/tile3.h"
+#include "coord/phys3.h"
+#include "coord/camgame.h"
 
 namespace openage {
 namespace engine {
 
-coord::camera_delta tile_halfsize = {48.f, 24.f};
+coord::camgame_delta tile_halfsize = {48, 24};
 
 Terrain::Terrain(unsigned int size, size_t maxtextures, size_t maxblendmodes, int *priority_list) : texture_count(maxtextures), blendmode_count(maxblendmodes), terrain_id_priority_map(priority_list) {
 	//calculate the number of tiles for the given (tile) height of the rhombus.
@@ -61,15 +63,15 @@ Terrain::~Terrain() {
 	delete[] this->textures;
 }
 
-coord::tileno_delta const neigh_offsets[] = {
-	{ 1, -1, 0},
-	{ 1,  0, 0},
-	{ 1,  1, 0},
-	{ 0,  1, 0},
-	{-1,  1, 0},
-	{-1,  0, 0},
-	{-1, -1, 0},
-	{ 0, -1, 0}
+coord::tile_delta const neigh_offsets[] = {
+	{ 1, -1},
+	{ 1,  0},
+	{ 1,  1},
+	{ 0,  1},
+	{-1,  1},
+	{-1,  0},
+	{-1, -1},
+	{ 0, -1}
 };
 
 void Terrain::draw() {
@@ -80,7 +82,7 @@ void Terrain::draw() {
 		this->blending_enabled = false;
 	}
 
-	coord::tileno tilepos = {0, 0, 0};
+	coord::tile tilepos = {0, 0};
 	for (; tilepos.ne < (int) this->size; tilepos.ne++) {
 		for (tilepos.se = 0; tilepos.se < (int) this->size; tilepos.se++) {
 			int terrain_id = this->get_tile(tilepos);
@@ -90,7 +92,7 @@ void Terrain::draw() {
 			int sub_id = this->get_subtexture_id(tilepos, base_texture->atlas_dimensions);
 
 			//draw the base texture
-			base_texture->draw(coord::tileno_to_phys(tilepos), false, sub_id);
+			base_texture->draw(tilepos.to_tile3().to_phys3().to_camgame(), false, sub_id);
 
 			if (!this->blending_enabled) {
 				continue;
@@ -136,7 +138,7 @@ void Terrain::draw() {
 				}
 
 				//calculate the pos of the neighbor tile
-				coord::tileno neigh_pos = tilepos + neigh_offsets[neigh_id];
+				coord::tile neigh_pos = tilepos + neigh_offsets[neigh_id];
 
 				if (neigh_pos.ne < 0 || neigh_pos.ne >= (int)this->size || neigh_pos.se < 0 || neigh_pos.se >= (int)this->size) {
 					//this neighbor is on the neighbor chunk or not existing, skip it for now.
@@ -284,7 +286,7 @@ void Terrain::draw() {
 
 				//if it's the plain adjacent mask, use all of the 4 possible masks.
 				if (adjacent_mask_id <= 12 && adjacent_mask_id % 4 == 0) {
-					int anti_redundancy_offset = util::mod<coord::tileno_t>(tilepos.ne + tilepos.se, 4);
+					int anti_redundancy_offset = util::mod<coord::tile_t>(tilepos.ne + tilepos.se, 4);
 					adjacent_mask_id += anti_redundancy_offset;
 				}
 
@@ -332,7 +334,7 @@ void Terrain::draw() {
 				int neighbor_sub_id = this->get_subtexture_id(tilepos, overlay_texture->atlas_dimensions);
 
 				overlay_texture->activate_alphamask(this->blendmasks[draw_mask->blend_mode], draw_mask->mask_id);
-				overlay_texture->draw(coord::tileno_to_phys(tilepos), false, neighbor_sub_id);
+				overlay_texture->draw(tilepos.to_tile3().to_phys3().to_camgame(), false, neighbor_sub_id);
 				overlay_texture->disable_alphamask();
 			}
 		}
@@ -346,21 +348,21 @@ returns the terrain subtexture id for a given position.
 this function returns always the right value, so that neighbor tiles
 of the same terrain (like grass-grass) are matching (without blendomatic).
 */
-unsigned Terrain::get_subtexture_id(coord::tileno pos, unsigned atlas_size) {
+unsigned Terrain::get_subtexture_id(coord::tile pos, unsigned atlas_size) {
 	unsigned result = 0;
 
-	result += util::mod<coord::tileno_t>(pos.se, atlas_size);
+	result += util::mod<coord::tile_t>(pos.se, atlas_size);
 	result *= atlas_size;
-	result += util::mod<coord::tileno_t>(pos.ne, atlas_size);
+	result += util::mod<coord::tile_t>(pos.ne, atlas_size);
 
 	return result;
 }
 
-void Terrain::set_tile(coord::tileno pos, int tile) {
+void Terrain::set_tile(coord::tile pos, int tile) {
 	tiles[tile_position(pos)] = tile;
 }
 
-int Terrain::get_tile(coord::tileno pos) {
+int Terrain::get_tile(coord::tile pos) {
 	return tiles[tile_position(pos)];
 }
 
@@ -384,7 +386,7 @@ y= 0   #   #   #
 for example, * is at position (2, 1)
 the returned index would be 6 (count for each x row, starting at y=0)
 */
-size_t Terrain::tile_position(coord::tileno pos) {
+size_t Terrain::tile_position(coord::tile pos) {
 	if (pos.ne >= (int) this->size || pos.ne < 0 || pos.se >= (int) this->size || pos.se < 0) {
 		throw util::Error("requested tile (%ld, %ld) that's not on this terrain.", pos.ne, pos.se);
 	}

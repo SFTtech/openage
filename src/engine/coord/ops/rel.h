@@ -11,3 +11,4 @@
 	RELATIVE_TYPE &operator-=(RELATIVE_TYPE arg);
 	RELATIVE_TYPE &operator*=(SCALAR_TYPE arg);
 	RELATIVE_TYPE &operator/=(SCALAR_TYPE arg);
+	bool operator==(RELATIVE_TYPE arg);

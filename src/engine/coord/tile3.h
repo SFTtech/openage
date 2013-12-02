@@ -2,6 +2,7 @@
 #define _ENGINE_COORD_TILE3_H_
 
 #include "decl.h"
+#include "phys3.h"
 
 #define MEMBERS ne, se, up
 #define SCALAR_TYPE tile_t
@@ -18,7 +19,7 @@ struct tile3 {
 	#include "ops/abs.h"
 
 	tile to_tile();
-	phys3 to_phys3(phys3_delta frac);
+	phys3 to_phys3(phys3_delta frac = {phys_per_tile / 2, phys_per_tile / 2, 0});
 };
 
 struct tile3_delta {

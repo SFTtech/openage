@@ -1,10 +1,12 @@
-#include "../../../util/macro_loop.h"
+#include "../../../util/macro/loop.h"
+#include "../../../util/macro/concat.h"
 
 #define NEGATE(X) (SCALAR_TYPE) (-X)
 #define ADDARG(X) (SCALAR_TYPE) (X + arg.X)
 #define SUBARG(X) (SCALAR_TYPE) (X - arg.X)
 #define MULARG(X) (SCALAR_TYPE) (X * arg)
 #define DIVARG(X) (SCALAR_TYPE) (X / arg)
+#define COMPARE(X) X == arg.X
 
 //implementation of prototypes from abs.h
 
@@ -67,6 +69,11 @@ ABSOLUTE_TYPE &ABSOLUTE_TYPE::operator/=(SCALAR_TYPE arg) {
 	return *this;
 }
 
+//abs == abs
+bool ABSOLUTE_TYPE::operator==(ABSOLUTE_TYPE arg) {
+	return (CONCAT(&&, LOOP(COMPARE, MEMBERS)));
+}
+
 //implementation of prototypes from rel.h
 
 //conversion to absolute vector
@@ -126,6 +133,11 @@ RELATIVE_TYPE &RELATIVE_TYPE::operator*=(SCALAR_TYPE arg) {
 RELATIVE_TYPE &RELATIVE_TYPE::operator/=(SCALAR_TYPE arg) {
 	*this = *this / arg;
 	return *this;
+}
+
+//rel == rel
+bool RELATIVE_TYPE::operator==(RELATIVE_TYPE arg) {
+	return (CONCAT(&&, LOOP(COMPARE, MEMBERS)));
 }
 
 //implementation of prototypes from free.h

@@ -6,6 +6,8 @@
 
 #include "shader/shader.h"
 #include "shader/program.h"
+#include "coord/camgame.h"
+#include "coord/camhud.h"
 
 namespace openage {
 namespace engine {
@@ -70,8 +72,9 @@ public:
 	Texture(const char *filename, bool use_metafile = false, unsigned int mode = 0);
 	~Texture();
 
-	template<class coordsystem>
-	void draw(coordsystem pos, bool mirrored = false, int subid = 0, unsigned player = 0);
+	void draw(coord::camhud pos, bool mirrored = false, int subid = 0, unsigned player = 0);
+	void draw(coord::camgame pos, bool mirrored = false, int subid = 0, unsigned player = 0);
+	void draw(int x, int y, bool mirrored, int subid, unsigned player);
 
 	struct subtexture *get_subtexture(int subid);
 	int get_subtexture_count();

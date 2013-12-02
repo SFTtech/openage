@@ -20,9 +20,16 @@ add_executable(${PROJECT_NAME}
 	engine/console.cpp
 	engine/terrain.cpp
 	engine/texture.cpp
-	engine/coordinates.cpp
 	engine/shader/shader.cpp
 	engine/shader/program.cpp
+	engine/coord/chunk.cpp
+	engine/coord/tile.cpp
+	engine/coord/tile3.cpp
+	engine/coord/phys2.cpp
+	engine/coord/phys3.cpp
+	engine/coord/camgame.cpp
+	engine/coord/camhud.cpp
+	engine/coord/window.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}
