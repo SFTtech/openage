@@ -5,6 +5,8 @@
 #include "../log/log.h"
 #include "../util/error.h"
 #include "../util/strings.h"
+#include "coord/camhud.h"
+#include "coord/camgame.h"
 
 namespace openage {
 namespace engine {
@@ -55,6 +57,62 @@ char *get_font_filename(const char *family, const char *style) {
 	FcFini();
 
 	return font_filename;
+}
+
+
+Font::Font(const char *family, const char *style, unsigned size) {
+	font_filename = get_font_filename(family, style);
+	internal_font = new FTGLTextureFont(font_filename);
+
+	if(internal_font->Error()) {
+		throw util::Error("failed to create FTGL texture font from %s", font_filename);
+	}
+
+	if (!internal_font->FaceSize(size)) {
+		throw util::Error("failed to set font face size to %s", font_filename);
+	}
+}
+
+Font::~Font() {
+	delete font_filename;
+	delete internal_font;
+}
+
+void Font::render_static(coord::pixel_t x, coord::pixel_t y, const char *text, int len) {
+	internal_font->Render(text, len, FTPoint(x, y));
+}
+
+void Font::render(coord::pixel_t x, coord::pixel_t y, const char *format, ...) {
+	va_list vl;
+	va_start(vl, format);
+	const char *buf = util::vformat(format, vl);
+	va_end(vl);
+
+	render_static(x, y, buf);
+
+	delete[] buf;
+}
+
+void Font::render(coord::camhud pos, const char *format, ...) {
+	va_list vl;
+	va_start(vl, format);
+	const char *buf = util::vformat(format, vl);
+	va_end(vl);
+
+	render_static(pos.x, pos.y, buf);
+
+	delete[] buf;
+}
+
+void Font::render(coord::camgame pos, const char *format, ...) {
+	va_list vl;
+	va_start(vl, format);
+	const char *buf = util::vformat(format, vl);
+	va_end(vl);
+
+	render_static(pos.x, pos.y, buf);
+
+	delete[] buf;
 }
 
 } //namespace engine

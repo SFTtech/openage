@@ -10,7 +10,6 @@
 #include <SDL2/SDL_image.h>
 
 #include "console.h"
-#include "font.h"
 #include "texture.h"
 #include "../log/log.h"
 #include "../util/error.h"
@@ -24,7 +23,9 @@ namespace engine {
 SDL_GLContext glcontext;
 SDL_Window *window;
 
-FTGLTextureFont *t_font;
+namespace fonts {
+Font *dejavuserif20;
+}
 
 Console *console;
 
@@ -109,14 +110,7 @@ void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, nop
 	engine::hud_draw_method = hud_draw_method;
 	engine::input_handler = input_handler;
 
-
-	const char *font_filename = get_font_filename("DejaVu Serif", "Book");
-	t_font = new FTGLTextureFont(font_filename);
-	delete[] font_filename;
-
-	if(t_font->Error())
-		throw util::Error("failed creating the dejavu font with ftgl");
-	t_font->FaceSize(20);
+	fonts::dejavuserif20 = new Font("DejaVu Serif", "Book", 20);
 
 	//initialize the visual debug console
 	console = new Console(util::Color(255, 255, 255, 180), util::Color(0, 0, 0, 255));
@@ -135,7 +129,7 @@ void destroy() {
 	SDL_DestroyWindow(window);
 	delete fpscounter;
 	delete console;
-	delete t_font;
+	delete fonts::dejavuserif20;
 	IMG_Quit();
 	SDL_Quit();
 }
@@ -261,17 +255,10 @@ void loop() {
 			}
 
 			//draw FPS counter
-			glPushMatrix();
-			{
-				//bottom left corner
-				glTranslatef(window_size.x - 100, 15, 0);
-				//white
-				glColor4f(1.0, 1.0, 1.0, 1.0);
-				char *fpstext = util::format("%.1f fps", fpscounter->fps);
-				t_font->Render(fpstext);
-				delete[] fpstext;
-			}
-			glPopMatrix();
+			//set color to white
+			glColor4f(1.0, 1.0, 1.0, 1.0);
+			fonts::dejavuserif20->render(window_size.x - 100, 15, "%.1f fps", fpscounter->fps);
+
 		}
 
 		//the rendering is done

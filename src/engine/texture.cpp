@@ -193,7 +193,7 @@ void Texture::draw(coord::camgame pos, bool mirrored, int subid, unsigned player
 	this->draw(pos.x, pos.y, mirrored, subid, player);
 }
 
-void Texture::draw(int x, int y, bool mirrored, int subid, unsigned player) {
+void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player) {
 	glColor4f(1, 1, 1, 1);
 
 	bool use_playercolors = false;

@@ -1,13 +1,13 @@
 #ifndef _ENGINE_ENGINE_H_
 #define _ENGINE_ENGINE_H_
 
-#include <FTGL/ftgl.h>
 #include <SDL2/SDL.h>
 
 #include "console.h"
 #include "../util/fps.h"
 #include "coord/window.h"
 #include "coord/phys3.h"
+#include "font.h"
 
 
 namespace openage {
@@ -69,9 +69,15 @@ the debug console
 extern Console *console;
 
 /**
-the text font used for (can you believe it?) texts.
+the text fonts to be used for (can you believe it?) texts.
+loaded on engine init.
 */
-extern FTGLTextureFont *t_font;
+namespace fonts {
+/**
+dejavu serif, book, 20pts
+*/
+extern Font *dejavuserif20;
+}
 
 /**
 to be set to false to stop the engine.

@@ -73,7 +73,7 @@ public:
 
 	void draw(coord::camhud pos, bool mirrored = false, int subid = 0, unsigned player = 0);
 	void draw(coord::camgame pos, bool mirrored = false, int subid = 0, unsigned player = 0);
-	void draw(int x, int y, bool mirrored, int subid, unsigned player);
+	void draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player);
 
 	struct subtexture *get_subtexture(int subid);
 	int get_subtexture_count();
