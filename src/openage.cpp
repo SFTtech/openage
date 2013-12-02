@@ -368,7 +368,7 @@ void input_handler(SDL_Event *e) {
 		}
 		break;
 	case SDL_MOUSEWHEEL:
-		editor_current_terrain = util::mod<size_t>(editor_current_terrain + e->wheel.y, terrain_texture_count);
+		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, terrain_texture_count);
 		break;
 
 	case SDL_KEYUP:
