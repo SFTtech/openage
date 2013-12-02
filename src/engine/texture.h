@@ -108,7 +108,6 @@ private:
 	bool use_player_color_tinting;
 	bool use_alpha_masking;
 
-	bool alpha_mask_active;
 	Texture *alpha_texture;
 	int alpha_subid;
 };
