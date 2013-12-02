@@ -1,4 +1,4 @@
-#define GEN_IMPL
+#define GEN_IMPL_CAMGAME_CPP
 #include "camgame.h"
 
 #include "../engine.h"

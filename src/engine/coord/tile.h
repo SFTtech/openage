@@ -2,6 +2,7 @@
 #define _ENGINE_COORD_TILE_H_
 
 #include "decl.h"
+
 #include "phys2.h"
 
 #define MEMBERS ne, se
@@ -34,10 +35,9 @@ struct tile_delta {
 
 #include "ops/free.h"
 
-#ifdef GEN_IMPL
-#undef GEN_IMPL
+#ifdef GEN_IMPL_TILE_CPP
 #include "ops/impl.h"
-#endif //GEN_IMPL
+#endif //GEN_IMPL_TILE_CPP
 
 } //namespace coord
 } //namespace engine

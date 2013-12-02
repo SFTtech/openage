@@ -1,4 +1,4 @@
-#define GEN_IMPL
+#define GEN_IMPL_PHYS3_CPP
 #include "phys3.h"
 
 #include "phys2.h"

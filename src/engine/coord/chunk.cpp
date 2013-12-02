@@ -1,4 +1,4 @@
-#define GEN_IMPL
+#define GEN_IMPL_CHUNK_CPP
 #include "chunk.h"
 
 #include "tile.h"

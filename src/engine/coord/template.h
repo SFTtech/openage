@@ -28,10 +28,9 @@ struct [relname] {
 
 #include "ops/free.h"
 
-#ifdef GEN_IMPL
-#undef GEN_IMPL
+#ifdef GEN_IMPL_[NAME]_CPP
 #include "ops/impl.h"
-#endif //GEN_IMPL
+#endif //GEN_IMPL_[NAME]_CPP
 
 } //namespace coord
 } //namespace engine

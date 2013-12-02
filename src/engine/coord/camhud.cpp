@@ -1,4 +1,4 @@
-#define GEN_IMPL
+#define GEN_IMPL_CAMHUD_CPP
 #include "camhud.h"
 
 #include "window.h"

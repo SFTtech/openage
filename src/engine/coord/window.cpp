@@ -1,4 +1,4 @@
-#define GEN_IMPL
+#define GEN_IMPL_WINDOW_CPP
 #include "window.h"
 
 #include "camgame.h"

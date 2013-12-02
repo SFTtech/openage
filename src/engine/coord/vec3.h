@@ -26,10 +26,9 @@ struct vec3_delta {
 
 #include "ops/free.h"
 
-#ifdef GEN_IMPL
-#undef GEN_IMPL
+#ifdef GEN_IMPL_VEC3_CPP
 #include "ops/impl.h"
-#endif //GEN_IMPL
+#endif //GEN_IMPL_VEC3_CPP
 
 } //namespace coord
 } //namespace engine

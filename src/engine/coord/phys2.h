@@ -36,10 +36,9 @@ struct phys2_delta {
 
 #include "ops/free.h"
 
-#ifdef GEN_IMPL
-#undef GEN_IMPL
+#ifdef GEN_IMPL_PHYS2_CPP
 #include "ops/impl.h"
-#endif //GEN_IMPL
+#endif //GEN_IMPL_PHYS2_CPP
 
 } //namespace coord
 } //namespace engine

@@ -1,4 +1,4 @@
-#define GEN_IMPL
+#define GEN_IMPL_TILE_CPP
 #include "tile.h"
 
 #include "tile3.h"
