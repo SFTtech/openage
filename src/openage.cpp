@@ -447,18 +447,8 @@ void move_camera() {
 	cam_delta.x = cam_movement.x;
 	cam_delta.y = cam_movement.y;
 
-	log::dbg("camera_deltagame_phys: ne %9.2f se %9.2f up %9.2f",
-		((float) engine::camgame_phys.ne) / engine::coord::phys_per_tile,
-		((float) engine::camgame_phys.se) / engine::coord::phys_per_tile,
-		((float) engine::camgame_phys.up) / engine::coord::phys_per_tile);
-
 	//update camera phys position
 	engine::camgame_phys += cam_delta.to_phys3();
-
-	log::dbg("camgame_phys: ne %9.2f se %9.2f up %9.2f",
-		((float) engine::camgame_phys.ne) / engine::coord::phys_per_tile,
-		((float) engine::camgame_phys.se) / engine::coord::phys_per_tile,
-		((float) engine::camgame_phys.up) / engine::coord::phys_per_tile);
 }
 
 void on_engine_tick() {
