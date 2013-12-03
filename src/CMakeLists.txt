@@ -14,6 +14,7 @@ add_executable(${PROJECT_NAME}
 	util/misc.cpp
 	util/strings.cpp
 	util/timer.cpp
+	util/unicode.cpp
 	openage.cpp
 	engine/engine.cpp
 	engine/font.cpp
