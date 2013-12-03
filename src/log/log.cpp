@@ -52,21 +52,15 @@ void log(const char *fmt, ...) {
 	delete[] buf;
 }
 
-//this function exists purely to make the compiler
-//generate the templated functions... TODO: solve it without this
-//dirty hack...
-void log_test() {
-	log<0>("lol");
-	log<1>("this");
-	log<2>("is");
-	log<3>("a");
-	log<4>("stupid");
-	log<5>("logger");
-	log<6>("test");
-	log<7>("function");
-	log<8>("call");
-	log<9>("!!");
-}
+//force instantiation of the log functions
+template void log<0>(const char *fmt, ...);
+template void log<1>(const char *fmt, ...);
+template void log<2>(const char *fmt, ...);
+template void log<3>(const char *fmt, ...);
+template void log<4>(const char *fmt, ...);
+template void log<5>(const char *fmt, ...);
+template void log<6>(const char *fmt, ...);
+template void log<7>(const char *fmt, ...);
 
 } //namespace log
 } //namespace openage
