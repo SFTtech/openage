@@ -4,9 +4,31 @@ cmake_minimum_required(VERSION 2.8.7)
 project(openage)
 
 #main build configuration file
+#could use some tuning, but we are too lazy..
 
-#maybe use clang
-#set(CMAKE_CXX_COMPILER "clang++" )
+#text art: figlet -f rounded "[SFT] openage" | sed -e 's/\\/\\\\/g'
+message("==============================================================================")
+message(" ___  ______ _______ _______ ___                                              ")
+message("|  _)/ _____|_______|_______|_  |                                             ")
+message("| | ( (____  _____      _     | |    ___  ____  _____ ____  _____  ____ _____ ")
+message("| |  \\____ \\|  ___)    | |    | |   / _ \\|  _ \\| ___ |  _ \\(____ |/ _  | ___ |")
+message("| |_ _____) ) |        | |   _| |  | |_| | |_| | ____| | | / ___ ( (_| | ____|")
+message("|___|______/|_|        |_|  (___|   \\___/|  __/|_____)_| |_\\_____|\\___ |_____)")
+message("                                         |_|                     (_____|      ")
+message("")
+message("Welcome to the SFT Technologies computer aided openage build system!")
+message("  We are glad you decided to use our product.")
+message("  To make your experience with the software more fun, we offer a wide range of cutting edge public relation campaigns:")
+message("  - Would you like to sell your personal data? Become a ultra-special premium user with no additional privileges!")
+message("  - You can start gaining fame with our unique loyalty point collecting service!")
+message("  - We automatically subscribed you to our daily Email newsletter, how awesome is that?")
+message("")
+message("  We hope your consumery needs will be fully fullfilled,")
+message("  otherwise, utilize our professional customer support team:")
+message("  *  XMPP MUC: openage@chat.sft.mx")
+message("  *  IRC:      #sfttech  at freenode.org")
+message("")
+message("==============================================================================")
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++11 -march=native -mtune=native")
 
