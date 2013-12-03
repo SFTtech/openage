@@ -1,5 +1,6 @@
-cmake_minimum_required(VERSION 2.8.7)
+cmake_minimum_required(VERSION 2.8.8)
 #v2.8.6-306-gfa7141f introduced compiler version detection
+#git tag --contains=fa7141f => 2.8.8
 
 project(openage)
 
@@ -7,6 +8,7 @@ project(openage)
 #could use some tuning, but we are too lazy..
 
 #text art: figlet -f rounded "[SFT] openage" | sed -e 's/\\/\\\\/g'
+message("")
 message("==============================================================================")
 message(" ___  ______ _______ _______ ___                                              ")
 message("|  _)/ _____|_______|_______|_  |                                             ")
@@ -27,8 +29,8 @@ message("  We hope your consumery needs will be fully fullfilled,")
 message("  otherwise, utilize our professional customer support team:")
 message("  *  XMPP MUC: openage@chat.sft.mx")
 message("  *  IRC:      #sfttech  at freenode.org")
-message("")
 message("==============================================================================")
+message("")
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++11 -march=native -mtune=native")
 
@@ -38,14 +40,16 @@ set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/lib")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g -Og")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -Werror -O3 -flto=4")
 
+message("compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
+
 #check for compiler versions
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8)
-		message(FATAL_ERROR ">=gcc-4.8 required (c++11, you know?)")
+		message(FATAL_ERROR ">=gcc-4.8 required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
 	endif()
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.3)
-		message(FATAL_ERROR ">=clang-3.3 required (c++11, you know?)")
+		message(FATAL_ERROR ">=clang-3.3 required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
 	endif()
 else() #"Intel", "MSVC", etc..
 	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
