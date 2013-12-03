@@ -57,38 +57,6 @@ bool handle_window_resize() {
 	return true;
 }
 
-bool handle_input_event(SDL_Event *e) {
-	switch(e->type) {
-	case SDL_WINDOWEVENT:
-		switch(e->window.event) {
-		case SDL_WINDOWEVENT_RESIZED:
-			//update window size
-			window_size.x = e->window.data1;
-			window_size.y = e->window.data2;
-
-			//invoke resize callback handlers
-			for(auto cb: callbacks::on_resize) {
-				if (!cb()) {
-					break;
-				}
-			}
-			return false;
-			break;
-		}
-		break;
-
-	case SDL_KEYUP:
-		//TODO track which keys are down
-		break;
-
-	case SDL_KEYDOWN:
-		//TODO track which keys are down
-		break;
-	}
-
-	return true;
-}
-
 bool draw_hud() {
 	//draw FPS counter
 	util::col {255, 255, 255, 255}.use();

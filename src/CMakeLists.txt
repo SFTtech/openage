@@ -19,6 +19,7 @@ add_executable(${PROJECT_NAME}
 	engine/font.cpp
 	engine/terrain.cpp
 	engine/texture.cpp
+	engine/input.cpp
 	engine/shader/shader.cpp
 	engine/shader/program.cpp
 	engine/coord/chunk.cpp

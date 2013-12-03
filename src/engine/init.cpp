@@ -14,6 +14,7 @@
 #include "font.h"
 #include "texture.h"
 #include "util/error.h"
+#include "input.h"
 
 namespace engine {
 
@@ -78,7 +79,7 @@ void init(const char *windowtitle) {
 	fpscounter = new util::FrameCounter();
 
 	callbacks::on_resize.push_back(engine::handle_window_resize);
-	callbacks::on_input.push_back(engine::handle_input_event);
+	callbacks::on_input.push_back(engine::input::handler);
 	callbacks::on_drawhud.push_back(engine::draw_hud);
 }
 
