@@ -13,15 +13,11 @@
 #include "../engine/coord/tile3.h"
 #include "../engine/coord/vec2f.h"
 #include "../engine/util/misc.h"
+#include "../engine/input.h"
 
 using namespace engine;
 
 namespace openage {
-
-bool sc_left = false;
-bool sc_right = false;
-bool sc_up = false;
-bool sc_down = false;
 
 bool input_handler(SDL_Event *e) {
 	switch (e->type) {
@@ -81,18 +77,6 @@ bool input_handler(SDL_Event *e) {
 
 	case SDL_KEYUP:
 		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
-		case SDLK_LEFT:
-			sc_left = false;
-			break;
-		case SDLK_RIGHT:
-			sc_right = false;
-			break;
-		case SDLK_UP:
-			sc_up = false;
-			break;
-		case SDLK_DOWN:
-			sc_down = false;
-			break;
 		case SDLK_ESCAPE:
 			//stop the game
 			engine::running = false;
@@ -102,19 +86,6 @@ bool input_handler(SDL_Event *e) {
 		break;
 	case SDL_KEYDOWN:
 		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
-
-		case SDLK_LEFT:
-			sc_left = true;
-			break;
-		case SDLK_RIGHT:
-			sc_right = true;
-			break;
-		case SDLK_UP:
-			sc_up = true;
-			break;
-		case SDLK_DOWN:
-			sc_down = true;
-			break;
 		case SDLK_SPACE:
 			terrain->blending_enabled = !terrain->blending_enabled;
 			break;
@@ -136,16 +107,16 @@ void move_camera() {
 
 	coord::vec2f cam_movement {0.0, 0.0};
 
-	if (sc_left) {
+	if (engine::input::is_down(SDLK_LEFT)) {
 		cam_movement.x -= cam_movement_speed_keyboard;
 	}
-	if (sc_right) {
+	if (engine::input::is_down(SDLK_RIGHT)) {
 		cam_movement.x += cam_movement_speed_keyboard;
 	}
-	if (sc_down) {
+	if (engine::input::is_down(SDLK_DOWN)) {
 		cam_movement.y -= cam_movement_speed_keyboard;
 	}
-	if (sc_up) {
+	if (engine::input::is_down(SDLK_UP)) {
 		cam_movement.y += cam_movement_speed_keyboard;
 	}
 
