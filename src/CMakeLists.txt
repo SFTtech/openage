@@ -6,16 +6,8 @@ find_package(GLEW)
 #findpackage sdl2
 
 add_executable(${PROJECT_NAME}
-	log/log.cpp
-	util/color.cpp
-	util/error.cpp
-	util/filetools.cpp
-	util/fps.cpp
-	util/misc.cpp
-	util/strings.cpp
-	util/timer.cpp
-	util/unicode.cpp
-	openage.cpp
+	main.cpp
+	openage/main.cpp
 	engine/engine.cpp
 	engine/font.cpp
 	engine/console.cpp
@@ -35,6 +27,15 @@ add_executable(${PROJECT_NAME}
 	engine/coord/vec2f.cpp
 	engine/coord/vec3.cpp
 	engine/coord/vec3f.cpp
+	engine/util/log.cpp
+	engine/util/color.cpp
+	engine/util/error.cpp
+	engine/util/filetools.cpp
+	engine/util/fps.cpp
+	engine/util/misc.cpp
+	engine/util/strings.cpp
+	engine/util/timer.cpp
+	engine/util/unicode.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}
