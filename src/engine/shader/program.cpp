@@ -4,12 +4,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "../../log/log.h"
-#include "../../util/filetools.h"
-#include "../../util/strings.h"
-#include "../../util/error.h"
+#include "../log.h"
+#include "../util/file.h"
+#include "../util/strings.h"
+#include "../util/error.h"
 
-namespace openage {
 namespace engine {
 namespace shader {
 
@@ -91,7 +90,7 @@ void Program::check(GLenum what_to_check) {
 			break;
 		}
 
-		util::Error e("Program %s failed\n%s", what_str, infolog);
+		Error e("Program %s failed\n%s", what_str, infolog);
 		delete[] infolog;
 		throw e;
 	}
@@ -114,13 +113,13 @@ GLint Program::get_attribute_id(const char *name) {
 		GLint aid = glGetAttribLocation(this->id, name);
 		if (aid == -1) {
 			this->dump_active_attributes();
-			throw util::Error("queried attribute '%s' not found or not active (pwnt by the compiler).", name);
+			throw Error("queried attribute '%s' not found or not active (pwnt by the compiler).", name);
 		} else {
 			return aid;
 		}
 	}
 	else {
-		throw util::Error("queried attribute '%s' id before program was linked.", name);
+		throw Error("queried attribute '%s' id before program was linked.", name);
 	}
 }
 
@@ -130,7 +129,7 @@ void Program::set_attribute_id(const char *name, GLuint id) {
 	}
 	else {
 		//TODO: maybe enable overwriting, but after that relink the program
-		throw util::Error("assigned attribute '%s' = %u after program was linked!", name, id);
+		throw Error("assigned attribute '%s' = %u after program was linked!", name, id);
 	}
 }
 
@@ -163,4 +162,3 @@ void Program::post_link_hook() {
 
 } //namespace shader
 } //namespace engine
-} //namespace openage

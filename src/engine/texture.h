@@ -9,7 +9,6 @@
 #include "coord/camgame.h"
 #include "coord/camhud.h"
 
-namespace openage {
 namespace engine {
 
 namespace texture_shader {
@@ -115,6 +114,5 @@ private:
 };
 
 } //namespace engine
-} //namespace openage
 
 #endif //_ENGINE_TEXTURE_H_

@@ -1,9 +1,9 @@
-#ifndef _TIMER_H_
-#define _TIMER_H_
+#ifndef _ENGINE_UTIL_TIMER_H_
+#define _ENGINE_UTIL_TIMER_H_
 
 #include <stdint.h>
 
-namespace openage {
+namespace engine {
 namespace util {
 
 /**
@@ -37,8 +37,7 @@ private:
 	uint32_t starttime;
 };
 
-}
-}
+} //namespace util
+} //namespace engine
 
-
-#endif
+#endif //_ENGINE_UTIL_TIMER_H_

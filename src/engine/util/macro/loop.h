@@ -1,5 +1,5 @@
-#ifndef _UTIL_MACRO_LOOP_H_
-#define _UTIL_MACRO_LOOP_H_
+#ifndef _ENGINE_UTIL_MACRO_LOOP_H_
+#define _ENGINE_UTIL_MACRO_LOOP_H_
 
 #define LOOP_1(MACRO, X) MACRO(X)
 #define LOOP_2(MACRO, X, ...) MACRO(X), LOOP_1(MACRO, __VA_ARGS__)
@@ -12,4 +12,4 @@
 	LOOP_5, LOOP_4, LOOP_3, LOOP_2, LOOP_1 \
 	) (MACRO, __VA_ARGS__)
 
-#endif //_UTIL_MACRO_LOOP_H_
+#endif //_ENGINE_UTIL_MACRO_LOOP_H_

@@ -6,11 +6,10 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "../log/log.h"
-#include "../util/error.h"
-#include "../util/filetools.h"
+#include "log.h"
+#include "util/error.h"
+#include "util/file.h"
 
-namespace openage {
 namespace engine {
 
 //real definition of the shaders,
@@ -47,7 +46,7 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 	surface = IMG_Load(filename);
 
 	if (!surface) {
-		throw util::Error("Could not load texture from '%s': %s", filename, IMG_GetError());
+		throw Error("Could not load texture from '%s': %s", filename, IMG_GetError());
 	}
 	else {
 		log::dbg1("Loaded texture from '%s'", filename);
@@ -62,7 +61,7 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		texture_format = GL_RGBA;
 		break;
 	default:
-		throw util::Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename, surface->format->BytesPerPixel);
+		throw Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename, surface->format->BytesPerPixel);
 		break;
 	}
 
@@ -126,7 +125,7 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 					}
 					else {
 						if (wanting_count) {
-							throw util::Error("texture meta line found, but no count set yet in %s", meta_filename);
+							throw Error("texture meta line found, but no count set yet in %s", meta_filename);
 						}
 						else if(sscanf(currentline, "%u=%u,%u,%u,%u,%u,%u", &idx, &tx, &ty, &tw, &th, &hx, &hy)) {
 							struct subtexture subtext;
@@ -146,7 +145,7 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 							this->subtextures[idx] = subtext;
 						}
 						else {
-							throw util::Error("unknown line content reading texture meta file %s", meta_filename);
+							throw Error("unknown line content reading texture meta file %s", meta_filename);
 						}
 					}
 				}
@@ -343,7 +342,7 @@ struct subtexture *Texture::get_subtexture(int subid) {
 		return &this->subtextures[subid];
 	}
 	else {
-		throw util::Error("requested unknown subtexture %d", subid);
+		throw Error("requested unknown subtexture %d", subid);
 	}
 }
 
@@ -394,4 +393,3 @@ GLuint Texture::get_texture_id() {
 
 
 } //namespace engine
-} //namespace openage

@@ -1,10 +1,10 @@
-#ifndef _UTIL_UNICODE_H_
-#define _UTIL_UNICODE_H_
+#ifndef _ENGINE_UTIL_UNICODE_H_
+#define _ENGINE_UTIL_UNICODE_H_
 
 #include <stdint.h>
 #include <stdlib.h>
 
-namespace openage {
+namespace engine {
 namespace util {
 
 /**
@@ -25,6 +25,6 @@ namespace util {
 size_t utf8_decode(const unsigned char *s, size_t len, wchar_t *outbuf);
 
 } //namespace util
-} //namespace openage
+} //namespace engine
 
-#endif //_UTIL_UNICODE_H_
+#endif //_ENGINE_UTIL_UNICODE_H_

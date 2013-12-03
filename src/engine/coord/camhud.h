@@ -8,7 +8,6 @@
 #define ABSOLUTE_TYPE camhud
 #define RELATIVE_TYPE camhud_delta
 
-namespace openage {
 namespace engine {
 namespace coord {
 
@@ -36,7 +35,6 @@ struct camhud_delta {
 
 } //namespace coord
 } //namespace engine
-} //namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

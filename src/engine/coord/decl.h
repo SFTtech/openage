@@ -10,7 +10,6 @@
  * in accordance to doc/implementation/coordinate-systems
  */
 
-namespace openage {
 namespace engine {
 namespace coord {
 
@@ -62,6 +61,5 @@ struct vec3f_delta;
 
 } //namespace coord
 } //namespace engine
-} //namespace openage
 
 #endif //_ENGINE_COORD_DECL_H_

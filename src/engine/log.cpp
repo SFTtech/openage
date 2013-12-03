@@ -1,14 +1,14 @@
 #include "log.h"
 
-#include <cstdio>
-#include <cstdarg>
-#include <cstring>
-#include <cstdlib>
+#include <stdio.h>
+#include <stdarg.h>
+#include <string.h>
+#include <stdlib.h>
 
-#include "../util/strings.h"
-#include "../engine/engine.h"
+#include "util/strings.h"
+#include "engine.h"
 
-namespace openage {
+namespace engine {
 namespace log {
 
 constexpr LogLevel loglevels[] {
@@ -41,13 +41,13 @@ void log(const char *fmt, ...) {
 
 	util::rstrip(buf);
 
+	//TODO use more general callback functions for printing log messages
+
 	puts(buf);
 
 	if (engine::running) {
 		engine::console->add_message(buf);
 	}
-
-	//TODO: store buf into an array, which can then be evaluated and displayed by the engine
 
 	delete[] buf;
 }
@@ -63,4 +63,4 @@ template void log<6>(const char *fmt, ...);
 template void log<7>(const char *fmt, ...);
 
 } //namespace log
-} //namespace openage
+} //namespace engine

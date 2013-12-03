@@ -1,6 +1,7 @@
-#ifndef _UTIL_MISC_H_
-#define _UTIL_MISC_H_
-namespace openage {
+#ifndef _ENGINE_UTIL_MISC_H_
+#define _ENGINE_UTIL_MISC_H_
+
+namespace engine {
 namespace util {
 
 /**
@@ -26,6 +27,6 @@ T mod(T x, T m) {
 }
 
 } //namespace util
-} //namespace openage
+} //namespace engine
 
-#endif //_UTIL_MISC_H_
+#endif //_ENGINE_UTIL_MISC_H_

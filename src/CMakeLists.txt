@@ -27,10 +27,10 @@ add_executable(${PROJECT_NAME}
 	engine/coord/vec2f.cpp
 	engine/coord/vec3.cpp
 	engine/coord/vec3f.cpp
-	engine/util/log.cpp
+	engine/log.cpp
 	engine/util/color.cpp
 	engine/util/error.cpp
-	engine/util/filetools.cpp
+	engine/util/file.cpp
 	engine/util/fps.cpp
 	engine/util/misc.cpp
 	engine/util/strings.cpp

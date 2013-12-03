@@ -7,7 +7,6 @@
 #include "vec2.h"
 #include "window.h"
 
-namespace openage {
 namespace engine {
 namespace coord {
 
@@ -55,4 +54,3 @@ window_delta camgame_delta::to_window() {
 
 } //namespace coord
 } //namespace engine
-} //namespace openage

@@ -4,13 +4,11 @@
 #include <SDL2/SDL.h>
 
 #include "console.h"
-#include "../util/fps.h"
+#include "util/fps.h"
 #include "coord/window.h"
 #include "coord/phys3.h"
 #include "font.h"
 
-
-namespace openage {
 namespace engine {
 
 using noparam_method_ptr = void (*) ();
@@ -30,7 +28,7 @@ opens a window and initializes the OpenGL context.
 @param input_handler
 	pointer to the input handler, which is called each time an input event is registered
 */
-void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, noparam_method_ptr hud_draw_method, input_handler_ptr input_handler);
+void init(const char *windowtitle, noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, noparam_method_ptr hud_draw_method, input_handler_ptr input_handler);
 
 /**
 engine de-initialization method.
@@ -112,6 +110,5 @@ the frame counter measuring fps.
 extern util::FrameCounter *fpscounter;
 
 } //namespace engine
-} //namespace openage
 
 #endif //_ENGINE_ENGINE_H_

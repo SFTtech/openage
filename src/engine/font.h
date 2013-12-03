@@ -5,7 +5,6 @@
 
 #include "coord/decl.h"
 
-namespace openage {
 namespace engine {
 
 /**
@@ -39,6 +38,5 @@ public:
 };
 
 } //namespace engine
-} //namespace openage
 
 #endif //_ENGINE_FONT_H_

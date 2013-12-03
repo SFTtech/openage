@@ -1,4 +1,4 @@
-#include "filetools.h"
+#include "file.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -6,12 +6,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include "../log/log.h"
+#include "../log.h"
 
-namespace openage {
+namespace engine {
 namespace util {
 
-char* read_whole_file(const char *filename) {
+char *read_whole_file(const char *filename) {
 
 	//get the file size
 	struct stat st;
@@ -41,4 +41,4 @@ char* read_whole_file(const char *filename) {
 }
 
 } //namespace util
-} //namespace openage
+} //namespace engine

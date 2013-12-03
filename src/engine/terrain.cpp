@@ -2,15 +2,14 @@
 
 #include "engine.h"
 #include "texture.h"
-#include "../log/log.h"
-#include "../util/error.h"
-#include "../util/misc.h"
+#include "log.h"
+#include "util/error.h"
+#include "util/misc.h"
 #include "coord/tile.h"
 #include "coord/tile3.h"
 #include "coord/phys3.h"
 #include "coord/camgame.h"
 
-namespace openage {
 namespace engine {
 
 coord::camgame_delta tile_halfsize = {48, 24};
@@ -294,7 +293,7 @@ void Terrain::draw() {
 
 				if (adjacent_mask_id < 0) {
 					if (respect_adjacent_influence && !respect_diagonal_influence && binfdiagonal == 0) {
-						throw util::Error("influence detected with unknown directions: %u = 0x%02X", binf, binf);
+						throw Error("influence detected with unknown directions: %u = 0x%02X", binf, binf);
 					}
 				} else if (respect_adjacent_influence) {
 					draw_masks[mask_count].mask_id    = adjacent_mask_id;
@@ -384,7 +383,7 @@ the returned index would be 6 (count for each x row, starting at y=0)
 */
 size_t Terrain::tile_position(coord::tile pos) {
 	if (pos.ne >= (int) this->size || pos.ne < 0 || pos.se >= (int) this->size || pos.se < 0) {
-		throw util::Error("requested tile (%ld, %ld) that's not on this terrain.", pos.ne, pos.se);
+		throw Error("requested tile (%ld, %ld) that's not on this terrain.", pos.ne, pos.se);
 	}
 
 	return pos.se * this->size + pos.ne;
@@ -402,7 +401,7 @@ size_t Terrain::tile_position_diag(unsigned int row, unsigned int offset) {
 	unsigned int in_row; //number of tiles in the destination row
 
 	if (row > this->num_rows - 1) {
-		throw util::Error("Requested row %u, but there are only %lu rows in terrain.", row, this->num_rows);
+		throw Error("Requested row %u, but there are only %lu rows in terrain.", row, this->num_rows);
 	}
 
 	//calculation if selected tile is in the upper half
@@ -418,7 +417,7 @@ size_t Terrain::tile_position_diag(unsigned int row, unsigned int offset) {
 	}
 
 	if (offset > in_row-1) {
-		throw util::Error("Requested tile %d of row %d which has only %d tiles", offset, row, in_row);
+		throw Error("Requested tile %d of row %d which has only %d tiles", offset, row, in_row);
 	}
 
 	size_t position = so_far + offset;
@@ -442,7 +441,7 @@ size_t Terrain::tiles_in_row(unsigned int row) {
 	unsigned int in_row; //number of tiles in the destination row
 
 	if (row > this->num_rows - 1) {
-		throw util::Error("Requested row %u, but there are only %lu rows in terrain.", row, this->num_rows);
+		throw Error("Requested row %u, but there are only %lu rows in terrain.", row, this->num_rows);
 	}
 
 	if (row <= this->num_rows/2) {
@@ -463,4 +462,3 @@ void Terrain::set_mask(unsigned int modeid, engine::Texture *m) {
 }
 
 } //namespace engine
-} //namespace openage

@@ -4,7 +4,6 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 
-namespace openage {
 namespace engine {
 namespace shader {
 
@@ -21,6 +20,5 @@ public:
 
 } //namespace shader
 } //namespace engine
-} //namespace openage
 
 #endif //_ENGINE_SHADER_SHADER_H_

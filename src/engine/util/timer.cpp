@@ -2,7 +2,7 @@
 
 #include <SDL2/SDL.h>
 
-namespace openage {
+namespace engine {
 namespace util {
 
 void Timer::start() {
@@ -14,5 +14,5 @@ uint32_t Timer::measure() {
 	return now - this->starttime;
 }
 
-}
-}
+} //namespace util
+} //namespace engine

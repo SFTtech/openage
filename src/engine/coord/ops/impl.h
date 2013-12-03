@@ -1,5 +1,5 @@
-#include "../../../util/macro/loop.h"
-#include "../../../util/macro/concat.h"
+#include "../../util/macro/loop.h"
+#include "../../util/macro/concat.h"
 
 #define NEGATE(X) (SCALAR_TYPE) (-X)
 #define ADDARG(X) (SCALAR_TYPE) (X + arg.X)

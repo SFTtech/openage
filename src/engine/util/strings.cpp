@@ -1,10 +1,10 @@
 #include "strings.h"
 
-#include <cstdlib>
-#include <cstdio>
-#include <cstring>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
-namespace openage {
+namespace engine {
 namespace util {
 
 char *format(const char *fmt, ...) {
@@ -62,4 +62,4 @@ size_t rstrip(char *s) {
 }
 
 } //namespace util
-} //namespace openage
+} //namespace engine

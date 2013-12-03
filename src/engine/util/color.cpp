@@ -1,13 +1,14 @@
 #include "color.h"
 
-namespace openage {
+#include <GL/gl.h>
+
+namespace engine {
 namespace util {
 
-Color::Color(unsigned r, unsigned g, unsigned b, unsigned a) : r(r), g(g), b(b), a(a) {}
-
-Color::Color() : r(0), g(0), b(0), a(0) {}
-
-Color::~Color() {}
+void col::use() {
+	//TODO use glColor4b
+	glColor4f(r / 255.f, g / 255.f, b / 255.f, a / 255.f);
+}
 
 } //namespace util
-} //namespace openage
+} //namespace engine

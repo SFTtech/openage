@@ -1,33 +1,35 @@
-#include "openage.h"
+#include "main.h"
 
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <unistd.h>
 
-#include "engine/engine.h"
-#include "engine/terrain.h"
-#include "engine/texture.h"
-#include "engine/shader/shader.h"
-#include "engine/shader/program.h"
-#include "engine/coord/tile3.h"
-#include "engine/coord/tile.h"
-#include "engine/coord/window.h"
-#include "engine/coord/phys3.h"
-#include "engine/coord/vec2f.h"
-#include "log/log.h"
-#include "util/error.h"
-#include "util/filetools.h"
-#include "util/misc.h"
-#include "util/strings.h"
-#include "util/timer.h"
+#include "../engine/engine.h"
+#include "../engine/terrain.h"
+#include "../engine/texture.h"
+#include "../engine/shader/shader.h"
+#include "../engine/shader/program.h"
+#include "../engine/coord/tile3.h"
+#include "../engine/coord/tile.h"
+#include "../engine/coord/window.h"
+#include "../engine/coord/phys3.h"
+#include "../engine/coord/vec2f.h"
+#include "../engine/log.h"
+#include "../engine/util/error.h"
+#include "../engine/util/file.h"
+#include "../engine/util/misc.h"
+#include "../engine/util/strings.h"
+#include "../engine/util/timer.h"
+
+using namespace engine;
 
 namespace openage {
 
-engine::Texture *gaben, *university;
-engine::Texture **terrain_textures, **blending_textures;
+Texture *gaben, *university;
+Texture **terrain_textures, **blending_textures;
 
-engine::Terrain *terrain;
+Terrain *terrain;
 
 util::Timer *timer;
 
@@ -36,9 +38,9 @@ bool sc_left, sc_right, sc_up, sc_down;
 
 int *terrain_priority_list;
 struct building {
-	engine::coord::tile pos;
+	coord::tile pos;
 	unsigned player;
-	engine::Texture *tex;
+	Texture *tex;
 };
 
 std::vector<building> buildings;
@@ -91,18 +93,18 @@ void init() {
 	sc_down = false;
 
 	//load textures and stuff
-	gaben = new engine::Texture("gaben.png");
+	gaben = new Texture("gaben.png");
 
 	//TODO: dynamic generation of the file path
 	//sync this with convert .py script !
 
-	university = new engine::Texture("age/raw/Data/graphics.drs/3836.slp.png", true, engine::PLAYERCOLORED);
+	university = new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
 	//hardcoded for now
 	blend_mode_count = 9;
 
 	terrain_priority_list = new int[terrain_texture_count];
-	terrain_textures = new engine::Texture*[terrain_texture_count];
+	terrain_textures = new Texture*[terrain_texture_count];
 
 	//set terrain priorities, TODO: get them from media files. hardcoded for now.
 	terrain_priority_list[0]  = 70;
@@ -133,13 +135,13 @@ void init() {
 	terrain_priority_list[25] = 162;
 	terrain_priority_list[26] = 120;
 
-	terrain = new engine::Terrain(20, terrain_texture_count, blend_mode_count, terrain_priority_list);
+	terrain = new Terrain(20, terrain_texture_count, blend_mode_count, terrain_priority_list);
 
 	for (unsigned int i = 0; i < terrain_texture_count; i++) {
 		int current_id = terrain_ids[i];
 		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", current_id);
 
-		auto new_texture = new engine::Texture(terraintex_filename, true, engine::ALPHAMASKED);
+		auto new_texture = new Texture(terraintex_filename, true, ALPHAMASKED);
 		new_texture->fix_hotspots(48, 24);
 
 		terrain_textures[i] = new_texture;
@@ -149,12 +151,12 @@ void init() {
 	}
 
 	//add the blendomatic masks to the terrain
-	blending_textures = new engine::Texture*[blend_mode_count];
+	blending_textures = new Texture*[blend_mode_count];
 
 	for (unsigned int i = 0; i < blend_mode_count; i++) {
 		char *mask_filename = util::format("age/alphamask/mode%02d.png", i);
 
-		auto new_texture = new engine::Texture(mask_filename, true);
+		auto new_texture = new Texture(mask_filename, true);
 		new_texture->fix_hotspots(48, 24);
 
 		blending_textures[i] = new_texture;
@@ -165,7 +167,7 @@ void init() {
 
 
 	//set the terrain types according to the data array.
-	engine::coord::tile pos = {0, 0};
+	coord::tile pos = {0, 0};
 	for (; pos.ne < (int) terrain->get_size(); pos.ne++) {
 		for (pos.se = 0; pos.se < (int) terrain->get_size(); pos.se++) {
 			int texid = terrain_data[pos.ne][pos.se];
@@ -199,7 +201,7 @@ void init() {
 
 				if(sscanf(currentline, "n=%u", &n) == 1) {
 					if (n != num_pcolors) {
-						throw util::Error("the player colortable must have %u entries!", num_pcolors);
+						throw Error("the player colortable must have %u entries!", num_pcolors);
 					}
 				} else if(sscanf(currentline, "%u=%u,%u,%u,%u", &idx, &r, &g, &b, &a)) {
 					playercolors[idx*4] = r / 255.0;
@@ -207,7 +209,7 @@ void init() {
 					playercolors[idx*4 + 2] = b / 255.0;
 					playercolors[idx*4 + 3] = a / 255.0;
 				} else {
-					throw util::Error("unknown line content reading the player color table");
+					throw Error("unknown line content reading the player color table");
 				}
 			}
 			currentline = pcolor_seeker + 1;
@@ -222,66 +224,66 @@ void init() {
 	//read shader source codes and create shader objects for wrapping them.
 
 	char *texture_vert_code = util::read_whole_file("shaders/maptexture.vert.glsl");
-	auto plaintexture_vert = new engine::shader::Shader(GL_VERTEX_SHADER, texture_vert_code);
+	auto plaintexture_vert = new shader::Shader(GL_VERTEX_SHADER, texture_vert_code);
 	delete[] texture_vert_code;
 
 	char *texture_frag_code = util::read_whole_file("shaders/maptexture.frag.glsl");
-	auto plaintexture_frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, texture_frag_code);
+	auto plaintexture_frag = new shader::Shader(GL_FRAGMENT_SHADER, texture_frag_code);
 	delete[] texture_frag_code;
 
 	char *teamcolor_frag_code = util::read_whole_file("shaders/teamcolors.frag.glsl");
-	auto teamcolor_frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, teamcolor_frag_code);
+	auto teamcolor_frag = new shader::Shader(GL_FRAGMENT_SHADER, teamcolor_frag_code);
 	delete[] teamcolor_frag_code;
 
 	char *alphamask_vert_code = util::read_whole_file("shaders/alphamask.vert.glsl");
-	auto alphamask_vert = new engine::shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
+	auto alphamask_vert = new shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
 	delete[] alphamask_vert_code;
 
 	char *alphamask_frag_code = util::read_whole_file("shaders/alphamask.frag.glsl");
-	auto alphamask_frag = new engine::shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
+	auto alphamask_frag = new shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
 	delete[] alphamask_frag_code;
 
 
 
 	//create program for rendering simple textures
-	engine::texture_shader::program = new engine::shader::Program(plaintexture_vert, plaintexture_frag);
-	engine::texture_shader::program->link();
-	engine::texture_shader::texture   = engine::texture_shader::program->get_uniform_id("texture");
-	engine::texture_shader::tex_coord = engine::texture_shader::program->get_attribute_id("tex_coordinates");
-	engine::texture_shader::program->use();
-	glUniform1i(engine::texture_shader::texture, 0);
-	engine::texture_shader::program->stopusing();
+	texture_shader::program = new shader::Program(plaintexture_vert, plaintexture_frag);
+	texture_shader::program->link();
+	texture_shader::texture = texture_shader::program->get_uniform_id("texture");
+	texture_shader::tex_coord = texture_shader::program->get_attribute_id("tex_coordinates");
+	texture_shader::program->use();
+	glUniform1i(texture_shader::texture, 0);
+	texture_shader::program->stopusing();
 
 
 	//create program for tinting textures at alpha-marked pixels
 	//with team colors
-	engine::teamcolor_shader::program = new engine::shader::Program(plaintexture_vert, teamcolor_frag);
-	engine::teamcolor_shader::program->link();
-	engine::teamcolor_shader::texture          = engine::teamcolor_shader::program->get_uniform_id("texture");
-	engine::teamcolor_shader::tex_coord        = engine::teamcolor_shader::program->get_attribute_id("tex_coordinates");
-	engine::teamcolor_shader::player_id_var    = engine::teamcolor_shader::program->get_uniform_id("player_number");
-	engine::teamcolor_shader::alpha_marker_var = engine::teamcolor_shader::program->get_uniform_id("alpha_marker");
-	engine::teamcolor_shader::player_color_var = engine::teamcolor_shader::program->get_uniform_id("player_color");
-	engine::teamcolor_shader::program->use();
-	glUniform1i(engine::teamcolor_shader::texture, 0);
-	glUniform1f(engine::teamcolor_shader::alpha_marker_var, 254.0/255.0);
+	teamcolor_shader::program = new shader::Program(plaintexture_vert, teamcolor_frag);
+	teamcolor_shader::program->link();
+	teamcolor_shader::texture = teamcolor_shader::program->get_uniform_id("texture");
+	teamcolor_shader::tex_coord = teamcolor_shader::program->get_attribute_id("tex_coordinates");
+	teamcolor_shader::player_id_var = teamcolor_shader::program->get_uniform_id("player_number");
+	teamcolor_shader::alpha_marker_var = teamcolor_shader::program->get_uniform_id("alpha_marker");
+	teamcolor_shader::player_color_var = teamcolor_shader::program->get_uniform_id("player_color");
+	teamcolor_shader::program->use();
+	glUniform1i(teamcolor_shader::texture, 0);
+	glUniform1f(teamcolor_shader::alpha_marker_var, 254.0/255.0);
 	//fill the teamcolor shader's player color table:
-	glUniform4fv(engine::teamcolor_shader::player_color_var, 64, playercolors);
-	engine::teamcolor_shader::program->stopusing();
+	glUniform4fv(teamcolor_shader::player_color_var, 64, playercolors);
+	teamcolor_shader::program->stopusing();
 
 
 	//create program for drawing textures that are alpha-masked before
-	engine::alphamask_shader::program = new engine::shader::Program(alphamask_vert, alphamask_frag);
-	engine::alphamask_shader::program->link();
-	engine::alphamask_shader::base_coord   = engine::alphamask_shader::program->get_attribute_id("base_tex_coordinates");
-	engine::alphamask_shader::mask_coord   = engine::alphamask_shader::program->get_attribute_id("mask_tex_coordinates");
-	engine::alphamask_shader::show_mask    = engine::alphamask_shader::program->get_uniform_id("show_mask");
-	engine::alphamask_shader::base_texture = engine::alphamask_shader::program->get_uniform_id("base_texture");
-	engine::alphamask_shader::mask_texture = engine::alphamask_shader::program->get_uniform_id("mask_texture");
-	engine::alphamask_shader::program->use();
-	glUniform1i(engine::alphamask_shader::base_texture, 0);
-	glUniform1i(engine::alphamask_shader::mask_texture, 1);
-	engine::alphamask_shader::program->stopusing();
+	alphamask_shader::program = new shader::Program(alphamask_vert, alphamask_frag);
+	alphamask_shader::program->link();
+	alphamask_shader::base_coord = alphamask_shader::program->get_attribute_id("base_tex_coordinates");
+	alphamask_shader::mask_coord = alphamask_shader::program->get_attribute_id("mask_tex_coordinates");
+	alphamask_shader::show_mask = alphamask_shader::program->get_uniform_id("show_mask");
+	alphamask_shader::base_texture = alphamask_shader::program->get_uniform_id("base_texture");
+	alphamask_shader::mask_texture = alphamask_shader::program->get_uniform_id("mask_texture");
+	alphamask_shader::program->use();
+	glUniform1i(alphamask_shader::base_texture, 0);
+	glUniform1i(alphamask_shader::mask_texture, 1);
+	alphamask_shader::program->stopusing();
 
 
 
@@ -302,9 +304,9 @@ void deinit() {
 	delete gaben;
 
 	delete university;
-	delete engine::texture_shader::program;
-	delete engine::teamcolor_shader::program;
-	delete engine::alphamask_shader::program;
+	delete texture_shader::program;
+	delete teamcolor_shader::program;
+	delete alphamask_shader::program;
 
 	for (unsigned int i = 0; i < terrain_texture_count; i++) {
 		delete terrain_textures[i];
@@ -323,8 +325,7 @@ void input_handler(SDL_Event *e) {
 		break;
 
 	case SDL_MOUSEBUTTONDOWN: {
-		using namespace engine;
-		using namespace engine::coord;
+		using namespace coord;
 
 		//a mouse button was pressed...
 		//subtract value from window height to get position relative to lower right (0,0).
@@ -425,7 +426,7 @@ void move_camera() {
 	//one pixel per millisecond equals 14.3 tiles/second
 	float cam_movement_speed_keyboard = 0.5;
 
-	engine::coord::vec2f cam_movement {0.0, 0.0};
+	coord::vec2f cam_movement {0.0, 0.0};
 
 	if (sc_left) {
 		cam_movement.x -= cam_movement_speed_keyboard;
@@ -443,7 +444,7 @@ void move_camera() {
 	cam_movement *= (float) engine::fpscounter->msec_lastframe;
 
 	//calculate camera position delta from velocity and frame duration
-	engine::coord::camgame_delta cam_delta;
+	coord::camgame_delta cam_delta;
 	cam_delta.x = cam_movement.x;
 	cam_delta.y = cam_movement.y;
 
@@ -457,7 +458,7 @@ void on_engine_tick() {
 
 void draw_method() {
 	//draw gaben, our great and holy protector, bringer of the half-life 3.
-	gaben->draw(engine::coord::camgame {0, 0});
+	gaben->draw(coord::camgame {0, 0});
 
 	//draw terrain
 	terrain->draw();
@@ -470,31 +471,22 @@ void draw_method() {
 
 void hud_draw_method() {
 	//draw the currently selected editor texture tile
-	terrain->get_texture(editor_current_terrain)->draw(engine::coord::window{63, 84}.to_camhud());
+	terrain->get_texture(editor_current_terrain)->draw(coord::window{63, 84}.to_camhud());
 }
 
-int mainmethod() {
+int main() {
 	//init engine
-	engine::init(on_engine_tick, draw_method, hud_draw_method, input_handler);
-	init();
+	engine::init("openage", on_engine_tick, draw_method, hud_draw_method, input_handler);
+	openage::init();
 
 	//run main loop
 	engine::loop();
 
 	//de-init engine
 	engine::destroy();
-	deinit();
+	openage::deinit();
 
 	return 0;
 }
 
 } //namespace openage
-
-int main() {
-	try {
-		return openage::mainmethod();
-	} catch (openage::util::Error e) {
-		openage::log::fatal("Exception: %s", e.str());
-		return 1;
-	}
-}

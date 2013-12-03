@@ -10,7 +10,6 @@
 #define ABSOLUTE_TYPE [absname]
 #define RELATIVE_TYPE [relname]
 
-namespace openage {
 namespace engine {
 namespace coord {
 
@@ -34,7 +33,6 @@ struct [relname] {
 
 } //namespace coord
 } //namespace engine
-} //namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

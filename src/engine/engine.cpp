@@ -11,12 +11,11 @@
 
 #include "console.h"
 #include "texture.h"
-#include "../log/log.h"
-#include "../util/error.h"
-#include "../util/fps.h"
-#include "../util/strings.h"
+#include "log.h"
+#include "util/error.h"
+#include "util/fps.h"
+#include "util/strings.h"
 
-namespace openage {
 namespace engine {
 
 //global engine variables; partially accesible via engine.h
@@ -44,18 +43,13 @@ coord::window camhud_window = {0, 600};
 util::FrameCounter *fpscounter;
 bool console_activated = false;
 
-/**
-initialize the openage game engine.
-
-this creates the SDL window, the opengl context, reads shaders, the fps counter, ...
-*/
-void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, noparam_method_ptr hud_draw_method, input_handler_ptr input_handler) {
+void init(const char *windowtitle, noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, noparam_method_ptr hud_draw_method, input_handler_ptr input_handler) {
 
 	//set global random seed
 	srand(time(NULL));
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		throw util::Error("SDL initialization: %s", SDL_GetError());
+		throw Error("SDL initialization: %s", SDL_GetError());
 	}
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
@@ -64,10 +58,10 @@ void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, nop
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
-	window = SDL_CreateWindow("openage", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_size.x, window_size.y, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_size.x, window_size.y, SDL_WINDOW_OPENGL);
 
 	if (window == nullptr) {
-		throw util::Error("SDL window creation: %s", SDL_GetError());
+		throw Error("SDL window creation: %s", SDL_GetError());
 	}
 
 
@@ -75,22 +69,22 @@ void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, nop
 	int wanted_image_formats = IMG_INIT_PNG;
 	int sdlimg_inited = IMG_Init(wanted_image_formats);
 	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		throw util::Error("Failed to init PNG support: %s", IMG_GetError());
+		throw Error("Failed to init PNG support: %s", IMG_GetError());
 	}
 
 	glcontext = SDL_GL_CreateContext(window);
 
 	if (glcontext == nullptr) {
-		throw util::Error("Failed to create OpenGL context!");
+		throw Error("Failed to create OpenGL context!");
 	}
 
 	//initialize glew, for shaders n stuff
 	GLenum glew_state = glewInit();
 	if (glew_state != GLEW_OK) {
-		throw util::Error("GLEW initialization failed");
+		throw Error("GLEW initialization failed");
 	}
 	if (!GLEW_VERSION_2_1) {
-		throw util::Error("OpenGL 2.1 not available");
+		throw Error("OpenGL 2.1 not available");
 	}
 
 	//vsync on
@@ -113,7 +107,7 @@ void init(noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, nop
 	fonts::dejavuserif20 = new Font("DejaVu Serif", "Book", 20);
 
 	//initialize the visual debug console
-	console = new Console(util::Color(255, 255, 255, 180), util::Color(0, 0, 0, 255));
+	console = new Console(util::col{255, 255, 255, 180}, util::col {0, 0, 0, 255});
 
 	//initialize the fps counter
 	fpscounter = new util::FrameCounter();
@@ -256,7 +250,7 @@ void loop() {
 
 			//draw FPS counter
 			//set color to white
-			glColor4f(1.0, 1.0, 1.0, 1.0);
+			util::col {255, 255, 255, 255}.use();
 			fonts::dejavuserif20->render(window_size.x - 100, 15, "%.1f fps", fpscounter->fps);
 
 		}
@@ -313,7 +307,7 @@ void loop() {
 				//unknown error state
 				errormsg = "unknown error";
 			}
-			throw util::Error("OpenGL error state after running draw method: %d\n\t%s", glerrorstate, errormsg);
+			throw Error("OpenGL error state after running draw method: %d\n\t%s", glerrorstate, errormsg);
 		}
 
 		SDL_GL_SwapWindow(window);
@@ -321,4 +315,3 @@ void loop() {
 }
 
 } //namespace engine
-} //namespace openage

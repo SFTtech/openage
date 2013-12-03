@@ -5,10 +5,11 @@
 #include <cstring>
 
 #include "strings.h"
-#include "../log/log.h"
+#include "../log.h"
 
-namespace openage {
-namespace util {
+namespace engine {
+
+using namespace util;
 
 Error::Error(const char *fmt, ...) {
 	va_list vl;
@@ -41,5 +42,4 @@ const char *Error::str() {
 	return buf;
 }
 
-} //namespace util
-} //namespace openage
+} //namespace engine

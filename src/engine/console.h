@@ -1,7 +1,7 @@
-#ifndef _CONSOLE_H_
-#define _CONSOLE_H_
+#ifndef _ENGINE_CONSOLE_H_
+#define _ENGINE_CONSOLE_H_
 
-#include "../util/color.h"
+#include "util/color.h"
 
 #include <vector>
 #include <SDL2/SDL.h>
@@ -10,12 +10,11 @@
 
 #include "font.h"
 
-namespace openage {
 namespace engine {
 
 class Console {
 private:
-	util::Color bgcolor, textcolor;
+	util::col bgcolor, textcolor;
 	int lx, ly, rx, ry;
 	std::vector<const char *> messages;
 	Font *font;
@@ -24,12 +23,12 @@ private:
 
 public:
 	Console();
-	Console(util::Color bg, util::Color fg, int lx=0, int ly=0, int rx=0, int ry=0);
+	Console(util::col bg, util::col fg, int lx=0, int ly=0, int rx=0, int ry=0);
 	~Console();
 
 	void set_winsize(int w, int h);
-	void set_bgcolor(util::Color newcolor);
-	void set_textcolor(util::Color newcolor);
+	void set_bgcolor(util::col newcolor);
+	void set_textcolor(util::col newcolor);
 
 	void add_message(const char *text);
 
@@ -39,6 +38,5 @@ public:
 };
 
 } //namespace engine
-} //namespace openage
 
-#endif //_CONSOLE_H_
+#endif //_ENGINE_CONSOLE_H_

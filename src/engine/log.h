@@ -1,7 +1,7 @@
-#ifndef _LOG_LOG_H_
-#define _LOG_LOG_H_
+#ifndef _ENGINE_LOG_H_
+#define _ENGINE_LOG_H_
 
-namespace openage {
+namespace engine {
 namespace log {
 
 struct LogLevel {
@@ -25,6 +25,6 @@ constexpr logfunction_ptr dbg0 = log<7>;
 constexpr logfunction_ptr dbg = log<7>;
 
 } //namespace log
-} //namespace openage
+} //namespace engine
 
-#endif //_LOG_LOG_H_
+#endif //_ENGINE_LOG_H_

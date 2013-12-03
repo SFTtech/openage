@@ -1,18 +1,16 @@
-#ifndef _COLOR_H_
-#define _COLOR_H_
+#ifndef _ENGINE_UTIL_COLOR_H_
+#define _ENGINE_UTIL_COLOR_H_
 
-namespace openage {
+namespace engine {
 namespace util {
 
-class Color {
-public:
-	Color(unsigned r, unsigned g, unsigned b, unsigned a);
-	Color();
-	~Color();
+struct col {
+	unsigned r, g, b, a;
 
-	unsigned int r, g, b, a;
+	void use();
 };
 
 } //namespace util
-} //namespace openage
-#endif //_COLOR_H_
+} //namespace engine
+
+#endif //_ENGINE_UTIL_COLOR_H_

@@ -1,6 +1,6 @@
 #include "unicode.h"
 
-namespace openage {
+namespace engine {
 namespace util {
 
 size_t utf8_decode(const unsigned char *s, size_t len, wchar_t *outbuf) {
@@ -52,4 +52,4 @@ size_t utf8_decode(const unsigned char *s, size_t len, wchar_t *outbuf) {
 }
 
 } //namespace util
-} //namespace openage
+} //namespace engine

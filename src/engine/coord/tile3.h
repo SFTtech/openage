@@ -9,7 +9,6 @@
 #define ABSOLUTE_TYPE tile3
 #define RELATIVE_TYPE tile3_delta
 
-namespace openage {
 namespace engine {
 namespace coord {
 
@@ -38,7 +37,6 @@ struct tile3_delta {
 
 } //namespace coord
 } //namespace engine
-} //namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

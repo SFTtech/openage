@@ -1,5 +1,5 @@
-#ifndef _TERRAIN_H_
-#define _TERRAIN_H_
+#ifndef _ENGINE_TERRAIN_H_
+#define _ENGINE_TERRAIN_H_
 
 #include <stddef.h>
 
@@ -7,7 +7,6 @@
 #include "coord/camgame.h"
 #include "coord/tile.h"
 
-namespace openage {
 namespace engine {
 
 /**
@@ -58,6 +57,5 @@ private:
 };
 
 } //namespace engine
-} //namespace openage
 
-#endif //_TERRAIN_H_
+#endif //_ENGINE_TERRAIN_H_

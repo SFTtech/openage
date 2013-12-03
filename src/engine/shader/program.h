@@ -6,7 +6,6 @@
 
 #include "shader.h"
 
-namespace openage {
 namespace engine {
 namespace shader {
 
@@ -46,6 +45,5 @@ private:
 
 } //namespace shader
 } //namespace engine
-} //namespace openage
 
 #endif //_ENGINE_SHADER_PROGRAM_H_

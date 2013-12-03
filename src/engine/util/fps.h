@@ -1,7 +1,7 @@
-#ifndef _UTIL_FPS_H_
-#define _UTIL_FPS_H_
+#ifndef _ENGINE_UTIL_FPS_H_
+#define _ENGINE_UTIL_FPS_H_
 
-namespace openage {
+namespace engine {
 namespace util {
 
 class FrameCounter {
@@ -25,6 +25,6 @@ private:
 };
 
 } //namespace util
-} //namespace openage
+} //namespace engine
 
-#endif //_UTIL_FPS_H_
+#endif //_ENGINE_UTIL_FPS_H_

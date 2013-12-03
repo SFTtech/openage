@@ -1,10 +1,10 @@
-#ifndef _UTIL_STRINGS_H_
-#define _UTIL_STRINGS_H_
+#ifndef _ENGINE_UTIL_STRINGS_H_
+#define _ENGINE_UTIL_STRINGS_H_
 
 #include <cstdlib>
 #include <cstdarg>
 
-namespace openage {
+namespace engine {
 namespace util {
 
 /**
@@ -32,6 +32,6 @@ removes all whitespace characters on the right of the string.
 size_t rstrip(char *s);
 
 } //namespace util
-} //namespace openage
+} //namespace engine
 
-#endif //_UTIL_STRINGS_H_
+#endif //_ENGINE_UTIL_STRINGS_H_

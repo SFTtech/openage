@@ -4,12 +4,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "../../log/log.h"
-#include "../../util/error.h"
-#include "../../util/filetools.h"
-#include "../../util/strings.h"
+#include "../log.h"
+#include "../util/error.h"
+#include "../util/file.h"
+#include "../util/strings.h"
 
-namespace openage {
 namespace engine {
 namespace shader {
 
@@ -50,7 +49,7 @@ Shader::Shader(GLenum type, const char *source) {
 		char *infolog = new char[loglen];
 		glGetShaderInfoLog(this->id, loglen, NULL, infolog);
 
-		util::Error e("Failed to compile %s shader\n%s", type_to_string(type), infolog);
+		Error e("Failed to compile %s shader\n%s", type_to_string(type), infolog);
 		delete[] infolog;
 		glDeleteShader(this->id);
 
@@ -64,4 +63,3 @@ Shader::~Shader() {
 
 } //namespace shader
 } //namespace engine
-} //namespace openage

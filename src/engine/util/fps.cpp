@@ -1,10 +1,10 @@
 #include "fps.h"
 
-#include <cmath>
+#include <math.h>
 
 #include <SDL2/SDL.h>
 
-namespace openage {
+namespace engine {
 namespace util {
 
 void FrameCounter::frame() {
@@ -38,4 +38,4 @@ void FrameCounter::frame() {
 }
 
 } //namespace util
-} //namespace openage
+} //namespace engine

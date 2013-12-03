@@ -7,7 +7,6 @@
 #include "../terrain.h"
 #include "../engine.h"
 
-namespace openage {
 namespace engine {
 namespace coord {
 
@@ -63,4 +62,3 @@ phys3_delta phys3::get_fraction() {
 
 } //namespace coord
 } //namespace engine
-} //namespace openage

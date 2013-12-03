@@ -7,18 +7,16 @@
 
 #include "engine.h"
 #include "font.h"
-#include "../util/color.h"
-#include "../util/error.h"
-#include "../util/strings.h"
-#include "../log/log.h"
+#include "log.h"
+#include "util/color.h"
+#include "util/error.h"
+#include "util/strings.h"
 
-
-namespace openage {
 namespace engine {
 
-Console::Console() : Console(util::Color(255,255,255,255), util::Color(0,0,0,1)) {}
+Console::Console() : Console(util::col {255, 255, 255, 255}, util::col {0, 0, 0, 1}) {}
 
-Console::Console(util::Color bg, util::Color text, int lx, int ly, int rx, int ry) : bgcolor(bg), textcolor(text), lx(lx), ly(ly), rx(rx), ry(ry), spacing(7) {
+Console::Console(util::col bg, util::col text, int lx, int ly, int rx, int ry) : bgcolor(bg), textcolor(text), lx(lx), ly(ly), rx(rx), ry(ry), spacing(7) {
 
 	font = new Font("DejaVu Sans Mono", "Book", 12);
 }
@@ -40,11 +38,11 @@ void Console::set_winsize(int w, int h) {
 	this->ry = h - 50;
 }
 
-void Console::set_bgcolor(util::Color newcolor) {
+void Console::set_bgcolor(util::col newcolor) {
 	this->bgcolor = newcolor;
 }
 
-void Console::set_textcolor(util::Color newcolor) {
+void Console::set_textcolor(util::col newcolor) {
 	this->textcolor = newcolor;
 }
 
@@ -68,8 +66,7 @@ void Console::input_handler(SDL_Event *e) {
 void Console::draw() {
 	glPushMatrix();
 	{
-		//TODO: use glColor4i
-		glColor4f(this->bgcolor.r/255.0, this->bgcolor.g/255.0, this->bgcolor.g/255.0, this->bgcolor.a/255.0);
+		bgcolor.use();
 
 		glBegin(GL_QUADS);
 		{
@@ -80,9 +77,8 @@ void Console::draw() {
 		}
 		glEnd();
 
-		glColor4f(this->textcolor.r/255.0, this->textcolor.g/255.0, this->textcolor.g/255.0, this->textcolor.a/255.0);
+		textcolor.use();
 		glTranslatef(lx + 10, ly + 10, 0);
-
 
 		int px = 0, py = 0;
 
@@ -114,5 +110,4 @@ void Console::draw() {
 	glPopMatrix();
 }
 
-}
-}
+} //namespace console

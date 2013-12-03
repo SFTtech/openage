@@ -2,13 +2,12 @@
 
 #include <fontconfig/fontconfig.h>
 
-#include "../log/log.h"
-#include "../util/error.h"
-#include "../util/strings.h"
+#include "log.h"
+#include "util/error.h"
+#include "util/strings.h"
 #include "coord/camhud.h"
 #include "coord/camgame.h"
 
-namespace openage {
 namespace engine {
 
 /**
@@ -17,7 +16,7 @@ using fontconfig for just getting the font file name by a wanted font name and s
 char *get_font_filename(const char *family, const char *style) {
 	//initialize fontconfig
 	if (!FcInit()) {
-		throw util::Error("Failed to initialize fontconfig.");
+		throw Error("Failed to initialize fontconfig.");
 	}
 
 	//FcPattern *font_pattern = FcNameParse((const unsigned char *)"DejaVu Serif:style=Book");
@@ -43,7 +42,7 @@ char *get_font_filename(const char *family, const char *style) {
 	//get attibute FC_FILE (= filename) of best-matched font
 	FcChar8 *font_filename_tmp;
 	if (FcPatternGetString(font_match, FC_FILE, 0, &font_filename_tmp) != FcResultMatch) {
-		throw util::Error("fontconfig could not provide font %s %s", family, style);
+		throw Error("fontconfig could not provide font %s %s", family, style);
 	}
 
 	//copy the font filename because it will be freed when the pattern is destroyed.
@@ -65,11 +64,11 @@ Font::Font(const char *family, const char *style, unsigned size) {
 	internal_font = new FTGLTextureFont(font_filename);
 
 	if(internal_font->Error()) {
-		throw util::Error("Failed to create FTGL texture font from %s", font_filename);
+		throw Error("Failed to create FTGL texture font from %s", font_filename);
 	}
 
 	if (!internal_font->FaceSize(size)) {
-		throw util::Error("Failed to set font face size to %u", size);
+		throw Error("Failed to set font face size to %u", size);
 	}
 }
 
@@ -116,4 +115,3 @@ void Font::render(coord::camgame pos, const char *format, ...) {
 }
 
 } //namespace engine
-} //namespace openage

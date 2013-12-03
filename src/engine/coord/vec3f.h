@@ -8,7 +8,6 @@
 #define ABSOLUTE_TYPE vec3f
 #define RELATIVE_TYPE vec3f_delta
 
-namespace openage {
 namespace engine {
 namespace coord {
 
@@ -32,7 +31,6 @@ struct vec3f_delta {
 
 } //namespace coord
 } //namespace engine
-} //namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

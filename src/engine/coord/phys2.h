@@ -8,7 +8,6 @@
 #define ABSOLUTE_TYPE phys2
 #define RELATIVE_TYPE phys2_delta
 
-namespace openage {
 namespace engine {
 namespace coord {
 
@@ -42,7 +41,6 @@ struct phys2_delta {
 
 } //namespace coord
 } //namespace engine
-} //namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE
