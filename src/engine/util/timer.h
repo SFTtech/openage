@@ -12,30 +12,26 @@ Time measurement class.
 Start it some time, and get the passed time since the start.
  */
 class Timer {
+	bool stopped;
+	union {
+		//while paused, stores the current timer value
+		uint32_t stoppedat;
+
+		//while not paused, stores the time the timer has been started
+		uint32_t starttime;
+	};
+
 public:
-	Timer() : starttime{0} {} ;
-	~Timer() {};
+	Timer();
 
-	/**
-	stores the start time of this timer.
-
-	this saves the number of milliseconds that passed since program launch.
-	*/
+	void reset(bool stopped = true);
+	void stop();
 	void start();
-
-	/**
-	measure the time passed since start.
-
-	if start has not been called yet, it returns the time in milliseconds
-	since SDL initialisation.
-
-	@return time in milliseconds since start() call.
-	*/
-	uint32_t getval();
-
-private:
-	uint32_t starttime;
+	unsigned getval();
+	unsigned getandresetval();
+	bool isstopped();
 };
+
 
 } //namespace util
 } //namespace engine
