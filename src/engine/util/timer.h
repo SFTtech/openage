@@ -13,8 +13,8 @@ Start it some time, and get the passed time since the start.
  */
 class Timer {
 public:
-	Timer() : starttime(0) {} ;
-	~Timer();
+	Timer() : starttime{0} {} ;
+	~Timer() {};
 
 	/**
 	stores the start time of this timer.
@@ -31,7 +31,7 @@ public:
 
 	@return time in milliseconds since start() call.
 	*/
-	uint32_t measure();
+	uint32_t getval();
 
 private:
 	uint32_t starttime;

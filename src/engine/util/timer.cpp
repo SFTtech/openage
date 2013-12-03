@@ -9,7 +9,7 @@ void Timer::start() {
 	this->starttime = SDL_GetTicks();
 }
 
-uint32_t Timer::measure() {
+uint32_t Timer::getval() {
 	uint32_t now = SDL_GetTicks();
 	return now - this->starttime;
 }

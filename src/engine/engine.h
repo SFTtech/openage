@@ -1,40 +1,16 @@
 #ifndef _ENGINE_ENGINE_H_
 #define _ENGINE_ENGINE_H_
 
+#include <vector>
+
 #include <SDL2/SDL.h>
 
-#include "console.h"
 #include "util/fps.h"
 #include "coord/window.h"
 #include "coord/phys3.h"
 #include "font.h"
 
 namespace engine {
-
-using noparam_method_ptr = void (*) ();
-using input_handler_ptr = void (*) (SDL_Event *e);
-
-/**
-engine initialization method.
-opens a window and initializes the OpenGL context.
-@param on_engine_tick
-	pointer to a method that is executed on every engine tick (after input handling, before rendering)
-@param draw_method
-	pointer to the drawing method, which is called each iteration of the main loop,
-	with coord_camera set as the OpenGL coordinate system
-@param hud_draw_method
-	pointer to the rendering method, which is called each iteration of the main loop,
-	with coord_hud set as the OpenGL coordinate system
-@param input_handler
-	pointer to the input handler, which is called each time an input event is registered
-*/
-void init(const char *windowtitle, noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, noparam_method_ptr hud_draw_method, input_handler_ptr input_handler);
-
-/**
-engine de-initialization method.
-call to cleanly shutdown the application.
-*/
-void destroy();
 
 /**
 main loop method.
@@ -43,28 +19,31 @@ terminates when running is set to false.
 void loop();
 
 /**
-internal method that is automatically called whenever the window is resized.
-@param w
-	width
-@param h
-	height
+internal window-resize callback method
 */
-void engine_window_resized(unsigned w, unsigned h);
+bool handle_window_resize();
 
 /**
-internal method that is called whenever an input event is registered.
+internal input event callback method
 */
-void engine_input_handler(SDL_Event *e);
+bool handle_input_event(SDL_Event *e);
 
 /**
-SDL window of the engine.
+internal hud drawing method
+
+(draws FPS counter)
+*/
+bool draw_hud();
+
+/**
+SDL window
 */
 extern SDL_Window *window;
 
 /**
-the debug console
+SDL OpenGL context
 */
-extern Console *console;
+extern SDL_GLContext glcontext;
 
 /**
 the text fonts to be used for (can you believe it?) texts.
