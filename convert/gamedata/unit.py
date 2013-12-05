@@ -570,6 +570,7 @@ class Unit:
 				#int8_t unknown;
 				tmp_struct = Struct(endianness + "3h 2b 4h b")
 				pc = tmp_struct.unpack_from(raw, offset)
+				print("======"+ str(offset) +"======= >=80 -- 0\n" + str(pc) + "\n=============")
 				offset += tmp_struct.size
 
 				self.data["construction_graphic_id"] = pc[0]
@@ -588,7 +589,10 @@ class Unit:
 				self.data["building_annex"] = list()
 				for i in range(4):
 					t = BuildingAnnex()
-					offset = t.read(raw, offset)
+					offset_tmp = t.read(raw, offset)
+					print("======"+ str(offset) +"======= >=80 annex = " + str(t.data))
+					offset = offset_tmp
+
 					self.data["building_annex"] += [t.data]
 
 				#int16_t head_unit;
@@ -602,6 +606,7 @@ class Unit:
 				#int8_t unknown[6];
 				tmp_struct = Struct(endianness + "4h b f i h 6b")
 				pc = tmp_struct.unpack_from(raw, offset)
+				print("======"+ str(offset) +"======= >=80 -- 1\n" + str(pc) + "\n=============")
 				offset += tmp_struct.size
 
 				self.data["head_unit"] = pc[0]
