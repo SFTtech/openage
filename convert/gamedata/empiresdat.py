@@ -96,6 +96,14 @@ class Empires2X1P1:
 		offset = t.read(raw, offset)
 		self.data["unit"] = t.data
 
+		from gamedata import civ
+		t = civ.CivData()
+		offset = t.read(raw, offset)
+		self.data["civ"] = t.data
+
+		self.data = dict()
+		pprint.pprint(t.data)
+
 		return offset
 
 

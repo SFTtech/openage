@@ -59,14 +59,15 @@ def main():
 
 	palette = ColorTable(drsfiles["interface"].get_file_data('bin', 50500))
 
-	if write_enabled:
-
-		if exec_dev:
+	if exec_dev:
+		if write_enabled:
 			import gamedata.empiresdat
 			gamedata.empiresdat.test("Data/empires2_x1_p1.dat")
 			return
+		else:
+			raise Exception("development mode requires write access")
 
-
+	if write_enabled:
 		file_write(file_get_path('processed/player_color_palette.pal', write=True), palette.gen_player_color_palette())
 
 		import blendomatic
@@ -81,11 +82,9 @@ def main():
 
 		if args.extrafiles:
 			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
-	else:
-		if not exec_dev:
-			raise Exception("development mode requires write access")
 
 
+	file_list = dict()
 	files_extracted = 0
 
 	for drsname, drsfile in drsfiles.items():
@@ -94,7 +93,7 @@ def main():
 				continue
 
 			if args.listfiles:
-				print("%s:%s.%s" % (drsfile.fname, file_id, file_extension))
+				file_list[int(file_id)] = drsfile.fname, file_extension
 				continue
 
 			if write_enabled:
@@ -163,6 +162,15 @@ def main():
 
 	if write_enabled:
 		dbg(str(files_extracted) + " files extracted", 0)
+
+	if args.listfiles:
+		#file_list = sorted(file_list)
+		for idx, f in file_list.items():
+			file_name, file_extension = file_list[idx]
+			print("%s:%s.%s" % (file_name, idx, file_extension))
+		#import pprint
+		#pprint.pprint(file_list)
+
 
 if __name__ == "__main__":
 	main()
