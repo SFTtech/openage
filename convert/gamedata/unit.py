@@ -220,9 +220,9 @@ class Unit:
 		self.data["language_dll_creation"]      = pc[4]
 		self.data["unit_class"]                 = pc[5]
 		self.data["graphic_standing0"]          = pc[6]
-		#check_file(pc[6])
+		check_file(pc[6])
 		self.data["graphic_standing1"]          = pc[7]
-		#check_file(pc[7])
+		check_file(pc[7])
 		self.data["graphic_dying0"]             = pc[8]
 		self.data["graphic_dying1"]             = pc[9]
 		self.data["death_mode"]                 = pc[10]
@@ -233,7 +233,9 @@ class Unit:
 		self.data["radius_size1"]               = pc[15]
 		self.data["hp_bar_height0"]             = pc[16]
 		self.data["sound_train0"]               = pc[17]
+		check_file(pc[17])
 		self.data["sound_train1"]               = pc[18]
+		check_file(pc[18])
 		self.data["dead_unit_id"]               = pc[19]
 		self.data["placement_mode"]             = pc[20]
 		self.data["air_mode"]                   = pc[21]
@@ -316,8 +318,11 @@ class Unit:
 
 
 		self.data["sound_selection"] = pc[0]
+		check_file(pc[0])
 		self.data["sound_dying"]     = pc[1]
+		check_file(pc[1])
 		self.data["sound_attack"]    = pc[2]
+		check_file(pc[2])
 		self.data["name"]            = zstr(pc[3])
 		self.data["id1"]             = pc[4]
 		self.data["id2"]             = pc[5]
@@ -393,7 +398,9 @@ class Unit:
 				self.data["drop_site1"]       = pc[4]
 				self.data["villager_mode"]    = pc[5]
 				self.data["move_sound"]       = pc[6]
+				check_file(pc[6])
 				self.data["stop_sound"]       = pc[7]
+				check_file(pc[7])
 				self.data["animal_mode"]      = pc[8]
 
 
@@ -601,6 +608,7 @@ class Unit:
 				self.data["transform_unit"] = pc[1]
 				#self.data[""] = pc[2]
 				self.data["construction_sound_id"] = pc[3]
+				check_file(pc[3])
 				self.data["garnison_type"] = pc[4]
 				self.data["garnison_heal_rate"] = pc[5]
 				#self.data[""] = pc[6]
