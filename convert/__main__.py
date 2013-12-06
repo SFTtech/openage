@@ -93,7 +93,14 @@ def main():
 				continue
 
 			if args.listfiles:
-				file_list[int(file_id)] = drsfile.fname, file_extension
+				fid = int(file_id)
+				if fid in file_list:
+					msg = "file already in the file list:"
+					msg += "\n%s/%d.%s" % (file_list[fid][0], fid, file_list[fid][1])
+					msg += "\n duplicate=%s/%d.%s" % (drsfile.fname, fid, file_extension)
+					raise Exception(msg)
+
+				file_list[fid] = drsfile.fname, file_extension
 				continue
 
 			if write_enabled:
