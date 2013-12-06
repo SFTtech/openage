@@ -20,7 +20,7 @@ def check_file(fid):
 
 
 def offset_info(offset, data, msg="", s=None, mode=0):
-	ret = "====== @%d = %#x ======" % (offset, offset)
+	ret = "====== @ %d = %#x ======" % (offset, offset)
 	if s != None:
 		ret += " \"" + str(s.format.decode("utf-8")) + "\" =="
 
@@ -502,13 +502,14 @@ class Unit:
 
 
 			if self.data["type"] == 60:
+
 				#int8_t stretch_mode;
 				#int8_t compensation_mode;
 				#int8_t drop_animation_mode;
 				#int8_t penetration_mode;
 				#int8_t unknown;
 				#float projectile_arc;
-				tmp_struct = Struct(endianness + "5b f")
+				tmp_struct = Struct(endianness + "5b x x f")
 				pc = tmp_struct.unpack_from(raw, offset)
 				offset_info(offset, pc, "==60", tmp_struct)
 				offset += tmp_struct.size
@@ -666,7 +667,7 @@ class DamageGraphic:
 		damage_graphic_struct = Struct(endianness + "h 3b")
 
 		pc = damage_graphic_struct.unpack_from(raw, offset)
-		offset_info(offset, pc, "damage graphic", hit_type_struct, mode=1)
+		offset_info(offset, pc, "damage graphic", damage_graphic_struct, mode=1)
 		offset += damage_graphic_struct.size
 
 		self.data["graphic_id"]     = pc[0]
