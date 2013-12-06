@@ -28,8 +28,9 @@ add_executable(${PROJECT_NAME}
 	engine/coord/phys2.cpp
 	engine/coord/phys3.cpp
 	engine/coord/camgame.cpp
-	engine/coord/camhud.cpp
 	engine/coord/window.cpp
+	engine/coord/camhud.cpp
+	engine/coord/term.cpp
 	engine/coord/vec2.cpp
 	engine/coord/vec2f.cpp
 	engine/coord/vec3.cpp
