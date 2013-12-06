@@ -14,7 +14,16 @@ def check_file(fid):
 		print("***** graphic is %d!!" % fid)
 		pass
 	else:
-		raise Exception("file %d not found" % (fid))
+		msg = "##### file %d not found" % (fid)
+		#raise Exception(msg)
+		print(msg)
+
+
+def offset_info(offset, data, msg="", s=None):
+	ret = "====== @%d = %#x ======" % (offset, offset)
+	ret += " %s \n" % msg
+	ret += str(data) + "\n" #============="
+	print(ret)
 
 
 class UnitHeaderData:
@@ -205,7 +214,7 @@ class Unit:
 		unit0_struct = Struct(endianness + "b H h 2H 5h b h f b 3f 3h 2b h b 6h 2f 2b h b h f 4b 3h H 4h 2b ? 8b h b B 3f")
 
 		pc = unit0_struct.unpack_from(raw, offset)
-		print("======"+ str(offset) +"======= unit header0\n" + str(pc) + "\n=============")
+		offset_info(offset, "unit header0")
 		offset += unit0_struct.size
 
 
@@ -313,7 +322,7 @@ class Unit:
 		unit2_struct = Struct(endianness + "3h %ds 2h" % self.data["name_length"])
 
 		pc = unit2_struct.unpack_from(raw, offset)
-		print("======"+ str(offset) +"=======\n" + str(pc) + "\n=============")
+		offset_info(offset, pc, s=unit2_struct)
 		offset += unit2_struct.size
 
 
@@ -336,6 +345,7 @@ class Unit:
 			#float speed;
 			tmp_struct = Struct(endianness + "f")
 			pc = tmp_struct.unpack_from(raw, offset)
+			offset_info(offset, pc, ">=20 SPEED", tmp_struct)
 			offset += tmp_struct.size
 
 			self.data["speed"], = pc
@@ -358,7 +368,7 @@ class Unit:
 				#int8_t unknown[17];
 				tmp_struct = Struct(endianness + "2h f b h ? 2f 17b")
 				pc = tmp_struct.unpack_from(raw, offset)
-				print("======"+ str(offset) +"======= >=30\n" + str(pc) + "\n=============")
+				offset_info(offset, pc, ">=30", tmp_struct)
 				offset += tmp_struct.size
 
 				self.data["walking_graphics0"]     = pc[0]
@@ -386,9 +396,8 @@ class Unit:
 				#int8_t animal_mode;
 				tmp_struct = Struct(endianness + "h 2f 2h b 2h b")
 				pc = tmp_struct.unpack_from(raw, offset)
+				offset_info(offset, pc, ">=40", tmp_struct)
 				offset += tmp_struct.size
-
-				print("======"+ str(offset) +"======= >=40\n" + str(pc) + "\n=============")
 
 
 				self.data["sheep_conversion"] = pc[0]
@@ -409,6 +418,7 @@ class Unit:
 				#int8_t unknown;
 				tmp_struct = Struct(endianness + "2b")
 				pc = tmp_struct.unpack_from(raw, offset)
+				offset_info(offset, pc, ">=60 header0", tmp_struct)
 				offset += tmp_struct.size
 
 				#self.data[""] = pc[0]
@@ -426,7 +436,6 @@ class Unit:
 					t = HitType()
 					offset_tmp = t.read(raw, offset)
 					self.data["attack"] += [t.data]
-					print("======"+ str(offset) +"======= >=60 attack %d/%d: " % (i, pc[0]) + str(t.data))
 					offset = offset_tmp
 
 				#uint16_t armor_count;
@@ -441,7 +450,6 @@ class Unit:
 					t = HitType()
 					offset_tmp = t.read(raw, offset)
 					self.data["armor"] += [t.data]
-					print("======"+ str(offset) +"======= >=60 armor %d/%d: " % (i, pc[0]) + str(t.data))
 					offset = offset_tmp
 
 				#int16_t unknown;
@@ -463,9 +471,9 @@ class Unit:
 				#float reload_time1;
 				tmp_struct = Struct(endianness + "h 3f 2h b h 3f b 2f 4h f")
 				pc = tmp_struct.unpack_from(raw, offset)
+				offset_info(offset, pc, ">=60 data", tmp_struct)
 				offset += tmp_struct.size
 
-				print("======"+ str(offset) +"======= >=60\n" + str(pc) + "\n=============")
 
 				#self.data[""] = pc[0]
 				self.data["max_range"]              = pc[1]
@@ -496,7 +504,7 @@ class Unit:
 				#float projectile_arc;
 				tmp_struct = Struct(endianness + "5b f")
 				pc = tmp_struct.unpack_from(raw, offset)
-				print("======"+ str(offset) +"======= ==60\n" + str(pc) + "\n=============")
+				offset_info(offset, pc, "==60", tmp_struct)
 				offset += tmp_struct.size
 
 				self.data["stretch_mode"]        = pc[0]
@@ -513,9 +521,6 @@ class Unit:
 					t = RessourceCost()
 					offset = t.read(raw, offset)
 					self.data["ressource_cost"] += [t.data]
-
-
-				print("at %d" % offset)
 
 				#int16_t train_time;
 				#int16_t train_location_id;
@@ -535,7 +540,9 @@ class Unit:
 				#int16_t pierce_armor_displayed;
 				tmp_struct = Struct(endianness + "2h b 2i 2b 2h xx f b 3f 2i b h")
 				pc = tmp_struct.unpack_from(raw, offset)
-				print("======"+ str(offset) +"======= >=70\n" + str(pc) + "\n=============")
+				offset_info(offset, pc, ">=70", tmp_struct)
+				offset += tmp_struct.size
+
 
 				self.data["train_time"]                          = pc[0]
 				self.data["train_location_id"]                   = pc[1]
@@ -570,7 +577,7 @@ class Unit:
 				#int8_t unknown;
 				tmp_struct = Struct(endianness + "3h 2b 4h b")
 				pc = tmp_struct.unpack_from(raw, offset)
-				print("======"+ str(offset) +"======= >=80 -- 0\n" + str(pc) + "\n=============")
+				offset_info(offset, pc, ">=80 header 0", tmp_struct)
 				offset += tmp_struct.size
 
 				self.data["construction_graphic_id"] = pc[0]
@@ -583,14 +590,13 @@ class Unit:
 				self.data["stack_unit_id"]           = pc[5]
 				self.data["terrain_id"]              = pc[6]
 				#self.data[""] = pc[7]
-				self.data["research_id"]             = pc[8]
+				#self.data["research_id"]             = pc[8]
 				#self.data[""] = pc[9]
 
 				self.data["building_annex"] = list()
 				for i in range(4):
 					t = BuildingAnnex()
 					offset_tmp = t.read(raw, offset)
-					print("======"+ str(offset) +"======= >=80 annex = " + str(t.data))
 					offset = offset_tmp
 
 					self.data["building_annex"] += [t.data]
@@ -606,7 +612,7 @@ class Unit:
 				#int8_t unknown[6];
 				tmp_struct = Struct(endianness + "4h b f i h 6b")
 				pc = tmp_struct.unpack_from(raw, offset)
-				print("======"+ str(offset) +"======= >=80 -- 1\n" + str(pc) + "\n=============")
+				offset_info(offset, pc, ">=80 header 1", tmp_struct)
 				offset += tmp_struct.size
 
 				self.data["head_unit"] = pc[0]
@@ -633,6 +639,7 @@ class RessourceStorage:
 		ressource_storage_struct = Struct(endianness + "h f b")
 
 		pc = ressource_storage_struct.unpack_from(raw, offset)
+		offset_info(offset, pc, "ressource storage", ressource_storage_struct)
 		offset += ressource_storage_struct.size
 
 		self.data["a"] = pc[0]
@@ -653,10 +660,11 @@ class DamageGraphic:
 		damage_graphic_struct = Struct(endianness + "h 3b")
 
 		pc = damage_graphic_struct.unpack_from(raw, offset)
+		offset_info(offset, pc, "damage graphic", hit_type_struct)
 		offset += damage_graphic_struct.size
 
 		self.data["graphic_id"]     = pc[0]
-		#check_file(pc[0])
+		check_file(pc[0])
 		self.data["damage_percent"] = pc[1]
 		#self.data[""] = pc[2]
 		#self.data[""] = pc[3]
@@ -673,6 +681,7 @@ class HitType:
 		hit_type_struct = Struct(endianness + "2h")
 
 		pc = hit_type_struct.unpack_from(raw, offset)
+		offset_info(offset, pc, "hittype", hit_type_struct)
 		offset += hit_type_struct.size
 
 		self.data["type"]   = pc[0]
@@ -691,6 +700,7 @@ class RessourceCost:
 		ressource_cost_struct = Struct(endianness + "3h")
 
 		pc = ressource_cost_struct.unpack_from(raw, offset)
+		offset_info(offset, pc, "ressource_cost", ressource_cost_struct)
 		offset += ressource_cost_struct.size
 
 		self.data["type"]    = pc[0]
@@ -710,6 +720,7 @@ class BuildingAnnex:
 		building_annex_struct = Struct(endianness + "h 2f")
 
 		pc = building_annex_struct.unpack_from(raw, offset)
+		offset_info(offset, pc, ">=80 annex", building_annex_struct)
 		offset += building_annex_struct.size
 
 		self.data["unit_id"]    = pc[0]
