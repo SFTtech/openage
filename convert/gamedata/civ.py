@@ -88,10 +88,5 @@ class Civ:
 			offset = t.read(raw, offset)
 			self.data["unit"] += [t.data]
 
-			#import pprint
-			#pprint.pprint(t.data)
-
-		raise Exception("success! (lol)")
-
 
 		return offset

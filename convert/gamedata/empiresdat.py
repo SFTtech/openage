@@ -101,8 +101,9 @@ class Empires2X1P1:
 		offset = t.read(raw, offset)
 		self.data["civ"] = t.data
 
-		self.data = dict()
-		pprint.pprint(t.data)
+		#self.data = dict()
+		#import pprint
+		#pprint.pprint(t.data)
 
 		return offset
 
@@ -116,8 +117,16 @@ class Empires2X1P1:
 def test(datfile):
 	dbg("converting the empires2_x1_p1 main game data file...")
 	tryit = Empires2X1P1(datfile)
-	import pprint
-	dbg("result:\n" + pprint.pformat(tryit.data), 1)
+	#import pprint
+	#dbg("result:\n" + pprint.pformat(tryit.data), 1)
+	res = str(tryit.data)
+
+	destfile = "/tmp/empires2_x1_p1.py"
+	with open(destfile, "w") as f:
+		f.write(res)
+
+	print("written to %s" % destfile)
+	#print(res)
 
 if __name__ == "__main__":
 	#fak u frank
