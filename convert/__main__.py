@@ -36,12 +36,12 @@ def main():
 	exec_dev = args.development
 
 	#set path in utility class
-	print("setting age2 input directory to " + args.srcdir)
+	dbg("setting age2 input directory to " + args.srcdir, 1)
 	set_dir(args.srcdir, is_writedir=False)
 
 	#write mode is disabled by default, unless destdir is set
 	if args.destdir != '/dev/null' and not args.listfiles and not args.dumpfilelist:
-		print("setting write dir to " + args.destdir)
+		dbg("setting write dir to " + args.destdir, 1)
 		set_dir(args.destdir, is_writedir=True)
 		write_enabled = True
 	else:
@@ -182,8 +182,11 @@ def main():
 				ret += "]"
 				print(ret)
 		else:
+			ret = "#!/usr/bin/python\n\n#auto generated age2tc file list\n\n"
 			import pprint
-			pprint.pprint(file_list)
+			ret += "avail_files = "
+			ret += pprint.pformat(file_list)
+			print(ret)
 
 
 if __name__ == "__main__":
