@@ -14,6 +14,8 @@ def main():
 	p = argparse.ArgumentParser()
 	p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
 	p.add_argument("-l", "--listfiles", help = "List files in the DRS archives matching 'resource', or all", action='store_true')
+	p.add_argument("--dumpfilelist", help = "Return python representation of all found files, useful for existence testing.", action='store_true')
+
 	p.add_argument("-e", "--extrafiles", help = "Extract extra files that are not needed, but useful (mainly visualizations).", action='store_true')
 	p.add_argument("-d", "--development", help = "Execute extracting routines being in development.", action='store_true')
 	p.add_argument("-o", "--destdir", help = "The openage root directory", default='/dev/null')
@@ -38,7 +40,7 @@ def main():
 	set_dir(args.srcdir, is_writedir=False)
 
 	#write mode is disabled by default, unless destdir is set
-	if args.destdir != '/dev/null' and not args.listfiles:
+	if args.destdir != '/dev/null' and not args.listfiles and not args.dumpfilelist:
 		print("setting write dir to " + args.destdir)
 		set_dir(args.destdir, is_writedir=True)
 		write_enabled = True
@@ -52,8 +54,11 @@ def main():
 	drsfiles = {
 		"graphics":  DRS("Data/graphics.drs"),
 		"interface": DRS("Data/interfac.drs"),
-		"gamedata":  DRS("Data/gamedata.drs"),
-		"sounds":    DRS("Data/sounds.drs"),
+		"sounds0":   DRS("Data/sounds.drs"),
+		"sounds1":   DRS("Data/sounds_x1.drs"),
+		"gamedata0": DRS("Data/gamedata.drs"),
+		"gamedata1": DRS("Data/gamedata_x1.drs"),
+		"gamedata2": DRS("Data/gamedata_x1_p1.drs"),
 		"terrain":   DRS("Data/terrain.drs")
 	}
 
@@ -92,15 +97,12 @@ def main():
 			if not any((er.matches(drsname, file_id, file_extension) for er in args.extractionrules)):
 				continue
 
-			if args.listfiles:
+			if args.listfiles or args.dumpfilelist:
 				fid = int(file_id)
-				if fid in file_list:
-					msg = "file already in the file list:"
-					msg += "\n%s/%d.%s" % (file_list[fid][0], fid, file_list[fid][1])
-					msg += "\n duplicate=%s/%d.%s" % (drsfile.fname, fid, file_extension)
-					raise Exception(msg)
+				if fid not in file_list:
+					file_list[fid] = list()
 
-				file_list[fid] = drsfile.fname, file_extension
+				file_list[fid] += [(drsfile.fname, file_extension)]
 				continue
 
 			if write_enabled:
@@ -170,13 +172,18 @@ def main():
 	if write_enabled:
 		dbg(str(files_extracted) + " files extracted", 0)
 
-	if args.listfiles:
+	if args.listfiles or args.dumpfilelist:
 		#file_list = sorted(file_list)
-		for idx, f in file_list.items():
-			file_name, file_extension = file_list[idx]
-			print("%s:%s.%s" % (file_name, idx, file_extension))
-		#import pprint
-		#pprint.pprint(file_list)
+		if not args.dumpfilelist:
+			for idx, f in file_list.items():
+				ret = "%d = [ " % idx
+				for file_name, file_extension in f:
+					ret += "%s/%d.%s, " % (file_name, idx, file_extension)
+				ret += "]"
+				print(ret)
+		else:
+			import pprint
+			pprint.pprint(file_list)
 
 
 if __name__ == "__main__":
