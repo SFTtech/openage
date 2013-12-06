@@ -21,6 +21,9 @@ def check_file(fid):
 
 def offset_info(offset, data, msg="", s=None, mode=0):
 	ret = "====== @%d = %#x ======" % (offset, offset)
+	if s != None:
+		ret += " \"" + str(s.format.decode("utf-8")) + "\" =="
+
 	if mode == 0:
 		ret += " %s \n" % msg
 		ret += str(data) + "\n" #============="
