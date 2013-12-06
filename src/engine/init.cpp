@@ -15,6 +15,7 @@
 #include "texture.h"
 #include "util/error.h"
 #include "input.h"
+#include "log.h"
 
 namespace engine {
 
@@ -59,6 +60,17 @@ void init(const char *windowtitle) {
 	}
 	if (!GLEW_VERSION_2_1) {
 		throw Error("OpenGL 2.1 not available");
+	}
+
+	//to quote the standard doc:
+	//'The value gives a rough estimate of the largest texture that the GL can handle'
+	//wat?
+	//anyways, we need at least 1024x1024.
+	int max_texture_size;
+	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
+	log::dbg("Maximum supported texture size: %d", max_texture_size);
+	if (max_texture_size < 1024) {
+		throw Error("Maximum supported texture size too small: %d", max_texture_size);
 	}
 
 	//vsync on
