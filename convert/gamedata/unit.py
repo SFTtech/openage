@@ -478,10 +478,10 @@ class Unit:
 				#int16_t attack_displayed;
 				#int16_t range_displayed;
 				#float reload_time1;
-				tmp_struct = Struct(endianness + "h 3f 2h b h 3f b 2f 4h f")
+				tmp_struct = Struct(endianness + "h 3f 2h b h 3f b 2f 4h xx f")
 				pc = tmp_struct.unpack_from(raw, offset)
 				offset_info(offset, pc, ">=60 data", tmp_struct)
-				offset += tmp_struct.size
+				offset += tmp_struct.size - 2
 
 
 				#self.data[""] = pc[0]
