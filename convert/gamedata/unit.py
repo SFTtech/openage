@@ -19,10 +19,13 @@ def check_file(fid):
 		print(msg)
 
 
-def offset_info(offset, data, msg="", s=None):
+def offset_info(offset, data, msg="", s=None, mode=0):
 	ret = "====== @%d = %#x ======" % (offset, offset)
-	ret += " %s \n" % msg
-	ret += str(data) + "\n" #============="
+	if mode == 0:
+		ret += " %s \n" % msg
+		ret += str(data) + "\n" #============="
+	elif mode == 1:
+		ret += " %s " % msg + str(data)
 	print(ret)
 
 
@@ -214,7 +217,7 @@ class Unit:
 		unit0_struct = Struct(endianness + "b H h 2H 5h b h f b 3f 3h 2b h b 6h 2f 2b h b h f 4b 3h H 4h 2b ? 8b h b B 3f")
 
 		pc = unit0_struct.unpack_from(raw, offset)
-		offset_info(offset, "unit header0")
+		offset_info(offset, pc, "unit header0", unit0_struct)
 		offset += unit0_struct.size
 
 
@@ -322,7 +325,7 @@ class Unit:
 		unit2_struct = Struct(endianness + "3h %ds 2h" % self.data["name_length"])
 
 		pc = unit2_struct.unpack_from(raw, offset)
-		offset_info(offset, pc, s=unit2_struct)
+		offset_info(offset, pc, "unit header 2", unit2_struct)
 		offset += unit2_struct.size
 
 
@@ -639,7 +642,7 @@ class RessourceStorage:
 		ressource_storage_struct = Struct(endianness + "h f b")
 
 		pc = ressource_storage_struct.unpack_from(raw, offset)
-		offset_info(offset, pc, "ressource storage", ressource_storage_struct)
+		offset_info(offset, pc, "ressource storage", ressource_storage_struct, mode=1)
 		offset += ressource_storage_struct.size
 
 		self.data["a"] = pc[0]
@@ -660,7 +663,7 @@ class DamageGraphic:
 		damage_graphic_struct = Struct(endianness + "h 3b")
 
 		pc = damage_graphic_struct.unpack_from(raw, offset)
-		offset_info(offset, pc, "damage graphic", hit_type_struct)
+		offset_info(offset, pc, "damage graphic", hit_type_struct, mode=1)
 		offset += damage_graphic_struct.size
 
 		self.data["graphic_id"]     = pc[0]
@@ -681,7 +684,7 @@ class HitType:
 		hit_type_struct = Struct(endianness + "2h")
 
 		pc = hit_type_struct.unpack_from(raw, offset)
-		offset_info(offset, pc, "hittype", hit_type_struct)
+		offset_info(offset, pc, ">=60 hittype", hit_type_struct, mode=1)
 		offset += hit_type_struct.size
 
 		self.data["type"]   = pc[0]
@@ -700,7 +703,7 @@ class RessourceCost:
 		ressource_cost_struct = Struct(endianness + "3h")
 
 		pc = ressource_cost_struct.unpack_from(raw, offset)
-		offset_info(offset, pc, "ressource_cost", ressource_cost_struct)
+		offset_info(offset, pc, ">=70 ressource cost", ressource_cost_struct, mode=1)
 		offset += ressource_cost_struct.size
 
 		self.data["type"]    = pc[0]
@@ -720,7 +723,7 @@ class BuildingAnnex:
 		building_annex_struct = Struct(endianness + "h 2f")
 
 		pc = building_annex_struct.unpack_from(raw, offset)
-		offset_info(offset, pc, ">=80 annex", building_annex_struct)
+		offset_info(offset, pc, ">=80 b_annex", building_annex_struct, mode=1)
 		offset += building_annex_struct.size
 
 		self.data["unit_id"]    = pc[0]
