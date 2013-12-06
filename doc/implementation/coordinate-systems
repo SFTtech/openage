@@ -74,7 +74,12 @@ camhud
 	while in hud rendering mode, the renderer accepts
 	coordinates of this type.
 
+term
+	terminal character coordinates
+	orthonormal 2D (x, y), integer, in characters
 
+	origin is top left corner of console area
+	positive in right and down directions
 
 CONVERSIONS
 
