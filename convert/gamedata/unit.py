@@ -8,8 +8,9 @@ endianness = '< '
 def check_file(fid):
 	import filelist
 	if fid in filelist.avail_files:
-		arch, extension = filelist.avail_files[fid]
-		print("%d.%s in %s" % (fid, extension, arch))
+		entries = filelist.avail_files[fid]
+		for arch, extension in entries:
+			print("%d.%s in %s" % (fid, extension, arch))
 	elif fid in [-1, 0]:
 		print("***** graphic is %d!!" % fid)
 		pass
@@ -21,14 +22,16 @@ def check_file(fid):
 
 def offset_info(offset, data, msg="", s=None, mode=0):
 	ret = "====== @ %d = %#x ======" % (offset, offset)
+
+	ret += " %s " % msg
 	if s != None:
-		ret += " \"" + str(s.format.decode("utf-8")) + "\" =="
+		ret += "== \"" + str(s.format.decode("utf-8")) + "\" =="
 
 	if mode == 0:
-		ret += " %s \n" % msg
-		ret += str(data) + "\n" #============="
+		ret += "\n" + str(data) + "\n"
 	elif mode == 1:
-		ret += " %s " % msg + str(data)
+		ret += str(data)
+
 	print(ret)
 
 
