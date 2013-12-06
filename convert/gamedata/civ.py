@@ -72,20 +72,26 @@ class Civ:
 
 		self.data["unit_offsets"] = pc
 
-
 		self.data["unit"] = list()
-		#for i in range(self.data["unit_count"]):
-		for i in range(10):
+		print("unit count = %d" % self.data["unit_count"])
+		for i in range(self.data["unit_count"]):
 			print("%%%%%%%%%%%%%%%%%%%%%%%%%%%% UNIT entry %d" % i)
+
+			uo = self.data["unit_offsets"][i]
+			print("unit offset = %d" % uo)
+			if uo == 0:
+				print("skipping UNIT entry %d" % i)
+				continue
+
 			from gamedata import unit
 			t = unit.Unit()
 			offset = t.read(raw, offset)
-			#self.data["unit"] += [t.data]
+			self.data["unit"] += [t.data]
 
-			import pprint
-			pprint.pprint(t.data)
+			#import pprint
+			#pprint.pprint(t.data)
 
-		raise Exception("lol")
+		raise Exception("success! (lol)")
 
 
 		return offset
