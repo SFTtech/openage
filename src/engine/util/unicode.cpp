@@ -3,7 +3,69 @@
 namespace engine {
 namespace util {
 
-size_t utf8_decode(const unsigned char *s, size_t len, wchar_t *outbuf) {
+utf8_decoder::utf8_decoder() {
+	reset();
+}
+
+void utf8_decoder::reset() {
+	out = -1;
+	remaining = 0;
+}
+
+bool utf8_decoder::feed(char c) {
+	bool result = true;
+
+	if ((c & (1 << 7)) == 0) {
+		//single-byte character
+		if (remaining) {
+			//successful re-synchronization
+			//(current multi-byte character discarded)
+			result = false;
+		}
+
+		remaining = 0;
+		out = c;
+	} else if (c & (1 << 6)) {
+		if (remaining) {
+			//successful re-synchronization
+			//(current multi-byte character discarded)
+			result = false;
+		}
+
+		//beginning of a multi-byte character
+		if ((c & (1 << 5)) == 0) {
+			//2-byte character
+			remaining = 1;
+			out = c & ((1 << 5) - 1);
+		} else if ((c & (1 << 4)) == 0) {
+			//3-byte character
+			remaining = 2;
+			out = c & ((1 << 4) - 1);
+		} else if ((c & (1 << 3)) == 0) {
+			//4-byte character
+			remaining = 3;
+			out = c & ((1 << 3) - 1);
+		} else {
+			//no 5- or 6-byte characters exist in utf8
+			remaining = 0;
+			out = -1;
+			result = false;
+		}
+	} else {
+		//inside a multi-byte character
+		if (!remaining) {
+			//we expected the start of a new character
+			result = false;
+		}
+
+		remaining -= 1;
+		out = (out << 6) | (c & ((1 << 6) - 1));
+	}
+
+	return result;
+}
+
+size_t utf8_decode(const unsigned char *s, size_t len, int32_t *outbuf) {
 	size_t advance;
 	wchar_t w;
 	size_t result = 0;
