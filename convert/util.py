@@ -226,3 +226,36 @@ def zstr(data):
 	"""
 
 	return data.decode("utf-8").rstrip("\x00")
+
+
+def check_file(fid):
+	import filelist
+	if fid in filelist.avail_files:
+		entries = filelist.avail_files[fid]
+		for arch, extension in entries:
+			print("%d.%s in %s" % (fid, extension, arch))
+	elif fid in [-1, 0]:
+		print("***** graphic is %d!!" % fid)
+		pass
+	else:
+		msg = "##### file %d not found" % (fid)
+		#raise Exception(msg)
+		print(msg)
+
+
+def offset_info(offset, data, msg="", s=None, mode=0):
+	ret = "====== @ %d = %#x ======" % (offset, offset)
+	ret += " %s " % msg
+
+	#print struct info
+	if s != None:
+		ret += "== \"" + str(s.format.decode("utf-8")) + "\" =="
+
+	#long info mode
+	if mode == 0:
+		ret += "\n" + str(data) + "\n"
+	elif mode == 1:
+		ret += str(data)
+
+	print(ret)
+
