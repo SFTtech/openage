@@ -8,11 +8,18 @@ find_package(GLEW)
 add_executable(${PROJECT_NAME}
 	main.cpp
 	openage/main.cpp
+	openage/init.cpp
+	openage/callbacks.cpp
+	openage/gamestate.cpp
+	openage/objects/building.cpp
+	openage/objects/terrain.cpp
 	engine/engine.cpp
+	engine/callbacks.cpp
+	engine/init.cpp
 	engine/font.cpp
-	engine/console.cpp
 	engine/terrain.cpp
 	engine/texture.cpp
+	engine/input.cpp
 	engine/shader/shader.cpp
 	engine/shader/program.cpp
 	engine/coord/chunk.cpp
@@ -36,6 +43,9 @@ add_executable(${PROJECT_NAME}
 	engine/util/strings.cpp
 	engine/util/timer.cpp
 	engine/util/unicode.cpp
+	engine/console/callbacks.cpp
+	engine/console/console.cpp
+	engine/console/init.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}

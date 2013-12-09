@@ -9,12 +9,13 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "console.h"
+#include "callbacks.h"
 #include "texture.h"
 #include "log.h"
 #include "util/error.h"
 #include "util/fps.h"
 #include "util/strings.h"
+#include "util/color.h"
 
 namespace engine {
 
@@ -26,13 +27,6 @@ namespace fonts {
 Font *dejavuserif20;
 }
 
-Console *console;
-
-noparam_method_ptr on_engine_tick;
-noparam_method_ptr draw_method, hud_draw_method;
-input_handler_ptr input_handler;
-
-
 bool running;
 
 coord::window window_size = {800, 600};
@@ -41,152 +35,34 @@ coord::window camgame_window = {400, 300};
 coord::window camhud_window = {0, 600};
 
 util::FrameCounter *fpscounter;
-bool console_activated = false;
 
-void init(const char *windowtitle, noparam_method_ptr on_engine_tick, noparam_method_ptr draw_method, noparam_method_ptr hud_draw_method, input_handler_ptr input_handler) {
-
-	//set global random seed
-	srand(time(NULL));
-
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		throw Error("SDL initialization: %s", SDL_GetError());
-	}
-
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-
-	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_size.x, window_size.y, SDL_WINDOW_OPENGL);
-
-	if (window == nullptr) {
-		throw Error("SDL window creation: %s", SDL_GetError());
-	}
-
-
-	// load support for the PNG image formats, jpg: IMG_INIT_JPG | IMG_INIT_PNG
-	int wanted_image_formats = IMG_INIT_PNG;
-	int sdlimg_inited = IMG_Init(wanted_image_formats);
-	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		throw Error("Failed to init PNG support: %s", IMG_GetError());
-	}
-
-	glcontext = SDL_GL_CreateContext(window);
-
-	if (glcontext == nullptr) {
-		throw Error("Failed to create OpenGL context!");
-	}
-
-	//initialize glew, for shaders n stuff
-	GLenum glew_state = glewInit();
-	if (glew_state != GLEW_OK) {
-		throw Error("GLEW initialization failed");
-	}
-	if (!GLEW_VERSION_2_1) {
-		throw Error("OpenGL 2.1 not available");
-	}
-
-	//vsync on
-	SDL_GL_SetSwapInterval(1);
-
-	//enable alpha blending
-	glEnable(GL_BLEND);
-
-	//order of drawing relevant for depth
-	//what gets drawn last is displayed on top.
-	glDisable(GL_DEPTH_TEST);
-
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	engine::on_engine_tick = on_engine_tick;
-	engine::draw_method = draw_method;
-	engine::hud_draw_method = hud_draw_method;
-	engine::input_handler = input_handler;
-
-	fonts::dejavuserif20 = new Font("DejaVu Serif", "Book", 20);
-
-	//initialize the visual debug console
-	console = new Console(util::col{255, 255, 255, 180}, util::col {0, 0, 0, 255});
-
-	//initialize the fps counter
-	fpscounter = new util::FrameCounter();
-}
-
-/**
-destroys everything created upon creation of the engine.
-
-deletes opengl context, the SDL window, and engine variables.
-*/
-void destroy() {
-	SDL_GL_DeleteContext(glcontext);
-	SDL_DestroyWindow(window);
-	delete fpscounter;
-	delete console;
-	delete fonts::dejavuserif20;
-	IMG_Quit();
-	SDL_Quit();
-}
-
-/**
-method that's called when the SDL window is resized.
-
-this adjusts the opengl viewport and calls for visible area recalculation.
-*/
-void engine_window_resized(unsigned w, unsigned h) {
-	//update window size
-	window_size.x = w;
-	window_size.y = h;
+bool handle_window_resize() {
 	//update camgame window position
-	camgame_window.x = w / 2;
-	camgame_window.y = h / 2;
+	camgame_window = window_size / 2;
 	//update camhud window position
-	camhud_window.x = 0;
-	camhud_window.y = h;
-	//update console window size
-	console->set_winsize(w, h);
+	camhud_window = {0, (coord::pixel_t) window_size.y};
 	//update OpenGL viewport and projection
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glViewport(0, 0, w, h);
+	glViewport(0, 0, window_size.x, window_size.y);
 
 	// set orthographic projection: left, right, bottom, top, nearVal, farVal
-	glOrtho(0, w, 0, h, 9001, -1);
+	glOrtho(0, window_size.x, 0, window_size.y, 9001, -1);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	log::dbg("engine window has been resized to %ux%u\n", w, h);
+	log::dbg("engine window has been resized to %hdx%hd\n", window_size.x, window_size.y);
+
+	return true;
 }
 
-/**
-handles some keys directly in preference over the game input handler.
+bool draw_hud() {
+	//draw FPS counter
+	util::col {255, 255, 255, 255}.use();
+	fonts::dejavuserif20->render(window_size.x - 100, 15, "%.1f fps", fpscounter->fps);
 
-this is mainly for high-priority events.
-at the moment, it handles window resizing events,
-and opening/closing the in-game terminal.
-*/
-void engine_input_handler(SDL_Event *e) {
-	switch(e->type) {
-	case SDL_WINDOWEVENT:
-		switch(e->window.event) {
-		case SDL_WINDOWEVENT_RESIZED:
-			engine_window_resized(e->window.data1, e->window.data2);
-			break;
-		}
-		break;
-
-	case SDL_KEYUP:
-		break;
-
-	case SDL_KEYDOWN:
-		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
-		case SDLK_BACKQUOTE:
-			console_activated = !console_activated;
-			break;
-		}
-		break;
-	}
+	return true;
 }
 
 /**
@@ -201,58 +77,50 @@ void loop() {
 	SDL_Event e;
 
 	while (running) {
-
 		fpscounter->frame();
 
+		while (SDL_PollEvent(&e)) {
+			//call the input callback methods
+			for(auto cb: callbacks::on_input) {
+				if (!cb(&e)) {
+					break;
+				};
+			}
+		}
+
+		//call engine tick callback methods
+		for(auto cb: callbacks::on_engine_tick) {
+			cb();
+		}
 
 		//clear the framebuffer to black
 		//in the future, we might disable it for lazy drawing
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		while (SDL_PollEvent(&e)) {
-			//first, handle the event ourselves (e.g.: detect window resize)
-			engine_input_handler(&e);
-
-			if (!console_activated) {
-				//now, give the event to the user of the engine
-				input_handler(&e);
-			}
-			else {
-				//or, give it to the console, if that is opened
-				console->input_handler(&e);
-			}
-		}
-
-		//tick the gamelogic here
-		//tick(magic);
-		//call the registered callback method
-		on_engine_tick();
-
 		glPushMatrix();
 		{
-			//after this transformation, it is possible to directly
-			//draw in the camera coordinate system.
+			//set the framebuffer up for camgame rendering
 			glTranslatef(camgame_window.x, camgame_window.y, 0);
-			draw_method();
+
+			//invoke all game drawing callback methods
+                        for(auto cb: callbacks::on_drawgame) {
+                                if (!cb()) {
+					break;
+				};
+                        }
 		}
 		glPopMatrix();
 
-		//the hud coordinate system is now established
 		{
-			//draw user hud
-			hud_draw_method();
+			//the hud coordinate system is automatically established
 
-			//draw console
-			if (console_activated) {
-				console->draw();
-			}
-
-			//draw FPS counter
-			//set color to white
-			util::col {255, 255, 255, 255}.use();
-			fonts::dejavuserif20->render(window_size.x - 100, 15, "%.1f fps", fpscounter->fps);
-
+			//invoke all hud drawing callback methods
+                        for(auto cb: callbacks::on_drawhud) {
+                                if (!cb()) {
+					break;
+				};
+                        }
 		}
 
 		//the rendering is done

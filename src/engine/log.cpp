@@ -7,6 +7,7 @@
 
 #include "util/strings.h"
 #include "engine.h"
+#include "console/console.h"
 
 namespace engine {
 namespace log {
@@ -46,7 +47,7 @@ void log(const char *fmt, ...) {
 	puts(buf);
 
 	if (engine::running) {
-		engine::console->add_message(buf);
+		engine::console::write(buf);
 	}
 
 	delete[] buf;
