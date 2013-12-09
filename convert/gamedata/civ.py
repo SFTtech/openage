@@ -73,20 +73,19 @@ class Civ:
 		self.data["unit_offsets"] = pc
 
 		self.data["unit"] = list()
-		print("unit count = %d" % self.data["unit_count"])
+		dbg("unit count = %d" % self.data["unit_count"], 2)
 		for i in range(self.data["unit_count"]):
-			print("%%%%%%%%%%%%%%%%%%%%%%%%%%%% UNIT entry %d" % i)
+			dbg("%%%%%%%%%%%%%%%%%%%%%%%%%%%% UNIT entry %d" % i, 2)
 
 			uo = self.data["unit_offsets"][i]
-			print("unit offset = %d" % uo)
+			dbg("unit offset = %d" % uo, 3)
 			if uo == 0:
-				print("skipping UNIT entry %d" % i)
+				dbg("skipping UNIT entry %d" % i, 2)
 				continue
 
 			from gamedata import unit
 			t = unit.Unit()
 			offset = t.read(raw, offset)
 			self.data["unit"] += [t.data]
-
 
 		return offset

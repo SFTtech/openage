@@ -317,7 +317,7 @@ class Unit:
 		self.data["id2"]             = pc[5]
 
 
-		print("unit type = %d\nname = %s" % (self.data["type"], self.data["name"]))
+		dbg("unit type = %d\nname = %s" % (self.data["type"], self.data["name"]), 2)
 
 		#every thing else only exists for non-trees (!= 90)
 		#and things with id >= 20
@@ -333,7 +333,7 @@ class Unit:
 			if math.isnan(self.data["speed"]):
 				raise Exception("Speed is NaN!")
 
-			print("speed:" + str(pc))
+			dbg("speed:" + str(pc), 2)
 
 
 			if self.data["type"] >= 30:

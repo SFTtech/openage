@@ -233,14 +233,14 @@ def check_file(fid):
 	if fid in filelist.avail_files:
 		entries = filelist.avail_files[fid]
 		for arch, extension in entries:
-			print("%d.%s in %s" % (fid, extension, arch))
+			dbg("%d.%s in %s" % (fid, extension, arch), 2)
 	elif fid in [-1, 0]:
-		print("***** graphic is %d!!" % fid)
+		dbg("***** graphic is %d!!" % fid, 2)
 		pass
 	else:
 		msg = "##### file %d not found" % (fid)
 		#raise Exception(msg)
-		print(msg)
+		dbg(msg, 2)
 
 
 def offset_info(offset, data, msg="", s=None, mode=0):
@@ -257,5 +257,5 @@ def offset_info(offset, data, msg="", s=None, mode=0):
 	elif mode == 1:
 		ret += str(data)
 
-	print(ret)
+	dbg(ret, 3)
 
