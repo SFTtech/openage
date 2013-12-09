@@ -439,9 +439,9 @@ struct {
 			int8_t c;
 		} research_resource_cost[3];
 		int16_t required_tech_count;
-		int16_t civilisation;
+		int16_t civilisation_id;
 		int16_t full_tech_mode;
-		int16_t research_location;
+		int16_t research_location_id;
 		uint16_t language_dll_name;
 		uint16_t language_dll_description;
 		int16_t research_time;
