@@ -14,7 +14,10 @@ def main():
 	p = argparse.ArgumentParser()
 	p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
 	p.add_argument("-l", "--listfiles", help = "List files in the DRS archives matching 'resource', or all", action='store_true')
+	p.add_argument("--dumpfilelist", help = "Return python representation of all found files, useful for existence testing.", action='store_true')
+
 	p.add_argument("-e", "--extrafiles", help = "Extract extra files that are not needed, but useful (mainly visualizations).", action='store_true')
+	p.add_argument("-d", "--development", help = "Execute extracting routines being in development.", action='store_true')
 	p.add_argument("-o", "--destdir", help = "The openage root directory", default='/dev/null')
 	p.add_argument("-s", "--nomerge", help = "Don't merge frames of slps onto a texture atlas, create single files instead", action='store_true')
 
@@ -30,14 +33,15 @@ def main():
 	args.extractionrules = [ ExtractionRule(e) for e in args.extract ]
 
 	merge_images = not args.nomerge
+	exec_dev = args.development
 
 	#set path in utility class
-	print("setting age2 input directory to " + args.srcdir)
+	dbg("setting age2 input directory to " + args.srcdir, 1)
 	set_dir(args.srcdir, is_writedir=False)
 
 	#write mode is disabled by default, unless destdir is set
-	if args.destdir != '/dev/null' and not args.listfiles:
-		print("setting write dir to " + args.destdir)
+	if args.destdir != '/dev/null' and not args.listfiles and not args.dumpfilelist:
+		dbg("setting write dir to " + args.destdir, 1)
 		set_dir(args.destdir, is_writedir=True)
 		write_enabled = True
 	else:
@@ -50,12 +54,23 @@ def main():
 	drsfiles = {
 		"graphics":  DRS("Data/graphics.drs"),
 		"interface": DRS("Data/interfac.drs"),
-		"gamedata":  DRS("Data/gamedata.drs"),
-		"sounds":    DRS("Data/sounds.drs"),
+		"sounds0":   DRS("Data/sounds.drs"),
+		"sounds1":   DRS("Data/sounds_x1.drs"),
+		"gamedata0": DRS("Data/gamedata.drs"),
+		"gamedata1": DRS("Data/gamedata_x1.drs"),
+		"gamedata2": DRS("Data/gamedata_x1_p1.drs"),
 		"terrain":   DRS("Data/terrain.drs")
 	}
 
 	palette = ColorTable(drsfiles["interface"].get_file_data('bin', 50500))
+
+	if exec_dev:
+		if write_enabled:
+			import gamedata.empiresdat
+			gamedata.empiresdat.test("Data/empires2_x1_p1.dat")
+			return
+		else:
+			raise Exception("development mode requires write access")
 
 	if write_enabled:
 		file_write(file_get_path('processed/player_color_palette.pal', write=True), palette.gen_player_color_palette())
@@ -74,6 +89,7 @@ def main():
 			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
 
 
+	file_list = dict()
 	files_extracted = 0
 
 	for drsname, drsfile in drsfiles.items():
@@ -81,8 +97,12 @@ def main():
 			if not any((er.matches(drsname, file_id, file_extension) for er in args.extractionrules)):
 				continue
 
-			if args.listfiles:
-				print("%s:%s.%s" % (drsfile.fname, file_id, file_extension))
+			if args.listfiles or args.dumpfilelist:
+				fid = int(file_id)
+				if fid not in file_list:
+					file_list[fid] = list()
+
+				file_list[fid] += [(drsfile.fname, file_extension)]
 				continue
 
 			if write_enabled:
@@ -151,6 +171,23 @@ def main():
 
 	if write_enabled:
 		dbg(str(files_extracted) + " files extracted", 0)
+
+	if args.listfiles or args.dumpfilelist:
+		#file_list = sorted(file_list)
+		if not args.dumpfilelist:
+			for idx, f in file_list.items():
+				ret = "%d = [ " % idx
+				for file_name, file_extension in f:
+					ret += "%s/%d.%s, " % (file_name, idx, file_extension)
+				ret += "]"
+				print(ret)
+		else:
+			ret = "#!/usr/bin/python\n\n#auto generated age2tc file list\n\n"
+			import pprint
+			ret += "avail_files = "
+			ret += pprint.pformat(file_list)
+			print(ret)
+
 
 if __name__ == "__main__":
 	main()
