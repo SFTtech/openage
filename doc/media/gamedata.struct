@@ -457,10 +457,11 @@ struct {
 	int32_t unknown[7];
 
 	struct {
-		int8_t age_count;
-		int8_t building_count;
-		int8_t unit_count;
-		int8_t research_count;
+		int8_t age_entry_count;
+		int8_t building_connection_count;
+		int8_t unit_connection_count;
+		int8_t research_connection_count;
+
 		struct {
 			int32_t unknown;
 			int32_t id;
@@ -470,22 +471,23 @@ struct {
 			int8_t unit_count;
 			int32_t units[unit_count];
 			int8_t research_count;
-			int32_t researches[research_count];
+			int32_t research[research_count];
 			int32_t unknown;
 			int32_t unknown;
 			int16_t zeroes[49];
-		} age_tech_tree[age_count];
+		} age_tech_tree[age_entry_count];
+
 		int32_t unknown;
 
 		struct {
 			int32_t id;
 			int8_t unknown;
 			int8_t building_count;
-			int32_t buildings[building_count];
+			int32_t building[building_count];
 			int8_t unit_count;
-			int32_t units[unit_count];
+			int32_t unit[unit_count];
 			int8_t research_count;
-			int32_t researches[research_count];
+			int32_t research[research_count];
 			int32_t age;
 			int32_t unit_or_research0;
 			int32_t unit_or_research1;
@@ -494,9 +496,9 @@ struct {
 			int32_t mode1;
 			int32_t unknown[7];
 			int8_t unknown[11];
-			int32_t connections;
+			int32_t connection;
 			int32_t enabling_research;
-		} building_connection[building_count];
+		} building_connection[building_entry_count];
 
 		struct {
 			int32_t id;
@@ -512,23 +514,23 @@ struct {
 			int32_t unknown[7];
 			int32_t vertical_line;
 			int8_t unit_count;
-			int32_t units[unit_count];
+			int32_t unit[unit_count];
 			int32_t location_in_age;
 			int32_t required_research;
 			int32_t line_mode;
 			int32_t enabling_research;
-		} unit_connection[unit_count];
+		} unit_connection[unit_entry_count];
 
 		struct {
 			int32_t id;
 			int8_t unknown;
 			int32_t upper_building;
 			int8_t building_count;
-			int32_t buildings[building_count];
+			int32_t building[building_count];
 			int8_t unit_count;
-			int32_t units[unit_count];
+			int32_t unit[unit_count];
 			int8_t research_count;
-			int32_t researches[research_count];
+			int32_t research[research_count];
 			int32_t required_research;
 			int32_t age;
 			int32_t upper_research;
@@ -538,6 +540,6 @@ struct {
 			int32_t vertical_line;
 			int32_t location_in_age;
 			int32_t unknown;
-		} research_connection[research_count];
+		} research_connection[research_entry_count];
 	} tech_tree;
 } empires2_x1_p1;

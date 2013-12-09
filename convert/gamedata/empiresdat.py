@@ -51,7 +51,7 @@ class Empires2X1P1:
 		self.data["version"] = header_struct.unpack_from(raw, offset)
 		offset += header_struct.size
 
-		dbg("version: %s" % (self.data["version"]), 1)
+		dbg("dat version: %s" % (self.data["version"]), 1)
 
 		from gamedata import terrain
 		t = terrain.TerrainHeaderData()
@@ -105,6 +105,14 @@ class Empires2X1P1:
 		t = research.ResearchData()
 		offset = t.read(raw, offset)
 		self.data["research"] = t.data
+
+		tmp_struct = Struct(endianness + "7i")
+		offset += tmp_struct.size
+
+		from gamedata import tech
+		t = tech.TechtreeData()
+		offset = t.read(raw, offset)
+		self.data["tech"] = t.data
 
 		#self.data = dict()
 		#import pprint

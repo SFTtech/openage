@@ -255,7 +255,7 @@ def offset_info(offset, data, msg="", s=None, mode=0):
 	if mode == 0:
 		ret += "\n" + str(data) + "\n"
 	elif mode == 1:
-		ret += str(data)
+		ret += " " + str(data)
 
 	dbg(ret, 3)
 
