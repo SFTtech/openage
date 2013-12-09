@@ -229,6 +229,10 @@ def zstr(data):
 
 
 def check_file(fid):
+	if (True):
+		#deactivated for now, maybe use again later
+		return
+
 	import filelist
 	if fid in filelist.avail_files:
 		entries = filelist.avail_files[fid]
