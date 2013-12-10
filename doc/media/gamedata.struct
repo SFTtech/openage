@@ -101,19 +101,20 @@ struct {
 		int32_t blend_priority;
 		int32_t blend_mode;
 		uint8_t color[3];
-		int16_t unknown;
-		int16_t unknown;
-		int8_t unknown[23];
+		uint8_t unknown[5];
+		float unknown;
+		int8_t unknown[18];
 		int16_t frame_count;
-		int16_t unknown[2];
-		int16_t unknown[54];
+		int16_t angle_count;
+		int16_t terrain_id;
+		int16_t elevation_graphic[54];
 		int16_t terrain_replacement_id;
 		int16_t terrain_dimensions0;
 		int16_t terrain_dimensions1;
-		int8_t unknown[84];
+		int8_t terrain_border_id[84];
 		int16_t terrain_unit_id[30];
 		int16_t terrain_unit_density[30];
-		int8_t unknown[30];
+		int8_t terrain_unit_priority[30];
 		int16_t terrain_units_used_count;
 	} terrain[terrain_count];
 

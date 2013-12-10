@@ -97,6 +97,7 @@ class Terrain:
 	def read(self, raw, offset):
 		self.data = dict()
 
+
 		#int16_t unknown;
 		#int16_t unknown;
 		#char name0[13];
@@ -107,21 +108,22 @@ class Terrain:
 		#int32_t blend_priority;
 		#int32_t blend_mode;
 		#uint8_t color[3];
-		#int16_t unknown;
-		#int16_t unknown;
-		#int8_t unknown[23];
+		#uint8_t unknown[5];
+		#float unknown;
+		#int8_t unknown[18];
 		#int16_t frame_count;
-		#int16_t unknown[2];
-		#int16_t unknown[54];
+		#int16_t angle_count;
+		#int16_t terrain_id;
+		#int16_t elevation_graphic[54];
 		#int16_t terrain_replacement_id;
 		#int16_t terrain_dimensions0;
 		#int16_t terrain_dimensions1;
-		#int8_t unknown[84];
+		#int8_t terrain_border_id[84];
 		#int16_t terrain_unit_id[30];
 		#int16_t terrain_unit_density[30];
-		#int8_t unknown[30];
+		#int8_t terrain_unit_priority[30];
 		#int16_t terrain_units_used_count;
-		terrain_struct = Struct(endianness + "2h 13s 13s 5i 3B 2h 23c h 2h 54h 3h 84c 30h 30h 30c h")
+		terrain_struct = Struct(endianness + "2h 13s 13s 5i 3B 5b f 18b 3h 54h 3h 84c 30h 30h 30b h")
 
 		pc = terrain_struct.unpack_from(raw, offset)
 		offset += terrain_struct.size
@@ -136,21 +138,22 @@ class Terrain:
 		self.data["blend_priority"]           = pc[7]
 		self.data["blend_mode"]               = pc[8]
 		self.data["color"]                    = pc[9:(9+3)]
-		#self.data[""] = pc[12]
-		#self.data[""] = pc[13]
-		#self.data[""] = pc[14:(14+23)]
+		#self.data[""] = pc[12:(12+5)]
+		#self.data[""] = pc[17]
+		#self.data[""] = pc[18:(18+18)]
 
-		self.data["frame_count"]              = pc[37]
-		#self.data[""] = pc[38:(38+2)]
-		#self.data[""] = pc[40:(40+54)]
-		self.data["terrain_replacement_id"]   = pc[94]
-		self.data["terrain_dimensions0"]      = pc[95]
-		self.data["terrain_dimensions1"]      = pc[96]
-		#self.data[""] = pc[97:(97+84)]
-		self.data["terrain_unit_id"]          = pc[181:(181+30)]
-		self.data["terrain_unit_density"]     = pc[211:(211+30)]
-		#self.data[""] = pc[241:(241+30]
-		self.data["terrain_units_used_count"] = pc[271]
+		self.data["frame_count"]              = pc[36]
+		self.data["angle_count"]              = pc[37]
+		self.data["terrain_id"]               = pc[38]
+		self.data["elevation_graphic"]        = pc[39:(39+54)]
+		self.data["terrain_replacement_id"]   = pc[93]
+		self.data["terrain_dimensions0"]      = pc[94]
+		self.data["terrain_dimensions1"]      = pc[95]
+		self.data["terrain_border_id"]        = pc[96:(96+84)]
+		self.data["terrain_unit_id"]          = pc[180:(180+30)]
+		self.data["terrain_unit_density"]     = pc[210:(210+30)]
+		self.data["terrain_unit_priority"]    = pc[240:(240+30)]
+		self.data["terrain_units_used_count"] = pc[270]
 
 		return offset
 
