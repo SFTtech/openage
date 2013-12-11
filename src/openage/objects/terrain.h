@@ -9,7 +9,7 @@ namespace openage {
 using terrain_t = size_t;
 
 //a list of all terrain slp ids. we'll get them from the .dat files later.
-extern int terrain_ids[]; 
+extern int terrain_ids[];
 extern size_t terrain_texture_count;
 
 } //namespace openage
