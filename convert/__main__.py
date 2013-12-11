@@ -66,8 +66,7 @@ def main():
 
 	if exec_dev:
 		if write_enabled:
-			import gamedata.empiresdat
-			gamedata.empiresdat.test("Data/empires2_x1_p1.dat")
+			print("no indev function available at the moment.")
 			return
 		else:
 			raise Exception("development mode requires write access")
@@ -84,6 +83,32 @@ def main():
 			file_write(filename + ".png", png)
 			file_write(filename + ".docx", metadata)
 			dbg("blending mode%02d -> saved packed atlas" % (modeidx), 1)
+
+		import gamedata.empiresdat
+		datfile = gamedata.empiresdat.Empires2X1P1("Data/empires2_x1_p1.dat")
+		filename = file_get_path("processed/terrain_meta.docx", write=True)
+
+		tmeta = "#terrain specification\n"
+		tmeta += "#angle_count, blend_mode, blend_priority, frame_count, name0, name1, slp_id, sound_id, terrain_dimensions0, terrain_dimensions1, terrain_replacement_id\n"
+
+		tmeta += "n=%d\n" % len(datfile.data["terrain"]["terrain"])
+
+		for tk in datfile.data["terrain"]["terrain"]:
+			line = list()
+			line += [str(tk["angle_count"])]
+			line += [str(tk["blend_mode"])]
+			line += [str(tk["blend_priority"])]
+			line += [str(tk["frame_count"])]
+			line += [str(tk["name0"])]
+			line += [str(tk["name1"])]
+			line += [str(tk["slp_id"])]
+			line += [str(tk["sound_id"])]
+			line += [str(tk["terrain_dimensions0"])]
+			line += [str(tk["terrain_dimensions1"])]
+			line += [str(tk["terrain_replacement_id"])]
+			tmeta += ",".join(line) + "\n"
+
+		file_write(filename, tmeta)
 
 		if args.extrafiles:
 			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())

@@ -1,7 +1,7 @@
 import zlib
 
 from struct import Struct, unpack_from
-from util import dbg, file_get_path, file_open
+from util import dbg, file_get_path, file_open, zstr
 
 endianness = '< '
 
@@ -10,7 +10,7 @@ class Empires2X1P1:
 
 	def __init__(self, fname):
 		self.fname = fname
-		dbg("reading empires2x1p1 from %s" % fname, 1)
+		dbg("reading empires2_x1_p1 from %s..." % fname, 1)
 
 		fname = file_get_path(fname, write = False)
 		f = file_open(fname, binary = True, write = False)
@@ -42,14 +42,16 @@ class Empires2X1P1:
 		offset = 0
 		offset = self.read(self.content, offset)
 
-		print("finished reading empires*.dat at %d of %d bytes (%f%%)." % (offset, decompressed_size, 100*(offset/decompressed_size)))
+		dbg("finished reading empires*.dat at %d of %d bytes (%f%%)." % (offset, decompressed_size, 100*(offset/decompressed_size)), 1)
 
 	def read(self, raw, offset):
 
 		#char versionstr[8];
 		header_struct = Struct(endianness + "8s")
-		self.data["version"] = header_struct.unpack_from(raw, offset)
+		header = header_struct.unpack_from(raw, offset)
 		offset += header_struct.size
+
+		self.data["version"] = zstr(header[0])
 
 		dbg("dat version: %s" % (self.data["version"]), 1)
 

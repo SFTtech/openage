@@ -123,7 +123,7 @@ class Terrain:
 		#int16_t terrain_unit_density[30];
 		#int8_t terrain_unit_priority[30];
 		#int16_t terrain_units_used_count;
-		terrain_struct = Struct(endianness + "2h 13s 13s 5i 3B 5b f 18b 3h 54h 3h 84c 30h 30h 30b h")
+		terrain_struct = Struct(endianness + "2h 13s 13s 5i 3B 5b f 18b 3h 54h 3h 84b 30h 30h 30b h")
 
 		pc = terrain_struct.unpack_from(raw, offset)
 		offset += terrain_struct.size
