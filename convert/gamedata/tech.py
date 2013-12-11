@@ -92,6 +92,7 @@ class TechtreeData:
 
 		self.data["age_tech_tree"] = list()
 		for i in range(self.data["age_entry_count"]):
+			dbg("=== age_tech_tree %d" % i, 2)
 			t = AgeTechTree()
 			offset = t.read(raw, offset)
 			self.data["age_tech_tree"] += [t.data]
@@ -101,21 +102,21 @@ class TechtreeData:
 
 		self.data["building_connection"] = list()
 		for i in range(self.data["building_connection_count"]):
-			dbg("=== building_connection %d" % i)
+			dbg("=== building_connection %d" % i, 2)
 			t = BuildingConnection()
 			offset = t.read(raw, offset)
 			self.data["building_connection"] += [t.data]
 
 		self.data["unit_connection"] = list()
 		for i in range(self.data["unit_connection_count"]):
-			dbg("=== unit_connection %d" % i)
+			dbg("=== unit_connection %d" % i, 2)
 			t = UnitConnection()
 			offset = t.read(raw, offset)
 			self.data["unit_connection"] += [t.data]
 
 		self.data["research_connection"] = list()
 		for i in range(self.data["research_connection_count"]):
-			dbg("=== research_connection %d" % i)
+			dbg("=== research_connection %d" % i, 2)
 			t = ResearchConnection()
 			offset = t.read(raw, offset)
 			self.data["research_connection"] += [t.data]
