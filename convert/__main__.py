@@ -89,20 +89,21 @@ def main():
 		filename = file_get_path("processed/terrain_meta.docx", write=True)
 
 		tmeta = "#terrain specification\n"
-		tmeta += "#angle_count, blend_mode, blend_priority, frame_count, name0, name1, slp_id, sound_id, terrain_dimensions0, terrain_dimensions1, terrain_replacement_id\n"
+		tmeta += "#terrain_id, slp_id, name0, name1, sound_id, blend_mode, blend_priority, angle_count, frame_count, terrain_dimensions0, terrain_dimensions1, terrain_replacement_id\n"
 
 		tmeta += "n=%d\n" % len(datfile.data["terrain"]["terrain"])
 
 		for tk in datfile.data["terrain"]["terrain"]:
 			line = list()
-			line += [str(tk["angle_count"])]
-			line += [str(tk["blend_mode"])]
-			line += [str(tk["blend_priority"])]
-			line += [str(tk["frame_count"])]
+			line += [str(tk["terrain_id"])]
+			line += [str(tk["slp_id"])]
 			line += [str(tk["name0"])]
 			line += [str(tk["name1"])]
-			line += [str(tk["slp_id"])]
 			line += [str(tk["sound_id"])]
+			line += [str(tk["blend_mode"])]
+			line += [str(tk["blend_priority"])]
+			line += [str(tk["angle_count"])]
+			line += [str(tk["frame_count"])]
 			line += [str(tk["terrain_dimensions0"])]
 			line += [str(tk["terrain_dimensions1"])]
 			line += [str(tk["terrain_replacement_id"])]
