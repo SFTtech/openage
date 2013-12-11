@@ -3,10 +3,10 @@
 #include "engine/util/error.h"
 
 int main() {
-        try {
-                return openage::main();
-        } catch (engine::Error e) {
-                engine::log::fatal("Exception: %s", e.str());
-                return 1;
-        }
+	try {
+		return openage::main();
+	} catch (engine::Error e) {
+		engine::log::fatal("Exception: %s", e.str());
+		return 1;
+	}
 }
