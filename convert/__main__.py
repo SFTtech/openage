@@ -93,21 +93,13 @@ def main():
 
 		tmeta += "n=%d\n" % len(datfile.data["terrain"]["terrain"])
 
+		i = 0
 		for tk in datfile.data["terrain"]["terrain"]:
-			line = list()
-			line += [str(tk["terrain_id"])]
-			line += [str(tk["slp_id"])]
-			line += [str(tk["name0"])]
-			line += [str(tk["name1"])]
-			line += [str(tk["sound_id"])]
-			line += [str(tk["blend_mode"])]
-			line += [str(tk["blend_priority"])]
-			line += [str(tk["angle_count"])]
-			line += [str(tk["frame_count"])]
-			line += [str(tk["terrain_dimensions0"])]
-			line += [str(tk["terrain_dimensions1"])]
-			line += [str(tk["terrain_replacement_id"])]
-			tmeta += ",".join(line) + "\n"
+			wanted = ["terrain_id", "slp_id", "sound_id", "blend_mode", "blend_priority", "angle_count", "frame_count", "terrain_dimensions0", "terrain_dimensions1", "terrain_replacement_id"] #name0, name1
+
+			line = [str(tk[w]) for w in wanted]
+			tmeta += ("%d=" % i) + ",".join(line) + "\n"
+			i += 1
 
 		file_write(filename, tmeta)
 
