@@ -4,11 +4,19 @@
 #include <stdlib.h>
 
 #include "error.h"
+#include "../log.h"
 
 namespace engine {
 namespace util {
 
 struct file_data {
+	file_data(size_t size, char *content) : size(size), content(content) {}
+	~file_data() {
+		if (this->size > 0) {
+			delete[] content;
+		}
+	}
+
 	size_t size;
 	char *content;
 };
@@ -24,8 +32,10 @@ struct line_data {
 template <class lineformat>
 class File {
 public:
-	File();
-	~File();
+	File() : size(0) {}
+	~File() {
+		this->free_content();
+	}
 
 	size_t size;
 	lineformat **content;
@@ -33,7 +43,17 @@ public:
 	void free_content();
 };
 
-struct file_data read_whole_file_s(const char *filename);
+template <class lineformat>
+void File<lineformat>::free_content() {
+	for (size_t i = 0; i < this->size; i++) {
+		//TODO: this segfaults...
+		delete this->content[i];
+	}
+}
+
+
+
+struct file_data *read_whole_file_s(const char *filename);
 char *read_whole_file(const char *filename);
 
 template <class lineformat>
@@ -43,10 +63,10 @@ ssize_t read_structured_file(util::File<lineformat> *result, const char *fname);
 
 template <class lineformat>
 ssize_t read_structured_file(util::File<lineformat> *result, const char *fname) {
-	struct file_data file = util::read_whole_file_s(fname);
+	struct file_data *file = util::read_whole_file_s(fname);
 
-	char *file_seeker = file.content;
-	char *currentline = file.content;
+	char *file_seeker = file->content;
+	char *currentline = file->content;
 
 	size_t line_count;
 	size_t linepos = 0;
@@ -55,7 +75,7 @@ ssize_t read_structured_file(util::File<lineformat> *result, const char *fname) 
 
 	result->free_content();
 
-	while ((size_t)file_seeker <= ((size_t)file.content + file.size)
+	while ((size_t)file_seeker <= ((size_t)file->content + file->size)
 	       && *file_seeker != '\0'
 	       && linepos < line_count) {
 
@@ -92,30 +112,16 @@ ssize_t read_structured_file(util::File<lineformat> *result, const char *fname) 
 			currentline = file_seeker + 1;
 		}
 
-		file_seeker++;
+		file_seeker += 1;
 	}
 
-	delete file.content;
+	log::dbg("%lu lines found in total", linepos);
+	result->size = linepos;
+
+	delete file;
 
 	return line_count;
 }
-
-template <class lineformat>
-File<lineformat>::File() : size(0) {
-
-}
-template <class lineformat>
-File<lineformat>::~File() {
-	this->free_content();
-}
-
-template <class lineformat>
-void File<lineformat>::free_content() {
-	for (size_t i = 0; i < this->size; i++) {
-		delete this->content[i];
-	}
-}
-
 
 } //namespace util
 } //namespace engine

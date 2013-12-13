@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "../log.h"
 #include "error.h"
@@ -14,10 +15,14 @@ namespace util {
 
 
 char *read_whole_file(const char *filename) {
-	return read_whole_file_s(filename).content;
+	auto file = read_whole_file_s(filename);
+	char *ret = new char[file->size];
+	memcpy(ret, file->content, file->size);
+	delete file;
+	return ret;
 }
 
-struct file_data read_whole_file_s(const char *filename) {
+struct file_data *read_whole_file_s(const char *filename) {
 
 	//get the file size
 	struct stat st;
@@ -43,7 +48,7 @@ struct file_data read_whole_file_s(const char *filename) {
 	str[content_length] = '\0';
 
 	//return the file contents
-	struct file_data ret = {content_length, str};
+	struct file_data *ret = new struct file_data(content_length, str);
 	return ret;
 }
 
