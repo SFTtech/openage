@@ -59,6 +59,8 @@ ssize_t read_structured_file(util::File<filestructure> *result, const char *fnam
 
 	bool wanting_count = true;
 
+	result->free_content();
+
 	while ((size_t)file_seeker <= ((size_t)file.content + file.size)
 	       && *file_seeker != '\0'
 	       && linepos < line_count) {
@@ -90,7 +92,7 @@ ssize_t read_structured_file(util::File<filestructure> *result, const char *fnam
 						linepos += 1;
 					}
 					else {
-						throw Error("unknown line content reading texture meta file %s", meta_filename);
+						throw Error("unknown line content reading texture meta file %s", fname);
 					}
 				}
 			}
@@ -100,9 +102,27 @@ ssize_t read_structured_file(util::File<filestructure> *result, const char *fnam
 		file_seeker++;
 	}
 
-	delete[] file_content;
+	delete file.content;
 
 	return line_count;
+}
+
+
+template <class filestructure>
+File<filestructure>::File() : size(0) {
+
+}
+
+template <class filestructure>
+File<filestructure>::~File() {
+	this->free_content();
+}
+
+template <class filestructure>
+void File<filestructure>::free_content() {
+	for (size_t i = 0; i < this->size; i++) {
+		delete this->content[i];
+	}
 }
 
 } //namespace util
