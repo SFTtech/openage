@@ -89,12 +89,18 @@ def main():
 		filename = file_get_path("processed/terrain_meta.docx", write=True)
 
 		tmeta = "#terrain specification\n"
-		tmeta += "#terrain_id, slp_id, name0, name1, sound_id, blend_mode, blend_priority, angle_count, frame_count, terrain_dimensions0, terrain_dimensions1, terrain_replacement_id\n"
+		tmeta += "#idx=terrain_id, slp_id, name0, name1, sound_id, blend_mode, blend_priority, angle_count, frame_count, terrain_dimensions0, terrain_dimensions1, terrain_replacement_id\n"
 
 		tmeta += "n=%d\n" % len(datfile.data["terrain"]["terrain"])
 
 		i = 0
+		blending_modes = set()
 		for tk in datfile.data["terrain"]["terrain"]:
+			if tk["slp_id"] < 0:
+				continue
+
+			blending_modes.add(tk["blend_mode"])
+
 			wanted = ["terrain_id", "slp_id", "sound_id", "blend_mode", "blend_priority", "angle_count", "frame_count", "terrain_dimensions0", "terrain_dimensions1", "terrain_replacement_id"] #name0, name1
 
 			line = [str(tk[w]) for w in wanted]
@@ -102,6 +108,23 @@ def main():
 			i += 1
 
 		file_write(filename, tmeta)
+
+
+		filename = file_get_path("processed/blending_meta.docx", write=True)
+
+		bmeta = "#blending mode specification\n"
+		bmeta += "#yeah, i know that this content is totally stupid, but that's how the data can be injected later\n"
+		bmeta += "#idx=mode_id\n"
+
+		bmeta += "n=%d\n" % len(blending_modes)
+
+		i = 0
+		for m in blending_modes:
+			bmeta += "%d=%d\n" % (i, m)
+			i += 1
+
+		file_write(filename, bmeta)
+
 
 		if args.extrafiles:
 			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
