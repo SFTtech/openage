@@ -6,6 +6,7 @@
 #include "texture.h"
 #include "coord/camgame.h"
 #include "coord/tile.h"
+#include "util/file.h"
 
 namespace engine {
 
@@ -54,6 +55,23 @@ private:
 	int *terrain_id_priority_map;
 
 	unsigned get_subtexture_id(coord::tile pos, unsigned atlas_size);
+};
+
+struct terrain_meta_line : util::line_data {
+	~terrain_meta_line() {};
+
+	int terrain_id;
+	int slp_id;
+	int sound_id;
+	int blend_mode;
+	int blend_priority;
+	int angle_count;
+	int frame_count;
+	int terrain_dimensions0;
+	int terrain_dimensions1;
+	int terrain_replacement_id;
+
+	int fill(const char *by_line);
 };
 
 } //namespace engine
