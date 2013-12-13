@@ -44,15 +44,22 @@ if __name__ == "__main__":
 	prepare_binfolder()
 
 	cmake_args = []
-	if args.mode != None:
-		cmake_args += get_build_type(args.mode)
 
 	cxx = args.compiler
 	if cxx == None:
 		if "CXX" in os.environ:
 			cxx = os.environ['CXX']
 	if cxx != None:
-		cmake_args += get_compiler(cxx)
+		#it seems that changing compilers requires a seperate cmake call...
+		#otherwise the debug/release build info will be ignored.
+		cxxchange_args = get_compiler(cxx)
+		cmake_call = cmake_binary + " " + " ".join(cxxchange_args) + " .."
+		print("\nswitching compiler to %s" % cxx)
+		os.system(cmake_call)
+
+	if args.mode != None:
+		cmake_args += get_build_type(args.mode)
 
 	cmake_call = cmake_binary + " " + " ".join(cmake_args) + " .."
+	print("\nrunning cmake: " + cmake_call)
 	os.system(cmake_call)
