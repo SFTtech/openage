@@ -16,6 +16,11 @@ unit slowdowns (on non-roads etc)
 can be predicted by tech
 can be modified globally or locally (by voodoo priests)
 
+fire
+----
+
+buildings made out of wood and other burnable material can be lit
+fire departments in the city can quickly extinguish those.
 
 day night cycle
 ---------------
