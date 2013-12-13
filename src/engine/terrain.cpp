@@ -4,6 +4,7 @@
 #include "texture.h"
 #include "log.h"
 #include "util/error.h"
+#include "util/strings.h"
 #include "util/misc.h"
 #include "coord/tile.h"
 #include "coord/tile3.h"
@@ -15,43 +16,47 @@ namespace engine {
 //TODO: get that from the convert script!
 coord::camgame_delta tile_halfsize = {48, 24};
 
-Terrain::Terrain(unsigned int size, size_t maxtextures, size_t maxblendmodes, int *priority_list) : texture_count(maxtextures), blendmode_count(maxblendmodes), terrain_id_priority_map(priority_list) {
-	//calculate the number of tiles for the given (tile) height of the rhombus.
 
-	/* height = 5:
-	0          #
-	1        #   #
-	2      #   *   #
-	3    #   #   #   #
-	4  #   #   #   #   #
-	5    #   #   #   *
-	6      #   #   #
-	7        #   #
-	8          #
-	count = 25
-
-	count = n + 2*(n-1) + 2*(n-2) + ... + 2*1
-	      = n + 2*(sum(i=1->n-1) {i})
-	      = n + 2*(((n-1)^2 + (n-1))/2)
-	      = n + ((n-1)^2 + (n-1))
-	      = n + (n-1) + (n-1)^2
-	      = 2*n + (n-1)^2 -1
-	      = 2*n + (n^2 - 2n + 1) -1
-	      = n^2
-	      => lol. i could have seen that earlier..
-	*/
-
+Terrain::Terrain(unsigned int size, util::File<TerrainType> terrain_meta, util::File<BlendingMode> blending_meta) {
 	this->size       = size;
 	this->num_rows   = 2*size - 1;
 	this->tile_count = size * size;
 
+	//the ids of terraintype pieces on the terrain
 	this->tiles = new int[this->tile_count];
-	this->textures = new engine::Texture*[maxtextures];
-	this->blendmasks = new engine::Texture*[maxblendmodes];
 
+	this->terrain_type_count = terrain_meta.size;
+	this->blendmode_count = blending_meta.size;
+	this->textures       = new engine::Texture*[this->terrain_type_count];
+	this->blending_masks = new engine::Texture*[this->blendmode_count];
+	this->terrain_id_priority_map = new int[terrain_type_count];
 	this->blending_enabled = true;
 
-	//set the terrain id to 0 by default.
+	log::dbg("terrain prefs: %lu tiletypes, %lu blendmodes", this->terrain_type_count, this->blendmode_count);
+
+	for (size_t i = 0; i < this->terrain_type_count; i++) {
+		auto line = terrain_meta.content[i];
+		this->terrain_id_priority_map[i] = line->blend_priority;
+
+		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", line->slp_id);
+		auto new_texture = new Texture(terraintex_filename, true, ALPHAMASKED);
+		new_texture->fix_hotspots(48, 24);
+		this->textures[i] = new_texture;
+		delete[] terraintex_filename;
+	}
+
+	for (size_t i = 0; i < this->blendmode_count; i++) {
+		auto line = blending_meta.content[i];
+
+		char *mask_filename = util::format("age/alphamask/mode%02d.png", line->mode_id);
+		auto new_texture = new Texture(mask_filename, true);
+		new_texture->fix_hotspots(48, 24);
+		this->blending_masks[i] = new_texture;
+		delete[] mask_filename;
+	}
+
+
+	//set all tiles on the terrain id to 0 by default.
 	for (unsigned int i = 0; i < this->tile_count; i++) {
 		this->tiles[i] = 0;
 	}
@@ -60,8 +65,17 @@ Terrain::Terrain(unsigned int size, size_t maxtextures, size_t maxblendmodes, in
 }
 
 Terrain::~Terrain() {
+	for (size_t i = 0; i < this->terrain_type_count; i++) {
+		delete this->textures[i];
+	}
+	for (size_t i = 0; i < this->blendmode_count; i++) {
+		delete this->blending_masks[i];
+	}
+
+	delete[] this->blending_masks;
 	delete[] this->tiles;
 	delete[] this->textures;
+	delete[] this->terrain_id_priority_map;
 }
 
 coord::tile_delta const neigh_offsets[] = {
@@ -86,7 +100,11 @@ void Terrain::draw() {
 	coord::tile tilepos = {0, 0};
 	for (; tilepos.ne < (int) this->size; tilepos.ne++) {
 		for (tilepos.se = 0; tilepos.se < (int) this->size; tilepos.se++) {
-			int terrain_id = this->get_tile(tilepos);
+			size_t terrain_id = this->get_tile(tilepos);
+
+			if (terrain_id >= this->terrain_type_count) {
+				throw Error("unknown terrain id=%lu requested for drawing", terrain_id);
+			}
 			int base_priority = this->terrain_id_priority_map[terrain_id];
 
 			auto base_texture = this->textures[terrain_id];
@@ -112,8 +130,8 @@ void Terrain::draw() {
 			int influence_tids[8];
 			int num_influences = 0;
 
-			auto influences = new struct influence_meta[this->texture_count];
-			for (unsigned int k = 0; k < this->texture_count; k++) {
+			auto influences = new struct influence_meta[this->terrain_type_count];
+			for (unsigned int k = 0; k < this->terrain_type_count; k++) {
 				influences[k].direction = 0;
 				influences[k].priority = -1;
 			}
@@ -146,7 +164,7 @@ void Terrain::draw() {
 					continue;
 				}
 
-				int neighbor_terrain_id = this->get_tile(neigh_pos);
+				size_t neighbor_terrain_id = this->get_tile(neigh_pos);
 				int neighbor_priority = this->terrain_id_priority_map[neighbor_terrain_id];
 
 				//neighbor only interesting if it's a different terrain than @
@@ -330,7 +348,7 @@ void Terrain::draw() {
 				auto overlay_texture = this->textures[draw_mask->terrain_id];
 				int neighbor_sub_id = this->get_subtexture_id(tilepos, overlay_texture->atlas_dimensions);
 
-				overlay_texture->activate_alphamask(this->blendmasks[draw_mask->blend_mode], draw_mask->mask_id);
+				overlay_texture->activate_alphamask(this->blending_masks[draw_mask->blend_mode], draw_mask->mask_id);
 				overlay_texture->draw(tilepos.to_tile3().to_phys3().to_camgame(), false, neighbor_sub_id);
 				overlay_texture->disable_alphamask();
 			}
@@ -460,7 +478,7 @@ size_t Terrain::get_size() {
 }
 
 void Terrain::set_mask(unsigned int modeid, engine::Texture *m) {
-	this->blendmasks[modeid] = m;
+	this->blending_masks[modeid] = m;
 }
 
 
@@ -470,7 +488,7 @@ parse and store a given line of a texture meta file.
 this is used for reading all the lines of a .docx meta file
 generated by the convert script.
 */
-int terrain_meta_line::fill(const char *by_line) {
+int TerrainType::fill(const char *by_line) {
 	log::msg("filling line by %s", by_line);
 	if (sscanf(by_line, "%u=%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",
 	           &this->idx,
@@ -484,6 +502,22 @@ int terrain_meta_line::fill(const char *by_line) {
 	           &this->terrain_dimensions0,
 	           &this->terrain_dimensions1,
 	           &this->terrain_replacement_id
+	           )) {
+		return 0;
+	}
+	else {
+		return -1;
+	}
+}
+
+/**
+parse and store a blending mode description line.
+*/
+int BlendingMode::fill(const char *by_line) {
+	log::msg("filling line by %s", by_line);
+	if (sscanf(by_line, "%u=%d",
+	           &this->idx,
+	           &this->mode_id
 	           )) {
 		return 0;
 	}

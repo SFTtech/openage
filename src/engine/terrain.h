@@ -15,6 +15,44 @@ half the size of one terrain tile, in camgame
 */
 extern coord::camgame_delta tile_halfsize;
 
+
+/**
+describes one terrrain type, like water, ice, etc.
+*/
+class TerrainType : public util::line_data {
+public:
+	TerrainType() {};
+	~TerrainType() {};
+
+	int terrain_id;
+	int slp_id;
+	int sound_id;
+	int blend_mode;
+	int blend_priority;
+	int angle_count;
+	int frame_count;
+	int terrain_dimensions0;
+	int terrain_dimensions1;
+	int terrain_replacement_id;
+
+	int fill(const char *by_line);
+};
+
+/**
+describes one blending mode, a blending transition shape between two different terrain types.
+*/
+class BlendingMode : public util::line_data {
+public:
+	BlendingMode() {};
+	~BlendingMode() {};
+
+	int mode_id;
+
+	int fill(const char *by_line);
+};
+
+
+
 /**
 terrain class represents the drawn terrain.
 */
@@ -22,14 +60,13 @@ class Terrain {
 public:
 	bool blending_enabled;
 
-	Terrain(unsigned int height, size_t maxtextures, size_t maxblendmodes, int *priority_list);
+	Terrain(unsigned int size, util::File<TerrainType> terrain_meta, util::File<BlendingMode> blending_meta);
 	~Terrain();
 
 	void draw();
 
 	void set_tile(coord::tile pos, int tile);
 	int  get_tile(coord::tile pos);
-
 
 	size_t tile_position_diag(unsigned int row, unsigned int offset);
 	size_t tile_position(coord::tile pos);
@@ -48,30 +85,15 @@ private:
 	size_t tile_count;
 	size_t num_rows;
 
-	size_t texture_count, blendmode_count;
+	size_t terrain_type_count;
 	engine::Texture **textures;
-	engine::Texture **blendmasks;
+
+	size_t blendmode_count;
+	engine::Texture **blending_masks;
 
 	int *terrain_id_priority_map;
 
 	unsigned get_subtexture_id(coord::tile pos, unsigned atlas_size);
-};
-
-struct terrain_meta_line : util::line_data {
-	~terrain_meta_line() {};
-
-	int terrain_id;
-	int slp_id;
-	int sound_id;
-	int blend_mode;
-	int blend_priority;
-	int angle_count;
-	int frame_count;
-	int terrain_dimensions0;
-	int terrain_dimensions1;
-	int terrain_replacement_id;
-
-	int fill(const char *by_line);
 };
 
 } //namespace engine
