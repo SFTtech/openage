@@ -7,6 +7,9 @@
 #include "../engine/util/file.h"
 #include "../engine/util/error.h"
 #include "../engine/callbacks.h"
+#include "../engine/util/file.h"
+#include "../engine/log.h"
+#include "../engine/terrain.h"
 
 #include "callbacks.h"
 #include "gamestate.h"
@@ -54,67 +57,15 @@ void init() {
 
 	university = new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
-	terrain_priority_list = new int[terrain_texture_count];
-	terrain_textures = new Texture*[terrain_texture_count];
+	engine::util::File<engine::TerrainType> terrain_types;
+	engine::util::read_structured_file<engine::TerrainType>(&terrain_types, "age/processed/terrain_meta.docx");
+	engine::log::dbg("there are %lu gschichts", terrain_types.size);
 
-	//set terrain priorities, TODO: get them from media files. hardcoded for now.
-	terrain_priority_list[0]  = 70;
-	terrain_priority_list[1]  = 102;
-	terrain_priority_list[2]  = 139;
-	terrain_priority_list[3]  = 155;
-	terrain_priority_list[4]  = 157;
-	terrain_priority_list[5]  = 101;
-	terrain_priority_list[6]  = 106;
-	terrain_priority_list[7]  = 90;
-	terrain_priority_list[8]  = 100;
-	terrain_priority_list[9]  = 80;
-	terrain_priority_list[10] = 92;
-	terrain_priority_list[11] = 60;
-	terrain_priority_list[12] = 140;
-	terrain_priority_list[13] = 141;
-	terrain_priority_list[14] = 110;
-	terrain_priority_list[15] = 122;
-	terrain_priority_list[16] = 123;
-	terrain_priority_list[17] = 150;
-	terrain_priority_list[18] = 151;
-	terrain_priority_list[19] = 152;
-	terrain_priority_list[20] = 40;
-	terrain_priority_list[21] = 130;
-	terrain_priority_list[22] = 132;
-	terrain_priority_list[23] = 134;
-	terrain_priority_list[24] = 136;
-	terrain_priority_list[25] = 162;
-	terrain_priority_list[26] = 120;
+	engine::util::File<engine::BlendingMode> blending_modes;
+	engine::util::read_structured_file<engine::BlendingMode>(&blending_modes, "age/processed/blending_meta.docx");
 
-	terrain = new Terrain(20, terrain_texture_count, blend_mode_count, terrain_priority_list);
+	terrain = new Terrain(20, terrain_types, blending_modes);
 
-	for (unsigned int i = 0; i < terrain_texture_count; i++) {
-		int current_id = terrain_ids[i];
-		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", current_id);
-
-		auto new_texture = new Texture(terraintex_filename, true, ALPHAMASKED);
-		new_texture->fix_hotspots(48, 24);
-
-		terrain_textures[i] = new_texture;
-		terrain->set_texture(i, new_texture);
-
-		delete[] terraintex_filename;
-	}
-
-	//add the blendomatic masks to the terrain
-	blending_textures = new Texture*[blend_mode_count];
-
-	for (unsigned int i = 0; i < blend_mode_count; i++) {
-		char *mask_filename = util::format("age/alphamask/mode%02d.png", i);
-
-		auto new_texture = new Texture(mask_filename, true);
-		new_texture->fix_hotspots(48, 24);
-
-		blending_textures[i] = new_texture;
-		terrain->set_mask(i, new_texture);
-
-		delete[] mask_filename;
-	}
 
 
 	//set the terrain types according to the data array.
