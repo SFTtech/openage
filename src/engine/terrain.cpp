@@ -487,10 +487,12 @@ void Terrain::set_mask(unsigned int modeid, engine::Texture *m) {
 return the blending mode id for two given neighbor ids.
 */
 int Terrain::get_blending_mode(size_t base_id, size_t neighbor_id) {
-	if (neighbor_id < base_id) {
-		return this->terrain_id_blendmode_map[base_id];
+	int base_mode     = this->terrain_id_blendmode_map[base_id];
+	int neighbor_mode = this->terrain_id_blendmode_map[neighbor_id];
+	if (neighbor_mode > base_mode) {
+		return neighbor_mode;
 	} else {
-		return this->terrain_id_blendmode_map[neighbor_id];
+		return base_mode;
 	}
 }
 
