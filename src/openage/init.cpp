@@ -94,12 +94,12 @@ void init() {
 
 
 	//get the player colors from the sub-palette exported by script
-	player_color_line *player_color_file;
-	size_t pcolor_count = engine::util::read_csv_file<player_color_line>(&player_color_file, "age/processed/player_color_palette.pal");
+	player_color_line *player_color_lines;
+	ssize_t pcolor_count = engine::util::read_csv_file<player_color_line>(&player_color_lines, "age/processed/player_color_palette.pal");
 
 	GLfloat *playercolors = new GLfloat[pcolor_count*4];
-	for (size_t i = 0; i < pcolor_count; i++) {
-		auto line = &player_color_file[i];
+	for (ssize_t i = 0; i < pcolor_count; i++) {
+		auto line = &player_color_lines[i];
 		playercolors[i*4]     = line->r / 255.0;
 		playercolors[i*4 + 1] = line->g / 255.0;
 		playercolors[i*4 + 2] = line->b / 255.0;
