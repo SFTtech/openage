@@ -44,9 +44,11 @@ ssize_t read_csv_file(lineformat **result, const char *fname) {
 	size_t linepos = 0;
 	bool wanting_count = true;
 
+	//log::dbg("parsing csv %s:\n%s", fname, file_content);
+
 	while ((size_t)file_seeker <= ((size_t)file_content + fsize)
 	       && *file_seeker != '\0'
-	       && (!wanting_count && linepos < line_count)) {
+	       && (wanting_count || linepos < line_count)) {
 
 		if (*file_seeker == '\n') {
 			*file_seeker = '\0';
@@ -56,21 +58,19 @@ ssize_t read_csv_file(lineformat **result, const char *fname) {
 				//scan for the entry count definition
 				if (sscanf(currentline, "n=%lu", &line_count) == 1) {
 					wanting_count = false;
-					//allocate memory for entries
-					result = new lineformat*[line_count];
+					//create handlers for the lines
+					*result = new lineformat[line_count];
 				}
 				else {
 					if (wanting_count) {
 						throw Error("meta info line found, but no entry count (n=...) found so far in %s", fname);
 					}
 
-					//create handler for the current line
-					auto *line_data = new lineformat{};
-					if (0 == line_data->fill(currentline)) {
-						if (linepos != line_data->idx) {
-							throw Error("line index %u mismatch! should be %lu.", line_data->idx, linepos);
+					if (0 == (*result)[linepos].fill(currentline)) {
+						if (linepos != (*result)[linepos].idx) {
+							throw Error("line index %u mismatch! should be %lu.", (*result)[linepos].idx, linepos);
 						}
-						result[line_data->idx] = line_data;
+
 						linepos += 1;
 					}
 					else {
@@ -83,7 +83,7 @@ ssize_t read_csv_file(lineformat **result, const char *fname) {
 		file_seeker += 1;
 	}
 
-	log::dbg("%lu lines found in total", linepos);
+	//log::dbg("%lu lines found in total", linepos);
 	delete[] file_content;
 
 	return linepos;
