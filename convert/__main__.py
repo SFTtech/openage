@@ -89,7 +89,7 @@ def main():
 		filename = file_get_path("processed/terrain_meta.docx", write=True)
 
 		tmeta = "#terrain specification\n"
-		tmeta += "#idx=terrain_id, slp_id, name0, name1, sound_id, blend_mode, blend_priority, angle_count, frame_count, terrain_dimensions0, terrain_dimensions1, terrain_replacement_id\n"
+		tmeta += "#idx=terrain_id, slp_id, sound_id, blend_mode, blend_priority, angle_count, frame_count, terrain_dimensions0, terrain_dimensions1, terrain_replacement_id, name0, name1\n"
 
 		tmeta += "n=%d\n" % len(datfile.data["terrain"]["terrain"])
 
@@ -101,7 +101,7 @@ def main():
 
 			blending_modes.add(tk["blend_mode"])
 
-			wanted = ["terrain_id", "slp_id", "sound_id", "blend_mode", "blend_priority", "angle_count", "frame_count", "terrain_dimensions0", "terrain_dimensions1", "terrain_replacement_id"] #name0, name1
+			wanted = ["terrain_id", "slp_id", "sound_id", "blend_mode", "blend_priority", "angle_count", "frame_count", "terrain_dimensions0", "terrain_dimensions1", "terrain_replacement_id", "name0", "name1"]
 
 			line = [str(tk[w]) for w in wanted]
 			tmeta += ("%d=" % i) + ",".join(line) + "\n"
