@@ -117,23 +117,33 @@ void init() {
 	//shader initialisation
 	//read shader source codes and create shader objects for wrapping them.
 
-	char *texture_vert_code = util::read_whole_file("shaders/maptexture.vert.glsl");
+	char *texture_vert_code;
+	util::read_whole_file(&texture_vert_code, "shaders/maptexture.vert.glsl");
+	log::msg("tv = %s", texture_vert_code);
 	auto plaintexture_vert = new shader::Shader(GL_VERTEX_SHADER, texture_vert_code);
 	delete[] texture_vert_code;
 
-	char *texture_frag_code = util::read_whole_file("shaders/maptexture.frag.glsl");
+	char *texture_frag_code;
+	util::read_whole_file(&texture_frag_code, "shaders/maptexture.frag.glsl");
+	log::msg("tf = %s", texture_frag_code);
 	auto plaintexture_frag = new shader::Shader(GL_FRAGMENT_SHADER, texture_frag_code);
 	delete[] texture_frag_code;
 
-	char *teamcolor_frag_code = util::read_whole_file("shaders/teamcolors.frag.glsl");
+	char *teamcolor_frag_code;
+	util::read_whole_file(&teamcolor_frag_code, "shaders/teamcolors.frag.glsl");
+	log::msg("tc = %s", teamcolor_frag_code);
 	auto teamcolor_frag = new shader::Shader(GL_FRAGMENT_SHADER, teamcolor_frag_code);
 	delete[] teamcolor_frag_code;
 
-	char *alphamask_vert_code = util::read_whole_file("shaders/alphamask.vert.glsl");
+	char *alphamask_vert_code;
+	util::read_whole_file(&alphamask_vert_code, "shaders/alphamask.vert.glsl");
+	log::msg("av = %s", alphamask_vert_code);
 	auto alphamask_vert = new shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
 	delete[] alphamask_vert_code;
 
-	char *alphamask_frag_code = util::read_whole_file("shaders/alphamask.frag.glsl");
+	char *alphamask_frag_code;
+	util::read_whole_file(&alphamask_frag_code, "shaders/alphamask.frag.glsl");
+	log::msg("af = %s", alphamask_frag_code);
 	auto alphamask_frag = new shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
 	delete[] alphamask_frag_code;
 

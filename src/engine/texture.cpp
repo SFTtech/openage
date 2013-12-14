@@ -99,8 +99,8 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		log::msg("loading meta file %s", meta_filename);
 
 		//get subtexture information by meta file exported by script
-		char *texture_meta_file = util::read_whole_file(meta_filename);
-
+		char *texture_meta_file;
+		util::read_whole_file(&texture_meta_file, meta_filename);
 		delete[] meta_filename;
 
 		char *tmeta_seeker = texture_meta_file;

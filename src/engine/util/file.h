@@ -30,20 +30,21 @@ struct csv_line_data {
 };
 
 
-struct file_data *read_whole_file_s(const char *filename);
-char *read_whole_file(const char *filename);
+ssize_t read_whole_file(char **result, const char *filename);
+
 
 template <class lineformat>
 ssize_t read_csv_file(lineformat **result, const char *fname) {
-	struct file_data *file = util::read_whole_file_s(fname);
+	char *file_content;
+	ssize_t fsize = util::read_whole_file(&file_content, fname);
 
-	char *file_seeker = file->content;
-	char *currentline = file->content;
+	char *file_seeker = file_content;
+	char *currentline = file_content;
 	size_t line_count;
 	size_t linepos = 0;
 	bool wanting_count = true;
 
-	while ((size_t)file_seeker <= ((size_t)file->content + file->size)
+	while ((size_t)file_seeker <= ((size_t)file_content + fsize)
 	       && *file_seeker != '\0'
 	       && (!wanting_count && linepos < line_count)) {
 
@@ -83,7 +84,7 @@ ssize_t read_csv_file(lineformat **result, const char *fname) {
 	}
 
 	log::dbg("%lu lines found in total", linepos);
-	delete file;
+	delete[] file_content;
 
 	return linepos;
 }
