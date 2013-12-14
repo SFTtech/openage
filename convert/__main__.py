@@ -103,7 +103,16 @@ def main():
 
 			wanted = ["terrain_id", "slp_id", "sound_id", "blend_mode", "blend_priority", "angle_count", "frame_count", "terrain_dimensions0", "terrain_dimensions1", "terrain_replacement_id", "name0", "name1"]
 
-			line = [str(tk[w]) for w in wanted]
+			line = [tk[w] for w in wanted]
+
+			#as blending mode 0==1 and 7==8, and ice is 5 for sure,
+			#we subtract one from the ids, and can map -1 to 0, as mode (0-1) == (1-1)
+			#TODO: this can't be correct...
+			line[3] -= 1
+			if line[3] < 0:
+				line[3] = 0
+
+			line = map(str, line)
 			tmeta += ("%d=" % i) + ",".join(line) + "\n"
 			i += 1
 
