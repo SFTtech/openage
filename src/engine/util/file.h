@@ -44,6 +44,8 @@ ssize_t read_csv_file(lineformat **result, const char *fname) {
 	size_t linepos = 0;
 	bool wanting_count = true;
 
+	*result = nullptr;
+
 	//log::dbg("parsing csv %s:\n%s", fname, file_content);
 
 	while ((size_t)file_seeker <= ((size_t)file_content + fsize)
@@ -57,9 +59,14 @@ ssize_t read_csv_file(lineformat **result, const char *fname) {
 			if (*currentline != '#') {
 				//scan for the entry count definition
 				if (sscanf(currentline, "n=%lu", &line_count) == 1) {
-					wanting_count = false;
-					//create handlers for the lines
-					*result = new lineformat[line_count];
+					if (wanting_count) {
+						wanting_count = false;
+						//create handlers for the lines
+						*result = new lineformat[line_count];
+					}
+					else {
+						throw Error("Already got size definition (n=...) for %s", fname);
+					}
 				}
 				else {
 					if (wanting_count) {
