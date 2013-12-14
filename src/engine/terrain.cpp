@@ -30,6 +30,7 @@ Terrain::Terrain(unsigned int size, size_t terrain_meta_count, TerrainType *terr
 	this->textures       = new engine::Texture*[this->terrain_type_count];
 	this->blending_masks = new engine::Texture*[this->blendmode_count];
 	this->terrain_id_priority_map = new int[terrain_type_count];
+	this->terrain_id_blendmode_map = new int[terrain_type_count];
 	this->blending_enabled = true;
 
 	log::dbg("terrain prefs: %lu tiletypes, %lu blendmodes", this->terrain_type_count, this->blendmode_count);
@@ -37,6 +38,7 @@ Terrain::Terrain(unsigned int size, size_t terrain_meta_count, TerrainType *terr
 	for (size_t i = 0; i < this->terrain_type_count; i++) {
 		auto line = &terrain_meta[i];
 		this->terrain_id_priority_map[i] = line->blend_priority;
+		this->terrain_id_blendmode_map[i] = line->blend_mode;
 
 		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", line->slp_id);
 		auto new_texture = new Texture(terraintex_filename, true, ALPHAMASKED);
@@ -308,8 +310,8 @@ void Terrain::draw() {
 					adjacent_mask_id += anti_redundancy_offset;
 				}
 
-				//TODO:
-				int blend_mode = 5;     //get_blending_mode(priority, base)
+				//get the blending mode (the mask selection) for this transition
+				int blend_mode = this->get_blending_mode(terrain_id, neighbor_terrain_id);
 
 				if (adjacent_mask_id < 0) {
 					if (respect_adjacent_influence && !respect_diagonal_influence && binfdiagonal == 0) {
@@ -480,6 +482,14 @@ size_t Terrain::get_size() {
 void Terrain::set_mask(unsigned int modeid, engine::Texture *m) {
 	this->blending_masks[modeid] = m;
 }
+
+/**
+return the blending mode id for two given neighbor ids.
+*/
+int Terrain::get_blending_mode(size_t base_id, size_t neighbor_id) {
+	return this->terrain_id_blendmode_map[base_id];
+}
+
 
 
 /**

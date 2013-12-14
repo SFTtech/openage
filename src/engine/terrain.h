@@ -79,6 +79,8 @@ public:
 	void set_mask(unsigned int modeid, engine::Texture *m);
 	void set_blending(bool enabled);
 
+	int get_blending_mode(size_t base_id, size_t neighbor_id);
+
 private:
 	size_t size;
 	int *tiles;
@@ -92,6 +94,7 @@ private:
 	engine::Texture **blending_masks;
 
 	int *terrain_id_priority_map;
+	int *terrain_id_blendmode_map;
 
 	unsigned get_subtexture_id(coord::tile pos, unsigned atlas_size);
 };
