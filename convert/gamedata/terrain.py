@@ -1,5 +1,6 @@
 from struct import Struct, unpack_from
 from util import dbg, zstr
+from util import file_get_path, file_write
 
 endianness = '< '
 
@@ -176,8 +177,14 @@ class TerrainBorderData:
 
 		self.data["terrain_count_additional"] = pc[28]
 
-		tmp_struct = Struct(endianness + "12722c")
+		tmp_struct = Struct(endianness + "12722s")
+		t = tmp_struct.unpack_from(raw, offset)
+		offset_begin = offset
 		offset += tmp_struct.size
+
+		fname = 'raw/terrain_render_data_%d_to_%d.raw' % (offset_begin, offset)
+		filename = file_get_path(fname, write=True)
+		file_write(filename, t[0])
 
 		return offset
 
