@@ -57,14 +57,13 @@ void init() {
 
 	university = new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
-	engine::util::File<engine::TerrainType> terrain_types;
-	engine::util::read_structured_file<engine::TerrainType>(&terrain_types, "age/processed/terrain_meta.docx");
-	engine::log::dbg("there are %lu gschichts", terrain_types.size);
+	engine::TerrainType *terrain_types;
+	size_t ttype_count = engine::util::read_csv_file<engine::TerrainType>(&terrain_types, "age/processed/terrain_meta.docx");
 
-	engine::util::File<engine::BlendingMode> blending_modes;
-	engine::util::read_structured_file<engine::BlendingMode>(&blending_modes, "age/processed/blending_meta.docx");
+	engine::BlendingMode *blending_modes;
+	size_t bmode_count = engine::util::read_csv_file<engine::BlendingMode>(&blending_modes, "age/processed/blending_meta.docx");
 
-	terrain = new Terrain(20, terrain_types, blending_modes);
+	terrain = new Terrain(20, ttype_count, terrain_types, bmode_count, blending_modes);
 
 
 
@@ -78,51 +77,44 @@ void init() {
 	}
 
 
+	struct player_color_line : engine::util::csv_line_data {
+		unsigned int r, g, b, a;
+
+		int fill(const char *by_line) {
+			if (5 == sscanf(by_line, "%u=%u,%u,%u,%u",
+			           &this->idx,
+			           &this->r,
+			           &this->g,
+			           &this->b,
+			           &this->a
+			           )) {
+				return 0;
+			}
+			else {
+				return -1;
+			}
+		}
+		void dump() {
+			engine::log::msg("color %u: (%u,%u,%u,%u)", this->idx, this->r, this->g, this->b, this->a);
+		}
+	};
 
 
 	//get the player colors from the sub-palette exported by script
-	char *pcolor_file = util::read_whole_file("age/processed/player_color_palette.pal");
+	player_color_line *player_color_file;
+	size_t pcolor_count = engine::util::read_csv_file<player_color_line>(&player_color_file, "age/processed/player_color_palette.pal");
 
-	char *pcolor_seeker = pcolor_file;
-	char *currentline = pcolor_file;
-
-	//hardcoded for now.
-	const unsigned int num_pcolors = 64;
-	GLfloat playercolors[num_pcolors*4];
-
-	for(; *pcolor_seeker != '\0'; pcolor_seeker++) {
-
-		if (*pcolor_seeker == '\n') {
-			*pcolor_seeker = '\0';
-
-			if (*currentline != '#') {
-				uint n, r, g, b, a, idx;
-
-				//TODO raise exception if stuff is specified multiple times.
-				//alternatively, simply dont use indices, raise exception if values are > 255 or < 0, or if idx is < 0 or > 63
-
-				if(sscanf(currentline, "n=%u", &n) == 1) {
-					if (n != num_pcolors) {
-						throw Error("the player colortable must have %u entries!", num_pcolors);
-					}
-				} else if(sscanf(currentline, "%u=%u,%u,%u,%u", &idx, &r, &g, &b, &a)) {
-					playercolors[idx*4] = r / 255.0;
-					playercolors[idx*4 + 1] = g / 255.0;
-					playercolors[idx*4 + 2] = b / 255.0;
-					playercolors[idx*4 + 3] = a / 255.0;
-				} else {
-					throw Error("unknown line content reading the player color table");
-				}
-			}
-			currentline = pcolor_seeker + 1;
-		}
+	GLfloat *playercolors = new GLfloat[pcolor_count*4];
+	for (size_t i = 0; i < pcolor_count; i++) {
+		auto line = &player_color_file[i];
+		playercolors[i*4]     = line->r / 255.0;
+		playercolors[i*4 + 1] = line->g / 255.0;
+		playercolors[i*4 + 2] = line->b / 255.0;
+		playercolors[i*4 + 3] = line->a / 255.0;
 	}
-
-	delete[] pcolor_file;
 
 
 	//shader initialisation
-
 	//read shader source codes and create shader objects for wrapping them.
 
 	char *texture_vert_code = util::read_whole_file("shaders/maptexture.vert.glsl");
@@ -172,6 +164,7 @@ void init() {
 	//fill the teamcolor shader's player color table:
 	glUniform4fv(teamcolor_shader::player_color_var, 64, playercolors);
 	teamcolor_shader::program->stopusing();
+	delete[] playercolors;
 
 
 	//create program for drawing textures that are alpha-masked before

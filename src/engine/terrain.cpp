@@ -17,7 +17,7 @@ namespace engine {
 coord::camgame_delta tile_halfsize = {48, 24};
 
 
-Terrain::Terrain(unsigned int size, util::File<TerrainType> terrain_meta, util::File<BlendingMode> blending_meta) {
+Terrain::Terrain(unsigned int size, size_t terrain_meta_count, TerrainType *terrain_meta, size_t blending_meta_count, BlendingMode *blending_meta) {
 	this->size       = size;
 	this->num_rows   = 2*size - 1;
 	this->tile_count = size * size;
@@ -25,8 +25,8 @@ Terrain::Terrain(unsigned int size, util::File<TerrainType> terrain_meta, util::
 	//the ids of terraintype pieces on the terrain
 	this->tiles = new int[this->tile_count];
 
-	this->terrain_type_count = terrain_meta.size;
-	this->blendmode_count = blending_meta.size;
+	this->terrain_type_count = terrain_meta_count;
+	this->blendmode_count    = blending_meta_count;
 	this->textures       = new engine::Texture*[this->terrain_type_count];
 	this->blending_masks = new engine::Texture*[this->blendmode_count];
 	this->terrain_id_priority_map = new int[terrain_type_count];
@@ -35,7 +35,7 @@ Terrain::Terrain(unsigned int size, util::File<TerrainType> terrain_meta, util::
 	log::dbg("terrain prefs: %lu tiletypes, %lu blendmodes", this->terrain_type_count, this->blendmode_count);
 
 	for (size_t i = 0; i < this->terrain_type_count; i++) {
-		auto line = terrain_meta.content[i];
+		auto line = &terrain_meta[i];
 		this->terrain_id_priority_map[i] = line->blend_priority;
 
 		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", line->slp_id);
@@ -46,7 +46,7 @@ Terrain::Terrain(unsigned int size, util::File<TerrainType> terrain_meta, util::
 	}
 
 	for (size_t i = 0; i < this->blendmode_count; i++) {
-		auto line = blending_meta.content[i];
+		auto line = &blending_meta[i];
 
 		char *mask_filename = util::format("age/alphamask/mode%02d.png", line->mode_id);
 		auto new_texture = new Texture(mask_filename, true);
