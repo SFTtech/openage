@@ -58,6 +58,8 @@ void init() {
 
 	terrain = new Terrain(20, ttype_count, terrain_types, bmode_count, blending_modes);
 
+	delete[] terrain_types;
+	delete[] blending_modes;
 
 
 	//set the terrain types according to the data array.
@@ -105,6 +107,7 @@ void init() {
 		playercolors[i*4 + 2] = line->b / 255.0;
 		playercolors[i*4 + 3] = line->a / 255.0;
 	}
+	delete[] player_color_lines;
 
 
 	//shader initialisation
