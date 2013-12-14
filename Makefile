@@ -27,7 +27,7 @@ openage: bin/Makefile bin
 
 
 media:
-	python3 convert -o . $(AGE2DIR) $(needed_media)
+	python3 convert -v -o . $(AGE2DIR) $(needed_media)
 
 medialist:
 	@echo "$(needed_media)"
