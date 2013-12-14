@@ -60,21 +60,25 @@ char *get_font_filename(const char *family, const char *style) {
 
 
 Font::Font(const char *family, const char *style, unsigned size) {
-	font_filename = get_font_filename(family, style);
-	internal_font = new FTGLTextureFont(font_filename);
+	this->font_filename = get_font_filename(family, style);
+	this->internal_font = new FTGLTextureFont(font_filename);
 
 	if(internal_font->Error()) {
+		delete[] this->font_filename;
+		delete this->internal_font;
 		throw Error("Failed to create FTGL texture font from %s", font_filename);
 	}
 
 	if (!internal_font->FaceSize(size)) {
+		delete[] this->font_filename;
+		delete this->internal_font;
 		throw Error("Failed to set font face size to %u", size);
 	}
 }
 
 Font::~Font() {
-	delete font_filename;
-	delete internal_font;
+	delete[] this->font_filename;
+	delete this->internal_font;
 }
 
 void Font::render_static(coord::pixel_t x, coord::pixel_t y, const char *text, int len) {
