@@ -72,12 +72,13 @@ void init() {
 	}
 
 
-	struct player_color_line : engine::util::csv_line_data {
+	struct player_color_line {
+		unsigned int id;
 		unsigned int r, g, b, a;
 
 		int fill(const char *by_line) {
 			if (5 == sscanf(by_line, "%u=%u,%u,%u,%u",
-			           &this->idx,
+			           &this->id,
 			           &this->r,
 			           &this->g,
 			           &this->b,
@@ -90,7 +91,7 @@ void init() {
 			}
 		}
 		void dump() {
-			engine::log::msg("color %u: (%u,%u,%u,%u)", this->idx, this->r, this->g, this->b, this->a);
+			engine::log::msg("color %u: (%u,%u,%u,%u)", this->id, this->r, this->g, this->b, this->a);
 		}
 	};
 

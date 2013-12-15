@@ -9,27 +9,6 @@
 namespace engine {
 namespace util {
 
-struct file_data {
-	file_data(size_t size, char *content) : size(size), content(content) {}
-	~file_data() {
-		if (this->size > 0) {
-			delete[] content;
-		}
-	}
-
-	size_t size;
-	char *content;
-};
-
-struct csv_line_data {
-	virtual ~csv_line_data() {}
-
-	//fancy inheritance stuff, =0 means this method is abstract
-	virtual int fill(const char *by_line) =0;
-	unsigned int idx;
-};
-
-
 ssize_t read_whole_file(char **result, const char *filename);
 
 
@@ -74,8 +53,8 @@ ssize_t read_csv_file(lineformat **result, const char *fname) {
 					}
 
 					if (0 == (*result)[linepos].fill(currentline)) {
-						if (linepos != (*result)[linepos].idx) {
-							throw Error("line index %u mismatch! should be %lu.", (*result)[linepos].idx, linepos);
+						if (linepos != (*result)[linepos].id) {
+							throw Error("line index %u mismatch! should be %lu.", (*result)[linepos].id, linepos);
 						}
 
 						linepos += 1;

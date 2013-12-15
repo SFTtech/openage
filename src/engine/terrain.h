@@ -19,11 +19,12 @@ extern coord::camgame_delta tile_halfsize;
 /**
 describes one terrrain type, like water, ice, etc.
 */
-class TerrainType : public util::csv_line_data {
+class TerrainType {
 public:
 	TerrainType() {};
 	~TerrainType() {};
 
+	unsigned int id;
 	int terrain_id;
 	int slp_id;
 	int sound_id;
@@ -41,11 +42,12 @@ public:
 /**
 describes one blending mode, a blending transition shape between two different terrain types.
 */
-class BlendingMode : public util::csv_line_data {
+class BlendingMode {
 public:
 	BlendingMode() {};
 	~BlendingMode() {};
 
+	unsigned int id;
 	int mode_id;
 
 	int fill(const char *by_line);
