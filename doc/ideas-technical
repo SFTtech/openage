@@ -7,7 +7,7 @@ so it may also contain some crazy shit that will never end up being
 in the engine.
 
 
-inofity for game data files
+inotify for game data files
 ---------------------------
 
 watch the game data folder and update files in-game instantly.
