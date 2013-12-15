@@ -99,75 +99,17 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		log::msg("loading meta file %s", meta_filename);
 
 		//get subtexture information by meta file exported by script
-		char *texture_meta_file;
-		util::read_whole_file(&texture_meta_file, meta_filename);
+		this->subtexture_count = util::read_csv_file<subtexture> (&this->subtextures, meta_filename);
+		//TODO: use information from empires.dat for that, also use x and y sizes:
+		this->atlas_dimensions = sqrt(this->subtexture_count);
 		delete[] meta_filename;
-
-		char *tmeta_seeker = texture_meta_file;
-		char *currentline = texture_meta_file;
-
-		bool wanting_count = true;
-
-		for(; *tmeta_seeker != '\0'; tmeta_seeker++) {
-
-			if (*tmeta_seeker == '\n') {
-				*tmeta_seeker = '\0';
-
-				if (*currentline != '#') {
-					//count, index, x, y, width, height, hotspotx, hotspoty
-					uint n, idx, tx, ty, tw, th, hx, hy;
-
-					if(sscanf(currentline, "n=%u", &n) == 1) {
-						this->subtexture_count = n;
-						this->atlas_dimensions = sqrt(n);
-						this->subtextures = new struct subtexture[n];
-						wanting_count = false;
-					}
-					else {
-						if (wanting_count) {
-							throw Error("texture meta line found, but no count set yet in %s", meta_filename);
-						}
-						else if(sscanf(currentline, "%u=%u,%u,%u,%u,%u,%u", &idx, &tx, &ty, &tw, &th, &hx, &hy)) {
-							struct subtexture subtext;
-
-							//lower left coordinates, origin
-							subtext.x = tx;
-							subtext.y = ty;
-
-							//width and height from lower left origin
-							subtext.w = tw;
-							subtext.h = th;
-
-							//hotspot/center coordinates
-							subtext.cx = hx;
-							subtext.cy = hy;
-
-							this->subtextures[idx] = subtext;
-						}
-						else {
-							throw Error("unknown line content reading texture meta file %s", meta_filename);
-						}
-					}
-				}
-				currentline = tmeta_seeker + 1;
-			}
-		}
-
-		delete[] texture_meta_file;
 	}
 	else { //this texture does not contain subtextures
-		struct subtexture subtext;
-
-		subtext.x = 0;
-		subtext.y = 0;
-		subtext.w = this->w;
-		subtext.h = this->h;
-		subtext.cx = 0;
-		subtext.cy = 0;
+		struct subtexture s {0, 0, 0, this->w, this->h, this->w/2, this->h/2};
 
 		this->subtexture_count = 1;
 		this->subtextures = new struct subtexture[1];
-		this->subtextures[0] = subtext;
+		this->subtextures[0] = s;
 	}
 	glGenBuffers(1, &this->vertbuf);
 }
@@ -389,6 +331,26 @@ void Texture::disable_alphamask() {
 
 GLuint Texture::get_texture_id() {
 	return this->id;
+}
+
+/**
+parse one line for a subtexture area description.
+*/
+int subtexture::fill(const char *by_line) {
+	if (sscanf(by_line, "%u=%u,%u,%u,%u,%u,%u",
+	           &this->id,
+	           &this->x, //lower left coordinates, origin
+	           &this->y,
+	           &this->w, //width and height from lower left origin
+	           &this->h,
+	           &this->cx, //hotspot/center coordinates
+	           &this->cy
+	           )) {
+		return 0;
+	}
+	else {
+		return -1;
+	}
 }
 
 

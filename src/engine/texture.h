@@ -8,6 +8,7 @@
 #include "shader/program.h"
 #include "coord/camgame.h"
 #include "coord/camhud.h"
+#include "util/file.h"
 
 namespace engine {
 
@@ -39,11 +40,15 @@ this struct stores information about what position and size
 one sprite included in the "texture atlas" has.
 */
 struct subtexture {
+	unsigned int id;
+
 	/** x,y starting coordinates and width/height of the subtexture */
 	int x, y, w, h;
 
 	/** hotspot coordinates. */
 	int cx, cy;
+
+	int fill(const char *by_line);
 };
 
 
