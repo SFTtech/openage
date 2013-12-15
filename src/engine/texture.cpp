@@ -337,7 +337,7 @@ GLuint Texture::get_texture_id() {
 parse one line for a subtexture area description.
 */
 int subtexture::fill(const char *by_line) {
-	if (sscanf(by_line, "%u=%u,%u,%u,%u,%u,%u",
+	if (sscanf(by_line, "%u=%d,%d,%d,%d,%d,%d",
 	           &this->id,
 	           &this->x, //lower left coordinates, origin
 	           &this->y,
