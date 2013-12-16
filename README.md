@@ -32,6 +32,9 @@ dependencies
 	dejavu font
 	freetype2
 	fontconfig
+	cmake
+	sdl2
+	sdl2_image
 
 
 
