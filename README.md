@@ -39,6 +39,27 @@ dependencies
 
 
 
+how to compile && run
+=====================
+
+on POSIX:
+---------
+
+	./configure --mode=release
+	make
+	make AGE2DIR=~/.wine-age/drive_c/programs/ms-games/aoe2 media
+	cd data && ../bin/openage
+
+for other make targets, see:
+
+	make help
+
+on WINDOWS:
+-----------
+
+if you are keen on porting the game, go for it.
+
+
 how to convert gamedata
 =======================
 
@@ -74,27 +95,6 @@ for converting only media files we do use at the moment, execute this:
 
 	python3 convert -o . $aoe2-installpath $(make medialist)
 
-
-
-how to compile && run
-=====================
-
-on POSIX:
----------
-
-	./configure --mode=release
-	make
-	make AGE2DIR=~/.wine-age/drive_c/programs/ms-games/aoe2 media
-	cd data && ../bin/openage
-
-for other make targets, see:
-
-	make help
-
-on WINDOWS:
------------
-
-if you are keen on porting the game, go for it.
 
 
 documentation
