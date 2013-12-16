@@ -47,7 +47,7 @@ on POSIX:
 
 	./configure --mode=release
 	make
-	make AGE2DIR=~/.wine-age/drive_c/programs/ms-games/aoe2 media
+	make media AGE2DIR="~/.wine-age/drive_c/programs/ms-games/aoe2"
 	cd data && ../bin/openage
 
 for other make targets, see:
