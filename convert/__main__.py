@@ -26,6 +26,9 @@ def main():
 
 	args = p.parse_args()
 
+	#set verbose value in util
+	set_verbosity(args.verbose)
+
 	#assume to extract all files when nothing specified.
 	if args.extract == []:
 		args.extract.append('*:*.*')
@@ -47,9 +50,6 @@ def main():
 	else:
 		write_enabled = False
 
-
-	#set verbose value in util
-	set_verbosity(args.verbose)
 
 	drsfiles = {
 		"graphics":  DRS("Data/graphics.drs"),
