@@ -19,11 +19,7 @@ extern coord::camgame_delta tile_halfsize;
 /**
 describes one terrrain type, like water, ice, etc.
 */
-class TerrainType {
-public:
-	TerrainType() {};
-	~TerrainType() {};
-
+struct terrain_type {
 	unsigned int id;
 	int terrain_id;
 	int slp_id;
@@ -42,11 +38,7 @@ public:
 /**
 describes one blending mode, a blending transition shape between two different terrain types.
 */
-class BlendingMode {
-public:
-	BlendingMode() {};
-	~BlendingMode() {};
-
+struct blending_mode {
 	unsigned int id;
 	int mode_id;
 
@@ -62,7 +54,7 @@ class Terrain {
 public:
 	bool blending_enabled;
 
-	Terrain(unsigned int size, size_t terrain_meta_count, TerrainType *terrain_meta, size_t blending_meta_count, BlendingMode *blending_meta);
+	Terrain(unsigned int size, size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta);
 	~Terrain();
 
 	void draw();

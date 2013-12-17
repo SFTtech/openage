@@ -50,11 +50,11 @@ void init() {
 
 	university = new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
-	engine::TerrainType *terrain_types;
-	size_t ttype_count = engine::util::read_csv_file<engine::TerrainType>(&terrain_types, "age/processed/terrain_meta.docx");
+	terrain_type *terrain_types;
+	size_t ttype_count = util::read_csv_file<terrain_type>(&terrain_types, "age/processed/terrain_meta.docx");
 
-	engine::BlendingMode *blending_modes;
-	size_t bmode_count = engine::util::read_csv_file<engine::BlendingMode>(&blending_modes, "age/processed/blending_meta.docx");
+	blending_mode *blending_modes;
+	size_t bmode_count = util::read_csv_file<blending_mode>(&blending_modes, "age/processed/blending_meta.docx");
 
 	terrain = new Terrain(20, ttype_count, terrain_types, bmode_count, blending_modes);
 
