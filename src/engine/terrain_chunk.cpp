@@ -3,6 +3,7 @@
 #include "engine.h"
 #include "texture.h"
 #include "log.h"
+#include "terrain_object.h"
 #include "util/error.h"
 #include "util/strings.h"
 #include "util/misc.h"
@@ -24,6 +25,9 @@ TerrainChunk::TerrainChunk(unsigned int size, size_t terrain_meta_count, terrain
 
 	//the ids of terraintype pieces on the terrain
 	this->tiles = new int[this->tile_count];
+
+	//list of objects to be drawn
+	this->object = new TerrainObject*[this->tile_count];
 
 	this->terrain_type_count = terrain_meta_count;
 	this->blendmode_count    = blending_meta_count;
@@ -76,6 +80,7 @@ TerrainChunk::~TerrainChunk() {
 
 	delete[] this->blending_masks;
 	delete[] this->tiles;
+	delete[] this->object;
 	delete[] this->textures;
 	delete[] this->terrain_id_priority_map;
 }

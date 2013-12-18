@@ -4,6 +4,7 @@
 #include <stddef.h>
 
 #include "texture.h"
+#include "terrain_object.h"
 #include "coord/camgame.h"
 #include "coord/tile.h"
 #include "util/file.h"
@@ -78,6 +79,7 @@ public:
 private:
 	size_t size;
 	int *tiles;
+	TerrainObject **object;
 	size_t tile_count;
 	size_t num_rows;
 
