@@ -1,5 +1,5 @@
-#ifndef _ENGINE_TERRAIN_H_
-#define _ENGINE_TERRAIN_H_
+#ifndef _ENGINE_TERRAIN_CHUNK_H_
+#define _ENGINE_TERRAIN_CHUNK_H_
 
 #include <stddef.h>
 
@@ -48,14 +48,14 @@ struct blending_mode {
 
 
 /**
-terrain class represents the drawn terrain.
+terrain chunk class represents one chunk of the the drawn terrain.
 */
-class Terrain {
+class TerrainChunk {
 public:
 	bool blending_enabled;
 
-	Terrain(unsigned int size, size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta);
-	~Terrain();
+	TerrainChunk(unsigned int size, size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta);
+	~TerrainChunk();
 
 	void draw();
 
@@ -95,4 +95,4 @@ private:
 
 } //namespace engine
 
-#endif //_ENGINE_TERRAIN_H_
+#endif //_ENGINE_TERRAIN_CHUNK_H_

@@ -9,7 +9,7 @@
 #include "../engine/callbacks.h"
 #include "../engine/util/file.h"
 #include "../engine/log.h"
-#include "../engine/terrain.h"
+#include "../engine/terrain_chunk.h"
 
 #include "callbacks.h"
 #include "gamestate.h"
@@ -56,7 +56,7 @@ void init() {
 	blending_mode *blending_modes;
 	size_t bmode_count = util::read_csv_file<blending_mode>(&blending_modes, "age/processed/blending_meta.docx");
 
-	terrain = new Terrain(20, ttype_count, terrain_types, bmode_count, blending_modes);
+	terrain = new TerrainChunk(20, ttype_count, terrain_types, bmode_count, blending_modes);
 
 	delete[] terrain_types;
 	delete[] blending_modes;

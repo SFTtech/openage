@@ -1,4 +1,4 @@
-#include "terrain.h"
+#include "terrain_chunk.h"
 
 #include "engine.h"
 #include "texture.h"
@@ -17,7 +17,7 @@ namespace engine {
 coord::camgame_delta tile_halfsize = {48, 24};
 
 
-Terrain::Terrain(unsigned int size, size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta) {
+TerrainChunk::TerrainChunk(unsigned int size, size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta) {
 	this->size       = size;
 	this->num_rows   = 2*size - 1;
 	this->tile_count = size * size;
@@ -66,7 +66,7 @@ Terrain::Terrain(unsigned int size, size_t terrain_meta_count, terrain_type *ter
 	log::dbg("created terrain: %lu size, %lu rows, %lu tiles", this->size, this->num_rows, this->tile_count);
 }
 
-Terrain::~Terrain() {
+TerrainChunk::~TerrainChunk() {
 	for (size_t i = 0; i < this->terrain_type_count; i++) {
 		delete this->textures[i];
 	}
@@ -91,7 +91,7 @@ coord::tile_delta const neigh_offsets[] = {
 	{ 0, -1}
 };
 
-void Terrain::draw() {
+void TerrainChunk::draw() {
 	const bool respect_diagonal_influence = true;
 	const bool respect_adjacent_influence = true;
 
@@ -365,7 +365,7 @@ returns the terrain subtexture id for a given position.
 this function returns always the right value, so that neighbor tiles
 of the same terrain (like grass-grass) are matching (without blendomatic).
 */
-unsigned Terrain::get_subtexture_id(coord::tile pos, unsigned atlas_size) {
+unsigned TerrainChunk::get_subtexture_id(coord::tile pos, unsigned atlas_size) {
 	unsigned result = 0;
 
 	result += util::mod<coord::tile_t>(pos.se, atlas_size);
@@ -375,11 +375,11 @@ unsigned Terrain::get_subtexture_id(coord::tile pos, unsigned atlas_size) {
 	return result;
 }
 
-void Terrain::set_tile(coord::tile pos, int tile) {
+void TerrainChunk::set_tile(coord::tile pos, int tile) {
 	tiles[tile_position(pos)] = tile;
 }
 
-int Terrain::get_tile(coord::tile pos) {
+int TerrainChunk::get_tile(coord::tile pos) {
 	return tiles[tile_position(pos)];
 }
 
@@ -403,7 +403,7 @@ y= 0   #   #   #
 for example, * is at position (2, 1)
 the returned index would be 6 (count for each x row, starting at y=0)
 */
-size_t Terrain::tile_position(coord::tile pos) {
+size_t TerrainChunk::tile_position(coord::tile pos) {
 	if (pos.ne >= (int) this->size || pos.ne < 0 || pos.se >= (int) this->size || pos.se < 0) {
 		throw Error("requested tile (%ld, %ld) that's not on this terrain.", pos.ne, pos.se);
 	}
@@ -418,7 +418,7 @@ this does not respect the isometric coordinates, it's for drawn rows.
 
 @OBSOLETE FOR NOW
 */
-size_t Terrain::tile_position_diag(unsigned int row, unsigned int offset) {
+size_t TerrainChunk::tile_position_diag(unsigned int row, unsigned int offset) {
 	int so_far; //number of tiles in memory before the row
 	unsigned int in_row; //number of tiles in the destination row
 
@@ -447,19 +447,19 @@ size_t Terrain::tile_position_diag(unsigned int row, unsigned int offset) {
 	return position;
 }
 
-size_t Terrain::get_tile_count() {
+size_t TerrainChunk::get_tile_count() {
 	return this->tile_count;
 }
 
-void Terrain::set_texture(size_t index, engine::Texture *t) {
+void TerrainChunk::set_texture(size_t index, engine::Texture *t) {
 	this->textures[index] = t;
 }
 
-engine::Texture *Terrain::get_texture(size_t index) {
+engine::Texture *TerrainChunk::get_texture(size_t index) {
 	return this->textures[index];
 }
 
-size_t Terrain::tiles_in_row(unsigned int row) {
+size_t TerrainChunk::tiles_in_row(unsigned int row) {
 	unsigned int in_row; //number of tiles in the destination row
 
 	if (row > this->num_rows - 1) {
@@ -475,18 +475,18 @@ size_t Terrain::tiles_in_row(unsigned int row) {
 	return in_row;
 }
 
-size_t Terrain::get_size() {
+size_t TerrainChunk::get_size() {
 	return this->size;
 }
 
-void Terrain::set_mask(unsigned int modeid, engine::Texture *m) {
+void TerrainChunk::set_mask(unsigned int modeid, engine::Texture *m) {
 	this->blending_masks[modeid] = m;
 }
 
 /**
 return the blending mode id for two given neighbor ids.
 */
-int Terrain::get_blending_mode(size_t base_id, size_t neighbor_id) {
+int TerrainChunk::get_blending_mode(size_t base_id, size_t neighbor_id) {
 	int base_mode     = this->terrain_id_blendmode_map[base_id];
 	int neighbor_mode = this->terrain_id_blendmode_map[neighbor_id];
 	if (neighbor_mode > base_mode) {
