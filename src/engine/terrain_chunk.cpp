@@ -13,9 +13,6 @@
 
 namespace engine {
 
-//TODO: get that from the convert script!
-coord::camgame_delta tile_halfsize = {48, 24};
-
 
 TerrainChunk::TerrainChunk(unsigned int size, size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta) {
 	this->size       = size;

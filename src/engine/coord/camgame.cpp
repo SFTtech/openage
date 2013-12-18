@@ -2,7 +2,7 @@
 #include "camgame.h"
 
 #include "../engine.h"
-#include "../terrain_chunk.h"
+#include "../terrain.h"
 #include "phys3.h"
 #include "vec2.h"
 #include "window.h"
