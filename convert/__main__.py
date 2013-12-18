@@ -161,13 +161,13 @@ def main():
 
 				dbg("Extracting to " + fname + "...", 2)
 
-			file_data = drsfile.get_file_data(file_extension, file_id)
+				file_data = drsfile.get_file_data(file_extension, file_id)
 
 			if file_extension == 'slp':
-				s = SLP(file_data)
 
 				if write_enabled:
 
+					s = SLP(file_data)
 					out_file_tmp = drsname + ": " + str(file_id) + "." + file_extension
 
 					if merge_images:
