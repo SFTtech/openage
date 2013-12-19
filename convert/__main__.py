@@ -38,7 +38,7 @@ def main():
 	if args.extract == []:
 		args.extract.append('*:*.*')
 
-	args.extractionrules = [ ExtractionRule(e) for e in args.extract ]
+	extraction_rules = [ ExtractionRule(e) for e in args.extract ]
 
 	merge_images = not args.nomerge
 	exec_dev = args.development
@@ -149,7 +149,7 @@ def main():
 
 	for drsname, drsfile in drsfiles.items():
 		for file_extension, file_id in drsfile.files:
-			if not any((er.matches(drsname, file_id, file_extension) for er in args.extractionrules)):
+			if not any((er.matches(drsname, file_id, file_extension) for er in extraction_rules)):
 				continue
 
 			if args.listfiles or args.dumpfilelist:
