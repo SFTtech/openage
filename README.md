@@ -26,7 +26,7 @@ dependencies
 
 	python3
 	python3 imaging library (PIL) -> pillow
-	opengl 2.1
+	opengl >=2.1
 	glew
 	ftgl
 	dejavu font
@@ -35,6 +35,7 @@ dependencies
 	cmake
 	sdl2
 	sdl2_image
+	gcc >=4.8 or clang >=3.3
 
 
 
