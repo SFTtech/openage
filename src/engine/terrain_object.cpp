@@ -14,7 +14,9 @@ namespace engine {
 
 TerrainObject::TerrainObject() {
 	//university specific for testing purposes
+	this->texture = new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 	this->size = { 4, 4 };
+
 	this->occupied_chunk_count = 0;
 
 	log::dbg("created terrain_object");
@@ -31,6 +33,7 @@ TerrainObject::~TerrainObject() {
  */
 bool bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos) {
 	//TODO: should work with more than one chunk
+	//TODO: should check it it is even possible
 	this->occupied_chunk_count = 1;
 	this->occupied_chunk[0] = main_chunk;
 

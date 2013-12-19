@@ -27,6 +27,7 @@ public:
 
 private:
 	//tex (+draw starting point)
+	Texture *texture;
 	struct object_size size;
 
 	int occupied_chunk_count;
