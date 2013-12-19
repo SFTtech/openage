@@ -7,7 +7,7 @@ from os import remove
 from os.path import join
 from slp import SLP, PNG
 import subprocess
-from util import file_write, dbg, ifdbg, set_dir, set_verbosity, file_get_path
+from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path
 
 def parse_args():
 
@@ -45,12 +45,12 @@ def main():
 
 	#set path in utility class
 	dbg("setting age2 input directory to " + args.srcdir, 1)
-	set_dir(args.srcdir, is_writedir=False)
+	set_read_dir(args.srcdir)
 
 	#write mode is disabled by default, unless destdir is set
 	if args.destdir != '/dev/null' and not args.listfiles and not args.dumpfilelist:
 		dbg("setting write dir to " + args.destdir, 1)
-		set_dir(args.destdir, is_writedir=True)
+		set_write_dir(args.destdir)
 		write_enabled = True
 	else:
 		write_enabled = False

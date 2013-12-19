@@ -64,12 +64,13 @@ def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "
 def mkdirs(path):
 	os.makedirs(path, exist_ok = True)
 
-def set_dir(dirname, is_writedir):
-	global writepath, readpath
-	if is_writedir:
-		writepath = dirname
-	else:
-		readpath = dirname
+def set_write_dir(dirname):
+	global writepath
+	writepath = dirname
+
+def set_read_dir(dirname):
+	global readpath
+	readpath = dirname
 
 def file_get_path(fname, write = False):
 	if write:
