@@ -9,7 +9,7 @@ from slp import SLP, PNG
 import subprocess
 from util import file_write, dbg, ifdbg, set_dir, set_verbosity, file_get_path
 
-def main():
+def parse_args():
 
 	p = argparse.ArgumentParser()
 	p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
@@ -24,7 +24,12 @@ def main():
 	p.add_argument("srcdir", help = "The Age of Empires II root directory")
 	p.add_argument("extract", metavar = "resource", nargs = "*", help = "A specific extraction rule, such as graphics:*.slp, terrain:15008.slp or *:*.wav. If no rules are specified, *:*.* is assumed")
 
-	args = p.parse_args()
+	return p.parse_args()
+
+
+def main():
+
+	args = parse_args()
 
 	#set verbose value in util
 	set_verbosity(args.verbose)
