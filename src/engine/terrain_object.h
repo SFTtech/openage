@@ -4,6 +4,7 @@
 #include <stddef.h>
 
 #include "terrain_chunk.h"
+#include "coord/tile.h"
 
 namespace engine {
 
@@ -20,15 +21,18 @@ terrain chunk class represents one chunk of the the drawn terrain.
 */
 class TerrainObject {
 public:
-	TerrainObject();
+	TerrainObject(unsigned player);
 	~TerrainObject();
 	bool bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos);
+	bool draw();
 	//init (terrain auf dreck setzen, richtige chunk->objects auf diesen pointer setzen, textur laden)
 
 private:
 	//tex (+draw starting point)
 	Texture *texture;
+	coord::tile pos;
 	struct object_size size;
+	unsigned player;
 
 	int occupied_chunk_count;
 	TerrainChunk *occupied_chunk[4];

@@ -2,6 +2,7 @@
 #define _ENGINE_TERRAIN_CHUNK_H_
 
 #include <stddef.h>
+#include <vector>
 
 #include "texture.h"
 #include "terrain_object.h"
@@ -80,6 +81,7 @@ private:
 	size_t size;
 	int *tiles;
 	TerrainObject **object;
+	std::vector<TerrainObject *> object_list;
 	size_t tile_count;
 	size_t num_rows;
 
