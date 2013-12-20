@@ -7,9 +7,9 @@ from os import remove
 from os.path import join
 from slp import SLP, PNG
 import subprocess
-from util import file_write, dbg, ifdbg, set_dir, set_verbosity, file_get_path
+from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path
 
-def main():
+def parse_args():
 
 	p = argparse.ArgumentParser()
 	p.add_argument("-v", "--verbose", help = "Turn on verbose log messages", action='count', default=0)
@@ -24,32 +24,37 @@ def main():
 	p.add_argument("srcdir", help = "The Age of Empires II root directory")
 	p.add_argument("extract", metavar = "resource", nargs = "*", help = "A specific extraction rule, such as graphics:*.slp, terrain:15008.slp or *:*.wav. If no rules are specified, *:*.* is assumed")
 
-	args = p.parse_args()
+	return p.parse_args()
+
+
+def main():
+
+	args = parse_args()
+
+	#set verbose value in util
+	set_verbosity(args.verbose)
 
 	#assume to extract all files when nothing specified.
 	if args.extract == []:
 		args.extract.append('*:*.*')
 
-	args.extractionrules = [ ExtractionRule(e) for e in args.extract ]
+	extraction_rules = [ ExtractionRule(e) for e in args.extract ]
 
 	merge_images = not args.nomerge
 	exec_dev = args.development
 
 	#set path in utility class
 	dbg("setting age2 input directory to " + args.srcdir, 1)
-	set_dir(args.srcdir, is_writedir=False)
+	set_read_dir(args.srcdir)
 
 	#write mode is disabled by default, unless destdir is set
 	if args.destdir != '/dev/null' and not args.listfiles and not args.dumpfilelist:
 		dbg("setting write dir to " + args.destdir, 1)
-		set_dir(args.destdir, is_writedir=True)
+		set_write_dir(args.destdir)
 		write_enabled = True
 	else:
 		write_enabled = False
 
-
-	#set verbose value in util
-	set_verbosity(args.verbose)
 
 	drsfiles = {
 		"graphics":  DRS("Data/graphics.drs"),
@@ -144,7 +149,7 @@ def main():
 
 	for drsname, drsfile in drsfiles.items():
 		for file_extension, file_id in drsfile.files:
-			if not any((er.matches(drsname, file_id, file_extension) for er in args.extractionrules)):
+			if not any((er.matches(drsname, file_id, file_extension) for er in extraction_rules)):
 				continue
 
 			if args.listfiles or args.dumpfilelist:
@@ -161,13 +166,13 @@ def main():
 
 				dbg("Extracting to " + fname + "...", 2)
 
-			file_data = drsfile.get_file_data(file_extension, file_id)
+				file_data = drsfile.get_file_data(file_extension, file_id)
 
 			if file_extension == 'slp':
-				s = SLP(file_data)
 
 				if write_enabled:
 
+					s = SLP(file_data)
 					out_file_tmp = drsname + ": " + str(file_id) + "." + file_extension
 
 					if merge_images:
