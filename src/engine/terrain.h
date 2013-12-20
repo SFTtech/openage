@@ -10,6 +10,8 @@
 
 namespace engine {
 
+class TerrainChunk;
+
 /**
 half the size of one terrain diamond tile, in camgame
 */
@@ -21,11 +23,18 @@ terrain chunk class represents one chunk of the the drawn terrain.
 */
 class Terrain {
 public:
+	bool blending_enabled;
+
 	Terrain();
 	~Terrain();
 
+	void attach_chunk(TerrainChunk *new_chunk, coord::chunk position);
+	TerrainChunk *get_chunk(coord::chunk position);
+
+	void draw();
+
 private:
-	std::map<coord::chunk, TerrainChunk *> chunk;
+	std::map<coord::chunk, TerrainChunk *> chunks;
 };
 
 } //namespace engine

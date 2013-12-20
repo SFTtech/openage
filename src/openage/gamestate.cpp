@@ -8,7 +8,9 @@ std::vector<building> buildings;
 
 terrain_t editor_current_terrain = 0;
 
-TerrainChunk *terrain;
+Terrain *terrain;
+TerrainChunk *terrain_chunk_0;
+
 Texture *gaben, *university;
 
 } //namespace openage

@@ -28,7 +28,6 @@ TerrainChunk::TerrainChunk(unsigned int size, size_t terrain_meta_count, terrain
 	this->blending_masks = new engine::Texture*[this->blendmode_count];
 	this->terrain_id_priority_map = new int[terrain_type_count];
 	this->terrain_id_blendmode_map = new int[terrain_type_count];
-	this->blending_enabled = true;
 
 	log::dbg("terrain prefs: %lu tiletypes, %lu blendmodes", this->terrain_type_count, this->blendmode_count);
 
@@ -92,10 +91,6 @@ void TerrainChunk::draw() {
 	const bool respect_diagonal_influence = true;
 	const bool respect_adjacent_influence = true;
 
-	if (!respect_adjacent_influence && !respect_diagonal_influence) {
-		this->blending_enabled = false;
-	}
-
 	coord::tile tilepos = {0, 0};
 	for (; tilepos.ne < (int) this->size; tilepos.ne++) {
 		for (tilepos.se = 0; tilepos.se < (int) this->size; tilepos.se++) {
@@ -112,7 +107,7 @@ void TerrainChunk::draw() {
 			//draw the base texture
 			base_texture->draw(tilepos.to_tile3().to_phys3().to_camgame(), false, sub_id);
 
-			if (!this->blending_enabled) {
+			if (!this->terrain->blending_enabled) {
 				continue;
 			}
 
@@ -478,6 +473,10 @@ size_t TerrainChunk::get_size() {
 
 void TerrainChunk::set_mask(unsigned int modeid, engine::Texture *m) {
 	this->blending_masks[modeid] = m;
+}
+
+void TerrainChunk::set_terrain(Terrain *parent) {
+	this->terrain = parent;
 }
 
 /**

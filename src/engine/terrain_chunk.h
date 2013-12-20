@@ -3,12 +3,15 @@
 
 #include <stddef.h>
 
+#include "terrain.h"
 #include "texture.h"
 #include "coord/camgame.h"
 #include "coord/tile.h"
 #include "util/file.h"
 
 namespace engine {
+
+class Terrain;
 
 /**
 half the size of one terrain tile, in camgame
@@ -52,8 +55,6 @@ terrain chunk class represents one chunk of the the drawn terrain.
 */
 class TerrainChunk {
 public:
-	bool blending_enabled;
-
 	TerrainChunk(unsigned int size, size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta);
 	~TerrainChunk();
 
@@ -74,6 +75,8 @@ public:
 	void set_blending(bool enabled);
 
 	int get_blending_mode(size_t base_id, size_t neighbor_id);
+
+	void set_terrain(Terrain *parent);
 
 private:
 	size_t size;
@@ -101,6 +104,7 @@ private:
 	      4
 	*/
 	TerrainChunk *neighbor[8];
+	Terrain *terrain;
 
 };
 

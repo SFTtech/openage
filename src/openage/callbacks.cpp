@@ -46,7 +46,7 @@ bool input_handler(SDL_Event *e) {
 				((float) mousepos_phys3.se) / phys_per_tile,
 				((float) mousepos_phys3.up) / phys_per_tile);
 			log::dbg("LMB [tile]:      NE %8ld SE %8ld", mousepos_tile.ne, mousepos_tile.se);
-			terrain->set_tile(mousepos_tile, editor_current_terrain);
+			terrain_chunk_0->set_tile(mousepos_tile, editor_current_terrain);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
 			//check whether an building already exists at this pos
@@ -155,7 +155,7 @@ bool draw_method() {
 
 bool hud_draw_method() {
 	//draw the currently selected editor texture tile
-	terrain->get_texture(editor_current_terrain)->draw(coord::window{63, 84}.to_camhud());
+	terrain_chunk_0->get_texture(editor_current_terrain)->draw(coord::window{63, 84}.to_camhud());
 
 	return true;
 }
