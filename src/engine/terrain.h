@@ -18,6 +18,15 @@ half the size of one terrain diamond tile, in camgame
 extern coord::camgame_delta tile_halfsize;
 
 
+
+struct coord_chunk_compare {
+	bool operator()(coord::chunk a, coord::chunk b) {
+		//TODO: yeah, optimize that..
+		return ((a.ne < b.ne) && (a.se < b.se));
+	}
+};
+
+
 /**
 terrain chunk class represents one chunk of the the drawn terrain.
 */
@@ -34,7 +43,7 @@ public:
 	void draw();
 
 private:
-	std::map<coord::chunk, TerrainChunk *> chunks;
+	std::map<coord::chunk, TerrainChunk *, coord_chunk_compare> chunks;
 };
 
 } //namespace engine

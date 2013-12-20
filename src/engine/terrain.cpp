@@ -17,7 +17,8 @@ coord::camgame_delta tile_halfsize = {48, 24};
 
 
 Terrain::Terrain() {
-	this->chunks = std::map<coord::chunk, TerrainChunk *>{};
+	this->chunks = std::map<coord::chunk, TerrainChunk *, coord_chunk_compare>{};
+	this->blending_enabled = true;
 }
 
 Terrain::~Terrain() {}
@@ -30,6 +31,7 @@ void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position) {
 void Terrain::draw() {
 	for (auto &chunk : this->chunks) {
 		//TODO: respect chunk position
+		coord::chunk pos = chunk.first;
 		chunk.second->draw();
 	}
 }
