@@ -41,8 +41,8 @@ bool TerrainObject::bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos) {
 	this->pos = pos;
 
 	coord::tile temp_pos = pos;
-	for(int i = 0; i < this->size.se_length; i++) {
-		for(int j = 0; i < this->size.ne_length; j++) {
+	for(unsigned i = 0; i < this->size.se_length; i++) {
+		for(unsigned j = 0; i < this->size.ne_length; j++) {
 			main_chunk->object[main_chunk->tile_position(temp_pos)] = this;
 			temp_pos.ne++;
 		}

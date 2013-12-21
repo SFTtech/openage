@@ -17,6 +17,8 @@ half the size of one terrain tile, in camgame
 */
 extern coord::camgame_delta tile_halfsize;
 
+//fuck u, dont know, why i need u
+class TerrainObject;
 
 /**
 describes one terrrain type, like water, ice, etc.
@@ -77,11 +79,12 @@ public:
 
 	int get_blending_mode(size_t base_id, size_t neighbor_id);
 
+	std::vector<TerrainObject *> object_list;
+	TerrainObject **object;
+
 private:
 	size_t size;
 	int *tiles;
-	TerrainObject **object;
-	std::vector<TerrainObject *> object_list;
 	size_t tile_count;
 	size_t num_rows;
 
