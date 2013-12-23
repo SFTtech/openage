@@ -57,3 +57,5 @@ target_link_libraries(${PROJECT_NAME}
 	ftgl
 	fontconfig
 )
+
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)

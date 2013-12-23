@@ -25,6 +25,9 @@ bin/Makefile:
 openage: bin/Makefile bin
 	@make -C bin/
 
+install: bin/Makefile bin
+	@make -C bin/ install
+
 
 media:
 	python3 convert -v -o . $(AGE2DIR) $(needed_media)
@@ -64,4 +67,4 @@ help: bin/Makefile
 	@echo "CMake help, for make -C bin/ ...:"
 	@make -C bin/ help
 
-.PHONY: all openage doc clean mrproper media medialist help
+.PHONY: all openage doc clean mrproper media medialist help install
