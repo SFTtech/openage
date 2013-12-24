@@ -12,43 +12,8 @@
 namespace engine {
 
 class Terrain;
-
-/**
-half the size of one terrain tile, in camgame
-*/
-extern coord::camgame_delta tile_halfsize;
-
-
-/**
-describes one terrrain type, like water, ice, etc.
-*/
-struct terrain_type {
-	unsigned int id;
-	int terrain_id;
-	int slp_id;
-	int sound_id;
-	int blend_mode;
-	int blend_priority;
-	int angle_count;
-	int frame_count;
-	int terrain_dimensions0;
-	int terrain_dimensions1;
-	int terrain_replacement_id;
-
-	int fill(const char *by_line);
-};
-
-/**
-describes one blending mode, a blending transition shape between two different terrain types.
-*/
-struct blending_mode {
-	unsigned int id;
-	int mode_id;
-
-	int fill(const char *by_line);
-};
-
-
+struct terrain_type;
+struct blending_mode;
 
 /**
 terrain chunk class represents one chunk of the the drawn terrain.
