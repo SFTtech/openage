@@ -14,7 +14,11 @@
 namespace engine {
 
 
-TerrainChunk::TerrainChunk(unsigned int size, size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta) {
+TerrainChunk::TerrainChunk(unsigned int size,
+                           size_t terrain_meta_count,
+                           terrain_type *terrain_meta,
+                           size_t blending_meta_count,
+                           blending_mode *blending_meta) {
 	this->size       = size;
 	this->num_rows   = 2*size - 1;
 	this->tile_count = size * size;
