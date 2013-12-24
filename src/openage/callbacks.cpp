@@ -155,7 +155,7 @@ bool draw_method() {
 
 bool hud_draw_method() {
 	//draw the currently selected editor texture tile
-	terrain_chunk_0->get_texture(editor_current_terrain)->draw(coord::window{63, 84}.to_camhud());
+	terrain->texture(editor_current_terrain)->draw(coord::window{63, 84}.to_camhud());
 
 	return true;
 }

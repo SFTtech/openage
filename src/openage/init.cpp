@@ -52,8 +52,8 @@ void init() {
 	blending_mode *blending_modes;
 	size_t bmode_count = util::read_csv_file<blending_mode>(&blending_modes, "age/processed/blending_meta.docx");
 
-	terrain = new Terrain();
-	terrain_chunk_0 = new TerrainChunk(16, ttype_count, terrain_types, bmode_count, blending_modes);
+	terrain = new Terrain(ttype_count, terrain_types, bmode_count, blending_modes);
+	terrain_chunk_0 = new TerrainChunk(16);
 	terrain->attach_chunk(terrain_chunk_0, {0, 0});
 
 	delete[] terrain_types;

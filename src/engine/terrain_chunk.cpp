@@ -4,7 +4,6 @@
 #include "texture.h"
 #include "log.h"
 #include "util/error.h"
-#include "util/strings.h"
 #include "util/misc.h"
 #include "coord/tile.h"
 #include "coord/tile3.h"
@@ -14,70 +13,28 @@
 namespace engine {
 
 
-TerrainChunk::TerrainChunk(unsigned int size,
-                           size_t terrain_meta_count,
-                           terrain_type *terrain_meta,
-                           size_t blending_meta_count,
-                           blending_mode *blending_meta) {
+TerrainChunk::TerrainChunk(unsigned int size) {
 	this->size       = size;
 	this->num_rows   = 2*size - 1;
 	this->tile_count = size * size;
 
 	//the ids of terraintype pieces on the terrain
+	//each element describes what terrain is at this position.
 	this->tiles = new int[this->tile_count];
-
-	this->terrain_type_count = terrain_meta_count;
-	this->blendmode_count    = blending_meta_count;
-	this->textures       = new engine::Texture*[this->terrain_type_count];
-	this->blending_masks = new engine::Texture*[this->blendmode_count];
-	this->terrain_id_priority_map = new int[terrain_type_count];
-	this->terrain_id_blendmode_map = new int[terrain_type_count];
-
-	log::dbg("terrain prefs: %lu tiletypes, %lu blendmodes", this->terrain_type_count, this->blendmode_count);
-
-	for (size_t i = 0; i < this->terrain_type_count; i++) {
-		auto line = &terrain_meta[i];
-		this->terrain_id_priority_map[i] = line->blend_priority;
-		this->terrain_id_blendmode_map[i] = line->blend_mode;
-
-		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", line->slp_id);
-		auto new_texture = new Texture(terraintex_filename, true, ALPHAMASKED);
-		new_texture->fix_hotspots(48, 24);
-		this->textures[i] = new_texture;
-		delete[] terraintex_filename;
-	}
-
-	for (size_t i = 0; i < this->blendmode_count; i++) {
-		auto line = &blending_meta[i];
-
-		char *mask_filename = util::format("age/alphamask/mode%02d.png", line->mode_id);
-		auto new_texture = new Texture(mask_filename, true);
-		new_texture->fix_hotspots(48, 24);
-		this->blending_masks[i] = new_texture;
-		delete[] mask_filename;
-	}
-
 
 	//set all tiles on the terrain id to 0 by default.
 	for (unsigned int i = 0; i < this->tile_count; i++) {
 		this->tiles[i] = 0;
 	}
 
-	log::dbg("created terrain: %lu size, %lu rows, %lu tiles", this->size, this->num_rows, this->tile_count);
+	log::dbg("created terrain chunk: %lu size, %lu rows, %lu tiles",
+	         this->size,
+	         this->num_rows,
+	         this->tile_count);
 }
 
 TerrainChunk::~TerrainChunk() {
-	for (size_t i = 0; i < this->terrain_type_count; i++) {
-		delete this->textures[i];
-	}
-	for (size_t i = 0; i < this->blendmode_count; i++) {
-		delete this->blending_masks[i];
-	}
-
-	delete[] this->blending_masks;
 	delete[] this->tiles;
-	delete[] this->textures;
-	delete[] this->terrain_id_priority_map;
 }
 
 coord::tile_delta const neigh_offsets[] = {
@@ -100,13 +57,13 @@ void TerrainChunk::draw() {
 		for (tilepos.se = 0; tilepos.se < (int) this->size; tilepos.se++) {
 			size_t terrain_id = this->get_tile(tilepos);
 
-			if (terrain_id >= this->terrain_type_count) {
+			if (terrain_id >= this->terrain->terrain_type_count) {
 				throw Error("unknown terrain id=%lu requested for drawing", terrain_id);
 			}
-			int base_priority = this->terrain_id_priority_map[terrain_id];
+			int base_priority = this->terrain->priority(terrain_id);
 
-			auto base_texture = this->textures[terrain_id];
-			int sub_id = this->get_subtexture_id(tilepos, base_texture->atlas_dimensions);
+			auto base_texture = this->terrain->texture(terrain_id);
+			int sub_id = this->terrain->get_subtexture_id(tilepos, base_texture->atlas_dimensions);
 
 			//draw the base texture
 			base_texture->draw(tilepos.to_tile3().to_phys3().to_camgame(), false, sub_id);
@@ -128,8 +85,8 @@ void TerrainChunk::draw() {
 			int influence_tids[8];
 			int num_influences = 0;
 
-			auto influences = new struct influence_meta[this->terrain_type_count];
-			for (unsigned int k = 0; k < this->terrain_type_count; k++) {
+			auto influences = new struct influence_meta[this->terrain->terrain_type_count];
+			for (unsigned int k = 0; k < this->terrain->terrain_type_count; k++) {
 				influences[k].direction = 0;
 				influences[k].priority = -1;
 			}
@@ -163,7 +120,7 @@ void TerrainChunk::draw() {
 				}
 
 				size_t neighbor_terrain_id = this->get_tile(neigh_pos);
-				int neighbor_priority = this->terrain_id_priority_map[neighbor_terrain_id];
+				int neighbor_priority = this->terrain->priority(neighbor_terrain_id);
 
 				//neighbor only interesting if it's a different terrain than @
 				//if it is the same priority, the neigh priority is not higher.
@@ -307,7 +264,8 @@ void TerrainChunk::draw() {
 				}
 
 				//get the blending mode (the mask selection) for this transition
-				int blend_mode = this->get_blending_mode(terrain_id, neighbor_terrain_id);
+				//the mode is dependent on the two meeting terrain types
+				int blend_mode = this->terrain->get_blending_mode(terrain_id, neighbor_terrain_id);
 
 				if (adjacent_mask_id < 0) {
 					if (respect_adjacent_influence && !respect_diagonal_influence && binfdiagonal == 0) {
@@ -343,10 +301,12 @@ void TerrainChunk::draw() {
 			for (int k = 0; k < mask_count; k++) {
 				//mask, to be applied on neighbor_terrain_id tile
 				auto draw_mask = &draw_masks[k];
-				auto overlay_texture = this->textures[draw_mask->terrain_id];
-				int neighbor_sub_id = this->get_subtexture_id(tilepos, overlay_texture->atlas_dimensions);
+				auto overlay_texture = this->terrain->texture(draw_mask->terrain_id);
+				int neighbor_sub_id = this->terrain->get_subtexture_id(tilepos, overlay_texture->atlas_dimensions);
 
-				overlay_texture->activate_alphamask(this->blending_masks[draw_mask->blend_mode], draw_mask->mask_id);
+				//the texture used for masking
+				auto mask_tex = this->terrain->blending_mask(draw_mask->blend_mode);
+				overlay_texture->activate_alphamask(mask_tex, draw_mask->mask_id);
 				overlay_texture->draw(tilepos.to_tile3().to_phys3().to_camgame(), false, neighbor_sub_id);
 				overlay_texture->disable_alphamask();
 			}
@@ -354,22 +314,6 @@ void TerrainChunk::draw() {
 	}
 }
 
-
-/**
-returns the terrain subtexture id for a given position.
-
-this function returns always the right value, so that neighbor tiles
-of the same terrain (like grass-grass) are matching (without blendomatic).
-*/
-unsigned TerrainChunk::get_subtexture_id(coord::tile pos, unsigned atlas_size) {
-	unsigned result = 0;
-
-	result += util::mod<coord::tile_t>(pos.se, atlas_size);
-	result *= atlas_size;
-	result += util::mod<coord::tile_t>(pos.ne, atlas_size);
-
-	return result;
-}
 
 void TerrainChunk::set_tile(coord::tile pos, int tile) {
 	tiles[tile_position(pos)] = tile;
@@ -447,14 +391,6 @@ size_t TerrainChunk::get_tile_count() {
 	return this->tile_count;
 }
 
-void TerrainChunk::set_texture(size_t index, engine::Texture *t) {
-	this->textures[index] = t;
-}
-
-engine::Texture *TerrainChunk::get_texture(size_t index) {
-	return this->textures[index];
-}
-
 size_t TerrainChunk::tiles_in_row(unsigned int row) {
 	unsigned int in_row; //number of tiles in the destination row
 
@@ -475,69 +411,8 @@ size_t TerrainChunk::get_size() {
 	return this->size;
 }
 
-void TerrainChunk::set_mask(unsigned int modeid, engine::Texture *m) {
-	this->blending_masks[modeid] = m;
-}
-
 void TerrainChunk::set_terrain(Terrain *parent) {
 	this->terrain = parent;
-}
-
-/**
-return the blending mode id for two given neighbor ids.
-*/
-int TerrainChunk::get_blending_mode(size_t base_id, size_t neighbor_id) {
-	int base_mode     = this->terrain_id_blendmode_map[base_id];
-	int neighbor_mode = this->terrain_id_blendmode_map[neighbor_id];
-	if (neighbor_mode > base_mode) {
-		return neighbor_mode;
-	} else {
-		return base_mode;
-	}
-}
-
-
-
-/**
-parse and store a given line of a texture meta file.
-
-this is used for reading all the lines of a .docx meta file
-generated by the convert script.
-*/
-int terrain_type::fill(const char *by_line) {
-	if (sscanf(by_line, "%u=%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",
-	           &this->id,
-	           &this->terrain_id,
-	           &this->slp_id,
-	           &this->sound_id,
-	           &this->blend_mode,
-	           &this->blend_priority,
-	           &this->angle_count,
-	           &this->frame_count,
-	           &this->terrain_dimensions0,
-	           &this->terrain_dimensions1,
-	           &this->terrain_replacement_id
-	           )) {
-		return 0;
-	}
-	else {
-		return -1;
-	}
-}
-
-/**
-parse and store a blending mode description line.
-*/
-int blending_mode::fill(const char *by_line) {
-	if (sscanf(by_line, "%u=%d",
-	           &this->id,
-	           &this->mode_id
-	           )) {
-		return 0;
-	}
-	else {
-		return -1;
-	}
 }
 
 } //namespace engine
