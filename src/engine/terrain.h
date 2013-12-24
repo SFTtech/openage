@@ -47,7 +47,6 @@ struct blending_mode {
 	int fill(const char *by_line);
 };
 
-
 struct coord_chunk_compare {
 	bool operator()(coord::chunk a, coord::chunk b) {
 		//TODO: yeah, optimize that..
@@ -68,7 +67,7 @@ public:
 
 	void attach_chunk(TerrainChunk *new_chunk, coord::chunk position);
 	TerrainChunk *get_chunk(coord::chunk position);
-
+	struct chunk_neighbors get_chunk_neighbors(coord::chunk position);
 	void draw();
 
 private:

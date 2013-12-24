@@ -12,8 +12,16 @@
 namespace engine {
 
 class Terrain;
+class TerrainChunk;
 struct terrain_type;
 struct blending_mode;
+
+/**
+adjacent neighbors of a chunk.
+*/
+struct chunk_neighbors {
+	TerrainChunk *neighbor[8];
+};
 
 /**
 terrain chunk class represents one chunk of the the drawn terrain.
@@ -43,6 +51,17 @@ public:
 
 	void set_terrain(Terrain *parent);
 
+	// infinite terrain functionality
+	/* chunk neighbor ids:
+	      0
+	    7   1
+	  6   @   2
+	    5   3
+	      4
+	*/
+	chunk_neighbors neighbors;
+	Terrain *terrain;
+
 private:
 	size_t size;
 	int *tiles;
@@ -59,17 +78,6 @@ private:
 	int *terrain_id_blendmode_map;
 
 	unsigned get_subtexture_id(coord::tile pos, unsigned atlas_size);
-
-	// infinite terrain functionality
-	/* chunk neighbor ids:
-	      0
-	    7   1
-	  6   @   2
-	    5   3
-	      4
-	*/
-	TerrainChunk *neighbor[8];
-	Terrain *terrain;
 
 };
 
