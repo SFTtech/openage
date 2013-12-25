@@ -70,6 +70,12 @@ void init() {
 	terrain->attach_chunk(terrain_chunks[3], {1, 1});
 
 
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 8; j++) {
+			log::dbg("chunk %d neigh %d = %p", i, j, terrain_chunks[i]->neighbors.neighbor[j]);
+		}
+	}
+
 	//set the terrain types according to the data array.
 	coord::tile pos = {0, 0};
 	for (; pos.ne < (int) terrain_chunks[0]->get_size(); pos.ne++) {

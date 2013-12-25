@@ -21,6 +21,18 @@ struct chunk_neighbors {
 	TerrainChunk *neighbor[8];
 };
 
+constexpr coord::tile_delta const neigh_offsets[] = {
+	{ 1, -1},
+	{ 1,  0},
+	{ 1,  1},
+	{ 0,  1},
+	{-1,  1},
+	{-1,  0},
+	{-1, -1},
+	{ 0, -1}
+};
+
+
 /**
 terrain chunk class represents one chunk of the the drawn terrain.
 */
@@ -33,6 +45,7 @@ public:
 
 	void set_tile(coord::tile pos, int tile);
 	int  get_tile(coord::tile pos);
+	int  get_tile_neigh(coord::tile pos, int neighbor_id=-1);
 
 	size_t tile_position(coord::tile pos);
 	size_t get_tile_count();

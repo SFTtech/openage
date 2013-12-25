@@ -85,6 +85,9 @@ void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position) {
 		if (neighbor != nullptr) {
 			neighbor->neighbors.neighbor[(i+4) % 8] = new_chunk;
 		}
+		else {
+			log::dbg("neighbor %d not found.", i);
+		}
 	}
 }
 
@@ -149,8 +152,9 @@ returns the terrain subtexture id for a given position.
 this function returns always the right value, so that neighbor tiles
 of the same terrain (like grass-grass) are matching (without blendomatic).
 */
-unsigned Terrain::get_subtexture_id(coord::tile pos, unsigned atlas_size) {
+unsigned Terrain::get_subtexture_id(coord::tile pos, unsigned atlas_size, coord::chunk chunk_pos) {
 	unsigned result = 0;
+	pos = chunk_pos.to_tile(pos.get_pos_on_chunk());
 
 	result += util::mod<coord::tile_t>(pos.se, atlas_size);
 	result *= atlas_size;
@@ -185,6 +189,7 @@ struct chunk_neighbors Terrain::get_chunk_neighbors(coord::chunk position) {
 	struct chunk_neighbors ret;
 	coord::chunk tmp_pos;
 
+	//TODO: use chunk_delta
 	constexpr int neighbor_pos_delta[8][2] = {
 		{  1, -1},
 		{  1,  0},

@@ -70,7 +70,7 @@ public:
 	struct chunk_neighbors get_chunk_neighbors(coord::chunk position);
 	void draw();
 
-	unsigned get_subtexture_id(coord::tile pos, unsigned atlas_size);
+	unsigned get_subtexture_id(coord::tile pos, unsigned atlas_size, coord::chunk chunk_pos={0,0});
 
 	bool valid_terrain(size_t terrain_id);
 	bool valid_mask(size_t mask_id);

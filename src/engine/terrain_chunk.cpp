@@ -27,6 +27,11 @@ TerrainChunk::TerrainChunk(unsigned int size) {
 		this->tiles[i] = 0;
 	}
 
+	//initialize all neighbors as nonexistant
+	for (int i = 0; i < 8; i++) {
+		this->neighbors.neighbor[i] = nullptr;
+	}
+
 	log::dbg("created terrain chunk: %lu size, %lu rows, %lu tiles",
 	         this->size,
 	         this->num_rows,
@@ -37,33 +42,32 @@ TerrainChunk::~TerrainChunk() {
 	delete[] this->tiles;
 }
 
-coord::tile_delta const neigh_offsets[] = {
-	{ 1, -1},
-	{ 1,  0},
-	{ 1,  1},
-	{ 0,  1},
-	{-1,  1},
-	{-1,  0},
-	{-1, -1},
-	{ 0, -1}
-};
-
 void TerrainChunk::draw(coord::chunk chunk_pos) {
 	const bool respect_diagonal_influence = true;
 	const bool respect_adjacent_influence = true;
 
+	//storage for influences by neighbor tile
+	struct influence_meta {
+		int direction;
+		int priority;
+		int terrain_id;
+	};
+	auto influences = new struct influence_meta[this->terrain->terrain_type_count];
+
 	coord::tile tilepos = {0, 0};
-	for (; tilepos.ne < (int) this->size; tilepos.ne++) {
-		for (tilepos.se = 0; tilepos.se < (int) this->size; tilepos.se++) {
-			size_t terrain_id = this->get_tile(tilepos);
+	for (; tilepos.ne < (ssize_t) this->size; tilepos.ne++) {
+		for (tilepos.se = 0; tilepos.se < (ssize_t) this->size; tilepos.se++) {
+			ssize_t terrain_id = this->get_tile(tilepos);
 
-			if (terrain_id >= this->terrain->terrain_type_count) {
+			if (terrain_id >= (ssize_t)this->terrain->terrain_type_count) {
 				throw Error("unknown terrain id=%lu requested for drawing", terrain_id);
+			} else if (terrain_id < 0) {
+				throw Error("terrain id is negative");
 			}
-			int base_priority = this->terrain->priority(terrain_id);
 
+			int base_priority = this->terrain->priority(terrain_id);
 			auto base_texture = this->terrain->texture(terrain_id);
-			int sub_id = this->terrain->get_subtexture_id(tilepos, base_texture->atlas_dimensions);
+			int sub_id = this->terrain->get_subtexture_id(tilepos, base_texture->atlas_dimensions, chunk_pos);
 
 			//position, where the tile is drawn
 			coord::tile tile_chunk_pos = chunk_pos.to_tile(tilepos.get_pos_on_chunk());
@@ -78,17 +82,9 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 			//blendomatic!!111
 			// see doc/media/blendomatic for the idea behind this.
 
-			//storage for influences by neighbor tile
-			struct influence_meta {
-				int direction;
-				int priority;
-				int terrain_id;
-			};
-
 			int influence_tids[8];
 			int num_influences = 0;
 
-			auto influences = new struct influence_meta[this->terrain->terrain_type_count];
 			for (unsigned int k = 0; k < this->terrain->terrain_type_count; k++) {
 				influences[k].direction = 0;
 				influences[k].priority = -1;
@@ -116,13 +112,12 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 
 				//calculate the pos of the neighbor tile
 				coord::tile neigh_pos = tilepos + neigh_offsets[neigh_id];
-
-				if (neigh_pos.ne < 0 || neigh_pos.ne >= (int)this->size || neigh_pos.se < 0 || neigh_pos.se >= (int)this->size) {
-					//this neighbor is on the neighbor chunk or not existing, skip it for now.
+				ssize_t neighbor_terrain_id = this->get_tile_neigh(neigh_pos, neigh_id);
+				if (neighbor_terrain_id < 0) {
 					continue;
 				}
 
-				size_t neighbor_terrain_id = this->get_tile(neigh_pos);
+				//get the neighbor's blending priority
 				int neighbor_priority = this->terrain->priority(neighbor_terrain_id);
 
 				//neighbor only interesting if it's a different terrain than @
@@ -150,7 +145,6 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 
 			//no blending necessary for this tile, it has no external influences.
 			if (num_influences <= 0) {
-				delete[] influences;
 				continue;
 			}
 
@@ -161,7 +155,6 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 			for (int k = 0; k < num_influences; k++) {
 				draw_influences[k] = influences[ influence_tids[k] ];
 			}
-			delete[] influences;
 
 			//order the influences by their priority
 			for (int k = 0; k < num_influences; k++) {
@@ -305,7 +298,9 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 				//mask, to be applied on neighbor_terrain_id tile
 				auto draw_mask = &draw_masks[k];
 				auto overlay_texture = this->terrain->texture(draw_mask->terrain_id);
-				int neighbor_sub_id = this->terrain->get_subtexture_id(tilepos, overlay_texture->atlas_dimensions);
+
+				//TODO: get the neighbor's correct subtexture id on other chunk
+				int neighbor_sub_id = this->terrain->get_subtexture_id(tilepos, overlay_texture->atlas_dimensions, chunk_pos);
 
 				//the texture used for masking
 				auto mask_tex = this->terrain->blending_mask(draw_mask->blend_mode);
@@ -315,15 +310,60 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 			}
 		}
 	}
+	delete[] influences;
 }
 
 
 void TerrainChunk::set_tile(coord::tile pos, int tile) {
-	tiles[tile_position(pos)] = tile;
+	tiles[this->tile_position(pos)] = tile;
 }
 
+/**
+get the terrain id of a given tile position on this chunk.
+
+segfaults if pos is not on this chunk, beware.
+use get_tile_neigh instead if query is not chunksafe.
+@see get_tile_neigh()
+*/
 int TerrainChunk::get_tile(coord::tile pos) {
-	return tiles[tile_position(pos)];
+	return tiles[this->tile_position(pos)];
+}
+
+/**
+get the terrain id of a given tile position relative to this chunk.
+
+also queries neighbors if the position is not on this chunk.
+*/
+int TerrainChunk::get_tile_neigh(coord::tile pos, int neighbor_id) {
+	if (pos.ne < 0 || pos.ne >= (ssize_t)this->size || pos.se < 0 || pos.se >= (ssize_t)this->size) {
+		//this neighbor is on the neighbor chunk or not existing.
+		TerrainChunk *neigh_chunk;
+
+		//the neighbor id was passed to the function:
+		if (neighbor_id >= 0) {
+			neigh_chunk = this->neighbors.neighbor[neighbor_id];
+		}
+		//we have to find the neighbor id ourself.
+		else {
+			throw Error("get_tile_neigh: TODO implement finding chunk ptr");
+			neigh_chunk = nullptr;
+		}
+
+		//this neighbor does not exist
+		if (neigh_chunk == nullptr) {
+			//log::dbg("neighbor chunk not found");
+			return -1;
+		}
+
+		//get position of tile on neighbor
+		coord::tile pos_on_neighbor;
+		pos_on_neighbor.ne = util::mod<coord::tile_t>(pos.ne, this->size);
+		pos_on_neighbor.se = util::mod<coord::tile_t>(pos.se, this->size);
+		return neigh_chunk->get_tile(pos_on_neighbor);
+	}
+	else {
+		return this->get_tile(pos);
+	}
 }
 
 /**
