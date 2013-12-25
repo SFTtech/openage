@@ -65,8 +65,8 @@ void init() {
 	terrain_chunks[2] = new TerrainChunk(16);
 	terrain_chunks[3] = new TerrainChunk(16);
 	terrain->attach_chunk(terrain_chunks[0], {0, 0});
-	terrain->attach_chunk(terrain_chunks[1], {0, 1});
-	terrain->attach_chunk(terrain_chunks[2], {1, 0});
+	terrain->attach_chunk(terrain_chunks[1], {1, 0});
+	terrain->attach_chunk(terrain_chunks[2], {0, 1});
 	terrain->attach_chunk(terrain_chunks[3], {1, 1});
 
 

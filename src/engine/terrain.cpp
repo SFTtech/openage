@@ -77,13 +77,21 @@ Terrain::~Terrain() {
 
 void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position) {
 	new_chunk->set_terrain(this);
+	log::dbg("inserting new chunk at (%d, %d)", position.ne, position.se);
 	this->chunks[position] = new_chunk;
 
 	struct chunk_neighbors neigh = this->get_chunk_neighbors(position);
 	for (int i = 0; i < 8; i++) {
 		TerrainChunk *neighbor = neigh.neighbor[i];
 		if (neighbor != nullptr) {
+			//set the new chunks neighbor to the neighbor chunk
+			new_chunk->neighbors.neighbor[i] = neighbor;
+
+			//set the neighbors neighbor on the opposite direction
+			//to the new chunk
 			neighbor->neighbors.neighbor[(i+4) % 8] = new_chunk;
+
+			log::dbg("neighbor %d gets notified of new neighbor.", i);
 		}
 		else {
 			log::dbg("neighbor %d not found.", i);
