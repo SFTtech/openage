@@ -52,20 +52,30 @@ void init() {
 	blending_mode *blending_modes;
 	size_t bmode_count = util::read_csv_file<blending_mode>(&blending_modes, "age/processed/blending_meta.docx");
 
+	//create the terrain which will be filled by chunks
 	terrain = new Terrain(ttype_count, terrain_types, bmode_count, blending_modes);
-	terrain_chunk_0 = new TerrainChunk(16);
-	terrain->attach_chunk(terrain_chunk_0, {0, 0});
 
 	delete[] terrain_types;
 	delete[] blending_modes;
 
+	//create storage for 4 chunks
+	terrain_chunks = new TerrainChunk*[4];
+	terrain_chunks[0] = new TerrainChunk(16);
+	terrain_chunks[1] = new TerrainChunk(16);
+	terrain_chunks[2] = new TerrainChunk(16);
+	terrain_chunks[3] = new TerrainChunk(16);
+	terrain->attach_chunk(terrain_chunks[0], {0, 0});
+	terrain->attach_chunk(terrain_chunks[1], {0, 1});
+	terrain->attach_chunk(terrain_chunks[2], {1, 0});
+	terrain->attach_chunk(terrain_chunks[3], {1, 1});
+
 
 	//set the terrain types according to the data array.
 	coord::tile pos = {0, 0};
-	for (; pos.ne < (int) terrain_chunk_0->get_size(); pos.ne++) {
-		for (pos.se = 0; pos.se < (int) terrain_chunk_0->get_size(); pos.se++) {
+	for (; pos.ne < (int) terrain_chunks[0]->get_size(); pos.ne++) {
+		for (pos.se = 0; pos.se < (int) terrain_chunks[0]->get_size(); pos.se++) {
 			int texid = terrain_data[pos.ne][pos.se];
-			terrain_chunk_0->set_tile(pos, texid);
+			terrain_chunks[0]->set_tile(pos, texid);
 		}
 	}
 
@@ -199,7 +209,12 @@ void destroy() {
 	delete gaben;
 
 	delete terrain;
-	delete terrain_chunk_0;
+
+	for (int i = 0; i < 4; i++) {
+		delete terrain_chunks[i];
+	}
+	delete[] terrain_chunks;
+
 	delete university;
 	delete texture_shader::program;
 	delete teamcolor_shader::program;

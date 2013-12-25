@@ -100,9 +100,8 @@ TerrainChunk *Terrain::get_chunk(coord::chunk position) {
 
 void Terrain::draw() {
 	for (auto &chunk : this->chunks) {
-		//TODO: respect chunk position
-		//coord::chunk pos = chunk.first;
-		chunk.second->draw();
+		coord::chunk pos = chunk.first;
+		chunk.second->draw(pos);
 	}
 }
 

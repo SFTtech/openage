@@ -39,14 +39,20 @@ bool input_handler(SDL_Event *e) {
 		coord::tile mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
 		if (e->button.button == SDL_BUTTON_LEFT) {
-			log::dbg("LMB [window]:    x %9hd y %9hd", mousepos_window.x, mousepos_window.y);
-			log::dbg("LMB [camgame]:   x %9hd y %9hd", mousepos_camgame.x, mousepos_camgame.y);
+			log::dbg("LMB [window]:    x %9hd y %9hd",
+			         mousepos_window.x,
+			         mousepos_window.y);
+			log::dbg("LMB [camgame]:   x %9hd y %9hd",
+			         mousepos_camgame.x,
+			         mousepos_camgame.y);
 			log::dbg("LMB [phys3]:     NE %8.3f SE %8.3f UP %8.3f",
-				((float) mousepos_phys3.ne) / phys_per_tile,
-				((float) mousepos_phys3.se) / phys_per_tile,
-				((float) mousepos_phys3.up) / phys_per_tile);
-			log::dbg("LMB [tile]:      NE %8ld SE %8ld", mousepos_tile.ne, mousepos_tile.se);
-			terrain_chunk_0->set_tile(mousepos_tile, editor_current_terrain);
+			         ((float) mousepos_phys3.ne) / phys_per_tile,
+			         ((float) mousepos_phys3.se) / phys_per_tile,
+			         ((float) mousepos_phys3.up) / phys_per_tile);
+			log::dbg("LMB [tile]:      NE %8ld SE %8ld",
+			         mousepos_tile.ne,
+			         mousepos_tile.se);
+			terrain_chunks[0]->set_tile(mousepos_tile, editor_current_terrain);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
 			//check whether an building already exists at this pos

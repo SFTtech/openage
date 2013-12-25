@@ -50,8 +50,7 @@ struct blending_mode {
 
 struct coord_chunk_compare {
 	bool operator()(coord::chunk a, coord::chunk b) {
-		//TODO: yeah, optimize that..
-		return ((a.ne < b.ne) && (a.se < b.se));
+		return a.ne > b.ne || (a.ne == b.ne && a.se > b.se);
 	}
 };
 

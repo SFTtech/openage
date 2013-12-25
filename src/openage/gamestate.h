@@ -15,8 +15,7 @@ extern terrain_t editor_current_terrain;
 
 extern engine::Terrain *terrain;
 
-//TODO: temporary...
-extern engine::TerrainChunk *terrain_chunk_0;
+extern engine::TerrainChunk **terrain_chunks;
 
 
 //TODO this is here temporarily (obviously...)

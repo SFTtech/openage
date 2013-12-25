@@ -9,7 +9,7 @@ std::vector<building> buildings;
 terrain_t editor_current_terrain = 0;
 
 Terrain *terrain;
-TerrainChunk *terrain_chunk_0;
+TerrainChunk **terrain_chunks;
 
 Texture *gaben, *university;
 

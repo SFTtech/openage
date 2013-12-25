@@ -13,8 +13,6 @@ namespace engine {
 
 class Terrain;
 class TerrainChunk;
-struct terrain_type;
-struct blending_mode;
 
 /**
 adjacent neighbors of a chunk.
@@ -31,7 +29,7 @@ public:
 	TerrainChunk(unsigned int size);
 	~TerrainChunk();
 
-	void draw();
+	void draw(coord::chunk chunk_pos);
 
 	void set_tile(coord::tile pos, int tile);
 	int  get_tile(coord::tile pos);

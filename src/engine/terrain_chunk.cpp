@@ -48,7 +48,7 @@ coord::tile_delta const neigh_offsets[] = {
 	{ 0, -1}
 };
 
-void TerrainChunk::draw() {
+void TerrainChunk::draw(coord::chunk chunk_pos) {
 	const bool respect_diagonal_influence = true;
 	const bool respect_adjacent_influence = true;
 
@@ -65,8 +65,11 @@ void TerrainChunk::draw() {
 			auto base_texture = this->terrain->texture(terrain_id);
 			int sub_id = this->terrain->get_subtexture_id(tilepos, base_texture->atlas_dimensions);
 
+			//position, where the tile is drawn
+			coord::tile tile_chunk_pos = chunk_pos.to_tile(tilepos.get_pos_on_chunk());
+			coord::camgame draw_pos = tile_chunk_pos.to_tile3().to_phys3().to_camgame();
 			//draw the base texture
-			base_texture->draw(tilepos.to_tile3().to_phys3().to_camgame(), false, sub_id);
+			base_texture->draw(draw_pos, false, sub_id);
 
 			if (!this->terrain->blending_enabled) {
 				continue;
@@ -307,7 +310,7 @@ void TerrainChunk::draw() {
 				//the texture used for masking
 				auto mask_tex = this->terrain->blending_mask(draw_mask->blend_mode);
 				overlay_texture->activate_alphamask(mask_tex, draw_mask->mask_id);
-				overlay_texture->draw(tilepos.to_tile3().to_phys3().to_camgame(), false, neighbor_sub_id);
+				overlay_texture->draw(draw_pos, false, neighbor_sub_id);
 				overlay_texture->disable_alphamask();
 			}
 		}
