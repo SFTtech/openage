@@ -354,42 +354,6 @@ size_t TerrainChunk::tile_position(coord::tile pos) {
 	return pos.se * this->size + pos.ne;
 }
 
-/**
-calculates the memory position of a given diagonal tile location.
-
-this does not respect the isometric coordinates, it's for drawn rows.
-
-@OBSOLETE FOR NOW
-*/
-size_t TerrainChunk::tile_position_diag(unsigned int row, unsigned int offset) {
-	int so_far; //number of tiles in memory before the row
-	unsigned int in_row; //number of tiles in the destination row
-
-	if (row > this->num_rows - 1) {
-		throw Error("Requested row %u, but there are only %lu rows in terrain.", row, this->num_rows);
-	}
-
-	//calculation if selected tile is in the upper half
-	if (row <= this->num_rows/2) {
-		so_far = (row*row + row)/2;
-		in_row = row + 1;
-	}
-	//else the selected tile is in the lower half
-	else {
-		int brow = (this->num_rows - 1) - row + 1;
-		so_far = this->size*this->size - ((brow*brow + brow)/2);
-		in_row = brow;
-	}
-
-	if (offset > in_row-1) {
-		throw Error("Requested tile %d of row %d which has only %d tiles", offset, row, in_row);
-	}
-
-	size_t position = so_far + offset;
-
-	return position;
-}
-
 size_t TerrainChunk::get_tile_count() {
 	return this->tile_count;
 }

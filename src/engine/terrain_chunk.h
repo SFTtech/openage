@@ -34,7 +34,6 @@ public:
 	void set_tile(coord::tile pos, int tile);
 	int  get_tile(coord::tile pos);
 
-	size_t tile_position_diag(unsigned int row, unsigned int offset);
 	size_t tile_position(coord::tile pos);
 	size_t get_tile_count();
 
