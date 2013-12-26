@@ -26,8 +26,9 @@ TerrainChunk::TerrainChunk(unsigned int size, size_t terrain_meta_count, terrain
 	//the ids of terraintype pieces on the terrain
 	this->tiles = new int[this->tile_count];
 
-	//list of objects to be drawn
+	//list of objects to be drawn (used for builing-obstruction-management)
 	this->object = new TerrainObject*[this->tile_count];
+	for(unsigned i = 0; i < this->tile_count; i++) this->object[i] = nullptr;
 
 	this->terrain_type_count = terrain_meta_count;
 	this->blendmode_count    = blending_meta_count;

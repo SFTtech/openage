@@ -63,7 +63,8 @@ bool input_handler(SDL_Event *e) {
 
 			if(!found) {
 				TerrainObject *newuni = new TerrainObject(university, 1);
-				newuni->bind_on_chunk(terrain, mousepos_tile);
+				if(!newuni->bind_on_chunk(terrain, mousepos_tile))
+					delete newuni;
 				//building newbuilding;
 				//newbuilding.player = 1 + (buildings.size() % 8);
 				//newbuilding.pos = mousepos_tile;
