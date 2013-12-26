@@ -30,6 +30,13 @@ chunk tile::to_chunk() {
 	return result;
 }
 
+tile tile_delta::to_tile() {
+	tile result;
+	result.ne = this->ne;
+	result.se = this->se;
+	return result;
+}
+
 tile_delta tile::get_pos_on_chunk() {
 	tile_delta result;
 	result.ne = ne - ((ne >> tiles_per_chunk_bits) << tiles_per_chunk_bits);

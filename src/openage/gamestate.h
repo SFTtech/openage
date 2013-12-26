@@ -5,7 +5,7 @@
 
 #include "objects/building.h"
 #include "objects/terrain.h"
-#include "../engine/terrain_chunk.h"
+#include "../engine/terrain.h"
 
 namespace openage {
 
@@ -13,7 +13,7 @@ extern std::vector<building> buildings;
 
 extern terrain_t editor_current_terrain;
 
-extern engine::TerrainChunk *terrain;
+extern engine::Terrain *terrain;
 
 //TODO this is here temporarily (obviously...)
 extern engine::Texture *gaben, *university;

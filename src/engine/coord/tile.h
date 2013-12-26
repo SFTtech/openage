@@ -30,6 +30,7 @@ struct tile_delta {
 	#include "ops/rel.h"
 
 	tile3_delta to_tile3(tile_t up = 0);
+	tile to_tile();
 };
 
 #include "ops/free.h"

@@ -17,6 +17,7 @@ add_executable(${PROJECT_NAME}
 	engine/callbacks.cpp
 	engine/init.cpp
 	engine/font.cpp
+	engine/terrain.cpp
 	engine/terrain_chunk.cpp
 	engine/texture.cpp
 	engine/input.cpp
