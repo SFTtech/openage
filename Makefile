@@ -38,6 +38,9 @@ run: openage
 runmem: openage
 	@cd data && valgrind --leak-check=full --track-origins=yes -v ../bin/openage
 
+gdb: openage
+	@cd data && gdb ../bin/openage
+
 doc:
 	@make -C bin/ doc
 
