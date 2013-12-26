@@ -12,10 +12,11 @@
 
 namespace engine {
 
-TerrainObject::TerrainObject(unsigned player) {
+
+TerrainObject::TerrainObject(Texture *tex, unsigned player) {
 	//university specific for testing purposes
-	//TODO probaly use extern Texture for less memory
-	this->texture = new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
+	//TODO probably use extern Texture for less memory
+	this->texture = tex;
 	this->size = { 4, 4 };
 	this->player = player;
 
@@ -23,6 +24,9 @@ TerrainObject::TerrainObject(unsigned player) {
 
 	log::dbg("created terrain_object");
 }
+
+TerrainObject::TerrainObject(unsigned player): TerrainObject(new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED), player) {}
+
 
 TerrainObject::~TerrainObject() {
 }
@@ -40,17 +44,19 @@ bool TerrainObject::bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos) {
 	this->occupied_chunk[0] = main_chunk;
 	this->pos = pos;
 
-	coord::tile temp_pos = pos;
+	log::dbg("trying to add pointers for object-pointers");
+	/*coord::tile temp_pos = pos;
 	for(unsigned i = 0; i < this->size.se_length; i++) {
 		for(unsigned j = 0; i < this->size.ne_length; j++) {
-			main_chunk->object[main_chunk->tile_position(temp_pos)] = this;
+			//main_chunk->object[main_chunk->tile_position(temp_pos)] = this;
 			temp_pos.ne++;
 		}
 		temp_pos.se++;
-	}
+	}*/
 
 	main_chunk->object_list.push_back(this);
 
+	log::dbg("bound TerrainObject to chunk");
 	return true;
 }
 

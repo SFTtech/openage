@@ -21,6 +21,7 @@ terrain chunk class represents one chunk of the the drawn terrain.
 */
 class TerrainObject {
 public:
+	TerrainObject(Texture *tex, unsigned player);
 	TerrainObject(unsigned player);
 	~TerrainObject();
 	bool bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos);

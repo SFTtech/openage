@@ -15,6 +15,7 @@
 #include "../engine/util/misc.h"
 #include "../engine/input.h"
 
+
 using namespace engine;
 
 namespace openage {
@@ -61,11 +62,13 @@ bool input_handler(SDL_Event *e) {
 			}
 
 			if(!found) {
-				building newbuilding;
-				newbuilding.player = 1 + (buildings.size() % 8);
-				newbuilding.pos = mousepos_tile;
-				newbuilding.tex = university;
-				buildings.push_back(newbuilding);
+				TerrainObject *newuni = new TerrainObject(university, 1);
+				newuni->bind_on_chunk(terrain, mousepos_tile);
+				//building newbuilding;
+				//newbuilding.player = 1 + (buildings.size() % 8);
+				//newbuilding.pos = mousepos_tile;
+				//newbuilding.tex = university;
+				//buildings.push_back(newbuilding);
 			}
 		}
 
