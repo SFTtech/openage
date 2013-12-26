@@ -27,8 +27,35 @@ TerrainObject::TerrainObject(Texture *tex, unsigned player) {
 TerrainObject::TerrainObject(unsigned player): TerrainObject(new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED), player) {}
 
 
+/*
+* destructor:
+*
+* remove all terrain_chunk->object pointers
+* remove itself from the drawing list
+*/
 TerrainObject::~TerrainObject() {
-	log::dbg("terrain_object: deleted myself");
+	if(this->occupied_chunk_count == 0) {
+		log::dbg("terrain_object: deleted myself");
+		return;
+	}
+
+	//remove from drawing list
+	for(unsigned i = 0; i < this->occupied_chunk[0]->object_list.size(); i++) {
+		if(this->occupied_chunk[0]->object_list[i] == this)
+			this->occupied_chunk[0]->object_list.erase(this->occupied_chunk[0]->object_list.begin()+i);
+	}
+
+	//remove terrain_chunk->object values
+	//TODO: brute force, should be faster(?)
+	for(int i = 0; i < this->occupied_chunk_count; i++) {
+		for(unsigned pos = 0; pos < this->occupied_chunk[i]->get_tile_count(); pos++) {
+			if(this->occupied_chunk[i]->object[pos] == this) {
+				this->occupied_chunk[i]->object[pos] = nullptr;
+				break;
+			}
+		}
+	}
+	log::dbg("terrain_object: deleted myself after removing some shit");
 }
 
 /*
@@ -39,6 +66,7 @@ TerrainObject::~TerrainObject() {
 */
 bool TerrainObject::bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos) {
 	//TODO: should work with more than one chunk
+	//TODO: translate pos somehow, so that buildings get placed under not down-left of the cursor
 
 	//check it it is even possible (only buildings TODO: check terrain tiles)
 	coord::tile temp_pos = pos;

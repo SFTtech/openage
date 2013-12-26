@@ -52,24 +52,16 @@ bool input_handler(SDL_Event *e) {
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
 			//check whether an building already exists at this pos
 			bool found = false;
-
-			for(unsigned i = 0; i < buildings.size(); i++) {
-				if (buildings[i].pos == mousepos_tile) {
-					buildings.erase(buildings.begin() + i);
-					found = true;
-					break;
-				}
+			engine::TerrainObject *obj = terrain->object[terrain->tile_position(mousepos_tile)];
+			if (obj != nullptr) {
+				delete obj;
+				found = true;
 			}
 
 			if(!found) {
 				TerrainObject *newuni = new TerrainObject(university, 1);
 				if(!newuni->bind_on_chunk(terrain, mousepos_tile))
 					delete newuni;
-				//building newbuilding;
-				//newbuilding.player = 1 + (buildings.size() % 8);
-				//newbuilding.pos = mousepos_tile;
-				//newbuilding.tex = university;
-				//buildings.push_back(newbuilding);
 			}
 		}
 
