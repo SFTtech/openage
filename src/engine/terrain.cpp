@@ -80,6 +80,7 @@ Terrain::~Terrain() {
 	delete[] this->blending_masks;
 	delete[] this->textures;
 	delete[] this->terrain_id_priority_map;
+	delete[] this->terrain_id_blendmode_map;
 }
 
 
