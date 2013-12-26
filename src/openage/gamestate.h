@@ -15,9 +15,6 @@ extern terrain_t editor_current_terrain;
 
 extern engine::Terrain *terrain;
 
-extern engine::TerrainChunk *first_chunk;
-
-
 //TODO this is here temporarily (obviously...)
 extern engine::Texture *gaben, *university;
 

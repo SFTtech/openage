@@ -59,9 +59,6 @@ void init() {
 	delete[] terrain_types;
 	delete[] blending_modes;
 
-	first_chunk = new TerrainChunk();
-	terrain->attach_chunk(first_chunk, {0, 0});
-
 	//set the terrain types according to the data array.
 	coord::tile pos = {0, 0};
 	for (; pos.ne < terrain_fill_size; pos.ne++) {
@@ -201,8 +198,6 @@ void destroy() {
 	delete gaben;
 
 	delete terrain;
-
-	delete first_chunk;
 
 	delete university;
 	delete texture_shader::program;
