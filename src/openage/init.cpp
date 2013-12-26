@@ -18,6 +18,7 @@ using namespace engine;
 
 namespace openage {
 
+constexpr ssize_t terrain_fill_size = 16;
 unsigned int terrain_data[16][16] = {
 	{  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1},
 	{  0, 18, 18, 18, 18, 18,  0,  0, 16,  0,  2,  1, 15, 14, 15,  1},
@@ -58,32 +59,15 @@ void init() {
 	delete[] terrain_types;
 	delete[] blending_modes;
 
-	//create storage for 4 chunks
-	terrain_chunks = new TerrainChunk*[4];
-	terrain_chunks[0] = new TerrainChunk(16);
-	terrain_chunks[1] = new TerrainChunk(16);
-	terrain_chunks[2] = new TerrainChunk(16);
-	terrain_chunks[3] = new TerrainChunk(16);
-	terrain->attach_chunk(terrain_chunks[0], {0, 0});
-	terrain->attach_chunk(terrain_chunks[1], {1, 0});
-	terrain->attach_chunk(terrain_chunks[2], {0, 1});
-	terrain->attach_chunk(terrain_chunks[3], {1, 1});
-
-
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 8; j++) {
-			log::dbg("chunk %d %p neigh %d = %p", i, terrain_chunks[i], j, terrain_chunks[i]->neighbors.neighbor[j]);
-		}
-	}
+	first_chunk = new TerrainChunk();
+	terrain->attach_chunk(first_chunk, {0, 0});
 
 	//set the terrain types according to the data array.
 	coord::tile pos = {0, 0};
-	for (; pos.ne < (int) terrain_chunks[0]->get_size(); pos.ne++) {
-		for (pos.se = 0; pos.se < (int) terrain_chunks[0]->get_size(); pos.se++) {
+	for (; pos.ne < terrain_fill_size; pos.ne++) {
+		for (pos.se = 0; pos.se < terrain_fill_size; pos.se++) {
 			int texid = terrain_data[pos.ne][pos.se];
-			for (int i = 0; i < 4; i++) {
-				terrain_chunks[i]->set_tile(pos, texid);
-			}
+			terrain->set_tile(pos, texid);
 		}
 	}
 
@@ -218,10 +202,7 @@ void destroy() {
 
 	delete terrain;
 
-	for (int i = 0; i < 4; i++) {
-		delete terrain_chunks[i];
-	}
-	delete[] terrain_chunks;
+	delete first_chunk;
 
 	delete university;
 	delete texture_shader::program;

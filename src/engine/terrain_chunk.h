@@ -15,6 +15,11 @@ class Terrain;
 class TerrainChunk;
 
 /**
+the number of tiles per direction on a chunk
+*/
+constexpr size_t chunk_size = 16;
+
+/**
 adjacent neighbors of a chunk.
 */
 struct chunk_neighbors {
@@ -38,7 +43,7 @@ terrain chunk class represents one chunk of the the drawn terrain.
 */
 class TerrainChunk {
 public:
-	TerrainChunk(unsigned int size);
+	TerrainChunk();
 	~TerrainChunk();
 
 	void draw(coord::chunk chunk_pos);
@@ -66,6 +71,7 @@ public:
 	*/
 	chunk_neighbors neighbors;
 	Terrain *terrain;
+	bool manually_created;
 
 private:
 	size_t size;

@@ -13,10 +13,10 @@
 namespace engine {
 
 
-TerrainChunk::TerrainChunk(unsigned int size) {
-	this->size       = size;
-	this->num_rows   = 2*size - 1;
+TerrainChunk::TerrainChunk() {
+	this->size       = chunk_size;
 	this->tile_count = size * size;
+	this->manually_created = true;
 
 	//the ids of terraintype pieces on the terrain
 	//each element describes what terrain is at this position.
@@ -428,21 +428,21 @@ give this function isometric coordinates, it returns the tile index.
 
 # is a single terrain tile:
 
-         3
-       2   #
-     1   #   #
-x= 0   #   *   #
-     #   #   #   #
-y= 0   #   #   #
-     1   #   #
-       2   #
-         3
+          3
+        2   #
+      1   #   #
+ne= 0   #   *   #
+      #   #   #   #
+se= 0   #   #   #
+      1   #   #
+        2   #
+          3
 
 for example, * is at position (2, 1)
-the returned index would be 6 (count for each x row, starting at y=0)
+the returned index would be 6 (count for each ne row, starting at se=0)
 */
 size_t TerrainChunk::tile_position(coord::tile pos) {
-	if (pos.ne >= (int) this->size || pos.ne < 0 || pos.se >= (int) this->size || pos.se < 0) {
+	if (this->neighbor_id_by_pos(pos) != -1) {
 		throw Error("requested tile (%ld, %ld) that's not on this terrain.", pos.ne, pos.se);
 	}
 
@@ -451,22 +451,6 @@ size_t TerrainChunk::tile_position(coord::tile pos) {
 
 size_t TerrainChunk::get_tile_count() {
 	return this->tile_count;
-}
-
-size_t TerrainChunk::tiles_in_row(unsigned int row) {
-	unsigned int in_row; //number of tiles in the destination row
-
-	if (row > this->num_rows - 1) {
-		throw Error("Requested row %u, but there are only %lu rows in terrain.", row, this->num_rows);
-	}
-
-	if (row <= this->num_rows/2) {
-		in_row = row + 1;
-	}
-	else {
-		in_row = (this->num_rows - 1) - row + 1;
-	}
-	return in_row;
 }
 
 size_t TerrainChunk::get_size() {

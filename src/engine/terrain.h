@@ -65,9 +65,10 @@ public:
 	Terrain(size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta);
 	~Terrain();
 
-	void attach_chunk(TerrainChunk *new_chunk, coord::chunk position);
+	void attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool manual=true);
 	TerrainChunk *get_chunk(coord::chunk position);
 	TerrainChunk *get_chunk(coord::tile position);
+	TerrainChunk *get_create_chunk(coord::chunk position);
 	int get_tile(coord::tile position);
 	void set_tile(coord::tile position, int tile);
 
