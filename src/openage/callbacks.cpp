@@ -52,7 +52,7 @@ bool input_handler(SDL_Event *e) {
 			log::dbg("LMB [tile]:      NE %8ld SE %8ld",
 			         mousepos_tile.ne,
 			         mousepos_tile.se);
-			terrain_chunks[0]->set_tile(mousepos_tile, editor_current_terrain);
+			terrain->set_tile(mousepos_tile, editor_current_terrain);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
 			//check whether an building already exists at this pos

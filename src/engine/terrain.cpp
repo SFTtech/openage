@@ -109,6 +109,19 @@ TerrainChunk *Terrain::get_chunk(coord::chunk position) {
 	}
 }
 
+TerrainChunk *Terrain::get_chunk(coord::tile position) {
+	return this->get_chunk(position.to_chunk());
+}
+
+int Terrain::get_tile(coord::tile position) {
+	return this->get_chunk(position.to_chunk())->get_tile(position.get_pos_on_chunk().to_tile());
+}
+
+void Terrain::set_tile(coord::tile position, int tile) {
+	return this->get_chunk(position.to_chunk())->set_tile(position.get_pos_on_chunk().to_tile(), tile);
+}
+
+
 void Terrain::draw() {
 	for (auto &chunk : this->chunks) {
 		coord::chunk pos = chunk.first;

@@ -313,9 +313,11 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 	delete[] influences;
 }
 
-
+/**
+set the terrain id of a given tile on this chunk.
+*/
 void TerrainChunk::set_tile(coord::tile pos, int tile) {
-	tiles[this->tile_position(pos)] = tile;
+	this->tiles[this->tile_position(pos)] = tile;
 }
 
 /**
@@ -326,7 +328,7 @@ use get_tile_neigh instead if query is not chunksafe.
 @see get_tile_neigh()
 */
 int TerrainChunk::get_tile(coord::tile pos) {
-	return tiles[this->tile_position(pos)];
+	return this->tiles[this->tile_position(pos)];
 }
 
 /**

@@ -67,6 +67,10 @@ public:
 
 	void attach_chunk(TerrainChunk *new_chunk, coord::chunk position);
 	TerrainChunk *get_chunk(coord::chunk position);
+	TerrainChunk *get_chunk(coord::tile position);
+	int get_tile(coord::tile position);
+	void set_tile(coord::tile position, int tile);
+
 	struct chunk_neighbors get_chunk_neighbors(coord::chunk position);
 	void draw();
 

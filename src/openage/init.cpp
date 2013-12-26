@@ -81,7 +81,9 @@ void init() {
 	for (; pos.ne < (int) terrain_chunks[0]->get_size(); pos.ne++) {
 		for (pos.se = 0; pos.se < (int) terrain_chunks[0]->get_size(); pos.se++) {
 			int texid = terrain_data[pos.ne][pos.se];
-			terrain_chunks[0]->set_tile(pos, texid);
+			for (int i = 0; i < 4; i++) {
+				terrain_chunks[i]->set_tile(pos, texid);
+			}
 		}
 	}
 
