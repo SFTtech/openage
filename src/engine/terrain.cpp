@@ -82,6 +82,14 @@ Terrain::~Terrain() {
 	delete[] this->terrain_id_priority_map;
 }
 
+
+/**
+Attach a chunk to the terrain, to a given position.
+
+@param new_chunk The chunk to be attached
+@param position The chunk position where the chunk will be placed
+@param manually_created Was this chunk created manually? If true, it will not be free'd automatically
+*/
 void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool manually_created) {
 	new_chunk->set_terrain(this);
 	new_chunk->manually_created = manually_created;
@@ -107,6 +115,11 @@ void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool 
 	}
 }
 
+/**
+get a terrain chunk by a given chunk position.
+
+@return the chunk if exists, nullptr else
+*/
 TerrainChunk *Terrain::get_chunk(coord::chunk position) {
 	//is this chunk stored?
 	if (this->chunks.find(position) == this->chunks.end()) {
@@ -117,10 +130,20 @@ TerrainChunk *Terrain::get_chunk(coord::chunk position) {
 	}
 }
 
+/**
+get a terrain chunk by a given tile position.
+
+@return the chunk it exists, nullptr else
+*/
 TerrainChunk *Terrain::get_chunk(coord::tile position) {
 	return this->get_chunk(position.to_chunk());
 }
 
+/**
+get or create a terrain chunk for a given tile position.
+
+@return the (maybe newly created) chunk
+*/
 TerrainChunk *Terrain::get_create_chunk(coord::chunk position) {
 	TerrainChunk *res = this->get_chunk(position);
 	if (res == nullptr) {
@@ -130,17 +153,33 @@ TerrainChunk *Terrain::get_create_chunk(coord::chunk position) {
 	return res;
 }
 
+/**
+get a terrain tile id by a given position.
+
+the chunk, which this tile lies on, will be created,
+if it does not exist yet.
+*/
 int Terrain::get_tile(coord::tile position) {
 	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
 	return c->get_tile(position.get_pos_on_chunk().to_tile());
 }
 
+/**
+set a terrain tile id by a given position.
+
+if the tiles chunk does not exist yet, this chunk is created.
+*/
 void Terrain::set_tile(coord::tile position, int tile) {
 	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
 	return c->set_tile(position.get_pos_on_chunk().to_tile(), tile);
 }
 
+/**
+draws the terrain on screen.
 
+TODO: draw only visible chunks.
+TODO: position the terrain by a parameter
+*/
 void Terrain::draw() {
 	for (auto &chunk : this->chunks) {
 		coord::chunk pos = chunk.first;

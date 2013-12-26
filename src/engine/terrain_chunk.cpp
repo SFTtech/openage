@@ -32,9 +32,8 @@ TerrainChunk::TerrainChunk() {
 		this->neighbors.neighbor[i] = nullptr;
 	}
 
-	log::dbg("created terrain chunk: %lu size, %lu rows, %lu tiles",
+	log::dbg("created terrain chunk: %lu size, %lu tiles",
 	         this->size,
-	         this->num_rows,
 	         this->tile_count);
 }
 

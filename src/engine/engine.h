@@ -71,6 +71,7 @@ position of the game camera, in the phys3 system
 (the position that it is rendered at camgame {0, 0})
 */
 extern coord::phys3 camgame_phys;
+
 /**
 position of the game camera, in the window system
 (the position where the camgame {0, 0} is rendered)

@@ -77,7 +77,6 @@ private:
 	size_t size;
 	int *tiles;
 	size_t tile_count;
-	size_t num_rows;
 };
 
 } //namespace engine
