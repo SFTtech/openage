@@ -45,7 +45,8 @@ public:
 
 	void set_tile(coord::tile pos, int tile);
 	int  get_tile(coord::tile pos);
-	int  get_tile_neigh(coord::tile pos, int neighbor_id=-1);
+	int  get_tile_neigh(coord::tile pos);
+	int  neighbor_id_by_pos(coord::tile pos);
 
 	size_t tile_position(coord::tile pos);
 	size_t get_tile_count();

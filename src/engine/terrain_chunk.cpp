@@ -112,7 +112,7 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 
 				//calculate the pos of the neighbor tile
 				coord::tile neigh_pos = tilepos + neigh_offsets[neigh_id];
-				ssize_t neighbor_terrain_id = this->get_tile_neigh(neigh_pos, neigh_id);
+				ssize_t neighbor_terrain_id = this->get_tile_neigh(neigh_pos);
 				if (neighbor_terrain_id < 0) {
 					continue;
 				}
@@ -334,22 +334,17 @@ get the terrain id of a given tile position relative to this chunk.
 
 also queries neighbors if the position is not on this chunk.
 */
-int TerrainChunk::get_tile_neigh(coord::tile pos, int neighbor_id) {
-	if (pos.ne < 0 || pos.ne >= (ssize_t)this->size || pos.se < 0 || pos.se >= (ssize_t)this->size) {
-		//this neighbor is on the neighbor chunk or not existing.
-		TerrainChunk *neigh_chunk;
+int TerrainChunk::get_tile_neigh(coord::tile pos) {
+	//determine the neighbor id by the given position
+	int neighbor_id = this->neighbor_id_by_pos(pos);
 
-		//the neighbor id was passed to the function:
-		if (neighbor_id >= 0) {
-			neigh_chunk = this->neighbors.neighbor[neighbor_id];
-		}
-		//we have to find the neighbor id ourself.
-		else {
-			throw Error("get_tile_neigh: TODO implement finding chunk ptr");
-			neigh_chunk = nullptr;
-		}
+	//if the location is not on the current chunk, the neighbor id is != -1
+	if (neighbor_id != -1) {
 
-		//this neighbor does not exist
+		//get the chunk where the requested neighbor tile lies on.
+		TerrainChunk *neigh_chunk = this->neighbors.neighbor[neighbor_id];
+
+		//this neighbor does not exist, so the tile does not exist.
 		if (neigh_chunk == nullptr) {
 			//log::dbg("neighbor chunk not found");
 			return -1;
@@ -359,11 +354,69 @@ int TerrainChunk::get_tile_neigh(coord::tile pos, int neighbor_id) {
 		coord::tile pos_on_neighbor;
 		pos_on_neighbor.ne = util::mod<coord::tile_t>(pos.ne, this->size);
 		pos_on_neighbor.se = util::mod<coord::tile_t>(pos.se, this->size);
+
 		return neigh_chunk->get_tile(pos_on_neighbor);
 	}
+	//the position lies on the current chunk.
 	else {
 		return this->get_tile(pos);
 	}
+}
+
+/**
+get the chunk neighbor id by a given position not lying on this chunk.
+
+neighbor ids:
+
+   ne
+--
+/|
+      0
+    7   1
+  6   @   2
+    5   3
+      4
+\|
+--
+  se
+*/
+int TerrainChunk::neighbor_id_by_pos(coord::tile pos) {
+	int neigh_id = -1;
+
+	if (pos.ne < 0) {
+		if (pos.se < 0) {
+			neigh_id = 6;
+		}
+		else if (pos.se >= (ssize_t)this->size) {
+			neigh_id = 4;
+		}
+		else {
+			neigh_id = 5;
+		}
+	}
+	else if (pos.ne >= (ssize_t)this->size) {
+		if (pos.se < 0) {
+			neigh_id = 0;
+		}
+		else if (pos.se >= (ssize_t)this->size) {
+			neigh_id = 2;
+		}
+		else {
+			neigh_id = 1;
+		}
+	}
+	else {
+		if (pos.se < 0) {
+			neigh_id = 7;
+		}
+		else if (pos.se >= (ssize_t)this->size) {
+			neigh_id = 3;
+		}
+		else {
+			neigh_id = -1;
+		}
+	}
+	return neigh_id;
 }
 
 /**

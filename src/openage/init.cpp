@@ -72,7 +72,7 @@ void init() {
 
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 8; j++) {
-			log::dbg("chunk %d neigh %d = %p", i, j, terrain_chunks[i]->neighbors.neighbor[j]);
+			log::dbg("chunk %d %p neigh %d = %p", i, terrain_chunks[i], j, terrain_chunks[i]->neighbors.neighbor[j]);
 		}
 	}
 
