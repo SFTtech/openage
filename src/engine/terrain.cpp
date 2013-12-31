@@ -94,7 +94,7 @@ Attach a chunk to the terrain, to a given position.
 void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool manually_created) {
 	new_chunk->set_terrain(this);
 	new_chunk->manually_created = manually_created;
-	log::dbg("inserting new chunk at (%d, %d)", position.ne, position.se);
+	log::dbg("inserting new chunk at (%02ld,%02ld)", position.ne, position.se);
 	this->chunks[position] = new_chunk;
 
 	struct chunk_neighbors neigh = this->get_chunk_neighbors(position);
