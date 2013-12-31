@@ -56,10 +56,10 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 	coord::tile tilepos = {0, 0};
 	for (; tilepos.ne < (ssize_t) this->size; tilepos.ne++) {
 		for (tilepos.se = 0; tilepos.se < (ssize_t) this->size; tilepos.se++) {
-			ssize_t terrain_id = this->get_tile(tilepos);
+			int terrain_id = this->get_tile(tilepos);
 
 			if (terrain_id >= (ssize_t)this->terrain->terrain_type_count) {
-				throw Error("unknown terrain id=%lu requested for drawing", terrain_id);
+				throw Error("unknown terrain id=%d requested for drawing", terrain_id);
 			} else if (terrain_id < 0) {
 				throw Error("terrain id is negative");
 			}
@@ -111,7 +111,7 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 
 				//calculate the pos of the neighbor tile
 				coord::tile neigh_pos = tilepos + neigh_offsets[neigh_id];
-				ssize_t neighbor_terrain_id = this->get_tile_neigh(neigh_pos);
+				int neighbor_terrain_id = this->get_tile_neigh(neigh_pos);
 				if (neighbor_terrain_id < 0) {
 					continue;
 				}
