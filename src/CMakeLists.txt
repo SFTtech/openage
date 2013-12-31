@@ -1,8 +1,8 @@
 include_directories(/usr/include/freetype2)
 #link_directories(${CMAKEDEMO_BINARY_DIR}/src)
 
-find_package(OpenGL)
-find_package(GLEW)
+find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
 #findpackage sdl2
 
 add_executable(${PROJECT_NAME}
