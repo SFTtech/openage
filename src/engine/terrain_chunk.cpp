@@ -61,7 +61,7 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 			if (terrain_id >= (ssize_t)this->terrain->terrain_type_count) {
 				throw Error("unknown terrain id=%d requested for drawing", terrain_id);
 			} else if (terrain_id < 0) {
-				throw Error("terrain id is negative");
+				continue;
 			}
 
 			int base_priority = this->terrain->priority(terrain_id);
