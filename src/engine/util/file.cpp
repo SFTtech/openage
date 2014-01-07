@@ -35,7 +35,10 @@ ssize_t read_whole_file(char **result, const char *filename) {
 
 	//read the whole content
 	if (content_length != fread(*result, 1, st.st_size, filehandle)) {
+		fclose(filehandle);
 		throw Error("failed reading the file %s", filename);
+	} else {
+		fclose(filehandle);
 	}
 
 	//make sure 0-byte is at the end
