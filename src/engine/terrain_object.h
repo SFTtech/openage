@@ -17,7 +17,7 @@ struct object_size {
 class TerrainChunk;
 
 /**
-terrain chunk class represents one chunk of the the drawn terrain.
+terrain object class represents one immobile object on the map (building, trees, ...).
 */
 class TerrainObject {
 public:

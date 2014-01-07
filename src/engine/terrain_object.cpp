@@ -27,8 +27,8 @@ TerrainObject::TerrainObject(Texture *tex, unsigned player) {
 TerrainObject::TerrainObject(unsigned player): TerrainObject(new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED), player) {}
 
 
-/*
-* destructor:
+/**
+* destructor.
 *
 * remove all terrain_chunk->object pointers
 * remove itself from the drawing list
@@ -51,14 +51,13 @@ TerrainObject::~TerrainObject() {
 		for(unsigned pos = 0; pos < this->occupied_chunk[i]->get_tile_count(); pos++) {
 			if(this->occupied_chunk[i]->object[pos] == this) {
 				this->occupied_chunk[i]->object[pos] = nullptr;
-				break;
 			}
 		}
 	}
 	log::dbg("terrain_object: deleted myself after removing some shit");
 }
 
-/*
+/**
 * binds the TerrainObject to a certain TerrainChunk.
 *
 * main_chunk: pointer of chunk containing the upper left corner of the object
@@ -103,6 +102,7 @@ bool TerrainObject::bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos) {
 		temp_pos.se++;
 	}
 
+	//TODO: to top_right: bigger is earlier, to bot_right: bigger is later
 	main_chunk->object_list.push_back(this);
 
 	log::dbg("terrain_object.bind: bound TerrainObject to chunk");

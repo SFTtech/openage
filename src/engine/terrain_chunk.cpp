@@ -364,7 +364,7 @@ void TerrainChunk::draw() {
 	}
 
 	//draw the buildings
-	for(auto object : object_list) {
+	for(auto &object : object_list) {
 		object->draw();
 	}
 
