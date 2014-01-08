@@ -2,9 +2,11 @@
 #define _ENGINE_TERRAIN_CHUNK_H_
 
 #include <stddef.h>
+#include <vector>
 
 #include "terrain.h"
 #include "texture.h"
+#include "terrain_object.h"
 #include "coord/camgame.h"
 #include "coord/tile.h"
 #include "util/file.h"
@@ -13,6 +15,7 @@ namespace engine {
 
 class Terrain;
 class TerrainChunk;
+class TerrainObject;
 
 /**
 the number of tiles per direction on a chunk
@@ -72,6 +75,9 @@ public:
 	chunk_neighbors neighbors;
 	Terrain *terrain;
 	bool manually_created;
+
+	std::vector<TerrainObject *> object_list;
+	TerrainObject **object;
 
 private:
 	size_t size;

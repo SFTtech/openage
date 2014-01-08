@@ -3,6 +3,7 @@
 #include "engine.h"
 #include "texture.h"
 #include "log.h"
+#include "terrain_object.h"
 #include "util/error.h"
 #include "util/misc.h"
 #include "coord/tile.h"
@@ -22,6 +23,12 @@ TerrainChunk::TerrainChunk() {
 	//each element describes what terrain is at this position.
 	this->tiles = new int[this->tile_count];
 
+	//list of objects to be drawn (used for builing-obstruction-management)
+	this->object = new TerrainObject*[this->tile_count];
+	for (unsigned i = 0; i < this->tile_count; i++) {
+		this->object[i] = nullptr;
+	}
+
 	//set all tiles on the terrain id to 0 by default.
 	for (unsigned int i = 0; i < this->tile_count; i++) {
 		this->tiles[i] = 0;
@@ -39,6 +46,7 @@ TerrainChunk::TerrainChunk() {
 
 TerrainChunk::~TerrainChunk() {
 	delete[] this->tiles;
+	delete[] this->object;
 }
 
 void TerrainChunk::draw(coord::chunk chunk_pos) {
@@ -310,6 +318,11 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 		}
 	}
 	delete[] influences;
+
+	//draw the buildings
+	for(auto &object : object_list) {
+		object->draw();
+	}
 }
 
 /**

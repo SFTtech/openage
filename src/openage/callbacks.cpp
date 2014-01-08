@@ -15,6 +15,7 @@
 #include "../engine/util/misc.h"
 #include "../engine/input.h"
 
+
 using namespace engine;
 
 namespace openage {
@@ -57,21 +58,20 @@ bool input_handler(SDL_Event *e) {
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
 			//check whether an building already exists at this pos
 			bool found = false;
+			TerrainChunk *selected_chunk = terrain->get_chunk(mousepos_tile);
+			int tile_on_chunk = selected_chunk->tile_position(mousepos_tile);
 
-			for(unsigned i = 0; i < buildings.size(); i++) {
-				if (buildings[i].pos == mousepos_tile) {
-					buildings.erase(buildings.begin() + i);
-					found = true;
-					break;
-				}
+			engine::TerrainObject *obj = selected_chunk->object[tile_on_chunk];
+			if (obj != nullptr) {
+				delete obj;
+				found = true;
 			}
 
 			if(!found) {
-				building newbuilding;
-				newbuilding.player = 1 + (buildings.size() % 8);
-				newbuilding.pos = mousepos_tile;
-				newbuilding.tex = university;
-				buildings.push_back(newbuilding);
+				TerrainObject *newuni = new TerrainObject(university, 1);
+				if(!newuni->bind_on_chunk(selected_chunk, mousepos_tile)) {
+					delete newuni;
+				}
 			}
 		}
 
