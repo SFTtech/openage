@@ -20,8 +20,6 @@ TerrainObject::TerrainObject(Texture *tex, unsigned player) {
 	this->player = player;
 
 	this->occupied_chunk_count = 0;
-
-	log::dbg("terrain_object: created terrain_object");
 }
 
 TerrainObject::TerrainObject(unsigned player): TerrainObject(new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED), player) {}
@@ -35,7 +33,6 @@ TerrainObject::TerrainObject(unsigned player): TerrainObject(new Texture("age/ra
 */
 TerrainObject::~TerrainObject() {
 	if(this->occupied_chunk_count == 0) {
-		log::dbg("terrain_object: deleted myself");
 		return;
 	}
 
@@ -54,7 +51,6 @@ TerrainObject::~TerrainObject() {
 			}
 		}
 	}
-	log::dbg("terrain_object: deleted myself after removing some shit");
 }
 
 /**
@@ -91,7 +87,6 @@ bool TerrainObject::bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos) {
 	this->occupied_chunk[0] = main_chunk;
 	this->pos = pos;
 
-	log::dbg("terrain_object.bind: trying to add pointers for object-pointers");
 	temp_pos = this->pos;
 	for(unsigned i = 0; i < this->size.se_length; i++) {
 		for(unsigned j = 0; j < this->size.ne_length; j++) {
@@ -104,13 +99,14 @@ bool TerrainObject::bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos) {
 
 	//TODO: to top_right: bigger is earlier, to bot_right: bigger is later
 	bool inserted=false;
+	TerrainObject *current;
+	int height_this = this->pos.ne - this->pos.se;
 	for(unsigned i = 0; i < this->occupied_chunk[0]->object_list.size(); i++) {
-		if(this->occupied_chunk[0]->object_list[i]->pos.ne < this->pos.ne) {
-			if(this->occupied_chunk[0]->object_list[i]->pos.se > this->pos.se) {
-				this->occupied_chunk[0]->object_list.insert(this->occupied_chunk[0]->object_list.begin()+i, this);
-				inserted=true;
-				break;
-			}
+		current = this->occupied_chunk[0]->object_list[i];
+		if(current->pos.ne-current->pos.se < height_this) {
+			this->occupied_chunk[0]->object_list.insert(this->occupied_chunk[0]->object_list.begin()+i, this);
+			inserted=true;
+			break;
 		}
 	}
 	//for(auto &it : this->occupied_chunk[0]->object_list) {
@@ -125,7 +121,6 @@ bool TerrainObject::bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos) {
 	if(!inserted)
 		occupied_chunk[0]->object_list.push_back(this);
 
-	log::dbg("terrain_object.bind: bound TerrainObject to chunk");
 	return true;
 }
 
