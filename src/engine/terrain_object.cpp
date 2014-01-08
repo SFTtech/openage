@@ -103,7 +103,27 @@ bool TerrainObject::bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos) {
 	}
 
 	//TODO: to top_right: bigger is earlier, to bot_right: bigger is later
-	main_chunk->object_list.push_back(this);
+	bool inserted=false;
+	for(unsigned i = 0; i < this->occupied_chunk[0]->object_list.size(); i++) {
+		if(this->occupied_chunk[0]->object_list[i]->pos.ne < this->pos.ne) {
+			if(this->occupied_chunk[0]->object_list[i]->pos.se > this->pos.se) {
+				this->occupied_chunk[0]->object_list.insert(this->occupied_chunk[0]->object_list.begin()+i, this);
+				inserted=true;
+				break;
+			}
+		}
+	}
+	//for(auto &it : this->occupied_chunk[0]->object_list) {
+	//	if(it->pos.ne > this->pos.ne) {
+	//		if(it->pos.se < this->pos.se) {
+	//			this->occupied_chunk[0]->object_list.insert(it, this);
+	//			inserted=true;
+	//			break;
+	//		}
+	//	}
+	//}
+	if(!inserted)
+		occupied_chunk[0]->object_list.push_back(this);
 
 	log::dbg("terrain_object.bind: bound TerrainObject to chunk");
 	return true;
