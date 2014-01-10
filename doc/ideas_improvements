@@ -10,4 +10,6 @@ gameplay improvements
 * move group alltogether OR move eacht unit by its speed
 * better regrouping
 ** intelligent assigning of new units to existing groups
-
+** sub-group-selections
+* player boosts or handycaps
+* better pathfinding and blocking resolution
