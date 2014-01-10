@@ -5,6 +5,7 @@
 #include <map>
 
 #include "terrain_chunk.h"
+#include "terrain_object.h"
 #include "texture.h"
 #include "coord/camgame.h"
 #include "coord/chunk.h"
@@ -56,7 +57,9 @@ struct coord_chunk_compare {
 
 
 /**
-terrain chunk class represents one chunk of the the drawn terrain.
+the terrain class is the main top-management interface for dealing with cost-benefit analysis to maximize company profits.
+
+actually this is just the entrypoint and container for the terrain chunks.
 */
 class Terrain {
 public:
@@ -71,6 +74,8 @@ public:
 	TerrainChunk *get_create_chunk(coord::chunk position);
 	int get_tile(coord::tile position);
 	void set_tile(coord::tile position, int tile);
+	TerrainObject *get_object(coord::tile position);
+	void set_object(coord::tile position, TerrainObject *obj);
 
 	struct chunk_neighbors get_chunk_neighbors(coord::chunk position);
 	void draw();

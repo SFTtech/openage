@@ -172,8 +172,30 @@ if the tiles chunk does not exist yet, this chunk is created.
 */
 void Terrain::set_tile(coord::tile position, int tile) {
 	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
-	return c->set_tile(position.get_pos_on_chunk().to_tile(), tile);
+	c->set_tile(position.get_pos_on_chunk().to_tile(), tile);
 }
+
+/**
+get a immovable object at the given tile position.
+
+@returns nullptr if there is no object, else the object.
+*/
+TerrainObject *Terrain::get_object(coord::tile position) {
+	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
+	return c->get_object(position.get_pos_on_chunk().to_tile());
+}
+
+/**
+try to place a given object at a given position on the terrain.
+
+if any chunk needed by the object does not exist, it will be created.
+*/
+void Terrain::set_object(coord::tile position, TerrainObject *obj) {
+	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
+	c->set_object(position.get_pos_on_chunk().to_tile(), obj);
+}
+
+
 
 /**
 draws the terrain on screen.

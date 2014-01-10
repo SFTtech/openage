@@ -3,18 +3,29 @@
 
 #include <stddef.h>
 
+#include "terrain.h"
 #include "terrain_chunk.h"
+#include "texture.h"
 #include "coord/tile.h"
 
 namespace engine {
 
 struct object_size {
-	unsigned int se_length;
 	unsigned int ne_length;
+	unsigned int se_length;
 };
 
 //fak u, dunno why i need u
+class Terrain;
 class TerrainChunk;
+
+
+enum object_state {
+	placed,
+	removed,
+	floating,
+};
+
 
 /**
 terrain object class represents one immobile object on the map (building, trees, ...).
@@ -22,21 +33,25 @@ terrain object class represents one immobile object on the map (building, trees,
 class TerrainObject {
 public:
 	TerrainObject(Texture *tex, unsigned player);
-	TerrainObject(unsigned player);
 	~TerrainObject();
-	bool bind_on_chunk(TerrainChunk *main_chunk, coord::tile pos);
+	bool fits(Terrain *terrain, coord::tile pos);
+	bool place(Terrain *terrain, coord::tile pos);
 	bool draw();
-	//init (terrain auf dreck setzen, richtige chunk->objects auf diesen pointer setzen, textur laden)
+	void remove();
 
 private:
-	//tex (+draw starting point)
+	bool placed;
+	Terrain *terrain;
 	Texture *texture;
-	coord::tile pos;
+	coord::tile start_pos;
+	coord::tile end_pos;
 	struct object_size size;
 	unsigned player;
 
 	int occupied_chunk_count;
 	TerrainChunk *occupied_chunk[4];
+
+	void set_position(coord::tile pos);
 };
 
 } //namespace engine

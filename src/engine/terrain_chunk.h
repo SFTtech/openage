@@ -24,6 +24,13 @@ constexpr size_t chunk_size = 16;
 
 /**
 adjacent neighbors of a chunk.
+
+neighbor ids:
+      0
+    7   1
+  6   @   2
+    5   3
+      4
 */
 struct chunk_neighbors {
 	TerrainChunk *neighbor[8];
@@ -53,6 +60,9 @@ public:
 
 	void set_tile(coord::tile pos, int tile);
 	int  get_tile(coord::tile pos);
+	void set_object(coord::tile pos, TerrainObject *obj);
+	TerrainObject *get_object(coord::tile pos);
+
 	int  get_tile_neigh(coord::tile pos);
 	int  neighbor_id_by_pos(coord::tile pos);
 
@@ -65,13 +75,6 @@ public:
 	void set_terrain(Terrain *parent);
 
 	// infinite terrain functionality
-	/* chunk neighbor ids:
-	      0
-	    7   1
-	  6   @   2
-	    5   3
-	      4
-	*/
 	chunk_neighbors neighbors;
 	Terrain *terrain;
 	bool manually_created;

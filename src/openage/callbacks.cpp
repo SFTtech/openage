@@ -56,22 +56,19 @@ bool input_handler(SDL_Event *e) {
 			terrain->set_tile(mousepos_tile, editor_current_terrain);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
-			//check whether an building already exists at this pos
-			bool found = false;
-			TerrainChunk *selected_chunk = terrain->get_chunk(mousepos_tile);
-			int tile_on_chunk = selected_chunk->tile_position(mousepos_tile);
+			TerrainObject *newuni = new TerrainObject(university, 1);
 
-			engine::TerrainObject *obj = selected_chunk->object[tile_on_chunk];
+			engine::TerrainObject *obj = terrain->get_object(mousepos_tile);
+
 			if (obj != nullptr) {
+				obj->remove();
 				delete obj;
-				found = true;
+				delete newuni;
+				break;
 			}
 
-			if(!found) {
-				TerrainObject *newuni = new TerrainObject(university, 1);
-				if(!newuni->bind_on_chunk(selected_chunk, mousepos_tile)) {
-					delete newuni;
-				}
+			if(!newuni->place(terrain, mousepos_tile)) {
+				delete newuni;
 			}
 		}
 
