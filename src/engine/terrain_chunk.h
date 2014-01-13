@@ -59,6 +59,7 @@ public:
 	void draw(coord::chunk chunk_pos);
 
 	void set_tile(coord::tile pos, int tile);
+	void set_tile(size_t pos, int tile);
 	int  get_tile(coord::tile pos);
 	void set_object(coord::tile pos, TerrainObject *obj);
 	TerrainObject *get_object(coord::tile pos);

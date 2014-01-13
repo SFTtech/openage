@@ -56,18 +56,17 @@ bool input_handler(SDL_Event *e) {
 			terrain->set_tile(mousepos_tile, editor_current_terrain);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
-			TerrainObject *newuni = new TerrainObject(university, 1);
-
 			engine::TerrainObject *obj = terrain->get_object(mousepos_tile);
 
 			if (obj != nullptr) {
 				obj->remove();
 				delete obj;
-				delete newuni;
 				break;
 			}
 
-			if(!newuni->place(terrain, mousepos_tile)) {
+			TerrainObject *newuni = new TerrainObject(university, 1);
+
+			if (!newuni->place(terrain, mousepos_tile)) {
 				delete newuni;
 			}
 		}

@@ -327,10 +327,17 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 
 
 /**
-set the terrain id of a given tile on this chunk.
+set the terrain id of a given tile coordinate on this chunk.
 */
 void TerrainChunk::set_tile(coord::tile pos, int tile) {
-	this->tiles[this->tile_position(pos)] = tile;
+	this->set_tile(this->tile_position(pos), tile);
+}
+
+/**
+set the terrain id of a given tile on this chunk.
+*/
+void TerrainChunk::set_tile(size_t pos, int tile) {
+	this->tiles[pos] = tile;
 }
 
 

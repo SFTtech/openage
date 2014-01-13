@@ -7,6 +7,7 @@
 #include "terrain_chunk.h"
 #include "texture.h"
 #include "coord/tile.h"
+#include "coord/phys3.h"
 
 namespace engine {
 
@@ -44,6 +45,7 @@ private:
 	Terrain *terrain;
 	Texture *texture;
 	coord::tile start_pos;
+	coord::phys3 draw_pos;
 	coord::tile end_pos;
 	struct object_size size;
 	unsigned player;
