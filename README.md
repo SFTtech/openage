@@ -37,6 +37,11 @@ dependencies
 	sdl2_image
 	gcc >=4.8 or clang >=3.3
 
+	age of empires II
+		conquerors expansion
+		patch 1.0c
+		optionally: with "userpatch"
+		installed: with wine OR as the program directory
 
 
 
@@ -64,37 +69,40 @@ if you are keen on porting the game, go for it.
 how to convert gamedata
 =======================
 
-The original aoc game data format is, lets say, a challenge to use.
-Therefore it has to be converted in order to be usable with openage.
+the original aoc game data format is, lets say, a challenge to use.
+therefore it has to be converted in order to be usable with openage.
 
-The python script for that is in the convert/ folder, it will convert all the
+the python script for that is in the convert/ folder, it will convert all the
 media files to formats being usable by openage.
 
-This also means that you have to own the original media files, as we are way
+this also means that you have to own the original media files, as we are way
 too lazy to create free media files for now, that's something the community can do..
 
 
-To convert ALL original media files to openage format, execute the following:
+to convert only media files we need at the moment, execute this:
+
+	make media AGE2DIR="~/.wine-age/drive_c/programs/ms-games/aoe2"
+
+the above command is an alias for the following python call:
+
+	python3 convert -o . $PATH_TO_YOUR_AOC_INSTALLATION $(make medialist)
+
+
+to convert ALL original media files to openage format, execute the following:
 
 	python3 convert -o . $PATH_TO_YOUR_AOC_INSTALLATION
 
-for example, if you installed aoc with wine:
-
-	python3 convert -o . ~/.wine-age/drive_c/programs/ms-games/aoe2
-
-You will then find the converted files in ./data/age/
+you will then find the converted files in ./data/age/
+you probably don't want to convert all the files (we don't use them yet..),
+the conversion takes some time, so be patient.
 
 
 try
 
 	python3 convert --help
 
-to see the usage, as you probably don't want to convert all the files (we don't use them yet..)
+to see the convert script usage.
 
-
-for converting only media files we do use at the moment, execute this:
-
-	python3 convert -o . $aoe2-installpath $(make medialist)
 
 
 
@@ -106,6 +114,9 @@ static docs
 
 general documentation files reside in the doc/ directory.
 you can find ideas, milestones, planning and workflow descriptions etc in there.
+
+a good entry point may be the file doc/implementation/project_structure
+as it roughly explains where to find what code in the project.
 
 dynamic docs
 ------------
