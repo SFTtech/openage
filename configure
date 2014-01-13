@@ -3,6 +3,13 @@
 #totally braindead and stupid configure file for openage
 #
 #rewrite it if you got any better idea.
+#
+#
+# packagers: you don't have to use this file.
+# ---------  it exists for convenience so that users
+#            don't have to know the cmake invocations.
+#            -> build this project as a regular cmake project
+#               the way you are used to it.
 
 
 import os
