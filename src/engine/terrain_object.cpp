@@ -106,7 +106,7 @@ bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
 				chunk_known = false;
 			}
 
-			int tile_pos = chunk->tile_position(temp_pos);
+			int tile_pos = chunk->tile_position_neigh(temp_pos);
 			chunk->object[tile_pos] = this;
 
 			//set the building underground to 10 = dirt-grass-whatever

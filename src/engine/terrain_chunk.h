@@ -61,6 +61,7 @@ public:
 	void set_tile(coord::tile pos, int tile);
 	void set_tile(size_t pos, int tile);
 	int  get_tile(coord::tile pos);
+	int  get_tile(size_t pos);
 	void set_object(coord::tile pos, TerrainObject *obj);
 	TerrainObject *get_object(coord::tile pos);
 
@@ -68,6 +69,7 @@ public:
 	int  neighbor_id_by_pos(coord::tile pos);
 
 	size_t tile_position(coord::tile pos);
+	size_t tile_position_neigh(coord::tile pos);
 	size_t get_tile_count();
 
 	size_t tiles_in_row(unsigned int row);

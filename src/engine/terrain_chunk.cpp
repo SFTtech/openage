@@ -352,6 +352,14 @@ int TerrainChunk::get_tile(coord::tile pos) {
 	return this->tiles[this->tile_position(pos)];
 }
 
+/**
+get the terrain id at the given tile memory position on this chunk.
+*/
+int TerrainChunk::get_tile(size_t pos) {
+	return this->tiles[pos];
+}
+
+
 
 void TerrainChunk::set_object(coord::tile pos, TerrainObject *obj) {
 	this->object[this->tile_position(pos)] = obj;
@@ -385,9 +393,7 @@ int TerrainChunk::get_tile_neigh(coord::tile pos) {
 		}
 
 		//get position of tile on neighbor
-		coord::tile pos_on_neighbor;
-		pos_on_neighbor.ne = util::mod<coord::tile_t>(pos.ne, this->size);
-		pos_on_neighbor.se = util::mod<coord::tile_t>(pos.se, this->size);
+		size_t pos_on_neighbor = this->tile_position_neigh(pos);
 
 		return neigh_chunk->get_tile(pos_on_neighbor);
 	}
@@ -477,6 +483,14 @@ size_t TerrainChunk::tile_position(coord::tile pos) {
 	if (this->neighbor_id_by_pos(pos) != -1) {
 		throw Error("requested tile (%ld, %ld) that's not on this terrain.", pos.ne, pos.se);
 	}
+
+	return pos.se * this->size + pos.ne;
+}
+
+size_t TerrainChunk::tile_position_neigh(coord::tile pos) {
+	//get position of tile on neighbor
+	pos.ne = util::mod<coord::tile_t>(pos.ne, this->size);
+	pos.se = util::mod<coord::tile_t>(pos.se, this->size);
 
 	return pos.se * this->size + pos.ne;
 }
