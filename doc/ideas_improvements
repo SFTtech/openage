@@ -12,4 +12,5 @@ gameplay improvements
 ** intelligent assigning of new units to existing groups
 ** sub-group-selections
 * player boosts or handycaps
+* no-rush enforcement as game setting
 * better pathfinding and blocking resolution
