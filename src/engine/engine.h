@@ -35,6 +35,9 @@ internal hud drawing method
 */
 bool draw_hud();
 
+
+void gl_check_error();
+
 /**
 SDL window
 */
