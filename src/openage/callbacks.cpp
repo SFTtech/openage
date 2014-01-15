@@ -27,12 +27,11 @@ bool input_handler(SDL_Event *e) {
 		engine::running = false;
 		break;
 
-	case SDL_MOUSEBUTTONDOWN:
-		using namespace coord;
+	case SDL_MOUSEBUTTONDOWN: { //thanks C++! we need a separate scope because of new variables...
 
 		//a mouse button was pressed...
 		//subtract value from window height to get position relative to lower right (0,0).
-		coord::window mousepos_window {(pixel_t) e->button.x, (pixel_t) e->button.y};
+		coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
 		coord::camgame mousepos_camgame = mousepos_window.to_camgame();
 		//TODO once the terrain elevation milestone is implemented, use a method
 		//more suitable for converting camgame to phys3
@@ -47,9 +46,9 @@ bool input_handler(SDL_Event *e) {
 			         mousepos_camgame.x,
 			         mousepos_camgame.y);
 			log::dbg("LMB [phys3]:     NE %8.3f SE %8.3f UP %8.3f",
-			         ((float) mousepos_phys3.ne) / phys_per_tile,
-			         ((float) mousepos_phys3.se) / phys_per_tile,
-			         ((float) mousepos_phys3.up) / phys_per_tile);
+			         ((float) mousepos_phys3.ne) / coord::phys_per_tile,
+			         ((float) mousepos_phys3.se) / coord::phys_per_tile,
+			         ((float) mousepos_phys3.up) / coord::phys_per_tile);
 			log::dbg("LMB [tile]:      NE %8ld SE %8ld",
 			         mousepos_tile.ne,
 			         mousepos_tile.se);
@@ -73,7 +72,7 @@ bool input_handler(SDL_Event *e) {
 			break;
 		}
 		break;
-
+	}
 	case SDL_MOUSEWHEEL:
 		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, terrain_texture_count);
 		break;
