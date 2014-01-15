@@ -53,8 +53,8 @@ dependencies
 how to compile && run
 =====================
 
-on POSIX:
----------
+on POSIX (GNU/Linux, BSD, etc..):
+---------------------------------
 
 	./configure --mode=release
 	make
@@ -68,7 +68,21 @@ for other make targets, see:
 on WINDOWS:
 -----------
 
+we don't have any interest in porting the game,
+but we are using cross-platform libraries wherever possible,
+so porting should not be a big issue.
+
+
 if you are keen on porting the game, go for it.
+there should be as few preprocessor switches as possible;
+if possible they should all be concentrated in one 'cross-platform abstraction file'
+we suggest using either cygwin-g++ or mingw32-g++ as the windows compiler
+cygwin will probably be the least effort.
+
+
+we'd be happy to accept your port into our official repository,
+but note that it should fulfill certain quality standards.
+
 
 
 how to convert gamedata
