@@ -68,7 +68,11 @@ bool input_handler(SDL_Event *e) {
 
 			if (!newuni->place(terrain, mousepos_tile)) {
 				delete newuni;
+				break;
 			}
+
+			newuni->set_ground(editor_current_terrain, 0);
+			break;
 		}
 
 		}

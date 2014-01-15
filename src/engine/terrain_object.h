@@ -37,6 +37,7 @@ public:
 	~TerrainObject();
 	bool fits(Terrain *terrain, coord::tile pos);
 	bool place(Terrain *terrain, coord::tile pos);
+	void set_ground(int id, int additional=0);
 	bool draw();
 	void remove();
 

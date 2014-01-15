@@ -109,10 +109,6 @@ bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
 			int tile_pos = chunk->tile_position_neigh(temp_pos);
 			chunk->object[tile_pos] = this;
 
-			//set the building underground to 10 = dirt-grass-whatever
-			//TODO: in future, do this when buliding has fully been built, not earlier.
-			chunk->set_tile(tile_pos, 10);
-
 			temp_pos.se++;
 		}
 		temp_pos.se = this->start_pos.se;
@@ -124,6 +120,39 @@ bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
 
 	this->placed = true;
 	return true;
+}
+
+/**
+* sets all the ground below the object to a terrain id.
+*
+* @param id: the terrain id to which the ground is set
+* @param additional: amount of additional space arround the building
+*
+*/
+void TerrainObject::set_ground(int id, int additional) {
+
+	if (not this->placed) {
+		throw Error("setting ground for object that is not placed yet.");
+	}
+
+	coord::tile temp_pos = this->start_pos;
+	temp_pos.ne -= additional;
+	temp_pos.se -= additional;
+
+	while (temp_pos.ne < this->end_pos.ne + additional) {
+		while (temp_pos.se < this->end_pos.se + additional) {
+			TerrainChunk *chunk = terrain->get_chunk(temp_pos);
+
+			if (chunk == nullptr) {
+				continue;
+			}
+
+			chunk->set_tile(temp_pos, id);
+			temp_pos.se++;
+		}
+		temp_pos.se = this->start_pos.se - additional;
+		temp_pos.ne++;
+	}
 }
 
 
@@ -191,7 +220,7 @@ void TerrainObject::set_position(coord::tile pos) {
 	drawpos_tile.ne += 4;
 	//log::dbg("drawpos: ne=%lu, se=%lu", drawpos_tile.ne, drawpos_tile.se);
 
-	this->draw_pos = drawpos_tile.to_tile3().to_phys3();
+	this->draw_pos = drawpos_tile.to_phys2().to_phys3();
 }
 
 } //namespace engine
