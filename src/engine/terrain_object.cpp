@@ -158,7 +158,8 @@ void TerrainObject::set_ground(int id, int additional) {
 				continue;
 			}
 
-			chunk->set_tile(temp_pos, id);
+			size_t tile_pos = chunk->tile_position_neigh(temp_pos);
+			chunk->set_tile(tile_pos, id);
 			temp_pos.se++;
 		}
 		temp_pos.se = this->start_pos.se - additional;

@@ -481,7 +481,7 @@ the returned index would be 6 (count for each ne row, starting at se=0)
 */
 size_t TerrainChunk::tile_position(coord::tile pos) {
 	if (this->neighbor_id_by_pos(pos) != -1) {
-		throw Error("requested tile (%ld, %ld) that's not on this terrain.", pos.ne, pos.se);
+		throw Error("requested tile (%ld, %ld) that's not on this terrain chunk.", pos.ne, pos.se);
 	}
 
 	return pos.se * this->size + pos.ne;
