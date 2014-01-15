@@ -64,7 +64,7 @@ bool input_handler(SDL_Event *e) {
 				break;
 			}
 
-			TerrainObject *newuni = new TerrainObject(university, 1);
+			TerrainObject *newuni = new TerrainObject(university, util::random_range(1, 8));
 
 			if (!newuni->place(terrain, mousepos_tile)) {
 				delete newuni;
