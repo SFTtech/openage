@@ -17,6 +17,14 @@
 #include "util/strings.h"
 #include "util/color.h"
 
+
+/**
+* stores all things that have to do with the game engine.
+*
+* this includes textures, objects, terrain, etc.
+* movement and transformation stuff, and actually everything that
+* makes the game work lies in here...
+*/
 namespace engine {
 
 //global engine variables; partially accesible via engine.h
@@ -36,17 +44,23 @@ coord::window camhud_window = {0, 600};
 
 util::FrameCounter *fpscounter;
 
+/**
+* update opengl when the window is resized.
+*
+* updates transformation matrices and the viewport size.
+*/
 bool handle_window_resize() {
 	//update camgame window position
 	camgame_window = window_size / 2;
 	//update camhud window position
 	camhud_window = {0, (coord::pixel_t) window_size.y};
+
 	//update OpenGL viewport and projection
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, window_size.x, window_size.y);
 
-	// set orthographic projection: left, right, bottom, top, nearVal, farVal
+	//set orthographic projection: left, right, bottom, top, near_val, far_val
 	glOrtho(0, window_size.x, 0, window_size.y, 9001, -1);
 
 	glMatrixMode(GL_MODELVIEW);
@@ -98,29 +112,27 @@ void loop() {
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glPushMatrix();
-		{
+		glPushMatrix(); {
 			//set the framebuffer up for camgame rendering
 			glTranslatef(camgame_window.x, camgame_window.y, 0);
 
 			//invoke all game drawing callback methods
-                        for(auto cb: callbacks::on_drawgame) {
-                                if (!cb()) {
+			for(auto cb: callbacks::on_drawgame) {
+				if (!cb()) {
 					break;
 				};
-                        }
+			}
 		}
-		glPopMatrix();
 
-		{
+		glPopMatrix(); {
 			//the hud coordinate system is automatically established
 
 			//invoke all hud drawing callback methods
-                        for(auto cb: callbacks::on_drawhud) {
-                                if (!cb()) {
+			for(auto cb: callbacks::on_drawhud) {
+				if (!cb()) {
 					break;
 				};
-                        }
+			}
 		}
 
 		//the rendering is done
