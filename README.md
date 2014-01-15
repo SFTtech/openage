@@ -20,10 +20,10 @@ in order to play, you have to provide a aoe2:aoc installation,
 or create free media files yourself.
 
 
-this project is implemented in C++11 and python.
-the game is coded in C++,
-scripting and the convert script is written in python.
+this project uses the following programming languages:
 
+* **C++11**: the game, its engine
+* **python**: scripting, media convert script
 
 
 dependencies
@@ -47,7 +47,6 @@ dependencies
 		patch 1.0c
 		optionally: with "userpatch"
 		installed: with wine OR as the program directory
-
 
 
 how to compile && run
@@ -91,7 +90,7 @@ how to convert gamedata
 the original aoc game data format is, lets say, a challenge to use.
 therefore it has to be converted in order to be usable with openage.
 
-the python script for that is in the convert/ folder, it will convert all the
+the python script for that is in the `convert/` folder, it will convert all the
 media files to formats being usable by openage.
 
 this also means that you have to own the original media files, as we are way
@@ -111,7 +110,7 @@ to convert ALL original media files to openage format, execute the following:
 
 	python3 convert -o . $PATH_TO_YOUR_AOC_INSTALLATION
 
-you will then find the converted files in ./data/age/
+you will then find the converted files in `./data/age/`
 you probably don't want to convert all the files (we don't use them yet..),
 the conversion takes some time, so be patient.
 
@@ -123,18 +122,16 @@ try
 to see the convert script usage.
 
 
-
-
 documentation
 =============
 
 static docs
 -----------
 
-general documentation files reside in the doc/ directory.
+general documentation files reside in the `doc/` directory.
 you can find ideas, milestones, planning and workflow descriptions etc in there.
 
-a good entry point may be the file doc/implementation/project_structure
+a good entry point may be the file `doc/implementation/project_structure`
 as it roughly explains where to find what code in the project.
 
 dynamic docs
@@ -162,7 +159,7 @@ or, if you want to create LaTeX documents:
 	$(pdfviewer) bin/doc/latex/refman.pdf
 
 
-i'd recommend looking at the source, as we try do write stuff as readable as possible.
+**i recommend looking at the source, as we try to write stuff as readable as possible.**
 
 
 contributing
@@ -175,6 +172,7 @@ contributing
 * so please don't even think about helping us
 
 guidelines:
+
 * don't write **bugreports**, openage is totally bugfree, of course
 * don't **fix bugs** yourself, see above, we don't have bugs
 * don't implement **new features**, they are crap anyway
@@ -185,8 +183,9 @@ contact
 =======
 
 currently you can use these communication channels to reach us morons:
-* IRC:  #sfttech on freenode.org
-* XMPP: openage@chat.sft.mx
+
+* **IRC**: #sfttech on freenode.org
+* **XMPP**: openage@chat.sft.mx
 
 
 cheers, happy hecking.
