@@ -20,6 +20,11 @@ in order to play, you have to provide a aoe2:aoc installation,
 or create free media files yourself.
 
 
+this project is implemented in C++11 and python.
+the game is coded in C++,
+scripting and the convert script is written in python.
+
+
 
 dependencies
 ============
