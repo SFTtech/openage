@@ -31,7 +31,7 @@ TerrainObject::~TerrainObject() {}
 * remove this TerrainObject from the terrain chunks.
 */
 void TerrainObject::remove() {
-	if (this->occupied_chunk_count == 0) {
+	if (this->occupied_chunk_count == 0 || not this->placed) {
 		return;
 	}
 
@@ -42,15 +42,26 @@ void TerrainObject::remove() {
 		}
 	}
 
-	//remove terrain_chunk->object values
-	//TODO: brute force, should be faster...
-	for (int i = 0; i < this->occupied_chunk_count; i++) {
-		for (unsigned pos = 0; pos < this->occupied_chunk[i]->get_tile_count(); pos++) {
-			if (this->occupied_chunk[i]->object[pos] == this) {
-				this->occupied_chunk[i]->object[pos] = nullptr;
+	coord::tile temp_pos = this->start_pos;
+
+	while (temp_pos.ne < this->end_pos.ne) {
+		while (temp_pos.se < this->end_pos.se) {
+			TerrainChunk *chunk = terrain->get_chunk(temp_pos);
+
+			if (chunk == nullptr) {
+				continue;
 			}
+
+			int tile_pos = chunk->tile_position_neigh(temp_pos);
+			chunk->object[tile_pos] = nullptr;
+
+			temp_pos.se++;
 		}
+		temp_pos.se = this->start_pos.se;
+		temp_pos.ne++;
 	}
+
+	this->placed = false;
 }
 
 
