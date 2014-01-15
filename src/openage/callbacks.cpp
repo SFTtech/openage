@@ -27,7 +27,7 @@ bool input_handler(SDL_Event *e) {
 		engine::running = false;
 		break;
 
-	case SDL_MOUSEBUTTONDOWN: {
+	case SDL_MOUSEBUTTONDOWN:
 		using namespace coord;
 
 		//a mouse button was pressed...
@@ -61,22 +61,19 @@ bool input_handler(SDL_Event *e) {
 			if (obj != nullptr) {
 				obj->remove();
 				delete obj;
-				break;
+			} else {
+				TerrainObject *newuni = new TerrainObject(university, util::random_range(1, 8));
+
+				if (newuni->place(terrain, mousepos_tile)) {
+					newuni->set_ground(editor_current_terrain, 0);
+				} else {
+					delete newuni;
+				}
 			}
-
-			TerrainObject *newuni = new TerrainObject(university, util::random_range(1, 8));
-
-			if (!newuni->place(terrain, mousepos_tile)) {
-				delete newuni;
-				break;
-			}
-
-			newuni->set_ground(editor_current_terrain, 0);
 			break;
 		}
-
-		}
 		break;
+
 	case SDL_MOUSEWHEEL:
 		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, terrain_texture_count);
 		break;
