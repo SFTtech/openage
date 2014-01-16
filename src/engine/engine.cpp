@@ -102,6 +102,8 @@ void save_screenshot(const char* filename) {
 		ssize_t irow = screen->h - 1 - row;
 		for (ssize_t col = 0; col < screen->w; col++) {
 			uint32_t pxl = pxdata[irow * screen->w + col];
+
+			//TODO: store the alpha channels in the screenshot, is buggy at the moment..
 			surface_pxls[row * screen->w + col] = pxl | 0xFF000000;
 		}
 	}
@@ -141,7 +143,7 @@ void loop() {
 
 		//clear the framebuffer to black
 		//in the future, we might disable it for lazy drawing
-		glClearColor(0.0, 0.0, 0.0, 1.0);
+		glClearColor(0.0, 0.0, 0.0, 0.0);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glPushMatrix(); {
