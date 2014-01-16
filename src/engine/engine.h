@@ -35,6 +35,12 @@ internal hud drawing method
 */
 bool draw_hud();
 
+/**
+take a screenshot of the current framebuffer.
+
+@param filename the file where the picture will be saved to.
+*/
+void save_screenshot(const char* filename);
 
 void gl_check_error();
 

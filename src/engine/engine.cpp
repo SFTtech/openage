@@ -79,6 +79,39 @@ bool draw_hud() {
 	return true;
 }
 
+void save_screenshot(const char* filename) {
+
+	log::msg("saving screenshot to %s...", filename);
+
+	int32_t rmask, gmask, bmask, amask;
+	rmask = 0x000000FF;
+	gmask = 0x0000FF00;
+	bmask = 0x00FF0000;
+	amask = 0xFF000000;
+	SDL_Surface *screen = SDL_CreateRGBSurface(SDL_SWSURFACE, window_size.x, window_size.y, 32, rmask, gmask, bmask, amask);
+
+	size_t pxcount = screen->w * screen->h;
+	uint32_t *pxdata = new uint32_t[pxcount];
+
+	glReadPixels(0, 0, window_size.x, window_size.y, GL_RGBA, GL_UNSIGNED_BYTE, pxdata);
+
+	uint32_t *surface_pxls = (uint32_t *)screen->pixels;
+
+	//we need to invert all rows, but leave column order the same.
+	for (ssize_t row = 0; row < screen->h; row++) {
+		ssize_t irow = screen->h - 1 - row;
+		for (ssize_t col = 0; col < screen->w; col++) {
+			uint32_t pxl = pxdata[irow * screen->w + col];
+			surface_pxls[row * screen->w + col] = pxl | 0xFF000000;
+		}
+	}
+
+	delete[] pxdata;
+
+	IMG_SavePNG(screen, filename);
+	SDL_FreeSurface(screen);
+}
+
 /**
 the main engine loop.
 

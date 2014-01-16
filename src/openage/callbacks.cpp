@@ -95,6 +95,9 @@ bool input_handler(SDL_Event *e) {
 		case SDLK_SPACE:
 			terrain->blending_enabled = !terrain->blending_enabled;
 			break;
+		case SDLK_F2:
+			engine::save_screenshot("/tmp/openage_00.png");
+			break;
 		}
 
 		break;
