@@ -44,7 +44,7 @@ Terrain::Terrain(size_t terrain_meta_count,
 
 		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", line->slp_id);
 		auto new_texture = new Texture(terraintex_filename, true, ALPHAMASKED);
-		new_texture->fix_hotspots(48, 24);
+		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
 		this->textures[i] = new_texture;
 		delete[] terraintex_filename;
 	}
@@ -55,7 +55,7 @@ Terrain::Terrain(size_t terrain_meta_count,
 
 		char *mask_filename = util::format("age/alphamask/mode%02d.png", line->mode_id);
 		auto new_texture = new Texture(mask_filename, true);
-		new_texture->fix_hotspots(48, 24);
+		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
 		this->blending_masks[i] = new_texture;
 		delete[] mask_filename;
 	}
@@ -160,7 +160,7 @@ get a terrain tile id by a given position.
 the chunk, which this tile lies on, will be created,
 if it does not exist yet.
 */
-int Terrain::get_tile(coord::tile position) {
+int Terrain::get_terrain_id(coord::tile position) {
 	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
 	return c->get_tile(position.get_pos_on_chunk().to_tile());
 }
@@ -170,7 +170,7 @@ set a terrain tile id by a given position.
 
 if the tiles chunk does not exist yet, this chunk is created.
 */
-void Terrain::set_tile(coord::tile position, int tile) {
+void Terrain::set_terrain_id(coord::tile position, int tile) {
 	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
 	c->set_tile(position.get_pos_on_chunk().to_tile(), tile);
 }
@@ -204,6 +204,15 @@ TODO: draw only visible chunks.
 TODO: position the terrain by a parameter
 */
 void Terrain::draw() {
+	//top left, bottom right chunk coordinates
+	//that are currently visible in the window
+	coord::chunk tl, br;
+
+	tl = coord::window{0            ,             0}.to_camgame().to_phys3(0).to_phys2().to_tile().to_chunk();
+	br = coord::window{window_size.x, window_size.y}.to_camgame().to_phys3(0).to_phys2().to_tile().to_chunk();
+
+	log::dbg("seen chunks: tl=%d,%d to br=%d,%d", tl.ne, tl.se, br.ne, br.se);
+
 	for (auto &chunk : this->chunks) {
 		coord::chunk pos = chunk.first;
 		chunk.second->draw(pos);

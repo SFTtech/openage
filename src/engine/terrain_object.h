@@ -29,7 +29,7 @@ enum object_state {
 
 
 /**
-terrain object class represents one immobile object on the map (building, trees, ...).
+terrain object class represents one immobile object on the map (building, trees, fish, ...).
 */
 class TerrainObject {
 public:
