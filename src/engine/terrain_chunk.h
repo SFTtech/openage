@@ -58,14 +58,14 @@ public:
 
 	void draw(coord::chunk chunk_pos);
 
-	void set_tile(coord::tile pos, int tile);
-	void set_tile(size_t pos, int tile);
-	int  get_tile(coord::tile pos);
-	int  get_tile(size_t pos);
+	void set_terrain_id(coord::tile pos, int tile);
+	void set_terrain_id(size_t pos, int tile);
+	int  get_terrain_id(coord::tile pos);
+	int  get_terrain_id(size_t pos);
 	void set_object(coord::tile pos, TerrainObject *obj);
 	TerrainObject *get_object(coord::tile pos);
 
-	int  get_tile_neigh(coord::tile pos);
+	int  get_terrain_id_neigh(coord::tile pos);
 	int  neighbor_id_by_pos(coord::tile pos);
 
 	size_t tile_position(coord::tile pos);

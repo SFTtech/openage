@@ -162,7 +162,7 @@ if it does not exist yet.
 */
 int Terrain::get_terrain_id(coord::tile position) {
 	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
-	return c->get_tile(position.get_pos_on_chunk().to_tile());
+	return c->get_terrain_id(position.get_pos_on_chunk().to_tile());
 }
 
 /**
@@ -172,7 +172,7 @@ if the tiles chunk does not exist yet, this chunk is created.
 */
 void Terrain::set_terrain_id(coord::tile position, int tile) {
 	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
-	c->set_tile(position.get_pos_on_chunk().to_tile(), tile);
+	c->set_terrain_id(position.get_pos_on_chunk().to_tile(), tile);
 }
 
 /**
