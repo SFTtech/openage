@@ -72,8 +72,8 @@ public:
 	TerrainChunk *get_chunk(coord::chunk position);
 	TerrainChunk *get_chunk(coord::tile position);
 	TerrainChunk *get_create_chunk(coord::chunk position);
-	int get_tile(coord::tile position);
-	void set_tile(coord::tile position, int tile);
+	int get_terrain_id(coord::tile position);
+	void set_terrain_id(coord::tile position, int tile);
 	TerrainObject *get_object(coord::tile position);
 	void set_object(coord::tile position, TerrainObject *obj);
 

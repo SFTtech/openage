@@ -64,7 +64,7 @@ void init() {
 	for (; pos.ne < terrain_fill_size; pos.ne++) {
 		for (pos.se = 0; pos.se < terrain_fill_size; pos.se++) {
 			int texid = terrain_data[pos.ne][pos.se];
-			terrain->set_tile(pos, texid);
+			terrain->set_terrain_id(pos, texid);
 		}
 	}
 

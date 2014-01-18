@@ -52,7 +52,7 @@ bool input_handler(SDL_Event *e) {
 			log::dbg("LMB [tile]:      NE %8ld SE %8ld",
 			         mousepos_tile.ne,
 			         mousepos_tile.se);
-			terrain->set_tile(mousepos_tile, editor_current_terrain);
+			terrain->set_terrain_id(mousepos_tile, editor_current_terrain);
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
 			engine::TerrainObject *obj = terrain->get_object(mousepos_tile);
