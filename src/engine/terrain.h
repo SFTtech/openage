@@ -49,10 +49,27 @@ struct blending_mode {
 	int fill(const char *by_line);
 };
 
+/**
+comparisons for chunk coordinates.
+
+this allows storage of chunk coords as keys in a map.
+*/
 struct coord_chunk_compare {
 	bool operator()(coord::chunk a, coord::chunk b) {
 		return a.ne > b.ne || (a.ne == b.ne && a.se > b.se);
 	}
+};
+
+
+/**
+describes the properties of one terrain tile.
+
+this includes the terrain_id (ice, water, grass, ...)
+and the building standing on that tile.
+*/
+struct tile_content {
+	int terrain_id;
+	TerrainObject *obj;
 };
 
 
