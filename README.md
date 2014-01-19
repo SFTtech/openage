@@ -179,6 +179,8 @@ guidelines:
 * don't EVER send **pull-requests**!
 * don't note the irony, you idiot
 
+For that, we have [a list of things that nobody should ever implement](TASKS.md).
+
 contact
 =======
 
