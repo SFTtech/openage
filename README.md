@@ -184,7 +184,7 @@ contact
 
 currently you can use these communication channels to reach us morons:
 
-* **IRC**: #sfttech on freenode.org
+* **IRC**: #sfttech on freenode.net
 * **XMPP**: openage@chat.sft.mx
 
 
