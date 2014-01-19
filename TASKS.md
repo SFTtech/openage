@@ -69,6 +69,13 @@ the next milestone. ask in the IRC or XMPP channel what's being worked on.
   the python convert script, and the C++ game
 * this also means straight-forward integration of the free media files
 
+### build system improvals
+* create `make install` target
+* make it possible to install openage-data
+* allow external CXX and LDFLAGS
+* improve the `./configure` script
+* keep the `Makefile` in sync with the `cmake` config
+
 ### game launcher
 * startup program
 * contains shiny buttons etc, we don't want to implement that in the game
