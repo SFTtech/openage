@@ -26,6 +26,13 @@ this project uses the following programming languages:
 * **python**: scripting, media convert script
 
 
+current state
+=============
+
+the current functionality state of this project can be
+looked up in the [current STATUS](STATUS.md) file.
+
+
 dependencies
 ============
 
