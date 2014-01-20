@@ -1,5 +1,5 @@
 #ifndef _ENGINE_CONSOLE_CALLBACKS_H_
-#define _ENGINE_CONSOLE_CALLBACKS_H__
+#define _ENGINE_CONSOLE_CALLBACKS_H_
 
 #include <SDL2/SDL.h>
 
@@ -14,4 +14,4 @@ bool on_window_resize();
 } //namespace console
 } //namespace engine
 
-#endif //_ENGINE_CONSOLE_CALLBACKS_H__
+#endif //_ENGINE_CONSOLE_CALLBACKS_H_
