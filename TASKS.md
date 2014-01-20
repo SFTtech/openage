@@ -120,3 +120,11 @@ the next milestone. ask in the IRC or XMPP channel what's being worked on.
   this means that e.g. undiscovered map areas won't be visible to the AI at all.
 * the original AI scripting language could be integrated
 * i'd propose to use Python for the AI scripting
+
+### configuration system
+* stores and reads plain-text config files
+* manages all keybindings (hotkeys, mouse, ..)
+* generic conffile support in the engine
+* used by the game for the specific needs
+* you could implement similar functionality like `engine/util/file.h::read_csv_file`
+* should be written in C++
