@@ -67,9 +67,22 @@ describes the properties of one terrain tile.
 this includes the terrain_id (ice, water, grass, ...)
 and the building standing on that tile.
 */
-struct tile_content {
+class TileContent {
+public:
+	TileContent();
+	~TileContent();
 	int terrain_id;
 	TerrainObject *obj;
+};
+
+
+/**
+describes the state of a terrain tile.
+*/
+enum tile_state {
+	creatable,  //!< tile does not exist but can be created
+	invalid,    //!< tile does not exist and can not be created
+	existing,   //!< tile is already existing
 };
 
 
@@ -80,24 +93,46 @@ actually this is just the entrypoint and container for the terrain chunks.
 */
 class Terrain {
 public:
-	bool blending_enabled;
-
-	Terrain(size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta);
+	Terrain(size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta, bool is_infinite);
 	~Terrain();
+
+	bool blending_enabled; //!< is terrain blending active. increases memory accesses by factor ~8
+	bool infinite; //!< chunks are automagically created as soon as they are referenced
+
+	coord::tile limit_positive, limit_negative; //!< for non-infinite terrains, this is the size limit.
+	//TODO: non-square shaped terrain bounds
+
+	/**
+	fill the terrain with given terrain_id values.
+
+	@returns whether the data filled on the terrain was cut because of
+	         the terrains size limit.
+	*/
+	bool fill(const int *data, coord::tile_delta size);
 
 	void attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool manual=true);
 	TerrainChunk *get_chunk(coord::chunk position);
 	TerrainChunk *get_chunk(coord::tile position);
 	TerrainChunk *get_create_chunk(coord::chunk position);
-	int get_terrain_id(coord::tile position);
-	void set_terrain_id(coord::tile position, int tile);
-	TerrainObject *get_object(coord::tile position);
-	void set_object(coord::tile position, TerrainObject *obj);
+	TerrainChunk *get_create_chunk(coord::tile position);
+
+	TileContent *get_data(coord::tile position);
 
 	struct chunk_neighbors get_chunk_neighbors(coord::chunk position);
+
 	void draw();
 
 	unsigned get_subtexture_id(coord::tile pos, unsigned atlas_size, coord::chunk chunk_pos={0,0});
+
+	/**
+	checks the creation state and premissions of a given tile position.
+	*/
+	tile_state check_tile(coord::tile position);
+
+	/**
+	checks whether the given tile position is allowed to exist on this terrain.
+	*/
+	bool check_tile_position(coord::tile position);
 
 	bool valid_terrain(size_t terrain_id);
 	bool valid_mask(size_t mask_id);
@@ -113,6 +148,9 @@ public:
 	size_t blendmode_count;
 
 private:
+	/**
+	maps chunk coordinates to chunks.
+	*/
 	std::map<coord::chunk, TerrainChunk *, coord_chunk_compare> chunks;
 
 	Texture **textures;
@@ -120,7 +158,6 @@ private:
 
 	int *terrain_id_priority_map;
 	int *terrain_id_blendmode_map;
-
 };
 
 } //namespace engine

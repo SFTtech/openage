@@ -19,23 +19,23 @@ using namespace engine;
 namespace openage {
 
 constexpr ssize_t terrain_fill_size = 16;
-int terrain_data[16][16] = {
-	{  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1},
-	{  0, 18, 18, 18, 18, 18,  0,  0, 16,  0,  2,  1, 15, 14, 15,  1},
-	{ 18, 18,  0,  0, 18, 18,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1},
-	{ 18, 18,  0,  0, 18, 18,  0,  0, 16,  0,  2,  1,  1,  1,  2,  2},
-	{ 18, 18, 18,  0, 18, 18,  9,  9, 16,  0,  0,  2,  2,  2,  0,  0},
-	{ 18, 18,  0,  0,  0,  0,  9,  9, 16,  0,  0,  0,  0,  0,  0,  0},
-	{  0, 18,  0,  0,  0,  9,  9,  9, 16,  0,  0, -1,  0,  0,  0,  0},
-	{  0,  0,  0,  2,  0,  9,  9,  0,  2,  2,  0,  0, -1,  0, 23, 23},
-	{  0,  0,  2, 15,  2,  9,  0,  2, 15, 15,  2,  0, -1,  0,  0,  0},
-	{  0,  0,  2, 15,  2,  2,  2, 15,  2,  2,  0,  0,  0,  0,  0,  0},
-	{  0,  0,  2, 15,  2,  2,  2, 15,  2,  0,  0,  0, 20, 20, 20,  0},
-	{  0,  2,  2, 15,  2,  2,  2, 14,  2,  0,  0,  0, 21, 21, 21,  0},
-	{  2, 15, 15, 15, 15, 15, 14, 14,  2,  0,  0,  0, 22, 22, 22,  0},
-	{  0,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  5,  5,  5,  0},
-	{  0,  0,  0,  0,  0,  0,  0,  0, 16, 16, 16, 16,  5,  5,  5,  5},
-	{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5,  5}
+constexpr int terrain_data[16 * 16] = {
+	  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1,
+	  0, 18, 18, 18, 18, 18,  0,  0, 16,  0,  2,  1, 15, 14, 15,  1,
+	 18, 18,  0,  0, 18, 18,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1,
+	 18, 18,  0,  0, 18, 18,  0,  0, 16,  0,  2,  1,  1,  1,  2,  2,
+	 18, 18, 18,  0, 18, 18,  9,  9, 16,  0,  0,  2,  2,  2,  0,  0,
+	 18, 18,  0,  0,  0,  0,  9,  9, 16,  0,  0,  0,  0,  0,  0,  0,
+	  0, 18,  0,  0,  0,  9,  9,  9, 16,  0,  0, -1,  0,  0,  0,  0,
+	  0,  0,  0,  2,  0,  9,  9,  0,  2,  2,  0,  0, -1,  0, 23, 23,
+	  0,  0,  2, 15,  2,  9,  0,  2, 15, 15,  2,  0, -1,  0,  0,  0,
+	  0,  0,  2, 15,  2,  2,  2, 15,  2,  2,  0,  0,  0,  0,  0,  0,
+	  0,  0,  2, 15,  2,  2,  2, 15,  2,  0,  0,  0, 20, 20, 20,  0,
+	  0,  2,  2, 15,  2,  2,  2, 14,  2,  0,  0,  0, 21, 21, 21,  0,
+	  2, 15, 15, 15, 15, 15, 14, 14,  2,  0,  0,  0, 22, 22, 22,  0,
+	  0,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  5,  5,  5,  0,
+	  0,  0,  0,  0,  0,  0,  0,  0, 16, 16, 16, 16,  5,  5,  5,  5,
+	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5,  5
 };
 
 void init() {
@@ -54,19 +54,12 @@ void init() {
 	size_t bmode_count = util::read_csv_file<blending_mode>(&blending_modes, "age/processed/blending_meta.docx");
 
 	//create the terrain which will be filled by chunks
-	terrain = new Terrain(ttype_count, terrain_types, bmode_count, blending_modes);
+	terrain = new Terrain(ttype_count, terrain_types, bmode_count, blending_modes, true);
 
 	delete[] terrain_types;
 	delete[] blending_modes;
 
-	//set the terrain types according to the data array.
-	coord::tile pos = {0, 0};
-	for (; pos.ne < terrain_fill_size; pos.ne++) {
-		for (pos.se = 0; pos.se < terrain_fill_size; pos.se++) {
-			int texid = terrain_data[pos.ne][pos.se];
-			terrain->set_terrain_id(pos, texid);
-		}
-	}
+	terrain->fill(terrain_data, coord::tile_delta{16, 16});
 
 
 	struct player_color_line {
@@ -75,12 +68,12 @@ void init() {
 
 		int fill(const char *by_line) {
 			if (5 == sscanf(by_line, "%u=%u,%u,%u,%u",
-			           &this->id,
-			           &this->r,
-			           &this->g,
-			           &this->b,
-			           &this->a
-			           )) {
+			                &this->id,
+			                &this->r,
+			                &this->g,
+			                &this->b,
+			                &this->a
+			                )) {
 				return 0;
 			}
 			else {

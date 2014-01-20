@@ -18,10 +18,27 @@ namespace engine {
 coord::camgame_delta tile_halfsize = {48, 24};
 
 
+/**
+initializes the contents of one terrain tile.
+*/
+TileContent::TileContent() :
+	terrain_id(0),
+	obj(nullptr)
+{}
+
+TileContent::~TileContent() {}
+
 Terrain::Terrain(size_t terrain_meta_count,
                  terrain_type *terrain_meta,
                  size_t blending_meta_count,
-                 blending_mode *blending_meta) {
+                 blending_mode *blending_meta,
+                 bool is_infinite) {
+
+	this->infinite = is_infinite;
+	//TODO:
+	//this->limit_positive =
+	//this->limit_negative =
+
 	//maps chunk position to chunks
 	this->chunks = std::map<coord::chunk, TerrainChunk *, coord_chunk_compare>{};
 	//activate blending
@@ -82,6 +99,26 @@ Terrain::~Terrain() {
 	delete[] this->terrain_id_priority_map;
 	delete[] this->terrain_id_blendmode_map;
 }
+
+
+bool Terrain::fill(const int *data, coord::tile_delta size) {
+	bool was_cut = false;
+
+	coord::tile pos = {0, 0};
+	for (; pos.ne < size.ne; pos.ne++) {
+		for (pos.se = 0; pos.se < size.se; pos.se++) {
+			if (this->check_tile(pos) == tile_state::invalid) {
+				was_cut = true;
+				continue;
+			}
+			int terrain_id = data[pos.ne * size.ne + pos.se];
+			TerrainChunk *chunk = this->get_create_chunk(pos);
+			chunk->get_data(pos)->terrain_id = terrain_id;
+		}
+	}
+	return was_cut;
+}
+
 
 
 /**
@@ -154,47 +191,21 @@ TerrainChunk *Terrain::get_create_chunk(coord::chunk position) {
 	return res;
 }
 
-/**
-get a terrain tile id by a given position.
-
-the chunk, which this tile lies on, will be created,
-if it does not exist yet.
-*/
-int Terrain::get_terrain_id(coord::tile position) {
-	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
-	return c->get_terrain_id(position.get_pos_on_chunk().to_tile());
+TerrainChunk *Terrain::get_create_chunk(coord::tile position) {
+	return this->get_create_chunk(position.to_chunk());
 }
 
 /**
-set a terrain tile id by a given position.
-
-if the tiles chunk does not exist yet, this chunk is created.
+@return the current content of a given tile position.
 */
-void Terrain::set_terrain_id(coord::tile position, int tile) {
-	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
-	c->set_terrain_id(position.get_pos_on_chunk().to_tile(), tile);
+TileContent *Terrain::get_data(coord::tile position) {
+	TerrainChunk *c = this->get_chunk(position.to_chunk());
+	if (c == nullptr) {
+		return nullptr;
+	} else {
+		return c->get_data(position.get_pos_on_chunk().to_tile());
+	}
 }
-
-/**
-get a immovable object at the given tile position.
-
-@returns nullptr if there is no object, else the object.
-*/
-TerrainObject *Terrain::get_object(coord::tile position) {
-	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
-	return c->get_object(position.get_pos_on_chunk().to_tile());
-}
-
-/**
-try to place a given object at a given position on the terrain.
-
-if any chunk needed by the object does not exist, it will be created.
-*/
-void Terrain::set_object(coord::tile position, TerrainObject *obj) {
-	TerrainChunk *c = this->get_create_chunk(position.to_chunk());
-	c->set_object(position.get_pos_on_chunk().to_tile(), obj);
-}
-
 
 
 /**
@@ -208,10 +219,10 @@ void Terrain::draw() {
 	//that are currently visible in the window
 	coord::chunk tl, br;
 
-	tl = coord::window{0            ,             0}.to_camgame().to_phys3(0).to_phys2().to_tile().to_chunk();
+	tl = coord::window{            0,             0}.to_camgame().to_phys3(0).to_phys2().to_tile().to_chunk();
 	br = coord::window{window_size.x, window_size.y}.to_camgame().to_phys3(0).to_phys2().to_tile().to_chunk();
 
-	log::dbg("seen chunks: tl=%d,%d to br=%d,%d", tl.ne, tl.se, br.ne, br.se);
+	//log::dbg("seen chunks: tl=%d,%d to br=%d,%d", tl.ne, tl.se, br.ne, br.se);
 
 	for (auto &chunk : this->chunks) {
 		coord::chunk pos = chunk.first;
@@ -336,6 +347,35 @@ int Terrain::get_blending_mode(size_t base_id, size_t neighbor_id) {
 	}
 }
 
+tile_state Terrain::check_tile(coord::tile position) {
+	if (this->check_tile_position(position) == false) {
+		return tile_state::invalid;
+	}
+	else {
+		TerrainChunk *chunk = this->get_chunk(position);
+		if (chunk == nullptr) {
+			return tile_state::creatable;
+		}
+		else {
+			return tile_state::existing;
+		}
+	}
+}
+
+bool Terrain::check_tile_position(coord::tile pos) {
+	if (this->infinite == true) {
+		return true;
+	}
+
+	if (pos.ne < this->limit_negative.ne || pos.se < this->limit_negative.se
+	    || pos.ne > this->limit_positive.ne || pos.se > this->limit_positive.se) {
+		return false;
+	}
+	else {
+		return true;
+	}
+
+}
 
 
 /**

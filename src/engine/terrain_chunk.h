@@ -15,7 +15,9 @@ namespace engine {
 
 class Terrain;
 class TerrainChunk;
+class TileContent;
 class TerrainObject;
+
 
 /**
 the number of tiles per direction on a chunk
@@ -56,17 +58,56 @@ public:
 	TerrainChunk();
 	~TerrainChunk();
 
+	/**
+	stores the length for one chunk side.
+	*/
+	size_t size;
+
+	/**
+	number of tiles on that chunk (this->size^2)
+	*/
+	size_t tile_count;
+
+	/**
+	stores the chunk data, one tile_content struct for each tile.
+	*/
+	TileContent *data;
+
+	/**
+	the terrain to which this chunk belongs to.
+	*/
+	Terrain *terrain;
+
+	/**
+	the 8 neighbors this chunk has.
+	*/
+	chunk_neighbors neighbors;
+
+	/**
+	draws the terrain chunk on screen.
+
+	@param chunk_pos the chunk position where it will be drawn
+	*/
 	void draw(coord::chunk chunk_pos);
 
-	void set_terrain_id(coord::tile pos, int tile);
-	void set_terrain_id(size_t pos, int tile);
-	int  get_terrain_id(coord::tile pos);
-	int  get_terrain_id(size_t pos);
-	void set_object(coord::tile pos, TerrainObject *obj);
-	TerrainObject *get_object(coord::tile pos);
+	/**
+	get tile data by coordinates.
+	*/
+	TileContent *get_data(coord::tile pos);
 
-	int  get_terrain_id_neigh(coord::tile pos);
-	int  neighbor_id_by_pos(coord::tile pos);
+	/**
+	get tile data by memory position.
+	*/
+	TileContent *get_data(size_t pos);
+
+	/**
+	get the tile data a given tile position relative to this chunk.
+
+	also queries neighbors if the position is not on this chunk.
+	*/
+	TileContent *get_data_neigh(coord::tile pos);
+
+	int neighbor_id_by_pos(coord::tile pos);
 
 	size_t tile_position(coord::tile pos);
 	size_t tile_position_neigh(coord::tile pos);
@@ -77,18 +118,7 @@ public:
 
 	void set_terrain(Terrain *parent);
 
-	// infinite terrain functionality
-	chunk_neighbors neighbors;
-	Terrain *terrain;
 	bool manually_created;
-
-	std::vector<TerrainObject *> object_list;
-	TerrainObject **object;
-
-private:
-	size_t size;
-	int *tiles;
-	size_t tile_count;
 };
 
 } //namespace engine

@@ -35,13 +35,6 @@ void TerrainObject::remove() {
 		return;
 	}
 
-	//remove from drawing list
-	for (unsigned i = 0; i < this->occupied_chunk[0]->object_list.size(); i++) {
-		if (this->occupied_chunk[0]->object_list[i] == this) {
-			this->occupied_chunk[0]->object_list.erase(this->occupied_chunk[0]->object_list.begin()+i);
-		}
-	}
-
 	coord::tile temp_pos = this->start_pos;
 
 	while (temp_pos.ne < this->end_pos.ne) {
@@ -53,7 +46,7 @@ void TerrainObject::remove() {
 			}
 
 			int tile_pos = chunk->tile_position_neigh(temp_pos);
-			chunk->object[tile_pos] = nullptr;
+			chunk->get_data(tile_pos)->obj = nullptr;
 
 			temp_pos.se++;
 		}
@@ -73,9 +66,6 @@ void TerrainObject::remove() {
 * @returns true when the object was placed, false when it did not fit at pos.
 */
 bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
-	//TODO: translate pos somehow, so that buildings get placed centered to pos
-	//TODO: set terrain to dirt
-
 	if (this->placed) {
 		throw Error("this object has already been placed.");
 	}
@@ -118,16 +108,13 @@ bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
 			}
 
 			int tile_pos = chunk->tile_position_neigh(temp_pos);
-			chunk->object[tile_pos] = this;
+			chunk->get_data(tile_pos)->obj = this;
 
 			temp_pos.se++;
 		}
 		temp_pos.se = this->start_pos.se;
 		temp_pos.ne++;
 	}
-
-	//add object to the "base-chunk" for drawing
-	occupied_chunk[0]->object_list.push_back(this);
 
 	this->placed = true;
 	return true;
@@ -159,7 +146,7 @@ void TerrainObject::set_ground(int id, int additional) {
 			}
 
 			size_t tile_pos = chunk->tile_position_neigh(temp_pos);
-			chunk->set_terrain_id(tile_pos, id);
+			chunk->get_data(tile_pos)->terrain_id = id;
 			temp_pos.se++;
 		}
 		temp_pos.se = this->start_pos.se - additional;
@@ -182,6 +169,7 @@ bool TerrainObject::draw() {
 * @returns true when the object fits, false otherwise.
 */
 bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
+	//TODO: add underground checking (water needed? solid ground needed?)
 
 	this->set_position(pos);
 
@@ -189,9 +177,14 @@ bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
 
 	while (check_pos.ne < end_pos.ne) {
 		while (check_pos.se < end_pos.se) {
-			TerrainObject *test = terrain->get_object(check_pos);
-			if (test != nullptr) {
+			TerrainChunk *chunk = terrain->get_chunk(check_pos);
+			if (chunk == nullptr) {
 				return false;
+			} else {
+				TerrainObject *test = chunk->get_data(check_pos)->obj;
+				if (test != nullptr) {
+					return false;
+				}
 			}
 			check_pos.se += 1;
 		}

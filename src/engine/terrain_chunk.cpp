@@ -19,20 +19,9 @@ TerrainChunk::TerrainChunk() {
 	this->tile_count = size * size;
 	this->manually_created = true;
 
-	//the ids of terraintype pieces on the terrain
-	//each element describes what terrain is at this position.
-	this->tiles = new int[this->tile_count];
-
-	//list of objects to be drawn (used for builing-obstruction-management)
-	this->object = new TerrainObject*[this->tile_count];
-	for (unsigned i = 0; i < this->tile_count; i++) {
-		this->object[i] = nullptr;
-	}
-
-	//set all tiles on the terrain id to 0 by default.
-	for (unsigned int i = 0; i < this->tile_count; i++) {
-		this->set_terrain_id(i, 0);
-	}
+	//the data array for this chunk.
+	//each element describes the tile data.
+	this->data = new TileContent[this->tile_count];
 
 	//initialize all neighbors as nonexistant
 	for (int i = 0; i < 8; i++) {
@@ -45,8 +34,7 @@ TerrainChunk::TerrainChunk() {
 }
 
 TerrainChunk::~TerrainChunk() {
-	delete[] this->tiles;
-	delete[] this->object;
+	delete[] this->data;
 }
 
 void TerrainChunk::draw(coord::chunk chunk_pos) {
@@ -64,7 +52,7 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 	coord::tile tilepos = {0, 0};
 	for (; tilepos.ne < (ssize_t) this->size; tilepos.ne++) {
 		for (tilepos.se = 0; tilepos.se < (ssize_t) this->size; tilepos.se++) {
-			int terrain_id = this->get_terrain_id(tilepos);
+			int terrain_id = this->get_data(tilepos)->terrain_id;
 
 			if (terrain_id >= (ssize_t)this->terrain->terrain_type_count) {
 				throw Error("unknown terrain id=%d requested for drawing", terrain_id);
@@ -119,7 +107,14 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 
 				//calculate the pos of the neighbor tile
 				coord::tile neigh_pos = tilepos + neigh_offsets[neigh_id];
-				int neighbor_terrain_id = this->get_terrain_id_neigh(neigh_pos);
+
+				TileContent *neigh_content = this->get_data_neigh(neigh_pos);
+
+				if (neigh_content == nullptr) {
+					continue;
+				}
+
+				int neighbor_terrain_id = neigh_content->terrain_id;
 				if (neighbor_terrain_id < 0) {
 					continue;
 				}
@@ -318,65 +313,18 @@ void TerrainChunk::draw(coord::chunk chunk_pos) {
 		}
 	}
 	delete[] influences;
-
-	//draw the buildings
-	for(auto &object : object_list) {
-		object->draw();
-	}
 }
 
 
-/**
-set the terrain id of a given tile coordinate on this chunk.
-*/
-void TerrainChunk::set_terrain_id(coord::tile pos, int tile) {
-	this->set_terrain_id(this->tile_position(pos), tile);
+TileContent *TerrainChunk::get_data(coord::tile pos) {
+	return this->get_data(this->tile_position_neigh(pos));
 }
 
-/**
-set the terrain id of a given tile on this chunk.
-*/
-void TerrainChunk::set_terrain_id(size_t pos, int tile) {
-	this->tiles[pos] = tile;
+TileContent *TerrainChunk::get_data(size_t pos) {
+	return &this->data[pos];
 }
 
-
-/**
-get the terrain id of a given tile position on this chunk.
-
-segfaults if pos is not on this chunk, beware.
-use get_terrain_id_neigh instead if query is not chunksafe.
-@see get_terrain_id_neigh()
-*/
-int TerrainChunk::get_terrain_id(coord::tile pos) {
-	return this->tiles[this->tile_position(pos)];
-}
-
-/**
-get the terrain id at the given tile memory position on this chunk.
-*/
-int TerrainChunk::get_terrain_id(size_t pos) {
-	return this->tiles[pos];
-}
-
-
-
-void TerrainChunk::set_object(coord::tile pos, TerrainObject *obj) {
-	this->object[this->tile_position(pos)] = obj;
-}
-
-
-TerrainObject *TerrainChunk::get_object(coord::tile pos) {
-	return this->object[this->tile_position(pos)];
-}
-
-
-/**
-get the terrain id of a given tile position relative to this chunk.
-
-also queries neighbors if the position is not on this chunk.
-*/
-int TerrainChunk::get_terrain_id_neigh(coord::tile pos) {
+TileContent *TerrainChunk::get_data_neigh(coord::tile pos) {
 	//determine the neighbor id by the given position
 	int neighbor_id = this->neighbor_id_by_pos(pos);
 
@@ -388,18 +336,17 @@ int TerrainChunk::get_terrain_id_neigh(coord::tile pos) {
 
 		//this neighbor does not exist, so the tile does not exist.
 		if (neigh_chunk == nullptr) {
-			//log::dbg("neighbor chunk not found");
-			return -1;
+			return nullptr;
 		}
 
 		//get position of tile on neighbor
 		size_t pos_on_neighbor = this->tile_position_neigh(pos);
 
-		return neigh_chunk->get_terrain_id(pos_on_neighbor);
+		return neigh_chunk->get_data(pos_on_neighbor);
 	}
 	//the position lies on the current chunk.
 	else {
-		return this->get_terrain_id(pos);
+		return this->get_data(pos);
 	}
 }
 

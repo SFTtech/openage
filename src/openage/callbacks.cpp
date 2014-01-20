@@ -52,11 +52,20 @@ bool input_handler(SDL_Event *e) {
 			log::dbg("LMB [tile]:      NE %8ld SE %8ld",
 			         mousepos_tile.ne,
 			         mousepos_tile.se);
-			terrain->set_terrain_id(mousepos_tile, editor_current_terrain);
+
+			TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
+			chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
-			engine::TerrainObject *obj = terrain->get_object(mousepos_tile);
 
+			//get chunk clicked on, don't create it if it's not there already
+			TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
+			if (chunk == nullptr) {
+				break;
+			}
+
+			//get object currently standing at the clicked position
+			TerrainObject *obj = chunk->get_data(mousepos_tile)->obj;
 			if (obj != nullptr) {
 				obj->remove();
 				delete obj;
