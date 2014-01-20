@@ -43,6 +43,12 @@ look at [our roadmap](doc/milestones) to see what has to be achieved to reach
 the next milestone. ask in the IRC or XMPP channel what's being worked on.
 
 
+### NSA interface
+* before the secret services of the world subvert our codebase,
+  we will be chivalrous and implement an official spying interface.
+* if we have an official interface, we can better say hi to our friends!
+* no, not really, we actually want to encrypt the game conversations.
+
 ### free (as in freedom) media data
 * we are depending on the proprietary original media files at the moment
 * free (creative commons licensed) media files liberate us from the evil leash
@@ -114,9 +120,3 @@ the next milestone. ask in the IRC or XMPP channel what's being worked on.
   this means that e.g. undiscovered map areas won't be visible to the AI at all.
 * the original AI scripting language could be integrated
 * i'd propose to use Python for the AI scripting
-
-### NSA interface
-* before the secret services of the world subvert our codebase,
-  we will be chivalrous and implement an official spying interface.
-* if we have an official interface, we can better say hi to our friends!
-* no, not really, we actually want to GPG-encrypt the game conversations.
