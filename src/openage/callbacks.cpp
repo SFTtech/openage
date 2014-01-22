@@ -79,6 +79,7 @@ bool input_handler(SDL_Event *e) {
 			SDL_SetRelativeMouseMode(SDL_TRUE);
 		}
 		break;
+	}
 
 	case SDL_MOUSEBUTTONUP:
 		if (e->button.button == SDL_BUTTON_MIDDLE) {
