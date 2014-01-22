@@ -74,9 +74,19 @@ bool input_handler(SDL_Event *e) {
 				buildings.push_back(newbuilding);
 			}
 		}
-
+		else if (e->button.button == SDL_BUTTON_MIDDLE) {
+			//do scrolling
+			SDL_SetRelativeMouseMode(SDL_TRUE);
 		}
 		break;
+
+	case SDL_MOUSEBUTTONUP:
+		if (e->button.button == SDL_BUTTON_MIDDLE) {
+			//stop scrolling
+			SDL_SetRelativeMouseMode(SDL_FALSE);
+		}
+		break;
+
 	case SDL_MOUSEWHEEL:
 		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, terrain_texture_count);
 		break;
