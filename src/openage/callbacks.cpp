@@ -88,6 +88,28 @@ bool input_handler(SDL_Event *e) {
 		}
 		break;
 
+	case SDL_MOUSEMOTION:
+		//if middle mouse is being pressed
+		if (SDL_GetRelativeMouseMode()) {
+			//move the cam
+			coord::vec2f cam_movement {0.0, 0.0};
+			cam_movement.x = e->motion.xrel;
+			cam_movement.y = e->motion.yrel;
+
+			cam_movement *= 10;
+			log::dbg("Middle mouse scroll by %lf,%lf",
+			        cam_movement.x, cam_movement.y);
+
+			//calculate camera position delta from velocity and frame duration
+			coord::camgame_delta cam_delta;
+			cam_delta.x = cam_movement.x;
+			cam_delta.y = - cam_movement.y;
+
+			//update camera phys position
+			engine::camgame_phys += cam_delta.to_phys3();
+		}
+		break;
+
 	case SDL_MOUSEWHEEL:
 		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, terrain_texture_count);
 		break;
