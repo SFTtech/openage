@@ -18,7 +18,6 @@ using namespace engine;
 
 namespace openage {
 
-constexpr ssize_t terrain_fill_size = 16;
 constexpr int terrain_data[16 * 16] = {
 	  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1,
 	  0, 18, 18, 18, 18, 18,  0,  0, 16,  0,  2,  1, 15, 14, 15,  1,

@@ -35,6 +35,11 @@ class TerrainObject {
 public:
 	TerrainObject(Texture *tex, unsigned player);
 	~TerrainObject();
+
+	coord::tile start_pos;
+	coord::phys3 draw_pos;
+	coord::tile end_pos;
+
 	bool fits(Terrain *terrain, coord::tile pos);
 	bool place(Terrain *terrain, coord::tile pos);
 	void set_ground(int id, int additional=0);
@@ -45,9 +50,6 @@ private:
 	bool placed;
 	Terrain *terrain;
 	Texture *texture;
-	coord::tile start_pos;
-	coord::phys3 draw_pos;
-	coord::tile end_pos;
 	struct object_size size;
 	unsigned player;
 
@@ -56,6 +58,22 @@ private:
 
 	void set_position(coord::tile pos);
 };
+
+
+/**
+comparison for TerrainObjects.
+
+sorting for vertical placement,
+so the objects can be drawn in correct order.
+*/
+struct terrain_object_compare {
+	bool operator()(TerrainObject *a, TerrainObject *b) {
+		return a->start_pos.ne > b->start_pos.ne
+			|| (a->start_pos.ne == b->start_pos.ne
+			    && a->start_pos.se > b->start_pos.se);
+	}
+};
+
 
 } //namespace engine
 

@@ -36,9 +36,6 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 	this->use_player_color_tinting = 0 < (mode & PLAYERCOLORED);
 	this->use_alpha_masking        = 0 < (mode & ALPHAMASKED);
 
-	this->alpha_subid = -1;
-	this->alpha_texture = nullptr;
-
 	SDL_Surface *surface;
 	GLuint textureid;
 	int texture_format;
@@ -127,15 +124,22 @@ void Texture::fix_hotspots(unsigned x, unsigned y) {
 }
 
 void Texture::draw(coord::camhud pos, bool mirrored, int subid, unsigned player) {
-	this->draw(pos.x, pos.y, mirrored, subid, player);
+	this->draw(pos.x, pos.y, mirrored, subid, player, nullptr, -1);
 }
 
 void Texture::draw(coord::camgame pos, bool mirrored, int subid, unsigned player) {
-	this->draw(pos.x, pos.y, mirrored, subid, player);
+	this->draw(pos.x, pos.y, mirrored, subid, player, nullptr, -1);
 }
 
-void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player) {
+void Texture::draw(coord::tile pos, int subid, Texture *alpha_texture, int alpha_subid) {
+	coord::camgame draw_pos = pos.to_tile3().to_phys3().to_camgame();
+	this->draw(draw_pos.x, draw_pos.y, false, subid, 0, alpha_texture, alpha_subid);
+}
+
+void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) {
 	glColor4f(1, 1, 1, 1);
+
+	//log::dbg("drawing texture at %hd, %hd", x, y);
 
 	bool use_playercolors = false;
 	bool use_alphashader = false;
@@ -144,16 +148,16 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	int *pos_id, *texcoord_id, *masktexcoord_id;
 
 	//is this texture drawn with an alpha mask?
-	if (this->alpha_subid >= 0 && this->use_alpha_masking) {
+	if (this->use_alpha_masking && alpha_subid >= 0 && alpha_texture != nullptr) {
 		alphamask_shader::program->use();
 
 		//bind the alpha mask texture to slot 1
 		glActiveTexture(GL_TEXTURE1);
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, this->alpha_texture->get_texture_id());
+		glBindTexture(GL_TEXTURE_2D, alpha_texture->get_texture_id());
 
 		//get the alphamask subtexture (the blend mask!)
-		mtx = this->alpha_texture->get_subtexture(this->alpha_subid);
+		mtx = alpha_texture->get_subtexture(alpha_subid);
 		pos_id = &alphamask_shader::program->pos_id;
 		texcoord_id = &alphamask_shader::base_coord;
 		masktexcoord_id = &alphamask_shader::mask_coord;
@@ -212,7 +216,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 
 	float mtxl=0, mtxr=0, mtxt=0, mtxb=0;
 	if (use_alphashader) {
-		this->alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
+		alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
 	}
 
 	//this array will be uploaded to the GPU.
@@ -317,16 +321,6 @@ void Texture::get_subtexture_size(int subid, int *w, int *h) {
 	struct subtexture *subtex = this->get_subtexture(subid);
 	*w = subtex->w;
 	*h = subtex->h;
-}
-
-void Texture::activate_alphamask(Texture *mask, int subid) {
-	this->alpha_texture = mask;
-	this->alpha_subid = subid;
-}
-
-void Texture::disable_alphamask() {
-	this->alpha_texture = nullptr;
-	this->alpha_subid = -1;
 }
 
 GLuint Texture::get_texture_id() {

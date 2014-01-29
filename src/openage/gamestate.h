@@ -11,7 +11,7 @@ namespace openage {
 
 extern std::vector<building> buildings;
 
-extern terrain_t editor_current_terrain;
+extern engine::terrain_t editor_current_terrain;
 
 extern engine::Terrain *terrain;
 
