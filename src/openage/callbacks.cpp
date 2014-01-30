@@ -96,9 +96,8 @@ bool input_handler(SDL_Event *e) {
 			cam_movement.x = e->motion.xrel;
 			cam_movement.y = e->motion.yrel;
 
-			cam_movement *= 10;
-			log::dbg("Middle mouse scroll by %lf,%lf",
-			        cam_movement.x, cam_movement.y);
+			//this factor controls the scroll speed
+			//cam_movement *= 1;
 
 			//calculate camera position delta from velocity and frame duration
 			coord::camgame_delta cam_delta;
