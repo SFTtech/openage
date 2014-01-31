@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 2.8.8)
-#v2.8.6-306-gfa7141f introduced compiler version detection
-#git tag --contains=fa7141f => 2.8.8
+cmake_minimum_required(VERSION 2.8.10)
+#git tag --contains=fa7141f => 2.8.8    # compiler version detection
+#git tag --contains=fbda7bb => 2.8.10   # find GLEW module
 
 project(openage)
 
