@@ -422,7 +422,7 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab, coord::ti
 	struct terrain_render_data data;
 
 	std::vector<struct tile_draw_data> *tiles = &data.tiles;
-	std::set<util::ptrcontainer<TerrainObject *>> *objects = &data.objects;
+	std::set<std::reference_wrapper<TerrainObject *>> *objects = &data.objects;
 
 	coord::tile gb = {gh.ne, ab.se};
 	coord::tile cf = {cd.ne, ef.se};
@@ -434,8 +434,19 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab, coord::ti
 	//sweep the whole rhombus area
 	for (coord::tile tilepos = gb; tilepos.ne <= (ssize_t) cf.ne; tilepos.ne++) {
 		for (tilepos.se = gb.se; tilepos.se <= (ssize_t) cf.se; tilepos.se++) {
+
+			//get the terrain tile drawing data
 			auto tile = this->create_tile_advice(tilepos);
 			tiles->push_back(tile);
+
+			//get the object standing on the tile
+			TileContent *tile_content = this->get_data(tilepos);
+			if (tile_content != nullptr) {
+				TerrainObject *obj = tile_content->obj;
+				if (obj != nullptr) {
+					objects->insert(obj);
+				}
+			}
 		}
 	}
 

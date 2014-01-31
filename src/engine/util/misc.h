@@ -26,24 +26,6 @@ T mod(T x, T m) {
 	}
 }
 
-
-/**
-container struct for stdlib data structure elements.
-
-this enables storing pointers of objects in e.g. a map,
-while still using the total order defined by the pointed objects.
-*/
-template<typename T>
-struct ptrcontainer {
-	T *contained;
-	T &operator *() {
-		return *(this->contained);
-	}
-	bool operator <(T other) {
-		return (this->contained < other->contained);
-	}
-};
-
 } //namespace util
 } //namespace engine
 
