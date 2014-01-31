@@ -53,7 +53,7 @@ public:
 	sorting for vertical placement,
 	so the objects can be drawn in correct order.
 	*/
-	bool operator <(const TerrainObject *other);
+	bool operator <(const TerrainObject &other);
 
 
 private:

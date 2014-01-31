@@ -368,6 +368,7 @@ void Terrain::draw() {
 
 	auto draw_data = this->create_draw_advice(tl, tr, br, bl);
 
+	//draw the terrain ground
 	for (auto &tile : draw_data.tiles) {
 
 		//iterate over all layers to be drawn
@@ -386,6 +387,11 @@ void Terrain::draw() {
 
 			texture->draw(tile_pos, subtexture_id, mask_texture, mask_id);
 		}
+	}
+
+	//draw the buildings
+	for (auto &object : draw_data.objects) {
+		object->draw();
 	}
 }
 
@@ -421,8 +427,11 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab, coord::ti
 
 	struct terrain_render_data data;
 
-	std::vector<struct tile_draw_data> *tiles = &data.tiles;
-	std::set<std::reference_wrapper<TerrainObject *>> *objects = &data.objects;
+	//vector of tiles
+	auto tiles = &data.tiles;
+
+	//set of objects
+	auto objects = &data.objects;
 
 	coord::tile gb = {gh.ne, ab.se};
 	coord::tile cf = {cd.ne, ef.se};

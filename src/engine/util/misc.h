@@ -26,6 +26,20 @@ T mod(T x, T m) {
 	}
 }
 
+
+/**
+generic callable, that compares any types for creating a total order.
+
+use for stdlib structures like std::set
+*/
+template <typename T>
+struct less {
+	bool operator ()(const T x, const T y) {
+		return *x < *y;
+	}
+};
+
+
 } //namespace util
 } //namespace engine
 

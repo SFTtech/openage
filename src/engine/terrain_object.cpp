@@ -230,10 +230,10 @@ void TerrainObject::set_position(coord::tile pos) {
 }
 
 
-bool TerrainObject::operator <(const TerrainObject *other) {
-	return this->start_pos.ne < other->start_pos.ne
-		|| (this->start_pos.ne == other->start_pos.ne
-		    && this->start_pos.se < other->start_pos.se);
+bool TerrainObject::operator <(const TerrainObject &other) {
+	return this->start_pos.ne > other.start_pos.ne
+		|| (this->start_pos.ne == other.start_pos.ne
+		    && this->start_pos.se > other.start_pos.se);
 }
 
 } //namespace engine
