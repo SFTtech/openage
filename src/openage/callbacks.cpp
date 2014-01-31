@@ -19,6 +19,9 @@ using namespace engine;
 
 namespace openage {
 
+bool clicking_active = true;
+bool scrolling_active = false;
+
 bool input_handler(SDL_Event *e) {
 	switch (e->type) {
 
@@ -38,7 +41,7 @@ bool input_handler(SDL_Event *e) {
 		coord::phys3 mousepos_phys3 = mousepos_camgame.to_phys3();
 		coord::tile mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
-		if (e->button.button == SDL_BUTTON_LEFT) {
+		if (clicking_active and e->button.button == SDL_BUTTON_LEFT) {
 			log::dbg("LMB [window]:    x %9hd y %9hd",
 			         mousepos_window.x,
 			         mousepos_window.y);
@@ -54,7 +57,7 @@ bool input_handler(SDL_Event *e) {
 			         mousepos_tile.se);
 			terrain->set_tile(mousepos_tile, editor_current_terrain);
 		}
-		else if (e->button.button == SDL_BUTTON_RIGHT) {
+		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT) {
 			//check whether an building already exists at this pos
 			bool found = false;
 
@@ -74,23 +77,34 @@ bool input_handler(SDL_Event *e) {
 				buildings.push_back(newbuilding);
 			}
 		}
-		else if (e->button.button == SDL_BUTTON_MIDDLE) {
-			//do scrolling
+		else if (not scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
+			//activate scrolling
 			SDL_SetRelativeMouseMode(SDL_TRUE);
+			scrolling_active = true;
+
+			//deactivate clicking as long as mousescrolling is active
+			clicking_active = false;
 		}
 		break;
 	}
 
 	case SDL_MOUSEBUTTONUP:
-		if (e->button.button == SDL_BUTTON_MIDDLE) {
+		if (scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
 			//stop scrolling
 			SDL_SetRelativeMouseMode(SDL_FALSE);
+			scrolling_active = false;
+
+			//reactivate mouse clicks as scrolling is over
+			clicking_active = true;
 		}
 		break;
 
 	case SDL_MOUSEMOTION:
-		//if middle mouse is being pressed
-		if (SDL_GetRelativeMouseMode()) {
+
+		//scroll, if middle mouse is being pressed
+		// SDL_GetRelativeMouseMode() queries sdl for that.
+		if (scrolling_active) {
+
 			//move the cam
 			coord::vec2f cam_movement {0.0, 0.0};
 			cam_movement.x = e->motion.xrel;
