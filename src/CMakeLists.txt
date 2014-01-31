@@ -1,9 +1,7 @@
-include_directories(/usr/include/freetype2)
-#link_directories(${CMAKEDEMO_BINARY_DIR}/src)
-
-find_package(OpenGL REQUIRED)
-find_package(GLEW REQUIRED)
-#findpackage sdl2
+#source file configuration
+#
+#add new sources here, dependencies for linking and including
+#are specified beliw the source file list.
 
 add_executable(${PROJECT_NAME}
 	main.cpp
@@ -50,20 +48,35 @@ add_executable(${PROJECT_NAME}
 )
 
 
-INCLUDE(FindPkgConfig)
-PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
-PKG_SEARCH_MODULE(SDL2_IMAGE REQUIRED sdl2_image SDL2_image)
-PKG_SEARCH_MODULE(FTGL REQUIRED ftgl)
-INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${FTGL_INCLUDE_DIRS})
+#library dependency specification
+
+include(FindPkgConfig)
+find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(Freetype REQUIRED)
+find_library(FONTCONFIG_LIB fontconfig)
+find_library(MATH_LIB m)
+pkg_search_module(SDL2 REQUIRED sdl2)
+pkg_search_module(SDL2_IMAGE REQUIRED sdl2_image SDL2_image)
+pkg_search_module(FTGL REQUIRED ftgl)
+
+include_directories(
+	${SDL2_INCLUDE_DIRS}
+	${FTGL_INCLUDE_DIRS}
+	${FREETYPE_INCLUDE_DIRS}
+)
+#link_directories(rofl/lib/lol)
 
 target_link_libraries(${PROJECT_NAME}
-	m
+	${MATH_LIB}
 	${SDL2_LIBRARIES}
 	${SDL2_IMAGE_LIBRARIES}
 	${OPENGL_LIBRARY}
 	${GLEW_LIBRARIES}
 	${FTGL_LIBRARIES}
-	fontconfig
+	${FONTCONFIG_LIB}
+	${FREETYPE_LIBRARIES}
 )
 
+#installation procedure
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
