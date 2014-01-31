@@ -10,6 +10,7 @@
 #include "texture.h"
 #include "coord/camgame.h"
 #include "coord/chunk.h"
+#include "util/misc.h"
 
 namespace engine {
 
@@ -150,7 +151,7 @@ struct tile_draw_data {
 
 struct terrain_render_data {
 	std::vector<struct tile_draw_data> tiles;
-	std::set<TerrainObject *> objects;
+	std::set<util::ptrcontainer<TerrainObject *>> objects;
 };
 
 /**

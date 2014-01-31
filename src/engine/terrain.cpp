@@ -422,7 +422,7 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab, coord::ti
 	struct terrain_render_data data;
 
 	std::vector<struct tile_draw_data> *tiles = &data.tiles;
-	std::set<TerrainObject *> *objects = &data.objects;
+	std::set<util::ptrcontainer<TerrainObject *>> *objects = &data.objects;
 
 	coord::tile gb = {gh.ne, ab.se};
 	coord::tile cf = {cd.ne, ef.se};
