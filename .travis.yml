@@ -1,10 +1,16 @@
 #travis ci config script
-#we can't use it for now as we need gcc 4.8
+
+#we can't use gcc for now as we need gcc 4.8
 #and travis has gcc 4.6.
+#so we have to test with clang >=3.3
 
 language: cpp
+
 compiler:
-  - gcc
   - clang
 
-script: ./configure dbg && make
+before_script:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev
+
+script: ./configure --mode release && make
