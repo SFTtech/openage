@@ -8,13 +8,14 @@ compiler:
   - gcc
 
 before_install:
-  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
-  - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots
-  - sudo apt-get update -q
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test     #gcc 4.8
+  - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots       #libsdl2
+  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa         #cmake >=2.8.8
+  - sudo apt-get update -qq
 
 install:
   - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; export CXX="g++-4.8" CC="gcc-4.8"; fi
-  - sudo apt-get install -qq python3 libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev
+  - sudo apt-get install -qq python3 libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev cmake
 
 before_script:
   - echo starting test build nao
