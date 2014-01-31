@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 #include <map>
+#include <set>
 
 #include "terrain_chunk.h"
 #include "terrain_object.h"
@@ -145,6 +146,11 @@ struct tile_data {
 struct tile_draw_data {
 	ssize_t count;
 	struct tile_data data[9];
+};
+
+struct terrain_render_data {
+	std::vector<struct tile_draw_data> tiles;
+	std::set<TerrainObject *> objects;
 };
 
 /**

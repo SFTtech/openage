@@ -54,6 +54,7 @@ void TerrainObject::remove() {
 		temp_pos.ne++;
 	}
 
+	this->occupied_chunk_count = 0;
 	this->placed = false;
 }
 
@@ -226,6 +227,13 @@ void TerrainObject::set_position(coord::tile pos) {
 	//log::dbg("drawpos: ne=%lu, se=%lu", drawpos_tile.ne, drawpos_tile.se);
 
 	this->draw_pos = drawpos_tile.to_phys2().to_phys3();
+}
+
+
+bool TerrainObject::operator <(const TerrainObject *other) {
+	return this->start_pos.ne < other->start_pos.ne
+		|| (this->start_pos.ne == other->start_pos.ne
+		    && this->start_pos.se < other->start_pos.se);
 }
 
 } //namespace engine

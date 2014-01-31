@@ -1,6 +1,7 @@
 #include "terrain.h"
 
 #include <map>
+#include <set>
 
 #include "terrain_chunk.h"
 #include "engine.h"
@@ -365,17 +366,9 @@ void Terrain::draw() {
 	bl = coord::window{            0, window_size.y}.to_camgame().to_phys3(0).to_phys2().to_tile();
 	br = coord::window{window_size.x, window_size.y}.to_camgame().to_phys3(0).to_phys2().to_tile();
 
-	//TODO: for debugging: render only tile 0,0
-	//tl = {0, 0};
-	//tr = {0, 0};
-	//bl = {0, 0};
-	//br = {0, 0};
-
-	this->texture(0)->draw(coord::tile{0,0}, 0, nullptr, -1);
-
 	auto draw_data = this->create_draw_advice(tl, tr, br, bl);
 
-	for (auto &tile : draw_data) {
+	for (auto &tile : draw_data.tiles) {
 
 		//iterate over all layers to be drawn
 		for (int i = 0; i < tile.count; i++) {
@@ -422,26 +415,31 @@ This area may be optimized further in the future,
 to exactly fit the visible screen.
 For now, we are drawing the big rhombus.
 */
-std::vector<struct tile_draw_data> Terrain::create_draw_advice(coord::tile ab, coord::tile cd, coord::tile ef, coord::tile gh) {
+struct terrain_render_data Terrain::create_draw_advice(coord::tile ab, coord::tile cd, coord::tile ef, coord::tile gh) {
 	//find all the tiles to be drawn
 	//and store them to a tile drawing instruction structure
 
-	std::vector<struct tile_draw_data> tiles;
+	struct terrain_render_data data;
+
+	std::vector<struct tile_draw_data> *tiles = &data.tiles;
+	std::set<TerrainObject *> *objects = &data.objects;
 
 	coord::tile gb = {gh.ne, ab.se};
 	coord::tile cf = {cd.ne, ef.se};
 
-	//log::dbg("rhombus area: (%ld, %ld) -> (%ld, %ld)", gb.ne, gb.se, cf.ne, cf.se);
+	//hint the vector about the number of tiles it will contain
+	size_t tiles_count = cf.ne - gb.ne * cf.se - gb.se;
+	tiles->reserve(tiles_count);
 
 	//sweep the whole rhombus area
 	for (coord::tile tilepos = gb; tilepos.ne <= (ssize_t) cf.ne; tilepos.ne++) {
 		for (tilepos.se = gb.se; tilepos.se <= (ssize_t) cf.se; tilepos.se++) {
 			auto tile = this->create_tile_advice(tilepos);
-			tiles.push_back(tile);
+			tiles->push_back(tile);
 		}
 	}
 
-	return tiles;
+	return data;
 }
 
 

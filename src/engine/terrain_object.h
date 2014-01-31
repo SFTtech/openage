@@ -46,6 +46,16 @@ public:
 	bool draw();
 	void remove();
 
+
+	/**
+	comparison for TerrainObjects.
+
+	sorting for vertical placement,
+	so the objects can be drawn in correct order.
+	*/
+	bool operator <(const TerrainObject *other);
+
+
 private:
 	bool placed;
 	Terrain *terrain;
@@ -58,22 +68,6 @@ private:
 
 	void set_position(coord::tile pos);
 };
-
-
-/**
-comparison for TerrainObjects.
-
-sorting for vertical placement,
-so the objects can be drawn in correct order.
-*/
-struct terrain_object_compare {
-	bool operator()(TerrainObject *a, TerrainObject *b) {
-		return a->start_pos.ne > b->start_pos.ne
-			|| (a->start_pos.ne == b->start_pos.ne
-			    && a->start_pos.se > b->start_pos.se);
-	}
-};
-
 
 } //namespace engine
 
