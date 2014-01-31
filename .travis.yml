@@ -1,8 +1,5 @@
 #travis ci config script
 
-#we can't use gcc for now as we need gcc 4.8
-#and travis has gcc 4.6.
-#so we have to test with clang >=3.3
 
 language: cpp
 
@@ -11,20 +8,22 @@ compiler:
   - gcc
 
 before_install:
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+  - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots
   - sudo apt-get update -q
-#maybe we need a ppa for libsdl2 here...
 
 install:
+  - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; export CXX="g++-4.8" CC="gcc-4.8"; fi
   - sudo apt-get install -qq libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev
 
 before_script:
-  - echo lol
+  - echo starting test build nao
 
 script:
   - ./configure && make
 
 after_script:
-  - echo pwnt
+  - echo test build exited
 
 notifications:
 #  recipients:
