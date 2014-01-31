@@ -231,9 +231,32 @@ void TerrainObject::set_position(coord::tile pos) {
 
 
 bool TerrainObject::operator <(const TerrainObject &other) {
-	return this->start_pos.ne > other.start_pos.ne
-		|| (this->start_pos.ne == other.start_pos.ne
-		    && this->start_pos.se > other.start_pos.se);
+
+	if (this == &other) {
+		return false;
+	}
+
+	auto this_ne    = this->start_pos.ne;
+	auto this_se    = this->start_pos.se;
+	auto other_ne   = other.start_pos.ne;
+	auto other_se   = other.start_pos.se;
+
+	auto this_ypos  = this_ne  - this_se;
+	auto other_ypos = other_ne - other_se;
+
+	if (this_ypos < other_ypos) {
+		return false;
+	}
+	else if (this_ypos == other_ypos) {
+		if (this_ne > other_ne) {
+			return false;
+		}
+		else if (this_ne == other_ne) {
+			return this_se > other_se;
+		}
+	}
+
+	return true;
 }
 
 } //namespace engine
