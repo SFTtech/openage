@@ -10,7 +10,7 @@ compiler:
 before_install:
   - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test     #gcc 4.8
   - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots       #libsdl2
-  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa         #cmake >=2.8.8
+  - sudo add-apt-repository --yes ppa:kubuntu-ppa/backports       #cmake >=2.8.10
   - sudo apt-get update -qq
 
 install:
