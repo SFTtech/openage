@@ -1,2 +1,6 @@
-#this is my gdb breakpoint storage:
+#gdb breakpoint storage
 breaks
+
+#perf analyze data
+perf.data
+perf.data.old
