@@ -211,12 +211,59 @@ public:
 	*/
 	int get_blending_mode(terrain_t base_id, terrain_t neighbor_id);
 
+	/**
+	draw the currently visible terrain area on screen.
+	*/
 	void draw();
-	std::vector<struct tile_draw_data> create_draw_advice(coord::tile ab, coord::tile cd, coord::tile ef, coord::tile gh);
+
+	/**
+	create the drawing instruction data.
+
+	created draw data according to the given tile boundaries.
+
+	@param ab: upper left tile
+	@param cd: upper right tile
+	@param ef: lower right tile
+	@param gh: lower left tile
+
+	@returns a drawing instruction struct that contains all information for rendering
+	*/
+	struct terrain_render_data create_draw_advice(coord::tile ab, coord::tile cd, coord::tile ef, coord::tile gh);
+
+	/**
+	create rendering and blending information for a single tile on the terrain.
+	*/
 	struct tile_draw_data create_tile_advice(coord::tile position);
+
+	/**
+	gather neighbors of a given base tile.
+
+	@param basepos: the base position, around which the neighbors will be fetched
+	@param neigh_tiles: the destination buffer where the neighbors will be stored
+	@param influences_by_terrain_id: influence buffer that is reset in the same step
+	*/
 	void get_neighbors(coord::tile basepos, struct neighbor_tile *neigh_tiles, struct influence *influences_by_terrain_id);
+
+	/**
+	look at neighbor tiles around the base_tile, and store the influence bits.
+
+	@param base_tile: the base tile for which influences are calculated
+	@param neigh_tiles: the neigbors of base_tile
+	@param influences_by_terrain_id: influences will be stored to this buffer, as bitmasks
+	@returns an influence group that describes the maximum 8 possible influences on the base_tile
+	*/
 	struct influence_group calculate_influences(struct tile_data *base_tile, struct neighbor_tile *neigh_tiles, struct influence *influences_by_terrain_id);
-	void calculate_masks(coord::tile position, struct tile_draw_data *draw_masks, struct influence_group *influences);
+
+	/**
+	calculate blending masks for a given tile position.
+
+	@param position: the base tile position, for which the masks are calculated
+	@param tile_data: the buffer where the created drawing layers will be stored in
+	@param influences: the buffer where calculated influences were stored to
+
+	@see calculate_influences
+	*/
+	void calculate_masks(coord::tile position, struct tile_draw_data *tile_data, struct influence_group *influences);
 
 	ssize_t terrain_id_count;
 	ssize_t blendmode_count;
