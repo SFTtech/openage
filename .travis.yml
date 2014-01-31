@@ -8,9 +8,36 @@ language: cpp
 
 compiler:
   - clang
+  - gcc
+
+before_install:
+  - sudo apt-get update -q
+#maybe we need a ppa for libsdl2 here...
+
+install:
+  - sudo apt-get install -qq libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev
 
 before_script:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev
+  - echo lol
 
-script: ./configure --mode release && make
+script:
+  - ./configure && make
+
+after_script:
+  - echo pwnt
+
+notifications:
+#  recipients:
+#    - lol@mail.ie
+#    - rofl@liam.ei
+  email:
+    on_success: change
+    on_failure: always
+  irc:
+    channels:
+      - "chat.freenode.net#sfttech"
+    template:
+      - "%{repository}/%{branch} (%{commit} - %{author}): %{message}"
+#env:
+#  - BUILDMODE=debug
+#  - BUILDMODE=release
