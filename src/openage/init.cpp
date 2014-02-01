@@ -186,6 +186,10 @@ void init() {
 }
 
 void destroy() {
+	for (auto &obj : buildings) {
+		delete obj;
+	}
+
 	//oh noes, release hl3 before that!
 	delete gaben;
 

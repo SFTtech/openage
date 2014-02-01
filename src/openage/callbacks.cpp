@@ -68,12 +68,14 @@ bool input_handler(SDL_Event *e) {
 			TerrainObject *obj = chunk->get_data(mousepos_tile)->obj;
 			if (obj != nullptr) {
 				obj->remove();
+				buildings.erase(obj);
 				delete obj;
 			} else {
 				TerrainObject *newuni = new TerrainObject(university, util::random_range(1, 8));
 
 				if (newuni->place(terrain, mousepos_tile)) {
 					newuni->set_ground(editor_current_terrain, 0);
+					buildings.insert(newuni);
 				} else {
 					delete newuni;
 				}
@@ -155,11 +157,6 @@ bool draw_method() {
 
 	//draw terrain
 	terrain->draw();
-
-	//draw each building
-	for(auto &building : buildings){
-		building.tex->draw(building.pos.to_tile3().to_phys3().to_camgame(), false, 0, building.player);
-	}
 
 	return true;
 }

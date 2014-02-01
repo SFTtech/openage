@@ -4,7 +4,7 @@ namespace openage {
 
 using namespace engine;
 
-std::vector<building> buildings;
+std::unordered_set<TerrainObject *> buildings;
 
 terrain_t editor_current_terrain = 0;
 

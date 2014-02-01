@@ -1,7 +1,7 @@
 #ifndef _OPENAGE_GAMESTATE_H_
 #define _OPENAGE_GAMESTATE_H_
 
-#include <vector>
+#include <unordered_set>
 
 #include "objects/building.h"
 #include "objects/terrain.h"
@@ -9,7 +9,7 @@
 
 namespace openage {
 
-extern std::vector<building> buildings;
+extern std::unordered_set<engine::TerrainObject *> buildings;
 
 extern engine::terrain_t editor_current_terrain;
 
