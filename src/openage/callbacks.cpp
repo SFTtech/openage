@@ -15,6 +15,7 @@
 #include "../engine/util/misc.h"
 #include "../engine/input.h"
 
+
 using namespace engine;
 
 namespace openage {
@@ -26,12 +27,11 @@ bool input_handler(SDL_Event *e) {
 		engine::running = false;
 		break;
 
-	case SDL_MOUSEBUTTONDOWN: {
-		using namespace coord;
+	case SDL_MOUSEBUTTONDOWN: { //thanks C++! we need a separate scope because of new variables...
 
 		//a mouse button was pressed...
 		//subtract value from window height to get position relative to lower right (0,0).
-		coord::window mousepos_window {(pixel_t) e->button.x, (pixel_t) e->button.y};
+		coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
 		coord::camgame mousepos_camgame = mousepos_window.to_camgame();
 		//TODO once the terrain elevation milestone is implemented, use a method
 		//more suitable for converting camgame to phys3
@@ -46,33 +46,41 @@ bool input_handler(SDL_Event *e) {
 			         mousepos_camgame.x,
 			         mousepos_camgame.y);
 			log::dbg("LMB [phys3]:     NE %8.3f SE %8.3f UP %8.3f",
-			         ((float) mousepos_phys3.ne) / phys_per_tile,
-			         ((float) mousepos_phys3.se) / phys_per_tile,
-			         ((float) mousepos_phys3.up) / phys_per_tile);
+			         ((float) mousepos_phys3.ne) / coord::phys_per_tile,
+			         ((float) mousepos_phys3.se) / coord::phys_per_tile,
+			         ((float) mousepos_phys3.up) / coord::phys_per_tile);
 			log::dbg("LMB [tile]:      NE %8ld SE %8ld",
 			         mousepos_tile.ne,
 			         mousepos_tile.se);
-			terrain->set_tile(mousepos_tile, editor_current_terrain);
+
+			TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
+			chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
 		}
 		else if (e->button.button == SDL_BUTTON_RIGHT) {
-			//check whether an building already exists at this pos
-			bool found = false;
 
-			for(unsigned i = 0; i < buildings.size(); i++) {
-				if (buildings[i].pos == mousepos_tile) {
-					buildings.erase(buildings.begin() + i);
-					found = true;
-					break;
+			//get chunk clicked on, don't create it if it's not there already
+			TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
+			if (chunk == nullptr) {
+				break;
+			}
+
+			//get object currently standing at the clicked position
+			TerrainObject *obj = chunk->get_data(mousepos_tile)->obj;
+			if (obj != nullptr) {
+				obj->remove();
+				buildings.erase(obj);
+				delete obj;
+			} else {
+				TerrainObject *newuni = new TerrainObject(university, util::random_range(1, 8));
+
+				if (newuni->place(terrain, mousepos_tile)) {
+					newuni->set_ground(editor_current_terrain, 0);
+					buildings.insert(newuni);
+				} else {
+					delete newuni;
 				}
 			}
-
-			if(!found) {
-				building newbuilding;
-				newbuilding.player = 1 + (buildings.size() % 8);
-				newbuilding.pos = mousepos_tile;
-				newbuilding.tex = university;
-				buildings.push_back(newbuilding);
-			}
+			break;
 		}
 		else if (e->button.button == SDL_BUTTON_MIDDLE) {
 			//do scrolling
@@ -110,7 +118,7 @@ bool input_handler(SDL_Event *e) {
 		break;
 
 	case SDL_MOUSEWHEEL:
-		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, terrain_texture_count);
+		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, terrain->terrain_id_count);
 		break;
 
 	case SDL_KEYUP:
@@ -185,11 +193,6 @@ bool draw_method() {
 
 	//draw terrain
 	terrain->draw();
-
-	//draw each building
-	for(auto &building : buildings){
-		building.tex->draw(building.pos.to_tile3().to_phys3().to_camgame(), false, 0, building.player);
-	}
 
 	return true;
 }

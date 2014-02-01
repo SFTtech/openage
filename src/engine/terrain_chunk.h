@@ -2,9 +2,11 @@
 #define _ENGINE_TERRAIN_CHUNK_H_
 
 #include <stddef.h>
+#include <vector>
 
 #include "terrain.h"
 #include "texture.h"
+#include "terrain_object.h"
 #include "coord/camgame.h"
 #include "coord/tile.h"
 #include "util/file.h"
@@ -13,6 +15,9 @@ namespace engine {
 
 class Terrain;
 class TerrainChunk;
+class TileContent;
+class TerrainObject;
+
 
 /**
 the number of tiles per direction on a chunk
@@ -21,22 +26,17 @@ constexpr size_t chunk_size = 16;
 
 /**
 adjacent neighbors of a chunk.
+
+neighbor ids:
+      0
+    7   1
+  6   @   2
+    5   3
+      4
 */
 struct chunk_neighbors {
 	TerrainChunk *neighbor[8];
 };
-
-constexpr coord::tile_delta const neigh_offsets[] = {
-	{ 1, -1},
-	{ 1,  0},
-	{ 1,  1},
-	{ 0,  1},
-	{-1,  1},
-	{-1,  0},
-	{-1, -1},
-	{ 0, -1}
-};
-
 
 /**
 terrain chunk class represents one chunk of the the drawn terrain.
@@ -46,14 +46,59 @@ public:
 	TerrainChunk();
 	~TerrainChunk();
 
+	/**
+	stores the length for one chunk side.
+	*/
+	size_t size;
+
+	/**
+	number of tiles on that chunk (this->size^2)
+	*/
+	size_t tile_count;
+
+	/**
+	stores the chunk data, one tile_content struct for each tile.
+	*/
+	TileContent *data;
+
+	/**
+	the terrain to which this chunk belongs to.
+	*/
+	Terrain *terrain;
+
+	/**
+	the 8 neighbors this chunk has.
+	*/
+	chunk_neighbors neighbors;
+
+	/**
+	draws the terrain chunk on screen.
+
+	@param chunk_pos the chunk position where it will be drawn
+	*/
 	void draw(coord::chunk chunk_pos);
 
-	void set_tile(coord::tile pos, int tile);
-	int  get_tile(coord::tile pos);
-	int  get_tile_neigh(coord::tile pos);
-	int  neighbor_id_by_pos(coord::tile pos);
+	/**
+	get tile data by coordinates.
+	*/
+	TileContent *get_data(coord::tile pos);
+
+	/**
+	get tile data by memory position.
+	*/
+	TileContent *get_data(size_t pos);
+
+	/**
+	get the tile data a given tile position relative to this chunk.
+
+	also queries neighbors if the position is not on this chunk.
+	*/
+	TileContent *get_data_neigh(coord::tile pos);
+
+	int neighbor_id_by_pos(coord::tile pos);
 
 	size_t tile_position(coord::tile pos);
+	size_t tile_position_neigh(coord::tile pos);
 	size_t get_tile_count();
 
 	size_t tiles_in_row(unsigned int row);
@@ -61,22 +106,7 @@ public:
 
 	void set_terrain(Terrain *parent);
 
-	// infinite terrain functionality
-	/* chunk neighbor ids:
-	      0
-	    7   1
-	  6   @   2
-	    5   3
-	      4
-	*/
-	chunk_neighbors neighbors;
-	Terrain *terrain;
 	bool manually_created;
-
-private:
-	size_t size;
-	int *tiles;
-	size_t tile_count;
 };
 
 } //namespace engine
