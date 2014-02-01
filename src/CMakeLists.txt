@@ -47,6 +47,7 @@ add_executable(${PROJECT_NAME}
 	engine/console/callbacks.cpp
 	engine/console/console.cpp
 	engine/console/init.cpp
+	engine/console/buf.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}

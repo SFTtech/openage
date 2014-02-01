@@ -32,15 +32,14 @@ bool draw() {
 		bgcol.use();
 		glBegin(GL_QUADS);
 		{
-			glVertex2i(topleft.x, topleft.y);
-			glVertex2i(bottomright.x, topleft.y);
-			glVertex2i(bottomright.x, bottomright.y);
-			glVertex2i(topleft.x, bottomright.y);
+			glVertex2i(bottomleft.x, topright.y);
+			glVertex2i(topright.x, topright.y);
+			glVertex2i(topright.x, bottomleft.y);
+			glVertex2i(bottomleft.x, bottomleft.y);
 		}
 		glEnd();
 
 		fgcol.use();
-		glTranslatef(topleft.x + 10, bottomright.y + 10, 0);
 
 		coord::camhud pos {0, 0};
 
@@ -59,13 +58,13 @@ bool draw() {
 			float h = upper.Yf() - lower.Yf();
 
 			//stop displaying older messages no longer fitting on screen
-			if ((pos.y + h + spacing) > (topleft.y - bottomright.y)) {
+			if ((pos.y + h + 7) > (topright.y - bottomleft.y)) {
 				break;
 			}
 
 			font->render_static(pos.x, pos.y, cmsg);
 
-			pos.y += spacing + h;
+			pos.y += 7 + h;
 		}
 	}
 	glPopMatrix();
@@ -96,8 +95,8 @@ bool handle_inputs(SDL_Event *e) {
 }
 
 bool on_window_resize() {
-	console::topleft = {50, (coord::pixel_t) (window_size.y - 50)};
-	console::bottomright = {(coord::pixel_t) (window_size.x - 50), 50};
+	console::bottomleft = {50, 50};
+	console::topright = {(coord::pixel_t) (window_size.x - 50), (coord::pixel_t) (window_size.y - 50)};
 	return true;
 }
 

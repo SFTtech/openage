@@ -7,6 +7,11 @@
 namespace engine {
 namespace util {
 
+//we could simply use wchar_t here, but legend says there are operating
+//systems where for some sick reason wchar_t might be only 16 bits wide.
+//also, a signed type is useful here to mark errors/illegal characters.
+using codepoint_t = int32_t;
+
 class utf8_decoder {
 public:
 	utf8_decoder();
@@ -18,7 +23,7 @@ public:
 	 * if no valid output character currently exists,
 	 * this is negative or remaining is not 0.
 	 */
-	int32_t out;
+	codepoint_t out;
 
 	/**
 	 * number of remaining characters
@@ -67,7 +72,7 @@ public:
  *
  * code logic gratefully borrowed from rxvt-unicode.
  */
-size_t utf8_decode(const unsigned char *s, size_t len, int32_t *outbuf);
+size_t utf8_decode(const unsigned char *s, size_t len, codepoint_t *outbuf);
 
 } //namespace util
 } //namespace engine

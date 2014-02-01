@@ -49,7 +49,7 @@ struct camhud;
 struct camhud_delta;
 
 /* terminal character position-based types */
-using term_t = uint16_t;
+using term_t = int;
 
 struct term;
 struct term_delta;
