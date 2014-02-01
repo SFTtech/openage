@@ -437,7 +437,7 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab, coord::ti
 	coord::tile cf = {cd.ne, ef.se};
 
 	//hint the vector about the number of tiles it will contain
-	size_t tiles_count = cf.ne - gb.ne * cf.se - gb.se;
+	size_t tiles_count = abs(cf.ne - gb.ne) * abs(cf.se - gb.se);
 	tiles->reserve(tiles_count);
 
 	//sweep the whole rhombus area
