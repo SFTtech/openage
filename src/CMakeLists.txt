@@ -50,6 +50,8 @@ add_executable(${PROJECT_NAME}
 
 #library dependency specification
 
+set(FREETYPE_INCLUDE_DIRS "/usr/include/freetype2")
+
 include(FindPkgConfig)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)

@@ -18,7 +18,7 @@ install:
   - sudo apt-get install -qq python3 libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev cmake
 
 before_script:
-  - echo starting test build nao
+  - cmake --version
 
 script:
   - ./configure && make
