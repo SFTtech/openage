@@ -4,20 +4,23 @@ openage
 
 a free (as in freedom) implementation of
 
-microsoft(r) age of empires II (tm) - the age of conquerors
+microsoft(r) **age of empires II** (tm) - the age of conquerors
 
 
-brought to you by [SFT]Technologies.
+brought to you by **[SFT]Technologies**.
+
+current compile state:
+[![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
 
 
-this project is released under the GNU GPLv3 or later.
-see the COPYING file for that.
+this project is released under the **GNU GPLv3** or later.
+see the `COPYING` file for that.
 
 
 although we use the original game data files,
 our bundle does not ship any of the proprietary data used in aoc.
-in order to play, you have to provide a aoe2:aoc installation,
-or create free media files yourself.
+in order to play, you have to *provide a aoe2:aoc installation*,
+or *create free media files yourself*.
 
 
 this project uses the following programming languages:
