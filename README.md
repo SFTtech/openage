@@ -47,7 +47,7 @@ dependencies
 	dejavu font
 	freetype2
 	fontconfig
-	cmake
+	cmake >=2.8.10
 	sdl2
 	sdl2_image
 	gcc >=4.8 or clang >=3.3
@@ -93,7 +93,6 @@ we'd be happy to accept your port into our official repository,
 but note that it should fulfill certain quality standards.
 
 
-
 how to convert gamedata
 =======================
 
@@ -101,45 +100,12 @@ the original media files need to be converted for openage.
 see [the convert script readme file](convert/README.md).
 
 
-
 documentation
 =============
 
-static docs
------------
-
-general documentation files reside in the `doc/` directory.
-you can find ideas, milestones, planning and workflow descriptions etc in there.
-
-a good entry point may be the file `doc/implementation/project_structure`
-as it roughly explains where to find what code in the project.
-
-dynamic docs
-------------
-
-dynamic documentation files are generated from comments in the source code, using doxygen.
-the dynamic docs tend to only describe stuff you could also understand by reading the code itself,
-so don't expect too much, use the static docs instead.
-
-after you configured the project, you can invoke
-
-	make doc
-
-to create doxygen html and LaTeX files.
-
-
-after creation, view them in a browser by
-
-	$(browser) bin/doc/html/index.html
-
-
-or, if you want to create LaTeX documents:
-
-	make -C bin/doc/latex/ pdf
-	$(pdfviewer) bin/doc/latex/refman.pdf
-
-
-**i recommend looking at the source, as we try to write stuff as readable as possible.**
+- visit the `doc/` directory
+- for using doxygen: read the [the documentation readme file](doc/README.md).
+- i recommend looking at the source, as we try to write stuff as readable as possible.
 
 
 contributing
