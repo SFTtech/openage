@@ -383,6 +383,8 @@ void Buf::write_codepoint(int cp) {
 			} else {
 				//nothing is in order.
 				//this is an illegal escape sequence.
+
+
 				//abortabortabort
 				this->escaped = false;
 				this->escape_sequence.clear();
@@ -399,7 +401,7 @@ void Buf::write_codepoint(int cp) {
 
 			this->escape_sequence.clear();
 			return;
-		} else if (cp >= 0x20 && cp < 0x30) {
+		} else if (cp >= 0x20 && cp < 0x40) {
 			//this char is appended to the escape sequence
 			return;
 		} else {
@@ -512,6 +514,15 @@ void Buf::write_codepoint(int cp) {
 }
 
 void Buf::process_escape_sequence() {
+	printf("process escape sequence ");
+	for(int c: this->escape_sequence) {
+		if (c < 0x20 || c > 128) {
+			c = '?';
+		}
+		printf("%c", c);
+	}
+	printf("\n"); //ASDF
+
 	size_t len = this->escape_sequence.size();
 	int type = this->escape_sequence[len - 1];
 	bool starts_with_questionmark = false;
@@ -1006,7 +1017,7 @@ void Buf::to_stdout() {
 		printf("\u2502");
 		for (term_t x = 0; x < this->dims.x; x++) {
 			buf_char p = *(this->chrdataptr({x, y - this->scrollback_pos}));
-			if (p.cp < 20 || p.cp >= 128) {
+			if (p.cp < 32 || p.cp >= 128) {
 				p.cp = '?';
 			}
 			printf("\x1b[38;5;%dm\x1b[48;5;%dm", p.fgcol, p.bgcol);
