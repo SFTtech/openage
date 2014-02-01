@@ -28,7 +28,7 @@ int main() {
 	engine::init("openage");
 	//init engine::console
 	engine::console::init();
-        engine::console::bgcol = engine::util::col {255, 255, 255, 180};
+	engine::console::bgcol = engine::util::col {255, 255, 255, 180};
 	engine::console::fgcol = engine::util::col {0, 0, 0, 255};
 
 	engine::log::msg("Loading time [engine]: %5.3f s", timer.getval() / 1000.f);

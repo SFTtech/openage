@@ -8,6 +8,9 @@
 #include "shader/program.h"
 #include "coord/camgame.h"
 #include "coord/camhud.h"
+#include "coord/tile.h"
+#include "coord/tile3.h"
+#include "util/file.h"
 
 namespace engine {
 
@@ -39,11 +42,15 @@ this struct stores information about what position and size
 one sprite included in the "texture atlas" has.
 */
 struct subtexture {
+	unsigned int id;
+
 	/** x,y starting coordinates and width/height of the subtexture */
 	int x, y, w, h;
 
 	/** hotspot coordinates. */
 	int cx, cy;
+
+	int fill(const char *by_line);
 };
 
 
@@ -72,7 +79,8 @@ public:
 
 	void draw(coord::camhud pos, bool mirrored = false, int subid = 0, unsigned player = 0);
 	void draw(coord::camgame pos, bool mirrored = false, int subid = 0, unsigned player = 0);
-	void draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player);
+	void draw(coord::tile pos, int subid, Texture *alpha_texture = nullptr, int alpha_subid = -1);
+	void draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid);
 
 	struct subtexture *get_subtexture(int subid);
 	int get_subtexture_count();
@@ -108,9 +116,6 @@ private:
 	int subtexture_count;
 	bool use_player_color_tinting;
 	bool use_alpha_masking;
-
-	Texture *alpha_texture;
-	int alpha_subid;
 };
 
 } //namespace engine

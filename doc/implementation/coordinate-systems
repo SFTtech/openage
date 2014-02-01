@@ -98,3 +98,23 @@ for input processing
 	idea: HUD drawing code will register HUD objects with the engine
 	the engine then memorizes the areas where HUD objects are drawn,
 	and checks whether the mouse click lies within one of the rectangles
+
+
+
+phys2 <--------> tile <--------> chunk
+  |                |
+  |                |
+phys3 <--------> tile3
+  |
+  |
+camgame
+  |
+  |
+window <----------> camhud <------> term
+
+
+chunk to tile: needs tile-on-chunk coordinates
+tile-to-phys2: needs position-on-chunk coordinates
+phys2 to phys3: needs z component
+tile to tile3: needs z component
+camgame to phys3: needs z component

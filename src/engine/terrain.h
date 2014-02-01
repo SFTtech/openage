@@ -2,58 +2,292 @@
 #define _ENGINE_TERRAIN_H_
 
 #include <stddef.h>
+#include <map>
+#include <set>
 
+#include "terrain_chunk.h"
+#include "terrain_object.h"
 #include "texture.h"
 #include "coord/camgame.h"
-#include "coord/tile.h"
+#include "coord/chunk.h"
+#include "util/misc.h"
 
 namespace engine {
 
+class TerrainChunk;
+
 /**
-half the size of one terrain tile, in camgame
+type that for terrain ids.
+*/
+using terrain_t = int;
+
+/**
+half the size of one terrain diamond tile, in camgame
 */
 extern coord::camgame_delta tile_halfsize;
 
+
 /**
-terrain class represents the drawn terrain.
+describes one terrrain type, like water, ice, etc.
+*/
+struct terrain_type {
+	unsigned int id;
+	terrain_t terrain_id;
+	int slp_id;
+	int sound_id;
+	int blend_mode;
+	int blend_priority;
+	int angle_count;
+	int frame_count;
+	int terrain_dimensions0;
+	int terrain_dimensions1;
+	int terrain_replacement_id;
+
+	int fill(const char *by_line);
+};
+
+
+/**
+describes one blending mode, a blending transition shape between two different terrain types.
+*/
+struct blending_mode {
+	unsigned int id;
+	int mode_id;
+
+	int fill(const char *by_line);
+};
+
+
+/**
+comparisons for chunk coordinates.
+
+this allows storage of chunk coords as keys in a map.
+*/
+struct coord_chunk_compare {
+	bool operator()(coord::chunk a, coord::chunk b) {
+		return a.ne > b.ne || (a.ne == b.ne && a.se > b.se);
+	}
+};
+
+
+/**
+describes the properties of one terrain tile.
+
+this includes the terrain_id (ice, water, grass, ...)
+and the building standing on that tile.
+*/
+class TileContent {
+public:
+	TileContent();
+	~TileContent();
+	terrain_t terrain_id;
+	TerrainObject *obj;
+};
+
+
+/**
+coordinate offsets for getting tile neighbors by their id.
+*/
+constexpr coord::tile_delta const neigh_offsets[] = {
+	{ 1, -1},
+	{ 1,  0},
+	{ 1,  1},
+	{ 0,  1},
+	{-1,  1},
+	{-1,  0},
+	{-1, -1},
+	{ 0, -1}
+};
+
+
+/**
+describes the state of a terrain tile.
+*/
+enum tile_state {
+	missing,    //!< tile is not created yet
+	existing,   //!< tile is already existing
+	creatable,  //!< tile does not exist but can be created
+	invalid,    //!< tile does not exist and can not be created
+};
+
+
+/**
+storage for influences by neighbor tiles.
+*/
+struct influence {
+	uint8_t direction; //!< bitmask for influence directions, bit 0 = neighbor 0, etc.
+	int priority;   //!< the blending priority for this influence
+	terrain_t terrain_id; //!< the terrain id of the influence
+};
+
+struct influence_group {
+	int count;
+	terrain_t terrain_ids[8];
+	struct influence data[8];
+};
+
+struct neighbor_tile {
+	terrain_t terrain_id;
+	tile_state state;
+	int priority;
+};
+
+struct tile_data {
+	terrain_t terrain_id;
+	coord::tile pos;
+	int subtexture_id;
+	Texture *tex;
+	int priority;
+	int mask_id;
+	int blend_mode;
+	Texture *mask_tex;
+	tile_state state;
+};
+
+struct tile_draw_data {
+	ssize_t count;
+	struct tile_data data[9];
+};
+
+struct terrain_render_data {
+	std::vector<struct tile_draw_data> tiles;
+	std::set<TerrainObject *, util::less<TerrainObject *>> objects;
+};
+
+/**
+the terrain class is the main top-management interface for dealing with cost-benefit analysis to maximize company profits.
+
+actually this is just the entrypoint and container for the terrain chunks.
 */
 class Terrain {
 public:
-	bool blending_enabled;
-
-	Terrain(unsigned int height, size_t maxtextures, size_t maxblendmodes, int *priority_list);
+	Terrain(size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta, bool is_infinite);
 	~Terrain();
 
-	void draw();
+	bool blending_enabled; //!< is terrain blending active. increases memory accesses by factor ~8
+	bool infinite; //!< chunks are automagically created as soon as they are referenced
 
-	void set_tile(coord::tile pos, int tile);
-	int  get_tile(coord::tile pos);
+	coord::tile limit_positive, limit_negative; //!< for non-infinite terrains, this is the size limit.
+	//TODO: non-square shaped terrain bounds
 
+	/**
+	fill the terrain with given terrain_id values.
 
-	size_t tile_position_diag(unsigned int row, unsigned int offset);
-	size_t tile_position(coord::tile pos);
-	size_t get_tile_count();
+	@returns whether the data filled on the terrain was cut because of
+	         the terrains size limit.
+	*/
+	bool fill(const int *data, coord::tile_delta size);
 
-	void set_texture(size_t index, engine::Texture *t);
-	engine::Texture *get_texture(size_t index);
-	size_t tiles_in_row(unsigned int row);
-	size_t get_size();
-	void set_mask(unsigned int modeid, engine::Texture *m);
-	void set_blending(bool enabled);
+	void attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool manual=true);
+	TerrainChunk *get_chunk(coord::chunk position);
+	TerrainChunk *get_chunk(coord::tile position);
+	TerrainChunk *get_create_chunk(coord::chunk position);
+	TerrainChunk *get_create_chunk(coord::tile position);
 
-private:
-	size_t size;
-	int *tiles;
-	size_t tile_count;
-	size_t num_rows;
+	/**
+	return tile data for the given position.
 
-	size_t texture_count, blendmode_count;
-	engine::Texture **textures;
-	engine::Texture **blendmasks;
+	the only reason the chunks exist, is because of this data.
+	*/
+	TileContent *get_data(coord::tile position);
 
-	int *terrain_id_priority_map;
+	struct chunk_neighbors get_chunk_neighbors(coord::chunk position);
 
 	unsigned get_subtexture_id(coord::tile pos, unsigned atlas_size);
+
+	/**
+	checks the creation state and premissions of a given tile position.
+	*/
+	tile_state check_tile(coord::tile position);
+
+	/**
+	checks whether the given tile position is allowed to exist on this terrain.
+	*/
+	bool check_tile_position(coord::tile position);
+
+	bool validate_terrain(terrain_t terrain_id);
+	bool validate_mask(ssize_t mask_id);
+
+	int priority(terrain_t terrain_id);
+	int blendmode(terrain_t terrain_id);
+	Texture *texture(terrain_t terrain_id);
+	Texture *blending_mask(ssize_t mask_id);
+
+	/**
+	return the blending mode id for two given neighbor ids.
+	*/
+	int get_blending_mode(terrain_t base_id, terrain_t neighbor_id);
+
+	/**
+	draw the currently visible terrain area on screen.
+	*/
+	void draw();
+
+	/**
+	create the drawing instruction data.
+
+	created draw data according to the given tile boundaries.
+
+	@param ab: upper left tile
+	@param cd: upper right tile
+	@param ef: lower right tile
+	@param gh: lower left tile
+
+	@returns a drawing instruction struct that contains all information for rendering
+	*/
+	struct terrain_render_data create_draw_advice(coord::tile ab, coord::tile cd, coord::tile ef, coord::tile gh);
+
+	/**
+	create rendering and blending information for a single tile on the terrain.
+	*/
+	struct tile_draw_data create_tile_advice(coord::tile position);
+
+	/**
+	gather neighbors of a given base tile.
+
+	@param basepos: the base position, around which the neighbors will be fetched
+	@param neigh_tiles: the destination buffer where the neighbors will be stored
+	@param influences_by_terrain_id: influence buffer that is reset in the same step
+	*/
+	void get_neighbors(coord::tile basepos, struct neighbor_tile *neigh_tiles, struct influence *influences_by_terrain_id);
+
+	/**
+	look at neighbor tiles around the base_tile, and store the influence bits.
+
+	@param base_tile: the base tile for which influences are calculated
+	@param neigh_tiles: the neigbors of base_tile
+	@param influences_by_terrain_id: influences will be stored to this buffer, as bitmasks
+	@returns an influence group that describes the maximum 8 possible influences on the base_tile
+	*/
+	struct influence_group calculate_influences(struct tile_data *base_tile, struct neighbor_tile *neigh_tiles, struct influence *influences_by_terrain_id);
+
+	/**
+	calculate blending masks for a given tile position.
+
+	@param position: the base tile position, for which the masks are calculated
+	@param tile_data: the buffer where the created drawing layers will be stored in
+	@param influences: the buffer where calculated influences were stored to
+
+	@see calculate_influences
+	*/
+	void calculate_masks(coord::tile position, struct tile_draw_data *tile_data, struct influence_group *influences);
+
+	ssize_t terrain_id_count;
+	ssize_t blendmode_count;
+
+private:
+	/**
+	maps chunk coordinates to chunks.
+	*/
+	std::map<coord::chunk, TerrainChunk *, coord_chunk_compare> chunks;
+
+	Texture **textures;
+	Texture **blending_masks;
+
+	int *terrain_id_priority_map;
+	int *terrain_id_blendmode_map;
+
+	struct influence *influences_buf;
 };
 
 } //namespace engine

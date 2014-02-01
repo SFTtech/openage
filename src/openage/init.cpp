@@ -7,6 +7,9 @@
 #include "../engine/util/file.h"
 #include "../engine/util/error.h"
 #include "../engine/callbacks.h"
+#include "../engine/util/file.h"
+#include "../engine/log.h"
+#include "../engine/terrain_chunk.h"
 
 #include "callbacks.h"
 #include "gamestate.h"
@@ -15,34 +18,23 @@ using namespace engine;
 
 namespace openage {
 
-Texture **terrain_textures, **blending_textures;
-
-//hardcoded for now
-unsigned int blend_mode_count = 9;
-
-int *terrain_priority_list;
-
-unsigned int terrain_data[20][20] = {
-	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
-	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
-	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
-	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7, 11, 11, 11,  7,  7,  7,  7,  7},
-	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7, 11, 11, 11, 11, 11,  7,  7,  7},
-	{  7,  7, 20, 20, 20,  7,  7,  7,  7,  7,  7,  7, 11, 11, 11, 11, 11, 11,  7,  7},
-	{  7,  7, 20,  7,  7, 20, 20,  7,  7,  7,  7,  7, 11, 11, 11, 11, 11,  7,  7,  7},
-	{  7,  7, 20,  7,  7,  7,  7,  7,  7,  7,  7,  7, 11, 11, 11,  7,  7,  7,  7,  7},
-	{  7, 20, 20, 20,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
-	{  7,  7, 20,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
-	{  7,  7, 20,  7,  7,  7,  9,  9,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
-	{  7,  7,  7,  7,  7,  7,  9,  9,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
-	{  7,  7,  7,  7, 13,  7,  9,  7,  7, 12, 12,  7,  7,  7,  7,  7,  7,  7,  7,  7},
-	{  7,  7,  7,  7, 13,  9,  9,  7, 12,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7},
-	{  7,  7,  7,  7, 13,  7,  7,  7, 12,  7,  7,  7,  7, 17, 17, 17,  7,  7,  7,  7},
-	{  7,  7,  7,  7, 13,  7,  7,  7, 12,  7,  7,  7,  7, 18, 18, 18,  7,  7,  7,  7},
-	{  7,  7, 12, 12, 12, 12, 12, 12, 12,  7,  7,  7,  7, 19, 19, 19,  7,  7,  7,  7},
-	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  3,  3,  3,  7,  7,  7,  7},
-	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  3,  3,  3,  3, 14, 14,  7},
-	{  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  3,  3,  7,  7,  7}
+constexpr int terrain_data[16 * 16] = {
+	  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1,
+	  0, 18, 18, 18, 18, 18,  0,  0, 16,  0,  2,  1, 15, 14, 15,  1,
+	 18, 18,  0,  0, 18, 18,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1,
+	 18, 18,  0,  0, 18, 18,  0,  0, 16,  0,  2,  1,  1,  1,  2,  2,
+	 18, 18, 18,  0, 18, 18,  9,  9, 16,  0,  0,  2,  2,  2,  0,  0,
+	 18, 18,  0,  0,  0,  0,  9,  9, 16,  0,  0,  0,  0,  0,  0,  0,
+	  0, 18,  0,  0,  0,  9,  9,  9, 16,  0,  0, -1,  0,  0,  0,  0,
+	  0,  0,  0,  2,  0,  9,  9,  0,  2,  2,  0,  0, -1,  0, 23, 23,
+	  0,  0,  2, 15,  2,  9,  0,  2, 15, 15,  2,  0, -1,  0,  0,  0,
+	  0,  0,  2, 15,  2,  2,  2, 15,  2,  2,  0,  0,  0,  0,  0,  0,
+	  0,  0,  2, 15,  2,  2,  2, 15,  2,  0,  0,  0, 20, 20, 20,  0,
+	  0,  2,  2, 15,  2,  2,  2, 14,  2,  0,  0,  0, 21, 21, 21,  0,
+	  2, 15, 15, 15, 15, 15, 14, 14,  2,  0,  0,  0, 22, 22, 22,  0,
+	  0,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  5,  5,  5,  0,
+	  0,  0,  0,  0,  0,  0,  0,  0, 16, 16, 16, 16,  5,  5,  5,  5,
+	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5,  5
 };
 
 void init() {
@@ -54,143 +46,85 @@ void init() {
 
 	university = new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
-	terrain_priority_list = new int[terrain_texture_count];
-	terrain_textures = new Texture*[terrain_texture_count];
+	terrain_type *terrain_types;
+	size_t ttype_count = util::read_csv_file<terrain_type>(&terrain_types, "age/processed/terrain_meta.docx");
 
-	//set terrain priorities, TODO: get them from media files. hardcoded for now.
-	terrain_priority_list[0]  = 70;
-	terrain_priority_list[1]  = 102;
-	terrain_priority_list[2]  = 139;
-	terrain_priority_list[3]  = 155;
-	terrain_priority_list[4]  = 157;
-	terrain_priority_list[5]  = 101;
-	terrain_priority_list[6]  = 106;
-	terrain_priority_list[7]  = 90;
-	terrain_priority_list[8]  = 100;
-	terrain_priority_list[9]  = 80;
-	terrain_priority_list[10] = 92;
-	terrain_priority_list[11] = 60;
-	terrain_priority_list[12] = 140;
-	terrain_priority_list[13] = 141;
-	terrain_priority_list[14] = 110;
-	terrain_priority_list[15] = 122;
-	terrain_priority_list[16] = 123;
-	terrain_priority_list[17] = 150;
-	terrain_priority_list[18] = 151;
-	terrain_priority_list[19] = 152;
-	terrain_priority_list[20] = 40;
-	terrain_priority_list[21] = 130;
-	terrain_priority_list[22] = 132;
-	terrain_priority_list[23] = 134;
-	terrain_priority_list[24] = 136;
-	terrain_priority_list[25] = 162;
-	terrain_priority_list[26] = 120;
+	blending_mode *blending_modes;
+	size_t bmode_count = util::read_csv_file<blending_mode>(&blending_modes, "age/processed/blending_meta.docx");
 
-	terrain = new Terrain(20, terrain_texture_count, blend_mode_count, terrain_priority_list);
+	//create the terrain which will be filled by chunks
+	terrain = new Terrain(ttype_count, terrain_types, bmode_count, blending_modes, true);
 
-	for (unsigned int i = 0; i < terrain_texture_count; i++) {
-		int current_id = terrain_ids[i];
-		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", current_id);
+	delete[] terrain_types;
+	delete[] blending_modes;
 
-		auto new_texture = new Texture(terraintex_filename, true, ALPHAMASKED);
-		new_texture->fix_hotspots(48, 24);
-
-		terrain_textures[i] = new_texture;
-		terrain->set_texture(i, new_texture);
-
-		delete[] terraintex_filename;
-	}
-
-	//add the blendomatic masks to the terrain
-	blending_textures = new Texture*[blend_mode_count];
-
-	for (unsigned int i = 0; i < blend_mode_count; i++) {
-		char *mask_filename = util::format("age/alphamask/mode%02d.png", i);
-
-		auto new_texture = new Texture(mask_filename, true);
-		new_texture->fix_hotspots(48, 24);
-
-		blending_textures[i] = new_texture;
-		terrain->set_mask(i, new_texture);
-
-		delete[] mask_filename;
-	}
+	terrain->fill(terrain_data, coord::tile_delta{16, 16});
 
 
-	//set the terrain types according to the data array.
-	coord::tile pos = {0, 0};
-	for (; pos.ne < (int) terrain->get_size(); pos.ne++) {
-		for (pos.se = 0; pos.se < (int) terrain->get_size(); pos.se++) {
-			int texid = terrain_data[pos.ne][pos.se];
-			terrain->set_tile(pos, texid);
+	struct player_color_line {
+		unsigned int id;
+		unsigned int r, g, b, a;
+
+		int fill(const char *by_line) {
+			if (5 == sscanf(by_line, "%u=%u,%u,%u,%u",
+			                &this->id,
+			                &this->r,
+			                &this->g,
+			                &this->b,
+			                &this->a
+			                )) {
+				return 0;
+			}
+			else {
+				return -1;
+			}
 		}
-	}
-
-
+		void dump() {
+			engine::log::msg("color %u: (%u,%u,%u,%u)", this->id, this->r, this->g, this->b, this->a);
+		}
+	};
 
 
 	//get the player colors from the sub-palette exported by script
-	char *pcolor_file = util::read_whole_file("age/processed/player_color_palette.pal");
+	player_color_line *player_color_lines;
+	ssize_t pcolor_count = engine::util::read_csv_file<player_color_line>(&player_color_lines, "age/processed/player_color_palette.pal");
 
-	char *pcolor_seeker = pcolor_file;
-	char *currentline = pcolor_file;
-
-	//hardcoded for now.
-	const unsigned int num_pcolors = 64;
-	GLfloat playercolors[num_pcolors*4];
-
-	for(; *pcolor_seeker != '\0'; pcolor_seeker++) {
-
-		if (*pcolor_seeker == '\n') {
-			*pcolor_seeker = '\0';
-
-			if (*currentline != '#') {
-				uint n, r, g, b, a, idx;
-
-				//TODO raise exception if stuff is specified multiple times.
-				//alternatively, simply dont use indices, raise exception if values are > 255 or < 0, or if idx is < 0 or > 63
-
-				if(sscanf(currentline, "n=%u", &n) == 1) {
-					if (n != num_pcolors) {
-						throw Error("the player colortable must have %u entries!", num_pcolors);
-					}
-				} else if(sscanf(currentline, "%u=%u,%u,%u,%u", &idx, &r, &g, &b, &a)) {
-					playercolors[idx*4] = r / 255.0;
-					playercolors[idx*4 + 1] = g / 255.0;
-					playercolors[idx*4 + 2] = b / 255.0;
-					playercolors[idx*4 + 3] = a / 255.0;
-				} else {
-					throw Error("unknown line content reading the player color table");
-				}
-			}
-			currentline = pcolor_seeker + 1;
-		}
+	GLfloat *playercolors = new GLfloat[pcolor_count*4];
+	for (ssize_t i = 0; i < pcolor_count; i++) {
+		auto line = &player_color_lines[i];
+		playercolors[i*4]     = line->r / 255.0;
+		playercolors[i*4 + 1] = line->g / 255.0;
+		playercolors[i*4 + 2] = line->b / 255.0;
+		playercolors[i*4 + 3] = line->a / 255.0;
 	}
-
-	delete[] pcolor_file;
+	delete[] player_color_lines;
 
 
 	//shader initialisation
-
 	//read shader source codes and create shader objects for wrapping them.
 
-	char *texture_vert_code = util::read_whole_file("shaders/maptexture.vert.glsl");
+	char *texture_vert_code;
+	util::read_whole_file(&texture_vert_code, "shaders/maptexture.vert.glsl");
 	auto plaintexture_vert = new shader::Shader(GL_VERTEX_SHADER, texture_vert_code);
 	delete[] texture_vert_code;
 
-	char *texture_frag_code = util::read_whole_file("shaders/maptexture.frag.glsl");
+	char *texture_frag_code;
+	util::read_whole_file(&texture_frag_code, "shaders/maptexture.frag.glsl");
 	auto plaintexture_frag = new shader::Shader(GL_FRAGMENT_SHADER, texture_frag_code);
 	delete[] texture_frag_code;
 
-	char *teamcolor_frag_code = util::read_whole_file("shaders/teamcolors.frag.glsl");
+	char *teamcolor_frag_code;
+	util::read_whole_file(&teamcolor_frag_code, "shaders/teamcolors.frag.glsl");
 	auto teamcolor_frag = new shader::Shader(GL_FRAGMENT_SHADER, teamcolor_frag_code);
 	delete[] teamcolor_frag_code;
 
-	char *alphamask_vert_code = util::read_whole_file("shaders/alphamask.vert.glsl");
+	char *alphamask_vert_code;
+	util::read_whole_file(&alphamask_vert_code, "shaders/alphamask.vert.glsl");
 	auto alphamask_vert = new shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
 	delete[] alphamask_vert_code;
 
-	char *alphamask_frag_code = util::read_whole_file("shaders/alphamask.frag.glsl");
+	char *alphamask_frag_code;
+	util::read_whole_file(&alphamask_frag_code, "shaders/alphamask.frag.glsl");
 	auto alphamask_frag = new shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
 	delete[] alphamask_frag_code;
 
@@ -221,6 +155,7 @@ void init() {
 	//fill the teamcolor shader's player color table:
 	glUniform4fv(teamcolor_shader::player_color_var, 64, playercolors);
 	teamcolor_shader::program->stopusing();
+	delete[] playercolors;
 
 
 	//create program for drawing textures that are alpha-masked before
@@ -251,21 +186,19 @@ void init() {
 }
 
 void destroy() {
+	for (auto &obj : buildings) {
+		delete obj;
+	}
+
 	//oh noes, release hl3 before that!
 	delete gaben;
+
+	delete terrain;
 
 	delete university;
 	delete texture_shader::program;
 	delete teamcolor_shader::program;
 	delete alphamask_shader::program;
-
-	for (unsigned int i = 0; i < terrain_texture_count; i++) {
-		delete terrain_textures[i];
-	}
-	for (unsigned int i = 0; i < blend_mode_count; i++) {
-		delete blending_textures[i];
-	}
-	delete[] terrain_priority_list;
 }
 
 } //namespace openage

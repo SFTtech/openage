@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 2.8.8)
-#v2.8.6-306-gfa7141f introduced compiler version detection
-#git tag --contains=fa7141f => 2.8.8
+cmake_minimum_required(VERSION 2.8.10)
+#git tag --contains=fa7141f => 2.8.8    # compiler version detection
+#git tag --contains=fbda7bb => 2.8.10   # find GLEW module
 
 project(openage)
 
@@ -37,8 +37,8 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++11 -march=native -mtune=nat
 set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin")
 set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/lib")
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g -Og")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -Werror -O3 -flto=4")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -Werror -O3")  #TODO: -flto=4 (clang needs gold linker I think)
 
 message("compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 
@@ -47,10 +47,12 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8)
 		message(FATAL_ERROR ">=gcc-4.8 required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
 	endif()
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Og")
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.3)
 		message(FATAL_ERROR ">=clang-3.3 required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
 	endif()
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
 else() #"Intel", "MSVC", etc..
 	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 endif()

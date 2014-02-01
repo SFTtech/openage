@@ -4,21 +4,36 @@ openage
 
 a free (as in freedom) implementation of
 
-microsoft(r) age of empires II (tm) - the age of conquerors
+microsoft(r) **age of empires II** (tm) - the age of conquerors
 
 
-brought to you by [SFT]Technologies.
+brought to you by **[SFT]Technologies**.
+
+current compile state:
+[![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
 
 
-this project is released under the GNU GPLv3 or later.
-see the COPYING file for that.
+this project is released under the **GNU GPLv3** or later.
+see the `COPYING` file for that.
 
 
 although we use the original game data files,
 our bundle does not ship any of the proprietary data used in aoc.
-in order to play, you have to provide a aoe2:aoc installation,
-or create free media files yourself.
+in order to play, you have to *provide a aoe2:aoc installation*,
+or *create free media files yourself*.
 
+
+this project uses the following programming languages:
+
+* **C++11**: the game, its engine
+* **python**: scripting, media convert script
+
+
+current state
+=============
+
+the current functionality state of this project can be
+looked up in the [current STATUS](STATUS.md) file.
 
 
 dependencies
@@ -26,62 +41,33 @@ dependencies
 
 	python3
 	python3 imaging library (PIL) -> pillow
-	opengl 2.1
+	opengl >=2.1
 	glew
 	ftgl
 	dejavu font
 	freetype2
 	fontconfig
+	cmake >=2.8.10
+	sdl2
+	sdl2_image
+	gcc >=4.8 or clang >=3.3
 
-
-
-
-how to convert gamedata
-=======================
-
-The original aoc game data format is, lets say, a challenge to use.
-Therefore it has to be converted in order to be usable with openage.
-
-The python script for that is in the convert/ folder, it will convert all the
-media files to formats being usable by openage.
-
-This also means that you have to own the original media files, as we are way
-too lazy to create free media files for now, that's something the community can do..
-
-
-To convert ALL original media files to openage format, execute the following:
-
-	python3 convert -o . $PATH_TO_YOUR_AOC_INSTALLATION
-
-for example, if you installed aoc with wine:
-
-	python3 convert -o . ~/.wine-age/drive_c/programs/ms-games/aoe2
-
-You will then find the converted files in ./data/age/
-
-
-try
-
-	python3 convert --help
-
-to see the usage, as you probably don't want to convert all the files (we don't use them yet..)
-
-
-for converting only media files we do use at the moment, execute this:
-
-	python3 convert -o . $aoe2-installpath $(make medialist)
-
+	age of empires II
+		conquerors expansion
+		patch 1.0c
+		optionally: with "userpatch"
+		installed: with wine OR as the program directory
 
 
 how to compile && run
 =====================
 
-on POSIX:
----------
+on POSIX (GNU/Linux, BSD, etc..):
+---------------------------------
 
 	./configure --mode=release
 	make
-	make AGE2DIR=~/.wine-age/drive_c/programs/ms-games/aoe2 media
+	make media AGE2DIR="~/.wine-age/drive_c/programs/ms-games/aoe2"
 	cd data && ../bin/openage
 
 for other make targets, see:
@@ -91,44 +77,35 @@ for other make targets, see:
 on WINDOWS:
 -----------
 
+we don't have any interest in porting the game,
+but we are using cross-platform libraries wherever possible,
+so porting should not be a big issue.
+
+
 if you are keen on porting the game, go for it.
+there should be as few preprocessor switches as possible;
+if possible they should all be concentrated in one 'cross-platform abstraction file'
+we suggest using either cygwin-g++ or mingw32-g++ as the windows compiler
+cygwin will probably be the least effort.
+
+
+we'd be happy to accept your port into our official repository,
+but note that it should fulfill certain quality standards.
+
+
+how to convert gamedata
+=======================
+
+the original media files need to be converted for openage.
+see [the convert script readme file](convert/README.md).
 
 
 documentation
 =============
 
-static docs
------------
-
-general documentation files reside in the doc/ directory.
-you can find ideas, milestones, planning and workflow descriptions etc in there.
-
-dynamic docs
-------------
-
-dynamic documentation files are generated from comments in the source code, using doxygen.
-the dynamic docs tend to only describe stuff you could also understand by reading the code itself,
-so don't expect too much, use the static docs instead.
-
-after you configured the project, you can invoke
-
-	make doc
-
-to create doxygen html and LaTeX files.
-
-
-after creation, view them in a browser by
-
-	$(browser) bin/doc/html/index.html
-
-
-or, if you want to create LaTeX documents:
-
-	make -C bin/doc/latex/ pdf
-	$(pdfviewer) bin/doc/latex/refman.pdf
-
-
-i'd recommend looking at the source, as we try do write stuff as readable as possible.
+- visit the `doc/` directory
+- for using doxygen: read the [the documentation readme file](doc/README.md).
+- i recommend looking at the source, as we try to write stuff as readable as possible.
 
 
 contributing
@@ -141,18 +118,23 @@ contributing
 * so please don't even think about helping us
 
 guidelines:
+
 * don't write **bugreports**, openage is totally bugfree, of course
 * don't **fix bugs** yourself, see above, we don't have bugs
 * don't implement **new features**, they are crap anyway
 * don't EVER send **pull-requests**!
 * don't note the irony, you idiot
 
+For that, we have [a list of things that nobody should ever implement](TASKS.md).
+
+
 contact
 =======
 
 currently you can use these communication channels to reach us morons:
-* IRC:  #sfttech on freenode.org
-* XMPP: openage@chat.sft.mx
+
+* **IRC**: #sfttech on freenode.net
+* **XMPP**: openage@chat.sft.mx
 
 
 cheers, happy hecking.

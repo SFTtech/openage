@@ -64,12 +64,13 @@ def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "
 def mkdirs(path):
 	os.makedirs(path, exist_ok = True)
 
-def set_dir(dirname, is_writedir):
-	global writepath, readpath
-	if is_writedir:
-		writepath = dirname
-	else:
-		readpath = dirname
+def set_write_dir(dirname):
+	global writepath
+	writepath = dirname
+
+def set_read_dir(dirname):
+	global readpath
+	readpath = dirname
 
 def file_get_path(fname, write = False):
 	if write:
@@ -216,3 +217,50 @@ def generate_meta_text(metadata, header = None):
 		meta_out += "%d,%d\n" % (hotspot_x, hotspot_y)
 
 	return meta_out
+
+
+def zstr(data):
+	"""
+	returns the utf8 string representation of a byte array.
+
+	terminates on end of string, or when \0 is reached.
+	"""
+
+	return data.decode("utf-8").rstrip("\x00")
+
+
+def check_file(fid):
+	if (True):
+		#deactivated for now, maybe use again later
+		return
+
+	import filelist
+	if fid in filelist.avail_files:
+		entries = filelist.avail_files[fid]
+		for arch, extension in entries:
+			dbg("%d.%s in %s" % (fid, extension, arch), 2)
+	elif fid in [-1, 0]:
+		dbg("***** graphic is %d!!" % fid, 2)
+		pass
+	else:
+		msg = "##### file %d not found" % (fid)
+		#raise Exception(msg)
+		dbg(msg, 2)
+
+
+def offset_info(offset, data, msg="", s=None, mode=0):
+	ret = "====== @ %d = %#x ======" % (offset, offset)
+	ret += " %s " % msg
+
+	#print struct info
+	if s != None:
+		ret += "== \"" + str(s.format.decode("utf-8")) + "\" =="
+
+	#long info mode
+	if mode == 0:
+		ret += "\n" + str(data) + "\n"
+	elif mode == 1:
+		ret += " " + str(data)
+
+	dbg(ret, 3)
+

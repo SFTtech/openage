@@ -45,10 +45,9 @@ size_t rstrip(char *s) {
 	size_t strippedlen = strlen(s);
 
 	while(strippedlen > 0) {
-		if (
-			s[strippedlen - 1] == '\n' or
-			s[strippedlen - 1] == ' ' or
-			s[strippedlen - 1] == '\t') {
+		if (s[strippedlen - 1] == '\n' ||
+		    s[strippedlen - 1] == ' '  ||
+		    s[strippedlen - 1] == '\t') {
 
 			strippedlen -= 1;
 		} else {

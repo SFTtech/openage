@@ -1,0 +1,52 @@
+openage project structure
+=========================
+
+
+one of the biggest problems for newcomers that want to contribute
+code to free software projects is that they have no idea where to start.
+
+reading, understanding and finding the relevant code part is hard.
+
+this file will help you understanding the modular structure of this project.
+
+
+=> if you plan to add things here, remember: this file shall guide newcomers.
+
+
+folders
+=======
+
+doc
+---
+you may not believe it, but documentation stuff is in the doc folder.
+for example, this document lies in there, because it documents something. wow.
+
+
+convert
+-------
+the gamedata convert script written in python resides in there.
+documentation about media files being converted is in doc/media.
+
+
+data
+----
+shaders and converted media files are stored in here.
+these are all the files being needed at run time.
+
+
+src
+---
+game files written in conservative C++11 live here.
+
+src/openage: game specific code
+src/engine: engine specific code.
+
+separation between engine and game
+is not clear yet, most code stays in engine until it seems to be
+game specific..
+
+
+this file is never complete!
+============================
+if you come up with something that may be helping others:
+add it to this file.

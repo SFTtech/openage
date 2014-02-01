@@ -36,9 +36,6 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 	this->use_player_color_tinting = 0 < (mode & PLAYERCOLORED);
 	this->use_alpha_masking        = 0 < (mode & ALPHAMASKED);
 
-	this->alpha_subid = -1;
-	this->alpha_texture = nullptr;
-
 	SDL_Surface *surface;
 	GLuint textureid;
 	int texture_format;
@@ -99,75 +96,17 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		log::msg("loading meta file %s", meta_filename);
 
 		//get subtexture information by meta file exported by script
-		char *texture_meta_file = util::read_whole_file(meta_filename);
-
+		this->subtexture_count = util::read_csv_file<subtexture> (&this->subtextures, meta_filename);
+		//TODO: use information from empires.dat for that, also use x and y sizes:
+		this->atlas_dimensions = sqrt(this->subtexture_count);
 		delete[] meta_filename;
-
-		char *tmeta_seeker = texture_meta_file;
-		char *currentline = texture_meta_file;
-
-		bool wanting_count = true;
-
-		for(; *tmeta_seeker != '\0'; tmeta_seeker++) {
-
-			if (*tmeta_seeker == '\n') {
-				*tmeta_seeker = '\0';
-
-				if (*currentline != '#') {
-					//count, index, x, y, width, height, hotspotx, hotspoty
-					uint n, idx, tx, ty, tw, th, hx, hy;
-
-					if(sscanf(currentline, "n=%u", &n) == 1) {
-						this->subtexture_count = n;
-						this->atlas_dimensions = sqrt(n);
-						this->subtextures = new struct subtexture[n];
-						wanting_count = false;
-					}
-					else {
-						if (wanting_count) {
-							throw Error("texture meta line found, but no count set yet in %s", meta_filename);
-						}
-						else if(sscanf(currentline, "%u=%u,%u,%u,%u,%u,%u", &idx, &tx, &ty, &tw, &th, &hx, &hy)) {
-							struct subtexture subtext;
-
-							//lower left coordinates, origin
-							subtext.x = tx;
-							subtext.y = ty;
-
-							//width and height from lower left origin
-							subtext.w = tw;
-							subtext.h = th;
-
-							//hotspot/center coordinates
-							subtext.cx = hx;
-							subtext.cy = hy;
-
-							this->subtextures[idx] = subtext;
-						}
-						else {
-							throw Error("unknown line content reading texture meta file %s", meta_filename);
-						}
-					}
-				}
-				currentline = tmeta_seeker + 1;
-			}
-		}
-
-		delete[] texture_meta_file;
 	}
 	else { //this texture does not contain subtextures
-		struct subtexture subtext;
-
-		subtext.x = 0;
-		subtext.y = 0;
-		subtext.w = this->w;
-		subtext.h = this->h;
-		subtext.cx = 0;
-		subtext.cy = 0;
+		struct subtexture s {0, 0, 0, this->w, this->h, this->w/2, this->h/2};
 
 		this->subtexture_count = 1;
 		this->subtextures = new struct subtexture[1];
-		this->subtextures[0] = subtext;
+		this->subtextures[0] = s;
 	}
 	glGenBuffers(1, &this->vertbuf);
 }
@@ -185,15 +124,22 @@ void Texture::fix_hotspots(unsigned x, unsigned y) {
 }
 
 void Texture::draw(coord::camhud pos, bool mirrored, int subid, unsigned player) {
-	this->draw(pos.x, pos.y, mirrored, subid, player);
+	this->draw(pos.x, pos.y, mirrored, subid, player, nullptr, -1);
 }
 
 void Texture::draw(coord::camgame pos, bool mirrored, int subid, unsigned player) {
-	this->draw(pos.x, pos.y, mirrored, subid, player);
+	this->draw(pos.x, pos.y, mirrored, subid, player, nullptr, -1);
 }
 
-void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player) {
+void Texture::draw(coord::tile pos, int subid, Texture *alpha_texture, int alpha_subid) {
+	coord::camgame draw_pos = pos.to_tile3().to_phys3().to_camgame();
+	this->draw(draw_pos.x, draw_pos.y, false, subid, 0, alpha_texture, alpha_subid);
+}
+
+void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) {
 	glColor4f(1, 1, 1, 1);
+
+	//log::dbg("drawing texture at %hd, %hd", x, y);
 
 	bool use_playercolors = false;
 	bool use_alphashader = false;
@@ -202,16 +148,16 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	int *pos_id, *texcoord_id, *masktexcoord_id;
 
 	//is this texture drawn with an alpha mask?
-	if (this->alpha_subid >= 0 && this->use_alpha_masking) {
+	if (this->use_alpha_masking && alpha_subid >= 0 && alpha_texture != nullptr) {
 		alphamask_shader::program->use();
 
 		//bind the alpha mask texture to slot 1
 		glActiveTexture(GL_TEXTURE1);
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, this->alpha_texture->get_texture_id());
+		glBindTexture(GL_TEXTURE_2D, alpha_texture->get_texture_id());
 
 		//get the alphamask subtexture (the blend mask!)
-		mtx = this->alpha_texture->get_subtexture(this->alpha_subid);
+		mtx = alpha_texture->get_subtexture(alpha_subid);
 		pos_id = &alphamask_shader::program->pos_id;
 		texcoord_id = &alphamask_shader::base_coord;
 		masktexcoord_id = &alphamask_shader::mask_coord;
@@ -270,7 +216,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 
 	float mtxl=0, mtxr=0, mtxt=0, mtxb=0;
 	if (use_alphashader) {
-		this->alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
+		alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
 	}
 
 	//this array will be uploaded to the GPU.
@@ -377,18 +323,28 @@ void Texture::get_subtexture_size(int subid, int *w, int *h) {
 	*h = subtex->h;
 }
 
-void Texture::activate_alphamask(Texture *mask, int subid) {
-	this->alpha_texture = mask;
-	this->alpha_subid = subid;
-}
-
-void Texture::disable_alphamask() {
-	this->alpha_texture = nullptr;
-	this->alpha_subid = -1;
-}
-
 GLuint Texture::get_texture_id() {
 	return this->id;
+}
+
+/**
+parse one line for a subtexture area description.
+*/
+int subtexture::fill(const char *by_line) {
+	if (sscanf(by_line, "%u=%d,%d,%d,%d,%d,%d",
+	           &this->id,
+	           &this->x, //lower left coordinates, origin
+	           &this->y,
+	           &this->w, //width and height from lower left origin
+	           &this->h,
+	           &this->cx, //hotspot/center coordinates
+	           &this->cy
+	           )) {
+		return 0;
+	}
+	else {
+		return -1;
+	}
 }
 
 

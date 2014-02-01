@@ -19,10 +19,10 @@ int main() {
 	test();
 	return 0;
 
-        try {
-                return openage::main();
-        } catch (engine::Error e) {
-                engine::log::fatal("Exception: %s", e.str());
-                return 1;
-        }
+	try {
+		return openage::main();
+	} catch (engine::Error e) {
+		engine::log::fatal("Exception: %s", e.str());
+		return 1;
+	}
 }

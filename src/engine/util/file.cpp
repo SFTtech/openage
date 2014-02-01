@@ -5,40 +5,49 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "../log.h"
+#include "error.h"
 
 namespace engine {
 namespace util {
 
-char *read_whole_file(const char *filename) {
+
+ssize_t read_whole_file(char **result, const char *filename) {
 
 	//get the file size
 	struct stat st;
 	if (stat(filename, &st) < 0) {
-		log::fatal("failed getting filesize of %s", filename);
-		exit(1);
+		throw Error("failed getting filesize of %s", filename);
 	}
 
 	//open the file
 	FILE *filehandle = fopen(filename, "r");
 	if (filehandle == NULL) {
-		log::fatal("failed opening file %s", filename);
-		exit(1);
+		throw Error("failed opening file %s", filename);
 	}
+
+	size_t content_length = (size_t) st.st_size;
+
+	//allocate filesize + nullbyte
+	*result = new char[content_length + 1];
 
 	//read the whole content
-	char *str = new char[st.st_size + 1];
-	if (((unsigned long) st.st_size) != fread(str, 1, st.st_size, filehandle)) {
-		log::fatal("failed reading the file %s", filename);
-		exit(1);
+	if (content_length != fread(*result, 1, st.st_size, filehandle)) {
+		fclose(filehandle);
+		throw Error("failed reading the file %s", filename);
+	} else {
+		fclose(filehandle);
 	}
 
-	str[(size_t) st.st_size] = '\0';
+	//make sure 0-byte is at the end
+	(*result)[content_length] = '\0';
 
-	//return the file contents
-	return str;
+	//return the file size
+	return content_length;
 }
+
 
 } //namespace util
 } //namespace engine
