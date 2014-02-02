@@ -113,5 +113,39 @@ size_t utf8_decode(const unsigned char *s, size_t len, int32_t *outbuf) {
 	return result;
 }
 
+size_t utf8_encode(int cp, char *outbuf) {
+	if (cp < 0) {
+		//illegal codepoint (negative)
+		outbuf[0] = '\0';
+		return 0;
+	} else if (cp < 0x80) {
+		outbuf[0] = cp;
+		outbuf[1] = '\0';
+		return 1;
+	} else if (cp < 0x800) {
+		outbuf[2] = '\0';
+		outbuf[1] = 0x80 | (cp & 0x3f); cp >>= 6;
+		outbuf[0] = 0xc0 | cp;
+		return 2;
+	} else if (cp < 0x10000) {
+		outbuf[3] = '\0';
+		outbuf[2] = 0x80 | (cp & 0x3f); cp >>= 6;
+		outbuf[1] = 0x80 | (cp & 0x3f); cp >>= 6;
+		outbuf[0] = 0xe0 | cp;
+		return 3;
+	} else if (cp < 0x200000) {
+		outbuf[4] = '\0';
+		outbuf[3] = 0x80 | (cp & 0x3f); cp >>= 6;
+		outbuf[2] = 0x80 | (cp & 0x3f); cp >>= 6;
+		outbuf[1] = 0x80 | (cp & 0x3f); cp >>= 6;
+		outbuf[0] = 0xf0 | cp;
+		return 4;
+	} else {
+		//illegal codepoint: unicode is only defined up to 0x1fffff
+		outbuf[0] = '\0';
+		return 0;
+	}
+}
+
 } //namespace util
 } //namespace engine

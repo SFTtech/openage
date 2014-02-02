@@ -74,6 +74,22 @@ public:
  */
 size_t utf8_decode(const unsigned char *s, size_t len, codepoint_t *outbuf);
 
+/**
+ * encodes one Unicode codepoint to a null-terminated UTF-8 character string.
+ * due to the nature of UTF-8, the result string is at most 4 bytes long.
+ * on error, the empty string is returned.
+ *
+ * cp
+ *   the codepoint
+ * outbuf
+ *   a output char buffer. outbuf[0] to outbuf[4] MUST be writeable.
+ *   outbuf[0] will ALWAYS be written to.
+ * returns
+ *   the number of non-NULL bytes that have been written, i.e.
+ *   strlen(outbuf)
+ */
+size_t utf8_encode(int cp, char *outbuf);
+
 } //namespace util
 } //namespace engine
 

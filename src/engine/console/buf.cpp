@@ -1,6 +1,6 @@
 #include "buf.h"
 
-#include "../util/misc.h"
+#include "../util/unicode.h"
 
 #include "stdio.h"
 
@@ -855,6 +855,7 @@ void Buf::sgr(const std::vector<int> &params) {
 			break;
 		case 39: //reset foreground color
 			this->current_char_fmt.fgcol = BUF_CHAR_DEFAULT.fgcol;
+			break;
 		case 40:
 		case 41:
 		case 42:
@@ -1040,7 +1041,7 @@ void Buf::to_stdout(bool clear) {
 		//draw chars of this line
 		for (term_t x = 0; x < this->dims.x; x++) {
 			buf_char p = *(this->chrdataptr({x, y - this->scrollback_pos}));
-			if (p.cp < 32 || p.cp >= 128) {
+			if (p.cp < 32) {
 				p.cp = '?';
 			}
 			printf("\x1b[38;5;%dm\x1b[48;5;%dm", p.fgcol, p.bgcol);
@@ -1053,7 +1054,12 @@ void Buf::to_stdout(bool clear) {
 			if ((p.flags & CHR_NEGATIVE) xor (this->cursorpos == term{x, y - this->scrollback_pos})) {
 				printf("\x1b[7m");
 			}
-			printf("%c", p.cp);
+			char utf8buf[5];
+			if (util::utf8_encode(p.cp, utf8buf) == 0) {
+				utf8buf[0] = '?';
+				utf8buf[1] = '\0';
+			}
+			printf("%s", utf8buf);
 			printf("\x1b[m");
 		}
 		//draw right line
