@@ -2,12 +2,12 @@ openage
 =======
 
 
-a free (as in freedom) implementation of
+a free (as in freedom) implementation for **GNU/Linux** of
 
-microsoft(r) **age of empires II** (tm) - the age of conquerors
-
+microsoft® **age of empires II**™ - the age of conquerors
 
 brought to you by **[SFT]Technologies**.
+
 
 current compile state:
 [![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
@@ -125,7 +125,19 @@ guidelines:
 * don't EVER send **pull-requests**!
 * don't note the irony, you idiot
 
-For that, we have [a list of things that nobody should ever implement](TASKS.md).
+for that, we have [a list of things that nobody should ever implement](TASKS.md).
+
+
+if you have no idea how you could possibly violate the above guidelines,
+here are a few tips:
+
+* [learn git](http://git-scm.com/book/en/Git-Basics)
+* [fork the repo](https://help.github.com/articles/fork-a-repo)
+* [learn python](http://docs.python.org/3/tutorial/appetite.html)
+* [learn c++11](http://www.cplusplus.com/doc/tutorial/)
+* read our code
+* programm whatever you want
+* contact us
 
 
 contact
