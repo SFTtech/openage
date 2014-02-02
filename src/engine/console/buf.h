@@ -314,8 +314,11 @@ public:
 
 	/**
 	 * prints the buffer content to stdout
+	 *
+	 * clear
+	 *   if true, the whole content of stdout is cleared
 	 */
-	void to_stdout();
+	void to_stdout(bool clear);
 private:
 	util::utf8_decoder streamdecoder;
 

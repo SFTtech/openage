@@ -1005,16 +1005,39 @@ buf_line *Buf::linedataptr(term_t lineno) {
 }
 
 #include <stdio.h>
-void Buf::to_stdout() {
-	//clear stdout
-	printf("\x1b[2J\x1b[H\u250c");
+void Buf::to_stdout(bool clear) {
+	if (clear) {
+		//clear stdout
+		printf("\x1b[2J");
+	}
+	//move cursor, draw top left corner
+	printf("\x1b[H\u250c");
+	//draw top line
 	for (term_t x = 0; x < this->dims.x; x++) {
 		printf("\u2500");
 	}
+	//draw top right corner
 	printf("\u2510\n");
+	//calculate pos/size of scrollbar
+	//scrollbar_top is the first line that has the scrollbar displayed
+	//scrollbar_bottom is the first line that doesn't have the scrollbar displayed
+	term_t lines_total = this->scrollback_possible + this->dims.y;
+	term_t pos_total = this->scrollback_possible - this->scrollback_pos;
+	term_t scrollbar_top = (this->dims.y * pos_total) / lines_total;
+	term_t scrollbar_bottom = (this->dims.y * (pos_total + this->dims.y)) / lines_total;
+	if (scrollbar_bottom == scrollbar_top) {
+		if (scrollbar_bottom < this->dims.y) {
+			scrollbar_bottom++;
+		} else {
+			scrollbar_top--;
+		}
+	}
+
 	//print lines -scrollback_pos to dims.y - scrollback_pos - 1
 	for (term_t y = 0; y < this->dims.y; y++) {
+		//draw left line
 		printf("\u2502");
+		//draw chars of this line
 		for (term_t x = 0; x < this->dims.x; x++) {
 			buf_char p = *(this->chrdataptr({x, y - this->scrollback_pos}));
 			if (p.cp < 32 || p.cp >= 128) {
@@ -1027,20 +1050,29 @@ void Buf::to_stdout() {
 			if (p.flags & CHR_BLINKING) {
 				printf("\x1b[5m");
 			}
-			if (this->cursorpos == term{x, y}) {
+			if ((p.flags & CHR_NEGATIVE) xor (this->cursorpos == term{x, y - this->scrollback_pos})) {
 				printf("\x1b[7m");
 			}
 			printf("%c", p.cp);
 			printf("\x1b[m");
 		}
-		printf("\u2502\n");
+		//draw right line
+		if (y >= scrollbar_top and y < scrollbar_bottom) {
+			//draw scrollbar on this part of right line
+			printf("\u2503");
+		} else {
+			printf("\u2502");
+		}
+		printf("\n");
 	}
+	//draw bottom left corner
 	printf("\u2514");
+	//draw bottom line
 	for (term_t x = 0; x < this->dims.x; x++) {
 		printf("\u2500");
 	}
+	//draw bottom right corner
 	printf("\u2518\n");
-
 }
 
 } //namespace console
