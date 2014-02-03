@@ -4,6 +4,9 @@
 #include "engine/log.h"
 #include "engine/util/error.h"
 
+using namespace engine;
+
+
 int main(int argc, char **argv) {
 
 	bool run_game = true;
@@ -29,11 +32,11 @@ int main(int argc, char **argv) {
 		switch (c) {
 			/*
 		case 0:
-			engine::log::msg("long option %s", long_options[option_index].name);
+			log::msg("long option %s", long_options[option_index].name);
 			if (optarg) {
-				engine::log::msg(" with arg %s", optarg);
+				log::msg(" with arg %s", optarg);
 			}
-			engine::log::msg("\n");
+			log::msg("\n");
 			break;
 			*/
 
@@ -41,21 +44,22 @@ int main(int argc, char **argv) {
 			run_game = false;
 
 			#define PROJECT_NAME "openage"
-			engine::log::msg(PROJECT_NAME " - a free (as in freedom) real time strategy game\n"
-			       "\n"
-			       "usage:\n"
-			       "   " PROJECT_NAME " [OPTION]\n"
-			       "available options:\n"
-			       "-h, --help                 display this help\n"
-			       "-t, --test=TESTNAME        run the given test\n"
-			       "\n"
-			       );
+
+			log::msg(PROJECT_NAME " - a free (as in freedom) real time strategy game\n"
+			         "\n"
+			         "usage:\n"
+			         "   " PROJECT_NAME " [OPTION]\n"
+			         "available options:\n"
+			         "-h, --help                 display this help\n"
+			         "-t, --test=TESTNAME        run the given test\n"
+			         "\n"
+			         );
 			break;
 
 		case 't':
 			run_game = false;
 
-			engine::log::msg("should run test '%s' nao\n", optarg);
+			log::msg("should run test '%s' nao\n", optarg);
 			break;
 
 		case '?':
@@ -63,7 +67,7 @@ int main(int argc, char **argv) {
 			break;
 
 		default:
-			engine::log::err("?? getopt returned character code 0x%04x, wtf?\n", c);
+			log::err("?? getopt returned character code 0x%04x, wtf?\n", c);
 		}
 	}
 
@@ -71,10 +75,10 @@ int main(int argc, char **argv) {
 	if (optind < argc) {
 		run_game = false;
 
-		engine::log::err("got unknown additional parameters: ");
+		log::err("got unknown additional parameters: ");
 		int i = 0;
 		while (optind < argc) {
-			engine::log::err("%d: %s ", i, argv[optind]);
+			log::err("%d: %s ", i, argv[optind]);
 			i += 1;
 			optind += 1;
 		}
@@ -86,7 +90,7 @@ int main(int argc, char **argv) {
 			return openage::main();
 		}
 	} catch (engine::Error e) {
-		engine::log::fatal("Exception: %s", e.str());
+		log::fatal("Exception: %s", e.str());
 		return 1;
 	}
 }
