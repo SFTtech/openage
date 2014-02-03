@@ -1,4 +1,5 @@
 #include <getopt.h>
+#include <string.h>
 
 #include "openage/main.h"
 #include "engine/log.h"
@@ -18,9 +19,10 @@ int main(int argc, char **argv) {
 	while (true) {
 		int option_index = 0;
 		static struct option long_options[] = {
-			{"help",    no_argument,       0, 'h'},
+			{"help",          no_argument, 0, 'h'},
 			{"test",    required_argument, 0, 't'},
-			{0,         0,                 0,  0 }
+			{"data",    required_argument, 0,  0 },
+			{0,                         0, 0,  0 }
 		};
 
 		c = getopt_long(argc, argv, "ht:", long_options, &option_index);
@@ -30,20 +32,22 @@ int main(int argc, char **argv) {
 		}
 
 		switch (c) {
-			/*
-		case 0:
-			log::msg("long option %s", long_options[option_index].name);
-			if (optarg) {
-				log::msg(" with arg %s", optarg);
-			}
-			log::msg("\n");
-			break;
-			*/
+		case 0: {
+			const char *opt_name = long_options[option_index].name;
 
+			if (optarg) {
+				if (0 == strcmp("data", opt_name)) {
+					log::msg("data folder will be %s", optarg);
+				}
+			}
+			else {
+				//long opts without arg
+			}
+
+			break;
+		}
 		case 'h':
 			run_game = false;
-
-			#define PROJECT_NAME "openage"
 
 			log::msg(PROJECT_NAME " - a free (as in freedom) real time strategy game\n"
 			         "\n"
@@ -52,6 +56,7 @@ int main(int argc, char **argv) {
 			         "available options:\n"
 			         "-h, --help                 display this help\n"
 			         "-t, --test=TESTNAME        run the given test\n"
+			         "--data=FOLDER              specify the data folder\n"
 			         "\n"
 			         );
 			break;
@@ -59,7 +64,7 @@ int main(int argc, char **argv) {
 		case 't':
 			run_game = false;
 
-			log::msg("should run test '%s' nao\n", optarg);
+			log::msg("should run test '%s' nao", optarg);
 			break;
 
 		case '?':
@@ -67,7 +72,7 @@ int main(int argc, char **argv) {
 			break;
 
 		default:
-			log::err("?? getopt returned character code 0x%04x, wtf?\n", c);
+			log::err("?? getopt returned character code 0x%04x, wtf?", c);
 		}
 	}
 
@@ -87,6 +92,7 @@ int main(int argc, char **argv) {
 
 	try {
 		if (run_game) {
+			log::msg("launching " PROJECT_NAME);
 			return openage::main();
 		}
 	} catch (engine::Error e) {
