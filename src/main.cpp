@@ -41,16 +41,66 @@ void test0() {
 	buf.to_stdout(true);
 }
 
+#include <termios.h>
+#include <pty.h>
+
 void test1() {
-	//don't echo input, unbuffered input
-	setstdincanon();
-	//hide cursor
-	printf("\x1b[?25l");
 	Buf buf{{80, 25}, 1337, 80};
-	buf.to_stdout(true);
+	struct winsize ws;
+	ws.ws_col = buf.dims.x;
+	ws.ws_row = buf.dims.y;
+	ws.ws_xpixel = buf.dims.x * 8;
+	ws.ws_ypixel = buf.dims.y * 13;
+	int amaster;
+	switch (forkpty(&amaster, nullptr, nullptr, &ws)) {
+	case -1:
+		printf("fork() failed\n");
+		return;
+	case 0:
+		//we are the child
+		{
+		execl("/bin/python3", "/bin/python3");
+		for (int i = 0; true; i++) {
+			i++;
+			printf("%d\t%d\n", amaster, i);
+		}
+		}
+		//execl("/bin/bash", "/bin/bash");
+		//this line is never reached
+		//printf("execl() failed\n");
+		return;
+	default:
+		//we are the parent
+		//fork off a process to read stdin and forward to amaster
+		switch (fork()) {
+		case -1:
+			printf("stdin() fork failed\n");
+			break;
+		case 0:
+			//we are the child
+			//don't echo input, unbuffered input
+			setstdincanon();
+			while (true) {
+				char c;
+				if (read(0, &c, 1) < 1) {
+					break;
+				}
+				if (write(amaster, &c, 1) < 1) {
+					break;
+				}
+			}
+			return;
+		default:
+			//we are the parent
+			//hide cursor
+			printf("\x1b[?25l");
+			buf.to_stdout(true);
+		}
+	}
+
 	while (true) {
 		char c;
-		if (read(0, &c, 1) != 1) {
+		if (read(amaster, &c, 1) != 1) {
 			printf("EOF\n");
 			break;
 		}
