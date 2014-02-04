@@ -59,15 +59,9 @@ void test1() {
 	case 0:
 		//we are the child
 		{
-		execl("/bin/python3", "/bin/python3");
-		for (int i = 0; true; i++) {
-			i++;
-			printf("%d\t%d\n", amaster, i);
+		execl("/bin/bash", "/bin/bash");
 		}
-		}
-		//execl("/bin/bash", "/bin/bash");
-		//this line is never reached
-		//printf("execl() failed\n");
+		printf("execl() failed\n");
 		return;
 	default:
 		//we are the parent

@@ -655,8 +655,8 @@ void Buf::process_escape_sequence() {
 	case 'f': //HVP: set cursorpos
 		//fall through
 	case 'H': //CUP: set cursorpos
-		this->cursorpos.x = params[0];
-		this->cursorpos.y = params[1];
+		this->cursorpos.y = params[0];
+		this->cursorpos.x = params[1];
 		if (this->cursorpos.x < 0) {
 			this->cursorpos.x = 0;
 		}
