@@ -443,7 +443,7 @@ void Buf::write_codepoint(int cp) {
 			//if next multiple of 8 is greater than terminal width,
 			//move to end of this line
 			//never move to next line
-			this->cursorpos.x = (this->cursorpos.x / 8) * 8 + 1;
+			this->cursorpos.x = ((this->cursorpos.x + 8) / 8) * 8;
 			if (this->cursorpos.x >= this->dims.x) {
 				this->cursorpos.x = this->dims.x - 1;
 			}
