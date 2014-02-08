@@ -13,6 +13,11 @@ int main(int argc, char **argv) {
 	bool run_game = true;
 
 
+	//default values for arguments
+
+	const char *data_directory = "./";
+
+
 	// ===== argument parsing
 	int c;
 
@@ -38,6 +43,7 @@ int main(int argc, char **argv) {
 			if (optarg) {
 				if (0 == strcmp("data", opt_name)) {
 					log::msg("data folder will be %s", optarg);
+					data_directory = optarg;
 				}
 			}
 			else {
@@ -90,10 +96,11 @@ int main(int argc, char **argv) {
 	}
 	// ===== end argument parsing
 
+
 	try {
 		if (run_game) {
 			log::msg("launching " PROJECT_NAME);
-			return openage::main();
+			return openage::main(data_directory);
 		}
 	} catch (engine::Error e) {
 		log::fatal("Exception: %s", e.str());
