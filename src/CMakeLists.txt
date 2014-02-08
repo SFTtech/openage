@@ -20,6 +20,7 @@ add_executable(${PROJECT_NAME}
 	engine/terrain_object.cpp
 	engine/texture.cpp
 	engine/input.cpp
+	engine/python.cpp
 	engine/shader/shader.cpp
 	engine/shader/program.cpp
 	engine/coord/chunk.cpp
@@ -57,6 +58,7 @@ include(FindPkgConfig)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(Freetype REQUIRED)
+find_package(PythonLibs 3.3 REQUIRED)
 find_library(FONTCONFIG_LIB fontconfig)
 find_library(MATH_LIB m)
 pkg_search_module(SDL2 REQUIRED sdl2)
@@ -67,6 +69,7 @@ include_directories(
 	${SDL2_INCLUDE_DIRS}
 	${FTGL_INCLUDE_DIRS}
 	${FREETYPE_INCLUDE_DIRS}
+	${PYTHON_INCLUDE_DIR}
 )
 #link_directories(rofl/lib/lol)
 
@@ -79,6 +82,7 @@ target_link_libraries(${PROJECT_NAME}
 	${FTGL_LIBRARIES}
 	${FONTCONFIG_LIB}
 	${FREETYPE_LIBRARIES}
+	${PYTHON_LIBRARY}
 )
 
 #installation procedure
