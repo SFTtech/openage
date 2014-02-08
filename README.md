@@ -68,11 +68,15 @@ on POSIX (GNU/Linux, BSD, etc..):
 	./configure --mode=release
 	make
 	make media AGE2DIR="~/.wine-age/drive_c/programs/ms-games/aoe2"
-	cd data && ../bin/openage
+	./bin/openage --data ./data
 
 for other make targets, see:
 
 	make help
+
+for startup options, call:
+
+	./bin/openage --help
 
 on WINDOWS:
 -----------
