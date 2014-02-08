@@ -39,24 +39,31 @@ looked up in the [current STATUS](STATUS.md) file.
 dependencies
 ============
 
-	python3
-	python3 imaging library (PIL) -> pillow
-	opengl >=2.1
-	glew
-	ftgl
-	dejavu font
-	freetype2
-	fontconfig
-	cmake >=2.8.10
-	sdl2
-	sdl2_image
-	gcc >=4.8 or clang >=3.3
+dependencies are marked:
+  C = compiletime dependency
+  R = runtime dependency
+  T = convert script dependency
 
-	age of empires II
-		conquerors expansion
-		patch 1.0c
-		optionally: with "userpatch"
-		installed: with wine OR as the program directory
+	T     python3.3
+	T     python3.3 imaging library (PIL) -> pillow
+	CR    opengl >=2.1
+	CR    glew
+	CR    ftgl
+	R     dejavu font
+	CR    freetype2
+	CR    fontconfig
+	C     cmake >=2.8.10
+	CR    sdl2
+	CR    sdl2_image
+	C     gcc >=4.8 or clang >=3.3
+
+	T     age of empires II
+	          conquerors expansion
+	          patch 1.0c
+	          optionally: with "userpatch"
+	          installed: with wine OR as the program directory
+	          we will support more patchlevels in the future.
+
 
 
 how to compile && run
