@@ -39,12 +39,12 @@ looked up in the [current STATUS](STATUS.md) file.
 dependencies
 ============
 
-dependencies are marked:
-  C = compiletime dependency
-  R = runtime dependency
-  T = convert script dependency
+dependencies are needed for:
+  C = compiling
+  R = running
+  T = convert script
 
-	T     python3.3
+	CRT   python3.3
 	T     python3.3 imaging library (PIL) -> pillow
 	CR    opengl >=2.1
 	CR    glew
