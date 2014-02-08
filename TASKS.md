@@ -97,6 +97,7 @@ the next milestone. ask in the IRC or XMPP channel what's being worked on.
 * should (of course) not impact performance
 * as most translators are not steady for reading code,
   it should be easy to add new languages.
+* i'd recommend using `gettext`
 
 ### random map generation
 * you like the Minecraft terrain generation?
