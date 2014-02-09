@@ -60,6 +60,8 @@ add_executable(${PROJECT_NAME}
 set(FREETYPE_INCLUDE_DIRS "/usr/include/freetype2")
 
 include(FindPkgConfig)
+include(FindPackageHandleStandardArgs)
+
 find_library(FONTCONFIG_LIB fontconfig)
 find_library(MATH_LIB m)
 find_package(Freetype REQUIRED)
@@ -70,11 +72,21 @@ pkg_search_module(FTGL REQUIRED ftgl)
 pkg_search_module(SDL2 REQUIRED sdl2)
 pkg_search_module(SDL2_IMAGE REQUIRED sdl2_image SDL2_image)
 
+#inofity support
+find_path(INOTIFY_INCLUDE_DIR sys/inotify.h  HINTS /usr/include/${CMAKE_LIBRARY_ARCHITECTURE})
+find_package_handle_standard_args(INOTIFY DEFAULT_MSG INOTIFY_INCLUDE_DIR)
+
+#TODO: do things for archs not having inotify...
+if(NOT INOTIFY_FOUND)
+  message("inotify is not available on your platform!")
+endif()
+
 include_directories(
 	${FREETYPE_INCLUDE_DIRS}
 	${FTGL_INCLUDE_DIRS}
 	${PYTHON_INCLUDE_DIR}
 	${SDL2_INCLUDE_DIRS}
+	${INOTIFY_INCLUDE_DIR}
 )
 #link_directories(rofl/lib/lol)
 
