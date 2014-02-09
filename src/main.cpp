@@ -1,9 +1,11 @@
 #include <getopt.h>
 #include <string.h>
+#include <vector>
 
 #include "openage/main.h"
 #include "engine/log.h"
 #include "engine/util/error.h"
+#include "test/testing.h"
 
 using namespace engine;
 
@@ -16,6 +18,7 @@ int main(int argc, char **argv) {
 	//default values for arguments
 
 	const char *data_directory = "./";
+	std::vector<const char *> test_names;
 
 
 	// ===== argument parsing
@@ -63,14 +66,15 @@ int main(int argc, char **argv) {
 			         "-h, --help                 display this help\n"
 			         "-t, --test=TESTNAME        run the given test\n"
 			         "--data=FOLDER              specify the data folder\n"
-			         "\n"
+			         "\n\n"
 			         );
 			break;
 
 		case 't':
 			run_game = false;
 
-			log::msg("should run test '%s' nao", optarg);
+			log::msg("adding test '%s' to invocation list", optarg);
+			test_names.push_back(optarg);
 			break;
 
 		case '?':
@@ -98,6 +102,14 @@ int main(int argc, char **argv) {
 
 
 	try {
+		if (test_names.size() > 0) {
+			test::test_activation();
+			test::list_tests();
+
+			log::msg("running tests...");
+			test::run_tests(test_names);
+		}
+
 		if (run_game) {
 			log::msg("launching " PROJECT_NAME);
 			return openage::main(data_directory);
