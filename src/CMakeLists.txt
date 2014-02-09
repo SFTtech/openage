@@ -57,7 +57,8 @@ add_executable(${PROJECT_NAME}
 
 #library dependency specification
 
-set(FREETYPE_INCLUDE_DIRS "/usr/include/freetype2")
+#freetype includedir hint for ubuntu...
+find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2)
 
 include(FindPkgConfig)
 include(FindPackageHandleStandardArgs)
