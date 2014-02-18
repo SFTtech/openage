@@ -198,9 +198,9 @@ def convert_datfile():
 
 	datfile = gamedata.empiresdat.EmpiresDat("Data/empires2_x1_p1.dat")
 
-	import code
-	console = code.InteractiveConsole(locals())
-	console.interact("'datfile' is the data file object.")
+	#import code
+	#console = code.InteractiveConsole(locals())
+	#console.interact("'datfile' is the data file object.")
 
 	filename = file_get_path("processed/terrain_meta.docx", write=True)
 
