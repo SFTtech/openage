@@ -17,7 +17,7 @@ struct {
 
 	uint16_t player_color_count;
 	struct {
-		int32_t id;
+		int32_t uid;
 		int32_t palette;
 		int32_t color;
 		int32_t unknown;
@@ -30,7 +30,7 @@ struct {
 
 	uint16_t sound_count;
 	struct {
-		int32_t id;
+		int32_t uid;
 		uint16_t item_count;
 		int32_t unknown;
 		struct {
@@ -151,9 +151,9 @@ struct {
 		char name[31];
 		uint16_t effect_count;
 		struct {
-			int8_t type;
+			int8_t type_id;
 			int16_t unit;
-			int16_t class;
+			int16_t class_id;
 			int16_t attribute;
 			float amount;
 		} effect[effect_count];
@@ -166,14 +166,14 @@ struct {
 		uint16_t command_count;
 		struct {
 			int16_t one;
-			int16_t id;
+			int16_t uid;
 			int8_t unknown;
-			int16_t type;
+			int16_t type_id;
 			int16_t class_id;
 			int16_t unit_id;
 			int16_t unknown;
 			int16_t ressource_in;
-			int16_t sub_type;
+			int16_t sub_type_id;
 			int16_t ressource_out;
 			int16_t unknown;
 			float work_rate_multiplier;
@@ -216,7 +216,7 @@ struct {
 			building = 80
 			tree = 90
 			*/
-			int8_t type;
+			int8_t type_id;
 			uint16_t name_length;
 			int16_t id0;
 			uint16_t language_dll_name;
@@ -254,7 +254,7 @@ struct {
 			int8_t fly_mode;
 			int16_t ressource_capacity;
 			float ressource_decay;
-			int8_t blast_type;
+			int8_t blast_type_id;
 			int8_t unknown;
 			int8_t interaction_mode;
 			int8_t minimap_mode;
@@ -270,7 +270,7 @@ struct {
 			int8_t unknown;
 			int8_t unknown;
 			int8_t selection_mask;
-			int8_t selection_shape_type;
+			int8_t selection_shape_type_id;
 			int8_t selection_shape;
 			int8_t attribute;
 			int8_t civilisation;
@@ -302,17 +302,17 @@ struct {
 			int16_t id1;
 			int16_t id2;
 
-			if (type == unit_type.tree = 90) {
+			if (type_id == unit_type.tree = 90) {
 				unit_done;
 			}
 
-			if (type >= unit_type.flag = 20) {
+			if (type_id >= unit_type.flag = 20) {
 				float speed;
 			} else {
 				unit_done;
 			}
 
-			if (type >= unit_type.dead_fish = 30) {
+			if (type_id >= unit_type.dead_fish = 30) {
 				int16_t walking_graphics0;
 				int16_t walking_graphics1;
 				float rotation_speed;
@@ -324,7 +324,7 @@ struct {
 				int8_t unknown[17];
 			}
 
-			if (type >= unit_type.bird = 40) {
+			if (type_id >= unit_type.bird = 40) {
 				int16_t sheep_conversion;
 				float search_radius;
 				float work_rate;
@@ -336,17 +336,17 @@ struct {
 				int8_t animal_mode;
 			}
 
-			if (type >= unit_type.projectile = 60) {
+			if (type_id >= unit_type.projectile = 60) {
 				int8_t unknown;
 				int8_t unknown;
 				uint16_t attack_count;
 				struct {
-					int16_t type;
+					int16_t type_id;
 					int16_t amount;
 				} attack[attack_count];
 				uint16_t armor_count;
 				struct {
-					int16_t type;
+					int16_t type_id;
 					int16_t amount;
 				} armor[armor_count];
 				int16_t unknown;
@@ -368,7 +368,7 @@ struct {
 				float reload_time1;
 			}
 
-			if (type == unit_type.projectile = 60) {
+			if (type_id == unit_type.projectile = 60) {
 				int8_t stretch_mode;
 				int8_t compensation_mode;
 				int8_t drop_animation_mode;
@@ -377,9 +377,9 @@ struct {
 				float projectile_arc;
 			}
 
-			if (type >= unit_type.creatable = 70) {
+			if (type_id >= unit_type.creatable = 70) {
 				struct {
-					int16_t type;
+					int16_t type_id;
 					int16_t amount;
 					int16_t enabled;
 				} ressource_cost[3];
@@ -402,7 +402,7 @@ struct {
 				int16_t pierce_armor_displayed;
 			}
 
-			if (type >= unit_type.building = 80) {
+			if (type_id >= unit_type.building = 80) {
 				int16_t construction_graphic_id;
 				int16_t snow_graphic_id;
 				int16_t adjacent_mode;
@@ -422,7 +422,7 @@ struct {
 				int16_t transform_unit;
 				int16_t unknown;
 				int16_t construction_sound_id;
-				int8_t garnison_type;
+				int8_t garnison_type_id;
 				float garnison_heal_rate;
 				int32_t unknown;
 				int16_t unknown;
@@ -447,7 +447,7 @@ struct {
 		uint16_t language_dll_description;
 		int16_t research_time;
 		int16_t tech_id;
-		int16_t tech_type;
+		int16_t tech_type_id;
 		int16_t icon_id;
 		int8_t button_id;
 		int32_t pointers[3];
@@ -465,7 +465,7 @@ struct {
 
 		struct {
 			int32_t unknown;
-			int32_t id;
+			int32_t uid;
 			int8_t unknown;
 			int8_t building_count;
 			int32_t buildings[building_count];
@@ -481,7 +481,7 @@ struct {
 		int32_t unknown;
 
 		struct {
-			int32_t id;
+			int32_t uid;
 			int8_t unknown;
 			int8_t building_count;
 			int32_t building[building_count];
@@ -502,7 +502,7 @@ struct {
 		} building_connection[building_entry_count];
 
 		struct {
-			int32_t id;
+			int32_t uid;
 			int8_t unknown;
 			int32_t upper_building;
 			int32_t required_researches;
@@ -523,7 +523,7 @@ struct {
 		} unit_connection[unit_entry_count];
 
 		struct {
-			int32_t id;
+			int32_t uid;
 			int8_t unknown;
 			int32_t upper_building;
 			int8_t building_count;
