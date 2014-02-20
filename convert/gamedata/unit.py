@@ -386,22 +386,15 @@ class Unit:
 
 
 			if self.type_id >= 60:
-				#int8_t unknown;
-				#int8_t unknown;
-				tmp_struct = Struct(endianness + "2b")
-				pc = tmp_struct.unpack_from(raw, offset)
-				offset_info(offset, pc, ">=60 header0", tmp_struct)
-				offset += tmp_struct.size
-
-				#self. = pc[0]
-				#self. = pc[1]
-
+				#int16_t default_armor;
 				#uint16_t attack_count;
-				tmp_struct = Struct(endianness + "H")
+				tmp_struct = Struct(endianness + "h H")
 				pc = tmp_struct.unpack_from(raw, offset)
+				offset_info(offset, pc, ">=60", tmp_struct)
 				offset += tmp_struct.size
 
-				self.attack_count = pc[0]
+				self.default_armor = pc[0]
+				self.attack_count  = pc[1]
 
 				self.attack = list()
 				for i in range(self.attack_count):
@@ -433,7 +426,7 @@ class Unit:
 				#int8_t tower_mode;
 				#int16_t delay;
 				#float graphics_displacement[3];
-				#int8_t unknown;
+				#int8_t blast_level;
 				#float min_range;
 				#float garnison_recovery_rate;
 				#int16_t attack_graphic;
@@ -456,8 +449,7 @@ class Unit:
 				self.tower_mode             = pc[6]
 				self.delay                  = pc[7]
 				self.graphics_displacement  = pc[8:(8+3)]
-
-				#self. = pc[11]
+				self.blast_level            = pc[11]
 				self.min_range              = pc[12]
 				self.garnison_recovery_rate = pc[13]
 				self.attack_graphic         = pc[14]

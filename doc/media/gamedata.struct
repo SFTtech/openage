@@ -337,8 +337,7 @@ struct {
 			}
 
 			if (type_id >= unit_type.projectile = 60) {
-				int8_t unknown;
-				int8_t unknown;
+				int16_t default_armor;
 				uint16_t attack_count;
 				struct {
 					int16_t type_id;
@@ -358,7 +357,7 @@ struct {
 				int8_t tower_mode;
 				int16_t delay;
 				float graphics_displacement[3];
-				int8_t unknown;
+				int8_t blast_level;
 				float min_range;
 				float garnison_recovery_rate;
 				int16_t attack_graphic;
