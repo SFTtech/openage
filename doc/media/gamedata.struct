@@ -207,12 +207,13 @@ struct {
 		struct {
 			/*
 			unit type:
-			object = 10
+			eye_candy = 10
 			flag = 20
-			dead_fish = 30
+			doppelganger = 25
+			dead_or_fish_unit = 30
 			bird = 40
 			projectile = 60
-			creatable = 70
+			living_unit = 70
 			building = 80
 			tree = 90
 			*/
@@ -312,7 +313,7 @@ struct {
 				unit_done;
 			}
 
-			if (type_id >= unit_type.dead_fish = 30) {
+			if (type_id >= unit_type.dead_or_fish_unit = 30) {
 				int16_t walking_graphics0;
 				int16_t walking_graphics1;
 				float rotation_speed;
@@ -340,12 +341,12 @@ struct {
 				int16_t default_armor;
 				uint16_t attack_count;
 				struct {
-					int16_t type_id;
+					int16_t used_for_class_id;
 					int16_t amount;
 				} attack[attack_count];
 				uint16_t armor_count;
 				struct {
-					int16_t type_id;
+					int16_t used_for_class_id;
 					int16_t amount;
 				} armor[armor_count];
 				int16_t unknown;
@@ -376,7 +377,7 @@ struct {
 				float projectile_arc;
 			}
 
-			if (type_id >= unit_type.creatable = 70) {
+			if (type_id >= unit_type.living_unit = 70) {
 				struct {
 					int16_t type_id;
 					int16_t amount;
