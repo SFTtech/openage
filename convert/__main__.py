@@ -222,56 +222,6 @@ def convert_datfile():
 			file_write(filename, output_data)
 
 	return
-	#old, crappy, hardcoded, legacy meta storage
-	#it will be pwnd very soon. i promise.
-
-	tmeta = "#terrain specification\n"
-	tmeta += "#idx=terrain_id, slp_id, sound_id, blend_mode, blend_priority, angle_count, frame_count, terrain_dimensions0, terrain_dimensions1, terrain_replacement_id, name0, name1\n"
-
-	tmeta += "n=%d\n" % len(datfile.terrain.data.terrains)
-
-	i = 0
-	blending_modes = set()
-	for tk in datfile.terrain.data.terrains:
-		if tk.slp_id < 0:
-			continue
-
-		blending_modes.add(tk.blend_mode)
-
-		wanted = ["terrain_id", "slp_id", "sound_id", "blend_mode", "blend_priority", "angle_count", "frame_count", "terrain_dimensions0", "terrain_dimensions1", "terrain_replacement_id", "name0", "name1"]
-
-		line = [getattr(tk, w) for w in wanted]
-
-		#as blending mode 0==1 and 7==8, and ice is 5 for sure,
-		#we subtract one from the ids, and can map -1 to 0, as mode (0-1) == (1-1)
-		#TODO: this can't be correct...
-		line[3] -= 1
-		if line[3] < 0:
-			line[3] = 0
-
-		line = map(str, line)
-		tmeta += ("%d=" % i) + ",".join(line) + "\n"
-		i += 1
-
-	file_write(filename, tmeta)
-
-
-	filename = file_get_path("processed/blending_meta.docx", write=True)
-
-	bmeta = "#blending mode specification\n"
-	bmeta += "#yeah, i know that this content is totally stupid, but that's how the data can be injected later\n"
-	bmeta += "#idx=mode_id\n"
-
-	bmeta += "n=%d\n" % len(blending_modes)
-
-	i = 0
-	for m in blending_modes:
-		bmeta += "%d=%d\n" % (i, m)
-		i += 1
-
-	file_write(filename, bmeta)
-
-
 
 
 if __name__ == "__main__":
