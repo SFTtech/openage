@@ -202,23 +202,56 @@ def convert_datfile():
 
 	#import code
 	#console = code.InteractiveConsole(locals())
-	#console.interact("'datfile' is the data file object.")
+	#console.interact("browse the data file with variable 'datfile'.")
 
-	dbg("dumping data stuff:")
+	dbg("exporting gamedata...")
 
-	#key: output mode, value: folder where to place files
-	output_advices = {
-		"csv":    "processed",
-		"struct": "structs",
+
+	#default preferences for output modes
+	default_preferences = {
+		"folder":      "",
+		"destination": "datapack",
+		"file_suffix": "",
 	}
 
-	data_dump = datfile.dump(["terrain"])
 
-	for mode, folder in output_advices.items():
-		formatted_data = util.format_data(mode, data_dump)
+	#override the default preferences with the
+	#configuration for all the output formats
+	output_preferences = {
+		"csv": {
+			"folder":      "processed",
+			"file_suffix": ".docx",
+		},
+		"struct": {
+			"folder":      "gamedata",
+			"destination": "sourcecode",
+			"file_suffix": ".h",
+		},
+	}
 
+	#create these output formats
+	output_formats  = ["csv", "struct"]
+	output_sections = ["terrain"]
+
+	#create the dump for the requested dat file sections
+	data_dump = datfile.dump(output_sections)
+
+	#create all files of the specified formats and sections
+	for output_format in output_formats:
+
+		#apply preference overrides
+		prefs = default_preferences
+		for pref_name, pref_value in output_preferences[output_format].items():
+			prefs[pref_name] = pref_value
+
+		#format data according to output_format
+		formatted_data = util.format_data(output_format, data_dump)
+
+		#create all files exported by dumping the requested sections
 		for output_name, output_data in formatted_data.items():
-			filename = file_get_path("%s/%s" % (folder, output_name), write=True)
+			filename = "%s/%s%s" % (prefs["folder"], output_name, prefs["file_suffix"])
+			filename = file_get_path(filename, write=True, destination=prefs["destination"])
+
 			file_write(filename, output_data)
 
 	return

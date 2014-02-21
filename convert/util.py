@@ -73,9 +73,13 @@ def set_read_dir(dirname):
 	global readpath
 	readpath = dirname
 
-def file_get_path(fname, write = False):
+def file_get_path(fname, write = False, destination = "datapack"):
 	if write:
-		basedir = writepath + "/data/age"
+		if destination == "datapack":
+			basedir = writepath + "/data/age"
+
+		elif destination == "sourcecode":
+			basedir = writepath + "/src"
 	else:
 		basedir = readpath
 
@@ -381,7 +385,7 @@ def format_data(format, data):
 	"""
 
 	#csv column delimiter:
-	delimiter = ","
+	delimiter = ", "
 
 	ret = dict()
 
