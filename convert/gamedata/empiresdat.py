@@ -134,6 +134,10 @@ class EmpiresDat:
 		return offset
 
 
+	def dump(self, what):
+		return getattr(self, what).dump()
+
+
 	def __str__(self):
 		ret = "[age2x1p1]\n"
 		ret += "TODO: a nice full representation"

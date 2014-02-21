@@ -5,8 +5,10 @@ from drs import DRS
 from extractionrule import ExtractionRule
 from os import remove
 from os.path import join
+import pprint
 from slp import SLP, PNG
 import subprocess
+import util
 from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path
 
 
@@ -201,6 +203,15 @@ def convert_datfile():
 	#import code
 	#console = code.InteractiveConsole(locals())
 	#console.interact("'datfile' is the data file object.")
+
+	dbg("dumping terrain stuff:")
+	terrain_dump = datfile.dump("terrain")
+	dbg(pprint.pformat(terrain_dump))
+	dbg("csv:")
+	print(util.format_data("csv", terrain_dump)["terrain"])
+	dbg("struct:")
+	print(util.format_data("struct", terrain_dump)["terrain"])
+	#return
 
 	filename = file_get_path("processed/terrain_meta.docx", write=True)
 

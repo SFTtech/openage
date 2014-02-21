@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import math
 import os
 
@@ -264,3 +265,180 @@ def offset_info(offset, data, msg="", s=None, mode=0):
 
 	dbg(ret, 3)
 
+
+def gather_data(obj, members):
+	ret = dict()
+
+	for member in members.values():
+		for elem in member.keys():
+			ret[elem] = getattr(obj, elem)
+
+	return ret
+
+
+def format_data(format, data):
+	"""
+	formats the given data structure
+
+	this function creates the plaintext being stored in the data files
+
+
+	data has to be a list.
+	each entry equals a data table to create.
+	the corresponding value is a dict
+	it has three members: name, format and data
+	name is the data structure name to create
+	format is a dict, it specifies the C type of a column.
+	each key of this dict is a ordering priority number, the value is a dict.
+	this dict assigns a column name to its type.
+	the type value is either a string or a dict.
+	if it's a string, it specifies the C type directly ("uint8_t"),
+	if it's a dict, it has two keys: type and length, for C arrays.
+	"type"=>"char" and "length"=>40, would produce "char columnname[40];"
+	data is a list, it stores the table rows.
+	a list entry (a row) contains dicts: "column name": column value (for this row)
+	i know you did not understand the format specification, so heres an
+
+	example:
+	data = [
+		{
+			"name": "awesome_stuff",
+			"format" : {
+				0: {"column0": "int"},
+				1: {"column1": "int"},
+			},
+			"data": [
+				{ "column0": 1337, "column1": 42 },
+				{ "column0":   10, "column1": 42 },
+				{ "column0":  235, "column1": 13 },
+			],
+		},
+
+		{
+			"name": "epic_food"
+			"format": {
+				5:  {"epicness": "int16_t"},
+				0:  {"name":     { "type": "char", "length": 30 }},
+				10: {"price":    "float"},
+			},
+			"data": [
+				{ "name": "döner",      "epicness":   17, "price": 3.5 },
+				{ "name": "kässpatzen", "epicness": 9001, "price": 2.3 },
+				{ "name": "schnitzel",  "epicness":  200, "price": 5.7 },
+				{ "name": "pizza",      "epicness":  150, "price":   6 },
+			],
+		},
+	]
+
+	this can then be converted to structs, csvs, python source, etc.
+	the generated output would be:
+
+	a = format_data("csv", data)
+
+	a == {
+		"awesome_stuff": "
+			#awesome_stuff
+			#int, int
+			#column0, column1
+			1337, 42
+			10, 42
+			235, 13
+		",
+
+		"epic_food": "
+			#epic_food
+			#char[30], int16_t, float
+			#name, epicness, price
+			döner, 17, 3.5
+			kässpatzen, 9001, 2.3
+			schnitzel, 200, 5.7
+			pizza, 150, 6
+		",
+	}
+
+	the generated structs could look like this:
+
+	a = format_data("struct", data)
+
+	a == {
+		"awesome_stuff": "
+			struct awesome_stuff {
+				int column0;
+				int column1;
+			};
+		",
+
+		"epic_food": "
+			struct epic_food {
+				char[30] name;
+				int16_t epicness;
+				float price;
+			};
+		",
+	}
+	"""
+
+	#csv column delimiter:
+	delimiter = ","
+
+	ret = dict()
+
+	for data_table in data:
+		data_name = data_table["name"]
+
+		#create column list to ensure data order for all rows
+		column_prios = sorted(data_table["format"].keys())
+
+		#create ordered dict according to priorities
+		columns = OrderedDict()
+		for prio in column_prios:
+			for column, ctype in data_table["format"][prio].items():
+				columns[column] = ctype
+
+		#export csv file
+		if format == "csv":
+
+			column_types_raw = columns.values()
+			column_types     = list()
+
+			for c_raw in column_types_raw:
+				if type(c_raw) == dict:
+					c = "%s[%d]" % (c_raw["type"], c_raw["length"])
+				else:
+					c = c_raw
+				column_types.append(c)
+
+			#csv header:
+			txt  = "#struct %s\n" % (data_name)
+			txt += "#%s\n"        % (delimiter.join(column_types))
+			txt += "#%s\n"        % (delimiter.join(columns.keys()))
+
+			#csv data entries:
+			for entry in data_table["data"]:
+				row_entries = [ str(entry[c]) for c in columns.keys() ]
+				txt += "%s\n" % (delimiter.join(row_entries))
+
+		#create C struct
+		elif format == "struct":
+
+			#struct definition
+			txt = "struct %s {\n" % (data_name)
+
+			#create struct members:
+			for member, dtype in columns.items():
+				dlength = ""
+				if type(dtype) == dict:
+					dlength = "[%d]" % (dtype["length"])
+					dtype   = dtype["type"]
+
+				txt += "\t%s %s%s;\n" % (dtype, member, dlength)
+
+			#struct ends
+			txt += "};\n"
+
+		else:
+			raise Exception("unknown format specified: %s" % format)
+
+		ret[data_name] = txt
+
+	return ret

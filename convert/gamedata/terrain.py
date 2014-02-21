@@ -1,11 +1,21 @@
 from struct import Struct, unpack_from
 from util import dbg, zstr
-from util import file_get_path, file_write
+from util import file_get_path, file_write, gather_data
 
 from .empiresdat import endianness
 
 
 class TerrainHeaderData:
+
+	def dump(self):
+		ret = list()
+
+		#dump self.data (gets created when assigning TerrainData)
+		ret.append(self.data.dump())
+
+		return ret
+
+
 	def read(self, raw, offset):
 		#uint16_t terrain_restriction_count;
 		#uint16_t terrain_count;
@@ -78,6 +88,18 @@ class TerrainData:
 	def __init__(self, terrain_count):
 		self.terrain_count = terrain_count
 
+	def dump(self):
+		ret = dict()
+
+		ret["name"]   = Terrain.structname
+		ret["format"] = Terrain.export
+		ret["data"] = list()
+		for terrain in self.terrains:
+			#dump terrains
+			ret["data"].append(terrain.dump())
+
+		return ret
+
 	def read(self, raw, offset):
 
 		self.terrains = list()
@@ -90,6 +112,19 @@ class TerrainData:
 
 
 class Terrain:
+	structname = "terrain"
+	export = {
+		#"terrain_id",  #is always 0...
+		0: {"slp_id":         "int32_t"},
+		1: {"blend_mode":     "int32_t"},
+		2: {"blend_priority": "int32_t"},
+		3: {"name0":          { "type": "char", "length": 13 }},
+		4: {"name1":          { "type": "char", "length": 13 }},
+	}
+
+	def dump(self):
+		return gather_data(self, self.export)
+
 	def read(self, raw, offset):
 		#int16_t unknown;
 		#int16_t unknown;
