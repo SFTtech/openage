@@ -204,26 +204,24 @@ def convert_datfile():
 	#console = code.InteractiveConsole(locals())
 	#console.interact("'datfile' is the data file object.")
 
-	dbg("dumping terrain stuff:")
-	terrain_dump = datfile.dump("terrain")
-	dbg(pprint.pformat(terrain_dump))
-	dbg("csv:")
-	print(util.format_data("csv", terrain_dump)["terrain"])
-	dbg("struct:")
-	print(util.format_data("struct", terrain_dump)["terrain"])
-	#return
+	dbg("dumping data stuff:")
 
-	filename = file_get_path("processed/terrain_meta.docx", write=True)
+	#key: output mode, value: folder where to place files
+	output_advices = {
+		"csv":    "processed",
+		"struct": "structs",
+	}
 
-	#filename = output_where_folder
-	#datfile.save("terrain", filename)
-	#datfile.save_header("terrain", filename)
-	##file_write(filename, tmeta)
+	data_dump = datfile.dump(["terrain"])
 
-	#filename = file_get_path("processed/blending_meta.docx", write=True)
-	##file_write(filename, bmeta)
+	for mode, folder in output_advices.items():
+		formatted_data = util.format_data(mode, data_dump)
 
+		for output_name, output_data in formatted_data.items():
+			filename = file_get_path("%s/%s" % (folder, output_name), write=True)
+			file_write(filename, output_data)
 
+	return
 	#old, crappy, hardcoded, legacy meta storage
 	#it will be pwnd very soon. i promise.
 

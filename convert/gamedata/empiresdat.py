@@ -135,7 +135,15 @@ class EmpiresDat:
 
 
 	def dump(self, what):
-		return getattr(self, what).dump()
+		if type(what) != list:
+			what = [what]
+
+		ret = list()
+		for entry in what:
+			member_dump = getattr(self, entry).dump()
+			ret += member_dump
+
+		return ret
 
 
 	def __str__(self):

@@ -91,9 +91,10 @@ class TerrainData:
 	def dump(self):
 		ret = dict()
 
-		ret["name"]   = Terrain.structname
-		ret["format"] = Terrain.export
-		ret["data"] = list()
+		ret["name_table"]  = "terrain_data"
+		ret["name_struct"] = Terrain.structname
+		ret["format"]      = Terrain.export
+		ret["data"]        = list()
 		for terrain in self.terrains:
 			#dump terrains
 			ret["data"].append(terrain.dump())

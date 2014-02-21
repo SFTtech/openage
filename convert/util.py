@@ -302,7 +302,8 @@ def format_data(format, data):
 	example:
 	data = [
 		{
-			"name": "awesome_stuff",
+			"name_table":  "awesome_data",
+			"name_struct": "awesome_stuff",
 			"format" : {
 				0: {"column0": "int"},
 				1: {"column1": "int"},
@@ -315,7 +316,8 @@ def format_data(format, data):
 		},
 
 		{
-			"name": "epic_food"
+			"name_table":  "food_list",
+			"name_struct": "epic_food",
 			"format": {
 				5:  {"epicness": "int16_t"},
 				0:  {"name":     { "type": "char", "length": 30 }},
@@ -336,8 +338,8 @@ def format_data(format, data):
 	a = format_data("csv", data)
 
 	a == {
-		"awesome_stuff": "
-			#awesome_stuff
+		"awesome_data": "
+			#struct awesome_stuff
 			#int, int
 			#column0, column1
 			1337, 42
@@ -345,8 +347,8 @@ def format_data(format, data):
 			235, 13
 		",
 
-		"epic_food": "
-			#epic_food
+		"food_list": "
+			#struct epic_food
 			#char[30], int16_t, float
 			#name, epicness, price
 			döner, 17, 3.5
@@ -384,7 +386,8 @@ def format_data(format, data):
 	ret = dict()
 
 	for data_table in data:
-		data_name = data_table["name"]
+		data_table_name  = data_table["name_table"]
+		data_struct_name = data_table["name_struct"]
 
 		#create column list to ensure data order for all rows
 		column_prios = sorted(data_table["format"].keys())
@@ -409,7 +412,7 @@ def format_data(format, data):
 				column_types.append(c)
 
 			#csv header:
-			txt  = "#struct %s\n" % (data_name)
+			txt  = "#struct %s\n" % (data_struct_name)
 			txt += "#%s\n"        % (delimiter.join(column_types))
 			txt += "#%s\n"        % (delimiter.join(columns.keys()))
 
@@ -418,11 +421,13 @@ def format_data(format, data):
 				row_entries = [ str(entry[c]) for c in columns.keys() ]
 				txt += "%s\n" % (delimiter.join(row_entries))
 
+			ret[data_table_name] = txt
+
 		#create C struct
 		elif format == "struct":
 
 			#struct definition
-			txt = "struct %s {\n" % (data_name)
+			txt = "struct %s {\n" % (data_struct_name)
 
 			#create struct members:
 			for member, dtype in columns.items():
@@ -436,9 +441,10 @@ def format_data(format, data):
 			#struct ends
 			txt += "};\n"
 
+			ret[data_struct_name] = txt
+
 		else:
 			raise Exception("unknown format specified: %s" % format)
 
-		ret[data_name] = txt
 
 	return ret

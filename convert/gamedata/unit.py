@@ -635,7 +635,7 @@ class DamageGraphic:
 
 class HitType:
 	def read(self, raw, offset):
-		#int16_t type;
+		#int16_t used_for_class_id;
 		#int16_t amount;
 		hit_type_struct = Struct(endianness + "2h")
 
