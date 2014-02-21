@@ -1,0 +1,63 @@
+openage data files
+==================
+
+
+the game engine uses data files to actually run a game.
+the data files can be anything you imagine, but the common case
+will be the converted original media files.
+
+
+search locations
+----------------
+
+the engine has the possibility to set the data directories, which will be
+/usr/share/openage/ and $HOME/.openage/
+in the future, for now it will remain ./data
+
+
+metadata files
+--------------
+
+metadatae, as the name suggests, describe data files.
+
+0. there are media metadata files.
+   they come along with the media files.
+   they describe:
+     * which areas of images show what
+     * which animation and unit is stored in the file
+     * how long does the sound last
+     * ...
+     * irgendwas mit medien halt
+
+1. there are game metadata files.
+   these are needed to tell the engine what game elements exist.
+   this means:
+     * what media files metadata shall be used
+     * where is the storage location of the techtree
+     * where are all the units stored
+     * what describes the existing ages and technologies
+
+2. there are interface metadata files
+   the whole game interface is constructed by these files
+
+
+data files
+----------
+
+0. media files
+   the media files feed the engine with images, sounds, animations, whatever.
+   they are described by their metadata files.
+
+1. game content files
+   the whole game logic has to be defined somewhere.
+   this is it.
+   these files are discovered and described by the metadata files.
+     * the technology tree
+     * what civilisations exist
+     * what are the possible ages
+     * what is the meaning of our life on earth
+     * what buildings can be built in what age
+     * etc, you get the point
+
+2. scripting files
+   these allow to interactively manipulate and design the game content.
