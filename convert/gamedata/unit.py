@@ -285,9 +285,9 @@ class Unit:
 			self.damage_graphic.append(t)
 
 
-		#int16_t selection_sound;
-		#int16_t dying_sound;
-		#int16_t attack_sound;
+		#int16_t sound_selection;
+		#int16_t sound_dying;
+		#int16_t attack_mode;
 		#char name[name_length];
 		#int16_t id1;
 		#int16_t id2;
@@ -302,8 +302,7 @@ class Unit:
 		check_file(pc[0])
 		self.sound_dying     = pc[1]
 		check_file(pc[1])
-		self.sound_attack    = pc[2]
-		check_file(pc[2])
+		self.attack_mode     = pc[2]
 		self.name            = zstr(pc[3])
 		self.id1             = pc[4]
 		self.id2             = pc[5]

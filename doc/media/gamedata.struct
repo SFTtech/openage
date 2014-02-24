@@ -298,16 +298,12 @@ struct {
 
 			int16_t sound_selection;
 			int16_t sound_dying;
-			int16_t sound_attack;
+			int16_t attack_mode;
 			char name[name_length];
 			int16_t id1;
 			int16_t id2;
 
-			if (type_id == unit_type.tree = 90) {
-				unit_done;
-			}
-
-			if (type_id >= unit_type.flag = 20) {
+			if (type_id >= unit_type.flag = 20 && type_id != unit_type.tree = 90) {
 				float speed;
 			} else {
 				unit_done;
