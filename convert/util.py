@@ -398,6 +398,10 @@ def format_data(format, data):
 	#csv column delimiter:
 	delimiter = ","
 
+	#method signature for fill function
+	fill_csignature = "int %sfill(const char *by_line)"
+	fill_signature  = fill_csignature % ""
+
 	type_scan_lookup = {
 		"char":          "hdd",
 		"int8_t":        "hhd",
@@ -409,6 +413,7 @@ def format_data(format, data):
 		"float":         "f",
 		"char_array":    "s",
 	}
+
 
 	ret = dict()
 
@@ -471,6 +476,14 @@ def format_data(format, data):
 
 				txt += "\t%s %s%s;\n" % (dtype, member, dlength)
 
+			txt += "\n\t%s;\n" % fill_signature
+			#struct ends
+			txt += "};\n"
+
+			output_name = data_table["name_struct_file"]
+
+
+		elif format == "cfile":
 			#create filling function
 			#it is used to fill a struct instance with data of a line in the csv
 
@@ -508,10 +521,13 @@ def format_data(format, data):
 				err = -2;
 			}"""
 
+			output_name = data_table["name_struct_file"]
+
+			fill_signature = fill_csignature % ("%s::" % output_name)
 
 			#definition of filling function
 			txt += Template("""
-	int fill(const char *by_line) {
+	$funcsignature {
 		char separators[] = "$delimiters";
 		char* token;
 		size_t idx = 0;
@@ -529,13 +545,7 @@ def format_data(format, data):
 		}
 		return (idx != this->member_count);
 	}
-""").substitute(delimiters=delimiter, tokenhandler=tokenparser)
-
-
-			#struct ends
-			txt += "};\n"
-
-			output_name = data_table["name_struct_file"]
+""").substitute(funcsignature=fill_signature, delimiters=delimiter, tokenhandler=tokenparser)
 
 		else:
 			raise Exception("unknown format specified: %s" % format)
