@@ -479,19 +479,21 @@ def format_data(format, data):
 			required_scanfs = dict()
 			for idx, (member, dtype) in enumerate(columns.items()):
 				dlength = 1
-				getptr  = "&"
 
 				if type(dtype) == dict:
 					dlength = dtype["length"]
 					dtype   = dtype["type"]
-					if dlength > 1:
-						dtype  = dtype + "_array"
-						getptr = ""
 
 				dtype_scan           = type_scan_lookup[dtype]
-				dlength_str          = str(dlength) if dlength > 1 else ""
-				dtype_scan_format    = "%%%s%s" % (dlength_str, dtype_scan)
-				required_scanfs[idx] = "sscanf(token, '%s', %sthis->%s);" % (dtype_scan_format, getptr, member)
+
+				if dlength == 1 and dtype != "char":
+					required_scanfs[idx] = "err = sscanf(token, '%%%s', &this->%s);" % (dtype_scan, member)
+
+				elif dtype == "char":
+					required_scanfs[idx] = "strncpy(this->%s, token, %d);" % (member, dlength)
+
+				else:
+					raise Exception("if you can read this, some thing really faked up.")
 
 			tokenparser = """
 			switch (idx) {"""
@@ -503,9 +505,8 @@ def format_data(format, data):
 
 			tokenparser += """
 			default:
-				return -2;
-			}
-"""
+				err = -2;
+			}"""
 
 
 			#definition of filling function
@@ -514,11 +515,15 @@ def format_data(format, data):
 		char separators[] = "$delimiters";
 		char* token;
 		size_t idx = 0;
+		int err = 0;
 
 		token = strtok(by_line, separators);
 		while (token != nullptr && idx < this->member_count) {
 			$tokenhandler
 
+			if (err < 0) {
+				return err;
+			}
 			token = strtok(nullptr, separators);
 			idx += 1;
 		}
