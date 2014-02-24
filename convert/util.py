@@ -400,7 +400,6 @@ def format_data(format, data):
 
 	#method signature for fill function
 	fill_csignature = "int %sfill(const char *by_line)"
-	fill_signature  = fill_csignature % ""
 
 	type_scan_lookup = {
 		"char":          "hdd",
@@ -420,6 +419,7 @@ def format_data(format, data):
 	for data_table in data:
 		data_table_name  = data_table["name_table_file"]
 		data_struct_name = data_table["name_struct"]
+		data_struct_file_name = data_table["name_struct_file"]
 
 		#create column list to ensure data order for all rows
 		column_prios = sorted(data_table["format"].keys())
@@ -476,15 +476,16 @@ def format_data(format, data):
 
 				txt += "\t%s %s%s;\n" % (dtype, member, dlength)
 
+			fill_signature  = fill_csignature % ""
 			txt += "\n\t%s;\n" % fill_signature
 			#struct ends
 			txt += "};\n"
 
-			output_name = data_table["name_struct_file"]
+			output_name = data_struct_file_name
 
 
+		#create C code for fill function
 		elif format == "cfile":
-			#create filling function
 			#it is used to fill a struct instance with data of a line in the csv
 
 			#create parser for a single field of the csv:
@@ -521,9 +522,7 @@ def format_data(format, data):
 				err = -2;
 			}"""
 
-			output_name = data_table["name_struct_file"]
-
-			fill_signature = fill_csignature % ("%s::" % output_name)
+			fill_signature = fill_csignature % ("%s::" % data_struct_name)
 
 			#definition of filling function
 			txt += Template("""
@@ -547,6 +546,9 @@ def format_data(format, data):
 	}
 """).substitute(funcsignature=fill_signature, delimiters=delimiter, tokenhandler=tokenparser)
 
+			output_name = data_struct_file_name
+
+
 		else:
 			raise Exception("unknown format specified: %s" % format)
 
@@ -555,7 +557,5 @@ def format_data(format, data):
 			ret[output_name].append(txt)
 		else:
 			ret[output_name] = [ txt ]
-
-
 
 	return ret
