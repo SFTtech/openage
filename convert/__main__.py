@@ -237,8 +237,14 @@ def convert_datfile():
 #define _${filename}_H_
 
 %s
-\n""" % dontedit,
-			"content_suffix": "#endif // _${filename}_H_\n",
+
+namespace engine {
+""" % dontedit,
+			"content_suffix": """
+} //namespace engine
+
+#endif // _${filename}_H_
+""",
 			"presuffix_func": lambda x: x.upper()
 		},
 		"cfile": {
@@ -251,8 +257,7 @@ def convert_datfile():
 
 %s
 
-namespace engine {
-""" % dontedit,
+namespace engine {\n\n""" % dontedit,
 			"content_suffix": "} //namespace engine\n",
 		}
 	}
