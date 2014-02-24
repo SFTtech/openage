@@ -1,8 +1,8 @@
 from collections import OrderedDict
 import math
 import os
-
 from PIL import Image
+from string import Template
 
 class NamedObject:
 	def __init__(self, name, **kw):
@@ -290,7 +290,8 @@ def format_data(format, data):
 	data has to be a list.
 	each entry equals a data table to create.
 	the corresponding value is a dict
-	it has three members: name, format and data
+	it has fife members:
+	name_table_file, name_struct_file, name_struct, format and data
 	name is the data structure name to create
 	format is a dict, it specifies the C type of a column.
 	each key of this dict is a ordering priority number, the value is a dict.
@@ -306,8 +307,9 @@ def format_data(format, data):
 	example:
 	data = [
 		{
-			"name_table":  "awesome_data",
-			"name_struct": "awesome_stuff",
+			"name_table_file":   "awesome_data",
+			"name_struct_file":  "awesome_header",
+			"name_struct":       "awesome_stuff",
 			"format" : {
 				0: {"column0": "int"},
 				1: {"column1": "int"},
@@ -320,8 +322,9 @@ def format_data(format, data):
 		},
 
 		{
-			"name_table":  "food_list",
-			"name_struct": "epic_food",
+			"name_table_file":   "food_list",
+			"name_struct_file":  "food_header",
+			"name_struct":       "epic_food",
 			"format": {
 				5:  {"epicness": "int16_t"},
 				0:  {"name":     { "type": "char", "length": 30 }},
@@ -342,55 +345,75 @@ def format_data(format, data):
 	a = format_data("csv", data)
 
 	a == {
-		"awesome_data": "
+		"awesome_data": [
+			"
 			#struct awesome_stuff
 			#int, int
 			#column0, column1
 			1337, 42
 			10, 42
 			235, 13
-		",
+			",
+		],
 
-		"food_list": "
+		"food_list": [
+			"
 			#struct epic_food
-			#char[30], int16_t, float
-			#name, epicness, price
-			döner, 17, 3.5
-			kässpatzen, 9001, 2.3
-			schnitzel, 200, 5.7
-			pizza, 150, 6
-		",
+			#char[30],int16_t,float
+			#name,epicness,price
+			döner,17,3.5
+			kässpatzen,9001,2.3
+			schnitzel,200,5.7
+			pizza,150,6
+			",
+		],
 	}
 
-	the generated structs could look like this:
+	the generated structs would look like this:
 
 	a = format_data("struct", data)
 
 	a == {
-		"awesome_stuff": "
+		"awesome_header": [
+			"
 			struct awesome_stuff {
 				int column0;
 				int column1;
 			};
-		",
+			",
+		],
 
-		"epic_food": "
+		"food_header": [
+			"
 			struct epic_food {
 				char[30] name;
 				int16_t epicness;
 				float price;
 			};
-		",
+			",
+		],
 	}
 	"""
 
 	#csv column delimiter:
-	delimiter = ", "
+	delimiter = ","
+
+	type_scan_lookup = {
+		"char":          "hdd",
+		"int8_t":        "hhd",
+		"uint8_t":       "hhu",
+		"int16_t":       "hd",
+		"uint16_t":      "hu",
+		"int32_t":       "d",
+		"uint32_t":      "u",
+		"float":         "f",
+		"char_array":    "s",
+	}
 
 	ret = dict()
 
 	for data_table in data:
-		data_table_name  = data_table["name_table"]
+		data_table_name  = data_table["name_table_file"]
 		data_struct_name = data_table["name_struct"]
 
 		#create column list to ensure data order for all rows
@@ -402,12 +425,16 @@ def format_data(format, data):
 			for column, ctype in data_table["format"][prio].items():
 				columns[column] = ctype
 
+		#this text will be the output
+		txt = ""
+
 		#export csv file
 		if format == "csv":
 
 			column_types_raw = columns.values()
 			column_types     = list()
 
+			#create column types line entries
 			for c_raw in column_types_raw:
 				if type(c_raw) == dict:
 					c = "%s[%d]" % (c_raw["type"], c_raw["length"])
@@ -416,7 +443,7 @@ def format_data(format, data):
 				column_types.append(c)
 
 			#csv header:
-			txt  = "#struct %s\n" % (data_struct_name)
+			txt += "#struct %s\n" % (data_struct_name)
 			txt += "#%s\n"        % (delimiter.join(column_types))
 			txt += "#%s\n"        % (delimiter.join(columns.keys()))
 
@@ -425,13 +452,15 @@ def format_data(format, data):
 				row_entries = [ str(entry[c]) for c in columns.keys() ]
 				txt += "%s\n" % (delimiter.join(row_entries))
 
-			ret[data_table_name] = txt
+			output_name = data_table_name
 
 		#create C struct
 		elif format == "struct":
 
 			#struct definition
-			txt = "struct %s {\n" % (data_struct_name)
+			txt += "struct %s {\n" % (data_struct_name)
+
+			txt += "\tmember_count = %d;\n\n" % len(columns)
 
 			#create struct members:
 			for member, dtype in columns.items():
@@ -442,13 +471,76 @@ def format_data(format, data):
 
 				txt += "\t%s %s%s;\n" % (dtype, member, dlength)
 
+			#create filling function
+			#it is used to fill a struct instance with data of a line in the csv
+
+			#create parser for a single field of the csv:
+
+			required_scanfs = dict()
+			for idx, (member, dtype) in enumerate(columns.items()):
+				dlength = 1
+				getptr  = "&"
+
+				if type(dtype) == dict:
+					dlength = dtype["length"]
+					dtype   = dtype["type"]
+					if dlength > 1:
+						dtype  = dtype + "_array"
+						getptr = ""
+
+				dtype_scan           = type_scan_lookup[dtype]
+				dlength_str          = str(dlength) if dlength > 1 else ""
+				dtype_scan_format    = "%%%s%s" % (dlength_str, dtype_scan)
+				required_scanfs[idx] = "sscanf(token, '%s', %sthis->%s);" % (dtype_scan_format, getptr, member)
+
+			tokenparser = """
+			switch (idx) {"""
+
+			#create sscanf entries
+			for idx, entry_scanner in required_scanfs.items():
+				tokenparser += """
+			case {case}: {parser} break;""".format(case=idx, parser=entry_scanner)
+
+			tokenparser += """
+			default:
+				return -2;
+			}
+"""
+
+
+			#definition of filling function
+			txt += Template("""
+	int fill(const char *by_line) {
+		char separators[] = "$delimiters";
+		char* token;
+		size_t idx = 0;
+
+		token = strtok(by_line, separators);
+		while (token != nullptr && idx < this->member_count) {
+			$tokenhandler
+
+			token = strtok(nullptr, separators);
+			idx += 1;
+		}
+		return (idx != this->member_count);
+	}
+""").substitute(delimiters=delimiter, tokenhandler=tokenparser)
+
+
 			#struct ends
 			txt += "};\n"
 
-			ret[data_struct_name] = txt
+			output_name = data_table["name_struct_file"]
 
 		else:
 			raise Exception("unknown format specified: %s" % format)
+
+		#create list or append to it, if output_name was defined earlier
+		if output_name in ret:
+			ret[output_name].append(txt)
+		else:
+			ret[output_name] = [ txt ]
+
 
 
 	return ret
