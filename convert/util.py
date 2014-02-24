@@ -510,40 +510,40 @@ def format_data(format, data):
 					raise Exception("if you can read this, some thing really faked up.")
 
 			tokenparser = """
-			switch (idx) {"""
+		switch (idx) {"""
 
 			#create sscanf entries
 			for idx, entry_scanner in required_scanfs.items():
 				tokenparser += """
-			case {case}: {parser} break;""".format(case=idx, parser=entry_scanner)
+		case {case}: {parser} break;""".format(case=idx, parser=entry_scanner)
 
 			tokenparser += """
-			default:
-				err = -2;
-			}"""
+		default:
+			err = -2;
+		}"""
 
 			fill_signature = fill_csignature % ("%s::" % data_struct_name)
 
 			#definition of filling function
 			txt += Template("""
-	$funcsignature {
-		char separators[] = "$delimiters";
-		char* token;
-		size_t idx = 0;
-		int err = 0;
+$funcsignature {
+	char separators[] = "$delimiters";
+	char* token;
+	size_t idx = 0;
+	int err = 0;
 
-		token = strtok(by_line, separators);
-		while (token != nullptr && idx < this->member_count) {
-			$tokenhandler
+	token = strtok(by_line, separators);
+	while (token != nullptr && idx < this->member_count) {
+		$tokenhandler
 
-			if (err < 0) {
-				return err;
-			}
-			token = strtok(nullptr, separators);
-			idx += 1;
+		if (err < 0) {
+			return err;
 		}
-		return (idx != this->member_count);
+		token = strtok(nullptr, separators);
+		idx += 1;
 	}
+	return (idx != this->member_count);
+}
 """).substitute(funcsignature=fill_signature, delimiters=delimiter, tokenhandler=tokenparser)
 
 			output_name = data_struct_file_name
