@@ -114,9 +114,8 @@ class TerrainData:
 
 
 class Terrain:
-	structname = "terrain"
+	structname = "terrain_type"
 	export = {
-		#"terrain_id",  #is always 0...
 		0: {"slp_id":         "int32_t"},
 		1: {"blend_mode":     "int32_t"},
 		2: {"blend_priority": "int32_t"},
