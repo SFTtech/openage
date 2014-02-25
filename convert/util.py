@@ -298,7 +298,8 @@ def format_data(format, data):
 	this dict assigns a column name to its type.
 	the type value is either a string or a dict.
 	if it's a string, it specifies the C type directly ("uint8_t"),
-	if it's a dict, it has two keys: type and length, for C arrays.
+	if it's a dict, it has one mandatory key: type
+	optional keys are: length (to specify array lengths)
 	"type"=>"char" and "length"=>40, would produce "char columnname[40];"
 	data is a list, it stores the table rows.
 	a list entry (a row) contains dicts: "column name": column value (for this row)
@@ -428,6 +429,15 @@ def format_data(format, data):
 		columns = OrderedDict()
 		for prio in column_prios:
 			for column, ctype in data_table["format"][prio].items():
+				if type(ctype) == str:
+					ctype = {
+						"type": ctype,
+						"length": 1,
+					}
+				else:
+					if not "type" in ctype:
+						raise Exception("column type has to be specified for %s" % (column))
+
 				columns[column] = ctype
 
 		#this text will be the output
@@ -441,10 +451,11 @@ def format_data(format, data):
 
 			#create column types line entries
 			for c_raw in column_types_raw:
-				if type(c_raw) == dict:
+				if "length" in c_raw and c_raw["length"] > 1:
 					c = "%s[%d]" % (c_raw["type"], c_raw["length"])
 				else:
-					c = c_raw
+					c = c_raw["type"]
+
 				column_types.append(c)
 
 			#csv header:
@@ -470,9 +481,9 @@ def format_data(format, data):
 			#create struct members:
 			for member, dtype in columns.items():
 				dlength = ""
-				if type(dtype) == dict:
+				if "length" in dtype and dtype["length"] > 1:
 					dlength = "[%d]" % (dtype["length"])
-					dtype   = dtype["type"]
+				dtype   = dtype["type"]
 
 				txt += "\t%s %s%s;\n" % (dtype, member, dlength)
 
