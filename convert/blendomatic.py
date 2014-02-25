@@ -227,6 +227,23 @@ class Blendomatic:
 
 				yield png, idx, tidx
 
+	def dump(self):
+		ret = dict()
+
+		ret["name_table_file"]  = "blending_modes"
+		ret["name_struct_file"] = "blending_mode"
+		ret["name_struct"]      = "blending_mode"
+		ret["format"]           = {
+			0: {"blend_mode": "int32_t"},
+		}
+		ret["data"] = list()
+
+		for mode in range(len(self.blending_modes)):
+			#dump terrains
+			ret["data"].append({"blend_mode": mode})
+
+		return [ ret ]
+
 
 	def __str__(self):
 		return str(self.blending_modes)
