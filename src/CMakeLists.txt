@@ -61,6 +61,7 @@ find_package(GLEW REQUIRED)
 find_package(Freetype REQUIRED)
 find_library(FONTCONFIG_LIB fontconfig)
 find_library(MATH_LIB m)
+find_library(UTIL_LIB util)
 pkg_search_module(SDL2 REQUIRED sdl2)
 pkg_search_module(SDL2_IMAGE REQUIRED sdl2_image SDL2_image)
 pkg_search_module(FTGL REQUIRED ftgl)
@@ -74,6 +75,7 @@ include_directories(
 
 target_link_libraries(${PROJECT_NAME}
 	${MATH_LIB}
+	${UTIL_LIB}
 	${SDL2_LIBRARIES}
 	${SDL2_IMAGE_LIBRARIES}
 	${OPENGL_LIBRARY}

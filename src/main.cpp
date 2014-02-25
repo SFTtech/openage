@@ -57,7 +57,7 @@ void test1() {
 		printf("fork() failed\n");
 		return;
 	case 0:
-		//we are the child
+		//we are the child, spawn a shell
 		{
 		execl("/bin/bash", "/bin/bash");
 		}
@@ -83,7 +83,8 @@ void test1() {
 					break;
 				}
 			}
-			return;
+			restorestdin();
+			exit(0);
 		default:
 			//we are the parent
 			//hide cursor
@@ -121,7 +122,6 @@ void test1() {
 	}
 	//show cursor
 	printf("\x1b[?25h");
-	restorestdin();
 }
 
 int main() {

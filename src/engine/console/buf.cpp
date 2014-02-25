@@ -32,6 +32,16 @@ Buf::Buf(term dims, term_t scrollback_lines, term_t min_width) {
 	this->screen_chrdata = this->chrdata;
 	this->screen_linedata = this->linedata;
 
+	this->reset();
+}
+
+Buf::~Buf() {
+	//free dynamically allocated members
+	delete[] this->linedata;
+	delete[] this->chrdata;
+}
+
+void Buf::reset() {
 	this->cursorpos = {0, 0};
 	this->saved_cursorpos = {0, 0};
 	this->cursor_visible = true;
@@ -45,12 +55,6 @@ Buf::Buf(term dims, term_t scrollback_lines, term_t min_width) {
 
 	//fully clear data and linedata
 	this->clear({0, (term_t) -this->scrollback_lines}, {0, this->dims.y});
-}
-
-Buf::~Buf() {
-	//free dynamically allocated members
-	delete[] this->linedata;
-	delete[] this->chrdata;
 }
 
 /*
@@ -361,168 +365,225 @@ void Buf::advance(unsigned linecount) {
 void Buf::write(char c) {
 	if (!this->streamdecoder.feed(c)) {
 		//an error has been detected in the input stream
-		this->write_codepoint(0xFFFD);
+		this->process_codepoint(0xFFFD);
 	};
 
 	if(this->streamdecoder.remaining == 0 && this->streamdecoder.out >= 0) {
-		this->write_codepoint(streamdecoder.out);
+		this->process_codepoint(streamdecoder.out);
 	}
 }
 
-void Buf::write_codepoint(int cp) {
-	//depending on the terminal state, we might do different things here.
+void Buf::process_codepoint(int cp) {
+	//if the terminal is currently in escaped state, tread the codepoint as
+	//part of the current escape sequence.
 	if (this->escaped) {
 		this->escape_sequence.push_back(cp);
 
-		//we need special treatment if this is the first character of the
-		//escape sequence (we expect a '[').
-		if (this->escape_sequence.size() == 1) {
-			if (cp == '[') {
-				//everything is in order.
-				return;
-			} else {
-				//nothing is in order.
-				//this is an illegal escape sequence.
-
-
-				//abortabortabort
-				this->escaped = false;
-				this->escape_sequence.clear();
-				return;
-			}
+		size_t len = this->escape_sequence.size();
+		int first = this->escape_sequence[0];
+		int previous = -1;
+		if (len > 1) {
+			previous = this->escape_sequence[len - 2];
 		}
 
-
-		if (cp >= 0x40 && cp < 0x7f) {
-			//this char terminates the escape sequence
-			this->escaped = false;
-
-			this->process_escape_sequence();
-
-			this->escape_sequence.clear();
-			return;
-		} else if (cp >= 0x20 && cp < 0x40) {
-			//this char is appended to the escape sequence
-			return;
-		} else {
-			//this char is not allowed. abortabortabort
-			this->escaped = false;
-			this->escape_sequence.clear();
-			return;
+		//the first char of the escape sequence determines
+		//its length, terminators and allowed characters.
+		switch (first) {
+		case '[': //CSI
+			if (len == 1 or (cp >= 0x20 and cp < 0x40)) {
+				//regular, allowed char
+			} else if (cp >= 0x40 and cp < 0x7f) {
+				//terminator
+				this->process_csi_escape_sequence();
+			} else {
+				//illegal char, abortabortabort
+				this->escape_sequence_aborted();
+			}
+			break;
+		case ']': //OSC
+		case 'P': //DCS
+		case '_': //APC
+		case '^': //PM
+			//terminated by ESC \ or BEL
+			if ((previous == 0x1b and cp == '\\') or cp == 0x07) {
+				this->process_text_escape_sequence();
+			}
+			break;
+		default: //no known multi-cp sequence, treat as single escaped cp
+			this->process_escaped_cp(first);
+			break;
 		}
 	} else {
-		switch (cp) {
-		//control characters
-		case 0x00: //NUL: ignore
-		case 0x01: //SOH: ignore
-		case 0x02: //STX: ignore
-		case 0x03: //ETX: ignore
-		case 0x04: //EOT: ignore
-		case 0x05: //ENQ: ignore (empty response)
-		case 0x06: //ACK: ignore
-			break;
-		case 0x07: //BEL: set bell flag
-			this->bell = true;
-			break;
-		case 0x08: // BS: backspace
-			//move cursor 1 left.
-			//if cursor pos is 0, move to end of previous line
-			//if already at (0,0), move to (0,0)
-			this->cursorpos.x -= 1;
-			if (this->cursorpos.x < 0) {
-				this->cursorpos.x += this->dims.x;
-				this->cursorpos.y -= 1;
-				if (this->cursorpos.y < 0) {
-					this->cursorpos = {0, 0};
-				}
-			}
-			break;
-		case 0x09: // HT: horizontal tab
-			//move cursor to next multiple of 8
-			//at least move by 1, at most by 8
-			//if next multiple of 8 is greater than terminal width,
-			//move to end of this line
-			//never move to next line
-			this->cursorpos.x = ((this->cursorpos.x + 8) / 8) * 8;
-			if (this->cursorpos.x >= this->dims.x) {
-				this->cursorpos.x = this->dims.x - 1;
-			}
-			break;
-		case 0x0a: // LF: linefeed
-		case 0x0b: // VT: vertical tab
-		case 0x0c: // FF: form feed
-			//all these do the same: move to beginning of next line
-			this->cursorpos.x = 0;
+		//we're not currently escaped, so the char is printed...
+		//at least if it's a printable character.
+		this->print_codepoint(cp);
+	}
+}
 
+void Buf::print_codepoint(int cp) {
+	switch (cp) {
+	//control characters
+	case 0x00: //NUL: ignore
+	case 0x01: //SOH: ignore
+	case 0x02: //STX: ignore
+	case 0x03: //ETX: ignore
+	case 0x04: //EOT: ignore
+	case 0x05: //ENQ: ignore (empty response)
+	case 0x06: //ACK: ignore
+		break;
+	case 0x07: //BEL: set bell flag
+		this->bell = true;
+		break;
+	case 0x08: // BS: backspace
+		//move cursor 1 left.
+		//if cursor pos is 0, move to end of previous line
+		//if already at (0,0), move to (0,0)
+		this->cursorpos.x -= 1;
+		if (this->cursorpos.x < 0) {
+			this->cursorpos.x += this->dims.x;
+			this->cursorpos.y -= 1;
+			if (this->cursorpos.y < 0) {
+				this->cursorpos = {0, 0};
+			}
+		}
+		break;
+	case 0x09: // HT: horizontal tab
+		//move cursor to next multiple of 8
+		//at least move by 1, at most by 8
+		//if next multiple of 8 is greater than terminal width,
+		//move to end of this line
+		//never move to next line
+		this->cursorpos.x = ((this->cursorpos.x + 8) / 8) * 8;
+		if (this->cursorpos.x >= this->dims.x) {
+			this->cursorpos.x = this->dims.x - 1;
+		}
+		break;
+	case 0x0a: // LF: linefeed
+	case 0x0b: // VT: vertical tab
+	case 0x0c: // FF: form feed
+		//all these do the same: move to beginning of next line
+		this->cursorpos.x = 0;
+
+		if (this->cursorpos.y == this->dims.y - 1) {
+			this->advance(1);
+		} else {
+			this->cursorpos.y += 1;
+		}
+		break;
+	case 0x0d: // CR: ignore
+	case 0x0e: // SO: ignore
+	case 0x0f: // SI: ignore
+	case 0x10: //DLE: ignore
+	case 0x11: //DC1: ignore
+	case 0x12: //DC2: ignore
+	case 0x13: //DC3: ignore
+	case 0x14: //DC4: ignore
+	case 0x15: //NAK: ignore
+	case 0x16: //SYN: ignore
+	case 0x17: //ETB: ignore
+	case 0x18: //CAN: ignore
+	case 0x19: // EM: ignore
+	case 0x1a: //SUB: ignore
+		break;
+	case 0x1b: //ESC: escape sequence start
+		this->escaped = true;
+		break;
+	case 0x1c: // FS: ignore
+	case 0x1d: // GS: ignore
+	case 0x1e: // RS: ignore
+	case 0x1f: // US: ignore
+	case 0x7f: //DEL: ignore
+		break;
+	default:   //regular, printable character
+		//set char at current cursor pos
+		buf_char *ptr = this->chrdataptr(this->cursorpos);
+		*ptr = this->current_char_fmt;
+		ptr->cp = cp;
+		buf_line *lineptr = this->linedataptr(this->cursorpos.y);
+		//store the fact that this line has been written to
+		if (lineptr->type == LINE_EMPTY) {
+			lineptr->type = LINE_REGULAR;
+		}
+		//advance cursor to the right
+		this->cursorpos.x++;
+		if(this->cursorpos.x == this->dims.x) {
+			//store the fact that this line was auto-wrapped
+			//and will continue in the next line
+			lineptr->type = LINE_WRAPPED;
+
+			this->cursorpos.x = 0;
 			if (this->cursorpos.y == this->dims.y - 1) {
 				this->advance(1);
 			} else {
 				this->cursorpos.y += 1;
 			}
-			break;
-		case 0x0d: // CR: ignore
-		case 0x0e: // SO: ignore
-		case 0x0f: // SI: ignore
-		case 0x10: //DLE: ignore
-		case 0x11: //DC1: ignore
-		case 0x12: //DC2: ignore
-		case 0x13: //DC3: ignore
-		case 0x14: //DC4: ignore
-		case 0x15: //NAK: ignore
-		case 0x16: //SYN: ignore
-		case 0x17: //ETB: ignore
-		case 0x18: //CAN: ignore
-		case 0x19: // EM: ignore
-		case 0x1a: //SUB: ignore
-			break;
-		case 0x1b: //ESC: escape sequence start
-			this->escaped = true;
-			break;
-		case 0x1c: // FS: ignore
-		case 0x1d: // GS: ignore
-		case 0x1e: // RS: ignore
-		case 0x1f: // US: ignore
-		case 0x7f: //DEL: ignore
-			break;
-		default:   //regular, printable character
-			//set char at current cursor pos
-			buf_char *ptr = this->chrdataptr(this->cursorpos);
-			*ptr = this->current_char_fmt;
-			ptr->cp = cp;
-			buf_line *lineptr = this->linedataptr(this->cursorpos.y);
-			//store the fact that this line has been written to
-			if (lineptr->type == LINE_EMPTY) {
-				lineptr->type = LINE_REGULAR;
-			}
-			//advance cursor to the right
-			this->cursorpos.x++;
-			if(this->cursorpos.x == this->dims.x) {
-				//store the fact that this line was auto-wrapped
-				//and will continue in the next line
-				lineptr->type = LINE_WRAPPED;
+		}
+		break;
+	}
+}
 
-				this->cursorpos.x = 0;
-				if (this->cursorpos.y == this->dims.y - 1) {
-					this->advance(1);
-				} else {
-					this->cursorpos.y += 1;
-				}
-			}
-			break;
+void print_cps(FILE *f, std::vector<int> *v) {
+	for (int i: *v) {
+		if (i >= 0x20 and i < 0x7f) {
+			fprintf(f, "%c", (char) i);
+		} else {
+			fprintf(f, "?");
 		}
 	}
 }
 
-void Buf::process_escape_sequence() {
-	printf("process escape sequence ");
-	for(int c: this->escape_sequence) {
-		if (c < 0x20 || c > 128) {
-			c = '?';
-		}
-		printf("%c", c);
-	}
-	printf("\n"); //ASDF
+void Buf::escape_sequence_aborted() {
+	this->escaped = false;
+	print_cps(stderr, &this->escape_sequence);
+	fprintf(stderr, "\n");
+	this->escape_sequence.clear();
+}
 
+void Buf::escape_sequence_processed() {
+	this->escaped = false;
+	this->escape_sequence.clear();
+}
+
+void Buf::process_escaped_cp(int cp) {
+	switch (cp) {
+	case 'c': //RIS (full reset)
+		this->reset();
+	default:
+		//unimplemented or invalid codepoint
+		this->escape_sequence_aborted();
+		break;
+	}
+}
+
+void Buf::process_text_escape_sequence() {
+	size_t len = this->escape_sequence.size();
+	switch (this->escape_sequence[0]) {
+	case ']': //OSC
+		switch (this->escape_sequence[1]) {
+		case '0':
+		case '2':
+			if (this->escape_sequence[2] == ';') {
+				//set window title
+				int maxidx = len - 1;
+				if (this->escape_sequence[len - 1] == '\\') {
+					maxidx = len - 2;
+				}
+				this->title.clear();
+				for(int i = 3; i < maxidx; i++) {
+					this->title.push_back(this->escape_sequence[i]);
+				}
+				this->escape_sequence_processed();
+			}
+		}
+		break;
+	default:
+		break;
+	}
+	//not implemented or invalid
+	this->escape_sequence_aborted();
+}
+
+void Buf::process_csi_escape_sequence() {
 	size_t len = this->escape_sequence.size();
 	int type = this->escape_sequence[len - 1];
 	bool starts_with_questionmark = false;
@@ -554,6 +615,7 @@ void Buf::process_escape_sequence() {
 			//unexpected character, we want a nice
 			//semicolon-separated list of decimal numbers.
 			//abortabortabort
+			this->escape_sequence_aborted();
 			return;
 		}
 	}
@@ -605,6 +667,11 @@ void Buf::process_escape_sequence() {
 
 	//execute the escape sequence
 	switch (type) {
+	case '@': //ICH: insert n blank characters
+		for(int i = 0; i < params[0]; i++) {
+			this->print_codepoint(0x20);
+		}
+		break;
 	case 'A': //CUU: move cursor up
 		this->cursorpos.y -= params[0];
 		if (this->cursorpos.y < 0) {
@@ -701,7 +768,7 @@ void Buf::process_escape_sequence() {
 		}
 		break;
 	case 'm': //SGR
-		this->sgr(params);
+		this->process_sgr_code(params);
 		break;
 	case 's': //SCP
 		this->saved_cursorpos = this->cursorpos;
@@ -757,12 +824,13 @@ void Buf::process_escape_sequence() {
 		//not implemented; fall through.
 	default:
 		//not implemented (or nonexisting)
-		//abortabortabort
+		this->escape_sequence_aborted();
 		return;
 	}
+	this->escape_sequence_processed();
 }
 
-void Buf::sgr(const std::vector<int> &params) {
+void Buf::process_sgr_code(const std::vector<int> &params) {
 	for(size_t i = 0; i < params.size(); i++) {
 		int p = params[i];
 		switch (p) {
@@ -848,7 +916,6 @@ void Buf::sgr(const std::vector<int> &params) {
 			i += 2;
 			if (i >= params.size() || params[i] < 0 || params[i] >= 256) {
 				//invalid 256-color SGR code.
-				//abortabortabort
 				return;
 			}
 			this->current_char_fmt.fgcol = params[i];
@@ -915,7 +982,8 @@ void Buf::sgr(const std::vector<int> &params) {
 			break;
 		//cases above 65 are not standardized.
 		default:
-			//not implemented or not defined. abortabortabort
+			//not implemented or not defined.
+			//abortabortabort
 			return;
 		}
 	}

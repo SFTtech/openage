@@ -32,11 +32,11 @@ constexpr chrflags_t CHR_FRAKTUR = (1 << 7);
 constexpr chrflags_t CHR_NEGATIVE = (1 << 8);
 constexpr chrflags_t CHR_INVISIBLE = (1 << 9);
 constexpr chrflags_t CHR_FRAMED = (1 << 10);
-constexpr chrflags_t CHR_ENCIRCLED = (1 << 11);
-constexpr chrflags_t CHR_OVERLINED = (1 << 12);
-constexpr chrflags_t CHR_RIGHTLINED = (1 << 13);
-constexpr chrflags_t CHR_LEFTLINED = (1 << 14);
-constexpr chrflags_t CHR_STRESS_IDEOGRAM = (1 << 15);
+constexpr chrflags_t CHR_ENCIRCLED = (1 << 11); //because framing stuff is so 20th century
+constexpr chrflags_t CHR_OVERLINED = (1 << 12); //whoever knows that this exists
+constexpr chrflags_t CHR_RIGHTLINED = (1 << 13); //whoever wants that
+constexpr chrflags_t CHR_LEFTLINED = (1 << 14); //whoever needs that
+constexpr chrflags_t CHR_STRESS_IDEOGRAM = (1 << 15); //whatever that is
 
 /**
  * a single character in the buffer
@@ -236,6 +236,11 @@ public:
 	bool bell;
 
 	/**
+	 * window title
+	 */
+	std::vector<int> title;
+
+	/**
 	 * surrently selected formatting (colors, flags).
 	 * all printed chars, as well as all buffer clearing,
 	 * will use this until it is changed by an SGR escape sequence.
@@ -271,6 +276,11 @@ public:
 	 * must be >= 0 and <= scrollback_possible.
 	 */
 	coord::term_t scrollback_pos;
+
+	/**
+	 * resets the buffer to its constructor defaults
+	 */
+	void reset();
 
 	/**
 	 * write a byte string to the buffer
@@ -319,22 +329,60 @@ public:
 	 *   if true, the whole content of stdout is cleared
 	 */
 	void to_stdout(bool clear);
+
 private:
+	/**
+	 * utf-8 state-machine that reads input bytes
+	 * and outputs unicode codepoints
+	 */
 	util::utf8_decoder streamdecoder;
 
 	/**
-	 * writes one unicode codepoint
+	 * processes one unicode codepoint
 	 * internally called by write(char) after feeding the
 	 * char into streamdecoder
 	 */
-	void write_codepoint(int cp);
+	void process_codepoint(int cp);
 
 	/**
-	 * processes the escape sequence currently stored in
+	 * prints one unicode codepoint
+	 * interally called by process_codepoint(int cp) after sorting out escape sequences, and by some escape sequences such as CSI @
+	 */
+	void print_codepoint(int cp);
+
+	/**
+	 * aborts the current escape sequence
+	 * (e.g. because it contained an illegal
+	 * character, or is not implemented)
+	 */
+	void escape_sequence_aborted();
+
+	/**
+	 * called when a escape sequence has been
+	 * successfully processed, clears the
+	 * sequence. either this or abort_escape_sequence
+	 * is called for each escape sequence.
+	 */
+	void escape_sequence_processed();
+
+	/**
+	 * processes the CSI escape sequence currently stored in
 	 * escape_sequence.
 	 * invalid sequences are ignored.
 	 */
-	void process_escape_sequence();
+	void process_csi_escape_sequence();
+
+	/**
+	 * processes a single-codepoint escape sequence.
+	 * invalid codepoints are ignored.
+	 */
+	void process_escaped_cp(int cp);
+
+	/**
+	 * processes a text escape sequence
+	 * that is one of OSC, DCS, APC or PM
+	 */
+	void process_text_escape_sequence();
 
 	/**
 	 * sets graphics rendition parameters; called by
@@ -343,7 +391,7 @@ private:
 	 * params:
 	 *   numerical params list from escape sequence
 	 */
-	void sgr(const std::vector<int> &params);
+	void process_sgr_code(const std::vector<int> &params);
 
 	/**
 	 * advances the buffer by the specified number of lines.
