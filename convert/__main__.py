@@ -81,13 +81,7 @@ def main(args):
 
 		import blendomatic
 		blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
-
-		for (modeidx, png, size, metadata) in blend_data.draw_alpha_frames_merged():
-			fname = 'processed/blendomatic.dat/mode%02d' % (modeidx)
-			filename = file_get_path(fname, write=True)
-			file_write(filename + ".png", png)
-			file_write(filename + ".docx", metadata)
-			dbg("blending mode%02d -> saved packed atlas" % (modeidx), 1)
+		blend_data.export("processed/blendomatic.dat/")
 
 		#create the dump for the dat file
 		import gamedata.empiresdat

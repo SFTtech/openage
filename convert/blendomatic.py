@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 import math
-from struct import Struct, unpack_from
-from util import NamedObject, dbg, file_open, file_get_path, merge_frames, generate_meta_text
 from png import PNG
+from struct import Struct, unpack_from
+from util import NamedObject, dbg, file_open, file_get_path, merge_frames, generate_meta_text, file_write
 
 endianness = "< "
 
@@ -244,6 +244,14 @@ class Blendomatic:
 
 		return [ ret ]
 
+	def export(self, output_folder):
+		for (modeidx, png, size, metadata) in self.draw_alpha_frames_merged():
+			fname = '%s/mode%02d' % (output_folder, modeidx)
+			filename = file_get_path(fname, write=True)
+			dbg("saving blending mode%02d texture..." % (modeidx), 1)
+			file_write(filename + ".png", png)
+			file_write(filename + ".docx", metadata)
+		dbg("blending modes exported successfully!", 1)
 
 	def __str__(self):
 		return str(self.blending_modes)
