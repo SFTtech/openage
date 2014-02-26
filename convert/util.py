@@ -18,9 +18,11 @@ readpath = "/dev/null"
 writepath = "/dev/null"
 verbose = 0
 
+
 def set_verbosity(newlevel):
 	global verbose
 	verbose = newlevel
+
 
 def ifdbg(lvl):
 	global verbose
@@ -29,6 +31,7 @@ def ifdbg(lvl):
 		return True
 	else:
 		return False
+
 
 def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "\n"):
 	global verbose
@@ -62,34 +65,37 @@ def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "
 		elif dbgstack.pop()[0] != pop:
 			raise Exception(str(pop) + " is not on top of the debug stack")
 
+
 def mkdirs(path):
 	os.makedirs(path, exist_ok = True)
+
 
 def set_write_dir(dirname):
 	global writepath
 	writepath = dirname
 
+
 def set_read_dir(dirname):
 	global readpath
 	readpath = dirname
 
-def file_get_path(fname, write = False, destination = "datapack"):
-	if write:
-		if destination == "datapack":
-			basedir = writepath + "/data/age"
 
-		elif destination == "sourcecode":
-			basedir = writepath + "/src"
+def file_get_path(fname, write = False):
+	global writepath, readpath
+
+	if write:
+		basedir = writepath
 	else:
 		basedir = readpath
 
-	path = basedir + '/' + fname
+	path = os.path.join(basedir, fname)
 
 	if write:
 		#ensure that the directory exists
 		mkdirs(os.path.dirname(path))
 
 	return path
+
 
 def file_open(path, binary = True, write = False):
 	if write:
@@ -101,6 +107,7 @@ def file_open(path, binary = True, write = False):
 
 	return open(path, flags)
 
+
 #writes data to a file in the destination directory
 def file_write(fname, data):
 	if type(data) == bytes:
@@ -111,6 +118,7 @@ def file_write(fname, data):
 		data.save(fname)
 	else:
 		raise Exception("Unknown data type for writing: " + str(type(data)))
+
 
 #reads data from a file in the source directory
 def file_read(fname, datatype = str):
@@ -572,9 +580,6 @@ $funcsignature {
 	return ret
 
 
-
-
-
 def store_data_dump(data_dump, output_formats):
 	"""
 	save a given data dump to files.
@@ -589,7 +594,6 @@ def store_data_dump(data_dump, output_formats):
 	#default preferences for output modes
 	default_preferences = {
 		"folder":      "",
-		"destination": "datapack",
 		"file_suffix": "",
 		"content_prefix": "",
 		"content_suffix": "",
@@ -606,7 +610,6 @@ def store_data_dump(data_dump, output_formats):
 		},
 		"struct": {
 			"folder":      "gamedata",
-			"destination": "sourcecode",
 			"file_suffix": ".h",
 			"content_prefix": """#ifndef _${filename}_H_
 #define _${filename}_H_
@@ -624,7 +627,6 @@ namespace engine {
 		},
 		"cfile": {
 			"folder":         "gamedata",
-			"destination":    "sourcecode",
 			"file_suffix":    ".cpp",
 			"content_prefix": """#include "${filename}.h"
 
@@ -664,10 +666,8 @@ namespace engine {\n\n""" % dontedit,
 
 			#determine output file name
 			file_name = "%s/%s%s" % (prefs["folder"], output_name, prefs["file_suffix"])
-			file_name = file_get_path(file_name, write=True, destination=prefs["destination"])
+			file_name = file_get_path(file_name, write=True)
 
 			#write dat shit
 			dbg("writing %s.." % file_name, 1)
 			file_write(file_name, file_data)
-
-	return
