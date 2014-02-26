@@ -92,11 +92,11 @@ def main(args):
 		#create the dump for the dat file
 		import gamedata.empiresdat
 		datfile = gamedata.empiresdat.EmpiresDat("Data/empires2_x1_p1.dat")
-		output_sections = ["terrain"]
-		datfile_dump = datfile.dump(output_sections)
-		store_data_dump(datfile_dump)
 
-		store_data_dump(blend_data.dump())
+		output_sections = ["terrain"]
+		store_data_dump(datfile.dump(output_sections), ["csv", "struct", "cfile"])
+
+		store_data_dump(blend_data.dump(), ["csv", "struct", "cfile"])
 
 		if args.extrafiles:
 			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
