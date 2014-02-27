@@ -87,15 +87,18 @@ for other make targets, see:
 on WINDOWS:
 -----------
 
-we don't have any interest in porting the game,
+there is no windows version yet, you may implement the port!
+
+
+we don't have any interest in porting the game to ms windows,
 but we are using cross-platform libraries wherever possible,
 so porting should not be a big issue.
 
 
 if you are keen on porting the game, go for it.
 there should be as few preprocessor switches as possible;
-if possible they should all be concentrated in one 'cross-platform abstraction file'
-we suggest using either cygwin-g++ or mingw32-g++ as the windows compiler
+preferably they should all be put in one 'cross-platform abstraction file'.
+we suggest using either cygwin-g++ or mingw32-g++ as the windows compiler,
 cygwin will probably be the least effort.
 
 
@@ -146,7 +149,7 @@ here are a few tips:
 * [learn python](http://docs.python.org/3/tutorial/appetite.html)
 * [learn c++11](http://www.cplusplus.com/doc/tutorial/)
 * read our code
-* programm whatever you want
+* contribute anything to our code
 * contact us
 
 
