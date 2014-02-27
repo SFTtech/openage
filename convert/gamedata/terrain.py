@@ -7,15 +7,6 @@ from .empiresdat import endianness
 
 class TerrainHeaderData:
 
-	def dump(self):
-		ret = list()
-
-		#dump self.data (gets created when assigning TerrainData)
-		ret.append(self.data.dump())
-
-		return ret
-
-
 	def read(self, raw, offset):
 		#uint16_t terrain_restriction_count;
 		#uint16_t terrain_count;
@@ -100,7 +91,7 @@ class TerrainData:
 			#dump terrains
 			ret["data"].append(terrain.dump())
 
-		return ret
+		return [ ret ]
 
 	def read(self, raw, offset):
 

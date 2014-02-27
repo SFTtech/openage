@@ -1,10 +1,21 @@
-import zlib
-
-from struct import Struct, unpack_from
-from util import dbg, file_get_path, file_open, zstr
+#!/usr/bin/env python3
 
 #define little endian byte order for the dat file
 endianness = '< '
+
+from gamedata import civ
+from gamedata import graphic
+from gamedata import playercolor
+from gamedata import research
+from gamedata import sound
+from gamedata import tech
+from gamedata import tech
+from gamedata import terrain
+from gamedata import unit
+
+from struct import Struct, unpack_from
+from util import dbg, file_get_path, file_open, file_write, zstr
+import zlib
 
 
 # this file can parse and represent the empires2_x1_p1.dat file,
@@ -21,6 +32,10 @@ class EmpiresDat:
 	"""class for fighting and beating the compressed empires2*.dat"""
 
 	def __init__(self, fname):
+		if fname != None:
+			self.fill(fname)
+
+	def fill(self, fname):
 		self.fname = fname
 		dbg("reading empires2*.dat from %s..." % fname, 1)
 
@@ -44,8 +59,6 @@ class EmpiresDat:
 		dbg("length of compressed data: %d = %d kB" % (compressed_size, compressed_size/1024), 1)
 		dbg("length of decompressed data: %d = %d kB" % (decompressed_size, decompressed_size/1024), 1)
 
-
-		from util import file_write
 		rawfile_writepath = file_get_path('raw/empires2x1p1.raw', write=True)
 		print("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath))
 		file_write(rawfile_writepath, self.content)
@@ -68,68 +81,46 @@ class EmpiresDat:
 
 		dbg("dat version: %s" % (self.version), 1)
 
-		from gamedata import terrain
-		t = terrain.TerrainHeaderData()
-		offset = t.read(raw, offset)
-		self.terrain = t
+		self.terrain_header = terrain.TerrainHeaderData()
+		offset = self.terrain_header.read(raw, offset)
 
-		from gamedata import playercolor
-		t = playercolor.PlayerColorData()
-		offset = t.read(raw, offset)
-		self.color = t
+		self.color = playercolor.PlayerColorData()
+		offset = self.color.read(raw, offset)
 
-		from gamedata import sound
-		t = sound.SoundData()
-		offset = t.read(raw, offset)
-		self.sound = t
+		self.sound = sound.SoundData()
+		offset = self.sound.read(raw, offset)
 
-		from gamedata import graphic
-		t = graphic.GraphicData()
-		offset = t.read(raw, offset)
-		self.graphic = t
+		self.graphic = graphic.GraphicData()
+		offset = self.graphic.read(raw, offset)
 
-		from gamedata import terrain
-		t = terrain.TerrainData(self.terrain.terrain_count)
-		offset = t.read(raw, offset)
-		self.terrain.data = t
+		self.terrain = terrain.TerrainData(self.terrain_header.terrain_count)
+		offset = self.terrain.read(raw, offset)
 
 		#unknown shiat
 		tmp_struct = Struct(endianness + "438c")
 		offset += tmp_struct.size
 
-		from gamedata import terrain
-		t = terrain.TerrainBorderData()
-		offset = t.read(raw, offset)
-		self.terrain.borders = t
+		self.terrain_borders = terrain.TerrainBorderData()
+		offset = self.terrain_borders.read(raw, offset)
 
-		from gamedata import tech
-		t = tech.TechData()
-		offset = t.read(raw, offset)
-		self.tech = t
+		self.tech = tech.TechData()
+		offset = self.tech.read(raw, offset)
 
-		from gamedata import unit
-		t = unit.UnitHeaderData()
-		offset = t.read(raw, offset)
-		self.unit = t
+		self.unit = unit.UnitHeaderData()
+		offset = self.unit.read(raw, offset)
 
-		from gamedata import civ
-		t = civ.CivData()
-		offset = t.read(raw, offset)
-		self.civ = t
+		self.civ = civ.CivData()
+		offset = self.civ.read(raw, offset)
 
-		from gamedata import research
-		t = research.ResearchData()
-		offset = t.read(raw, offset)
-		self.research = t
+		self.research = research.ResearchData()
+		offset = self.research.read(raw, offset)
 
 		#unknown shiat again
 		tmp_struct = Struct(endianness + "7i")
 		offset += tmp_struct.size
 
-		from gamedata import tech
-		t = tech.TechtreeData()
-		offset = t.read(raw, offset)
-		self.tech = t
+		self.tech = tech.TechtreeData()
+		offset = self.tech.read(raw, offset)
 
 		return offset
 
