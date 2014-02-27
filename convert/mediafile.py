@@ -125,18 +125,17 @@ def media_convert(args):
 			if file_extension == 'slp':
 
 				if write_enabled:
-
 					s = SLP(file_data)
 					out_file_tmp = drsname + ": " + str(file_id) + "." + file_extension
 
-					if args.nomerge:
+					if args.no_merge:
 						#create each frame as a separate file
 						for idx, (png, metadata) in enumerate(s.draw_frames(palette)):
 							filename = fname + '.' + str(idx)
+							dbg(out_file_tmp + " -> extracting frame %3d...\r" % (idx), 1, end="")
 							file_write(filename + '.png', png.image)
 							file_write(filename + '.docx', metadata)
 
-							dbg(out_file_tmp + " -> extracting frame %3d...\r" % (idx), 1, end="")
 						dbg(out_file_tmp + " -> saved single frame(s)", 1)
 
 					else:
@@ -149,11 +148,10 @@ def media_convert(args):
 			elif file_extension == 'wav':
 
 				if write_enabled:
-
 					file_write(fname, file_data)
 
 					if not args.no_opus:
-					#opusenc invokation (TODO: ffmpeg?)
+						#opusenc invokation (TODO: ffmpeg?)
 						opus_convert_call = ['opusenc', fname, fbase + '.opus']
 						dbg("converting... : " + fname + " to opus.", 1)
 
@@ -188,5 +186,3 @@ def media_convert(args):
 				ret += "%s/%d.%s, " % (file_name, idx, file_extension)
 			ret += "]"
 			print(ret)
-
-	pass

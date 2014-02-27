@@ -151,7 +151,6 @@ class Blendomatic:
 			#insert as padding to the left (0 for fully transparent)
 			space_left = [-1] * space_count
 
-
 			if read_values > (tile_size - read_so_far):
 				raise Exception("reading more bytes than tile has left")
 
