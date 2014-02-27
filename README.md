@@ -39,10 +39,13 @@ looked up in the [current STATUS](STATUS.md) file.
 dependencies
 ============
 
-dependencies are marked:
-  C = compiletime dependency
-  R = runtime dependency
-  T = convert script dependency
+dependencies are needed for:
+
+* C = compiling
+* R = running
+* T = media convert script
+
+dependency list:
 
 	T     python3.3
 	T     python3.3 imaging library (PIL) -> pillow
