@@ -89,7 +89,8 @@ def media_convert(args):
 
 		#create the dump for the dat file
 		import gamedata.empiresdat
-		datfile = gamedata.empiresdat.EmpiresDat("Data/empires2_x1_p1.dat")
+		datfile = gamedata.empiresdat.EmpiresDat()
+		datfile.fill("Data/empires2_x1_p1.dat")
 
 		store_data_dump(datfile.dump(["terrain"]), ["csv"])
 		store_data_dump(blend_data.dump(), ["csv"])

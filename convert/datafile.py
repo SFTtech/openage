@@ -15,10 +15,13 @@ def data_generate(args):
 		write_enabled = False
 
 	if write_enabled:
-		import gamedata.empiresdat
-		datfile = gamedata.empiresdat.EmpiresDat(None)
 
-		store_data_dump(datfile.dump(["terrain"]), ["struct", "cfile"])
-		store_data_dump(blend_data.dump(), ["struct", "cfile"])
+		import gamedata.empiresdat
+		datfile_structs = gamedata.empiresdat.EmpiresDat.structs(["terrain"])
+		store_data_dump(datfile_structs, ["struct", "cfile"])
+
+		import blendomatic
+		blendomatic_structs = blendomatic.Blendomatic.structs()
+		store_data_dump(blendomatic_structs, ["struct", "cfile"])
 	else:
 		raise NotImplementedError("file listing")

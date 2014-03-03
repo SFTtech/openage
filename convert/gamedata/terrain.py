@@ -1,6 +1,6 @@
 from struct import Struct, unpack_from
 from util import dbg, zstr
-from util import file_get_path, file_write, gather_data
+from util import file_get_path, file_write, gather_data, gather_format
 
 from .empiresdat import endianness
 
@@ -82,11 +82,10 @@ class TerrainData:
 	def dump(self):
 		ret = dict()
 
-		ret["name_table_file"]  = "terrain_data"
-		ret["name_struct_file"] = "terrain"
-		ret["name_struct"]     = Terrain.structname
-		ret["format"]          = Terrain.export
-		ret["data"]            = list()
+		ret.update(gather_format(Terrain))
+		ret["name_table_file"] = "terrain_data"
+		ret["data"] = list()
+
 		for terrain in self.terrains:
 			#dump terrains
 			ret["data"].append(terrain.dump())
@@ -94,7 +93,6 @@ class TerrainData:
 		return [ ret ]
 
 	def read(self, raw, offset):
-
 		self.terrains = list()
 		for i in range(self.terrain_count):
 			t = Terrain()
@@ -105,8 +103,9 @@ class TerrainData:
 
 
 class Terrain:
-	structname = "terrain_type"
-	export = {
+	name_struct      = "terrain_type"
+	name_struct_file = "terrain"
+	data_format = {
 		0: {"slp_id":         "int32_t"},
 		1: {"blend_mode":     "int32_t"},
 		2: {"blend_priority": "int32_t"},
@@ -115,7 +114,7 @@ class Terrain:
 	}
 
 	def dump(self):
-		return gather_data(self, self.export)
+		return gather_data(self, self.data_format)
 
 	def read(self, raw, offset):
 		#int16_t unknown;

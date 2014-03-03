@@ -3,12 +3,19 @@
 import math
 from png import PNG
 from struct import Struct, unpack_from
+import util
 from util import NamedObject, dbg, file_open, file_get_path, merge_frames, generate_meta_text, file_write
 import os.path
 
 endianness = "< "
 
 class Blendomatic:
+
+	name_struct      = "blending_mode"
+	name_struct_file = "blending_mode"
+	data_format = {
+		0: {"blend_mode": "int32_t"},
+	}
 
 	#struct blendomatic_header {
 	# unsigned int nr_blending_modes;
@@ -230,18 +237,19 @@ class Blendomatic:
 	def dump(self):
 		ret = dict()
 
-		ret["name_table_file"]  = "blending_modes"
-		ret["name_struct_file"] = "blending_mode"
-		ret["name_struct"]      = "blending_mode"
-		ret["format"]           = {
-			0: {"blend_mode": "int32_t"},
-		}
+		ret.update(util.gather_format(self))
+		ret["name_table_file"] = "blending_modes"
 		ret["data"] = list()
 
 		for mode in range(len(self.blending_modes)):
 			#dump terrains
 			ret["data"].append({"blend_mode": mode})
 
+		return [ ret ]
+
+	def structs():
+		ret = dict()
+		ret.update(util.gather_format(Blendomatic))
 		return [ ret ]
 
 	def export(self, output_folder):

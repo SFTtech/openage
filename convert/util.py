@@ -287,6 +287,20 @@ def gather_data(obj, members):
 
 	return ret
 
+def gather_format(target_class):
+	"""
+	returns all necessary class properties of the target to
+	create a struct dump.
+
+	this can then be fed into `format_data`, with the format="struct"
+	"""
+
+	ret = dict()
+	ret["name_struct"]      = target_class.name_struct
+	ret["name_struct_file"] = target_class.name_struct_file
+	ret["data_format"]      = target_class.data_format
+
+	return ret
 
 def format_data(format, data):
 	"""
@@ -426,17 +440,15 @@ def format_data(format, data):
 	ret = dict()
 
 	for data_table in data:
-		data_table_name  = data_table["name_table_file"]
 		data_struct_name = data_table["name_struct"]
-		data_struct_file_name = data_table["name_struct_file"]
 
 		#create column list to ensure data order for all rows
-		column_prios = sorted(data_table["format"].keys())
+		column_prios = sorted(data_table["data_format"].keys())
 
 		#create ordered dict according to priorities
 		columns = OrderedDict()
 		for prio in column_prios:
-			for column, ctype in data_table["format"][prio].items():
+			for column, ctype in data_table["data_format"][prio].items():
 				if type(ctype) == str:
 					ctype = {
 						"type": ctype,
@@ -476,7 +488,7 @@ def format_data(format, data):
 				row_entries = [ str(entry[c]) for c in columns.keys() ]
 				txt += "%s\n" % (delimiter.join(row_entries))
 
-			output_name = data_table_name
+			output_name = data_table["name_table_file"]
 
 		#create C struct
 		elif format == "struct":
@@ -500,7 +512,7 @@ def format_data(format, data):
 			#struct ends
 			txt += "};\n"
 
-			output_name = data_struct_file_name
+			output_name = data_table["name_struct_file"]
 
 
 		#create C code for fill function
@@ -565,7 +577,7 @@ $funcsignature {
 }
 """).substitute(funcsignature=fill_signature, delimiters=delimiter, tokenhandler=tokenparser)
 
-			output_name = data_struct_file_name
+			output_name = data_table["name_struct_file"]
 
 
 		else:

@@ -14,6 +14,7 @@ from gamedata import terrain
 from gamedata import unit
 
 from struct import Struct, unpack_from
+import util
 from util import dbg, file_get_path, file_open, file_write, zstr
 import zlib
 
@@ -31,9 +32,8 @@ import zlib
 class EmpiresDat:
 	"""class for fighting and beating the compressed empires2*.dat"""
 
-	def __init__(self, fname):
-		if fname != None:
-			self.fill(fname)
+	def __init__(self):
+		pass
 
 	def fill(self, fname):
 		self.fname = fname
@@ -63,6 +63,7 @@ class EmpiresDat:
 		print("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath))
 		file_write(rawfile_writepath, self.content)
 
+		#this variable will store the offset in the raw dat file.
 		offset = 0
 		offset = self.read(self.content, offset)
 
@@ -133,6 +134,27 @@ class EmpiresDat:
 		for entry in what:
 			member_dump = getattr(self, entry).dump()
 			ret += member_dump
+
+		return ret
+
+	def structs(what):
+		"""
+		function for dumping struct data without having to read a dat file.
+
+		note that 'self' is missing from the parameter list.
+		"""
+
+		if type(what) != list:
+			what = [what]
+
+		ret = list()
+		for entry in what:
+			if "terrain" == entry:
+				target_class = terrain.Terrain
+			else:
+				raise Exception("unknown struct dump requested: %s" % what)
+
+			ret += [ util.gather_format(target_class) ]
 
 		return ret
 
