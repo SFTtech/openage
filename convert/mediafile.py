@@ -11,7 +11,7 @@ from slp import SLP, PNG
 from string import Template
 import subprocess
 import util
-from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path, store_data_dump
+from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path, transform_dump, merge_data_dump
 
 
 class ExtractionRule:
@@ -92,15 +92,25 @@ def media_convert(args):
 		datfile = gamedata.empiresdat.EmpiresDat()
 		datfile.fill("Data/empires2_x1_p1.dat")
 
-		store_data_dump(datfile.dump(["terrain"]), ["csv"])
-		store_data_dump(blend_data.dump(), ["csv"])
+		storeas = ["csv"]
+
+		raw_dump = list()
+		raw_dump += datfile.dump(["terrain"])
+		raw_dump += blend_data.dump()
+
+		output_content = merge_data_dump(transform_dump(raw_dump, storeas))
+
+		for file_name, file_data in output_content.items():
+			dbg("writing %s.." % file_name, 1)
+			file_write(file_name, file_data)
+
 
 		if args.extrafiles:
 			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
 
 
 	file_list = dict()
-	files_extracted = 0
+	media_files_extracted = 0
 
 	for drsname, drsfile in drsfiles.items():
 		for file_extension, file_id in drsfile.files:
@@ -175,10 +185,10 @@ def media_convert(args):
 				if write_enabled:
 					file_write(fname, file_data)
 
-			files_extracted += 1
+			media_files_extracted += 1
 
 	if write_enabled:
-		dbg("%d files extracted" % (files_extracted), 0)
+		dbg("media files extracted: %d" % (media_files_extracted), 0)
 
 	if args.list_files:
 		for idx, f in file_list.items():

@@ -49,7 +49,6 @@ if __name__ == "__main__":
 
 	#actually parse argv and run main
 	args = p.parse_args()
-	print("arguments parsed:\n" + str(args))
 
 	set_verbosity(args.verbose)
 
