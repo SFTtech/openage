@@ -1,5 +1,8 @@
 #source file configuration
 #
+#
+
+
 #add new sources here, dependencies for linking and including
 #are specified beliw the source file list.
 
@@ -47,6 +50,10 @@ add_executable(${PROJECT_NAME}
 	engine/console/console.cpp
 	engine/console/init.cpp
 )
+
+
+#add our generated files directory
+add_subdirectory("gamedata")
 
 
 #library dependency specification

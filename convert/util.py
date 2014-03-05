@@ -644,11 +644,10 @@ def merge_data_dump(transformed_data): #data_dump, output_formats):
 	#configuration for all the output formats
 	output_preferences = {
 		"csv": {
-			"folder":      "processed",
+			"folder":      "processed/",
 			"file_suffix": ".docx",
 		},
 		"struct": {
-			"folder":      "gamedata",
 			"file_suffix": ".h",
 			"content_prefix": """#ifndef _${filename}_H_
 #define _${filename}_H_
@@ -665,7 +664,6 @@ namespace engine {
 			"presuffix_func": lambda x: x.upper()
 		},
 		"cfile": {
-			"folder":         "gamedata",
 			"file_suffix":    ".cpp",
 			"content_prefix": """#include "${filename}.h"
 
@@ -705,7 +703,7 @@ namespace engine {\n\n""" % dontedit,
 			file_data = content_prefix + file_data + content_suffix
 
 			#determine output file name
-			file_name = "%s/%s%s" % (prefs["folder"], output_name, prefs["file_suffix"])
+			file_name = os.path.join(prefs["folder"], "%s%s" % (output_name, prefs["file_suffix"]))
 			file_name = file_get_path(file_name, write=True)
 
 			#whee, store the content
