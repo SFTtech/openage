@@ -13,6 +13,7 @@ class Blendomatic:
 
 	name_struct      = "blending_mode"
 	name_struct_file = "blending_mode"
+	struct_description = None
 	data_format = {
 		0: {"blend_mode": "int32_t"},
 	}

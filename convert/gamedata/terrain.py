@@ -103,8 +103,10 @@ class TerrainData:
 
 
 class Terrain:
-	name_struct      = "terrain_type"
-	name_struct_file = "terrain"
+	name_struct        = "terrain_type"
+	name_struct_file   = "terrain"
+	struct_description = "describes a terrain type, like water, ice, etc."
+
 	data_format = {
 		0: {"slp_id":         "int32_t"},
 		1: {"blend_mode":     "int32_t"},

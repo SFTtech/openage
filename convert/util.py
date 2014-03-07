@@ -295,9 +295,10 @@ def gather_format(target_class):
 	"""
 
 	ret = dict()
-	ret["name_struct"]      = target_class.name_struct
-	ret["name_struct_file"] = target_class.name_struct_file
-	ret["data_format"]      = target_class.data_format
+	ret["name_struct"]        = target_class.name_struct
+	ret["name_struct_file"]   = target_class.name_struct_file
+	ret["data_format"]        = target_class.data_format
+	ret["struct_description"] = target_class.struct_description
 
 	return ret
 
@@ -332,6 +333,7 @@ def format_data(format, data):
 			"name_table_file":   "awesome_data",
 			"name_struct_file":  "awesome_header",
 			"name_struct":       "awesome_stuff",
+			"struct_description: "you can't believe how epic this struct is!",
 			"format" : {
 				0: {"column0": "int"},
 				1: {"column1": "int"},
@@ -347,6 +349,7 @@ def format_data(format, data):
 			"name_table_file":   "food_list",
 			"name_struct_file":  "food_header",
 			"name_struct":       "epic_food",
+			"struct_description: None,
 			"format": {
 				5:  {"epicness": "int16_t"},
 				0:  {"name":     { "type": "char", "length": 30 }},
@@ -370,6 +373,7 @@ def format_data(format, data):
 		"awesome_data": [
 			"
 			#struct awesome_stuff
+			#you can't believe how epic this struct is!
 			#int, int
 			#column0, column1
 			1337, 42
@@ -398,6 +402,9 @@ def format_data(format, data):
 	a == {
 		"awesome_header": [
 			"
+			/**
+			you can't believe how epic this struct is!
+			*/
 			struct awesome_stuff {
 				int column0;
 				int column1;
@@ -432,7 +439,6 @@ def format_data(format, data):
 		"int32_t":       "d",
 		"uint32_t":      "u",
 		"float":         "f",
-		"char_array":    "s",
 	}
 
 
@@ -440,6 +446,7 @@ def format_data(format, data):
 
 	for data_table in data:
 		data_struct_name = data_table["name_struct"]
+		data_struct_desc = data_table["struct_description"]
 
 		#create column list to ensure data order for all rows
 		column_prios = sorted(data_table["data_format"].keys())
@@ -465,6 +472,12 @@ def format_data(format, data):
 		#export csv file
 		if format == "csv":
 
+			if data_struct_desc != None:
+				#prepend each line with a comment hash
+				csv_struct_desc = "".join(("#%s\n" % line for line in data_struct_desc.split("\n")))
+			else:
+				csv_struct_desc = ""
+
 			column_types_raw = columns.values()
 			column_types     = list()
 
@@ -479,6 +492,7 @@ def format_data(format, data):
 
 			#csv header:
 			txt += "#struct %s\n" % (data_struct_name)
+			txt += "%s"           % (csv_struct_desc)
 			txt += "#%s\n"        % (delimiter.join(column_types))
 			txt += "#%s\n"        % (delimiter.join(columns.keys()))
 
@@ -491,6 +505,10 @@ def format_data(format, data):
 
 		#create C struct
 		elif format == "struct":
+
+			#optional struct description
+			if data_struct_desc != None:
+				txt += "/**\n%s\n*/" % data_struct_desc
 
 			#struct definition
 			txt += "struct %s {\n" % (data_struct_name)
@@ -663,6 +681,7 @@ def merge_data_dump(transformed_data):
 %s
 
 namespace engine {
+
 """ % dontedit,
 			"content_suffix": """
 } //namespace engine
