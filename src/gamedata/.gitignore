@@ -1,0 +1,4 @@
+#ignore all generated files
+
+*.h
+*.cpp

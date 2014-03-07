@@ -88,5 +88,12 @@ target_link_libraries(${PROJECT_NAME}
 	${FREETYPE_LIBRARIES}
 )
 
-#installation procedure
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+
+#TODO: install shaders, data search paths
+
+#installation definitions
+install(TARGETS ${PROJECT_NAME}
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
+)

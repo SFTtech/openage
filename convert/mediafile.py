@@ -102,6 +102,7 @@ def media_convert(args):
 
 		for file_name, file_data in output_content.items():
 			dbg("writing %s.." % file_name, 1)
+			file_name = file_get_path(file_name, write=True)
 			file_write(file_name, file_data)
 
 

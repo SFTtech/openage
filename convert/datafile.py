@@ -4,7 +4,8 @@
 
 import blendomatic
 import gamedata.empiresdat
-from util import dbg, set_write_dir, merge_data_dump, transform_dump, file_write
+from fnmatch import fnmatch
+from util import dbg, set_write_dir, merge_data_dump, transform_dump, file_write, file_get_path
 
 
 def data_generate(args):
@@ -19,7 +20,7 @@ def data_generate(args):
 		write_enabled = True
 	else:
 		if args.list_files:
-			set_write_dir("./")
+			set_write_dir("")
 			list_enabled = True
 
 
@@ -36,14 +37,37 @@ def data_generate(args):
 	for struct in struct_dumps:
 		output_storage.append(transform_dump(struct, storeas))
 
+	output_filenames = list()
+
+	written_file_count = 0
+
 	for dump in output_storage:
 		merged_dump = merge_data_dump(dump)
 
 		for file_name, file_data in merged_dump.items():
-			if write_enabled:
-				#write dat shit
-				dbg("writing %s.." % file_name, 1)
-				file_write(file_name, file_data)
+			output_filenames.append(file_name)
 
-			if list_enabled:
-				print(file_name)
+			if write_enabled:
+				#only generate requested files
+				write_file = False
+
+				if args.filename == "*":
+					write_file = True
+
+				if any((fnmatch(file_name, file_pattern) for file_pattern in args.filename)):
+					write_file = True
+
+				if write_file:
+					#write dat shit
+					dbg("writing %s.." % file_name, 1)
+					file_name = file_get_path(file_name, write=True)
+					file_write(file_name, file_data)
+					written_file_count += 1
+
+	if list_enabled:
+		#TODO: maybe implement other output formats...
+		print(";".join(output_filenames), end="")
+
+	else:
+		if written_file_count == 0:
+			dbg("no source files generated!", 0)
