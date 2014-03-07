@@ -11,9 +11,9 @@ endianness = "< "
 
 class Blendomatic:
 
-	name_struct      = "blending_mode"
-	name_struct_file = "blending_mode"
-	struct_description = None
+	name_struct        = "blending_mode"
+	name_struct_file   = "blending_mode"
+	struct_description = "describes one blending mode, a blending transition shape between two different terrain types."
 	data_format = {
 		0: {"blend_mode": "int32_t"},
 	}

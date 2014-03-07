@@ -3,6 +3,7 @@
 #handler routines for creating and converting data files
 
 import blendomatic
+import colortable
 import gamedata.empiresdat
 from fnmatch import fnmatch
 from util import dbg, set_write_dir, merge_data_dump, transform_dump, file_write, file_get_path
@@ -32,6 +33,7 @@ def data_generate(args):
 	struct_dumps = list()
 	struct_dumps.append(gamedata.empiresdat.EmpiresDat.structs(empiresdat_sections))
 	struct_dumps.append(blendomatic.Blendomatic.structs())
+	struct_dumps.append(colortable.ColorTable.structs())
 
 	output_storage = list()
 	for struct in struct_dumps:

@@ -2,7 +2,7 @@
 #
 #media files conversion stuff
 
-from colortable import ColorTable
+from colortable import ColorTable, PlayerColorTable
 from drs import DRS
 from os import remove
 from os.path import join
@@ -77,11 +77,11 @@ def media_convert(args):
 		"terrain":   DRS("Data/terrain.drs")
 	}
 
-	palette = ColorTable(drsfiles["interface"].get_file_data('bin', 50500))
+	palette = ColorTable()
+	palette.fill(drsfiles["interface"].get_file_data('bin', 50500), 50500)
 
 	if write_enabled:
-		palette_file_name = file_get_path('processed/player_color_palette.pal', write=True)
-		file_write(palette_file_name, palette.gen_player_color_palette())
+		player_palette = PlayerColorTable(palette)
 
 		import blendomatic
 		blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
@@ -97,6 +97,7 @@ def media_convert(args):
 		raw_dump = list()
 		raw_dump += datfile.dump(["terrain"])
 		raw_dump += blend_data.dump()
+		raw_dump += player_palette.dump()
 
 		output_content = merge_data_dump(transform_dump(raw_dump, storeas))
 

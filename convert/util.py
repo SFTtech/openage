@@ -508,7 +508,7 @@ def format_data(format, data):
 
 			#optional struct description
 			if data_struct_desc != None:
-				txt += "/**\n%s\n*/" % data_struct_desc
+				txt += "/**\n%s\n*/\n" % data_struct_desc
 
 			#struct definition
 			txt += "struct %s {\n" % (data_struct_name)
