@@ -421,7 +421,7 @@ def format_data(format, data):
 	delimiter = ","
 
 	#method signature for fill function
-	fill_csignature = "int %sfill(const char *by_line)"
+	fill_csignature = "int %sfill(char *by_line)"
 
 	type_scan_lookup = {
 		"char":          "hdd",
@@ -495,7 +495,7 @@ def format_data(format, data):
 			#struct definition
 			txt += "struct %s {\n" % (data_struct_name)
 
-			txt += "\tmember_count = %d;\n\n" % len(columns)
+			txt += "\tsize_t member_count = %d;\n\n" % len(columns)
 
 			#create struct members:
 			for member, dtype in columns.items():
@@ -533,7 +533,7 @@ def format_data(format, data):
 				dtype_scan           = type_scan_lookup[dtype]
 
 				if dlength == 1 and dtype != "char":
-					required_scanfs[idx] = "err = sscanf(token, '%%%s', &this->%s);" % (dtype_scan, member)
+					required_scanfs[idx] = "err = sscanf(token, \"%%%s\", &this->%s);" % (dtype_scan, member)
 
 				elif dtype == "char":
 					required_scanfs[idx] = "strncpy(this->%s, token, %d); this->%s[%d-1] = '\\0';" % (member, dlength, member, dlength)
@@ -566,7 +566,7 @@ $funcsignature {
 
 	token = strtok(by_line, separators);
 	while (token != nullptr && idx < this->member_count) {
-		$tokenhandler
+$tokenhandler
 
 		if (err < 0) {
 			return err;
@@ -623,6 +623,9 @@ def merge_data_dump(transformed_data):
 	"""
 	save a given transformed data dump to files.
 
+	this function merges the file sections and adds per-file
+	stuff like includes, header guards and the namespace.
+
 	input: {output_format => {filename => [file_content]}}
 	output: {full_filename => file_content}
 	"""
@@ -654,6 +657,9 @@ def merge_data_dump(transformed_data):
 			"content_prefix": """#ifndef _${filename}_H_
 #define _${filename}_H_
 
+#include <stddef.h> //various types
+#include <stdint.h> //int types
+
 %s
 
 namespace engine {
@@ -670,6 +676,7 @@ namespace engine {
 			"content_prefix": """#include "${filename}.h"
 
 #include <string.h> //strtok
+#include <stdio.h>  //sscanf
 
 %s
 

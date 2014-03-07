@@ -78,6 +78,7 @@ include_directories(
 #link_directories(rofl/lib/lol)
 
 target_link_libraries(${PROJECT_NAME}
+	gamedata
 	${MATH_LIB}
 	${SDL2_LIBRARIES}
 	${SDL2_IMAGE_LIBRARIES}

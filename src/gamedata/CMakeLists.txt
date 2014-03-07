@@ -36,6 +36,7 @@ foreach(FILE_NAME ${FILES_TO_GENERATE})
 		OUTPUT ${GEN_FILE}
 		COMMAND ${CONVERT_CALL} -o "${DESTINATION_FOLDER}" "${FILE_NAME}"
 		WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+		DEPENDS "${PROJECT_SOURCE_DIR}/convert/util.py"  #actually depends on many more: TODO
 		COMMENT "generating ${FILE_NAME}"
 	)
 	message("creating generation rule for '${FILE_NAME}'")
@@ -48,3 +49,6 @@ endforeach()
 
 #static library for the generated files
 add_library(gamedata STATIC ${FILE_RULES})
+
+#target for explicit generation of files
+add_custom_target(filegeneration ALL DEPENDS ${FILE_RULES})
