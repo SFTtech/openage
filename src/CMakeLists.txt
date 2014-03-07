@@ -12,8 +12,6 @@ add_executable(${PROJECT_NAME}
 	openage/init.cpp
 	openage/callbacks.cpp
 	openage/gamestate.cpp
-	openage/objects/building.cpp
-	openage/objects/terrain.cpp
 	engine/engine.cpp
 	engine/callbacks.cpp
 	engine/init.cpp
