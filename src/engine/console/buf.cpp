@@ -409,6 +409,21 @@ void Buf::process_codepoint(int cp) {
 				this->process_text_escape_sequence();
 			}
 			break;
+		case '(': //non-utf8-related stuff
+		case ')': //character-set selection etc...
+		case '*': //these are all 2-char sequences
+		case '+':
+		case '-':
+		case '/':
+		case '.':
+		case '%':
+		case '#':
+		case ' ':
+			//not implemented
+			if (len == 2) {
+				this->escape_sequence_aborted();
+			}
+			break;
 		default: //no known multi-cp sequence, treat as single escaped cp
 			this->process_escaped_cp(first);
 			break;
@@ -470,7 +485,9 @@ void Buf::print_codepoint(int cp) {
 			this->cursorpos.y += 1;
 		}
 		break;
-	case 0x0d: // CR: ignore
+	case 0x0d: // CR: carriage return
+		this->cursorpos.x = 0;
+		break;
 	case 0x0e: // SO: ignore
 	case 0x0f: // SI: ignore
 	case 0x10: //DLE: ignore
@@ -506,7 +523,7 @@ void Buf::print_codepoint(int cp) {
 		}
 		//advance cursor to the right
 		this->cursorpos.x++;
-		if(this->cursorpos.x == this->dims.x) {
+		if (this->cursorpos.x == this->dims.x) {
 			//store the fact that this line was auto-wrapped
 			//and will continue in the next line
 			lineptr->type = LINE_WRAPPED;
@@ -678,6 +695,8 @@ void Buf::process_csi_escape_sequence() {
 			this->cursorpos.y = 0;
 		}
 		break;
+	case 'e': //VPR: vertical position relative
+		//fall through
 	case 'B': //CUD: move cursor down
 		this->cursorpos.y += params[0];
 		if (this->cursorpos.y >= this->dims.y) {
@@ -722,14 +741,23 @@ void Buf::process_csi_escape_sequence() {
 	case 'f': //HVP: set cursorpos
 		//fall through
 	case 'H': //CUP: set cursorpos
-		this->cursorpos.y = params[0];
-		this->cursorpos.x = params[1];
+		this->cursorpos.y = params[0] - 1;
+		this->cursorpos.x = params[1] - 1;
 		if (this->cursorpos.x < 0) {
 			this->cursorpos.x = 0;
 		}
 		if (this->cursorpos.x >= this->dims.x) {
 			this->cursorpos.x = this->dims.x - 1;
 		}
+		if (this->cursorpos.y < 0) {
+			this->cursorpos.y = 0;
+		}
+		if (this->cursorpos.y >= this->dims.y) {
+			this->cursorpos.y = this->dims.y - 1;
+		}
+		break;
+	case 'd': // VPA: vertical position absolute
+		this->cursorpos.y = params[0] - 1;
 		if (this->cursorpos.y < 0) {
 			this->cursorpos.y = 0;
 		}
