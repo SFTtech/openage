@@ -99,22 +99,6 @@ void test1() {
 			printf("EOF\n");
 			break;
 		}
-		if (c == 3) {
-			printf("^C\n");
-			break;
-		}
-		if (c == 4) {
-			printf("^D\n");
-			break;
-		}
-		if (c == 1) {
-			//^A: scroll 1 up
-			buf.scroll(1);
-		}
-		if (c == 2) {
-			//^B: scroll 1 down
-			buf.scroll(-1);
-		}
 		buf.write(c);
 		//clear buf from current cursorpos
 		printf("\x1b[J");
