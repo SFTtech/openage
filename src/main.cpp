@@ -1,121 +1,120 @@
+#include <getopt.h>
+#include <string.h>
+#include <vector>
+
 #include "openage/main.h"
 #include "engine/log.h"
 #include "engine/util/error.h"
+#include "test/testing.h"
 
-#include "engine/console/buf.h"
-using namespace engine::console;
-using namespace engine::coord;
+using namespace engine;
 
-#include <unistd.h>
-#include <termios.h>
-struct termios old_tio, new_tio;
-void setstdincanon() {
-	if (isatty(STDIN_FILENO)) {
-		//get the terminal settings for stdin
-		tcgetattr (STDIN_FILENO, &old_tio);
-		//backup old settings
-		new_tio = old_tio;
-		//disable buffered i/o (canonical mode) and local echo
-		new_tio.c_lflag &= (~ICANON & ~ECHO & ~ISIG);
-		//set the settings
-		tcsetattr(STDIN_FILENO, TCSANOW, &new_tio);
-	}
-}
 
-void restorestdin() {
-	if (isatty(STDIN_FILENO)) {
-		tcsetattr(STDIN_FILENO, TCSANOW, &old_tio);
-	}
-}
+int main(int argc, char **argv) {
 
-void test0() {
-	Buf buf{{80, 25}, 1337, 80};
-	buf.write("Hello, brave new console world!\n\n\n\n");
-	buf.write("stuff, lol.\n\n");
-	buf.write("\x1b[1mbold stuff, lol.\x1b[m\n\n");
-	buf.write("\x1b[5;31;1mred bold blinking stuff, lol, ... also, this text seems to be quite long, maybe even wider than the terminal width. i wonder what could \x1b[7mhappen.\x1b[m\n\n");
-	for (int i = 0; i < 18; i++) {
-		buf.write("asdf\n");
-	}
-	buf.scroll(100);
-	buf.to_stdout(true);
-}
+	bool run_game = true;
 
-#include <termios.h>
-#include <pty.h>
 
-void test1() {
-	Buf buf{{80, 25}, 1337, 80};
-	struct winsize ws;
-	ws.ws_col = buf.dims.x;
-	ws.ws_row = buf.dims.y;
-	ws.ws_xpixel = buf.dims.x * 8;
-	ws.ws_ypixel = buf.dims.y * 13;
-	int amaster;
-	switch (forkpty(&amaster, nullptr, nullptr, &ws)) {
-	case -1:
-		printf("fork() failed\n");
-		return;
-	case 0:
-		//we are the child, spawn a shell
-		{
-		execl("/bin/bash", "/bin/bash");
-		}
-		printf("execl() failed\n");
-		return;
-	default:
-		//we are the parent
-		//fork off a process to read stdin and forward to amaster
-		switch (fork()) {
-		case -1:
-			printf("stdin() fork failed\n");
-			break;
-		case 0:
-			//we are the child
-			//don't echo input, unbuffered input
-			setstdincanon();
-			while (true) {
-				char c;
-				if (read(0, &c, 1) < 1) {
-					break;
-				}
-				if (write(amaster, &c, 1) < 1) {
-					break;
-				}
-			}
-			restorestdin();
-			exit(0);
-		default:
-			//we are the parent
-			//hide cursor
-			printf("\x1b[?25l");
-			buf.to_stdout(true);
-		}
-	}
+	//default values for arguments
+
+	const char *data_directory = "./";
+	std::vector<const char *> test_names;
+
+
+	// ===== argument parsing
+	int c;
 
 	while (true) {
-		char c;
-		if (read(amaster, &c, 1) != 1) {
-			printf("EOF\n");
+		int option_index = 0;
+		static struct option long_options[] = {
+			{"help",          no_argument, 0, 'h'},
+			{"test",    required_argument, 0, 't'},
+			{"data",    required_argument, 0,  0 },
+			{0,                         0, 0,  0 }
+		};
+
+		c = getopt_long(argc, argv, "ht:", long_options, &option_index);
+
+		if (c == -1) {
 			break;
 		}
-		buf.write(c);
-		//clear buf from current cursorpos
-		printf("\x1b[J");
-		buf.to_stdout(false);
-	}
-	//show cursor
-	printf("\x1b[?25h");
-}
 
-int main() {
-	test1();
-	return 0;
+		switch (c) {
+		case 0: {
+			const char *opt_name = long_options[option_index].name;
+
+			if (optarg) {
+				if (0 == strcmp("data", opt_name)) {
+					log::msg("data folder will be %s", optarg);
+					data_directory = optarg;
+				}
+			}
+			else {
+				//long opts without arg
+			}
+
+			break;
+		}
+		case 'h':
+			run_game = false;
+
+			log::msg(PROJECT_NAME " - a free (as in freedom) real time strategy game\n"
+			         "\n"
+			         "usage:\n"
+			         "   " PROJECT_NAME " [OPTION]\n"
+			         "available options:\n"
+			         "-h, --help                 display this help\n"
+			         "-t, --test=TESTNAME        run the given test\n"
+			         "--data=FOLDER              specify the data folder\n"
+			         "\n\n"
+			         );
+			break;
+
+		case 't':
+			run_game = false;
+
+			log::msg("adding test '%s' to invocation list", optarg);
+			test_names.push_back(optarg);
+			break;
+
+		case '?':
+			run_game = false;
+			break;
+
+		default:
+			log::err("?? getopt returned character code 0x%04x, wtf?", c);
+		}
+	}
+
+	//more arguments than processed options
+	if (optind < argc) {
+		run_game = false;
+
+		log::err("got unknown additional parameters: ");
+		int i = 0;
+		while (optind < argc) {
+			log::err("%d: %s ", i, argv[optind]);
+			i += 1;
+			optind += 1;
+		}
+	}
+	// ===== end argument parsing
 
 	try {
-		return openage::main();
+		if (test_names.size() > 0) {
+			test::test_activation();
+			test::list_tests();
+
+			log::msg("running tests...");
+			test::run_tests(test_names);
+		}
+
+		if (run_game) {
+			log::msg("launching " PROJECT_NAME);
+			return openage::main(data_directory);
+		}
 	} catch (engine::Error e) {
-		engine::log::fatal("Exception: %s", e.str());
+		log::fatal("Exception: %s", e.str());
 		return 1;
 	}
 }

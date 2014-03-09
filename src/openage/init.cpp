@@ -1,6 +1,7 @@
 #include "init.h"
 
 #include <stdio.h>
+#include <unistd.h>
 
 #include "../engine/texture.h"
 #include "../engine/util/strings.h"
@@ -37,13 +38,25 @@ constexpr int terrain_data[16 * 16] = {
 	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5,  5
 };
 
-void init() {
+void init(const char *data_directory) {
+
+
+	if (chdir(data_directory) == -1) {
+		throw engine::Error("Failed to change directory: %s", strerror(errno));
+	}
+
+	constexpr size_t max_dirname_length = 1024;
+	char current_dir_name[max_dirname_length];
+
+	if (NULL == getcwd(current_dir_name, max_dirname_length)) {
+		throw engine::Error("working dir filename longer than %lu.", max_dirname_length);
+	}
+
+	engine::log::msg("using data directory '%s'", current_dir_name);
+
+
 	//load textures and stuff
 	gaben = new Texture("gaben.png");
-
-	//TODO: dynamic generation of the file path
-	//sync this with convert .py script !
-
 	university = new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
 	terrain_type *terrain_types;

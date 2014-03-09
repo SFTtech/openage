@@ -47,7 +47,7 @@ dependencies are needed for:
 
 dependency list:
 
-	T     python3.3
+	CRT   python3.3
 	T     python3.3 imaging library (PIL) -> pillow
 	CR    opengl >=2.1
 	CR    glew
@@ -78,11 +78,15 @@ on POSIX (GNU/Linux, BSD, etc..):
 	./configure --mode=release
 	make
 	make media AGE2DIR="~/.wine-age/drive_c/programs/ms-games/aoe2"
-	cd data && ../bin/openage
+	./bin/openage --data ./data
 
 for other make targets, see:
 
 	make help
+
+for startup options, call:
+
+	./bin/openage --help
 
 on WINDOWS:
 -----------
