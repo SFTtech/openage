@@ -1164,7 +1164,10 @@ void Buf::to_stdout(bool clear) {
 			if (p.flags & CHR_BLINKING) {
 				printf("\x1b[5m");
 			}
-			if ((p.flags & CHR_NEGATIVE) xor (this->cursorpos == term{x, y - this->scrollback_pos})) {
+			bool cursor_visible_at_current_pos = this->cursorpos == term{x, y - this->scrollback_pos};
+			cursor_visible_at_current_pos &= this->cursor_visible;
+			if ((p.flags & CHR_NEGATIVE) xor cursor_visible_at_current_pos) {
+				//print char negative
 				printf("\x1b[7m");
 			}
 			char utf8buf[5];
