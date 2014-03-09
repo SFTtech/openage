@@ -5,7 +5,7 @@
 
 #include "../engine/log.h"
 #include "../engine/util/error.h"
-
+#include "term.h"
 
 using namespace engine;
 
@@ -74,6 +74,8 @@ void run_tests(std::vector<const char *> names) {
 //place all tests to be active in here.
 void test_activation() {
 	register_test("metatest", &test_metatest);
+	register_test("term0", &test_term0);
+	register_test("term1", &test_term1);
 }
 
 } //namespace test

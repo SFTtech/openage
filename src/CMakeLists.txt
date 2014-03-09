@@ -52,8 +52,9 @@ add_executable(${PROJECT_NAME}
 	openage/objects/building.cpp
 	openage/objects/terrain.cpp
 
-	test/metatest.cpp
 	test/testing.cpp
+	test/metatest.cpp
+	test/term.cpp
 )
 
 

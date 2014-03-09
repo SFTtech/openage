@@ -1,11 +1,12 @@
-#include "engine/console/buf.h"
-using namespace engine::console;
-using namespace engine::coord;
-
 #include <unistd.h>
 #include <termios.h>
-#include <termios.h>
 #include <pty.h>
+#include <stdio.h>
+
+#include "../engine/console/buf.h"
+
+using namespace engine::console;
+using namespace engine::coord;
 
 struct termios old_tio, new_tio;
 void setstdincanon() {
@@ -27,7 +28,7 @@ void restorestdin() {
 	}
 }
 
-void test0() {
+bool test_term0() {
 	Buf buf{{80, 25}, 1337, 80};
 	buf.write("Hello, brave new console world!\n\n\n\n");
 	buf.write("stuff, lol.\n\n");
@@ -38,10 +39,10 @@ void test0() {
 	}
 	buf.scroll(100);
 	buf.to_stdout(true);
+	return true;
 }
 
-
-void test1() {
+bool test_term1() {
 	Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
 	ws.ws_col = buf.dims.x;
@@ -52,14 +53,14 @@ void test1() {
 	switch (forkpty(&amaster, nullptr, nullptr, &ws)) {
 	case -1:
 		printf("fork() failed\n");
-		return;
+		return false;
 	case 0:
 		//we are the child, spawn a shell
 		{
 		execl("/bin/bash", "/bin/bash");
 		}
 		printf("execl() failed\n");
-		return;
+		return false;
 	default:
 		//we are the parent
 		//fork off a process to read stdin and forward to amaster
@@ -103,4 +104,6 @@ void test1() {
 	}
 	//show cursor
 	printf("\x1b[?25h");
+
+	return true;
 }
