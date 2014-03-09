@@ -39,24 +39,34 @@ looked up in the [current STATUS](STATUS.md) file.
 dependencies
 ============
 
-	python3
-	python3 imaging library (PIL) -> pillow
-	opengl >=2.1
-	glew
-	ftgl
-	dejavu font
-	freetype2
-	fontconfig
-	cmake >=2.8.10
-	sdl2
-	sdl2_image
-	gcc >=4.8 or clang >=3.3
+dependencies are needed for:
 
-	age of empires II
-		conquerors expansion
-		patch 1.0c
-		optionally: with "userpatch"
-		installed: with wine OR as the program directory
+* C = compiling
+* R = running
+* T = media convert script
+
+dependency list:
+
+	T     python3.3
+	T     python3.3 imaging library (PIL) -> pillow
+	CR    opengl >=2.1
+	CR    glew
+	CR    ftgl
+	R     dejavu font
+	CR    freetype2
+	CR    fontconfig
+	C     cmake >=2.8.10
+	CR    sdl2
+	CR    sdl2_image
+	C     gcc >=4.8 or clang >=3.3
+
+	T     age of empires II
+	          conquerors expansion
+	          patch 1.0c
+	          optionally: with "userpatch"
+	          installed: with wine OR as the program directory
+	          we will support more patchlevels in the future.
+
 
 
 how to compile && run
@@ -77,15 +87,18 @@ for other make targets, see:
 on WINDOWS:
 -----------
 
-we don't have any interest in porting the game,
+there is no windows version yet, you may implement the port!
+
+
+we don't have any interest in porting the game to ms windows,
 but we are using cross-platform libraries wherever possible,
 so porting should not be a big issue.
 
 
 if you are keen on porting the game, go for it.
 there should be as few preprocessor switches as possible;
-if possible they should all be concentrated in one 'cross-platform abstraction file'
-we suggest using either cygwin-g++ or mingw32-g++ as the windows compiler
+preferably they should all be put in one 'cross-platform abstraction file'.
+we suggest using either cygwin-g++ or mingw32-g++ as the windows compiler,
 cygwin will probably be the least effort.
 
 
@@ -136,7 +149,7 @@ here are a few tips:
 * [learn python](http://docs.python.org/3/tutorial/appetite.html)
 * [learn c++11](http://www.cplusplus.com/doc/tutorial/)
 * read our code
-* programm whatever you want
+* contribute anything to our code
 * contact us
 
 
