@@ -45,6 +45,7 @@ void Buf::reset() {
 	this->cursorpos = {0, 0};
 	this->saved_cursorpos = {0, 0};
 	this->cursor_visible = true;
+	this->cursor_special_lastcol = false;
 
 	this->escaped = false;
 	this->bell = false;
@@ -453,12 +454,18 @@ void Buf::print_codepoint(int cp) {
 		//move cursor 1 left.
 		//if cursor pos is 0, move to end of previous line
 		//if already at (0,0), move to (0,0)
-		this->cursorpos.x -= 1;
-		if (this->cursorpos.x < 0) {
-			this->cursorpos.x += this->dims.x;
-			this->cursorpos.y -= 1;
-			if (this->cursorpos.y < 0) {
-				this->cursorpos = {0, 0};
+		if (this->cursor_special_lastcol && (this->cursorpos.x == this->dims.x - 1)) {
+			//if we are in the special last-column state, only unset that flag,
+			//but don't move the cursor.
+			this->cursor_special_lastcol = false;
+		} else {
+			this->cursorpos.x -= 1;
+			if (this->cursorpos.x < 0) {
+				this->cursorpos.x += this->dims.x;
+				this->cursorpos.y -= 1;
+				if (this->cursorpos.y < 0) {
+					this->cursorpos = {0, 0};
+				}
 			}
 		}
 		break;
@@ -477,6 +484,7 @@ void Buf::print_codepoint(int cp) {
 	case 0x0b: // VT: vertical tab
 	case 0x0c: // FF: form feed
 		//all these do the same: move to beginning of next line
+		this->cursor_special_lastcol = false;
 		this->cursorpos.x = 0;
 
 		if (this->cursorpos.y == this->dims.y - 1) {
@@ -487,6 +495,7 @@ void Buf::print_codepoint(int cp) {
 		break;
 	case 0x0d: // CR: carriage return
 		this->cursorpos.x = 0;
+		this->cursor_special_lastcol = false;
 		break;
 	case 0x0e: // SO: ignore
 	case 0x0f: // SI: ignore
@@ -512,22 +521,11 @@ void Buf::print_codepoint(int cp) {
 	case 0x7f: //DEL: ignore
 		break;
 	default:   //regular, printable character
-		//set char at current cursor pos
-		buf_char *ptr = this->chrdataptr(this->cursorpos);
-		*ptr = this->current_char_fmt;
-		ptr->cp = cp;
-		buf_line *lineptr = this->linedataptr(this->cursorpos.y);
-		//store the fact that this line has been written to
-		if (lineptr->type == LINE_EMPTY) {
-			lineptr->type = LINE_REGULAR;
-		}
-		//advance cursor to the right
-		this->cursorpos.x++;
-		if (this->cursorpos.x == this->dims.x) {
+		if (this->cursor_special_lastcol && (this->cursorpos.x == this->dims.x - 1)) {
+			this->cursor_special_lastcol = false;
 			//store the fact that this line was auto-wrapped
 			//and will continue in the next line
-			lineptr->type = LINE_WRAPPED;
-
+			this->linedataptr(this->cursorpos.y)->type = LINE_WRAPPED;
 			this->cursorpos.x = 0;
 			if (this->cursorpos.y == this->dims.y - 1) {
 				this->advance(1);
@@ -535,6 +533,25 @@ void Buf::print_codepoint(int cp) {
 				this->cursorpos.y += 1;
 			}
 		}
+
+		//set char at current cursor pos
+		buf_char *ptr = this->chrdataptr(this->cursorpos);
+		*ptr = this->current_char_fmt;
+		ptr->cp = cp;
+		buf_line *lineptr = this->linedataptr(this->cursorpos.y);
+
+		//store the fact that this line has been written to
+		if (lineptr->type == LINE_EMPTY) {
+			lineptr->type = LINE_REGULAR;
+		}
+
+		//advance cursor to the right
+		this->cursorpos.x++;
+		if (this->cursorpos.x == this->dims.x) {
+			this->cursorpos.x -= 1;
+			this->cursor_special_lastcol = true;
+		}
+
 		break;
 	}
 }
@@ -780,7 +797,7 @@ void Buf::process_csi_escape_sequence() {
 			break;
 		}
 		break;
-	case 'K': // EL
+	case 'K': // EL: erase line
 		switch (params[0]) {
 		case 0: //clear current line from cursor to end
 			this->clear(this->cursorpos, {0, (term_t) (this->cursorpos.y + 1)});
@@ -795,13 +812,13 @@ void Buf::process_csi_escape_sequence() {
 			break;
 		}
 		break;
-	case 'm': //SGR
+	case 'm': //SGR: set graphics rendition
 		this->process_sgr_code(params);
 		break;
-	case 's': //SCP
+	case 's': //SCP: save cursor position
 		this->saved_cursorpos = this->cursorpos;
 		break;
-	case 'u': //RCP
+	case 'u': //RCP: restore cursor position
 		this->cursorpos = this->saved_cursorpos;
 		break;
 	case 'l': //set mode

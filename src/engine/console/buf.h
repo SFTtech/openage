@@ -218,6 +218,14 @@ public:
 	 */
 	bool cursor_visible;
 
+	/**
+	 * true if cursor is in the last column while whole line is filled
+	 * this is very special.
+	 * this allows CR after fully-filled lines to return to the same line,
+	 * instead of being in the next line.
+	 */
+	bool cursor_special_lastcol;
+
 	//following this line are misc variables
 
 	/**
