@@ -205,8 +205,10 @@ def merge_frames(frames, max_width = None, max_height = None):
 	return atlas, drawn_frames_meta, (width, height)
 
 
-def generate_meta_text(metadata, header = None):
+def generate_meta_text(metadata, header=None):
 	#generate texture atlas metadata file
+
+	#TODO: transform to new data dumping methods
 
 	meta_out = ""
 
@@ -214,7 +216,6 @@ def generate_meta_text(metadata, header = None):
 		meta_out += "#" + header
 
 	meta_out += "#meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
-	meta_out += "n=%d\n" % (len(metadata))
 
 	for idx, frame_meta in enumerate(metadata):
 		tx = frame_meta["tx"]
@@ -224,7 +225,7 @@ def generate_meta_text(metadata, header = None):
 		hotspot_x = frame_meta["hx"]
 		hotspot_y = frame_meta["hy"]
 
-		meta_out += "%d=" % idx
+		meta_out += "%d," % idx
 		meta_out += "%d,%d,%d,%d," % (tx, ty, tw, th)
 		meta_out += "%d,%d\n" % (hotspot_x, hotspot_y)
 
@@ -722,7 +723,7 @@ namespace engine {\n\n""" % dontedit,
 			#merge file contents
 			file_data = ""
 			for block in output_data:
-				file_data += "%s\n" % block
+				file_data += block
 
 			#create content, with prefix and suffix (actually header guards)
 			subst_filename = prefs["presuffix_func"](output_name)

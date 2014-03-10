@@ -41,7 +41,7 @@ class ColorTable:
 		self.palette = []
 
 		#data entries are line 3 to n
-		for i in range(3, self.entry_count):
+		for i in range(3, self.entry_count + 3):
 			#one entry looks like "13 37 42", where 13 is the red value, 37 green and 42 blue.
 			self.palette.append(tuple(map(int, lines[i].split(' '))))
 

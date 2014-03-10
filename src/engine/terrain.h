@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <map>
 #include <set>
+#include <vector>
 
 #include "terrain_chunk.h"
 #include "terrain_object.h"
@@ -11,6 +12,8 @@
 #include "coord/camgame.h"
 #include "coord/chunk.h"
 #include "util/misc.h"
+#include "../gamedata/blending_mode.h"
+#include "../gamedata/terrain.h"
 
 namespace engine {
 
@@ -25,38 +28,6 @@ using terrain_t = int;
 half the size of one terrain diamond tile, in camgame
 */
 extern coord::camgame_delta tile_halfsize;
-
-
-/**
-describes one terrrain type, like water, ice, etc.
-*/
-struct terrain_type {
-	unsigned int id;
-	terrain_t terrain_id;
-	int slp_id;
-	int sound_id;
-	int blend_mode;
-	int blend_priority;
-	int angle_count;
-	int frame_count;
-	int terrain_dimensions0;
-	int terrain_dimensions1;
-	int terrain_replacement_id;
-
-	int fill(const char *by_line);
-};
-
-
-/**
-describes one blending mode, a blending transition shape between two different terrain types.
-*/
-struct blending_mode {
-	unsigned int id;
-	int mode_id;
-
-	int fill(const char *by_line);
-};
-
 
 /**
 comparisons for chunk coordinates.
@@ -161,7 +132,7 @@ actually this is just the entrypoint and container for the terrain chunks.
 */
 class Terrain {
 public:
-	Terrain(size_t terrain_meta_count, terrain_type *terrain_meta, size_t blending_meta_count, blending_mode *blending_meta, bool is_infinite);
+	Terrain(std::vector<terrain_type> terrain_meta, std::vector<blending_mode> blending_meta, bool is_infinite);
 	~Terrain();
 
 	bool blending_enabled; //!< is terrain blending active. increases memory accesses by factor ~8
@@ -272,8 +243,8 @@ public:
 	*/
 	void calculate_masks(coord::tile position, struct tile_draw_data *tile_data, struct influence_group *influences);
 
-	ssize_t terrain_id_count;
-	ssize_t blendmode_count;
+	size_t terrain_id_count;
+	size_t blendmode_count;
 
 private:
 	/**

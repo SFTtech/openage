@@ -8,6 +8,31 @@ so we need to transform the files to less interesting, but more usable formats.
 this is what the convert script does.
 
 
+the convert script is divided into two parts:
+content dependend and independend exports.
+
+converting media
+----------------
+
+* depends on existing original game installation
+* converts images, sounds, units and all other data values
+  to compatible formats
+* creates files for the proprietary data package,
+  its files will be used if free media files are missing.
+
+exporting structures
+--------------------
+
+* totally independent of original game installation
+* exports original content structures
+* prevents redundancy:
+  * data structures are needed for media export (to convert them)
+  * data structures are needed to import them in the game
+  * => structure definition at a single point.
+* generation is integrated into make system
+* generated files stored in src/gamedata/
+
+
 data injections
 ===============
 

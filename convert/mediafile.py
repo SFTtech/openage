@@ -92,6 +92,11 @@ def media_convert(args):
 		datfile = gamedata.empiresdat.EmpiresDat()
 		datfile.fill("Data/empires2_x1_p1.dat")
 
+		#modify the read contents of datfile
+		import fix_data
+		datfile = fix_data.fix_data(datfile)
+
+		#dumping output format, more to come?
 		storeas = ["csv"]
 
 		raw_dump = list()

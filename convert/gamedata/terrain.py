@@ -108,11 +108,12 @@ class Terrain:
 	struct_description = "describes a terrain type, like water, ice, etc."
 
 	data_format = {
-		0: {"slp_id":         "int32_t"},
-		1: {"blend_mode":     "int32_t"},
-		2: {"blend_priority": "int32_t"},
-		3: {"name0":          { "type": "char", "length": 13 }},
-		4: {"name1":          { "type": "char", "length": 13 }},
+		0: {"terrain_id":     "int32_t"},
+		1: {"slp_id":         "int32_t"},
+		2: {"blend_mode":     "int32_t"},
+		3: {"blend_priority": "int32_t"},
+		4: {"name0":          { "type": "char", "length": 13 }},
+		5: {"name1":          { "type": "char", "length": 13 }},
 	}
 
 	def dump(self):

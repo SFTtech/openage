@@ -6,15 +6,7 @@
 #the directory where the original media files are in
 AGE2DIR = /dev/null
 
-#the directory where the converted media files are placed
-media_path = data/age/raw/Data
-
 needed_media = graphics:3836.slp graphics:4857.slp terrain:*.slp
-
-#TODO: check if all needed media files have been extracare present in filesystem
-#media_file_list = $(patsubst %, media_path/% ,$(subst :, .drs/, text))
-#media_file_list = $(patsubst %.slp, %.slp.png, media_file_list)
-#media_file_list = $(patsubst %.wav, %.opus, media_file_list)
 
 .PHONY: all
 all: openage
@@ -35,7 +27,7 @@ install: bin/Makefile bin
 
 .PHONY: media
 media:
-	python3 convert -v -o . $(AGE2DIR) $(needed_media)
+	python3 convert -v media -o data/age/ $(AGE2DIR) $(needed_media)
 
 .PHONY: medialist
 medialist:
@@ -73,7 +65,7 @@ help: bin/Makefile
 	@echo "targets:"
 	@echo ""
 	@echo "openage   -> compile main binary"
-	@echo "media     -> convert media files, usage: make AGE2DIR=~/.wine/ms-games/age2 media"
+	@echo "media     -> convert media files, usage: make media AGE2DIR=~/.wine/ms-games/age2"
 	@echo "medialist -> list needed media files for current version"
 	@echo "doc       -> create documentation files"
 	@echo "clean     -> clean up object files"

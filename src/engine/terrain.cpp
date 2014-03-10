@@ -31,10 +31,8 @@ TileContent::TileContent() :
 
 TileContent::~TileContent() {}
 
-Terrain::Terrain(size_t terrain_meta_count,
-                 terrain_type *terrain_meta,
-                 size_t blending_meta_count,
-                 blending_mode *blending_meta,
+Terrain::Terrain(std::vector<terrain_type> terrain_meta,
+                 std::vector<blending_mode> blending_meta,
                  bool is_infinite) {
 
 	this->infinite = is_infinite;
@@ -47,35 +45,41 @@ Terrain::Terrain(size_t terrain_meta_count,
 	//activate blending
 	this->blending_enabled = true;
 
-	this->terrain_id_count = terrain_meta_count;
-	this->blendmode_count  = blending_meta_count;
-	this->textures       = new engine::Texture*[this->terrain_id_count];
-	this->blending_masks = new engine::Texture*[this->blendmode_count];
+	this->terrain_id_count         = terrain_meta.size();
+	this->blendmode_count          = blending_meta.size();
+	this->textures                 = new engine::Texture*[this->terrain_id_count];
+	this->blending_masks           = new engine::Texture*[this->blendmode_count];
 	this->terrain_id_priority_map  = new int[this->terrain_id_count];
 	this->terrain_id_blendmode_map = new int[this->terrain_id_count];
-	this->influences_buf = new struct influence[this->terrain_id_count];
+	this->influences_buf           = new struct influence[this->terrain_id_count];
 
 
 	log::dbg("terrain prefs: %lu tiletypes, %lu blendmodes", this->terrain_id_count, this->blendmode_count);
 
 	//create tile textures (snow, ice, grass, whatever)
-	for (ssize_t i = 0; i < this->terrain_id_count; i++) {
+	for (size_t i = 0; i < this->terrain_id_count; i++) {
 		auto line = &terrain_meta[i];
-		this->terrain_id_priority_map[i] = line->blend_priority;
-		this->terrain_id_blendmode_map[i] = line->blend_mode;
+		terrain_t terrain_id = line->terrain_id;
+		this->validate_terrain(terrain_id);
 
-		char *terraintex_filename = util::format("age/raw/Data/terrain.drs/%d.slp.png", line->slp_id);
+		//TODO: double-define check?
+
+
+		this->terrain_id_priority_map[terrain_id]  = line->blend_priority;
+		this->terrain_id_blendmode_map[terrain_id] = line->blend_mode;
+
+		char *terraintex_filename = util::format("age/processed/Data/terrain.drs/%d.slp.png", line->slp_id);
 		auto new_texture = new Texture(terraintex_filename, true, ALPHAMASKED);
 		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
-		this->textures[i] = new_texture;
+		this->textures[terrain_id] = new_texture;
 		delete[] terraintex_filename;
 	}
 
 	//create blending masks (see doc/media/blendomatic)
-	for (ssize_t i = 0; i < this->blendmode_count; i++) {
+	for (size_t i = 0; i < this->blendmode_count; i++) {
 		auto line = &blending_meta[i];
 
-		char *mask_filename = util::format("age/alphamask/mode%02d.png", line->mode_id);
+		char *mask_filename = util::format("age/processed/blendomatic.dat/mode%02d.png", line->blend_mode);
 		auto new_texture = new Texture(mask_filename, true);
 		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
 		this->blending_masks[i] = new_texture;
@@ -85,10 +89,10 @@ Terrain::Terrain(size_t terrain_meta_count,
 }
 
 Terrain::~Terrain() {
-	for (ssize_t i = 0; i < this->terrain_id_count; i++) {
+	for (size_t i = 0; i < this->terrain_id_count; i++) {
 		delete this->textures[i];
 	}
-	for (ssize_t i = 0; i < this->blendmode_count; i++) {
+	for (size_t i = 0; i < this->blendmode_count; i++) {
 		delete this->blending_masks[i];
 	}
 
@@ -215,7 +219,7 @@ TileContent *Terrain::get_data(coord::tile position) {
 
 
 bool Terrain::validate_terrain(terrain_t terrain_id) {
-	if (terrain_id >= this->terrain_id_count) {
+	if (terrain_id >= (ssize_t)this->terrain_id_count) {
 		throw Error("requested terrain_id is out of range: %d", terrain_id);
 	}
 	else {
@@ -224,7 +228,7 @@ bool Terrain::validate_terrain(terrain_t terrain_id) {
 }
 
 bool Terrain::validate_mask(ssize_t mask_id) {
-	if (mask_id >= this->blendmode_count) {
+	if (mask_id >= (ssize_t)this->blendmode_count) {
 		throw Error("requested mask_id is out of range: %lu", mask_id);
 	}
 	else {
@@ -306,6 +310,11 @@ struct chunk_neighbors Terrain::get_chunk_neighbors(coord::chunk position) {
 }
 
 int Terrain::get_blending_mode(terrain_t base_id, terrain_t neighbor_id) {
+	/*
+	 * this function may require much more code, but this simple
+	 * magnitude comparison seems to do the job.
+	 * feel free to confirm or fix the behavior.
+	 */
 	int base_mode     = this->blendmode(base_id);
 	int neighbor_mode = this->blendmode(neighbor_id);
 	if (neighbor_mode > base_mode) {
@@ -483,13 +492,12 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 	//the base terrain id of the tile
 	base_tile_data.terrain_id = base_tile_content->terrain_id;
 
-	if (base_tile_data.terrain_id >= this->terrain_id_count) {
-		throw Error("unknown terrain id=%d requested for drawing", base_tile_data.terrain_id);
-	}
 	//the base terrain is not existant.
-	else if (base_tile_data.terrain_id < 0) {
+	if (base_tile_data.terrain_id < 0) {
 		return tile;
 	}
+
+	this->validate_terrain(base_tile_data.terrain_id);
 
 	base_tile_data.state      = tile_state::existing;
 	base_tile_data.pos        = position;
@@ -782,51 +790,5 @@ void Terrain::calculate_masks(coord::tile position, struct tile_draw_data *tile_
 		}
 	}
 }
-
-
-
-
-/**
-parse and store a given line of a texture meta file.
-
-this is used for reading all the lines of a .docx meta file
-generated by the convert script.
-*/
-int terrain_type::fill(const char *by_line) {
-	if (sscanf(by_line, "%u=%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",
-	           &this->id,
-	           &this->terrain_id,
-	           &this->slp_id,
-	           &this->sound_id,
-	           &this->blend_mode,
-	           &this->blend_priority,
-	           &this->angle_count,
-	           &this->frame_count,
-	           &this->terrain_dimensions0,
-	           &this->terrain_dimensions1,
-	           &this->terrain_replacement_id
-	           )) {
-		return 0;
-	}
-	else {
-		return -1;
-	}
-}
-
-/**
-parse and store a blending mode description line.
-*/
-int blending_mode::fill(const char *by_line) {
-	if (sscanf(by_line, "%u=%d",
-	           &this->id,
-	           &this->mode_id
-	           )) {
-		return 0;
-	}
-	else {
-		return -1;
-	}
-}
-
 
 } //namespace engine

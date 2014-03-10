@@ -96,7 +96,8 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		log::msg("loading meta file %s", meta_filename);
 
 		//get subtexture information by meta file exported by script
-		this->subtexture_count = util::read_csv_file<subtexture> (&this->subtextures, meta_filename);
+		this->subtextures = util::read_csv_file<subtexture>(meta_filename);
+		this->subtexture_count = this->subtextures.size();
 		//TODO: use information from empires.dat for that, also use x and y sizes:
 		this->atlas_dimensions = sqrt(this->subtexture_count);
 		delete[] meta_filename;
@@ -104,20 +105,19 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 	else { //this texture does not contain subtextures
 		struct subtexture s {0, 0, 0, this->w, this->h, this->w/2, this->h/2};
 
+		this->subtextures = std::vector<subtexture>{};
 		this->subtexture_count = 1;
-		this->subtextures = new struct subtexture[1];
-		this->subtextures[0] = s;
+		this->subtextures.push_back(s);
 	}
 	glGenBuffers(1, &this->vertbuf);
 }
 
 Texture::~Texture() {
-	delete[] this->subtextures;
 	glDeleteTextures(1, &this->id);
 }
 
 void Texture::fix_hotspots(unsigned x, unsigned y) {
-	for(int i = 0; i < subtexture_count; i++) {
+	for(size_t i = 0; i < subtexture_count; i++) {
 		this->subtextures[i].cx = x;
 		this->subtextures[i].cy = y;
 	}
@@ -284,7 +284,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 
 
 struct subtexture *Texture::get_subtexture(int subid) {
-	if (subid < this->subtexture_count && subid >= 0) {
+	if (subid < (ssize_t)this->subtexture_count && subid >= 0) {
 		return &this->subtextures[subid];
 	}
 	else {
@@ -331,7 +331,7 @@ GLuint Texture::get_texture_id() {
 parse one line for a subtexture area description.
 */
 int subtexture::fill(const char *by_line) {
-	if (sscanf(by_line, "%u=%d,%d,%d,%d,%d,%d",
+	if (sscanf(by_line, "%u,%d,%d,%d,%d,%d,%d",
 	           &this->id,
 	           &this->x, //lower left coordinates, origin
 	           &this->y,
