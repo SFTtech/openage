@@ -15,7 +15,7 @@ before_install:
 
 install:
   - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; export CXX="g++-4.8" CC="gcc-4.8"; fi
-  - sudo apt-get install -qq python3 libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev cmake
+  - sudo apt-get install -qq python3 python3-imaging libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev cmake
 
 before_script:
   - cmake --version
