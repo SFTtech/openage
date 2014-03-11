@@ -556,46 +556,41 @@ void Terrain::get_neighbors(coord::tile basepos, struct neighbor_tile *neigh_dat
 		}
 		//chunk for neighbor exists
 		else {
-			neighbor->state = tile_state::existing;
-			neighbor->terrain_id = neigh_content->terrain_id;
-
-			//reset influence directions for this tile
-			//only if it's got valid content (negative array index else..)
-			if (neighbor->terrain_id >= 0) {
-				influences_by_terrain_id[neighbor->terrain_id].direction = 0;
-
+			if (neighbor->terrain_id < 0) {
+				neighbor->state = tile_state::missing;
+			}
+			else {
+				neighbor->terrain_id = neigh_content->terrain_id;
+				neighbor->state = tile_state::existing;
 				neighbor->priority = this->priority(neighbor->terrain_id);
+
+				//reset influence directions for this tile
+				influences_by_terrain_id[neighbor->terrain_id].direction = 0;
 			}
 		}
 	}
 }
 
 struct influence_group Terrain::calculate_influences(struct tile_data *base_tile, struct neighbor_tile *neigh_data, struct influence *influences_by_terrain_id) {
-
-	constexpr bool respect_diagonal_influence = true;
-	constexpr bool respect_adjacent_influence = true;
-
 	//influences to actually draw (-> maximum 8)
 	struct influence_group influences;
 	influences.count = 0;
 
-	for (int neigh_id = 0; neigh_id < 8; neigh_id++) {
-		if (!respect_diagonal_influence && (neigh_id % 2) == 0) {
-			//diagonal neighbor is ignored
-			continue;
-		}
+	constexpr int neigh_id_lookup[] = {1, 3, 5, 7, 0, 2, 4, 6};
 
-		if (!respect_adjacent_influence && (neigh_id % 2) == 1) {
-			//adjacent neighbor is ignored
-			continue;
-		}
+	for (int i = 0; i < 8; i++) {
+		//diagonal neighbors: (neigh_id % 2) == 0
+		//adjacent neighbors: (neigh_id % 2) == 1
+
+		int neigh_id = neigh_id_lookup[i];
+		bool is_adjacent_neighbor = neigh_id % 2 == 1;
+		bool is_diagonal_neighbor = not is_adjacent_neighbor;
 
 		//the current neighbor_tile.
 		auto neighbor = &neigh_data[neigh_id];
 
-		//neighbor is missing, or
-		//neighbor exists, but has negative terrain_id (-> empty)
-		if (neighbor->state == tile_state::missing || neighbor->terrain_id < 0) {
+		//neighbor is nonexistant
+		if (neighbor->state == tile_state::missing) {
 			continue;
 		}
 
