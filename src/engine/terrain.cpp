@@ -639,9 +639,11 @@ struct influence_group Terrain::calculate_influences(struct tile_data *base_tile
 	//influences_by_terrain_id will be merged in the following,
 	//unused terrain ids will be dropped now.
 
-	//only keep influences of terrain ids that exist, drop all the other terrain ids
+	//shrink the big influence buffer that had entries for all terrains
+	//by copying the possible (max 8) influences to a separate buffer.
 	for (int k = 0; k < influences.count; k++) {
-		influences.data[k] = influences_by_terrain_id[ influences.terrain_ids[k] ];
+		int relevant_id    = influences.terrain_ids[k];
+		influences.data[k] = influences_by_terrain_id[relevant_id];
 	}
 
 	//order the influences by their priority
@@ -750,7 +752,8 @@ void Terrain::calculate_masks(coord::tile position, struct tile_draw_data *tile_
 		//e.g. long shorelines don't look the same then.
 		// maskid == 0x08 0x02 0x80 0x20 for that.
 		if (adjacent_mask_id <= 12 && adjacent_mask_id % 4 == 0) {
-			int anti_redundancy_offset = util::mod<coord::tile_t>(position.ne + position.se, 4);
+			//we have 4 = 2^2 anti redundancy masks, so keep the last 2 bits
+			uint8_t anti_redundancy_offset = (position.ne + position.se) & 0x03;
 			adjacent_mask_id += anti_redundancy_offset;
 		}
 
