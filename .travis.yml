@@ -23,7 +23,7 @@ install:
 
 before_script:
   - cmake --version
-  - python3 --version
+  - python --version
 
 script:
   - ./configure
