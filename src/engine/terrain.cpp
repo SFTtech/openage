@@ -576,6 +576,7 @@ struct influence_group Terrain::calculate_influences(struct tile_data *base_tile
 	struct influence_group influences;
 	influences.count = 0;
 
+	//process adjacent neighbors first
 	constexpr int neigh_id_lookup[] = {1, 3, 5, 7, 0, 2, 4, 6};
 
 	for (int i = 0; i < 8; i++) {
@@ -599,8 +600,26 @@ struct influence_group Terrain::calculate_influences(struct tile_data *base_tile
 		//neighbor draws over the base if it's priority is greater.
 		if (neighbor->priority > base_tile->priority) {
 
-			//get influence storage for the neighbor terrain id (to group influences by id)
+			//get influence storage for the neighbor terrain id
+			//to group influences by id
 			auto influence = &influences_by_terrain_id[neighbor->terrain_id];
+
+			//check if diagonal influence is valid
+			if (is_diagonal_neighbor) {
+				//get the adjacent neighbors to the current diagonal
+				//influence
+				// (& 0x07) == (% 8)
+				uint8_t adj_neigh_0 = (neigh_id - 1) & 0x07;
+				uint8_t adj_neigh_1 = (neigh_id + 1) & 0x07;
+
+				uint8_t neigh_mask = (1 << adj_neigh_0) | (1 << adj_neigh_1);
+
+				//the adjacent neigbors are already influencing
+				//the current tile, therefore don't apply the diagonal mask
+				if ((influence->direction & neigh_mask) != 0) {
+					continue;
+				}
+			}
 
 			//this terrain id hasn't had influence so far:
 			//add it to the list of influences.

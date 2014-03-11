@@ -215,6 +215,16 @@ for @ in alltiles:
 			#else, ignore this neighbor
 			if i.priority > @.priority:
 
+				if i.is_diagonal_influence:
+					#get the ids of the adjacent neighbors of the diagonal
+					#influence:
+					i_neighbors = map(lambda x: x % 8, [i - 1, i + 1])
+
+					if any of i_neighbors have influence:
+						#don't apply diagonal influence i, as any of its
+						#neighbors already influences the tile.
+						continue
+
 				#as tile i has influence for this priority
 				# => bit i is set to 1 by 2^i
 				#each priority is drawn seperately later.
