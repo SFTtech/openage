@@ -24,6 +24,7 @@ install:
 before_script:
   - cmake --version
   - python --version
+  - ls -l /usr/bin/python*
 
 script:
   - ./configure
