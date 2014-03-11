@@ -226,24 +226,24 @@ for @ in alltiles:
 						continue
 
 				#as tile i has influence for this priority
-				# => bit i is set to 1 by 2^i
+				# => bit i is set to 1 by 2^i (== 1 << i)
 				#each priority is drawn seperately later.
-				influence[i.priority] |= 2**i
+				influence[i.terrain_id] |= 2**i
 
 	#sort influences by priority, so that higher priorities get drawn last.
-	influence = sorted(influence)
+	influence = sorted(influence, by=influence.priority)
 
 	#now: we got all influences, grouped by terrain priority.
-	#because of the priority grouping, this also means it's grouped by
-	# the terrain type, obviously.
-	# => priorities are unique terrain identifiers.
 	#for each of these influences, we continue finding the blendomatic mask
-	# and apply it to the neighbor's texture,
+	# and apply it to the neighbors texture,
 	# then draw the masked tile on top of the base (@) tile.
-	for priority, binf in influence.items():
+
+	#the terrain_id has influences coming from directions 'binf',
+	#so we can select directional masks for that terrain.
+	for terrain_id, binf in influence.items():
 
 		#there is exactly one adjacent mask id for all combinations
-		adjacent_mask_id = []  #will contain max 1 element
+		adjacent_mask_id  = []
 		diagonal_mask_ids = []
 
 		#find mask id by influencing neighbor tiles
