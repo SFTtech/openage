@@ -25,6 +25,7 @@ before_script:
   - cmake --version
   - python --version
   - ls -l /usr/bin/python*
+  - sudo ln -s /usr/bin/python3.3 /usr/bin/python3
 
 script:
   - ./configure
