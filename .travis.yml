@@ -8,6 +8,8 @@ compiler:
   - gcc
 
 before_install:
+  - uname -a
+  - lsb_release -a
   - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test     #gcc 4.8
   - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots       #libsdl2
   - sudo add-apt-repository --yes ppa:kubuntu-ppa/backports       #cmake >=2.8.10
@@ -19,9 +21,11 @@ install:
 
 before_script:
   - cmake --version
+  - python3 --version
 
 script:
-  - ./configure && make
+  - ./configure
+  - make
 
 after_script:
   - echo test build exited
