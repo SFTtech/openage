@@ -32,7 +32,7 @@ def fix_data(data):
 		1: 3, #farms
 		2: 2, #beach
 		3: 0, #water
-		4: 7, #shallows
+		4: 1, #shallows
 		5: 4, #roads
 		6: 5, #ice
 		7: 6, #snow
