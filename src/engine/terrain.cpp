@@ -548,7 +548,7 @@ void Terrain::get_neighbors(coord::tile basepos, struct neighbor_tile *neigh_dat
 		TileContent *neigh_content = this->get_data(neigh_pos);
 
 		//chunk for neighbor or single tile is not existant
-		if (neigh_content == nullptr || neighbor->terrain_id < 0) {
+		if (neigh_content == nullptr || neigh_content->terrain_id < 0) {
 			neighbor->state = tile_state::missing;
 		}
 		else {
