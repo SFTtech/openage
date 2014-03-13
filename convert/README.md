@@ -17,15 +17,15 @@ to convert only media files we need at the moment, execute this:
 
 the above command is an alias for the following python call:
 
-	python3 convert -o . $PATH_TO_YOUR_AOC_INSTALLATION $(make medialist)
+	python3 convert media -o ./data/age/ $PATH_TO_YOUR_AOC_INSTALLATION $(make medialist)
 
 
 to convert ALL original media files to openage format, execute the following:
 
-	python3 convert -o . $PATH_TO_YOUR_AOC_INSTALLATION
+	python3 convert media -o ./data/age $PATH_TO_YOUR_AOC_INSTALLATION
 
 you will then find the converted files in `./data/age/`
-you probably don't want to convert all the files (we don't use them yet..),
+you probably don't want to convert all the files (we don't use them yet..).
 the conversion takes some time, so be patient.
 
 

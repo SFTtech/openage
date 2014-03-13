@@ -3,6 +3,7 @@
 
 #include <GL/glew.h>
 #include <GL/gl.h>
+#include <vector>
 
 #include "shader/shader.h"
 #include "shader/program.h"
@@ -112,8 +113,8 @@ public:
 
 private:
 	GLuint id, vertbuf;
-	struct subtexture *subtextures;
-	int subtexture_count;
+	std::vector<subtexture>subtextures;
+	size_t subtexture_count;
 	bool use_player_color_tinting;
 	bool use_alpha_masking;
 };

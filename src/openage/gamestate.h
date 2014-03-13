@@ -3,16 +3,23 @@
 
 #include <unordered_set>
 
-#include "objects/building.h"
-#include "objects/terrain.h"
 #include "../engine/terrain.h"
 
 namespace openage {
 
+/**
+ * the buildings that were placed on the terrain.
+ */
 extern std::unordered_set<engine::TerrainObject *> buildings;
 
+/**
+ * the selected id for drawing terrain.
+ */
 extern engine::terrain_t editor_current_terrain;
 
+/**
+ * the game's terrain
+ */
 extern engine::Terrain *terrain;
 
 //TODO this is here temporarily (obviously...)

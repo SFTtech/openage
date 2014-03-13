@@ -1,33 +1,29 @@
 from struct import Struct, unpack_from
 from util import dbg
 
-endianness = '< '
+from .empiresdat import endianness
 
 
 class PlayerColorData:
 	def read(self, raw, offset):
-		self.data = dict()
-
 		#uint16_t player_color_count;
 		header_struct = Struct(endianness + "h")
 
-		self.data["player_color_count"], = header_struct.unpack_from(raw, offset)
+		self.player_color_count, = header_struct.unpack_from(raw, offset)
 		offset += header_struct.size
 
-		self.data["player_color"] = list()
-		for i in range(self.data["player_color_count"]):
+		self.player_color = list()
+		for i in range(self.player_color_count):
 			t = PlayerColor()
 			offset = t.read(raw, offset)
-			self.data["player_color"] += [t.data]
+			self.player_color.append(t)
 
 		return offset
 
 
 class PlayerColor:
 	def read(self, raw, offset):
-		self.data = dict()
-
-		#int32_t id;
+		#int32_t uid;
 		#int32_t palette;
 		#int32_t color;
 		#int32_t unknown;
@@ -41,13 +37,13 @@ class PlayerColor:
 		pc = player_color_struct.unpack_from(raw, offset)
 		offset += player_color_struct.size
 
-		self.data["id"]            = pc[0]
-		self.data["palette"]       = pc[1]
-		self.data["color"]         = pc[2]
-		#self.data[""] = pc[0]
-		#self.data[""] = pc[0]
-		self.data["minimap_color"] = pc[5]
-		#self.data[""] = pc[0]
-		#self.data[""] = pc[0]
+		self.uid           = pc[0]
+		self.palette       = pc[1]
+		self.color         = pc[2]
+		#self. = pc[0]
+		#self. = pc[0]
+		self.minimap_color = pc[5]
+		#self. = pc[0]
+		#self. = pc[0]
 
 		return offset

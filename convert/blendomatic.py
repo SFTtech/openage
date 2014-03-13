@@ -1,13 +1,22 @@
 #!/usr/bin/env python3
 
 import math
-from struct import Struct, unpack_from
-from util import NamedObject, dbg, file_open, file_get_path, merge_frames, generate_meta_text
 from png import PNG
+from struct import Struct, unpack_from
+import util
+from util import NamedObject, dbg, file_open, file_get_path, merge_frames, generate_meta_text, file_write
+import os.path
 
 endianness = "< "
 
 class Blendomatic:
+
+	name_struct        = "blending_mode"
+	name_struct_file   = "blending_mode"
+	struct_description = "describes one blending mode, a blending transition shape between two different terrain types."
+	data_format = {
+		0: {"blend_mode": "int32_t"},
+	}
 
 	#struct blendomatic_header {
 	# unsigned int nr_blending_modes;
@@ -150,7 +159,6 @@ class Blendomatic:
 			#insert as padding to the left (0 for fully transparent)
 			space_left = [-1] * space_count
 
-
 			if read_values > (tile_size - read_so_far):
 				raise Exception("reading more bytes than tile has left")
 
@@ -227,6 +235,32 @@ class Blendomatic:
 
 				yield png, idx, tidx
 
+	def dump(self):
+		ret = dict()
+
+		ret.update(util.gather_format(self))
+		ret["name_table_file"] = "blending_modes"
+		ret["data"] = list()
+
+		for mode in range(len(self.blending_modes)):
+			#dump terrains
+			ret["data"].append({"blend_mode": mode})
+
+		return [ ret ]
+
+	def structs():
+		ret = dict()
+		ret.update(util.gather_format(Blendomatic))
+		return [ ret ]
+
+	def export(self, output_folder):
+		for (modeidx, png, size, metadata) in self.draw_alpha_frames_merged():
+			fname = os.path.join(output_folder, "mode%02d" % modeidx)
+			filename = file_get_path(fname, write=True)
+			dbg("saving blending mode%02d texture -> %s.png" % (modeidx, filename), 1)
+			file_write(filename + ".png", png)
+			file_write(filename + ".docx", metadata)
+		dbg("blending modes exported successfully!", 1)
 
 	def __str__(self):
 		return str(self.blending_modes)

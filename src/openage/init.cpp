@@ -1,6 +1,7 @@
 #include "init.h"
 
 #include <stdio.h>
+#include <unistd.h>
 
 #include "../engine/texture.h"
 #include "../engine/util/strings.h"
@@ -10,6 +11,7 @@
 #include "../engine/util/file.h"
 #include "../engine/log.h"
 #include "../engine/terrain_chunk.h"
+#include "../gamedata/color.h"
 
 #include "callbacks.h"
 #include "gamestate.h"
@@ -37,68 +39,45 @@ constexpr int terrain_data[16 * 16] = {
 	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5,  5
 };
 
-void init() {
+void init(const char *data_directory) {
+
+
+	if (chdir(data_directory) == -1) {
+		throw engine::Error("Failed to change directory: %s", strerror(errno));
+	}
+
+	constexpr size_t max_dirname_length = 1024;
+	char current_dir_name[max_dirname_length];
+
+	if (NULL == getcwd(current_dir_name, max_dirname_length)) {
+		throw engine::Error("working dir filename longer than %lu.", max_dirname_length);
+	}
+
+	engine::log::msg("using data directory '%s'", current_dir_name);
+
+
 	//load textures and stuff
 	gaben = new Texture("gaben.png");
+	university = new Texture("age/processed/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
-	//TODO: dynamic generation of the file path
-	//sync this with convert .py script !
-
-	university = new Texture("age/raw/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
-
-	terrain_type *terrain_types;
-	size_t ttype_count = util::read_csv_file<terrain_type>(&terrain_types, "age/processed/terrain_meta.docx");
-
-	blending_mode *blending_modes;
-	size_t bmode_count = util::read_csv_file<blending_mode>(&blending_modes, "age/processed/blending_meta.docx");
+	auto terrain_types  = util::read_csv_file<terrain_type>("age/processed/terrain_data.docx");
+	auto blending_modes = util::read_csv_file<blending_mode>("age/processed/blending_modes.docx");
 
 	//create the terrain which will be filled by chunks
-	terrain = new Terrain(ttype_count, terrain_types, bmode_count, blending_modes, true);
-
-	delete[] terrain_types;
-	delete[] blending_modes;
+	terrain = new Terrain(terrain_types, blending_modes, true);
 
 	terrain->fill(terrain_data, coord::tile_delta{16, 16});
 
+	auto player_color_lines = engine::util::read_csv_file<palette_color>("age/processed/player_palette_50500.docx");
 
-	struct player_color_line {
-		unsigned int id;
-		unsigned int r, g, b, a;
-
-		int fill(const char *by_line) {
-			if (5 == sscanf(by_line, "%u=%u,%u,%u,%u",
-			                &this->id,
-			                &this->r,
-			                &this->g,
-			                &this->b,
-			                &this->a
-			                )) {
-				return 0;
-			}
-			else {
-				return -1;
-			}
-		}
-		void dump() {
-			engine::log::msg("color %u: (%u,%u,%u,%u)", this->id, this->r, this->g, this->b, this->a);
-		}
-	};
-
-
-	//get the player colors from the sub-palette exported by script
-	player_color_line *player_color_lines;
-	ssize_t pcolor_count = engine::util::read_csv_file<player_color_line>(&player_color_lines, "age/processed/player_color_palette.pal");
-
-	GLfloat *playercolors = new GLfloat[pcolor_count*4];
-	for (ssize_t i = 0; i < pcolor_count; i++) {
+	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
+	for (size_t i = 0; i < player_color_lines.size(); i++) {
 		auto line = &player_color_lines[i];
 		playercolors[i*4]     = line->r / 255.0;
 		playercolors[i*4 + 1] = line->g / 255.0;
 		playercolors[i*4 + 2] = line->b / 255.0;
 		playercolors[i*4 + 3] = line->a / 255.0;
 	}
-	delete[] player_color_lines;
-
 
 	//shader initialisation
 	//read shader source codes and create shader objects for wrapping them.

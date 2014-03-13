@@ -46,3 +46,11 @@ maps with infinite size (haha your architecture is the limit)
 
 play on one single map with 9001 players
 you can imagine the lulz etc
+
+
+research
+--------
+
+if unit upgrades are researched, only newly built ones recieve the bonus.
+ones already built have to go back to the barrack and train again.
+(reminder: this is only an idea, that _might_ be available optionally)

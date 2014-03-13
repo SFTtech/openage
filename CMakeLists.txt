@@ -38,21 +38,35 @@ set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin")
 set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/lib")
 
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -Werror -O3")  #TODO: -flto=4 (clang needs gold linker I think)
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -Werror -O3")
 
 message("compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 
 #check for compiler versions
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8)
+
+	if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8)
 		message(FATAL_ERROR ">=gcc-4.8 required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
 	endif()
+
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Og")
+
+	#enable LTO for gcc builds, will be optional soon.
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=4")
+	set(CMAKE_CXX_LINK_FLAGS_RELEASE "${CMAKE_CXX_LINK_FLAGS} -flto=4")
+
+	#TODO: integrate PGO build
+
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+
 	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.3)
 		message(FATAL_ERROR ">=clang-3.3 required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
 	endif()
-	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
+
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O1")
+
+	#TODO: enable clang LTO
+
 else() #"Intel", "MSVC", etc..
 	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 endif()
@@ -72,4 +86,4 @@ if(DOXYGEN_FOUND)
 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 		COMMENT "generating docs with Doxygen" VERBATIM
 	)
-endif(DOXYGEN_FOUND)
+endif()

@@ -8,20 +8,28 @@ compiler:
   - gcc
 
 before_install:
+  - uname -a
+  - lsb_release -a
   - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test     #gcc 4.8
   - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots       #libsdl2
   - sudo add-apt-repository --yes ppa:kubuntu-ppa/backports       #cmake >=2.8.10
+  - sudo add-apt-repository --yes ppa:fkrull/deadsnakes           #python3.3
   - sudo apt-get update -qq
 
 install:
   - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; export CXX="g++-4.8" CC="gcc-4.8"; fi
-  - sudo apt-get install -qq python3 libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev cmake
+  - sudo apt-get install -qq python3.3 libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev cmake
+  - sudo pip install Pillow
 
 before_script:
   - cmake --version
+  - python --version
+  - ls -l /usr/bin/python*
+  - sudo ln -s /usr/bin/python3.3 /usr/bin/python3
 
 script:
-  - ./configure && make
+  - ./configure
+  - make
 
 after_script:
   - echo test build exited
