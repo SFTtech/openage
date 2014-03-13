@@ -567,7 +567,8 @@ struct influence_group Terrain::calculate_influences(struct tile_data *base_tile
 	struct influence_group influences;
 	influences.count = 0;
 
-	//process adjacent neighbors first
+	//process adjacent neighbors first,
+	//then add diagonal influences, if no adjacent influence was found
 	constexpr int neigh_id_lookup[] = {1, 3, 5, 7, 0, 2, 4, 6};
 
 	for (int i = 0; i < 8; i++) {
