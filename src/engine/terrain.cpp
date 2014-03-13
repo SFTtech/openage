@@ -547,26 +547,17 @@ void Terrain::get_neighbors(coord::tile basepos, struct neighbor_tile *neigh_dat
 		//get the neighbor data
 		TileContent *neigh_content = this->get_data(neigh_pos);
 
-		neighbor->priority = -1;
-
-		//chunk for neighbor is not existant
-		if (neigh_content == nullptr) {
+		//chunk for neighbor or single tile is not existant
+		if (neigh_content == nullptr || neighbor->terrain_id < 0) {
 			neighbor->state = tile_state::missing;
-			neighbor->terrain_id = -1;
 		}
-		//chunk for neighbor exists
 		else {
-			if (neighbor->terrain_id < 0) {
-				neighbor->state = tile_state::missing;
-			}
-			else {
-				neighbor->terrain_id = neigh_content->terrain_id;
-				neighbor->state = tile_state::existing;
-				neighbor->priority = this->priority(neighbor->terrain_id);
+			neighbor->terrain_id = neigh_content->terrain_id;
+			neighbor->state      = tile_state::existing;
+			neighbor->priority   = this->priority(neighbor->terrain_id);
 
-				//reset influence directions for this tile
-				influences_by_terrain_id[neighbor->terrain_id].direction = 0;
-			}
+			//reset influence directions for this tile
+			influences_by_terrain_id[neighbor->terrain_id].direction = 0;
 		}
 	}
 }
