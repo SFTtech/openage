@@ -1,5 +1,4 @@
 import math
-from PIL import Image, ImageDraw
 
 import util
 from util import dbg
@@ -59,6 +58,9 @@ class ColorTable:
 
 	def gen_image(self, draw_text = True, squaresize = 100):
 		#writes this color table (palette) to a png image.
+
+		from PIL import Image, ImageDraw
+
 		imgside_length = math.ceil(math.sqrt(self.entry_count))
 		imgsize = imgside_length * squaresize
 
