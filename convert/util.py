@@ -1,7 +1,6 @@
 from collections import OrderedDict
 import math
 import os
-from PIL import Image
 from string import Template
 
 class NamedObject:
@@ -106,6 +105,8 @@ def file_open(path, binary = True, write = False):
 
 #writes data to a file in the destination directory
 def file_write(fname, data):
+	from PIL import Image
+
 	#ensure that the directory exists
 	mkdirs(os.path.dirname(fname))
 
@@ -121,6 +122,8 @@ def file_write(fname, data):
 
 #reads data from a file in the source directory
 def file_read(fname, datatype = str):
+	from PIL import Image
+
 	if datatype == bytes:
 		return file_open(fname, binary = True, write = False).read()
 	elif datatype == str:
@@ -144,6 +147,8 @@ def merge_frames(frames, max_width = None, max_height = None):
 	#https://en.wikipedia.org/wiki/Bin_packing_problem
 
 	#for now, using max values for solving bin packing problem
+
+	from PIL import Image
 
 	#if not predefined, get maximum frame size by checking all frames
 	if max_width == None or max_height == None:
