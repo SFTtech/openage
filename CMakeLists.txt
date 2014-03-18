@@ -87,7 +87,7 @@ if(DOXYGEN_FOUND)
 		set(HAVE_DOT "YES")
 		message(STATUS "Found dot: ${DOT_EXECUTABLE}")
 	else()
-		message(WARNING "dot of graphviz couln't be found.")
+		message(WARNING "dot of graphviz couldn't be found.")
 	endif()
 
 	#this adds the correct folder to INPUT= :
