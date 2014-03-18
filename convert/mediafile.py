@@ -7,7 +7,6 @@ from drs import DRS
 from os import remove
 from os.path import join
 import pprint
-from slp import SLP, PNG
 from string import Template
 import subprocess
 import util
@@ -81,6 +80,8 @@ def media_convert(args):
 	palette.fill(drsfiles["interface"].get_file_data('bin', 50500), 50500)
 
 	if write_enabled:
+		from slp import SLP
+
 		player_palette = PlayerColorTable(palette)
 
 		import blendomatic
