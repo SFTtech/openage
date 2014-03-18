@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import math
-from png import PNG
 from struct import Struct, unpack_from
 import util
 from util import NamedObject, dbg, file_open, file_get_path, merge_frames, generate_meta_text, file_write
@@ -191,6 +190,8 @@ class Blendomatic:
 		return tiledata
 
 	def draw_alpha_frames(self):
+		from png import PNG
+
 		for idx, bmode in enumerate(self.blending_modes):
 
 			for tidx, tile in enumerate(bmode["alphamasks"]):
@@ -200,6 +201,8 @@ class Blendomatic:
 				yield png, idx, tidx
 
 	def draw_alpha_frames_merged(self):
+		from png import PNG
+
 		for idx, bmode in enumerate(self.blending_modes):
 
 			max_w = 0
@@ -227,6 +230,8 @@ class Blendomatic:
 
 
 	def draw_bit_frames(self):
+		from png import PNG
+
 		for idx, bmode in enumerate(self.blending_modes):
 
 			for tidx, tile in enumerate(bmode["bitmasks"]):
