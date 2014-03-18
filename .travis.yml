@@ -27,8 +27,8 @@ before_script:
   - sudo ln -sf /usr/bin/python3.3 /usr/bin/python3
 
 script:
-  - ./configure || exit 1
-  - make || exit 2
+  - ./configure
+  - make
 
 after_script:
   - echo test build exited
