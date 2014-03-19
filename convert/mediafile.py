@@ -155,6 +155,7 @@ def media_convert(args):
 						for idx, (png, metadata) in enumerate(s.draw_frames(palette)):
 							filename = fname + '.' + str(idx)
 							dbg(out_file_tmp + " -> extracting frame %3d...\r" % (idx), 1, end="")
+							util.mkdirs(os.path.dirname(filename))
 							png.image.save(filename + ".png")
 							file_write(filename + '.docx', metadata)
 
@@ -164,6 +165,7 @@ def media_convert(args):
 						#create a packed texture atlas
 						png, (width, height), metadata = s.draw_frames_merged(palette)
 						dbg(out_file_tmp + " -> " + fname + " -> saving atlas", 1)
+						util.mkdirs(os.path.dirname(fname))
 						png.save(fname + ".png")
 						file_write(fname + '.docx', metadata)
 
