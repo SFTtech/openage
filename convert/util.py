@@ -105,31 +105,28 @@ def file_open(path, binary = True, write = False):
 
 #writes data to a file in the destination directory
 def file_write(fname, data):
-	from PIL import Image
 
 	#ensure that the directory exists
 	mkdirs(os.path.dirname(fname))
 
 	if type(data) == bytes:
-		file_open(fname, binary = True, write = True).write(data)
+		handle = file_open(fname, binary = True, write = True)
+		handle.write(data)
+		handle.close()
 	elif type(data) == str:
-		file_open(fname, binary = False, write = True).write(data)
-	elif type(data) == Image.Image:
-		data.save(fname)
+		handle = file_open(fname, binary = False, write = True)
+		handle.write(data)
+		handle.close()
 	else:
 		raise Exception("Unknown data type for writing: " + str(type(data)))
 
 
 #reads data from a file in the source directory
 def file_read(fname, datatype = str):
-	from PIL import Image
-
 	if datatype == bytes:
 		return file_open(fname, binary = True, write = False).read()
 	elif datatype == str:
 		return file_open(fname, binary = False, write = False).read()
-	elif datatype == Image.Image:
-		return Image.open(fname).convert('RGBA')
 	else:
 		raise Exception("Unknown data type for reading: " + str(datatype))
 

@@ -5,7 +5,7 @@
 from colortable import ColorTable, PlayerColorTable
 from drs import DRS
 from os import remove
-from os.path import join
+import os.path
 import pprint
 from string import Template
 import subprocess
@@ -114,7 +114,10 @@ def media_convert(args):
 
 
 		if args.extrafiles:
-			file_write(file_get_path('info/colortable.pal.png', write=True), palette.gen_image())
+
+			palette_visualization = file_get_path('info/colortable.pal.png', write=True)
+			util.mkdirs(os.path.dirname(palette_visualization))
+			palette.gen_image().save(palette_visualization)
 
 
 	file_list = dict()
@@ -152,7 +155,7 @@ def media_convert(args):
 						for idx, (png, metadata) in enumerate(s.draw_frames(palette)):
 							filename = fname + '.' + str(idx)
 							dbg(out_file_tmp + " -> extracting frame %3d...\r" % (idx), 1, end="")
-							file_write(filename + '.png', png.image)
+							png.image.save(filename + ".png")
 							file_write(filename + '.docx', metadata)
 
 						dbg(out_file_tmp + " -> saved single frame(s)", 1)
@@ -161,7 +164,7 @@ def media_convert(args):
 						#create a packed texture atlas
 						png, (width, height), metadata = s.draw_frames_merged(palette)
 						dbg(out_file_tmp + " -> " + fname + " -> saving atlas", 1)
-						file_write(fname + ".png", png)
+						png.save(fname + ".png")
 						file_write(fname + '.docx', metadata)
 
 			elif file_extension == 'wav':

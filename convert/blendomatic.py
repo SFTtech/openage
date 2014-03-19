@@ -120,6 +120,7 @@ class Blendomatic:
 
 			self.blending_modes.append(bmode_data)
 
+		f.close()
 		dbg(pop = "blendomatic")
 
 
@@ -263,7 +264,9 @@ class Blendomatic:
 			fname = os.path.join(output_folder, "mode%02d" % modeidx)
 			filename = file_get_path(fname, write=True)
 			dbg("saving blending mode%02d texture -> %s.png" % (modeidx, filename), 1)
-			file_write(filename + ".png", png)
+
+			util.mkdirs(os.path.dirname(filename))
+			png.save(filename + ".png")
 			file_write(filename + ".docx", metadata)
 		dbg("blending modes exported successfully!", 1)
 
