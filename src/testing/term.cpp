@@ -1,12 +1,19 @@
+#include "term.h"
+
 #include <unistd.h>
 #include <termios.h>
 #include <pty.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../engine/console/buf.h"
+#include "../engine/log.h"
 
+using namespace engine;
 using namespace engine::console;
 using namespace engine::coord;
+
+namespace testing {
 
 struct termios old_tio, new_tio;
 void setstdincanon() {
@@ -28,7 +35,8 @@ void restorestdin() {
 	}
 }
 
-bool test_term0() {
+bool tests::term0(int /*unused*/, char ** /*unused*/) {
+
 	Buf buf{{80, 25}, 1337, 80};
 	buf.write("Hello, brave new console world!\n\n\n\n");
 	buf.write("stuff, lol.\n\n");
@@ -42,7 +50,7 @@ bool test_term0() {
 	return true;
 }
 
-bool test_term1() {
+bool tests::term1(int /*unused*/, char ** /*unused*/) {
 	Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
 	ws.ws_col = buf.dims.x;
@@ -52,21 +60,26 @@ bool test_term1() {
 	int amaster;
 	switch (forkpty(&amaster, nullptr, nullptr, &ws)) {
 	case -1:
-		printf("fork() failed\n");
+		log::err("fork() failed");
 		return false;
 	case 0:
 		//we are the child, spawn a shell
 		{
-		execl("/bin/bash", "/bin/bash");
+		const char *shell = getenv("SHELL");
+		if (shell == nullptr) {
+			shell = "/bin/sh";
 		}
-		printf("execl() failed\n");
+		execl(shell, shell, nullptr);
+		perror("execl");
+		log::err("execl(\"%s\", \"%s\", nullptr) failed", shell, shell);
+		}
 		return false;
 	default:
 		//we are the parent
 		//fork off a process to read stdin and forward to amaster
 		switch (fork()) {
 		case -1:
-			printf("stdin() fork failed\n");
+			log::err("stdin() fork failed");
 			break;
 		case 0:
 			//we are the child
@@ -94,7 +107,7 @@ bool test_term1() {
 	while (true) {
 		char c;
 		if (read(amaster, &c, 1) != 1) {
-			printf("EOF\n");
+			log::msg("EOF");
 			break;
 		}
 		buf.write(c);
@@ -107,3 +120,5 @@ bool test_term1() {
 
 	return true;
 }
+
+} //namespace testing
