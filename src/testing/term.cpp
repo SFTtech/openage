@@ -5,6 +5,8 @@
 #include <pty.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <errno.h>
 
 #include "../engine/console/buf.h"
 #include "../engine/log.h"
@@ -15,13 +17,13 @@ using namespace engine::coord;
 
 namespace testing {
 
-struct termios old_tio, new_tio;
+struct termios old_tio;
 void setstdincanon() {
 	if (isatty(STDIN_FILENO)) {
 		//get the terminal settings for stdin
 		tcgetattr (STDIN_FILENO, &old_tio);
 		//backup old settings
-		new_tio = old_tio;
+		struct termios new_tio = old_tio;
 		//disable buffered i/o (canonical mode) and local echo
 		new_tio.c_lflag &= (~ICANON & ~ECHO & ~ISIG);
 		//set the settings
@@ -50,6 +52,17 @@ bool tests::term0(int /*unused*/, char ** /*unused*/) {
 	return true;
 }
 
+int dup_as_nonblocking(int fd) {
+	int newfd = dup(fd);
+	int flags = fcntl(newfd, F_GETFL, 0);
+	fcntl(newfd, F_SETFL, flags | O_NONBLOCK);
+	return newfd;
+}
+
+int max(int a, int b) {
+	return (a > b) ? a : b;
+}
+
 bool tests::term1(int /*unused*/, char ** /*unused*/) {
 	Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
@@ -62,6 +75,7 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 	case -1:
 		log::err("fork() failed");
 		return false;
+		break;
 	case 0:
 		//we are the child, spawn a shell
 		{
@@ -70,53 +84,107 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 			shell = "/bin/sh";
 		}
 		execl(shell, shell, nullptr);
-		perror("execl");
 		log::err("execl(\"%s\", \"%s\", nullptr) failed", shell, shell);
 		}
 		return false;
+		break;
 	default:
 		//we are the parent
-		//fork off a process to read stdin and forward to amaster
-		switch (fork()) {
+		break;
+	}
+
+	//hide cursor
+	printf("\x1b[?25l");
+	//set stdin canon
+	setstdincanon();
+
+	constexpr int rdbuf_size = 4096;
+	char rdbuf[rdbuf_size];
+
+	int nonblocking_stdin = dup_as_nonblocking(0);
+	int nonblocking_amaster = dup_as_nonblocking(amaster);
+
+	int nfds = max(nonblocking_stdin, nonblocking_amaster) + 1;
+
+	bool loop = true;
+
+	buf.to_stdout(true);
+
+	while (loop) {
+		fd_set rfds;
+		struct timeval tv;
+
+		/* Watch stdin (fd 0) to see when it has input. */
+		FD_ZERO(&rfds);
+		FD_SET(nonblocking_stdin, &rfds);
+		FD_SET(nonblocking_amaster, &rfds);
+
+		tv.tv_sec = 0;
+		tv.tv_usec = 1000000 / 60;
+
+		switch (select(nfds, &rfds, NULL, NULL, &tv)) {
 		case -1:
-			log::err("stdin() fork failed");
+			//error
 			break;
 		case 0:
-			//we are the child
-			//don't echo input, unbuffered input
-			setstdincanon();
-			while (true) {
-				char c;
-				if (read(0, &c, 1) < 1) {
+			//timeout
+			break;
+		default:
+			//success
+			if (FD_ISSET(nonblocking_stdin, &rfds)) {
+				ssize_t retval = read(nonblocking_stdin, rdbuf, rdbuf_size);
+				switch (retval) {
+				case -1:
+					//error... probably EWOULDBLOCK. ignore.
 					break;
-				}
-				if (write(amaster, &c, 1) < 1) {
+				case 0:
+					//EOF on stdin... huh... well... that was unexpected... TODO
 					break;
+				default:
+					write(amaster, rdbuf, retval);
 				}
 			}
-			restorestdin();
-			exit(0);
-		default:
-			//we are the parent
-			//hide cursor
-			printf("\x1b[?25l");
-			buf.to_stdout(true);
+			if (FD_ISSET(nonblocking_amaster, &rfds)) {
+				ssize_t retval = read(nonblocking_amaster, rdbuf, rdbuf_size);
+				switch (retval) {
+				case -1:
+					switch(errno) {
+					case EIO:
+						loop = false;
+						break;
+					default:
+						//probably EWOULDBLOCK. ignore.
+						break;
+					}
+					break;
+				case 0:
+					//EOF on amaster
+					loop = false;
+					break;
+				default:
+					for(int i = 0; i < retval; i++) {
+						buf.write(rdbuf[i]);
+					}
+				}
+			}
+			break;
+		}
+
+		if (tv.tv_usec == 0) {
+			buf.to_stdout(false);
+
+			tv.tv_usec = 1000000 / 60;
 		}
 	}
 
-	while (true) {
-		char c;
-		if (read(amaster, &c, 1) != 1) {
-			log::msg("EOF");
-			break;
-		}
-		buf.write(c);
-		//clear buf from current cursorpos
-		printf("\x1b[J");
-		buf.to_stdout(false);
-	}
 	//show cursor
 	printf("\x1b[?25h");
+	//restore stdin
+	restorestdin();
+
+	close(nonblocking_stdin);
+	close(nonblocking_amaster);
+	close(amaster);
 
 	return true;
 }

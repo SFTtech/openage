@@ -1,6 +1,8 @@
 #ifndef _TESTING_TESTING_H_
 #define _TESTING_TESTING_H_
 
+//testing is the future.
+
 /**
  * testing stuff is stored in this namespace.
  */
