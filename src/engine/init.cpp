@@ -16,13 +16,14 @@
 #include "util/error.h"
 #include "input.h"
 
+
 namespace engine {
 
 void init(const char *windowtitle) {
 	//set global random seed
 	srand(time(NULL));
 
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
 		throw Error("SDL initialization: %s", SDL_GetError());
 	}
 
@@ -82,6 +83,14 @@ void init(const char *windowtitle) {
 	callbacks::on_resize.push_back(engine::handle_window_resize);
 	callbacks::on_input.push_back(engine::input::handler);
 	callbacks::on_drawhud.push_back(engine::draw_hud);
+
+	//initialize audio
+	auto devices = audio::AudioManager::get_devices();
+	if (devices.empty()) {
+		throw Error{"No audio devices found"};
+	}
+
+	audio_manager = new audio::AudioManager(48000, AUDIO_S16LSB, 2, 2048);
 }
 
 /**

@@ -16,6 +16,7 @@ add_executable(${PROJECT_NAME}
 	engine/input.cpp
 	engine/log.cpp
 	engine/python.cpp
+	engine/audio/audio_manager.cpp
 	engine/console/callbacks.cpp
 	engine/console/console.cpp
 	engine/console/init.cpp

@@ -44,6 +44,8 @@ coord::window camhud_window = {0, 600};
 
 util::FrameCounter *fpscounter;
 
+audio::AudioManager *audio_manager;
+
 /**
 * update opengl when the window is resized.
 *
