@@ -5,6 +5,7 @@
 
 add_executable(${PROJECT_NAME}
 	main.cpp
+	args.cpp
 
 	engine/callbacks.cpp
 	engine/engine.cpp
