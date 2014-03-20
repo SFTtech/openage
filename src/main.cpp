@@ -153,7 +153,7 @@ int main(int argc, char **argv) {
 
 		if (program_config.run_game) {
 			log::msg("launching " PROJECT_NAME);
-			return openage::main(program_config.data_directory);
+			return openage::main();
 		}
 	} catch (engine::Error e) {
 		log::fatal("Exception: %s", e.str());

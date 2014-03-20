@@ -5,7 +5,7 @@
 
 namespace openage {
 
-int main(const char *data_directory);
+int main();
 
 } //namespace openage
 

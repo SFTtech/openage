@@ -11,6 +11,7 @@
 #include "../engine/util/file.h"
 #include "../engine/log.h"
 #include "../engine/terrain_chunk.h"
+#include "../main.h"
 
 #include "callbacks.h"
 #include "gamestate.h"
@@ -38,10 +39,8 @@ constexpr int terrain_data[16 * 16] = {
 	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5,  5
 };
 
-void init(const char *data_directory) {
-
-
-	if (chdir(data_directory) == -1) {
+void init() {
+	if (chdir(program_config.data_directory) == -1) {
 		throw engine::Error("Failed to change directory: %s", strerror(errno));
 	}
 
