@@ -13,7 +13,33 @@ namespace audio {
  * This class provides audio functionality.
  */
 class AudioManager {
+private:
+	// the used audio device's name
+	std::string device_name;
+
+	// the audio output format
+	SDL_AudioSpec device_spec;
+	// the used audio device's id
+	SDL_AudioDeviceID device_id;
+
 public:
+	AudioManager(int freq, SDL_AudioFormat format, Uint8 channels,
+			Uint16 samples);
+
+	// pass empty device name to indicate, that the default device should be
+	// used
+	AudioManager(const std::string &device_name, int freq,
+			SDL_AudioFormat format, Uint8 channels, Uint16 samples);
+	
+	~AudioManager();
+
+	// delete copy and move constructors and operators
+	AudioManager(const AudioManager&) = delete;
+	AudioManager(AudioManager&&) = delete;
+
+	AudioManager &operator=(const AudioManager&) = delete;
+	AudioManager &operator=(AudioManager&&) = delete;
+
 	/**
 	 * Returns the currently used audio output format.
 	 */
