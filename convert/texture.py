@@ -18,8 +18,8 @@ def subtexture_meta(tx, ty, hx, hy, cx, cy):
 	ret = {
 		"x":  tx,
 		"y":  ty,
-		"h":  hx,
-		"w":  hy,
+		"w":  hx,
+		"h":  hy,
 		"cx": cx,
 		"cy": cy,
 	}
