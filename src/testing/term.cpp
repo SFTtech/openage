@@ -141,7 +141,12 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 					//EOF on stdin... huh... well... that was unexpected... TODO
 					break;
 				default:
-					write(amaster, rdbuf, retval);
+					if (write(amaster, rdbuf, retval) != retval) {
+						//for some reason, we couldn't write all input to
+						//amaster.
+						loop = false;
+					}
+					break;
 				}
 			}
 			if (FD_ISSET(nonblocking_amaster, &rfds)) {
