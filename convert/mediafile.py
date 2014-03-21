@@ -149,7 +149,7 @@ def media_convert(args):
 				s = SLP(file_data)
 				out_file_tmp = "%s: %d.%s" % (drsname, file_id, file_extension)
 
-				dbg(out_file_tmp + " -> " + fname + " -> saving atlas", 1)
+				dbg(out_file_tmp + " -> " + fname + " -> generating atlas", 1)
 
 				#create exportable texture from the slp
 				texture = s.get_texture(palette)
