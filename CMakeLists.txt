@@ -45,7 +45,7 @@ message("compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 #check for compiler versions
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 
-	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8)
+	if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8)
 		message(FATAL_ERROR ">=gcc-4.8 required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
 	endif()
 
@@ -77,6 +77,19 @@ add_subdirectory("src")
 # Doxygen integration
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
+	find_file(DOT dot HINTS /usr/bin/dot)
+
+	set(DOT_EXECUTABLE "/bin/false")
+	set(HAVE_DOT "NO")
+
+	if(NOT ${DOT} STREQUAL "DOT-NOTFOUND")
+		set(DOT_EXECUTABLE "${DOT}")
+		set(HAVE_DOT "YES")
+		message(STATUS "Found dot: ${DOT_EXECUTABLE}")
+	else()
+		message(WARNING "dot of graphviz couldn't be found.")
+	endif()
+
 	#this adds the correct folder to INPUT= :
 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
 
@@ -86,4 +99,4 @@ if(DOXYGEN_FOUND)
 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 		COMMENT "generating docs with Doxygen" VERBATIM
 	)
-endif(DOXYGEN_FOUND)
+endif()

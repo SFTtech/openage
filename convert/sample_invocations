@@ -1,7 +1,0 @@
-To extract only the Hussar and University sprites:
-
-./convert -vv ~/.wine-age/drive_c/age .. graphics:3836.slp graphics:4857.slp
-
-To extract all terrain sprites:
-
-./convert -vv ~/.wine-age/drive_c/age .. terrain:*.slp

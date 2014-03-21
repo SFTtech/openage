@@ -1,33 +1,29 @@
 from struct import Struct, unpack_from
 from util import dbg, zstr
 
-endianness = '< '
+from .empiresdat import endianness
 
 
 class CivData:
 	def read(self, raw, offset):
-		self.data = dict()
-
 		#uint16_t civ_count;
 		header_struct = Struct(endianness + "H")
 
 		header = header_struct.unpack_from(raw, offset)
 		offset += header_struct.size
-		self.data["civ_count"], = header
+		self.civ_count, = header
 
-		self.data["civ"] = list()
-		for i in range(self.data["civ_count"]):
+		self.civ = list()
+		for i in range(self.civ_count):
 			t = Civ()
 			offset = t.read(raw, offset)
-			self.data["civ"] += [t.data]
+			self.civ.append(t)
 
 		return offset
 
 
 class Civ:
 	def read(self, raw, offset):
-		self.data = dict()
-
 		#int8_t one;
 		#char name[20];
 		#uint16_t ressources_count;
@@ -38,20 +34,20 @@ class Civ:
 		pc = civ_header0_struct.unpack_from(raw, offset)
 		offset += civ_header0_struct.size
 
-		self.data["one"]             = pc[0]
-		self.data["name"]            = zstr(pc[1])
-		self.data["ressource_count"] = pc[2]
-		self.data["tech_tree_id"]    = pc[3]
-		self.data["team_bonus_id"]   = pc[4]
+		self.one             = pc[0]
+		self.name            = zstr(pc[1])
+		self.ressource_count = pc[2]
+		self.tech_tree_id    = pc[3]
+		self.team_bonus_id   = pc[4]
 
 
 		#float[ressources_count] ressources;
-		civ_ressources_struct = Struct(endianness + "%df" % self.data["ressource_count"])
+		civ_ressources_struct = Struct(endianness + "%df" % self.ressource_count)
 
 		pc = civ_ressources_struct.unpack_from(raw, offset)
 		offset += civ_ressources_struct.size
 
-		self.data["ressources"] = pc
+		self.ressources = pc
 
 
 		#int8_t graphic_set;
@@ -61,23 +57,23 @@ class Civ:
 		pc = civ_header1_struct.unpack_from(raw, offset)
 		offset += civ_header1_struct.size
 
-		self.data["graphic_set"] = pc[0]
-		self.data["unit_count"]  = pc[1]
+		self.graphic_set = pc[0]
+		self.unit_count  = pc[1]
 
 
 		#int32_t unit_offsets[unit_count];
-		civ_header2_struct = Struct(endianness + "%di" % self.data["unit_count"])
+		civ_header2_struct = Struct(endianness + "%di" % self.unit_count)
 		pc = civ_header2_struct.unpack_from(raw, offset)
 		offset += civ_header2_struct.size
 
-		self.data["unit_offsets"] = pc
+		self.unit_offsets = pc
 
-		self.data["unit"] = list()
-		dbg("unit count = %d" % self.data["unit_count"], 2)
-		for i in range(self.data["unit_count"]):
+		self.unit = list()
+		dbg("unit count = %d" % self.unit_count, 2)
+		for i in range(self.unit_count):
 			dbg("%%%%%%%%%%%%%%%%%%%%%%%%%%%% UNIT entry %d" % i, 2)
 
-			uo = self.data["unit_offsets"][i]
+			uo = self.unit_offsets[i]
 			dbg("unit offset = %d" % uo, 3)
 			if uo == 0:
 				dbg("skipping UNIT entry %d" % i, 2)
@@ -86,6 +82,6 @@ class Civ:
 			from gamedata import unit
 			t = unit.Unit()
 			offset = t.read(raw, offset)
-			self.data["unit"] += [t.data]
+			self.unit.append(t)
 
 		return offset

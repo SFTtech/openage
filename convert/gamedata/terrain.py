@@ -1,36 +1,37 @@
 from struct import Struct, unpack_from
 from util import dbg, zstr
-from util import file_get_path, file_write
+from util import file_get_path, file_write, gather_data, gather_format
 
-endianness = '< '
+from .empiresdat import endianness
 
 
 class TerrainHeaderData:
-	def read(self, raw, offset):
-		self.data = dict()
 
+	def read(self, raw, offset):
 		#uint16_t terrain_restriction_count;
 		#uint16_t terrain_count;
 		header_struct = Struct(endianness + "H H")
 
 		header = header_struct.unpack_from(raw, offset)
 		offset += header_struct.size
-		self.data["terrain_restriction_count"], self.data["terrain_count"] = header
+		tr_count, t_count = header
+		self.terrain_restriction_count = tr_count
+		self.terrain_count = t_count
 
 		#int32_t terrain_restriction_offset0[terrain_restriction_count];
 		#int32_t terrain_restriction_offset1[terrain_restriction_count];
-		tr_offset_struct = Struct(endianness + "%di" % self.data["terrain_restriction_count"])
+		tr_offset_struct = Struct(endianness + "%di" % self.terrain_restriction_count)
 
-		self.data["terrain_restriction_offset0"] = tr_offset_struct.unpack_from(raw, offset)
+		self.terrain_restriction_offset0 = tr_offset_struct.unpack_from(raw, offset)
 		offset += tr_offset_struct.size
-		self.data["terrain_restriction_offset1"] = tr_offset_struct.unpack_from(raw, offset)
+		self.terrain_restriction_offset1 = tr_offset_struct.unpack_from(raw, offset)
 		offset += tr_offset_struct.size
 
-		self.data["terrain_restriction"] = list()
-		for i in range(self.data["terrain_restriction_count"]):
-			t = TerrainRestriction(self.data["terrain_count"])
+		self.terrain_restriction = list()
+		for i in range(self.terrain_restriction_count):
+			t = TerrainRestriction(self.terrain_count)
 			offset = t.read(raw, offset)
-			self.data["terrain_restriction"] += [t.data]
+			self.terrain_restriction.append(t)
 
 		return offset
 
@@ -43,24 +44,20 @@ class TerrainRestriction:
 		self.terrain_accessible_struct = Struct(endianness + "%df" % terrain_count)
 
 	def read(self, raw, offset):
-		self.data = dict()
-
-		self.data["terrain_accessible"] = self.terrain_accessible_struct.unpack_from(raw, offset)
+		self.terrain_accessible = self.terrain_accessible_struct.unpack_from(raw, offset)
 		offset += self.terrain_accessible_struct.size
 
-		self.data["terrain_pass_graphic"] = list()
+		self.terrain_pass_graphic = list()
 		for i in range(self.terrain_count):
 			t = TerrainPassGraphic()
 			offset = t.read(raw, offset)
-			self.data["terrain_pass_graphic"] += [t.data]
+			self.terrain_pass_graphic.append(t)
 
 		return offset
 
 
 class TerrainPassGraphic:
 	def read(self, raw, offset):
-		self.data = dict()
-
 		#int32_t buildable;
 		#int32_t graphic_id0;
 		#int32_t graphic_id1;
@@ -70,10 +67,10 @@ class TerrainPassGraphic:
 		pg = terrain_pass_graphic_struct.unpack_from(raw, offset)
 		offset += terrain_pass_graphic_struct.size
 
-		self.data["buildable"]          = pg[0]
-		self.data["graphic_id0"]        = pg[1]
-		self.data["graphic_id1"]        = pg[2]
-		self.data["replication_amount"] = pg[3]
+		self.buildable          = pg[0]
+		self.graphic_id0        = pg[1]
+		self.graphic_id1        = pg[2]
+		self.replication_amount = pg[3]
 
 		return offset
 
@@ -82,23 +79,47 @@ class TerrainData:
 	def __init__(self, terrain_count):
 		self.terrain_count = terrain_count
 
-	def read(self, raw, offset):
-		self.data = dict()
+	def dump(self):
+		ret = dict()
 
-		self.data["terrain"] = list()
+		ret.update(gather_format(Terrain))
+		ret["name_table_file"] = "terrain_data"
+		ret["data"] = list()
+
+		for terrain in self.terrains:
+			#dump terrains
+			ret["data"].append(terrain.dump())
+
+		return [ ret ]
+
+	def read(self, raw, offset):
+		self.terrains = list()
 		for i in range(self.terrain_count):
 			t = Terrain()
 			offset = t.read(raw, offset)
-			self.data["terrain"] += [t.data]
+			self.terrains.append(t)
 
 		return offset
 
 
 class Terrain:
+	name_struct        = "terrain_type"
+	name_struct_file   = "terrain"
+	struct_description = "describes a terrain type, like water, ice, etc."
+
+	data_format = {
+		0: {"terrain_id":     "int32_t"},
+		1: {"slp_id":         "int32_t"},
+		2: {"blend_mode":     "int32_t"},
+		3: {"blend_priority": "int32_t"},
+		4: {"name0":          { "type": "char", "length": 13 }},
+		5: {"name1":          { "type": "char", "length": 13 }},
+	}
+
+	def dump(self):
+		return gather_data(self, self.data_format)
+
 	def read(self, raw, offset):
-		self.data = dict()
-
-
 		#int16_t unknown;
 		#int16_t unknown;
 		#char name0[13];
@@ -129,45 +150,43 @@ class Terrain:
 		pc = terrain_struct.unpack_from(raw, offset)
 		offset += terrain_struct.size
 
-		#self.data[""] = pc[0]
-		#self.data[""] = pc[1]
-		self.data["name0"]                    = zstr(pc[2])
-		self.data["name1"]                    = zstr(pc[3])
-		self.data["slp_id"]                   = pc[4]
-		#self.data[""] = pc[5]
-		self.data["sound_id"]                 = pc[6]
-		self.data["blend_priority"]           = pc[7]
-		self.data["blend_mode"]               = pc[8]
-		self.data["color"]                    = pc[9:(9+3)]
-		#self.data[""] = pc[12:(12+5)]
-		#self.data[""] = pc[17]
-		#self.data[""] = pc[18:(18+18)]
-
-		self.data["frame_count"]              = pc[36]
-		self.data["angle_count"]              = pc[37]
-		self.data["terrain_id"]               = pc[38]
-		self.data["elevation_graphic"]        = pc[39:(39+54)]
-		self.data["terrain_replacement_id"]   = pc[93]
-		self.data["terrain_dimensions0"]      = pc[94]
-		self.data["terrain_dimensions1"]      = pc[95]
-		self.data["terrain_border_id"]        = pc[96:(96+84)]
-		self.data["terrain_unit_id"]          = pc[180:(180+30)]
-		self.data["terrain_unit_density"]     = pc[210:(210+30)]
-		self.data["terrain_unit_priority"]    = pc[240:(240+30)]
-		self.data["terrain_units_used_count"] = pc[270]
+		#self. = pc[0]
+		#self. = pc[1]
+		self.name0                    = zstr(pc[2])
+		self.name1                    = zstr(pc[3])
+		self.slp_id                   = pc[4]
+		#self. = pc[5]
+		self.sound_id                 = pc[6]
+		self.blend_priority           = pc[7]
+		self.blend_mode               = pc[8]
+		self.color                    = pc[9:(9+3)]
+		#self. = pc[12:(12+5)]
+		#self. = pc[17]
+		#self. = pc[18:(18+18)]
+		self.frame_count              = pc[36]
+		self.angle_count              = pc[37]
+		self.terrain_id               = pc[38]
+		self.elevation_graphic        = pc[39:(39+54)]
+		self.terrain_replacement_id   = pc[93]
+		self.terrain_dimensions0      = pc[94]
+		self.terrain_dimensions1      = pc[95]
+		self.terrain_border_id        = pc[96:(96+84)]
+		self.terrain_unit_id          = pc[180:(180+30)]
+		self.terrain_unit_density     = pc[210:(210+30)]
+		self.terrain_unit_priority    = pc[240:(240+30)]
+		self.terrain_units_used_count = pc[270]
 
 		return offset
 
 
 class TerrainBorderData:
 	def read(self, raw, offset):
-		self.data = dict()
 
-		self.data["terrain_border"] = list()
+		self.terrain_border = list()
 		for i in range(16):
 			t = TerrainBorder()
 			offset = t.read(raw, offset)
-			self.data["terrain_border"] += [t.data]
+			self.terrain_border.append(t)
 
 		#int8_t zero[28];
 		#uint16_t terrain_count_additional;
@@ -175,13 +194,15 @@ class TerrainBorderData:
 		pc = zero_terrain_count_struct.unpack_from(raw, offset)
 		offset += zero_terrain_count_struct.size
 
-		self.data["terrain_count_additional"] = pc[28]
+		self.terrain_count_additional = pc[28]
 
 		tmp_struct = Struct(endianness + "12722s")
 		t = tmp_struct.unpack_from(raw, offset)
 		offset_begin = offset
 		offset += tmp_struct.size
 
+		#dump of unknown binary section.
+		#it may contain unicorns, so don't hesitate to reverse it.
 		fname = 'raw/terrain_render_data_%d_to_%d.raw' % (offset_begin, offset)
 		filename = file_get_path(fname, write=True)
 		file_write(filename, t[0])
@@ -191,8 +212,6 @@ class TerrainBorderData:
 
 class TerrainBorder:
 	def read(self, raw, offset):
-		self.data = dict()
-
 		#int16_t enabled;
 		#char name0[13];
 		#char name1[13];
@@ -208,22 +227,22 @@ class TerrainBorder:
 		pc = terrain_border_struct0.unpack_from(raw, offset)
 		offset += terrain_border_struct0.size
 
-		self.data["enabled"]      = pc[0]
-		self.data["name0"]        = zstr(pc[1])
-		self.data["name1"]        = zstr(pc[2])
-		self.data["ressource_id"] = pc[3]
-		#self.data[""] = pc[4]
-		#self.data[""] = pc[5]
-		self.data["color"]        = pc[6:(6+3)]
-		#self.data[""] = pc[9]
-		#self.data[""] = pc[10]
-		#self.data[""] = pc[11]
+		self.enabled      = pc[0]
+		self.name0        = zstr(pc[1])
+		self.name1        = zstr(pc[2])
+		self.ressource_id = pc[3]
+		#self. = pc[4]
+		#self. = pc[5]
+		self.color        = pc[6:(6+3)]
+		#self. = pc[9]
+		#self. = pc[10]
+		#self. = pc[11]
 
-		self.data["frame_data"] = list()
+		self.frame_data = list()
 		for i in range(230):
 			t = FrameData()
 			offset = t.read(raw, offset)
-			self.data["frame_data"] += [t.data]
+			self.frame_data.append(t)
 
 		#int16_t frame_count;
 		#int16_t unknown;
@@ -234,18 +253,16 @@ class TerrainBorder:
 		pc = terrain_border_struct1.unpack_from(raw, offset)
 		offset += terrain_border_struct1.size
 
-		self.data["frame_count"] = pc[0]
-		#self.data[""] = pc[1]
-		#self.data[""] = pc[2]
-		#self.data[""] = pc[3]
+		self.frame_count = pc[0]
+		#self. = pc[1]
+		#self. = pc[2]
+		#self. = pc[3]
 
 		return offset
 
 
 class FrameData:
 	def read(self, raw, offset):
-		self.data = dict()
-
 		#int16_t frame_id;
 		#int16_t flag0;
 		#int16_t flag1;
@@ -254,8 +271,8 @@ class FrameData:
 		pc = frame_data_struct.unpack_from(raw, offset)
 		offset += frame_data_struct.size
 
-		self.data["frame_id"] = pc[0]
-		self.data["flag0"]    = pc[1]
-		self.data["flag1"]    = pc[2]
+		self.frame_id = pc[0]
+		self.flag0    = pc[1]
+		self.flag1    = pc[2]
 
 		return offset

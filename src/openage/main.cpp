@@ -15,8 +15,6 @@
 #include "init.h"
 #include "callbacks.h"
 #include "gamestate.h"
-#include "objects/terrain.h"
-#include "objects/building.h"
 
 namespace openage {
 

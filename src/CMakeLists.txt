@@ -1,5 +1,8 @@
 #source file configuration
 #
+#
+
+
 #add new sources here, dependencies for linking and including
 #are specified beliw the source file list.
 
@@ -50,13 +53,15 @@ add_executable(${PROJECT_NAME}
 	openage/gamestate.cpp
 	openage/init.cpp
 	openage/main.cpp
-	openage/objects/building.cpp
-	openage/objects/terrain.cpp
 
 	testing/testing.cpp
 	testing/term.cpp
 	testing/register.cpp
 )
+
+
+#add our generated files directory
+add_subdirectory("gamedata")
 
 
 #library dependency specification
@@ -97,6 +102,7 @@ include_directories(
 #link_directories(rofl/lib/lol)
 
 target_link_libraries(${PROJECT_NAME}
+	gamedata
 	${MATH_LIB}
 	${UTIL_LIB}
 	${SDL2_LIBRARIES}
@@ -109,5 +115,12 @@ target_link_libraries(${PROJECT_NAME}
 	${PYTHON_LIBRARY}
 )
 
-#installation procedure
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+
+#TODO: install shaders, data search paths
+
+#installation definitions
+install(TARGETS ${PROJECT_NAME}
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
+)

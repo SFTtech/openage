@@ -8,6 +8,9 @@ AGE2DIR = /dev/null
 
 project_name = openage
 
+#the directory where converted files will be put
+DATA_DIR = ./data
+
 #this list specifies needed media files for the convert script
 #TODO: let our binary generate this list.
 needed_media = graphics:3836.slp graphics:4857.slp terrain:*.slp
@@ -15,10 +18,10 @@ needed_media = graphics:3836.slp graphics:4857.slp terrain:*.slp
 
 binary = bin/$(project_name)
 
-runargs = --data=./data/
+runargs = --data=$(DATA_DIR)/
 
 .PHONY: all
-all: openage
+all: $(project_name)
 
 bin:
 	mkdir -p bin/
@@ -36,7 +39,7 @@ install: bin/Makefile bin
 
 .PHONY: media
 media:
-	python3 convert -v -o . $(AGE2DIR) $(needed_media)
+	python3 convert -v media -o $(DATA_DIR)/age/ $(AGE2DIR) $(needed_media)
 
 .PHONY: medialist
 medialist:
@@ -74,7 +77,7 @@ help: bin/Makefile
 	@echo "targets:"
 	@echo ""
 	@echo "$(project_name)   -> compile main binary"
-	@echo "media     -> convert media files, usage: make AGE2DIR=~/.wine/ms-games/age2 media"
+	@echo "media     -> convert media files, usage: make media AGE2DIR=~/.wine/ms-games/age2"
 	@echo "medialist -> list needed media files for current version"
 	@echo "doc       -> create documentation files"
 	@echo "clean     -> clean up object files"

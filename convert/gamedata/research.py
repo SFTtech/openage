@@ -1,46 +1,42 @@
 from struct import Struct, unpack_from
 from util import dbg, zstr
 
-endianness = '< '
+from .empiresdat import endianness
 
 
 class ResearchData:
 	def read(self, raw, offset):
-		self.data = dict()
-
 		#uint16_t research_count;
 		header_struct = Struct(endianness + "H")
 
 		header = header_struct.unpack_from(raw, offset)
 		offset += header_struct.size
-		self.data["research_count"], = header
+		self.research_count, = header
 
-		self.data["research"] = list()
-		for i in range(self.data["research_count"]):
+		self.research = list()
+		for i in range(self.research_count):
 			t = Research()
 			offset = t.read(raw, offset)
-			self.data["research"] += [t.data]
+			self.research.append(t)
 
 		return offset
 
 
 class Research:
 	def read(self, raw, offset):
-		self.data = dict()
-
 		#int16_t[6] required_techs;
 		research0_struct = Struct(endianness + "6h")
 
 		pc = research0_struct.unpack_from(raw, offset)
 		offset += research0_struct.size
 
-		self.data["required_techs"] = pc[0]
+		self.required_techs = pc[0]
 
-		self.data["research_ressource_cost"] = list()
+		self.research_ressource_cost = list()
 		for i in range(3):
 			t = ResearchRessourceCost()
 			offset = t.read(raw, offset)
-			self.data["research_ressource_cost"] += [t.data]
+			self.research_ressource_cost.append(t)
 
 
 		#int16_t required_tech_count;
@@ -61,34 +57,32 @@ class Research:
 		pc = research1_struct.unpack_from(raw, offset)
 		offset += research1_struct.size
 
-		self.data["required_tech_count"] = pc[0]
-		self.data["civilisation_id"] = pc[1]
-		self.data["full_tech_mode"] = pc[2]
-		self.data["research_location_id"] = pc[3]
-		self.data["language_dll_name"] = pc[4]
-		self.data["language_dll_description"] = pc[5]
-		self.data["research_time"] = pc[6]
-		self.data["tech_id"] = pc[7]
-		self.data["tech_type"] = pc[8]
-		self.data["icon_id"] = pc[9]
-		self.data["button_id"] = pc[10]
-		self.data["pointers"] = pc[11:(11+3)]
-		self.data["name_length"] = pc[14]
+		self.required_tech_count      = pc[0]
+		self.civilisation_id          = pc[1]
+		self.full_tech_mode           = pc[2]
+		self.research_location_id     = pc[3]
+		self.language_dll_name        = pc[4]
+		self.language_dll_description = pc[5]
+		self.research_time            = pc[6]
+		self.tech_id                  = pc[7]
+		self.tech_type                = pc[8]
+		self.icon_id                  = pc[9]
+		self.button_id                = pc[10]
+		self.pointers                 = pc[11:(11+3)]
+		self.name_length              = pc[14]
 
-		research_name_struct = Struct(endianness + "%ds" % self.data["name_length"])
+		research_name_struct = Struct(endianness + "%ds" % self.name_length)
 
 		pc = research_name_struct.unpack_from(raw, offset)
 		offset += research_name_struct.size
 
 		#char name[name_length];
-		self.data["name"] = zstr(pc[0])
+		self.name = zstr(pc[0])
 
 		return offset
 
 class ResearchRessourceCost:
 	def read(self, raw, offset):
-		self.data = dict()
-
 		#int16_t a;
 		#int16_t b;
 		#int8_t c;
@@ -97,8 +91,8 @@ class ResearchRessourceCost:
 		pc = research_ressource_cost_struct.unpack_from(raw, offset)
 		offset += research_ressource_cost_struct.size
 
-		self.data["a"] = pc[0]
-		self.data["b"] = pc[1]
-		self.data["c"] = pc[2]
+		self.a = pc[0]
+		self.b = pc[1]
+		self.c = pc[2]
 
 		return offset

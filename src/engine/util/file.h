@@ -2,6 +2,8 @@
 #define _ENGINE_UTIL_FILE_H_
 
 #include <stdlib.h>
+#include <string.h>
+#include <vector>
 
 #include "error.h"
 #include "../log.h"
@@ -13,58 +15,44 @@ ssize_t read_whole_file(char **result, const char *filename);
 
 
 template <class lineformat>
-ssize_t read_csv_file(lineformat **result, const char *fname) {
+std::vector<lineformat> read_csv_file(const char *fname) {
 	char *file_content;
 	ssize_t fsize = util::read_whole_file(&file_content, fname);
 
 	char *file_seeker = file_content;
-	char *currentline = file_content;
-	size_t line_count;
-	size_t linepos = 0;
-	bool wanting_count = true;
+	char *current_line = file_content;
+	int fill_result;
+	size_t line_length = 0;
+	size_t line_count  = 0;
+	lineformat current_line_data;
 
-	*result = nullptr;
-
-	//log::dbg("parsing csv %s:\n%s", fname, file_content);
+	auto result = std::vector<lineformat>{};
 
 	while ((size_t)file_seeker <= ((size_t)file_content + fsize)
-	       && *file_seeker != '\0'
-	       && (wanting_count || linepos < line_count)) {
+	       && *file_seeker != '\0') {
 
 		if (*file_seeker == '\n') {
 			*file_seeker = '\0';
 
+			//measure length to ignore empty lines
+			line_length = strlen(current_line);
+
 			//ignore lines starting with #, that's a comment.
-			if (*currentline != '#') {
-				//scan for the entry count definition
-				if (sscanf(currentline, "n=%lu", &line_count) == 1) {
-					if (wanting_count) {
-						wanting_count = false;
-						//create handlers for the lines
-						*result = new lineformat[line_count];
-					}
-					else {
-						throw Error("Already got size definition (n=...) for %s", fname);
-					}
-				}
-				else {
-					if (wanting_count) {
-						throw Error("meta info line found, but no entry count (n=...) found so far in %s", fname);
-					}
+			if (*current_line != '#' && line_length > 0) {
 
-					if (0 == (*result)[linepos].fill(currentline)) {
-						if (linepos != (*result)[linepos].id) {
-							throw Error("line index %u mismatch! should be %lu.", (*result)[linepos].id, linepos);
-						}
+				//parse the line data to the temporary result
+				fill_result = current_line_data.fill(current_line);
 
-						linepos += 1;
-					}
-					else {
-						throw Error("unknown line content reading meta file %s", fname);
-					}
+				//filling the line failed
+				if (0 != fill_result) {
+					throw Error("failed reading meta file %s in line %lu: error %d parsing '%s'", fname, line_count, fill_result, current_line);
 				}
+
+				//store the line in the returned vector
+				result.push_back(current_line_data);
 			}
-			currentline = file_seeker + 1;
+			current_line = file_seeker + 1;
+			line_count += 1;
 		}
 		file_seeker += 1;
 	}
@@ -72,7 +60,7 @@ ssize_t read_csv_file(lineformat **result, const char *fname) {
 	//log::dbg("%lu lines found in total", linepos);
 	delete[] file_content;
 
-	return linepos;
+	return result;
 }
 
 } //namespace util

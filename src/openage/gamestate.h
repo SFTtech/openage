@@ -3,8 +3,6 @@
 
 #include <unordered_set>
 
-#include "objects/building.h"
-#include "objects/terrain.h"
 #include "../engine/terrain.h"
 
 namespace openage {
