@@ -6,7 +6,8 @@ import blendomatic
 import colortable
 import gamedata.empiresdat
 from fnmatch import fnmatch
-from util import dbg, set_write_dir, merge_data_dump, transform_dump, file_write, file_get_path
+import texture
+from util import dbg, set_write_dir, merge_data_dump, metadata_format, file_write, file_get_path
 
 
 def data_generate(args):
@@ -34,10 +35,11 @@ def data_generate(args):
 	struct_dumps.append(gamedata.empiresdat.EmpiresDat.structs(empiresdat_sections))
 	struct_dumps.append(blendomatic.Blendomatic.structs())
 	struct_dumps.append(colortable.ColorTable.structs())
+	struct_dumps.append(texture.Texture.structs())
 
 	output_storage = list()
 	for struct in struct_dumps:
-		output_storage.append(transform_dump(struct, storeas))
+		output_storage.append(metadata_format(struct, storeas))
 
 	output_filenames = list()
 

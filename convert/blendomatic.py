@@ -3,7 +3,7 @@
 import math
 from struct import Struct, unpack_from
 import util
-from util import NamedObject, dbg, file_open, file_get_path, merge_frames, generate_meta_text, file_write
+from util import NamedObject, dbg, file_open, file_get_path, file_write
 import os.path
 
 endianness = "< "
@@ -190,58 +190,43 @@ class Blendomatic:
 		}
 		return tiledata
 
-	def draw_alpha_frames(self):
+	def get_textures(self):
+		"""
+		generate a list of textures.
+
+		one atlas per blending mode is generated,
+		each atlas contains all blending masks merged on one texture
+		"""
+
 		from png import PNG
+		from texture import Texture
 
-		for idx, bmode in enumerate(self.blending_modes):
+		ret = list()
 
-			for tidx, tile in enumerate(bmode["alphamasks"]):
-				png = PNG(0, None, tile["data"])
-				png.create(tile["width"], tile["height"], True)
+		#create one texture for each blending mode
+		for bmode in self.blending_modes:
 
-				yield png, idx, tidx
-
-	def draw_alpha_frames_merged(self):
-		from png import PNG
-
-		for idx, bmode in enumerate(self.blending_modes):
-
-			max_w = 0
-			max_h = 0
-
-			blendomatic_frames = []
-
+			#each blending mode has several masks.
+			#create them and merge them together afterwards.
+			blendomatic_frames = list()
 			for tile in bmode["alphamasks"]:
-				frame = PNG(0, None, tile["data"])
+				#player_number, color_table, picture_data
+				frame = PNG(tile["data"])
 				tw = tile["width"]
 				th = tile["height"]
-				frame.create(tw, th, True)
+				frame.create(tw, th, alphamask=True)
 
-				if tw > max_w:
-					max_w = tw
-				if th > max_h:
-					max_h = th
+				blendomatic_frames.append((frame, (0, 0)))
 
-				blendomatic_frames.append((frame, None, (0, 0)))
+			#create texture atlas from the masks generated above
+			#by merging them.
+			blendmode_texture = Texture(blendomatic_frames)
 
-			atlas, atlas_meta, (width, height) = merge_frames(blendomatic_frames, max_w, max_h)
-			meta_out = generate_meta_text(atlas_meta)
+			ret.append(blendmode_texture)
 
-			yield idx, atlas, (width, height), meta_out
+		return ret
 
-
-	def draw_bit_frames(self):
-		from png import PNG
-
-		for idx, bmode in enumerate(self.blending_modes):
-
-			for tidx, tile in enumerate(bmode["bitmasks"]):
-				png = PNG(0, None, tile["data"])
-				png.create(tile["width"], tile["height"], True)
-
-				yield png, idx, tidx
-
-	def dump(self):
+	def metadata(self):
 		ret = dict()
 
 		ret.update(util.gather_format(self))
@@ -259,16 +244,13 @@ class Blendomatic:
 		ret.update(util.gather_format(Blendomatic))
 		return [ ret ]
 
-	def export(self, output_folder):
-		for (modeidx, png, size, metadata) in self.draw_alpha_frames_merged():
-			fname = os.path.join(output_folder, "mode%02d" % modeidx)
-			filename = file_get_path(fname, write=True)
-			dbg("saving blending mode%02d texture -> %s.png" % (modeidx, filename), 1)
+	def save(self, output_folder, save_format):
+		for idx, texture in enumerate(self.get_textures()):
+			fname = os.path.join(output_folder, "mode%02d" % idx)
+			dbg("saving blending mode%02d texture -> %s.png" % (idx, fname), 1)
+			texture.save(fname, save_format)
 
-			util.mkdirs(os.path.dirname(filename))
-			png.save(filename + ".png")
-			file_write(filename + ".docx", metadata)
-		dbg("blending modes exported successfully!", 1)
+		dbg("blending masks exported successfully!", 1)
 
 	def __str__(self):
 		return str(self.blending_modes)

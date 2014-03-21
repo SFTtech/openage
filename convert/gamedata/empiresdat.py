@@ -9,7 +9,6 @@ from gamedata import playercolor
 from gamedata import research
 from gamedata import sound
 from gamedata import tech
-from gamedata import tech
 from gamedata import terrain
 from gamedata import unit
 
@@ -32,10 +31,7 @@ import zlib
 class EmpiresDat:
 	"""class for fighting and beating the compressed empires2*.dat"""
 
-	def __init__(self):
-		pass
-
-	def fill(self, fname):
+	def __init__(self, fname):
 		self.fname = fname
 		dbg("reading empires2*.dat from %s..." % fname, 1)
 
@@ -59,16 +55,23 @@ class EmpiresDat:
 		dbg("length of compressed data: %d = %d kB" % (compressed_size, compressed_size/1024), 1)
 		dbg("length of decompressed data: %d = %d kB" % (decompressed_size, decompressed_size/1024), 1)
 
-		rawfile_writepath = file_get_path('raw/empires2x1p1.raw', write=True)
-		print("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath))
-		file_write(rawfile_writepath, self.content)
-
 		#this variable will store the offset in the raw dat file.
 		offset = 0
 		offset = self.read(self.content, offset)
 
 		finish_percent = 100*(offset/decompressed_size)
 		dbg("finished reading empires*.dat at %d of %d bytes (%f%%)." % (offset, decompressed_size, finish_percent), 1)
+
+
+	def raw_dump(self, filename):
+		"""
+		save the dat file in uncompressed format.
+		"""
+
+		rawfile_writepath = file_get_path(filename, write=True)
+		dbg("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath), 1)
+		file_write(rawfile_writepath, self.content)
+
 
 
 	def read(self, raw, offset):

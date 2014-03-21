@@ -1,5 +1,4 @@
 from collections import OrderedDict
-import math
 import os
 from string import Template
 
@@ -79,7 +78,7 @@ def set_read_dir(dirname):
 	readpath = dirname
 
 
-def file_get_path(fname, write = False):
+def file_get_path(fname, write=False, mkdir=False):
 	global writepath, readpath
 
 	if write:
@@ -88,6 +87,10 @@ def file_get_path(fname, write = False):
 		basedir = readpath
 
 	path = os.path.join(basedir, fname)
+
+	if mkdir:
+		dirname = os.path.dirname(path)
+		mkdirs(dirname)
 
 	return path
 
@@ -103,135 +106,62 @@ def file_open(path, binary = True, write = False):
 	return open(path, flags)
 
 
-#writes data to a file in the destination directory
 def file_write(fname, data):
+	"""
+	writes data to a file with given name.
+	"""
 
 	#ensure that the directory exists
 	mkdirs(os.path.dirname(fname))
 
 	if type(data) == bytes:
-		handle = file_open(fname, binary = True, write = True)
+		handle = file_open(fname, binary=True, write=True)
 		handle.write(data)
 		handle.close()
 	elif type(data) == str:
-		handle = file_open(fname, binary = False, write = True)
+		handle = file_open(fname, binary=False, write=True)
 		handle.write(data)
 		handle.close()
 	else:
 		raise Exception("Unknown data type for writing: " + str(type(data)))
 
 
+def file_write_multi(file_dict, file_prefix=""):
+	"""
+	save the given file dictionary to files
+
+	key: filename
+	value: file content
+	"""
+
+	written_files = list()
+
+	for file_name, file_data in file_dict.items():
+		file_name = file_prefix + file_name
+		dbg("saving %s.." % file_name, 1)
+		file_name = file_get_path(file_name, write=True, mkdir=True)
+		file_write(file_name, file_data)
+
+		written_files.append(file_name)
+
+	return written_files
+
+
+def file_write_image(filename, image):
+	"""
+	writes a PIL image to a filename
+	"""
+	image.save(filename)
+
+
 #reads data from a file in the source directory
 def file_read(fname, datatype = str):
 	if datatype == bytes:
-		return file_open(fname, binary = True, write = False).read()
+		return file_open(fname, binary=True, write=False).read()
 	elif datatype == str:
-		return file_open(fname, binary = False, write = False).read()
+		return file_open(fname, binary=False, write=False).read()
 	else:
 		raise Exception("Unknown data type for reading: " + str(datatype))
-
-
-def merge_frames(frames, max_width = None, max_height = None):
-	"""
-	merge all given frames of this slp to a single image file.
-
-	frames = [(PNG, (width, height), (hotspot_x, hotspot_y)), ... ]
-	"""
-
-	#TODO: actually optimize free space on the texture.
-	#if you ever wanted to implement a combinatoric optimisation
-	#algorithm, go for it, this function just waits for you.
-	#https://en.wikipedia.org/wiki/Bin_packing_problem
-
-	#for now, using max values for solving bin packing problem
-
-	from PIL import Image
-
-	#if not predefined, get maximum frame size by checking all frames
-	if max_width == None or max_height == None:
-		for (_, (w, h), _) in frames:
-			if w > max_width:
-				max_width = w
-			if h > max_height:
-				max_height = h
-
-
-	max_per_row = math.ceil(math.sqrt(len(frames)))
-	num_rows    = math.ceil(len(frames) / max_per_row)
-
-	#we leave 1 pixel free in between two sprites
-	width  = math.ceil((max_width  + 1) * max_per_row)
-	height = math.ceil((max_height + 2) * num_rows)
-
-	dbg("merging %d frames to %dx%d atlas, %d pics per row, %d rows." % (len(frames), width, height, max_per_row, num_rows), 2)
-
-	#create the big atlas image where the small ones will be placed on
-	atlas = Image.new('RGBA', (width, height), (0, 0, 0, 0))
-
-	pos_x = 0
-	pos_y = 0
-
-	drawn_frames_meta = []
-	drawn_current_row = 0
-
-	for (sub_frame, size, hotspot) in frames:
-		subtexture = sub_frame.image
-		sub_w = subtexture.size[0]
-		sub_h = subtexture.size[1]
-		box = (pos_x, pos_y, pos_x + sub_w, pos_y + sub_h)
-
-		atlas.paste(subtexture, box) #, mask=subtexture)
-		dbg("drew frame %03d on atlas at %dx%d " % (len(drawn_frames_meta), pos_x, pos_y), 3)
-
-		drawn_subtexture_meta = {
-			'tx': pos_x,
-			'ty': pos_y,
-			'tw': sub_w,
-			'th': sub_h,
-			'hx': hotspot[0],
-			'hy': hotspot[1]
-		}
-		drawn_frames_meta.append(drawn_subtexture_meta)
-
-		drawn_current_row = drawn_current_row + 1
-
-		#place the subtexture with a 1px border
-		pos_x = pos_x + max_width + 1
-
-		#see if we have to start a new row now
-		if drawn_current_row > max_per_row - 1:
-			drawn_current_row = 0
-			pos_x = 0
-			pos_y = pos_y + max_height + 1
-
-	return atlas, drawn_frames_meta, (width, height)
-
-
-def generate_meta_text(metadata, header=None):
-	#generate texture atlas metadata file
-
-	#TODO: transform to new data dumping methods
-
-	meta_out = ""
-
-	if header:
-		meta_out += "#" + header
-
-	meta_out += "#meta information: subtexid=x,y,w,h,hotspot_x,hotspot_y\n"
-
-	for idx, frame_meta in enumerate(metadata):
-		tx = frame_meta["tx"]
-		ty = frame_meta["ty"]
-		tw = frame_meta["tw"]
-		th = frame_meta["th"]
-		hotspot_x = frame_meta["hx"]
-		hotspot_y = frame_meta["hy"]
-
-		meta_out += "%d," % idx
-		meta_out += "%d,%d,%d,%d," % (tx, ty, tw, th)
-		meta_out += "%d,%d\n" % (hotspot_x, hotspot_y)
-
-	return meta_out
 
 
 def zstr(data):
@@ -289,6 +219,7 @@ def gather_data(obj, members):
 
 	return ret
 
+
 def gather_format(target_class):
 	"""
 	returns all necessary class properties of the target to
@@ -304,6 +235,7 @@ def gather_format(target_class):
 	ret["struct_description"] = target_class.struct_description
 
 	return ret
+
 
 def format_data(format, data):
 	"""
@@ -516,7 +448,6 @@ def format_data(format, data):
 			#struct definition
 			txt += "struct %s {\n" % (data_struct_name)
 
-			txt += "\tsize_t member_count = %d;\n\n" % len(columns)
 
 			#create struct members:
 			for member, dtype in columns.items():
@@ -526,6 +457,9 @@ def format_data(format, data):
 				dtype   = dtype["type"]
 
 				txt += "\t%s %s%s;\n" % (dtype, member, dlength)
+
+			#append member count variable
+			txt += "\n\tstatic constexpr size_t member_count = %d;\n" % len(columns)
 
 			#add filling function prototype
 			fill_signature  = fill_csignature % ""
@@ -614,9 +548,9 @@ $tokenhandler
 	return ret
 
 
-def transform_dump(data_dump, output_formats):
+def metadata_format(data_dump, output_formats):
 	"""
-	input: data dump
+	input: metadata dump
 	output: {output_format => {filename => [file_content]}}
 	"""
 
@@ -662,6 +596,7 @@ def merge_data_dump(transformed_data):
 		"file_suffix":    "",
 		"content_prefix": "",
 		"content_suffix": "",
+		"binary":         False,
 		"presuffix_func": lambda x: x
 	}
 
@@ -670,8 +605,13 @@ def merge_data_dump(transformed_data):
 	#configuration for all the output formats
 	output_preferences = {
 		"csv": {
-			"folder":      "processed/",
+			"folder":      "",
 			"file_suffix": ".docx",
+		},
+		"png": {
+			"folder":      "",
+			"file_suffix": ".png",
+			"binary":      True,
 		},
 		"struct": {
 			"file_suffix": ".h",
@@ -723,20 +663,61 @@ namespace engine {\n\n""" % dontedit,
 		for output_name, output_data in formatted_data.items():
 
 			#merge file contents
-			file_data = ""
+			if prefs["binary"]:
+				file_data = b""
+			else:
+				file_data = ""
+
 			for block in output_data:
 				file_data += block
 
-			#create content, with prefix and suffix (actually header guards)
-			subst_filename = prefs["presuffix_func"](output_name)
-			content_prefix = Template(prefs["content_prefix"]).substitute(filename=subst_filename)
-			content_suffix = Template(prefs["content_suffix"]).substitute(filename=subst_filename)
-			file_data = content_prefix + file_data + content_suffix
+			#only append header and footer of file when non-binary
+			if not prefs["binary"]:
+				#create content, with prefix and suffix (actually header guards)
+				subst_filename = prefs["presuffix_func"](output_name)
+
+				#fill file header and footer with the generated filename
+				content_prefix = Template(prefs["content_prefix"]).substitute(filename=subst_filename)
+				content_suffix = Template(prefs["content_suffix"]).substitute(filename=subst_filename)
+
+				#this is the final file content
+				file_data = content_prefix + file_data + content_suffix
 
 			#determine output file name
-			file_name = os.path.join(prefs["folder"], "%s%s" % (output_name, prefs["file_suffix"]))
+			output_filename_parts = [
+				prefs["folder"],
+				"%s%s" % (output_name, prefs["file_suffix"])
+			]
+			file_name = os.path.join(*output_filename_parts)
 
 			#whee, store the content
 			ret[file_name] = file_data
 
 	return ret
+
+
+class VirtualFile:
+	"""
+	provides a virtual file, with seek, tell, read and write functions.
+
+	this can be used to store PIL images in particular.
+	operates in binary mode.
+	"""
+
+	def __init__(self):
+		self.buf = b""
+
+	def seek(self, destination, whence=0):
+		raise NotImplementedError("seek not implemented")
+
+	def tell(self):
+		raise NotImplementedError("tell not implemented")
+
+	def read(self):
+		raise NotImplementedError("read not implemented")
+
+	def write(self, data):
+		self.buf += data
+
+	def data(self):
+		return self.buf

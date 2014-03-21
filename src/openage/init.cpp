@@ -59,17 +59,17 @@ void init(const char *data_directory) {
 
 	//load textures and stuff
 	gaben = new Texture("gaben.png");
-	university = new Texture("age/processed/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
+	university = new Texture("age/assets/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
-	auto terrain_types  = util::read_csv_file<terrain_type>("age/processed/terrain_data.docx");
-	auto blending_modes = util::read_csv_file<blending_mode>("age/processed/blending_modes.docx");
+	auto terrain_types  = util::read_csv_file<terrain_type>("age/assets/terrain_data.docx");
+	auto blending_modes = util::read_csv_file<blending_mode>("age/assets/blending_modes.docx");
 
 	//create the terrain which will be filled by chunks
 	terrain = new Terrain(terrain_types, blending_modes, true);
 
 	terrain->fill(terrain_data, coord::tile_delta{16, 16});
 
-	auto player_color_lines = engine::util::read_csv_file<palette_color>("age/processed/player_palette_50500.docx");
+	auto player_color_lines = engine::util::read_csv_file<palette_color>("age/assets/player_palette_50500.docx");
 
 	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
 	for (size_t i = 0; i < player_color_lines.size(); i++) {
