@@ -2,6 +2,7 @@
 #
 #routines for texture generation etc
 
+import dataformat
 import math
 import util
 from util import dbg
@@ -70,7 +71,7 @@ one sprite included in the 'big texture' has."""
 
 		#get texture metadata
 		raw_metadata = self.metadata(filename)
-		write_data = util.metadata_format(raw_metadata, meta_format)
+		write_data = dataformat.metadata_format(raw_metadata, meta_format)
 
 		#appent image data
 		write_data[self.image_format] = {
@@ -78,7 +79,7 @@ one sprite included in the 'big texture' has."""
 		}
 
 		#generate full output file contents
-		output_data = util.merge_data_dump(write_data)
+		output_data = dataformat.merge_data_dump(write_data)
 
 		#save the output files
 		util.file_write_multi(output_data)
@@ -90,14 +91,14 @@ one sprite included in the 'big texture' has."""
 	def metadata(self, filename):
 		ret = dict()
 
-		ret.update(util.gather_format(self))
+		ret.update(dataformat.gather_format(self))
 		ret["name_table_file"] = filename
 		ret["data"] = self.image_metadata
 
 		return [ ret ]
 
 	def structs():
-		return [ util.gather_format(Texture) ]
+		return [ dataformat.gather_format(Texture) ]
 
 
 def merge_frames(frames, max_width=0, max_height=0):

@@ -3,13 +3,14 @@
 #media files conversion stuff
 
 from colortable import ColorTable, PlayerColorTable
+import dataformat
 from drs import DRS
 from os import remove
 import os.path
 from string import Template
 import subprocess
 import util
-from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path, metadata_format, merge_data_dump
+from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path
 
 
 asset_folder = "assets/"
@@ -107,7 +108,7 @@ def media_convert(args):
 		meta_dump += player_palette.metadata()
 
 		#create metadata content from the collected dumps
-		metadata = merge_data_dump(metadata_format(meta_dump, storeas))
+		metadata = dataformat.merge_data_dump(dataformat.metadata_format(meta_dump, storeas))
 
 		#save the meta files
 		util.file_write_multi(metadata, file_prefix=asset_folder)

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
+import dataformat
 import math
 from struct import Struct, unpack_from
-import util
 from util import NamedObject, dbg, file_open, file_get_path, file_write
 import os.path
 
@@ -229,7 +229,7 @@ class Blendomatic:
 	def metadata(self):
 		ret = dict()
 
-		ret.update(util.gather_format(self))
+		ret.update(dataformat.gather_format(self))
 		ret["name_table_file"] = "blending_modes"
 		ret["data"] = list()
 
@@ -241,7 +241,7 @@ class Blendomatic:
 
 	def structs():
 		ret = dict()
-		ret.update(util.gather_format(Blendomatic))
+		ret.update(dataformat.gather_format(Blendomatic))
 		return [ ret ]
 
 	def save(self, output_folder, save_format):

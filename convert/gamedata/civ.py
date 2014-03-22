@@ -1,5 +1,6 @@
+import dataformat
 from struct import Struct, unpack_from
-from util import dbg, zstr, gather_format
+from util import dbg, zstr
 
 from .empiresdat import endianness
 
@@ -8,7 +9,7 @@ class CivData:
 	def dump(self):
 		ret = dict()
 
-		ret.update(gather_format(Civ))
+		ret.update(dataformat.gather_format(Civ))
 		ret["name_table_file"] = "civilisations"
 		ret["data"] = list()
 

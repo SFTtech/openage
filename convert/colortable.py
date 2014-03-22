@@ -1,5 +1,5 @@
+import dataformat
 import math
-
 import util
 from util import dbg
 
@@ -115,7 +115,7 @@ class ColorTable:
 	def metadata(self):
 		ret = dict()
 
-		ret.update(util.gather_format(self))
+		ret.update(dataformat.gather_format(self))
 		ret["name_table_file"] = self.data_table_name
 		ret["data"] = list()
 
@@ -134,7 +134,7 @@ class ColorTable:
 
 	def structs():
 		ret = dict()
-		ret.update(util.gather_format(ColorTable))
+		ret.update(dataformat.gather_format(ColorTable))
 		return [ ret ]
 
 

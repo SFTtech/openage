@@ -12,8 +12,8 @@ from gamedata import tech
 from gamedata import terrain
 from gamedata import unit
 
+import dataformat
 from struct import Struct, unpack_from
-import util
 from util import dbg, file_get_path, file_open, file_write, zstr
 import zlib
 
@@ -157,7 +157,7 @@ class EmpiresDat:
 			else:
 				raise Exception("unknown struct dump requested: %s" % what)
 
-			ret += [ util.gather_format(target_class) ]
+			ret += [ dataformat.gather_format(target_class) ]
 
 		return ret
 
