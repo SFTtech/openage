@@ -15,14 +15,14 @@ namespace console {
  */
 extern bool visible;
 
-extern coord::camhud topleft;
-extern coord::camhud bottomright;
+extern coord::camhud bottomleft;
+extern coord::camhud topright;
 
 extern util::col bgcol, fgcol;
+
 extern std::vector<const char *> messages;
 extern Font *font;
-
-extern int spacing;
+extern coord::camhud charsize;
 
 /**
  * prints the given text on the console

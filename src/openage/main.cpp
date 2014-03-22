@@ -18,7 +18,7 @@
 
 namespace openage {
 
-int main(const char *data_directory) {
+int main() {
 	engine::util::Timer timer;
 
 	//init engine
@@ -34,7 +34,7 @@ int main(const char *data_directory) {
 
 	//init game
 	timer.start();
-	openage::init(data_directory);
+	openage::init();
 	engine::log::msg("Loading time   [game]: %5.3f s", timer.getval() / 1000.f);
 
 	//run main loop

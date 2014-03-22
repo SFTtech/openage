@@ -1,118 +1,44 @@
+#include "main.h"
+
 #include <getopt.h>
 #include <string.h>
-#include <vector>
 
 #include "openage/main.h"
 #include "engine/log.h"
 #include "engine/util/error.h"
-#include "test/testing.h"
+#include "testing/testing.h"
+#include "testing/register.h"
+
+#include "args.h"
 
 using namespace engine;
 
-
 int main(int argc, char **argv) {
-
-	bool run_game = true;
-
-
-	//default values for arguments
-
-	const char *data_directory = "./";
-	std::vector<const char *> test_names;
-
-
-	// ===== argument parsing
-	int c;
-
-	while (true) {
-		int option_index = 0;
-		static struct option long_options[] = {
-			{"help",          no_argument, 0, 'h'},
-			{"test",    required_argument, 0, 't'},
-			{"data",    required_argument, 0,  0 },
-			{0,                         0, 0,  0 }
-		};
-
-		c = getopt_long(argc, argv, "ht:", long_options, &option_index);
-
-		if (c == -1) {
-			break;
-		}
-
-		switch (c) {
-		case 0: {
-			const char *opt_name = long_options[option_index].name;
-
-			if (optarg) {
-				if (0 == strcmp("data", opt_name)) {
-					log::msg("data folder will be %s", optarg);
-					data_directory = optarg;
-				}
-			}
-			else {
-				//long opts without arg
-			}
-
-			break;
-		}
-		case 'h':
-			run_game = false;
-
-			log::msg(PROJECT_NAME " - a free (as in freedom) real time strategy game\n"
-			         "\n"
-			         "usage:\n"
-			         "   " PROJECT_NAME " [OPTION]\n"
-			         "available options:\n"
-			         "-h, --help                 display this help\n"
-			         "-t, --test=TESTNAME        run the given test\n"
-			         "--data=FOLDER              specify the data folder\n"
-			         "\n\n"
-			         );
-			break;
-
-		case 't':
-			run_game = false;
-
-			log::msg("adding test '%s' to invocation list", optarg);
-			test_names.push_back(optarg);
-			break;
-
-		case '?':
-			run_game = false;
-			break;
-
-		default:
-			log::err("?? getopt returned character code 0x%04x, wtf?", c);
-		}
-	}
-
-	//more arguments than processed options
-	if (optind < argc) {
-		run_game = false;
-
-		log::err("got unknown additional parameters: ");
-		int i = 0;
-		while (optind < argc) {
-			log::err("%d: %s ", i, argv[optind]);
-			i += 1;
-			optind += 1;
-		}
-	}
-	// ===== end argument parsing
-
+	args.argc = argc;
+	args.argv = argv;
 
 	try {
-		if (test_names.size() > 0) {
-			test::test_activation();
-			test::list_tests();
+		parse_args();
 
-			log::msg("running tests...");
-			test::run_tests(test_names);
+		if (args.list_tests || args.test_invocations.size() > 0) {
+			testing::register_all_tests();
 		}
 
-		if (run_game) {
+		if (args.list_tests) {
+			testing::list_tests();
+		}
+
+		if (args.test_invocations.size() > 0) {
+			log::msg("running tests...");
+
+			for(test_invocation &ti : args.test_invocations) {
+				testing::run_tests(ti.argv[0], args.disable_interactive_tests, ti.argc, ti.argv);
+			}
+		}
+
+		if (args.run_game) {
 			log::msg("launching " PROJECT_NAME);
-			return openage::main(data_directory);
+			return openage::main();
 		}
 	} catch (engine::Error e) {
 		log::fatal("Exception: %s", e.str());

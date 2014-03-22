@@ -8,6 +8,7 @@
 
 add_executable(${PROJECT_NAME}
 	main.cpp
+	args.cpp
 
 	engine/callbacks.cpp
 	engine/engine.cpp
@@ -28,6 +29,7 @@ add_executable(${PROJECT_NAME}
 	engine/coord/chunk.cpp
 	engine/coord/phys2.cpp
 	engine/coord/phys3.cpp
+	engine/coord/term.cpp
 	engine/coord/tile.cpp
 	engine/coord/tile3.cpp
 	engine/coord/vec2.cpp
@@ -49,14 +51,16 @@ add_executable(${PROJECT_NAME}
 	engine/util/strings.cpp
 	engine/util/timer.cpp
 	engine/util/unicode.cpp
+	engine/console/buf.cpp
 
 	openage/callbacks.cpp
 	openage/gamestate.cpp
 	openage/init.cpp
 	openage/main.cpp
 
-	test/metatest.cpp
-	test/testing.cpp
+	testing/testing.cpp
+	testing/term.cpp
+	testing/register.cpp
 )
 
 
@@ -76,6 +80,8 @@ include(FindPackageHandleStandardArgs)
 find_library(FONTCONFIG_LIB fontconfig)
 find_library(MATH_LIB m)
 find_library(OPUSFILE_LIB opusfile)
+find_library(UTIL_LIB util)
+
 find_package(Freetype REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
@@ -115,6 +121,7 @@ target_link_libraries(${PROJECT_NAME}
 	${PYTHON_LIBRARY}
 	${SDL2_IMAGE_LIBRARIES}
 	${SDL2_LIBRARIES}
+	${UTIL_LIB}
 )
 
 

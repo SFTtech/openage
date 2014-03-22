@@ -3,7 +3,7 @@
 
 namespace openage {
 
-void init(const char *data_directory);
+void init();
 void destroy();
 
 } //namespace openage

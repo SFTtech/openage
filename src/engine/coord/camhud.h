@@ -17,6 +17,7 @@ struct camhud {
 	#include "ops/abs.h"
 
 	window to_window();
+	term to_term();
 };
 
 struct camhud_delta {

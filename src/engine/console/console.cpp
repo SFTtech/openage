@@ -17,15 +17,14 @@ namespace console {
 
 bool visible = false;
 
-coord::camhud topleft {1, 0};
-coord::camhud bottomright {0, 1};
+coord::camhud bottomleft {0, 0};
+coord::camhud topright {1, 1};
 
 util::col bgcol;
 util::col fgcol;
 std::vector<const char *> messages;
 Font *font = nullptr;
-
-int spacing = 7;
+coord::camhud charsize {1, 1};
 
 void write(const char *text) {
 	char *store_text = util::copy(text);

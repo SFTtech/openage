@@ -16,6 +16,8 @@
 ./create.py camgame pixel_t  x y
 ./create.py camhud  pixel_t  x y
 
+./create.py term    term_t   x y
+
 ./create.py vec2    int64_t  x y
 ./create.py vec3    int64_t  x y z
 

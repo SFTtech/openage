@@ -48,6 +48,12 @@ struct camgame_delta;
 struct camhud;
 struct camhud_delta;
 
+/* terminal character position-based types */
+using term_t = int;
+
+struct term;
+struct term_delta;
+
 /* general-purpose vector types */
 struct vec2;
 struct vec2_delta;

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
+#include "../args.h"
 #include "../engine/texture.h"
 #include "../engine/util/strings.h"
 #include "../engine/util/file.h"
@@ -40,10 +41,8 @@ constexpr int terrain_data[16 * 16] = {
 	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5,  5
 };
 
-void init(const char *data_directory) {
-
-
-	if (chdir(data_directory) == -1) {
+void init() {
+	if (chdir(args.data_directory) == -1) {
 		throw engine::Error("Failed to change directory: %s", strerror(errno));
 	}
 

@@ -26,6 +26,14 @@ T mod(T x, T m) {
 	}
 }
 
+/**
+implements the 'correct' version of the division operator,
+which always rounds to -inf
+*/
+template <typename T>
+T div(T x, T m) {
+	return (x - mod<T>(x, m)) / m;
+}
 
 /**
 generic callable, that compares any types for creating a total order.
@@ -38,7 +46,6 @@ struct less {
 		return *x < *y;
 	}
 };
-
 
 } //namespace util
 } //namespace engine

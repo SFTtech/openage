@@ -1,8 +1,11 @@
 #include "init.h"
 
+#include <math.h>
+
 #include "callbacks.h"
 #include "../callbacks.h"
 #include "console.h"
+#include "../log.h"
 
 namespace engine {
 namespace console {
@@ -14,6 +17,11 @@ void init() {
 	engine::callbacks::on_resize.push_back(console::on_window_resize);
 
 	font = new Font("DejaVu Sans Mono", "Book", 12);
+	//this better be representative for the width of all other characters
+	charsize.x = ceilf(font->internal_font->Advance("W", 1));
+	charsize.y = ceilf(font->internal_font->LineHeight());
+
+	log::dbg("console font character size: %hdx%hd", charsize.x, charsize.y);
 }
 
 void destroy() {
