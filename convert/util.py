@@ -151,6 +151,8 @@ def file_write_image(filename, image):
 	"""
 	writes a PIL image to a filename
 	"""
+
+	filename = file_get_path(filename, write=True, mkdir=True)
 	image.save(filename)
 
 
