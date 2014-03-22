@@ -1,10 +1,15 @@
 #ifndef _ENGINE_AUDIO_AUDIO_MANAGER_H_
 #define _ENGINE_AUDIO_AUDIO_MANAGER_H_
 
+#include <memory>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 #include <SDL.h>
+
+#include "resource.h"
+#include "sound.h"
 
 namespace engine {
 namespace audio {
@@ -22,14 +27,16 @@ private:
 	// the used audio device's id
 	SDL_AudioDeviceID device_id;
 
+	std::unique_ptr<int32_t[]> mix_buffer;
+
 public:
-	AudioManager(int freq, SDL_AudioFormat format, Uint8 channels,
-			Uint16 samples);
+	AudioManager(int freq, SDL_AudioFormat format, uint8_t channels,
+			uint16_t samples);
 
 	// pass empty device name to indicate, that the default device should be
 	// used
 	AudioManager(const std::string &device_name, int freq,
-			SDL_AudioFormat format, Uint8 channels, Uint16 samples);
+			SDL_AudioFormat format, uint8_t channels, uint16_t samples);
 	
 	~AudioManager();
 
@@ -39,6 +46,8 @@ public:
 
 	AudioManager &operator=(const AudioManager&) = delete;
 	AudioManager &operator=(AudioManager&&) = delete;
+
+	void audio_callback(int16_t *stream, int len);
 
 	/**
 	 * Returns the currently used audio output format.

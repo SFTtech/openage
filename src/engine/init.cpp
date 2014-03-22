@@ -90,7 +90,7 @@ void init(const char *windowtitle) {
 		throw Error{"No audio devices found"};
 	}
 
-	audio_manager = new audio::AudioManager(48000, AUDIO_S16LSB, 2, 2048);
+	audio_manager = new audio::AudioManager(48000, AUDIO_S16LSB, 2, 4096);
 }
 
 /**

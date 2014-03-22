@@ -1,15 +1,18 @@
 #include "audio_manager.h"
 
+#include <cstring>
+
 #include "../log.h"
 #include "../util/error.h"
+#include "resource.h"
 
 namespace engine {
 namespace audio {
 
-void global_audio_callback(void *userdata, Uint8 *stream, int len);
+void global_audio_callback(void *userdata, uint8_t *stream, int len);
 
-AudioManager::AudioManager(int freq, SDL_AudioFormat format, Uint8 channels,
-		Uint16 samples)
+AudioManager::AudioManager(int freq, SDL_AudioFormat format, uint8_t channels,
+		uint16_t samples)
 		:
 		AudioManager{"", freq, format, channels, samples} {
 }
@@ -26,11 +29,14 @@ AudioManager::AudioManager(const std::string &device_name, int freq,
 	desired_spec.channels = channels;
 	desired_spec.samples = samples;
 	desired_spec.callback = global_audio_callback;
+	desired_spec.userdata = this;
 
 	// convert device name to valid parameter for sdl call
 	// if the device name is empty, use a nullptr in order to indicate that the
 	// default device should be used
-	const char *c_device_name = device_name.empty() ? nullptr : device_name.c_str();
+	const char *c_device_name = device_name.empty() ?
+			nullptr : device_name.c_str();
+	// open audio playback device
 	device_id = SDL_OpenAudioDevice(c_device_name, 0, &desired_spec,
 			&device_spec, 0);
 	// no device could be opened
@@ -38,12 +44,28 @@ AudioManager::AudioManager(const std::string &device_name, int freq,
 		throw Error{"Error opening audio device: %s", SDL_GetError()};	
 	}
 
-	log::msg("Using audio device %s [freq=%d,format=%d,channels=%d,samples=%d]",
-			device_name.c_str(), device_spec.freq, device_spec.format,
-			device_spec.channels, device_spec.samples);
+	mix_buffer.reset(new int32_t[4 * device_spec.samples * 
+			device_spec.channels]);
+
+	log::msg("Using audio device '%s' [freq=%d,format=%d,channels=%d,samples=%d]",
+			device_name.empty() ? "default" : device_name.c_str(),
+			device_spec.freq, device_spec.format, device_spec.channels,
+			device_spec.samples);
+
+	SDL_PauseAudioDevice(device_id, 0);
 }
 
 AudioManager::~AudioManager() {
+	SDL_CloseAudioDevice(device_id);
+}
+
+void AudioManager::audio_callback(int16_t *stream, int len) {
+	std::memset(mix_buffer.get(), 0, len*4);
+
+	// write our mixed buffer to the output stream
+	for (int i = 0; i < len; i++) {
+		stream[i] = static_cast<int16_t>(mix_buffer[i]/256);
+	}
 }
 
 SDL_AudioSpec AudioManager::get_device_spec() const {
@@ -77,8 +99,9 @@ std::string AudioManager::get_current_driver() {
 	}
 }
 
-void global_audio_callback(void *userdata, Uint8 *stream, int len) {
-	// TODO
+void global_audio_callback(void *userdata, uint8_t *stream, int len) {
+	AudioManager *audio_manager = static_cast<AudioManager*>(userdata);
+	audio_manager->audio_callback(reinterpret_cast<int16_t*>(stream), len / 2);
 }
 
 }

@@ -17,6 +17,9 @@ add_executable(${PROJECT_NAME}
 	engine/log.cpp
 	engine/python.cpp
 	engine/audio/audio_manager.cpp
+	engine/audio/sound.cpp
+	engine/audio/resource.cpp
+	engine/audio/resource_loader.cpp
 	engine/console/callbacks.cpp
 	engine/console/console.cpp
 	engine/console/init.cpp
@@ -65,12 +68,14 @@ add_subdirectory("gamedata")
 
 #freetype includedir hint for ubuntu...
 find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2)
+find_path(OPUSFILE_INCLUDE_DIR opusfile.h HINTS /usr/include/opus)
 
 include(FindPkgConfig)
 include(FindPackageHandleStandardArgs)
 
 find_library(FONTCONFIG_LIB fontconfig)
 find_library(MATH_LIB m)
+find_library(OPUSFILE_LIB opusfile)
 find_package(Freetype REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
@@ -91,6 +96,7 @@ endif()
 include_directories(
 	${FREETYPE_INCLUDE_DIRS}
 	${FTGL_INCLUDE_DIRS}
+	${OPUSFILE_INCLUDE_DIR}
 	${PYTHON_INCLUDE_DIR}
 	${SDL2_INCLUDE_DIRS}
 	${INOTIFY_INCLUDE_DIR}
@@ -105,6 +111,7 @@ target_link_libraries(${PROJECT_NAME}
 	${GLEW_LIBRARIES}
 	${MATH_LIB}
 	${OPENGL_LIBRARY}
+	${OPUSFILE_LIB}
 	${PYTHON_LIBRARY}
 	${SDL2_IMAGE_LIBRARIES}
 	${SDL2_LIBRARIES}
