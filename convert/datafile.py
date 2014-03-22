@@ -25,14 +25,10 @@ def data_generate(args):
 			set_write_dir("")
 			list_enabled = True
 
-
-	#these sections of the empiresdat will be exported
-	empiresdat_sections = ["terrain"]
-
 	storeas = ["struct", "cfile"]
 
 	struct_dumps = list()
-	struct_dumps.append(gamedata.empiresdat.EmpiresDat.structs(empiresdat_sections))
+	struct_dumps.append(gamedata.empiresdat.EmpiresDat.structs(args.sections))
 	struct_dumps.append(blendomatic.Blendomatic.structs())
 	struct_dumps.append(colortable.ColorTable.structs())
 	struct_dumps.append(texture.Texture.structs())

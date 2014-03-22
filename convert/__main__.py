@@ -5,6 +5,8 @@ import datafile
 import mediafile
 from util import set_verbosity
 
+#these sections of the dat file will be exported
+default_datfile_sections = "terrain"
 
 if __name__ == "__main__":
 
@@ -13,6 +15,7 @@ if __name__ == "__main__":
 
 	#common options
 	p.add_argument("-v", "--verbose", help="Turn on verbose log messages", action='count', default=0)
+	p.add_argument("--sections", help="Define comma-separated dat file sections to export.", default=default_datfile_sections)
 	#p.set_defaults(handler=lambda x: p.print_help())
 
 	#convert script has multiple subsystems
@@ -50,6 +53,7 @@ if __name__ == "__main__":
 	args = p.parse_args()
 
 	set_verbosity(args.verbose)
+	args.sections = args.sections.split(",")
 
 	if args.module == None:
 		p.print_help()

@@ -83,10 +83,6 @@ def media_convert(args):
 	#metadata dumping output format, more to come?
 	storeas = ["csv"]
 
-	#these sections of the empires.dat file will be exported
-	#TODO: set by argparse option
-	datfile_sections = ["terrain"]
-
 	if write_enabled:
 		from slp import SLP
 
@@ -106,7 +102,7 @@ def media_convert(args):
 
 		#dump metadata information
 		meta_dump = list()
-		meta_dump += datfile.dump(datfile_sections)
+		meta_dump += datfile.dump(args.sections)
 		meta_dump += blend_data.metadata()
 		meta_dump += player_palette.metadata()
 
