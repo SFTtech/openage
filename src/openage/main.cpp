@@ -9,7 +9,6 @@
 #include "../engine/init.h"
 #include "../engine/log.h"
 #include "../engine/util/timer.h"
-#include "../engine/console/init.h"
 #include "../engine/console/console.h"
 
 #include "init.h"
@@ -27,8 +26,6 @@ int main() {
 
 	//init engine::console
 	engine::console::init();
-	engine::console::bgcol = engine::util::col {255, 255, 255, 180};
-	engine::console::fgcol = engine::util::col {0, 0, 0, 255};
 
 	engine::log::msg("Loading time [engine]: %5.3f s", timer.getval() / 1000.f);
 

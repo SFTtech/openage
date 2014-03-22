@@ -17,10 +17,8 @@ add_executable(${PROJECT_NAME}
 	engine/input.cpp
 	engine/log.cpp
 	engine/python.cpp
-	engine/console/callbacks.cpp
 	engine/console/console.cpp
 	engine/console/draw.cpp
-	engine/console/init.cpp
 	engine/coord/camgame.cpp
 	engine/coord/camhud.cpp
 	engine/coord/chunk.cpp

@@ -1,8 +1,12 @@
 #include "draw.h"
 
 #include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <FTGL/ftgl.h>
 
 #include <unistd.h>
 
@@ -11,6 +15,40 @@ using namespace engine::coord;
 namespace engine {
 namespace console {
 namespace draw {
+
+void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud charsize) {
+	coord::camhud topleft = {bottomleft.x, bottomleft.y + charsize.y * buf->dims.y};
+	coord::camhud chartopleft;
+	coord::pixel_t ascender = font->internal_font->Ascender();
+
+	for (term_t x = 0; x < buf->dims.x; x++) {
+		chartopleft.x = topleft.x + charsize.x * x;
+
+		for (term_t y = 0; y < buf->dims.y; y++) {
+			chartopleft.y = topleft.y - charsize.y * y;
+			buf_char p = *(buf->chrdataptr({x, y - buf->scrollback_pos}));
+
+			glColor4f(0, 0, 0, 0.8);
+			glBegin(GL_QUADS);
+			{
+				glVertex3f(chartopleft.x, chartopleft.y, 0);
+				glVertex3f(chartopleft.x, chartopleft.y - charsize.y, 0);
+				glVertex3f(chartopleft.x + charsize.x, chartopleft.y - charsize.y, 0);
+				glVertex3f(chartopleft.x + charsize.x, chartopleft.y, 0);
+			}
+			glEnd();
+
+			glColor4f(1, 1, 0, 1);
+			char utf8buf[5];
+			if (util::utf8_encode(p.cp, utf8buf) == 0) {
+				//unrepresentable character (question mark in black rhombus)
+				font->render_static(chartopleft.x, chartopleft.y - ascender, "\uFFFD");
+			} else {
+				font->render_static(chartopleft.x, chartopleft.y - ascender, utf8buf);
+			}
+		}
+	}
+}
 
 void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 	//move cursor, draw top left corner
