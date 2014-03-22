@@ -20,6 +20,7 @@ uint32_t InMemoryResource::get_length() const {
 
 std::tuple<const int16_t*,uint32_t> InMemoryResource::get_samples(uint32_t position,
 		uint32_t num_samples) {
+	// if the resource's end has been reached
 	if (position >= length) {
 		return std::make_tuple(nullptr, 0);
 	}

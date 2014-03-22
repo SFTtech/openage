@@ -1,5 +1,5 @@
-#ifndef _ENGINE_AUDIO_SOUND_H
-#define _ENGINE_AUDIO_SOUND_H
+#ifndef _ENGINE_AUDIO_SOUND_H_
+#define _ENGINE_AUDIO_SOUND_H_
 
 #include <memory>
 

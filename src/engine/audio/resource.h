@@ -11,6 +11,9 @@
 namespace engine {
 namespace audio {
 
+/**
+ * A resource contains pcm data, that can be played by sounds.
+ */
 class Resource {
 public:
 	Resource() = default;
@@ -23,7 +26,7 @@ public:
 	Resource &operator=(Resource&&) = delete;
 
 	/**
-	 * Returns the resources length in samples.
+	 * Returns the resource's length in int16_t values.
 	 */
 	virtual uint32_t get_length() const = 0;
 
@@ -33,15 +36,24 @@ public:
 	 * is reached, 0 will be returned. If the resource is not ready yet, a
 	 * nullptr will be returned.
 	 * @param position the current position in the resource
-	 * @param num_samples the number of samples that should be returned
+	 * @param num_samples the number of int16_t that should be returned
 	 */
 	virtual std::tuple<const int16_t*,uint32_t> get_samples(uint32_t position,
 			uint32_t num_samples) = 0;
 };
 
+/**
+ * A InMemoryResource loads the whole pcm data into memory and keeps it there.
+ */
 class InMemoryResource : public Resource {
 private:
+	/*
+	 * The resource's internal buffer.
+	 */
 	std::unique_ptr<int16_t[]> buffer;
+	/**
+	 * The buffer's length.
+	 */
 	uint32_t length;
 
 public:
