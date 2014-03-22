@@ -6,16 +6,16 @@
 #include <GL/gl.h>
 
 #include "../coord/camhud.h"
-#include "../engine.h" 
+#include "../engine.h"
 #include "console.h"
 
 namespace engine {
 namespace console {
 
 bool on_engine_tick() {
-        if(!visible) {
-                return true;
-        }
+	if(!visible) {
+		return true;
+	}
 
 	//TODO handle stuff such as cursor blinking,
 	//repeating held-down keys (from engine::input::keystate)
@@ -23,9 +23,9 @@ bool on_engine_tick() {
 }
 
 bool draw() {
-        if(!visible) {
-                return true;
-        }
+	if(!visible) {
+		return true;
+	}
 
 	glPushMatrix();
 	{

@@ -1,7 +1,6 @@
 #include "term.h"
 
 #include <unistd.h>
-#include <termios.h>
 #include <pty.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,32 +8,18 @@
 #include <errno.h>
 
 #include "../engine/console/buf.h"
+#include "../engine/console/draw.h"
 #include "../engine/log.h"
 
 using namespace engine;
 using namespace engine::console;
 using namespace engine::coord;
+using namespace engine::util;
 
 namespace testing {
 
-struct termios old_tio;
-void setstdincanon() {
-	if (isatty(STDIN_FILENO)) {
-		//get the terminal settings for stdin
-		tcgetattr (STDIN_FILENO, &old_tio);
-		//backup old settings
-		struct termios new_tio = old_tio;
-		//disable buffered i/o (canonical mode) and local echo
-		new_tio.c_lflag &= (~ICANON & ~ECHO & ~ISIG);
-		//set the settings
-		tcsetattr(STDIN_FILENO, TCSANOW, &new_tio);
-	}
-}
-
-void restorestdin() {
-	if (isatty(STDIN_FILENO)) {
-		tcsetattr(STDIN_FILENO, TCSANOW, &old_tio);
-	}
+int max(int a, int b) {
+	return (a > b) ? a : b;
 }
 
 bool tests::term0(int /*unused*/, char ** /*unused*/) {
@@ -48,19 +33,9 @@ bool tests::term0(int /*unused*/, char ** /*unused*/) {
 		buf.write("asdf\n");
 	}
 	buf.scroll(100);
-	buf.to_stdout(true);
+	FD outfd;
+	console::draw::to_terminal(&buf, &outfd, true);
 	return true;
-}
-
-int dup_as_nonblocking(int fd) {
-	int newfd = dup(fd);
-	int flags = fcntl(newfd, F_GETFL, 0);
-	fcntl(newfd, F_SETFL, flags | O_NONBLOCK);
-	return newfd;
-}
-
-int max(int a, int b) {
-	return (a > b) ? a : b;
 }
 
 bool tests::term1(int /*unused*/, char ** /*unused*/) {
@@ -93,22 +68,26 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 		break;
 	}
 
+	FD ptyout{amaster};            //for writing to the slave
+	FD ptyin{&ptyout, true};       //for reading the slave's output
+	FD termout{STDOUT_FILENO};     //for writing to the terminal
+	FD termin{STDIN_FILENO, true}; //for reading the user input
+
 	//hide cursor
-	printf("\x1b[?25l");
-	//set stdin canon
-	setstdincanon();
+	termout.puts("\x1b[?25l");
+	//set canon input mode
+	termin.setinputmodecanon();
+	//set amaster to auto-close
+	ptyout.close_on_destroy = true;
 
 	constexpr int rdbuf_size = 4096;
 	char rdbuf[rdbuf_size];
 
-	int nonblocking_stdin = dup_as_nonblocking(0);
-	int nonblocking_amaster = dup_as_nonblocking(amaster);
-
-	int nfds = max(nonblocking_stdin, nonblocking_amaster) + 1;
+	int nfds = max(termin.fd, ptyin.fd) + 1;
 
 	bool loop = true;
 
-	buf.to_stdout(true);
+	console::draw::to_terminal(&buf, &termout, true);
 
 	while (loop) {
 		fd_set rfds;
@@ -116,8 +95,8 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 
 		/* Watch stdin (fd 0) to see when it has input. */
 		FD_ZERO(&rfds);
-		FD_SET(nonblocking_stdin, &rfds);
-		FD_SET(nonblocking_amaster, &rfds);
+		FD_SET(ptyin.fd, &rfds);
+		FD_SET(termin.fd, &rfds);
 
 		tv.tv_sec = 0;
 		tv.tv_usec = 1000000 / 60;
@@ -131,8 +110,8 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 			break;
 		default:
 			//success
-			if (FD_ISSET(nonblocking_stdin, &rfds)) {
-				ssize_t retval = read(nonblocking_stdin, rdbuf, rdbuf_size);
+			if (FD_ISSET(termin.fd, &rfds)) {
+				ssize_t retval = read(termin.fd, rdbuf, rdbuf_size);
 				switch (retval) {
 				case -1:
 					//error... probably EWOULDBLOCK. ignore.
@@ -141,7 +120,7 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 					//EOF on stdin... huh... well... that was unexpected... TODO
 					break;
 				default:
-					if (write(amaster, rdbuf, retval) != retval) {
+					if (ptyout.write(rdbuf, retval) != retval) {
 						//for some reason, we couldn't write all input to
 						//amaster.
 						loop = false;
@@ -149,8 +128,8 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 					break;
 				}
 			}
-			if (FD_ISSET(nonblocking_amaster, &rfds)) {
-				ssize_t retval = read(nonblocking_amaster, rdbuf, rdbuf_size);
+			if (FD_ISSET(ptyin.fd, &rfds)) {
+				ssize_t retval = read(ptyin.fd, rdbuf, rdbuf_size);
 				switch (retval) {
 				case -1:
 					switch(errno) {
@@ -176,20 +155,14 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 		}
 
 		if (tv.tv_usec == 0) {
-			buf.to_stdout(false);
+			console::draw::to_terminal(&buf, &termout, false);
 
 			tv.tv_usec = 1000000 / 60;
 		}
 	}
 
 	//show cursor
-	printf("\x1b[?25h");
-	//restore stdin
-	restorestdin();
-
-	close(nonblocking_stdin);
-	close(nonblocking_amaster);
-	close(amaster);
+	termout.puts("\x1b[?25h");
 
 	return true;
 }

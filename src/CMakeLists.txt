@@ -19,6 +19,7 @@ add_executable(${PROJECT_NAME}
 	engine/python.cpp
 	engine/console/callbacks.cpp
 	engine/console/console.cpp
+	engine/console/draw.cpp
 	engine/console/init.cpp
 	engine/coord/camgame.cpp
 	engine/coord/camhud.cpp
@@ -42,6 +43,7 @@ add_executable(${PROJECT_NAME}
 	engine/util/color.cpp
 	engine/util/error.cpp
 	engine/util/file.cpp
+	engine/util/fds.cpp
 	engine/util/fps.cpp
 	engine/util/misc.cpp
 	engine/util/strings.cpp

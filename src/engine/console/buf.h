@@ -330,15 +330,11 @@ public:
 	 */
 	void scroll(coord::term_t lines);
 
-	/**
-	 * prints the buffer content to stdout
-	 *
-	 * clear
-	 *   if true, the whole content of stdout is cleared
-	 */
-	void to_stdout(bool clear);
+	//the following members could/should be private, but we don't believe in withholding
+	//crucial information from the public. besides, sooner or later some whistleblower
+	//would release the pointers anyway.
+	//also, I don't believe in friends.
 
-private:
 	/**
 	 * utf-8 state-machine that reads input bytes
 	 * and outputs unicode codepoints
