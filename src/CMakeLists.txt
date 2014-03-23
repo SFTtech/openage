@@ -78,7 +78,7 @@ pkg_search_module(FTGL REQUIRED ftgl)
 pkg_search_module(SDL2 REQUIRED sdl2)
 pkg_search_module(SDL2_IMAGE REQUIRED sdl2_image SDL2_image)
 
-#inofity support
+#inotify support
 find_path(INOTIFY_INCLUDE_DIR sys/inotify.h  HINTS /usr/include/${CMAKE_LIBRARY_ARCHITECTURE})
 find_package_handle_standard_args(INOTIFY DEFAULT_MSG INOTIFY_INCLUDE_DIR)
 
