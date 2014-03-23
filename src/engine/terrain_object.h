@@ -21,7 +21,7 @@ class Terrain;
 class TerrainChunk;
 
 
-enum object_state {
+enum class object_state {
 	placed,
 	removed,
 	floating,

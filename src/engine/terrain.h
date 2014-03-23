@@ -74,7 +74,7 @@ constexpr coord::tile_delta const neigh_offsets[] = {
 /**
 describes the state of a terrain tile.
 */
-enum tile_state {
+enum class tile_state {
 	missing,    //!< tile is not created yet
 	existing,   //!< tile is already existing
 	creatable,  //!< tile does not exist but can be created
