@@ -11,6 +11,7 @@ class SoundList:
 		0: {"category": {
 			"type": "enum",
 			"name": "audio_category_t",
+			"filename": "sound",
 			"values": {
 				"GAME",
 				"INTERFACE",
@@ -20,11 +21,12 @@ class SoundList:
 		}},
 
 		1: {"sound_id": "int"},
-		2: {"path": "string"},
+		2: {"path": "std::string"},
 
 		3: {"format": {
 			"type": "enum",
 			"name": "audio_format_t",
+			"filename": "sound",
 			"values": {
 				"OPUS",
 				"WAV",
@@ -36,6 +38,7 @@ class SoundList:
 		4: {"loader_policy": {
 			"type": "enum",
 			"name": "audio_loader_policy_t",
+			"filename": "sound",
 			"values": {
 				"IN_MEMORY",
 				"DYNAMIC",

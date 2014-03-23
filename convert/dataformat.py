@@ -50,21 +50,38 @@ def format_data(format, data):
 
 
 	data has to be a list.
-	each entry equals a data table to create.
+	each entry equals a data table to create (called data_export for reference).
 	the corresponding value is a dict
-	it has fife members:
-	name_table_file, name_struct_file, name_struct, format and data
-	name is the data structure name to create
-	format is a dict, it specifies the C type of a column.
+	it has five members:
+		name_table_file, name_struct_file, name_struct, format and data
+			name is the data structure name to create
+			format is a dict, it specifies the C type of a column.
 	each key of this dict is a ordering priority number, the value is a dict.
 	this dict assigns a column name to its type.
 	the type value is either a string or a dict.
-	if it's a string, it specifies the C type directly ("uint8_t"),
-	if it's a dict, it has one mandatory key: type
-	optional keys are: length (to specify array lengths)
-	"type"=>"char" and "length"=>40, would produce "char columnname[40];"
+		if it's a string, it specifies the C type directly (e.g. "uint8_t"),
+		if it's a dict, it has one mandatory key:
+			"type"=>ctype: this member will have this C type
+			"type"=>"subdata": this member is a list of submembers, which fill be
+				resolved separately and referencable by the parent later
+				"refto"=>"key": name the subdata after this local key's value
+					not set: use a simple incremented number for the reference
+			"type"=>"enum": this member is a enum. further settings:
+				"name"=>"my_enum": the enum name
+				"values"=>{"VAL0", "VAL1"}: the possible enum values
+					only required for first-time definition
+				"xref": "filename": assume this enum to be defined in "filename"
+				"filename"=>"header_name": the header where the enum will be placed in
+					only required for first-time definition
+		additional keys are:
+			"length": (optional) to specify array lengths, default 1
+				e.g. "type"=>"char" and "length"=>40, would produce "char columnname[40];"
 	data is a list, it stores the table rows.
 	a list entry (a row) contains dicts: "column name": column value (for this row)
+	if "column name" was defined as "subdata" type, the column value is a list
+	of objects that have a dump() method.
+	this method has to generate a data_export dict again.
+
 	i know you did not understand the format specification, so heres an
 
 	example:
@@ -76,13 +93,30 @@ def format_data(format, data):
 			"struct_description: "you can't believe how epic this struct is!",
 			"format" : {
 				0: {"column0": "int"},
-				1: {"column1": "int"},
+				1: {"lol_id":  "int"},
+				2: {"reference": {"type": "subdata", "refto": "lol_id"}}
 			},
 			"data": [
-				{ "column0": 1337, "column1": 42 },
-				{ "column0":   10, "column1": 42 },
-				{ "column0":  235, "column1": 13 },
+				{ "column0": 1337, "column1": 42, "reference": [a] },
+				{ "column0":   10, "column1": 42, "reference": [b, c] },
+				{ "column0":  235, "column1": 13, "reference": [] },
 			],
+
+			#where a.dump(), b.dump() and c.dump() must generate something like:
+			{
+				"name_table_file":   "referenced_data",
+				"name_struct_file":  "awesome_header",
+				"name_struct":       "refdata_demo",
+				"struct_description: "this is a refrenced sub-struct.",
+				"format" : {
+					0: { "refdata0": "int" },
+				},
+				"data": [
+					{ "refdata0": 123 },
+					{ "refdata0": 456 },
+				],
+			}
+			#end of output of a.dump()
 		},
 
 		{
@@ -114,11 +148,11 @@ def format_data(format, data):
 			"
 			#struct awesome_stuff
 			#you can't believe how epic this struct is!
-			#int, int
-			#column0, column1
-			1337, 42
-			10, 42
-			235, 13
+			#int,int,refdata_demo
+			#column0,column1,reference
+			1337,42,[a]
+			10,42,[b, c]
+			235,13,[]
 			",
 		],
 
@@ -148,6 +182,7 @@ def format_data(format, data):
 			struct awesome_stuff {
 				int column0;
 				int column1;
+				struct reference;
 			};
 			",
 		],
@@ -176,13 +211,36 @@ def format_data(format, data):
 		"uint8_t":       "hhu",
 		"int16_t":       "hd",
 		"uint16_t":      "hu",
+		"int":           "d",
 		"int32_t":       "d",
+		"uint":          "u",
 		"uint32_t":      "u",
 		"float":         "f",
 	}
 
 
+	#returned data: key=filename/structname, value:formatted data
 	ret = dict()
+
+	#needed enums storage
+	#key=enum name
+	#value: {"values": set(enum values), "filename": name}
+	enums = dict()
+
+	#these headers will be needed for the current format selected.
+	needed_headers = set()
+
+
+	def store_output(result_storage, key, value, prepend=False):
+		#create list or append to it, if output_name was defined earlier
+		if key in result_storage:
+			if not prepend:
+				ret[key].append(value)
+			else:
+				ret[key].insert(0, value)
+		else:
+			ret[key] = [ value ]
+
 
 	for data_table in data:
 		data_struct_name = data_table["name_struct"]
@@ -200,17 +258,50 @@ def format_data(format, data):
 						"type": ctype,
 						"length": 1,
 					}
+
 				else:
 					if not "type" in ctype:
 						raise Exception("column type has to be specified for %s" % (column))
 
-				columns[column] = ctype
+					#this column is an enum, store it to generate it later
+					if ctype["type"] == "enum":
+						if not "name" in ctype:
+							raise Exception("enum columns need to specify a name")
 
-		#this text will be the output
-		txt = ""
+						#create the needed enum
+						if not ctype["name"] in enums:
+
+							if "xref" in ctype:
+								#this enum is a cross reference to an existing enum in "filename"
+								enum_filename = ctype["xref"]
+								enum_values   = None
+								enum_is_xref  = True
+							else:
+								#this enum is defined here the first time
+								if not "filename" in ctype:
+									raise Exception("first time definition of enum %s requires 'filename'" % ctype["name"])
+
+								if not "values" in ctype:
+									raise Exception("first time definition of enum %s requires its 'values'" % ctype["name"])
+
+								enum_filename = ctype["filename"]
+								enum_values   = ctype["values"]
+								enum_is_xref  = False
+
+							enums[ctype["name"]] = {"values": enum_values, "filename": enum_filename, "xref": enum_is_xref}
+
+						#enum already known
+						else:
+							if "values" in ctype:
+								if not ctype["values"] == enums[ctype["name"]]:
+									raise Exception("you reused the enum %s with different values this time." % ctype["name"])
+
+				columns[column] = ctype
 
 		#export csv file
 		if format == "csv":
+
+			txt = ""
 
 			if data_struct_desc != None:
 				#prepend each line with a comment hash
@@ -223,10 +314,16 @@ def format_data(format, data):
 
 			#create column types line entries
 			for c_raw in column_types_raw:
-				if "length" in c_raw and c_raw["length"] > 1:
-					c = "%s[%d]" % (c_raw["type"], c_raw["length"])
+				if c_raw["type"] == "enum":
+					#TODO: maybe list possible enum values here
+					c_type = c_raw["name"]
 				else:
-					c = c_raw["type"]
+					c_type = c_raw["type"]
+
+				if "length" in c_raw and c_raw["length"] > 1:
+					c = "%s[%d]" % (c_type, c_raw["length"])
+				else:
+					c = c_type
 
 				column_types.append(c)
 
@@ -242,9 +339,12 @@ def format_data(format, data):
 				txt += "%s\n" % (delimiter.join(row_entries))
 
 			output_name = data_table["name_table_file"]
+			store_output(ret, output_name, txt)
 
 		#create C struct
 		elif format == "struct":
+
+			txt = ""
 
 			#optional struct description
 			if data_struct_desc != None:
@@ -253,13 +353,16 @@ def format_data(format, data):
 			#struct definition
 			txt += "struct %s {\n" % (data_struct_name)
 
-
 			#create struct members:
 			for member, dtype in columns.items():
 				dlength = ""
 				if "length" in dtype and dtype["length"] > 1:
 					dlength = "[%d]" % (dtype["length"])
-				dtype   = dtype["type"]
+
+				if dtype["type"] == "enum":
+					dtype = dtype["name"]
+				else:
+					dtype = dtype["type"]
 
 				txt += "\t%s %s%s;\n" % (dtype, member, dlength)
 
@@ -274,38 +377,52 @@ def format_data(format, data):
 			txt += "};\n"
 
 			output_name = data_table["name_struct_file"]
+			store_output(ret, output_name, txt)
 
 
 		#create C code for fill function
 		elif format == "cfile":
 			#it is used to fill a struct instance with data of a line in the csv
 
-			#create parser for a single field of the csv:
+			txt = ""
 
-			required_scanfs = dict()
-			for idx, (member, dtype) in enumerate(columns.items()):
+			#creating a parser for a single field of the csv
+			column_token_parser = dict()
+			for idx, (member, column_type) in enumerate(columns.items()):
 				dlength = 1
 
-				if type(dtype) == dict:
-					dlength = dtype["length"]
-					dtype   = dtype["type"]
+				if not type(column_type) == dict:
+					column_type = {"type": column_type}
 
-				dtype_scan           = type_scan_lookup[dtype]
+				dtype = column_type["type"]
 
-				if dlength == 1 and dtype != "char":
-					required_scanfs[idx] = "err = sscanf(token, \"%%%s\", &this->%s);" % (dtype_scan, member)
+				if dtype == "char" and "length" in column_type:
+					#read char array
+					dlength = column_type["length"]
+					column_token_parser[idx] = "strncpy(this->%s, token, %d); this->%s[%d-1] = '\\0';" % (member, dlength, member, dlength)
 
-				elif dtype == "char":
-					required_scanfs[idx] = "strncpy(this->%s, token, %d); this->%s[%d-1] = '\\0';" % (member, dlength, member, dlength)
+				elif dtype == "enum":
+					#read enum values
+					column_token_parser[idx] = "/*TODO read the enum*/ err = -1;"
+
+				elif dtype == "std::string":
+					#read std::string
+					column_token_parser[idx] = "/*TODO read the std::string*/ err = -1;"
+
+				elif dtype in type_scan_lookup:
+					dtype_scan = type_scan_lookup[dtype]
+					column_token_parser[idx] = "err = sscanf(token, \"%%%s\", &this->%s);" % (dtype_scan, member)
 
 				else:
-					raise Exception("if you can read this, some thing really faked up.")
+					raise Exception("unknown column type: %s" % dtype)
+
+
 
 			tokenparser = """
 		switch (idx) {"""
 
 			#create sscanf entries
-			for idx, entry_scanner in required_scanfs.items():
+			for idx, entry_scanner in column_token_parser.items():
 				tokenparser += """
 		case {case}: {parser} break;""".format(case=idx, parser=entry_scanner)
 
@@ -320,9 +437,9 @@ def format_data(format, data):
 			txt += Template("""
 $funcsignature {
 	char separators[] = "$delimiters";
-	char* token;
+	char *token;
 	size_t idx = 0;
-	int err = 0;
+	int err    = 0;
 
 	token = strtok(by_line, separators);
 	while (token != nullptr && idx < this->member_count) {
@@ -339,23 +456,34 @@ $tokenhandler
 """).substitute(funcsignature=fill_signature, delimiters=delimiter, tokenhandler=tokenparser)
 
 			output_name = data_table["name_struct_file"]
-
+			store_output(ret, output_name, txt)
 
 		else:
 			raise Exception("unknown format specified: %s" % format)
 
-		#create list or append to it, if output_name was defined earlier
-		if output_name in ret:
-			ret[output_name].append(txt)
-		else:
-			ret[output_name] = [ txt ]
+
+	#now create the needed enums.
+	if format == "struct":
+		for enum_name, enum_settings in enums.items():
+			if enum_settings["xref"] == True:
+				#skip cross referenced enum
+				continue
+
+			output_name = enum_settings["filename"]
+
+			#create enum definition
+			txt = "enum class %s {\n\t" % enum_name
+			txt += ",\n\t".join(enum_settings["values"])
+			txt += "\n};\n\n"
+
+			store_output(ret, output_name, txt, prepend=True)
 
 	return ret
 
 
 def metadata_format(data_dump, output_formats):
 	"""
-	input: metadata dump
+	input: metadata dump (the big one with loads of keys, see ``format_data``
 	output: {output_format => {filename => [file_content]}}
 	"""
 
