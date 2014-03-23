@@ -408,8 +408,8 @@ def format_data(format, data):
 					column_token_parser[idx] = "/*TODO read the enum*/ err = -1;"
 
 				elif dtype == "std::string":
-					#read std::string
-					column_token_parser[idx] = "/*TODO read the std::string*/ err = -1;"
+					#store std::string
+					column_token_parser[idx] = "this->%s = token;" % (member)
 
 				elif dtype in type_scan_lookup:
 					dtype_scan = type_scan_lookup[dtype]
