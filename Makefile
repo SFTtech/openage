@@ -13,7 +13,7 @@ DATA_DIR = ./data
 
 #this list specifies needed media files for the convert script
 #TODO: let our binary generate this list.
-needed_media = graphics:3836.slp graphics:4857.slp terrain:*.slp
+needed_media = graphics:3836.slp graphics:4857.slp terrain:*.slp sounds0:5045.wav sounds0:5127.wav sounds0:5309.wav
 
 
 binary = bin/$(project_name)
