@@ -4,14 +4,14 @@ from util import dbg
 
 class SoundList:
 	name_struct        = "sound_file"
-	name_struct_file   = "sound"
+	name_struct_file   = "sound_file"
 	struct_description = "one available sound file."
 
 	data_format = {
 		0: {"category": {
 			"type": "enum",
 			"name": "audio_category_t",
-			"filename": "sound",
+			"filename": "sound_file",
 			"values": {
 				"GAME",
 				"INTERFACE",
@@ -26,7 +26,7 @@ class SoundList:
 		3: {"format": {
 			"type": "enum",
 			"name": "audio_format_t",
-			"filename": "sound",
+			"filename": "sound_file",
 			"values": {
 				"OPUS",
 				"WAV",
@@ -38,7 +38,7 @@ class SoundList:
 		4: {"loader_policy": {
 			"type": "enum",
 			"name": "audio_loader_policy_t",
-			"filename": "sound",
+			"filename": "sound_file",
 			"values": {
 				"IN_MEMORY",
 				"DYNAMIC",

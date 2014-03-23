@@ -97,9 +97,9 @@ def format_data(format, data):
 				2: {"reference": {"type": "subdata", "refto": "lol_id"}}
 			},
 			"data": [
-				{ "column0": 1337, "column1": 42, "reference": [a] },
-				{ "column0":   10, "column1": 42, "reference": [b, c] },
-				{ "column0":  235, "column1": 13, "reference": [] },
+				{ "column0": 1337, "lol_id": 42, "reference": [a] },
+				{ "column0":   10, "lol_id": 42, "reference": [b, c] },
+				{ "column0":  235, "lol_id": 13, "reference": [] },
 			],
 
 			#where a.dump(), b.dump() and c.dump() must generate something like:
@@ -121,7 +121,7 @@ def format_data(format, data):
 
 		{
 			"name_table_file":   "food_list",
-			"name_struct_file":  "food_header",
+			"name_struct_file":  "awesome_header",
 			"name_struct":       "epic_food",
 			"struct_description: None,
 			"format": {
@@ -181,13 +181,10 @@ def format_data(format, data):
 			*/
 			struct awesome_stuff {
 				int column0;
-				int column1;
+				int lol_id;
 				struct reference;
 			};
 			",
-		],
-
-		"food_header": [
 			"
 			struct epic_food {
 				char[30] name;
@@ -553,6 +550,7 @@ def merge_data_dump(transformed_data):
 
 #include <stddef.h> //various types
 #include <stdint.h> //int types
+#include <string>   //std::string
 
 %s
 
