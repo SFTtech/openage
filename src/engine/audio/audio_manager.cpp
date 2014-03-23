@@ -2,9 +2,10 @@
 
 #include <cstring>
 
+#include "resource.h"
+
 #include "../log.h"
 #include "../util/error.h"
-#include "resource.h"
 
 namespace engine {
 namespace audio {
@@ -57,6 +58,23 @@ AudioManager::AudioManager(const std::string &device_name, int freq,
 
 AudioManager::~AudioManager() {
 	SDL_CloseAudioDevice(device_id);
+}
+
+void AudioManager::load_resources(const std::vector<sound_file> &sound_files) {
+	for (auto &sound_file : sound_files) {
+		auto category = from_category(sound_file.category);
+		auto id = sound_file.sound_id;
+		auto path = sound_file.path;
+		auto format = from_format(sound_file.format);
+		auto loader_policy = from_loader_policy(sound_file.loader_policy);
+
+		auto key = std::make_tuple(category, id);
+		auto resource = Resource::create_resource(category, id, path, format,
+				loader_policy);
+
+		// TODO check resource already existing
+		resources.insert({key, resource});
+	}
 }
 
 void AudioManager::audio_callback(int16_t *stream, int len) {

@@ -7,7 +7,37 @@
 namespace engine {
 namespace audio {
 
-InMemoryResource::InMemoryResource(const std::string &path, int format) {
+Resource::Resource(category_t category, int id)
+		:
+		category{category},
+		id{id} {
+}
+
+category_t Resource::get_category() const {
+	return category;
+}
+
+int Resource::get_id() const {
+	return id;
+}
+
+std::shared_ptr<Resource> Resource::create_resource(category_t category,
+		int id, const std::string &path, format_t format,
+		loader_policy_t loader_policy) {
+	switch (loader_policy) {
+		case loader_policy_t::IN_MEMORY:
+			return std::make_shared<InMemoryResource>(category, id, path,
+					format);
+		case loader_policy_t::DYNAMIC:
+		default:
+			throw Error{"Unsupported loader policy"};
+	}
+}
+
+InMemoryResource::InMemoryResource(category_t category, int id,
+		const std::string &path, format_t format)
+		:
+		Resource{category, id}  {
 	auto loader = ResourceLoader::create_resource_loader(path, format);
 	auto resource = loader->get_resource();
 	buffer = std::move(std::get<0>(resource));

@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include "category.h"
 #include "resource.h"
 
 namespace engine {
@@ -20,7 +21,10 @@ private:
 
 public:
 	Sound(std::shared_ptr<Resource> resource, int32_t volume=128);
-	~Sound();
+	~Sound() = default;
+
+	category_t get_category() const;
+	int get_id() const;
 
 private:
 	/*

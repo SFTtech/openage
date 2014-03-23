@@ -8,8 +8,12 @@
 
 #include <SDL.h>
 
+#include "category.h"
+#include "hash_functions.h"
 #include "resource.h"
 #include "sound.h"
+
+#include "../../gamedata/sound_file.h"
 
 namespace engine {
 namespace audio {
@@ -29,6 +33,9 @@ private:
 
 	std::unique_ptr<int32_t[]> mix_buffer;
 
+	std::unordered_map<std::tuple<category_t,int>,std::shared_ptr<Resource>>
+			resources;
+
 public:
 	AudioManager(int freq, SDL_AudioFormat format, uint8_t channels,
 			uint16_t samples);
@@ -46,6 +53,8 @@ public:
 
 	AudioManager &operator=(const AudioManager&) = delete;
 	AudioManager &operator=(AudioManager&&) = delete;
+
+	void load_resources(const std::vector<sound_file> &sound_files);
 
 	void audio_callback(int16_t *stream, int len);
 

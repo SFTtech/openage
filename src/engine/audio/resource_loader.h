@@ -4,6 +4,8 @@
 #include <memory>
 #include <tuple>
 
+#include "format.h"
+
 namespace engine {
 namespace audio {
 
@@ -36,7 +38,7 @@ public:
 	 * @param format the resource's format
 	 */
 	static std::unique_ptr<ResourceLoader> create_resource_loader(
-			const std::string &path, int format);
+			const std::string &path, format_t format);
 };
 
 /**

@@ -14,7 +14,12 @@ Sound::Sound(std::shared_ptr<Resource> resource, int32_t volume)
 		position{0} {
 }
 
-Sound::~Sound() {
+category_t Sound::get_category() const {
+	return resource->get_category();
+}
+
+int Sound::get_id() const {
+	return resource->get_id();
 }
 
 bool Sound::mix_audio(int32_t *stream, int len) {

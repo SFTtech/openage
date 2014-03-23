@@ -14,11 +14,11 @@ ResourceLoader::ResourceLoader(const std::string &path)
 }
 
 std::unique_ptr<ResourceLoader> ResourceLoader::create_resource_loader(
-		const std::string &path, int format) {
+		const std::string &path, format_t format) {
 	std::unique_ptr<ResourceLoader> loader;
 	// switch format and return an appropriate loader
 	switch (format) {
-		case 0:
+		case format_t::OPUS:
 			loader.reset(new OpusLoader{path});
 			break;
 		default:

@@ -8,6 +8,10 @@
 
 #include <SDL.h>
 
+#include "category.h"
+#include "format.h"
+#include "loader_policy.h"
+
 namespace engine {
 namespace audio {
 
@@ -15,8 +19,12 @@ namespace audio {
  * A resource contains pcm data, that can be played by sounds.
  */
 class Resource {
+private:
+	category_t category;
+	int id;
+
 public:
-	Resource() = default;
+	Resource(category_t category, int id);
 	virtual ~Resource() = default;
 
 	Resource(const Resource&) = delete;
@@ -24,6 +32,9 @@ public:
 
 	Resource(Resource&&) = delete;
 	Resource &operator=(Resource&&) = delete;
+
+	virtual category_t get_category() const;
+	virtual int get_id() const;
 
 	/**
 	 * Returns the resource's length in int16_t values.
@@ -40,6 +51,10 @@ public:
 	 */
 	virtual std::tuple<const int16_t*,uint32_t> get_samples(uint32_t position,
 			uint32_t num_samples) = 0;
+
+	static std::shared_ptr<Resource> create_resource(category_t category,
+			int id, const std::string &path, format_t format,
+			loader_policy_t loader_policy);
 };
 
 /**
@@ -57,7 +72,8 @@ private:
 	uint32_t length;
 
 public:
-	InMemoryResource(const std::string &path, int format = 0);
+	InMemoryResource(category_t category, int id, const std::string &path,
+			format_t format = format_t::OPUS);
 	virtual ~InMemoryResource() = default;
 
 	virtual uint32_t get_length() const;	
