@@ -345,7 +345,12 @@ def format_data(format, data):
 
 			#optional struct description
 			if data_struct_desc != None:
-				txt += "/**\n%s\n*/\n" % data_struct_desc
+				txt += "/**\n * "
+
+				#prepend * before every comment line
+				txt += "\n * ".join(data_struct_desc.split("\n"))
+
+				txt += "\n */\n"
 
 			#struct definition
 			txt += "struct %s {\n" % (data_struct_name)
