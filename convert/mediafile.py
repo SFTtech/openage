@@ -5,6 +5,7 @@
 from colortable import ColorTable, PlayerColorTable
 import dataformat
 from drs import DRS
+import filelist
 from os import remove
 import os.path
 from string import Template
@@ -120,6 +121,8 @@ def media_convert(args):
 	file_list = dict()
 	media_files_extracted = 0
 
+	sound_list = filelist.SoundList()
+
 	for drsname, drsfile in drsfiles.items():
 		for file_extension, file_id in drsfile.files:
 			if not any((er.matches(drsname, file_id, file_extension) for er in extraction_rules)):
@@ -136,7 +139,9 @@ def media_convert(args):
 
 			#generate output filename where data will be stored in
 			if write_enabled:
-				fname = os.path.join(asset_folder, drsfile.fname, "%d.%s" % (file_id, file_extension))
+				fbase = os.path.join(asset_folder, drsfile.fname, "%d" % (file_id))
+				fname = "%s.%s" % (fbase, file_extension)
+
 				dbg("Extracting to " + fname + "...", 2)
 				file_data = drsfile.get_file_data(file_extension, file_id)
 			else:
@@ -155,12 +160,19 @@ def media_convert(args):
 				texture.save(fname, storeas)
 
 			elif file_extension == 'wav':
-				file_write(fname, file_data)
+				sound_filename = fname
+
+				wav_output_file = file_get_path(fname, write=True)
+				file_write(wav_output_file, file_data)
 
 				if not args.no_opus:
+					file_extension   = "opus"
+					sound_filename   = "%s.%s" % (fbase, file_extension)
+					opus_output_file = file_get_path(sound_filename, write=True)
+
 					#opusenc invokation (TODO: ffmpeg?)
-					opus_convert_call = ['opusenc', fname, fbase + '.opus']
-					dbg("converting... : " + fname + " to opus.", 1)
+					opus_convert_call = ['opusenc', wav_output_file, opus_output_file]
+					dbg("opus convert: %s -> %s ..." % (fname, sound_filename), 1)
 
 					oc = subprocess.Popen(opus_convert_call, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 					oc_out, oc_err = oc.communicate()
@@ -172,8 +184,9 @@ def media_convert(args):
 						dbg(oc_out + "\n" + oc_err, 2)
 
 					#remove original wave file
-					remove(fname)
+					remove(wav_output_file)
 
+				sound_list.append(int(file_id), sound_filename, file_extension)
 
 			else:
 				#this type is unknown or does not require conversion
@@ -182,6 +195,9 @@ def media_convert(args):
 			media_files_extracted += 1
 
 	if write_enabled:
+		sound_metadata = dataformat.merge_data_dump(dataformat.metadata_format(sound_list.metadata(), storeas))
+		util.file_write_multi(sound_metadata, file_prefix=asset_folder)
+
 		dbg("media files extracted: %d" % (media_files_extracted), 0)
 
 	if args.list_files:
