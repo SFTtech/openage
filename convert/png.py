@@ -2,10 +2,10 @@ from PIL import Image, ImageDraw
 
 
 class PNG:
-	def __init__(self, player_number, color_table, picture_data):
+	def __init__(self, picture_data, player_number=0, color_table=None):
+		self.picture_data = picture_data
 		self.player_number = player_number
 		self.color_table = color_table
-		self.picture_data = picture_data
 
 	def create(self, pwidth=None, pheight=None, alphamask=False):
 		if pwidth == None and pheight == None:

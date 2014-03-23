@@ -1,5 +1,5 @@
+import dataformat
 import math
-
 import util
 from util import dbg
 
@@ -16,10 +16,7 @@ class ColorTable:
 		4: {"a":   "uint8_t"},
 	}
 
-	def __init__(self):
-		pass
-
-	def fill(self, data, file_id):
+	def __init__(self, data, file_id):
 		self.file_id = file_id
 		self.data_table_name = "palette_%d" % self.file_id
 
@@ -107,16 +104,18 @@ class ColorTable:
 
 							drawn = drawn + 1
 
-
 		else:
 			raise Exception("fak u, no negative values for the squaresize pls.")
 
 		return palette_image
 
-	def dump(self):
+	def save_visualization(self, filename):
+		util.file_write_image(filename, self.gen_image())
+
+	def metadata(self):
 		ret = dict()
 
-		ret.update(util.gather_format(self))
+		ret.update(dataformat.gather_format(self))
 		ret["name_table_file"] = self.data_table_name
 		ret["data"] = list()
 
@@ -135,7 +134,7 @@ class ColorTable:
 
 	def structs():
 		ret = dict()
-		ret.update(util.gather_format(ColorTable))
+		ret.update(dataformat.gather_format(ColorTable))
 		return [ ret ]
 
 
@@ -148,8 +147,6 @@ class PlayerColorTable(ColorTable):
 	"""
 
 	def __init__(self, base_table):
-		super().__init__()
-
 		if not isinstance(base_table, ColorTable):
 			raise Exception("can only create a player color table from a regular color table.")
 

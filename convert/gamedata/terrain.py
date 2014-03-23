@@ -1,6 +1,7 @@
+import dataformat
 from struct import Struct, unpack_from
 from util import dbg, zstr
-from util import file_get_path, file_write, gather_data, gather_format
+from util import file_get_path, file_write
 
 from .empiresdat import endianness
 
@@ -82,7 +83,7 @@ class TerrainData:
 	def dump(self):
 		ret = dict()
 
-		ret.update(gather_format(Terrain))
+		ret.update(dataformat.gather_format(Terrain))
 		ret["name_table_file"] = "terrain_data"
 		ret["data"] = list()
 
@@ -117,7 +118,7 @@ class Terrain:
 	}
 
 	def dump(self):
-		return gather_data(self, self.data_format)
+		return dataformat.gather_data(self, self.data_format)
 
 	def read(self, raw, offset):
 		#int16_t unknown;

@@ -4,9 +4,12 @@
 
 import blendomatic
 import colortable
-import gamedata.empiresdat
+import dataformat
+import filelist
 from fnmatch import fnmatch
-from util import dbg, set_write_dir, merge_data_dump, transform_dump, file_write, file_get_path
+import gamedata.empiresdat
+import texture
+from util import dbg, set_write_dir, file_write, file_get_path
 
 
 def data_generate(args):
@@ -24,27 +27,25 @@ def data_generate(args):
 			set_write_dir("")
 			list_enabled = True
 
-
-	#these sections of the empiresdat will be exported
-	empiresdat_sections = ["terrain"]
-
 	storeas = ["struct", "cfile"]
 
 	struct_dumps = list()
-	struct_dumps.append(gamedata.empiresdat.EmpiresDat.structs(empiresdat_sections))
+	struct_dumps.append(gamedata.empiresdat.EmpiresDat.structs(args.sections))
 	struct_dumps.append(blendomatic.Blendomatic.structs())
 	struct_dumps.append(colortable.ColorTable.structs())
+	struct_dumps.append(texture.Texture.structs())
+	struct_dumps.append(filelist.SoundList.structs())
 
 	output_storage = list()
 	for struct in struct_dumps:
-		output_storage.append(transform_dump(struct, storeas))
+		output_storage.append(dataformat.metadata_format(struct, storeas))
 
 	output_filenames = list()
 
 	written_file_count = 0
 
 	for dump in output_storage:
-		merged_dump = merge_data_dump(dump)
+		merged_dump = dataformat.merge_data_dump(dump)
 
 		for file_name, file_data in merged_dump.items():
 			output_filenames.append(file_name)

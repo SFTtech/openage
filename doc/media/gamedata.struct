@@ -207,15 +207,15 @@ struct {
 		struct {
 			/*
 			unit type:
-			eye_candy = 10
-			flag = 20
-			doppelganger = 25
+			eye_candy         = 10
+			flag              = 20
+			doppelganger      = 25
 			dead_or_fish_unit = 30
-			bird = 40
-			projectile = 60
-			living_unit = 70
-			building = 80
-			tree = 90
+			bird              = 40
+			projectile        = 60
+			living_unit       = 70
+			building          = 80
+			tree              = 90
 			*/
 			int8_t type_id;
 			uint16_t name_length;

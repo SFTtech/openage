@@ -68,7 +68,7 @@ Terrain::Terrain(std::vector<terrain_type> terrain_meta,
 		this->terrain_id_priority_map[terrain_id]  = line->blend_priority;
 		this->terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
-		char *terraintex_filename = util::format("age/processed/Data/terrain.drs/%d.slp.png", line->slp_id);
+		char *terraintex_filename = util::format("age/assets/Data/terrain.drs/%d.slp.png", line->slp_id);
 		auto new_texture = new Texture(terraintex_filename, true, ALPHAMASKED);
 		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
 		this->textures[terrain_id] = new_texture;
@@ -79,7 +79,7 @@ Terrain::Terrain(std::vector<terrain_type> terrain_meta,
 	for (size_t i = 0; i < this->blendmode_count; i++) {
 		auto line = &blending_meta[i];
 
-		char *mask_filename = util::format("age/processed/blendomatic.dat/mode%02d.png", line->blend_mode);
+		char *mask_filename = util::format("age/assets/blendomatic.dat/mode%02d.png", line->blend_mode);
 		auto new_texture = new Texture(mask_filename, true);
 		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
 		this->blending_masks[i] = new_texture;

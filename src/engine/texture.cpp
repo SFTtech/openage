@@ -103,7 +103,7 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		delete[] meta_filename;
 	}
 	else { //this texture does not contain subtextures
-		struct subtexture s {0, 0, 0, this->w, this->h, this->w/2, this->h/2};
+		struct subtexture s {0, 0, this->w, this->h, this->w/2, this->h/2};
 
 		this->subtextures = std::vector<subtexture>{};
 		this->subtexture_count = 1;
@@ -326,26 +326,5 @@ void Texture::get_subtexture_size(int subid, int *w, int *h) {
 GLuint Texture::get_texture_id() {
 	return this->id;
 }
-
-/**
-parse one line for a subtexture area description.
-*/
-int subtexture::fill(const char *by_line) {
-	if (sscanf(by_line, "%u,%d,%d,%d,%d,%d,%d",
-	           &this->id,
-	           &this->x, //lower left coordinates, origin
-	           &this->y,
-	           &this->w, //width and height from lower left origin
-	           &this->h,
-	           &this->cx, //hotspot/center coordinates
-	           &this->cy
-	           )) {
-		return 0;
-	}
-	else {
-		return -1;
-	}
-}
-
 
 } //namespace engine

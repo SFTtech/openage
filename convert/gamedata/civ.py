@@ -1,3 +1,4 @@
+import dataformat
 from struct import Struct, unpack_from
 from util import dbg, zstr
 
@@ -5,6 +6,19 @@ from .empiresdat import endianness
 
 
 class CivData:
+	def dump(self):
+		ret = dict()
+
+		ret.update(dataformat.gather_format(Civ))
+		ret["name_table_file"] = "civilisations"
+		ret["data"] = list()
+
+		for terrain in self.terrains:
+			#dump terrains
+			ret["data"].append(terrain.dump())
+
+		return [ ret ]
+
 	def read(self, raw, offset):
 		#uint16_t civ_count;
 		header_struct = Struct(endianness + "H")
@@ -13,16 +27,27 @@ class CivData:
 		offset += header_struct.size
 		self.civ_count, = header
 
-		self.civ = list()
+		self.civ = dict()
 		for i in range(self.civ_count):
 			t = Civ()
 			offset = t.read(raw, offset)
-			self.civ.append(t)
+			self.civ[i] = t
 
 		return offset
 
 
 class Civ:
+	name_struct        = "civilisation"
+	name_struct_file   = name_struct
+	struct_description = "describes one a civilisation."
+
+	data_format = {
+		0: {"name":            { "type": "char", "length": 20 }},
+		1: {"graphic_set":     "int32_t"},
+		2: {"team_bonus_id":   "int16_t"},
+		3: {"tech_tree_id":    "int16_t"},
+	}
+
 	def read(self, raw, offset):
 		#int8_t one;
 		#char name[20];

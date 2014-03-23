@@ -1,3 +1,4 @@
+import dataformat
 from struct import Struct, unpack_from
 from util import dbg, zstr
 
@@ -20,10 +21,36 @@ class SoundData:
 
 		return offset
 
+	def dump(self):
+		ret = dict()
+
+		ret.update(dataformat.gather_format(Sound))
+		ret["name_table_file"] = "sound_data"
+		ret["data"] = list()
+
+		for sound in self.sound:
+			#dump terrains
+			ret["data"].append(sound.dump())
+
+		return [ ret ]
+
 
 class Sound:
+	name_struct        = "sound"
+	name_struct_file   = "sound"
+	struct_description = "describes a sound, consisting of several sound items."
+
+	data_format = {
+		0: {"uid":            "int32_t"},
+		1: {"item_count":     "int32_t"},
+		2: {"sound_item":     {"type": "subdata"}}
+	}
+
+	def dump(self):
+		return dataformat.gather_data(self, self.data_format)
+
 	def read(self, raw, offset):
-		#int32_t id;
+		#int32_t uid;
 		#uint16_t item_count;
 		#int32_t unknown;
 		sound_struct = Struct(endianness + "i H i")
@@ -31,7 +58,7 @@ class Sound:
 		snd = sound_struct.unpack_from(raw, offset)
 		offset += sound_struct.size
 
-		self.id            = snd[0]
+		self.uid           = snd[0]
 		self.item_count    = snd[1]
 		#self. = snd[2]
 
@@ -45,6 +72,20 @@ class Sound:
 
 
 class SoundItem:
+	name_struct        = "sound_item"
+	name_struct_file   = "sound"
+	struct_description = "one possible file for a sound."
+
+	data_format = {
+		0: {"filename":       {"type": "char", "length": 13}},
+		1: {"resource_id":     "int16_t"},
+		2: {"probablilty":     "int16_t"},
+		3: {"civilisation":    "int16_t"},
+	}
+
+	def dump(self):
+		return dataformat.gather_data(self, self.data_format)
+
 	def read(self, raw, offset):
 		#char filename[13];
 		#int32_t resource_id;
