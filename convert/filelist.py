@@ -12,12 +12,12 @@ class SoundList:
 			"type": "enum",
 			"name": "audio_category_t",
 			"filename": "sound_file",
-			"values": {
+			"values": [
 				"GAME",
 				"INTERFACE",
 				"MUSIC",
 				"TAUNT",
-			}
+			]
 		}},
 
 		1: {"sound_id": "int"},
@@ -27,22 +27,22 @@ class SoundList:
 			"type": "enum",
 			"name": "audio_format_t",
 			"filename": "sound_file",
-			"values": {
+			"values": [
 				"OPUS",
 				"WAV",
 				"FLAC",
 				"MP3",
-			}
+			]
 		}},
 
 		4: {"loader_policy": {
 			"type": "enum",
 			"name": "audio_loader_policy_t",
 			"filename": "sound_file",
-			"values": {
+			"values": [
 				"IN_MEMORY",
 				"DYNAMIC",
-			}
+			]
 		}},
 	}
 
