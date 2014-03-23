@@ -405,7 +405,21 @@ def format_data(format, data):
 
 				elif dtype == "enum":
 					#read enum values
-					column_token_parser[idx] = "/*TODO read the enum*/ err = -1;"
+					enum_name = column_type["name"]
+					enum_values = column_type["values"]
+
+					enum_parse_else = ""
+					enum_parser = list()
+					enum_parser.append("//parse enum %s" % (enum_name))
+					for enum_value in enum_values:
+						enum_parser.append("%sif (0 == strcmp(token, \"%s\")) {" % (enum_parse_else, enum_value))
+						enum_parser.append("\tthis->%s = %s::%s;"                % (member, enum_name, enum_value))
+						enum_parser.append("}")
+						enum_parse_else = "else "
+					enum_parser.append("else {")
+					enum_parser.append("\terr = -1;")
+					enum_parser.append("}")
+					column_token_parser[idx] = enum_parser
 
 				elif dtype == "std::string":
 					#store std::string
@@ -423,10 +437,28 @@ def format_data(format, data):
 			tokenparser = """
 		switch (idx) {"""
 
+			entry_scanner_indent = 3
+
 			#create sscanf entries
-			for idx, entry_scanner in column_token_parser.items():
+			for idx, entry_scanners in column_token_parser.items():
+				if not type(entry_scanners) == list:
+					entry_scanners = entry_scanners.split("\n")
+
+				#more than 1 line for this scanner
+				if len(entry_scanners) > 1:
+					#prepend `entry_scanner_indent` tabs to each line
+					entry_scanners = ( ("\t" * entry_scanner_indent) + entry_line for entry_line in entry_scanners )
+
+					#insert all scanner lines
+					scanner = "\n" + "\n".join(entry_scanners)
+
+					#align the 'break' correctly
+					scanner += "\n" + ("\t" * entry_scanner_indent)
+				else:
+					scanner = " %s " % entry_scanners[0]
+
 				tokenparser += """
-		case {case}: {parser} break;""".format(case=idx, parser=entry_scanner)
+		case {case}:{parser}break;""".format(case=idx, parser=scanner)
 
 			tokenparser += """
 		default:
