@@ -5,6 +5,8 @@ import datafile
 import mediafile
 from util import set_verbosity
 
+#these sections of the dat file will be exported
+default_datfile_sections = "terrain"
 
 if __name__ == "__main__":
 
@@ -13,6 +15,7 @@ if __name__ == "__main__":
 
 	#common options
 	p.add_argument("-v", "--verbose", help="Turn on verbose log messages", action='count', default=0)
+	p.add_argument("--sections", help="Define comma-separated dat file sections to export.", default=default_datfile_sections)
 	#p.set_defaults(handler=lambda x: p.print_help())
 
 	#convert script has multiple subsystems
@@ -23,7 +26,6 @@ if __name__ == "__main__":
 	media_cmd = sp.add_parser("media", help="convert media files to free formats")
 
 	media_cmd.add_argument("-e", "--extrafiles", help = "Extract extra files that are not needed, but useful (mainly visualizations).", action='store_true')
-	media_cmd.add_argument("--no-merge", help="Don't merge frames of slps onto a texture atlas, create single files instead", action='store_true')
 	media_cmd.add_argument("--no-opus", help="Don't use opus conversion for audio files", action='store_true')
 
 	mcmd_g0 = media_cmd.add_mutually_exclusive_group(required=True)
@@ -41,7 +43,7 @@ if __name__ == "__main__":
 	genfile_cmd = sp.add_parser("structs", help="Generate C structures for handling game data")
 	gcmd_g0 = genfile_cmd.add_mutually_exclusive_group(required=True)
 	gcmd_g0.add_argument("-l", "--list-files", help="List all source files that can currently be generated", action='store_true')
-	gcmd_g0.add_argument("-o", "--output", metavar="destination", help="Output for the generated files")
+	gcmd_g0.add_argument("-o", "--output", metavar="destination", help="Output folder for the generated files")
 	genfile_cmd.add_argument("filename", nargs="*", default="*", help="Files to be generated")
 
 	#set handler for file generation
@@ -51,6 +53,7 @@ if __name__ == "__main__":
 	args = p.parse_args()
 
 	set_verbosity(args.verbose)
+	args.sections = args.sections.split(",")
 
 	if args.module == None:
 		p.print_help()

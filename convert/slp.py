@@ -2,9 +2,10 @@ import os
 import sys
 
 from struct import Struct, unpack_from
-from util import NamedObject, dbg, ifdbg, merge_frames, generate_meta_text
+from util import NamedObject, dbg, ifdbg
 from png import PNG
 from PIL import Image, ImageDraw
+from texture import Texture
 
 #little endian byte order
 endianness = "< "
@@ -54,57 +55,20 @@ class SLP:
 
 		dbg("", pop = "slp")
 
-	def draw_frames(self, color_table):
-		#player-specific colors will be in color blue, but with an alpha of 254
-		player_id = 1
-
-		for idx, frame in enumerate(self.frames):
-			png = PNG(player_id, color_table, frame.get_picture_data())
-			png.create()
-
-			#this sprite png only contains one texture, therefore x and y are 0
-			drawn_meta = {
-				'tx': 0,
-				'ty': 0,
-				'tw': frame.info.size[0],
-				'th': frame.info.size[1],
-				'hx': frame.info.hotspot[0],
-				'hy': frame.info.hotspot[1]
-			}
-
-			meta_out = generate_meta_text([drawn_meta])
-
-			yield png, meta_out
-
-	def draw_frames_merged(self, color_table):
+	def get_texture(self, color_table):
 		#generate all frames, them merge them on one big texture
 
 		#player-specific colors will be in color blue, but with an alpha of 254
 		player_id = 1
 
-		max_width  = 0
-		max_height = 0
-
-		slp_pngs = []
+		slp_pngs = list()
 		for frame in self.frames:
-			png = PNG(player_id, color_table, frame.get_picture_data())
+			png = PNG(frame.get_picture_data(), player_id, color_table)
 			png.create()
 
-			if png.width > max_width:
-				max_width = png.width
+			slp_pngs.append((png, frame.info.hotspot))
 
-			if png.height > max_height:
-				max_height = png.height
-
-			slp_pngs.append((png, frame.info.size, frame.info.hotspot))
-
-		#now we collected all sprites and can start merging them to one
-		#big texture atlas.
-		atlas, atlas_meta, (width, height) = merge_frames(slp_pngs, max_width, max_height)
-
-		meta_out = generate_meta_text(atlas_meta)
-
-		return atlas, (width, height), meta_out
+		return Texture(slp_pngs)
 
 	def __str__(self):
 		ret = repr(self) + "\n"

@@ -3,15 +3,18 @@
 #media files conversion stuff
 
 from colortable import ColorTable, PlayerColorTable
+import dataformat
 from drs import DRS
+import filelist
 from os import remove
 import os.path
-import pprint
 from string import Template
 import subprocess
 import util
-from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path, transform_dump, merge_data_dump
+from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path
 
+
+asset_folder = "assets/"
 
 class ExtractionRule:
 	"""
@@ -76,8 +79,11 @@ def media_convert(args):
 		"terrain":   DRS("Data/terrain.drs")
 	}
 
-	palette = ColorTable()
-	palette.fill(drsfiles["interface"].get_file_data('bin', 50500), 50500)
+	palette_id = 50500
+	palette = ColorTable(drsfiles["interface"].get_file_data('bin', palette_id), palette_id)
+
+	#metadata dumping output format, more to come?
+	storeas = ["csv"]
 
 	if write_enabled:
 		from slp import SLP
@@ -86,48 +92,43 @@ def media_convert(args):
 
 		import blendomatic
 		blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
-		blend_data.export("processed/blendomatic.dat/")
+		blend_data.save(os.path.join(asset_folder, "blendomatic.dat/"), storeas)
 
 		#create the dump for the dat file
 		import gamedata.empiresdat
-		datfile = gamedata.empiresdat.EmpiresDat()
-		datfile.fill("Data/empires2_x1_p1.dat")
+		datfile = gamedata.empiresdat.EmpiresDat("Data/empires2_x1_p1.dat")
 
 		#modify the read contents of datfile
 		import fix_data
 		datfile = fix_data.fix_data(datfile)
 
-		#dumping output format, more to come?
-		storeas = ["csv"]
+		#dump metadata information
+		meta_dump = list()
+		meta_dump += datfile.dump(args.sections)
+		meta_dump += blend_data.metadata()
+		meta_dump += player_palette.metadata()
 
-		raw_dump = list()
-		raw_dump += datfile.dump(["terrain"])
-		raw_dump += blend_data.dump()
-		raw_dump += player_palette.dump()
+		#create metadata content from the collected dumps
+		metadata = dataformat.merge_data_dump(dataformat.metadata_format(meta_dump, storeas))
 
-		output_content = merge_data_dump(transform_dump(raw_dump, storeas))
-
-		for file_name, file_data in output_content.items():
-			dbg("writing %s.." % file_name, 1)
-			file_name = file_get_path(file_name, write=True)
-			file_write(file_name, file_data)
-
+		#save the meta files
+		util.file_write_multi(metadata, file_prefix=asset_folder)
 
 		if args.extrafiles:
-
-			palette_visualization = file_get_path('info/colortable.pal.png', write=True)
-			util.mkdirs(os.path.dirname(palette_visualization))
-			palette.gen_image().save(palette_visualization)
-
+			datfile.raw_dump('raw/empires2x1p1.raw')
+			palette.save_visualization('info/colortable.pal.png')
 
 	file_list = dict()
 	media_files_extracted = 0
+
+	sound_list = filelist.SoundList()
 
 	for drsname, drsfile in drsfiles.items():
 		for file_extension, file_id in drsfile.files:
 			if not any((er.matches(drsname, file_id, file_extension) for er in extraction_rules)):
 				continue
 
+			#append this file to the list result
 			if args.list_files:
 				fid = int(file_id)
 				if fid not in file_list:
@@ -136,71 +137,67 @@ def media_convert(args):
 				file_list[fid] += [(drsfile.fname, file_extension)]
 				continue
 
+			#generate output filename where data will be stored in
 			if write_enabled:
-				fbase = file_get_path('processed/' + drsfile.fname + '/' + str(file_id), write=True)
-				fname = fbase + '.' + file_extension
+				fbase = os.path.join(asset_folder, drsfile.fname, "%d" % (file_id))
+				fname = "%s.%s" % (fbase, file_extension)
 
 				dbg("Extracting to " + fname + "...", 2)
-
 				file_data = drsfile.get_file_data(file_extension, file_id)
+			else:
+				continue
 
 			if file_extension == 'slp':
+				s = SLP(file_data)
+				out_file_tmp = "%s: %d.%s" % (drsname, file_id, file_extension)
 
-				if write_enabled:
-					s = SLP(file_data)
-					out_file_tmp = drsname + ": " + str(file_id) + "." + file_extension
+				dbg(out_file_tmp + " -> " + fname + " -> generating atlas", 1)
 
-					if args.no_merge:
-						#create each frame as a separate file
-						for idx, (png, metadata) in enumerate(s.draw_frames(palette)):
-							filename = fname + '.' + str(idx)
-							dbg(out_file_tmp + " -> extracting frame %3d...\r" % (idx), 1, end="")
-							util.mkdirs(os.path.dirname(filename))
-							png.image.save(filename + ".png")
-							file_write(filename + '.docx', metadata)
+				#create exportable texture from the slp
+				texture = s.get_texture(palette)
 
-						dbg(out_file_tmp + " -> saved single frame(s)", 1)
-
-					else:
-						#create a packed texture atlas
-						png, (width, height), metadata = s.draw_frames_merged(palette)
-						dbg(out_file_tmp + " -> " + fname + " -> saving atlas", 1)
-						util.mkdirs(os.path.dirname(fname))
-						png.save(fname + ".png")
-						file_write(fname + '.docx', metadata)
+				#save the image and the corresponding metadata file
+				texture.save(fname, storeas)
 
 			elif file_extension == 'wav':
+				sound_filename = fname
 
-				if write_enabled:
-					file_write(fname, file_data)
+				wav_output_file = file_get_path(fname, write=True)
+				file_write(wav_output_file, file_data)
 
-					if not args.no_opus:
-						#opusenc invokation (TODO: ffmpeg?)
-						opus_convert_call = ['opusenc', fname, fbase + '.opus']
-						dbg("converting... : " + fname + " to opus.", 1)
+				if not args.no_opus:
+					file_extension   = "opus"
+					sound_filename   = "%s.%s" % (fbase, file_extension)
+					opus_output_file = file_get_path(sound_filename, write=True)
 
-						oc = subprocess.Popen(opus_convert_call, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-						oc_out, oc_err = oc.communicate()
+					#opusenc invokation (TODO: ffmpeg?)
+					opus_convert_call = ['opusenc', wav_output_file, opus_output_file]
+					dbg("opus convert: %s -> %s ..." % (fname, sound_filename), 1)
 
-						if ifdbg(2):
-							oc_out = oc_out.decode("utf-8")
-							oc_err = oc_err.decode("utf-8")
+					oc = subprocess.Popen(opus_convert_call, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+					oc_out, oc_err = oc.communicate()
 
-							dbg(oc_out + "\n" + oc_err, 2)
+					if ifdbg(2):
+						oc_out = oc_out.decode("utf-8")
+						oc_err = oc_err.decode("utf-8")
 
-						#remove original wave file
-						remove(fname)
+						dbg(oc_out + "\n" + oc_err, 2)
 
+					#remove original wave file
+					remove(wav_output_file)
+
+				sound_list.append(int(file_id), sound_filename, file_extension)
 
 			else:
 				#this type is unknown or does not require conversion
-
-				if write_enabled:
-					file_write(fname, file_data)
+				file_write(fname, file_data)
 
 			media_files_extracted += 1
 
 	if write_enabled:
+		sound_metadata = dataformat.merge_data_dump(dataformat.metadata_format(sound_list.metadata(), storeas))
+		util.file_write_multi(sound_metadata, file_prefix=asset_folder)
+
 		dbg("media files extracted: %d" % (media_files_extracted), 0)
 
 	if args.list_files:

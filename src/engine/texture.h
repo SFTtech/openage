@@ -5,12 +5,13 @@
 #include <GL/gl.h>
 #include <vector>
 
-#include "shader/shader.h"
-#include "shader/program.h"
+#include "../gamedata/texture.h"
 #include "coord/camgame.h"
 #include "coord/camhud.h"
 #include "coord/tile.h"
 #include "coord/tile3.h"
+#include "shader/program.h"
+#include "shader/shader.h"
 #include "util/file.h"
 
 namespace engine {
@@ -34,25 +35,6 @@ extern GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 //bitmasks for shader modes
 constexpr int PLAYERCOLORED = 1 << 0;
 constexpr int ALPHAMASKED   = 1 << 1;
-
-
-/**
-one sprite, as part of a texture atlas.
-
-this struct stores information about what position and size
-one sprite included in the "texture atlas" has.
-*/
-struct subtexture {
-	unsigned int id;
-
-	/** x,y starting coordinates and width/height of the subtexture */
-	int x, y, w, h;
-
-	/** hotspot coordinates. */
-	int cx, cy;
-
-	int fill(const char *by_line);
-};
 
 
 /**
