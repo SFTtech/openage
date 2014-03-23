@@ -9,7 +9,10 @@ namespace console {
 
 using namespace coord;
 
-Buf::Buf(term dims, term_t scrollback_lines, term_t min_width) {
+Buf::Buf(term dims, term_t scrollback_lines, term_t min_width, buf_char default_char_fmt)
+	:
+	default_char_fmt(default_char_fmt)
+{
 	//init all member variables
 	this->min_width = min_width;
 	if (dims.x < this->min_width) {
@@ -49,7 +52,7 @@ void Buf::reset() {
 
 	this->escaped = false;
 	this->bell = false;
-	this->current_char_fmt = BUF_CHAR_DEFAULT;
+	this->current_char_fmt = this->default_char_fmt;
 
 	this->scrollback_possible = 0;
 	this->scrollback_pos = 0;
@@ -89,7 +92,12 @@ public:
 	bool current_line_is_screen_buf;
 	term current_pos;
 
-	NewBuf(term dims, term_t scrollback_lines) {
+	const buf_char default_char_fmt;
+
+	NewBuf(term dims, term_t scrollback_lines, buf_char default_char_fmt)
+		:
+		default_char_fmt(default_char_fmt)
+	{
 		this->dims = dims;
 		this->scrollback_lines = scrollback_lines;
 
@@ -162,7 +170,7 @@ public:
 	void new_line(bool part_of_screen_buf) {
 		//clear the remaining chars of current line
 		for (; this->current_pos.x < this->dims.x; this->current_pos.x++) {
-			this->chrdata_ptr[this->current_pos.x] = BUF_CHAR_DEFAULT;
+			this->chrdata_ptr[this->current_pos.x] = this->default_char_fmt;
 		}
 
 		move_ptrs_to_next_line();
@@ -176,7 +184,7 @@ public:
 	void new_chr(buf_char c) {
 		this->chrdata_ptr[this->current_pos.x++] = c;
 
-		if (c != BUF_CHAR_DEFAULT) {
+		if (c != this->default_char_fmt) {
 			this->linedata_ptr->type = LINE_REGULAR;
 
 			if (this->current_line_is_screen_buf) {
@@ -266,7 +274,7 @@ void Buf::resize(term new_dims) {
 		}
 
 		for(term_t x = 0; x < old_dims.x; x++) {
-			if (*old_chrdata_pos == BUF_CHAR_DEFAULT) {
+			if (*old_chrdata_pos == this->default_char_fmt) {
 				empty_chars++;
 			} else {
 				while (empty_chars > 0) {
@@ -880,7 +888,7 @@ void Buf::process_sgr_code(const std::vector<int> &params) {
 		int p = params[i];
 		switch (p) {
 		case 0: //reset
-			this->current_char_fmt = BUF_CHAR_DEFAULT;
+			this->current_char_fmt = this->default_char_fmt;
 			break;
 		case 1: //bold
 			this->current_char_fmt.flags |= CHR_BOLD;
@@ -966,7 +974,7 @@ void Buf::process_sgr_code(const std::vector<int> &params) {
 			this->current_char_fmt.fgcol = params[i];
 			break;
 		case 39: //reset foreground color
-			this->current_char_fmt.fgcol = BUF_CHAR_DEFAULT.fgcol;
+			this->current_char_fmt.fgcol = this->default_char_fmt.fgcol;
 			break;
 		case 40:
 		case 41:
@@ -988,7 +996,7 @@ void Buf::process_sgr_code(const std::vector<int> &params) {
 			this->current_char_fmt.bgcol = params[i];
 			break;
 		case 49: //reset background color
-			this->current_char_fmt.bgcol = BUF_CHAR_DEFAULT.bgcol;
+			this->current_char_fmt.bgcol = this->default_char_fmt.bgcol;
 			break;
 		//case 50: not yet standardized
 		case 51: //framed

@@ -1,14 +1,11 @@
 #include "console.h"
 
-#include <vector>
-
 #include "buf.h"
 #include "draw.h"
 #include "../callbacks.h"
 #include "../engine.h"
 #include "../font.h"
 #include "../log.h"
-#include "../util/color.h"
 #include "../util/error.h"
 #include "../util/strings.h"
 
@@ -23,6 +20,8 @@ coord::camhud topright {1, 1};
 Buf *buf = nullptr;
 Font *font = nullptr;
 coord::camhud charsize {1, 1};
+
+std::vector<util::col> termcolors;
 
 void write(const char *text) {
 	buf->write(text);
@@ -81,7 +80,17 @@ bool on_window_resize() {
 	return true;
 }
 
-void init() {
+
+
+void init(const std::vector<palette_color> &colortable) {
+	termcolors.reserve(256);
+	for (auto c : colortable) {
+		termcolors.emplace_back(c);
+	}
+	if (termcolors.size() != 256) {
+		throw Error("Exactly 256 terminal colors are required.");
+	}
+
 	engine::callbacks::on_input.push_back(console::handle_inputs);
 	engine::callbacks::on_engine_tick.push_back(console::on_engine_tick);
 	engine::callbacks::on_drawhud.push_back(console::draw_console);

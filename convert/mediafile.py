@@ -4,6 +4,7 @@
 
 from colortable import ColorTable, PlayerColorTable
 from drs import DRS
+import hardcoded.termcolors
 from os import remove
 import os.path
 import pprint
@@ -79,6 +80,9 @@ def media_convert(args):
 	palette = ColorTable()
 	palette.fill(drsfiles["interface"].get_file_data('bin', 50500), 50500)
 
+	termcolortable = ColorTable()
+	termcolortable.fill_from_array(hardcoded.termcolors.urxvtcoltable, "termcolors")
+
 	if write_enabled:
 		from slp import SLP
 
@@ -104,6 +108,7 @@ def media_convert(args):
 		raw_dump += datfile.dump(["terrain"])
 		raw_dump += blend_data.dump()
 		raw_dump += player_palette.dump()
+		raw_dump += termcolortable.dump()
 
 		output_content = merge_data_dump(transform_dump(raw_dump, storeas))
 

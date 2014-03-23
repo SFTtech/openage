@@ -19,6 +19,10 @@ class ColorTable:
 	def __init__(self):
 		pass
 
+	def fill_from_array(self, ar, filename):
+		self.palette = [tuple(e) for e in ar]
+		self.data_table_name = filename
+
 	def fill(self, data, file_id):
 		self.file_id = file_id
 		self.data_table_name = "palette_%d" % self.file_id

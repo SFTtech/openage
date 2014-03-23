@@ -8,23 +8,19 @@
 #include "../coord/camhud.h"
 #include "../util/color.h"
 #include "../font.h"
+#include "../../gamedata/color.h"
 
 namespace engine {
 namespace console {
-
-/**
- * is the console currently visible?
- */
 
 extern coord::camhud bottomleft;
 extern coord::camhud topright;
 extern coord::camhud charsize;
 
-extern util::col fgcol;
-extern util::col bgcol;
+extern std::vector<util::col> termcolors;
 
 //init functions
-void init();
+void init(const std::vector<palette_color> &termcolors);
 void destroy();
 
 //callback functions

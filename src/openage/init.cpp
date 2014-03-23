@@ -42,10 +42,6 @@ constexpr int terrain_data[16 * 16] = {
 };
 
 void init() {
-	if (chdir(args.data_directory) == -1) {
-		throw engine::Error("Failed to change directory: %s", strerror(errno));
-	}
-
 	constexpr size_t max_dirname_length = 1024;
 	char current_dir_name[max_dirname_length];
 

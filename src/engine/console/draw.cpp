@@ -10,6 +10,8 @@
 
 #include <unistd.h>
 
+#include "console.h"
+
 using namespace engine::coord;
 
 namespace engine {
@@ -21,6 +23,10 @@ void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud cha
 	coord::camhud chartopleft;
 	coord::pixel_t ascender = font->internal_font->Ascender();
 
+	uint32_t sdl_tickcount = SDL_GetTicks();
+	bool fastblinking_visible = (sdl_tickcount % 600 < 300);
+	bool slowblinking_visible = (sdl_tickcount % 300 < 150);
+
 	for (term_t x = 0; x < buf->dims.x; x++) {
 		chartopleft.x = topleft.x + charsize.x * x;
 
@@ -28,7 +34,27 @@ void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud cha
 			chartopleft.y = topleft.y - charsize.y * y;
 			buf_char p = *(buf->chrdataptr({x, y - buf->scrollback_pos}));
 
-			glColor4f(0, 0, 0, 0.8);
+			int fgcolid, bgcolid;
+
+			bool cursor_visible_at_current_pos = buf->cursorpos == term{x, y - buf->scrollback_pos};
+			cursor_visible_at_current_pos &= buf->cursor_visible;
+			if ((p.flags & CHR_NEGATIVE) xor cursor_visible_at_current_pos) {
+				bgcolid = p.bgcol;
+				fgcolid = p.fgcol;
+			} else {
+				bgcolid = p.fgcol;
+				fgcolid = p.bgcol;
+			}
+			if (
+				(p.flags & CHR_INVISIBLE) or
+				(p.flags & CHR_BLINKING and not slowblinking_visible) or
+				(p.flags & CHR_BLINKINGFAST and not fastblinking_visible)
+			) {
+				fgcolid = bgcolid;
+			}
+
+			termcolors[p.bgcol].use(0.8);
+
 			glBegin(GL_QUADS);
 			{
 				glVertex3f(chartopleft.x, chartopleft.y, 0);
@@ -38,7 +64,7 @@ void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud cha
 			}
 			glEnd();
 
-			glColor4f(1, 1, 0, 1);
+			termcolors[p.fgcol].use(1);
 			char utf8buf[5];
 			if (util::utf8_encode(p.cp, utf8buf) == 0) {
 				//unrepresentable character (question mark in black rhombus)
@@ -56,7 +82,7 @@ void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 	if (clear) {
 		fd->puts("\x1b[J");
 	}
-	//draw top line
+	//draw top line, including title
 	for (term_t x = 0; x < buf->dims.x; x++) {
 		if (x >= 3 && (x - 3) < (int) buf->title.size()) {
 			fd->putcp(buf->title[x - 3]);
