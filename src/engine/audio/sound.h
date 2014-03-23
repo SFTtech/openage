@@ -12,7 +12,7 @@ namespace audio {
 // forward declaration of AudioManager
 class AudioManager;
 
-class Sound {
+class SoundImpl {
 private:
 	std::shared_ptr<Resource> resource;
 
@@ -20,20 +20,40 @@ private:
 	uint32_t position;
 
 public:
-	Sound(std::shared_ptr<Resource> resource, int32_t volume=128);
-	~Sound() = default;
+	SoundImpl(std::shared_ptr<Resource> resource, int32_t volume=128);
+	~SoundImpl() = default;
 
 	category_t get_category() const;
 	int get_id() const;
 
 private:
 	/*
-	 * Mix this sound
+	 * Mix this sound and return whether it has finished or not.
 	 */
 	bool mix_audio(int32_t *stream, int len);
 
 	friend class AudioManager;
 };
+
+class Sound {
+private:
+	AudioManager *audio_manager;
+	std::shared_ptr<SoundImpl> sound_impl;
+
+public:
+	category_t get_category() const;
+	int get_id() const;
+
+	void play();
+	void stop();
+
+private:
+	Sound(AudioManager *audio_manager, std::shared_ptr<SoundImpl> sound_impl);
+
+	friend class AudioManager;
+};
+
+
 
 }
 }

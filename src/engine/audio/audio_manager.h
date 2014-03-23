@@ -36,6 +36,9 @@ private:
 	std::unordered_map<std::tuple<category_t,int>,std::shared_ptr<Resource>>
 			resources;
 
+	std::unordered_map<category_t,std::vector<std::shared_ptr<SoundImpl>>>
+			playing_sounds;
+
 public:
 	AudioManager(int freq, SDL_AudioFormat format, uint8_t channels,
 			uint16_t samples);
@@ -56,6 +59,8 @@ public:
 
 	void load_resources(const std::vector<sound_file> &sound_files);
 
+	Sound get_sound(category_t category, int id);
+
 	void audio_callback(int16_t *stream, int len);
 
 	/**
@@ -63,6 +68,15 @@ public:
 	 */
 	SDL_AudioSpec get_device_spec() const;
 
+private:
+	void add_sound(std::shared_ptr<SoundImpl> sound);
+	void remove_sound(std::shared_ptr<SoundImpl> sound);
+
+	friend class Sound;
+
+// static functions
+
+public:
 	/**
 	 * Returns a vector of all available device names.
 	 */
@@ -77,6 +91,7 @@ public:
 	 * Returns the name of the currently used driver.
 	 */
 	static std::string get_current_driver();
+
 };
 
 }

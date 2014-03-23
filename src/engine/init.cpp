@@ -17,6 +17,8 @@
 #include "input.h"
 #include "log.h"
 
+#include "../gamedata/sound_file.h"
+
 
 namespace engine {
 
@@ -102,7 +104,27 @@ void init(const char *windowtitle) {
 		throw Error{"No audio devices found"};
 	}
 
+	std::vector<sound_file> sound_files;
+	sound_files.push_back({audio_category_t::GAME, 0, "/tmp/0.opus",
+			audio_format_t::OPUS, audio_loader_policy_t::IN_MEMORY});
+	sound_files.push_back({audio_category_t::GAME, 1, "/tmp/1.opus",
+			audio_format_t::OPUS, audio_loader_policy_t::IN_MEMORY});
+	sound_files.push_back({audio_category_t::GAME, 2, "/tmp/2.opus",
+			audio_format_t::OPUS, audio_loader_policy_t::IN_MEMORY});
+	sound_files.push_back({audio_category_t::GAME, 3, "/tmp/3.opus",
+			audio_format_t::OPUS, audio_loader_policy_t::IN_MEMORY});
+
 	audio_manager = new audio::AudioManager(48000, AUDIO_S16LSB, 2, 4096);
+	audio_manager->load_resources(sound_files);
+
+	auto sound0 = audio_manager->get_sound(audio::category_t::GAME, 0);
+	auto sound1 = audio_manager->get_sound(audio::category_t::GAME, 1);
+	auto sound2 = audio_manager->get_sound(audio::category_t::GAME, 2);
+	auto sound3 = audio_manager->get_sound(audio::category_t::GAME, 3);
+	sound0.play();
+	sound1.play();
+	sound2.play();
+	sound3.play();
 }
 
 /**

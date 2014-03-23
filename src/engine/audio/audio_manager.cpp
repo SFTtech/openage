@@ -45,6 +45,13 @@ AudioManager::AudioManager(const std::string &device_name, int freq,
 		throw Error{"Error opening audio device: %s", SDL_GetError()};	
 	}
 
+	// initialize playing sounds vectors
+	using sound_vector = std::vector<std::shared_ptr<SoundImpl>>;
+	playing_sounds.insert({category_t::GAME, sound_vector{}});
+	playing_sounds.insert({category_t::INTERFACE, sound_vector{}});
+	playing_sounds.insert({category_t::MUSIC, sound_vector{}});
+	playing_sounds.insert({category_t::TAUNT, sound_vector{}});
+
 	mix_buffer.reset(new int32_t[4 * device_spec.samples * 
 			device_spec.channels]);
 
@@ -77,13 +84,80 @@ void AudioManager::load_resources(const std::vector<sound_file> &sound_files) {
 	}
 }
 
+Sound AudioManager::get_sound(category_t category, int id) {
+	auto resource = resources.find(std::make_tuple(category, id));
+	if (resource == std::end(resources)) {
+		throw Error{"sound resource does not exist: category=%d, id=%d",
+				static_cast<int>(category), id};
+	}
+
+	auto sound_impl = std::make_shared<SoundImpl>(resource->second);
+	return Sound{this, sound_impl};
+}
+
+void remove_from_vector(std::vector<std::shared_ptr<SoundImpl>> &v, size_t i) {
+	// current sound is the last in the list, so just remove it
+	if (i == v.size()-1) {
+		v.pop_back();
+	// current sound is in the middle of the list, so it will be
+	// exchanged with the last sound and the removed
+	} else {
+		v[i] = v.back();
+		v.pop_back();
+	}
+}
+
 void AudioManager::audio_callback(int16_t *stream, int len) {
 	std::memset(mix_buffer.get(), 0, len*4);
 
-	// write our mixed buffer to the output stream
+	// iterate over all categories
+	for (auto &entry : playing_sounds) {
+		auto &playing_list = entry.second;
+		// iterate over all sounds in one category
+		for (size_t i = 0; i < playing_list.size(); i++) {
+			auto &sound = playing_list[i];
+			auto sound_finished = sound->mix_audio(mix_buffer.get(), len);
+			// TODO set sound state
+			// if the sound is finished, it should be removed from the playing
+			// list
+			if (sound_finished) {
+				remove_from_vector(playing_list, i);
+				i--;
+			}
+		}
+	}
+
+	// write the mix buffer to the output stream and adjust volume
 	for (int i = 0; i < len; i++) {
 		stream[i] = static_cast<int16_t>(mix_buffer[i]/256);
 	}
+}
+
+void AudioManager::add_sound(std::shared_ptr<SoundImpl> sound) {
+	SDL_LockAudioDevice(device_id);
+
+	auto category = sound->get_category();
+	auto &playing_list = playing_sounds.find(category)->second;
+	// TODO probably check if sound already exists in playing list
+	playing_list.push_back(sound);
+
+	SDL_UnlockAudioDevice(device_id);
+}
+
+void AudioManager::remove_sound(std::shared_ptr<SoundImpl> sound) {
+	SDL_LockAudioDevice(device_id);
+
+	auto category = sound->get_category();
+	auto &playing_list = playing_sounds.find(category)->second;
+
+	for (size_t i = 0; i < playing_list.size(); i++) {
+		if (playing_list[i] == sound) {
+			remove_from_vector(playing_list, i);
+			break;
+		}
+	}
+
+	SDL_UnlockAudioDevice(device_id);
 }
 
 SDL_AudioSpec AudioManager::get_device_spec() const {
