@@ -9,7 +9,10 @@ namespace console {
 
 using namespace coord;
 
-Buf::Buf(term dims, term_t scrollback_lines, term_t min_width) {
+Buf::Buf(term dims, term_t scrollback_lines, term_t min_width, buf_char default_char_fmt)
+	:
+	default_char_fmt(default_char_fmt)
+{
 	//init all member variables
 	this->min_width = min_width;
 	if (dims.x < this->min_width) {
@@ -49,7 +52,7 @@ void Buf::reset() {
 
 	this->escaped = false;
 	this->bell = false;
-	this->current_char_fmt = BUF_CHAR_DEFAULT;
+	this->current_char_fmt = this->default_char_fmt;
 
 	this->scrollback_possible = 0;
 	this->scrollback_pos = 0;
@@ -89,7 +92,12 @@ public:
 	bool current_line_is_screen_buf;
 	term current_pos;
 
-	NewBuf(term dims, term_t scrollback_lines) {
+	const buf_char default_char_fmt;
+
+	NewBuf(term dims, term_t scrollback_lines, buf_char default_char_fmt)
+		:
+		default_char_fmt(default_char_fmt)
+	{
 		this->dims = dims;
 		this->scrollback_lines = scrollback_lines;
 
@@ -162,7 +170,7 @@ public:
 	void new_line(bool part_of_screen_buf) {
 		//clear the remaining chars of current line
 		for (; this->current_pos.x < this->dims.x; this->current_pos.x++) {
-			this->chrdata_ptr[this->current_pos.x] = BUF_CHAR_DEFAULT;
+			this->chrdata_ptr[this->current_pos.x] = this->default_char_fmt;
 		}
 
 		move_ptrs_to_next_line();
@@ -176,7 +184,7 @@ public:
 	void new_chr(buf_char c) {
 		this->chrdata_ptr[this->current_pos.x++] = c;
 
-		if (c != BUF_CHAR_DEFAULT) {
+		if (c != this->default_char_fmt) {
 			this->linedata_ptr->type = LINE_REGULAR;
 
 			if (this->current_line_is_screen_buf) {
@@ -266,7 +274,7 @@ void Buf::resize(term new_dims) {
 		}
 
 		for(term_t x = 0; x < old_dims.x; x++) {
-			if (*old_chrdata_pos == BUF_CHAR_DEFAULT) {
+			if (*old_chrdata_pos == this->default_char_fmt) {
 				empty_chars++;
 			} else {
 				while (empty_chars > 0) {
@@ -880,7 +888,7 @@ void Buf::process_sgr_code(const std::vector<int> &params) {
 		int p = params[i];
 		switch (p) {
 		case 0: //reset
-			this->current_char_fmt = BUF_CHAR_DEFAULT;
+			this->current_char_fmt = this->default_char_fmt;
 			break;
 		case 1: //bold
 			this->current_char_fmt.flags |= CHR_BOLD;
@@ -966,7 +974,7 @@ void Buf::process_sgr_code(const std::vector<int> &params) {
 			this->current_char_fmt.fgcol = params[i];
 			break;
 		case 39: //reset foreground color
-			this->current_char_fmt.fgcol = BUF_CHAR_DEFAULT.fgcol;
+			this->current_char_fmt.fgcol = this->default_char_fmt.fgcol;
 			break;
 		case 40:
 		case 41:
@@ -988,7 +996,7 @@ void Buf::process_sgr_code(const std::vector<int> &params) {
 			this->current_char_fmt.bgcol = params[i];
 			break;
 		case 49: //reset background color
-			this->current_char_fmt.bgcol = BUF_CHAR_DEFAULT.bgcol;
+			this->current_char_fmt.bgcol = this->default_char_fmt.bgcol;
 			break;
 		//case 50: not yet standardized
 		case 51: //framed
@@ -1116,85 +1124,6 @@ buf_line *Buf::linedataptr(term_t lineno) {
 		result -= this->linedata_size;
 	}
 	return result;
-}
-
-#include <stdio.h>
-void Buf::to_stdout(bool clear) {
-	if (clear) {
-		//clear stdout
-		printf("\x1b[2J");
-	}
-	//move cursor, draw top left corner
-	printf("\x1b[H\u250c");
-	//draw top line
-	for (term_t x = 0; x < this->dims.x; x++) {
-		printf("\u2500");
-	}
-	//draw top right corner
-	printf("\u2510\n");
-	//calculate pos/size of scrollbar
-	//scrollbar_top is the first line that has the scrollbar displayed
-	//scrollbar_bottom is the first line that doesn't have the scrollbar displayed
-	term_t lines_total = this->scrollback_possible + this->dims.y;
-	term_t pos_total = this->scrollback_possible - this->scrollback_pos;
-	term_t scrollbar_top = (this->dims.y * pos_total) / lines_total;
-	term_t scrollbar_bottom = (this->dims.y * (pos_total + this->dims.y)) / lines_total;
-	if (scrollbar_bottom == scrollbar_top) {
-		if (scrollbar_bottom < this->dims.y) {
-			scrollbar_bottom++;
-		} else {
-			scrollbar_top--;
-		}
-	}
-
-	//print lines -scrollback_pos to dims.y - scrollback_pos - 1
-	for (term_t y = 0; y < this->dims.y; y++) {
-		//draw left line
-		printf("\u2502");
-		//draw chars of this line
-		for (term_t x = 0; x < this->dims.x; x++) {
-			buf_char p = *(this->chrdataptr({x, y - this->scrollback_pos}));
-			if (p.cp < 32) {
-				p.cp = '?';
-			}
-			printf("\x1b[38;5;%dm\x1b[48;5;%dm", p.fgcol, p.bgcol);
-			if (p.flags & CHR_BOLD) {
-				printf("\x1b[1m");
-			}
-			if (p.flags & CHR_BLINKING) {
-				printf("\x1b[5m");
-			}
-			bool cursor_visible_at_current_pos = this->cursorpos == term{x, y - this->scrollback_pos};
-			cursor_visible_at_current_pos &= this->cursor_visible;
-			if ((p.flags & CHR_NEGATIVE) xor cursor_visible_at_current_pos) {
-				//print char negative
-				printf("\x1b[7m");
-			}
-			char utf8buf[5];
-			if (util::utf8_encode(p.cp, utf8buf) == 0) {
-				utf8buf[0] = '?';
-				utf8buf[1] = '\0';
-			}
-			printf("%s", utf8buf);
-			printf("\x1b[m");
-		}
-		//draw right line
-		if (y >= scrollbar_top and y < scrollbar_bottom) {
-			//draw scrollbar on this part of right line
-			printf("\u2503");
-		} else {
-			printf("\u2502");
-		}
-		printf("\n");
-	}
-	//draw bottom left corner
-	printf("\u2514");
-	//draw bottom line
-	for (term_t x = 0; x < this->dims.x; x++) {
-		printf("\u2500");
-	}
-	//draw bottom right corner
-	printf("\u2518\n");
 }
 
 } //namespace console

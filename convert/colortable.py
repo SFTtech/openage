@@ -16,7 +16,17 @@ class ColorTable:
 		4: {"a":   "uint8_t"},
 	}
 
-	def __init__(self, data, file_id):
+	def __init__(self, data, filename, by_array=False):
+		if by_array:
+			self.fill_from_array(data, filename)
+		else:
+			self.fill(data, filename)
+
+	def fill_from_array(self, ar, filename):
+		self.palette = [tuple(e) for e in ar]
+		self.data_table_name = filename
+
+	def fill(self, data, file_id):
 		self.file_id = file_id
 		self.data_table_name = "palette_%d" % self.file_id
 

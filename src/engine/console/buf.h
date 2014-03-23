@@ -72,8 +72,6 @@ struct buf_char {
 	}
 };
 
-constexpr buf_char BUF_CHAR_DEFAULT {0x20, 248, 0, 0};
-
 using linetype_t = uint8_t;
 
 /**
@@ -259,6 +257,14 @@ public:
 	buf_char current_char_fmt;
 
 	/**
+	 * the default buf char, which will be used for filling
+	 * new lines, or determining whether a line is empty.
+	 * should have space (0x20) as its char, and the desired
+	 * default values for fgcol and bgcol.
+	 */
+	const buf_char default_char_fmt;
+
+	/**
 	 * how far it's currently possible to scroll back.
 	 * this value steadily increases when the buffer advances.
 	 *
@@ -307,7 +313,8 @@ public:
 	 */
 	void write(char c);
 
-	Buf(coord::term dims, coord::term_t scrollback_lines, coord::term_t min_width);
+	Buf(coord::term dims, coord::term_t scrollback_lines, coord::term_t min_width,
+	 buf_char default_char_fmt = {0x20, 254, 0, 0});
 	~Buf();
 
 	/*
@@ -330,15 +337,11 @@ public:
 	 */
 	void scroll(coord::term_t lines);
 
-	/**
-	 * prints the buffer content to stdout
-	 *
-	 * clear
-	 *   if true, the whole content of stdout is cleared
-	 */
-	void to_stdout(bool clear);
+	//the following members could/should be private, but we don't believe in withholding
+	//crucial information from the public. besides, sooner or later some whistleblower
+	//would release the pointers anyway.
+	//also, I don't believe in friends.
 
-private:
 	/**
 	 * utf-8 state-machine that reads input bytes
 	 * and outputs unicode codepoints
