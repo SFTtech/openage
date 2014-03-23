@@ -6,6 +6,7 @@ from colortable import ColorTable, PlayerColorTable
 import dataformat
 from drs import DRS
 import filelist
+import hardcoded.termcolors
 from os import remove
 import os.path
 from string import Template
@@ -85,6 +86,8 @@ def media_convert(args):
 	#metadata dumping output format, more to come?
 	storeas = ["csv"]
 
+	termcolortable = ColorTable(hardcoded.termcolors.urxvtcoltable, "termcolors", by_array=True)
+
 	if write_enabled:
 		from slp import SLP
 
@@ -107,6 +110,7 @@ def media_convert(args):
 		meta_dump += datfile.dump(args.sections)
 		meta_dump += blend_data.metadata()
 		meta_dump += player_palette.metadata()
+		meta_dump += termcolortable.metadata()
 
 		#create metadata content from the collected dumps
 		metadata = dataformat.merge_data_dump(dataformat.metadata_format(meta_dump, storeas))

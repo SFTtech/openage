@@ -39,7 +39,7 @@ struct chunk;
 struct chunk_delta;
 
 /* pixel-based vector types */
-using pixel_t = int16_t;
+using pixel_t = int32_t;
 
 struct window;
 struct window_delta;

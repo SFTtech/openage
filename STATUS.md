@@ -19,3 +19,7 @@ features
   * draw selected terrain (left click)
 * map scrolling (arrow keys)
 * screenshots (F2) -> /tmp/openage_00.png
+* ingame console
+  * open with backtick
+  * readonly log view at the moment
+  * very inefficient proof of concept rendering

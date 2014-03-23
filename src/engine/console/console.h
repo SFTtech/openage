@@ -3,26 +3,31 @@
 
 #include <vector>
 
+#include <SDL2/SDL.h>
+
 #include "../coord/camhud.h"
 #include "../util/color.h"
 #include "../font.h"
+#include "../../gamedata/color.h"
 
 namespace engine {
 namespace console {
 
-/**
- * is the console currently visible?
- */
-extern bool visible;
-
 extern coord::camhud bottomleft;
 extern coord::camhud topright;
-
-extern util::col bgcol, fgcol;
-
-extern std::vector<const char *> messages;
-extern Font *font;
 extern coord::camhud charsize;
+
+extern std::vector<util::col> termcolors;
+
+//init functions
+void init(const std::vector<palette_color> &termcolors);
+void destroy();
+
+//callback functions
+bool on_engine_tick();
+bool draw_console();
+bool handle_inputs(SDL_Event *e);
+bool on_window_resize();
 
 /**
  * prints the given text on the console
