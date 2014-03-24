@@ -26,8 +26,16 @@ void Sound::set_volume(int32_t volume) {
 	sound_impl->volume = volume;
 }
 
+int32_t Sound::get_volume() const {
+	return sound_impl->volume;
+}
+
 void Sound::set_looping(bool looping) {
 	sound_impl->looping = looping;
+}
+
+bool Sound::is_looping() const {
+	return sound_impl->looping;
 }
 
 void Sound::play() {
@@ -45,7 +53,7 @@ void Sound::pause() {
 	}
 }
 
-void Sound::unpause() {
+void Sound::resume() {
 	if (!sound_impl->playing) {
 		audio_manager->add_sound(sound_impl);
 		sound_impl->playing = true;
@@ -58,6 +66,10 @@ void Sound::stop() {
 		audio_manager->remove_sound(sound_impl);
 		sound_impl->playing = false;
 	}
+}
+
+bool Sound::is_playing() const {
+	return sound_impl->playing;
 }
 
 // here begins the internal sound implementation

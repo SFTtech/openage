@@ -46,20 +46,23 @@ public:
 	int get_id() const;
 
 	void set_volume(int32_t volume);
+	int32_t get_volume() const;
+
 	void set_looping(bool looping);	
+	bool is_looping() const;
 
 	void play();
 	void pause();
-	void unpause();
+	void resume();
 	void stop();
+
+	bool is_playing() const;
 
 private:
 	Sound(AudioManager *audio_manager, std::shared_ptr<SoundImpl> sound_impl);
 
 	friend class AudioManager;
 };
-
-
 
 }
 }
