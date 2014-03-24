@@ -4,6 +4,7 @@
 #include <unordered_set>
 
 #include "../engine/terrain.h"
+#include "../engine/audio/sound.h"
 
 namespace openage {
 
@@ -24,6 +25,8 @@ extern engine::Terrain *terrain;
 
 //TODO this is here temporarily (obviously...)
 extern engine::Texture *gaben, *university;
+
+extern engine::audio::Sound *build_uni, *destroy_uni0, *destroy_uni1;
 
 } //namespace openage
 

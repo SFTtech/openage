@@ -118,7 +118,6 @@ void AudioManager::audio_callback(int16_t *stream, int len) {
 		for (size_t i = 0; i < playing_list.size(); i++) {
 			auto &sound = playing_list[i];
 			auto sound_finished = sound->mix_audio(mix_buffer.get(), len);
-			// TODO set sound state
 			// if the sound is finished, it should be removed from the playing
 			// list
 			if (sound_finished) {

@@ -13,26 +13,27 @@ namespace audio {
 class AudioManager;
 
 class SoundImpl {
-private:
+public:
 	std::shared_ptr<Resource> resource;
 
 	int32_t volume;
 	uint32_t position;
 
-public:
-	SoundImpl(std::shared_ptr<Resource> resource, int32_t volume=128);
+	bool playing;
+	bool looping;
+
 	~SoundImpl() = default;
 
 	category_t get_category() const;
 	int get_id() const;
 
-private:
+	SoundImpl(std::shared_ptr<Resource> resource, int32_t volume=128);
+
 	/*
 	 * Mix this sound and return whether it has finished or not.
 	 */
 	bool mix_audio(int32_t *stream, int len);
 
-	friend class AudioManager;
 };
 
 class Sound {
@@ -44,7 +45,12 @@ public:
 	category_t get_category() const;
 	int get_id() const;
 
+	void set_volume(int32_t volume);
+	void set_looping(bool looping);	
+
 	void play();
+	void pause();
+	void unpause();
 	void stop();
 
 private:

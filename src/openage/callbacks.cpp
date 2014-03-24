@@ -72,6 +72,12 @@ bool input_handler(SDL_Event *e) {
 			if (obj != nullptr) {
 				obj->remove();
 				buildings.erase(obj);
+				auto rand = util::random_range(0,1);
+				if (rand == 0) {
+					destroy_uni0->play();
+				} else {
+					destroy_uni1->play();
+				}
 				delete obj;
 			} else {
 				TerrainObject *newuni = new TerrainObject(university, util::random_range(1, 8));
@@ -79,6 +85,7 @@ bool input_handler(SDL_Event *e) {
 				if (newuni->place(terrain, mousepos_tile)) {
 					newuni->set_ground(editor_current_terrain, 0);
 					buildings.insert(newuni);
+					build_uni->play();
 				} else {
 					delete newuni;
 				}

@@ -109,12 +109,9 @@ void init(const char *windowtitle) {
 	audio_manager = new audio::AudioManager(48000, AUDIO_S16LSB, 2, 4096);
 	audio_manager->load_resources(sound_files);
 
-	auto sound0 = audio_manager->get_sound(audio::category_t::GAME, 5045);
-	auto sound1 = audio_manager->get_sound(audio::category_t::GAME, 5127);
-	auto sound2 = audio_manager->get_sound(audio::category_t::GAME, 5309);
-	sound0.play();
-	sound1.play();
-	sound2.play();
+	//auto sound0 = audio_manager->get_sound(audio::category_t::GAME, 5045);
+	//auto sound1 = audio_manager->get_sound(audio::category_t::GAME, 5127);
+	//auto sound2 = audio_manager->get_sound(audio::category_t::GAME, 5309);
 }
 
 /**

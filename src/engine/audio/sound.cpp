@@ -22,12 +22,42 @@ int Sound::get_id() const {
 	return sound_impl->get_id();
 }
 
+void Sound::set_volume(int32_t volume) {
+	sound_impl->volume = volume;
+}
+
+void Sound::set_looping(bool looping) {
+	sound_impl->looping = looping;
+}
+
 void Sound::play() {
-	audio_manager->add_sound(sound_impl);
+	sound_impl->position = 0;
+	if (!sound_impl->playing) {
+		audio_manager->add_sound(sound_impl);
+		sound_impl->playing = true;
+	}
+}
+
+void Sound::pause() {
+	if (sound_impl->playing) {
+		audio_manager->remove_sound(sound_impl);
+		sound_impl->playing = false;
+	}
+}
+
+void Sound::unpause() {
+	if (!sound_impl->playing) {
+		audio_manager->add_sound(sound_impl);
+		sound_impl->playing = true;
+	}
 }
 
 void Sound::stop() {
-	audio_manager->remove_sound(sound_impl);
+	sound_impl->position = 0;
+	if (sound_impl->playing) {
+		audio_manager->remove_sound(sound_impl);
+		sound_impl->playing = false;
+	}
 }
 
 // here begins the internal sound implementation
@@ -36,7 +66,9 @@ SoundImpl::SoundImpl(std::shared_ptr<Resource> resource, int32_t volume)
 		:
 		resource{resource},
 		volume{volume},
-		position{0} {
+		position{0},
+		playing{false},
+		looping{false} {
 }
 
 category_t SoundImpl::get_category() const {
@@ -53,8 +85,14 @@ bool SoundImpl::mix_audio(int32_t *stream, int len) {
 	std::tie(samples, num_samples) = resource->get_samples(position, len);
 
 	if (num_samples == 0) {
-		return true;
-	} else if(samples == nullptr) {
+		if (looping) {
+			position = 0;
+			return false;
+		} else {
+			playing = false;
+			return true;
+		}
+	} else if (samples == nullptr) {
 		return false;
 	}
 
