@@ -97,6 +97,13 @@ def media_convert(args):
 		blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
 		blend_data.save(os.path.join(asset_folder, "blendomatic.dat/"), storeas)
 
+		from pefile import PEFile
+		from stringresource import StringResource
+		stringres = StringResource()
+		stringres.fill_from(PEFile("language.dll"))
+		stringres.fill_from(PEFile("language_x1.dll"))
+		stringres.fill_from(PEFile("language_x1_p1.dll"))
+
 		#create the dump for the dat file
 		import gamedata.empiresdat
 		datfile = gamedata.empiresdat.EmpiresDat("Data/empires2_x1_p1.dat")
@@ -111,6 +118,7 @@ def media_convert(args):
 		meta_dump += blend_data.metadata()
 		meta_dump += player_palette.metadata()
 		meta_dump += termcolortable.metadata()
+		meta_dump += stringres.dump()
 
 		#create metadata content from the collected dumps
 		metadata = dataformat.merge_data_dump(dataformat.metadata_format(meta_dump, storeas))
