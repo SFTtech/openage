@@ -69,7 +69,7 @@ def format_data(format, data):
 	data has to be a list.
 	each entry equals a data table to create (called data_export for reference).
 	the corresponding value is a dict
-	it has five members:
+	it has these members:
 		name_table_file, name_struct_file, name_struct, format and data
 			name is the data structure name to create
 			format is a dict, it specifies the C type of a column.
@@ -81,76 +81,86 @@ def format_data(format, data):
 			"type"=>ctype: this member will have this C type
 			"type"=>"subdata": this member is a list of submembers, which fill be
 				resolved separately and referencable by the parent later
-				"refto"=>"key": name the subdata after this local key's value
-					not set: use a simple incremented number for the reference
+				this allows nesting and cross referencing data structures.
+				settings:
+				"ref_type"=>class: data class of the subdata column
+				"ref_to"=>"key": add the local key's value to name the reference
+					not set: just use a simple incremented number for the reference
 			"type"=>"enum": this member is a enum. further settings:
 				"name"=>"my_enum": the enum name
-				"values"=>{"VAL0", "VAL1"}: the possible enum values
+				"values"=>["VAL0", "VAL1", ...]: the possible enum values (list or set)
 					only required for first-time definition
 				"xref": "filename": assume this enum to be defined in "filename"
+					"filename" may be None when the definition is in the same file
 				"filename"=>"header_name": the header where the enum will be placed in
-					only required for first-time definition
+					when ommitted, use 'name_struct_file'
 		additional keys are:
 			"length": (optional) to specify array lengths, default 1
 				e.g. "type"=>"char" and "length"=>40, would produce "char columnname[40];"
 	data is a list, it stores the table rows.
 	a list entry (a row) contains dicts: "column name": column value (for this row)
-	if "column name" was defined as "subdata" type, the column value is a list
-	of objects that have a dump() method.
-	this method has to generate a data_export dict again.
 
-	i know you did not understand the format specification, so heres an
+	this input is transformed to filename-grouped output
+	so that real files can be created afterwards
 
-	example:
+	i know you did not understand the format specification, so heres an example:
+
+	input:
 	data = [
 		{
-			"name_table_file":   "awesome_data",
-			"name_struct_file":  "awesome_header",
-			"name_struct":       "awesome_stuff",
-			"struct_description: "you can't believe how epic this struct is!",
-			"format" : {
-				0: {"column0": "int"},
-				1: {"lol_id":  "int"},
-				2: {"reference": {"type": "subdata", "refto": "lol_id"}}
+			"name_table_file":   "civilisation_data",
+			"name_struct_file":  "gamedata_header",
+			"name_struct":       "civilisation",
+			"struct_description: "represents one civilisation.",
+			"format": {
+				0: {"civ_id":  "int"},
+				1: {"mode":    {"type": "enum", "name": "civ_rating", "values": ["boring", "epic", "lame"] }},
+				2: {"unit":    {"type": "subdata", "ref_to": "civ_id", "ref_type": Unit }},
 			},
 			"data": [
-				{ "column0": 1337, "lol_id": 42, "reference": [a] },
-				{ "column0":   10, "lol_id": 42, "reference": [b, c] },
-				{ "column0":  235, "lol_id": 13, "reference": [] },
+				{ "civ_id": 1337, "mode": "epic",   "unit": a },
+				{ "civ_id":   42, "mode": "boring", "unit": b },
+				{ "civ_id":  235, "mode": "boring", "unit": c },
 			],
 
-			#where a.dump(), b.dump() and c.dump() must generate something like:
-			{
-				"name_table_file":   "referenced_data",
-				"name_struct_file":  "awesome_header",
-				"name_struct":       "refdata_demo",
-				"struct_description: "this is a refrenced sub-struct.",
-				"format" : {
-					0: { "refdata0": "int" },
+			#a b and c can be queried recursively,
+			#they have to provide the data to be passed to `format_data`.
+			#a.dump("unit_data_civ_1337")
+			#generates something like:
+			[{
+				"name_table_file":   "unit_data_civ_1337",
+				"name_struct_file":  "gamedata_header",
+				"name_struct":       "unit",
+				"struct_description: "walking or real estate objects.",
+				"format": {
+					0: { "id":   "int32_t" },
+					1: { "name": "std::string" },
 				},
 				"data": [
-					{ "refdata0": 123 },
-					{ "refdata0": 456 },
+					{ "id": 10, "name": "hussar, 1337 edition" },
+					{ "id": 12, "name": "dorfbewohner" },
 				],
-			}
-			#end of output of a.dump()
+			}],
+			#end of output of a.dump
+
+			#b.dump and c.dump result in something similar,
+			#the a b and c dumps can then be stored into a subfolder, like civilisation_data_unit/
 		},
 
 		{
-			"name_table_file":   "food_list",
-			"name_struct_file":  "awesome_header",
-			"name_struct":       "epic_food",
+			"name_table_file":   "terrain_list",
+			"name_struct_file":  "gamedata_header",
+			"name_struct":       "terrain",
 			"struct_description: None,
 			"format": {
-				5:  {"epicness": "int16_t"},
-				0:  {"name":     { "type": "char", "length": 30 }},
-				10: {"price":    "float"},
+				5:  {"name":   { "type": "char", "length": 30 }},
+				0:  {"id":     "int16_t"},
+				10: {"size":   "float"},
 			},
 			"data": [
-				{ "name": "döner",      "epicness":   17, "price": 3.5 },
-				{ "name": "kässpatzen", "epicness": 9001, "price": 2.3 },
-				{ "name": "schnitzel",  "epicness":  200, "price": 5.7 },
-				{ "name": "pizza",      "epicness":  150, "price":   6 },
+				{ "name": "schwarzwald", "id":  88, "size": 9000.001 },
+				{ "name": "alpen",       "id":  10, "size":    4.2   },
+				{ "name": "wattenmeer",  "id": 400, "size":  235.42  },
 			],
 		},
 	]
@@ -161,29 +171,60 @@ def format_data(format, data):
 	a = format_data("csv", data)
 
 	a == {
-		"awesome_data": [
-			"
-			#struct awesome_stuff
-			#you can't believe how epic this struct is!
-			#int,int,refdata_demo
-			#column0,column1,reference
-			1337,42,[a]
-			10,42,[b, c]
-			235,13,[]
-			",
-		],
+		"civilisation_data": {
+			"data": [
+				"
+				#struct civilisation
+				#represents one civilisation.
+				#int,civ_rating,Unit
+				#civ_id,mode,unit
+				1337,epic,civilisation_data_unit/unit_data_civ_1337
+				42,boring,civilisation_data_unit/unit_data_civ_42
+				235,boring,civilisation_data_unit/unit_data_civ_235
+				",
+			],
+		},
 
-		"food_list": [
-			"
-			#struct epic_food
-			#char[30],int16_t,float
-			#name,epicness,price
-			döner,17,3.5
-			kässpatzen,9001,2.3
-			schnitzel,200,5.7
-			pizza,150,6
-			",
-		],
+		"civilisation_data_unit/unit_data_civ_1337": {
+			"data": [
+				"
+				#struct unit
+				#walking or real-estate objects.
+				#int32_t,std::string
+				#id,name
+				10,Hussar\, 1337 edition
+				12,Dorfbewohner
+				",
+			],
+		},
+
+		"civilisation_data_unit/unit_data_civ_42": {
+			"data": [
+				"
+				#struct unit
+				#walking or real-estate objects.
+				#int32_t,std::string
+				#id,name
+				1337,flying spaghetti monster
+				12,Dorfbewohner
+				",
+			],
+		},
+
+		"civilisation_data_unit/unit_data_civ_235": you can imagine it yourself..
+
+		"terrain_list": {
+			"data": [
+				"
+				#struct terrain
+				#int16_t,char[30],float
+				#name,id,size
+				schwarzwald,88,9001.001
+				alpen,10,4.2
+				wattenmeer,400,235.42
+				",
+			],
+		},
 	}
 
 	the generated structs would look like this:
@@ -191,26 +232,93 @@ def format_data(format, data):
 	a = format_data("struct", data)
 
 	a == {
-		"awesome_header": [
-			"
-			/**
-			you can't believe how epic this struct is!
-			*/
-			struct awesome_stuff {
-				int column0;
-				int lol_id;
-				struct reference;
-			};
-			",
-			"
-			struct epic_food {
-				char[30] name;
-				int16_t epicness;
-				float price;
-			};
-			",
+		"gamedata_header": [
+			{
+				"data":
+				"
+				enum class civ_rating {
+					boring,
+					epic,
+					lame
+				};
+				",
+			},
+			{
+				"data":
+				"
+				/**
+				 * represents one civilisation.
+				 */
+				struct civilisation {
+					int civ_id;
+					civ_rating mode;
+					std::string unit_filename;
+					std::vector<unit> unit;
+				};
+				",
+				"metadata": {
+					"headers": {
+						"global": {
+							"string",
+							"vector",
+						},
+						"local": {
+							"gamedata_header",
+						},
+					},
+					"typerefs": {
+						"unit",
+					},
+				},
+			},
+			{
+				"data":
+				"
+				struct unit {
+					int32_t id;
+					std::string name;
+				};
+				",
+				"metadata": {
+					"headers": {
+						"global": {
+							"stdint.h",
+						},
+					},
+				},
+			},
+			{
+				"data":
+				"
+				struct terrain {
+					int16_t id;
+					char name[30];
+					float size;
+				};
+				",
+			},
+			"metadata": {
+				"headers": {
+					"global": {
+						"stdtypes.h",
+						"string",
+						"vector",
+					},
+					"local": {
+						"gamedata_header": {"civ_rating", "unit"},
+					},
+				},
+			},
 		],
 	}
+
+	this data can then be passed to some function
+	that creates the csv, cpp and h files
+
+	i'll omit the generated c code, because reasons.
+
+	conclusion: this function is the central part of the data exporting
+	functionality.
 	"""
 
 	#csv column delimiter:
