@@ -459,15 +459,17 @@ def format_data(format, data):
 
 			fill_signature = fill_csignature % ("%s::" % data_struct_name)
 
+			member_count = data_struct_name + "::member_count"
+
 			#definition of filling function
 			txt += Template("""
 $funcsignature {
 	//tokenize
-	char *buf[this->member_count];
-	int count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, this->member_count);
+	char *buf[$member_count];
+	int count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
 
 	//check tokenization result
-	if (count != this->member_count) {
+	if (count != $member_count) {
 		return false;
 	}
 
@@ -476,7 +478,7 @@ $funcsignature {
 
 	return true;
 }
-""").substitute(funcsignature=fill_signature, delimiter=delimiter, parse_tokens=parse_tokens)
+""").substitute(funcsignature=fill_signature, delimiter=delimiter, parse_tokens=parse_tokens, member_count=member_count)
 
 			output_name = data_table["name_struct_file"]
 			store_output(ret, output_name, txt)
