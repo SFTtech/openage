@@ -21,7 +21,7 @@ std::vector<lineformat> read_csv_file(const char *fname) {
 
 	char *file_seeker = file_content;
 	char *current_line = file_content;
-	int fill_result;
+	bool fill_result;
 	size_t line_length = 0;
 	size_t line_count  = 0;
 	lineformat current_line_data;
@@ -44,8 +44,8 @@ std::vector<lineformat> read_csv_file(const char *fname) {
 				fill_result = current_line_data.fill(current_line);
 
 				//filling the line failed
-				if (0 != fill_result) {
-					throw Error("failed reading meta file %s in line %lu: error %d parsing '%s'", fname, line_count, fill_result, current_line);
+				if (!fill_result) {
+					throw Error("failed reading meta file %s in line %lu: error parsing '%s'", fname, line_count, current_line);
 				}
 
 				//store the line in the returned vector
