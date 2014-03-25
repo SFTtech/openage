@@ -38,3 +38,8 @@ class StringResource:
 
 		ret["data"] = sorted(data, key = lambda x: x["id"])
 		return [ret]
+
+	def structs():
+		ret = dict()
+		ret.update(dataformat.gather_format(StringResource))
+		return [ ret ]
