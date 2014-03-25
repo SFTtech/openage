@@ -6,6 +6,7 @@ from colortable import ColorTable, PlayerColorTable
 import dataformat
 from drs import DRS
 import filelist
+import hardcoded.termcolors
 from os import remove
 import os.path
 from string import Template
@@ -85,6 +86,8 @@ def media_convert(args):
 	#metadata dumping output format, more to come?
 	storeas = ["csv"]
 
+	termcolortable = ColorTable(hardcoded.termcolors.urxvtcoltable, "termcolors", by_array=True)
+
 	if write_enabled:
 		from slp import SLP
 
@@ -93,6 +96,13 @@ def media_convert(args):
 		import blendomatic
 		blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
 		blend_data.save(os.path.join(asset_folder, "blendomatic.dat/"), storeas)
+
+		from pefile import PEFile
+		from stringresource import StringResource
+		stringres = StringResource()
+		stringres.fill_from(PEFile("language.dll"))
+		stringres.fill_from(PEFile("language_x1.dll"))
+		stringres.fill_from(PEFile("language_x1_p1.dll"))
 
 		#create the dump for the dat file
 		import gamedata.empiresdat
@@ -107,6 +117,8 @@ def media_convert(args):
 		meta_dump += datfile.dump(args.sections)
 		meta_dump += blend_data.metadata()
 		meta_dump += player_palette.metadata()
+		meta_dump += termcolortable.metadata()
+		meta_dump += stringres.dump()
 
 		#create metadata content from the collected dumps
 		metadata = dataformat.merge_data_dump(dataformat.metadata_format(meta_dump, storeas))

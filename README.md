@@ -58,6 +58,7 @@ dependency list:
 	C     cmake >=2.8.10
 	CR    sdl2
 	CR    sdl2_image
+	CR    opusfile
 	C     gcc >=4.8 or clang >=3.3
 
 	T     age of empires II

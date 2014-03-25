@@ -5,6 +5,7 @@
 
 #include <SDL2/SDL.h>
 
+#include "audio/audio_manager.h"
 #include "util/fps.h"
 #include "coord/window.h"
 #include "coord/phys3.h"
@@ -97,6 +98,11 @@ extern coord::window camhud_window;
 the frame counter measuring fps.
 */
 extern util::FrameCounter *fpscounter;
+
+/**
+the global audio manager.
+*/
+extern audio::AudioManager *audio_manager;
 
 } //namespace engine
 

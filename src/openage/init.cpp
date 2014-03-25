@@ -5,6 +5,7 @@
 #include <unistd.h>
 
 #include "../args.h"
+#include "../engine/engine.h"
 #include "../engine/texture.h"
 #include "../engine/util/strings.h"
 #include "../engine/util/file.h"
@@ -42,10 +43,6 @@ constexpr int terrain_data[16 * 16] = {
 };
 
 void init() {
-	if (chdir(args.data_directory) == -1) {
-		throw engine::Error("Failed to change directory: %s", strerror(errno));
-	}
-
 	constexpr size_t max_dirname_length = 1024;
 	char current_dir_name[max_dirname_length];
 
@@ -78,6 +75,11 @@ void init() {
 		playercolors[i*4 + 2] = line->b / 255.0;
 		playercolors[i*4 + 3] = line->a / 255.0;
 	}
+
+	// initialize sounds
+	build_uni = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5229)};
+	destroy_uni0 = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5316)};
+	destroy_uni1 = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5317)};
 
 	//shader initialisation
 	//read shader source codes and create shader objects for wrapping them.
@@ -173,6 +175,10 @@ void destroy() {
 	delete gaben;
 
 	delete terrain;
+
+	delete build_uni;
+	delete destroy_uni0;
+	delete destroy_uni1;
 
 	delete university;
 	delete texture_shader::program;

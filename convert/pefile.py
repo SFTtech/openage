@@ -2,10 +2,12 @@
 #TODO this includes:
 #TODO   using the dbg function
 #TODO   proper pydoc
-from struct import unpack_from, Struct
 from collections import defaultdict
+import dataformat
 from langcodes import langcodes
 import os
+from struct import unpack_from, Struct
+from util import dbg, file_get_path, file_read
 
 #PE file
 IMAGE_OPTIONAL_HDR32_MAGIC = 0x010b
@@ -176,7 +178,7 @@ class PEFile:
 		self.todefaultcharsetcd = 0
 		self.fromdefaultcharsetcd = 0
 
-		data = open(fname, 'rb').read()
+		data = file_read(file_get_path(fname, write=False), datatype=bytes)
 
 		#read DOS header
 		dosheader = image_dos_header.unpack_from(data, 0)
@@ -293,13 +295,6 @@ class PEFile:
 
 		return result
 
-	def rsrc_strings_to_textfile(self, lang):
-		result = ""
-		for stringid, string in sorted(self.strings[lang].items()):
-			result += str(stringid) + ':' + lang + ':' + str(string.count('\n') + 1) + '\n'
-			result += string + '\n'
-		return result
-
 	def read_rsrc_tree(self, pos, recdepth = 0):
 		"""
 		reads a resource directory
@@ -343,27 +338,3 @@ class PEFile:
 
 
 		return entries
-
-	def rsrc_tree_to_dir(self, dirname, node = None):
-		"""
-		writes the ressource tree to the filesystem as a directory tree
-		"""
-		if node == None:
-			node = self.rootnode
-
-		for name, e in node.items():
-			if type(e) == dict:
-				try:
-					os.makedirs(dirname + '/' + str(name))
-				except FileExistsError:
-					pass
-				self.restodir(dirname + '/' + str(name), e)
-			else:
-				with open(dirname + '/' + str(name), 'wb') as f:
-					f.write(e)
-
-#example usage #TODO call from convert main.py
-pe = PEFile("/tmp/language.dll")
-rsrc_tree_to_dir('/tmp/language.dll.rsrcs')
-#f = open('/tmp/strings_en', 'w')
-#f.write(pe.rsrc_strings_to_textfile('de_DE'))
