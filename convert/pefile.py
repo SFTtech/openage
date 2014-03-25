@@ -178,12 +178,13 @@ class PEFile:
 		self.todefaultcharsetcd = 0
 		self.fromdefaultcharsetcd = 0
 
-		data = file_read(file_get_path(fname, write=False), datatype=bytes)
+		fname = file_get_path(fname, write=False)
+		data = file_read(fname, bytes)
 
 		#read DOS header
 		dosheader = image_dos_header.unpack_from(data, 0)
 
-		print("DOS header: " + repr(dosheader))
+		dbg("PE header [%s]" % (fname), 1, push = "pe")
 
 		#read PE header
 		headerpos = dosheader[30] #e_lfanew
@@ -195,7 +196,7 @@ class PEFile:
 		if signature != PE_SIGNATURE:
 			raise Exception("Invalid PE signature")
 
-		print("PE header: " + repr(peheader))
+		dbg("DOS header: " + repr(peheader))
 
 		#read optional header
 		optheaderpos = headerpos + image_file_header.size
@@ -208,7 +209,7 @@ class PEFile:
 			raise Exception("Bad magic number for optional header")
 		number_of_rva_and_sizes = optheader[-1]
 
-		print("Optional header: " + repr(optheader))
+		dbg("Optional header: " + repr(optheader))
 
 		#read data directory
 		datadirectorypos = optheaderpos + image_optional_header32.size
@@ -222,12 +223,13 @@ class PEFile:
 
 		#number of sections is known from PE header
 		sections = {}
+		dbg("sections", 2, push="sections")
 		for i in range(number_of_sections):
 			sectionheader = image_section_header.unpack_from(data, secttablepos + image_section_header.size * i)
 			sectionname = sectionheader[0].decode('ascii').strip('\0')
 			sectionheader = sectionheader[1:]
 
-			print(sectionname + ": " + repr(sectionheader))
+			dbg(sectionname + ": " + repr(sectionheader))
 
 			#read section data
 			virtual_size, virtual_address, size_of_raw_data, pointer_to_raw_data, pointer_to_relocations, pointer_to_linenumbers, number_of_relocations, number_of_linenumbers, characteristics = sectionheader
@@ -235,6 +237,7 @@ class PEFile:
 			rawdata = data[pointer_to_raw_data:][:virtual_size]
 
 			sections[sectionname] = sectionheader, rawdata
+		dbg(pop="sections")
 
 		ressectionheader, self.rsrcdata = sections[SECTION_NAME_RESOURCE]
 		self.resdatava = ressectionheader[3]
@@ -246,10 +249,13 @@ class PEFile:
 		self.datadirectory = datadirectory
 		self.sections = sections
 
-		#rootnode = pcr_read_rsrc_tree(section offset = ftell(file), raw data offset = ptr - virtaddr)
-
 		self.rootnode = self.read_rsrc_tree(0)
 		self.strings = self.parse_rsrc_strings()
+
+		for lang, strs in self.strings.items():
+			dbg("%s: %d resource strings" % (lang, len(strs)))
+
+		dbg(pop = "pe")
 
 	def parse_rsrc_strings(self):
 		"""
