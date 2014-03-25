@@ -5,6 +5,7 @@
 
 #include "engine/log.h"
 #include "engine/util/error.h"
+#include "engine/util/strings.h"
 
 #include "main.h"
 
@@ -31,22 +32,11 @@ void add_test_invocation(const char *arg) {
 	size_t len = strlen(arg);
 	char *argbuf = new char[len + 1];
 	memcpy(argbuf, arg, len + 1);
-	std::vector<char *> argvvector;
-	char *laststart = argbuf;
-	for(char *c = argbuf; *c != '\0'; c++) {
-		if (*c == ',') {
-			*c = '\0';
-			argvvector.push_back(laststart);
-		}
-	}
-	argvvector.push_back(laststart);
-	size_t argc = argvvector.size();
-	char **argv = new char *[argc];
-	for(size_t i = 0; i < argc; i++) {
-		argv[i] = argvvector[i];
-	}
 
-	args.test_invocations.push_back(test_invocation{(int) argc, argv});
+	char **argv;
+	int argc = util::string_tokenize_dynamic(argbuf, ',', &argv);
+
+	args.test_invocations.push_back(test_invocation{argc, argv});
 }
 
 void parse_args() {
