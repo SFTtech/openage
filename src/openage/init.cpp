@@ -15,6 +15,7 @@
 #include "../engine/log.h"
 #include "../engine/terrain_chunk.h"
 #include "../gamedata/color.h"
+#include "../gamedata/string_resource.h"
 
 #include "callbacks.h"
 #include "gamestate.h"
@@ -57,6 +58,7 @@ void init() {
 	gaben = new Texture("gaben.png");
 	university = new Texture("age/assets/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
+	auto string_resources = util::read_csv_file<string_resource>("age/assets/string_resources.docx");
 	auto terrain_types  = util::read_csv_file<terrain_type>("age/assets/terrain_data.docx");
 	auto blending_modes = util::read_csv_file<blending_mode>("age/assets/blending_modes.docx");
 
