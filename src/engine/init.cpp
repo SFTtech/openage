@@ -17,13 +17,16 @@
 #include "input.h"
 #include "log.h"
 
+#include "../gamedata/sound_file.h"
+
+
 namespace engine {
 
 void init(const char *windowtitle) {
 	//set global random seed
 	srand(time(NULL));
 
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
 		throw Error("SDL initialization: %s", SDL_GetError());
 	}
 
@@ -94,6 +97,21 @@ void init(const char *windowtitle) {
 	callbacks::on_resize.push_back(engine::handle_window_resize);
 	callbacks::on_input.push_back(engine::input::handler);
 	callbacks::on_drawhud.push_back(engine::draw_hud);
+
+	//initialize audio
+	auto devices = audio::AudioManager::get_devices();
+	if (devices.empty()) {
+		throw Error{"No audio devices found"};
+	}
+
+	auto sound_files = util::read_csv_file<sound_file>("age/assets/sound_list.docx");
+
+	audio_manager = new audio::AudioManager(48000, AUDIO_S16LSB, 2, 4096);
+	audio_manager->load_resources(sound_files);
+
+	//auto sound0 = audio_manager->get_sound(audio::category_t::GAME, 5045);
+	//auto sound1 = audio_manager->get_sound(audio::category_t::GAME, 5127);
+	//auto sound2 = audio_manager->get_sound(audio::category_t::GAME, 5309);
 }
 
 /**
