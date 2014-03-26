@@ -48,7 +48,7 @@ class Sound:
 	data_format = {
 		0: {"uid":            "int32_t"},
 		1: {"item_count":     "int32_t"},
-		2: {"sound_item":     {"type": "subdata", "ref_type": SoundItem}}
+		2: {"sound_item":     {"type": "subdata", "ref_type": SoundItem, "ref_to": "uid"}}
 	}
 
 	def dump(self):
