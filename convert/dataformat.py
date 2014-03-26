@@ -328,7 +328,7 @@ def format_data(format, data):
 	fill_csignature = "bool %sfill(char *by_line)"
 
 	type_scan_lookup = {
-		"char":          "hdd",
+		"char":          "hhd",
 		"int8_t":        "hhd",
 		"uint8_t":       "hhu",
 		"int16_t":       "hd",
