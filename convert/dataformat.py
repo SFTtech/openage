@@ -378,7 +378,6 @@ def format_data(format, data):
 				if type(ctype) == str:
 					ctype = {
 						"type": ctype,
-						"length": 1,
 					}
 
 				else:
@@ -394,22 +393,26 @@ def format_data(format, data):
 						if not ctype["name"] in enums:
 
 							if "xref" in ctype:
-								#this enum is a cross reference to an existing enum in "filename"
+								#this enum is a cross reference to an existing enum
+								enum_is_xref  = True
 								enum_filename = ctype["xref"]
 								enum_values   = None
-								enum_is_xref  = True
+
 							else:
 								#this enum is defined here the first time
-								if not "filename" in ctype:
-									raise Exception("first time definition of enum %s requires 'filename'" % ctype["name"])
+								enum_is_xref  = False
+
+								if "filename" in ctype:
+									enum_filename = ctype["filename"]
+								else:
+									enum_filename = data_table["name_struct_file"]
 
 								if not "values" in ctype:
 									raise Exception("first time definition of enum %s requires its 'values'" % ctype["name"])
+								else:
+									enum_values   = ctype["values"]
 
-								enum_filename = ctype["filename"]
-								enum_values   = ctype["values"]
-								enum_is_xref  = False
-
+							#add the requested enum to the enum list
 							enums[ctype["name"]] = {"values": enum_values, "filename": enum_filename, "xref": enum_is_xref}
 
 						#enum already known
@@ -417,6 +420,9 @@ def format_data(format, data):
 							if "values" in ctype:
 								if not ctype["values"] == enums[ctype["name"]]:
 									raise Exception("you reused the enum %s with different values this time." % ctype["name"])
+
+					elif ctype["type"] == "refto":
+						pass
 
 				columns[column] = ctype
 
@@ -562,9 +568,11 @@ def format_data(format, data):
 
 			#flatten the token parser statement list
 			parse_tokens = sum((type(i) == list and i or i.split('\n') for i in parse_tokens), [])
+
 			#indent/newline the token parser statement list
 			parse_tokens = "\n\t".join(parse_tokens)
 
+			#prepend struct name to fill function signature
 			fill_signature = fill_csignature % ("%s::" % data_struct_name)
 
 			member_count = data_struct_name + "::member_count"
@@ -684,7 +692,7 @@ def merge_data_dump(transformed_data):
 			"content_prefix": """#ifndef _${filename}_H_
 #define _${filename}_H_
 
-#include <stddef.h> //various types
+#include <stddef.h> //size_t
 #include <stdint.h> //int types
 #include <string>   //std::string
 
