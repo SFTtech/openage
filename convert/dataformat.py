@@ -178,9 +178,9 @@ def format_data(format, data):
 				#represents one civilisation.
 				#int,civ_rating,Unit
 				#civ_id,mode,unit
-				1337,epic,civilisation_data_unit/unit_data_civ_1337
-				42,boring,civilisation_data_unit/unit_data_civ_42
-				235,boring,civilisation_data_unit/unit_data_civ_235
+				1337,epic,civilisation_data-unit/unit_data_civ_1337
+				42,boring,civilisation_data-unit/unit_data_civ_42
+				235,boring,civilisation_data-unit/unit_data_civ_235
 				",
 			],
 		},
@@ -243,6 +243,7 @@ def format_data(format, data):
 				};
 				",
 			},
+
 			{
 				"data":
 				"
@@ -253,14 +254,12 @@ def format_data(format, data):
 					int civ_id;
 					civ_rating mode;
 					std::string unit_filename;
-					std::vector<unit> unit;
 				};
 				",
 				"metadata": {
 					"headers": {
 						"global": {
 							"string",
-							"vector",
 						},
 						"local": {
 							"gamedata_header",
@@ -271,6 +270,7 @@ def format_data(format, data):
 					},
 				},
 			},
+
 			{
 				"data":
 				"
@@ -287,6 +287,7 @@ def format_data(format, data):
 					},
 				},
 			},
+
 			{
 				"data":
 				"
@@ -297,20 +298,15 @@ def format_data(format, data):
 				};
 				",
 			},
-			"metadata": {
-				"headers": {
-					"global": {
-						"stdtypes.h",
-						"string",
-						"vector",
-					},
-					"local": {
-						"gamedata_header": {"civ_rating", "unit"},
-					},
-				},
-			},
 		],
 	}
+
+
+	=> the output format is:
+	{"filename": [{"data": section data, "metadata": {metadata}} ] }
+		where metadata may contain
+			"headers" -> "local": set()/list(), "global": set()/list()
+			"typerefs" -> set() of types that need to be defined before or forward declared
 
 	this data can then be passed to some function
 	that creates the csv, cpp and h files
@@ -430,6 +426,8 @@ def format_data(format, data):
 				if "ref_to" in ctype:
 					if ctype["ref_to"] not in columns.keys():
 						raise Exception("subdata reference specification for column %s is no valid column name: %s" % (column_name, ctype["ref_to"]))
+				else:
+					ctype["ref_to"] = None
 
 				if "ref_type" not in ctype:
 					raise Exception("reference class must be specified by 'ref_type': for column %s" % column_name)
@@ -441,8 +439,8 @@ def format_data(format, data):
 			txt = ""
 
 			if data_struct_desc != None:
-				if not type(data_struct_desc) == list:
-					data_struct_desc = data_struct_desc.split("\n")
+				#split description to its lines
+				data_struct_desc = data_struct_desc.split("\n")
 
 				#prepend each line with a comment hash
 				csv_struct_desc = "".join(("#%s\n" % line for line in data_struct_desc))
@@ -481,10 +479,29 @@ def format_data(format, data):
 			txt += "#%s\n"        % (delimiter.join(columns.keys()))
 
 			#csv data entries:
-			for data_line in data_table["data"]:
+			for idx, data_line in enumerate(data_table["data"]):
 				row_entries = list()
 				for col_name, col_type in columns.items():
 					entry = data_line[column_name]
+
+					#check if enum data value is valid
+					if col_type["type"] == "enum":
+						if entry not in col_type["values"]:
+							raise Exception("data entry %d '%s' not a valid enum %s value" % (idx, entry, col_type["name"]))
+
+					#generate subdata reference link
+					elif col_type["type"] == "subdata":
+						if col_type["ref_to"] == None:
+							ref_to = idx
+						else:
+							ref_to = data_line[col_type["refto"]]
+
+						subdata_folder = "%s-%s" % (data_table["name_table_file"], col_name)
+						subdata_table_name = "TODO"
+
+						entry = "%s/%s" % (subdata_folder, subdata_table_name)
+
+					#escape the entry (e.g. newlines and commas)
 					entry = encode_value(entry)
 					row_entries.append(entry)
 
@@ -518,6 +535,8 @@ def format_data(format, data):
 
 				if dtype["type"] == "enum":
 					dtype = dtype["name"]
+				elif dtype["type"] == "subdata":
+					dtype = "std::string"
 				else:
 					dtype = dtype["type"]
 
