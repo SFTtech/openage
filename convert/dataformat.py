@@ -379,52 +379,61 @@ def format_data(format, data):
 					ctype = {
 						"type": ctype,
 					}
-
 				else:
 					if not "type" in ctype:
 						raise Exception("column type has to be specified for %s" % (column))
 
-					#this column is an enum, store it to generate it later
-					if ctype["type"] == "enum":
-						if not "name" in ctype:
-							raise Exception("enum columns need to specify a name")
-
-						#create the needed enum
-						if not ctype["name"] in enums:
-
-							if "xref" in ctype:
-								#this enum is a cross reference to an existing enum
-								enum_is_xref  = True
-								enum_filename = ctype["xref"]
-								enum_values   = None
-
-							else:
-								#this enum is defined here the first time
-								enum_is_xref  = False
-
-								if "filename" in ctype:
-									enum_filename = ctype["filename"]
-								else:
-									enum_filename = data_table["name_struct_file"]
-
-								if not "values" in ctype:
-									raise Exception("first time definition of enum %s requires its 'values'" % ctype["name"])
-								else:
-									enum_values   = ctype["values"]
-
-							#add the requested enum to the enum list
-							enums[ctype["name"]] = {"values": enum_values, "filename": enum_filename, "xref": enum_is_xref}
-
-						#enum already known
-						else:
-							if "values" in ctype:
-								if not ctype["values"] == enums[ctype["name"]]:
-									raise Exception("you reused the enum %s with different values this time." % ctype["name"])
-
-					elif ctype["type"] == "refto":
-						pass
-
 				columns[column] = ctype
+
+		#check definition validity of all data column definitions
+		for column_name, ctype in columns.items():
+
+			#this column is an enum, store it to generate it later
+			if ctype["type"] == "enum":
+				if "name" not in ctype:
+					raise Exception("enum columns need to specify a name")
+
+				#create the needed enum
+				if ctype["name"] not in enums:
+
+					if "xref" in ctype:
+						#this enum is a cross reference to an existing enum
+						enum_is_xref  = True
+						enum_filename = ctype["xref"]
+						enum_values   = None
+
+					else:
+						#this enum is defined here the first time
+						enum_is_xref  = False
+
+						if "filename" in ctype:
+							enum_filename = ctype["filename"]
+						else:
+							enum_filename = data_table["name_struct_file"]
+
+						if "values" not in ctype:
+							raise Exception("first time definition of enum %s requires its 'values'" % ctype["name"])
+						else:
+							enum_values   = ctype["values"]
+
+					#add the requested enum to the enum list
+					enums[ctype["name"]] = {"values": enum_values, "filename": enum_filename, "xref": enum_is_xref}
+
+				#enum already known
+				else:
+					if "values" in ctype:
+						if not ctype["values"] == enums[ctype["name"]]:
+							raise Exception("you reused the enum %s with different values this time." % ctype["name"])
+
+			#this column references to a list of member data sets
+			elif ctype["type"] == "subdata":
+				if "ref_to" in ctype:
+					if ctype["ref_to"] not in columns.keys():
+						raise Exception("subdata reference specification for column %s is no valid column name: %s" % (column_name, ctype["ref_to"]))
+
+				if "ref_type" not in ctype:
+					raise Exception("reference class must be specified by 'ref_type': for column %s" % column_name)
+
 
 		#export csv file
 		if format == "csv":
@@ -432,8 +441,11 @@ def format_data(format, data):
 			txt = ""
 
 			if data_struct_desc != None:
+				if not type(data_struct_desc) == list:
+					data_struct_desc = data_struct_desc.split("\n")
+
 				#prepend each line with a comment hash
-				csv_struct_desc = "".join(("#%s\n" % line for line in data_struct_desc.split("\n")))
+				csv_struct_desc = "".join(("#%s\n" % line for line in data_struct_desc))
 			else:
 				csv_struct_desc = ""
 
@@ -624,7 +636,7 @@ $funcsignature {
 
 def metadata_format(data_dump, output_formats):
 	"""
-	input: metadata dump (the big one with loads of keys, see ``format_data``
+	input: metadata dump (the big one with loads of keys, see ``format_data``)
 	output: {output_format => {filename => [file_content]}}
 	"""
 
