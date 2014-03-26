@@ -450,14 +450,21 @@ def format_data(format, data):
 				csv_struct_desc = ""
 
 			column_types_raw = columns.values()
-			column_types     = list()
+			csv_column_types = list()
 
 			#create column types line entries
 			for c_raw in column_types_raw:
 				if c_raw["type"] == "enum":
+					#set the column type to the enum name
 					#TODO: maybe list possible enum values here
 					c_type = c_raw["name"]
+
+				elif c_raw["type"] == "subdata":
+					#set the column type to the referenced class name
+					c_type = c_raw["ref_type"].__name__
+
 				else:
+					#just use the column type name
 					c_type = c_raw["type"]
 
 				if "length" in c_raw and c_raw["length"] > 1:
@@ -465,17 +472,22 @@ def format_data(format, data):
 				else:
 					c = c_type
 
-				column_types.append(c)
+				csv_column_types.append(c)
 
 			#csv header:
 			txt += "#struct %s\n" % (data_struct_name)
 			txt += "%s"           % (csv_struct_desc)
-			txt += "#%s\n"        % (delimiter.join(column_types))
+			txt += "#%s\n"        % (delimiter.join(csv_column_types))
 			txt += "#%s\n"        % (delimiter.join(columns.keys()))
 
 			#csv data entries:
-			for entry in data_table["data"]:
-				row_entries = [ encode_value(entry[c]) for c in columns.keys() ]
+			for data_line in data_table["data"]:
+				row_entries = list()
+				for col_name, col_type in columns.items():
+					entry = data_line[column_name]
+					entry = encode_value(entry)
+					row_entries.append(entry)
+
 				txt += "%s\n" % (delimiter.join(row_entries))
 
 			output_name = data_table["name_table_file"]
