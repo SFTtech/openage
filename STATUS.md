@@ -4,7 +4,8 @@ openage status
 you might want to know what openage is capable of at the current time:
 this file shall deliver your needs.
 
-if your contribution adds a feature, append it to the list in your branch.
+if your contribution adds a feature,
+append it to the list while in your branch.
 
 
 features
@@ -23,3 +24,4 @@ features
   * open with backtick
   * readonly log view at the moment
   * very inefficient proof of concept rendering
+* sound playback (when placing and removing buildings)
