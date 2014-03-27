@@ -165,17 +165,18 @@ void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool 
 }
 
 /**
-get a terrain chunk by a given chunk position.
-
-@return the chunk if exists, nullptr else
-*/
+ * get a terrain chunk by a given chunk position.
+ *
+ * @return the chunk if exists, nullptr else
+ */
 TerrainChunk *Terrain::get_chunk(coord::chunk position) {
-	//is this chunk stored?
-	if (this->chunks.find(position) == this->chunks.end()) {
+	auto iter = this->chunks.find(position);
+
+	if (iter == this->chunks.end()) {
 		return nullptr;
 	}
 	else {
-		return this->chunks[position];
+		return iter->second;
 	}
 }
 
