@@ -170,8 +170,6 @@ bool TerrainObject::draw() {
  * @returns true when the object fits, false otherwise.
  */
 bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
-	//TODO: add underground checking (water needed? solid ground needed?)
-
 	this->set_position(pos);
 
 	coord::tile check_pos = this->start_pos;
@@ -182,8 +180,17 @@ bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
 			if (chunk == nullptr) {
 				return false;
 			} else {
-				TerrainObject *test = chunk->get_data(check_pos)->obj;
-				if (test != nullptr) {
+				//get tile data
+				auto tile = chunk->get_data(check_pos);
+
+				//is the terrain underground suitable?
+				//TODO: water needed? solid ground needed?
+				if (tile->terrain_id < 0) {
+					return false;
+				}
+
+				//is another object blocking that tile?
+				if (tile->obj != nullptr) {
 					return false;
 				}
 			}
