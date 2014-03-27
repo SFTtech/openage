@@ -1,6 +1,6 @@
 #include "terrain.h"
 
-#include <map>
+#include <unordered_map>
 #include <set>
 
 #include "terrain_chunk.h"
@@ -41,7 +41,8 @@ Terrain::Terrain(std::vector<terrain_type> terrain_meta,
 	//this->limit_negative =
 
 	//maps chunk position to chunks
-	this->chunks = std::map<coord::chunk, TerrainChunk *, coord_chunk_compare>{};
+	this->chunks = std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash>{};
+
 	//activate blending
 	this->blending_enabled = true;
 
@@ -141,7 +142,7 @@ Attach a chunk to the terrain, to a given position.
 void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool manually_created) {
 	new_chunk->set_terrain(this);
 	new_chunk->manually_created = manually_created;
-	log::dbg("inserting new chunk at (%02ld,%02ld)", position.ne, position.se);
+	log::dbg("inserting new chunk at (%02d,%02d)", position.ne, position.se);
 	this->chunks[position] = new_chunk;
 
 	struct chunk_neighbors neigh = this->get_chunk_neighbors(position);
