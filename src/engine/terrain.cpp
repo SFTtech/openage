@@ -360,11 +360,8 @@ bool Terrain::check_tile_position(coord::tile pos) {
 
 
 /**
-draws the terrain on screen.
-
-TODO: draw only visible chunks.
-TODO: position the terrain by a parameter
-*/
+ * draws the terrain on screen.
+ */
 void Terrain::draw() {
 
 	//top left, bottom right tile coordinates
