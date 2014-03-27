@@ -24,6 +24,7 @@ using namespace engine;
 
 namespace openage {
 
+constexpr coord::tile_delta terrain_data_size = {16, 16};
 constexpr int terrain_data[16 * 16] = {
 	  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1,
 	  0, 18, 18, 18, 18, 18,  0,  0, 16,  0,  2,  1, 15, 14, 15,  1,
@@ -65,7 +66,8 @@ void init() {
 	//create the terrain which will be filled by chunks
 	terrain = new Terrain(terrain_types, blending_modes, true);
 
-	terrain->fill(terrain_data, coord::tile_delta{16, 16});
+
+	terrain->fill(terrain_data, terrain_data_size);
 
 	auto player_color_lines = engine::util::read_csv_file<palette_color>("age/assets/player_palette_50500.docx");
 
