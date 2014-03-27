@@ -24,6 +24,7 @@ using namespace engine;
 
 namespace openage {
 
+constexpr coord::tile_delta terrain_data_size = {16, 16};
 constexpr int terrain_data[16 * 16] = {
 	  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1,
 	  0, 18, 18, 18, 18, 18,  0,  0, 16,  0,  2,  1, 15, 14, 15,  1,
@@ -65,7 +66,8 @@ void init() {
 	//create the terrain which will be filled by chunks
 	terrain = new Terrain(terrain_types, blending_modes, true);
 
-	terrain->fill(terrain_data, coord::tile_delta{16, 16});
+
+	terrain->fill(terrain_data, terrain_data_size);
 
 	auto player_color_lines = engine::util::read_csv_file<palette_color>("age/assets/player_palette_50500.docx");
 
@@ -79,9 +81,9 @@ void init() {
 	}
 
 	// initialize sounds
-	build_uni = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5229)};
-	destroy_uni0 = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5316)};
-	destroy_uni1 = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5317)};
+	build_uni_sound    = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5229)};
+	destroy_uni_sound0 = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5316)};
+	destroy_uni_sound1 = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5317)};
 
 	//shader initialisation
 	//read shader source codes and create shader objects for wrapping them.
@@ -178,9 +180,9 @@ void destroy() {
 
 	delete terrain;
 
-	delete build_uni;
-	delete destroy_uni0;
-	delete destroy_uni1;
+	delete build_uni_sound;
+	delete destroy_uni_sound0;
+	delete destroy_uni_sound1;
 
 	delete university;
 	delete texture_shader::program;

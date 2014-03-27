@@ -1,6 +1,6 @@
 #include "terrain.h"
 
-#include <map>
+#include <unordered_map>
 #include <set>
 
 #include "terrain_chunk.h"
@@ -41,7 +41,8 @@ Terrain::Terrain(std::vector<terrain_type> terrain_meta,
 	//this->limit_negative =
 
 	//maps chunk position to chunks
-	this->chunks = std::map<coord::chunk, TerrainChunk *, coord_chunk_compare>{};
+	this->chunks = std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash>{};
+
 	//activate blending
 	this->blending_enabled = true;
 
@@ -141,7 +142,7 @@ Attach a chunk to the terrain, to a given position.
 void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool manually_created) {
 	new_chunk->set_terrain(this);
 	new_chunk->manually_created = manually_created;
-	log::dbg("inserting new chunk at (%02ld,%02ld)", position.ne, position.se);
+	log::dbg("inserting new chunk at (%02d,%02d)", position.ne, position.se);
 	this->chunks[position] = new_chunk;
 
 	struct chunk_neighbors neigh = this->get_chunk_neighbors(position);
@@ -164,17 +165,18 @@ void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool 
 }
 
 /**
-get a terrain chunk by a given chunk position.
-
-@return the chunk if exists, nullptr else
-*/
+ * get a terrain chunk by a given chunk position.
+ *
+ * @return the chunk if exists, nullptr else
+ */
 TerrainChunk *Terrain::get_chunk(coord::chunk position) {
-	//is this chunk stored?
-	if (this->chunks.find(position) == this->chunks.end()) {
+	auto iter = this->chunks.find(position);
+
+	if (iter == this->chunks.end()) {
 		return nullptr;
 	}
 	else {
-		return this->chunks[position];
+		return iter->second;
 	}
 }
 
@@ -359,11 +361,8 @@ bool Terrain::check_tile_position(coord::tile pos) {
 
 
 /**
-draws the terrain on screen.
-
-TODO: draw only visible chunks.
-TODO: position the terrain by a parameter
-*/
+ * draws the terrain on screen.
+ */
 void Terrain::draw() {
 
 	//top left, bottom right tile coordinates

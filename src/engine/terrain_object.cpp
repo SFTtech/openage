@@ -163,15 +163,13 @@ bool TerrainObject::draw() {
 }
 
 /**
-* tests whether this terrain object will fit at the given position.
-*
-* @param terrain: the terrain where the check will be performed.
-* @param pos: the base position.
-* @returns true when the object fits, false otherwise.
-*/
+ * tests whether this terrain object will fit at the given position.
+ *
+ * @param terrain: the terrain where the check will be performed.
+ * @param pos: the base position.
+ * @returns true when the object fits, false otherwise.
+ */
 bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
-	//TODO: add underground checking (water needed? solid ground needed?)
-
 	this->set_position(pos);
 
 	coord::tile check_pos = this->start_pos;
@@ -182,8 +180,17 @@ bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
 			if (chunk == nullptr) {
 				return false;
 			} else {
-				TerrainObject *test = chunk->get_data(check_pos)->obj;
-				if (test != nullptr) {
+				//get tile data
+				auto tile = chunk->get_data(check_pos);
+
+				//is the terrain underground suitable?
+				//TODO: water needed? solid ground needed?
+				if (tile->terrain_id < 0) {
+					return false;
+				}
+
+				//is another object blocking that tile?
+				if (tile->obj != nullptr) {
 					return false;
 				}
 			}
@@ -196,22 +203,22 @@ bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
 }
 
 /**
-* set and calculate object start and end positions.
-*
-* @param pos: the center position of the building
-*
-* set the center position to "middle",
-* start_pos is % and end_pos = &
-*
-* for a building, the # tile will be "middle":
-*        @              @           @
-*      @   @          @   @      %#   &
-*    @   @   @      %   #   &       @
-*  %   #   @   &      @   @
-*    @   @   @          @
-*      @   @
-*        @
-*/
+ * set and calculate object start and end positions.
+ *
+ * @param pos: the center position of the building
+ *
+ * set the center position to "middle",
+ * start_pos is % and end_pos = &
+ *
+ * for a building, the # tile will be "middle":
+ *        @              @           @
+ *      @   @          @   @      %#   &
+ *    @   @   @      %   #   &       @
+ *  %   #   @   &      @   @
+ *    @   @   @          @
+ *      @   @
+ *        @
+ */
 void TerrainObject::set_position(coord::tile pos) {
 	this->start_pos = pos;
 	this->start_pos.ne -= (this->size.ne_length - 1) / 2;
@@ -229,7 +236,12 @@ void TerrainObject::set_position(coord::tile pos) {
 	this->draw_pos = drawpos_tile.to_phys2().to_phys3();
 }
 
-
+/**
+ * comparison method for overlay ordering.
+ *
+ * sorting objects with this function leads to a perfect
+ * overlapping order.
+ */
 bool TerrainObject::operator <(const TerrainObject &other) {
 
 	if (this == &other) {

@@ -33,7 +33,7 @@ struct tile3_delta;
 
 constexpr unsigned tiles_per_chunk_bits = 4; //yeah, this needs a better name.
 constexpr tile_t tiles_per_chunk = (1 << tiles_per_chunk_bits);
-using chunk_t = int64_t;
+using chunk_t = int32_t;
 
 struct chunk;
 struct chunk_delta;

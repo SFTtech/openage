@@ -72,20 +72,27 @@ bool input_handler(SDL_Event *e) {
 			if (obj != nullptr) {
 				obj->remove();
 				buildings.erase(obj);
-				auto rand = util::random_range(0,1);
-				if (rand == 0) {
-					destroy_uni0->play();
-				} else {
-					destroy_uni1->play();
-				}
 				delete obj;
-			} else {
-				TerrainObject *newuni = new TerrainObject(university, util::random_range(1, 8));
 
-				if (newuni->place(terrain, mousepos_tile)) {
+				//play uni destruction sound
+				int rand = util::random_range(0, 1 + 1);
+				if (rand == 0) {
+					destroy_uni_sound0->play();
+				} else {
+					destroy_uni_sound1->play();
+				}
+			} else {
+				int uni_player_id = util::random_range(1, 8 + 1);
+				TerrainObject *newuni = new TerrainObject(university, uni_player_id);
+
+				log::dbg("uni player id: %d", uni_player_id);
+
+				//try to place the uni, it knows best whether it will fit.
+				bool uni_placed = newuni->place(terrain, mousepos_tile);
+				if (uni_placed) {
 					newuni->set_ground(editor_current_terrain, 0);
 					buildings.insert(newuni);
-					build_uni->play();
+					build_uni_sound->play();
 				} else {
 					delete newuni;
 				}

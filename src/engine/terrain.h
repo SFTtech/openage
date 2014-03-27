@@ -1,9 +1,10 @@
 #ifndef _ENGINE_TERRAIN_H_
 #define _ENGINE_TERRAIN_H_
 
+#include <functional>
 #include <stddef.h>
-#include <map>
 #include <set>
+#include <unordered_map>
 #include <vector>
 
 #include "terrain_chunk.h"
@@ -30,13 +31,15 @@ half the size of one terrain diamond tile, in camgame
 extern coord::camgame_delta tile_halfsize;
 
 /**
-comparisons for chunk coordinates.
+hashing for chunk coordinates.
 
-this allows storage of chunk coords as keys in a map.
+this allows storage of chunk coords as keys in an unordered map.
 */
-struct coord_chunk_compare {
-	bool operator()(coord::chunk a, coord::chunk b) {
-		return a.ne > b.ne || (a.ne == b.ne && a.se > b.se);
+struct coord_chunk_hash {
+	size_t operator()(const coord::chunk input) const {
+		constexpr int half_size_t_bits = sizeof(size_t) * 4;
+
+		return ((size_t)input.ne << half_size_t_bits) | input.se;
 	}
 };
 
@@ -250,7 +253,7 @@ private:
 	/**
 	maps chunk coordinates to chunks.
 	*/
-	std::map<coord::chunk, TerrainChunk *, coord_chunk_compare> chunks;
+	std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash> chunks;
 
 	Texture **textures;
 	Texture **blending_masks;

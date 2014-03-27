@@ -6,7 +6,7 @@ namespace engine {
 namespace util {
 
 int random_range(int lower, int upper) {
-	return (rand() - lower) % (upper+1);
+	return (rand() % (upper - lower)) + lower;
 }
 
 } //namespace util

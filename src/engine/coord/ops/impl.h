@@ -70,7 +70,7 @@ ABSOLUTE_TYPE &ABSOLUTE_TYPE::operator/=(SCALAR_TYPE arg) {
 }
 
 //abs == abs
-bool ABSOLUTE_TYPE::operator==(ABSOLUTE_TYPE arg) {
+bool ABSOLUTE_TYPE::operator==(ABSOLUTE_TYPE arg) const {
 	return (CONCAT(&&, LOOP(COMPARE, MEMBERS)));
 }
 
@@ -136,7 +136,7 @@ RELATIVE_TYPE &RELATIVE_TYPE::operator/=(SCALAR_TYPE arg) {
 }
 
 //rel == rel
-bool RELATIVE_TYPE::operator==(RELATIVE_TYPE arg) {
+bool RELATIVE_TYPE::operator==(RELATIVE_TYPE arg) const {
 	return (CONCAT(&&, LOOP(COMPARE, MEMBERS)));
 }
 
