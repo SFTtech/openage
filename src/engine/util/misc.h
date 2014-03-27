@@ -7,7 +7,7 @@ namespace util {
 /**
 returns a random number in the given range
 @param lower the (included) lower limit of the generated number
-@param upper the (also included) upper limit of the generated number
+@param upper the (excluded) upper limit of the generated number
 */
 int random_range(int lower, int upper);
 

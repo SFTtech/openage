@@ -26,7 +26,7 @@ extern engine::Terrain *terrain;
 //TODO this is here temporarily (obviously...)
 extern engine::Texture *gaben, *university;
 
-extern engine::audio::Sound *build_uni, *destroy_uni0, *destroy_uni1;
+extern engine::audio::Sound *build_uni_sound, *destroy_uni_sound0, *destroy_uni_sound1;
 
 } //namespace openage
 

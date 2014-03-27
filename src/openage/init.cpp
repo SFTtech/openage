@@ -79,9 +79,9 @@ void init() {
 	}
 
 	// initialize sounds
-	build_uni = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5229)};
-	destroy_uni0 = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5316)};
-	destroy_uni1 = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5317)};
+	build_uni_sound    = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5229)};
+	destroy_uni_sound0 = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5316)};
+	destroy_uni_sound1 = new audio::Sound{audio_manager->get_sound(audio::category_t::GAME, 5317)};
 
 	//shader initialisation
 	//read shader source codes and create shader objects for wrapping them.
@@ -178,9 +178,9 @@ void destroy() {
 
 	delete terrain;
 
-	delete build_uni;
-	delete destroy_uni0;
-	delete destroy_uni1;
+	delete build_uni_sound;
+	delete destroy_uni_sound0;
+	delete destroy_uni_sound1;
 
 	delete university;
 	delete texture_shader::program;

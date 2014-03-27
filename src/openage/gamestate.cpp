@@ -12,6 +12,6 @@ Terrain *terrain;
 
 Texture *gaben, *university;
 
-audio::Sound *build_uni, *destroy_uni0, *destroy_uni1;
+audio::Sound *build_uni_sound, *destroy_uni_sound0, *destroy_uni_sound1;
 
 } //namespace openage
