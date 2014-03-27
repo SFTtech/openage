@@ -38,6 +38,7 @@ before_script:
 script:
   - ./configure
   - make
+  - ./bin/openage --test '*' --no-interactive-tests
 
 after_script:
   - echo test build exited
