@@ -91,6 +91,11 @@ void init(const char *windowtitle) {
 
 	fonts::dejavuserif20 = new Font("DejaVu Serif", "Book", 20);
 
+	//initialize job manager with number of cpu cores - 2 threads
+	auto number_of_cpu_cores = SDL_GetCPUCount();
+	job_manager = new job::JobManager{number_of_cpu_cores-2};
+	job_manager->start();
+
 	//initialize the fps counter
 	fpscounter = new util::FrameCounter();
 
@@ -123,6 +128,9 @@ void destroy() {
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
 	delete fpscounter;
+	job_manager->stop();
+	delete job_manager;
+	delete audio_manager;
 	delete fonts::dejavuserif20;
 	IMG_Quit();
 	SDL_Quit();

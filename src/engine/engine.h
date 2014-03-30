@@ -10,6 +10,7 @@
 #include "coord/window.h"
 #include "coord/phys3.h"
 #include "font.h"
+#include "job/job_manager.h"
 
 namespace engine {
 
@@ -103,6 +104,11 @@ extern util::FrameCounter *fpscounter;
 the global audio manager.
 */
 extern audio::AudioManager *audio_manager;
+
+/**
+the global job manager.
+*/
+extern job::JobManager *job_manager;
 
 } //namespace engine
 

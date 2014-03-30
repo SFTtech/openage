@@ -46,6 +46,8 @@ util::FrameCounter *fpscounter;
 
 audio::AudioManager *audio_manager;
 
+job::JobManager *job_manager;
+
 /**
 * update opengl when the window is resized.
 *

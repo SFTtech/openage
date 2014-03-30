@@ -39,6 +39,7 @@ add_executable(${PROJECT_NAME}
 	engine/coord/vec3.cpp
 	engine/coord/vec3f.cpp
 	engine/coord/window.cpp
+	engine/job/job_manager.cpp
 	engine/shader/program.cpp
 	engine/shader/shader.cpp
 	engine/terrain.cpp
