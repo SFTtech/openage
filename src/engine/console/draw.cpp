@@ -39,11 +39,11 @@ void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud cha
 			bool cursor_visible_at_current_pos = buf->cursorpos == term{x, y - buf->scrollback_pos};
 			cursor_visible_at_current_pos &= buf->cursor_visible;
 			if ((p.flags & CHR_NEGATIVE) xor cursor_visible_at_current_pos) {
-				bgcolid = p.bgcol;
-				fgcolid = p.fgcol;
-			} else {
 				bgcolid = p.fgcol;
 				fgcolid = p.bgcol;
+			} else {
+				bgcolid = p.bgcol;
+				fgcolid = p.fgcol;
 			}
 			if (
 				(p.flags & CHR_INVISIBLE) or
@@ -53,7 +53,7 @@ void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud cha
 				fgcolid = bgcolid;
 			}
 
-			termcolors[p.bgcol].use(0.8);
+			termcolors[bgcolid].use(0.8);
 
 			glBegin(GL_QUADS);
 			{
@@ -64,7 +64,7 @@ void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud cha
 			}
 			glEnd();
 
-			termcolors[p.fgcol].use(1);
+			termcolors[fgcolid].use(1);
 			char utf8buf[5];
 			if (util::utf8_encode(p.cp, utf8buf) == 0) {
 				//unrepresentable character (question mark in black rhombus)

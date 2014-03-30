@@ -15,8 +15,7 @@ namespace engine {
 
 
 TerrainChunk::TerrainChunk() {
-	this->size       = chunk_size;
-	this->tile_count = size * size;
+	this->tile_count = chunk_size * chunk_size;
 	this->manually_created = true;
 
 	//the data array for this chunk.
@@ -29,7 +28,7 @@ TerrainChunk::TerrainChunk() {
 	}
 
 	log::dbg("created terrain chunk: %lu size, %lu tiles",
-	         this->size,
+	         chunk_size,
 	         this->tile_count);
 }
 
@@ -95,18 +94,18 @@ int TerrainChunk::neighbor_id_by_pos(coord::tile pos) {
 		if (pos.se < 0) {
 			neigh_id = 6;
 		}
-		else if (pos.se >= (ssize_t)this->size) {
+		else if (pos.se >= (ssize_t)chunk_size) {
 			neigh_id = 4;
 		}
 		else {
 			neigh_id = 5;
 		}
 	}
-	else if (pos.ne >= (ssize_t)this->size) {
+	else if (pos.ne >= (ssize_t)chunk_size) {
 		if (pos.se < 0) {
 			neigh_id = 0;
 		}
-		else if (pos.se >= (ssize_t)this->size) {
+		else if (pos.se >= (ssize_t)chunk_size) {
 			neigh_id = 2;
 		}
 		else {
@@ -117,7 +116,7 @@ int TerrainChunk::neighbor_id_by_pos(coord::tile pos) {
 		if (pos.se < 0) {
 			neigh_id = 7;
 		}
-		else if (pos.se >= (ssize_t)this->size) {
+		else if (pos.se >= (ssize_t)chunk_size) {
 			neigh_id = 3;
 		}
 		else {
@@ -152,15 +151,15 @@ size_t TerrainChunk::tile_position(coord::tile pos) {
 		throw Error("requested tile (%ld, %ld) that's not on this terrain chunk.", pos.ne, pos.se);
 	}
 
-	return pos.se * this->size + pos.ne;
+	return pos.se * chunk_size + pos.ne;
 }
 
 size_t TerrainChunk::tile_position_neigh(coord::tile pos) {
 	//get position of tile on neighbor
-	pos.ne = util::mod<coord::tile_t>(pos.ne, this->size);
-	pos.se = util::mod<coord::tile_t>(pos.se, this->size);
+	pos.ne = util::mod<coord::tile_t, chunk_size>(pos.ne);
+	pos.se = util::mod<coord::tile_t, chunk_size>(pos.se);
 
-	return pos.se * this->size + pos.ne;
+	return pos.se * chunk_size + pos.ne;
 }
 
 size_t TerrainChunk::get_tile_count() {
@@ -168,7 +167,7 @@ size_t TerrainChunk::get_tile_count() {
 }
 
 size_t TerrainChunk::get_size() {
-	return this->size;
+	return chunk_size;
 }
 
 void TerrainChunk::set_terrain(Terrain *parent) {

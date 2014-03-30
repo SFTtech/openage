@@ -2,10 +2,12 @@
 #TODO this includes:
 #TODO   using the dbg function
 #TODO   proper pydoc
-from struct import unpack_from, Struct
 from collections import defaultdict
+import dataformat
 from langcodes import langcodes
 import os
+from struct import unpack_from, Struct
+from util import dbg, file_get_path, file_read
 
 #PE file
 IMAGE_OPTIONAL_HDR32_MAGIC = 0x010b
@@ -176,12 +178,13 @@ class PEFile:
 		self.todefaultcharsetcd = 0
 		self.fromdefaultcharsetcd = 0
 
-		data = open(fname, 'rb').read()
+		fname = file_get_path(fname, write=False)
+		data = file_read(fname, bytes)
 
 		#read DOS header
 		dosheader = image_dos_header.unpack_from(data, 0)
 
-		print("DOS header: " + repr(dosheader))
+		dbg("PE header [%s]" % (fname), 1, push = "pe")
 
 		#read PE header
 		headerpos = dosheader[30] #e_lfanew
@@ -193,7 +196,7 @@ class PEFile:
 		if signature != PE_SIGNATURE:
 			raise Exception("Invalid PE signature")
 
-		print("PE header: " + repr(peheader))
+		dbg("DOS header: " + repr(peheader))
 
 		#read optional header
 		optheaderpos = headerpos + image_file_header.size
@@ -206,7 +209,7 @@ class PEFile:
 			raise Exception("Bad magic number for optional header")
 		number_of_rva_and_sizes = optheader[-1]
 
-		print("Optional header: " + repr(optheader))
+		dbg("Optional header: " + repr(optheader))
 
 		#read data directory
 		datadirectorypos = optheaderpos + image_optional_header32.size
@@ -220,12 +223,13 @@ class PEFile:
 
 		#number of sections is known from PE header
 		sections = {}
+		dbg("sections", 2, push="sections")
 		for i in range(number_of_sections):
 			sectionheader = image_section_header.unpack_from(data, secttablepos + image_section_header.size * i)
 			sectionname = sectionheader[0].decode('ascii').strip('\0')
 			sectionheader = sectionheader[1:]
 
-			print(sectionname + ": " + repr(sectionheader))
+			dbg(sectionname + ": " + repr(sectionheader))
 
 			#read section data
 			virtual_size, virtual_address, size_of_raw_data, pointer_to_raw_data, pointer_to_relocations, pointer_to_linenumbers, number_of_relocations, number_of_linenumbers, characteristics = sectionheader
@@ -233,6 +237,7 @@ class PEFile:
 			rawdata = data[pointer_to_raw_data:][:virtual_size]
 
 			sections[sectionname] = sectionheader, rawdata
+		dbg(pop="sections")
 
 		ressectionheader, self.rsrcdata = sections[SECTION_NAME_RESOURCE]
 		self.resdatava = ressectionheader[3]
@@ -244,10 +249,13 @@ class PEFile:
 		self.datadirectory = datadirectory
 		self.sections = sections
 
-		#rootnode = pcr_read_rsrc_tree(section offset = ftell(file), raw data offset = ptr - virtaddr)
-
 		self.rootnode = self.read_rsrc_tree(0)
 		self.strings = self.parse_rsrc_strings()
+
+		for lang, strs in self.strings.items():
+			dbg("%s: %d resource strings" % (lang, len(strs)))
+
+		dbg(pop = "pe")
 
 	def parse_rsrc_strings(self):
 		"""
@@ -293,13 +301,6 @@ class PEFile:
 
 		return result
 
-	def rsrc_strings_to_textfile(self, lang):
-		result = ""
-		for stringid, string in sorted(self.strings[lang].items()):
-			result += str(stringid) + ':' + lang + ':' + str(string.count('\n') + 1) + '\n'
-			result += string + '\n'
-		return result
-
 	def read_rsrc_tree(self, pos, recdepth = 0):
 		"""
 		reads a resource directory
@@ -343,27 +344,3 @@ class PEFile:
 
 
 		return entries
-
-	def rsrc_tree_to_dir(self, dirname, node = None):
-		"""
-		writes the ressource tree to the filesystem as a directory tree
-		"""
-		if node == None:
-			node = self.rootnode
-
-		for name, e in node.items():
-			if type(e) == dict:
-				try:
-					os.makedirs(dirname + '/' + str(name))
-				except FileExistsError:
-					pass
-				self.restodir(dirname + '/' + str(name), e)
-			else:
-				with open(dirname + '/' + str(name), 'wb') as f:
-					f.write(e)
-
-#example usage #TODO call from convert main.py
-pe = PEFile("/tmp/language.dll")
-rsrc_tree_to_dir('/tmp/language.dll.rsrcs')
-#f = open('/tmp/strings_en', 'w')
-#f.write(pe.rsrc_strings_to_textfile('de_DE'))

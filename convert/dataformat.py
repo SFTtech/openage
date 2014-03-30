@@ -7,6 +7,24 @@ from collections import OrderedDict
 from string import Template
 import os.path
 
+def encode_value(val):
+	"""
+	encodes val to a (possibly escaped) string,
+	for use in a csv column of type valtype (string)
+	"""
+	result = ""
+	for c in str(val):
+		if c == '\\':
+			result += '\\\\'
+		elif c == ',':
+			result += '\\,'
+		elif c == '\n':
+			result += '\\n'
+		else:
+			result += c
+
+	return result
+
 def gather_data(obj, members):
 	"""
 	queries the given object for the given member variables
@@ -39,7 +57,6 @@ def gather_format(target_class):
 	ret["struct_description"] = target_class.struct_description
 
 	return ret
-
 
 def format_data(format, data):
 	"""
@@ -200,7 +217,7 @@ def format_data(format, data):
 	delimiter = ","
 
 	#method signature for fill function
-	fill_csignature = "int %sfill(char *by_line)"
+	fill_csignature = "bool %sfill(char *by_line)"
 
 	type_scan_lookup = {
 		"char":          "hdd",
@@ -332,7 +349,7 @@ def format_data(format, data):
 
 			#csv data entries:
 			for entry in data_table["data"]:
-				row_entries = [ str(entry[c]) for c in columns.keys() ]
+				row_entries = [ encode_value(entry[c]) for c in columns.keys() ]
 				txt += "%s\n" % (delimiter.join(row_entries))
 
 			output_name = data_table["name_table_file"]
@@ -389,7 +406,8 @@ def format_data(format, data):
 			txt = ""
 
 			#creating a parser for a single field of the csv
-			column_token_parser = dict()
+			parse_tokens = []
+
 			for idx, (member, column_type) in enumerate(columns.items()):
 				dlength = 1
 
@@ -401,7 +419,8 @@ def format_data(format, data):
 				if dtype == "char" and "length" in column_type:
 					#read char array
 					dlength = column_type["length"]
-					column_token_parser[idx] = "strncpy(this->%s, token, %d); this->%s[%d-1] = '\\0';" % (member, dlength, member, dlength)
+					parsestr = "strncpy(this->%s, buf[%d], %d); this->%s[%d-1] = '\\0';" % (member, idx, dlength, member, dlength)
+					parse_tokens.append(parsestr)
 
 				elif dtype == "enum":
 					#read enum values
@@ -412,82 +431,54 @@ def format_data(format, data):
 					enum_parser = list()
 					enum_parser.append("//parse enum %s" % (enum_name))
 					for enum_value in enum_values:
-						enum_parser.append("%sif (0 == strcmp(token, \"%s\")) {" % (enum_parse_else, enum_value))
+						enum_parser.append("%sif (0 == strcmp(buf[%d], \"%s\")) {" % (enum_parse_else, idx, enum_value))
 						enum_parser.append("\tthis->%s = %s::%s;"                % (member, enum_name, enum_value))
 						enum_parser.append("}")
 						enum_parse_else = "else "
 					enum_parser.append("else {")
-					enum_parser.append("\terr = -1;")
+					enum_parser.append("\treturn false;")
 					enum_parser.append("}")
-					column_token_parser[idx] = enum_parser
+					parse_tokens.append(enum_parser)
 
 				elif dtype == "std::string":
 					#store std::string
-					column_token_parser[idx] = "this->%s = token;" % (member)
+					parse_tokens.append("this->%s = buf[%d];" % (member, idx))
 
 				elif dtype in type_scan_lookup:
 					dtype_scan = type_scan_lookup[dtype]
-					column_token_parser[idx] = "err = sscanf(token, \"%%%s\", &this->%s);" % (dtype_scan, member)
+					parsestr = "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return false; }" % (idx, dtype_scan, member)
+					parse_tokens.append(parsestr)
 
 				else:
 					raise Exception("unknown column type: %s" % dtype)
 
-
-
-			tokenparser = """
-		switch (idx) {"""
-
-			entry_scanner_indent = 3
-
-			#create sscanf entries
-			for idx, entry_scanners in column_token_parser.items():
-				if not type(entry_scanners) == list:
-					entry_scanners = entry_scanners.split("\n")
-
-				#more than 1 line for this scanner
-				if len(entry_scanners) > 1:
-					#prepend `entry_scanner_indent` tabs to each line
-					entry_scanners = ( ("\t" * entry_scanner_indent) + entry_line for entry_line in entry_scanners )
-
-					#insert all scanner lines
-					scanner = "\n" + "\n".join(entry_scanners)
-
-					#align the 'break' correctly
-					scanner += "\n" + ("\t" * entry_scanner_indent)
-				else:
-					scanner = " %s " % entry_scanners[0]
-
-				tokenparser += """
-		case {case}:{parser}break;""".format(case=idx, parser=scanner)
-
-			tokenparser += """
-		default:
-			err = -2;
-		}"""
+			#flatten the token parser statement list
+			parse_tokens = sum((type(i) == list and i or i.split('\n') for i in parse_tokens), [])
+			#indent/newline the token parser statement list
+			parse_tokens = "\n\t".join(parse_tokens)
 
 			fill_signature = fill_csignature % ("%s::" % data_struct_name)
+
+			member_count = data_struct_name + "::member_count"
 
 			#definition of filling function
 			txt += Template("""
 $funcsignature {
-	char separators[] = "$delimiters";
-	char *token;
-	size_t idx = 0;
-	int err    = 0;
+	//tokenize
+	char *buf[$member_count];
+	int count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
 
-	token = strtok(by_line, separators);
-	while (token != nullptr && idx < this->member_count) {
-$tokenhandler
-
-		if (err < 0) {
-			return err;
-		}
-		token = strtok(nullptr, separators);
-		idx += 1;
+	//check tokenization result
+	if (count != $member_count) {
+		return false;
 	}
-	return (idx != this->member_count);
+
+	//parse tokens
+	$parse_tokens
+
+	return true;
 }
-""").substitute(funcsignature=fill_signature, delimiters=delimiter, tokenhandler=tokenparser)
+""").substitute(funcsignature=fill_signature, delimiter=delimiter, parse_tokens=parse_tokens, member_count=member_count)
 
 			output_name = data_table["name_struct_file"]
 			store_output(ret, output_name, txt)
@@ -588,6 +579,8 @@ def merge_data_dump(transformed_data):
 #include <stddef.h> //various types
 #include <stdint.h> //int types
 #include <string>   //std::string
+
+#include "../engine/util/strings.h"
 
 %s
 

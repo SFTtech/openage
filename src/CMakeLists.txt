@@ -80,8 +80,12 @@ find_path(OPUSFILE_INCLUDE_DIR opusfile.h HINTS /usr/include/opus)
 include(FindPkgConfig)
 include(FindPackageHandleStandardArgs)
 
+#windows does not have libm
+if(NOT WIN32)
+	find_library(MATH_LIB m)
+endif()
+
 find_library(FONTCONFIG_LIB fontconfig)
-find_library(MATH_LIB m)
 find_library(OPUSFILE_LIB opusfile)
 find_library(UTIL_LIB util)
 

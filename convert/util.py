@@ -31,15 +31,43 @@ def ifdbg(lvl):
 
 
 def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "\n"):
+	"""
+	msg
+		message to print.
+		str() will be called on this object.
+		if None, the logger state is changed according to the other args,
+		but no message is printed.
+	lvl
+		integer level. if None, the loglevel remains unchanged.
+	push
+		if not None, will be pushed onto the debug stack.
+		the current level is pushed onto the stack as well, for restoring
+		on pop.
+
+		messages are indented according to the debug stack length.
+	pop
+		if not None, the top element of the debug stack will be poped.
+		the old loglevel is restored.
+		an exception is generated if the object is not equal to the top
+		object on the debug stack.
+	lazymsg
+		can be used instead of msg for lazy evaluation.
+		must be callable, and return a message object (or None).
+		will be called only if the message will be actually printed (according to loglevel).
+		intended for use with lambdas.
+		only one of msg and lazymsg may be not None.
+	end
+		the 'end' argument to print
+	"""
+
 	global verbose
 
 	if lvl == None:
 		#if no level is set, use the level on top of the debug stack
 		lvl = dbgstack[-1][1]
 
-	if lazymsg != None:
-		if msg != None:
-			raise Exception("debug message called with message and lazy message!")
+	if lazymsg != None and msg != None:
+		raise Exception("debug message called with message and lazy message!")
 
 
 	if verbose >= lvl:
