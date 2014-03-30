@@ -43,11 +43,11 @@ public:
 	 */
 	virtual void execute() {
 		try {
-			result = function();
+			this->result = this->function();
 		} catch (...) {
-			exception = std::current_exception();
+			this->exception = std::current_exception();
 		}
-		finished.store(true);
+		this->finished.store(true);
 	}
 };
 

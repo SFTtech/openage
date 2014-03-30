@@ -13,6 +13,11 @@ namespace job {
 // forward declaration of JobManager
 class JobManager;
 
+/**
+ * A job is a wrapper around a shared job state object and is returned the job
+ * manager. It can be used to retrieve the current state of the job and its
+ * result.
+ */
 template<class T>
 class Job {
 private:
@@ -28,8 +33,8 @@ public:
 	 * Returns whether this job has finished.
 	 */
 	bool is_finished() const {
-		if (state) {
-			return state->finished.load();
+		if (this->state) {
+			return this->state->finished.load();
 		}
 		return false;
 	}
@@ -37,13 +42,14 @@ public:
 	/**
 	 * Returns this job's result if the background execution was successful.
 	 * Exceptions that have happened will be rethrown.
+	 * It must not be called is is_finished() returns true.
 	 */
 	T get_result() {
-		assert(state->finished.load());
-		if (state->exception != nullptr) {
-			std::rethrow_exception(state->exception);
+		assert(this->state->finished.load());
+		if (this->state->exception != nullptr) {
+			std::rethrow_exception(this->state->exception);
 		} else {
-			return std::move(state->result);
+			return std::move(this->state->result);
 		}
 	}
 

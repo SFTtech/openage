@@ -61,9 +61,9 @@ public:
 	Job<T> enqueue(std::function<T()> function) {
 		auto state = std::make_shared<JobState<T>>(function);
 
-		std::unique_lock<std::mutex> lock{queue_mtx};
-		pending_jobs.push(state);
-		jobs_available.notify_all();
+		std::unique_lock<std::mutex> lock{this->queue_mtx};
+		this->pending_jobs.push(state);
+		this->jobs_available.notify_all();
 
 		return Job<T>{state};
 	}
