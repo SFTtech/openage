@@ -129,7 +129,13 @@ void AudioManager::audio_callback(int16_t *stream, int len) {
 
 	// write the mix buffer to the output stream and adjust volume
 	for (int i = 0; i < len; i++) {
-		stream[i] = static_cast<int16_t>(mix_buffer[i]/256);
+		auto value = mix_buffer[i]/256;
+		if (value > 32767) {
+			value = 32767;
+		} else if (value < -32768) {
+			value = -32768;
+		}
+		stream[i] = static_cast<int16_t>(value);
 	}
 }
 
