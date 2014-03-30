@@ -1,4 +1,4 @@
-#include "resource_loader.h"
+#include "in_memory_loader.h"
 
 #include <opusfile.h>
 
@@ -8,18 +8,18 @@
 namespace engine {
 namespace audio {
 
-ResourceLoader::ResourceLoader(const std::string &path)
+InMemoryLoader::InMemoryLoader(const std::string &path)
 		:
 		path{path} {
 }
 
-std::unique_ptr<ResourceLoader> ResourceLoader::create_resource_loader(
-		const std::string &path, format_t format) {
-	std::unique_ptr<ResourceLoader> loader;
+std::unique_ptr<InMemoryLoader> InMemoryLoader::create(const std::string &path,
+		format_t format) {
+	std::unique_ptr<InMemoryLoader> loader;
 	// switch format and return an appropriate loader
 	switch (format) {
 		case format_t::OPUS:
-			loader.reset(new OpusLoader{path});
+			loader.reset(new OpusInMemoryLoader{path});
 			break;
 		default:
 			throw Error{"Not supported for format: %d", format};
@@ -27,9 +27,9 @@ std::unique_ptr<ResourceLoader> ResourceLoader::create_resource_loader(
 	return std::move(loader);
 }
 
-OpusLoader::OpusLoader(const std::string &path)
+OpusInMemoryLoader::OpusInMemoryLoader(const std::string &path)
 		:
-		ResourceLoader{path} {
+		InMemoryLoader{path} {
 }
 
 // custom deleter for a OggOpusFile unique pointers
@@ -39,7 +39,7 @@ static auto opus_deleter = [](OggOpusFile *op_file) {
 	}
 };
 
-pcm_data_t OpusLoader::get_resource() {
+pcm_data_t OpusInMemoryLoader::get_resource() {
 	int op_err;
 	// open the opus file
 	std::unique_ptr<OggOpusFile, decltype(opus_deleter)> op_file{
@@ -65,6 +65,8 @@ pcm_data_t OpusLoader::get_resource() {
 	int position = 0;
 	int num_read = 0;
 	while (true) {
+		// TODO probably replace op_read with op_read stereo and avoid manuell
+		// stereo conversion
 		num_read = op_read(op_file.get(), buffer.get()+position,
 				pcm_length-position, nullptr);
 		if (num_read < 0) {

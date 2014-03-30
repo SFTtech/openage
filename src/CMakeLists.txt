@@ -20,9 +20,9 @@ add_executable(${PROJECT_NAME}
 	engine/audio/audio_manager.cpp
 	engine/audio/category.cpp
 	engine/audio/format.cpp
+	engine/audio/in_memory_loader.cpp
 	engine/audio/loader_policy.cpp
 	engine/audio/resource.cpp
-	engine/audio/resource_loader.cpp
 	engine/audio/sound.cpp
 	engine/console/console.cpp
 	engine/console/draw.cpp

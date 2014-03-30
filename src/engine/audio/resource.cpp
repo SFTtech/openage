@@ -1,6 +1,6 @@
 #include "resource.h"
 
-#include "resource_loader.h"
+#include "in_memory_loader.h"
 #include "../util/error.h"
 #include "../log.h"
 
@@ -38,7 +38,7 @@ InMemoryResource::InMemoryResource(category_t category, int id,
 		const std::string &path, format_t format)
 		:
 		Resource{category, id}  {
-	auto loader = ResourceLoader::create_resource_loader(path, format);
+	auto loader = InMemoryLoader::create(path, format);
 	auto resource = loader->get_resource();
 	buffer = std::move(std::get<0>(resource));
 	length = std::get<1>(resource);
