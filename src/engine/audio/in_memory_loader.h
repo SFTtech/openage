@@ -5,12 +5,10 @@
 #include <tuple>
 
 #include "format.h"
+#include "types.h"
 
 namespace engine {
 namespace audio {
-
-//
-using pcm_data_t = std::tuple<std::unique_ptr<int16_t[]>,uint32_t>;
 
 /**
  * A InMemoryLoader loads a audio file into memory and converts it into 16 bit

@@ -121,6 +121,7 @@ void AudioManager::audio_callback(int16_t *stream, int len) {
 			// if the sound is finished, it should be removed from the playing
 			// list
 			if (sound_finished) {
+				log::msg("MIXER: remove sound");
 				remove_from_vector(playing_list, i);
 				i--;
 			}

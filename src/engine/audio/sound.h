@@ -22,7 +22,7 @@ public:
 	bool playing;
 	bool looping;
 
-	~SoundImpl() = default;
+	~SoundImpl();
 
 	category_t get_category() const;
 	int get_id() const;

@@ -32,7 +32,7 @@ OpusInMemoryLoader::OpusInMemoryLoader(const std::string &path)
 		InMemoryLoader{path} {
 }
 
-// custom deleter for a OggOpusFile unique pointers
+// custom deleter for OggOpusFile unique pointers
 static auto opus_deleter = [](OggOpusFile *op_file) {
 	if (op_file != nullptr) {
 		op_free(op_file);
@@ -65,8 +65,6 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	int position = 0;
 	int num_read = 0;
 	while (true) {
-		// TODO probably replace op_read with op_read stereo and avoid manuell
-		// stereo conversion
 		num_read = op_read(op_file.get(), buffer.get()+position,
 				pcm_length-position, nullptr);
 		if (num_read < 0) {
@@ -88,7 +86,7 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 		}
 	}
 
-	return make_tuple(std::move(buffer), length);
+	return std::make_tuple(std::move(buffer), length);
 }
 
 }

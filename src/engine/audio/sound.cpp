@@ -81,6 +81,11 @@ SoundImpl::SoundImpl(std::shared_ptr<Resource> resource, int32_t volume)
 		position{0},
 		playing{false},
 		looping{false} {
+	resource->use();
+}
+
+SoundImpl::~SoundImpl() {
+	resource->stop_using();
 }
 
 category_t SoundImpl::get_category() const {
@@ -92,27 +97,33 @@ int SoundImpl::get_id() const {
 }
 
 bool SoundImpl::mix_audio(int32_t *stream, int len) {
-	const int16_t *samples;
-	uint32_t num_samples;
-	std::tie(samples, num_samples) = resource->get_samples(position, len);
+	uint32_t stream_index = 0;
+	while (len > 0) {
+		const int16_t *samples;
+		uint32_t num_samples;
+		std::tie(samples, num_samples) = resource->get_samples(position, len);
 
-	if (num_samples == 0) {
-		if (looping) {
-			position = 0;
+		if (num_samples == 0) {
+			if (looping) {
+				position = 0;
+				return false;
+			} else {
+				playing = false;
+				return true;
+			}
+		} else if (samples == nullptr) {
 			return false;
-		} else {
-			playing = false;
-			return true;
 		}
-	} else if (samples == nullptr) {
-		return false;
+
+		for (uint32_t i = 0; i < num_samples; i++) {
+			stream[i+stream_index] += volume * samples[i];
+		}
+
+		position += num_samples;
+		len -= num_samples;
+		stream_index += num_samples;
 	}
 
-	for (uint32_t i = 0; i < num_samples; i++) {
-		stream[i] += volume * samples[i];
-	}
-
-	position += num_samples;
 	return false;
 }
 

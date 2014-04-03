@@ -19,6 +19,7 @@ add_executable(${PROJECT_NAME}
 	engine/python.cpp
 	engine/audio/audio_manager.cpp
 	engine/audio/category.cpp
+	engine/audio/dynamic_loader.cpp
 	engine/audio/format.cpp
 	engine/audio/in_memory_loader.cpp
 	engine/audio/loader_policy.cpp
