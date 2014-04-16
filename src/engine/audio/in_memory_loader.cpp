@@ -42,8 +42,7 @@ static auto opus_deleter = [](OggOpusFile *op_file) {
 pcm_data_t OpusInMemoryLoader::get_resource() {
 	int op_err;
 	// open the opus file
-	std::unique_ptr<OggOpusFile, decltype(opus_deleter)> op_file{
-			op_open_file(path.c_str(), &op_err), opus_deleter};
+	opus_file_t op_file{op_open_file(path.c_str(), &op_err), opus_deleter};
 	
 	if (op_err != 0) {
 		throw Error{"Could not open: %s", path.c_str()};
@@ -57,9 +56,8 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	// calculate pcm buffer size depending on the number of channels
 	// if the opus file only had one channel, the pcm buffer size must be
 	// doubled
-	auto length_factor = 2 / op_channels;
-	std::unique_ptr<int16_t[]> buffer{new int16_t[pcm_length * length_factor]};
-	uint32_t length = pcm_length * length_factor;
+	uint32_t length = pcm_length * 2;
+	std::unique_ptr<int16_t[]> buffer{new int16_t[length]};
 
 	// read data from opus file
 	int position = 0;

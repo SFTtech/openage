@@ -1,6 +1,7 @@
 #include "resource.h"
 
 #include "in_memory_loader.h"
+#include "../engine.h"
 #include "../util/error.h"
 #include "../log.h"
 
@@ -109,6 +110,7 @@ void DynamicResource::stop_using() {
 		// delete all chunks
 		chunks.clear();
 		chunks.shrink_to_fit();
+		running_jobs.clear();
 	}
 }
 
@@ -118,18 +120,52 @@ uint32_t DynamicResource::get_length() const {
 
 std::tuple<const int16_t*,uint32_t> DynamicResource::get_samples(
 		uint32_t position, uint32_t num_samples) {
-	log::msg("DYNRES: request pos=%lu, num=%lu", position, num_samples);
-	auto chunk_index = position / CHUNK_SIZE;
+	// TODO refactor implementation into single methods, probably change
+	// preloading behavior
+	log::msg("DYNRES: request pos=%u, num=%u", position, num_samples);
+	// calculate chunk index and offset
+	int chunk_index = position / CHUNK_SIZE;
 	auto chunk_offset = position % CHUNK_SIZE;
+	// the chunk is beyond the end of the resource, so the resource has finished
 	if (chunk_index >= num_chunks) {
 		return std::make_tuple(nullptr, 0);
 	}
 	log::msg(" --> chunk_index=%d, chunk_offset=%d", chunk_index, chunk_offset);
+
+	// if chunk was not found, load it
 	if (!chunks[chunk_index]) {
-		auto chunk = loader->load_chunk(chunk_index*CHUNK_SIZE, CHUNK_SIZE);
-		chunks[chunk_index].swap(std::get<0>(chunk));
+		auto job_it = running_jobs.find(chunk_index);
+		if (job_it == std::end(running_jobs)) {
+			load_chunk(chunk_index);
+			return std::make_tuple(nullptr,1);
+		} else {
+			if (job_it->second.is_finished()) {
+				auto result = job_it->second.get_result();
+				chunks[chunk_index].swap(result);
+				running_jobs.erase(job_it);	
+			} else {
+				return std::make_tuple(nullptr,1);
+			}
+		}
 	}
 
+	// preload next chunk 
+	if (chunk_index < num_chunks-1 && !chunks[chunk_index+1]) {
+		auto nindex = chunk_index+1;
+		auto job_it = running_jobs.find(nindex);
+		if (job_it == std::end(running_jobs)) {
+			load_chunk(nindex);
+		} else {
+			if (job_it->second.is_finished()) {
+				auto result = job_it->second.get_result();
+				chunks[nindex].swap(result);
+				running_jobs.erase(job_it);	
+			}
+		}
+	
+	}
+
+	// get chunk and calculate buffer
 	auto buf = chunks[chunk_index].get() + chunk_offset;
 	if (CHUNK_SIZE - chunk_offset >= num_samples) {
 		log::msg(" --> RET %d", num_samples);
@@ -138,6 +174,15 @@ std::tuple<const int16_t*,uint32_t> DynamicResource::get_samples(
 		log::msg(" --> RET %d", CHUNK_SIZE - chunk_offset);
 		return std::make_tuple(buf, CHUNK_SIZE - chunk_offset);
 	}
+}
+
+void DynamicResource::load_chunk(int chunk_index) {
+	auto load_function = [this,chunk_index]() -> std::unique_ptr<int16_t[]> {
+			auto chunk = loader->load_chunk(chunk_index*CHUNK_SIZE, CHUNK_SIZE);
+			return std::move(chunk);
+		};
+	auto job = job_manager->enqueue<std::unique_ptr<int16_t[]>>(load_function);
+	running_jobs.insert({chunk_index, job});
 }
 
 }

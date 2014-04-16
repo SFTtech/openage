@@ -39,7 +39,11 @@ bool Sound::is_looping() const {
 }
 
 void Sound::play() {
-	sound_impl->position = 0;
+	if (!sound_impl->in_use) {
+		sound_impl->resource->use();
+		sound_impl->in_use = true;
+	}
+	sound_impl->offset = 0;
 	if (!sound_impl->playing) {
 		audio_manager->add_sound(sound_impl);
 		sound_impl->playing = true;
@@ -54,6 +58,10 @@ void Sound::pause() {
 }
 
 void Sound::resume() {
+	if (!sound_impl->in_use) {
+		sound_impl->resource->use();
+		sound_impl->in_use = true;
+	}
 	if (!sound_impl->playing) {
 		audio_manager->add_sound(sound_impl);
 		sound_impl->playing = true;
@@ -61,10 +69,14 @@ void Sound::resume() {
 }
 
 void Sound::stop() {
-	sound_impl->position = 0;
+	sound_impl->offset = 0;
 	if (sound_impl->playing) {
 		audio_manager->remove_sound(sound_impl);
 		sound_impl->playing = false;
+	}
+	if (sound_impl->in_use) {
+		sound_impl->resource->stop_using();
+		sound_impl->in_use = false;
 	}
 }
 
@@ -77,15 +89,17 @@ bool Sound::is_playing() const {
 SoundImpl::SoundImpl(std::shared_ptr<Resource> resource, int32_t volume)
 		:
 		resource{resource},
+		in_use{false},
 		volume{volume},
-		position{0},
+		offset{0},
 		playing{false},
 		looping{false} {
-	resource->use();
 }
 
 SoundImpl::~SoundImpl() {
-	resource->stop_using();
+	if (in_use) {
+		resource->stop_using();
+	}
 }
 
 category_t SoundImpl::get_category() const {
@@ -101,12 +115,11 @@ bool SoundImpl::mix_audio(int32_t *stream, int len) {
 	while (len > 0) {
 		const int16_t *samples;
 		uint32_t num_samples;
-		std::tie(samples, num_samples) = resource->get_samples(position, len);
+		std::tie(samples, num_samples) = resource->get_samples(offset, len);
 
 		if (num_samples == 0) {
 			if (looping) {
-				position = 0;
-				return false;
+				offset = 0;
 			} else {
 				playing = false;
 				return true;
@@ -119,7 +132,7 @@ bool SoundImpl::mix_audio(int32_t *stream, int len) {
 			stream[i+stream_index] += volume * samples[i];
 		}
 
-		position += num_samples;
+		offset += num_samples;
 		len -= num_samples;
 		stream_index += num_samples;
 	}

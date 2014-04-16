@@ -57,8 +57,18 @@ public:
 	AudioManager &operator=(const AudioManager&) = delete;
 	AudioManager &operator=(AudioManager&&) = delete;
 
+	/**
+	 * Loads all audio resources, that are specified in the sound_files vector.
+	 * @param sound_files a list of all sound resources
+	 */
 	void load_resources(const std::vector<sound_file> &sound_files);
 
+	/**
+	 * Returns a sound object with the given category and the given id. If no
+	 * such sound exists an Error will be thrown.
+	 * @param category the sound's category
+	 * @param id the sound's id
+	 */
 	Sound get_sound(category_t category, int id);
 
 	void audio_callback(int16_t *stream, int len);
@@ -72,6 +82,8 @@ private:
 	void add_sound(std::shared_ptr<SoundImpl> sound);
 	void remove_sound(std::shared_ptr<SoundImpl> sound);
 
+	// Sound is the AudioManager's friend, so that only sounds can access the
+	// add and remove sound method's
 	friend class Sound;
 
 // static functions

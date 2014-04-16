@@ -13,17 +13,27 @@
 #include "category.h"
 #include "dynamic_loader.h"
 #include "format.h"
+#include "../job/job_manager.h"
 #include "loader_policy.h"
 
 namespace engine {
 namespace audio {
 
 /**
- * A resource contains pcm data, that can be played by sounds.
+ * A Resource contains 16 bit signed integer pcm data, that can be played by
+ * sounds. Each Resource has an unique id within it's category. The category
+ * specifies the type of sound, e. g. game sounds, background music, etc.
+ * The id is a unique integer value.
  */
 class Resource {
 private:
+	/**
+	 * The resource's category.
+	 */
 	category_t category;
+	/**
+	 * The resource's id.
+	 */
 	int id;
 
 public:
@@ -39,7 +49,15 @@ public:
 	virtual category_t get_category() const;
 	virtual int get_id() const;
 
+	/**
+	 * Tells the resource, that it will be used by a sound object, so it can
+	 * preload some pcm samples.
+	 */
 	virtual void use();
+	/**
+	 * Tells the resource, that one sound object does not use this resource any
+	 * longer.
+	 */ 
 	virtual void stop_using();
 
 	/**
@@ -51,7 +69,7 @@ public:
 	 * Returns a pointer to the sample buffer at the given position and the
 	 * number of samples that are actually available. If the end of the resource
 	 * is reached, 0 will be returned. If the resource is not ready yet, a
-	 * nullptr will be returned.
+	 * nullptr with a length, different to zero, will be returned.
 	 * @param position the current position in the resource
 	 * @param num_samples the number of int16_t that should be returned
 	 */
@@ -88,15 +106,17 @@ public:
 			uint32_t num_samples);
 };
 
-constexpr uint32_t CHUNK_SIZE = 12000;
+constexpr uint32_t CHUNK_SIZE = 96000;
 
 class DynamicResource : public Resource {
 private:
 	std::atomic_int use_count;
 
-	std::vector<std::unique_ptr<int16_t[]>> chunks;
-	uint32_t num_chunks;
+	std::vector<pcm_chunk_t> chunks;
+	int num_chunks;
 	uint32_t length;
+
+	std::unordered_map<int,job::Job<pcm_chunk_t>> running_jobs;
 
 	std::unique_ptr<DynamicLoader> loader;
 
@@ -112,6 +132,9 @@ public:
 
 	virtual std::tuple<const int16_t*,uint32_t> get_samples(uint32_t position,
 			uint32_t num_samples);
+
+private:
+	void load_chunk(int chunk_index);
 };
 
 }

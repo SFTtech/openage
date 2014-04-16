@@ -3,6 +3,8 @@
 #include "../log.h"
 #include "../util/error.h"
 
+#include <cstring>
+
 namespace engine {
 namespace audio {
 
@@ -35,53 +37,67 @@ static auto opus_deleter = [](OggOpusFile *op_file) {
 OpusDynamicLoader::OpusDynamicLoader(const std::string &path)
 		:
 		DynamicLoader{path} {
+	// open opus file
 	auto op_file = open_opus_file();
 
+	// read channels from the opus file
 	channels = op_channel_count(op_file.get(), -1);
-	auto length_factor = 2 / channels;
 
-	length = op_pcm_total(op_file.get(), -1) * length_factor;
-	log::msg("create dynamic opus loader: len=%d, chan=%d", length, channels);
+	length = op_pcm_total(op_file.get(), -1) * 2;
+	log::msg("Create dynamic opus loader: len=%d, chan=%d", length, channels);
 }
 
 uint32_t OpusDynamicLoader::get_length() {
 	return length;
 }
 
-pcm_data_t OpusDynamicLoader::load_chunk(uint32_t position, uint32_t num_samples) {
-	// if the requested position is greater than the resource's length, there is
+pcm_chunk_t OpusDynamicLoader::load_chunk(uint32_t offset, uint32_t chunk_size) {
+	// if the requested offset is greater than the resource's length, there is
 	// no chunk left to load
-	if (position > length) {
-		return std::make_tuple(nullptr, 0);
+	if (offset > length) {
+		return nullptr;
 	}
 
 	// open opus file
 	auto op_file = open_opus_file();
 
 	// allocate the chunk's buffer
-	std::unique_ptr<int16_t[]> chunk{new int16_t[num_samples]};
+	pcm_chunk_t chunk{new int16_t[chunk_size]};
+	// initialize chunks with zeroes
+	std::memset(chunk.get(), 0, chunk_size*sizeof(int16_t));
 
-	// seek to the requested position
-	int64_t pcm_position = static_cast<int64_t>(position * channels / 2);
-
-	int op_ret = op_pcm_seek(op_file.get(), pcm_position);
+	// seek to the requested offset, the seek offset is given in samples
+	// while the requested offset is given in int16_t values, so the division
+	// by 2 is necessary
+	int64_t pcm_offset = static_cast<int64_t>(offset / 2);
+	int op_ret = op_pcm_seek(op_file.get(), pcm_offset);
 	if (op_ret < 0) {
 		throw Error{"Could not seek in %s: %d", path.c_str(), op_ret};
 	}
 
-	// read a chunk from the requested position
-	int read_num_samples = num_samples / 2 * channels;
+	// read a chunk from the requested offset
+	// if the opus file is a mono source, we read chunk_size / 2 values and
+	// convert it to stereo directly
+	// if the opus file is a stereo source, we read chunk_size directly
+	int read_num_values = chunk_size / 2 * channels;
 	int read_count = 0;
-	while (read_count <= read_num_samples) {
-		op_ret = op_read(op_file.get(), chunk.get() + read_count, read_num_samples - read_count,
-				nullptr);
-		if (op_ret < 0) {
-			throw Error{"Could not read from %s: %d", path.c_str(), op_ret};
-		} else if (op_ret == 0) {
+	int samples_read;
+	// loop as long as there are samples left to read
+	while (read_count <= read_num_values) {
+		samples_read = op_read(op_file.get(), chunk.get() + read_count,
+				read_num_values - read_count, nullptr);
+		// an error occured
+		if (samples_read < 0) {
+			throw Error{"Could not read from %s: %d", path.c_str(),
+					samples_read};
+		// end of the resource
+		} else if (samples_read == 0) {
 			break;
 		}
 
-		read_count += op_ret * channels;
+		// increase read_count by the number of int16_t values that have been
+		// read	
+		read_count += samples_read * channels;
 	}
 
 	// convert to stereo
@@ -93,8 +109,8 @@ pcm_data_t OpusDynamicLoader::load_chunk(uint32_t position, uint32_t num_samples
 		}
 	}
 	
-	log::msg("LOADED: file=%lu, stereo=%lu", read_count, read_count * 2 / channels);
-	return std::make_tuple(std::move(chunk), read_count * 2 / channels);
+	log::msg("DYNLOAD: file=%d all=%d", read_count, read_count * 2 / channels); 
+	return std::move(chunk);
 }
 
 opus_file_t OpusDynamicLoader::open_opus_file() {

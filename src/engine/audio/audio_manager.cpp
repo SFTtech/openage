@@ -1,6 +1,7 @@
 #include "audio_manager.h"
 
 #include <cstring>
+#include <sstream>
 
 #include "resource.h"
 
@@ -71,14 +72,16 @@ void AudioManager::load_resources(const std::vector<sound_file> &sound_files) {
 	for (auto &sound_file : sound_files) {
 		auto category = from_category(sound_file.category);
 		auto id = sound_file.sound_id;
-		std::string path = "age/";
-		path += sound_file.path;
+
+		std::ostringstream sstr;
+		sstr << "age/";
+		sstr << sound_file.path;
 		auto format = from_format(sound_file.format);
 		auto loader_policy = from_loader_policy(sound_file.loader_policy);
 
 		auto key = std::make_tuple(category, id);
-		auto resource = Resource::create_resource(category, id, path, format,
-				loader_policy);
+		auto resource = Resource::create_resource(category, id, sstr.str(),
+				format, loader_policy);
 
 		// TODO check resource already existing
 		resources.insert({key, resource});
@@ -121,7 +124,6 @@ void AudioManager::audio_callback(int16_t *stream, int len) {
 			// if the sound is finished, it should be removed from the playing
 			// list
 			if (sound_finished) {
-				log::msg("MIXER: remove sound");
 				remove_from_vector(playing_list, i);
 				i--;
 			}
