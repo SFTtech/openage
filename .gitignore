@@ -16,4 +16,4 @@ bin
 lib
 data/age
 callgrind.out.*
-data/perf.data*
+perf.data*
