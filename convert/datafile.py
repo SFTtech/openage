@@ -28,7 +28,10 @@ def data_generate(args):
 			set_write_dir("")
 			list_enabled = True
 
-	storeas = ["struct", "cfile"]
+	#generate files in these formats
+	formats = ("struct", "structimpl")
+
+	data_formatter = dataformat.DataFormatter()
 
 	struct_data = list()
 	struct_data += gamedata.empiresdat.EmpiresDat.structs(args.sections)
@@ -38,8 +41,8 @@ def data_generate(args):
 	struct_data += filelist.SoundList.structs()
 	struct_data += stringresource.StringResource.structs()
 
-	output_data = dataformat.metadata_format(struct_data, storeas)
-	output_data = dataformat.merge_data_dump(output_data)
+	data_formatter.add_data(struct_data)
+	output_data = data_formatter.export(formats)
 
 	output_filenames = list()
 	written_file_count = 0
@@ -47,22 +50,12 @@ def data_generate(args):
 	for file_name, file_data in output_data.items():
 		output_filenames.append(file_name)
 
-		if write_enabled:
-			#only generate requested files
-			write_file = False
-
-			if args.filename == "*":
-				write_file = True
-
-			if any((fnmatch(file_name, file_pattern) for file_pattern in args.filename)):
-				write_file = True
-
-			if write_file:
-				#write dat shit
-				dbg("writing %s.." % file_name, 1)
-				file_name = file_get_path(file_name, write=True)
-				file_write(file_name, file_data)
-				written_file_count += 1
+		#only generate requested files
+		if write_enabled and (args.filename == "*" or any(fnmatch(file_name, file_pattern) for file_pattern in args.filename)):
+			dbg("writing %s.." % file_name, 1)
+			file_name = file_get_path(file_name, write=True)
+			file_write(file_name, file_data)
+			written_file_count += 1
 
 	if list_enabled:
 		#print the list separated by ';' for the cmake rule generation

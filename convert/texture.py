@@ -37,14 +37,14 @@ class Texture:
 
 this struct stores information about what position and size
 one sprite included in the 'big texture' has."""
-	data_format = {
-		0: {"x":  "int32_t"},
-		1: {"y":  "int32_t"},
-		2: {"w":  "int32_t"},
-		3: {"h":  "int32_t"},
-		4: {"cx": "int32_t"},
-		5: {"cy": "int32_t"},
-	}
+	data_format = (
+		("x",  "int32_t"),
+		("y",  "int32_t"),
+		("w",  "int32_t"),
+		("h",  "int32_t"),
+		("cx", "int32_t"),
+		("cy", "int32_t"),
+	)
 
 	def __init__(self, frames):
 		if type(frames) != list:
@@ -58,47 +58,30 @@ one sprite included in the 'big texture' has."""
 
 		self.image, self.image_metadata = merge_frames(self.frames)
 		self.raw_png = util.VirtualFile()
+		self.image.save(self.raw_png, self.image_format)
 
-	def save(self, filename, meta_format):
+	def save(self, filename, meta_formats):
 		"""
-		save the texture to the given filename,
-		the output destination folder is specified in
-			* datadir subfolder: util.merge_data_dump
-			* datadir folder: util.file_write_multi
+		save the texture to the given filename
 		"""
 
-		self.generate_image()
-
-		#get texture metadata
-		raw_metadata = self.metadata(filename)
-		write_data = dataformat.metadata_format(raw_metadata, meta_format)
-
-		#appent image data
-		write_data[self.image_format] = {
-			filename: [ self.raw_png.data() ]
-		}
+		#generate formatted texture metadata
+		formatter = dataformat.DataFormatter()
+		formatter.add_data(self.dump(filename))
 
 		#generate full output file contents
-		output_data = dataformat.merge_data_dump(write_data)
+		output_data = formatter.export(meta_formats)
+		output_data["%s.%s" % (filename, self.image_format)] = self.raw_png.data()
 
 		#save the output files
 		util.file_write_multi(output_data)
 
-	def generate_image(self):
-		#save the image to the local virtual file
-		self.image.save(self.raw_png, self.image_format)
+	def dump(self, filename):
+		return [ dataformat.DataDefinition(self, self.image_metadata, filename) ]
 
-	def metadata(self, filename):
-		ret = dict()
-
-		ret.update(dataformat.gather_format(self))
-		ret["name_table_file"] = filename
-		ret["data"] = self.image_metadata
-
-		return [ ret ]
-
-	def structs():
-		return [ dataformat.gather_format(Texture) ]
+	@classmethod
+	def structs(cls):
+		return [ dataformat.StructDefinition(cls) ]
 
 
 def merge_frames(frames, max_width=0, max_height=0):

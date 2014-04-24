@@ -4,26 +4,26 @@
 #and their corresponding structs.
 
 from collections import OrderedDict
+import util
+from util import dbg
+import re
 from string import Template
 import os.path
+
 
 def encode_value(val):
 	"""
 	encodes val to a (possibly escaped) string,
 	for use in a csv column of type valtype (string)
 	"""
-	result = ""
-	for c in str(val):
-		if c == '\\':
-			result += '\\\\'
-		elif c == ',':
-			result += '\\,'
-		elif c == '\n':
-			result += '\\n'
-		else:
-			result += c
 
-	return result
+	val = str(val)
+	val = val.replace("\\", "\\\\")
+	val = val.replace(",", "\\,")
+	val = val.replace("\n", "\\n")
+
+	return val
+
 
 def gather_data(obj, members):
 	"""
@@ -35,671 +35,91 @@ def gather_data(obj, members):
 	"""
 	ret = dict()
 
-	for member in members.values():
-		for elem in member.keys():
-			ret[elem] = getattr(obj, elem)
+	for attr, _ in members:
+		ret[attr] = getattr(obj, attr)
 
 	return ret
 
 
-def gather_format(target_class):
+class ContentSnippet:
 	"""
-	returns all necessary class properties of the target to
-	create a struct dump.
+	one part of text for generated files to be saved in "file_name"
 
-	this can then be fed into `format_data`, with the format="struct"
-	"""
+	before whole source files can be written, it's content snippets
+	have to be ordered according to their dependency chain.
 
-	ret = dict()
-	ret["name_struct"]        = target_class.name_struct
-	ret["name_struct_file"]   = target_class.name_struct_file
-	ret["data_format"]        = target_class.data_format
-	ret["struct_description"] = target_class.struct_description
-
-	return ret
-
-def format_data(format, data):
-	"""
-	transforms and merges the given data structure
-	according to the format specified in the data itself.
-
-	this function creates the plaintext being stored in the data files
-
-
-	data has to be a list.
-	each entry equals a data table to create (called data_export for reference).
-	the corresponding value is a dict
-	it has these members:
-		name_table_file, name_struct_file, name_struct, format and data
-			name is the data structure name to create
-			format is a dict, it specifies the C type of a column.
-	each key of this dict is a ordering priority number, the value is a dict.
-	this dict assigns a column name to its type.
-	the type value is either a string or a dict.
-		if it's a string, it specifies the C type directly (e.g. "uint8_t"),
-		if it's a dict, it has one mandatory key:
-			"type"=>ctype: this member will have this C type
-			"type"=>"subdata": this member is a list of submembers, which fill be
-				resolved separately and referencable by the parent later
-				this allows nesting and cross referencing data structures.
-				settings:
-				"ref_type"=>class: data class of the subdata column
-				"ref_to"=>"key": add the local key's value to name the reference
-					not set: just use a simple incremented number for the reference
-			"type"=>"enum": this member is a enum. further settings:
-				"name"=>"my_enum": the enum name
-				"values"=>["VAL0", "VAL1", ...]: the possible enum values (list or set)
-					only required for first-time definition
-				"xref": "filename": assume this enum to be defined in "filename"
-					"filename" may be None when the definition is in the same file
-				"filename"=>"header_name": the header where the enum will be placed in
-					when ommitted, use 'name_struct_file'
-		additional keys are:
-			"length": (optional) to specify array lengths, default 1
-				e.g. "type"=>"char" and "length"=>40, would produce "char columnname[40];"
-	data is a list, it stores the table rows.
-	a list entry (a row) contains dicts: "column name": column value (for this row)
-
-	this input is transformed to filename-grouped output
-	so that real files can be created afterwards
-
-	i know you did not understand the format specification, so heres an example:
-
-	input:
-	data = [
-		{
-			"name_table_file":   "civilisation_data",
-			"name_struct_file":  "gamedata_header",
-			"name_struct":       "civilisation",
-			"struct_description: "represents one civilisation.",
-			"format": {
-				0: {"civ_id":  "int"},
-				1: {"mode":    {"type": "enum", "name": "civ_rating", "values": ["boring", "epic", "lame"] }},
-				2: {"unit":    {"type": "subdata", "ref_to": "civ_id", "ref_type": Unit }},
-			},
-			"data": [
-				{ "civ_id": 1337, "mode": "epic",   "unit": a },
-				{ "civ_id":   42, "mode": "boring", "unit": b },
-				{ "civ_id":  235, "mode": "boring", "unit": c },
-			],
-
-			#a b and c can be queried recursively,
-			#they have to provide the data to be passed to `format_data`.
-			#a.dump("unit_data_civ_1337")
-			#generates something like:
-			[{
-				"name_table_file":   "unit_data_civ_1337",
-				"name_struct_file":  "gamedata_header",
-				"name_struct":       "unit",
-				"struct_description: "walking or real estate objects.",
-				"format": {
-					0: { "id":   "int32_t" },
-					1: { "name": "std::string" },
-				},
-				"data": [
-					{ "id": 10, "name": "hussar, 1337 edition" },
-					{ "id": 12, "name": "dorfbewohner" },
-				],
-			}],
-			#end of output of a.dump
-
-			#b.dump and c.dump result in something similar,
-			#the a b and c dumps can then be stored into a subfolder, like civilisation_data_unit/
-		},
-
-		{
-			"name_table_file":   "terrain_list",
-			"name_struct_file":  "gamedata_header",
-			"name_struct":       "terrain",
-			"struct_description: None,
-			"format": {
-				5:  {"name":   { "type": "char", "length": 30 }},
-				0:  {"id":     "int16_t"},
-				10: {"size":   "float"},
-			},
-			"data": [
-				{ "name": "schwarzwald", "id":  88, "size": 9000.001 },
-				{ "name": "alpen",       "id":  10, "size":    4.2   },
-				{ "name": "wattenmeer",  "id": 400, "size":  235.42  },
-			],
-		},
-	]
-
-	this can then be converted to structs, csvs, python source, etc.
-	the generated output would be:
-
-	a = format_data("csv", data)
-
-	a == {
-		"civilisation_data": {
-			"data": [
-				"
-				#struct civilisation
-				#represents one civilisation.
-				#int,civ_rating,Unit
-				#civ_id,mode,unit
-				1337,epic,civilisation_data-unit/unit_data_civ_1337
-				42,boring,civilisation_data-unit/unit_data_civ_42
-				235,boring,civilisation_data-unit/unit_data_civ_235
-				",
-			],
-		},
-
-		"civilisation_data_unit/unit_data_civ_1337": {
-			"data": [
-				"
-				#struct unit
-				#walking or real-estate objects.
-				#int32_t,std::string
-				#id,name
-				10,Hussar\, 1337 edition
-				12,Dorfbewohner
-				",
-			],
-		},
-
-		"civilisation_data_unit/unit_data_civ_42": {
-			"data": [
-				"
-				#struct unit
-				#walking or real-estate objects.
-				#int32_t,std::string
-				#id,name
-				1337,flying spaghetti monster
-				12,Dorfbewohner
-				",
-			],
-		},
-
-		"civilisation_data_unit/unit_data_civ_235": you can imagine it yourself..
-
-		"terrain_list": {
-			"data": [
-				"
-				#struct terrain
-				#int16_t,char[30],float
-				#name,id,size
-				schwarzwald,88,9001.001
-				alpen,10,4.2
-				wattenmeer,400,235.42
-				",
-			],
-		},
-	}
-
-	the generated structs would look like this:
-
-	a = format_data("struct", data)
-
-	a == {
-		"gamedata_header": [
-			{
-				"data":
-				"
-				enum class civ_rating {
-					boring,
-					epic,
-					lame
-				};
-				",
-			},
-
-			{
-				"data":
-				"
-				/**
-				 * represents one civilisation.
-				 */
-				struct civilisation {
-					int civ_id;
-					civ_rating mode;
-					std::string unit_filename;
-				};
-				",
-				"metadata": {
-					"headers": {
-						"global": {
-							"string",
-						},
-						"local": {
-							"gamedata_header",
-						},
-					},
-					"typerefs": {
-						"unit",
-					},
-				},
-			},
-
-			{
-				"data":
-				"
-				struct unit {
-					int32_t id;
-					std::string name;
-				};
-				",
-				"metadata": {
-					"headers": {
-						"global": {
-							"stdint.h",
-						},
-					},
-				},
-			},
-
-			{
-				"data":
-				"
-				struct terrain {
-					int16_t id;
-					char name[30];
-					float size;
-				};
-				",
-			},
-		],
-	}
-
-
-	=> the output format is:
-	{"filename": [{"data": section data, "metadata": {metadata}} ] }
-		where metadata may contain
-			"headers" -> "local": set()/list(), "global": set()/list()
-			"typerefs" -> set() of types that need to be defined before or forward declared
-
-	this data can then be passed to some function
-	that creates the csv, cpp and h files
-
-	i'll omit the generated c code, because reasons.
-
-	conclusion: this function is the central part of the data exporting
-	functionality.
+	also, each snipped can have import requirements that have to be
+	included in top of the source.
 	"""
 
-	#csv column delimiter:
-	delimiter = ","
+	section_header   = util.NamedObject("header")
+	section_body     = util.NamedObject("body")
+	section_typedefs = util.NamedObject("body")
 
-	#method signature for fill function
-	fill_csignature = "bool %sfill(char *by_line)"
+	def __init__(self, data, file_name, section):
+		self.data      = data       #snippet content
+		self.file_name = file_name  #snippet wants to be saved in this file
+		self.typerefs  = set()      #these types are referenced
+		self.typedefs  = set()      #these types are defined
+		self.headers   = set()      #required headers
+		self.section   = section
 
-	type_scan_lookup = {
-		"char":          "hhd",
-		"int8_t":        "hhd",
-		"uint8_t":       "hhu",
-		"int16_t":       "hd",
-		"uint16_t":      "hu",
-		"int":           "d",
-		"int32_t":       "d",
-		"uint":          "u",
-		"uint32_t":      "u",
-		"float":         "f",
-	}
+	def get_data(self):
+		return self.data
+
+	def __hash__(self):
+		return hash((self.data, self.file_name, self.section))
+
+	def __eq__(self, other):
+		return (
+			self.data == other.data
+			and self.file_name == other.file_name
+			and self.section   == other.section
+		)
+
+	def __repr__(self):
+		return "ContentSnippet"
+
+	def __str__(self):
+		return "".join([
+			repr(self), " [%s], " % (self.file_name),
+			"data = '", self.data, "'"
+		])
 
 
-	#returned data: key=filename/structname, value:formatted data
-	ret = dict()
+class CHeader:
+	"""
+	represents an includable C header
+	"""
 
-	#needed enums storage
-	#key=enum name
-	#value: {"values": set(enum values), "filename": name}
-	enums = dict()
+	def __init__(self, name, is_global=False):
+		self.name = name
+		self.is_global = is_global
 
-	#these headers will be needed for the current format selected.
-	needed_headers = set()
-
-
-	def store_output(result_storage, key, value, prepend=False):
-		#create list or append to it, if output_name was defined earlier
-		if key in result_storage:
-			if not prepend:
-				ret[key].append(value)
-			else:
-				ret[key].insert(0, value)
+		if self.is_global:
+			self.data = "#include <%s>\n" % self.name
 		else:
-			ret[key] = [ value ]
+			self.data = "#include \"%s\"\n" % self.name
 
+	def get_file_name(self):
+		return self.name
 
-	for data_table in data:
-		data_struct_name = data_table["name_struct"]
-		data_struct_desc = data_table["struct_description"]
+	def get_snippet(self, file_name):
+		return ContentSnippet(self.data, file_name, ContentSnippet.section_header)
 
-		#create column list to ensure data order for all rows
-		column_prios = sorted(data_table["data_format"].keys())
+	def __hash__(self):
+		return hash((self.name, self.is_global))
 
-		#create ordered dict according to priorities
-		columns = OrderedDict()
-		for prio in column_prios:
-			for column, ctype in data_table["data_format"][prio].items():
-				if type(ctype) == str:
-					ctype = {
-						"type": ctype,
-					}
-				else:
-					if not "type" in ctype:
-						raise Exception("column type has to be specified for %s" % (column))
+	def __eq__(self, other):
+		return (
+			self.name == other.name
+			and self.is_global == other.is_global
+		)
 
-				columns[column] = ctype
 
-		#check definition validity of all data column definitions
-		for column_name, ctype in columns.items():
-
-			#this column is an enum, store it to generate it later
-			if ctype["type"] == "enum":
-				if "name" not in ctype:
-					raise Exception("enum columns need to specify a name")
-
-				#create the needed enum
-				if ctype["name"] not in enums:
-
-					if "xref" in ctype:
-						#this enum is a cross reference to an existing enum
-						enum_is_xref  = True
-						enum_filename = ctype["xref"]
-						enum_values   = None
-
-					else:
-						#this enum is defined here the first time
-						enum_is_xref  = False
-
-						if "filename" in ctype:
-							enum_filename = ctype["filename"]
-						else:
-							enum_filename = data_table["name_struct_file"]
-
-						if "values" not in ctype:
-							raise Exception("first time definition of enum %s requires its 'values'" % ctype["name"])
-						else:
-							enum_values   = ctype["values"]
-
-					#add the requested enum to the enum list
-					enums[ctype["name"]] = {"values": enum_values, "filename": enum_filename, "xref": enum_is_xref}
-
-				#enum already known
-				else:
-					if "values" in ctype:
-						if not ctype["values"] == enums[ctype["name"]]:
-							raise Exception("you reused the enum %s with different values this time." % ctype["name"])
-
-			#this column references to a list of member data sets
-			elif ctype["type"] == "subdata":
-				if "ref_to" in ctype:
-					if ctype["ref_to"] not in columns.keys():
-						raise Exception("subdata reference specification for column %s is no valid column name: %s" % (column_name, ctype["ref_to"]))
-				else:
-					ctype["ref_to"] = None
-
-				if "ref_type" not in ctype:
-					raise Exception("reference class must be specified by 'ref_type': for column %s" % column_name)
-
-
-		#export csv file
-		if format == "csv":
-
-			txt = ""
-
-			if data_struct_desc != None:
-				#split description to its lines
-				data_struct_desc = data_struct_desc.split("\n")
-
-				#prepend each line with a comment hash
-				csv_struct_desc = "".join(("#%s\n" % line for line in data_struct_desc))
-			else:
-				csv_struct_desc = ""
-
-			column_types_raw = columns.values()
-			csv_column_types = list()
-
-			#create column types line entries
-			for c_raw in column_types_raw:
-				if c_raw["type"] == "enum":
-					#set the column type to the enum name
-					#TODO: maybe list possible enum values here
-					c_type = c_raw["name"]
-
-				elif c_raw["type"] == "subdata":
-					#set the column type to the referenced class name
-					c_type = c_raw["ref_type"].__name__
-
-				else:
-					#just use the column type name
-					c_type = c_raw["type"]
-
-				if "length" in c_raw and c_raw["length"] > 1:
-					c = "%s[%d]" % (c_type, c_raw["length"])
-				else:
-					c = c_type
-
-				csv_column_types.append(c)
-
-			#csv header:
-			txt += "#struct %s\n" % (data_struct_name)
-			txt += "%s"           % (csv_struct_desc)
-			txt += "#%s\n"        % (delimiter.join(csv_column_types))
-			txt += "#%s\n"        % (delimiter.join(columns.keys()))
-
-			#csv data entries:
-			for idx, data_line in enumerate(data_table["data"]):
-				row_entries = list()
-				for col_name, col_type in columns.items():
-					entry = data_line[column_name]
-
-					#check if enum data value is valid
-					if col_type["type"] == "enum":
-						if entry not in col_type["values"]:
-							raise Exception("data entry %d '%s' not a valid enum %s value" % (idx, entry, col_type["name"]))
-
-					#generate subdata reference link
-					elif col_type["type"] == "subdata":
-						if col_type["ref_to"] == None:
-							ref_to = idx
-						else:
-							ref_to = data_line[col_type["refto"]]
-
-						subdata_folder = "%s-%s" % (data_table["name_table_file"], col_name)
-						subdata_table_name = "TODO"
-
-						entry = "%s/%s" % (subdata_folder, subdata_table_name)
-
-					#escape the entry (e.g. newlines and commas)
-					entry = encode_value(entry)
-					row_entries.append(entry)
-
-				txt += "%s\n" % (delimiter.join(row_entries))
-
-			output_name = data_table["name_table_file"]
-			store_output(ret, output_name, txt)
-
-		#create C struct
-		elif format == "struct":
-
-			txt = ""
-
-			#optional struct description
-			if data_struct_desc != None:
-				txt += "/**\n * "
-
-				#prepend * before every comment line
-				txt += "\n * ".join(data_struct_desc.split("\n"))
-
-				txt += "\n */\n"
-
-			#struct definition
-			txt += "struct %s {\n" % (data_struct_name)
-
-			#create struct members:
-			for member, dtype in columns.items():
-				dlength = ""
-				if "length" in dtype and dtype["length"] > 1:
-					dlength = "[%d]" % (dtype["length"])
-
-				if dtype["type"] == "enum":
-					dtype = dtype["name"]
-				elif dtype["type"] == "subdata":
-					dtype = "std::string"
-				else:
-					dtype = dtype["type"]
-
-				txt += "\t%s %s%s;\n" % (dtype, member, dlength)
-
-			#append member count variable
-			txt += "\n\tstatic constexpr size_t member_count = %d;\n" % len(columns)
-
-			#add filling function prototype
-			fill_signature  = fill_csignature % ""
-			txt += "\n\t%s;\n" % fill_signature
-
-			#struct ends
-			txt += "};\n"
-
-			output_name = data_table["name_struct_file"]
-			store_output(ret, output_name, txt)
-
-
-		#create C code for fill function
-		elif format == "cfile":
-			#it is used to fill a struct instance with data of a line in the csv
-
-			txt = ""
-
-			#creating a parser for a single field of the csv
-			parse_tokens = []
-
-			for idx, (member, column_type) in enumerate(columns.items()):
-				dlength = 1
-
-				if not type(column_type) == dict:
-					column_type = {"type": column_type}
-
-				dtype = column_type["type"]
-
-				if dtype == "char" and "length" in column_type:
-					#read char array
-					dlength = column_type["length"]
-					parsestr = "strncpy(this->%s, buf[%d], %d); this->%s[%d-1] = '\\0';" % (member, idx, dlength, member, dlength)
-					parse_tokens.append(parsestr)
-
-				elif dtype == "enum":
-					#read enum values
-					enum_name = column_type["name"]
-					enum_values = column_type["values"]
-
-					enum_parse_else = ""
-					enum_parser = list()
-					enum_parser.append("//parse enum %s" % (enum_name))
-					for enum_value in enum_values:
-						enum_parser.append("%sif (0 == strcmp(buf[%d], \"%s\")) {" % (enum_parse_else, idx, enum_value))
-						enum_parser.append("\tthis->%s = %s::%s;"                % (member, enum_name, enum_value))
-						enum_parser.append("}")
-						enum_parse_else = "else "
-					enum_parser.append("else {")
-					enum_parser.append("\treturn false;")
-					enum_parser.append("}")
-					parse_tokens.append(enum_parser)
-
-				elif dtype == "std::string":
-					#store std::string
-					parse_tokens.append("this->%s = buf[%d];" % (member, idx))
-
-				elif dtype in type_scan_lookup:
-					dtype_scan = type_scan_lookup[dtype]
-					parsestr = "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return false; }" % (idx, dtype_scan, member)
-					parse_tokens.append(parsestr)
-
-				else:
-					raise Exception("unknown column type: %s" % dtype)
-
-			#flatten the token parser statement list
-			parse_tokens = sum((type(i) == list and i or i.split('\n') for i in parse_tokens), [])
-
-			#indent/newline the token parser statement list
-			parse_tokens = "\n\t".join(parse_tokens)
-
-			#prepend struct name to fill function signature
-			fill_signature = fill_csignature % ("%s::" % data_struct_name)
-
-			member_count = data_struct_name + "::member_count"
-
-			#definition of filling function
-			txt += Template("""
-$funcsignature {
-	//tokenize
-	char *buf[$member_count];
-	int count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
-
-	//check tokenization result
-	if (count != $member_count) {
-		return false;
-	}
-
-	//parse tokens
-	$parse_tokens
-
-	return true;
-}
-""").substitute(funcsignature=fill_signature, delimiter=delimiter, parse_tokens=parse_tokens, member_count=member_count)
-
-			output_name = data_table["name_struct_file"]
-			store_output(ret, output_name, txt)
-
-		else:
-			raise Exception("unknown format specified: %s" % format)
-
-
-	#now create the needed enums.
-	if format == "struct":
-		for enum_name, enum_settings in enums.items():
-			if enum_settings["xref"] == True:
-				#skip cross referenced enum
-				continue
-
-			output_name = enum_settings["filename"]
-
-			#create enum definition
-			txt = "enum class %s {\n\t" % enum_name
-			txt += ",\n\t".join(enum_settings["values"])
-			txt += "\n};\n\n"
-
-			store_output(ret, output_name, txt, prepend=True)
-
-	return ret
-
-
-def metadata_format(data_dump, output_formats):
+class GeneratedFile:
 	"""
-	input: metadata dump (the big one with loads of keys, see ``format_data``)
-	output: {output_format => {filename => [file_content]}}
-	"""
-
-	ret = dict()
-
-	#create all files of the specified formats and sections
-	for output_format in output_formats:
-
-		#format data according to output_format
-		formatted_data = format_data(output_format, data_dump)
-
-		if output_format not in ret:
-			ret[output_format] = dict()
-
-		for filename, sections in formatted_data.items():
-			if filename in ret:
-				ret[output_format][filename] += sections
-			else:
-				ret[output_format][filename]  = sections
-
-	return ret
-
-
-def merge_data_dump(transformed_data):
-	"""
-	save a given transformed data dump to files.
-
-	this function merges the file sections and adds per-file
-	stuff like includes, header guards and the namespace.
-
-	input: {output_format => {filename => [file_content]}}
-	output: {full_filename => file_content}
+	represents a writable file that was generated automatically.
 	"""
 
 	#inserted warning message for generated files
@@ -713,7 +133,6 @@ def merge_data_dump(transformed_data):
 		"file_suffix":    "",
 		"content_prefix": "",
 		"content_suffix": "",
-		"binary":         False,
 		"presuffix_func": lambda x: x
 	}
 
@@ -725,22 +144,12 @@ def merge_data_dump(transformed_data):
 			"folder":      "",
 			"file_suffix": ".docx",
 		},
-		"png": {
-			"folder":      "",
-			"file_suffix": ".png",
-			"binary":      True,
-		},
 		"struct": {
 			"file_suffix": ".h",
-			"content_prefix": """#ifndef _${filename}_H_
-#define _${filename}_H_
+			"content_prefix": """#ifndef _${file_name}_H_
+#define _${file_name}_H_
 
-#include <stddef.h> //size_t
-#include <stdint.h> //int types
-#include <string>   //std::string
-
-#include "../engine/util/strings.h"
-
+${headers}
 %s
 
 namespace engine {
@@ -749,17 +158,15 @@ namespace engine {
 			"content_suffix": """
 } //namespace engine
 
-#endif // _${filename}_H_
+#endif // _${file_name}_H_
 """,
 			"presuffix_func": lambda x: x.upper()
 		},
-		"cfile": {
+		"structimpl": {
 			"file_suffix":    ".cpp",
-			"content_prefix": """#include "${filename}.h"
+			"content_prefix": """#include "${file_name}.h"
 
-#include <string.h> //strtok
-#include <stdio.h>  //sscanf
-
+${headers}
 %s
 
 namespace engine {\n\n""" % dontedit,
@@ -768,49 +175,718 @@ namespace engine {\n\n""" % dontedit,
 	}
 
 
-	#return dict, key: file_name, value: file_content
-	ret = dict()
+	def __init__(self, file_name):
+		self.snippets  = set()
+		self.headers   = set()
+		self.typedefs  = set()
+		self.typerefs  = set()
+		self.content   = None
+		self.file_name = file_name
 
-	#iterate over all output formats
-	for output_format, formatted_data in transformed_data.items():
+	def add_snippet(self, snippet):
+		if not isinstance(snippet, ContentSnippet):
+			raise Exception("only ContentSnippets can be added to generated files.")
+
+		if not snippet.file_name == self.file_name:
+			raise Exception("only snippets with the same target file_name can be put into the same generated file.")
+
+		self.snippets.add(snippet)
+		self.headers  |= snippet.headers
+		self.typedefs |= snippet.typedefs
+		self.typerefs |= snippet.typerefs
+
+	def generate(self, output_format):
+		"""
+		actually generate the content for this file.
+		"""
 
 		#apply preference overrides
-		prefs = default_preferences.copy()
-		for pref_name, pref_value in output_preferences[output_format].items():
-			prefs[pref_name] = pref_value
+		prefs = self.default_preferences.copy()
+		prefs.update(self.output_preferences[output_format])
 
-		#create all files exported by dumping the requested sections
-		for output_name, output_data in formatted_data.items():
+		#TODO: create new snippets for resolving cyclic dependencies (forward declarations)
+		#TODO: references to other files don't matter as they are #included anyway
+		#TODO: create pending typedefs, these types are requested but not part of this file.
+		#they need to be referenced via header include then.
 
-			#merge file contents
-			if prefs["binary"]:
-				file_data = b""
+		#put snippets into list in correct order
+		#snippets will be written according to this [(snippet, prio)] list
+		snippets_priorized = list()
+
+		#determine each snippet's priority by number of type references and definitions
+		#smaller prio means written earlier in the file.
+		for s in self.snippets:
+			snippet_prio = len(s.typerefs) - len(s.typedefs)
+			snippets_priorized.append((s, snippet_prio))
+
+		sorted_snippets = (snippet for (snippet, _) in sorted(snippets_priorized, key=lambda s: s[1]))
+
+		#these snippets will be written outside the namespace
+		#in the #include section
+		header_snippets = list()
+		for header in sorted(self.headers, key=lambda h: (not h.is_global, h.name)):
+			header_snippets.append(header.get_snippet(self.file_name))
+
+		#merge file contents
+		file_data = ""
+		subst_headers = ""
+
+		for header in header_snippets:
+			subst_headers += header.get_data()
+
+		for snippet in sorted_snippets:
+			file_data += snippet.get_data()
+
+		#create content, with prefix and suffix (actually header guards)
+		subst_file_name = prefs["presuffix_func"](self.file_name)
+
+		#fill file header and footer with the generated file_name
+		content_prefix = Template(prefs["content_prefix"]).substitute(file_name=subst_file_name, headers=subst_headers)
+		content_suffix = Template(prefs["content_suffix"]).substitute(file_name=subst_file_name)
+
+		#this is the final file content
+		file_data = content_prefix + file_data + content_suffix
+
+		#determine output file name
+		output_file_name_parts = [
+			prefs["folder"],
+			"%s%s" % (self.file_name, prefs["file_suffix"])
+		]
+
+		#whee, store the content
+		self.content = file_data
+		self.file_name = os.path.join(*output_file_name_parts)
+
+
+class DataMember:
+	"""
+	one struct member, which equals one column in a csv file.
+	"""
+
+	def __init__(self):
+		self.length = 1
+
+	def get_parser(self, idx, member):
+		raise NotImplementedError("implement the parser generation for each member type")
+
+	def get_headers(self):
+		raise NotImplementedError("return needed headers for the parser")
+
+	def get_typerefs(self):
+		return set()
+
+	def get_typedefs(self):
+		return set()
+
+	def get_type(self):
+		raise NotImplementedError("return the type to be put into a struct")
+
+	def __repr__(self):
+		raise NotImplementedError("return short description of the member type")
+
+
+class RefMember(DataMember):
+	"""
+	a struct member that can be referenced/references another struct.
+	"""
+
+	def __init__(self):
+		super().__init__()
+		self.resolved  = False
+		self.type_name = None
+
+class NumberMember(DataMember):
+	"""
+	this struct member/data column contains simple numbers
+	"""
+
+	#primitive types, directly parsable by sscanf
+	type_scan_lookup = {
+		"char":          "hhd",
+		"int8_t":        "hhd",
+		"uint8_t":       "hhu",
+		"int16_t":       "hd",
+		"uint16_t":      "hu",
+		"int":           "d",
+		"int32_t":       "d",
+		"uint":          "u",
+		"uint32_t":      "u",
+		"float":         "f",
+	}
+
+	def __init__(self, number_def):
+		super().__init__()
+		if number_def not in self.type_scan_lookup:
+			raise Exception("created number column from unknown type %s" % number_def)
+
+		self.number_type = number_def
+
+	def get_parser(self, idx, member):
+		scan_symbol = self.type_scan_lookup[self.number_type]
+		return [ "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return false; }" % (idx, scan_symbol, member) ]
+
+	def get_headers(self):
+		return get_headers("sscanf") | get_headers(self.number_type)
+
+	def get_type(self):
+		return self.number_type
+
+	def __repr__(self):
+		return self.number_type
+
+
+class EnumMember(RefMember):
+	"""
+	this struct member/data column is a C enum.
+	"""
+
+	def __init__(self, type_name, file_name=None, values=None):
+		super().__init__()
+		self.type_name = type_name
+		self.file_name = file_name
+		self.values    = values
+		self.resolved  = True    #TODO..
+
+	def get_parser(self, idx, member):
+		enum_parse_else = ""
+		enum_parser = list()
+		enum_parser.append("//parse enum %s" % (self.type_name))
+		for enum_value in self.values:
+			enum_parser.extend([
+				"%sif (0 == strcmp(buf[%d], \"%s\")) {" % (enum_parse_else, idx, enum_value),
+				"\tthis->%s = %s::%s;"                  % (member, self.type_name, enum_value),
+				"}",
+			])
+			enum_parse_else = "else "
+
+		enum_parser.extend([
+			"else {",
+			"\treturn false;",
+			"}",
+		])
+
+		return enum_parser
+
+	def get_headers(self):
+		return get_headers("strcmp")
+
+	def get_typedefs(self):
+		return { self.type_name }
+
+	def get_type(self):
+		return self.type_name
+
+	def validate_value(self, value):
+		return value in self.values
+
+	def get_snippet(self):
+		"""
+		generate enum snippets from given data
+
+		input: EnumMember
+		output: ContentSnippet
+		"""
+
+		txt = list()
+
+		#create enum definition
+		txt.extend([
+			"enum class %s {\n\t" % self.type_name,
+			",\n\t".join(self.values),
+			"\n};\n\n",
+		])
+
+		snippet = ContentSnippet("".join(txt), self.file_name, ContentSnippet.section_typedefs)
+		snippet.typedefs |= self.get_typedefs()
+
+		return snippet
+
+	def __repr__(self):
+		return "enum %s" % self.type_name
+
+
+class CharArrayMember(DataMember):
+	"""
+	struct member/column type that allows to store equal-length char[n].
+	"""
+
+	def __init__(self, length):
+		super().__init__()
+		self.length = length
+
+	def get_parser(self, idx, member):
+		return [ "strncpy(this->%s, buf[%d], %d); this->%s[%d-1] = '\\0';" % (member, idx, self.length, member, self.length) ]
+
+	def get_headers(self):
+		return get_headers("strncpy")
+
+	def get_type(self):
+		return "char"
+
+	def __repr__(self):
+		return "char[%d]" % (self.length)
+
+
+class StringMember(DataMember):
+	"""
+	struct member/column type to store std::strings
+	"""
+
+	def __init__(self):
+		super().__init__()
+		self.type_name = "std::string"
+
+	def get_parser(self, idx, member):
+		return [ "this->%s = buf[%d];" % (member, idx) ]
+
+	def get_headers(self):
+		return get_headers(self.type_name)
+
+	def get_type(self):
+		return self.type_name
+
+	def __repr__(self):
+		return self.type_name
+
+
+class SubdataMember(DataMember):
+	"""
+	struct member/data column that references to another data set
+	"""
+
+	def __init__(self, ref_to, ref_type):
+		super().__init__()
+		self.ref_to = ref_to
+		self.ref_type = ref_type
+
+	def __repr__(self):
+		return self.ref_type.__name__
+
+
+class DataSet:
+	"""
+	input data read from the data files.
+
+	one data set roughly represents one struct in the gamedata dat file.
+	it consists of multiple DataMembers, they define the struct members.
+	"""
+
+	#regex for matching char array definitions like char[1337]
+	chararray_match = re.compile("char *\\[(\\d+)\\]")
+
+	def __init__(self, name_struct_file, name_struct, struct_description, data_format, data=None, name_data_file=None):
+
+		self.name_struct_file   = name_struct_file
+		self.name_struct        = name_struct
+		self.struct_description = struct_description
+		self.data               = data
+		self.name_data_file     = name_data_file
+
+		#create ordered dict of member type objects from structure definition
+		self.members = OrderedDict()
+
+		for member_name, member_type in data_format:
+			#select member type class according to the defined member type
+			if type(member_type) == str:
+				chararray = self.chararray_match.match(member_type)
+				if chararray:
+					array_length = int(chararray.group(1))
+					if array_length > 0:
+						member = CharArrayMember(array_length)
+					else:
+						raise Exception("you defined an array with length <= 0")
+				elif member_type == "std::string":
+					member = StringMember()
+				else:
+					member = NumberMember(member_type)
+
+			elif isinstance(member_type, DataMember):
+				member = member_type
+
 			else:
-				file_data = ""
+				raise Exception("unknown member type specification!")
 
-			for block in output_data:
-				file_data += block
+			self.members[member_name] = member
 
-			#only append header and footer of file when non-binary
-			if not prefs["binary"]:
-				#create content, with prefix and suffix (actually header guards)
-				subst_filename = prefs["presuffix_func"](output_name)
+	def gather_subdata(self):
+		"""
+		returns a list of DataSets recursively by querying members
+		"""
+		raise NotImplementedError("subdata gathering not implemented yet")
 
-				#fill file header and footer with the generated filename
-				content_prefix = Template(prefs["content_prefix"]).substitute(filename=subst_filename)
-				content_suffix = Template(prefs["content_suffix"]).substitute(filename=subst_filename)
+	def dynamic_ref_update(self, lookup_ref_data):
+		"""
+		update ourself the with the given reference data.
 
-				#this is the final file content
-				file_data = content_prefix + file_data + content_suffix
+		data members can be cross references to definitions somewhere else.
+		this symbol resolution is done here by replacing the references.
+		"""
 
-			#determine output file name
-			output_filename_parts = [
-				prefs["folder"],
-				"%s%s" % (output_name, prefs["file_suffix"])
-			]
-			file_name = os.path.join(*output_filename_parts)
+		for member_name, member_type in self.members.items():
+			if not isinstance(member_type, RefMember):
+				continue
 
-			#whee, store the content
-			ret[file_name] = file_data
+			#this member is already resolved
+			if member_type.resolved:
+				continue
+
+			if member_type.name not in lookup_ref_data:
+				raise Exception("cant resolve data references of type %s" % member_type.name)
+
+			#replace the xref with the real definition
+			self.members[member_name] = lookup_ref_data[member_name]
+
+	def __repr__(self):
+		return "DataSet<%s>" % self.name_struct
+
+
+class StructDefinition(DataSet):
+	"""
+	data structure definition by given class.
+	"""
+
+	def __init__(self, target_class):
+		super().__init__(
+			target_class.name_struct_file,
+			target_class.name_struct,
+			target_class.struct_description,
+			target_class.data_format,
+		)
+
+
+class DataDefinition(DataSet):
+	"""
+	data structure definition by given object, including data.
+	"""
+
+	def __init__(self, target_obj, data, data_name):
+		super().__init__(
+			target_obj.name_struct_file,
+			target_obj.name_struct,
+			target_obj.struct_description,
+			target_obj.data_format,
+			data,
+			data_name,
+		)
+
+
+class DataFormatter:
+	"""
+	transforms and merges data structures
+	the input data also specifies the output structure.
+
+	this class generates the plaintext being stored in the data files
+	it is the central part of the data exporting functionality.
+	"""
+
+	#csv column delimiter:
+	DELIMITER = ","
+
+	#method signature for fill function
+	fill_csignature = "bool %sfill(char *by_line)"
+
+	def __init__(self):
+		#list of all dumpable data sets
+		self.data = list()
+
+		#collection of all type definitions
+		self.typedefs = dict()
+
+	def add_data(self, data_set_pile):
+		"""
+		add a given DataSet to the storage, so it can be exported later.
+
+		other exported data structures are collected from the given input.
+		"""
+		if type(data_set_pile) is not list:
+			data_set_pile = [ data_set_pile ]
+
+		#add all data sets
+		for data_set in data_set_pile:
+
+			#collect column type specifications
+			for member_name, member_type in data_set.members.items():
+
+				#store resolved (first-time definitions) members in a symbol list
+				if isinstance(member_type, RefMember):
+					if member_type.resolved:
+						if member_type.type_name in self.typedefs:
+							raise Exception("redefinition of type %s" % member_type.name)
+						else:
+							self.typedefs[member_type.type_name] = data_set.members[member_name]
+
+			self.data.append(data_set)
+
+	def export(self, requested_formats):
+		"""
+		generate content snippets that will be saved to generated files
+
+		output: {file_name: content}
+		"""
+
+		#returned file_name=>content mapping
+		ret = dict()
+
+		#storage of all needed content snippets
+		files = dict()
+
+		#create empty dicts for each format
+		#each of these dicts has "file_name" => GeneratedFile
+		for format in requested_formats:
+			files[format] = dict()
+
+			snippets = list()
+
+			#iterate over all stored data sets and
+			#generate all data snippets for the requested output formats.
+			for data_set in self.data:
+
+				#resolve data xrefs for this data_set
+				data_set.dynamic_ref_update(self.typedefs)
+
+				#generate one output chunk list for each requested format
+				if format == "csv":
+					snippet = self.generate_csv(data_set)
+
+				elif format == "struct":
+					snippet = self.generate_struct(data_set)
+
+				elif format == "structimpl":
+					snippet = self.generate_struct_implementation(data_set)
+
+				else:
+					raise Exception("unknown export format %s requested" % format)
+
+				snippets.append(snippet)
+
+			#create snippets for the encountered type definitions
+			for type_name, type_definition in self.typedefs.items():
+				if format == "struct":
+					snippet = type_definition.get_snippet()
+				else:
+					continue
+
+				snippets.append(snippet)
+
+			for snippet in snippets:
+				#if this file was not yet created, do it nao
+
+				if snippet.file_name not in files[format]:
+					files[format][snippet.file_name] = GeneratedFile(snippet.file_name)
+
+				files[format][snippet.file_name].add_snippet(snippet)
+
+
+		#files is currently:
+		#{format: {file_name: GeneratedFile}}
+
+		#we now invoke the content generation for each generated file
+		for format, gen_files in files.items():
+			for file_name, gen_file in gen_files.items():
+				gen_file.generate(format)
+
+				ret[gen_file.file_name] = gen_file.content
+
+		return ret
+
+	def generate_csv(self, dataset):
+		"""
+		generate a csv data representation
+		"""
+
+		if not dataset.data:
+			raise Exception("cannot generate csv from dataless '%s'" % repr(dataset))
+
+		member_types = dataset.members.values()
+		csv_column_types = list()
+
+		#create column types line entries as comment in the csv file
+		for c_type in member_types:
+			csv_column_types.append(repr(c_type))
+
+		#the resulting csv content
+		#begin with the csv information comment header
+		txt = [
+			"#struct ", dataset.name_struct, "\n",
+			"".join("#%s\n" % line for line in dataset.struct_description.split("\n")),
+			"#", self.DELIMITER.join(csv_column_types), "\n",
+			"#", self.DELIMITER.join(dataset.members.keys()), "\n",
+		]
+
+		#create csv data lines:
+		for idx, data_line in enumerate(dataset.data):
+			row_entries = list()
+			for member_name, member_type in dataset.members.items():
+				entry = data_line[member_name]
+
+				#check if enum data value is valid
+				if isinstance(member_type, EnumMember):
+					if not member_type.validate_value(entry):
+						raise Exception("data entry %d '%s' not a valid %s value" % (idx, entry, repr(member_type)))
+
+				#generate subdata reference link
+				elif isinstance(member_type, SubdataMember):
+					raise Exception("TODO")
+					if member_type.ref_to == None:
+						ref_to = idx
+					else:
+						ref_to = data_line[member_type.refto]
+
+					subdata_folder     = "%s-%s" % (data.name_data_file, col_name)
+					subdata_table_name = "TODO_lol"
+					entry = "%s/%s" % (subdata_folder, subdata_table_name)
+
+				#encode each data field, to escape newlines and commas
+				row_entries.append(encode_value(entry))
+
+			txt.extend((self.DELIMITER.join(row_entries), "\n"))
+
+		return ContentSnippet("".join(txt), dataset.name_data_file, ContentSnippet.section_body)
+
+	def generate_struct(self, dataset):
+		"""
+		generate C structs (that should be placed in a header)
+		"""
+
+		#the resulting header definition snippet
+		txt = ["\n"]
+
+		#this c snipped need these headers
+		headers = set()
+
+		#these data type references are needed for this snippet
+		typerefs = set()
+
+		for idx, (member_name, member_type) in enumerate(dataset.members.items()):
+			headers  |= member_type.get_headers()
+			#in a struct there are references to member type definitions -> sic.
+			typerefs |= member_type.get_typedefs()
+
+		#optional struct description
+		#prepend * before every comment line
+		if dataset.struct_description != None:
+			txt.extend([
+				"/**\n * ",
+				"\n * ".join(dataset.struct_description.split("\n")),
+				"\n */\n",
+			])
+
+		#struct definition
+		txt.append("struct %s {\n" % (dataset.name_struct))
+
+		#create struct members
+		for member_name, member_type in dataset.members.items():
+
+			if member_type.length > 1:
+				dlength = "[%d]" % member_type.length
+			else:
+				dlength = ""
+
+			txt.append("\t%s %s%s;\n" % (member_type.get_type(), member_name, dlength))
+
+		#append member count variable
+		txt.append("\n\tstatic constexpr size_t member_count = %d;\n" % len(dataset.members))
+
+		#add filling function prototype
+		struct_fill_signature  = self.fill_csignature % ""
+		txt.append("\n\t%s;\n" % struct_fill_signature)
+
+		#struct ends
+		txt.append("};\n")
+
+		snippet = ContentSnippet("".join(txt), dataset.name_struct_file, ContentSnippet.section_body)
+		snippet.headers    |= headers
+		snippet.typerefs   |= typerefs
+		snippet.typedefs.add(dataset.name_struct)
+
+		return snippet
+
+	def generate_struct_implementation(self, dataset):
+		"""
+		create C code for the implementation of the struct functions
+		it is used to fill a struct instance with data of a csv data line
+		"""
+
+		#required headers for this C snippet
+		headers = set()
+
+		#referenced types in this C snippet
+		typerefs = set()
+
+		#creating a parser for a single field of the csv
+		parsers = []
+
+		for idx, (member_name, member_type) in enumerate(dataset.members.items()):
+			parsers.append(member_type.get_parser(idx, member_name))
+			headers  |= member_type.get_headers()
+			#the code references to the definition of the members
+			typerefs |= member_type.get_typedefs()
+
+		#indent/newline the token parsers
+		parser_code = "\n\n\t".join("\n\t".join(p) for p in parsers)
+
+		#prepend struct name to fill function signature
+		fill_signature = self.fill_csignature % ("%s::" % dataset.name_struct)
+
+		member_count = dataset.name_struct + "::member_count"
+
+		#definition of filling function
+		txt = Template("""
+$funcsignature {
+	//tokenize
+	char *buf[$member_count];
+	int count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
+
+	//check tokenization result
+	if (count != $member_count) {
+		return false;
+	}
+
+	//now store each of the tokens/struct members
+	$parsers
+
+	return true;
+}
+""").substitute(funcsignature=fill_signature, delimiter=self.DELIMITER, parsers=parser_code, member_count=member_count)
+
+		snippet = ContentSnippet(txt, dataset.name_struct_file, ContentSnippet.section_body)
+		snippet.headers  |= headers | get_headers("strtok_custom")
+		snippet.typerefs |= typerefs
+		return snippet
+
+
+def get_headers(for_type):
+	"""
+	returns the includable headers for using the given C type.
+	"""
+
+	#these headers are needed for the type
+	ret = set()
+
+	cstdinth  = CHeader("cstdint", is_global=True)
+	stringh   = CHeader("string",  is_global=True)
+	cstringh  = CHeader("cstring", is_global=True)
+	cstdioh   = CHeader("cstdio",  is_global=True)
+	engine_util_strings_h = CHeader("../engine/util/strings.h", False)
+
+	#lookup for type->{header}
+	type_map = {
+		"int8_t":          { cstdinth },
+		"uint8_t":         { cstdinth },
+		"int16_t":         { cstdinth },
+		"uint16_t":        { cstdinth },
+		"int32_t":         { cstdinth },
+		"uint32_t":        { cstdinth },
+		"int64_t":         { cstdinth },
+		"uint64_t":        { cstdinth },
+		"std::string":     { stringh  },
+		"strcmp":          { cstringh },
+		"strncpy":         { cstringh },
+		"strtok_custom":   { engine_util_strings_h },
+		"sscanf":          { cstdioh  },
+	}
+
+	if for_type in type_map:
+		ret |= type_map[for_type]
 
 	return ret

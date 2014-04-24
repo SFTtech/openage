@@ -7,11 +7,11 @@ class StringResource:
 	name_struct_file   = "string_resource"
 	struct_description = "string id/language to text mapping, extracted from language.dll file."
 
-	data_format = {
-		0: {"id": "int32_t"},
-		1: {"lang":   {"type": "char", "length": 16}},
-		2: {"text":   "std::string"}
-	}
+	data_format = (
+		("id", "int32_t"),
+		("lang", "char[16]"),
+		("text", "std::string"),
+	)
 
 	def __init__(self):
 		self.strings = defaultdict(lambda: {})
@@ -20,12 +20,8 @@ class StringResource:
 		for lang, langstrings in pefile.strings.items():
 			self.strings[lang].update(langstrings)
 
-	def dump(self):
-		ret = dict()
-
-		ret.update(dataformat.gather_format(self))
-		ret["name_table_file"] = "string_resources"
-		data = []
+	def dump(self, filename):
+		data = list()
 
 		for lang, langstrings in self.strings.items():
 			for idx, text in langstrings.items():
@@ -36,10 +32,9 @@ class StringResource:
 				}
 				data.append(entry)
 
-		ret["data"] = sorted(data, key = lambda x: x["id"])
-		return [ret]
+		data = sorted(data, key=lambda x: x["id"])
+		return [ dataformat.DataDefinition(self, data, filename) ]
 
-	def structs():
-		ret = dict()
-		ret.update(dataformat.gather_format(StringResource))
-		return [ ret ]
+	@classmethod
+	def structs(cls):
+		return [ dataformat.StructDefinition(cls) ]

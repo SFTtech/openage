@@ -128,7 +128,6 @@ class EmpiresDat:
 
 		return offset
 
-
 	def dump(self, what):
 		if type(what) != list:
 			what = [what]
@@ -157,7 +156,7 @@ class EmpiresDat:
 			else:
 				raise Exception("unknown struct dump requested: %s" % what)
 
-			ret += [ dataformat.gather_format(target_class) ]
+			ret += [ dataformat.StructDefinition(target_class) ]
 
 		return ret
 

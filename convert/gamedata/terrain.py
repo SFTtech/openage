@@ -81,17 +81,11 @@ class TerrainData:
 		self.terrain_count = terrain_count
 
 	def dump(self):
-		ret = dict()
-
-		ret.update(dataformat.gather_format(Terrain))
-		ret["name_table_file"] = "terrain_data"
-		ret["data"] = list()
-
+		data = list()
 		for terrain in self.terrains:
-			#dump terrains
-			ret["data"].append(terrain.dump())
+			data.append(terrain.dump())
 
-		return [ ret ]
+		return [ dataformat.DataDefinition(Terrain, data, "terrain_data") ]
 
 	def read(self, raw, offset):
 		self.terrains = list()
@@ -108,14 +102,14 @@ class Terrain:
 	name_struct_file   = "terrain"
 	struct_description = "describes a terrain type, like water, ice, etc."
 
-	data_format = {
-		0: {"terrain_id":     "int32_t"},
-		1: {"slp_id":         "int32_t"},
-		2: {"blend_mode":     "int32_t"},
-		3: {"blend_priority": "int32_t"},
-		4: {"name0":          { "type": "char", "length": 13 }},
-		5: {"name1":          { "type": "char", "length": 13 }},
-	}
+	data_format = (
+		("terrain_id",     "int32_t"),
+		("slp_id",         "int32_t"),
+		("blend_mode",     "int32_t"),
+		("blend_priority", "int32_t"),
+		("name0",          "char[13]"),
+		("name1",          "char[13]"),
+	)
 
 	def dump(self):
 		return dataformat.gather_data(self, self.data_format)
