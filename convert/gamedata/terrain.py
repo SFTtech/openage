@@ -80,7 +80,7 @@ class TerrainData:
 	def __init__(self, terrain_count):
 		self.terrain_count = terrain_count
 
-	def dump(self):
+	def dump(self, filename):
 		data = list()
 		for terrain in self.terrains:
 			data.append(terrain.dump())
