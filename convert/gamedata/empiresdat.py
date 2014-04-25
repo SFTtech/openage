@@ -72,8 +72,6 @@ class EmpiresDat:
 		dbg("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath), 1)
 		file_write(rawfile_writepath, self.content)
 
-
-
 	def read(self, raw, offset):
 
 		#char versionstr[8];
@@ -128,14 +126,13 @@ class EmpiresDat:
 
 		return offset
 
-
 	def dump(self, what):
 		if type(what) != list:
 			what = [what]
 
 		ret = list()
 		for entry in what:
-			member_dump = getattr(self, entry).dump()
+			member_dump = getattr(self, entry).dump(what)
 			ret += member_dump
 
 		return ret
@@ -157,7 +154,7 @@ class EmpiresDat:
 			else:
 				raise Exception("unknown struct dump requested: %s" % what)
 
-			ret += [ dataformat.gather_format(target_class) ]
+			ret += [ dataformat.StructDefinition(target_class) ]
 
 		return ret
 

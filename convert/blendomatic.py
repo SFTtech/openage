@@ -13,9 +13,9 @@ class Blendomatic:
 	name_struct        = "blending_mode"
 	name_struct_file   = "blending_mode"
 	struct_description = "describes one blending mode, a blending transition shape between two different terrain types."
-	data_format = {
-		0: {"blend_mode": "int32_t"},
-	}
+	data_format = (
+		("blend_mode", "int32_t"),
+	)
 
 	#struct blendomatic_header {
 	# unsigned int nr_blending_modes;
@@ -226,23 +226,13 @@ class Blendomatic:
 
 		return ret
 
-	def metadata(self):
-		ret = dict()
+	def dump(self, filename):
+		data = [ {"blend_mode": idx} for idx, _ in enumerate(self.blending_modes) ]
+		return [ dataformat.DataDefinition(self, data, filename) ]
 
-		ret.update(dataformat.gather_format(self))
-		ret["name_table_file"] = "blending_modes"
-		ret["data"] = list()
-
-		for mode in range(len(self.blending_modes)):
-			#dump terrains
-			ret["data"].append({"blend_mode": mode})
-
-		return [ ret ]
-
-	def structs():
-		ret = dict()
-		ret.update(dataformat.gather_format(Blendomatic))
-		return [ ret ]
+	@classmethod
+	def structs(cls):
+		return [ dataformat.StructDefinition(cls) ]
 
 	def save(self, output_folder, save_format):
 		for idx, texture in enumerate(self.get_textures()):

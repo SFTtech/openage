@@ -8,28 +8,24 @@ class ColorTable:
 	name_struct_file   = "color"
 	struct_description = "indexed color storage."
 
-	data_format = {
-		0: {"idx": "int32_t"},
-		1: {"r":   "uint8_t"},
-		2: {"g":   "uint8_t"},
-		3: {"b":   "uint8_t"},
-		4: {"a":   "uint8_t"},
-	}
+	data_format = (
+		("idx", "int32_t"),
+		("r",   "uint8_t"),
+		("g",   "uint8_t"),
+		("b",   "uint8_t"),
+		("a",   "uint8_t"),
+	)
 
-	def __init__(self, data, filename, by_array=False):
-		if by_array:
-			self.fill_from_array(data, filename)
+	def __init__(self, data):
+		if type(data) in [list, tuple]:
+			self.fill_from_array(data)
 		else:
-			self.fill(data, filename)
+			self.fill(data)
 
-	def fill_from_array(self, ar, filename):
+	def fill_from_array(self, ar):
 		self.palette = [tuple(e) for e in ar]
-		self.data_table_name = filename
 
-	def fill(self, data, file_id):
-		self.file_id = file_id
-		self.data_table_name = "palette_%d" % self.file_id
-
+	def fill(self, data):
 		#split all lines of the input data
 		lines = data.decode('ascii').split('\r\n') #windows windows windows baby
 
@@ -122,12 +118,8 @@ class ColorTable:
 	def save_visualization(self, filename):
 		util.file_write_image(filename, self.gen_image())
 
-	def metadata(self):
-		ret = dict()
-
-		ret.update(dataformat.gather_format(self))
-		ret["name_table_file"] = self.data_table_name
-		ret["data"] = list()
+	def dump(self, filename):
+		data = list()
 
 		#dump all color entries
 		for idx, entry in enumerate(self.palette):
@@ -138,15 +130,13 @@ class ColorTable:
 				"b":   entry[2],
 				"a":   255,
 			}
-			ret["data"].append(color_entry)
+			data.append(color_entry)
 
-		return [ ret ]
+		return [ dataformat.DataDefinition(self, data, filename) ]
 
-	def structs():
-		ret = dict()
-		ret.update(dataformat.gather_format(ColorTable))
-		return [ ret ]
-
+	@classmethod
+	def structs(cls):
+		return [ dataformat.StructDefinition(cls) ]
 
 
 class PlayerColorTable(ColorTable):
@@ -160,8 +150,6 @@ class PlayerColorTable(ColorTable):
 		if not isinstance(base_table, ColorTable):
 			raise Exception("can only create a player color table from a regular color table.")
 
-		self.file_id = base_table.file_id
-		self.data_table_name = "player_palette_%d" % self.file_id
 		self.header  = base_table.header
 		self.version = base_table.version
 		self.palette = list()

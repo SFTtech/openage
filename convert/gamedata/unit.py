@@ -1,5 +1,5 @@
 from struct import Struct, unpack_from
-from util import dbg, zstr, check_file, offset_info
+from util import dbg, zstr, offset_info
 import math
 
 
@@ -201,9 +201,7 @@ class Unit:
 		self.language_dll_creation      = pc[4]
 		self.unit_class                 = pc[5]
 		self.graphic_standing0          = pc[6]
-		check_file(pc[6])
 		self.graphic_standing1          = pc[7]
-		check_file(pc[7])
 		self.graphic_dying0             = pc[8]
 		self.graphic_dying1             = pc[9]
 		self.death_mode                 = pc[10]
@@ -214,9 +212,7 @@ class Unit:
 		self.radius_size1               = pc[15]
 		self.hp_bar_height0             = pc[16]
 		self.sound_train0               = pc[17]
-		check_file(pc[17])
 		self.sound_train1               = pc[18]
-		check_file(pc[18])
 		self.dead_unit_id               = pc[19]
 		self.placement_mode             = pc[20]
 		self.air_mode                   = pc[21]
@@ -299,9 +295,7 @@ class Unit:
 
 
 		self.sound_selection = pc[0]
-		check_file(pc[0])
 		self.sound_dying     = pc[1]
-		check_file(pc[1])
 		self.attack_mode     = pc[2]
 		self.name            = zstr(pc[3])
 		self.id1             = pc[4]
@@ -343,9 +337,7 @@ class Unit:
 				offset += tmp_struct.size
 
 				self.walking_graphics0     = pc[0]
-				check_file(pc[0])
 				self.walking_graphics1     = pc[1]
-				check_file(pc[1])
 				self.rotation_speed        = pc[2]
 				#self. = pc[2]
 				self.tracking_unit         = pc[3]
@@ -378,9 +370,7 @@ class Unit:
 				self.drop_site1       = pc[4]
 				self.villager_mode    = pc[5]
 				self.move_sound       = pc[6]
-				check_file(pc[6])
 				self.stop_sound       = pc[7]
-				check_file(pc[7])
 				self.animal_mode      = pc[8]
 
 
@@ -545,9 +535,7 @@ class Unit:
 				offset += tmp_struct.size
 
 				self.construction_graphic_id = pc[0]
-				check_file(pc[0])
 				self.snow_graphic_id         = pc[1]
-				check_file(pc[1])
 				self.adjacent_mode           = pc[2]
 				#self. = pc[3]
 				#self. = pc[4]
@@ -583,7 +571,6 @@ class Unit:
 				self.transform_unit = pc[1]
 				#self. = pc[2]
 				self.construction_sound_id = pc[3]
-				check_file(pc[3])
 				self.garnison_type = pc[4]
 				self.garnison_heal_rate = pc[5]
 				#self. = pc[6]
@@ -624,7 +611,6 @@ class DamageGraphic:
 		offset += damage_graphic_struct.size
 
 		self.graphic_id     = pc[0]
-		check_file(pc[0])
 		self.damage_percent = pc[1]
 		#self. = pc[2]
 		#self. = pc[3]

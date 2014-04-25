@@ -28,49 +28,37 @@ def data_generate(args):
 			set_write_dir("")
 			list_enabled = True
 
-	storeas = ["struct", "cfile"]
+	#generate files in these formats
+	formats = ("struct", "structimpl")
 
-	struct_dumps = list()
-	struct_dumps.append(gamedata.empiresdat.EmpiresDat.structs(args.sections))
-	struct_dumps.append(blendomatic.Blendomatic.structs())
-	struct_dumps.append(colortable.ColorTable.structs())
-	struct_dumps.append(texture.Texture.structs())
-	struct_dumps.append(filelist.SoundList.structs())
-	struct_dumps.append(stringresource.StringResource.structs())
+	data_formatter = dataformat.DataFormatter()
 
-	output_storage = list()
-	for struct in struct_dumps:
-		output_storage.append(dataformat.metadata_format(struct, storeas))
+	struct_data = list()
+	struct_data += gamedata.empiresdat.EmpiresDat.structs(args.sections)
+	struct_data += blendomatic.Blendomatic.structs()
+	struct_data += colortable.ColorTable.structs()
+	struct_data += texture.Texture.structs()
+	struct_data += filelist.SoundList.structs()
+	struct_data += stringresource.StringResource.structs()
+
+	data_formatter.add_data(struct_data)
+	output_data = data_formatter.export(formats)
 
 	output_filenames = list()
-
 	written_file_count = 0
 
-	for dump in output_storage:
-		merged_dump = dataformat.merge_data_dump(dump)
+	for file_name, file_data in output_data.items():
+		output_filenames.append(file_name)
 
-		for file_name, file_data in merged_dump.items():
-			output_filenames.append(file_name)
-
-			if write_enabled:
-				#only generate requested files
-				write_file = False
-
-				if args.filename == "*":
-					write_file = True
-
-				if any((fnmatch(file_name, file_pattern) for file_pattern in args.filename)):
-					write_file = True
-
-				if write_file:
-					#write dat shit
-					dbg("writing %s.." % file_name, 1)
-					file_name = file_get_path(file_name, write=True)
-					file_write(file_name, file_data)
-					written_file_count += 1
+		#only generate requested files
+		if write_enabled and (args.filename == "*" or any(fnmatch(file_name, file_pattern) for file_pattern in args.filename)):
+			dbg("writing %s.." % file_name, 1)
+			file_name = file_get_path(file_name, write=True)
+			file_write(file_name, file_data)
+			written_file_count += 1
 
 	if list_enabled:
-		#TODO: maybe implement other output formats...
+		#print the list separated by ';' for the cmake rule generation
 		print(";".join(output_filenames), end="")
 
 	else:

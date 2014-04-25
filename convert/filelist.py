@@ -7,49 +7,38 @@ class SoundList:
 	name_struct_file   = "sound_file"
 	struct_description = "one available sound file."
 
-	data_format = {
-		0: {"category": {
-			"type": "enum",
-			"name": "audio_category_t",
-			"filename": "sound_file",
-			"values": [
+	data_format = (
+		("category", dataformat.EnumMember(
+			type_name="audio_category_t",
+			file_name="sound_file",
+			values =(
 				"GAME",
 				"INTERFACE",
 				"MUSIC",
 				"TAUNT",
-			]
-		}},
+			)
+		)),
 
-		1: {"sound_id": "int"},
-		2: {"path": "std::string"},
+		("sound_id", "int"),
+		("path",     "std::string"),
 
-		3: {"format": {
-			"type": "enum",
-			"name": "audio_format_t",
-			"filename": "sound_file",
-			"values": [
-				"OPUS",
-				"WAV",
-				"FLAC",
-				"MP3",
-			]
-		}},
+		("format", dataformat.EnumMember("audio_format_t", "sound_file", (
+			"OPUS",
+			"WAV",
+			"FLAC",
+			"MP3",
+		))),
 
-		4: {"loader_policy": {
-			"type": "enum",
-			"name": "audio_loader_policy_t",
-			"filename": "sound_file",
-			"values": [
-				"IN_MEMORY",
-				"DYNAMIC",
-			]
-		}},
-	}
+		("loader_policy", dataformat.EnumMember("audio_loader_policy_t", "sound_file", (
+			"IN_MEMORY",
+			"DYNAMIC",
+		))),
+	)
 
 	def __init__(self):
 		self.sounds = list()
 
-	def append(self, sndid, filename, sndformat):
+	def add_sound(self, sndid, filename, sndformat):
 		#TODO: actually determine category
 		new_sound = {
 			"category":      "GAME",
@@ -60,15 +49,9 @@ class SoundList:
 		}
 		self.sounds.append(new_sound)
 
-	def metadata(self):
-		ret = dict()
+	def dump(self):
+		return [ dataformat.DataDefinition(self, self.sounds, "sound_list") ]
 
-		ret.update(dataformat.gather_format(self))
-		ret["name_table_file"] = "sound_list"
-		ret["data"] = self.sounds
-
-		return [ ret ]
-
-	def structs():
-		ret = dataformat.gather_format(SoundList)
-		return [ ret ]
+	@classmethod
+	def structs(cls):
+		return [ dataformat.StructDefinition(cls) ]
