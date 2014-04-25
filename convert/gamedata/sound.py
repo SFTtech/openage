@@ -10,15 +10,15 @@ class SoundItem:
 	name_struct_file   = "sound"
 	struct_description = "one possible file for a sound."
 
-	data_format = {
-		0: {"filename":       {"type": "char", "length": 13}},
-		1: {"resource_id":     "int16_t"},
-		2: {"probablilty":     "int16_t"},
-		3: {"civilisation":    "int16_t"},
-	}
+	data_format = (
+		("filename",     "char[13]"),
+		("resource_id",  "int16_t"),
+		("probablilty",  "int16_t"),
+		("civilisation", "int16_t"),
+	)
 
-	def dump(self):
-		return dataformat.gather_data(self, self.data_format)
+	def dump(self, filename):
+		return [ dataformat.GatheredDataDefinition(self, filename) ]
 
 	def read(self, raw, offset):
 		#char filename[13];
@@ -45,14 +45,14 @@ class Sound:
 	name_struct_file   = "sound"
 	struct_description = "describes a sound, consisting of several sound items."
 
-	data_format = {
-		0: {"uid":            "int32_t"},
-		1: {"item_count":     "int32_t"},
-		2: {"sound_item":     {"type": "subdata", "ref_type": SoundItem, "ref_to": "uid"}}
-	}
+	data_format = (
+		("uid",            "int32_t"),
+		("item_count",     "int32_t"),
+		("sound_item",     dataformat.SubdataMember(ref_type=SoundItem, ref_to="uid")),
+	)
 
-	def dump(self):
-		return dataformat.gather_data(self, self.data_format)
+	def dump(self, filename):
+		return [ dataformat.GatheredDataDefinition(self, filename) ]
 
 	def read(self, raw, offset):
 		#int32_t uid;

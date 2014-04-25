@@ -54,7 +54,6 @@ class ContentSnippet:
 
 	section_header   = util.NamedObject("header")
 	section_body     = util.NamedObject("body")
-	section_typedefs = util.NamedObject("body")
 
 	def __init__(self, data, file_name, section):
 		self.data      = data       #snippet content
@@ -396,7 +395,7 @@ class EnumMember(RefMember):
 			"\n};\n\n",
 		])
 
-		snippet = ContentSnippet("".join(txt), self.file_name, ContentSnippet.section_typedefs)
+		snippet = ContentSnippet("".join(txt), self.file_name, ContentSnippet.section_body)
 		snippet.typedefs |= self.get_typedefs()
 
 		return snippet
@@ -460,7 +459,7 @@ class SubdataMember(DataMember):
 		self.ref_type = ref_type
 
 	def __repr__(self):
-		return self.ref_type.__name__
+		return "SubdataMember<%s>" % self.ref_type.__name__
 
 
 class DataSet:
@@ -566,6 +565,22 @@ class DataDefinition(DataSet):
 			target_obj.struct_description,
 			target_obj.data_format,
 			data,
+			data_name,
+		)
+
+
+class GatheredDataDefinition(DataDefinition):
+	"""
+	data structure definition by given object, including automatic data gathering.
+	"""
+
+	def __init__(self, target_obj, data_name):
+		super().__init__(
+			target_obj.name_struct_file,
+			target_obj.name_struct,
+			target_obj.struct_description,
+			target_obj.data_format,
+			gather_data(target_obj, target_obj.data_format),
 			data_name,
 		)
 

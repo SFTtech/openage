@@ -72,8 +72,6 @@ class EmpiresDat:
 		dbg("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath), 1)
 		file_write(rawfile_writepath, self.content)
 
-
-
 	def read(self, raw, offset):
 
 		#char versionstr[8];
@@ -134,7 +132,7 @@ class EmpiresDat:
 
 		ret = list()
 		for entry in what:
-			member_dump = getattr(self, entry).dump()
+			member_dump = getattr(self, entry).dump(what)
 			ret += member_dump
 
 		return ret
