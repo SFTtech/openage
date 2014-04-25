@@ -1,7 +1,3 @@
-#TODO properly integrate with rest of convert script collection
-#TODO this includes:
-#TODO   using the dbg function
-#TODO   proper pydoc
 from collections import defaultdict
 import dataformat
 from langcodes import langcodes
