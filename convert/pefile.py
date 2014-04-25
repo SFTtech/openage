@@ -168,175 +168,175 @@ resource_directory_table = Struct(endianness + "II 4H")
 stringtable_length_specifier = Struct(endianness + "H")
 
 class PEFile:
-	def __init__(self, fname):
-		self.defaultcultureid = 0
-		self.defaultcp = 0
-		self.todefaultcharsetcd = 0
-		self.fromdefaultcharsetcd = 0
+    def __init__(self, fname):
+        self.defaultcultureid = 0
+        self.defaultcp = 0
+        self.todefaultcharsetcd = 0
+        self.fromdefaultcharsetcd = 0
 
-		fname = file_get_path(fname, write=False)
-		data = file_read(fname, bytes)
+        fname = file_get_path(fname, write=False)
+        data = file_read(fname, bytes)
 
-		#read DOS header
-		dosheader = image_dos_header.unpack_from(data, 0)
+        #read DOS header
+        dosheader = image_dos_header.unpack_from(data, 0)
 
-		dbg("PE header [%s]" % (fname), 1, push = "pe")
+        dbg("PE header [%s]" % (fname), 1, push = "pe")
 
-		#read PE header
-		headerpos = dosheader[30] #e_lfanew
+        #read PE header
+        headerpos = dosheader[30] #e_lfanew
 
-		peheader = image_file_header.unpack_from(data, headerpos)
+        peheader = image_file_header.unpack_from(data, headerpos)
 
-		signature, machine, number_of_sections, time_stamp, symbol_table_ptr, symbol_count, size_of_optional_header, characteristics = peheader
+        signature, machine, number_of_sections, time_stamp, symbol_table_ptr, symbol_count, size_of_optional_header, characteristics = peheader
 
-		if signature != PE_SIGNATURE:
-			raise Exception("Invalid PE signature")
+        if signature != PE_SIGNATURE:
+            raise Exception("Invalid PE signature")
 
-		dbg("DOS header: " + repr(peheader))
+        dbg("DOS header: " + repr(peheader))
 
-		#read optional header
-		optheaderpos = headerpos + image_file_header.size
+        #read optional header
+        optheaderpos = headerpos + image_file_header.size
 
-		if size_of_optional_header != SUPPORTED_OPTIONAL_HEADER_SIZE:
-			raise Exception("Unsupported optional header size")
+        if size_of_optional_header != SUPPORTED_OPTIONAL_HEADER_SIZE:
+            raise Exception("Unsupported optional header size")
 
-		optheader = image_optional_header32.unpack_from(data, optheaderpos)
-		if optheader[0] != IMAGE_OPTIONAL_HDR32_MAGIC:
-			raise Exception("Bad magic number for optional header")
-		number_of_rva_and_sizes = optheader[-1]
+        optheader = image_optional_header32.unpack_from(data, optheaderpos)
+        if optheader[0] != IMAGE_OPTIONAL_HDR32_MAGIC:
+            raise Exception("Bad magic number for optional header")
+        number_of_rva_and_sizes = optheader[-1]
 
-		dbg("Optional header: " + repr(optheader))
+        dbg("Optional header: " + repr(optheader))
 
-		#read data directory
-		datadirectorypos = optheaderpos + image_optional_header32.size
-		datadirectory = []
-		for i in range(number_of_rva_and_sizes):
-			entry = image_data_directory.unpack_from(data, datadirectorypos + i * image_data_directory.size)
-			datadirectory.append(entry)
+        #read data directory
+        datadirectorypos = optheaderpos + image_optional_header32.size
+        datadirectory = []
+        for i in range(number_of_rva_and_sizes):
+            entry = image_data_directory.unpack_from(data, datadirectorypos + i * image_data_directory.size)
+            datadirectory.append(entry)
 
-		#read section headers
-		secttablepos = datadirectorypos + number_of_rva_and_sizes * image_data_directory.size
+        #read section headers
+        secttablepos = datadirectorypos + number_of_rva_and_sizes * image_data_directory.size
 
-		#number of sections is known from PE header
-		sections = {}
-		dbg("sections", 2, push="sections")
-		for i in range(number_of_sections):
-			sectionheader = image_section_header.unpack_from(data, secttablepos + image_section_header.size * i)
-			sectionname = sectionheader[0].decode('ascii').strip('\0')
-			sectionheader = sectionheader[1:]
+        #number of sections is known from PE header
+        sections = {}
+        dbg("sections", 2, push="sections")
+        for i in range(number_of_sections):
+            sectionheader = image_section_header.unpack_from(data, secttablepos + image_section_header.size * i)
+            sectionname = sectionheader[0].decode('ascii').strip('\0')
+            sectionheader = sectionheader[1:]
 
-			dbg(sectionname + ": " + repr(sectionheader))
+            dbg(sectionname + ": " + repr(sectionheader))
 
-			#read section data
-			virtual_size, virtual_address, size_of_raw_data, pointer_to_raw_data, pointer_to_relocations, pointer_to_linenumbers, number_of_relocations, number_of_linenumbers, characteristics = sectionheader
+            #read section data
+            virtual_size, virtual_address, size_of_raw_data, pointer_to_raw_data, pointer_to_relocations, pointer_to_linenumbers, number_of_relocations, number_of_linenumbers, characteristics = sectionheader
 
-			rawdata = data[pointer_to_raw_data:][:virtual_size]
+            rawdata = data[pointer_to_raw_data:][:virtual_size]
 
-			sections[sectionname] = sectionheader, rawdata
-		dbg(pop="sections")
+            sections[sectionname] = sectionheader, rawdata
+        dbg(pop="sections")
 
-		ressectionheader, self.rsrcdata = sections[SECTION_NAME_RESOURCE]
-		self.resdatava = ressectionheader[3]
+        ressectionheader, self.rsrcdata = sections[SECTION_NAME_RESOURCE]
+        self.resdatava = ressectionheader[3]
 
-		self.data = data
-		self.dosheader = dosheader
-		self.peheader = peheader
-		self.optheader = optheader
-		self.datadirectory = datadirectory
-		self.sections = sections
+        self.data = data
+        self.dosheader = dosheader
+        self.peheader = peheader
+        self.optheader = optheader
+        self.datadirectory = datadirectory
+        self.sections = sections
 
-		self.rootnode = self.read_rsrc_tree(0)
-		self.strings = self.parse_rsrc_strings()
+        self.rootnode = self.read_rsrc_tree(0)
+        self.strings = self.parse_rsrc_strings()
 
-		for lang, strs in self.strings.items():
-			dbg("%s: %d resource strings" % (lang, len(strs)))
+        for lang, strs in self.strings.items():
+            dbg("%s: %d resource strings" % (lang, len(strs)))
 
-		dbg(pop = "pe")
+        dbg(pop = "pe")
 
-	def parse_rsrc_strings(self):
-		"""
-		returns a dict of dicts, such that
-			self.parse_rsrc_strings()[languageid][stringid] == string
-		"""
+    def parse_rsrc_strings(self):
+        """
+        returns a dict of dicts, such that
+            self.parse_rsrc_strings()[languageid][stringid] == string
+        """
 
-		result = defaultdict(lambda: {})
+        result = defaultdict(lambda: {})
 
-		stringrestype = restypesinv['string']
-		if stringrestype not in self.rootnode:
-			return result
-		stringnode = self.rootnode[stringrestype]
+        stringrestype = restypesinv['string']
+        if stringrestype not in self.rootnode:
+            return result
+        stringnode = self.rootnode[stringrestype]
 
-		#iterate through all stringtables
-		for tableid, languages in stringnode.items():
-			#yeah, counting from 1 is a perfectly great idea, microsoft.
-			baseidx = (tableid - 1) * STRINGTABLE_SIZE
+        #iterate through all stringtables
+        for tableid, languages in stringnode.items():
+            #yeah, counting from 1 is a perfectly great idea, microsoft.
+            baseidx = (tableid - 1) * STRINGTABLE_SIZE
 
-			#the stringtable might exist in multiple languages
-			for langid, stringtable in languages.items():
-				langcode = langcodes[langid]
+            #the stringtable might exist in multiple languages
+            for langid, stringtable in languages.items():
+                langcode = langcodes[langid]
 
-				#parse the stringtable
+                #parse the stringtable
 
-				#position is in bytes from start of this stringtable
-				pos = 0
+                #position is in bytes from start of this stringtable
+                pos = 0
 
-				#the stringtable contains STRINGS_PER_STRINGTABLE entries,
-				#which are just (little-endian short) length + length * 2 bytes of little-endian UTF-16
-				for tableidx in range(STRINGTABLE_SIZE):
-					stringlen, = stringtable_length_specifier.unpack_from(stringtable, pos)
-					pos += 2
-					stringend = pos + STRINGTABLE_LENGTH_MULTIPLIER * stringlen
-					string = stringtable[pos:stringend].decode(STRINGTABLE_ENCODING)
-					pos = stringend
+                #the stringtable contains STRINGS_PER_STRINGTABLE entries,
+                #which are just (little-endian short) length + length * 2 bytes of little-endian UTF-16
+                for tableidx in range(STRINGTABLE_SIZE):
+                    stringlen, = stringtable_length_specifier.unpack_from(stringtable, pos)
+                    pos += 2
+                    stringend = pos + STRINGTABLE_LENGTH_MULTIPLIER * stringlen
+                    string = stringtable[pos:stringend].decode(STRINGTABLE_ENCODING)
+                    pos = stringend
 
-					if len(string) > 0:
-						result[langcode][baseidx + tableidx] = string
+                    if len(string) > 0:
+                        result[langcode][baseidx + tableidx] = string
 
-				if pos != len(stringtable):
-					raise Exception("stringtable invalid: " + str((tableid, langid)))
+                if pos != len(stringtable):
+                    raise Exception("stringtable invalid: " + str((tableid, langid)))
 
-		return result
+        return result
 
-	def read_rsrc_tree(self, pos, recdepth = 0):
-		"""
-		reads a resource directory
-		note that the directory may contain subdirectories, in which case the function
-		is called recursively
+    def read_rsrc_tree(self, pos, recdepth = 0):
+        """
+        reads a resource directory
+        note that the directory may contain subdirectories, in which case the function
+        is called recursively
 
-		pos
-			position of directory in rsrc section
-		returns
-			resource directory structure dict
-		"""
-		rdir = resource_directory_table.unpack_from(self.rsrcdata, pos)
-		characteristics, timestamp, maj_ver, min_ver, name_entry_count, id_entry_count = rdir
-		pos += resource_directory_table.size
+        pos
+            position of directory in rsrc section
+        returns
+            resource directory structure dict
+        """
+        rdir = resource_directory_table.unpack_from(self.rsrcdata, pos)
+        characteristics, timestamp, maj_ver, min_ver, name_entry_count, id_entry_count = rdir
+        pos += resource_directory_table.size
 
-		entries = {}
-		for i in range(name_entry_count + id_entry_count):
-			name, rva = resource_directory_entry.unpack_from(self.rsrcdata, pos)
-			pos += resource_directory_entry.size
+        entries = {}
+        for i in range(name_entry_count + id_entry_count):
+            name, rva = resource_directory_entry.unpack_from(self.rsrcdata, pos)
+            pos += resource_directory_entry.size
 
-			#process name
-			if i < name_entry_count:
-				#TODO get name from RVA entry[0]
-				name = 'name@' + str(name)
+            #process name
+            if i < name_entry_count:
+                #TODO get name from RVA entry[0]
+                name = 'name@' + str(name)
 
-			#process rva
-			if rva & 2**31:
-				#print(recdepth * "  " + "dir:" + str(name))
-				rva -= 2**31
-				#rva points to a subdirectory
-				entry = self.read_rsrc_tree(rva, recdepth + 1)
-			else:
-				dataentry = resource_data_entry.unpack_from(self.rsrcdata, rva)
-				data_rva, size, codepage, _ = dataentry
-				data_absa = data_rva - self.resdatava
-				#rva points to a leaf node
-				entry = self.rsrcdata[data_absa:data_absa + size]
-				#print(recdepth * "  " + "leaf:" + str(name) + ", cp: " + str(codepage) + ", size: " + str(size) + ", addr = " + str(data_rva) + ", absa = " + str(data_absa))
+            #process rva
+            if rva & 2**31:
+                #print(recdepth * "  " + "dir:" + str(name))
+                rva -= 2**31
+                #rva points to a subdirectory
+                entry = self.read_rsrc_tree(rva, recdepth + 1)
+            else:
+                dataentry = resource_data_entry.unpack_from(self.rsrcdata, rva)
+                data_rva, size, codepage, _ = dataentry
+                data_absa = data_rva - self.resdatava
+                #rva points to a leaf node
+                entry = self.rsrcdata[data_absa:data_absa + size]
+                #print(recdepth * "  " + "leaf:" + str(name) + ", cp: " + str(codepage) + ", size: " + str(size) + ", addr = " + str(data_rva) + ", absa = " + str(data_absa))
 
-			entries[name] = entry
+            entries[name] = entry
 
 
-		return entries
+        return entries

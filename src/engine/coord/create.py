@@ -12,10 +12,10 @@
 #argv[3:] member variables
 
 def readtemplate(fname):
-	with open(fname) as f:
-		data = f.read()
-	#remove the first two lines (the '#error' directive)
-	return '\n'.join(data.split('\n')[2:])
+    with open(fname) as f:
+        data = f.read()
+    #remove the first two lines (the '#error' directive)
+    return '\n'.join(data.split('\n')[2:])
 
 #read the template files
 templateh = readtemplate('template.h')
@@ -29,19 +29,19 @@ memberlist = ', '.join(sys.argv[3:])
 
 #generate template replacement dict
 replace = {
-	'name': name,
-	'absname': name,
-	'relname': name + '_delta',
-	'NAME': name.upper(),
-	'scalartype': scalartype,
-	'memberlist': memberlist
+    'name': name,
+    'absname': name,
+    'relname': name + '_delta',
+    'NAME': name.upper(),
+    'scalartype': scalartype,
+    'memberlist': memberlist
 }
 
 def substandwrite(data, fname):
-	for k, v in replace.items():
-		data = data.replace('[' + k + ']', v)
-	with open(fname, 'w') as f:
-		return f.write(data)
+    for k, v in replace.items():
+        data = data.replace('[' + k + ']', v)
+    with open(fname, 'w') as f:
+        return f.write(data)
 
 #replace/write template data
 substandwrite(templateh, name + '.h')
