@@ -38,7 +38,7 @@ class PNG:
 
     def draw_picture(self, draw):
         #avoid circular importing..
-        from slp import SLPFrame
+        from slp import SpecialColor
 
         # TODO draw lines, more efficient picture_data
         for y, picture_row in enumerate(self.picture_data):
@@ -46,7 +46,7 @@ class PNG:
                 if type(color_data) == int:
                     #simply look up the color index in the table
                     color = self.color_table[color_data]
-                elif type(color_data) == SLPFrame.SpecialColor:
+                elif isinstance(color_data, SpecialColor):
                     base_pcolor, is_outline = color_data.get_pcolor()
                     if is_outline:
                         alpha = 253  #mark this pixel as outline
@@ -63,9 +63,9 @@ class PNG:
                     #with the real player color, and only display outline pixels,
                     #if they are obstructed.
 
-                elif color_data == SLPFrame.transparent:
+                elif color_data == SpecialColor.transparent:
                     color = (0, 0, 0, 0)
-                elif color_data == SLPFrame.shadow:
+                elif color_data == SpecialColor.shadow:
                     color = (0, 0, 0, 100)
                 else:
                     raise Exception("Unknown color: " + str(color_data))

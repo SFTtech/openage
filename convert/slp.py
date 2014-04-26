@@ -7,8 +7,85 @@ from png import PNG
 from PIL import Image, ImageDraw
 from texture import Texture
 
-#little endian byte order
+#SLP files have little endian byte order
 endianness = "< "
+
+class SpecialColor:
+    """
+    special color class to preserve the player number variable.
+
+    also used for storing unit outline colors.
+    """
+
+    shadow       = NamedObject("%")
+    transparent  = NamedObject(" ")
+    player_color = NamedObject("P")
+    black_color  = NamedObject("#")
+
+    def __init__(self, special_id, base_color=2):
+        """
+        base_color: value for the base player color used for outlines.
+        2 is lighter and suits better for outline display.
+        try to experiment with [0, 7]..
+        """
+
+        self.special_id = special_id
+        self.base_color = base_color
+
+    def get_pcolor_for_player(self, player):
+        """
+        determine the player color palette index for a given player.
+
+        the base color of this pixel is stored,
+        the remaining degree of freedom is passed as function argument.
+        """
+
+        if self.special_id == 2 or self.special_id == self.black_color:
+            #this ensures palette[16 -16] will be taken
+            return -16
+
+        elif self.special_id == 1 or self.special_id == self.player_color:
+            #return final color for outline or player
+            return 16 * player + self.base_color
+
+        else:
+            raise Exception("unknown special color")
+
+    def get_pcolor(self):
+        """
+        look up the special color purpose.
+
+        returns (base_color, is_outline_pixel)
+        """
+
+        if self.special_id == 2 or self.special_id == self.black_color:
+            #black outline pixel, we will probably never encounter this.
+            # -16 ensures palette[16+(-16)=0] will be used.
+            return (-16, True)
+
+        elif self.special_id == 1:
+            #this is an player-colored outline pixel
+            return (self.base_color, True)
+
+        elif self.special_id == self.player_color:
+            #this is a playercolor pixel base color
+            return (self.base_color, False)
+
+        else:
+            raise Exception("unknown special color")
+
+    def __hash__(self):
+        return hash((self.special_id, self.base_color))
+
+    def __eq__(self, other):
+        return (
+            self.special_id == other.special_id
+            and self.base_color == other.base_color
+        )
+
+    def __repr__(self):
+        return "S%d%d" % (self.special_id, self.base_color)
+
 
 class SLP:
     #struct slp_header {
@@ -82,6 +159,7 @@ class SLP:
         #TODO: lookup the image content description
         return "<SLP image, " + str(len(self.frames)) + " Frames>"
 
+
 class FrameInfo:
     def __init__(self, qdl_table_offset, outline_table_offset, palette_offset, properties, width, height, hotspot_x, hotspot_y):
         self.qdl_table_offset = qdl_table_offset
@@ -105,48 +183,11 @@ class FrameInfo:
         result += "% 4d /% 5d" % self.hotspot
         return result
 
+
 class SLPFrame:
-    #shadow and transparency colors
-    shadow      = NamedObject("#")
-    transparent = NamedObject("( )")
-
-    #player color class to preserve the player number variable
-    class SpecialColor:
-        player_color = NamedObject("P")
-        black_color = NamedObject("||")
-
-        #base_color: value for the base player color
-        #used for outlines.
-        #2 is lighter and suits better for outline display.
-        #try to experiment with [0,7]..
-        def __init__(self, special_id, base_color = 2):
-            #dbg("creating special color " + str(base_color))
-            self.special_id = special_id
-            self.base_color = base_color
-
-        def get_pcolor_for_player(self, player):
-            if self.special_id == 2 or self.special_id == self.black_color:
-                return -16 #this ensures palette[16 -16] will be taken
-            elif self.special_id == 1 or self.special_id == self.player_color:
-                return 16 * player + self.base_color #return final color for outline or player
-            else:
-                raise Exception("unknown special color")
-
-        def get_pcolor(self):
-            #@returns (base_color, is_outline_pixel)
-            if self.special_id == 2 or self.special_id == self.black_color:
-                #black outline pixel, we will probably never encounter this.
-                # -16 ensures palette[16+(-16)=0] will be used.
-                return (-16, True)
-            elif self.special_id == 1:
-                return (self.base_color, True) #this is an player-colored outline pixel
-            elif self.special_id == self.player_color:
-                return (self.base_color, False) #this is a playercolor pixel base color
-            else:
-                raise Exception("unknown special color")
-
-        def __repr__(self):
-            return "S" + str(self.special_id) + str(self.base_color)
+    """
+    one image inside the SLP. you can imagine it as a frame of a video.
+    """
 
     #struct slp_frame_row_edge {
     # unsigned short left_space;
@@ -177,7 +218,7 @@ class SLPFrame:
 
             #is this row completely transparent?
             if left == 0x8000 or right == 0x8000:
-                self.boundaries.append( self.transparent ) #TODO: -1 or like should be enough
+                self.boundaries.append( SpecialColor.transparent ) #TODO: -1 or like should be enough
             else:
                 self.boundaries.append( (left, right) )
 
@@ -209,21 +250,21 @@ class SLPFrame:
         first_cmd_offset = self.cmd_offsets[rowid]
 
         bounds = self.boundaries[rowid]
-        if bounds == self.transparent:
-            return [self.transparent] * self.info.size[0]
+        if bounds == SpecialColor.transparent:
+            return [bounds] * self.info.size[0]
 
         left_boundary, right_boundary = bounds
 
         missing_pixels = self.info.size[0] - left_boundary - right_boundary
 
         #start drawing the left transparent space
-        pcolor_row_beginning = [ self.transparent ] * left_boundary
+        pcolor_row_beginning = [ SpecialColor.transparent ] * left_boundary
 
         #process the drawing commands for this row.
         pcolor_row_content = self.process_drawing_cmds(data, rowid, first_cmd_offset, missing_pixels, left_boundary)
 
         #finish by filling up the right transparent space
-        pcolor_row_trailing = [ self.transparent ] * right_boundary
+        pcolor_row_trailing = [ SpecialColor.transparent ] * right_boundary
 
         pcolor = pcolor_row_beginning + pcolor_row_content + pcolor_row_trailing
 
@@ -284,7 +325,7 @@ class SLPFrame:
                 #count = cmd >> 2; if count == 0: count = nextbyte
 
                 pixel_count, dpos = self.cmd_or_next(cmd, 2, data, dpos)
-                pcolor_list = pcolor_list + [self.transparent] * pixel_count
+                pcolor_list = pcolor_list + [SpecialColor.transparent] * pixel_count
 
             elif lower_nibble == 0x02:
                 #big_color_list command
@@ -307,7 +348,7 @@ class SLPFrame:
                 nextbyte = self.get_byte_at(data, dpos)
                 pixel_count = (higher_nibble << 4) + nextbyte
 
-                pcolor_list = pcolor_list + [self.transparent] * pixel_count
+                pcolor_list = pcolor_list + [SpecialColor.transparent] * pixel_count
 
             elif lower_nibble == 0x06:
                 #player_color_list command
@@ -320,7 +361,7 @@ class SLPFrame:
                     color = self.get_byte_at(data, dpos)
 
                     #the SpecialColor class preserves the calculation with player*16+color
-                    entry = SLPFrame.SpecialColor(special_id = SLPFrame.SpecialColor.player_color, base_color = color)
+                    entry = SpecialColor(special_id = SpecialColor.player_color, base_color = color)
                     pcolor_list = pcolor_list + [ entry ]
 
             elif lower_nibble == 0x07:
@@ -347,7 +388,7 @@ class SLPFrame:
                 #color = ((color & 0b11001100) | 0b00110011)
 
                 #SpecialColor class preserves the calculation of player*16 + color
-                entry = SLPFrame.SpecialColor(special_id = SLPFrame.SpecialColor.player_color, base_color = color)
+                entry = SpecialColor(special_id = SpecialColor.player_color, base_color = color)
                 pcolor_list = pcolor_list + [ entry ] * pixel_count
 
             elif lower_nibble == 0x0B:
@@ -356,7 +397,7 @@ class SLPFrame:
 
                 pixel_count, dpos = self.cmd_or_next(cmd, 4, data, dpos)
 
-                pcolor_list = pcolor_list + [ self.shadow ] * pixel_count
+                pcolor_list = pcolor_list + [ SpecialColor.shadow ] * pixel_count
 
             elif lower_nibble == 0x0E:
                 if higher_nibble == 0x00:
@@ -382,12 +423,12 @@ class SLPFrame:
                 elif higher_nibble == 0x40:
                     #outline_1 command
                     #the next pixel shall be drawn as special color 1, if it is obstructed later in rendering
-                    pcolor_list = pcolor_list + [ SLPFrame.SpecialColor(1) ]
+                    pcolor_list = pcolor_list + [ SpecialColor(1) ]
 
                 elif higher_nibble == 0x60:
                     #outline_2 command
                     #same as above, but special color 2
-                    pcolor_list = pcolor_list + [ SLPFrame.SpecialColor(2) ]
+                    pcolor_list = pcolor_list + [ SpecialColor(2) ]
 
                 elif higher_nibble == 0x50:
                     #outline_span_1 command
@@ -396,7 +437,7 @@ class SLPFrame:
                     dpos = dpos + 1
                     pixel_count = self.get_byte_at(data, dpos)
 
-                    pcolor_list = pcolor_list + [ SLPFrame.SpecialColor(1) ] * pixel_count
+                    pcolor_list = pcolor_list + [ SpecialColor(1) ] * pixel_count
 
 
                 elif higher_nibble == 0x70:
@@ -406,7 +447,7 @@ class SLPFrame:
                     dpos = dpos + 1
                     pixel_count = self.get_byte_at(data, dpos)
 
-                    pcolor_list = pcolor_list + [ SLPFrame.SpecialColor(2) ] * pixel_count
+                    pcolor_list = pcolor_list + [ SpecialColor(2) ] * pixel_count
 
             else:
                 dbg("stored in this row so far: " + str(pcolor_list), 2)
