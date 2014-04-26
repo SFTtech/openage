@@ -76,28 +76,7 @@ class TerrainPassGraphic:
         return offset
 
 
-class TerrainData:
-    def __init__(self, terrain_count):
-        self.terrain_count = terrain_count
-
-    def dump(self, filename):
-        data = list()
-        for terrain in self.terrains:
-            data.append(terrain.dump())
-
-        return [ dataformat.DataDefinition(Terrain, data, "terrain_data") ]
-
-    def read(self, raw, offset):
-        self.terrains = list()
-        for i in range(self.terrain_count):
-            t = Terrain()
-            offset = t.read(raw, offset)
-            self.terrains.append(t)
-
-        return offset
-
-
-class Terrain:
+class Terrain(dataformat.Exportable):
     name_struct        = "terrain_type"
     name_struct_file   = "terrain"
     struct_description = "describes a terrain type, like water, ice, etc."
@@ -111,8 +90,8 @@ class Terrain:
         ("name1",          "char[13]"),
     )
 
-    def dump(self):
-        return dataformat.gather_data(self, self.data_format)
+    def __init__(self):
+        super().__init__()
 
     def read(self, raw, offset):
         #int16_t unknown;
@@ -170,6 +149,30 @@ class Terrain:
         self.terrain_unit_density     = pc[210:(210+30)]
         self.terrain_unit_priority    = pc[240:(240+30)]
         self.terrain_units_used_count = pc[270]
+
+        return offset
+
+
+class TerrainData(dataformat.Exportable):
+
+    name_struct        = "terrain_data"
+    name_struct_file   = "gamedata"
+    struct_description = "terrain list"
+
+    data_format = (
+        ("terrains", dataformat.SubdataMember(ref_type=Terrain)),
+    )
+
+    def __init__(self, terrain_count):
+        super().__init__()
+        self.terrain_count = terrain_count
+
+    def read(self, raw, offset):
+        self.terrains = list()
+        for i in range(self.terrain_count):
+            t = Terrain()
+            offset = t.read(raw, offset)
+            self.terrains.append(t)
 
         return offset
 

@@ -41,6 +41,89 @@ def gather_data(obj, members):
     return ret
 
 
+class Exportable:
+    """
+    superclass for all exportable data members
+
+    exportable classes inherit from this.
+    """
+
+    def __init__(self):
+        pass
+
+    def dump(self, filename):
+        """
+        main data dumping function, the magic happens in here.
+
+        recursively dumps all object members as DataDefinitions.
+
+        returns [DataDefinition, ..]
+        """
+
+        ret = list()
+
+        self_data = dict()
+
+        for member_name, member_type in self.data_format:
+            self_data[member_name] = getattr(self, member_name)
+
+            if isinstance(member_type, SubdataMember):
+                dbg(lazymsg=(lambda: "%s => entering submember %s" % (filename, member_name)), lvl=2)
+
+                member_data = list()
+                for idx, member_data_item in enumerate(self_data[member_name]):
+                    if not isinstance(member_data_item, Exportable):
+                        raise Exception("tried to dump object not inheriting from Exportable")
+
+                    dbg(lazymsg=lambda: "submember item %d" % idx, lvl=3)
+
+                    #generate output filename
+                    member_ref   = "" #getattr(self, member_type.ref_to) if member_type.ref_to else ""
+                    sub_filename = "%s-%s/%s-%04d%s" % (filename, member_name, member_name, idx, member_ref)
+
+                    #recursive call, fetches DataDefinitions and the next-level data dict
+                    data_sets, data = member_data_item.dump(sub_filename)
+
+                    #store recursively generated DataDefinitions
+                    ret += data_sets
+
+                    #append the next-level entry to the list
+                    #that will contain the data for the current level DataDefinition
+                    member_data.append(data)
+
+                #create DataDefinition for the next-level data pile.
+                ret.append(DataDefinition(
+                    member_type.ref_type,
+                    member_data,
+                    filename,
+                ))
+
+                #store filename instead of data
+                #is used to determine the file to read next.
+                self_data[member_name] = filename
+
+                dbg(lazymsg=lambda: "%s => leaving submember %s" % (filename, member_name), lvl=2)
+
+        dbg(lazymsg=lambda: str(self_data), lvl=3)
+
+        return ret, self_data
+
+    @classmethod
+    def structs(cls):
+        """
+        create struct definitions for this class and its subdata references.
+        """
+
+        ret = list()
+
+        for member_name, member_type in cls.data_format:
+            if isinstance(member_type, SubdataMember):
+                ret += member_type.ref_type.structs()
+
+        ret.append(StructDefinition(cls))
+
+        return ret
+
 class ContentSnippet:
     """
     one part of text for generated files to be saved in "file_name"
@@ -453,13 +536,22 @@ class SubdataMember(DataMember):
     struct member/data column that references to another data set
     """
 
-    def __init__(self, ref_to, ref_type):
+    def __init__(self, ref_type, ref_to=None):
         super().__init__()
-        self.ref_to = ref_to
         self.ref_type = ref_type
+        self.ref_to = ref_to
 
     def __repr__(self):
         return "SubdataMember<%s>" % self.ref_type.__name__
+
+    def get_headers(self):
+        return get_headers(self.get_type())
+
+    def get_type(self):
+        return "std::string"
+
+    def get_parser(self, idx, member):
+        return [ "this->%s = buf[%d];" % (member, idx) ]
 
 
 class DataSet:
@@ -535,6 +627,18 @@ class DataSet:
             #replace the xref with the real definition
             self.members[member_name] = lookup_ref_data[member_name]
 
+    def __str__(self):
+        ret = list()
+        ret.extend([
+            repr(self),
+            "\n\tstruct file name: ", self.name_struct_file,
+            "\n\tstruct name: ", self.name_struct,
+            "\n\tstruct description: ", self.struct_description,
+            "\n\tdata file name: ", str(self.name_data_file),
+            "\n\tdata: ", str(self.data), "\n",
+        ])
+        return "".join(ret)
+
     def __repr__(self):
         return "DataSet<%s>" % self.name_struct
 
@@ -569,18 +673,11 @@ class DataDefinition(DataSet):
         )
 
 
-class GatheredDataDefinition(DataDefinition):
-    """
-    data structure definition by given object, including automatic data gathering.
-    """
-
-    def __init__(self, target_obj, data_name):
+class DataDumpDefinition(DataDefinition):
+    def __init__(self, target_obj, target_var, data_name):
         super().__init__(
-            target_obj.name_struct_file,
-            target_obj.name_struct,
-            target_obj.struct_description,
-            target_obj.data_format,
-            gather_data(target_obj, target_obj.data_format),
+            target_obj,
+            [data.dump(data_name) for data in target_var],
             data_name,
         )
 
@@ -607,7 +704,7 @@ class DataFormatter:
         #collection of all type definitions
         self.typedefs = dict()
 
-    def add_data(self, data_set_pile):
+    def add_data(self, data_set_pile, prefix=None):
         """
         add a given DataSet to the storage, so it can be exported later.
 
@@ -618,6 +715,9 @@ class DataFormatter:
 
         #add all data sets
         for data_set in data_set_pile:
+
+            if prefix:
+                data_set.name_data_file = "%s%s" % (prefix, data_set.name_data_file)
 
             #collect column type specifications
             for member_name, member_type in data_set.members.items():
@@ -709,8 +809,11 @@ class DataFormatter:
         generate a csv data representation
         """
 
-        if not dataset.data:
-            raise Exception("cannot generate csv from dataless '%s'" % repr(dataset))
+        if not isinstance(dataset, DataSet):
+            raise Exception("can only generate a csv from a DataSet")
+
+        if dataset.data is None:
+            raise Exception("cannot generate csv from dataless %s" % str(dataset))
 
         member_types = dataset.members.values()
         csv_column_types = list()
@@ -739,17 +842,8 @@ class DataFormatter:
                     if not member_type.validate_value(entry):
                         raise Exception("data entry %d '%s' not a valid %s value" % (idx, entry, repr(member_type)))
 
-                #generate subdata reference link
                 elif isinstance(member_type, SubdataMember):
-                    raise Exception("TODO")
-                    if member_type.ref_to == None:
-                        ref_to = idx
-                    else:
-                        ref_to = data_line[member_type.refto]
-
-                    subdata_folder     = "%s-%s" % (data.name_data_file, col_name)
-                    subdata_table_name = "TODO_lol"
-                    entry = "%s/%s" % (subdata_folder, subdata_table_name)
+                    entry = "%s%s" % (entry, GeneratedFile.output_preferences["csv"]["file_suffix"])
 
                 #encode each data field, to escape newlines and commas
                 row_entries.append(encode_value(entry))

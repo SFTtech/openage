@@ -131,8 +131,9 @@ class EmpiresDat:
             what = [what]
 
         ret = list()
+
         for entry in what:
-            member_dump = getattr(self, entry).dump(what)
+            member_dump, _ = getattr(self, entry).dump(entry)
             ret += member_dump
 
         return ret
@@ -151,10 +152,12 @@ class EmpiresDat:
         for entry in what:
             if "terrain" == entry:
                 target_class = terrain.Terrain
+            elif "sound" == entry:
+                target_class = sound.Sound
             else:
-                raise Exception("unknown struct dump requested: %s" % what)
+                raise Exception("unknown struct dump requested: %s" % entry)
 
-            ret += [ dataformat.StructDefinition(target_class) ]
+            ret += target_class.structs()
 
         return ret
 

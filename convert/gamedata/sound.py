@@ -5,7 +5,7 @@ from util import dbg, zstr
 from .empiresdat import endianness
 
 
-class SoundItem:
+class SoundItem(dataformat.Exportable):
     name_struct        = "sound_item"
     name_struct_file   = "sound"
     struct_description = "one possible file for a sound."
@@ -17,8 +17,8 @@ class SoundItem:
         ("civilisation", "int16_t"),
     )
 
-    def dump(self, filename):
-        return [ dataformat.GatheredDataDefinition(self, filename) ]
+    def __init__(self):
+        super().__init__()
 
     def read(self, raw, offset):
         #char filename[13];
@@ -40,7 +40,7 @@ class SoundItem:
         return offset
 
 
-class Sound:
+class Sound(dataformat.Exportable):
     name_struct        = "sound"
     name_struct_file   = "sound"
     struct_description = "describes a sound, consisting of several sound items."
@@ -51,8 +51,8 @@ class Sound:
         ("sound_item",     dataformat.SubdataMember(ref_type=SoundItem, ref_to="uid")),
     )
 
-    def dump(self, filename):
-        return [ dataformat.GatheredDataDefinition(self, filename) ]
+    def __init__(self):
+        super().__init__()
 
     def read(self, raw, offset):
         #int32_t uid;
@@ -76,7 +76,19 @@ class Sound:
         return offset
 
 
-class SoundData:
+class SoundData(dataformat.Exportable):
+
+    name_struct        = "sound_data"
+    name_struct_file   = "gamedata"
+    struct_description = "sound list"
+
+    data_format = (
+        ("sounds", dataformat.SubdataMember(ref_type=Sound)),
+    )
+
+    def __init__(self):
+        super().__init__()
+
     def read(self, raw, offset):
         #uint16_t sound_count;
         header_struct = Struct(endianness + "H")
@@ -84,23 +96,10 @@ class SoundData:
         self.sound_count, = header_struct.unpack_from(raw, offset)
         offset += header_struct.size
 
-        self.sound = list()
+        self.sounds = list()
         for i in range(self.sound_count):
             t = Sound()
             offset = t.read(raw, offset)
-            self.sound.append(t)
+            self.sounds.append(t)
 
         return offset
-
-    def dump(self):
-        ret = dict()
-
-        ret.update(dataformat.gather_format(Sound))
-        ret["name_table_file"] = "sound_data"
-        ret["data"] = list()
-
-        for sound in self.sound:
-            #dump terrains
-            ret["data"].append(sound.dump())
-
-        return [ ret ]

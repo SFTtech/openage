@@ -123,13 +123,16 @@ def media_convert(args):
 
         #dump metadata information
         data_dump = list()
-        data_dump += datfile.dump(args.sections)
         data_dump += blend_data.dump("blending_modes")
         data_dump += player_palette.dump("player_palette_%d" % palette_id)
         data_dump += termcolortable.dump("termcolors")
         data_dump += stringres.dump("string_resources")
-
         data_formatter.add_data(data_dump)
+
+        #dump gamedata datfile data
+        datfile_dump = datfile.dump(args.sections)
+        data_formatter.add_data(datfile_dump, prefix="gamedata/")
+
         output_data = data_formatter.export(output_formats)
 
         #save the meta files

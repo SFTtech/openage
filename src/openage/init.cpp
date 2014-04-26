@@ -60,7 +60,7 @@ void init() {
 	university = new Texture("age/assets/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
 	auto string_resources = util::read_csv_file<string_resource>("age/assets/string_resources.docx");
-	auto terrain_types  = util::read_csv_file<terrain_type>("age/assets/terrain_data.docx");
+	auto terrain_types  = util::read_csv_file<terrain_type>("age/assets/gamedata/terrain.docx");
 	auto blending_modes = util::read_csv_file<blending_mode>("age/assets/blending_modes.docx");
 
 	//create the terrain which will be filled by chunks
