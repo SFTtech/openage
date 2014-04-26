@@ -848,19 +848,19 @@ class DataFormatter:
         #definition of filling function
         txt = Template("""
 $funcsignature {
-    //tokenize
-    char *buf[$member_count];
-    int count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
+\t//tokenize
+\tchar *buf[$member_count];
+\tint count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
 
-    //check tokenization result
-    if (count != $member_count) {
-        return false;
-    }
+\t//check tokenization result
+\tif (count != $member_count) {
+\t\treturn false;
+\t}
 
-    //now store each of the tokens/struct members
-    $parsers
+\t//now store each of the tokens/struct members
+\t$parsers
 
-    return true;
+\treturn true;
 }
 """).substitute(funcsignature=fill_signature, delimiter=self.DELIMITER, parsers=parser_code, member_count=member_count)
 
