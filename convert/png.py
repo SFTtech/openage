@@ -2,18 +2,17 @@ from PIL import Image, ImageDraw
 
 
 class PNG:
-    def __init__(self, picture_data, player_number=0, color_table=None):
+    def __init__(self, picture_data, player_number=0, color_table=None, w=None, h=None, alphamask=False):
         self.picture_data = picture_data
         self.player_number = player_number
         self.color_table = color_table
 
-    def create(self, pwidth=None, pheight=None, alphamask=False):
-        if pwidth == None and pheight == None:
-            self.width = len(self.picture_data[0])
+        if None in (w, h):
+            self.width  = len(self.picture_data[0])
             self.height = len(self.picture_data)
         else:
-            self.width = pwidth
-            self.height = pheight
+            self.width  = w
+            self.height = h
 
         self.image = Image.new('RGBA', (self.width, self.height), (255, 255, 255, 0))
         draw = ImageDraw.ImageDraw(self.image)

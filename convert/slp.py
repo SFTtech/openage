@@ -5,7 +5,6 @@ from struct import Struct, unpack_from
 from util import NamedObject, dbg, ifdbg
 from png import PNG
 from PIL import Image, ImageDraw
-from texture import Texture
 
 #SLP files have little endian byte order
 endianness = "< "
@@ -136,21 +135,6 @@ class SLP:
             self.frames.append(SLPFrame(frame_info, self.data))
 
         dbg("", pop="slp")
-
-    def get_texture(self, color_table):
-        #generate all frames, them merge them on one big texture
-
-        #player-specific colors will be in color blue, but with an alpha of 254
-        player_id = 1
-
-        slp_pngs = list()
-        for frame in self.frames:
-            png = PNG(frame.get_picture_data(), player_id, color_table)
-            png.create()
-
-            slp_pngs.append((png, frame.info.hotspot))
-
-        return Texture(slp_pngs)
 
     def __str__(self):
         ret = list()

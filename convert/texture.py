@@ -2,8 +2,11 @@
 #
 #routines for texture generation etc
 
+from blendomatic import BlendingMode
 import dataformat
 import math
+from png import PNG
+from slp import SLP
 import util
 from util import dbg
 
@@ -46,24 +49,44 @@ one sprite included in the 'big texture' has."""
         ("cy", "int32_t"),
     )
 
-    def __init__(self, frames):
-        if type(frames) != list:
-            self.frames = [ frames ]
+    #player-specific colors will be in color blue, but with an alpha of 254
+    player_id = 1
+
+    def __init__(self, input_data, palette=None):
+
+        if isinstance(input_data, SLP):
+            frames = [
+                (
+                    PNG(frame.get_picture_data(), self.player_id, palette),
+                    frame.info.hotspot,
+                )
+                for frame in input_data.frames
+            ]
+        elif isinstance(input_data, BlendingMode):
+            frames = [
+                (
+                    PNG(tile["data"], w=tile["width"], h=tile["height"], alphamask=True),
+                    (0, 0),
+                )
+                for tile in input_data.alphamasks
+            ]
         else:
-            self.frames = frames
+            raise Exception("cannot create Texture from unknown source type")
 
         #self.frames now is a list of frames.
         #   frames:      hotspot:
         #[ (frame=PNG, (cx, cy)) ]
 
-        self.image, self.image_metadata = merge_frames(self.frames)
+        self.image, self.image_metadata = merge_frames(frames)
         self.raw_png = util.VirtualFile()
-        self.image.save(self.raw_png, self.image_format)
 
     def save(self, filename, meta_formats):
         """
         save the texture to the given filename
         """
+
+        #store the image data as png
+        self.image.save(self.raw_png, self.image_format)
 
         #generate formatted texture metadata
         formatter = dataformat.DataFormatter()

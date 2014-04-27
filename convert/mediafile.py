@@ -12,6 +12,7 @@ import os
 import os.path
 from string import Template
 import subprocess
+from texture import Texture
 import util
 from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path
 
@@ -175,7 +176,7 @@ def media_convert(args):
                 dbg(out_file_tmp + " -> " + fname + " -> generating atlas", 1)
 
                 #create exportable texture from the slp
-                texture = s.get_texture(palette)
+                texture = Texture(s, palette)
 
                 #save the image and the corresponding metadata file
                 texture.save(fname, output_formats)
