@@ -49,6 +49,7 @@ dependency list:
 
 	CRT   python3.3
 	T     python3.3 imaging library (PIL) -> pillow
+	T     numpy
 	CR    opengl >=2.1
 	CR    glew
 	CR    ftgl

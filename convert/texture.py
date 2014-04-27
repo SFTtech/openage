@@ -5,6 +5,7 @@
 from blendomatic import BlendingMode
 import dataformat
 import math
+import numpy
 from slp import SLP
 import util
 from util import dbg
@@ -29,33 +30,29 @@ def subtexture_meta(tx, ty, hx, hy, cx, cy):
 
     return ret
 
+
 class TextureImage:
     """
-    represents a PIL image created from a (r,g,b,a) matrix.
+    represents a image created from a (r,g,b,a) matrix.
     """
 
-    def __init__(self, picture_data, hotspot=None, w=None, h=None, alphamask=False):
-        from PIL import Image
+    def __init__(self, picture_data, hotspot=None):
 
-        if None in (w, h):
-            self.width  = len(picture_data[0])
-            self.height = len(picture_data)
-        else:
-            self.width  = w
-            self.height = h
+        self.width  = picture_data.shape[1]
+        self.height = picture_data.shape[0]
 
         if hotspot is None:
             self.hotspot = (0, 0)
         else:
             self.hotspot = hotspot
 
-        self.image = Image.new('RGBA', (self.width, self.height), (255, 255, 255, 0))
+        self.data = picture_data
 
-        #draw the pixels onto the image
-        #TODO: use PIL.Image.frombuffer()
-        for y, picture_row in enumerate(picture_data):
-            for x, color in enumerate(picture_row):
-                self.image.putpixel((x, y), color)
+        dbg("created TextureImage with size %dx%d" % (self.width, self.height), 3)
+
+    def get_pil_image(self):
+        from PIL import Image
+        return Image.fromarray(self.data)
 
 
 class Texture:
@@ -81,7 +78,10 @@ one sprite included in the 'big texture' has."""
 
     def __init__(self, input_data, palette=None):
 
+        dbg("creating Texture from %s" % (repr(input_data)), 3)
+
         if isinstance(input_data, SLP):
+
             if palette is None:
                 raise Exception("creating a texture from a SLP requires a palette")
             frames = [
@@ -95,16 +95,13 @@ one sprite included in the 'big texture' has."""
             frames = [
                 TextureImage(
                     tile.get_picture_data(),
-                    w=tile.width,
-                    h=tile.height,
                 )
                 for tile in input_data.alphamasks
             ]
         else:
             raise Exception("cannot create Texture from unknown source type")
 
-        self.image, self.image_metadata = merge_frames(frames)
-        self.raw_png = util.VirtualFile()
+        self.image_data, (self.width, self.height), self.image_metadata = merge_frames(frames)
 
     def save(self, filename, meta_formats):
         """
@@ -112,7 +109,9 @@ one sprite included in the 'big texture' has."""
         """
 
         #store the image data as png
-        self.image.save(self.raw_png, self.image_format)
+        raw_png = util.VirtualFile()
+        image = self.image_data.get_pil_image()
+        image.save(raw_png, self.image_format)
 
         #generate formatted texture metadata
         formatter = dataformat.DataFormatter()
@@ -120,7 +119,7 @@ one sprite included in the 'big texture' has."""
 
         #generate full output file contents
         output_data = formatter.export(meta_formats)
-        output_data["%s.%s" % (filename, self.image_format)] = self.raw_png.data()
+        output_data["%s.%s" % (filename, self.image_format)] = raw_png.data()
 
         #save the output files
         util.file_write_multi(output_data)
@@ -139,7 +138,7 @@ def merge_frames(frames, max_width=0, max_height=0):
 
     frames = [TextureImage, ...]
 
-    returns = atlas, [drawn_frames_meta]
+    returns = TextureImage, [drawn_frames_meta]
     """
 
     #TODO: actually optimize free space on the texture.
@@ -154,16 +153,14 @@ def merge_frames(frames, max_width=0, max_height=0):
     #wanna optimize for the best alignment, read the above notice again,
     #and implement a better version.
 
-    from PIL import Image
-
     if len(frames) == 0:
         raise Exception("cannot create texture with empty input frame list")
 
     #single-frame texture, no merging needed
     elif len(frames) == 1:
         cx, cy = frames[0].hotspot
-        w,  h  = frames[0].image.size
-        return frames[0].image, [subtexture_meta(0, 0, w, h, cx, cy)]
+        w,  h  = frames[0].width, frames[0].height
+        return frames[0], (w, h), [subtexture_meta(0, 0, w, h, cx, cy)]
 
     #if not predefined, get maximum frame size by checking all frames
     if max_width == 0 or max_height == 0:
@@ -180,8 +177,13 @@ def merge_frames(frames, max_width=0, max_height=0):
 
     dbg("merging %d frames to %dx%d atlas, %d pics per row, %d rows." % (len(frames), width, height, max_per_row, num_rows), 2)
 
-    #create the big atlas image where the small ones will be placed on
-    atlas = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    #resulting draw pane
+    draw_data = list()
+    for _ in range(height):
+        row_data = list()
+        for _ in range(width):
+            row_data.append((0, 0, 0, 0))
+        draw_data.append(row_data)
 
     pos_x = 0
     pos_y = 0
@@ -190,12 +192,14 @@ def merge_frames(frames, max_width=0, max_height=0):
     drawn_current_row = 0
 
     for sub_frame in frames:
-        sub_w = sub_frame.image.size[0]
-        sub_h = sub_frame.image.size[1]
-        box   = (pos_x, pos_y, pos_x + sub_w, pos_y + sub_h)
+        sub_w = sub_frame.width
+        sub_h = sub_frame.height
 
-        atlas.paste(sub_frame.image, box)
-        dbg("drew frame %03d on atlas at %dx%d " % (len(drawn_frames_meta), pos_x, pos_y), 3)
+        dbg("drawing frame %03d on atlas at % 3dx% 3d..." % (len(drawn_frames_meta), pos_x, pos_y), 3)
+
+        for y, row_data in enumerate(sub_frame.data):
+            for x, pixel_data in enumerate(row_data):
+                draw_data[y + pos_y][x + pos_x] = pixel_data
 
         #generate subtexture meta information object
         hotspot_x, hotspot_y = sub_frame.hotspot
@@ -212,4 +216,7 @@ def merge_frames(frames, max_width=0, max_height=0):
             pos_x = 0
             pos_y += max_height + free_space_px
 
-    return atlas, drawn_frames_meta
+    atlas_data = numpy.array(draw_data, dtype=numpy.uint8)
+    atlas = TextureImage(atlas_data)
+
+    return atlas, (width, height), drawn_frames_meta

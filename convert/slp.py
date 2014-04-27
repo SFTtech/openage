@@ -1,3 +1,4 @@
+import numpy
 import os
 import sys
 
@@ -81,7 +82,7 @@ class SpecialColor:
         )
 
     def __repr__(self):
-        return "S%d%d" % (self.special_id, self.base_color)
+        return "S%s%d" % (self.special_id, self.base_color)
 
 
 class SLP:
@@ -192,7 +193,9 @@ class SLPFrame:
 
         self.boundaries  = [] #for each row, contains the (left, right) number of boundary pixels
         self.cmd_offsets = [] #for each row, store the file offset to the first drawing command
-        self.pcolor      = [] #matrix that contains all the palette indices drawn by commands, key: rowid
+
+        #palette index matrix representing the final image
+        self.pcolor = list()
 
         dbg(push="frame", lvl=3)
 
@@ -218,12 +221,10 @@ class SLPFrame:
 
         dbg("cmd_offsets:     %s" % self.cmd_offsets)
 
-        self.pcolor = []
         for i in range(self.info.size[1]):
-            palette_color_row = self.create_palette_color_row(data, i)
-            self.pcolor.append( palette_color_row )
+            self.pcolor.append(self.create_palette_color_row(data, i))
 
-        dbg(lazymsg=lambda: "frame color index data:\n%s" % self.pcolor, lvl=4)
+        dbg(lazymsg=lambda: "frame color index data:\n%s" % str(self.pcolor), lvl=4)
         dbg(pop="frame")
 
     def create_palette_color_row(self, data, rowid):
@@ -233,13 +234,14 @@ class SLPFrame:
 
         first_cmd_offset = self.cmd_offsets[rowid]
         bounds           = self.boundaries[rowid]
+        pixel_count      = self.info.size[0]
 
         #row is completely transparent
         if bounds == SpecialColor.transparent:
-            return [bounds] * self.info.size[0]
+            return [bounds] * pixel_count
 
         left_boundary, right_boundary = bounds
-        missing_pixels = self.info.size[0] - left_boundary - right_boundary
+        missing_pixels = pixel_count - left_boundary - right_boundary
 
         #start drawing the left transparent space
         pcolor_row_beginning = [ SpecialColor.transparent ] * left_boundary
@@ -251,18 +253,18 @@ class SLPFrame:
         pcolor_row_trailing = [ SpecialColor.transparent ] * right_boundary
 
         #this is the resulting row data
-        pcolor = pcolor_row_beginning + pcolor_row_content + pcolor_row_trailing
+        row_data = pcolor_row_beginning + pcolor_row_content + pcolor_row_trailing
 
         #verify size of generated row
-        if len(pcolor) != self.info.size[0]:
+        if len(row_data) != pixel_count:
             summary = "%d/%d -> row %d, offset %d / %#x" % (got, self.width, rowid, first_cmd_offset, first_cmd_offset)
-            txt = "got %%s pixels than expected: %s, missing: %d" % (summary, abs(self.info.size[0] - got))
-            if got < self.info.size[0]:
+            txt = "got %%s pixels than expected: %s, missing: %d" % (summary, abs(pixel_count - got))
+            if got < pixel_count:
                 raise Exception(txt % ("LESS"))
             else:
                 raise Exception(txt % ("MORE"))
 
-        return pcolor
+        return row_data
 
     def process_drawing_cmds(self, data, rowid, first_cmd_offset, missing_pixels):
         """
@@ -475,30 +477,28 @@ class SLPFrame:
         self.pcolor[rowid] += color_list
 
     def get_picture_data(self, palette, player_number=0):
-        return substitute_palette_indices(self.pcolor, palette, player_number)
+        return determine_rgba_matrix(self.pcolor, palette, player_number)
 
     def __repr__(self):
         return repr(self.info)
 
 
-def substitute_palette_indices(image_matrix, palette, player_number=0):
+def determine_rgba_matrix(image_matrix, palette, player_number=0):
     """
     converts a palette index image matrix to an rgb matrix.
     """
 
-    #returened matrix containing rgba-tuples
-    ret = list()
+    rgba_data = list()
 
-    for y, picture_row in enumerate(image_matrix):
-        row_data = list()
-
-        for x, color_data in enumerate(picture_row):
-            if type(color_data) == int:
+    for row in image_matrix:
+        for pixel in row:
+            if type(pixel) == int:
                 #simply look up the color index in the table
-                color = palette[color_data]
+                r, g, b = palette[pixel]
+                color = (r, g, b, 255)
 
-            elif isinstance(color_data, SpecialColor):
-                base_pcolor, is_outline = color_data.get_pcolor()
+            elif isinstance(pixel, SpecialColor):
+                base_pcolor, is_outline = pixel.get_pcolor()
                 if is_outline:
                     alpha = 253  #mark this pixel as outline
                 else:
@@ -509,17 +509,17 @@ def substitute_palette_indices(image_matrix, palette, player_number=0):
                 r, g, b = palette[base_pcolor + (16 * player_number)]
                 color = (r, g, b, alpha)
 
-            elif color_data == SpecialColor.transparent:
+            elif pixel is SpecialColor.transparent:
                 color = (0, 0, 0, 0)
 
-            elif color_data == SpecialColor.shadow:
+            elif pixel is SpecialColor.shadow:
                 color = (0, 0, 0, 100)
 
             else:
-                raise Exception("Unknown color: %s" % color_data)
+                raise Exception("Unknown color: %s (%s)" % (pixel, type(pixel)))
 
-            row_data.append(color)
+            rgba_data.append(color)
 
-        ret.append(row_data)
-
-    return ret
+    output_shape = (len(image_matrix), len(image_matrix[0]), 4)
+    array_data = numpy.array(rgba_data, dtype=numpy.uint8)
+    return array_data.reshape(*output_shape)

@@ -2,6 +2,7 @@
 
 import dataformat
 import math
+import numpy
 from struct import Struct, unpack_from
 from util import NamedObject, dbg, file_open, file_get_path, file_write
 import os.path
@@ -15,11 +16,9 @@ class BlendingTile:
         self.height = height
 
     def get_picture_data(self):
-        ret = list()
+        ret = numpy.empty((self.height, self.width, 4))
 
         for y, picture_row in enumerate(self.data):
-            row_data = list()
-
             for x, alpha_data in enumerate(picture_row):
                 if alpha_data == -1:
                     #draw full transparency
@@ -30,8 +29,7 @@ class BlendingTile:
                     val = 255 - (alpha_data << 1)
                     alpha = 255
 
-                row_data.append((val, val, val, alpha))
-            ret.append(row_data)
+                ret[y][x] = (val, val, val, alpha)
         return ret
 
 
