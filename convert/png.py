@@ -1,8 +1,7 @@
-from PIL import Image, ImageDraw
-
-
 class PNG:
     def __init__(self, picture_data, player_number=0, color_table=None, w=None, h=None, alphamask=False):
+        from PIL import Image
+
         self.picture_data  = picture_data
         self.player_number = player_number
         self.color_table   = color_table
