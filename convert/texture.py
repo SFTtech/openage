@@ -41,14 +41,14 @@ class TextureImage:
         self.width  = picture_data.shape[1]
         self.height = picture_data.shape[0]
 
+        dbg("creating TextureImage with size %d x %d" % (self.width, self.height), 3)
+
         if hotspot is None:
             self.hotspot = (0, 0)
         else:
             self.hotspot = hotspot
 
         self.data = picture_data
-
-        dbg("created TextureImage with size %dx%d" % (self.width, self.height), 3)
 
     def get_pil_image(self):
         from PIL import Image
@@ -195,11 +195,13 @@ def merge_frames(frames, max_width=0, max_height=0):
         sub_w = sub_frame.width
         sub_h = sub_frame.height
 
-        dbg("drawing frame %03d on atlas at % 3dx% 3d..." % (len(drawn_frames_meta), pos_x, pos_y), 3)
+        dbg("drawing frame %03d on atlas at %d x %d..." % (len(drawn_frames_meta), pos_x, pos_y), 3)
 
         for y, row_data in enumerate(sub_frame.data):
             for x, pixel_data in enumerate(row_data):
                 draw_data[y + pos_y][x + pos_x] = pixel_data
+
+                #print(pixel_data)
 
         #generate subtexture meta information object
         hotspot_x, hotspot_y = sub_frame.hotspot
@@ -218,5 +220,7 @@ def merge_frames(frames, max_width=0, max_height=0):
 
     atlas_data = numpy.array(draw_data, dtype=numpy.uint8)
     atlas = TextureImage(atlas_data)
+
+    dbg("successfully merged %d frames to atlas." % (len(frames)), 2)
 
     return atlas, (width, height), drawn_frames_meta

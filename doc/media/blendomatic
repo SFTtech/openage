@@ -342,7 +342,7 @@ this is our drawing goal (of course a bit bigger):
 each * is a pixel, with a 7 or 1 bit value, which just is an alpha threshold.
 
 for alpha_bytemap:
---> 127 == when masking the dominant texture, draw the pixel fully opaque.
+--> 128 == when masking the dominant texture, draw the pixel fully opaque.
 -->   0 == keep the base tile pixel here.
 
 for alpha_bitmasks:
