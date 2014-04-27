@@ -5,7 +5,6 @@
 from blendomatic import BlendingMode
 import dataformat
 import math
-from png import PNG
 from slp import SLP
 import util
 from util import dbg
@@ -29,6 +28,34 @@ def subtexture_meta(tx, ty, hx, hy, cx, cy):
     }
 
     return ret
+
+class TextureImage:
+    """
+    represents a PIL image created from a (r,g,b,a) matrix.
+    """
+
+    def __init__(self, picture_data, hotspot=None, w=None, h=None, alphamask=False):
+        from PIL import Image
+
+        if None in (w, h):
+            self.width  = len(picture_data[0])
+            self.height = len(picture_data)
+        else:
+            self.width  = w
+            self.height = h
+
+        if hotspot is None:
+            self.hotspot = (0, 0)
+        else:
+            self.hotspot = hotspot
+
+        self.image = Image.new('RGBA', (self.width, self.height), (255, 255, 255, 0))
+
+        #draw the pixels onto the image
+        #TODO: use PIL.Image.frombuffer()
+        for y, picture_row in enumerate(picture_data):
+            for x, color in enumerate(picture_row):
+                self.image.putpixel((x, y), color)
 
 
 class Texture:
@@ -55,27 +82,26 @@ one sprite included in the 'big texture' has."""
     def __init__(self, input_data, palette=None):
 
         if isinstance(input_data, SLP):
+            if palette is None:
+                raise Exception("creating a texture from a SLP requires a palette")
             frames = [
-                (
-                    PNG(frame.get_picture_data(), self.player_id, palette),
-                    frame.info.hotspot,
+                TextureImage(
+                    frame.get_picture_data(palette, self.player_id),
+                    hotspot=frame.info.hotspot,
                 )
                 for frame in input_data.frames
             ]
         elif isinstance(input_data, BlendingMode):
             frames = [
-                (
-                    PNG(tile["data"], w=tile["width"], h=tile["height"], alphamask=True),
-                    (0, 0),
+                TextureImage(
+                    tile.get_picture_data(),
+                    w=tile.width,
+                    h=tile.height,
                 )
                 for tile in input_data.alphamasks
             ]
         else:
             raise Exception("cannot create Texture from unknown source type")
-
-        #self.frames now is a list of frames.
-        #   frames:      hotspot:
-        #[ (frame=PNG, (cx, cy)) ]
 
         self.image, self.image_metadata = merge_frames(frames)
         self.raw_png = util.VirtualFile()
@@ -111,7 +137,7 @@ def merge_frames(frames, max_width=0, max_height=0):
     """
     merge all given frames of this slp to a single image file.
 
-    frames = [(PNG, (hotspot_x, hotspot_y)), ... ]
+    frames = [TextureImage, ...]
 
     returns = atlas, [drawn_frames_meta]
     """
@@ -133,21 +159,16 @@ def merge_frames(frames, max_width=0, max_height=0):
     if len(frames) == 0:
         raise Exception("cannot create texture with empty input frame list")
 
+    #single-frame texture, no merging needed
     elif len(frames) == 1:
-        png, (cx, cy) = frames[0]
-        image = png.image
-        w, h  = image.size
-
-        single_texture_meta = subtexture_meta(0, 0, w, h, cx, cy)
-
-        #return the single-frame texture
-        return image, [single_texture_meta]
-
+        cx, cy = frames[0].hotspot
+        w,  h  = frames[0].image.size
+        return frames[0].image, [subtexture_meta(0, 0, w, h, cx, cy)]
 
     #if not predefined, get maximum frame size by checking all frames
     if max_width == 0 or max_height == 0:
-        max_width  = max([png.width  for png, _ in frames])
-        max_height = max([png.height for png, _ in frames])
+        max_width  = max([teximg.width  for teximg in frames])
+        max_height = max([teximg.height for teximg in frames])
 
     max_per_row = math.ceil(math.sqrt(len(frames)))
     num_rows    = math.ceil(len(frames) / max_per_row)
@@ -168,28 +189,27 @@ def merge_frames(frames, max_width=0, max_height=0):
     drawn_frames_meta = list()
     drawn_current_row = 0
 
-    for sub_frame, (hotspot_x, hotspot_y) in frames:
-        subtexture = sub_frame.image
-        sub_w = subtexture.size[0]
-        sub_h = subtexture.size[1]
+    for sub_frame in frames:
+        sub_w = sub_frame.image.size[0]
+        sub_h = sub_frame.image.size[1]
         box   = (pos_x, pos_y, pos_x + sub_w, pos_y + sub_h)
 
-        atlas.paste(subtexture, box)
+        atlas.paste(sub_frame.image, box)
         dbg("drew frame %03d on atlas at %dx%d " % (len(drawn_frames_meta), pos_x, pos_y), 3)
 
-        #generate subtexture meta information dict
-        drawn_subtexture_meta = subtexture_meta(pos_x, pos_y, sub_w, sub_h, hotspot_x, hotspot_y)
-        drawn_frames_meta.append(drawn_subtexture_meta)
+        #generate subtexture meta information object
+        hotspot_x, hotspot_y = sub_frame.hotspot
+        drawn_frames_meta.append(subtexture_meta(pos_x, pos_y, sub_w, sub_h, hotspot_x, hotspot_y))
 
-        drawn_current_row = drawn_current_row + 1
+        drawn_current_row += 1
 
         #place the subtexture with a 1px border
-        pos_x = pos_x + max_width + 1
+        pos_x += max_width + free_space_px
 
         #see if we have to start a new row now
         if drawn_current_row > max_per_row - 1:
             drawn_current_row = 0
             pos_x = 0
-            pos_y = pos_y + max_height + 1
+            pos_y += max_height + free_space_px
 
     return atlas, drawn_frames_meta

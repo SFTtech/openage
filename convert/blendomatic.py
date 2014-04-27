@@ -8,6 +8,33 @@ import os.path
 
 endianness = "< "
 
+class BlendingTile:
+    def __init__(self, data, width, height):
+        self.data   = data
+        self.width  = width
+        self.height = height
+
+    def get_picture_data(self):
+        ret = list()
+
+        for y, picture_row in enumerate(self.data):
+            row_data = list()
+
+            for x, alpha_data in enumerate(picture_row):
+                if alpha_data == -1:
+                    #draw full transparency
+                    alpha = 0
+                    val = 255
+                else:
+                    #original data contain 7bit values only
+                    val = 255 - (alpha_data << 1)
+                    alpha = 255
+
+                row_data.append((val, val, val, alpha))
+            ret.append(row_data)
+        return ret
+
+
 class BlendingMode:
     def __init__(self, idx, data_file, tile_count, header):
         """
@@ -131,11 +158,7 @@ class BlendingMode:
         if read_so_far != tile_size:
             raise Exception("got leftover bytes: %d" % (tile_size-read_so_far))
 
-        return {
-            "data":   tilerows,
-            "height": row_count,
-            "width":  max_width
-        }
+        return BlendingTile(tilerows, max_width, row_count)
 
 
 class Blendomatic:

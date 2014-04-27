@@ -3,7 +3,6 @@ import sys
 
 from struct import Struct, unpack_from
 from util import NamedObject, dbg, ifdbg
-from png import PNG
 
 #SLP files have little endian byte order
 endianness = "< "
@@ -93,7 +92,7 @@ class SLP:
 
     #struct slp_header {
     # char version[4];
-    # int num_frames;
+    # int frame_count;
     # char comment[24];
     #};
     slp_header = Struct(endianness + "4s i 24s")
@@ -111,27 +110,26 @@ class SLP:
     slp_frame_info = Struct(endianness + "I I I I i i i i")
 
     def __init__(self, data):
-        self.data = data
-        header = SLP.slp_header.unpack_from(self.data)
-        version, num_frames, comment = header
+        header = SLP.slp_header.unpack_from(data)
+        version, frame_count, comment = header
 
         dbg("SLP header", 2, push="slp")
         dbg("version:     " + version.decode('ascii'))
-        dbg("frame count: " + str(num_frames))
+        dbg("frame count: " + str(frame_count))
         dbg("comment:     " + comment.decode('ascii'))
         dbg("")
 
-        self.frames = []
+        self.frames = list()
 
         dbg(FrameInfo.repr_header())
 
         #read all slp_frame_info structs
-        for i in range(num_frames):
+        for i in range(frame_count):
             frame_header_offset = SLP.slp_header.size + i * SLP.slp_frame_info.size
 
-            frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(self.data, frame_header_offset))
+            frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(data, frame_header_offset))
             dbg(frame_info)
-            self.frames.append(SLPFrame(frame_info, self.data))
+            self.frames.append(SLPFrame(frame_info, data))
 
         dbg("", pop="slp")
 
@@ -164,11 +162,11 @@ class FrameInfo:
         ret = list()
         ret.extend([
             "        % 9d|" % self.qdl_table_offset,
-            "% 13d|" % self.outline_table_offset,
-            "% 7d) | " % self.palette_offset,
-            "% 10d | " % self.properties,
+            "% 13d|"        % self.outline_table_offset,
+            "% 7d) | "      % self.palette_offset,
+            "% 10d | "      % self.properties,
             "% 5d x% 7d | " % self.size,
-            "% 4d /% 5d" % self.hotspot,
+            "% 4d /% 5d"    % self.hotspot,
         ])
         return "".join(ret)
 
@@ -476,8 +474,52 @@ class SLPFrame:
 
         self.pcolor[rowid] += color_list
 
-    def get_picture_data(self):
-        return self.pcolor
+    def get_picture_data(self, palette, player_number=0):
+        return substitute_palette_indices(self.pcolor, palette, player_number)
 
     def __repr__(self):
         return repr(self.info)
+
+
+def substitute_palette_indices(image_matrix, palette, player_number=0):
+    """
+    converts a palette index image matrix to an rgb matrix.
+    """
+
+    #returened matrix containing rgba-tuples
+    ret = list()
+
+    for y, picture_row in enumerate(image_matrix):
+        row_data = list()
+
+        for x, color_data in enumerate(picture_row):
+            if type(color_data) == int:
+                #simply look up the color index in the table
+                color = palette[color_data]
+
+            elif isinstance(color_data, SpecialColor):
+                base_pcolor, is_outline = color_data.get_pcolor()
+                if is_outline:
+                    alpha = 253  #mark this pixel as outline
+                else:
+                    alpha = 254  #mark this pixel as player color
+
+                #get rgb base color from the color table
+                #store it the preview player color (in the table: [16*player, 16*player+7]
+                r, g, b = palette[base_pcolor + (16 * player_number)]
+                color = (r, g, b, alpha)
+
+            elif color_data == SpecialColor.transparent:
+                color = (0, 0, 0, 0)
+
+            elif color_data == SpecialColor.shadow:
+                color = (0, 0, 0, 100)
+
+            else:
+                raise Exception("Unknown color: %s" % color_data)
+
+            row_data.append(color)
+
+        ret.append(row_data)
+
+    return ret
