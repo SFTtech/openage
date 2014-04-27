@@ -146,21 +146,16 @@ def merge_frames(frames, max_width=0, max_height=0):
 
     #if not predefined, get maximum frame size by checking all frames
     if max_width == 0 or max_height == 0:
-        for (png, _) in frames:
-            w, h = png.image.size
-            if w > max_width:
-                max_width = w
-            if h > max_height:
-                max_height = h
-
+        max_width  = max([png.width  for png, _ in frames])
+        max_height = max([png.height for png, _ in frames])
 
     max_per_row = math.ceil(math.sqrt(len(frames)))
     num_rows    = math.ceil(len(frames) / max_per_row)
 
     #we leave 1 pixel free in between two sprites
     free_space_px = 1
-    width  = math.ceil((max_width  + free_space_px)     * max_per_row)
-    height = math.ceil((max_height + free_space_px + 1) * num_rows)
+    width  = (max_width  + free_space_px)     * max_per_row
+    height = (max_height + free_space_px + 1) * num_rows
 
     dbg("merging %d frames to %dx%d atlas, %d pics per row, %d rows." % (len(frames), width, height, max_per_row, num_rows), 2)
 
@@ -179,7 +174,7 @@ def merge_frames(frames, max_width=0, max_height=0):
         sub_h = subtexture.size[1]
         box   = (pos_x, pos_y, pos_x + sub_w, pos_y + sub_h)
 
-        atlas.paste(subtexture, box) #, mask=subtexture)
+        atlas.paste(subtexture, box)
         dbg("drew frame %03d on atlas at %dx%d " % (len(drawn_frames_meta), pos_x, pos_y), 3)
 
         #generate subtexture meta information dict

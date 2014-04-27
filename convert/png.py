@@ -3,9 +3,9 @@ from PIL import Image, ImageDraw
 
 class PNG:
     def __init__(self, picture_data, player_number=0, color_table=None, w=None, h=None, alphamask=False):
-        self.picture_data = picture_data
+        self.picture_data  = picture_data
         self.player_number = player_number
-        self.color_table = color_table
+        self.color_table   = color_table
 
         if None in (w, h):
             self.width  = len(self.picture_data[0])
@@ -15,16 +15,14 @@ class PNG:
             self.height = h
 
         self.image = Image.new('RGBA', (self.width, self.height), (255, 255, 255, 0))
-        draw = ImageDraw.ImageDraw(self.image)
 
         if not alphamask:
-            self.draw_picture(draw)
+            self.draw_picture()
         else:
-            self.draw_alphamask(draw)
+            self.draw_alphamask()
 
-    def draw_alphamask(self, draw):
+    def draw_alphamask(self):
         for y, picture_row in enumerate(self.picture_data):
-
             for x, alpha_data in enumerate(picture_row):
                 val = 255 - alpha_data*2
                 if alpha_data == -1:
@@ -33,13 +31,12 @@ class PNG:
                 else:
                     alpha = 255
 
-                draw.point((x, y), fill=(val, val, val, alpha))
+                self.image.putpixel((x, y), (val, val, val, alpha))
 
-    def draw_picture(self, draw):
+    def draw_picture(self):
         #avoid circular importing..
         from slp import SpecialColor
 
-        # TODO draw lines, more efficient picture_data
         for y, picture_row in enumerate(self.picture_data):
             for x, color_data in enumerate(picture_row):
                 if type(color_data) == int:
@@ -69,6 +66,4 @@ class PNG:
                 else:
                     raise Exception("Unknown color: " + str(color_data))
 
-                draw.point((x, y), fill=color)
-
-                #self.draw.line((x, y, x + amount, y), fill=color)
+                self.image.putpixel((x, y), color)
