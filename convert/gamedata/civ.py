@@ -5,48 +5,17 @@ from util import dbg, zstr
 from .empiresdat import endianness
 
 
-class CivData:
-    def dump(self):
-        ret = dict()
-
-        ret.update(dataformat.gather_format(Civ))
-        ret["name_table_file"] = "civilisations"
-        ret["data"] = list()
-
-        for terrain in self.terrains:
-            #dump terrains
-            ret["data"].append(terrain.dump())
-
-        return [ ret ]
-
-    def read(self, raw, offset):
-        #uint16_t civ_count;
-        header_struct = Struct(endianness + "H")
-
-        header = header_struct.unpack_from(raw, offset)
-        offset += header_struct.size
-        self.civ_count, = header
-
-        self.civ = dict()
-        for i in range(self.civ_count):
-            t = Civ()
-            offset = t.read(raw, offset)
-            self.civ[i] = t
-
-        return offset
-
-
-class Civ:
+class Civ(dataformat.Exportable):
     name_struct        = "civilisation"
     name_struct_file   = name_struct
     struct_description = "describes one a civilisation."
 
-    data_format = {
-        0: {"name":            { "type": "char", "length": 20 }},
-        1: {"graphic_set":     "int32_t"},
-        2: {"team_bonus_id":   "int16_t"},
-        3: {"tech_tree_id":    "int16_t"},
-    }
+    data_format = (
+        ("name",            "char[20]"),
+        ("graphic_set",     "int32_t"),
+        ("team_bonus_id",   "int16_t"),
+        ("tech_tree_id",    "int16_t"),
+    )
 
     def read(self, raw, offset):
         #int8_t one;
@@ -108,5 +77,31 @@ class Civ:
             t = unit.Unit()
             offset = t.read(raw, offset)
             self.unit.append(t)
+
+        return offset
+
+
+class CivData(dataformat.Exportable):
+    name_struct        = "civilisation_data"
+    name_struct_file   = "gamedata"
+    struct_description = "civilisation list."
+
+    data_format = (
+        ("civs", dataformat.SubdataMember(ref_type=Civ)),
+    )
+
+    def read(self, raw, offset):
+        #uint16_t civ_count;
+        header_struct = Struct(endianness + "H")
+
+        header = header_struct.unpack_from(raw, offset)
+        offset += header_struct.size
+        self.civ_count, = header
+
+        self.civs = list()
+        for _ in range(self.civ_count):
+            t = Civ()
+            offset = t.read(raw, offset)
+            self.civs.append(t)
 
         return offset

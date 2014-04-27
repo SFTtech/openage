@@ -6,7 +6,7 @@ import mediafile
 from util import set_verbosity
 
 #these sections of the dat file will be exported
-default_datfile_sections = "terrain,sound"
+default_datfile_sections = "terrain,sound,civ"
 
 if __name__ == "__main__":
 
