@@ -4,7 +4,6 @@ import sys
 from struct import Struct, unpack_from
 from util import NamedObject, dbg, ifdbg
 from png import PNG
-from PIL import Image, ImageDraw
 
 #SLP files have little endian byte order
 endianness = "< "
