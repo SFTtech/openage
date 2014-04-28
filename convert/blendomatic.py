@@ -2,7 +2,6 @@
 
 import dataformat
 import math
-import numpy
 from struct import Struct, unpack_from
 from util import NamedObject, dbg, file_open, file_get_path, file_write
 import os.path
@@ -16,6 +15,8 @@ class BlendingTile:
         self.height = height
 
     def get_picture_data(self):
+        import numpy
+
         tile_rows = list()
 
         for y, picture_row in enumerate(self.data):

@@ -1,4 +1,3 @@
-import numpy
 import os
 import sys
 
@@ -487,6 +486,8 @@ def determine_rgba_matrix(image_matrix, palette, player_number=0):
     """
     converts a palette index image matrix to an rgb matrix.
     """
+
+    import numpy
 
     rgba_data = list()
 

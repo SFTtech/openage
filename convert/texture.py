@@ -5,7 +5,6 @@
 from blendomatic import BlendingMode
 import dataformat
 import math
-import numpy
 from slp import SLP
 import util
 from util import dbg
@@ -140,6 +139,8 @@ def merge_frames(frames, max_width=0, max_height=0):
 
     returns = TextureImage, [drawn_frames_meta]
     """
+
+    import numpy
 
     #TODO: actually optimize free space on the texture.
     #if you ever wanted to implement a combinatoric optimisation
