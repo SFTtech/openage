@@ -103,6 +103,7 @@ pkg_search_module(SDL2_IMAGE REQUIRED sdl2_image SDL2_image)
 ##if(NOT INOTIFY_FOUND) ...
 
 include_directories(
+	${OPENGL_INCLUDE_DIR}
 	${FREETYPE_INCLUDE_DIRS}
 	${FTGL_INCLUDE_DIRS}
 	${OPUSFILE_INCLUDE_DIR}
