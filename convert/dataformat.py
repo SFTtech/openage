@@ -65,44 +65,65 @@ class Exportable:
         self_data = dict()
 
         for member_name, member_type in self.data_format:
+            #gather data members of the currently queried object
             self_data[member_name] = getattr(self, member_name)
 
-            if isinstance(member_type, SubdataMember):
-                dbg(lazymsg=(lambda: "%s => entering submember %s" % (filename, member_name)), lvl=2)
+            if isinstance(member_type, MultisubtypeMember):
+                dbg(lazymsg=lambda: "%s => entering multisubtype member %s" % (filename, member_name), lvl=2)
 
-                member_data = list()
-                for idx, member_data_item in enumerate(self_data[member_name]):
-                    if not isinstance(member_data_item, Exportable):
-                        raise Exception("tried to dump object not inheriting from Exportable")
+                subdata_definitions = list()
+                for subtype_name, submember_class in member_type.class_lookup.items():
+                    dbg(lazymsg=lambda: "%s => entering submember %s" % (filename, subtype_name), lvl=2)
 
-                    dbg(lazymsg=lambda: "submember item %d" % idx, lvl=3)
+                    if isinstance(member_type, SubdataMember):
+                        subdata_item_iter  = self_data[member_name]
+                        submember_filename = filename
+                        is_single_subdata  = True
+                    else:
+                        subdata_item_iter  = self_data[member_name][subtype_name]
+                        submember_filename = "%s-%s" % (filename, subtype_name)
+                        is_single_subdata  = False
 
-                    #generate output filename
-                    member_ref   = "" #getattr(self, member_type.ref_to) if member_type.ref_to else ""
-                    sub_filename = "%s-%s/%s-%04d%s" % (filename, member_name, member_name, idx, member_ref)
+                    submember_data = list()
+                    for idx, submember_data_item in enumerate(subdata_item_iter):
+                        if not isinstance(submember_data_item, Exportable):
+                            raise Exception("tried to dump object not inheriting from Exportable")
 
-                    #recursive call, fetches DataDefinitions and the next-level data dict
-                    data_sets, data = member_data_item.dump(sub_filename)
+                        dbg(lazymsg=lambda: "submember item %d" % idx, lvl=3)
 
-                    #store recursively generated DataDefinitions
-                    ret += data_sets
+                        #generate output filename
+                        member_ref   = "" #getattr(self, member_type.ref_to) if member_type.ref_to else ""
+                        sub_filename = "%s-%s/%s-%04d%s" % (submember_filename, member_name, member_name, idx, member_ref)
 
-                    #append the next-level entry to the list
-                    #that will contain the data for the current level DataDefinition
-                    member_data.append(data)
+                        #recursive call, fetches DataDefinitions and the next-level data dict
+                        data_sets, data = submember_data_item.dump(sub_filename)
 
-                #create DataDefinition for the next-level data pile.
-                ret.append(DataDefinition(
-                    member_type.ref_type,
-                    member_data,
-                    filename,
-                ))
+                        #store recursively generated DataDefinitions to the flat list
+                        ret += data_sets
 
-                #store filename instead of data
-                #is used to determine the file to read next.
-                self_data[member_name] = filename
+                        #append the next-level entry to the list
+                        #that will contain the data for the current level DataDefinition
+                        submember_data.append(data)
 
-                dbg(lazymsg=lambda: "%s => leaving submember %s" % (filename, member_name), lvl=2)
+                    #create DataDefinition for the next-level data pile.
+                    subdata_definitions.append(DataDefinition(
+                        submember_class,
+                        submember_data,
+                        submember_filename,
+                    ))
+
+                    #store filename instead of data list
+                    #is used to determine the file to read next.
+                    if is_single_subdata:
+                        self_data[member_name] = submember_filename
+                    else:
+                        self_data[member_name][subtype_name] = submember_filename
+
+                    dbg(lazymsg=lambda: "%s => leaving submember %s" % (filename, subtype_name), lvl=2)
+
+                ret += subdata_definitions
+
+                dbg(lazymsg=lambda: "%s => leaving multisubtype member %s" % (filename, member_name), lvl=2)
 
         dbg(lazymsg=lambda: str(self_data), lvl=3)
 
@@ -117,8 +138,9 @@ class Exportable:
         ret = list()
 
         for member_name, member_type in cls.data_format:
-            if isinstance(member_type, SubdataMember):
-                ret += member_type.ref_type.structs()
+            if isinstance(member_type, MultisubtypeMember):
+                for subtype_name, subtype_class in member_type.class_lookup:
+                    ret += member_type.subtype_class.structs()
 
         ret.append(StructDefinition(cls))
 
@@ -531,15 +553,37 @@ class StringMember(DataMember):
         return self.type_name
 
 
-class SubdataMember(DataMember):
+class MultisubtypeMember(DataMember):
     """
-    struct member/data column that references to another data set
+    struct member/data column that groups multiple references to
+    multiple other data sets.
+    """
+
+    def __init__(self, class_lookup, ref_to=None):
+        super().__init__()
+        self.class_lookup = class_lookup
+        self.ref_to = ref_to
+
+    def get_headers(self):
+        return set()
+
+    def get_type(self):
+        raise NotImplementedError()
+
+    def get_parser(self):
+        raise NotImplementedError()
+
+    def __repr__(self):
+        return "MultisubtypeMember<%s>" % str(self.class_lookup)
+
+
+class SubdataMember(MultisubtypeMember):
+    """
+    struct member/data column that references to one another data set.
     """
 
     def __init__(self, ref_type, ref_to=None):
-        super().__init__()
-        self.ref_type = ref_type
-        self.ref_to = ref_to
+        super().__init__({ref_to: ref_type}, ref_to)
 
     def __repr__(self):
         return "SubdataMember<%s>" % self.ref_type.__name__
@@ -669,15 +713,6 @@ class DataDefinition(DataSet):
             target_obj.struct_description,
             target_obj.data_format,
             data,
-            data_name,
-        )
-
-
-class DataDumpDefinition(DataDefinition):
-    def __init__(self, target_obj, target_var, data_name):
-        super().__init__(
-            target_obj,
-            [data.dump(data_name) for data in target_var],
             data_name,
         )
 

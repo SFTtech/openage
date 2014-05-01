@@ -264,3 +264,16 @@ class VirtualFile:
 
     def data(self):
         return self.buf
+
+
+def gen_dict_key2lists(keys):
+    """
+    returns an empty dict with key => list() mapping.
+    """
+
+    return dict(
+        zip(
+            keys,
+            ([[] for _ in range(len(keys))])
+        )
+    )
