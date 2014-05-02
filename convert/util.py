@@ -9,6 +9,33 @@ class NamedObject:
     def __repr__(self):
         return self.name
 
+
+struct_type_lookup = {
+    "bool":               ("?",  1),
+    "char":               ("b",  1),
+    "unsigned char":      ("B",  1),
+    "int8_t":             ("b",  1),
+    "uint8_t":            ("B",  1),
+    "short":              ("h",  2),
+    "unsigned short":     ("H",  2),
+    "int16_t":            ("h",  2),
+    "uint16_t":           ("H",  2),
+    "int":                ("i",  4),
+    "unsigned int":       ("I",  4),
+    "int32_t":            ("i",  4),
+    "uint32_t":           ("I",  4),
+    "long":               ("l",  4),
+    "unsigned long":      ("L",  4),
+    "long long":          ("q",  8),
+    "unsigned long long": ("Q",  8),
+    "int64_t":            ("q",  8),
+    "uint64_t":           ("Q",  8),
+    "float":              ("f",  4),
+    "double":             ("d",  8),
+    "char[]":             ("s", -1),
+}
+
+
 dbgstack = [(None, 0)]
 
 readpath = "/dev/null"

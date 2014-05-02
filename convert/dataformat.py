@@ -8,7 +8,13 @@ import util
 from util import dbg
 import re
 from string import Template
+import struct
 import os.path
+
+
+#regex for matching type array definitions like int[1337]
+#group 1: type name, group 2: length
+vararray_match = re.compile("([a-zA-Z0-9_ -]+)\\[(\\d+)\\]")
 
 
 def encode_value(val):
@@ -128,6 +134,45 @@ class Exportable:
         dbg(lazymsg=lambda: str(self_data), lvl=3)
 
         return ret, self_data
+
+    def read(self, raw, offset):
+        """
+        read defined data from raw at given offset
+        """
+
+        #use data_format symbol order for reading
+        for var_name, var_type in self.data_format:
+            if type(var_type) == str:
+                length = 1
+                is_array = util.vararray_match(var_type)
+
+                if is_array:
+                    var_type = is_array.group(1)
+                    length   = is_array.group(2)
+
+                symbol, size = util.struct_type_lookup[var_type]
+                result = struct.unpack_from("< %d%s" % (length, symbol))
+                offset += (size * length)
+
+                if length == 1:
+                    result = result[0]
+
+                setattr(self, var_name, result)
+
+            else:
+                raise NotImplementedError()
+                if isinstance(var_type, MultisubtypeMember):
+                    if isinstance(var_type, SubdataMember):
+                        setattr(self, var_name, list())
+                    else:
+                        setattr(self, var_name, util.gen_dict_key2lists(var_type.class_lookup.keys()))
+
+                elif isinstance(var_type, DataMember):
+                    pass
+                else:
+                    raise Exception("unknown data member definition")
+
+        return offset
 
     @classmethod
     def structs(cls):
@@ -623,13 +668,14 @@ class DataSet:
         for member_name, member_type in data_format:
             #select member type class according to the defined member type
             if type(member_type) == str:
-                chararray = self.chararray_match.match(member_type)
-                if chararray:
-                    array_length = int(chararray.group(1))
-                    if array_length > 0:
+                array_match = vararray_match.match(member_type)
+                if array_match:
+                    array_type   = array_match.group(1).strip()
+                    array_length = int(chararray.group(2))
+                    if array_length > 0 and array_type == "char":
                         member = CharArrayMember(array_length)
                     else:
-                        raise Exception("you defined an array with length <= 0")
+                        raise Exception("unknown type or array length <= 0")
                 elif member_type == "std::string":
                     member = StringMember()
                 else:
