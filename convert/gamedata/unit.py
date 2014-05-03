@@ -128,41 +128,32 @@ class DamageGraphic(dataformat.Exportable):
     data_format = (
         (dataformat.READ, "graphic_id", "int16_t"),
         (dataformat.READ, "damage_percent", "int8_t"),
-        (dataformat.READ, "unknown", "int8_t"),
-        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
     )
 
 
-class HitType:
-    def read(self, raw, offset, cls=None):
-        #int16_t used_for_class_id;
-        #int16_t amount;
-        hit_type_struct = Struct(endianness + "2h")
+class HitType(dataformat.Exportable):
+    name_struct        = "hit_type"
+    name_struct_file   = "unit"
+    struct_description = "stores attack amount for a damage type."
 
-        pc = hit_type_struct.unpack_from(raw, offset)
-        offset += hit_type_struct.size
-
-        self.type_id = pc[0]
-        self.amount  = pc[1]
-
-        return offset
+    data_format = (
+        (dataformat.READ, "type_id", "int16_t"), #used for class id
+        (dataformat.READ, "amount", "int16_t"),
+    )
 
 
-class RessourceCost:
-    def read(self, raw, offset, cls=None):
-        #int16_t type;
-        #int16_t amount;
-        #int16_t enabled;
-        ressource_cost_struct = Struct(endianness + "3h")
+class RessourceCost(dataformat.Exportable):
+    name_struct        = "ressource_cost"
+    name_struct_file   = "unit"
+    struct_description = "stores cost for one ressource for creating the unit."
 
-        pc = ressource_cost_struct.unpack_from(raw, offset)
-        offset += ressource_cost_struct.size
-
-        self.type_id = pc[0]
-        self.amount  = pc[1]
-        self.enabled = pc[2]
-
-        return offset
+    data_format = (
+        (dataformat.READ, "type_id", "int16_t"),
+        (dataformat.READ, "amount", "int16_t"),
+        (dataformat.READ, "enabled", "int16_t"),
+    )
 
 
 class BuildingAnnex(dataformat.Exportable):
@@ -214,7 +205,7 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "air_mode", "int8_t"),
         (dataformat.READ, "icon_id", "int16_t"),
         (dataformat.READ, "hidden_in_editor", "int8_t"),
-        (dataformat.READ, "unknown", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ, "enabled", "int16_t"),
         (dataformat.READ, "placement_by_pass_terrain0", "int16_t"),
         (dataformat.READ, "placement_by_pass_terrain1", "int16_t"),
@@ -229,26 +220,26 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "ressource_capacity", "int16_t"),
         (dataformat.READ, "ressource_decay", "float"),
         (dataformat.READ, "blast_type", "int8_t"),
-        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ, "interaction_mode", "int8_t"),
         (dataformat.READ, "minimap_mode", "int8_t"),
         (dataformat.READ, "command_attribute", "int16_t"),
-        (dataformat.READ, "unknown", "int16_t"),
-        (dataformat.READ, "unknown", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ, "language_dll_help", "uint16_t"),
         (dataformat.READ, "hot_keys", "int16_t[4]"),
-        (dataformat.READ, "unknown", "int8_t"),
-        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ, "unselectable", "bool"),
-        (dataformat.READ, "unknown", "int8_t"),
-        (dataformat.READ, "unknown", "int8_t"),
-        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ, "selection_mask", "int8_t"),
         (dataformat.READ, "selection_shape_type", "int8_t"),
         (dataformat.READ, "selection_shape", "int8_t"),
         (dataformat.READ, "attribute", "int8_t"),
         (dataformat.READ, "civilisation", "int8_t"),
-        (dataformat.READ, "unknown", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ, "selection_effect", "int8_t"),
         (dataformat.READ, "editor_selection_color", "uint8_t"),
         (dataformat.READ, "selection_radius0", "float"),
@@ -294,18 +285,6 @@ class UnitFlag(UnitObject):
     def __init__(self, **args):
         super().__init__(**args)
 
-    def read(self, raw, offset, cls=None):
-        offset = super().read(raw, offset, cls=UnitObject)
-
-        #float speed;
-        tmp_struct = Struct(endianness + "f")
-        pc = tmp_struct.unpack_from(raw, offset)
-        offset += tmp_struct.size
-
-        self.speed, = pc
-
-        return offset
-
 
 class UnitDoppelganger(UnitFlag):
     """
@@ -317,7 +296,7 @@ class UnitDoppelganger(UnitFlag):
     struct_description = "weird doppelganger unit thats actually the same as a flag unit."
 
     data_format = (
-        (None, None, None),
+        (dataformat.READ, None, dataformat.ParentMember(cls=UnitFlag)),
     )
 
     def __init__(self):
@@ -334,39 +313,20 @@ class UnitDeadOrFish(UnitDoppelganger):
     struct_description = "adds walking graphics, rotations and tracking properties to units."
 
     data_format = (
-        (None, None, None),
+        (dataformat.READ, None, dataformat.ParentMember(cls=UnitDoppelganger)),
+        (dataformat.READ, "walking_graphics0", "int16_t"),
+        (dataformat.READ, "walking_graphics1", "int16_t"),
+        (dataformat.READ, "rotation_speed", "float"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ, "tracking_unit", "int16_t"),
+        (dataformat.READ, "tracking_unit_used", "bool"),
+        (dataformat.READ, "tracking_unit_density", "float"),
+        (dataformat.READ_UNKNOWN, None, "float"),
+        (dataformat.READ_UNKNOWN, None, "int8_t[17]"),
     )
 
-    def __init__(self):
-        super().__init__()
-
-    def read(self, raw, offset, cls=None):
-        offset = super().read(raw, offset)
-
-        #int16_t walking_graphics0;
-        #int16_t walking_graphics1;
-        #float rotation_speed;
-        #int8_t unknown;
-        #int16_t tracking_unit;
-        #bool tracking_unit_used;
-        #float tracking_unit_density;
-        #float unknown;
-        #int8_t unknown[17];
-        tmp_struct = Struct(endianness + "2h f b h ? 2f 17b")
-        pc = tmp_struct.unpack_from(raw, offset)
-        offset += tmp_struct.size
-
-        self.walking_graphics0     = pc[0]
-        self.walking_graphics1     = pc[1]
-        self.rotation_speed        = pc[2]
-        #self. = pc[2]
-        self.tracking_unit         = pc[3]
-        self.tracking_unit_used    = pc[4]
-        self.tracking_unit_density = pc[5]
-        #self. = pc[6]
-        #self. = pc[7:(7+17)]
-
-        return offset
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitBird(UnitDeadOrFish):
@@ -379,39 +339,20 @@ class UnitBird(UnitDeadOrFish):
     struct_description = "adds search radius and work properties, as well as movement sounds."
 
     data_format = (
-        (None, None, None),
+        (dataformat.READ, None, dataformat.ParentMember(cls=UnitDeadOrFish)),
+        (dataformat.READ, "sheep_conversion", "int16_t"),
+        (dataformat.READ, "search_radius", "float"),
+        (dataformat.READ, "work_rate", "float"),
+        (dataformat.READ, "drop_site0", "int16_t"),
+        (dataformat.READ, "drop_site1", "int16_t"),
+        (dataformat.READ, "villager_mode", "int8_t"),
+        (dataformat.READ, "move_sound", "int16_t"),
+        (dataformat.READ, "stop_sound", "int16_t"),
+        (dataformat.READ, "animal_mode", "int8_t"),
     )
 
-    def __init__(self):
-        super().__init__()
-
-    def read(self, raw, offset, cls=None):
-        offset = super().read(raw, offset)
-
-        #int16_t sheep_conversion;
-        #float search_radius;
-        #float work_rate;
-        #int16_t drop_site0;
-        #int16_t drop_site1;
-        #int8_t villager_mode;
-        #int16_t move_sound;
-        #int16_t stop_sound;
-        #int8_t animal_mode;
-        tmp_struct = Struct(endianness + "h 2f 2h b 2h b")
-        pc = tmp_struct.unpack_from(raw, offset)
-        offset += tmp_struct.size
-
-        self.sheep_conversion = pc[0]
-        self.search_radius    = pc[1]
-        self.work_rate        = pc[2]
-        self.drop_site0       = pc[3]
-        self.drop_site1       = pc[4]
-        self.villager_mode    = pc[5]
-        self.move_sound       = pc[6]
-        self.stop_sound       = pc[7]
-        self.animal_mode      = pc[8]
-
-        return offset
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitMovable(UnitBird):
@@ -424,86 +365,33 @@ class UnitMovable(UnitBird):
     struct_description = "adds attack and armor properties to units."
 
     data_format = (
-        (None, None, None),
+        (dataformat.READ, None, dataformat.ParentMember(cls=UnitBird)),
+        (dataformat.READ, "default_armor", "int16_t"),
+        (dataformat.READ, "attack_count", "uint16_t"),
+        (dataformat.READ, "attacks", dataformat.SubdataMember(ref_type=HitType, length="attack_count")),
+        (dataformat.READ, "armor_count", "uint16_t"),
+        (dataformat.READ, "armors", dataformat.SubdataMember(ref_type=HitType, length="armor_count")),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
+        (dataformat.READ, "max_range", "float"),
+        (dataformat.READ, "blast_radius", "float"),
+        (dataformat.READ, "reload_time0", "float"),
+        (dataformat.READ, "projectile_unit_id", "int16_t"),
+        (dataformat.READ, "accuracy_percent", "int16_t"),
+        (dataformat.READ, "tower_mode", "int8_t"),
+        (dataformat.READ, "delay", "int16_t"),
+        (dataformat.READ, "graphics_displacement", "float[3]"),
+        (dataformat.READ, "blast_level", "int8_t"),
+        (dataformat.READ, "min_range", "float"),
+        (dataformat.READ, "garnison_recovery_rate", "float"),
+        (dataformat.READ, "attack_graphic", "int16_t"),
+        (dataformat.READ, "melee_armor_displayed", "int16_t"),
+        (dataformat.READ, "attack_displayed", "int16_t"),
+        (dataformat.READ, "range_displayed", "int16_t"),
+        (dataformat.READ, "reload_time1", "float"),
     )
 
     def __init__(self):
         super().__init__()
-
-    def read(self, raw, offset, cls=None):
-        offset = super().read(raw, offset)
-
-        #int16_t default_armor;
-        #uint16_t attack_count;
-        tmp_struct = Struct(endianness + "h H")
-        pc = tmp_struct.unpack_from(raw, offset)
-        offset += tmp_struct.size
-
-        self.default_armor = pc[0]
-        self.attack_count  = pc[1]
-
-        self.attack = list()
-        for i in range(self.attack_count):
-            t = HitType()
-            offset_tmp = t.read(raw, offset)
-            self.attack.append(t)
-            offset = offset_tmp
-
-        #uint16_t armor_count;
-        tmp_struct = Struct(endianness + "H")
-        pc = tmp_struct.unpack_from(raw, offset)
-        offset += tmp_struct.size
-
-        self.armor_count = pc[0]
-
-        self.armor = list()
-        for i in range(self.armor_count):
-            t = HitType()
-            offset_tmp = t.read(raw, offset)
-            self.armor.append(t)
-            offset = offset_tmp
-
-        #int16_t unknown;
-        #float max_range;
-        #float blast_radius;
-        #float reload_time0;
-        #int16_t projectile_unit_id;
-        #int16_t accuracy_percent;
-        #int8_t tower_mode;
-        #int16_t delay;
-        #float graphics_displacement[3];
-        #int8_t blast_level;
-        #float min_range;
-        #float garnison_recovery_rate;
-        #int16_t attack_graphic;
-        #int16_t melee_armor_displayed;
-        #int16_t attack_displayed;
-        #int16_t range_displayed;
-        #float reload_time1;
-        tmp_struct = Struct(endianness + "h 3f 2h b h 3f b 2f 4h xx f")
-        pc = tmp_struct.unpack_from(raw, offset)
-        offset += tmp_struct.size - 2
-
-
-        #self. = pc[0]
-        self.max_range              = pc[1]
-        self.blast_radius           = pc[2]
-        self.reload_time0           = pc[3]
-        self.projectile_unit_id     = pc[4]
-        self.accuracy_percent       = pc[5]
-        self.tower_mode             = pc[6]
-        self.delay                  = pc[7]
-        self.graphics_displacement  = pc[8:(8+3)]
-        self.blast_level            = pc[11]
-        self.min_range              = pc[12]
-        self.garnison_recovery_rate = pc[13]
-        self.attack_graphic         = pc[14]
-        self.melee_armor_displayed  = pc[15]
-        self.attack_displayed       = pc[16]
-        self.range_displayed        = pc[17]
-        self.reload_time1           = pc[18]
-
-        return offset
 
 
 class UnitProjectile(UnitMovable):
@@ -516,33 +404,18 @@ class UnitProjectile(UnitMovable):
     struct_description = "adds projectile specific unit properties."
 
     data_format = (
-        (None, None, None),
+        (dataformat.READ, None, dataformat.ParentMember(cls=UnitMovable)),
+        (dataformat.READ, "stretch_mode", "int8_t"),
+        (dataformat.READ, "compensation_mode", "int8_t"),
+        (dataformat.READ, "drop_animation_mode", "int8_t"),
+        (dataformat.READ, "penetration_mode", "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "uint16_t"),
+        (dataformat.READ, "projectile_arc", "float"),
     )
 
     def __init__(self):
         super().__init__()
-
-    def read(self, raw, offset, cls=None):
-        offset = super().read(raw, offset)
-
-        #int8_t stretch_mode;
-        #int8_t compensation_mode;
-        #int8_t drop_animation_mode;
-        #int8_t penetration_mode;
-        #int8_t unknown;
-        #float projectile_arc;
-        tmp_struct = Struct(endianness + "5b x x f")
-        pc = tmp_struct.unpack_from(raw, offset)
-        offset += tmp_struct.size
-
-        self.stretch_mode        = pc[0]
-        self.compensation_mode   = pc[1]
-        self.drop_animation_mode = pc[2]
-        self.penetration_mode    = pc[3]
-        #self. = pc[4]
-        self.projectile_arc      = pc[5]
-
-        return offset
 
 
 class UnitLiving(UnitMovable):
@@ -555,60 +428,29 @@ class UnitLiving(UnitMovable):
     struct_description = "adds creation location and garnison unit properties."
 
     data_format = (
-        (None, None, None),
+        (dataformat.READ, None, dataformat.ParentMember(cls=UnitMovable)),
+        (dataformat.READ, "ressource_cost", dataformat.SubdataMember(ref_type=RessourceCost, length=3)),
+        (dataformat.READ, "train_time", "int16_t"),
+        (dataformat.READ, "train_location_id", "int16_t"),
+        (dataformat.READ, "button_id", "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int32_t"),
+        (dataformat.READ_UNKNOWN, None, "int32_t"),
+        (dataformat.READ, "missile_graphic_delay", "int8_t"),
+        (dataformat.READ, "hero_mode", "int8_t"),
+        (dataformat.READ, "garnison_graphic0", "int16_t"),
+        (dataformat.READ, "garnison_graphic1", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "uint16_t"),               #TODO: verify, probably one byte off...
+        (dataformat.READ, "attack_missile_duplication0", "float"),
+        (dataformat.READ, "attack_missile_duplication1", "int8_t"),
+        (dataformat.READ, "attack_missile_duplication_spawning", "float[3]"),
+        (dataformat.READ, "attack_missile_duplication_unit", "int32_t"),
+        (dataformat.READ, "attack_missile_duplication_graphic", "int32_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ, "pierce_armor_displayed", "int16_t"),
     )
 
     def __init__(self):
         super().__init__()
-
-    def read(self, raw, offset, cls=None):
-        offset = super().read(raw, offset)
-
-        self.ressource_cost = list()
-        for i in range(3):
-            t = RessourceCost()
-            offset = t.read(raw, offset)
-            self.ressource_cost.append(t)
-
-        #int16_t train_time;
-        #int16_t train_location_id;
-        #int8_t button_id;
-        #int32_t unknown;
-        #int32_t unknown;
-        #int8_t missile_graphic_delay;
-        #int8_t hero_mode;
-        #int16_t garnison_graphic0;
-        #int16_t garnison_graphic1;
-        #float attack_missile_duplication0;
-        #int8_t attack_missile_duplication1;
-        #float attack_missile_duplication_spawning[3];
-        #int32_t attack_missile_duplication_unit;
-        #int32_t attack_missile_duplication_graphic;
-        #int8_t unknown;
-        #int16_t pierce_armor_displayed;
-        tmp_struct = Struct(endianness + "2h b 2i 2b 2h xx f b 3f 2i b h")
-        pc = tmp_struct.unpack_from(raw, offset)
-        offset += tmp_struct.size
-
-
-        self.train_time                          = pc[0]
-        self.train_location_id                   = pc[1]
-        self.button_id                           = pc[2]
-        #self. = pc[3]
-        #self. = pc[4]
-        self.missile_graphic_delay               = pc[5]
-        self.hero_mode                           = pc[6]
-        self.garnison_graphic0                   = pc[7]
-        self.garnison_graphic1                   = pc[8]
-        self.attack_missile_duplication0         = pc[9]
-        self.attack_missile_duplication1         = pc[10]
-        self.attack_missile_duplication_spawning = pc[11:(11+3)]
-        self.attack_missile_duplication_unit     = pc[14]
-        self.attack_missile_duplication_graphic  = pc[15]
-        #self. = pc[16]
-        self.pierce_armor_displayed              = pc[17]
-
-        return offset
 
 
 class UnitBuilding(UnitLiving):
@@ -621,72 +463,31 @@ class UnitBuilding(UnitLiving):
     struct_description = "construction graphics and garnison building properties for units."
 
     data_format = (
-        (None, None, None),
+        (dataformat.READ, None, dataformat.ParentMember(cls=UnitLiving)),
+        (dataformat.READ, "construction_graphic_id", "int16_t"),
+        (dataformat.READ, "snow_graphic_id", "int16_t"),
+        (dataformat.READ, "adjacent_mode", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ, "stack_unit_id", "int16_t"),
+        (dataformat.READ, "terrain_id", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
+        (dataformat.READ, "research_id", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ, "building_annex", dataformat.SubdataMember(ref_type=BuildingAnnex, length=4)),
+        (dataformat.READ, "head_unit", "int16_t"),
+        (dataformat.READ, "transform_unit", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
+        (dataformat.READ, "construction_sound_id", "int16_t"),
+        (dataformat.READ, "garnison_type", "int8_t"),
+        (dataformat.READ, "garnison_heal_rate", "float"),
+        (dataformat.READ_UNKNOWN, None, "int32_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t[6]"),
     )
 
     def __init__(self):
         super().__init__()
-
-    def read(self, raw, offset, cls=None):
-        offset = super().read(raw, offset)
-
-        #int16_t construction_graphic_id;
-        #int16_t snow_graphic_id;
-        #int16_t adjacent_mode;
-        #int8_t unknown;
-        #int8_t unknown;
-        #int16_t stack_unit_id;
-        #int16_t terrain_id;
-        #int16_t unknown;
-        #int16_t research_id;
-        #int8_t unknown;
-        tmp_struct = Struct(endianness + "3h 2b 4h b")
-        pc = tmp_struct.unpack_from(raw, offset)
-        offset += tmp_struct.size
-
-        self.construction_graphic_id = pc[0]
-        self.snow_graphic_id         = pc[1]
-        self.adjacent_mode           = pc[2]
-        #self. = pc[3]
-        #self. = pc[4]
-        self.stack_unit_id           = pc[5]
-        self.terrain_id              = pc[6]
-        #self. = pc[7]
-        #self.research_id             = pc[8]
-        #self. = pc[9]
-
-        self.building_annex = list()
-        for i in range(4):
-            t = BuildingAnnex()
-            offset_tmp = t.read(raw, offset)
-            offset = offset_tmp
-
-            self.building_annex.append(t)
-
-        #int16_t head_unit;
-        #int16_t transform_unit;
-        #int16_t unknown;
-        #int16_t construction_sound_id;
-        #int8_t garnison_type;
-        #float garnison_heal_rate;
-        #int32_t unknown;
-        #int16_t unknown;
-        #int8_t unknown[6];
-        tmp_struct = Struct(endianness + "4h b f i h 6b")
-        pc = tmp_struct.unpack_from(raw, offset)
-        offset += tmp_struct.size
-
-        self.head_unit = pc[0]
-        self.transform_unit = pc[1]
-        #self. = pc[2]
-        self.construction_sound_id = pc[3]
-        self.garnison_type = pc[4]
-        self.garnison_heal_rate = pc[5]
-        #self. = pc[6]
-        #self. = pc[7]
-        #self. = pc[8:(8+6)]
-
-        return offset
 
 
 class UnitTree(UnitObject):
@@ -698,10 +499,12 @@ class UnitTree(UnitObject):
     name_struct_file   = "unit"
     struct_description = "just a tree unit."
 
-    data_format = ()
+    data_format = (
+        (dataformat.READ, None, dataformat.ParentMember(cls=UnitObject)),
+    )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class Unit(dataformat.Exportable):

@@ -164,16 +164,17 @@ class Exportable:
         #use data_format symbol order for reading
         for export, var_name, var_type in target_class.data_format:
             if export not in (True, READ_EXPORT, READ, READ_UNKNOWN):
-                dbg(lazymsg=lambda: "skipping entry %s for reading" % (var_name), lvl=4)
+                dbg(lazymsg=lambda: "%s: skipping entry %s for reading" % (repr(target_class), var_name), lvl=4)
                 continue
 
-            dbg(lazymsg=lambda: "reading entry %s..." % (var_name), lvl=4)
+            dbg(lazymsg=lambda: "%s: reading entry %s..." % (repr(target_class), var_name), lvl=4)
 
             if isinstance(var_type, ParentMember):
                 if not issubclass(var_type.cls, Exportable):
                     raise Exception("desired parent class not exportable: %s" % var_type.cls.__name__)
 
-                var_type.cls.read(self, raw, offset, cls=var_type.cls)
+                dbg(lazymsg=lambda: "calling parent class %s.read()" % (var_type.cls.__name__), lvl=4)
+                offset = var_type.cls.read(self, raw, offset, cls=var_type.cls)
 
             elif isinstance(var_type, MultisubtypeMember):
                 #subdata reference implies recursive call for reading the binary data
@@ -209,7 +210,7 @@ class Exportable:
                         new_data_class = var_type.class_lookup[subtype_name]
 
                     if not issubclass(new_data_class, Exportable):
-                        raise Exception("dumped data not exportable: %s" % new_data_class.__name__)
+                        raise Exception("dumped data is not exportable: %s" % new_data_class.__name__)
 
                     #create instance of submember class
                     new_data = new_data_class(**varargs)
@@ -248,10 +249,10 @@ class Exportable:
                     data_count  = var_type.get_length(self)
 
                 else:
-                    raise Exception("unknown data member definition %s" % var_type)
+                    raise Exception("unknown data member definition %s for member %s" % (var_type, var_name))
 
                 if data_count <= 0:
-                    raise Exception("invalid length <= 0 in %s" % var_type)
+                    raise Exception("invalid length <= 0 in %s for member %s" % (var_type, var_name))
 
                 if struct_type not in util.struct_type_lookup:
                     raise Exception("unknown primitive struct data type %s for member %s" % (struct_type, var_name))
@@ -263,7 +264,7 @@ class Exportable:
                 #lookup c type to python struct scan type
                 symbol, size = util.struct_type_lookup[struct_type]
 
-                dbg(lazymsg=lambda: "dumping %s<%s> as '< %d%s' at 0x%08x" % (var_name, var_type, data_count, symbol, offset), lvl=4)
+                dbg(lazymsg=lambda: "\tdumping %s<%s> as '< %d%s' at 0x%08x" % (var_name, var_type, data_count, symbol, offset), lvl=4)
                 struct_format = "< %d%s" % (data_count, symbol)
                 result = struct.unpack_from(struct_format, raw, offset)
                 offset += struct.calcsize(struct_format)
@@ -279,7 +280,7 @@ class Exportable:
                 if isinstance(var_type, DataMember):
                     result = var_type.entry_hook(result)
 
-                dbg(lazymsg=lambda: "==> storing self.%s = %s" % (var_name, result), lvl=4)
+                dbg(lazymsg=lambda: "\t==> storing self.%s = %s" % (var_name, result), lvl=4)
 
                 #store member's data value
                 setattr(self, var_name, result)

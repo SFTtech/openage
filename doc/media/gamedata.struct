@@ -373,6 +373,7 @@ struct {
 				int8_t drop_animation_mode;
 				int8_t penetration_mode;
 				int8_t unknown;
+				int16_t unknown;
 				float projectile_arc;
 			}
 
@@ -392,6 +393,7 @@ struct {
 				int8_t hero_mode;
 				int16_t garnison_graphic0;
 				int16_t garnison_graphic1;
+				uint16_t unknown;
 				float attack_missile_duplication0;
 				int8_t attack_missile_duplication1;
 				float attack_missile_duplication_spawning[3];
