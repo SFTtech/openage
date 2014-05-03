@@ -169,7 +169,13 @@ class Exportable:
 
             dbg(lazymsg=lambda: "reading entry %s..." % (var_name), lvl=4)
 
-            if isinstance(var_type, MultisubtypeMember):
+            if isinstance(var_type, ParentMember):
+                if not issubclass(var_type.cls, Exportable):
+                    raise Exception("desired parent class not exportable: %s" % var_type.cls.__name__)
+
+                var_type.cls.read(self, raw, offset, cls=var_type.cls)
+
+            elif isinstance(var_type, MultisubtypeMember):
                 #subdata reference implies recursive call for reading the binary data
 
                 #arguments passed to the next-level constructor.
@@ -552,6 +558,12 @@ class DataMember:
 
     def __repr__(self):
         raise NotImplementedError("return short description of the member type")
+
+
+class ParentMember(DataMember):
+    def __init__(self, cls):
+        super().__init__()
+        self.cls = cls
 
 
 class DynLengthMember(DataMember):

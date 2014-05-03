@@ -287,11 +287,12 @@ class UnitFlag(UnitObject):
     struct_description = "adds speed property to units."
 
     data_format = (
-        (None, None, None),
+        (dataformat.READ, None, dataformat.ParentMember(cls=UnitObject)),
+        (dataformat.READ, "speed", "float"),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
     def read(self, raw, offset, cls=None):
         offset = super().read(raw, offset, cls=UnitObject)
