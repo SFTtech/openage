@@ -254,7 +254,11 @@ class Exportable:
                     raise Exception("invalid length <= 0 in %s" % var_type)
 
                 if struct_type not in util.struct_type_lookup:
-                    raise Exception("unknown primitive struct data type %s" % var_type)
+                    raise Exception("unknown primitive struct data type %s for member %s" % (struct_type, var_name))
+
+                if export == READ_UNKNOWN:
+                    #for unknown variables, generate uid for the unknown memory location
+                    var_name = "unknown-0x%08x" % offset
 
                 #lookup c type to python struct scan type
                 symbol, size = util.struct_type_lookup[struct_type]
