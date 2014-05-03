@@ -8,7 +8,7 @@ from .empiresdat import endianness
 
 
 class UnitHeader:
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         #bool exists;
         unit_header_header_struct0 = Struct(endianness + "?")
 
@@ -35,7 +35,7 @@ class UnitHeader:
 
 
 class UnitHeaderData:
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         #uint32_t unit_count;
         header_struct = Struct(endianness + "I")
 
@@ -54,7 +54,7 @@ class UnitHeaderData:
 
 
 class UnitCommand:
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         #int16_t one;
         #int16_t uid;
         #int8_t unknown;
@@ -108,44 +108,33 @@ class UnitCommand:
         return offset
 
 
-class RessourceStorage:
-    def read(self, raw, offset):
-        #int16_t a;
-        #float b;
-        #int8_t c;
-        ressource_storage_struct = Struct(endianness + "h f b")
+class RessourceStorage(dataformat.Exportable):
+    name_struct        = "ressource_storage"
+    name_struct_file   = "unit"
+    struct_description = "stores the resource storage capacity for one unit mode."
 
-        pc = ressource_storage_struct.unpack_from(raw, offset)
-        offset += ressource_storage_struct.size
-
-        self.a = pc[0]
-        self.b = pc[1]
-        self.c = pc[2]
-
-        return offset
+    data_format = (
+        (dataformat.READ, "a", "int16_t"),
+        (dataformat.READ, "b", "float"),
+        (dataformat.READ, "c", "int8_t"),
+    )
 
 
-class DamageGraphic:
-    def read(self, raw, offset):
-        #int16_t graphic_id;
-        #int8_t damage_percent;
-        #int8_t unknown;
-        #int8_t unknown;
-        damage_graphic_struct = Struct(endianness + "h 3b")
+class DamageGraphic(dataformat.Exportable):
+    name_struct        = "ressource_storage"
+    name_struct_file   = "unit"
+    struct_description = "stores the resource storage capacity for one unit mode."
 
-        pc = damage_graphic_struct.unpack_from(raw, offset)
-        offset += damage_graphic_struct.size
-
-        self.graphic_id     = pc[0]
-        self.damage_percent = pc[1]
-        #self. = pc[2]
-        #self. = pc[3]
-
-        return offset
+    data_format = (
+        (dataformat.READ, "graphic_id", "int16_t"),
+        (dataformat.READ, "damage_percent", "int8_t"),
+        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ, "unknown", "int8_t"),
+    )
 
 
 class HitType:
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         #int16_t used_for_class_id;
         #int16_t amount;
         hit_type_struct = Struct(endianness + "2h")
@@ -160,7 +149,7 @@ class HitType:
 
 
 class RessourceCost:
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         #int16_t type;
         #int16_t amount;
         #int16_t enabled;
@@ -183,13 +172,13 @@ class BuildingAnnex(dataformat.Exportable):
     struct_description = "a possible building annex."
 
     data_format = (
-        ("unit_id",    dataformat.READ_EXPORT, "int16_t"),
-        ("misplaced0", dataformat.READ_EXPORT, "float"),
-        ("misplaced1", dataformat.READ_EXPORT, "float"),
+        (dataformat.READ_EXPORT, "unit_id",    "int16_t"),
+        (dataformat.READ_EXPORT, "misplaced0", "float"),
+        (dataformat.READ_EXPORT, "misplaced1", "float"),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitObject(dataformat.Exportable):
@@ -202,189 +191,90 @@ class UnitObject(dataformat.Exportable):
     struct_description = "base properties for all units."
 
     data_format = (
-        (None, None, None),
+        (dataformat.READ, "name_length", "uint16_t"),
+        (dataformat.READ, "id0", "int16_t"),
+        (dataformat.READ, "language_dll_name", "uint16_t"),
+        (dataformat.READ, "language_dll_creation", "uint16_t"),
+        (dataformat.READ, "unit_class", "int16_t"),
+        (dataformat.READ, "graphic_standing0", "int16_t"),
+        (dataformat.READ, "graphic_standing1", "int16_t"),
+        (dataformat.READ, "graphic_dying0", "int16_t"),
+        (dataformat.READ, "graphic_dying1", "int16_t"),
+        (dataformat.READ, "death_mode", "int8_t"),
+        (dataformat.READ, "hit_points", "int16_t"),
+        (dataformat.READ, "line_of_sight", "float"),
+        (dataformat.READ, "garnison_capacity", "int8_t"),
+        (dataformat.READ, "radius_size0", "float"),
+        (dataformat.READ, "radius_size1", "float"),
+        (dataformat.READ, "hp_bar_height0", "float"),
+        (dataformat.READ, "sound_train0", "int16_t"),
+        (dataformat.READ, "sound_train1", "int16_t"),
+        (dataformat.READ, "dead_unit_id", "int16_t"),
+        (dataformat.READ, "placement_mode", "int8_t"),
+        (dataformat.READ, "air_mode", "int8_t"),
+        (dataformat.READ, "icon_id", "int16_t"),
+        (dataformat.READ, "hidden_in_editor", "int8_t"),
+        (dataformat.READ, "unknown", "int16_t"),
+        (dataformat.READ, "enabled", "int16_t"),
+        (dataformat.READ, "placement_by_pass_terrain0", "int16_t"),
+        (dataformat.READ, "placement_by_pass_terrain1", "int16_t"),
+        (dataformat.READ, "placement_terrain0", "int16_t"),
+        (dataformat.READ, "placement_terrain1", "int16_t"),
+        (dataformat.READ, "editor_radius0", "float"),
+        (dataformat.READ, "editor_radius1", "float"),
+        (dataformat.READ, "building_mode", "int8_t"),
+        (dataformat.READ, "visible_in_fog", "int8_t"),
+        (dataformat.READ, "terrain_restriction", "int16_t"),
+        (dataformat.READ, "fly_mode", "int8_t"),
+        (dataformat.READ, "ressource_capacity", "int16_t"),
+        (dataformat.READ, "ressource_decay", "float"),
+        (dataformat.READ, "blast_type", "int8_t"),
+        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ, "interaction_mode", "int8_t"),
+        (dataformat.READ, "minimap_mode", "int8_t"),
+        (dataformat.READ, "command_attribute", "int16_t"),
+        (dataformat.READ, "unknown", "int16_t"),
+        (dataformat.READ, "unknown", "int16_t"),
+        (dataformat.READ, "language_dll_help", "uint16_t"),
+        (dataformat.READ, "hot_keys", "int16_t[4]"),
+        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ, "unselectable", "bool"),
+        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ, "unknown", "int8_t"),
+        (dataformat.READ, "selection_mask", "int8_t"),
+        (dataformat.READ, "selection_shape_type", "int8_t"),
+        (dataformat.READ, "selection_shape", "int8_t"),
+        (dataformat.READ, "attribute", "int8_t"),
+        (dataformat.READ, "civilisation", "int8_t"),
+        (dataformat.READ, "unknown", "int16_t"),
+        (dataformat.READ, "selection_effect", "int8_t"),
+        (dataformat.READ, "editor_selection_color", "uint8_t"),
+        (dataformat.READ, "selection_radius0", "float"),
+        (dataformat.READ, "selection_radius1", "float"),
+        (dataformat.READ, "hp_bar_height1", "float"),
+        (dataformat.READ, "ressource_storage", dataformat.SubdataMember(
+            ref_type=RessourceStorage,
+            length=3,
+        )),
+        (dataformat.READ, "damage_graphic_count", "int8_t"),
+        (dataformat.READ, "damage_graphic", dataformat.SubdataMember(
+            ref_type=DamageGraphic,
+            length="damage_graphic_count",
+        )),
+        (dataformat.READ, "sound_selection", "int16_t"),
+        (dataformat.READ, "sound_dying", "int16_t"),
+        (dataformat.READ, "attack_mode", "int16_t"),
+        (dataformat.READ, "name", dataformat.CharArrayMember(
+            length="name_length",
+        )),
+        (dataformat.READ, "id1", "int16_t"),
+        (dataformat.READ, "id2", "int16_t"),
     )
 
-    def __init__(self):
-        super().__init__()
-
-    def read(self, raw, offset):
-        #uint16_t name_length;
-        #int16_t id0;
-        #uint16_t language_dll_name;
-        #uint16_t language_dll_creation;
-        #int16_t unit_class;
-        #int16_t graphic_standing0;
-        #int16_t graphic_standing1;
-        #int16_t graphic_dying0;
-        #int16_t graphic_dying1;
-        #int8_t death_mode;
-        #int16_t hit_points;
-        #float line_of_sight;
-        #int8_t garnison_capacity;
-        #float radius_size0;
-        #float radius_size1;
-        #float hp_bar_height0;
-        #int16_t sound_train0;
-        #int16_t sound_train1;
-        #int16_t dead_unit_id;
-        #int8_t placement_mode;
-        #int8_t air_mode;
-        #int16_t icon_id;
-        #int8_t hidden_in_editor;
-        #int16_t unknown;
-        #int16_t enabled;
-        #int16_t placement_by_pass_terrain0;
-        #int16_t placement_by_pass_terrain1;
-        #int16_t placement_terrain0;
-        #int16_t placement_terrain1;
-        #float editor_radius0;
-        #float editor_radius1;
-        #int8_t building_mode;
-        #int8_t visible_in_fog;
-        #int16_t terrain_restriction;
-        #int8_t fly_mode;
-        #int16_t ressource_capacity;
-        #float ressource_decay;
-        #int8_t blast_type;
-        #int8_t unknown;
-        #int8_t interaction_mode;
-        #int8_t minimap_mode;
-        #int16_t command_attribute;
-        #int16_t unknown;
-        #int16_t unknown;
-        #uint16_t language_dll_help;
-        #int16_t[4] hot_keys;
-        #int8_t unknown;
-        #int8_t unknown;
-        #bool unselectable;
-        #int8_t unknown;
-        #int8_t unknown;
-        #int8_t unknown;
-        #int8_t selection_mask;
-        #int8_t selection_shape_type;
-        #int8_t selection_shape;
-        #int8_t attribute;
-        #int8_t civilisation;
-        #int16_t unknown;
-        #int8_t selection_effect;
-        #uint8_t editor_selection_color;
-        #float selection_radius0;
-        #float selection_radius1;
-        #float hp_bar_height1;
-        unit0_struct = Struct(endianness + "H h 2H 5h b h f b 3f 3h 2b h b 6h 2f 2b h b h f 4b 3h H 4h 2b ? 8b h b B 3f")
-
-        pc = unit0_struct.unpack_from(raw, offset)
-        offset += unit0_struct.size
-
-        self.name_length                = pc[0]
-        self.id0                        = pc[1]
-        self.language_dll_name          = pc[2]
-        self.language_dll_creation      = pc[3]
-        self.unit_class                 = pc[4]
-        self.graphic_standing0          = pc[5]
-        self.graphic_standing1          = pc[6]
-        self.graphic_dying0             = pc[7]
-        self.graphic_dying1             = pc[8]
-        self.death_mode                 = pc[9]
-        self.hit_points                 = pc[10]
-        self.line_of_sight              = pc[11]
-        self.garnison_capacity          = pc[12]
-        self.radius_size0               = pc[13]
-        self.radius_size1               = pc[14]
-        self.hp_bar_height0             = pc[15]
-        self.sound_train0               = pc[16]
-        self.sound_train1               = pc[17]
-        self.dead_unit_id               = pc[18]
-        self.placement_mode             = pc[19]
-        self.air_mode                   = pc[20]
-        self.icon_id                    = pc[21]
-        self.hidden_in_editor           = pc[22]
-        #self. = pc[23]
-        self.enabled                    = pc[24]
-        self.placement_by_pass_terrain0 = pc[25]
-        self.placement_by_pass_terrain1 = pc[26]
-        self.placement_terrain0         = pc[27]
-        self.placement_terrain1         = pc[28]
-        self.editor_radius0             = pc[29]
-        self.editor_radius1             = pc[30]
-        self.building_mode              = pc[31]
-        self.visible_in_fog             = pc[32]
-        self.terrain_restriction        = pc[33]
-        self.fly_mode                   = pc[34]
-        self.ressource_capacity         = pc[35]
-        self.ressource_decay            = pc[36]
-        self.blast_type                 = pc[37]
-        #self. = pc[38]
-        self.interaction_mode           = pc[39]
-        self.minimap_mode               = pc[40]
-        self.command_attribute          = pc[41]
-        #self. = pc[42]
-        #self. = pc[43]
-        self.language_dll_help          = pc[44]
-        self.hot_keys                   = pc[45:(45+4)]
-        #self. = pc[49]
-        #self. = pc[50]
-        self.unselectable               = pc[51]
-        #self. = pc[52]
-        #self. = pc[53]
-        #self. = pc[54]
-        self.selection_mask             = pc[55]
-        self.selection_shape_type       = pc[56]
-        self.selection_shape            = pc[57]
-        self.attribute                  = pc[58]
-        self.civilisation               = pc[59]
-        #self. = pc[60]
-        self.selection_effect           = pc[61]
-        self.editor_selection_color     = pc[62]
-        self.selection_radius0          = pc[63]
-        self.selection_radius1          = pc[64]
-        self.hp_bar_height1             = pc[65]
-
-
-        self.ressource_storage = list()
-        for i in range(3):
-            t = RessourceStorage()
-            offset = t.read(raw, offset)
-            self.ressource_storage.append(t)
-
-        #int8_t damage_graphic_count
-        unit1_struct = Struct(endianness + "b")
-
-        pc = unit1_struct.unpack_from(raw, offset)
-        offset += unit1_struct.size
-
-        self.damage_graphic_count, = pc
-
-        self.damage_graphic = list()
-        for i in range(self.damage_graphic_count):
-            t = DamageGraphic()
-            offset = t.read(raw, offset)
-            self.damage_graphic.append(t)
-
-
-        #int16_t sound_selection;
-        #int16_t sound_dying;
-        #int16_t attack_mode;
-        #char name[name_length];
-        #int16_t id1;
-        #int16_t id2;
-        unit2_struct = Struct(endianness + "3h %ds 2h" % self.name_length)
-
-        pc = unit2_struct.unpack_from(raw, offset)
-        offset += unit2_struct.size
-
-
-        self.sound_selection = pc[0]
-        self.sound_dying     = pc[1]
-        self.attack_mode     = pc[2]
-        self.name            = zstr(pc[3])
-        self.id1             = pc[4]
-        self.id2             = pc[5]
-
-        dbg("unit name: %s, type: %s" % (self.name, repr(self)), 2)
-
-        return offset
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitFlag(UnitObject):
@@ -403,8 +293,8 @@ class UnitFlag(UnitObject):
     def __init__(self):
         super().__init__()
 
-    def read(self, raw, offset):
-        offset = super().read(raw, offset)
+    def read(self, raw, offset, cls=None):
+        offset = super().read(raw, offset, cls=UnitObject)
 
         #float speed;
         tmp_struct = Struct(endianness + "f")
@@ -449,7 +339,7 @@ class UnitDeadOrFish(UnitDoppelganger):
     def __init__(self):
         super().__init__()
 
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         offset = super().read(raw, offset)
 
         #int16_t walking_graphics0;
@@ -494,7 +384,7 @@ class UnitBird(UnitDeadOrFish):
     def __init__(self):
         super().__init__()
 
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         offset = super().read(raw, offset)
 
         #int16_t sheep_conversion;
@@ -539,7 +429,7 @@ class UnitMovable(UnitBird):
     def __init__(self):
         super().__init__()
 
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         offset = super().read(raw, offset)
 
         #int16_t default_armor;
@@ -620,10 +510,18 @@ class UnitProjectile(UnitMovable):
     type_id == 60
     """
 
+    name_struct        = "unit_projectile"
+    name_struct_file   = "unit"
+    struct_description = "adds projectile specific unit properties."
+
+    data_format = (
+        (None, None, None),
+    )
+
     def __init__(self):
         super().__init__()
 
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         offset = super().read(raw, offset)
 
         #int8_t stretch_mode;
@@ -651,10 +549,18 @@ class UnitLiving(UnitMovable):
     type_id >= 70
     """
 
+    name_struct        = "unit_living"
+    name_struct_file   = "unit"
+    struct_description = "adds creation location and garnison unit properties."
+
+    data_format = (
+        (None, None, None),
+    )
+
     def __init__(self):
         super().__init__()
 
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         offset = super().read(raw, offset)
 
         self.ressource_cost = list()
@@ -709,10 +615,18 @@ class UnitBuilding(UnitLiving):
     type_id >= 80
     """
 
+    name_struct        = "unit_building"
+    name_struct_file   = "unit"
+    struct_description = "construction graphics and garnison building properties for units."
+
+    data_format = (
+        (None, None, None),
+    )
+
     def __init__(self):
         super().__init__()
 
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         offset = super().read(raw, offset)
 
         #int16_t construction_graphic_id;
@@ -779,6 +693,12 @@ class UnitTree(UnitObject):
     type_id = 90
     """
 
+    name_struct        = "unit_tree"
+    name_struct_file   = "unit"
+    struct_description = "just a tree unit."
+
+    data_format = ()
+
     def __init__(self):
         super().__init__()
 
@@ -814,11 +734,11 @@ class Unit(dataformat.Exportable):
     }
 
     data_format = (
-        ("unit_type", dataformat.READ_EXPORT, dataformat.EnumMember(
+        (dataformat.READ_EXPORT, "unit_type", dataformat.EnumMember(
             type_name="unit_types",
             values=unit_type_lookup.values(),
         )),
-        ("type_data", dataformat.READ_EXPORT, dataformat.MultisubtypeMember(
+        (dataformat.READ_EXPORT, "type_data", dataformat.MultisubtypeMember(
             class_lookup=unit_type_class_lookup,
             type_to="unit_type",
         )),
@@ -829,7 +749,7 @@ class Unit(dataformat.Exportable):
         #created units will be placed in here.
         self.type_data = util.gen_dict_key2lists(self.unit_type_lookup.values())
 
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
 
         #int8_t type_id;
         unit_type_struct = Struct(endianness + "b")

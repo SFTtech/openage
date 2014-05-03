@@ -78,7 +78,7 @@ class Exportable:
 
         self_data = dict()
 
-        for member_name, export, member_type in self.data_format:
+        for export, member_name, member_type in self.data_format:
             if export not in (True, READ_EXPORT, NOREAD_EXPORT):
                 continue
 
@@ -147,7 +147,7 @@ class Exportable:
 
         return ret, self_data
 
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         """
         recursively read defined binary data from raw at given offset.
 
@@ -155,10 +155,19 @@ class Exportable:
         """
 
         dbg(lazymsg=lambda: "%s: reading binary data at 0x%08x" % (repr(self), offset), lvl=3)
+
+        if cls:
+            target_class = cls
+        else:
+            target_class = self
+
         #use data_format symbol order for reading
-        for var_name, export, var_type in self.data_format:
+        for export, var_name, var_type in target_class.data_format:
             if export not in (True, READ_EXPORT, READ, READ_UNKNOWN):
+                dbg(lazymsg=lambda: "skipping entry %s for reading" % (var_name), lvl=4)
                 continue
+
+            dbg(lazymsg=lambda: "reading entry %s..." % (var_name), lvl=4)
 
             if isinstance(var_type, MultisubtypeMember):
                 #subdata reference implies recursive call for reading the binary data
@@ -170,9 +179,11 @@ class Exportable:
                     for passed_member_name in var_type.passed_args:
                         varargs[passed_member_name] = getattr(self, passed_member_name)
 
-                #subdata list length has to be defined beforehand as a object member.
-                #it's name is specified at the subdata member definition by len_to
-                list_len = getattr(self, var_type.len_to)
+                #subdata list length has to be defined beforehand as a object member OR number.
+                #it's name or count is specified at the subdata member definition by length.
+                list_len = var_type.get_length(self)
+
+                #prepare result storage lists
                 if isinstance(var_type, SubdataMember):
                     #single-subtype child data list
                     setattr(self, var_name, list())
@@ -185,20 +196,20 @@ class Exportable:
                 for i in range(list_len):
                     if single_type_subdata:
                         #append single data entry to the subdata object list
-                        new_data_class = var_type.ref_type
+                        new_data_class = var_type.class_lookup[None]
                     else:
                         #determine subtype first, then append the data entry to the desired list
                         subtype_name = self_data[var_type.type_to]
                         new_data_class = var_type.class_lookup[subtype_name]
 
+                    if not issubclass(new_data_class, Exportable):
+                        raise Exception("dumped data not exportable: %s" % new_data_class.__name__)
+
                     #create instance of submember class
                     new_data = new_data_class(**varargs)
 
-                    if not isinstance(new_data, Exportable):
-                        raise Exception("dumped data not exportable")
-
                     #recursive call, read the subdata.
-                    offset = new_data.read(raw, offset)
+                    offset = new_data.read(raw, offset, new_data_class)
 
                     #append the new data to the appropriate list
                     if single_type_subdata:
@@ -219,6 +230,8 @@ class Exportable:
                     if is_array:
                         struct_type = is_array.group(1)
                         data_count  = int(is_array.group(2))
+                        if struct_type == "char":
+                            struct_type = "char[]"
                     else:
                         struct_type = var_type
                         data_count  = 1
@@ -226,7 +239,7 @@ class Exportable:
                 elif isinstance(var_type, DataMember):
                     #special type requires having set the raw data type
                     struct_type = var_type.raw_type
-                    data_count  = var_type.length
+                    data_count  = var_type.get_length(self)
 
                 else:
                     raise Exception("unknown data member definition %s" % var_type)
@@ -240,7 +253,7 @@ class Exportable:
                 #lookup c type to python struct scan type
                 symbol, size = util.struct_type_lookup[struct_type]
 
-                dbg(lazymsg=lambda: "dumping %s as '< %d%s'" % (var_type, data_count, symbol), lvl=4)
+                dbg(lazymsg=lambda: "dumping %s<%s> as '< %d%s' at 0x%08x" % (var_name, var_type, data_count, symbol, offset), lvl=4)
                 struct_format = "< %d%s" % (data_count, symbol)
                 result = struct.unpack_from(struct_format, raw, offset)
                 offset += struct.calcsize(struct_format)
@@ -254,7 +267,9 @@ class Exportable:
 
                 #run entry hook for non-primitive members
                 if isinstance(var_type, DataMember):
-                    result = member_type.entry_hook(result)
+                    result = var_type.entry_hook(result)
+
+                dbg(lazymsg=lambda: "==> storing self.%s = %s" % (var_name, result), lvl=4)
 
                 #store member's data value
                 setattr(self, var_name, result)
@@ -269,7 +284,7 @@ class Exportable:
 
         ret = list()
 
-        for member_name, export, member_type in cls.data_format:
+        for export, member_name, member_type in cls.data_format:
             if export not in (True, READ_EXPORT, NOREAD_EXPORT):
                 continue
 
@@ -532,8 +547,33 @@ class DataMember:
     def get_type(self):
         raise NotImplementedError("return the type to be put into a struct")
 
+    def get_length(self):
+        return self.length
+
     def __repr__(self):
         raise NotImplementedError("return short description of the member type")
+
+
+class DynLengthMember(DataMember):
+    """
+    a member that can have a dynamic length.
+    """
+
+    def __init__(self, length=None):
+        super().__init__()
+        self.length = length
+
+    def get_length(self, obj=None):
+        if isinstance(self.length, str):
+            #self.length specifies the attribute name where the length is stored
+            return getattr(obj, self.length)
+        elif isinstance(self.length, int):
+            return self.length
+        else:
+            raise Exception("unknown length definition supplied: %s" % self.length)
+
+    def store_length(self, obj):
+        self.length = self.get_length(obj)
 
 
 class RefMember(DataMember):
@@ -667,18 +707,17 @@ class EnumLookupMember(EnumMember):
         return self.lookup_dict[data]
 
 
-class CharArrayMember(DataMember):
+class CharArrayMember(DynLengthMember):
     """
     struct member/column type that allows to store equal-length char[n].
     """
 
     def __init__(self, length):
-        super().__init__()
-        self.length = length
+        super().__init__(length)
         self.raw_type = "char"
 
     def get_parser(self, idx, member):
-        return [ "strncpy(this->%s, buf[%d], %d); this->%s[%d-1] = '\\0';" % (member, idx, self.length, member, self.length) ]
+        return [ "strncpy(this->%s, buf[%d], %d); this->%s[%d-1] = '\\0';" % (member, idx, self.get_length(), member, self.get_length()) ]
 
     def get_headers(self):
         return get_headers("strncpy")
@@ -687,7 +726,7 @@ class CharArrayMember(DataMember):
         return self.raw_type
 
     def __repr__(self):
-        return "%s[%d]" % (self.raw_type, self.length)
+        return "%s[%s]" % (self.raw_type, self.length)
 
 
 class StringMember(DataMember):
@@ -712,17 +751,16 @@ class StringMember(DataMember):
         return self.type_name
 
 
-class MultisubtypeMember(DataMember):
+class MultisubtypeMember(DynLengthMember):
     """
     struct member/data column that groups multiple references to
     multiple other data sets.
     """
 
-    def __init__(self, class_lookup, type_to, len_to=None, passed_args=None, ref_to=None):
-        super().__init__()
+    def __init__(self, class_lookup, type_to, length=None, passed_args=None, ref_to=None):
+        super().__init__(length)
         self.class_lookup      = class_lookup        #!< dict to look up type_name => class
         self.type_to           = type_to             #!< member name whose value specifies the subdata type for each entry
-        self.length_to         = len_to              #!< member name whose value specifies the subdata list length
         self.passed_args       = passed_args         #!< list of member names whose values will be passed to the new class
         self.ref_to            = ref_to              #!< add this member name's value to the filename
 
@@ -747,8 +785,8 @@ class SubdataMember(MultisubtypeMember):
     struct member/data column that references to one another data set.
     """
 
-    def __init__(self, ref_type, ref_to=None, len_to=None):
-        super().__init__({None: ref_type}, type_to=ref_to, len_to=len_to)
+    def __init__(self, ref_type, ref_to=None, length=None):
+        super().__init__({None: ref_type}, type_to=ref_to, length=length)
 
     def __repr__(self):
         return "SubdataMember<%s>" % self.class_lookup[None].__name__
@@ -773,7 +811,7 @@ class DataSet:
         #create ordered dict of member type objects from structure definition
         self.members = OrderedDict()
 
-        for member_name, export, member_type in data_format:
+        for export, member_name, member_type in data_format:
             if export not in (True, READ_EXPORT, NOREAD_EXPORT):
                 continue
 

@@ -8,7 +8,7 @@ class SoundList:
     struct_description = "one available sound file."
 
     data_format = (
-        ("category", True, dataformat.EnumMember(
+        (True, "category", dataformat.EnumMember(
             type_name="audio_category_t",
             file_name="sound_file",
             values =(
@@ -19,17 +19,17 @@ class SoundList:
             )
         )),
 
-        ("sound_id", True, "int"),
-        ("path",     True, "std::string"),
+        (True, "sound_id", "int"),
+        (True, "path",     "std::string"),
 
-        ("format", True, dataformat.EnumMember("audio_format_t", "sound_file", (
+        (True, "format", dataformat.EnumMember("audio_format_t", "sound_file", (
             "OPUS",
             "WAV",
             "FLAC",
             "MP3",
         ))),
 
-        ("loader_policy", True, dataformat.EnumMember("audio_loader_policy_t", "sound_file", (
+        (True, "loader_policy", dataformat.EnumMember("audio_loader_policy_t", "sound_file", (
             "IN_MEMORY",
             "DYNAMIC",
         ))),

@@ -100,7 +100,9 @@ class CivData(dataformat.Exportable):
         self.civ_count, = header
 
         self.civs = list()
-        for _ in range(self.civ_count):
+        for i in range(self.civ_count):
+            dbg("############################ civilisation entry %d" % i, 2)
+
             t = Civ()
             offset = t.read(raw, offset)
             self.civs.append(t)

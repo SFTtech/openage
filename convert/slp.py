@@ -292,7 +292,7 @@ class SLPFrame:
             higher_nibble = 0xf0       & cmd
             lower_bits    = 0b00000011 & cmd
 
-            dbg(lazymsg=lambda: "opcode: %#x, rowlength: %d, rowid: %d" % (cmd, rowid), lvl=4)
+            dbg(lazymsg=lambda: "opcode: %#x, rowid: %d" % (cmd, rowid), lvl=4)
 
             if lower_nibble == 0x0f:
                 #eol command, this row is finished now.
