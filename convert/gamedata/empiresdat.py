@@ -95,7 +95,7 @@ class EmpiresDat:
         self.graphic = graphic.GraphicData()
         offset = self.graphic.read(raw, offset)
 
-        self.terrain = terrain.TerrainData(self.terrain_header.terrain_count)
+        self.terrain = terrain.TerrainData(terrain_count=self.terrain_header.terrain_count)
         offset = self.terrain.read(raw, offset)
 
         #unknown shiat

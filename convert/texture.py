@@ -64,12 +64,12 @@ class Texture:
 this struct stores information about what position and size
 one sprite included in the 'big texture' has."""
     data_format = (
-        ("x",  "int32_t"),
-        ("y",  "int32_t"),
-        ("w",  "int32_t"),
-        ("h",  "int32_t"),
-        ("cx", "int32_t"),
-        ("cy", "int32_t"),
+        ("x",  True, "int32_t"),
+        ("y",  True, "int32_t"),
+        ("w",  True, "int32_t"),
+        ("h",  True, "int32_t"),
+        ("cx", True, "int32_t"),
+        ("cy", True, "int32_t"),
     )
 
     #player-specific colors will be in color blue, but with an alpha of 254

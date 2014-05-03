@@ -176,27 +176,34 @@ class RessourceCost:
         return offset
 
 
-class BuildingAnnex:
-    def read(self, raw, offset):
-        #int16_t unit_id;
-        #float misplaced0;
-        #float misplaced1;
-        building_annex_struct = Struct(endianness + "h 2f")
+class BuildingAnnex(dataformat.Exportable):
 
-        pc = building_annex_struct.unpack_from(raw, offset)
-        offset += building_annex_struct.size
+    name_struct        = "building_annex"
+    name_struct_file   = "unit"
+    struct_description = "a possible building annex."
 
-        self.unit_id    = pc[0]
-        self.misplaced0 = pc[1]
-        self.misplaced1 = pc[2]
+    data_format = (
+        ("unit_id",    dataformat.READ_EXPORT, "int16_t"),
+        ("misplaced0", dataformat.READ_EXPORT, "float"),
+        ("misplaced1", dataformat.READ_EXPORT, "float"),
+    )
 
-        return offset
+    def __init__(self):
+        super().__init__()
 
 
 class UnitObject(dataformat.Exportable):
     """
     base properties for every unit entry.
     """
+
+    name_struct        = "unit_object"
+    name_struct_file   = "unit"
+    struct_description = "base properties for all units."
+
+    data_format = (
+        (None, None, None),
+    )
 
     def __init__(self):
         super().__init__()
@@ -385,6 +392,14 @@ class UnitFlag(UnitObject):
     type_id >= 20
     """
 
+    name_struct        = "unit_flag"
+    name_struct_file   = "unit"
+    struct_description = "adds speed property to units."
+
+    data_format = (
+        (None, None, None),
+    )
+
     def __init__(self):
         super().__init__()
 
@@ -406,6 +421,14 @@ class UnitDoppelganger(UnitFlag):
     type_id >= 25
     """
 
+    name_struct        = "unit_doppelganger"
+    name_struct_file   = "unit"
+    struct_description = "weird doppelganger unit thats actually the same as a flag unit."
+
+    data_format = (
+        (None, None, None),
+    )
+
     def __init__(self):
         super().__init__()
 
@@ -414,6 +437,14 @@ class UnitDeadOrFish(UnitDoppelganger):
     """
     type_id >= 30
     """
+
+    name_struct        = "unit_dead_or_fish"
+    name_struct_file   = "unit"
+    struct_description = "adds walking graphics, rotations and tracking properties to units."
+
+    data_format = (
+        (None, None, None),
+    )
 
     def __init__(self):
         super().__init__()
@@ -452,6 +483,14 @@ class UnitBird(UnitDeadOrFish):
     type_id >= 40
     """
 
+    name_struct        = "unit_bird"
+    name_struct_file   = "unit"
+    struct_description = "adds search radius and work properties, as well as movement sounds."
+
+    data_format = (
+        (None, None, None),
+    )
+
     def __init__(self):
         super().__init__()
 
@@ -488,6 +527,14 @@ class UnitMovable(UnitBird):
     """
     type_id >= 60
     """
+
+    name_struct        = "unit_movable"
+    name_struct_file   = "unit"
+    struct_description = "adds attack and armor properties to units."
+
+    data_format = (
+        (None, None, None),
+    )
 
     def __init__(self):
         super().__init__()
@@ -767,12 +814,13 @@ class Unit(dataformat.Exportable):
     }
 
     data_format = (
-        ("unit_type", dataformat.EnumMember(
+        ("unit_type", dataformat.READ_EXPORT, dataformat.EnumMember(
             type_name="unit_types",
             values=unit_type_lookup.values(),
         )),
-        ("type_data", dataformat.MultisubtypeMember(
+        ("type_data", dataformat.READ_EXPORT, dataformat.MultisubtypeMember(
             class_lookup=unit_type_class_lookup,
+            type_to="unit_type",
         )),
     )
 

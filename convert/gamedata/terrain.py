@@ -82,12 +82,12 @@ class Terrain(dataformat.Exportable):
     struct_description = "describes a terrain type, like water, ice, etc."
 
     data_format = (
-        ("terrain_id",     "int32_t"),
-        ("slp_id",         "int32_t"),
-        ("blend_mode",     "int32_t"),
-        ("blend_priority", "int32_t"),
-        ("name0",          "char[13]"),
-        ("name1",          "char[13]"),
+        ("terrain_id",     dataformat.READ_EXPORT, "int32_t"),
+        ("slp_id",         dataformat.READ_EXPORT, "int32_t"),
+        ("blend_mode",     dataformat.READ_EXPORT, "int32_t"),
+        ("blend_priority", dataformat.READ_EXPORT, "int32_t"),
+        ("name0",          dataformat.READ_EXPORT, "char[13]"),
+        ("name1",          dataformat.READ_EXPORT, "char[13]"),
     )
 
     def __init__(self):
@@ -160,12 +160,12 @@ class TerrainData(dataformat.Exportable):
     struct_description = "terrain list"
 
     data_format = (
-        ("terrains", dataformat.SubdataMember(ref_type=Terrain)),
+        ("terrain_count", dataformat.NOREAD_EXPORT, "uint16_t"),
+        ("terrains",      dataformat.READ_EXPORT, dataformat.SubdataMember(ref_type=Terrain)),
     )
 
-    def __init__(self, terrain_count):
-        super().__init__()
-        self.terrain_count = terrain_count
+    def __init__(self, **args):
+        super().__init__(**args)
 
     def read(self, raw, offset):
         self.terrains = list()

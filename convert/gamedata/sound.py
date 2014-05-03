@@ -11,10 +11,10 @@ class SoundItem(dataformat.Exportable):
     struct_description = "one possible file for a sound."
 
     data_format = (
-        ("filename",     "char[13]"),
-        ("resource_id",  "int16_t"),
-        ("probablilty",  "int16_t"),
-        ("civilisation", "int16_t"),
+        ("filename",     dataformat.READ_EXPORT, "char[13]"),
+        ("resource_id",  dataformat.READ_EXPORT, "int16_t"),
+        ("probablilty",  dataformat.READ_EXPORT, "int16_t"),
+        ("civilisation", dataformat.READ_EXPORT, "int16_t"),
     )
 
     def __init__(self):
@@ -46,9 +46,9 @@ class Sound(dataformat.Exportable):
     struct_description = "describes a sound, consisting of several sound items."
 
     data_format = (
-        ("uid",            "int32_t"),
-        ("item_count",     "int32_t"),
-        ("sound_item",     dataformat.SubdataMember(ref_type=SoundItem, ref_to="uid")),
+        ("uid",        dataformat.READ_EXPORT, "int32_t"),
+        ("item_count", dataformat.READ_EXPORT, "int32_t"),
+        ("sound_item", dataformat.READ_EXPORT, dataformat.SubdataMember(ref_type=SoundItem, ref_to="uid")),
     )
 
     def __init__(self):
@@ -80,10 +80,10 @@ class SoundData(dataformat.Exportable):
 
     name_struct        = "sound_data"
     name_struct_file   = "gamedata"
-    struct_description = "sound list"
+    struct_description = "sound list."
 
     data_format = (
-        ("sounds", dataformat.SubdataMember(ref_type=Sound)),
+        ("sounds", dataformat.READ_EXPORT, dataformat.SubdataMember(ref_type=Sound)),
     )
 
     def __init__(self):

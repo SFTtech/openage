@@ -177,7 +177,7 @@ class Blendomatic:
     name_struct_file   = "blending_mode"
     struct_description = "describes one blending mode, a blending transition shape between two different terrain types."
     data_format = (
-        ("blend_mode", "int32_t"),
+        ("blend_mode", True, "int32_t"),
     )
 
     #struct blendomatic_header {

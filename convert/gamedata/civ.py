@@ -3,6 +3,7 @@ from struct import Struct, unpack_from
 from util import dbg, zstr
 
 from .empiresdat import endianness
+from gamedata import unit
 
 
 class Civ(dataformat.Exportable):
@@ -11,10 +12,11 @@ class Civ(dataformat.Exportable):
     struct_description = "describes one a civilisation."
 
     data_format = (
-        ("name",            "char[20]"),
-        ("graphic_set",     "int32_t"),
-        ("team_bonus_id",   "int16_t"),
-        ("tech_tree_id",    "int16_t"),
+        ("name",          dataformat.READ_EXPORT, "char[20]"),
+        ("graphic_set",   dataformat.READ_EXPORT, "int32_t"),
+        ("team_bonus_id", dataformat.READ_EXPORT, "int16_t"),
+        ("tech_tree_id",  dataformat.READ_EXPORT, "int16_t"),
+        ("units",         dataformat.READ_EXPORT, dataformat.SubdataMember(ref_type=unit.Unit, ref_to="name")),
     )
 
     def read(self, raw, offset):
@@ -62,7 +64,7 @@ class Civ(dataformat.Exportable):
 
         self.unit_offsets = pc
 
-        self.unit = list()
+        self.units = list()
         dbg("unit count = %d" % self.unit_count, 2)
         for i in range(self.unit_count):
             dbg("%%%%%%%%%%%%%%%%%%%%%%%%%%%% UNIT entry %d" % i, 2)
@@ -73,10 +75,9 @@ class Civ(dataformat.Exportable):
                 dbg("skipping UNIT entry %d" % i, 2)
                 continue
 
-            from gamedata import unit
             t = unit.Unit()
             offset = t.read(raw, offset)
-            self.unit.append(t)
+            self.units.append(t)
 
         return offset
 
@@ -87,7 +88,7 @@ class CivData(dataformat.Exportable):
     struct_description = "civilisation list."
 
     data_format = (
-        ("civs", dataformat.SubdataMember(ref_type=Civ)),
+        ("civs", dataformat.READ_EXPORT, dataformat.SubdataMember(ref_type=Civ)),
     )
 
     def read(self, raw, offset):

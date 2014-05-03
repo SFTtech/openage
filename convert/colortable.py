@@ -9,11 +9,11 @@ class ColorTable:
     struct_description = "indexed color storage."
 
     data_format = (
-        ("idx", "int32_t"),
-        ("r",   "uint8_t"),
-        ("g",   "uint8_t"),
-        ("b",   "uint8_t"),
-        ("a",   "uint8_t"),
+        ("idx", True, "int32_t"),
+        ("r",   True, "uint8_t"),
+        ("g",   True, "uint8_t"),
+        ("b",   True, "uint8_t"),
+        ("a",   True, "uint8_t"),
     )
 
     def __init__(self, data):
