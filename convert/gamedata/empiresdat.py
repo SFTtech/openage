@@ -151,9 +151,11 @@ class EmpiresDat:
         ret = list()
         for entry in what:
             if "terrain" == entry:
-                target_class = terrain.Terrain
+                target_class = terrain.TerrainData
             elif "sound" == entry:
-                target_class = sound.Sound
+                target_class = sound.SoundData
+            elif "civ" == entry:
+                target_class = civ.CivData
             else:
                 raise Exception("unknown struct dump requested: %s" % entry)
 

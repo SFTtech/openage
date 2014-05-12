@@ -3,7 +3,7 @@ import math
 import util
 from util import dbg
 
-class ColorTable:
+class ColorTable(dataformat.Exportable):
     name_struct        = "palette_color"
     name_struct_file   = "color"
     struct_description = "indexed color storage."

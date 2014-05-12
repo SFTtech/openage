@@ -75,15 +75,16 @@ class Exportable:
         """
 
         ret = list()
-
         self_data = dict()
 
-        for export, member_name, member_type in self.data_format:
-            if export not in (True, READ_EXPORT, NOREAD_EXPORT):
-                continue
+        members = self.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=True)
+        for is_parent, export, member_name, member_type in members:
 
-            #gather data members of the currently queried object
-            self_data[member_name] = getattr(self, member_name)
+            if member_name:
+                #gather data members of the currently queried object
+                self_data[member_name] = getattr(self, member_name)
+            else:
+                raise Exception("invalid data member name %s" % member_name)
 
             if isinstance(member_type, MultisubtypeMember):
                 dbg(lazymsg=lambda: "%s => entering member %s" % (filename, member_name), lvl=2)
@@ -161,19 +162,16 @@ class Exportable:
         else:
             target_class = self
 
-        #use data_format symbol order for reading
-        for export, var_name, var_type in target_class.data_format:
-            if export not in (True, READ_EXPORT, READ, READ_UNKNOWN):
-                dbg(lazymsg=lambda: "%s: skipping entry %s for reading" % (repr(target_class), var_name), lvl=4)
-                continue
+        members = target_class.get_data_format(allowed_modes=(True, READ_EXPORT, READ, READ_UNKNOWN), flatten_includes=False)
+        for is_parent, export, var_name, var_type in members:
 
             dbg(lazymsg=lambda: "%s: reading entry %s..." % (repr(target_class), var_name), lvl=4)
 
-            if isinstance(var_type, ParentMember):
+            if isinstance(var_type, IncludeMembers):
                 if not issubclass(var_type.cls, Exportable):
-                    raise Exception("desired parent class not exportable: %s" % var_type.cls.__name__)
+                    raise Exception("class where members should be included is not exportable: %s" % var_type.cls.__name__)
 
-                dbg(lazymsg=lambda: "calling parent class %s.read()" % (var_type.cls.__name__), lvl=4)
+                dbg(lazymsg=lambda: "calling include class %s.read()" % (var_type.cls.__name__), lvl=4)
                 offset = var_type.cls.read(self, raw, offset, cls=var_type.cls)
 
             elif isinstance(var_type, MultisubtypeMember):
@@ -294,19 +292,55 @@ class Exportable:
         """
 
         ret = list()
+        struct_parents = list()
 
-        for export, member_name, member_type in cls.data_format:
-            if export not in (True, READ_EXPORT, NOREAD_EXPORT):
-                continue
+        dbg(lazymsg=lambda: "%s: generating structs" % (repr(cls)), lvl=2)
+
+        #acquire all struct members, including the included members
+        members = cls.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=True)
+        for is_parent, export, member_name, member_type in members:
+
+            dbg(lazymsg=lambda: "%s: exporting %s: %s" % (repr(cls), member_name, member_type), lvl=3)
 
             if isinstance(member_type, MultisubtypeMember):
-                for subtype_name, subtype_class in member_type.class_lookup:
-                    if not isinstance(subtype_class, Exportable):
+                for subtype_name, subtype_class in member_type.class_lookup.items():
+                    if not issubclass(subtype_class, Exportable):
                         raise Exception("tried to export structs from non-exportable %s" % subtype_class)
-                    ret += member_type.subtype_class.structs()
+                    ret += subtype_class.structs()
+            else:
+                continue
 
         ret.append(StructDefinition(cls))
 
+        return ret
+
+    @classmethod
+    def get_effective_type(cls):
+        return cls.name_struct
+
+    @classmethod
+    def get_data_format(cls, allowed_modes=False, flatten_includes=False, is_parent=False):
+        ret = list()
+
+        for member in cls.data_format:
+            export, member_name, member_type = member
+
+            if isinstance(member_type, IncludeMembers):
+                if flatten_includes:
+                    #recursive call
+                    ret += member_type.cls.get_data_format(allowed_modes, flatten_includes, is_parent=True)
+                    continue
+                else:
+                    is_parent = True
+
+            if allowed_modes:
+                if export not in allowed_modes:
+                    dbg(lazymsg=lambda: "%s: skipping member %s" % (repr(cls), member_name), lvl=4)
+                    continue
+
+            member_entry = (is_parent,) + member
+            dbg(lazymsg=lambda: "%s: returning member entry %s" % (repr(cls), member_entry), lvl=4)
+            ret.append(member_entry)
         return ret
 
 
@@ -372,8 +406,8 @@ class CHeader:
     def get_file_name(self):
         return self.name
 
-    def get_snippet(self, file_name):
-        return ContentSnippet(self.data, file_name, ContentSnippet.section_header)
+    def get_snippets(self, file_name):
+        return [ ContentSnippet(self.data, file_name, ContentSnippet.section_header) ]
 
     def __hash__(self):
         return hash((self.name, self.is_global))
@@ -383,6 +417,11 @@ class CHeader:
             self.name == other.name
             and self.is_global == other.is_global
         )
+
+    def __repr__(self):
+        sym0 = "<" if self.is_global else "\""
+        sym1 = ">" if self.is_global else "\""
+        return "CHeader %s%s%s" % (sym0, self.name, sym1)
 
 
 class GeneratedFile:
@@ -463,6 +502,11 @@ namespace engine {\n\n""" % dontedit,
         self.typedefs |= snippet.typedefs
         self.typerefs |= snippet.typerefs
 
+        dbg("\nsnippet for %s" % snippet.file_name, lvl=2)
+        dbg("headers: %s" % snippet.headers, lvl=2)
+        dbg("typedefs: %s" % snippet.typedefs, lvl=2)
+        dbg("typerefs: %s" % snippet.typerefs, lvl=2)
+
     def generate(self, output_format):
         """
         actually generate the content for this file.
@@ -493,7 +537,7 @@ namespace engine {\n\n""" % dontedit,
         #in the #include section
         header_snippets = list()
         for header in sorted(self.headers, key=lambda h: (not h.is_global, h.name)):
-            header_snippets.append(header.get_snippet(self.file_name))
+            header_snippets.extend(header.get_snippets(self.file_name))
 
         #merge file contents
         file_data = ""
@@ -503,7 +547,7 @@ namespace engine {\n\n""" % dontedit,
             subst_headers += header.get_data()
 
         for snippet in sorted_snippets:
-            file_data += snippet.get_data()
+            file_data += "\n%s" % snippet.get_data()
 
         #create content, with prefix and suffix (actually header guards)
         subst_file_name = prefs["presuffix_func"](self.file_name)
@@ -536,11 +580,11 @@ class DataMember:
         self.raw_type = None
         self.do_raw_read = True
 
-    def get_parser(self, idx, member):
-        raise NotImplementedError("implement the parser generation for each member type")
+    def get_parsers(self, idx, member):
+        raise NotImplementedError("implement the parser generation for the member type %s" % type(self))
 
-    def get_headers(self):
-        raise NotImplementedError("return needed headers for the parser")
+    def get_headers(self, output_target):
+        raise NotImplementedError("return needed headers for %s for a given output target" % type(self))
 
     def get_typerefs(self):
         return set()
@@ -551,24 +595,51 @@ class DataMember:
     def entry_hook(self, data):
         """
         allows the data member class to modify the input data
+
+        is used e.g. for the number->enum lookup
         """
 
         return data
 
-    def get_type(self):
-        raise NotImplementedError("return the type to be put into a struct")
+    def get_effective_type(self):
+        raise NotImplementedError("return the effective type of member type %s" % type(self))
 
     def get_length(self):
         return self.length
 
+    def get_struct_entries(self, member_name):
+        """
+        return the lines to put inside the C struct.
+        """
+
+        return [ "%s %s;" % (self.get_effective_type(), member_name) ]
+
     def __repr__(self):
-        raise NotImplementedError("return short description of the member type")
+        raise NotImplementedError("return short description of the member type %s" % (type(self)))
 
 
-class ParentMember(DataMember):
+class IncludeMembers(DataMember):
+    """
+    a member that requires evaluating the given class
+    as a include first.
+
+    example:
+    the unit class "building" and "movable" will both have
+    common members that have to be read first.
+    """
+
     def __init__(self, cls):
         super().__init__()
         self.cls = cls
+
+    def get_headers(self, output_target):
+        return { self.cls.name_struct_file }
+
+    def get_typedefs(self):
+        return { self.cls.get_effective_type() }
+
+    def __repr__(self):
+        return "IncludeMember<%s>" % repr(self.cls)
 
 
 class DynLengthMember(DataMember):
@@ -576,16 +647,33 @@ class DynLengthMember(DataMember):
     a member that can have a dynamic length.
     """
 
+    any_length = util.NamedObject("unspecified length")
+
     def __init__(self, length=None):
-        super().__init__()
+        super(DynLengthMember).__init__()
         self.length = length
 
     def get_length(self, obj=None):
-        if isinstance(self.length, str):
+        if self.is_dynamic_length():
+            if self.length is self.any_length:
+                return -1
+
+            if not obj:
+                raise Exception("dynamic length query requires source object")
+
             #self.length specifies the attribute name where the length is stored
             return getattr(obj, self.length)
-        elif isinstance(self.length, int):
+
+        else:
             return self.length
+
+    def is_dynamic_length(self):
+        if self.length is self.any_length:
+            return True
+        elif isinstance(self.length, str):
+            return True
+        elif isinstance(self.length, int):
+            return False
         else:
             raise Exception("unknown length definition supplied: %s" % self.length)
 
@@ -598,10 +686,12 @@ class RefMember(DataMember):
     a struct member that can be referenced/references another struct.
     """
 
-    def __init__(self):
+    def __init__(self, type_name, file_name):
         super().__init__()
         self.resolved  = False
-        self.type_name = None
+        self.type_name = type_name
+        self.file_name = file_name
+
 
 class NumberMember(DataMember):
     """
@@ -630,14 +720,17 @@ class NumberMember(DataMember):
         self.number_type = number_def
         self.raw_type    = number_def
 
-    def get_parser(self, idx, member):
+    def get_parsers(self, idx, member):
         scan_symbol = self.type_scan_lookup[self.number_type]
         return [ "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return false; }" % (idx, scan_symbol, member) ]
 
-    def get_headers(self):
-        return get_headers("sscanf") | get_headers(self.number_type)
+    def get_headers(self, output_target):
+        if "structimpl" == output_target:
+            return determine_headers("sscanf") | determine_headers(self.number_type)
+        else:
+            return set()
 
-    def get_type(self):
+    def get_effective_type(self):
         return self.number_type
 
     def __repr__(self):
@@ -646,17 +739,15 @@ class NumberMember(DataMember):
 
 class EnumMember(RefMember):
     """
-    this struct member/data column is a C enum.
+    this struct member/data column is a enum.
     """
 
     def __init__(self, type_name, file_name=None, values=None):
-        super().__init__()
-        self.type_name = type_name
-        self.file_name = file_name
+        super().__init__(type_name, file_name)
         self.values    = values
         self.resolved  = True    #TODO..
 
-    def get_parser(self, idx, member):
+    def get_parsers(self, idx, member):
         enum_parse_else = ""
         enum_parser = list()
         enum_parser.append("//parse enum %s" % (self.type_name))
@@ -676,25 +767,30 @@ class EnumMember(RefMember):
 
         return enum_parser
 
-    def get_headers(self):
-        return get_headers("strcmp")
+    def get_headers(self, output_target):
+        if "structimpl" == output_target:
+            return determine_headers("strcmp")
+        else:
+            return set()
 
     def get_typedefs(self):
         return { self.type_name }
 
-    def get_type(self):
+    def get_effective_type(self):
         return self.type_name
 
     def validate_value(self, value):
         return value in self.values
 
-    def get_snippet(self):
+    def get_snippets(self, file_name):
         """
         generate enum snippets from given data
 
         input: EnumMember
         output: ContentSnippet
         """
+
+        snippet_file_name = self.file_name or file_name
 
         txt = list()
 
@@ -705,10 +801,10 @@ class EnumMember(RefMember):
             "\n};\n\n",
         ])
 
-        snippet = ContentSnippet("".join(txt), self.file_name, ContentSnippet.section_body)
+        snippet = ContentSnippet("".join(txt), snippet_file_name, ContentSnippet.section_body)
         snippet.typedefs |= self.get_typedefs()
 
-        return snippet
+        return [ snippet ]
 
     def __repr__(self):
         return "enum %s" % self.type_name
@@ -733,65 +829,107 @@ class CharArrayMember(DynLengthMember):
         super().__init__(length)
         self.raw_type = "char"
 
-    def get_parser(self, idx, member):
-        return [ "strncpy(this->%s, buf[%d], %d); this->%s[%d-1] = '\\0';" % (member, idx, self.get_length(), member, self.get_length()) ]
+    def get_parsers(self, idx, member):
+        if self.is_dynamic_length():
+            return [ "this->%s = buf[%d];" % (member, idx) ]
+        else:
+            return [ "strncpy(this->%s, buf[%d], %d); this->%s[%d-1] = '\\0';" % (member, idx, self.get_length(), member, self.get_length()) ]
 
-    def get_headers(self):
-        return get_headers("strncpy")
+    def get_headers(self, output_target):
+        ret = set()
 
-    def get_type(self):
-        return self.raw_type
+        if "structimpl" == output_target:
+            if not self.is_dynamic_length():
+                ret |= determine_headers("strncpy")
+        elif "struct" == output_target:
+            if self.is_dynamic_length():
+                ret |= determine_headers("std::string")
+
+        return ret
+
+    def get_effective_type(self):
+        if self.is_dynamic_length():
+            return "std::string"
+        else:
+            return "char";
+
+    def get_length(self):
+        if self.is_dynamic_length():
+            return 1
+        else:
+            return super().get_length()
 
     def __repr__(self):
-        return "%s[%s]" % (self.raw_type, self.length)
+        return "".join(self.get_effective_type())
 
 
-class StringMember(DataMember):
+class StringMember(CharArrayMember):
     """
-    struct member/column type to store std::strings
+    member with unspecified string length, aka std::string
     """
 
     def __init__(self):
-        super().__init__()
-        self.type_name = "std::string"
-
-    def get_parser(self, idx, member):
-        return [ "this->%s = buf[%d];" % (member, idx) ]
-
-    def get_headers(self):
-        return get_headers(self.type_name)
-
-    def get_type(self):
-        return self.type_name
-
-    def __repr__(self):
-        return self.type_name
+        super().__init__(DynLengthMember.any_length)
 
 
-class MultisubtypeMember(DynLengthMember):
+class MultisubtypeMember(DynLengthMember, RefMember):
     """
     struct member/data column that groups multiple references to
     multiple other data sets.
     """
 
-    def __init__(self, class_lookup, type_to, length=None, passed_args=None, ref_to=None):
-        super().__init__(length)
+    def __init__(self, type_name, class_lookup, type_to, length=None, passed_args=None, ref_to=None, offset_to=None, file_name=None):
+        DynLengthMember.__init__(self, length)
+        RefMember.__init__(self, type_name, file_name)
         self.class_lookup      = class_lookup        #!< dict to look up type_name => class
         self.type_to           = type_to             #!< member name whose value specifies the subdata type for each entry
         self.passed_args       = passed_args         #!< list of member names whose values will be passed to the new class
         self.ref_to            = ref_to              #!< add this member name's value to the filename
+        self.offset_to         = offset_to           #!< link to member name which is a list of binary file offsets
 
-    def get_headers(self):
-        return set()
+        #no xrefs supported yet..
+        self.resolved          = True
 
-    def get_headers(self):
-        return get_headers(self.get_type())
+    def get_headers(self, output_target):
+        if "struct" == output_target:
+            return determine_headers(self.get_effective_type())
+        else:
+            return set()
 
-    def get_type(self):
-        return "std::string"
+    def get_effective_type(self):
+        return "%s" % (self.type_name)
 
-    def get_parser(self, idx, member):
-        return [ "this->%s = buf[%d];" % (member, idx) ]
+    def get_contained_types(self):
+        return [ contained_type.get_effective_type() for contained_type in self.class_lookup.values() ]
+
+    def get_parsers(self, idx, member):
+        #TODO
+        #0. read file where entry type files are defined.
+        #1. read each of the entry type files and fill member.`entry_type`
+        return [ "this->%s.filename = buf[%d];" % (member, idx) ]
+
+    def get_typedefs(self):
+        return { self.type_name }
+
+    def get_typerefs(self):
+        return set(self.get_contained_types())
+
+    def get_snippets(self, file_name):
+
+        snippet_file_name = self.file_name or file_name
+
+        txt = list()
+
+        txt.append("struct %s {\n" % (self.type_name))
+        txt.extend(["\tstd::vector<%s> %s;\n" % (entry_type.get_effective_type(), entry_name) for (entry_name, entry_type) in self.class_lookup.items()])
+        txt.append("};\n")
+
+        snippet = ContentSnippet("".join(txt), snippet_file_name, ContentSnippet.section_body)
+        snippet.typedefs |= self.get_typedefs()
+        snippet.typerefs |= self.get_typerefs()
+        snippet.headers  |= determine_headers("std::vector")
+
+        return [ snippet ]
 
     def __repr__(self):
         return "MultisubtypeMember<%s>" % str(self.class_lookup)
@@ -802,14 +940,29 @@ class SubdataMember(MultisubtypeMember):
     struct member/data column that references to one another data set.
     """
 
-    def __init__(self, ref_type, ref_to=None, length=None):
-        super().__init__({None: ref_type}, type_to=ref_to, length=length)
+    def __init__(self, ref_type, ref_to=None, length=None, offset_to=None):
+        super().__init__(type_name=None, class_lookup={None: ref_type}, type_to=ref_to, length=length, offset_to=None)
+
+    def get_effective_type(self):
+        return "std::vector<%s>" % (self.get_contained_types()[0])
+
+    def get_parsers(self, idx, member):
+        return [ "this->%s = util::read_csv_file<%s>(buf[%d]);" % (member, self.get_contained_types()[0], idx) ]
+
+    def get_snippets(self, file_name):
+        return list()
+
+    def get_typedefs(self):
+        return set()
+
+    def get_typerefs(self):
+        return set(self.get_contained_types())
 
     def __repr__(self):
         return "SubdataMember<%s>" % self.class_lookup[None].__name__
 
 
-class DataSet:
+class StructDefinition:
     """
     input data read from the data files.
 
@@ -817,20 +970,24 @@ class DataSet:
     it consists of multiple DataMembers, they define the struct members.
     """
 
-    def __init__(self, name_struct_file, name_struct, struct_description, data_format, data=None, name_data_file=None):
+    def __init__(self, target):
 
-        self.name_struct_file   = name_struct_file    #!< name of file where generated struct will be placed
-        self.name_struct        = name_struct         #!< name of generated C struct
-        self.struct_description = struct_description  #!< comment placed above generated C struct
-        self.data               = data                #!< list of dicts, member_name=>member_value
-        self.name_data_file     = name_data_file      #!< name of file where data will be placed in
+        dbg("generating struct definition from %s" % (repr(target)), lvl=2)
+
+        self.name_struct_file   = target.name_struct_file    #!< name of file where generated struct will be placed
+        self.name_struct        = target.name_struct         #!< name of generated C struct
+        self.struct_description = target.struct_description  #!< comment placed above generated C struct
 
         #create ordered dict of member type objects from structure definition
         self.members = OrderedDict()
+        self.parent_members = list()
+        self.parent_classes = list()
 
-        for export, member_name, member_type in data_format:
-            if export not in (True, READ_EXPORT, NOREAD_EXPORT):
-                continue
+        members = target.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=True)
+        for is_parent, export, member_name, member_type in members:
+
+            if isinstance(member_type, IncludeMembers):
+                raise Exception("something went very wrong.")
 
             #select member type class according to the defined member type
             if type(member_type) == str:
@@ -853,13 +1010,16 @@ class DataSet:
             else:
                 raise Exception("unknown member type specification!")
 
-            self.members[member_name] = member
+            if member is None:
+                raise Exception("member %s of struct %s is None" % (member_name, self.name_struct))
 
-    def gather_subdata(self):
-        """
-        returns a list of DataSets recursively by querying members
-        """
-        raise NotImplementedError("subdata gathering not implemented yet")
+            self.members[member_name] = member
+            self.parent_members.append(member_name)
+
+        members = target.get_data_format(flatten_includes=False)
+        for is_parent, _, _, member_type in members:
+            if is_parent and isinstance(member_type, IncludeMembers):
+                self.parent_classes.append(member_type.cls)
 
     def dynamic_ref_update(self, lookup_ref_data):
         """
@@ -873,60 +1033,50 @@ class DataSet:
             if not isinstance(member_type, RefMember):
                 continue
 
-            #this member is already resolved
+            #this member of self is already resolved
             if member_type.resolved:
                 continue
 
-            if member_type.name not in lookup_ref_data:
-                raise Exception("cant resolve data references of type %s" % member_type.name)
+            type_name = member_type.get_effective_type()
 
             #replace the xref with the real definition
-            self.members[member_name] = lookup_ref_data[member_name]
+            self.members[type_name] = lookup_ref_data[type_name]
 
     def __str__(self):
-        ret = list()
-        ret.extend([
+        ret = [
             repr(self),
             "\n\tstruct file name: ", self.name_struct_file,
             "\n\tstruct name: ", self.name_struct,
             "\n\tstruct description: ", self.struct_description,
-            "\n\tdata file name: ", str(self.name_data_file),
-            "\n\tdata: ", str(self.data), "\n",
-        ])
+        ]
         return "".join(ret)
 
     def __repr__(self):
-        return "DataSet<%s>" % self.name_struct
+        return "StructDefinition<%s>" % self.name_struct
 
 
-class StructDefinition(DataSet):
+class DataDefinition(StructDefinition):
     """
-    data structure definition by given class.
+    data structure definition by given object including data.
     """
 
-    def __init__(self, target_class):
+    def __init__(self, target, data, name_data_file):
         super().__init__(
-            target_class.name_struct_file,
-            target_class.name_struct,
-            target_class.struct_description,
-            target_class.data_format,
+            target,
         )
 
+        self.data               = data                #!< list of dicts, member_name=>member_value
+        self.name_data_file     = name_data_file      #!< name of file where data will be placed in
 
-class DataDefinition(DataSet):
-    """
-    data structure definition by given object, including data.
-    """
+    def __str__(self):
+        ret = [
+            "\n\tdata file name: ", str(self.name_data_file),
+            "\n\tdata: ", str(self.data),
+        ]
+        return "%s%s" % (super().__str__(), "".join(ret))
 
-    def __init__(self, target_obj, data, data_name):
-        super().__init__(
-            target_obj.name_struct_file,
-            target_obj.name_struct,
-            target_obj.struct_description,
-            target_obj.data_format,
-            data,
-            data_name,
-        )
+    def __repr__(self):
+        return "DataDefinition<%s>" % self.name_struct
 
 
 class DataFormatter:
@@ -953,10 +1103,11 @@ class DataFormatter:
 
     def add_data(self, data_set_pile, prefix=None):
         """
-        add a given DataSet to the storage, so it can be exported later.
+        add a given StructDefinition to the storage, so it can be exported later.
 
         other exported data structures are collected from the given input.
         """
+
         if type(data_set_pile) is not list:
             data_set_pile = [ data_set_pile ]
 
@@ -972,11 +1123,17 @@ class DataFormatter:
                 #store resolved (first-time definitions) members in a symbol list
                 if isinstance(member_type, RefMember):
                     if member_type.resolved:
-                        if member_type.type_name in self.typedefs:
-                            if data_set.members[member_name] is not self.typedefs[member_type.type_name]:
-                                raise Exception("different redefinition of type %s" % member_type.type_name)
+                        if member_type.get_effective_type() in self.typedefs:
+                            if data_set.members[member_name] is not self.typedefs[member_type.get_effective_type()]:
+                                raise Exception("different redefinition of type %s" % member_type.get_effective_type())
                         else:
-                            self.typedefs[member_type.type_name] = data_set.members[member_name]
+                            ref_member = data_set.members[member_name]
+
+                            #if not overridden, use name of struct file to store
+                            if ref_member.file_name == None:
+                                ref_member.file_name = data_set.name_struct_file
+
+                            self.typedefs[member_type.get_effective_type()] = ref_member
 
             self.data.append(data_set)
 
@@ -1025,11 +1182,11 @@ class DataFormatter:
             #create snippets for the encountered type definitions
             for type_name, type_definition in self.typedefs.items():
                 if format == "struct":
-                    snippet = type_definition.get_snippet()
+                    type_snippets = type_definition.get_snippets(type_definition.file_name)
                 else:
                     continue
 
-                snippets.append(snippet)
+                snippets.extend(type_snippets)
 
             for snippet in snippets:
                 #if this file was not yet created, do it nao
@@ -1057,11 +1214,8 @@ class DataFormatter:
         generate a csv data representation
         """
 
-        if not isinstance(dataset, DataSet):
-            raise Exception("can only generate a csv from a DataSet")
-
-        if dataset.data is None:
-            raise Exception("cannot generate csv from dataless %s" % str(dataset))
+        if not isinstance(dataset, DataDefinition):
+            raise Exception("can only generate a csv from a DataDefinition")
 
         member_types = dataset.members.values()
         csv_column_types = list()
@@ -1106,18 +1260,13 @@ class DataFormatter:
         """
 
         #the resulting header definition snippet
-        txt = ["\n"]
+        txt = list()
 
-        #this c snipped need these headers
+        #this c snippet needs these headers
         headers = set()
 
         #these data type references are needed for this snippet
-        typerefs = set()
-
-        for idx, (member_name, member_type) in enumerate(dataset.members.items()):
-            headers  |= member_type.get_headers()
-            #in a struct there are references to member type definitions -> sic.
-            typerefs |= member_type.get_typedefs()
+        needed_types = set()
 
         #optional struct description
         #prepend * before every comment line
@@ -1128,32 +1277,40 @@ class DataFormatter:
                 "\n */\n",
             ])
 
-        #struct definition
-        txt.append("struct %s {\n" % (dataset.name_struct))
+        struct_entries = list()
 
-        #create struct members
+        #create struct members and inheritance parents
         for member_name, member_type in dataset.members.items():
+            if member_name in dataset.parent_members:
+                continue
 
-            if member_type.length > 1:
-                dlength = "[%d]" % member_type.length
-            else:
-                dlength = ""
+            headers  |= member_type.get_headers("struct")
+            needed_types |= member_type.get_typedefs()
 
-            txt.append("\t%s %s%s;\n" % (member_type.get_type(), member_name, dlength))
+            struct_entries.extend(["\t%s\n" % entry for entry in member_type.get_struct_entries(member_name)])
+
+        dbg(lazymsg=lambda: "%s needed_types = %s" % (dataset.name_struct, needed_types), lvl=4)
+
+        parents = [parent_class.get_effective_type() for parent_class in dataset.parent_classes]
+
+        #struct definition
+        txt.append("struct %s%s {\n" % (dataset.name_struct, ", ".join(parents)))
+
+        #struct member entries
+        txt.extend(struct_entries)
 
         #append member count variable
         txt.append("\n\tstatic constexpr size_t member_count = %d;\n" % len(dataset.members))
 
         #add filling function prototype
-        struct_fill_signature  = self.fill_csignature % ""
-        txt.append("\n\t%s;\n" % struct_fill_signature)
+        txt.append("\n\t%s;\n" % (self.fill_csignature % ""))
 
         #struct ends
         txt.append("};\n")
 
         snippet = ContentSnippet("".join(txt), dataset.name_struct_file, ContentSnippet.section_body)
         snippet.headers    |= headers
-        snippet.typerefs   |= typerefs
+        snippet.typerefs   |= needed_types
         snippet.typedefs.add(dataset.name_struct)
 
         return snippet
@@ -1170,12 +1327,12 @@ class DataFormatter:
         #referenced types in this C snippet
         typerefs = set()
 
-        #creating a parser for a single field of the csv
+        #list of lines for each parsers for a single field of the csv
         parsers = []
 
         for idx, (member_name, member_type) in enumerate(dataset.members.items()):
-            parsers.append(member_type.get_parser(idx, member_name))
-            headers  |= member_type.get_headers()
+            parsers.append(member_type.get_parsers(idx, member_name))
+            headers  |= member_type.get_headers("structimpl")
             #the code references to the definition of the members
             typerefs |= member_type.get_typedefs()
 
@@ -1207,12 +1364,12 @@ $funcsignature {
 """).substitute(funcsignature=fill_signature, delimiter=self.DELIMITER, parsers=parser_code, member_count=member_count)
 
         snippet = ContentSnippet(txt, dataset.name_struct_file, ContentSnippet.section_body)
-        snippet.headers  |= headers | get_headers("strtok_custom")
+        snippet.headers  |= headers | determine_headers("strtok_custom")
         snippet.typerefs |= typerefs
         return snippet
 
 
-def get_headers(for_type):
+def determine_headers(for_type):
     """
     returns the includable headers for using the given C type.
     """
@@ -1224,6 +1381,7 @@ def get_headers(for_type):
     stringh   = CHeader("string",  is_global=True)
     cstringh  = CHeader("cstring", is_global=True)
     cstdioh   = CHeader("cstdio",  is_global=True)
+    vectorh   = CHeader("vector",  is_global=True)
     engine_util_strings_h = CHeader("../engine/util/strings.h", False)
 
     #lookup for type->{header}
@@ -1237,6 +1395,7 @@ def get_headers(for_type):
         "int64_t":         { cstdinth },
         "uint64_t":        { cstdinth },
         "std::string":     { stringh  },
+        "std::vector":     { vectorh  },
         "strcmp":          { cstringh },
         "strncpy":         { cstringh },
         "strtok_custom":   { engine_util_strings_h },
@@ -1245,5 +1404,7 @@ def get_headers(for_type):
 
     if for_type in type_map:
         ret |= type_map[for_type]
+    else:
+        dbg("could not determine header for %s" % for_type, lvl=2)
 
     return ret

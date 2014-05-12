@@ -2,7 +2,7 @@ import dataformat
 import util
 from util import dbg
 
-class SoundList:
+class SoundList(dataformat.Exportable):
     name_struct        = "sound_file"
     name_struct_file   = "sound_file"
     struct_description = "one available sound file."

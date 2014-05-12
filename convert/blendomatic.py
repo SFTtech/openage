@@ -171,7 +171,7 @@ class BlendingMode:
         return BlendingTile(tilerows, max_width, row_count)
 
 
-class Blendomatic:
+class Blendomatic(dataformat.Exportable):
 
     name_struct        = "blending_mode"
     name_struct_file   = "blending_mode"

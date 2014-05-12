@@ -257,7 +257,7 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "sound_selection", "int16_t"),
         (dataformat.READ, "sound_dying", "int16_t"),
         (dataformat.READ, "attack_mode", "int16_t"),
-        (dataformat.READ, "name", dataformat.CharArrayMember(
+        (dataformat.READ_EXPORT, "name", dataformat.CharArrayMember(
             length="name_length",
         )),
         (dataformat.READ, "id1", "int16_t"),
@@ -278,7 +278,7 @@ class UnitFlag(UnitObject):
     struct_description = "adds speed property to units."
 
     data_format = (
-        (dataformat.READ, None, dataformat.ParentMember(cls=UnitObject)),
+        (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitObject)),
         (dataformat.READ, "speed", "float"),
     )
 
@@ -296,7 +296,7 @@ class UnitDoppelganger(UnitFlag):
     struct_description = "weird doppelganger unit thats actually the same as a flag unit."
 
     data_format = (
-        (dataformat.READ, None, dataformat.ParentMember(cls=UnitFlag)),
+        (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitFlag)),
     )
 
     def __init__(self):
@@ -313,7 +313,7 @@ class UnitDeadOrFish(UnitDoppelganger):
     struct_description = "adds walking graphics, rotations and tracking properties to units."
 
     data_format = (
-        (dataformat.READ, None, dataformat.ParentMember(cls=UnitDoppelganger)),
+        (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitDoppelganger)),
         (dataformat.READ, "walking_graphics0", "int16_t"),
         (dataformat.READ, "walking_graphics1", "int16_t"),
         (dataformat.READ, "rotation_speed", "float"),
@@ -339,7 +339,7 @@ class UnitBird(UnitDeadOrFish):
     struct_description = "adds search radius and work properties, as well as movement sounds."
 
     data_format = (
-        (dataformat.READ, None, dataformat.ParentMember(cls=UnitDeadOrFish)),
+        (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitDeadOrFish)),
         (dataformat.READ, "sheep_conversion", "int16_t"),
         (dataformat.READ, "search_radius", "float"),
         (dataformat.READ, "work_rate", "float"),
@@ -365,7 +365,7 @@ class UnitMovable(UnitBird):
     struct_description = "adds attack and armor properties to units."
 
     data_format = (
-        (dataformat.READ, None, dataformat.ParentMember(cls=UnitBird)),
+        (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitBird)),
         (dataformat.READ, "default_armor", "int16_t"),
         (dataformat.READ, "attack_count", "uint16_t"),
         (dataformat.READ, "attacks", dataformat.SubdataMember(ref_type=HitType, length="attack_count")),
@@ -404,7 +404,7 @@ class UnitProjectile(UnitMovable):
     struct_description = "adds projectile specific unit properties."
 
     data_format = (
-        (dataformat.READ, None, dataformat.ParentMember(cls=UnitMovable)),
+        (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitMovable)),
         (dataformat.READ, "stretch_mode", "int8_t"),
         (dataformat.READ, "compensation_mode", "int8_t"),
         (dataformat.READ, "drop_animation_mode", "int8_t"),
@@ -428,7 +428,7 @@ class UnitLiving(UnitMovable):
     struct_description = "adds creation location and garnison unit properties."
 
     data_format = (
-        (dataformat.READ, None, dataformat.ParentMember(cls=UnitMovable)),
+        (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitMovable)),
         (dataformat.READ, "ressource_cost", dataformat.SubdataMember(ref_type=RessourceCost, length=3)),
         (dataformat.READ, "train_time", "int16_t"),
         (dataformat.READ, "train_location_id", "int16_t"),
@@ -463,7 +463,7 @@ class UnitBuilding(UnitLiving):
     struct_description = "construction graphics and garnison building properties for units."
 
     data_format = (
-        (dataformat.READ, None, dataformat.ParentMember(cls=UnitLiving)),
+        (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitLiving)),
         (dataformat.READ, "construction_graphic_id", "int16_t"),
         (dataformat.READ, "snow_graphic_id", "int16_t"),
         (dataformat.READ, "adjacent_mode", "int16_t"),
@@ -500,7 +500,7 @@ class UnitTree(UnitObject):
     struct_description = "just a tree unit."
 
     data_format = (
-        (dataformat.READ, None, dataformat.ParentMember(cls=UnitObject)),
+        (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitObject)),
     )
 
     def __init__(self, **args):
@@ -543,6 +543,7 @@ class Unit(dataformat.Exportable):
             values=unit_type_lookup.values(),
         )),
         (dataformat.READ_EXPORT, "type_data", dataformat.MultisubtypeMember(
+            type_name="unit_type_data",
             class_lookup=unit_type_class_lookup,
             type_to="unit_type",
         )),

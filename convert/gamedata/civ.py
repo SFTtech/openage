@@ -12,19 +12,24 @@ class Civ(dataformat.Exportable):
     struct_description = "describes one a civilisation."
 
     data_format = (
-        ("name",          dataformat.READ_EXPORT, "char[20]"),
-        ("graphic_set",   dataformat.READ_EXPORT, "int32_t"),
-        ("team_bonus_id", dataformat.READ_EXPORT, "int16_t"),
-        ("tech_tree_id",  dataformat.READ_EXPORT, "int16_t"),
-        ("units",         dataformat.READ_EXPORT, dataformat.SubdataMember(ref_type=unit.Unit, ref_to="name")),
+        (dataformat.READ, "enabled", "int8_t"),
+        (dataformat.READ_EXPORT, "name", "char[20]"),
+        (dataformat.READ, "ressources_count", "uint16_t"),
+        (dataformat.READ_EXPORT, "tech_tree_id",  "int16_t"),
+        (dataformat.READ_EXPORT, "team_bonus_id", "int16_t"),
+        (dataformat.READ, "ressources", "float[ressources_count]"),
+        (dataformat.READ, "graphic_set", "int8_t"),
+        (dataformat.READ, "unit_count", "uint16_t"),
+        (dataformat.READ, "unit_offsets", "int32_t[unit_count]"),
+        (dataformat.READ_EXPORT, "units", dataformat.SubdataMember(
+            ref_type=unit.Unit,
+            ref_to="name",
+            length="unit_count",
+            offset_to="unit_offsets",
+        )),
     )
 
     def read(self, raw, offset):
-        #int8_t one;
-        #char name[20];
-        #uint16_t ressources_count;
-        #int16_t tech_tree_id;
-        #int16_t team_bonus_id;
         civ_header0_struct = Struct(endianness + "b 20s H 2h")
 
         pc = civ_header0_struct.unpack_from(raw, offset)
@@ -36,8 +41,6 @@ class Civ(dataformat.Exportable):
         self.tech_tree_id    = pc[3]
         self.team_bonus_id   = pc[4]
 
-
-        #float[ressources_count] ressources;
         civ_ressources_struct = Struct(endianness + "%df" % self.ressource_count)
 
         pc = civ_ressources_struct.unpack_from(raw, offset)
@@ -45,9 +48,6 @@ class Civ(dataformat.Exportable):
 
         self.ressources = pc
 
-
-        #int8_t graphic_set;
-        #uint16_t unit_count;
         civ_header1_struct = Struct(endianness + "b H")
 
         pc = civ_header1_struct.unpack_from(raw, offset)
@@ -56,8 +56,6 @@ class Civ(dataformat.Exportable):
         self.graphic_set = pc[0]
         self.unit_count  = pc[1]
 
-
-        #int32_t unit_offsets[unit_count];
         civ_header2_struct = Struct(endianness + "%di" % self.unit_count)
         pc = civ_header2_struct.unpack_from(raw, offset)
         offset += civ_header2_struct.size
@@ -88,7 +86,7 @@ class CivData(dataformat.Exportable):
     struct_description = "civilisation list."
 
     data_format = (
-        ("civs", dataformat.READ_EXPORT, dataformat.SubdataMember(ref_type=Civ)),
+        (dataformat.READ_EXPORT, "civs", dataformat.SubdataMember(ref_type=Civ)),
     )
 
     def read(self, raw, offset):

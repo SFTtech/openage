@@ -54,7 +54,7 @@ class TextureImage:
         return Image.fromarray(self.data)
 
 
-class Texture:
+class Texture(dataformat.Exportable):
     image_format       = "png"
 
     name_struct        = "subtexture"
