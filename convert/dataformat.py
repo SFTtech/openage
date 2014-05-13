@@ -165,13 +165,11 @@ class Exportable:
         members = target_class.get_data_format(allowed_modes=(True, READ_EXPORT, READ, READ_UNKNOWN), flatten_includes=False)
         for is_parent, export, var_name, var_type in members:
 
-            dbg(lazymsg=lambda: "%s: reading entry %s..." % (repr(target_class), var_name), lvl=4)
-
             if isinstance(var_type, IncludeMembers):
                 if not issubclass(var_type.cls, Exportable):
                     raise Exception("class where members should be included is not exportable: %s" % var_type.cls.__name__)
 
-                dbg(lazymsg=lambda: "calling include class %s.read()" % (var_type.cls.__name__), lvl=4)
+                dbg(lazymsg=lambda: "calling included class %s.read()" % (var_type.cls.__name__), lvl=4)
                 offset = var_type.cls.read(self, raw, offset, cls=var_type.cls)
 
             elif isinstance(var_type, MultisubtypeMember):
@@ -213,6 +211,8 @@ class Exportable:
                     #create instance of submember class
                     new_data = new_data_class(**varargs)
 
+                    dbg(lazymsg=lambda: "%s: calling read of %s..." % (repr(self), repr(new_data)), lvl=4)
+
                     #recursive call, read the subdata.
                     offset = new_data.read(raw, offset, new_data_class)
 
@@ -224,6 +224,8 @@ class Exportable:
 
             else:
                 #reading binary data, as this member is no reference but actual content.
+
+                dbg(lazymsg=lambda: "%s: reading entry %s..." % (repr(target_class), var_name), lvl=4)
 
                 data_count = 1
 
@@ -964,7 +966,7 @@ class SubdataMember(MultisubtypeMember):
         return set(self.get_contained_types())
 
     def __repr__(self):
-        return "SubdataMember<%s>" % self.class_lookup[None].__name__
+        return "SubdataMember<%s,len=%s>" % (self.class_lookup[None].__name__, self.length)
 
 
 class StructDefinition:
