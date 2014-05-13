@@ -20,7 +20,7 @@ class SoundItem(dataformat.Exportable):
     def __init__(self):
         super().__init__()
 
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         #char filename[13];
         #int32_t resource_id;
         #int16_t probability;
@@ -59,7 +59,7 @@ class Sound(dataformat.Exportable):
     def __init__(self):
         super().__init__()
 
-    def read(self, raw, offset):
+    def read(self, raw, offset, cls=None):
         #int32_t uid;
         #uint16_t item_count;
         #int32_t unknown;

@@ -121,9 +121,9 @@ class RessourceStorage(dataformat.Exportable):
 
 
 class DamageGraphic(dataformat.Exportable):
-    name_struct        = "ressource_storage"
+    name_struct        = "damage_graphic"
     name_struct_file   = "unit"
-    struct_description = "stores the resource storage capacity for one unit mode."
+    struct_description = "stores one building image that shows a destroyed foundation."
 
     data_format = (
         (dataformat.READ, "graphic_id", "int16_t"),

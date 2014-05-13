@@ -299,7 +299,6 @@ class Exportable:
         """
 
         ret = list()
-        struct_parents = list()
 
         dbg(lazymsg=lambda: "%s: generating structs" % (repr(cls)), lvl=2)
 
@@ -690,7 +689,6 @@ class RefMember(DataMember):
     """
 
     def __init__(self, type_name, file_name):
-        super().__init__()
         self.resolved  = False
         self.type_name = type_name
         self.file_name = file_name
@@ -986,7 +984,10 @@ class StructDefinition:
             if isinstance(member_type, IncludeMembers):
                 raise Exception("something went very wrong.")
 
-            #select member type class according to the defined member type
+            if type(member_name) is not str:
+                raise Exception("member name has to be a string: %s<%s>" % (str(member_name), type(member_name)))
+
+            #create member type class according to the defined member type
             if type(member_type) == str:
                 array_match = vararray_match.match(member_type)
                 if array_match:
