@@ -542,14 +542,8 @@ namespace engine {\n\n""" % dontedit,
             header_snippets.extend(header.get_snippets(self.file_name))
 
         #merge file contents
-        file_data = ""
-        subst_headers = ""
-
-        for header in header_snippets:
-            subst_headers += header.get_data()
-
-        for snippet in sorted_snippets:
-            file_data += "\n%s" % snippet.get_data()
+        subst_headers = "".join(header.get_data() for header in header_snippets)
+        file_data     = "\n".join(snippet.get_data() for snippet in sorted_snippets)
 
         #create content, with prefix and suffix (actually header guards)
         subst_file_name = prefs["presuffix_func"](self.file_name)
@@ -559,7 +553,7 @@ namespace engine {\n\n""" % dontedit,
         content_suffix = Template(prefs["content_suffix"]).substitute(file_name=subst_file_name)
 
         #this is the final file content
-        file_data = content_prefix + file_data + content_suffix
+        file_data = "".join((content_prefix, file_data, content_suffix))
 
         #determine output file name
         output_file_name_parts = [
@@ -649,11 +643,11 @@ class DynLengthMember(DataMember):
     a member that can have a dynamic length.
     """
 
-    any_length = util.NamedObject("unspecified length")
+    any_length = util.NamedObject("any_length")
 
     def __init__(self, length):
-        #super().__init__()
-        if type(length) not in (int, str):
+
+        if not ((type(length) in (int, str)) or (length is self.any_length)):
             raise Exception("invalid length passed to %s: %s<%s>" % (type(self), length, type(length)))
 
         self.length = length
@@ -967,7 +961,7 @@ class StructDefinition:
 
     def __init__(self, target):
 
-        dbg("generating struct definition from %s" % (repr(target)), lvl=2)
+        dbg("generating struct definition from %s" % (repr(target)), lvl=3)
 
         self.name_struct_file   = target.name_struct_file    #!< name of file where generated struct will be placed
         self.name_struct        = target.name_struct         #!< name of generated C struct
