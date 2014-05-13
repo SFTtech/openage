@@ -17,7 +17,7 @@ class ColorTable(dataformat.Exportable):
     )
 
     def __init__(self, data):
-        if type(data) in [list, tuple]:
+        if type(data) in (list, tuple):
             self.fill_from_array(data)
         else:
             self.fill(data)
@@ -29,7 +29,7 @@ class ColorTable(dataformat.Exportable):
         #split all lines of the input data
         lines = data.decode('ascii').split('\r\n') #windows windows windows baby
 
-        self.header = lines[0]
+        self.header  = lines[0]
         self.version = lines[1]
 
         # check for palette header
@@ -38,14 +38,17 @@ class ColorTable(dataformat.Exportable):
         if self.version != "0100":
             raise Exception("palette version mispatch, got %s" % self.version)
 
-        self.entry_count = int(lines[2])
+        entry_count = int(lines[2])
 
         self.palette = []
 
         #data entries are line 3 to n
-        for i in range(3, self.entry_count + 3):
+        for i in range(3, entry_count + 3):
             #one entry looks like "13 37 42", where 13 is the red value, 37 green and 42 blue.
             self.palette.append(tuple(map(int, lines[i].split(' '))))
+
+        if len(self.palette) != len(lines) - 3:
+            raise Exception("read a different amount of palette entries than expected.")
 
     def __getitem__(self, index):
         return self.palette[index]
@@ -54,17 +57,17 @@ class ColorTable(dataformat.Exportable):
         return len(self.palette)
 
     def __repr__(self):
-        return "color palette: %d entries." % self.entry_count
+        return "ColorTable<%d entries>" % len(self.palette)
 
     def __str__(self):
-        return repr(self) + "\n" + str(self.palette)
+        return "%s\n%s" % (repr(self), self.palette)
 
     def gen_image(self, draw_text = True, squaresize = 100):
         #writes this color table (palette) to a png image.
 
         from PIL import Image, ImageDraw
 
-        imgside_length = math.ceil(math.sqrt(self.entry_count))
+        imgside_length = math.ceil(math.sqrt(len(self.palette)))
         imgsize = imgside_length * squaresize
 
         dbg("generating palette image with size %dx%d" % (imgsize, imgsize))
@@ -72,7 +75,7 @@ class ColorTable(dataformat.Exportable):
         palette_image = Image.new('RGBA', (imgsize, imgsize), (255, 255, 255, 0))
         draw = ImageDraw.ImageDraw(palette_image)
 
-        text_padlength = len(str(self.entry_count)) #dirty, i know.
+        text_padlength = len(str(len(self.palette))) #dirty, i know.
         text_format = "%0" + str(text_padlength) + "d"
 
         drawn = 0
@@ -81,7 +84,7 @@ class ColorTable(dataformat.Exportable):
         if squaresize == 1:
             for y in range(imgside_length):
                     for x in range(imgside_length):
-                        if drawn < self.entry_count:
+                        if drawn < len(self.palette):
                             r,g,b = self.palette[drawn]
                             draw.point((x, y), fill=(r, g, b, 255))
                             drawn = drawn + 1
@@ -90,7 +93,7 @@ class ColorTable(dataformat.Exportable):
         elif squaresize > 1:
             for y in range(imgside_length):
                     for x in range(imgside_length):
-                        if drawn < self.entry_count:
+                        if drawn < len(self.palette):
                             sx = x * squaresize - 1
                             sy = y * squaresize - 1
                             ex = sx + squaresize - 1
@@ -164,3 +167,6 @@ class PlayerColorTable(ColorTable):
             for subcol in psubcolors:
                 r, g, b = base_table[16 * i + subcol]
                 self.palette.append((r, g, b))
+
+    def __repr__(self):
+        return "ColorTable<%d entries>" % len(self.palette)
