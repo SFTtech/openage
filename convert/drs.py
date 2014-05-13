@@ -1,5 +1,6 @@
 from struct import Struct, unpack_from
-from util import NamedObject, dbg, file_open, file_get_path
+import util
+from util import dbg
 from binascii import hexlify
 
 #version of the drs file, hardcoded for now
@@ -28,7 +29,7 @@ class DRS:
     # char file_type;
     # char file_extension[3]; //reversed extension
     # int file_info_offset;   //table offset
-    # int num_files;          //number of files in table
+    # int file_count;          //number of files in table
     #};
     drs_table_info = Struct(endianness + "c 3s i i")
 
@@ -43,19 +44,19 @@ class DRS:
         self.files = {}   #(extension, id): (data offset, size)
 
         self.fname = fname
-        fname = file_get_path(fname, write = False)
-        f = file_open(fname, binary = True, write = False)
+        fname = util.file_get_path(fname, write = False)
+        f = util.file_open(fname, binary = True, write = False)
 
         #read header
         buf = f.read(DRS.drs_header.size)
         self.header = DRS.drs_header.unpack(buf)
 
-        dbg("DRS header [" + fname + "]", 1, push = "drs")
-        dbg("copyright:          " + self.header[0].decode('latin-1'))
-        dbg("version:            " + self.header[1].decode('latin-1'))
-        dbg("ftype:              " + self.header[2].decode('latin-1'))
-        dbg("table count:        " + str(self.header[3]))
-        dbg("file offset:        " + str(self.header[4]))
+        dbg("DRS header [%s]" % (fname), 1, push = "drs")
+        dbg("copyright:          %s" % util.zstr(self.header[0]))
+        dbg("version:            %s" % util.zstr(self.header[1]))
+        dbg("ftype:              %s" % util.zstr(self.header[2]))
+        dbg("table count:        %d" % (self.header[3]))
+        dbg("file offset:        %d" % (self.header[4]))
         dbg("")
 
         #read table info
@@ -64,29 +65,29 @@ class DRS:
         table_header_buf = f.read(table_count * DRS.drs_table_info.size)
         for i in range(table_count):
             table_header = DRS.drs_table_info.unpack_from(table_header_buf, i * DRS.drs_table_info.size)
-            file_type, file_extension, file_info_offset, num_files = table_header
+            file_type, file_extension, file_info_offset, file_count = table_header
 
             #flip the extension... it's stored that way...
             file_extension = file_extension.decode('latin-1').lower()[::-1]
 
-            dbg("Table header [" + str(i) + "]", 2, push = "table")
-            dbg("file type:        0x" + hexlify(file_type).decode('utf-8'))
-            dbg("file extension:   " + file_extension)
-            dbg("file_info_offset: " + str(file_info_offset))
-            dbg("num_files:        " + str(num_files))
+            dbg("Table header [%d]" % i, 2, push = "table")
+            dbg("file type:        0x%s"  % hexlify(file_type).decode('utf-8'))
+            dbg("file extension:   %s"    % (file_extension))
+            dbg("file_info_offset: %#08x" % (file_info_offset))
+            dbg("file_count:       %d"    % file_count)
             dbg("")
 
             f.seek(file_info_offset)
-            file_info_buf = f.read(num_files * DRS.drs_file_info.size)
+            file_info_buf = f.read(file_count * DRS.drs_file_info.size)
 
-            for j in range(num_files):
+            for j in range(file_count):
                 file_header = DRS.drs_file_info.unpack_from(file_info_buf, j * DRS.drs_file_info.size)
                 file_id, file_data_offset, file_size = file_header
 
-                dbg("File info header [" + str(j) + "]", 3, push = "fileinfo")
-                dbg("file id:        " + str(file_id))
-                dbg("data offset:    " + str(file_data_offset))
-                dbg("file size:      " + str(file_size))
+                dbg("File info header [%d]" % j, 3, push = "fileinfo")
+                dbg("file id:        %d" % (file_id))
+                dbg("data offset:    %d" % (file_data_offset))
+                dbg("file size:      %d" % (file_size))
                 dbg("")
 
                 self.files[(file_extension, file_id)] = file_data_offset, file_size
@@ -105,4 +106,4 @@ class DRS:
         return self.f.read(file_size)
 
     def __repr__(self):
-        return "DRS file (" + str(self.header[3]) + " tables, " + len(self.files) + " files)"
+        return "DRS file (%d tables, %d files)" % (self.header[3], len(self.files))
