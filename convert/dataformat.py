@@ -87,7 +87,7 @@ class Exportable:
                 raise Exception("invalid data member name %s" % member_name)
 
             if isinstance(member_type, MultisubtypeMember):
-                dbg(lazymsg=lambda: "%s => entering member %s" % (filename, member_name), lvl=2)
+                dbg(lazymsg=lambda: "%s => entering member %s" % (filename, member_name), lvl=3)
 
                 subdata_definitions = list()
                 for subtype_name, submember_class in member_type.class_lookup.items():
@@ -97,7 +97,7 @@ class Exportable:
                         submember_filename = filename
                         is_single_subdata  = True
                     else:
-                        dbg(lazymsg=lambda: "%s => entering multisubtype member %s" % (filename, subtype_name), lvl=2)
+                        dbg(lazymsg=lambda: "%s => entering multisubtype member %s" % (filename, subtype_name), lvl=3)
                         subdata_item_iter  = self_data[member_name][subtype_name]
                         submember_filename = "%s-%s" % (filename, subtype_name)
                         is_single_subdata  = False
@@ -107,7 +107,7 @@ class Exportable:
                         if not isinstance(submember_data_item, Exportable):
                             raise Exception("tried to dump object not inheriting from Exportable")
 
-                        dbg(lazymsg=lambda: "%s: submember item %d" % (filename, idx), lvl=3)
+                        dbg(lazymsg=lambda: "%s: submember item %d" % (filename, idx), lvl=4)
 
                         #generate output filename
                         member_ref   = "" #getattr(self, member_type.ref_to) if member_type.ref_to else ""
@@ -137,12 +137,12 @@ class Exportable:
                     else:
                         self_data[member_name][subtype_name] = submember_filename
 
-                        dbg(lazymsg=lambda: "%s => leaving multisubtype member %s" % (filename, subtype_name), lvl=2)
+                        dbg(lazymsg=lambda: "%s => leaving multisubtype member %s" % (filename, subtype_name), lvl=3)
 
                 #store all created submembers to the flat list
                 ret += subdata_definitions
 
-                dbg(lazymsg=lambda: "%s => leaving member %s" % (filename, member_name), lvl=2)
+                dbg(lazymsg=lambda: "%s => leaving member %s" % (filename, member_name), lvl=3)
 
         dbg(lazymsg=lambda: "%s data:\n%s" % (filename, pprint.pformat(self_data)), lvl=4)
 
