@@ -47,8 +47,8 @@ class ColorTable(dataformat.Exportable):
             #one entry looks like "13 37 42", where 13 is the red value, 37 green and 42 blue.
             self.palette.append(tuple(map(int, lines[i].split(' '))))
 
-        if len(self.palette) != len(lines) - 3:
-            raise Exception("read a different amount of palette entries than expected.")
+        if len(self.palette) != len(lines) - 4:
+            raise Exception("read a %d palette entries but expected %d." % (len(self.palette), len(lines) - 4))
 
     def __getitem__(self, index):
         return self.palette[index]
