@@ -274,6 +274,11 @@ class Exportable:
                     #store first tuple element
                     result = result[0]
 
+                    if symbol == "f":
+                        import math
+                        if not math.isfinite(result):
+                            raise Exception("invalid float when reading %s at offset %#08x" % (var_name, offset))
+
                 #run entry hook for non-primitive members
                 if isinstance(var_type, DataMember):
                     result = var_type.entry_hook(result)
@@ -604,7 +609,7 @@ class DataMember:
     def get_effective_type(self):
         raise NotImplementedError("return the effective type of member type %s" % type(self))
 
-    def get_length(self):
+    def get_length(self, obj=None):
         return self.length
 
     def get_struct_entries(self, member_name):
@@ -853,7 +858,7 @@ class CharArrayMember(DynLengthMember):
         else:
             return "char";
 
-    def get_length(self):
+    def get_length(self, obj=None):
         if self.is_dynamic_length():
             return 1
         else:
@@ -1293,8 +1298,13 @@ class DataFormatter:
 
         parents = [parent_class.get_effective_type() for parent_class in dataset.parent_classes]
 
+        if len(parents) > 0:
+            inheritance_txt = " : %s" % (", ".join(parents))
+        else:
+            inheritance_txt = ""
+
         #struct definition
-        txt.append("struct %s%s {\n" % (dataset.name_struct, ", ".join(parents)))
+        txt.append("struct %s%s {\n" % (dataset.name_struct, inheritance_txt))
 
         #struct member entries
         txt.extend(struct_entries)
