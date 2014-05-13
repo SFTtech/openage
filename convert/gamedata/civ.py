@@ -86,7 +86,10 @@ class CivData(dataformat.Exportable):
     struct_description = "civilisation list."
 
     data_format = (
-        (dataformat.READ_EXPORT, "civs", dataformat.SubdataMember(ref_type=Civ)),
+        (dataformat.READ_EXPORT, "civs", dataformat.SubdataMember(
+            ref_type=Civ,
+            length="civ_count"
+        )),
     )
 
     def read(self, raw, offset):

@@ -652,14 +652,17 @@ class DynLengthMember(DataMember):
 
     any_length = util.NamedObject("unspecified length")
 
-    def __init__(self, length=None):
-        super(DynLengthMember).__init__()
+    def __init__(self, length):
+        #super().__init__()
+        if type(length) not in (int, str):
+            raise Exception("invalid length passed to %s: %s<%s>" % (type(self), length, type(length)))
+
         self.length = length
 
     def get_length(self, obj=None):
         if self.is_dynamic_length():
             if self.length is self.any_length:
-                return -1
+                return self.any_length
 
             if not obj:
                 raise Exception("dynamic length query requires source object")
@@ -679,9 +682,6 @@ class DynLengthMember(DataMember):
             return False
         else:
             raise Exception("unknown length definition supplied: %s" % self.length)
-
-    def store_length(self, obj):
-        self.length = self.get_length(obj)
 
 
 class RefMember(DataMember):
@@ -856,12 +856,6 @@ class CharArrayMember(DynLengthMember):
         else:
             return "char";
 
-    def get_length(self, obj=None):
-        if self.is_dynamic_length():
-            return 1
-        else:
-            return super().get_length()
-
     def __repr__(self):
         return "".join(self.get_effective_type())
 
@@ -875,15 +869,15 @@ class StringMember(CharArrayMember):
         super().__init__(DynLengthMember.any_length)
 
 
-class MultisubtypeMember(DynLengthMember, RefMember):
+class MultisubtypeMember(RefMember, DynLengthMember):
     """
     struct member/data column that groups multiple references to
     multiple other data sets.
     """
 
-    def __init__(self, type_name, class_lookup, type_to, length=None, passed_args=None, ref_to=None, offset_to=None, file_name=None):
-        DynLengthMember.__init__(self, length)
+    def __init__(self, type_name, class_lookup, type_to, length, passed_args=None, ref_to=None, offset_to=None, file_name=None):
         RefMember.__init__(self, type_name, file_name)
+        DynLengthMember.__init__(self, length)
         self.class_lookup      = class_lookup        #!< dict to look up type_name => class
         self.type_to           = type_to             #!< member name whose value specifies the subdata type for each entry
         self.passed_args       = passed_args         #!< list of member names whose values will be passed to the new class
@@ -943,7 +937,7 @@ class SubdataMember(MultisubtypeMember):
     struct member/data column that references to one another data set.
     """
 
-    def __init__(self, ref_type, ref_to=None, length=None, offset_to=None):
+    def __init__(self, ref_type, length, ref_to=None, offset_to=None):
         super().__init__(type_name=None, class_lookup={None: ref_type}, type_to=ref_to, length=length, offset_to=None)
 
     def get_effective_type(self):

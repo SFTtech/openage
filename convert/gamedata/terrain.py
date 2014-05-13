@@ -160,8 +160,11 @@ class TerrainData(dataformat.Exportable):
     struct_description = "terrain list"
 
     data_format = (
-        ("terrain_count", dataformat.NOREAD_EXPORT, "uint16_t"),
-        ("terrains",      dataformat.READ_EXPORT, dataformat.SubdataMember(ref_type=Terrain)),
+        (dataformat.NOREAD_EXPORT, "terrain_count", "uint16_t"),
+        (dataformat.READ_EXPORT,   "terrains", dataformat.SubdataMember(
+            ref_type=Terrain,
+            length="terrain_count",
+        )),
     )
 
     def __init__(self, **args):

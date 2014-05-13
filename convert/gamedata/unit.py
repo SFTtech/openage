@@ -546,6 +546,7 @@ class Unit(dataformat.Exportable):
             type_name="unit_type_data",
             class_lookup=unit_type_class_lookup,
             type_to="unit_type",
+            length=1,
         )),
     )
 
