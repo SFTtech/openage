@@ -15,10 +15,10 @@ import os.path
 
 
 #global member type modifiers
-READ          = util.NamedObject("binary-read member")
-READ_EXPORT   = util.NamedObject("binary-read and exported member")
-NOREAD_EXPORT = util.NamedObject("only export member, don't read it")
-READ_UNKNOWN  = util.NamedObject("member to read but which is unknown")
+READ          = util.NamedObject("binary-read_member")
+READ_EXPORT   = util.NamedObject("binary-read-export_member")
+NOREAD_EXPORT = util.NamedObject("noread_export_member")
+READ_UNKNOWN  = util.NamedObject("read_unknown_member")
 
 #regex for matching type array definitions like int[1337]
 #group 1: type name, group 2: length
