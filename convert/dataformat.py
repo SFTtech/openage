@@ -327,18 +327,15 @@ class Exportable:
 
     @classmethod
     def get_data_format(cls, allowed_modes=False, flatten_includes=False, is_parent=False):
-        ret = list()
-
         for member in cls.data_format:
             export, member_name, member_type = member
 
             if isinstance(member_type, IncludeMembers):
                 if flatten_includes:
                     #recursive call
-                    ret += member_type.cls.get_data_format(allowed_modes, flatten_includes, is_parent=True)
+                    for member in member_type.cls.get_data_format(allowed_modes, flatten_includes, is_parent=True):
+                        yield member
                     continue
-                else:
-                    is_parent = True
 
             if allowed_modes:
                 if export not in allowed_modes:
@@ -347,8 +344,7 @@ class Exportable:
 
             member_entry = (is_parent,) + member
             dbg(lazymsg=lambda: "%s: returning member entry %s" % (repr(cls), member_entry), lvl=4)
-            ret.append(member_entry)
-        return ret
+            yield member_entry
 
 
 class ContentSnippet:
