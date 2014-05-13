@@ -17,3 +17,4 @@ lib
 data/age
 callgrind.out.*
 perf.data*
+.gdb_history
