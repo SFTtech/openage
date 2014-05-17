@@ -12,7 +12,7 @@ from string import Template
 import struct
 import os.path
 
-
+ENDIANNESS = "<"
 
 #global member type modifiers
 READ          = util.NamedObject("binary-read_member")
@@ -262,10 +262,10 @@ class Exportable:
                     var_name = "unknown-0x%08x" % offset
 
                 #lookup c type to python struct scan type
-                symbol, size = util.struct_type_lookup[struct_type]
+                symbol = util.struct_type_lookup[struct_type]
 
-                dbg(lazymsg=lambda: "\tdumping %s<%s> as '< %d%s' at 0x%08x" % (var_name, var_type, data_count, symbol, offset), lvl=4)
-                struct_format = "< %d%s" % (data_count, symbol)
+                dbg(lazymsg=lambda: "\treading %s<%s> as '< %d%s' at 0x%08x" % (var_name, var_type, data_count, symbol, offset), lvl=4)
+                struct_format = "%s %d%s" % (ENDIANNESS, data_count, symbol)
                 result = struct.unpack_from(struct_format, raw, offset)
                 offset += struct.calcsize(struct_format)
 
@@ -822,7 +822,7 @@ class CharArrayMember(DynLengthMember):
 
     def __init__(self, length):
         super().__init__(length)
-        self.raw_type = "char"
+        self.raw_type = "char[]"
 
     def get_parsers(self, idx, member):
         if self.is_dynamic_length():
