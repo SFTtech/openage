@@ -22,7 +22,11 @@ READ_UNKNOWN  = util.NamedObject("read_unknown_member")
 
 #regex for matching type array definitions like int[1337]
 #group 1: type name, group 2: length
-vararray_match = re.compile("([a-zA-Z0-9_ -]+)\\[(\\d+)\\]")
+vararray_match = re.compile("([{0}]+) *\\[([{0}]+)\\] *;?".format("a-zA-Z0-9_"))
+
+#match a simple number
+integer_match = re.compile("\\d+")
+
 
 def encode_value(val):
     """
@@ -107,10 +111,10 @@ class Exportable:
                         if not isinstance(submember_data_item, Exportable):
                             raise Exception("tried to dump object not inheriting from Exportable")
 
-                        dbg(lazymsg=lambda: "%s: submember item %d" % (filename, idx), lvl=4)
+                        #dbg(lazymsg=lambda: "%s: submember item %d" % (filename, idx), lvl=4)
 
                         #generate output filename
-                        member_ref   = "" #getattr(self, member_type.ref_to) if member_type.ref_to else ""
+                        member_ref   = "" #getattr(self, member_type.identifier) if blabla else ""
                         sub_filename = "%s-%s/%s-%04d%s" % (submember_filename, member_name, member_name, idx, member_ref)
 
                         #recursive call, fetches DataDefinitions and the next-level data dict
@@ -121,14 +125,19 @@ class Exportable:
 
                         #append the next-level entry to the list
                         #that will contain the data for the current level DataDefinition
+                        #dbg(lazymsg=lambda: "%s: submember item %d ADDING data\n%s\n" % (filename, idx, data), lvl=4)
                         submember_data.append(data)
 
-                    #create DataDefinition for the next-level data pile.
-                    subdata_definitions.append(DataDefinition(
-                        submember_class,
-                        submember_data,
-                        submember_filename,
-                    ))
+                    if len(submember_data) > 0:
+                        #create DataDefinition for the next-level data pile.
+                        subdata_definition = DataDefinition(
+                            submember_class,
+                            submember_data,
+                            submember_filename,
+                        )
+
+                        #dbg(lazymsg=lambda: "->================\n%s: submember data  DEFINITION\n%s\n=======================" % (filename, subdata_definition), lvl=4)
+                        subdata_definitions.append(subdata_definition)
 
                     #store filename instead of data list
                     #is used to determine the file to read next.
@@ -144,11 +153,11 @@ class Exportable:
 
                 dbg(lazymsg=lambda: "%s => leaving member %s" % (filename, member_name), lvl=3)
 
-        dbg(lazymsg=lambda: "%s data:\n%s" % (filename, pprint.pformat(self_data)), lvl=4)
+        #dbg(lazymsg=lambda: "%s data:\n%s" % (filename, pprint.pformat(self_data)), lvl=4)
 
         return ret, self_data
 
-    def read(self, raw, offset, cls=None):
+    def read(self, raw, offset, cls=None, members=None):
         """
         recursively read defined binary data from raw at given offset.
 
@@ -162,14 +171,16 @@ class Exportable:
         else:
             target_class = self
 
-        members = target_class.get_data_format(allowed_modes=(True, READ_EXPORT, READ, READ_UNKNOWN), flatten_includes=False)
+        if not members:
+            members = target_class.get_data_format(allowed_modes=(True, READ_EXPORT, READ, READ_UNKNOWN), flatten_includes=False)
+
         for is_parent, export, var_name, var_type in members:
 
             if isinstance(var_type, IncludeMembers):
                 if not issubclass(var_type.cls, Exportable):
                     raise Exception("class where members should be included is not exportable: %s" % var_type.cls.__name__)
 
-                dbg(lazymsg=lambda: "calling included class %s.read()" % (var_type.cls.__name__), lvl=4)
+                #dbg(lazymsg=lambda: "calling included class %s.read()" % (var_type.cls.__name__), lvl=4)
                 offset = var_type.cls.read(self, raw, offset, cls=var_type.cls)
 
             elif isinstance(var_type, MultisubtypeMember):
@@ -196,13 +207,36 @@ class Exportable:
                     setattr(self, var_name, util.gen_dict_key2lists(var_type.class_lookup.keys()))
                     single_type_subdata = False
 
+                #check if entries need offset checking
+                if var_type.offset_to:
+                    offset_lookup = getattr(self, var_type.offset_to)
+                else:
+                    offset_lookup = None
+
                 for i in range(list_len):
+
+                    #if datfile offset == 0, entry has to be skipped.
+                    if offset_lookup:
+                        if offset_lookup[i] == 0:
+                            continue
+                        #TODO: don't read sequentially, use the lookup as new offset?
+
                     if single_type_subdata:
                         #append single data entry to the subdata object list
                         new_data_class = var_type.class_lookup[None]
                     else:
-                        #determine subtype first, then append the data entry to the desired list
-                        subtype_name = self_data[var_type.type_to]
+                        #to determine the subtype class, read the binary definition
+                        offset = self.read(
+                            raw, offset,
+                            cls=target_class,
+                            members=(((False,) + var_type.subtype_definition),)
+                        )
+
+                        #read the variable set by the above read call to
+                        #use the read data to determine the denominaton of the member type
+                        subtype_name = getattr(self, var_type.subtype_definition[1])
+
+                        #look up the type name to get the subtype class
                         new_data_class = var_type.class_lookup[subtype_name]
 
                     if not issubclass(new_data_class, Exportable):
@@ -211,7 +245,7 @@ class Exportable:
                     #create instance of submember class
                     new_data = new_data_class(**varargs)
 
-                    dbg(lazymsg=lambda: "%s: calling read of %s..." % (repr(self), repr(new_data)), lvl=4)
+                    #dbg(lazymsg=lambda: "%s: calling read of %s..." % (repr(self), repr(new_data)), lvl=4)
 
                     #recursive call, read the subdata.
                     offset = new_data.read(raw, offset, new_data_class)
@@ -225,20 +259,26 @@ class Exportable:
             else:
                 #reading binary data, as this member is no reference but actual content.
 
-                dbg(lazymsg=lambda: "%s: reading entry %s..." % (repr(target_class), var_name), lvl=4)
+                #dbg(lazymsg=lambda: "%s: reading entry %s..." % (repr(target_class), var_name), lvl=4)
 
                 data_count = 1
 
                 if type(var_type) == str:
-                    #standard type implies binary length
-
                     is_array = vararray_match.match(var_type)
 
                     if is_array:
                         struct_type = is_array.group(1)
-                        data_count  = int(is_array.group(2))
+                        data_count  = is_array.group(2)
                         if struct_type == "char":
                             struct_type = "char[]"
+
+                        if integer_match.match(data_count):
+                            #integer length
+                            data_count = int(data_count)
+                        else:
+                            #dynamic length specified by member name
+                            data_count = getattr(self, data_count)
+
                     else:
                         struct_type = var_type
                         data_count  = 1
@@ -255,7 +295,7 @@ class Exportable:
                     raise Exception("invalid length <= 0 in %s for member %s" % (var_type, var_name))
 
                 if struct_type not in util.struct_type_lookup:
-                    raise Exception("unknown primitive struct data type %s for member %s" % (struct_type, var_name))
+                    raise Exception("%s: member %s requests unknown data type %s for member %s" % (repr(self), var_name, struct_type))
 
                 if export == READ_UNKNOWN:
                     #for unknown variables, generate uid for the unknown memory location
@@ -285,7 +325,7 @@ class Exportable:
                 if isinstance(var_type, DataMember):
                     result = var_type.entry_hook(result)
 
-                dbg(lazymsg=lambda: "\t==> storing self.%s = %s" % (var_name, result), lvl=4)
+                #dbg(lazymsg=lambda: "\t==> storing self.%s = %s" % (var_name, result), lvl=4)
 
                 #store member's data value
                 setattr(self, var_name, result)
@@ -338,11 +378,9 @@ class Exportable:
 
             if allowed_modes:
                 if export not in allowed_modes:
-                    dbg(lazymsg=lambda: "%s: skipping member %s" % (repr(cls), member_name), lvl=4)
                     continue
 
             member_entry = (is_parent,) + member
-            dbg(lazymsg=lambda: "%s: returning member entry %s" % (repr(cls), member_entry), lvl=4)
             yield member_entry
 
 
@@ -683,6 +721,7 @@ class RefMember(DataMember):
     """
 
     def __init__(self, type_name, file_name):
+        DataMember.__init__(self)
         self.resolved  = False
         self.type_name = type_name
         self.file_name = file_name
@@ -740,7 +779,7 @@ class EnumMember(RefMember):
     def __init__(self, type_name, file_name=None, values=None):
         super().__init__(type_name, file_name)
         self.values    = values
-        self.resolved  = True    #TODO..
+        self.resolved  = True    #TODO, xrefs not supported yet.
 
     def get_parsers(self, idx, member):
         enum_parse_else = ""
@@ -807,11 +846,11 @@ class EnumMember(RefMember):
 
 class EnumLookupMember(EnumMember):
     def __init__(self, type_name, lookup_dict, raw_type=None, file_name=None):
-        super().__init__(type_name, file_name, lookup_dict.values())
+        super().__init__(type_name, file_name, values=lookup_dict.values())
         self.lookup_dict = lookup_dict
         self.raw_type = raw_type
 
-    def data_hook(self, data):
+    def entry_hook(self, data):
         return self.lookup_dict[data]
 
 
@@ -828,7 +867,12 @@ class CharArrayMember(DynLengthMember):
         if self.is_dynamic_length():
             return [ "this->%s = buf[%d];" % (member, idx) ]
         else:
-            return [ "strncpy(this->%s, buf[%d], %d); this->%s[%d-1] = '\\0';" % (member, idx, self.get_length(), member, self.get_length()) ]
+            data_length = self.get_length()
+            return [
+                "strncpy(this->%s, buf[%d], %d); this->%s[%d] = '\\0';" % (
+                    member, idx, data_length, member, data_length-1
+                )
+            ]
 
     def get_headers(self, output_target):
         ret = set()
@@ -867,14 +911,16 @@ class MultisubtypeMember(RefMember, DynLengthMember):
     multiple other data sets.
     """
 
-    def __init__(self, type_name, class_lookup, type_to, length, passed_args=None, ref_to=None, offset_to=None, file_name=None):
+    def __init__(self, type_name, subtype_definition, class_lookup, length, passed_args=None, ref_to=None, offset_to=None, file_name=None, ref_type_params=None):
         RefMember.__init__(self, type_name, file_name)
         DynLengthMember.__init__(self, length)
-        self.class_lookup      = class_lookup        #!< dict to look up type_name => class
-        self.type_to           = type_to             #!< member name whose value specifies the subdata type for each entry
-        self.passed_args       = passed_args         #!< list of member names whose values will be passed to the new class
-        self.ref_to            = ref_to              #!< add this member name's value to the filename
-        self.offset_to         = offset_to           #!< link to member name which is a list of binary file offsets
+
+        self.subtype_definition = subtype_definition  #!< to determine the subtype for each entry, read this value to do the class_lookup
+        self.class_lookup       = class_lookup        #!< dict to look up type_name => exportable class
+        self.passed_args        = passed_args         #!< list of member names whose values will be passed to the new class
+        self.ref_to             = ref_to              #!< add this member name's value to the filename
+        self.offset_to          = offset_to           #!< link to member name which is a list of binary file offsets
+        self.ref_type_params    = ref_type_params     #!< dict to specify type_name => constructor arguments
 
         #no xrefs supported yet..
         self.resolved          = True
@@ -921,7 +967,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         return [ snippet ]
 
     def __repr__(self):
-        return "MultisubtypeMember<%s>" % str(self.class_lookup)
+        return "MultisubtypeMember<%s,len=%s>" % (str(self.class_lookup), self.length)
 
 
 class SubdataMember(MultisubtypeMember):
@@ -929,8 +975,16 @@ class SubdataMember(MultisubtypeMember):
     struct member/data column that references to one another data set.
     """
 
-    def __init__(self, ref_type, length, ref_to=None, offset_to=None):
-        super().__init__(type_name=None, class_lookup={None: ref_type}, type_to=ref_to, length=length, offset_to=None)
+    def __init__(self, ref_type, length, offset_to=None, ref_to=None, ref_type_params=None):
+        super().__init__(
+            type_name          = None,
+            subtype_definition = None,
+            class_lookup       = {None: ref_type},
+            length             = length,
+            offset_to          = offset_to,
+            ref_to             = ref_to,
+            ref_type_params    = {None: ref_type_params},
+        )
 
     def get_effective_type(self):
         return "std::vector<%s>" % (self.get_contained_types()[0])
@@ -947,8 +1001,23 @@ class SubdataMember(MultisubtypeMember):
     def get_typerefs(self):
         return set(self.get_contained_types())
 
+    def get_subdata_type_name(self):
+        return self.class_lookup[None].__name__
+
     def __repr__(self):
-        return "SubdataMember<%s,len=%s>" % (self.class_lookup[None].__name__, self.length)
+        return "SubdataMember<%s,len=%s>" % (self.get_subdata_type_name(), self.length)
+
+
+class ArrayMember(SubdataMember):
+    """
+    autogenerated subdata member for arrays like float[8].
+    """
+
+    def __init__(self, ref_type, length, ref_type_params=None):
+        super().__init__(ref_type, length)
+
+    def __repr__(self):
+        return "ArrayMember<%s,len=%s>" % (self.get_subdata_type_name(), self.length)
 
 
 class StructDefinition:
@@ -985,12 +1054,18 @@ class StructDefinition:
             if type(member_type) == str:
                 array_match = vararray_match.match(member_type)
                 if array_match:
-                    array_type   = array_match.group(1).strip()
-                    array_length = int(array_match.group(2))
-                    if array_length > 0 and array_type == "char":
+                    array_type   = array_match.group(1)
+                    array_length = array_match.group(2)
+
+                    if array_type == "char":
                         member = CharArrayMember(array_length)
+                    elif array_type in NumberMember.type_scan_lookup:
+                        #member = ArrayMember(ref_type=NumberMember, length=array_length, ref_type_params=[array_type])
+                        #BIG BIG TODO
+                        pass
                     else:
-                        raise Exception("unknown type or array length <= 0")
+                        raise Exception("member %s has unknown array type %s" % (member_name, member_type))
+
                 elif member_type == "std::string":
                     member = StringMember()
                 else:
@@ -1281,7 +1356,7 @@ class DataFormatter:
 
             struct_entries.extend(["\t%s\n" % entry for entry in member_type.get_struct_entries(member_name)])
 
-        dbg(lazymsg=lambda: "%s needed_types = %s" % (dataset.name_struct, needed_types), lvl=4)
+        #dbg(lazymsg=lambda: "%s needed_types = %s" % (dataset.name_struct, needed_types), lvl=4)
 
         parents = [parent_class.get_effective_type() for parent_class in dataset.parent_classes]
 
