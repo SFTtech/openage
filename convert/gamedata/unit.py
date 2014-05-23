@@ -507,68 +507,26 @@ class UnitTree(UnitObject):
         super().__init__(**args)
 
 
-class Unit(dataformat.Exportable):
+unit_type_lookup = {
+    10: "object",
+    20: "flag",
+    25: "doppelganger",
+    30: "dead_or_fish",
+    40: "bird",
+    60: "projectile",
+    70: "living",
+    80: "building",
+    90: "tree",
+}
 
-    name_struct        = "unit"
-    name_struct_file   = "unit"
-    struct_description = "container for all possible unit types."
-
-    unit_type_lookup = {
-        10: "object",
-        20: "flag",
-        25: "doppelganger",
-        30: "dead_or_fish",
-        40: "bird",
-        60: "projectile",
-        70: "living",
-        80: "building",
-        90: "tree",
-    }
-
-    unit_type_class_lookup = {
-        "object":       UnitObject,
-        "flag":         UnitFlag,
-        "doppelganger": UnitDoppelganger,
-        "dead_or_fish": UnitDeadOrFish,
-        "bird":         UnitBird,
-        "projectile":   UnitProjectile,
-        "living":       UnitLiving,
-        "building":     UnitBuilding,
-        "tree":         UnitTree,
-    }
-
-    data_format = (
-        (dataformat.READ_EXPORT, "unit_type", dataformat.EnumMember(
-            type_name="unit_types",
-            values=unit_type_lookup.values(),
-        )),
-        (dataformat.READ_EXPORT, "type_data", dataformat.MultisubtypeMember(
-            type_name="unit_type_data",
-            class_lookup=unit_type_class_lookup,
-            type_to="unit_type",
-            length=1,
-        )),
-    )
-
-    def __init__(self):
-        #create dict with unit_type => []
-        #created units will be placed in here.
-        self.type_data = util.gen_dict_key2lists(self.unit_type_lookup.values())
-
-    def read(self, raw, offset, cls=None):
-
-        #int8_t type_id;
-        unit_type_struct = Struct(endianness + "b")
-
-        unit_type_id, = unit_type_struct.unpack_from(raw, offset)
-        offset += unit_type_struct.size
-
-        #depending on the type id the matching unit class will be selected
-        self.unit_type = self.unit_type_lookup[unit_type_id]
-
-        new_unit = self.unit_type_class_lookup[self.unit_type]()
-        new_unit.unit_type = unit_type_id
-        offset = new_unit.read(raw, offset)
-        self.type_data[self.unit_type].append(new_unit)
-
-        return offset
+unit_type_class_lookup = {
+    "object":       UnitObject,
+    "flag":         UnitFlag,
+    "doppelganger": UnitDoppelganger,
+    "dead_or_fish": UnitDeadOrFish,
+    "bird":         UnitBird,
+    "projectile":   UnitProjectile,
+    "living":       UnitLiving,
+    "building":     UnitBuilding,
+    "tree":         UnitTree,
+}
