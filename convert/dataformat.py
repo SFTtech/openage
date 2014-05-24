@@ -325,6 +325,10 @@ class Exportable:
                 if isinstance(var_type, DataMember):
                     result = var_type.entry_hook(result)
 
+                    if result == ContinueReadMember.ABORT:
+                        #don't go through all other members of this class!
+                        break
+
                 #dbg(lazymsg=lambda: "\t==> storing self.%s = %s" % (var_name, result), lvl=4)
 
                 #store member's data value
@@ -734,6 +738,7 @@ class NumberMember(DataMember):
 
     #primitive types, directly parsable by sscanf
     type_scan_lookup = {
+        "bool":          "hhd",
         "char":          "hhd",
         "int8_t":        "hhd",
         "uint8_t":       "hhu",
@@ -769,6 +774,20 @@ class NumberMember(DataMember):
 
     def __repr__(self):
         return self.number_type
+
+
+class ContinueReadMember(NumberMember):
+    ABORT    = util.NamedObject("member_reading_abort")
+    CONTINUE = util.NamedObject("member_reading_continue")
+
+    def __init__(self, raw_type):
+        super().__init__(raw_type)
+
+    def entry_hook(self, data):
+        if data == 0:
+            return self.ABORT
+        else:
+            return self.CONTINUE
 
 
 class EnumMember(RefMember):
