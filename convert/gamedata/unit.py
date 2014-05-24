@@ -187,10 +187,10 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "language_dll_name", "uint16_t"),
         (dataformat.READ, "language_dll_creation", "uint16_t"),
         (dataformat.READ, "unit_class", "int16_t"),
-        (dataformat.READ, "graphic_standing0", "int16_t"),
-        (dataformat.READ, "graphic_standing1", "int16_t"),
-        (dataformat.READ, "graphic_dying0", "int16_t"),
-        (dataformat.READ, "graphic_dying1", "int16_t"),
+        (dataformat.READ_EXPORT, "graphic_standing0", "int16_t"),
+        (dataformat.READ_EXPORT, "graphic_standing1", "int16_t"),
+        (dataformat.READ_EXPORT, "graphic_dying0", "int16_t"),
+        (dataformat.READ_EXPORT, "graphic_dying1", "int16_t"),
         (dataformat.READ, "death_mode", "int8_t"),
         (dataformat.READ, "hit_points", "int16_t"),
         (dataformat.READ, "line_of_sight", "float"),
@@ -198,8 +198,8 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "radius_size0", "float"),
         (dataformat.READ, "radius_size1", "float"),
         (dataformat.READ, "hp_bar_height0", "float"),
-        (dataformat.READ, "sound_train0", "int16_t"),
-        (dataformat.READ, "sound_train1", "int16_t"),
+        (dataformat.READ_EXPORT, "sound_train0", "int16_t"),
+        (dataformat.READ_EXPORT, "sound_train1", "int16_t"),
         (dataformat.READ, "dead_unit_id", "int16_t"),
         (dataformat.READ, "placement_mode", "int8_t"),
         (dataformat.READ, "air_mode", "int8_t"),
@@ -279,7 +279,7 @@ class UnitFlag(UnitObject):
 
     data_format = (
         (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitObject)),
-        (dataformat.READ, "speed", "float"),
+        (dataformat.READ_EXPORT, "speed", "float"),
     )
 
     def __init__(self, **args):
@@ -314,8 +314,8 @@ class UnitDeadOrFish(UnitDoppelganger):
 
     data_format = (
         (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitDoppelganger)),
-        (dataformat.READ, "walking_graphics0", "int16_t"),
-        (dataformat.READ, "walking_graphics1", "int16_t"),
+        (dataformat.READ_EXPORT, "walking_graphics0", "int16_t"),
+        (dataformat.READ_EXPORT, "walking_graphics1", "int16_t"),
         (dataformat.READ, "rotation_speed", "float"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ, "tracking_unit", "int16_t"),
@@ -383,7 +383,7 @@ class UnitMovable(UnitBird):
         (dataformat.READ, "blast_level", "int8_t"),
         (dataformat.READ, "min_range", "float"),
         (dataformat.READ, "garnison_recovery_rate", "float"),
-        (dataformat.READ, "attack_graphic", "int16_t"),
+        (dataformat.READ_EXPORT, "attack_graphic", "int16_t"),
         (dataformat.READ, "melee_armor_displayed", "int16_t"),
         (dataformat.READ, "attack_displayed", "int16_t"),
         (dataformat.READ, "range_displayed", "int16_t"),
