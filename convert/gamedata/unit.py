@@ -4,108 +4,65 @@ import util
 from util import dbg, zstr
 
 
-from .empiresdat import endianness
+class UnitCommand(dataformat.Exportable):
+    name_struct        = "unit_command"
+    name_struct_file   = "unit"
+    struct_description = "a command a single unit may recieve by script or human."
+
+    data_format = (
+        (dataformat.READ, "one", "int16_t"),
+        (dataformat.READ, "uid", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ, "type", "int16_t"),
+        (dataformat.READ, "class_id", "int16_t"),
+        (dataformat.READ, "unit_id", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
+        (dataformat.READ, "ressource_in", "int16_t"),
+        (dataformat.READ, "sub_type", "int16_t"),
+        (dataformat.READ, "ressource_out", "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
+        (dataformat.READ, "work_rate_multiplier", "float"),
+        (dataformat.READ, "execution_radius", "float"),
+        (dataformat.READ, "extra_range", "float"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "float"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int32_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ, "graphic", "int16_t[6]"),
+    )
 
 
-class UnitHeader:
-    def read(self, raw, offset, cls=None):
-        #bool exists;
-        unit_header_header_struct0 = Struct(endianness + "?")
+class UnitHeader(dataformat.Exportable):
+    name_struct        = "unit_header"
+    name_struct_file   = "unit"
+    struct_description = "stores a bunch of unit commands."
 
-        pc = unit_header_header_struct0.unpack_from(raw, offset)
-        offset += unit_header_header_struct0.size
-
-        self.exists = pc[0]
-
-        if self.exists == True:
-            unit_header_header_struct1 = Struct(endianness + "H")
-
-            pc = unit_header_header_struct1.unpack_from(raw, offset)
-            offset += unit_header_header_struct1.size
-
-            self.unit_command_count = pc[0]
-
-            self.unit_command = list()
-            for i in range(self.unit_command_count):
-                t = UnitCommand()
-                offset = t.read(raw, offset)
-                self.unit_command.append(t)
-
-        return offset
+    data_format = (
+        (dataformat.READ, "exists", dataformat.ContinueReadMember("bool")),
+        (dataformat.READ, "unit_command_count", "uint16_t"),
+        (dataformat.READ_EXPORT, "unit_commands", dataformat.SubdataMember(
+            ref_type=UnitCommand,
+            length="unit_command_count",
+        )),
+    )
 
 
-class UnitHeaderData:
-    def read(self, raw, offset, cls=None):
-        #uint32_t unit_count;
-        header_struct = Struct(endianness + "I")
+class UnitHeaderData(dataformat.Exportable):
+    name_struct        = "unit_header_data"
+    name_struct_file   = "unit"
+    struct_description = "several unit headers for unit commands."
 
-        pc = header_struct.unpack_from(raw, offset)
-        offset += header_struct.size
-
-        self.unit_count = pc[0]
-
-        self.unit_header = list()
-        for i in range(self.unit_count):
-            t = UnitHeader()
-            offset = t.read(raw, offset)
-            self.unit_header.append(t)
-
-        return offset
-
-
-class UnitCommand:
-    def read(self, raw, offset, cls=None):
-        #int16_t one;
-        #int16_t uid;
-        #int8_t unknown;
-        #int16_t type;
-        #int16_t class_id;
-        #int16_t unit_id;
-        #int16_t unknown;
-        #int16_t ressource_in;
-        #int16_t sub_type;
-        #int16_t ressource_out;
-        #int16_t unknown;
-        #float work_rate_multiplier;
-        #float execution_radius;
-        #float extra_range;
-        #int8_t unknown;
-        #float unknown;
-        #int8_t unknown;
-        #int8_t unknown;
-        #int32_t unknown;
-        #int8_t unknown;
-        #int8_t unknown;
-        #int8_t unknown;
-        #int16_t graphic[6];
-        unit_command_struct = Struct(endianness + "2h b 8h 3f b f 2b i 3b 6h")
-
-        pc = unit_command_struct.unpack_from(raw, offset)
-        offset += unit_command_struct.size
-
-        self.one = pc[0]
-        self.uid = pc[1]
-        #self. = pc[2]
-        self.class_id = pc[3]
-        self.unit_id = pc[4]
-        #self. = pc[5]
-        self.ressource_in = pc[6]
-        self.ressource_out = pc[7]
-        #self. = pc[8]
-        self.work_rate_multiplier = pc[9]
-        self.execution_radius = pc[10]
-        self.extra_range = pc[11]
-        #self. = pc[12]
-        #self. = pc[13]
-        #self. = pc[14]
-        #self. = pc[15]
-        #self. = pc[16]
-        #self. = pc[17]
-        #self. = pc[18]
-        #self. = pc[19]
-        self.graphic = pc[20:(20+6)]
-
-        return offset
+    data_format = (
+        (dataformat.READ, "unit_count", "uint32_t"),
+        (dataformat.READ, "unit_headers", dataformat.SubdataMember(
+            ref_type=UnitHeader,
+            length="unit_count",
+        )),
+    )
 
 
 class RessourceStorage(dataformat.Exportable):
