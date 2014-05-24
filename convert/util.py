@@ -230,25 +230,6 @@ def zstr(data):
     return data.decode("utf-8").rstrip("\x00")
 
 
-def check_file(fid):
-    if (True):
-        #deactivated for now, maybe use again later
-        return
-
-    import filelist
-    if fid in filelist.avail_files:
-        entries = filelist.avail_files[fid]
-        for arch, extension in entries:
-            dbg("%d.%s in %s" % (fid, extension, arch), 2)
-    elif fid in [-1, 0]:
-        dbg("***** graphic is %d!!" % fid, 2)
-        pass
-    else:
-        msg = "##### file %d not found" % (fid)
-        #raise Exception(msg)
-        dbg(msg, 2)
-
-
 def offset_info(offset, data, msg="", s=None, mode=0):
     ret = "====== @ %d = %#x ======" % (offset, offset)
     ret += " %s " % msg
