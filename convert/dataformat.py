@@ -1386,6 +1386,8 @@ class DataFormatter:
 
         parents = [parent_class.get_effective_type() for parent_class in dataset.parent_classes]
 
+        needed_types |= set(parents)
+
         if len(parents) > 0:
             inheritance_txt = " : %s" % (", ".join(parents))
         else:
