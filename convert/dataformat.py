@@ -777,6 +777,11 @@ class NumberMember(DataMember):
 
 
 class ContinueReadMember(NumberMember):
+    """
+    data field that aborts reading further members of the class
+    when its value == 0.
+    """
+
     ABORT    = util.NamedObject("member_reading_abort")
     CONTINUE = util.NamedObject("member_reading_continue")
 
@@ -1081,7 +1086,7 @@ class StructDefinition:
                     elif array_type in NumberMember.type_scan_lookup:
                         #member = ArrayMember(ref_type=NumberMember, length=array_length, ref_type_params=[array_type])
                         #BIG BIG TODO
-                        pass
+                        raise Exception("TODO: implement exporting arrays!")
                     else:
                         raise Exception("member %s has unknown array type %s" % (member_name, member_type))
 
@@ -1100,11 +1105,13 @@ class StructDefinition:
                 raise Exception("member %s of struct %s is None" % (member_name, self.name_struct))
 
             self.members[member_name] = member
-            self.parent_members.append(member_name)
+
+            if is_parent:
+                self.parent_members.append(member_name)
 
         members = target.get_data_format(flatten_includes=False)
-        for is_parent, _, _, member_type in members:
-            if is_parent and isinstance(member_type, IncludeMembers):
+        for _, _, _, member_type in members:
+            if isinstance(member_type, IncludeMembers):
                 self.parent_classes.append(member_type.cls)
 
     def dynamic_ref_update(self, lookup_ref_data):
