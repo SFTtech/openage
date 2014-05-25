@@ -767,7 +767,7 @@ class NumberMember(DataMember):
         if "structimpl" == output_target:
             return determine_headers("sscanf") | determine_headers(self.number_type)
         else:
-            return set()
+            return determine_headers(self.number_type)
 
     def get_effective_type(self):
         return self.number_type
@@ -1399,6 +1399,7 @@ class DataFormatter:
 
         #append member count variable
         txt.append("\n\tstatic constexpr size_t member_count = %d;\n" % len(dataset.members))
+        headers |= determine_headers("size_t")
 
         #add filling function prototype
         txt.append("\n\t%s;\n" % (self.fill_csignature % ""))
@@ -1475,11 +1476,12 @@ def determine_headers(for_type):
     #these headers are needed for the type
     ret = set()
 
-    cstdinth  = CHeader("cstdint", is_global=True)
+    cstdinth  = CHeader("stdint.h", is_global=True)
     stringh   = CHeader("string",  is_global=True)
     cstringh  = CHeader("cstring", is_global=True)
     cstdioh   = CHeader("cstdio",  is_global=True)
     vectorh   = CHeader("vector",  is_global=True)
+    cstddefh  = CHeader("stddef.h", is_global=True)
     engine_util_strings_h = CHeader("../engine/util/strings.h", False)
 
     #lookup for type->{header}
@@ -1498,6 +1500,7 @@ def determine_headers(for_type):
         "strncpy":         { cstringh },
         "strtok_custom":   { engine_util_strings_h },
         "sscanf":          { cstdioh  },
+        "size_t":          { cstddefh },
     }
 
     if for_type in type_map:
