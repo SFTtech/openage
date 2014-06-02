@@ -135,7 +135,7 @@ actually this is just the entrypoint and container for the terrain chunks.
 */
 class Terrain {
 public:
-	Terrain(std::vector<terrain_type> terrain_meta, std::vector<blending_mode> blending_meta, bool is_infinite);
+	Terrain(std::vector<gamedata::terrain_type> terrain_meta, std::vector<gamedata::blending_mode> blending_meta, bool is_infinite);
 	~Terrain();
 
 	bool blending_enabled; //!< is terrain blending active. increases memory accesses by factor ~8

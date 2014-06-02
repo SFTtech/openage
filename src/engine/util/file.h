@@ -12,18 +12,6 @@
 namespace engine {
 namespace util {
 
-/**
- * stores the link between fileename and it's content
- */
-template <class lineformat>
-struct subdata {
-	std::string filename;
-	std::vector<lineformat> data;
-
-	void fill() {
-		this->data = read_csv_file<lineformat>(this->filename.c_str());
-	}
-};
 
 ssize_t read_whole_file(char **result, const char *filename);
 

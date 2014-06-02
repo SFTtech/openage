@@ -47,7 +47,7 @@ public:
 	// used
 	AudioManager(const std::string &device_name, int freq,
 			SDL_AudioFormat format, uint8_t channels, uint16_t samples);
-	
+
 	~AudioManager();
 
 	// delete copy and move constructors and operators
@@ -57,7 +57,7 @@ public:
 	AudioManager &operator=(const AudioManager&) = delete;
 	AudioManager &operator=(AudioManager&&) = delete;
 
-	void load_resources(const std::vector<sound_file> &sound_files);
+	void load_resources(const std::vector<gamedata::sound_file> &sound_files);
 
 	Sound get_sound(category_t category, int id);
 

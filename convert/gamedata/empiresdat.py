@@ -62,7 +62,6 @@ class EmpiresDat:
         finish_percent = 100*(offset/decompressed_size)
         dbg("finished reading empires*.dat at %d of %d bytes (%f%%)." % (offset, decompressed_size, finish_percent), 1)
 
-
     def raw_dump(self, filename):
         """
         save the dat file in uncompressed format.

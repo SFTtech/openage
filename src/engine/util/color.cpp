@@ -6,7 +6,7 @@
 namespace engine {
 namespace util {
 
-col::col(palette_color c) {
+col::col(gamedata::palette_color c) {
 	this->r = c.r;
 	this->g = c.g;
 	this->b = c.b;

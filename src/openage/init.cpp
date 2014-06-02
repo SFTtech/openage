@@ -59,9 +59,9 @@ void init() {
 	gaben = new Texture("gaben.png");
 	university = new Texture("age/assets/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
-	auto string_resources = util::read_csv_file<string_resource>("age/assets/string_resources.docx");
-	auto terrain_types  = util::read_csv_file<terrain_type>("age/assets/gamedata/terrain.docx");
-	auto blending_modes = util::read_csv_file<blending_mode>("age/assets/blending_modes.docx");
+	auto string_resources = util::read_csv_file<gamedata::string_resource>("age/assets/string_resources.docx");
+	auto terrain_types  = util::read_csv_file<gamedata::terrain_type>("age/assets/gamedata/terrain.docx");
+	auto blending_modes = util::read_csv_file<gamedata::blending_mode>("age/assets/blending_modes.docx");
 
 	//create the terrain which will be filled by chunks
 	terrain = new Terrain(terrain_types, blending_modes, true);
@@ -69,7 +69,7 @@ void init() {
 
 	terrain->fill(terrain_data, terrain_data_size);
 
-	auto player_color_lines = engine::util::read_csv_file<palette_color>("age/assets/player_palette_50500.docx");
+	auto player_color_lines = engine::util::read_csv_file<gamedata::palette_color>("age/assets/player_palette_50500.docx");
 
 	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
 	for (size_t i = 0; i < player_color_lines.size(); i++) {

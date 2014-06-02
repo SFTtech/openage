@@ -13,7 +13,7 @@ enum class category_t {
 	TAUNT
 };
 
-category_t from_category(const audio_category_t category);
+category_t from_category(const gamedata::audio_category_t category);
 
 }
 }

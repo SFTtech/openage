@@ -52,7 +52,7 @@ AudioManager::AudioManager(const std::string &device_name, int freq,
 	playing_sounds.insert({category_t::MUSIC, sound_vector{}});
 	playing_sounds.insert({category_t::TAUNT, sound_vector{}});
 
-	mix_buffer.reset(new int32_t[4 * device_spec.samples * 
+	mix_buffer.reset(new int32_t[4 * device_spec.samples *
 			device_spec.channels]);
 
 	log::msg("Using audio device '%s' [freq=%d,format=%d,channels=%d,samples=%d]",
@@ -67,7 +67,7 @@ AudioManager::~AudioManager() {
 	SDL_CloseAudioDevice(device_id);
 }
 
-void AudioManager::load_resources(const std::vector<sound_file> &sound_files) {
+void AudioManager::load_resources(const std::vector<gamedata::sound_file> &sound_files) {
 	for (auto &sound_file : sound_files) {
 		auto category = from_category(sound_file.category);
 		auto id = sound_file.sound_id;

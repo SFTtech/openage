@@ -65,11 +65,11 @@ public:
 	void draw(coord::tile pos, int subid, Texture *alpha_texture = nullptr, int alpha_subid = -1);
 	void draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid);
 
-	struct subtexture *get_subtexture(int subid);
+	struct gamedata::subtexture *get_subtexture(int subid);
 	int get_subtexture_count();
 	void get_subtexture_size(int subid, int *w, int *h);
 	void get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb);
-	void get_subtexture_coordinates(struct subtexture *subtex, float *txl, float *txr, float *txt, float *txb);
+	void get_subtexture_coordinates(struct gamedata::subtexture *subtex, float *txl, float *txr, float *txt, float *txb);
 
 	/**
 	fixes the hotspots of all subtextures to (x,y).
@@ -95,7 +95,7 @@ public:
 
 private:
 	GLuint id, vertbuf;
-	std::vector<subtexture>subtextures;
+	std::vector<gamedata::subtexture>subtextures;
 	size_t subtexture_count;
 	bool use_player_color_tinting;
 	bool use_alpha_masking;

@@ -76,7 +76,7 @@ public:
 			format_t format = format_t::OPUS);
 	virtual ~InMemoryResource() = default;
 
-	virtual uint32_t get_length() const;	
+	virtual uint32_t get_length() const;
 
 	virtual std::tuple<const int16_t*,uint32_t> get_samples(uint32_t position,
 			uint32_t num_samples);

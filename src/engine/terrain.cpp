@@ -31,8 +31,8 @@ TileContent::TileContent() :
 
 TileContent::~TileContent() {}
 
-Terrain::Terrain(std::vector<terrain_type> terrain_meta,
-                 std::vector<blending_mode> blending_meta,
+Terrain::Terrain(std::vector<gamedata::terrain_type> terrain_meta,
+                 std::vector<gamedata::blending_mode> blending_meta,
                  bool is_infinite) {
 
 	this->infinite = is_infinite;

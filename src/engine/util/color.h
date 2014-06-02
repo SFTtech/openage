@@ -8,7 +8,7 @@ namespace util {
 
 struct col {
 	col(unsigned r, unsigned g, unsigned b, unsigned a) : r{r}, g{g}, b{b}, a{a} {}
-	col(palette_color c);
+	col(gamedata::palette_color c);
 
 	unsigned r, g, b, a;
 
