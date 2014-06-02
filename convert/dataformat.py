@@ -125,7 +125,6 @@ class Exportable:
 
                         #append the next-level entry to the list
                         #that will contain the data for the current level DataDefinition
-                        #dbg(lazymsg=lambda: "%s: submember item %d ADDING data\n%s\n" % (filename, idx, data), lvl=4)
                         submember_data.append(data)
 
                     if len(submember_data) > 0:
@@ -136,7 +135,6 @@ class Exportable:
                             submember_filename,
                         )
 
-                        #dbg(lazymsg=lambda: "->================\n%s: submember data  DEFINITION\n%s\n=======================" % (filename, subdata_definition), lvl=4)
                         subdata_definitions.append(subdata_definition)
 
                     #store filename instead of data list
@@ -347,10 +345,10 @@ class Exportable:
         dbg(lazymsg=lambda: "%s: generating structs" % (repr(cls)), lvl=2)
 
         #acquire all struct members, including the included members
-        members = cls.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=True)
+        members = cls.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=False) #TODO rly flatten includes????
         for is_parent, export, member_name, member_type in members:
 
-            dbg(lazymsg=lambda: "%s: exporting %s: %s" % (repr(cls), member_name, member_type), lvl=3)
+            dbg(lazymsg=lambda: "%s: exporting member %s<%s>" % (repr(cls), member_name, member_type), lvl=3)
 
             if isinstance(member_type, MultisubtypeMember):
                 for subtype_name, subtype_class in member_type.class_lookup.items():
@@ -359,6 +357,7 @@ class Exportable:
                     ret += subtype_class.structs()
 
             elif isinstance(member_type, IncludeMembers):
+                dbg("entering include member %s of %s" % (member_name, cls), lvl=3)
                 if not issubclass(member_type.cls, Exportable):
                     raise Exception("tried to export structs from non-exportable member included class %s" % repr(member_type.cls))
                 ret += member_type.cls.structs()
@@ -366,7 +365,9 @@ class Exportable:
             else:
                 continue
 
-        ret.append(StructDefinition(cls))
+        new_def = StructDefinition(cls)
+        dbg(lazymsg=lambda: "=> %s: created new struct definition: %s" % (repr(cls), str(new_def)), lvl=3)
+        ret.append(new_def)
 
         return ret
 
@@ -413,7 +414,7 @@ class ContentSnippet:
         self.file_name = file_name  #snippet wants to be saved in this file
         self.typerefs  = set()      #these types are referenced
         self.typedefs  = set()      #these types are defined
-        self.headers   = set()      #required headers
+        self.includes  = set()      #needed snippets, e.g. headers
         self.section   = section
         self.reprtxt   = reprtxt    #representation text
 
@@ -427,8 +428,9 @@ class ContentSnippet:
         save required snippets for this one by looking at wanted type references
         """
 
-        #TODO: maybe check for filename -> generate new header snippet here
         self.required_snippets |= {s for s in snippet_list if len(self.typerefs & s.typedefs) > 0}
+
+        dbg(lazymsg=lambda: "snippet %s requires %s" % (repr(self), repr(self.required_snippets)), lvl=4)
 
         resolved_types = set()
         for s in self.required_snippets:
@@ -436,8 +438,7 @@ class ContentSnippet:
 
         missing_types  = self.typerefs - resolved_types
 
-        if len(missing_types) > 0:
-            raise Exception("TODO: find missing types for %s:\n%s" % (repr(self), pprint.pformat(missing_types)))
+        return missing_types
 
     def get_required_snippets(self, defined=None):
         """
@@ -448,15 +449,14 @@ class ContentSnippet:
         #TODO: loop detection
         ret = list()
 
-        dbg(lazymsg=lambda: "needed for %s {" % (repr(self)), push=True, lvl=4)
+        dbg(lazymsg=lambda: "required snippets for %s {" % (repr(self)), push=True, lvl=4)
         for s in self.required_snippets:
             ret += s.get_required_snippets()
+
         dbg(pop=True, lvl=4)
         dbg(lazymsg=lambda: "}", lvl=4)
 
-        ret.extend(self.required_snippets)
         ret.append(self)
-
         return ret
 
     def __hash__(self):
@@ -480,45 +480,45 @@ class ContentSnippet:
         return "ContentSnippet[file=%s](%s)" % (self.file_name, data)
 
     def __str__(self):
-        return "".join([
+        return "".join((
             repr(self), ", "
             "data = '", self.data, "'"
-        ])
+        ))
 
 
-class CHeader:
+class HeaderSnippet(ContentSnippet):
     """
     represents an includable C header
     """
 
-    def __init__(self, name, is_global=False):
-        self.name = name
+    def __init__(self, header_name, file_name=True, is_global=False):
         self.is_global = is_global
+        self.name = header_name
 
         if self.is_global:
-            self.data = "#include <%s>\n" % self.name
+            data = "#include <%s>\n" % self.name
         else:
-            self.data = "#include \"%s\"\n" % self.name
+            data = "#include \"%s\"\n" % self.name
+
+        super().__init__(data, file_name, ContentSnippet.section_header)
 
     def get_file_name(self):
         return self.name
-
-    def get_snippets(self, file_name):
-        return [ ContentSnippet(self.data, file_name, ContentSnippet.section_header) ]
 
     def __hash__(self):
         return hash((self.name, self.is_global))
 
     def __eq__(self, other):
         return (
-            self.name == other.name
+            type(self) == type(other)
+            and self.name == other.name
             and self.is_global == other.is_global
         )
 
     def __repr__(self):
         sym0 = "<" if self.is_global else "\""
         sym1 = ">" if self.is_global else "\""
-        return "CHeader(%s%s%s)" % (sym0, self.name, sym1)
+        return "HeaderSnippet(%s%s%s)" % (sym0, self.name, sym1)
 
 
 class GeneratedFile:
@@ -539,7 +539,6 @@ class GeneratedFile:
         "file_suffix":    "",
         "content_prefix": "",
         "content_suffix": "",
-        "presuffix_func": lambda x: x
     }
 
 
@@ -552,38 +551,35 @@ class GeneratedFile:
         },
         "struct": {
             "file_suffix": ".h",
-            "content_prefix": """#ifndef _${file_name}_H_
-#define _${file_name}_H_
+            "content_prefix": """#ifndef _${header_guard}_H_
+#define _${header_guard}_H_
 
 ${headers}
 %s
 
-namespace engine {
+namespace dataformat {
 
 """ % dontedit,
             "content_suffix": """
-} //namespace engine
+} //namespace dataformat
 
-#endif // _${file_name}_H_
+#endif // _${header_guard}_H_
 """,
-            "presuffix_func": lambda x: x.upper()
         },
         "structimpl": {
             "file_suffix":    ".cpp",
-            "content_prefix": """#include "${file_name}.h"
-
+            "content_prefix": """
 ${headers}
 %s
 
-namespace engine {\n\n""" % dontedit,
-            "content_suffix": "} //namespace engine\n",
+namespace dataformat {\n\n""" % dontedit,
+            "content_suffix": "} //namespace dataformat\n",
         }
     }
 
 
     def __init__(self, file_name, format):
         self.snippets  = set()
-        self.headers   = set()
         self.typedefs  = set()
         self.typerefs  = set()
         self.file_name = file_name
@@ -591,109 +587,158 @@ namespace engine {\n\n""" % dontedit,
 
     def add_snippet(self, snippet):
         if not isinstance(snippet, ContentSnippet):
-            raise Exception("only ContentSnippets can be added to generated files.")
+            raise Exception("only ContentSnippets can be added to generated files, tried %s" % type(snippet))
 
-        if not snippet.file_name == self.file_name:
+        if not snippet.file_name == self.file_name and snippet.file_name != True:
             raise Exception("only snippets with the same target file_name can be put into the same generated file.")
 
         self.snippets.add(snippet)
-        self.headers  |= snippet.headers
         self.typedefs |= snippet.typedefs
         self.typerefs |= snippet.typerefs
 
-        dbg("".join([
-            "adding snippet for %s\n" % (repr(self)),
-            "=> %s\n"         % repr(snippet),
-            "headers:   %s\n" % snippet.headers,
-            "typedefs:  %s\n" % snippet.typedefs,
-            "typerefs:  %s\n" % snippet.typerefs,
-        ]), lvl=2)
+        dbg(lazymsg=lambda: "adding snippet to %s:" % (repr(self)), lvl=2)
+        dbg(lazymsg=lambda: " %s"                   % repr(snippet), lvl=2)
+        dbg(lazymsg=lambda: " typedefs:  %s"        % snippet.typedefs, lvl=3)
+        dbg(lazymsg=lambda: " typerefs:  %s"        % snippet.typerefs, lvl=3)
+        dbg(lazymsg=lambda: " includes:  %s {"      % repr(snippet.includes), lvl=3)
+
+        #recursively add all included snippets
+        for s in snippet.includes:
+            dbg(push="snippet_add")
+            self.add_snippet(s)
+            dbg(pop="snippet_add")
+
+        dbg(lazymsg=lambda: "}", lvl=3)
+
+    def get_include_snippet(self, file_name=True):
+        """
+        return a snippet with a header entry for this file to be able to include it.
+        """
+
+        ret = HeaderSnippet(
+            "".join((self.file_name, self.output_preferences[self.format]["file_suffix"])),
+            file_name=file_name,
+            is_global=False,
+        )
+
+        ret.typedefs |= self.typedefs
+        return ret
+
+    def create_xref_headers(self, file_pool):
+        """
+        discover and add needed header snippets for type references accross files.
+        """
+
+        dbg("%s typerefs %s" % (repr(self), repr(self.typerefs)), lvl=3)
+        dbg("%s typedefs %s" % (repr(self), repr(self.typedefs)), lvl=3)
+
+        new_resolves = set()
+        for include_candidate in file_pool:
+            candidate_resolves = include_candidate.typedefs & (self.typerefs - self.typedefs)
+            if len(candidate_resolves) > 0:
+                new_header = include_candidate.get_include_snippet()
+
+                dbg(lazymsg=lambda: "%s adding header %s" % (repr(self), repr(new_header)), push="add_header", lvl=3)
+                self.add_snippet(new_header)
+                dbg(pop="add_header")
+
+                new_resolves |= candidate_resolves
+
+        still_missing = (self.typerefs - self.typedefs) - new_resolves
+        if len(still_missing) > 0:
+            raise Exception("still missing types for %s:\n%s" % (self, still_missing))
 
     def generate(self):
         """
         actually generate the content for this file.
         """
 
+        #TODO: create new snippets for resolving cyclic dependencies (forward declarations)
+
         dbg(push="generation", lvl=2)
 
-        dbg(lazymsg=lambda: "".join(
-            [
-                "\n===========\n",
-                "snippets stored for %s:\n" % (repr(self)),
-                pprint.pformat(self.snippets),
-                "\n",
-            ]
-        ), lvl=3)
+        dbg(lazymsg=lambda: "".join((
+            "\n===========\n",
+            "snippets stored for %s:\n" % (repr(self)),
+            pprint.pformat(self.snippets),
+            "\n-----------",
+        )), lvl=3)
 
         #apply preference overrides
         prefs = self.default_preferences.copy()
         prefs.update(self.output_preferences[self.format])
 
-        #TODO: create new snippets for resolving cyclic dependencies (forward declarations)
-        #TODO: references to other files don't matter as they are #included anyway
-        #TODO: create pending typedefs, these types are requested but not part of this file.
-        #they need to be referenced via header include then.
+        snippets_header = {s for s in self.snippets if s.section == ContentSnippet.section_header}
+        snippets_body   = self.snippets - snippets_header
 
-        #these snippets will be written outside the namespace
-        #in the #include section
-        header_snippets = list()
-        for header in sorted(self.headers, key=lambda h: (not h.is_global, h.name)):
-            header_snippets.extend(header.get_snippets(self.file_name))
-
-        #type definitions found in this file
-        file_typedefs = set()
+        #type references in thils file that could not be resolved
+        missing_types = set()
 
         #put snippets into list in correct order
         #snippets will be written according to this [(snippet, prio), ...] list
         snippets_priorized = list()
 
-        dbg("assigning snippet priorities:", push="snippetprio", lvl=4)
         #determine each snippet's priority by number of type references and definitions
         #smaller prio means written earlier in the file.
-        for s in self.snippets:
+        dbg("assigning snippet priorities:", push="snippetprio", lvl=4)
+        for s in snippets_body:
             snippet_prio = len(s.typerefs) - len(s.typedefs)
             snippets_priorized.append((s, snippet_prio))
 
             #let each snippet find others as dependencies
-            s.add_required_snippets(self.snippets)
+            missing_types |= s.add_required_snippets(self.snippets)
 
-            #the current file provides the typedefs from all snippets
-            file_typedefs |= s.typedefs
-
-            dbg(lazymsg=lambda: "snippet %s with prio %d" % (repr(s), snippet_prio), lvl=4)
+            dbg(lazymsg=lambda: "prio %3.d => %s" % (snippet_prio, repr(s)), lvl=4)
         dbg(pop="snippetprio")
 
+        if len(missing_types) > 0:
+            raise Exception("missing types for %s:\n%s" % (repr(self), pprint.pformat(missing_types)))
+
+        #sort snippets according to their priority determined above
         snippets_priorized_sorted = (snippet for (snippet, _) in sorted(snippets_priorized, key=lambda s: s[1]))
 
         #create list of snippets to be put in the generated file.
-        snippets_ordered = list()
+        snippets_body_ordered = list()
 
+        #fetch list of all required snippets for all snippets to put in the file
         for snippet in snippets_priorized_sorted:
-            for s in snippet.get_required_snippets():
-                if s not in snippets_ordered:
+            snippet_candidates = snippet.get_required_snippets()
+            dbg(lazymsg=lambda: "required dependency snippet candidates: %s" % (pprint.pformat(snippet_candidates)), lvl=3)
+            for s in snippet_candidates:
+                if s.section == ContentSnippet.section_header and s not in snippets_header:
+                    dbg(lazymsg=lambda: " `-> ADD  snippet %s" % (repr(s)), lvl=4)
                     snippets_ordered.append(s)
-                    dbg(lazymsg=lambda: "ADD  snippet %s" % (repr(s)), lvl=4)
-                else:
-                    dbg(lazymsg=lambda: "SKIP snippet %s" % (repr(s)), lvl=4)
 
-        dbg(lazymsg=lambda: "".join(
-            [
-                "\nsnippets after ordering for %s:\n" % (repr(self)),
-                pprint.pformat(snippets_ordered),
-                "\n"
-            ]
-        ), lvl=3)
+                elif s.section == ContentSnippet.section_body and s not in snippets_body_ordered:
+                    snippets_body_ordered.append(s)
+                    dbg(lazymsg=lambda: " `-> ADD  snippet %s" % (repr(s)), lvl=4)
+
+                else:
+                    dbg(lazymsg=lambda: " `-> SKIP snippet %s" % (repr(s)), lvl=4)
+
+
+        #these snippets will be written outside the namespace
+        #in the #include section
+        snippets_header_sorted = sorted(snippets_header, key=lambda h: (not h.is_global, h.name))
+
+        dbg(lazymsg=lambda: "".join((
+            "\n-----------\n",
+            "snippets after ordering for %s:\n" % (repr(self)),
+            pprint.pformat(snippets_header_sorted + snippets_body_ordered),
+            "\n===========",
+        )), lvl=3)
 
         #merge file contents
-        subst_headers = "".join(header.get_data() for header in header_snippets)
-        file_data     = "\n".join(snippet.get_data() for snippet in snippets_ordered)
+        header_data = "".join(header.get_data() for header in snippets_header_sorted)
+        file_data   = "\n".join(snippet.get_data() for snippet in snippets_body_ordered)
+
 
         #create content, with prefix and suffix (actually header guards)
-        subst_file_name = prefs["presuffix_func"](self.file_name)
+        subst_file_name = "DATAFORMAT_%s" % (self.file_name.upper())
 
         #fill file header and footer with the generated file_name
-        content_prefix = Template(prefs["content_prefix"]).substitute(file_name=subst_file_name, headers=subst_headers)
-        content_suffix = Template(prefs["content_suffix"]).substitute(file_name=subst_file_name)
+        content_prefix = Template(prefs["content_prefix"]).substitute(header_guard=subst_file_name, headers=header_data)
+        content_suffix = Template(prefs["content_suffix"]).substitute(header_guard=subst_file_name)
 
         #this is the final file content
         file_data = "".join((content_prefix, file_data, content_suffix))
@@ -1027,7 +1072,7 @@ class CharArrayMember(DynLengthMember):
             return "char";
 
     def __repr__(self):
-        return "".join(self.get_effective_type())
+        return "%s[%s]" % (self.get_effective_type(), self.length)
 
 
 class StringMember(CharArrayMember):
@@ -1061,27 +1106,27 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
     def get_headers(self, output_target):
         if "struct" == output_target:
-            return determine_headers(self.get_effective_type())
+            return determine_headers("std::vector")
         else:
             return set()
 
     def get_effective_type(self):
-        return "%s" % (self.type_name)
+        return self.type_name
 
     def get_contained_types(self):
-        return [ contained_type.get_effective_type() for contained_type in self.class_lookup.values() ]
+        return { contained_type.get_effective_type() for contained_type in self.class_lookup.values() }
 
     def get_parsers(self, idx, member):
-        #TODO
+        #TODO: automatic recursive file reading
         #0. read file where entry type files are defined.
         #1. read each of the entry type files and fill member.`entry_type`
-        return [ "this->%s.filename = buf[%d];" % (member, idx) ]
+        return [ "//TODO this->%s = util::read_csv_file<for each type>(buf[%d]);" % (member, idx) ]
 
     def get_typedefs(self):
         return { self.type_name }
 
     def get_typerefs(self):
-        return set(self.get_contained_types())
+        return self.get_contained_types()
 
     def get_snippets(self, file_name):
 
@@ -1101,7 +1146,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         )
         snippet.typedefs |= self.get_typedefs()
         snippet.typerefs |= self.get_typerefs()
-        snippet.headers  |= determine_headers("std::vector")
+        snippet.includes |= determine_headers("std::vector")
 
         return [ snippet ]
 
@@ -1125,11 +1170,17 @@ class SubdataMember(MultisubtypeMember):
             ref_type_params    = {None: ref_type_params},
         )
 
+    def get_headers(self, output_target):
+        if "struct" == output_target:
+            return determine_headers("std::vector")
+        else:
+            return set()
+
     def get_effective_type(self):
-        return "std::vector<%s>" % (self.get_contained_types()[0])
+        return "std::vector<%s>" % (tuple(self.get_contained_types())[0])
 
     def get_parsers(self, idx, member):
-        return [ "this->%s = util::read_csv_file<%s>(buf[%d]);" % (member, self.get_contained_types()[0], idx) ]
+        return [ "//TODO this->%s = util::read_csv_file<%s>(buf[%d]);" % (member, tuple(self.get_contained_types())[0], idx) ]
 
     def get_snippets(self, file_name):
         return list()
@@ -1138,7 +1189,7 @@ class SubdataMember(MultisubtypeMember):
         return set()
 
     def get_typerefs(self):
-        return set(self.get_contained_types())
+        return self.get_contained_types()
 
     def get_subdata_type_name(self):
         return self.class_lookup[None].__name__
@@ -1180,7 +1231,7 @@ class StructDefinition:
         self.inherited_members = list()
         self.parent_classes = list()
 
-        members = target.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=True)
+        members = target.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=True) #TODO: rly flatten the include list????
         for is_parent, export, member_name, member_type in members:
 
             if isinstance(member_type, IncludeMembers):
@@ -1354,12 +1405,11 @@ class DataFormatter:
         """
 
         #storage of all needed content snippets
-        files = list()
+        generate_files = list()
 
-        #create empty dicts for each format
-        #each of these dicts has "file_name" => GeneratedFile
+        dbg("######################\ngenerating content snippets...", push="datagen", lvl=2)
         for format in requested_formats:
-            files_format = dict()
+            files = dict()
 
             snippets = list()
 
@@ -1398,24 +1448,32 @@ class DataFormatter:
             for snippet in snippets:
 
                 #if this file was not yet created, do it nao
-                if snippet.file_name not in files_format:
-                    files_format[snippet.file_name] = GeneratedFile(snippet.file_name, format)
+                if snippet.file_name not in files:
+                    files[snippet.file_name] = GeneratedFile(snippet.file_name, format)
 
-                files_format[snippet.file_name].add_snippet(snippet)
+                files[snippet.file_name].add_snippet(snippet)
 
-            files.append(files_format)
-
+            generate_files.extend(files.values())
+        dbg(pop="datagen")
 
         #files is currently:
-        #[{file_name: GeneratedFile}, ...]
+        #[GeneratedFile, ...]
 
+        #find xref header includes
+        dbg("######################\ngenerating needed cross reference includes now...", push="includegen", lvl=2)
+        for gen_file in generate_files:
+            gen_file.create_xref_headers(generate_files)
+        dbg(pop="includegen")
+
+        dbg("######################\ngenerating real file contents now...", lvl=2)
+
+        #actually generate the files
         ret = dict()
 
         #we now invoke the content generation for each generated file
-        for gen_files in files:
-            for _, gen_file in gen_files.items():
-                file_name, content = gen_file.generate()
-                ret[file_name] = content
+        for gen_file in generate_files:
+            file_name, content = gen_file.generate()
+            ret[file_name] = content
 
         #return {file_name: content, ...}
         return ret
@@ -1539,7 +1597,7 @@ class DataFormatter:
             ContentSnippet.section_body,
             reprtxt="struct %s%s" % (dataset.name_struct, inheritance_txt),
         )
-        snippet.headers    |= headers
+        snippet.includes   |= headers
         snippet.typerefs   |= needed_types
         snippet.typedefs.add(dataset.name_struct)
 
@@ -1598,8 +1656,8 @@ class DataFormatter:
             ContentSnippet.section_body,
             reprtxt=fill_signature,
         )
-        snippet.headers  |= headers | determine_headers("strtok_custom")
-        snippet.typerefs |= typerefs
+        snippet.includes |= headers | determine_headers("strtok_custom")
+        snippet.typerefs |= typerefs | { dataset.name_struct }
         return snippet
 
 
@@ -1611,13 +1669,13 @@ def determine_headers(for_type):
     #these headers are needed for the type
     ret = set()
 
-    cstdinth  = CHeader("stdint.h", is_global=True)
-    stringh   = CHeader("string",  is_global=True)
-    cstringh  = CHeader("cstring", is_global=True)
-    cstdioh   = CHeader("cstdio",  is_global=True)
-    vectorh   = CHeader("vector",  is_global=True)
-    cstddefh  = CHeader("stddef.h", is_global=True)
-    engine_util_strings_h = CHeader("../engine/util/strings.h", False)
+    cstdinth              = HeaderSnippet("stdint.h", is_global=True)
+    stringh               = HeaderSnippet("string",   is_global=True)
+    cstringh              = HeaderSnippet("cstring",  is_global=True)
+    cstdioh               = HeaderSnippet("cstdio",   is_global=True)
+    vectorh               = HeaderSnippet("vector",   is_global=True)
+    cstddefh              = HeaderSnippet("stddef.h", is_global=True)
+    engine_util_strings_h = HeaderSnippet("../engine/util/strings.h", is_global=False)
 
     #lookup for type->{header}
     type_map = {
