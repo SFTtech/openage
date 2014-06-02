@@ -140,7 +140,7 @@ class UnitObject(dataformat.Exportable):
 
     data_format = (
         (dataformat.READ, "name_length", "uint16_t"),
-        (dataformat.READ, "id0", "int16_t"),
+        (dataformat.READ_EXPORT, "id0", "int16_t"),
         (dataformat.READ, "language_dll_name", "uint16_t"),
         (dataformat.READ, "language_dll_creation", "uint16_t"),
         (dataformat.READ, "unit_class", "int16_t"),
@@ -217,8 +217,8 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ_EXPORT, "name", dataformat.CharArrayMember(
             length="name_length",
         )),
-        (dataformat.READ, "id1", "int16_t"),
-        (dataformat.READ, "id2", "int16_t"),
+        (dataformat.READ_EXPORT, "id1", "int16_t"),
+        (dataformat.READ_EXPORT, "id2", "int16_t"),
     )
 
     def __init__(self, **args):

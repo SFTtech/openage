@@ -8,9 +8,9 @@ class StringResource(dataformat.Exportable):
     struct_description = "string id/language to text mapping, extracted from language.dll file."
 
     data_format = (
-        ("id",   True, "int32_t"),
-        ("lang", True, "char[16]"),
-        ("text", True, "std::string"),
+        (True, "id",   "int32_t"),
+        (True, "lang", "char[16]"),
+        (True, "text", "std::string"),
     )
 
     def __init__(self):

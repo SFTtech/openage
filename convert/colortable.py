@@ -9,11 +9,11 @@ class ColorTable(dataformat.Exportable):
     struct_description = "indexed color storage."
 
     data_format = (
-        ("idx", True, "int32_t"),
-        ("r",   True, "uint8_t"),
-        ("g",   True, "uint8_t"),
-        ("b",   True, "uint8_t"),
-        ("a",   True, "uint8_t"),
+        (True, "idx", "int32_t"),
+        (True, "r",   "uint8_t"),
+        (True, "g",   "uint8_t"),
+        (True, "b",   "uint8_t"),
+        (True, "a",   "uint8_t"),
     )
 
     def __init__(self, data):

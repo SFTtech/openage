@@ -82,12 +82,12 @@ class Terrain(dataformat.Exportable):
     struct_description = "describes a terrain type, like water, ice, etc."
 
     data_format = (
-        ("terrain_id",     dataformat.READ_EXPORT, "int32_t"),
-        ("slp_id",         dataformat.READ_EXPORT, "int32_t"),
-        ("blend_mode",     dataformat.READ_EXPORT, "int32_t"),
-        ("blend_priority", dataformat.READ_EXPORT, "int32_t"),
-        ("name0",          dataformat.READ_EXPORT, "char[13]"),
-        ("name1",          dataformat.READ_EXPORT, "char[13]"),
+        (dataformat.READ_EXPORT, "terrain_id",     "int32_t"),
+        (dataformat.READ_EXPORT, "slp_id",         "int32_t"),
+        (dataformat.READ_EXPORT, "blend_mode",     "int32_t"),
+        (dataformat.READ_EXPORT, "blend_priority", "int32_t"),
+        (dataformat.READ_EXPORT, "name0",          "char[13]"),
+        (dataformat.READ_EXPORT, "name1",          "char[13]"),
     )
 
     def __init__(self):
