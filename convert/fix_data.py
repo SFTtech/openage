@@ -26,6 +26,8 @@ def fix_data(data):
     #assign correct blending modes
     #key:   dat file stored mode
     #value: corrected mode
+    #resulting values are also priorities!
+    # -> higher => gets selected as mask for two partners
     blendmode_map = {
         #identical modes: [0,1,7,8], [4,6]
         0: 1, #dirt, grass, palm_desert
