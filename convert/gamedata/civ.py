@@ -19,7 +19,7 @@ class Civ(dataformat.Exportable):
         (dataformat.READ_EXPORT, "team_bonus_id", "int16_t"),
         (dataformat.READ, "ressources", "float[ressources_count]"),
         (dataformat.READ, "graphic_set", "int8_t"),
-        (dataformat.READ, "unit_count", "uint16_t"),
+        (dataformat.READ_EXPORT, "unit_count", "uint16_t"),
         (dataformat.READ, "unit_offsets", "int32_t[unit_count]"),
 
         (dataformat.READ_EXPORT, "units", dataformat.MultisubtypeMember(

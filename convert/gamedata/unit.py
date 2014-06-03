@@ -214,9 +214,7 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "sound_selection", "int16_t"),
         (dataformat.READ, "sound_dying", "int16_t"),
         (dataformat.READ, "attack_mode", "int16_t"),
-        (dataformat.READ_EXPORT, "name", dataformat.CharArrayMember(
-            length="name_length",
-        )),
+        (dataformat.READ_EXPORT, "name", "char[name_length]"),
         (dataformat.READ_EXPORT, "id1", "int16_t"),
         (dataformat.READ_EXPORT, "id2", "int16_t"),
     )
