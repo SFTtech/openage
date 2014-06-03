@@ -93,32 +93,42 @@ class Exportable:
             if isinstance(member_type, MultisubtypeMember):
                 dbg(lazymsg=lambda: "%s => entering member %s" % (filename, member_name), lvl=3)
 
+                if isinstance(member_type, SubdataMember):
+                    is_single_subdata  = True
+                    subdata_item_iter  = self_data[member_name]
+
+                    #filename for the file containing the single subdata type entries:
+                    submember_filename = filename #sic.
+
+                else:
+                    is_single_subdata  = False
+
+                multisubtype_ref_file_data = list()  #file names for ref types
                 subdata_definitions = list()
                 for subtype_name, submember_class in member_type.class_lookup.items():
+                    #if we are in a subdata member, this for loop will only run through once.
+                    #else, do the actions for each subtype
 
-                    if isinstance(member_type, SubdataMember):
-                        subdata_item_iter  = self_data[member_name]
-                        submember_filename = filename
-                        is_single_subdata  = True
-                    else:
+                    if not is_single_subdata:
                         dbg(lazymsg=lambda: "%s => entering multisubtype member %s" % (filename, subtype_name), lvl=3)
                         subdata_item_iter  = self_data[member_name][subtype_name]
-                        submember_filename = "%s-%s" % (filename, subtype_name)
-                        is_single_subdata  = False
+
+                        #filename for the file containing one of the subtype data entries:
+                        submember_filename = "%s-%s/%s" % (filename, member_name, subtype_name)
+
+                    #get custom data value to append to filename:
+                    #submember_filename = "%s%s" % (submember_filename, getattr(self, member_type.identifier) if blabla else "")
 
                     submember_data = list()
                     for idx, submember_data_item in enumerate(subdata_item_iter):
                         if not isinstance(submember_data_item, Exportable):
                             raise Exception("tried to dump object not inheriting from Exportable")
 
-                        #dbg(lazymsg=lambda: "%s: submember item %d" % (filename, idx), lvl=4)
-
-                        #generate output filename
-                        member_ref   = "" #getattr(self, member_type.identifier) if blabla else ""
-                        sub_filename = "%s-%s/%s-%04d%s" % (submember_filename, member_name, member_name, idx, member_ref)
+                        #generate output filename for next-level files
+                        nextlevel_filename = "%s/%s-%04d" % (submember_filename, member_name, idx)
 
                         #recursive call, fetches DataDefinitions and the next-level data dict
-                        data_sets, data = submember_data_item.dump(sub_filename)
+                        data_sets, data = submember_data_item.dump(nextlevel_filename)
 
                         #store recursively generated DataDefinitions to the flat list
                         ret += data_sets
@@ -135,23 +145,39 @@ class Exportable:
                             submember_filename,
                         )
 
+                        if not is_single_subdata:
+                            #for each subtype, create entry in the subtype data file lookup file
+                            #sync this with MultisubtypeBaseFile!
+                            multisubtype_ref_file_data.append({
+                                "subtype":      subtype_name,
+                                "subtype_data": "%s%s" % (subdata_definition.name_data_file, GeneratedFile.output_preferences["csv"]["file_suffix"]),
+                            })
+
                         subdata_definitions.append(subdata_definition)
 
-                    #store filename instead of data list
-                    #is used to determine the file to read next.
-                    if is_single_subdata:
-                        self_data[member_name] = submember_filename
-                    else:
-                        self_data[member_name][subtype_name] = submember_filename
-
+                    if not is_single_subdata:
                         dbg(lazymsg=lambda: "%s => leaving multisubtype member %s" % (filename, subtype_name), lvl=3)
+
+                #store filename instead of data list
+                #is used to determine the file to read next.
+                # -> multisubtype members: type file index
+                # -> subdata members:      filename of subdata
+                self_data[member_name] = filename
+
+                #for multisubtype members, append data definition for storing references to all the subtype files
+                if not is_single_subdata and len(multisubtype_ref_file_data) > 0:
+                    multisubtype_ref_file = DataDefinition(
+                        MultisubtypeMember.MultisubtypeBaseFile,
+                        multisubtype_ref_file_data,
+                        filename,                          #create file to contain refs to subtype files
+                    )
+
+                    subdata_definitions.append(multisubtype_ref_file)
 
                 #store all created submembers to the flat list
                 ret += subdata_definitions
 
                 dbg(lazymsg=lambda: "%s => leaving member %s" % (filename, member_name), lvl=3)
-
-        #dbg(lazymsg=lambda: "%s data:\n%s" % (filename, pprint.pformat(self_data)), lvl=4)
 
         return ret, self_data
 
@@ -735,7 +761,7 @@ namespace ${namespace} {\n\n""" % dontedit,
         file_data   = "\n".join(snippet.get_data() for snippet in snippets_body_ordered)
 
         namespace    = self.namespace
-        header_guard = "".join((namespace.upper(), self.file_name.upper()))
+        header_guard = "".join((namespace.upper(), "_", self.file_name.replace("/", "_").upper()))
 
         #fill file header and footer with the generated file_name
         content_prefix = Template(prefs["content_prefix"]).substitute(header_guard=header_guard, namespace=namespace, headers=header_data)
@@ -997,7 +1023,7 @@ class EnumMember(RefMember):
     def validate_value(self, value):
         return value in self.values
 
-    def get_snippets(self, file_name):
+    def get_snippets(self, file_name, format):
         """
         generate enum snippets from given data
 
@@ -1005,26 +1031,29 @@ class EnumMember(RefMember):
         output: ContentSnippet
         """
 
-        snippet_file_name = self.file_name or file_name
+        if format == "struct":
+            snippet_file_name = self.file_name or file_name
 
-        txt = list()
+            txt = list()
 
-        #create enum definition
-        txt.extend([
-            "enum class %s {\n\t" % self.type_name,
-            ",\n\t".join(self.values),
-            "\n};\n\n",
-        ])
+            #create enum definition
+            txt.extend([
+                "enum class %s {\n\t" % self.type_name,
+                ",\n\t".join(self.values),
+                "\n};\n\n",
+            ])
 
-        snippet = ContentSnippet(
-            "".join(txt),
-            snippet_file_name,
-            ContentSnippet.section_body,
-            reprtxt="enum class %s" % self.type_name,
-        )
-        snippet.typedefs |= { self.type_name }
+            snippet = ContentSnippet(
+                "".join(txt),
+                snippet_file_name,
+                ContentSnippet.section_body,
+                reprtxt="enum class %s" % self.type_name,
+            )
+            snippet.typedefs |= { self.type_name }
 
-        return [ snippet ]
+            return [ snippet ]
+        else:
+            return list()
 
     def __repr__(self):
         return "enum %s" % self.type_name
@@ -1097,6 +1126,22 @@ class MultisubtypeMember(RefMember, DynLengthMember):
     multiple other data sets.
     """
 
+    class MultisubtypeBaseFile(Exportable):
+        """
+        class that describes the format
+        for the base-file pointing to the per-subtype files.
+        """
+
+        name_struct_file   = "util"
+        name_struct        = "multisubtype_ref"
+        struct_description = "format for multi-subtype references"
+
+        data_format = (
+            (NOREAD_EXPORT, "subtype", "std::string"),
+            (NOREAD_EXPORT, "subtype_data", "std::string"),
+        )
+
+
     def __init__(self, type_name, subtype_definition, class_lookup, length, passed_args=None, ref_to=None, offset_to=None, file_name=None, ref_type_params=None):
         RefMember.__init__(self, type_name, file_name)
         DynLengthMember.__init__(self, length)
@@ -1127,35 +1172,67 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         #TODO: automatic recursive file reading
         #0. read file where entry type files are defined.
         #1. read each of the entry type files and fill member.`entry_type`
+
         return [ "//TODO this->%s = util::read_csv_file<for each type>(buf[%d]);" % (member, idx) ]
 
     def get_typerefs(self):
         return { self.type_name }
 
-    def get_snippets(self, file_name):
+    def get_snippets(self, file_name, format):
 
         snippet_file_name = self.file_name or file_name
 
-        txt = list()
+        if format == "struct":
 
-        txt.append("struct %s {\n" % (self.type_name))
-        txt.extend(["\tstd::vector<%s> %s;\n" % (entry_type.get_effective_type(), entry_name) for (entry_name, entry_type) in self.class_lookup.items()])
-        txt.append("};\n")
+            txt = list()
 
-        snippet = ContentSnippet(
-            "".join(txt),
-            snippet_file_name,
-            ContentSnippet.section_body,
-            reprtxt="multisubtype container struct %s" % self.type_name,
-        )
-        snippet.typedefs |= { self.type_name }
-        snippet.typerefs |= self.get_contained_types()
-        snippet.includes |= determine_headers("std::vector")
+            txt.append("struct %s {\n" % (self.type_name))
+            txt.extend(["\tstd::vector<%s> %s;\n" % (entry_type.get_effective_type(), entry_name) for (entry_name, entry_type) in self.class_lookup.items()])
+            txt.append("\t//fill();\n")
+            txt.append("};\n")
 
-        return [ snippet ]
+            snippet = ContentSnippet(
+                "".join(txt),
+                snippet_file_name,
+                ContentSnippet.section_body,
+                reprtxt="multisubtype container struct %s" % self.type_name,
+            )
+            snippet.typedefs |= { self.type_name }
+            snippet.typerefs |= self.get_contained_types()
+            snippet.includes |= determine_headers("std::vector")
+
+            return [ snippet ]
+
+        elif format == "structimpl":
+            return list()
+
+            #TODO!
+            txt = list()
+
+            txt.append("%s::fill(const char *filename) {\n" % (self.type_name))
+            for (entry_name, entry_type) in self.class_lookup.items():
+                txt.append(
+                    "//TODO \tthis->%s = engine::util::read_csv_file<%s>('TODO filename');\n" % (entry_name, entry_type.get_effective_type())
+                )
+            txt.append("}\n")
+
+            snippet = ContentSnippet(
+                "".join(txt),
+                snippet_file_name,
+                ContentSnippet.section_body,
+                reprtxt="multisubtype %s container fill function" % self.type_name,
+            )
+            snippet.typedefs |= { self.type_name }
+            snippet.typerefs |= self.get_contained_types()
+            snippet.includes |= determine_headers("read_csv_file")
+
+            return [ snippet ]
+
+        else:
+            return list()
 
     def __repr__(self):
-        return "MultisubtypeMember<%s,len=%s>" % (str(self.class_lookup), self.length)
+        return "MultisubtypeMember<%s,len=%s>" % (self.type_name, self.length)
 
 
 class SubdataMember(MultisubtypeMember):
@@ -1177,6 +1254,8 @@ class SubdataMember(MultisubtypeMember):
     def get_headers(self, output_target):
         if "struct" == output_target:
             return determine_headers("std::vector")
+        elif "structimpl" == output_target:
+            return determine_headers("read_csv_file")
         else:
             return set()
 
@@ -1184,9 +1263,9 @@ class SubdataMember(MultisubtypeMember):
         return "std::vector<%s>" % (tuple(self.get_contained_types())[0])
 
     def get_parsers(self, idx, member):
-        return [ "//TODO this->%s = util::read_csv_file<%s>(buf[%d]);" % (member, tuple(self.get_contained_types())[0], idx) ]
+        return [ "this->%s = engine::util::read_csv_file<%s>(buf[%d]);" % (member, tuple(self.get_contained_types())[0], idx) ]
 
-    def get_snippets(self, file_name):
+    def get_snippets(self, file_name, format):
         return list()
 
     def get_typerefs(self):
@@ -1232,8 +1311,8 @@ class StructDefinition:
         self.inherited_members = list()
         self.parent_classes = list()
 
-        members = target.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=True)
-        for is_parent, export, member_name, member_type in members:
+        target_members = target.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=True)
+        for is_parent, export, member_name, member_type in target_members:
 
             if isinstance(member_type, IncludeMembers):
                 raise Exception("something went very wrong.")
@@ -1438,10 +1517,7 @@ class DataFormatter:
 
             #create snippets for the encountered type definitions
             for type_name, type_definition in self.typedefs.items():
-                if format == "struct":
-                    type_snippets = type_definition.get_snippets(type_definition.file_name)
-                else:
-                    continue
+                type_snippets = type_definition.get_snippets(type_definition.file_name, format)
 
                 snippets.extend(type_snippets)
 
@@ -1514,7 +1590,9 @@ class DataFormatter:
                     if not member_type.validate_value(entry):
                         raise Exception("data entry %d '%s' not a valid %s value" % (idx, entry, repr(member_type)))
 
-                elif isinstance(member_type, SubdataMember):
+                #insert filename to read this field
+                if isinstance(member_type, MultisubtypeMember):
+                    #subdata member stores the follow-up filename
                     entry = "%s%s" % (entry, GeneratedFile.output_preferences["csv"]["file_suffix"])
 
                 #encode each data field, to escape newlines and commas
@@ -1675,6 +1753,7 @@ def determine_headers(for_type):
     vectorh               = HeaderSnippet("vector",   is_global=True)
     cstddefh              = HeaderSnippet("stddef.h", is_global=True)
     engine_util_strings_h = HeaderSnippet("../engine/util/strings.h", is_global=False)
+    engine_util_file_h    = HeaderSnippet("../engine/util/file.h", is_global=False)
 
     #lookup for type->{header}
     type_map = {
@@ -1695,6 +1774,7 @@ def determine_headers(for_type):
         "size_t":          { cstddefh },
         "float":           set(),
         "int":             set(),
+        "read_csv_file":   { engine_util_file_h },
     }
 
     if for_type in type_map:
