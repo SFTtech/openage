@@ -1197,7 +1197,11 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             txt = list()
 
             txt.append("struct %s {\n" % (self.type_name))
-            txt.extend(["\tstd::vector<%s> %s;\n" % (entry_type.get_effective_type(), entry_name) for (entry_name, entry_type) in self.class_lookup.items()])
+            txt.extend([
+                "\tstd::vector<%s::%s> %s;\n" % (
+                    GeneratedFile.namespace, entry_type.get_effective_type(), entry_name
+                ) for (entry_name, entry_type) in self.class_lookup.items()
+            ])
             txt.append("\t//fill();\n")
             txt.append("};\n")
 
@@ -1269,11 +1273,14 @@ class SubdataMember(MultisubtypeMember):
         else:
             return set()
 
+    def get_subtype(self):
+        return "%s::%s" % (GeneratedFile.namespace, tuple(self.get_contained_types())[0])
+
     def get_effective_type(self):
-        return "std::vector<%s>" % (tuple(self.get_contained_types())[0])
+        return "std::vector<%s>" % (self.get_subtype())
 
     def get_parsers(self, idx, member):
-        return [ "this->%s = engine::util::read_csv_file<%s>(buf[%d]);" % (member, tuple(self.get_contained_types())[0], idx) ]
+        return [ "this->%s = engine::util::read_csv_file<%s>(buf[%d]);" % (member, self.get_subtype(), idx) ]
 
     def get_snippets(self, file_name, format):
         return list()
@@ -1708,10 +1715,11 @@ class DataFormatter:
         parsers = []
 
         for idx, (member_name, member_type) in enumerate(dataset.members.items()):
+            #add lines for each parser to the list: [[parser line, ...], ...]
             parsers.append(member_type.get_parsers(idx, member_name))
             headers  |= member_type.get_headers("structimpl")
 
-        #indent/newline the token parsers
+        #indent/newline the token parsers. inner loop = lines for one column
         parser_code = "\n\n\t".join("\n\t".join(p) for p in parsers)
 
         #prepend struct name to fill function signature
