@@ -11,19 +11,19 @@ class UnitCommand(dataformat.Exportable):
 
     data_format = (
         (dataformat.READ, "one", "int16_t"),
-        (dataformat.READ, "uid", "int16_t"),
+        (dataformat.READ_EXPORT, "uid", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "type", "int16_t"),
-        (dataformat.READ, "class_id", "int16_t"),
-        (dataformat.READ, "unit_id", "int16_t"),
+        (dataformat.READ_EXPORT, "type", "int16_t"),
+        (dataformat.READ_EXPORT, "class_id", "int16_t"),
+        (dataformat.READ_EXPORT, "unit_id", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
-        (dataformat.READ, "ressource_in", "int16_t"),
-        (dataformat.READ, "sub_type", "int16_t"),
-        (dataformat.READ, "ressource_out", "int16_t"),
+        (dataformat.READ_EXPORT, "ressource_in", "int16_t"),
+        (dataformat.READ_EXPORT, "sub_type", "int16_t"),
+        (dataformat.READ_EXPORT, "ressource_out", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
-        (dataformat.READ, "work_rate_multiplier", "float"),
-        (dataformat.READ, "execution_radius", "float"),
-        (dataformat.READ, "extra_range", "float"),
+        (dataformat.READ_EXPORT, "work_rate_multiplier", "float"),
+        (dataformat.READ_EXPORT, "execution_radius", "float"),
+        (dataformat.READ_EXPORT, "extra_range", "float"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "float"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
@@ -71,9 +71,9 @@ class RessourceStorage(dataformat.Exportable):
     struct_description = "stores the resource storage capacity for one unit mode."
 
     data_format = (
-        (dataformat.READ, "a", "int16_t"),
-        (dataformat.READ, "b", "float"),
-        (dataformat.READ, "c", "int8_t"),
+        (dataformat.READ_EXPORT, "a", "int16_t"),
+        (dataformat.READ_EXPORT, "b", "float"),
+        (dataformat.READ_EXPORT, "c", "int8_t"),
     )
 
 
@@ -83,8 +83,8 @@ class DamageGraphic(dataformat.Exportable):
     struct_description = "stores one building image that shows a destroyed foundation."
 
     data_format = (
-        (dataformat.READ, "graphic_id", "int16_t"),
-        (dataformat.READ, "damage_percent", "int8_t"),
+        (dataformat.READ_EXPORT, "graphic_id", "int16_t"),
+        (dataformat.READ_EXPORT, "damage_percent", "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
     )
@@ -202,17 +202,17 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "selection_radius0", "float"),
         (dataformat.READ, "selection_radius1", "float"),
         (dataformat.READ, "hp_bar_height1", "float"),
-        (dataformat.READ, "ressource_storage", dataformat.SubdataMember(
+        (dataformat.READ_EXPORT, "ressource_storage", dataformat.SubdataMember(
             ref_type=RessourceStorage,
             length=3,
         )),
         (dataformat.READ, "damage_graphic_count", "int8_t"),
-        (dataformat.READ, "damage_graphic", dataformat.SubdataMember(
+        (dataformat.READ_EXPORT, "damage_graphic", dataformat.SubdataMember(
             ref_type=DamageGraphic,
             length="damage_graphic_count",
         )),
-        (dataformat.READ, "sound_selection", "int16_t"),
-        (dataformat.READ, "sound_dying", "int16_t"),
+        (dataformat.READ_EXPORT, "sound_selection", "int16_t"),
+        (dataformat.READ_EXPORT, "sound_dying", "int16_t"),
         (dataformat.READ, "attack_mode", "int16_t"),
         (dataformat.READ_EXPORT, "name", "char[name_length]"),
         (dataformat.READ_EXPORT, "id1", "int16_t"),
