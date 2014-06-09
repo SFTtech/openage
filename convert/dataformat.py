@@ -78,46 +78,44 @@ class Exportable:
         returns [DataDefinition, ..]
         """
 
-        ret = list()
-        self_data = dict()
+        ret = list()        #returned list of data definitions
+        self_data = dict()  #data of the current object
 
         members = self.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=True)
         for is_parent, export, member_name, member_type in members:
 
-            if member_name:
-                #gather data members of the currently queried object
-                self_data[member_name] = getattr(self, member_name)
-            else:
-                raise Exception("invalid data member name %s" % member_name)
+            #gather data members of the currently queried object
+            self_data[member_name] = getattr(self, member_name)
 
             if isinstance(member_type, MultisubtypeMember):
                 dbg(lazymsg=lambda: "%s => entering member %s" % (filename, member_name), lvl=3)
+
+                current_member_filename = "%s-%s" % (filename, member_name)
 
                 if isinstance(member_type, SubdataMember):
                     is_single_subdata  = True
                     subdata_item_iter  = self_data[member_name]
 
                     #filename for the file containing the single subdata type entries:
-                    submember_filename = filename #sic.
+                    submember_filename = current_member_filename
 
                 else:
                     is_single_subdata  = False
 
                 multisubtype_ref_file_data = list()  #file names for ref types
-                subdata_definitions = list()
+                subdata_definitions = list()         #subdata member DataDefitions
                 for subtype_name, submember_class in member_type.class_lookup.items():
                     #if we are in a subdata member, this for loop will only run through once.
                     #else, do the actions for each subtype
 
                     if not is_single_subdata:
                         dbg(lazymsg=lambda: "%s => entering multisubtype member %s" % (filename, subtype_name), lvl=3)
+
+                        #iterate over the data for the current subtype
                         subdata_item_iter  = self_data[member_name][subtype_name]
 
                         #filename for the file containing one of the subtype data entries:
-                        submember_filename = "%s-%s/%s" % (filename, member_name, subtype_name)
-
-                    #get custom data value to append to filename:
-                    #submember_filename = "%s%s" % (submember_filename, getattr(self, member_type.identifier) if blabla else "")
+                        submember_filename = "%s/%s-%s" % (filename, member_name, subtype_name)
 
                     submember_data = list()
                     for idx, submember_data_item in enumerate(subdata_item_iter):
@@ -135,8 +133,10 @@ class Exportable:
 
                         #append the next-level entry to the list
                         #that will contain the data for the current level DataDefinition
-                        submember_data.append(data)
+                        if len(data.keys()) > 0:
+                            submember_data.append(data)
 
+                    #create file only if it has at least one entry
                     if len(submember_data) > 0:
                         #create DataDefinition for the next-level data pile.
                         subdata_definition = DataDefinition(
@@ -146,6 +146,7 @@ class Exportable:
                         )
 
                         if not is_single_subdata:
+                            #create entry for type file index.
                             #for each subtype, create entry in the subtype data file lookup file
                             #sync this with MultisubtypeBaseFile!
                             multisubtype_ref_file_data.append({
@@ -154,6 +155,8 @@ class Exportable:
                             })
 
                         subdata_definitions.append(subdata_definition)
+                    else:
+                        pass
 
                     if not is_single_subdata:
                         dbg(lazymsg=lambda: "%s => leaving multisubtype member %s" % (filename, subtype_name), lvl=3)
@@ -162,14 +165,17 @@ class Exportable:
                 #is used to determine the file to read next.
                 # -> multisubtype members: type file index
                 # -> subdata members:      filename of subdata
-                self_data[member_name] = filename
+                #TODO: save relative path?
+                self_data[member_name] = current_member_filename
 
                 #for multisubtype members, append data definition for storing references to all the subtype files
                 if not is_single_subdata and len(multisubtype_ref_file_data) > 0:
+
+                    #this is the type file index.
                     multisubtype_ref_file = DataDefinition(
                         MultisubtypeMember.MultisubtypeBaseFile,
                         multisubtype_ref_file_data,
-                        filename,                          #create file to contain refs to subtype files
+                        self_data[member_name],                          #create file to contain refs to subtype files
                     )
 
                     subdata_definitions.append(multisubtype_ref_file)
@@ -179,6 +185,7 @@ class Exportable:
 
                 dbg(lazymsg=lambda: "%s => leaving member %s" % (filename, member_name), lvl=3)
 
+        #return flat list of DataDefinitions and dict of {member_name: member_value, ...}
         return ret, self_data
 
     def read(self, raw, offset, cls=None, members=None):
@@ -371,7 +378,7 @@ class Exportable:
         dbg(lazymsg=lambda: "%s: generating structs" % (repr(cls)), lvl=2)
 
         #acquire all struct members, including the included members
-        members = cls.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=False) #TODO rly flatten includes????
+        members = cls.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=False)
         for is_parent, export, member_name, member_type in members:
 
             dbg(lazymsg=lambda: "%s: exporting member %s<%s>" % (repr(cls), member_name, member_type), lvl=3)
