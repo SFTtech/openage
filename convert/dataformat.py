@@ -664,6 +664,9 @@ namespace ${namespace} {\n\n""" % dontedit,
         discover and add needed header snippets for type references accross files.
         """
 
+        if self.format in ("csv",):
+            return
+
         dbg("%s typerefs %s" % (repr(self), repr(self.typerefs)), lvl=3)
         dbg("%s typedefs %s" % (repr(self), repr(self.typedefs)), lvl=3)
 
