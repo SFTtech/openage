@@ -150,8 +150,10 @@ class Exportable:
                             #for each subtype, create entry in the subtype data file lookup file
                             #sync this with MultisubtypeBaseFile!
                             multisubtype_ref_file_data.append({
-                                "subtype":      subtype_name,
-                                "subtype_data": "%s%s" % (subdata_definition.name_data_file, GeneratedFile.output_preferences["csv"]["file_suffix"]),
+                                MultisubtypeMember.MultisubtypeBaseFile.data_format[0][1]: subtype_name,
+                                MultisubtypeMember.MultisubtypeBaseFile.data_format[1][1]: "%s%s" % (
+                                    subdata_definition.name_data_file, GeneratedFile.output_preferences["csv"]["file_suffix"]
+                                ),
                             })
 
                         subdata_definitions.append(subdata_definition)
@@ -1152,7 +1154,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
         data_format = (
             (NOREAD_EXPORT, "subtype", "std::string"),
-            (NOREAD_EXPORT, "subtype_data", "std::string"),
+            (NOREAD_EXPORT, "filename", "std::string"),
         )
 
 
@@ -1207,7 +1209,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                     GeneratedFile.namespacify(entry_type.get_effective_type()), entry_name
                 ) for (entry_name, entry_type) in self.class_lookup.items()
             ])
-            txt.append("\tvoid fill(const char *filename);\n")
+            txt.append("\n\tbool fill(const char *filename);\n")
             txt.append("};\n")
 
             snippet = ContentSnippet(
@@ -1223,22 +1225,33 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             return [ snippet ]
 
         elif format == "structimpl":
-            return list()
-
-            #TODO!
             txt = list()
 
-            txt.append("%s::fill(const char *filename) {\n" % (self.type_name))
-            for (entry_name, entry_type) in self.class_lookup.items():
+            txt.append("bool %s::fill(const char *filename) {\n" % (self.type_name))
+
+            txt.extend([
+                "\t//read filenames storing data for all subtypes\n",
+                "\tauto subtype_files = engine::util::read_csv_file<%s>(filename);\n\n" % (self.MultisubtypeBaseFile.name_struct),
+                "\tif (subtype_files.size() != %d) {\n" % (len(self.class_lookup)),
+                "\t\treturn false;\n",
+                "\t}\n\n",
+            ])
+
+            entry_len_max = max(len(k) for k in self.class_lookup.keys())
+
+            for (idx, (entry_name, entry_type)) in enumerate(self.class_lookup.items()):
                 #TODO: automatic recursive file reading
                 #0. read file where entry type files are defined.
                 #1. read each of the entry type files and fill member.`entry_type`
 
+                entry_spacing = " " * (entry_len_max - len(entry_name))
+
                 txt.append(
-                    "//TODO \tthis->%s = engine::util::read_csv_file<%s>('TODO filename');\n" % (
-                        entry_name, GeneratedFile.namespacify(entry_type.get_effective_type())
+                    "\tthis->%s%s = engine::util::read_csv_file<%s>(subtype_files[%d].%s.c_str());\n" % (
+                        entry_name, entry_spacing, GeneratedFile.namespacify(entry_type.get_effective_type()), idx, self.MultisubtypeBaseFile.data_format[1][1]
                     )
                 )
+            txt.append("\n\treturn true;\n")
             txt.append("}\n")
 
             snippet = ContentSnippet(
@@ -1248,8 +1261,8 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 reprtxt="multisubtype %s container fill function" % self.type_name,
             )
             snippet.typedefs |= { self.type_name }
-            snippet.typerefs |= self.get_contained_types()
-            snippet.includes |= determine_headers("read_csv_file")
+            snippet.typerefs |= self.get_contained_types() | { self.MultisubtypeBaseFile.name_struct }
+            snippet.includes |= determine_headers("read_csv_file") | determine_headers("std::vector")
 
             return [ snippet ]
 
