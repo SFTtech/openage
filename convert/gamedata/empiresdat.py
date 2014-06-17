@@ -28,17 +28,32 @@ import zlib
 # the binary structure, which the dat file has, is in `doc/gamedata.struct`
 
 
-class EmpiresDat:
-    """class for fighting and beating the compressed empires2*.dat"""
+class EmpiresDat(dataformat.Exportable):
+    """
+    class for fighting and beating the compressed empires2*.dat
+
+    represents the main game data file.
+    """
+
+    name_struct_file   = "gamedata"
+    name_struct        = "empiresdat"
+    struct_description = "empires2_x1_p1.dat structure"
+
+    data_format = (
+        (dataformat.READ, "versionstr", "char[8]"),
+        (dataformat.READ, "terrain_header", "std::string"),
+        #TODO
+    )
+
 
     def __init__(self, fname):
         self.fname = fname
-        dbg("reading empires2*.dat from %s..." % fname, 1)
+        dbg("reading empires2*.dat from %s..." % fname, lvl=1)
 
         fname = file_get_path(fname, write = False)
         f = file_open(fname, binary = True, write = False)
 
-        dbg("decompressing data from %s" % fname, 1)
+        dbg("decompressing data from %s" % fname, lvl=2)
 
         compressed_data = f.read()
         #decompress content with zlib (note the magic -15)
@@ -46,21 +61,14 @@ class EmpiresDat:
         self.content = zlib.decompress(compressed_data, -15)
         f.close()
 
-        compressed_size   = len(compressed_data)
-        decompressed_size = len(self.content)
+        self.compressed_size   = len(compressed_data)
+        self.decompressed_size = len(self.content)
 
         #compressed data no longer needed
         del compressed_data
 
-        dbg("length of compressed data: %d = %d kB" % (compressed_size, compressed_size/1024), 1)
-        dbg("length of decompressed data: %d = %d kB" % (decompressed_size, decompressed_size/1024), 1)
-
-        #this variable will store the offset in the raw dat file.
-        offset = 0
-        offset = self.read(self.content, offset)
-
-        finish_percent = 100*(offset/decompressed_size)
-        dbg("finished reading empires*.dat at %d of %d bytes (%f%%)." % (offset, decompressed_size, finish_percent), 1)
+        dbg("length of compressed data: %d = %d kB" % (self.compressed_size, self.compressed_size/1024), lvl=2)
+        dbg("length of decompressed data: %d = %d kB" % (self.decompressed_size, self.decompressed_size/1024), lvl=2)
 
     def raw_dump(self, filename):
         """
@@ -82,6 +90,7 @@ class EmpiresDat:
 
         dbg("dat version: %s" % (self.version), 1)
 
+        #TODO: this is just a grouping of variables => create new member type for that
         self.terrain_header = terrain.TerrainHeaderData()
         offset = self.terrain_header.read(raw, offset)
 

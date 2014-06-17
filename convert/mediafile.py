@@ -115,6 +115,7 @@ def media_convert(args):
         #create the dump for the dat file
         import gamedata.empiresdat
         datfile = gamedata.empiresdat.EmpiresDat("Data/empires2_x1_p1.dat")
+        datfile.read(datfile.content, 0)
 
         #modify the read contents of datfile
         import fix_data

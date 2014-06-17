@@ -1278,7 +1278,7 @@ class SubdataMember(MultisubtypeMember):
     struct member/data column that references to one another data set.
     """
 
-    def __init__(self, ref_type, length, offset_to=None, ref_to=None, ref_type_params=None):
+    def __init__(self, ref_type, length, offset_to=None, ref_to=None, ref_type_params=None, passed_args=None):
         super().__init__(
             type_name          = None,
             subtype_definition = None,
@@ -1287,6 +1287,7 @@ class SubdataMember(MultisubtypeMember):
             offset_to          = offset_to,
             ref_to             = ref_to,
             ref_type_params    = {None: ref_type_params},
+            passed_args        = passed_args,
         )
 
     def get_headers(self, output_target):
