@@ -197,7 +197,7 @@ class Exportable:
         this is used to fill the python classes with data from the binary input.
         """
 
-        dbg(lazymsg=lambda: "%s: reading binary data at 0x%08x" % (repr(self), offset), lvl=3)
+        dbg(lazymsg=lambda: "-> 0x%08x => %s reading binary data" % (offset, repr(self)), lvl=3)
 
         if cls:
             target_class = cls
@@ -209,12 +209,23 @@ class Exportable:
 
         for is_parent, export, var_name, var_type in members:
 
-            if isinstance(var_type, IncludeMembers):
+            if isinstance(var_type, GroupMember):
                 if not issubclass(var_type.cls, Exportable):
                     raise Exception("class where members should be included is not exportable: %s" % var_type.cls.__name__)
 
-                #dbg(lazymsg=lambda: "calling included class %s.read()" % (var_type.cls.__name__), lvl=4)
-                offset = var_type.cls.read(self, raw, offset, cls=var_type.cls)
+                if isinstance(var_type, IncludeMembers):
+                    #call the read function of the referenced class (cls),
+                    #but store the data to the current object (self).
+                    offset = var_type.cls.read(self, raw, offset, cls=var_type.cls)
+                else:
+                    #create new instance of referenced class (cls),
+                    #use its read method to store data to itself,
+                    #then save the result as a reference named `var_name`
+                    #TODO: constructor argument passing may be required here.
+                    grouped_data = var_type.cls()
+                    offset = grouped_data.read(raw, offset)
+
+                    setattr(self, var_name, grouped_data)
 
             elif isinstance(var_type, MultisubtypeMember):
                 #subdata reference implies recursive call for reading the binary data
@@ -223,6 +234,8 @@ class Exportable:
                 varargs = dict()
 
                 if var_type.passed_args:
+                    if type(var_type.passed_args) == str:
+                        var_type.passed_args = set(var_type.passed_args)
                     for passed_member_name in var_type.passed_args:
                         varargs[passed_member_name] = getattr(self, passed_member_name)
 
@@ -242,7 +255,7 @@ class Exportable:
 
                 #check if entries need offset checking
                 if var_type.offset_to:
-                    offset_lookup = getattr(self, var_type.offset_to)
+                    offset_lookup = getattr(self, var_type.offset_to[0])
                 else:
                     offset_lookup = None
 
@@ -250,7 +263,7 @@ class Exportable:
 
                     #if datfile offset == 0, entry has to be skipped.
                     if offset_lookup:
-                        if offset_lookup[i] == 0:
+                        if not var_type.offset_to[1](offset_lookup[i]):
                             continue
                         #TODO: don't read sequentially, use the lookup as new offset?
 
@@ -259,9 +272,9 @@ class Exportable:
                         new_data_class = var_type.class_lookup[None]
                     else:
                         #to determine the subtype class, read the binary definition
+                        #this utilizes an on-the-fly definition of the data to be read.
                         offset = self.read(
-                            raw, offset,
-                            cls=target_class,
+                            raw, offset, cls=target_class,
                             members=(((False,) + var_type.subtype_definition),)
                         )
 
@@ -292,11 +305,12 @@ class Exportable:
             else:
                 #reading binary data, as this member is no reference but actual content.
 
-                #dbg(lazymsg=lambda: "%s: reading entry %s..." % (repr(target_class), var_name), lvl=4)
-
                 data_count = 1
+                is_custom_member = False
 
                 if type(var_type) == str:
+                    #TODO: generate and save member type on the fly
+                    #instead of just reading
                     is_array = vararray_match.match(var_type)
 
                     if is_array:
@@ -320,15 +334,16 @@ class Exportable:
                     #special type requires having set the raw data type
                     struct_type = var_type.raw_type
                     data_count  = var_type.get_length(self)
+                    is_custom_member = True
 
                 else:
-                    raise Exception("unknown data member definition %s for member %s" % (var_type, var_name))
+                    raise Exception("unknown data member definition %s for member '%s'" % (var_type, var_name))
 
-                if data_count <= 0:
-                    raise Exception("invalid length <= 0 in %s for member %s" % (var_type, var_name))
+                if data_count < 0:
+                    raise Exception("invalid length %d < 0 in %s for member '%s'" % (data_count, var_type, var_name))
 
                 if struct_type not in util.struct_type_lookup:
-                    raise Exception("%s: member %s requests unknown data type %s for member %s" % (repr(self), var_name, struct_type))
+                    raise Exception("%s: member %s requests unknown data type %s for member '%s'" % (repr(self), var_name, struct_type))
 
                 if export == READ_UNKNOWN:
                     #for unknown variables, generate uid for the unknown memory location
@@ -337,15 +352,23 @@ class Exportable:
                 #lookup c type to python struct scan type
                 symbol = util.struct_type_lookup[struct_type]
 
-                dbg(lazymsg=lambda: "\treading %s<%s> as '< %d%s' at 0x%08x" % (var_name, var_type, data_count, symbol, offset), lvl=4)
-                struct_format = "%s %d%s" % (ENDIANNESS, data_count, symbol)
-                result = struct.unpack_from(struct_format, raw, offset)
-                offset += struct.calcsize(struct_format)
+                #read that stuff!!11
+                dbg(lazymsg=lambda: "        @0x%08x: reading %s<%s> as '< %d%s'" % (offset, var_name, var_type, data_count, symbol), lvl=4)
 
+                struct_format = "%s %d%s" % (ENDIANNESS, data_count, symbol)
+                result        = struct.unpack_from(struct_format, raw, offset)
+
+                dbg(lazymsg=lambda: "                \_ = %s" % (result, ), lvl=4)
+
+                if is_custom_member:
+                    if not var_type.verify_read_data(self, result):
+                        raise Exception("invalid data when reading %s at offset %#08x" % (var_name, offset))
+
+                #TODO: move these into a read entry hook/verification method
                 if symbol == "s":
                     #stringify char array
                     result = util.zstr(result[0])
-                elif len(result) == 1:
+                elif data_count == 1:
                     #store first tuple element
                     result = result[0]
 
@@ -354,19 +377,22 @@ class Exportable:
                         if not math.isfinite(result):
                             raise Exception("invalid float when reading %s at offset %#08x" % (var_name, offset))
 
+                #increase the current file position by the size we just read
+                offset += struct.calcsize(struct_format)
+
                 #run entry hook for non-primitive members
-                if isinstance(var_type, DataMember):
+                if is_custom_member:
                     result = var_type.entry_hook(result)
 
                     if result == ContinueReadMember.ABORT:
                         #don't go through all other members of this class!
                         break
 
-                #dbg(lazymsg=lambda: "\t==> storing self.%s = %s" % (var_name, result), lvl=4)
 
                 #store member's data value
                 setattr(self, var_name, result)
 
+        dbg(lazymsg=lambda: "<- 0x%08x <= %s done reading data" % (offset, repr(self)), lvl=3)
         return offset
 
     @classmethod
@@ -391,8 +417,8 @@ class Exportable:
                         raise Exception("tried to export structs from non-exportable %s" % subtype_class)
                     ret += subtype_class.structs()
 
-            elif isinstance(member_type, IncludeMembers):
-                dbg("entering include member %s of %s" % (member_name, cls), lvl=3)
+            elif isinstance(member_type, GroupMember):
+                dbg("entering group/include member %s of %s" % (member_name, cls), lvl=3)
                 if not issubclass(member_type.cls, Exportable):
                     raise Exception("tried to export structs from non-exportable member included class %s" % repr(member_type.cls))
                 ret += member_type.cls.structs()
@@ -418,8 +444,8 @@ class Exportable:
             if isinstance(member_type, IncludeMembers):
                 if flatten_includes:
                     #recursive call
-                    for member in member_type.cls.get_data_format(allowed_modes, flatten_includes, is_parent=True):
-                        yield member
+                    for m in member_type.cls.get_data_format(allowed_modes, flatten_includes, is_parent=True):
+                        yield m
                     continue
 
             if allowed_modes:
@@ -819,21 +845,17 @@ class DataMember:
 
     def get_typerefs(self):
         """
-        type references for the member entry
+        this member entry references these types.
+        this is most likely the type name of the corresponding struct entry.
         """
-        return set()
 
-    def get_typedefs(self):
-        """
-        type definitions for the member entry
-        """
         return set()
 
     def entry_hook(self, data):
         """
         allows the data member class to modify the input data
 
-        is used e.g. for the number->enum lookup
+        is used e.g. for the number => enum lookup
         """
 
         return data
@@ -843,6 +865,12 @@ class DataMember:
 
     def get_length(self, obj=None):
         return self.length
+
+    def verify_read_data(self, obj, data):
+        """
+        gets called for each entry. used to check for storage validity (e.g. 0 expected)
+        """
+        return True
 
     def get_struct_entries(self, member_name):
         """
@@ -855,7 +883,36 @@ class DataMember:
         raise NotImplementedError("return short description of the member type %s" % (type(self)))
 
 
-class IncludeMembers(DataMember):
+class GroupMember(DataMember):
+    """
+    member that references to another class, pretty much like the SubdataMember,
+    but with a fixed length of 1.
+
+    this is just a reference to a single struct instance.
+    """
+
+    def __init__(self, cls):
+        super().__init__()
+        self.cls = cls
+
+    def get_headers(self, output_target):
+        return { self.cls.name_struct_file }
+
+    def get_typerefs(self):
+        return { self.get_effective_type() }
+
+    def get_effective_type(self):
+        return self.cls.get_effective_type()
+
+    def get_parsers(self, idx, member):
+        #TODO: new type of csv file!
+        return [ "this->%s.fill(buf[%d]);" % (member, idx) ]
+
+    def __repr__(self):
+        return "GroupMember<%s>" % repr(self.cls)
+
+
+class IncludeMembers(GroupMember):
     """
     a member that requires evaluating the given class
     as a include first.
@@ -866,14 +923,10 @@ class IncludeMembers(DataMember):
     """
 
     def __init__(self, cls):
-        super().__init__()
-        self.cls = cls
+        super().__init__(cls)
 
-    def get_headers(self, output_target):
-        return { self.cls.name_struct_file }
-
-    def get_typedefs(self):
-        return { self.cls.get_effective_type() }
+    def get_parsers(self):
+        raise Exception("this should never be called!")
 
     def __repr__(self):
         return "IncludeMember<%s>" % repr(self.cls)
@@ -888,8 +941,16 @@ class DynLengthMember(DataMember):
 
     def __init__(self, length):
 
-        if not ((type(length) in (int, str)) or (length is self.any_length)):
-            raise Exception("invalid length passed to %s: %s<%s>" % (type(self), length, type(length)))
+        type_ok = False
+
+        if (type(length) in (int, str)) or (length is self.any_length):
+            type_ok = True
+
+        if callable(length):
+            type_ok = True
+
+        if not type_ok:
+            raise Exception("invalid length type passed to %s: %s<%s>" % (type(self), length, type(length)))
 
         self.length = length
 
@@ -901,21 +962,45 @@ class DynLengthMember(DataMember):
             if not obj:
                 raise Exception("dynamic length query requires source object")
 
-            #self.length specifies the attribute name where the length is stored
-            return getattr(obj, self.length)
+            if callable(self.length):
+                #length is a lambda that determines the length by some fancy manner
+                #pass the target object as lambda parameter.
+                length_def = self.length(obj)
+
+                #if the lambda returns a non-dynamic length (aka a number)
+                #return it directly. otherwise, the returned variable name
+                #has to be looked up again.
+                if not self.is_dynamic_length(target=length_def):
+                    return length_def
+
+            else:
+                #self.length specifies the attribute name where the length is stored
+                length_def = self.length
+
+            #look up the given member name and return the value.
+            if not isinstance(length_def, str):
+                raise Exception("length lookup definition is not str: %s<%s>" % (length_def, type(length_def)))
+
+            return getattr(obj, length_def)
 
         else:
+            #non-dynamic length (aka plain number) gets returned directly
             return self.length
 
-    def is_dynamic_length(self):
-        if self.length is self.any_length:
+    def is_dynamic_length(self, target=None):
+        if target == None:
+            target = self.length
+
+        if target is self.any_length:
             return True
-        elif isinstance(self.length, str):
+        elif isinstance(target, str):
             return True
-        elif isinstance(self.length, int):
+        elif isinstance(target, int):
             return False
+        elif callable(target):
+            return True
         else:
-            raise Exception("unknown length definition supplied: %s" % self.length)
+            raise Exception("unknown length definition supplied: %s" % target)
 
 
 class RefMember(DataMember):
@@ -973,6 +1058,24 @@ class NumberMember(DataMember):
 
     def __repr__(self):
         return self.number_type
+
+
+class ZeroMember(NumberMember):
+    """
+    data field that is known to always needs to be zero.
+    neat for finding offset errors.
+    """
+
+    def __init__(self, raw_type, length=1):
+        super().__init__(raw_type)
+        self.length = length
+
+    def verify_read_data(self, obj, data):
+        #fail if a single value of data != 0
+        if any(False if v == 0 else True for v in data):
+            return False
+        else:
+            return True
 
 
 class ContinueReadMember(NumberMember):
@@ -1357,10 +1460,10 @@ class StructDefinition:
         for is_parent, export, member_name, member_type in target_members:
 
             if isinstance(member_type, IncludeMembers):
-                raise Exception("something went very wrong.")
+                raise Exception("something went very wrong, inheritance should be flattened at this point.")
 
             if type(member_name) is not str:
-                raise Exception("member name has to be a string: %s<%s>" % (str(member_name), type(member_name)))
+                raise Exception("member name has to be a string, currently: %s<%s>" % (str(member_name), type(member_name)))
 
             #create member type class according to the defined member type
             if type(member_type) == str:
