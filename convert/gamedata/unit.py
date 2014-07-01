@@ -51,29 +51,15 @@ class UnitHeader(dataformat.Exportable):
     )
 
 
-class UnitHeaderData(dataformat.Exportable):
-    name_struct        = "unit_header_data"
-    name_struct_file   = "unit"
-    struct_description = "several unit headers for unit commands."
-
-    data_format = (
-        (dataformat.READ, "unit_count", "uint32_t"),
-        (dataformat.READ, "unit_headers", dataformat.SubdataMember(
-            ref_type=UnitHeader,
-            length="unit_count",
-        )),
-    )
-
-
 class RessourceStorage(dataformat.Exportable):
     name_struct        = "ressource_storage"
     name_struct_file   = "unit"
     struct_description = "stores the resource storage capacity for one unit mode."
 
     data_format = (
-        (dataformat.READ_EXPORT, "a", "int16_t"),
-        (dataformat.READ_EXPORT, "b", "float"),
-        (dataformat.READ_EXPORT, "c", "int8_t"),
+        (dataformat.READ, "a", "int16_t"),
+        (dataformat.READ, "b", "float"),
+        (dataformat.READ, "c", "int8_t"),
     )
 
 

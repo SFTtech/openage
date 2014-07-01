@@ -44,28 +44,6 @@ class TerrainRestriction(dataformat.Exportable):
         super().__init__(**args)
 
 
-class TerrainHeaderData(dataformat.Exportable):
-    """
-    basic terrain specification section.
-    """
-
-    name_struct_file   = "terrain"
-    name_struct        = "terrain_header_data"
-    struct_description = "specifies basic terrain properties"
-
-    data_format = (
-        (dataformat.READ, "terrain_restriction_count", "uint16_t"),
-        (dataformat.READ, "terrain_count", "uint16_t"),
-        (dataformat.READ, "terrain_restriction_offset0", "int32_t[terrain_restriction_count]"),
-        (dataformat.READ, "terrain_restriction_offset1", "int32_t[terrain_restriction_count]"),
-        (dataformat.READ, "terrain_restrictions", dataformat.SubdataMember(
-            ref_type=TerrainRestriction,
-            length="terrain_restriction_count",
-            passed_args={"terrain_count"},
-        )),
-    )
-
-
 class Terrain(dataformat.Exportable):
     name_struct        = "terrain_type"
     name_struct_file   = "terrain"
@@ -101,24 +79,6 @@ class Terrain(dataformat.Exportable):
 
     def __init__(self):
         super().__init__()
-
-
-class TerrainData(dataformat.Exportable):
-
-    name_struct        = "terrain_data"
-    name_struct_file   = "gamedata"
-    struct_description = "terrain list"
-
-    data_format = (
-        (dataformat.NOREAD_EXPORT, "terrain_count", "uint16_t"),
-        (dataformat.READ_EXPORT,   "terrains", dataformat.SubdataMember(
-            ref_type=Terrain,
-            length="terrain_count",
-        )),
-    )
-
-    def __init__(self, **args):
-        super().__init__(**args)
 
 
 class FrameData(dataformat.Exportable):
@@ -157,20 +117,4 @@ class TerrainBorder(dataformat.Exportable):
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
-    )
-
-
-class TerrainBorderData(dataformat.Exportable):
-    name_struct        = "terrain_border_data"
-    name_struct_file   = "terrain"
-    struct_description = "specification of terrain borders."
-
-    data_format = (
-        (dataformat.READ, "terrain_border", dataformat.SubdataMember(
-            ref_type=TerrainBorder,
-            length=16,
-        )),
-        (dataformat.READ_UNKNOWN, "zero", "int8_t[28]"),
-        (dataformat.READ, "terrain_count_additional", "uint16_t"),
-        (dataformat.READ_UNKNOWN, "terrain_blob", "uint8_t[12722]"),
     )

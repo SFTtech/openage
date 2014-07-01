@@ -41,8 +41,109 @@ class EmpiresDat(dataformat.Exportable):
 
     data_format = (
         (dataformat.READ, "versionstr", "char[8]"),
-        (dataformat.READ, "terrain_header", "std::string"),
-        #TODO
+
+        #terain header data
+        (dataformat.READ, "terrain_restriction_count", "uint16_t"),
+        (dataformat.READ, "terrain_count", "uint16_t"),
+        (dataformat.READ, "terrain_restriction_offset0", "int32_t[terrain_restriction_count]"),
+        (dataformat.READ, "terrain_restriction_offset1", "int32_t[terrain_restriction_count]"),
+        (dataformat.READ, "terrain_restrictions", dataformat.SubdataMember(
+            ref_type=terrain.TerrainRestriction,
+            length="terrain_restriction_count",
+            passed_args={"terrain_count"},
+        )),
+
+        #player color data
+        (dataformat.READ, "player_color_count", "uint16_t"),
+        (dataformat.READ, "player_colors", dataformat.SubdataMember(
+            ref_type=playercolor.PlayerColor,
+            length="player_color_count",
+        )),
+
+        #sound data
+        (dataformat.READ_EXPORT, "sound_count", "uint16_t"),
+        (dataformat.READ_EXPORT, "sounds", dataformat.SubdataMember(
+            ref_type=sound.Sound,
+            length="sound_count",
+        )),
+
+        #graphic data
+        (dataformat.READ, "graphic_count", "uint16_t"),
+        (dataformat.READ, "graphic_offsets", "int32_t[graphic_count]"),
+        (dataformat.READ, "graphics", dataformat.SubdataMember(
+            ref_type  = graphic.Graphic,
+            length    = "graphic_count",
+            offset_to = ("graphic_offsets", lambda o: o > 0),
+        )),
+        (dataformat.READ_UNKNOWN, "rendering_blob", "uint8_t[138]"),
+
+        #terrain data
+        (dataformat.READ_EXPORT,  "terrains", dataformat.SubdataMember(
+            ref_type=terrain.Terrain,
+            length="terrain_count",
+        )),
+        (dataformat.READ_UNKNOWN, "terrain_blob0", "uint8_t[438]"),
+        (dataformat.READ,         "terrain_border", dataformat.SubdataMember(
+            ref_type=terrain.TerrainBorder,
+            length=16,
+        )),
+        (dataformat.READ_UNKNOWN, "zero", "int8_t[28]"),
+        (dataformat.READ,         "terrain_count_additional", "uint16_t"),
+        (dataformat.READ_UNKNOWN, "terrain_blob1", "uint8_t[12722]"),
+
+        #technology data
+        (dataformat.READ_EXPORT, "tech_count", "uint32_t"),
+        (dataformat.READ_EXPORT, "techs", dataformat.SubdataMember(
+            ref_type=tech.Tech,
+            length="tech_count",
+        )),
+
+        #unit header data
+        (dataformat.READ_EXPORT, "unit_count", "uint32_t"),
+        (dataformat.READ_EXPORT, "unit_headers", dataformat.SubdataMember(
+            ref_type=unit.UnitHeader,
+            length="unit_count",
+        )),
+
+        #civilisation data
+        (dataformat.READ_EXPORT, "civ_count", "uint16_t"),
+        (dataformat.READ_EXPORT, "civs", dataformat.SubdataMember(
+            ref_type=civ.Civ,
+            length="civ_count"
+        )),
+
+        #research data
+        (dataformat.READ_EXPORT, "research_count", "uint16_t"),
+        (dataformat.READ_EXPORT, "researches", dataformat.SubdataMember(
+            ref_type=research.Research,
+            length="research_count"
+        )),
+
+        #unknown shiat again
+        (dataformat.READ_UNKNOWN, None, "uint32_t[7]"),
+
+        #technology tree data
+        (dataformat.READ_EXPORT, "age_entry_count", "uint8_t"),
+        (dataformat.READ_EXPORT, "building_connection_count", "uint8_t"),
+        (dataformat.READ_EXPORT, "unit_connection_count", "uint8_t"),
+        (dataformat.READ_EXPORT, "research_connection_count", "uint8_t"),
+        (dataformat.READ_EXPORT, "age_tech_tree", dataformat.SubdataMember(
+            ref_type=tech.AgeTechTree,
+            length="age_entry_count"
+        )),
+        (dataformat.READ_UNKNOWN, None, "uint32_t"),
+        (dataformat.READ_EXPORT, "building_connection", dataformat.SubdataMember(
+            ref_type=tech.BuildingConnection,
+            length="building_connection_count"
+        )),
+        (dataformat.READ_EXPORT, "unit_connection", dataformat.SubdataMember(
+            ref_type=tech.UnitConnection,
+            length="unit_connection_count"
+        )),
+        (dataformat.READ_EXPORT, "research_connection", dataformat.SubdataMember(
+            ref_type=tech.ResearchConnection,
+            length="research_connection_count"
+        )),
     )
 
 
@@ -78,99 +179,6 @@ class EmpiresDat(dataformat.Exportable):
         rawfile_writepath = file_get_path(filename, write=True)
         dbg("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath), 1)
         file_write(rawfile_writepath, self.content)
-
-    def read(self, raw, offset):
-
-        #char versionstr[8];
-        header_struct = Struct(endianness + "8s")
-        header = header_struct.unpack_from(raw, offset)
-        offset += header_struct.size
-
-        self.version = zstr(header[0])
-
-        dbg("dat version: %s" % (self.version), 1)
-
-        #TODO: this is just a grouping of variables => create new member type for that
-        self.terrain_header = terrain.TerrainHeaderData()
-        offset = self.terrain_header.read(raw, offset)
-
-        self.color = playercolor.PlayerColorData()
-        offset = self.color.read(raw, offset)
-
-        self.sound = sound.SoundData()
-        offset = self.sound.read(raw, offset)
-
-        self.graphic = graphic.GraphicData()
-        offset = self.graphic.read(raw, offset)
-
-        self.terrain = terrain.TerrainData(terrain_count=self.terrain_header.terrain_count)
-        offset = self.terrain.read(raw, offset)
-
-        #unknown shiat
-        tmp_struct = Struct(endianness + "438c")
-        offset += tmp_struct.size
-
-        self.terrain_borders = terrain.TerrainBorderData()
-        offset = self.terrain_borders.read(raw, offset)
-
-        self.tech = tech.TechData()
-        offset = self.tech.read(raw, offset)
-
-        self.unit = unit.UnitHeaderData()
-        offset = self.unit.read(raw, offset)
-
-        self.civ = civ.CivData()
-        offset = self.civ.read(raw, offset)
-
-        self.research = research.ResearchData()
-        offset = self.research.read(raw, offset)
-
-        #unknown shiat again
-        tmp_struct = Struct(endianness + "7i")
-        offset += tmp_struct.size
-
-        self.tech = tech.TechtreeData()
-        offset = self.tech.read(raw, offset)
-
-        return offset
-
-    def dump(self, what):
-        if type(what) != list:
-            what = [what]
-
-        ret = list()
-
-        for entry in what:
-            member_dump, _ = getattr(self, entry).dump(entry)
-            ret += member_dump
-
-        return ret
-
-    def structs(what):
-        """
-        function for dumping struct data without having to read a dat file.
-
-        note that 'self' is missing from the parameter list.
-        """
-
-        if type(what) != list:
-            what = [what]
-
-        ret = list()
-        for entry in what:
-            if "terrain" == entry:
-                target_class = terrain.TerrainData
-            elif "sound" == entry:
-                target_class = sound.SoundData
-            elif "civ" == entry:
-                target_class = civ.CivData
-            else:
-                raise Exception("unknown struct dump requested: %s" % entry)
-
-            ret += target_class.structs()
-
-        return ret
-
 
     def __str__(self):
         ret = "[age2x1p1]\n"

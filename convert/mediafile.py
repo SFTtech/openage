@@ -111,15 +111,27 @@ def media_convert(args):
         stringres.fill_from(PEFile("language.dll"))
         stringres.fill_from(PEFile("language_x1.dll"))
         stringres.fill_from(PEFile("language_x1_p1.dll"))
+        #TODO: transform and cleanup the read strings... (strip html, insert formatchars, ...)
 
         #create the dump for the dat file
         import gamedata.empiresdat
-        datfile = gamedata.empiresdat.EmpiresDat("Data/empires2_x1_p1.dat")
+        datfile_name = "empires2_x1_p1.dat"
+        datfile = gamedata.empiresdat.EmpiresDat("Data/%s" % datfile_name)
+
+        if args.extrafiles:
+            datfile.raw_dump('raw/empires2x1p1.raw')
+            palette.save_visualization('info/colortable.pal.png')
+
+        dbg("reading main data file %s..." % (datfile_name), lvl=1)
         datfile.read(datfile.content, 0)
 
         #modify the read contents of datfile
+        dbg("repairing some values in main data file %s..." % (datfile_name), lvl=1)
         import fix_data
         datfile = fix_data.fix_data(datfile)
+
+        #dbg("transforming main data file %s..." % (datfile_name), lvl=1)
+        #TODO: data transformation nao! (merge stuff, etcetc)
 
         data_formatter = dataformat.DataFormatter()
 
@@ -132,17 +144,17 @@ def media_convert(args):
         data_formatter.add_data(data_dump)
 
         #dump gamedata datfile data
-        datfile_dump = datfile.dump(args.sections)
-        data_formatter.add_data(datfile_dump, prefix="gamedata/")
+        datfile_dump = datfile.dump("empires2_x1_p1")
+        data_formatter.add_data(datfile_dump[0], prefix="gamedata/")
+
+        #TODO: generate base files! (probably requires groupmember and a new csv format)
+        #datfile_dump_base = datfile_dump[1]
+        #data_formatter.add_data(datfile_dump_base, prefix="gamedata/")
 
         output_data = data_formatter.export(output_formats)
 
         #save the meta files
         util.file_write_multi(output_data, file_prefix=asset_folder)
-
-        if args.extrafiles:
-            datfile.raw_dump('raw/empires2x1p1.raw')
-            palette.save_visualization('info/colortable.pal.png')
 
     file_list = defaultdict(lambda: list())
     media_files_extracted = 0

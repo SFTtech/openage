@@ -56,6 +56,14 @@ def ifdbg(lvl):
     else:
         return False
 
+def ifdbgeq(lvl):
+    global verbose
+
+    if verbose == lvl:
+        return True
+    else:
+        return False
+
 
 def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "\n"):
     """

@@ -31,20 +31,6 @@ class Civ(dataformat.Exportable):
             )),
             class_lookup       = unit.unit_type_class_lookup,
             length             = "unit_count",
-            offset_to          = "unit_offsets",
-        )),
-    )
-
-
-class CivData(dataformat.Exportable):
-    name_struct        = "civilisation_data"
-    name_struct_file   = "gamedata"
-    struct_description = "civilisation list."
-
-    data_format = (
-        (dataformat.READ_EXPORT, "civ_count", "uint16_t"),
-        (dataformat.READ_EXPORT, "civs", dataformat.SubdataMember(
-            ref_type=Civ,
-            length="civ_count"
+            offset_to          = ("unit_offsets", lambda o: o > 0),
         )),
     )
