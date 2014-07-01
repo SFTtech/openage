@@ -10,6 +10,7 @@ import filelist
 import hardcoded.termcolors
 import os
 import os.path
+import pickle
 from string import Template
 import subprocess
 from texture import Texture
@@ -101,6 +102,10 @@ def media_convert(args):
 
         player_palette = PlayerColorTable(palette)
 
+        if args.extrafiles:
+            palette.save_visualization('info/colortable.pal.png')
+            player_palette.save_visualization('info/playercolortable.pal.png')
+
         import blendomatic
         blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
         blend_data.save(os.path.join(asset_folder, "blendomatic.dat/"), output_formats)
@@ -115,15 +120,30 @@ def media_convert(args):
 
         #create the dump for the dat file
         import gamedata.empiresdat
+
+        dat_cache_file = "/tmp/empires2_x1_p1.dat.pickle"
         datfile_name = "empires2_x1_p1.dat"
-        datfile = gamedata.empiresdat.EmpiresDat("Data/%s" % datfile_name)
 
-        if args.extrafiles:
-            datfile.raw_dump('raw/empires2x1p1.raw')
-            palette.save_visualization('info/colortable.pal.png')
+        #try to use cached version
+        parse_empiresdat = False
+        try:
+            with open(dat_cache_file, "rb") as f:
+                datfile = pickle.load(f)
+        except FileNotFoundError as err:
+            parse_empiresdat = True
 
-        dbg("reading main data file %s..." % (datfile_name), lvl=1)
-        datfile.read(datfile.content, 0)
+        if parse_empiresdat:
+            datfile = gamedata.empiresdat.EmpiresDat("Data/%s" % datfile_name)
+
+            if args.extrafiles:
+                datfile.raw_dump('raw/empires2x1p1.raw')
+
+            dbg("reading main data file %s..." % (datfile_name), lvl=1)
+            datfile.read(datfile.content, 0)
+
+            #store the datfile serialization for caching
+            with open(dat_cache_file, "wb") as f:
+                pickle.dump(datfile, f)
 
         #modify the read contents of datfile
         dbg("repairing some values in main data file %s..." % (datfile_name), lvl=1)
