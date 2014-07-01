@@ -35,7 +35,7 @@ def data_generate(args):
 
     struct_data = list()
     struct_data += dataformat.MultisubtypeMember.MultisubtypeBaseFile.structs()
-    struct_data += gamedata.empiresdat.EmpiresDat.structs(args.sections)
+    struct_data += gamedata.empiresdat.EmpiresDat.structs()
     struct_data += blendomatic.Blendomatic.structs()
     struct_data += colortable.ColorTable.structs()
     struct_data += texture.Texture.structs()
