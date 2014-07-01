@@ -187,6 +187,7 @@ class Exportable:
 
                 dbg(lazymsg=lambda: "%s => leaving member %s" % (filename, member_name), lvl=3)
 
+
         #return flat list of DataDefinitions and dict of {member_name: member_value, ...}
         return ret, self_data
 
@@ -197,17 +198,29 @@ class Exportable:
         this is used to fill the python classes with data from the binary input.
         """
 
-        dbg(lazymsg=lambda: "-> 0x%08x => %s reading binary data" % (offset, repr(self)), lvl=3)
+        dbg(lazymsg=lambda: "-> 0x%08x => reading %s" % (offset, repr(self)), lvl=3)
 
         if cls:
             target_class = cls
         else:
             target_class = self
 
+        #break out of the current reading loop when members don't exist in source data file
+        stop_reading_members = False
+
         if not members:
             members = target_class.get_data_format(allowed_modes=(True, READ_EXPORT, READ, READ_UNKNOWN), flatten_includes=False)
 
         for is_parent, export, var_name, var_type in members:
+
+            if stop_reading_members:
+                if isinstance(var_type, DataMember):
+                    replacement_value = var_type.get_empty_value()
+                else:
+                    replacement_value = 0
+
+                setattr(self, var_name, replacement_value)
+                continue
 
             if isinstance(var_type, GroupMember):
                 if not issubclass(var_type.cls, Exportable):
@@ -386,13 +399,13 @@ class Exportable:
 
                     if result == ContinueReadMember.ABORT:
                         #don't go through all other members of this class!
-                        break
+                        stop_reading_members = True
 
 
                 #store member's data value
                 setattr(self, var_name, result)
 
-        dbg(lazymsg=lambda: "<- 0x%08x <= %s done reading data" % (offset, repr(self)), lvl=3)
+        dbg(lazymsg=lambda: "<- 0x%08x <= finished %s" % (offset, repr(self)), lvl=3)
         return offset
 
     @classmethod
@@ -441,6 +454,8 @@ class Exportable:
         for member in cls.data_format:
             export, member_name, member_type = member
 
+            definitively_return_member = False
+
             if isinstance(member_type, IncludeMembers):
                 if flatten_includes:
                     #recursive call
@@ -448,9 +463,13 @@ class Exportable:
                         yield m
                     continue
 
+            elif isinstance(member_type, ContinueReadMember):
+                definitively_return_member = True
+
             if allowed_modes:
                 if export not in allowed_modes:
-                    continue
+                    if not definitively_return_member:
+                        continue
 
             member_entry = (is_parent,) + member
             yield member_entry
@@ -863,6 +882,12 @@ class DataMember:
     def get_effective_type(self):
         raise NotImplementedError("return the effective (struct) type of member %s" % type(self))
 
+    def get_empty_value(self):
+        """
+        when this data field is not filled, use the retured value instead.
+        """
+        return 0
+
     def get_length(self, obj=None):
         return self.length
 
@@ -1060,6 +1085,7 @@ class NumberMember(DataMember):
         return self.number_type
 
 
+#TODO: convert to KnownValueMember
 class ZeroMember(NumberMember):
     """
     data field that is known to always needs to be zero.
@@ -1095,6 +1121,9 @@ class ContinueReadMember(NumberMember):
             return self.ABORT
         else:
             return self.CONTINUE
+
+    def get_empty_value(self):
+        return 0
 
 
 class EnumMember(RefMember):
@@ -1226,6 +1255,9 @@ class CharArrayMember(DynLengthMember):
         else:
             return "char";
 
+    def get_empty_value(self):
+        return ""
+
     def __repr__(self):
         return "%s[%s]" % (self.get_effective_type(), self.length)
 
@@ -1285,6 +1317,9 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
     def get_effective_type(self):
         return self.type_name
+
+    def get_empty_value(self):
+        return list()
 
     def get_contained_types(self):
         return {
