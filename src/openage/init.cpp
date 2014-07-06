@@ -15,6 +15,7 @@
 #include "../engine/log.h"
 #include "../engine/terrain_chunk.h"
 #include "../gamedata/color.h"
+#include "../gamedata/gamedata.h"
 #include "../gamedata/string_resource.h"
 
 #include "callbacks.h"
@@ -60,7 +61,7 @@ void init() {
 	university = new Texture("age/assets/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
 
 	auto string_resources = util::read_csv_file<gamedata::string_resource>("age/assets/string_resources.docx");
-	auto terrain_types  = util::read_csv_file<gamedata::terrain_type>("age/assets/gamedata/empires2_x1_p1-terrains.docx");
+	auto terrain_types  = util::read_csv_file<gamedata::terrain_type>("age/assets/gamedata/gamedata-empiresdat/empiresdat-0000-terrains.docx");
 	auto blending_modes = util::read_csv_file<gamedata::blending_mode>("age/assets/blending_modes.docx");
 
 	//create the terrain which will be filled by chunks

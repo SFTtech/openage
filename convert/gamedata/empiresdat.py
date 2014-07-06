@@ -28,6 +28,45 @@ import zlib
 # the binary structure, which the dat file has, is in `doc/gamedata.struct`
 
 
+class EmpiresDatGzip:
+    """
+    uncompresses the gzip'd empires dat.
+    """
+
+    def __init__(self, datfile_name):
+        self.fname = datfile_name
+        dbg("reading empires2*.dat from %s..." % self.fname, lvl=1)
+
+        filename = file_get_path(self.fname, write=False)
+        f = file_open(filename, binary=True, write=False)
+
+        dbg("decompressing data from %s" % filename, lvl=2)
+
+        compressed_data = f.read()
+        #decompress content with zlib (note the magic -15)
+        #-15: - -> there is no header, 15 is the max windowsize
+        self.content = zlib.decompress(compressed_data, -15)
+        f.close()
+
+        self.compressed_size   = len(compressed_data)
+        self.decompressed_size = len(self.content)
+
+        #compressed data no longer needed
+        del compressed_data
+
+        dbg("length of compressed data: %d = %d kB" % (self.compressed_size, self.compressed_size/1024), lvl=2)
+        dbg("length of decompressed data: %d = %d kB" % (self.decompressed_size, self.decompressed_size/1024), lvl=2)
+
+    def raw_dump(self, filename):
+        """
+        save the dat file in uncompressed format.
+        """
+
+        rawfile_writepath = file_get_path(filename, write=True)
+        dbg("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath), 1)
+        file_write(rawfile_writepath, self.content)
+
+
 class EmpiresDat(dataformat.Exportable):
     """
     class for fighting and beating the compressed empires2*.dat
@@ -147,44 +186,15 @@ class EmpiresDat(dataformat.Exportable):
     )
 
 
-    def __init__(self, fname):
-        self.fname = fname
-        dbg("reading empires2*.dat from %s..." % fname, lvl=1)
+class EmpiresDatWrapper(dataformat.Exportable):
+    name_struct_file   = "gamedata"
+    name_struct        = "gamedata"
+    struct_description = "wrapper for empires2_x1_p1.dat structure"
 
-        fname = file_get_path(fname, write = False)
-        f = file_open(fname, binary = True, write = False)
-
-        dbg("decompressing data from %s" % fname, lvl=2)
-
-        compressed_data = f.read()
-        #decompress content with zlib (note the magic -15)
-        #-15: - -> there is no header, 15 is the max windowsize
-        self.content = zlib.decompress(compressed_data, -15)
-        f.close()
-
-        self.compressed_size   = len(compressed_data)
-        self.decompressed_size = len(self.content)
-
-        #compressed data no longer needed
-        del compressed_data
-
-        dbg("length of compressed data: %d = %d kB" % (self.compressed_size, self.compressed_size/1024), lvl=2)
-        dbg("length of decompressed data: %d = %d kB" % (self.decompressed_size, self.decompressed_size/1024), lvl=2)
-
-    def raw_dump(self, filename):
-        """
-        save the dat file in uncompressed format.
-        """
-
-        rawfile_writepath = file_get_path(filename, write=True)
-        dbg("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath), 1)
-        file_write(rawfile_writepath, self.content)
-
-    def __str__(self):
-        ret = "[age2x1p1]\n"
-        ret += "TODO: a nice full representation"
-        return ret
-
-    def __repr__(self):
-        ret = "TODO: a nice short representation"
-        return ret
+    #TODO: we could reference to other gamedata structures
+    data_format = (
+        (dataformat.READ_EXPORT, "empiresdat", dataformat.SubdataMember(
+            ref_type=EmpiresDat,
+            length=1,
+        )),
+    )

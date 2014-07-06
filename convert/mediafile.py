@@ -128,27 +128,28 @@ def media_convert(args):
         parse_empiresdat = False
         try:
             with open(dat_cache_file, "rb") as f:
-                datfile = pickle.load(f)
+                gamedata = pickle.load(f)
         except FileNotFoundError as err:
             parse_empiresdat = True
 
         if parse_empiresdat:
-            datfile = gamedata.empiresdat.EmpiresDat("Data/%s" % datfile_name)
+            datfile = gamedata.empiresdat.EmpiresDatGzip("Data/%s" % datfile_name)
+            gamedata = gamedata.empiresdat.EmpiresDatWrapper()
 
             if args.extrafiles:
                 datfile.raw_dump('raw/empires2x1p1.raw')
 
             dbg("reading main data file %s..." % (datfile_name), lvl=1)
-            datfile.read(datfile.content, 0)
+            gamedata.read(datfile.content, 0)
 
             #store the datfile serialization for caching
             with open(dat_cache_file, "wb") as f:
-                pickle.dump(datfile, f)
+                pickle.dump(gamedata, f)
 
         #modify the read contents of datfile
         dbg("repairing some values in main data file %s..." % (datfile_name), lvl=1)
         import fix_data
-        datfile = fix_data.fix_data(datfile)
+        gamedata.empiresdat[0] = fix_data.fix_data(gamedata.empiresdat[0])
 
         #dbg("transforming main data file %s..." % (datfile_name), lvl=1)
         #TODO: data transformation nao! (merge stuff, etcetc)
@@ -164,12 +165,8 @@ def media_convert(args):
         data_formatter.add_data(data_dump)
 
         #dump gamedata datfile data
-        datfile_dump = datfile.dump("empires2_x1_p1")
-        data_formatter.add_data(datfile_dump[0], prefix="gamedata/")
-
-        #TODO: generate base files! (probably requires groupmember and a new csv format)
-        #datfile_dump_base = datfile_dump[1]
-        #data_formatter.add_data(datfile_dump_base, prefix="gamedata/")
+        gamedata_dump = gamedata.dump("gamedata")
+        data_formatter.add_data(gamedata_dump[0], prefix="gamedata/")
 
         output_data = data_formatter.export(output_formats)
 
