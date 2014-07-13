@@ -31,7 +31,7 @@ GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 } //namespace alphamask_shader
 
 
-Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
+Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 
 	this->use_player_color_tinting = 0 < (mode & PLAYERCOLORED);
 	this->use_alpha_masking        = 0 < (mode & ALPHAMASKED);
@@ -40,13 +40,13 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 	GLuint textureid;
 	int texture_format;
 
-	surface = IMG_Load(filename);
+	surface = IMG_Load(filename.c_str());
 
 	if (!surface) {
-		throw Error("Could not load texture from '%s': %s", filename, IMG_GetError());
+		throw Error("Could not load texture from '%s': %s", filename.c_str(), IMG_GetError());
 	}
 	else {
-		log::dbg1("Loaded texture from '%s'", filename);
+		log::dbg1("Loaded texture from '%s'", filename.c_str());
 	}
 
 	//glTexImage2D format determination
@@ -58,7 +58,7 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		texture_format = GL_RGBA;
 		break;
 	default:
-		throw Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename, surface->format->BytesPerPixel);
+		throw Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename.c_str(), surface->format->BytesPerPixel);
 		break;
 	}
 
@@ -82,9 +82,9 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 
 	if (use_metafile) {
 		//change the suffix to .docx (lol)
-		size_t m_len = strlen(filename) + 2;
+		size_t m_len = filename.length() + 2;
 		char *meta_filename = new char[m_len];
-		strncpy(meta_filename, filename, m_len);
+		strncpy(meta_filename, filename.c_str(), m_len);
 
 		meta_filename[m_len-5] = 'd';
 		meta_filename[m_len-4] = 'o';
@@ -96,16 +96,16 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		log::msg("loading meta file %s", meta_filename);
 
 		//get subtexture information by meta file exported by script
-		this->subtextures = util::read_csv_file<subtexture>(meta_filename);
+		this->subtextures = util::read_csv_file<gamedata::subtexture>(meta_filename);
 		this->subtexture_count = this->subtextures.size();
 		//TODO: use information from empires.dat for that, also use x and y sizes:
 		this->atlas_dimensions = sqrt(this->subtexture_count);
 		delete[] meta_filename;
 	}
 	else { //this texture does not contain subtextures
-		struct subtexture s {0, 0, this->w, this->h, this->w/2, this->h/2};
+		struct gamedata::subtexture s {0, 0, this->w, this->h, this->w/2, this->h/2};
 
-		this->subtextures = std::vector<subtexture>{};
+		this->subtextures = std::vector<gamedata::subtexture>{};
 		this->subtexture_count = 1;
 		this->subtextures.push_back(s);
 	}
@@ -143,7 +143,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 
 	bool use_playercolors = false;
 	bool use_alphashader = false;
-	struct subtexture *mtx;
+	struct gamedata::subtexture *mtx;
 
 	int *pos_id, *texcoord_id, *masktexcoord_id;
 
@@ -184,7 +184,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, this->id);
 
-	struct subtexture *tx = this->get_subtexture(subid);
+	struct gamedata::subtexture *tx = this->get_subtexture(subid);
 
 	int left, right, top, bottom;
 
@@ -283,7 +283,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 }
 
 
-struct subtexture *Texture::get_subtexture(int subid) {
+struct gamedata::subtexture *Texture::get_subtexture(int subid) {
 	if (subid < (ssize_t)this->subtexture_count && subid >= 0) {
 		return &this->subtextures[subid];
 	}
@@ -301,11 +301,11 @@ these pick the requested area out of the big texture.
 returned as floats in range 0.0 to 1.0
 */
 void Texture::get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) {
-	struct subtexture *tx = this->get_subtexture(subid);
+	struct gamedata::subtexture *tx = this->get_subtexture(subid);
 	this->get_subtexture_coordinates(tx, txl, txr, txt, txb);
 }
 
-void Texture::get_subtexture_coordinates(struct subtexture *tx, float *txl, float *txr, float *txt, float *txb) {
+void Texture::get_subtexture_coordinates(struct gamedata::subtexture *tx, float *txl, float *txr, float *txt, float *txb) {
 	*txl = ((float)tx->x)           /this->w;
 	*txr = ((float)(tx->x + tx->w)) /this->w;
 	*txt = ((float)tx->y)           /this->h;
@@ -318,7 +318,7 @@ int Texture::get_subtexture_count() {
 }
 
 void Texture::get_subtexture_size(int subid, int *w, int *h) {
-	struct subtexture *subtex = this->get_subtexture(subid);
+	struct gamedata::subtexture *subtex = this->get_subtexture(subid);
 	*w = subtex->w;
 	*h = subtex->h;
 }

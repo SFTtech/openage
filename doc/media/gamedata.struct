@@ -17,7 +17,7 @@ struct {
 
 	uint16_t player_color_count;
 	struct {
-		int32_t uid;
+		int32_t id;
 		int32_t palette;
 		int32_t color;
 		int32_t unknown;
@@ -30,7 +30,7 @@ struct {
 
 	uint16_t sound_count;
 	struct {
-		int32_t uid;
+		int32_t id;
 		uint16_t item_count;
 		int32_t unknown;
 		struct {
@@ -218,90 +218,93 @@ struct {
 			tree              = 90
 			*/
 			int8_t type_id;
-			uint16_t name_length;
-			int16_t id0;
-			uint16_t language_dll_name;
-			uint16_t language_dll_creation;
-			int16_t unit_class;
-			int16_t graphic_standing0;
-			int16_t graphic_standing1;
-			int16_t graphic_dying0;
-			int16_t graphic_dying1;
-			int8_t death_mode;
-			int16_t hit_points;
-			float line_of_sight;
-			int8_t garnison_capacity;
-			float radius_size0;
-			float radius_size1;
-			float hp_bar_height0;
-			int16_t sound_train0;
-			int16_t sound_train1;
-			int16_t dead_unit_id;
-			int8_t placement_mode;
-			int8_t air_mode;
-			int16_t icon_id;
-			int8_t hidden_in_editor;
-			int16_t unknown;
-			int16_t enabled;
-			int16_t placement_by_pass_terrain0;
-			int16_t placement_by_pass_terrain1;
-			int16_t placement_terrain0;
-			int16_t placement_terrain1;
-			float editor_radius0;
-			float editor_radius1;
-			int8_t building_mode;
-			int8_t visible_in_fog;
-			int16_t terrain_restriction;
-			int8_t fly_mode;
-			int16_t ressource_capacity;
-			float ressource_decay;
-			int8_t blast_type_id;
-			int8_t unknown;
-			int8_t interaction_mode;
-			int8_t minimap_mode;
-			int16_t command_attribute;
-			int16_t unknown;
-			int16_t unknown;
-			uint16_t language_dll_help;
-			int16_t[4] hot_keys;
-			int8_t unknown;
-			int8_t unknown;
-			bool unselectable;
-			int8_t unknown;
-			int8_t unknown;
-			int8_t unknown;
-			int8_t selection_mask;
-			int8_t selection_shape_type_id;
-			int8_t selection_shape;
-			int8_t attribute;
-			int8_t civilisation;
-			int16_t unknown;
-			int8_t selection_effect;
-			uint8_t editor_selection_color;
-			float selection_radius0;
-			float selection_radius1;
-			float hp_bar_height1;
 
 			struct {
-				int16_t a;
-				float b;
-				int8_t c;
-			} resource_storage[3];
-
-			int8_t damage_graphic_count;
-			struct {
-				int16_t graphic_id;
-				int8_t damage_percent;
+				uint16_t name_length;
+				int16_t id0;
+				uint16_t language_dll_name;
+				uint16_t language_dll_creation;
+				int16_t unit_class;
+				int16_t graphic_standing0;
+				int16_t graphic_standing1;
+				int16_t graphic_dying0;
+				int16_t graphic_dying1;
+				int8_t death_mode;
+				int16_t hit_points;
+				float line_of_sight;
+				int8_t garnison_capacity;
+				float radius_size0;
+				float radius_size1;
+				float hp_bar_height0;
+				int16_t sound_train0;
+				int16_t sound_train1;
+				int16_t dead_unit_id;
+				int8_t placement_mode;
+				int8_t air_mode;
+				int16_t icon_id;
+				int8_t hidden_in_editor;
+				int16_t unknown;
+				int16_t enabled;
+				int16_t placement_by_pass_terrain0;
+				int16_t placement_by_pass_terrain1;
+				int16_t placement_terrain0;
+				int16_t placement_terrain1;
+				float editor_radius0;
+				float editor_radius1;
+				int8_t building_mode;
+				int8_t visible_in_fog;
+				int16_t terrain_restriction;
+				int8_t fly_mode;
+				int16_t ressource_capacity;
+				float ressource_decay;
+				int8_t blast_type_id;
+				int8_t unknown;
+				int8_t interaction_mode;
+				int8_t minimap_mode;
+				int16_t command_attribute;
+				int16_t unknown;
+				int16_t unknown;
+				uint16_t language_dll_help;
+				int16_t[4] hot_keys;
 				int8_t unknown;
 				int8_t unknown;
-			} damage_graphic[damage_graphic_count];
+				bool unselectable;
+				int8_t unknown;
+				int8_t unknown;
+				int8_t unknown;
+				int8_t selection_mask;
+				int8_t selection_shape_type_id;
+				int8_t selection_shape;
+				int8_t attribute;
+				int8_t civilisation;
+				int16_t unknown;
+				int8_t selection_effect;
+				uint8_t editor_selection_color;
+				float selection_radius0;
+				float selection_radius1;
+				float hp_bar_height1;
 
-			int16_t sound_selection;
-			int16_t sound_dying;
-			int16_t attack_mode;
-			char name[name_length];
-			int16_t id1;
-			int16_t id2;
+				struct {
+					int16_t a;
+					float b;
+					int8_t c;
+				} resource_storage[3];
+
+				int8_t damage_graphic_count;
+				struct {
+					int16_t graphic_id;
+					int8_t damage_percent;
+					int8_t unknown;
+					int8_t unknown;
+				} damage_graphic[damage_graphic_count];
+
+				int16_t sound_selection;
+				int16_t sound_dying;
+				int16_t attack_mode;
+				char name[name_length];
+				int16_t id1;
+				int16_t id2;
+			} unit_header;
 
 			if (type_id >= unit_type.flag = 20 && type_id != unit_type.tree = 90) {
 				float speed;
@@ -370,6 +373,7 @@ struct {
 				int8_t drop_animation_mode;
 				int8_t penetration_mode;
 				int8_t unknown;
+				int16_t unknown;
 				float projectile_arc;
 			}
 
@@ -389,6 +393,7 @@ struct {
 				int8_t hero_mode;
 				int16_t garnison_graphic0;
 				int16_t garnison_graphic1;
+				uint16_t unknown;
 				float attack_missile_duplication0;
 				int8_t attack_missile_duplication1;
 				float attack_missile_duplication_spawning[3];
@@ -491,7 +496,7 @@ struct {
 			int32_t unknown[8];
 			int32_t mode0;
 			int32_t mode1;
-			int32_t unknown[7];
+			int32_t unknown[8];
 			int8_t unknown[11];
 			int32_t connection;
 			int32_t enabling_research;

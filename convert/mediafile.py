@@ -10,6 +10,7 @@ import filelist
 import hardcoded.termcolors
 import os
 import os.path
+import pickle
 from string import Template
 import subprocess
 from texture import Texture
@@ -101,6 +102,10 @@ def media_convert(args):
 
         player_palette = PlayerColorTable(palette)
 
+        if args.extrafiles:
+            palette.save_visualization('info/colortable.pal.png')
+            player_palette.save_visualization('info/playercolortable.pal.png')
+
         import blendomatic
         blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
         blend_data.save(os.path.join(asset_folder, "blendomatic.dat/"), output_formats)
@@ -111,14 +116,43 @@ def media_convert(args):
         stringres.fill_from(PEFile("language.dll"))
         stringres.fill_from(PEFile("language_x1.dll"))
         stringres.fill_from(PEFile("language_x1_p1.dll"))
+        #TODO: transform and cleanup the read strings... (strip html, insert formatchars, ...)
 
         #create the dump for the dat file
         import gamedata.empiresdat
-        datfile = gamedata.empiresdat.EmpiresDat("Data/empires2_x1_p1.dat")
+
+        dat_cache_file = "/tmp/empires2_x1_p1.dat.pickle"
+        datfile_name = "empires2_x1_p1.dat"
+
+        #try to use cached version
+        parse_empiresdat = False
+        try:
+            with open(dat_cache_file, "rb") as f:
+                gamedata = pickle.load(f)
+        except FileNotFoundError as err:
+            parse_empiresdat = True
+
+        if parse_empiresdat:
+            datfile = gamedata.empiresdat.EmpiresDatGzip("Data/%s" % datfile_name)
+            gamedata = gamedata.empiresdat.EmpiresDatWrapper()
+
+            if args.extrafiles:
+                datfile.raw_dump('raw/empires2x1p1.raw')
+
+            dbg("reading main data file %s..." % (datfile_name), lvl=1)
+            gamedata.read(datfile.content, 0)
+
+            #store the datfile serialization for caching
+            with open(dat_cache_file, "wb") as f:
+                pickle.dump(gamedata, f)
 
         #modify the read contents of datfile
+        dbg("repairing some values in main data file %s..." % (datfile_name), lvl=1)
         import fix_data
-        datfile = fix_data.fix_data(datfile)
+        gamedata.empiresdat[0] = fix_data.fix_data(gamedata.empiresdat[0])
+
+        #dbg("transforming main data file %s..." % (datfile_name), lvl=1)
+        #TODO: data transformation nao! (merge stuff, etcetc)
 
         data_formatter = dataformat.DataFormatter()
 
@@ -131,17 +165,13 @@ def media_convert(args):
         data_formatter.add_data(data_dump)
 
         #dump gamedata datfile data
-        datfile_dump = datfile.dump(args.sections)
-        data_formatter.add_data(datfile_dump, prefix="gamedata/")
+        gamedata_dump = gamedata.dump("gamedata")
+        data_formatter.add_data(gamedata_dump[0], prefix="gamedata/")
 
         output_data = data_formatter.export(output_formats)
 
         #save the meta files
         util.file_write_multi(output_data, file_prefix=asset_folder)
-
-        if args.extrafiles:
-            datfile.raw_dump('raw/empires2x1p1.raw')
-            palette.save_visualization('info/colortable.pal.png')
 
     file_list = defaultdict(lambda: list())
     media_files_extracted = 0
@@ -208,7 +238,9 @@ def media_convert(args):
                     #remove original wave file
                     os.remove(wav_output_file)
 
-                sound_list.add_sound(file_id, sound_filename, file_extension)
+                #TODO: this is redundant here, but we need to strip the assets/ part..
+                filelist_fname = "%s.%s" % (os.path.join(drsfile.fname, str(file_id)), file_extension)
+                sound_list.add_sound(file_id, filelist_fname, file_extension)
 
             else:
                 #format does not require conversion, store it as plain blob

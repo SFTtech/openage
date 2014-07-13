@@ -20,7 +20,7 @@ extern coord::camhud charsize;
 extern std::vector<util::col> termcolors;
 
 //init functions
-void init(const std::vector<palette_color> &termcolors);
+void init(const std::vector<gamedata::palette_color> &termcolors);
 void destroy();
 
 //callback functions

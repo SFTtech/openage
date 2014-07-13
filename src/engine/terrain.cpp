@@ -7,6 +7,7 @@
 #include "engine.h"
 #include "texture.h"
 #include "log.h"
+#include "util/dir.h"
 #include "util/error.h"
 #include "util/misc.h"
 #include "util/strings.h"
@@ -31,8 +32,9 @@ TileContent::TileContent() :
 
 TileContent::~TileContent() {}
 
-Terrain::Terrain(std::vector<terrain_type> terrain_meta,
-                 std::vector<blending_mode> blending_meta,
+Terrain::Terrain(util::Dir &asset_dir,
+                 std::vector<gamedata::terrain_type> terrain_meta,
+                 std::vector<gamedata::blending_mode> blending_meta,
                  bool is_infinite) {
 
 	this->infinite = is_infinite;
@@ -69,22 +71,26 @@ Terrain::Terrain(std::vector<terrain_type> terrain_meta,
 		this->terrain_id_priority_map[terrain_id]  = line->blend_priority;
 		this->terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
-		char *terraintex_filename = util::format("age/assets/Data/terrain.drs/%d.slp.png", line->slp_id);
-		auto new_texture = new Texture(terraintex_filename, true, ALPHAMASKED);
+		char *terraintex_filename = util::format(asset_dir.append("Data/terrain.drs/%d.slp.png").c_str(), line->slp_id);
+		std::string terraintex_filename_str{terraintex_filename};
+		delete[] terraintex_filename;
+
+		auto new_texture = new Texture(terraintex_filename_str, true, ALPHAMASKED);
 		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
 		this->textures[terrain_id] = new_texture;
-		delete[] terraintex_filename;
 	}
 
 	//create blending masks (see doc/media/blendomatic)
 	for (size_t i = 0; i < this->blendmode_count; i++) {
 		auto line = &blending_meta[i];
 
-		char *mask_filename = util::format("age/assets/blendomatic.dat/mode%02d.png", line->blend_mode);
-		auto new_texture = new Texture(mask_filename, true);
+		char *mask_filename = util::format(asset_dir.append("blendomatic.dat/mode%02d.png").c_str(), line->blend_mode);
+		std::string mask_filename_str{mask_filename};
+		delete[] mask_filename;
+
+		auto new_texture = new Texture(mask_filename_str, true);
 		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
 		this->blending_masks[i] = new_texture;
-		delete[] mask_filename;
 	}
 
 }

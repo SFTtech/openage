@@ -46,6 +46,7 @@ add_executable(${PROJECT_NAME}
 	engine/terrain_object.cpp
 	engine/texture.cpp
 	engine/util/color.cpp
+	engine/util/dir.cpp
 	engine/util/error.cpp
 	engine/util/file.cpp
 	engine/util/fds.cpp

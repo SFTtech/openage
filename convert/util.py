@@ -9,6 +9,32 @@ class NamedObject:
     def __repr__(self):
         return self.name
 
+
+struct_type_lookup = {
+    "char":               "b",
+    "unsigned char":      "B",
+    "int8_t":             "b",
+    "uint8_t":            "B",
+    "short":              "h",
+    "unsigned short":     "H",
+    "int16_t":            "h",
+    "uint16_t":           "H",
+    "int":                "i",
+    "unsigned int":       "I",
+    "int32_t":            "i",
+    "uint32_t":           "I",
+    "long":               "l",
+    "unsigned long":      "L",
+    "long long":          "q",
+    "unsigned long long": "Q",
+    "int64_t":            "q",
+    "uint64_t":           "Q",
+    "float":              "f",
+    "double":             "d",
+    "char[]":             "s",
+}
+
+
 dbgstack = [(None, 0)]
 
 readpath = "/dev/null"
@@ -25,6 +51,14 @@ def ifdbg(lvl):
     global verbose
 
     if verbose >= lvl:
+        return True
+    else:
+        return False
+
+def ifdbgeq(lvl):
+    global verbose
+
+    if verbose == lvl:
         return True
     else:
         return False
@@ -203,25 +237,6 @@ def zstr(data):
     return data.decode("utf-8").rstrip("\x00")
 
 
-def check_file(fid):
-    if (True):
-        #deactivated for now, maybe use again later
-        return
-
-    import filelist
-    if fid in filelist.avail_files:
-        entries = filelist.avail_files[fid]
-        for arch, extension in entries:
-            dbg("%d.%s in %s" % (fid, extension, arch), 2)
-    elif fid in [-1, 0]:
-        dbg("***** graphic is %d!!" % fid, 2)
-        pass
-    else:
-        msg = "##### file %d not found" % (fid)
-        #raise Exception(msg)
-        dbg(msg, 2)
-
-
 def offset_info(offset, data, msg="", s=None, mode=0):
     ret = "====== @ %d = %#x ======" % (offset, offset)
     ret += " %s " % msg
@@ -264,3 +279,16 @@ class VirtualFile:
 
     def data(self):
         return self.buf
+
+
+def gen_dict_key2lists(keys):
+    """
+    returns an empty dict with key => list() mapping.
+    """
+
+    return dict(
+        zip(
+            keys,
+            ([[] for _ in range(len(keys))])
+        )
+    )

@@ -13,6 +13,9 @@
 namespace engine {
 namespace util {
 
+ssize_t read_whole_file(char **result, std::string filename) {
+	return read_whole_file(result, filename.c_str());
+}
 
 ssize_t read_whole_file(char **result, const char *filename) {
 

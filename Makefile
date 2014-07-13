@@ -18,7 +18,7 @@ needed_media = graphics:3836.slp graphics:4857.slp terrain:*.slp sounds0:5229.wa
 
 binary = bin/$(project_name)
 
-runargs = --data=$(DATA_DIR)/
+runargs = --data=$(DATA_DIR)
 
 .PHONY: all
 all: $(project_name)

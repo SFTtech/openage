@@ -2,15 +2,15 @@ from collections import defaultdict
 import dataformat
 from util import dbg
 
-class StringResource:
+class StringResource(dataformat.Exportable):
     name_struct        = "string_resource"
     name_struct_file   = "string_resource"
     struct_description = "string id/language to text mapping, extracted from language.dll file."
 
     data_format = (
-        ("id", "int32_t"),
-        ("lang", "char[16]"),
-        ("text", "std::string"),
+        (True, "id",   "int32_t"),
+        (True, "lang", "char[16]"),
+        (True, "text", "std::string"),
     )
 
     def __init__(self):

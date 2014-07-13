@@ -28,17 +28,19 @@ import zlib
 # the binary structure, which the dat file has, is in `doc/gamedata.struct`
 
 
-class EmpiresDat:
-    """class for fighting and beating the compressed empires2*.dat"""
+class EmpiresDatGzip:
+    """
+    uncompresses the gzip'd empires dat.
+    """
 
-    def __init__(self, fname):
-        self.fname = fname
-        dbg("reading empires2*.dat from %s..." % fname, 1)
+    def __init__(self, datfile_name):
+        self.fname = datfile_name
+        dbg("reading empires2*.dat from %s..." % self.fname, lvl=1)
 
-        fname = file_get_path(fname, write = False)
-        f = file_open(fname, binary = True, write = False)
+        filename = file_get_path(self.fname, write=False)
+        f = file_open(filename, binary=True, write=False)
 
-        dbg("decompressing data from %s" % fname, 1)
+        dbg("decompressing data from %s" % filename, lvl=2)
 
         compressed_data = f.read()
         #decompress content with zlib (note the magic -15)
@@ -46,22 +48,14 @@ class EmpiresDat:
         self.content = zlib.decompress(compressed_data, -15)
         f.close()
 
-        compressed_size   = len(compressed_data)
-        decompressed_size = len(self.content)
+        self.compressed_size   = len(compressed_data)
+        self.decompressed_size = len(self.content)
 
         #compressed data no longer needed
         del compressed_data
 
-        dbg("length of compressed data: %d = %d kB" % (compressed_size, compressed_size/1024), 1)
-        dbg("length of decompressed data: %d = %d kB" % (decompressed_size, decompressed_size/1024), 1)
-
-        #this variable will store the offset in the raw dat file.
-        offset = 0
-        offset = self.read(self.content, offset)
-
-        finish_percent = 100*(offset/decompressed_size)
-        dbg("finished reading empires*.dat at %d of %d bytes (%f%%)." % (offset, decompressed_size, finish_percent), 1)
-
+        dbg("length of compressed data: %d = %d kB" % (self.compressed_size, self.compressed_size/1024), lvl=2)
+        dbg("length of decompressed data: %d = %d kB" % (self.decompressed_size, self.decompressed_size/1024), lvl=2)
 
     def raw_dump(self, filename):
         """
@@ -72,101 +66,135 @@ class EmpiresDat:
         dbg("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath), 1)
         file_write(rawfile_writepath, self.content)
 
-    def read(self, raw, offset):
 
-        #char versionstr[8];
-        header_struct = Struct(endianness + "8s")
-        header = header_struct.unpack_from(raw, offset)
-        offset += header_struct.size
+class EmpiresDat(dataformat.Exportable):
+    """
+    class for fighting and beating the compressed empires2*.dat
 
-        self.version = zstr(header[0])
+    represents the main game data file.
+    """
 
-        dbg("dat version: %s" % (self.version), 1)
+    name_struct_file   = "gamedata"
+    name_struct        = "empiresdat"
+    struct_description = "empires2_x1_p1.dat structure"
 
-        self.terrain_header = terrain.TerrainHeaderData()
-        offset = self.terrain_header.read(raw, offset)
+    data_format = (
+        (dataformat.READ, "versionstr", "char[8]"),
 
-        self.color = playercolor.PlayerColorData()
-        offset = self.color.read(raw, offset)
+        #terain header data
+        (dataformat.READ, "terrain_restriction_count", "uint16_t"),
+        (dataformat.READ, "terrain_count", "uint16_t"),
+        (dataformat.READ, "terrain_restriction_offset0", "int32_t[terrain_restriction_count]"),
+        (dataformat.READ, "terrain_restriction_offset1", "int32_t[terrain_restriction_count]"),
+        (dataformat.READ, "terrain_restrictions", dataformat.SubdataMember(
+            ref_type=terrain.TerrainRestriction,
+            length="terrain_restriction_count",
+            passed_args={"terrain_count"},
+        )),
 
-        self.sound = sound.SoundData()
-        offset = self.sound.read(raw, offset)
+        #player color data
+        (dataformat.READ, "player_color_count", "uint16_t"),
+        (dataformat.READ, "player_colors", dataformat.SubdataMember(
+            ref_type=playercolor.PlayerColor,
+            length="player_color_count",
+        )),
 
-        self.graphic = graphic.GraphicData()
-        offset = self.graphic.read(raw, offset)
+        #sound data
+        (dataformat.READ_EXPORT, "sound_count", "uint16_t"),
+        (dataformat.READ_EXPORT, "sounds", dataformat.SubdataMember(
+            ref_type=sound.Sound,
+            length="sound_count",
+        )),
 
-        self.terrain = terrain.TerrainData(self.terrain_header.terrain_count)
-        offset = self.terrain.read(raw, offset)
+        #graphic data
+        (dataformat.READ, "graphic_count", "uint16_t"),
+        (dataformat.READ, "graphic_offsets", "int32_t[graphic_count]"),
+        (dataformat.READ, "graphics", dataformat.SubdataMember(
+            ref_type  = graphic.Graphic,
+            length    = "graphic_count",
+            offset_to = ("graphic_offsets", lambda o: o > 0),
+        )),
+        (dataformat.READ_UNKNOWN, "rendering_blob", "uint8_t[138]"),
 
-        #unknown shiat
-        tmp_struct = Struct(endianness + "438c")
-        offset += tmp_struct.size
+        #terrain data
+        (dataformat.READ_EXPORT,  "terrains", dataformat.SubdataMember(
+            ref_type=terrain.Terrain,
+            length="terrain_count",
+        )),
+        (dataformat.READ_UNKNOWN, "terrain_blob0", "uint8_t[438]"),
+        (dataformat.READ,         "terrain_border", dataformat.SubdataMember(
+            ref_type=terrain.TerrainBorder,
+            length=16,
+        )),
+        (dataformat.READ_UNKNOWN, "zero", "int8_t[28]"),
+        (dataformat.READ,         "terrain_count_additional", "uint16_t"),
+        (dataformat.READ_UNKNOWN, "terrain_blob1", "uint8_t[12722]"),
 
-        self.terrain_borders = terrain.TerrainBorderData()
-        offset = self.terrain_borders.read(raw, offset)
+        #technology data
+        (dataformat.READ_EXPORT, "tech_count", "uint32_t"),
+        (dataformat.READ_EXPORT, "techs", dataformat.SubdataMember(
+            ref_type=tech.Tech,
+            length="tech_count",
+        )),
 
-        self.tech = tech.TechData()
-        offset = self.tech.read(raw, offset)
+        #unit header data
+        (dataformat.READ_EXPORT, "unit_count", "uint32_t"),
+        (dataformat.READ_EXPORT, "unit_headers", dataformat.SubdataMember(
+            ref_type=unit.UnitHeader,
+            length="unit_count",
+        )),
 
-        self.unit = unit.UnitHeaderData()
-        offset = self.unit.read(raw, offset)
+        #civilisation data
+        (dataformat.READ_EXPORT, "civ_count", "uint16_t"),
+        (dataformat.READ_EXPORT, "civs", dataformat.SubdataMember(
+            ref_type=civ.Civ,
+            length="civ_count"
+        )),
 
-        self.civ = civ.CivData()
-        offset = self.civ.read(raw, offset)
-
-        self.research = research.ResearchData()
-        offset = self.research.read(raw, offset)
+        #research data
+        (dataformat.READ_EXPORT, "research_count", "uint16_t"),
+        (dataformat.READ_EXPORT, "researches", dataformat.SubdataMember(
+            ref_type=research.Research,
+            length="research_count"
+        )),
 
         #unknown shiat again
-        tmp_struct = Struct(endianness + "7i")
-        offset += tmp_struct.size
+        (dataformat.READ_UNKNOWN, None, "uint32_t[7]"),
 
-        self.tech = tech.TechtreeData()
-        offset = self.tech.read(raw, offset)
-
-        return offset
-
-    def dump(self, what):
-        if type(what) != list:
-            what = [what]
-
-        ret = list()
-
-        for entry in what:
-            member_dump, _ = getattr(self, entry).dump(entry)
-            ret += member_dump
-
-        return ret
-
-    def structs(what):
-        """
-        function for dumping struct data without having to read a dat file.
-
-        note that 'self' is missing from the parameter list.
-        """
-
-        if type(what) != list:
-            what = [what]
-
-        ret = list()
-        for entry in what:
-            if "terrain" == entry:
-                target_class = terrain.Terrain
-            elif "sound" == entry:
-                target_class = sound.Sound
-            else:
-                raise Exception("unknown struct dump requested: %s" % entry)
-
-            ret += target_class.structs()
-
-        return ret
+        #technology tree data
+        (dataformat.READ_EXPORT, "age_entry_count", "uint8_t"),
+        (dataformat.READ_EXPORT, "building_connection_count", "uint8_t"),
+        (dataformat.READ_EXPORT, "unit_connection_count", "uint8_t"),
+        (dataformat.READ_EXPORT, "research_connection_count", "uint8_t"),
+        (dataformat.READ_EXPORT, "age_tech_tree", dataformat.SubdataMember(
+            ref_type=tech.AgeTechTree,
+            length="age_entry_count"
+        )),
+        (dataformat.READ_UNKNOWN, None, "uint32_t"),
+        (dataformat.READ_EXPORT, "building_connection", dataformat.SubdataMember(
+            ref_type=tech.BuildingConnection,
+            length="building_connection_count"
+        )),
+        (dataformat.READ_EXPORT, "unit_connection", dataformat.SubdataMember(
+            ref_type=tech.UnitConnection,
+            length="unit_connection_count"
+        )),
+        (dataformat.READ_EXPORT, "research_connection", dataformat.SubdataMember(
+            ref_type=tech.ResearchConnection,
+            length="research_connection_count"
+        )),
+    )
 
 
-    def __str__(self):
-        ret = "[age2x1p1]\n"
-        ret += "TODO: a nice full representation"
-        return ret
+class EmpiresDatWrapper(dataformat.Exportable):
+    name_struct_file   = "gamedata"
+    name_struct        = "gamedata"
+    struct_description = "wrapper for empires2_x1_p1.dat structure"
 
-    def __repr__(self):
-        ret = "TODO: a nice short representation"
-        return ret
+    #TODO: we could reference to other gamedata structures
+    data_format = (
+        (dataformat.READ_EXPORT, "empiresdat", dataformat.SubdataMember(
+            ref_type=EmpiresDat,
+            length=1,
+        )),
+    )

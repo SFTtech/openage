@@ -11,7 +11,7 @@ enum class loader_policy_t {
 	DYNAMIC
 };
 
-loader_policy_t from_loader_policy(const audio_loader_policy_t loader_policy);
+loader_policy_t from_loader_policy(const gamedata::audio_loader_policy_t loader_policy);
 
 }
 }

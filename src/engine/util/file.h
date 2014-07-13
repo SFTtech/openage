@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <string>
 #include <vector>
 
 #include "error.h"
@@ -11,7 +12,9 @@
 namespace engine {
 namespace util {
 
+
 ssize_t read_whole_file(char **result, const char *filename);
+ssize_t read_whole_file(char **result, std::string filename);
 
 
 template <class lineformat>
@@ -41,6 +44,7 @@ std::vector<lineformat> read_csv_file(const char *fname) {
 			if (*current_line != '#' && line_length > 0) {
 
 				//parse the line data to the temporary result
+				//this function is possibly auto-generated!
 				fill_result = current_line_data.fill(current_line);
 
 				//filling the line failed
@@ -61,6 +65,11 @@ std::vector<lineformat> read_csv_file(const char *fname) {
 	delete[] file_content;
 
 	return result;
+}
+
+template <class lineformat>
+std::vector<lineformat> read_csv_file(std::string fname) {
+	return read_csv_file<lineformat>(fname.c_str());
 }
 
 } //namespace util

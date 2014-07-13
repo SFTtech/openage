@@ -8,6 +8,42 @@ import os.path
 
 endianness = "< "
 
+class BlendingTile:
+    def __init__(self, data, width, height):
+        self.data   = data
+        self.width  = width
+        self.height = height
+
+    def get_picture_data(self):
+        import numpy
+
+        tile_rows = list()
+
+        for y, picture_row in enumerate(self.data):
+            tile_row_data = list()
+
+            for x, alpha_data in enumerate(picture_row):
+
+                if alpha_data == -1:
+                    #draw full transparency
+                    alpha = 0
+                    val   = 0
+                else:
+                    if alpha_data == 128:
+                        alpha = 255
+                        val   = 0
+                    else:
+                        #original data contains 7bit values only
+                        alpha = 128
+                        val   = (127 - (alpha_data & 0x7f)) * 2
+
+                tile_row_data.append((val, val, val, alpha))
+
+            tile_rows.append(tile_row_data)
+
+        return numpy.array(tile_rows)
+
+
 class BlendingMode:
     def __init__(self, idx, data_file, tile_count, header):
         """
@@ -119,8 +155,9 @@ class BlendingMode:
             #how many empty pixels on the left before the real data begins
             space_count = row_count - 1 - (read_values//2)
 
-            #insert as padding to the left (-1 for fully transparent)
-            pixels = ([-1] * space_count) + pixels
+            #insert padding to the left and right (-1 for fully transparent)
+            padding = ([-1] * space_count)
+            pixels = padding + pixels + padding
 
             if len(pixels) > max_width:
                 max_width = len(pixels)
@@ -131,20 +168,16 @@ class BlendingMode:
         if read_so_far != tile_size:
             raise Exception("got leftover bytes: %d" % (tile_size-read_so_far))
 
-        return {
-            "data":   tilerows,
-            "height": row_count,
-            "width":  max_width
-        }
+        return BlendingTile(tilerows, max_width, row_count)
 
 
-class Blendomatic:
+class Blendomatic(dataformat.Exportable):
 
     name_struct        = "blending_mode"
     name_struct_file   = "blending_mode"
     struct_description = "describes one blending mode, a blending transition shape between two different terrain types."
     data_format = (
-        ("blend_mode", "int32_t"),
+        (True, "blend_mode", "int32_t"),
     )
 
     #struct blendomatic_header {

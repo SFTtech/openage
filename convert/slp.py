@@ -3,7 +3,6 @@ import sys
 
 from struct import Struct, unpack_from
 from util import NamedObject, dbg, ifdbg
-from png import PNG
 
 #SLP files have little endian byte order
 endianness = "< "
@@ -82,7 +81,7 @@ class SpecialColor:
         )
 
     def __repr__(self):
-        return "S%d%d" % (self.special_id, self.base_color)
+        return "S%s%d" % (self.special_id, self.base_color)
 
 
 class SLP:
@@ -93,7 +92,7 @@ class SLP:
 
     #struct slp_header {
     # char version[4];
-    # int num_frames;
+    # int frame_count;
     # char comment[24];
     #};
     slp_header = Struct(endianness + "4s i 24s")
@@ -111,27 +110,26 @@ class SLP:
     slp_frame_info = Struct(endianness + "I I I I i i i i")
 
     def __init__(self, data):
-        self.data = data
-        header = SLP.slp_header.unpack_from(self.data)
-        version, num_frames, comment = header
+        header = SLP.slp_header.unpack_from(data)
+        version, frame_count, comment = header
 
         dbg("SLP header", 2, push="slp")
         dbg("version:     " + version.decode('ascii'))
-        dbg("frame count: " + str(num_frames))
+        dbg("frame count: " + str(frame_count))
         dbg("comment:     " + comment.decode('ascii'))
         dbg("")
 
-        self.frames = []
+        self.frames = list()
 
         dbg(FrameInfo.repr_header())
 
         #read all slp_frame_info structs
-        for i in range(num_frames):
+        for i in range(frame_count):
             frame_header_offset = SLP.slp_header.size + i * SLP.slp_frame_info.size
 
-            frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(self.data, frame_header_offset))
+            frame_info = FrameInfo(*SLP.slp_frame_info.unpack_from(data, frame_header_offset))
             dbg(frame_info)
-            self.frames.append(SLPFrame(frame_info, self.data))
+            self.frames.append(SLPFrame(frame_info, data))
 
         dbg("", pop="slp")
 
@@ -164,11 +162,11 @@ class FrameInfo:
         ret = list()
         ret.extend([
             "        % 9d|" % self.qdl_table_offset,
-            "% 13d|" % self.outline_table_offset,
-            "% 7d) | " % self.palette_offset,
-            "% 10d | " % self.properties,
+            "% 13d|"        % self.outline_table_offset,
+            "% 7d) | "      % self.palette_offset,
+            "% 10d | "      % self.properties,
             "% 5d x% 7d | " % self.size,
-            "% 4d /% 5d" % self.hotspot,
+            "% 4d /% 5d"    % self.hotspot,
         ])
         return "".join(ret)
 
@@ -194,7 +192,9 @@ class SLPFrame:
 
         self.boundaries  = [] #for each row, contains the (left, right) number of boundary pixels
         self.cmd_offsets = [] #for each row, store the file offset to the first drawing command
-        self.pcolor      = [] #matrix that contains all the palette indices drawn by commands, key: rowid
+
+        #palette index matrix representing the final image
+        self.pcolor = list()
 
         dbg(push="frame", lvl=3)
 
@@ -220,12 +220,10 @@ class SLPFrame:
 
         dbg("cmd_offsets:     %s" % self.cmd_offsets)
 
-        self.pcolor = []
         for i in range(self.info.size[1]):
-            palette_color_row = self.create_palette_color_row(data, i)
-            self.pcolor.append( palette_color_row )
+            self.pcolor.append(self.create_palette_color_row(data, i))
 
-        dbg(lazymsg=lambda: "frame color index data:\n%s" % self.pcolor, lvl=4)
+        dbg(lazymsg=lambda: "frame color index data:\n%s" % str(self.pcolor), lvl=4)
         dbg(pop="frame")
 
     def create_palette_color_row(self, data, rowid):
@@ -235,13 +233,14 @@ class SLPFrame:
 
         first_cmd_offset = self.cmd_offsets[rowid]
         bounds           = self.boundaries[rowid]
+        pixel_count      = self.info.size[0]
 
         #row is completely transparent
         if bounds == SpecialColor.transparent:
-            return [bounds] * self.info.size[0]
+            return [bounds] * pixel_count
 
         left_boundary, right_boundary = bounds
-        missing_pixels = self.info.size[0] - left_boundary - right_boundary
+        missing_pixels = pixel_count - left_boundary - right_boundary
 
         #start drawing the left transparent space
         pcolor_row_beginning = [ SpecialColor.transparent ] * left_boundary
@@ -253,18 +252,18 @@ class SLPFrame:
         pcolor_row_trailing = [ SpecialColor.transparent ] * right_boundary
 
         #this is the resulting row data
-        pcolor = pcolor_row_beginning + pcolor_row_content + pcolor_row_trailing
+        row_data = pcolor_row_beginning + pcolor_row_content + pcolor_row_trailing
 
         #verify size of generated row
-        if len(pcolor) != self.info.size[0]:
+        if len(row_data) != pixel_count:
             summary = "%d/%d -> row %d, offset %d / %#x" % (got, self.width, rowid, first_cmd_offset, first_cmd_offset)
-            txt = "got %%s pixels than expected: %s, missing: %d" % (summary, abs(self.info.size[0] - got))
-            if got < self.info.size[0]:
+            txt = "got %%s pixels than expected: %s, missing: %d" % (summary, abs(pixel_count - got))
+            if got < pixel_count:
                 raise Exception(txt % ("LESS"))
             else:
                 raise Exception(txt % ("MORE"))
 
-        return pcolor
+        return row_data
 
     def process_drawing_cmds(self, data, rowid, first_cmd_offset, missing_pixels):
         """
@@ -293,7 +292,7 @@ class SLPFrame:
             higher_nibble = 0xf0       & cmd
             lower_bits    = 0b00000011 & cmd
 
-            dbg(lazymsg=lambda: "opcode: %#x, rowlength: %d, rowid: %d" % (cmd, rowid), lvl=4)
+            dbg(lazymsg=lambda: "opcode: %#x, rowid: %d" % (cmd, rowid), lvl=4)
 
             if lower_nibble == 0x0f:
                 #eol command, this row is finished now.
@@ -476,8 +475,52 @@ class SLPFrame:
 
         self.pcolor[rowid] += color_list
 
-    def get_picture_data(self):
-        return self.pcolor
+    def get_picture_data(self, palette, player_number=0):
+        return determine_rgba_matrix(self.pcolor, palette, player_number)
 
     def __repr__(self):
         return repr(self.info)
+
+
+def determine_rgba_matrix(image_matrix, palette, player_number=0):
+    """
+    converts a palette index image matrix to an rgb matrix.
+    """
+
+    import numpy
+
+    rgba_data = list()
+
+    for row in image_matrix:
+        for pixel in row:
+            if type(pixel) == int:
+                #simply look up the color index in the table
+                r, g, b = palette[pixel]
+                color = (r, g, b, 255)
+
+            elif isinstance(pixel, SpecialColor):
+                base_pcolor, is_outline = pixel.get_pcolor()
+                if is_outline:
+                    alpha = 253  #mark this pixel as outline
+                else:
+                    alpha = 254  #mark this pixel as player color
+
+                #get rgb base color from the color table
+                #store it the preview player color (in the table: [16*player, 16*player+7]
+                r, g, b = palette[base_pcolor + (16 * player_number)]
+                color = (r, g, b, alpha)
+
+            elif pixel is SpecialColor.transparent:
+                color = (0, 0, 0, 0)
+
+            elif pixel is SpecialColor.shadow:
+                color = (0, 0, 0, 100)
+
+            else:
+                raise Exception("Unknown color: %s (%s)" % (pixel, type(pixel)))
+
+            rgba_data.append(color)
+
+    output_shape = (len(image_matrix), len(image_matrix[0]), 4)
+    array_data = numpy.array(rgba_data, dtype=numpy.uint8)
+    return array_data.reshape(*output_shape)

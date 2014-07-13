@@ -13,7 +13,7 @@ enum class format_t {
 	FLAC
 };
 
-format_t from_format(const audio_format_t format);
+format_t from_format(const gamedata::audio_format_t format);
 
 }
 }

@@ -21,11 +21,13 @@ def fix_data(data):
     #remove terrains with slp_id == -1
     #we'll need them again in the future, with fixed slp ids
     slp_ge0 = lambda x: x.slp_id >= 0
-    data.terrain.terrains = list(filter(slp_ge0, data.terrain.terrains))
+    data.terrains = list(filter(slp_ge0, data.terrains))
 
     #assign correct blending modes
     #key:   dat file stored mode
     #value: corrected mode
+    #resulting values are also priorities!
+    # -> higher => gets selected as mask for two partners
     blendmode_map = {
         #identical modes: [0,1,7,8], [4,6]
         0: 1, #dirt, grass, palm_desert
@@ -38,11 +40,11 @@ def fix_data(data):
         7: 6, #snow
         8: 4, #no terrain has it, but the mode exists..
     }
-    for terrain in data.terrain.terrains:
+    for terrain in data.terrains:
         terrain.blend_mode = blendmode_map[terrain.blend_mode]
 
     #set correct terrain ids
-    for idx, terrain in enumerate(data.terrain.terrains):
+    for idx, terrain in enumerate(data.terrains):
         terrain.terrain_id = idx
 
     return data

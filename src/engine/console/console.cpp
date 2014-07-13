@@ -82,7 +82,7 @@ bool on_window_resize() {
 
 
 
-void init(const std::vector<palette_color> &colortable) {
+void init(const std::vector<gamedata::palette_color> &colortable) {
 	termcolors.reserve(256);
 	for (auto c : colortable) {
 		termcolors.emplace_back(c);

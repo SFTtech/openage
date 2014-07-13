@@ -12,6 +12,7 @@
 #include "texture.h"
 #include "coord/camgame.h"
 #include "coord/chunk.h"
+#include "util/dir.h"
 #include "util/misc.h"
 #include "../gamedata/blending_mode.h"
 #include "../gamedata/terrain.h"
@@ -135,7 +136,10 @@ actually this is just the entrypoint and container for the terrain chunks.
 */
 class Terrain {
 public:
-	Terrain(std::vector<terrain_type> terrain_meta, std::vector<blending_mode> blending_meta, bool is_infinite);
+	Terrain(util::Dir &asset_dir,
+		std::vector<gamedata::terrain_type> terrain_meta,
+		std::vector<gamedata::blending_mode> blending_meta,
+		bool is_infinite);
 	~Terrain();
 
 	bool blending_enabled; //!< is terrain blending active. increases memory accesses by factor ~8
