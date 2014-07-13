@@ -1350,13 +1350,18 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         if format == "struct":
 
             txt = list()
+            typerefs = set()
 
             txt.append("struct %s {\n" % (self.type_name))
-            txt.extend([
-                "\tstd::vector<%s> %s;\n" % (
-                    GeneratedFile.namespacify(entry_type.get_effective_type()), entry_name
-                ) for (entry_name, entry_type) in self.class_lookup.items()
-            ])
+            for (entry_name, entry_type) in self.class_lookup.items():
+                entry_type = entry_type.get_effective_type()
+                txt.append(
+                    "\tstd::vector<%s> %s;\n" % (
+                        GeneratedFile.namespacify(entry_type), entry_name
+                    )
+                )
+                typerefs |= {entry_type}
+
             txt.append("\n\tbool fill(const char *filename);\n")
             txt.append("};\n")
 
@@ -1367,7 +1372,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 reprtxt="multisubtype container struct %s" % self.type_name,
             )
             snippet.typedefs |= { self.type_name }
-            snippet.typerefs |= self.get_contained_types()
+            snippet.typerefs |= typerefs
             snippet.includes |= determine_headers("std::vector")
 
             return [ snippet ]
