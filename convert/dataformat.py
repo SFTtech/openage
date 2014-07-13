@@ -356,7 +356,7 @@ class Exportable:
                     raise Exception("invalid length %d < 0 in %s for member '%s'" % (data_count, var_type, var_name))
 
                 if struct_type not in util.struct_type_lookup:
-                    raise Exception("%s: member %s requests unknown data type %s for member '%s'" % (repr(self), var_name, struct_type))
+                    raise Exception("%s: member %s requests unknown data type %s" % (repr(self), var_name, struct_type))
 
                 if export == READ_UNKNOWN:
                     #for unknown variables, generate uid for the unknown memory location
@@ -760,7 +760,7 @@ namespace ${namespace} {\n\n""" % dontedit,
         snippets_header = {s for s in self.snippets if s.section == ContentSnippet.section_header}
         snippets_body   = self.snippets - snippets_header
 
-        #type references in thils file that could not be resolved
+        #type references in this file that could not be resolved
         missing_types = set()
 
         #put snippets into list in correct order
@@ -1047,7 +1047,6 @@ class NumberMember(DataMember):
 
     #primitive types, directly parsable by sscanf
     type_scan_lookup = {
-        "bool":          "hhd",
         "char":          "hhd",
         "int8_t":        "hhd",
         "uint8_t":       "hhu",

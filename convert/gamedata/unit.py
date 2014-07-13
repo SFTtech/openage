@@ -42,7 +42,7 @@ class UnitHeader(dataformat.Exportable):
     struct_description = "stores a bunch of unit commands."
 
     data_format = (
-        (dataformat.READ, "exists", dataformat.ContinueReadMember("bool")),
+        (dataformat.READ, "exists", dataformat.ContinueReadMember("uint8_t")),
         (dataformat.READ, "unit_command_count", "uint16_t"),
         (dataformat.READ_EXPORT, "unit_commands", dataformat.SubdataMember(
             ref_type=UnitCommand,
@@ -173,7 +173,7 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "hot_keys", "int16_t[4]"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "unselectable", "bool"),
+        (dataformat.READ, "unselectable", "uint8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
@@ -260,7 +260,7 @@ class UnitDeadOrFish(UnitDoppelganger):
         (dataformat.READ, "rotation_speed", "float"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ, "tracking_unit", "int16_t"),
-        (dataformat.READ, "tracking_unit_used", "bool"),
+        (dataformat.READ, "tracking_unit_used", "uint8_t"),
         (dataformat.READ, "tracking_unit_density", "float"),
         (dataformat.READ_UNKNOWN, None, "float"),
         (dataformat.READ_UNKNOWN, None, "int8_t[17]"),

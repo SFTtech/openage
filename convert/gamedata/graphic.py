@@ -58,11 +58,11 @@ class Graphic(dataformat.Exportable):
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ, "layer", "int8_t"),
         (dataformat.READ, "player_color", "int16_t"),
-        (dataformat.READ, "replay", "bool"),
+        (dataformat.READ, "replay", "uint8_t"),
         (dataformat.READ, "coordinates", "int16_t[4]"),
         (dataformat.READ, "delta_count", "uint16_t"),
         (dataformat.READ, "sound_id", "int16_t"),
-        (dataformat.READ, "attack_sound_used", "bool"),
+        (dataformat.READ, "attack_sound_used", "uint8_t"),
         (dataformat.READ, "frame_count", "uint16_t"),
         (dataformat.READ, "angle_count", "uint16_t"),
         (dataformat.READ, "new_speed", "float"),
@@ -79,6 +79,6 @@ class Graphic(dataformat.Exportable):
         #if attack_sound_used:
         (dataformat.READ, "graphic_attack_sounds", dataformat.SubdataMember(
             ref_type=GraphicAttackSound,
-            length=lambda o: "angle_count" if o.attack_sound_used else 0,
+            length=lambda o: "angle_count" if o.attack_sound_used != 0 else 0,
         )),
     )

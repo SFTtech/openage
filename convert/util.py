@@ -11,7 +11,6 @@ class NamedObject:
 
 
 struct_type_lookup = {
-    "bool":               "?",
     "char":               "b",
     "unsigned char":      "B",
     "int8_t":             "b",
