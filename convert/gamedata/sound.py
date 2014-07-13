@@ -31,7 +31,7 @@ class Sound(dataformat.Exportable):
         (dataformat.READ_EXPORT, "id", "int32_t"),
         (dataformat.READ_EXPORT, "item_count", "uint16_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
-        (dataformat.READ_EXPORT, "sound_item", dataformat.SubdataMember(
+        (dataformat.READ_EXPORT, "sound_items", dataformat.SubdataMember(
             ref_type=SoundItem,
             ref_to="id",
             length="item_count",
