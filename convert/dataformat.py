@@ -1627,6 +1627,7 @@ class DataFormatter:
 
     #method signature for fill function
     fill_csignature = "bool %sfill(char *by_line)"
+    fill_csignature_empty = "bool %sfill(char * /*by_line*/)"
 
     def __init__(self):
         #list of all dumpable data sets
@@ -1896,21 +1897,24 @@ class DataFormatter:
         #list of lines for each parsers for a single field of the csv
         parsers = []
 
-        for idx, (member_name, member_type) in enumerate(dataset.members.items()):
-            #add lines for each parser to the list: [[parser line, ...], ...]
-            parsers.append(member_type.get_parsers(idx, member_name))
-            headers  |= member_type.get_headers("structimpl")
+        if len(dataset.members) > 0:
 
-        #indent/newline the token parsers. inner loop = lines for one column
-        parser_code = "\n\n\t".join("\n\t".join(p) for p in parsers)
+            for idx, (member_name, member_type) in enumerate(dataset.members.items()):
+                #add lines for each parser to the list: [[parser line, ...], ...]
+                parsers.append(member_type.get_parsers(idx, member_name))
+                headers  |= member_type.get_headers("structimpl")
 
-        #prepend struct name to fill function signature
-        fill_signature = self.fill_csignature % ("%s::" % dataset.name_struct)
+            #indent/newline the token parsers. inner loop = lines for one column
+            parser_code = "\n\n\t".join("\n\t".join(p) for p in parsers)
 
-        member_count = dataset.name_struct + "::member_count"
+            #prepend struct name to fill function signature
+            fill_signature = self.fill_csignature % ("%s::" % dataset.name_struct)
 
-        #definition of filling function
-        txt = Template("""$funcsignature {
+            member_count = dataset.name_struct + "::member_count"
+            headers |= determine_headers("strtok_custom")
+
+            #definition of filling function
+            txt = Template("""$funcsignature {
 \t//tokenize
 \tchar *buf[$member_count];
 \tint count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
@@ -1927,14 +1931,24 @@ class DataFormatter:
 }
 """).substitute(funcsignature=fill_signature, delimiter=self.DELIMITER, parsers=parser_code, member_count=member_count)
 
+        else: #struct has no members
+
+            #prepend struct name to fill function signature
+            fill_signature = self.fill_csignature_empty % ("%s::" % dataset.name_struct)
+
+            txt = Template("""$funcsignature {
+\treturn true;
+}""").substitute(funcsignature=fill_signature)
+
         snippet = ContentSnippet(
             txt,
             dataset.name_struct_file,
             ContentSnippet.section_body,
             reprtxt=fill_signature,
         )
-        snippet.includes |= headers | determine_headers("strtok_custom")
+        snippet.includes |= headers
         snippet.typerefs |= typerefs | { dataset.name_struct }
+
         return snippet
 
 
