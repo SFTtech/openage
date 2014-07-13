@@ -44,6 +44,7 @@ std::vector<lineformat> read_csv_file(const char *fname) {
 			if (*current_line != '#' && line_length > 0) {
 
 				//parse the line data to the temporary result
+				//this function is possibly auto-generated!
 				fill_result = current_line_data.fill(current_line);
 
 				//filling the line failed

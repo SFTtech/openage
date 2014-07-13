@@ -180,7 +180,7 @@ class PEFile:
         #read DOS header
         dosheader = image_dos_header.unpack_from(data, 0)
 
-        dbg("PE header [%s]" % (fname), 1, push = "pe")
+        dbg("PE file [%s]" % (fname), 1)
 
         #read PE header
         headerpos = dosheader[30] #e_lfanew
@@ -192,7 +192,7 @@ class PEFile:
         if signature != PE_SIGNATURE:
             raise Exception("Invalid PE signature")
 
-        dbg("DOS header: " + repr(peheader))
+        dbg("DOS header: " + repr(peheader), push = "pe")
 
         #read optional header
         optheaderpos = headerpos + image_file_header.size
@@ -219,13 +219,13 @@ class PEFile:
 
         #number of sections is known from PE header
         sections = {}
-        dbg("sections", 2, push="sections")
+        dbg("sections", 3, push="sections")
         for i in range(number_of_sections):
             sectionheader = image_section_header.unpack_from(data, secttablepos + image_section_header.size * i)
             sectionname = sectionheader[0].decode('ascii').strip('\0')
             sectionheader = sectionheader[1:]
 
-            dbg(sectionname + ": " + repr(sectionheader))
+            dbg(sectionname + ": " + (", ".join(["%#x" % i for i in sectionheader])))
 
             #read section data
             virtual_size, virtual_address, size_of_raw_data, pointer_to_raw_data, pointer_to_relocations, pointer_to_linenumbers, number_of_relocations, number_of_linenumbers, characteristics = sectionheader
@@ -251,7 +251,7 @@ class PEFile:
         for lang, strs in self.strings.items():
             dbg("%s: %d resource strings" % (lang, len(strs)))
 
-        dbg(pop = "pe")
+        dbg(pop="pe")
 
     def parse_rsrc_strings(self):
         """
@@ -297,7 +297,7 @@ class PEFile:
 
         return result
 
-    def read_rsrc_tree(self, pos, recdepth = 0):
+    def read_rsrc_tree(self, pos):
         """
         reads a resource directory
         note that the directory may contain subdirectories, in which case the function
@@ -312,6 +312,8 @@ class PEFile:
         characteristics, timestamp, maj_ver, min_ver, name_entry_count, id_entry_count = rdir
         pos += resource_directory_table.size
 
+        dbg(push="rsrctree", lvl=4)
+
         entries = {}
         for i in range(name_entry_count + id_entry_count):
             name, rva = resource_directory_entry.unpack_from(self.rsrcdata, pos)
@@ -324,19 +326,20 @@ class PEFile:
 
             #process rva
             if rva & 2**31:
-                #print(recdepth * "  " + "dir:" + str(name))
+                dbg("dir: " + str(name))
                 rva -= 2**31
                 #rva points to a subdirectory
-                entry = self.read_rsrc_tree(rva, recdepth + 1)
+                entry = self.read_rsrc_tree(rva)
             else:
                 dataentry = resource_data_entry.unpack_from(self.rsrcdata, rva)
                 data_rva, size, codepage, _ = dataentry
                 data_absa = data_rva - self.resdatava
                 #rva points to a leaf node
                 entry = self.rsrcdata[data_absa:data_absa + size]
-                #print(recdepth * "  " + "leaf:" + str(name) + ", cp: " + str(codepage) + ", size: " + str(size) + ", addr = " + str(data_rva) + ", absa = " + str(data_absa))
+                dbg("leaf: %s, metadata @%#x, cp: %d, size: %#x, addr = %#x, absa = %#x" % (name, rva, codepage, size, data_rva, data_absa))
 
             entries[name] = entry
 
+        dbg(pop="rsrctree")
 
         return entries
