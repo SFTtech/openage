@@ -506,11 +506,13 @@ class ContentSnippet:
     def add_required_snippets(self, snippet_list):
         """
         save required snippets for this one by looking at wanted type references
+
+        the available candidates have to be passed as argument
         """
 
         self.required_snippets |= {s for s in snippet_list if len(self.typerefs & s.typedefs) > 0}
 
-        dbg(lazymsg=lambda: "snippet %s requires %s" % (repr(self), repr(self.required_snippets)), lvl=4)
+        dbg(lazymsg=lambda: "snippet %s requires %s" % (repr(self), repr(self.required_snippets)), lvl=3)
 
         resolved_types = set()
         for s in self.required_snippets:
@@ -715,19 +717,17 @@ namespace ${namespace} {\n\n""" % dontedit,
         discover and add needed header snippets for type references accross files.
         """
 
-        if self.format in ("csv",):
-            return
-
         dbg("%s typerefs %s" % (repr(self), repr(self.typerefs)), lvl=3)
         dbg("%s typedefs %s" % (repr(self), repr(self.typedefs)), lvl=3)
 
         new_resolves = set()
         for include_candidate in file_pool:
             candidate_resolves = include_candidate.typedefs & (self.typerefs - self.typedefs)
+
             if len(candidate_resolves) > 0:
                 new_header = include_candidate.get_include_snippet()
 
-                dbg(lazymsg=lambda: "%s adding header %s" % (repr(self), repr(new_header)), push="add_header", lvl=3)
+                dbg(lazymsg=lambda: "%s: to resolve %s" % (repr(self), candidate_resolves), push="add_header", lvl=3)
                 self.add_snippet(new_header)
                 dbg(pop="add_header")
 
@@ -736,6 +736,16 @@ namespace ${namespace} {\n\n""" % dontedit,
         still_missing = (self.typerefs - self.typedefs) - new_resolves
         if len(still_missing) > 0:
             raise Exception("still missing types for %s:\n%s" % (self, still_missing))
+
+    def create_forward_declarations(self, file_pool):
+        """
+        create forward declarations for this generated file.
+
+        a forward declatation is needed when a referenced type is defined
+        in an included header, that includes a header that includes the first one.
+        """
+
+        pass
 
     def generate(self):
         """
@@ -769,15 +779,16 @@ namespace ${namespace} {\n\n""" % dontedit,
 
         #determine each snippet's priority by number of type references and definitions
         #smaller prio means written earlier in the file.
+        #also, find snippet dependencies
         dbg("assigning snippet priorities:", push="snippetprio", lvl=4)
         for s in snippets_body:
             snippet_prio = len(s.typerefs) - len(s.typedefs)
             snippets_priorized.append((s, snippet_prio))
+            dbg(lazymsg=lambda: "prio %3.d => %s" % (snippet_prio, repr(s)), lvl=4)
 
             #let each snippet find others as dependencies
             missing_types |= s.add_required_snippets(self.snippets)
 
-            dbg(lazymsg=lambda: "prio %3.d => %s" % (snippet_prio, repr(s)), lvl=4)
         dbg(pop="snippetprio")
 
         if len(missing_types) > 0:
@@ -795,12 +806,12 @@ namespace ${namespace} {\n\n""" % dontedit,
             dbg(lazymsg=lambda: "required dependency snippet candidates: %s" % (pprint.pformat(snippet_candidates)), lvl=3)
             for s in snippet_candidates:
                 if s.section == ContentSnippet.section_header and s not in snippets_header:
-                    dbg(lazymsg=lambda: " `-> ADD  snippet %s" % (repr(s)), lvl=4)
+                    dbg(lazymsg=lambda: " `-> ADD  header snippet %s" % (repr(s)), lvl=4)
                     snippets_ordered.append(s)
 
                 elif s.section == ContentSnippet.section_body and s not in snippets_body_ordered:
                     snippets_body_ordered.append(s)
-                    dbg(lazymsg=lambda: " `-> ADD  snippet %s" % (repr(s)), lvl=4)
+                    dbg(lazymsg=lambda: " `-> ADD  body snippet %s" % (repr(s)), lvl=4)
 
                 else:
                     dbg(lazymsg=lambda: " `-> SKIP snippet %s" % (repr(s)), lvl=4)
@@ -1716,10 +1727,14 @@ class DataFormatter:
         #[GeneratedFile, ...]
 
         #find xref header includes
-        dbg("######################\ngenerating needed cross reference includes now...", push="includegen", lvl=2)
+        dbg("######################\ngenerating needed cross reference includes now...", lvl=2)
         for gen_file in generate_files:
-            gen_file.create_xref_headers(generate_files)
-        dbg(pop="includegen")
+            #only create headers for non-data files
+            if gen_file.format not in ("csv",):
+                dbg("%s: creating needed xref headers:" % (repr(gen_file)), push="includegen", lvl=3)
+                gen_file.create_xref_headers(generate_files)
+                gen_file.create_forward_declarations(generate_files)
+                dbg(pop="includegen")
 
         dbg("######################\ngenerating real file contents now...", lvl=2)
 
