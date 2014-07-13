@@ -14,6 +14,7 @@ namespace util {
 
 
 ssize_t read_whole_file(char **result, const char *filename);
+ssize_t read_whole_file(char **result, std::string filename);
 
 
 template <class lineformat>
@@ -63,6 +64,11 @@ std::vector<lineformat> read_csv_file(const char *fname) {
 	delete[] file_content;
 
 	return result;
+}
+
+template <class lineformat>
+std::vector<lineformat> read_csv_file(std::string fname) {
+	return read_csv_file<lineformat>(fname.c_str());
 }
 
 } //namespace util

@@ -57,7 +57,7 @@ public:
 	*/
 	size_t atlas_dimensions;
 
-	Texture(const char *filename, bool use_metafile = false, unsigned int mode = 0);
+	Texture(std::string filename, bool use_metafile = false, unsigned int mode = 0);
 	~Texture();
 
 	void draw(coord::camhud pos, bool mirrored = false, int subid = 0, unsigned player = 0);

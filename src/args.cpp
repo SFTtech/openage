@@ -53,8 +53,7 @@ void parse_args() {
 			{0,                                0, 0,  0 }
 		};
 
-		c = getopt_long(args.argc, args.argv,
-		 "ht:", long_options, &option_index);
+		c = getopt_long(args.argc, args.argv, "ht:", long_options, &option_index);
 
 		if (c == -1) {
 			break;
@@ -113,6 +112,5 @@ void parse_args() {
 		//more arguments than processed options
 		throw Error("%d unknown additional arguments, starting with %s",
 		 args.argc - optind, args.argv[optind]);
-
 	}
 }

@@ -12,6 +12,7 @@
 #include "hash_functions.h"
 #include "resource.h"
 #include "sound.h"
+#include "../util/dir.h"
 
 #include "../../gamedata/sound_file.h"
 
@@ -57,7 +58,7 @@ public:
 	AudioManager &operator=(const AudioManager&) = delete;
 	AudioManager &operator=(AudioManager&&) = delete;
 
-	void load_resources(const std::vector<gamedata::sound_file> &sound_files);
+	void load_resources(util::Dir &asset_dir, const std::vector<gamedata::sound_file> &sound_files);
 
 	Sound get_sound(category_t category, int id);
 

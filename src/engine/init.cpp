@@ -13,6 +13,7 @@
 #include "callbacks.h"
 #include "font.h"
 #include "texture.h"
+#include "util/dir.h"
 #include "util/error.h"
 #include "input.h"
 #include "log.h"
@@ -22,7 +23,7 @@
 
 namespace engine {
 
-void init(const char *windowtitle) {
+void init(util::Dir &data_dir, const char *windowtitle) {
 	//set global random seed
 	srand(time(NULL));
 
@@ -104,10 +105,12 @@ void init(const char *windowtitle) {
 		throw Error{"No audio devices found"};
 	}
 
-	auto sound_files = util::read_csv_file<gamedata::sound_file>("age/assets/sound_list.docx");
+	util::Dir asset_dir = data_dir.merge("age/assets");
+
+	auto sound_files = util::read_csv_file<gamedata::sound_file>(asset_dir.append("sound_list.docx"));
 
 	audio_manager = new audio::AudioManager(48000, AUDIO_S16LSB, 2, 4096);
-	audio_manager->load_resources(sound_files);
+	audio_manager->load_resources(asset_dir, sound_files);
 
 	//auto sound0 = audio_manager->get_sound(audio::category_t::GAME, 5045);
 	//auto sound1 = audio_manager->get_sound(audio::category_t::GAME, 5127);

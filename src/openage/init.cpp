@@ -11,6 +11,7 @@
 #include "../engine/util/file.h"
 #include "../engine/util/error.h"
 #include "../engine/callbacks.h"
+#include "../engine/util/dir.h"
 #include "../engine/util/file.h"
 #include "../engine/log.h"
 #include "../engine/terrain_chunk.h"
@@ -45,32 +46,25 @@ constexpr int terrain_data[16 * 16] = {
 	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5,  5
 };
 
-void init() {
-	constexpr size_t max_dirname_length = 1024;
-	char current_dir_name[max_dirname_length];
-
-	if (NULL == getcwd(current_dir_name, max_dirname_length)) {
-		throw engine::Error("working dir filename longer than %lu.", max_dirname_length);
-	}
-
-	engine::log::msg("using data directory '%s'", current_dir_name);
-
+void init(util::Dir &data_dir) {
+	util::Dir asset_dir = data_dir.merge("age/assets");
 
 	//load textures and stuff
-	gaben = new Texture("gaben.png");
-	university = new Texture("age/assets/Data/graphics.drs/3836.slp.png", true, PLAYERCOLORED);
+	gaben      = new Texture{data_dir.append("gaben.png")};
+	university = new Texture{asset_dir.append("Data/graphics.drs/3836.slp.png"), true, PLAYERCOLORED};
 
-	auto string_resources = util::read_csv_file<gamedata::string_resource>("age/assets/string_resources.docx");
-	auto terrain_types  = util::read_csv_file<gamedata::terrain_type>("age/assets/gamedata/gamedata-empiresdat/empiresdat-0000-terrains.docx");
-	auto blending_modes = util::read_csv_file<gamedata::blending_mode>("age/assets/blending_modes.docx");
+	auto string_resources = util::read_csv_file<gamedata::string_resource>(asset_dir.append("string_resources.docx"));
+	auto terrain_types  = util::read_csv_file<gamedata::terrain_type>(asset_dir.append("gamedata/gamedata-empiresdat/0000-terrains.docx"));
+	auto blending_modes = util::read_csv_file<gamedata::blending_mode>(asset_dir.append("blending_modes.docx"));
 
 	//create the terrain which will be filled by chunks
-	terrain = new Terrain(terrain_types, blending_modes, true);
+	terrain = new Terrain(asset_dir, terrain_types, blending_modes, true);
 
+	//auto gamedata = util::read_csv_file<gamedata::empiresdat>("age/assets/gamedata/gamedata-empiresdat.docx");
 
 	terrain->fill(terrain_data, terrain_data_size);
 
-	auto player_color_lines = engine::util::read_csv_file<gamedata::palette_color>("age/assets/player_palette_50500.docx");
+	auto player_color_lines = engine::util::read_csv_file<gamedata::palette_color>(asset_dir.append("player_palette_50500.docx"));
 
 	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
 	for (size_t i = 0; i < player_color_lines.size(); i++) {
@@ -90,27 +84,27 @@ void init() {
 	//read shader source codes and create shader objects for wrapping them.
 
 	char *texture_vert_code;
-	util::read_whole_file(&texture_vert_code, "shaders/maptexture.vert.glsl");
+	util::read_whole_file(&texture_vert_code, data_dir.append("shaders/maptexture.vert.glsl"));
 	auto plaintexture_vert = new shader::Shader(GL_VERTEX_SHADER, texture_vert_code);
 	delete[] texture_vert_code;
 
 	char *texture_frag_code;
-	util::read_whole_file(&texture_frag_code, "shaders/maptexture.frag.glsl");
+	util::read_whole_file(&texture_frag_code, data_dir.append("shaders/maptexture.frag.glsl"));
 	auto plaintexture_frag = new shader::Shader(GL_FRAGMENT_SHADER, texture_frag_code);
 	delete[] texture_frag_code;
 
 	char *teamcolor_frag_code;
-	util::read_whole_file(&teamcolor_frag_code, "shaders/teamcolors.frag.glsl");
+	util::read_whole_file(&teamcolor_frag_code, data_dir.append("shaders/teamcolors.frag.glsl"));
 	auto teamcolor_frag = new shader::Shader(GL_FRAGMENT_SHADER, teamcolor_frag_code);
 	delete[] teamcolor_frag_code;
 
 	char *alphamask_vert_code;
-	util::read_whole_file(&alphamask_vert_code, "shaders/alphamask.vert.glsl");
+	util::read_whole_file(&alphamask_vert_code, data_dir.append("shaders/alphamask.vert.glsl"));
 	auto alphamask_vert = new shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
 	delete[] alphamask_vert_code;
 
 	char *alphamask_frag_code;
-	util::read_whole_file(&alphamask_frag_code, "shaders/alphamask.frag.glsl");
+	util::read_whole_file(&alphamask_frag_code, data_dir.append("shaders/alphamask.frag.glsl"));
 	auto alphamask_frag = new shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
 	delete[] alphamask_frag_code;
 

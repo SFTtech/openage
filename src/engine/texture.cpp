@@ -31,7 +31,7 @@ GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 } //namespace alphamask_shader
 
 
-Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
+Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 
 	this->use_player_color_tinting = 0 < (mode & PLAYERCOLORED);
 	this->use_alpha_masking        = 0 < (mode & ALPHAMASKED);
@@ -40,13 +40,13 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 	GLuint textureid;
 	int texture_format;
 
-	surface = IMG_Load(filename);
+	surface = IMG_Load(filename.c_str());
 
 	if (!surface) {
-		throw Error("Could not load texture from '%s': %s", filename, IMG_GetError());
+		throw Error("Could not load texture from '%s': %s", filename.c_str(), IMG_GetError());
 	}
 	else {
-		log::dbg1("Loaded texture from '%s'", filename);
+		log::dbg1("Loaded texture from '%s'", filename.c_str());
 	}
 
 	//glTexImage2D format determination
@@ -58,7 +58,7 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 		texture_format = GL_RGBA;
 		break;
 	default:
-		throw Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename, surface->format->BytesPerPixel);
+		throw Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename.c_str(), surface->format->BytesPerPixel);
 		break;
 	}
 
@@ -82,9 +82,9 @@ Texture::Texture(const char *filename, bool use_metafile, unsigned int mode) {
 
 	if (use_metafile) {
 		//change the suffix to .docx (lol)
-		size_t m_len = strlen(filename) + 2;
+		size_t m_len = filename.length() + 2;
 		char *meta_filename = new char[m_len];
-		strncpy(meta_filename, filename, m_len);
+		strncpy(meta_filename, filename.c_str(), m_len);
 
 		meta_filename[m_len-5] = 'd';
 		meta_filename[m_len-4] = 'o';

@@ -238,7 +238,9 @@ def media_convert(args):
                     #remove original wave file
                     os.remove(wav_output_file)
 
-                sound_list.add_sound(file_id, sound_filename, file_extension)
+                #TODO: this is redundant here, but we need to strip the assets/ part..
+                filelist_fname = "%s.%s" % (os.path.join(drsfile.fname, str(file_id)), file_extension)
+                sound_list.add_sound(file_id, filelist_fname, file_extension)
 
             else:
                 #format does not require conversion, store it as plain blob
