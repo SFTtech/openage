@@ -236,7 +236,7 @@ class PEFile:
         dbg(pop="sections")
 
         ressectionheader, self.rsrcdata = sections[SECTION_NAME_RESOURCE]
-        self.resdatava = ressectionheader[3]
+        self.resdatava = ressectionheader[1]
 
         self.data = data
         self.dosheader = dosheader
