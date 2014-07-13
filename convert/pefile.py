@@ -292,8 +292,9 @@ class PEFile:
                     if len(string) > 0:
                         result[langcode][baseidx + tableidx] = string
 
-                if pos != len(stringtable):
-                    raise Exception("stringtable invalid: " + str((tableid, langid)))
+                if pos < len(stringtable):
+                    if sum(stringtable[pos:]) > 0:
+                        raise Exception("stringtable invalid: tableid %d, langid %d, the padding (%d bytes) contains data" % (tableid, langid, len(stringtable) - pos))
 
         return result
 
