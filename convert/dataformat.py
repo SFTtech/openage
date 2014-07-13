@@ -115,7 +115,7 @@ class Exportable:
                         subdata_item_iter  = self_data[member_name][subtype_name]
 
                         #filename for the file containing one of the subtype data entries:
-                        submember_filename = "%s/%s-%s" % (filename, member_name, subtype_name)
+                        submember_filename = "%s/%s" % (filename, subtype_name)
 
                     submember_data = list()
                     for idx, submember_data_item in enumerate(subdata_item_iter):
@@ -123,7 +123,7 @@ class Exportable:
                             raise Exception("tried to dump object not inheriting from Exportable")
 
                         #generate output filename for next-level files
-                        nextlevel_filename = "%s/%s-%04d" % (submember_filename, member_name, idx)
+                        nextlevel_filename = "%s/%04d" % (submember_filename, idx)
 
                         #recursive call, fetches DataDefinitions and the next-level data dict
                         data_sets, data = submember_data_item.dump(nextlevel_filename)
