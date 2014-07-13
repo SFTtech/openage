@@ -1500,6 +1500,7 @@ class StructDefinition:
         self.name_struct_file   = target.name_struct_file    #!< name of file where generated struct will be placed
         self.name_struct        = target.name_struct         #!< name of generated C struct
         self.struct_description = target.struct_description  #!< comment placed above generated C struct
+        self.prefix             = None
 
         #create ordered dict of member type objects from structure definition
         self.members = OrderedDict()
@@ -1651,7 +1652,7 @@ class DataFormatter:
 
             #TODO: allow prefixes for all file types (missing: struct, structimpl)
             if prefix:
-                data_set.name_data_file = "%s%s" % (prefix, data_set.name_data_file)
+                data_set.prefix = prefix
 
             #collect column type specifications
             for member_name, member_type in data_set.members.items():
@@ -1795,14 +1796,23 @@ class DataFormatter:
                     #subdata member stores the follow-up filename
                     entry = "%s%s" % (entry, GeneratedFile.output_preferences["csv"]["file_suffix"])
 
+                    #filename to reference to, make it relative to the current file name
+                    entry = os.path.relpath(entry, os.path.dirname(dataset.name_data_file))
+
                 #encode each data field, to escape newlines and commas
                 row_entries.append(encode_value(entry))
 
             txt.extend((self.DELIMITER.join(row_entries), "\n"))
 
+
+        if dataset.prefix:
+            snippet_file_name = dataset.prefix + dataset.name_data_file
+        else:
+            snippet_file_name = dataset.name_data_file
+
         return ContentSnippet(
             "".join(txt),
-            dataset.name_data_file,
+            snippet_file_name,
             ContentSnippet.section_body,
             reprtxt="csv for %s" % dataset.name_struct,
         )
