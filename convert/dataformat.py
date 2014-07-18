@@ -167,7 +167,6 @@ class Exportable:
                 #is used to determine the file to read next.
                 # -> multisubtype members: type file index
                 # -> subdata members:      filename of subdata
-                #TODO: save relative path?
                 self_data[member_name] = current_member_filename
 
                 #for multisubtype members, append data definition for storing references to all the subtype files
@@ -415,13 +414,14 @@ class Exportable:
         """
 
         ret = list()
+        self_member_count = 0
 
         dbg(lazymsg=lambda: "%s: generating structs" % (repr(cls)), lvl=2)
 
         #acquire all struct members, including the included members
         members = cls.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=False)
         for is_parent, export, member_name, member_type in members:
-
+            self_member_count += 1
             dbg(lazymsg=lambda: "%s: exporting member %s<%s>" % (repr(cls), member_name, member_type), lvl=3)
 
             if isinstance(member_type, MultisubtypeMember):
@@ -439,9 +439,11 @@ class Exportable:
             else:
                 continue
 
-        new_def = StructDefinition(cls)
-        dbg(lazymsg=lambda: "=> %s: created new struct definition: %s" % (repr(cls), str(new_def)), lvl=3)
-        ret.append(new_def)
+        #create struct only when it has members?
+        if True or self_member_count > 0:
+            new_def = StructDefinition(cls)
+            dbg(lazymsg=lambda: "=> %s: created new struct definition: %s" % (repr(cls), str(new_def)), lvl=3)
+            ret.append(new_def)
 
         return ret
 
@@ -603,6 +605,62 @@ class HeaderSnippet(ContentSnippet):
         return "HeaderSnippet(%s%s%s)" % (sym0, self.name, sym1)
 
 
+def determine_header(for_type):
+    """
+    returns the includable headers for using the given C type.
+    """
+
+    #these headers are needed for the type
+    ret = set()
+
+    cstdinth              = HeaderSnippet("stdint.h", is_global=True)
+    stringh               = HeaderSnippet("string",   is_global=True)
+    cstringh              = HeaderSnippet("cstring",  is_global=True)
+    cstdioh               = HeaderSnippet("cstdio",   is_global=True)
+    vectorh               = HeaderSnippet("vector",   is_global=True)
+    cstddefh              = HeaderSnippet("stddef.h", is_global=True)
+    engine_util_strings_h = HeaderSnippet("../engine/util/strings.h", is_global=False)
+    engine_util_file_h    = HeaderSnippet("../engine/util/file.h", is_global=False)
+    engine_util_dir_h     = HeaderSnippet("../engine/util/dir.h", is_global=False)
+
+    #lookup for type->{header}
+    type_map = {
+        "int8_t":          { cstdinth },
+        "uint8_t":         { cstdinth },
+        "int16_t":         { cstdinth },
+        "uint16_t":        { cstdinth },
+        "int32_t":         { cstdinth },
+        "uint32_t":        { cstdinth },
+        "int64_t":         { cstdinth },
+        "uint64_t":        { cstdinth },
+        "std::string":     { stringh  },
+        "std::vector":     { vectorh  },
+        "strcmp":          { cstringh },
+        "strncpy":         { cstringh },
+        "strtok_custom":   { engine_util_strings_h },
+        "sscanf":          { cstdioh  },
+        "size_t":          { cstddefh },
+        "float":           set(),
+        "int":             set(),
+        "read_csv_file":   { engine_util_file_h },
+        "engine_dir":      { engine_util_strings_h },
+    }
+
+    if for_type in type_map:
+        ret |= type_map[for_type]
+    else:
+        dbg("could not determine header for %s" % for_type, lvl=2)
+
+    return ret
+
+def determine_headers(for_types):
+    ret = set()
+    for t in for_types:
+        ret |= determine_header(t)
+
+    return ret
+
+
 class GeneratedFile:
     """
     represents a writable file that was generated automatically.
@@ -688,15 +746,13 @@ namespace ${namespace} {\n\n""" % dontedit,
         dbg(lazymsg=lambda: " %s"                   % repr(snippet), lvl=2)
         dbg(lazymsg=lambda: " typedefs:  %s"        % snippet.typedefs, lvl=3)
         dbg(lazymsg=lambda: " typerefs:  %s"        % snippet.typerefs, lvl=3)
-        dbg(lazymsg=lambda: " includes:  %s {"      % repr(snippet.includes), lvl=3)
+        dbg(lazymsg=lambda: " includes:  %s {"      % repr(snippet.includes), push="snippet_add", lvl=3)
 
         #recursively add all included snippets
         for s in snippet.includes:
-            dbg(push="snippet_add")
             self.add_snippet(s)
-            dbg(pop="snippet_add")
 
-        dbg(lazymsg=lambda: "}", lvl=3)
+        dbg(pop="snippet_add", lazymsg=lambda: "}", lvl=3)
 
     def get_include_snippet(self, file_name=True):
         """
@@ -704,7 +760,7 @@ namespace ${namespace} {\n\n""" % dontedit,
         """
 
         ret = HeaderSnippet(
-            "".join((self.file_name, self.output_preferences[self.format]["file_suffix"])),
+            self.file_name + self.output_preferences[self.format]["file_suffix"],
             file_name=file_name,
             is_global=False,
         )
@@ -867,7 +923,7 @@ class DataMember:
         self.raw_type = None
         self.do_raw_read = True
 
-    def get_parsers(self, idx, member):
+    def get_parser(self, idx, member):
         raise NotImplementedError("implement the parser generation for the member type %s" % type(self))
 
     def get_headers(self, output_target):
@@ -940,9 +996,14 @@ class GroupMember(DataMember):
     def get_effective_type(self):
         return self.cls.get_effective_type()
 
-    def get_parsers(self, idx, member):
-        #TODO: new type of csv file!
-        return [ "this->%s.fill(buf[%d]);" % (member, idx) ]
+    def get_parser(self, idx, member):
+        #TODO: new type of csv file, probably go for yaml...
+        return EntryParser(
+            [ "this->%s.fill(buf[%d]);" % (member, idx) ],
+            headers     = set(),
+            typerefs    = set(),
+            destination = "fill",
+        )
 
     def __repr__(self):
         return "GroupMember<%s>" % repr(self.cls)
@@ -961,7 +1022,7 @@ class IncludeMembers(GroupMember):
     def __init__(self, cls):
         super().__init__(cls)
 
-    def get_parsers(self):
+    def get_parser(self):
         raise Exception("this should never be called!")
 
     def __repr__(self):
@@ -1078,15 +1139,21 @@ class NumberMember(DataMember):
         self.number_type = number_def
         self.raw_type    = number_def
 
-    def get_parsers(self, idx, member):
+    def get_parser(self, idx, member):
         scan_symbol = self.type_scan_lookup[self.number_type]
-        return [ "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return false; }" % (idx, scan_symbol, member) ]
+
+        return EntryParser(
+            [ "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return false; }" % (idx, scan_symbol, member) ],
+            headers     = determine_header("sscanf"),
+            typerefs    = set(),
+            destination = "fill",
+        )
 
     def get_headers(self, output_target):
-        if "structimpl" == output_target:
-            return determine_headers("sscanf") | determine_headers(self.number_type)
+        if "struct" == output_target:
+            return determine_header(self.number_type)
         else:
-            return determine_headers(self.number_type)
+            return set()
 
     def get_effective_type(self):
         return self.number_type
@@ -1146,7 +1213,7 @@ class EnumMember(RefMember):
         self.values    = values
         self.resolved  = True    #TODO, xrefs not supported yet.
 
-    def get_parsers(self, idx, member):
+    def get_parser(self, idx, member):
         enum_parse_else = ""
         enum_parser = list()
         enum_parser.append("//parse enum %s" % (self.type_name))
@@ -1164,13 +1231,15 @@ class EnumMember(RefMember):
             "}",
         ])
 
-        return enum_parser
+        return EntryParser(
+            enum_parser,
+            headers     = determine_header("strcmp"),
+            typerefs    = set(),
+            destination = "fill",
+        )
 
     def get_headers(self, output_target):
-        if "structimpl" == output_target:
-            return determine_headers("strcmp")
-        else:
-            return set()
+        return set()
 
     def get_typerefs(self):
         return { self.get_effective_type() }
@@ -1236,26 +1305,34 @@ class CharArrayMember(DynLengthMember):
         super().__init__(length)
         self.raw_type = "char[]"
 
-    def get_parsers(self, idx, member):
+    def get_parser(self, idx, member):
+        headers = set()
+
         if self.is_dynamic_length():
-            return [ "this->%s = buf[%d];" % (member, idx) ]
+            lines = [ "this->%s = buf[%d];" % (member, idx) ]
         else:
             data_length = self.get_length()
-            return [
+            lines = [
                 "strncpy(this->%s, buf[%d], %d); this->%s[%d] = '\\0';" % (
                     member, idx, data_length, member, data_length-1
                 )
             ]
+            headers |= determine_header("strncpy")
+
+        return EntryParser(
+            lines,
+            headers     = headers,
+            typerefs    = set(),
+            destination = "fill",
+        )
+
 
     def get_headers(self, output_target):
         ret = set()
 
-        if "structimpl" == output_target:
-            if not self.is_dynamic_length():
-                ret |= determine_headers("strncpy")
-        elif "struct" == output_target:
+        if "struct" == output_target:
             if self.is_dynamic_length():
-                ret |= determine_headers("std::string")
+                ret |= determine_header("std::string")
 
         return ret
 
@@ -1319,9 +1396,9 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
     def get_headers(self, output_target):
         if "struct" == output_target:
-            return determine_headers("std::vector")
+            return determine_header("std::vector")
         elif "structimpl" == output_target:
-            return determine_headers("read_csv_file")
+            return determine_header("read_csv_file")
         else:
             return set()
 
@@ -1337,8 +1414,13 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             for contained_type in self.class_lookup.values()
         }
 
-    def get_parsers(self, idx, member):
-        return [ "this->%s.fill(buf[%d]);" % (member, idx) ]
+    def get_parser(self, idx, member):
+        return EntryParser(
+            [ "this->%s.fill(buf[%d]);" % (member, idx) ],
+            headers     = set(),
+            typerefs    = set(),
+            destination = "fill",
+        )
 
     def get_typerefs(self):
         return { self.type_name }
@@ -1373,7 +1455,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             )
             snippet.typedefs |= { self.type_name }
             snippet.typerefs |= typerefs
-            snippet.includes |= determine_headers("std::vector")
+            snippet.includes |= determine_header("std::vector")
 
             return [ snippet ]
 
@@ -1415,7 +1497,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             )
             snippet.typedefs |= { self.type_name }
             snippet.typerefs |= self.get_contained_types() | { self.MultisubtypeBaseFile.name_struct }
-            snippet.includes |= determine_headers("read_csv_file") | determine_headers("std::vector")
+            snippet.includes |= determine_headers(("read_csv_file", "std::vector"))
 
             return [ snippet ]
 
@@ -1445,9 +1527,7 @@ class SubdataMember(MultisubtypeMember):
 
     def get_headers(self, output_target):
         if "struct" == output_target:
-            return determine_headers("std::vector")
-        elif "structimpl" == output_target:
-            return determine_headers("read_csv_file")
+            return determine_header("std::vector")
         else:
             return set()
 
@@ -1457,8 +1537,13 @@ class SubdataMember(MultisubtypeMember):
     def get_effective_type(self):
         return "std::vector<%s>" % (self.get_subtype())
 
-    def get_parsers(self, idx, member):
-        return [ "this->%s = engine::util::read_csv_file<%s>(buf[%d]);" % (member, self.get_subtype(), idx) ]
+    def get_parser(self, idx, member):
+        return EntryParser(
+            [ "this->%s = engine::util::read_csv_file<%s>(buf[%d]);" % (member, self.get_subtype(), idx) ],
+            headers     = determine_header("read_csv_file"),
+            typerefs    = set(),
+            destination = "recurse",
+        )
 
     def get_snippets(self, file_name, format):
         return list()
@@ -1614,6 +1699,58 @@ class DataDefinition(StructDefinition):
         return "DataDefinition<%s>" % self.name_struct
 
 
+class EntryParser:
+    def __init__(self, lines, headers, typerefs, destination="fill"):
+        self.lines       = lines
+        self.headers     = headers
+        self.typerefs    = typerefs
+        self.destination = destination
+
+    def get_code(self, indentlevel=1):
+        indent = "\t" * indentlevel
+        return indent + ("\n" + indent).join(self.lines)
+
+
+class ParserTemplate:
+    def __init__(self, signature, template, headers):
+        self.signature = signature
+        self.template = template
+        self.headers  = headers
+
+    def get_signature(self, class_name):
+        return self.signature % (class_name)
+
+    def get_text(self, class_name, data):
+        data["signature"] = self.get_signature("%s::" % class_name)
+        return Template(self.template).substitute(data)
+
+
+class ParserMemberFunction:
+    def __init__(self, templates):
+        self.templates = templates
+
+    def get_template(self, lookup):
+        if lookup not in self.templates.keys():
+            lookup = None
+        return self.templates[lookup]
+
+    def get_snippet(self, parser_list, file_name, class_name, data):
+        data["parsers"]    = "\n\n\t".join(parser.get_code(1) for parser in parser_list)
+        data["class_name"] = class_name
+
+        template = self.get_template(len(parser_list))
+        snippet = ContentSnippet(
+            template.get_text(class_name, data),
+            file_name,
+            ContentSnippet.section_body,
+            reprtxt=template.get_signature(class_name),
+        )
+        snippet.includes |= set().union(*(p.headers for p in parser_list))
+        snippet.typerefs |= { class_name }.union(*(p.typerefs for p in parser_list))
+
+        return snippet
+
+
 class DataFormatter:
     """
     transforms and merges data structures
@@ -1626,9 +1763,51 @@ class DataFormatter:
     #csv column delimiter:
     DELIMITER = ","
 
-    #method signature for fill function
-    fill_csignature = "bool %sfill(char *by_line)"
-    fill_csignature_empty = "bool %sfill(char * /*by_line*/)"
+    member_methods = {
+        "fill": ParserMemberFunction(
+            templates = {
+                0: ParserTemplate(
+                    signature = "bool %sfill(char * /*by_line*/)",
+                    headers   = set(),
+                    template  = """$signature {
+\treturn true;
+}
+"""
+                ),
+                None: ParserTemplate(
+                    signature = "bool %sfill(char *by_line)",
+                    headers  = determine_header("strtok_custom"),
+                    template = """$signature {
+\tchar *buf[$member_count];
+\tint count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
+
+\tif (count != $member_count) {
+\t\treturn false;
+\t}
+
+$parsers
+
+\treturn true;
+}
+""",
+                ),
+            }
+        ),
+        "recurse": ParserMemberFunction(
+            templates = {
+                None: ParserTemplate(
+                    signature = "bool %srecurse(std::string engine::util::Dir basedir)",
+                    headers   = determine_headers(("std::string", "engine_dir")),
+                    template  = """$signature {
+$parsers
+
+\treturn true;
+}
+""",
+                ),
+            }
+        ),
+    }
 
     def __init__(self):
         #list of all dumpable data sets
@@ -1699,18 +1878,18 @@ class DataFormatter:
 
                 #generate one output chunk list for each requested format
                 if format == "csv":
-                    snippet = self.generate_csv(data_set)
+                    new_snippets = self.generate_csv(data_set)
 
                 elif format == "struct":
-                    snippet = self.generate_struct(data_set)
+                    new_snippets = self.generate_struct(data_set)
 
                 elif format == "structimpl":
-                    snippet = self.generate_struct_implementation(data_set)
+                    new_snippets = self.generate_struct_implementation(data_set)
 
                 else:
                     raise Exception("unknown export format %s requested" % format)
 
-                snippets.append(snippet)
+                snippets.extend(new_snippets)
 
             #create snippets for the encountered type definitions
             for type_name, type_definition in self.typedefs.items():
@@ -1810,12 +1989,12 @@ class DataFormatter:
         else:
             snippet_file_name = dataset.name_data_file
 
-        return ContentSnippet(
+        return [ContentSnippet(
             "".join(txt),
             snippet_file_name,
             ContentSnippet.section_body,
             reprtxt="csv for %s" % dataset.name_struct,
-        )
+        )]
 
     def generate_struct(self, dataset):
         """
@@ -1829,7 +2008,7 @@ class DataFormatter:
         headers = set()
 
         #these data type references are needed for this snippet
-        needed_types = set()
+        typerefs = set()
 
         #optional struct description
         #prepend * before every comment line
@@ -1848,16 +2027,16 @@ class DataFormatter:
                 #inherited members don't need to be added as they're stored in the superclass
                 continue
 
-            headers      |= member_type.get_headers("struct")
-            needed_types |= member_type.get_typerefs() #TODO
+            headers  |= member_type.get_headers("struct")
+            typerefs |= member_type.get_typerefs()
 
             struct_entries.extend(["\t%s\n" % entry for entry in member_type.get_struct_entries(member_name)])
 
-        #dbg(lazymsg=lambda: "%s needed_types = %s" % (dataset.name_struct, needed_types), lvl=4)
+        #dbg(lazymsg=lambda: "%s typerefs = %s" % (dataset.name_struct, typerefs), lvl=4)
 
         parents = [parent_class.get_effective_type() for parent_class in dataset.parent_classes]
 
-        needed_types |= set(parents)
+        typerefs |= set(parents)
 
         if len(parents) > 0:
             inheritance_txt = " : %s" % (", ".join(parents))
@@ -1871,11 +2050,14 @@ class DataFormatter:
         txt.extend(struct_entries)
 
         #append member count variable
-        txt.append("\n\tstatic constexpr size_t member_count = %d;\n" % len(dataset.members))
-        headers |= determine_headers("size_t")
+        txt.append("\n\tstatic constexpr size_t member_count = %d;\n\n\t" % len(dataset.members))
+        headers |= determine_header("size_t")
 
-        #add filling function prototype
-        txt.append("\n\t%s;\n" % (self.fill_csignature % ""))
+        #add filling function prototypes
+        txt.append("".join(
+            "\n\t%s;" % m.templates[None].get_signature("")
+            for m in self.member_methods.values()
+        ))
 
         #struct ends
         txt.append("};\n")
@@ -1887,10 +2069,10 @@ class DataFormatter:
             reprtxt="struct %s%s" % (dataset.name_struct, inheritance_txt),
         )
         snippet.includes   |= headers
-        snippet.typerefs   |= needed_types
+        snippet.typerefs   |= typerefs
         snippet.typedefs.add(dataset.name_struct)
 
-        return snippet
+        return [ snippet ]
 
     def generate_struct_implementation(self, dataset):
         """
@@ -1898,112 +2080,41 @@ class DataFormatter:
         it is used to fill a struct instance with data of a csv data line
         """
 
+        #returned snippets
+        ret = list()
+
         #required headers for this C snippet
         headers = set()
 
         #referenced types in this C snippet
         typerefs = set()
 
-        #list of lines for each parsers for a single field of the csv
-        parsers = []
+        template_args = {
+            "member_count":  dataset.name_struct + "::member_count",
+            "delimiter":     self.DELIMITER,
+        }
 
-        if len(dataset.members) > 0:
+        #create a list of lines for each parser
+        #a parser converts one csv line to struct entries
+        parsers = util.gen_dict_key2lists(self.member_methods.keys())
 
-            for idx, (member_name, member_type) in enumerate(dataset.members.items()):
-                #add lines for each parser to the list: [[parser line, ...], ...]
-                parsers.append(member_type.get_parsers(idx, member_name))
-                headers  |= member_type.get_headers("structimpl")
+        #resulting snippet content
+        txt = list()
 
-            #indent/newline the token parsers. inner loop = lines for one column
-            parser_code = "\n\n\t".join("\n\t".join(p) for p in parsers)
+        for idx, (member_name, member_type) in enumerate(dataset.members.items()):
+            parser = member_type.get_parser(idx, member_name)
+            parsers[parser.destination].append(parser)
+            #TODO remove: headers |= member_type.get_headers("structimpl")
 
-            #prepend struct name to fill function signature
-            fill_signature = self.fill_csignature % ("%s::" % dataset.name_struct)
+        for parser_type, parser_list in parsers.items():
 
-            member_count = dataset.name_struct + "::member_count"
-            headers |= determine_headers("strtok_custom")
+            ret.append(
+                self.member_methods[parser_type].get_snippet(
+                    parser_list,
+                    file_name  = dataset.name_struct_file,
+                    class_name = dataset.name_struct,
+                    data       = template_args,
+                )
+            )
 
-            #definition of filling function
-            txt = Template("""$funcsignature {
-\t//tokenize
-\tchar *buf[$member_count];
-\tint count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
-
-\t//check tokenization result
-\tif (count != $member_count) {
-\t\treturn false;
-\t}
-
-\t//now store each of the tokens/struct members
-\t$parsers
-
-\treturn true;
-}
-""").substitute(funcsignature=fill_signature, delimiter=self.DELIMITER, parsers=parser_code, member_count=member_count)
-
-        else: #struct has no members
-
-            #prepend struct name to fill function signature
-            fill_signature = self.fill_csignature_empty % ("%s::" % dataset.name_struct)
-
-            txt = Template("""$funcsignature {
-\treturn true;
-}""").substitute(funcsignature=fill_signature)
-
-        snippet = ContentSnippet(
-            txt,
-            dataset.name_struct_file,
-            ContentSnippet.section_body,
-            reprtxt=fill_signature,
-        )
-        snippet.includes |= headers
-        snippet.typerefs |= typerefs | { dataset.name_struct }
-
-        return snippet
-
-
-def determine_headers(for_type):
-    """
-    returns the includable headers for using the given C type.
-    """
-
-    #these headers are needed for the type
-    ret = set()
-
-    cstdinth              = HeaderSnippet("stdint.h", is_global=True)
-    stringh               = HeaderSnippet("string",   is_global=True)
-    cstringh              = HeaderSnippet("cstring",  is_global=True)
-    cstdioh               = HeaderSnippet("cstdio",   is_global=True)
-    vectorh               = HeaderSnippet("vector",   is_global=True)
-    cstddefh              = HeaderSnippet("stddef.h", is_global=True)
-    engine_util_strings_h = HeaderSnippet("../engine/util/strings.h", is_global=False)
-    engine_util_file_h    = HeaderSnippet("../engine/util/file.h", is_global=False)
-
-    #lookup for type->{header}
-    type_map = {
-        "int8_t":          { cstdinth },
-        "uint8_t":         { cstdinth },
-        "int16_t":         { cstdinth },
-        "uint16_t":        { cstdinth },
-        "int32_t":         { cstdinth },
-        "uint32_t":        { cstdinth },
-        "int64_t":         { cstdinth },
-        "uint64_t":        { cstdinth },
-        "std::string":     { stringh  },
-        "std::vector":     { vectorh  },
-        "strcmp":          { cstringh },
-        "strncpy":         { cstringh },
-        "strtok_custom":   { engine_util_strings_h },
-        "sscanf":          { cstdioh  },
-        "size_t":          { cstddefh },
-        "float":           set(),
-        "int":             set(),
-        "read_csv_file":   { engine_util_file_h },
-    }
-
-    if for_type in type_map:
-        ret |= type_map[for_type]
-    else:
-        dbg("could not determine header for %s" % for_type, lvl=2)
-
-    return ret
+        return ret
