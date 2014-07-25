@@ -643,13 +643,14 @@ def determine_header(for_type):
         "float":           set(),
         "int":             set(),
         "read_csv_file":   { engine_util_file_h },
-        "engine_dir":      { engine_util_strings_h },
+        "subdata":         { engine_util_file_h },
+        "engine_dir":      { engine_util_dir_h },
     }
 
     if for_type in type_map:
         ret |= type_map[for_type]
     else:
-        dbg("could not determine header for %s" % for_type, lvl=2)
+        raise Exception("could not determine header for %s" % for_type)
 
     return ret
 
@@ -923,7 +924,7 @@ class DataMember:
         self.raw_type = None
         self.do_raw_read = True
 
-    def get_parser(self, idx, member):
+    def get_parsers(self, idx, member):
         raise NotImplementedError("implement the parser generation for the member type %s" % type(self))
 
     def get_headers(self, output_target):
@@ -996,14 +997,16 @@ class GroupMember(DataMember):
     def get_effective_type(self):
         return self.cls.get_effective_type()
 
-    def get_parser(self, idx, member):
+    def get_parsers(self, idx, member):
         #TODO: new type of csv file, probably go for yaml...
-        return EntryParser(
-            [ "this->%s.fill(buf[%d]);" % (member, idx) ],
-            headers     = set(),
-            typerefs    = set(),
-            destination = "fill",
-        )
+        return [
+            EntryParser(
+                [ "this->%s.fill(buf[%d]);" % (member, idx) ],
+                headers     = set(),
+                typerefs    = set(),
+                destination = "fill",
+            )
+        ]
 
     def __repr__(self):
         return "GroupMember<%s>" % repr(self.cls)
@@ -1022,7 +1025,7 @@ class IncludeMembers(GroupMember):
     def __init__(self, cls):
         super().__init__(cls)
 
-    def get_parser(self):
+    def get_parsers(self):
         raise Exception("this should never be called!")
 
     def __repr__(self):
@@ -1107,9 +1110,12 @@ class RefMember(DataMember):
 
     def __init__(self, type_name, file_name):
         DataMember.__init__(self)
-        self.resolved  = False
         self.type_name = type_name
         self.file_name = file_name
+
+        #xrefs not supported yet.
+        #would allow reusing a struct definition that lies in another file
+        self.resolved  = False
 
 
 class NumberMember(DataMember):
@@ -1139,15 +1145,17 @@ class NumberMember(DataMember):
         self.number_type = number_def
         self.raw_type    = number_def
 
-    def get_parser(self, idx, member):
+    def get_parsers(self, idx, member):
         scan_symbol = self.type_scan_lookup[self.number_type]
 
-        return EntryParser(
-            [ "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return false; }" % (idx, scan_symbol, member) ],
-            headers     = determine_header("sscanf"),
-            typerefs    = set(),
-            destination = "fill",
-        )
+        return [
+            EntryParser(
+                [ "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return false; }" % (idx, scan_symbol, member) ],
+                headers     = determine_header("sscanf"),
+                typerefs    = set(),
+                destination = "fill",
+            )
+        ]
 
     def get_headers(self, output_target):
         if "struct" == output_target:
@@ -1213,7 +1221,7 @@ class EnumMember(RefMember):
         self.values    = values
         self.resolved  = True    #TODO, xrefs not supported yet.
 
-    def get_parser(self, idx, member):
+    def get_parsers(self, idx, member):
         enum_parse_else = ""
         enum_parser = list()
         enum_parser.append("//parse enum %s" % (self.type_name))
@@ -1231,12 +1239,14 @@ class EnumMember(RefMember):
             "}",
         ])
 
-        return EntryParser(
-            enum_parser,
-            headers     = determine_header("strcmp"),
-            typerefs    = set(),
-            destination = "fill",
-        )
+        return [
+            EntryParser(
+                enum_parser,
+                headers     = determine_header("strcmp"),
+                typerefs    = set(),
+                destination = "fill",
+            )
+        ]
 
     def get_headers(self, output_target):
         return set()
@@ -1305,7 +1315,7 @@ class CharArrayMember(DynLengthMember):
         super().__init__(length)
         self.raw_type = "char[]"
 
-    def get_parser(self, idx, member):
+    def get_parsers(self, idx, member):
         headers = set()
 
         if self.is_dynamic_length():
@@ -1319,12 +1329,14 @@ class CharArrayMember(DynLengthMember):
             ]
             headers |= determine_header("strncpy")
 
-        return EntryParser(
-            lines,
-            headers     = headers,
-            typerefs    = set(),
-            destination = "fill",
-        )
+        return [
+            EntryParser(
+                lines,
+                headers     = headers,
+                typerefs    = set(),
+                destination = "fill",
+            )
+        ]
 
 
     def get_headers(self, output_target):
@@ -1414,18 +1426,25 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             for contained_type in self.class_lookup.values()
         }
 
-    def get_parser(self, idx, member):
-        return EntryParser(
-            [ "this->%s.fill(buf[%d]);" % (member, idx) ],
-            headers     = set(),
-            typerefs    = set(),
-            destination = "fill",
-        )
+    def get_parsers(self, idx, member):
+        return [
+            EntryParser(
+                [ "this->%s.fill(buf[%d]);" % (member, idx) ],
+                headers     = set(),
+                typerefs    = set(),
+                destination = "fill",
+            )
+        ]
 
     def get_typerefs(self):
         return { self.type_name }
 
     def get_snippets(self, file_name, format):
+        """
+        return struct definitions for this type
+
+        TODO: merge with the common struct generation code!
+        """
 
         snippet_file_name = self.file_name or file_name
 
@@ -1438,7 +1457,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             for (entry_name, entry_type) in self.class_lookup.items():
                 entry_type = entry_type.get_effective_type()
                 txt.append(
-                    "\tstd::vector<%s> %s;\n" % (
+                    "\tstruct engine::util::subdata<%s> %s;\n" % (
                         GeneratedFile.namespacify(entry_type), entry_name
                     )
                 )
@@ -1466,26 +1485,19 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
             txt.extend([
                 "\t//read filenames storing data for all subtypes\n",
-                "\tauto subtype_files = engine::util::read_csv_file<%s>(filename);\n\n" % (self.MultisubtypeBaseFile.name_struct),
-                "\tif (subtype_files.size() != %d) {\n" % (len(self.class_lookup)),
+                "\tstruct engine::util::subdata<%s> index_file;\n" % (self.MultisubtypeBaseFile.name_struct), #TODO: namespacify?
+                "\tindex_file.filename = filename;\n",
+                "\tindex_file.fill(basedir TODO);\n\n",
+                "\tif (index_file.data.size() != %d) {\n" % (len(self.class_lookup)),
                 "\t\treturn false;\n",
                 "\t}\n\n",
             ])
 
-            entry_len_max = max(len(k) for k in self.class_lookup.keys())
-
             for (idx, (entry_name, entry_type)) in enumerate(self.class_lookup.items()):
-                #TODO: automatic recursive file reading
-                #0. read file where entry type files are defined.
-                #1. read each of the entry type files and fill member.`entry_type`
-
-                entry_spacing = " " * (entry_len_max - len(entry_name))
-
-                txt.append(
-                    "\tthis->%s%s = engine::util::read_csv_file<%s>(subtype_files[%d].%s.c_str());\n" % (
-                        entry_name, entry_spacing, GeneratedFile.namespacify(entry_type.get_effective_type()), idx, self.MultisubtypeBaseFile.data_format[1][1]
-                    )
-                )
+                txt.extend([
+                    "\tthis->%s.filename = subdata.data[%d].filename;\n" % (entry_name, idx),
+                    "\tthis->%s.fill(basdir TODO);\n" % (entry_name),
+                ])
             txt.append("\n\treturn true;\n")
             txt.append("}\n")
 
@@ -1527,7 +1539,7 @@ class SubdataMember(MultisubtypeMember):
 
     def get_headers(self, output_target):
         if "struct" == output_target:
-            return determine_header("std::vector")
+            return determine_header("subdata")
         else:
             return set()
 
@@ -1535,15 +1547,23 @@ class SubdataMember(MultisubtypeMember):
         return GeneratedFile.namespacify(tuple(self.get_contained_types())[0])
 
     def get_effective_type(self):
-        return "std::vector<%s>" % (self.get_subtype())
+        return "engine::util::subdata<%s>" % (self.get_subtype())
 
-    def get_parser(self, idx, member):
-        return EntryParser(
-            [ "this->%s = engine::util::read_csv_file<%s>(buf[%d]);" % (member, self.get_subtype(), idx) ],
-            headers     = determine_header("read_csv_file"),
-            typerefs    = set(),
-            destination = "recurse",
-        )
+    def get_parsers(self, idx, member):
+        return [
+            EntryParser(
+                [ "this->%s.filename = buf[%d];" % (member, idx) ],
+                headers     = set(),
+                typerefs    = set(),
+                destination = "fill",
+            ),
+            EntryParser(
+                [ "this->%s.fill(basedir);" % (member) ],
+                headers     = set(),
+                typerefs    = set(),
+                destination = "recurse",
+            ),
+        ]
 
     def get_snippets(self, file_name, format):
         return list()
@@ -1662,6 +1682,115 @@ class StructDefinition:
             #replace the xref with the real definition
             self.members[type_name] = lookup_ref_data[type_name]
 
+    def generate_struct(self, genfile):
+        """
+        generate C struct snippet (that should be placed in a header).
+        it represents the struct definition in C-code.
+        """
+
+        #line list of snippet text
+        txt = list()
+
+        #this c snippet needs these headers
+        headers = set()
+
+        #these data type references are needed for this snippet
+        typerefs = set()
+
+        #optional struct description
+        #prepend * before every comment line
+        if self.struct_description != None:
+            txt.extend([
+                "/**\n * ",
+                "\n * ".join(self.struct_description.split("\n")),
+                "\n */\n",
+            ])
+
+        parents = [parent_class.get_effective_type() for parent_class in self.parent_classes]
+        typerefs |= set(parents)
+
+        if len(parents) > 0:
+            inheritance_txt = " : %s" % (", ".join(parents))
+        else:
+            inheritance_txt = ""
+
+        #struct definition
+        txt.append("struct %s%s {\n" % (self.name_struct, inheritance_txt))
+
+        #create struct members and inheritance parents
+        for member_name, member_type in self.members.items():
+            if member_name in self.inherited_members:
+                #inherited members don't need to be added as they're stored in the superclass
+                continue
+
+            headers  |= member_type.get_headers("struct")
+            typerefs |= member_type.get_typerefs()
+
+            txt.extend(["\t%s\n" % entry for entry in member_type.get_struct_entries(member_name)])
+
+        #append member count variable
+        txt.append("\n\tstatic constexpr size_t member_count = %d;\n" % len(self.members))
+        headers |= determine_header("size_t")
+
+        #add filling function prototypes
+        txt.append("".join(
+            "\n\t%s;" % m.templates[None].get_signature("")
+            for m in genfile.member_methods.values()
+        ))
+
+        #struct ends
+        txt.append("\n};\n")
+
+        snippet = ContentSnippet(
+            "".join(txt),
+            self.name_struct_file,
+            ContentSnippet.section_body,
+            reprtxt="struct %s%s" % (self.name_struct, inheritance_txt),
+        )
+        snippet.includes   |= headers
+        snippet.typerefs   |= typerefs
+        snippet.typedefs.add(self.name_struct)
+
+        return [ snippet ]
+
+    def generate_struct_implementation(self, genfile):
+        """
+        create C code for the implementation of the struct functions.
+        it is used to fill a struct instance with data of a csv data line.
+        """
+
+        #returned snippets
+        ret = list()
+
+        #variables to be replaced in the function template
+        template_args = {
+            "member_count":  self.name_struct + "::member_count",
+            "delimiter":     genfile.DELIMITER,
+        }
+
+        #create a list of lines for each parser
+        #a parser converts one csv line to struct entries
+        parsers = util.gen_dict_key2lists(genfile.member_methods.keys())
+
+        #place all needed parsers into their requested member function destination
+        for idx, (member_name, member_type) in enumerate(self.members.items()):
+            for parser in member_type.get_parsers(idx, member_name):
+                parsers[parser.destination].append(parser)
+
+        #create parser snippets and return them
+        for parser_type, parser_list in parsers.items():
+            ret.append(
+                genfile.member_methods[parser_type].get_snippet(
+                    parser_list,
+                    file_name  = self.name_struct_file,
+                    class_name = self.name_struct,
+                    data       = template_args,
+                )
+            )
+
+        return ret
+
+
     def __str__(self):
         ret = [
             repr(self),
@@ -1687,6 +1816,64 @@ class DataDefinition(StructDefinition):
 
         self.data               = data                #!< list of dicts, member_name=>member_value
         self.name_data_file     = name_data_file      #!< name of file where data will be placed in
+
+    def generate_csv(self, genfile):
+        """
+        create a text snippet to represent the csv data
+        """
+
+        member_types = self.members.values()
+        csv_column_types = list()
+
+        #create column types line entries as comment in the csv file
+        for c_type in member_types:
+            csv_column_types.append(repr(c_type))
+
+        #the resulting csv content
+        #begin with the csv information comment header
+        txt = [
+            "#struct ", self.name_struct, "\n",
+            "".join("#%s\n" % line for line in self.struct_description.split("\n")),
+            "#", genfile.DELIMITER.join(csv_column_types), "\n",
+            "#", genfile.DELIMITER.join(dataset.members.keys()), "\n",
+        ]
+
+        #create csv data lines:
+        for idx, data_line in enumerate(self.data):
+            row_entries = list()
+            for member_name, member_type in self.members.items():
+                entry = data_line[member_name]
+
+                #check if enum data value is valid
+                if isinstance(member_type, EnumMember):
+                    if not member_type.validate_value(entry):
+                        raise Exception("data entry %d '%s' not a valid %s value" % (idx, entry, repr(member_type)))
+
+                #insert filename to read this field
+                if isinstance(member_type, MultisubtypeMember):
+                    #subdata member stores the follow-up filename
+                    entry = "%s%s" % (entry, GeneratedFile.output_preferences["csv"]["file_suffix"])
+
+                    #filename to reference to, make it relative to the current file name
+                    entry = os.path.relpath(entry, os.path.dirname(self.name_data_file))
+
+                #encode each data field, to escape newlines and commas
+                row_entries.append(encode_value(entry))
+
+            #create one csv line, separated by DELIMITER (probably a ,)
+            txt.extend((genfile.DELIMITER.join(row_entries), "\n"))
+
+        if self.prefix:
+            snippet_file_name = self.prefix + self.name_data_file
+        else:
+            snippet_file_name = self.name_data_file
+
+        return [ContentSnippet(
+            "".join(txt),
+            snippet_file_name,
+            ContentSnippet.section_body,
+            reprtxt="csv for %s" % self.name_struct,
+        )]
 
     def __str__(self):
         ret = [
@@ -1735,7 +1922,7 @@ class ParserMemberFunction:
         return self.templates[lookup]
 
     def get_snippet(self, parser_list, file_name, class_name, data):
-        data["parsers"]    = "\n\n\t".join(parser.get_code(1) for parser in parser_list)
+        data["parsers"]    = "\n".join(parser.get_code(1) for parser in parser_list)
         data["class_name"] = class_name
 
         template = self.get_template(len(parser_list))
@@ -1745,7 +1932,8 @@ class ParserMemberFunction:
             ContentSnippet.section_body,
             reprtxt=template.get_signature(class_name),
         )
-        snippet.includes |= set().union(*(p.headers for p in parser_list))
+
+        snippet.includes |= template.headers | set().union(*(p.headers for p in parser_list))
         snippet.typerefs |= { class_name }.union(*(p.typerefs for p in parser_list))
 
         return snippet
@@ -1795,9 +1983,17 @@ $parsers
         ),
         "recurse": ParserMemberFunction(
             templates = {
+                0: ParserTemplate(
+                    signature = "bool %srecurse(engine::util::Dir /*basedir*/)",
+                    headers   = determine_header("engine_dir"),
+                    template  = """$signature {
+\treturn true;
+}
+""",
+                ),
                 None: ParserTemplate(
-                    signature = "bool %srecurse(std::string engine::util::Dir basedir)",
-                    headers   = determine_headers(("std::string", "engine_dir")),
+                    signature = "bool %srecurse(engine::util::Dir basedir)",
+                    headers   = determine_header("engine_dir"),
                     template  = """$signature {
 $parsers
 
@@ -1863,7 +2059,6 @@ $parsers
         #storage of all needed content snippets
         generate_files = list()
 
-        dbg("######################\ngenerating content snippets...", push="datagen", lvl=2)
         for format in requested_formats:
             files = dict()
 
@@ -1878,13 +2073,13 @@ $parsers
 
                 #generate one output chunk list for each requested format
                 if format == "csv":
-                    new_snippets = self.generate_csv(data_set)
+                    new_snippets = data_set.generate_csv(self)
 
                 elif format == "struct":
-                    new_snippets = self.generate_struct(data_set)
+                    new_snippets = data_set.generate_struct(self)
 
                 elif format == "structimpl":
-                    new_snippets = self.generate_struct_implementation(data_set)
+                    new_snippets = data_set.generate_struct_implementation(self)
 
                 else:
                     raise Exception("unknown export format %s requested" % format)
@@ -1907,13 +2102,11 @@ $parsers
                 files[snippet.file_name].add_snippet(snippet)
 
             generate_files.extend(files.values())
-        dbg(pop="datagen")
 
         #files is currently:
         #[GeneratedFile, ...]
 
         #find xref header includes
-        dbg("######################\ngenerating needed cross reference includes now...", lvl=2)
         for gen_file in generate_files:
             #only create headers for non-data files
             if gen_file.format not in ("csv",):
@@ -1921,8 +2114,6 @@ $parsers
                 gen_file.create_xref_headers(generate_files)
                 gen_file.create_forward_declarations(generate_files)
                 dbg(pop="includegen")
-
-        dbg("######################\ngenerating real file contents now...", lvl=2)
 
         #actually generate the files
         ret = dict()
@@ -1933,188 +2124,4 @@ $parsers
             ret[file_name] = content
 
         #return {file_name: content, ...}
-        return ret
-
-    def generate_csv(self, dataset):
-        """
-        generate a csv data representation
-        """
-
-        if not isinstance(dataset, DataDefinition):
-            raise Exception("can only generate a csv from a DataDefinition")
-
-        member_types = dataset.members.values()
-        csv_column_types = list()
-
-        #create column types line entries as comment in the csv file
-        for c_type in member_types:
-            csv_column_types.append(repr(c_type))
-
-        #the resulting csv content
-        #begin with the csv information comment header
-        txt = [
-            "#struct ", dataset.name_struct, "\n",
-            "".join("#%s\n" % line for line in dataset.struct_description.split("\n")),
-            "#", self.DELIMITER.join(csv_column_types), "\n",
-            "#", self.DELIMITER.join(dataset.members.keys()), "\n",
-        ]
-
-        #create csv data lines:
-        for idx, data_line in enumerate(dataset.data):
-            row_entries = list()
-            for member_name, member_type in dataset.members.items():
-                entry = data_line[member_name]
-
-                #check if enum data value is valid
-                if isinstance(member_type, EnumMember):
-                    if not member_type.validate_value(entry):
-                        raise Exception("data entry %d '%s' not a valid %s value" % (idx, entry, repr(member_type)))
-
-                #insert filename to read this field
-                if isinstance(member_type, MultisubtypeMember):
-                    #subdata member stores the follow-up filename
-                    entry = "%s%s" % (entry, GeneratedFile.output_preferences["csv"]["file_suffix"])
-
-                    #filename to reference to, make it relative to the current file name
-                    entry = os.path.relpath(entry, os.path.dirname(dataset.name_data_file))
-
-                #encode each data field, to escape newlines and commas
-                row_entries.append(encode_value(entry))
-
-            txt.extend((self.DELIMITER.join(row_entries), "\n"))
-
-
-        if dataset.prefix:
-            snippet_file_name = dataset.prefix + dataset.name_data_file
-        else:
-            snippet_file_name = dataset.name_data_file
-
-        return [ContentSnippet(
-            "".join(txt),
-            snippet_file_name,
-            ContentSnippet.section_body,
-            reprtxt="csv for %s" % dataset.name_struct,
-        )]
-
-    def generate_struct(self, dataset):
-        """
-        generate C struct snippet (that should be placed in a header)
-        """
-
-        #the resulting header definition snippet
-        txt = list()
-
-        #this c snippet needs these headers
-        headers = set()
-
-        #these data type references are needed for this snippet
-        typerefs = set()
-
-        #optional struct description
-        #prepend * before every comment line
-        if dataset.struct_description != None:
-            txt.extend([
-                "/**\n * ",
-                "\n * ".join(dataset.struct_description.split("\n")),
-                "\n */\n",
-            ])
-
-        struct_entries = list()
-
-        #create struct members and inheritance parents
-        for member_name, member_type in dataset.members.items():
-            if member_name in dataset.inherited_members:
-                #inherited members don't need to be added as they're stored in the superclass
-                continue
-
-            headers  |= member_type.get_headers("struct")
-            typerefs |= member_type.get_typerefs()
-
-            struct_entries.extend(["\t%s\n" % entry for entry in member_type.get_struct_entries(member_name)])
-
-        #dbg(lazymsg=lambda: "%s typerefs = %s" % (dataset.name_struct, typerefs), lvl=4)
-
-        parents = [parent_class.get_effective_type() for parent_class in dataset.parent_classes]
-
-        typerefs |= set(parents)
-
-        if len(parents) > 0:
-            inheritance_txt = " : %s" % (", ".join(parents))
-        else:
-            inheritance_txt = ""
-
-        #struct definition
-        txt.append("struct %s%s {\n" % (dataset.name_struct, inheritance_txt))
-
-        #struct member entries
-        txt.extend(struct_entries)
-
-        #append member count variable
-        txt.append("\n\tstatic constexpr size_t member_count = %d;\n\n\t" % len(dataset.members))
-        headers |= determine_header("size_t")
-
-        #add filling function prototypes
-        txt.append("".join(
-            "\n\t%s;" % m.templates[None].get_signature("")
-            for m in self.member_methods.values()
-        ))
-
-        #struct ends
-        txt.append("};\n")
-
-        snippet = ContentSnippet(
-            "".join(txt),
-            dataset.name_struct_file,
-            ContentSnippet.section_body,
-            reprtxt="struct %s%s" % (dataset.name_struct, inheritance_txt),
-        )
-        snippet.includes   |= headers
-        snippet.typerefs   |= typerefs
-        snippet.typedefs.add(dataset.name_struct)
-
-        return [ snippet ]
-
-    def generate_struct_implementation(self, dataset):
-        """
-        create C code for the implementation of the struct functions
-        it is used to fill a struct instance with data of a csv data line
-        """
-
-        #returned snippets
-        ret = list()
-
-        #required headers for this C snippet
-        headers = set()
-
-        #referenced types in this C snippet
-        typerefs = set()
-
-        template_args = {
-            "member_count":  dataset.name_struct + "::member_count",
-            "delimiter":     self.DELIMITER,
-        }
-
-        #create a list of lines for each parser
-        #a parser converts one csv line to struct entries
-        parsers = util.gen_dict_key2lists(self.member_methods.keys())
-
-        #resulting snippet content
-        txt = list()
-
-        for idx, (member_name, member_type) in enumerate(dataset.members.items()):
-            parser = member_type.get_parser(idx, member_name)
-            parsers[parser.destination].append(parser)
-            #TODO remove: headers |= member_type.get_headers("structimpl")
-
-        for parser_type, parser_list in parsers.items():
-
-            ret.append(
-                self.member_methods[parser_type].get_snippet(
-                    parser_list,
-                    file_name  = dataset.name_struct_file,
-                    class_name = dataset.name_struct,
-                    data       = template_args,
-                )
-            )
-
         return ret

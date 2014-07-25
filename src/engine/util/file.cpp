@@ -13,6 +13,13 @@
 namespace engine {
 namespace util {
 
+template <class lineformat>
+bool subdata::fill(Dir basedir) {
+	this->data = recurse_data_files<lineformat>(basedir, this->filename);
+	return true;
+}
+
+
 ssize_t read_whole_file(char **result, std::string filename) {
 	return read_whole_file(result, filename.c_str());
 }

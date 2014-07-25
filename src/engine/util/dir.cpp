@@ -11,7 +11,7 @@ Dir::~Dir() {
 
 }
 
-std::string Dir::append(std::string fname) {
+std::string Dir::join(std::string fname) {
 	return this->basedir + "/" + fname;
 }
 
@@ -20,6 +20,16 @@ Dir Dir::merge(std::string suffix) {
 }
 
 
+std::string basename(std::string &fullpath) {
+	int rsep_pos = fullpath.rfind(PATHSEP);
+	return fullpath.substr(rsep_pos + 1);
+}
+
+
+std::string dirname(std::string &fullpath) {
+	int rsep_pos = fullpath.rfind(PATHSEP);
+	return fullpath.substr(0, rsep_pos);
+}
 
 } //namespace util
 } //namespace engine
