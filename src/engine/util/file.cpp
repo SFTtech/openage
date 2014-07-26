@@ -14,7 +14,7 @@ namespace engine {
 namespace util {
 
 template <class lineformat>
-bool subdata::fill(Dir basedir) {
+bool subdata<lineformat>::fill(Dir basedir) {
 	this->data = recurse_data_files<lineformat>(basedir, this->filename);
 	return true;
 }
@@ -56,6 +56,32 @@ ssize_t read_whole_file(char **result, const char *filename) {
 
 	//return the file size
 	return content_length;
+}
+
+std::vector<std::string> file_get_lines(std::string &file_name) {
+	char *file_content;
+	ssize_t fsize = util::read_whole_file(&file_content, file_name);
+
+	char *file_seeker = file_content;
+	char *current_line = file_content;
+
+	auto result = std::vector<std::string>{};
+
+	while ((size_t)file_seeker <= ((size_t)file_content + fsize)
+	       && *file_seeker != '\0') {
+
+		if (*file_seeker == '\n') {
+			*file_seeker = '\0';
+
+			result.push_back(std::string{current_line});
+
+			current_line = file_seeker + 1;
+		}
+		file_seeker += 1;
+	}
+
+	delete[] file_content;
+	return result;
 }
 
 

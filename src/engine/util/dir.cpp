@@ -15,7 +15,7 @@ std::string Dir::join(std::string fname) {
 	return this->basedir + "/" + fname;
 }
 
-Dir Dir::merge(std::string suffix) {
+Dir Dir::append(std::string suffix) {
 	return Dir{this->append(suffix)};
 }
 

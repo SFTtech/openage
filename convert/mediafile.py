@@ -116,6 +116,7 @@ def media_convert(args):
         stringres.fill_from(PEFile("language.dll"))
         stringres.fill_from(PEFile("language_x1.dll"))
         stringres.fill_from(PEFile("language_x1_p1.dll"))
+        stringres.fill_from(PEFile("Games/Forgotten Empires/Data/language_x1_p1.dll"))
         #TODO: transform and cleanup the read strings... (strip html, insert formatchars, ...)
 
         #create the dump for the dat file

@@ -71,7 +71,7 @@ Terrain::Terrain(util::Dir &asset_dir,
 		this->terrain_id_priority_map[terrain_id]  = line->blend_priority;
 		this->terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
-		char *terraintex_filename = util::format(asset_dir.append("Data/terrain.drs/%d.slp.png").c_str(), line->slp_id);
+		char *terraintex_filename = util::format(asset_dir.join("Data/terrain.drs/%d.slp.png").c_str(), line->slp_id);
 		std::string terraintex_filename_str{terraintex_filename};
 		delete[] terraintex_filename;
 
@@ -84,7 +84,7 @@ Terrain::Terrain(util::Dir &asset_dir,
 	for (size_t i = 0; i < this->blendmode_count; i++) {
 		auto line = &blending_meta[i];
 
-		char *mask_filename = util::format(asset_dir.append("blendomatic.dat/mode%02d.png").c_str(), line->blend_mode);
+		char *mask_filename = util::format(asset_dir.join("blendomatic.dat/mode%02d.png").c_str(), line->blend_mode);
 		std::string mask_filename_str{mask_filename};
 		delete[] mask_filename;
 
