@@ -136,8 +136,8 @@ class Exportable:
                         if len(data.keys()) > 0:
                             submember_data.append(data)
 
-                    #create file only if it has at least one entry
-                    if len(submember_data) > 0:
+                    #always create a file, even with 0 entries.
+                    if True:  #old: len(submember_data) > 0:
                         #create DataDefinition for the next-level data pile.
                         subdata_definition = DataDefinition(
                             submember_class,
@@ -603,7 +603,8 @@ class StructSnippet(ContentSnippet):
 
     struct_base = Template("""${comment}struct ${struct_name}${inheritance} {
 $members
-};""")
+};
+""")
 
     def __init__(self, file_name, struct_name, comment=None, parents=None):
         super().__init__(None, file_name, ContentSnippet.section_body)
@@ -737,6 +738,8 @@ def determine_header(for_type):
     engine_util_strings_h = HeaderSnippet("../engine/util/strings.h", is_global=False)
     engine_util_file_h    = HeaderSnippet("../engine/util/file.h", is_global=False)
     engine_util_dir_h     = HeaderSnippet("../engine/util/dir.h", is_global=False)
+    engine_util_error_h   = HeaderSnippet("../engine/util/error.h", is_global=False)
+    engine_log_h          = HeaderSnippet("../engine/log.h", is_global=False)
 
     #lookup for type->{header}
     type_map = {
@@ -760,6 +763,8 @@ def determine_header(for_type):
         "read_csv_file":   { engine_util_file_h },
         "subdata":         { engine_util_file_h },
         "engine_dir":      { engine_util_dir_h },
+        "engine_error":    { engine_util_error_h },
+        "engine_log":      { engine_log_h },
     }
 
     if for_type in type_map:
@@ -1281,7 +1286,7 @@ class NumberMember(DataMember):
 
         return [
             EntryParser(
-                [ "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return false; }" % (idx, scan_symbol, member) ],
+                [ "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return %d; }" % (idx, scan_symbol, member, idx) ],
                 headers     = determine_header("sscanf"),
                 typerefs    = set(),
                 destination = "fill",
@@ -1349,14 +1354,14 @@ class ContinueReadMember(NumberMember):
             "} else if (0 == strcmp(buf[%d], \"%s\")) {" % (idx, repr(self.CONTINUE)),
             "\tthis->%s = 1;" % (member),
             "} else {",
-            "\treturn false;",
+            "\tthrow engine::Error(\"unexpected value '%%s' for %s\", buf[%d]);" % (self.__class__.__name__, idx),
             "}",
         )
 
         return [
             EntryParser(
                 entry_parser_txt,
-                headers     = determine_header("strcmp"),
+                headers     = determine_headers(("strcmp", "engine_error")),
                 typerefs    = set(),
                 destination = "fill",
             )
@@ -1387,14 +1392,14 @@ class EnumMember(RefMember):
 
         enum_parser.extend([
             "else {",
-            "\treturn false;",
+            "\tthrow engine::Error(\"unknown enum value '%%s' encountered. valid are: %s\", buf[%d]);" % (",".join(self.values), idx),
             "}",
         ])
 
         return [
             EntryParser(
                 enum_parser,
-                headers     = determine_header("strcmp"),
+                headers     = determine_headers(("strcmp", "engine_error")),
                 typerefs    = set(),
                 destination = "fill",
             )
@@ -1581,11 +1586,20 @@ class MultisubtypeMember(RefMember, DynLengthMember):
     def get_parsers(self, idx, member):
         return [
             EntryParser(
-                [ "this->%s.fill(buf[%d]);" % (member, idx) ],
+                [ "this->%s.index_file.filename = buf[%d];" % (member, idx) ],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "fill",
+            ),
+            EntryParser(
+                [
+                    "this->%s.recurse(basedir);" % (member),
+                ],
+                headers     = set(),
+                typerefs    = set(),
+                destination = "recurse",
             )
+
         ]
 
     def get_typerefs(self):
@@ -1615,7 +1629,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             snippet.add_member("struct engine::util::subdata<%s> index_file;\n" % (self.MultisubtypeBaseFile.name_struct))
 
             snippet.add_members((
-                "%s;" % m.templates[None].get_signature("")
+                "%s;" % m.get_signature()
                 for m in DataFormatter.member_methods.values()
             ))
 
@@ -1626,26 +1640,43 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
             txt = list()
             txt.extend((
-                "bool %s::fill(char *filename) {\n" % (self.type_name),
-                "\tthis->index_file.filename = filename;\n",
-                "\n\treturn true;\n",
+                "int %s::fill(char * /*line*/) {\n" % (self.type_name),
+                "	return -1;\n",
                 "}\n",
             ))
 
             #function to recursively read the referenced files
             txt.extend((
-                "bool %s::recurse(engine::util::Dir basedir) {\n" % (self.type_name),
-                "\tif (this->index_file.data.size() != %s) {\n" % len(self.class_lookup),
-                "\t\treturn false;",
-                "\t}",
+                "int %s::recurse(engine::util::Dir basedir) {\n" % (self.type_name),
+                "	this->index_file.read(basedir); //read ref-file entries\n",
+                "	int subtype_count = this->index_file.data.size();\n"
+                "	if (subtype_count != %s) {\n" % len(self.class_lookup),
+                "		throw engine::Error(\"multisubtype index file entry count mismatched! %%d != %d\", subtype_count);\n" % (len(self.class_lookup)),
+                "	}\n\n",
+                "	engine::util::Dir new_basedir = basedir.append(engine::util::dirname(this->index_file.filename));\n",
+                "	int idx = -1, idxtry;\n\n",
+                "	//yes, the following code can be heavily optimized and converted to member methods..\n",
             ))
 
-            for (idx, (entry_name, entry_type)) in enumerate(self.class_lookup.items()):
+            for (entry_name, entry_type) in self.class_lookup.items():
+                #get the index_file data index of the current entry first
                 txt.extend((
-                    "\tthis->%s.filename = this->index_file.data[%d].filename;\n" % (entry_name, idx),
-                    "\tthis->%s.fill(basedir);\n" % (entry_name),
+                    "	idxtry = 0;\n",
+                    "	for (auto &file_reference : this->index_file.data) {\n",
+                    "		if (file_reference.subtype == \"%s\") {\n" % (entry_name),
+                    "			\tidx = idxtry;\n",
+                    "			break;\n",
+                    "		}\n",
+                    "		idxtry += 1;\n",
+                    "	}\n",
+                    "	if (idx == -1) {\n",
+                    "		throw engine::Error(\"multisubtype index file contains no entry for %s!\");\n" % (entry_name),
+                    "	}\n",
+                    "	this->%s.filename = this->index_file.data[idx].filename;\n" % (entry_name),
+                    "	this->%s.read(new_basedir);\n" % (entry_name),
+                    "	idx = -1;\n\n"
                 ))
-            txt.append("\treturn true;\n}\n")
+            txt.append("	return -1;\n}\n")
 
             snippet = ContentSnippet(
                 "".join(txt),
@@ -1654,7 +1685,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 reprtxt="multisubtype %s container fill function" % self.type_name,
             )
             snippet.typerefs |= self.get_contained_types() | {self.type_name, self.MultisubtypeBaseFile.name_struct }
-            snippet.includes |= determine_headers(("engine_dir",))
+            snippet.includes |= determine_headers(("engine_dir","engine_error"))
 
             return [ snippet ]
 
@@ -1703,7 +1734,7 @@ class SubdataMember(MultisubtypeMember):
                 destination = "fill",
             ),
             EntryParser(
-                [ "this->%s.fill(basedir);" % (member) ],
+                [ "this->%s.read(basedir);" % (member) ],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "recurse",
@@ -1744,6 +1775,9 @@ class StructDefinition:
     """
 
     def __init__(self, target):
+        """
+        create a struct definition from an Exportable
+        """
 
         dbg("generating struct definition from %s" % (repr(target)), lvl=3)
 
@@ -1751,6 +1785,7 @@ class StructDefinition:
         self.name_struct        = target.name_struct         #!< name of generated C struct
         self.struct_description = target.struct_description  #!< comment placed above generated C struct
         self.prefix             = None
+        self.target             = target                     #!< target Exportable class that defines the data format
 
         #create ordered dict of member type objects from structure definition
         self.members = OrderedDict()
@@ -1827,7 +1862,7 @@ class StructDefinition:
             #replace the xref with the real definition
             self.members[type_name] = lookup_ref_data[type_name]
 
-    def generate_struct(self, genfile, method_signatures):
+    def generate_struct(self, genfile):
         """
         generate C struct snippet (that should be placed in a header).
         it represents the struct definition in C-code.
@@ -1855,9 +1890,8 @@ class StructDefinition:
 
         #add filling function prototypes
         for m in genfile.member_methods.values():
-            template = m.templates[None]
-            snippet.add_member("%s;" % template.get_signature(""))
-            snippet.includes |= template.headers
+            snippet.add_member("%s;" % m.get_signature())
+            snippet.includes |= m.get_headers()
 
         return [ snippet ]
 
@@ -1874,6 +1908,7 @@ class StructDefinition:
         template_args = {
             "member_count":  self.name_struct + "::member_count",
             "delimiter":     genfile.DELIMITER,
+            "struct_name":   self.name_struct,
         }
 
         #create a list of lines for each parser
@@ -1952,6 +1987,8 @@ class DataDefinition(StructDefinition):
             for member_name, member_type in self.members.items():
                 entry = data_line[member_name]
 
+                make_relpath = False
+
                 #check if enum data value is valid
                 if isinstance(member_type, EnumMember):
                     if not member_type.validate_value(entry):
@@ -1961,7 +1998,17 @@ class DataDefinition(StructDefinition):
                 if isinstance(member_type, MultisubtypeMember):
                     #subdata member stores the follow-up filename
                     entry = "%s%s" % (entry, GeneratedFile.output_preferences["csv"]["file_suffix"])
+                    make_relpath = True
 
+                if self.target == MultisubtypeMember.MultisubtypeBaseFile:
+                    #if the struct definition target is the multisubtype base file,
+                    #it already created the filename entry.
+                    #it needs to be made relative as well.
+                    if member_name == MultisubtypeMember.MultisubtypeBaseFile.data_format[1][1]:
+                        #only make the filename entry relative
+                        make_relpath = True
+
+                if make_relpath:
                     #filename to reference to, make it relative to the current file name
                     entry = os.path.relpath(entry, os.path.dirname(self.name_data_file))
 
@@ -2007,10 +2054,11 @@ class EntryParser:
 
 
 class ParserTemplate:
-    def __init__(self, signature, template, headers):
-        self.signature = signature
-        self.template = template
-        self.headers  = headers
+    def __init__(self, signature, template, impl_headers, headers):
+        self.signature    = signature     #!< function signature, containing %s as possible namespace prefix
+        self.template     = template      #!< template text where insertions will be made
+        self.impl_headers = impl_headers  #!< headers for the c file
+        self.headers      = headers       #!< headers for the header file
 
     def get_signature(self, class_name):
         return self.signature % (class_name)
@@ -2022,9 +2070,16 @@ class ParserTemplate:
 
 class ParserMemberFunction:
     def __init__(self, templates):
-        self.templates = templates
+        self.templates = templates  #!< dict: key=function_member_count (None=any), value=ParserTemplate
 
     def get_template(self, lookup):
+        """
+        get the appropritate parser member function template
+        lookup = len(function members)
+
+        -> this allows to generate stub functions without unused variables.
+        """
+
         if lookup not in self.templates.keys():
             lookup = None
         return self.templates[lookup]
@@ -2041,10 +2096,24 @@ class ParserMemberFunction:
             reprtxt=template.get_signature(class_name + "::"),
         )
 
-        snippet.includes |= template.headers | set().union(*(p.headers for p in parser_list))
+        snippet.includes |= template.impl_headers | set().union(*(p.headers for p in parser_list))
         snippet.typerefs |= { class_name }.union(*(p.typerefs for p in parser_list))
 
         return snippet
+
+    def get_signature(self):
+        """
+        return the function signature for this member function.
+        """
+
+        return self.templates[None].get_signature("")
+
+    def get_headers(self):
+        """
+        return the needed headers for the function signature of this member function.
+        """
+
+        return self.templates[None].headers
 
 
 class DataFormatter:
@@ -2063,27 +2132,29 @@ class DataFormatter:
         "fill": ParserMemberFunction(
             templates = {
                 0: ParserTemplate(
-                    signature = "bool %sfill(char * /*by_line*/)",
-                    headers   = set(),
-                    template  = """$signature {
-\treturn true;
+                    signature    = "int %sfill(char * /*by_line*/)",
+                    headers      = set(),
+                    impl_headers = set(),
+                    template     = """$signature {
+\treturn -1;
 }
 """
                 ),
                 None: ParserTemplate(
-                    signature = "bool %sfill(char *by_line)",
-                    headers  = determine_header("strtok_custom"),
-                    template = """$signature {
+                    signature    = "int %sfill(char *by_line)",
+                    headers      = set(),
+                    impl_headers = determine_headers(("strtok_custom", "engine_error")),
+                    template     = """$signature {
 \tchar *buf[$member_count];
 \tint count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
 
 \tif (count != $member_count) {
-\t\treturn false;
+\t\tthrow engine::Error("tokenizing $struct_name led to %d columns (expecting %zu)!", count, $member_count);
 \t}
 
 $parsers
 
-\treturn true;
+\treturn -1;
 }
 """,
                 ),
@@ -2092,20 +2163,22 @@ $parsers
         "recurse": ParserMemberFunction(
             templates = {
                 0: ParserTemplate(
-                    signature = "bool %srecurse(engine::util::Dir /*basedir*/)",
-                    headers   = determine_header("engine_dir"),
-                    template  = """$signature {
-\treturn true;
+                    signature    = "int %srecurse(engine::util::Dir /*basedir*/)",
+                    headers      = determine_header("engine_dir"),
+                    impl_headers = set(),
+                    template     = """$signature {
+\treturn -1;
 }
 """,
                 ),
                 None: ParserTemplate(
-                    signature = "bool %srecurse(engine::util::Dir basedir)",
+                    signature = "int %srecurse(engine::util::Dir basedir)",
                     headers   = determine_header("engine_dir"),
+                    impl_headers = set(),
                     template  = """$signature {
 $parsers
 
-\treturn true;
+\treturn -1;
 }
 """,
                 ),
@@ -2184,11 +2257,7 @@ $parsers
                     new_snippets = data_set.generate_csv(self)
 
                 elif format == "struct":
-                    func_signatures = [
-                        m.templates[None].get_signature("")
-                        for m in self.member_methods.values()
-                    ]
-                    new_snippets = data_set.generate_struct(self, func_signatures)
+                    new_snippets = data_set.generate_struct(self)
 
                 elif format == "structimpl":
                     new_snippets = data_set.generate_struct_implementation(self)

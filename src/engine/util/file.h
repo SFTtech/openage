@@ -36,13 +36,15 @@ std::vector<lineformat> read_csv_file(std::string fname) {
 	std::vector<std::string> lines = file_get_lines(fname);
 
 	size_t line_count = 0;
+
 	lineformat current_line_data;
 	auto result = std::vector<lineformat>{};
 
 	for (auto &line : lines) {
 		int line_length = line.length();
+		line_count += 1;
 
-		//ignore lines starting with #, that's a comment.
+		//ignore empty and lines starting with #, that's a comment.
 		if (line_length > 0 && line[0] != '#') {
 
 			//create writable tokenisation copy of the string
@@ -51,16 +53,16 @@ std::vector<lineformat> read_csv_file(std::string fname) {
 			line_rw[line_length] = '\0';
 
 			//use the line copy to fill the current line struct.
-			if (not current_line_data.fill(line_rw)) {
-				throw Error("failed reading csv file %s in line %lu: error parsing '%s'",
-				            fname.c_str(), line_count, line.c_str());
+			int error_column = current_line_data.fill(line_rw);
+			if (error_column != -1) {
+				throw Error("failed reading csv file %s in line %lu column %d: error parsing '%s'",
+				            fname.c_str(), line_count, error_column, line.c_str());
 			}
 
 			delete[] line_rw;
 
 			result.push_back(current_line_data);
 		}
-		line_count += 1;
 	}
 
 	return result;
@@ -84,15 +86,16 @@ std::vector<lineformat> recurse_data_files(Dir basedir, std::string fname) {
 
 		size_t line_count = 0;
 		for (auto &entry : result) {
+			line_count += 1;
 			if (not entry.recurse(new_basedir)) {
 				throw Error("failed reading follow up files for %s in line %lu",
 				            merged_filename.c_str(), line_count);
 			}
-			line_count += 1;
 		}
 	}
 	else {
-		//nonexistant file skipped, return empty vector.
+		//nonexistant file skipped, would return empty vector.
+		throw Error("failed recursing to file %s", merged_filename.c_str());
 	}
 
 	return result;
@@ -116,7 +119,7 @@ struct subdata {
 	std::string filename;
 	std::vector<cls> data;
 
-	bool fill(Dir basedir) {
+	bool read(Dir basedir) {
 		this->data = recurse_data_files<cls>(basedir, this->filename);
 		return true;
 	}

@@ -64,7 +64,18 @@ void init(util::Dir &data_dir) {
 	util::Dir gamedata_dir = asset_dir.append("gamedata");
 	auto gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
 
-	engine::log::msg("done reading gamedata. civ[0].unit[0].name = %s", gamedata[0].civs[0].name.c_str());
+	int i = 0;
+	for (auto &civ : gamedata[0].civs.data) {
+		int j = 0;
+		engine::log::msg("civ[%d]: name = %s, %lu buldings", i, civ.name.c_str(), civ.units.building.data.size());
+
+		for (auto &building : civ.units.building.data) {
+			engine::log::msg("  building[%d]: name = %s", j, building.name.c_str());
+			j += 1;
+		}
+
+		i += 1;
+	}
 
 	auto player_color_lines = engine::util::read_csv_file<gamedata::palette_color>(asset_dir.join("player_palette_50500.docx"));
 
