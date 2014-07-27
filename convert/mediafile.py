@@ -19,6 +19,8 @@ from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbos
 
 
 asset_folder = "assets/"
+dat_cache_file = "/tmp/empires2_x1_p1.dat.pickle"
+
 
 class ExtractionRule:
     """
@@ -121,19 +123,21 @@ def media_convert(args):
 
         #create the dump for the dat file
         import gamedata.empiresdat
-
-        dat_cache_file = "/tmp/empires2_x1_p1.dat.pickle"
         datfile_name = "empires2_x1_p1.dat"
 
-        #try to use cached version
+        #try to use cached version?
         parse_empiresdat = False
-        try:
-            with open(dat_cache_file, "rb") as f:
-                gamedata = pickle.load(f)
-        except FileNotFoundError as err:
-            parse_empiresdat = True
+        if args.use_dat_cache:
+            dbg("trying to use cache file %s..." % (dat_cache_file), lvl=1)
+            try:
+                with open(dat_cache_file, "rb") as f:
+                    gamedata = pickle.load(f)
+                    dbg("could successfully load cached gamedata!", lvl=1)
 
-        if parse_empiresdat:
+            except FileNotFoundError as err:
+                parse_empiresdat = True
+
+        if not args.use_dat_cache or parse_empiresdat:
             datfile = gamedata.empiresdat.EmpiresDatGzip("Data/%s" % datfile_name)
             gamedata = gamedata.empiresdat.EmpiresDatWrapper()
 
@@ -155,6 +159,7 @@ def media_convert(args):
         #dbg("transforming main data file %s..." % (datfile_name), lvl=1)
         #TODO: data transformation nao! (merge stuff, etcetc)
 
+        dbg("formatting output data...", lvl=1)
         data_formatter = dataformat.DataFormatter()
 
         #dump metadata information
@@ -172,6 +177,7 @@ def media_convert(args):
         output_data = data_formatter.export(output_formats)
 
         #save the meta files
+        dbg("saving output data files...", lvl=1)
         util.file_write_multi(output_data, file_prefix=asset_folder)
 
     file_list = defaultdict(lambda: list())

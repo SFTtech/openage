@@ -36,6 +36,7 @@ if __name__ == "__main__":
 
     media_cmd.add_argument("-e", "--extrafiles", help = "Extract extra files that are not needed, but useful (mainly visualizations).", action='store_true')
     media_cmd.add_argument("--no-opus", help="Don't use opus conversion for audio files", action='store_true')
+    media_cmd.add_argument("--use-dat-cache", help="Potentially use a pickle cache file for the read empires.dat file", action='store_true')
 
     mcmd_g0 = media_cmd.add_mutually_exclusive_group(required=True)
     mcmd_g0.add_argument("-o", "--output", metavar="output_directory", help="The data output directory")
