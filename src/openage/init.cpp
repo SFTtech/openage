@@ -62,8 +62,9 @@ void init(util::Dir &data_dir) {
 	terrain->fill(terrain_data, terrain_data_size);
 
 	util::Dir gamedata_dir = asset_dir.append("gamedata");
-	auto gamedata = util::read_csv_file<gamedata::empiresdat>(gamedata_dir.join("gamedata-empiresdat.docx"));
+	auto gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
 
+	engine::log::msg("done reading gamedata. civ[0].unit[0].name = %s", gamedata[0].civs[0].name.c_str());
 
 	auto player_color_lines = engine::util::read_csv_file<gamedata::palette_color>(asset_dir.join("player_palette_50500.docx"));
 

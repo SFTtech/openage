@@ -1326,8 +1326,8 @@ class ContinueReadMember(NumberMember):
     when its value == 0.
     """
 
-    ABORT    = util.NamedObject("member_reading_abort")
-    CONTINUE = util.NamedObject("member_reading_continue")
+    ABORT    = util.NamedObject("data_absent")
+    CONTINUE = util.NamedObject("data_exists")
 
     def __init__(self, raw_type):
         super().__init__(raw_type)
@@ -1340,6 +1340,27 @@ class ContinueReadMember(NumberMember):
 
     def get_empty_value(self):
         return 0
+
+    def get_parsers(self, idx, member):
+        entry_parser_txt = (
+            "//remember if the following members are undefined",
+            "if (0 == strcmp(buf[%d], \"%s\")) {" % (idx, repr(self.ABORT)),
+            "\tthis->%s = 0;" % (member),
+            "} else if (0 == strcmp(buf[%d], \"%s\")) {" % (idx, repr(self.CONTINUE)),
+            "\tthis->%s = 1;" % (member),
+            "} else {",
+            "\treturn false;",
+            "}",
+        )
+
+        return [
+            EntryParser(
+                entry_parser_txt,
+                headers     = determine_header("strcmp"),
+                typerefs    = set(),
+                destination = "fill",
+            )
+        ]
 
 
 class EnumMember(RefMember):

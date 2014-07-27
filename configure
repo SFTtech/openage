@@ -12,6 +12,8 @@
 #               the way you are used to it.
 
 
+#./configure --prefix=/usr/ --sysconfdir=/etc/ --localstatedir=/var/
+
 import os
 import argparse
 

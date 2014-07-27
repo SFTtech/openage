@@ -13,10 +13,18 @@
 namespace engine {
 namespace util {
 
-template <class lineformat>
-bool subdata<lineformat>::fill(Dir basedir) {
-	this->data = recurse_data_files<lineformat>(basedir, this->filename);
-	return true;
+ssize_t file_size(std::string filename) {
+	struct stat st;
+
+	if (stat(filename.c_str(), &st) < 0) {
+		return -1;
+	}
+
+	return st.st_size;
+}
+
+ssize_t file_size(Dir basedir, std::string fname) {
+	return file_size(basedir.join(fname));
 }
 
 
@@ -27,9 +35,10 @@ ssize_t read_whole_file(char **result, std::string filename) {
 ssize_t read_whole_file(char **result, const char *filename) {
 
 	//get the file size
-	struct stat st;
-	if (stat(filename, &st) < 0) {
-		throw Error("failed getting filesize of %s", filename);
+	ssize_t content_length = file_size(filename);
+
+	if (content_length < 0) {
+		throw Error("file nonexistant: %s", filename);
 	}
 
 	//open the file
@@ -38,13 +47,11 @@ ssize_t read_whole_file(char **result, const char *filename) {
 		throw Error("failed opening file %s", filename);
 	}
 
-	size_t content_length = (size_t) st.st_size;
-
 	//allocate filesize + nullbyte
 	*result = new char[content_length + 1];
 
 	//read the whole content
-	if (content_length != fread(*result, 1, st.st_size, filehandle)) {
+	if (content_length != (ssize_t)fread(*result, 1, content_length, filehandle)) {
 		fclose(filehandle);
 		throw Error("failed reading the file %s", filename);
 	} else {
