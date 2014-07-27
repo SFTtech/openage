@@ -64,7 +64,7 @@ def ifdbgeq(lvl):
         return False
 
 
-def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "\n"):
+def dbg(msg=None, lvl=None, push=None, pop=None, lazymsg=None, end="\n"):
     """
     msg
         message to print.
@@ -100,9 +100,12 @@ def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "
         #if no level is set, use the level on top of the debug stack
         lvl = dbgstack[-1][1]
 
-    if lazymsg != None and msg != None:
-        raise Exception("debug message called with message and lazy message!")
-
+    if pop != None:
+        if pop == True:
+            if dbgstack.pop()[0] == None:
+                raise Exception("stack underflow in debug stack!")
+        elif dbgstack.pop()[0] != pop:
+            raise Exception(str(pop) + " is not on top of the debug stack")
 
     if verbose >= lvl:
         if lazymsg != None:
@@ -116,13 +119,6 @@ def dbg(msg = None, lvl = None, push = None, pop = None, lazymsg = None, end = "
 
     if push != None:
         dbgstack.append((push, lvl))
-
-    if pop != None:
-        if pop == True:
-            if dbgstack.pop()[0] == None:
-                raise Exception("stack underflow in debug stack!")
-        elif dbgstack.pop()[0] != pop:
-            raise Exception(str(pop) + " is not on top of the debug stack")
 
 
 def mkdirs(path):
@@ -289,6 +285,6 @@ def gen_dict_key2lists(keys):
     return dict(
         zip(
             keys,
-            ([[] for _ in range(len(keys))])
+            ([list() for _ in range(len(keys))])
         )
     )

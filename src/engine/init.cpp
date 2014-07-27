@@ -105,9 +105,9 @@ void init(util::Dir &data_dir, const char *windowtitle) {
 		throw Error{"No audio devices found"};
 	}
 
-	util::Dir asset_dir = data_dir.merge("age/assets");
-
-	auto sound_files = util::read_csv_file<gamedata::sound_file>(asset_dir.append("sound_list.docx"));
+	util::Dir asset_dir = data_dir.append("age/assets");
+	std::string sound_index_file = asset_dir.join("sound_list.docx");
+	auto sound_files = util::read_csv_file<gamedata::sound_file>(sound_index_file);
 
 	audio_manager = new audio::AudioManager(48000, AUDIO_S16LSB, 2, 4096);
 	audio_manager->load_resources(asset_dir, sound_files);

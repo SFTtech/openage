@@ -45,7 +45,7 @@ int main() {
 	engine::init(data_dir, "openage");
 
 	//init engine::console
-	auto termcolors = engine::util::read_csv_file<gamedata::palette_color>(data_dir.append("age/assets/termcolors.docx"));
+	auto termcolors = engine::util::read_csv_file<gamedata::palette_color>(data_dir.join("age/assets/termcolors.docx"));
 	engine::console::init(termcolors);
 
 	engine::log::msg("Loading time [engine]: %5.3f s", timer.getval() / 1000.f);

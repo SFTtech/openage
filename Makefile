@@ -55,7 +55,7 @@ runmem: $(project_name)
 
 .PHONY: rungdb
 rungdb: $(project_name)
-	gdb $(binary)
+	gdb --args $(binary) $(runargs)
 
 .PHONY: doc
 doc:

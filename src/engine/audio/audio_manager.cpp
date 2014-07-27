@@ -73,7 +73,7 @@ void AudioManager::load_resources(util::Dir &asset_dir, const std::vector<gameda
 		auto category = from_category(sound_file.category);
 		auto id = sound_file.sound_id;
 
-		std::string path = asset_dir.append(sound_file.path);
+		std::string path = asset_dir.join(sound_file.path);
 		auto format = from_format(sound_file.format);
 		auto loader_policy = from_loader_policy(sound_file.loader_policy);
 
