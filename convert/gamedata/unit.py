@@ -57,9 +57,9 @@ class RessourceStorage(dataformat.Exportable):
     struct_description = "stores the resource storage capacity for one unit mode."
 
     data_format = (
-        (dataformat.READ, "a", "int16_t"),
-        (dataformat.READ, "b", "float"),
-        (dataformat.READ, "c", "int8_t"),
+        (dataformat.READ, "type", "int16_t"),
+        (dataformat.READ, "amount", "float"),
+        (dataformat.READ, "used", "int8_t"),
     )
 
 
@@ -137,7 +137,7 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "death_mode", "int8_t"),
         (dataformat.READ, "hit_points", "int16_t"),
         (dataformat.READ, "line_of_sight", "float"),
-        (dataformat.READ, "garnison_capacity", "int8_t"),
+        (dataformat.READ, "garrison_capacity", "int8_t"),
         (dataformat.READ, "radius_size0", "float"),
         (dataformat.READ, "radius_size1", "float"),
         (dataformat.READ, "hp_bar_height0", "float"),
@@ -323,7 +323,7 @@ class UnitMovable(UnitBird):
         (dataformat.READ, "graphics_displacement", "float[3]"),
         (dataformat.READ, "blast_level", "int8_t"),
         (dataformat.READ, "min_range", "float"),
-        (dataformat.READ, "garnison_recovery_rate", "float"),
+        (dataformat.READ, "garrison_recovery_rate", "float"),
         (dataformat.READ_EXPORT, "attack_graphic", "int16_t"),
         (dataformat.READ, "melee_armor_displayed", "int16_t"),
         (dataformat.READ, "attack_displayed", "int16_t"),
@@ -366,7 +366,7 @@ class UnitLiving(UnitMovable):
 
     name_struct        = "unit_living"
     name_struct_file   = "unit"
-    struct_description = "adds creation location and garnison unit properties."
+    struct_description = "adds creation location and garrison unit properties."
 
     data_format = (
         (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitMovable)),
@@ -378,8 +378,8 @@ class UnitLiving(UnitMovable):
         (dataformat.READ_UNKNOWN, None, "int32_t"),
         (dataformat.READ, "missile_graphic_delay", "int8_t"),
         (dataformat.READ, "hero_mode", "int8_t"),
-        (dataformat.READ, "garnison_graphic0", "int16_t"),
-        (dataformat.READ, "garnison_graphic1", "int16_t"),
+        (dataformat.READ, "garrison_graphic0", "int16_t"),
+        (dataformat.READ, "garrison_graphic1", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "uint16_t"),               #TODO: verify, probably one byte off...
         (dataformat.READ, "attack_missile_duplication0", "float"),
         (dataformat.READ, "attack_missile_duplication1", "int8_t"),
@@ -401,7 +401,7 @@ class UnitBuilding(UnitLiving):
 
     name_struct        = "unit_building"
     name_struct_file   = "unit"
-    struct_description = "construction graphics and garnison building properties for units."
+    struct_description = "construction graphics and garrison building properties for units."
 
     data_format = (
         (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitLiving)),
@@ -415,13 +415,25 @@ class UnitBuilding(UnitLiving):
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ, "research_id", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "building_annex", dataformat.SubdataMember(ref_type=BuildingAnnex, length=4)),
+        (dataformat.READ_EXPORT, "building_annex", dataformat.SubdataMember(ref_type=BuildingAnnex, length=4)),
         (dataformat.READ, "head_unit", "int16_t"),
         (dataformat.READ, "transform_unit", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ, "construction_sound_id", "int16_t"),
-        (dataformat.READ, "garnison_type", "int8_t"),
-        (dataformat.READ, "garnison_heal_rate", "float"),
+        (dataformat.READ, "garrison_type", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",
+            type_name   = "garrison_types",
+            lookup_dict = {
+                0x00: "NONE",
+                0x01: "VILLAGER",
+                0x02: "INFANTRY",
+                0x04: "CAVALRY",
+                0x08: "MONK",
+                0x0b: "NOCAVALRY",
+                0x0f: "ALL",
+            },
+        )),
+        (dataformat.READ, "garrison_heal_rate", "float"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t[6]"),
