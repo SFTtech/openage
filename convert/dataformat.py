@@ -1468,7 +1468,14 @@ class EnumLookupMember(EnumMember):
         perform lookup of raw data -> enum member name
         """
 
-        return self.lookup_dict[data]
+        try:
+            return self.lookup_dict[data]
+        except KeyError as e:
+            try:
+                h = " = %s" % hex(data)
+            except TypeError:
+                h = ""
+            raise Exception("failed to find %s%s in lookup dict %s!" % (str(data), h, self.type_name)) from None
 
 
 class CharArrayMember(DynLengthMember):
