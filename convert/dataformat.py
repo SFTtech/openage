@@ -1454,12 +1454,20 @@ class EnumMember(RefMember):
 
 
 class EnumLookupMember(EnumMember):
-    def __init__(self, type_name, lookup_dict, raw_type=None, file_name=None):
+    """
+    enum definition, does lookup of raw datfile data => enum value
+    """
+
+    def __init__(self, type_name, lookup_dict, raw_type, file_name=None):
         super().__init__(type_name, file_name, values=lookup_dict.values())
         self.lookup_dict = lookup_dict
         self.raw_type = raw_type
 
     def entry_hook(self, data):
+        """
+        perform lookup of raw data -> enum member name
+        """
+
         return self.lookup_dict[data]
 
 
