@@ -10,15 +10,15 @@ class UnitCommand(dataformat.Exportable):
     struct_description = "a command a single unit may recieve by script or human."
 
     data_format = (
-        (dataformat.READ, "one", "int16_t"),
-        (dataformat.READ_EXPORT, "uid", "int16_t"),
+        (dataformat.READ, "command_used", "int16_t"),                  #always 1
+        (dataformat.READ_EXPORT, "id", "int16_t"),                     #command id
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_EXPORT, "type", "int16_t"),
         (dataformat.READ_EXPORT, "class_id", "int16_t"),
         (dataformat.READ_EXPORT, "unit_id", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ_EXPORT, "ressource_in", "int16_t"),
-        (dataformat.READ_EXPORT, "sub_type", "int16_t"),
+        (dataformat.READ_EXPORT, "ressource_productivity", "int16_t"), #resource that multiplies the amount you can gather
         (dataformat.READ_EXPORT, "ressource_out", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ_EXPORT, "work_rate_multiplier", "float"),
@@ -29,10 +29,28 @@ class UnitCommand(dataformat.Exportable):
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
+        (dataformat.READ, "targets_allowed", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",      #what can be selected as a target for the unit command?
+            type_name   = "selection_type",
+            lookup_dict = {
+                0: "ANY_0",              #select anything
+                1: "OWNED_UNITS",        #your own things
+                2: "NEUTRAL_ENEMY",      #enemy and neutral things (->attack)
+                3: "NOTHING",
+                4: "GAIA_OWNED_ALLY",    #any of gaia, owned or allied things
+                5: "GAYA_NEUTRAL_ENEMY", #any of gaia, neutral or enemy things
+                6: "NOT_OWNED",          #all things that aren't yours
+                7: "ANY_7",
+            },
+        )),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "graphic", "int16_t[6]"),
+        (dataformat.READ, "tool_graphic_id", "int16_t"),               #walking with tool but no ressource
+        (dataformat.READ, "proceed_graphic_id", "int16_t"),            #proceeding ressource gathering or attack
+        (dataformat.READ, "action_graphic_id", "int16_t"),             #actual execution or transformation graphic
+        (dataformat.READ, "carrying_graphic_id", "int16_t"),           #display ressources in hands
+        (dataformat.READ, "execution_sound_id", "int16_t"),            #sound to play when execution starts
+        (dataformat.READ, "ressource_deposit_sound_id", "int16_t"),    #sound to play on ressource drop
     )
 
 
@@ -59,7 +77,16 @@ class RessourceStorage(dataformat.Exportable):
     data_format = (
         (dataformat.READ, "type", "int16_t"),
         (dataformat.READ, "amount", "float"),
-        (dataformat.READ, "used", "int8_t"),
+        (dataformat.READ, "used_mode", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",
+            type_name   = "ressource_handling",
+            lookup_dict = {
+                0: "DECAYABLE",
+                1: "KEEP_AFTER_DEATH",
+                2: "RESET_ON_DEATH_INSTANT",
+                4: "RESET_ON_DEATH_WHEN_COMPLETED",
+            },
+        )),
     )
 
 
@@ -71,7 +98,15 @@ class DamageGraphic(dataformat.Exportable):
     data_format = (
         (dataformat.READ_EXPORT, "graphic_id", "int16_t"),
         (dataformat.READ_EXPORT, "damage_percent", "int8_t"),
-        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ, "apply_mode", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",
+            type_name   = "damage_draw_type",
+            lookup_dict = {
+                0: "ADD_FLAMES_0",
+                1: "ADD_FLAMES_1",
+                2: "REPLACE",
+            },
+        )),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
     )
 
@@ -82,7 +117,35 @@ class HitType(dataformat.Exportable):
     struct_description = "stores attack amount for a damage type."
 
     data_format = (
-        (dataformat.READ, "type_id", "int16_t"), #used for class id
+        (dataformat.READ, "type_id", dataformat.EnumLookupMember(
+            raw_type    = "int16_t",
+            type_name   = "hit_class",
+            lookup_dict = {
+                -1: "NONE",
+                1: "INFANTRY",
+                2: "SHIP_TURTLE",
+                3: "UNITS_PIERCE",
+                4: "UNITS_MELEE",
+                5: "WAR_ELEPHANT",
+                8: "CAVALRY",
+                11: "BUILDINGS_NO_PORT",
+                13: "STONE_DEFENSES",
+                15: "ARCHERS",
+                16: "SHIPS_CAMELS_SABOTEURS",
+                17: "RAMS",
+                18: "TREES",
+                19: "UNIQUE_UNITS",
+                20: "SIEGE_WEAPONS",
+                21: "BUILDINGS",
+                22: "WALLS_GATES",
+                24: "BOAR",
+                25: "MONKS",
+                26: "CASTLE",
+                27: "SPEARMEN",
+                28: "CAVALRY_ARCHER",
+                29: "EAGLE_WARRIOR",
+            },
+        )),
         (dataformat.READ, "amount", "int16_t"),
     )
 
@@ -193,30 +256,46 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ_EXPORT, "graphic_standing1", "int16_t"),
         (dataformat.READ_EXPORT, "graphic_dying0", "int16_t"),
         (dataformat.READ_EXPORT, "graphic_dying1", "int16_t"),
-        (dataformat.READ, "death_mode", "int8_t"),
-        (dataformat.READ, "hit_points", "int16_t"),
+        (dataformat.READ, "death_mode", "int8_t"),                  #1 = become `dead_unit_id`, reviving does not make it usable
+        (dataformat.READ, "hit_points", "int16_t"),                 #unit health. -1=insta-die
         (dataformat.READ, "line_of_sight", "float"),
-        (dataformat.READ, "garrison_capacity", "int8_t"),
-        (dataformat.READ, "radius_size0", "float"),
+        (dataformat.READ, "garrison_capacity", "int8_t"),           #number of units that can garrison in there
+        (dataformat.READ, "radius_size0", "float"),                 #size of the unit
         (dataformat.READ, "radius_size1", "float"),
-        (dataformat.READ, "hp_bar_height0", "float"),
-        (dataformat.READ_EXPORT, "sound_train0", "int16_t"),
-        (dataformat.READ_EXPORT, "sound_train1", "int16_t"),
-        (dataformat.READ, "dead_unit_id", "int16_t"),
-        (dataformat.READ, "placement_mode", "int8_t"),
-        (dataformat.READ, "air_mode", "int8_t"),
-        (dataformat.READ, "icon_id", "int16_t"),
+        (dataformat.READ, "hp_bar_height0", "float"),               #vertical hp bar distance from ground
+        (dataformat.READ_EXPORT, "sound_creation0", "int16_t"),
+        (dataformat.READ_EXPORT, "sound_creation1", "int16_t"),
+        (dataformat.READ, "dead_unit_id", "int16_t"),               #unit id to become on death
+        (dataformat.READ, "placement_mode", "int8_t"),              #0=placable on top of others in scenario editor, 5=can't
+        (dataformat.READ, "air_mode", "int8_t"),                    #1=no footprints
+        (dataformat.READ, "icon_id", "int16_t"),                    #graphics id of the icon to place in the creation button
         (dataformat.READ, "hidden_in_editor", "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
-        (dataformat.READ, "enabled", "int16_t"),
-        (dataformat.READ, "placement_by_pass_terrain0", "int16_t"),
-        (dataformat.READ, "placement_by_pass_terrain1", "int16_t"),
+        (dataformat.READ, "enabled", "int16_t"),                    #0=unlocked by research, 1=insta-available
+        (dataformat.READ, "placement_by_pass_terrain0", "int16_t"), #terrain id that's needed somewhere on the foundation
+        (dataformat.READ, "placement_by_pass_terrain1", "int16_t"), #second slot for ^
         (dataformat.READ, "placement_terrain0", "int16_t"),
         (dataformat.READ, "placement_terrain1", "int16_t"),
         (dataformat.READ, "editor_radius0", "float"),
         (dataformat.READ, "editor_radius1", "float"),
-        (dataformat.READ, "building_mode", "int8_t"),
-        (dataformat.READ, "visible_in_fog", "int8_t"),
+        (dataformat.READ, "building_mode", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",
+            type_name   = "building_mode",
+            lookup_dict = {
+                0: "NON_BUILDING",    #gates, farms, walls, towers
+                2: "TRADE_BUILDING",  #towncenter, port, trade workshop
+                3: "ANY",
+            },
+        )),
+        (dataformat.READ, "visible_in_fog", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",
+            type_name   = "fog_visibility",
+            lookup_dict = {
+                0: "INVISIBLE",
+                1: "VISIBLE",
+                3: "ONLY_IN_FOG",
+            },
+        )),
         (dataformat.READ_EXPORT, "terrain_restriction", dataformat.EnumLookupMember(
             raw_type    = "int16_t",
             type_name   = "ground_type",
@@ -245,12 +324,65 @@ class UnitObject(dataformat.Exportable):
         )),
         (dataformat.READ, "fly_mode", "int8_t"),
         (dataformat.READ, "ressource_capacity", "int16_t"),
-        (dataformat.READ, "ressource_decay", "float"),
-        (dataformat.READ, "blast_type", "int8_t"),
+        (dataformat.READ, "ressource_decay", "float"),                 #when animals rot, their ressources decay
+        (dataformat.READ, "blast_type", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",
+            type_name   = "blast_type",
+            lookup_dict = {
+                0: "UNIT_0",   #projectile, dead, fish, relic, tree, gate, towncenter
+                1: "OTHER",    #'other' things with multiple rotations
+                2: "BUILDING", #buildings, gates, walls, towncenter, fishtrap
+                3: "UNIT_3",   #boar, farm, fishingship, villager, tradecart, sheep, turkey, archers, junk, ships, monk, siege
+            }
+        )),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "interaction_mode", "int8_t"),
-        (dataformat.READ, "minimap_mode", "int8_t"),
-        (dataformat.READ, "command_attribute", "int16_t"),
+        (dataformat.READ, "interaction_mode", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",  #what can be done with this unit?
+            type_name   = "interaction_mode",
+            lookup_dict = {
+                0: "NOTHING_0",
+                1: "NOTHING_1",
+                2: "SELECTABLE",
+                3: "SELECT_ATTACK",
+                4: "SELECT_ATTACK_MOVE",
+                5: "SELECT_MOVE",
+            },
+        )),
+        (dataformat.READ, "minimap_mode", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",        #how does the unit show up on the minimap
+            type_name   = "minimap_modes",
+            lookup_dict = {
+                0: "NO_DOT_0",
+                1: "SQUARE_DOT",  #turns white when selected
+                2: "DIAMOND_DOT", #dito
+                3: "DIAMOND_DOT_KEEPCOLOR",
+                4: "LARGEDOT_0",  #observable by all players, no attack-blinking
+                5: "LARGEDOT_1",
+                6: "NO_DOT_6",
+                7: "NO_DOT_7",
+                8: "NO_DOT_8",
+                9: "NO_DOT_9",
+                10: "NO_DOT_10",
+            },
+        )),
+        (dataformat.READ, "command_attribute", dataformat.EnumLookupMember(
+            raw_type    = "int16_t",
+            type_name   = "command_attribute",
+            lookup_dict = {
+                0: "LIVING",               #commands: delete, garrison, stop, attributes: hit points
+                1: "ANIMAL",               #animal
+                2: "NONMILITARY_BULIDING", #nonmilitary building (build page 1)
+                3: "VILLAGER",             #villager
+                4: "MILITARY_UNIT",        #military unit
+                5: "TRADING_UNIT",         #trading unit
+                6: "MONK_EMPTY",           #monk
+                7: "TRANSPORT_SHIP",       #transport ship
+                8: "RELIC",                #relic / monk with relic
+                9: "FISHING_SHIP",         #fishing ship
+                10: "MILITARY_BUILDING",   #military building (build page 2)
+                11: "SHIELDED_BUILDING",   #shield building (build page 3)
+            },
+        )),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ_EXPORT, "language_dll_help", "uint16_t"),
@@ -261,17 +393,32 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
+
+        #bit 0 == 1 && val != 7: mask shown behind buildings,
+        #bit 0 == 0 && val != {6, 10}: no mask displayed,
+        #val == {-1, 7}: in open area mask is partially displayed
+        #val == {6, 10}: building, causes mask to appear on units behind it
         (dataformat.READ, "selection_mask", "int8_t"),
         (dataformat.READ, "selection_shape_type", "int8_t"),
-        (dataformat.READ, "selection_shape", "int8_t"),
+        (dataformat.READ, "selection_shape", "int8_t"),            #0=square, 1<=round
+
+        #bitfield of unit attributes:
+        #bit 0: allow garrison,
+        #bit 1: don't join formation,
+        #bit 2: stealth unit,
+        #bit 3: detector unit,
+        #bit 4: mechanical unit,
+        #bit 5: biological unit,
+        #bit 6: self-shielding unit,
+        #bit 7: invisible unit
         (dataformat.READ, "attribute", "int8_t"),
         (dataformat.READ, "civilisation", "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
-        (dataformat.READ, "selection_effect", "int8_t"),  #hide unit hpbar (-> tree)
-        (dataformat.READ, "editor_selection_color", "uint8_t"),
+        (dataformat.READ, "selection_effect", "int8_t"),        #hide unit hpbar (-> tree)
+        (dataformat.READ, "editor_selection_color", "uint8_t"), #0: default, -16: fish trap, farm, 52: deadfarm, OLD-*, 116: flare, whale, dolphin -123: fish
         (dataformat.READ, "selection_radius0", "float"),
         (dataformat.READ, "selection_radius1", "float"),
-        (dataformat.READ, "hp_bar_height1", "float"),
+        (dataformat.READ, "hp_bar_height1", "float"),           #vertical hp bar distance from ground
         (dataformat.READ_EXPORT, "ressource_storage", dataformat.SubdataMember(
             ref_type=RessourceStorage,
             length=3,
@@ -283,7 +430,7 @@ class UnitObject(dataformat.Exportable):
         )),
         (dataformat.READ_EXPORT, "sound_selection", "int16_t"),
         (dataformat.READ_EXPORT, "sound_dying", "int16_t"),
-        (dataformat.READ, "attack_mode", "int16_t"),
+        (dataformat.READ_EXPORT, "attack_mode", "int16_t"),     #0: no attack, 1: attack by following, 2: run when attacked, 3:?, 4: attack
         (dataformat.READ_EXPORT, "name", "char[name_length]"),
         (dataformat.READ_EXPORT, "id1", "int16_t"),
         (dataformat.READ_EXPORT, "id2", "int16_t"),
@@ -344,8 +491,8 @@ class UnitDeadOrFish(UnitDoppelganger):
         (dataformat.READ, "rotation_speed", "float"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ, "tracking_unit_id", "int16_t"),          #unit id what for the ground traces are for
-        (dataformat.READ, "tracking_unit_used", "uint8_t"),
-        (dataformat.READ, "tracking_unit_density", "float"),
+        (dataformat.READ, "tracking_unit_used", "uint8_t"),        #-1: no tracking present, 2: projectiles with tracking unit
+        (dataformat.READ, "tracking_unit_density", "float"),       #0: no tracking, 0.5: trade cart, 0.12: some projectiles, 0.4: other projectiles
         (dataformat.READ_UNKNOWN, None, "float"),
         (dataformat.READ_UNKNOWN, None, "int8_t[17]"),
     )
@@ -365,12 +512,12 @@ class UnitBird(UnitDeadOrFish):
 
     data_format = (
         (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitDeadOrFish)),
-        (dataformat.READ, "sheep_conversion", "int16_t"),
+        (dataformat.READ, "sheep_conversion", "int16_t"), #0=can be converted by unit command 107 (you found sheep!!1)
         (dataformat.READ, "search_radius", "float"),
         (dataformat.READ, "work_rate", "float"),
         (dataformat.READ, "drop_site0", "int16_t"),
         (dataformat.READ, "drop_site1", "int16_t"),
-        (dataformat.READ, "villager_mode", "int8_t"),     #unit can switch villager type (holza? gathara!)
+        (dataformat.READ, "villager_mode", "int8_t"),     #unit can switch villager type (holza? gathara!) 1=male, 2=female
         (dataformat.READ, "move_sound", "int16_t"),
         (dataformat.READ, "stop_sound", "int16_t"),
         (dataformat.READ, "animal_mode", "int8_t"),
@@ -396,16 +543,36 @@ class UnitMovable(UnitBird):
         (dataformat.READ, "attacks", dataformat.SubdataMember(ref_type=HitType, length="attack_count")),
         (dataformat.READ, "armor_count", "uint16_t"),
         (dataformat.READ, "armors", dataformat.SubdataMember(ref_type=HitType, length="armor_count")),
-        (dataformat.READ_UNKNOWN, None, "int16_t"),
+        (dataformat.READ, "interaction_type", dataformat.EnumLookupMember(
+            raw_type    = "int16_t",
+            type_name   = "interaction_types",
+            lookup_dict = {
+                -1: "UNIT",
+                 4: "BUILDING",
+                 6: "DOCK",
+                10: "WALL",
+            },
+        )),
         (dataformat.READ, "max_range", "float"),
         (dataformat.READ, "blast_radius", "float"),
         (dataformat.READ, "reload_time0", "float"),
         (dataformat.READ, "projectile_unit_id", "int16_t"),
         (dataformat.READ, "accuracy_percent", "int16_t"),       #probablity of attack hit
         (dataformat.READ, "tower_mode", "int8_t"),
-        (dataformat.READ, "delay", "int16_t"),
-        (dataformat.READ, "graphics_displacement", "float[3]"),
-        (dataformat.READ, "blast_level", "int8_t"),
+        (dataformat.READ, "delay", "int16_t"),                  #delay in frames before projectile is shot
+        (dataformat.READ, "projectile_graphics_displacement_lr", "float"),
+        (dataformat.READ, "projectile_graphics_displacement_distance", "float"),
+        (dataformat.READ, "projectile_graphics_displacement_height", "float"),
+        (dataformat.READ, "blast_level", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",
+            type_name   = "range_damage_type",
+            lookup_dict = {
+                0: "RESSOURCES",
+                1: "TREES",
+                2: "NEARBY_UNITS",
+                3: "TARGET_ONLY",
+            },
+        )),
         (dataformat.READ, "min_range", "float"),
         (dataformat.READ, "garrison_recovery_rate", "float"),
         (dataformat.READ_EXPORT, "attack_graphic", "int16_t"),
@@ -430,10 +597,10 @@ class UnitProjectile(UnitMovable):
 
     data_format = (
         (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitMovable)),
-        (dataformat.READ, "stretch_mode", "int8_t"),
+        (dataformat.READ, "stretch_mode", "int8_t"),         #1 = projectile falls vertically to the bottom of the map
         (dataformat.READ, "compensation_mode", "int8_t"),
-        (dataformat.READ, "drop_animation_mode", "int8_t"),
-        (dataformat.READ, "penetration_mode", "int8_t"),
+        (dataformat.READ, "drop_animation_mode", "int8_t"),  #1 = disappear on hit
+        (dataformat.READ, "penetration_mode", "int8_t"),     #1 = pass through hit object
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "uint16_t"),
         (dataformat.READ, "projectile_arc", "float"),
@@ -455,23 +622,55 @@ class UnitLiving(UnitMovable):
     data_format = (
         (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitMovable)),
         (dataformat.READ, "ressource_cost", dataformat.SubdataMember(ref_type=RessourceCost, length=3)),
-        (dataformat.READ, "train_time", "int16_t"),
-        (dataformat.READ, "train_location_id", "int16_t"),
-        (dataformat.READ, "button_id", "int8_t"),
+        (dataformat.READ, "creation_time", "int16_t"),         #in seconds
+        (dataformat.READ, "creation_location_id", "int16_t"),  #e.g. 118 = villager
+
+        #where to place the button with the given icon
+        #creation page:
+        #+------------------------+
+        #| 01 | 02 | 03 | 04 | 05 |
+        #|----|----|----|----|----|
+        #| 06 | 07 | 08 | 09 | 10 |
+        #|----|----|----|----|----|
+        #| 11 | 12 | 13 | 14 | 15 |
+        #+------------------------+
+        #
+        #additional page (dock):
+        #+------------------------+
+        #| 21 | 22 | 23 | 24 | 25 |
+        #|----|----|----|----|----|
+        #| 26 | 27 | 28 | 29 | 30 |
+        #|----|----|----|----|----|
+        #| 31 | 32 | 33 | 34 | 35 |
+        #+------------------------+
+        (dataformat.READ, "creation_button_id", "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
-        (dataformat.READ, "missile_graphic_delay", "int8_t"),
-        (dataformat.READ, "hero_mode", "int8_t"),
-        (dataformat.READ, "garrison_graphic0", "int16_t"),
-        (dataformat.READ, "garrison_graphic1", "int16_t"),
-        (dataformat.READ_UNKNOWN, None, "uint16_t"),               #TODO: verify, probably one byte off...
-        (dataformat.READ, "attack_missile_duplication0", "float"),
-        (dataformat.READ, "attack_missile_duplication1", "int8_t"),
-        (dataformat.READ, "attack_missile_duplication_spawning", "float[3]"),
-        (dataformat.READ, "attack_missile_duplication_unit", "int32_t"),
-        (dataformat.READ, "attack_missile_duplication_graphic", "int32_t"),
+        (dataformat.READ, "missile_graphic_delay", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",
+            type_name   = "projectile_owner",
+            lookup_dict = {
+                0: "UNIT", #projectiles, buildings, dead units, boar
+                1: "VILLAGER",
+                2: "MELEE",
+                3: "MOUNTED_UNIT",
+                4: "RELIC",
+                5: "ARCHER",
+                6: "MONK",
+            },
+        )),
+        (dataformat.READ, "hero_mode", "int8_t"), #if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
+        (dataformat.READ, "garrison_graphic", "int32_t"),              #graphic to display when units are garrisoned
+        (dataformat.READ_UNKNOWN, None, "uint16_t"),                   #TODO: verify, probably one byte off...
+        (dataformat.READ, "attack_missile_duplication_min", "float"),  #projectile duplication when nothing garrisoned
+        (dataformat.READ, "attack_missile_duplication_max", "int8_t"), #duplication when fully garrisoned
+        (dataformat.READ, "attack_missile_duplication_spawning_width", "float"),
+        (dataformat.READ, "attack_missile_duplication_spawning_length", "float"),
+        (dataformat.READ, "attack_missile_duplication_spawning_randomness", "float"), #placement randomness, 0=from single spot, 1=random, 1<less random
+        (dataformat.READ, "attack_missile_duplication_unit_id", "int32_t"),
+        (dataformat.READ, "attack_missile_duplication_graphic_id", "int32_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "pierce_armor_displayed", "int16_t"),
+        (dataformat.READ, "pierce_armor_displayed", "int16_t"),  #unit stats display of pierce armor
     )
 
     def __init__(self):
@@ -491,23 +690,23 @@ class UnitBuilding(UnitLiving):
         (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitLiving)),
         (dataformat.READ, "construction_graphic_id", "int16_t"),
         (dataformat.READ, "snow_graphic_id", "int16_t"),
-        (dataformat.READ, "adjacent_mode", "int16_t"),
+        (dataformat.READ, "adjacent_mode", "int16_t"),           #1=adjacent units may change the graphics
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "stack_unit_id", "int16_t"),
-        (dataformat.READ_EXPORT, "terrain_id", "int16_t"),
+        (dataformat.READ, "stack_unit_id", "int16_t"),           #second building to place directly on top
+        (dataformat.READ_EXPORT, "terrain_id", "int16_t"),       #change terrain to this id when building completed
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ, "research_id", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_EXPORT, "building_annex", dataformat.SubdataMember(ref_type=BuildingAnnex, length=4)),
-        (dataformat.READ, "head_unit", "int16_t"),
-        (dataformat.READ, "transform_unit", "int16_t"),
+        (dataformat.READ, "head_unit_id", "int16_t"),            #building at which an annex building is attached to
+        (dataformat.READ, "transform_unit_id", "int16_t"),       #destination unit id when unit shall transform (e.g. unpack)
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ, "construction_sound_id", "int16_t"),
         (dataformat.READ_EXPORT, "garrison_type", dataformat.EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "garrison_types",
-            lookup_dict = {
+            lookup_dict = {  #TODO: create bitfield
                 0x00: "NONE",
                 0x01: "VILLAGER",
                 0x02: "INFANTRY",

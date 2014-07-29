@@ -109,7 +109,7 @@ class EmpiresDat(dataformat.Exportable):
         #graphic data
         (dataformat.READ, "graphic_count", "uint16_t"),
         (dataformat.READ, "graphic_offsets", "int32_t[graphic_count]"),
-        (dataformat.READ, "graphics", dataformat.SubdataMember(
+        (dataformat.READ_EXPORT, "graphics", dataformat.SubdataMember(
             ref_type  = graphic.Graphic,
             length    = "graphic_count",
             offset_to = ("graphic_offsets", lambda o: o > 0),
