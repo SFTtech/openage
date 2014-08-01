@@ -197,12 +197,12 @@ class Exportable:
         this is used to fill the python classes with data from the binary input.
         """
 
-        dbg(lazymsg=lambda: "-> 0x%08x => reading %s" % (offset, repr(self)), lvl=3)
-
         if cls:
             target_class = cls
         else:
             target_class = self
+
+        dbg(lazymsg=lambda: "-> 0x%08x => reading %s" % (offset, repr(cls)), lvl=3)
 
         #break out of the current reading loop when members don't exist in source data file
         stop_reading_members = False
@@ -404,7 +404,7 @@ class Exportable:
                 #store member's data value
                 setattr(self, var_name, result)
 
-        dbg(lazymsg=lambda: "<- 0x%08x <= finished %s" % (offset, repr(self)), lvl=3)
+        dbg(lazymsg=lambda: "<- 0x%08x <= finished %s" % (offset, repr(cls)), lvl=3)
         return offset
 
     @classmethod
@@ -1708,7 +1708,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             return list()
 
     def __repr__(self):
-        return "MultisubtypeMember<%s,len=%s>" % (self.type_name, self.length)
+        return "MultisubtypeMember<%s:len=%s>" % (self.type_name, self.length)
 
 
 class SubdataMember(MultisubtypeMember):
@@ -1766,7 +1766,7 @@ class SubdataMember(MultisubtypeMember):
         return self.class_lookup[None].__name__
 
     def __repr__(self):
-        return "SubdataMember<%s,len=%s>" % (self.get_subdata_type_name(), self.length)
+        return "SubdataMember<%s:len=%s>" % (self.get_subdata_type_name(), self.length)
 
 
 class ArrayMember(SubdataMember):
@@ -1778,7 +1778,7 @@ class ArrayMember(SubdataMember):
         super().__init__(ref_type, length)
 
     def __repr__(self):
-        return "ArrayMember<%s,len=%s>" % (self.get_subdata_type_name(), self.length)
+        return "ArrayMember<%s:len=%s>" % (self.get_subdata_type_name(), self.length)
 
 
 class StructDefinition:
