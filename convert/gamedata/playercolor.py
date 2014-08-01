@@ -12,12 +12,12 @@ class PlayerColor(dataformat.Exportable):
 
     data_format = (
         (dataformat.READ_EXPORT, "id", "int32_t"),
-        (dataformat.READ_EXPORT, "palette", "int32_t"),
-        (dataformat.READ_EXPORT, "color", "int32_t"),
+        (dataformat.READ_EXPORT, "palette", "int32_t"),       #palette index offset, where the 8 player colors start
+        (dataformat.READ_EXPORT, "color", "int32_t"),         #palette index
         (dataformat.READ_UNKNOWN, None, "int32_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
-        (dataformat.READ_EXPORT, "minimap_color", "int32_t"),
+        (dataformat.READ_EXPORT, "minimap_color", "int32_t"), #palette index
         (dataformat.READ_UNKNOWN, None, "int32_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int32_t"),
+        (dataformat.READ_EXPORT, "statistics_text_color", "int32_t"),
     )

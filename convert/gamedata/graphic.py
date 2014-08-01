@@ -51,26 +51,42 @@ class Graphic(dataformat.Exportable):
     struct_description = "metadata for ingame graphics files."
 
     data_format = (
-        (dataformat.READ, "name0", "char[21]"),
-        (dataformat.READ, "name1", "char[13]"),
-        (dataformat.READ, "slp_id", "int32_t"),
+        (dataformat.READ_EXPORT, "name0", "char[21]"),
+        (dataformat.READ_EXPORT, "name1", "char[13]"),
+        (dataformat.READ_EXPORT, "slp_id", "int32_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "layer", "int8_t"),
-        (dataformat.READ, "player_color", "int16_t"),
-        (dataformat.READ, "replay", "uint8_t"),
+        (dataformat.READ_UNKNOWN, None, "int8_t"),                 #somehow correlated to the forced player color
+        (dataformat.READ_EXPORT, "layer", dataformat.EnumLookupMember(
+            raw_type    = "int8_t",
+            type_name   = "graphics_layer",
+            lookup_dict = {
+                0: "TERRAIN",     #cliff
+                5: "SHADOW",      #farm fields as well
+                6: "RUBBLE",
+                10: "UNIT_LOW",   #constructions, dead units, tree stumps, flowers, paths
+                11: "FISH",
+                19: "CRATER",     #rugs
+                20: "UNIT",       #buildings, units, damage flames, animations (mill)
+                21: "BLACKSMITH", #blacksmith smoke
+                22: "BIRD",       #hawk
+                30: "PROJECTILE", #and explosions
+            }
+        )),
+        (dataformat.READ_EXPORT, "player_color", "int8_t"),        #force given player color
+        (dataformat.READ_EXPORT, "adapt_color", "int8_t"),         #playercolor can be changed on sight (like sheep)
+        (dataformat.READ_EXPORT, "replay", "uint8_t"),             #loop animation
         (dataformat.READ, "coordinates", "int16_t[4]"),
         (dataformat.READ, "delta_count", "uint16_t"),
-        (dataformat.READ, "sound_id", "int16_t"),
-        (dataformat.READ, "attack_sound_used", "uint8_t"),
-        (dataformat.READ, "frame_count", "uint16_t"),
-        (dataformat.READ, "angle_count", "uint16_t"),
-        (dataformat.READ, "new_speed", "float"),
-        (dataformat.READ, "frame_rate", "float"),
-        (dataformat.READ, "replay_delay", "float"),
-        (dataformat.READ, "sequence_type", "int8_t"),
-        (dataformat.READ, "id", "int16_t"),
-        (dataformat.READ, "mirroring_mode", "int16_t"),
+        (dataformat.READ_EXPORT, "sound_id", "int16_t"),
+        (dataformat.READ_EXPORT, "attack_sound_used", "uint8_t"),
+        (dataformat.READ_EXPORT, "frame_count", "uint16_t"),
+        (dataformat.READ_EXPORT, "angle_count", "uint16_t"),
+        (dataformat.READ, "new_speed", "float"),                   #when unit has garrisoned anything, this _might_ be the new unit speed.
+        (dataformat.READ_EXPORT, "frame_rate", "float"),           #playtime for one frame in seconds
+        (dataformat.READ_EXPORT, "replay_delay", "float"),         #seconds to wait before current_frame=0 again
+        (dataformat.READ_EXPORT, "sequence_type", "int8_t"),
+        (dataformat.READ_EXPORT, "id", "int16_t"),
+        (dataformat.READ_EXPORT, "mirroring_mode", "int16_t"),
         (dataformat.READ, "graphic_deltas", dataformat.SubdataMember(
             ref_type=GraphicDelta,
             length="delta_count",
