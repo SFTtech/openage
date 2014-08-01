@@ -181,7 +181,7 @@ struct {
 			float extra_range;
 			int8_t unknown;
 			float unknown;
-			int8_t unknown;
+			int8_t selection_enabled;
 			int8_t unknown;
 			int32_t unknown;
 			int8_t unknown;
@@ -363,7 +363,7 @@ struct {
 				int16_t attack_graphic;
 				int16_t melee_armor_displayed;
 				int16_t attack_displayed;
-				int16_t range_displayed;
+				float range_displayed;
 				float reload_time1;
 			}
 
@@ -373,7 +373,6 @@ struct {
 				int8_t drop_animation_mode;
 				int8_t penetration_mode;
 				int8_t unknown;
-				int16_t unknown;
 				float projectile_arc;
 			}
 
@@ -393,13 +392,14 @@ struct {
 				int8_t hero_mode;
 				int16_t garnison_graphic0;
 				int16_t garnison_graphic1;
-				uint16_t unknown;
 				float attack_missile_duplication0;
 				int8_t attack_missile_duplication1;
-				float attack_missile_duplication_spawning[3];
+				float attack_missile_duplication_spawning_width;
+				float attack_missile_duplication_spawning_length;
+				float attack_missile_duplication_spawning_randomness;
 				int32_t attack_missile_duplication_unit;
 				int32_t attack_missile_duplication_graphic;
-				int8_t unknown;
+				int8_t dynamic_image_update;
 				int16_t pierce_armor_displayed;
 			}
 

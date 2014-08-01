@@ -26,7 +26,7 @@ class UnitCommand(dataformat.Exportable):
         (dataformat.READ_EXPORT, "extra_range", "float"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "float"),
-        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ, "selection_enabled", "int8_t"),              #1=allows to select a target, type defined in `selection_type`
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
         (dataformat.READ, "targets_allowed", dataformat.EnumLookupMember(
@@ -578,7 +578,7 @@ class UnitMovable(UnitBird):
         (dataformat.READ_EXPORT, "attack_graphic", "int16_t"),
         (dataformat.READ, "melee_armor_displayed", "int16_t"),
         (dataformat.READ, "attack_displayed", "int16_t"),
-        (dataformat.READ, "range_displayed", "int16_t"),
+        (dataformat.READ, "range_displayed", "float"),
         (dataformat.READ, "reload_time1", "float"),
     )
 
@@ -602,7 +602,6 @@ class UnitProjectile(UnitMovable):
         (dataformat.READ, "drop_animation_mode", "int8_t"),  #1 = disappear on hit
         (dataformat.READ, "penetration_mode", "int8_t"),     #1 = pass through hit object
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ_UNKNOWN, None, "uint16_t"),
         (dataformat.READ, "projectile_arc", "float"),
     )
 
@@ -661,7 +660,6 @@ class UnitLiving(UnitMovable):
         )),
         (dataformat.READ, "hero_mode", "int8_t"), #if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
         (dataformat.READ, "garrison_graphic", "int32_t"),              #graphic to display when units are garrisoned
-        (dataformat.READ_UNKNOWN, None, "uint16_t"),                   #TODO: verify, probably one byte off...
         (dataformat.READ, "attack_missile_duplication_min", "float"),  #projectile duplication when nothing garrisoned
         (dataformat.READ, "attack_missile_duplication_max", "int8_t"), #duplication when fully garrisoned
         (dataformat.READ, "attack_missile_duplication_spawning_width", "float"),
@@ -669,7 +667,7 @@ class UnitLiving(UnitMovable):
         (dataformat.READ, "attack_missile_duplication_spawning_randomness", "float"), #placement randomness, 0=from single spot, 1=random, 1<less random
         (dataformat.READ, "attack_missile_duplication_unit_id", "int32_t"),
         (dataformat.READ, "attack_missile_duplication_graphic_id", "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int8_t"),
+        (dataformat.READ, "dynamic_image_update", "int8_t"),     #determines adjacent unit graphics, if 1: building can adapt graphics by adjacent buildings
         (dataformat.READ, "pierce_armor_displayed", "int16_t"),  #unit stats display of pierce armor
     )
 
