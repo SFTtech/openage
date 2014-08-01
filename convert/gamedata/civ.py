@@ -15,8 +15,8 @@ class Civ(dataformat.Exportable):
         (dataformat.READ, "enabled", "int8_t"),
         (dataformat.READ_EXPORT, "name", "char[20]"),
         (dataformat.READ, "ressources_count", "uint16_t"),
-        (dataformat.READ_EXPORT, "tech_tree_id",  "int16_t"),
-        (dataformat.READ_EXPORT, "team_bonus_id", "int16_t"),
+        (dataformat.READ_EXPORT, "tech_tree_id",  "int16_t"),             #links to tech id (to apply its effects)
+        (dataformat.READ_EXPORT, "team_bonus_id", "int16_t"),             #links to tech id as well
         (dataformat.READ, "ressources", "float[ressources_count]"),
         (dataformat.READ, "graphic_set", "int8_t"),
         (dataformat.READ_EXPORT, "unit_count", "uint16_t"),

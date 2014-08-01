@@ -29,7 +29,7 @@ class UnitCommand(dataformat.Exportable):
         (dataformat.READ, "selection_enabled", "int8_t"),              #1=allows to select a target, type defined in `selection_type`
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
-        (dataformat.READ, "targets_allowed", dataformat.EnumLookupMember(
+        (dataformat.READ_EXPORT, "targets_allowed", dataformat.EnumLookupMember(
             raw_type    = "int8_t",      #what can be selected as a target for the unit command?
             type_name   = "selection_type",
             lookup_dict = {
@@ -72,7 +72,7 @@ class UnitHeader(dataformat.Exportable):
 class RessourceStorage(dataformat.Exportable):
     name_struct        = "ressource_storage"
     name_struct_file   = "unit"
-    struct_description = "stores the resource storage capacity for one unit mode."
+    struct_description = "determines the resource storage capacity for one unit mode."
 
     data_format = (
         (dataformat.READ, "type", "int16_t"),
@@ -93,12 +93,12 @@ class RessourceStorage(dataformat.Exportable):
 class DamageGraphic(dataformat.Exportable):
     name_struct        = "damage_graphic"
     name_struct_file   = "unit"
-    struct_description = "stores one building image that shows a destroyed foundation."
+    struct_description = "stores one possible unit image that is displayed at a given damage percentage."
 
     data_format = (
         (dataformat.READ_EXPORT, "graphic_id", "int16_t"),
         (dataformat.READ_EXPORT, "damage_percent", "int8_t"),
-        (dataformat.READ, "apply_mode", dataformat.EnumLookupMember(
+        (dataformat.READ_EXPORT, "apply_mode", dataformat.EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "damage_draw_type",
             lookup_dict = {
@@ -156,7 +156,205 @@ class RessourceCost(dataformat.Exportable):
     struct_description = "stores cost for one ressource for creating the unit."
 
     data_format = (
-        (dataformat.READ, "type_id", "int16_t"),
+        (dataformat.READ, "type_id", dataformat.EnumLookupMember(
+            raw_type = "int16_t",
+            type_name = "ressource_types",
+            lookup_dict = {
+                -1: "NONE",
+                0: "FOOD_STORAGE",
+                1: "WOOD_STORAGE",
+                2: "STONE_STORAGE",
+                3: "GOLD_STORAGE",
+                4: "POPULATION_HEADROOM",
+                5: "CONVERSION_RANGE",
+                6: "CURRENT_AGE",
+                7: "OWNED_RELIC_COUNT",
+                8: "TRADE_BONUS",
+                9: "TRADE_GOODS",
+                10: "TRADE_PRODUCTION",
+                11: "POPULATION",         #both current population and population headroom
+                12: "CORPSE_DECAY_TIME",
+                13: "DISCOVERY",
+                14: "RUIN_MONUMENTS_CAPTURED", #unused
+                15: "PREDATOR_ANIMAL_FOOD",
+                16: "CROPS",
+                17: "FISH_STORAGE",
+                18: "UNKNOWN_18",
+                19: "TOTAL_UNITS_OWNED",   #or just military ones? used for counting losses
+                20: "UNITS_KILLED",
+                21: "RESEARCHED_TECHNOLOGIES_COUNT",
+                23: "TECHNOLOGY_ID_0",     #default: 102
+                24: "TECHNOLOGY_ID_1",     #default: 103
+                25: "TECHNOLOGY_ID_2",     #default: 101
+                27: "ATONEMENT",           #bool
+                28: "REDEMPTION",          #bool
+                30: "VAL_500",             #default: 500
+                32: "BONUS_POPULATION",
+                35: "FAITH_RECHARGE_RATE", #default: 1.6
+                36: "FARM_FOOD_AMOUNT",    #default: 175
+                37: "CIVILIAN_POPULATION",
+                38: "UNKNOWN_38",
+                39: "ALL_TECHS_ACHIEVED",  #default: 178
+                40: "MILITARY_POPULATION", #-> largest army
+                41: "UNITS_CONVERTED",
+                42: "WONDERS_STANDING",
+                43: "BUILDINGS_RAZED",
+                44: "KILL_RATIO",
+                45: "SURVIVAL_TO_FINISH",  #bool
+                46: "TRIBUTE_FEE",         #default: 0.3
+                47: "GOLD_MINING_PRODUCTIVITY", #default: 1
+                48: "TOWN_CENTER_AVAILABLE",
+                49: "GOLD_COUNTER",
+                50: "REVEAL_ALLY",         #bool, ==cartography discovered
+                51: "HOUSES_UNUSED",
+                52: "MONASTERY_COUNT",
+                53: "TRIBUTE_SENT",
+                54: "RUINES_CAPTURED_ALL", #bool
+                55: "RELICS_CAPTURED_ALL", #bool
+                56: "LOAD_STORAGE",        #or unit unload room?
+                57: "CAPTURED_UNITS",
+                58: "DARK_AGE",            #default: 104
+                59: "TRADE_GOOD_QUALITY",  #default: 1
+                60: "TRADE_MARKET_LEVEL",
+                61: "FORMATIONS",
+                62: "BUILDING_HOUSING_RATE", #default: 20
+                63: "GATHER_TAX_RATE",       #default: 32000
+                64: "GATHER_ACCUMULATOR",
+                65: "SALVAGE_DECAY_RATE",    #default: 5
+                66: "ALLOW_FORMATION",       #bool, something with age?
+                67: "CONVERSIONS",           #bool?
+                68: "HIT_POINTS_KILLED",     #unused
+                69: "KILLED_PLAYER_1",       #bool
+                70: "KILLED_PLAYER_2",       #bool
+                71: "KILLED_PLAYER_3",       #bool
+                72: "KILLED_PLAYER_4",       #bool
+                73: "KILLED_PLAYER_5",       #bool
+                74: "KILLED_PLAYER_6",       #bool
+                75: "KILLED_PLAYER_7",       #bool
+                76: "KILLED_PLAYER_8",       #bool
+                77: "CONVERSION_RESISTANCE",
+                78: "TRADE_FEE",             #default: 0.3
+                79: "STONE_MINING_PRODUCTIVITY", #default: 1
+                80: "QUEUED_UNITS",
+                81: "TRAINING_COUNT",
+                82: "START_PACKED_TOWNCENTER",   #or raider, default: 2
+                83: "BOARDING_RECHARGE_RATE",
+                84: "STARTING_VILLAGERS",        #default: 3
+                85: "RESEARCH_COST_MULTIPLIER",
+                86: "RESEARCH_TIME_MULTIPLIER",
+                87: "CONVERT_SHIPS_ABILITY",     #bool
+                88: "FISH_TRAP_FOOD_AMOUNT",     #default: 700
+                89: "BONUS_HEALING_RATE",
+                90: "HEALING_RANGE",
+                91: "BONUS_STARTING_FOOD",
+                92: "BONUS_STARTING_WOOD",
+                93: "BONUS_STARTING_STONE",
+                94: "BONUS_STARTING_GOLD",
+                95: "TOWN_CENTER_PACKING",       #or raider, default: 3
+                96: "SELF_HEALING_SECONDS_BERSERKER",
+                97: "ANIMAL_DISCOVERY_DOMINANT_LOS", #bool, sheep/turkey
+                98: "SCORE_ECONOMY",                 #object cost summary
+                99: "SCORE_TECHNOLOGY",
+                100: "RELIC_GOLD_COLLECTED",
+                101: "TRADE_PROFIT",
+                102: "TRIBUTE_P1",
+                103: "TRIBUTE_P2",
+                104: "TRIBUTE_P3",
+                105: "TRIBUTE_P4",
+                106: "TRIBUTE_P5",
+                107: "TRIBUTE_P6",
+                108: "TRIBUTE_P7",
+                109: "TRIBUTE_P8",
+                110: "KILL_SCORE_P1",
+                111: "KILL_SCORE_P2",
+                112: "KILL_SCORE_P3",
+                113: "KILL_SCORE_P4",
+                114: "KILL_SCORE_P5",
+                115: "KILL_SCORE_P6",
+                116: "KILL_SCORE_P7",
+                117: "KILL_SCORE_P8",
+                118: "RAZING_COUNT_P1",
+                119: "RAZING_COUNT_P2",
+                120: "RAZING_COUNT_P3",
+                121: "RAZING_COUNT_P4",
+                122: "RAZING_COUNT_P5",
+                123: "RAZING_COUNT_P6",
+                124: "RAZING_COUNT_P7",
+                125: "RAZING_COUNT_P8",
+                126: "RAZING_SCORE_P1",
+                127: "RAZING_SCORE_P2",
+                128: "RAZING_SCORE_P3",
+                129: "RAZING_SCORE_P4",
+                130: "RAZING_SCORE_P5",
+                131: "RAZING_SCORE_P6",
+                132: "RAZING_SCORE_P7",
+                133: "RAZING_SCORE_P8",
+                134: "STANDING_CASTLES",
+                135: "RAZINGS_HIT_POINTS",
+                136: "KILLS_BY_P1",
+                137: "KILLS_BY_P2",
+                138: "KILLS_BY_P3",
+                139: "KILLS_BY_P4",
+                140: "KILLS_BY_P5",
+                141: "KILLS_BY_P6",
+                142: "KILLS_BY_P7",
+                143: "KILLS_BY_P8",
+                144: "RAZINGS_BY_P1",
+                145: "RAZINGS_BY_P2",
+                146: "RAZINGS_BY_P3",
+                147: "RAZINGS_BY_P4",
+                148: "RAZINGS_BY_P5",
+                149: "RAZINGS_BY_P6",
+                150: "RAZINGS_BY_P7",
+                151: "RAZINGS_BY_P8",
+                152: "LOST_UNITS_SCORE",
+                153: "LOST_BUILDINGS_SCORE",
+                154: "LOST_UNITS",
+                155: "LOST_BUILDINGS",
+                156: "TRIBUTE_FROM_P1",
+                157: "TRIBUTE_FROM_P2",
+                158: "TRIBUTE_FROM_P3",
+                159: "TRIBUTE_FROM_P4",
+                160: "TRIBUTE_FROM_P5",
+                161: "TRIBUTE_FROM_P6",
+                162: "TRIBUTE_FROM_P7",
+                163: "TRIBUTE_FROM_P8",
+                164: "SCORE_UNITS_CURRENT",
+                165: "SCORE_BUILDINGS_CURRENT",         #default: 275
+                166: "COLLECTED_FOOD",
+                167: "COLLECTED_WOOD",
+                168: "COLLECTED_STONE",
+                169: "COLLECTED_GOLD",
+                170: "SCORE_MILITARY",
+                171: "TRIBUTE_RECEIVED",
+                172: "SCORE_RAZINGS",
+                173: "TOTAL_CASTLES",
+                174: "TOTAL_WONDERS",
+                175: "SCORE_ECONOMY_TRIBUTES",
+                176: "CONVERT_ADJUSTMENT_MIN",          #used for resistance against monk conversions
+                177: "CONVERT_ADJUSTMENT_MAX",
+                178: "CONVERT_RESIST_ADJUSTMENT_MIN",
+                179: "CONVERT_RESIST_ADJUSTMENT_MAX",
+                180: "CONVERT_BUILDIN_MIN",             #default: 15
+                181: "CONVERT_BUILDIN_MAX",             #default: 25
+                182: "CONVERT_BUILDIN_CHANCE",          #default: 25
+                183: "REVEAL_ENEMY",
+                184: "SCORE_SOCIETY",
+                185: "SCORE_FOOD",
+                186: "SCORE_WOOD",
+                187: "SCORE_STONE",
+                188: "SCORE_GOLD",
+                189: "CHOPPING_PRODUCTIVITY",           #default: 1
+                190: "FOOD_GATHERING_PRODUCTIVITY",     #default: 1
+                191: "RELIC_GOLD_PRODUCTION_RATE",      #default: 30
+                192: "HERESY_ACTIVE",                   #bool
+                193: "THEOCRACY_ACTIVE",                #bool
+                194: "CRENELLATIONS_ACTIVE",            #bool
+                195: "CONSTRUCTION_RATE",               #except for wonders
+                196: "WONDER_BONUS",
+                197: "SPIES_DISCOUNT",                  #or atheism_active?
+            }
+        )),
         (dataformat.READ, "amount", "int16_t"),
         (dataformat.READ, "enabled", "int16_t"),
     )
@@ -256,29 +454,29 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ_EXPORT, "graphic_standing1", "int16_t"),
         (dataformat.READ_EXPORT, "graphic_dying0", "int16_t"),
         (dataformat.READ_EXPORT, "graphic_dying1", "int16_t"),
-        (dataformat.READ, "death_mode", "int8_t"),                  #1 = become `dead_unit_id`, reviving does not make it usable
-        (dataformat.READ, "hit_points", "int16_t"),                 #unit health. -1=insta-die
+        (dataformat.READ, "death_mode", "int8_t"),                  #1 = become `dead_unit_id` (reviving does not make it usable again)
+        (dataformat.READ_EXPORT, "hit_points", "int16_t"),          #unit health. -1=insta-die
         (dataformat.READ, "line_of_sight", "float"),
         (dataformat.READ, "garrison_capacity", "int8_t"),           #number of units that can garrison in there
-        (dataformat.READ, "radius_size0", "float"),                 #size of the unit
-        (dataformat.READ, "radius_size1", "float"),
+        (dataformat.READ_EXPORT, "radius_size0", "float"),          #size of the unit
+        (dataformat.READ_EXPORT, "radius_size1", "float"),
         (dataformat.READ, "hp_bar_height0", "float"),               #vertical hp bar distance from ground
         (dataformat.READ_EXPORT, "sound_creation0", "int16_t"),
         (dataformat.READ_EXPORT, "sound_creation1", "int16_t"),
         (dataformat.READ, "dead_unit_id", "int16_t"),               #unit id to become on death
         (dataformat.READ, "placement_mode", "int8_t"),              #0=placable on top of others in scenario editor, 5=can't
         (dataformat.READ, "air_mode", "int8_t"),                    #1=no footprints
-        (dataformat.READ, "icon_id", "int16_t"),                    #graphics id of the icon to place in the creation button
+        (dataformat.READ, "icon_id", "int16_t"),                    #frame id of the icon slp (57029) to place on the creation button
         (dataformat.READ, "hidden_in_editor", "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ, "enabled", "int16_t"),                    #0=unlocked by research, 1=insta-available
-        (dataformat.READ, "placement_by_pass_terrain0", "int16_t"), #terrain id that's needed somewhere on the foundation
-        (dataformat.READ, "placement_by_pass_terrain1", "int16_t"), #second slot for ^
-        (dataformat.READ, "placement_terrain0", "int16_t"),
-        (dataformat.READ, "placement_terrain1", "int16_t"),
+        (dataformat.READ, "placement_bypass_terrain0", "int16_t"),  #terrain id that's needed somewhere on the foundation (e.g. dock water)
+        (dataformat.READ, "placement_bypass_terrain1", "int16_t"),  #second slot for ^
+        (dataformat.READ, "placement_terrain0", "int16_t"),         #terrain needed for placement (e.g. dock: water)
+        (dataformat.READ, "placement_terrain1", "int16_t"),         #alternative terrain needed for placement (e.g. dock: shallows)
         (dataformat.READ, "editor_radius0", "float"),
         (dataformat.READ, "editor_radius1", "float"),
-        (dataformat.READ, "building_mode", dataformat.EnumLookupMember(
+        (dataformat.READ_EXPORT, "building_mode", dataformat.EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "building_mode",
             lookup_dict = {
@@ -287,45 +485,46 @@ class UnitObject(dataformat.Exportable):
                 3: "ANY",
             },
         )),
-        (dataformat.READ, "visible_in_fog", dataformat.EnumLookupMember(
+        (dataformat.READ_EXPORT, "visible_in_fog", dataformat.EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "fog_visibility",
             lookup_dict = {
-                0: "INVISIBLE",
-                1: "VISIBLE",
+                0: "INVISIBLE",     #people etc
+                1: "VISIBLE",       #buildings
                 3: "ONLY_IN_FOG",
             },
         )),
         (dataformat.READ_EXPORT, "terrain_restriction", dataformat.EnumLookupMember(
-            raw_type    = "int16_t",
-            type_name   = "ground_type",
+            raw_type    = "int16_t",      #determines on what type of ground the unit can be placed/walk
+            type_name   = "ground_type",  #is actually the id of the terrain_restriction entry!
             lookup_dict = {
                 0x00: "ANY",
                 0x01: "SHORELINE",
                 0x02: "WATER",
-                0x03: "SHIP_WATER",
+                0x03: "WATER_SHIP_0x03",
                 0x04: "FOUNDATION",
-                0x05: "NOWHERE",
-                0x06: "SHALLOW_DOCK_WATER",
+                0x05: "NOWHERE",              #can't place anywhere
+                0x06: "WATER_DOCK",           #shallow water for dock placement
                 0x07: "SOLID",
-                0x08: "NO_ICE",
-                0x0A: "UNKNOWN_0x0A",
+                0x08: "NO_ICE_0x08",
+                0x0A: "NO_ICE_0x0A",
                 0x0B: "FOREST",
                 0x0C: "UNKNOWN_0x0C",
-                0x0D: "GREAT_FISH_WATER",
+                0x0D: "WATER_0x0D",           #great fish
                 0x0E: "UNKNOWN_0x0E",
-                0x0F: "TRANSPORTSHIP_WATER",
-                0x10: "GRASS_SHORELINE", #for gates and walls
+                0x0F: "WATER_SHIP_0x0F",      #transport ship
+                0x10: "GRASS_SHORELINE",      #for gates and walls
+                0x11: "WATER_ANY_0x11",
                 0x12: "UNKNOWN_0x12",
                 0x13: "FISH_NO_ICE",
-                0x14: "UNKNOWN_0x14",
-                0x15: "UNKNOWN_0x15",
+                0x14: "WATER_ANY_0x14",
+                0x15: "WATER_SHALLOW",
             },
         )),
-        (dataformat.READ, "fly_mode", "int8_t"),
-        (dataformat.READ, "ressource_capacity", "int16_t"),
-        (dataformat.READ, "ressource_decay", "float"),                 #when animals rot, their ressources decay
-        (dataformat.READ, "blast_type", dataformat.EnumLookupMember(
+        (dataformat.READ_EXPORT, "fly_mode", "int8_t"),
+        (dataformat.READ_EXPORT, "ressource_capacity", "int16_t"),
+        (dataformat.READ_EXPORT, "ressource_decay", "float"),                 #when animals rot, their ressources decay
+        (dataformat.READ_EXPORT, "blast_type", dataformat.EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "blast_type",
             lookup_dict = {
@@ -336,7 +535,7 @@ class UnitObject(dataformat.Exportable):
             }
         )),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "interaction_mode", dataformat.EnumLookupMember(
+        (dataformat.READ_EXPORT, "interaction_mode", dataformat.EnumLookupMember(
             raw_type    = "int8_t",  #what can be done with this unit?
             type_name   = "interaction_mode",
             lookup_dict = {
@@ -348,7 +547,7 @@ class UnitObject(dataformat.Exportable):
                 5: "SELECT_MOVE",
             },
         )),
-        (dataformat.READ, "minimap_mode", dataformat.EnumLookupMember(
+        (dataformat.READ_EXPORT, "minimap_mode", dataformat.EnumLookupMember(
             raw_type    = "int8_t",        #how does the unit show up on the minimap
             type_name   = "minimap_modes",
             lookup_dict = {
@@ -365,9 +564,9 @@ class UnitObject(dataformat.Exportable):
                 10: "NO_DOT_10",
             },
         )),
-        (dataformat.READ, "command_attribute", dataformat.EnumLookupMember(
-            raw_type    = "int16_t",
-            type_name   = "command_attribute",
+        (dataformat.READ_EXPORT, "command_attribute", dataformat.EnumLookupMember(
+            raw_type    = "int16_t",             #selects the available ui command buttons for the unit
+            type_name   = "command_attributes",
             lookup_dict = {
                 0: "LIVING",               #commands: delete, garrison, stop, attributes: hit points
                 1: "ANIMAL",               #animal
@@ -414,7 +613,22 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "attribute", "int8_t"),
         (dataformat.READ, "civilisation", "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
-        (dataformat.READ, "selection_effect", "int8_t"),        #hide unit hpbar (-> tree)
+        (dataformat.READ_EXPORT, "selection_effect", dataformat.EnumLookupMember(
+            raw_type = "int8_t",     #things that happen when the unit was selected
+            type_name = "selection_effects",
+            lookup_dict = {
+                0: "NONE",
+                1: "HPBAR_ON_OUTLINE_DARK",  #permanent, editor only
+                2: "HPBAR_ON_OUTLINE_NORMAL",
+                3: "HPBAR_OFF_SELECTION_SHADOW",
+                4: "HPBAR_OFF_OUTLINE_NORMAL",
+                5: "HPBAR_ON_5",
+                6: "HPBAR_OFF_6",
+                7: "HPBAR_OFF_7",
+                8: "HPBAR_ON_8",
+                9: "HPBAR_ON_9",
+            },
+        )),
         (dataformat.READ, "editor_selection_color", "uint8_t"), #0: default, -16: fish trap, farm, 52: deadfarm, OLD-*, 116: flare, whale, dolphin -123: fish
         (dataformat.READ, "selection_radius0", "float"),
         (dataformat.READ, "selection_radius1", "float"),
@@ -515,11 +729,11 @@ class UnitBird(UnitDeadOrFish):
         (dataformat.READ, "sheep_conversion", "int16_t"), #0=can be converted by unit command 107 (you found sheep!!1)
         (dataformat.READ, "search_radius", "float"),
         (dataformat.READ, "work_rate", "float"),
-        (dataformat.READ, "drop_site0", "int16_t"),
-        (dataformat.READ, "drop_site1", "int16_t"),
-        (dataformat.READ, "villager_mode", "int8_t"),     #unit can switch villager type (holza? gathara!) 1=male, 2=female
-        (dataformat.READ, "move_sound", "int16_t"),
-        (dataformat.READ, "stop_sound", "int16_t"),
+        (dataformat.READ, "drop_site0", "int16_t"),       #unit id where gathered ressources shall be delivered to
+        (dataformat.READ, "drop_site1", "int16_t"),       #alternative unit id
+        (dataformat.READ_EXPORT, "villager_mode", "int8_t"),     #unit can switch villager type (holza? gathara!) 1=male, 2=female
+        (dataformat.READ_EXPORT, "move_sound", "int16_t"),
+        (dataformat.READ_EXPORT, "stop_sound", "int16_t"),
         (dataformat.READ, "animal_mode", "int8_t"),
     )
 
@@ -543,7 +757,7 @@ class UnitMovable(UnitBird):
         (dataformat.READ, "attacks", dataformat.SubdataMember(ref_type=HitType, length="attack_count")),
         (dataformat.READ, "armor_count", "uint16_t"),
         (dataformat.READ, "armors", dataformat.SubdataMember(ref_type=HitType, length="armor_count")),
-        (dataformat.READ, "interaction_type", dataformat.EnumLookupMember(
+        (dataformat.READ_EXPORT, "interaction_type", dataformat.EnumLookupMember(
             raw_type    = "int16_t",
             type_name   = "interaction_types",
             lookup_dict = {
@@ -563,7 +777,7 @@ class UnitMovable(UnitBird):
         (dataformat.READ, "projectile_graphics_displacement_lr", "float"),
         (dataformat.READ, "projectile_graphics_displacement_distance", "float"),
         (dataformat.READ, "projectile_graphics_displacement_height", "float"),
-        (dataformat.READ, "blast_level", dataformat.EnumLookupMember(
+        (dataformat.READ_EXPORT, "blast_level", dataformat.EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "range_damage_type",
             lookup_dict = {
@@ -645,19 +859,7 @@ class UnitLiving(UnitMovable):
         (dataformat.READ, "creation_button_id", "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
-        (dataformat.READ, "missile_graphic_delay", dataformat.EnumLookupMember(
-            raw_type    = "int8_t",
-            type_name   = "projectile_owner",
-            lookup_dict = {
-                0: "UNIT", #projectiles, buildings, dead units, boar
-                1: "VILLAGER",
-                2: "MELEE",
-                3: "MOUNTED_UNIT",
-                4: "RELIC",
-                5: "ARCHER",
-                6: "MONK",
-            },
-        )),
+        (dataformat.READ, "missile_graphic_delay", "int8_t"),          #delay before the projectile is fired.
         (dataformat.READ, "hero_mode", "int8_t"), #if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
         (dataformat.READ, "garrison_graphic", "int32_t"),              #graphic to display when units are garrisoned
         (dataformat.READ, "attack_missile_duplication_min", "float"),  #projectile duplication when nothing garrisoned
@@ -692,9 +894,9 @@ class UnitBuilding(UnitLiving):
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ, "stack_unit_id", "int16_t"),           #second building to place directly on top
-        (dataformat.READ_EXPORT, "terrain_id", "int16_t"),       #change terrain to this id when building completed
+        (dataformat.READ_EXPORT, "terrain_id", "int16_t"),       #change underlying terrain to this id when building completed
         (dataformat.READ_UNKNOWN, None, "int16_t"),
-        (dataformat.READ, "research_id", "int16_t"),
+        (dataformat.READ, "research_id", "int16_t"),             #research_id to be enabled when building creation
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_EXPORT, "building_annex", dataformat.SubdataMember(ref_type=BuildingAnnex, length=4)),
         (dataformat.READ, "head_unit_id", "int16_t"),            #building at which an annex building is attached to

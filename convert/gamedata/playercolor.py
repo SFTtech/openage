@@ -19,5 +19,5 @@ class PlayerColor(dataformat.Exportable):
         (dataformat.READ_EXPORT, "minimap_color", "int32_t"), #palette index
         (dataformat.READ_UNKNOWN, None, "int32_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int32_t"),
+        (dataformat.READ_EXPORT, "statistics_text_color", "int32_t"),
     )
