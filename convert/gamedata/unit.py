@@ -478,7 +478,7 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "editor_radius1", "float"),
         (dataformat.READ_EXPORT, "building_mode", dataformat.EnumLookupMember(
             raw_type    = "int8_t",
-            type_name   = "building_mode",
+            type_name   = "building_modes",
             lookup_dict = {
                 0: "NON_BUILDING",    #gates, farms, walls, towers
                 2: "TRADE_BUILDING",  #towncenter, port, trade workshop
@@ -526,7 +526,7 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ_EXPORT, "ressource_decay", "float"),                 #when animals rot, their ressources decay
         (dataformat.READ_EXPORT, "blast_type", dataformat.EnumLookupMember(
             raw_type    = "int8_t",
-            type_name   = "blast_type",
+            type_name   = "blast_types",
             lookup_dict = {
                 0: "UNIT_0",   #projectile, dead, fish, relic, tree, gate, towncenter
                 1: "OTHER",    #'other' things with multiple rotations
@@ -537,7 +537,7 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_EXPORT, "interaction_mode", dataformat.EnumLookupMember(
             raw_type    = "int8_t",  #what can be done with this unit?
-            type_name   = "interaction_mode",
+            type_name   = "interaction_modes",
             lookup_dict = {
                 0: "NOTHING_0",
                 1: "NOTHING_1",
