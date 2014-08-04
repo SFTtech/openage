@@ -1,9 +1,9 @@
-#ifndef _ENGINE_UTIL_COLOR_H_
-#define _ENGINE_UTIL_COLOR_H_
+#ifndef _UTIL_COLOR_H_
+#define _UTIL_COLOR_H_
 
-#include "../../gamedata/color.h"
+#include "../gamedata/color.h"
 
-namespace engine {
+namespace openage {
 namespace util {
 
 struct col {
@@ -17,6 +17,6 @@ struct col {
 };
 
 } //namespace util
-} //namespace engine
+} //namespace openage
 
-#endif //_ENGINE_UTIL_COLOR_H_
+#endif //_UTIL_COLOR_H_

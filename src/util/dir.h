@@ -1,11 +1,11 @@
-#ifndef _ENGINE_UTIL_DIR_H_
-#define _ENGINE_UTIL_DIR_H_
+#ifndef _UTIL_DIR_H_
+#define _UTIL_DIR_H_
 
 #include <string>
 
 constexpr const char *PATHSEP = "/";
 
-namespace engine {
+namespace openage {
 namespace util {
 
 /**
@@ -36,6 +36,6 @@ std::string basename(std::string &fullpath);
 std::string dirname(std::string &fullpath);
 
 } //namespace util
-} //namespace engine
+} //namespace openage
 
-#endif //_ENGINE_UTIL_DIR_H_
+#endif //_UTIL_DIR_H_

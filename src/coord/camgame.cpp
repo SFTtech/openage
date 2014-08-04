@@ -7,7 +7,7 @@
 #include "vec2.h"
 #include "window.h"
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 phys3 camgame::to_phys3(phys_t up) {
@@ -53,4 +53,4 @@ window_delta camgame_delta::to_window() {
 }
 
 } //namespace coord
-} //namespace engine
+} //namespace openage

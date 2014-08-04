@@ -1,9 +1,9 @@
-#ifndef _ENGINE_AUDIO_CATEGORY_H_
-#define _ENGINE_AUDIO_CATEGORY_H_
+#ifndef _AUDIO_CATEGORY_H_
+#define _AUDIO_CATEGORY_H_
 
-#include "../../gamedata/sound_file.h"
+#include "../gamedata/sound_file.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 enum class category_t {
@@ -18,4 +18,4 @@ category_t from_category(const gamedata::audio_category_t category);
 }
 }
 
-#endif
+#endif // _AUDIO_CATEGORY_H_

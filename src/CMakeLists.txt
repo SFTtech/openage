@@ -10,61 +10,62 @@ add_executable(${PROJECT_NAME}
 	main.cpp
 	args.cpp
 
-	engine/callbacks.cpp
-	engine/engine.cpp
-	engine/font.cpp
-	engine/init.cpp
-	engine/input.cpp
-	engine/log.cpp
-	engine/python.cpp
-	engine/audio/audio_manager.cpp
-	engine/audio/category.cpp
-	engine/audio/format.cpp
-	engine/audio/loader_policy.cpp
-	engine/audio/resource.cpp
-	engine/audio/resource_loader.cpp
-	engine/audio/sound.cpp
-	engine/console/console.cpp
-	engine/console/draw.cpp
-	engine/coord/camgame.cpp
-	engine/coord/camhud.cpp
-	engine/coord/chunk.cpp
-	engine/coord/phys2.cpp
-	engine/coord/phys3.cpp
-	engine/coord/term.cpp
-	engine/coord/tile.cpp
-	engine/coord/tile3.cpp
-	engine/coord/vec2.cpp
-	engine/coord/vec2f.cpp
-	engine/coord/vec3.cpp
-	engine/coord/vec3f.cpp
-	engine/coord/window.cpp
-	engine/shader/program.cpp
-	engine/shader/shader.cpp
-	engine/terrain.cpp
-	engine/terrain_chunk.cpp
-	engine/terrain_object.cpp
-	engine/texture.cpp
-	engine/util/color.cpp
-	engine/util/dir.cpp
-	engine/util/error.cpp
-	engine/util/file.cpp
-	engine/util/fds.cpp
-	engine/util/fps.cpp
-	engine/util/misc.cpp
-	engine/util/strings.cpp
-	engine/util/timer.cpp
-	engine/util/unicode.cpp
-	engine/console/buf.cpp
+	callbacks.cpp
+	engine.cpp
+	font.cpp
+	init.cpp
+	input.cpp
+	log.cpp
+	python.cpp
+	terrain.cpp
+	terrain_chunk.cpp
+	terrain_object.cpp
+	texture.cpp
 
-	openage/callbacks.cpp
-	openage/gamestate.cpp
-	openage/init.cpp
-	openage/main.cpp
+	audio/audio_manager.cpp
+	audio/category.cpp
+	audio/format.cpp
+	audio/loader_policy.cpp
+	audio/resource.cpp
+	audio/resource_loader.cpp
+	audio/sound.cpp
+
+	console/buf.cpp
+	console/console.cpp
+	console/draw.cpp
+
+	coord/camgame.cpp
+	coord/camhud.cpp
+	coord/chunk.cpp
+	coord/phys2.cpp
+	coord/phys3.cpp
+	coord/term.cpp
+	coord/tile.cpp
+	coord/tile3.cpp
+	coord/vec2.cpp
+	coord/vec2f.cpp
+	coord/vec3.cpp
+	coord/vec3f.cpp
+	coord/window.cpp
+
+	shader/program.cpp
+	shader/shader.cpp
+
+	util/color.cpp
+	util/dir.cpp
+	util/error.cpp
+	util/file.cpp
+	util/fds.cpp
+	util/fps.cpp
+	util/misc.cpp
+	util/strings.cpp
+	util/timer.cpp
+	util/unicode.cpp
 
 	testing/testing.cpp
 	testing/term.cpp
 	testing/register.cpp
+	testing/engine_test.cpp
 )
 
 

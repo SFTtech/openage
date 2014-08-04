@@ -2,7 +2,7 @@
 
 #include <SDL2/SDL.h>
 
-namespace engine {
+namespace openage {
 namespace util {
 
 Timer::Timer() {
@@ -59,4 +59,4 @@ bool Timer::isstopped() {
 }
 
 } //namespace util
-} //namespace engine
+} //namespace openage

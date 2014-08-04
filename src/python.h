@@ -1,9 +1,9 @@
-#ifndef _ENGINE_PYTHON_H_
-#define _ENGINE_PYTHON_H_
+#ifndef _OPENAGE_PYTHON_H_
+#define _OPENAGE_PYTHON_H_
 
 #include <Python.h>
 
-namespace engine {
+namespace openage {
 
 /**
  * initialize embedded python
@@ -16,7 +16,7 @@ void python_init();
 void python_deinit();
 
 
-} //namespace engine
+} //namespace openage
 
 
-#endif //_ENGINE_PYTHON_H_
+#endif //_OPENAGE_PYTHON_H_

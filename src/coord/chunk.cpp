@@ -3,7 +3,7 @@
 
 #include "tile.h"
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 tile chunk::to_tile(tile_delta pos_on_chunk) {
@@ -14,4 +14,4 @@ tile chunk::to_tile(tile_delta pos_on_chunk) {
 }
 
 } //namespace coord
-} //namespace engine
+} //namespace openage

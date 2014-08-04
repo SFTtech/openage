@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-namespace engine {
+namespace openage {
 namespace util {
 
 //we could simply use wchar_t here, but legend says there are operating
@@ -91,6 +91,6 @@ size_t utf8_decode(const unsigned char *s, size_t len, codepoint_t *outbuf);
 size_t utf8_encode(int cp, char *outbuf);
 
 } //namespace util
-} //namespace engine
+} //namespace openage
 
 #endif //_ENGINE_UTIL_UNICODE_H_

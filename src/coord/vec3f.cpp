@@ -1,8 +1,8 @@
 #define GEN_IMPL_VEC3F_CPP
 #include "vec3f.h"
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 } //namespace coord
-} //namespace engine
+} //namespace openage

@@ -8,7 +8,7 @@
 #define ABSOLUTE_TYPE camgame
 #define RELATIVE_TYPE camgame_delta
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 struct camgame {
@@ -36,7 +36,7 @@ struct camgame_delta {
 #endif //GEN_IMPL_CAMGAME_CPP
 
 } //namespace coord
-} //namespace engine
+} //namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

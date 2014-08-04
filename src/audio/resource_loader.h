@@ -6,7 +6,7 @@
 
 #include "format.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 //

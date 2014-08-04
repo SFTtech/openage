@@ -3,6 +3,10 @@
 
 //testing is the future.
 
+#include <string>
+
+#include "../args.h"
+
 /**
  * testing stuff is stored in this namespace.
  */
@@ -13,7 +17,7 @@ using test_function_t = bool (*)(int, char **);
 /**
  * registers a given test with a name.
  */
-void register_test(const char *name, const char *description, bool interactive, test_function_t fp);
+void register_test(std::string name, std::string description, bool interactive, test_function_t fp);
 
 /**
  * list all registered tests.

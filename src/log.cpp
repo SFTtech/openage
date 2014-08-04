@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "console/console.h"
 
-namespace engine {
+namespace openage {
 namespace log {
 
 constexpr LogLevel loglevels[] {
@@ -46,9 +46,8 @@ void log(const char *fmt, ...) {
 
 	puts(buf);
 
-	if (engine::running) {
-		engine::console::write(buf);
-	}
+	//write the message to the ingame console
+	//console::write(buf);
 
 	delete[] buf;
 }
@@ -64,4 +63,4 @@ template void log<6>(const char *fmt, ...);
 template void log<7>(const char *fmt, ...);
 
 } //namespace log
-} //namespace engine
+} //namespace openage

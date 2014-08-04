@@ -11,7 +11,7 @@
 #include "coord/phys3.h"
 #include "coord/camgame.h"
 
-namespace engine {
+namespace openage {
 
 TerrainObject::TerrainObject(Texture *tex, unsigned player) {
 	this->placed = false;
@@ -68,7 +68,7 @@ void TerrainObject::remove() {
 */
 bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
 	if (this->placed) {
-		throw Error("this object has already been placed.");
+		throw util::Error("this object has already been placed.");
 	}
 
 	if (not this->fits(terrain, pos)) {
@@ -131,7 +131,7 @@ bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
 void TerrainObject::set_ground(int id, int additional) {
 
 	if (not this->placed) {
-		throw Error("setting ground for object that is not placed yet.");
+		throw util::Error("setting ground for object that is not placed yet.");
 	}
 
 	coord::tile temp_pos = this->start_pos;
@@ -271,4 +271,4 @@ bool TerrainObject::operator <(const TerrainObject &other) {
 	return true;
 }
 
-} //namespace engine
+} //namespace openage

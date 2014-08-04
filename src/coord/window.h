@@ -8,7 +8,7 @@
 #define ABSOLUTE_TYPE window
 #define RELATIVE_TYPE window_delta
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 struct window {
@@ -36,7 +36,7 @@ struct window_delta {
 #endif //GEN_IMPL_WINDOW_CPP
 
 } //namespace coord
-} //namespace engine
+} //namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

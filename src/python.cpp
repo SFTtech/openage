@@ -5,12 +5,10 @@
 #include "log.h"
 
 
-namespace engine {
+namespace openage {
 
 void python_init() {
 	if (not Py_IsInitialized()) {
-		//Py_SetProgramName(program_name);
-
 		//register signal handlers (kill, term, ...) to python?
 		constexpr int init_signals = 1;
 		Py_InitializeEx(init_signals);
@@ -20,11 +18,10 @@ void python_init() {
 	}
 }
 
-
 void python_deinit() {
 	if (Py_IsInitialized()) {
 		Py_Finalize();
 	}
 }
 
-} //namespace engine
+} //namespace openage

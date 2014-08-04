@@ -7,14 +7,11 @@
 #include <fcntl.h>
 #include <errno.h>
 
-#include "../engine/console/buf.h"
-#include "../engine/console/draw.h"
-#include "../engine/log.h"
+#include "../console/buf.h"
+#include "../console/draw.h"
+#include "../log.h"
 
-using namespace engine;
-using namespace engine::console;
-using namespace engine::coord;
-using namespace engine::util;
+using namespace openage;
 
 namespace testing {
 
@@ -24,7 +21,7 @@ int max(int a, int b) {
 
 bool tests::term0(int /*unused*/, char ** /*unused*/) {
 
-	Buf buf{{80, 25}, 1337, 80};
+	console::Buf buf{{80, 25}, 1337, 80};
 	buf.write("Hello, brave new console world!\n\n\n\n");
 	buf.write("stuff, lol.\n\n");
 	buf.write("\x1b[1mbold stuff, lol.\x1b[m\n\n");
@@ -33,13 +30,13 @@ bool tests::term0(int /*unused*/, char ** /*unused*/) {
 		buf.write("asdf\n");
 	}
 	buf.scroll(100);
-	FD outfd;
+	util::FD outfd;
 	console::draw::to_terminal(&buf, &outfd, true);
 	return true;
 }
 
 bool tests::term1(int /*unused*/, char ** /*unused*/) {
-	Buf buf{{80, 25}, 1337, 80};
+	console::Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
 	ws.ws_col = buf.dims.x;
 	ws.ws_row = buf.dims.y;
@@ -68,10 +65,10 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 		break;
 	}
 
-	FD ptyout{amaster};            //for writing to the slave
-	FD ptyin{&ptyout, true};       //for reading the slave's output
-	FD termout{STDOUT_FILENO};     //for writing to the terminal
-	FD termin{STDIN_FILENO, true}; //for reading the user input
+	util::FD ptyout{amaster};            //for writing to the slave
+	util::FD ptyin{&ptyout, true};       //for reading the slave's output
+	util::FD termout{STDOUT_FILENO};     //for writing to the terminal
+	util::FD termin{STDIN_FILENO, true}; //for reading the user input
 
 	//hide cursor
 	termout.puts("\x1b[?25l");

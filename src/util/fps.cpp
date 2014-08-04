@@ -4,7 +4,7 @@
 
 #include <SDL2/SDL.h>
 
-namespace engine {
+namespace openage {
 namespace util {
 
 void FrameCounter::frame() {
@@ -38,4 +38,4 @@ void FrameCounter::frame() {
 }
 
 } //namespace util
-} //namespace engine
+} //namespace openage

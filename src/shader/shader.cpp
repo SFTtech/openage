@@ -9,7 +9,7 @@
 #include "../util/file.h"
 #include "../util/strings.h"
 
-namespace engine {
+namespace openage {
 namespace shader {
 
 const char *type_to_string(GLenum type) {
@@ -49,7 +49,7 @@ Shader::Shader(GLenum type, const char *source) {
 		char *infolog = new char[loglen];
 		glGetShaderInfoLog(this->id, loglen, NULL, infolog);
 
-		Error e("Failed to compile %s shader\n%s", type_to_string(type), infolog);
+		util::Error e("Failed to compile %s shader\n%s", type_to_string(type), infolog);
 		delete[] infolog;
 		glDeleteShader(this->id);
 
@@ -62,4 +62,4 @@ Shader::~Shader() {
 }
 
 } //namespace shader
-} //namespace engine
+} //namespace openage

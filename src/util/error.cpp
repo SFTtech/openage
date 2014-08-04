@@ -7,9 +7,8 @@
 #include "strings.h"
 #include "../log.h"
 
-namespace engine {
-
-using namespace util;
+namespace openage {
+namespace util {
 
 Error::Error(const char *fmt, ...) {
 	va_list vl;
@@ -42,4 +41,5 @@ const char *Error::str() {
 	return buf;
 }
 
-} //namespace engine
+} //namespace util
+} //namespace openage

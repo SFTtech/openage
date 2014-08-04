@@ -12,9 +12,7 @@
 
 #include "console.h"
 
-using namespace engine::coord;
-
-namespace engine {
+namespace openage {
 namespace console {
 namespace draw {
 
@@ -27,16 +25,16 @@ void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud cha
 	bool fastblinking_visible = (sdl_tickcount % 600 < 300);
 	bool slowblinking_visible = (sdl_tickcount % 300 < 150);
 
-	for (term_t x = 0; x < buf->dims.x; x++) {
+	for (coord::term_t x = 0; x < buf->dims.x; x++) {
 		chartopleft.x = topleft.x + charsize.x * x;
 
-		for (term_t y = 0; y < buf->dims.y; y++) {
+		for (coord::term_t y = 0; y < buf->dims.y; y++) {
 			chartopleft.y = topleft.y - charsize.y * y;
 			buf_char p = *(buf->chrdataptr({x, y - buf->scrollback_pos}));
 
 			int fgcolid, bgcolid;
 
-			bool cursor_visible_at_current_pos = buf->cursorpos == term{x, y - buf->scrollback_pos};
+			bool cursor_visible_at_current_pos = buf->cursorpos == coord::term{x, y - buf->scrollback_pos};
 			cursor_visible_at_current_pos &= buf->cursor_visible;
 			if ((p.flags & CHR_NEGATIVE) xor cursor_visible_at_current_pos) {
 				bgcolid = p.fgcol;
@@ -83,7 +81,7 @@ void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 		fd->puts("\x1b[J");
 	}
 	//draw top line, including title
-	for (term_t x = 0; x < buf->dims.x; x++) {
+	for (coord::term_t x = 0; x < buf->dims.x; x++) {
 		if (x >= 3 && (x - 3) < (int) buf->title.size()) {
 			fd->putcp(buf->title[x - 3]);
 		} else if (x == 2) {
@@ -99,10 +97,10 @@ void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 	//calculate pos/size of scrollbar
 	//scrollbar_top is the first line that has the scrollbar displayed
 	//scrollbar_bottom is the first line that doesn't have the scrollbar displayed
-	term_t lines_total = buf->scrollback_possible + buf->dims.y;
-	term_t pos_total = buf->scrollback_possible - buf->scrollback_pos;
-	term_t scrollbar_top = (buf->dims.y * pos_total) / lines_total;
-	term_t scrollbar_bottom = (buf->dims.y * (pos_total + buf->dims.y)) / lines_total;
+	coord::term_t lines_total      = buf->scrollback_possible + buf->dims.y;
+	coord::term_t pos_total        = buf->scrollback_possible - buf->scrollback_pos;
+	coord::term_t scrollbar_top    = (buf->dims.y * pos_total) / lines_total;
+	coord::term_t scrollbar_bottom = (buf->dims.y * (pos_total + buf->dims.y)) / lines_total;
 	if (scrollbar_bottom == scrollbar_top) {
 		if (scrollbar_bottom < buf->dims.y) {
 			scrollbar_bottom++;
@@ -112,11 +110,11 @@ void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 	}
 
 	//print lines -scrollback_pos to dims.y - scrollback_pos - 1
-	for (term_t y = 0; y < buf->dims.y; y++) {
+	for (coord::term_t y = 0; y < buf->dims.y; y++) {
 		//draw left line
 		fd->puts("\u2502");
 		//draw chars of this line
-		for (term_t x = 0; x < buf->dims.x; x++) {
+		for (coord::term_t x = 0; x < buf->dims.x; x++) {
 			buf_char p = *(buf->chrdataptr({x, y - buf->scrollback_pos}));
 			if (p.cp < 32) {
 				p.cp = '?';
@@ -128,7 +126,7 @@ void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 			if (p.flags & CHR_BLINKING) {
 				fd->puts("\x1b[5m");
 			}
-			bool cursor_visible_at_current_pos = buf->cursorpos == term{x, y - buf->scrollback_pos};
+			bool cursor_visible_at_current_pos = buf->cursorpos == coord::term{x, y - buf->scrollback_pos};
 			cursor_visible_at_current_pos &= buf->cursor_visible;
 			if ((p.flags & CHR_NEGATIVE) xor cursor_visible_at_current_pos) {
 				//print char negative
@@ -149,7 +147,7 @@ void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 	//draw bottom left corner
 	fd->puts("\u2514");
 	//draw bottom line
-	for (term_t x = 0; x < buf->dims.x; x++) {
+	for (coord::term_t x = 0; x < buf->dims.x; x++) {
 		fd->puts("\u2500");
 	}
 	//draw bottom right corner
@@ -158,4 +156,4 @@ void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 
 } //namespace draw
 } //namespace console
-} //namespace engine
+} //namespace openage

@@ -16,7 +16,7 @@
 #include "coord/tile.h"
 #include "coord/tile3.h"
 
-namespace engine {
+namespace openage {
 
 //TODO: get that from the convert script!
 coord::camgame_delta tile_halfsize = {48, 24};
@@ -50,8 +50,8 @@ Terrain::Terrain(util::Dir &asset_dir,
 
 	this->terrain_id_count         = terrain_meta.size();
 	this->blendmode_count          = blending_meta.size();
-	this->textures                 = new engine::Texture*[this->terrain_id_count];
-	this->blending_masks           = new engine::Texture*[this->blendmode_count];
+	this->textures                 = new Texture*[this->terrain_id_count];
+	this->blending_masks           = new Texture*[this->blendmode_count];
 	this->terrain_id_priority_map  = new int[this->terrain_id_count];
 	this->terrain_id_blendmode_map = new int[this->terrain_id_count];
 	this->influences_buf           = new struct influence[this->terrain_id_count];
@@ -228,7 +228,7 @@ TileContent *Terrain::get_data(coord::tile position) {
 
 bool Terrain::validate_terrain(terrain_t terrain_id) {
 	if (terrain_id >= (ssize_t)this->terrain_id_count) {
-		throw Error("requested terrain_id is out of range: %d", terrain_id);
+		throw util::Error("requested terrain_id is out of range: %d", terrain_id);
 	}
 	else {
 		return true;
@@ -237,7 +237,7 @@ bool Terrain::validate_terrain(terrain_t terrain_id) {
 
 bool Terrain::validate_mask(ssize_t mask_id) {
 	if (mask_id >= (ssize_t)this->blendmode_count) {
-		throw Error("requested mask_id is out of range: %lu", mask_id);
+		throw util::Error("requested mask_id is out of range: %lu", mask_id);
 	}
 	else {
 		return true;
@@ -805,4 +805,4 @@ void Terrain::calculate_masks(coord::tile position, struct tile_draw_data *tile_
 	}
 }
 
-} //namespace engine
+} //namespace openage

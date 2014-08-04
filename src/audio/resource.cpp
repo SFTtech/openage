@@ -4,7 +4,7 @@
 #include "../util/error.h"
 #include "../log.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 Resource::Resource(category_t category, int id)
@@ -30,7 +30,7 @@ std::shared_ptr<Resource> Resource::create_resource(category_t category,
 					format);
 		case loader_policy_t::DYNAMIC:
 		default:
-			throw Error{"Unsupported loader policy"};
+			throw util::Error{"Unsupported loader policy"};
 	}
 }
 

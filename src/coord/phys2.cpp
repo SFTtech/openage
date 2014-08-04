@@ -4,7 +4,7 @@
 #include "phys3.h"
 #include "tile.h"
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 phys3 phys2::to_phys3(phys_t up) {
@@ -30,4 +30,4 @@ phys2_delta phys2::get_fraction() {
 }
 
 } //namespace coord
-} //namespace engine
+} //namespace openage

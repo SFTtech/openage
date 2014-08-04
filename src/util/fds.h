@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <termio.h>
 
-namespace engine {
+namespace openage {
 namespace util {
 
 /**
@@ -16,7 +16,7 @@ public:
 	/**
 	 * wraps an existing FD
 	 */
-	FD(int fd = STDOUT_FILENO);
+	FD(int fd=STDOUT_FILENO);
 
 	/**
 	 * duplicates an existing FD, and optionally
@@ -28,11 +28,13 @@ public:
 	~FD();
 
 	int fd;
+
 	/**
 	 * if this is set to true, the destructor will close the fd.
 	 * will be set to true by the constructor iff the fd was duped.
 	 */
 	bool close_on_destroy = false;
+
 	/**
 	 * if this is set to true, the destructor will restore the input
 	 * mode. will be set on setinputmodecanon().
@@ -83,6 +85,6 @@ public:
 };
 
 } //namespace util
-} //namespace engine
+} //namespace openage
 
 #endif //_ENGINE_UTIL_FDS_H_

@@ -1,29 +1,30 @@
 #include "testing.h"
 
+#include <cstdio>
+#include <cstring>
 #include <fnmatch.h>
-#include <map>
-#include <stdio.h>
-#include <string.h>
+#include <string>
+#include <unordered_map>
 
-#include "../engine/log.h"
-#include "../engine/util/error.h"
+#include "../log.h"
+#include "../util/error.h"
 
-using namespace engine;
+using namespace openage;
 
 namespace testing {
 
 struct test {
-	const char *description;
+	std::string description;
 	bool interactive;
 	test_function_t fp;
 	bool result;
 };
 
-std::map<const char *, test> tests;
+std::unordered_map<std::string, test> tests;
 
-void register_test(const char *name, const char *description, bool interactive, test_function_t fp) {
-	if (tests.count(name) > 0) {
-		throw Error("test %s already exists", name);
+void register_test(std::string name, std::string description, bool interactive, test_function_t fp) {
+	if (tests.find(name) != tests.end()) {
+		throw util::Error("test %s already exists", name.c_str());
 	}
 	tests[name] = test{description, interactive, fp, false};
 }
@@ -36,8 +37,10 @@ void run_tests(const char *expr, bool no_interactive, int argc, char **argv) {
 
 	//run the tests
 	for (auto &test : tests) {
+		const char *test_name = test.first.c_str();
+
 		//do we wanna execute it?
-		if (fnmatch(expr, test.first, 0) != 0) {
+		if (fnmatch(expr, test_name, 0) != 0) {
 			continue;
 		}
 
@@ -49,16 +52,16 @@ void run_tests(const char *expr, bool no_interactive, int argc, char **argv) {
 		}
 
 		//run the test
-		log::msg("running test %s", test.first);
+		log::msg("running test %s", test_name);
 		bool test_result = test.second.fp(argc, argv);
 		test.second.result = test_result;
 
 		if (test_result == true) {
-			log::msg("test succeeded: %s", test.first);
+			log::msg("test succeeded: %s", test_name);
 			success_count += 1;
 		}
 		else {
-			log::err("test failed:    %s", test.first);
+			log::err("test failed:    %s", test_name);
 			failed_count += 1;
 		}
 
@@ -74,15 +77,15 @@ void run_tests(const char *expr, bool no_interactive, int argc, char **argv) {
 
 	//some test failed
 	if (failed_count > 0) {
-		throw Error("testing was not successful (but still the future)!");
+		throw util::Error("testing was not successful (but still the future)!");
 	}
 
 	if (executed_count > 0) {
 		return;
 	} else if (interactive_count > 0) {
-		throw Error("all tests that match '%s' are interactive", expr);
+		throw util::Error("all tests that match '%s' are interactive", expr);
 	} else {
-		throw Error("no tests match '%s'", expr);
+		throw util::Error("no tests match '%s'", expr);
 	}
 }
 
@@ -93,7 +96,8 @@ void list_tests() {
 	}
 
 	for (auto &test : tests) {
-		printf("%s\n\t%s%s\n\n", test.first, test.second.description, test.second.interactive ? "\n\t[interactive]" : "");
+		const char *is_interactive = test.second.interactive ? "\n\t[interactive]" : "";
+		printf("%s\n\t%s%s\n\n", test.first.c_str(), test.second.description.c_str(), is_interactive);
 	}
 }
 

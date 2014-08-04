@@ -3,7 +3,7 @@
 #include "../log.h"
 #include "../util/error.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 loader_policy_t from_loader_policy(const gamedata::audio_loader_policy_t loader_policy) {
@@ -13,10 +13,9 @@ loader_policy_t from_loader_policy(const gamedata::audio_loader_policy_t loader_
 		case gamedata::audio_loader_policy_t::DYNAMIC:
 			return loader_policy_t::DYNAMIC;
 		default:
-			throw Error{"Unknown loader policy: %d",
-					static_cast<int>(loader_policy)};
+			throw util::Error{"Unknown loader policy: %d", static_cast<int>(loader_policy)};
 	}
 }
 
-}
-}
+} //namespace audio
+} //namespace openage

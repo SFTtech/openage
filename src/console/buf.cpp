@@ -4,7 +4,7 @@
 
 #include "stdio.h"
 
-namespace engine {
+namespace openage {
 namespace console {
 
 using namespace coord;
@@ -1127,4 +1127,4 @@ buf_line *Buf::linedataptr(term_t lineno) {
 }
 
 } //namespace console
-} //namespace engine
+} //namespace openage

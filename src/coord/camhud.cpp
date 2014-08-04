@@ -7,7 +7,7 @@
 #include "../console/console.h"
 #include "../util/misc.h"
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 window camhud::to_window() {
@@ -27,4 +27,4 @@ term camhud::to_term() {
 }
 
 } //namespace coord
-} //namespace engine
+} //namespace openage

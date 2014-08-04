@@ -4,7 +4,7 @@
 #include "tile.h"
 #include "phys3.h"
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 tile tile3::to_tile() {
@@ -24,4 +24,4 @@ phys3 tile3::to_phys3(phys3_delta frac) {
 }
 
 } //namespace coord
-} //namespace engine
+} //namespace openage

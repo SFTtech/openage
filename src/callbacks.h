@@ -1,11 +1,11 @@
-#ifndef _ENGINE_CALLBACKS_H_
-#define _ENGINE_CALLBACKS_H_
+#ifndef _CALLBACKS_H_
+#define _CALLBACKS_H_
 
 #include <vector>
 
 #include <SDL2/SDL.h>
 
-namespace engine {
+namespace openage {
 
 using tick_method_ptr = bool (*) ();
 using drawgame_method_ptr = bool (*) ();
@@ -54,6 +54,6 @@ extern std::vector<resize_handler_ptr> on_resize;
 
 } //namespace callbacks
 
-} //namespace engine
+} //namespace openage
 
-#endif //_ENGINE_CALLBACKS_H_
+#endif //_CALLBACKS_H_

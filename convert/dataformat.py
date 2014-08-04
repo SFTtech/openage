@@ -735,11 +735,11 @@ def determine_header(for_type):
     cstdioh               = HeaderSnippet("cstdio",   is_global=True)
     vectorh               = HeaderSnippet("vector",   is_global=True)
     cstddefh              = HeaderSnippet("stddef.h", is_global=True)
-    engine_util_strings_h = HeaderSnippet("../engine/util/strings.h", is_global=False)
-    engine_util_file_h    = HeaderSnippet("../engine/util/file.h", is_global=False)
-    engine_util_dir_h     = HeaderSnippet("../engine/util/dir.h", is_global=False)
-    engine_util_error_h   = HeaderSnippet("../engine/util/error.h", is_global=False)
-    engine_log_h          = HeaderSnippet("../engine/log.h", is_global=False)
+    util_strings_h        = HeaderSnippet("../util/strings.h", is_global=False)
+    util_file_h           = HeaderSnippet("../util/file.h", is_global=False)
+    util_dir_h            = HeaderSnippet("../util/dir.h", is_global=False)
+    util_error_h          = HeaderSnippet("../util/error.h", is_global=False)
+    log_h                 = HeaderSnippet("../log.h", is_global=False)
 
     #lookup for type->{header}
     type_map = {
@@ -755,16 +755,16 @@ def determine_header(for_type):
         "std::vector":     { vectorh  },
         "strcmp":          { cstringh },
         "strncpy":         { cstringh },
-        "strtok_custom":   { engine_util_strings_h },
+        "strtok_custom":   { util_strings_h },
         "sscanf":          { cstdioh  },
         "size_t":          { cstddefh },
         "float":           set(),
         "int":             set(),
-        "read_csv_file":   { engine_util_file_h },
-        "subdata":         { engine_util_file_h },
-        "engine_dir":      { engine_util_dir_h },
-        "engine_error":    { engine_util_error_h },
-        "engine_log":      { engine_log_h },
+        "read_csv_file":   { util_file_h },
+        "subdata":         { util_file_h },
+        "engine_dir":      { util_dir_h },
+        "engine_error":    { util_error_h },
+        "engine_log":      { log_h },
     }
 
     if for_type in type_map:
@@ -839,7 +839,9 @@ namespace ${namespace} {
 ${headers}
 %s
 
-namespace ${namespace} {\n\n""" % dontedit),
+namespace ${namespace} {
+
+""" % dontedit),
             "content_suffix": Template("} //namespace ${namespace}\n"),
         }
     }
@@ -1354,7 +1356,7 @@ class ContinueReadMember(NumberMember):
             "} else if (0 == strcmp(buf[%d], \"%s\")) {" % (idx, repr(self.CONTINUE)),
             "\tthis->%s = 1;" % (member),
             "} else {",
-            "\tthrow engine::Error(\"unexpected value '%%s' for %s\", buf[%d]);" % (self.__class__.__name__, idx),
+            "\tthrow openage::util::Error(\"unexpected value '%%s' for %s\", buf[%d]);" % (self.__class__.__name__, idx),
             "}",
         )
 
@@ -1392,7 +1394,7 @@ class EnumMember(RefMember):
 
         enum_parser.extend([
             "else {",
-            "\tthrow engine::Error(\"unknown enum value '%%s' encountered. valid are: %s\", buf[%d]);" % (",".join(self.values), idx),
+            "\tthrow openage::util::Error(\"unknown enum value '%%s' encountered. valid are: %s\", buf[%d]);" % (",".join(self.values), idx),
             "}",
         ])
 
@@ -1633,7 +1635,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             for (entry_name, entry_type) in self.class_lookup.items():
                 entry_type = entry_type.get_effective_type()
                 snippet.add_member(
-                    "struct engine::util::subdata<%s> %s;" % (
+                    "struct openage::util::subdata<%s> %s;" % (
                         GeneratedFile.namespacify(entry_type), entry_name
                     )
                 )
@@ -1641,7 +1643,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
             snippet.includes |= determine_header("subdata")
             snippet.typerefs |= {self.MultisubtypeBaseFile.name_struct}
-            snippet.add_member("struct engine::util::subdata<%s> index_file;\n" % (self.MultisubtypeBaseFile.name_struct))
+            snippet.add_member("struct openage::util::subdata<%s> index_file;\n" % (self.MultisubtypeBaseFile.name_struct))
 
             snippet.add_members((
                 "%s;" % m.get_signature()
@@ -1662,13 +1664,13 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
             #function to recursively read the referenced files
             txt.extend((
-                "int %s::recurse(engine::util::Dir basedir) {\n" % (self.type_name),
+                "int %s::recurse(openage::util::Dir basedir) {\n" % (self.type_name),
                 "	this->index_file.read(basedir); //read ref-file entries\n",
                 "	int subtype_count = this->index_file.data.size();\n"
                 "	if (subtype_count != %s) {\n" % len(self.class_lookup),
-                "		throw engine::Error(\"multisubtype index file entry count mismatched! %%d != %d\", subtype_count);\n" % (len(self.class_lookup)),
+                "		throw openage::util::Error(\"multisubtype index file entry count mismatched! %%d != %d\", subtype_count);\n" % (len(self.class_lookup)),
                 "	}\n\n",
-                "	engine::util::Dir new_basedir = basedir.append(engine::util::dirname(this->index_file.filename));\n",
+                "	openage::util::Dir new_basedir = basedir.append(openage::util::dirname(this->index_file.filename));\n",
                 "	int idx = -1, idxtry;\n\n",
                 "	//yes, the following code can be heavily optimized and converted to member methods..\n",
             ))
@@ -1685,7 +1687,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                     "		idxtry += 1;\n",
                     "	}\n",
                     "	if (idx == -1) {\n",
-                    "		throw engine::Error(\"multisubtype index file contains no entry for %s!\");\n" % (entry_name),
+                    "		throw openage::util::Error(\"multisubtype index file contains no entry for %s!\");\n" % (entry_name),
                     "	}\n",
                     "	this->%s.filename = this->index_file.data[idx].filename;\n" % (entry_name),
                     "	this->%s.read(new_basedir);\n" % (entry_name),
@@ -1738,7 +1740,7 @@ class SubdataMember(MultisubtypeMember):
         return GeneratedFile.namespacify(tuple(self.get_contained_types())[0])
 
     def get_effective_type(self):
-        return "engine::util::subdata<%s>" % (self.get_subtype())
+        return "openage::util::subdata<%s>" % (self.get_subtype())
 
     def get_parsers(self, idx, member):
         return [
@@ -2161,10 +2163,10 @@ class DataFormatter:
                     impl_headers = determine_headers(("strtok_custom", "engine_error")),
                     template     = """$signature {
 \tchar *buf[$member_count];
-\tint count = engine::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
+\tint count = openage::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
 
 \tif (count != $member_count) {
-\t\tthrow engine::Error("tokenizing $struct_name led to %d columns (expecting %zu)!", count, $member_count);
+\t\tthrow openage::util::Error("tokenizing $struct_name led to %d columns (expecting %zu)!", count, $member_count);
 \t}
 
 $parsers
@@ -2178,7 +2180,7 @@ $parsers
         "recurse": ParserMemberFunction(
             templates = {
                 0: ParserTemplate(
-                    signature    = "int %srecurse(engine::util::Dir /*basedir*/)",
+                    signature    = "int %srecurse(openage::util::Dir /*basedir*/)",
                     headers      = determine_header("engine_dir"),
                     impl_headers = set(),
                     template     = """$signature {
@@ -2187,7 +2189,7 @@ $parsers
 """,
                 ),
                 None: ParserTemplate(
-                    signature = "int %srecurse(engine::util::Dir basedir)",
+                    signature = "int %srecurse(openage::util::Dir basedir)",
                     headers   = determine_header("engine_dir"),
                     impl_headers = set(),
                     template  = """$signature {

@@ -9,7 +9,7 @@
 #include "../util/error.h"
 #include "../util/strings.h"
 
-namespace engine {
+namespace openage {
 namespace console {
 
 bool visible = false;
@@ -88,13 +88,13 @@ void init(const std::vector<gamedata::palette_color> &colortable) {
 		termcolors.emplace_back(c);
 	}
 	if (termcolors.size() != 256) {
-		throw Error("Exactly 256 terminal colors are required.");
+		throw util::Error("Exactly 256 terminal colors are required.");
 	}
 
-	engine::callbacks::on_input.push_back(console::handle_inputs);
-	engine::callbacks::on_engine_tick.push_back(console::on_engine_tick);
-	engine::callbacks::on_drawhud.push_back(console::draw_console);
-	engine::callbacks::on_resize.push_back(console::on_window_resize);
+	callbacks::on_input.push_back(console::handle_inputs);
+	callbacks::on_engine_tick.push_back(console::on_engine_tick);
+	callbacks::on_drawhud.push_back(console::draw_console);
+	callbacks::on_resize.push_back(console::on_window_resize);
 
 	buf = new Buf({80, 25}, 1337, 80);
 	font = new Font("DejaVu Sans Mono", "Book", 12);
@@ -111,4 +111,4 @@ void destroy() {
 }
 
 } //namespace console
-} //namespace engine
+} //namespace openage

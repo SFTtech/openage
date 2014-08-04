@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-namespace engine {
+namespace openage {
 namespace util {
 
 /**
@@ -34,6 +34,6 @@ public:
 
 
 } //namespace util
-} //namespace engine
+} //namespace openage
 
 #endif //_ENGINE_UTIL_TIMER_H_

@@ -9,7 +9,7 @@
 #include "coord/tile.h"
 #include "coord/phys3.h"
 
-namespace engine {
+namespace openage {
 
 struct object_size {
 	unsigned int ne_length;
@@ -69,6 +69,6 @@ private:
 	void set_position(coord::tile pos);
 };
 
-} //namespace engine
+} //namespace openage
 
 #endif //_ENGINE_TERRAIN_OBJECT_H_

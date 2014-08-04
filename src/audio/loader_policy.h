@@ -1,9 +1,9 @@
-#ifndef _ENGINE_AUDIO_LOADER_POLICY_H_
-#define _ENGINE_AUDIO_LOADER_POLICY_H_
+#ifndef _AUDIO_LOADER_POLICY_H_
+#define _AUDIO_LOADER_POLICY_H_
 
-#include "../../gamedata/sound_file.h"
+#include "../gamedata/sound_file.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 enum class loader_policy_t {
@@ -13,7 +13,7 @@ enum class loader_policy_t {
 
 loader_policy_t from_loader_policy(const gamedata::audio_loader_policy_t loader_policy);
 
-}
-}
+} //namespace audio
+} //namespace openage
 
 #endif

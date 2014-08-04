@@ -1,9 +1,9 @@
-#ifndef _ENGINE_AUDIO_FORMAT_H_
-#define _ENGINE_AUDIO_FORMAT_H_
+#ifndef _AUDIO_FORMAT_H_
+#define _AUDIO_FORMAT_H_
 
-#include "../../gamedata/sound_file.h"
+#include "../gamedata/sound_file.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 enum class format_t {
@@ -18,4 +18,4 @@ format_t from_format(const gamedata::audio_format_t format);
 }
 }
 
-#endif
+#endif //_AUDIO_FORMAT_H_

@@ -1,5 +1,5 @@
-#ifndef _ENGINE_ENGINE_H_
-#define _ENGINE_ENGINE_H_
+#ifndef _ENGINE_H_
+#define _ENGINE_H_
 
 #include <vector>
 
@@ -11,7 +11,7 @@
 #include "coord/phys3.h"
 #include "font.h"
 
-namespace engine {
+namespace openage {
 
 /**
 main loop method.
@@ -104,6 +104,6 @@ the global audio manager.
 */
 extern audio::AudioManager *audio_manager;
 
-} //namespace engine
+} //namespace openage
 
-#endif //_ENGINE_ENGINE_H_
+#endif //_ENGINE_H_

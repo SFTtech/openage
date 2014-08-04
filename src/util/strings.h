@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <functional>
 
-namespace engine {
+namespace openage {
 namespace util {
 
 /**
@@ -61,6 +61,6 @@ size_t string_tokenize_dynamic(char *str, char delim, char ***result);
 void string_tokenize_base(char *str, char delim, std::function<void(char *)> callback);
 
 } //namespace util
-} //namespace engine
+} //namespace openage
 
 #endif //_ENGINE_UTIL_STRINGS_H_

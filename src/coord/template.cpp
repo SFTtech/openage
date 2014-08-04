@@ -3,8 +3,8 @@
 #define GEN_IMPL_[NAME]_CPP
 #include "[name].h"
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 } //namespace coord
-} //namespace engine
+} //namespace openage

@@ -10,7 +10,7 @@
  * in accordance to doc/implementation/coordinate-systems
  */
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 /* physics-based vector types */
@@ -66,6 +66,6 @@ struct vec3f;
 struct vec3f_delta;
 
 } //namespace coord
-} //namespace engine
+} //namespace openage
 
 #endif //_ENGINE_COORD_DECL_H_

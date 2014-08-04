@@ -1,5 +1,5 @@
-#ifndef _ENGINE_UTIL_FILE_H_
-#define _ENGINE_UTIL_FILE_H_
+#ifndef _UTIL_FILE_H_
+#define _UTIL_FILE_H_
 
 #include <stdlib.h>
 #include <string.h>
@@ -10,7 +10,7 @@
 #include "dir.h"
 #include "../log.h"
 
-namespace engine {
+namespace openage {
 namespace util {
 
 ssize_t file_size(std::string filename);
@@ -131,6 +131,6 @@ struct subdata {
 
 
 } //namespace util
-} //namespace engine
+} //namespace openage
 
-#endif //_ENGINE_UTIL_FILE_H_
+#endif //_UTIL_FILE_H_

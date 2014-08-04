@@ -5,7 +5,7 @@
 #include "chunk.h"
 #include "phys2.h"
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 tile3 tile::to_tile3(tile_t up) {
@@ -45,4 +45,4 @@ tile_delta tile::get_pos_on_chunk() {
 }
 
 } //namespace coord
-} //namespace engine
+} //namespace openage

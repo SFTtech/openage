@@ -5,7 +5,7 @@
 #include "camhud.h"
 #include "../engine.h"
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 camgame window::to_camgame() {
@@ -27,4 +27,4 @@ camhud_delta window_delta::to_camhud() {
 }
 
 } //namespace coord
-} //namespace engine
+} //namespace openage

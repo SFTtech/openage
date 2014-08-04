@@ -11,7 +11,7 @@
 
 #include "unicode.h"
 
-namespace engine {
+namespace openage {
 namespace util {
 
 FD::FD(int fd) {
@@ -119,4 +119,4 @@ void FD::restoreinputmode() {
 }
 
 } //namespace util
-} //namespace engine
+} //namespace openage

@@ -1,7 +1,7 @@
 #ifndef _ENGINE_UTIL_MISC_H_
 #define _ENGINE_UTIL_MISC_H_
 
-namespace engine {
+namespace openage {
 namespace util {
 
 /**
@@ -61,6 +61,6 @@ struct less {
 };
 
 } //namespace util
-} //namespace engine
+} //namespace openage
 
 #endif //_ENGINE_UTIL_MISC_H_

@@ -1,9 +1,9 @@
-#ifndef _ENGINE_INIT_H_
-#define _ENGINE_INIT_H_
+#ifndef _INIT_H_
+#define _INIT_H_
 
 #include "util/dir.h"
 
-namespace engine {
+namespace openage {
 
 /**
 engine initialization method.
@@ -17,6 +17,6 @@ call to cleanly shutdown the application.
 */
 void destroy();
 
-} //namespace engine
+} //namespace openage
 
-#endif //_ENGINE_INIT_H_
+#endif //_INIT_H_

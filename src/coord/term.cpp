@@ -4,7 +4,7 @@
 #include "camhud.h"
 #include "../console/console.h"
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 camhud term::to_camhud() {
@@ -15,4 +15,4 @@ camhud term::to_camhud() {
 }
 
 } //namespace coord
-} //namespace engine
+} //namespace openage

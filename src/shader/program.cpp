@@ -9,7 +9,7 @@
 #include "../util/strings.h"
 #include "../util/error.h"
 
-namespace engine {
+namespace openage {
 namespace shader {
 
 Program::Program() : is_linked(false), vert(nullptr), frag(nullptr), geom(nullptr) {
@@ -90,7 +90,7 @@ void Program::check(GLenum what_to_check) {
 			break;
 		}
 
-		Error e("Program %s failed\n%s", what_str, infolog);
+		util::Error e("Program %s failed\n%s", what_str, infolog);
 		delete[] infolog;
 		throw e;
 	}
@@ -113,13 +113,13 @@ GLint Program::get_attribute_id(const char *name) {
 		GLint aid = glGetAttribLocation(this->id, name);
 		if (aid == -1) {
 			this->dump_active_attributes();
-			throw Error("queried attribute '%s' not found or not active (pwnt by the compiler).", name);
+			throw util::Error("queried attribute '%s' not found or not active (pwnt by the compiler).", name);
 		} else {
 			return aid;
 		}
 	}
 	else {
-		throw Error("queried attribute '%s' id before program was linked.", name);
+		throw util::Error("queried attribute '%s' id before program was linked.", name);
 	}
 }
 
@@ -129,7 +129,7 @@ void Program::set_attribute_id(const char *name, GLuint id) {
 	}
 	else {
 		//TODO: maybe enable overwriting, but after that relink the program
-		throw Error("assigned attribute '%s' = %u after program was linked!", name, id);
+		throw util::Error("assigned attribute '%s' = %u after program was linked!", name, id);
 	}
 }
 
@@ -161,4 +161,4 @@ void Program::post_link_hook() {
 }
 
 } //namespace shader
-} //namespace engine
+} //namespace openage

@@ -1,5 +1,5 @@
-#ifndef _ENGINE_CONSOLE_CONSOLE_H_
-#define _ENGINE_CONSOLE_CONSOLE_H_
+#ifndef _CONSOLE_CONSOLE_H_
+#define _CONSOLE_CONSOLE_H_
 
 #include <vector>
 
@@ -8,9 +8,9 @@
 #include "../coord/camhud.h"
 #include "../util/color.h"
 #include "../font.h"
-#include "../../gamedata/color.h"
+#include "../gamedata/color.h"
 
-namespace engine {
+namespace openage {
 namespace console {
 
 extern coord::camhud bottomleft;
@@ -35,6 +35,6 @@ bool on_window_resize();
 void write(const char *text);
 
 } //namespace console
-} //namespace engine
+} //namespace openage
 
-#endif //_ENGINE_CONSOLE_CONSOLE_H_
+#endif //_CONSOLE_CONSOLE_H_

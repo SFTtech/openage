@@ -1,11 +1,11 @@
-#ifndef _ENGINE_FONT_H_
-#define _ENGINE_FONT_H_
+#ifndef _FONT_H_
+#define _FONT_H_
 
 #include <FTGL/ftgl.h>
 
 #include "coord/decl.h"
 
-namespace engine {
+namespace openage {
 
 /**
  * uses fontconfig to determine the filename of a font of the given family and
@@ -37,6 +37,6 @@ public:
 	char *font_filename;
 };
 
-} //namespace engine
+}
 
-#endif //_ENGINE_FONT_H_
+#endif //_FONT_H_

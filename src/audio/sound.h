@@ -1,12 +1,12 @@
-#ifndef _ENGINE_AUDIO_SOUND_H_
-#define _ENGINE_AUDIO_SOUND_H_
+#ifndef _AUDIO_SOUND_H_
+#define _AUDIO_SOUND_H_
 
 #include <memory>
 
 #include "category.h"
 #include "resource.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 // forward declaration of AudioManager

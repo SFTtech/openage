@@ -2,7 +2,7 @@
 
 #include "../util/error.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 format_t from_format(const gamedata::audio_format_t format) {
@@ -12,7 +12,7 @@ format_t from_format(const gamedata::audio_format_t format) {
 		case gamedata::audio_format_t::WAV:
 			return format_t::WAV;
 		default:
-			throw Error{"Unknown audio format: %d", static_cast<int>(format)};
+			throw util::Error{"Unknown audio format: %d", static_cast<int>(format)};
 	}
 }
 

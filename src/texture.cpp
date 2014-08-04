@@ -10,7 +10,7 @@
 #include "util/error.h"
 #include "util/file.h"
 
-namespace engine {
+namespace openage {
 
 //real definition of the shaders,
 //they are "external" in the header.
@@ -43,7 +43,7 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 	surface = IMG_Load(filename.c_str());
 
 	if (!surface) {
-		throw Error("Could not load texture from '%s': %s", filename.c_str(), IMG_GetError());
+		throw util::Error("Could not load texture from '%s': %s", filename.c_str(), IMG_GetError());
 	}
 	else {
 		log::dbg1("Loaded texture from '%s'", filename.c_str());
@@ -58,7 +58,7 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 		texture_format = GL_RGBA;
 		break;
 	default:
-		throw Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename.c_str(), surface->format->BytesPerPixel);
+		throw util::Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename.c_str(), surface->format->BytesPerPixel);
 		break;
 	}
 
@@ -288,7 +288,7 @@ struct gamedata::subtexture *Texture::get_subtexture(int subid) {
 		return &this->subtextures[subid];
 	}
 	else {
-		throw Error("requested unknown subtexture %d", subid);
+		throw util::Error("requested unknown subtexture %d", subid);
 	}
 }
 
@@ -327,4 +327,4 @@ GLuint Texture::get_texture_id() {
 	return this->id;
 }
 
-} //namespace engine
+} //namespace openage

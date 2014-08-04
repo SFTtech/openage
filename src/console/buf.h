@@ -1,5 +1,5 @@
-#ifndef _ENGINE_CONSOLE_BUF_
-#define _ENGINE_CONSOLE_BUF_
+#ifndef _CONSOLE_BUF_
+#define _CONSOLE_BUF_
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -9,7 +9,7 @@
 #include "../coord/term.h"
 #include "../util/unicode.h"
 
-namespace engine {
+namespace openage {
 namespace console {
 
 /**
@@ -484,6 +484,6 @@ public:
 };
 
 } //namespace console
-} //namespace engine
+} //namespace openage
 
-#endif //_ENGINE_CONSOLE_BUF_
+#endif //_CONSOLE_BUF_

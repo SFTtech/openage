@@ -5,7 +5,7 @@
 #include "audio_manager.h"
 #include "../log.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 Sound::Sound(AudioManager *audio_manager, std::shared_ptr<SoundImpl> sound_impl)

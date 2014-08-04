@@ -10,7 +10,7 @@
 #include "../log.h"
 #include "error.h"
 
-namespace engine {
+namespace openage {
 namespace util {
 
 ssize_t file_size(std::string filename) {
@@ -93,4 +93,4 @@ std::vector<std::string> file_get_lines(std::string &file_name) {
 
 
 } //namespace util
-} //namespace engine
+} //namespace openage

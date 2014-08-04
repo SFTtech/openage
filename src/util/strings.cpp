@@ -5,7 +5,7 @@
 #include <string.h>
 #include <vector>
 
-namespace engine {
+namespace openage {
 namespace util {
 
 char *format(const char *fmt, ...) {
@@ -156,4 +156,4 @@ size_t string_tokenize_dynamic(char *str, char delim, char ***result) {
 }
 
 } //namespace util
-} //namespace engine
+} //namespace openage

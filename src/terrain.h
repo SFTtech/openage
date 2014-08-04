@@ -14,10 +14,10 @@
 #include "coord/chunk.h"
 #include "util/dir.h"
 #include "util/misc.h"
-#include "../gamedata/blending_mode.h"
-#include "../gamedata/terrain.h"
+#include "gamedata/blending_mode.h"
+#include "gamedata/terrain.h"
 
-namespace engine {
+namespace openage {
 
 class TerrainChunk;
 
@@ -268,6 +268,6 @@ private:
 	struct influence *influences_buf;
 };
 
-} //namespace engine
+} //namespace openage
 
 #endif //_ENGINE_TERRAIN_H_

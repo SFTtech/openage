@@ -1,6 +1,6 @@
 #include "unicode.h"
 
-namespace engine {
+namespace openage {
 namespace util {
 
 utf8_decoder::utf8_decoder() {
@@ -148,4 +148,4 @@ size_t utf8_encode(int cp, char *outbuf) {
 }
 
 } //namespace util
-} //namespace engine
+} //namespace openage

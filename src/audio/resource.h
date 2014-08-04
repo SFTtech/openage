@@ -12,7 +12,7 @@
 #include "format.h"
 #include "loader_policy.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 /**

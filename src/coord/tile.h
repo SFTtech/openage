@@ -10,7 +10,7 @@
 #define ABSOLUTE_TYPE tile
 #define RELATIVE_TYPE tile_delta
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 struct tile {
@@ -40,7 +40,7 @@ struct tile_delta {
 #endif //GEN_IMPL_TILE_CPP
 
 } //namespace coord
-} //namespace engine
+} //namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

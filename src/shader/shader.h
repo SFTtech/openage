@@ -1,10 +1,10 @@
-#ifndef _ENGINE_SHADER_SHADER_H_
-#define _ENGINE_SHADER_SHADER_H_
+#ifndef _SHADER_SHADER_H_
+#define _SHADER_SHADER_H_
 
 #include <GL/glew.h>
 #include <GL/gl.h>
 
-namespace engine {
+namespace openage {
 namespace shader {
 
 const char *type_to_string(GLenum type);
@@ -19,6 +19,6 @@ public:
 };
 
 } //namespace shader
-} //namespace engine
+} //namespace openage
 
-#endif //_ENGINE_SHADER_SHADER_H_
+#endif //_SHADER_SHADER_H_

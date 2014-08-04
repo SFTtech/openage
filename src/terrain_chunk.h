@@ -11,7 +11,7 @@
 #include "coord/tile.h"
 #include "util/file.h"
 
-namespace engine {
+namespace openage {
 
 class Terrain;
 class TerrainChunk;
@@ -109,6 +109,6 @@ public:
 	bool manually_created;
 };
 
-} //namespace engine
+} //namespace openage
 
 #endif //_ENGINE_TERRAIN_CHUNK_H_

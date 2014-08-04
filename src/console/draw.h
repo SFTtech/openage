@@ -7,7 +7,7 @@
 #include "../font.h"
 #include "../util/fds.h"
 
-namespace engine {
+namespace openage {
 namespace console {
 namespace draw {
 
@@ -16,6 +16,6 @@ void to_terminal(Buf *buf, util::FD *fd, bool clear = false);
 
 } //namespace draw
 } //namespace console
-} //namespace engine
+} //namespace openage
 
 #endif //_ENGINE_CONSOLE_DRAW_H_

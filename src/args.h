@@ -3,24 +3,31 @@
 
 #include <vector>
 
+namespace openage {
+
 struct test_invocation {
 	int argc;
 	char **argv;
 };
 
-struct args_struct {
+class Arguments {
+public:
+	Arguments();
+	~Arguments();
+
 	int argc;
 	char **argv;
 
-	bool run_game = true;
-	const char *data_directory = "./";
+	const char *data_directory;
 	std::vector<test_invocation> test_invocations;
-	bool disable_interactive_tests = false;
-	bool list_tests = false;
+	bool disable_interactive_tests;
+	bool list_tests;
+
+	void add_test_invocation(const char *arg);
 };
 
-extern args_struct args;
+Arguments parse_args(int argc, char **argv);
 
-void parse_args();
+} //namespace openage
 
 #endif //_ARGS_H_

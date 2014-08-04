@@ -2,7 +2,7 @@
 
 #include "../log.h"
 
-namespace engine {
+namespace openage {
 namespace util {
 
 Dir::Dir(std::string basedir) {
@@ -49,4 +49,4 @@ std::string dirname(std::string &fullpath) {
 }
 
 } //namespace util
-} //namespace engine
+} //namespace openage

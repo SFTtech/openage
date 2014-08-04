@@ -1,11 +1,11 @@
-#ifndef _ENGINE_TEXTURE_H_
-#define _ENGINE_TEXTURE_H_
+#ifndef _TEXTURE_H_
+#define _TEXTURE_H_
 
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <vector>
 
-#include "../gamedata/texture.h"
+#include "gamedata/texture.h"
 #include "coord/camgame.h"
 #include "coord/camhud.h"
 #include "coord/tile.h"
@@ -14,7 +14,7 @@
 #include "shader/shader.h"
 #include "util/file.h"
 
-namespace engine {
+namespace openage {
 
 namespace texture_shader {
 extern shader::Program *program;
@@ -101,6 +101,6 @@ private:
 	bool use_alpha_masking;
 };
 
-} //namespace engine
+} //namespace openage
 
-#endif //_ENGINE_TEXTURE_H_
+#endif //_TEXTURE_H_

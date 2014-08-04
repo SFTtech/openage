@@ -5,7 +5,7 @@
 #include "../log.h"
 #include "../util/error.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 ResourceLoader::ResourceLoader(const std::string &path)
@@ -22,7 +22,7 @@ std::unique_ptr<ResourceLoader> ResourceLoader::create_resource_loader(
 			loader.reset(new OpusLoader{path});
 			break;
 		default:
-			throw Error{"Not supported for format: %d", format};
+			throw util::Error{"Not supported for format: %d", format};
 	}
 	return std::move(loader);
 }
@@ -44,9 +44,9 @@ pcm_data_t OpusLoader::get_resource() {
 	// open the opus file
 	std::unique_ptr<OggOpusFile, decltype(opus_deleter)> op_file{
 			op_open_file(path.c_str(), &op_err), opus_deleter};
-	
+
 	if (op_err != 0) {
-		throw Error{"Could not open: %s", path.c_str()};
+		throw util::Error{"Could not open: %s", path.c_str()};
 	}
 
 	// determine number of channels and number of pcm samples
@@ -68,8 +68,7 @@ pcm_data_t OpusLoader::get_resource() {
 		num_read = op_read(op_file.get(), buffer.get()+position,
 				pcm_length-position, nullptr);
 		if (num_read < 0) {
-			throw Error{"Failed to read from opus file: errorcode=%d",
-					num_read};
+			throw util::Error{"Failed to read from opus file: errorcode=%d", num_read};
 		} else if(num_read == 0) {
 			break;
 		}

@@ -1,5 +1,5 @@
-#ifndef _ENGINE_AUDIO_AUDIO_MANAGER_H_
-#define _ENGINE_AUDIO_AUDIO_MANAGER_H_
+#ifndef _AUDIO_AUDIO_MANAGER_H_
+#define _AUDIO_AUDIO_MANAGER_H_
 
 #include <memory>
 #include <string>
@@ -14,9 +14,9 @@
 #include "sound.h"
 #include "../util/dir.h"
 
-#include "../../gamedata/sound_file.h"
+#include "../gamedata/sound_file.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 /*

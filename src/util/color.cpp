@@ -3,7 +3,7 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 
-namespace engine {
+namespace openage {
 namespace util {
 
 col::col(gamedata::palette_color c) {
@@ -23,4 +23,4 @@ void col::use(float alpha) {
 }
 
 } //namespace util
-} //namespace engine
+} //namespace openage

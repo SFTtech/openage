@@ -2,16 +2,16 @@
 
 #include <stdint.h>
 
-#include <map>
+#include <unordered_map>
 
 #include "engine.h"
 #include "callbacks.h"
 #include "util/timer.h"
 
-namespace engine {
+namespace openage {
 namespace input {
 
-std::map<SDL_Keycode, bool> keydown;
+std::unordered_map<SDL_Keycode, bool> keydown;
 
 bool is_down(SDL_Keycode k) {
 	auto it = keydown.find(k);
@@ -24,40 +24,40 @@ bool is_down(SDL_Keycode k) {
 }
 
 bool handler(SDL_Event *e) {
-        switch(e->type) {
-        case SDL_WINDOWEVENT:
-                switch(e->window.event) {
-                case SDL_WINDOWEVENT_RESIZED:
-                        //update window size
-                        window_size.x = e->window.data1;
-                        window_size.y = e->window.data2;
+	switch(e->type) {
+	case SDL_WINDOWEVENT:
+		switch(e->window.event) {
+		case SDL_WINDOWEVENT_RESIZED:
+			//update window size
+			window_size.x = e->window.data1;
+			window_size.y = e->window.data2;
 
-                        //invoke resize callback handlers
-                        for(auto cb: callbacks::on_resize) {
-                                if (!cb()) {
-                                        break;
-                                }
-                        }
-                        return false;
-                        break;
-                }
-                break;
+			//invoke resize callback handlers
+			for(auto cb: callbacks::on_resize) {
+				if (!cb()) {
+					break;
+				}
+			}
+			return false;
+			break;
+		}
+		break;
 
-        case SDL_KEYUP: {
+	case SDL_KEYUP: {
 		SDL_Keycode sym = ((SDL_KeyboardEvent *) e)->keysym.sym;
 		keydown[sym] = false;
-		}
-                break;
+	}
+		break;
 
-        case SDL_KEYDOWN: {
+	case SDL_KEYDOWN: {
 		SDL_Keycode sym = ((SDL_KeyboardEvent *) e)->keysym.sym;
 		keydown[sym] = true;
-		}
-                break;
-        }
+	}
+		break;
+	}
 
-        return true;
+	return true;
 }
 
 } //namespace input
-} //namespace engine
+} //namespace openage

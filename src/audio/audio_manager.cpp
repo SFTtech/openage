@@ -8,7 +8,7 @@
 #include "../util/dir.h"
 #include "../util/error.h"
 
-namespace engine {
+namespace openage {
 namespace audio {
 
 void global_audio_callback(void *userdata, uint8_t *stream, int len);
@@ -43,7 +43,7 @@ AudioManager::AudioManager(const std::string &device_name, int freq,
 			&device_spec, 0);
 	// no device could be opened
 	if (device_id == 0) {
-		throw Error{"Error opening audio device: %s", SDL_GetError()};	
+		throw util::Error{"Error opening audio device: %s", SDL_GetError()};	
 	}
 
 	// initialize playing sounds vectors
@@ -89,8 +89,7 @@ void AudioManager::load_resources(util::Dir &asset_dir, const std::vector<gameda
 Sound AudioManager::get_sound(category_t category, int id) {
 	auto resource = resources.find(std::make_tuple(category, id));
 	if (resource == std::end(resources)) {
-		throw Error{"sound resource does not exist: category=%d, id=%d",
-				static_cast<int>(category), id};
+		throw util::Error{"sound resource does not exist: category=%d, id=%d", static_cast<int>(category), id};
 	}
 
 	auto sound_impl = std::make_shared<SoundImpl>(resource->second);

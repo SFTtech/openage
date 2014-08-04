@@ -25,7 +25,7 @@
 * movement and transformation stuff, and actually everything that
 * makes the game work lies in here...
 */
-namespace engine {
+namespace openage {
 
 //global engine variables; partially accesible via engine.h
 SDL_GLContext glcontext;
@@ -236,8 +236,8 @@ void gl_check_error() {
 			//unknown error state
 			errormsg = "unknown error";
 		}
-		throw Error("OpenGL error state after running draw method: %d\n\t%s", glerrorstate, errormsg);
+		throw util::Error("OpenGL error state after running draw method: %d\n\t%s", glerrorstate, errormsg);
 	}
 }
 
-} //namespace engine
+} //namespace openage

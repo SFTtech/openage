@@ -18,17 +18,17 @@
 #include "input.h"
 #include "log.h"
 
-#include "../gamedata/sound_file.h"
+#include "gamedata/sound_file.h"
 
 
-namespace engine {
+namespace openage {
 
 void init(util::Dir &data_dir, const char *windowtitle) {
 	//set global random seed
 	srand(time(NULL));
 
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
-		throw Error("SDL initialization: %s", SDL_GetError());
+		throw util::Error("SDL initialization: %s", SDL_GetError());
 	}
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
@@ -41,7 +41,7 @@ void init(util::Dir &data_dir, const char *windowtitle) {
 	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_size.x, window_size.y, window_flags);
 
 	if (window == nullptr) {
-		throw Error("SDL window creation: %s", SDL_GetError());
+		throw util::Error("SDL window creation: %s", SDL_GetError());
 	}
 
 
@@ -49,22 +49,22 @@ void init(util::Dir &data_dir, const char *windowtitle) {
 	int wanted_image_formats = IMG_INIT_PNG;
 	int sdlimg_inited = IMG_Init(wanted_image_formats);
 	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		throw Error("Failed to init PNG support: %s", IMG_GetError());
+		throw util::Error("Failed to init PNG support: %s", IMG_GetError());
 	}
 
 	glcontext = SDL_GL_CreateContext(window);
 
 	if (glcontext == nullptr) {
-		throw Error("Failed to create OpenGL context!");
+		throw util::Error("Failed to create OpenGL context!");
 	}
 
 	//initialize glew, for shaders n stuff
 	GLenum glew_state = glewInit();
 	if (glew_state != GLEW_OK) {
-		throw Error("GLEW initialization failed");
+		throw util::Error("GLEW initialization failed");
 	}
 	if (!GLEW_VERSION_2_1) {
-		throw Error("OpenGL 2.1 not available");
+		throw util::Error("OpenGL 2.1 not available");
 	}
 
 	//to quote the standard doc:
@@ -75,7 +75,7 @@ void init(util::Dir &data_dir, const char *windowtitle) {
 	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
 	log::dbg("Maximum supported texture size: %d", max_texture_size);
 	if (max_texture_size < 1024) {
-		throw Error("Maximum supported texture size too small: %d", max_texture_size);
+		throw util::Error("Maximum supported texture size too small: %d", max_texture_size);
 	}
 
 	//vsync on
@@ -95,14 +95,14 @@ void init(util::Dir &data_dir, const char *windowtitle) {
 	//initialize the fps counter
 	fpscounter = new util::FrameCounter();
 
-	callbacks::on_resize.push_back(engine::handle_window_resize);
-	callbacks::on_input.push_back(engine::input::handler);
-	callbacks::on_drawhud.push_back(engine::draw_hud);
+	callbacks::on_resize.push_back(handle_window_resize);
+	callbacks::on_input.push_back(input::handler);
+	callbacks::on_drawhud.push_back(draw_hud);
 
 	//initialize audio
 	auto devices = audio::AudioManager::get_devices();
 	if (devices.empty()) {
-		throw Error{"No audio devices found"};
+		throw util::Error{"No audio devices found"};
 	}
 
 	util::Dir asset_dir = data_dir.append("age/assets");
@@ -111,10 +111,6 @@ void init(util::Dir &data_dir, const char *windowtitle) {
 
 	audio_manager = new audio::AudioManager(48000, AUDIO_S16LSB, 2, 4096);
 	audio_manager->load_resources(asset_dir, sound_files);
-
-	//auto sound0 = audio_manager->get_sound(audio::category_t::GAME, 5045);
-	//auto sound1 = audio_manager->get_sound(audio::category_t::GAME, 5127);
-	//auto sound2 = audio_manager->get_sound(audio::category_t::GAME, 5309);
 }
 
 /**
@@ -131,4 +127,4 @@ void destroy() {
 	SDL_Quit();
 }
 
-} //namespace engine
+} //namespace openage

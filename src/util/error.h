@@ -1,10 +1,11 @@
-#ifndef _ENGINE_UTIL_ERROR_H_
-#define _ENGINE_UTIL_ERROR_H_
+#ifndef _UTIL_ERROR_H_
+#define _UTIL_ERROR_H_
 
 #include <cstdarg>
 #include <cstdio>
 
-namespace engine {
+namespace openage {
+namespace util {
 
 /**
 Exception type
@@ -39,6 +40,7 @@ private:
 	char *buf;
 };
 
-} //namespace engine
+} //namespace util
+} //namespace openage
 
-#endif //_ENGIEN_UTIL_ERROR_H_
+#endif //_UTIL_ERROR_H_

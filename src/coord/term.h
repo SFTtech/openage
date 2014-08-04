@@ -8,7 +8,7 @@
 #define ABSOLUTE_TYPE term
 #define RELATIVE_TYPE term_delta
 
-namespace engine {
+namespace openage {
 namespace coord {
 
 struct term {
@@ -32,7 +32,7 @@ struct term_delta {
 #endif //GEN_IMPL_TERM_CPP
 
 } //namespace coord
-} //namespace engine
+} //namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

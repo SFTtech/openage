@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 
-namespace engine {
+namespace openage {
 namespace util {
 
 int random_range(int lower, int upper) {
@@ -10,4 +10,4 @@ int random_range(int lower, int upper) {
 }
 
 } //namespace util
-} //namespace engine
+} //namespace openage
