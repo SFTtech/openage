@@ -17,11 +17,11 @@ Error::Error(const char *fmt, ...) {
 	va_end(vl);
 }
 
-Error::Error(Error const &other) {
+Error::Error(const Error &other) {
 	buf = copy(other.buf);
 }
 
-Error &Error::operator=(Error const &other) {
+Error &Error::operator=(const Error &other) {
 	delete[] buf;
 	buf = copy(other.buf);
 	return *this;

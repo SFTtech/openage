@@ -14,8 +14,6 @@
 #include "../engine.h"
 #include "../gamedata/string_resource.h"
 #include "../gamedata/gamedata.h"
-#include "../init.h"
-#include "../input.h"
 #include "../log.h"
 #include "../terrain.h"
 #include "../util/timer.h"
@@ -79,39 +77,38 @@ int run_game(Arguments *args) {
 		throw util::Error("Failed checking directory %s: %s", args->data_directory, strerror(errno));
 	}
 
-	log::msg("using data directory '%s'", args->data_directory);
+	log::msg("launching engine with data directory '%s'", args->data_directory);
 	util::Dir data_dir{args->data_directory};
 
 	timer.start();
-	openage::init(data_dir, "openage");
+	openage::Engine engine(&data_dir, "openage");
 
-	//init console
+	//initialize terminal colors
 	auto termcolors = util::read_csv_file<gamedata::palette_color>(data_dir.join("age/assets/termcolors.docx"));
-	console::init(termcolors);
+	engine.console.set_colors(termcolors)
 
 	log::msg("Loading time [engine]: %5.3f s", timer.getval() / 1000.f);
 
-	//init game
+	//init the test run
 	timer.start();
-	gametest_init(data_dir);
+	gametest_init(&engine);
 	log::msg("Loading time   [game]: %5.3f s", timer.getval() / 1000.f);
 
 	//run main loop
-	openage::loop();
+	engine.run();
 
 	//de-init
 	gametest_destroy();
-	console::destroy();
-	openage::destroy();
 
 	return 0;
 }
 
 void gametest_init(util::Dir &data_dir) {
-	util::Dir asset_dir = data_dir.append("age/assets");
+	util::Dir *data_dir = engine->get_data_dir();
+	util::Dir asset_dir = data_dir->append("age/assets");
 
 	//load textures and stuff
-	gaben      = new Texture{data_dir.join("gaben.png")};
+	gaben      = new Texture{data_dir->join("gaben.png")};
 	university = new Texture{asset_dir.join("Data/graphics.drs/3836.slp.png"), true, PLAYERCOLORED};
 
 	auto string_resources = util::read_csv_file<gamedata::string_resource>(asset_dir.join("string_resources.docx"));
@@ -158,27 +155,27 @@ void gametest_init(util::Dir &data_dir) {
 	//read shader source codes and create shader objects for wrapping them.
 
 	char *texture_vert_code;
-	util::read_whole_file(&texture_vert_code, data_dir.join("shaders/maptexture.vert.glsl"));
+	util::read_whole_file(&texture_vert_code, data_dir->join("shaders/maptexture.vert.glsl"));
 	auto plaintexture_vert = new shader::Shader(GL_VERTEX_SHADER, texture_vert_code);
 	delete[] texture_vert_code;
 
 	char *texture_frag_code;
-	util::read_whole_file(&texture_frag_code, data_dir.join("shaders/maptexture.frag.glsl"));
+	util::read_whole_file(&texture_frag_code, data_dir->join("shaders/maptexture.frag.glsl"));
 	auto plaintexture_frag = new shader::Shader(GL_FRAGMENT_SHADER, texture_frag_code);
 	delete[] texture_frag_code;
 
 	char *teamcolor_frag_code;
-	util::read_whole_file(&teamcolor_frag_code, data_dir.join("shaders/teamcolors.frag.glsl"));
+	util::read_whole_file(&teamcolor_frag_code, data_dir->join("shaders/teamcolors.frag.glsl"));
 	auto teamcolor_frag = new shader::Shader(GL_FRAGMENT_SHADER, teamcolor_frag_code);
 	delete[] teamcolor_frag_code;
 
 	char *alphamask_vert_code;
-	util::read_whole_file(&alphamask_vert_code, data_dir.join("shaders/alphamask.vert.glsl"));
+	util::read_whole_file(&alphamask_vert_code, data_dir->join("shaders/alphamask.vert.glsl"));
 	auto alphamask_vert = new shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
 	delete[] alphamask_vert_code;
 
 	char *alphamask_frag_code;
-	util::read_whole_file(&alphamask_frag_code, data_dir.join("shaders/alphamask.frag.glsl"));
+	util::read_whole_file(&alphamask_frag_code, data_dir->join("shaders/alphamask.frag.glsl"));
 	auto alphamask_frag = new shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
 	delete[] alphamask_frag_code;
 

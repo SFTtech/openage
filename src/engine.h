@@ -6,103 +6,209 @@
 #include <SDL2/SDL.h>
 
 #include "audio/audio_manager.h"
-#include "util/fps.h"
-#include "coord/window.h"
 #include "coord/phys3.h"
+#include "coord/window.h"
 #include "font.h"
+#include "handlers.h"
+#include "input.h"
+#include "util/dir.h"
+#include "util/fps.h"
 
 namespace openage {
 
-/**
-main loop method.
-terminates when running is set to false.
-*/
-void loop();
+class DrawHandler;
+class TickHandler;
+class InputHandler;
+class ResizeHandler;
+class CoreInputHandler;
 
 /**
-internal window-resize callback method
-*/
-bool handle_window_resize();
+ * main engine container.
+ *
+ * central foundation for everything the openage engine is capable of.
+ */
+class Engine : public ResizeHandler {
+public:
+	/**
+	 * engine initialization method.
+	 * opens a window and initializes the OpenGL context.
+	 */
+	Engine(util::Dir *data_dir, const char *windowtitle);
 
-/**
-internal input event callback method
-*/
-bool handle_input_event(SDL_Event *e);
+	/**
+	 * engine copy constructor.
+	 */
+	Engine(const Engine &copy) = delete;
 
-/**
-internal hud drawing method
+	/**
+	 * engine move constructor.
+	 */
+	Engine(Engine &&other);
 
-(draws FPS counter)
-*/
-bool draw_hud();
+	/**
+	 * engine destructor, cleans up memory etc.
+	 * deletes opengl context, the SDL window, and engine variables.
+	 */
+	~Engine();
 
-/**
-take a screenshot of the current framebuffer.
+	/**
+	 * starts the engine loop.
+	 */
+	void run();
 
-@param filename the file where the picture will be saved to.
-*/
-void save_screenshot(const char* filename);
+	/**
+	 * enqueues the stop of the main loop.
+	 */
+	void stop();
 
-void gl_check_error();
+	/**
+	 * window resize handler function.
+	 * recalculates opengl settings like viewport and projection matrices.
+	 */
+	bool on_resize(coord::window new_size);
 
-/**
-SDL window
-*/
-extern SDL_Window *window;
+	/**
+	 * save the current framebuffer to a given png file.
+	 * @param filename the file where the picture will be saved to.
+	 */
+	void save_screenshot(const char* filename);
 
-/**
-SDL OpenGL context
-*/
-extern SDL_GLContext glcontext;
+	/**
+	 * draw the current frames per second number on screen.
+	 */
+	bool draw_fps();
 
-/**
-the text fonts to be used for (can you believe it?) texts.
-loaded on engine init.
-*/
-namespace fonts {
-/**
-dejavu serif, book, 20pts
-*/
-extern Font *dejavuserif20;
-}
+	/**
+	 * register a new input event handler, run for each input event.
+	 */
+	void register_input_action(InputHandler *handler);
 
-/**
-to be set to false to stop the engine.
-*/
-extern bool running;
+	/**
+	 * register a tick action, executed upon engine tick.
+	 */
+	void register_tick_action(TickHandler *handler);
 
-/**
-size of the game window, in coord_sdl
-*/
-extern coord::window window_size;
+	/**
+	 * register a hud drawing handler, drawn in hud coordinates.
+	 */
+	void register_drawhud_action(DrawHandler *handler);
 
-/**
-position of the game camera, in the phys3 system
-(the position that it is rendered at camgame {0, 0})
-*/
-extern coord::phys3 camgame_phys;
+	/**
+	 * register a draw handler, run in game coordinates.
+	 */
+	void register_draw_action(DrawHandler *handler);
 
-/**
-position of the game camera, in the window system
-(the position where the camgame {0, 0} is rendered)
-*/
-extern coord::window camgame_window;
+	/**
+	 * register a resize handler, run when the window size changes.
+	 */
+	void register_resize_action(ResizeHandler *handler);
 
-/**
-position of the hud camera, in the window system
-(the position where camhud {0, 0} is rendered)
-*/
-extern coord::window camhud_window;
+	/**
+	 * return the data directory where the engine was started from.
+	 */
+	util::Dir *get_data_dir();
 
-/**
-the frame counter measuring fps.
-*/
-extern util::FrameCounter *fpscounter;
+	/**
+	 * current engine state variable.
+	 * to be set to false to stop the engine loop.
+	 */
+	bool running;
 
-/**
-the global audio manager.
-*/
-extern audio::AudioManager *audio_manager;
+	/**
+	 * size of the game window, in coord_sdl.
+	 */
+	coord::window window_size;
+
+	/**
+	 * position of the game camera, in the phys3 system.
+	 * (the position that it is rendered at camgame {0, 0})
+	 */
+	coord::phys3 camgame_phys;
+
+	/**
+	 * position of the game camera, in the window system.
+	 * (the position where the camgame {0, 0} is rendered)
+	 */
+	coord::window camgame_window;
+
+	/**
+	 * position of the hud camera, in the window system.
+	 * (the position where camhud {0, 0} is rendered)
+	 */
+	coord::window camhud_window;
+
+private:
+	/**
+	 * main engine loop function.
+	 * this will be looped once per frame when the game is running.
+	 *
+	 * the loop invokes fps counting, SDL event handling,
+	 * view translation, and calling the main draw_method.
+	 */
+	void loop();
+
+	/**
+	 * the current data directory for the engine.
+	 */
+	util::Dir *data_dir;
+
+	/**
+	 * the core engine input handler.
+	 * additional input handlers may be registered with
+	 * `register_input_action`
+	 */
+	CoreInputHandler input_handler;
+
+	/**
+	 * input event processor objects.
+	 * called for each captured sdl input event.
+	 */
+	std::vector<InputHandler *> on_input_event;
+
+	/**
+	 * run on every engine tick, after input handling, before rendering
+	 */
+	std::vector<TickHandler *> on_engine_tick;
+
+	/**
+	 * run every time the game is being drawn,
+	 * with the renderer set to the camgame system
+	 */
+	std::vector<DrawHandler *> on_drawgame;
+
+	/**
+	 * run every time the hud is being drawn,
+	 * with the renderer set to the camhud system
+	 */
+	std::vector<DrawHandler *> on_drawhud;
+
+	/**
+	 * the frame counter measuring fps.
+	 */
+	util::FrameCounter fpscounter;
+
+	/**
+	 * the engine's audio manager.
+	 */
+	audio::AudioManager audio_manager;
+
+	/**
+	 * the text font to be used for (can you believe it?) texts.
+	 * dejavu serif, book, 20pts
+	 */
+	Font dejavuserif20;
+
+	/**
+	 * SDL window where everything is displayed within.
+	 */
+	SDL_Window *window;
+
+	/**
+	 * SDL OpenGL context, we'll only have one,
+	 * but it would allow having multiple ones.
+	 */
+	SDL_GLContext glcontext;
+};
 
 } //namespace openage
 

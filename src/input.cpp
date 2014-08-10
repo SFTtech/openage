@@ -2,56 +2,51 @@
 
 #include <stdint.h>
 
-#include <unordered_map>
-
 #include "engine.h"
 #include "callbacks.h"
 #include "util/timer.h"
 
 namespace openage {
-namespace input {
 
-std::unordered_map<SDL_Keycode, bool> keydown;
-
-bool is_down(SDL_Keycode k) {
-	auto it = keydown.find(k);
-	if(it != keydown.end()) {
+// not that the function stores a unknown/new keycode
+// as 'not pressed' when it was requested
+bool CoreInputHandler::is_key_down(SDL_Keycode k) {
+	auto it = this->key_states.find(k);
+	if (it != this->key_states.end()) {
 		return it->second;
 	} else {
-		keydown[k] = false;
+		this->key_states[k] = false;
 		return false;
 	}
 }
 
-bool handler(SDL_Event *e) {
-	switch(e->type) {
+bool CoreInputHandler::on_input(SDL_Event *event) {
+	switch (event->type) {
 	case SDL_WINDOWEVENT:
-		switch(e->window.event) {
-		case SDL_WINDOWEVENT_RESIZED:
-			//update window size
-			window_size.x = e->window.data1;
-			window_size.y = e->window.data2;
+		switch(event->window.event) {
+		case SDL_WINDOWEVENT_RESIZED: {
+			coord::window new_size{event->window.data1, event->window.data2};
 
-			//invoke resize callback handlers
-			for(auto cb: callbacks::on_resize) {
-				if (!cb()) {
+			// call additional handlers for the resize event
+			for (auto &handler : this->resize_handlers) {
+				if (false == handler->on_resize(new_size)) {
 					break;
 				}
 			}
-			return false;
 			break;
+		}
 		}
 		break;
 
 	case SDL_KEYUP: {
-		SDL_Keycode sym = ((SDL_KeyboardEvent *) e)->keysym.sym;
-		keydown[sym] = false;
+		SDL_Keycode sym = ((SDL_KeyboardEvent *) event)->keysym.sym;
+		this->key_states[sym] = false;
 	}
 		break;
 
 	case SDL_KEYDOWN: {
-		SDL_Keycode sym = ((SDL_KeyboardEvent *) e)->keysym.sym;
-		keydown[sym] = true;
+		SDL_Keycode sym = ((SDL_KeyboardEvent *) event)->keysym.sym;
+		this->key_states[sym] = true;
 	}
 		break;
 	}
@@ -59,5 +54,4 @@ bool handler(SDL_Event *e) {
 	return true;
 }
 
-} //namespace input
 } //namespace openage

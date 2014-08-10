@@ -1,5 +1,8 @@
 #include "main.h"
 
+#include <stdlib.h>
+#include <time.h>
+
 #include "args.h"
 #include "log.h"
 #include "util/error.h"
@@ -18,7 +21,11 @@ int main(int argc, char **argv) {
 
 		if (args.list_tests) {
 			testing::list_tests();
+			return 0;
 		}
+
+		//set global random seed
+		srand(time(NULL));
 
 		if (args.test_invocations.size() > 0) {
 			for (test_invocation &ti : args.test_invocations) {

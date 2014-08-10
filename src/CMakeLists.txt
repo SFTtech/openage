@@ -13,7 +13,7 @@ add_executable(${PROJECT_NAME}
 	callbacks.cpp
 	engine.cpp
 	font.cpp
-	init.cpp
+	handlers.cpp
 	input.cpp
 	log.cpp
 	python.cpp
@@ -58,6 +58,7 @@ add_executable(${PROJECT_NAME}
 	util/fds.cpp
 	util/fps.cpp
 	util/misc.cpp
+	util/opengl.cpp
 	util/strings.cpp
 	util/timer.cpp
 	util/unicode.cpp

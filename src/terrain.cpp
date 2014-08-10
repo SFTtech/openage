@@ -22,9 +22,6 @@ namespace openage {
 coord::camgame_delta tile_halfsize = {48, 24};
 
 
-/**
-initializes the contents of one terrain tile.
-*/
 TileContent::TileContent() :
 	terrain_id(0),
 	obj(nullptr)
@@ -38,14 +35,14 @@ Terrain::Terrain(util::Dir &asset_dir,
                  bool is_infinite) {
 
 	this->infinite = is_infinite;
-	//TODO:
+	// TODO:
 	//this->limit_positive =
 	//this->limit_negative =
 
-	//maps chunk position to chunks
+	// maps chunk position to chunks
 	this->chunks = std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash>{};
 
-	//activate blending
+	// activate blending
 	this->blending_enabled = true;
 
 	this->terrain_id_count         = terrain_meta.size();
@@ -59,36 +56,45 @@ Terrain::Terrain(util::Dir &asset_dir,
 
 	log::dbg("terrain prefs: %lu tiletypes, %lu blendmodes", this->terrain_id_count, this->blendmode_count);
 
-	//create tile textures (snow, ice, grass, whatever)
+	// create tile textures (snow, ice, grass, whatever)
 	for (size_t i = 0; i < this->terrain_id_count; i++) {
 		auto line = &terrain_meta[i];
 		terrain_t terrain_id = line->terrain_id;
 		this->validate_terrain(terrain_id);
 
-		//TODO: double-define check?
-
+		// TODO: terrain double-define check?
 
 		this->terrain_id_priority_map[terrain_id]  = line->blend_priority;
 		this->terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
-		char *terraintex_filename = util::format(asset_dir.join("Data/terrain.drs/%d.slp.png").c_str(), line->slp_id);
+		// TODO: beautify. this is totally ugly n dirty.
+		char *terraintex_filename = util::format(
+			asset_dir.join("Data/terrain.drs/%d.slp.png").c_str(), line->slp_id
+		);
+
 		std::string terraintex_filename_str{terraintex_filename};
 		delete[] terraintex_filename;
 
 		auto new_texture = new Texture(terraintex_filename_str, true, ALPHAMASKED);
+		// TODO: hotspot fixing will be done in convert script.
 		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
 		this->textures[terrain_id] = new_texture;
 	}
 
-	//create blending masks (see doc/media/blendomatic)
+	// create blending masks (see doc/media/blendomatic)
 	for (size_t i = 0; i < this->blendmode_count; i++) {
 		auto line = &blending_meta[i];
 
-		char *mask_filename = util::format(asset_dir.join("blendomatic.dat/mode%02d.png").c_str(), line->blend_mode);
+		// TODO: this is totally dirty n hacky as well. beautify it.
+		char *mask_filename = util::format(
+			asset_dir.join("blendomatic.dat/mode%02d.png").c_str(), line->blend_mode
+		);
 		std::string mask_filename_str{mask_filename};
 		delete[] mask_filename;
 
 		auto new_texture = new Texture(mask_filename_str, true);
+
+		// TODO: again, hotspot fixing..
 		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
 		this->blending_masks[i] = new_texture;
 	}
@@ -136,16 +142,9 @@ bool Terrain::fill(const int *data, coord::tile_delta size) {
 	return was_cut;
 }
 
-
-
-/**
-Attach a chunk to the terrain, to a given position.
-
-@param new_chunk The chunk to be attached
-@param position The chunk position where the chunk will be placed
-@param manually_created Was this chunk created manually? If true, it will not be free'd automatically
-*/
-void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool manually_created) {
+void Terrain::attach_chunk(TerrainChunk *new_chunk,
+                           coord::chunk position,
+                           bool manually_created) {
 	new_chunk->set_terrain(this);
 	new_chunk->manually_created = manually_created;
 	log::dbg("inserting new chunk at (%02d,%02d)", position.ne, position.se);
@@ -170,11 +169,6 @@ void Terrain::attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool 
 	}
 }
 
-/**
- * get a terrain chunk by a given chunk position.
- *
- * @return the chunk if exists, nullptr else
- */
 TerrainChunk *Terrain::get_chunk(coord::chunk position) {
 	auto iter = this->chunks.find(position);
 
@@ -186,20 +180,10 @@ TerrainChunk *Terrain::get_chunk(coord::chunk position) {
 	}
 }
 
-/**
-get a terrain chunk by a given tile position.
-
-@return the chunk it exists, nullptr else
-*/
 TerrainChunk *Terrain::get_chunk(coord::tile position) {
 	return this->get_chunk(position.to_chunk());
 }
 
-/**
-get or create a terrain chunk for a given tile position.
-
-@return the (maybe newly created) chunk
-*/
 TerrainChunk *Terrain::get_create_chunk(coord::chunk position) {
 	TerrainChunk *res = this->get_chunk(position);
 	if (res == nullptr) {
@@ -213,9 +197,6 @@ TerrainChunk *Terrain::get_create_chunk(coord::tile position) {
 	return this->get_create_chunk(position.to_chunk());
 }
 
-/**
-@return the current content of a given tile position.
-*/
 TileContent *Terrain::get_data(coord::tile position) {
 	TerrainChunk *c = this->get_chunk(position.to_chunk());
 	if (c == nullptr) {
@@ -224,7 +205,6 @@ TileContent *Terrain::get_data(coord::tile position) {
 		return c->get_data(position.get_pos_on_chunk().to_tile());
 	}
 }
-
 
 bool Terrain::validate_terrain(terrain_t terrain_id) {
 	if (terrain_id >= (ssize_t)this->terrain_id_count) {
@@ -264,12 +244,6 @@ Texture *Terrain::blending_mask(ssize_t mask_id) {
 	return this->blending_masks[mask_id];
 }
 
-/**
-returns the terrain subtexture id for a given position.
-
-this function returns always the right value, so that neighbor tiles
-of the same terrain (like grass-grass) are matching (without blendomatic).
-*/
 unsigned Terrain::get_subtexture_id(coord::tile pos, unsigned atlas_size) {
 	unsigned result = 0;
 
@@ -280,28 +254,6 @@ unsigned Terrain::get_subtexture_id(coord::tile pos, unsigned atlas_size) {
 	return result;
 }
 
-
-/**
-get the adjacent chunk neighbors.
-
-chunk neighbor ids:
-      0   / <- ne
-    7   1
-  6   @   2
-    5   3
-      4   \ <- se
-
-   ne se
-0:  1 -1
-1:  1  0
-2:  1  1
-3:  0  1
-4: -1  1
-5: -1  0
-6: -1 -1
-7:  0 -1
-
-*/
 struct chunk_neighbors Terrain::get_chunk_neighbors(coord::chunk position) {
 	struct chunk_neighbors ret;
 	coord::chunk tmp_pos;
@@ -322,9 +274,22 @@ int Terrain::get_blending_mode(terrain_t base_id, terrain_t neighbor_id) {
 	 * this function may require much more code, but this simple
 	 * magnitude comparison seems to do the job.
 	 * feel free to confirm or fix the behavior.
+	 *
+	 * my guess is that the blending mode encodes another information
+	 * not publicly noticed yet: the overlay priority.
+	 * the higher the blendmode id, the higher the mode priority.
+	 * this may also be the reason why there are mask duplicates
+	 * in blendomatic.dat
+	 *
+	 * funny enough, just using the modes in the dat file lead
+	 * to a totally wrong render. the convert script reassigns the
+	 * blending modes with a simple key=>val mapping,
+	 * and after that, it looks perfect.
 	 */
+
 	int base_mode     = this->blendmode(base_id);
 	int neighbor_mode = this->blendmode(neighbor_id);
+
 	if (neighbor_mode > base_mode) {
 		return neighbor_mode;
 	} else {
@@ -364,105 +329,119 @@ bool Terrain::check_tile_position(coord::tile pos) {
 
 }
 
+void Terrain::draw(Engine *engine) {
+	// TODO: move this draw invokation to a render manager.
+	//       it can reorder the draw instructions and minimize texture switching.
 
-
-/**
- * draws the terrain on screen.
- */
-void Terrain::draw() {
-
-	//top left, bottom right tile coordinates
-	//that are currently visible in the window
+	// top left, bottom right tile coordinates
+	// that are currently visible in the window
 	coord::tile tl, tr, bl, br;
+	coord::window wtl, wtr, wbl, wbr;
 
-	tl = coord::window{            0,             0}.to_camgame().to_phys3(0).to_phys2().to_tile();
-	tr = coord::window{window_size.x,             0}.to_camgame().to_phys3(0).to_phys2().to_tile();
-	bl = coord::window{            0, window_size.y}.to_camgame().to_phys3(0).to_phys2().to_tile();
-	br = coord::window{window_size.x, window_size.y}.to_camgame().to_phys3(0).to_phys2().to_tile();
+	// query the window coordinates from the engine first
+	wtl = coord::window{                    0,                     0};
+	wtr = coord::window{engine->window_size.x,                     0};
+	wbl = coord::window{                    0, engine->window_size.y};
+	wbr = coord::window{engine->window_size.x, engine->window_size.y};
 
+	// then convert them to tile coordinates.
+	tl = wtl.to_camgame().to_phys3(0).to_phys2().to_tile();
+	tr = wtr.to_camgame().to_phys3(0).to_phys2().to_tile();
+	bl = wbl.to_camgame().to_phys3(0).to_phys2().to_tile();
+	br = wbr.to_camgame().to_phys3(0).to_phys2().to_tile();
+
+	// main terrain calculation call: get the `terrain_render_data`
 	auto draw_data = this->create_draw_advice(tl, tr, br, bl);
 
-	//draw the terrain ground
+	// TODO: the following loop is totally inefficient and shit.
+	//       it reloads the drawing texture to the gpu FOR EACH TILE!
+	//       nevertheless, currently it works.
+
+	// draw the terrain ground
 	for (auto &tile : draw_data.tiles) {
 
-		//iterate over all layers to be drawn
+		// iterate over all layers to be drawn
 		for (int i = 0; i < tile.count; i++) {
 			struct tile_data *layer = &tile.data[i];
 
-			//position, where the tile is drawn
+			// position, where the tile is drawn
 			coord::tile tile_pos = layer->pos;
 
-			int mask_id = layer->mask_id;
-			Texture *texture = layer->tex;
-			int subtexture_id = layer->subtexture_id;
-			Texture *mask_texture = layer->mask_tex;
-
-			//log::dbg("drawing layer %d at (%ld, %ld), sub=%d", i, tile_pos.ne, tile_pos.se, subtexture_id);
+			int      mask_id       = layer->mask_id;
+			Texture *texture       = layer->tex;
+			int      subtexture_id = layer->subtexture_id;
+			Texture *mask_texture  = layer->mask_tex;
 
 			texture->draw(tile_pos, subtexture_id, mask_texture, mask_id);
 		}
 	}
 
-	//draw the buildings
+	// TODO: drawing buildings can't be the job of the terrain..
+	// draw the buildings
 	for (auto &object : draw_data.objects) {
 		object->draw();
 	}
 }
 
+struct terrain_render_data Terrain::create_draw_advice(coord::tile ab,
+                                                       coord::tile cd,
+                                                       coord::tile ef,
+                                                       coord::tile gh) {
 
-/**
-creates a list of terrain tiles that are drawn and blended.
+	/*
+	 * The passed parameters define the screen corners.
+	 *
+	 *    ne, se coordinates
+	 *    o = screen corner, where the tile coordinates can be queried.
+	 *    x = corner of the rhombus that will be drawn, calculated by all o.
+	 *
+	 *                  cb
+	 *                   x
+	 *                 .   .
+	 *               .       .
+	 *          ab o===========o cd
+	 *           . =  visible  = .
+	 *      gb x   =  screen   =   x cf
+	 *           . =           = .
+	 *          gh o===========o ef
+	 *               .       .
+	 *                 .   .
+	 *                   x
+	 *                  gf
+	 *
+	 * The rendering area may be optimized further in the future,
+	 * to exactly fit the visible screen.
+	 * For now, we are drawing the big rhombus.
+	 */
 
-         ne, se coordinates
-         o = screen corner, where the tile coordinates can be queried.
-         x = corner of the rhombus that will be drawn, calculated by all o.
-
-                 cb
-                  x
-                .   .
-              .       .
-         ab o===========o cd
-          . =  visible  = .
-     gb x   =  screen   =   x cf
-          . =           = .
-         gh o===========o ef
-              .       .
-                .   .
-                  x
-                 gf
-
-This area may be optimized further in the future,
-to exactly fit the visible screen.
-For now, we are drawing the big rhombus.
-*/
-struct terrain_render_data Terrain::create_draw_advice(coord::tile ab, coord::tile cd, coord::tile ef, coord::tile gh) {
-	//find all the tiles to be drawn
-	//and store them to a tile drawing instruction structure
-
+	// procedure: find all the tiles to be drawn
+	// and store them to a tile drawing instruction structure
 	struct terrain_render_data data;
 
-	//vector of tiles
-	auto tiles = &data.tiles;
+	// vector of tiles to be drawn
+	std::vector<struct tile_draw_data> *tiles = &data.tiles;
 
-	//set of objects
+	// ordered set of objects on the terrain (buildings.)
+	// it's ordered by the visibility layers.
 	auto objects = &data.objects;
 
 	coord::tile gb = {gh.ne, ab.se};
 	coord::tile cf = {cd.ne, ef.se};
 
-	//hint the vector about the number of tiles it will contain
+	// hint the vector about the number of tiles it will contain
 	size_t tiles_count = abs(cf.ne - gb.ne) * abs(cf.se - gb.se);
 	tiles->reserve(tiles_count);
 
-	//sweep the whole rhombus area
+	// sweep the whole rhombus area
 	for (coord::tile tilepos = gb; tilepos.ne <= (ssize_t) cf.ne; tilepos.ne++) {
 		for (tilepos.se = gb.se; tilepos.se <= (ssize_t) cf.se; tilepos.se++) {
 
-			//get the terrain tile drawing data
+			// get the terrain tile drawing data
 			auto tile = this->create_tile_advice(tilepos);
 			tiles->push_back(tile);
 
-			//get the object standing on the tile
+			// get the object standing on the tile
+			// TODO: make the terrain independent of objects standing on it.
 			TileContent *tile_content = this->get_data(tilepos);
 			if (tile_content != nullptr) {
 				TerrainObject *obj = tile_content->obj;
@@ -478,15 +457,13 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab, coord::ti
 
 
 struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
-	//this struct will be filled with all tiles and overlays to draw.
+	// this struct will be filled with all tiles and overlays to draw.
 	struct tile_draw_data tile;
 	tile.count = 0;
 
-	//log::dbg("creating render data for tile (%ld, %ld)", position.ne, position.se);
-
 	TileContent *base_tile_content = this->get_data(position);
 
-	//chunk of this tile does not exist
+	// chunk of this tile does not exist
 	if (base_tile_content == nullptr) {
 		//throw Error("requested base tile that's nonexistant");
 		return tile;
@@ -494,10 +471,10 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 
 	struct tile_data base_tile_data;
 
-	//the base terrain id of the tile
+	// the base terrain id of the tile
 	base_tile_data.terrain_id = base_tile_content->terrain_id;
 
-	//the base terrain is not existant.
+	// the base terrain is not existant.
 	if (base_tile_data.terrain_id < 0) {
 		return tile;
 	}
@@ -516,43 +493,45 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 	tile.data[tile.count] = base_tile_data;
 	tile.count += 1;
 
-	//blendomatic!!111
-	// see doc/media/blendomatic for the idea behind this.
+	// blendomatic!!111
+	//  see doc/media/blendomatic for the idea behind this.
 	if (this->blending_enabled) {
 
-		//the neighbors of the base tile
+		// the neighbors of the base tile
 		struct neighbor_tile neigh_data[8];
 
-		//get all neighbor tiles around position, reset the influence directions.
+		// get all neighbor tiles around position, reset the influence directions.
 		this->get_neighbors(position, neigh_data, this->influences_buf);
 
-		//create influence list (direction, priority)
-		//strip and order influences, get the final influence data structure
+		// create influence list (direction, priority)
+		// strip and order influences, get the final influence data structure
 		struct influence_group influence_group = this->calculate_influences(&base_tile_data, neigh_data, this->influences_buf);
 
-		//create the draw_masks from the calculated influences
+		// create the draw_masks from the calculated influences
 		this->calculate_masks(position, &tile, &influence_group);
 	}
 
 	return tile;
 }
 
-void Terrain::get_neighbors(coord::tile basepos, struct neighbor_tile *neigh_data, struct influence *influences_by_terrain_id) {
-	//walk over all given neighbor tiles and store them to the influence list,
-	//group them by terrain id.
+void Terrain::get_neighbors(coord::tile basepos,
+                            struct neighbor_tile *neigh_data,
+                            struct influence *influences_by_terrain_id) {
+	// walk over all given neighbor tiles and store them to the influence list,
+	// group them by terrain id.
 
 	for (int neigh_id = 0; neigh_id < 8; neigh_id++) {
 
-		//the current neighbor
+		// the current neighbor
 		auto neighbor = &neigh_data[neigh_id];
 
-		//calculate the pos of the neighbor tile
+		// calculate the pos of the neighbor tile
 		coord::tile neigh_pos = basepos + neigh_offsets[neigh_id];
 
-		//get the neighbor data
+		// get the neighbor data
 		TileContent *neigh_content = this->get_data(neigh_pos);
 
-		//chunk for neighbor or single tile is not existant
+		// chunk for neighbor or single tile is not existant
 		if (neigh_content == nullptr || neigh_content->terrain_id < 0) {
 			neighbor->state = tile_state::missing;
 		}
@@ -561,89 +540,89 @@ void Terrain::get_neighbors(coord::tile basepos, struct neighbor_tile *neigh_dat
 			neighbor->state      = tile_state::existing;
 			neighbor->priority   = this->priority(neighbor->terrain_id);
 
-			//reset influence directions for this tile
+			// reset influence directions for this tile
 			influences_by_terrain_id[neighbor->terrain_id].direction = 0;
 		}
 	}
 }
 
 struct influence_group Terrain::calculate_influences(struct tile_data *base_tile, struct neighbor_tile *neigh_data, struct influence *influences_by_terrain_id) {
-	//influences to actually draw (-> maximum 8)
+	// influences to actually draw (-> maximum 8)
 	struct influence_group influences;
 	influences.count = 0;
 
-	//process adjacent neighbors first,
-	//then add diagonal influences, if no adjacent influence was found
+	// process adjacent neighbors first,
+	// then add diagonal influences, if no adjacent influence was found
 	constexpr int neigh_id_lookup[] = {1, 3, 5, 7, 0, 2, 4, 6};
 
 	for (int i = 0; i < 8; i++) {
-		//diagonal neighbors: (neigh_id % 2) == 0
-		//adjacent neighbors: (neigh_id % 2) == 1
+		// diagonal neighbors: (neigh_id % 2) == 0
+		// adjacent neighbors: (neigh_id % 2) == 1
 
 		int neigh_id = neigh_id_lookup[i];
 		bool is_adjacent_neighbor = neigh_id % 2 == 1;
 		bool is_diagonal_neighbor = not is_adjacent_neighbor;
 
-		//the current neighbor_tile.
+		// the current neighbor_tile.
 		auto neighbor = &neigh_data[neigh_id];
 
-		//neighbor is nonexistant
+		// neighbor is nonexistant
 		if (neighbor->state == tile_state::missing) {
 			continue;
 		}
 
-		//neighbor only interesting if it's a different terrain than the base.
-		//if it is the same id, the priorities are equal.
-		//neighbor draws over the base if it's priority is greater.
+		// neighbor only interesting if it's a different terrain than the base.
+		// if it is the same id, the priorities are equal.
+		// neighbor draws over the base if it's priority is greater.
 		if (neighbor->priority > base_tile->priority) {
 
-			//get influence storage for the neighbor terrain id
-			//to group influences by id
+			// get influence storage for the neighbor terrain id
+			// to group influences by id
 			auto influence = &influences_by_terrain_id[neighbor->terrain_id];
 
-			//check if diagonal influence is valid
+			// check if diagonal influence is valid
 			if (is_diagonal_neighbor) {
-				//get the adjacent neighbors to the current diagonal
-				//influence
-				// (& 0x07) == (% 8)
+				// get the adjacent neighbors to the current diagonal
+				// influence
+				//  (a & 0x07) == (a % 8)
 				uint8_t adj_neigh_0 = (neigh_id - 1) & 0x07;
 				uint8_t adj_neigh_1 = (neigh_id + 1) & 0x07;
 
 				uint8_t neigh_mask = (1 << adj_neigh_0) | (1 << adj_neigh_1);
 
-				//the adjacent neigbors are already influencing
-				//the current tile, therefore don't apply the diagonal mask
+				// the adjacent neigbors are already influencing
+				// the current tile, therefore don't apply the diagonal mask
 				if ((influence->direction & neigh_mask) != 0) {
 					continue;
 				}
 			}
 
-			//this terrain id hasn't had influence so far:
-			//add it to the list of influences.
+			// this terrain id hasn't had influence so far:
+			// add it to the list of influences.
 			if (influence->direction == 0) {
 				influences.terrain_ids[influences.count] = neighbor->terrain_id;
 				influences.count += 1;
 			}
 
-			//as tile i has influence for this priority
-			// => bit i is set to 1 by 2^i
+			// as tile i has influence for this priority
+			//  => bit i is set to 1 by 2^i
 			influence->direction |= 1 << neigh_id;
 			influence->priority = neighbor->priority;
 			influence->terrain_id = neighbor->terrain_id;
 		}
 	}
 
-	//influences_by_terrain_id will be merged in the following,
-	//unused terrain ids will be dropped now.
+	// influences_by_terrain_id will be merged in the following,
+	// unused terrain ids will be dropped now.
 
-	//shrink the big influence buffer that had entries for all terrains
-	//by copying the possible (max 8) influences to a separate buffer.
+	// shrink the big influence buffer that had entries for all terrains
+	// by copying the possible (max 8) influences to a separate buffer.
 	for (int k = 0; k < influences.count; k++) {
 		int relevant_id    = influences.terrain_ids[k];
 		influences.data[k] = influences_by_terrain_id[relevant_id];
 	}
 
-	//order the influences by their priority
+	// order the influences by their priority
 	for (int k = 1; k < influences.count; k++) {
 		struct influence tmp_influence = influences.data[k];
 
@@ -662,21 +641,21 @@ struct influence_group Terrain::calculate_influences(struct tile_data *base_tile
 
 void Terrain::calculate_masks(coord::tile position, struct tile_draw_data *tile_data, struct influence_group *influences) {
 
-	//influences are grouped by terrain id.
-	//the direction member has each bit set to 1 that is an influence from that direction.
-	//create a mask for this direction combination.
+	// influences are grouped by terrain id.
+	// the direction member has each bit set to 1 that is an influence from that direction.
+	// create a mask for this direction combination.
 
-	//the base tile is stored at position 0 of the draw_mask
+	// the base tile is stored at position 0 of the draw_mask
 	terrain_t base_terrain_id = tile_data->data[0].terrain_id;
 
-	//iterate over all neighbors (with different terrain_ids) that have influence
+	// iterate over all neighbors (with different terrain_ids) that have influence
 	for (ssize_t i = 0; i < influences->count; i++) {
 
-		//neighbor id of the current influence
+		// neighbor id of the current influence
 		char direction_bits = influences->data[i].direction;
 
-		//all bits are 0 -> no influence directions stored.
-		//=> no influence can be ignored.
+		// all bits are 0 -> no influence directions stored.
+		//  => no influence can be ignored.
 		if (direction_bits == 0) {
 			continue;
 		}
@@ -692,11 +671,10 @@ void Terrain::calculate_masks(coord::tile position, struct tile_draw_data *tile_
 		     4
 		*/
 
-		//filter adjacent and diagonal influences    neighbor_id: 76543210
+		// filter adjacent and diagonal influences    neighbor_id: 76543210
 		uint8_t direction_bits_adjacent = direction_bits & 0xAA; //0b10101010
 		uint8_t direction_bits_diagonal = direction_bits & 0x55; //0b01010101
 
-		//TODO replace this by a lookup table
 		switch (direction_bits_adjacent) {
 		case 0x08:  //0b00001000
 			adjacent_mask_id = 0;  //0..3
@@ -745,20 +723,20 @@ void Terrain::calculate_masks(coord::tile position, struct tile_draw_data *tile_
 			break;
 		}
 
-		//if it's the linear adjacent mask, cycle the 4 possible masks.
-		//e.g. long shorelines don't look the same then.
-		// maskid == 0x08 0x02 0x80 0x20 for that.
+		// if it's the linear adjacent mask, cycle the 4 possible masks.
+		// e.g. long shorelines don't look the same then.
+		//  maskid == 0x08 0x02 0x80 0x20 for that.
 		if (adjacent_mask_id <= 12 && adjacent_mask_id % 4 == 0) {
 			//we have 4 = 2^2 anti redundancy masks, so keep the last 2 bits
 			uint8_t anti_redundancy_offset = (position.ne + position.se) & 0x03;
 			adjacent_mask_id += anti_redundancy_offset;
 		}
 
-		//get the blending mode (the mask selection) for this transition
-		//the mode is dependent on the two meeting terrain types
+		// get the blending mode (the mask selection) for this transition
+		// the mode is dependent on the two meeting terrain types
 		int blend_mode = this->get_blending_mode(base_terrain_id, neighbor_terrain_id);
 
-		//append the mask for the adjacent blending
+		// append the mask for the adjacent blending
 		if (adjacent_mask_id >= 0) {
 			struct tile_data *overlay = &tile_data->data[tile_data->count];
 			overlay->pos        = position;
@@ -773,11 +751,12 @@ void Terrain::calculate_masks(coord::tile position, struct tile_draw_data *tile_
 			tile_data->count += 1;
 		}
 
-		//append the mask for the diagonal blending
+		// append the mask for the diagonal blending
 		if (direction_bits_diagonal > 0) {
 			for (int l = 0; l < 4; l++) {
-				//generate one mask for each influencing diagonal neighbor id.
-				//even if they all have the same terrain_id.
+				// generate one mask for each influencing diagonal neighbor id.
+				// even if they all have the same terrain_id,
+				// because we don't have combined diagonal influence masks.
 
 				// l == 0: pos = 0b000000001, mask = 18
 				// l == 1: pos = 0b000000100, mask = 16
