@@ -160,7 +160,7 @@ EngineTest::EngineTest(Engine *engine)
 			(int)(building.radius_size1 * 2),
 		};
 
-		log::msg("   building has foundation size %.2f x %.2f = %dx%d",
+		log::msg("   building has foundation size %.2f x %.2f = %ldx%ld",
 		         building.radius_size0,
 		         building.radius_size1,
 		         foundation_size.ne,

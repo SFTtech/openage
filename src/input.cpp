@@ -8,8 +8,8 @@
 
 namespace openage {
 
-CoreInputHandler::CoreInputHandler() {};
-CoreInputHandler::~CoreInputHandler() {};
+CoreInputHandler::CoreInputHandler() {}
+CoreInputHandler::~CoreInputHandler() {}
 
 
 // not that the function stores a unknown/new keycode
