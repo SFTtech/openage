@@ -28,13 +28,34 @@
  */
 namespace openage {
 
+// engine singleton instance allocation
+std::unique_ptr<Engine> Engine::instance;
+
+void Engine::create(util::Dir *data_dir, const char *windowtitle) {
+	// only create the singleton instance if it was not created before..
+	if (Engine::instance.get() == nullptr) {
+		// reset the pointer to the new engine
+		Engine *engine = new Engine(data_dir, windowtitle);
+		Engine::instance.reset(engine);
+	}
+	else {
+		throw util::Error{"you tried to create another singleton instance!!111"};
+	}
+}
+
+Engine &Engine::get() {
+	return *Engine::instance.get();
+}
+
+
 Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	:
 	running(false),
 	window_size{800, 600},
-	camgame_phys{10 * coord::phys_per_tile, 10 * coord::phys_per_tile, 0},
+	camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0},
 	camgame_window{400, 300},
 	camhud_window{0, 600},
+	tile_halfsize{48, 24},  // TODO: get from convert script
 	data_dir(data_dir),
 	audio_manager{48000, AUDIO_S16LSB, 2, 4096},
 	dejavuserif20{"DejaVu Serif", "Book", 20}
@@ -45,8 +66,10 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	this->register_input_action(&this->input_handler);
 	this->input_handler.register_resize_action(this);
 
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
-		throw util::Error("SDL initialization: %s", SDL_GetError());
+	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+		throw util::Error("SDL video initialization: %s", SDL_GetError());
+	} else {
+		log::msg("initialized SDL video subsystems.");
 	}
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
@@ -279,7 +302,7 @@ void Engine::loop() {
 
 			// invoke all hud drawing callback methods
 			for (auto &action : this->on_drawhud) {
-				if (false == action->on_draw()) {
+				if (false == action->on_drawhud()) {
 					break;
 				}
 			}
@@ -302,13 +325,34 @@ void Engine::register_tick_action(TickHandler *handler) {
 	this->on_engine_tick.push_back(handler);
 }
 
-void Engine::register_drawhud_action(DrawHandler *handler) {
+void Engine::register_drawhud_action(HudHandler *handler) {
 	this->on_drawhud.push_back(handler);
 }
 
 void Engine::register_draw_action(DrawHandler *handler) {
 	this->on_drawgame.push_back(handler);
 }
+
+void Engine::register_resize_action(ResizeHandler *handler) {
+	this->input_handler.register_resize_action(handler);
+}
+
+util::Dir *Engine::get_data_dir() {
+	return this->data_dir;
+}
+
+audio::AudioManager &Engine::get_audio_manager() {
+	return this->audio_manager;
+}
+
+CoreInputHandler &Engine::get_input_handler() {
+	return this->input_handler;
+}
+
+unsigned int Engine::lastframe_msec() {
+	return this->fpscounter.msec_lastframe;
+}
+
 
 
 } //namespace openage

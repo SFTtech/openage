@@ -1,10 +1,7 @@
 #include "console.h"
 
-#include "buf.h"
 #include "draw.h"
 #include "../callbacks.h"
-#include "../engine.h"
-#include "../font.h"
 #include "../log.h"
 #include "../util/error.h"
 #include "../util/strings.h"
@@ -12,49 +9,82 @@
 namespace openage {
 namespace console {
 
-bool visible = false;
+/*
+ * TODO:
+ * multiple terminals on screen
+ * resizable terminals
+ * scrollbars
+ * console input
+ * log console, command console
+ */
 
-coord::camhud bottomleft {0, 0};
-coord::camhud topright {1, 1};
+Console::Console(std::vector<gamedata::palette_color> &colortable)
+	:
+	bottomleft{0, 0},
+	topright{1, 1},
+	charsize{1, 1},
+	visible(false),
+	buf{{80, 25}, 1337, 80},
+	font{"DejaVu Sans Mono", "Book", 12}
+{
+	termcolors.reserve(256);
 
-Buf *buf = nullptr;
-Font *font = nullptr;
-coord::camhud charsize {1, 1};
+	for (auto &c : colortable) {
+		this->termcolors.emplace_back(c);
+	}
 
-std::vector<util::col> termcolors;
+	if (termcolors.size() != 256) {
+		throw util::Error("Exactly 256 terminal colors are required.");
+	}
 
-void write(const char *text) {
-	buf->write(text);
-	buf->write('\n');
+	// this better be representative for the width of all other characters
+	charsize.x = ceilf(font.internal_font->Advance("W", 1));
+	charsize.y = ceilf(font.internal_font->LineHeight());
+
+	log::dbg("console font character size: %hdx%hd", charsize.x, charsize.y);
 }
 
-bool on_engine_tick() {
-	if(!visible) {
+Console::~Console () {}
+
+void Console::register_to_engine(Engine *engine) {
+	engine->register_input_action(this);
+	engine->register_tick_action(this);
+	engine->register_drawhud_action(this);
+	engine->register_resize_action(this);
+}
+
+void Console::write(const char *text) {
+	this->buf.write(text);
+	this->buf.write('\n');
+}
+
+bool Console::on_tick() {
+	if (!this->visible) {
 		return true;
 	}
 
-	//TODO handle stuff such as cursor blinking,
-	//repeating held-down keys (from engine::input::keystate)
+	// TODO: handle stuff such as cursor blinking,
+	// repeating held-down keys
 	return true;
 }
 
-bool draw_console() {
-	if(!visible) {
+bool Console::on_drawhud() {
+	if (!this->visible) {
 		return true;
 	}
 
-	draw::to_opengl(buf, font, bottomleft, charsize);
+	draw::to_opengl(this);
 
 	return true;
 }
 
-bool handle_inputs(SDL_Event *e) {
+bool Console::on_input(SDL_Event *e) {
 	if ((e->type == SDL_KEYDOWN) && (((SDL_KeyboardEvent *) e)->keysym.sym == SDLK_BACKQUOTE)) {
 		visible = !visible;
 	}
 
-	//only handle inputs if the console is visible
-	if(!visible) {
+	// only handle inputs if the console is visible
+	if (!this->visible) {
 		return true;
 	}
 
@@ -70,44 +100,14 @@ bool handle_inputs(SDL_Event *e) {
 	return true;
 }
 
-bool on_window_resize() {
-	coord::pixel_t w = buf->dims.x * charsize.x;
-	coord::pixel_t h = buf->dims.y * charsize.y;
+bool Console::on_resize(coord::window new_size) {
+	coord::pixel_t w = this->buf.dims.x * this->charsize.x;
+	coord::pixel_t h = this->buf.dims.y * this->charsize.y;
 
-	console::bottomleft = {(window_size.x - w) / 2, (window_size.y - h) / 2};
-	console::topright = {console::bottomleft.x + w, console::bottomleft.y - h};
+	this->bottomleft = {(new_size.x - w) / 2, (new_size.y - h) / 2};
+	this->topright = {this->bottomleft.x + w, this->bottomleft.y - h};
 
 	return true;
-}
-
-
-
-void init(const std::vector<gamedata::palette_color> &colortable) {
-	termcolors.reserve(256);
-	for (auto c : colortable) {
-		termcolors.emplace_back(c);
-	}
-	if (termcolors.size() != 256) {
-		throw util::Error("Exactly 256 terminal colors are required.");
-	}
-
-	callbacks::on_input.push_back(console::handle_inputs);
-	callbacks::on_engine_tick.push_back(console::on_engine_tick);
-	callbacks::on_drawhud.push_back(console::draw_console);
-	callbacks::on_resize.push_back(console::on_window_resize);
-
-	buf = new Buf({80, 25}, 1337, 80);
-	font = new Font("DejaVu Sans Mono", "Book", 12);
-	//this better be representative for the width of all other characters
-	charsize.x = ceilf(font->internal_font->Advance("W", 1));
-	charsize.y = ceilf(font->internal_font->LineHeight());
-
-	log::dbg("console font character size: %hdx%hd", charsize.x, charsize.y);
-}
-
-void destroy() {
-	delete buf;
-	delete font;
 }
 
 } //namespace console

@@ -19,7 +19,7 @@ struct tile {
 	#include "ops/abs.h"
 
 	tile3 to_tile3(tile_t up = 0);
-	phys2 to_phys2(phys2_delta frac = {phys_per_tile / 2, phys_per_tile / 2});
+	phys2 to_phys2(phys2_delta frac = {settings::phys_per_tile / 2, settings::phys_per_tile / 2});
 	chunk to_chunk();
 	tile_delta get_pos_on_chunk();
 };

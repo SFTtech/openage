@@ -3,16 +3,26 @@
 
 #include "buf.h"
 
+#include "console.h"
 #include "../coord/camhud.h"
 #include "../font.h"
 #include "../util/fds.h"
 
 namespace openage {
 namespace console {
+
 namespace draw {
 
-void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud charsize);
-void to_terminal(Buf *buf, util::FD *fd, bool clear = false);
+/**
+ * experimental and totally inefficient opengl draw of a terminal buffer.
+ */
+void to_opengl(Console *console);
+
+/**
+ * very early and inefficient printing of the console to a pty.
+ */
+void to_terminal(Buf *buf, util::FD *fd,
+                 bool clear=false);
 
 } //namespace draw
 } //namespace console

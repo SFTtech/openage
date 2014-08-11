@@ -9,6 +9,10 @@
 #define RELATIVE_TYPE camhud_delta
 
 namespace openage {
+namespace console {
+class Console;
+} // namespace console
+
 namespace coord {
 
 struct camhud {
@@ -17,7 +21,7 @@ struct camhud {
 	#include "ops/abs.h"
 
 	window to_window();
-	term to_term();
+	term to_term(console::Console *c);
 };
 
 struct camhud_delta {

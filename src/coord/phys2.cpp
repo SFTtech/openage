@@ -17,15 +17,19 @@ phys3_delta phys2_delta::to_phys3(phys_t up) {
 
 tile phys2::to_tile() {
 	tile result;
-	result.ne = (ne >> phys_t_radix_pos);
-	result.se = (se >> phys_t_radix_pos);
+	result.ne = (ne >> settings::phys_t_radix_pos);
+	result.se = (se >> settings::phys_t_radix_pos);
 	return result;
 }
 
 phys2_delta phys2::get_fraction() {
 	phys2_delta result;
-	result.ne = ne - ((ne >> phys_t_radix_pos) << phys_t_radix_pos);
-	result.se = se - ((se >> phys_t_radix_pos) << phys_t_radix_pos);
+
+	// define a bitmask that keeps the last n bits
+	decltype(result.ne) bitmask = ((1 << settings::phys_t_radix_pos) - 1);
+
+	result.ne = (ne & bitmask);
+	result.se = (se & bitmask);
 	return result;
 }
 

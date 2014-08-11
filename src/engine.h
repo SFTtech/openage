@@ -6,6 +6,7 @@
 #include <SDL2/SDL.h>
 
 #include "audio/audio_manager.h"
+#include "coord/camgame.h"
 #include "coord/phys3.h"
 #include "coord/window.h"
 #include "font.h"
@@ -28,7 +29,25 @@ class CoreInputHandler;
  * central foundation for everything the openage engine is capable of.
  */
 class Engine : public ResizeHandler {
+private:
+	/**
+	 * global engine singleton instance.
+	 */
+	static std::unique_ptr<Engine> instance;
+
 public:
+	/**
+	 * singleton constructor, use this to create the engine instance.
+	 */
+	static void create(util::Dir *data_dir, const char *windowtitle);
+
+	/**
+	 * singleton instance fetcher.
+	 * @returns the pointer to the global engine instance.
+	 */
+	static Engine &get();
+
+private:
 	/**
 	 * engine initialization method.
 	 * opens a window and initializes the OpenGL context.
@@ -45,6 +64,7 @@ public:
 	 */
 	Engine(Engine &&other);
 
+public:
 	/**
 	 * engine destructor, cleans up memory etc.
 	 * deletes opengl context, the SDL window, and engine variables.
@@ -91,7 +111,7 @@ public:
 	/**
 	 * register a hud drawing handler, drawn in hud coordinates.
 	 */
-	void register_drawhud_action(DrawHandler *handler);
+	void register_drawhud_action(HudHandler *handler);
 
 	/**
 	 * register a draw handler, run in game coordinates.
@@ -107,6 +127,24 @@ public:
 	 * return the data directory where the engine was started from.
 	 */
 	util::Dir *get_data_dir();
+
+	/**
+	 * return this engine's audio manager.
+	 */
+	audio::AudioManager &get_audio_manager();
+
+	/**
+	 * return the core input handler of the engine.
+	 */
+	CoreInputHandler &get_input_handler();
+
+	/**
+	 * return the number of milliseconds that passed
+	 * for rendering the last frame.
+	 *
+	 * use that for fps-independent input actions.
+	 */
+	unsigned int lastframe_msec();
 
 	/**
 	 * current engine state variable.
@@ -136,6 +174,11 @@ public:
 	 * (the position where camhud {0, 0} is rendered)
 	 */
 	coord::window camhud_window;
+
+	/**
+	 * half the size of one terrain diamond tile, in camgame.
+	 */
+	coord::camgame_delta tile_halfsize;
 
 private:
 	/**
@@ -180,7 +223,7 @@ private:
 	 * run every time the hud is being drawn,
 	 * with the renderer set to the camhud system
 	 */
-	std::vector<DrawHandler *> on_drawhud;
+	std::vector<HudHandler *> on_drawhud;
 
 	/**
 	 * the frame counter measuring fps.

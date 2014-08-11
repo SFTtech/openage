@@ -8,8 +8,10 @@ namespace coord {
 
 tile chunk::to_tile(tile_delta pos_on_chunk) {
 	tile result;
-	result.ne = (((tile_t) ne) << tiles_per_chunk_bits) + pos_on_chunk.ne;
-	result.se = (((tile_t) se) << tiles_per_chunk_bits) + pos_on_chunk.se;
+	result.ne = (((tile_t) ne) << settings::tiles_per_chunk_bits)
+		+ pos_on_chunk.ne;
+	result.se = (((tile_t) se) << settings::tiles_per_chunk_bits)
+		+ pos_on_chunk.se;
 	return result;
 }
 

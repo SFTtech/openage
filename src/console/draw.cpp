@@ -16,26 +16,33 @@ namespace openage {
 namespace console {
 namespace draw {
 
-void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud charsize) {
-	coord::camhud topleft = {bottomleft.x, bottomleft.y + charsize.y * buf->dims.y};
+void to_opengl(Console *console) {
+	coord::camhud topleft = {
+		console->bottomleft.x,
+		console->bottomleft.y + console->charsize.y * console->buf.dims.y
+	};
 	coord::camhud chartopleft;
-	coord::pixel_t ascender = font->internal_font->Ascender();
+	coord::pixel_t ascender = console->font.internal_font->Ascender();
 
 	uint32_t sdl_tickcount = SDL_GetTicks();
 	bool fastblinking_visible = (sdl_tickcount % 600 < 300);
 	bool slowblinking_visible = (sdl_tickcount % 300 < 150);
 
-	for (coord::term_t x = 0; x < buf->dims.x; x++) {
-		chartopleft.x = topleft.x + charsize.x * x;
+	for (coord::term_t x = 0; x < console->buf.dims.x; x++) {
+		chartopleft.x = topleft.x + console->charsize.x * x;
 
-		for (coord::term_t y = 0; y < buf->dims.y; y++) {
-			chartopleft.y = topleft.y - charsize.y * y;
-			buf_char p = *(buf->chrdataptr({x, y - buf->scrollback_pos}));
+		for (coord::term_t y = 0; y < console->buf.dims.y; y++) {
+			chartopleft.y = topleft.y - console->charsize.y * y;
+			buf_char p = *(console->buf.chrdataptr({x, y - console->buf.scrollback_pos}));
 
 			int fgcolid, bgcolid;
 
-			bool cursor_visible_at_current_pos = buf->cursorpos == coord::term{x, y - buf->scrollback_pos};
-			cursor_visible_at_current_pos &= buf->cursor_visible;
+			bool cursor_visible_at_current_pos = (
+				console->buf.cursorpos == coord::term{x, y - console->buf.scrollback_pos}
+			);
+
+			cursor_visible_at_current_pos &= console->buf.cursor_visible;
+
 			if ((p.flags & CHR_NEGATIVE) xor cursor_visible_at_current_pos) {
 				bgcolid = p.fgcol;
 				fgcolid = p.bgcol;
@@ -43,32 +50,32 @@ void to_opengl(Buf *buf, Font *font, coord::camhud bottomleft, coord::camhud cha
 				bgcolid = p.bgcol;
 				fgcolid = p.fgcol;
 			}
-			if (
-				(p.flags & CHR_INVISIBLE) or
-				(p.flags & CHR_BLINKING and not slowblinking_visible) or
-				(p.flags & CHR_BLINKINGFAST and not fastblinking_visible)
-			) {
+
+			if ((p.flags & CHR_INVISIBLE)
+			    or (p.flags & CHR_BLINKING and not slowblinking_visible)
+			    or (p.flags & CHR_BLINKINGFAST and not fastblinking_visible)) {
 				fgcolid = bgcolid;
 			}
 
-			termcolors[bgcolid].use(0.8);
+			console->termcolors[bgcolid].use(0.8);
 
 			glBegin(GL_QUADS);
 			{
 				glVertex3f(chartopleft.x, chartopleft.y, 0);
-				glVertex3f(chartopleft.x, chartopleft.y - charsize.y, 0);
-				glVertex3f(chartopleft.x + charsize.x, chartopleft.y - charsize.y, 0);
-				glVertex3f(chartopleft.x + charsize.x, chartopleft.y, 0);
+				glVertex3f(chartopleft.x, chartopleft.y - console->charsize.y, 0);
+				glVertex3f(chartopleft.x + console->charsize.x, chartopleft.y - console->charsize.y, 0);
+				glVertex3f(chartopleft.x + console->charsize.x, chartopleft.y, 0);
 			}
 			glEnd();
 
-			termcolors[fgcolid].use(1);
+			console->termcolors[fgcolid].use(1);
+
 			char utf8buf[5];
 			if (util::utf8_encode(p.cp, utf8buf) == 0) {
 				//unrepresentable character (question mark in black rhombus)
-				font->render_static(chartopleft.x, chartopleft.y - ascender, "\uFFFD");
+				console->font.render_static(chartopleft.x, chartopleft.y - ascender, "\uFFFD");
 			} else {
-				font->render_static(chartopleft.x, chartopleft.y - ascender, utf8buf);
+				console->font.render_static(chartopleft.x, chartopleft.y - ascender, utf8buf);
 			}
 		}
 	}

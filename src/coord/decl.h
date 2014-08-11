@@ -21,9 +21,6 @@ struct phys2_delta;
 struct phys3;
 struct phys3_delta;
 
-constexpr unsigned phys_t_radix_pos = 16;
-constexpr phys_t phys_t_scaling_factor = (1 << phys_t_radix_pos);
-constexpr phys_t phys_per_tile = phys_t_scaling_factor;
 using tile_t = int64_t;
 
 struct tile;
@@ -31,8 +28,6 @@ struct tile_delta;
 struct tile3;
 struct tile3_delta;
 
-constexpr unsigned tiles_per_chunk_bits = 4; //yeah, this needs a better name.
-constexpr tile_t tiles_per_chunk = (1 << tiles_per_chunk_bits);
 using chunk_t = int32_t;
 
 struct chunk;
@@ -64,6 +59,16 @@ struct vec2f;
 struct vec2f_delta;
 struct vec3f;
 struct vec3f_delta;
+
+
+namespace settings {
+constexpr unsigned phys_t_radix_pos      = 16;
+constexpr phys_t   phys_t_scaling_factor = (1 << phys_t_radix_pos);
+constexpr phys_t   phys_per_tile         = phys_t_scaling_factor;
+constexpr unsigned tiles_per_chunk_bits  = 4; //yeah, this needs a better name.
+constexpr tile_t   tiles_per_chunk       = (1 << tiles_per_chunk_bits);
+} //namespace settings
+
 
 } //namespace coord
 } //namespace openage

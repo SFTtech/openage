@@ -18,7 +18,18 @@ public:
 	/**
 	 * execute the drawing action.
 	 */
-	virtual bool on_draw();
+	virtual bool on_draw() = 0;
+};
+
+/**
+ * superclass for all possible drawing operations in the game.
+ */
+class HudHandler {
+public:
+	/**
+	 * execute the drawing action.
+	 */
+	virtual bool on_drawhud() = 0;
 };
 
 /**
@@ -29,7 +40,7 @@ public:
 	/**
 	 * execute the tick action.
 	 */
-	virtual bool on_tick();
+	virtual bool on_tick() = 0;
 };
 
 /**
@@ -40,7 +51,7 @@ public:
 	/**
 	 * execute the input handler.
 	 */
-	virtual bool on_input(SDL_Event *event);
+	virtual bool on_input(SDL_Event *event) = 0;
 };
 
 /**
@@ -51,7 +62,7 @@ public:
 	/**
 	 * execute the resize handler.
 	 */
-	virtual bool on_resize(coord::window new_size);
+	virtual bool on_resize(coord::window new_size) = 0;
 };
 
 }

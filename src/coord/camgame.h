@@ -16,7 +16,7 @@ struct camgame {
 
 	#include "ops/abs.h"
 
-	phys3 to_phys3(phys_t up = 0);
+	phys3 to_phys3(phys_t up=0);
 	window to_window();
 };
 
@@ -25,7 +25,7 @@ struct camgame_delta {
 
 	#include "ops/rel.h"
 
-	phys3_delta to_phys3(phys_t up = 0);
+	phys3_delta to_phys3(phys_t up=0);
 	window_delta to_window();
 };
 

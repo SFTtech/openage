@@ -8,6 +8,10 @@
 
 namespace openage {
 
+CoreInputHandler::CoreInputHandler() {};
+CoreInputHandler::~CoreInputHandler() {};
+
+
 // not that the function stores a unknown/new keycode
 // as 'not pressed' when it was requested
 bool CoreInputHandler::is_key_down(SDL_Keycode k) {
@@ -28,7 +32,7 @@ bool CoreInputHandler::on_input(SDL_Event *event) {
 			coord::window new_size{event->window.data1, event->window.data2};
 
 			// call additional handlers for the resize event
-			for (auto &handler : this->resize_handlers) {
+			for (auto &handler : this->on_resize) {
 				if (false == handler->on_resize(new_size)) {
 					break;
 				}
@@ -53,5 +57,10 @@ bool CoreInputHandler::on_input(SDL_Event *event) {
 
 	return true;
 }
+
+void CoreInputHandler::register_resize_action(ResizeHandler *handler) {
+	this->on_resize.push_back(handler);
+}
+
 
 } //namespace openage

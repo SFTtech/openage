@@ -1,7 +1,7 @@
 #include "opengl.h"
 
-#include <glew.h>
-#include <GL/GL.h>
+#include <GL/glew.h>
+#include <GL/gl.h>
 
 #include "error.h"
 

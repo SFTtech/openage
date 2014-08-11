@@ -31,12 +31,12 @@ struct [relname] {
 #include "ops/impl.h"
 #endif //GEN_IMPL_[NAME]_CPP
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE
 #undef ABSOLUTE_TYPE
 #undef SCALAR_TYPE
 
-#endif //_COORD_[NAME]_H_
+#endif // _COORD_[NAME]_H_

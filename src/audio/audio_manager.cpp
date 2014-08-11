@@ -1,6 +1,7 @@
 #include "audio_manager.h"
 
 #include <cstring>
+#include <SDL2/SDL.h>
 
 #include "resource.h"
 
@@ -23,6 +24,13 @@ AudioManager::AudioManager(const std::string &device_name, int freq,
 		SDL_AudioFormat format, Uint8 channels, Uint16 samples)
 		:
 		device_name{device_name} {
+
+	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
+		throw util::Error("SDL audio initialization: %s", SDL_GetError());
+	} else {
+		log::msg("initialized SDL audio subsystems.");
+	}
+
 	//set desired audio output format
 	SDL_AudioSpec desired_spec;
 	SDL_zero(desired_spec);

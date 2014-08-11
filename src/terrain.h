@@ -28,11 +28,6 @@ class TerrainChunk;
 using terrain_t = int;
 
 /**
- * half the size of one terrain diamond tile, in camgame.
- */
-extern coord::camgame_delta tile_halfsize;
-
-/**
  * hashing for chunk coordinates.
  *
  * this allows storage of chunk coords as keys in an unordered map.

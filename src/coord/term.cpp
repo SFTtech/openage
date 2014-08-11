@@ -7,10 +7,10 @@
 namespace openage {
 namespace coord {
 
-camhud term::to_camhud() {
+camhud term::to_camhud(console::Console *c) {
 	camhud result;
-	result.x = console::bottomleft.x + x * console::charsize.x; 
-	result.y = console::topright.y   - y * console::charsize.y; 
+	result.x = c->bottomleft.x + x * c->charsize.x;
+	result.y = c->topright.y   - y * c->charsize.y;
 	return result;
 }
 

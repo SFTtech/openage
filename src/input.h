@@ -50,7 +50,7 @@ private:
 	/**
 	 * list of handlers that are executed upon a resize event.
 	 */
-	std::vector<ResizeHandler *> resize_handlers;
+	std::vector<ResizeHandler *> on_resize;
 };
 
 } //namespace openage

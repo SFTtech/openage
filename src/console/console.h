@@ -2,10 +2,12 @@
 #define _CONSOLE_CONSOLE_H_
 
 #include <vector>
-
 #include <SDL2/SDL.h>
 
+#include "buf.h"
+#include "../handlers.h"
 #include "../coord/camhud.h"
+#include "../engine.h"
 #include "../util/color.h"
 #include "../font.h"
 #include "../gamedata/color.h"
@@ -13,26 +15,45 @@
 namespace openage {
 namespace console {
 
-extern coord::camhud bottomleft;
-extern coord::camhud topright;
-extern coord::camhud charsize;
+class Console : InputHandler, TickHandler, HudHandler, ResizeHandler {
 
-extern std::vector<util::col> termcolors;
+public:
+	Console(std::vector<gamedata::palette_color> &colortable);
+	~Console();
 
-//init functions
-void init(const std::vector<gamedata::palette_color> &termcolors);
-void destroy();
+	coord::camhud bottomleft;
+	coord::camhud topright;
+	coord::camhud charsize;
 
-//callback functions
-bool on_engine_tick();
-bool draw_console();
-bool handle_inputs(SDL_Event *e);
-bool on_window_resize();
+	std::vector<util::col> termcolors;
 
-/**
- * prints the given text on the console
- */
-void write(const char *text);
+	bool visible;
+
+	Buf buf;
+	Font font;
+
+	//callback functions
+	bool on_engine_tick();
+	bool draw_console();
+	bool handle_inputs(SDL_Event *e);
+	bool on_window_resize();
+
+	/**
+	 * register this console to the engine.
+	 * this leads to the drawing calls, and input handling.
+	 */
+	void register_to_engine(Engine *engine);
+
+	/**
+	 * prints the given text on the console.
+	 */
+	void write(const char *text);
+
+	virtual bool on_drawhud();
+	virtual bool on_tick();
+	virtual bool on_input(SDL_Event *event);
+	virtual bool on_resize(coord::window new_size);
+};
 
 } //namespace console
 } //namespace openage
