@@ -57,8 +57,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	camhud_window{0, 600},
 	tile_halfsize{48, 24},  // TODO: get from convert script
 	data_dir(data_dir),
-	audio_manager{48000, AUDIO_S16LSB, 2, 4096},
-	dejavuserif20{"DejaVu Serif", "Book", 20}
+	audio_manager{48000, AUDIO_S16LSB, 2, 4096}
 {
 
 	// enqueue the engine's own input handler to the
@@ -138,20 +137,18 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	// initialize debug text font
+	this->dejavuserif20 = new Font{"DejaVu Serif", "Book", 20};
+
 	// initialize audio
 	auto devices = audio::AudioManager::get_devices();
 	if (devices.empty()) {
 		throw util::Error{"No audio devices found"};
 	}
-
-	util::Dir asset_dir = this->data_dir->append("age/assets");
-	std::string sound_index_file = asset_dir.join("sound_list.docx");
-	auto sound_files = util::read_csv_file<gamedata::sound_file>(sound_index_file);
-
-	this->audio_manager.load_resources(asset_dir, sound_files);
 }
 
 Engine::~Engine() {
+	delete this->dejavuserif20;
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
 	IMG_Quit();
@@ -191,7 +188,7 @@ bool Engine::draw_fps() {
 	//draw FPS counter
 	util::col {255, 255, 255, 255}.use();
 
-	this->dejavuserif20.render(
+	this->dejavuserif20->render(
 		this->window_size.x - 100, 15,
 		"%.1f fps", this->fpscounter.fps
 	);

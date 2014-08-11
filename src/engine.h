@@ -239,7 +239,7 @@ private:
 	 * the text font to be used for (can you believe it?) texts.
 	 * dejavu serif, book, 20pts
 	 */
-	Font dejavuserif20;
+	Font *dejavuserif20;
 
 	/**
 	 * SDL window where everything is displayed within.

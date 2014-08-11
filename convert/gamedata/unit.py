@@ -888,7 +888,7 @@ class UnitBuilding(UnitLiving):
 
     data_format = (
         (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitLiving)),
-        (dataformat.READ, "construction_graphic_id", "int16_t"),
+        (dataformat.READ_EXPORT, "construction_graphic_id", "int16_t"),
         (dataformat.READ, "snow_graphic_id", "int16_t"),
         (dataformat.READ, "adjacent_mode", "int16_t"),           #1=adjacent units may change the graphics
         (dataformat.READ_UNKNOWN, None, "int8_t"),

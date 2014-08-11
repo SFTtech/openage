@@ -2,11 +2,16 @@
 #define _OPENAGE_INIT_H_
 
 #include <SDL2/SDL.h>
+#include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 #include "../engine.h"
+#include "../coord/tile.h"
 #include "../handlers.h"
 #include "../terrain.h"
+#include "../terrain_object.h"
+#include "../gamedata/graphic.h"
 
 
 namespace testing {
@@ -26,6 +31,23 @@ bool draw_method();
 bool hud_draw_method();
 bool input_handler(SDL_Event *e);
 
+class TestBuilding {
+public:
+	openage::Texture *texture;
+	std::string name;
+	openage::coord::tile_delta foundation_size;
+	int foundation_terrain;
+	int sound_id_creation;
+	int sound_id_destruction;
+};
+
+class TestSound {
+public:
+	void play();
+
+	std::vector<int> sound_items;
+};
+
 class EngineTest :
 		openage::InputHandler,
 		openage::DrawHandler,
@@ -42,18 +64,37 @@ public:
 	virtual bool on_drawhud();
 	virtual bool on_input(SDL_Event *e);
 
-	//all the buildings that have been placed
-	std::unordered_set<openage::TerrainObject *> buildings;
+	/**
+	 * all available buildings.
+	 */
+	std::vector<TestBuilding *> available_buildings;
 
-	//currently selected terrain id
+	/**
+	 * all available sounds.
+	 */
+	std::unordered_map<int, TestSound> available_sounds;
+
+	/**
+	 * map graphic id to gamedata graphic.
+	 */
+	std::unordered_map<int, gamedata::graphic *> graphics;
+
+
+	/**
+	 * all the buildings that have been placed.
+	 */
+	std::unordered_set<openage::TerrainObject *> placed_buildings;
+
+	// currently selected terrain id
 	openage::terrain_t editor_current_terrain;
+	int editor_current_building;
 
 	bool clicking_active;
+	bool ctrl_active;
 	bool scrolling_active;
 
 	openage::Terrain *terrain;
-	openage::Texture *gaben, *university;
-	openage::audio::Sound *build_uni_sound, *destroy_uni_sound0, *destroy_uni_sound1;
+	openage::Texture *gaben;
 };
 
 } //namespace testing

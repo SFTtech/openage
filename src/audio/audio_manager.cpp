@@ -51,7 +51,7 @@ AudioManager::AudioManager(const std::string &device_name, int freq,
 			&device_spec, 0);
 	// no device could be opened
 	if (device_id == 0) {
-		throw util::Error{"Error opening audio device: %s", SDL_GetError()};	
+		throw util::Error{"Error opening audio device: %s", SDL_GetError()};
 	}
 
 	// initialize playing sounds vectors

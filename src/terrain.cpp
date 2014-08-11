@@ -18,10 +18,6 @@
 
 namespace openage {
 
-//TODO: get that from the convert script!
-coord::camgame_delta tile_halfsize = {48, 24};
-
-
 TileContent::TileContent() :
 	terrain_id(0),
 	obj(nullptr)
@@ -76,8 +72,9 @@ Terrain::Terrain(util::Dir &asset_dir,
 		delete[] terraintex_filename;
 
 		auto new_texture = new Texture(terraintex_filename_str, true, ALPHAMASKED);
-		// TODO: hotspot fixing will be done in convert script.
-		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
+
+		// TODO: hotspot fixing should be done in convert script.
+		new_texture->fix_hotspots(48, 24);
 		this->textures[terrain_id] = new_texture;
 	}
 
@@ -93,9 +90,6 @@ Terrain::Terrain(util::Dir &asset_dir,
 		delete[] mask_filename;
 
 		auto new_texture = new Texture(mask_filename_str, true);
-
-		// TODO: again, hotspot fixing..
-		new_texture->fix_hotspots(tile_halfsize.x , tile_halfsize.y);
 		this->blending_masks[i] = new_texture;
 	}
 

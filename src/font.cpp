@@ -63,7 +63,7 @@ Font::Font(const char *family, const char *style, unsigned size) {
 	this->font_filename = get_font_filename(family, style);
 	this->internal_font = new FTGLTextureFont(font_filename);
 
-	if(internal_font->Error()) {
+	if (internal_font->Error()) {
 		delete[] this->font_filename;
 		delete this->internal_font;
 		throw util::Error("Failed to create FTGL texture font from %s", font_filename);
@@ -82,7 +82,7 @@ Font::~Font() {
 }
 
 void Font::render_static(coord::pixel_t x, coord::pixel_t y, const char *text, int len) {
-	internal_font->Render(text, len, FTPoint(x, y));
+	this->internal_font->Render(text, len, FTPoint(x, y));
 }
 
 void Font::render(coord::pixel_t x, coord::pixel_t y, const char *format, ...) {
@@ -91,7 +91,7 @@ void Font::render(coord::pixel_t x, coord::pixel_t y, const char *format, ...) {
 	const char *buf = util::vformat(format, vl);
 	va_end(vl);
 
-	render_static(x, y, buf);
+	this->render_static(x, y, buf);
 
 	delete[] buf;
 }
@@ -102,7 +102,7 @@ void Font::render(coord::camhud pos, const char *format, ...) {
 	const char *buf = util::vformat(format, vl);
 	va_end(vl);
 
-	render_static(pos.x, pos.y, buf);
+	this->render_static(pos.x, pos.y, buf);
 
 	delete[] buf;
 }
@@ -113,7 +113,7 @@ void Font::render(coord::camgame pos, const char *format, ...) {
 	const char *buf = util::vformat(format, vl);
 	va_end(vl);
 
-	render_static(pos.x, pos.y, buf);
+	this->render_static(pos.x, pos.y, buf);
 
 	delete[] buf;
 }

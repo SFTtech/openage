@@ -15,6 +15,7 @@
 #include "../gamedata/gamedata.h"
 #include "../log.h"
 #include "../terrain.h"
+#include "../util/strings.h"
 #include "../util/timer.h"
 
 #include "engine_test.h"
@@ -93,7 +94,9 @@ int run_game(Arguments *args) {
 EngineTest::EngineTest(Engine *engine)
 	:
 	editor_current_terrain(0),
+	editor_current_building(0),
 	clicking_active(true),
+	ctrl_active(false),
 	scrolling_active(false) {
 
 	engine->register_draw_action(this);
@@ -106,7 +109,6 @@ EngineTest::EngineTest(Engine *engine)
 
 	// load textures and stuff
 	gaben      = new Texture{data_dir->join("gaben.png")};
-	university = new Texture{asset_dir.join("Data/graphics.drs/3836.slp.png"), true, PLAYERCOLORED};
 
 	auto string_resources = util::read_csv_file<gamedata::string_resource>(asset_dir.join("string_resources.docx"));
 	auto terrain_types  = util::read_csv_file<gamedata::terrain_type>(asset_dir.join("gamedata/gamedata-empiresdat/0000-terrains.docx"));
@@ -119,17 +121,104 @@ EngineTest::EngineTest(Engine *engine)
 	util::Dir gamedata_dir = asset_dir.append("gamedata");
 	auto gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
 
-	int i = 0;
-	for (auto &civ : gamedata[0].civs.data) {
-		int j = 0;
-		log::msg("civ[%d]: name = %s, %lu buldings", i, civ.name.c_str(), civ.units.building.data.size());
+	// create graphic id => graphic map
+	for (auto &graphic : gamedata[0].graphics.data) {
+		this->graphics[graphic.id] = &graphic;
+	}
 
-		for (auto &building : civ.units.building.data) {
-			log::msg("  building[%d]: name = %s", j, building.name.c_str());
-			j += 1;
+	int i = 0;
+	for (auto &building : gamedata[0].civs.data[0].units.building.data) {
+		log::msg("building[%d]: %s", i, building.name.c_str());
+
+		int graphic_id = building.graphic_standing0;
+		if (graphic_id <= 0) {
+			log::msg("  -> ignoring graphics_id: %d", graphic_id);
+			continue;
 		}
 
+		int slp_id = this->graphics[graphic_id]->slp_id;
+
+		log::msg("   slp id/name: %d %s", slp_id, this->graphics[graphic_id]->name0.c_str());
+
+		if (slp_id <= 0) {
+			log::msg("  -> ignoring slp_id: %d", slp_id);
+			continue;
+		}
+
+
+		char *tex_fname = util::format("Data/graphics.drs/%d.slp.png", slp_id);
+		std::string tex_full_filename = asset_dir.join(tex_fname);
+
+		if (0 >= util::file_size(tex_full_filename)) {
+			log::msg("   file %s is not there, ignoring...", tex_full_filename.c_str());
+			continue;
+		}
+
+		// convert the float to the discrete foundation size...
+		openage::coord::tile_delta foundation_size = {
+			(int)(building.radius_size0 * 2),
+			(int)(building.radius_size1 * 2),
+		};
+
+		log::msg("   building has foundation size %.2f x %.2f = %dx%d",
+		         building.radius_size0,
+		         building.radius_size1,
+		         foundation_size.ne,
+		         foundation_size.se
+		);
+
+		TestBuilding *newbuilding = new TestBuilding{
+			new Texture{tex_full_filename, true, PLAYERCOLORED},
+			building.name,
+			foundation_size,
+			building.terrain_id,
+			building.sound_creation0,
+			building.sound_dying,
+		};
+		this->available_buildings.push_back(newbuilding);
+
+		delete[] tex_fname;
 		i += 1;
+	}
+
+
+	// playable sound files for the audio manager
+	std::vector<gamedata::sound_file> sound_files;
+
+	for (auto &sound : gamedata[0].sounds.data) {
+		for (auto &item : sound.sound_items.data) {
+			char *snd_fname = util::format("Data/sounds.drs/%d.opus", item.resource_id);
+			std::string snd_full_filename = asset_dir.join(snd_fname);
+
+			if (0 >= util::file_size(snd_full_filename)) {
+				log::msg("   file %s is not there, ignoring...", snd_full_filename.c_str());
+				continue;
+			}
+
+			gamedata::sound_file f {
+				gamedata::audio_category_t::GAME,
+				item.resource_id,
+				snd_fname,
+				gamedata::audio_format_t::OPUS,
+				gamedata::audio_loader_policy_t::IN_MEMORY   //TODO: DYNAMIC
+			};
+			sound_files.push_back(f);
+
+			delete[] snd_fname;
+		}
+	}
+
+	// load the requested sounds.
+	audio::AudioManager &am = engine->get_audio_manager();
+	am.load_resources(asset_dir, sound_files);
+
+	// create test sound objects that can be played later
+	for (auto &sound : gamedata[0].sounds.data) {
+		std::vector<int> sound_items;
+		for (auto &item : sound.sound_items.data) {
+			sound_items.push_back(item.resource_id);
+		}
+		this->available_sounds[sound.id] = TestSound{sound_items};
 	}
 
 	auto player_color_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("player_palette_50500.docx"));
@@ -142,13 +231,6 @@ EngineTest::EngineTest(Engine *engine)
 		playercolors[i*4 + 2] = line->b / 255.0;
 		playercolors[i*4 + 3] = line->a / 255.0;
 	}
-
-	audio::AudioManager &am = engine->get_audio_manager();
-
-	// initialize sounds
-	build_uni_sound    = new audio::Sound{am.get_sound(audio::category_t::GAME, 5229)};
-	destroy_uni_sound0 = new audio::Sound{am.get_sound(audio::category_t::GAME, 5316)};
-	destroy_uni_sound1 = new audio::Sound{am.get_sound(audio::category_t::GAME, 5317)};
 
 	// shader initialisation
 	// read shader source codes and create shader objects for wrapping them.
@@ -230,20 +312,20 @@ EngineTest::EngineTest(Engine *engine)
 }
 
 EngineTest::~EngineTest() {
-	for (auto &obj : buildings) {
+	for (auto &obj : this->placed_buildings) {
+		delete obj;
+	}
+
+	for (auto &obj : this->available_buildings) {
+		delete obj->texture;
 		delete obj;
 	}
 
 	// oh noes, release hl3 before that!
-	delete gaben;
+	delete this->gaben;
 
-	delete terrain;
+	delete this->terrain;
 
-	delete build_uni_sound;
-	delete destroy_uni_sound0;
-	delete destroy_uni_sound1;
-
-	delete university;
 	delete texture_shader::program;
 	delete teamcolor_shader::program;
 	delete alphamask_shader::program;
@@ -293,6 +375,7 @@ bool EngineTest::on_input(SDL_Event *e) {
 		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT) {
 
 			// get chunk clicked on, don't create it if it's not there already
+			// -> placing buildings in void is forbidden that way
 			TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
 			if (chunk == nullptr) {
 				break;
@@ -302,35 +385,39 @@ bool EngineTest::on_input(SDL_Event *e) {
 			TerrainObject *obj = chunk->get_data(mousepos_tile)->obj;
 			if (obj != nullptr) {
 				obj->remove();
-				buildings.erase(obj);
+				this->placed_buildings.erase(obj);
 				delete obj;
 
-				// play uni destruction sound
-				int rand = util::random_range(0, 1 + 1);
-				if (rand == 0) {
-					destroy_uni_sound0->play();
-				} else {
-					destroy_uni_sound1->play();
-				}
+				// TODO: play destruction sound
+				//int rand = util::random_range(0, obj->destruction_snd_count + 1);
+				//sounds[rand].play()
 			} else {
-				int uni_player_id = util::random_range(1, 8 + 1);
-				TerrainObject *newuni = new TerrainObject(university, uni_player_id);
+				TestBuilding *newbuilding = this->available_buildings[this->editor_current_building];
+				int coloring = util::random_range(1, 8 + 1);
+				TerrainObject *newobj = new TerrainObject(
+					newbuilding->texture,
+					newbuilding->foundation_size,
+					coloring
+				);
 
-				log::dbg("uni player id: %d", uni_player_id);
+				// try to place the obj, it knows best whether it will fit.
+				bool obj_placed = newobj->place(terrain, mousepos_tile);
+				if (obj_placed) {
+					this->available_sounds[newbuilding->sound_id_creation].play();
+					this->placed_buildings.insert(newobj);
 
-				// try to place the uni, it knows best whether it will fit.
-				bool uni_placed = newuni->place(terrain, mousepos_tile);
-				if (uni_placed) {
-					newuni->set_ground(editor_current_terrain, 0);
-					buildings.insert(newuni);
-					build_uni_sound->play();
+					if (newbuilding->foundation_terrain > 0) {
+						// TODO: use the gamedata terrain lookup!
+						newobj->set_ground(newbuilding->foundation_terrain, 0);
+					}
 				} else {
-					delete newuni;
+					delete newobj;
 				}
 			}
 			break;
 		}
-		else if (not scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
+		else if (not scrolling_active
+		         and e->button.button == SDL_BUTTON_MIDDLE) {
 			// activate scrolling
 			SDL_SetRelativeMouseMode(SDL_TRUE);
 			scrolling_active = true;
@@ -377,7 +464,12 @@ bool EngineTest::on_input(SDL_Event *e) {
 		break;
 
 	case SDL_MOUSEWHEEL:
-		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, terrain->terrain_id_count);
+		if (this->ctrl_active) {
+			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->available_buildings.size());
+		}
+		else {
+			editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
+		}
 		break;
 
 	case SDL_KEYUP:
@@ -386,16 +478,22 @@ bool EngineTest::on_input(SDL_Event *e) {
 			//stop the game
 			engine.stop();
 			break;
+		case SDLK_LCTRL:
+			this->ctrl_active = false;
+			break;
 		}
 
 		break;
 	case SDL_KEYDOWN:
 		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
 		case SDLK_SPACE:
-			terrain->blending_enabled = !terrain->blending_enabled;
+			this->terrain->blending_enabled = !terrain->blending_enabled;
 			break;
 		case SDLK_F2:
 			engine.save_screenshot("/tmp/openage_00.png");
+			break;
+		case SDLK_LCTRL:
+			this->ctrl_active = true;
 			break;
 		}
 
@@ -463,9 +561,24 @@ bool EngineTest::on_draw() {
 
 bool EngineTest::on_drawhud() {
 	// draw the currently selected editor texture tile
-	terrain->texture(editor_current_terrain)->draw(coord::window{63, 84}.to_camhud());
+	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud());
+
+	// and the current building
+	this->available_buildings[this->editor_current_building]->texture->draw(coord::window{63, 200}.to_camhud());
 
 	return true;
+}
+
+void TestSound::play() {
+	if (this->sound_items.size() <= 0) {
+		return;
+	}
+
+	audio::AudioManager &am = Engine::get().get_audio_manager();
+
+	int rand = util::random_range(0, this->sound_items.size());
+	int sndid = this->sound_items[rand];
+	audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();
 }
 
 } //namespace openage

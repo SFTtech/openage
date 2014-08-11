@@ -8,6 +8,7 @@ import math
 from slp import SLP
 import util
 from util import dbg
+import hardcoded.terrain_tile_size
 
 
 def subtexture_meta(tx, ty, hx, hy, cx, cy):
@@ -94,6 +95,7 @@ one sprite included in the 'big texture' has."""
             frames = [
                 TextureImage(
                     tile.get_picture_data(),
+                    hotspot=tuple(hardcoded.terrain_tile_size.tile_halfsize.values())
                 )
                 for tile in input_data.alphamasks
             ]

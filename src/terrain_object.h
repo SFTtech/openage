@@ -11,12 +11,6 @@
 
 namespace openage {
 
-struct object_size {
-	unsigned int ne_length;
-	unsigned int se_length;
-};
-
-//fak u, dunno why i need u
 class Terrain;
 class TerrainChunk;
 
@@ -33,7 +27,7 @@ terrain object class represents one immobile object on the map (building, trees,
 */
 class TerrainObject {
 public:
-	TerrainObject(Texture *tex, unsigned player);
+	TerrainObject(Texture *tex, coord::tile_delta foundation_size, unsigned player);
 	~TerrainObject();
 
 	coord::tile start_pos;
@@ -48,11 +42,11 @@ public:
 
 
 	/**
-	comparison for TerrainObjects.
-
-	sorting for vertical placement,
-	so the objects can be drawn in correct order.
-	*/
+	 * comparison for TerrainObjects.
+	 *
+	 * sorting for vertical placement,
+	 * so the objects can be drawn in correct order.
+	 */
 	bool operator <(const TerrainObject &other);
 
 
@@ -60,7 +54,7 @@ private:
 	bool placed;
 	Terrain *terrain;
 	Texture *texture;
-	struct object_size size;
+	coord::tile_delta size;
 	unsigned player;
 
 	int occupied_chunk_count;

@@ -13,12 +13,13 @@
 
 namespace openage {
 
-TerrainObject::TerrainObject(Texture *tex, unsigned player) {
-	this->placed = false;
+TerrainObject::TerrainObject(Texture *tex,
+                             coord::tile_delta foundation_size,
+                             unsigned player) {
+	this->placed  = false;
 	this->texture = tex;
-	//university specific for testing purposes
-	this->size = { 5, 5 };
-	this->player = player;
+	this->size    = foundation_size;
+	this->player  = player;
 
 	this->occupied_chunk_count = 0;
 }
@@ -221,12 +222,12 @@ bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
  */
 void TerrainObject::set_position(coord::tile pos) {
 	this->start_pos = pos;
-	this->start_pos.ne -= (this->size.ne_length - 1) / 2;
-	this->start_pos.se -= (this->size.se_length - 1) / 2;
+	this->start_pos.ne -= (this->size.ne - 1) / 2;
+	this->start_pos.se -= (this->size.se - 1) / 2;
 
 	this->end_pos = this->start_pos;
-	this->end_pos.ne += this->size.ne_length;
-	this->end_pos.se += this->size.se_length;
+	this->end_pos.ne += this->size.ne;
+	this->end_pos.se += this->size.se;
 
 	//TODO: fix this university-hardcoding..
 	coord::tile drawpos_tile = this->start_pos;
