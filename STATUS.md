@@ -11,14 +11,19 @@ append it to the list while in your branch.
 features
 --------
 
-* converting all original media files
+* convert all original media files
+* create a csv representation of all gamedata
+* generate C structures for media files and gamedata
 * flat, infinite terrain rendering
 * tile blending (toggle with space)
-* placement of universities (right click)
+* placement of a building (right click)
+  * building selection (control + scrollwheel)
 * terrain id modification
   * select current terrain (scrollwheel)
   * draw selected terrain (left click)
-* map scrolling (arrow keys)
+* map scrolling
+  * arrow keys
+  * middle mouse button
 * screenshots (F2) -> /tmp/openage_00.png
 * ingame console
   * open with backtick
