@@ -140,6 +140,13 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	// initialize debug text font
 	this->dejavuserif20 = new Font{"DejaVu Serif", "Book", 20};
 
+	// initialize job manager with cpucount-2 worker threads
+	int number_of_worker_threads = SDL_GetCPUCount() - 2;
+	if (number_of_worker_threads <= 0) {
+		number_of_worker_threads = 1;
+	}
+	this->job_manager = new job::JobManager{number_of_worker_threads};
+
 	// initialize audio
 	auto devices = audio::AudioManager::get_devices();
 	if (devices.empty()) {
@@ -149,6 +156,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 
 Engine::~Engine() {
 	delete this->dejavuserif20;
+	delete this->job_manager;
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
 	IMG_Quit();
@@ -218,7 +226,8 @@ void Engine::save_screenshot(const char* filename) {
 	glReadPixels(
 		0, 0,
 		this->window_size.x, this->window_size.y,
-		GL_RGBA, GL_UNSIGNED_BYTE, pxdata);
+		GL_RGBA, GL_UNSIGNED_BYTE, pxdata
+	);
 
 	uint32_t *surface_pxls = (uint32_t *)screen->pixels;
 
@@ -241,12 +250,14 @@ void Engine::save_screenshot(const char* filename) {
 }
 
 void Engine::run() {
+	this->job_manager->start();
 	this->running = true;
 	this->loop();
 	this->running = false;
 }
 
 void Engine::stop() {
+	this->job_manager->stop();
 	this->running = false;
 }
 
@@ -336,6 +347,10 @@ void Engine::register_resize_action(ResizeHandler *handler) {
 
 util::Dir *Engine::get_data_dir() {
 	return this->data_dir;
+}
+
+job::JobManager *Engine::get_job_manager() {
+	return this->job_manager;
 }
 
 audio::AudioManager &Engine::get_audio_manager() {

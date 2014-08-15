@@ -1,8 +1,11 @@
 #include "audio_manager.h"
 
 #include <cstring>
+<<<<<<< HEAD:src/audio/audio_manager.cpp
 #include <SDL2/SDL.h>
+=======
 #include <sstream>
+>>>>>>> github/audio:src/engine/audio/audio_manager.cpp
 
 #include "resource.h"
 
@@ -77,18 +80,24 @@ AudioManager::~AudioManager() {
 	SDL_CloseAudioDevice(device_id);
 }
 
-void AudioManager::load_resources(util::Dir &asset_dir,
-                                  const std::vector<gamedata::sound_file> &sound_files) {
+void AudioManager::load_resources(util::Dir &asset_dir, const std::vector<gamedata::sound_file> &sound_files) {
 	for (auto &sound_file : sound_files) {
 		auto category = from_category(sound_file.category);
 		auto id = sound_file.sound_id;
 
+<<<<<<< HEAD:src/audio/audio_manager.cpp
 		std::string path = asset_dir.join(sound_file.path);
+=======
+		std::ostringstream sstr;
+		sstr << "age/";
+		sstr << sound_file.path;
+>>>>>>> github/audio:src/engine/audio/audio_manager.cpp
 		auto format = from_format(sound_file.format);
 		auto loader_policy = from_loader_policy(sound_file.loader_policy);
 
 		auto key = std::make_tuple(category, id);
-		auto resource = Resource::create_resource(category, id, path, format, loader_policy);
+		auto resource = Resource::create_resource(category, id, sstr.str(),
+				format, loader_policy);
 
 		// TODO check resource already existing
 		resources.insert({key, resource});

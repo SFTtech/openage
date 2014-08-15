@@ -12,6 +12,7 @@
 #include "font.h"
 #include "handlers.h"
 #include "input.h"
+#include "job/job_manager.h"
 #include "util/dir.h"
 #include "util/fps.h"
 
@@ -129,6 +130,11 @@ public:
 	util::Dir *get_data_dir();
 
 	/**
+	 * return this engine's job manager.
+	 */
+	job::JobManager *get_job_manager();
+
+	/**
 	 * return this engine's audio manager.
 	 */
 	audio::AudioManager &get_audio_manager();
@@ -234,6 +240,11 @@ private:
 	 * the engine's audio manager.
 	 */
 	audio::AudioManager audio_manager;
+
+	/**
+	 * the engine's job manager, for asynchronous background task queuing.
+	 */
+	job::JobManager *job_manager;
 
 	/**
 	 * the text font to be used for (can you believe it?) texts.

@@ -24,10 +24,11 @@ add_executable(${PROJECT_NAME}
 
 	audio/audio_manager.cpp
 	audio/category.cpp
+	audio/dynamic_loader.cpp
 	audio/format.cpp
+	audio/in_memory_loader.cpp
 	audio/loader_policy.cpp
 	audio/resource.cpp
-	audio/resource_loader.cpp
 	audio/sound.cpp
 
 	console/buf.cpp
@@ -47,6 +48,8 @@ add_executable(${PROJECT_NAME}
 	coord/vec3.cpp
 	coord/vec3f.cpp
 	coord/window.cpp
+
+	job/job_manager.cpp
 
 	shader/program.cpp
 	shader/shader.cpp

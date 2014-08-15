@@ -15,6 +15,7 @@ Error::Error(const char *fmt, ...) {
 	va_start(vl, fmt);
 	this->buf = vformat(fmt, vl);
 	va_end(vl);
+	log::msg("ERROR: %s", buf);
 }
 
 Error::Error(const Error &other) {
