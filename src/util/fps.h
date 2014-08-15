@@ -6,6 +6,9 @@ namespace util {
 
 class FrameCounter {
 public:
+	FrameCounter();
+	~FrameCounter();
+
 	/** to be called each time a frame has been completed */
 	void frame();
 
