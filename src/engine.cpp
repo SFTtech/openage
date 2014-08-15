@@ -29,22 +29,30 @@
 namespace openage {
 
 // engine singleton instance allocation
-std::unique_ptr<Engine> Engine::instance;
+Engine *Engine::instance = nullptr;
 
 void Engine::create(util::Dir *data_dir, const char *windowtitle) {
 	// only create the singleton instance if it was not created before..
-	if (Engine::instance.get() == nullptr) {
+	if (Engine::instance == nullptr) {
 		// reset the pointer to the new engine
-		Engine *engine = new Engine(data_dir, windowtitle);
-		Engine::instance.reset(engine);
+		Engine::instance = new Engine(data_dir, windowtitle);
 	}
 	else {
 		throw util::Error{"you tried to create another singleton instance!!111"};
 	}
 }
 
+void Engine::destroy() {
+	if (Engine::instance == nullptr) {
+		throw util::Error{"you tried to destroy a nonexistant engine."};
+	}
+	else {
+		delete Engine::instance;
+	}
+}
+
 Engine &Engine::get() {
-	return *Engine::instance.get();
+	return *Engine::instance;
 }
 
 

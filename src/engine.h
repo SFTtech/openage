@@ -33,14 +33,22 @@ class Engine : public ResizeHandler {
 private:
 	/**
 	 * global engine singleton instance.
+	 *
+	 * TODO: use unique_ptr again, but that segfaults in ftgl/freetype
+	 *       because of a wrong deinit-order.
 	 */
-	static std::unique_ptr<Engine> instance;
+	static Engine *instance;
 
 public:
 	/**
 	 * singleton constructor, use this to create the engine instance.
 	 */
 	static void create(util::Dir *data_dir, const char *windowtitle);
+
+	/**
+	 * singleton destructor, use when the program is shutting down.
+	 */
+	static void destroy();
 
 	/**
 	 * singleton instance fetcher.
@@ -70,7 +78,7 @@ public:
 	 * engine destructor, cleans up memory etc.
 	 * deletes opengl context, the SDL window, and engine variables.
 	 */
-	~Engine();
+	virtual ~Engine();
 
 	/**
 	 * starts the engine loop.

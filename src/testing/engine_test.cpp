@@ -88,6 +88,8 @@ int run_game(Arguments *args) {
 	// run main loop
 	engine.run();
 
+	Engine::destroy();
+
 	return 0;
 }
 
