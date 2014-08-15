@@ -200,7 +200,7 @@ EngineTest::EngineTest(Engine *engine)
 				item.resource_id,
 				snd_fname,
 				gamedata::audio_format_t::OPUS,
-				gamedata::audio_loader_policy_t::IN_MEMORY   //TODO: DYNAMIC
+				gamedata::audio_loader_policy_t::DYNAMIC
 			};
 			sound_files.push_back(f);
 
