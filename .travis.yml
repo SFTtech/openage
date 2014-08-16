@@ -7,8 +7,6 @@ compiler:
   - clang
   - gcc
 
-#a friendly message to travis: please, oh please update to a newer ubuntu release
-
 before_install:
   - uname -a
   - lsb_release -a
@@ -27,10 +25,6 @@ install:
   - ( curl 'http://downloads.xiph.org/releases/ogg/libogg-1.3.1.tar.xz'  | xz -d   | tar x && cd libogg-1.3.1 && ./configure --prefix=/usr && make && sudo make install DESTDIR=/ )
   - ( curl 'http://downloads.xiph.org/releases/opus/opus-1.1.tar.gz'     | gzip -d | tar x && cd opus-1.1     && ./configure --prefix=/usr && make && sudo make install DESTDIR=/ )
   - ( curl 'http://downloads.xiph.org/releases/opus/opusfile-0.5.tar.gz' | gzip -d | tar x && cd opusfile-0.5 && ./configure --prefix=/usr && make && sudo make install DESTDIR=/ )
-
-#seriously travis the current system is totally outdated...
-#i recommend having the choice of multiple vm images:
-#current version of: archlinux, ubuntu, debian and maybe more.
 
 before_script:
   - cmake --version
