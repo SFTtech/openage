@@ -19,7 +19,8 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; export CXX="g++-4.8" CC="gcc-4.8"; fi
+  - sudo apt-get install -qq g++-4.8; #also needed for newer clang stdlib
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
   - export CC=`which $CC`
   - export CXX=`which $CXX`
   - sudo apt-get install -qq python3.3 python3.3-dev libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev cmake
