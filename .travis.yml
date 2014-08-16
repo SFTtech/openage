@@ -18,7 +18,7 @@ before_install:
 
 install:
   - export CVERSION="4.9"
-  - sudo apt-get install -qq g++-${CVERSION}; #also needed for newer stdlib
+  - sudo apt-get install -qq gcc-${CVERSION}; #also needed for newer stdlib
   - if [ "$CXX" = "g++" ]; then export CXX="g++-${CVERSION}" CC="gcc-${CVERSION}"; fi
   - export CC=`which $CC`
   - export CXX=`which $CXX`
