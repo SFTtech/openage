@@ -81,7 +81,7 @@ class Graphic(dataformat.Exportable):
         (dataformat.READ_EXPORT, "attack_sound_used", "uint8_t"),
         (dataformat.READ_EXPORT, "frame_count", "uint16_t"),
         (dataformat.READ_EXPORT, "angle_count", "uint16_t"),
-        (dataformat.READ, "new_speed", "float"),                   #when unit has garrisoned anything, this _might_ be the new unit speed.
+        (dataformat.READ, "speed_adjust", "float"),                #multiplies the speed of the unit this graphic is applied to
         (dataformat.READ_EXPORT, "frame_rate", "float"),           #playtime for one frame in seconds
         (dataformat.READ_EXPORT, "replay_delay", "float"),         #seconds to wait before current_frame=0 again
         (dataformat.READ_EXPORT, "sequence_type", "int8_t"),
