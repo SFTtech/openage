@@ -13,7 +13,7 @@ DATA_DIR = ./data
 
 #this list specifies needed media files for the convert script
 #TODO: let our binary generate this list.
-needed_media = graphics:*.slp terrain:*.slp sounds0:*.* sounds1:*.* gamedata0:*.* gamedata1:*.* gamedata2:*.* interface:*.*
+needed_media = graphics:*.* terrain:*.* sounds0:*.* sounds1:*.* gamedata0:*.* gamedata1:*.* gamedata2:*.* interface:*.*
 
 
 binary = bin/$(project_name)
