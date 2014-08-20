@@ -32,29 +32,29 @@ extern shader::Program *program;
 extern GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 } //namespace alphamask_shader
 
-//bitmasks for shader modes
+// bitmasks for shader modes
 constexpr int PLAYERCOLORED = 1 << 0;
 constexpr int ALPHAMASKED   = 1 << 1;
 
 
 /**
-a texture for rendering graphically.
-
-You may believe it or not, but this class represents a single texture,
-which can be drawn on the screen.
-
-The class supports subtextures, so that one big texture can contain
-several small images. These are the ones actually to be rendered.
-*/
+ * a texture for rendering graphically.
+ *
+ * You may believe it or not, but this class represents a single texture,
+ * which can be drawn on the screen.
+ *
+ * The class supports subtextures, so that one big texture can contain
+ * several small images. These are the ones actually to be rendered.
+ */
 class Texture {
 public:
 	int w;
 	int h;
 
 	/**
-	terrain atlas dimensions (floor(sqrt(subtexture count)))
-	relevant for determining terrain subtexture ids
-	*/
+	 * terrain atlas dimensions (floor(sqrt(subtexture count)))
+	 * relevant for determining terrain subtexture ids
+	 */
 	size_t atlas_dimensions;
 
 	Texture(std::string filename, bool use_metafile = false, unsigned int mode = 0);
@@ -68,6 +68,14 @@ public:
 	struct gamedata::subtexture *get_subtexture(int subid);
 	int get_subtexture_count();
 	void get_subtexture_size(int subid, int *w, int *h);
+
+	/**
+	 * get atlas subtexture coordinates.
+	 *
+	 * left, right, top and bottom bounds as coordinates
+	 * these pick the requested area out of the big texture.
+	 * returned as floats in range 0.0 to 1.0
+	 */
 	void get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb);
 	void get_subtexture_coordinates(struct gamedata::subtexture *subtex, float *txl, float *txr, float *txt, float *txb);
 

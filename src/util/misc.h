@@ -5,10 +5,10 @@ namespace openage {
 namespace util {
 
 /**
-returns a random number in the given range
-@param lower the (included) lower limit of the generated number
-@param upper the (excluded) upper limit of the generated number
-*/
+ * returns a random number in the given range
+ * @param lower the (included) lower limit of the generated number
+ * @param upper the (excluded) upper limit of the generated number
+ */
 int random_range(int lower, int upper);
 
 /**
@@ -40,19 +40,20 @@ T mod(T x) {
 }
 
 /**
-implements the 'correct' version of the division operator,
-which always rounds to -inf
-*/
+ * implements the 'correct' version of the division operator,
+ * which always rounds to -inf
+ */
 template <typename T>
-T div(T x, T m) {
+inline T div(T x, T m) {
 	return (x - mod<T>(x, m)) / m;
 }
 
 /**
-generic callable, that compares any types for creating a total order.
-
-use for stdlib structures like std::set
-*/
+ * generic callable, that compares any types for creating a total order.
+ *
+ * use for stdlib structures like std::set.
+ * the template paramter has to be a pointer type.
+ */
 template <typename T>
 struct less {
 	bool operator ()(const T x, const T y) {

@@ -540,7 +540,9 @@ void Terrain::get_neighbors(coord::tile basepos,
 	}
 }
 
-struct influence_group Terrain::calculate_influences(struct tile_data *base_tile, struct neighbor_tile *neigh_data, struct influence *influences_by_terrain_id) {
+struct influence_group Terrain::calculate_influences(struct tile_data *base_tile,
+                                                     struct neighbor_tile *neigh_data,
+                                                     struct influence *influences_by_terrain_id) {
 	// influences to actually draw (-> maximum 8)
 	struct influence_group influences;
 	influences.count = 0;
@@ -633,7 +635,9 @@ struct influence_group Terrain::calculate_influences(struct tile_data *base_tile
 }
 
 
-void Terrain::calculate_masks(coord::tile position, struct tile_draw_data *tile_data, struct influence_group *influences) {
+void Terrain::calculate_masks(coord::tile position,
+                              struct tile_draw_data *tile_data,
+                              struct influence_group *influences) {
 
 	// influences are grouped by terrain id.
 	// the direction member has each bit set to 1 that is an influence from that direction.

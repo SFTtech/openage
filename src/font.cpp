@@ -11,8 +11,8 @@
 namespace openage {
 
 /**
-using fontconfig for just getting the font file name by a wanted font name and style.
-*/
+ * using fontconfig for just getting the font file name by a wanted font name and style.
+ */
 char *get_font_filename(const char *family, const char *style) {
 	//initialize fontconfig
 	if (!FcInit()) {

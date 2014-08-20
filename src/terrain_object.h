@@ -34,18 +34,48 @@ public:
 	coord::phys3 draw_pos;
 	coord::tile end_pos;
 
+	/**
+	 * tests whether this terrain object will fit at the given position.
+	 *
+	 * @param terrain: the terrain where the check will be performed.
+	 * @param pos: the base position.
+	 * @returns true when the object fits, false otherwise.
+	 */
 	bool fits(Terrain *terrain, coord::tile pos);
-	bool place(Terrain *terrain, coord::tile pos);
-	void set_ground(int id, int additional=0);
-	bool draw();
-	void remove();
 
+	/**
+	 * binds the TerrainObject to a certain TerrainChunk.
+	 *
+	 * @param terrain: the terrain where the object will be placed onto.
+	 * @param pos: (tile) position of the (nw,sw) corner
+	 * @returns true when the object was placed, false when it did not fit at pos.
+	 */
+	bool place(Terrain *terrain, coord::tile pos);
+
+	/**
+	 * sets all the ground below the object to a terrain id.
+	 *
+	 * @param id: the terrain id to which the ground is set
+	 * @param additional: amount of additional space arround the building
+	 */
+	void set_ground(int id, int additional=0);
+
+	/**
+	 * display the texture of this object at the placement position.
+	 */
+	bool draw();
+
+	/**
+	 * remove this TerrainObject from the terrain chunks.
+	 */
+	void remove();
 
 	/**
 	 * comparison for TerrainObjects.
 	 *
-	 * sorting for vertical placement,
-	 * so the objects can be drawn in correct order.
+	 * sorting for vertical placement.
+	 * by using this order algorithm, the overlapping order
+	 * is optimal so the objects can be drawn in correct order.
 	 */
 	bool operator <(const TerrainObject &other);
 
@@ -60,6 +90,23 @@ private:
 	int occupied_chunk_count;
 	TerrainChunk *occupied_chunk[4];
 
+	/**
+	 * set and calculate object start and end positions.
+	 *
+	 * @param pos: the center position of the building
+	 *
+	 * set the center position to "middle",
+	 * start_pos is % and end_pos = &
+	 *
+	 * for a building, the # tile will be "the clicked one":
+	 *           @              @           @
+	 *         @   @          @   @      %#   &
+	 *       @   @   @      %   #   &       @
+	 *     %   #   @   &      @   @
+	 *       @   @   @          @
+	 *         @   @
+	 *           @
+	 */
 	void set_position(coord::tile pos);
 };
 

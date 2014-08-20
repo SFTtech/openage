@@ -293,19 +293,13 @@ struct gamedata::subtexture *Texture::get_subtexture(int subid) {
 }
 
 
-/**
-get atlas subtexture coordinates.
-
-left, right, top and bottom bounds as coordinates
-these pick the requested area out of the big texture.
-returned as floats in range 0.0 to 1.0
-*/
 void Texture::get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) {
 	struct gamedata::subtexture *tx = this->get_subtexture(subid);
 	this->get_subtexture_coordinates(tx, txl, txr, txt, txb);
 }
 
-void Texture::get_subtexture_coordinates(struct gamedata::subtexture *tx, float *txl, float *txr, float *txt, float *txb) {
+void Texture::get_subtexture_coordinates(struct gamedata::subtexture *tx,
+                                         float *txl, float *txr, float *txt, float *txb) {
 	*txl = ((float)tx->x)           /this->w;
 	*txr = ((float)(tx->x + tx->w)) /this->w;
 	*txt = ((float)tx->y)           /this->h;

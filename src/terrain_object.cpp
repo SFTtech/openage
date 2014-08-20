@@ -28,9 +28,6 @@ TerrainObject::TerrainObject(Texture *tex,
 TerrainObject::~TerrainObject() {}
 
 
-/**
-* remove this TerrainObject from the terrain chunks.
-*/
 void TerrainObject::remove() {
 	if (this->occupied_chunk_count == 0 || not this->placed) {
 		return;
@@ -60,13 +57,6 @@ void TerrainObject::remove() {
 }
 
 
-/**
-* binds the TerrainObject to a certain TerrainChunk.
-*
-* @param terrain: the terrain where the object will be placed onto.
-* @param pos: (tile) position of the (nw,sw) corner
-* @returns true when the object was placed, false when it did not fit at pos.
-*/
 bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
 	if (this->placed) {
 		throw util::Error("this object has already been placed.");
@@ -122,13 +112,7 @@ bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
 	return true;
 }
 
-/**
-* sets all the ground below the object to a terrain id.
-*
-* @param id: the terrain id to which the ground is set
-* @param additional: amount of additional space arround the building
-*
-*/
+
 void TerrainObject::set_ground(int id, int additional) {
 
 	if (not this->placed) {
@@ -163,13 +147,7 @@ bool TerrainObject::draw() {
 	return true;
 }
 
-/**
- * tests whether this terrain object will fit at the given position.
- *
- * @param terrain: the terrain where the check will be performed.
- * @param pos: the base position.
- * @returns true when the object fits, false otherwise.
- */
+
 bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
 	this->set_position(pos);
 
@@ -203,23 +181,7 @@ bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
 	return true;
 }
 
-/**
- * set and calculate object start and end positions.
- *
- * @param pos: the center position of the building
- *
- * set the center position to "middle",
- * start_pos is % and end_pos = &
- *
- * for a building, the # tile will be "middle":
- *        @              @           @
- *      @   @          @   @      %#   &
- *    @   @   @      %   #   &       @
- *  %   #   @   &      @   @
- *    @   @   @          @
- *      @   @
- *        @
- */
+
 void TerrainObject::set_position(coord::tile pos) {
 	this->start_pos = pos;
 	this->start_pos.ne -= (this->size.ne - 1) / 2;
@@ -237,12 +199,7 @@ void TerrainObject::set_position(coord::tile pos) {
 	this->draw_pos = drawpos_tile.to_phys2().to_phys3();
 }
 
-/**
- * comparison method for overlay ordering.
- *
- * sorting objects with this function leads to a perfect
- * overlapping order.
- */
+
 bool TerrainObject::operator <(const TerrainObject &other) {
 
 	if (this == &other) {
