@@ -149,10 +149,10 @@ EngineTest::EngineTest(Engine *engine)
 
 		char *tex_fname = util::format("Data/graphics.drs/%d.slp.png", slp_id);
 		std::string tex_full_filename = asset_dir.join(tex_fname);
-		delete[] tex_fname;
 
 		if (0 >= util::file_size(tex_full_filename)) {
 			log::msg("   file %s is not there, ignoring...", tex_full_filename.c_str());
+			delete[] tex_fname;
 			continue;
 		}
 
@@ -179,6 +179,7 @@ EngineTest::EngineTest(Engine *engine)
 		};
 		this->available_buildings.push_back(newbuilding);
 
+		delete[] tex_fname;
 		i += 1;
 	}
 
@@ -190,10 +191,10 @@ EngineTest::EngineTest(Engine *engine)
 		for (auto &item : sound.sound_items.data) {
 			char *snd_fname = util::format("Data/sounds.drs/%d.opus", item.resource_id);
 			std::string snd_full_filename = asset_dir.join(snd_fname);
-			delete[] snd_fname;
 
 			if (0 >= util::file_size(snd_full_filename)) {
 				log::msg("   file %s is not there, ignoring...", snd_full_filename.c_str());
+				delete[] snd_fname;
 				continue;
 			}
 
@@ -205,6 +206,7 @@ EngineTest::EngineTest(Engine *engine)
 				gamedata::audio_loader_policy_t::DYNAMIC
 			};
 			sound_files.push_back(f);
+			delete[] snd_fname;
 		}
 	}
 
