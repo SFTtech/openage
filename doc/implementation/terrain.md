@@ -8,16 +8,13 @@ this document may enlighten your mind.
 
 
 ideas
-=====
+-----
 
-you might know the infinite terrain epicness of minecraft.
-that's exactly what we are doing in openage.
+You might know the infinite terrain epicness of minecraft. That's exactly what we are doing in openage.
 
-the terrain consists of loads of small tiles,
-they are grouped in "chunks".
+The terrain consists of loads of small tiles, grouped in "chunks".
 
-one chunk contains an area of (currently) 16x16 tiles.
-terrain is blended by the technique described in doc/media/blendomatic.
+One chunk contains an area of (currently) 16×16 tiles. Terrain is blended by the technique described in `doc/media/blendomatic`.
 
 (short summary:
 a neighbor tile is blended onto the current one,
@@ -28,13 +25,13 @@ if neighbor.priority > current.priority:
 
 
 master terrain
-==============
+--------------
 
 this is the container of all chunks.
 
 
 
 chunk
-=====
+-----
 
 a grouped piece of terrain.

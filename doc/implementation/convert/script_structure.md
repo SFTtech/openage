@@ -1,4 +1,4 @@
-convert script
+Convert script
 ==============
 
 the convert script (you may not believe it) converts data.
@@ -11,7 +11,7 @@ this is what the convert script does.
 the convert script is divided into two parts:
 content dependend and independend exports.
 
-converting media
+Converting media
 ----------------
 
 * depends on existing original game installation
@@ -20,7 +20,7 @@ converting media
 * creates files for the proprietary data package,
   its files will be used if free media files are missing.
 
-exporting structures
+Exporting structures
 --------------------
 
 * totally independent of original game installation
@@ -45,7 +45,7 @@ files can be "redefined" by overlay archives.
 all archives habe to be ordered, so that high priority files override low prio files.
 
 a dict has to be filled with values:
-(fileid, extension, destination) => DRS(archive)
+`(fileid, extension, destination) => DRS(archive)`
 
 each insertion call to this dict has to be checked with the extraction rules.
 
@@ -55,12 +55,13 @@ extraction rules at each insertion.
 
 after the file dict is complete, process it, and convert the media files.
 
-for data files
+For data files
 --------------
 
 simply update or delete values in the parsed python data structure.
 these modifications will be applied like this:
 
+```python
 def fix_data(data):
 	#make lists for all units building locations
 	for each unit:
@@ -74,12 +75,12 @@ def fix_data(data):
 	data.terrain.terrains[6].slp_id = 1337
 
 	return data
-
+```
 
 if you have any better idea, propose it...
 
 
-dynamic input data
+Dynamic input data
 ==================
 
 read list of archives etc from config file
