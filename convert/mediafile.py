@@ -251,7 +251,8 @@ def media_convert(args):
 
             else:
                 #format does not require conversion, store it as plain blob
-                file_write(fname, file_data)
+                output_file = file_get_path(fname, write=True)
+                file_write(output_file, file_data)
 
             media_files_extracted += 1
 
