@@ -201,7 +201,7 @@ def media_convert(args):
                 fbase = os.path.join(asset_folder, drsfile.fname, str(file_id))
                 fname = "%s.%s" % (fbase, file_extension)
 
-                dbg("Extracting to " + fname + "...", 2)
+                dbg("Extracting to %s..." % (fname), 2)
                 file_data = drsfile.get_file_data(file_extension, file_id)
             else:
                 continue
@@ -210,7 +210,7 @@ def media_convert(args):
                 s = SLP(file_data)
                 out_file_tmp = "%s: %d.%s" % (drsname, file_id, file_extension)
 
-                dbg(out_file_tmp + " -> " + fname + " -> generating atlas", 1)
+                dbg("%s -> %s -> generating atlas" % (out_file_tmp, fname), 1)
 
                 #create exportable texture from the slp
                 texture = Texture(s, palette)
