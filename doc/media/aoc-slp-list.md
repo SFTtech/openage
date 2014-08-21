@@ -1,6 +1,7 @@
 graphics.drs
 ============
 
+```
 GRA00364 4 Bigger Flames
 GRA00363 4 Medium Flames
 GRA00362 4 Small Flames
@@ -1769,11 +1770,12 @@ GRA05121 Unknown small dot
 GRA05127 Unused two headed lion sail
 GRA04710 Wagon Tracks in Snow
 GRA05116 West European trade workshop same as GRA01136
-
+```
 
 terrain.drs
 ===========
 
+```
 Ter15021 Bare Farm
 Ter15010 Clear Dirt or Desert
 Ter15005 Dead Farm
@@ -1802,11 +1804,12 @@ GRA15026 Snow
 GRA15029 Snow with ?????
 GRA15027 Snow with dirt
 GRA15028 Snow with grass
-
+```
 
 interfac.drs
 ============
 
+```
 INT50101 Blank sheet of parchment?
 INT50102 Blank sheet of parchment? Maybe different colors?
 INT50103 Blank sheet of parchment? Maybe different colors?
@@ -2027,3 +2030,4 @@ INT53208 Victory/loss page?
 INT53209 Images from cpn movies
 INT53210 White box
 INT53211 A window, or X
+```

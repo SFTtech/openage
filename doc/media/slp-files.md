@@ -81,7 +81,7 @@ slp_frame_info = Struct("< I I I I i i i i")
 
 Every `slp_frame_info` stores meta-information about a single frame (texture) within the slp.
 
-Palette offset is probably never used.  
+Palette offset is probably never used.
 Properties is more or less unused, but:
 *  0x10 means "default game palette",
 *  0x00 means "global color palette"
@@ -120,7 +120,7 @@ struct slp_command_offset {
 slp_command_offset = Struct("< I")
 ```
 
-Each `offset` defines the offset (beginning) of the first command of a row.  
+Each `offset` defines the offset (beginning) of the first command of a row.
 The first `.offset` in this array is offset to the first drawing command for the image.
 
 These are not actually necessary to use, since the commands can be read sequentially.
@@ -234,7 +234,7 @@ Also used to draw things like the red-tinted checkerboard when placing buildings
 Commands `0x{4,5,6,7}E`  indicate that the following command(s) are outlines of the graphic.
 this is a potential outline pixel, it's what you see when a unit is behind something.
 the engine should only draw them as the player color/black, if the pixel(s) are obstructed.
-if they are not obstructed, draw them as transparent.  
+if they are not obstructed, draw them as transparent.
 So the left outline is one pixel more to the left than the first color.
 
 For our purposes, these outline pixels should be stored to a second image, which is rendered

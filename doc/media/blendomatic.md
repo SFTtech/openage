@@ -123,12 +123,12 @@ blendomatic stores the following alpha masks:
 
 id is the tile number for the 31 tiles within one blending mode.
 
-`0` means: keep the base tile pixel, don't overdraw (mask 0)  
+`0` means: keep the base tile pixel, don't overdraw (mask 0)
 `#` means: use this pixel from the dominant neighbor to draw over the base tile (mask 1)
 
 the id's 0..15 describe only 4 directions, but have 16 tiles.
 these were created to avoid the obviously repeating pattern.
-method to choose one of the 4:  
+method to choose one of the 4:
 -> use lower 2 bit of tile destination x or y coordinates.
 
     id: 0..3           4..7           8..11          12..15
@@ -196,101 +196,99 @@ Algorithm:
 ```python
 for @ in alltiles:
 
-	#draw the base tile:
-	@.draw()
+    #draw the base tile:
+    @.draw()
 
-	#storage for influences by neighbor tiles
-	influence = dict()
+    #storage for influences by neighbor tiles
+    influence = dict()
 
-	#first step: gather information about possible influences
-	#look at every neighbor tile for that
-	for i in [0..7]:
+    #first step: gather information about possible influences
+    #look at every neighbor tile for that
+    for i in [0..7]:
 
-		#neighbor only interesting if it's a different terrain than @
-		if i.terrain_type != @.terraintype:
+        #neighbor only interesting if it's a different terrain than @
+        if i.terrain_type != @.terraintype:
 
-			#adjacent tile will draw onto @, as it's priority is higher
-			#else, ignore this neighbor
-			if i.priority > @.priority:
+            #adjacent tile will draw onto @, as it's priority is higher
+            #else, ignore this neighbor
+            if i.priority > @.priority:
 
-				if i.is_diagonal_influence:
-					#get the ids of the adjacent neighbors of the diagonal
-					#influence:
-					i_neighbors = map(lambda x: x % 8, [i - 1, i + 1])
+                if i.is_diagonal_influence:
+                    #get the ids of the adjacent neighbors of the diagonal
+                    #influence:
+                    i_neighbors = map(lambda x: x % 8, [i - 1, i + 1])
 
-					if any of i_neighbors have influence:
-						#don't apply diagonal influence i, as any of its
-						#neighbors already influences the tile.
-						continue
+                    if any of i_neighbors have influence:
+                        #don't apply diagonal influence i, as any of its
+                        #neighbors already influences the tile.
+                        continue
 
-				#as tile i has influence for this priority
-				# => bit i is set to 1 by 2^i (== 1 << i)
-				#each priority is drawn seperately later.
-				influence[i.terrain_id] |= 2**i
+                #as tile i has influence for this priority
+                # => bit i is set to 1 by 2^i (== 1 << i)
+                #each priority is drawn seperately later.
+                influence[i.terrain_id] |= 2**i
 
-	#sort influences by priority, so that higher priorities get drawn last.
-	influence = sorted(influence, by=influence.priority)
+    #sort influences by priority, so that higher priorities get drawn last.
+    influence = sorted(influence, by=influence.priority)
 
-	#now: we got all influences, grouped by terrain priority.
-	#for each of these influences, we continue finding the blendomatic mask
-	# and apply it to the neighbors texture,
-	# then draw the masked tile on top of the base (@) tile.
+    #now: we got all influences, grouped by terrain priority.
+    #for each of these influences, we continue finding the blendomatic mask
+    # and apply it to the neighbors texture,
+    # then draw the masked tile on top of the base (@) tile.
 
-	#the terrain_id has influences coming from directions 'binf',
-	#so we can select directional masks for that terrain.
-	for terrain_id, binf in influence.items():
+    #the terrain_id has influences coming from directions 'binf',
+    #so we can select directional masks for that terrain.
+    for terrain_id, binf in influence.items():
 
-		#there is exactly one adjacent mask id for all combinations
-		adjacent_mask_id  = []
-		diagonal_mask_ids = []
+        #there is exactly one adjacent mask id for all combinations
+        adjacent_mask_id  = []
+        diagonal_mask_ids = []
 
-		#find mask id by influencing neighbor tiles
-		#                           neighbor id: 76543210
-		adjacent_mask_id = [0 .. 3] if binf == 0b00001000
-		           .add()  [4 .. 7] if binf == 0b00000010
-		                   [8 ..11] if binf == 0b00100000
-		                   [12..15] if binf == 0b10000000
-		                   20       if binf == 0b00100010
-		                   21       if binf == 0b10001000
-		                   22       if binf == 0b10100000
-		                   23       if binf == 0b10000010
-		                   24       if binf == 0b00101000
-		                   25       if binf == 0b00001010
-		                   26       if binf == 0b00101010
-		                   27       if binf == 0b10101000
-		                   28       if binf == 0b10100010
-		                   29       if binf == 0b10001010
-		                   30       if binf == 0b10101010
+        #find mask id by influencing neighbor tiles
+        #                           neighbor id: 76543210
+        adjacent_mask_id = [0 .. 3] if binf == 0b00001000
+                   .add()  [4 .. 7] if binf == 0b00000010
+                           [8 ..11] if binf == 0b00100000
+                           [12..15] if binf == 0b10000000
+                           20       if binf == 0b00100010
+                           21       if binf == 0b10001000
+                           22       if binf == 0b10100000
+                           23       if binf == 0b10000010
+                           24       if binf == 0b00101000
+                           25       if binf == 0b00001010
+                           26       if binf == 0b00101010
+                           27       if binf == 0b10101000
+                           28       if binf == 0b10100010
+                           29       if binf == 0b10001010
+                           30       if binf == 0b10101010
 
-		diagonal_mask_id.add(16)    if binf  & 0b00000100 > 0
-		                     17     if binf  & 0b00010000 > 0
-		                     18     if binf  & 0b00000001 > 0
-		                     19     if binf  & 0b01000000 > 0
-
-
-		#which of the 9 blending modes to use?
-		#the selected blending mode is depending on which tiles meet.
-		# (water->shore != water->ice)
-		# terrain class => Land, Farm, Beach, Road, Water, Ice, ..
-		#this means to determine:
-		# use i.blendmode or @.blendmode
-		#  when i is drawn onto @ later.
-		blendmode    = get_blending_mode(priority, @)
-		neighbortile = get_terrain_by_priority(priority)
-
-		#all masks to draw: one adjacent mask xor 1 to 4 diagonal masks
-		draw_masks = adjacent_mask_id + diagonal_mask_ids
-
-		for maskid in draw_masks:
-			#do the tile blending:
-			#mask away pixels by applying the combined mask
-			maskdata = mask[blendmode][maskid]
-
-			#draw the masked terrain piece on top of our base (@) tile
-			overlay_data = apply_mask(neighbortile.data, maskdata)
-			overlay_data.draw()
+        diagonal_mask_id.add(16)    if binf  & 0b00000100 > 0
+                             17     if binf  & 0b00010000 > 0
+                             18     if binf  & 0b00000001 > 0
+                             19     if binf  & 0b01000000 > 0
 
 
+        #which of the 9 blending modes to use?
+        #the selected blending mode is depending on which tiles meet.
+        # (water->shore != water->ice)
+        # terrain class => Land, Farm, Beach, Road, Water, Ice, ..
+        #this means to determine:
+        # use i.blendmode or @.blendmode
+        #  when i is drawn onto @ later.
+        blendmode    = get_blending_mode(priority, @)
+        neighbortile = get_terrain_by_priority(priority)
+
+        #all masks to draw: one adjacent mask xor 1 to 4 diagonal masks
+        draw_masks = adjacent_mask_id + diagonal_mask_ids
+
+        for maskid in draw_masks:
+            #do the tile blending:
+            #mask away pixels by applying the combined mask
+            maskdata = mask[blendmode][maskid]
+
+            #draw the masked terrain piece on top of our base (@) tile
+            overlay_data = apply_mask(neighbortile.data, maskdata)
+            overlay_data.draw()
 
 ```
 
@@ -298,6 +296,10 @@ The described alpha masks, are stored in `blendomatic.dat`:
 
 Blendomatic.dat file format
 ---------------------------
+
+This file contains the alphamasks that are applied per-tile.
+This results in masking away areas, so a transition between the
+partially-missing top tile, and the underlying base tile is possible.
 
 ```cpp
 struct {
@@ -341,10 +343,10 @@ This is our drawing goal (of course a bit bigger):
 
 Each `*` is a pixel, with a 7 or 1 bit value, which just is an alpha threshold.
 
-for `alpha_bytemap`:  
---> 128 == when masking the dominant texture, draw the pixel fully opaque.  
+for `alpha_bytemap`:
+--> 128 == when masking the dominant texture, draw the pixel fully opaque.
 -->   0 == keep the base tile pixel here.
 
-for `alpha_bitmasks`:  
--->   1 == this pixel will be overdrawn by dominant neighbor.  
+for `alpha_bitmasks`:
+-->   1 == this pixel will be overdrawn by dominant neighbor.
 -->   0 == keep the base tile pixel.
