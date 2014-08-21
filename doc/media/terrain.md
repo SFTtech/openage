@@ -100,17 +100,26 @@ frame_id = (x % tc) + ((y % tc) * tc)
 ```
 
 
-Terrain classes
----------------
+Terrain blending modes
+----------------------
 
-class | blending mode
-------|--------------
-land  | 
-farm  | 
-beach | 
-road  | 
-water | 
-ice   | 5
+blending mode: see the [doc/media/blendomatic.md](blendomatic docs) for
+more information about terrain blending.
+
+blending mode id correction:
+
+
+stored mode | terrain type  | corrected mode
+------------|---------------|---------------
+          0 | dirt, grass   | 1
+          1 | farms         | 3
+          2 | beach         | 2
+          3 | water         | 0
+          4 | shallows      | 1
+          5 | roads         | 4
+          6 | ice           | 5
+          7 | snow          | 6
+          8 | not assigned  | 4
 
 Terrain elevations
 ------------------

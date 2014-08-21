@@ -89,19 +89,29 @@ Which alpha mask is determined by two conditions:
       * mode 6: same as mode 4
       * mode 7: same as mode 0
       * mode 8: same as mode 0
-      you can see that we actually have 5 blending modes.
+      * => you can see that we actually have 5 blending modes.
+    * reason likely for that redundancy:
+      * blending mode contains more information than it looks at first.
+      * the highest blendmode_id gets selected as mask.
+      * explains the double modes: same mask needed,
+        but other priority requested.
     * assigning the correct value:
-    
-      tile type | stored mode | displayed mode
-      ----------|-------------|---------------
-      grass     | 0           | 0/1/7/8
-      farm      | 1           | 3
-      beach     | 2           | 2
-      water     | 3           | 0/1/7/8
-      shallows  | 4           | ?
-      snow road | 5           | 4/6
-      ice       | 6           | 5
-      snow      | 7           | 4/6
+
+      tile type | stored mode | displayed mode | corrected mode
+      ----------|-------------|----------------|----------------
+      grass     | 0           | 0/1/7/8        | 1
+      farm      | 1           | 3              | 3
+      beach     | 2           | 2              | 2
+      water     | 3           | 0/1/7/8        | 0
+      shallows  | 4           | ?              | 1
+      snow road | 5           | 4/6            | 4
+      ice       | 6           | 5              | 5
+      snow      | 7           | 4/6            | 6
+      unknown   | 8           | ?              | 4
+
+    * the mode correction was selected from the `displayed mode`
+      and then after the priority a mode should have.
+      this seems to produce the original blending transitions.
 
 
 
