@@ -62,12 +62,12 @@ bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
 		throw util::Error("this object has already been placed.");
 	}
 
+	// storing the position happens in here:
 	if (not this->fits(terrain, pos)) {
 		return false;
 	}
 
 	this->terrain = terrain;
-	this->set_position(pos);
 	this->occupied_chunk_count = 0;
 
 	bool chunk_known = false;
@@ -183,18 +183,26 @@ bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
 
 
 void TerrainObject::set_position(coord::tile pos) {
-	this->start_pos = pos;
-	this->start_pos.ne -= (this->size.ne - 1) / 2;
-	this->start_pos.se -= (this->size.se - 1) / 2;
 
-	this->end_pos = this->start_pos;
+	// adjust the start position so that the mouse
+	// click happened more centered
+	this->start_pos     = pos;
+	//this->start_pos.ne -= (this->size.ne - 1) / 2;
+	//this->start_pos.se -= (this->size.se - 1) / 2;
+
+	this->end_pos     = this->start_pos;
 	this->end_pos.ne += this->size.ne;
 	this->end_pos.se += this->size.se;
 
-	//TODO: fix this university-hardcoding..
+	// the tile position where the graphic hotspot
+	// will be placed centered.
 	coord::tile drawpos_tile = this->start_pos;
-	drawpos_tile.ne += 4;
-	//log::dbg("drawpos: ne=%lu, se=%lu", drawpos_tile.ne, drawpos_tile.se);
+	coord::tile drawpos_mod2;
+	drawpos_mod2.ne = util::mod<coord::tile_t, 2>(drawpos_tile.ne);
+	drawpos_mod2.se = util::mod<coord::tile_t, 2>(drawpos_tile.se);
+
+	drawpos_tile.ne += ((this->size.ne - drawpos_mod2.ne) / 2);
+	drawpos_tile.se += ((this->size.se - drawpos_mod2.se) / 2);
 
 	this->draw_pos = drawpos_tile.to_phys2().to_phys3();
 }

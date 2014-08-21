@@ -98,14 +98,16 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 		//get subtexture information by meta file exported by script
 		this->subtextures = util::read_csv_file<gamedata::subtexture>(meta_filename);
 		this->subtexture_count = this->subtextures.size();
+
 		//TODO: use information from empires.dat for that, also use x and y sizes:
 		this->atlas_dimensions = sqrt(this->subtexture_count);
 		delete[] meta_filename;
 	}
-	else { //this texture does not contain subtextures
+	else {
+		// we don't have a texture description file.
+		// use the whole image as one texture then.
 		struct gamedata::subtexture s {0, 0, this->w, this->h, this->w/2, this->h/2};
 
-		this->subtextures = std::vector<gamedata::subtexture>{};
 		this->subtexture_count = 1;
 		this->subtextures.push_back(s);
 	}
@@ -114,6 +116,7 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 
 Texture::~Texture() {
 	glDeleteTextures(1, &this->id);
+	glDeleteBuffers(1, &this->vertbuf);
 }
 
 void Texture::fix_hotspots(unsigned x, unsigned y) {
@@ -189,10 +192,10 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	int left, right, top, bottom;
 
 	//coordinates where the texture will be drawn on screen.
-	bottom  = y      - tx->cy;
+	bottom  = y      - (tx->h - tx->cy);
 	top     = bottom + tx->h;
 
-	if (!mirrored) {
+	if (not mirrored) {
 		left  = x    - tx->cx;
 		right = left + tx->w;
 	} else {
