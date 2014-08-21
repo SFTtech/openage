@@ -32,7 +32,7 @@ List of milestones for the prototype releases:
    * all clients connect to server (at the beginning only one client must be supported...)
    * initialization of session:
      * client: OHAI. i want session 23742, and be the blue player
-     * server: <map blob> <plz wait for other clients to be ready.> <time synchronization> <go!>
+     * server: (map blob) (plz wait for other clients to be ready.) (time synchronization) (go!)
    * game logic runs on both server and client, some serious syncing is done between them (important: physics frame IDs of user inputs)
 1. support for multiple players
 1. limitation of multiplayer players to one color
