@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 2.8.10)
 #git tag --contains=fa7141f => 2.8.8    # compiler version detection
 #git tag --contains=fbda7bb => 2.8.10   # find GLEW module
 
-project(openage)
+project(openage C CXX)
 
-#main build configuration file
-#could use some tuning, but we are too lazy..
+# main build configuration file
+# could use some tuning, but we are too lazy..
 
-#text art: figlet -f rounded "[SFT] openage" | sed -e 's/\\/\\\\/g'
+# text art: figlet -f rounded "[SFT] openage" | sed -e 's/\\/\\\\/g'
 message("")
 message("==============================================================================")
 message(" ___  ______ _______ _______ ___                                              ")
@@ -32,47 +32,35 @@ message("  *  IRC:      #sfttech  at freenode.org")
 message("==============================================================================")
 message("")
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++11 -march=native -mtune=native")
+#TODO: integrate PGO build
 
 set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin")
 set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/lib")
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -std=c++11")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS}")
 
 message("compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 
-#check for compiler versions
+macro(cxx_required CXXNAME MINIMAL)
+	if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MINIMAL})
+		message(FATAL_ERROR ">=${CXXNAME}-${MINIMAL} required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
+	endif()
+endmacro()
+
+# check for compiler versions
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-
-	if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8)
-		message(FATAL_ERROR ">=gcc-4.8 required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
-	endif()
-
-	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Og")
-
-	#enable LTO for gcc builds, will be optional soon.
-	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=4")
-	set(CMAKE_CXX_LINK_FLAGS_RELEASE "${CMAKE_CXX_LINK_FLAGS} -flto=4")
-
-	#TODO: integrate PGO build
-
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-
-	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.3)
-		message(FATAL_ERROR ">=clang-3.3 required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
-	endif()
-
-	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O1")
-
-	#TODO: enable clang LTO
-
+	cxx_required("gcc" 4.8)
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+	cxx_required("clang" 3.3)
 else() #"Intel", "MSVC", etc..
 	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 endif()
 
-#add our source directory, it contains the cmake config with the file list
+# include these directories in the build process
 add_subdirectory("src")
+add_subdirectory("convert")
 
 # Doxygen integration
 find_package(Doxygen)
@@ -87,16 +75,20 @@ if(DOXYGEN_FOUND)
 		set(HAVE_DOT "YES")
 		message(STATUS "Found dot: ${DOT_EXECUTABLE}")
 	else()
-		message(WARNING "dot of graphviz couldn't be found.")
+		message(WARNING "graphviz dot couldn't be found, you won't have cool graphs in the docs.")
 	endif()
 
-	#this adds the correct folder to INPUT= :
+	# adapt doxygen config
 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
 
-	#add doc target
+	# add doc target
 	add_custom_target(doc
 		${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 		COMMENT "generating docs with Doxygen" VERBATIM
 	)
 endif()
+
+message("CFLAGS   = ${CMAKE_C_FLAGS}")
+message("CXXFLAGS = ${CMAKE_CXX_FLAGS}")
+message("LDFLAGS  = ${CMAKE_EXE_LINKER_FLAGS}")
