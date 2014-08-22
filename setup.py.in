@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-#
 
-from distutils.core import setup
+from distutils.core import setup, Extension
 
 settings = {
     "name":        '${PROJECT_NAME}',
@@ -16,6 +15,14 @@ settings = {
         'openage.convert',
         'openage.convert.gamedata',
         'openage.convert.hardcoded',
+        'openage.convert.cabextract',
+    ],
+    "ext_modules": [
+        Extension(
+            name='openage.convert.cabextract.lzxd',
+            sources=['${CMAKE_CURRENT_SOURCE_DIR}/convert/cabextract/lzxd/lzxd.cpp'],
+            extra_compile_args=['-std=c++11', '-Wall', '-Wextra', '-pedantic'],
+        )
     ],
 }
 
