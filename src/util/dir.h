@@ -18,8 +18,8 @@ public:
 	Dir(std::string basedir);
 	~Dir();
 
-	std::string join(std::string fname);
-	Dir append(std::string suffix);
+	std::string join(const std::string &fname);
+	Dir append(const std::string &suffix);
 
 	std::string basedir;
 };
@@ -28,12 +28,12 @@ public:
 /**
  * get the filename (last part) of a given path
  */
-std::string basename(std::string &fullpath);
+std::string basename(const std::string &fullpath);
 
 /**
  * return the head (dirname) part of a path.
  */
-std::string dirname(std::string &fullpath);
+std::string dirname(const std::string &fullpath);
 
 } //namespace util
 } //namespace openage

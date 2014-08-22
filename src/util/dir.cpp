@@ -9,15 +9,13 @@ Dir::Dir(std::string basedir) {
 	this->basedir = basedir;
 }
 
-Dir::~Dir() {
+Dir::~Dir() {}
 
-}
-
-std::string Dir::join(std::string fname) {
+std::string Dir::join(const std::string &fname) {
 	return this->basedir + PATHSEP + fname;
 }
 
-Dir Dir::append(std::string suffix) {
+Dir Dir::append(const std::string &suffix) {
 	if (suffix.length() == 0) {
 		return Dir{this->basedir};
 	} else {
@@ -26,7 +24,7 @@ Dir Dir::append(std::string suffix) {
 }
 
 
-std::string basename(std::string &fullpath) {
+std::string basename(const std::string &fullpath) {
 	size_t rsep_pos = fullpath.rfind(PATHSEP);
 	if (rsep_pos == std::string::npos) {
 		return "";
@@ -36,7 +34,7 @@ std::string basename(std::string &fullpath) {
 }
 
 
-std::string dirname(std::string &fullpath) {
+std::string dirname(const std::string &fullpath) {
 	std::string ret;
 
 	size_t rsep_pos = fullpath.rfind(PATHSEP);
