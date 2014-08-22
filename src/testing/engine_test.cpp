@@ -562,11 +562,16 @@ bool EngineTest::on_draw() {
 }
 
 bool EngineTest::on_drawhud() {
+	Engine &e = Engine::get();
+
 	// draw the currently selected editor texture tile
 	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud());
 
-	// and the current building
-	this->available_buildings[this->editor_current_building]->texture->draw(coord::window{63, 200}.to_camhud());
+	// and the current active building
+	coord::window bpreview_pos;
+	bpreview_pos.x = e.window_size.x - 200;
+	bpreview_pos.y = 200;
+	this->available_buildings[this->editor_current_building]->texture->draw(bpreview_pos.to_camhud());
 
 	return true;
 }
