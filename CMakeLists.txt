@@ -58,8 +58,32 @@ else() #"Intel", "MSVC", etc..
 	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 endif()
 
-# include these directories in the build process
+
+#look for the python3.3 executable
+find_program(PYTHON3 python3 HINTS /usr/bin/python3.3 /usr/bin/python3.4)
+
+if(${PYTHON3} STREQUAL "PYTHON3-NOTFOUND")
+	message(FATAL "python >= 3.3 not found.")
+else()
+	message(STATUS "Found python executable: ${PYTHON3}")
+endif()
+
+
+# include these subdirectories in the build process
 add_subdirectory("src")
+
+# python component installing with distutils
+set(SETUP_PY_IN "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
+set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
+set(PY_TIMEFILE "${CMAKE_CURRENT_BINARY_DIR}/build/py_mods")
+
+configure_file(${SETUP_PY_IN} ${SETUP_PY})
+add_custom_command(OUTPUT ${PY_TIMEFILE}
+                   COMMAND ${PYTHON3} ${SETUP_PY} build
+                   COMMAND ${CMAKE_COMMAND} -E touch ${PY_TIMEFILE}
+                   DEPENDS ${SETUP_PY})
+add_custom_target(python_modules ALL DEPENDS ${PY_TIMEFILE})
+install(CODE "execute_process(COMMAND ${PYTHON3} ${SETUP_PY} install --prefix=${CMAKE_INSTALL_PREFIX})")
 
 # Doxygen integration
 find_package(Doxygen)
@@ -91,3 +115,4 @@ endif()
 message("CFLAGS   = ${CMAKE_C_FLAGS}")
 message("CXXFLAGS = ${CMAKE_CXX_FLAGS}")
 message("LDFLAGS  = ${CMAKE_EXE_LINKER_FLAGS}")
+message("PREFIX   = ${CMAKE_INSTALL_PREFIX}")

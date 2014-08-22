@@ -5,16 +5,6 @@
 #the gamedata format is defined in the convert script,
 #and it can dynamically be exported to C code.
 
-#look for the python3.3 executable
-find_file(PYTHON3 python3 HINTS /usr/bin/python3.3 /usr/bin/python3.4)
-
-if(${PYTHON3} STREQUAL "PYTHON3-NOTFOUND")
-	message(FATAL "python >= 3.3 not found.")
-else()
-	message(STATUS "Found python executable: ${PYTHON3}")
-endif()
-
-
 #the convert script invocation
 set(CONVERT_CALL ${PYTHON3} convert structs)
 
