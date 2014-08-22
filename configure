@@ -223,7 +223,7 @@ instead, package it as regular cmake project!
                 cc = k
                 break
     else:
-        print("WARNING: unknown compiler selected: %s setting CXX=CC" % cc)
+        print("WARNING: unknown compiler selected: %s -> setting CXX=CC" % cc)
         cxx = cc
 
     fallback_cflags          = MagicFlag(["-march=native"])
