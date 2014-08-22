@@ -222,6 +222,8 @@ instead, package it as regular cmake project!
             if v == cxx:
                 cc = k
                 break
+    elif cc == None:
+        cxx = cc
     else:
         print("WARNING: unknown compiler selected: %s -> setting CXX=CC" % cc)
         cxx = cc
