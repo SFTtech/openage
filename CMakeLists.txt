@@ -60,7 +60,6 @@ endif()
 
 # include these directories in the build process
 add_subdirectory("src")
-add_subdirectory("convert")
 
 # Doxygen integration
 find_package(Doxygen)
