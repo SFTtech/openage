@@ -19,6 +19,8 @@ public:
 	 * return -1 otherwise.
 	 */
 	virtual ssize_t write(const void *buf, size_t size) = 0;
+
+	virtual ~IOWrapper() {};
 };
 
 /**
