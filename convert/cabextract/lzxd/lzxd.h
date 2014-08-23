@@ -3,6 +3,9 @@
 
 #include <cstdio>
 
+using readfunc_t  = ssize_t (*)(void *buf, size_t size);
+using writefunc_t = ssize_t (*)(const void *buf, size_t size);
+
 /**
  * lzx decompression highlevel function.
  *
@@ -11,6 +14,6 @@
  *
  * for documentation, see LZXDStream constructor documentation in lzxd.cpp.
  */
-void decompress(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length);
+void decompress(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length, readfunc_t readfunc, writefunc_t writefunc);
 
 #endif //_OPENAGE_CONVERT_LZXD_LZXD_H_

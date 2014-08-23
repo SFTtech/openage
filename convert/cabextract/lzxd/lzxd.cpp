@@ -86,6 +86,8 @@ static const unsigned char extra_bits[] = {
 	17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17
 };
 
+class LZXDStream;
+
 class BitBuffer {
 private:
 	unsigned char *inbuf;
@@ -95,16 +97,18 @@ private:
 	unsigned int bits_left;
 	unsigned char input_end;
 	uint64_t bit_position;
+	LZXDStream *lzx;
 
 public:
 	unsigned int bit_buffer;
 
-	BitBuffer(unsigned inbuf_size)
+	BitBuffer(LZXDStream *lzx, unsigned inbuf_size)
 			:
 			inbuf_size{inbuf_size},
 			bits_left{0},
 			input_end{0},
 			bit_position{0},
+			lzx{lzx},
 			bit_buffer{0}
 	{
 		if (inbuf_size % 2 != 0) {
@@ -120,29 +124,7 @@ public:
 
 private:
 	// re-fills the input buf from the input file
-	void read_input() {
-		int read = fread(inbuf, 1, inbuf_size, stdin);
-		if (read < 0) {
-			throwerr("could not read %d", errno);
-		}
-
-		// we might overrun the input stream by asking for bits we don't use,
-		// so fake 2 more bytes at the end of input
-		if (read == 0) {
-			if (input_end) {
-				throwerr("out of input bytes");
-			} else {
-				read = 2;
-				inbuf[0] = 0;
-				inbuf[1] = 0;
-				input_end = 1;
-			}
-		}
-
-		// update i_ptr and i_end
-		i_ptr = inbuf;
-		i_end = &inbuf[read];
-	}
+	void read_input();
 
 	// returns the next byte from the input buf
 	unsigned char read_byte() {
@@ -204,8 +186,6 @@ public:
 	}
 };
 
-class LZXDStream;
-
 template<unsigned maxsymbols_p, unsigned tablebits_p, bool allow_empty=false>
 class HuffmanTable {
 private:
@@ -252,6 +232,7 @@ private:
 	bool try_make_decode_table();
 };
 
+
 class LZXDStream {
 public:
 	off_t offset;                   // number of bytes actually output
@@ -275,6 +256,16 @@ public:
 	unsigned char  header_read;     // have we started decoding at all yet?
 	unsigned char  posn_slots;      // how many posn slots in stream?
 	unsigned char  input_end;       // have we reached the end of input?
+
+	/**
+	 * called by the decompressor to request more data
+	 */
+	readfunc_t readfunc;
+
+	/**
+	 * called by the decompressor to write output data
+	 */
+	writefunc_t writefunc;
 
 	// IO buffering
 	BitBuffer bits;
@@ -319,8 +310,12 @@ public:
 	 *                           lzxd_set_output_length() once it is
 	 *                           known. If never set, 4 of the final 6 bytes
 	 *                           of the output stream may be incorrect.
+	 * @param readfunc           called by the decompressor to request more
+	 *                           data
+	 * @param writefunc          called by the decompressor to write more
+	 *                           output data
 	 */
-	LZXDStream(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length);
+	LZXDStream(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length, readfunc_t readfunc, writefunc_t writefunc);
 
 	/**
 	 * Decompresses entire or partial LZX streams.
@@ -349,6 +344,30 @@ public:
 
 	void reset_state();
 };
+
+void BitBuffer::read_input() {
+	int read = this->lzx->readfunc(inbuf, inbuf_size);
+	if (read < 0) {
+		throwerr("could not read %d", errno);
+	}
+
+	// we might overrun the input stream by asking for bits we don't use,
+	// so fake 2 more bytes at the end of input
+	if (read == 0) {
+		if (input_end) {
+			throwerr("out of input bytes");
+		} else {
+			read = 2;
+			inbuf[0] = 0;
+			inbuf[1] = 0;
+			input_end = 1;
+		}
+	}
+
+	// update i_ptr and i_end
+	i_ptr = inbuf;
+	i_end = &inbuf[read];
+}
 
 template<unsigned maxsymbols_p, unsigned tablebits_p, bool allow_empty>
 int HuffmanTable<maxsymbols_p, tablebits_p, allow_empty>::read_sym() {
@@ -522,7 +541,7 @@ void HuffmanTable<maxsymbols_p, tablebits_p, allow_empty>::read_lengths(unsigned
 	}
 }
 
-LZXDStream::LZXDStream(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length)
+LZXDStream::LZXDStream(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length, readfunc_t readfunc, writefunc_t writefunc)
 		:
 		offset{0},
 		length{output_length},
@@ -533,7 +552,9 @@ LZXDStream::LZXDStream(unsigned window_bits, unsigned reset_interval, unsigned i
 		reset_interval{reset_interval},
 		intel_filesize{0},
 		intel_curpos{0},
-		bits{input_buffer_size},
+		readfunc{readfunc},
+		writefunc{writefunc},
+		bits{this, input_buffer_size},
 		htpre{this},
 		htmain{this},
 		htlength{this},
@@ -598,7 +619,9 @@ void LZXDStream::decompress(off_t out_bytes) {
 		i = (int) out_bytes;
 	}
 	if (i) {
-		fwrite((void *) this->o_ptr, 1, i, stdout);
+		if (this->writefunc(this->o_ptr, i) != i) {
+			throwerr("could not write all %d bytes", i);
+		}
 		this->o_ptr += i;
 		this->offset += i;
 		out_bytes  -= i;
@@ -989,7 +1012,9 @@ void LZXDStream::decompress(off_t out_bytes) {
 
 		// write a frame
 		i = (out_bytes < (off_t)frame_size) ? (unsigned int)out_bytes : frame_size;
-		fwrite((void *) this->o_ptr, 1, i, stdout);
+		if (this->writefunc(this->o_ptr, i) != i) {
+			throwerr("could not write all %d bytes", i);
+		}
 		this->o_ptr += i;
 		this->offset += i;
 		out_bytes -= i;
@@ -1010,7 +1035,7 @@ void LZXDStream::decompress(off_t out_bytes) {
 }
 
 
-void decompress(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length) {
-	LZXDStream s{window_bits, reset_interval, input_buffer_size, output_length};
+void decompress(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length, readfunc_t readfunc, writefunc_t writefunc) {
+	LZXDStream s{window_bits, reset_interval, input_buffer_size, output_length, readfunc, writefunc};
 	s.decompress(output_length);
 }

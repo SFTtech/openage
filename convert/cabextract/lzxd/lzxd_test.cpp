@@ -6,6 +6,14 @@
 
 #include "util.h"
 
+ssize_t writefunc(const void *buf, size_t size) {
+	return fwrite(buf, 1, size, stdout);
+}
+
+ssize_t readfunc(void *buf, size_t size) {
+	return fread(buf, 1, size, stdin);
+}
+
 void run(unsigned windowsize, unsigned outputsize) {
 	/*
 	 * arguments:
@@ -13,8 +21,10 @@ void run(unsigned windowsize, unsigned outputsize) {
 	 *   reset interval: 0 for cab (otherwise, streamstate would be reset regularily, allowing seeking)
 	 *   input_bufsize: guess what. anything >= 2 should be OK. original code used 4096.
 	 *   outputsize: size of uncompressed output, in bytes, needed for E8 postprocessing.
+	 *   readfunc: ptr to the function that feeds the decompressor
+	 *   writefunc: decompressor will return data that way
 	 */
-	decompress(windowsize, 0, 4096, outputsize);
+	decompress(windowsize, 0, 4096, outputsize, &readfunc, &writefunc);
 }
 
 unsigned toint(char *str, unsigned min = 0, unsigned max = 0xffffffff) {
