@@ -7,7 +7,7 @@
 #
 # the 'large' test runs only if the command-line parameter 'large' is given.
 
-g++ lzxd.cpp -Wall -Wextra -pedantic -std=c++11 -O3 -g -o lzxd
+g++ lzxd_test.cpp lzxd.cpp util.cpp -Wall -Wextra -pedantic -std=c++11 -O3 -g -o lzxd || exit $?
 
 diff <(./lzxd 21 32768 < testdata/small.lzx) testdata/small.plain && echo success
 

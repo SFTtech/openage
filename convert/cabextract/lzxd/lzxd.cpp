@@ -6,32 +6,28 @@
  *
  * the original author is probably weeping in pain.
  * sorry, your work was awesome, but _I_ find it easier to read that way :P
+ *
+ * TODO list:
+ *
+ * - make it so the decompressing function is called once for every megabyte or so, instead of once for everything
+ * - save the state between every megabyte, effectively allowing seeking
+ * - actually understand what the code does
+ * - rewrite it (maybe in python)
  */
 
-#include <sys/types.h>
-#include <limits.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <cerrno>
-#include <stdio.h>
-#include <cstdarg>
-#include <stdint.h>
+#include "lzxd.h"
 
-void throwerr(const char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
-void throwerr(const char *fmt, ...) {
-	// simple printf-style function that throws char * exceptions.
-	va_list ap;
-	va_start(ap, fmt);
-	va_list aq;
-	va_copy(aq, ap);
-	size_t sz = vsnprintf(NULL, 0, fmt, aq) + 1;
-	va_end(aq);
-	char *result = new char[sz];
-	vsnprintf(result, sz, fmt, ap);
-	throw result;
-	va_end(ap);
-}
+#include <cerrno>
+#include <cstdarg>
+#include <limits.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+#include "util.h"
 
 // LZX specification constants
 constexpr unsigned LZX_MIN_MATCH = 2;
@@ -1013,57 +1009,8 @@ void LZXDStream::decompress(off_t out_bytes) {
 	}
 }
 
-void run(unsigned windowsize, unsigned outputsize) {
-	// arguments:
-	//   window size: constant for one lzx stream; given in the cab header (as part of the compression algorithm id)
-	//   reset interval: 0 for cab (otherwise, streamstate would be reset regularily, allowing seeking)
-	//   input_bufsize: guess what. anything >= 2 should be OK. original code used 4096.
-	//   outputsize: size of uncompressed output, in bytes, needed for E8 postprocessing.
 
-	LZXDStream lzx{windowsize, 0, 4096, outputsize};
-	lzx.decompress(outputsize);
+void decompress(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length) {
+	LZXDStream s{window_bits, reset_interval, input_buffer_size, output_length};
+	s.decompress(output_length);
 }
-
-unsigned toint(char *str, unsigned min = 0, unsigned max = 0xffffffff) {
-	char *endptr = str;
-	long int res = strtoll(str, &endptr, 10);
-	if (*endptr != '\0') {
-		throwerr("not a valid integer: %s", str);
-	}
-	if (res < (long int) min) {
-		throwerr("must be greater than %u: %s", min, str);
-	}
-	if (res > (long int) max) {
-		throwerr("must be smaller than %u: %s", max, str);
-	}
-	return (unsigned) res;
-}
-
-int main(int argc, char **argv) {
-	try {
-		if (argc != 3) {
-			throwerr("usage: %s windowsize outputsize", argv[0]);
-		}
-		// windowsize is between 15 and 21, and comes from the file compression type in the cab file, shifted >> 8.
-		unsigned long int windowsize = toint(argv[1], 15, 21);
-		// outputsize is the expected decompressed output size. it is available from the cabfile metadata.
-		unsigned long int outputsize = toint(argv[2]);
-		run(windowsize, outputsize);
-		return 0;
-	} catch (const char *s) {
-		fprintf(stderr, "\x1b[31;1mERROR\x1b[m %s\n", s);
-		return 1;
-	}
-}
-
-/*
- * TODO list:
- *
- * - turn this into a python module
- * - make it so the decompressing function is called once for every megabyte or so, instead of once for everything
- * - save the state between every megabyte, effectively allowing seeking
- * - actually understand what the code does
- * - rewrite it (maybe in python)
- *
- * everything but the first is pretty optional.
- */
