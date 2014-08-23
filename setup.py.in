@@ -20,7 +20,11 @@ settings = {
     "ext_modules": [
         Extension(
             name='openage.convert.cabextract.lzxd',
-            sources=['${CMAKE_CURRENT_SOURCE_DIR}/convert/cabextract/lzxd/lzxd.cpp'],
+            sources=['${CMAKE_CURRENT_SOURCE_DIR}/convert/cabextract/lzxd/%s' % f for f in (
+                "lzxd.cpp",
+                "util.cpp",
+                "pyinterface.cpp",
+            )],
             extra_compile_args=['-std=c++11', '-Wall', '-Wextra', '-pedantic'],
         )
     ],
