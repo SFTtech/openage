@@ -3,8 +3,23 @@
 
 #include <cstdio>
 
-using readfunc_t  = ssize_t (*)(void *buf, size_t size);
-using writefunc_t = ssize_t (*)(const void *buf, size_t size);
+class IOWrapper {
+public:
+	/**
+	 * feeds data to the decompressor
+	 * on error, needs to return -1
+	 * on EOF, return 0
+	 * else, block until data is available, and return number of bytes.
+	 */
+	virtual ssize_t read(void *buf, size_t size) = 0;
+
+	/**
+	 * receives decompressed data from the decompressor.
+	 * must read all bytes (size),
+	 * return -1 otherwise.
+	 */
+	virtual ssize_t write(const void *buf, size_t size) = 0;
+};
 
 /**
  * lzx decompression highlevel function.
@@ -14,6 +29,6 @@ using writefunc_t = ssize_t (*)(const void *buf, size_t size);
  *
  * for documentation, see LZXDStream constructor documentation in lzxd.cpp.
  */
-void decompress(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length, readfunc_t readfunc, writefunc_t writefunc);
+void decompress(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length, IOWrapper *iowrapper);
 
 #endif //_OPENAGE_CONVERT_LZXD_LZXD_H_
