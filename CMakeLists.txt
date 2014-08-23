@@ -81,7 +81,7 @@ configure_file(${SETUP_PY_IN} ${SETUP_PY})
 add_custom_command(OUTPUT ${PY_TIMEFILE}
                    COMMAND ${PYTHON3} ${SETUP_PY} build
                    COMMAND ${CMAKE_COMMAND} -E touch ${PY_TIMEFILE}
-                   DEPENDS ${SETUP_PY})
+                   DEPENDS ${SETUP_PY_IN})
 add_custom_target(python_modules ALL DEPENDS ${PY_TIMEFILE})
 install(CODE "execute_process(COMMAND ${PYTHON3} ${SETUP_PY} install --prefix=${CMAKE_INSTALL_PREFIX})")
 
