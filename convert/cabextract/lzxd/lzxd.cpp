@@ -31,7 +31,7 @@
 
 // LZX specification constants
 constexpr unsigned LZX_MIN_MATCH = 2;
-constexpr unsigned LZX_MAX_MATCH = 257;
+//constexpr unsigned LZX_MAX_MATCH = 257;             // seems to be unused. I'm scared.
 constexpr unsigned LZX_NUM_CHARS = 256;
 constexpr unsigned LZX_BLOCKTYPE_INVALID = 0;         // also blocktypes 4-7 invalid
 constexpr unsigned LZX_BLOCKTYPE_VERBATIM = 1;
