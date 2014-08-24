@@ -69,10 +69,78 @@ else()
 endif()
 
 
-# include these subdirectories in the build process
-add_subdirectory("src")
+# list of python package names to export via distutils.
+set(PY_MODULES)
+set(PYEXT_MODULES)
 
-# python component installing with distutils
+# helper function to add packages to this list.
+macro (add_py_module name)
+	list(APPEND PY_MODULES ${name})
+	set(PY_MODULES ${PY_MODULES} PARENT_SCOPE)
+endmacro()
+
+# add a python c extension module, with given sources
+set(PYEXT_ARRAY "PYEXT_MODULE_")
+macro(add_pyext_module)
+	set(options "LOL___") # unused
+	set(one_value_args "NAME")
+	set(multi_value_args "SOURCES")
+	cmake_parse_arguments(apyext "${options}" "${one_value_args}" "${multi_value_args}" ${ARGN})
+
+	message("================= name=${apyext_NAME}")
+
+	if(DEFINED "${PYEXT_ARRAY}${apyext_NAME}")
+		message(ERROR "The Python extension module ${apyext_NAME} was already defined!")
+	endif()
+
+	set(pyext_sources)
+	file(RELATIVE_PATH current_path "${CMAKE_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}")
+	foreach(srcfile ${apyext_SOURCES})
+		if(current_path)
+			list(APPEND pyext_sources "${current_path}/${srcfile}")
+		else()
+			list(APPEND pyext_sources "${srcfile}")
+		endif()
+	endforeach()
+
+	message("=== Creating new python module '${apyext_NAME}'. sources:\n ${pyext_sources}")
+	list(APPEND PYEXT_MODULES "${apyext_NAME}")
+	set(PYEXT_MODULES "${PYEXT_MODULES}" PARENT_SCOPE)
+
+	# add a new "dict" key. fak u cmake.
+	set("${PYEXT_ARRAY}${apyext_NAME}" "${pyext_sources}" PARENT_SCOPE)
+endmacro()
+
+################################################################################
+# include subdirectories in the build process
+
+add_subdirectory("src")
+add_subdirectory("convert")
+
+################################################################################
+
+
+
+# generate content for the python distutils setup.py script
+set(PYEXT_SOURCEDEF)
+set(PY_SOURCES_ALL)
+
+# iterate over all C extension modules and create python dict entries.
+# module_name => [module_source_file,...]
+foreach(pyext_module ${PYEXT_MODULES})
+	set(PYEXT_KEYNAME "${PYEXT_ARRAY}${pyext_module}")
+	set(PYEXT_SOURCEDEF "${PYEXT_SOURCEDEF}\n\t'${pyext_module}': '${${PYEXT_KEYNAME}}'.split(';'),")
+
+	foreach(pyext_source "${${PYEXT_KEYNAME}}")
+		list(APPEND PY_SOURCES_ALL "${pyext_source}")
+	endforeach()
+endforeach()
+
+# TODO: populate PY_SOURCES_ALL with all .py files found
+#       in the PY_MODULES directories!
+#       this will trigger nice distutil rebuilds
+
+
 set(SETUP_PY_IN "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
 set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
 set(PY_TIMEFILE "${CMAKE_CURRENT_BINARY_DIR}/build/py_mods")
@@ -81,7 +149,7 @@ configure_file(${SETUP_PY_IN} ${SETUP_PY})
 add_custom_command(OUTPUT ${PY_TIMEFILE}
                    COMMAND ${PYTHON3} ${SETUP_PY} build
                    COMMAND ${CMAKE_COMMAND} -E touch ${PY_TIMEFILE}
-                   DEPENDS ${SETUP_PY_IN})
+                   DEPENDS ${PY_SOURCES_ALL})
 add_custom_target(python_modules ALL DEPENDS ${PY_TIMEFILE})
 install(CODE "execute_process(COMMAND ${PYTHON3} ${SETUP_PY} install --prefix=${CMAKE_INSTALL_PREFIX})")
 
