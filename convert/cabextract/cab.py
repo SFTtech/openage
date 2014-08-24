@@ -3,17 +3,32 @@
 import os
 from struct import Struct
 from bisect import bisect
+from . import lzxd
 
 class Error(Exception):
     pass
 
 class Namespace:
-    def _update(self, namespace):
-        for k, v in vars(namespace).items():
-            if not k.startswith('_'):
-                self._set(k, v)
+    def __init__(self, *mappings, **kwargs):
+        self._update(*mappings, **kwargs)
 
-    def _set(self, k, v):
+    def _update(self, *mappings, **kwargs):
+        for mapping in mappings:
+            if type(mapping) != dict:
+                mapping = vars(mapping)
+            self._update(**mapping)
+
+        for k, v in kwargs.items():
+            self[k] = v
+
+    def __getitem__(self, k):
+        if k[0] == '_':
+            raise Exception("key mustn't start with _")
+        return getattr(self, k)
+
+    def __setitem__(self, k, v):
+        if k[0] == '_':
+            raise Exception("key mustn't start with _")
         setattr(self, k, v)
 
     def __str__(self):
@@ -27,6 +42,55 @@ class Namespace:
 
     def __repr__(self):
         return repr(vars(self))
+
+class ByteQueue:
+    def __init__(self):
+        import collections
+        self.bufs = collections.deque()
+        self.size = 0
+        self.pos = 0
+
+    def __len__(self):
+        return self.size
+
+    def append(self, buf):
+        self.bufs.append(buf)
+        self.size += len(buf)
+
+    def popleft(self, size):
+        if size > self.size:
+            raise Exception("queue does not contain enough bytes")
+
+        self.size -= size
+        self.pos += size
+
+        resultbufs = []
+        required = size
+
+        while required > 0:
+            buf = self.bufs.popleft()
+            resultbufs.append(buf)
+            required -= len(buf)
+
+        if required < 0:
+            # we requested too much; split the last buffer
+            buf = resultbufs.pop()
+
+            popped = buf[:required]
+            kept = buf[required:]
+
+            resultbufs.append(popped)
+            self.bufs.appendleft(kept)
+
+        return b"".join(resultbufs)
+
+class IterCache:
+    def __init__(self, iterator):
+        self.iterator = iterator
+        self.next()
+
+    def next(self):
+        self.current = next(self.iterator)
 
 def read_bytes(f, count):
     data = f.read(count)
@@ -75,10 +139,7 @@ class NamedMemberStruct:
 
     def read(self, f):
         vals = self.struct.unpack(read_bytes(f, self.struct.size))
-        result = Namespace()
-        for val, name in zip(vals, self.members):
-            result._set(name, val)
-        return result
+        return Namespace({k: v for v, k in zip(vals, self.members)})
 
     def default(self):
         result = Namespace()
@@ -91,7 +152,7 @@ class NamedMemberStruct:
                 val = b""
             else:
                 raise Error("Unknown default for type " + membertype)
-            result._set(name, val)
+            result[name] = val
         return result
 
 class FlagDecoder:
@@ -108,16 +169,13 @@ class FlagDecoder:
                 val ^= flagweight
             else:
                 hasflag = False
-            result._set(flagname, hasflag)
+            result[flagname] = hasflag
         if val:
             raise Error("Undefined flag values: " + str(flag))
         return result
 
     def default(self):
-        result = Namespace()
-        for _, flagname in self.flags:
-            result._set(flagname, False)
-        return result
+        return Namespace({name: False for _, name in self.flags})
 
 cfheaderflags_decoder = FlagDecoder(
     (0, "prev_cabinet"),   # this cabfile is not the first of the set.
@@ -192,7 +250,7 @@ cfdata_struct = NamedMemberStruct("<",
 )
 
 class CABFile:
-    def __init__(self, filename):
+    def __init__(self, filename, readfiledata=False):
         f = open(filename, 'rb')
 
         # read header
@@ -262,7 +320,8 @@ class CABFile:
             print("cabfile has nonstandard format: seek to header.coffFiles " +
                   "was required")
 
-        files = []
+        files = {}
+        files_ignorecase = {}
 
         for _ in range(header.cFiles):
             file_ = cffile_struct.read(f)
@@ -306,9 +365,23 @@ class CABFile:
             file_.timestamp = calendar.timegm(dt.utctimetuple())
             # no timezone info is available; assume UTC.
 
-            files.append(file_)
+            # cosmetic changes
+            file_.folderid = file_.iFolder
+            file_.name = file_.name.replace('\\', '/')
+            file_.size = file_.cbFile
+            file_.pos = file_.uoffFolderStart
 
-        # read data blocks
+            # insert file into dicts
+            if file_.name in files:
+                raise Exception("multiple files with name %s" % file_.name)
+            files[file_.name] = file_
+            lowername = file_.name.lower()
+            if lowername in files_ignorecase:
+                raise Exception("multiple files with lower-case name %s"
+                                % lowername)
+            files_ignorecase[lowername] = file_
+
+        # read data block metainfo
         for folder in folders:
             folder.datablocks = []
             if f.tell() != folder.coffCabStart:
@@ -333,6 +406,122 @@ class CABFile:
         self.header = header
         self.folders = folders
         self.files = files
+        self.files_ignorecase = files_ignorecase
+
+        self.filedata_read = False
+        if readfiledata:
+            self.readfiledata()
+
+    def readfiledata(self):
+        def listfiles():
+            """
+            will yield metadata for all files that are contained in this cab,
+            in the exact order in which their data is contained in the
+            uncompressed folder(s).
+            """
+            for f in sorted(self.files.values(),
+                            key=lambda f: (f.folderid, f.pos)):
+                yield f
+
+            # a "None" file
+            yield Namespace(folderid=None)
+
+        # files.current is the currently returned file
+        # files.next() seeks the next file
+        files = IterCache(listfiles())
+        iter(iter([1]))
+
+        for folderid, folder in enumerate(self.folders):
+            buf = ByteQueue()
+
+            def decomp_write(data):
+                buf.append(data)
+
+                # check whether currentbuf contains complete files
+                while True:
+                    if folderid != files.current.folderid:
+                        # there are no more files in this folder
+                        break
+
+                    if files.current.pos > buf.pos:
+                        # the current file does _not_ begin at the start of
+                        # the buffer; there are some garbage bytes!
+                        discard = min(len(buf), files.current.pos - buf.pos)
+                        buf.pop(discard)
+                        print("warning: discarding %d bytes in folder %d!"
+                              % (discard, folderid))
+
+                    if files.current.pos < buf.pos:
+                        # the beginning of the file is missing
+                        raise Exception("File start position invalid: %s"
+                                        % (files.current.name))
+
+                    if len(buf) < files.current.size:
+                        # the file data is not yet fully loaded into buf.
+                        break
+
+                    files.current.data = buf.popleft(files.current.size)
+                    files.next()
+
+                # the callback API wants us to return len(data)
+                return len(data)
+
+            if folder.comptype == 'LZX':
+                lzxd.decompress(folder.comp_window_size, folder.uncompressed_size, folder.pseudofile.read, decomp_write)
+            else:
+                raise Exception("Unsupported folder compression: " + folder.comptype)
+
+            if buf:
+                print("warning: the last %d bytes of folder %d are being discarded!" % (len(currentbuf), folderid))
+
+            if files.current.folderid == folderid:
+                raise Exception("Unexpected end of folder %d while reading data for %s" % (folderid, meta[fileno][2].name))
+
+        if files.current.folderid != None:
+            raise Exception("Missing folder: %d" % (files.current.folderid))
+
+        self.filedata_read = True
+
+    def open(self, name, mode='rb', ignorecase=True):
+        if mode != 'rb':
+            raise Exception("mode most be 'rb'")
+
+        if ignorecase:
+            f = self.files_ignorecase[name]
+        else:
+            f = self.files[name]
+
+        if not self.filedata_read:
+            self.readfiledata()
+
+        return BlobPseudoFile(f.data)
+
+
+class BlobPseudoFile:
+    def __init__(self, blob):
+        self.blob = blob
+        self.pos = 0
+
+    def tell(self):
+        return self.pos
+
+    def seek(self, offset, fromwhat = 0):
+        if fromwhat == 0:
+            self.pos = offset + 0
+        elif fromwhat == 1:
+            self.pos = offset + self.pos
+        elif fromwhat == 2:
+            self.pos = offset + len(self.blob)
+
+        return self.pos
+
+    def read(self, size=-1):
+        if size < 0:
+            size = float("+inf")
+        size = max(0, min(size, len(self.blob) - self.pos))
+
+        return self.blob[self.pos:self.pos + size]
+        self.pos += size
 
 
 class FolderPseudoFile:
@@ -379,64 +568,29 @@ class FolderPseudoFile:
         return self.pos
 
     def read(self, size=-1):
-        # TODO currently this is pretty slow; find out why.
-
         if size < 0:
             size = float("+inf")
 
         # find the datablock we're currently in
         idx = self.current_datablock()
-        result = b""
+        result = []
         while True:
             # remaining data in this block
             rem = self.datablock_remaining(idx)
             bytecount = min(rem, size)
 
             # this is the last datablock we need
-            result += read_at(self.f, self.datablock_physicalstart(idx) + self.pos_in_datablock(idx), bytecount)
+            result.append(read_at(self.f, self.datablock_physicalstart(idx) + self.pos_in_datablock(idx), bytecount))
             self.pos += bytecount
             size -= bytecount
 
             if size == 0:
                 # done reading
-                return result
+                return b"".join(result)
 
             if self.pos >= self.size:
                 # EOF
-                return result
+                return b"".join(result)
 
             # move on to next datablock
             idx += 1
-
-
-def dump_cabfolder(folder, outfile):
-    while True:
-        data = folder.pseudofile.read(4096)
-        if data == b"":
-            break
-        outfile.write(data)
-
-
-def print_cabfile(cabfile):
-    print("\x1b[1mHeader\x1b[m")
-    print(cabfile.header)
-
-    for number, folder in enumerate(cabfile.folders):
-        print("\x1b[1mFolder " + str(number) + "\x1b[m")
-        print(folder)
-    for number, file_ in enumerate(cabfile.files):
-        print("\x1b[1mFile " + str(number) + "\x1b[m")
-        print(file_)
-
-if __name__ == "__main__":
-    import sys
-    cabfile = CABFile(sys.argv[1])
-    dump_cabfolder(cabfile.folders[0], open('folder0.lzx', 'wb'))
-    print('folder0.lzx: uncompressed size: ' + str(cabfile.folders[0].uncompressed_size))
-    print('folder0.lzx: window size: ' + str(cabfile.folders[0].comp_window_size))
-    import code
-    import rlcompleter
-    import readline
-    readline.parse_and_bind("tab: complete")
-    c = code.InteractiveConsole(globals())
-    c.interact()
