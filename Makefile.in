@@ -1,41 +1,33 @@
-#openage main makefile
+#@PROJECT_NAME@ main makefile
 #
-#this actually just invokes the cmake generated makefile in bin/
+# this actually just invokes the cmake generated makefile in @CMAKE_BINARY_DIR@
 
 
-#the directory where the original media files are in
+# the directory where the original media files are in
 AGE2DIR = /dev/null
 
-project_name = openage
-
-#the directory where converted files will be put
+# the directory where converted files will be put
 DATA_DIR = ./data
 
-#this list specifies needed media files for the convert script
-#TODO: let our binary generate this list.
+# this list specifies needed media files for the convert script
+# TODO: don't rely on the make system, let our binary call the convert script
 needed_media = graphics:*.* terrain:*.* sounds0:*.* sounds1:*.* gamedata0:*.* gamedata1:*.* gamedata2:*.* interface:*.*
 
 
-binary = bin/$(project_name)
+binary = @CMAKE_BINARY_DIR@/@PROJECT_NAME@
 
 runargs = --data=$(DATA_DIR)
 
 .PHONY: all
-all: $(project_name)
+all: @PROJECT_NAME@
 
-bin:
-	mkdir -p bin/
-
-bin/Makefile:
-	$(error bin/Makefile not found, did you run ./configure?)
-
-.PHONY: $(project_name)
-$(project_name): bin/Makefile bin
-	@make -C bin/
+.PHONY: @PROJECT_NAME@
+$(project_name):
+	@make -C @CMAKE_BINARY_DIR@/
 
 .PHONY: install
-install: bin/Makefile bin
-	@make -C bin/ install
+install:
+	@make -C @CMAKE_BINARY_DIR@/ install
 
 .PHONY: media
 media:
@@ -46,47 +38,47 @@ medialist:
 	@echo "$(needed_media)"
 
 .PHONY: run
-run: $(project_name)
+run: @PROJECT_NAME@
 	$(binary) $(runargs)
 
 .PHONY: runmem
-runmem: $(project_name)
+runmem: @PROJECT_NAME@
 	valgrind --leak-check=full --track-origins=yes -v $(binary) $(runargs)
 
 .PHONY: rungdb
-rungdb: $(project_name)
+rungdb: @PROJECT_NAME@
 	gdb --args $(binary) $(runargs)
 
 .PHONY: doc
 doc:
-	@make -C bin/ doc
+	@make -C @CMAKE_BINARY_DIR@/ doc
 
 .PHONY: clean
-clean: bin/Makefile
-	@make -C bin/ clean
+clean:
+	@make -C @CMAKE_BINARY_DIR@/ clean
 
 .PHONY: mrproper
 mrproper:
-	rm -rf bin/
+	rm -rf @CMAKE_BINARY_DIR@/
 	rm -rf data/age
 
 .PHONY: help
 help: bin/Makefile
-	@echo "$(project_name) make system"
+	@echo "@PROJECT_NAME@ make system"
 	@echo ""
 	@echo "targets:"
 	@echo ""
-	@echo "$(project_name)   -> compile main binary"
+	@echo "@PROJECT_NAME@   -> compile main binary"
 	@echo "media     -> convert media files, usage: make media AGE2DIR=~/.wine/ms-games/age2"
 	@echo "medialist -> list needed media files for current version"
 	@echo "doc       -> create documentation files"
 	@echo "clean     -> clean up object files"
 	@echo "mrproper  -> clean up everything: configure stuff, binary files, media files"
 	@echo ""
-	@echo "run       -> run $(project_name)"
+	@echo "run       -> run @PROJECT_NAME@"
 	@echo "runmem    -> run valgrind, analyze for memleaks."
 	@echo "rungdb    -> run gdb, for debugging etc."
 	@echo ""
 	@echo ""
-	@echo "Now follows the CMake help. (make -C bin/) :"
-	@make -C bin/ help
+	@echo "Now follows the CMake help. (= make -C @CMAKE_BINARY_DIR@/) :"
+	@make -C @CMAKE_BINARY_DIR@/ help

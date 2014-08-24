@@ -180,6 +180,8 @@ if(DOXYGEN_FOUND)
 	)
 endif()
 
+configure_file(${CMAKE_SOURCE_DIR}/Makefile.in ${CMAKE_SOURCE_DIR}/Makefile @ONLY)
+
 message("CFLAGS   = ${CMAKE_C_FLAGS}")
 message("CXXFLAGS = ${CMAKE_CXX_FLAGS}")
 message("LDFLAGS  = ${CMAKE_EXE_LINKER_FLAGS}")
