@@ -37,4 +37,5 @@ settings = {
     "ext_modules": pyext_extensions,
 }
 
-setup(**settings)
+if __name__ == '__main__':
+    setup(**settings)
