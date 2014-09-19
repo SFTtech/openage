@@ -129,7 +129,7 @@ set(PY_SOURCES_ALL)
 # module_name => [module_source_file,...]
 foreach(pyext_module ${PYEXT_MODULES})
 	set(PYEXT_KEYNAME "${PYEXT_ARRAY}${pyext_module}")
-	set(PYEXT_SOURCEDEF "${PYEXT_SOURCEDEF}\n\t'${pyext_module}': '${${PYEXT_KEYNAME}}'.split(';'),")
+	set(PYEXT_SOURCEDEF "${PYEXT_SOURCEDEF}\n    '${pyext_module}': '${${PYEXT_KEYNAME}}'.split(';'),")
 
 	foreach(pyext_source "${${PYEXT_KEYNAME}}")
 		list(APPEND PY_SOURCES_ALL "${pyext_source}")
