@@ -22,7 +22,7 @@ runargs = --data=$(DATA_DIR)
 all: @PROJECT_NAME@
 
 .PHONY: @PROJECT_NAME@
-$(project_name):
+@PROJECT_NAME@:
 	@make -C @CMAKE_BINARY_DIR@/
 
 .PHONY: install
