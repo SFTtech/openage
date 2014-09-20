@@ -5,9 +5,9 @@
 # native c python modules to export
 
 from distutils.core import setup, Extension
+import shlex
 
-
-pyext_cxxflags = ['-std=c++11', '-Wall', '-Wextra', '-pedantic']
+pyext_cxxflags = shlex.split("${CMAKE_CXX_FLAGS}")
 
 py_modules = "${PY_MODULES}".split(";")
 
@@ -20,6 +20,7 @@ for modname, sources in pyext_modules.items():
         name=modname,
         sources=['${CMAKE_SOURCE_DIR}/%s' % f for f in sources],
         extra_compile_args=pyext_cxxflags,
+        language='c++',
     )
     pyext_extensions.append(new_ext)
 

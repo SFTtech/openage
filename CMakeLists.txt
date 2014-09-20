@@ -55,6 +55,9 @@ else() #"Intel", "MSVC", etc..
 	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 endif()
 
+set(CCENV "CC=${CMAKE_C_COMPILER}")
+set(CXXENV "CXX=${CMAKE_CXX_COMPILER}")
+
 
 #look for the python3.3 executable
 find_program(PYTHON3 python3 HINTS /usr/bin/python3.3 /usr/bin/python3.4)
@@ -142,13 +145,24 @@ set(SETUP_PY_IN "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
 set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
 set(PY_TIMEFILE "${CMAKE_CURRENT_BINARY_DIR}/build/py_mods")
 
+# create setup.py file for python module creation.
+#
+# * the time stamp file is used for rebuilding
+# * all python-C extensions are built inplace
+#   so they can be used for imports in the development tree
+# * the pure python modules are compiled to pyc
 configure_file(${SETUP_PY_IN} ${SETUP_PY})
 add_custom_command(OUTPUT ${PY_TIMEFILE}
-                   COMMAND ${PYTHON3} ${SETUP_PY} build
+                   COMMAND ${CXXENV} ${CCENV} ${PYTHON3} ${SETUP_PY} build_ext --inplace
+                   COMMAND ${CXXENV} ${CCENV} ${PYTHON3} ${SETUP_PY} build
                    COMMAND ${CMAKE_COMMAND} -E touch ${PY_TIMEFILE}
                    DEPENDS ${PY_SOURCES_ALL})
 add_custom_target(python_modules ALL DEPENDS ${PY_TIMEFILE})
-install(CODE "execute_process(COMMAND ${PYTHON3} ${SETUP_PY} install --prefix=${CMAKE_INSTALL_PREFIX})")
+
+# create call to setup.py when installing.
+# * set the install prefix at configure time
+# * evaluate the temporary install destination parameter DESTDIR at 'make install'-time
+install(CODE "execute_process(COMMAND ${PYTHON3} ${SETUP_PY} install --prefix=${CMAKE_INSTALL_PREFIX} --root=\$ENV{DESTDIR})")
 
 # Doxygen integration
 find_package(Doxygen)
