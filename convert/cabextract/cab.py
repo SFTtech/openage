@@ -3,7 +3,7 @@
 import os
 from struct import Struct
 from bisect import bisect
-from . import lzxd
+import lzxd
 
 class Error(Exception):
     pass
@@ -321,7 +321,7 @@ class CABFile:
                   "was required")
 
         files = {}
-        files_ignorecase = {}
+        files_lowercase = {}
 
         for _ in range(header.cFiles):
             file_ = cffile_struct.read(f)
@@ -376,10 +376,10 @@ class CABFile:
                 raise Exception("multiple files with name %s" % file_.name)
             files[file_.name] = file_
             lowername = file_.name.lower()
-            if lowername in files_ignorecase:
+            if lowername in files_lowercase:
                 raise Exception("multiple files with lower-case name %s"
                                 % lowername)
-            files_ignorecase[lowername] = file_
+            files_lowercase[lowername] = file_
 
         # read data block metainfo
         for folder in folders:
@@ -406,7 +406,7 @@ class CABFile:
         self.header = header
         self.folders = folders
         self.files = files
-        self.files_ignorecase = files_ignorecase
+        self.files_lowercase = files_lowercase
 
         self.filedata_read = False
         if readfiledata:
@@ -487,7 +487,7 @@ class CABFile:
             raise Exception("mode most be 'rb'")
 
         if ignorecase:
-            f = self.files_ignorecase[name]
+            f = self.files_lowercase[name.lower()]
         else:
             f = self.files[name]
 
