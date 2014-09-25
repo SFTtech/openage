@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-
-import dataformat
+from . import dataformat
+from .util import NamedObject, dbg, file_open, file_get_path, file_write
 import math
 from struct import Struct, unpack_from
-from util import NamedObject, dbg, file_open, file_get_path, file_write
 import os.path
 
 endianness = "< "

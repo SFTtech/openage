@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-
 import os
 from struct import Struct
 from bisect import bisect
-import lzxd
+from . import lzxd
 
 class Error(Exception):
     pass

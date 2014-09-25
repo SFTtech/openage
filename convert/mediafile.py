@@ -1,21 +1,19 @@
-#!/usr/bin/env python3
-#
-#media files conversion stuff
+# media files conversion stuff
 
-from colortable import ColorTable, PlayerColorTable
+from .colortable import ColorTable, PlayerColorTable
 from collections import defaultdict
-import dataformat
-from drs import DRS
-import filelist
-import hardcoded.termcolors
+from . import dataformat
+from .drs import DRS
+from . import filelist
+from .hardcoded import termcolors
 import os
 import os.path
 import pickle
 from string import Template
 import subprocess
-from texture import Texture
-import util
-from util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path
+from .texture import Texture
+from . import util
+from .util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path
 
 
 asset_folder = "assets/"

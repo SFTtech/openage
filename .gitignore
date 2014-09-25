@@ -20,3 +20,4 @@ callgrind.out.*
 perf.data*
 .gdb_history
 /Makefile
+/Doxyfile

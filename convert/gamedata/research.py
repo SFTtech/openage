@@ -1,6 +1,6 @@
-import dataformat
+from .. import dataformat
 from struct import Struct, unpack_from
-from util import dbg, zstr
+from ..util import dbg, zstr
 
 from .empiresdat import endianness
 

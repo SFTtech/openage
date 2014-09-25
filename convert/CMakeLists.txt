@@ -1,13 +1,13 @@
 # convert script deploying
 
-add_py_module(openage.convert)
-add_py_module(openage.convert.gamedata)
-add_py_module(openage.convert.hardcoded)
-add_py_module(openage.convert.cabextract)
+add_py_package(openage.convert)
+add_py_package(openage.convert.gamedata)
+add_py_package(openage.convert.hardcoded)
+add_py_package(openage.convert.cabextract)
 
 add_pyext_module(
-	NAME openage.convert.cabextract.lzxd
-	SOURCES
+	openage.convert.cabextract.lzxd
+
 	cabextract/lzxd/lzxd.cpp
 	cabextract/lzxd/util.cpp
 	cabextract/lzxd/pyinterface.cpp

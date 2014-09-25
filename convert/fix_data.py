@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-
-#data fixing script
+# data fixing script
 #
-#as you can imagine, the data entries may contain some semi-correct
-#values, which we need to adapt. this is done in this file.
+# as you can imagine, the data entries may contain some semi-correct
+# values, which we need to adapt. this is done in this file.
 
 
 def fix_data(data):

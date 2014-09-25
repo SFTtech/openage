@@ -2,7 +2,7 @@ import os
 import sys
 
 from struct import Struct, unpack_from
-from util import NamedObject, dbg, ifdbg
+from .util import NamedObject, dbg, ifdbg
 
 #SLP files have little endian byte order
 endianness = "< "

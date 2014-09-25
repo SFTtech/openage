@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import cab
+from . import cab
 
 def dump_cabfolder(folder, outfile):
     while True:

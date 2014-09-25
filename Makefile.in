@@ -1,6 +1,9 @@
 #@PROJECT_NAME@ main makefile
 #
 # this actually just invokes the cmake generated makefile in @CMAKE_BINARY_DIR@
+#
+# Makefile.in is just a template; the actual Makefile is generated from it via
+# ./configure or a manual cmake invocation.
 
 
 # the directory where the original media files are in
