@@ -1,5 +1,5 @@
-#language codes, as used in PE file ressources
-#this file is used by pefile.py
+# language codes, as used in PE file ressources
+# this file is used by pefile.py
 
 langcodes = {
     1: 'ar',

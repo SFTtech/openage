@@ -1,9 +1,9 @@
-import dataformat
 from struct import Struct, unpack_from
-from util import dbg, zstr
+from .. import dataformat
+from ..util import dbg, zstr
 
 from .empiresdat import endianness
-from gamedata import unit
+from . import unit
 
 
 class Civ(dataformat.Exportable):

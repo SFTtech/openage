@@ -1,16 +1,14 @@
-#!/usr/bin/env python3
-#
-#handler routines for creating and converting data files
+# handler routines for creating and converting data files
 
-import blendomatic
-import colortable
-import dataformat
-import filelist
+from . import blendomatic
+from . import colortable
+from . import dataformat
+from . import filelist
+from .gamedata import empiresdat
+from . import stringresource
+from . import texture
+from .util import dbg, set_write_dir, file_write, file_get_path
 from fnmatch import fnmatch
-import gamedata.empiresdat
-import stringresource
-import texture
-from util import dbg, set_write_dir, file_write, file_get_path
 
 
 def data_generate(args):
@@ -35,7 +33,7 @@ def data_generate(args):
 
     struct_data = list()
     struct_data += dataformat.MultisubtypeMember.MultisubtypeBaseFile.structs()
-    struct_data += gamedata.empiresdat.EmpiresDat.structs()
+    struct_data += empiresdat.EmpiresDat.structs()
     struct_data += blendomatic.Blendomatic.structs()
     struct_data += colortable.ColorTable.structs()
     struct_data += texture.Texture.structs()

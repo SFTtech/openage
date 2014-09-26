@@ -29,88 +29,27 @@ this project uses the following programming languages:
 * **python**: scripting, media convert script
 
 
-current state
-=============
+Current state of the project
+============================
 
-the current functionality state of this project can be
-looked up in the [current STATUS](STATUS.md) file.
-
-
-dependencies
-============
-
-dependencies are needed for:
-
-* C = compiling
-* R = running
-* T = media convert script
-
-dependency list:
-
-	CRT   python3.3
-	T     python3.3 imaging library (PIL) -> pillow
-	T     numpy
-	CR    opengl >=2.1
-	CR    glew
-	CR    ftgl
-	R     dejavu font
-	CR    freetype2
-	CR    fontconfig
-	C     cmake >=2.8.10
-	CR    sdl2
-	CR    sdl2_image
-	CR    opusfile
-	C     gcc >=4.8 or clang >=3.3
-
-	T     age of empires II
-	          conquerors expansion
-	          patch 1.0c
-	          optionally: with "userpatch"
-	          installed: with wine OR as the program directory
-	          we will support more patchlevels in the future.
+See [STATUS.md](STATUS.md).
 
 
+Dependencies, Building and Running
+==================================
 
-how to compile && run
-=====================
+See [BUILDING.md](BUILDING.md).
 
-on POSIX (GNU/Linux, BSD, etc..):
----------------------------------
+Windows version
+===============
 
-	./configure --mode=release
-	make
-	make media AGE2DIR="~/.wine-age/drive_c/programs/ms-games/aoe2"
-	./bin/openage --data ./data
+None of us really uses Windows, so a Windows port has no priority for us.
+We're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish.
+We'll eventually look into a port using `mingw32`/`mingw64` or maybe `cygwin`.
 
-for other make targets, see:
+If you want to beat us to it, go for it! We'll gladly accept your pull requests (as long as they fulfill certain quality standards).
 
-	make help
-
-for startup options, call:
-
-	./bin/openage --help
-
-on WINDOWS:
------------
-
-there is no windows version yet, you may implement the port!
-
-
-we don't have any interest in porting the game to ms windows,
-but we are using cross-platform libraries wherever possible,
-so porting should not be a big issue.
-
-
-if you are keen on porting the game, go for it.
-there should be as few preprocessor switches as possible;
-preferably they should all be put in one 'cross-platform abstraction file'.
-we suggest using either cygwin-g++ or mingw32-g++ as the windows compiler,
-cygwin will probably be the least effort.
-
-
-we'd be happy to accept your port into our official repository,
-but note that it should fulfill certain quality standards.
-
+We'd prefer as few proprocessor switches as possible, preferrably they should all be placed in a few 'cross-platform abstraction files'.
 
 how to convert gamedata
 =======================

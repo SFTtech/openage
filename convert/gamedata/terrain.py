@@ -1,7 +1,7 @@
-import dataformat
+from .. import dataformat
 from struct import Struct, unpack_from
-from util import dbg, zstr
-from util import file_get_path, file_write
+from ..util import dbg, zstr
+from ..util import file_get_path, file_write
 
 from .empiresdat import endianness
 

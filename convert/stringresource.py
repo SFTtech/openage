@@ -1,6 +1,6 @@
 from collections import defaultdict
-import dataformat
-from util import dbg
+from . import dataformat
+from .util import dbg
 
 class StringResource(dataformat.Exportable):
     name_struct        = "string_resource"

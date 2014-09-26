@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 
-# totally braindead and stupid configure file for openage.
-# rewrite it if you got any better idea.
+# openage ./configure script
 #
-# this is actually a handy configure script frontend for cmake.
-#
+# creates the build directory and invokes cmake with all appropriate flags.
 #
 # packagers: you don't have to use this file.
 # ---------  it exists for convenience so that users
 #            don't have to know the cmake invocations.
 #            -> build this project as a regular cmake project
 #               the way you are used to it.
+#
+# TODO: rewrite to remove over-engineering, use multiple builddirs for different compilers
 
 
 
@@ -19,9 +19,14 @@ from multiprocessing import cpu_count
 import os
 import os.path
 import subprocess
+import shutil
 
 
 cmake_binary = "cmake"
+
+cmake_path = shutil.which(cmake_binary)
+if not cmake_path:
+    raise Exception("cmake not found") #TODO
 
 aboutmsg = """
 openage configure script.

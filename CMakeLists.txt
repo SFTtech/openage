@@ -5,7 +5,6 @@ cmake_minimum_required(VERSION 2.8.10)
 project(openage C CXX)
 
 # main build configuration file
-# could use some tuning, but we are too lazy..
 
 # text art: figlet -f rounded "[SFT] openage" | sed -e 's/\\/\\\\/g'
 message("")
@@ -27,92 +26,31 @@ message("  - We automatically subscribed you to our daily Email newsletter, how 
 message("")
 message("  We hope your consumery needs will be fully fullfilled,")
 message("  otherwise, utilize our professional customer support team:")
-message("  *  XMPP MUC: openage@chat.sft.mx")
 message("  *  IRC:      #sfttech  at freenode.org")
 message("==============================================================================")
 message("")
 
-#TODO: integrate PGO build
+# include build configuration modules
+include("cmake/python.cmake")
+python_init()
+include("cmake/cpp.cmake")
+include("cmake/version.cmake")
+include("cmake/doxygen.cmake")
 
-set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin")
-set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/lib")
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -std=c++11")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS}")
-
-message("compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
-
-macro(cxx_required CXXNAME MINIMAL)
-	if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MINIMAL})
-		message(FATAL_ERROR ">=${CXXNAME}-${MINIMAL} required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
-	endif()
-endmacro()
-
-# check for compiler versions
-if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-	cxx_required("gcc" 4.8)
-elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-	cxx_required("clang" 3.3)
-else() #"Intel", "MSVC", etc..
-	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
-endif()
-
-
-#look for the python3.3 executable
-find_program(PYTHON3 python3 HINTS /usr/bin/python3.3 /usr/bin/python3.4)
-
-if(${PYTHON3} STREQUAL "PYTHON3-NOTFOUND")
-	message(FATAL "python >= 3.3 not found.")
-else()
-	message(STATUS "Found python executable: ${PYTHON3}")
-endif()
-
-
-# include these subdirectories in the build process
+# include source subdirectories
 add_subdirectory("src")
+add_subdirectory("convert")
 
-# python component installing with distutils
-set(SETUP_PY_IN "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
-set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
-set(PY_TIMEFILE "${CMAKE_CURRENT_BINARY_DIR}/build/py_mods")
+# process the included python sources, generate setup.py
+process_python_modules()
 
-configure_file(${SETUP_PY_IN} ${SETUP_PY})
-add_custom_command(OUTPUT ${PY_TIMEFILE}
-                   COMMAND ${PYTHON3} ${SETUP_PY} build
-                   COMMAND ${CMAKE_COMMAND} -E touch ${PY_TIMEFILE}
-                   DEPENDS ${SETUP_PY})
-add_custom_target(python_modules ALL DEPENDS ${PY_TIMEFILE})
-install(CODE "execute_process(COMMAND ${PYTHON3} ${SETUP_PY} install --prefix=${CMAKE_INSTALL_PREFIX})")
+# generate Makefile
+configure_file(${CMAKE_SOURCE_DIR}/Makefile.in ${CMAKE_SOURCE_DIR}/Makefile @ONLY)
 
-# Doxygen integration
-find_package(Doxygen)
-if(DOXYGEN_FOUND)
-	find_file(DOT dot HINTS /usr/bin/dot)
-
-	set(DOT_EXECUTABLE "/bin/false")
-	set(HAVE_DOT "NO")
-
-	if(NOT ${DOT} STREQUAL "DOT-NOTFOUND")
-		set(DOT_EXECUTABLE "${DOT}")
-		set(HAVE_DOT "YES")
-		message(STATUS "Found dot: ${DOT_EXECUTABLE}")
-	else()
-		message(WARNING "graphviz dot couldn't be found, you won't have cool graphs in the docs.")
-	endif()
-
-	# adapt doxygen config
-	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
-
-	# add doc target
-	add_custom_target(doc
-		${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-		COMMENT "generating docs with Doxygen" VERBATIM
-	)
-endif()
-
-message("CFLAGS   = ${CMAKE_C_FLAGS}")
-message("CXXFLAGS = ${CMAKE_CXX_FLAGS}")
-message("LDFLAGS  = ${CMAKE_EXE_LINKER_FLAGS}")
-message("PREFIX   = ${CMAKE_INSTALL_PREFIX}")
+# show build configuration overview
+message("CFLAGS    = ${CMAKE_C_FLAGS}")
+message("CXXFLAGS  = ${CMAKE_CXX_FLAGS}")
+message("LDFLAGS   = ${CMAKE_EXE_LINKER_FLAGS}")
+message("PREFIX    = ${CMAKE_INSTALL_PREFIX}")
+message("BUILDDIR  = ${CMAKE_BINARY_DIR}")
+# TODO add more messages

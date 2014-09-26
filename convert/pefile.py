@@ -1,9 +1,9 @@
 from collections import defaultdict
-import dataformat
-from langcodes import langcodes
+from . import dataformat
+from .hardcoded.langcodes import langcodes
 import os
 from struct import unpack_from, Struct
-from util import dbg, file_get_path, file_read
+from .util import dbg, file_get_path, file_read
 
 #PE file
 IMAGE_OPTIONAL_HDR32_MAGIC = 0x010b
