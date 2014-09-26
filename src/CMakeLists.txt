@@ -66,6 +66,7 @@ add_executable(${PROJECT_NAME}
 	util/timer.cpp
 	util/unicode.cpp
 
+	testing/datastructure.cpp
 	testing/testing.cpp
 	testing/term.cpp
 	testing/register.cpp

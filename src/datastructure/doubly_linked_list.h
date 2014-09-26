@@ -23,7 +23,7 @@ public:
 /**
  * Doubly linked list implementation.
  *
- * Circular implementation:
+ * It is a circular implementation:
  *    last->next      == first
  *    first->previous == last
  *
@@ -55,7 +55,7 @@ public:
 				"if there's already something in the list."
 			};
 		} else {
-			node_t new_node    = new node_t{};
+			node_t *new_node   = new node_t{};
 			new_node->next     = new_node;
 			new_node->previous = new_node;
 			new_node->data     = item;
@@ -72,7 +72,7 @@ public:
 	 * O(1)
 	 */
 	node_t *insert_after(node_t *node, const T &item) {
-		node_t new_node    = new node_t{};
+		node_t *new_node   = new node_t{};
 		new_node->next     = node->next;
 		new_node->previous = node;
 		new_node->data     = item;
@@ -88,7 +88,7 @@ public:
 	 * O(1)
 	 */
 	node_t *insert_before(node_t *node, const T &item) {
-		node_t new_node    = new node_t{};
+		node_t *new_node   = new node_t{};
 		new_node->next     = node;
 		new_node->previous = node->previous;
 		new_node->data     = item;
@@ -229,7 +229,7 @@ public:
 	 * Check whether no elements are present in the list.
 	 */
 	bool empty() {
-		returh (this->node_count == 0);
+		return (this->node_count == 0);
 	}
 
 	/**
