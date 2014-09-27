@@ -62,8 +62,7 @@ clean:
 
 .PHONY: mrproper
 mrproper:
-	rm -rf @CMAKE_BINARY_DIR@/
-	rm -rf data/age
+	rm -rf .bin bin data/age
 
 .PHONY: help
 help: bin/Makefile

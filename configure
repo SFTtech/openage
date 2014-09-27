@@ -1,308 +1,139 @@
 #!/usr/bin/env python3
 
-# openage ./configure script
-#
-# creates the build directory and invokes cmake with all appropriate flags.
-#
-# packagers: you don't have to use this file.
-# ---------  it exists for convenience so that users
-#            don't have to know the cmake invocations.
-#            -> build this project as a regular cmake project
-#               the way you are used to it.
-#
-# TODO: rewrite to remove over-engineering, use multiple builddirs for different compilers
-
-
+# this is a convenience script that will simply create a build directory and
+# invoke cmake.
 
 import argparse
 from multiprocessing import cpu_count
 import os
-import os.path
 import subprocess
 import shutil
+import shlex
+shlex.join = lambda args: ' '.join(shlex.quote(a) for a in args)
 
 
-cmake_binary = "cmake"
-
-cmake_path = shutil.which(cmake_binary)
-if not cmake_path:
-    raise Exception("cmake not found") #TODO
-
-aboutmsg = """
-openage configure script.
-Initializes cmake so you can compile the project afterwards.
-
-This file just exists for the developer's convenience,
-don't use it for packaging !
-"""
-
-epilogmsg = """
-This script honors environment variables like CXX, CXXFLAGS, etc.
-These have lower priority than the corresponding program arguments though.
-"""
-
-fpath = os.path.realpath(__file__)
-fdir  = os.path.dirname(fpath)
-
-ap = argparse.ArgumentParser(description=aboutmsg, epilog=epilogmsg)
-ap.add_argument("--mode", "-m", choices=["debug", "release"], default="release", help="activate debug symbols and adapt the optimisation level")
-ap.add_argument("--compiler", "-c", help="the compiler to use: e.g. clang, gcc")
-ap.add_argument("--flags", "-f", help="compiler flags to use when compiling")
-ap.add_argument("--ldflags", "-l", help="linker flags to use when linking the binaries")
-ap.add_argument("--prefix", help="the global installation directory prefix, e.g. /usr/games")
-
-
-def prepare_binfolder():
-    os.makedirs("bin", exist_ok=True)
-    os.chdir("bin/")
-
-def get_build_type(t):
-    if t == "debug":
-        btype = "Debug"
-    elif t == "release":
-        btype = "Release"
-    else:
-        raise Exception("unknown build type %s" % t)
-
-    return [ "-DCMAKE_BUILD_TYPE=%s" % btype ]
-
-def get_compiler(c, cxx):
-    xx = "XX" if cxx else ""
-    return [ "-DCMAKE_C%s_COMPILER=%s" % (xx, c) ]
-
-def get_cc_flags(flags, cxx=False, link=False, mode=None):
-    flaglist = " ".join(flags)
-    if link:
-        return [(a % flaglist) for a in (
-            "-DCMAKE_EXE_LINKER_FLAGS='%s'",
-            "-DCMAKE_MODULE_LINKER_FLAGS='%s'",
-            "-DCMAKE_SHARED_LINKER_FLAGS='%s'",
-        )]
-    else:
-        xx     = "CXX"          if cxx  else "C"
-        modefl = ("_%s" % mode) if mode else ""
-        return ["-DCMAKE_%s_FLAGS%s='%s'" % (xx, modefl, flaglist)]
-
-
-def fetch_settings(configuration):
+def getenv(*varnames, default=""):
     """
-    fetches configure settings.
-    preference order: configure argument > environment var > fallback value
+    fetches an environment variable.
+    tries all given varnames until it finds an existing one.
+    if none fits, returns default.
     """
+    for v in varnames:
+        if v in os.environ:
+            return os.environ[v]
 
-    ret = dict()
-    for n, (setting, fallback, handler) in configuration.items():
-        if not setting:
-            if n in os.environ:
-                arg = os.environ[n]
-            else:
-                arg = fallback
-        else:
-            arg = setting
-
-        ret[n] = (arg, handler)
-
-    return ret
-
-def process_settings(configuration):
-    """
-    generates cmake arguments.
-    """
-
-    ret = dict()
-    for n, (arg, handler) in configuration.items():
-        if isinstance(arg, MagicFlag):
-            arg = arg.get_flags(configuration)
-
-        #call the argument generator
-        ret[n] = (arg, handler(arg))
-
-    return ret
+    return default
 
 
-class MagicFlag:
-    """
-    flag rule container.
-    allows to dynamically construct compiler flags according
-    to the present build configuration state.
-    """
+# argparsing
+description = "convenience script to create a build directory "
+description += "and invoke cmake."
+epilog = "environment variables like CXX and CXXFLAGS are honored, "
+epilog += "but overwritten if their respective arguments are specified."
 
-    class FlagRule:
-        """
-        rule handler that tries to find preference matches,
-        and then applies a function to the match-success list.
-        """
+ap = argparse.ArgumentParser(description=description, epilog=epilog)
+ap.add_argument("--mode", "-m", choices=["debug", "release",
+                "excessively_optimized"], default="release",
+                help="controls cmake build mode and some compiler flags")
+ap.add_argument("--compiler", "-c",
+                default=getenv("CXX", "CC", default="gcc"),
+                help="the compiler to use: e.g. clang, gcc")
+ap.add_argument("--flags", "-f",
+                default=getenv("CXXFLAGS", "CCFLAGS", "CFLAGS"),
+                help="compiler flags")
+ap.add_argument("--ldflags", "-l",
+                default=getenv("LDFLAGS"),
+                help="linker flags")
+ap.add_argument("--prefix", "-p", default="/usr/local",
+                help="installation directory prefix, e.g. /usr/games")
 
-        def __init__(self, defs, cmpfunc):
-            self.defs = defs
-            self.cmpfunc = cmpfunc
+args = ap.parse_args()
 
-        def applies(self, prefs):
-            """
-            builds a list of booleans that specify
-            whether the preference keys
-            have any of the requested values.
+try:
+    subprocess.call(['cowsay', 'openage configure helper'])
+    print('')
+except:
+    pass
 
-            then returns the result of the cmpfunc applied
-            on that list. the cmpfunc is likely `any` or `all`.
-            """
+defines = {}
 
-            results = list()
-            for key, vals in self.defs.items():
-                r = False
-                if key == True and vals == True:
-                    r = True
-                elif key in prefs:
-                    pref_value, _ = prefs[key]
-                    if pref_value in vals:
-                        r = True
-                results.append(r)
-            return self.cmpfunc(results)
+# args.mode
+mode = args.mode
+if mode == 'debug':
+    build_type = 'Debug'
+else:
+    build_type = 'Release'
+defines.update(build_type=build_type)
 
-    def __init__(self, defaults=None):
-        self.rules = list()
-        if defaults:
-            self.rule(any, {True: True}, defaults)
+# args.compiler
+if args.compiler.lower() in {'clang', 'clang++', 'llvm'}:
+    cc, cxx = 'clang', 'clang++'
+elif args.compiler.lower() in {'gcc', 'g++', 'gnu'}:
+    cc, cxx = 'gcc', 'g++'
+else:
+    print("WARNING: unknown compiler: %s" % cc)
+    cc, cxx = args.compiler
 
-    def rule(self, cmpfunc, defs, flags):
-        """
-        adds a flag rule.
-        defs: preference state, dict {key: [values]}
-        preference[key] in [values] will be evaluated.
-        the resulting boolean list is then passed to cmpfunc.
-        when this function returns true,
-        append the flags.
-        """
+defines.update(c_compiler=cc, cxx_compiler=cxx)
 
-        newrule = self.FlagRule(defs, cmpfunc)
-        self.rules.append((newrule, flags))
+# args.flags, args.ldflags, args.excessive_optimization
+flags = shlex.split(args.flags)
+ldflags = shlex.split(args.ldflags)
 
-    def get_flags(self, prefs):
-        """
-        return flags by examining rules rekursively.
-        """
+# if no flags have been given, populate them from the other args
+if not flags and not ldflags:
+    if mode == 'debug':
+        if cc == 'gcc':
+            flags.append("-Og")
+        elif cc == 'clang':
+            flags.append("-O1")
+    elif mode == 'release':
+        flags.append("-O2")
+    elif mode == 'excessively_optimized':
+        flags.append("-O3")
+        flags.append("-march=native")
+        if cc in {'gcc'}:
+            flags.append("-flto=%d" % cpu_count())
+            ldflags.append("-flto=%d" % cpu_count())
 
-        ret = list()
+flags = shlex.join(flags)
+ldflags = shlex.join(ldflags)
+defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
+               module_linker_flags=ldflags, shared_linker_flags=ldflags)
 
-        for rule, flags in self.rules:
-            if rule.applies(prefs):
-                for f in flags:
-                    if type(f) == type(self):
-                        ret += f.get_flags(prefs)
-                    else:
-                        ret.append(f)
-        return ret
+# args.prefix
+defines.update(install_prefix=args.prefix)
 
-def main(args):
-    print(r"""
-==================================================
- _________________________________
-< openage configure helper script >
- ---------------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
+# create the build dir and symlink it to 'bin'
+bindir = ".bin/%s/%s" % (mode, cc)
+os.makedirs(bindir, exist_ok=True)
+if os.path.exists('bin'):
+    os.unlink('bin')
+os.symlink(bindir, 'bin')
 
+# memorize the current working directory, switch to the bin dir
+project_root = os.getcwd()
+os.chdir(bindir)
 
-please don't use this script for distro packages
-instead, package it as regular cmake project!
-==================================================
-""")
+# calculate cmake invocation from defines dict
+invocation = ['cmake']
+maxkeylen = max(len(k) for k in defines)
+for k, v in defines.items():
+    print('%s | %s' % (k.rjust(maxkeylen), v))
 
-    project_root = ".."
+    # work around this cmake 'feature':
+    # when run in an existing build directory, if CC or CXX are given, all other
+    # arguments are ignored... this is retarded.
+    if not os.path.exists('CMakeCache.txt'):
+        invocation.append('-DCMAKE_%s=%s' % (k.upper(), shlex.quote(v)))
+invocation.append('--')
+invocation.append(project_root)
 
-    cxx_lookup = {
-        "clang": "clang++",
-        "gcc":   "g++",
-    }
-
-    cc = args.compiler
-    if cc in cxx_lookup:
-        cxx = cxx_lookup[cc]
-    elif cc in cxx_lookup.values():
-        cxx = cc
-        for k, v in cxx_lookup.items():
-            if v == cxx:
-                cc = k
-                break
-    elif cc == None:
-        cxx = cc
-    else:
-        print("WARNING: unknown compiler selected: %s -> setting CXX=CC" % cc)
-        cxx = cc
-
-    fallback_cflags          = MagicFlag(["-march=native"])
-    fallback_cflags_debug    = MagicFlag()
-    fallback_cflags_release  = MagicFlag()
-    fallback_ldflags         = MagicFlag()
-    fallback_ldflags_release = MagicFlag()
-
-    fallback_cflags.rule(any, {"MODE": ["debug"]}, [fallback_cflags_debug])
-    fallback_cflags.rule(any, {"MODE": ["release"]}, ["-O3", fallback_cflags_release])
-
-    fallback_cflags_debug.rule(any, {"CC": ["gcc"], "CXX": ["g++"]}, ["-Og"])
-    fallback_cflags_debug.rule(any, {"CC": ["clang"], "CXX": ["clang++"]}, ["-O1"])
-    fallback_cflags_release.rule(any, {"CC": ["gcc"], "CXX": ["g++"]}, ["-flto=%d" % cpu_count()])
-
-    fallback_ldflags.rule(any, {"MODE": ["release"]}, [fallback_ldflags_release])
-    fallback_ldflags_release.rule(any, {"CC": ["gcc"], "CXX": ["g++"]}, ["-flto=%d" % cpu_count()])
-
-
-    # default config definition.
-    # key: environment var name
-    # val: (config argument, fallback value, cmake flag function)
-    config_defaults = {
-        "CC":       (cc,           "gcc",            lambda v: get_compiler(v, cxx=False)),
-        "CXX":      (cxx,          "g++",            lambda v: get_compiler(v, cxx=True)),
-        "CFLAGS":   (args.flags,   fallback_cflags,  lambda v: get_cc_flags(v, cxx=False)),
-        "CXXFLAGS": (args.flags,   fallback_cflags,  lambda v: get_cc_flags(v, cxx=True)),
-        "LDFLAGS":  (args.ldflags, fallback_ldflags, lambda v: get_cc_flags(v, link=True)),
-        "MODE":     (args.mode,    "release",        lambda v: get_build_type(v)),
-        "PREFIX":   (args.prefix,  "/usr/local",     lambda v: ["-DCMAKE_INSTALL_PREFIX=%s" % v]),
-    }
-
-    # select the correct settings source: configure argument, environment var or fallback
-    # config_result = dict(env_var_name => (var_result, cmake_argument_function))
-    config_result = fetch_settings(config_defaults)
-
-    # update the variables and generate the cmake argument
-    # config_result = dict(env_var_name => ([args], [cmake_arguments]))
-    config_result = process_settings(config_result)
-
-    cmake_args = list()
-    cmake_args_nocc = list()
-
-    print("\nresulting configuration variables:")
-    print("----------------------------------")
-    print("variable    | args")
-    print("------------+---------------------")
-    for vname, (args, cmargs) in sorted(config_result.items()):
-        cmake_args += cmargs
-        if vname not in ("CC", "CXX"):
-            cmake_args_nocc += cmargs
-
-        if type(args) == list:
-            args = " ".join(args)
-        cmargs = " ".join(cmargs)
-        aspace = " " * (30 - len(args))
-        print("%010s  |  %s%s%s" % (vname, args, aspace, cmargs))
-
-    # because cmake will ignore the -D.. arguments when we _change_ the compiler
-    # we have to call cmake again without compiler changes.
-    call_cmake_again = os.path.isfile("CMakeCache.txt")
-
-    cmake_call = [cmake_binary] + cmake_args + [project_root]
-    print("\nrunning cmake:\n%s" % " ".join(cmake_call))
-    subprocess.call(cmake_call)
-
-    if call_cmake_again:
-        cmake_call = [cmake_binary] + cmake_args_nocc + [project_root]
-        print("\nrunning cmake again to 'reset some variables':\n%s" % " ".join(cmake_call))
-        subprocess.call(cmake_call)
-
-if __name__ == "__main__":
-    args = ap.parse_args()
-    prepare_binfolder()
-    main(args)
+# invoke cmake
+print('\nbindir:\n./%s/\n' % bindir)
+print('invocation:\n\n%s' % ' '.join(invocation))
+try:
+    exit(subprocess.call(invocation))
+except FileNotFoundError:
+    print("cmake was not found. it is a build dependency for openage.")
+    exit(1)
