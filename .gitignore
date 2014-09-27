@@ -13,7 +13,8 @@ resources
 CMakeFiles
 cmake_install.cmake
 CMakeCache.txt
-bin
+/bin
+/.bin
 lib
 data/age
 callgrind.out.*
