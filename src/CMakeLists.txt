@@ -1,12 +1,14 @@
-#source file configuration
-#
-#
+# source file configuration
+# for the resulting binary
 
 
-#add new sources here, dependencies for linking and including
-#are specified beliw the source file list.
+# add new sources here, dependencies for linking and including
+# are specified below the source file list.
 
-add_executable(${PROJECT_NAME}
+
+create_binary(${PROJECT_NAME})
+
+add_sources(${PROJECT_NAME}
 	main.cpp
 	args.cpp
 
@@ -51,6 +53,10 @@ add_executable(${PROJECT_NAME}
 
 	job/job_manager.cpp
 
+	#pathfinding/a_star.cpp
+	pathfinding/heuristics.cpp
+	pathfinding/path_utils.cpp
+
 	shader/program.cpp
 	shader/shader.cpp
 
@@ -66,28 +72,33 @@ add_executable(${PROJECT_NAME}
 	util/timer.cpp
 	util/unicode.cpp
 
-	testing/datastructure.cpp
-	testing/testing.cpp
-	testing/term.cpp
-	testing/register.cpp
-	testing/engine_test.cpp
 )
 
 
-#add our generated files directory
+# add subsystem folders
 add_subdirectory("gamedata")
+add_subdirectory("audio")
+add_subdirectory("console")
+add_subdirectory("coord")
+add_subdirectory("job")
+add_subdirectory("pathfinding")
+add_subdirectory("shader")
+add_subdirectory("util")
+add_subdirectory("testing")
 
+# define the resulting executable by all sources gathered
+define_executable(${PROJECT_NAME})
 
-#library dependency specification
+# library dependency specification
 
-#freetype includedir hint for ubuntu...
+# freetype includedir hint for ubuntu...
 find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2)
 find_path(OPUSFILE_INCLUDE_DIR opusfile.h HINTS /usr/include/opus)
 
 include(FindPkgConfig)
 include(FindPackageHandleStandardArgs)
 
-#windows does not have libm
+# windows does not have libm
 if(NOT WIN32)
 	find_library(MATH_LIB m)
 endif()

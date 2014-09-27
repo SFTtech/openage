@@ -1,0 +1,12 @@
+#include "${SOURCE_RELPATH}/testing.h"
+
+namespace testing {
+namespace tests {
+${TEST_PROTOTYPES}
+} // namespace tests
+
+void register_all_tests() {
+	${REGISTER_TESTS}
+}
+
+} // namespace testing

@@ -26,3 +26,28 @@ endif()
 # these environment variables are used by the python C extension builder
 set(CCENV "CC=${CMAKE_C_COMPILER}")
 set(CXXENV "CXX=${CMAKE_CXX_COMPILER}")
+
+
+# output binary definition helpers.
+# allows to add sources to a binary from anywhere.
+
+function(create_binary binary_name)
+	set_property(GLOBAL APPEND PROPERTY SFT_BINARIES ${binary_name})
+	set_property(GLOBAL APPEND PROPERTY SFT_BINARY_PATH_${binary_name} ${CMAKE_CURRENT_BINARY_DIR}/${binary_name})
+endfunction()
+
+function(add_sources binary_name)
+	get_property(binary_list GLOBAL PROPERTY SFT_BINARIES)
+	if(NOT ${binary_list} MATCHES ${binary_name})
+		message(FATAL_ERROR "adding sources to unknown binary ${binary_name}")
+	endif()
+
+	foreach(source ${ARGN})
+		set_property(GLOBAL APPEND PROPERTY SFT_BINARY_SRCS_${binary_name} ${source})
+	endforeach()
+endfunction()
+
+function(define_executable binary_name)
+	get_property(sources GLOBAL PROPERTY SFT_BINARY_SRCS_${binary_name})
+	add_executable(${binary_name} ${sources})
+endfunction()

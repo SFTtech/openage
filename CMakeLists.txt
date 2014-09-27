@@ -31,11 +31,13 @@ message("=======================================================================
 message("")
 
 # include build configuration modules
+include("CTest")
 include("buildsystem/python.cmake")
 python_init()
 include("buildsystem/cpp.cmake")
 include("buildsystem/version.cmake")
 include("buildsystem/doxygen.cmake")
+include("buildsystem/testing.cmake")
 
 # include source subdirectories
 add_subdirectory("src")
