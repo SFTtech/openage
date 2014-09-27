@@ -38,7 +38,7 @@ foreach(FILE_NAME ${FILES_TO_GENERATE})
 		DEPENDS ${DEPENDS}
 		COMMENT "generating ${FILE_NAME}"
 	)
-	message("codegen target: ${FILE_NAME}")
+	message("added codegen target: ${FILE_NAME}")
 	list(APPEND GENERATED_FILES "${FILE_PATH}")
 endforeach()
 
