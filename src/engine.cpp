@@ -133,6 +133,13 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 		throw util::Error("Maximum supported texture size too small: %d", max_texture_size);
 	}
 
+	int max_texture_units;
+	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_texture_units);
+	log::dbg("Maximum supported texture units: %d", max_texture_units);
+	if (max_texture_size < 2) {
+		throw util::Error("Your GPU has too less texture units: %d", max_texture_units);
+	}
+
 	// vsync on
 	SDL_GL_SetSwapInterval(1);
 
