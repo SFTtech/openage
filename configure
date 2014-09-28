@@ -122,8 +122,8 @@ for k, v in defines.items():
     print('%s | %s' % (k.rjust(maxkeylen), v))
 
     # work around this cmake 'feature':
-    # when run in an existing build directory, if CC or CXX are given, all other
-    # arguments are ignored... this is retarded.
+    # when run in an existing build directory, if CC or CXX are given, all
+    # other arguments are ignored... this is retarded.
     if not os.path.exists('CMakeCache.txt'):
         invocation.append('-DCMAKE_%s=%s' % (k.upper(), shlex.quote(v)))
 invocation.append('--')
