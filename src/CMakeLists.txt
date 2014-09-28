@@ -53,10 +53,6 @@ add_sources(${PROJECT_NAME}
 
 	job/job_manager.cpp
 
-	#pathfinding/a_star.cpp
-	pathfinding/heuristics.cpp
-	pathfinding/path_utils.cpp
-
 	shader/program.cpp
 	shader/shader.cpp
 
@@ -71,7 +67,6 @@ add_sources(${PROJECT_NAME}
 	util/strings.cpp
 	util/timer.cpp
 	util/unicode.cpp
-
 )
 
 
