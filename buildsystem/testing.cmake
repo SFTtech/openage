@@ -60,9 +60,18 @@ function(register_test_cases binary_name register_file_in register_file)
 	endforeach()
 
 	message("registering tests in ${register_file}")
-	file(RELATIVE_PATH SOURCE_RELPATH "${CMAKE_CURRENT_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}")
-	configure_file(${register_file_in} ${CMAKE_CURRENT_BINARY_DIR}/${register_file})
+	file(RELATIVE_PATH SOURCE_RELPATH
+		"${CMAKE_CURRENT_BINARY_DIR}"
+		"${CMAKE_CURRENT_SOURCE_DIR}"
+	)
+	configure_file(
+		${register_file_in}
+		${CMAKE_CURRENT_BINARY_DIR}/${register_file}
+	)
 
 	# add the configured file to the source list.
-	add_sources(${binary_name} ${CMAKE_CURRENT_BINARY_DIR}/${register_file})
+	add_sources_absolute(
+		${binary_name}
+		${CMAKE_CURRENT_BINARY_DIR}/${register_file}
+	)
 endfunction()

@@ -1,0 +1,13 @@
+add_sources(${PROJECT_NAME}
+	color.cpp
+	dir.cpp
+	error.cpp
+	file.cpp
+	fds.cpp
+	fps.cpp
+	misc.cpp
+	opengl.cpp
+	strings.cpp
+	timer.cpp
+	unicode.cpp
+)

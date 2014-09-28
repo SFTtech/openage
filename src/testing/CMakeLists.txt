@@ -5,10 +5,10 @@ setup_testing()
 
 # add source files to binary
 add_sources(${PROJECT_NAME}
-	testing/datastructure.cpp
-	testing/testing.cpp
-	testing/term.cpp
-	testing/engine_test.cpp
+	datastructure.cpp
+	testing.cpp
+	term.cpp
+	engine_test.cpp
 )
 
 

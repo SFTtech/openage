@@ -23,50 +23,6 @@ add_sources(${PROJECT_NAME}
 	terrain_chunk.cpp
 	terrain_object.cpp
 	texture.cpp
-
-	audio/audio_manager.cpp
-	audio/category.cpp
-	audio/dynamic_loader.cpp
-	audio/format.cpp
-	audio/in_memory_loader.cpp
-	audio/loader_policy.cpp
-	audio/resource.cpp
-	audio/sound.cpp
-
-	console/buf.cpp
-	console/console.cpp
-	console/draw.cpp
-
-	coord/camgame.cpp
-	coord/camhud.cpp
-	coord/chunk.cpp
-	coord/phys2.cpp
-	coord/phys3.cpp
-	coord/term.cpp
-	coord/tile.cpp
-	coord/tile3.cpp
-	coord/vec2.cpp
-	coord/vec2f.cpp
-	coord/vec3.cpp
-	coord/vec3f.cpp
-	coord/window.cpp
-
-	job/job_manager.cpp
-
-	shader/program.cpp
-	shader/shader.cpp
-
-	util/color.cpp
-	util/dir.cpp
-	util/error.cpp
-	util/file.cpp
-	util/fds.cpp
-	util/fps.cpp
-	util/misc.cpp
-	util/opengl.cpp
-	util/strings.cpp
-	util/timer.cpp
-	util/unicode.cpp
 )
 
 

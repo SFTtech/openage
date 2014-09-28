@@ -31,11 +31,13 @@ set(CXXENV "CXX=${CMAKE_CXX_COMPILER}")
 # output binary definition helpers.
 # allows to add sources to a binary from anywhere.
 
+# create a new 'empty' binary
 function(create_binary binary_name)
 	set_property(GLOBAL APPEND PROPERTY SFT_BINARIES ${binary_name})
 	set_property(GLOBAL APPEND PROPERTY SFT_BINARY_PATH_${binary_name} ${CMAKE_CURRENT_BINARY_DIR}/${binary_name})
 endfunction()
 
+# add a source file with current source dir path
 function(add_sources binary_name)
 	get_property(binary_list GLOBAL PROPERTY SFT_BINARIES)
 	if(NOT ${binary_list} MATCHES ${binary_name})
@@ -43,11 +45,39 @@ function(add_sources binary_name)
 	endif()
 
 	foreach(source ${ARGN})
-		set_property(GLOBAL APPEND PROPERTY SFT_BINARY_SRCS_${binary_name} ${source})
+		set_property(
+			GLOBAL APPEND PROPERTY
+			SFT_BINARY_SRCS_${binary_name}
+			${CMAKE_CURRENT_SOURCE_DIR}/${source}
+		)
 	endforeach()
 endfunction()
 
+# add sources file with absolute path to a binary
+function(add_sources_absolute binary_name)
+	get_property(binary_list GLOBAL PROPERTY SFT_BINARIES)
+	if(NOT ${binary_list} MATCHES ${binary_name})
+		message(FATAL_ERROR "adding source to unknown binary ${binary_name}")
+	endif()
+
+	foreach(source ${ARGN})
+		set_property(
+			GLOBAL APPEND PROPERTY
+			SFT_BINARY_SRCS_${binary_name}
+			${source}
+		)
+	endforeach()
+endfunction()
+
+# finalize the executable definition,
+# no sources can be added to the binary afterwards.
 function(define_executable binary_name)
 	get_property(sources GLOBAL PROPERTY SFT_BINARY_SRCS_${binary_name})
+
+	message("${binary_name}:")
+	foreach(source ${sources})
+		message("* ${source}")
+	endforeach()
+
 	add_executable(${binary_name} ${sources})
 endfunction()
