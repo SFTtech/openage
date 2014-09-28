@@ -62,7 +62,7 @@ clean:
 
 .PHONY: mrproper
 mrproper:
-	rm -rf .bin bin data/age
+	rm -rf .bin bin data/age Makefile
 
 .PHONY: help
 help: bin/Makefile
