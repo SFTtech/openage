@@ -17,7 +17,7 @@ DATA_DIR = ./data
 needed_media = graphics:*.* terrain:*.* sounds0:*.* sounds1:*.* gamedata0:*.* gamedata1:*.* gamedata2:*.* interface:*.*
 
 
-binary = @CMAKE_BINARY_DIR@/@PROJECT_NAME@
+binary = @CMAKE_BINARY_DIR@/src/@PROJECT_NAME@
 
 runargs = --data=$(DATA_DIR)
 
