@@ -11,26 +11,28 @@ this also means that you have to own the original media files, as we are way
 too lazy to create free media files for now, that's something the community can do..
 
 
+conversion invokation
+---------------------
+
 to convert only media files we need at the moment, execute this:
 
 	make media AGE2DIR="~/.wine-age/drive_c/programs/ms-games/aoe2"
 
 the above command is an alias for the following python call:
 
-	python3 convert media -o ./data/age/ $PATH_TO_YOUR_AOC_INSTALLATION $(make medialist)
+	python3 -m openage.convert media -o ./data/age/ $PATH_TO_YOUR_AOC_INSTALLATION $(make medialist)
 
 
 to convert ALL original media files to openage format, execute the following:
 
-	python3 convert media -o ./data/age $PATH_TO_YOUR_AOC_INSTALLATION
+	python3 -m openage.convert media -o ./data/age $PATH_TO_YOUR_AOC_INSTALLATION
 
 you will then find the converted files in `./data/age/`
-you probably don't want to convert all the files (we don't use them yet..).
 the conversion takes some time, so be patient.
 
 
 try
 
-	python3 convert --help
+	python3 -m openage.convert --help
 
 to see the convert script usage.

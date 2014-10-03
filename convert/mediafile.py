@@ -86,14 +86,14 @@ def media_convert(args):
     #metadata dumping output format, more to come?
     output_formats = ("csv",)
 
-    termcolortable = ColorTable(hardcoded.termcolors.urxvtcoltable)
+    termcolortable = ColorTable(termcolors.urxvtcoltable)
     #write mode is disabled by default, unless destdir is set
 
     #saving files is disabled by default
     write_enabled = False
 
     if args.output:
-        from slp import SLP
+        from .slp import SLP
 
         write_enabled = True
 
@@ -106,12 +106,12 @@ def media_convert(args):
             palette.save_visualization('info/colortable.pal.png')
             player_palette.save_visualization('info/playercolortable.pal.png')
 
-        import blendomatic
+        from . import blendomatic
         blend_data = blendomatic.Blendomatic("Data/blendomatic.dat")
         blend_data.save(os.path.join(asset_folder, "blendomatic.dat/"), output_formats)
 
-        from pefile import PEFile
-        from stringresource import StringResource
+        from .pefile import PEFile
+        from .stringresource import StringResource
         stringres = StringResource()
         stringres.fill_from(PEFile("language.dll"))
         stringres.fill_from(PEFile("language_x1.dll"))
@@ -120,7 +120,7 @@ def media_convert(args):
         #TODO: transform and cleanup the read strings... (strip html, insert formatchars, ...)
 
         #create the dump for the dat file
-        import gamedata.empiresdat
+        from .gamedata import empiresdat
         datfile_name = "empires2_x1_p1.dat"
 
         #try to use cached version?
@@ -136,8 +136,8 @@ def media_convert(args):
                 parse_empiresdat = True
 
         if not args.use_dat_cache or parse_empiresdat:
-            datfile = gamedata.empiresdat.EmpiresDatGzip("Data/%s" % datfile_name)
-            gamedata = gamedata.empiresdat.EmpiresDatWrapper()
+            datfile = empiresdat.EmpiresDatGzip("Data/%s" % datfile_name)
+            gamedata = empiresdat.EmpiresDatWrapper()
 
             if args.extrafiles:
                 datfile.raw_dump('raw/empires2x1p1.raw')
@@ -151,7 +151,7 @@ def media_convert(args):
 
         #modify the read contents of datfile
         dbg("repairing some values in main data file %s..." % (datfile_name), lvl=1)
-        import fix_data
+        from . import fix_data
         gamedata.empiresdat[0] = fix_data.fix_data(gamedata.empiresdat[0])
 
         #dbg("transforming main data file %s..." % (datfile_name), lvl=1)

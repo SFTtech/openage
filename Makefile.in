@@ -34,7 +34,7 @@ install:
 
 .PHONY: media
 media:
-	python3 convert -v media -o $(DATA_DIR)/age/ $(AGE2DIR) $(needed_media)
+	python3 -m openage.convert -v media -o $(DATA_DIR)/age/ $(AGE2DIR) $(needed_media)
 
 .PHONY: medialist
 medialist:
