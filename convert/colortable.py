@@ -1,7 +1,7 @@
-import dataformat
+from . import dataformat
+from . import util
+from .util import dbg
 import math
-import util
-from util import dbg
 
 class ColorTable(dataformat.Exportable):
     name_struct        = "palette_color"

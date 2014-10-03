@@ -38,7 +38,8 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 
 	SDL_Surface *surface;
 	GLuint textureid;
-	int texture_format;
+	int texture_format_in;
+	int texture_format_out;
 
 	surface = IMG_Load(filename.c_str());
 
@@ -52,10 +53,12 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 	//glTexImage2D format determination
 	switch (surface->format->BytesPerPixel) {
 	case 3: //RGB 24 bit
-		texture_format = GL_RGB;
+		texture_format_in  = GL_RGB8;
+		texture_format_out = GL_RGB;
 		break;
 	case 4: //RGBA 32 bit
-		texture_format = GL_RGBA;
+		texture_format_in  = GL_RGBA8;
+		texture_format_out = GL_RGBA;
 		break;
 	default:
 		throw util::Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename.c_str(), surface->format->BytesPerPixel);
@@ -69,8 +72,12 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 	glGenTextures(1, &textureid);
 	glBindTexture(GL_TEXTURE_2D, textureid);
 
-	//sdl surface -> opengl texture
-	glTexImage2D(GL_TEXTURE_2D, 0, texture_format, surface->w, surface->h, 0, texture_format, GL_UNSIGNED_BYTE, surface->pixels);
+	// sdl surface -> opengl texture
+	glTexImage2D(
+		GL_TEXTURE_2D, 0,
+		texture_format_in, surface->w, surface->h, 0,
+		texture_format_out, GL_UNSIGNED_BYTE, surface->pixels
+	);
 
 	//later drawing settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);

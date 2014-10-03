@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# this script requires a 'testdata' folder, which contains small.lzx and small.plain,
+# which should be relatively small lzx-compressed/decompressed sample files.
+# it also requires large.lzx/large.plain, which in our example is the folder from empires2.cab.
+# the lzxd 'magic' arguments are taken from the cab metadata, and need to fit for your lzx stream.
+#
+# the 'large' test runs only if the command-line parameter 'large' is given.
+
+g++ lzxd_test.cpp lzxd.cpp util.cpp -Wall -Wextra -pedantic -std=c++11 -O3 -g -o lzxd || exit $?
+
+diff <(./lzxd 21 32768 < testdata/small.lzx) testdata/small.plain && echo success
+
+if [[ "$1" = "large" ]]; then
+	time diff <(./lzxd 21 172200322 < testdata/large.lzx) testdata/large.plain && echo huge success
+fi

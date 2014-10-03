@@ -1,12 +1,14 @@
-#source file configuration
-#
-#
+# source file configuration
+# for the resulting binary
 
 
-#add new sources here, dependencies for linking and including
-#are specified beliw the source file list.
+# add new sources here, dependencies for linking and including
+# are specified below the source file list.
 
-add_executable(${PROJECT_NAME}
+
+create_binary(${PROJECT_NAME})
+
+add_sources(${PROJECT_NAME}
 	main.cpp
 	args.cpp
 
@@ -21,72 +23,33 @@ add_executable(${PROJECT_NAME}
 	terrain_chunk.cpp
 	terrain_object.cpp
 	texture.cpp
-
-	audio/audio_manager.cpp
-	audio/category.cpp
-	audio/dynamic_loader.cpp
-	audio/format.cpp
-	audio/in_memory_loader.cpp
-	audio/loader_policy.cpp
-	audio/resource.cpp
-	audio/sound.cpp
-
-	console/buf.cpp
-	console/console.cpp
-	console/draw.cpp
-
-	coord/camgame.cpp
-	coord/camhud.cpp
-	coord/chunk.cpp
-	coord/phys2.cpp
-	coord/phys3.cpp
-	coord/term.cpp
-	coord/tile.cpp
-	coord/tile3.cpp
-	coord/vec2.cpp
-	coord/vec2f.cpp
-	coord/vec3.cpp
-	coord/vec3f.cpp
-	coord/window.cpp
-
-	job/job_manager.cpp
-
-	shader/program.cpp
-	shader/shader.cpp
-
-	util/color.cpp
-	util/dir.cpp
-	util/error.cpp
-	util/file.cpp
-	util/fds.cpp
-	util/fps.cpp
-	util/misc.cpp
-	util/opengl.cpp
-	util/strings.cpp
-	util/timer.cpp
-	util/unicode.cpp
-
-	testing/testing.cpp
-	testing/term.cpp
-	testing/register.cpp
-	testing/engine_test.cpp
 )
 
 
-#add our generated files directory
+# add subsystem folders
 add_subdirectory("gamedata")
+add_subdirectory("audio")
+add_subdirectory("console")
+add_subdirectory("coord")
+add_subdirectory("job")
+add_subdirectory("pathfinding")
+add_subdirectory("shader")
+add_subdirectory("util")
+add_subdirectory("testing")
 
+# define the resulting executable by all sources gathered
+define_executable(${PROJECT_NAME})
 
-#library dependency specification
+# library dependency specification
 
-#freetype includedir hint for ubuntu...
+# freetype includedir hint for ubuntu...
 find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2)
 find_path(OPUSFILE_INCLUDE_DIR opusfile.h HINTS /usr/include/opus)
 
 include(FindPkgConfig)
 include(FindPackageHandleStandardArgs)
 
-#windows does not have libm
+# windows does not have libm
 if(NOT WIN32)
 	find_library(MATH_LIB m)
 endif()

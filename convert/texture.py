@@ -1,14 +1,12 @@
-#!/usr/bin/env python3
-#
-#routines for texture generation etc
+# routines for texture generation etc
 
-from blendomatic import BlendingMode
-import dataformat
+from .blendomatic import BlendingMode
+from . import dataformat
 import math
-from slp import SLP
-import util
-from util import dbg
-import hardcoded.terrain_tile_size
+from .slp import SLP
+from . import util
+from .util import dbg
+from .hardcoded import terrain_tile_size
 
 
 def subtexture_meta(tx, ty, hx, hy, cx, cy):
@@ -95,7 +93,7 @@ one sprite included in the 'big texture' has."""
             frames = [
                 TextureImage(
                     tile.get_picture_data(),
-                    hotspot=tuple(hardcoded.terrain_tile_size.tile_halfsize.values())
+                    hotspot=tuple(terrain_tile_size.tile_halfsize.values())
                 )
                 for tile in input_data.alphamasks
             ]

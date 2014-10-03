@@ -1,7 +1,7 @@
-import dataformat
+from .. import dataformat
 from struct import Struct, unpack_from
-import util
-from util import dbg, zstr
+from .. import util
+from ..util import dbg, zstr
 
 
 class UnitCommand(dataformat.Exportable):

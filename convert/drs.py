@@ -1,7 +1,7 @@
-from struct import Struct, unpack_from
-import util
-from util import dbg
+from . import util
+from .util import dbg
 from binascii import hexlify
+from struct import Struct, unpack_from
 
 #version of the drs file, hardcoded for now
 file_version = 57

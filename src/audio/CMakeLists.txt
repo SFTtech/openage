@@ -1,0 +1,10 @@
+add_sources(${PROJECT_NAME}
+	audio_manager.cpp
+	category.cpp
+	dynamic_loader.cpp
+	format.cpp
+	in_memory_loader.cpp
+	loader_policy.cpp
+	resource.cpp
+	sound.cpp
+)

@@ -6,7 +6,7 @@ namespace testing {
 /**
  * registers all given tests.
  *
- * enter your testing methods here.
+ * available testing methods are registered in here.
  */
 void register_all_tests();
 

@@ -18,8 +18,8 @@ def readtemplate(fname):
     return '\n'.join(data.split('\n')[2:])
 
 #read the template files
-templateh = readtemplate('template.h')
-templatecpp = readtemplate('template.cpp')
+templateh = readtemplate('template.h.in')
+templatecpp = readtemplate('template.cpp.in')
 
 #read command-line arguments
 import sys

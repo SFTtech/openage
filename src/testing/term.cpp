@@ -1,5 +1,3 @@
-#include "term.h"
-
 #include <unistd.h>
 #include <pty.h>
 #include <stdio.h>
@@ -14,14 +12,15 @@
 using namespace openage;
 
 namespace testing {
+namespace tests {
 
 int max(int a, int b) {
 	return (a > b) ? a : b;
 }
 
-bool tests::term0(int /*unused*/, char ** /*unused*/) {
-
+bool term0(int /*unused*/, char ** /*unused*/) {
 	console::Buf buf{{80, 25}, 1337, 80};
+
 	buf.write("Hello, brave new console world!\n\n\n\n");
 	buf.write("stuff, lol.\n\n");
 	buf.write("\x1b[1mbold stuff, lol.\x1b[m\n\n");
@@ -35,46 +34,46 @@ bool tests::term0(int /*unused*/, char ** /*unused*/) {
 	return true;
 }
 
-bool tests::term1(int /*unused*/, char ** /*unused*/) {
+bool term1(int /*unused*/, char ** /*unused*/) {
 	console::Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
+
 	ws.ws_col = buf.dims.x;
 	ws.ws_row = buf.dims.y;
 	ws.ws_xpixel = buf.dims.x * 8;
 	ws.ws_ypixel = buf.dims.y * 13;
+
 	int amaster;
 	switch (forkpty(&amaster, nullptr, nullptr, &ws)) {
 	case -1:
 		log::err("fork() failed");
 		return false;
-		break;
-	case 0:
-		//we are the child, spawn a shell
-		{
+	case 0: {
+		// we are the child, spawn a shell
 		const char *shell = getenv("SHELL");
 		if (shell == nullptr) {
 			shell = "/bin/sh";
 		}
 		execl(shell, shell, nullptr);
 		log::err("execl(\"%s\", \"%s\", nullptr) failed", shell, shell);
-		}
+
 		return false;
-		break;
+	}
 	default:
 		//we are the parent
 		break;
 	}
 
-	util::FD ptyout{amaster};            //for writing to the slave
-	util::FD ptyin{&ptyout, true};       //for reading the slave's output
-	util::FD termout{STDOUT_FILENO};     //for writing to the terminal
-	util::FD termin{STDIN_FILENO, true}; //for reading the user input
+	util::FD ptyout{amaster};            // for writing to the slave
+	util::FD ptyin{&ptyout, true};       // for reading the slave's output
+	util::FD termout{STDOUT_FILENO};     // for writing to the terminal
+	util::FD termin{STDIN_FILENO, true}; // for reading the user input
 
-	//hide cursor
+	// hide cursor
 	termout.puts("\x1b[?25l");
-	//set canon input mode
+	// set canon input mode
 	termin.setinputmodecanon();
-	//set amaster to auto-close
+	// set amaster to auto-close
 	ptyout.close_on_destroy = true;
 
 	constexpr int rdbuf_size = 4096;
@@ -90,7 +89,7 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 		fd_set rfds;
 		struct timeval tv;
 
-		/* Watch stdin (fd 0) to see when it has input. */
+		// Watch stdin (fd 0) to see when it has input.
 		FD_ZERO(&rfds);
 		FD_SET(ptyin.fd, &rfds);
 		FD_SET(termin.fd, &rfds);
@@ -100,26 +99,26 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 
 		switch (select(nfds, &rfds, NULL, NULL, &tv)) {
 		case -1:
-			//error
+			// error
 			break;
 		case 0:
-			//timeout
+			// timeout
 			break;
 		default:
-			//success
+			// success
 			if (FD_ISSET(termin.fd, &rfds)) {
 				ssize_t retval = read(termin.fd, rdbuf, rdbuf_size);
 				switch (retval) {
 				case -1:
-					//error... probably EWOULDBLOCK. ignore.
+					// error... probably EWOULDBLOCK. ignore.
 					break;
 				case 0:
-					//EOF on stdin... huh... well... that was unexpected... TODO
+					// EOF on stdin... huh... well... that was unexpected... TODO
 					break;
 				default:
 					if (ptyout.write(rdbuf, retval) != retval) {
-						//for some reason, we couldn't write all input to
-						//amaster.
+						// for some reason, we couldn't write all input to
+						// a master.
 						loop = false;
 					}
 					break;
@@ -134,12 +133,12 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 						loop = false;
 						break;
 					default:
-						//probably EWOULDBLOCK. ignore.
+						// probably EWOULDBLOCK. ignore.
 						break;
 					}
 					break;
 				case 0:
-					//EOF on amaster
+					// EOF on amaster
 					loop = false;
 					break;
 				default:
@@ -158,10 +157,11 @@ bool tests::term1(int /*unused*/, char ** /*unused*/) {
 		}
 	}
 
-	//show cursor
+	// show cursor
 	termout.puts("\x1b[?25h");
 
 	return true;
 }
 
-} //namespace testing
+} // namespace tests
+} // namespace testing

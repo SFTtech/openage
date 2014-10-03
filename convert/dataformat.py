@@ -1,12 +1,9 @@
-#!/usr/bin/env python3
-#
-#this file contains code for generating data files
-#and their corresponding structs.
+# code for generating data files and their corresponding structs
 
+from . import util
+from .util import dbg
 from collections import OrderedDict
 import pprint
-import util
-from util import dbg
 import re
 from string import Template
 import struct

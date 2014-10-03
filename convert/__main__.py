@@ -1,24 +1,22 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+from . import datafile
+from . import mediafile
+from .util import set_verbosity
 import argparse
-
-import datafile
-import mediafile
-from util import set_verbosity
-
 
 if __name__ == "__main__":
 
-    #the convert script has 2 modes:
-    #mode 0: generate structures
-    #        this is completely independent from an aoe installation
-    #        it generates C structures according to the gamedata formats
-    #        the functionality for that is implemented in `datafile.py`
+    # the convert script has 2 modes:
+    # mode 0: generate structures
+    #         this is completely independent from an aoe installation
+    #         it generates C structures according to the gamedata formats
+    #         the functionality for that is implemented in `datafile.py`
     #
-    #mode 1: generate media files
-    #        this requires the aoe installation
-    #        database files as csv will be generated, as well as usable
-    #        media files like .png and .opus.
-    #        see `mediafile.py` for the implementation.
+    # mode 1: generate media files
+    #         this requires the aoe installation
+    #         database files as csv will be generated, as well as usable
+    #         media files like .png and .opus.
+    #         see `mediafile.py` for the implementation.
 
     #construct argument parser
     p = argparse.ArgumentParser(description='openage conversion script. allows usage of original media files.')

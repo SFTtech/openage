@@ -1,6 +1,6 @@
-import dataformat
-import util
-from util import dbg
+from . import dataformat
+from . import util
+from .util import dbg
 
 class SoundList(dataformat.Exportable):
     name_struct        = "sound_file"

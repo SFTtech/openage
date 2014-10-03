@@ -1,20 +1,18 @@
-#!/usr/bin/env python3
-
 #define little endian byte order for the dat file
 endianness = '< '
 
-from gamedata import civ
-from gamedata import graphic
-from gamedata import playercolor
-from gamedata import research
-from gamedata import sound
-from gamedata import tech
-from gamedata import terrain
-from gamedata import unit
+from . import civ
+from . import graphic
+from . import playercolor
+from . import research
+from . import sound
+from . import tech
+from . import terrain
+from . import unit
 
-import dataformat
+from .. import dataformat
 from struct import Struct, unpack_from
-from util import dbg, file_get_path, file_open, file_write, zstr
+from ..util import dbg, file_get_path, file_open, file_write, zstr
 import zlib
 
 
