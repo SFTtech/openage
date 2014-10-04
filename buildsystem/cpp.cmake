@@ -73,11 +73,6 @@ endfunction()
 # no sources can be added to the binary afterwards.
 function(define_executable binary_name)
 	get_property(sources GLOBAL PROPERTY SFT_BINARY_SRCS_${binary_name})
-
-	message("${binary_name}:")
-	foreach(source ${sources})
-		message("* ${source}")
-	endforeach()
-
+	message("defined binary: ${binary_name}")
 	add_executable(${binary_name} ${sources})
 endfunction()
