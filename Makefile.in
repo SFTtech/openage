@@ -52,6 +52,10 @@ runmem: @PROJECT_NAME@
 rungdb: @PROJECT_NAME@
 	gdb --args $(binary) $(runargs)
 
+.PHONY: test
+test:
+	@make -C @CMAKE_BINARY_DIR@/ test
+
 .PHONY: doc
 doc:
 	@make -C @CMAKE_BINARY_DIR@/ doc
