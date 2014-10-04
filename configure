@@ -36,8 +36,8 @@ ap.add_argument("--mode", "-m", choices=["debug", "release",
                 "excessively_optimized"], default="release",
                 help="controls cmake build mode and some compiler flags")
 ap.add_argument("--compiler", "-c",
-                default=getenv("CXX", "CC", default="gcc"),
-                help="the compiler to use: e.g. clang, gcc")
+                default=getenv("CXX", "CC", default="g++"),
+                help="the c++ compiler to use: e.g. clang++, g++")
 ap.add_argument("--flags", "-f",
                 default=getenv("CXXFLAGS", "CCFLAGS", "CFLAGS"),
                 help="compiler flags")
@@ -65,14 +65,47 @@ else:
     build_type = 'Release'
 defines.update(build_type=build_type)
 
-# args.compiler
+
+c_compiler = {
+    "clang++": "clang",
+    "g++": "gcc",
+}
+
+cc, cxx = None, None
 if args.compiler.lower() in {'clang', 'clang++', 'llvm'}:
-    cc, cxx = 'clang', 'clang++'
+    cxx = 'clang++'
+    cc  = c_compiler[cxx]
 elif args.compiler.lower() in {'gcc', 'g++', 'gnu'}:
-    cc, cxx = 'gcc', 'g++'
+    cxx = 'g++'
+    cc  = c_compiler[cxx]
 else:
-    cc, cxx = args.compiler
-    print("WARNING: unknown compiler: %s" % cc)
+    if not args.compiler:
+        raise Exception("invalid compiler selected")
+
+    # try to figure out whether CXX or CC was passed.
+
+    cxx = args.compiler
+    print("WARNING: unknown compiler name: '%s'\n" % (cxx))
+
+    # split up filename on directory delimiters
+    c_path = cxx.split("/")
+    cc_name  = None
+
+    if c_path[-1] in c_compiler.keys():
+        # cxx compiler was passed.
+        # replace the name by the corresponding c compiler.
+        cc_name = c_compiler[cxx_path[-1]]
+        cc = "/".join(c_path[:-1] + [cc_name])
+
+    elif c_path[-1] in c_compiler.values():
+        # c compiler was passed, get cxx name
+        cc = cxx
+        cxx_name = [k for k, v in c_compiler.items() if v == c_path[-1]][0]
+        cxx = "/".join(c_path[:-1] + [cxx_name])
+
+    else:
+        # give up and just duplicate the compiler name
+        cc = cxx
 
 defines.update(c_compiler=cc, cxx_compiler=cxx)
 
@@ -105,7 +138,8 @@ defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
 defines.update(install_prefix=args.prefix)
 
 # create the build dir and symlink it to 'bin'
-bindir = ".bin/%s/%s" % (mode, cc)
+compiler_folder = cc.split("/")[-1]
+bindir = ".bin/%s/%s" % (mode, compiler_folder)
 os.makedirs(bindir, exist_ok=True)
 if os.path.exists('bin'):
     os.unlink('bin')
@@ -118,7 +152,7 @@ os.chdir(bindir)
 # calculate cmake invocation from defines dict
 invocation = ['cmake']
 maxkeylen = max(len(k) for k in defines)
-for k, v in defines.items():
+for k, v in sorted(defines.items()):
     print('%s | %s' % (k.rjust(maxkeylen), v))
 
     # work around this cmake 'feature':
