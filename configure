@@ -94,7 +94,7 @@ else:
     if c_path[-1] in c_compiler.keys():
         # cxx compiler was passed.
         # replace the name by the corresponding c compiler.
-        cc_name = c_compiler[cxx_path[-1]]
+        cc_name = c_compiler[c_path[-1]]
         cc = "/".join(c_path[:-1] + [cc_name])
 
     elif c_path[-1] in c_compiler.values():
