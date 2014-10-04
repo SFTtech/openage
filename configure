@@ -71,8 +71,8 @@ if args.compiler.lower() in {'clang', 'clang++', 'llvm'}:
 elif args.compiler.lower() in {'gcc', 'g++', 'gnu'}:
     cc, cxx = 'gcc', 'g++'
 else:
-    print("WARNING: unknown compiler: %s" % cc)
     cc, cxx = args.compiler
+    print("WARNING: unknown compiler: %s" % cc)
 
 defines.update(c_compiler=cc, cxx_compiler=cxx)
 
