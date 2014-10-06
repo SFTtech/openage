@@ -119,7 +119,7 @@ else:
     else:
         # give up and just accept the compiler name
         cc = cxx = args.compiler
-        c_name = "unknown"
+        c_name = "unknown-cc"
 
 defines.update(c_compiler=cc, cxx_compiler=cxx)
 
@@ -158,9 +158,8 @@ if os.path.exists('bin'):
     os.unlink('bin')
 os.symlink(bindir, 'bin')
 
-# memorize the current working directory, switch to the bin dir
-project_root = os.getcwd()
-os.chdir(bindir)
+# the project root directory contains this configure file.
+project_root = os.path.dirname(os.path.realpath(__file__))
 
 # calculate cmake invocation from defines dict
 invocation = ['cmake']
@@ -171,15 +170,25 @@ for k, v in sorted(defines.items()):
     # work around this cmake 'feature':
     # when run in an existing build directory, if CC or CXX are given, all
     # other arguments are ignored... this is retarded.
-    if not os.path.exists('CMakeCache.txt'):
-        invocation.append('-DCMAKE_%s=%s' % (k.upper(), shlex.quote(v)))
+    if os.path.exists(os.path.join(bindir, 'CMakeCache.txt')):
+        if k in ('c_compiler', 'cxx_compiler'):
+            # ignore the compiler setting.
+            # as a new compiler name would result in
+            # another build directory.
+            continue
+
+    invocation.append('-DCMAKE_%s=%s' % (k.upper(), shlex.quote(v)))
+
 invocation.append('--')
 invocation.append(project_root)
 
+# switch to build directory
+print('\nbindir:\n%s/\n' % os.path.join(project_root, bindir))
+os.chdir(bindir)
+
 # invoke cmake
-print('\nbindir:\n./%s/\n' % bindir)
-print('invocation:\n\n%s' % ' '.join(invocation))
 try:
+    print('invocation:\n%s' % ' '.join(invocation))
     exit(subprocess.call(invocation))
 except FileNotFoundError:
     print("cmake was not found. it is a build dependency for openage.")
