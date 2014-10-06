@@ -18,7 +18,7 @@ class Civ(dataformat.Exportable):
         (dataformat.READ_EXPORT, "tech_tree_id",  "int16_t"),             #links to tech id (to apply its effects)
         (dataformat.READ_EXPORT, "team_bonus_id", "int16_t"),             #links to tech id as well
         (dataformat.READ, "ressources", "float[ressources_count]"),
-        (dataformat.READ, "graphic_set", "int8_t"),                       #building icon set, trade cart graphics, changes no other graphics
+        (dataformat.READ, "icon_set", "int8_t"),                          #building icon set, trade cart graphics, changes no other graphics
         (dataformat.READ_EXPORT, "unit_count", "uint16_t"),
         (dataformat.READ, "unit_offsets", "int32_t[unit_count]"),
 

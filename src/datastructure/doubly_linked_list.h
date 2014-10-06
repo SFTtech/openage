@@ -14,6 +14,11 @@ namespace datastructure {
 template <class T>
 class DoublyLinkedListNode {
 public:
+	DoublyLinkedListNode(const T &data)
+		:
+		data{data} {
+	}
+
 	T data;
 	DoublyLinkedListNode *previous;
 	DoublyLinkedListNode *next;
@@ -55,10 +60,9 @@ public:
 				"if there's already something in the list."
 			};
 		} else {
-			node_t *new_node   = new node_t{};
+			node_t *new_node   = new node_t{item};
 			new_node->next     = new_node;
 			new_node->previous = new_node;
-			new_node->data     = item;
 
 			this->first = new_node;
 			this->last  = new_node;
@@ -72,10 +76,9 @@ public:
 	 * O(1)
 	 */
 	node_t *insert_after(node_t *node, const T &item) {
-		node_t *new_node   = new node_t{};
+		node_t *new_node   = new node_t{item};
 		new_node->next     = node->next;
 		new_node->previous = node;
-		new_node->data     = item;
 
 		node->next->previous = new_node;
 		node->next           = new_node;
@@ -88,10 +91,9 @@ public:
 	 * O(1)
 	 */
 	node_t *insert_before(node_t *node, const T &item) {
-		node_t *new_node   = new node_t{};
+		node_t *new_node   = new node_t{item};
 		new_node->next     = node;
 		new_node->previous = node->previous;
-		new_node->data     = item;
 
 		node->previous->next = new_node;
 		node->previous       = new_node;

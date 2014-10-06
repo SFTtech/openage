@@ -222,7 +222,7 @@ class Blendomatic(dataformat.Exportable):
         each atlas contains all blending masks merged on one texture
         """
 
-        from texture import Texture
+        from .texture import Texture
         return [ Texture(blending_mode) for blending_mode in self.blending_modes ]
 
     def dump(self, filename):

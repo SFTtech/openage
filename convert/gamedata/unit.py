@@ -13,7 +13,48 @@ class UnitCommand(dataformat.Exportable):
         (dataformat.READ, "command_used", "int16_t"),                  #always 1
         (dataformat.READ_EXPORT, "id", "int16_t"),                     #command id
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ_EXPORT, "type", "int16_t"),
+        (dataformat.READ_EXPORT, "type", dataformat.EnumLookupMember(
+            raw_type    = "int16_t",
+            type_name   = "command_ability",
+            lookup_dict = {
+                0: "UNUSED",
+                1: "MOVE_TO",
+                2: "FOLLOW",
+                3: "GARRISON",
+                4: "EXPLORE",
+                5: "GATHER",   # gather, rebuild
+                6: "UNKNOWN_ANIMAL",
+                7: "ATTACK",
+                8: "SHOOT",
+                10: "FLY",
+                11: "UNKNOWN_PREDATOR",
+                12: "UNLOAD",    # transport, garrison
+                13: "GUARD",
+                20: "ESCAPE",    # sure?
+                21: "UNKNOWN_FARM",
+                101: "BUILD",
+                102: "MAKE_OBJECT",
+                103: "MAKE_TECH",
+                104: "CONVERT",
+                105: "HEAL",
+                106: "REPAIR",
+                107: "CONVERT_AUTO",
+                109: "UNKNOWN_109",
+                110: "HUNT",
+                111: "TRADE",
+                120: "WONDER_VICTORY_GENERATE",
+                121: "DESELECT_ON_TASK",
+                122: "LOOT",
+                123: "HOUSING",
+                125: "UNPACK_ATTACK",
+                131: "UNKNOWN_131",
+                132: "PICKUP_UNIT",
+                135: "KIDNAP_UNIT",
+                136: "DEPOSIT_UNIT",
+                768: "UNKNOWN_768",
+                1024: "UNKNOWN_1024",
+            },
+        )),
         (dataformat.READ_EXPORT, "class_id", "int16_t"),
         (dataformat.READ_EXPORT, "unit_id", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
@@ -28,7 +69,8 @@ class UnitCommand(dataformat.Exportable):
         (dataformat.READ_UNKNOWN, None, "float"),
         (dataformat.READ, "selection_enabled", "int8_t"),              #1=allows to select a target, type defined in `selection_type`
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ_UNKNOWN, None, "int32_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
+        (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ_EXPORT, "targets_allowed", dataformat.EnumLookupMember(
             raw_type    = "int8_t",      #what can be selected as a target for the unit command?
             type_name   = "selection_type",
@@ -610,7 +652,7 @@ class UnitObject(dataformat.Exportable):
         #bit 5: biological unit,
         #bit 6: self-shielding unit,
         #bit 7: invisible unit
-        (dataformat.READ, "attribute", "int8_t"),
+        (dataformat.READ, "attribute", "uint8_t"),
         (dataformat.READ, "civilisation", "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
         (dataformat.READ_EXPORT, "selection_effect", dataformat.EnumLookupMember(

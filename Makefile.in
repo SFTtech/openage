@@ -34,7 +34,7 @@ install:
 
 .PHONY: media
 media:
-	python3 convert -v media -o $(DATA_DIR)/age/ $(AGE2DIR) $(needed_media)
+	python3 -m openage.convert -v media -o $(DATA_DIR)/age/ $(AGE2DIR) $(needed_media)
 
 .PHONY: medialist
 medialist:
@@ -51,6 +51,10 @@ runmem: @PROJECT_NAME@
 .PHONY: rungdb
 rungdb: @PROJECT_NAME@
 	gdb --args $(binary) $(runargs)
+
+.PHONY: test
+test:
+	@make -C @CMAKE_BINARY_DIR@/ test
 
 .PHONY: doc
 doc:

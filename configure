@@ -36,8 +36,8 @@ ap.add_argument("--mode", "-m", choices=["debug", "release",
                 "excessively_optimized"], default="release",
                 help="controls cmake build mode and some compiler flags")
 ap.add_argument("--compiler", "-c",
-                default=getenv("CXX", "CC", default="gcc"),
-                help="the compiler to use: e.g. clang, gcc")
+                default=getenv("CXX", "CC", default="g++"),
+                help="the c++ compiler to use: e.g. clang++, g++")
 ap.add_argument("--flags", "-f",
                 default=getenv("CXXFLAGS", "CCFLAGS", "CFLAGS"),
                 help="compiler flags")
@@ -65,14 +65,61 @@ else:
     build_type = 'Release'
 defines.update(build_type=build_type)
 
-# args.compiler
+
+c_compiler = {
+    "clang++": "clang",
+    "g++": "gcc",
+}
+
+cc, cxx = None, None
 if args.compiler.lower() in {'clang', 'clang++', 'llvm'}:
-    cc, cxx = 'clang', 'clang++'
+    cxx = 'clang++'
+    c_name = cxx
+    cc  = c_compiler[cxx]
 elif args.compiler.lower() in {'gcc', 'g++', 'gnu'}:
-    cc, cxx = 'gcc', 'g++'
+    cxx = 'g++'
+    c_name = cxx
+    cc  = c_compiler[cxx]
 else:
-    print("WARNING: unknown compiler: %s" % cc)
-    cc, cxx = args.compiler
+    if not args.compiler:
+        raise Exception("invalid compiler selected")
+
+    # try to figure out whether CXX or CC was passed.
+
+    print("WARNING: unknown compiler name: '%s'\n" % (args.compiler))
+
+    # split up filename on directory delimiters
+    c_path = args.compiler.rsplit("/", 1)
+
+    if "-" in c_path[-1]:
+        c_id, c_version = c_path[-1].rsplit("-", 1)
+    else:
+        c_id = c_path[-1]
+        c_version = None
+
+    if c_id in c_compiler.keys():
+        # cxx compiler was passed,
+        # replace the name by the corresponding c compiler.
+        cxx = args.compiler
+        c_name = c_id
+        cc_name = c_compiler[c_id]
+        if c_version:
+            cc_name += "-%s" % (c_version)
+        cc = "/".join(c_path[:-1] + [cc_name])
+
+    elif c_id in c_compiler.values():
+        # c compiler was passed, get cxx name.
+        cc = args.compiler
+        cxx_name = [k for k, v in c_compiler.items() if v == c_id][0]
+        c_name = cxx_name
+        if c_version:
+            cxx_name += "-%s" % (c_version)
+        cxx = "/".join(c_path[:-1] + [cxx_name])
+
+    else:
+        # give up and just accept the compiler name
+        cc = cxx = args.compiler
+        c_name = "unknown"
 
 defines.update(c_compiler=cc, cxx_compiler=cxx)
 
@@ -105,7 +152,7 @@ defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
 defines.update(install_prefix=args.prefix)
 
 # create the build dir and symlink it to 'bin'
-bindir = ".bin/%s/%s" % (mode, cc)
+bindir = ".bin/%s/%s" % (mode, c_name)
 os.makedirs(bindir, exist_ok=True)
 if os.path.exists('bin'):
     os.unlink('bin')
@@ -118,7 +165,7 @@ os.chdir(bindir)
 # calculate cmake invocation from defines dict
 invocation = ['cmake']
 maxkeylen = max(len(k) for k in defines)
-for k, v in defines.items():
+for k, v in sorted(defines.items()):
     print('%s | %s' % (k.rjust(maxkeylen), v))
 
     # work around this cmake 'feature':
