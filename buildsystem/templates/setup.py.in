@@ -23,6 +23,7 @@ settings = {
     "description": '${PROJECT_NAME} python components',
     "author":      '[SFT]Tech',
     "url":         'http://${PROJECT_NAME}.sft.mx',
+    "license":     'GPLv3+',
     "package_dir": {'': '${CMAKE_SOURCE_DIR}'},
     "packages":    list(py_packages),
     "ext_modules": [Extension(name=modname,
