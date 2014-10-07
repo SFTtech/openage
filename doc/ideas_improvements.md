@@ -15,3 +15,5 @@ gameplay improvements
 * no-rush enforcement as game setting
 * better pathfinding and blocking resolution
 * customizable hotkeys for *everything*
+* fat damage numbers!!11
+* movement: specify multiple waypoints
