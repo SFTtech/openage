@@ -37,9 +37,6 @@ add_subdirectory("shader")
 add_subdirectory("util")
 add_subdirectory("testing")
 
-# define the resulting executable by all sources gathered
-define_executable(${PROJECT_NAME})
-
 # library dependency specification
 
 # freetype includedir hint for ubuntu...
@@ -71,6 +68,7 @@ pkg_search_module(SDL2_IMAGE REQUIRED sdl2_image SDL2_image)
 #find_package_handle_standard_args(INOTIFY DEFAULT_MSG INOTIFY_INCLUDE_DIR)
 ##if(NOT INOTIFY_FOUND) ...
 
+# directories for header inclusion
 include_directories(
 	${OPENGL_INCLUDE_DIR}
 	${FREETYPE_INCLUDE_DIRS}
@@ -79,8 +77,11 @@ include_directories(
 	${PYTHON_INCLUDE_DIR}
 	${SDL2_INCLUDE_DIRS}
 )
-#link_directories(rofl/lib/lol)
 
+# define the resulting executable by all sources gathered
+define_executable(${PROJECT_NAME})
+
+# link the executable to those libraries
 target_link_libraries(${PROJECT_NAME}
 	gamedata
 	${FONTCONFIG_LIB}
@@ -96,12 +97,5 @@ target_link_libraries(${PROJECT_NAME}
 	${UTIL_LIB}
 )
 
-
-#TODO: install shaders, data search paths
-
-#installation definitions
-install(TARGETS ${PROJECT_NAME}
-	RUNTIME DESTINATION bin
-	LIBRARY DESTINATION lib
-	ARCHIVE DESTINATION lib
-)
+# main binary installation
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)

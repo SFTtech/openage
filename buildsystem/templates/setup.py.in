@@ -9,6 +9,7 @@ import shlex
 import os
 
 pyext_cxxflags = shlex.split("${CMAKE_CXX_FLAGS}")
+pyext_linkflags = shlex.split("${CMAKE_SHARED_LINKER_FLAGS}")
 
 # a dict containing pure python package name: [known sources]
 py_packages = {${pkg_src}}
@@ -22,11 +23,13 @@ settings = {
     "description": '${PROJECT_NAME} python components',
     "author":      '[SFT]Tech',
     "url":         'http://${PROJECT_NAME}.sft.mx',
+    "license":     'GPLv3+',
     "package_dir": {'': '${CMAKE_SOURCE_DIR}'},
     "packages":    list(py_packages),
     "ext_modules": [Extension(name=modname,
                               sources=['${CMAKE_SOURCE_DIR}/%s' % f for f in sources],
                               extra_compile_args=pyext_cxxflags,
+                              extra_link_args=pyext_linkflags,
                               language='c++')
                     for modname, sources in pyext_modules.items()]
 }
