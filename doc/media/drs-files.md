@@ -1,32 +1,44 @@
 About .drs files
 ===============
 
+*drs* files are archives containing other files, like a tar archive, but much simpler.
+They can only store data for a **file id** and a corresponding **file name extension**.
+
 gamedata.drs
 ------------
+
 Contains random map scripts (RMS), as well as AI scripts.
 Random Map scripts describe how the builtin maps should be generated.
 AI scripts tell the computer what to do, such as build units, gather resources, and generally make it "smart".
 These are all `bin` files.
 
+
 graphics.drs
 ------------
+
 Contains almost every graphic you see in the game. This includes units, buildings, resources, animals, cliffs and shadows.
 These are all `slp` graphic (animation) files.
 
+
 interfac.drs
 ------------
+
 Contains the main interface graphics of the game.
 All of the the borders, buttons, logos, main game screen, etc you see when entering the game to starting one can be found within this file as `slp`s.
 The drawing color palettes are also stored in this file as `bin`s.
 Finally there's a bunch of `wav` sounds, too.
 
+
 sounds.drs
 ----------
+
 Contains every sound in Age of Kings; from the war horn sounding off to the ringing town bell, it's all stored here.
 These are all `wav` files.
 
+
 terrain.drs
 -----------
+
 contains all the terrain, in diamond shaped pieces. For each terrain, there are 100 pieces.
 These are all `slp` files.
 
@@ -34,6 +46,7 @@ These are all `slp` files.
 
 DRS format
 ==========
+
 DRS files contain search structures for archiving the media files.
 
 A DRS file starts with its main header:
