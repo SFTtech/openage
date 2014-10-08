@@ -158,6 +158,11 @@ if os.path.exists('bin'):
     os.unlink('bin')
 os.symlink(bindir, 'bin')
 
+# create a symlink to the binary
+if os.path.exists('openage'):
+    os.unlink('openage')
+os.symlink('%s/src/openage' % bindir, 'openage')
+
 # the project root directory contains this configure file.
 project_root = os.path.dirname(os.path.realpath(__file__))
 
