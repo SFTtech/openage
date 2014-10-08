@@ -58,10 +58,10 @@ def is_cmake_update_needed():
         if actualsources != knownsources:
             if actualsources - knownsources:
                 print("the following sources have been added to %s:\n\t%s"
-                    % (pkgname, "\n\t".join(actualsources - knownsources)))
+                      % (pkgname, "\n\t".join(actualsources - knownsources)))
             if knownsources - actualsources:
                 print("the following sources have been removed from %s:\n\t%s"
-                    % (pkgname, "\n\t".join(knownsources - actualsources)))
+                      % (pkgname, "\n\t".join(knownsources - actualsources)))
 
             result = True
 
