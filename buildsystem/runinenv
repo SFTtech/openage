@@ -4,7 +4,7 @@
 # environment
 #
 # basic usage:
-# runinenv X=3 Y=eval:env['USER'].upper() PATH=appendpath:/sbin -- ls -la
+# runinenv X=3 Y:eval:env['USER'].upper() PATH:appendpath:/sbin -- ls -la
 #
 # see the relevant code in lines 45... for details.
 
@@ -49,24 +49,28 @@ for pos, a in enumerate(sys.argv[1:]):
         verbose = True
     elif a == '--':
         parsing_done = True
-    elif kv.parse(a, '=append:', '+='):
+    elif kv.parse(a, '+='):
         env[kv.k] = env[kv.k] + kv.v
-    elif kv.parse(a, '=prepend:'):
-        env[kv.k] = kv.v + env[kv.k]
-    elif kv.parse(a, '=eval:'):
-        env[kv.k] = eval(kv.v)
-    elif kv.parse(a, '=appendpath:'):
-        if not env[kv.k]:
-            env[kv.k] = kv.v
-        else:
-            env[kv.k] = env[kv.k] + os.pathsep + kv.v
-    elif kv.parse(a, '=prependpath:'):
-        if not env[kv.k]:
-            env[kv.k] = kv.v
-        else:
-            env[kv.k] = env[kv.k] + os.pathsep + kv.v
-    elif kv.parse(a, '=set:', '='):
+    elif kv.parse(a, '='):
         env[kv.k] = kv.v
+    elif kv.parse(a, ':set:'):
+        env[kv.k] = kv.v
+    elif kv.parse(a, ':append:'):
+        env[kv.k] = env[kv.k] + kv.v
+    elif kv.parse(a, ':prepend:'):
+        env[kv.k] = kv.v + env[kv.k]
+    elif kv.parse(a, ':eval:'):
+        env[kv.k] = eval(kv.v)
+    elif kv.parse(a, ':appendpath:'):
+        if not env[kv.k]:
+            env[kv.k] = kv.v
+        else:
+            env[kv.k] = env[kv.k] + os.pathsep + kv.v
+    elif kv.parse(a, ':prependpath:'):
+        if not env[kv.k]:
+            env[kv.k] = kv.v
+        else:
+            env[kv.k] = env[kv.k] + os.pathsep + kv.v
     else:
         msg("unexpected argument at position %d: %s " % (pos, a) +
             "(expected assignment or '--')", fail=1)

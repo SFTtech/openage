@@ -49,9 +49,6 @@ add_subdirectory("py")
 # process the included python sources, generate setup.py
 process_python_modules()
 
-# generate Makefile
-configure_file(${BUILDSYSTEM_DIR}/templates/Makefile.in ${CMAKE_SOURCE_DIR}/Makefile @ONLY)
-
 # show build configuration overview
 message("CFLAGS    = ${CMAKE_C_FLAGS}")
 message("CXXFLAGS  = ${CMAKE_CXX_FLAGS}")
