@@ -46,7 +46,7 @@ Current Travis build bot state:
 
  - That was building. Now how do I run it?
 
-You first need to use [the convert script](convert/README.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `bin/src/openage --data=data`.
+You first need to use [the convert script](convert/README.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `./openage --data=data`.
 
  - Whaaaaaa! It
   - segfaults
