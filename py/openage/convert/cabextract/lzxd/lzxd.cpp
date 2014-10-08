@@ -10,6 +10,7 @@
  * TODO list:
  *
  * - make it so the decompressing function is called once for every megabyte or so, instead of once for everything
+ * - understand and abstract away the intel D8 post-processing. this should make the code/interface much cleaner
  * - save the state between every megabyte, effectively allowing seeking
  * - actually understand what the code does
  * - rewrite it (maybe in python)

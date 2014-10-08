@@ -68,6 +68,7 @@ public:
 };
 
 PyObject *lzxd_decompress(PyObject * /*self*/, PyObject *args) {
+	// TODO: instead of returning NULL, raise python exceptions on error!
 
 	unsigned window_bits;
 	off_t output_length;
