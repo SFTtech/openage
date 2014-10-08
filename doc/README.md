@@ -8,33 +8,39 @@ static docs
 general documentation files reside in the `doc/` directory, where this readme file lies.
 you can find ideas, milestones, planning and workflow descriptions etc in here.
 
-a good entry point may be the file
-[doc/implementation/project_structure](implementation/project_structure)
-as it roughly explains where to find what code in the project.
+a good entry point may be the file [doc/implementation/project_structure](implementation/project_structure).
+it roughly explains where to find what code in the project.
 
 if you made any relevant discoveries, create a file and write them down.
+
+
+code docs
+---------
+
+ - C++ methods and classes are documented in their header files
+ - Python methods and classes are documented via docstrings
+
+We're lazy, so the above statements might be be out-right fabrications.
 
 
 dynamic docs
 ------------
 
-dynamic documentation files are generated from comments in the source code, using **doxygen**.
-the dynamic docs tend to only describe stuff you could also understand by reading the code itself,
-so don't expect too much, use the static docs instead.
+dynamic documentation can be auto-generated from source documentation using **doxygen**.
 
-after you configured the project, you can invoke
+after calling `./configure`, you can invoke
 
-	make doc
+	`make doc`
 
 to create doxygen html and LaTeX files.
 
 
 after creation, view them in a browser by
 
-	$(browser) bin/doc/html/index.html
+	`$BROWSER bin/doc/html/index.html`
 
 
 or, if you want to create LaTeX documents:
 
-	make -C bin/doc/latex/ pdf
-	$(pdfviewer) bin/doc/latex/refman.pdf
+	`make -C bin/doc/latex/ pdf`
+	`$PDFVIEWER bin/doc/latex/refman.pdf`
