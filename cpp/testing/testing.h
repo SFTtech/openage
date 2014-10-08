@@ -33,8 +33,9 @@ void list_tests();
  * @param no_interactive: don't run tests that are marked as interactive
  * @param argc: passed to all test functions
  * @param argv: passed to all test functions
+ * @returns whether testing was successful
  */
-void run_tests(const char *expr, bool no_interactive, int argc, char **argv);
+bool run_tests(const char *expr, bool no_interactive, int argc, char **argv);
 
 } //namespace testing
 

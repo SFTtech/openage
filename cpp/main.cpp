@@ -32,13 +32,16 @@ int main(int argc, char **argv) {
 			return 0;
 		}
 
-		//set global random seed
+		// set global random seed
 		srand(time(NULL));
 
+		// shall we run a test?
 		if (args.test_invocations.size() > 0) {
+			bool result = true;
 			for (test_invocation &ti : args.test_invocations) {
-				testing::run_tests(ti.argv[0], args.disable_interactive_tests, ti.argc, ti.argv);
+				result = result and testing::run_tests(ti.argv[0], args.disable_interactive_tests, ti.argc, ti.argv);
 			}
+			return (result == false) ? 1 : 0;
 		}
 		else {
 			return testing::run_game(&args);
