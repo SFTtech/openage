@@ -17,6 +17,14 @@ int main(int argc, char **argv) {
 	try {
 		Arguments args = parse_args(argc, argv);
 
+		if (args.display_help) {
+			if (args.error_occured) {
+				return 1;
+			} else {
+				return 0;
+			}
+		}
+
 		testing::register_all_tests();
 
 		if (args.list_tests) {

@@ -34,7 +34,9 @@ Arguments::Arguments()
 	argc(0),
 	data_directory("./"),
 	disable_interactive_tests(false),
-	list_tests(false)
+	list_tests(false),
+	display_help(false),
+	error_occured(false)
 {}
 
 Arguments::~Arguments() {}
@@ -80,7 +82,7 @@ Arguments parse_args(int argc, char **argv) {
 			bool handled = true;
 
 			if (optarg) {
-				//with arg
+				// with arg
 				if (0 == strcmp("data", opt_name)) {
 					log::msg("data folder will be %s", optarg);
 					ret.data_directory = optarg;
@@ -88,7 +90,7 @@ Arguments parse_args(int argc, char **argv) {
 					handled = false;
 				}
 			} else {
-				//without arg
+				// without arg
 				if (0 == strcmp("no-interactive-tests", opt_name)) {
 					log::msg("disabling interactive tests");
 					ret.disable_interactive_tests = true;
@@ -100,6 +102,7 @@ Arguments parse_args(int argc, char **argv) {
 			}
 
 			if (not handled) {
+				ret.error_occured = true;
 				throw util::Error("internal error: argument %s registered but unhandled", opt_name);
 			}
 
@@ -107,6 +110,7 @@ Arguments parse_args(int argc, char **argv) {
 		}
 		case 'h':
 			print_usage();
+			ret.display_help = true;
 			break;
 
 		case 't':
@@ -115,10 +119,12 @@ Arguments parse_args(int argc, char **argv) {
 
 		case '?':
 			print_usage();
+			ret.error_occured = true;
 			throw util::Error("unknown argument: %s", ret.argv[optind - 1]);
 			break;
 
 		default:
+			ret.error_occured = true;
 			throw util::Error("getopt returned code 0x%02x, wtf?", c);
 			break;
 		}
@@ -126,8 +132,9 @@ Arguments parse_args(int argc, char **argv) {
 
 	if (optind < ret.argc) {
 		//more arguments than processed options
+		ret.error_occured = true;
 		throw util::Error("%d unknown additional arguments, starting with %s",
-		            ret.argc - optind, ret.argv[optind]);
+		                  ret.argc - optind, ret.argv[optind]);
 	}
 
 	return ret;
