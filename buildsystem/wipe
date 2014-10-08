@@ -1,0 +1,9 @@
+#!/bin/bash
+RM="rm -rf .bin bin data/age CMakeCache.txt CMakeFiles cmake_install.cmake"
+MAKEFILE="cp Makefile.empty Makefile"
+
+echo $RM
+$RM
+
+echo $MAKEFILE
+$MAKEFILE

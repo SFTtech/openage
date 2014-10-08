@@ -10,9 +10,6 @@
 *.orig
 __pycache__
 resources
-CMakeFiles
-cmake_install.cmake
-CMakeCache.txt
 /bin
 /.bin
 lib
@@ -20,5 +17,9 @@ data/age
 callgrind.out.*
 perf.data*
 .gdb_history
-/Makefile
 /Doxyfile
+Makefile
+CTestTestfile.cmake
+CMakeFiles
+cmake_install.cmake
+CMakeCache.txt

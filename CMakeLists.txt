@@ -9,7 +9,7 @@ project(openage C CXX)
 # text art: figlet -f rounded "[SFT] openage" | sed -e 's/\\/\\\\/g'
 message("")
 message("==============================================================================")
-message("  ___  ______ _______ _______ ___")
+message(" ___  ______ _______ _______ ___")
 message("|  _)/ _____|_______|_______|_  |")
 message("| | ( (____  _____      _     | |    ___  ____  _____ ____  _____  ____ _____")
 message("| |  \\____ \\|  ___)    | |    | |   / _ \\|  _ \\| ___ |  _ \\(____ |/ _  | ___ |")
@@ -29,24 +29,28 @@ message("  *  IRC:      #sfttech  at freenode.org")
 message("==============================================================================")
 message("")
 
+set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
+
 # include build configuration modules
 include("CTest")
-include("buildsystem/python.cmake")
+include("${BUILDSYSTEM_DIR}/python.cmake")
+include("${BUILDSYSTEM_DIR}/cpp.cmake")
+include("${BUILDSYSTEM_DIR}/version.cmake")
+include("${BUILDSYSTEM_DIR}/doxygen.cmake")
+include("${BUILDSYSTEM_DIR}/testing.cmake")
+
 python_init()
-include("buildsystem/cpp.cmake")
-include("buildsystem/version.cmake")
-include("buildsystem/doxygen.cmake")
-include("buildsystem/testing.cmake")
 
 # include source subdirectories
-add_subdirectory("src")
-add_subdirectory("convert")
+add_subdirectory("cpp")
+add_subdirectory("py")
+
 
 # process the included python sources, generate setup.py
 process_python_modules()
 
 # generate Makefile
-configure_file(${CMAKE_SOURCE_DIR}/Makefile.in ${CMAKE_SOURCE_DIR}/Makefile @ONLY)
+configure_file(${BUILDSYSTEM_DIR}/templates/Makefile.in ${CMAKE_SOURCE_DIR}/Makefile @ONLY)
 
 # show build configuration overview
 message("CFLAGS    = ${CMAKE_C_FLAGS}")
@@ -54,4 +58,3 @@ message("CXXFLAGS  = ${CMAKE_CXX_FLAGS}")
 message("LDFLAGS   = ${CMAKE_EXE_LINKER_FLAGS}")
 message("PREFIX    = ${CMAKE_INSTALL_PREFIX}")
 message("BUILDDIR  = ${CMAKE_BINARY_DIR}")
-# TODO add more messages

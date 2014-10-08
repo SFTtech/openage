@@ -17,6 +17,9 @@ py_packages = {${pkg_src}}
 # a dict containing C++ extension module name: [c++ sources]
 pyext_modules = {${ext_src}}
 
+sourcedir = "${CMAKE_SOURCE_DIR}"
+py_sourcedir = "${PYTHON_SOURCE_DIR}"
+
 settings = {
     "name":        '${PROJECT_NAME}',
     "version":     '${PROJECT_VERSION}',
@@ -24,15 +27,16 @@ settings = {
     "author":      '[SFT]Tech',
     "url":         'http://${PROJECT_NAME}.sft.mx',
     "license":     'GPLv3+',
-    "package_dir": {'': '${CMAKE_SOURCE_DIR}'},
+    "package_dir": {'': py_sourcedir},
     "packages":    list(py_packages),
     "ext_modules": [Extension(name=modname,
-                              sources=['${CMAKE_SOURCE_DIR}/%s' % f for f in sources],
+                              sources=sources,
                               extra_compile_args=pyext_cxxflags,
                               extra_link_args=pyext_linkflags,
                               language='c++')
                     for modname, sources in pyext_modules.items()]
 }
+
 
 def is_cmake_update_needed():
     """
@@ -45,21 +49,24 @@ def is_cmake_update_needed():
     """
     result = False
     for pkgname, knownsources in py_packages.items():
-        relsourcedir = pkgname.replace('.', '/')
-        sourcedir = "${CMAKE_SOURCE_DIR}/%s" % relsourcedir
-        actualsources = {relsourcedir + "/" + x for x in os.listdir(sourcedir) if x.endswith('.py')}
+        pkg_sourcedir = "%s/%s" % (py_sourcedir, pkgname.replace('.', '/'))
+        actualsources = {"%s/%s" % (pkg_sourcedir, f)
+                         for f in os.listdir(pkg_sourcedir)
+                         if f.endswith('.py')}
         knownsources = set(knownsources)
+
         if actualsources != knownsources:
             if actualsources - knownsources:
-                print("the following sources have been added to %s: %s"
-                    % (pkgname, ", ".join(actualsources - knownsources)))
+                print("the following sources have been added to %s:\n\t%s"
+                    % (pkgname, "\n\t".join(actualsources - knownsources)))
             if knownsources - actualsources:
-                print("the following sources have been removed from %s: %s"
-                    % (pkgname, ", ".join(knownsources - actualsources)))
+                print("the following sources have been removed from %s:\n\t%s"
+                    % (pkgname, "\n\t".join(knownsources - actualsources)))
 
             result = True
 
     return result
+
 
 def trigger_cmake_update():
     print("triggering cmake update")
@@ -67,6 +74,7 @@ def trigger_cmake_update():
         os.utime('${CMAKE_CURRENT_LIST_FILE}')
     except FileNotFoundError:
         print('error: file does not exist: ${CMAKE_CURRENT_LIST_FILE}')
+
 
 if __name__ == '__main__':
     if is_cmake_update_needed():

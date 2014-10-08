@@ -20,7 +20,14 @@ function(python_init)
 	# that will contain the python source files for each package and C++ source files for each ext module.
 	# all of those lists will be used to generate setup.py in the generator function TODO
 
-	set(PYTHON3 ${PYTHON_EXECUTABLE} PARENT_SCOPE)
+	set(PYTHON_SOURCE_DIR "${CMAKE_SOURCE_DIR}/py")
+	set(PYTHON_SOURCE_DIR ${PYTHON_SOURCE_DIR} PARENT_SCOPE)
+
+	set(PYTHON3 ${PYTHON_EXECUTABLE})
+	set(PYTHON3 ${PYTHON3} PARENT_SCOPE)
+
+	set(PYTHON_INVOCATION ${PYTHON3} ${BUILDSYSTEM_DIR}/runinenv "PYTHONPATH=prependpath:${PYTHON_SOURCE_DIR}" -- ${PYTHON3})
+	set(PYTHON_INVOCATION ${PYTHON_INVOCATION} PARENT_SCOPE)
 endfunction()
 
 
@@ -39,10 +46,9 @@ function(add_py_package name)
 	# this list of sourcefiles is not used directly for building,
 	# just for determining whether a re-build is neccesary.
 	string(REPLACE "." "/" package_path ${name})
-	file(GLOB package_sources "${CMAKE_SOURCE_DIR}/${package_path}/*.py")
+	file(GLOB package_sources "${PYTHON_SOURCE_DIR}/${package_path}/*.py")
 	set_property(GLOBAL PROPERTY SFT_PY_PACKAGE_${name})
-	foreach(sourcefile_abs ${package_sources})
-		file(RELATIVE_PATH sourcefile "${CMAKE_SOURCE_DIR}" "${sourcefile_abs}")
+	foreach(sourcefile ${package_sources})
 		message("\t${sourcefile}")
 		set_property(GLOBAL APPEND PROPERTY SFT_PY_PACKAGE_${name} "${sourcefile}")
 	endforeach()
@@ -63,12 +69,8 @@ function(add_pyext_module name)
 
 	# process the user-supplied list of C++ source files
 	set_property(GLOBAL PROPERTY SFT_PY_EXT_MODULE_${name})
-	file(RELATIVE_PATH current_path "${CMAKE_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}")
 	foreach(sourcefile ${ARGN})
-		if(NOT ${current_path} EQUAL "")
-			set(sourcefile "${current_path}/${sourcefile}")
-		endif()
-
+		set(sourcefile "${CMAKE_CURRENT_SOURCE_DIR}/${sourcefile}")
 		message("\t${sourcefile}")
 		set_property(GLOBAL APPEND PROPERTY SFT_PY_EXT_MODULE_${name} "${sourcefile}")
 	endforeach()
@@ -122,20 +124,22 @@ function(process_python_modules)
 		set(ext_src "${ext_src}],\n")
 	endforeach()
 
-	set(SETUP_PY_IN "${CMAKE_SOURCE_DIR}/buildsystem/templates/setup.py.in")
-	set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
-	set(PY_TIMEFILE "${CMAKE_CURRENT_BINARY_DIR}/build/py_mods")
+	set(SETUP_PY_IN "${BUILDSYSTEM_DIR}/templates/setup.py.in")
+	set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/py/setup.py")
+	set(PY_TIMEFILE "${CMAKE_CURRENT_BINARY_DIR}/py/timefile")
+
+	set(SETUP_INVOCATION ${PYTHON3} ${BUILDSYSTEM_DIR}/runinenv ${COMPILER_ENV} -- ${PYTHON3} ${SETUP.PY})
 
 	# create setup.py file for python module creation
 	#
 	# * the time stamp file is used for rebuilding
-	# * all python-C extensions are built inplace
+	# * all python-C extensions are built in-place
 	#   so they can be used for imports in the development tree
 	# * the pure python modules are compiled to pyc
 	configure_file(${SETUP_PY_IN} ${SETUP_PY})
 	add_custom_command(OUTPUT ${PY_TIMEFILE}
-			COMMAND ${CXXENV} ${CCENV} ${PYTHON3} ${SETUP_PY} build_ext --inplace
-			COMMAND ${CXXENV} ${CCENV} ${PYTHON3} ${SETUP_PY} build
+			COMMAND ${SETUP_INVOCATION} build_ext --inplace
+			COMMAND ${SETUP_INVOCATION} build
 			COMMAND ${CMAKE_COMMAND} -E touch ${PY_TIMEFILE}
 			DEPENDS ${all_sourcefiles})
 	add_custom_target(python_modules ALL DEPENDS ${PY_TIMEFILE})
@@ -143,5 +147,5 @@ function(process_python_modules)
 	# create call to setup.py when installing
 	# * set the install prefix at configure time
 	# * evaluate the temporary install destination parameter DESTDIR at 'make install'-time
-	install(CODE "execute_process(COMMAND ${PYTHON3} ${SETUP_PY} install --prefix=${CMAKE_INSTALL_PREFIX} --root=\$ENV{DESTDIR})")
+	install(CODE "execute_process(COMMAND ${SETUP_INVOCATION} install --prefix=${CMAKE_INSTALL_PREFIX} --root=\$ENV{DESTDIR})")
 endfunction()

@@ -1,0 +1,16 @@
+all: error
+
+install: error
+
+clean: help
+
+help: error
+	@echo "use 'make mrproper' to remove all traces of previous builds."
+
+error:
+	@echo "error: you need to invoke ./configure first."
+
+mrproper:
+	@buildsystem/wipe
+
+.PHONY: all install clean help error mrproper

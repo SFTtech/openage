@@ -16,7 +16,7 @@ if(DOXYGEN_FOUND)
 	endif()
 
 	# adapt doxygen config
-	configure_file(${CMAKE_SOURCE_DIR}/buildsystem/templates/Doxyfile.in ${CMAKE_BINARY_DIR}/Doxyfile @ONLY)
+	configure_file(${BUILDSYSTEM_DIR}/templates/Doxyfile.in ${CMAKE_BINARY_DIR}/Doxyfile @ONLY)
 
 	# add doc target
 	add_custom_target(doc
