@@ -17,9 +17,8 @@ Dedicated documentation files reside in the `doc/` directory, where this
 readme file lies in as well. You can find ideas, milestones, planning and
 workflow descriptions etc in here.
 
-A good entry point may be the file
-[doc/implementation/project_structure](implementation/project_structure.md)
-as it roughly explains where to find what code in the project.
+a good entry point may be the file [doc/implementation/project_structure](implementation/project_structure.md).
+it roughly explains where to find what code in the project.
 
 If **you** made any relevant discoveries or gained insights that help others
 understand any part of the project:
@@ -30,35 +29,32 @@ understand any part of the project:
   repository
 * This ensures newcomers can start developing easily
 
+code docs
+---------
 
-Dynamic Docs
+ - C++ methods and classes are documented in their header files
+ - Python methods and classes are documented via docstrings
+
+We're lazy, so the above statements might be be out-right fabrications.
+
+
+dynamic docs
 ------------
 
-Dynamic documentation files are generated from comments in the source code,
-using **doxygen**. The dynamic docs tend to only describe stuff you could also
-understand by reading the code itself, so don't expect too much, read the
-static docs for conceptual insights instead.
+dynamic documentation can be auto-generated from source documentation using **doxygen**.
 
-Doxygen will generate nice shiny graphs of code correlations, this might help
-getting an overview of the code components and their interaction.
+after calling `./configure`, you can invoke
 
-After you configured the project, you can invoke
-
-	make doc
+	`make doc`
 
 to create doxygen html and LaTeX files.
 
 
 After creation, view them in a browser by
 
-	$(browser) bin/doc/html/index.html
-
+	`$BROWSER bin/doc/html/index.html`
 
 or, if you want to create LaTeX documents, run
 
-	make -C bin/doc/latex/ pdf
-	$(pdfviewer) bin/doc/latex/refman.pdf
-
-
-The quality of the dynamic documentation is dependent on the people writing
-code, so please don't forget to document your contributions.
+	`make -C bin/doc/latex/ pdf`
+	`$PDFVIEWER bin/doc/latex/refman.pdf`

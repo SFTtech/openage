@@ -1,0 +1,84 @@
+#!/usr/bin/env python3
+#
+# simple wrapper helper script that will run programs in a modified
+# environment
+#
+# basic usage:
+# runinenv X=3 Y=eval:env['USER'].upper() PATH=appendpath:/sbin -- ls -la
+#
+# see the relevant code in lines 45... for details.
+
+import os
+import sys
+import subprocess
+import collections
+
+
+def msg(msg, fail=False):
+    print("%s: %s" % (sys.argv[0], msg))
+    if fail:
+        exit(fail)
+
+
+class KVPair:
+    def parse(self, s, *seps):
+        for sep in seps:
+            try:
+                k, v = s.split(sep, maxsplit=1)
+            except ValueError:
+                continue
+
+            if not k:
+                continue
+
+            self.k, self.v = k, v
+            return True
+
+        return False
+
+# one of the rare cases where argparse is not the way to go
+env = collections.defaultdict(lambda: "", os.environ)
+invocation = []
+parsing_done, verbose = False, False
+
+kv = KVPair()
+for pos, a in enumerate(sys.argv[1:]):
+    if parsing_done:
+        invocation.append(a)
+    elif a == '-v':
+        verbose = True
+    elif a == '--':
+        parsing_done = True
+    elif kv.parse(a, '=append:', '+='):
+        env[kv.k] = env[kv.k] + kv.v
+    elif kv.parse(a, '=prepend:'):
+        env[kv.k] = kv.v + env[kv.k]
+    elif kv.parse(a, '=eval:'):
+        env[kv.k] = eval(kv.v)
+    elif kv.parse(a, '=appendpath:'):
+        if not env[kv.k]:
+            env[kv.k] = kv.v
+        else:
+            env[kv.k] = env[kv.k] + os.pathsep + kv.v
+    elif kv.parse(a, '=prependpath:'):
+        if not env[kv.k]:
+            env[kv.k] = kv.v
+        else:
+            env[kv.k] = env[kv.k] + os.pathsep + kv.v
+    elif kv.parse(a, '=set:', '='):
+        env[kv.k] = kv.v
+    else:
+        msg("unexpected argument at position %d: %s " % (pos, a) +
+            "(expected assignment or '--')", fail=1)
+
+if not invocation:
+    msg("expected command", fail=2)
+
+if verbose:
+    msg("env=%s" % dict(env))
+    msg("invocation=%s" % invocation)
+
+result = subprocess.call(invocation, env=dict(env))
+
+if verbose and result > 0:
+    msg("failure (exit code == %d)" % result, fail=result)

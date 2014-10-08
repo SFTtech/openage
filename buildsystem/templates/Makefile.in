@@ -66,7 +66,7 @@ clean:
 
 .PHONY: mrproper
 mrproper:
-	rm -rf .bin bin data/age Makefile
+	@@BUILDSYSTEM_DIR@/wipe
 
 .PHONY: help
 help: bin/Makefile

@@ -24,9 +24,7 @@ else() #"Intel", "MSVC", etc..
 endif()
 
 # these environment variables are used by the python C extension builder
-set(CCENV "CC=${CMAKE_C_COMPILER}")
-set(CXXENV "CXX=${CMAKE_CXX_COMPILER}")
-
+set(COMPILERENV "CXX=${CMAKE_CXX_COMPILER} CC=${CMAKE_C_COMPILER}")
 
 # output binary definition helpers.
 # allows to add sources to a binary from anywhere.

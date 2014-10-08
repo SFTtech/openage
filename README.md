@@ -1,115 +1,119 @@
-openage
-=======
+A volunteer project to create a free engine clone of *Age of Empires II*, primarily aimed at POSIX platforms such as **GNU/Linux**, comparable in its goals to projects like [OpenMW](https://openmw.org/), [OpenRA](http://www.openra.net/) and [OpenTTD](http://www.openttd.org/).
 
+Openage uses the original game data files (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
+To play, you require *an original AoE2: AoC installation* (wine is your friend; in the near future, setup discs will be supported).
 
-a free (as in freedom) implementation for **GNU/Linux** of
+Openage is built on (among others):
+* **C++11**: engine core
+* **Python**: scripting, media conversion, in-game console, code generation
+* **CMake**: Build system
+* **OpenGL2.1**: rendering
+* **SDL2**: Cross-platform Audio/Input/Window handling
+* **Opus**: Audio codec
 
-microsoft® **age of empires II**™ - the age of conquerors
+Our goals include:
+* A fully authentic gameplay feeling (This can only be approximated, since the behaviour of the original game is mostly undocumented, and guessing/experimenting can only get you this close. We will also not implement useless artificial limitations (max 30 selectable units...)).
+* Multiplayer (obviously)
+* AI
+* Re-creating free game assets
+* An easily-moddable content format
 
-brought to you by **[SFT]Technologies**.
-
-
-current compile state:
-[![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
-
-
-this project is released under the **GNU GPLv3** or later.
-see the `COPYING` file for that.
-
-
-although we use the original game data files,
-our bundle does not ship any of the proprietary data used in aoc.
-in order to play, you have to *provide a aoe2:aoc installation*,
-or *create free media files yourself*.
-
-
-this project uses the following programming languages:
-
-* **C++11**: the game, its engine
-* **python**: scripting, media convert script
+Our goals specifically exclude:
+* Network compatibility with the original game
+* Binary compatibility with the original game. A one-way script to convert savegames/missions to openage is planned.
 
 
 Current state of the project
-============================
+----------------------------
 
-See [STATUS.md](STATUS.md).
+ - What features are currently implemented?
 
-We are working towards the next [milestone](doc/milestones)!
+See [status.md](status.md).
 
+ - What's the plan?
+
+See [milestones.md](milestones.md). We also have a [list of crazy and/or good ideas](doc/ideas)
 
 Dependencies, Building and Running
-==================================
+----------------------------------
 
-See [BUILDING.md](BUILDING.md).
+ - How do I get this to run on my box?
 
+See [building.md](building.md).
+
+Current Travis build bot state:
+[![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
+
+ - That was building. Now how do I run it?
+
+You first need to use [the convert script](convert/README.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `bin/src/openage --data=data`.
+
+ - Whaaaaaa! It
+  - segfaults
+  - prints error messages I don't want to read
+  - ate my dog
+
+All of those are features, not bugs. To turn them off, use `bin/src/openage --dont-segfault --no-errors --dont-eat-dog`, (also see the [contact section](#Contact))
+
+Development process
+-------------------
+
+ - How does openage development look in practice?
+ - Can I help?
+  - Yes, please!
+
+See [development.md](development.md).
 
 Windows version
-===============
+---------------
 
-None of us really uses Windows, so a Windows port has no priority for us.
-We're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish.
-We'll eventually look into a port using `mingw32`/`mingw64` or maybe `cygwin`.
+None of us Windows, so a port has no priority.
 
-If you want to beat us to it, go for it! We'll gladly accept your pull requests (as long as they fulfill certain quality standards).
+However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into poriting using `mingw32`/`mingw64` or maybe `cygwin`.
 
-We'd prefer as few proprocessor switches as possible, preferrably they should all be placed in a few 'cross-platform abstraction files'.
+If you want to beat us to it, go for it! We'd prefer as few proprocessor switches as possible, preferrably they should all be placed in a few 'cross-platform abstraction files' (just talk to us for details...).
 
-how to convert gamedata
-=======================
+- Have a look at the [doc directory](doc).
+- We use Doxygen, as described in the [doc readme](doc/README.md)
+- Have a look at the source.
 
-the original media files need to be converted for openage.
-see [the convert script readme file](convert/README.md).
-
-
-documentation
-=============
-
-- read the [the documentation readme file](doc/README.md).
-- visit the `doc/` directory
-- run `make doc` for Doxygen
-- i recommend looking at the source,
-  as we try to write stuff as readable as possible.
-
-
-contributing
+Contributing
 ============
 
-* we hate people, so don't even think about helping
-* i'm sure that nobody out there likes age of empires
-* none of you is interested in making this project more awesome
-* as always, this free software project has NO interest in creating a community
-* so please don't even think about helping us
+* Being typical computer science students, we hate people.
+* Please don't contact us.
+* Nobody likes Age of Empires anyway.
+* None of you is interested in making openage more awesome anyway.
+* We don't want a community.
+* Don't even think about trying to help.
 
-guidelines:
+Guidelines:
 
-* don't write **bugreports**, openage is totally bugfree, of course
-* don't **fix bugs** yourself, see above, we don't have bugs
-* don't implement **new features**, they are crap anyway
-* don't EVER send **pull-requests**!
-* don't note the irony, you idiot
+* No **bugreports** or **feature requests**, the game is perfect as is.
+* Don't try to **fix any bugs**, see above.
+* Don't implement any features, your code is crap.
+* Don't even think about sending a **pull request**
+* Don't note the irony, you idiot
+* We even have a [list of tasks](tasks.md) that definitely don't need your work.
 
-for that, we have [a list of things that nobody should ever implement](TASKS.md).
-
-
-if you have no idea how you could possibly violate the above guidelines,
-here are a few tips:
+To prevent accidential violation of one of those guidelines, you should *never*
 
 * [learn git](http://git-scm.com/book/en/Git-Basics)
 * [fork the repo](https://help.github.com/articles/fork-a-repo)
 * [learn python](http://docs.python.org/3/tutorial/appetite.html)
 * [learn c++11](http://www.cplusplus.com/doc/tutorial/)
-* read our code
-* contribute anything to our code
-* contact us
-
-
-contact
-=======
-
-currently you can use these communication channels to reach us morons:
-
-* **IRC**: #sfttech on freenode.net
-* **XMPP**: openage@chat.sft.mx
-
+* read the code and documentation
+* contribute anything to the code
+* [contact us](#Contact)
 
 cheers, happy hecking.
+
+Contact
+-------
+
+Most of us hang around on our **IRC** channel (`#sfttech` on `freenode.net`).
+Do not hesitate to ping us, we probably won't notice you otherwise.
+
+License
+-------
+**GNU GPLv3** or later; see [COPYING](COPYING) and [LICENSE](LICENSE).
