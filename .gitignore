@@ -19,7 +19,6 @@ callgrind.out.*
 perf.data*
 .gdb_history
 /Doxyfile
-Makefile
 CTestTestfile.cmake
 CMakeFiles
 cmake_install.cmake
