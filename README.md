@@ -34,11 +34,14 @@ Current state of the project
 
 See [STATUS.md](STATUS.md).
 
+We are working towards the next [milestone](doc/milestones)!
+
 
 Dependencies, Building and Running
 ==================================
 
 See [BUILDING.md](BUILDING.md).
+
 
 Windows version
 ===============
@@ -61,9 +64,11 @@ see [the convert script readme file](convert/README.md).
 documentation
 =============
 
+- read the [the documentation readme file](doc/README.md).
 - visit the `doc/` directory
-- for using doxygen: read the [the documentation readme file](doc/README.md).
-- i recommend looking at the source, as we try to write stuff as readable as possible.
+- run `make doc` for Doxygen
+- i recommend looking at the source,
+  as we try to write stuff as readable as possible.
 
 
 contributing
