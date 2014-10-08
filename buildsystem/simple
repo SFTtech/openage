@@ -18,10 +18,13 @@ shopt -s globstar
 mkdir -p bin
 
 # build py ext module (openage.convert.cabextract.lzxd)
-g++ -O3 -Wall -Wextra -pedantic -std=c++11 -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DNDEBUG -fwrapv -fstack-protector-strong --param=ssp-buffer-size=4 -fPIC -I/usr/include/python${PYVER} -lpthread -shared -Wl,-O1,--sort-common,--as-needed,-z,relro -lpython${PYVER} -o convert/cabextract/lzxd.cpython-${PYVERDOTLESS}.so convert/cabextract/lzxd/{lzxd.cpp,pyinterface.cpp,util.cpp}
+g++ -O3 -Wall -Wextra -pedantic -std=c++11 -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DNDEBUG -fwrapv -fstack-protector-strong --param=ssp-buffer-size=4 -fPIC -I/usr/include/python${PYVER} -lpthread -shared -Wl,-O1,--sort-common,--as-needed,-z,relro -lpython${PYVER} -o py/openage/convert/cabextract/lzxd.cpython-${PYVERDOTLESS}.so py/openage/convert/cabextract/lzxd/{lzxd.cpp,pyinterface.cpp,util.cpp}
 
 # generate C code from convert script
-python3 -m openage.convert structs -o src/gamedata
+PYTHONPATH="$PYTHONPATH:py" python3 -m openage.convert structs -o cpp/gamedata
+
+# this file would be filled with testing info by the buildsystem
+echo "namespace testing{void register_all_tests(){}}" > cpp/testing/register.cpp
 
 # build binary (bin/openage)
-g++ -O3 -Wall -Wextra -pedantic -std=c++11 -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/opus -I/usr/include/python${PYVER} -I/usr/include/SDL2 -lfontconfig -lfreetype -lftgl -lGLEW -lm -lGLU -lGL -lSM -lICE -lX11 -lXext -lopusfile -lpython${PYVER} -lSDL2_image -lSDL2 -lpthread -lSDL2 -lpthread -lutil -o bin/openage src/**/*.cpp
+g++ -O3 -Wall -Wextra -pedantic -std=c++11 -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/opus -I/usr/include/python${PYVER} -I/usr/include/SDL2 -lfontconfig -lfreetype -lftgl -lGLEW -lm -lGLU -lGL -lSM -lICE -lX11 -lXext -lopusfile -lpython${PYVER} -lSDL2_image -lSDL2 -lpthread -lSDL2 -lpthread -lutil -o bin/openage cpp/**/*.cpp
