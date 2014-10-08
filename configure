@@ -75,11 +75,11 @@ cc, cxx = None, None
 if args.compiler.lower() in {'clang', 'clang++', 'llvm'}:
     cxx = 'clang++'
     c_name = cxx
-    cc  = c_compiler[cxx]
+    cc = c_compiler[cxx]
 elif args.compiler.lower() in {'gcc', 'g++', 'gnu'}:
     cxx = 'g++'
     c_name = cxx
-    cc  = c_compiler[cxx]
+    cc = c_compiler[cxx]
 else:
     if not args.compiler:
         raise Exception("invalid compiler selected")
