@@ -68,7 +68,7 @@ clean: $(BUILDDIR)
 	# removes all objects and binaries
 	@make -C $(BUILDDIR) clean
 
-.PHONY: cleanBUILDDIRs
+.PHONY: cleanbin
 cleanbin:
 	@echo build directories
 	rm -rf .bin
