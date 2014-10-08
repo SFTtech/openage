@@ -17,6 +17,7 @@ Our goals include:
 * AI
 * Re-creating free game assets
 * An easily-moddable content format
+* A powerful integrated python console and interface, comparable to blender
 
 Our goals specifically exclude:
 * Network compatibility with the original game
