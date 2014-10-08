@@ -147,5 +147,5 @@ function(process_python_modules)
 	# create call to setup.py when installing
 	# * set the install prefix at configure time
 	# * evaluate the temporary install destination parameter DESTDIR at 'make install'-time
-	install(CODE "execute_process(COMMAND ${SETUP_INVOCATION} install --prefix=${CMAKE_INSTALL_PREFIX} --root=\$ENV{DESTDIR})")
+	install(CODE "execute_process(COMMAND ${PYTHON3} ${SETUP_PY} install --prefix=${CMAKE_INSTALL_PREFIX} --root=\$ENV{DESTDIR})")
 endfunction()
