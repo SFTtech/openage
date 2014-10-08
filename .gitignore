@@ -12,6 +12,7 @@ __pycache__
 resources
 /bin
 /.bin
+openage
 lib
 data/age
 callgrind.out.*
