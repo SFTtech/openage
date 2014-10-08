@@ -152,7 +152,7 @@ defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
 defines.update(install_prefix=args.prefix)
 
 # create the build dir and symlink it to 'bin'
-bindir = ".bin/%s/%s" % (mode, c_name)
+bindir = ".bin/%s/%s-%s" % (mode, cc, "".join(c for c in flags if c.isalnum()))
 os.makedirs(bindir, exist_ok=True)
 if os.path.exists('bin'):
     os.unlink('bin')
