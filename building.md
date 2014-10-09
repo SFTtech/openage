@@ -9,12 +9,12 @@ original installed version of *Microsoft Age of Empires 2* (Support
 for setup CDs is almost finished).
 
 We use the `cmake` system for all our building needs.  The `configure`
-script is an cmake wrapper that will create a build directory and
+script is a cmake wrapper that will create a build directory and
 invoke cmake with the appropriate flags.  The Makefile in the project
 root is created by cmake, and acts as a wrapper around several useful
 features.
 
-For more build system internals, see [buildsystem/doc](buildsystem/doc).
+For more build system internals, see [doc/buildsystem](doc/buildsystem).
 
 ### For developers/users who want to try the project
 
