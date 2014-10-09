@@ -4,7 +4,7 @@
 # invoke cmake.
 
 import argparse
-from multiprocessing import cpu_count
+import multiprocessing
 import os
 import subprocess
 import shutil
@@ -25,19 +25,72 @@ def getenv(*varnames, default=""):
     return default
 
 
+class AliasedChoices:
+    """
+    for use with argparse.choices.
+    allows the user a bit more freedums,
+    such as writing 'dbg' instead of 'debug'.
+    """
+    def __init__(self, *choices):
+        self.choices = [choice[0] for choice in choices]
+
+        # build reverse-lookup dict
+        self.aliases = {alias.lower(): choice[0]
+                        for choice in choices
+                        for alias in choice
+}
+
+    def __iter__(self):
+        return iter(self.choices)
+
+    def __contains__(self, alias):
+        return alias.lower() in self.aliases
+
+    def lookup(self, alias):
+        return self.aliases[alias.lower()]
+
+
+modes = AliasedChoices(
+    ("debug", "dbg"),        # -g
+    ("release", "rls")       # -DNDEBUG
+)
+
+omodes = AliasedChoices(
+    ("auto", ""),            # auto-determine from mode
+    ("0", "none"),           # -O0; not recommended
+    ("1",),                  # -O1; not recommended
+    ("g", "dbg", "debug"),   # -Og / -O1 depending on compiler support
+    ("2", "rls", "release"), # -O2; recommended for release
+    ("max", "3"),            # -O3 -flto -march=native
+)
+
 # argparsing
 description = "convenience script to create a build directory "
 description += "and invoke cmake."
 epilog = "environment variables like CXX and CXXFLAGS are honored, "
 epilog += "but overwritten if their respective arguments are specified."
 
-ap = argparse.ArgumentParser(description=description, epilog=epilog)
-ap.add_argument("--mode", "-m", choices=["debug", "release",
-                "excessively_optimized"], default="release",
-                help="controls cmake build mode and some compiler flags")
+ap = argparse.ArgumentParser(
+    description=description,
+    epilog=epilog,
+    formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+ap.add_argument("--mode", "-m", choices=["debug",
+                                         "release"],
+                default="release",
+                help="controls cmake build mode and debug-related flags")
+ap.add_argument("--optimize", "-O", choices=["auto",
+                                             "0",
+                                             "1",
+                                             "g",
+                                             "2",
+                                             "max"], default="auto",
+                help="controls optimization-related flags. " +
+                     "is set according to mode if 'auto'. " +
+                     "conflicts with --flags")
 ap.add_argument("--compiler", "-c",
-                default=getenv("CXX", "CC", default="g++"),
-                help="the c++ compiler to use: e.g. clang++, g++")
+                default=getenv("CXX", "CC", default="gnu"),
+                help="compiler suite")
 ap.add_argument("--flags", "-f",
                 default=getenv("CXXFLAGS", "CCFLAGS", "CFLAGS"),
                 help="compiler flags")
@@ -45,7 +98,7 @@ ap.add_argument("--ldflags", "-l",
                 default=getenv("LDFLAGS"),
                 help="linker flags")
 ap.add_argument("--prefix", "-p", default="/usr/local",
-                help="installation directory prefix, e.g. /usr/games")
+                help="installation directory prefix")
 
 args = ap.parse_args()
 
@@ -58,90 +111,94 @@ except:
 defines = {}
 
 # args.mode
-mode = args.mode
+mode = modes.lookup(args.mode)
 if mode == 'debug':
     build_type = 'Debug'
 else:
     build_type = 'Release'
 defines.update(build_type=build_type)
 
+omode = omodes.lookup(args.optimize)
 
-c_compiler = {
-    "clang++": "clang",
-    "g++": "gcc",
-}
-
-cc, cxx = None, None
-if args.compiler.lower() in {'clang', 'clang++', 'llvm'}:
-    cxx = 'clang++'
-    c_name = cxx
-    cc = c_compiler[cxx]
-elif args.compiler.lower() in {'gcc', 'g++', 'gnu'}:
-    cxx = 'g++'
-    c_name = cxx
-    cc = c_compiler[cxx]
-else:
-    if not args.compiler:
-        raise Exception("invalid compiler selected")
-
-    # try to figure out whether CXX or CC was passed.
-
-    print("WARNING: unknown compiler name: '%s'\n" % (args.compiler))
-
-    # split up filename on directory delimiters
-    c_path = args.compiler.rsplit("/", 1)
-
-    if "-" in c_path[-1]:
-        c_id, c_version = c_path[-1].rsplit("-", 1)
-    else:
-        c_id = c_path[-1]
-        c_version = None
-
-    if c_id in c_compiler.keys():
-        # cxx compiler was passed,
-        # replace the name by the corresponding c compiler.
-        cxx = args.compiler
-        c_name = c_id
-        cc_name = c_compiler[c_id]
-        if c_version:
-            cc_name += "-%s" % (c_version)
-        cc = "/".join(c_path[:-1] + [cc_name])
-
-    elif c_id in c_compiler.values():
-        # c compiler was passed, get cxx name.
-        cc = args.compiler
-        cxx_name = [k for k, v in c_compiler.items() if v == c_id][0]
-        c_name = cxx_name
-        if c_version:
-            cxx_name += "-%s" % (c_version)
-        cxx = "/".join(c_path[:-1] + [cxx_name])
-
-    else:
-        # give up and just accept the compiler name
-        cc = cxx = args.compiler
-        c_name = "unknown-cc"
-
-defines.update(c_compiler=cc, cxx_compiler=cxx)
-
-# args.flags, args.ldflags, args.excessive_optimization
+# args.flags, args.ldflags
 flags = shlex.split(args.flags)
 ldflags = shlex.split(args.ldflags)
+
+if omode == 'auto':
+    if mode == 'debug':
+        omode = 'g'
+    else:
+        omode = '2'
+else:
+    if flags:
+        ap.error("--optimize is forbidden when flags are specified manually " +
+                 "(conflicting: -O%s, -f %s)" % (omode, shlex.join(flags)))
+
+cxx_lookup = {
+    "clang": "clang++",
+    "gcc": "g++",
+}
+
+cc = cxx = cname = None
+if args.compiler.lower() in {'clang', 'clang++', 'llvm'}:
+    cc = cname = "clang"
+    cxx = cxx_lookup[cc]
+elif args.compiler.lower() in {'gcc', 'g++', 'gnu'}:
+    cc = cname = "gcc"
+    cxx = cxx_lookup[cc]
+elif not args.compiler:
+    ap.error("no compiler was specified")
+else:
+    # the user decided to use some sort of custom compiler
+    # what could possibly go wrong?
+
+    try:
+        cc, cxx = args.compiler.split(',')
+    except ValueError:
+        ap.error("unknown compiler name: %s\n" % args.compiler +
+                 "specify manual invocations for both CC and CXX as $CC,$CXX")
+
+    if "gcc" in cc:
+        cname = "gcc"
+    if "clang" in cc:
+        cname = "clang"
+    else:
+        cname = cc.split(os.path.sep)[-1].split("-")[0]
+        if not cname:
+            cname = "unknown"
+
+if not shutil.which(cc):
+    ap.error("could not find CC executable: %s" % cc)
+if not shutil.which(cxx):
+    ap.error("could not find CXX executable: %s" % cxx)
+
+defines.update(c_compiler=cc, cxx_compiler=cxx)
 
 # if no flags have been given, populate them from the other args
 if not flags and not ldflags:
     if mode == 'debug':
-        if cc == 'gcc':
+        flags.append("-g")
+    else:
+        flags.append("-DNDEBUG")
+
+    if omode == '0':
+        flags.append("-O0")
+    elif omode == '1':
+        flags.append("-O1")
+    elif omode == 'g':
+        if cname in {'gcc'}:
             flags.append("-Og")
-        elif cc == 'clang':
+        else:
             flags.append("-O1")
-    elif mode == 'release':
+    elif omode == '2':
         flags.append("-O2")
-    elif mode == 'excessively_optimized':
+    elif omode == 'max':
         flags.append("-O3")
         flags.append("-march=native")
-        if cc in {'gcc'}:
-            flags.append("-flto=%d" % cpu_count())
-            ldflags.append("-flto=%d" % cpu_count())
+
+        if cname in {'gcc'}:
+            flags.append("-flto=%d" % multiprocessing.cpu_count())
+            ldflags.append("-flto=%d" % multiprocessing.cpu_count())
 
 flags = shlex.join(flags)
 ldflags = shlex.join(ldflags)
@@ -151,9 +208,27 @@ defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
 # args.prefix
 defines.update(install_prefix=args.prefix)
 
-bindir = ".bin/%s/%s%s" % (mode, cc, "".join(c if c.isalnum()
-                                             else '-'
-                                             for c in flags))
+def sanitize(s, fallback='-'):
+    """
+    sanitizes a string for safe usage in a filename
+    """
+
+    def yieldsanitizedchars():
+        # False if the previous char was regular.
+        fallingback = True
+        for c in s:
+            if c == fallback and fallingback:
+                fallingback = False
+            elif c.isalnum() or c in "+-_=,":
+                fallingback = False
+                yield c
+            elif not fallingback:
+                fallingback = True
+                yield fallback
+
+    return "".join(yieldsanitizedchars())
+
+bindir = ".bin/%s-%s-%s" % (sanitize(cc), sanitize(mode), sanitize(flags))
 os.makedirs(bindir, exist_ok=True)
 
 
@@ -181,14 +256,11 @@ maxkeylen = max(len(k) for k in defines)
 for k, v in sorted(defines.items()):
     print('%s | %s' % (k.rjust(maxkeylen), v))
 
-    # work around this cmake 'feature':
-    # when run in an existing build directory, if CC or CXX are given, all
-    # other arguments are ignored... this is retarded.
-    if os.path.exists(os.path.join(bindir, 'CMakeCache.txt')):
-        if k in ('c_compiler', 'cxx_compiler'):
-            # ignore the compiler setting.
-            # as a new compiler name would result in
-            # another build directory.
+    if k in ('c_compiler', 'cxx_compiler'):
+        # work around this cmake 'feature':
+        # when run in an existing build directory, if CC or CXX are given,
+        # all other arguments are ignored... this is retarded.
+        if os.path.exists(os.path.join(bindir, 'CMakeCache.txt')):
             continue
 
     invocation.append('-DCMAKE_%s=%s' % (k.upper(), shlex.quote(v)))
@@ -202,8 +274,8 @@ os.chdir(bindir)
 
 # invoke cmake
 try:
-    print('invocation:\n%s' % ' '.join(invocation))
+    print('invocation:\n%s\n' % ' '.join(invocation))
     exit(subprocess.call(invocation))
 except FileNotFoundError:
-    print("cmake was not found. it is a build dependency for openage.")
+    print("cmake was not found")
     exit(1)
