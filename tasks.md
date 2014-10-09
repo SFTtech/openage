@@ -1,86 +1,81 @@
 openage tasks
 =============
 
-a mysterious voice told yourself:
+A mysterious voice told yourself:
 "hey, myself, I want to contribute epic stuff to openage!"
 
-but then your inner evil replied:
+But then your inner lazy piece of shit replied:
 "but what should I do, I'm too lazy to think of something i could do!"
 
 
-suddenly, a wild JJ appears, and proposes `task proposals`,
-and you inner evil instantly dies because of the awesomeness
-of these tasks.
+Suddenly, this document appears and presents you `task proposals`, and you
+overcome your weaker self because of the awesomeness of these tasks.
 
-if your inner voices are still not satisfied with these ideas and say:
-"mkay, I don't like these suggestions", or
-"I don't know how to start, this is so complicated!", or even
-"actually I was searching for granny porn by 'openage', what is this shit?",
-don't hesitate to join the developer chats and ask for instructions.
+If your inner voices are still not satisfied with these ideas and say:
+
+* "Mkay, but I don't like these suggestions, they're crap!"
+* "I don't know how to start, this is so complicated!"
+* "Actually I was looking for granny porn when searching 'openage', what is this shit? computer-nerds?!?"
+
+then don't hesitate to join the developer chats and ask for instructions:
 
 * **IRC**: #sfttech on freenode.net
-* **XMPP**: openage@chat.sft.mx
 
-we will laugh at you at first (of course), but if you beg and promise us cake,
-you might get a **special custom hand-crafted extra offer**
-what you could do, and how.
+We will make fun of you at first (of course), but if you beg and promise us cake,
+you might get a **custom special premium hand-crafted extra offer** what you could do,
+and how.
 
-if you've never programmed before,
-this is the project you want to start your career with. seriously.
-you might have guessed it, we will laugh at you as well, though.
+If you've never programmed before, or are inexperienced:
+
+0. This is the project you want to start your career with.
+1. Seriously.
+2. We'll give valuable feedback and try to support you where possible.
+3. You might have guessed it, we will still make fun of you, though.
 
 
-to get an overview about where to find what in the code,
-take a look at [the project structure info documentation](doc/implementation/project_structure).
+The [documentation tree description](doc/README.md) might be your first clue.
+
+To get an overview about where to find what in the code,
+take a look at [the project structure info documentation](doc/implementation/project_structure.md).
 
 
 task proposals
 --------------
 
-use `git describe` for seeing the latest milestone reached.
+Use `git describe` for seeing the latest milestone reached.
 
-look at [our roadmap](doc/milestones) to see what has to be achieved to reach
-the next milestone. ask in the IRC or XMPP channel what's being worked on.
+Look at [our roadmap](doc/milestones.md) to see what has to be achieved to
+reach the next milestone. Ask in the **IRC** channel what's being worked on and
+what may need help and support (even though it's known that nobody needs
+that).
 
 
-### NSA interface
+### NSA/BND interface
 * before the secret services of the world subvert our codebase,
-  we will be chivalrous and implement an official spying interface.
+  we will be chivalrous and implement an official spying interface
 * if we have an official interface, we can better say hi to our friends!
-* no, not really, we actually want to encrypt the game conversations.
+* no, not really, we actually should encrypt the game conversations
 
 ### free (as in freedom) media data
 * we are depending on the proprietary original media files at the moment
+* if you are a creative person, fire up your graphics software ([GIMP?](http://gimp.org/))
+  and create replacement graphics
 * free (creative commons licensed) media files liberate us from the evil leash
 * reside in [openage-data repository](https://github.com/SFTtech/openage-data)
 * original files will be used for free media files that are not present yet
+* this means even drawing one building will help
+* `png` images or better `svg` vectorgraphics
 
-### inotify monitoring
-* inotify is (if you don't know) a handy Linux feature
-  for monitoring file modifications, creations, etc.
+### inotify media monitoring
+* inotify is (if you don't know) a handy Linux kernel feature
+  * monitors file modifications, creations, etc.
+  * allows instaneous reaction to observed file updates without active polling
 * when some cool guy/gal (might be you!) changes or creates media files,
-  the change can instantly appear ingame.
-* as this feature is linux-specific, we have to make this feature "optional"
+  the change can instantly appear ingame
+* very useful feature for people creating free media replacement files
+* as this feature is Linux-specific, we have to make this feature "optional"
   -> preprocessor/cmake stuff
-* will be implemented in C++
-
-### game data storage
-* come up with ideas on how to store all the game data
-* our current plan:
-  * csv files for metadata (how much does a castle cost?)
-  * suitable folder structure for audio and image files
-* the current storage location and format of files created
-  by the convert script have to be improved
-* this means you have to create a reasonable interface between
-  the python convert script, and the C++ game
-* this also means straight-forward integration of the free media files
-
-### build system improvals
-* create `make install` target
-* make it possible to install openage-data
-* allow external CXX and LDFLAGS
-* improve the `./configure` script
-* keep the `Makefile` in sync with the `cmake` config
+* implemented in `C++`
 
 ### game launcher
 * startup program
@@ -90,7 +85,13 @@ the next milestone. ask in the IRC or XMPP channel what's being worked on.
   * configure matches
   * select maps
   * launch the openage binary
-* written in Python with GTK3
+* written in `Python` with *gtk3*
+
+### lobby server
+* server for mediate between game launchers
+* maybe support for match-making
+* could track player ranks and stats
+* written in `Python` or `Haskell`
 
 ### multilanguage support
 * some easy and creative way of supporting localization
@@ -106,13 +107,7 @@ the next milestone. ask in the IRC or XMPP channel what's being worked on.
   * map data for each chunk must be independently creatable
   * generation speed should be fast enough when chunks are created during game
 * the original .rms scripts could be converted with python
-* you may implement this in Python or C++
-
-### path finding
-* fast and efficient pathfinding for all unit movements
-* communication with the obstruction management
-* support for unit regrouping and intelligent blockage resolving
-* has to be written in C++
+* you may implement this in `Python` or `C++`
 
 ### artificial intelligence
 * live your wet dream and create our AI
@@ -120,12 +115,23 @@ the next milestone. ask in the IRC or XMPP channel what's being worked on.
 * remember: the AI players get the same amount of information as humans,
   this means that e.g. undiscovered map areas won't be visible to the AI at all.
 * the original AI scripting language could be integrated
-* i'd propose to use Python for the AI scripting
+* i'd propose to use `Python` for the AI scripting
 
-### configuration system
-* stores and reads plain-text config files
-* manages all keybindings (hotkeys, mouse, ..)
-* generic conffile support in the engine
-* used by the game for the specific needs
-* you could implement similar functionality like `engine/util/file.h::read_csv_file`
-* should be written in C++
+### artificial intelligence interface
+* the AI itself has to communicate with the game engine
+* this interface provides the AI all the knowlege needed for proper operation
+* exposes `C++` engine code to `Python`
+
+### data management frontend
+* (preferrably) a GUI program to edit game data
+  * unit creation cost
+  * tech tree editing
+  * graphics and sounds
+  * etc.
+* similar to [Advanced Genie Editor](https://github.com/Tapsa/AGE)
+* but compatible with the openage data formats
+* maybe partially autogenerated by the conversion script and engine data format definitions
+  * aviods redundancy on data format updates
+  * allows to edit original game data as well!
+* should use *gtk3*
+* should be written in Python
