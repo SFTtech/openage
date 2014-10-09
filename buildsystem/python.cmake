@@ -128,7 +128,7 @@ function(process_python_modules)
 	set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/py/setup.py")
 	set(PY_TIMEFILE "${CMAKE_CURRENT_BINARY_DIR}/py/timefile")
 
-	set(SETUP_INVOCATION ${PYTHON3} ${BUILDSYSTEM_DIR}/runinenv ${COMPILER_ENV} -- ${PYTHON3} ${SETUP.PY})
+	set(SETUP_INVOCATION ${PYTHON3} ${BUILDSYSTEM_DIR}/runinenv ${COMPILER_ENV} -- ${PYTHON3} ${SETUP_PY})
 
 	# create setup.py file for python module creation
 	#
