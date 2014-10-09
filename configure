@@ -151,17 +151,24 @@ defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
 # args.prefix
 defines.update(install_prefix=args.prefix)
 
-# create the build dir and symlink it to 'bin'
 bindir = ".bin/%s/%s-%s" % (mode, cc, "".join(c for c in flags if c.isalnum()))
 os.makedirs(bindir, exist_ok=True)
-if os.path.exists('bin'):
-    os.unlink('bin')
-os.symlink(bindir, 'bin')
 
-# create a symlink to the binary
-if os.path.exists('openage'):
-    os.unlink('openage')
-os.symlink('%s/cpp/openage' % bindir, 'openage')
+
+def forcesymlink(linkto, name):
+    """
+    similar in function to ln -sf
+    """
+    try:
+        os.unlink(name)
+    except FileNotFoundError:
+        pass
+
+    os.symlink(linkto, name)
+
+# create the build dir and symlink it to 'bin'
+forcesymlink(bindir, 'bin')
+forcesymlink('%s/cpp/openage' % bindir, 'openage')
 
 # the project root directory contains this configure file.
 project_root = os.path.dirname(os.path.realpath(__file__))
