@@ -78,7 +78,7 @@ ap = argparse.ArgumentParser(
 ap.add_argument("--mode", "-m", choices=["debug",
                                          "release"],
                 default="release",
-                help="controls cmake build mode and debug-related flags")
+                help="controls cmake build mode")
 ap.add_argument("--optimize", "-O", choices=["auto",
                                              "0",
                                              "1",
@@ -176,11 +176,6 @@ defines.update(c_compiler=cc, cxx_compiler=cxx)
 
 # if no flags have been given, populate them from the other args
 if not flags and not ldflags:
-    if mode == 'debug':
-        flags.append("-g")
-    else:
-        flags.append("-DNDEBUG")
-
     if omode == '0':
         flags.append("-O0")
     elif omode == '1':
