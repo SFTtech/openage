@@ -2,7 +2,7 @@
 # provides macros for defining python packages, python C++ extension modules,
 # and a generator macro that must be called after including alle source dirs
 
-# for an example usage, see convert/CMakeLists.txt
+# for an example usage, see py/openage/convert/CMakeLists.txt
 
 function(python_init)
 	# look for the python3.3+ executable

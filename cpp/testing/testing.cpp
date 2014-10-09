@@ -29,7 +29,7 @@ void register_test(std::string name, std::string description, bool interactive, 
 	tests[name] = test{description, interactive, fp, false};
 }
 
-void run_tests(const char *expr, bool no_interactive, int argc, char **argv) {
+bool run_tests(const char *expr, bool no_interactive, int argc, char **argv) {
 	int interactive_count = 0;
 	int executed_count    = 0;
 	int success_count     = 0;
@@ -75,17 +75,18 @@ void run_tests(const char *expr, bool no_interactive, int argc, char **argv) {
 		log::msg("tests failed:    %d", failed_count);
 	}
 
-	//some test failed
-	if (failed_count > 0) {
-		throw util::Error("testing was not successful (but still the future)!");
+	if (executed_count > 1 and failed_count > 0) {
+		log::err("testing was not successful!");
+		return false;
 	}
-
-	if (executed_count > 0) {
-		return;
+	else if (executed_count > 0) {
+		return true;
 	} else if (interactive_count > 0) {
-		throw util::Error("all tests that match '%s' are interactive", expr);
+		log::err("all tests that match '%s' are interactive", expr);
+		return false;
 	} else {
-		throw util::Error("no tests match '%s'", expr);
+		log::err("no tests match '%s'", expr);
+		return false;
 	}
 }
 

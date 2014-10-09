@@ -35,7 +35,7 @@ Exporting Structures
   * data structures are needed to import them in the game
   * => structure definition at a single point.
 * generation is integrated into make system
-* generated files placed in `src/gamedata/`
+* generated files placed in `cpp/gamedata/`
 
 
 Conversion Procedure

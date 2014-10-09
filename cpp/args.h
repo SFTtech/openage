@@ -22,6 +22,8 @@ public:
 	std::vector<test_invocation> test_invocations;
 	bool disable_interactive_tests;
 	bool list_tests;
+	bool display_help;
+	bool error_occured;
 
 	void add_test_invocation(const char *arg);
 };
