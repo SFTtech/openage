@@ -1,30 +1,49 @@
-A volunteer project to create a free engine clone of *Age of Empires II*, primarily aimed at POSIX platforms such as **GNU/Linux**, comparable in its goals to projects like [OpenMW](https://openmw.org/), [OpenRA](http://www.openra.net/) and [OpenTTD](http://www.openttd.org/).
+openage
+=======
 
-Openage uses the original game data files (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
+**openage**: a volunteer project to create a free engine clone of *Age of Empires II*,
+primarily aimed at POSIX platforms such as **GNU/Linux**,
+comparable in its goals to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/) and [OpenTTD](http://openttd.org/).
+
+openage uses the original game data files (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
 To play, you require *an original AoE2: AoC installation* (wine is your friend; in the near future, setup discs will be supported).
 
-Openage is built on (among others):
-* **C++11**: engine core
-* **Python**: scripting, media conversion, in-game console, code generation
-* **CMake**: Build system
-* **OpenGL2.1**: rendering
-* **SDL2**: Cross-platform Audio/Input/Window handling
-* **Opus**: Audio codec
+[![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
 
-Our goals include:
-* A fully authentic gameplay feeling (This can only be approximated, since the behaviour of the original game is mostly undocumented, and guessing/experimenting can only get you this close. We will also not implement useless artificial limitations (max 30 selectable units...)).
+The foundation of **openage**:
+
+Technology     | Component
+---------------|----------
+**C++11**      | Engine core
+**Python**     | Scripting, media conversion, in-game console, code generation
+**CMake**      | Build system
+**OpenGL2.1**  | Rendering, shaders
+**SDL2**       | Cross-platform Audio/Input/Window handling
+**Opus**       | Audio codec
+**Humans**     | Mixing together all of the above
+
+Our goals *include*:
+
+* A fully authentic gameplay feeling
+  * This can only be approximated, since the behaviour of the original game is mostly undocumented,
+    and guessing/experimenting can only get you this close
+  * We will not implement useless artificial limitations (max 30 selectable units...))
 * Multiplayer (obviously)
+* [Improvements](doc/ideas/improvements.md) over the original game
 * AI
 * Re-creating free game assets
 * An easily-moddable content format
-* A powerful integrated python console and interface, comparable to blender
+* A powerful integrated Python console and interface, comparable to [blender](http://blender.org/)
 
-Our goals specifically exclude:
-* Network compatibility with the original game
-* Binary compatibility with the original game. A one-way script to convert savegames/missions to openage is planned.
+Our goals specifically *exclude*:
+
+* Network compatibility with the original game.
+  You really wanna have the same problems again?
+* Binary compatibility with the original game.
+  A one-way script to convert maps/savegames/missions to openage is planned though.
 
 
-Current state of the project
+Current State of the Project
 ----------------------------
 
  - What features are currently implemented?
@@ -33,7 +52,7 @@ See [status.md](status.md).
 
  - What's the plan?
 
-See [milestones.md](milestones.md). We also have a [list of crazy and/or good ideas](doc/ideas)
+See [milestones.md](milestones.md). We also have a [list of crazy xor good ideas](doc/ideas).
 
 Dependencies, Building and Running
 ----------------------------------
@@ -42,41 +61,49 @@ Dependencies, Building and Running
 
 See [building.md](building.md).
 
-Current Travis build bot state:
-[![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
+ - I compiled everything. Now how do I run it?
 
- - That was building. Now how do I run it?
+You first need to use [the convert script](convert/README.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `./openage --data=datafolder`.
 
-You first need to use [the convert script](convert/README.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `./openage --data=data`.
-
- - Whaaaaaa! It
+ - Waaaaaah! It
   - segfaults
   - prints error messages I don't want to read
   - ate my dog
 
-All of those are features, not bugs. To turn them off, use `bin/src/openage --dont-segfault --no-errors --dont-eat-dog`, (also see the [contact section](#Contact))
+All of those are features, not bugs.
+To turn them off, use `./openage --dont-segfault --no-errors --dont-eat-dog`.
 
-Development process
+If this still does not help, try the [contact section](#Contact)
+or the [bug tracker](https://github.com/SFTtech/openage/issues).
+
+Development Process
 -------------------
 
- - How does openage development look in practice?
- - Can I help?
-  - Yes, please!
+* How does openage development look in practice?
+  * Awesome.
+
+* Can I help?
+  * Yes, please!
 
 See [development.md](development.md).
 
-Windows version
+
+Project documentation is accompanying the source code in the `doc/` folder:
+
+- Have a look at the [doc directory](doc/).
+- We use Doxygen, as described in the [doc readme](doc/README.md)
+- Have a look at the source.
+
+
+Windows Version
 ---------------
 
-None of us Windows, so a port has no priority.
+None of uses Windows, so a port has no priority.
 
 However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into poriting using `mingw32`/`mingw64` or maybe `cygwin`.
 
-If you want to beat us to it, go for it! We'd prefer as few proprocessor switches as possible, preferrably they should all be placed in a few 'cross-platform abstraction files' (just talk to us for details...).
-
-- Have a look at the [doc directory](doc).
-- We use Doxygen, as described in the [doc readme](doc/README.md)
-- Have a look at the source.
+If you want to beat us to it, go for it!
+We'd prefer as few preprocessor switches as possible, preferrably they should all be placed in a few 'cross-platform abstraction files' (just talk to us for details...).
 
 Contributing
 ============
