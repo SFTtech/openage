@@ -1,4 +1,7 @@
-There is a "core dev team" of a few people who work on the project in their free time, but since we all have real jobs [0] and fluctuating motivation, our activity will fluctuate equally over time (just take a look at the Github commit stats).
+about development
+=================
+
+There is a "core dev team" of a few people who work on the project in their free time, but since we all have real jobs [0] and fluctuating motivation, our activity will alternate equally over time (just take a look at the Github commit stats).
 All "core devs" have known each other personally for a long time; thus, communication happens mostly over private channels (XMPP, Mumble, maybe even real life).
 
 **However**, we (especially *JJ*) are *always* looking for new contributions of any kind. That includes bug reports and feature requests (see the [issue tracker](https://github.com/sfttech/openage/issues), which is, at the time of writing, unfortunately pretty empty), but actual commits (grammar fixes in the docs, code contributions, whatever...) are even better.
@@ -11,7 +14,7 @@ We're always releasing early and often; whenever we add/improve a feature or fix
 
 In the big picture, we're always working towards the next milestone. In reality however, we're often working on unrelated stuff that is either not covered by any milestone (build system, ...) or covered by a later milestone but convenient to implemented, or neccesary, right now.
 
-We're all on Linux (with Intel/NVidia GPUs), and nobody uses any IDEs (unless you count `emacs`). If you want to use an IDE, first of all reconsider. Neither C++ nor Python are IDE-centric languages (unlike Java or C#)
+We're all on Linux (with Intel/NVidia GPUs), and nobody uses any IDEs (unless you count `emacs`). If you want to use an IDE, first of all reconsider: Neither C++ nor Python are IDE-centric languages (unlike Java or C#)
 
 [0] actually we don't; we're students.
 [1] also known as a LAN party. You're invited.
