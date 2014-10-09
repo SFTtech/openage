@@ -23,9 +23,6 @@ else() #"Intel", "MSVC", etc..
 	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 endif()
 
-# these environment variables are used by the python C extension builder
-set(COMPILERENV "CXX=${CMAKE_CXX_COMPILER} CC=${CMAKE_C_COMPILER}")
-
 # output binary definition helpers.
 # allows to add sources to a binary from anywhere.
 
