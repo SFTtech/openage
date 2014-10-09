@@ -151,7 +151,9 @@ defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
 # args.prefix
 defines.update(install_prefix=args.prefix)
 
-bindir = ".bin/%s/%s-%s" % (mode, cc, "".join(c for c in flags if c.isalnum()))
+bindir = ".bin/%s/%s%s" % (mode, cc, "".join(c if c.isalnum()
+                                             else '-'
+                                             for c in flags))
 os.makedirs(bindir, exist_ok=True)
 
 
