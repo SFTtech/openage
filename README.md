@@ -63,7 +63,7 @@ See [building.md](building.md).
 
  - I compiled everything. Now how do I run it?
 
-You first need to use [the convert script](convert/README.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `./openage --data=datafolder`.
+You first need to use [the convert script](doc/media_convert.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `./openage --data=datafolder`.
 
  - Waaaaaah! It
   - segfaults

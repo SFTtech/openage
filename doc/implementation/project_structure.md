@@ -21,7 +21,7 @@ example, this document resides in there, because it documents something. wow.
 See [doc/README.md](../doc/README.md) for documentation guidelines.
 
 
-### convert/ ###
+### py/openage/convert/ ###
 
 This is a *Python* module for the conversion of the original media, stored in
 the `convert/` folder. Documentation about media files being converted is in
@@ -44,7 +44,7 @@ module definition, source file gathering and executable definitions are placed
 in this directory.
 
 
-### src/ ###
+### cpp/ ###
 
 Source files written in *C++11* live here.
 All engine components, data structures and tests are located in this folder,

@@ -26,8 +26,8 @@ For more build system internals, see [buildsystem/doc](buildsystem/doc).
  - `make media AGE2DIR="~/.wine/drive_c/age2"` will convert all media
    files from the given age2 install folder, storing them in
    `./data/age`
- - `make run` or `bin/src/openage` will run the game. try
-   `bin/src/openage --help`
+ - `make run` or `bin/cpp/openage` will run the game. try
+   `bin/cpp/openage --help`
  - `make tests` will run the unit tests
 
 ### For installing on your local system
