@@ -98,31 +98,11 @@ def main():
 
     # arguments are OK.
 
-    # generate sources to internal dict
-
-    generated_files_raw = {}
-    from ..convert import datafile
-    for filename, content in datafile.generate_gamedata_structs(cpp_src_dir):
-        generated_files_raw[filename] = content
-
-    # post-process filenames
+    # generate sources
     generated_files = {}
-    for filename, content in generated_files_raw.items():
-        basename = filename.split('/')[-1]
-
-        try:
-            basename, marker, suffix = basename.split('.')
-            if not (basename and marker and suffix) or marker != 'gen':
-                raise ValueError()
-        except ValueError:
-            dbg("error in codegen: required filename format is " +
-                "[base].gen.[suffix], but filename is %s" % filename, 0)
-            exit(1)
-
-        absfilename = "%s%s%s" % (cpp_src_dir, os.path.sep, filename)
+    from . import codegen
+    for absfilename, filename, content in codegen.generate_all():
         generated_files[absfilename] = filename, content
-
-    # check filenames for generated sources
 
     # calculate dependencies (all used python modules)
     new_depend_cache = set()
@@ -169,19 +149,6 @@ A build update has been triggered; you need to re-start the build.
     # write generated files to sourcedir
     if args.write_to_sourcedir:
         for absfilename, (filename, content) in generated_files.items():
-            # post-process content
-            extension = filename.split('.')[-1].lower().strip()
-            if extension in {'h', 'hpp', 'c', 'cpp'}:
-                comment_prefix = '//'
-            else:
-                comment_prefix = '#'
-
-            content = """\
-{prefix} Warning: this file was auto-generated; manual changes are futile.
-{prefix} For details, see buildsystem/codegen.cmake and py/openage/codegen.
-
-{code}""".format(prefix=comment_prefix, code=content)
-
             with open(absfilename) as f:
                 if f.read() == content:
                     dbg("file unchanged: %s" % filename, 1)
