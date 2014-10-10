@@ -21,6 +21,7 @@ add_custom_command(OUTPUT ${CODEGEN_TARGETS}
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 	DEPENDS ${CODEGEN_DEPENDS}
 	COMMENT running code generation
+	PRE_BUILD
 )
 
 add_sources_absolute(${PROJECT_NAME}
