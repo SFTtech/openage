@@ -73,7 +73,7 @@ You first need to use [the convert script](doc/media_convert.md) (will be automa
 All of those are features, not bugs.
 To turn them off, use `./openage --dont-segfault --no-errors --dont-eat-dog`.
 
-If this still does not help, try the [contact section](#Contact)
+If this still does not help, try the [contact section](#contact)
 or the [bug tracker](https://github.com/SFTtech/openage/issues).
 
 Development Process
@@ -132,7 +132,7 @@ To prevent accidential violation of one of those guidelines, you should *never*
 * [learn c++11](http://www.cplusplus.com/doc/tutorial/)
 * read the code and documentation
 * contribute anything to the code
-* [contact us](#Contact)
+* [contact us](#contact)
 
 cheers, happy hecking.
 

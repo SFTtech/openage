@@ -29,8 +29,11 @@ understand any part of the project:
   repository
 * This ensures newcomers can start developing easily
 
-code docs
----------
+
+Dynamic Docs
+------------
+
+This type of documentation is written inside code files:
 
  - C++ methods and classes are documented in their header files
  - Python methods and classes are documented via docstrings
@@ -38,23 +41,22 @@ code docs
 We're lazy, so the above statements might be be out-right fabrications.
 
 
-dynamic docs
-------------
+### Doc Generation
 
-dynamic documentation can be auto-generated from source documentation using **doxygen**.
+Dynamic documentation can be auto-generated from source documentation using **doxygen**.
 
 after calling `./configure`, you can invoke
 
-	`make doc`
+	make doc
 
 to create doxygen html and LaTeX files.
 
 
 After creation, view them in a browser by
 
-	`$BROWSER bin/doc/html/index.html`
+	$BROWSER bin/doc/html/index.html
 
 or, if you want to create LaTeX documents, run
 
-	`make -C bin/doc/latex/ pdf`
-	`$PDFVIEWER bin/doc/latex/refman.pdf`
+	make -C bin/doc/latex/ pdf
+	$PDFVIEWER bin/doc/latex/refman.pdf
