@@ -45,8 +45,9 @@ include("${BUILDSYSTEM_DIR}/version.cmake")
 detect_version()
 
 # include source subdirectories
-add_subdirectory("cpp")
-add_subdirectory("py")
+doxygen_init(cpp/ py/)
+add_subdirectory(cpp/)
+add_subdirectory(py/)
 
 # process the included python sources, generate setup.py
 process_python_modules()

@@ -1,5 +1,6 @@
 # Doxygen integration
 
+# enable doxygen for all given folder names
 function(doxygen_init)
 	find_package(Doxygen)
 	if(DOXYGEN_FOUND)
@@ -15,6 +16,11 @@ function(doxygen_init)
 			message(WARNING "graphviz dot couldn't be found, you won't have cool graphs in the docs.")
 		endif()
 
+		# create doc folder name list
+		foreach(folder ${ARGN})
+			set(DOXYGEN_SCAN_FOLDERS "${DOXYGEN_SCAN_FOLDERS} ${CMAKE_CURRENT_SOURCE_DIR}/${folder}")
+		endforeach()
+
 		# adapt doxygen config
 		configure_file(${BUILDSYSTEM_DIR}/templates/Doxyfile.in ${CMAKE_BINARY_DIR}/Doxyfile @ONLY)
 
@@ -28,5 +34,3 @@ function(doxygen_init)
 		message(WARNING "doxygen couldn't be found, you won't be able to generate docs")
 	endif()
 endfunction()
-
-doxygen_init()
