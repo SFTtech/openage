@@ -4,15 +4,9 @@ from . import mediafile
 from .util import set_verbosity
 import argparse
 
-if __name__ == "__main__":
-
-    # the convert script has 2 modes:
-    # mode 0: generate structures
-    #         this is completely independent from an aoe installation
-    #         it generates C structures according to the gamedata formats
-    #         the functionality for that is implemented in `datafile.py`
-    #
-    # mode 1: generate media files
+def main():
+    # the convert script has 1 mode:
+    # mode 0: generate media files
     #         this requires the aoe installation
     #         database files as csv will be generated, as well as usable
     #         media files like .png and .opus.
@@ -46,17 +40,6 @@ if __name__ == "__main__":
     #set handler for media conversion
     media_cmd.set_defaults(handler=mediafile.media_convert)
 
-
-    #file generations:
-    genfile_cmd = sp.add_parser("structs", help="Generate C structures for handling game data")
-    gcmd_g0 = genfile_cmd.add_mutually_exclusive_group(required=True)
-    gcmd_g0.add_argument("-l", "--list-files", help="List all source files that can currently be generated", action='store_true')
-    gcmd_g0.add_argument("-o", "--output", metavar="destination", help="Output folder for the generated files")
-    genfile_cmd.add_argument("filename", nargs="*", default="*", help="Files to be generated")
-
-    #set handler for file generation
-    genfile_cmd.set_defaults(handler=datafile.data_generate)
-
     #actually parse argv and run main
     args = p.parse_args()
 
@@ -66,3 +49,6 @@ if __name__ == "__main__":
         p.print_help()
     else:
         args.handler(args)
+
+if __name__ == "__main__":
+    main()
