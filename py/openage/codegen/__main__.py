@@ -59,23 +59,18 @@ def main():
 
     ap.add_argument("--verbose", "-v", action='count', default=0)
 
-    args = ap.parse_arguments()
+    args = ap.parse_args()
 
     # process and validate arguments
 
     set_verbosity(args.verbose)
 
-    if args.touch_file_on_change:
-        file_to_touch = args.touch_file_on_change
-        if not os.path.isfile(file_to_touch):
+    file_to_touch = args.touch_file_on_cache_change
+    if file_to_touch and not os.path.isfile(file_to_touch):
             ap.error("file doesn't exist: %s" % file_to_touch)
-    else:
-        file_to_touch_on_cache_change = None
 
-    cache_actions_requested = any(
-        file_to_touch_on_cache_change,
-        args.force_rerun_on_targetcache_change,
-    )
+    cache_actions_requested = (file_to_touch or
+                               args.force_rerun_on_targetcache_change)
 
     old_target_cache = set()
     try:
@@ -108,16 +103,16 @@ def main():
     generated_files_raw = {}
     from ..convert import datafile
     for filename, content in datafile.generate_gamedata_structs(cpp_src_dir):
-        generated_files_raw[absfilename] = filename, content
+        generated_files_raw[filename] = content
 
     # post-process filenames
     generated_files = {}
-    for filename, content in generated_files_raw:
+    for filename, content in generated_files_raw.items():
         basename = filename.split('/')[-1]
 
         try:
             basename, marker, suffix = basename.split('.')
-            if not all(basename, marker, suffix) or marker != 'gen':
+            if not (basename and marker and suffix) or marker != 'gen':
                 raise ValueError()
         except ValueError:
             dbg("error in codegen: required filename format is " +
@@ -140,6 +135,7 @@ def main():
         filename = os.path.abspath(filename)
 
         depend_cache_file.write(filename)
+        depend_cache_file.write('\n')
         new_depend_cache.add(filename)
 
     # calculate targets
@@ -147,18 +143,19 @@ def main():
     target_cache_file = open(args.target_cache, 'w')
     for filename in generated_files:
         target_cache_file.write(filename)
+        target_cache_file.write('\n')
         new_target_cache.add(filename)
 
     # check whether the cache has changed
     if (old_depend_cache != new_depend_cache or
         old_target_cache != new_target_cache):
 
-        if file_to_touch_on_cache_change:
+        if file_to_touch:
             try:
-                os.utime(file_to_touch_on_cache_change)
+                os.utime(file_to_touch)
             except:
                 dbg("warning: couldn't update the timestamp for %s"
-                    % file_to_touch_on_cache_change, 0)
+                    % file_to_touch, 0)
 
     if old_target_cache != new_target_cache:
         if args.force_rerun_on_targetcache_change:

@@ -27,7 +27,6 @@ add_sources(${PROJECT_NAME}
 
 
 # add subsystem folders
-add_subdirectory("gamedata")
 add_subdirectory("audio")
 add_subdirectory("console")
 add_subdirectory("coord")
