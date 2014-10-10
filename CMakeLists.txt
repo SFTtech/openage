@@ -34,13 +34,12 @@ set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
 # include build configuration modules
 include("CTest")
 include("${BUILDSYSTEM_DIR}/python.cmake")
+python_init()
 include("${BUILDSYSTEM_DIR}/cpp.cmake")
 include("${BUILDSYSTEM_DIR}/version.cmake")
 include("${BUILDSYSTEM_DIR}/doxygen.cmake")
 include("${BUILDSYSTEM_DIR}/testing.cmake")
 include("${BUILDSYSTEM_DIR}/codegen.cmake")
-
-python_init()
 
 # include source subdirectories
 add_subdirectory("cpp")
