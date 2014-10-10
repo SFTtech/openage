@@ -15,9 +15,9 @@ message("(running cmake...)
 |___|______/|_|        |_|  (___|   \\___/|  __/|_____)_| |_\\_____|\\___ |_____)
                                          |_|                     (_____|
 
-Welcome to this SFT technologies computer-aided openage build system!
+Welcome to the SFT technologies computer-aided openage build system!
 
-You have chose, or been chosen, to attempt the daring task of building openage.
+You have chosen, or been chosen, to attempt the daring task of building openage.
 If you have installed all the dependencies that are conveniently listed in [building.md], this _might_ work!
 
 If it doesn't, try asking for help in #sfttech on freenode.net
