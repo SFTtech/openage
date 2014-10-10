@@ -25,45 +25,6 @@ def getenv(*varnames, default=""):
     return default
 
 
-class AliasedChoices:
-    """
-    for use with argparse.choices.
-    allows the user a bit more freedums,
-    such as writing 'dbg' instead of 'debug'.
-    """
-    def __init__(self, *choices):
-        self.choices = [choice[0] for choice in choices]
-
-        # build reverse-lookup dict
-        self.aliases = {alias.lower(): choice[0]
-                        for choice in choices
-                        for alias in choice
-}
-
-    def __iter__(self):
-        return iter(self.choices)
-
-    def __contains__(self, alias):
-        return alias.lower() in self.aliases
-
-    def lookup(self, alias):
-        return self.aliases[alias.lower()]
-
-
-modes = AliasedChoices(
-    ("debug", "dbg"),        # -g
-    ("release", "rls")       # -DNDEBUG
-)
-
-omodes = AliasedChoices(
-    ("auto", ""),            # auto-determine from mode
-    ("0", "none"),           # -O0; not recommended
-    ("1",),                  # -O1; not recommended
-    ("g", "dbg", "debug"),   # -Og / -O1 depending on compiler support
-    ("2", "rls", "release"), # -O2; recommended for release
-    ("max", "3"),            # -O3 -flto -march=native
-)
-
 # argparsing
 description = "convenience script to create a build directory "
 description += "and invoke cmake."
@@ -89,8 +50,14 @@ ap.add_argument("--optimize", "-O", choices=["auto",
                      "is set according to mode if 'auto'. " +
                      "conflicts with --flags")
 ap.add_argument("--compiler", "-c",
-                default=getenv("CXX", "CC", default="gnu"),
+                default="gnu",
                 help="compiler suite")
+ap.add_argument("--c-compiler",
+                default=getenv("CC"),
+                help="c compiler executable")
+ap.add_argument("--cpp-compiler",
+                default=getenv("CXX"),
+                help="c++ compiler executable")
 ap.add_argument("--flags", "-f",
                 default=getenv("CXXFLAGS", "CCFLAGS", "CFLAGS"),
                 help="compiler flags")
@@ -111,20 +78,22 @@ except:
 defines = {}
 
 # args.mode
-mode = modes.lookup(args.mode)
+mode = args.mode
 if mode == 'debug':
     build_type = 'Debug'
 else:
     build_type = 'Release'
 defines.update(build_type=build_type)
 
-omode = omodes.lookup(args.optimize)
+# args.optimize
+omode = args.optimize
 
 # args.flags, args.ldflags
 flags = shlex.split(args.flags)
 ldflags = shlex.split(args.ldflags)
 
 if omode == 'auto':
+    # auto-set omode depending on mode
     if mode == 'debug':
         omode = 'g'
     else:
@@ -134,43 +103,61 @@ else:
         ap.error("--optimize is forbidden when flags are specified manually " +
                  "(conflicting: -O%s, -f %s)" % (omode, shlex.join(flags)))
 
-cxx_lookup = {
-    "clang": "clang++",
-    "gcc": "g++",
-}
+# determine compiler binaries from args.{c_compiler, cxx_compiler, compiler}
+cc = cxx = csuite = None
 
-cc = cxx = cname = None
-if args.compiler.lower() in {'clang', 'clang++', 'llvm'}:
-    cc = cname = "clang"
-    cxx = cxx_lookup[cc]
-elif args.compiler.lower() in {'gcc', 'g++', 'gnu'}:
-    cc = cname = "gcc"
-    cxx = cxx_lookup[cc]
-elif not args.compiler:
-    ap.error("no compiler was specified")
-else:
-    # the user decided to use some sort of custom compiler
-    # what could possibly go wrong?
+if args.c_compiler:
+    # CC was specified manually
+    cc = args.c_compiler
 
-    try:
-        cc, cxx = args.compiler.split(',')
-    except ValueError:
-        ap.error("unknown compiler name: %s\n" % args.compiler +
-                 "specify manual invocations for both CC and CXX as $CC,$CXX")
+if args.cpp_compiler:
+    # CXX was specified manually
+    cxx = args.cpp_compiler
 
-    if "gcc" in cc:
-        cname = "gcc"
-    if "clang" in cc:
-        cname = "clang"
+if args.compiler:
+    # compiler suite was specified manually
+    csuite = args.compiler.lower().strip()
+    if csuite in {'gcc', 'g++', 'gnu'}:
+        csuite = 'gcc'
+    elif csuite in {'clang', 'clang++', 'llvm'}:
+        csuite = 'clang'
     else:
-        cname = cc.split(os.path.sep)[-1].split("-")[0]
-        if not cname:
-            cname = "unknown"
+        ap.error("unknown compiler suite: %s. " % csuite +
+                 "to specify other compilers, manually use " +
+                 "--c-compiler and --cpp-compiler")
+
+if cc and cxx:
+    # cc and cxx have been specified manually
+    if csuite:
+        print("warning: compiler suite has been specified, but the c and " +
+              "c++ compilers were specified manually")
+    else:
+        # extract csuite from cc
+        csuite = cc.split('/')[-1].split('-')[0].lower().strip()
+        if not csuite:
+            csuite = 'unknown'
+
+if not csuite:
+    # default to gcc
+    csuite = 'gcc'
+
+if not cc:
+    cc = csuite
+
+if not cxx:
+    if csuite == 'gcc':
+        cxx = 'g++'
+    elif csuite == 'clang':
+        cxx = 'clang++'
 
 if not shutil.which(cc):
-    ap.error("could not find CC executable: %s" % cc)
+    ap.error('could not find c compiler executable: %s' % cc)
+
 if not shutil.which(cxx):
-    ap.error("could not find CXX executable: %s" % cxx)
+    ap.error('could not find c++ compiler executable: %s' % cxx)
+
+
+print('compiler suite: %s' % csuite)
 
 defines.update(c_compiler=cc, cxx_compiler=cxx)
 
@@ -181,7 +168,7 @@ if not flags and not ldflags:
     elif omode == '1':
         flags.append("-O1")
     elif omode == 'g':
-        if cname in {'gcc'}:
+        if csuite in {'gcc'}:
             flags.append("-Og")
         else:
             flags.append("-O1")
@@ -191,7 +178,7 @@ if not flags and not ldflags:
         flags.append("-O3")
         flags.append("-march=native")
 
-        if cname in {'gcc'}:
+        if csuite in {'gcc'}:
             flags.append("-flto=%d" % multiprocessing.cpu_count())
             ldflags.append("-flto=%d" % multiprocessing.cpu_count())
 
@@ -202,6 +189,7 @@ defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
 
 # args.prefix
 defines.update(install_prefix=args.prefix)
+
 
 def sanitize(s, fallback='-'):
     """
