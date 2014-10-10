@@ -64,7 +64,7 @@ def main():
     # process and validate arguments
     if not args.verbose and 'VERBOSE' in os.environ:
         try:
-            args.verbose = os.environ['VERBOSE']
+            args.verbose = int(os.environ['VERBOSE'])
         except:
             args.verbose = 2
 
