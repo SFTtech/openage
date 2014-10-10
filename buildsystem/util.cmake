@@ -1,0 +1,13 @@
+function(print_filename filename)
+	file(REALATIVE_PATH relfilename ${CMAKE_SOURCE_DIR} ${filename})
+	message("\t${relfilename}")
+endfunction()
+
+function(list_contains var value)
+	set(${var} FALSE)
+	foreach(value2 ${ARGN})
+		if(${value} equal ${value2})
+			set(${var} TRUE)
+		endif()
+	endforeach()
+endfunction()
