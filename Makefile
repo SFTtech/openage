@@ -59,6 +59,10 @@ rungdb: openage
 test: $(BUILDDIR)
 	@make -C $(BUILDDIR) test
 
+.PHONY: codegen
+codegen: $(BUILDDIR)
+	@make -C $(BUILDDIR) codegen
+
 .PHONY: doc
 doc: $(BUILDDIR)
 	@make -C $(BUILDDIR) doc
