@@ -814,7 +814,7 @@ class GeneratedFile:
             "file_suffix": ".docx",
         },
         "struct": {
-            "file_suffix": ".h",
+            "file_suffix": ".gen.h",
             "content_prefix": Template("""#ifndef _${header_guard}_H_
 #define _${header_guard}_H_
 
@@ -831,7 +831,7 @@ namespace ${namespace} {
 """),
         },
         "structimpl": {
-            "file_suffix":    ".cpp",
+            "file_suffix":    ".gen.cpp",
             "content_prefix": Template("""
 ${headers}
 %s
