@@ -62,6 +62,11 @@ def main():
     args = ap.parse_args()
 
     # process and validate arguments
+    if not args.verbose and 'VERBOSE' in os.environ:
+        try:
+            args.verbose = os.environ['VERBOSE']
+        except:
+            args.verbose = 2
 
     set_verbosity(args.verbose)
 
@@ -139,15 +144,15 @@ def main():
     depend_cache_changed = False
     if old_depend_cache != new_depend_cache:
         depend_cache_changed = True
-        dbg("codegen dependencies:", 0)
-        print_set_difference(lambda s: dbg(s, 0),
+        dbg("codegen dependencies:", 1)
+        print_set_difference(lambda s: dbg(s, 1),
                              old_depend_cache, new_depend_cache)
 
     target_cache_changed = False
     if old_target_cache != new_target_cache:
         target_cache_changed = True
-        dbg("codegen target sources:", 0)
-        print_set_difference(lambda s: dbg(s, 0),
+        dbg("codegen target sources:", 1)
+        print_set_difference(lambda s: dbg(s, 1),
                              old_target_cache, new_target_cache)
 
     if file_to_touch and (depend_cache_changed or target_cache_changed):
