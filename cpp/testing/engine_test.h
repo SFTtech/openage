@@ -11,7 +11,7 @@
 #include "../handlers.h"
 #include "../terrain.h"
 #include "../terrain_object.h"
-#include "../gamedata/graphic.h"
+#include "../gamedata/graphic.gen.h"
 
 
 namespace testing {

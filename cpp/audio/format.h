@@ -1,7 +1,7 @@
 #ifndef _AUDIO_FORMAT_H_
 #define _AUDIO_FORMAT_H_
 
-#include "../gamedata/sound_file.h"
+#include "../gamedata/sound_file.gen.h"
 
 namespace openage {
 namespace audio {

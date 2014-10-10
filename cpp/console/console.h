@@ -10,7 +10,7 @@
 #include "../engine.h"
 #include "../util/color.h"
 #include "../font.h"
-#include "../gamedata/color.h"
+#include "../gamedata/color.gen.h"
 
 namespace openage {
 namespace console {

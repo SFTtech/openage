@@ -15,8 +15,8 @@
 #include "coord/chunk.h"
 #include "util/dir.h"
 #include "util/misc.h"
-#include "gamedata/blending_mode.h"
-#include "gamedata/terrain.h"
+#include "gamedata/blending_mode.gen.h"
+#include "gamedata/terrain.gen.h"
 
 namespace openage {
 

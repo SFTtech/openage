@@ -14,7 +14,7 @@
 #include "sound.h"
 #include "../util/dir.h"
 
-#include "../gamedata/sound_file.h"
+#include "../gamedata/sound_file.gen.h"
 
 namespace openage {
 namespace audio {

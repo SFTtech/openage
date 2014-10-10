@@ -5,7 +5,7 @@
 #include <GL/gl.h>
 #include <vector>
 
-#include "gamedata/texture.h"
+#include "gamedata/texture.gen.h"
 #include "coord/camgame.h"
 #include "coord/camhud.h"
 #include "coord/tile.h"

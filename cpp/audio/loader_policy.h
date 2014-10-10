@@ -1,7 +1,7 @@
 #ifndef _AUDIO_LOADER_POLICY_H_
 #define _AUDIO_LOADER_POLICY_H_
 
-#include "../gamedata/sound_file.h"
+#include "../gamedata/sound_file.gen.h"
 
 namespace openage {
 namespace audio {

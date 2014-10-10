@@ -1,7 +1,7 @@
 #ifndef _UTIL_COLOR_H_
 #define _UTIL_COLOR_H_
 
-#include "../gamedata/color.h"
+#include "../gamedata/color.gen.h"
 
 namespace openage {
 namespace util {
