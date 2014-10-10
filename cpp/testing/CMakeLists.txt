@@ -40,4 +40,4 @@ add_c_test(
 
 
 # then generate the test registration file
-register_test_cases(${PROJECT_NAME} "register.cpp.in" "register.cpp")
+register_test_cases(${PROJECT_NAME} register.cpp.in register.cpp)

@@ -55,7 +55,7 @@ def main():
     ap.add_argument("--write-to-sourcedir", action='store_true')
 
     ap.add_argument("--touch-file-on-cache-change")
-    ap.add_argument("--force-rerun-on-targetcache-change")
+    ap.add_argument("--force-rerun-on-targetcache-change", action='store_true')
 
     ap.add_argument("--verbose", "-v", action='count', default=0)
 
@@ -76,7 +76,7 @@ def main():
     try:
         with open(args.target_cache) as f:
             for target in f:
-                old_target_cache.add(target)
+                old_target_cache.add(target.strip())
     except:
         if cache_actions_requested:
             dbg("warning: cache actions were requested, " +
@@ -86,7 +86,7 @@ def main():
     try:
         with open(args.depend_cache) as f:
             for depend in f:
-                old_depend_cache.add(depend)
+                old_depend_cache.add(depend.strip())
     except:
         if cache_actions_requested:
             dbg("warning: cache actions were requested, " +
@@ -127,32 +127,52 @@ def main():
         new_target_cache.add(filename)
 
     # check whether the cache has changed
-    if (old_depend_cache != new_depend_cache or
-        old_target_cache != new_target_cache):
+    def print_set_difference(fun, old, new):
+        if old:
+            if old - new:
+                fun("removed:\n\t%s" % "\n\t".join(old - new))
+            if new - old:
+                fun("added:\n\t%s" % "\n\t".join(new - old))
+        else:
+            fun("\n\t".join(new))
 
-        if file_to_touch:
-            try:
-                os.utime(file_to_touch)
-            except:
-                dbg("warning: couldn't update the timestamp for %s"
-                    % file_to_touch, 0)
+    depend_cache_changed = False
+    if old_depend_cache != new_depend_cache:
+        depend_cache_changed = True
+        dbg("codegen dependencies:", 0)
+        print_set_difference(lambda s: dbg(s, 0),
+                             old_depend_cache, new_depend_cache)
 
+    target_cache_changed = False
     if old_target_cache != new_target_cache:
-        if args.force_rerun_on_targetcache_change:
-            print("""\n\n\n\
+        target_cache_changed = True
+        dbg("codegen target sources:", 0)
+        print_set_difference(lambda s: dbg(s, 0),
+                             old_target_cache, new_target_cache)
+
+    if file_to_touch and (depend_cache_changed or target_cache_changed):
+        try:
+            os.utime(file_to_touch)
+        except:
+            dbg("warning: couldn't update the timestamp for %s"
+                % file_to_touch, 0)
+
+    if target_cache_changed and args.force_rerun_on_targetcache_change:
+        print("""\n\n\n\
 The list of generated sourcefiles has changed.
-A build update has been triggered; you need to re-start the build.
+A build update has been triggered; you need to build again.
 \n\n\n""")
-            # fail
-            exit(1)
+        # fail
+        exit(1)
 
     # write generated files to sourcedir
     if args.write_to_sourcedir:
         for absfilename, (filename, content) in generated_files.items():
-            with open(absfilename) as f:
-                if f.read() == content:
-                    dbg("file unchanged: %s" % filename, 1)
-                    continue
+            if os.path.isfile(absfilename):
+                with open(absfilename) as f:
+                    if f.read() == content:
+                        dbg("file unchanged: %s" % filename, 1)
+                        continue
 
             dbg("generating file: %s" % filename, 0)
             with open(absfilename, 'w') as f:

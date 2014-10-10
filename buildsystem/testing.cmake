@@ -11,8 +11,6 @@ endfunction()
 
 # add a new test function to the list of available tests
 function(add_c_test binary_name name description functionname interactive)
-	message("${binary_name} test: ${name} - ${description}")
-
 	list(FIND SFT_TESTS ${name} test_defined)
 	if(NOT test_defined EQUAL -1)
 		message(FATAL_ERROR "The test ${name} was already defined!")
@@ -42,6 +40,8 @@ endfunction()
 function(register_test_cases binary_name register_file_in register_file)
 	set(REGISTER_TESTS "// register all defined C++ tests\n")
 
+	message("tests for ${binary_name} (${register_file})")
+
 	get_property(test_names GLOBAL PROPERTY SFT_TESTS)
 	foreach(test ${test_names})
 		get_property(description  GLOBAL PROPERTY SFT_TESTS_DESCRIPTION_${test})
@@ -57,9 +57,12 @@ function(register_test_cases binary_name register_file_in register_file)
 		set(TEST_PROTOTYPES
 			"${TEST_PROTOTYPES}\n\tbool ${functionname}(int argc, char **argv);"
 		)
+
+		message("\t${test}: ${description}")
 	endforeach()
 
-	message("registering tests in ${register_file}")
+	message("")
+
 	file(RELATIVE_PATH SOURCE_RELPATH
 		"${CMAKE_CURRENT_BINARY_DIR}"
 		"${CMAKE_CURRENT_SOURCE_DIR}"
@@ -70,8 +73,5 @@ function(register_test_cases binary_name register_file_in register_file)
 	)
 
 	# add the configured file to the source list.
-	add_sources_absolute(
-		${binary_name}
-		${CMAKE_CURRENT_BINARY_DIR}/${register_file}
-	)
+	add_sources(${binary_name} ${CMAKE_CURRENT_BINARY_DIR}/${register_file})
 endfunction()

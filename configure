@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-# this is a convenience script that will simply create a build directory and
-# invoke cmake.
-
 import argparse
 import multiprocessing
 import os
@@ -69,11 +66,19 @@ ap.add_argument("--prefix", "-p", default="/usr/local",
 
 args = ap.parse_args()
 
+message = """openage configure script
+
+this convenience script creates the build directory and invokes \
+cmake for an out-of-source build.
+
+don't feel obliged to use it, especially if you're a packager."""
+
 try:
-    subprocess.call(['cowsay', 'openage configure helper'])
-    print('')
+    subprocess.call(['cowsay', '--', message])
+    print("")
 except:
-    pass
+    print(message)
+    print("")
 
 defines = {}
 
@@ -157,7 +162,7 @@ if not shutil.which(cxx):
     ap.error('could not find c++ compiler executable: %s' % cxx)
 
 
-print('compiler suite: %s' % csuite)
+print('compiler suite: %s\n' % csuite)
 
 defines.update(c_compiler=cc, cxx_compiler=cxx)
 

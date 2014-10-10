@@ -6,7 +6,7 @@
 # are specified below the source file list.
 
 
-create_binary(${PROJECT_NAME})
+declare_executable(${PROJECT_NAME})
 
 add_sources(${PROJECT_NAME}
 	main.cpp
@@ -36,6 +36,12 @@ add_subdirectory("shader")
 add_subdirectory("util")
 add_subdirectory("testing")
 
+# add generated files to executable
+add_sources(${PROJECT_NAME} GENERATED ${CODEGEN_TARGET_TUS})
+
+# after this point, no further sources can be added to the executable
+finalize_executable(${PROJECT_NAME})
+
 # library dependency specification
 
 # freetype includedir hint for ubuntu...
@@ -58,6 +64,7 @@ find_package(Freetype REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(PythonLibs 3.3 REQUIRED)
+
 pkg_search_module(FTGL REQUIRED ftgl)
 pkg_search_module(SDL2 REQUIRED sdl2)
 pkg_search_module(SDL2_IMAGE REQUIRED sdl2_image SDL2_image)
@@ -77,12 +84,8 @@ include_directories(
 	${SDL2_INCLUDE_DIRS}
 )
 
-# define the resulting executable by all sources gathered
-define_executable(${PROJECT_NAME})
-
 # link the executable to those libraries
 target_link_libraries(${PROJECT_NAME}
-	gamedata
 	${FONTCONFIG_LIB}
 	${FREETYPE_LIBRARIES}
 	${FTGL_LIBRARIES}
