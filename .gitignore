@@ -1,21 +1,36 @@
-*.o
+# editor-specific files
+\#*
+.#*
 *~
 .*.swp
+
+# ELF files
+*.o
 *.a
 *.so
+/openage
+
+# python bytecode
 *.pyc
 *.pyo
-*.orig
 __pycache__
+
+# workflow
+*.orig
+
+# build system
 /bin
 /.bin
-/openage
-data/age
-callgrind.out.*
-perf.data*
-.gdb_history
-/Doxyfile
 CTestTestfile.cmake
 CMakeFiles
 cmake_install.cmake
 CMakeCache.txt
+/Doxyfile
+
+# debugging
+callgrind.out.*
+perf.data*
+.gdb_history
+
+# converted game assets
+data/age
