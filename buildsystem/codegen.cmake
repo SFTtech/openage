@@ -24,6 +24,10 @@ add_custom_command(OUTPUT ${CODEGEN_TARGETS}
 	PRE_BUILD
 )
 
-add_sources_absolute(${PROJECT_NAME}
-	${GENERATED_FILES_ABSOLUTE}
-)
+foreach(target ${CODEGEN_TARGETS})
+	if(${target} MATCHES \\.cpp$)
+		add_sources_absolute(${PROJECT_NAME} ${target})
+	endif()
+endforeach()
+
+add_custom_target(codegen ALL DEPENDS ${CODEGEN_TARGETS})

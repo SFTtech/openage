@@ -101,7 +101,7 @@ def main():
     # generate sources
     generated_files = {}
     from . import codegen
-    for absfilename, filename, content in codegen.generate_all():
+    for absfilename, filename, content in codegen.generate_all(cpp_src_dir):
         generated_files[absfilename] = filename, content
 
     # calculate dependencies (all used python modules)
