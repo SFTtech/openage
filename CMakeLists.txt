@@ -38,13 +38,13 @@ include("${BUILDSYSTEM_DIR}/cpp.cmake")
 include("${BUILDSYSTEM_DIR}/version.cmake")
 include("${BUILDSYSTEM_DIR}/doxygen.cmake")
 include("${BUILDSYSTEM_DIR}/testing.cmake")
+include("${BUILDSYSTEM_DIR}/codegen.cmake")
 
 python_init()
 
 # include source subdirectories
 add_subdirectory("cpp")
 add_subdirectory("py")
-
 
 # process the included python sources, generate setup.py
 process_python_modules()

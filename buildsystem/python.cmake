@@ -125,8 +125,8 @@ function(process_python_modules)
 	endforeach()
 
 	set(SETUP_PY_IN "${BUILDSYSTEM_DIR}/templates/setup.py.in")
-	set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/py/setup.py")
-	set(PY_TIMEFILE "${CMAKE_CURRENT_BINARY_DIR}/py/timefile")
+	set(SETUP_PY    "${CMAKE_BINARY_DIR}/py/setup.py")
+	set(PY_TIMEFILE "${CMAKE_BINARY_DIR}/py/timefile")
 
 	set(SETUP_INVOCATION ${PYTHON3} ${BUILDSYSTEM_DIR}/runinenv CXX=${CMAKE_CXX_COMPILER} CC=${CMAKE_C_COMPILER} -- ${PYTHON3} ${SETUP_PY})
 
