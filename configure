@@ -23,10 +23,13 @@ def getenv(*varnames, default=""):
 
 
 # argparsing
-description = "convenience script to create a build directory "
-description += "and invoke cmake."
-epilog = "environment variables like CXX and CXXFLAGS are honored, "
-epilog += "but overwritten if their respective arguments are specified."
+description = """./configure is a convenience script that creates the build \
+directory and invokes cmake for an out-of-source build.
+
+don't feel obliged to use this, especially if you're packaging openage."""
+
+epilog = """environment variables like CXX and CXXFLAGS are honored, \
+but overwritten by command-line arguments."""
 
 ap = argparse.ArgumentParser(
     description=description,
@@ -68,18 +71,11 @@ ap.add_argument("--dry-run", action='store_true',
 
 args = ap.parse_args()
 
-message = """openage configure script
-
-this convenience script creates the build directory and invokes \
-cmake for an out-of-source build.
-
-don't feel obliged to use it, especially if you're a packager."""
-
 try:
-    subprocess.call(['cowsay', '--', message])
+    subprocess.call(['cowsay', '--', description])
     print("")
 except:
-    print(message)
+    print(description)
     print("")
 
 defines = {}
