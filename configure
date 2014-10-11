@@ -155,7 +155,7 @@ if args.c_compiler or args.cpp_compiler:
 
         unknownbasename = csuites[csuite.lower()][unknownindex]
         unknownbasename = "".join((unknownbasename, knownver, knownext))
-        unknown = os.path.join((knowndir, unknownbasename))
+        unknown = os.path.join(knowndir, unknownbasename)
 
         if not cc:
             cc = unknown
