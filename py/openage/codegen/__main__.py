@@ -46,16 +46,37 @@ def main():
 
     # parse arguments
 
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(description="""generates c++ code within \
+the source tree. designed to be used by [buildsystem/codegen.cmake]""",
+                                 epilog="""all file and directory names \
+should be absolute; otherwise, assumptions made by this script or the \
+cmake script might not be fulfilled""")
 
-    ap.add_argument("--target-cache", required=True)
-    ap.add_argument("--depend-cache", required=True)
-    ap.add_argument("--cpp-src-dir", required=True)
-
-    ap.add_argument("--write-to-sourcedir", action='store_true')
-
-    ap.add_argument("--touch-file-on-cache-change")
-    ap.add_argument("--force-rerun-on-targetcache-change", action='store_true')
+    ap.add_argument("--target-cache", required=True,
+                    help="""filename for target cache. a list of all \
+generated sources will be written there for every invocation. if the list \
+changes, --touch-file-on-cache-change and --force-rerun-on-targetcache-change \
+will trigger cmake re-runs""")
+    ap.add_argument("--depend-cache", required=True,
+                    help="""filename for dependency cache. a list of all \
+python files and other resources that were used during source generation. if \
+the list changes, --touch-file-on-cache-change will trigger cmake re-runs""")
+    ap.add_argument("--cpp-src-dir", required=True,
+                    help="""c++ source directory; used to determine generated \
+file names""")
+    ap.add_argument("--write-to-sourcedir", action='store_true',
+                    help="""causes the sources to be actually written to \
+cpp-src-dir. otherwise, a dry run is performed. even during a dry run, \
+all code generation is performed in order to create/update the target and \
+dependency caches""")
+    ap.add_argument("--touch-file-on-cache-change",
+                    help="""the file passed here will be touched if \
+one of the caches changes. designed for use with a CMakeLists.txt file, \
+to trigger cmake re-runs""")
+    ap.add_argument("--force-rerun-on-targetcache-change", action='store_true',
+                    help="""a bit more drastic than \
+--touch-file-on-cache-change, this causes codegen to abort with an error \
+message if the target cache has changed""")
 
     ap.add_argument("--verbose", "-v", action='count', default=0)
 
