@@ -110,59 +110,80 @@ else:
         ap.error("--optimize is forbidden when flags are specified manually " +
                  "(conflicting: -O%s, -f %s)" % (omode, shlex.join(flags)))
 
+# maps csuite names to lists of (cc, cxx, other aliases...)
+csuites = {"gnu": ("gcc", "g++"), "llvm": ("clang", "clang++")}
+def getcsuite(name):
+    name = name.lower().strip()
+    for csuite, aliases in csuites.items():
+        if name == csuite or name in aliases:
+            return csuite
+    else:
+        raise ValueError("unknown compiler: %s" % name)
+
 # determine compiler binaries from args.{c_compiler, cxx_compiler, compiler}
-cc = cxx = csuite = None
+if args.compiler and (args.c_compiler or args.cpp_compiler):
+    ap.error("""either specify a compiler suite via --compiler, or manually \
+specify the C and C++ compilers via --c-compiler and -cpp-compiler""")
 
-if args.c_compiler:
-    # CC was specified manually
+if args.c_compiler or args.cpp_compiler:
     cc = args.c_compiler
-
-if args.cpp_compiler:
-    # CXX was specified manually
     cxx = args.cpp_compiler
-
-if args.compiler:
-    # compiler suite was specified manually
-    csuite = args.compiler.lower().strip()
-    if csuite in {'gcc', 'g++', 'gnu'}:
-        csuite = 'gcc'
-    elif csuite in {'clang', 'clang++', 'llvm'}:
-        csuite = 'clang'
-    else:
-        ap.error("unknown compiler suite: %s. " % csuite +
-                 "to specify other compilers, manually use " +
-                 "--c-compiler and --cpp-compiler")
-
-if cc and cxx:
-    # cc and cxx have been specified manually
-    if csuite:
-        print("warning: compiler suite has been specified, but the c and " +
-              "c++ compilers were specified manually")
-    else:
-        # extract csuite from cc
-        csuite = cc.split('/')[-1].split('-')[0].lower().strip()
-        if not csuite:
+    if cc and cxx:
+        # both CC and CXX have been specified manually
+        try:
+            csuite = getcsuite(cc)
+        except ValueError:
+            print("warning: could not identify compiler: %s" % cc)
             csuite = 'unknown'
+    else:
+        # only one has been specified manually; auto-determine the other
+        if cc:
+            known = cc
+            unknownindex = 1
+        else:
+            known = cxx
+            unknownindex = 0
 
-if not csuite:
-    # default to gcc
-    csuite = 'gcc'
+        knowndir, knownbasename = os.path.split(known)
+        knownbasename, knownext = os.path.splitext(knownbasename)
+        try:
+            knownbasename, knownver = knownbasename.split('-', maxsplit=1)
+            knownver = "-%s" % knownver
+        except ValueError:
+            knownver = ""
 
-if not cc:
-    cc = csuite
+        try:
+            csuite = getcsuite(knownbasename)
+        except ValueError:
+            ap.error("could not identify compiler: %s" % known)
 
-if not cxx:
-    if csuite == 'gcc':
-        cxx = 'g++'
-    elif csuite == 'clang':
-        cxx = 'clang++'
+        unknownbasename = csuites[csuite.lower()][unknownindex]
+        unknownbasename = "".join(unknownbasename, knownver, knownext)
+        unknown = os.path.join(knowndir, unknownbasename)
 
+        if not cc:
+            cc = unknown
+        if not cxx:
+            cxx = unknown
+else:
+    # neither CC, nor CXX has been specified
+    csuite = args.compiler
+    if not csuite:
+        # default to gnu compiler suite
+        csuite = 'gnu'
+
+    if not csuite.lower() in csuites:
+        ap.error("unknown compiler suite: %s. manually specify --c-compiler \
+and --cpp-compiler, or use one of [%s]" % csuite, ", ".join(csuites))
+
+    cc, cxx = csuites[csuite.lower()][:2]
+
+# test whether the specified compilers actually exist
 if not shutil.which(cc):
     ap.error('could not find c compiler executable: %s' % cc)
 
 if not shutil.which(cxx):
     ap.error('could not find c++ compiler executable: %s' % cxx)
-
 
 print('compiler suite: %s\n' % csuite)
 
