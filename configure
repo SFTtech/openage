@@ -154,8 +154,8 @@ if args.c_compiler or args.cpp_compiler:
             ap.error("could not identify compiler: %s" % known)
 
         unknownbasename = csuites[csuite.lower()][unknownindex]
-        unknownbasename = "".join(unknownbasename, knownver, knownext)
-        unknown = os.path.join(knowndir, unknownbasename)
+        unknownbasename = "".join((unknownbasename, knownver, knownext))
+        unknown = os.path.join((knowndir, unknownbasename))
 
         if not cc:
             cc = unknown
