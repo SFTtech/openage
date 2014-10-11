@@ -15,10 +15,15 @@ def generate_all_raw(cpp_src_dir):
 
 def generate_all(cpp_src_dir):
     for filename, content in generate_all_raw(cpp_src_dir):
-        # test whether filename ends in .gen.*
-        basename = filename.split('/')[-1]
+        # test whether filename matches the pattern *.gen.*
+        basename = os.path.basename(filename)
         try:
+            # this will raise a ValueError if basename doesn't have exactly
+            # three dot-separated components
             basename, marker, suffix = basename.split('.')
+
+            # if the middle component isn't "gen", raise a ValueError
+            # manually
             if not (basename and marker and suffix) or marker != 'gen':
                 raise ValueError()
         except ValueError:
@@ -27,11 +32,11 @@ def generate_all(cpp_src_dir):
             exit(1)
 
         # get absolute filename
-        absfilename = "%s%s%s" % (cpp_src_dir, os.path.sep, filename)
+        absfilename = "".join((cpp_src_dir, os.path.sep, filename))
 
         # post-process content
-        extension = filename.split('.')[-1].lower().strip()
-        if extension in {'h', 'hpp', 'c', 'cpp'}:
+        extension = os.path.splitext(filename)[1].lower().strip()
+        if extension in {'.h', '.hpp', '.c', '.cpp'}:
             comment_prefix = '//'
         else:
             comment_prefix = '#'
