@@ -63,6 +63,8 @@ ap.add_argument("--ldflags", "-l",
                 help="linker flags")
 ap.add_argument("--prefix", "-p", default="/usr/local",
                 help="installation directory prefix")
+ap.add_argument("--dry-run", action='store_true',
+                help="do not actually invoke cmake or create any directories")
 
 args = ap.parse_args()
 
@@ -217,13 +219,17 @@ def sanitize(s, fallback='-'):
     return "".join(yieldsanitizedchars())
 
 bindir = ".bin/%s-%s-%s" % (sanitize(cc), sanitize(mode), sanitize(flags))
-os.makedirs(bindir, exist_ok=True)
+if not args.dry_run:
+    os.makedirs(bindir, exist_ok=True)
 
 
 def forcesymlink(linkto, name):
     """
     similar in function to ln -sf
     """
+    if args.dry_run:
+        return
+
     try:
         os.unlink(name)
     except FileNotFoundError:
@@ -258,12 +264,16 @@ invocation.append(project_root)
 
 # switch to build directory
 print('\nbindir:\n%s/\n' % os.path.join(project_root, bindir))
-os.chdir(bindir)
+if not args.dry_run:
+    os.chdir(bindir)
 
 # invoke cmake
 try:
     print('invocation:\n%s\n' % ' '.join(invocation))
-    exit(subprocess.call(invocation))
+    if args.dry_run:
+        exit(0)
+    else:
+        exit(subprocess.call(invocation))
 except FileNotFoundError:
     print("cmake was not found")
     exit(1)
