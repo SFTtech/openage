@@ -50,7 +50,7 @@ ap.add_argument("--optimize", "-O", choices=["auto",
                      "is set according to mode if 'auto'. " +
                      "conflicts with --flags")
 ap.add_argument("--compiler", "-c",
-                default="gnu",
+                default="",
                 help="compiler suite")
 ap.add_argument("--c-compiler",
                 default=getenv("CC"),
