@@ -24,6 +24,7 @@ def main():
         --write-to-sourcedir
         --touch-file-on-cache-change=CMakeLists.txt
         --force-rerun-on-targetcache-change
+        --clean
 
     all file and directory names SHOULD be absolute paths.
     this is not enforced, but relative paths may violate assumptions made by
@@ -40,42 +41,52 @@ def main():
     depending on the specified invocation commands,
 
     - generated sources are written to the source dir
+    - generated sources are cleaned
     - cmake re-builds are triggered if a cache has changed
     """
 
     # parse arguments
 
-    ap = argparse.ArgumentParser(description="""generates c++ code within \
-the source tree. designed to be used by [buildsystem/codegen.cmake]""",
-                                 epilog="""all file and directory names \
-should be absolute; otherwise, assumptions made by this script or the \
-cmake script might not be fulfilled""")
+    ap = argparse.ArgumentParser(description=(
+        "generates c++ code within the source tree. "
+        "designed to be used by [buildsystem/codegen.cmake]"),
+                                 epilog=(
+        "all file and directory names should be absolute; otherwise, "
+        "assumptions made by this script or the cmake script might not be"
+        "fulfilled"))
 
     ap.add_argument("--target-cache", required=True,
-                    help="""filename for target cache. a list of all \
-generated sources will be written there for every invocation. if the list \
-changes, --touch-file-on-cache-change and --force-rerun-on-targetcache-change \
-will trigger cmake re-runs""")
+                    help=("filename for target cache. a list of all generated "
+                         "sources is written there for every invocation. if "
+                         "the list changes, --touch-file-on-cache-change and "
+                         "--force-rerun-on-targetcache-change trigger cmake "
+                         "re-runs"))
     ap.add_argument("--depend-cache", required=True,
-                    help="""filename for dependency cache. a list of all \
-python files and other resources that were used during source generation. if \
-the list changes, --touch-file-on-cache-change will trigger cmake re-runs""")
+                    help=("filename for dependency cache. a list of all "
+                          "python files and other resources that were used "
+                          "during source generation. if the list changes, "
+                          "--touch-file-on-cache-change will trigger cmake "
+                          "re-runs"))
     ap.add_argument("--cpp-src-dir", required=True,
-                    help="""c++ source directory; used to determine generated \
-file names""")
+                    help=("c++ source directory; used to determine generated "
+                          "file names"))
     ap.add_argument("--write-to-sourcedir", action='store_true',
-                    help="""causes the sources to be actually written to \
-cpp-src-dir. otherwise, a dry run is performed. even during a dry run, \
-all code generation is performed in order to create/update the target and \
-dependency caches""")
+                    help=("causes the sources to be actually written to "
+                          "cpp-src-dir. otherwise, a dry run is performed. "
+                          "even during a dry run, all code generation is "
+                          "performed in order to determine generation targets "
+                          "and dependencies."))
+    ap.add_argument("--clean", action='store_true',
+                    help=("all generated files are deleted from the source "
+                          "directory"))
     ap.add_argument("--touch-file-on-cache-change",
-                    help="""the file passed here will be touched if \
-one of the caches changes. designed for use with a CMakeLists.txt file, \
-to trigger cmake re-runs""")
+                    help=("the file passed here will be touched if one of the"
+                          "caches changes. designed for use with a "
+                          "CMakeLists.txt file, to trigger cmake re-runs"))
     ap.add_argument("--force-rerun-on-targetcache-change", action='store_true',
-                    help="""a bit more drastic than \
---touch-file-on-cache-change, this causes codegen to abort with an error \
-message if the target cache has changed""")
+                    help=("a bit more drastic than --touch-file-on-change, "
+                          "this causes codegen to abort with an error message "
+                          "if the target cache has changed."))
 
     ap.add_argument("--verbose", "-v", action='count', default=0)
 
@@ -182,6 +193,13 @@ A build update has been triggered; you need to build again.
 \n\n\n""")
         # fail
         exit(1)
+
+    # clean sourcedir
+    if args.clean:
+        for absfilename, (filename, content) in generated_files.items():
+            if os.path.isfile(absfilename):
+                dbg("cleaning file: %s" % filename, 0)
+                os.unlink(absfilename)
 
     # write generated files to sourcedir
     if args.write_to_sourcedir:

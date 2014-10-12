@@ -63,6 +63,11 @@ codegen: $(BUILDDIR)
 doc: $(BUILDDIR)
 	@make -C $(BUILDDIR) doc
 
+.PHONY: cleancodegen
+cleancodegen: $(BUILDDIR)
+	# removes all generated sourcefiles
+	@make -C $(BUILDDIR) cleancodegen
+
 .PHONY: clean
 clean: $(BUILDDIR)
 	# removes all objects and binaries

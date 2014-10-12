@@ -32,6 +32,7 @@ function(codegen_init)
 	endforeach()
 
 	add_custom_target(codegen ALL DEPENDS ${CODEGEN_TARGET_FILES})
+	add_custom_target(cleancodegen COMMAND ${CODEGEN_INVOCATION} --clean)
 
 	set(CODEGEN_TARGET_TUS ${CODEGEN_TARGET_TUS} PARENT_SCOPE)
 endfunction()
