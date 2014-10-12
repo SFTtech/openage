@@ -21,11 +21,9 @@ function(add_c_test binary_name name description functionname interactive)
 	set_property(GLOBAL PROPERTY SFT_TESTS_FUNCTION_${name} ${functionname})
 	set_property(GLOBAL PROPERTY SFT_TESTS_INTERACTIVE_${name} ${interactive})
 
-	get_property(binary_path GLOBAL PROPERTY SFT_BINARY_PATH_${binary_name})
-
 	if(NOT ${interactive})
 		add_test(NAME ${name}
-			COMMAND ${binary_path} --test ${name}
+			COMMAND ${binary_name} --test ${name}
 		)
 	endif()
 endfunction()
