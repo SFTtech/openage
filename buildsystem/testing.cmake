@@ -87,7 +87,7 @@ endfunction()
 function(register_tests_py)
 	get_property(test_names GLOBAL PROPERTY SFT_TESTS_PY)
 
-	set(testsfile "${CMAKE_BINARY_DIR}/tests_python")
+	set(testsfile "${ASSET_DIR}/tests_python")
 	file(WRITE ${testsfile} "")
 
 	foreach(test ${test_names})
