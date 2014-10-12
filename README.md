@@ -24,12 +24,12 @@ Technology     | Component
 
 Our goals *include*:
 
-* A fully authentic gameplay feeling
+* Fully authentic look and feel
   * This can only be approximated, since the behaviour of the original game is mostly undocumented,
     and guessing/experimenting can only get you this close
   * We will not implement useless artificial limitations (max 30 selectable units...))
 * Multiplayer (obviously)
-* [Improvements](doc/ideas/improvements.md) over the original game
+* Optionally, [Improvements](doc/ideas/improvements.md) over the original game
 * AI
 * Re-creating free game assets
 * An easily-moddable content format
