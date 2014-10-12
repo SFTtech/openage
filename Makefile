@@ -52,7 +52,7 @@ rungdb: openage
 	gdb --args $(binary) $(runargs)
 
 .PHONY: test
-test: $(BUILDDIR)
+test: $(binary)
 	@make -C $(BUILDDIR) test
 
 .PHONY: codegen
