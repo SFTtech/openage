@@ -91,7 +91,7 @@ cleanbin: cleaninsourcebuild
 	@echo cleaning build directories
 	rm -rf .bin
 	@echo cleaning cmake-time generated files
-	rm -f Doxyfile
+	rm -f Doxyfile py/openage/config.py
 
 .PHONY: mrproper
 mrproper: cleanbin
