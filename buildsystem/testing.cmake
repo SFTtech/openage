@@ -5,7 +5,7 @@
 
 
 # enable testing
-function(setup_testing)
+function(init_testing)
 	enable_testing()
 endfunction()
 
@@ -73,3 +73,5 @@ function(register_test_cases binary_name register_file_in register_file)
 	# add the configured file to the source list.
 	add_sources(${binary_name} ${CMAKE_CURRENT_BINARY_DIR}/${register_file})
 endfunction()
+
+init_testing()

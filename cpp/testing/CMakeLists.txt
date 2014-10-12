@@ -1,8 +1,5 @@
 # testing subsystem cmake file.
 
-# setup the testing subsystem
-setup_testing()
-
 # add source files to binary
 add_sources(${PROJECT_NAME}
 	datastructure.cpp
