@@ -109,15 +109,15 @@ help: $(BUILDDIR)/Makefile
 	@echo "medialist  -> list needed media files for current version"
 	@echo "doc        -> create documentation files"
 	@echo ""
-	@echo "clean      -> undo 'make'
-	@echo "cleanbin   -> undo 'make' and './configure'
-	@echo "mrproper   -> as above, but additionally delete converted assets
-	@echo "mrproperer -> this recipe is serious business. it will leave no witnesses.
+	@echo "clean      -> undo 'make'"
+	@echo "cleanbin   -> undo 'make' and './configure'"
+	@echo "mrproper   -> as above, but additionally delete converted assets"
+	@echo "mrproperer -> this recipe is serious business. it will leave no witnesses."
 	@echo ""
 	@echo "run        -> run openage"
 	@echo "runval     -> run openage in valgrind, analyzing for memleaks"
 	@echo "rungdb     -> run openage in gdb"
 	@echo ""
 	@echo ""
-	@echo "CMake help:
+	@echo "CMake help:"
 	@test -d $(BUILDDIR) && make -C $(BUILDDIR) help || echo "no builddir is configured"
