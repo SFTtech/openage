@@ -31,6 +31,24 @@ function(python_init)
 endfunction()
 
 
+function(get_py_module_name var path)
+	if(NOT IS_ABSOLUTE ${path})
+		set(path ${CMAKE_CURRENT_SOURCE_DIR}/${path})
+	endif()
+
+	file(RELATIVE_PATH relpath ${PYTHON_SOURCE_DIR} ${path})
+
+	string(REPLACE "/" "." name ${relpath})
+	set(${var} ${name} PARENT_SCOPE)
+endfunction()
+
+
+function(get_py_module_path var name)
+	string(REPLACE "." "/" relpath ${name})
+	set(${var} "${PYTHON_SOURCE_DIR}/${relpath}" PARENT_SCOPE)
+endfunction()
+
+
 function(add_py_package name)
 	# check whether the package has already been defined
 	get_property(package GLOBAL PROPERTY SFT_PY_PACKAGE_${name})
@@ -45,8 +63,8 @@ function(add_py_package name)
 	# find all sourcefiles for this package
 	# this list of sourcefiles is not used directly for building,
 	# just for determining whether a re-build is neccesary.
-	string(REPLACE "." "/" package_path ${name})
-	file(GLOB package_sources "${PYTHON_SOURCE_DIR}/${package_path}/*.py")
+	get_py_module_path(package_path ${name})
+	file(GLOB package_sources "${package_path}/*.py")
 	set_property(GLOBAL PROPERTY SFT_PY_PACKAGE_${name})
 	foreach(sourcefile ${package_sources})
 		print_filename(${sourcefile})
