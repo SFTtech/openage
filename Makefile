@@ -73,27 +73,35 @@ clean: $(BUILDDIR)
 	# removes all objects and binaries
 	@make -C $(BUILDDIR) clean
 
+.PHONY: cleaninsourcebuild
+cleaninsourcebuild:
+	@echo "cleaning remains of in-source builds"
+	rm -rf DartConfiguration.tcl codegen_depend_cache codegen_target_cache tests_cpp tests_python Doxyfile Testing py/setup.py
+	@find . -not -path "./.bin/*" -type f -name CTestTestfile.cmake              -print -delete
+	@find . -not -path "./.bin/*" -type f -name cmake_install.cmake              -print -delete
+	@find . -not -path "./.bin/*" -type f -name CMakeCache.txt                   -print -delete
+	@find . -not -path "./.bin/*" -type f -name Makefile -not -path "./Makefile" -print -delete
+	@find . -not -path "./.bin/*" -type d -name CMakeFiles                       -print -exec rm -r {} +
+
 .PHONY: cleanbin
-cleanbin:
+cleanbin: cleaninsourcebuild
 	@if test -d bin; then make -C bin clean || true; fi
-	@echo build directories
-	rm -rf .bin
-	@echo symlinks
+	@echo cleaning symlinks to build directories
 	rm -f openage bin
-	@echo cmake-time generated files
+	@echo cleaning build directories
+	rm -rf .bin
+	@echo cleaning cmake-time generated files
 	rm -f Doxyfile
-	@echo remains from accidential in-source builds
-	rm -rf CMakeCache.txt CMakeFiles cmake_install.cmake Testing
 
 .PHONY: mrproper
 mrproper: cleanbin
-	@echo converted assets
+	@echo cleaning converted assets
 	rm -rf $(DATADIR)/age
 
 .PHONY: mrproperer
 mrproperer: mrproper
-	@echo remove ANYTHING that is not tracked by git
 	@if ! test -d .git; then echo "mrproperer is only available for gitrepos."; false; fi
+	@echo removeing ANYTHING that is not checked into the git repo
 	git clean -x -d -f
 
 .PHONY: help
@@ -104,21 +112,22 @@ help: $(BUILDDIR)/Makefile
 	@echo ""
 	@echo "targets:"
 	@echo ""
-	@echo "openage      -> compile main binary"
-	@echo "codegen      -> generate cpp sources"
-	@echo "media        -> convert media files, usage: make media AGE2DIR=~/.wine/ms-games/age2"
-	@echo "medialist    -> list needed media files for current version"
-	@echo "doc          -> create documentation files"
+	@echo "openage            -> compile main binary"
+	@echo "codegen            -> generate cpp sources"
+	@echo "media              -> convert media files, usage: make media AGE2DIR=~/.wine/ms-games/age2"
+	@echo "medialist          -> list needed media files for current version"
+	@echo "doc                -> create documentation files"
 	@echo ""
-	@echo "cleancodegen -> undo 'make codegen'"
-	@echo "clean        -> undo 'make' (includes the above)"
-	@echo "cleanbin     -> undo 'make' and './configure'"
-	@echo "mrproper     -> as above, but additionally delete converted assets"
-	@echo "mrproperer   -> this recipe is serious business. it will leave no witnesses."
+	@echo "cleancodegen       -> undo 'make codegen'"
+	@echo "clean              -> undo 'make' (includes the above)"
+	@echo "cleaninsourcebuild -> "
+	@echo "cleanbin           -> undo 'make' and './configure'"
+	@echo "mrproper           -> as above, but additionally delete converted assets"
+	@echo "mrproperer         -> this recipe is serious business. it will leave no witnesses."
 	@echo ""
-	@echo "run          -> run openage"
-	@echo "runval       -> run openage in valgrind, analyzing for memleaks"
-	@echo "rungdb       -> run openage in gdb"
+	@echo "run                -> run openage"
+	@echo "runval             -> run openage in valgrind, analyzing for memleaks"
+	@echo "rungdb             -> run openage in gdb"
 	@echo ""
 	@echo ""
 	@echo "CMake help:"

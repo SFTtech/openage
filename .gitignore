@@ -21,12 +21,22 @@ __pycache__
 # build system
 /bin
 /.bin
+
+# CMake in-source builds
+/DartConfiguration.tcl
+/codegen_depend_cache
+/codegen_target_cache
+/tests_cpp
+/tests_python
+/Doxyfile
+/Testing
+/py/setup.py
 CTestTestfile.cmake
 CMakeFiles
 cmake_install.cmake
 CMakeCache.txt
-/Doxyfile
-/Testing
+Makefile
+!/Makefile
 
 # debugging
 callgrind.out.*
