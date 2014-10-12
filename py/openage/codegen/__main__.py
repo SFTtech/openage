@@ -144,8 +144,8 @@ def main():
     new_depend_cache = set()
     depend_cache_file = open(args.depend_cache, 'w')
     for depend in codegen.get_depends():
-        depend_cache_file.write("%s\n" % filename)
-        new_depend_cache.add(filename)
+        depend_cache_file.write("%s\n" % depend)
+        new_depend_cache.add(depend)
 
     # calculate targets
     new_target_cache = set()
