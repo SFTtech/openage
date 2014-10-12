@@ -1,3 +1,4 @@
 # ${AUTOGEN_WARNING}
 
 global_asset_dir = "${INSTALLED_GLOBAL_ASSET_DIR}"
+version = "${PROJECT_VERSION}"

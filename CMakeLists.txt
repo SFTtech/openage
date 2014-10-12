@@ -41,9 +41,6 @@ include("${BUILDSYSTEM_DIR}/doxygen.cmake")
 include("${BUILDSYSTEM_DIR}/assets.cmake")
 include("${BUILDSYSTEM_DIR}/version.cmake")
 
-# currently unused
-detect_version()
-
 # include source subdirectories
 doxygen_init(cpp/ py/)
 
