@@ -11,7 +11,7 @@ add_sources(${PROJECT_NAME}
 
 # register each available c++ test
 # name, description, function name, is_interactive
-add_c_test(
+add_test_cpp(
 	${PROJECT_NAME}
 	"term_0"
 	"prints a few test lines to a buffer, and draws it to stdout."
@@ -19,7 +19,7 @@ add_c_test(
 	"false"
 )
 
-add_c_test(
+add_test_cpp(
 	${PROJECT_NAME}
 	"term_1"
 	"opens an interactive terminal with the user's shell."
@@ -27,7 +27,7 @@ add_c_test(
 	"true"
 )
 
-add_c_test(
+add_test_cpp(
 	${PROJECT_NAME}
 	"datastructure_linked_list"
 	"test functionality of the circular linked list."
@@ -37,4 +37,4 @@ add_c_test(
 
 
 # then generate the test registration file
-register_test_cases(${PROJECT_NAME} register.cpp.in register.cpp)
+register_tests_cpp(${PROJECT_NAME} register.cpp.in register.cpp)
