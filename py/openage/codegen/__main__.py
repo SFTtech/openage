@@ -1,7 +1,6 @@
 from ..convert import datafile
 from ..convert.util import set_verbosity, dbg
 import argparse
-import sys
 import os
 
 def main():
@@ -133,15 +132,8 @@ message if the target cache has changed""")
     # calculate dependencies (all used python modules)
     new_depend_cache = set()
     depend_cache_file = open(args.depend_cache, 'w')
-    for m in sys.modules.values():
-        filename = getattr(m, '__file__', None)
-        if not filename:
-            continue
-
-        filename = os.path.abspath(filename)
-
-        depend_cache_file.write(filename)
-        depend_cache_file.write('\n')
+    for depend in codegen.get_depends():
+        depend_cache_file.write("%s\n" % filename)
         new_depend_cache.add(filename)
 
     # calculate targets
