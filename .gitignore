@@ -44,4 +44,4 @@ perf.data*
 .gdb_history
 
 # converted game assets
-data/age
+/userassets
