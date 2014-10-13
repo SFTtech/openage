@@ -1,7 +1,5 @@
 # type 'make help' for a list/explaination of recipes.
 
-# openage asset directory
-DATADIR=data
 # original asset directory
 AGE2DIR=
 
@@ -10,7 +8,7 @@ AGE2DIR=
 needed_media = graphics:*.* terrain:*.* sounds0:*.* sounds1:*.* gamedata0:*.* gamedata1:*.* gamedata2:*.* interface:*.*
 
 binary = ./openage
-runargs = --data=$(DATADIR)
+runargs = --data=assets
 BUILDDIR = bin
 
 .PHONY: all
@@ -33,7 +31,7 @@ install: $(BUILDDIR)
 .PHONY: media
 media: $(BUILDDIR)
 	@if test ! -d "$(AGE2DIR)"; then echo "you need to specify AGE2DIR (e.g. ~/.wine/drive_c/age)."; false; fi
-	buildsystem/runinenv PYTHONPATH=prependpath:py python3 -m openage.convert -v media -o "$(DATADIR)/age/" "$(AGE2DIR)" $(needed_media)
+	buildsystem/runinenv PYTHONPATH=prependpath:py python3 -m openage.convert -v media -o "userassets/" "$(AGE2DIR)" $(needed_media)
 
 .PHONY: medialist
 medialist:
@@ -96,7 +94,7 @@ cleanbin: cleaninsourcebuild
 .PHONY: mrproper
 mrproper: cleanbin
 	@echo cleaning converted assets
-	rm -rf $(DATADIR)/age
+	rm -rf userassets
 
 .PHONY: mrproperer
 mrproperer: mrproper
@@ -122,7 +120,7 @@ help: $(BUILDDIR)/Makefile
 	@echo "clean              -> undo 'make' (includes the above)"
 	@echo "cleaninsourcebuild -> "
 	@echo "cleanbin           -> undo 'make' and './configure'"
-	@echo "mrproper           -> as above, but additionally delete converted assets"
+	@echo "mrproper           -> as above, but additionally delete user assets"
 	@echo "mrproperer         -> this recipe is serious business. it will leave no witnesses."
 	@echo ""
 	@echo "run                -> run openage"
