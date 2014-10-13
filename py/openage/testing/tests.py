@@ -14,7 +14,7 @@ def test_run_test():
     tests testing.run_test
     """
     try:
-        testing.run_test('openage.testing.tests.fail')
+        testing.run_test("openage.testing.tests.fail")
     except CustomException as e:
         # tests.fail was designed to fail with precisely this exception.
         # everything is fine.
@@ -25,7 +25,7 @@ def test_run_test():
         raise Exception("expected test of tests.fail to raise an Exception")
 
     try:
-        testing.run_test('openage.testing.tests.succeed')
+        testing.run_test("openage.testing.tests.succeed")
     except:
         raise Exception("expected test of tests.succeed to succeed") from e
 

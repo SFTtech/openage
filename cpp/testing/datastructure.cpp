@@ -4,14 +4,13 @@
 
 using namespace openage;
 
-namespace testing {
 namespace tests {
 
-bool pairing_heap(int /*unused*/, char ** /*unused*/) {
-	return false;
+void pairing_heap() {
+	throw "test to be implemented";
 }
 
-bool doubly_linked_list(int /*unused*/, char ** /*unused*/) {
+void doubly_linked_list() {
 	datastructure::DoublyLinkedList<int> list;
 	int stage = 0;
 
@@ -54,12 +53,9 @@ bool doubly_linked_list(int /*unused*/, char ** /*unused*/) {
 
 	if (not (list.size() == 0)) { goto out; }
 
-	return true;
-
 out:
 	log::err("linked list test failed at stage %d", stage);
-	return false;
+	throw "linked lisst test failed";
 }
 
-} //namespace tests
-} //namespace testing
+} // namespace tests

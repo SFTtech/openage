@@ -2,6 +2,7 @@
 #define _ARGS_H_
 
 #include <vector>
+#include <string>
 
 namespace openage {
 
@@ -19,13 +20,10 @@ public:
 	char **argv;
 
 	const char *data_directory;
-	std::vector<test_invocation> test_invocations;
-	bool disable_interactive_tests;
+	std::vector<std::string> tests;
 	bool list_tests;
 	bool display_help;
 	bool error_occured;
-
-	void add_test_invocation(const char *arg);
 };
 
 Arguments parse_args(int argc, char **argv);

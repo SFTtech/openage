@@ -5,37 +5,26 @@
 
 #include <string>
 
-#include "../args.h"
-
 /**
- * testing stuff is stored in this namespace.
+ * Openage C++ test system
  */
 namespace testing {
 
-using test_function_t = bool (*)(int, char **);
+using test_function_t = void (*)();
 
 /**
- * registers a given test with a name.
- */
-void register_test(std::string name, std::string description, bool interactive, test_function_t fp);
-
-/**
- * list all registered tests.
+ * print a list of all tests, including their descriptions,
+ * which are loaded from the tests_cpp asset (TODO).
  */
 void list_tests();
 
 /**
- * run the tests matching the given name expression.
+ * runs the given test.
  *
- * throws an exception if no tests are completed.
- *
- * @param expr: test name in shell globbing syntax
- * @param no_interactive: don't run tests that are marked as interactive
- * @param argc: passed to all test functions
- * @param argv: passed to all test functions
- * @returns whether testing was successful
+ * @param name: test name
+ * @returns true if the test has not failed
  */
-bool run_tests(const char *expr, bool no_interactive, int argc, char **argv);
+bool run_test(std::string name);
 
 } //namespace testing
 

@@ -1,4 +1,13 @@
-function(codegen_init)
+function(codegen_run)
+	# this function must be called once all required assets have been created, but before the executable is finalized.
+
+	# make sure this function gets called only once
+	get_property(codegen_run GLOBAL PROPERTY SFT_CODEGEN_HAS_BEEN_RUN)
+	if(codegen_run)
+		message(FATAL_ERROR codegen has already been run)
+	endif()
+	set_property(GLOBAL PROPERTY SFT_CODEGEN_HAS_BEEN_RUN 1)
+
 	set(CODEGEN_INVOCATION ${PYTHON_INVOCATION} -m openage.codegen --target-cache=${CMAKE_BINARY_DIR}/codegen_target_cache --depend-cache=${CMAKE_BINARY_DIR}/codegen_depend_cache --cpp-src-dir=${CPP_SOURCE_DIR})
 
 	execute_process(COMMAND
@@ -8,7 +17,7 @@ function(codegen_init)
 	)
 
 	if(NOT ${COMMAND_RESULT} EQUAL 0)
-		message(FATAL_ERROR "failed to get codegen filelist via convert script invocation")
+		message(FATAL_ERROR "failed to get target list from convert script invocation")
 	endif()
 
 
@@ -36,5 +45,3 @@ function(codegen_init)
 
 	set(CODEGEN_TARGET_TUS ${CODEGEN_TARGET_TUS} PARENT_SCOPE)
 endfunction()
-
-codegen_init()

@@ -15,6 +15,9 @@ def generate_all_raw(cpp_src_dir):
     for filename, content in datafile.generate_gamedata_structs(cpp_src_dir):
         yield "gamedata/%s" % filename, content
 
+    from . import cpp_tests
+    yield cpp_tests.generate_testregistration(cpp_src_dir)
+
 
 def generate_all(cpp_src_dir):
     for filename, content in generate_all_raw(cpp_src_dir):
@@ -49,7 +52,11 @@ def generate_all(cpp_src_dir):
         yield absfilename, filename, content
 
 
-manual_depends = {}
+manual_depends = set()
+
+
+def add_manual_depend(path):
+    manual_depends.add(os.path.abspath(path))
 
 
 def get_depends():
@@ -65,4 +72,4 @@ def get_depends():
         yield os.path.abspath(filename)
 
     for manual_depend in manual_depends:
-        yield os.path.abspath(manual_depend)
+        yield manual_depend

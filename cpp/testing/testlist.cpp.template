@@ -1,0 +1,14 @@
+#include "testlist.h"
+
+#include "testing.h"
+
+// function prototypes in their proper namespaces
+TEST_PROTOTYPES
+
+namespace testing {
+
+std::map<std::string, test_function_t> tests = {
+	TEST_MAPPINGS
+};
+
+} // namespace testing

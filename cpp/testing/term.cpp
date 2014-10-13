@@ -11,14 +11,13 @@
 
 using namespace openage;
 
-namespace testing {
 namespace tests {
 
 int max(int a, int b) {
 	return (a > b) ? a : b;
 }
 
-bool term0(int /*unused*/, char ** /*unused*/) {
+void term0() {
 	console::Buf buf{{80, 25}, 1337, 80};
 
 	buf.write("Hello, brave new console world!\n\n\n\n");
@@ -31,10 +30,9 @@ bool term0(int /*unused*/, char ** /*unused*/) {
 	buf.scroll(100);
 	util::FD outfd;
 	console::draw::to_terminal(&buf, &outfd, true);
-	return true;
 }
 
-bool term1(int /*unused*/, char ** /*unused*/) {
+void term1() {
 	console::Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
 
@@ -47,7 +45,7 @@ bool term1(int /*unused*/, char ** /*unused*/) {
 	switch (forkpty(&amaster, nullptr, nullptr, &ws)) {
 	case -1:
 		log::err("fork() failed");
-		return false;
+		throw "fork() failed";
 	case 0: {
 		// we are the child, spawn a shell
 		const char *shell = getenv("SHELL");
@@ -56,8 +54,7 @@ bool term1(int /*unused*/, char ** /*unused*/) {
 		}
 		execl(shell, shell, nullptr);
 		log::err("execl(\"%s\", \"%s\", nullptr) failed", shell, shell);
-
-		return false;
+		throw "couldn't exec shell";
 	}
 	default:
 		//we are the parent
@@ -159,9 +156,6 @@ bool term1(int /*unused*/, char ** /*unused*/) {
 
 	// show cursor
 	termout.puts("\x1b[?25h");
-
-	return true;
 }
 
 } // namespace tests
-} // namespace testing

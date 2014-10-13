@@ -1,6 +1,6 @@
 from .. import assets
 
-testspec_asset = "tests_python"
+testspec_asset = "tests_py"
 
 
 def read_testspec():
@@ -14,7 +14,7 @@ def read_testspec():
                 continue
 
             try:
-                testname, description = test.split(':', maxsplit=1)
+                testname, description = test.split(' ', maxsplit=1)
             except ValueError as e:
                 raise Exception("testspec malformed: %s"
                                 % testspec_filename) from e
@@ -27,7 +27,7 @@ def read_testspec():
 def run_test(testname):
     module, name = testname.rsplit('.', maxsplit=1)
     namespace = {}
-    exec('from %s import %s' % (module, name), namespace)
+    exec("from %s import %s" % (module, name), namespace)
     function = eval(name, namespace)
 
     # try running the function

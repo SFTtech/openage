@@ -8,33 +8,7 @@ add_sources(${PROJECT_NAME}
 	engine_test.cpp
 )
 
-
 # register each available c++ test
-# name, description, function name, is_interactive
-add_test_cpp(
-	${PROJECT_NAME}
-	"term_0"
-	"prints a few test lines to a buffer, and draws it to stdout."
-	"term0"
-	"false"
-)
-
-add_test_cpp(
-	${PROJECT_NAME}
-	"term_1"
-	"opens an interactive terminal with the user's shell."
-	"term1"
-	"true"
-)
-
-add_test_cpp(
-	${PROJECT_NAME}
-	"datastructure_linked_list"
-	"test functionality of the circular linked list."
-	"doubly_linked_list"
-	"false"
-)
-
-
-# then generate the test registration file
-register_tests_cpp(${PROJECT_NAME} register.cpp.in register.cpp)
+add_test_cpp(tests::term0 "prints a few test lines to a buffer, and draws it to stdout")
+add_test_cpp(tests::term1 "opens an interactive terminal with the user's shell")
+add_test_cpp(tests::doubly_linked_list "test functionality of the circular linked list")

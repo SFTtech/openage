@@ -19,8 +19,7 @@ void print_usage() {
 		"   " PROJECT_NAME " [OPTION]\n"
 		"available options:\n"
 		"-h, --help                              display this help\n"
-		"-t, --test=PATTERN[,arg0[,arg1[...]]]   run the tests matching PATTERN\n"
-		"--no-interactive-tests                  run only automated tests\n"
+		"-t, --test=NAME                         run test NAME\n"
 		"--list-tests                            print a list of all available tests\n"
 		"--data=FOLDER                           specify the data folder\n"
 		"\n"
@@ -33,24 +32,12 @@ Arguments::Arguments()
 	:
 	argc(0),
 	data_directory("./"),
-	disable_interactive_tests(false),
 	list_tests(false),
 	display_help(false),
 	error_occured(false)
 {}
 
 Arguments::~Arguments() {}
-
-void Arguments::add_test_invocation(const char *arg) {
-	size_t len = strlen(arg);
-	char *argbuf = new char[len + 1];
-	memcpy(argbuf, arg, len + 1);
-
-	char **argv;
-	int argc = util::string_tokenize_dynamic(argbuf, ',', &argv);
-
-	this->test_invocations.push_back(test_invocation{argc, argv});
-}
 
 Arguments parse_args(int argc, char **argv) {
 	Arguments ret;
@@ -65,7 +52,6 @@ Arguments parse_args(int argc, char **argv) {
 			{"help",                 no_argument, 0, 'h'},
 			{"test",           required_argument, 0, 't'},
 			{"data",           required_argument, 0,  0 },
-			{"no-interactive-tests", no_argument, 0,  0 },
 			{"list-tests",           no_argument, 0,  0 },
 			{0,                                0, 0,  0 }
 		};
@@ -91,10 +77,7 @@ Arguments parse_args(int argc, char **argv) {
 				}
 			} else {
 				// without arg
-				if (0 == strcmp("no-interactive-tests", opt_name)) {
-					log::msg("disabling interactive tests");
-					ret.disable_interactive_tests = true;
-				} else if (0 == strcmp("list-tests", opt_name)) {
+				if (0 == strcmp("list-tests", opt_name)) {
 					ret.list_tests = true;
 				} else {
 					handled = false;
@@ -114,7 +97,7 @@ Arguments parse_args(int argc, char **argv) {
 			break;
 
 		case 't':
-			ret.add_test_invocation(optarg);
+			ret.tests.push_back(optarg);
 			break;
 
 		case '?':

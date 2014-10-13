@@ -36,7 +36,11 @@ add_subdirectory("shader")
 add_subdirectory("util")
 add_subdirectory("testing")
 
-# add generated files to executable
+# finalize testing
+finalize_tests(cpp)
+
+# run codegen, add files to executable
+codegen_run()
 add_sources(${PROJECT_NAME} GENERATED ${CODEGEN_TARGET_TUS})
 
 # after this point, no further sources can be added to the executable
