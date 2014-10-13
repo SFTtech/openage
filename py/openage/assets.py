@@ -23,7 +23,7 @@ if is_installed:
     global_asset_dir = config.global_asset_dir
     user_asset_dir = os.path.join(os.environ['HOME'], '.openage')
 else:
-    global_asset_dir = os.path.join(sourcedir_root, 'data')
+    global_asset_dir = os.path.join(sourcedir_root, 'assets')
     user_asset_dir = os.path.join(sourcedir_root, 'userassets')
 
 
