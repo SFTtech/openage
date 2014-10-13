@@ -1,0 +1,13 @@
+#ifndef _CONFIG_H_
+#define _CONFIG_H_
+
+namespace openage {
+namespace config {
+
+constexpr const char *global_asset_dir = "${INSTALLED_GLOBAL_ASSET_DIR}";
+constexpr const char *version = "${PROJECT_VERSION}";
+
+} // namespace config
+} // namespace openage
+
+#endif // _CONFIG_H_

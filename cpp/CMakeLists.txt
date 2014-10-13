@@ -5,7 +5,6 @@
 # add new sources here, dependencies for linking and including
 # are specified below the source file list.
 
-
 declare_executable(${PROJECT_NAME})
 
 add_sources(${PROJECT_NAME}

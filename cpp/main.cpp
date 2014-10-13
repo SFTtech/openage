@@ -9,6 +9,8 @@
 #include "testing/engine_test.h"
 #include "testing/testing.h"
 
+#include "config.h"
+
 
 using namespace openage;
 

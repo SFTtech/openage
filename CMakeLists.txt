@@ -20,7 +20,7 @@ Welcome to the SFT technologies computer-aided openage build system!
 You have chosen, or been chosen, to attempt the daring task of building openage.
 If you have installed all the dependencies that are conveniently listed in [building.md], this _might_ work!
 
-If it doesn't, try asking for help in #sfttech on freenode.net
+If it doesn't, consider reporting the issue/asking for help in #sfttech on freenode.net
 ")
 
 project(openage C CXX)
@@ -40,6 +40,10 @@ include("${BUILDSYSTEM_DIR}/testing.cmake")
 include("${BUILDSYSTEM_DIR}/doxygen.cmake")
 include("${BUILDSYSTEM_DIR}/assets.cmake")
 include("${BUILDSYSTEM_DIR}/version.cmake")
+
+# create python and cpp config files
+configure_file(cpp/config.h.in ${CMAKE_SOURCE_DIR}/cpp/config.h)
+configure_file(py/openage/config.py.in ${CMAKE_SOURCE_DIR}/py/openage/config.py)
 
 # include source subdirectories
 doxygen_init(cpp/ py/)
