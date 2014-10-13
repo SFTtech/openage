@@ -53,7 +53,7 @@ rungdb: openage
 
 .PHONY: test
 test: $(binary)
-	@make -C $(BUILDDIR) test
+	@CTEST_OUTPUT_ON_FAILURE=1 make -C $(BUILDDIR) test
 
 .PHONY: codegen
 codegen: $(BUILDDIR)
