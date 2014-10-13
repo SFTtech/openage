@@ -1,6 +1,8 @@
 import argparse
 import sys
 
+from . import testing
+
 
 def main():
     ap = argparse.ArgumentParser(description=(
@@ -24,7 +26,7 @@ def main():
         ap.error("--all-tests and --test are conflicting")
 
     if args.all_tests or args.list_tests:
-            tests = read_testspec()
+            tests = testing.read_testspec()
 
     if args.list_tests:
         maxtestnamelen = max(len(testname) for testname in tests)
@@ -33,10 +35,11 @@ def main():
 
     if args.all_tests:
         for test in tests:
-            run_test(test)
+            testing.run_test(test)
 
-    for test in args.test:
-        run_test(test)
+    if args.test:
+        for test in args.test:
+            testing.run_test(test)
 
 
 if __name__ == '__main__':

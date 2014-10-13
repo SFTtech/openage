@@ -14,7 +14,7 @@ function(add_test_cpp binary_name name description functionname interactive)
 	get_property(tests GLOBAL PROPERTY SFT_TESTS_CPP)
 	list_contains(contained ${name} tests)
 	if(contained)
-		message(FATAL_ERROR "The test ${name} was already defined!")
+		message(FATAL_ERROR "The C++ test ${name} has already been defined!")
 	endif()
 
 	set_property(GLOBAL APPEND PROPERTY SFT_TESTS_CPP ${name})
@@ -23,9 +23,7 @@ function(add_test_cpp binary_name name description functionname interactive)
 	set_property(GLOBAL PROPERTY SFT_TESTS_CPP_INTERACTIVE_${name} ${interactive})
 
 	if(NOT ${interactive})
-		add_test(NAME ${name}
-			COMMAND ${binary_name} --test ${name}
-		)
+		add_test(NAME "cpp:${name}" COMMAND ${binary_name} --test ${name})
 	endif()
 endfunction()
 
@@ -39,8 +37,16 @@ endfunction()
 function(add_test_py name description)
 	get_py_module_name(name ${name})
 
+	get_property(tests GLOBAL PROPERTY SFT_TESTS_PY)
+	list_contains(contained ${name} tests)
+	if(contained)
+		message(FATAL_ERROR "The Python test ${name} has already been defined!")
+	endif()
+
 	set_property(GLOBAL APPEND PROPERTY SFT_TESTS_PY ${name})
 	set_property(GLOBAL APPEND PROPERTY SFT_TESTS_PY_DESCRIPTION_${name} ${description})
+
+	add_test(NAME "py:${name}" COMMAND ${PYTHON_INVOCATION} -m openage.testing --test ${name})
 endfunction()
 
 # add the gathered information to the given template file for
@@ -48,7 +54,7 @@ endfunction()
 function(register_tests_cpp binary_name register_file_in register_file)
 	set(REGISTER_TESTS "// register all defined C++ tests\n")
 
-	message("tests for ${binary_name} (${register_file})")
+	message("C++ tests (${binary_name}, ${register_file})")
 
 	get_property(test_names GLOBAL PROPERTY SFT_TESTS_CPP)
 	foreach(test ${test_names})
@@ -90,11 +96,18 @@ function(register_tests_py)
 	set(testsfile "${GLOBAL_ASSET_DIR}/tests_python")
 	file(WRITE ${testsfile} "")
 
+	message("Python tests")
+
 	foreach(test ${test_names})
 		get_property(description GLOBAL PROPERTY SFT_TESTS_PY_DESCRIPTION_${test})
 
+		message("\t${test}: ${description}")
+
 		file(APPEND ${testsfile} "${test}:${description}\n")
 	endforeach()
+
+	message("")
+
 endfunction()
 
 init_testing()

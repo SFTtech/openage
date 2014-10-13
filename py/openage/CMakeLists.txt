@@ -4,3 +4,4 @@ add_py_package(openage)
 add_py_package(openage.testing)
 
 add_subdirectory("convert")
+add_subdirectory("testing")

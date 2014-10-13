@@ -2,6 +2,7 @@ from .. import assets
 
 testspec_asset = "tests_python"
 
+
 def read_testspec():
     tests = {}
 
@@ -20,13 +21,14 @@ def read_testspec():
 
             tests[testname] = description
 
+    return tests
 
-def run_test(functionname):
-    module, name = functionname.rsplit('.', maxsplit=1)
+
+def run_test(testname):
+    module, name = testname.rsplit('.', maxsplit=1)
     namespace = {}
     exec('from %s import %s' % (module, name), namespace)
     function = eval(name, namespace)
 
-    result = function()
-    if not result:
-        raise Exception("test %s returned %s" % (testname, result))
+    # try running the function
+    function()
