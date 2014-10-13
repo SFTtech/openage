@@ -1,5 +1,5 @@
 function(init_assets)
-	set(GLOBAL_ASSET_DIR ${CMAKE_SOURCE_DIR}/data)
+	set(GLOBAL_ASSET_DIR ${CMAKE_SOURCE_DIR}/assets)
 	set(INSTALLED_GLOBAL_ASSET_DIR ${CMAKE_INSTALL_PREFIX}/share/openage)
 
 	install(DIRECTORY ${GLOBAL_ASSET_DIR}/
