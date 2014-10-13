@@ -1,4 +1,3 @@
-from ..convert import datafile
 from ..convert.util import set_verbosity, dbg
 import argparse
 import os
