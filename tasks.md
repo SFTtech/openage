@@ -56,7 +56,7 @@ that).
 * if we have an official interface, we can better say hi to our friends!
 * no, not really, we actually should encrypt the game conversations
 
-### free (as in freedom) media data
+### free (as in freedom) assets
 * we are depending on the proprietary original media files at the moment
 * if you are a creative person, fire up your graphics software ([GIMP?](http://gimp.org/))
   and create replacement graphics
@@ -66,7 +66,7 @@ that).
 * this means even drawing one building will help
 * `png` images or better `svg` vectorgraphics
 
-### inotify media monitoring
+### inotify asset monitoring
 * inotify is (if you don't know) a handy Linux kernel feature
   * monitors file modifications, creations, etc.
   * allows instaneous reaction to observed file updates without active polling
@@ -122,8 +122,8 @@ that).
 * this interface provides the AI all the knowlege needed for proper operation
 * exposes `C++` engine code to `Python`
 
-### data management frontend
-* (preferrably) a GUI program to edit game data
+### asset management frontend
+* (preferrably) a GUI program to edit game assets
   * unit creation cost
   * tech tree editing
   * graphics and sounds

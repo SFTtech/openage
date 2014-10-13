@@ -7,10 +7,11 @@ so it may also contain some crazy shit that will never end up being
 in the engine.
 
 
-inotify for game data files
----------------------------
+inotify for game assets
+-----------------------
 
-watch the game data folder and update changed files in-game instantly.
-e.g. when you change the a texture with GIMP and save it,
-the ingame models are instantly updated.
+watch the game asset folder and update changed assets in-game instantly.
+e.g. when you edit a texture file and save it, the in-game models are updated instantly.
 this allows awesome live-testing for modders.
+
+more challenging: when you update a unit stat in a text editor, it will update instantly in-game.

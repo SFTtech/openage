@@ -3,10 +3,10 @@
 modules.  `openage.convert` is used to generate parts of the C++
 binary code.
 
-To actually run *openage*, it needs media and data files which are not
-shipped with it, but instead extracted by `openage.convert` from an
-original installed version of *Microsoft Age of Empires 2* (Support
-for setup CDs is almost finished).
+To actually run *openage*, it needs original game assets that need to
+be extracted by the `openage.convert` python module from an
+*Microsoft Age of Empires 2* installation directory (Support for
+setup CDs is almost finished).
 
 We use the `cmake` system for all our building needs.  The `configure`
 script is a cmake wrapper that will create a build directory and
@@ -25,7 +25,7 @@ For more build system internals, see [doc/buildsystem](doc/buildsystem).
    openage executable
  - `make media AGE2DIR="~/.wine/drive_c/age2"` will convert all media
    files from the given age2 install folder, storing them in
-   `./data/age`
+   `./userassets`
  - `make run` or `bin/cpp/openage` will run the game. try
    `bin/cpp/openage --help`
  - `make tests` will run the unit tests
@@ -39,9 +39,8 @@ For more build system internals, see [doc/buildsystem](doc/buildsystem).
    etc.
  - after installing, the user will still need to run the convert
    script using `python3 -m openage.convert`, to store the convert
-   original datafiles to `~/.openage/data/age`. This does not work
-   yet, and the invocation will later be integrated into the main
-   binary.
+   original assets to `~/.openage`. This does not work yet, and the
+   convert invocation will later be integrated into the main binary.
 
 ### For packagers
 

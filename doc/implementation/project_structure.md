@@ -30,13 +30,23 @@ and design thoughts can be found in the [convert/README.md](convert/README.md)
 file.
 
 
-### data/ ###
+### assets/ ###
 
-Files required at run time are placed in here. This includes shaders and media
-files used when running the game.
+Game assets required at run time are placed in here.
+This includes shaders etc.
+The directory is installed to /usr/share/openage
+
+
+### userassets/ ###
+
+
+Dynamically created assets, such as original game files.
+This directory is empty after cleaning the repository and installing.
+It is located in ~/.userassets for an installed game.
 
 
 ### buildsystem/ ###
+
 
 Buildsystem components, namely `cmake` scripts and configuration templates,
 are placed in this folder. This includes scripts for test integration, python

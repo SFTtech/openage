@@ -8,9 +8,9 @@ in **Python** and contains **C++ extensions**.
 As we are using the media assets of the original game, the input format is
 preexisting and we have to deal with it.
 
-Unfortunately microsoft data formats are kind of interesting, so we need to
-transform the files to less interesting, but more usable formats. This is
-what the convert script does.
+Unfortunately the original asset binary formats are a bit "special",
+so we need to convert the files to a format that is less special, and more
+usable. This is what the convert script does.
 
 
 The convert script is divided into two parts:
@@ -104,18 +104,18 @@ def fix_data(data):
 ```
 
 
-Dynamic Input Data
-==================
+Dynamic Input Assets
+====================
 
 Multiple original game versions are compatible with the conversion script.
 To ensure correct conversion, game versions and patch levels have to be
 detected and conversion has to be customized for them.
 
-Upon first launch, the engine tries to load data packs.
-A data pack can be created from the existing age of empires installation,
-or from the installation CD image.
+Upon launch, the engine tries to load asset packs.
+An asset pack can be created from the existing age of empires installation,
+or from the installation CD image (or by a modder).
 
-The supported input data versions and their handling has to be hardcoded:
+The supported input data versions and their handling must be hardcoded:
 * Define version profiles in a config file
 * Specify archive names and where to find them
 * This enables using mods like "forgotten empires"
@@ -132,7 +132,7 @@ The supported input data versions and their handling has to be hardcoded:
   * If no "Data/empires2_x1_p1.dat" exists, the 1.0c patch is missing
   * => We can determine which version is available,
        by checking which dat files are here
-  * ==> We are compatible to age2:aok, age2:aoc, age2:aoc1.0c, age2:tfe
+  * ==> We are compatible to age2:aok, age2:aoc, age2:aoc1.0c, age2:fe
 
 Extraction depends on gamedata content:
 * Parse referenced/needed files from game data (empires2*.dat)
