@@ -86,3 +86,5 @@ result = subprocess.call(invocation, env=dict(env))
 
 if verbose and result > 0:
     msg("failure (exit code == %d)" % result, fail=result)
+
+exit(result)
