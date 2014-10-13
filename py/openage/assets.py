@@ -88,3 +88,8 @@ def get_writable_asset_file(asset):
         os.makedirs(dirname)
 
     return path
+
+
+def test():
+    if not os.path.isdir(global_asset_dir):
+        raise Exception("Asset directory not found: %s" % global_asset_dir)
