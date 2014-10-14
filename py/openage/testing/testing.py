@@ -5,6 +5,7 @@ testspec_asset = "tests_py"
 
 def read_testspec():
     tests = {}
+    demos = {}
 
     testspec_filename = assets.get_asset_file(testspec_asset)
     with open(testspec_filename) as testspec:
@@ -14,21 +15,44 @@ def read_testspec():
                 continue
 
             try:
-                testname, description = test.split(' ', maxsplit=1)
+                testname, testtype, description = test.split(' ', maxsplit=2)
             except ValueError as e:
                 raise Exception("testspec malformed: %s"
                                 % testspec_filename) from e
 
-            tests[testname] = description
+            if testtype == 'demo':
+                demos[testname] = description
+            elif testtype == 'test':
+                tests[testname] = description
+            else:
+                raise Exception("unknown test type: %s" % testtype)
 
-    return tests
+    return tests, demos
+
+
+def get_function(functionname):
+    module, name = functionname.rsplit('.', maxsplit=1)
+
+    namespace = {}
+    try:
+        exec("from %s import %s" % (module, name), namespace)
+    except Exception as e:
+        raise Exception("no such object: %s" % functionname) from e
+
+    function = namespace[name]
+
+    if not function:
+        raise Exception("function object invalid: %s" % functionname)
+    if not callable(function):
+        raise Exception("not a function: %s" % functionname)
+
+    return function
 
 
 def run_test(testname):
-    module, name = testname.rsplit('.', maxsplit=1)
-    namespace = {}
-    exec("from %s import %s" % (module, name), namespace)
-    function = eval(name, namespace)
-
     # try running the function
-    function()
+    get_function(testname)()
+
+def run_demo(demo):
+    # try running the demo
+    get_function(demo[0])(demo)

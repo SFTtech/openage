@@ -3,12 +3,16 @@
 #include "testing.h"
 
 // function prototypes in their proper namespaces
-TEST_PROTOTYPES
+FUNCTION_PROTOTYPES
 
 namespace testing {
 
 std::map<std::string, test_function_t> tests = {
 	TEST_MAPPINGS
+};
+
+std::map<std::string, demo_function_t> demos = {
+	DEMO_MAPPINGS
 };
 
 } // namespace testing

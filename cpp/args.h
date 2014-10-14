@@ -21,6 +21,11 @@ public:
 
 	const char *data_directory;
 	std::vector<std::string> tests;
+
+	std::string demo;
+	int demo_argc;
+	char **demo_argv;
+
 	bool list_tests;
 	bool display_help;
 	bool error_occured;

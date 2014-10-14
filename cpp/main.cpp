@@ -35,20 +35,25 @@ int main(int argc, char **argv) {
 		srand(time(NULL));
 
 		// shall we run a test?
-		if (args.tests.size() > 0) {
-			bool result = true;
-			for (auto &ti : args.tests) {
-				if (!testing::run_test(ti)) {
-					result = false;
-				}
-			}
-			return (result == false) ? 1 : 0;
-		}
-		else {
+		if (args.tests.empty() and args.demo.empty()) {
 			return testing::run_game(&args);
 		}
 
-		return 0;
+		bool result = true;
+		for (auto &ti : args.tests) {
+			if (!testing::run_test(ti)) {
+				result = false;
+			}
+		}
+
+		if (not args.demo.empty()) {
+			if (!testing::run_demo(args.demo, args.demo_argc, args.demo_argv)) {
+				result = false;
+			};
+		}
+
+		return (result == false) ? 1 : 0;
+
 	} catch (util::Error e) {
 		log::fatal("Exception: %s", e.str());
 		return 1;

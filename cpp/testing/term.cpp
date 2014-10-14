@@ -32,7 +32,7 @@ void term0() {
 	console::draw::to_terminal(&buf, &outfd, true);
 }
 
-void term1() {
+void term1(int /* unused */, char ** /* unused */) {
 	console::Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
 

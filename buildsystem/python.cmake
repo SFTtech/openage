@@ -1,5 +1,5 @@
 # checks python availability,
-# provides macros for defining python packages, python C++ extension modules,
+# provides macros for defining python packages, python cpp extension modules,
 # and a generator macro that must be called after including alle source dirs
 
 # for an example usage, see py/openage/convert/CMakeLists.txt
@@ -17,7 +17,7 @@ function(python_init)
 	set_property(GLOBAL PROPERTY "SFT_PY_EXT_MODULES")
 
 	# there will be more lists SFT_PY_PACKAGE_{packagename} and SFT_PY_EXT_MODULE_{extmodulename}
-	# that will contain the python source files for each package and C++ source files for each ext module.
+	# that will contain the python source files for each package and cpp source files for each ext module.
 	# all of those lists will be used to generate setup.py in the generator function TODO
 
 	set(PYTHON_SOURCE_DIR "${CMAKE_SOURCE_DIR}/py")
@@ -53,9 +53,9 @@ function(add_py_package name)
 	# check whether the package has already been defined
 	get_property(package GLOBAL PROPERTY SFT_PY_PACKAGE_${name})
 	if(${package})
-		message(FATAL_ERROR "Python package ${name} has already been defined!")
+		message(FATAL_ERROR "py package ${name} has already been defined!")
 	else()
-		message("Python package: ${name}")
+		message("py package: ${name}")
 	endif()
 
 	set_property(GLOBAL APPEND PROPERTY SFT_PY_PACKAGES ${name})
@@ -78,14 +78,14 @@ function(add_pyext_module name)
 	# check whether the module has already been defined
 	get_property(module GLOBAL PROPERTY SFT_PY_EXT_MODULE_${name})
 	if(${module})
-		message(FATAL_ERROR "Python C++ extension module ${name} has already been defined!")
+		message(FATAL_ERROR "py cpp extension module ${name} has already been defined!")
 	else()
-		message("Python C++ extension module: ${name}")
+		message("py cpp extension module: ${name}")
 	endif()
 
 	set_property(GLOBAL APPEND PROPERTY SFT_PY_EXT_MODULES ${name})
 
-	# process the user-supplied list of C++ source files
+	# process the user-supplied list of cpp source files
 	set_property(GLOBAL PROPERTY SFT_PY_EXT_MODULE_${name})
 	foreach(sourcefile ${ARGN})
 		set(sourcefile "${CMAKE_CURRENT_SOURCE_DIR}/${sourcefile}")

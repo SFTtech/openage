@@ -10,5 +10,5 @@ add_sources(${PROJECT_NAME}
 
 # register each available c++ test
 add_test_cpp(tests::term0 "prints a few test lines to a buffer, and draws it to stdout")
-add_test_cpp(tests::term1 "opens an interactive terminal with the user's shell")
+add_demo_cpp(tests::term1 "showcases term as an interactive terminal on your current tty")
 add_test_cpp(tests::doubly_linked_list "test functionality of the circular linked list")

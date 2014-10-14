@@ -20,6 +20,7 @@ void print_usage() {
 		"available options:\n"
 		"-h, --help                              display this help\n"
 		"-t, --test=NAME                         run test NAME\n"
+		"-d, --demo=NAME [arg [arg [...]]]       run demo NAME\n"
 		"--list-tests                            print a list of all available tests\n"
 		"--data=FOLDER                           specify the data folder\n"
 		"\n"
@@ -46,11 +47,13 @@ Arguments parse_args(int argc, char **argv) {
 	ret.argc = argc;
 	ret.argv = argv;
 
-	while (true) {
+	bool aborted = false;
+	while (not aborted) {
 		int option_index = 0;
 		static struct option long_options[] = {
 			{"help",                 no_argument, 0, 'h'},
 			{"test",           required_argument, 0, 't'},
+			{"demo",           required_argument, 0, 'd'},
 			{"data",           required_argument, 0,  0 },
 			{"list-tests",           no_argument, 0,  0 },
 			{0,                                0, 0,  0 }
@@ -100,6 +103,17 @@ Arguments parse_args(int argc, char **argv) {
 			ret.tests.push_back(optarg);
 			break;
 
+		case 'd':
+			if (ret.demo.empty()) {
+				ret.demo = optarg;
+				ret.demo_argc = argc - option_index;
+				ret.demo_argv = &argv[option_index];
+				aborted = true;
+			} else {
+				throw util::Error("--demo may be used only once");
+			}
+			break;
+
 		case '?':
 			print_usage();
 			ret.error_occured = true;
@@ -113,7 +127,7 @@ Arguments parse_args(int argc, char **argv) {
 		}
 	}
 
-	if (optind < ret.argc) {
+	if (optind < ret.argc and not aborted) {
 		//more arguments than processed options
 		ret.error_occured = true;
 		throw util::Error("%d unknown additional arguments, starting with %s",

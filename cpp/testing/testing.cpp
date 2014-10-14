@@ -22,9 +22,24 @@ bool run_test(std::string name) {
 	try {
 		test->second();
 		return true;
-	}
-	catch(... /* gotta catch em all TODO change when new exception system is finished */) {
+	} catch(... /* gotta catch em all TODO change when new exception system is finished */) {
 		log::err("test failed: %s", name.c_str());
+		return false;
+	}
+}
+
+bool run_demo(std::string name, int argc, char **argv) {
+	auto demo = demos.find(name);
+	if (demo == demos.end()) {
+		log::err("no such demo: %s", name.c_str());
+		return false;
+	}
+
+	try {
+		demo->second(argc, argv);
+		return true;
+	} catch (... /* gotta catch em all */) {
+		log::err("demo failed: %s", name.c_str());
 		return false;
 	}
 }
@@ -32,12 +47,19 @@ bool run_test(std::string name) {
 void list_tests() {
 	if (tests.empty()) {
 		printf("no tests are available\n");
-		return;
+	} else {
+		for (auto &test : tests) {
+			// TODO load description from tests_cpp asset
+			printf("[test] %s: %s\n", test.first.c_str(), "(no description loaded)");
+		}
 	}
 
-	for (auto &test : tests) {
-		// TODO load description from tests_cpp asset
-		printf("%s: %s\n", test.first.c_str(), "(no description loaded)");
+	if (demos.empty()) {
+		printf("no demos are available\n");
+	} else {
+		for (auto &demo : demos) {
+			printf("[demo] %s: %s\n", demo.first.c_str(), "(no description loaded)");
+		}
 	}
 }
 

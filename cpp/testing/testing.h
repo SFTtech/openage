@@ -11,9 +11,10 @@
 namespace testing {
 
 using test_function_t = void (*)();
+using demo_function_t = void (*)(int, char **);
 
 /**
- * print a list of all tests, including their descriptions,
+ * lists all tests and demos, including their descriptions,
  * which are loaded from the tests_cpp asset (TODO).
  */
 void list_tests();
@@ -22,9 +23,17 @@ void list_tests();
  * runs the given test.
  *
  * @param name: test name
- * @returns true if the test has not failed
+ * @returns false if the test didn't exist or has failed
  */
 bool run_test(std::string name);
+
+/**
+ * runs the given demo.
+ *
+ * @param name: demo name
+ * @returns false if the demo didn't exist or has failed
+ */
+bool run_demo(std::string name, int argc, char **argv);
 
 } //namespace testing
 

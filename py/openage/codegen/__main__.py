@@ -2,6 +2,7 @@ from ..convert.util import set_verbosity, dbg
 import argparse
 import os
 
+
 def main():
     """
     this codegen script auto-generates sourcefiles in the cpp/ subtree,
@@ -46,20 +47,19 @@ def main():
 
     # parse arguments
 
-    ap = argparse.ArgumentParser(description=(
-        "generates c++ code within the source tree. "
-        "designed to be used by [buildsystem/codegen.cmake]"),
-                                 epilog=(
-        "all file and directory names should be absolute; otherwise, "
-        "assumptions made by this script or the cmake script might not be"
-        "fulfilled"))
+    ap = argparse.ArgumentParser(
+        description=("generates c++ code within the source tree. "
+                     "designed to be used by [buildsystem/codegen.cmake]"),
+        epilog=("all file and directory names should be absolute; otherwise, "
+                "assumptions made by this script or the cmake script might "
+                "not be fulfilled"))
 
     ap.add_argument("--target-cache", required=True,
                     help=("filename for target cache. a list of all generated "
-                         "sources is written there for every invocation. if "
-                         "the list changes, --touch-file-on-cache-change and "
-                         "--force-rerun-on-targetcache-change trigger cmake "
-                         "re-runs"))
+                          "sources is written there for every invocation. if "
+                          "the list changes, --touch-file-on-cache-change and "
+                          "--force-rerun-on-targetcache-change trigger cmake "
+                          "re-runs"))
     ap.add_argument("--depend-cache", required=True,
                     help=("filename for dependency cache. a list of all "
                           "python files and other resources that were used "
