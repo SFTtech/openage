@@ -6,7 +6,7 @@
 #include "args.h"
 #include "log.h"
 #include "util/error.h"
-#include "testing/engine_test.h"
+#include "game_main.h"
 #include "testing/testing.h"
 
 #include "config.h"
@@ -36,7 +36,7 @@ int main(int argc, char **argv) {
 
 		// shall we run a test?
 		if (args.tests.empty() and not args.demo_specified) {
-			return testing::run_game(&args);
+			return run_game(&args);
 		}
 
 		bool result = true;

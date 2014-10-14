@@ -5,7 +5,6 @@ add_sources(${PROJECT_NAME}
 	datastructure.cpp
 	testing.cpp
 	term.cpp
-	engine_test.cpp
 )
 
 # register each available c++ test

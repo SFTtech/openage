@@ -1,3 +1,5 @@
+#include "game_main.h"
+
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
@@ -5,24 +7,20 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "../args.h"
-#include "../audio/sound.h"
-#include "../callbacks.h"
-#include "../console/console.h"
-#include "../coord/vec2f.h"
-#include "../engine.h"
-#include "../gamedata/string_resource.gen.h"
-#include "../gamedata/gamedata.gen.h"
-#include "../log.h"
-#include "../terrain.h"
-#include "../util/strings.h"
-#include "../util/timer.h"
+#include "args.h"
+#include "audio/sound.h"
+#include "callbacks.h"
+#include "console/console.h"
+#include "coord/vec2f.h"
+#include "engine.h"
+#include "gamedata/string_resource.gen.h"
+#include "gamedata/gamedata.gen.h"
+#include "log.h"
+#include "terrain.h"
+#include "util/strings.h"
+#include "util/timer.h"
 
-#include "engine_test.h"
-
-namespace testing {
-
-using namespace openage;
+namespace openage {
 
 /*
   beware: this file is full of dirty hacks.
@@ -82,7 +80,7 @@ int run_game(Arguments *args) {
 
 	// init the test run
 	timer.start();
-	EngineTest test{&engine};
+	GameMain test{&engine};
 	log::msg("Loading time   [game]: %5.3f s", timer.getval() / 1000.f);
 
 	// run main loop
@@ -93,7 +91,7 @@ int run_game(Arguments *args) {
 	return 0;
 }
 
-EngineTest::EngineTest(Engine *engine)
+GameMain::GameMain(Engine *engine)
 	:
 	editor_current_terrain(0),
 	editor_current_building(0),
@@ -313,7 +311,7 @@ EngineTest::EngineTest(Engine *engine)
 	delete alphamask_frag;
 }
 
-EngineTest::~EngineTest() {
+GameMain::~GameMain() {
 	for (auto &obj : this->placed_buildings) {
 		delete obj;
 	}
@@ -334,7 +332,7 @@ EngineTest::~EngineTest() {
 }
 
 
-bool EngineTest::on_input(SDL_Event *e) {
+bool GameMain::on_input(SDL_Event *e) {
 	Engine &engine = Engine::get();
 
 	switch (e->type) {
@@ -505,7 +503,7 @@ bool EngineTest::on_input(SDL_Event *e) {
 	return true;
 }
 
-void EngineTest::move_camera() {
+void GameMain::move_camera() {
 	Engine &engine = Engine::get();
 	// read camera movement input keys, and move camera
 	// accordingly.
@@ -543,13 +541,13 @@ void EngineTest::move_camera() {
 }
 
 
-bool EngineTest::on_tick() {
+bool GameMain::on_tick() {
 	this->move_camera();
 
 	return true;
 }
 
-bool EngineTest::on_draw() {
+bool GameMain::on_draw() {
 	Engine &engine = Engine::get();
 
 	// draw gaben, our great and holy protector, bringer of the half-life 3.
@@ -561,7 +559,7 @@ bool EngineTest::on_draw() {
 	return true;
 }
 
-bool EngineTest::on_drawhud() {
+bool GameMain::on_drawhud() {
 	Engine &e = Engine::get();
 
 	// draw the currently selected editor texture tile

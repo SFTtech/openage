@@ -1,25 +1,25 @@
-#ifndef _OPENAGE_INIT_H_
-#define _OPENAGE_INIT_H_
+#ifndef _GAME_MAIN_H_
+#define _GAME_MAIN_H_
 
 #include <SDL2/SDL.h>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
-#include "../engine.h"
-#include "../coord/tile.h"
-#include "../handlers.h"
-#include "../terrain.h"
-#include "../terrain_object.h"
-#include "../gamedata/graphic.gen.h"
+#include "args.h"
+#include "engine.h"
+#include "coord/tile.h"
+#include "handlers.h"
+#include "terrain.h"
+#include "terrain_object.h"
+#include "gamedata/graphic.gen.h"
 
 
-namespace testing {
+namespace openage {
+
 
 /**
- * run the main testing routine for the game.
- *
- * this invokes the main game for now.
+ * runs the game.
  */
 int run_game(openage::Arguments *args);
 
@@ -48,14 +48,14 @@ public:
 	std::vector<int> sound_items;
 };
 
-class EngineTest :
+class GameMain :
 		openage::InputHandler,
 		openage::DrawHandler,
 		openage::HudHandler,
 		openage::TickHandler {
 public:
-	EngineTest(openage::Engine *engine);
-	~EngineTest();
+	GameMain(openage::Engine *engine);
+	~GameMain();
 
 	void move_camera();
 
@@ -93,10 +93,10 @@ public:
 	bool ctrl_active;
 	bool scrolling_active;
 
-	openage::Terrain *terrain;
-	openage::Texture *gaben;
+	Terrain *terrain;
+	Texture *gaben;
 };
 
-} //namespace testing
+} //namespace openage
 
-#endif //_OPENAGE_INIT_H_
+#endif //_GAME_MAIN_H_
