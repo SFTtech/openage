@@ -1,8 +1,4 @@
-Gameplay ideas
-==============
-
-This file contains ideas of how we could modify or enhance the original Age of Kings.
-There will always be a "vanilla mode", but you might find these ideas as awesome as we do.
+This file contains ideas to "enhance" the original Age of Kings gameplay. Don't worry, vanilla mode will always be available.
 
 Weather
 -------
@@ -17,7 +13,7 @@ Fire
 ----
 
 Buildings made out of wood and other flammable material can be lit.
-Fire departments in the city can extinguish those fires.
+Fire departments in the city can extinguish those fires (Stronghold anybody?).
 
 Day/night cycle
 ---------------
@@ -26,7 +22,7 @@ At night: View distance reduced, everything darker.
 Villagers need sleep, otherwise they die at work.
 
 
-3d terrain
+3D terrain
 ----------
 
 Villagers can dig down, can discover natural resources.
@@ -37,31 +33,59 @@ Dirt, stone, etc are new resources, can be placed elsewhere
 Infinite maps
 -------------
 
-Maps with infinite size! (Your architecture is the limit!)
+Maps with infinite size! (Your PC is the limit!)
+Spherical/Toroidal/Cylindrical surfaces would be possible, too
 
 
-(mmo)rpg games
---------------
+MMO games
+---------
 
-play on one single map with 9001 players
-you can imagine the lulz etc
+Play on one single map with 9001 players
+
+Massively slow down the game speed, and you get a "browser game"-like experience
 
 
-research
+Research
 --------
 
-if unit upgrades are researched, only newly built ones recieve the bonus.
-ones already built have to go back to the barrack and train again.
-(reminder: this is only an idea, that _might_ be available optionally)
+Only newly-built units receive the bonus when units are upgraded
+Already-built units need to be "overhauled" for a cost back at the barracks.
+(reminder: just an idea, there will be vanilla mode)
 
 
-zombie survival mode
+Zombie Survival Mode
 --------------------
 
-the map has a bunch of zombie spawners; after an initial build-up phase,
+The map has a bunch of zombie spawners; after an initial build-up phase,
 they start producing waves zombie hordes, fast zombies, tanks, petard zombies;
 the zombie AI tries to get to your villagers (magic pathfinding);
 killed units turn into zombies as well. spawners can be destroyed,
 but the closer or the more powerful you get, the more zombies will spawn.
 to win, survive for a specified period of time, build a wonder,
 or destroy the spawners (or something...)
+
+
+Better movement
+---------------
+
+ - Move groups as group, or each unit with its own movement speed
+ - Auto-resolution of blocking situations
+ - Individual path searching cost for tiles
+  - Allow user to mark parts of the map as more expensive
+  - Auto-set a higher path cost for tiles in the firing range of an enemy castle
+ - Allow setting any number of waypoints (basically an extension of the 'patrol' mechanic)
+
+
+Lobby settings
+--------------
+
+ - Most of the above should be available as lobby settings
+ - Boosts/handicaps such as resource multipliers for players
+ - Forced no-rush (timelimit or score limit until attacks are possible)
+
+
+For the lulz
+------------
+
+ - Big fat damage numbers!!!1
+ - Friendly-fire toggle!!111
