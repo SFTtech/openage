@@ -4,10 +4,7 @@
 add_sources(${PROJECT_NAME}
 	datastructure.cpp
 	testing.cpp
-	term.cpp
 )
 
 # register each available c++ test
-add_test_cpp(tests::term0 "prints a few test lines to a buffer, and draws it to stdout")
-add_demo_cpp(tests::term1 "showcases term as an interactive terminal on your current tty")
 add_test_cpp(tests::doubly_linked_list "test functionality of the circular linked list")

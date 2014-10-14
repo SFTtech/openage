@@ -9,15 +9,15 @@
 #include "../console/draw.h"
 #include "../log.h"
 
-using namespace openage;
-
+namespace openage {
+namespace console {
 namespace tests {
 
 int max(int a, int b) {
 	return (a > b) ? a : b;
 }
 
-void term0() {
+void render() {
 	console::Buf buf{{80, 25}, 1337, 80};
 
 	buf.write("Hello, brave new console world!\n\n\n\n");
@@ -32,7 +32,7 @@ void term0() {
 	console::draw::to_terminal(&buf, &outfd, true);
 }
 
-void term1(int /* unused */, char ** /* unused */) {
+void demo(int /* unused */, char ** /* unused */) {
 	console::Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
 
@@ -159,3 +159,5 @@ void term1(int /* unused */, char ** /* unused */) {
 }
 
 } // namespace tests
+} // namespace console
+} // namespace openage
