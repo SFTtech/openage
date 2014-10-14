@@ -170,7 +170,7 @@ else:
 
     if not csuite.lower() in csuites:
         ap.error("unknown compiler suite: %s. manually specify --c-compiler \
-and --cpp-compiler, or use one of [%s]" % csuite, ", ".join(csuites))
+and --cpp-compiler, or use one of [%s]" % (csuite, ", ".join(csuites)))
 
     cc, cxx = csuites[csuite.lower()][:2]
 
