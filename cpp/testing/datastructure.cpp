@@ -53,6 +53,8 @@ void doubly_linked_list() {
 
 	if (not (list.size() == 0)) { goto out; }
 
+	return;
+
 out:
 	log::err("linked list test failed at stage %d", stage);
 	throw "linked lisst test failed";
