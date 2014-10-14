@@ -2,8 +2,8 @@
 #include "../datastructure/doubly_linked_list.h"
 //#include "../datastructure/pairing_heap.h"
 
-using namespace openage;
-
+namespace openage {
+namespace datastructure {
 namespace tests {
 
 void pairing_heap() {
@@ -61,3 +61,5 @@ out:
 }
 
 } // namespace tests
+} // namespace datastructure
+} // namespace openage
