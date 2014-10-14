@@ -7,7 +7,7 @@ def read_testspec():
     tests = {}
     demos = {}
 
-    testspec_filename = assets.get_asset_file(testspec_asset)
+    testspec_filename = assets.get_file(testspec_asset)
     with open(testspec_filename) as testspec:
         for test in testspec.read().split('\n'):
             test = test.strip()

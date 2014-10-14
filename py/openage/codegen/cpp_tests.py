@@ -10,7 +10,7 @@ testspec_asset = "tests_cpp"
 def generate_testregistration(cpp_src_dir):
     generated_name = "testing/testlist.gen.cpp"
     template_name = os.path.join(cpp_src_dir, "testing/testlist.cpp.template")
-    testspec_filename = assets.get_asset_file(testspec_asset)
+    testspec_filename = assets.get_file(testspec_asset)
 
     codegen.add_manual_depend(template_name)
     codegen.add_manual_depend(testspec_filename)
