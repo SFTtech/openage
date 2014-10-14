@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 		srand(time(NULL));
 
 		// shall we run a test?
-		if (args.tests.empty() and args.demo.empty()) {
+		if (args.tests.empty() and not args.demo_specified) {
 			return testing::run_game(&args);
 		}
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 			}
 		}
 
-		if (not args.demo.empty()) {
+		if (args.demo_specified) {
 			if (!testing::run_demo(args.demo, args.demo_argc, args.demo_argv)) {
 				result = false;
 			};

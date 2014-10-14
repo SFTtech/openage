@@ -22,6 +22,7 @@ public:
 	const char *data_directory;
 	std::vector<std::string> tests;
 
+	bool demo_specified;
 	std::string demo;
 	int demo_argc;
 	char **demo_argv;

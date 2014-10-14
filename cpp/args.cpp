@@ -33,6 +33,7 @@ Arguments::Arguments()
 	:
 	argc(0),
 	data_directory("./"),
+	demo_specified(false),
 	list_tests(false),
 	display_help(false),
 	error_occured(false)
@@ -104,14 +105,15 @@ Arguments parse_args(int argc, char **argv) {
 			break;
 
 		case 'd':
-			if (ret.demo.empty()) {
-				ret.demo = optarg;
-				ret.demo_argc = argc - option_index;
-				ret.demo_argv = &argv[option_index];
-				aborted = true;
-			} else {
+			if (ret.demo_specified) {
 				throw util::Error("--demo may be used only once");
 			}
+
+			ret.demo_specified = true;
+			ret.demo = optarg;
+			ret.demo_argc = argc + 1 - optind;
+			ret.demo_argv = &argv[optind - 1];
+			aborted = true;
 			break;
 
 		case '?':
