@@ -1,51 +1,44 @@
 Milestones
 ==========
 
-Development plan:
+1. stuff
+2. magical stuff
+3. truly awesome stuff
+4. ask the community for more awesome stuff to do
+5. ask the community to do the awesome stuff for us
 
-0. do things
-1. do more (magic) things
-2. do absolutely awesome stuff
-3. ask the community for more awesome stuff to do
-4. ask the community to do the awesome stuff for us
+Ahem, nope, this is the real roadmap:
 
-Ahem, nope, this is the real plan:
-List of milestones for the prototype releases:
-
-step 0: decide on the technology we're using.
+ - 0: decide on the technology we're using.
    -> language, libraries, build system, coding standards, ...
    -> may be incomplete, will most definitely be changed later on anyway
-
-(fak u markdown for not supporting to start counting at 0.)
-
-1. applicatin runs, fullscreen, black, builds with build system (on GNU/Linux),
-   _no_ menu, it directly launches into the game
-2. render a single building (an university.),
-   reading it from the stock age2 media files
-3. render diamond-shaped map (monoterrain),
-   with any number of buildings (of any kind, in grid),
-   with mouse/keyboard scrolling
-4. render units on map (with animations)
-5. mouse selection and basic commands ("go here, delete")
-6. path finding and collision
-7. hud (lower control panel), could for example display unit name.
-   hud for buildings supports unit creation
-8. civ research state tracker, support for research in building hud
-9. villager building menu for creation of buildings (instant)
-10. realistic building creation (amount of work needed, building process)
-11. resource system (and upper hud bar, creating units/building consumes resources)
-12. resource gathering by villagers
-13. health points, ballistics, attacking.
-    units can be switched to different colors by short keys
-14. terrain altitudes (plus effects on ballistics),
-    working singleplayer without AI is done here. multiplayer stuff is the main focus now
-15. dedicated server (!!!!!!!!!!!!!!!!), map user actions to physics frame ids and sync them
-16. support for multiple players
-17. limitation of multiplayer players to one color
-   * actually this is a small step, but there will be bugs, loads of them.
-   * at this point, with a proper starting map (one villager per player on grasland),
-     battles can be fought.
-
+ - 1: applicatin runs, fullscreen, black, builds with build system (on GNU/Linux),
+      _no_ menu, it directly launches into the game
+ - 2: render a single building (an university.),
+      reading it from the stock age2 media files
+ - 3: render diamond-shaped map (monoterrain),
+      with any number of buildings (of any kind, in grid),
+      with mouse/keyboard scrolling
+ - 4: render units on map (with animations)
+ - 5: mouse selection and basic commands ("go here, delete")
+ - 6: path finding and collision
+ - 7: hud (lower control panel), could for example display unit name.
+      hud for buildings supports unit creation
+ - 8: civ research state tracker, support for research in building hud
+ - 9: villager building menu for creation of buildings (instant)
+ - 10: realistic building creation (amount of work needed, building process)
+ - 11: resource system (and upper hud bar, creating units/building consumes resources)
+ - 12: resource gathering by villagers
+ - 13: health points, ballistics, attacking.
+       units can be switched to different colors by short keys
+ - 14: terrain altitudes (plus effects on ballistics),
+       working singleplayer without AI is done here. multiplayer stuff is the main focus now
+ - 15: dedicated server (!!!!!!!!!!!!!!!!), map user actions to physics frame ids and sync them
+ - 16: support for multiple players
+ - 17: limitation of multiplayer players to one color
+       * actually this is a small step, but there will be bugs, loads of them.
+       * at this point, with a proper starting map (one villager per player on grasland),
+         battles can be fought.
 
 things to be done sometime:
 
@@ -59,12 +52,6 @@ things to be done sometime:
 * age2 map reader
   * scenario reader
   * maybe even the singleplayer campaigns
-
-ideas 4 teh lulz:
-
-* friendly fire enable button (lol)
-* >64 player matches
-  * more than 8 player base colors needed then
 
 things to keep in mind:
 
