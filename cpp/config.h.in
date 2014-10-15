@@ -4,8 +4,13 @@
 namespace openage {
 namespace config {
 
+// anonymous namespace to provide local linkage
+namespace {
+
 constexpr const char *global_asset_dir = "${INSTALLED_GLOBAL_ASSET_DIR}";
 constexpr const char *version = "${PROJECT_VERSION}";
+
+}
 
 } // namespace config
 } // namespace openage
