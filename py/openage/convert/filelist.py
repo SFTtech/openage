@@ -10,29 +10,37 @@ class SoundList(dataformat.Exportable):
     data_format = (
         (True, "category", dataformat.EnumMember(
             type_name="audio_category_t",
-            file_name="sound_file",
-            values =(
+            values=(
                 "GAME",
                 "INTERFACE",
                 "MUSIC",
                 "TAUNT",
-            )
+            ),
+            file_name="sound_file",
         )),
 
         (True, "sound_id", "int"),
         (True, "path",     "std::string"),
 
-        (True, "format", dataformat.EnumMember("audio_format_t", "sound_file", (
-            "OPUS",
-            "WAV",
-            "FLAC",
-            "MP3",
-        ))),
+        (True, "format", dataformat.EnumMember(
+            type_name="audio_format_t",
+            values=(
+                "OPUS",
+                "WAV",
+                "FLAC",
+                "MP3",
+            ),
+            file_name="sound_file",
+        )),
 
-        (True, "loader_policy", dataformat.EnumMember("audio_loader_policy_t", "sound_file", (
-            "IN_MEMORY",
-            "DYNAMIC",
-        ))),
+        (True, "loader_policy", dataformat.EnumMember(
+            type_name="audio_loader_policy_t",
+            values=(
+                "IN_MEMORY",
+                "DYNAMIC",
+            ),
+            file_name="sound_file",
+        )),
     )
 
     def __init__(self):
