@@ -487,13 +487,14 @@ class ContentSnippet:
     section_header   = util.NamedObject("header")
     section_body     = util.NamedObject("body")
 
-    def __init__(self, data, file_name, section, reprtxt=None):
+    def __init__(self, data, file_name, section, orderby=None, reprtxt=None):
         self.data      = data       #snippet content
         self.file_name = file_name  #snippet wants to be saved in this file
         self.typerefs  = set()      #these types are referenced
         self.typedefs  = set()      #these types are defined
         self.includes  = set()      #needed snippets, e.g. headers
-        self.section   = section
+        self.section   = section    #place the snippet in this file section
+        self.orderby   = orderby    #use this value for ordering snippets
         self.reprtxt   = reprtxt    #representation text
 
         self.required_snippets = set() #snippets to be positioned before this one
@@ -508,6 +509,7 @@ class ContentSnippet:
         return self.data
 
     def generate_content(self):
+        # no generation needed by default
         pass
 
     def add_required_snippets(self, snippet_list):
@@ -539,7 +541,9 @@ class ContentSnippet:
         ret = list()
 
         dbg(lazymsg=lambda: "required snippets for %s {" % (repr(self)), push=True, lvl=4)
-        for s in self.required_snippets:
+
+        # sort snippets deterministically by __lt__ function
+        for s in sorted(self.required_snippets):
             ret += s.get_required_snippets()
 
         dbg(pop=True, lvl=4)
@@ -549,6 +553,10 @@ class ContentSnippet:
         return ret
 
     def __hash__(self):
+        """
+        hash all relevant snippet properties
+        """
+
         return hash((
             self.data,
             self.file_name,
@@ -557,8 +565,28 @@ class ContentSnippet:
             frozenset(self.typerefs),
         ))
 
+    def __lt__(self, other):
+        """
+        comparison of two snippets for their ordering
+        """
+
+        if isinstance(other, type(self)) or isinstance(self, type(other)):
+            if not (other.orderby and self.orderby):
+                faild = self if other.orderby else other
+                raise Exception("%s doesn't have orderby member set" % (repr(faild)))
+            else:
+                ret = self.orderby < other.orderby
+                dbg(lazymsg=lambda: "%s < %s = %s" % (repr(self), repr(other), ret), lvl=4)
+                return ret
+        else:
+            raise TypeError("unorderable types: %s < %s" % (type(self), type(other)))
+
     def __eq__(self, other):
-        if not other or type(other) != type(self):
+        """
+        equality check for text snippets
+        """
+
+        if type(other) != type(self):
             return False
 
         return (
@@ -604,7 +632,7 @@ $members
 """)
 
     def __init__(self, file_name, struct_name, comment=None, parents=None):
-        super().__init__(None, file_name, ContentSnippet.section_body)
+        super().__init__(None, file_name, ContentSnippet.section_body, orderby=struct_name)
         self.data_ready = False
 
         self.struct_name = struct_name
@@ -652,6 +680,7 @@ $members
 
     def __hash__(self):
         return hash((
+            self.struct_name,
             frozenset(self.member_list),
             self.data,
             self.file_name,
@@ -661,11 +690,12 @@ $members
         ))
 
     def __eq__(self, other):
-        if not other or type(other) != type(self):
+        if type(other) != type(self):
             return False
 
         return (
-            self.file_name       == other.file_name
+            self.struct_name     == other.struct_name
+            and self.file_name   == other.file_name
             and self.data        == other.data
             and self.member_list == other.member_list
             and self.section     == other.section
@@ -697,7 +727,7 @@ class HeaderSnippet(ContentSnippet):
         else:
             data = "#include \"%s\"\n" % self.name
 
-        super().__init__(data, file_name, ContentSnippet.section_header)
+        super().__init__(data, file_name, ContentSnippet.section_header, orderby=header_name)
 
     def get_file_name(self):
         return self.name
@@ -968,7 +998,7 @@ namespace ${namespace} {
         #smaller prio means written earlier in the file.
         #also, find snippet dependencies
         dbg("assigning snippet priorities:", push="snippetprio", lvl=4)
-        for s in snippets_body:
+        for s in sorted(snippets_body):
             snippet_prio = len(s.typerefs) - len(s.typedefs)
             snippets_priorized.append((s, snippet_prio))
             dbg(lazymsg=lambda: "prio %3.d => %s" % (snippet_prio, repr(s)), lvl=4)
@@ -982,26 +1012,33 @@ namespace ${namespace} {
             raise Exception("missing types for %s:\n%s" % (repr(self), pprint.pformat(missing_types)))
 
         #sort snippets according to their priority determined above
-        snippets_priorized_sorted = (snippet for (snippet, _) in sorted(snippets_priorized, key=lambda s: s[1]))
+        snippets_priorized_sorted = sorted(snippets_priorized, key=lambda s: s[1])
 
         #create list of snippets to be put in the generated file.
-        snippets_body_ordered = list()
+        #[(snippet, prio)]
+        snippets_body_sorted = list()
+        snippets_body_set = set()
 
         #fetch list of all required snippets for all snippets to put in the file
-        for snippet in snippets_priorized_sorted:
+        for snippet, prio in snippets_priorized_sorted:
             snippet_candidates = snippet.get_required_snippets()
+
             dbg(lazymsg=lambda: "required dependency snippet candidates: %s" % (pprint.pformat(snippet_candidates)), lvl=3)
             for s in snippet_candidates:
-                if s.section == ContentSnippet.section_header and s not in snippets_header:
-                    dbg(lazymsg=lambda: " `-> ADD  header snippet %s" % (repr(s)), lvl=4)
-                    snippets_ordered.append(s)
+                if s.section == ContentSnippet.section_header:
+                    if s not in snippets_header:
+                        dbg(lazymsg=lambda: " `-> ADD  header snippet %s" % (repr(s)), lvl=4)
+                        snippets_header.add(s)
+                        continue
 
-                elif s.section == ContentSnippet.section_body and s not in snippets_body_ordered:
-                    snippets_body_ordered.append(s)
-                    dbg(lazymsg=lambda: " `-> ADD  body snippet %s" % (repr(s)), lvl=4)
+                elif s.section == ContentSnippet.section_body:
+                    if s not in snippets_body_set:
+                        snippets_body_sorted.append(s)
+                        snippets_body_set.add(s)
+                        dbg(lazymsg=lambda: " `-> ADD  body snippet %s" % (repr(s)), lvl=4)
+                        continue
 
-                else:
-                    dbg(lazymsg=lambda: " `-> SKIP snippet %s" % (repr(s)), lvl=4)
+                dbg(lazymsg=lambda: " `-> SKIP snippet %s" % (repr(s)), lvl=4)
 
 
         #these snippets will be written outside the namespace
@@ -1017,7 +1054,7 @@ namespace ${namespace} {
 
         #merge file contents
         header_data = "".join(header.get_data() for header in snippets_header_sorted)
-        file_data   = "\n".join(snippet.get_data() for snippet in snippets_body_ordered)
+        file_data   = "\n".join(snippet.get_data() for snippet in snippets_body_sorted)
 
         namespace    = self.namespace
         header_guard = "".join((namespace.upper(), "_", self.file_name.replace("/", "_").upper()))
@@ -1372,7 +1409,7 @@ class EnumMember(RefMember):
     this struct member/data column is a enum.
     """
 
-    def __init__(self, type_name, file_name=None, values=None):
+    def __init__(self, type_name, values, file_name=None):
         super().__init__(type_name, file_name)
         self.values    = values
         self.resolved  = True    #TODO, xrefs not supported yet.
@@ -1380,7 +1417,7 @@ class EnumMember(RefMember):
     def get_parsers(self, idx, member):
         enum_parse_else = ""
         enum_parser = list()
-        enum_parser.append("//parse enum %s" % (self.type_name))
+        enum_parser.append("// parse enum %s" % (self.type_name))
         for enum_value in self.values:
             enum_parser.extend([
                 "%sif (0 == strcmp(buf[%d], \"%s\")) {" % (enum_parse_else, idx, enum_value),
@@ -1440,6 +1477,7 @@ class EnumMember(RefMember):
                 "".join(txt),
                 snippet_file_name,
                 ContentSnippet.section_body,
+                orderby=self.type_name,
                 reprtxt="enum class %s" % self.type_name,
             )
             snippet.typedefs |= { self.type_name }
@@ -1458,7 +1496,11 @@ class EnumLookupMember(EnumMember):
     """
 
     def __init__(self, type_name, lookup_dict, raw_type, file_name=None):
-        super().__init__(type_name, file_name, values=lookup_dict.values())
+        super().__init__(
+            type_name,
+            [v for k,v in sorted(lookup_dict.items())],
+            file_name
+        )
         self.lookup_dict = lookup_dict
         self.raw_type = raw_type
 
@@ -1629,7 +1671,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         if format == "struct":
             snippet = StructSnippet(snippet_file_name, self.type_name)
 
-            for (entry_name, entry_type) in self.class_lookup.items():
+            for (entry_name, entry_type) in sorted(self.class_lookup.items()):
                 entry_type = entry_type.get_effective_type()
                 snippet.add_member(
                     "struct openage::util::subdata<%s> %s;" % (
@@ -1644,7 +1686,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
             snippet.add_members((
                 "%s;" % m.get_signature()
-                for m in DataFormatter.member_methods.values()
+                for _, m in sorted(DataFormatter.member_methods.items())
             ))
 
             return [ snippet ]
@@ -1672,7 +1714,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 "	//yes, the following code can be heavily optimized and converted to member methods..\n",
             ))
 
-            for (entry_name, entry_type) in self.class_lookup.items():
+            for (entry_name, entry_type) in sorted(self.class_lookup.items()):
                 #get the index_file data index of the current entry first
                 txt.extend((
                     "	idxtry = 0;\n",
@@ -1696,6 +1738,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 "".join(txt),
                 snippet_file_name,
                 ContentSnippet.section_body,
+                orderby=self.type_name,
                 reprtxt="multisubtype %s container fill function" % self.type_name,
             )
             snippet.typerefs |= self.get_contained_types() | {self.type_name, self.MultisubtypeBaseFile.name_struct }
@@ -1903,7 +1946,7 @@ class StructDefinition:
         snippet.includes |= determine_header("size_t")
 
         #add filling function prototypes
-        for m in genfile.member_methods.values():
+        for memname, m in sorted(genfile.member_methods.items()):
             snippet.add_member("%s;" % m.get_signature())
             snippet.includes |= m.get_headers()
 
@@ -2041,6 +2084,7 @@ class DataDefinition(StructDefinition):
             "".join(txt),
             snippet_file_name,
             ContentSnippet.section_body,
+            orderby=self.name_struct,
             reprtxt="csv for %s" % self.name_struct,
         )]
 
@@ -2083,8 +2127,9 @@ class ParserTemplate:
 
 
 class ParserMemberFunction:
-    def __init__(self, templates):
+    def __init__(self, templates, func_name):
         self.templates = templates  #!< dict: key=function_member_count (None=any), value=ParserTemplate
+        self.func_name = func_name
 
     def get_template(self, lookup):
         """
@@ -2102,11 +2147,14 @@ class ParserMemberFunction:
         data["parsers"]    = "\n".join(parser.get_code(1) for parser in parser_list)
         data["class_name"] = class_name
 
+        #lookup function for length of parser list.
+        #if the len is 0, this should provide the stub function.
         template = self.get_template(len(parser_list))
         snippet = ContentSnippet(
             template.get_text(class_name, data),
             file_name,
             ContentSnippet.section_body,
+            orderby="%s_%s" % (class_name, self.func_name),
             reprtxt=template.get_signature(class_name + "::"),
         )
 
@@ -2144,6 +2192,7 @@ class DataFormatter:
 
     member_methods = {
         "fill": ParserMemberFunction(
+            func_name = "fill",
             templates = {
                 0: ParserTemplate(
                     signature    = "int %sfill(char * /*by_line*/)",
@@ -2175,6 +2224,7 @@ $parsers
             }
         ),
         "recurse": ParserMemberFunction(
+            func_name = "recurse",
             templates = {
                 0: ParserTemplate(
                     signature    = "int %srecurse(openage::util::Dir /*basedir*/)",
@@ -2282,7 +2332,7 @@ $parsers
                 snippets.extend(new_snippets)
 
             #create snippets for the encountered type definitions
-            for type_name, type_definition in self.typedefs.items():
+            for type_name, type_definition in sorted(self.typedefs.items()):
                 dbg(lazymsg=lambda: "getting type definition snippets for %s<%s>.." % (type_name, type_definition), lvl=4)
                 type_snippets = type_definition.get_snippets(type_definition.file_name, format)
                 dbg(lazymsg=lambda: "`- got %d snippets" % (len(type_snippets)), lvl=4)
