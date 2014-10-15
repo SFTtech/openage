@@ -162,7 +162,12 @@ function(process_python_modules)
 			DEPENDS ${all_sourcefiles}
 			COMMENT "building python modules (via setup.py)")
 
-	add_custom_target(python_modules ALL DEPENDS ${PY_TIMEFILE})
+	add_custom_target(pymodules ALL DEPENDS ${PY_TIMEFILE})
+
+	add_custom_target(cleanpymodules
+		COMMAND ${SETUP_INVOCATION} clean --all
+		COMMAND ${CMAKE_COMMAND} -E remove ${PY_TIMEFILE}
+	)
 
 	# create call to setup.py when installing
 	# * set the install prefix at configure time

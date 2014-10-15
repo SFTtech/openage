@@ -58,19 +58,34 @@ test: $(binary)
 codegen: $(BUILDDIR)
 	@make $(MAKEARGS) -C $(BUILDDIR) codegen
 
+.PHONY: pymodules
+pymodules: $(BUILDDIR)
+	@make $(MAKEARGS) -C $(BUILDDIR) pymodules
+
 .PHONY: doc
 doc: $(BUILDDIR)
 	@make $(MAKEARGS) -C $(BUILDDIR) doc
+
+.PHONY: cleanelf
+cleanelf: $(BUILDDIR)
+	@# removes all object files and binaries
+	@make $(MAKEARGS) -C $(BUILDDIR) clean
 
 .PHONY: cleancodegen
 cleancodegen: $(BUILDDIR)
 	@# removes all generated sourcefiles
 	@make $(MAKEARGS) -C $(BUILDDIR) cleancodegen
 
+.PHONY: cleanpymodules
+cleanpymodules: $(BUILDDIR)
+	@# removes all built python modules (+ extension modules)
+	@make $(MAKEARGS) -C $(BUILDDIR) cleanpymodules
+	@# removes all in-place built extension modules
+	@find py -name "*.so" -type f -print -delete
+
 .PHONY: clean
-clean: $(BUILDDIR)
-	@# removes all objects and binaries
-	@make $(MAKEARGS) -C $(BUILDDIR) clean
+clean: $(BUILDDIR) cleancodegen cleanpymodules cleanopenage
+	@# removes object files, binaries, pymodules, generated code
 
 .PHONY: cleaninsourcebuild
 cleaninsourcebuild:
@@ -82,8 +97,8 @@ cleaninsourcebuild:
 	@find . -not -path "./.bin/*" -type f -name Makefile -not -path "./Makefile" -print -delete
 	@find . -not -path "./.bin/*" -type d -name CMakeFiles                       -print -exec rm -r {} +
 
-.PHONY: cleanbin
-cleanbin: cleaninsourcebuild
+.PHONY: cleanbuilddirs
+cleanbuilddirs: cleaninsourcebuild
 	@if test -d bin; then make $(MAKEARGS) -C bin clean || true; fi
 	@echo cleaning symlinks to build directories
 	rm -f openage bin
@@ -95,7 +110,7 @@ cleanbin: cleaninsourcebuild
 	rm -f assets/tests_py assets/tests_cpp
 
 .PHONY: mrproper
-mrproper: cleanbin
+mrproper: cleanbuilddirs
 	@echo cleaning converted assets
 	rm -rf userassets
 
@@ -119,10 +134,12 @@ help: $(BUILDDIR)/Makefile
 	@echo "medialist          -> list needed media files for current version"
 	@echo "doc                -> create documentation files"
 	@echo ""
+	@echo "cleanelf           -> remove C++ ELF files"
 	@echo "cleancodegen       -> undo 'make codegen'"
-	@echo "clean              -> undo 'make' (includes the above)"
-	@echo "cleaninsourcebuild -> "
-	@echo "cleanbin           -> undo 'make' and './configure'"
+	@echo "cleanpymodules     -> undo 'make pymodules'"
+	@echo "clean              -> undo 'make' (all of the above)"
+	@echo "cleanbuilddirs     -> undo 'make' and './configure'"
+	@echo "cleaninsourcebuild -> undo in-source build accidents"
 	@echo "mrproper           -> as above, but additionally delete user assets"
 	@echo "mrproperer         -> this recipe is serious business. it will leave no witnesses."
 	@echo ""
