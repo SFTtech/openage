@@ -25,12 +25,22 @@ function(codegen_run)
 	FILE(READ "${CMAKE_BINARY_DIR}/codegen_depend_cache" CODEGEN_DEPENDS)
 	STRING(REGEX REPLACE "\n" ";" CODEGEN_TARGET_FILES "${CODEGEN_TARGET_FILES}")
 	STRING(REGEX REPLACE "\n" ";" CODEGEN_DEPENDS "${CODEGEN_DEPENDS}")
+	set(CODEGEN_TIMEFILE "${CMAKE_BINARY_DIR}/codegen_timefile")
 
-	add_custom_command(OUTPUT ${CODEGEN_TARGET_FILES}
+	add_custom_command(
+		OUTPUT ${CODEGEN_TIMEFILE}
 		COMMAND ${CODEGEN_INVOCATION} --write-to-sourcedir --touch-file-on-cache-change=${CMAKE_CURRENT_LIST_FILE} --force-rerun-on-targetcache-change
+		COMMAND ${CMAKE_COMMAND} -E touch ${CODEGEN_TIMEFILE}
 		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 		DEPENDS ${CODEGEN_DEPENDS}
-		COMMENT running code generation
+		COMMENT "generating c++ code (via py/openage/codegen)"
+	)
+
+	add_custom_target(codegen DEPENDS ${CODEGEN_TIMEFILE})
+
+	add_custom_target(cleancodegen
+		COMMAND ${CODEGEN_INVOCATION} --clean
+		COMMAND ${CMAKE_COMMAND} -E remove ${CODEGEN_TIMEFILE}
 	)
 
 	set(CODEGEN_TARGET_TUS)
@@ -39,9 +49,6 @@ function(codegen_run)
 			list(APPEND CODEGEN_TARGET_TUS ${target})
 		endif()
 	endforeach()
-
-	add_custom_target(codegen ALL DEPENDS ${CODEGEN_TARGET_FILES})
-	add_custom_target(cleancodegen COMMAND ${CODEGEN_INVOCATION} --clean)
 
 	set(CODEGEN_TARGET_TUS ${CODEGEN_TARGET_TUS} PARENT_SCOPE)
 endfunction()

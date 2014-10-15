@@ -15,7 +15,21 @@ function(doxygen_init)
 		else()
 			message(WARNING "graphviz dot couldn't be found, you won't have cool graphs in the docs.")
 		endif()
+	endif()
 
+	# add doc target
+	add_custom_target(doc
+		${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
+		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+		COMMENT "generating docs (via Doxygen)"
+		VERBATIM
+	)
+
+	set(DOXYGEN_FOUND ${DOXYGEN_FOUND} PARENT_SCOPE)
+endfunction()
+
+function(doxygen_configure)
+	if(DOXYGEN_FOUND)
 		# create doc folder name list
 		foreach(folder ${ARGN})
 			set(DOXYGEN_SCAN_FOLDERS "${DOXYGEN_SCAN_FOLDERS} ${CMAKE_CURRENT_SOURCE_DIR}/${folder}")
@@ -23,14 +37,9 @@ function(doxygen_init)
 
 		# adapt doxygen config
 		configure_file(${BUILDSYSTEM_DIR}/templates/Doxyfile.in ${CMAKE_BINARY_DIR}/Doxyfile @ONLY)
-
-		# add doc target
-		add_custom_target(doc
-			${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
-			WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-			COMMENT "generating docs with Doxygen" VERBATIM
-		)
 	else()
 		message(WARNING "doxygen couldn't be found, you won't be able to generate docs")
 	endif()
 endfunction()
+
+doxygen_init()

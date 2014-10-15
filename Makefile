@@ -10,6 +10,7 @@ needed_media = graphics:*.* terrain:*.* sounds0:*.* sounds1:*.* gamedata0:*.* ga
 binary = ./openage
 runargs = --data=assets
 BUILDDIR = bin
+MAKEARGS = --no-print-directory
 
 .PHONY: all
 all: openage
@@ -22,11 +23,11 @@ $(BUILDDIR):
 
 .PHONY: openage
 openage: $(BUILDDIR)
-	@make --no-print-directory -C $(BUILDDIR)
+	@make $(MAKEARGS) -C $(BUILDDIR)
 
 .PHONY: install
 install: $(BUILDDIR)
-	@make --no-print-directory -C $(BUILDDIR) install
+	@make $(MAKEARGS) -C $(BUILDDIR) install
 
 .PHONY: media
 media: $(BUILDDIR)
@@ -51,25 +52,25 @@ rungdb: openage
 
 .PHONY: test
 test: $(binary)
-	@CTEST_OUTPUT_ON_FAILURE=1 make --no-print-directory -C $(BUILDDIR) test
+	@CTEST_OUTPUT_ON_FAILURE=1 make $(MAKEARGS) -C $(BUILDDIR) test
 
 .PHONY: codegen
 codegen: $(BUILDDIR)
-	@make --no-print-directory -C $(BUILDDIR) codegen
+	@make $(MAKEARGS) -C $(BUILDDIR) codegen
 
 .PHONY: doc
 doc: $(BUILDDIR)
-	@make --no-print-directory -C $(BUILDDIR) doc
+	@make $(MAKEARGS) -C $(BUILDDIR) doc
 
 .PHONY: cleancodegen
 cleancodegen: $(BUILDDIR)
 	@# removes all generated sourcefiles
-	@make --no-print-directory -C $(BUILDDIR) cleancodegen
+	@make $(MAKEARGS) -C $(BUILDDIR) cleancodegen
 
 .PHONY: clean
 clean: $(BUILDDIR)
 	@# removes all objects and binaries
-	@make --no-print-directory -C $(BUILDDIR) clean
+	@make $(MAKEARGS) -C $(BUILDDIR) clean
 
 .PHONY: cleaninsourcebuild
 cleaninsourcebuild:
@@ -83,7 +84,7 @@ cleaninsourcebuild:
 
 .PHONY: cleanbin
 cleanbin: cleaninsourcebuild
-	@if test -d bin; then make -C bin clean || true; fi
+	@if test -d bin; then make $(MAKEARGS) -C bin clean || true; fi
 	@echo cleaning symlinks to build directories
 	rm -f openage bin
 	@echo cleaning build directories
@@ -101,7 +102,7 @@ mrproper: cleanbin
 .PHONY: mrproperer
 mrproperer: mrproper
 	@if ! test -d .git; then echo "mrproperer is only available for gitrepos."; false; fi
-	@echo removeing ANYTHING that is not checked into the git repo
+	@echo removing ANYTHING that is not checked into the git repo
 	git clean -x -d -f
 
 .PHONY: help

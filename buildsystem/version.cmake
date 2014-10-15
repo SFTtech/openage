@@ -16,8 +16,6 @@ function(init_version)
 		message(FATAL_ERROR "failed to determine project version")
 	endif()
 
-	message("${PROJECT_NAME} ${version}\n")
-
 	set(PROJECT_VERSION ${version} PARENT_SCOPE)
 endfunction()
 

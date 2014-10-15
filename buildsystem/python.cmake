@@ -159,7 +159,9 @@ function(process_python_modules)
 			COMMAND ${SETUP_INVOCATION} build_ext --inplace
 			COMMAND ${SETUP_INVOCATION} build
 			COMMAND ${CMAKE_COMMAND} -E touch ${PY_TIMEFILE}
-			DEPENDS ${all_sourcefiles})
+			DEPENDS ${all_sourcefiles}
+			COMMENT "building python modules (via setup.py)")
+
 	add_custom_target(python_modules ALL DEPENDS ${PY_TIMEFILE})
 
 	# create call to setup.py when installing

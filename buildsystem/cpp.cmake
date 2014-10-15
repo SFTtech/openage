@@ -9,9 +9,6 @@ function(cpp_init)
 
 	set(CPP_SOURCE_DIR "${CMAKE_SOURCE_DIR}/cpp" PARENT_SCOPE)
 
-	message("compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
-	message("")
-
 	function(require_cxx_version CXXNAME MINIMAL)
 		if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MINIMAL})
 			message(FATAL_ERROR ">=${CXXNAME}-${MINIMAL} required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
