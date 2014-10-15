@@ -43,5 +43,3 @@ callgrind.out.*
 perf.data*
 .gdb_history
 
-# converted game assets
-/userassets
