@@ -22,11 +22,11 @@ $(BUILDDIR):
 
 .PHONY: openage
 openage: $(BUILDDIR)
-	@make -C $(BUILDDIR)
+	@make --no-print-directory -C $(BUILDDIR)
 
 .PHONY: install
 install: $(BUILDDIR)
-	@make -C $(BUILDDIR) install
+	@make --no-print-directory -C $(BUILDDIR) install
 
 .PHONY: media
 media: $(BUILDDIR)
@@ -51,25 +51,25 @@ rungdb: openage
 
 .PHONY: test
 test: $(binary)
-	@CTEST_OUTPUT_ON_FAILURE=1 make -C $(BUILDDIR) test
+	@CTEST_OUTPUT_ON_FAILURE=1 make --no-print-directory -C $(BUILDDIR) test
 
 .PHONY: codegen
 codegen: $(BUILDDIR)
-	@make -C $(BUILDDIR) codegen
+	@make --no-print-directory -C $(BUILDDIR) codegen
 
 .PHONY: doc
 doc: $(BUILDDIR)
-	@make -C $(BUILDDIR) doc
+	@make --no-print-directory -C $(BUILDDIR) doc
 
 .PHONY: cleancodegen
 cleancodegen: $(BUILDDIR)
-	# removes all generated sourcefiles
-	@make -C $(BUILDDIR) cleancodegen
+	@# removes all generated sourcefiles
+	@make --no-print-directory -C $(BUILDDIR) cleancodegen
 
 .PHONY: clean
 clean: $(BUILDDIR)
-	# removes all objects and binaries
-	@make -C $(BUILDDIR) clean
+	@# removes all objects and binaries
+	@make --no-print-directory -C $(BUILDDIR) clean
 
 .PHONY: cleaninsourcebuild
 cleaninsourcebuild:
