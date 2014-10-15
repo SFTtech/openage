@@ -32,7 +32,7 @@ install: $(BUILDDIR)
 .PHONY: media
 media: $(BUILDDIR)
 	@if test ! -d "$(AGE2DIR)"; then echo "you need to specify AGE2DIR (e.g. ~/.wine/drive_c/age)."; false; fi
-	buildsystem/runinenv PYTHONPATH=prependpath:py python3 -m openage.convert -v media -o "userassets/" "$(AGE2DIR)" $(needed_media)
+	buildsystem/runinenv PYTHONPATH=prependpath:py -- python3 -m openage.convert -v media -o "userassets/" "$(AGE2DIR)" $(needed_media)
 
 .PHONY: medialist
 medialist:
