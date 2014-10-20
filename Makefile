@@ -10,7 +10,8 @@ needed_media = graphics:*.* terrain:*.* sounds0:*.* sounds1:*.* gamedata0:*.* ga
 binary = ./openage
 runargs = --data=assets
 BUILDDIR = bin
-MAKEARGS = --no-print-directory
+
+MAKEARGS += $(if $(VERBOSE),,--no-print-directory)
 
 .PHONY: all
 all: openage
