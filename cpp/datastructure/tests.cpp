@@ -22,6 +22,7 @@ void pairing_heap() {
 
 	// 01234
 	if (not (heap.size() == 5)) { goto out; }
+	if (not (heap.top() == 0)) { goto out; }
 	stage += 1;
 
 	if (not (0 == heap.pop())) { goto out; }
@@ -42,8 +43,6 @@ void pairing_heap() {
 	if (not (0 == heap.pop())) { goto out; }
 	if (not (4 == heap.pop())) { goto out; }
 	if (not (10 == heap.pop())) { goto out; }
-	stage += 1;
-
 	if (not (heap.size() == 0)) { goto out; }
 	stage += 1;
 
