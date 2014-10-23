@@ -69,7 +69,7 @@ Path a_star(Node start, Node end, heuristic_t heuristic) {
 		}
 	}
 
-	return Path{};
+	throw util::Error{"no path could be found"};
 }
 
 } // namespace path
