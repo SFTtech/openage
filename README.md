@@ -29,7 +29,7 @@ Our goals *include*:
     and guessing/experimenting can only get you this close
   * We will not implement useless artificial limitations (max 30 selectable units...))
 * Multiplayer (obviously)
-* Optionally, [Improvements](doc/ideas/improvements.md) over the original game
+* Optionally, [Improvements](doc/ideas/) over the original game
 * AI
 * Re-creating free game assets
 * An easily-moddable content format
