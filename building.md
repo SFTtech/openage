@@ -46,6 +46,7 @@ Dependency list:
     CR    sdl2
     CR    sdl2_image
     CR    opusfile
+    T     opus-tools
     C     gcc >=4.8 or clang >=3.3
 
     T age of empires II conquerors expansion patch 1.0c
