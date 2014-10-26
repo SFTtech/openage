@@ -84,6 +84,14 @@ Lobby settings
  - Forced no-rush (timelimit or score limit until attacks are possible)
 
 
+Matchmaking and competitive mode
+--------------------------------
+
+ - Some kind of "official" account on servers for everybody
+ - Automatic skill groups to create balanced matches
+ - We can show the world that competitive games can be free open source!
+
+
 For the lulz
 ------------
 
