@@ -1,3 +1,10 @@
+# Building the project
+
+This file should assist you in compiling and running the game.
+
+
+## Buildsystem Design
+
 *openage* currently consists of a pure C++ binary and the
 `openage.convert` python package which in turn includes C++ extension
 modules.  `openage.convert` is used to generate parts of the C++
@@ -8,13 +15,48 @@ be extracted by the `openage.convert` python module from an
 *Microsoft Age of Empires 2* installation directory (Support for
 setup CDs is almost finished).
 
-We use the `cmake` system for all our building needs.  The `configure`
+We use the `cmake` system for all our building needs. The `configure`
 script is a cmake wrapper that will create a build directory and
-invoke cmake with the appropriate flags.  The Makefile in the project
-root is created by cmake, and acts as a wrapper around several useful
-features.
+invoke cmake with the appropriate flags. The Makefile in the project
+root acts as a wrapper around several useful features.
 
 For more build system internals, see [doc/buildsystem](doc/buildsystem).
+
+
+## Dependencies
+
+Dependencies are needed for:
+
+* C = compiling
+* R = running
+* T = media convert script
+
+Dependency list:
+
+    CRT   python >=3.3
+    T     python imaging library (PIL) -> pillow
+    T     numpy
+    CR    opengl >=2.1
+    CR    glew
+    CR    ftgl
+    R     dejavu font
+    CR    freetype2
+    CR    fontconfig
+    C     cmake >=2.8.10
+    CR    sdl2
+    CR    sdl2_image
+    CR    opusfile
+    C     gcc >=4.8 or clang >=3.3
+
+    T age of empires II conquerors expansion patch 1.0c
+              optionally: with userpatch/forgotten empires
+              expansion installed: with wine OR as the program
+              directory we will support more patchlevels in the
+              future.  due to fundamental technical differences,
+              age of empires II HD does _not_ work yet.
+
+
+## Build procedure
 
 ### For developers/users who want to try the project
 
@@ -26,9 +68,10 @@ For more build system internals, see [doc/buildsystem](doc/buildsystem).
  - `make media AGE2DIR="~/.wine/drive_c/age2"` will convert all media
    files from the given age2 install folder, storing them in
    `./userassets`
- - `make run` or `bin/cpp/openage` will run the game. try
-   `bin/cpp/openage --help`
- - `make tests` will run the unit tests
+ - `make run` or `./openage` will run the game. try
+   `./openage --help`
+ - `make test` will run the unit tests
+
 
 ### For installing on your local system
 
@@ -42,6 +85,7 @@ For more build system internals, see [doc/buildsystem](doc/buildsystem).
    original assets to `~/.openage`. This does not work yet, and the
    convert invocation will later be integrated into the main binary.
 
+
 ### For packagers
 
  - Don't use `./configure`; instead, handle openage like a regular
@@ -50,39 +94,8 @@ For more build system internals, see [doc/buildsystem](doc/buildsystem).
  - For `make install` use `DESTDIR=/tmp/your_temporary_packaging_dir`,
    which will then be packed/installed by your package manager.
 
-### Dependencies
 
-dependencies are needed for:
-
-* C = compiling
-* R = running
-* T = media convert script
-
-dependency list:
-
-        CRT   python >=3.3
-        T     python imaging library (PIL) -> pillow
-        T     numpy
-        CR    opengl >=2.1
-        CR    glew
-        CR    ftgl
-        R     dejavu font
-        CR    freetype2
-        CR    fontconfig
-        C     cmake >=2.8.10
-        CR    sdl2
-        CR    sdl2_image
-        CR    opusfile
-        C     gcc >=4.8 or clang >=3.3
-
-        T age of empires II conquerors expansion patch 1.0c
-                  optionally: with userpatch/forgotten empires
-                  expansion installed: with wine OR as the program
-                  directory we will support more patchlevels in the
-                  future.  due to fundamental technical differences,
-                  age of empires II HD does _not_ work yet.
-
-### FAQ
+## FAQ
 
 **Q**
 
