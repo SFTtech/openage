@@ -69,9 +69,19 @@ private:
 	Engine(const Engine &copy) = delete;
 
 	/**
+	 * engine assignment operator.
+	 */
+	Engine &operator=(const Engine &copy) = delete;
+
+	/**
 	 * engine move constructor.
 	 */
-	Engine(Engine &&other);
+	Engine(Engine &&other) = delete;
+
+	/**
+	 * engine move operator.
+	 */
+	Engine &operator=(Engine &&other);
 
 public:
 	/**
