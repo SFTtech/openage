@@ -44,7 +44,7 @@ task proposals
 
 Use `git describe` for seeing the latest milestone reached.
 
-Look at [our roadmap](doc/milestones.md) to see what has to be achieved to
+Look at [our roadmap](milestones.md) to see what has to be achieved to
 reach the next milestone. Ask in the **IRC** channel what's being worked on and
 what may need help and support (even though it's known that nobody needs
 that).
