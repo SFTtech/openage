@@ -10,7 +10,7 @@ But we'd be most happy about new devs joining our core team. You should speak pa
 For anything (including contributions), the best way of contacting us is to join our IRC channel (`freenode.net#sfttech`) and ping one of the devs directly.
 The best way of contributing commits is probably to fork the project on Gibhub and send a pull request via their web interface, but... you're free to choose any other format, as long as we can figure out how to merge it. You'll get direct push permissions to all our repos once you're a "trusted core dev" (this is decided by a multi-headed committee during a week-long conference[1]).
 
-We're always releasing early and often; whenever we add/improve a feature or fix a bug, and the game still compiles, we push the code to the github master. Once significant changes have accumulated, we tag that commit with a new minor version. The major version is the current milestone number ([doc/milestones.md](doc/milestones.md)).
+We're always releasing early and often; whenever we add/improve a feature or fix a bug, and the game still compiles, we push the code to the github master. Once significant changes have accumulated, we tag that commit with a new minor version. The major version is the current milestone number ([milestones.md](milestones.md)).
 
 In the big picture, we're always working towards the next milestone. In reality however, we're often working on unrelated stuff that is either not covered by any milestone (build system, ...) or covered by a later milestone but convenient to implemented, or neccesary, right now.
 
