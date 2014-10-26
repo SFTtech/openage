@@ -1,4 +1,4 @@
-openage tasks
+Openage tasks
 =============
 
 A mysterious voice told yourself:
@@ -39,7 +39,7 @@ To get an overview about where to find what in the code,
 take a look at [the project structure info documentation](doc/implementation/project_structure.md).
 
 
-task proposals
+Task proposals
 --------------
 
 Use `git describe` for seeing the latest milestone reached.
@@ -51,87 +51,87 @@ that).
 
 
 ### NSA/BND interface
-* before the secret services of the world subvert our codebase,
+* Before the secret services of the world subvert our codebase,
   we will be chivalrous and implement an official spying interface
-* if we have an official interface, we can better say hi to our friends!
-* no, not really, we actually should encrypt the game conversations
+* If we have an official interface, we can better say hi to our friends!
+* No, not really, we actually should encrypt the game conversations
 
-### free (as in freedom) assets
-* we are depending on the proprietary original media files at the moment
-* if you are a creative person, fire up your graphics software ([GIMP?](http://gimp.org/))
+### Free (as in freedom) assets
+* We are depending on the proprietary original media files at the moment
+* If you are a creative person, fire up your graphics software ([GIMP?](http://gimp.org/))
   and create replacement graphics
-* free (creative commons licensed) media files liberate us from the evil leash
-* reside in [openage-data repository](https://github.com/SFTtech/openage-data)
-* original files will be used for free media files that are not present yet
-* this means even drawing one building will help
+* Free (creative commons licensed) media files liberate us from the evil leash
+* Reside in [openage-data repository](https://github.com/SFTtech/openage-data)
+* Original files will be used for free media files that are not present yet
+* This means even drawing one building will help
 * `png` images or better `svg` vectorgraphics
 
-### inotify asset monitoring
-* inotify is (if you don't know) a handy Linux kernel feature
-  * monitors file modifications, creations, etc.
-  * allows instaneous reaction to observed file updates without active polling
-* when some cool guy/gal (might be you!) changes or creates media files,
+### Inotify asset monitoring
+* Inotify is (if you don't know) a handy Linux kernel feature
+  * Monitors file modifications, creations, etc.
+  * Allows instaneous reaction to observed file updates without active polling
+* When some cool guy/gal (might be you!) changes or creates media files,
   the change can instantly appear ingame
-* very useful feature for people creating free media replacement files
-* as this feature is Linux-specific, we have to make this feature "optional"
+* Very useful feature for people creating free media replacement files
+* As this feature is Linux-specific, we have to make this feature "optional"
   -> preprocessor/cmake stuff
-* implemented in `C++`
+* Implemented in `C++`
 
-### game launcher
-* startup program
-* contains shiny buttons etc, we don't want to implement that in the game
-* functions:
-  * game lobby for joining multiplayer games
-  * configure matches
-  * select maps
-  * launch the openage binary
-* written in `Python` with *gtk3*
+### Game launcher
+* Startup program
+* Contains shiny buttons etc, we don't want to implement that in the game
+* Functions:
+  * Game lobby for joining multiplayer games
+  * Configure matches
+  * Select maps
+  * Launch the openage binary
+* Written in `Python` with *gtk3*
 
-### lobby server
-* server for mediate between game launchers
-* maybe support for match-making
-* could track player ranks and stats
-* written in `Python` or `Haskell`
+### Lobby server
+* Server for mediate between game launchers
+* Maybe support for match-making
+* Could track player ranks and stats
+* Written in `Python` or `Haskell`
 
-### multilanguage support
-* some easy and creative way of supporting localization
-* should (of course) not impact performance
-* as most translators are not steady for reading code,
+### Multilanguage support
+* Some easy and creative way of supporting localization
+* Should (of course) not impact performance
+* As most translators are not steady for reading code,
   it should be easy to add new languages.
-* i'd recommend using `gettext`
+* I'd recommend using `gettext`
 
-### random map generation
-* you like the Minecraft terrain generation?
-  you can implement it for openage.
-* should be infinite-terrain-capable
-  * map data for each chunk must be independently creatable
-  * generation speed should be fast enough when chunks are created during game
-* the original .rms scripts could be converted with python
-* you may implement this in `Python` or `C++`
+### Random map generation
+* You like the Minecraft terrain generation?
+  You can implement it for openage.
+* Should be infinite-terrain-capable
+  * Map data for each chunk must be independently creatable
+  * Generation speed should be fast enough when chunks are created during game
+* The original .rms scripts could be converted with python
+* You may implement this in `Python` or `C++`
 
-### artificial intelligence
-* live your wet dream and create our AI
-* use machine learning, neural networks or whatever you like
-* remember: the AI players get the same amount of information as humans,
+### Artificial intelligence
+* Live your wet dream and create our AI
+* Use machine learning, neural networks or whatever you like
+* Remember: The AI players get the same amount of information as humans,
   this means that e.g. undiscovered map areas won't be visible to the AI at all.
-* the original AI scripting language could be integrated
-* i'd propose to use `Python` for the AI scripting
+* The original AI scripting language could be integrated
+* I'd propose to use `Python` for the AI scripting
 
-### artificial intelligence interface
-* the AI itself has to communicate with the game engine
-* this interface provides the AI all the knowlege needed for proper operation
-* exposes `C++` engine code to `Python`
+### Artificial intelligence interface
+* The AI itself has to communicate with the game engine
+* This interface provides the AI all the knowlege needed for proper operation
+* Exposes `C++` engine code to `Python`
 
-### asset management frontend
-* (preferrably) a GUI program to edit game assets
-  * unit creation cost
-  * tech tree editing
-  * graphics and sounds
-  * etc.
-* similar to [Advanced Genie Editor](https://github.com/Tapsa/AGE)
-* but compatible with the openage data formats
-* maybe partially autogenerated by the conversion script and engine data format definitions
-  * aviods redundancy on data format updates
-  * allows to edit original game data as well!
-* should use *gtk3*
-* should be written in Python
+### Asset management frontend
+* (Preferrably) a GUI program to edit game assets
+  * Unit creation cost
+  * Tech tree editing
+  * Graphics and sounds
+  * Etc.
+* Similar to [Advanced Genie Editor](https://github.com/Tapsa/AGE)
+* But compatible with the openage data formats
+* Maybe partially autogenerated by the conversion script and engine data format definitions as this:
+  * Aviods redundancy on data format updates
+  * Allows to edit original game data as well!
+* Should use *gtk3*
+* Should be written in Python
