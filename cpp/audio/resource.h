@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #include "category.h"
 #include "dynamic_loader.h"
