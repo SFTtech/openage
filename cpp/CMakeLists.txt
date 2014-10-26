@@ -64,7 +64,9 @@ endif()
 
 find_library(FONTCONFIG_LIB fontconfig)
 find_library(OPUSFILE_LIB opusfile)
-find_library(UTIL_LIB util)
+if(NOT WIN32)
+	find_library(UTIL_LIB util)
+endif()
 
 find_package(Freetype REQUIRED)
 find_package(GLEW REQUIRED)
