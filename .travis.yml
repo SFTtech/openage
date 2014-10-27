@@ -53,6 +53,8 @@ notifications:
       - "chat.freenode.net#sfttech"
     template:
       - "%{repository}/%{branch} (%{commit} - %{author}): %{message}"
+    use_notice: true
+    skip_join: true
 
 #static analysis with coverty
 env:
