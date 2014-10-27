@@ -20,20 +20,20 @@ Phases
 cmake-time
 ----------
 
-cmake reads and interpretes all cmake modules and `CMakeLists.txt` files, populating the build directory with Makefiles and generating the `config.py` and `config.h` files. In addition, the codegen script is invoked to determine the list of files it will generate, and the list of (python) files it depends on.
+cmake reads and interprets  all cmake modules and `CMakeLists.txt` files, populating the build directory with Makefiles and generating the `config.py` and `config.h` files. In addition, the codegen script is invoked to determine the list of files it will generate, and the list of (python) files it depends on.
 
-the `./configure` script may be used to automatically create a build directory, symlink it to `bin`, symlink the to-be-created openage binary to `openage`, and invoke `cmake` with the correct parameters. See `./configure --help` for details.
+The `./configure` script may be used to automatically create a build directory, symlink it to `bin`, symlink the to-be-created openage binary to `openage`, and invoke `cmake` with the correct parameters. See `./configure --help` for details.
 
 For each compiler invocation (gcc -Og, clang -O3, etc...), `./configure` creates its own build directory. This allows you to quickly switch compilers and flags (e.g. via `./configure -c clang -O2`) without having to re-build the entire project.
 
 build time
 ----------
 
-`GNU make` is used to execute the cmake-generated Makefiles at build time. It will detect changes in the relevant `cmake` source files, and re-trigger a cmake execution if neccesary.
+`GNU make` is used to execute the cmake-generated Makefiles at build time. It will detect changes in the relevant `cmake` source files, and re-trigger a cmake execution if necessary.
 
 It then executes the three recipes, `codegen`, `pymodules` and `openage`.
 
-the `Makefile` in the project root directory may be used to invoke `GNU make` in the build directory (`make -C bin/` would be the manual way of doing this).
+The `Makefile` in the project root directory may be used to invoke `GNU make` in the build directory (`make -C bin/` would be the manual way of doing this).
 
 install time
 ------------
