@@ -18,7 +18,7 @@ function(python_init)
 
 	# there will be more lists SFT_PY_PACKAGE_{packagename} and SFT_PY_EXT_MODULE_{extmodulename}
 	# that will contain the python source files for each package and cpp source files for each ext module.
-	# all of those lists will be used to generate setup.py in the generator function TODO
+	# all of those lists will be used to generate setup.py in the generator function
 
 	set(PYTHON_SOURCE_DIR "${CMAKE_SOURCE_DIR}/py")
 	set(PYTHON_SOURCE_DIR ${PYTHON_SOURCE_DIR} PARENT_SCOPE)
