@@ -4,7 +4,7 @@ Documentation
 Most readers love documentation, it's creators hate it.
 
 Unfortunately, nobody can look inside your head and have the same ingenious
-thoughts as you do. To ensure your thoughs also reach the afterworld, please
+thoughts as you do. To ensure your thoughts also reach the afterworld, please
 document your stuff reasonably!
 
 The documentation is split up in two parts: *static* and *dynamic* docs,
@@ -38,7 +38,7 @@ This type of documentation is written inside code files:
  - C++ methods and classes are documented in their header files
  - Python methods and classes are documented via docstrings
 
-We're lazy, so the above statements might be be out-right fabrications.
+We're lazy, so the above statements might be out-right fabrications.
 
 
 ### Doc Generation
