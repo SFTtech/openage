@@ -61,7 +61,7 @@ class UnitCommand(dataformat.Exportable):
         (dataformat.READ_EXPORT, "ressource_in", "int16_t"),
         (dataformat.READ_EXPORT, "ressource_productivity", "int16_t"), #resource that multiplies the amount you can gather
         (dataformat.READ_EXPORT, "ressource_out", "int16_t"),
-        (dataformat.READ_UNKNOWN, None, "int16_t"),
+        (dataformat.READ_EXPORT, "ressource", "int16_t"),
         (dataformat.READ_EXPORT, "work_rate_multiplier", "float"),
         (dataformat.READ_EXPORT, "execution_radius", "float"),
         (dataformat.READ_EXPORT, "extra_range", "float"),
@@ -460,6 +460,7 @@ class UnitObject(dataformat.Exportable):
                 23: "CONQUISTADOR",
                 27: "WALLS",
                 28: "PHALANX",
+                29: "ANIMAL_DOMESTICATED",
                 30: "FLAGS",
                 32: "GOLD_MINE",
                 33: "SHORE_FISH",

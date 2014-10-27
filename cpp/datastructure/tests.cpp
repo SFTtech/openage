@@ -1,13 +1,69 @@
 #include "../log.h"
 #include "../datastructure/doubly_linked_list.h"
-//#include "../datastructure/pairing_heap.h"
+#include "../datastructure/pairing_heap.h"
 
 namespace openage {
 namespace datastructure {
 namespace tests {
 
 void pairing_heap() {
-	throw "test to be implemented";
+	PairingHeap<int> heap;
+	int stage = 0;
+
+	if (not (heap.size() == 0)) { goto out; }
+	stage += 1;
+
+	heap.push(0);
+	heap.push(1);
+	heap.push(2);
+	heap.push(3);
+	heap.push(4);
+	stage += 1;
+
+	// 01234
+	if (not (heap.size() == 5)) { goto out; }
+	if (not (heap.top() == 0)) { goto out; }
+	stage += 1;
+
+	if (not (0 == heap.pop())) { goto out; }
+	if (not (1 == heap.pop())) { goto out; }
+	if (not (2 == heap.pop())) { goto out; }
+	if (not (3 == heap.pop())) { goto out; }
+	stage += 1;
+
+	// 4
+	if (not (heap.size() == 1)) { goto out; }
+	stage += 1;
+
+	heap.push(0);
+	heap.push(10);
+
+	stage += 1;
+
+	if (not (0 == heap.pop())) { goto out; }
+	if (not (4 == heap.pop())) { goto out; }
+	if (not (10 == heap.pop())) { goto out; }
+	if (not (heap.size() == 0)) { goto out; }
+	stage += 1;
+
+	heap.push(5);
+	heap.push(5);
+	heap.push(0);
+	heap.push(5);
+	heap.push(5);
+	if (not (0 == heap.pop())) { goto out; }
+	if (not (5 == heap.pop())) { goto out; }
+	if (not (5 == heap.pop())) { goto out; }
+	if (not (5 == heap.pop())) { goto out; }
+	if (not (5 == heap.pop())) { goto out; }
+
+	if (not (heap.size() == 0)) { goto out; }
+	stage += 1;
+
+	return;
+out:
+	log::err("pairing heap test failed at stage %d", stage);
+	throw "failed pairing heap test";
 }
 
 void doubly_linked_list() {

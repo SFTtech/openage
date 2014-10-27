@@ -71,7 +71,7 @@ int run_game(Arguments *args) {
 	Engine &engine = Engine::get();
 
 	// initialize terminal colors
-	auto termcolors = util::read_csv_file<gamedata::palette_color>(data_dir.join("age/assets/termcolors.docx"));
+	auto termcolors = util::read_csv_file<gamedata::palette_color>(data_dir.join("converted/termcolors.docx"));
 
 	console::Console console(termcolors);
 	console.register_to_engine(&engine);
@@ -105,7 +105,7 @@ GameMain::GameMain(Engine *engine)
 	engine->register_drawhud_action(this);
 
 	util::Dir *data_dir = engine->get_data_dir();
-	util::Dir asset_dir = data_dir->append("age/assets");
+	util::Dir asset_dir = data_dir->append("converted");
 
 	// load textures and stuff
 	gaben      = new Texture{data_dir->join("gaben.png")};

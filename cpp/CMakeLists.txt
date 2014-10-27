@@ -64,16 +64,19 @@ endif()
 
 find_library(FONTCONFIG_LIB fontconfig)
 find_library(OPUSFILE_LIB opusfile)
-find_library(UTIL_LIB util)
+if(NOT WIN32)
+	find_library(UTIL_LIB util)
+endif()
 
 find_package(Freetype REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(PythonLibs 3.3 REQUIRED)
 
-pkg_search_module(FTGL REQUIRED ftgl)
-pkg_search_module(SDL2 REQUIRED sdl2)
-pkg_search_module(SDL2_IMAGE REQUIRED sdl2_image SDL2_image)
+find_package(SDL2 REQUIRED)
+find_package(FTGL REQUIRED)
+find_package(SDL2Image REQUIRED)
+
 
 ##inotify support
 #find_path(INOTIFY_INCLUDE_DIR sys/inotify.h  HINTS /usr/include/${CMAKE_LIBRARY_ARCHITECTURE})
@@ -87,7 +90,8 @@ include_directories(
 	${FTGL_INCLUDE_DIRS}
 	${OPUSFILE_INCLUDE_DIR}
 	${PYTHON_INCLUDE_DIR}
-	${SDL2_INCLUDE_DIRS}
+	${SDL2_INCLUDE_DIR}
+	${SDL2IMAGE_INCLUDE_DIRS}
 )
 
 # link the executable to those libraries
@@ -100,8 +104,8 @@ target_link_libraries(${PROJECT_NAME}
 	${OPENGL_LIBRARY}
 	${OPUSFILE_LIB}
 	${PYTHON_LIBRARY}
-	${SDL2_IMAGE_LIBRARIES}
-	${SDL2_LIBRARIES}
+	${SDL2IMAGE_LIBRARIES}
+	${SDL2_LIBRARY}
 	${UTIL_LIB}
 )
 

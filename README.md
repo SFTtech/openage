@@ -10,6 +10,9 @@ To play, you require *an original AoE2: AoC installation* (wine is your friend; 
 
 [![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
 
+[![Bountysource](https://www.bountysource.com/badge/team?team_id=6026&style=bounties_received)](https://www.bountysource.com/teams/sfttech/issues?utm_source=SFTtech&utm_medium=shield&utm_campaign=bounties_received)
+
+
 The foundation of **openage**:
 
 Technology     | Component
@@ -29,7 +32,7 @@ Our goals *include*:
     and guessing/experimenting can only get you this close
   * We will not implement useless artificial limitations (max 30 selectable units...))
 * Multiplayer (obviously)
-* Optionally, [Improvements](doc/ideas/improvements.md) over the original game
+* Optionally, [Improvements](doc/ideas/) over the original game
 * AI
 * Re-creating free game assets
 * An easily-moddable content format
@@ -98,7 +101,7 @@ Project documentation is accompanying the source code in the `doc/` folder:
 Windows Version
 ---------------
 
-None of uses Windows, so a port has no priority.
+None of us uses Windows, so a port has no priority.
 
 However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into poriting using `mingw32`/`mingw64` or maybe `cygwin`.
 

@@ -38,7 +38,7 @@ def generate_all(cpp_src_dir):
             exit(1)
 
         # get absolute filename
-        absfilename = "".join((cpp_src_dir, os.path.sep, filename))
+        absfilename = "".join((cpp_src_dir, "/", filename))
 
         # post-process content
         extension = os.path.splitext(filename)[1].lower().strip()

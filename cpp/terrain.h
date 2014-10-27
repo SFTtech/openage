@@ -33,7 +33,7 @@ using terrain_t = int;
  * this allows storage of chunk coords as keys in an unordered map.
  */
 struct coord_chunk_hash {
-	size_t operator ()(const coord::chunk input) const {
+	size_t operator ()(const coord::chunk &input) const {
 		constexpr int half_size_t_bits = sizeof(size_t) * 4;
 
 		return ((size_t)input.ne << half_size_t_bits) | input.se;
