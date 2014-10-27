@@ -14,7 +14,7 @@ invoke cmake with the appropriate flags.  The Makefile in the project
 root is created by cmake, and acts as a wrapper around several useful
 features.
 
-For more build system internals, see [doc/buildsystem](doc/buildsystem).
+For more build system internals, see [doc/buildsystem.md](doc/buildsystem.md).
 
 ### For developers/users who want to try the project
 
