@@ -103,7 +103,7 @@ Windows Version
 
 None of us uses Windows, so a port has no priority.
 
-However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into poriting using `mingw32`/`mingw64` or maybe `cygwin`.
+However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into porting using `mingw32`/`mingw64` or maybe `cygwin`.
 
 If you want to beat us to it, go for it!
 We'd prefer as few preprocessor switches as possible, preferrably they should all be placed in a few 'cross-platform abstraction files' (just talk to us for details...).
