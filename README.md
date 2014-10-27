@@ -98,7 +98,7 @@ Project documentation is accompanying the source code in the `doc/` folder:
 Windows Version
 ---------------
 
-None of uses Windows, so a port has no priority.
+None of us uses Windows, so a port has no priority.
 
 However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into poriting using `mingw32`/`mingw64` or maybe `cygwin`.
 
