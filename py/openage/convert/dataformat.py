@@ -1048,7 +1048,7 @@ namespace ${namespace} {
         dbg(lazymsg=lambda: "".join((
             "\n-----------\n",
             "snippets after ordering for %s:\n" % (repr(self)),
-            pprint.pformat(snippets_header_sorted + snippets_body_ordered),
+            pprint.pformat(snippets_header_sorted + snippets_body_sorted),
             "\n===========",
         )), lvl=3)
 
