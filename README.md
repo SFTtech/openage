@@ -10,9 +10,9 @@ To play, you require *an original AoE2: AoC installation* (wine is your friend; 
 
 [![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
 
-[Feeling overburdened by money? ![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=the0jj&url=https://github.com/SFTtech/openage&title=openage&tags=github&category=software)
-
 [![Bountysource](https://www.bountysource.com/badge/team?team_id=6026&style=bounties_received)](https://www.bountysource.com/teams/sfttech/issues?utm_source=SFTtech&utm_medium=shield&utm_campaign=bounties_received)
+
+[Feeling overburdened by money? ![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=the0jj&url=https://github.com/SFTtech/openage&title=openage&tags=github&category=software)
 
 
 The foundation of **openage**:
