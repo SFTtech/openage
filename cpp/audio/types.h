@@ -1,6 +1,10 @@
 #ifndef _ENGINE_AUDIO_TYPES_H_
 #define _ENGINE_AUDIO_TYPES_H_
 
+#include <functional>
+#include <memory>
+#include <tuple>
+
 #include <opusfile.h>
 
 namespace openage {
