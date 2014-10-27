@@ -2,11 +2,7 @@
 #define _SHADER_PROGRAM_H_
 
 #include <GL/glew.h>
-#ifdef __APPLE__
-#include <OpenGL/gl.h>
-#else
-#include <GL/gl.h>
-#endif
+#include "../crossplatform/opengl.h"
 
 #include "shader.h"
 
