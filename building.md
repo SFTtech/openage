@@ -20,7 +20,7 @@ script is a cmake wrapper that will create a build directory and
 invoke cmake with the appropriate flags. The Makefile in the project
 root acts as a wrapper around several useful features.
 
-For more build system internals, see [doc/buildsystem](doc/buildsystem).
+For more build system internals, see [doc/buildsystem.md](doc/buildsystem.md).
 
 
 ## Dependencies
@@ -59,7 +59,7 @@ Dependency list:
 ### Prerequisite steps for Ubuntu users (Ubuntu 14.10)
 
  - `sudo apt-get update`
- - `sudo apt-get install cmake libfreetype6-dev python3-dev libglew-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev`
+ - `sudo apt-get install cmake libfreetype6-dev python3-dev libglew-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools`
 
 
 ## Build procedure

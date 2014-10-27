@@ -57,13 +57,14 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	// if the opus file only had one channel, the pcm buffer size must be
 	// doubled
 	uint32_t length = pcm_length * 2;
-	std::unique_ptr<int16_t[]> buffer{new int16_t[length]};
+	pcm_data_t buffer;
+	buffer.reserve(length);
 
 	// read data from opus file
 	int position = 0;
 	int num_read = 0;
 	while (true) {
-		num_read = op_read(op_file.get(), buffer.get()+position,
+		num_read = op_read(op_file.get(), &buffer.front()+position,
 				pcm_length-position, nullptr);
 		if (num_read < 0) {
 			throw util::Error{"Failed to read from opus file: errorcode=%d", num_read};
@@ -83,7 +84,7 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 		}
 	}
 
-	return std::make_tuple(std::move(buffer), length);
+	return std::move(buffer);
 }
 
 }

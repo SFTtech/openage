@@ -55,16 +55,17 @@ pcm_chunk_t OpusDynamicLoader::load_chunk(uint32_t offset, uint32_t chunk_size) 
 	// if the requested offset is greater than the resource's length, there is
 	// no chunk left to load
 	if (offset > length) {
-		return nullptr;
+		return {};
 	}
 
 	// open opus file
 	auto op_file = open_opus_file();
 
 	// allocate the chunk's buffer
-	pcm_chunk_t chunk{new int16_t[chunk_size]};
+	pcm_chunk_t chunk;
+	chunk.reserve(chunk_size);
 	// initialize chunks with zeroes
-	std::memset(chunk.get(), 0, chunk_size*sizeof(int16_t));
+	std::memset(&chunk.front(), 0, chunk_size*sizeof(int16_t));
 
 	// seek to the requested offset, the seek offset is given in samples
 	// while the requested offset is given in int16_t values, so the division
@@ -85,7 +86,7 @@ pcm_chunk_t OpusDynamicLoader::load_chunk(uint32_t offset, uint32_t chunk_size) 
 	// loop as long as there are samples left to read
 	while (read_count <= read_num_values) {
 		samples_read = op_read(
-			op_file.get(), chunk.get() + read_count,
+			op_file.get(), &chunk.front() + read_count,
 			read_num_values - read_count, nullptr
 		);
 

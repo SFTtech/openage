@@ -15,6 +15,7 @@
 #include "format.h"
 #include "../job/job_manager.h"
 #include "loader_policy.h"
+#include "types.h"
 
 namespace openage {
 namespace audio {
@@ -90,15 +91,8 @@ public:
  */
 class InMemoryResource : public Resource {
 private:
-	/*
-	 * The resource's internal buffer.
-	 */
-	std::unique_ptr<int16_t[]> buffer;
-
-	/**
-	 * The buffer's length.
-	 */
-	uint32_t length;
+	/** The resource's internal buffer. */
+	pcm_data_t buffer;
 
 public:
 	InMemoryResource(

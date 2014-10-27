@@ -5,6 +5,8 @@
 # for an example usage, see py/openage/convert/CMakeLists.txt
 
 function(python_init)
+	# cmake 2.8 compatibility
+	set(Python_ADDITIONAL_VERSIONS 3.4)
 	# look for the python3.3+ executable
 	find_package(PythonInterp 3.3)
 
@@ -18,7 +20,7 @@ function(python_init)
 
 	# there will be more lists SFT_PY_PACKAGE_{packagename} and SFT_PY_EXT_MODULE_{extmodulename}
 	# that will contain the python source files for each package and cpp source files for each ext module.
-	# all of those lists will be used to generate setup.py in the generator function TODO
+	# all of those lists will be used to generate setup.py in the generator function
 
 	set(PYTHON_SOURCE_DIR "${CMAKE_SOURCE_DIR}/py")
 	set(PYTHON_SOURCE_DIR ${PYTHON_SOURCE_DIR} PARENT_SCOPE)

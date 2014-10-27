@@ -12,6 +12,8 @@ To play, you require *an original AoE2: AoC installation* (wine is your friend; 
 
 [![Bountysource](https://www.bountysource.com/badge/team?team_id=6026&style=bounties_received)](https://www.bountysource.com/teams/sfttech/issues?utm_source=SFTtech&utm_medium=shield&utm_campaign=bounties_received)
 
+[Feeling overburdened by money? ![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=the0jj&url=https://github.com/SFTtech/openage&title=openage&tags=github&category=software)
+
 
 The foundation of **openage**:
 
@@ -103,10 +105,10 @@ Windows Version
 
 None of us uses Windows, so a port has no priority.
 
-However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into poriting using `mingw32`/`mingw64` or maybe `cygwin`.
+However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into porting using `mingw32`/`mingw64` or maybe `cygwin`.
 
 If you want to beat us to it, go for it!
-We'd prefer as few preprocessor switches as possible, preferrably they should all be placed in a few 'cross-platform abstraction files' (just talk to us for details...).
+We'd prefer as few preprocessor switches as possible, preferably they should all be placed in a few 'cross-platform abstraction files' (just talk to us for details...).
 
 Contributing
 ============

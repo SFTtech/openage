@@ -68,6 +68,8 @@ ap.add_argument("--prefix", "-p", default="/usr/local",
                 help="installation directory prefix")
 ap.add_argument("--dry-run", action='store_true',
                 help="do not actually invoke cmake or create any directories")
+ap.add_argument("--raw-cmake-args", nargs=argparse.REMAINDER, default=[],
+                help="everything that follows is passed to cmake directly")
 
 args = ap.parse_args()
 
@@ -108,6 +110,8 @@ else:
 
 # maps csuite names to lists of (cc, cxx, other aliases...)
 csuites = {"gnu": ("gcc", "g++"), "llvm": ("clang", "clang++")}
+
+
 def getcsuite(name):
     name = name.lower().strip()
     for csuite, aliases in csuites.items():
@@ -275,6 +279,9 @@ for k, v in sorted(defines.items()):
             continue
 
     invocation.append('-DCMAKE_%s=%s' % (k.upper(), shlex.quote(v)))
+
+for raw_cmake_arg in args.raw_cmake_args:
+    invocation.append(raw_cmake_arg)
 
 invocation.append('--')
 invocation.append(project_root)

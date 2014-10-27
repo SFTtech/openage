@@ -12,7 +12,7 @@ Ahem, nope, this is the real roadmap:
  - 0: decide on the technology we're using.
    -> language, libraries, build system, coding standards, ...
    -> may be incomplete, will most definitely be changed later on anyway
- - 1: applicatin runs, fullscreen, black, builds with build system (on GNU/Linux),
+ - 1: application runs, fullscreen, black, builds with build system (on GNU/Linux),
       _no_ menu, it directly launches into the game
  - 2: render a single building (an university.),
       reading it from the stock age2 media files
