@@ -56,6 +56,11 @@ Dependency list:
               future.  due to fundamental technical differences,
               age of empires II HD does _not_ work yet.
 
+### Prerequisite steps for Ubuntu users (Ubuntu 14.10)
+
+ - `sudo apt-get update`
+ - `sudo apt-get install cmake libfreetype6-dev python3-dev libglew-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev`
+
 
 ## Build procedure
 
