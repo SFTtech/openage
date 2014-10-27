@@ -111,6 +111,7 @@ def media_convert(args):
             player_palette.save_visualization('info/playercolortable.pal.png')
 
         from . import blendomatic
+
         #HD Edition has a blendomatic_x1.dat in addition to its new blendomatic.dat
         #blendomatic_x1.dat is the same file as AoK:TC's blendomatic.dat, and TC does not have
         #blendomatic.dat, so we try _x1 first and fall back to the AoK:TC way if it does not exist
@@ -122,6 +123,7 @@ def media_convert(args):
 
         from .stringresource import StringResource
         stringres = StringResource()
+
         #AoK:TC uses .DLL files for its string resources,
         #HD uses plaintext files
         if os.path.isfile(file_get_path("language.dll")):
@@ -129,15 +131,17 @@ def media_convert(args):
             stringres.fill_from(PEFile("language.dll"))
             stringres.fill_from(PEFile("language_x1.dll"))
             stringres.fill_from(PEFile("language_x1_p1.dll"))
+            #stringres.fill_from(PEFile("Games/Forgotten Empires/Data/language_x1_p1.dll"))
         else:
             from .hdlanguagefile import HDLanguageFile
             for lang in os.listdir(file_get_path("Bin")):
                 langfile = "Bin/%s/%s-language.txt" % (lang, lang)
+
                 #there is some "base language" files in HD that we don't need
                 #and only the dir for the language that's currently in use contains a language file
                 if os.path.isdir(file_get_path("Bin/%s" % (lang))) and os.path.isfile(file_get_path(langfile)):
                     stringres.fill_from(HDLanguageFile(langfile, lang))
-        #stringres.fill_from(PEFile("Games/Forgotten Empires/Data/language_x1_p1.dll"))
+
         #TODO: transform and cleanup the read strings... (strip html, insert formatchars, ...)
 
         #create the dump for the dat file
