@@ -110,6 +110,8 @@ else:
 
 # maps csuite names to lists of (cc, cxx, other aliases...)
 csuites = {"gnu": ("gcc", "g++"), "llvm": ("clang", "clang++")}
+
+
 def getcsuite(name):
     name = name.lower().strip()
     for csuite, aliases in csuites.items():
