@@ -5,6 +5,8 @@
 # for an example usage, see py/openage/convert/CMakeLists.txt
 
 function(python_init)
+	# cmake 2.8 compatibility
+	set(Python_ADDITIONAL_VERSIONS 3.4)
 	# look for the python3.3+ executable
 	find_package(PythonInterp 3.3)
 
