@@ -1,5 +1,5 @@
-#ifndef _ARGS_H_
-#define _ARGS_H_
+#ifndef OPENAGE_ARGS_H_5F69D09A02864DE78EE4C944F382EAD6
+#define OPENAGE_ARGS_H_5F69D09A02864DE78EE4C944F382EAD6
 
 #include <vector>
 #include <string>
