@@ -4,7 +4,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <GL/glew.h>
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#else
 #include <GL/gl.h>
+#endif
 #include <FTGL/ftgl.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>

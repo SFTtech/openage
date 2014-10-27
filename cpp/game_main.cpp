@@ -2,7 +2,11 @@
 
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#else
 #include <GL/gl.h>
+#endif
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
