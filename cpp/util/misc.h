@@ -39,6 +39,17 @@ T mod(T x) {
 	}
 }
 
+
+/**
+ * compiletime defined rotate left function
+ */
+template <typename T, int amount>
+T rol(T x) {
+	static_assert(sizeof(T) > amount && amount > 0, "invalid rotation amount");
+	return (x << amount) | (x >> (sizeof(T)*8 - amount));
+}
+
+
 /**
  * implements the 'correct' version of the division operator,
  * which always rounds to -inf

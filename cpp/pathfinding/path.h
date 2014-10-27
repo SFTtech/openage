@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "../coord/tile.h"
+#include "../util/misc.h"
 
 
 namespace openage {
@@ -147,7 +148,7 @@ struct hash<openage::path::Node &> {
 		openage::coord::tile node_pos = x.position;
 		size_t nehash = std::hash<openage::coord::tile_t>{}(node_pos.ne);
 		size_t sehash = std::hash<openage::coord::tile_t>{}(node_pos.se);
-		return (nehash << 1) | (nehash >> (sizeof(nehash)*8 - 1)) ^ sehash;
+		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
 	}
 };
 
