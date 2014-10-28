@@ -27,7 +27,7 @@ struct rect {
 	vertex2 topLeft;
 	vertex2 bottomRight;
 	
-	static Create ( vertex2 _topLeft,
+	static rect Create ( vertex2 _topLeft,
 					vertex2 _bottomRight )
 	{
 		rect nRect;
@@ -47,7 +47,7 @@ struct renderQuad {
 	unsigned playerID;
 
 	
-	static Create ( rect const & _pos,
+	static renderQuad Create ( rect const & _pos,
 					rect const & _uv,
 					rect const & _maskUV,
 				    float _zValue,
@@ -74,17 +74,33 @@ struct eMaterialType {
 	
 class Renderer {
 public:
-	void SubmitQuad (renderQuad const & quad,
+	void submit_quad (renderQuad const & quad,
 
 					 GLint diffuse,
 					 GLint mask,
 					 
-					 eMaterialType::Enum material) {}
+					 eMaterialType::Enum material);
+	
+	void render ();
+	
+	static bool create ();
+	static Renderer &get();
 	
 private:
-	typedef std::vector<renderQuad> renderQuadList;
+
+	Renderer ();
+	bool init ();
 	
-	renderQuadList renderQueue;
+	Renderer(const Renderer &copy) = delete;
+	Renderer &operator=(const Renderer &copy) = delete;
+	Renderer(Renderer &&other) = delete;
+	Renderer &operator=(Renderer &&other) = delete;
+	
+private:
+	typedef std::vector<renderQuad> render_quad_list;
+	render_quad_list render_queue;
+	
+	static Renderer *instance;
 };
 
 }
