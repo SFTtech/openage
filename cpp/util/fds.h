@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-#include <termio.h>
+#include <termios.h>
 
 namespace openage {
 namespace util {
