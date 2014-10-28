@@ -7,12 +7,10 @@
 function(python_init)
 	# cmake 2.8 compatibility
 	set(Python_ADDITIONAL_VERSIONS 3.4)
-	# look for the python3.3+ executable
-	find_package(PythonInterp 3.3)
-
-	if(${PYTHONINTERP_FOUND} STREQUAL "FALSE")
-		message(FATAL_ERROR "python >= 3.3 not found.")
-	endif()
+	# find py libs
+	find_package(PythonLibs 3.3 REQUIRED)
+	# look for the py interpreter that fits to the py libs
+	find_package(PythonInterp "${PYTHONLIBS_VERSION_STRING}" EXACT REQUIRED)
 
 	# these following lists are filled by the add_py_package and add_pyext_module functions:
 	set_property(GLOBAL PROPERTY "SFT_PY_PACKAGES")
@@ -27,6 +25,9 @@ function(python_init)
 
 	set(PYTHON3 ${PYTHON_EXECUTABLE})
 	set(PYTHON3 ${PYTHON3} PARENT_SCOPE)
+	set(PYTHON_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}" PARENT_SCOPE)
+	set(PYTHON_LIBRARY "${PYTHON_LIBRARY}" PARENT_SCOPE)
+	set(PYTHON_VERSION_STRING "${PYTHON_VERSION_STRING}" PARENT_SCOPE)
 
 	set(PYTHON_INVOCATION ${PYTHON3} ${BUILDSYSTEM_DIR}/runinenv "PYTHONPATH:prependpath:${PYTHON_SOURCE_DIR}" -- ${PYTHON3})
 	set(PYTHON_INVOCATION ${PYTHON_INVOCATION} PARENT_SCOPE)
