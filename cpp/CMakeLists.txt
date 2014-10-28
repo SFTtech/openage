@@ -70,7 +70,6 @@ endif()
 find_package(Freetype REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
-find_package(PythonLibs 3.3 REQUIRED)
 
 find_package(SDL2 REQUIRED)
 find_package(FTGL REQUIRED)
