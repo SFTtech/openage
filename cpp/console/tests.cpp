@@ -1,5 +1,5 @@
 #include <unistd.h>
-#include <pty.h>
+#include "../crossplatform/pty.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>

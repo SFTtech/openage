@@ -6,7 +6,7 @@
 #include <string.h>
 
 #include <fcntl.h>
-#include <pty.h>
+#include "../crossplatform/pty.h"
 #include <unistd.h>
 
 #include "unicode.h"
