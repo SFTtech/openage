@@ -7,8 +7,8 @@ namespace openage {
 namespace path {
 
 cost_t manhattan_cost(const Node &start, const Node &end) {
-	cost_t dx = std::abs(start.position.ne - end.position.ne);
-	cost_t dy = std::abs(start.position.se - end.position.se);
+	cost_t dx = std::abs((cost_t)start.position.ne - end.position.ne);
+	cost_t dy = std::abs((cost_t)start.position.se - end.position.se);
 	return dx + dy;
 }
 
