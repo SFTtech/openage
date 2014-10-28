@@ -22,17 +22,17 @@ namespace openage {
 namespace path {
 
 Path a_star(Node start, Node end, heuristic_t heuristic) {
-	datastructure::PairingHeap<Node&> node_candidates;
+	datastructure::PairingHeap<Node*> node_candidates;
 
 	start.past_cost = 0;
 	start.future_cost = start.past_cost + heuristic(start, end);
-	node_candidates.push(start);
+	node_candidates.push(&start);
 
 	start.visited = true;
 
 	// while the open list is not empty
 	while (not node_candidates.empty()) {
-		Node best_candidate = node_candidates.top();
+		Node best_candidate = *node_candidates.top();
 		best_candidate.was_best = true;
 
 		if (best_candidate == end) {
@@ -60,10 +60,10 @@ Path a_star(Node start, Node end, heuristic_t heuristic) {
 				neighbor.path_predecessor = &best_candidate;
 
 				if (not neighbor.visited) {
-					node_candidates.push(neighbor);
+					node_candidates.push(&neighbor);
 					neighbor.visited = true;
 				} else {
-					node_candidates.update(neighbor);
+					node_candidates.update(&neighbor);
 				}
 			}
 		}
