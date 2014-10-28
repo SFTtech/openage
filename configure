@@ -286,6 +286,13 @@ for raw_cmake_arg in args.raw_cmake_args:
 invocation.append('--')
 invocation.append(project_root)
 
+# look for traces of an in-source build
+if os.path.isfile('CMakeCache.txt'):
+    print("\nwarning: found traces of an in-source build.")
+    print("CMakeCache.txt was deleted to make building possible.")
+    print("run 'make cleaninsourcebuild' to fully wipe the traces.")
+    os.remove('CMakeCache.txt')
+
 # switch to build directory
 print('\nbindir:\n%s/\n' % os.path.join(project_root, bindir))
 if not args.dry_run:
