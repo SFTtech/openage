@@ -20,6 +20,8 @@
 #include "util/strings.h"
 #include "util/timer.h"
 
+#include "renderer/renderer.h"
+
 namespace openage {
 
 /*
@@ -235,6 +237,8 @@ GameMain::GameMain(Engine *engine)
 	// shader initialisation
 	// read shader source codes and create shader objects for wrapping them.
 
+	graphics::Renderer::create(data_dir);
+		
 	char *texture_vert_code;
 	util::read_whole_file(&texture_vert_code, data_dir->join("shaders/maptexture.vert.glsl"));
 	auto plaintexture_vert = new shader::Shader(GL_VERTEX_SHADER, texture_vert_code);
