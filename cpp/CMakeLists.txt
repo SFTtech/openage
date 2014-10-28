@@ -52,7 +52,7 @@ finalize_executable(${PROJECT_NAME})
 
 # freetype includedir hint for ubuntu...
 find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2)
-find_path(OPUSFILE_INCLUDE_DIR opusfile.h HINTS /usr/include/opus)
+find_package(Opusfile REQUIRED)
 
 include(FindPkgConfig)
 include(FindPackageHandleStandardArgs)
@@ -63,7 +63,6 @@ if(NOT WIN32)
 endif()
 
 find_library(FONTCONFIG_LIB fontconfig)
-find_library(OPUSFILE_LIB opusfile)
 if(NOT WIN32)
 	find_library(UTIL_LIB util)
 endif()
@@ -102,7 +101,7 @@ target_link_libraries(${PROJECT_NAME}
 	${GLEW_LIBRARIES}
 	${MATH_LIB}
 	${OPENGL_LIBRARY}
-	${OPUSFILE_LIB}
+	${OPUSFILE_LIBRARIES}
 	${PYTHON_LIBRARY}
 	${SDL2IMAGE_LIBRARIES}
 	${SDL2_LIBRARY}
