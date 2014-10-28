@@ -61,6 +61,14 @@ Dependency list:
  - `sudo apt-get update`
  - `sudo apt-get install cmake libfreetype6-dev python3-dev libglew-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools`
 
+### Prerequisite steps for openSUSE users (openSUSE 13.1)
+
+If you already have python3 or one of packman/games repositories then no need to run the first two lines. If unsure then just run last line and see if all packages can be installed. Also feel free to drop `--no-recommends` from last line.
+
+    zypper addrepo http://download.opensuse.org/repositories/devel:languages:python3/openSUSE_13.1/devel:languages:python3.repo
+    zypper addrepo http://packman.inode.at/suse/openSUSE_13.1/ packman
+    zypper refresh
+    zypper install --no-recommends cmake fontconfig-devel ftgl-devel gcc-c++ glew-devel libfreetype6 libogg-devel libopus-devel libSDL2-devel libSDL2_image-devel opusfile-devel opus-tools python3-devel python3-numpy python3-Pillow
 
 ## Build procedure
 
