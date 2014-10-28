@@ -43,6 +43,8 @@ include("${BUILDSYSTEM_DIR}/version.cmake")
 
 include("${BUILDSYSTEM_DIR}/doxygen.cmake")
 
+disallow_in_source_builds()
+
 # create python and cpp config files
 configure_file(cpp/config.h.in ${CMAKE_SOURCE_DIR}/cpp/config.h)
 configure_file(py/openage/config.py.in ${CMAKE_SOURCE_DIR}/py/openage/config.py)
