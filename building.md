@@ -101,6 +101,24 @@ Dependency list:
    which will then be packed/installed by your package manager.
 
 
+### Troubleshooting
+
+ - I wanna see compiler invocations
+  - `make VERBOSE=1`
+ - My SDL2_Image/PythonInterp/whatever is installed somewhere, but `cmake` can't find it!
+  - You can manually tell `cmake` where to look. Try something along the lines of
+    `./configure --raw-cmake-args -DSDL2IMAGE_INCLUDE_DIRS=/whereever/sdl2_image/include/`
+ - I get nonsensical cmake errors like `unable to execute /home/user/git/openage/clang++`
+  - This is an issue with `cmake`, or rather, your usage of it. You probably invoked `cmake` directly,
+    and defined a compiler even though the build directory has already been initialized.
+    cmake is a bit "special" in this regard. Simply omit the compiler definitions, or clean the build
+    directory.
+ - I get compiler errors about missing header files
+  - Make sure to install the developer version (including header files) of the library in question.
+ - I'm trying to build on OSX
+  - See [this discussion](https://github.com/SFTtech/openage/issues/16)
+
+
 ## FAQ
 
 **Q**
@@ -109,8 +127,8 @@ Help, it does't work!
 
 **A**
 
-Maybe you've found a bug...
-irc.freenode.net/#sfttech
+Have a look at `Troubleshooting` above. Maybe you've found a bug...
+`irc.freenode.net/#sfttech`
 
 **Q**
 
