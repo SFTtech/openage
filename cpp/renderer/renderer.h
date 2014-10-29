@@ -46,25 +46,46 @@ struct rect {
 };
 	
 struct render_quad {
-	rect pos;
-	rect uv;
-	rect maskUV;
-
-	float zValue;
-	unsigned playerID;
-
+	struct quad_vertex {
+		vertex2 pos;
+		vertex2 uv;
+		vertex2 maskUV;
+		float zValue;
+		unsigned playerID;
+	};
 	
+	quad_vertex vertices[4];
+
 	static render_quad Create ( rect const & _pos,
 	                            rect const & _uv,
 	                            rect const & _maskUV,
 	                            float _zValue,
 	                            unsigned _playerID ) {
 		render_quad nQuad;
-		nQuad.pos = _pos;
-		nQuad.uv = _uv;
-		nQuad.maskUV = _maskUV;
-		nQuad.zValue = _zValue;
-		nQuad.playerID = _playerID;
+
+		nQuad.vertices[0].pos      = _pos.topLeft;
+		nQuad.vertices[0].uv       = _uv.topLeft;
+		nQuad.vertices[0].maskUV   = _maskUV.topLeft;
+		nQuad.vertices[0].zValue   = _zValue;
+		nQuad.vertices[0].playerID = _playerID;
+
+		nQuad.vertices[1].pos      = vertex2::Create(_pos.topLeft.x, _pos.bottomRight.y);
+		nQuad.vertices[1].uv       = vertex2::Create(_uv.topLeft.x, _uv.bottomRight.y);
+		nQuad.vertices[1].maskUV   = vertex2::Create(_maskUV.topLeft.x, _maskUV.bottomRight.y);
+		nQuad.vertices[1].zValue   = _zValue;
+		nQuad.vertices[1].playerID = _playerID;
+		
+		nQuad.vertices[2].pos      = _pos.bottomRight;
+		nQuad.vertices[2].uv       = _uv.bottomRight;
+		nQuad.vertices[2].maskUV   = _maskUV.bottomRight;
+		nQuad.vertices[2].zValue   = _zValue;
+		nQuad.vertices[2].playerID = _playerID;
+		
+		nQuad.vertices[3].pos      = vertex2::Create(_pos.bottomRight.x, _pos.topLeft.y);
+		nQuad.vertices[3].uv       = vertex2::Create(_uv.bottomRight.x, _uv.topLeft.y);
+		nQuad.vertices[3].maskUV   = vertex2::Create(_maskUV.bottomRight.x, _maskUV.topLeft.y);
+		nQuad.vertices[3].zValue   = _zValue;
+		nQuad.vertices[3].playerID = _playerID;
 		
 		return nQuad;
 	}
@@ -72,9 +93,9 @@ struct render_quad {
 
 struct eMaterialType {
 	enum Enum {
-		keAlphaMask,
-		keColorReplace,
 		keNormal,
+		keColorReplace,
+		keAlphaMask,
 		
 		keCount
 	};
@@ -85,8 +106,8 @@ struct material {
 	GLint uniformNormalTexture;
 	GLint uniformMasktexture;
 	
-	GLint uniformUV;
-	GLint uniformMaskUV;
+	GLint attributeUV;
+	GLint attributeMaskUV;
 };
 	
 class Renderer {

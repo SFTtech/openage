@@ -10,6 +10,10 @@
 #include "util/error.h"
 #include "util/file.h"
 
+#include "renderer/renderer.h"
+
+using namespace openage::graphics;
+
 namespace openage {
 
 //real definition of the shaders,
@@ -150,7 +154,8 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	glColor4f(1, 1, 1, 1);
 
 	//log::dbg("drawing texture at %hd, %hd", x, y);
-
+	eMaterialType::Enum cType; //Use this to help transition to new renderer
+	
 	bool use_playercolors = false;
 	bool use_alphashader = false;
 	struct gamedata::subtexture *mtx;
@@ -172,6 +177,8 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		texcoord_id = &alphamask_shader::base_coord;
 		masktexcoord_id = &alphamask_shader::mask_coord;
 		use_alphashader = true;
+		
+		cType = eMaterialType::keAlphaMask;
 	}
 	//is this texure drawn with replaced pixels for team coloring?
 	else if (this->use_player_color_tinting) {
@@ -182,12 +189,16 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		pos_id = &teamcolor_shader::program->pos_id;
 		texcoord_id = &teamcolor_shader::tex_coord;
 		use_playercolors = true;
+		
+		cType = eMaterialType::keColorReplace;
 	}
 	//mkay, we just draw the plain texture otherwise.
 	else {
 		texture_shader::program->use();
 		pos_id = &texture_shader::program->pos_id;
 		texcoord_id = &texture_shader::tex_coord;
+		
+		cType = eMaterialType::keNormal;
 	}
 
 	glActiveTexture(GL_TEXTURE0);
@@ -246,7 +257,6 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		mtxr,   mtxt
 	};
 
-
 	//store vertex buffer data, TODO: prepare this sometime earlier.
 	glBindBuffer(GL_ARRAY_BUFFER, this->vertbuf);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vdata), vdata, GL_STREAM_DRAW);
@@ -265,8 +275,9 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		glVertexAttribPointer(*masktexcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(sizeof(float) * 8 * 2));
 	}
 
+	
 	//draw the vertex array
-	glDrawArrays(GL_QUADS, 0, 4);
+	//glDrawArrays(GL_QUADS, 0, 4);
 
 	//unbind the current buffer
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -290,6 +301,23 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 
 	glActiveTexture(GL_TEXTURE0);
 	glDisable(GL_TEXTURE_2D);
+	
+	
+		Renderer::get().submit_quad(render_quad::Create(
+		                            //Position to render to
+		                            rect::Create(vertex2::Create(leftf, topf),
+											     vertex2::Create(rightf, bottomf)),
+		                            //UV coords for texture
+		                            rect::Create(vertex2::Create(txl, txt),
+												 vertex2::Create(txr, txb)),
+		                            //UV coords for mask texture
+		                            rect::Create(vertex2::Create(mtxl, mtxt),
+												 vertex2::Create(mtxr, mtxb)),
+								    0,        //z-value
+		                            0),       //playerID
+									this->id, //diffuse
+									this->id, //Mask
+									cType);
 }
 
 

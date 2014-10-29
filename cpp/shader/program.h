@@ -25,6 +25,8 @@ public:
 	void use();
 	void stopusing();
 
+	bool has_attribute(const char *name);
+	
 	GLint get_uniform_id(const char *name);
 	GLint get_attribute_id(const char *name);
 

@@ -108,6 +108,16 @@ GLint Program::get_uniform_id(const char *name) {
 	return glGetUniformLocation(this->id, name);
 }
 
+bool Program::has_attribute(const char *name) {
+	if (this->is_linked) {
+		GLint aid = glGetAttribLocation(this->id, name);
+		return aid != -1;
+	}
+	else {
+		throw util::Error("queried attribute '%s' id before program was linked.", name);
+	}
+}
+	
 GLint Program::get_attribute_id(const char *name) {
 	if (this->is_linked) {
 		GLint aid = glGetAttribLocation(this->id, name);
