@@ -29,7 +29,7 @@ install:
 
 before_script:
   - cmake --version
-  - python --version
+  - python3 --version
   - ls -l /usr/bin/python*
   - sudo ln -sf /usr/bin/python3.3 /usr/bin/python3
 
