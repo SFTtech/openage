@@ -92,6 +92,15 @@ Matchmaking and competitive mode
  - We can show the world that competitive games can be free open source!
 
 
+Bridges
+-------
+
+ - Ability to build bridges in water
+ - Blocks ships, allows land units to walk
+ - Forgotten Empires might already have wooden bridge textures
+ - Destructible, repairable, ...
+ - Long build time
+
 For the lulz
 ------------
 
