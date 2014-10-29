@@ -12,6 +12,8 @@ constexpr const char *version = "${PROJECT_VERSION}";
 
 }
 
+#define HAS_INOTIFY ${HAS_INOTIFY}
+
 } // namespace config
 } // namespace openage
 

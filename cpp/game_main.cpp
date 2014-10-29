@@ -539,6 +539,7 @@ void GameMain::move_camera() {
 
 bool GameMain::on_tick() {
 	this->move_camera();
+	assetmanager.check_updates();
 
 	return true;
 }

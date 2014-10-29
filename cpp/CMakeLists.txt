@@ -76,11 +76,16 @@ find_package(SDL2 REQUIRED)
 find_package(FTGL REQUIRED)
 find_package(SDL2Image REQUIRED)
 
+#inotify support
+find_path(INOTIFY_INCLUDE_DIR sys/inotify.h  HINTS /usr/include/${CMAKE_LIBRARY_ARCHITECTURE})
+find_package_handle_standard_args(INOTIFY DEFAULT_MSG INOTIFY_INCLUDE_DIR)
+if(INOTIFY_FOUND)
+	set(HAS_INOTIFY true)
+else()
+	set(HAS_INOTIFY false)
+endif()
 
-##inotify support
-#find_path(INOTIFY_INCLUDE_DIR sys/inotify.h  HINTS /usr/include/${CMAKE_LIBRARY_ARCHITECTURE})
-#find_package_handle_standard_args(INOTIFY DEFAULT_MSG INOTIFY_INCLUDE_DIR)
-##if(NOT INOTIFY_FOUND) ...
+configure_file(config.h.in ${CMAKE_SOURCE_DIR}/cpp/config.h)
 
 # directories for header inclusion
 include_directories(
