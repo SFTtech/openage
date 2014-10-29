@@ -149,4 +149,4 @@ Do not hesitate to ping us, we probably won't notice you otherwise.
 
 License
 -------
-**GNU GPLv3** or later; see [COPYING](COPYING) and [LICENSE](LICENSE).
+**GNU GPLv3** or later; see [copying.md](copying.md) and [LICENSE](LICENSE).
