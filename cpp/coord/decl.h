@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ENGINE_COORD_DECL_H_297AC6B6EB2949AD9D46A3CA6DC128F1
-#define OPENAGE_ENGINE_COORD_DECL_H_297AC6B6EB2949AD9D46A3CA6DC128F1
+#ifndef OPENAGE_COORD_DECL_H_
+#define OPENAGE_COORD_DECL_H_
 
 #include <stdint.h>
 
@@ -73,4 +73,4 @@ constexpr tile_t   tiles_per_chunk       = (1 << tiles_per_chunk_bits);
 } //namespace coord
 } //namespace openage
 
-#endif //_ENGINE_COORD_DECL_H_
+#endif

@@ -1,5 +1,5 @@
-#ifndef OPENAGE_UTIL_FPS_H_B8948646A9F248F89FF02670DBE0614C
-#define OPENAGE_UTIL_FPS_H_B8948646A9F248F89FF02670DBE0614C
+#ifndef OPENAGE_UTIL_FPS_H_
+#define OPENAGE_UTIL_FPS_H_
 
 namespace openage {
 namespace util {
@@ -30,4 +30,4 @@ private:
 } //namespace util
 } //namespace openage
 
-#endif //_UTIL_FPS_H_
+#endif

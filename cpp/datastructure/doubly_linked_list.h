@@ -1,5 +1,5 @@
-#ifndef OPENAGE_DATASTRUCTURE_DLLIST_H_163BF4E9A71944418E938FB40D1C3541
-#define OPENAGE_DATASTRUCTURE_DLLIST_H_163BF4E9A71944418E938FB40D1C3541
+#ifndef OPENAGE_DATASTRUCTURE_DOUBLY_LINKED_LIST_H_
+#define OPENAGE_DATASTRUCTURE_DOUBLY_LINKED_LIST_H_
 
 #include "../util/compiler.h"
 #include "../util/error.h"
@@ -257,4 +257,4 @@ protected:
 } // namespace datastructure
 } // namespace openage
 
-#endif // _OPENAGE_DATASTRUCTURE_DLLIST_H_
+#endif

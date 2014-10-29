@@ -1,5 +1,5 @@
-#ifndef OPENAGE_FONT_H_CE3E96CFD6A744DAA36FCFBA36721064
-#define OPENAGE_FONT_H_CE3E96CFD6A744DAA36FCFBA36721064
+#ifndef OPENAGE_FONT_H_
+#define OPENAGE_FONT_H_
 
 #include <FTGL/ftgl.h>
 
@@ -39,4 +39,4 @@ public:
 
 }
 
-#endif //_FONT_H_
+#endif

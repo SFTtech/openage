@@ -1,5 +1,5 @@
-#ifndef OPENAGE_DATASTRUCTURE_PAIRINGHEAP_H_6A826E0ABA3142F7B9C6999C96FCE47B
-#define OPENAGE_DATASTRUCTURE_PAIRINGHEAP_H_6A826E0ABA3142F7B9C6999C96FCE47B
+#ifndef OPENAGE_DATASTRUCTURE_PAIRING_HEAP_H_
+#define OPENAGE_DATASTRUCTURE_PAIRING_HEAP_H_
 
 /** @file
  * This file contains the implementation of a pairing heap.
@@ -370,4 +370,4 @@ protected:
 } // namespace datastructure
 } // namespace openage
 
-#endif // _OPENAGE_DATASTRUCTURE_PAIRINGHEAP_H_
+#endif

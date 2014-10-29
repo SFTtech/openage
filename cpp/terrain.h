@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ENGINE_TERRAIN_H_E6F0FA65FE3B43CB8304EA5B8393AAE3
-#define OPENAGE_ENGINE_TERRAIN_H_E6F0FA65FE3B43CB8304EA5B8393AAE3
+#ifndef OPENAGE_TERRAIN_H_
+#define OPENAGE_TERRAIN_H_
 
 #include <functional>
 #include <stddef.h>
@@ -372,4 +372,4 @@ private:
 
 } // namespace openage
 
-#endif //_ENGINE_TERRAIN_H_
+#endif

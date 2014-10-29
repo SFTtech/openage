@@ -1,5 +1,5 @@
-#ifndef OPENAGE_UTIL_COLOR_H_436CD7F56DC14715A9D58B748BEB21DE
-#define OPENAGE_UTIL_COLOR_H_436CD7F56DC14715A9D58B748BEB21DE
+#ifndef OPENAGE_UTIL_COLOR_H_
+#define OPENAGE_UTIL_COLOR_H_
 
 #include "../gamedata/color.gen.h"
 
@@ -19,4 +19,4 @@ struct col {
 } //namespace util
 } //namespace openage
 
-#endif //_UTIL_COLOR_H_
+#endif

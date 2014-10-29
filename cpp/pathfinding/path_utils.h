@@ -1,5 +1,5 @@
-#ifndef OPENAGE_PATHFINDING_PATHUTILS_H_D297ADA792FC405A83D3E032DA994F08
-#define OPENAGE_PATHFINDING_PATHUTILS_H_D297ADA792FC405A83D3E032DA994F08
+#ifndef OPENAGE_PATHFINDING_PATH_UTILS_H_
+#define OPENAGE_PATHFINDING_PATH_UTILS_H_
 
 namespace openage {
 namespace path {
@@ -7,4 +7,4 @@ namespace path {
 } // namespace path
 } // namespace openage
 
-#endif // _OPENAGE_PATHFINDING_PATHUTILS_H_
+#endif

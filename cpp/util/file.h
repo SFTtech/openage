@@ -1,5 +1,5 @@
-#ifndef OPENAGE_UTIL_FILE_H_EEA954ED36D644E9A7F69D1F84B5B3F4
-#define OPENAGE_UTIL_FILE_H_EEA954ED36D644E9A7F69D1F84B5B3F4
+#ifndef OPENAGE_UTIL_FILE_H_
+#define OPENAGE_UTIL_FILE_H_
 
 #include <stdlib.h>
 #include <string.h>
@@ -133,4 +133,4 @@ struct subdata {
 } //namespace util
 } //namespace openage
 
-#endif //_UTIL_FILE_H_
+#endif

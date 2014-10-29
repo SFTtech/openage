@@ -1,5 +1,5 @@
-#ifndef OPENAGE_CONSOLE_H_5B1CCD0F901646C282491EBCB45A6FA7
-#define OPENAGE_CONSOLE_H_5B1CCD0F901646C282491EBCB45A6FA7
+#ifndef OPENAGE_CONSOLE_CONSOLE_H_
+#define OPENAGE_CONSOLE_CONSOLE_H_
 
 #include <vector>
 #include <SDL2/SDL.h>
@@ -58,4 +58,4 @@ public:
 } //namespace console
 } //namespace openage
 
-#endif //_CONSOLE_CONSOLE_H_
+#endif

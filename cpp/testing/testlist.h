@@ -1,5 +1,5 @@
-#ifndef OPENAGE_TESTING_TESTLIST_H_FECF029D4E0F4C209864E909B260D46C
-#define OPENAGE_TESTING_TESTLIST_H_FECF029D4E0F4C209864E909B260D46C
+#ifndef OPENAGE_TESTING_TESTLIST_H_
+#define OPENAGE_TESTING_TESTLIST_H_
 
 #include <map>
 
@@ -19,4 +19,4 @@ extern std::map<std::string, demo_function_t> demos;
 
 } //namespace testing
 
-#endif //_TESTING_REGISTER_H_
+#endif

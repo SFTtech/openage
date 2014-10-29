@@ -1,5 +1,5 @@
-#ifndef OPENAGE_AUDIO_FORMAT_H_00F2F37FF0CF47D6AFE6D1BEEC800A32
-#define OPENAGE_AUDIO_FORMAT_H_00F2F37FF0CF47D6AFE6D1BEEC800A32
+#ifndef OPENAGE_AUDIO_FORMAT_H_
+#define OPENAGE_AUDIO_FORMAT_H_
 
 #include "../gamedata/sound_file.gen.h"
 
@@ -18,4 +18,4 @@ format_t from_format(const gamedata::audio_format_t format);
 }
 }
 
-#endif //_AUDIO_FORMAT_H_
+#endif

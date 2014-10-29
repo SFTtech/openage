@@ -1,5 +1,5 @@
-#ifndef OPENAGE_LOG_H_2E6F79CDE6364FA5B33C91994ABF4361
-#define OPENAGE_LOG_H_2E6F79CDE6364FA5B33C91994ABF4361
+#ifndef OPENAGE_LOG_H_
+#define OPENAGE_LOG_H_
 
 namespace openage {
 namespace log {
@@ -27,4 +27,4 @@ constexpr logfunction_ptr dbg   = log<7>;
 } //namespace log
 } //namespace openage
 
-#endif //_OPENAGE_LOG_H_
+#endif

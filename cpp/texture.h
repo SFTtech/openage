@@ -1,5 +1,5 @@
-#ifndef OPENAGE_TEXTURE_H_F62B5FB709FD4F5295245DDC41916C28
-#define OPENAGE_TEXTURE_H_F62B5FB709FD4F5295245DDC41916C28
+#ifndef OPENAGE_TEXTURE_H_
+#define OPENAGE_TEXTURE_H_
 
 #include <GL/glew.h>
 #include "crossplatform/opengl.h"
@@ -111,4 +111,4 @@ private:
 
 } //namespace openage
 
-#endif //_TEXTURE_H_
+#endif

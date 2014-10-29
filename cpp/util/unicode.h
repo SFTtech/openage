@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ENGINE_UTIL_UNICODE_H_B809854BCDD8433AAA8E0281FA3F2204
-#define OPENAGE_ENGINE_UTIL_UNICODE_H_B809854BCDD8433AAA8E0281FA3F2204
+#ifndef OPENAGE_UTIL_UNICODE_H_
+#define OPENAGE_UTIL_UNICODE_H_
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -93,4 +93,4 @@ size_t utf8_encode(int cp, char *outbuf);
 } //namespace util
 } //namespace openage
 
-#endif //_ENGINE_UTIL_UNICODE_H_
+#endif

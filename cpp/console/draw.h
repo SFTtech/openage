@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ENGINE_CONSOLE_DRAW_H_B03C2E3140C549CFBF216FBB9CA10D7D
-#define OPENAGE_ENGINE_CONSOLE_DRAW_H_B03C2E3140C549CFBF216FBB9CA10D7D
+#ifndef OPENAGE_CONSOLE_DRAW_H_
+#define OPENAGE_CONSOLE_DRAW_H_
 
 #include "buf.h"
 
@@ -28,4 +28,4 @@ void to_terminal(Buf *buf, util::FD *fd,
 } //namespace console
 } //namespace openage
 
-#endif //_ENGINE_CONSOLE_DRAW_H_
+#endif

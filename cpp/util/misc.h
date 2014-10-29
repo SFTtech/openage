@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ENGINE_UTIL_MISC_H_F5435916739F4489A5BDC1A63326D6E0
-#define OPENAGE_ENGINE_UTIL_MISC_H_F5435916739F4489A5BDC1A63326D6E0
+#ifndef OPENAGE_UTIL_MISC_H_
+#define OPENAGE_UTIL_MISC_H_
 
 namespace openage {
 namespace util {
@@ -75,4 +75,4 @@ struct less {
 } //namespace util
 } //namespace openage
 
-#endif //_ENGINE_UTIL_MISC_H_
+#endif

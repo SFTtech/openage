@@ -1,5 +1,5 @@
-#ifndef OPENAGE_INPUT_H_038F3A078C934CDDB9C49D0AD8DD8A2F
-#define OPENAGE_INPUT_H_038F3A078C934CDDB9C49D0AD8DD8A2F
+#ifndef OPENAGE_INPUT_H_
+#define OPENAGE_INPUT_H_
 
 #include <SDL2/SDL.h>
 #include <unordered_map>
@@ -55,4 +55,4 @@ private:
 
 } //namespace openage
 
-#endif //_INPUT_H_
+#endif

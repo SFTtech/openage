@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ARGS_H_5F69D09A02864DE78EE4C944F382EAD6
-#define OPENAGE_ARGS_H_5F69D09A02864DE78EE4C944F382EAD6
+#ifndef OPENAGE_ARGS_H_
+#define OPENAGE_ARGS_H_
 
 #include <vector>
 #include <string>
@@ -36,4 +36,4 @@ Arguments parse_args(int argc, char **argv);
 
 } //namespace openage
 
-#endif //_ARGS_H_
+#endif

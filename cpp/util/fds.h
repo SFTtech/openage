@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ENGINE_UTIL_FDS_H_A6C23CDD7ACD495AB547AFCE0CE53984
-#define OPENAGE_ENGINE_UTIL_FDS_H_A6C23CDD7ACD495AB547AFCE0CE53984
+#ifndef OPENAGE_UTIL_FDS_H_
+#define OPENAGE_UTIL_FDS_H_
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -87,4 +87,4 @@ public:
 } //namespace util
 } //namespace openage
 
-#endif //_ENGINE_UTIL_FDS_H_
+#endif

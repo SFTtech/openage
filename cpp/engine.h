@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ENGINE_H_64CBE240E8D34F8284ED61028FDF70AE
-#define OPENAGE_ENGINE_H_64CBE240E8D34F8284ED61028FDF70AE
+#ifndef OPENAGE_ENGINE_H_
+#define OPENAGE_ENGINE_H_
 
 #include <vector>
 
@@ -284,4 +284,4 @@ private:
 
 } //namespace openage
 
-#endif //_ENGINE_H_
+#endif

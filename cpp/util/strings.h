@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ENGINE_UTIL_STRINGS_H_4B6973A940EF4DB895A4C5B89ED1FC73
-#define OPENAGE_ENGINE_UTIL_STRINGS_H_4B6973A940EF4DB895A4C5B89ED1FC73
+#ifndef OPENAGE_UTIL_STRINGS_H_
+#define OPENAGE_UTIL_STRINGS_H_
 
 #include <cstdarg>
 #include <cstdlib>
@@ -63,4 +63,4 @@ void string_tokenize_base(char *str, char delim, std::function<void(char *)> cal
 } //namespace util
 } //namespace openage
 
-#endif //_ENGINE_UTIL_STRINGS_H_
+#endif

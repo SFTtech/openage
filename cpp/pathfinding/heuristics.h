@@ -1,5 +1,5 @@
-#ifndef OPENAGE_PATHFINDING_HEURISTIC_H_CBE087E5409147DE8A880F6D25D5BBB6
-#define OPENAGE_PATHFINDING_HEURISTIC_H_CBE087E5409147DE8A880F6D25D5BBB6
+#ifndef OPENAGE_PATHFINDING_HEURISTICS_H_
+#define OPENAGE_PATHFINDING_HEURISTICS_H_
 
 #include "path.h"
 
@@ -27,4 +27,4 @@ cost_t euclidean_cost(const Node &start, const Node &end);
 } // namespace path
 } // namespace openage
 
-#endif // _OPENAGE_PATHFINDING_HEURISTIC_H_
+#endif

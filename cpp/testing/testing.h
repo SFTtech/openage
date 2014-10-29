@@ -1,5 +1,5 @@
-#ifndef OPENAGE_TESTING_TESTING_H_D6D41EF8CAE244BE870727E9B13E614D
-#define OPENAGE_TESTING_TESTING_H_D6D41EF8CAE244BE870727E9B13E614D
+#ifndef OPENAGE_TESTING_TESTING_H_
+#define OPENAGE_TESTING_TESTING_H_
 
 //testing is the future.
 
@@ -37,4 +37,4 @@ bool run_demo(std::string name, int argc, char **argv);
 
 } //namespace testing
 
-#endif //_TESTING_TESTING_H_
+#endif

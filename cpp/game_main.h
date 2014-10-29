@@ -1,5 +1,5 @@
-#ifndef OPENAGE_GAME_MAIN_H_4194D00CB964499C959C031D4E836672
-#define OPENAGE_GAME_MAIN_H_4194D00CB964499C959C031D4E836672
+#ifndef OPENAGE_GAME_MAIN_H_
+#define OPENAGE_GAME_MAIN_H_
 
 #include <SDL2/SDL.h>
 #include <unordered_map>
@@ -99,4 +99,4 @@ public:
 
 } //namespace openage
 
-#endif //_GAME_MAIN_H_
+#endif

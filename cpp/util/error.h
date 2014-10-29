@@ -1,5 +1,5 @@
-#ifndef OPENAGE_UTIL_ERROR_H_6723759B2C7E4B9BA5F76C94A36B2033
-#define OPENAGE_UTIL_ERROR_H_6723759B2C7E4B9BA5F76C94A36B2033
+#ifndef OPENAGE_UTIL_ERROR_H_
+#define OPENAGE_UTIL_ERROR_H_
 
 #include <cstdarg>
 #include <cstdio>
@@ -43,4 +43,4 @@ private:
 } //namespace util
 } //namespace openage
 
-#endif //_UTIL_ERROR_H_
+#endif

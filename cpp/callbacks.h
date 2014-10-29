@@ -1,5 +1,5 @@
-#ifndef OPENAGE_CALLBACKS_H_4A54DE6FE5A44B0CACA1ECC9E5D368F9
-#define OPENAGE_CALLBACKS_H_4A54DE6FE5A44B0CACA1ECC9E5D368F9
+#ifndef OPENAGE_CALLBACKS_H_
+#define OPENAGE_CALLBACKS_H_
 
 #include <vector>
 
@@ -14,4 +14,4 @@ namespace callbacks {
 
 } //namespace openage
 
-#endif //_CALLBACKS_H_
+#endif

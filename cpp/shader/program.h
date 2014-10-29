@@ -1,5 +1,5 @@
-#ifndef OPENAGE_SHADER_PROGRAM_H_AA1D8FE45763415E9A96B17A314450B2
-#define OPENAGE_SHADER_PROGRAM_H_AA1D8FE45763415E9A96B17A314450B2
+#ifndef OPENAGE_SHADER_PROGRAM_H_
+#define OPENAGE_SHADER_PROGRAM_H_
 
 #include <GL/glew.h>
 #include "../crossplatform/opengl.h"
@@ -46,4 +46,4 @@ private:
 } //namespace shader
 } //namespace openage
 
-#endif //_SHADER_PROGRAM_H_
+#endif

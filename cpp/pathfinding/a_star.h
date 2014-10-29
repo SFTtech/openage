@@ -1,5 +1,5 @@
-#ifndef OPENAGE_PATHFINDING_ASTAR_H_476178091018474EA1700E3E3354D9B5
-#define OPENAGE_PATHFINDING_ASTAR_H_476178091018474EA1700E3E3354D9B5
+#ifndef OPENAGE_PATHFINDING_A_STAR_H_
+#define OPENAGE_PATHFINDING_A_STAR_H_
 
 #include "path.h"
 #include "heuristics.h"
@@ -12,4 +12,4 @@ namespace path {
 } // namespace path
 } // namespace openage
 
-#endif // _OPENAGE_PATHFINDING_ASTAR_H_
+#endif

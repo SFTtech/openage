@@ -1,5 +1,5 @@
-#ifndef OPENAGE_CONSOLE_BUF_B8A4523B0CB744A6878210D7F70ED11A
-#define OPENAGE_CONSOLE_BUF_B8A4523B0CB744A6878210D7F70ED11A
+#ifndef OPENAGE_CONSOLE_BUF_H_
+#define OPENAGE_CONSOLE_BUF_H_
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -486,4 +486,4 @@ public:
 } //namespace console
 } //namespace openage
 
-#endif //_CONSOLE_BUF_
+#endif

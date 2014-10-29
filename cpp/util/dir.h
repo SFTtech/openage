@@ -1,5 +1,5 @@
-#ifndef OPENAGE_UTIL_DIR_H_8C91849879DB497099A83D03CBEFC7C8
-#define OPENAGE_UTIL_DIR_H_8C91849879DB497099A83D03CBEFC7C8
+#ifndef OPENAGE_UTIL_DIR_H_
+#define OPENAGE_UTIL_DIR_H_
 
 #include <string>
 
@@ -38,4 +38,4 @@ std::string dirname(const std::string &fullpath);
 } //namespace util
 } //namespace openage
 
-#endif //_UTIL_DIR_H_
+#endif

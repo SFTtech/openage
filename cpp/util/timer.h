@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ENGINE_UTIL_TIMER_H_2871BA927B394A699EF82EA10E83F388
-#define OPENAGE_ENGINE_UTIL_TIMER_H_2871BA927B394A699EF82EA10E83F388
+#ifndef OPENAGE_UTIL_TIMER_H_
+#define OPENAGE_UTIL_TIMER_H_
 
 #include <stdint.h>
 
@@ -36,4 +36,4 @@ public:
 } //namespace util
 } //namespace openage
 
-#endif //_ENGINE_UTIL_TIMER_H_
+#endif

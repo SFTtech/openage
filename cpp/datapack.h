@@ -1,5 +1,5 @@
-#ifndef OPENAGE_ENGINE_DATAPACK_H_A3E87F278B5145F9B2743000D1B6BC39
-#define OPENAGE_ENGINE_DATAPACK_H_A3E87F278B5145F9B2743000D1B6BC39
+#ifndef OPENAGE_DATAPACK_H_
+#define OPENAGE_DATAPACK_H_
 
 namespace openage {
 
@@ -9,4 +9,4 @@ struct index_file {
 
 } //namespace openage
 
-#endif //_ENGINE_DATAPACK_H_
+#endif
