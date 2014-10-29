@@ -6,7 +6,7 @@ primarily aimed at POSIX platforms such as **GNU/Linux**,
 comparable in its goals to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/) and [OpenTTD](http://openttd.org/).
 
 openage uses the original game assets (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
-To play, you require *an original AoE2: AoC installation* (wine is your friend; in the near future, setup discs will be supported).
+To play, you require *an original AoE II installation or [AoE II: HD](http://store.steampowered.com/app/221380/)* (wine is your friend; in the near future, setup discs will be supported).
 
 [![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
 
