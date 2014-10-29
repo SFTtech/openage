@@ -65,6 +65,8 @@ public:
 	void draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture = nullptr, int alpha_subid = -1);
 	void draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid);
 
+	void reload();
+
 	struct gamedata::subtexture *get_subtexture(int subid);
 	int get_subtexture_count();
 	void get_subtexture_size(int subid, int *w, int *h);
@@ -105,6 +107,12 @@ private:
 	GLuint id, vertbuf;
 	std::vector<gamedata::subtexture>subtextures;
 	size_t subtexture_count;
+	bool use_metafile;
+
+	std::string filename;
+
+	void load();
+	void unload();
 };
 
 } //namespace openage

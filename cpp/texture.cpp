@@ -31,7 +31,13 @@ GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 } //namespace alphamask_shader
 
 
-Texture::Texture(std::string filename, bool use_metafile) {
+Texture::Texture(std::string _filename, bool _use_metafile):
+		use_metafile(_use_metafile),
+		filename(_filename) {
+	load();
+}
+
+void Texture::load() {
 	SDL_Surface *surface;
 	GLuint textureid;
 	int texture_format_in;
@@ -117,9 +123,18 @@ Texture::Texture(std::string filename, bool use_metafile) {
 	glGenBuffers(1, &this->vertbuf);
 }
 
-Texture::~Texture() {
+void Texture::unload() {
 	glDeleteTextures(1, &this->id);
 	glDeleteBuffers(1, &this->vertbuf);
+}
+
+void Texture::reload() {
+	unload();
+	load();
+}
+
+Texture::~Texture() {
+	unload();
 }
 
 void Texture::fix_hotspots(unsigned x, unsigned y) {
