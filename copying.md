@@ -14,14 +14,18 @@ GNU General Public License for more details.
 
 A copy of the GPLv3 license can be found in [LICENSE](LICENSE).
 
-Some files in openage were taken and/or adapted from different projects;
-their original licenses apply.
+Some files in openage were taken and/or adapted from different projects; their original licenses apply. Files that are not listed in the following and do not state otherwise are licensed as GPLv3+.
 
 List of all 3rd-party files in openage:
 
 From [cabextract/libmspack](http://www.cabextract.org.uk/):
 
- - py/openage/convert/cabextract/lzxd/lzxd.cpp
- - py/openage/convert/cabextract/lzxd/lzx_compression_info
+ - `py/openage/convert/cabextract/lzxd/lzxd.cpp`
+ - `py/openage/convert/cabextract/lzxd/lzx_compression_info`
 
 libmspack is licensed as [LGPLv2](https://www.gnu.org/licenses/old-licenses/lgpl-2.0.html).
+
+[BSD-licensed](http://opensource.org/licenses/BSD-3-Clause) cmake modules:
+
+ - `buildsystem/modules/FindSDL2.cmake`
+ - `buildsystem/modules/FindFTGL.cmake`
