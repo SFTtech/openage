@@ -2,30 +2,30 @@ Copyright (C) 2013-2014 sfttech <irc.freenode.net/#sfttech>
 
 [List of contributors](https://github.com/SFTtech/openage/graphs/contributors)
 
-openage is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+All files in this project, except those that state otherwise, or are listed below,
+are licensed as **GPLv3**, or (at your option) any later version.
+A copy of the license can be found in [LICENSE](LICENSE).
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+A note on per-file license headers: They're seriously ugly and incredibly bothersome to maintain.
+We're doing this for fun and have better things to do than copy/pasting legal text blocks,
+and staring at them each time we open one of our project files.
+Seriously. We'd rather put all code in the public domain.
 
-A copy of the GPLv3 license can be found in [LICENSE](LICENSE).
+Nevertheless,
 
-Some files in openage were taken and/or adapted from different projects; their original licenses apply. Files that are not listed in the following and do not state otherwise are licensed as GPLv3+.
+ - any 3rd-party files that are added to openage **should** contain origin/licensing information in their top or the list below
+ - if you take any files from openage, add origin/licensing information at their top.
+
+To get copyright/author information on specific files, use the version control system (e.g. `git blame`, or the GitHub web interface).
 
 List of all 3rd-party files in openage:
 
-From [cabextract/libmspack](http://www.cabextract.org.uk/):
+From [cabextract/libmspack](http://www.cabextract.org.uk/) ([LGPL 2.0](https://www.gnu.org/licenses/old-licenses/lgpl-2.0.html)):
 
  - `py/openage/convert/cabextract/lzxd/lzxd.cpp`
  - `py/openage/convert/cabextract/lzxd/lzx_compression_info`
 
-libmspack is licensed as [LGPLv2](https://www.gnu.org/licenses/old-licenses/lgpl-2.0.html).
-
-[BSD-licensed](http://opensource.org/licenses/BSD-3-Clause) cmake modules:
+cmake modules ([BSD-licensed](http://opensource.org/licenses/BSD-3-Clause)):
 
  - `buildsystem/modules/FindSDL2.cmake`
  - `buildsystem/modules/FindFTGL.cmake`
