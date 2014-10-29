@@ -37,9 +37,9 @@ void JobManager::stop() {
 }
 
 void JobManager::dispatch_queue() {
-	// loop as long is_running is set
+	// loop as long as is_running is set
 	while (this->is_running.load()) {
-		// aquire the lock on the queue
+		// aquire the lock to the queue
 		std::unique_lock<std::mutex> lock{this->queue_mtx};
 		while (this->pending_jobs.empty()) {
 			// wait as long as there are new jobs available or the worker should
