@@ -13,8 +13,8 @@ Seriously. We'd rather put all code in the public domain.
 
 Nevertheless,
 
- - any 3rd-party files that are added to openage **should** contain origin/licensing information in their top or the list below
- - if you take any files from openage, add origin/licensing information at their top.
+ - any 3rd-party file that is added to openage **must** contain origin/licensing information at its top or to this file (else we wouldn't be allowed to use it)
+ - if you take any file from openage, add origin/licensing information at its top or to a file like this one (else you wouldn't be allowed to use it)
 
 To get copyright/author information on specific files, use the version control system (e.g. `git blame`, or the GitHub web interface).
 
