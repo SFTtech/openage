@@ -1020,7 +1020,7 @@ void LZXDStream::decompress(off_t out_bytes) {
 	} // while (this->frame < end_frame)
 
 	if (out_bytes) {
-		throwerr("decrunch: %ld bytes left to output", out_bytes);
+		throwerr("decrunch: %jd bytes left to output", (intmax_t)out_bytes);
 	}
 }
 
