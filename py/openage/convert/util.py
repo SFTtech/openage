@@ -144,7 +144,7 @@ def file_get_path(fname, write=False, mkdir=False):
         basedir = readpath
 
     path = path_insensitive(os.path.join(basedir, fname))
-	
+
     if mkdir:
         dirname = os.path.dirname(path)
         mkdirs(dirname)
