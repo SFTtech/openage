@@ -1,5 +1,5 @@
-#ifndef _MOM_H_
-#define _MOM_H_
+#ifndef OPENAGE_DOC_CODESTYLE_MOM_H_
+#define OPENAGE_DOC_CODESTYLE_MOM_H_
 
 #include <stdint.h>
 
@@ -68,4 +68,4 @@ protected:
 extern elts::YourMom *my_special_mom;
 
 
-#endif //_MOM_H_
+#endif
