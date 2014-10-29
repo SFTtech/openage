@@ -116,7 +116,7 @@ GameMain::GameMain(Engine *engine)
 	auto blending_modes = util::read_csv_file<gamedata::blending_mode>(asset_dir.join("blending_modes.docx"));
 
 	// create the terrain which will be filled by chunks
-	terrain = new Terrain(asset_dir, terrain_types, blending_modes, true);
+	terrain = new Terrain(assetmanager, terrain_types, blending_modes, true);
 	terrain->fill(terrain_data, terrain_data_size);
 
 	util::Dir gamedata_dir = asset_dir.append("gamedata");
