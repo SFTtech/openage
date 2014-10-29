@@ -151,61 +151,24 @@ void Texture::draw(coord::tile pos, int subid, Texture *alpha_texture, int alpha
 }
 
 void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) {
-	glColor4f(1, 1, 1, 1);
 
-	//log::dbg("drawing texture at %hd, %hd", x, y);
 	eMaterialType::Enum cType; //Use this to help transition to new renderer
-	
-	bool use_playercolors = false;
-	bool use_alphashader = false;
 	struct gamedata::subtexture *mtx;
-
-	int *pos_id, *texcoord_id, *masktexcoord_id;
-
+	struct gamedata::subtexture *tx = this->get_subtexture(subid);
+	
 	//is this texture drawn with an alpha mask?
 	if (this->use_alpha_masking && alpha_subid >= 0 && alpha_texture != nullptr) {
-		alphamask_shader::program->use();
-
-		//bind the alpha mask texture to slot 1
-		glActiveTexture(GL_TEXTURE1);
-		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, alpha_texture->get_texture_id());
-
-		//get the alphamask subtexture (the blend mask!)
 		mtx = alpha_texture->get_subtexture(alpha_subid);
-		pos_id = &alphamask_shader::program->pos_id;
-		texcoord_id = &alphamask_shader::base_coord;
-		masktexcoord_id = &alphamask_shader::mask_coord;
-		use_alphashader = true;
-		
 		cType = eMaterialType::keAlphaMask;
 	}
 	//is this texure drawn with replaced pixels for team coloring?
 	else if (this->use_player_color_tinting) {
-		teamcolor_shader::program->use();
-
-		//set the desired player id in the shader
-		glUniform1i(teamcolor_shader::player_id_var, player);
-		pos_id = &teamcolor_shader::program->pos_id;
-		texcoord_id = &teamcolor_shader::tex_coord;
-		use_playercolors = true;
-		
 		cType = eMaterialType::keColorReplace;
 	}
 	//mkay, we just draw the plain texture otherwise.
 	else {
-		texture_shader::program->use();
-		pos_id = &texture_shader::program->pos_id;
-		texcoord_id = &texture_shader::tex_coord;
-		
 		cType = eMaterialType::keNormal;
 	}
-
-	glActiveTexture(GL_TEXTURE0);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, this->id);
-
-	struct gamedata::subtexture *tx = this->get_subtexture(subid);
 
 	int left, right, top, bottom;
 
@@ -213,12 +176,12 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	bottom  = y      - (tx->h - tx->cy);
 	top     = bottom + tx->h;
 
-	if (not mirrored) {
-		left  = x    - tx->cx;
-		right = left + tx->w;
-	} else {
+	if (mirrored) {
 		left  = x    + tx->cx;
 		right = left - tx->w;
+	} else {
+		left  = x    - tx->cx;
+		right = left + tx->w;
 	}
 
 	//convert the texture boundaries to float
@@ -236,72 +199,11 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	this->get_subtexture_coordinates(tx, &txl, &txr, &txt, &txb);
 
 	float mtxl=0, mtxr=0, mtxt=0, mtxb=0;
-	if (use_alphashader) {
+	if (cType == eMaterialType::keAlphaMask) {
 		alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
 	}
-
-	//this array will be uploaded to the GPU.
-	//it contains all dynamic vertex data (position, tex coordinates, mask coordinates)
-	float vdata[] {
-		leftf,  topf,
-		leftf,  bottomf,
-		rightf, bottomf,
-		rightf, topf,
-		txl,    txt,
-		txl,    txb,
-		txr,    txb,
-		txr,    txt,
-		mtxl,   mtxt,
-		mtxl,   mtxb,
-		mtxr,   mtxb,
-		mtxr,   mtxt
-	};
-
-	//store vertex buffer data, TODO: prepare this sometime earlier.
-	glBindBuffer(GL_ARRAY_BUFFER, this->vertbuf);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vdata), vdata, GL_STREAM_DRAW);
-
-	//enable vertex buffer and bind it to the vertex attribute
-	glEnableVertexAttribArray(*pos_id);
-	glEnableVertexAttribArray(*texcoord_id);
-	if (use_alphashader) {
-		glEnableVertexAttribArray(*masktexcoord_id);
-	}
-
-	//set data types, offsets in the vdata array
-	glVertexAttribPointer(*pos_id,      2, GL_FLOAT, GL_FALSE, 0, (void *)(0));
-	glVertexAttribPointer(*texcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(sizeof(float) * 8));
-	if (use_alphashader) {
-		glVertexAttribPointer(*masktexcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(sizeof(float) * 8 * 2));
-	}
-
 	
-	//draw the vertex array
-	//glDrawArrays(GL_QUADS, 0, 4);
-
-	//unbind the current buffer
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	glDisableVertexAttribArray(*pos_id);
-	glDisableVertexAttribArray(*texcoord_id);
-	if (use_alphashader) {
-		glDisableVertexAttribArray(*masktexcoord_id);
-	}
-
-	//disable the shaders.
-	if (use_playercolors) {
-		teamcolor_shader::program->stopusing();
-	} else if (use_alphashader) {
-		alphamask_shader::program->stopusing();
-		glActiveTexture(GL_TEXTURE1);
-		glDisable(GL_TEXTURE_2D);
-	} else {
-		texture_shader::program->stopusing();
-	}
-
-	glActiveTexture(GL_TEXTURE0);
-	glDisable(GL_TEXTURE_2D);
-	
+	GLint maskID = (cType == eMaterialType::keAlphaMask) ? alpha_texture->get_texture_id() : -1;
 	
 		Renderer::get().submit_quad(render_quad::Create(
 		                            //Position to render to
@@ -314,9 +216,9 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		                            rect::Create(vertex2::Create(mtxl, mtxt),
 												 vertex2::Create(mtxr, mtxb)),
 								    0,        //z-value
-		                            0),       //playerID
+		                            6),       //playerID
 									this->id, //diffuse
-									this->id, //Mask
+									maskID, //Mask
 									cType);
 }
 

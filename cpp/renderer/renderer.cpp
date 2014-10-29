@@ -5,6 +5,8 @@
 
 #include "../util/file.h"
 #include "../util/dir.h"
+#include "../gamedata/color.gen.h"
+
 
 #include <stdio.h>
 
@@ -17,13 +19,13 @@ Renderer *Renderer::instance = NULL;
 GLuint vertbuf;
 
 	
-bool Renderer::create(util::Dir const *data_dir) {
+bool Renderer::create(util::Dir const *data_dir, util::Dir const *asset_dir) {
 	//Idempotent
 	if ( instance != NULL ) return true;
 
 	Renderer *nRenderer = new Renderer();
 	
-	if ( nRenderer->init(data_dir) ) {
+	if ( nRenderer->init(data_dir, asset_dir) ) {
 		instance = nRenderer;
 		return true;
 	}
@@ -43,7 +45,7 @@ Renderer::Renderer() {
 	//Constructor 
 }
 		
-bool Renderer::init(util::Dir const *data_dir) {
+bool Renderer::init(util::Dir const *data_dir, util::Dir const *asset_dir) {
 	const char *shader_file_names[][2] = {
 		{"shaders/maptexture.vert.glsl", "shaders/maptexture.frag.glsl"},
 		{"shaders/maptexture.vert.glsl", "shaders/teamcolors.frag.glsl"},
@@ -74,6 +76,7 @@ bool Renderer::init(util::Dir const *data_dir) {
 		
 		cMaterial.uniformNormalTexture = cMaterial.program->get_uniform_id("texture");
 		cMaterial.uniformMasktexture = cMaterial.program->get_uniform_id("mask_texture");
+		cMaterial.uniformPlayerColors = cMaterial.program->get_uniform_id("player_color");
 		
 		//Needs to be an attribute
 		cMaterial.attributeMaskUV = (cMaterial.program->has_attribute("mask_tex_coordinates")) ?
@@ -83,6 +86,16 @@ bool Renderer::init(util::Dir const *data_dir) {
 		cMaterial.attributeUV = (cMaterial.program->has_attribute("tex_coordinates")) ?
 										cMaterial.program->get_attribute_id("tex_coordinates")
 										: -1;
+
+		cMaterial.attributePlayerCol = (cMaterial.program->has_attribute("player_number")) ?
+										cMaterial.program->get_attribute_id("player_number")
+										: -1;
+		
+		cMaterial.attributeZOrder = (cMaterial.program->has_attribute("z_order")) ?
+										cMaterial.program->get_attribute_id("z_order")
+										: -1;
+		
+		//Fixup material specific
 		
 		cMaterial.program->use();
 		glUniform1i(cMaterial.uniformNormalTexture, 0);
@@ -93,6 +106,27 @@ bool Renderer::init(util::Dir const *data_dir) {
 		delete[] texture_frag_code;
 	}
 	
+	{
+		//fixup material specific normals
+		auto player_color_lines = util::read_csv_file<gamedata::palette_color>(asset_dir->join("player_palette_50500.docx"));
+		
+		GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
+		for (size_t i = 0; i < player_color_lines.size(); i++) {
+			auto line = &player_color_lines[i];
+			playercolors[i*4]     = line->r / 255.0;
+			playercolors[i*4 + 1] = line->g / 255.0;
+			playercolors[i*4 + 2] = line->b / 255.0;
+			playercolors[i*4 + 3] = line->a / 255.0;
+		}
+		
+		
+		//
+		//	TODO: Update these to a 1D texture
+		//
+		materials[eMaterialType::keColorReplace].program->use();
+		glUniform4fv(materials[eMaterialType::keColorReplace].uniformPlayerColors, 64, playercolors);
+		materials[eMaterialType::keColorReplace].program->stopusing();
+	}
 	glGenBuffers(1, &vertbuf);
 	
 	return true;
@@ -110,9 +144,6 @@ void Renderer::submit_quad(render_quad const & quad,
 	
 	//For now we will render to quad immeadiatly (to make the transition easier)
 	
-	//if ( material_type != eMaterialType::keNormal ) return;
-	if ( material_type == eMaterialType::keAlphaMask ) return;
-	
 	//
 	//	Pre rendering per material type
 	//
@@ -121,6 +152,12 @@ void Renderer::submit_quad(render_quad const & quad,
 	case eMaterialType::keNormal: {
 		//Render a normal texture here
 		break;
+	}
+	case eMaterialType::keAlphaMask: {
+		//bind the alpha mask texture to slot 1
+		glActiveTexture(GL_TEXTURE1);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, mask);
 	}
 	default: {
 		//Do nothing here
@@ -144,6 +181,7 @@ void Renderer::submit_quad(render_quad const & quad,
 //	Need to retrieve the attributes from the shaders before we can use them here
 	glEnableVertexAttribArray(current_material.program->pos_id);
 	glEnableVertexAttribArray(current_material.attributeUV);
+
 	
 	//set data types, offsets in the vdata array
 	glVertexAttribPointer(current_material.program->pos_id,
@@ -160,6 +198,38 @@ void Renderer::submit_quad(render_quad const & quad,
 						  sizeof(render_quad::quad_vertex),
 						  (void*)offsetof(render_quad::quad_vertex, uv));
 	
+	if ( material_type == eMaterialType::keAlphaMask ) {
+		glEnableVertexAttribArray(current_material.attributeMaskUV);
+		glVertexAttribPointer(current_material.attributeMaskUV,
+							  2,
+							  GL_FLOAT,
+							  GL_FALSE,
+							  sizeof(render_quad::quad_vertex),
+							  (void*)offsetof(render_quad::quad_vertex, maskUV));
+	}
+	
+	//These checks are temporary
+	if ( current_material.attributePlayerCol != -1 )
+	{
+		glEnableVertexAttribArray(current_material.attributePlayerCol);
+		glVertexAttribPointer(current_material.attributePlayerCol,
+							  1,
+							  GL_UNSIGNED_INT,
+							  GL_FALSE,
+							  sizeof(render_quad::quad_vertex),
+							  (void*)offsetof(render_quad::quad_vertex, playerID));
+	}
+	if ( current_material.attributeZOrder != -1 )
+	{
+		glEnableVertexAttribArray(current_material.attributeZOrder);
+		glVertexAttribPointer(current_material.attributeZOrder,
+							  1,
+							  GL_FLOAT,
+							  GL_FALSE,
+							  sizeof(render_quad::quad_vertex),
+							  (void*)offsetof(render_quad::quad_vertex, zValue));
+	}
+	
 	//Set the masking layer here
 	
 	//draw the vertex array
@@ -167,7 +237,17 @@ void Renderer::submit_quad(render_quad const & quad,
 	
 	glDisableVertexAttribArray(current_material.program->pos_id);
 	glDisableVertexAttribArray(current_material.attributeUV);
-
+	
+	//These checks are temporary
+	if ( current_material.attributePlayerCol != -1 )
+	{
+		glDisableVertexAttribArray(current_material.attributePlayerCol);
+	}
+	if ( current_material.attributeZOrder != -1 )
+	{
+		glDisableVertexAttribArray(current_material.attributeZOrder);
+	}
+	
 	//unbind the current buffer
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	
@@ -180,6 +260,12 @@ void Renderer::submit_quad(render_quad const & quad,
 	case eMaterialType::keNormal: {
 		//Render a normal texture here
 		break;
+	}
+	case eMaterialType::keAlphaMask: {
+		glDisableVertexAttribArray(current_material.attributeMaskUV);
+		
+		glActiveTexture(GL_TEXTURE1);
+		glDisable(GL_TEXTURE_2D);
 	}
 	default: {
 		//Do nothing here

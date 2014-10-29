@@ -237,7 +237,7 @@ GameMain::GameMain(Engine *engine)
 	// shader initialisation
 	// read shader source codes and create shader objects for wrapping them.
 
-	graphics::Renderer::create(data_dir);
+	graphics::Renderer::create(data_dir, &asset_dir);
 		
 	char *texture_vert_code;
 	util::read_whole_file(&texture_vert_code, data_dir->join("shaders/maptexture.vert.glsl"));

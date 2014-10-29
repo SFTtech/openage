@@ -105,9 +105,13 @@ struct material {
 	shader::Program *program;
 	GLint uniformNormalTexture;
 	GLint uniformMasktexture;
+	GLint uniformPlayerColors;
 	
 	GLint attributeUV;
 	GLint attributeMaskUV;
+	
+	GLint attributePlayerCol;
+	GLint attributeZOrder;
 };
 	
 class Renderer {
@@ -119,13 +123,13 @@ public:
 	
 	void render ();
 	
-	static bool create (util::Dir const *data_dir);
+	static bool create (util::Dir const *data_dir, util::Dir const *asset_dir);
 	static Renderer &get();
 	
 private:
 
 	Renderer ();
-	bool init (util::Dir const *data_dir);
+	bool init (util::Dir const *data_dir, util::Dir const *asset_dir);
 	
 	Renderer(const Renderer &copy) = delete;
 	Renderer &operator=(const Renderer &copy) = delete;

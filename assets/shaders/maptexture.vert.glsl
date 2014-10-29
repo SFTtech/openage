@@ -10,8 +10,11 @@ attribute vec4 vertex_position;
 //the texture coordinates assigned to this vertex
 attribute vec2 tex_coordinates;
 
+attribute float player_number;
+
 //interpolated texture coordinates sent to fragment shader
 varying vec2 tex_position;
+varying float vplayer_number;
 
 void main(void) {
 	//transform the vertex coordinates
@@ -19,4 +22,5 @@ void main(void) {
 
 	//pass the fix points for texture coordinates set at this vertex
 	tex_position = tex_coordinates;
+	vplayer_number = player_number;	
 }
