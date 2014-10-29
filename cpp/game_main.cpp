@@ -168,7 +168,7 @@ GameMain::GameMain(Engine *engine)
 		);
 
 		TestBuilding *newbuilding = new TestBuilding{
-			new Texture{tex_full_filename, true, PLAYERCOLORED},
+			new Texture{tex_full_filename, true},
 			building.name,
 			foundation_size,
 			building.terrain_id,
@@ -563,7 +563,7 @@ bool GameMain::on_drawhud() {
 	Engine &e = Engine::get();
 
 	// draw the currently selected editor texture tile
-	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud());
+	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
 
 	// and the current active building
 	coord::window bpreview_pos;

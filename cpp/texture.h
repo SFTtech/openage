@@ -57,13 +57,13 @@ public:
 	 */
 	size_t atlas_dimensions;
 
-	Texture(std::string filename, bool use_metafile = false, unsigned int mode = 0);
+	Texture(std::string filename, bool use_metafile = false);
 	~Texture();
 
-	void draw(coord::camhud pos, bool mirrored = false, int subid = 0, unsigned player = 0);
-	void draw(coord::camgame pos, bool mirrored = false, int subid = 0, unsigned player = 0);
-	void draw(coord::tile pos, int subid, Texture *alpha_texture = nullptr, int alpha_subid = -1);
-	void draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid);
+	void draw(coord::camhud pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0);
+	void draw(coord::camgame pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0);
+	void draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture = nullptr, int alpha_subid = -1);
+	void draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid);
 
 	struct gamedata::subtexture *get_subtexture(int subid);
 	int get_subtexture_count();
@@ -105,8 +105,6 @@ private:
 	GLuint id, vertbuf;
 	std::vector<gamedata::subtexture>subtextures;
 	size_t subtexture_count;
-	bool use_player_color_tinting;
-	bool use_alpha_masking;
 };
 
 } //namespace openage

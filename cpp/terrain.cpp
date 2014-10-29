@@ -71,7 +71,7 @@ Terrain::Terrain(util::Dir &asset_dir,
 		std::string terraintex_filename_str{terraintex_filename};
 		delete[] terraintex_filename;
 
-		auto new_texture = new Texture(terraintex_filename_str, true, ALPHAMASKED);
+		auto new_texture = new Texture(terraintex_filename_str, true);
 
 		// TODO: hotspot fixing should be done in convert script.
 		new_texture->fix_hotspots(48, 24);
@@ -366,7 +366,7 @@ void Terrain::draw(Engine *engine) {
 			int      subtexture_id = layer->subtexture_id;
 			Texture *mask_texture  = layer->mask_tex;
 
-			texture->draw(tile_pos, subtexture_id, mask_texture, mask_id);
+			texture->draw(tile_pos, ALPHAMASKED, subtexture_id, mask_texture, mask_id);
 		}
 	}
 
