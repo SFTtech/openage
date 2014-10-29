@@ -10,28 +10,30 @@
 namespace openage {
 namespace job {
 
-// forward declaration of JobManager
 class JobManager;
 
 /**
- * A job is a wrapper around a shared job state object and is returned the job
- * manager. It can be used to retrieve the current state of the job and its
- * result.
+ * A Job is a wrapper around a shared job state object and is returned by the
+ * JobManager. It can be used to retrieve the current state of the Job and its
+ * result. 
+ * A Job is a lightweight object which only contains a pointer to its internal
+ * shared state. Thus it can be copied around without worrying about
+ * performance. Further it is not necessary to create or pass pointers to Job
+ * objects.
+ *
+ * @param T the type that is returned by the Job
  */
 template<class T>
 class Job {
 private:
+	/** A shared pointer to the Job's shared state. */
 	std::shared_ptr<JobState<T>> state;
 
 public:
-	/*
-	 * Creates an empty job object that is not bound to any state.
-	 */
+	/* Creates an empty Job object that is not bound to any state. */
 	Job() = default;
 
-	/**
-	 * Returns whether this job has finished.
-	 */
+	/** Returns whether this Job has finished. */
 	bool is_finished() const {
 		if (this->state) {
 			return this->state->finished.load();
@@ -40,9 +42,9 @@ public:
 	}
 
 	/**
-	 * Returns this job's result if the background execution was successful.
-	 * Exceptions that have happened will be rethrown.
-	 * It must not be called is is_finished() returns true.
+	 * Returns this Job's result if the background execution was successful. If
+	 * an exception has happened, it will be rethrown. This method must not be
+	 * called, if the Job's execution has not yet finished.
 	 */
 	T get_result() {
 		assert(this->state->finished.load());
@@ -54,13 +56,19 @@ public:
 	}
 
 private:
-	// assign a JobState to this job, this can be only done by the JobManager
-	// itself
+	/**
+	 * Creates a Job with the given shared state. This method may only be called
+	 * by the JobManager.
+	 */
 	Job(std::shared_ptr<JobState<T>> state)
 			:
 			state{state} {
 	}
 	
+	/*
+	 * JobManager has to be a friend of Job in order to access the private
+	 * constructor.
+	 */
 	friend class JobManager;
 };
 

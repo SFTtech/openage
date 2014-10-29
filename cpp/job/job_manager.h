@@ -14,27 +14,35 @@
 namespace openage {
 namespace job {
 
+/**
+ * A JobManager can be used to execute functions within a separate worker
+ * threads.
+ */
 class JobManager {
 private:
-	// number of worker threads
+	/** The number of internal worker threads. */
 	int number_of_workers;
-	// all worker threads
+
+	/** A vector of all worker threads. */
 	std::vector<std::thread> workers;
 
-	// the mutex to synchronize the queue
+	/** A mutex to synchronize accesses to the internal JobState queue. */
 	std::mutex queue_mtx;
-	// whether there are jobs available at the moment
+
+	/** A condition variable, whether jobs are currently available or not. */
 	std::condition_variable jobs_available;
-	// queue of pending jobs
+
+	/** A queue of JobStates that are to be executed. */
 	std::queue<std::shared_ptr<BaseJobState>> pending_jobs;
 
+	/** Whether the JobManager is currently running. */
 	std::atomic_bool is_running;
 
 public:
-	/**
-	 * Create a new job manager with a specified number of worker threads.
-	 */
+	/** Create a new job manager with a specified number of worker threads. */
 	JobManager(int number_of_workers);
+
+	/** Default destructor. */
 	~JobManager() = default;
 
 	JobManager(const JobManager&) = delete;
@@ -43,19 +51,19 @@ public:
 	JobManager &operator=(const JobManager&) = delete;
 	JobManager &operator=(JobManager&&) = delete;
 
-	/**
-	 * Start the job manager's workers.
-	 */
+	/** Start the JobManager's worker threads. */
 	void start();
 
 	/**
-	 * Stop the job manager's workers. This method joins all workers.
+	 * Stop the JobManagers's worker threads. This method blocks until all
+	 * currently working threads have finished.
 	 */
 	void stop();
 
 	/**
-	 * Enqueues the given function into the job manager's queue, so that it will
-	 * be dispatched by one of the worker threads.
+	 * Enqueues the given function into the JobManagers's queue, so that it will
+	 * be dispatched by one of the worker threads. A lightweight Job object is
+	 * returned, that allows to keep track of the Job's state.
 	 */
 	template<class T>
 	Job<T> enqueue(std::function<T()> function) {
@@ -69,7 +77,10 @@ public:
 	}
 
 private:
-	// this function will be passed to all worker threads
+	/**
+	 * This function is passed to all worker threads, takes Job's from the
+	 * internal queue and executes them.
+	 */
 	void dispatch_queue();
 };
 
