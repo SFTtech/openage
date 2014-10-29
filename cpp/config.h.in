@@ -1,5 +1,5 @@
-#ifndef OPENAGE_CONFIG_H_CF1EC8DE52D54383A612B525E7E2E4A4
-#define OPENAGE_CONFIG_H_CF1EC8DE52D54383A612B525E7E2E4A4
+#ifndef OPENAGE_CONFIG_H_
+#define OPENAGE_CONFIG_H_
 
 namespace openage {
 namespace config {
@@ -15,4 +15,4 @@ constexpr const char *version = "${PROJECT_VERSION}";
 } // namespace config
 } // namespace openage
 
-#endif // _CONFIG_H_
+#endif
