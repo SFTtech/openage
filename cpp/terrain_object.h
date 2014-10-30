@@ -29,12 +29,14 @@ terrain object class represents one immobile object on the map (building, trees,
 */
 class TerrainObject {
 public:
-	TerrainObject(Texture *tex, coord::tile_delta foundation_size, unsigned player);
+	TerrainObject(Texture *tex, coord::tile_delta foundation_size, unsigned player, int sound_id_destruction);
 	~TerrainObject();
 
 	coord::tile start_pos;
 	coord::phys3 draw_pos;
 	coord::tile end_pos;
+
+	int sound_id_destruction;
 
 	/**
 	 * tests whether this terrain object will fit at the given position.
