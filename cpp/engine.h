@@ -15,6 +15,7 @@
 #include "job/job_manager.h"
 #include "util/dir.h"
 #include "util/fps.h"
+#include "screenshot.h"
 
 namespace openage {
 
@@ -107,12 +108,6 @@ public:
 	bool on_resize(coord::window new_size);
 
 	/**
-	 * save the current framebuffer to a given png file.
-	 * @param filename the file where the picture will be saved to.
-	 */
-	void save_screenshot(const char* filename);
-
-	/**
 	 * draw the current frames per second number on screen.
 	 */
 	bool draw_fps();
@@ -156,6 +151,11 @@ public:
 	 * return this engine's audio manager.
 	 */
 	audio::AudioManager &get_audio_manager();
+
+	/**
+	* return this engine's screenshot manager.
+	*/
+	ScreenshotManager &get_screenshot_manager();
 
 	/**
 	 * return the core input handler of the engine.
@@ -253,6 +253,11 @@ private:
 	 * the frame counter measuring fps.
 	 */
 	util::FrameCounter fpscounter;
+
+	/**
+	* the engine's screenshot manager.
+	*/
+	ScreenshotManager screenshot_manager;
 
 	/**
 	 * the engine's audio manager.
