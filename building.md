@@ -70,6 +70,16 @@ If you already have python3 or one of packman/games repositories then no need to
     zypper refresh
     zypper install --no-recommends cmake fontconfig-devel ftgl-devel gcc-c++ glew-devel libfreetype6 libogg-devel libopus-devel libSDL2-devel libSDL2_image-devel opusfile-devel opus-tools python3-devel python3-numpy python3-Pillow
 
+### Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)
+
+ - Install [homebrew](brew.sh). Other package managers and building from source might also work, but aren't supported as of now. If you figure out fixes for those other options, you're welcome to open pullrequests, as long as the homebrew build doesn't break.
+ - Install the needed fonts (e.g. using [homebrew-cask](https://github.com/caskroom/homebrew-cask)).
+ - `brew tap homebrew/python`
+ - `brew update`
+ - `brew install python3 glew ftgl freetype fontconfig cmake sdl2 sdl2_image opus opus-tools opusfile`
+ - `brew install numpy --with-python3`
+ - `brew install pillow --with-python3`
+
 ## Build procedure
 
 ### For developers/users who want to try the project
@@ -123,8 +133,6 @@ If you already have python3 or one of packman/games repositories then no need to
     directory.
  - I get compiler errors about missing header files
   - Make sure to install the developer version (including header files) of the library in question.
- - I'm trying to build on OSX
-  - See [this discussion](https://github.com/SFTtech/openage/issues/16)
 
 
 ## FAQ
