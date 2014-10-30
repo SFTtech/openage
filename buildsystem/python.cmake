@@ -5,22 +5,7 @@
 # for an example usage, see py/openage/convert/CMakeLists.txt
 
 function(python_init)
-	# cmake 2.8 compatibility
-	set(Python_ADDITIONAL_VERSIONS 3.4)
-	# find py libs
-	find_package(PythonLibs 3.3 REQUIRED)
-
-	# on some distros (ubuntu 13.10) there seems to be additional clutter at the end,
-	# which needs to be stripped to prevent find_package(PythonInterp) from erroring.
-	if(PYTHONLIBS_VERSION_STRING MATCHES "^([0-9]+\\.[0-9]+\\.[0-9]+)([^0-9].*)?$")
-		set(PYTHON_SANITIZED_VERSION "${CMAKE_MATCH_1}")
-	else()
-		message(WARNING "PYTHONLIBS_VERSION_STRING is ${PYTHONLIBS_VERSION_STRING}, expected major.minor.patch*")
-		set(PYTHON_SANITIZED_VERSION "${PYTHONLIBS_VERSION_STRING}")
-	endif()
-
-	# look for the py interpreter that fits to the py libs
-	find_package(PythonInterp "${PYTHON_SANITIZED_VERSION}" EXACT REQUIRED)
+	find_package(Python 3.3 REQUIRED)
 
 	# these following lists are filled by the add_py_package and add_pyext_module functions:
 	set_property(GLOBAL PROPERTY "SFT_PY_PACKAGES")
