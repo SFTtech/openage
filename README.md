@@ -12,8 +12,6 @@ To play, you require *an original AoE II installation or [AoE II: HD](http://sto
 
 [![Bountysource](https://www.bountysource.com/badge/team?team_id=6026&style=bounties_received)](https://www.bountysource.com/teams/sfttech/issues?utm_source=SFTtech&utm_medium=shield&utm_campaign=bounties_received)
 
-[Feeling overburdened by money? ![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=the0jj&url=https://github.com/SFTtech/openage&title=openage&tags=github&category=software)
-
 
 The foundation of **openage**:
 
