@@ -6,34 +6,34 @@ A copy of the license can be found in [legal/GPLV3](legal/GPLv3).
 
 _the openage authors_ are:
 
-| Full name                   | aliases                    | E-Mail                        |
-|-----------------------------|----------------------------|-------------------------------|
-| Jonas Jelten                | TheJJ                      | jj@sft.mx                     |
-| Michael Enßlin              | mic_e                      | michael@ensslin.cc            |
-| Andre Kupka                 | freakout                   | kupka@in.tum.de               |
-| Frank Schmidt               | gellardo                   | rubiccuber@googlemail.com     |
-| Markus Otto                 | zuntrax                    | otto@fs.tum.de                |
-| Sascha Vincent Kurowski     |                            | svkurowski@gmail.com          |
-| James Mintram               |                            | jamesmintram@gmail.com        |
-| Martin McGrath              |                            | mcgrath.martin@gmail.com      |
-| René Kooi                   | goto-bus-stop              | rene@kooi.me                  |
-| Markus Elfring              |                            | elfring@users.sourceforge.net |
-| Jimmy Berry                 | boombatower                | jimmy@boombatower.com         |
-| João Roque                  |                            | joaoroque@gmail.com           |
-| Julius Michaelis            | jcaesar                    | gitter@liftm.de               |
-| Matthias Bogad              | delirium, materofjellyfish | matthias@bogad.at             |
-| Oliver Fawcett-Griffiths    | ollyfg                     | olly@ollyfg.com               |
-| Ross Murray                 |                            | rm@egoorb.com                 |
-| Alexandre Arpin             |                            | arpin.alexandre@gmail.com     |
-| Henry Snoek                 | snoek09                    | ?                             |
-| ?                           | gasche                     | gasche.dylc@gmail.com         |
-| ?                           |                            | awestin1@gmail.com            |
+| Full name                   | aliases                    | E-Mail                           |
+|-----------------------------|----------------------------|----------------------------------|
+| Jonas Jelten                | TheJJ                      | jj@sft.mx                        |
+| Michael Enßlin              | mic_e                      | michael@ensslin.cc               |
+| Andre Kupka                 | freakout                   | kupka@in.tum.de                  |
+| Frank Schmidt               | gellardo                   | rubiccuber@googlemail.com        |
+| Markus Otto                 | zuntrax                    | otto@fs.tum.de                   |
+| Sascha Vincent Kurowski     | svkurowski                 | svkurowski@gmail.com             |
+| James Mintram               | JimmyJazz                  | jamesmintram@gmail.com           |
+| Martin McGrath              | MartinMcGrath              | mcgrath.martin@gmail.com         |
+| René Kooi                   | goto-bus-stop              | rene@kooi.me                     |
+| Markus Elfring              | elfring                    | elfring@users.sourceforge.net    |
+| Jimmy Berry                 | boombatower                | jimmy@boombatower.com            |
+| João Roque                  | joaoroque                  | joaoroque@gmail.com              |
+| Julius Michaelis            | jcaesar                    | gitter@liftm.de                  |
+| Matthias Bogad              | delirium, materofjellyfish | matthias@bogad.at                |
+| Oliver Fawcett-Griffiths    | ollyfg                     | olly@ollyfg.com                  |
+| Ross Murray                 | rossmurray                 | rm@egoorb.com                    |
+| Alexandre Arpin             | AlexandreArpin             | arpin.alexandre@gmail.com        |
+| Henry Snoek                 | snoek09                    | ?                                |
+| ?                           | gasche                     | gasche.dylc@gmail.com            |
+| ?                           | awestin1                   | awestin1@gmail.com               |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
 
 For some authors, the full names and/or e-mail addresses are unknown. They have
-been marked by <?>. Luckily, those author's contributions are only small typo
+been marked by "?". Luckily, those author's contributions are only small typo
 fixes, so no copyright concerns should arise from this.
 If your info is missing, wrong, or you want it to be removed for whatever
 reason, please contact us.
