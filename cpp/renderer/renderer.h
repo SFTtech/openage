@@ -114,6 +114,8 @@ struct material {
 	GLint attributeZOrder;
 };
 	
+
+	
 class Renderer {
 public:
 	void submit_quad (render_quad const & quad,
@@ -137,8 +139,19 @@ private:
 	Renderer &operator=(Renderer &&other) = delete;
 	
 private:
+	struct render_token_struct {
+		short matType;
+		short diffuse;
+		short mask;
+		short idx;
+	} ;
+	
+	typedef unsigned long long render_token;
+	
 	typedef std::vector<render_quad> render_quad_list;
-	render_quad_list render_queue;
+	typedef std::vector<render_token> render_queue_list;
+	render_quad_list render_buffer;
+	render_queue_list render_queue;
 	
 	material materials[eMaterialType::keCount];
 	

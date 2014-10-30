@@ -136,52 +136,71 @@ void Renderer::submit_quad(render_quad const & quad,
                            GLint diffuse,
                            GLint mask,
                            eMaterialType::Enum material_type) {
-	//Stuff data into vertex buffer
 	
 	//Generate a renderer key from
 	//	MaterialType(16bit) | {textureHandle(16bit) | maskHandle(16bit)} | QuadIdx (16bit)
 	
+	int cIndex = render_queue.size();
 	
-	//For now we will render to quad immeadiatly (to make the transition easier)
+	render_token_struct pData = {
+			(short)material_type,
+			(short)diffuse,
+			(short)mask,
+			(short)cIndex
+	};
 	
-	//
-	//	Pre rendering per material type
-	//
+	//Pack this into a 64bit unsigned long
+	render_token nToken = *((render_token*)&pData);
+	render_queue.push_back(nToken);
+	render_buffer.push_back(quad);
+	
+	//Render immediately for testing purposes
+	render();
+	
+}
+
+void Renderer::render() {
+	
+	//Unpack with
+	render_token_struct renderCommand = *((render_token_struct*)&render_queue[0]);
+	render_quad quad = render_buffer[0];
+	
+	eMaterialType::Enum material_type = (eMaterialType::Enum)renderCommand.matType;
+	material current_material = materials[material_type];
 	
 	switch (material_type) {
-	case eMaterialType::keNormal: {
-		//Render a normal texture here
-		break;
-	}
-	case eMaterialType::keAlphaMask: {
-		//bind the alpha mask texture to slot 1
-		glActiveTexture(GL_TEXTURE1);
-		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, mask);
-	}
-	default: {
-		//Do nothing here
-		break;
-	}
+		case eMaterialType::keNormal: {
+			//Render a normal texture here
+			break;
+		}
+		case eMaterialType::keAlphaMask: {
+			//bind the alpha mask texture to slot 1
+			glActiveTexture(GL_TEXTURE1);
+			glEnable(GL_TEXTURE_2D);
+			glBindTexture(GL_TEXTURE_2D, renderCommand.mask);
+		}
+		default: {
+			//Do nothing here
+			break;
+		}
 	}
 	
-	material current_material = materials[material_type];
 	
 	current_material.program->use();
 	
 	glActiveTexture(GL_TEXTURE0);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, diffuse);
+	glBindTexture(GL_TEXTURE_2D, renderCommand.diffuse);
 	
 	//Bind vertex buffers here
 	glBindBuffer(GL_ARRAY_BUFFER, vertbuf);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(render_quad), &quad.vertices, GL_STREAM_DRAW);
 	
-
-//	Need to retrieve the attributes from the shaders before we can use them here
+	
+	//	Need to retrieve the attributes from the shaders before we can use them here
 	glEnableVertexAttribArray(current_material.program->pos_id);
 	glEnableVertexAttribArray(current_material.attributeUV);
-
+	
 	
 	//set data types, offsets in the vdata array
 	glVertexAttribPointer(current_material.program->pos_id,
@@ -230,7 +249,9 @@ void Renderer::submit_quad(render_quad const & quad,
 							  (void*)offsetof(render_quad::quad_vertex, zValue));
 	}
 	
-	//Set the masking layer here
+	
+	
+	
 	
 	//draw the vertex array
 	glDrawArrays(GL_QUADS, 0, 4);
@@ -257,27 +278,35 @@ void Renderer::submit_quad(render_quad const & quad,
 	//	Post rendering per material type
 	//
 	switch (material_type) {
-	case eMaterialType::keNormal: {
-		//Render a normal texture here
-		break;
-	}
-	case eMaterialType::keAlphaMask: {
-		glDisableVertexAttribArray(current_material.attributeMaskUV);
-		
-		glActiveTexture(GL_TEXTURE1);
-		glDisable(GL_TEXTURE_2D);
-	}
-	default: {
-		//Do nothing here
-		break;
-	}
+		case eMaterialType::keNormal: {
+			//Render a normal texture here
+			break;
+		}
+		case eMaterialType::keAlphaMask: {
+			glDisableVertexAttribArray(current_material.attributeMaskUV);
+			
+			glActiveTexture(GL_TEXTURE1);
+			glDisable(GL_TEXTURE_2D);
+		}
+		default: {
+			//Do nothing here
+			break;
+		}
 	}
 	
 	glActiveTexture(GL_TEXTURE0);
 	glDisable(GL_TEXTURE_2D);
-}
-
-void Renderer::render() {
+	
+	
+	render_queue.clear();
+	render_buffer.clear();
+	
+	
+	
+	
+	
+	//--TODO
+	
 	//Sort the renderlist
 	//Build the index buffer (dependent on sorting order of quads)
 	//	Build a vector of *boundries* used when rendering
