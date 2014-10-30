@@ -386,18 +386,17 @@ bool GameMain::on_input(SDL_Event *e) {
 			if (obj != nullptr) {
 				obj->remove();
 				this->placed_buildings.erase(obj);
+				this->available_sounds[obj->sound_id_destruction].play();
 				delete obj;
 
-				// TODO: play destruction sound
-				//int rand = util::random_range(0, obj->destruction_snd_count + 1);
-				//sounds[rand].play()
 			} else {
 				TestBuilding *newbuilding = this->available_buildings[this->editor_current_building];
 				int coloring = util::random_range(1, 8 + 1);
 				TerrainObject *newobj = new TerrainObject(
 					newbuilding->texture,
 					newbuilding->foundation_size,
-					coloring
+					coloring,
+					newbuilding->sound_id_destruction
 				);
 
 				// try to place the obj, it knows best whether it will fit.
