@@ -6,33 +6,31 @@ A copy of the license can be found in [legal/GPLV3](legal/GPLv3).
 
 _the openage authors_ are:
 
- - Jonas Jelten <TheJJ, jj@sft.mx>
- - Michael Enßlin <mic_e, michael@ensslin.cc>
- - Andre Kupka <freakout, kupka@in.tum.de>
- - Frank Schmidt <gellardo, rubiccuber@googlemail.com>
- - Markus Otto <zuntrax, otto@fs.tum.de>
- - Sascha Vincent Kurowski <svkurowski@gmail.com>
- - James Mintram <jamesmintram@gmail.com>
- - Martin McGrath <mcgrath.martin@gmail.com>
- - René Kooi <goto-bus-stop, rene@kooi.me>
- - Markus Elfring <elfring@users.sourceforge.net>
- - Jimmy Berry <boombatower, jimmy@boombatower.com>
- - João Roque <joaoroque@gmail.com>
- - Julius Michaelis <jcaesar, gitter@liftm.de>
- - Matthias Bogad <delirium, materofjellyfish, matthias@bogad.at>
- - Oliver Fawcett-Griffiths <ollyfg, olly@ollyfg.com>
- - Ross Murray <rm@egoorb.com>
- - Alexandre Arpin <arpin.alexandre@gmail.com>
- - Henry Snoek <snoek09, <?>>
- - <?> <gasche, gasche.dylc@gmail.com>
- - <?> <awestin1@gmail.com>
+| Full name                   | aliases                    | E-Mail                        |
+|-----------------------------|----------------------------|-------------------------------|
+| Jonas Jelten                | TheJJ                      | jj@sft.mx                     |
+| Michael Enßlin              | mic_e                      | michael@ensslin.cc            |
+| Andre Kupka                 | freakout                   | kupka@in.tum.de               |
+| Frank Schmidt               | gellardo                   | rubiccuber@googlemail.com     |
+| Markus Otto                 | zuntrax                    | otto@fs.tum.de                |
+| Sascha Vincent Kurowski     |                            | svkurowski@gmail.com          |
+| James Mintram               |                            | jamesmintram@gmail.com        |
+| Martin McGrath              |                            | mcgrath.martin@gmail.com      |
+| René Kooi                   | goto-bus-stop              | rene@kooi.me                  |
+| Markus Elfring              |                            | elfring@users.sourceforge.net |
+| Jimmy Berry                 | boombatower                | jimmy@boombatower.com         |
+| João Roque                  |                            | joaoroque@gmail.com           |
+| Julius Michaelis            | jcaesar                    | gitter@liftm.de               |
+| Matthias Bogad              | delirium, materofjellyfish | matthias@bogad.at             |
+| Oliver Fawcett-Griffiths    | ollyfg                     | olly@ollyfg.com               |
+| Ross Murray                 |                            | rm@egoorb.com                 |
+| Alexandre Arpin             |                            | arpin.alexandre@gmail.com     |
+| Henry Snoek                 | snoek09                    | ?                             |
+| ?                           | gasche                     | gasche.dylc@gmail.com         |
+| ?                           |                            | awestin1@gmail.com            |
 
-If you're a first-time commiter, add
-
-     Your Full Name <non-obvious aliases/nicknames, email address>
-
-to the above list. This is not only for legal reasons, but also to keep an
-overview of all those nicknames.
+If you're a first-time commiter, add yourself to the above list. This is not
+just for legal reasons, but also to keep an overview of all those nicknames.
 
 For some authors, the full names and/or e-mail addresses are unknown. They have
 been marked by <?>. Luckily, those author's contributions are only small typo
@@ -109,7 +107,7 @@ cmake modules ([BSD 3-clause license](legal/BSD-3-clause))
 Notes about this file:
 
 I (mic_e) am not a lawyer. This is an open-source project, we're doing this for
-fun. People convinced me that this legal shit needs doing, so I did it, even
+fun. People convinced me that this legal shit must be done, so I did it, even
 though I'd rather have spent the time on useful parts of the project.
 If you see any legal issues, feel free to contact me.
 I, personally, despise in-sourcefile legal text blocks. They're a pest,
