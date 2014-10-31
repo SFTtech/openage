@@ -845,8 +845,8 @@ class GeneratedFile:
         },
         "struct": {
             "file_suffix": ".gen.h",
-            "content_prefix": Template("""#ifndef OPENAGE_${header_guard}_H_
-#define OPENAGE_${header_guard}_H_
+            "content_prefix": Template("""#ifndef OPENAGE_${header_guard}_GEN_H_
+#define OPENAGE_${header_guard}_GEN_H_
 
 ${headers}
 %s
@@ -857,7 +857,7 @@ namespace ${namespace} {
             "content_suffix": Template("""
 } //namespace ${namespace}
 
-#endif // _${header_guard}_H_
+#endif
 """),
         },
         "structimpl": {
