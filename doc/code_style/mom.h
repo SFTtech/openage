@@ -1,6 +1,12 @@
 #ifndef OPENAGE_DOC_CODESTYLE_MOM_H_
 #define OPENAGE_DOC_CODESTYLE_MOM_H_
 
+// .h files that don't need header guards shouldn't exist.
+// if they are necessary, they must be explicitly marked with a comment
+// of the following format:
+
+// has no header guard: including your mom _twice_ would be impossible anyway.
+
 #include <stdint.h>
 
 // see `mom.cpp` for the code style entry point.
