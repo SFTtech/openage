@@ -224,7 +224,7 @@ bool Engine::draw_debug_overlay() {
 	// Draw version string in the lower left corner
 	this->dejavuserif20->render(
 		5, 15,
-		"openage version %s", config::version
+		"openage %s", config::version
 	);
 
 	return true;
