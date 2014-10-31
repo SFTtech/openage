@@ -59,6 +59,7 @@ Engine &Engine::get() {
 Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	:
 	running(false),
+	drawing_fps(true),
 	window_size{800, 600},
 	camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0},
 	camgame_window{400, 300},
@@ -208,12 +209,18 @@ bool Engine::on_resize(coord::window new_size) {
 }
 
 bool Engine::draw_fps() {
-	//draw FPS counter
 	util::col {255, 255, 255, 255}.use();
 
+	// Draw FPS counter in the lower right corner
 	this->dejavuserif20->render(
 		this->window_size.x - 100, 15,
 		"%.1f fps", this->fpscounter.fps
+	);
+
+	// Draw version string in the lower left corner
+	this->dejavuserif20->render(
+		5, 15,
+		"openage version %s", config::version
 	);
 
 	return true;
@@ -321,7 +328,11 @@ void Engine::loop() {
 			// the hud coordinate system is automatically established
 
 			// draw the fps overlay
-			this->draw_fps();
+
+			if (this->drawing_fps)
+			{
+				this->draw_fps();
+			}
 
 			// invoke all hud drawing callback methods
 			for (auto &action : this->on_drawhud) {
