@@ -7,7 +7,7 @@
 #include "../util/dir.h"
 #include "../gamedata/color.gen.h"
 
-
+#include <algorithm>
 #include <stdio.h>
 
 namespace openage {
@@ -155,155 +155,152 @@ void Renderer::submit_quad(render_quad const & quad,
 	render_buffer.push_back(quad);
 	
 	//Render immediately for testing purposes
-	render();
+	//render();
 	
 }
 
 void Renderer::render() {
+	int quadCount = render_queue.size();
+	int bufferSize = sizeof(render_quad) * quadCount;
 	
-	//Unpack with
-	render_token_struct renderCommand = *((render_token_struct*)&render_queue[0]);
-	render_quad quad = render_buffer[0];
+	glClearDepth(0);
+	glDepthMask(true);
 	
-	eMaterialType::Enum material_type = (eMaterialType::Enum)renderCommand.matType;
-	material current_material = materials[material_type];
+
+	glEnable (GL_DEPTH_TEST);
+	glDepthFunc(GL_GEQUAL);
+
+	glClear(GL_DEPTH_BUFFER_BIT);
 	
-	switch (material_type) {
-		case eMaterialType::keNormal: {
-			//Render a normal texture here
-			break;
-		}
-		case eMaterialType::keAlphaMask: {
-			//bind the alpha mask texture to slot 1
-			glActiveTexture(GL_TEXTURE1);
-			glEnable(GL_TEXTURE_2D);
-			glBindTexture(GL_TEXTURE_2D, renderCommand.mask);
-		}
-		default: {
-			//Do nothing here
-			break;
-		}
-	}
+	glBindBuffer(GL_ARRAY_BUFFER, vertbuf);
+	glBufferData(GL_ARRAY_BUFFER, bufferSize, &render_buffer[0].vertices, GL_STREAM_DRAW);
 	
-	
-	current_material.program->use();
+	//Sort the draw calls
+	std::sort(render_queue.begin(), render_queue.end());
 	
 	glActiveTexture(GL_TEXTURE0);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, renderCommand.diffuse);
 	
-	//Bind vertex buffers here
-	glBindBuffer(GL_ARRAY_BUFFER, vertbuf);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(render_quad), &quad.vertices, GL_STREAM_DRAW);
+	for ( int cMaterial = 0; cMaterial < eMaterialType::keCount; cMaterial++)
+	{
+		
+		eMaterialType::Enum material_type = (eMaterialType::Enum)cMaterial;
+		material current_material = materials[material_type];
 	
-	
-	//	Need to retrieve the attributes from the shaders before we can use them here
-	glEnableVertexAttribArray(current_material.program->pos_id);
-	glEnableVertexAttribArray(current_material.attributeUV);
-	
-	
-	//set data types, offsets in the vdata array
-	glVertexAttribPointer(current_material.program->pos_id,
-						  2,
-						  GL_FLOAT,
-						  GL_FALSE,
-						  sizeof(render_quad::quad_vertex),
-						  (void*)offsetof(render_quad::quad_vertex, pos));
-	
-	glVertexAttribPointer(current_material.attributeUV,
-						  2,
-						  GL_FLOAT,
-						  GL_FALSE,
-						  sizeof(render_quad::quad_vertex),
-						  (void*)offsetof(render_quad::quad_vertex, uv));
-	
-	if ( material_type == eMaterialType::keAlphaMask ) {
-		glEnableVertexAttribArray(current_material.attributeMaskUV);
-		glVertexAttribPointer(current_material.attributeMaskUV,
+		//if (material_type == eMaterialType::keNormal) continue;
+		
+		current_material.program->use();
+		
+		//	Need to retrieve the attributes from the shaders before we can use them here
+		glEnableVertexAttribArray(current_material.program->pos_id);
+		glEnableVertexAttribArray(current_material.attributeUV);
+		
+		//set data types, offsets in the vdata array
+		glVertexAttribPointer(current_material.program->pos_id,
 							  2,
 							  GL_FLOAT,
 							  GL_FALSE,
 							  sizeof(render_quad::quad_vertex),
-							  (void*)offsetof(render_quad::quad_vertex, maskUV));
-	}
-	
-	//These checks are temporary
-	if ( current_material.attributePlayerCol != -1 )
-	{
-		glEnableVertexAttribArray(current_material.attributePlayerCol);
-		glVertexAttribPointer(current_material.attributePlayerCol,
-							  1,
-							  GL_UNSIGNED_INT,
-							  GL_FALSE,
-							  sizeof(render_quad::quad_vertex),
-							  (void*)offsetof(render_quad::quad_vertex, playerID));
-	}
-	if ( current_material.attributeZOrder != -1 )
-	{
-		glEnableVertexAttribArray(current_material.attributeZOrder);
-		glVertexAttribPointer(current_material.attributeZOrder,
-							  1,
+							  (void*)offsetof(render_quad::quad_vertex, pos));
+		
+		glVertexAttribPointer(current_material.attributeUV,
+							  2,
 							  GL_FLOAT,
 							  GL_FALSE,
 							  sizeof(render_quad::quad_vertex),
-							  (void*)offsetof(render_quad::quad_vertex, zValue));
-	}
-	
-	
-	
-	
-	
-	//draw the vertex array
-	glDrawArrays(GL_QUADS, 0, 4);
-	
-	glDisableVertexAttribArray(current_material.program->pos_id);
-	glDisableVertexAttribArray(current_material.attributeUV);
-	
-	//These checks are temporary
-	if ( current_material.attributePlayerCol != -1 )
-	{
-		glDisableVertexAttribArray(current_material.attributePlayerCol);
-	}
-	if ( current_material.attributeZOrder != -1 )
-	{
-		glDisableVertexAttribArray(current_material.attributeZOrder);
+							  (void*)offsetof(render_quad::quad_vertex, uv));
+		
+		if ( material_type == eMaterialType::keAlphaMask ) {
+			glEnableVertexAttribArray(current_material.attributeMaskUV);
+			glVertexAttribPointer(current_material.attributeMaskUV,
+								  2,
+								  GL_FLOAT,
+								  GL_FALSE,
+								  sizeof(render_quad::quad_vertex),
+								  (void*)offsetof(render_quad::quad_vertex, maskUV));
+			
+			glActiveTexture(GL_TEXTURE1);
+			glEnable(GL_TEXTURE_2D);
+		}
+		
+		//These checks are temporary
+		if ( current_material.attributePlayerCol != -1 )
+		{
+			glEnableVertexAttribArray(current_material.attributePlayerCol);
+			glVertexAttribPointer(current_material.attributePlayerCol,
+								  1,
+								  GL_UNSIGNED_INT,
+								  GL_FALSE,
+								  sizeof(render_quad::quad_vertex),
+								  (void*)offsetof(render_quad::quad_vertex, playerID));
+		}
+		if ( current_material.attributeZOrder != -1 )
+		{
+			glEnableVertexAttribArray(current_material.attributeZOrder);
+			glVertexAttribPointer(current_material.attributeZOrder,
+								  1,
+								  GL_FLOAT,
+								  GL_FALSE,
+								  sizeof(render_quad::quad_vertex),
+								  (void*)offsetof(render_quad::quad_vertex, zValue));
+		}
+		
+		//Render all the quads for this material
+		for (  int cQuad = 0; cQuad < quadCount; cQuad++ )
+		{
+			render_token_struct renderCommand = *((render_token_struct*)&render_queue[cQuad]);
+
+			//Skip this quad if not correct material (temporary)
+			if ( (eMaterialType::Enum)renderCommand.matType != material_type ) continue;
+		
+			if ( material_type == eMaterialType::keAlphaMask )
+			{
+				glActiveTexture(GL_TEXTURE1);
+				glBindTexture(GL_TEXTURE_2D, renderCommand.mask);
+			}
+			
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, renderCommand.diffuse);
+
+			//draw the vertex array
+			glDrawArrays(GL_QUADS, renderCommand.idx * 4, 4);
+		}
+		
+		
+		glDisableVertexAttribArray(current_material.program->pos_id);
+		glDisableVertexAttribArray(current_material.attributeUV);
+		
+		//These checks are temporary
+		if ( current_material.attributePlayerCol != -1 )
+		{
+			glDisableVertexAttribArray(current_material.attributePlayerCol);
+		}
+		if ( current_material.attributeZOrder != -1 )
+		{
+			glDisableVertexAttribArray(current_material.attributeZOrder);
+		}
+		
+		if ( material_type == eMaterialType::keAlphaMask) {
+			glDisableVertexAttribArray(current_material.attributeMaskUV);
+			glActiveTexture(GL_TEXTURE1);
+			glDisable(GL_TEXTURE_2D);
+		}
+		
+		current_material.program->stopusing();
 	}
 	
 	//unbind the current buffer
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	
-	current_material.program->stopusing();
-	
-	//
-	//	Post rendering per material type
-	//
-	switch (material_type) {
-		case eMaterialType::keNormal: {
-			//Render a normal texture here
-			break;
-		}
-		case eMaterialType::keAlphaMask: {
-			glDisableVertexAttribArray(current_material.attributeMaskUV);
-			
-			glActiveTexture(GL_TEXTURE1);
-			glDisable(GL_TEXTURE_2D);
-		}
-		default: {
-			//Do nothing here
-			break;
-		}
-	}
-	
 	glActiveTexture(GL_TEXTURE0);
 	glDisable(GL_TEXTURE_2D);
 	
+	glDisable (GL_DEPTH_TEST);
+	glDepthMask(false);
+	
+	glClear(GL_DEPTH_BUFFER_BIT);
 	
 	render_queue.clear();
 	render_buffer.clear();
-	
-	
-	
-	
 	
 	//--TODO
 	

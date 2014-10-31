@@ -11,4 +11,5 @@ varying vec2 tex_position;
 void main (void) {
 	//this sets the fragment color to the corresponding texel.
 	gl_FragColor = texture2D(texture, tex_position);
+	gl_FragDepth = 0;
 }

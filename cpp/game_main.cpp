@@ -555,11 +555,13 @@ bool GameMain::on_draw() {
 	Engine &engine = Engine::get();
 
 	// draw gaben, our great and holy protector, bringer of the half-life 3.
-	gaben->draw(coord::camgame {0, 0});
+	//gaben->draw(coord::camgame {0, 0});
 
 	// draw terrain
 	terrain->draw(&engine);
 
+	graphics::Renderer::get().render();
+	
 	return true;
 }
 

@@ -45,4 +45,6 @@ void main() {
 	}
 
 	gl_FragColor = pixel;
+	gl_FragDepth = 0.2;
+	//gl_FragDepth = floor(gl_FragColor.a) * 0.2;
 }

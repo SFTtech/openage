@@ -34,4 +34,6 @@ void main()
 	} else {
 		gl_FragColor = blended_pixel;
 	}
+
+	gl_FragDepth = 0;
 }
