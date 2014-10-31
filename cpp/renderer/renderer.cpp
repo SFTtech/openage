@@ -248,6 +248,28 @@ void Renderer::disable_material (eMaterialType::Enum material_type){
 	current_material.program->stopusing();
 }
 	
+void renderBuffer (std::vector<unsigned short> &idxBuffer,
+				   eMaterialType::Enum material_type,
+				   GLint diffuse,
+				   GLint mask)
+{
+	//Render out
+	if ( material_type == eMaterialType::keAlphaMask )
+	{
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, mask);
+	}
+	
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, diffuse);
+	
+	//draw the vertex array
+	glDrawElements(GL_QUADS, idxBuffer.size(), GL_UNSIGNED_SHORT, &idxBuffer[0]);
+	//glDrawArrays(GL_QUADS, renderCommand.idx * 4, 4);
+	
+	idxBuffer.clear();
+}
+	
 void Renderer::render() {
 	int quadCount = render_queue.size();
 	int bufferSize = sizeof(render_quad) * quadCount;
@@ -271,6 +293,8 @@ void Renderer::render() {
 	glActiveTexture(GL_TEXTURE0);
 	glEnable(GL_TEXTURE_2D);
 
+	std::vector<unsigned short> indexBuffer;
+	
 	int cQuad = 0;
 	for ( int cLayer = 0; cLayer <= maxLayer; cLayer++)
 	{
@@ -282,67 +306,51 @@ void Renderer::render() {
 			apply_material(material_type);
 			
 			//Render all the quads for this material
-			while ( cQuad < quadCount )
+			while ( true )
 			{
 				render_token_struct renderCommand = *((render_token_struct*)&render_queue[cQuad]);
-				if ( (eMaterialType::Enum)renderCommand.matType != material_type ) break;
+				GLint textureCombo = *((GLint*)&renderCommand.diffuse);
 				
-				if ( material_type == eMaterialType::keAlphaMask )
+				if ( (eMaterialType::Enum)renderCommand.matType != material_type )
 				{
-					glActiveTexture(GL_TEXTURE1);
-					glBindTexture(GL_TEXTURE_2D, renderCommand.mask);
+					//printf ("Batching %lu on material change\n", indexBuffer.size());
+					renderBuffer(indexBuffer, material_type, renderCommand.diffuse, renderCommand.mask);
+					break;
 				}
 				
-				glActiveTexture(GL_TEXTURE0);
-				glBindTexture(GL_TEXTURE_2D, renderCommand.diffuse);
+				indexBuffer.push_back((renderCommand.idx * 4));
+				indexBuffer.push_back((renderCommand.idx * 4) +1);
+				indexBuffer.push_back((renderCommand.idx * 4) +2);
+				indexBuffer.push_back((renderCommand.idx * 4) +3);
 				
-				//draw the vertex array
-				glDrawArrays(GL_QUADS, renderCommand.idx * 4, 4);
 
 				cQuad++;
+				if ( cQuad >= quadCount)
+				{
+					//printf ("Completing render %lu\n", indexBuffer.size());
+					renderBuffer(indexBuffer, material_type, renderCommand.diffuse, renderCommand.mask);
+					break;
+				}
+				
+				render_token_struct nextRenderCommand = *((render_token_struct*)&render_queue[cQuad]);
+				GLint nextTextureCombo = *((GLint*)&nextRenderCommand.diffuse);
+				
+				//Check for texture change
+				if ((eMaterialType::Enum)nextRenderCommand.matType != material_type
+					|| nextTextureCombo != textureCombo)
+				{
+					//printf ("Batching %lu on texture change\n", indexBuffer.size());
+					renderBuffer(indexBuffer, material_type, renderCommand.diffuse, renderCommand.mask);
+					//renderBuffer(indexBuffer, material_type, renderCommand.diffuse, renderCommand.diffuse);
+				}
 			}
+			
+			//Render
 			
 			disable_material(material_type);
 		}
 
 	}
-	//
-	
-//	for ( int cLayer = 0; cLayer <= maxLayer; cLayer++)
-//	{
-//		glClear(GL_DEPTH_BUFFER_BIT);
-//		
-//		for ( int cMaterial = 0; cMaterial < eMaterialType::keCount; cMaterial++)
-//		{
-//			
-//			eMaterialType::Enum material_type = (eMaterialType::Enum)cMaterial;
-//			apply_material(material_type);
-//			
-//			//Render all the quads for this material
-//			for (  int cQuad = 0; cQuad < quadCount; cQuad++ )
-//			{
-//				render_token_struct renderCommand = *((render_token_struct*)&render_queue[cQuad]);
-//
-//				//Skip this quad if not correct material (temporary)
-//				if ( (eMaterialType::Enum)renderCommand.matType != material_type ) continue;
-//				if (renderCommand.layer != cLayer ) continue;
-//				
-//				if ( material_type == eMaterialType::keAlphaMask )
-//				{
-//					glActiveTexture(GL_TEXTURE1);
-//					glBindTexture(GL_TEXTURE_2D, renderCommand.mask);
-//				}
-//				
-//				glActiveTexture(GL_TEXTURE0);
-//				glBindTexture(GL_TEXTURE_2D, renderCommand.diffuse);
-//
-//				//draw the vertex array
-//				glDrawArrays(GL_QUADS, renderCommand.idx * 4, 4);
-//			}
-//			
-//			disable_material(material_type);
-//		}
-//	}
 	
 	//unbind the current buffer
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
