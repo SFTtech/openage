@@ -116,6 +116,11 @@ public:
 	 * draw the current frames per second number on screen.
 	 */
 	bool draw_fps();
+	
+	/**
+	 * Draw the game version in the lower left corner.
+	 */
+	bool draw_version();
 
 	/**
 	 * register a new input event handler, run for each input event.
@@ -175,6 +180,11 @@ public:
 	 * to be set to false to stop the engine loop.
 	 */
 	bool running;
+	
+	/**
+	 * Game version is drawn when this is true.
+	 */
+	bool drawing_version = true;
 
 	/**
 	 * size of the game window, in coord_sdl.

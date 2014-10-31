@@ -10,6 +10,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "callbacks.h"
+#include "config.h"
 #include "texture.h"
 #include "log.h"
 #include "util/color.h"
@@ -219,6 +220,20 @@ bool Engine::draw_fps() {
 	return true;
 }
 
+// Shamelessly ripped off from draw_fps
+bool Engine::draw_version() {
+	util::col {255, 255, 255, 255}.use();
+	
+	// Draw version string in the lower left corner
+	this->dejavuserif20->render(
+		5, 15,
+		"openage version %s", config::version
+	);
+
+	return true;
+}
+
+
 void Engine::save_screenshot(const char* filename) {
 	log::msg("saving screenshot to %s...", filename);
 
@@ -322,6 +337,11 @@ void Engine::loop() {
 
 			// draw the fps overlay
 			this->draw_fps();
+			
+			if (this->drawing_version)
+			{
+				this->draw_version();
+			}
 
 			// invoke all hud drawing callback methods
 			for (auto &action : this->on_drawhud) {
