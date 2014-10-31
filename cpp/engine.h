@@ -109,8 +109,15 @@ public:
 
 	/**
 	 * draw the current frames per second number on screen.
+	 * save the current framebuffer to a given png file.
+	 * @param filename the file where the picture will be saved to.
 	 */
-	bool draw_fps();
+	void save_screenshot(const char* filename);
+
+	/**
+	 * Draw the game version and the current FPS on screen.
+	 */
+	bool draw_debug_overlay();
 
 	/**
 	 * register a new input event handler, run for each input event.
@@ -175,6 +182,11 @@ public:
 	 * to be set to false to stop the engine loop.
 	 */
 	bool running;
+
+	/**
+	 * FPS and game version are drawn when this is true.
+	 */
+	bool drawing_debug_overlay;
 
 	/**
 	 * size of the game window, in coord_sdl.
