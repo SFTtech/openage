@@ -28,6 +28,7 @@ _the openage authors_ are:
 | Henry Snoek                 | snoek09                    | ?                                |
 | ?                           | gasche                     | gasche.dylc@gmail.com            |
 | ?                           | awestin1                   | awestin1@gmail.com               |
+| Peter Piwowarski            | oldlaptop                  | oldlaptop654@aol.com             |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

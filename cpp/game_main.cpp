@@ -478,6 +478,9 @@ bool GameMain::on_input(SDL_Event *e) {
 			//stop the game
 			engine.stop();
 			break;
+		case SDLK_F3:
+			engine.drawing_fps = !engine.drawing_fps;
+			break;
 		case SDLK_LCTRL:
 			this->ctrl_active = false;
 			break;

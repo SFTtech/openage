@@ -177,6 +177,11 @@ public:
 	bool running;
 
 	/**
+	 * FPS and game version are drawn when this is true.
+	 */
+	bool drawing_fps;
+
+	/**
 	 * size of the game window, in coord_sdl.
 	 */
 	coord::window window_size;
