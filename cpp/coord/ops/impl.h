@@ -1,3 +1,6 @@
+// has no header guard: used in a preprocessor hack
+// TODO obsolete this file using the python codegen
+
 #include "../../util/macro/loop.h"
 #include "../../util/macro/concat.h"
 

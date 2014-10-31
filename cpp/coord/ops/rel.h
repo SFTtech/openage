@@ -1,3 +1,6 @@
+// has no header guard: used in a preprocessor hack
+// TODO obsolete this file using the python codegen
+
 	//operators for RELATIVE_TYPE
 
 	ABSOLUTE_TYPE as_absolute() const;

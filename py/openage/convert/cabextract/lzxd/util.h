@@ -1,6 +1,6 @@
-#ifndef _OPENAGE_CONVERT_LZXD_UTIL_H_
-#define _OPENAGE_CONVERT_LZXD_UTIL_H_
+#ifndef PYEXT_OPENAGE_CONVERT_CABEXTRACT_LZXD_UTIL_H_
+#define PYEXT_OPENAGE_CONVERT_CABEXTRACT_LZXD_UTIL_H_
 
 void throwerr(const char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
 
-#endif // _OPENAGE_CONVERT_LZXD_UTIL_H_
+#endif
