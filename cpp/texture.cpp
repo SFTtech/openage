@@ -156,17 +156,22 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	struct gamedata::subtexture *mtx;
 	struct gamedata::subtexture *tx = this->get_subtexture(subid);
 	
+	int cLayer = 0;
+	
 	//is this texture drawn with an alpha mask?
 	if (this->use_alpha_masking && alpha_subid >= 0 && alpha_texture != nullptr) {
+		cLayer = 0;
 		mtx = alpha_texture->get_subtexture(alpha_subid);
 		cType = eMaterialType::keAlphaMask;
 	}
 	//is this texure drawn with replaced pixels for team coloring?
 	else if (this->use_player_color_tinting) {
+		cLayer = 1;
 		cType = eMaterialType::keColorReplace;
 	}
 	//mkay, we just draw the plain texture otherwise.
 	else {
+		cLayer = 0;
 		cType = eMaterialType::keNormal;
 	}
 
@@ -219,6 +224,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		                            6),       //playerID
 									this->id, //diffuse
 									maskID, //Mask
+									cLayer, //Layer
 									cType);
 }
 

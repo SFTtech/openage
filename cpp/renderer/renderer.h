@@ -121,6 +121,7 @@ public:
 	void submit_quad (render_quad const & quad,
 	                  GLint diffuse,
 	                  GLint mask,
+					  unsigned char layer,
 	                  eMaterialType::Enum material_type);
 	
 	void render ();
@@ -133,6 +134,9 @@ private:
 	Renderer ();
 	bool init (util::Dir const *data_dir, util::Dir const *asset_dir);
 	
+	void apply_material (eMaterialType::Enum material_type);
+	void disable_material (eMaterialType::Enum material_type);
+	
 	Renderer(const Renderer &copy) = delete;
 	Renderer &operator=(const Renderer &copy) = delete;
 	Renderer(Renderer &&other) = delete;
@@ -140,10 +144,11 @@ private:
 	
 private:
 	struct render_token_struct {
-		short matType;
-		short diffuse;
-		short mask;
 		short idx;
+		short mask;
+		short diffuse;
+		unsigned char matType;
+		unsigned char layer;
 	} ;
 	
 	typedef unsigned long long render_token;
