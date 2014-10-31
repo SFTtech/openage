@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 #
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+#
 # epic distutils-cmake interface.
 # the cmake config specifies python and
 # native c python modules to export

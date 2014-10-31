@@ -1,3 +1,5 @@
+// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+
 #ifndef OPENAGE_SHADER_PROGRAM_H_
 #define OPENAGE_SHADER_PROGRAM_H_
 

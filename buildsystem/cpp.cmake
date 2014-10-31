@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 # sets CXXFLAGS and compiler for the project
 
 #TODO: integrate PGO (profile-guided optimization) build

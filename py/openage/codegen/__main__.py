@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 from ..convert.util import set_verbosity, dbg
 import argparse
 import os

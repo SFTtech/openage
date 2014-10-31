@@ -1,3 +1,5 @@
+# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+
 # language codes, as used in PE file ressources
 # this file is used by pefile.py
 

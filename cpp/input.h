@@ -1,3 +1,5 @@
+// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+
 #ifndef OPENAGE_INPUT_H_
 #define OPENAGE_INPUT_H_
 

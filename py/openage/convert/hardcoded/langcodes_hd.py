@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 # HD Edition uses short language codes.
 # For consistency with AoK:TC's PE-file-extracted codes, they are mapped to these longer codes
 

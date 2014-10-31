@@ -1,3 +1,5 @@
+// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+
 #ifndef OPENAGE_TERRAIN_CHUNK_H_
 #define OPENAGE_TERRAIN_CHUNK_H_
 

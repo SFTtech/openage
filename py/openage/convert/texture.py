@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 # routines for texture generation etc
 
 from .blendomatic import BlendingMode

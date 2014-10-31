@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 # CMake module for test specification
 #
 # adds language-specific test invocations and writes test lists to assets (tests_*)

@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 from .. import assets
 
 testspec_asset = "tests_py"

@@ -1,3 +1,5 @@
+// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+
 #define GEN_IMPL_VEC3F_CPP
 #include "vec3f.h"
 

@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 function(init_assets)
 	set(GLOBAL_ASSET_DIR ${CMAKE_SOURCE_DIR}/assets)
 	set(INSTALLED_GLOBAL_ASSET_DIR ${CMAKE_INSTALL_PREFIX}/share/openage)

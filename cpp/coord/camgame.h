@@ -1,3 +1,5 @@
+// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+
 #ifndef OPENAGE_COORD_CAMGAME_H_
 #define OPENAGE_COORD_CAMGAME_H_
 

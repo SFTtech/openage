@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 function(codegen_run)
 	# this function must be called once all required assets have been created, but before the executable is finalized.
 

@@ -1,3 +1,5 @@
+// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 #include "../log.h"
 #include "../datastructure/doubly_linked_list.h"
 #include "../datastructure/pairing_heap.h"

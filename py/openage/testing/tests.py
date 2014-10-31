@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 # tests for the openage.testing package
 import sys
 from . import testing

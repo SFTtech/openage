@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+
 from . import datafile
 from . import mediafile
 from .util import set_verbosity

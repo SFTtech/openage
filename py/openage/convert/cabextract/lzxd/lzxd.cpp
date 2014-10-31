@@ -1,20 +1,22 @@
-/*
- * this code is taken from the cabextract project <http://www.cabextract.org.uk/>.
- *
- * the original code was horribly raped; all of the macros and optimizations were
- * ripped out and replaced by c++11 classes with _templates_.
- *
- * the original author is probably weeping in pain.
- * sorry, your work was awesome, but _I_ find it easier to read that way :P
- *
- * TODO list:
- *
- * - make it so the decompressing function is called once for every megabyte or so, instead of once for everything
- * - understand and abstract away the intel D8 post-processing. this should make the code/interface much cleaner
- * - save the state between every megabyte, effectively allowing seeking
- * - actually understand what the code does
- * - rewrite it (maybe in python)
- */
+// This file was adapted from cabextract/libmspack <http://www.cabextract.org.uk/>,
+// Copyright 2003-2013 the cabextract contributors.
+// It's licensed under the terms of the GNU Library General Public License version 2.
+// Modifications Copyright 2014-2014 the openage authors.
+// See copying.md for further legal info.
+
+// the original code was horribly raped; all of the macros and optimizations were
+// ripped out and replaced by c++11 classes with _templates_.
+//
+// the original author is probably weeping in pain.
+// sorry, your work was awesome, but _I_ find it easier to read that way :P
+//
+// TODO list:
+//
+// - make it so the decompressing function is called once for every megabyte or so, instead of once for everything
+// - understand and abstract away the intel D8 post-processing. this should make the code/interface much cleaner
+// - save the state between every megabyte, effectively allowing seeking
+// - actually understand what the code does
+// - rewrite it (maybe in python)
 
 #include "lzxd.h"
 
