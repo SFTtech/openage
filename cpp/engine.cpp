@@ -184,6 +184,9 @@ bool Engine::on_resize(coord::window new_size) {
 	// update engine window size
 	this->window_size = new_size;
 
+	// tell the screenshot manager about the new size
+	this->screenshot_manager.window_size = new_size;
+
 	// update camgame window position, set it to center.
 	this->camgame_window = this->window_size / 2;
 
@@ -217,51 +220,6 @@ bool Engine::draw_fps() {
 	);
 
 	return true;
-}
-
-void Engine::save_screenshot(const char* filename) {
-	log::msg("saving screenshot to %s...", filename);
-
-	int32_t rmask, gmask, bmask, amask;
-	rmask = 0x000000FF;
-	gmask = 0x0000FF00;
-	bmask = 0x00FF0000;
-	amask = 0xFF000000;
-
-	SDL_Surface *screen = SDL_CreateRGBSurface(
-		SDL_SWSURFACE,
-		this->window_size.x,
-		this->window_size.y,
-		32,
-		rmask, gmask, bmask, amask);
-
-	size_t pxcount = screen->w * screen->h;
-	uint32_t *pxdata = new uint32_t[pxcount];
-
-	glReadPixels(
-		0, 0,
-		this->window_size.x, this->window_size.y,
-		GL_RGBA, GL_UNSIGNED_BYTE, pxdata
-	);
-
-	uint32_t *surface_pxls = (uint32_t *)screen->pixels;
-
-	// we need to invert all pixel rows, but leave column order the same.
-	for (ssize_t row = 0; row < screen->h; row++) {
-		ssize_t irow = screen->h - 1 - row;
-		for (ssize_t col = 0; col < screen->w; col++) {
-			uint32_t pxl = pxdata[irow * screen->w + col];
-
-			// TODO: store the alpha channels in the screenshot, is buggy at the moment..
-			surface_pxls[row * screen->w + col] = pxl | 0xFF000000;
-		}
-	}
-
-	delete[] pxdata;
-
-	// call sdl_image for saving the screenshot to png
-	IMG_SavePNG(screen, filename);
-	SDL_FreeSurface(screen);
 }
 
 void Engine::run() {
@@ -370,6 +328,10 @@ job::JobManager *Engine::get_job_manager() {
 
 audio::AudioManager &Engine::get_audio_manager() {
 	return this->audio_manager;
+}
+
+ScreenshotManager &Engine::get_screenshot_manager() {
+	return this->screenshot_manager;
 }
 
 CoreInputHandler &Engine::get_input_handler() {

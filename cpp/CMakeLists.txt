@@ -20,6 +20,7 @@ add_sources(${PROJECT_NAME}
 	input.cpp
 	log.cpp
 	python.cpp
+	screenshot.cpp
 	terrain.cpp
 	terrain_chunk.cpp
 	terrain_object.cpp

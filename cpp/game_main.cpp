@@ -490,7 +490,7 @@ bool GameMain::on_input(SDL_Event *e) {
 			this->terrain->blending_enabled = !terrain->blending_enabled;
 			break;
 		case SDLK_F2:
-			engine.save_screenshot("/tmp/openage_00.png");
+			engine.get_screenshot_manager().save_screenshot();
 			break;
 		case SDLK_LCTRL:
 			this->ctrl_active = true;
