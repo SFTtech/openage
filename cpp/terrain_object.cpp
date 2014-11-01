@@ -142,7 +142,7 @@ void TerrainObject::set_ground(int id, int additional) {
 
 
 bool TerrainObject::draw() {
-	texture->draw(this->draw_pos.to_camgame(), false, 0, this->player);
+	texture->draw(this->draw_pos.to_camgame(), PLAYERCOLORED, false, 0, this->player);
 
 	return true;
 }

@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "args.h"
+#include "assetmanager.h"
 #include "engine.h"
 #include "coord/tile.h"
 #include "handlers.h"
@@ -95,6 +96,8 @@ public:
 
 	Terrain *terrain;
 	Texture *gaben;
+
+	AssetManager assetmanager;
 };
 
 } //namespace openage

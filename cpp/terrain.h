@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "assetmanager.h"
 #include "engine.h"
 #include "terrain_chunk.h"
 #include "terrain_object.h"
@@ -153,7 +154,7 @@ struct terrain_render_data {
  */
 class Terrain {
 public:
-	Terrain(util::Dir &asset_dir,
+	Terrain(AssetManager &assetmanager,
 	        std::vector<gamedata::terrain_type> terrain_meta,
 	        std::vector<gamedata::blending_mode> blending_meta,
 	        bool is_infinite);

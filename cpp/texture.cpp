@@ -31,11 +31,13 @@ GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 } //namespace alphamask_shader
 
 
-Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
+Texture::Texture(std::string _filename, bool _use_metafile):
+		use_metafile(_use_metafile),
+		filename(_filename) {
+	load();
+}
 
-	this->use_player_color_tinting = 0 < (mode & PLAYERCOLORED);
-	this->use_alpha_masking        = 0 < (mode & ALPHAMASKED);
-
+void Texture::load() {
 	SDL_Surface *surface;
 	GLuint textureid;
 	int texture_format_in;
@@ -121,9 +123,18 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 	glGenBuffers(1, &this->vertbuf);
 }
 
-Texture::~Texture() {
+void Texture::unload() {
 	glDeleteTextures(1, &this->id);
 	glDeleteBuffers(1, &this->vertbuf);
+}
+
+void Texture::reload() {
+	unload();
+	load();
+}
+
+Texture::~Texture() {
+	unload();
 }
 
 void Texture::fix_hotspots(unsigned x, unsigned y) {
@@ -133,20 +144,20 @@ void Texture::fix_hotspots(unsigned x, unsigned y) {
 	}
 }
 
-void Texture::draw(coord::camhud pos, bool mirrored, int subid, unsigned player) {
-	this->draw(pos.x, pos.y, mirrored, subid, player, nullptr, -1);
+void Texture::draw(coord::camhud pos, unsigned int mode, bool mirrored, int subid, unsigned player) {
+	this->draw(pos.x, pos.y, mode, mirrored, subid, player, nullptr, -1);
 }
 
-void Texture::draw(coord::camgame pos, bool mirrored, int subid, unsigned player) {
-	this->draw(pos.x, pos.y, mirrored, subid, player, nullptr, -1);
+void Texture::draw(coord::camgame pos, unsigned int mode,  bool mirrored, int subid, unsigned player) {
+	this->draw(pos.x, pos.y, mode, mirrored, subid, player, nullptr, -1);
 }
 
-void Texture::draw(coord::tile pos, int subid, Texture *alpha_texture, int alpha_subid) {
+void Texture::draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture, int alpha_subid) {
 	coord::camgame draw_pos = pos.to_tile3().to_phys3().to_camgame();
-	this->draw(draw_pos.x, draw_pos.y, false, subid, 0, alpha_texture, alpha_subid);
+	this->draw(draw_pos.x, draw_pos.y, mode, false, subid, 0, alpha_texture, alpha_subid);
 }
 
-void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) {
+void Texture::draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) {
 	glColor4f(1, 1, 1, 1);
 
 	//log::dbg("drawing texture at %hd, %hd", x, y);
@@ -158,7 +169,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	int *pos_id, *texcoord_id, *masktexcoord_id;
 
 	//is this texture drawn with an alpha mask?
-	if (this->use_alpha_masking && alpha_subid >= 0 && alpha_texture != nullptr) {
+	if ((mode & ALPHAMASKED) && alpha_subid >= 0 && alpha_texture != nullptr) {
 		alphamask_shader::program->use();
 
 		//bind the alpha mask texture to slot 1
@@ -174,7 +185,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		use_alphashader = true;
 	}
 	//is this texure drawn with replaced pixels for team coloring?
-	else if (this->use_player_color_tinting) {
+	else if (mode & PLAYERCOLORED) {
 		teamcolor_shader::program->use();
 
 		//set the desired player id in the shader
