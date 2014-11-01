@@ -24,11 +24,11 @@ $(BUILDDIR):
 
 .PHONY: openage
 openage: $(BUILDDIR)
-	@make $(MAKEARGS) -C $(BUILDDIR)
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR)
 
 .PHONY: install
 install: $(BUILDDIR)
-	@make $(MAKEARGS) -C $(BUILDDIR) install
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) install
 
 .PHONY: media
 media: $(BUILDDIR)
@@ -53,34 +53,34 @@ rungdb: openage
 
 .PHONY: test
 test: $(binary)
-	@CTEST_OUTPUT_ON_FAILURE=1 make $(MAKEARGS) -C $(BUILDDIR) test
+	@CTEST_OUTPUT_ON_FAILURE=1 $(MAKE) $(MAKEARGS) -C $(BUILDDIR) test
 
 .PHONY: codegen
 codegen: $(BUILDDIR)
-	@make $(MAKEARGS) -C $(BUILDDIR) codegen
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) codegen
 
 .PHONY: pymodules
 pymodules: $(BUILDDIR)
-	@make $(MAKEARGS) -C $(BUILDDIR) pymodules
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) pymodules
 
 .PHONY: doc
 doc: $(BUILDDIR)
-	@make $(MAKEARGS) -C $(BUILDDIR) doc
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) doc
 
 .PHONY: cleanelf
 cleanelf: $(BUILDDIR)
 	@# removes all object files and binaries
-	@make $(MAKEARGS) -C $(BUILDDIR) clean
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) clean
 
 .PHONY: cleancodegen
 cleancodegen: $(BUILDDIR)
 	@# removes all generated sourcefiles
-	@make $(MAKEARGS) -C $(BUILDDIR) cleancodegen
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleancodegen
 
 .PHONY: cleanpymodules
 cleanpymodules: $(BUILDDIR)
 	@# removes all built python modules (+ extension modules)
-	@make $(MAKEARGS) -C $(BUILDDIR) cleanpymodules
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleanpymodules
 	@# removes all in-place built extension modules
 	@find py -name "*.so" -type f -print -delete
 
@@ -100,7 +100,7 @@ cleaninsourcebuild:
 
 .PHONY: cleanbuilddirs
 cleanbuilddirs: cleaninsourcebuild
-	@if test -d bin; then make $(MAKEARGS) -C bin clean || true; fi
+	@if test -d bin; then $(MAKE) $(MAKEARGS) -C bin clean || true; fi
 	@echo cleaning symlinks to build directories
 	rm -f openage bin
 	@echo cleaning build directories
@@ -131,15 +131,15 @@ help: $(BUILDDIR)/Makefile
 	@echo ""
 	@echo "openage            -> compile main binary"
 	@echo "codegen            -> generate cpp sources"
-	@echo "media              -> convert media files, usage: make media AGE2DIR=~/.wine/ms-games/age2"
+	@echo "media              -> convert media files, usage: $(MAKE) media AGE2DIR=~/.wine/ms-games/age2"
 	@echo "medialist          -> list needed media files for current version"
 	@echo "doc                -> create documentation files"
 	@echo ""
 	@echo "cleanelf           -> remove C++ ELF files"
-	@echo "cleancodegen       -> undo 'make codegen'"
-	@echo "cleanpymodules     -> undo 'make pymodules'"
-	@echo "clean              -> undo 'make' (all of the above)"
-	@echo "cleanbuilddirs     -> undo 'make' and './configure'"
+	@echo "cleancodegen       -> undo '$(MAKE) codegen'"
+	@echo "cleanpymodules     -> undo '$(MAKE) pymodules'"
+	@echo "clean              -> undo '$(MAKE)' (all of the above)"
+	@echo "cleanbuilddirs     -> undo '$(MAKE)' and './configure'"
 	@echo "cleaninsourcebuild -> undo in-source build accidents"
 	@echo "mrproper           -> as above, but additionally delete user assets"
 	@echo "mrproperer         -> this recipe is serious business. it will leave no witnesses."
@@ -150,4 +150,4 @@ help: $(BUILDDIR)/Makefile
 	@echo ""
 	@echo ""
 	@echo "CMake help:"
-	@test -d $(BUILDDIR) && make -C $(BUILDDIR) help || echo "no builddir is configured"
+	@test -d $(BUILDDIR) && $(MAKE) -C $(BUILDDIR) help || echo "no builddir is configured"
