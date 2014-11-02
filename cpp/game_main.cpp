@@ -152,9 +152,6 @@ GameMain::GameMain(Engine *engine)
 
 		char *tex_fname = util::format("converted/Data/graphics.drs/%d.slp.png", slp_id);
 
-		if(!assetmanager.can_load(tex_fname))
-			continue;
-
 		// convert the float to the discrete foundation size...
 		openage::coord::tile_delta foundation_size = {
 			(int)(building.radius_size0 * 2),
@@ -169,7 +166,7 @@ GameMain::GameMain(Engine *engine)
 		);
 
 		TestBuilding *newbuilding = new TestBuilding{
-			assetmanager.get_texture(tex_fname),
+			this->assetmanager.get_texture(tex_fname),
 			building.name,
 			foundation_size,
 			building.terrain_id,
