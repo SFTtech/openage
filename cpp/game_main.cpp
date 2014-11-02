@@ -123,6 +123,7 @@ GameMain::GameMain(Engine *engine)
 	terrain = new Terrain(assetmanager, terrain_types, blending_modes, true);
 	terrain->fill(terrain_data, terrain_data_size);
 
+	log::msg("loading game specification files... stand by, will be faster soon...");
 	util::Dir gamedata_dir = asset_dir.append("gamedata");
 	auto gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
 
