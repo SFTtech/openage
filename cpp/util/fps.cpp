@@ -9,12 +9,12 @@ namespace util {
 
 FrameCounter::FrameCounter()
 	:
-	fps(0),
-	count(0),
-	msec_lastframe(0),
-	frame_count_weighted(0),
-	frame_length_sum_weighted(0),
-	lastframe_timestamp(0) {
+	fps{0},
+	count{0},
+	msec_lastframe{0},
+	frame_count_weighted{0},
+	frame_length_sum_weighted{0},
+	lastframe_timestamp{0} {
 }
 
 FrameCounter::~FrameCounter() {}

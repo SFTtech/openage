@@ -59,14 +59,14 @@ Engine &Engine::get() {
 
 Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	:
-	running(false),
-	drawing_debug_overlay(true),
+	running{false},
+	drawing_debug_overlay{true},
 	window_size{800, 600},
 	camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0},
 	camgame_window{400, 300},
 	camhud_window{0, 600},
 	tile_halfsize{48, 24},  // TODO: get from convert script
-	data_dir(data_dir),
+	data_dir{data_dir},
 	audio_manager{48000, AUDIO_S16LSB, 2, 4096}
 {
 

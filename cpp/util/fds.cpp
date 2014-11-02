@@ -29,7 +29,8 @@ FD::FD(int fd, bool set_nonblocking) {
 }
 
 FD::FD(FD *fd, bool set_nonblocking) :
-	FD{fd->fd, set_nonblocking} {}
+	FD{fd->fd, set_nonblocking} {
+}
 
 FD::~FD() {
 	if (this->restore_input_mode_on_destroy) {

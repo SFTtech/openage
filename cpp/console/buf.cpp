@@ -11,8 +11,7 @@ using namespace coord;
 
 Buf::Buf(term dims, term_t scrollback_lines, term_t min_width, buf_char default_char_fmt)
 	:
-	default_char_fmt(default_char_fmt)
-{
+	default_char_fmt{default_char_fmt} {
 	//init all member variables
 	this->min_width = min_width;
 	if (dims.x < this->min_width) {
@@ -96,7 +95,7 @@ public:
 
 	NewBuf(term dims, term_t scrollback_lines, buf_char default_char_fmt)
 		:
-		default_char_fmt(default_char_fmt)
+		default_char_fmt{default_char_fmt}
 	{
 		this->dims = dims;
 		this->scrollback_lines = scrollback_lines;

@@ -31,13 +31,13 @@ void print_usage() {
 
 Arguments::Arguments()
 	:
-	argc(0),
-	data_directory("./"),
-	demo_specified(false),
-	list_tests(false),
-	display_help(false),
-	error_occured(false)
-{}
+	argc{0},
+	data_directory{"./"},
+	demo_specified{false},
+	list_tests{false},
+	display_help{false},
+	error_occured{false} {
+}
 
 Arguments::~Arguments() {}
 

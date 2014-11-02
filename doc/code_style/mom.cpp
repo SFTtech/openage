@@ -101,8 +101,8 @@ namespace elts {
 // classes are written in camel case (structs are lowercase like variables)
 YourMom::YourMom(int her_mass)
 	:
-	mass(her_mass),
-	number_of_moons(0) {
+	mass{her_mass},
+	number_of_moons{0} {
 
 	// use this-> for referencing member variables/functions!
 	this->number_of_moons = (this->mass - (this->mass % 10))/10;

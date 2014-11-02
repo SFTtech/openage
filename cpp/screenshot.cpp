@@ -17,7 +17,8 @@ namespace openage {
 
 ScreenshotManager::ScreenshotManager()
 	:
-	count(0) {}
+	count{0} {
+}
 
 ScreenshotManager::~ScreenshotManager() {}
 

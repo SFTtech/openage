@@ -40,9 +40,9 @@ class DoublyLinkedList {
 public:
 	DoublyLinkedList()
 		:
-		first(nullptr),
-		last(nullptr),
-		node_count(0) {
+		first{nullptr},
+		last{nullptr},
+		node_count{0} {
 	}
 
 	~DoublyLinkedList() {
