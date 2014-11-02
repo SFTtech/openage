@@ -1,5 +1,5 @@
-#ifndef _ASSETMANAGER_H_
-#define _ASSETMANAGER_H_
+#ifndef OPENAGE_ASSETMANAGER_H_
+#define OPENAGE_ASSETMANAGER_H_
 
 #include "config.h"
 
