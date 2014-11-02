@@ -70,8 +70,6 @@ Terrain::Terrain(AssetManager &assetmanager,
 
 		auto new_texture = assetmanager.get_texture(terraintex_filename_str);
 
-		// TODO: hotspot fixing should be done in convert script.
-		new_texture->fix_hotspots(48, 24);
 		this->textures[terrain_id] = new_texture;
 	}
 
