@@ -82,14 +82,36 @@ Texture *AssetManager::get_texture(const std::string &name) {
 
 void AssetManager::check_updates() {
 #if HAS_INOTIFY
-	char buf[sizeof(struct inotify_event) + NAME_MAX + 1];
-	ssize_t readed;
+	// buffer for at least 4 inotify events
+	char buf[4 * (sizeof(struct inotify_event) + NAME_MAX + 1)];
+	ssize_t len;
 
-	while((readed = read(notify_fd, buf, sizeof(buf))) > 0){
-		struct inotify_event *evt = (struct inotify_event *)buf;
+	while (true) {
+		// fetch all events, the kernel won't write "half" structs.
+		len = read(this->inotify_fd, buf, sizeof(buf));
 
-		if(evt->mask & IN_CLOSE_WRITE)
-			watch_fds[evt->wd]->reload();
+		if (len == -1 and errno == EAGAIN) {
+			// no events, nothing to do.
+			break;
+		}
+		else if (len == -1) {
+			throw util::Error{"failed to read inotify events!"};
+		}
+
+		// process fetched events,
+		// the kernel guarantees complete events in the buffer.
+		char *ptr = buf;
+		while (ptr < buf + len) {
+			struct inotify_event *event = (struct inotify_event *)ptr;
+
+			if (event->mask & IN_CLOSE_WRITE) {
+				// TODO: this should invoke callback functions
+				this->watch_fds[event->wd]->reload();
+			}
+
+			// move the buffer ptr to the next event.
+			ptr += sizeof(struct inotify_event) + event->len;
+		}
 	}
 #endif
 }
