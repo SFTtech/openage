@@ -155,8 +155,8 @@ struct terrain_render_data {
 class Terrain {
 public:
 	Terrain(AssetManager &assetmanager,
-	        std::vector<gamedata::terrain_type> terrain_meta,
-	        std::vector<gamedata::blending_mode> blending_meta,
+	        const std::vector<gamedata::terrain_type> &terrain_meta,
+	        const std::vector<gamedata::blending_mode> &blending_meta,
 	        bool is_infinite);
 	~Terrain();
 

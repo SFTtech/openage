@@ -26,11 +26,12 @@ TileContent::TileContent() :
 TileContent::~TileContent() {}
 
 Terrain::Terrain(AssetManager &assetmanager,
-                 std::vector<gamedata::terrain_type> terrain_meta,
-                 std::vector<gamedata::blending_mode> blending_meta,
-                 bool is_infinite) {
+                 const std::vector<gamedata::terrain_type> &terrain_meta,
+                 const std::vector<gamedata::blending_mode> &blending_meta,
+                 bool is_infinite)
+	:
+	infinite{is_infinite} {
 
-	this->infinite = is_infinite;
 	// TODO:
 	//this->limit_positive =
 	//this->limit_negative =
@@ -59,12 +60,11 @@ Terrain::Terrain(AssetManager &assetmanager,
 		this->validate_terrain(terrain_id);
 
 		// TODO: terrain double-define check?
-
 		this->terrain_id_priority_map[terrain_id]  = line->blend_priority;
 		this->terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
+		// TODO: remove hardcoding and rely on nyan data
 		char *terraintex_filename = util::format("converted/Data/terrain.drs/%d.slp.png", line->slp_id);
-
 		std::string terraintex_filename_str{terraintex_filename};
 		delete[] terraintex_filename;
 
