@@ -6,32 +6,32 @@ A copy of the license can be found in [legal/GPLV3](legal/GPLv3).
 
 _the openage authors_ are:
 
-| Full name                   | aliases                    | E-Mail                           |
-|-----------------------------|----------------------------|----------------------------------|
-| Jonas Jelten                | TheJJ                      | jj@sft.mx                        |
-| Michael Enßlin              | mic_e                      | michael@ensslin.cc               |
-| Andre Kupka                 | freakout                   | kupka@in.tum.de                  |
-| Frank Schmidt               | gellardo                   | rubiccuber@googlemail.com        |
-| Markus Otto                 | zuntrax                    | otto@fs.tum.de                   |
-| Sascha Vincent Kurowski     | svkurowski                 | svkurowski@gmail.com             |
-| James Mintram               | JimmyJazz                  | jamesmintram@gmail.com           |
-| Martin McGrath              | MartinMcGrath              | mcgrath.martin@gmail.com         |
-| René Kooi                   | goto-bus-stop              | rene@kooi.me                     |
-| Markus Elfring              | elfring                    | elfring@users.sourceforge.net    |
-| Jimmy Berry                 | boombatower                | jimmy@boombatower.com            |
-| João Roque                  | joaoroque                  | joaoroque@gmail.com              |
-| Julius Michaelis            | jcaesar                    | gitter@liftm.de                  |
-| Matthias Bogad              | delirium, materofjellyfish | matthias@bogad.at                |
-| Oliver Fawcett-Griffiths    | ollyfg                     | olly@ollyfg.com                  |
-| Ross Murray                 | rossmurray                 | rm@egoorb.com                    |
-| Alexandre Arpin             | AlexandreArpin             | arpin.alexandre@gmail.com        |
-| Henry Snoek                 | snoek09                    | ?                                |
-| ?                           | gasche                     | gasche.dylc@gmail.com            |
-| ?                           | awestin1                   | awestin1@gmail.com               |
-| Francisco Demartino         | franciscod                 | demartino.francisco@gmail.com    |
-| Peter Piwowarski            | oldlaptop                  | oldlaptop654@aol.com             |
-| Charles Pigott              | LordAro                    | charlespigott@googlemail.com     |
-| Andrew Eikum                | ColdPie1                   | coldpies@gmail.com               |
+| Full name                   | aliases                     | E-Mail                           |
+|-----------------------------|-----------------------------|----------------------------------|
+| Jonas Jelten                | TheJJ                       | jj@sft.mx                        |
+| Michael Enßlin              | mic_e                       | michael@ensslin.cc               |
+| Andre Kupka                 | freakout                    | kupka@in.tum.de                  |
+| Frank Schmidt               | gellardo                    | rubiccuber@googlemail.com        |
+| Markus Otto                 | zuntrax                     | otto@fs.tum.de                   |
+| Sascha Vincent Kurowski     | svkurowski                  | svkurowski@gmail.com             |
+| James Mintram               | JimmyJazz                   | jamesmintram@gmail.com           |
+| Martin McGrath              | MartinMcGrath               | mcgrath.martin@gmail.com         |
+| René Kooi                   | goto-bus-stop               | rene@kooi.me                     |
+| Markus Elfring              | elfring                     | elfring@users.sourceforge.net    |
+| Jimmy Berry                 | boombatower                 | jimmy@boombatower.com            |
+| João Roque                  | joaoroque                   | joaoroque@gmail.com              |
+| Julius Michaelis            | jcaesar                     | gitter@liftm.de                  |
+| Matthias Bogad              | delirium, masterofjellyfish | matthias@bogad.at                |
+| Oliver Fawcett-Griffiths    | ollyfg                      | olly@ollyfg.com                  |
+| Ross Murray                 | rossmurray                  | rm@egoorb.com                    |
+| Alexandre Arpin             | AlexandreArpin              | arpin.alexandre@gmail.com        |
+| Henry Snoek                 | snoek09                     | ?                                |
+| ?                           | gasche                      | gasche.dylc@gmail.com            |
+| ?                           | awestin1                    | awestin1@gmail.com               |
+| Francisco Demartino         | franciscod                  | demartino.francisco@gmail.com    |
+| Peter Piwowarski            | oldlaptop                   | oldlaptop654@aol.com             |
+| Charles Pigott              | LordAro                     | charlespigott@googlemail.com     |
+| Andrew Eikum                | ColdPie1                    | coldpies@gmail.com               |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
