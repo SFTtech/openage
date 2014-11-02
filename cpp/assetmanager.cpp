@@ -8,10 +8,11 @@
 
 namespace openage {
 
-AssetManager::AssetManager(util::Dir *_root):
-		root(_root) {
+AssetManager::AssetManager(util::Dir *root)
+	:
+	root{root} {
 #if HAS_INOTIFY
-	notify_fd = inotify_init1(IN_NONBLOCK);
+	this->inotify_fd = inotify_init1(IN_NONBLOCK);
 #endif
 }
 
@@ -21,27 +22,27 @@ AssetManager::~AssetManager() {
 }
 
 bool AssetManager::can_load(const std::string &name) const {
-	return util::file_size(root->join(name)) > 0;
+	return util::file_size(this->root->join(name)) > 0;
 }
 
 Texture *AssetManager::load_texture(const std::string &name) {
-	std::string filename = root->join(name);
+	std::string filename = this->root->join(name);
 
 	Texture *ret;
 
-	if(!can_load(name)){
+	if (!this->can_load(name)) {
 		log::msg("   file %s is not there...", filename.c_str());
 		ret = new Texture{root->join("missing.png"), false};
 	}else{
 		ret = new Texture{filename, true};
 
 #if HAS_INOTIFY
-		int wd = inotify_add_watch(notify_fd, filename.c_str(), IN_CLOSE_WRITE);
-		watch_fds[wd] = ret;
+		int wd = inotify_add_watch(this->inotify_fd, filename.c_str(), IN_CLOSE_WRITE);
+		this->watch_fds[wd] = ret;
 #endif
 	}
 
-	textures[filename] = ret;
+	this->textures[filename] = ret;
 
 	return ret;
 }
