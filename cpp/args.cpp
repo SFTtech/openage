@@ -46,8 +46,6 @@ Arguments::~Arguments() {}
 
 Arguments parse_args(int argc, char **argv) {
 	Arguments ret;
-	int c;
-
 	ret.argc = argc;
 	ret.argv = argv;
 
@@ -63,7 +61,7 @@ Arguments parse_args(int argc, char **argv) {
 			{0,                                0, 0,  0 }
 		};
 
-		c = getopt_long(ret.argc, ret.argv, "ht:", long_options, &option_index);
+		int c = getopt_long(ret.argc, ret.argv, "ht:", long_options, &option_index);
 
 		if (c == -1) {
 			break;

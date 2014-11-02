@@ -62,9 +62,8 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 
 	// read data from opus file
 	int position = 0;
-	int num_read = 0;
 	while (true) {
-		num_read = op_read(op_file.get(), &buffer.front()+position,
+		int num_read = op_read(op_file.get(), &buffer.front()+position,
 				pcm_length-position, nullptr);
 		if (num_read < 0) {
 			throw util::Error{"Failed to read from opus file: errorcode=%d", num_read};

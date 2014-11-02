@@ -82,10 +82,9 @@ pcm_chunk_t OpusDynamicLoader::load_chunk(uint32_t offset, uint32_t chunk_size) 
 	// if the opus file is a stereo source, we read chunk_size directly
 	int read_num_values = chunk_size / 2 * channels;
 	int read_count = 0;
-	int samples_read;
 	// loop as long as there are samples left to read
 	while (read_count <= read_num_values) {
-		samples_read = op_read(
+		int samples_read = op_read(
 			op_file.get(), &chunk.front() + read_count,
 			read_num_values - read_count, nullptr
 		);
