@@ -80,9 +80,12 @@ int FD::printf(const char *format, ...) {
 
 	//if that wasn't enough, allocate more memory and try again
 	if (len >= buf_size) {
-		buf = (char*) realloc(buf, sizeof(char) * (len + 1));
-		if(!buf)
+		char *oldbuf = buf;
+		buf = (char*) realloc(oldbuf, sizeof(char) * (len + 1));
+		if(!buf) {
+			free(oldbuf);
 			return -1;
+		}
 
 		va_start(vl, format);
 		vsnprintf(buf, len + 1, format, vl);
