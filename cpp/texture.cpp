@@ -96,14 +96,8 @@ void Texture::load() {
 		// change the suffix to .docx (lol)
 		size_t m_len = filename.length() + 2;
 		char *meta_filename = new char[m_len];
-		strncpy(meta_filename, filename.c_str(), m_len);
-
-		meta_filename[m_len-5] = 'd';
-		meta_filename[m_len-4] = 'o';
-		meta_filename[m_len-3] = 'c';
-		meta_filename[m_len-2] = 'x';
-		meta_filename[m_len-1] = '\0';
-
+		strncpy(meta_filename, filename.c_str(), m_len - 5);
+		strncpy(meta_filename + m_len - 5, "docx", 5);
 
 		log::msg("loading meta file %s", meta_filename);
 
