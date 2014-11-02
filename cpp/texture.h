@@ -60,16 +60,16 @@ public:
 	Texture(std::string filename, bool use_metafile = false);
 	~Texture();
 
-	void draw(coord::camhud pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0);
-	void draw(coord::camgame pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0);
-	void draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture = nullptr, int alpha_subid = -1);
-	void draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid);
+	void draw(coord::camhud pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0) const;
+	void draw(coord::camgame pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0) const;
+	void draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture = nullptr, int alpha_subid = -1) const;
+	void draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) const;
 
 	void reload();
 
-	struct gamedata::subtexture *get_subtexture(int subid);
-	int get_subtexture_count();
-	void get_subtexture_size(int subid, int *w, int *h);
+	const struct gamedata::subtexture *get_subtexture(int subid) const;
+	int get_subtexture_count() const;
+	void get_subtexture_size(int subid, int *w, int *h) const;
 
 	/**
 	 * get atlas subtexture coordinates.
@@ -78,8 +78,8 @@ public:
 	 * these pick the requested area out of the big texture.
 	 * returned as floats in range 0.0 to 1.0
 	 */
-	void get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb);
-	void get_subtexture_coordinates(struct gamedata::subtexture *subtex, float *txl, float *txr, float *txt, float *txb);
+	void get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) const;
+	void get_subtexture_coordinates(const gamedata::subtexture *subtex, float *txl, float *txr, float *txt, float *txb) const;
 
 	/**
 	fixes the hotspots of all subtextures to (x,y).
@@ -101,7 +101,7 @@ public:
 	/**
 	returns the opengl texture id of this texture.
 	*/
-	GLuint get_texture_id();
+	GLuint get_texture_id() const;
 
 private:
 	GLuint id, vertbuf;

@@ -144,27 +144,34 @@ void Texture::fix_hotspots(unsigned x, unsigned y) {
 	}
 }
 
-void Texture::draw(coord::camhud pos, unsigned int mode, bool mirrored, int subid, unsigned player) {
+
+void Texture::draw(coord::camhud pos, unsigned int mode, bool mirrored, int subid, unsigned player) const {
 	this->draw(pos.x, pos.y, mode, mirrored, subid, player, nullptr, -1);
 }
 
-void Texture::draw(coord::camgame pos, unsigned int mode,  bool mirrored, int subid, unsigned player) {
+
+void Texture::draw(coord::camgame pos, unsigned int mode,  bool mirrored, int subid, unsigned player) const {
 	this->draw(pos.x, pos.y, mode, mirrored, subid, player, nullptr, -1);
 }
 
-void Texture::draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture, int alpha_subid) {
+
+void Texture::draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture, int alpha_subid) const {
 	coord::camgame draw_pos = pos.to_tile3().to_phys3().to_camgame();
 	this->draw(draw_pos.x, draw_pos.y, mode, false, subid, 0, alpha_texture, alpha_subid);
 }
 
-void Texture::draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) {
+
+void Texture::draw(coord::pixel_t x, coord::pixel_t y,
+                   unsigned int mode, bool mirrored,
+                   int subid, unsigned player,
+                   Texture *alpha_texture, int alpha_subid) const {
 	glColor4f(1, 1, 1, 1);
 
 	//log::dbg("drawing texture at %hd, %hd", x, y);
 
 	bool use_playercolors = false;
 	bool use_alphashader = false;
-	struct gamedata::subtexture *mtx;
+	const gamedata::subtexture *mtx;
 
 	int *pos_id, *texcoord_id, *masktexcoord_id;
 
@@ -205,7 +212,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool m
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, this->id);
 
-	struct gamedata::subtexture *tx = this->get_subtexture(subid);
+	const gamedata::subtexture *tx = this->get_subtexture(subid);
 
 	int left, right, top, bottom;
 
@@ -304,7 +311,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool m
 }
 
 
-struct gamedata::subtexture *Texture::get_subtexture(int subid) {
+const gamedata::subtexture *Texture::get_subtexture(int subid) const {
 	if (subid < (ssize_t)this->subtexture_count && subid >= 0) {
 		return &this->subtextures[subid];
 	}
@@ -314,13 +321,14 @@ struct gamedata::subtexture *Texture::get_subtexture(int subid) {
 }
 
 
-void Texture::get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) {
-	struct gamedata::subtexture *tx = this->get_subtexture(subid);
+void Texture::get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) const {
+	const gamedata::subtexture *tx = this->get_subtexture(subid);
 	this->get_subtexture_coordinates(tx, txl, txr, txt, txb);
 }
 
-void Texture::get_subtexture_coordinates(struct gamedata::subtexture *tx,
-                                         float *txl, float *txr, float *txt, float *txb) {
+
+void Texture::get_subtexture_coordinates(const gamedata::subtexture *tx,
+                                         float *txl, float *txr, float *txt, float *txb) const {
 	*txl = ((float)tx->x)           /this->w;
 	*txr = ((float)(tx->x + tx->w)) /this->w;
 	*txt = ((float)tx->y)           /this->h;
@@ -328,17 +336,19 @@ void Texture::get_subtexture_coordinates(struct gamedata::subtexture *tx,
 }
 
 
-int Texture::get_subtexture_count() {
+int Texture::get_subtexture_count() const {
 	return this->subtexture_count;
 }
 
-void Texture::get_subtexture_size(int subid, int *w, int *h) {
-	struct gamedata::subtexture *subtex = this->get_subtexture(subid);
+
+void Texture::get_subtexture_size(int subid, int *w, int *h) const {
+	const gamedata::subtexture *subtex = this->get_subtexture(subid);
 	*w = subtex->w;
 	*h = subtex->h;
 }
 
-GLuint Texture::get_texture_id() {
+
+GLuint Texture::get_texture_id() const {
 	return this->id;
 }
 
