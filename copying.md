@@ -9,7 +9,7 @@ _the openage authors_ are:
 | Full name                   | aliases                    | E-Mail                           |
 |-----------------------------|----------------------------|----------------------------------|
 | Jonas Jelten                | TheJJ                      | jj@sft.mx                        |
-| Michael Enßlin              | mic_e                      | michael@ensslii.cc               |
+| Michael Enßlin              | mic_e                      | michael@ensslin.cc               |
 | Andre Kupka                 | freakout                   | kupka@in.tum.de                  |
 | Frank Schmidt               | gellardo                   | rubiccuber@googlemail.com        |
 | Markus Otto                 | zuntrax                    | otto@fs.tum.de                   |
@@ -30,6 +30,8 @@ _the openage authors_ are:
 | ?                           | awestin1                   | awestin1@gmail.com               |
 | Francisco Demartino         | franciscod                 | demartino.francisco@gmail.com    |
 | Peter Piwowarski            | oldlaptop                  | oldlaptop654@aol.com             |
+| Charles Pigott              | LordAro                    | charlespigott@googlemail.com     |
+| Andrew Eikum                | ColdPie1                   | coldpies@gmail.com               |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
