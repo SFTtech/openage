@@ -22,11 +22,15 @@
 
 namespace openage {
 
-/*
-  beware: this file is full of dirty hacks.
-
-  it's used to test and demonstrate the features of openage.
-  this file will be completely obsolete once the engine is feature-complete.
+/** @file
+ * main game logic file.
+ *
+ * Beware: this file is full of dirty hacks.
+ *
+ * It's used to test and demonstrate the features of openage.
+ * This file will be completely obsolete once the engine is feature-complete.
+ *
+ * Please try to move out anything located in here and create engine features instead.
  */
 
 // size of the initial terrain
@@ -97,7 +101,8 @@ GameMain::GameMain(Engine *engine)
 	editor_current_building(0),
 	clicking_active(true),
 	ctrl_active(false),
-	scrolling_active(false) {
+	scrolling_active(false),
+	assetmanager(engine->get_data_dir()) {
 
 	engine->register_draw_action(this);
 	engine->register_input_action(this);
@@ -115,9 +120,10 @@ GameMain::GameMain(Engine *engine)
 	auto blending_modes = util::read_csv_file<gamedata::blending_mode>(asset_dir.join("blending_modes.docx"));
 
 	// create the terrain which will be filled by chunks
-	terrain = new Terrain(asset_dir, terrain_types, blending_modes, true);
+	terrain = new Terrain(assetmanager, terrain_types, blending_modes, true);
 	terrain->fill(terrain_data, terrain_data_size);
 
+	log::msg("loading game specification files... stand by, will be faster soon...");
 	util::Dir gamedata_dir = asset_dir.append("gamedata");
 	auto gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
 
@@ -145,14 +151,7 @@ GameMain::GameMain(Engine *engine)
 			continue;
 		}
 
-		char *tex_fname = util::format("Data/graphics.drs/%d.slp.png", slp_id);
-		std::string tex_full_filename = asset_dir.join(tex_fname);
-
-		if (0 >= util::file_size(tex_full_filename)) {
-			log::msg("   file %s is not there, ignoring...", tex_full_filename.c_str());
-			delete[] tex_fname;
-			continue;
-		}
+		char *tex_fname = util::format("converted/Data/graphics.drs/%d.slp.png", slp_id);
 
 		// convert the float to the discrete foundation size...
 		openage::coord::tile_delta foundation_size = {
@@ -168,7 +167,7 @@ GameMain::GameMain(Engine *engine)
 		);
 
 		TestBuilding *newbuilding = new TestBuilding{
-			new Texture{tex_full_filename, true, PLAYERCOLORED},
+			this->assetmanager.get_texture(tex_fname),
 			building.name,
 			foundation_size,
 			building.terrain_id,
@@ -317,7 +316,6 @@ GameMain::~GameMain() {
 	}
 
 	for (auto &obj : this->available_buildings) {
-		delete obj->texture;
 		delete obj;
 	}
 
@@ -546,6 +544,7 @@ void GameMain::move_camera() {
 
 bool GameMain::on_tick() {
 	this->move_camera();
+	assetmanager.check_updates();
 
 	return true;
 }
@@ -566,7 +565,7 @@ bool GameMain::on_drawhud() {
 	Engine &e = Engine::get();
 
 	// draw the currently selected editor texture tile
-	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud());
+	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
 
 	// and the current active building
 	coord::window bpreview_pos;

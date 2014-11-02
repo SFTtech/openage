@@ -238,6 +238,12 @@ def media_convert(args):
                 #create exportable texture from the slp
                 texture = Texture(s, palette)
 
+                # the hotspots of terrain textures have to be fixed:
+                if drsname == "terrain":
+                    for entry in texture.image_metadata:
+                        entry["cx"] = 48
+                        entry["cy"] = 24
+
                 #save the image and the corresponding metadata file
                 texture.save(fname, output_formats)
 

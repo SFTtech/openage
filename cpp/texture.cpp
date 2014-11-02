@@ -12,36 +12,41 @@
 
 namespace openage {
 
-//real definition of the shaders,
-//they are "external" in the header.
+// TODO: remove these global variables!!!
+// definition of the shaders,
+// they are "external" in the header.
 namespace texture_shader {
 shader::Program *program;
 GLint texture, tex_coord;
-} //namespace texture_shader
+}
 
 namespace teamcolor_shader {
 shader::Program *program;
 GLint texture, tex_coord;
 GLint player_id_var, alpha_marker_var, player_color_var;
-} //namespace teamcolor_shader
+}
 
 namespace alphamask_shader {
 shader::Program *program;
 GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
-} //namespace alphamask_shader
+}
 
 
-Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
+Texture::Texture(std::string filename, bool use_metafile)
+	:
+	use_metafile{use_metafile},
+	filename{filename} {
+	// load the texture upon creation
+	this->load();
+}
 
-	this->use_player_color_tinting = 0 < (mode & PLAYERCOLORED);
-	this->use_alpha_masking        = 0 < (mode & ALPHAMASKED);
-
+void Texture::load() {
 	SDL_Surface *surface;
 	GLuint textureid;
 	int texture_format_in;
 	int texture_format_out;
 
-	surface = IMG_Load(filename.c_str());
+	surface = IMG_Load(this->filename.c_str());
 
 	if (!surface) {
 		throw util::Error("Could not load texture from '%s': %s", filename.c_str(), IMG_GetError());
@@ -50,13 +55,13 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 		log::dbg1("Loaded texture from '%s'", filename.c_str());
 	}
 
-	//glTexImage2D format determination
+	// glTexImage2D format determination
 	switch (surface->format->BytesPerPixel) {
-	case 3: //RGB 24 bit
+	case 3: // RGB 24 bit
 		texture_format_in  = GL_RGB8;
 		texture_format_out = GL_RGB;
 		break;
-	case 4: //RGBA 32 bit
+	case 4: // RGBA 32 bit
 		texture_format_in  = GL_RGBA8;
 		texture_format_out = GL_RGBA;
 		break;
@@ -68,7 +73,7 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 	this->w = surface->w;
 	this->h = surface->h;
 
-	//generate 1 texture handle
+	// generate 1 texture handle
 	glGenTextures(1, &textureid);
 	glBindTexture(GL_TEXTURE_2D, textureid);
 
@@ -79,7 +84,7 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 		texture_format_out, GL_UNSIGNED_BYTE, surface->pixels
 	);
 
-	//later drawing settings
+	// later drawing settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -88,32 +93,26 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 	this->id = textureid;
 
 	if (use_metafile) {
-		//change the suffix to .docx (lol)
+		// change the suffix to .docx (lol)
 		size_t m_len = filename.length() + 2;
 		char *meta_filename = new char[m_len];
-		strncpy(meta_filename, filename.c_str(), m_len);
-
-		meta_filename[m_len-5] = 'd';
-		meta_filename[m_len-4] = 'o';
-		meta_filename[m_len-3] = 'c';
-		meta_filename[m_len-2] = 'x';
-		meta_filename[m_len-1] = '\0';
-
+		strncpy(meta_filename, filename.c_str(), m_len - 5);
+		strncpy(meta_filename + m_len - 5, "docx", 5);
 
 		log::msg("loading meta file %s", meta_filename);
 
-		//get subtexture information by meta file exported by script
+		// get subtexture information by meta file exported by script
 		this->subtextures = util::read_csv_file<gamedata::subtexture>(meta_filename);
 		this->subtexture_count = this->subtextures.size();
 
-		//TODO: use information from empires.dat for that, also use x and y sizes:
+		// TODO: use information from empires.dat for that, also use x and y sizes:
 		this->atlas_dimensions = sqrt(this->subtexture_count);
 		delete[] meta_filename;
 	}
 	else {
 		// we don't have a texture description file.
 		// use the whole image as one texture then.
-		struct gamedata::subtexture s {0, 0, this->w, this->h, this->w/2, this->h/2};
+		gamedata::subtexture s{0, 0, this->w, this->h, this->w/2, this->h/2};
 
 		this->subtexture_count = 1;
 		this->subtextures.push_back(s);
@@ -121,10 +120,23 @@ Texture::Texture(std::string filename, bool use_metafile, unsigned int mode) {
 	glGenBuffers(1, &this->vertbuf);
 }
 
-Texture::~Texture() {
+
+void Texture::unload() {
 	glDeleteTextures(1, &this->id);
 	glDeleteBuffers(1, &this->vertbuf);
 }
+
+
+void Texture::reload() {
+	this->unload();
+	this->load();
+}
+
+
+Texture::~Texture() {
+	this->unload();
+}
+
 
 void Texture::fix_hotspots(unsigned x, unsigned y) {
 	for(size_t i = 0; i < subtexture_count; i++) {
@@ -133,48 +145,55 @@ void Texture::fix_hotspots(unsigned x, unsigned y) {
 	}
 }
 
-void Texture::draw(coord::camhud pos, bool mirrored, int subid, unsigned player) {
-	this->draw(pos.x, pos.y, mirrored, subid, player, nullptr, -1);
+
+void Texture::draw(coord::camhud pos, unsigned int mode, bool mirrored, int subid, unsigned player) const {
+	this->draw(pos.x, pos.y, mode, mirrored, subid, player, nullptr, -1);
 }
 
-void Texture::draw(coord::camgame pos, bool mirrored, int subid, unsigned player) {
-	this->draw(pos.x, pos.y, mirrored, subid, player, nullptr, -1);
+
+void Texture::draw(coord::camgame pos, unsigned int mode,  bool mirrored, int subid, unsigned player) const {
+	this->draw(pos.x, pos.y, mode, mirrored, subid, player, nullptr, -1);
 }
 
-void Texture::draw(coord::tile pos, int subid, Texture *alpha_texture, int alpha_subid) {
+
+void Texture::draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture, int alpha_subid) const {
 	coord::camgame draw_pos = pos.to_tile3().to_phys3().to_camgame();
-	this->draw(draw_pos.x, draw_pos.y, false, subid, 0, alpha_texture, alpha_subid);
+	this->draw(draw_pos.x, draw_pos.y, mode, false, subid, 0, alpha_texture, alpha_subid);
 }
 
-void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) {
+
+void Texture::draw(coord::pixel_t x, coord::pixel_t y,
+                   unsigned int mode, bool mirrored,
+                   int subid, unsigned player,
+                   Texture *alpha_texture, int alpha_subid) const {
 	glColor4f(1, 1, 1, 1);
 
 	//log::dbg("drawing texture at %hd, %hd", x, y);
 
 	bool use_playercolors = false;
 	bool use_alphashader = false;
-	struct gamedata::subtexture *mtx;
+	const gamedata::subtexture *mtx;
 
 	int *pos_id, *texcoord_id, *masktexcoord_id;
 
-	//is this texture drawn with an alpha mask?
-	if (this->use_alpha_masking && alpha_subid >= 0 && alpha_texture != nullptr) {
+	// is this texture drawn with an alpha mask?
+	if ((mode & ALPHAMASKED) && alpha_subid >= 0 && alpha_texture != nullptr) {
 		alphamask_shader::program->use();
 
-		//bind the alpha mask texture to slot 1
+		// bind the alpha mask texture to slot 1
 		glActiveTexture(GL_TEXTURE1);
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, alpha_texture->get_texture_id());
 
-		//get the alphamask subtexture (the blend mask!)
+		// get the alphamask subtexture (the blend mask!)
 		mtx = alpha_texture->get_subtexture(alpha_subid);
 		pos_id = &alphamask_shader::program->pos_id;
 		texcoord_id = &alphamask_shader::base_coord;
 		masktexcoord_id = &alphamask_shader::mask_coord;
 		use_alphashader = true;
 	}
-	//is this texure drawn with replaced pixels for team coloring?
-	else if (this->use_player_color_tinting) {
+	// is this texure drawn with replaced pixels for team coloring?
+	else if (mode & PLAYERCOLORED) {
 		teamcolor_shader::program->use();
 
 		//set the desired player id in the shader
@@ -183,7 +202,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		texcoord_id = &teamcolor_shader::tex_coord;
 		use_playercolors = true;
 	}
-	//mkay, we just draw the plain texture otherwise.
+	// mkay, we just draw the plain texture otherwise.
 	else {
 		texture_shader::program->use();
 		pos_id = &texture_shader::program->pos_id;
@@ -194,11 +213,11 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, this->id);
 
-	struct gamedata::subtexture *tx = this->get_subtexture(subid);
+	const gamedata::subtexture *tx = this->get_subtexture(subid);
 
 	int left, right, top, bottom;
 
-	//coordinates where the texture will be drawn on screen.
+	// coordinates where the texture will be drawn on screen.
 	bottom  = y      - (tx->h - tx->cy);
 	top     = bottom + tx->h;
 
@@ -210,17 +229,17 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		right = left - tx->w;
 	}
 
-	//convert the texture boundaries to float
-	//these will be the vertex coordinates.
+	// convert the texture boundaries to float
+	// these will be the vertex coordinates.
 	float leftf, rightf, topf, bottomf;
 	leftf   = (float) left;
 	rightf  = (float) right;
 	topf    = (float) top;
 	bottomf = (float) bottom;
 
-	//subtexture coordinates
-	//left, right, top and bottom bounds as coordinates
-	//these pick the requested area out of the big texture.
+	// subtexture coordinates
+	// left, right, top and bottom bounds as coordinates
+	// these pick the requested area out of the big texture.
 	float txl, txr, txt, txb;
 	this->get_subtexture_coordinates(tx, &txl, &txr, &txt, &txb);
 
@@ -229,8 +248,8 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		alpha_texture->get_subtexture_coordinates(mtx, &mtxl, &mtxr, &mtxt, &mtxb);
 	}
 
-	//this array will be uploaded to the GPU.
-	//it contains all dynamic vertex data (position, tex coordinates, mask coordinates)
+	// this array will be uploaded to the GPU.
+	// it contains all dynamic vertex data (position, tex coordinates, mask coordinates)
 	float vdata[] {
 		leftf,  topf,
 		leftf,  bottomf,
@@ -247,28 +266,28 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 	};
 
 
-	//store vertex buffer data, TODO: prepare this sometime earlier.
+	// store vertex buffer data, TODO: prepare this sometime earlier.
 	glBindBuffer(GL_ARRAY_BUFFER, this->vertbuf);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vdata), vdata, GL_STREAM_DRAW);
 
-	//enable vertex buffer and bind it to the vertex attribute
+	// enable vertex buffer and bind it to the vertex attribute
 	glEnableVertexAttribArray(*pos_id);
 	glEnableVertexAttribArray(*texcoord_id);
 	if (use_alphashader) {
 		glEnableVertexAttribArray(*masktexcoord_id);
 	}
 
-	//set data types, offsets in the vdata array
+	// set data types, offsets in the vdata array
 	glVertexAttribPointer(*pos_id,      2, GL_FLOAT, GL_FALSE, 0, (void *)(0));
 	glVertexAttribPointer(*texcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(sizeof(float) * 8));
 	if (use_alphashader) {
 		glVertexAttribPointer(*masktexcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(sizeof(float) * 8 * 2));
 	}
 
-	//draw the vertex array
+	// draw the vertex array
 	glDrawArrays(GL_QUADS, 0, 4);
 
-	//unbind the current buffer
+	// unbind the current buffer
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	glDisableVertexAttribArray(*pos_id);
@@ -277,7 +296,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 		glDisableVertexAttribArray(*masktexcoord_id);
 	}
 
-	//disable the shaders.
+	// disable the shaders.
 	if (use_playercolors) {
 		teamcolor_shader::program->stopusing();
 	} else if (use_alphashader) {
@@ -293,7 +312,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y, bool mirrored, int subid,
 }
 
 
-struct gamedata::subtexture *Texture::get_subtexture(int subid) {
+const gamedata::subtexture *Texture::get_subtexture(int subid) const {
 	if (subid < (ssize_t)this->subtexture_count && subid >= 0) {
 		return &this->subtextures[subid];
 	}
@@ -303,13 +322,14 @@ struct gamedata::subtexture *Texture::get_subtexture(int subid) {
 }
 
 
-void Texture::get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) {
-	struct gamedata::subtexture *tx = this->get_subtexture(subid);
+void Texture::get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) const {
+	const gamedata::subtexture *tx = this->get_subtexture(subid);
 	this->get_subtexture_coordinates(tx, txl, txr, txt, txb);
 }
 
-void Texture::get_subtexture_coordinates(struct gamedata::subtexture *tx,
-                                         float *txl, float *txr, float *txt, float *txb) {
+
+void Texture::get_subtexture_coordinates(const gamedata::subtexture *tx,
+                                         float *txl, float *txr, float *txt, float *txb) const {
 	*txl = ((float)tx->x)           /this->w;
 	*txr = ((float)(tx->x + tx->w)) /this->w;
 	*txt = ((float)tx->y)           /this->h;
@@ -317,17 +337,19 @@ void Texture::get_subtexture_coordinates(struct gamedata::subtexture *tx,
 }
 
 
-int Texture::get_subtexture_count() {
+int Texture::get_subtexture_count() const {
 	return this->subtexture_count;
 }
 
-void Texture::get_subtexture_size(int subid, int *w, int *h) {
-	struct gamedata::subtexture *subtex = this->get_subtexture(subid);
+
+void Texture::get_subtexture_size(int subid, int *w, int *h) const {
+	const gamedata::subtexture *subtex = this->get_subtexture(subid);
 	*w = subtex->w;
 	*h = subtex->h;
 }
 
-GLuint Texture::get_texture_id() {
+
+GLuint Texture::get_texture_id() const {
 	return this->id;
 }
 
