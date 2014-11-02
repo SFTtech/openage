@@ -9,7 +9,7 @@ _the openage authors_ are:
 | Full name                   | aliases                    | E-Mail                           |
 |-----------------------------|----------------------------|----------------------------------|
 | Jonas Jelten                | TheJJ                      | jj@sft.mx                        |
-| Michael Enßlin              | mic_e                      | michael@ensslin.cc               |
+| Michael Enßlin              | mic_e                      | michael@ensslii.cc               |
 | Andre Kupka                 | freakout                   | kupka@in.tum.de                  |
 | Frank Schmidt               | gellardo                   | rubiccuber@googlemail.com        |
 | Markus Otto                 | zuntrax                    | otto@fs.tum.de                   |
@@ -75,16 +75,20 @@ is still correct.
 **3rd-party** source files, that is, files that were taken from other open-
 source projects, require the following, longer header:
 
-    This file was (taken|adapted) from $PROJECT,
+    This file was ((taken|adapted)|contains (data|code)) from $PROJECT,
     Copyright 1337-2013 Your Mom.
     It's licensed under the terms of the 3-clause BSD license.
-    < further legal information required by $PROJECT, such as a reference
-    to a copy of the $PROJECT's README or AUTHORS file >
-    Modifications Copyright 2014-2014 the openage authors.
+    < any amount of lines of further legal information required by $PROJECT,
+      such as a reference to a copy of the $PROJECT's README or AUTHORS file >
+    < if third-party files from more than the one project were used in this
+      file, copy the above any number of times >
+    (Modifications|Other (data|code)|Everything else) Copyright 2014-2014 the openage authors.
     See copying.md for further legal info.
 
-The file's original license header should be additionally retained IFF
-permission to remove it can't be obtained.
+For even more details, see the [regular expressions](py/openage/codecompliance/legal.py).
+
+In addition to the openage header, the file's original license header should
+be retained if in doubt.
 
 The "license" line is required only if the file is not licensed as
 "GPLv3 or higher".

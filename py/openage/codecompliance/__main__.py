@@ -67,18 +67,8 @@ def main():
                 yield x
 
         if args.legal:
-            known_third_party_files = set()
             dirstocheck = ('cpp', 'py', 'buildsystem')
-            for d in dirstocheck:
-                for x in legal.find_issues(d, args.test_git_years):
-                    if isinstance(x, legal.ThirdPartyFile):
-                        known_third_party_files.add(x.filename)
-                    else:
-                        yield x
-
-            for x in legal.find_third_party_file_list_issues(
-                    known_third_party_files):
-
+            for x in legal.find_issues(dirstocheck, args.test_git_years):
                 yield x
 
         if args.authors:

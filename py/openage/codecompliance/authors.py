@@ -2,9 +2,52 @@
 
 import re
 import os
-from subprocess import Popen, PIPE
 
 from . import util
+
+
+def get_author_emails_copying_md():
+    """
+    yields all emails from the author table in copying.md
+
+    they must be part of a line like
+
+    |     name     |    nick    |    email    |
+    """
+    with open("copying.md") as f:
+        for line in f:
+            match = re.match("^.*\|[^|]*\|[^|]*\|([^|]*)\|.*$", line)
+            if not match:
+                continue
+
+            for email in match.group(1).split(', '):
+                if '@' in email:
+                    continue
+
+                yield email.lower().strip()
+
+
+def get_author_emails_git_shortlog(exts=['.cpp', '.h', '.py', '.cmake']):
+    """
+    yields emails of all authors that have authored any of the files ending
+    in exts (plus their templates)
+
+    parses the output of git shortlog -sne
+    """
+    from subprocess import Popen, PIPE
+
+    invocation = ['git', 'shortlog', '-sne', '--']
+    for ext in ['.cpp', '.h', '.py', '.cmake']:
+        invocation.append("*.{}".format(ext))
+        invocation.append("*.{}.in".format(ext))
+        invocation.append("*.{}.template".format(ext))
+
+    output = Popen(invocation, stdout=PIPE).communicate()[0]
+
+    for line in output.decode('utf-8', errors='replace').split('\n'):
+        match = re.match("^ +[0-9]+\t[^<]*\<(.*)\>$", line)
+        if match:
+            yield match.group(1).lower()
 
 
 def find_issues():
@@ -13,38 +56,16 @@ def find_issues():
 
     prints all discrepancies, and returns False if one is detected.
     """
-    known_emails = set()
+    copying_md_emails = set(get_author_emails_copying_md())
+    git_shortlog_emails = set(get_author_emails_git_shortlog())
 
-    # look for known emails in copying.md
-    # (they must be part of a line like
-    # .* <garbage, othergarbage, email, garbage, email> .*
-
-    expr = re.compile('^.*\|[^|]*\|[^|]*\|([^|]*)\|.*$')
-    for line in open('copying.md').read().split('\n'):
-        match = expr.match(line)
-        if not match:
+    # look for git emails that are unlisted in copying.md
+    for email in git_shortlog_emails - copying_md_emails:
+        if email in {'coop@sft.mx', '?'}:
             continue
 
-        for email in match.group(1).split(', '):
-            if '@' not in email:
-                continue
-
-            email = email.lower().strip()
-            known_emails.add(email)
-
-    output = Popen(['git', 'shortlog', '-sne'], stdout=PIPE).communicate()[0]
-    expr = re.compile("^ +[0-9]+\t[^<]*\<(.*)\>$")
-    for line in output.decode('utf-8', errors='replace').split('\n'):
-        match = expr.match(line)
-        if not match:
-            continue
-
-        email = match.group(1).lower()
-
-        if email not in known_emails:
-            if email in {'coop@sft.mx', '?'}:
-                continue
-
-            yield util.Issue(
-                "unknown commit email in `git shortlog -e`: {}".format(email),
-                "\n\tadd the email address to `copying.md` or `.mailmap`")
+        yield util.Issue(
+            "author inconsistency",
+            ("{}\n"
+             "\temail appears in git log, "
+             "but not in copying.md or .mailmap".format(email)))

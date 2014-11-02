@@ -149,6 +149,6 @@ License
 -------
 **GNU GPLv3** or later; see [copying.md](copying.md) and [legal/GPLv3](legal/GPLv3).
 
-I know that probably nobody is ever gonna look at the `copying.md` file it,
+I know that probably nobody is ever gonna look at the `copying.md` file,
 but if you want to contribute code to openage, please take the time to
 skim through it and add yourself to the authors list.
