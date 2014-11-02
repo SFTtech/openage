@@ -118,8 +118,8 @@ public:
 	}
 
 	~NewBuf() {
-		delete this->linedata;
-		delete this->chrdata;
+		delete[] this->linedata;
+		delete[] this->chrdata;
 	}
 
 	void apply_to_buf(Buf *b) {
