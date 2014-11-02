@@ -22,11 +22,15 @@
 
 namespace openage {
 
-/*
-  beware: this file is full of dirty hacks.
-
-  it's used to test and demonstrate the features of openage.
-  this file will be completely obsolete once the engine is feature-complete.
+/** @file
+ * main game logic file.
+ *
+ * Beware: this file is full of dirty hacks.
+ *
+ * It's used to test and demonstrate the features of openage.
+ * This file will be completely obsolete once the engine is feature-complete.
+ *
+ * Please try to move out anything located in here and create engine features instead.
  */
 
 // size of the initial terrain
