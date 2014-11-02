@@ -70,10 +70,14 @@ Texture *AssetManager::load_texture(const std::string &name) {
 }
 
 Texture *AssetManager::get_texture(const std::string &name) {
-	if(textures.find(root->join(name)) == textures.end())
-		return load_texture(name);
+	auto tex_it = this->textures.find(this->root->join(name));
 
-	return textures[root->join(name)];
+	// the texture was not loaded yet:
+	if (tex_it == this->textures.end()) {
+		return this->load_texture(name);
+	}
+
+	return tex_it->second;
 }
 
 void AssetManager::check_updates() {
