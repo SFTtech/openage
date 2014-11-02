@@ -32,10 +32,12 @@ GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 }
 
 
-Texture::Texture(std::string _filename, bool _use_metafile):
-		use_metafile(_use_metafile),
-		filename(_filename) {
-	load();
+Texture::Texture(std::string filename, bool use_metafile)
+	:
+	use_metafile{use_metafile},
+	filename{filename} {
+	// load the texture upon creation
+	this->load();
 }
 
 void Texture::load() {
@@ -44,7 +46,7 @@ void Texture::load() {
 	int texture_format_in;
 	int texture_format_out;
 
-	surface = IMG_Load(filename.c_str());
+	surface = IMG_Load(this->filename.c_str());
 
 	if (!surface) {
 		throw util::Error("Could not load texture from '%s': %s", filename.c_str(), IMG_GetError());
@@ -132,13 +134,13 @@ void Texture::unload() {
 
 
 void Texture::reload() {
-	unload();
-	load();
+	this->unload();
+	this->load();
 }
 
 
 Texture::~Texture() {
-	unload();
+	this->unload();
 }
 
 
