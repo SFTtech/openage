@@ -31,7 +31,7 @@ endfunction()
 # you need to use add_sources to add source files to it, and finalize_executable to finalize it.
 # then you can add libraries, include dirs, etc.
 function(declare_executable binary_name)
-	set_property(GLOBAL APPEND PROPERTY SFT_BINARIES ${binary_name})
+	set_property(GLOBAL APPEND PROPERTY SFT_BINARIES "${binary_name}")
 endfunction()
 
 # add source files to a binary
@@ -43,7 +43,7 @@ function(add_sources binary_name)
 	set(generated FALSE)
 
 	get_property(binary_list GLOBAL PROPERTY SFT_BINARIES)
-	list_contains(contained ${binary_name} ${binary_list})
+	list_contains(contained "${binary_name}" "${binary_list}")
 	if(NOT contained)
 		message(FATAL_ERROR "attempting to add source to unknown binary ${binary_name}")
 	endif()
@@ -52,21 +52,21 @@ function(add_sources binary_name)
 		if(source STREQUAL GENERATED)
 			set(generated TRUE)
 		else()
-			if(NOT IS_ABSOLUTE ${source})
-				set(source ${CMAKE_CURRENT_SOURCE_DIR}/${source})
+			if(NOT IS_ABSOLUTE "${source}")
+				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 			endif()
 
 			set_property(
 				GLOBAL APPEND PROPERTY
-				SFT_BINARY_SRCS_${binary_name}
-				${source}
+				"SFT_BINARY_SRCS_${binary_name}"
+				"${source}"
 			)
 
 			if(${generated})
 				set_property(
 					GLOBAL APPEND PROPERTY
-					SFT_BINARY_GENERATED_SRCS_${binary_name}
-					${source}
+					"SFT_BINARY_GENERATED_SRCS_${binary_name}"
+					"${source}"
 				)
 			endif()
 		endif()
@@ -87,20 +87,20 @@ function(finalize_executable binary_name)
 	# print overview of the executable's files
 	message("C++ executable: ${binary_name}")
 	foreach(source ${sources})
-		list_contains(contained ${source} ${generatedsources})
+		list_contains(contained "${source}" "${generatedsources}")
 		if(contained)
-			print_filename(${source} "[gen]")
+			print_filename("${source}" "[gen]")
 		else()
-			print_filename(${source})
+			print_filename("${source}")
 		endif()
 	endforeach()
 
 	# create the executable
-	add_executable(${binary_name} ${sources})
+	add_executable("${binary_name}" ${sources})
 
 	# make the binary depend on codegen iff it has any generated files
 	if(generatedsources)
-		add_dependencies(${binary_name} codegen)
+		add_dependencies("${binary_name}" codegen)
 	endif()
 	message("")
 endfunction()

@@ -26,7 +26,7 @@ If it doesn't, consider reporting the issue/asking for help in #sfttech on freen
 project(openage C CXX)
 
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
-set(CMAKE_MODULE_PATH ${BUILDSYSTEM_DIR}/modules/)
+set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}/modules/")
 
 # include build configuration modules
 include("CTest")
@@ -46,7 +46,7 @@ include("${BUILDSYSTEM_DIR}/doxygen.cmake")
 disallow_in_source_builds()
 
 # create python config file
-configure_file(py/openage/config.py.in ${CMAKE_SOURCE_DIR}/py/openage/config.py)
+configure_file(py/openage/config.py.in "${CMAKE_SOURCE_DIR}/py/openage/config.py")
 
 # create documentation for cpp and py folders
 doxygen_configure(cpp/ py/)
