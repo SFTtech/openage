@@ -16,7 +16,9 @@ class DoublyLinkedListNode {
 public:
 	DoublyLinkedListNode(const T &data)
 		:
-		data{data} {
+		data{data},
+		previous{nullptr},
+		next{nullptr} {
 	}
 
 	T data;

@@ -7,6 +7,9 @@ namespace path {
 
 Node::Node()
 	:
+	accessible{false},
+	visited{false},
+	was_best{false},
 	path_predecessor{nullptr} {
 }
 

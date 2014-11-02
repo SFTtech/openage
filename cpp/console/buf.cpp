@@ -95,6 +95,8 @@ public:
 
 	NewBuf(term dims, term_t scrollback_lines, buf_char default_char_fmt)
 		:
+		linedata_ptr{nullptr},
+		chrdata_ptr{nullptr},
 		default_char_fmt{default_char_fmt}
 	{
 		this->dims = dims;
