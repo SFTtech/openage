@@ -85,7 +85,7 @@ cleanpymodules: $(BUILDDIR)
 	@find py -name "*.so" -type f -print -delete
 
 .PHONY: clean
-clean: $(BUILDDIR) cleancodegen cleanpymodules cleanopenage
+clean: $(BUILDDIR) cleancodegen cleanpymodules cleanelf
 	@# removes object files, binaries, pymodules, generated code
 
 .PHONY: cleaninsourcebuild
