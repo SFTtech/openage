@@ -13,6 +13,9 @@ namespace openage {
 AssetManager::AssetManager(util::Dir *root)
 	:
 	root{root} {
+
+	this->missing_tex = new Texture{root->join("missing.png"), false};
+
 #if HAS_INOTIFY
 	// initialize the inotify instance
 	this->inotify_fd = inotify_init1(IN_NONBLOCK);
@@ -23,8 +26,12 @@ AssetManager::AssetManager(util::Dir *root)
 }
 
 AssetManager::~AssetManager() {
-	for(auto it : textures)
-		delete it.second;
+	for (auto &tex : this->textures) {
+		if (tex.second != this->missing_tex) {
+			delete tex.second;
+		}
+	}
+	delete this->missing_tex;
 }
 
 bool AssetManager::can_load(const std::string &name) const {
@@ -38,8 +45,13 @@ Texture *AssetManager::load_texture(const std::string &name) {
 
 	if (!this->can_load(name)) {
 		log::msg("   file %s is not there...", filename.c_str());
-		ret = new Texture{root->join("missing.png"), false};
-	}else{
+
+		// TODO: add/fetch inotify watch on the containing folder
+		// to display the tex as soon at it exists.
+
+		// return the big X texture instead
+		ret = this->missing_tex;
+	} else {
 		ret = new Texture{filename, true};
 
 #if HAS_INOTIFY
