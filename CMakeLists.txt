@@ -52,6 +52,7 @@ configure_file(py/openage/config.py.in "${CMAKE_SOURCE_DIR}/py/openage/config.py
 doxygen_configure(cpp/ py/)
 
 add_subdirectory(cpp/)
+add_subdirectory(dist/)
 add_subdirectory(py/)
 
 # process the included python sources, generate setup.py
