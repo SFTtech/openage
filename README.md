@@ -12,6 +12,8 @@ To play, you require *an original AoE II installation or [AoE II: HD](http://sto
 
 [![Bountysource](https://www.bountysource.com/badge/team?team_id=6026&style=bounties_received)](https://www.bountysource.com/teams/sfttech/issues?utm_source=SFTtech&utm_medium=shield&utm_campaign=bounties_received)
 
+[![tip for next commit](http://prime4commit.com/projects/143.svg)](http://prime4commit.com/projects/143)
+
 
 The foundation of **openage**:
 

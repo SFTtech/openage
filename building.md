@@ -59,7 +59,7 @@ Dependency list:
 ### Prerequisite steps for Ubuntu users (Ubuntu 14.10)
 
  - `sudo apt-get update`
- - `sudo apt-get install cmake libfreetype6-dev python3-dev libglew-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools`
+ - `sudo apt-get install cmake libfreetype6-dev python3-dev libglew-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools python3-pil python3-numpy`
 
 ### Prerequisite steps for openSUSE users (openSUSE 13.1)
 
@@ -85,7 +85,7 @@ If you already have python3 or one of packman/games repositories then no need to
 ### For developers/users who want to try the project
 
  - (obviously) clone this repo or acquire the sources some other way
- - make sure you have everything from the dependency list below
+ - make sure you have everything from the [dependency list](#dependencies)
  - `./configure --mode=debug --compiler=clang++` will prepare building
  - `make` will do code generation, build all python modules and the
    openage executable
