@@ -34,7 +34,7 @@ public:
 
 	~Error();
 
-	const char *str();
+	const char *str() const;
 
 private:
 	char *buf;

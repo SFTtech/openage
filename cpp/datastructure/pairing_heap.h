@@ -41,11 +41,11 @@ public:
 
 	PairingHeapNode(const T &data)
 		:
-		first_child(nullptr),
-		prev_sibling(nullptr),
-		next_sibling(nullptr),
-		parent(nullptr),
-		data(data) {
+		first_child{nullptr},
+		prev_sibling{nullptr},
+		next_sibling{nullptr},
+		parent{nullptr},
+		data{data} {
 	}
 
 	~PairingHeapNode() {}

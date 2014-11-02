@@ -29,7 +29,7 @@ struct camhud_delta {
 
 	#include "ops/rel.h"
 
-	window_delta to_window();
+	window_delta to_window() const;
 };
 
 #include "ops/free.h"

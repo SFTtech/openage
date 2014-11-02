@@ -8,11 +8,11 @@
 namespace openage {
 namespace coord {
 
-tile3 tile::to_tile3(tile_t up) {
+tile3 tile::to_tile3(tile_t up) const {
 	return tile3 {ne, se, up};
 }
 
-tile3_delta tile_delta::to_tile3(tile_t up) {
+tile3_delta tile_delta::to_tile3(tile_t up) const {
 	return tile3_delta {ne, se, up};
 }
 
@@ -23,7 +23,7 @@ phys2 tile::to_phys2(phys2_delta frac) {
 	return result;
 }
 
-chunk tile::to_chunk() {
+chunk tile::to_chunk() const {
 	chunk result;
 	result.ne = (ne >> settings::tiles_per_chunk_bits);
 	result.se = (se >> settings::tiles_per_chunk_bits);
@@ -37,7 +37,7 @@ tile tile_delta::to_tile() {
 	return result;
 }
 
-tile_delta tile::get_pos_on_chunk() {
+tile_delta tile::get_pos_on_chunk() const {
 	tile_delta result;
 
 	// define a bitmask that keeps the last n bits

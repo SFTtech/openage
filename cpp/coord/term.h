@@ -20,7 +20,7 @@ struct term {
 
 	#include "ops/abs.h"
 
-	camhud to_camhud(console::Console *e);
+	camhud to_camhud(console::Console *e) const;
 };
 
 struct term_delta {

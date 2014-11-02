@@ -97,12 +97,12 @@ int run_game(Arguments *args) {
 
 GameMain::GameMain(Engine *engine)
 	:
-	editor_current_terrain(0),
-	editor_current_building(0),
-	clicking_active(true),
-	ctrl_active(false),
-	scrolling_active(false),
-	assetmanager(engine->get_data_dir()) {
+	editor_current_terrain{0},
+	editor_current_building{0},
+	clicking_active{true},
+	ctrl_active{false},
+	scrolling_active{false},
+	assetmanager{engine->get_data_dir()} {
 
 	engine->register_draw_action(this);
 	engine->register_input_action(this);

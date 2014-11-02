@@ -19,9 +19,9 @@
 namespace openage {
 
 TileContent::TileContent() :
-	terrain_id(0),
-	obj(nullptr)
-{}
+	terrain_id{0},
+	obj{nullptr} {
+}
 
 TileContent::~TileContent() {}
 

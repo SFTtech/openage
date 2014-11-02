@@ -16,7 +16,9 @@ class DoublyLinkedListNode {
 public:
 	DoublyLinkedListNode(const T &data)
 		:
-		data{data} {
+		data{data},
+		previous{nullptr},
+		next{nullptr} {
 	}
 
 	T data;
@@ -40,9 +42,9 @@ class DoublyLinkedList {
 public:
 	DoublyLinkedList()
 		:
-		first(nullptr),
-		last(nullptr),
-		node_count(0) {
+		first{nullptr},
+		last{nullptr},
+		node_count{0} {
 	}
 
 	~DoublyLinkedList() {
@@ -223,14 +225,14 @@ public:
 	/**
 	 * Return the current list element count.
 	 */
-	size_t size() {
+	size_t size() const {
 		return this->node_count;
 	}
 
 	/**
 	 * Check whether no elements are present in the list.
 	 */
-	bool empty() {
+	bool empty() const {
 		return (this->node_count == 0);
 	}
 

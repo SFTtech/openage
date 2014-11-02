@@ -16,9 +16,9 @@ struct phys2 {
 
 	#include "ops/abs.h"
 
-	phys3 to_phys3(phys_t up = 0);
-	tile to_tile();
-	phys2_delta get_fraction();
+	phys3 to_phys3(phys_t up = 0) const;
+	tile to_tile() const;
+	phys2_delta get_fraction() const;
 };
 
 struct phys2_delta {
@@ -26,7 +26,7 @@ struct phys2_delta {
 
 	#include "ops/rel.h"
 
-	phys3_delta to_phys3(phys_t up = 0);
+	phys3_delta to_phys3(phys_t up = 0) const;
 
 	//allowing conversions of phys deltas to tile deltas isn't such a great
 	//idea. you never know whether a phys change of 0.9 will _actually_

@@ -43,6 +43,19 @@ constexpr chrflags_t CHR_STRESS_IDEOGRAM = (1 << 15); //whatever that is
  */
 struct buf_char {
 	/**
+	 * Default copy constructor
+	 */
+	buf_char(int cp, chrcol_t fgcol, chrcol_t bgcol, chrflags_t flags)
+	:
+	cp{cp},
+	fgcol{fgcol},
+	bgcol{bgcol},
+	flags{flags} {
+	}
+
+	buf_char() = default;
+
+	/**
 	 * unicode codepoint of the character
 	 */
 	int cp;
@@ -59,7 +72,7 @@ struct buf_char {
 	 */
 	chrflags_t flags;
 
-	bool operator ==(const buf_char &other) {
+	bool operator ==(const buf_char &other) const {
 		return
 		 (this->cp == other.cp) &&
 		 (this->fgcol == other.fgcol) &&
@@ -67,7 +80,7 @@ struct buf_char {
 		 (this->flags == other.flags);
 	}
 
-	bool operator !=(const buf_char &other) {
+	bool operator !=(const buf_char &other) const {
 		return not (*this == other);
 	}
 };

@@ -15,7 +15,7 @@ class JobManager;
 /**
  * A Job is a wrapper around a shared job state object and is returned by the
  * JobManager. It can be used to retrieve the current state of the Job and its
- * result. 
+ * result.
  * A Job is a lightweight object which only contains a pointer to its internal
  * shared state. Thus it can be copied around without worrying about
  * performance. Further it is not necessary to create or pass pointers to Job
@@ -64,7 +64,7 @@ private:
 			:
 			state{state} {
 	}
-	
+
 	/*
 	 * JobManager has to be a friend of Job in order to access the private
 	 * constructor.

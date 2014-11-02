@@ -7,12 +7,13 @@ namespace path {
 
 Node::Node()
 	:
-	path_predecessor(nullptr) {
-
+	accessible{false},
+	visited{false},
+	was_best{false},
+	path_predecessor{nullptr} {
 }
 
 Node::~Node() {
-
 }
 
 bool Node::operator <(const Node &other) const {
@@ -56,7 +57,6 @@ Path::Path(const std::list<Node> &nodes)
 }
 
 Path::~Path() {
-
 }
 
 } // namespace path

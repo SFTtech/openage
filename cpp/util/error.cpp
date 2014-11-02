@@ -23,8 +23,10 @@ Error::Error(const Error &other) {
 }
 
 Error &Error::operator=(const Error &other) {
-	delete[] buf;
-	buf = copy(other.buf);
+	if (this != &other) {
+		delete[] buf;
+		buf = copy(other.buf);
+	}
 	return *this;
 }
 
@@ -38,7 +40,7 @@ Error::~Error() {
 	delete[] buf;
 }
 
-const char *Error::str() {
+const char *Error::str() const {
 	return buf;
 }
 

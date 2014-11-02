@@ -7,7 +7,7 @@
 namespace openage {
 namespace coord {
 
-camhud term::to_camhud(console::Console *c) {
+camhud term::to_camhud(console::Console *c) const {
 	camhud result;
 	result.x = c->bottomleft.x + x * c->charsize.x;
 	result.y = c->topright.y   - y * c->charsize.y;
