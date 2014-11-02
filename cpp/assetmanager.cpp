@@ -6,13 +6,19 @@
 #include <limits.h> /* for NAME_MAX */
 #endif
 
+#include "util/error.h"
+
 namespace openage {
 
 AssetManager::AssetManager(util::Dir *root)
 	:
 	root{root} {
 #if HAS_INOTIFY
+	// initialize the inotify instance
 	this->inotify_fd = inotify_init1(IN_NONBLOCK);
+	if (this->inotify_fd < 0) {
+		throw util::Error{"failed to initialize inotify!"};
+	}
 #endif
 }
 
@@ -37,7 +43,11 @@ Texture *AssetManager::load_texture(const std::string &name) {
 		ret = new Texture{filename, true};
 
 #if HAS_INOTIFY
+		// create inotify update trigger for the requested file
 		int wd = inotify_add_watch(this->inotify_fd, filename.c_str(), IN_CLOSE_WRITE);
+		if (wd < 0) {
+			throw util::Error{"failed to add inotify watch for %s", filename.c_str()};
+		}
 		this->watch_fds[wd] = ret;
 #endif
 	}
