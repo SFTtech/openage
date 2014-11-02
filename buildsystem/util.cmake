@@ -8,7 +8,7 @@ function(print_filename filename)
 endfunction()
 
 function(list_contains var value)
-	set(${var} FALSE)
+	set(${var} FALSE PARENT_SCOPE)
 	foreach(value2 ${ARGN})
 		if(${value} STREQUAL ${value2})
 			set(${var} TRUE PARENT_SCOPE)
