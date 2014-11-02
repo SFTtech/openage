@@ -60,6 +60,7 @@ Dependency list:
 
  - `sudo apt-get update`
  - `sudo apt-get install cmake libfreetype6-dev python3-dev libglew-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools`
+ - `sudo apt-get install python3-pil python3-numpy`
 
 ### Prerequisite steps for openSUSE users (openSUSE 13.1)
 
