@@ -85,7 +85,7 @@ If you already have python3 or one of packman/games repositories then no need to
 ### For developers/users who want to try the project
 
  - (obviously) clone this repo or acquire the sources some other way
- - make sure you have everything from the dependency list below
+ - make sure you have everything from the [dependency list](#dependencies)
  - `./configure --mode=debug --compiler=clang++` will prepare building
  - `make` will do code generation, build all python modules and the
    openage executable
