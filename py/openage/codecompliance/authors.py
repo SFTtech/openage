@@ -20,11 +20,11 @@ def get_author_emails_copying_md():
             if not match:
                 continue
 
-            for email in match.group(1).split(', '):
-                if '@' in email:
-                    continue
+            email = match.group(1).strip()
+            if not '@' in email:
+                continue
 
-                yield email.lower().strip()
+            yield email
 
 
 def get_author_emails_git_shortlog(exts=['.cpp', '.h', '.py', '.cmake']):
@@ -38,9 +38,9 @@ def get_author_emails_git_shortlog(exts=['.cpp', '.h', '.py', '.cmake']):
 
     invocation = ['git', 'shortlog', '-sne', '--']
     for ext in ['.cpp', '.h', '.py', '.cmake']:
-        invocation.append("*.{}".format(ext))
-        invocation.append("*.{}.in".format(ext))
-        invocation.append("*.{}.template".format(ext))
+        invocation.append("*{}".format(ext))
+        invocation.append("*{}.in".format(ext))
+        invocation.append("*{}.template".format(ext))
 
     output = Popen(invocation, stdout=PIPE).communicate()[0]
 
