@@ -1,3 +1,5 @@
+// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 #include "opengl.h"
 
 #include <GL/glew.h>

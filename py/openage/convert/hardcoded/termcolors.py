@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 # the 256-color color table for the in-game terminal.
 # proudly determined from an URXVT screenshot.
 

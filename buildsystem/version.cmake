@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 # provides detect_version, which will store the project version to PROJECT_VERSION.
 
 function(init_version)

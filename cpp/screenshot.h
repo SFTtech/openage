@@ -1,5 +1,7 @@
-#ifndef OPENAGE_UTIL_SCREENSHOT_H_
-#define OPENAGE_UTIL_SCREENSHOT_H_
+// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
+#ifndef OPENAGE_SCREENSHOT_H_
+#define OPENAGE_SCREENSHOT_H_
 
 #include <SDL2/SDL.h>
 #include "coord/window.h"

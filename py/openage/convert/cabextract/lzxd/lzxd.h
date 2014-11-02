@@ -1,5 +1,7 @@
-#ifndef _OPENAGE_CONVERT_LZXD_LZXD_H_
-#define _OPENAGE_CONVERT_LZXD_LZXD_H_
+// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
+#ifndef PYEXT_OPENAGE_CONVERT_CABEXTRACT_LZXD_LZXD_H_
+#define PYEXT_OPENAGE_CONVERT_CABEXTRACT_LZXD_LZXD_H_
 
 #include <cstdio>
 
@@ -33,4 +35,4 @@ public:
  */
 void decompress(unsigned window_bits, unsigned reset_interval, unsigned input_buffer_size, off_t output_length, IOWrapper *iowrapper);
 
-#endif //_OPENAGE_CONVERT_LZXD_LZXD_H_
+#endif

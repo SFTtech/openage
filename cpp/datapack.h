@@ -1,3 +1,5 @@
+// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 #ifndef OPENAGE_DATAPACK_H_
 #define OPENAGE_DATAPACK_H_
 

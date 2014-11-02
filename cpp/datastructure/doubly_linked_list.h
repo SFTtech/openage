@@ -1,3 +1,5 @@
+// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 #ifndef OPENAGE_DATASTRUCTURE_DOUBLY_LINKED_LIST_H_
 #define OPENAGE_DATASTRUCTURE_DOUBLY_LINKED_LIST_H_
 

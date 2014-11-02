@@ -1,8 +1,13 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 from ..convert.util import dbg
 import os
 import sys
+import datetime
 
 contenttemplate = """\
+{prefix} {copyrightline}
+
 {prefix} Warning: this file was auto-generated; manual changes are futile.
 {prefix} For details, see buildsystem/codegen.cmake and py/openage/codegen.
 
@@ -47,7 +52,27 @@ def generate_all(cpp_src_dir):
         else:
             comment_prefix = '#'
 
-        content = contenttemplate.format(prefix=comment_prefix, code=content)
+        splitcontent = content.split('\n')
+        if "copyright" in splitcontent[0].lower():
+            # the content already contains a copyright line
+            if splitcontent[1].strip() in {'', comment_prefix}:
+                content = '\n'.join(splitcontent[2:])
+            else:
+                content = '\n'.join(splitcontent[1:])
+
+            copyright = splitcontent[0]
+            if copyright.startswith(comment_prefix):
+                copyright = copyright[len(comment_prefix):]
+            copyright = copyright.strip()
+
+        else:
+            year = datetime.datetime.now().year
+            copyright = ("Copyright 2013-{} the openage authors. "
+                         "See copying.md for legal info.").format(year)
+
+        content = contenttemplate.format(copyrightline=copyright,
+                                         prefix=comment_prefix,
+                                         code=content)
 
         yield absfilename, filename, content
 

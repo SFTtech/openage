@@ -9,7 +9,7 @@ _the openage authors_ are:
 | Full name                   | aliases                    | E-Mail                           |
 |-----------------------------|----------------------------|----------------------------------|
 | Jonas Jelten                | TheJJ                      | jj@sft.mx                        |
-| Michael Enßlin              | mic_e                      | michael@ensslin.cc               |
+| Michael Enßlin              | mic_e                      | michael@ensslii.cc               |
 | Andre Kupka                 | freakout                   | kupka@in.tum.de                  |
 | Frank Schmidt               | gellardo                   | rubiccuber@googlemail.com        |
 | Markus Otto                 | zuntrax                    | otto@fs.tum.de                   |
@@ -66,7 +66,7 @@ include a header.
 _the openage authors_, require the following one-line header, preferrably in
 the first line, as a comment:
 
-    Copyright XXXX-YYYY the openage authors. See copying.md for legal info.
+    Copyright 20XX-20YY the openage authors. See copying.md for legal info.
 
 `XXXX` is the year when the file was created, and `YYYY` is the year when the
 file was last edited. When editing a file, make sure the last-modification year
@@ -75,16 +75,20 @@ is still correct.
 **3rd-party** source files, that is, files that were taken from other open-
 source projects, require the following, longer header:
 
-    This file was taken from $PROJECT,
+    This file was ((taken|adapted)|contains (data|code)) from $PROJECT,
     Copyright 1337-2013 Your Mom.
-    It's licensed under the [3-clause OpenBSD license](legal/3clausebsd).
-    < further legal information required by $PROJECT, such as a reference
-    to a copy of the $PROJECT's README or AUTHORS file >
-    Modifications Copyright 2014-2014 the openage authors.
+    It's licensed under the terms of the 3-clause BSD license.
+    < any amount of lines of further legal information required by $PROJECT,
+      such as a reference to a copy of the $PROJECT's README or AUTHORS file >
+    < if third-party files from more than the one project were used in this
+      file, copy the above any number of times >
+    (Modifications|Other (data|code)|Everything else) Copyright 2014-2014 the openage authors.
     See copying.md for further legal info.
 
-The file's original license header should be additionally retained IFF
-permission to remove it can't be obtained.
+For even more details, see the [regular expressions](py/openage/codecompliance/legal.py).
+
+In addition to the openage header, the file's original license header should
+be retained if in doubt.
 
 The "license" line is required only if the file is not licensed as
 "GPLv3 or higher".
@@ -101,10 +105,10 @@ From [cabextract/libmspack](http://www.cabextract.org.uk/) ([LGPL 2.0](legal/LGP
  - `py/openage/convert/cabextract/lzxd/lzxd.cpp`
  - `py/openage/convert/cabextract/lzxd/lzx_compression_info`
 
-cmake modules ([BSD 3-clause license](legal/BSD-3-clause))
+cmake modules ([3-clause BSD license](legal/BSD-3-clause))
 
- - `buildsystem/modules/FindSDL2.cmake`
- - `buildsystem/modules/FindFTGL.cmake`
+ - `buildsystem/modules/FindSDL2.cmake` (taken from [openmw](https://github.com/OpenMW/openmw))
+ - `buildsystem/modules/FindFTGL.cmake` (taken from [ulrichard's FTGL fork](https://github.com/ulrichard/ftgl))
 
 Notes about this file:
 

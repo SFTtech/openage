@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 # checks python availability,
 # provides macros for defining python packages, python cpp extension modules,
 # and a generator macro that must be called after including alle source dirs

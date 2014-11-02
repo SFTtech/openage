@@ -28,6 +28,7 @@ install:
   - ( curl 'http://downloads.xiph.org/releases/opus/opusfile-0.5.tar.gz' | gzip -d | tar x && cd opusfile-0.5 && ./configure --prefix=/usr && make && sudo make install DESTDIR=/ )
 
 before_script:
+  - git pull --unshallow    # the full git history is required for 'make checkfull'
   - cmake --version
   - ls -l /usr/bin/python*
   - sudo ln -sf /usr/bin/python3.3 /usr/bin/python3
@@ -35,8 +36,9 @@ before_script:
 
 script:
   - ./configure
-  - make
-  - make test
+  - make openage    # running 'make'/'make all' would cause 'make check' to run after building
+  - make runtest    # running 'make test' would cause 'make check' to run after testing
+  - make checkfull  # manually run 'make checkfull'
 
 after_script:
   - echo test build exited

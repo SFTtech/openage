@@ -1,3 +1,9 @@
+# This file was taken from ulrichard's FTGL fork,
+# Copyright 2011-2011 Richard Ulrich.
+# It's licensed under the terms of the 3-clause OpenBSD license.
+# Modifications Copyright 2014-2014 the openage authors.
+# See copying.md for further legal info.
+
 # - Locate FTGL library
 # This module defines
 #  FTGL_LIBRARIES, the library to link against

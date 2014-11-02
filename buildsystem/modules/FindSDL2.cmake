@@ -1,3 +1,9 @@
+# This file was taken from openmw,
+# Copyright 2003-2009 Kitware, Inc.
+# It's licensed under the terms of the 3-clause OpenBSD license.
+# Modifications Copyright 2014-2014 the openage authors.
+# See copying.md for further legal info.
+
 # Locate SDL2 library
 # This module defines
 # SDL2_LIBRARY, the name of the library to link against

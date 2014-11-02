@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 # data fixing script
 #
 # as you can imagine, the data entries may contain some semi-correct

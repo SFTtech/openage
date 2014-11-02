@@ -1,3 +1,5 @@
+# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+
 from struct import Struct, unpack_from
 from .. import dataformat
 from ..util import dbg, zstr

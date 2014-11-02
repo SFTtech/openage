@@ -1,3 +1,5 @@
+// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 #include "resource.h"
 
 #include "in_memory_loader.h"
@@ -31,15 +33,14 @@ void Resource::stop_using() {
 std::shared_ptr<Resource> Resource::create_resource(category_t category,
 		int id, const std::string &path, format_t format,
 		loader_policy_t loader_policy) {
+
 	switch (loader_policy) {
-		case loader_policy_t::IN_MEMORY:
-			return std::make_shared<InMemoryResource>(category, id, path,
-					format);
-		case loader_policy_t::DYNAMIC:
-			return std::make_shared<DynamicResource>(category, id, path,
-					format);
-		default:
-			throw util::Error{"Unsupported loader policy"};
+	case loader_policy_t::IN_MEMORY:
+		return std::make_shared<InMemoryResource>(category, id, path, format);
+	case loader_policy_t::DYNAMIC:
+		return std::make_shared<DynamicResource>(category, id, path, format);
+	default:
+		throw util::Error{"Unsupported loader policy"};
 	}
 }
 

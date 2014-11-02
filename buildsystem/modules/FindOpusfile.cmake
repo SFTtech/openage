@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 # Try to find Opusfile
 #
 # Once done this will define:

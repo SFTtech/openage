@@ -13,8 +13,10 @@ BUILDDIR = bin
 
 MAKEARGS += $(if $(VERBOSE),,--no-print-directory)
 
+RUN_PYMODULE = buildsystem/runinenv PYTHONPATH=prependpath:py -- python3 -m
+
 .PHONY: all
-all: openage
+all: openage check
 
 $(BUILDDIR):
 	@echo "call ./configure to initialize the build directory."
@@ -33,7 +35,7 @@ install: $(BUILDDIR)
 .PHONY: media
 media: $(BUILDDIR)
 	@if test ! -d "$(AGE2DIR)"; then echo "you need to specify AGE2DIR (e.g. /home/user/.wine/drive_c/age)."; false; fi
-	buildsystem/runinenv PYTHONPATH=prependpath:py -- python3 -m openage.convert -v media -o "assets/converted" "$(AGE2DIR)" $(needed_media)
+	$(RUN_PYMODULE) openage.convert -v media -o "assets/converted" "$(AGE2DIR)" $(needed_media)
 
 .PHONY: medialist
 medialist:
@@ -51,9 +53,12 @@ runval: openage
 rungdb: openage
 	gdb --args $(binary) $(runargs)
 
-.PHONY: test
-test: $(binary)
+.PHONY: runtest
+runtest: $(binary)
 	@CTEST_OUTPUT_ON_FAILURE=1 $(MAKE) $(MAKEARGS) -C $(BUILDDIR) test
+
+.PHONY: test
+test: runtest check
 
 .PHONY: codegen
 codegen: $(BUILDDIR)
@@ -121,6 +126,26 @@ mrproperer: mrproper
 	@echo removing ANYTHING that is not checked into the git repo
 	git clean -x -d -f
 
+.PHONY: checkheaderguards
+checkheaderguards:
+	@$(RUN_PYMODULE) openage.codecompliance --headerguards
+
+.PHONY: checklegal
+checklegal:
+	@$(RUN_PYMODULE) openage.codecompliance --legal --authors
+
+.PHONY: checklegalfull
+checklegalfull:
+	@$(RUN_PYMODULE) openage.codecompliance --legal --authors --test-git-years
+
+.PHONY: check
+check:
+	@$(RUN_PYMODULE) openage.codecompliance --all
+
+.PHONY: checkallfull
+checkfull:
+	@$(RUN_PYMODULE) openage.codecompliance --all --test-git-years
+
 .PHONY: help
 help: $(BUILDDIR)/Makefile
 	@echo "openage Makefile"
@@ -147,7 +172,15 @@ help: $(BUILDDIR)/Makefile
 	@echo "run                -> run openage"
 	@echo "runval             -> run openage in valgrind, analyzing for memleaks"
 	@echo "rungdb             -> run openage in gdb"
+	@echo "runtest            -> run the tests (py modules + openage)"
 	@echo ""
+	@echo "checkheaderguards  -> check header guards"
+	@echo "checklegal         -> check legal header texts, authors list, 3rd-party file list"
+	@echo "check              -> all of the above"
+	@echo "checklegalfull     -> as 'checklegal', but also check git modification dates vs. copyright years"
+	@echo "checkfull          -> all of the above"
+	@echo ""
+	@echo "test               -> runtest + check. this is what you should use for regular development building"
 	@echo ""
 	@echo "CMake help:"
 	@test -d $(BUILDDIR) && $(MAKE) -C $(BUILDDIR) help || echo "no builddir is configured"

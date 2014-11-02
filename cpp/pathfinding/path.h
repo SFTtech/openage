@@ -1,3 +1,5 @@
+// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 #ifndef OPENAGE_PATHFINDING_PATH_H_
 #define OPENAGE_PATHFINDING_PATH_H_
 

@@ -1,3 +1,5 @@
+// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 /** @file
  *
  * This file implements the A* search algorithm for openage.

@@ -1,3 +1,5 @@
+# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+
 from collections import defaultdict
 from . import dataformat
 from .util import dbg
