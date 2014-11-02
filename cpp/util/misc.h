@@ -67,7 +67,7 @@ inline T div(T x, T m) {
  */
 template <typename T>
 struct less {
-	bool operator ()(const T x, const T y) {
+	bool operator ()(const T x, const T y) const {
 		return *x < *y;
 	}
 };

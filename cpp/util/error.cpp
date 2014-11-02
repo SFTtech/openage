@@ -40,7 +40,7 @@ Error::~Error() {
 	delete[] buf;
 }
 
-const char *Error::str() {
+const char *Error::str() const {
 	return buf;
 }
 

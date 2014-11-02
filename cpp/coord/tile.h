@@ -18,10 +18,10 @@ struct tile {
 
 	#include "ops/abs.h"
 
-	tile3 to_tile3(tile_t up = 0);
+	tile3 to_tile3(tile_t up = 0) const;
 	phys2 to_phys2(phys2_delta frac = {settings::phys_per_tile / 2, settings::phys_per_tile / 2});
-	chunk to_chunk();
-	tile_delta get_pos_on_chunk();
+	chunk to_chunk() const;
+	tile_delta get_pos_on_chunk() const;
 };
 
 struct tile_delta {
@@ -29,7 +29,7 @@ struct tile_delta {
 
 	#include "ops/rel.h"
 
-	tile3_delta to_tile3(tile_t up = 0);
+	tile3_delta to_tile3(tile_t up = 0) const;
 	tile to_tile();
 };
 

@@ -11,7 +11,7 @@ Dir::Dir(std::string basedir) {
 
 Dir::~Dir() {}
 
-std::string Dir::join(const std::string &fname) {
+std::string Dir::join(const std::string &fname) const {
 	return this->basedir + PATHSEP + fname;
 }
 

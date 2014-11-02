@@ -124,7 +124,7 @@ struct subdata {
 		return true;
 	}
 
-	cls operator [](size_t idx) {
+	cls operator [](size_t idx) const {
 		return this->data[idx];
 	}
 };

@@ -72,7 +72,7 @@ struct buf_char {
 	 */
 	chrflags_t flags;
 
-	bool operator ==(const buf_char &other) {
+	bool operator ==(const buf_char &other) const {
 		return
 		 (this->cp == other.cp) &&
 		 (this->fgcol == other.fgcol) &&
@@ -80,7 +80,7 @@ struct buf_char {
 		 (this->flags == other.flags);
 	}
 
-	bool operator !=(const buf_char &other) {
+	bool operator !=(const buf_char &other) const {
 		return not (*this == other);
 	}
 };

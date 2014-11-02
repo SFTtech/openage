@@ -32,7 +32,7 @@ void Timer::start() {
 	}
 }
 
-unsigned Timer::getval() {
+unsigned Timer::getval() const {
 	if(stopped) {
 		return stoppedat;
 	} else {
@@ -54,7 +54,7 @@ unsigned Timer::getandresetval() {
 	return result;
 }
 
-bool Timer::isstopped() {
+bool Timer::isstopped() const {
 	return stopped;
 }
 

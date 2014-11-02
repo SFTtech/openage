@@ -27,9 +27,9 @@ public:
 	void reset(bool stopped = true);
 	void stop();
 	void start();
-	unsigned getval();
+	unsigned getval() const;
 	unsigned getandresetval();
-	bool isstopped();
+	bool isstopped() const;
 };
 
 

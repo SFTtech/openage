@@ -225,14 +225,14 @@ public:
 	/**
 	 * Return the current list element count.
 	 */
-	size_t size() {
+	size_t size() const {
 		return this->node_count;
 	}
 
 	/**
 	 * Check whether no elements are present in the list.
 	 */
-	bool empty() {
+	bool empty() const {
 		return (this->node_count == 0);
 	}
 

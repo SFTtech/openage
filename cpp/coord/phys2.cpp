@@ -7,22 +7,22 @@
 namespace openage {
 namespace coord {
 
-phys3 phys2::to_phys3(phys_t up) {
+phys3 phys2::to_phys3(phys_t up) const {
 	return phys3 {ne, se, up};
 }
 
-phys3_delta phys2_delta::to_phys3(phys_t up) {
+phys3_delta phys2_delta::to_phys3(phys_t up) const {
 	return phys3_delta {ne, se, up};
 }
 
-tile phys2::to_tile() {
+tile phys2::to_tile() const {
 	tile result;
 	result.ne = (ne >> settings::phys_t_radix_pos);
 	result.se = (se >> settings::phys_t_radix_pos);
 	return result;
 }
 
-phys2_delta phys2::get_fraction() {
+phys2_delta phys2::get_fraction() const {
 	phys2_delta result;
 
 	// define a bitmask that keeps the last n bits

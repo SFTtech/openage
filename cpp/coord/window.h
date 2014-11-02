@@ -16,8 +16,8 @@ struct window {
 
 	#include "ops/abs.h"
 
-	camgame to_camgame();
-	camhud to_camhud();
+	camgame to_camgame() const;
+	camhud to_camhud() const;
 };
 
 struct window_delta {
@@ -25,8 +25,8 @@ struct window_delta {
 
 	#include "ops/rel.h"
 
-	camgame_delta to_camgame();
-	camhud_delta to_camhud();
+	camgame_delta to_camgame() const;
+	camhud_delta to_camhud() const;
 };
 
 #include "ops/free.h"

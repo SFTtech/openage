@@ -15,7 +15,7 @@ window camhud::to_window() {
 	return e.camhud_window + this->as_relative().to_window();
 }
 
-window_delta camhud_delta::to_window() {
+window_delta camhud_delta::to_window() const {
 	//the direction of the y axis is flipped
 	return window_delta {(pixel_t) x, (pixel_t) -y};
 }

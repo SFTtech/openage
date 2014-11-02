@@ -11,37 +11,37 @@
 //implementation of prototypes from abs.h
 
 //conversion to relative vector
-RELATIVE_TYPE ABSOLUTE_TYPE::as_relative() {
+RELATIVE_TYPE ABSOLUTE_TYPE::as_relative() const {
 	return RELATIVE_TYPE{MEMBERS};
 }
 
 //-abs -> abs
-ABSOLUTE_TYPE ABSOLUTE_TYPE::operator-() {
+ABSOLUTE_TYPE ABSOLUTE_TYPE::operator-() const {
 	return ABSOLUTE_TYPE{LOOP(NEGATE, MEMBERS)};
 }
 
 //abs + rel -> abs
-ABSOLUTE_TYPE ABSOLUTE_TYPE::operator+(RELATIVE_TYPE arg) {
+ABSOLUTE_TYPE ABSOLUTE_TYPE::operator+(RELATIVE_TYPE arg) const {
 	return ABSOLUTE_TYPE{LOOP(ADDARG, MEMBERS)};
 }
 
 //abs - abs -> rel
-RELATIVE_TYPE ABSOLUTE_TYPE::operator-(ABSOLUTE_TYPE arg) {
+RELATIVE_TYPE ABSOLUTE_TYPE::operator-(ABSOLUTE_TYPE arg) const {
 	return RELATIVE_TYPE{LOOP(SUBARG, MEMBERS)};
 }
 
 //abs - rel -> abs
-ABSOLUTE_TYPE ABSOLUTE_TYPE::operator-(RELATIVE_TYPE arg) {
+ABSOLUTE_TYPE ABSOLUTE_TYPE::operator-(RELATIVE_TYPE arg) const {
 	return ABSOLUTE_TYPE{LOOP(SUBARG, MEMBERS)};
 }
 
 //abs * scalar -> abs
-ABSOLUTE_TYPE ABSOLUTE_TYPE::operator*(SCALAR_TYPE arg) {
+ABSOLUTE_TYPE ABSOLUTE_TYPE::operator*(SCALAR_TYPE arg) const {
 	return ABSOLUTE_TYPE{LOOP(MULARG, MEMBERS)};
 }
 
 //abs / scalar -> abs
-ABSOLUTE_TYPE ABSOLUTE_TYPE::operator/(SCALAR_TYPE arg) {
+ABSOLUTE_TYPE ABSOLUTE_TYPE::operator/(SCALAR_TYPE arg) const {
 	return ABSOLUTE_TYPE{LOOP(DIVARG, MEMBERS)};
 }
 
@@ -77,37 +77,37 @@ bool ABSOLUTE_TYPE::operator==(ABSOLUTE_TYPE arg) const {
 //implementation of prototypes from rel.h
 
 //conversion to absolute vector
-ABSOLUTE_TYPE RELATIVE_TYPE::as_absolute() {
+ABSOLUTE_TYPE RELATIVE_TYPE::as_absolute() const {
 	return ABSOLUTE_TYPE{MEMBERS};
 }
 
 //-rel -> rel
-RELATIVE_TYPE RELATIVE_TYPE::operator-() {
+RELATIVE_TYPE RELATIVE_TYPE::operator-() const {
 	return RELATIVE_TYPE{LOOP(NEGATE, MEMBERS)};
 }
 
 //rel + abs -> abs
-ABSOLUTE_TYPE RELATIVE_TYPE::operator+(ABSOLUTE_TYPE arg) {
+ABSOLUTE_TYPE RELATIVE_TYPE::operator+(ABSOLUTE_TYPE arg) const {
 	return ABSOLUTE_TYPE{LOOP(ADDARG, MEMBERS)};
 }
 
 //rel + rel -> rel
-RELATIVE_TYPE RELATIVE_TYPE::operator+(RELATIVE_TYPE arg) {
+RELATIVE_TYPE RELATIVE_TYPE::operator+(RELATIVE_TYPE arg) const {
 	return RELATIVE_TYPE{LOOP(ADDARG, MEMBERS)};
 }
 
 //rel - rel -> rel
-RELATIVE_TYPE RELATIVE_TYPE::operator-(RELATIVE_TYPE arg) {
+RELATIVE_TYPE RELATIVE_TYPE::operator-(RELATIVE_TYPE arg) const {
 	return RELATIVE_TYPE{LOOP(SUBARG, MEMBERS)};
 }
 
 //rel * scalar -> rel
-RELATIVE_TYPE RELATIVE_TYPE::operator*(SCALAR_TYPE arg) {
+RELATIVE_TYPE RELATIVE_TYPE::operator*(SCALAR_TYPE arg) const {
 	return RELATIVE_TYPE{LOOP(MULARG, MEMBERS)};
 }
 
 //rel / scalar -> rel
-RELATIVE_TYPE RELATIVE_TYPE::operator/(SCALAR_TYPE arg) {
+RELATIVE_TYPE RELATIVE_TYPE::operator/(SCALAR_TYPE arg) const {
 	return RELATIVE_TYPE{LOOP(DIVARG, MEMBERS)};
 }
 

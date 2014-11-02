@@ -7,11 +7,11 @@
 namespace openage {
 namespace coord {
 
-tile tile3::to_tile() {
+tile tile3::to_tile() const {
 	return tile {ne, se};
 }
 
-tile_delta tile3_delta::to_tile() {
+tile_delta tile3_delta::to_tile() const {
 	return tile_delta {ne, se};
 }
 
