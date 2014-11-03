@@ -24,6 +24,7 @@ void print_usage() {
 		"-t, --test=NAME                         run test NAME\n"
 		"-d, --demo=NAME [arg [arg [...]]]       run demo NAME\n"
 		"--list-tests                            print a list of all available tests\n"
+		"--version                               print a build version number\n"
 		"--data=FOLDER                           specify the data folder\n"
 		"\n"
 		""
@@ -40,6 +41,7 @@ Arguments::Arguments()
 	demo_argc{0},
 	demo_argv{nullptr},
 	list_tests{false},
+	version{false},		
 	display_help{false},
 	error_occured{false} {
 }
@@ -60,6 +62,7 @@ Arguments parse_args(int argc, char **argv) {
 			{"demo",           required_argument, 0, 'd'},
 			{"data",           required_argument, 0,  0 },
 			{"list-tests",           no_argument, 0,  0 },
+			{"version",              no_argument, 0,  0 },
 			{0,                                0, 0,  0 }
 		};
 
@@ -86,6 +89,8 @@ Arguments parse_args(int argc, char **argv) {
 				// without arg
 				if (0 == strcmp("list-tests", opt_name)) {
 					ret.list_tests = true;
+				} else if (0 == strcmp("version", opt_name)) {
+					ret.version = true;				
 				} else {
 					handled = false;
 				}
