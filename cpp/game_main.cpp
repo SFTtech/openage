@@ -167,8 +167,9 @@ GameMain::GameMain(Engine *engine)
 		         foundation_size.ne,
 		         foundation_size.se
 		);
-		log::msg("   building creation0/dying sounds: %d %d",
+		log::msg("   sound_creation0: %5d, sound_creation1: %5d, sound_dying: %5d",
 				building.sound_creation0,
+				building.sound_creation1,
 				building.sound_dying
 		);
 
