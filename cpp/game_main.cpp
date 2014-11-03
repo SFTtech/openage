@@ -167,6 +167,10 @@ GameMain::GameMain(Engine *engine)
 		         foundation_size.ne,
 		         foundation_size.se
 		);
+		log::msg("   building creation0/dying sounds: %d %d",
+				building.sound_creation0,
+				building.sound_dying
+		);
 
 		TestBuilding *newbuilding = new TestBuilding{
 			this->assetmanager.get_texture(tex_fname),
