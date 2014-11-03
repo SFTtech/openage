@@ -59,8 +59,7 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	// if the opus file only had one channel, the pcm buffer size must be
 	// doubled
 	uint32_t length = pcm_length * 2;
-	pcm_data_t buffer;
-	buffer.reserve(length);
+	pcm_data_t buffer(static_cast<size_t>(length), 0);
 
 	// read data from opus file
 	int position = 0;
