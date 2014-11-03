@@ -4,7 +4,7 @@
 
 function(init_version)
 	set(res 1)
-	if(IS_DIRECTORY ${CMAKE_SOURCE_DIR}/.git)
+	if(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/.git")
 		# if .git exists, try running git describe
 		execute_process(COMMAND git describe WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}" RESULT_VARIABLE res OUTPUT_VARIABLE version ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
 	endif()
@@ -18,7 +18,7 @@ function(init_version)
 		message(FATAL_ERROR "failed to determine project version")
 	endif()
 
-	set(PROJECT_VERSION ${version} PARENT_SCOPE)
+	set(PROJECT_VERSION "${version}" PARENT_SCOPE)
 endfunction()
 
 init_version()
