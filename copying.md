@@ -32,6 +32,7 @@ _the openage authors_ are:
 | Peter Piwowarski            | oldlaptop                   | oldlaptop654@aol.com             |
 | Charles Pigott              | LordAro                     | charlespigott@googlemail.com     |
 | Andrew Eikum                | ColdPie1                    | coldpies@gmail.com               |
+| Michael Sebastiyan          | BugExplorer                 | sebastiyan.michael@outlook.com   |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
