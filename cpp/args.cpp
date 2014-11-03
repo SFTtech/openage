@@ -41,7 +41,7 @@ Arguments::Arguments()
 	demo_argc{0},
 	demo_argv{nullptr},
 	list_tests{false},
-	version{false},		
+	version{false},
 	display_help{false},
 	error_occured{false} {
 }
@@ -90,7 +90,7 @@ Arguments parse_args(int argc, char **argv) {
 				if (0 == strcmp("list-tests", opt_name)) {
 					ret.list_tests = true;
 				} else if (0 == strcmp("version", opt_name)) {
-					ret.version = true;				
+					ret.version = true;
 				} else {
 					handled = false;
 				}
