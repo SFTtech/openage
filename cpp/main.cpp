@@ -32,6 +32,11 @@ int main(int argc, char **argv) {
 			testing::list_tests();
 			return 0;
 		}
+		
+		if (args.version) {			
+			printf("openage %s \n", config::version);
+			return 0;
+		}
 
 		// set global random seed
 		srand(time(NULL));

@@ -30,6 +30,7 @@ public:
 	char **demo_argv;
 
 	bool list_tests;
+	bool version;
 	bool display_help;
 	bool error_occured;
 };
