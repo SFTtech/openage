@@ -36,7 +36,7 @@ Arguments::Arguments()
 	:
 	argc{0},
 	argv{nullptr},
-	data_directory{"./"},
+	data_directory{"./assets"},
 	demo_specified{false},
 	demo_argc{0},
 	demo_argv{nullptr},
