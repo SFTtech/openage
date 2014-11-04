@@ -24,7 +24,7 @@ void print_usage() {
 		"-t, --test=NAME                         run test NAME\n"
 		"-d, --demo=NAME [arg [arg [...]]]       run demo NAME\n"
 		"--list-tests                            print a list of all available tests\n"
-		"--version                               print a build version number\n"
+		"--version                               print the openage version to the console\n"
 		"--data=FOLDER                           specify the data folder\n"
 		"\n"
 		""
