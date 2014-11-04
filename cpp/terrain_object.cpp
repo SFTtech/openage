@@ -17,11 +17,13 @@ namespace openage {
 
 TerrainObject::TerrainObject(Texture *tex,
                              coord::tile_delta foundation_size,
-                             unsigned player) {
-	this->placed  = false;
-	this->texture = tex;
-	this->size    = foundation_size;
-	this->player  = player;
+                             unsigned player, int sound_id_destruction) {
+
+	this->placed                = false;
+	this->texture               = tex;
+	this->size                  = foundation_size;
+	this->player                = player;
+	this->sound_id_destruction  = sound_id_destruction;
 
 	this->occupied_chunk_count = 0;
 }
