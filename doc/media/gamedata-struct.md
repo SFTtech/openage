@@ -128,7 +128,7 @@ struct {
 		int16_t enabled;
 		char name0[13];
 		char name1[13];
-		int32_t ressource_id;
+		int32_t resource_id;
 		int32_t unknown;
 		int32_t unknown;
 		uint8_t color[3];
@@ -176,9 +176,9 @@ struct {
 			int16_t class_id;
 			int16_t unit_id;
 			int16_t unknown;
-			int16_t ressource_in;
+			int16_t resource_in;
 			int16_t sub_type_id;
-			int16_t ressource_out;
+			int16_t resource_out;
 			int16_t unknown;
 			float work_rate_multiplier;
 			float execution_radius;
@@ -200,10 +200,10 @@ struct {
 	struct {
 		int8_t one;
 		char name[20];
-		uint16_t ressources_count;
+		uint16_t resources_count;
 		int16_t tech_tree_id;
 		int16_t team_bonus_id;
-		float[ressources_count] ressources;
+		float[resources_count] resources;
 		int8_t graphic_set;
 		uint16_t unit_count;
 		int32_t unit_offsets[unit_count];
@@ -259,8 +259,8 @@ struct {
 				int8_t visible_in_fog;
 				int16_t terrain_restriction;
 				int8_t fly_mode;
-				int16_t ressource_capacity;
-				float ressource_decay;
+				int16_t resource_capacity;
+				float resource_decay;
 				int8_t blast_type_id;
 				int8_t unknown;
 				int8_t interaction_mode;
@@ -385,7 +385,7 @@ struct {
 					int16_t type_id;
 					int16_t amount;
 					int16_t enabled;
-				} ressource_cost[3];
+				} resource_cost[3];
 				int16_t train_time;
 				int16_t train_location_id;
 				int8_t button_id;

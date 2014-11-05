@@ -107,7 +107,7 @@ class TerrainBorder(dataformat.Exportable):
         (dataformat.READ, "enabled", "int16_t"),
         (dataformat.READ, "name0", "char[13]"),
         (dataformat.READ, "name1", "char[13]"),
-        (dataformat.READ, "ressource_id", "int32_t"),
+        (dataformat.READ, "resource_id", "int32_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
         (dataformat.READ_UNKNOWN, None, "int32_t"),
         (dataformat.READ, "color", "uint8_t[3]"),

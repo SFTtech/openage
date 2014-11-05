@@ -20,15 +20,15 @@ class Effect(dataformat.Exportable):
                 #unused assignage: a = -1, b = -1, c = -1, d = 0
                 -1: "DISABLED",
                 0: "ATTRIBUTE_ABSSET",   #if a != -1: a == unit_id, else b == unit_class_id; c = attribute_id, d = new_value
-                1: "RESSOURCE_MODIFY",   #a == ressource_id, if b == 0: then d = absval, else d = relval (for inc/dec)
+                1: "RESOURCE_MODIFY",   #a == resource_id, if b == 0: then d = absval, else d = relval (for inc/dec)
                 2: "UNIT_ENABLED",       #a == unit_id, if b == 0: disable unit, else b == 1: enable unit
                 3: "UNIT_UPGRADE",       #a == old_unit_id, b == new_unit_id
                 4: "ATTRIBUTE_RELSET",   #if a != -1: unit_id, else b == unit_class_id; c=attribute_id, d=relval
                 5: "ATTRIBUTE_MUL",      #if a != -1: unit_id, else b == unit_class_id; c=attribute_id, d=factor
-                6: "RESSOURCE_MUL",      #a == ressource_id, d == factor
+                6: "RESOURCE_MUL",      #a == resource_id, d == factor
 
                 #these are only used in technology trees, 103 even requires one
-                101: "TECHCOST_MODIFY",  #a == research_id, b == ressource_id, if c == 0: d==absval else: d == relval
+                101: "TECHCOST_MODIFY",  #a == research_id, b == resource_id, if c == 0: d==absval else: d == relval
                 102: "TECH_DISABLE",     #d == research_id
                 103: "TECH_TIME_MODIFY", #a == research_id, if c == 0: d==absval else d==relval
 
