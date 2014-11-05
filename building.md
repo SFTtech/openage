@@ -86,7 +86,7 @@ If you already have python3 or one of packman/games repositories then no need to
 
  - (obviously) clone this repo or acquire the sources some other way
  - make sure you have everything from the [dependency list](#dependencies)
- - `./configure --mode=debug --compiler=clang++` will prepare building
+ - `./configure --mode=debug --compiler=llvm` will prepare building
  - `make` will do code generation, build all python modules and the
    openage executable
  - `make media AGE2DIR="~/.wine/drive_c/age2"` will convert all media
@@ -99,7 +99,7 @@ If you already have python3 or one of packman/games repositories then no need to
 
 ### For installing on your local system
 
- - `./configure --mode=release --compiler=g++ --prefix=/usr`
+ - `./configure --mode=release --compiler=gnu --prefix=/usr`
  - `make` to compile the project
  - `make install` will install the binary to /usr/bin/openage, python
    packages to `/usr/lib/python...`, static assets to `/usr/share`
