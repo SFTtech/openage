@@ -80,16 +80,35 @@ If you already have python3 or one of packman/games repositories then no need to
  - `brew install numpy --with-python3`
  - `brew install pillow --with-python3`
 
+### Prerequisite steps for Arch Linux users
+
+This command should provide required packages for Arch Linux installation:
+```
+sudo pacman -S --needed python python-pillow python-numpy glew ftgl ttf-dejavu freetype2 fontconfig cmake sdl2 sdl2_image opusfile opus-tools
+```
+
+And depending on which one you plan to use `gcc` or `clang` you need to choose
+one of these two commands:
+```
+sudo pacman -S --needed gcc
+```
+```
+sudo pacman -S --needed clang
+```
+
+You can install both compilers, however only one of them will be used.
+
 ## Build procedure
 
 ### For developers/users who want to try the project
 
  - (obviously) clone this repo or acquire the sources some other way
  - make sure you have everything from the [dependency list](#dependencies)
- - `./configure --mode=debug --compiler=clang++` will prepare building
+ - `./configure --mode=debug --compiler=llvm` will prepare building
+  - You could also use `./configure --mode=debug --compiler=gnu` here
  - `make` will do code generation, build all python modules and the
    openage executable
- - `make media AGE2DIR="~/.wine/drive_c/age2"` will convert all media
+ - `make media AGE2DIR="$HOME/.wine/drive_c/age2"` will convert all media
    files from the given age2 install folder, storing them in
    `./userassets`
  - `make run` or `./openage` will run the game. try
@@ -99,7 +118,8 @@ If you already have python3 or one of packman/games repositories then no need to
 
 ### For installing on your local system
 
- - `./configure --mode=release --compiler=g++ --prefix=/usr`
+ - `./configure --mode=release --compiler=gnu --prefix=/usr`
+  - You could also use `./configure --mode=release --compiler=llvm --prefix=/usr`
  - `make` to compile the project
  - `make install` will install the binary to /usr/bin/openage, python
    packages to `/usr/lib/python...`, static assets to `/usr/share`
