@@ -135,7 +135,14 @@ GameMain::GameMain(Engine *engine)
 	}
 
 	int i = 0;
-	for (auto &building : gamedata[0].civs.data[0].units.building.data) {
+	int your_civ_id = 1; //British by default
+	// 0 is gaia and not very useful (it's not an user facing civilization so
+	// we cannot rely on it being polished... it might be VERY broken.
+	// British or any other civ is a way safer bet.
+
+	log::msg("Using the %s civilisation.", gamedata[0].civs.data[your_civ_id].name.c_str());
+
+	for (auto &building : gamedata[0].civs.data[your_civ_id].units.building.data) {
 		log::msg("building[%d]: %s", i, building.name.c_str());
 
 		int graphic_id = building.graphic_standing0;
