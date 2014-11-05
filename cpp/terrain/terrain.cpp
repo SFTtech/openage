@@ -6,17 +6,17 @@
 #include <set>
 
 #include "terrain_chunk.h"
-#include "engine.h"
-#include "texture.h"
-#include "log.h"
-#include "util/dir.h"
-#include "util/error.h"
-#include "util/misc.h"
-#include "util/strings.h"
-#include "coord/camgame.h"
-#include "coord/chunk.h"
-#include "coord/tile.h"
-#include "coord/tile3.h"
+#include "../engine.h"
+#include "../log.h"
+#include "../texture.h"
+#include "../coord/camgame.h"
+#include "../coord/chunk.h"
+#include "../coord/tile.h"
+#include "../coord/tile3.h"
+#include "../util/dir.h"
+#include "../util/error.h"
+#include "../util/misc.h"
+#include "../util/strings.h"
 
 namespace openage {
 

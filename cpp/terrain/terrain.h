@@ -1,7 +1,7 @@
 // Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_TERRAIN_H_
-#define OPENAGE_TERRAIN_H_
+#ifndef OPENAGE_TERRAIN_TERRAIN_H_
+#define OPENAGE_TERRAIN_TERRAIN_H_
 
 #include <functional>
 #include <stddef.h>
@@ -9,17 +9,17 @@
 #include <unordered_map>
 #include <vector>
 
-#include "assetmanager.h"
-#include "engine.h"
 #include "terrain_chunk.h"
 #include "terrain_object.h"
-#include "texture.h"
-#include "coord/camgame.h"
-#include "coord/chunk.h"
-#include "util/dir.h"
-#include "util/misc.h"
-#include "gamedata/blending_mode.gen.h"
-#include "gamedata/terrain.gen.h"
+#include "../assetmanager.h"
+#include "../engine.h"
+#include "../texture.h"
+#include "../coord/camgame.h"
+#include "../coord/chunk.h"
+#include "../util/dir.h"
+#include "../util/misc.h"
+#include "../gamedata/blending_mode.gen.h"
+#include "../gamedata/terrain.gen.h"
 
 namespace openage {
 

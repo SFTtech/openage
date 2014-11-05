@@ -2,16 +2,16 @@
 
 #include "terrain_object.h"
 
-#include "engine.h"
-#include "texture.h"
-#include "log.h"
 #include "terrain.h"
 #include "terrain_chunk.h"
-#include "util/error.h"
-#include "coord/tile.h"
-#include "coord/tile3.h"
-#include "coord/phys3.h"
-#include "coord/camgame.h"
+#include "../engine.h"
+#include "../log.h"
+#include "../texture.h"
+#include "../coord/tile.h"
+#include "../coord/tile3.h"
+#include "../coord/phys3.h"
+#include "../coord/camgame.h"
+#include "../util/error.h"
 
 namespace openage {
 

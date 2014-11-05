@@ -22,9 +22,6 @@ add_sources(${PROJECT_NAME}
 	log.cpp
 	python.cpp
 	screenshot.cpp
-	terrain.cpp
-	terrain_chunk.cpp
-	terrain_object.cpp
 	texture.cpp
 )
 
@@ -38,6 +35,7 @@ add_subdirectory("pathfinding")
 add_subdirectory("shader")
 add_subdirectory("util")
 add_subdirectory("datastructure")
+add_subdirectory("terrain")
 add_subdirectory("testing")
 
 # finalize testing

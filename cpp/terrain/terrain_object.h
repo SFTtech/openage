@@ -1,15 +1,15 @@
 // Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_TERRAIN_OBJECT_H_
-#define OPENAGE_TERRAIN_OBJECT_H_
+#ifndef OPENAGE_TERRAIN_TERRAIN_OBJECT_H_
+#define OPENAGE_TERRAIN_TERRAIN_OBJECT_H_
 
 #include <stddef.h>
 
 #include "terrain.h"
 #include "terrain_chunk.h"
-#include "texture.h"
-#include "coord/tile.h"
-#include "coord/phys3.h"
+#include "../coord/tile.h"
+#include "../coord/phys3.h"
+#include "../texture.h"
 
 namespace openage {
 

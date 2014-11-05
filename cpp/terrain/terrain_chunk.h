@@ -1,17 +1,17 @@
 // Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_TERRAIN_CHUNK_H_
-#define OPENAGE_TERRAIN_CHUNK_H_
+#ifndef OPENAGE_TERRAIN_TERRAIN_CHUNK_H_
+#define OPENAGE_TERRAIN_TERRAIN_CHUNK_H_
 
 #include <stddef.h>
 #include <vector>
 
 #include "terrain.h"
-#include "texture.h"
 #include "terrain_object.h"
-#include "coord/camgame.h"
-#include "coord/tile.h"
-#include "util/file.h"
+#include "../coord/camgame.h"
+#include "../coord/tile.h"
+#include "../texture.h"
+#include "../util/file.h"
 
 namespace openage {
 

@@ -6,7 +6,7 @@
 #include "phys2.h"
 #include "vec2.h"
 #include "tile3.h"
-#include "../terrain.h"
+#include "../terrain/terrain.h"
 #include "../engine.h"
 
 namespace openage {

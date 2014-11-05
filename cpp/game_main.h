@@ -13,8 +13,8 @@
 #include "engine.h"
 #include "coord/tile.h"
 #include "handlers.h"
-#include "terrain.h"
-#include "terrain_object.h"
+#include "terrain/terrain.h"
+#include "terrain/terrain_object.h"
 #include "gamedata/graphic.gen.h"
 
 

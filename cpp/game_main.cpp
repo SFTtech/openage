@@ -18,7 +18,7 @@
 #include "gamedata/string_resource.gen.h"
 #include "gamedata/gamedata.gen.h"
 #include "log.h"
-#include "terrain.h"
+#include "terrain/terrain.h"
 #include "util/strings.h"
 #include "util/timer.h"
 
