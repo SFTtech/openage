@@ -26,6 +26,7 @@ void print_usage() {
 		"--list-tests                            print a list of all available tests\n"
 		"--version                               print the openage version to the console\n"
 		"--data=FOLDER                           specify the data folder\n"
+		"--no-gamedata                           doesn't load the gamedata resources on start\n"
 		"\n"
 		""
 		"\n\n"
@@ -43,7 +44,8 @@ Arguments::Arguments()
 	list_tests{false},
 	version{false},
 	display_help{false},
-	error_occured{false} {
+	error_occured{false},
+	load_gamedata{true} {
 }
 
 Arguments::~Arguments() {}
@@ -63,6 +65,7 @@ Arguments parse_args(int argc, char **argv) {
 			{"data",           required_argument, 0,  0 },
 			{"list-tests",           no_argument, 0,  0 },
 			{"version",              no_argument, 0,  0 },
+			{"no-gamedata",          no_argument, 0,  0 },
 			{0,                                0, 0,  0 }
 		};
 
@@ -91,6 +94,8 @@ Arguments parse_args(int argc, char **argv) {
 					ret.list_tests = true;
 				} else if (0 == strcmp("version", opt_name)) {
 					ret.version = true;
+				} else if (0 == strcmp("no-gamedata", opt_name)) {
+					ret.load_gamedata = false;
 				} else {
 					handled = false;
 				}

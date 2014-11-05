@@ -57,7 +57,7 @@ class GameMain :
 		openage::HudHandler,
 		openage::TickHandler {
 public:
-	GameMain(openage::Engine *engine);
+	GameMain(openage::Engine *engine, Arguments *args);
 	~GameMain();
 
 	void move_camera();

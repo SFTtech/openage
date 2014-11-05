@@ -33,6 +33,7 @@ public:
 	bool version;
 	bool display_help;
 	bool error_occured;
+	bool load_gamedata;
 };
 
 Arguments parse_args(int argc, char **argv);

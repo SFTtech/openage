@@ -86,7 +86,7 @@ int run_game(Arguments *args) {
 
 	// init the test run
 	timer.start();
-	GameMain test{&engine};
+	GameMain test{&engine, args};
 	log::msg("Loading time   [game]: %5.3f s", timer.getval() / 1000.f);
 
 	// run main loop
@@ -97,7 +97,7 @@ int run_game(Arguments *args) {
 	return 0;
 }
 
-GameMain::GameMain(Engine *engine)
+GameMain::GameMain(Engine *engine, Arguments *args)
 	:
 	editor_current_terrain{0},
 	editor_current_building{0},
@@ -125,116 +125,118 @@ GameMain::GameMain(Engine *engine)
 	terrain = new Terrain(assetmanager, terrain_types, blending_modes, true);
 	terrain->fill(terrain_data, terrain_data_size);
 
-	log::msg("loading game specification files... stand by, will be faster soon...");
-	util::Dir gamedata_dir = asset_dir.append("gamedata");
-	auto gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
+	if (args->load_gamedata) {
+		log::msg("loading game specification files... stand by, will be faster soon...");
+		util::Dir gamedata_dir = asset_dir.append("gamedata");
+		auto gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
 
-	// create graphic id => graphic map
-	for (auto &graphic : gamedata[0].graphics.data) {
-		this->graphics[graphic.id] = &graphic;
-	}
-
-	int i = 0;
-	for (auto &building : gamedata[0].civs.data[0].units.building.data) {
-		log::msg("building[%d]: %s", i, building.name.c_str());
-
-		int graphic_id = building.graphic_standing0;
-		if (graphic_id <= 0) {
-			log::msg("  -> ignoring graphics_id: %d", graphic_id);
-			continue;
+		// create graphic id => graphic map
+		for (auto &graphic : gamedata[0].graphics.data) {
+			this->graphics[graphic.id] = &graphic;
 		}
 
-		int slp_id = this->graphics[graphic_id]->slp_id;
+		int i = 0;
+		for (auto &building : gamedata[0].civs.data[0].units.building.data) {
+			log::msg("building[%d]: %s", i, building.name.c_str());
 
-		log::msg("   slp id/name: %d %s", slp_id, this->graphics[graphic_id]->name0.c_str());
-
-		if (slp_id <= 0) {
-			log::msg("  -> ignoring slp_id: %d", slp_id);
-			continue;
-		}
-
-		char *tex_fname = util::format("converted/Data/graphics.drs/%d.slp.png", slp_id);
-
-		// convert the float to the discrete foundation size...
-		openage::coord::tile_delta foundation_size = {
-			(int)(building.radius_size0 * 2),
-			(int)(building.radius_size1 * 2),
-		};
-
-		log::msg("   building has foundation size %.2f x %.2f = %ldx%ld",
-		         building.radius_size0,
-		         building.radius_size1,
-		         foundation_size.ne,
-		         foundation_size.se
-		);
-
-		int creation_sound = building.sound_creation0;
-		int dying_sound = building.sound_dying;
-
-		if (creation_sound == -1) {
-			creation_sound = building.sound_creation1;
-		}
-
-		if (creation_sound == -1) {
-			creation_sound = building.sound_selection;
-		}
-
-		if (dying_sound == -1) {
-			dying_sound = 323; //generic explosion sound
-		}
-
-		TestBuilding *newbuilding = new TestBuilding{
-			this->assetmanager.get_texture(tex_fname),
-			building.name,
-			foundation_size,
-			building.terrain_id,
-			creation_sound,
-			dying_sound
-		};
-		this->available_buildings.push_back(newbuilding);
-
-		delete[] tex_fname;
-		i += 1;
-	}
-
-
-	// playable sound files for the audio manager
-	std::vector<gamedata::sound_file> sound_files;
-
-	for (auto &sound : gamedata[0].sounds.data) {
-		for (auto &item : sound.sound_items.data) {
-			char *snd_fname = util::format("Data/sounds.drs/%d.opus", item.resource_id);
-			std::string snd_full_filename = asset_dir.join(snd_fname);
-
-			if (0 >= util::file_size(snd_full_filename)) {
-				log::msg("   file %s is not there, ignoring...", snd_full_filename.c_str());
-				delete[] snd_fname;
+			int graphic_id = building.graphic_standing0;
+			if (graphic_id <= 0) {
+				log::msg("  -> ignoring graphics_id: %d", graphic_id);
 				continue;
 			}
 
-			gamedata::sound_file f {
-				gamedata::audio_category_t::GAME,
-				item.resource_id,
-				snd_fname,
-				gamedata::audio_format_t::OPUS,
-				gamedata::audio_loader_policy_t::IN_MEMORY
+			int slp_id = this->graphics[graphic_id]->slp_id;
+
+			log::msg("   slp id/name: %d %s", slp_id, this->graphics[graphic_id]->name0.c_str());
+
+			if (slp_id <= 0) {
+				log::msg("  -> ignoring slp_id: %d", slp_id);
+				continue;
+			}
+
+			char *tex_fname = util::format("converted/Data/graphics.drs/%d.slp.png", slp_id);
+
+			// convert the float to the discrete foundation size...
+			openage::coord::tile_delta foundation_size = {
+				(int)(building.radius_size0 * 2),
+				(int)(building.radius_size1 * 2),
 			};
-			sound_files.push_back(f);
-			delete[] snd_fname;
-		}
-	}
 
-	// load the requested sounds.
-	audio::AudioManager &am = engine->get_audio_manager();
-	am.load_resources(asset_dir, sound_files);
+			log::msg("   building has foundation size %.2f x %.2f = %ldx%ld",
+			         building.radius_size0,
+			         building.radius_size1,
+			         foundation_size.ne,
+			         foundation_size.se
+			);
 
-	// create test sound objects that can be played later
-	for (auto &sound : gamedata[0].sounds.data) {
-		std::vector<int> sound_items;
-		for (auto &item : sound.sound_items.data) {
-			sound_items.push_back(item.resource_id);
+			int creation_sound = building.sound_creation0;
+			int dying_sound = building.sound_dying;
+
+			if (creation_sound == -1) {
+				creation_sound = building.sound_creation1;
+			}
+
+			if (creation_sound == -1) {
+				creation_sound = building.sound_selection;
+			}
+
+			if (dying_sound == -1) {
+				dying_sound = 323; //generic explosion sound
+			}
+
+			TestBuilding *newbuilding = new TestBuilding{
+				this->assetmanager.get_texture(tex_fname),
+				building.name,
+				foundation_size,
+				building.terrain_id,
+				creation_sound,
+				dying_sound
+			};
+			this->available_buildings.push_back(newbuilding);
+
+			delete[] tex_fname;
+			i += 1;
 		}
-		this->available_sounds[sound.id] = TestSound{sound_items};
+
+
+		// playable sound files for the audio manager
+		std::vector<gamedata::sound_file> sound_files;
+
+		for (auto &sound : gamedata[0].sounds.data) {
+			for (auto &item : sound.sound_items.data) {
+				char *snd_fname = util::format("Data/sounds.drs/%d.opus", item.resource_id);
+				std::string snd_full_filename = asset_dir.join(snd_fname);
+
+				if (0 >= util::file_size(snd_full_filename)) {
+					log::msg("   file %s is not there, ignoring...", snd_full_filename.c_str());
+					delete[] snd_fname;
+					continue;
+				}
+
+				gamedata::sound_file f {
+					gamedata::audio_category_t::GAME,
+					item.resource_id,
+					snd_fname,
+					gamedata::audio_format_t::OPUS,
+					gamedata::audio_loader_policy_t::IN_MEMORY
+				};
+				sound_files.push_back(f);
+				delete[] snd_fname;
+			}
+		}
+
+		// load the requested sounds.
+		audio::AudioManager &am = engine->get_audio_manager();
+		am.load_resources(asset_dir, sound_files);
+
+		// create test sound objects that can be played later
+		for (auto &sound : gamedata[0].sounds.data) {
+			std::vector<int> sound_items;
+			for (auto &item : sound.sound_items.data) {
+				sound_items.push_back(item.resource_id);
+			}
+			this->available_sounds[sound.id] = TestSound{sound_items};
+		}
 	}
 
 	auto player_color_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("player_palette_50500.docx"));
@@ -403,7 +405,7 @@ bool GameMain::on_input(SDL_Event *e) {
 				this->placed_buildings.erase(obj);
 				this->available_sounds[obj->sound_id_destruction].play();
 				delete obj;
-			} else {
+			} else if (this->editor_current_building) {
 				TestBuilding *newbuilding = this->available_buildings[this->editor_current_building];
 				int coloring = util::random_range(1, 8 + 1);
 				TerrainObject *newobj = new TerrainObject(
@@ -582,11 +584,13 @@ bool GameMain::on_drawhud() {
 	// draw the currently selected editor texture tile
 	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
 
-	// and the current active building
-	coord::window bpreview_pos;
-	bpreview_pos.x = e.window_size.x - 200;
-	bpreview_pos.y = 200;
-	this->available_buildings[this->editor_current_building]->texture->draw(bpreview_pos.to_camhud());
+	if (this->editor_current_building) {
+		// and the current active building
+		coord::window bpreview_pos;
+		bpreview_pos.x = e.window_size.x - 200;
+		bpreview_pos.y = 200;
+		this->available_buildings[this->editor_current_building]->texture->draw(bpreview_pos.to_camhud());
+	}
 
 	return true;
 }
