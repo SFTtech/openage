@@ -19,8 +19,7 @@ class Token:
             "IDENTIFIER",  # [_a-zA-Z][_a-zA-Z0-9]*
             "INTEGER",     # integer literal, e.g. 12323
             "FLOAT",       # float literal, e.g. 123.342
-            "STRING",      # "foo\\bar"
-            "STRING_RAW",  # 'foo\bar'
+            "STRING",      # 'foobar'
             "FAIL",        # failed to parse token, unexpected character or eof
             "END"          # end of the token stream
         ]

@@ -186,10 +186,11 @@ class Tokenizer:
             else:
                 self.unexpected()
         elif self.state == Tokenizer.State.STRING:
+            #TODO handle string, parse escape sequences
             pass
         elif self.state == Tokenizer.State.STRING_RAW:
             if c == '\'':
-                self.finish_token(Token.Type.STRING_RAW, False)
+                self.finish_token(Token.Type.STRING, False)
                 self.state = Tokenizer.State.START
             elif c == '\n':
                 self.unexpected()
