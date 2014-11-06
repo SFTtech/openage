@@ -115,11 +115,11 @@ struct image_section_header {
 """
 image_section_header = Struct(endianness + "8s 6I HH I")
 
-# ressource section
+# resource section
 SECTION_NAME_RESOURCE = ".rsrc"
 
-# ressource tree
-# types for id in ressource directory root node
+# resource tree
+# types for id in resource directory root node
 restypes = {
     0: 'unknown',
     1: 'cursor',
@@ -148,7 +148,7 @@ restypes = {
 # reverse-lookup directory
 restypesinv = {v: k for k, v in restypes.items()}
 
-# string ressources
+# string resources
 STRINGTABLE_SIZE = 16
 STRINGTABLE_ENCODING = 'utf-16-le'
 STRINGTABLE_LENGTH_MULTIPLIER = 2
@@ -292,7 +292,7 @@ class PEFile:
     def parse_rsrc_strings(self):
         """
         returns a dict of dicts:
-        {languageid: {stringid: ressource_string}}
+        {languageid: {stringid: resource_string}}
         """
 
         result = defaultdict(lambda: {})

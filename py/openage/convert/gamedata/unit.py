@@ -60,10 +60,10 @@ class UnitCommand(dataformat.Exportable):
         (dataformat.READ_EXPORT, "class_id", "int16_t"),
         (dataformat.READ_EXPORT, "unit_id", "int16_t"),
         (dataformat.READ_UNKNOWN, None, "int16_t"),
-        (dataformat.READ_EXPORT, "ressource_in", "int16_t"),
-        (dataformat.READ_EXPORT, "ressource_productivity", "int16_t"), #resource that multiplies the amount you can gather
-        (dataformat.READ_EXPORT, "ressource_out", "int16_t"),
-        (dataformat.READ_EXPORT, "ressource", "int16_t"),
+        (dataformat.READ_EXPORT, "resource_in", "int16_t"),
+        (dataformat.READ_EXPORT, "resource_productivity", "int16_t"), #resource that multiplies the amount you can gather
+        (dataformat.READ_EXPORT, "resource_out", "int16_t"),
+        (dataformat.READ_EXPORT, "resource", "int16_t"),
         (dataformat.READ_EXPORT, "work_rate_multiplier", "float"),
         (dataformat.READ_EXPORT, "execution_radius", "float"),
         (dataformat.READ_EXPORT, "extra_range", "float"),
@@ -89,12 +89,12 @@ class UnitCommand(dataformat.Exportable):
         )),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
         (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "tool_graphic_id", "int16_t"),               #walking with tool but no ressource
-        (dataformat.READ, "proceed_graphic_id", "int16_t"),            #proceeding ressource gathering or attack
+        (dataformat.READ, "tool_graphic_id", "int16_t"),               #walking with tool but no resource
+        (dataformat.READ, "proceed_graphic_id", "int16_t"),            #proceeding resource gathering or attack
         (dataformat.READ, "action_graphic_id", "int16_t"),             #actual execution or transformation graphic
-        (dataformat.READ, "carrying_graphic_id", "int16_t"),           #display ressources in hands
+        (dataformat.READ, "carrying_graphic_id", "int16_t"),           #display resources in hands
         (dataformat.READ, "execution_sound_id", "int16_t"),            #sound to play when execution starts
-        (dataformat.READ, "ressource_deposit_sound_id", "int16_t"),    #sound to play on ressource drop
+        (dataformat.READ, "resource_deposit_sound_id", "int16_t"),    #sound to play on resource drop
     )
 
 
@@ -113,8 +113,8 @@ class UnitHeader(dataformat.Exportable):
     )
 
 
-class RessourceStorage(dataformat.Exportable):
-    name_struct        = "ressource_storage"
+class ResourceStorage(dataformat.Exportable):
+    name_struct        = "resource_storage"
     name_struct_file   = "unit"
     struct_description = "determines the resource storage capacity for one unit mode."
 
@@ -123,7 +123,7 @@ class RessourceStorage(dataformat.Exportable):
         (dataformat.READ, "amount", "float"),
         (dataformat.READ, "used_mode", dataformat.EnumLookupMember(
             raw_type    = "int8_t",
-            type_name   = "ressource_handling",
+            type_name   = "resource_handling",
             lookup_dict = {
                 0: "DECAYABLE",
                 1: "KEEP_AFTER_DEATH",
@@ -194,15 +194,15 @@ class HitType(dataformat.Exportable):
     )
 
 
-class RessourceCost(dataformat.Exportable):
-    name_struct        = "ressource_cost"
+class ResourceCost(dataformat.Exportable):
+    name_struct        = "resource_cost"
     name_struct_file   = "unit"
-    struct_description = "stores cost for one ressource for creating the unit."
+    struct_description = "stores cost for one resource for creating the unit."
 
     data_format = (
         (dataformat.READ, "type_id", dataformat.EnumLookupMember(
             raw_type = "int16_t",
-            type_name = "ressource_types",
+            type_name = "resource_types",
             lookup_dict = {
                 -1: "NONE",
                 0: "FOOD_STORAGE",
@@ -567,8 +567,8 @@ class UnitObject(dataformat.Exportable):
             },
         )),
         (dataformat.READ_EXPORT, "fly_mode", "int8_t"),
-        (dataformat.READ_EXPORT, "ressource_capacity", "int16_t"),
-        (dataformat.READ_EXPORT, "ressource_decay", "float"),                 #when animals rot, their ressources decay
+        (dataformat.READ_EXPORT, "resource_capacity", "int16_t"),
+        (dataformat.READ_EXPORT, "resource_decay", "float"),                 #when animals rot, their resources decay
         (dataformat.READ_EXPORT, "blast_type", dataformat.EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "blast_types",
@@ -678,8 +678,8 @@ class UnitObject(dataformat.Exportable):
         (dataformat.READ, "selection_radius0", "float"),
         (dataformat.READ, "selection_radius1", "float"),
         (dataformat.READ, "hp_bar_height1", "float"),           #vertical hp bar distance from ground
-        (dataformat.READ_EXPORT, "ressource_storage", dataformat.SubdataMember(
-            ref_type=RessourceStorage,
+        (dataformat.READ_EXPORT, "resource_storage", dataformat.SubdataMember(
+            ref_type=ResourceStorage,
             length=3,
         )),
         (dataformat.READ, "damage_graphic_count", "int8_t"),
@@ -774,7 +774,7 @@ class UnitBird(UnitDeadOrFish):
         (dataformat.READ, "sheep_conversion", "int16_t"), #0=can be converted by unit command 107 (you found sheep!!1)
         (dataformat.READ, "search_radius", "float"),
         (dataformat.READ, "work_rate", "float"),
-        (dataformat.READ, "drop_site0", "int16_t"),       #unit id where gathered ressources shall be delivered to
+        (dataformat.READ, "drop_site0", "int16_t"),       #unit id where gathered resources shall be delivered to
         (dataformat.READ, "drop_site1", "int16_t"),       #alternative unit id
         (dataformat.READ_EXPORT, "villager_mode", "int8_t"),     #unit can switch villager type (holza? gathara!) 1=male, 2=female
         (dataformat.READ_EXPORT, "move_sound", "int16_t"),
@@ -826,7 +826,7 @@ class UnitMovable(UnitBird):
             raw_type    = "int8_t",
             type_name   = "range_damage_type",
             lookup_dict = {
-                0: "RESSOURCES",
+                0: "RESOURCES",
                 1: "TREES",
                 2: "NEARBY_UNITS",
                 3: "TARGET_ONLY",
@@ -879,7 +879,7 @@ class UnitLiving(UnitMovable):
 
     data_format = (
         (dataformat.READ_EXPORT, None, dataformat.IncludeMembers(cls=UnitMovable)),
-        (dataformat.READ, "ressource_cost", dataformat.SubdataMember(ref_type=RessourceCost, length=3)),
+        (dataformat.READ, "resource_cost", dataformat.SubdataMember(ref_type=ResourceCost, length=3)),
         (dataformat.READ, "creation_time", "int16_t"),         #in seconds
         (dataformat.READ, "creation_location_id", "int16_t"),  #e.g. 118 = villager
 

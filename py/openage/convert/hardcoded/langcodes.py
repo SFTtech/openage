@@ -1,6 +1,6 @@
 # Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
-# language codes, as used in PE file ressources
+# language codes, as used in PE file resources
 # this file is used by pefile.py
 
 langcodes = {
