@@ -43,7 +43,7 @@ class NyanSpecAttribute:
         else:
             result += self.atype.content
         if self.default_value:
-            result += " = " + self.default_value[0].content
+            result += " = " + self.default_value.content
         return result
 
 class NyanSpecDelta:
