@@ -9,11 +9,12 @@ class NyanSpecParser:
         self.index = 0
         self.tokens = tokens
         self.token = self.tokens[self.index]
+        self.errors = []
 
     def parse(self):
         self.ast = NyanSpecAST()
         self.parse_spec()
-        return self.ast
+        return self.ast, self.errors
 
     def parse_spec(self):
         while self.token.ttype != Token.Type.END:
@@ -24,11 +25,11 @@ class NyanSpecParser:
 
     def parse_type_decl(self):
         type_name = self.skip_token()
+        self.current_type = NyanSpecType(type_name)
         if type_name.content in self.ast.types:
-            raise ParserException("Duplicated definition of type '%s'" %
+            self.error("Duplicated definition of type '%s'" %
                     type_name.content, type_name)
         else:
-            self.current_type = NyanSpecType(type_name)
             self.ast.types[type_name.content] = self.current_type
 
         self.expect_token(Token.Type.LBRACE, "'{'")
@@ -57,12 +58,14 @@ class NyanSpecParser:
             
             # parse attribute name
             attr_name = self.skip_token()
-            if attr_name.content in self.current_type.attributes:
-                raise ParserException("Duplicated definition of attribute '%s' "
-                        "in type '%s'" % (attr_name.content,
-                            self.current_type.name.content), attr_name)
             new_attr = NyanSpecAttribute(attr_name)
-            self.current_type.attributes[attr_name.content] = new_attr
+            if attr_name.content in self.current_type.attributes:
+                self.error(
+                        "Duplicated definition of attribute '%s' in type '%s'"
+                        % (attr_name.content, self.current_type.name.content),
+                        attr_name)
+            else:
+                self.current_type.attributes[attr_name.content] = new_attr
 
             # parse colon
             self.expect_token(Token.Type.COLON, "':'") 
@@ -78,10 +81,11 @@ class NyanSpecParser:
                 new_attr.atype = self.expect_token(Token.Type.IDENTIFIER, "set type")
                 self.expect_token(Token.Type.RPAREN, "')'")
                 new_attr.is_set = True
-            elif attr_type.content in ['bool', 'int', 'float', 'string']:
-                if self.accept_token(Token.Type.ASSIGN):
-                    default_value = self.parse_default_value()
-                    new_attr.default_value = default_value
+
+            if self.accept_token(Token.Type.ASSIGN):
+                # parse default value
+                default_value = self.parse_default_value()
+                new_attr.default_value = default_value
 
             got_comma = self.accept_token(Token.Type.COMMA)
         return got_comma
@@ -102,13 +106,13 @@ class NyanSpecParser:
         while got_comma:
             self.expect_token(Token.Type.CIRCUM, "'^'")
             delta_type = self.expect_token(Token.Type.IDENTIFIER, "delta type")
+            new_delta = NyanSpecDelta(delta_type)
             if delta_type.content in self.current_type.deltas:
-                raise ParserException("Duplicated definition of delta '%s' in "
+                self.error("Duplicated definition of delta '%s' in "
                         "type '%s'" % (delta_type.content,
                             self.current_type.content), delta_type)
-
-            new_delta = NyanSpecDelta(delta_type)
-            self.current_type.deltas[delta_type.content] = new_delta
+            else:
+                self.current_type.deltas[delta_type.content] = new_delta
             
             got_comma = self.accept_token(Token.Type.COMMA)
 
@@ -123,11 +127,12 @@ class NyanSpecParser:
 
     def expected(self, *expectations):
         """
-        Raises a ParserException with the given expectation strings.
+        Adds a ParserException with the given expectation strings to the error
+        list.
         """
-        raise ParserException("Expected %s, got '%s'" %
+        self.error("Expected %s, got '%s'" %
             (self.build_expectations_string(*expectations),
-            self.token.content), self.token)
+            self.token.content), self.token, True)
 
     def next_token(self):
         """
@@ -173,3 +178,10 @@ class NyanSpecParser:
         token = self.token
         self.next_token()
         return token
+
+    def error(self, message, token, critical=False):
+        exception = ParserException(message, token)
+        if critical:
+            raise exception
+        else:
+            self.errors.append(exception)
