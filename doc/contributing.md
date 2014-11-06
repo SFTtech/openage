@@ -2,8 +2,11 @@ Contributing to openage
 =======================
 
 - Before starting, [fork the repo and add the needed remotes](https://help.github.com/articles/fork-a-repo/). It's good ettiquete to start your work on a new branch called a *feature branch* that starts from the latest master (you can always switch to master and do `git pull upstream` (or the name of the remote you assigned to `SFTtech/openage` repo)) to update your local copy.
+
 - Commit messages should be meaningful, they should say in a sentence (or very
 little text) what changes it has without requiring to read the entire diff. [tpope knows this very well!](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+
+- When making your first contribution, don't forget to add yourself to the authors list on `copying.md` :)
 
 What makes a good Pull Request good?
 ---------------------------------
