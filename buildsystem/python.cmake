@@ -175,4 +175,8 @@ function(process_python_modules)
 	install(CODE "execute_process(COMMAND ${PYTHON3} ${SETUP_PY} install --prefix=${CMAKE_INSTALL_PREFIX} --root=\$ENV{DESTDIR})")
 endfunction()
 
+function(warn_runtime_depends)
+	execute_process(COMMAND ${PYTHON_INVOCATION} -m openage.warn_runtime_depends)
+endfunction()
+
 python_init()

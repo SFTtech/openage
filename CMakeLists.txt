@@ -65,3 +65,6 @@ message("${PROJECT_NAME} ${PROJECT_VERSION}
 install prefix | ${CMAKE_INSTALL_PREFIX}
      build dir | ${CMAKE_BINARY_DIR}
 ")
+
+# detect missing run-time dependencies
+warn_runtime_depends()
