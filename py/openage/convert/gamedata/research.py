@@ -7,13 +7,13 @@ from ..util import dbg, zstr
 from .empiresdat import endianness
 
 
-class ResearchRessourceCost(dataformat.Exportable):
-    name_struct        = "research_ressource_cost"
+class ResearchResourceCost(dataformat.Exportable):
+    name_struct        = "research_resource_cost"
     name_struct_file   = "research"
-    struct_description = "amount definition for a single type ressource for researches."
+    struct_description = "amount definition for a single type resource for researches."
 
     data_format = (
-        (dataformat.READ, "ressource_id", "int16_t"),  #see unit/ressource_cost, TODO: type xref
+        (dataformat.READ, "resource_id", "int16_t"),  #see unit/resource_cost, TODO: type xref
         (dataformat.READ, "amount", "int16_t"),
         (dataformat.READ, "enabled", "int8_t"),
     )
@@ -26,8 +26,8 @@ class Research(dataformat.Exportable):
 
     data_format = (
         (dataformat.READ, "required_techs", "int16_t[6]"),         #research ids of techs that are required for activating the possible research
-        (dataformat.READ, "research_ressource_costs", dataformat.SubdataMember(
-            ref_type=ResearchRessourceCost,
+        (dataformat.READ, "research_resource_costs", dataformat.SubdataMember(
+            ref_type=ResearchResourceCost,
             length=3,
         )),
         (dataformat.READ, "required_tech_count", "int16_t"),       #a subset of the above required techs may be sufficient

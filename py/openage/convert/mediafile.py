@@ -16,11 +16,10 @@ import subprocess
 from .texture import Texture
 from . import util
 from .util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path
-
+from tempfile import gettempdir
 
 asset_folder = "" #TODO: optimize out
-dat_cache_file = "/tmp/empires2_x1_p1.dat.pickle"
-
+dat_cache_file = os.path.join(gettempdir(), "empires2_x1_p1.dat.pickle")
 
 class ExtractionRule:
     """
