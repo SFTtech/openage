@@ -6,6 +6,7 @@ import os
 import subprocess
 import shutil
 import shlex
+import sys
 shlex.join = lambda args: ' '.join(shlex.quote(a) for a in args)
 
 
@@ -167,16 +168,22 @@ if args.c_compiler or args.cpp_compiler:
             cxx = unknown
 else:
     # neither CC, nor CXX has been specified
-    csuite = args.compiler
-    if not csuite:
-        # default to gnu compiler suite
-        csuite = 'gnu'
+    compiler = args.compiler
+    if not compiler:
+        if sys.platform.startswith('darwin'):
+            compiler = 'llvm'
+        else:
+            # default to gnu compiler suite
+            compiler = 'gnu'
 
-    if not csuite.lower() in csuites:
+    try:
+        # look up csuite name (e.g. gcc -> gnu)
+        csuite = getcsuite(compiler)
+    except ValueError:
         ap.error("unknown compiler suite: %s. manually specify --c-compiler \
 and --cpp-compiler, or use one of [%s]" % (csuite, ", ".join(csuites)))
 
-    cc, cxx = csuites[csuite.lower()][:2]
+    cc, cxx = csuites[csuite][:2]
 
 # test whether the specified compilers actually exist
 if not shutil.which(cc):
