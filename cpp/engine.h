@@ -191,6 +191,11 @@ public:
 	bool drawing_debug_overlay;
 
 	/**
+	* this allows to disable drawing of every registered hud.
+	*/
+	bool drawing_huds;
+
+	/**
 	 * size of the game window, in coord_sdl.
 	 */
 	coord::window window_size;
