@@ -63,6 +63,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	:
 	running{false},
 	drawing_debug_overlay{true},
+	drawing_huds{true},
 	window_size{800, 600},
 	camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0},
 	camgame_window{400, 300},
@@ -294,10 +295,12 @@ void Engine::loop() {
 				this->draw_debug_overlay();
 			}
 
-			// invoke all hud drawing callback methods
-			for (auto &action : this->on_drawhud) {
-				if (false == action->on_drawhud()) {
-					break;
+			if (this->drawing_huds) {
+				// invoke all hud drawing callback methods
+				for (auto &action : this->on_drawhud) {
+					if (false == action->on_drawhud()) {
+						break;
+					}
 				}
 			}
 		}

@@ -498,6 +498,9 @@ bool GameMain::on_input(SDL_Event *e) {
 			//stop the game
 			engine.stop();
 			break;
+		case SDLK_F1:
+			engine.drawing_huds = !engine.drawing_huds;
+			break;
 		case SDLK_F3:
 			engine.drawing_debug_overlay = !engine.drawing_debug_overlay;
 			break;
