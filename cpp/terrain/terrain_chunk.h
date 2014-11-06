@@ -49,52 +49,52 @@ public:
 	~TerrainChunk();
 
 	/**
-	stores the length for one chunk side.
-	*/
+	 * stores the length for one chunk side.
+	 */
 	size_t size;
 
 	/**
-	number of tiles on that chunk (this->size^2)
+	 * number of tiles on that chunk (this->size^2)
 	*/
 	size_t tile_count;
 
 	/**
-	stores the chunk data, one tile_content struct for each tile.
-	*/
+	 * stores the chunk data, one tile_content struct for each tile.
+	 */
 	TileContent *data;
 
 	/**
-	the terrain to which this chunk belongs to.
-	*/
+	 * the terrain to which this chunk belongs to.
+	 */
 	Terrain *terrain;
 
 	/**
-	the 8 neighbors this chunk has.
-	*/
+	 * the 8 neighbors this chunk has.
+	 */
 	chunk_neighbors neighbors;
 
 	/**
-	draws the terrain chunk on screen.
-
-	@param chunk_pos the chunk position where it will be drawn
-	*/
+	 * draws the terrain chunk on screen.
+	 *
+	 * @param chunk_pos the chunk position where it will be drawn
+	 */
 	void draw(coord::chunk chunk_pos);
 
 	/**
-	get tile data by coordinates.
-	*/
+	 * get tile data by coordinates.
+	 */
 	TileContent *get_data(coord::tile pos);
 
 	/**
-	get tile data by memory position.
-	*/
+	 * get tile data by memory position.
+	 */
 	TileContent *get_data(size_t pos);
 
 	/**
-	get the tile data a given tile position relative to this chunk.
-
-	also queries neighbors if the position is not on this chunk.
-	*/
+	 * get the tile data a given tile position relative to this chunk.
+	 *
+	 * also queries neighbors if the position is not on this chunk.
+	 */
 	TileContent *get_data_neigh(coord::tile pos);
 
 	int neighbor_id_by_pos(coord::tile pos);
@@ -111,6 +111,6 @@ public:
 	bool manually_created;
 };
 
-} //namespace openage
+} // namespace openage
 
 #endif
