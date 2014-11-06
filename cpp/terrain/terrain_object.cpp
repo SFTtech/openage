@@ -2,30 +2,29 @@
 
 #include "terrain_object.h"
 
-#include "engine.h"
-#include "texture.h"
-#include "log.h"
 #include "terrain.h"
 #include "terrain_chunk.h"
-#include "util/error.h"
-#include "coord/tile.h"
-#include "coord/tile3.h"
-#include "coord/phys3.h"
-#include "coord/camgame.h"
+#include "../engine.h"
+#include "../log.h"
+#include "../texture.h"
+#include "../coord/tile.h"
+#include "../coord/tile3.h"
+#include "../coord/phys3.h"
+#include "../coord/camgame.h"
+#include "../util/error.h"
 
 namespace openage {
 
 TerrainObject::TerrainObject(Texture *tex,
                              coord::tile_delta foundation_size,
-                             unsigned player, int sound_id_destruction) {
-
-	this->placed                = false;
-	this->texture               = tex;
-	this->size                  = foundation_size;
-	this->player                = player;
-	this->sound_id_destruction  = sound_id_destruction;
-
-	this->occupied_chunk_count = 0;
+                             unsigned player, int sound_id_destruction)
+	:
+	sound_id_destruction{sound_id_destruction},
+	placed{false},
+	texture{tex},
+	player{player},
+	occupied_chunk_count{0} {
+	this->size = foundation_size;
 }
 
 
@@ -33,7 +32,7 @@ TerrainObject::~TerrainObject() {}
 
 
 void TerrainObject::remove() {
-	if (this->occupied_chunk_count == 0 || not this->placed) {
+	if (this->occupied_chunk_count == 0 or not this->placed) {
 		return;
 	}
 
@@ -77,8 +76,8 @@ bool TerrainObject::place(Terrain *terrain, coord::tile pos) {
 	bool chunk_known = false;
 
 
-	//set pointers to this object on each terrain tile
-	//where the building will stand and block the ground
+	// set pointers to this object on each terrain tile
+	// where the building will stand and block the ground
 
 	coord::tile temp_pos = this->start_pos;
 
@@ -163,16 +162,16 @@ bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
 			if (chunk == nullptr) {
 				return false;
 			} else {
-				//get tile data
+				// get tile data
 				auto tile = chunk->get_data(check_pos);
 
-				//is the terrain underground suitable?
-				//TODO: water needed? solid ground needed?
+				// is the terrain underground suitable?
+				// TODO: water needed? solid ground needed?
 				if (tile->terrain_id < 0) {
 					return false;
 				}
 
-				//is another object blocking that tile?
+				// is another object blocking that tile?
 				if (tile->obj != nullptr) {
 					return false;
 				}

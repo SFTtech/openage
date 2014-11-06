@@ -21,9 +21,10 @@ Features
 * map scrolling
   * arrow keys
   * middle mouse button
-* screenshots (F2) -> /tmp/openage_2019-12-31_23-59-59_xx.png
+* screenshots (F2) -> `/tmp/openage_2019-12-31_23-59-59_xx.png`
 * ingame console
   * open with backtick
   * readonly log view at the moment
   * very inefficient proof of concept rendering
 * sound playback (when placing and removing buildings)
+* automatic asset reloading by `inotify`

@@ -1,15 +1,15 @@
 // Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_TERRAIN_OBJECT_H_
-#define OPENAGE_TERRAIN_OBJECT_H_
+#ifndef OPENAGE_TERRAIN_TERRAIN_OBJECT_H_
+#define OPENAGE_TERRAIN_TERRAIN_OBJECT_H_
 
 #include <stddef.h>
 
 #include "terrain.h"
 #include "terrain_chunk.h"
-#include "texture.h"
-#include "coord/tile.h"
-#include "coord/phys3.h"
+#include "../coord/tile.h"
+#include "../coord/phys3.h"
+#include "../texture.h"
 
 namespace openage {
 
@@ -25,8 +25,8 @@ enum class object_state {
 
 
 /**
-terrain object class represents one immobile object on the map (building, trees, fish, ...).
-*/
+ * terrain object class represents one immobile object on the map (building, trees, fish, ...).
+ */
 class TerrainObject {
 public:
 	TerrainObject(Texture *tex, coord::tile_delta foundation_size, unsigned player, int sound_id_destruction);
@@ -36,6 +36,9 @@ public:
 	coord::phys3 draw_pos;
 	coord::tile end_pos;
 
+	/**
+	 * Sound id played when object is destroyed.
+	 */
 	int sound_id_destruction;
 
 	/**
@@ -93,6 +96,7 @@ private:
 
 	int occupied_chunk_count;
 	TerrainChunk *occupied_chunk[4];
+
 
 	/**
 	 * set and calculate object start and end positions.
