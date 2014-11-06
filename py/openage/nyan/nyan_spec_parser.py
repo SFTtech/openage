@@ -33,7 +33,7 @@ class NyanSpecParser:
 
         self.expect_token(Token.Type.LBRACE, "'{'")
         self.parse_type_body()
-        self.expect_token(Token.Type.RBRACE, "'}'")
+        self.expect_token(Token.Type.RBRACE, "','", "'}'")
 
     def parse_type_body(self):
         got_comma = self.parse_type_attributes();
@@ -55,6 +55,7 @@ class NyanSpecParser:
             if not self.is_token(Token.Type.IDENTIFIER):
                 return True
             
+            # parse attribute name
             attr_name = self.skip_token()
             if attr_name.content in self.current_type.attributes:
                 raise ParserException("Duplicated definition of attribute '%s' "
@@ -63,18 +64,21 @@ class NyanSpecParser:
             new_attr = NyanSpecAttribute(attr_name)
             self.current_type.attributes[attr_name.content] = new_attr
 
+            # parse colon
             self.expect_token(Token.Type.COLON, "':'") 
-            if not self.is_token(Token.Type.IDENTIFIER):
-                self.expected("type")
-            attr_type = self.skip_token()
+
+            # parse attribute type
+            attr_type = self.expect_token(Token.Type.IDENTIFIER,
+                    "attribute type")
             new_attr.atype = attr_type
 
             if attr_type.content == "set":
+                # parse set type
                 self.expect_token(Token.Type.LPAREN, "'('")
-                set_attr_type = self.expect_token(Token.Type.IDENTIFIER, "set type")
+                new_attr.atype = self.expect_token(Token.Type.IDENTIFIER, "set type")
                 self.expect_token(Token.Type.RPAREN, "')'")
                 new_attr.is_set = True
-            else:
+            elif attr_type.content in ['bool', 'int', 'float', 'string']:
                 if self.accept_token(Token.Type.ASSIGN):
                     default_value = self.parse_default_value()
                     new_attr.default_value = default_value
@@ -83,7 +87,6 @@ class NyanSpecParser:
         return got_comma
 
     def parse_default_value(self):
-        default_value_type = None
         if self.is_token(Token.Type.INTEGER) or\
                 self.is_token(Token.Type.FLOAT) or\
                 self.is_token(Token.Type.STRING) or\
@@ -109,11 +112,21 @@ class NyanSpecParser:
             
             got_comma = self.accept_token(Token.Type.COMMA)
 
-    def expected(self, expectation):
+    def build_expectations_string(self, *expectations):
+        length = len(expectations)
+        strings = list(map(str, expectations))
+        result = ""
+        if length >= 2:
+            result += ", ".join(strings[0:length-1]) + " or "
+        result += strings[-1]
+        return result
+
+    def expected(self, *expectations):
         """
-        Raises a ParserException with the given expectation string.
+        Raises a ParserException with the given expectation strings.
         """
-        raise ParserException("Expected %s, got '%s'" % (expectation,
+        raise ParserException("Expected %s, got '%s'" %
+            (self.build_expectations_string(*expectations),
             self.token.content), self.token)
 
     def next_token(self):
@@ -143,17 +156,15 @@ class NyanSpecParser:
             result = result and self.token.content == content
         return result
 
-    def expect_token(self, ttype, expectation):
+    def expect_token(self, ttype, *expectations):
         """
         Checks if the current token has the given type. If yes, the token is
         returned and skipped. Otherwise a ParserException with the given
-        expectation string is raised.
+        expectation strings is raised.
         """
         if not self.is_token(ttype):
-            self.expected(expectation)
-        token = self.token
-        self.next_token()
-        return token
+            self.expected(*expectations)
+        return self.skip_token()
     
     def skip_token(self):
         """
