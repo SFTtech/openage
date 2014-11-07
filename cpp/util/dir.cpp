@@ -17,7 +17,7 @@ std::string Dir::join(const std::string &fname) const {
 	return this->basedir + PATHSEP + fname;
 }
 
-Dir Dir::append(const std::string &suffix) {
+Dir Dir::append(const std::string &suffix) const {
 	if (suffix.length() == 0) {
 		return Dir{this->basedir};
 	} else {
