@@ -64,7 +64,7 @@ public:
 	 * Loads all audio resources, that are specified in the sound_files vector.
 	 * @param sound_files a list of all sound resources
 	 */
-	void load_resources(util::Dir &asset_dir, const std::vector<gamedata::sound_file> &sound_files);
+	void load_resources(const util::Dir &asset_dir, const std::vector<gamedata::sound_file> &sound_files);
 
 	/**
 	 * Returns a sound object with the given category and the given id. If no
