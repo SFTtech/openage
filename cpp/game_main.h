@@ -16,6 +16,8 @@
 #include "terrain/terrain.h"
 #include "terrain/terrain_object.h"
 #include "gamedata/graphic.gen.h"
+#include "gamedata/gamedata.gen.h"
+#include "job/job.h"
 
 
 namespace openage {
@@ -100,6 +102,13 @@ public:
 	Texture *gaben;
 
 	AssetManager assetmanager;
+private:
+	void on_gamedata_loaded(std::vector<gamedata::empiresdat> gamedata);
+
+	bool gamedata_loaded;
+	openage::job::Job<std::vector<gamedata::empiresdat>> gamedata_load_job;
+
+	openage::Engine *engine;
 };
 
 } //namespace openage

@@ -34,6 +34,7 @@ _the openage authors_ are:
 | Andrew Eikum                | ColdPie1                    | coldpies@gmail.com               |
 | Michael Sebastiyan          | BugExplorer                 | sebastiyan.michael@outlook.com   |
 | Adam Miartus                | miartad                     | adam.miartus@gmail.com           |
+| Prashanth Jonnala           | jprashanth                  | prashanth.neo@gmail.com          |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
