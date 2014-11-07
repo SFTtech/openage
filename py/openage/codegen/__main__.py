@@ -1,6 +1,6 @@
 # Copyright 2014-2014 the openage authors. See copying.md for legal info.
 
-from ..convert.util import set_verbosity, dbg
+import openage.log as log
 import argparse
 import os
 
@@ -100,7 +100,7 @@ def main():
         except:
             args.verbose = 2
 
-    set_verbosity(args.verbose)
+    log.set_verbosity(args.verbose)
 
     file_to_touch = args.touch_file_on_cache_change
     if file_to_touch and not os.path.isfile(file_to_touch):
@@ -116,7 +116,7 @@ def main():
                 old_target_cache.add(target.strip())
     except:
         if cache_actions_requested:
-            dbg("warning: cache actions were requested, " +
+            log.dbg("warning: cache actions were requested, " +
                 "but the target cache could not be read!", 0)
 
     old_depend_cache = set()
@@ -126,7 +126,7 @@ def main():
                 old_depend_cache.add(depend.strip())
     except:
         if cache_actions_requested:
-            dbg("warning: cache actions were requested, " +
+            log.dbg("warning: cache actions were requested, " +
                 "but the depends cache could not be read!", 0)
 
     cpp_src_dir = args.cpp_src_dir
@@ -169,22 +169,22 @@ def main():
     depend_cache_changed = False
     if old_depend_cache != new_depend_cache:
         depend_cache_changed = True
-        dbg("codegen dependencies:", 1)
-        print_set_difference(lambda s: dbg(s, 1),
+        log.dbg("codegen dependencies:", 1)
+        print_set_difference(lambda s: log.dbg(s, 1),
                              old_depend_cache, new_depend_cache)
 
     target_cache_changed = False
     if old_target_cache != new_target_cache:
         target_cache_changed = True
-        dbg("codegen target sources:", 1)
-        print_set_difference(lambda s: dbg(s, 1),
+        log.dbg("codegen target sources:", 1)
+        print_set_difference(lambda s: log.dbg(s, 1),
                              old_target_cache, new_target_cache)
 
     if file_to_touch and (depend_cache_changed or target_cache_changed):
         try:
             os.utime(file_to_touch)
         except:
-            dbg("warning: couldn't update the timestamp for %s"
+            log.dbg("warning: couldn't update the timestamp for %s"
                 % file_to_touch, 0)
 
     if target_cache_changed and args.force_rerun_on_targetcache_change:
@@ -199,7 +199,7 @@ A build update has been triggered; you need to build again.
     if args.clean:
         for absfilename, (filename, content) in generated_files.items():
             if os.path.isfile(absfilename):
-                dbg("cleaning file: %s" % filename, 0)
+                log.dbg("cleaning file: %s" % filename, 0)
                 os.unlink(absfilename)
 
     # write generated files to sourcedir
@@ -208,10 +208,10 @@ A build update has been triggered; you need to build again.
             if os.path.isfile(absfilename):
                 with open(absfilename) as f:
                     if f.read() == content:
-                        dbg("file unchanged: %s" % filename, 1)
+                        log.dbg("file unchanged: %s" % filename, 1)
                         continue
 
-            dbg("generating file: %s" % filename, 0)
+            log.dbg("generating file: %s" % filename, 0)
             with open(absfilename, 'w') as f:
                 f.write(content)
 

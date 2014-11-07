@@ -1,19 +1,17 @@
 # Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
-from .. import dataformat
-from struct import Struct, unpack_from
-from ..util import dbg, zstr, offset_info
-
-from .empiresdat import endianness
+from ..dataformat.exportable import Exportable
+from ..dataformat.members import SubdataMember, EnumLookupMember, ZeroMember
+from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
 
 
-class Effect(dataformat.Exportable):
+class Effect(Exportable):
     name_struct        = "tech_effect"
     name_struct_file   = "tech"
     struct_description = "applied effect for a research technology."
 
     data_format = (
-        (dataformat.READ, "type_id",   dataformat.EnumLookupMember(
+        (READ, "type_id",   EnumLookupMember(
             raw_type = "int8_t",
             type_name = "effect_apply_type",
             lookup_dict = {
@@ -69,68 +67,68 @@ class Effect(dataformat.Exportable):
                 #108: healing rate
             },
         )),
-        (dataformat.READ, "unit",      "int16_t"),      # == a
-        (dataformat.READ, "unit_class_id",  "int16_t"), # == b
-        (dataformat.READ, "attribute_id", "int16_t"),   # == c
-        (dataformat.READ, "amount",    "float"),        # == d
+        (READ, "unit",      "int16_t"),      # == a
+        (READ, "unit_class_id",  "int16_t"), # == b
+        (READ, "attribute_id", "int16_t"),   # == c
+        (READ, "amount",    "float"),        # == d
     )
 
 
-class Tech(dataformat.Exportable):  #also called techage in some other tools
+class Tech(Exportable):  #also called techage in some other tools
     name_struct        = "tech"
     name_struct_file   = "tech"
     struct_description = "a technology definition."
 
     data_format = (
-        (dataformat.READ, "name", "char[31]"),                  #always CHUN4 (change unit 4-arg)
-        (dataformat.READ, "effect_count", "uint16_t"),
-        (dataformat.READ, "effects", dataformat.SubdataMember(
+        (READ, "name", "char[31]"),                  #always CHUN4 (change unit 4-arg)
+        (READ, "effect_count", "uint16_t"),
+        (READ, "effects", SubdataMember(
             ref_type=Effect,
             length="effect_count",
         )),
     )
 
 
-class AgeTechTree(dataformat.Exportable):
+class AgeTechTree(Exportable):
     name_struct        = "age_tech_tree"
     name_struct_file   = "tech"
     struct_description = "items available when this age was reached."
 
     data_format = (
-        (dataformat.READ_UNKNOWN, None, "int32_t"),
-        (dataformat.READ, "id", "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "building_count", "int8_t"),
-        (dataformat.READ, "buildings", "int32_t[building_count]"),
-        (dataformat.READ, "unit_count", "int8_t"),
-        (dataformat.READ, "units", "int32_t[unit_count]"),
-        (dataformat.READ, "research_count", "int8_t"),
-        (dataformat.READ, "researches", "int32_t[research_count]"),
-        (dataformat.READ_UNKNOWN, None, "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int32_t"),
-        (dataformat.READ, "zeroes", dataformat.ZeroMember("int16_t", length=49)),
+        (READ_UNKNOWN, None, "int32_t"),
+        (READ, "id", "int32_t"),
+        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "building_count", "int8_t"),
+        (READ, "buildings", "int32_t[building_count]"),
+        (READ, "unit_count", "int8_t"),
+        (READ, "units", "int32_t[unit_count]"),
+        (READ, "research_count", "int8_t"),
+        (READ, "researches", "int32_t[research_count]"),
+        (READ_UNKNOWN, None, "int32_t"),
+        (READ_UNKNOWN, None, "int32_t"),
+        (READ, "zeroes", ZeroMember("int16_t", length=49)),
     )
 
 
-class BuildingConnection(dataformat.Exportable):
+class BuildingConnection(Exportable):
     name_struct        = "building_connection"
     name_struct_file   = "tech"
     struct_description = "new available buildings/units/researches when this building was created."
 
     data_format = (
-        (dataformat.READ_EXPORT, "id", "int32_t"),         #unit id of the current building
-        (dataformat.READ, "prerequisite_count", "int8_t"), #always 2, as we got 2 of them hardcoded below (unit_or_research, mode)
-        (dataformat.READ_EXPORT, "building_count", "int8_t"),
-        (dataformat.READ, "buildings", "int32_t[building_count]"),  #new buildings available when this building was created
-        (dataformat.READ_EXPORT, "unit_count", "int8_t"),
-        (dataformat.READ, "units", "int32_t[unit_count]"),          #new units
-        (dataformat.READ_EXPORT, "research_count", "int8_t"),
-        (dataformat.READ, "researches", "int32_t[research_count]"), #new researches
-        (dataformat.READ_EXPORT, "age", "int32_t"),          #minimum age, in which this building is available
-        (dataformat.READ, "unit_or_research0", "int32_t"),   #this building depends on research_id or unit_id, which is set in mode0
-        (dataformat.READ, "unit_or_research1", "int32_t"),   #dito, set in mode1
-        (dataformat.READ_UNKNOWN, None, "int32_t[8]"),
-        (dataformat.READ, "mode0", dataformat.EnumLookupMember(  #mode for unit_or_research0
+        (READ_EXPORT, "id", "int32_t"),         #unit id of the current building
+        (READ, "prerequisite_count", "int8_t"), #always 2, as we got 2 of them hardcoded below (unit_or_research, mode)
+        (READ_EXPORT, "building_count", "int8_t"),
+        (READ, "buildings", "int32_t[building_count]"),  #new buildings available when this building was created
+        (READ_EXPORT, "unit_count", "int8_t"),
+        (READ, "units", "int32_t[unit_count]"),          #new units
+        (READ_EXPORT, "research_count", "int8_t"),
+        (READ, "researches", "int32_t[research_count]"), #new researches
+        (READ_EXPORT, "age", "int32_t"),          #minimum age, in which this building is available
+        (READ, "unit_or_research0", "int32_t"),   #this building depends on research_id or unit_id, which is set in mode0
+        (READ, "unit_or_research1", "int32_t"),   #dito, set in mode1
+        (READ_UNKNOWN, None, "int32_t[8]"),
+        (READ, "mode0", EnumLookupMember(  #mode for unit_or_research0
             raw_type = "int32_t",
             type_name = "building_connection_mode",
             lookup_dict = {
@@ -140,63 +138,63 @@ class BuildingConnection(dataformat.Exportable):
                 3: "RESEARCH",
             }
         )),
-        (dataformat.READ, "mode1", "int32_t"), #TODO, xref to the enum above
-        (dataformat.READ_UNKNOWN, None, "int32_t[8]"),
-        (dataformat.READ_UNKNOWN, None, "int8_t[11]"),
-        (dataformat.READ_EXPORT, "connections", "int32_t"),     #5: >=1 connections, 6: no connections
-        (dataformat.READ, "enabled_by_research_id", "int32_t"), #current building is unlocked by this research id, -1=no unlock needed
+        (READ, "mode1", "int32_t"), #TODO, xref to the enum above
+        (READ_UNKNOWN, None, "int32_t[8]"),
+        (READ_UNKNOWN, None, "int8_t[11]"),
+        (READ_EXPORT, "connections", "int32_t"),     #5: >=1 connections, 6: no connections
+        (READ, "enabled_by_research_id", "int32_t"), #current building is unlocked by this research id, -1=no unlock needed
     )
 
 
-class UnitConnection(dataformat.Exportable):
+class UnitConnection(Exportable):
     name_struct        = "unit_connection"
     name_struct_file   = "tech"
     struct_description = "unit updates to apply when activating the technology."
 
     data_format = (
-        (dataformat.READ, "id", "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "upper_building", "int32_t"),        #building, where this unit is created
-        (dataformat.READ, "required_researches", "int32_t"),
-        (dataformat.READ, "age", "int32_t"),
-        (dataformat.READ, "unit_or_research0", "int32_t"),
-        (dataformat.READ, "unit_or_research1", "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int32_t[8]"),
-        (dataformat.READ, "mode0", "int32_t"),
-        (dataformat.READ, "mode1", "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int32_t[7]"),
-        (dataformat.READ, "vertical_lines", "int32_t"),
-        (dataformat.READ, "unit_count", "int8_t"),
-        (dataformat.READ, "units", "int32_t[unit_count]"),
-        (dataformat.READ, "location_in_age", "int32_t"),    #0=hidden, 1=first, 2=second
-        (dataformat.READ, "required_research", "int32_t"),  #min amount of researches to be discovered for this unit to be available
-        (dataformat.READ, "line_mode", "int32_t"),          #0=independent/new in its line, 3=depends on a previous research in its line
-        (dataformat.READ, "enabling_research", "int32_t"),
+        (READ, "id", "int32_t"),
+        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "upper_building", "int32_t"),        #building, where this unit is created
+        (READ, "required_researches", "int32_t"),
+        (READ, "age", "int32_t"),
+        (READ, "unit_or_research0", "int32_t"),
+        (READ, "unit_or_research1", "int32_t"),
+        (READ_UNKNOWN, None, "int32_t[8]"),
+        (READ, "mode0", "int32_t"),
+        (READ, "mode1", "int32_t"),
+        (READ_UNKNOWN, None, "int32_t[7]"),
+        (READ, "vertical_lines", "int32_t"),
+        (READ, "unit_count", "int8_t"),
+        (READ, "units", "int32_t[unit_count]"),
+        (READ, "location_in_age", "int32_t"),    #0=hidden, 1=first, 2=second
+        (READ, "required_research", "int32_t"),  #min amount of researches to be discovered for this unit to be available
+        (READ, "line_mode", "int32_t"),          #0=independent/new in its line, 3=depends on a previous research in its line
+        (READ, "enabling_research", "int32_t"),
     )
 
 
-class ResearchConnection(dataformat.Exportable):
+class ResearchConnection(Exportable):
     name_struct        = "research_connection"
     name_struct_file   = "tech"
     struct_description = "research updates to apply when activating the technology."
 
     data_format = (
-        (dataformat.READ, "id", "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int8_t"),
-        (dataformat.READ, "upper_building", "int32_t"),
-        (dataformat.READ, "building_count", "int8_t"),
-        (dataformat.READ, "buildings", "int32_t[building_count]"),
-        (dataformat.READ, "unit_count", "int8_t"),
-        (dataformat.READ, "units", "int32_t[unit_count]"),
-        (dataformat.READ, "research_count", "int8_t"),
-        (dataformat.READ, "researches", "int32_t[research_count]"),
-        (dataformat.READ, "required_research", "int32_t"),
-        (dataformat.READ, "age", "int32_t"),
-        (dataformat.READ, "upper_research", "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int32_t[9]"),
-        (dataformat.READ, "line_mode", "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int32_t[8]"),
-        (dataformat.READ, "vertical_line", "int32_t"),
-        (dataformat.READ, "location_in_age", "int32_t"),
-        (dataformat.READ_UNKNOWN, None, "int32_t"),
+        (READ, "id", "int32_t"),
+        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "upper_building", "int32_t"),
+        (READ, "building_count", "int8_t"),
+        (READ, "buildings", "int32_t[building_count]"),
+        (READ, "unit_count", "int8_t"),
+        (READ, "units", "int32_t[unit_count]"),
+        (READ, "research_count", "int8_t"),
+        (READ, "researches", "int32_t[research_count]"),
+        (READ, "required_research", "int32_t"),
+        (READ, "age", "int32_t"),
+        (READ, "upper_research", "int32_t"),
+        (READ_UNKNOWN, None, "int32_t[9]"),
+        (READ, "line_mode", "int32_t"),
+        (READ_UNKNOWN, None, "int32_t[8]"),
+        (READ, "vertical_line", "int32_t"),
+        (READ, "location_in_age", "int32_t"),
+        (READ_UNKNOWN, None, "int32_t"),
     )

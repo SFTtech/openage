@@ -1,10 +1,15 @@
 # Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
-from . import dataformat
-from .util import NamedObject, dbg, file_open, file_get_path, file_write
 import math
-from struct import Struct, unpack_from
 import os.path
+from struct import Struct, unpack_from
+
+from ..util import NamedObject
+from .dataformat.exportable import Exportable
+from .dataformat.data_definition import DataDefinition
+from .dataformat.struct_definition import StructDefinition
+from .util import file_open, file_get_path, file_write
+from openage.log import dbg
 
 endianness = "< "
 
@@ -171,7 +176,7 @@ class BlendingMode:
         return BlendingTile(tilerows, max_width, row_count)
 
 
-class Blendomatic(dataformat.Exportable):
+class Blendomatic(Exportable):
 
     name_struct        = "blending_mode"
     name_struct_file   = "blending_mode"
@@ -229,11 +234,11 @@ class Blendomatic(dataformat.Exportable):
 
     def dump(self, filename):
         data = [ {"blend_mode": idx} for idx, _ in enumerate(self.blending_modes) ]
-        return [ dataformat.DataDefinition(self, data, filename) ]
+        return [ DataDefinition(self, data, filename) ]
 
     @classmethod
     def structs(cls):
-        return [ dataformat.StructDefinition(cls) ]
+        return [ StructDefinition(cls) ]
 
     def save(self, output_folder, save_format):
         for idx, texture in enumerate(self.get_textures()):

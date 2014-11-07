@@ -1,9 +1,10 @@
 # Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
-from . import util
-from .util import dbg
 from binascii import hexlify
+from openage.log import dbg
 from struct import Struct, unpack_from
+
+from . import util
 
 #version of the drs file, hardcoded for now
 file_version = 57
