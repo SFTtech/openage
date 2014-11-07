@@ -44,8 +44,8 @@ camgame_delta phys3_delta::to_camgame() {
 	//scaling factor: w/2 for x, h/2 for y
 	//and the (1 << 16) fixed-point scaling factor for both.
 	camgame_delta result;
-	result.x = (pixel_t) (scaled.x * e.tile_halfsize.x / settings::phys_per_tile);
-	result.y = (pixel_t) (scaled.y * e.tile_halfsize.y / settings::phys_per_tile);
+	result.x = (pixel_t) util::div(scaled.x * e.tile_halfsize.x, settings::phys_per_tile);
+	result.y = (pixel_t) util::div(scaled.y * e.tile_halfsize.y, settings::phys_per_tile);
 
 	return result;
 }
