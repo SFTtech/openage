@@ -103,9 +103,9 @@ GameMain::GameMain(Engine *engine)
 	clicking_active{true},
 	ctrl_active{false},
 	scrolling_active{false},
-	engine{engine},
 	assetmanager{engine->get_data_dir()},
-	gamedata_loaded{false} {
+	gamedata_loaded{false},
+	engine{engine} {
 
 	engine->register_draw_action(this);
 	engine->register_input_action(this);
