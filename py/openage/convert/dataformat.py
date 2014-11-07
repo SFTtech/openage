@@ -1430,7 +1430,7 @@ class EnumMember(RefMember):
 
         enum_parser.extend([
             "else {",
-            "\tthrow openage::util::Error(\"unknown enum value '%%s' encountered. valid are: %s\", buf[%d]);" % (",".join(self.values), idx),
+            "\tthrow openage::util::Error(\"unknown enum value '%%s' encountered. valid are: %s\\n---\\nIf this is an inconsistency due to updates in the media converter, `make media` should fix it\\n---\", buf[%d]);" % (",".join(self.values), idx),
             "}",
         ])
 
