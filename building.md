@@ -114,7 +114,7 @@ You can install both compilers, however only one of them will be used.
    openage executable
  - `make media AGE2DIR="$HOME/.wine/drive_c/age2"` will convert all media
    files from the given age2 install folder, storing them in
-   `./userassets`
+   `./assets/converted`
  - `make run` or `./openage` will run the game. try
    `./openage --help`
  - `make test` will run the unit tests
