@@ -66,7 +66,7 @@ Arguments parse_args(int argc, char **argv) {
 			{0,                                0, 0,  0 }
 		};
 
-		int c = getopt_long(ret.argc, ret.argv, "ht:", long_options, &option_index);
+		int c = getopt_long(ret.argc, ret.argv, "htd:", long_options, &option_index);
 
 		if (c == -1) {
 			break;
