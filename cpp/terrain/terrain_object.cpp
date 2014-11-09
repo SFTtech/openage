@@ -187,18 +187,9 @@ bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
 
 void TerrainObject::set_position(coord::tile pos) {
 
-	this->start_pos     = pos;
-
-	this->end_pos     = this->start_pos;
-	this->end_pos.ne += this->size.ne;
-	this->end_pos.se += this->size.se;
-
-	coord::tile drawpos_tile = this->start_pos;
-
-	drawpos_tile.ne += this->size.ne / 2;
-	drawpos_tile.se += this->size.se / 2;
-
-	this->draw_pos = drawpos_tile.to_phys2().to_phys3();
+	this->start_pos = pos;
+	this->end_pos   = this->start_pos + this->size;
+	this->draw_pos  = (this->start_pos.to_phys2() + this->size.to_phys2() / 2).to_phys3();
 
 }
 
