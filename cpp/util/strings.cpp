@@ -12,6 +12,21 @@
 namespace openage {
 namespace util {
 
+std::string sformat(const char *fmt, ...) {
+	va_list ap;
+	va_start(ap, fmt);
+
+	char *buf = vformat(fmt, ap);
+
+	va_end(ap);
+
+	std::string result = buf;
+
+	delete[] buf;
+
+	return result;
+}
+
 char *format(const char *fmt, ...) {
 	va_list ap;
 	va_start(ap, fmt);
@@ -172,6 +187,49 @@ size_t string_tokenize_dynamic(char *str, char delim, char ***result) {
 	(*result)[resultvector.size()] = nullptr;
 
 	return resultvector.size();
+}
+
+bool string_matches_pattern(const char *str, const char *pattern) {
+	while (true) {
+		if (*pattern == '*') {
+			// skip all wildcard chars
+			while (*pattern == '*') {
+				pattern++;
+			}
+
+			// performance optimization: if the wildcard was the
+			// last char of the pattern, it's a sure match.
+			if (*pattern == '\0') {
+				return true;
+			}
+
+			// search for all places in str that equal *pattern;
+			// those are possible places of continuation.
+			while (*str != '\0') {
+				if (*str == *pattern) {
+					if (string_matches_pattern(str, pattern)) {
+						return true;
+					}
+				}
+			}
+
+			// no match was found
+			return false;
+		}
+
+		if (*str != *pattern) {
+			// chars don't match
+			return false;
+		}
+
+		if (*pattern == '\0') {
+			// comparision done
+			return true;
+		}
+
+		str += 1;
+		pattern += 1;
+	}
 }
 
 } //namespace util

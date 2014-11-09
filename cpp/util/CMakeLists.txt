@@ -1,4 +1,5 @@
 add_sources(${PROJECT_NAME}
+	misc.cpp
 	color.cpp
 	dir.cpp
 	error.cpp
@@ -6,8 +7,8 @@ add_sources(${PROJECT_NAME}
 	file.cpp
 	fds.cpp
 	fps.cpp
-	misc.cpp
 	opengl.cpp
+	sstreamcache.cpp
 	strings.cpp
 	timer.cpp
 	unicode.cpp

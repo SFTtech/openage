@@ -3,13 +3,41 @@
 #ifndef OPENAGE_UTIL_STRINGS_H_
 #define OPENAGE_UTIL_STRINGS_H_
 
+// TODO remove some of those
 #include <cstdarg>
 #include <cstdlib>
 #include <functional>
 #include <string>
+#include <memory>
+
+#include "sstreamcache.h"
 
 namespace openage {
 namespace util {
+
+/**
+ * stringstream-style to-std::string formatter class for general usage
+ */
+class Formatter : public OSStreamPtr {
+public:
+	template<typename T>
+	Formatter &operator <<(const T &t) {
+		this->stream_ptr->stream << t;
+		return *this;
+	}
+
+	template<typename T>
+	Formatter &operator <<(T &(*t)(T &)) {
+		this->stream_ptr->stream << t;
+		return *this;
+	}
+};
+
+
+/**
+ * formats fmt to a std::string
+ */
+std::string sformat(const char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
 
 /**
  * formats fmt to a newly allocated memory area
@@ -73,7 +101,14 @@ size_t string_tokenize_dynamic(char *str, char delim, char ***result);
  */
 void string_tokenize_base(char *str, char delim, std::function<void(char *)> callback);
 
-} //namespace util
-} //namespace openage
+/**
+ * returns true if str matches the basic globbing pattern
+ * in the pattern, '*' matches any number of characters, while all other
+ * characters are interpreted as literal.
+ */
+bool string_matches_pattern(const char *str, const char *pattern);
+
+} // namespace util
+} // namespace openage
 
 #endif

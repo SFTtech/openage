@@ -25,6 +25,8 @@ add_sources(${PROJECT_NAME}
 	config.cpp
 )
 
+add_test_cpp(openage::logging::test::test "tests the logging")
+
 
 # add subsystem folders
 add_subdirectory("audio")
@@ -32,6 +34,7 @@ add_subdirectory("console")
 add_subdirectory("coord")
 add_subdirectory("crossplatform")
 add_subdirectory("datastructure")
+add_subdirectory("logging")
 add_subdirectory("job")
 add_subdirectory("pathfinding")
 add_subdirectory("shader")
