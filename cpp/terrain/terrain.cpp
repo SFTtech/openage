@@ -4,6 +4,7 @@
 
 #include <unordered_map>
 #include <set>
+#include <cinttypes>
 
 #include "terrain_chunk.h"
 #include "../engine.h"
@@ -53,7 +54,9 @@ Terrain::Terrain(AssetManager &assetmanager,
 	this->influences_buf           = new struct influence[this->terrain_id_count];
 
 
-	log::dbg("terrain prefs: %lu tiletypes, %lu blendmodes", this->terrain_id_count, this->blendmode_count);
+	log::dbg("terrain prefs: %" PRIuPTR " tiletypes, %" PRIuPTR " blendmodes",
+	         static_cast<uintptr_t>(this->terrain_id_count),
+		 static_cast<uintptr_t>(this->blendmode_count));
 
 	// create tile textures (snow, ice, grass, whatever)
 	for (size_t i = 0; i < this->terrain_id_count; i++) {
@@ -197,7 +200,7 @@ bool Terrain::validate_terrain(terrain_t terrain_id) {
 
 bool Terrain::validate_mask(ssize_t mask_id) {
 	if (mask_id >= (ssize_t)this->blendmode_count) {
-		throw util::Error("requested mask_id is out of range: %lu", mask_id);
+		throw util::Error("requested mask_id is out of range: %" PRIiPTR, static_cast<intptr_t>(mask_id));
 	}
 	else {
 		return true;

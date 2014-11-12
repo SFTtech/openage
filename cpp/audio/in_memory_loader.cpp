@@ -2,6 +2,8 @@
 
 #include "in_memory_loader.h"
 
+#include <cinttypes>
+
 #include <opusfile.h>
 
 #include "../log.h"
@@ -53,7 +55,7 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	// determine number of channels and number of pcm samples
 	auto op_channels = op_channel_count(op_file.get(), -1);
 	auto pcm_length = op_pcm_total(op_file.get(), -1);
-	log::dbg("Opus channels=%d, pcm_length=%lu", op_channels, pcm_length);
+	log::dbg("Opus channels=%d, pcm_length=%" PRIuPTR, op_channels, static_cast<uintptr_t>(pcm_length));
 
 	// calculate pcm buffer size depending on the number of channels
 	// if the opus file only had one channel, the pcm buffer size must be
