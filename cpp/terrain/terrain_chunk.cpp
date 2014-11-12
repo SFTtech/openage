@@ -3,7 +3,7 @@
 #include "terrain_chunk.h"
 
 #include <cmath>
-#include <inttypes.h>
+#include <cinttypes>
 
 #include "terrain_object.h"
 #include "../engine.h"
@@ -33,9 +33,9 @@ TerrainChunk::TerrainChunk()
 		this->neighbors.neighbor[i] = nullptr;
 	}
 
-	log::dbg("created terrain chunk: %lu size, %lu tiles",
-	         chunk_size,
-	         this->tile_count);
+	log::dbg("created terrain chunk: %" PRIuPTR " size, %" PRIuPTR " tiles",
+	         static_cast<uintptr_t>(chunk_size),
+	         static_cast<uintptr_t>(this->tile_count));
 }
 
 TerrainChunk::~TerrainChunk() {

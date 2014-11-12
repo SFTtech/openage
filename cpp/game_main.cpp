@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <cinttypes>
 
 #include "args.h"
 #include "audio/sound.h"
@@ -169,7 +170,7 @@ GameMain::GameMain(Engine *engine)
 			(int)(building.radius_size1 * 2),
 		};
 
-		log::msg("   building has foundation size %.2f x %.2f = %ldx%ld",
+		log::msg("   building has foundation size %.2f x %.2f = %" PRIi64 "x%" PRIi64,
 		         building.radius_size0,
 		         building.radius_size1,
 		         foundation_size.ne,
@@ -388,7 +389,7 @@ bool GameMain::on_input(SDL_Event *e) {
 			         ((float) mousepos_phys3.ne) / phys_per_tile,
 			         ((float) mousepos_phys3.se) / phys_per_tile,
 			         ((float) mousepos_phys3.up) / phys_per_tile);
-			log::dbg("LMB [tile]:      NE %8ld SE %8ld",
+			log::dbg("LMB [tile]:      NE %8" PRIi64 " SE %8" PRIi64,
 			         mousepos_tile.ne,
 			         mousepos_tile.se);
 

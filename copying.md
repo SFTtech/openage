@@ -35,6 +35,7 @@ _the openage authors_ are:
 | Michael Sebastiyan          | BugExplorer                 | sebastiyan.michael@outlook.com   |
 | Adam Miartus                | miartad                     | adam.miartus@gmail.com           |
 | Benoît Legat                | blegat                      | benoit.legat@gmail.com           |
+| James Hagborg               | blucoat                     | jameshagborg@gmail.com           |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

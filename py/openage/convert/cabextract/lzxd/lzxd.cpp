@@ -29,6 +29,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <cinttypes>
 
 #include "util.h"
 
@@ -956,7 +957,7 @@ void LZXDStream::decompress(off_t out_bytes) {
 
 		// check that we've used all of the previous frame first
 		if (this->o_ptr != this->o_end) {
-			throwerr("%ld avail bytes, new %d frame", this->o_end - this->o_ptr, frame_size);
+			throwerr("%" PRIiPTR " avail bytes, new %d frame", this->o_end - this->o_ptr, frame_size);
 		}
 
 		// does this intel block _really_ need decoding?
