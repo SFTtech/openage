@@ -100,6 +100,7 @@ void TerrainObject::set_ground(int id, int additional) {
 
 			size_t tile_pos = chunk->tile_position_neigh(temp_pos);
 			chunk->get_data(tile_pos)->terrain_id = id;
+            terrain->remove_cache_pos(temp_pos);
 			temp_pos.se++;
 		}
 		temp_pos.se = this->pos.start.se - additional;
@@ -203,7 +204,6 @@ tile_range SquareObject::get_range(const coord::phys3 &pos) const {
 
 	// TODO temporary hacky solution until openage::coord has been properly fixed.
 	coord::phys2 draw_pos = result.start.to_phys2();
-
 	draw_pos.ne += ((this->size.ne - 1) * coord::settings::phys_per_tile) / 2;
 	draw_pos.se += ((this->size.se - 1) * coord::settings::phys_per_tile) / 2;
 
