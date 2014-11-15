@@ -26,6 +26,9 @@ If it doesn't, consider reporting the issue/asking for help in #sfttech on freen
 project(openage C CXX)
 
 # options: keep up to date with the table in ./configure!
+option(WITH_INOTIFY
+	"Enable inotify for automatic asset modification detection and reloading"
+	true)
 option(WITH_GPERFTOOLS_PROFILER
 	"Link with GooglePerfTools profiler library; enables integrated CPU profiler. Without run-time cost if unused."
 	true)

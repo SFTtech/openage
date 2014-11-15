@@ -110,12 +110,14 @@ endif()
 log_config_option(gperftools-tcmalloc ${HAS_GPERFTOOLS_TCMALLOC})
 
 #inotify support
-find_path(INOTIFY_INCLUDE_DIR sys/inotify.h  HINTS /usr/include/${CMAKE_LIBRARY_ARCHITECTURE})
-find_package_handle_standard_args(INOTIFY DEFAULT_MSG INOTIFY_INCLUDE_DIR)
-if(INOTIFY_FOUND)
-	set(HAS_INOTIFY true)
-else()
-	set(HAS_INOTIFY false)
+set(HAS_INOTIFY false)
+
+if(WITH_INOTIFY)
+	find_path(INOTIFY_INCLUDE_DIR sys/inotify.h  HINTS /usr/include/${CMAKE_LIBRARY_ARCHITECTURE})
+	find_package_handle_standard_args(INOTIFY DEFAULT_MSG INOTIFY_INCLUDE_DIR)
+	if(INOTIFY_FOUND)
+		set(HAS_INOTIFY true)
+	endif()
 endif()
 
 log_config_option(inotify ${HAS_INOTIFY})

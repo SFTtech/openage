@@ -91,6 +91,7 @@ except:
 defines = {}
 
 options = {
+    "inotify": True,
     "gperftools-tcmalloc": False,
     "gperftools-profiler": True,
 }
