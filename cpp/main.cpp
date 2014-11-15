@@ -34,7 +34,10 @@ int main(int argc, char **argv) {
 		}
 
 		if (args.version) {
-			printf("openage %s\n", config::version);
+			printf("openage %s\n%s\n",
+			       config::version,
+			       config::config_option_string);
+
 			return 0;
 		}
 
