@@ -26,7 +26,7 @@ $(BUILDDIR):
 
 .PHONY: openage
 openage: $(BUILDDIR)
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR)
+	@$(MAKE) $(MAKEARGS) -C $(BUILDDIR)
 
 .PHONY: install
 install: $(BUILDDIR)
