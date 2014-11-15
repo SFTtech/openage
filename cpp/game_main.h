@@ -16,6 +16,7 @@
 #include "terrain/terrain.h"
 #include "terrain/terrain_object.h"
 #include "gamedata/graphic.gen.h"
+#include "util/externalprofiler.h"
 
 
 namespace openage {
@@ -106,6 +107,8 @@ public:
 	Texture *gaben;
 
 	AssetManager assetmanager;
+
+	util::ExternalProfiler external_profiler;
 };
 
 } //namespace openage

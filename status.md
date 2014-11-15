@@ -28,3 +28,4 @@ Features
   * very inefficient proof of concept rendering
 * sound playback (when placing and removing buildings)
 * automatic asset reloading by `inotify`
+* integrated profiler: F12 to start/stop + show results
