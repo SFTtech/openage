@@ -11,10 +11,13 @@ namespace {
 
 constexpr const char *global_asset_dir = "${INSTALLED_GLOBAL_ASSET_DIR}";
 constexpr const char *version = "${PROJECT_VERSION}";
+constexpr const char *config_option_string = "${CONFIG_OPTION_STRING}";
 
 }
 
 #define HAS_INOTIFY ${HAS_INOTIFY}
+#define HAS_GPERFTOOLS_PROFILER ${HAS_GPERFTOOLS_PROFILER}
+#define HAS_GPERFTOOLS_TCMALLOC ${HAS_GPERFTOOLS_TCMALLOC}
 
 } // namespace config
 } // namespace openage

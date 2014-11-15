@@ -62,6 +62,10 @@ ap.add_argument("--c-compiler",
 ap.add_argument("--cpp-compiler",
                 default=getenv("CXX"),
                 help="c++ compiler executable")
+ap.add_argument("--with", action='append', dest='with_', metavar='OPTION',
+                help="enable optional functionality")
+ap.add_argument("--without", action='append', metavar='OPTION',
+                help="disable optional functionality")
 ap.add_argument("--flags", "-f",
                 default=getenv("CXXFLAGS", "CCFLAGS", "CFLAGS"),
                 help="compiler flags")
@@ -85,6 +89,27 @@ except:
     print("")
 
 defines = {}
+
+options = {
+    "gperftools-tcmalloc": False,
+    "gperftools-profiler": True,
+}
+
+
+def sanitize_option_name(option):
+    if option not in options:
+        ap.error("unknown option: '{}'".format(option))
+
+if args.with_:
+    for x in args.with_:
+        sanitize_option_name(x)
+        options[x] = True
+
+if args.without:
+    for x in args.without:
+        sanitize_option_name(x)
+        options[x] = False
+
 
 # args.mode
 mode = args.mode
@@ -289,6 +314,15 @@ for k, v in sorted(defines.items()):
             continue
 
     invocation.append('-DCMAKE_%s=%s' % (k.upper(), shlex.quote(v)))
+
+print("\ncmake options:\n")
+
+maxkeylen = max(len(k) for k in options)
+for k, v in sorted(options.items()):
+    print('%s | %s' % (k.rjust(maxkeylen), v))
+
+    invocation.append('-DWITH_%s=%s' % (k.upper().replace('-', '_'), v))
+
 
 for raw_cmake_arg in args.raw_cmake_args:
     invocation.append(raw_cmake_arg)

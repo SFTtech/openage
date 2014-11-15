@@ -25,6 +25,14 @@ If it doesn't, consider reporting the issue/asking for help in #sfttech on freen
 
 project(openage C CXX)
 
+# options: keep up to date with the table in ./configure!
+option(WITH_GPERFTOOLS_PROFILER
+	"Link with GooglePerfTools profiler library; enables integrated CPU profiler. Without run-time cost if unused."
+	true)
+option(WITH_GPERFTOOLS_TCMALLOC
+	"Use GooglePerfTools tcmalloc; enables integrated heap profiler and validator, but external heap validators will require extra work."
+	false)
+
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
 set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}/modules/")
 
@@ -57,6 +65,8 @@ add_subdirectory(py/)
 
 # process the included python sources, generate setup.py
 process_python_modules()
+
+print_config_options()
 
 # show build configuration overview
 message("${PROJECT_NAME} ${PROJECT_VERSION}

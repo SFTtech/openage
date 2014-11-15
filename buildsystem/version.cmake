@@ -21,4 +21,57 @@ function(init_version)
 	set(PROJECT_VERSION "${version}" PARENT_SCOPE)
 endfunction()
 
+function(log_config_option NAME VALUE)
+	if(VALUE)
+		set_property(GLOBAL APPEND PROPERTY SFT_CONFIG_OPTIONS_ENABLED "${NAME}")
+	else()
+		set_property(GLOBAL APPEND PROPERTY SFT_CONFIG_OPTIONS_DISABLED "${NAME}")
+	endif()
+endfunction()
+
+function(print_config_options)
+	get_property(enabled_opts GLOBAL PROPERTY SFT_CONFIG_OPTIONS_ENABLED)
+	get_property(disabled_opts GLOBAL PROPERTY SFT_CONFIG_OPTIONS_DISABLED)
+
+	message("enabled options:")
+	if(enabled_opts)
+		foreach(opt ${enabled_opts})
+			message("\t${opt}")
+		endforeach()
+	else()
+		message("\t<none>")
+	endif()
+
+	message("")
+
+	message("disabled options:")
+	if(disabled_opts)
+		foreach(opt ${disabled_opts})
+			message("\t${opt}")
+		endforeach()
+	else()
+		message("\t<none>")
+	endif()
+
+	message("")
+
+endfunction()
+
+function(get_config_option_string)
+	get_property(enabled_opts GLOBAL PROPERTY SFT_CONFIG_OPTIONS_ENABLED)
+
+	if(enabled_opts)
+		LIST(GET enabled_opts 0 CONFIG_OPTION_STRING)
+		LIST(REMOVE_AT enabled_opts 0)
+
+		foreach(opt ${enabled_opts})
+			set(CONFIG_OPTION_STRING "${CONFIG_OPTION_STRING}, ${opt}")
+		endforeach()
+	else()
+		set(CONFIG_OPTION_STRING "< no options enabled >")
+	endif()
+
+	set(CONFIG_OPTION_STRING "${CONFIG_OPTION_STRING}" PARENT_SCOPE)
+endfunction()
+
 init_version()

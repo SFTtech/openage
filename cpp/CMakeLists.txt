@@ -34,6 +34,7 @@ add_subdirectory("job")
 add_subdirectory("pathfinding")
 add_subdirectory("shader")
 add_subdirectory("util")
+add_subdirectory("crossplatform")
 add_subdirectory("datastructure")
 add_subdirectory("terrain")
 add_subdirectory("testing")
@@ -75,6 +76,39 @@ find_package(SDL2 REQUIRED)
 find_package(FTGL REQUIRED)
 find_package(SDL2Image REQUIRED)
 
+if(WITH_GPERFTOOLS_PROFILER OR WITH_GPERFTOOLS_TCMALLOC)
+	find_package(GPerfTools)
+	if(GPERFTOOLS_FOUND)
+		include_directories(${GPERFTOOLS_INCLUDE_DIR})
+	endif()
+endif()
+
+set(HAS_GPERFTOOLS_PROFILER false)
+
+if(WITH_GPERFTOOLS_PROFILER)
+	if(GPERFTOOLS_FOUND)
+		set(HAS_GPERFTOOLS_PROFILER true)
+		target_link_libraries(${PROJECT_NAME} ${GPERFTOOLS_PROFILER})
+	else()
+		message("gperftools not found; integrated profiler disabled")
+	endif()
+endif()
+
+log_config_option(gperftools-profiler ${HAS_GPERFTOOLS_PROFILER})
+
+set(HAS_GPERFTOOLS_TCMALLOC false)
+
+if(WITH_GPERFTOOLS_TCMALLOC)
+	if(GPERFTOOLS_FOUND)
+		set(HAS_GPERFTOOLS_TCMALLOC true)
+		target_link_libraries(${PROJECT_NAME} ${GPERFTOOLS_TCMALLOC})
+	else()
+		message("gperftools not found; tcmalloc disabled")
+	endif()
+endif()
+
+log_config_option(gperftools-tcmalloc ${HAS_GPERFTOOLS_TCMALLOC})
+
 #inotify support
 find_path(INOTIFY_INCLUDE_DIR sys/inotify.h  HINTS /usr/include/${CMAKE_LIBRARY_ARCHITECTURE})
 find_package_handle_standard_args(INOTIFY DEFAULT_MSG INOTIFY_INCLUDE_DIR)
@@ -83,6 +117,10 @@ if(INOTIFY_FOUND)
 else()
 	set(HAS_INOTIFY false)
 endif()
+
+log_config_option(inotify ${HAS_INOTIFY})
+
+get_config_option_string()
 
 configure_file(config.h.in ${CMAKE_SOURCE_DIR}/cpp/config.h)
 
