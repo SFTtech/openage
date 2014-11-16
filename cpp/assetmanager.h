@@ -64,7 +64,7 @@ private:
 	 */
 	std::unordered_map<std::string, Texture *> textures;
 
-#if HAS_INOTIFY
+#if WITH_INOTIFY
 	/**
 	 * The file descriptor pointing to the inotify instance.
 	 */

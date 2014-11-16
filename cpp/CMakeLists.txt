@@ -23,6 +23,8 @@ add_sources(${PROJECT_NAME}
 	python.cpp
 	screenshot.cpp
 	texture.cpp
+
+	config.cpp
 )
 
 
@@ -76,55 +78,42 @@ find_package(SDL2 REQUIRED)
 find_package(FTGL REQUIRED)
 find_package(SDL2Image REQUIRED)
 
-if(WITH_GPERFTOOLS_PROFILER OR WITH_GPERFTOOLS_TCMALLOC)
+if(WANT_GPERFTOOLS_PROFILER OR WANT_GPERFTOOLS_TCMALLOC)
 	find_package(GPerfTools)
-	if(GPERFTOOLS_FOUND)
-		include_directories(${GPERFTOOLS_INCLUDE_DIR})
-	endif()
 endif()
 
-set(HAS_GPERFTOOLS_PROFILER false)
-
-if(WITH_GPERFTOOLS_PROFILER)
-	if(GPERFTOOLS_FOUND)
-		set(HAS_GPERFTOOLS_PROFILER true)
-		target_link_libraries(${PROJECT_NAME} ${GPERFTOOLS_PROFILER})
-	else()
-		message("gperftools not found; integrated profiler disabled")
-	endif()
+if(WANT_GPERFTOOLS_PROFILER AND GPERFTOOLS_FOUND)
+	have_config_option(gperftools-profiler GPERFTOOLS_PROFILER true)
+	include_directories(${GPERFTOOLS_INCLUDE_DIR})
+	target_link_libraries(${PROJECT_NAME} ${GPERFTOOLS_PROFILER})
+else()
+	have_config_option(gperftools-profiler GPERFTOOLS_PROFILER false)
 endif()
 
-log_config_option(gperftools-profiler ${HAS_GPERFTOOLS_PROFILER})
-
-set(HAS_GPERFTOOLS_TCMALLOC false)
-
-if(WITH_GPERFTOOLS_TCMALLOC)
-	if(GPERFTOOLS_FOUND)
-		set(HAS_GPERFTOOLS_TCMALLOC true)
-		target_link_libraries(${PROJECT_NAME} ${GPERFTOOLS_TCMALLOC})
-	else()
-		message("gperftools not found; tcmalloc disabled")
-	endif()
+if(WITH_GPERFTOOLS_TCMALLOC AND GPERFTOOLS_FOUND)
+	have_config_option(gperftools-tcmalloc GPERFTOOLS_TCMALLOC true)
+	include_directories(${GPERFTOOLS_INCLUDE_DIR})
+	target_link_libraries(${PROJECT_NAME} ${GPERFTOOLS_TCMALLOC})
+else()
+	have_config_option(gperftools-tcmalloc GPERFTOOLS_TCMALLOC false)
 endif()
-
-log_config_option(gperftools-tcmalloc ${HAS_GPERFTOOLS_TCMALLOC})
 
 #inotify support
-set(HAS_INOTIFY false)
-
-if(WITH_INOTIFY)
-	find_path(INOTIFY_INCLUDE_DIR sys/inotify.h  HINTS /usr/include/${CMAKE_LIBRARY_ARCHITECTURE})
-	find_package_handle_standard_args(INOTIFY DEFAULT_MSG INOTIFY_INCLUDE_DIR)
-	if(INOTIFY_FOUND)
-		set(HAS_INOTIFY true)
-	endif()
+if(WANT_INOTIFY)
+	find_package(Inotify)
 endif()
 
-log_config_option(inotify ${HAS_INOTIFY})
+if(WANT_INOTIFY AND INOTIFY_FOUND)
+	have_config_option(inotify INOTIFY true)
+	include_directories(${INOTIFY_INCLUDE_DIR})
+else()
+	have_config_option(inotify INOTIFY false)
+endif()
 
 get_config_option_string()
 
 configure_file(config.h.in ${CMAKE_SOURCE_DIR}/cpp/config.h)
+configure_file(config.cpp.in ${CMAKE_SOURCE_DIR}/cpp/config.cpp)
 
 # directories for header inclusion
 include_directories(

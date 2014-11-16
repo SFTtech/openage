@@ -91,9 +91,9 @@ except:
 defines = {}
 
 options = {
-    "inotify": True,
+    "inotify":             "if_available",
     "gperftools-tcmalloc": False,
-    "gperftools-profiler": True,
+    "gperftools-profiler": "if_available",
 }
 
 
@@ -316,13 +316,13 @@ for k, v in sorted(defines.items()):
 
     invocation.append('-DCMAKE_%s=%s' % (k.upper(), shlex.quote(v)))
 
-print("\ncmake options:\n")
+print("\nconfig options:\n")
 
 maxkeylen = max(len(k) for k in options)
 for k, v in sorted(options.items()):
     print('%s | %s' % (k.rjust(maxkeylen), v))
 
-    invocation.append('-DWITH_%s=%s' % (k.upper().replace('-', '_'), v))
+    invocation.append('-DWANT_%s=%s' % (k.upper().replace('-', '_'), v))
 
 
 for raw_cmake_arg in args.raw_cmake_args:

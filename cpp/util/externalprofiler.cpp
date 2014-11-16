@@ -6,7 +6,7 @@
 
 #include "../config.h"
 
-#if HAS_GPERFTOOLS_PROFILER
+#if WITH_GPERFTOOLS_PROFILER
 #include <gperftools/profiler.h>
 #endif
 
@@ -20,7 +20,7 @@ namespace util {
 ExternalProfiler::ExternalProfiler()
 	:
 	currently_profiling{false},
-	can_profile{HAS_GPERFTOOLS_PROFILER} {}
+	can_profile{WITH_GPERFTOOLS_PROFILER} {}
 
 const char *const ExternalProfiler::profiling_filename = "/tmp/openage-gperftools-cpuprofile";
 const char *const ExternalProfiler::profiling_pdf_filename = "/tmp/openage-gperftools-cpuprofile.pdf";
@@ -39,7 +39,7 @@ void ExternalProfiler::start() {
 	log::msg("starting profiler; writing data to %s", this->profiling_filename);
 
 	this->currently_profiling = true;
-	#if HAS_GPERFTOOLS_PROFILER
+	#if WITH_GPERFTOOLS_PROFILER
 	ProfilerStart(this->profiling_filename);
 	#endif
 }
@@ -56,7 +56,7 @@ void ExternalProfiler::stop() {
 	}
 
 	this->currently_profiling = false;
-	#if HAS_GPERFTOOLS_PROFILER
+	#if WITH_GPERFTOOLS_PROFILER
 	ProfilerStop();
 	#endif
 
@@ -73,7 +73,7 @@ void ExternalProfiler::show_results() {
 		log::warn("profiler is currently running; trying to show results anyway");
 	}
 
-	#if HAS_GPERFTOOLS_PROFILER
+	#if WITH_GPERFTOOLS_PROFILER
 	std::string pprof_path = subprocess::which("google-pprof");
 	// fallback
 	if (pprof_path.size() == 0) {

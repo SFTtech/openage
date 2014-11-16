@@ -21,11 +21,27 @@ function(init_version)
 	set(PROJECT_VERSION "${version}" PARENT_SCOPE)
 endfunction()
 
-function(log_config_option NAME VALUE)
-	if(VALUE)
+# logs whether the option NAME is enabled
+# sets WITH_${VARNAME} to HAVE
+# errors if WANT_${VARNAME} conflicts with HAVE
+function(have_config_option NAME VARNAME HAVE)
+	set(WANT "${WANT_${VARNAME}}")
+	set(WITH_${VARNAME} "${HAVE}" PARENT_SCOPE)
+
+	if(HAVE)
 		set_property(GLOBAL APPEND PROPERTY SFT_CONFIG_OPTIONS_ENABLED "${NAME}")
+
+		if(NOT WANT)
+			message(FATAL_ERROR "${NAME}: WANT_${VARNAME}=${WANT}, but WITH_${VARNAME}=${HAVE}")
+		endif()
 	else()
 		set_property(GLOBAL APPEND PROPERTY SFT_CONFIG_OPTIONS_DISABLED "${NAME}")
+
+		if(WANT STREQUAL "if_available")
+			message("unavailable: ${NAME}")
+		elseif(WANT)
+			message(FATAL_ERROR "${NAME}: WANT_${VARNAME}=${WANT}, but WITH_${VARNAME}=${HAVE}")
+		endif()
 	endif()
 endfunction()
 

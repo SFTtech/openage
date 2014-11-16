@@ -523,7 +523,6 @@ bool GameMain::on_input(SDL_Event *e) {
 			this->terrain->blending_enabled = !terrain->blending_enabled;
 			break;
 
-		#ifdef HAS_GPERFTOOLS_PROFILER
 		case SDLK_F12:
 			if (this->external_profiler.currently_profiling) {
 				this->external_profiler.stop();
@@ -533,7 +532,6 @@ bool GameMain::on_input(SDL_Event *e) {
 			}
 
 			break;
-		#endif
 
 		case SDLK_LCTRL:
 			this->ctrl_active = false;
