@@ -22,6 +22,7 @@
 #include "terrain/terrain.h"
 #include "util/strings.h"
 #include "util/timer.h"
+#include "util/externalprofiler.h"
 
 namespace openage {
 
@@ -520,6 +521,16 @@ bool GameMain::on_input(SDL_Event *e) {
 
 		case SDLK_SPACE:
 			this->terrain->blending_enabled = !terrain->blending_enabled;
+			break;
+
+		case SDLK_F12:
+			if (this->external_profiler.currently_profiling) {
+				this->external_profiler.stop();
+				this->external_profiler.show_results();
+			} else {
+				this->external_profiler.start();
+			}
+
 			break;
 
 		case SDLK_LCTRL:

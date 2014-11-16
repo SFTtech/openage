@@ -2,6 +2,7 @@ add_sources(${PROJECT_NAME}
 	color.cpp
 	dir.cpp
 	error.cpp
+	externalprofiler.cpp
 	file.cpp
 	fds.cpp
 	fps.cpp

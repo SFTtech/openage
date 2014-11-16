@@ -3,6 +3,7 @@
 #ifndef OPENAGE_ENGINE_H_
 #define OPENAGE_ENGINE_H_
 
+#include <memory>
 #include <vector>
 
 #include <SDL2/SDL.h>
@@ -292,7 +293,10 @@ private:
 	 * the text font to be used for (can you believe it?) texts.
 	 * dejavu serif, book, 20pts
 	 */
-	Font *dejavuserif20;
+	std::unique_ptr<Font> dejavuserif20;
+
+	/** smaller font, used for... you guessed it. smaller texts. */
+	std::unique_ptr<Font> dejavuserif12;
 
 	/**
 	 * SDL window where everything is displayed within.

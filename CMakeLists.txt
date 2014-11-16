@@ -25,6 +25,19 @@ If it doesn't, consider reporting the issue/asking for help in #sfttech on freen
 
 project(openage C CXX)
 
+# options: keep up to date with those in ./configure!
+if(NOT DEFINED WANT_INOTIFY)
+	set(WANT_INOTIFY if_available)
+endif()
+
+if(NOT DEFINED WANT_GPERFTOOLS_PROFILER)
+	set(WANT_GPERFTOOLS_PROFILER if_available)
+endif()
+
+if(NOT DEFINED WANT_GPERFTOOLS_TCMALLOC)
+	set(WANT_GPERFTOOLS_TCMALLOC false)
+endif()
+
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
 set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}/modules/")
 
@@ -57,6 +70,8 @@ add_subdirectory(py/)
 
 # process the included python sources, generate setup.py
 process_python_modules()
+
+print_config_options()
 
 # show build configuration overview
 message("${PROJECT_NAME} ${PROJECT_VERSION}
