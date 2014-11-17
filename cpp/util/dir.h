@@ -21,7 +21,7 @@ public:
 	~Dir();
 
 	std::string join(const std::string &fname) const;
-	Dir append(const std::string &suffix);
+	Dir append(const std::string &suffix) const;
 
 	std::string basedir;
 };

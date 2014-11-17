@@ -79,7 +79,7 @@ AudioManager::~AudioManager() {
 	SDL_CloseAudioDevice(device_id);
 }
 
-void AudioManager::load_resources(util::Dir &asset_dir,
+void AudioManager::load_resources(const util::Dir &asset_dir,
                                   const std::vector<gamedata::sound_file> &sound_files) {
 	for (auto &sound_file : sound_files) {
 		auto category = from_category(sound_file.category);

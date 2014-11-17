@@ -28,12 +28,15 @@ class InputHandler;
 class ResizeHandler;
 class CoreInputHandler;
 
+class GameMain;
+
 /**
  * main engine container.
  *
  * central foundation for everything the openage engine is capable of.
  */
 class Engine : public ResizeHandler {
+	friend class GameMain;
 private:
 	/**
 	 * global engine singleton instance.
