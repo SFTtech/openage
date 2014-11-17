@@ -7,6 +7,7 @@
 #include <string.h>
 #include <string>
 #include <vector>
+#include <cinttypes>
 
 #include "error.h"
 #include "dir.h"
@@ -57,8 +58,9 @@ std::vector<lineformat> read_csv_file(std::string fname) {
 			//use the line copy to fill the current line struct.
 			int error_column = current_line_data.fill(line_rw);
 			if (error_column != -1) {
-				throw Error("failed reading csv file %s in line %lu column %d: error parsing '%s'",
-				            fname.c_str(), line_count, error_column, line.c_str());
+				throw Error("failed reading csv file %s in line %" PRIuPTR " column %d: error parsing '%s'",
+				            fname.c_str(), static_cast<uintptr_t>(line_count), error_column,
+				            line.c_str());
 			}
 
 			delete[] line_rw;
@@ -90,8 +92,8 @@ std::vector<lineformat> recurse_data_files(Dir basedir, std::string fname) {
 		for (auto &entry : result) {
 			line_count += 1;
 			if (not entry.recurse(new_basedir)) {
-				throw Error("failed reading follow up files for %s in line %lu",
-				            merged_filename.c_str(), line_count);
+				throw Error("failed reading follow up files for %s in line %" PRIuPTR,
+				            merged_filename.c_str(), static_cast<uintptr_t>(line_count));
 			}
 		}
 	}

@@ -19,7 +19,7 @@ struct hash<::openage::audio::category_t> {
 template<>
 struct hash<std::tuple<::openage::audio::category_t,int>> {
 	size_t operator()(const std::tuple<::openage::audio::category_t,int> &t) const {
-		return static_cast<size_t>(std::get<0>(t))<<32 | std::get<1>(t);
+		return static_cast<size_t>(std::get<0>(t)) << (sizeof(size_t) * 8 - 2) | std::get<1>(t);
 	}
 };
 

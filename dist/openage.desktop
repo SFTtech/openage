@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=openage
+Comment=Free engine clone of Age of Empires II
+Exec=openage --data=assets %u
+Path=.openage
+Terminal=true
+Type=Application
+Icon=openage
+Categories=Game;StrategyGame;

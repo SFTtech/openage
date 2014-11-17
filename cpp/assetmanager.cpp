@@ -2,7 +2,7 @@
 
 #include "assetmanager.h"
 
-#if HAS_INOTIFY
+#if WITH_INOTIFY
 #include <sys/inotify.h>
 #include <unistd.h>
 #include <limits.h> /* for NAME_MAX */
@@ -18,7 +18,7 @@ AssetManager::AssetManager(util::Dir *root)
 
 	this->missing_tex = new Texture{root->join("missing.png"), false};
 
-#if HAS_INOTIFY
+#if WITH_INOTIFY
 	// initialize the inotify instance
 	this->inotify_fd = inotify_init1(IN_NONBLOCK);
 	if (this->inotify_fd < 0) {
@@ -56,7 +56,7 @@ Texture *AssetManager::load_texture(const std::string &name) {
 	} else {
 		ret = new Texture{filename, true};
 
-#if HAS_INOTIFY
+#if WITH_INOTIFY
 		// create inotify update trigger for the requested file
 		int wd = inotify_add_watch(this->inotify_fd, filename.c_str(), IN_CLOSE_WRITE);
 		if (wd < 0) {
@@ -83,7 +83,7 @@ Texture *AssetManager::get_texture(const std::string &name) {
 }
 
 void AssetManager::check_updates() {
-#if HAS_INOTIFY
+#if WITH_INOTIFY
 	// buffer for at least 4 inotify events
 	char buf[4 * (sizeof(struct inotify_event) + NAME_MAX + 1)];
 	ssize_t len;

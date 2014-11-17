@@ -70,7 +70,9 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	camhud_window{0, 600},
 	tile_halfsize{48, 24},  // TODO: get from convert script
 	data_dir{data_dir},
-	audio_manager{48000, AUDIO_S16LSB, 2, 4096}
+	audio_manager{48000, AUDIO_S16LSB, 2, 4096},
+	dejavuserif20{new Font{"DejaVu Serif", "Book", 20}},
+	dejavuserif12{new Font{"DejaVu Serif", "Book", 12}}
 {
 
 	// enqueue the engine's own input handler to the
@@ -157,9 +159,6 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	// initialize debug text font
-	this->dejavuserif20 = new Font{"DejaVu Serif", "Book", 20};
-
 	// initialize job manager with cpucount-2 worker threads
 	int number_of_worker_threads = SDL_GetCPUCount() - 2;
 	if (number_of_worker_threads <= 0) {
@@ -175,7 +174,6 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 }
 
 Engine::~Engine() {
-	delete this->dejavuserif20;
 	delete this->job_manager;
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
@@ -226,8 +224,12 @@ bool Engine::draw_debug_overlay() {
 
 	// Draw version string in the lower left corner
 	this->dejavuserif20->render(
-		5, 15,
+		5, 35,
 		"openage %s", config::version
+	);
+	this->dejavuserif12->render(
+		5, 15,
+		"%s", config::config_option_string
 	);
 
 	return true;

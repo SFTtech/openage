@@ -16,6 +16,7 @@
 #include "terrain/terrain.h"
 #include "terrain/terrain_object.h"
 #include "gamedata/graphic.gen.h"
+#include "util/externalprofiler.h"
 #include "gamedata/gamedata.gen.h"
 #include "job/job.h"
 
@@ -90,10 +91,16 @@ public:
 	 */
 	std::unordered_set<openage::TerrainObject *> placed_buildings;
 
+	/**
+	 * debug function that draws a simple overlay grid
+	 */
+	void draw_debug_grid();
+
 	// currently selected terrain id
 	openage::terrain_t editor_current_terrain;
 	int editor_current_building;
 
+	bool debug_grid_active;
 	bool clicking_active;
 	bool ctrl_active;
 	bool scrolling_active;
@@ -102,6 +109,8 @@ public:
 	Texture *gaben;
 
 	AssetManager assetmanager;
+
+	util::ExternalProfiler external_profiler;
 private:
 	void on_gamedata_loaded(std::vector<gamedata::empiresdat> gamedata);
 

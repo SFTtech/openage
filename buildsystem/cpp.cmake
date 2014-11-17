@@ -5,7 +5,7 @@
 #TODO: integrate PGO (profile-guided optimization) build
 
 function(cpp_init)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -std=c++11")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -std=c++11 -D__STDC_FORMAT_MACROS")
 	if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 		# suppress useless warnings about using struct hash as friend class hash
 		# which occur with older stdlib versions, like the one used by travis

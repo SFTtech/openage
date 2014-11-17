@@ -187,27 +187,16 @@ bool TerrainObject::fits(Terrain *terrain, coord::tile pos) {
 
 void TerrainObject::set_position(coord::tile pos) {
 
-	// adjust the start position so that the mouse
-	// click happened more centered
-	this->start_pos     = pos;
-	//this->start_pos.ne -= (this->size.ne - 1) / 2;
-	//this->start_pos.se -= (this->size.se - 1) / 2;
+	this->start_pos = pos;
+	this->end_pos   = this->start_pos + this->size;
 
-	this->end_pos     = this->start_pos;
-	this->end_pos.ne += this->size.ne;
-	this->end_pos.se += this->size.se;
+	// TODO temporary hacky solution until openage::coord has been properly fixed.
+	coord::phys2 draw_pos = this->start_pos.to_phys2();
 
-	// the tile position where the graphic hotspot
-	// will be placed centered.
-	coord::tile drawpos_tile = this->start_pos;
-	coord::tile drawpos_mod2;
-	drawpos_mod2.ne = util::mod<coord::tile_t, 2>(drawpos_tile.ne);
-	drawpos_mod2.se = util::mod<coord::tile_t, 2>(drawpos_tile.se);
+	draw_pos.ne += ((this->size.ne - 1) * coord::settings::phys_per_tile) / 2;
+	draw_pos.se += ((this->size.se - 1) * coord::settings::phys_per_tile) / 2;
 
-	drawpos_tile.ne += ((this->size.ne - drawpos_mod2.ne) / 2);
-	drawpos_tile.se += ((this->size.se - drawpos_mod2.se) / 2);
-
-	this->draw_pos = drawpos_tile.to_phys2().to_phys3();
+	this->draw_pos  = draw_pos.to_phys3();
 }
 
 

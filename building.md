@@ -49,12 +49,11 @@ Dependency list:
     T     opus-tools
     C     gcc >=4.8 or clang >=3.3
 
-    T age of empires II conquerors expansion patch 1.0c
-              optionally: with userpatch/forgotten empires
-              expansion installed: with wine OR as the program
-              directory we will support more patchlevels in the
-              future.  due to fundamental technical differences,
-              age of empires II HD does _not_ work yet.
+    T     An installed version of any of the following (wine is your friend). Other versions _might_ work; setup disk support will be added soon:
+    
+     - Age of Empires II: The Conquerors Patch 1.0c
+     - Age of Empires II: Forgotten Empires
+     - Age of Empires II HD
 
 ### Prerequisite steps for Ubuntu users (Ubuntu 14.10)
 
@@ -114,7 +113,7 @@ You can install both compilers, however only one of them will be used.
    openage executable
  - `make media AGE2DIR="$HOME/.wine/drive_c/age2"` will convert all media
    files from the given age2 install folder, storing them in
-   `./userassets`
+   `./assets/converted`
  - `make run` or `./openage` will run the game. try
    `./openage --help`
  - `make test` will run the unit tests

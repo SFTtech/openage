@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <cinttypes>
 
 #include "args.h"
 #include "audio/sound.h"
@@ -20,6 +21,7 @@
 #include "terrain/terrain.h"
 #include "util/strings.h"
 #include "util/timer.h"
+#include "util/externalprofiler.h"
 
 namespace openage {
 
@@ -100,6 +102,7 @@ GameMain::GameMain(Engine *engine)
 	:
 	editor_current_terrain{0},
 	editor_current_building{0},
+	debug_grid_active{false},
 	clicking_active{true},
 	ctrl_active{false},
 	scrolling_active{false},
@@ -266,7 +269,7 @@ void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> gamedata) {
 			(int)(building.radius_size1 * 2),
 		};
 
-		log::msg("   building has foundation size %.2f x %.2f = %ldx%ld",
+		log::msg("   building has foundation size %.2f x %.2f = %" PRIi64 "x%" PRIi64,
 		         building.radius_size0,
 		         building.radius_size1,
 		         foundation_size.ne,
@@ -395,7 +398,7 @@ bool GameMain::on_input(SDL_Event *e) {
 			         ((float) mousepos_phys3.ne) / phys_per_tile,
 			         ((float) mousepos_phys3.se) / phys_per_tile,
 			         ((float) mousepos_phys3.up) / phys_per_tile);
-			log::dbg("LMB [tile]:      NE %8ld SE %8ld",
+			log::dbg("LMB [tile]:      NE %8" PRIi64 " SE %8" PRIi64,
 			         mousepos_tile.ne,
 			         mousepos_tile.se);
 
@@ -502,16 +505,42 @@ bool GameMain::on_input(SDL_Event *e) {
 
 	case SDL_KEYUP:
 		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
+
 		case SDLK_ESCAPE:
 			//stop the game
 			engine.stop();
 			break;
+
 		case SDLK_F1:
 			engine.drawing_huds = !engine.drawing_huds;
 			break;
+
+		case SDLK_F2:
+			engine.get_screenshot_manager().save_screenshot();
+			break;
+
 		case SDLK_F3:
 			engine.drawing_debug_overlay = !engine.drawing_debug_overlay;
 			break;
+
+		case SDLK_F4:
+			this->debug_grid_active = !this->debug_grid_active;
+			break;
+
+		case SDLK_SPACE:
+			this->terrain->blending_enabled = !terrain->blending_enabled;
+			break;
+
+		case SDLK_F12:
+			if (this->external_profiler.currently_profiling) {
+				this->external_profiler.stop();
+				this->external_profiler.show_results();
+			} else {
+				this->external_profiler.start();
+			}
+
+			break;
+
 		case SDLK_LCTRL:
 			this->ctrl_active = false;
 			break;
@@ -520,12 +549,6 @@ bool GameMain::on_input(SDL_Event *e) {
 		break;
 	case SDL_KEYDOWN:
 		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
-		case SDLK_SPACE:
-			this->terrain->blending_enabled = !terrain->blending_enabled;
-			break;
-		case SDLK_F2:
-			engine.get_screenshot_manager().save_screenshot();
-			break;
 		case SDLK_LCTRL:
 			this->ctrl_active = true;
 			break;
@@ -596,6 +619,10 @@ bool GameMain::on_draw() {
 	// draw terrain
 	terrain->draw(&engine);
 
+	if (this->debug_grid_active) {
+		this->draw_debug_grid();
+	}
+
 	return true;
 }
 
@@ -614,6 +641,57 @@ bool GameMain::on_drawhud() {
 	}
 
 	return true;
+}
+
+void GameMain::draw_debug_grid() {
+	Engine &e = Engine::get();
+
+	coord::camgame camera = coord::tile{0, 0}.to_tile3().to_phys3().to_camgame();
+
+	int cam_offset_x = util::mod(camera.x, e.tile_halfsize.x * 2);
+	int cam_offset_y = util::mod(camera.y, e.tile_halfsize.y * 2);
+
+	int line_half_width = e.window_size.x / 2;
+	int line_half_height = e.window_size.y / 2;
+
+	// rounding so we get 2:1 proportion needed for the isometric perspective
+
+	if (line_half_width > line_half_height * 2) {
+
+		if (line_half_width & 1) {
+			line_half_width += 1; // round up if it's odd
+		}
+
+		line_half_height = line_half_width / 2;
+
+	} else {
+		line_half_width = line_half_height * 2;
+	}
+
+	// quantity of lines to draw to each side from the center
+	int k = line_half_width / (e.tile_halfsize.x);
+
+	int tilesize_x = e.tile_halfsize.x * 2;
+	int common_x   = cam_offset_x + e.tile_halfsize.x;
+	int x0         = common_x     - line_half_width;
+	int x1         = common_x     + line_half_width;
+	int y0         = cam_offset_y - line_half_height;
+	int y1         = cam_offset_y + line_half_height;
+
+	glLineWidth(1);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_LINES); {
+
+		for (int i = -k; i < k; i++) {
+				glVertex3f(i * tilesize_x + x0, y1, 0);
+				glVertex3f(i * tilesize_x + x1, y0, 0);
+
+				glVertex3f(i * tilesize_x + x0, y0 - 1, 0);
+				glVertex3f(i * tilesize_x + x1, y1 - 1, 0);
+		}
+
+	} glEnd();
+
 }
 
 void TestSound::play() {
