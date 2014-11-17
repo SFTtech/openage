@@ -112,7 +112,7 @@ public:
 
 	util::ExternalProfiler external_profiler;
 private:
-	void on_gamedata_loaded(std::vector<gamedata::empiresdat> gamedata);
+	void on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata);
 
 	bool gamedata_loaded;
 	openage::job::Job<std::vector<gamedata::empiresdat>> gamedata_load_job;

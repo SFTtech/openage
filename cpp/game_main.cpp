@@ -226,7 +226,7 @@ GameMain::GameMain(Engine *engine)
 	this->gamedata_load_job = engine->get_job_manager()->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function);
 }
 
-void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> gamedata) {
+void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 	util::Dir *data_dir = this->engine->get_data_dir();
 	util::Dir asset_dir = data_dir->append("converted");
 
