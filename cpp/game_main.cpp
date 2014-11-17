@@ -623,6 +623,11 @@ bool GameMain::on_draw() {
 		this->draw_debug_grid();
 	}
 
+	if (not gamedata_loaded) {
+		// Show that gamedata is still loading
+		engine.dejavuserif20->render(0, 0, "Loading gamedata...");
+	}
+
 	return true;
 }
 
