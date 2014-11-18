@@ -53,7 +53,7 @@ using node_pt = std::shared_ptr<Node>;
  */
 using nodemap_t = std::unordered_map<coord::phys3, node_pt, phys3_hash>;
 
-constexpr uint neigh_shift = 13;
+constexpr unsigned int neigh_shift = 13;
 constexpr coord::phys3_delta const neigh_phys[] = {
 	{ 1 * (1 << neigh_shift), -1 * (1 << neigh_shift), 0},
 	{ 1 * (1 << neigh_shift),  0 * (1 << neigh_shift), 0},
