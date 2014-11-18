@@ -4,23 +4,22 @@
 
 from . import blendomatic
 from . import colortable
-from . import dataformat
 from . import filelist
-from .gamedata import empiresdat
 from . import stringresource
 from . import texture
-from .util import dbg, set_write_dir, file_write, file_get_path
-from fnmatch import fnmatch
+from .dataformat import multisubtype_base
+from .dataformat.data_formatter import DataFormatter
+from .gamedata import empiresdat
 
 
 def generate_gamedata_structs(cpp_src_dir):
     #generate files in these formats
     formats = ("struct", "structimpl")
 
-    data_formatter = dataformat.DataFormatter()
+    data_formatter = DataFormatter()
 
     struct_data = list()
-    struct_data += dataformat.MultisubtypeMember.MultisubtypeBaseFile.structs()
+    struct_data += multisubtype_base.MultisubtypeBaseFile.structs()
     struct_data += empiresdat.EmpiresDat.structs()
     struct_data += blendomatic.Blendomatic.structs()
     struct_data += colortable.ColorTable.structs()

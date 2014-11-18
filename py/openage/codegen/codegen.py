@@ -1,9 +1,10 @@
 # Copyright 2014-2014 the openage authors. See copying.md for legal info.
 
-from ..convert.util import dbg
+import datetime
 import os
 import sys
-import datetime
+
+from openage.log import dbg
 
 contenttemplate = """\
 {prefix} {copyrightline}

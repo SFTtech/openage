@@ -1,16 +1,19 @@
 # Copyright 2014-2014 the openage authors. See copying.md for legal info.
 
-from . import dataformat
 from . import util
-from .util import dbg
+from .dataformat.exportable import Exportable
+from .dataformat.members import EnumMember
+from .dataformat.data_definition import DataDefinition
+from .dataformat.struct_definition import StructDefinition
+from openage.log import dbg
 
-class SoundList(dataformat.Exportable):
+class SoundList(Exportable):
     name_struct        = "sound_file"
     name_struct_file   = "sound_file"
     struct_description = "one available sound file."
 
     data_format = (
-        (True, "category", dataformat.EnumMember(
+        (True, "category", EnumMember(
             type_name="audio_category_t",
             values=(
                 "GAME",
@@ -24,7 +27,7 @@ class SoundList(dataformat.Exportable):
         (True, "sound_id", "int"),
         (True, "path",     "std::string"),
 
-        (True, "format", dataformat.EnumMember(
+        (True, "format", EnumMember(
             type_name="audio_format_t",
             values=(
                 "OPUS",
@@ -35,7 +38,7 @@ class SoundList(dataformat.Exportable):
             file_name="sound_file",
         )),
 
-        (True, "loader_policy", dataformat.EnumMember(
+        (True, "loader_policy", EnumMember(
             type_name="audio_loader_policy_t",
             values=(
                 "IN_MEMORY",
@@ -60,8 +63,8 @@ class SoundList(dataformat.Exportable):
         self.sounds.append(new_sound)
 
     def dump(self):
-        return [ dataformat.DataDefinition(self, self.sounds, "sound_list") ]
+        return [ DataDefinition(self, self.sounds, "sound_list") ]
 
     @classmethod
     def structs(cls):
-        return [ dataformat.StructDefinition(cls) ]
+        return [ StructDefinition(cls) ]

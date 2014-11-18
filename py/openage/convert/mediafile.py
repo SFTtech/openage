@@ -2,21 +2,22 @@
 
 # media files conversion stuff
 
-from .colortable import ColorTable, PlayerColorTable
 from collections import defaultdict
-from . import dataformat
-from .drs import DRS
-from . import filelist
-from .hardcoded import termcolors
+from openage.log import dbg, ifdbg, set_verbosity
+from tempfile import gettempdir
 import os
 import os.path
 import pickle
-from string import Template
 import subprocess
-from .texture import Texture
+
+from . import filelist
 from . import util
-from .util import file_write, dbg, ifdbg, set_write_dir, set_read_dir, set_verbosity, file_get_path
-from tempfile import gettempdir
+from .colortable import ColorTable, PlayerColorTable
+from .dataformat.data_formatter import DataFormatter
+from .drs import DRS
+from .hardcoded import termcolors
+from .texture import Texture
+
 
 asset_folder = "" #TODO: optimize out
 dat_cache_file = os.path.join(gettempdir(), "empires2_x1_p1.dat.pickle")
@@ -67,7 +68,7 @@ def media_convert(args):
 
     #set path in utility class
     dbg("setting age2 input directory to " + args.srcdir, 1)
-    set_read_dir(args.srcdir)
+    util.set_read_dir(args.srcdir)
 
     drsfiles = {
         "graphics":  DRS("Data/graphics.drs"),
@@ -81,7 +82,7 @@ def media_convert(args):
 
     #gamedata.drs does not exist in HD edition, but its contents are
     #in gamedata_x1.drs instead, so we can ignore this file if it doesn't exist
-    if os.path.isfile(file_get_path("Data/gamedata.drs")):
+    if os.path.isfile(util.file_get_path("Data/gamedata.drs")):
         drsfiles["gamedata0"] = DRS("Data/gamedata.drs")
 
     #this is the ingame color palette file id, 256 color lookup for all graphics pixels
@@ -103,7 +104,7 @@ def media_convert(args):
         write_enabled = True
 
         dbg("setting write dir to " + args.output, 1)
-        set_write_dir(args.output)
+        util.set_write_dir(args.output)
 
         player_palette = PlayerColorTable(palette)
 
@@ -117,7 +118,7 @@ def media_convert(args):
         #blendomatic_x1.dat is the same file as AoK:TC's blendomatic.dat, and TC does not have
         #blendomatic.dat, so we try _x1 first and fall back to the AoK:TC way if it does not exist
         blend_file = "Data/blendomatic_x1.dat"
-        if not os.path.isfile(file_get_path(blend_file)):
+        if not os.path.isfile(util.file_get_path(blend_file)):
             blend_file = "Data/blendomatic.dat"
         blend_data = blendomatic.Blendomatic(blend_file)
         blend_data.save(os.path.join(asset_folder, "blendomatic.dat/"), output_formats)
@@ -127,7 +128,7 @@ def media_convert(args):
 
         #AoK:TC uses .DLL files for its string resources,
         #HD uses plaintext files
-        if os.path.isfile(file_get_path("language.dll")):
+        if os.path.isfile(util.file_get_path("language.dll")):
             from .pefile import PEFile
             stringres.fill_from(PEFile("language.dll"))
             stringres.fill_from(PEFile("language_x1.dll"))
@@ -135,12 +136,12 @@ def media_convert(args):
             #stringres.fill_from(PEFile("Games/Forgotten Empires/Data/language_x1_p1.dll"))
         else:
             from .hdlanguagefile import HDLanguageFile
-            for lang in os.listdir(file_get_path("Bin")):
+            for lang in os.listdir(util.file_get_path("Bin")):
                 langfile = "Bin/%s/%s-language.txt" % (lang, lang)
 
                 #there is some "base language" files in HD that we don't need
                 #and only the dir for the language that's currently in use contains a language file
-                if os.path.isdir(file_get_path("Bin/%s" % (lang))) and os.path.isfile(file_get_path(langfile)):
+                if os.path.isdir(util.file_get_path("Bin/%s" % (lang))) and os.path.isfile(util.file_get_path(langfile)):
                     stringres.fill_from(HDLanguageFile(langfile, lang))
 
         #TODO: transform and cleanup the read strings... (strip html, insert formatchars, ...)
@@ -184,7 +185,7 @@ def media_convert(args):
         #TODO: data transformation nao! (merge stuff, etcetc)
 
         dbg("formatting output data...", lvl=1)
-        data_formatter = dataformat.DataFormatter()
+        data_formatter = DataFormatter()
 
         #dump metadata information
         data_dump = list()
@@ -287,7 +288,7 @@ def media_convert(args):
             media_files_extracted += 1
 
     if write_enabled:
-        sound_formatter = dataformat.DataFormatter()
+        sound_formatter = DataFormatter()
         sound_formatter.add_data(sound_list.dump())
         util.file_write_multi(sound_formatter.export(output_formats), file_prefix=asset_folder)
 

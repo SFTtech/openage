@@ -1,9 +1,10 @@
 # Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
+import argparse
+from openage.log import set_verbosity
+
 from . import datafile
 from . import mediafile
-from .util import set_verbosity
-import argparse
 
 def main():
     # the convert script has 1 mode:

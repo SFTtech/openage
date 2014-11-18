@@ -1,10 +1,11 @@
 # Copyright 2014-2014 the openage authors. See copying.md for legal info.
 
 from collections import defaultdict
-from . import dataformat
-from .util import dbg
 
-class StringResource(dataformat.Exportable):
+from .dataformat import exportable, data_definition, struct_definition
+from openage.log import dbg
+
+class StringResource(exportable.Exportable):
     name_struct        = "string_resource"
     name_struct_file   = "string_resource"
     struct_description = "string id/language to text mapping, extracted from language.dll file."
@@ -35,8 +36,8 @@ class StringResource(dataformat.Exportable):
                 data.append(entry)
 
         data = sorted(data, key=lambda x: x["id"])
-        return [ dataformat.DataDefinition(self, data, filename) ]
+        return [ data_definition.DataDefinition(self, data, filename) ]
 
     @classmethod
     def structs(cls):
-        return [ dataformat.StructDefinition(cls) ]
+        return [ struct_definition.StructDefinition(cls) ]

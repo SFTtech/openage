@@ -2,13 +2,15 @@
 
 # routines for texture generation etc
 
-from .blendomatic import BlendingMode
-from . import dataformat
 import math
-from .slp import SLP
-from . import util
-from .util import dbg
+
+from .blendomatic import BlendingMode
+from .dataformat import exportable, data_definition, struct_definition, data_formatter
 from .hardcoded import terrain_tile_size
+from .util import file_write_multi
+from .slp import SLP
+from openage.log import dbg
+from openage.util import VirtualFile
 
 
 def subtexture_meta(tx, ty, hx, hy, cx, cy):
@@ -55,7 +57,7 @@ class TextureImage:
         return Image.fromarray(self.data)
 
 
-class Texture(dataformat.Exportable):
+class Texture(exportable.Exportable):
     image_format       = "png"
 
     name_struct        = "subtexture"
@@ -110,12 +112,12 @@ one sprite included in the 'big texture' has."""
         """
 
         #store the image data as png
-        raw_png = util.VirtualFile()
+        raw_png = VirtualFile()
         image = self.image_data.get_pil_image()
         image.save(raw_png, self.image_format)
 
         #generate formatted texture metadata
-        formatter = dataformat.DataFormatter()
+        formatter = data_formatter.DataFormatter()
         formatter.add_data(self.dump(filename))
 
         #generate full output file contents
@@ -123,14 +125,14 @@ one sprite included in the 'big texture' has."""
         output_data["%s.%s" % (filename, self.image_format)] = raw_png.data()
 
         #save the output files
-        util.file_write_multi(output_data)
+        file_write_multi(output_data)
 
     def dump(self, filename):
-        return [ dataformat.DataDefinition(self, self.image_metadata, filename) ]
+        return [ data_definition.DataDefinition(self, self.image_metadata, filename) ]
 
     @classmethod
     def structs(cls):
-        return [ dataformat.StructDefinition(cls) ]
+        return [ struct_definition.StructDefinition(cls) ]
 
 
 def merge_frames(frames, max_width=0, max_height=0):

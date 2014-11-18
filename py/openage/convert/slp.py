@@ -1,10 +1,11 @@
 # Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
 import os
+from struct import Struct, unpack_from
 import sys
 
-from struct import Struct, unpack_from
-from .util import NamedObject, dbg, ifdbg
+from ..util import NamedObject
+from openage.log import dbg, ifdbg
 
 #SLP files have little endian byte order
 endianness = "< "

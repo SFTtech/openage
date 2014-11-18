@@ -1,7 +1,6 @@
 # Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
-#define little endian byte order for the dat file
-endianness = '< '
+import zlib
 
 from . import civ
 from . import graphic
@@ -12,10 +11,11 @@ from . import tech
 from . import terrain
 from . import unit
 
-from .. import dataformat
-from struct import Struct, unpack_from
-from ..util import dbg, file_get_path, file_open, file_write, zstr
-import zlib
+from ..dataformat.exportable import Exportable
+from ..dataformat.members import SubdataMember
+from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
+from ..util import file_get_path, file_open, file_write
+from openage.log import dbg
 
 
 # this file can parse and represent the empires2_x1_p1.dat file,
@@ -67,7 +67,7 @@ class EmpiresDatGzip:
         file_write(rawfile_writepath, self.content)
 
 
-class EmpiresDat(dataformat.Exportable):
+class EmpiresDat(Exportable):
     """
     class for fighting and beating the compressed empires2*.dat
 
@@ -79,121 +79,121 @@ class EmpiresDat(dataformat.Exportable):
     struct_description = "empires2_x1_p1.dat structure"
 
     data_format = (
-        (dataformat.READ, "versionstr", "char[8]"),
+        (READ, "versionstr", "char[8]"),
 
         #terain header data
-        (dataformat.READ, "terrain_restriction_count", "uint16_t"),
-        (dataformat.READ, "terrain_count", "uint16_t"),
-        (dataformat.READ, "terrain_restriction_offset0", "int32_t[terrain_restriction_count]"),
-        (dataformat.READ, "terrain_restriction_offset1", "int32_t[terrain_restriction_count]"),
-        (dataformat.READ, "terrain_restrictions", dataformat.SubdataMember(
+        (READ, "terrain_restriction_count", "uint16_t"),
+        (READ, "terrain_count", "uint16_t"),
+        (READ, "terrain_restriction_offset0", "int32_t[terrain_restriction_count]"),
+        (READ, "terrain_restriction_offset1", "int32_t[terrain_restriction_count]"),
+        (READ, "terrain_restrictions", SubdataMember(
             ref_type=terrain.TerrainRestriction,
             length="terrain_restriction_count",
             passed_args={"terrain_count"},
         )),
 
         #player color data
-        (dataformat.READ, "player_color_count", "uint16_t"),
-        (dataformat.READ, "player_colors", dataformat.SubdataMember(
+        (READ, "player_color_count", "uint16_t"),
+        (READ, "player_colors", SubdataMember(
             ref_type=playercolor.PlayerColor,
             length="player_color_count",
         )),
 
         #sound data
-        (dataformat.READ_EXPORT, "sound_count", "uint16_t"),
-        (dataformat.READ_EXPORT, "sounds", dataformat.SubdataMember(
+        (READ_EXPORT, "sound_count", "uint16_t"),
+        (READ_EXPORT, "sounds", SubdataMember(
             ref_type=sound.Sound,
             length="sound_count",
         )),
 
         #graphic data
-        (dataformat.READ, "graphic_count", "uint16_t"),
-        (dataformat.READ, "graphic_offsets", "int32_t[graphic_count]"),
-        (dataformat.READ_EXPORT, "graphics", dataformat.SubdataMember(
+        (READ, "graphic_count", "uint16_t"),
+        (READ, "graphic_offsets", "int32_t[graphic_count]"),
+        (READ_EXPORT, "graphics", SubdataMember(
             ref_type  = graphic.Graphic,
             length    = "graphic_count",
             offset_to = ("graphic_offsets", lambda o: o > 0),
         )),
-        (dataformat.READ_UNKNOWN, "rendering_blob", "uint8_t[138]"),
+        (READ_UNKNOWN, "rendering_blob", "uint8_t[138]"),
 
         #terrain data
-        (dataformat.READ_EXPORT,  "terrains", dataformat.SubdataMember(
+        (READ_EXPORT,  "terrains", SubdataMember(
             ref_type=terrain.Terrain,
             length="terrain_count",
         )),
-        (dataformat.READ_UNKNOWN, "terrain_blob0", "uint8_t[438]"),
-        (dataformat.READ,         "terrain_border", dataformat.SubdataMember(
+        (READ_UNKNOWN, "terrain_blob0", "uint8_t[438]"),
+        (READ,         "terrain_border", SubdataMember(
             ref_type=terrain.TerrainBorder,
             length=16,
         )),
-        (dataformat.READ_UNKNOWN, "zero", "int8_t[28]"),
-        (dataformat.READ,         "terrain_count_additional", "uint16_t"),
-        (dataformat.READ_UNKNOWN, "terrain_blob1", "uint8_t[12722]"),
+        (READ_UNKNOWN, "zero", "int8_t[28]"),
+        (READ,         "terrain_count_additional", "uint16_t"),
+        (READ_UNKNOWN, "terrain_blob1", "uint8_t[12722]"),
 
         #technology data
-        (dataformat.READ_EXPORT, "tech_count", "uint32_t"),
-        (dataformat.READ_EXPORT, "techs", dataformat.SubdataMember(
+        (READ_EXPORT, "tech_count", "uint32_t"),
+        (READ_EXPORT, "techs", SubdataMember(
             ref_type=tech.Tech,
             length="tech_count",
         )),
 
         #unit header data
-        (dataformat.READ_EXPORT, "unit_count", "uint32_t"),
-        (dataformat.READ_EXPORT, "unit_headers", dataformat.SubdataMember(
+        (READ_EXPORT, "unit_count", "uint32_t"),
+        (READ_EXPORT, "unit_headers", SubdataMember(
             ref_type=unit.UnitHeader,
             length="unit_count",
         )),
 
         #civilisation data
-        (dataformat.READ_EXPORT, "civ_count", "uint16_t"),
-        (dataformat.READ_EXPORT, "civs", dataformat.SubdataMember(
+        (READ_EXPORT, "civ_count", "uint16_t"),
+        (READ_EXPORT, "civs", SubdataMember(
             ref_type=civ.Civ,
             length="civ_count"
         )),
 
         #research data
-        (dataformat.READ_EXPORT, "research_count", "uint16_t"),
-        (dataformat.READ_EXPORT, "researches", dataformat.SubdataMember(
+        (READ_EXPORT, "research_count", "uint16_t"),
+        (READ_EXPORT, "researches", SubdataMember(
             ref_type=research.Research,
             length="research_count"
         )),
 
         #unknown shiat again
-        (dataformat.READ_UNKNOWN, None, "uint32_t[7]"),
+        (READ_UNKNOWN, None, "uint32_t[7]"),
 
         #technology tree data
-        (dataformat.READ_EXPORT, "age_entry_count", "uint8_t"),
-        (dataformat.READ_EXPORT, "building_connection_count", "uint8_t"),
-        (dataformat.READ_EXPORT, "unit_connection_count", "uint8_t"),
-        (dataformat.READ_EXPORT, "research_connection_count", "uint8_t"),
-        (dataformat.READ_EXPORT, "age_tech_tree", dataformat.SubdataMember(
+        (READ_EXPORT, "age_entry_count", "uint8_t"),
+        (READ_EXPORT, "building_connection_count", "uint8_t"),
+        (READ_EXPORT, "unit_connection_count", "uint8_t"),
+        (READ_EXPORT, "research_connection_count", "uint8_t"),
+        (READ_EXPORT, "age_tech_tree", SubdataMember(
             ref_type=tech.AgeTechTree,
             length="age_entry_count"
         )),
-        (dataformat.READ_UNKNOWN, None, "uint32_t"),
-        (dataformat.READ_EXPORT, "building_connection", dataformat.SubdataMember(
+        (READ_UNKNOWN, None, "uint32_t"),
+        (READ_EXPORT, "building_connection", SubdataMember(
             ref_type=tech.BuildingConnection,
             length="building_connection_count"
         )),
-        (dataformat.READ_EXPORT, "unit_connection", dataformat.SubdataMember(
+        (READ_EXPORT, "unit_connection", SubdataMember(
             ref_type=tech.UnitConnection,
             length="unit_connection_count"
         )),
-        (dataformat.READ_EXPORT, "research_connection", dataformat.SubdataMember(
+        (READ_EXPORT, "research_connection", SubdataMember(
             ref_type=tech.ResearchConnection,
             length="research_connection_count"
         )),
     )
 
 
-class EmpiresDatWrapper(dataformat.Exportable):
+class EmpiresDatWrapper(Exportable):
     name_struct_file   = "gamedata"
     name_struct        = "gamedata"
     struct_description = "wrapper for empires2_x1_p1.dat structure"
 
     #TODO: we could reference to other gamedata structures
     data_format = (
-        (dataformat.READ_EXPORT, "empiresdat", dataformat.SubdataMember(
+        (READ_EXPORT, "empiresdat", SubdataMember(
             ref_type=EmpiresDat,
             length=1,
         )),

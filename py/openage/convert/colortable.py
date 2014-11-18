@@ -1,11 +1,14 @@
 # Copyright 2013-2014 the openage authors. See copying.md for legal info.
 
-from . import dataformat
-from . import util
-from .util import dbg
 import math
 
-class ColorTable(dataformat.Exportable):
+from . import util
+from .dataformat.exportable import Exportable
+from .dataformat.data_definition import DataDefinition
+from .dataformat.struct_definition import StructDefinition
+from openage.log import dbg
+
+class ColorTable(Exportable):
     name_struct        = "palette_color"
     name_struct_file   = "color"
     struct_description = "indexed color storage."
@@ -137,11 +140,11 @@ class ColorTable(dataformat.Exportable):
             }
             data.append(color_entry)
 
-        return [ dataformat.DataDefinition(self, data, filename) ]
+        return [ DataDefinition(self, data, filename) ]
 
     @classmethod
     def structs(cls):
-        return [ dataformat.StructDefinition(cls) ]
+        return [ StructDefinition(cls) ]
 
 
 class PlayerColorTable(ColorTable):
