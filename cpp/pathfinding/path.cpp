@@ -12,10 +12,23 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 	:
 	position(pos),
 	tile_position(pos.to_tile3().to_tile()),
+	dir_ne(0.0f),
+	dir_se(0.0f),
 	visited(false),
 	was_best(false),
 	factor(1.0f),
 	path_predecessor(prev) {
+
+
+	if (prev) {
+		cost_t dx = this->position.ne - prev->position.ne;
+		cost_t dy = this->position.se - prev->position.se;
+		cost_t hyp = std::hypot(dx, dy);
+		this->dir_ne = dx / hyp;
+		this->dir_se = dy / hyp;
+		cost_t similarity = this->dir_ne * prev->dir_ne + this->dir_se * prev->dir_se;
+		factor += (1 - similarity);
+	}
 }
 
 

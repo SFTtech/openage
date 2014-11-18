@@ -111,6 +111,7 @@ public:
 	 */
 	coord::phys3 position;
 	coord::tile tile_position;
+	cost_t dir_ne, dir_se; // for path smoothing
 
 	/**
 	 * Future cost estimation value for this node.

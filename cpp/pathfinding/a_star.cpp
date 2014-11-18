@@ -77,7 +77,7 @@ Path a_star(coord::phys3 start,
 		node_candidates.pop();
 		best_candidate->was_best = true;
 
-		if ( best_candidate->heuristic_cost < (1 << 13) || valid_end(best_candidate->position) ) {
+		if ( valid_end(best_candidate->position) ) {
 			log::dbg("path cost is %f", best_candidate->future_cost);
 			return best_candidate->generate_backtrace();
 		}
