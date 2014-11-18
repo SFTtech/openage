@@ -48,14 +48,14 @@ struct coord_chunk_hash {
  * describes the properties of one terrain tile.
  *
  * this includes the terrain_id (ice, water, grass, ...)
- * and the building standing on that tile.
+ * and the list of objects which have a bounding box overlapping the tile
  */
 class TileContent {
 public:
 	TileContent();
 	~TileContent();
 	terrain_t terrain_id;
-	TerrainObject *obj;
+	std::vector<TerrainObject *> obj;
 };
 
 

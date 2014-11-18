@@ -33,6 +33,25 @@ shader::Program *program;
 GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 }
 
+Texture::Texture(int width, int height, void *data)
+	:
+	use_metafile{false} {
+	this->w = width;
+	this->h = height;
+	this->id = make_gl_texture(
+		GL_RGBA8,
+		GL_RGBA,
+		width,
+		height,
+		data
+	);
+
+	gamedata::subtexture s{0, 0, this->w, this->h, this->w/2, this->h/2};
+	this->subtexture_count = 1;
+	this->subtextures.push_back(s);
+
+	glGenBuffers(1, &this->vertbuf);
+}
 
 Texture::Texture(std::string filename, bool use_metafile)
 	:
@@ -44,7 +63,6 @@ Texture::Texture(std::string filename, bool use_metafile)
 
 void Texture::load() {
 	SDL_Surface *surface;
-	GLuint textureid;
 	int texture_format_in;
 	int texture_format_out;
 
@@ -74,25 +92,15 @@ void Texture::load() {
 
 	this->w = surface->w;
 	this->h = surface->h;
-
-	// generate 1 texture handle
-	glGenTextures(1, &textureid);
-	glBindTexture(GL_TEXTURE_2D, textureid);
-
-	// sdl surface -> opengl texture
-	glTexImage2D(
-		GL_TEXTURE_2D, 0,
-		texture_format_in, surface->w, surface->h, 0,
-		texture_format_out, GL_UNSIGNED_BYTE, surface->pixels
+	this->id = make_gl_texture(
+		texture_format_in,
+		texture_format_out,
+		surface->w,
+		surface->h,
+		surface->pixels
 	);
 
-	// later drawing settings
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
 	SDL_FreeSurface(surface);
-
-	this->id = textureid;
 
 	if (use_metafile) {
 		// change the suffix to .docx (lol)
@@ -122,6 +130,25 @@ void Texture::load() {
 	glGenBuffers(1, &this->vertbuf);
 }
 
+GLuint Texture::make_gl_texture(int iformat, int oformat, int w, int h, void *data) {
+	// generate 1 texture handle
+	GLuint textureid;
+	glGenTextures(1, &textureid);
+	glBindTexture(GL_TEXTURE_2D, textureid);
+
+	// sdl surface -> opengl texture
+	glTexImage2D(
+		GL_TEXTURE_2D, 0,
+		iformat, w, h, 0,
+		oformat, GL_UNSIGNED_BYTE, data
+	);
+
+	// later drawing settings
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	return textureid;
+}
 
 void Texture::unload() {
 	glDeleteTextures(1, &this->id);

@@ -5,8 +5,12 @@
 
 #include <functional>
 #include <list>
+#include <memory>
+#include <queue>
+#include <unordered_map>
 #include <vector>
 
+#include "../coord/phys3.h"
 #include "../coord/tile.h"
 #include "../util/misc.h"
 
@@ -22,17 +26,57 @@ class Path;
  */
 using cost_t = float;
 
-/**
- * function pointer type for distance estimation functions.
+/*
+ * hash function for tiles
  */
-using heuristic_t = cost_t (*)(const Node &start, const Node &end);
+struct tile_hash {
+	size_t operator ()(const openage::coord::tile &tile) const {
+		size_t nehash = std::hash<openage::coord::tile_t> { }(tile.ne);
+		size_t sehash = std::hash<openage::coord::tile_t> { }(tile.se);
+		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
+	}
+};
+
+struct phys3_hash {
+	size_t operator ()(const openage::coord::phys3 &pos) const {
+		size_t nehash = std::hash<openage::coord::phys_t> { }(pos.ne);
+		size_t sehash = std::hash<openage::coord::phys_t> { }(pos.se);
+		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
+	}
+};
+
+
+using node_pt = std::shared_ptr<Node>;
+
+/*
+ * type for mapping tiles to nodes
+ */
+using nodemap_t = std::unordered_map<coord::phys3, node_pt, phys3_hash>;
+
+constexpr uint neigh_shift = 13;
+constexpr coord::phys3_delta const neigh_phys[] = {
+	{ 1 * (1 << neigh_shift), -1 * (1 << neigh_shift), 0},
+	{ 1 * (1 << neigh_shift),  0 * (1 << neigh_shift), 0},
+	{ 1 * (1 << neigh_shift),  1 * (1 << neigh_shift), 0},
+	{ 0 * (1 << neigh_shift),  1 * (1 << neigh_shift), 0},
+	{-1 * (1 << neigh_shift),  1 * (1 << neigh_shift), 0},
+	{-1 * (1 << neigh_shift),  0 * (1 << neigh_shift), 0},
+	{-1 * (1 << neigh_shift), -1 * (1 << neigh_shift), 0},
+	{ 0 * (1 << neigh_shift), -1 * (1 << neigh_shift), 0}
+};
+
+/**
+ *
+ */
+bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::phys3 &)>passable, float samples=5.0f);
 
 /**
  * One waypoint in a path.
  */
-class Node {
+class Node: public std::enable_shared_from_this<Node> {
 public:
-	Node();
+	Node(const coord::phys3 &pos, node_pt prev);
+	Node(const coord::phys3 &pos, node_pt prev, cost_t past, cost_t heuristic);
 	~Node();
 
 	/**
@@ -54,17 +98,20 @@ public:
 	/**
 	 * Create a backtrace path beginning at this node.
 	 */
-	Path generate_backtrace() const;
+	Path generate_backtrace();
 
 	/**
 	 * Get all neighbors of this graph node.
 	 */
-	std::vector<Node> get_neighbors() const;
+	std::vector<node_pt> get_neighbors(const nodemap_t &, float scale=1.0f);
 
 	/**
 	 * The tile position this node is associated to.
+	 * todo make const
 	 */
-	coord::tile position;
+	coord::phys3 position;
+	coord::tile tile_position;
+	cost_t dir_ne, dir_se; // for path smoothing
 
 	/**
 	 * Future cost estimation value for this node.
@@ -110,7 +157,7 @@ public:
 	/**
 	 * Node where this one was reached by least cost.
 	 */
-	Node *path_predecessor;
+	node_pt path_predecessor;
 };
 
 
@@ -121,17 +168,15 @@ public:
 class Path {
 public:
 	Path();
-	Path(const std::list<Node> &nodes);
+	Path(const std::vector<Node> &nodes);
 	~Path();
 
-private:
 	/**
 	 * These are the waypoints to navigate in order.
 	 * Includes the start and end node.
 	 */
-	std::list<Node> waypoints;
+	std::vector<Node> waypoints;
 };
-
 
 } // namespace path
 } // namespace openage
@@ -147,9 +192,9 @@ namespace std {
 template <>
 struct hash<openage::path::Node &> {
 	size_t operator ()(const openage::path::Node &x) const {
-		openage::coord::tile node_pos = x.position;
-		size_t nehash = std::hash<openage::coord::tile_t>{}(node_pos.ne);
-		size_t sehash = std::hash<openage::coord::tile_t>{}(node_pos.se);
+		openage::coord::phys3 node_pos = x.position;
+		size_t nehash = std::hash<openage::coord::phys_t>{}(node_pos.ne);
+		size_t sehash = std::hash<openage::coord::phys_t>{}(node_pos.se);
 		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
 	}
 };
