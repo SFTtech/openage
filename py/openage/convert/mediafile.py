@@ -252,13 +252,13 @@ def media_convert(args):
             elif file_extension == 'wav':
                 sound_filename = fname
 
-                wav_output_file = file_get_path(fname, write=True)
-                file_write(wav_output_file, file_data)
+                wav_output_file = util.file_get_path(fname, write=True)
+                util.file_write(wav_output_file, file_data)
 
                 if not args.no_opus:
                     file_extension   = "opus"
                     sound_filename   = "%s.%s" % (fbase, file_extension)
-                    opus_output_file = file_get_path(sound_filename, write=True)
+                    opus_output_file = util.file_get_path(sound_filename, write=True)
 
                     #opusenc invokation (TODO: ffmpeg?)
                     opus_convert_call = ['opusenc', wav_output_file, opus_output_file]
@@ -282,8 +282,8 @@ def media_convert(args):
 
             else:
                 #format does not require conversion, store it as plain blob
-                output_file = file_get_path(fname, write=True)
-                file_write(output_file, file_data)
+                output_file = util.file_get_path(fname, write=True)
+                util.file_write(output_file, file_data)
 
             media_files_extracted += 1
 
