@@ -19,6 +19,8 @@
 #include "gamedata/string_resource.gen.h"
 #include "log.h"
 #include "terrain/terrain.h"
+#include "unit/producer.h"
+#include "unit/unit.h"
 #include "util/strings.h"
 #include "util/timer.h"
 #include "util/externalprofiler.h"
@@ -106,6 +108,8 @@ GameMain::GameMain(Engine *engine)
 	clicking_active{true},
 	ctrl_active{false},
 	scrolling_active{false},
+	construct_mode{true},
+	selected_unit{nullptr},
 	assetmanager{engine->get_data_dir()},
 	gamedata_loaded{false},
 	engine{engine} {
@@ -113,6 +117,7 @@ GameMain::GameMain(Engine *engine)
 	engine->register_draw_action(this);
 	engine->register_input_action(this);
 	engine->register_tick_action(this);
+	engine->register_tick_action(&this->placed_units);
 	engine->register_drawhud_action(this);
 
 	util::Dir *data_dir = engine->get_data_dir();
@@ -235,7 +240,6 @@ void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 		this->graphics[graphic.id] = &graphic;
 	}
 
-	int i = 0;
 	int your_civ_id = 1; //British by default
 	// 0 is gaia and not very useful (it's not an user facing civilization so
 	// we cannot rely on it being polished... it might be VERY broken.
@@ -243,67 +247,8 @@ void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 
 	log::msg("Using the %s civilisation.", gamedata[0].civs.data[your_civ_id].name.c_str());
 
-	for (auto &building : gamedata[0].civs.data[your_civ_id].units.building.data) {
-		log::msg("building[%d]: %s", i, building.name.c_str());
-
-		int graphic_id = building.graphic_standing0;
-		if (graphic_id <= 0) {
-			log::msg("  -> ignoring graphics_id: %d", graphic_id);
-			continue;
-		}
-
-		int slp_id = this->graphics[graphic_id]->slp_id;
-
-		log::msg("   slp id/name: %d %s", slp_id, this->graphics[graphic_id]->name0.c_str());
-
-		if (slp_id <= 0) {
-			log::msg("  -> ignoring slp_id: %d", slp_id);
-			continue;
-		}
-
-		char *tex_fname = util::format("converted/Data/graphics.drs/%d.slp.png", slp_id);
-
-		// convert the float to the discrete foundation size...
-		openage::coord::tile_delta foundation_size = {
-			(int)(building.radius_size0 * 2),
-			(int)(building.radius_size1 * 2),
-		};
-
-		log::msg("   building has foundation size %.2f x %.2f = %" PRIi64 "x%" PRIi64,
-		         building.radius_size0,
-		         building.radius_size1,
-		         foundation_size.ne,
-		         foundation_size.se
-		);
-
-		int creation_sound = building.sound_creation0;
-		int dying_sound = building.sound_dying;
-
-		if (creation_sound == -1) {
-			creation_sound = building.sound_creation1;
-		}
-
-		if (creation_sound == -1) {
-			creation_sound = building.sound_selection;
-		}
-
-		if (dying_sound == -1) {
-			dying_sound = 323; //generic explosion sound
-		}
-
-		TestBuilding *newbuilding = new TestBuilding{
-			this->assetmanager.get_texture(tex_fname),
-			building.name,
-			foundation_size,
-			building.terrain_id,
-			creation_sound,
-			dying_sound
-		};
-		this->available_buildings.push_back(newbuilding);
-
-		delete[] tex_fname;
-		i += 1;
-	}
+	ProducerLoader pload(this);
+	available_objects = pload.create_producers(gamedata, your_civ_id);
 
 	// playable sound files for the audio manager
 	std::vector<gamedata::sound_file> sound_files;
@@ -346,14 +291,6 @@ void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 }
 
 GameMain::~GameMain() {
-	for (auto &obj : this->placed_buildings) {
-		delete obj;
-	}
-
-	for (auto &obj : this->available_buildings) {
-		delete obj;
-	}
-
 	// oh noes, release hl3 before that!
 	delete this->gaben;
 
@@ -385,7 +322,19 @@ bool GameMain::on_input(SDL_Event *e) {
 		coord::phys3 mousepos_phys3 = mousepos_camgame.to_phys3();
 		coord::tile mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
-		if (clicking_active and e->button.button == SDL_BUTTON_LEFT) {
+		if (clicking_active and e->button.button == SDL_BUTTON_LEFT and !construct_mode) {
+			TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
+			if (chunk == nullptr) {
+				break;
+			}
+
+			// get object currently standing at the clicked position
+			if (!chunk->get_data(mousepos_tile)->obj.empty()) {
+				TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
+				selected_unit = obj->unit;
+			}
+		}
+		else if (clicking_active and e->button.button == SDL_BUTTON_LEFT and construct_mode) {
 			log::dbg("LMB [window]:    x %9hd y %9hd",
 			         mousepos_window.x,
 			         mousepos_window.y);
@@ -405,8 +354,25 @@ bool GameMain::on_input(SDL_Event *e) {
 			TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
 			chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
 		}
-		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT) {
+		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and !construct_mode and selected_unit) {
+			TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
+			if (chunk == nullptr) {
+				break;
+			}
 
+			// get object currently standing at the clicked position
+			if (chunk->get_data(mousepos_tile)->obj.empty()) {
+				selected_unit->target(mousepos_phys3);
+			}
+			else {
+				// try target unit
+				Unit *obj = chunk->get_data(mousepos_tile)->obj[0]->unit;
+				if (!selected_unit->target(obj)) {
+					selected_unit->target(mousepos_phys3);
+				}
+			}
+		}
+		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and construct_mode) {
 			// get chunk clicked on, don't create it if it's not there already
 			// -> placing buildings in void is forbidden that way
 			TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
@@ -414,36 +380,16 @@ bool GameMain::on_input(SDL_Event *e) {
 				break;
 			}
 
-			// get object currently standing at the clicked position
-			TerrainObject *obj = chunk->get_data(mousepos_tile)->obj;
-			if (obj != nullptr) {
-				obj->remove();
-				this->placed_buildings.erase(obj);
-				this->available_sounds[obj->sound_id_destruction].play();
-				delete obj;
-			} else if (this->available_buildings.size() > 0) {
-				TestBuilding *newbuilding = this->available_buildings[this->editor_current_building];
-				int coloring = util::random_range(1, 8 + 1);
-				TerrainObject *newobj = new TerrainObject(
-					newbuilding->texture,
-					newbuilding->foundation_size,
-					coloring,
-					newbuilding->sound_id_destruction
-				);
-
-				// try to place the obj, it knows best whether it will fit.
-				bool obj_placed = newobj->place(terrain, mousepos_tile);
-				if (obj_placed) {
-					this->available_sounds[newbuilding->sound_id_creation].play();
-					this->placed_buildings.insert(newobj);
-
-					if (newbuilding->foundation_terrain > 0) {
-						// TODO: use the gamedata terrain lookup!
-						newobj->set_ground(newbuilding->foundation_terrain, 0);
-					}
-				} else {
-					delete newobj;
-				}
+			// delete any unit on the tile
+			if (!chunk->get_data(mousepos_tile)->obj.empty()) {
+				// get first object currently standing at the clicked position
+				TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
+				if (obj->unit == selected_unit) selected_unit = nullptr;
+				obj->unit->delete_unit();
+			} else if ( this->available_objects.size() > 0 ) {
+				// try creating a unit
+				std::shared_ptr<UnitProducer> producer = this->available_objects[this->editor_current_building];
+				this->placed_units.new_unit(producer, terrain, mousepos_tile);
 			}
 			break;
 		}
@@ -495,8 +441,8 @@ bool GameMain::on_input(SDL_Event *e) {
 		break;
 
 	case SDL_MOUSEWHEEL:
-		if (this->ctrl_active) {
-			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->available_buildings.size());
+		if (this->ctrl_active && this->available_objects.size() > 0) {
+			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->available_objects.size());
 		}
 		else {
 			editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
@@ -543,6 +489,9 @@ bool GameMain::on_input(SDL_Event *e) {
 
 		case SDLK_LCTRL:
 			this->ctrl_active = false;
+			break;
+		case SDLK_m:
+			this->construct_mode = !this->construct_mode;
 			break;
 		}
 
@@ -637,15 +586,38 @@ bool GameMain::on_drawhud() {
 	// draw the currently selected editor texture tile
 	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
 
-	if (this->available_buildings.size() > 0) {
+	if (this->available_objects.size() > 0) {
 		// and the current active building
 		coord::window bpreview_pos;
 		bpreview_pos.x = e.window_size.x - 200;
 		bpreview_pos.y = 200;
-		this->available_buildings[this->editor_current_building]->texture->draw(bpreview_pos.to_camhud());
+		this->available_objects[this->editor_current_building]->default_texture()->draw(bpreview_pos.to_camhud());
 	}
 
 	return true;
+}
+
+Texture *GameMain::find_graphic(int16_t graphic_id) {
+	if (graphic_id <= 0 || this->graphics.count(graphic_id) == 0) {
+		log::msg("  -> ignoring graphics_id: %d", graphic_id);
+		return nullptr;
+	}
+
+	int slp_id = this->graphics[graphic_id]->slp_id;
+	if (slp_id <= 0) {
+		log::msg("  -> ignoring slp_id: %d", slp_id);
+		return nullptr;
+	}
+
+	log::msg("   slp id/name: %d %s", slp_id, this->graphics[graphic_id]->name0.c_str());
+	char *tex_fname = util::format("converted/Data/graphics.drs/%d.slp.png", slp_id);
+	Texture *tex = this->assetmanager.get_texture(tex_fname);
+	delete[] tex_fname;
+	return tex;
+}
+
+TestSound *GameMain::find_sound(int16_t sound_id) {
+	return &this->available_sounds[sound_id];
 }
 
 void GameMain::draw_debug_grid() {
@@ -703,12 +675,16 @@ void TestSound::play() {
 	if (this->sound_items.size() <= 0) {
 		return;
 	}
-
 	audio::AudioManager &am = Engine::get().get_audio_manager();
 
 	int rand = util::random_range(0, this->sound_items.size());
 	int sndid = this->sound_items[rand];
-	audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();
+	try {
+		audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();
+	}
+	catch(util::Error &e) {
+		log::dbg("cannot play: %s", e.str());
+	}
 }
 
 } //namespace openage

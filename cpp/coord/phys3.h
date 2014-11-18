@@ -18,9 +18,9 @@ struct phys3 {
 
 	#include "ops/abs.h"
 
-	phys2 to_phys2();
+	phys2 to_phys2() const;
 	camgame to_camgame();
-	tile3 to_tile3();
+	tile3 to_tile3() const;
 	phys3_delta get_fraction();
 };
 
@@ -29,7 +29,7 @@ struct phys3_delta {
 
 	#include "ops/rel.h"
 
-	phys2_delta to_phys2();
+	phys2_delta to_phys2() const;
 	camgame_delta to_camgame();
 };
 

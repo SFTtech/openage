@@ -3,6 +3,7 @@
 #ifndef OPENAGE_GAME_MAIN_H_
 #define OPENAGE_GAME_MAIN_H_
 
+#include <memory>
 #include <SDL2/SDL.h>
 #include <unordered_map>
 #include <unordered_set>
@@ -16,13 +17,15 @@
 #include "terrain/terrain.h"
 #include "terrain/terrain_object.h"
 #include "gamedata/graphic.gen.h"
+#include "unit/unit_container.h"
 #include "util/externalprofiler.h"
 #include "gamedata/gamedata.gen.h"
 #include "job/job.h"
 
-
 namespace openage {
 
+class Unit;
+class UnitProducer;
 
 /**
  * runs the game.
@@ -39,7 +42,7 @@ bool input_handler(SDL_Event *e);
 
 class TestBuilding {
 public:
-	openage::Texture *texture;
+	Texture *texture;
 	std::string name;
 	openage::coord::tile_delta foundation_size;
 	int foundation_terrain;
@@ -70,10 +73,13 @@ public:
 	virtual bool on_drawhud();
 	virtual bool on_input(SDL_Event *e);
 
+	Texture *find_graphic(int16_t graphic_id);
+	TestSound *find_sound(int16_t sound_id);
+
 	/**
-	 * all available buildings.
+	 * all available game objects.
 	 */
-	std::vector<TestBuilding *> available_buildings;
+	std::vector<std::shared_ptr<UnitProducer>> available_objects;
 
 	/**
 	 * all available sounds.
@@ -89,7 +95,7 @@ public:
 	/**
 	 * all the buildings that have been placed.
 	 */
-	std::unordered_set<openage::TerrainObject *> placed_buildings;
+	UnitContainer placed_units;
 
 	/**
 	 * debug function that draws a simple overlay grid
@@ -104,7 +110,9 @@ public:
 	bool clicking_active;
 	bool ctrl_active;
 	bool scrolling_active;
+	bool construct_mode;
 
+	Unit *selected_unit;
 	Terrain *terrain;
 	Texture *gaben;
 

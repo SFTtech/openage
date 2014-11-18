@@ -59,6 +59,7 @@ public:
 	 */
 	size_t atlas_dimensions;
 
+	Texture(int width, int height, void *data); // single frame rgba8 texture
 	Texture(std::string filename, bool use_metafile = false);
 	~Texture();
 
@@ -114,6 +115,7 @@ private:
 	std::string filename;
 
 	void load();
+	GLuint make_gl_texture(int iformat, int oformat, int w, int h, void *);
 	void unload();
 };
 

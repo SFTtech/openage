@@ -22,8 +22,7 @@
 namespace openage {
 
 TileContent::TileContent() :
-	terrain_id{0},
-	obj{nullptr} {
+	terrain_id{0} {
 }
 
 TileContent::~TileContent() {}
@@ -427,9 +426,8 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab,
 			// TODO: make the terrain independent of objects standing on it.
 			TileContent *tile_content = this->get_data(tilepos);
 			if (tile_content != nullptr) {
-				TerrainObject *obj = tile_content->obj;
-				if (obj != nullptr) {
-					objects->insert(obj);
+				for (TerrainObject *obj_item : tile_content->obj ) {
+					objects->insert(obj_item);
 				}
 			}
 		}

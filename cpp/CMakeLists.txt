@@ -10,9 +10,7 @@ declare_executable(${PROJECT_NAME})
 add_sources(${PROJECT_NAME}
 	main.cpp
 	args.cpp
-
 	game_main.cpp
-
 	assetmanager.cpp
 	callbacks.cpp
 	engine.cpp
@@ -32,14 +30,15 @@ add_sources(${PROJECT_NAME}
 add_subdirectory("audio")
 add_subdirectory("console")
 add_subdirectory("coord")
+add_subdirectory("crossplatform")
+add_subdirectory("datastructure")
 add_subdirectory("job")
 add_subdirectory("pathfinding")
 add_subdirectory("shader")
-add_subdirectory("util")
-add_subdirectory("crossplatform")
-add_subdirectory("datastructure")
 add_subdirectory("terrain")
 add_subdirectory("testing")
+add_subdirectory("unit")
+add_subdirectory("util")
 
 # finalize testing
 finalize_tests(cpp)

@@ -12,11 +12,11 @@
 namespace openage {
 namespace coord {
 
-phys2 phys3::to_phys2() {
+phys2 phys3::to_phys2() const {
 	return phys2 {ne, se};
 }
 
-phys2_delta phys3_delta::to_phys2() {
+phys2_delta phys3_delta::to_phys2() const {
 	return phys2_delta {ne, se};
 }
 
@@ -50,7 +50,7 @@ camgame_delta phys3_delta::to_camgame() {
 	return result;
 }
 
-tile3 phys3::to_tile3() {
+tile3 phys3::to_tile3() const {
 	tile3 result;
 	result.ne = (ne >> settings::phys_t_radix_pos);
 	result.se = (se >> settings::phys_t_radix_pos);
