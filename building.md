@@ -16,8 +16,8 @@ be extracted by the `openage.convert` python module from an
 setup CDs is almost finished).
 
 We use the `cmake` system for all our building needs. The `configure`
-script is a cmake wrapper that will create a build directory and
-invoke cmake with the appropriate flags. The Makefile in the project
+script is a _cmake wrapper_ that will create a build directory and
+invoke cmake with the appropriate flags. The `Makefile` in the project
 root acts as a wrapper around several useful features.
 
 For more build system internals, see [doc/buildsystem.md](doc/buildsystem.md).
@@ -50,28 +50,35 @@ Dependency list:
     C     gcc >=4.8 or clang >=3.3
 
     T     An installed version of any of the following (wine is your friend). Other versions _might_ work; setup disk support will be added soon:
-    
+
      - Age of Empires II: The Conquerors Patch 1.0c
      - Age of Empires II: Forgotten Empires
      - Age of Empires II HD
+
 
 ### Prerequisite steps for Ubuntu users (Ubuntu 14.10)
 
  - `sudo apt-get update`
  - `sudo apt-get install cmake libfreetype6-dev python3-dev libglew-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools python3-pil python3-numpy`
 
+
 ### Prerequisite steps for Fedora users (Fedora 20)
 
-    sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel glew-devel opus-tools opusfile-devel
+`sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel glew-devel opus-tools opusfile-devel`
+
 
 ### Prerequisite steps for openSUSE users (openSUSE 13.1)
 
-If you already have python3 or one of packman/games repositories then no need to run the first two lines. If unsure then just run last line and see if all packages can be installed. Also feel free to drop `--no-recommends` from last line.
+If you already have python3 or one of packman/games repositories then no
+need to run the first two lines.
+If unsure then just run last line and see if all packages can be installed.
+Also feel free to drop `--no-recommends` from last line.
 
-    zypper addrepo http://download.opensuse.org/repositories/devel:languages:python3/openSUSE_13.1/devel:languages:python3.repo
-    zypper addrepo http://packman.inode.at/suse/openSUSE_13.1/ packman
-    zypper refresh
-    zypper install --no-recommends cmake fontconfig-devel ftgl-devel gcc-c++ glew-devel libfreetype6 libogg-devel libopus-devel libSDL2-devel libSDL2_image-devel opusfile-devel opus-tools python3-devel python3-numpy python3-Pillow
+ - `zypper addrepo http://download.opensuse.org/repositories/devel:languages:python3/openSUSE_13.1/devel:languages:python3.repo`
+ - `zypper addrepo http://packman.inode.at/suse/openSUSE_13.1/ packman`
+ - `zypper refresh`
+ - `zypper install --no-recommends cmake fontconfig-devel ftgl-devel gcc-c++ glew-devel libfreetype6 libogg-devel libopus-devel libSDL2-devel libSDL2_image-devel opusfile-devel opus-tools python3-devel python3-numpy python3-Pillow`
+
 
 ### Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)
 
@@ -83,23 +90,19 @@ If you already have python3 or one of packman/games repositories then no need to
  - `brew install numpy --with-python3`
  - `brew install pillow --with-python3`
 
+
 ### Prerequisite steps for Arch Linux users
 
 This command should provide required packages for Arch Linux installation:
-```
-sudo pacman -S --needed python python-pillow python-numpy glew ftgl ttf-dejavu freetype2 fontconfig cmake sdl2 sdl2_image opusfile opus-tools
-```
 
-And depending on which one you plan to use `gcc` or `clang` you need to choose
-one of these two commands:
-```
-sudo pacman -S --needed gcc
-```
-```
-sudo pacman -S --needed clang
-```
+`sudo pacman -S --needed python python-pillow python-numpy glew ftgl ttf-dejavu freetype2 fontconfig cmake sdl2 sdl2_image opusfile opus-tools`
+
+If you don't have a compiler installed, you can select between these commands to install it:
+ - `sudo pacman -S --needed gcc`
+ - `sudo pacman -S --needed clang`
 
 You can install both compilers, however only one of them will be used.
+
 
 ## Build procedure
 
@@ -146,7 +149,7 @@ You can install both compilers, however only one of them will be used.
 
  - I wanna see compiler invocations
   - `make VERBOSE=1`
- - My SDL2_Image/PythonInterp/whatever is installed somewhere, but `cmake` can't find it!
+ - My `SDL2_Image`/`PythonInterp`/whatever is installed somewhere, but `cmake` can't find it!
   - You can manually tell `cmake` where to look. Try something along the lines of
     `./configure --raw-cmake-args -DSDL2IMAGE_INCLUDE_DIRS=/whereever/sdl2_image/include/`
  - I get nonsensical cmake errors like `unable to execute /home/user/git/openage/clang++`
@@ -166,8 +169,8 @@ Help, it does't work!
 
 **A**
 
-Have a look at `Troubleshooting` above. Maybe you've found a bug...
-`irc.freenode.net/#sfttech`
+Have a look at [Troubleshooting](#troubleshooting) above.
+Maybe you've found a bug... `irc.freenode.net/#sfttech`
 
 **Q**
 
