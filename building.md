@@ -62,7 +62,7 @@ Dependency list:
 
 ### Prerequisite steps for Fedora users (Fedora 20)
 
-    sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel glew-devel opus-tools opusfile
+    sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel glew-devel opus-tools opusfile-devel
 
 ### Prerequisite steps for openSUSE users (openSUSE 13.1)
 
