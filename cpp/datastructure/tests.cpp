@@ -1,71 +1,160 @@
 // Copyright 2014-2014 the openage authors. See copying.md for legal info.
 
+#include "tests.h"
+
 #include "../log.h"
 #include "../datastructure/doubly_linked_list.h"
 #include "../datastructure/pairing_heap.h"
+
 
 namespace openage {
 namespace datastructure {
 namespace tests {
 
-void pairing_heap() {
-	PairingHeap<int> heap;
+int pairing_heap_0() {
+	PairingHeap<int> heap{};
 	int stage = 0;
 
-	if (not (heap.size() == 0)) { goto out; }
-	stage += 1;
+	if (not (heap.size() == 0)) { return stage; }
 
+	stage += 1; // 1:
 	heap.push(0);
 	heap.push(1);
 	heap.push(2);
 	heap.push(3);
 	heap.push(4);
-	stage += 1;
 
-	// 01234
-	if (not (heap.size() == 5)) { goto out; }
-	if (not (heap.top() == 0)) { goto out; }
-	stage += 1;
+	// state: 01234
+	stage += 1; // 2:
+	if (not (heap.size() == 5)) { return stage; }
+	if (not (heap.top() == 0)) { return stage; }
 
-	if (not (0 == heap.pop())) { goto out; }
-	if (not (1 == heap.pop())) { goto out; }
-	if (not (2 == heap.pop())) { goto out; }
-	if (not (3 == heap.pop())) { goto out; }
-	stage += 1;
+	stage += 1; // 3:
+	if (not (0 == heap.pop())) { return stage; }
+	if (not (1 == heap.pop())) { return stage; }
+	if (not (2 == heap.pop())) { return stage; }
+	if (not (3 == heap.pop())) { return stage; }
 
-	// 4
-	if (not (heap.size() == 1)) { goto out; }
-	stage += 1;
+	stage += 1; // 4:
+	if (not (heap.size() == 1)) { return stage; }
 
+	stage += 1; // 5:
 	heap.push(0);
 	heap.push(10);
 
-	stage += 1;
+	// state: 0 4 10
 
-	if (not (0 == heap.pop())) { goto out; }
-	if (not (4 == heap.pop())) { goto out; }
-	if (not (10 == heap.pop())) { goto out; }
-	if (not (heap.size() == 0)) { goto out; }
-	stage += 1;
+	stage += 1; // 6:
+	if (not (0 == heap.pop())) { return stage; }
+	if (not (4 == heap.pop())) { return stage; }
+	if (not (10 == heap.pop())) { return stage; }
+	if (not (heap.size() == 0)) { return stage; }
 
+	stage += 1; // 7:
 	heap.push(5);
 	heap.push(5);
 	heap.push(0);
 	heap.push(5);
 	heap.push(5);
-	if (not (0 == heap.pop())) { goto out; }
-	if (not (5 == heap.pop())) { goto out; }
-	if (not (5 == heap.pop())) { goto out; }
-	if (not (5 == heap.pop())) { goto out; }
-	if (not (5 == heap.pop())) { goto out; }
+	if (not (0 == heap.pop())) { return stage; }
+	if (not (5 == heap.pop())) { return stage; }
+	if (not (5 == heap.pop())) { return stage; }
+	if (not (5 == heap.pop())) { return stage; }
+	if (not (5 == heap.pop())) { return stage; }
 
-	if (not (heap.size() == 0)) { goto out; }
-	stage += 1;
+	if (not (heap.size() == 0)) { return stage; }
+	return -1;
+}
+
+
+int pairing_heap_1() {
+	int stage = 0;
+
+	PairingHeap<heap_elem> heap{};
+	heap.push(heap_elem{1});
+	auto node = heap.push(heap_elem{2});
+	heap.push(heap_elem{3});
+
+	// 1 2 3
+	stage += 1; // 1:
+	node->data.data = 0;
+	heap.update(node);
+
+	// 0 1 3
+	stage += 1; // 2:
+	if (not (0 == heap.pop().data)) { return stage; }
+	if (not (1 == heap.pop().data)) { return stage; }
+	if (not (3 == heap.pop().data)) { return stage; }
+
+	return -1;
+}
+
+int pairing_heap_2() {
+	int stage = 0;
+
+	PairingHeap<heap_elem> heap{};
+	heap.push(heap_elem{1});
+	auto node = heap.push(heap_elem{2});
+	heap.push(heap_elem{3});
+
+	// state: 1 2 3
+	stage += 1; // 1:
+	if (not (2 == heap.pop_node(node).data)) {return stage; }
+
+	// state: 1 3
+	stage += 1; // 2:
+	if (not (1 == heap.pop().data)) { return stage; }
+	if (not (3 == heap.pop().data)) { return stage; }
+
+	return -1;
+}
+
+int pairing_heap_3() {
+	int stage = 0;
+
+	PairingHeap<heap_elem> heap{};
+	heap.push(heap_elem{0});
+	heap.push(heap_elem{1});
+	heap.push(heap_elem{2});
+	heap.push(heap_elem{3});
+	heap.push(heap_elem{4});
+	heap.push(heap_elem{5});
+	heap.pop(); // trigger pairing
+
+	heap.clear();
+
+	stage += 1; // 1:
+	if (heap.size() != 0) { return stage; }
+	if (heap.empty() == false) { return stage; }
+
+	return -1;
+}
+
+
+void pairing_heap() {
+	int ret;
+	const char *testname;
+	if ((ret = pairing_heap_0()) != -1) {
+		testname = "simple push pop test";
+		goto out;
+	}
+	else if ((ret = pairing_heap_1()) != -1) {
+		testname = "pairing heap update test";
+		goto out;
+	}
+	else if ((ret = pairing_heap_2()) != -1) {
+		testname = "pairing heap delete_node test";
+		goto out;
+	}
+	else if ((ret = pairing_heap_3()) != -1) {
+		testname = "pairing heap delete_node test";
+		goto out;
+	}
 
 	return;
 out:
-	log::err("pairing heap test failed at stage %d", stage);
-	throw "failed pairing heap test";
+	log::err("%s failed at stage %d", testname, ret);
+	throw "failed pairing heap tests";
 }
 
 void doubly_linked_list() {
