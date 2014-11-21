@@ -250,44 +250,49 @@ void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 	ProducerLoader pload(this);
 	available_objects = pload.create_producers(gamedata, your_civ_id);
 
+	auto get_sound_file_location = [asset_dir](int32_t resource_id) -> std::string {
+		std::unique_ptr<char[]> snd_file_location;
+		// We check in sounds_x1.drs folder first in case we need to override
+		for (const char *sound_dir : {"sounds_x1.drs", "sounds.drs"}) {
+			snd_file_location.reset(util::format("Data/%s/%d.opus", sound_dir, resource_id));
+			if (util::file_size(asset_dir.join(snd_file_location.get())) > 0) {
+				return std::move(std::string(snd_file_location.get()));
+			}
+		}
+		// We could not find the sound file for the provided resource_id in both directories
+		return "";
+	};
+
 	// playable sound files for the audio manager
 	std::vector<gamedata::sound_file> sound_files;
+	for (gamedata::sound &sound : gamedata[0].sounds.data) {
+		std::vector<int> sound_items;
 
-	for (auto &sound : gamedata[0].sounds.data) {
-		for (auto &item : sound.sound_items.data) {
-			char *snd_fname = util::format("Data/sounds.drs/%d.opus", item.resource_id);
-			std::string snd_full_filename = asset_dir.join(snd_fname);
-
-			if (0 >= util::file_size(snd_full_filename)) {
-				log::msg("   file %s is not there, ignoring...", snd_full_filename.c_str());
-				delete[] snd_fname;
+		for (gamedata::sound_item &item : sound.sound_items.data) {
+			std::string snd_file_location = get_sound_file_location(item.resource_id);
+			if (snd_file_location.empty()) {
+				log::msg("   No sound file found for resource_id %d, ignoring...", item.resource_id);
 				continue;
 			}
+
+			sound_items.push_back(item.resource_id);
 
 			gamedata::sound_file f {
 				gamedata::audio_category_t::GAME,
 				item.resource_id,
-				snd_fname,
+				snd_file_location,
 				gamedata::audio_format_t::OPUS,
 				gamedata::audio_loader_policy_t::IN_MEMORY
 			};
 			sound_files.push_back(f);
-			delete[] snd_fname;
 		}
+		// create test sound objects that can be played later
+		this->available_sounds[sound.id] = TestSound{sound_items};
 	}
 
 	// load the requested sounds.
 	audio::AudioManager &am = engine->get_audio_manager();
 	am.load_resources(asset_dir, sound_files);
-
-	// create test sound objects that can be played later
-	for (auto &sound : gamedata[0].sounds.data) {
-		std::vector<int> sound_items;
-		for (auto &item : sound.sound_items.data) {
-			sound_items.push_back(item.resource_id);
-		}
-		this->available_sounds[sound.id] = TestSound{sound_items};
-	}
 }
 
 GameMain::~GameMain() {
