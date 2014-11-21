@@ -1,6 +1,7 @@
 // Copyright 2014-2014 the openage authors. See copying.md for legal info.
 
 #include <cmath>
+#include <GL/glew.h>
 
 #include "path.h"
 #include "../terrain/terrain.h"
@@ -113,6 +114,17 @@ Path::Path(const std::vector<Node> &nodes)
 }
 
 Path::~Path() {
+}
+
+void Path::draw_path() {
+	glLineWidth(1);
+	glColor3f(0.3, 1.0, 0.3);
+	glBegin(GL_LINES);
+	for (Node &n : waypoints) {
+		coord::camgame draw_pos = n.position.to_camgame();
+		glVertex3f(draw_pos.x, draw_pos.y, 0);
+	}
+	glEnd();
 }
 
 } // namespace path

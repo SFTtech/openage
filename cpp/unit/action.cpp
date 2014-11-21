@@ -10,14 +10,15 @@
 
 namespace openage {
 
+bool UnitAction::show_debug = false;
+
 UnitAction::UnitAction(Unit *u, Texture *t, TestSound *s, float fr)
 	:
 	entity{u},
 	tex{t},
 	on_begin{s},
 	frame{.0f},
-	frame_rate{fr} {
-}
+	frame_rate{fr} {}
 
 void UnitAction::draw() {
 	// play sound if available
@@ -57,6 +58,9 @@ void UnitAction::draw() {
 	uint to_draw = angle * groupsize + ((uint) frame % groupsize);
 	this->tex->draw(draw_pos.to_camgame(), PLAYERCOLORED, mirror, to_draw, color);
 	this->frame += this->frame_rate;
+
+	// draw debug content if available
+	if(show_debug && debug_draw_action) debug_draw_action();
 }
 
 void DeadAction::update(unsigned int) {
@@ -80,6 +84,9 @@ MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, coord::phys3 tar, bool
 
 	// set an initial path
 	this->set_path();
+	this->debug_draw_action = [&]() {
+		this->path.draw_path();
+	};
 }
 
 MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, UnitReference tar, coord::phys_t rad)
@@ -92,19 +99,25 @@ MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, UnitReference tar, coo
 
 	// set an initial path
 	this->set_path();
+	this->debug_draw_action = [&]() {
+		this->path.draw_path();
+	};
 }
 
 MoveAction::~MoveAction() {}
 
 void MoveAction::update(unsigned int time) {
 	if (this->unit_target.is_valid()) {
-		coord::phys3 unit_pos = this->unit_target.get()->location->pos.draw;
+		coord::phys3 &target_pos = this->unit_target.get()->location->pos.draw;
+		coord::phys3 &unit_pos = this->entity->location->pos.draw;
 
 		// repath if target changes tiles by a threshold
-		coord::phys_t dx = unit_pos.ne - this->target.ne;
-		coord::phys_t dy = unit_pos.se - this->target.se;
-		if (std::hypot(dx, dy) > (1 << 16)) {
-			this->target = unit_pos;
+		coord::phys_t tdx = target_pos.ne - this->target.ne;
+		coord::phys_t tdy = target_pos.se - this->target.se;
+		coord::phys_t udx = unit_pos.ne - this->target.ne;
+		coord::phys_t udy = unit_pos.se - this->target.se;
+		if (this->path.waypoints.empty() || std::hypot(tdx, tdy) > std::hypot(udx, udy) / 8) {
+			this->target = target_pos;
 			this->set_path();
 		}
 	}
@@ -145,7 +158,7 @@ void MoveAction::update(unsigned int time) {
 		}
 		else {
 			// distance_to_waypoint is larger so need to divide
-			move_dir /= (distance_to_waypoint / distance_to_move);
+			move_dir = (move_dir * distance_to_move) / distance_to_waypoint;
 
 			// change entity position and direction
 			new_position += move_dir;
@@ -173,14 +186,22 @@ void MoveAction::update(unsigned int time) {
 }
 
 bool MoveAction::completed() {
-	if (this->path.waypoints.empty()) {
-		return true;
+	if (this->unit_target.is_valid()) {
+		// distance from the units edge
+		coord::phys3 &unit_loc = this->entity->location->pos.draw;
+		this->distance_to_target = this->unit_target.get()->location->from_edge(unit_loc);
+	}
+	else {
+		// no more waypoints to a static location
+		if (this->path.waypoints.empty()) {
+			return true;
+		}
+		coord::phys3_delta move_dir = target - this->entity->location->pos.draw;
+
+		// normalise dir
+		this->distance_to_target = (coord::phys_t) std::hypot(move_dir.ne, move_dir.se);
 	}
 
-	coord::phys3_delta move_dir = target - this->entity->location->pos.draw;
-
-	// normalise dir
-	this->distance_to_target = (coord::phys_t) std::hypot(move_dir.ne, move_dir.se);
 
 	/*
 	 * close enough to end action

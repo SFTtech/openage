@@ -19,6 +19,7 @@
 #include "gamedata/string_resource.gen.h"
 #include "log.h"
 #include "terrain/terrain.h"
+#include "unit/action.h"
 #include "unit/producer.h"
 #include "unit/unit.h"
 #include "util/strings.h"
@@ -492,6 +493,9 @@ bool GameMain::on_input(SDL_Event *e) {
 			break;
 		case SDLK_m:
 			this->construct_mode = !this->construct_mode;
+			break;
+		case SDLK_p:
+			UnitAction::show_debug = !UnitAction::show_debug;
 			break;
 		}
 

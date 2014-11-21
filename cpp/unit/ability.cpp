@@ -1,5 +1,6 @@
 // Copyright 2014-2014 the openage authors. See copying.md for legal info.
 
+#include "../terrain/terrain_object.h"
 #include "ability.h"
 #include "action.h"
 #include "unit.h"
@@ -25,7 +26,8 @@ std::shared_ptr<UnitAction> MoveAbility::target(Unit *to_modify, coord::phys3 ta
 }
 
 std::shared_ptr<UnitAction> MoveAbility::target(Unit *to_modify, Unit *target) {
-	return std::make_shared<MoveAction>(to_modify, this->tex, nullptr, target->get_ref(), 5000);
+	coord::phys_t radius = (1 << (path::neigh_shift + 1)) + to_modify->location->min_axis() / 2;
+	return std::make_shared<MoveAction>(to_modify, this->tex, nullptr, target->get_ref(), radius);
 }
 
 GatherAbility::GatherAbility(Texture *t, TestSound *s)

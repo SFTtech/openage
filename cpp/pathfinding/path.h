@@ -54,15 +54,16 @@ using node_pt = std::shared_ptr<Node>;
 using nodemap_t = std::unordered_map<coord::phys3, node_pt, phys3_hash>;
 
 constexpr unsigned int neigh_shift = 13;
+constexpr coord::phys_t neigh_spacing = (1 << neigh_shift);
 constexpr coord::phys3_delta const neigh_phys[] = {
-	{ 1 * (1 << neigh_shift), -1 * (1 << neigh_shift), 0},
-	{ 1 * (1 << neigh_shift),  0 * (1 << neigh_shift), 0},
-	{ 1 * (1 << neigh_shift),  1 * (1 << neigh_shift), 0},
-	{ 0 * (1 << neigh_shift),  1 * (1 << neigh_shift), 0},
-	{-1 * (1 << neigh_shift),  1 * (1 << neigh_shift), 0},
-	{-1 * (1 << neigh_shift),  0 * (1 << neigh_shift), 0},
-	{-1 * (1 << neigh_shift), -1 * (1 << neigh_shift), 0},
-	{ 0 * (1 << neigh_shift), -1 * (1 << neigh_shift), 0}
+	{ 1 * neigh_spacing, -1 * neigh_spacing, 0},
+	{ 1 * neigh_spacing,  0 * neigh_spacing, 0},
+	{ 1 * neigh_spacing,  1 * neigh_spacing, 0},
+	{ 0 * neigh_spacing,  1 * neigh_spacing, 0},
+	{-1 * neigh_spacing,  1 * neigh_spacing, 0},
+	{-1 * neigh_spacing,  0 * neigh_spacing, 0},
+	{-1 * neigh_spacing, -1 * neigh_spacing, 0},
+	{ 0 * neigh_spacing, -1 * neigh_spacing, 0}
 };
 
 /**
@@ -170,6 +171,8 @@ public:
 	Path();
 	Path(const std::vector<Node> &nodes);
 	~Path();
+
+	void draw_path();
 
 	/**
 	 * These are the waypoints to navigate in order.

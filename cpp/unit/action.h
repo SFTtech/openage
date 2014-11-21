@@ -54,6 +54,8 @@ public:
 	 */
 	virtual bool allow_destruction() = 0;
 
+	static bool show_debug;
+
 protected:
 	/**
 	 * the entity being updated
@@ -67,6 +69,11 @@ protected:
 	TestSound *on_begin;
 	float frame;
 	float frame_rate;
+
+	/**
+	 * additional drawing for debug purposes
+	 */
+	std::function<void(void)> debug_draw_action;
 };
 
 /**
