@@ -12,11 +12,11 @@ namespace openage {
 
 UnitAction::UnitAction(Unit *u, Texture *t, TestSound *s, float fr)
 	:
-	entity(u),
-	tex(t),
-	on_begin(s),
-	frame(.0f),
-	frame_rate(fr) {
+	entity{u},
+	tex{t},
+	on_begin{s},
+	frame{.0f},
+	frame_rate{fr} {
 }
 
 void UnitAction::draw() {
@@ -70,23 +70,25 @@ bool DeadAction::completed() {
 	return this->frame > (this->tex->get_subtexture_count() / 5);
 }
 
-MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, coord::phys3 tar)
+MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, coord::phys3 tar, bool repath)
 	:
-	UnitAction(e, t, s),
-	unit_target(nullptr),
+	UnitAction{e, t, s},
+	unit_target{},
 	target(tar),
-	radius(7500) {
+	radius{7500},
+	allow_repath{repath} {
 
 	// set an initial path
 	this->set_path();
 }
 
-MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, Unit *tar, coord::phys_t rad)
+MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, UnitReference tar, coord::phys_t rad)
 	:
-	UnitAction(e, t, s),
-	unit_target(tar),
-	target(tar->location->pos.draw),
-	radius(rad) {
+	UnitAction{e, t, s},
+	unit_target{tar},
+	target(tar.get()->location->pos.draw),
+	radius{rad},
+	allow_repath{false} {
 
 	// set an initial path
 	this->set_path();
@@ -95,21 +97,15 @@ MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, Unit *tar, coord::phys
 MoveAction::~MoveAction() {}
 
 void MoveAction::update(unsigned int time) {
-	bool repath = false;
-	if (this->unit_target) {
-		coord::phys3 old_target = this->target;
-		this->target = this->unit_target->location->pos.draw;
+	if (this->unit_target.is_valid()) {
+		coord::phys3 unit_pos = this->unit_target.get()->location->pos.draw;
 
 		// repath if target changes tiles by a threshold
-		coord::phys_t dx = old_target.ne - this->target.ne;
-		coord::phys_t dy = old_target.se - this->target.se;
+		coord::phys_t dx = unit_pos.ne - this->target.ne;
+		coord::phys_t dy = unit_pos.se - this->target.se;
 		if (std::hypot(dx, dy) > (1 << 16)) {
-			repath = true;
-		}
-
-		if ( this->unit_target->has_attribute(attr_type::hitpoints) &&
-		     this->unit_target->get_attribute<attr_type::hitpoints>().current < 1) {
-			this->unit_target = nullptr;
+			this->target = unit_pos;
+			this->set_path();
 		}
 	}
 	if (this->path.waypoints.empty()) {
@@ -163,16 +159,16 @@ void MoveAction::update(unsigned int time) {
 	if (move_completed) {
 		d_attr.unit_dir = new_direction;
 	}
-
-	// cases for modifying path
-	if (this->unit_target && !move_completed) {
-		log::dbg("path blocked -- drop action");
-		this->path.waypoints.clear();
-	}
-	else if (repath || !move_completed) {
-		// move failed -- try creating a new path
-		log::dbg("path blocked -- finding new path");
-		this->set_path();
+	else {
+		// cases for modifying path when blocked
+		if (this->allow_repath) {
+			log::dbg("path blocked -- finding new path");
+			this->set_path();
+		}
+		else {
+			log::dbg("path blocked -- drop action");
+			this->path.waypoints.clear();
+		}
 	}
 }
 
@@ -204,8 +200,8 @@ coord::phys3 MoveAction::next_waypoint() const {
 }
 
 void MoveAction::set_path() {
-	if (this->unit_target) {
-		this->path = path::to_object(this->entity->location, this->unit_target->location);
+	if (this->unit_target.is_valid()) {
+		this->path = path::to_object(this->entity->location, this->unit_target.get()->location);
 	}
 	else {
 		coord::phys3 start = this->entity->location->pos.draw;
@@ -214,17 +210,18 @@ void MoveAction::set_path() {
 	}
 }
 
-GatherAction::GatherAction(Unit *e, Unit *tar, Texture *t, TestSound *s)
+GatherAction::GatherAction(Unit *e, UnitReference tar, Texture *t, TestSound *s)
 	:
-	UnitAction( e, t, s ),
-	target(tar),
-	range(40000),
-	carrying(0) {
+	UnitAction{e, t, s},
+	target{tar},
+	range{40000},
+	carrying{0} {
 }
 
 GatherAction::~GatherAction() {}
 
 void GatherAction::update(unsigned int time) {
+	if (!this->target.is_valid()) return;
 	if (carrying > 10) {
 		auto move_ability = this->entity->get_ability(ability_type::move);
 		this->entity->push_action(move_ability->target(this->entity, coord::phys3{0, 0, 0}));
@@ -232,15 +229,16 @@ void GatherAction::update(unsigned int time) {
 	}
 
 	// set direction unit should face
+	TerrainObject *target_location = this->target.get()->location;
 	if (this->entity->has_attribute(attr_type::direction)) {
 		auto &d_attr = this->entity->get_attribute<attr_type::direction>();
-		d_attr.unit_dir = this->target->location->pos.draw - this->entity->location->pos.draw;
+		d_attr.unit_dir = target_location->pos.draw - this->entity->location->pos.draw;
 	}
 
-	this->distance_to_target = target->location->from_edge(this->entity->location->pos.draw);
+	this->distance_to_target = target_location->from_edge(this->entity->location->pos.draw);
 	if (distance_to_target > range) {
 		auto move_ability = this->entity->get_ability(ability_type::move);
-		this->entity->push_action(move_ability->target(this->entity, target));
+		this->entity->push_action(move_ability->target(this->entity, target.get()));
 	}
 
 	// gather rate
@@ -248,27 +246,30 @@ void GatherAction::update(unsigned int time) {
 }
 
 bool GatherAction::completed() {
+	if (!this->target.is_valid()) return true;
 	return false;
 }
 
-AttackAction::AttackAction(Unit *e, Unit *tar, Texture *t, TestSound *s)
+AttackAction::AttackAction(Unit *e, UnitReference tar, Texture *t, TestSound *s)
 	:
-	UnitAction( e, t, s ),
-	target(tar),
-	range(40000),
-	strike_percent(0.0f) {
+	UnitAction{e, t, s},
+	target{tar},
+	range{40000},
+	strike_percent{0.0f} {
 }
 
 AttackAction::~AttackAction() {}
 
 void AttackAction::update(unsigned int time) {
+	if (!this->target.is_valid()) return;
+
 	// set direction unit should face
 	if (this->entity->has_attribute(attr_type::direction)) {
 		auto &d_attr = this->entity->get_attribute<attr_type::direction>();
-		d_attr.unit_dir = this->target->location->pos.draw - this->entity->location->pos.draw;
+		d_attr.unit_dir = this->target.get()->location->pos.draw - this->entity->location->pos.draw;
 	}
 
-	this->distance_to_target = target->location->from_edge(this->entity->location->pos.draw);
+	this->distance_to_target = target.get()->location->from_edge(this->entity->location->pos.draw);
 	if (strike_percent > 0.0) {
 		strike_percent -= 0.002 * time;
 		return;
@@ -281,13 +282,14 @@ void AttackAction::update(unsigned int time) {
 
 		// if this unit can move
 		if (move_ability) {
-			this->entity->push_action(move_ability->target(this->entity, target));
+			this->entity->push_action(move_ability->target(this->entity, target.get()));
 		}
 	}
 }
 
 bool AttackAction::completed() {
-	auto &h_attr = this->target->get_attribute<attr_type::hitpoints>();
+	if (!this->target.is_valid()) return true;
+	auto &h_attr = this->target.get()->get_attribute<attr_type::hitpoints>();
 	return h_attr.current < 1; // is unit still alive?
 }
 

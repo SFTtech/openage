@@ -11,13 +11,13 @@
 #include "../handlers.h"
 #include "ability.h"
 #include "attribute.h"
+#include "unit_container.h"
 
 namespace openage {
 
 class TerrainObject;
 class UnitAbility;
 class UnitAction;
-class UnitProducer;
 
 /**
  * A game object with current state represented by a stack of actions
@@ -26,13 +26,13 @@ class UnitProducer;
  */
 class Unit {
 public:
-	Unit(uint id, std::shared_ptr<UnitProducer> producer);
+	Unit(UnitContainer *c, id_t id);
 	virtual ~Unit();
 
 	/**
 	 * this units unique id value
 	 */
-	const uint id;
+	const id_t id;
 
 	/**
 	 * space on the map used by this unit
@@ -109,6 +109,12 @@ public:
 	 */
 	void delete_unit();
 
+	/**
+	 * get a reference which can check against the container
+	 * to ensure this object still exists
+	 */
+	UnitReference get_ref();
+
 private:
 	/**
 	 * ability available -- actions that this entity
@@ -131,6 +137,11 @@ private:
 	 * pop any destructable actions on the next update cycle
 	 */
 	bool pop_destructables;
+
+	/**
+	 * the container that updates this unit
+	 */
+	const UnitContainer *container;
 
 	/**
 	 * removes all actions above and including the first interuptable action

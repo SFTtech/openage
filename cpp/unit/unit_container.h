@@ -15,6 +15,22 @@ class Command;
 class Terrain;
 class Unit;
 class UnitProducer;
+class UnitContainer;
+
+using id_t = unsigned long int;
+
+class UnitReference {
+public:
+	UnitReference();
+	UnitReference(const UnitContainer *c, id_t id, Unit *);
+	bool is_valid() const;
+	Unit *get() const;
+
+private:
+	const UnitContainer *container;
+	id_t unit_id;
+	Unit *unit_ptr;
+};
 
 /**
  * the list of units that are currently in use
@@ -26,6 +42,16 @@ public:
 	~UnitContainer();
 
 	/**
+	 * checks the id is valid
+	 */
+	bool valid_id(id_t id) const;
+
+	/**
+	 * returns a reference to a unit
+	 */
+	UnitReference get_unit(id_t id);
+
+	/**
 	 * adds a new unit to the container
 	 */
 	bool new_unit(std::shared_ptr<UnitProducer> producer, Terrain *terrain, coord::tile tile);
@@ -33,7 +59,7 @@ public:
 	/**
 	 * give a command to a unit -- unit creation and deletion should be done as commands
 	 */
-	bool dispatch_command(uint to_id, const Command &cmd);
+	bool dispatch_command(id_t to_id, const Command &cmd);
 
 	/**
 	 * update dispatched by the game engine
@@ -47,7 +73,7 @@ private:
 	/**
 	 * mapping unit ids to unit objects
 	 */
-	std::unordered_map<uint, Unit *> live_units;
+	std::unordered_map<id_t, Unit *> live_units;
 
 };
 

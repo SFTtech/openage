@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "../pathfinding/path.h"
+#include "unit_container.h"
 
 namespace openage {
 
@@ -101,12 +102,19 @@ public:
 };
 
 /**
- * moves an entity to a fixed location
+ * moves an entity to another location
  */
 class MoveAction: public UnitAction {
 public:
-	MoveAction(Unit *e, Texture *t, TestSound *s, coord::phys3 tar);
-	MoveAction(Unit *e, Texture *t, TestSound *s, Unit *tar, coord::phys_t rad);
+	/**
+	 * moves unit to a given fixed location
+	 */
+	MoveAction(Unit *e, Texture *t, TestSound *s, coord::phys3 tar, bool repath=true);
+
+	/**
+	 * moves a unit towards another unit
+	 */
+	MoveAction(Unit *e, Texture *t, TestSound *s, UnitReference tar, coord::phys_t rad);
 	virtual ~MoveAction();
 
 	void update(unsigned int);
@@ -116,10 +124,13 @@ public:
 	coord::phys3 next_waypoint() const;
 
 private:
-	Unit *unit_target;
+	UnitReference unit_target;
 	coord::phys3 target;
 	coord::phys_t distance_to_target, radius;
 	path::Path path;
+
+	// should a new path be found if unit gets blocked
+	bool allow_repath;
 
 	void set_path();
 };
@@ -129,7 +140,7 @@ private:
  */
 class GatherAction: public UnitAction {
 public:
-	GatherAction(Unit *e, Unit *tar, Texture *t, TestSound *s);
+	GatherAction(Unit *e, UnitReference tar, Texture *t, TestSound *s);
 	virtual ~GatherAction();
 
 	void update(unsigned int);
@@ -138,7 +149,7 @@ public:
 	bool allow_destruction() { return false; }
 
 private:
-	Unit *target;
+	UnitReference target;
 	coord::phys_t distance_to_target, range;
 	float carrying;
 };
@@ -148,7 +159,7 @@ private:
  */
 class AttackAction: public UnitAction {
 public:
-	AttackAction(Unit *e, Unit *tar, Texture *t, TestSound *s);
+	AttackAction(Unit *e, UnitReference tar, Texture *t, TestSound *s);
 	virtual ~AttackAction();
 
 	void update(unsigned int);
@@ -157,7 +168,7 @@ public:
 	bool allow_destruction() { return false; }
 
 private:
-	Unit *target;
+	UnitReference target;
 	coord::phys_t distance_to_target, range;
 	float strike_percent;
 };

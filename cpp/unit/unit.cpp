@@ -12,12 +12,13 @@
 
 namespace openage {
 
-Unit::Unit(uint id, std::shared_ptr<UnitProducer> producer)
+Unit::Unit(UnitContainer *c, id_t id)
 	:
-	id(id),
-	location(nullptr),
-	pop_destructables(false) {
-	producer->initialise(this);
+	id{id},
+	location{nullptr},
+	pop_destructables{false},
+	container{c} {
+
 }
 
 Unit::~Unit() {}
@@ -60,15 +61,6 @@ bool Unit::update() {
 				return e->completed();
 			});
 		this->action_stack.erase(position_it, std::end(this->action_stack));
-	}
-
-	/*
-	 * remove object from map if no actions remain
-	 */
-	if (not this->has_action()) {
-		this->location->remove();
-		delete this->location;
-		this->location = nullptr;
 	}
 	return true;
 }
@@ -144,6 +136,10 @@ void Unit::erase_interuptables() {
 			return e->allow_interupt();
 		});
 	this->action_stack.erase(position_it, std::end(this->action_stack));
+}
+
+UnitReference Unit::get_ref() {
+	return UnitReference(container, id, this);
 }
 
 uint dir_group(coord::phys3_delta dir, uint angles, uint first_angle) {
