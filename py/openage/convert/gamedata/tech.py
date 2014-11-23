@@ -46,10 +46,10 @@ class Effect(Exportable):
                 # 12: range
                 # 13: working rate
                 # 14: resource carriage
-                # 15: unknown
+                # 15: default armor
                 # 16: new projectile unit
-                # 17: upgrade graphic
-                # 18: unknown?
+                # 17: upgrade graphic (icon), graphics angle
+                # 18: terrain restriction damage TODO
                 # 19: intelligent projectile aim 1=on, 0=off
                 # 20: minimum range
                 # 21: population support
@@ -87,6 +87,9 @@ class Tech(Exportable):  # also called techage in some other tools
             length="effect_count",
         )),
     )
+
+
+# TODO: add common tech class
 
 
 class AgeTechTree(Exportable):
@@ -141,7 +144,7 @@ class BuildingConnection(Exportable):
         (READ, "mode1", "int32_t"),  # TODO, xref possible values to the enum above (reuse them)
         (READ_UNKNOWN, None, "int32_t[8]"),
         (READ_UNKNOWN, None, "int8_t[11]"),
-        (READ_EXPORT, "connections", "int32_t"),          # 5: >=1 connections, 6: no connections
+        (READ_EXPORT, "line_mode", "int32_t"),          # 5: >=1 connections, 6: no connections
         (READ, "enabled_by_research_id", "int32_t"),      # current building is unlocked by this research id, -1=no unlock needed
     )
 
@@ -195,6 +198,6 @@ class ResearchConnection(Exportable):
         (READ, "line_mode", "int32_t"),
         (READ_UNKNOWN, None, "int32_t[8]"),
         (READ, "vertical_line", "int32_t"),
-        (READ, "location_in_age", "int32_t"), # 0=hidden, 1=first, 2=second
-        (READ, "first_age_mode", "int32_t"),  # 0=first age, else other ages.
+        (READ, "location_in_age", "int32_t"),  # 0=hidden, 1=first, 2=second
+        (READ, "line_mode", "int32_t"),        # 0=first age, else other ages.
     )

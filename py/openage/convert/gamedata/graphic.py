@@ -87,11 +87,12 @@ class Graphic(Exportable):
         (READ_EXPORT, "replay_delay", "float"),         # seconds to wait before current_frame=0 again
         (READ_EXPORT, "sequence_type", "int8_t"),
         (READ_EXPORT, "id", "int16_t"),
-        (READ_EXPORT, "mirroring_mode", "int16_t"),
+        (READ_EXPORT, "mirroring_mode", "int8_t"),
         (READ, "graphic_deltas", SubdataMember(
             ref_type=GraphicDelta,
             length="delta_count",
         )),
+        (READ_UNKNOWN, None, "int8_t"),                 # maybe something for the sprite editor of aoe:hd?
 
         # if attack_sound_used:
         (READ, "graphic_attack_sounds", SubdataMember(
