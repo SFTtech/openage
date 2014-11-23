@@ -9,6 +9,12 @@
 namespace openage {
 namespace path {
 
+bool compare_node_cost::operator ()(const node_pt lhs, const node_pt rhs) const {
+	// TODO: use node operator <
+	return lhs->future_cost < rhs->future_cost;
+}
+
+
 Node::Node(const coord::phys3 &pos, node_pt prev)
 	:
 	position(pos),
@@ -18,8 +24,8 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 	visited{false},
 	was_best{false},
 	factor{1.0f},
-	path_predecessor{prev} {
-
+	path_predecessor{prev},
+	heap_node(nullptr) {
 
 	if (prev) {
 		cost_t dx = this->position.ne - prev->position.ne;
@@ -62,7 +68,7 @@ cost_t Node::cost_to(const Node &other) const {
 Path Node::generate_backtrace() {
 	std::vector<Node> waypoints;
 
-	node_pt current = shared_from_this();
+	node_pt current = this->shared_from_this();
 	do {
 		waypoints.push_back(*current);
 		current = current->path_predecessor;
@@ -82,21 +88,22 @@ std::vector<node_pt> Node::get_neighbors(const nodemap_t &nodes, float scale) {
 			neighbors.push_back( nodes.at(n_pos) );
 		}
 		else {
-			neighbors.push_back( std::make_shared<Node>(n_pos, shared_from_this()) );
+			neighbors.push_back( std::make_shared<Node>(n_pos, this->shared_from_this()) );
 		}
 	}
 	return neighbors;
 }
 
 bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::phys3 &)> passable, float samples) {
-	// interpolate between points and make 5 passablity checks (dont check starting pos)
+	// interpolate between points and make passablity checks
+	// (dont check starting position)
 	for (int i = 1; i <= samples; ++i) {
 		double percent = (double) i / samples;
 		coord::phys_t ne = (1.0 - percent) * start->position.ne + percent * end->position.ne;
 		coord::phys_t se = (1.0 - percent) * start->position.se + percent * end->position.se;
 		coord::phys_t up = (1.0 - percent) * start->position.up + percent * end->position.up;
 
-		if ( !passable( coord::phys3{ ne, se, up } ) ) {
+		if (!passable(coord::phys3{ne, se, up})) {
 			return false;
 		}
 	}
