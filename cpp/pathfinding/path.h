@@ -39,6 +39,16 @@ using nodemap_t = std::unordered_map<coord::phys3, node_pt>;
 
 
 /**
+ * Cost comparison for node_pt.
+ * Extracts the ptr from the shared_ptr.
+ * Calls operator < on Node.
+ */
+struct compare_node_cost {
+	bool operator ()(const node_pt lhs, const node_pt rhs) const;
+};
+
+
+/**
  * Size of phys-coord grid for path nodes.
  *
  * This equals a node grid size of (phys/tile) / 8.

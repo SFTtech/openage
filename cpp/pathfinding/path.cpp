@@ -9,6 +9,12 @@
 namespace openage {
 namespace path {
 
+bool compare_node_cost::operator ()(const node_pt lhs, const node_pt rhs) const {
+	// TODO: use node operator <
+	return lhs->future_cost < rhs->future_cost;
+}
+
+
 Node::Node(const coord::phys3 &pos, node_pt prev)
 	:
 	position(pos),

@@ -36,13 +36,6 @@ Path a_star(coord::phys3 start,
             std::function<cost_t(const coord::phys3 &)> heuristic,
             std::function<bool(const coord::phys3 &)> passable);
 
-struct compare_node_cost {
-	bool operator()(const node_pt lhs, const node_pt rhs) const {
-		return lhs->future_cost > rhs->future_cost;
-	}
-};
-
-
 } // namespace path
 } // namespace openage
 
