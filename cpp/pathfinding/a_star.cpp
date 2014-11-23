@@ -32,7 +32,7 @@ Path to_point(coord::phys3 start,
 	auto valid_end = [&](const coord::phys3 &point) -> bool { 
 		coord::phys_t dx = point.ne - end.ne;	
 		coord::phys_t dy = point.se - end.se;
-		return std::hypot(dx, dy) < neigh_spacing;
+		return std::hypot(dx, dy) < path_grid_size;
 	};
 	auto h = [&](const coord::phys3 &point) -> cost_t { return euclidean_cost(point, end); };
 	return a_star(start, valid_end, h, passable);
@@ -41,7 +41,7 @@ Path to_point(coord::phys3 start,
 Path to_object(openage::TerrainObject *to_move,
                openage::TerrainObject *end) {
 	coord::phys3 start = to_move->pos.draw;
-	auto valid_end = [&](const coord::phys3 &pos) -> bool { return end->from_edge(pos) < (neigh_spacing + to_move->min_axis() / 2); };
+	auto valid_end = [&](const coord::phys3 &pos) -> bool { return end->from_edge(pos) < (path_grid_size + to_move->min_axis() / 2); };
 	auto heuristic = [&](const coord::phys3 &pos) -> cost_t { return end->from_edge(pos) - to_move->min_axis() / 2; };
 	return a_star(start, valid_end, heuristic, to_move->passable);
 }

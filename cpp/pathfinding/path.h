@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "../coord/decl.h"
 #include "../coord/phys3.h"
 #include "../coord/tile.h"
 #include "../util/misc.h"
@@ -37,17 +38,25 @@ using node_pt = std::shared_ptr<Node>;
 using nodemap_t = std::unordered_map<coord::phys3, node_pt>;
 
 
-constexpr unsigned int neigh_shift = 13;
-constexpr coord::phys_t neigh_spacing = (1 << neigh_shift);
+/**
+ * Size of phys-coord grid for path nodes.
+ *
+ * This equals a node grid size of (phys/tile) / 8.
+ */
+constexpr int path_grid_size = coord::settings::phys_per_tile >> 3;
+
+/**
+ * Phys3 delta coordinates to select for path neighbors.
+ */
 constexpr coord::phys3_delta const neigh_phys[] = {
-	{ 1 * neigh_spacing, -1 * neigh_spacing, 0},
-	{ 1 * neigh_spacing,  0 * neigh_spacing, 0},
-	{ 1 * neigh_spacing,  1 * neigh_spacing, 0},
-	{ 0 * neigh_spacing,  1 * neigh_spacing, 0},
-	{-1 * neigh_spacing,  1 * neigh_spacing, 0},
-	{-1 * neigh_spacing,  0 * neigh_spacing, 0},
-	{-1 * neigh_spacing, -1 * neigh_spacing, 0},
-	{ 0 * neigh_spacing, -1 * neigh_spacing, 0}
+	{ 1 * path_grid_size, -1 * path_grid_size, 0},
+	{ 1 * path_grid_size,  0 * path_grid_size, 0},
+	{ 1 * path_grid_size,  1 * path_grid_size, 0},
+	{ 0 * path_grid_size,  1 * path_grid_size, 0},
+	{-1 * path_grid_size,  1 * path_grid_size, 0},
+	{-1 * path_grid_size,  0 * path_grid_size, 0},
+	{-1 * path_grid_size, -1 * path_grid_size, 0},
+	{ 0 * path_grid_size, -1 * path_grid_size, 0}
 };
 
 /**

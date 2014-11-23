@@ -26,7 +26,7 @@ std::shared_ptr<UnitAction> MoveAbility::target(Unit *to_modify, coord::phys3 ta
 }
 
 std::shared_ptr<UnitAction> MoveAbility::target(Unit *to_modify, Unit *target) {
-	coord::phys_t radius = (1 << (path::neigh_shift + 1)) + to_modify->location->min_axis() / 2;
+	coord::phys_t radius = (path::path_grid_size * 2) + to_modify->location->min_axis() / 2;
 	return std::make_shared<MoveAction>(to_modify, this->tex, nullptr, target->get_ref(), radius);
 }
 
