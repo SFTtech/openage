@@ -2,7 +2,6 @@
 
 #include "color.h"
 
-#include <GL/glew.h>
 #include "../crossplatform/opengl.h"
 
 namespace openage {

@@ -2,7 +2,6 @@
 
 #include "opengl.h"
 
-#include <GL/glew.h>
 #include "../crossplatform/opengl.h"
 
 #include "error.h"

@@ -3,7 +3,6 @@
 #ifndef OPENAGE_SHADER_SHADER_H_
 #define OPENAGE_SHADER_SHADER_H_
 
-#include <GL/glew.h>
 #include "../crossplatform/opengl.h"
 
 namespace openage {

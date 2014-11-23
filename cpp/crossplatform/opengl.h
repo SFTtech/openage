@@ -3,6 +3,8 @@
 #ifndef OPENAGE_CROSSPLATFORM_OPENGL_H_
 #define OPENAGE_CROSSPLATFORM_OPENGL_H_
 
+#include <GL/glew.h>
+
 #ifdef __APPLE__
 #  include <OpenGL/gl.h>
 #else

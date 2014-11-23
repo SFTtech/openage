@@ -3,7 +3,6 @@
 #ifndef OPENAGE_TEXTURE_H_
 #define OPENAGE_TEXTURE_H_
 
-#include <GL/glew.h>
 #include "crossplatform/opengl.h"
 #include <vector>
 
