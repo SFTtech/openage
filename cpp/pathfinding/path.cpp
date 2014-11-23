@@ -13,12 +13,12 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 	:
 	position(pos),
 	tile_position(pos.to_tile3().to_tile()),
-	dir_ne(0.0f),
-	dir_se(0.0f),
-	visited(false),
-	was_best(false),
-	factor(1.0f),
-	path_predecessor(prev) {
+	dir_ne{0.0f},
+	dir_se{0.0f},
+	visited{false},
+	was_best{false},
+	factor{1.0f},
+	path_predecessor{prev} {
 
 
 	if (prev) {
@@ -28,14 +28,14 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 		this->dir_ne = dx / hyp;
 		this->dir_se = dy / hyp;
 		cost_t similarity = this->dir_ne * prev->dir_ne + this->dir_se * prev->dir_se;
-		factor += (1 - similarity);
+		this->factor += (1 - similarity);
 	}
 }
 
 
 Node::Node(const coord::phys3 &pos, node_pt prev, cost_t past, cost_t heuristic)
 	:
-	Node(pos, prev) {
+	Node{pos, prev} {
 	this->past_cost = past;
 	this->heuristic_cost = heuristic;
 	this->future_cost = past + heuristic;
@@ -119,10 +119,11 @@ Path::~Path() {
 void Path::draw_path() {
 	glLineWidth(1);
 	glColor3f(0.3, 1.0, 0.3);
-	glBegin(GL_LINES);
-	for (Node &n : waypoints) {
-		coord::camgame draw_pos = n.position.to_camgame();
-		glVertex3f(draw_pos.x, draw_pos.y, 0);
+	glBegin(GL_LINES); {
+		for (Node &n : waypoints) {
+			coord::camgame draw_pos = n.position.to_camgame();
+			glVertex3f(draw_pos.x, draw_pos.y, 0);
+		}
 	}
 	glEnd();
 }
