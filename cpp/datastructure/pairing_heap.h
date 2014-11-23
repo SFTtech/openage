@@ -153,9 +153,10 @@ public:
 
 template <class T,
           class compare=std::less<T>,
-          class node_t=PairingHeapNode<T, compare>>
+          class heapnode_t=PairingHeapNode<T, compare>>
 class PairingHeap {
 public:
+	using node_t = heapnode_t;
 	using this_type = PairingHeap<T, compare, node_t>;
 
 	/**
