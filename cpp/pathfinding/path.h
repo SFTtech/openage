@@ -4,9 +4,7 @@
 #define OPENAGE_PATHFINDING_PATH_H_
 
 #include <functional>
-#include <list>
 #include <memory>
-#include <queue>
 #include <unordered_map>
 #include <vector>
 
