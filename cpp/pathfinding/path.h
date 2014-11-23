@@ -26,26 +26,6 @@ class Path;
  */
 using cost_t = float;
 
-/*
- * hash function for tiles
- */
-struct tile_hash {
-	size_t operator ()(const openage::coord::tile &tile) const {
-		size_t nehash = std::hash<openage::coord::tile_t> { }(tile.ne);
-		size_t sehash = std::hash<openage::coord::tile_t> { }(tile.se);
-		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
-	}
-};
-
-struct phys3_hash {
-	size_t operator ()(const openage::coord::phys3 &pos) const {
-		size_t nehash = std::hash<openage::coord::phys_t> { }(pos.ne);
-		size_t sehash = std::hash<openage::coord::phys_t> { }(pos.se);
-		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
-	}
-};
-
-
 using node_pt = std::shared_ptr<Node>;
 
 /*
@@ -198,6 +178,34 @@ struct hash<openage::path::Node &> {
 		openage::coord::phys3 node_pos = x.position;
 		size_t nehash = std::hash<openage::coord::phys_t>{}(node_pos.ne);
 		size_t sehash = std::hash<openage::coord::phys_t>{}(node_pos.se);
+		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
+	}
+};
+
+/**
+ * Hash function for tiles
+ *
+ * TODO: relocate to coord/
+ */
+template <>
+struct hash<openage::coord::tile> {
+	size_t operator ()(const openage::coord::tile &tile) const {
+		size_t nehash = std::hash<openage::coord::tile_t> {}(tile.ne);
+		size_t sehash = std::hash<openage::coord::tile_t> {}(tile.se);
+		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
+	}
+};
+
+/**
+ * Hash function for phys3 coordinates.
+ *
+ * TODO: relocate to coord/
+ */
+template <>
+struct hash<openage::coord::phys3> {
+	size_t operator ()(const openage::coord::phys3 &pos) const {
+		size_t nehash = std::hash<openage::coord::phys_t> {}(pos.ne);
+		size_t sehash = std::hash<openage::coord::phys_t> {}(pos.se);
 		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
 	}
 };
