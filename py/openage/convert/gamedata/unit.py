@@ -609,7 +609,7 @@ class UnitObject(Exportable):
             },
         )),
         (READ_EXPORT, "command_attribute", EnumLookupMember(
-            raw_type    = "int16_t",             # selects the available ui command buttons for the unit
+            raw_type    = "int8_t",         # selects the available ui command buttons for the unit
             type_name   = "command_attributes",
             lookup_dict = {
                 0: "LIVING",                # commands: delete, garrison, stop, attributes: hit points
@@ -626,8 +626,8 @@ class UnitObject(Exportable):
                 11: "SHIELDED_BUILDING",    # shield building (build page 3)
             },
         )),
-        (READ_UNKNOWN, None, "int16_t"),
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ_UNKNOWN, None, "float"),
+        (READ_UNKNOWN, None, "int8_t"),
         (READ_EXPORT, "language_dll_help", "uint16_t"),
         (READ, "hot_keys", "int16_t[4]"),
         (READ_UNKNOWN, None, "int8_t"),
@@ -688,7 +688,8 @@ class UnitObject(Exportable):
         )),
         (READ_EXPORT, "sound_selection", "int16_t"),
         (READ_EXPORT, "sound_dying", "int16_t"),
-        (READ_EXPORT, "attack_mode", "int16_t"),      # 0: no attack, 1: attack by following, 2: run when attacked, 3:?, 4: attack
+        (READ_EXPORT, "attack_mode", "int8_t"),     # 0: no attack, 1: attack by following, 2: run when attacked, 3:?, 4: attack
+        (READ, "is_edible_meat", "int8_t"),         # 1: yup, you may eat it
         (READ_EXPORT, "name", "char[name_length]"),
         (READ_EXPORT, "id1", "int16_t"),
         (READ_EXPORT, "id2", "int16_t"),
@@ -934,18 +935,18 @@ class UnitBuilding(UnitLiving):
         (READ_EXPORT, None, IncludeMembers(cls=UnitLiving)),
         (READ_EXPORT, "construction_graphic_id", "int16_t"),
         (READ, "snow_graphic_id", "int16_t"),
-        (READ, "adjacent_mode", "int16_t"),           # 1=adjacent units may change the graphics
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "adjacent_mode", "int8_t"),            # 1=adjacent units may change the graphics
+        (READ, "icon_disabler", "int16_t"),
+        (READ, "disappears_when_built", "int8_t"),
         (READ, "stack_unit_id", "int16_t"),           # second building to place directly on top
         (READ_EXPORT, "terrain_id", "int16_t"),       # change underlying terrain to this id when building completed
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ, "resource_id", "int16_t"),
         (READ, "research_id", "int16_t"),             # research_id to be enabled when building creation
         (READ_UNKNOWN, None, "int8_t"),
         (READ_EXPORT, "building_annex", SubdataMember(ref_type=BuildingAnnex, length=4)),
         (READ, "head_unit_id", "int16_t"),            # building at which an annex building is attached to
         (READ, "transform_unit_id", "int16_t"),       # destination unit id when unit shall transform (e.g. unpack)
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ_UNKNOWN, None, "int16_t"),              # unit_id for something unknown
         (READ, "construction_sound_id", "int16_t"),
         (READ_EXPORT, "garrison_type", EnumLookupMember(
             raw_type    = "int8_t",
@@ -963,7 +964,7 @@ class UnitBuilding(UnitLiving):
         (READ, "garrison_heal_rate", "float"),
         (READ_UNKNOWN, None, "int32_t"),
         (READ_UNKNOWN, None, "int16_t"),
-        (READ_UNKNOWN, None, "int8_t[6]"),
+        (READ_UNKNOWN, None, "int8_t[6]"),  # might be related to building annexes?
     )
 
     def __init__(self):

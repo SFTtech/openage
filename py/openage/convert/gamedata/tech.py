@@ -104,8 +104,8 @@ class AgeTechTree(Exportable):
         (READ, "units", "int32_t[unit_count]"),
         (READ, "research_count", "int8_t"),
         (READ, "researches", "int32_t[research_count]"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
+        (READ_UNKNOWN, None, "int32_t"),                  # always 1
+        (READ, "second_age_id", "int32_t"),
         (READ, "zeroes", ZeroMember("int16_t", length=49)),
     )
 
@@ -195,6 +195,6 @@ class ResearchConnection(Exportable):
         (READ, "line_mode", "int32_t"),
         (READ_UNKNOWN, None, "int32_t[8]"),
         (READ, "vertical_line", "int32_t"),
-        (READ, "location_in_age", "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
+        (READ, "location_in_age", "int32_t"), # 0=hidden, 1=first, 2=second
+        (READ, "first_age_mode", "int32_t"),  # 0=first age, else other ages.
     )
