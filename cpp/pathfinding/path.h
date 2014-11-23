@@ -24,7 +24,7 @@ class Node;
 class Path;
 
 /**
- * the data type for movement cost
+ * The data type for movement cost
  */
 using cost_t = float;
 
@@ -80,7 +80,7 @@ constexpr coord::phys3_delta const neigh_phys[] = {
 bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::phys3 &)>passable, float samples=5.0f);
 
 /**
- * One waypoint in a path.
+ * One navigation waypoint in a path.
  */
 class Node: public std::enable_shared_from_this<Node> {
 public:
