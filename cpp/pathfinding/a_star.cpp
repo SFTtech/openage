@@ -13,8 +13,6 @@
 #include "a_star.h"
 
 #include <cmath>
-#include <map>
-#include <unordered_set>
 
 #include "../datastructure/pairing_heap.h"
 #include "../log.h"
@@ -59,26 +57,27 @@ Path a_star(coord::phys3 start,
             std::function<cost_t(const coord::phys3 &)> heuristic,
             std::function<bool(const coord::phys3 &)> passable) {
 
-	// PairingHeap pop function currently crashes -- using priority queue for now
-	//datastructure::PairingHeap<Node *> node_candidates;
-	std::priority_queue<node_pt, std::vector<node_pt>, compare_node_cost> node_candidates;
+	// path node storage, always provides cheapest next node.
+	heap_t node_candidates;
 
 	// list of known tiles and corresponding node.
 	nodemap_t visited_tiles;
 
 	// add starting node
-	node_pt startNode = std::make_shared<Node>(start, nullptr, .0f, heuristic(start));
-	visited_tiles[startNode->position] = startNode;
-	node_candidates.push(startNode);
+	node_pt start_node = std::make_shared<Node>(start, nullptr, .0f, heuristic(start));
+	visited_tiles[start_node->position] = start_node;
+	node_candidates.push(start_node);
+
+	start_node->heap_node = node_candidates.push(start_node);
 
 	// track the closest we can get to the end position
 	// used when no path is found
-	node_pt closest_node = startNode;
+	node_pt closest_node = start_node;
 
 	// while the open list is not empty
 	while (not node_candidates.empty()) {
-		node_pt best_candidate = node_candidates.top();
-		node_candidates.pop();
+		node_pt best_candidate = node_candidates.pop();
+
 		best_candidate->was_best = true;
 
 		if ( valid_end(best_candidate->position) ) {
@@ -117,11 +116,10 @@ Path a_star(coord::phys3 start,
 				neighbor->path_predecessor = best_candidate;
 
 				if (not_visited) {
-					node_candidates.push(neighbor);
+					neighbor->heap_node = node_candidates.push(neighbor);
 					visited_tiles[neighbor->position] = neighbor;
 				} else {
-					// just ignore until PairingHeap works
-					//node_candidates.update(&neighbor);
+					node_candidates.update(neighbor->heap_node);
 				}
 			}
 		}

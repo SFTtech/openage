@@ -24,8 +24,8 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 	visited{false},
 	was_best{false},
 	factor{1.0f},
-	path_predecessor{prev} {
-
+	path_predecessor{prev},
+	heap_node(nullptr) {
 
 	if (prev) {
 		cost_t dx = this->position.ne - prev->position.ne;

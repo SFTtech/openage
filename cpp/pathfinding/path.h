@@ -13,6 +13,7 @@
 #include "../coord/decl.h"
 #include "../coord/phys3.h"
 #include "../coord/tile.h"
+#include "../datastructure/pairing_heap.h"
 #include "../util/misc.h"
 
 
@@ -47,6 +48,10 @@ struct compare_node_cost {
 	bool operator ()(const node_pt lhs, const node_pt rhs) const;
 };
 
+/**
+ * Priority queue node item type.
+ */
+using heap_t = datastructure::PairingHeap<node_pt, compare_node_cost>;
 
 /**
  * Size of phys-coord grid for path nodes.
@@ -162,6 +167,11 @@ public:
 	 * Node where this one was reached by least cost.
 	 */
 	node_pt path_predecessor;
+
+	/**
+	 * Priority queue node that contains this path node.
+	 */
+	heap_t::node_t* heap_node;
 };
 
 
