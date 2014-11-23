@@ -49,7 +49,8 @@ Dependency list:
     T     opus-tools
     C     gcc >=4.8 or clang >=3.3
 
-    T     An installed version of any of the following (wine is your friend). Other versions _might_ work; setup disk support will be added soon:
+    T     An installed version of any of the following (wine is your friend).
+          Other versions _might_ work; setup disk support will be added soon:
 
      - Age of Empires II: The Conquerors Patch 1.0c
      - Age of Empires II: Forgotten Empires
@@ -82,7 +83,7 @@ Also feel free to drop `--no-recommends` from last line.
 
 ### Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)
 
- - Install [homebrew](brew.sh). Other package managers and building from source might also work, but aren't supported as of now. If you figure out fixes for those other options, you're welcome to open pullrequests, as long as the homebrew build doesn't break.
+ - Install [homebrew](http://brew.sh). Other package managers and building from source might also work, but aren't supported as of now. If you figure out fixes for those other options, you're welcome to open pullrequests, as long as the homebrew build doesn't break.
  - Install the needed fonts (e.g. using [homebrew-cask](https://github.com/caskroom/homebrew-cask)).
  - `brew tap homebrew/python`
  - `brew update`
@@ -101,7 +102,7 @@ If you don't have a compiler installed, you can select between these commands to
  - `sudo pacman -S --needed gcc`
  - `sudo pacman -S --needed clang`
 
-You can install both compilers, however only one of them will be used.
+You can install both compilers and select the one to be used by `./configure`.
 
 
 ## Build procedure
