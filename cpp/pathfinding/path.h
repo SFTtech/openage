@@ -26,12 +26,16 @@ class Path;
  */
 using cost_t = float;
 
+/**
+ * Type for storing navigation nodes.
+ */
 using node_pt = std::shared_ptr<Node>;
 
-/*
- * type for mapping tiles to nodes
+/**
+ * Type for mapping tiles to nodes.
  */
-using nodemap_t = std::unordered_map<coord::phys3, node_pt, phys3_hash>;
+using nodemap_t = std::unordered_map<coord::phys3, node_pt>;
+
 
 constexpr unsigned int neigh_shift = 13;
 constexpr coord::phys_t neigh_spacing = (1 << neigh_shift);
