@@ -1,6 +1,7 @@
 add_sources(${PROJECT_NAME}
 	color.cpp
 	dir.cpp
+	demangle.cpp
 	error.cpp
 	externalprofiler.cpp
 	file.cpp
