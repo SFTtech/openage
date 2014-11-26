@@ -3,7 +3,6 @@
 #ifndef OPENAGE_SHADER_PROGRAM_H_
 #define OPENAGE_SHADER_PROGRAM_H_
 
-#include <GL/glew.h>
 #include "../crossplatform/opengl.h"
 
 #include "shader.h"

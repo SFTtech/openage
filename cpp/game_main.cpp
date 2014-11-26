@@ -3,7 +3,6 @@
 #include "game_main.h"
 
 #include <SDL2/SDL.h>
-#include <GL/glew.h>
 #include "crossplatform/opengl.h"
 #include <sys/stat.h>
 #include <sys/types.h>

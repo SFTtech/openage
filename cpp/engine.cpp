@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <GL/glew.h>
 #include "crossplatform/opengl.h"
 #include <FTGL/ftgl.h>
 #include <SDL2/SDL.h>
