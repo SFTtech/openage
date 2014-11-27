@@ -181,7 +181,7 @@ Engine::~Engine() {
 }
 
 bool Engine::on_resize(coord::window new_size) {
-	log::dbg("engine window resize to: %hdx%hd\n", new_size.x, new_size.y);
+	log::dbg("engine window resize to: %dx%d\n", new_size.x, new_size.y);
 
 	// update engine window size
 	this->window_size = new_size;

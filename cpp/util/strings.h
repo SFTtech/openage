@@ -5,7 +5,17 @@
 
 #include <cstdarg>
 #include <cstdlib>
+#include <cstdio>
+#include <cstring>
+#include <ctime>
 #include <functional>
+#include <chrono>
+#include <string>
+#include <sstream>
+#include <ios>
+#include <iomanip>
+#include <thread>
+#include <memory>
 
 namespace openage {
 namespace util {
@@ -61,6 +71,55 @@ size_t string_tokenize_dynamic(char *str, char delim, char ***result);
  * callback is called, the token content itself is not yet processed.
  */
 void string_tokenize_base(char *str, char delim, std::function<void(char *)> callback);
+
+/**
+ * formats fmt_str to a std::string
+ */
+template <typename... Args>
+std::string string_format(const char* fmt_str, Args&&... args) {
+	// first guess of the actual string size	
+	int final_n, n = ((int)strlen(fmt_str)) * 2; 
+	// use of unique_ptr<char[]> as writing to std::string::c_str() would be unsafe.
+	std::unique_ptr<char[]> formatted; 
+	while(1) {
+		formatted.reset(new char[n]); 
+		final_n = snprintf(&formatted[0], n, fmt_str, std::forward<Args>(args)...);
+		if (final_n < 0 || final_n >= n) {
+			// First iteration: get the final formatted string size
+			n += abs(final_n - n + 1);
+		}
+		else {
+			// Second iteration: the string is now formatted and with and has a correct size
+			break;
+		}
+	}
+	// return the formatted string as a std::string
+	return std::string(formatted.get());
+}
+
+/**
+ * formats the timepoint in parameter to a std::string with the following format :
+ * "hh:mm:ss.xxxxxxxx" of "aaaa-mm-jj hh:mm:ss.xxxxxxxx" if the show_date parameter is true
+ */
+template <typename TimePoint>
+std::string timepoint_to_string(TimePoint const& timepoint, bool show_date=false) {
+	auto seconds_since_epoch(std::chrono::duration_cast<std::chrono::seconds>(timepoint.time_since_epoch()));
+	std::time_t now_t(std::chrono::system_clock::to_time_t(std::chrono::system_clock::time_point(seconds_since_epoch)));
+	char temp[64] = {0};
+	const char* fmt = (show_date ? "%F %H:%M:%S." : "%H:%M:%S.");
+	if (!std::strftime(temp, sizeof(temp), fmt, std::localtime(&now_t))) {
+		return "";
+	}
+	return std::string(temp) + std::to_string((timepoint.time_since_epoch() - seconds_since_epoch).count());
+}
+/**
+ * formats the thread id in parameter to a std::string
+ */
+inline std::string threadid_to_string(std::thread::id thread_id) {
+	std::stringstream ss;
+	ss << "0x" << std::setw(8) << std::setfill('0') << std::hex << (std::hash<std::thread::id>{}(thread_id) & 0xffffffff);
+	return ss.str();
+}
 
 } //namespace util
 } //namespace openage

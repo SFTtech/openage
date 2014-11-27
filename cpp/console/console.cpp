@@ -43,7 +43,7 @@ Console::Console(std::vector<gamedata::palette_color> &colortable)
 	charsize.x = ceilf(font.internal_font->Advance("W", 1));
 	charsize.y = ceilf(font.internal_font->LineHeight());
 
-	log::dbg("console font character size: %hdx%hd", charsize.x, charsize.y);
+	log::dbg("console font character size: %dx%d", charsize.x, charsize.y);
 }
 
 Console::~Console () {}

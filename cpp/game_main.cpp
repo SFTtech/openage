@@ -340,10 +340,10 @@ bool GameMain::on_input(SDL_Event *e) {
 			}
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_LEFT and construct_mode) {
-			log::dbg("LMB [window]:    x %9hd y %9hd",
+			log::dbg("LMB [window]:    x %9d y %9d",
 			         mousepos_window.x,
 			         mousepos_window.y);
-			log::dbg("LMB [camgame]:   x %9hd y %9hd",
+			log::dbg("LMB [camgame]:   x %9d y %9d",
 			         mousepos_camgame.x,
 			         mousepos_camgame.y);
 
