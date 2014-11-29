@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <vector>
 
+
 #include "../coord/tile.h"
 #include "../gamedata/gamedata.gen.h"
 #include "../gamedata/graphic.gen.h"
@@ -88,7 +89,8 @@ private:
  */
 class BuldingProducer: public UnitProducer {
 public:
-	BuldingProducer(Texture *tex, coord::tile_delta foundation_size, int foundation, TestSound *create,  TestSound *destroy);
+	BuldingProducer(Texture *tex, coord::tile_delta foundation_size,
+	                int foundation, TestSound *create,  TestSound *destroy);
 	virtual ~BuldingProducer();
 
 	/**
@@ -120,15 +122,15 @@ public:
 	/**
 	 * makes producers for all types in the game data
 	 */
-	std::vector<std::shared_ptr<UnitProducer>> create_producers(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id);
+	std::vector<std::unique_ptr<UnitProducer>> create_producers(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id);
 
 	/**
 	 * loads required assets to produce an entity type
 	 * returns null if type cannot be created
 	 */
-	std::shared_ptr<UnitProducer> load_building(const gamedata::unit_building &);
-	std::shared_ptr<UnitProducer> load_living(const gamedata::unit_living &);
-	std::shared_ptr<UnitProducer> load_object(const gamedata::unit_object &);
+	std::unique_ptr<UnitProducer> load_building(const gamedata::unit_building &);
+	std::unique_ptr<UnitProducer> load_living(const gamedata::unit_living &);
+	std::unique_ptr<UnitProducer> load_object(const gamedata::unit_object &);
 
 
 private:

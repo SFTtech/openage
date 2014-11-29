@@ -4,6 +4,7 @@
 #include "../terrain/terrain_object.h"
 #include "../terrain/terrain_outline.h"
 #include "../util/strings.h"
+#include "../util/unique.h"
 #include "../game_main.h"
 #include "../log.h"
 #include "ability.h"
@@ -61,14 +62,15 @@ void UnitTypeTest::initialise(Unit *unit) {
 	/*
 	 * Initial action stack
 	 */
-	unit->push_action( std::make_shared<DeadAction>( unit, this->dead, this->on_destroy ) );
-	unit->push_action( std::make_shared<IdleAction>( unit, this->idle ) );
+	unit->push_action( util::make_unique<DeadAction>( unit, this->dead,
+	                                                  this->on_destroy ) );
+	unit->push_action( util::make_unique<IdleAction>( unit, this->idle ) );
 
-	unit->give_ability( std::make_shared<MoveAbility>( this->moving, this->on_move )  );
-	unit->give_ability( std::make_shared<AttackAbility>( this->attacking, this->on_attack )  );
+	unit->give_ability( util::make_unique<MoveAbility>( this->moving, this->on_move )  );
+	unit->give_ability( util::make_unique<AttackAbility>( this->attacking, this->on_attack )  );
 
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
-		unit->give_ability( std::make_shared<GatherAbility>( this->attacking, this->on_attack )  );
+		unit->give_ability( util::make_unique<GatherAbility>( this->attacking, this->on_attack )  );
 	}
 }
 
@@ -140,8 +142,9 @@ void BuldingProducer::initialise(Unit *unit) {
 	unit->add_attribute(new Attribute<attr_type::color>(util::random_range(1, 8 + 1)));
 	unit->add_attribute(new Attribute<attr_type::dropsite>());
 
-	unit->push_action( std::make_shared<DeadAction>(unit, this->texture, this->on_destroy));
-	unit->push_action( std::make_shared<IdleAction>(unit, this->texture));
+	unit->push_action( util::make_unique<DeadAction>(unit, this->texture,
+	                                                 this->on_destroy));
+	unit->push_action( util::make_unique<IdleAction>(unit, this->texture));
 }
 
 bool BuldingProducer::place(Unit *unit, Terrain *terrain, coord::tile init_tile) {
@@ -187,7 +190,7 @@ ProducerLoader::ProducerLoader(GameMain *m)
 	:
 	main(m) {}
 
-std::shared_ptr<UnitProducer> ProducerLoader::load_building(const gamedata::unit_building &building) {
+std::unique_ptr<UnitProducer> ProducerLoader::load_building(const gamedata::unit_building &building) {
 	Texture *tex = this->main->find_graphic(building.graphic_standing0);
 	if ( !tex ) {
 		return nullptr;
@@ -213,7 +216,7 @@ std::shared_ptr<UnitProducer> ProducerLoader::load_building(const gamedata::unit
 	}
 
 	// make and return producer
-	return std::make_shared<BuldingProducer>(
+	return util::make_unique<BuldingProducer>(
 		tex,
 		foundation_size,
 		building.terrain_id,
@@ -222,7 +225,7 @@ std::shared_ptr<UnitProducer> ProducerLoader::load_building(const gamedata::unit
 	);
 }
 
-std::shared_ptr<UnitProducer> ProducerLoader::load_living(const gamedata::unit_living &unit) {
+std::unique_ptr<UnitProducer> ProducerLoader::load_living(const gamedata::unit_living &unit) {
 
 	// find and load graphics
 	Texture *tex0 = this->main->find_graphic(unit.graphic_dying0);
@@ -239,10 +242,11 @@ std::shared_ptr<UnitProducer> ProducerLoader::load_living(const gamedata::unit_l
 	TestSound *on_create = this->main->find_sound(unit.sound_creation0);
 	TestSound *on_destroy = this->main->find_sound(unit.sound_dying);
 	TestSound *on_move = this->main->find_sound(unit.move_sound);
-	return std::make_shared<UnitTypeTest>(&unit, tex0, tex1, tex2, tex3, on_create, on_destroy, on_move, on_move);
+	return util::make_unique<UnitTypeTest>(&unit, tex0, tex1, tex2, tex3,
+	                                       on_create, on_destroy, on_move, on_move);
 }
 
-std::shared_ptr<UnitProducer> ProducerLoader::load_object(const gamedata::unit_object &object) {
+std::unique_ptr<UnitProducer> ProducerLoader::load_object(const gamedata::unit_object &object) {
 	Texture *tex = this->main->find_graphic(object.graphic_standing0);
 	if ( !tex ) {
 		return nullptr;
@@ -268,7 +272,7 @@ std::shared_ptr<UnitProducer> ProducerLoader::load_object(const gamedata::unit_o
 	}
 
 	// make and return producer
-	return std::make_shared<BuldingProducer>(
+	return util::make_unique<BuldingProducer>(
 		tex,
 		foundation_size,
 		0,
@@ -277,27 +281,26 @@ std::shared_ptr<UnitProducer> ProducerLoader::load_object(const gamedata::unit_o
 	);
 }
 
-std::vector<std::shared_ptr<UnitProducer>> ProducerLoader::create_producers(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id) {
-	std::vector<std::shared_ptr<UnitProducer>> producer_objects;
+std::vector<std::unique_ptr<UnitProducer>> ProducerLoader::create_producers(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id) {
+	std::vector<std::unique_ptr<UnitProducer>> producer_objects;
 
 	// create building unit types
 	for (auto &building : gamedata[0].civs.data[your_civ_id].units.building.data) {
-		std::shared_ptr<UnitProducer> producer = this->load_building(building);
-		if (producer) producer_objects.push_back(producer);
+		std::unique_ptr<UnitProducer> producer = this->load_building(building);
+		if (producer) producer_objects.emplace_back(std::move(producer));
 	}
 
 	// create living unit types
 	for (auto &unit : gamedata[0].civs.data[your_civ_id].units.living.data) {
-		std::shared_ptr<UnitProducer> producer = this->load_living(unit);
-		if (producer) producer_objects.push_back(producer);
+		std::unique_ptr<UnitProducer> producer = this->load_living(unit);
+		if (producer) producer_objects.emplace_back(std::move(producer));
 	}
 
 	// create object unit types
 	for (auto &obj : gamedata[0].civs.data[0].units.object.data) {
-		std::shared_ptr<UnitProducer> producer = this->load_object(obj);
-		if (producer) producer_objects.push_back(producer);
+		std::unique_ptr<UnitProducer> producer = this->load_object(obj);
+		if (producer) producer_objects.emplace_back(std::move(producer));
 	}
-
 	return producer_objects;
 }
 

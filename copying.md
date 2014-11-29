@@ -38,6 +38,7 @@ _the openage authors_ are:
 | James Hagborg               | blucoat                     | jameshagborg@gmail.com           |
 | Prashanth Jonnala           | jprashanth                  | prashanth.neo@gmail.com          |
 | Jonathan Remnant            | Jon0                        | jono4728@gmail.com               |
+| Sam Schetterer              | schets                      | samschet@gmail.com               |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

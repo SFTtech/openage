@@ -79,7 +79,7 @@ public:
 	/**
 	 * all available game objects.
 	 */
-	std::vector<std::shared_ptr<UnitProducer>> available_objects;
+	std::vector<std::unique_ptr<UnitProducer>> available_objects;
 
 	/**
 	 * all available sounds.
