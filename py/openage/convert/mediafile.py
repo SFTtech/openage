@@ -208,8 +208,6 @@ def media_convert(args):
     file_list = defaultdict(lambda: list())
     media_files_extracted = 0
 
-    sound_list = filelist.SoundList()
-
     #iterate over all available files in the drs, check whether they should be extracted
     for drsname, drsfile in drsfiles.items():
         for file_extension, file_id in drsfile.files:
@@ -276,10 +274,6 @@ def media_convert(args):
                     #remove original wave file
                     os.remove(wav_output_file)
 
-                #TODO: this is redundant here, but we need to strip the assets/ part..
-                filelist_fname = "%s.%s" % (os.path.join(drsfile.fname, str(file_id)), file_extension)
-                sound_list.add_sound(file_id, filelist_fname, file_extension)
-
             else:
                 #format does not require conversion, store it as plain blob
                 output_file = util.file_get_path(fname, write=True)
@@ -288,10 +282,6 @@ def media_convert(args):
             media_files_extracted += 1
 
     if write_enabled:
-        sound_formatter = DataFormatter()
-        sound_formatter.add_data(sound_list.dump())
-        util.file_write_multi(sound_formatter.export(output_formats), file_prefix=asset_folder)
-
         dbg("media files extracted: %d" % (media_files_extracted), 0)
 
     #was a file listing requested?
