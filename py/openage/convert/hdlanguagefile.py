@@ -5,6 +5,7 @@ from . import util
 from .hardcoded.langcodes_hd import short_to_long_codes_map
 from .util import dbg
 
+
 class HDLanguageFile:
     """
     represents the translations text file found in the
@@ -13,7 +14,11 @@ class HDLanguageFile:
 
     def __init__(self, fname, langcode):
         self.fname = fname
-        self.lang = short_to_long_codes_map[langcode] if langcode in short_to_long_codes_map else langcode
+        if langcode in short_to_long_codes_map:
+            self.lang = short_to_long_codes_map[langcode]
+        else:
+            self.lang = langcode
+
         fname = util.file_get_path(fname)
 
         dbg("HD Language file [%s]" % (fname), 1)
@@ -31,9 +36,9 @@ class HDLanguageFile:
 
             num, string = i.split(None, 1)
 
-            # strings that were added in the HD edition release have UPPERCASE_STRINGS
-            # as names, instead of the numeric ID stuff in AoK:TC
-            # we only need the AoK:TC strings, and skip the rest
+            # strings that were added in the HD edition release have
+            # UPPERCASE_STRINGS as names, instead of the numeric ID stuff
+            # in AoK:TC. We only need the AoK:TC strings, and skip the rest.
             if num.isdigit():
                 result[self.lang][num] = string
 

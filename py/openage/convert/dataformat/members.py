@@ -9,6 +9,7 @@ from .member_access import NOREAD_EXPORT
 from .struct_snippet import StructSnippet
 from .util import determine_headers, determine_header
 
+
 class DataMember:
     """
     member variable of data files and generated structs.
@@ -70,7 +71,7 @@ class DataMember:
         return the lines to put inside the C struct.
         """
 
-        return [ "%s %s;" % (self.get_effective_type(), member_name) ]
+        return ["%s %s;" % (self.get_effective_type(), member_name)]
 
     def __repr__(self):
         raise NotImplementedError("return short description of the member type %s" % (type(self)))
@@ -89,19 +90,19 @@ class GroupMember(DataMember):
         self.cls = cls
 
     def get_headers(self, output_target):
-        return { self.cls.name_struct_file }
+        return {self.cls.name_struct_file}
 
     def get_typerefs(self):
-        return { self.get_effective_type() }
+        return {self.get_effective_type()}
 
     def get_effective_type(self):
         return self.cls.get_effective_type()
 
     def get_parsers(self, idx, member):
-        #TODO: new type of csv file, probably go for yaml...
+        # TODO: new type of csv file, probably go for yaml...
         return [
             EntryParser(
-                [ "this->%s.fill(buf[%d]);" % (member, idx) ],
+                ["this->%s.fill(buf[%d]);" % (member, idx)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "fill",
@@ -163,32 +164,32 @@ class DynLengthMember(DataMember):
                 raise Exception("dynamic length query requires source object")
 
             if callable(self.length):
-                #length is a lambda that determines the length by some fancy manner
-                #pass the target object as lambda parameter.
+                # length is a lambda that determines the length by some fancy manner
+                # pass the target object as lambda parameter.
                 length_def = self.length(obj)
 
-                #if the lambda returns a non-dynamic length (aka a number)
-                #return it directly. otherwise, the returned variable name
-                #has to be looked up again.
+                # if the lambda returns a non-dynamic length (aka a number)
+                # return it directly. otherwise, the returned variable name
+                # has to be looked up again.
                 if not self.is_dynamic_length(target=length_def):
                     return length_def
 
             else:
-                #self.length specifies the attribute name where the length is stored
+                # self.length specifies the attribute name where the length is stored
                 length_def = self.length
 
-            #look up the given member name and return the value.
+            # look up the given member name and return the value.
             if not isinstance(length_def, str):
                 raise Exception("length lookup definition is not str: %s<%s>" % (length_def, type(length_def)))
 
             return getattr(obj, length_def)
 
         else:
-            #non-dynamic length (aka plain number) gets returned directly
+            # non-dynamic length (aka plain number) gets returned directly
             return self.length
 
     def is_dynamic_length(self, target=None):
-        if target == None:
+        if target is None:
             target = self.length
 
         if target is self.any_length:
@@ -213,8 +214,8 @@ class RefMember(DataMember):
         self.type_name = type_name
         self.file_name = file_name
 
-        #xrefs not supported yet.
-        #would allow reusing a struct definition that lies in another file
+        # xrefs not supported yet.
+        # would allow reusing a struct definition that lies in another file
         self.resolved  = False
 
 
@@ -223,7 +224,7 @@ class NumberMember(DataMember):
     this struct member/data column contains simple numbers
     """
 
-    #primitive types, directly parsable by sscanf
+    # primitive types, directly parsable by sscanf
     type_scan_lookup = {
         "char":          "hhd",
         "int8_t":        "hhd",
@@ -250,7 +251,7 @@ class NumberMember(DataMember):
 
         return [
             EntryParser(
-                [ "if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return %d; }" % (idx, scan_symbol, member, idx) ],
+                ["if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return %d; }" % (idx, scan_symbol, member, idx)],
                 headers     = determine_header("sscanf"),
                 typerefs    = set(),
                 destination = "fill",
@@ -270,7 +271,7 @@ class NumberMember(DataMember):
         return self.number_type
 
 
-#TODO: convert to KnownValueMember
+# TODO: convert to KnownValueMember
 class ZeroMember(NumberMember):
     """
     data field that is known to always needs to be zero.
@@ -282,7 +283,7 @@ class ZeroMember(NumberMember):
         self.length = length
 
     def verify_read_data(self, obj, data):
-        #fail if a single value of data != 0
+        # fail if a single value of data != 0
         if any(False if v == 0 else True for v in data):
             return False
         else:
@@ -340,7 +341,7 @@ class EnumMember(RefMember):
     def __init__(self, type_name, values, file_name=None):
         super().__init__(type_name, file_name)
         self.values    = values
-        self.resolved  = True    #TODO, xrefs not supported yet.
+        self.resolved  = True    # TODO, xrefs not supported yet.
 
     def get_parsers(self, idx, member):
         enum_parse_else = ""
@@ -373,7 +374,7 @@ class EnumMember(RefMember):
         return set()
 
     def get_typerefs(self):
-        return { self.get_effective_type() }
+        return {self.get_effective_type()}
 
     def get_effective_type(self):
         return self.type_name
@@ -394,7 +395,7 @@ class EnumMember(RefMember):
 
             txt = list()
 
-            #create enum definition
+            # create enum definition
             txt.extend([
                 "enum class %s {\n\t" % self.type_name,
                 ",\n\t".join(self.values),
@@ -408,9 +409,9 @@ class EnumMember(RefMember):
                 orderby=self.type_name,
                 reprtxt="enum class %s" % self.type_name,
             )
-            snippet.typedefs |= { self.type_name }
+            snippet.typedefs |= {self.type_name}
 
-            return [ snippet ]
+            return [snippet]
         else:
             return list()
 
@@ -426,7 +427,7 @@ class EnumLookupMember(EnumMember):
     def __init__(self, type_name, lookup_dict, raw_type, file_name=None):
         super().__init__(
             type_name,
-            [v for k,v in sorted(lookup_dict.items())],
+            [v for k, v in sorted(lookup_dict.items())],
             file_name
         )
         self.lookup_dict = lookup_dict
@@ -460,12 +461,12 @@ class CharArrayMember(DynLengthMember):
         headers = set()
 
         if self.is_dynamic_length():
-            lines = [ "this->%s = buf[%d];" % (member, idx) ]
+            lines = ["this->%s = buf[%d];" % (member, idx)]
         else:
             data_length = self.get_length()
             lines = [
                 "strncpy(this->%s, buf[%d], %d); this->%s[%d] = '\\0';" % (
-                    member, idx, data_length, member, data_length-1
+                    member, idx, data_length, member, data_length - 1
                 )
             ]
             headers |= determine_header("strncpy")
@@ -478,7 +479,6 @@ class CharArrayMember(DynLengthMember):
                 destination = "fill",
             )
         ]
-
 
     def get_headers(self, output_target):
         ret = set()
@@ -493,7 +493,7 @@ class CharArrayMember(DynLengthMember):
         if self.is_dynamic_length():
             return "std::string"
         else:
-            return "char";
+            return "char"
 
     def get_empty_value(self):
         return ""
@@ -521,14 +521,14 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         RefMember.__init__(self, type_name, file_name)
         DynLengthMember.__init__(self, length)
 
-        self.subtype_definition = subtype_definition  #!< to determine the subtype for each entry, read this value to do the class_lookup
-        self.class_lookup       = class_lookup        #!< dict to look up type_name => exportable class
-        self.passed_args        = passed_args         #!< list of member names whose values will be passed to the new class
-        self.ref_to             = ref_to              #!< add this member name's value to the filename
-        self.offset_to          = offset_to           #!< link to member name which is a list of binary file offsets
-        self.ref_type_params    = ref_type_params     #!< dict to specify type_name => constructor arguments
+        self.subtype_definition = subtype_definition  # to determine the subtype for each entry, read this value to do the class_lookup
+        self.class_lookup       = class_lookup        # dict to look up type_name => exportable class
+        self.passed_args        = passed_args         # list of member names whose values will be passed to the new class
+        self.ref_to             = ref_to              # add this member name's value to the filename
+        self.offset_to          = offset_to           # link to member name which is a list of binary file offsets
+        self.ref_type_params    = ref_type_params     # dict to specify type_name => constructor arguments
 
-        #no xrefs supported yet..
+        # no xrefs supported yet..
         self.resolved          = True
 
     def get_headers(self, output_target):
@@ -554,15 +554,13 @@ class MultisubtypeMember(RefMember, DynLengthMember):
     def get_parsers(self, idx, member):
         return [
             EntryParser(
-                [ "this->%s.index_file.filename = buf[%d];" % (member, idx) ],
+                ["this->%s.index_file.filename = buf[%d];" % (member, idx)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "fill",
             ),
             EntryParser(
-                [
-                    "this->%s.recurse(basedir);" % (member),
-                ],
+                ["this->%s.recurse(basedir);" % (member)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "recurse",
@@ -571,7 +569,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         ]
 
     def get_typerefs(self):
-        return { self.type_name }
+        return {self.type_name}
 
     def get_snippets(self, file_name, format):
         """
@@ -604,10 +602,10 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 for _, m in sorted(DataFormatter.member_methods.items())
             ))
 
-            return [ snippet ]
+            return [snippet]
 
         elif format == "structimpl":
-            #TODO: generalize this member function generation...
+            # TODO: generalize this member function generation...
 
             txt = list()
             txt.extend((
@@ -616,7 +614,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 "}\n",
             ))
 
-            #function to recursively read the referenced files
+            # function to recursively read the referenced files
             txt.extend((
                 "int %s::recurse(openage::util::Dir basedir) {\n" % (self.type_name),
                 "	this->index_file.read(basedir); //read ref-file entries\n",
@@ -630,7 +628,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             ))
 
             for (entry_name, entry_type) in sorted(self.class_lookup.items()):
-                #get the index_file data index of the current entry first
+                # get the index_file data index of the current entry first
                 txt.extend((
                     "	idxtry = 0;\n",
                     "	for (auto &file_reference : this->index_file.data) {\n",
@@ -656,10 +654,10 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 orderby=self.type_name,
                 reprtxt="multisubtype %s container fill function" % self.type_name,
             )
-            snippet.typerefs |= self.get_contained_types() | {self.type_name, MultisubtypeBaseFile.name_struct }
-            snippet.includes |= determine_headers(("engine_dir","engine_error"))
+            snippet.typerefs |= self.get_contained_types() | {self.type_name, MultisubtypeBaseFile.name_struct}
+            snippet.includes |= determine_headers(("engine_dir", "engine_error"))
 
-            return [ snippet ]
+            return [snippet]
 
         else:
             return list()
@@ -700,13 +698,13 @@ class SubdataMember(MultisubtypeMember):
     def get_parsers(self, idx, member):
         return [
             EntryParser(
-                [ "this->%s.filename = buf[%d];" % (member, idx) ],
+                ["this->%s.filename = buf[%d];" % (member, idx)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "fill",
             ),
             EntryParser(
-                [ "this->%s.read(basedir);" % (member) ],
+                ["this->%s.read(basedir);" % (member)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "recurse",

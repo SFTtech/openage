@@ -55,6 +55,7 @@ def run_test(testname):
     # try running the function
     get_function(testname)()
 
+
 def run_demo(demo):
     # try running the demo
     get_function(demo[0])(demo)

@@ -3,6 +3,7 @@
 from .exportable import Exportable
 from .member_access import NOREAD_EXPORT
 
+
 class MultisubtypeBaseFile(Exportable):
     """
     class that describes the format

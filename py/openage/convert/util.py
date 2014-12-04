@@ -41,7 +41,7 @@ def file_get_path(fname, write=False, mkdir=False):
     return path
 
 
-def file_open(path, binary = True, write = False):
+def file_open(path, binary=True, write=False):
     if write:
         flags = 'w'
     else:
@@ -57,7 +57,7 @@ def file_write(fname, data):
     writes data to a file with given name.
     """
 
-    #ensure that the directory exists
+    # ensure that the directory exists
     mkdirs(os.path.dirname(fname))
 
     if type(data) == bytes:
@@ -102,14 +102,14 @@ def file_write_image(filename, image):
     image.save(filename)
 
 
-#reads data from a file in the source directory
-def file_read(fname, datatype = str):
+# reads data from a file in the source directory
+def file_read(fname, datatype=str):
     if datatype == bytes:
         return file_open(fname, binary=True, write=False).read()
     elif datatype == str:
         return file_open(fname, binary=False, write=False).read()
     else:
-        raise Exception("Unknown data type for reading: " + str(datatype))
+        raise Exception("Unknown data type for reading: %s" % str(datatype))
 
 
 def zstr(data):
@@ -120,4 +120,3 @@ def zstr(data):
     """
 
     return data.decode("utf-8").rstrip("\x00")
-

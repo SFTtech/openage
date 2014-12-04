@@ -11,7 +11,6 @@ from openage.log import dbg
 from openage.util import gen_dict_key2lists
 
 
-
 # regex for matching type array definitions like int[1337]
 # group 1: type name, group 2: length
 vararray_match = re.compile("([{0}]+) *\\[([{0}]+)\\] *;?".format("a-zA-Z0-9_"))
@@ -35,13 +34,13 @@ class StructDefinition:
 
         dbg("generating struct definition from %s" % (repr(target)), lvl=3)
 
-        self.name_struct_file   = target.name_struct_file    #!< name of file where generated struct will be placed
-        self.name_struct        = target.name_struct         #!< name of generated C struct
-        self.struct_description = target.struct_description  #!< comment placed above generated C struct
+        self.name_struct_file   = target.name_struct_file    # !< name of file where generated struct will be placed
+        self.name_struct        = target.name_struct         # !< name of generated C struct
+        self.struct_description = target.struct_description  # !< comment placed above generated C struct
         self.prefix             = None
-        self.target             = target                     #!< target Exportable class that defines the data format
+        self.target             = target                     # !< target Exportable class that defines the data format
 
-        #create ordered dict of member type objects from structure definition
+        # create ordered dict of member type objects from structure definition
         self.members = OrderedDict()
         self.inherited_members = list()
         self.parent_classes = list()
@@ -55,7 +54,7 @@ class StructDefinition:
             if type(member_name) is not str:
                 raise Exception("member name has to be a string, currently: %s<%s>" % (str(member_name), type(member_name)))
 
-            #create member type class according to the defined member type
+            # create member type class according to the defined member type
             if type(member_type) == str:
                 array_match = vararray_match.match(member_type)
                 if array_match:
@@ -65,8 +64,8 @@ class StructDefinition:
                     if array_type == "char":
                         member = CharArrayMember(array_length)
                     elif array_type in NumberMember.type_scan_lookup:
-                        #member = ArrayMember(ref_type=NumberMember, length=array_length, ref_type_params=[array_type])
-                        #BIG BIG TODO
+                        # member = ArrayMember(ref_type=NumberMember, length=array_length, ref_type_params=[array_type])
+                        # BIG BIG TODO
                         raise Exception("TODO: implement exporting arrays!")
                     else:
                         raise Exception("member %s has unknown array type %s" % (member_name, member_type))
@@ -107,13 +106,13 @@ class StructDefinition:
             if not isinstance(member_type, RefMember):
                 continue
 
-            #this member of self is already resolved
+            # this member of self is already resolved
             if member_type.resolved:
                 continue
 
             type_name = member_type.get_effective_type()
 
-            #replace the xref with the real definition
+            # replace the xref with the real definition
             self.members[type_name] = lookup_ref_data[type_name]
 
     def generate_struct(self, genfile):
@@ -127,10 +126,10 @@ class StructDefinition:
 
         snippet.typedefs.add(self.name_struct)
 
-        #add struct members and inheritance parents
+        # add struct members and inheritance parents
         for member_name, member_type in self.members.items():
             if member_name in self.inherited_members:
-                #inherited members don't need to be added as they're stored in the superclass
+                # inherited members don't need to be added as they're stored in the superclass
                 continue
 
             snippet.includes |= member_type.get_headers("struct")
@@ -138,16 +137,16 @@ class StructDefinition:
 
             snippet.add_members(member_type.get_struct_entries(member_name))
 
-        #append member count variable
+        # append member count variable
         snippet.add_member("static constexpr size_t member_count = %d;" % len(self.members))
         snippet.includes |= determine_header("size_t")
 
-        #add filling function prototypes
+        # add filling function prototypes
         for memname, m in sorted(genfile.member_methods.items()):
             snippet.add_member("%s;" % m.get_signature())
             snippet.includes |= m.get_headers()
 
-        return [ snippet ]
+        return [snippet]
 
     def generate_struct_implementation(self, genfile):
         """
@@ -155,26 +154,26 @@ class StructDefinition:
         it is used to fill a struct instance with data of a csv data line.
         """
 
-        #returned snippets
+        # returned snippets
         ret = list()
 
-        #variables to be replaced in the function template
+        # variables to be replaced in the function template
         template_args = {
             "member_count":  self.name_struct + "::member_count",
             "delimiter":     genfile.DELIMITER,
             "struct_name":   self.name_struct,
         }
 
-        #create a list of lines for each parser
-        #a parser converts one csv line to struct entries
+        # create a list of lines for each parser
+        # a parser converts one csv line to struct entries
         parsers = gen_dict_key2lists(genfile.member_methods.keys())
 
-        #place all needed parsers into their requested member function destination
+        # place all needed parsers into their requested member function destination
         for idx, (member_name, member_type) in enumerate(self.members.items()):
             for parser in member_type.get_parsers(idx, member_name):
                 parsers[parser.destination].append(parser)
 
-        #create parser snippets and return them
+        # create parser snippets and return them
         for parser_type, parser_list in parsers.items():
             ret.append(
                 genfile.member_methods[parser_type].get_snippet(
@@ -186,7 +185,6 @@ class StructDefinition:
             )
 
         return ret
-
 
     def __str__(self):
         ret = [

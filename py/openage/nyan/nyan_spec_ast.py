@@ -1,5 +1,6 @@
 # Copyright 2014-2014 the openage authors. See copying.md for legal info.
 
+
 class NyanSpecAST:
     def __init__(self):
         self.types = {}
@@ -12,6 +13,7 @@ class NyanSpecAST:
 
 
 class NyanSpecType:
+
     def __init__(self, name):
         self.name = name
         self.attributes = {}
@@ -29,6 +31,7 @@ class NyanSpecType:
         result += "}\n"
         return result
 
+
 class NyanSpecAttribute:
     def __init__(self, name):
         self.name = name
@@ -45,6 +48,7 @@ class NyanSpecAttribute:
         if self.default_value:
             result += " = " + self.default_value.content
         return result
+
 
 class NyanSpecDelta:
     def __init__(self, delta_type):

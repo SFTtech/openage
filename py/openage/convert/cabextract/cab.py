@@ -5,8 +5,10 @@ from struct import Struct
 from bisect import bisect
 from . import lzxd
 
+
 class Error(Exception):
     pass
+
 
 class Namespace:
     def __init__(self, *mappings, **kwargs):
@@ -42,6 +44,7 @@ class Namespace:
 
     def __repr__(self):
         return repr(vars(self))
+
 
 class ByteQueue:
     def __init__(self):
@@ -84,6 +87,7 @@ class ByteQueue:
 
         return b"".join(resultbufs)
 
+
 class IterCache:
     def __init__(self, iterator):
         self.iterator = iterator
@@ -92,11 +96,13 @@ class IterCache:
     def next(self):
         self.current = next(self.iterator)
 
+
 def read_bytes(f, count):
     data = f.read(count)
     if len(data) != count:
         raise Error("Unexpected EOF")
     return data
+
 
 def read_at(f, pos, count):
     oldpos = f.tell()
@@ -105,7 +111,8 @@ def read_at(f, pos, count):
     f.seek(oldpos)
     return data
 
-def read_string(f, maxlen = 255):
+
+def read_string(f, maxlen=255):
     result = b""
     while True:
         c = read_bytes(f, 1)
@@ -117,11 +124,13 @@ def read_string(f, maxlen = 255):
         if len(result) > maxlen:
             raise Error("expected \\0; string too long")
 
+
 def try_decode(s):
     try:
         return s.decode('utf-8')
     except:
         return s.decode('iso-8859-1')
+
 
 class NamedMemberStruct:
     def __init__(self, endianness, *members):
@@ -155,6 +164,7 @@ class NamedMemberStruct:
             result[name] = val
         return result
 
+
 class FlagDecoder:
     def __init__(self, *flags):
         self.flags = []
@@ -177,46 +187,50 @@ class FlagDecoder:
     def default(self):
         return Namespace({name: False for _, name in self.flags})
 
+
 cfheaderflags_decoder = FlagDecoder(
-    (0, "prev_cabinet"),   # this cabfile is not the first of the set.
-                           # szCabinetPrev and szDiskPrev are present
-                           # after the header.
-    (1, "next_cabinet"),   # this cabfile is not the last of the set.
-                           # szCabinetNext and szDiskNext are present
-                           # after the header.
-    (2, "reserve_present") # this cabinet file has reserved fields.
-                           # cbCFHeader, cbCFFolder, and cbCFData
-                           # are present after the header, followed by
-                           # cbCFHeader bytes of data.
+    (0, "prev_cabinet"),    # this cabfile is not the first of the set.
+                            # szCabinetPrev and szDiskPrev are present
+                            # after the header.
+    (1, "next_cabinet"),    # this cabfile is not the last of the set.
+                            # szCabinetNext and szDiskNext are present
+                            # after the header.
+    (2, "reserve_present")  # this cabinet file has reserved fields.
+                            # cbCFHeader, cbCFFolder, and cbCFData
+                            # are present after the header, followed by
+                            # cbCFHeader bytes of data.
 )
 
-cfheader_struct = NamedMemberStruct("<",
-    ("4s", "signature"),    # magic number: MSCF
-    ("I",  "reserved1"),    #
-    ("I",  "cbCabinet"),    # size of this cabinet file in bytes
-    ("I",  "reserved2"),    #
-    ("I",  "coffFiles"),    # absolute offset of the first CFFILE entry
-    ("I",  "reserved3"),    #
-    ("B",  "versionMinor"), # cab file format version (minor)
-    ("B",  "versionMajor"), # cab file format version (major)
-    ("H",  "cFolders"),     # number of CFFOLDER entries in this cabinet
-    ("H",  "cFiles"),       # number of CFFILES entries in this cabinet
-    ("H",  "flags"),        # see cfheaderflags_decoder
-    ("H",  "setID"),        # must be same in all cabinets of a set
-    ("H",  "iCabinet"),     # number of this cabinet file in the set
+cfheader_struct = NamedMemberStruct(
+    "<",
+    ("4s", "signature"),     # magic number: MSCF
+    ("I",  "reserved1"),     #
+    ("I",  "cbCabinet"),     # size of this cabinet file in bytes
+    ("I",  "reserved2"),     #
+    ("I",  "coffFiles"),     # absolute offset of the first CFFILE entry
+    ("I",  "reserved3"),     #
+    ("B",  "versionMinor"),  # cab file format version (minor)
+    ("B",  "versionMajor"),  # cab file format version (major)
+    ("H",  "cFolders"),      # number of CFFOLDER entries in this cabinet
+    ("H",  "cFiles"),        # number of CFFILES entries in this cabinet
+    ("H",  "flags"),         # see cfheaderflags_decoder
+    ("H",  "setID"),         # must be same in all cabinets of a set
+    ("H",  "iCabinet"),      # number of this cabinet file in the set
 )
 
-cfheader_reservedfields_struct = NamedMemberStruct("<",
+cfheader_reservedfields_struct = NamedMemberStruct(
+    "<",
     ("H",  "cbCFHeader"),   # size of per-cabinet reserved area
     ("B",  "cbCFFolder"),   # size of per-folder reserved area
     ("B",  "cbCFData"),     # size of per-datablock reserved area
 )
 
-cffolder_struct = NamedMemberStruct("<",
-    ("I",  "coffCabStart"), # absolute file offset of first CFDATA block
-    ("H",  "cCFData"),      # number of CFDATA blocks
-    ("H",  "typeCompress"), # compression type. only the 4 last significant
-                            # bits seem to be relevant.
+cffolder_struct = NamedMemberStruct(
+    "<",
+    ("I",  "coffCabStart"),  # absolute file offset of first CFDATA block
+    ("H",  "cCFData"),       # number of CFDATA blocks
+    ("H",  "typeCompress"),  # compression type. only the 4 last significant
+                             # bits seem to be relevant.
 )
 
 cffileattribsflag_decoder = FlagDecoder(
@@ -228,26 +242,29 @@ cffileattribsflag_decoder = FlagDecoder(
     (7, "name_is_utf"),     # name is UTF-8, not "current locale" (8859-1)
 )
 
-cffile_struct = NamedMemberStruct("<",
-    ("I",  "cbFile"),          # uncompressed filesize
-    ("I",  "uoffFolderStart"), # uncompressed offset of file in folder
-    ("H",  "iFolder"),         # index of the folder that contains this file.
-                               # there are several special indices:
-                               # 0xFFFD continued_from_prev: 0
-                               # 0xFFFE continued_to_next: -1
-                               # 0xFFFF continued_prev_and_next: 0
-    ("H",  "date"),            # date stamp ((y–1980) << 9)+(m << 5)+(d) wtf.
-    ("H",  "time"),            # time stamp (h << 11)+(m << 5)+(s >> 1) røfl.
-    ("H",  "attribs"),         # see cffileattribsflag_decoder
+cffile_struct = NamedMemberStruct(
+    "<",
+    ("I",  "cbFile"),           # uncompressed filesize
+    ("I",  "uoffFolderStart"),  # uncompressed offset of file in folder
+    ("H",  "iFolder"),          # index of the folder that contains this file.
+                                # there are several special indices:
+                                # 0xFFFD continued_from_prev: 0
+                                # 0xFFFE continued_to_next: -1
+                                # 0xFFFF continued_prev_and_next: 0
+    ("H",  "date"),             # date stamp ((y–1980) << 9)+(m << 5)+(d) wtf.
+    ("H",  "time"),             # time stamp (h << 11)+(m << 5)+(s >> 1) røfl.
+    ("H",  "attribs"),          # see cffileattribsflag_decoder
 )
 
-cfdata_struct = NamedMemberStruct("<",
+cfdata_struct = NamedMemberStruct(
+    "<",
     ("I",  "csum"),            # checksum of cbData through ab
     ("H",  "cbData"),          # number of compressed bytes
     ("H",  "cbUncomp"),        # number of uncompressed bytes
     # abReserve[header.cbCFData],
     # ab[cbData]
 )
+
 
 class CABFile:
     def __init__(self, filename, readfiledata=False):
@@ -326,7 +343,6 @@ class CABFile:
         for _ in range(header.cFiles):
             file_ = cffile_struct.read(f)
 
-
             # decode flags
             file_._update(cffileattribsflag_decoder.decode(file_.attribs))
 
@@ -352,12 +368,13 @@ class CABFile:
                 file_.continued_from_prev = True
                 file_.continued_to_next = True
 
-            year =   (file_.date >> 9) + 1980
-            month =  (file_.date >> 5) & 0x000f
-            day =    (file_.date >> 0) & 0x001f
-            hour =   (file_.time >> 11)
+            # beware, you might get internal bleedings when reading this:
+            year = (file_.date >> 9) + 1980
+            month = (file_.date >> 5) & 0x000f
+            day = (file_.date >> 0) & 0x001f
+            hour = (file_.time >> 11)
             minute = (file_.time >> 5) & 0x003f
-            sec =    (file_.time << 1) & 0x003f
+            sec = (file_.time << 1) & 0x003f
 
             import datetime
             dt = datetime.datetime(year, month, day, hour, minute, sec)
@@ -467,17 +484,24 @@ class CABFile:
                 return len(data)
 
             if folder.comptype == 'LZX':
-                lzxd.decompress(folder.comp_window_size, folder.uncompressed_size, folder.pseudofile.read, decomp_write)
+                lzxd.decompress(folder.comp_window_size,
+                                folder.uncompressed_size,
+                                folder.pseudofile.read,
+                                decomp_write)
             else:
-                raise Exception("Unsupported folder compression: " + folder.comptype)
+                raise Exception("Unsupported folder compression: "
+                                + folder.comptype)
 
             if buf:
-                print("warning: the last %d bytes of folder %d are being discarded!" % (len(currentbuf), folderid))
+                print("warning: the last %d bytes of folder %d"
+                      " are being discarded!" % (len(currentbuf), folderid))
 
             if files.current.folderid == folderid:
-                raise Exception("Unexpected end of folder %d while reading data for %s" % (folderid, meta[fileno][2].name))
+                raise Exception("Unexpected end of folder %d"
+                                " while reading data for %s" % (
+                                    folderid, meta[fileno][2].name))
 
-        if files.current.folderid != None:
+        if files.current.folderid is not None:
             raise Exception("Missing folder: %d" % (files.current.folderid))
 
         self.filedata_read = True
@@ -505,7 +529,7 @@ class BlobPseudoFile:
     def tell(self):
         return self.pos
 
-    def seek(self, offset, fromwhat = 0):
+    def seek(self, offset, fromwhat=0):
         if fromwhat == 0:
             self.pos = offset + 0
         elif fromwhat == 1:
@@ -533,7 +557,8 @@ class FolderPseudoFile:
         self.datablocks = []
         for db in folder.datablocks:
             self.datablockanchors.append(self.size)
-            self.datablocks.append((db.ab_start, db.ab_size)) # physical start, size
+            # physical (start, size):
+            self.datablocks.append((db.ab_start, db.ab_size))
             self.size += db.ab_size
 
     def close(self):
@@ -557,7 +582,7 @@ class FolderPseudoFile:
     def tell(self):
         return self.pos
 
-    def seek(self, offset, fromwhat = 0):
+    def seek(self, offset, fromwhat=0):
         if fromwhat == 0:
             self.pos = offset + 0
         elif fromwhat == 1:
@@ -580,7 +605,8 @@ class FolderPseudoFile:
             bytecount = min(rem, size)
 
             # this is the last datablock we need
-            result.append(read_at(self.f, self.datablock_physicalstart(idx) + self.pos_in_datablock(idx), bytecount))
+            result.append(read_at(self.f, self.datablock_physicalstart(idx)
+                                  + self.pos_in_datablock(idx), bytecount))
             self.pos += bytecount
             size -= bytecount
 

@@ -3,8 +3,10 @@
 from .token import Token
 from .util import Enum
 
+
 class Tokenizer:
-    State = Enum(name="State",
+    State = Enum(
+        name="State",
         values=[
             "START",
             "COMMENT",
@@ -59,7 +61,7 @@ class Tokenizer:
             self.unexpected()
         else:
             self.tokens.append(Token(Token.Type.END, '', self.line,
-                self.offset))
+                                     self.offset))
         return self.tokens
 
     def is_identifier_begin(self, c):
@@ -67,7 +69,7 @@ class Tokenizer:
 
     def is_identifier(self, c):
         return c.isalnum() or c == '_'
-    
+
     def is_separator(self, c):
         return c in "^:,()[]{}="
 
@@ -81,7 +83,7 @@ class Tokenizer:
                 self.begin_token()
                 self.state = Tokenizer.State.DOT
             elif self.is_separator(c):
-                self.add_token(Token.get_type_for_character(c)) 
+                self.add_token(Token.get_type_for_character(c))
             elif self.is_identifier_begin(c):
                 self.begin_token()
                 self.state = Tokenizer.State.IDENTIFIER
@@ -94,7 +96,7 @@ class Tokenizer:
             elif c == '0':
                 self.begin_token()
                 self.state = Tokenizer.State.ZERO
-            elif c.isdigit(): # and not zero, as it is checked before
+            elif c.isdigit():  # and not zero, as it is checked before
                 self.begin_token()
                 self.state = Tokenizer.State.INTEGER
             elif c == '"':
@@ -186,7 +188,7 @@ class Tokenizer:
             else:
                 self.unexpected()
         elif self.state == Tokenizer.State.STRING:
-            #TODO handle string, parse escape sequences
+            # TODO handle string, parse escape sequences
             pass
         elif self.state == Tokenizer.State.STRING_RAW:
             if c == '\'':
@@ -201,7 +203,7 @@ class Tokenizer:
         else:
             assert "Invalid Tokenizer state"
 
-    def begin_token(self, use_current = True):
+    def begin_token(self, use_current=True):
         self.token_begin = self.index
         self.token_offset = self.offset
         self.token_length = 1
@@ -216,20 +218,26 @@ class Tokenizer:
     def continue_token(self):
         self.token_length += 1
 
-    def finish_token(self, ttype, add_current = True):
+    def finish_token(self, ttype, add_current=True):
         if add_current:
             self.token_length += 1
         token_end = self.token_begin + self.token_length
-        self.tokens.append(Token(ttype,
+        self.tokens.append(Token(
+            ttype,
             self.input_data[self.token_begin:token_end], self.token_line,
-            self.token_offset))
+            self.token_offset,
+        ))
         self.token_begin = self.index
         if add_current:
             self.token_begin += 1
 
     def add_token(self, ttype):
-        self.tokens.append(Token(ttype, self.input_data[self.index], self.line,
-            self.offset))
+        self.tokens.append(Token(
+            ttype,
+            self.input_data[self.index],
+            self.line,
+            self.offset,
+        ))
 
     def step_back(self):
         if not self.input_data[self.index].isspace():
@@ -239,6 +247,7 @@ class Tokenizer:
 
     def unexpected(self):
         self.tokens.append(Token(Token.Type.FAIL,
-            self.input_data[self.token_begin:self.index], self.token_line,
-            self.token_offset))
+                                 self.input_data[self.token_begin:self.index],
+                                 self.token_line,
+                                 self.token_offset))
         self.state = Tokenizer.State.FINISHED

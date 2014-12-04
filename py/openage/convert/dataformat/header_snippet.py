@@ -2,6 +2,7 @@
 
 from .content_snippet import ContentSnippet
 
+
 class HeaderSnippet(ContentSnippet):
     """
     represents an includable C header

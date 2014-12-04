@@ -4,6 +4,7 @@ from string import Template
 
 from .content_snippet import ContentSnippet
 
+
 class StructSnippet(ContentSnippet):
     """
     text snippet for generating C++ structs.
@@ -27,7 +28,7 @@ $members
         self.set_parents(parents)
 
         self.reprtxt = "struct %s" % (self.struct_name)
-        self.typedefs |= { self.struct_name }
+        self.typedefs |= {self.struct_name}
 
     def set_comment(self, comment):
         if comment:

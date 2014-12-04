@@ -4,6 +4,7 @@ from .nyan_spec_ast import *
 from .parser_exception import ParserException
 from .token import Token
 
+
 class NyanSpecParser:
     def __init__(self, tokens):
         self.index = 0
@@ -28,7 +29,7 @@ class NyanSpecParser:
         self.current_type = NyanSpecType(type_name)
         if type_name.content in self.ast.types:
             self.error("Duplicated definition of type '%s'" %
-                    type_name.content, type_name)
+                       type_name.content, type_name)
         else:
             self.ast.types[type_name.content] = self.current_type
 
@@ -37,7 +38,7 @@ class NyanSpecParser:
         self.expect_token(Token.Type.RBRACE, "','", "'}'")
 
     def parse_type_body(self):
-        got_comma = self.parse_type_attributes();
+        got_comma = self.parse_type_attributes()
         if not got_comma:
             return
 
@@ -55,24 +56,25 @@ class NyanSpecParser:
         while got_comma:
             if not self.is_token(Token.Type.IDENTIFIER):
                 return True
-            
+
             # parse attribute name
             attr_name = self.skip_token()
             new_attr = NyanSpecAttribute(attr_name)
             if attr_name.content in self.current_type.attributes:
                 self.error(
-                        "Duplicated definition of attribute '%s' in type '%s'"
-                        % (attr_name.content, self.current_type.name.content),
-                        attr_name)
+                    "Duplicated definition of attribute '%s' in type '%s'"
+                    % (attr_name.content, self.current_type.name.content),
+                    attr_name
+                )
             else:
                 self.current_type.attributes[attr_name.content] = new_attr
 
             # parse colon
-            self.expect_token(Token.Type.COLON, "':'") 
+            self.expect_token(Token.Type.COLON, "':'")
 
             # parse attribute type
             attr_type = self.expect_token(Token.Type.IDENTIFIER,
-                    "attribute type")
+                                          "attribute type")
             new_attr.atype = attr_type
 
             if attr_type.content == "set":
@@ -109,11 +111,12 @@ class NyanSpecParser:
             new_delta = NyanSpecDelta(delta_type)
             if delta_type.content in self.current_type.deltas:
                 self.error("Duplicated definition of delta '%s' in "
-                        "type '%s'" % (delta_type.content,
-                            self.current_type.content), delta_type)
+                           "type '%s'" % (delta_type.content,
+                                          self.current_type.content),
+                           delta_type)
             else:
                 self.current_type.deltas[delta_type.content] = new_delta
-            
+
             got_comma = self.accept_token(Token.Type.COMMA)
 
     def build_expectations_string(self, *expectations):
@@ -121,7 +124,7 @@ class NyanSpecParser:
         strings = list(map(str, expectations))
         result = ""
         if length >= 2:
-            result += ", ".join(strings[0:length-1]) + " or "
+            result += ", ".join(strings[0:length - 1]) + " or "
         result += strings[-1]
         return result
 
@@ -131,8 +134,8 @@ class NyanSpecParser:
         list.
         """
         self.error("Expected %s, got '%s'" %
-            (self.build_expectations_string(*expectations),
-            self.token.content), self.token, True)
+                   (self.build_expectations_string(*expectations),
+                    self.token.content), self.token, True)
 
     def next_token(self):
         """
@@ -151,7 +154,7 @@ class NyanSpecParser:
             self.next_token()
             return True
         return False
-    
+
     def is_token(self, ttype, content=None):
         """
         Returns whether the current token has the given type and content.
@@ -170,7 +173,7 @@ class NyanSpecParser:
         if not self.is_token(ttype):
             self.expected(*expectations)
         return self.skip_token()
-    
+
     def skip_token(self):
         """
         Returns and skips the current token.

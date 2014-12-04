@@ -73,6 +73,7 @@ def fail():
     """
     raise CustomException("this test is designed to fail.")
 
+
 def succeed():
     """
     designed to be used with testruntest

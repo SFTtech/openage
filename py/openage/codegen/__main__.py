@@ -117,7 +117,7 @@ def main():
     except:
         if cache_actions_requested:
             log.dbg("warning: cache actions were requested, " +
-                "but the target cache could not be read!", 0)
+                    "but the target cache could not be read!", 0)
 
     old_depend_cache = set()
     try:
@@ -127,7 +127,7 @@ def main():
     except:
         if cache_actions_requested:
             log.dbg("warning: cache actions were requested, " +
-                "but the depends cache could not be read!", 0)
+                    "but the depends cache could not be read!", 0)
 
     cpp_src_dir = args.cpp_src_dir
     if not os.path.isdir(cpp_src_dir):
@@ -185,7 +185,7 @@ def main():
             os.utime(file_to_touch)
         except:
             log.dbg("warning: couldn't update the timestamp for %s"
-                % file_to_touch, 0)
+                    % file_to_touch, 0)
 
     if target_cache_changed and args.force_rerun_on_targetcache_change:
         print("""\n\n\n\

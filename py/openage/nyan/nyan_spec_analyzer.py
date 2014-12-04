@@ -3,6 +3,7 @@
 from .parser_exception import ParserException
 from .token import Token
 
+
 class NyanSpecAnalyzer:
     def __init__(self, ast):
         self.ast = ast
@@ -27,18 +28,18 @@ class NyanSpecAnalyzer:
             else:
                 if attr.is_set:
                     self.error("Sets of type '%s' are not allowed" % type_name,
-                            attr.atype)
-    
+                               attr.atype)
+
     def check_delta_types_exist(self, ntype):
         for delta in ntype.deltas.values():
             type_name = delta.delta_type.content
             if self.is_basic_type(type_name):
                 self.error("Delta of primitive type '%s' is not allowed" %
-                        type_name, delta.delta_type)
+                           type_name, delta.delta_type)
             elif type_name not in self.ast.types:
                 self.error("Type '%s' is not defined" % type_name,
-                        delta.delta_type)
-    
+                           delta.delta_type)
+
     def check_default_value(self, ntype):
         for attr in ntype.attributes.values():
             if self.is_basic_type(attr.atype.content) and not attr.is_set and\
@@ -53,7 +54,7 @@ class NyanSpecAnalyzer:
                 else:
                     error_message = "Type '%s' must not have default value"
                 self.error(error_message % attr.atype.content,
-                        attr.default_value)
+                           attr.default_value)
 
     def is_basic_type(self, type_name):
         return type_name in ["bool", "int", "float", "string"]
@@ -73,7 +74,7 @@ class NyanSpecAnalyzer:
             if attr_value.ttype == Token.Type.STRING:
                 return
         self.error("'%s' is no valid literal for primitive type '%s'"
-                % (attr_value.content, attr_type.content), attr_value)
+                   % (attr_value.content, attr_type.content), attr_value)
 
     def error(self, message, token):
         self.errors.append(ParserException(message, token))

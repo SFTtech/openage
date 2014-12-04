@@ -7,18 +7,18 @@ from ..dataformat.member_access import READ, READ_EXPORT
 
 
 class Civ(Exportable):
-    name_struct        = "civilisation"
-    name_struct_file   = name_struct
+    name_struct = "civilisation"
+    name_struct_file = name_struct
     struct_description = "describes one a civilisation."
 
     data_format = (
         (READ, "enabled", "int8_t"),
         (READ_EXPORT, "name", "char[20]"),
         (READ, "resources_count", "uint16_t"),
-        (READ_EXPORT, "tech_tree_id",  "int16_t"),             #links to tech id (to apply its effects)
-        (READ_EXPORT, "team_bonus_id", "int16_t"),             #links to tech id as well
+        (READ_EXPORT, "tech_tree_id",  "int16_t"),             # links to tech id (to apply its effects)
+        (READ_EXPORT, "team_bonus_id", "int16_t"),             # links to tech id as well
         (READ, "resources", "float[resources_count]"),
-        (READ, "icon_set", "int8_t"),                          #building icon set, trade cart graphics, changes no other graphics
+        (READ, "icon_set", "int8_t"),                          # building icon set, trade cart graphics, changes no other graphics
         (READ_EXPORT, "unit_count", "uint16_t"),
         (READ, "unit_offsets", "int32_t[unit_count]"),
 

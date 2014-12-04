@@ -13,7 +13,7 @@ from .gamedata import empiresdat
 
 
 def generate_gamedata_structs(cpp_src_dir):
-    #generate files in these formats
+    # generate files in these formats
     formats = ("struct", "structimpl")
 
     data_formatter = DataFormatter()

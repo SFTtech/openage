@@ -4,6 +4,7 @@ from string import Template
 
 from .content_snippet import ContentSnippet
 
+
 class EntryParser:
     def __init__(self, lines, headers, typerefs, destination="fill"):
         self.lines       = lines
@@ -52,8 +53,8 @@ class ParserMemberFunction:
         data["parsers"]    = "\n".join(parser.get_code(1) for parser in parser_list)
         data["class_name"] = class_name
 
-        #lookup function for length of parser list.
-        #if the len is 0, this should provide the stub function.
+        # lookup function for length of parser list.
+        # if the len is 0, this should provide the stub function.
         template = self.get_template(len(parser_list))
         snippet = ContentSnippet(
             template.get_text(class_name, data),
@@ -64,7 +65,7 @@ class ParserMemberFunction:
         )
 
         snippet.includes |= template.impl_headers | set().union(*(p.headers for p in parser_list))
-        snippet.typerefs |= { class_name }.union(*(p.typerefs for p in parser_list))
+        snippet.typerefs |= {class_name}.union(*(p.typerefs for p in parser_list))
 
         return snippet
 

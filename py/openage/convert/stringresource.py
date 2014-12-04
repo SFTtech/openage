@@ -5,10 +5,12 @@ from collections import defaultdict
 from .dataformat import exportable, data_definition, struct_definition
 from openage.log import dbg
 
+
 class StringResource(exportable.Exportable):
-    name_struct        = "string_resource"
-    name_struct_file   = "string_resource"
-    struct_description = "string id/language to text mapping, extracted from language.dll file."
+    name_struct = "string_resource"
+    name_struct_file = "string_resource"
+    struct_description = "string id/language to text mapping,"\
+                         " extracted from language.dll file."
 
     data_format = (
         (True, "id",   "int32_t"),
@@ -36,8 +38,8 @@ class StringResource(exportable.Exportable):
                 data.append(entry)
 
         data = sorted(data, key=lambda x: x["id"])
-        return [ data_definition.DataDefinition(self, data, filename) ]
+        return [data_definition.DataDefinition(self, data, filename)]
 
     @classmethod
     def structs(cls):
-        return [ struct_definition.StructDefinition(cls) ]
+        return [struct_definition.StructDefinition(cls)]

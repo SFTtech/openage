@@ -26,7 +26,6 @@ struct_type_lookup = {
 }
 
 
-
 def encode_value(val):
     """
     encodes val to a (possibly escaped) string,
@@ -56,12 +55,13 @@ def gather_data(obj, members):
 
     return ret
 
+
 def determine_header(for_type):
     """
     returns the includable headers for using the given C type.
     """
 
-    #these headers are needed for the type
+    # these headers are needed for the type
     ret = set()
 
     from .header_snippet import HeaderSnippet
@@ -78,30 +78,30 @@ def determine_header(for_type):
     util_error_h          = HeaderSnippet("../util/error.h", is_global=False)
     log_h                 = HeaderSnippet("../log.h", is_global=False)
 
-    #lookup for type->{header}
+    # lookup for type->{header}
     type_map = {
-        "int8_t":          { cstdinth },
-        "uint8_t":         { cstdinth },
-        "int16_t":         { cstdinth },
-        "uint16_t":        { cstdinth },
-        "int32_t":         { cstdinth },
-        "uint32_t":        { cstdinth },
-        "int64_t":         { cstdinth },
-        "uint64_t":        { cstdinth },
-        "std::string":     { stringh  },
-        "std::vector":     { vectorh  },
-        "strcmp":          { cstringh },
-        "strncpy":         { cstringh },
-        "strtok_custom":   { util_strings_h },
-        "sscanf":          { cstdioh  },
-        "size_t":          { cstddefh },
+        "int8_t":          {cstdinth},
+        "uint8_t":         {cstdinth},
+        "int16_t":         {cstdinth},
+        "uint16_t":        {cstdinth},
+        "int32_t":         {cstdinth},
+        "uint32_t":        {cstdinth},
+        "int64_t":         {cstdinth},
+        "uint64_t":        {cstdinth},
+        "std::string":     {stringh},
+        "std::vector":     {vectorh},
+        "strcmp":          {cstringh},
+        "strncpy":         {cstringh},
+        "strtok_custom":   {util_strings_h},
+        "sscanf":          {cstdioh},
+        "size_t":          {cstddefh},
         "float":           set(),
         "int":             set(),
-        "read_csv_file":   { util_file_h },
-        "subdata":         { util_file_h },
-        "engine_dir":      { util_dir_h },
-        "engine_error":    { util_error_h },
-        "engine_log":      { log_h },
+        "read_csv_file":   {util_file_h},
+        "subdata":         {util_file_h},
+        "engine_dir":      {util_dir_h},
+        "engine_error":    {util_error_h},
+        "engine_log":      {log_h},
     }
 
     if for_type in type_map:
@@ -111,9 +111,14 @@ def determine_header(for_type):
 
     return ret
 
+
 def determine_headers(for_types):
     ret = set()
     for t in for_types:
         ret |= determine_header(t)
 
     return ret
+
+
+def commentify_lines(commentstr, text):
+    return "".join(commentstr + line for line in text.split("\n"))

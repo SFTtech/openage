@@ -3,6 +3,7 @@
 from openage.log import dbg
 import openage.util as util
 
+
 class ContentSnippet:
     """
     one part of text for generated files to be saved in "file_name"
@@ -18,19 +19,20 @@ class ContentSnippet:
     section_body     = util.NamedObject("body")
 
     def __init__(self, data, file_name, section, orderby=None, reprtxt=None):
-        self.data      = data       #snippet content
-        self.file_name = file_name  #snippet wants to be saved in this file
-        self.typerefs  = set()      #these types are referenced
-        self.typedefs  = set()      #these types are defined
-        self.includes  = set()      #needed snippets, e.g. headers
-        self.section   = section    #place the snippet in this file section
-        self.orderby   = orderby    #use this value for ordering snippets
-        self.reprtxt   = reprtxt    #representation text
+        self.data      = data       # snippet content
+        self.file_name = file_name  # snippet wants to be saved in this file
+        self.typerefs  = set()      # these types are referenced
+        self.typedefs  = set()      # these types are defined
+        self.includes  = set()      # needed snippets, e.g. headers
+        self.section   = section    # place the snippet in this file section
+        self.orderby   = orderby    # use this value for ordering snippets
+        self.reprtxt   = reprtxt    # representation text
 
-        self.required_snippets = set() #snippets to be positioned before this one
+        # snippets to be positioned before this one
+        self.required_snippets = set()
 
-        #snippet content is ready by default.
-        #subclasses may require generation.
+        # snippet content is ready by default.
+        # subclasses may require generation.
         self.data_ready = True
 
     def get_data(self):
@@ -44,14 +46,19 @@ class ContentSnippet:
 
     def add_required_snippets(self, snippet_list):
         """
-        save required snippets for this one by looking at wanted type references
+        save required snippets for this one by looking at wanted type
+        references.
 
         the available candidates have to be passed as argument
         """
 
-        self.required_snippets |= {s for s in snippet_list if len(self.typerefs & s.typedefs) > 0}
+        self.required_snippets |= {
+            s for s in snippet_list if len(self.typerefs & s.typedefs) > 0
+        }
 
-        dbg(lazymsg=lambda: "snippet %s requires %s" % (repr(self), repr(self.required_snippets)), lvl=3)
+        dbg(lazymsg=lambda: "snippet %s requires %s" % (
+            repr(self), repr(self.required_snippets)
+        ), lvl=3)
 
         resolved_types = set()
         for s in self.required_snippets:
@@ -67,10 +74,11 @@ class ContentSnippet:
         need to be put in the file.
         """
 
-        #TODO: loop detection
+        # TODO: loop detection
         ret = list()
 
-        dbg(lazymsg=lambda: "required snippets for %s {" % (repr(self)), push=True, lvl=4)
+        dbg(lazymsg=lambda: "required snippets for %s {" % (repr(self)),
+            push=True, lvl=4)
 
         # sort snippets deterministically by __lt__ function
         for s in sorted(self.required_snippets):
@@ -103,13 +111,17 @@ class ContentSnippet:
         if isinstance(other, type(self)) or isinstance(self, type(other)):
             if not (other.orderby and self.orderby):
                 faild = self if other.orderby else other
-                raise Exception("%s doesn't have orderby member set" % (repr(faild)))
+                raise Exception("%s doesn't have orderby member set" % (
+                    repr(faild)))
             else:
                 ret = self.orderby < other.orderby
-                dbg(lazymsg=lambda: "%s < %s = %s" % (repr(self), repr(other), ret), lvl=4)
+                dbg(lazymsg=lambda: "%s < %s = %s" % (repr(self),
+                                                      repr(other), ret), lvl=4)
                 return ret
         else:
-            raise TypeError("unorderable types: %s < %s" % (type(self), type(other)))
+            raise TypeError("unorderable types: %s < %s" % (
+                type(self), type(other)
+            ))
 
     def __eq__(self, other):
         """
@@ -120,9 +132,9 @@ class ContentSnippet:
             return False
 
         return (
-            self.file_name   == other.file_name
-            and self.data    == other.data
-            and self.section == other.section
+            self.file_name    == other.file_name
+            and self.data     == other.data
+            and self.section  == other.section
             and self.typedefs == other.typedefs
             and self.typerefs == other.typerefs
         )
@@ -135,7 +147,8 @@ class ContentSnippet:
         else:
             data = ""
 
-        return "%s(file=%s)%s" % (self.__class__.__name__, self.file_name, data)
+        return "%s(file=%s)%s" % (self.__class__.__name__,
+                                  self.file_name, data)
 
     def __str__(self):
         if self.data_ready:

@@ -20,6 +20,7 @@ def ifdbg(lvl):
     else:
         return False
 
+
 def ifdbgeq(lvl):
     global verbose
 
@@ -52,7 +53,8 @@ def dbg(msg=None, lvl=None, push=None, pop=None, lazymsg=None, end="\n"):
     lazymsg
         can be used instead of msg for lazy evaluation.
         must be callable, and return a message object (or None).
-        will be called only if the message will be actually printed (according to loglevel).
+        will be called only if the message will actually be evaluated
+        and printed (according to loglevel).
         intended for use with lambdas.
         only one of msg and lazymsg may be not None.
     end
@@ -61,27 +63,26 @@ def dbg(msg=None, lvl=None, push=None, pop=None, lazymsg=None, end="\n"):
 
     global verbose
 
-    if lvl == None:
-        #if no level is set, use the level on top of the debug stack
+    if lvl is None:
+        # if no level is set, use the level on top of the debug stack
         lvl = dbgstack[-1][1]
 
-    if pop != None:
-        if pop == True:
-            if dbgstack.pop()[0] == None:
+    if pop is not None:
+        if pop is True:
+            if dbgstack.pop()[0] is None:
                 raise Exception("stack underflow in debug stack!")
         elif dbgstack.pop()[0] != pop:
             raise Exception(str(pop) + " is not on top of the debug stack")
 
     if verbose >= lvl:
-        if lazymsg != None:
+        if lazymsg is not None:
             if callable(lazymsg):
                 msg = lazymsg()
             else:
                 raise Exception("the lazy message must be a callable (lambda)")
 
-        if msg != None:
+        if msg is not None:
             print((len(dbgstack) - 1) * "  " + str(msg), end=end)
 
-    if push != None:
+    if push is not None:
         dbgstack.append((push, lvl))
-
