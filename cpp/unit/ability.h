@@ -44,8 +44,8 @@ public:
 	virtual bool can_target(Unit *u1, coord::phys3 target) = 0;
 	virtual bool can_target(Unit *u1, Unit *target) = 0;
 
-	virtual std::shared_ptr<UnitAction> target(Unit *to_modify, coord::phys3 target) = 0;
-	virtual std::shared_ptr<UnitAction> target(Unit *to_modify, Unit *target) = 0;
+	virtual std::unique_ptr<UnitAction> target(Unit *to_modify, coord::phys3 target) = 0;
+	virtual std::unique_ptr<UnitAction> target(Unit *to_modify, Unit *target) = 0;
 };
 
 /*
@@ -62,8 +62,8 @@ public:
 	bool can_target(Unit *u1, coord::phys3 target);
 	bool can_target(Unit *u1, Unit *target);
 
-	std::shared_ptr<UnitAction> target(Unit *to_modify, coord::phys3 target);
-	std::shared_ptr<UnitAction> target(Unit *to_modify, Unit *target);
+	std::unique_ptr<UnitAction> target(Unit *to_modify, coord::phys3 target) override;
+	std::unique_ptr<UnitAction> target(Unit *to_modify, Unit *target) override;
 
 private:
 	Texture *tex;
@@ -84,8 +84,8 @@ public:
 	bool can_target(Unit *u1, coord::phys3 target);
 	bool can_target(Unit *u1, Unit *target);
 
-	std::shared_ptr<UnitAction> target(Unit *to_modify, coord::phys3 target);
-	std::shared_ptr<UnitAction> target(Unit *to_modify, Unit *target);
+	std::unique_ptr<UnitAction> target(Unit *to_modify, coord::phys3 target) override;
+	std::unique_ptr<UnitAction> target(Unit *to_modify, Unit *target) override;
 
 private:
 	Texture *tex;
@@ -106,8 +106,8 @@ public:
 	bool can_target(Unit *u1, coord::phys3 target);
 	bool can_target(Unit *u1, Unit *target);
 
-	std::shared_ptr<UnitAction> target(Unit *to_modify, coord::phys3 target);
-	std::shared_ptr<UnitAction> target(Unit *to_modify, Unit *target);
+	std::unique_ptr<UnitAction> target(Unit *to_modify, coord::phys3 target) override;
+	std::unique_ptr<UnitAction> target(Unit *to_modify, Unit *target) override;
 
 private:
 	Texture *tex;

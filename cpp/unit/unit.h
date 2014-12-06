@@ -61,18 +61,18 @@ public:
 	 * this turns targeted objects into actions which are pushed
 	 * onto the stack, eg. targeting a relic may push a collect relic action
 	 */
-	void give_ability(std::shared_ptr<UnitAbility>);
+	void give_ability(std::unique_ptr<UnitAbility>);
 
 	/**
 	 * get ability with specified type, null if not available
 	 */
-	std::shared_ptr<UnitAbility> get_ability(ability_type type);
+	UnitAbility *get_ability(ability_type type);
 
 	/**
 	 * adds a new action on top of the action stack
 	 * will be performed immediately
 	 */
-	void push_action(std::shared_ptr<UnitAction>);
+	void push_action(std::unique_ptr<UnitAction>);
 
 	/**
 	 * give a new attribute this this unit
@@ -120,12 +120,12 @@ private:
 	 * ability available -- actions that this entity
 	 * can perform when controlled
 	 */
-	std::vector<std::shared_ptr<UnitAbility>> ability_available;
+	std::vector<std::unique_ptr<UnitAbility>> ability_available;
 
 	/**
 	 * action stack -- top action determines graphic to be drawn
 	 */
-	std::vector<std::shared_ptr<UnitAction>> action_stack;
+	std::vector<std::unique_ptr<UnitAction>> action_stack;
 
 	/**
 	 * Unit attributes include color, hitpoints, speed, objects garrisoned etc

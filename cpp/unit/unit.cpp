@@ -37,7 +37,7 @@ bool Unit::update() {
 		auto position_it = std::find_if(
 			std::begin(this->action_stack),
 			std::end(this->action_stack),
-			[](std::shared_ptr<UnitAction> &e) {
+			[](std::unique_ptr<UnitAction> &e) {
 				return e->allow_destruction();
 			});
 		this->action_stack.erase(position_it, std::end(this->action_stack));
@@ -57,7 +57,7 @@ bool Unit::update() {
 		auto position_it = std::find_if(
 			std::begin(this->action_stack),
 			std::end(this->action_stack),
-			[](std::shared_ptr<UnitAction> &e) {
+			[](std::unique_ptr<UnitAction> &e) {
 				return e->completed();
 			});
 		this->action_stack.erase(position_it, std::end(this->action_stack));
@@ -72,21 +72,24 @@ bool Unit::draw() {
 	return true;
 }
 
-void Unit::give_ability(std::shared_ptr<UnitAbility> ability) {
-	this->ability_available.push_back( ability );
+void Unit::give_ability(std::unique_ptr<UnitAbility> ability) {
+	this->ability_available.push_back( std::move(ability) );
 }
 
-std::shared_ptr<UnitAbility> Unit::get_ability(ability_type type) {
+UnitAbility *Unit::get_ability(ability_type type) {
 	auto position_it = std::find_if(std::begin(this->ability_available),
 	                                std::end(this->ability_available),
-			[&](std::shared_ptr<UnitAbility> &e) {
+			[&](std::unique_ptr<UnitAbility> &e) {
 				return e->type() == type;
 			});
-	return *position_it;
+	if (position_it != this->ability_available.end()) {
+		return position_it->get();
+	}
+	return nullptr;
 }
 
-void Unit::push_action(std::shared_ptr<UnitAction> action) {
-	this->action_stack.push_back( action );
+void Unit::push_action(std::unique_ptr<UnitAction> action) {
+	this->action_stack.push_back(std::move(action));
 }
 
 void Unit::add_attribute(AttributeContainer *attr) {
@@ -99,7 +102,7 @@ bool Unit::has_attribute(attr_type type) {
 
 bool Unit::target(coord::phys3 target, ability_set type) {
 	// find suitable ability for this target
-	for (auto action : this->ability_available) {
+	for (auto &action : this->ability_available) {
 		if (type[action->type()] && action->can_target(this, target)) {
 			erase_interuptables();
 			this->push_action( action->target(this, target) );
@@ -111,7 +114,7 @@ bool Unit::target(coord::phys3 target, ability_set type) {
 
 bool Unit::target(Unit *target, ability_set type) {
 	// find suitable ability for this target
-	for (auto action : this->ability_available) {
+	for (auto &action : this->ability_available) {
 		if (type[action->type()] && action->can_target(this, target)) {
 			erase_interuptables();
 			this->push_action( action->target(this, target) );
@@ -132,7 +135,7 @@ void Unit::erase_interuptables() {
 	auto position_it = std::find_if(
 		std::begin(this->action_stack),
 		std::end(this->action_stack),
-		[](std::shared_ptr<UnitAction> &e) {
+		[](std::unique_ptr<UnitAction> &e) {
 			return e->allow_interupt();
 		});
 	this->action_stack.erase(position_it, std::end(this->action_stack));

@@ -393,7 +393,7 @@ bool GameMain::on_input(SDL_Event *e) {
 				obj->unit->delete_unit();
 			} else if ( this->available_objects.size() > 0 ) {
 				// try creating a unit
-				std::shared_ptr<UnitProducer> producer = this->available_objects[this->editor_current_building];
+				UnitProducer &producer = *this->available_objects[this->editor_current_building];
 				this->placed_units.new_unit(producer, terrain, mousepos_tile);
 			}
 			break;
@@ -599,9 +599,9 @@ bool GameMain::on_drawhud() {
 		coord::window bpreview_pos;
 		bpreview_pos.x = e.window_size.x - 200;
 		bpreview_pos.y = 200;
-		this->available_objects[this->editor_current_building]->default_texture()->draw(bpreview_pos.to_camhud());
+		auto txt = this->available_objects[this->editor_current_building].get()->default_texture();
+		txt->draw(bpreview_pos.to_camhud());
 	}
-
 	return true;
 }
 

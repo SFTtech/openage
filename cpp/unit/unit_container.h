@@ -54,7 +54,7 @@ public:
 	/**
 	 * adds a new unit to the container
 	 */
-	bool new_unit(std::shared_ptr<UnitProducer> producer, Terrain *terrain, coord::tile tile);
+	bool new_unit(UnitProducer &producer, Terrain *terrain, coord::tile tile);
 
 	/**
 	 * give a command to a unit -- unit creation and deletion should be done as commands
@@ -73,7 +73,7 @@ private:
 	/**
 	 * mapping unit ids to unit objects
 	 */
-	std::unordered_map<id_t, Unit *> live_units;
+	std::unordered_map<id_t, std::unique_ptr<Unit>> live_units;
 
 };
 
