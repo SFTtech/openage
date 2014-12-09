@@ -24,14 +24,17 @@ cost_t costFunction(const coord::phys3& start, const coord::phys3& end,
 
 	if (euclidean)
 		return std::hypot(dx, dy);
+
+	//Default is Euclidean. Include another if clause if this function is to be used for a new type of cost calculation with similar body 
+	return std::hypot(dx, dy)
 }
 
 cost_t chebyshev_cost(const coord::phys3 &start, const coord::phys3 &end) {
-	costFunction(start, end, true, false);
+	return costFunction(start, end, true, false);
 }
 
 cost_t euclidean_cost(const coord::phys3 &start, const coord::phys3 &end) {
-	costFunction(start, end, false, true);
+	return costFunction(start, end, false, true);
 }
 
 } // namespace path
