@@ -39,6 +39,7 @@ _the openage authors_ are:
 | Prashanth Jonnala           | jprashanth                  | prashanth.neo@gmail.com          |
 | Jonathan Remnant            | Jon0                        | jono4728@gmail.com               |
 | Sam Schetterer              | schets                      | samschet@gmail.com               |
+| Krishna Narasimhan          | krishnanm86                 | krishna.nm86@gmail.com           |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
