@@ -12,8 +12,6 @@ cost_t manhattan_cost(const Node &start, const Node &end) {
 	return dx + dy;
 }
 
-#pragma astleft
-
 cost_t costFunction(const Node& start, const Node& end, bool chebyshev,
 		bool euclidean) {
 	cost_t dx = start.position.ne - end.position.ne;
@@ -29,7 +27,6 @@ cost_t chebyshev_cost(const Node &start, const Node &end) {
 	costFunction(start, end, true, false);
 }
 
-#pragma astright
 cost_t euclidean_cost(const Node &start, const Node &end) {
 	costFunction(start, end, false, true);
 }
