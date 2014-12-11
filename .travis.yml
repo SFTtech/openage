@@ -13,24 +13,27 @@ before_install:
   - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test     # gcc 4.8
   - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots       # libsdl2
   - sudo add-apt-repository --yes ppa:kubuntu-ppa/backports       # cmake >=2.8.10
-  - sudo add-apt-repository --yes ppa:fkrull/deadsnakes           # python3.3
+  - sudo add-apt-repository --yes ppa:fkrull/deadsnakes           # python3.x
   - sudo apt-add-repository --yes ppa:sfttech/opusfile            # opusfile
   - sudo apt-get update -qq
 
 install:
   - export CVERSION="4.8"
+  - export PYVERSION="3.3"
   - sudo apt-get install -qq g++-${CVERSION}; #also needed for newer stdlib
   - if [ "$CXX" = "g++" ]; then export CXX="g++-${CVERSION}" CC="gcc-${CVERSION}"; fi
   - export CC=`which $CC`
   - export CXX=`which $CXX`
-  - sudo apt-get install -qq python3.3 python3.3-dev libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev libopusfile-dev cmake
+  - sudo apt-get install -qq python${PYVERSION} python${PYVERSION}-dev libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev libopusfile-dev cmake
+  - wget -O /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py
+  - sudo python${PYVERSION} /tmp/get-pip.py
+  - sudo python${PYVERSION} -m pip install pep8
 
 before_script:
   - git pull --unshallow    # the full git history is required for 'make checkfull'
   - cmake --version
   - ls -l /usr/bin/python*
-  - sudo ln -sf /usr/bin/python3.3 /usr/bin/python3
-  - python3 --version
+  - sudo ln -sf /usr/bin/python${PYVERSION} /usr/bin/python3
 
 script:
   - ./configure
