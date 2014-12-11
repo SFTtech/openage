@@ -148,7 +148,7 @@ class BlendingMode:
             if y < half_row_count:
                 # upper half of the tile
                 # row i+1 has 4 more pixels than row i
-                #  +1 for the middle one
+                # another +1 for the middle one
                 read_values = 1 + (4 * y)
             else:
                 # lower half of tile

@@ -101,7 +101,7 @@ namespace ${namespace} {
             dbg(lazymsg=lambda: " `- typerefs:  %s"     % snippet.typerefs, lvl=3)
             dbg(lazymsg=lambda: " `- includes:  %s {"   % repr(snippet.includes), push="snippet_add", lvl=3)
 
-            # add all included snippets, namely HeaderSnippets for # include lol.h
+            # add all included snippets, namely HeaderSnippets for #include lol.h
             for s in snippet.includes:
                 self.add_snippet(s, inherit_typedefs=False)
 
@@ -238,7 +238,7 @@ namespace ${namespace} {
                 dbg(lazymsg=lambda: " `-> SKIP snippet %s" % (repr(s)), lvl=4)
 
         # these snippets will be written outside the namespace
-        # in the # include section
+        # in the #include section
         snippets_header_sorted = sorted(snippets_header, key=lambda h: (not h.is_global, h.name))
 
         dbg(lazymsg=lambda: "".join((
