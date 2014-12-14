@@ -12,7 +12,7 @@ class TerrainPassGraphic(Exportable):
     struct_description = None
 
     data_format = (
-        #when this restriction in unit a was selected, can the unit be placed on this terrain id? 0=no, -1=yes
+        # when this restriction in unit a was selected, can the unit be placed on this terrain id? 0=no, -1=yes
         (READ, "buildable", "int32_t"),
         (READ, "graphic_id0", "int32_t"),
         (READ, "graphic_id1", "int32_t"),
@@ -33,8 +33,8 @@ class TerrainRestriction(Exportable):
     struct_description = "løl TODO"
 
     data_format = (
-        #index of each array == terrain id
-        #when this restriction was selected, can the terrain be accessed?
+        # index of each array == terrain id
+        # when this restriction was selected, can the terrain be accessed?
         (READ, "terrain_accessible", "float[terrain_count]"),
         (READ, "terrain_pass_graphics", SubdataMember(
             ref_type=TerrainPassGraphic,
@@ -59,7 +59,7 @@ class Terrain(Exportable):
         (READ_EXPORT, "slp_id",              "int32_t"),
         (READ_UNKNOWN, None,                 "int32_t"),
         (READ_EXPORT, "sound_id",            "int32_t"),
-        (READ_EXPORT, "blend_priority",      "int32_t"),    #see doc/media/blendomatic for blending stuff
+        (READ_EXPORT, "blend_priority",      "int32_t"),    # see doc/media/blendomatic for blending stuff
         (READ_EXPORT, "blend_mode",          "int32_t"),
         (READ, "color",                      "uint8_t[3]"),
         (READ_UNKNOWN, None,                 "uint8_t[5]"),
@@ -75,8 +75,8 @@ class Terrain(Exportable):
         (READ, "terrain_border_id",          "int8_t[84]"),
         (READ, "terrain_unit_id",            "int16_t[30]"),
         (READ, "terrain_unit_density",       "int16_t[30]"),
-        (READ, "terrain_unit_priority",      "int8_t[30]"),  #when placing two terrain units on the same spot, selects which prevails(=1)
-        (READ, "terrain_units_used_count",   "int16_t"),     #shall we place units implicitly when this terrain is used
+        (READ, "terrain_unit_priority",      "int8_t[30]"),  # when placing two terrain units on the same spot, selects which prevails(=1)
+        (READ, "terrain_units_used_count",   "int16_t"),     # shall we place units implicitly when this terrain is used
     )
 
     def __init__(self):

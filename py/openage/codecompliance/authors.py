@@ -21,13 +21,13 @@ def get_author_emails_copying_md():
                 continue
 
             email = match.group(1).strip()
-            if not '@' in email:
+            if '@' not in email:
                 continue
 
             yield email
 
 
-def get_author_emails_git_shortlog(exts=['.cpp', '.h', '.py', '.cmake']):
+def get_author_emails_git_shortlog(exts=('.cpp', '.h', '.py', '.cmake')):
     """
     yields emails of all authors that have authored any of the files ending
     in exts (plus their templates)
@@ -37,7 +37,7 @@ def get_author_emails_git_shortlog(exts=['.cpp', '.h', '.py', '.cmake']):
     from subprocess import Popen, PIPE
 
     invocation = ['git', 'shortlog', '-sne', '--']
-    for ext in ['.cpp', '.h', '.py', '.cmake']:
+    for ext in exts:
         invocation.append("*{}".format(ext))
         invocation.append("*{}.in".format(ext))
         invocation.append("*{}.template".format(ext))

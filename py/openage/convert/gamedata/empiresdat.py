@@ -43,19 +43,19 @@ class EmpiresDatGzip:
         dbg("decompressing data from %s" % filename, lvl=2)
 
         compressed_data = f.read()
-        #decompress content with zlib (note the magic -15)
-        #-15: - -> there is no header, 15 is the max windowsize
+        # decompress content with zlib (note the magic -15)
+        # -15: - -> there is no header, 15 is the max windowsize
         self.content = zlib.decompress(compressed_data, -15)
         f.close()
 
         self.compressed_size   = len(compressed_data)
         self.decompressed_size = len(self.content)
 
-        #compressed data no longer needed
+        # compressed data no longer needed
         del compressed_data
 
-        dbg("length of compressed data: %d = %d kB" % (self.compressed_size, self.compressed_size/1024), lvl=2)
-        dbg("length of decompressed data: %d = %d kB" % (self.decompressed_size, self.decompressed_size/1024), lvl=2)
+        dbg("length of compressed data: %d = %d kB" % (self.compressed_size, self.compressed_size / 1024), lvl=2)
+        dbg("length of decompressed data: %d = %d kB" % (self.decompressed_size, self.decompressed_size / 1024), lvl=2)
 
     def raw_dump(self, filename):
         """
@@ -81,7 +81,7 @@ class EmpiresDat(Exportable):
     data_format = (
         (READ, "versionstr", "char[8]"),
 
-        #terain header data
+        # terain header data
         (READ, "terrain_restriction_count", "uint16_t"),
         (READ, "terrain_count", "uint16_t"),
         (READ, "terrain_restriction_offset0", "int32_t[terrain_restriction_count]"),
@@ -92,21 +92,21 @@ class EmpiresDat(Exportable):
             passed_args={"terrain_count"},
         )),
 
-        #player color data
+        # player color data
         (READ, "player_color_count", "uint16_t"),
         (READ, "player_colors", SubdataMember(
             ref_type=playercolor.PlayerColor,
             length="player_color_count",
         )),
 
-        #sound data
+        # sound data
         (READ_EXPORT, "sound_count", "uint16_t"),
         (READ_EXPORT, "sounds", SubdataMember(
             ref_type=sound.Sound,
             length="sound_count",
         )),
 
-        #graphic data
+        # graphic data
         (READ, "graphic_count", "uint16_t"),
         (READ, "graphic_offsets", "int32_t[graphic_count]"),
         (READ_EXPORT, "graphics", SubdataMember(
@@ -116,7 +116,7 @@ class EmpiresDat(Exportable):
         )),
         (READ_UNKNOWN, "rendering_blob", "uint8_t[138]"),
 
-        #terrain data
+        # terrain data
         (READ_EXPORT,  "terrains", SubdataMember(
             ref_type=terrain.Terrain,
             length="terrain_count",
@@ -130,38 +130,38 @@ class EmpiresDat(Exportable):
         (READ,         "terrain_count_additional", "uint16_t"),
         (READ_UNKNOWN, "terrain_blob1", "uint8_t[12722]"),
 
-        #technology data
+        # technology data
         (READ_EXPORT, "tech_count", "uint32_t"),
         (READ_EXPORT, "techs", SubdataMember(
             ref_type=tech.Tech,
             length="tech_count",
         )),
 
-        #unit header data
+        # unit header data
         (READ_EXPORT, "unit_count", "uint32_t"),
         (READ_EXPORT, "unit_headers", SubdataMember(
             ref_type=unit.UnitHeader,
             length="unit_count",
         )),
 
-        #civilisation data
+        # civilisation data
         (READ_EXPORT, "civ_count", "uint16_t"),
         (READ_EXPORT, "civs", SubdataMember(
             ref_type=civ.Civ,
             length="civ_count"
         )),
 
-        #research data
+        # research data
         (READ_EXPORT, "research_count", "uint16_t"),
         (READ_EXPORT, "researches", SubdataMember(
             ref_type=research.Research,
             length="research_count"
         )),
 
-        #unknown shiat again
+        # unknown shiat again
         (READ_UNKNOWN, None, "uint32_t[7]"),
 
-        #technology tree data
+        # technology tree data
         (READ_EXPORT, "age_entry_count", "uint8_t"),
         (READ_EXPORT, "building_connection_count", "uint8_t"),
         (READ_EXPORT, "unit_connection_count", "uint8_t"),
@@ -191,7 +191,7 @@ class EmpiresDatWrapper(Exportable):
     name_struct        = "gamedata"
     struct_description = "wrapper for empires2_x1_p1.dat structure"
 
-    #TODO: we could reference to other gamedata structures
+    # TODO: we could reference to other gamedata structures
     data_format = (
         (READ_EXPORT, "empiresdat", SubdataMember(
             ref_type=EmpiresDat,

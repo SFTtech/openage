@@ -140,11 +140,11 @@ checklegalfull:
 
 .PHONY: check
 check:
-	@$(RUN_PYMODULE) openage.codecompliance --all
+	@$(RUN_PYMODULE) openage.codecompliance --quick
 
 .PHONY: checkallfull
 checkfull:
-	@$(RUN_PYMODULE) openage.codecompliance --all --test-git-years
+	@$(RUN_PYMODULE) openage.codecompliance --all
 
 .PHONY: help
 help: $(BUILDDIR)/Makefile

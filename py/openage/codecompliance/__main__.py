@@ -3,51 +3,61 @@
 import os
 import shutil
 
-from . import util
-
+from . import authors
 from . import headerguards
 from . import legal
-from . import authors
+from . import pystyle
+from . import util
 
 
 def main():
     import argparse
     cli = argparse.ArgumentParser()
+    cli.add_argument("--quick", action="store_true",
+                     help="do all checks that can be preformed quickly")
     cli.add_argument("--all", action="store_true",
                      help="do all checks")
     cli.add_argument("--headerguards", action="store_true",
                      help="check all header guards")
     cli.add_argument("--legal", action="store_true",
                      help="check whether all sourcefiles have legal headers")
+    cli.add_argument("--authors", action="store_true",
+                     help=("check whether all git authors are in copying.md. "
+                           "repo must be a git repository."))
+    cli.add_argument("--pystyle", action="store_true",
+                     help=("check whether all git authors are in copying.md. "
+                           "repo must be a git repository."))
     cli.add_argument("--test-git-years", action="store_true",
                      help=("when doing legal checks, test whether the "
                            "Copyright years actually match the git history. "
                            "this option takes a long time and is not enabled "
                            "by --all."))
-    cli.add_argument("--authors", action="store_true",
-                     help=("check whether all git authors are in copying.md. "
-                           "repo must be a git repository."))
 
     args = cli.parse_args()
 
     # sanitize arguments
 
-    if args.all:
-        if args.headerguards or args.legal or args.authors:
-            cli.error("no individual checks can be specified with --all")
-
+    if args.quick:
         args.headerguards = True
         args.legal = True
         args.authors = True
 
-    if not args.headerguards and not args.legal and not args.authors:
+    if args.all:
+        args.headerguards = True
+        args.legal = True
+        args.authors = True
+        args.pystyle = True
+        args.test_git_years = True
+
+    if not any((args.headerguards, args.legal, args.authors, args.pystyle,
+                args.test_git_years)):
         cli.error("no checks were specified")
 
     has_git = bool(shutil.which('git'))
     is_git_repo = os.path.isdir('.git')
 
     if args.authors:
-        if not has_git or not is_git_repo:
+        if not all((has_git, is_git_repo)):
             # non-fatal fail
             print("can not check author list for compliance: git is required")
             args.authors = False
@@ -56,8 +66,14 @@ def main():
         if not args.legal:
             cli.error("--test-git-years may only be passed with --legal")
 
-        if not has_git or not is_git_repo:
+        if not all((has_git, is_git_repo)):
             cli.error("--test-git-years requires git")
+
+    if args.pystyle:
+        try:
+            import pep8
+        except ImportError:
+            cli.error("pep8 python module required for style checking")
 
     def find_issues():
         if args.headerguards:
@@ -73,6 +89,10 @@ def main():
 
         if args.authors:
             for x in authors.find_issues():
+                yield x
+
+        if args.pystyle:
+            for x in pystyle.find_issues(('py',)):
                 yield x
 
     ok = True

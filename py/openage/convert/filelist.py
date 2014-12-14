@@ -7,9 +7,10 @@ from .dataformat.data_definition import DataDefinition
 from .dataformat.struct_definition import StructDefinition
 from openage.log import dbg
 
+
 class SoundList(Exportable):
-    name_struct        = "sound_file"
-    name_struct_file   = "sound_file"
+    name_struct = "sound_file"
+    name_struct_file = "sound_file"
     struct_description = "one available sound file."
 
     data_format = (
@@ -52,7 +53,7 @@ class SoundList(Exportable):
         self.sounds = list()
 
     def add_sound(self, sndid, filename, sndformat):
-        #TODO: actually determine category
+        # TODO: actually determine category instead of hardcoding
         new_sound = {
             "category":      "GAME",
             "sound_id":      sndid,
@@ -63,8 +64,8 @@ class SoundList(Exportable):
         self.sounds.append(new_sound)
 
     def dump(self):
-        return [ DataDefinition(self, self.sounds, "sound_list") ]
+        return [DataDefinition(self, self.sounds, "sound_list")]
 
     @classmethod
     def structs(cls):
-        return [ StructDefinition(cls) ]
+        return [StructDefinition(cls)]

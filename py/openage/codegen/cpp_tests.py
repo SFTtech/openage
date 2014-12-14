@@ -62,7 +62,7 @@ def generate_testregistration(cpp_src_dir):
                 continue
 
             try:
-                testname, testtype,  _ = test.split(' ', maxsplit=2)
+                testname, testtype, _ = test.split(' ', maxsplit=2)
             except ValueError as e:
                 raise Exception("testspec malformed: %s"
                                 % testspec_filename) from e

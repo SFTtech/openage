@@ -376,9 +376,9 @@ class PEFile:
                 name = 'name@' + str(name)
 
             # process rva
-            if rva & 2**31:
+            if rva & (2 ** 31):
                 dbg("dir: " + str(name))
-                rva -= 2**31
+                rva -= 2 ** 31
                 # rva points to a subdirectory
                 entry = self.read_rsrc_tree(rva)
             else:

@@ -2,8 +2,10 @@
 
 from .util import Enum
 
+
 class Token:
-    Type = Enum(name="Type",
+    Type = Enum(
+        name="Type",
         values=[
             "CIRCUM",      # ^
             "COLON",       # :
