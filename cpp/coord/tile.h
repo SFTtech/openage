@@ -2,11 +2,11 @@
 
 #ifndef OPENAGE_COORD_TILE_H_
 #define OPENAGE_COORD_TILE_H_
+#include <functional>
 
 #include "decl.h"
-
 #include "phys2.h"
-
+#include "../util/misc.h"
 #define MEMBERS ne, se
 #define SCALAR_TYPE tile_t
 #define ABSOLUTE_TYPE tile
@@ -48,5 +48,14 @@ struct tile_delta {
 #undef RELATIVE_TYPE
 #undef ABSOLUTE_TYPE
 #undef SCALAR_TYPE
-
+namespace std{
+template<>
+struct hash<openage::coord::tile>{
+	size_t operator ()(const openage::coord::tile& pos) const{
+		size_t nehash = hash<openage::coord::tile_t>{}(pos.ne);
+		size_t sehash = hash<openage::coord::tile_t>{}(pos.se);
+		return openage::util::rol<size_t, 1>(nehash) ^ sehash;	
+	}
+};
+} //namespace std
 #endif

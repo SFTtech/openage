@@ -21,9 +21,11 @@
 #include <type_traits>
 #include <unordered_set>
 
-#include "../log.h"
+#include "../util/block_allocator.h"
+#include "../util/algorithm.h"
 #include "../util/compiler.h"
 #include "../util/error.h"
+#include "../log.h"
 
 namespace openage {
 namespace datastructure {
@@ -153,23 +155,25 @@ public:
 
 template <class T,
           class compare=std::less<T>,
-          class heapnode_t=PairingHeapNode<T, compare>>
+          class heapnode_t=PairingHeapNode<T, compare>,
+          class allocator=util::block_allocator<heapnode_t>>
 class PairingHeap {
 public:
 	using node_t = heapnode_t;
-	using this_type = PairingHeap<T, compare, node_t>;
+	using this_type = PairingHeap<T, compare, node_t, allocator>;
 
 	/**
-	 * create a empty heap.
+	 * create an empty head with specified allocator block size,
+	 * default 100
 	 */
-	PairingHeap()
+	PairingHeap(size_t block_size = 100)
 		:
-		node_count(0),
-		root_node(nullptr) {
+		root_node(nullptr),
+		alloc(block_size) {
 	}
 
 	~PairingHeap() {
-		this->clear();
+		util::for_each(this->nodes, [](node_t* x){x->~node_t();});
 	}
 
 	/**
@@ -177,7 +181,7 @@ public:
 	 * O(1)
 	 */
 	node_t *push(const T &item) {
-		node_t *new_node = new node_t{item};
+		node_t *new_node = alloc.create(item);
 		this->push_node(new_node);
 		return new_node;
 	}
@@ -315,28 +319,22 @@ public:
 	 * erase all elements on the heap.
 	 */
 	void clear() {
-		for (auto it = this->nodes.begin(); it != this->nodes.end();) {
-			// srsly fak u c++ why you so broken pls
-			auto to_erase = it;
-			delete *to_erase;
-			++it;
-			this->nodes.erase(to_erase);
-			this->node_count -= 1;
-		}
+		util::for_each(this->nodes, [](node_t* x){x->~node_t();});
+		this->alloc.deallocate();
+		this->nodes.clear();
 	}
-
 	/**
 	 * @returns the number of nodes stored on the heap.
 	 */
 	size_t size() const {
-		return this->node_count;
+		return this->nodes.size();
 	}
 
 	/**
 	 * @returns whether there are no nodes stored on the heap.
 	 */
 	bool empty() const {
-		return (this->node_count == 0);
+		return !this->size();
 	}
 
 protected:
@@ -352,7 +350,6 @@ protected:
 		}
 
 		this->nodes.insert(node);
-		this->node_count += 1;
 	}
 
 	/**
@@ -362,8 +359,7 @@ protected:
 		auto it = this->nodes.find(node);
 		if (likely(it != this->nodes.end())) {
 			this->nodes.erase(it);
-			delete node;
-			this->node_count -= 1;
+			alloc.free(node);
 		} else {
 			throw util::Error{"specified node not found for deletion!"};
 		}
@@ -371,10 +367,10 @@ protected:
 
 
 protected:
-	size_t node_count;
 	compare cmp;
 	node_t *root_node;
 
+	allocator alloc;
 	std::unordered_set<node_t *> nodes;
 };
 

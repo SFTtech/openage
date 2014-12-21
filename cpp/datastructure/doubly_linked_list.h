@@ -3,6 +3,7 @@
 #ifndef OPENAGE_DATASTRUCTURE_DOUBLY_LINKED_LIST_H_
 #define OPENAGE_DATASTRUCTURE_DOUBLY_LINKED_LIST_H_
 
+#include "../util/block_allocator.h"
 #include "../util/compiler.h"
 #include "../util/error.h"
 
@@ -39,14 +40,17 @@ public:
  * Stores the start and end node pointers, allows traversing over all present nodes and
  * can push/pop items to the front/back.
  */
-template <class T, class node_t=DoublyLinkedListNode<T>>
+template <class T,
+          class node_t=DoublyLinkedListNode<T>,
+          class allocator=util::block_allocator<node_t>>
 class DoublyLinkedList {
 public:
-	DoublyLinkedList()
+	DoublyLinkedList(size_t block_size=100)
 		:
 		first{nullptr},
 		last{nullptr},
-		node_count{0} {
+		node_count{0},
+		alloc{block_size} {
 	}
 
 	~DoublyLinkedList() {
@@ -64,7 +68,7 @@ public:
 				"if there's already something in the list."
 			};
 		} else {
-			node_t *new_node   = new node_t{item};
+			node_t *new_node   = alloc.create(item);
 			new_node->next     = new_node;
 			new_node->previous = new_node;
 
@@ -80,7 +84,7 @@ public:
 	 * O(1)
 	 */
 	node_t *insert_after(node_t *node, const T &item) {
-		node_t *new_node   = new node_t{item};
+		node_t *new_node   = alloc.create(item);
 		new_node->next     = node->next;
 		new_node->previous = node;
 
@@ -95,7 +99,7 @@ public:
 	 * O(1)
 	 */
 	node_t *insert_before(node_t *node, const T &item) {
-		node_t *new_node   = new node_t{item};
+		node_t *new_node   = alloc.create(item);
 		new_node->next     = node;
 		new_node->previous = node->previous;
 
@@ -112,7 +116,7 @@ public:
 	void erase(node_t *node) {
 		node->previous->next = node->next;
 		node->next->previous = node->previous;
-		delete node;
+		alloc.free(node);
 		this->node_count -= 1;
 	}
 
@@ -256,6 +260,7 @@ protected:
 	node_t *last;      //!< The last node in the list
 
 	size_t node_count; //!< The number of nodes currently stored in the list.
+	allocator alloc;   //!< The allocator being used by this object
 };
 
 } // namespace datastructure
