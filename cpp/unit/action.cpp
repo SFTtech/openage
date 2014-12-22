@@ -222,7 +222,7 @@ coord::phys3 MoveAction::next_waypoint() const {
 
 void MoveAction::set_path() {
 	if (this->unit_target.is_valid()) {
-		this->path = path::to_object(this->entity->location, this->unit_target.get()->location);
+		this->path = path::to_object(this->entity->location.get(), this->unit_target.get()->location.get());
 	}
 	else {
 		coord::phys3 start = this->entity->location->pos.draw;
@@ -250,7 +250,7 @@ void GatherAction::update(unsigned int time) {
 	}
 
 	// set direction unit should face
-	TerrainObject *target_location = this->target.get()->location;
+	TerrainObject *target_location = this->target.get()->location.get();
 	if (this->entity->has_attribute(attr_type::direction)) {
 		auto &d_attr = this->entity->get_attribute<attr_type::direction>();
 		d_attr.unit_dir = target_location->pos.draw - this->entity->location->pos.draw;

@@ -63,6 +63,7 @@ constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
 class TerrainObject {
 public:
 	TerrainObject(Unit *, std::function<bool(const coord::phys3 &)> pass);
+	TerrainObject(Unit *, std::function<bool(const coord::phys3 &)> pass, std::shared_ptr<Texture>(out_tex));
 	virtual ~TerrainObject();
 
 	/**
@@ -165,7 +166,7 @@ protected:
 	/**
 	 * texture for drawing outline
 	 */
-	Texture *outline_texture;
+	std::shared_ptr<Texture> outline_texture;
 
 	/**
 	 * placement function which does not check passibility
@@ -181,9 +182,7 @@ protected:
 class SquareObject: public TerrainObject {
 public:
 	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass, coord::tile_delta foundation_size);
-	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass, coord::tile_delta foundation_size, Texture *out_tex);
-	virtual ~SquareObject();
-
+	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex);
 
 	/**
 	 * tile size of this objects base
@@ -221,8 +220,7 @@ public:
 class RadialObject: public TerrainObject {
 public:
 	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass, float rad);
-	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass, float rad, Texture *out_tex);
-	virtual ~RadialObject();
+	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass, float rad, std::shared_ptr<Texture> out_tex);
 
 	/**
 	 * radius of this cirular space

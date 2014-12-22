@@ -38,7 +38,7 @@ public:
 	 * space on the map used by this unit
 	 * null if the object is not yet placed or garrisoned
 	 */
-	TerrainObject *location;
+	std::unique_ptr<TerrainObject> location;
 
 	/**
 	 * checks the entity has an action, if it has no action it should be removed from the game
@@ -75,22 +75,55 @@ public:
 	void push_action(std::unique_ptr<UnitAction>);
 
 	/**
-	 * give a new attribute this this unit
-	 * this is used to set things like color, hitpoints and speed
+	 * Adds an attribute to the unit if the attribute does not
+	 * already exist in the map
+	 * @param T The attribute type being added to the unit
+	 * @param attr A pointer to the Attribute<T> being added
 	 */
-	void add_attribute(AttributeContainer *attr);
+	template<attr_type T>
+	bool add_attribute(std::unique_ptr<Attribute<T>> attr) {
+		return this->attribute_map.emplace(T, std::move(attr)).second;
+	}
+
+	/**
+	 * Adds an attribute to the unit, and changes the value of
+	 * the attribute if it already exists in the map
+	 * @param T The attribute type being added to the map
+	 * @param attr The new value for the attribute T
+	 */
+	template<attr_type T>
+	void set_attribute(std::unique_ptr<Attribute<T>> attr) {
+		std::unique_ptr<AttributeContainer> temp(std::move(attr));
+		this->attribute_map[T].swap(temp);
+	}
 
 	/**
 	 * returns whether attribute is available
 	 */
-	bool has_attribute(attr_type type);
+	bool has_attribute(attr_type type) const;
 
 	/**
-	 * returns attribute based on templated value
+	 * Retrieves the requested attribute type fom the unit.
+	 * Throws std::out_of_range if the attribute does not exist
+	 * @param T The type of the attribute
+	 * @throws std::out_of_range
 	 */
-	template<attr_type T> Attribute<T> &get_attribute() {
-		//return attribute_map[T]->get<T>();
-	 return *reinterpret_cast<Attribute<T> *>(attribute_map[T]);
+	template<attr_type T>
+	Attribute<T> &get_attribute() {
+		//typesafe due to type control from add/set_attribute
+		return static_cast<Attribute<T> &>(*this->attribute_map.at(T));
+	}
+
+	/**
+	 * Retrieves the requested attribute type fom the unit.
+	 * Throws std::out_of_range if the attribute does not exist
+	 * @param T The type of the attribute
+	 * @throws std::out_of_range
+	 */
+	template<attr_type T>
+	const Attribute<T> &get_attribute() const{
+		//typesafe due to type control from add/set_attribute
+		return static_cast<const Attribute<T> &>(*this->attribute_map.at(T));
 	}
 
 	/**
@@ -131,7 +164,7 @@ private:
 	 * Unit attributes include color, hitpoints, speed, objects garrisoned etc
 	 * contains 0 or 1 values for each type
 	 */
-	attr_map_t attribute_map;
+	std::map<attr_type, std::unique_ptr<AttributeContainer>> attribute_map;
 
 	/**
 	 * pop any destructable actions on the next update cycle

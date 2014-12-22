@@ -92,12 +92,8 @@ void Unit::push_action(std::unique_ptr<UnitAction> action) {
 	this->action_stack.push_back(std::move(action));
 }
 
-void Unit::add_attribute(AttributeContainer *attr) {
-	this->attribute_map.insert(attr_map_t::value_type(attr->type, attr));
-}
-
-bool Unit::has_attribute(attr_type type) {
-	return (this->attribute_map.count(type) > 0);
+bool Unit::has_attribute(attr_type type) const {
+	return this->attribute_map.count(type);
 }
 
 bool Unit::target(coord::phys3 target, ability_set type) {
@@ -132,7 +128,7 @@ void Unit::erase_interuptables() {
 	/*
 	 * discard all interruptible tasks
 	 */
-	auto position_it = std::find_if(
+	auto position_it = std::remove_if(
 		std::begin(this->action_stack),
 		std::end(this->action_stack),
 		[](std::unique_ptr<UnitAction> &e) {
