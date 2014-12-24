@@ -571,7 +571,7 @@ bool GameMain::on_draw() {
 	Engine &engine = Engine::get();
 
 	// draw gaben, our great and holy protector, bringer of the half-life 3.
-	gaben->draw(coord::camgame {0, 0});
+	gaben->draw(coord::camgame{0, 0});
 
 	// draw terrain
 	terrain->draw(&engine);
@@ -582,7 +582,7 @@ bool GameMain::on_draw() {
 
 	if (not gamedata_loaded) {
 		// Show that gamedata is still loading
-		engine.dejavuserif20->render(0, 0, "Loading gamedata...");
+		engine.render_text({0, 0}, 20, "Loading gamedata...");
 	}
 
 	return true;

@@ -69,10 +69,12 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	camhud_window{0, 600},
 	tile_halfsize{48, 24},  // TODO: get from convert script
 	data_dir{data_dir},
-	audio_manager{48000, AUDIO_S16LSB, 2, 4096},
-	dejavuserif20{new Font{"DejaVu Serif", "Book", 20}},
-	dejavuserif12{new Font{"DejaVu Serif", "Book", 12}}
+	audio_manager{48000, AUDIO_S16LSB, 2, 4096}
 {
+
+	for (uint32_t size : {12, 20}) {
+		fonts[size] = std::unique_ptr<Font>{new Font{"DejaVu Serif", "Book", size}};
+	}
 
 	// enqueue the engine's own input handler to the
 	// execution list.
@@ -216,18 +218,18 @@ bool Engine::draw_debug_overlay() {
 	util::col {255, 255, 255, 255}.use();
 
 	// Draw FPS counter in the lower right corner
-	this->dejavuserif20->render(
-		this->window_size.x - 100, 15,
+	this->render_text(
+		{this->window_size.x - 100, 15}, 20,
 		"%.1f fps", this->fpscounter.fps
 	);
 
 	// Draw version string in the lower left corner
-	this->dejavuserif20->render(
-		5, 35,
+	this->render_text(
+		{5, 35}, 20,
 		"openage %s", config::version
 	);
-	this->dejavuserif12->render(
-		5, 15,
+	this->render_text(
+		{5, 15}, 12,
 		"%s", config::config_option_string
 	);
 
@@ -359,6 +361,20 @@ unsigned int Engine::lastframe_msec() {
 	return this->fpscounter.msec_lastframe;
 }
 
+void Engine::render_text(coord::window position, size_t size, const char *format, ...) {
+	auto it = this->fonts.find(size);
+	if (it == this->fonts.end()) {
+		throw util::Error("unknown font size %zu requested.", size);
+	}
 
+	Font *font = it->second.get();
+
+	va_list vl;
+	va_start(vl, format);
+	std::string buf = util::vsformat(format, vl);
+	va_end(vl);
+
+	font->render_static(position.x, position.y, buf.c_str());
+}
 
 } //namespace openage

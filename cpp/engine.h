@@ -4,6 +4,7 @@
 #define OPENAGE_ENGINE_H_
 
 #include <memory>
+#include <unordered_map>
 #include <vector>
 
 #include <SDL2/SDL.h>
@@ -36,7 +37,6 @@ class GameMain;
  * central foundation for everything the openage engine is capable of.
  */
 class Engine : public ResizeHandler {
-	friend class GameMain;
 private:
 	/**
 	 * global engine singleton instance.
@@ -184,6 +184,11 @@ public:
 	unsigned int lastframe_msec();
 
 	/**
+	 * render text with the at a position with specified font size
+	 */
+	void render_text(coord::window position, size_t size, const char *format, ...);
+
+	/**
 	 * current engine state variable.
 	 * to be set to false to stop the engine loop.
 	 */
@@ -293,13 +298,10 @@ private:
 	job::JobManager *job_manager;
 
 	/**
-	 * the text font to be used for (can you believe it?) texts.
-	 * dejavu serif, book, 20pts
+	 * the text fonts to be used for (can you believe it?) texts.
+	 * maps fontsize -> font
 	 */
-	std::unique_ptr<Font> dejavuserif20;
-
-	/** smaller font, used for... you guessed it. smaller texts. */
-	std::unique_ptr<Font> dejavuserif12;
+	std::unordered_map<int, std::unique_ptr<Font>> fonts;
 
 	/**
 	 * SDL window where everything is displayed within.
@@ -313,6 +315,6 @@ private:
 	SDL_GLContext glcontext;
 };
 
-} //namespace openage
+} // namespace openage
 
 #endif
