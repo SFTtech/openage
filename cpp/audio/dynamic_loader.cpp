@@ -64,10 +64,10 @@ pcm_chunk_t OpusDynamicLoader::load_chunk(uint32_t offset, uint32_t chunk_size) 
 	auto op_file = open_opus_file();
 
 	// allocate the chunk's buffer
-	pcm_chunk_t chunk;
-	chunk.reserve(chunk_size);
+	pcm_chunk_t chunk(static_cast<size_t>(chunk_size), 0);
 	// initialize chunks with zeroes
-	std::memset(&chunk.front(), 0, chunk_size*sizeof(int16_t));
+	//std::memset(&chunk.front(), 0, chunk_size*sizeof(int16_t));
+			
 
 	// seek to the requested offset, the seek offset is given in samples
 	// while the requested offset is given in int16_t values, so the division

@@ -54,12 +54,8 @@ InMemoryResource::InMemoryResource(category_t category, int id,
 	buffer = loader->get_resource();
 }
 
-uint32_t InMemoryResource::get_length() const {
-	return static_cast<uint32_t>(buffer.size());
-}
-
-std::tuple<const int16_t*,uint32_t> InMemoryResource::get_samples(
-		uint32_t position, uint32_t num_samples) {
+std::tuple<const int16_t*,uint32_t> InMemoryResource::get_data(
+		uint32_t position, uint32_t data_length) {
 	// if the resource's end has been reached
 	uint32_t length = static_cast<uint32_t>(buffer.size());
 	if (position >= length) {
@@ -67,10 +63,10 @@ std::tuple<const int16_t*,uint32_t> InMemoryResource::get_samples(
 	}
 
 	const int16_t *buf_pos = &buffer[position];
-	if (num_samples > length - position) {
+	if (data_length > length - position) {
 		return std::make_tuple(buf_pos, length - position);
 	} else {
-		return std::make_tuple(buf_pos, num_samples);
+		return std::make_tuple(buf_pos, data_length);
 	}
 }
 
@@ -114,15 +110,11 @@ void DynamicResource::stop_using() {
 	}
 }
 
-uint32_t DynamicResource::get_length() const {
-	return length;
-}
-
-std::tuple<const int16_t*,uint32_t> DynamicResource::get_samples(
-		uint32_t position, uint32_t num_samples) {
+std::tuple<const int16_t*,uint32_t> DynamicResource::get_data(
+		uint32_t position, uint32_t data_length) {
 	// TODO refactor implementation into single methods, probably change
-	// preloading behavior
-	log::msg("DYNRES: request pos=%u, num=%u", position, num_samples);
+	// preloading behavior = rewrite DynamicResource
+	log::msg("DYNRES: request pos=%u, num=%u", position, data_length);
 	// calculate chunk index and offset
 	int chunk_index = position / CHUNK_SIZE;
 	auto chunk_offset = position % CHUNK_SIZE;
@@ -166,9 +158,9 @@ std::tuple<const int16_t*,uint32_t> DynamicResource::get_samples(
 
 	// get chunk and calculate buffer
 	auto buf = &chunks[chunk_index].front() + chunk_offset;
-	if (CHUNK_SIZE - chunk_offset >= num_samples) {
-		log::msg(" --> RET %d", num_samples);
-		return std::make_tuple(buf, num_samples);
+	if (CHUNK_SIZE - chunk_offset >= data_length) {
+		log::msg(" --> RET %d", data_length);
+		return std::make_tuple(buf, data_length);
 	} else {
 		log::msg(" --> RET %d", CHUNK_SIZE - chunk_offset);
 		return std::make_tuple(buf, CHUNK_SIZE - chunk_offset);

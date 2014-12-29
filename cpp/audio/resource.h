@@ -66,20 +66,15 @@ public:
 	virtual void stop_using();
 
 	/**
-	 * Returns the resource's length in int16_t values.
-	 */
-	virtual uint32_t get_length() const = 0;
-
-	/**
-	 * Returns a pointer to the sample buffer at the given position and the
+	 * TODO fix docReturns a pointer to the sample buffer at the given position and the
 	 * number of samples that are actually available. If the end of the resource
 	 * is reached, 0 will be returned. If the resource is not ready yet, a
 	 * nullptr with a length, different to zero, will be returned.
 	 * @param position the current position in the resource
-	 * @param num_samples the number of int16_t that should be returned
+	 * @param num_samples the number of samples that should be returned
 	 */
-	virtual std::tuple<const int16_t*,uint32_t> get_samples(uint32_t position,
-			uint32_t num_samples) = 0;
+	virtual std::tuple<const int16_t*,uint32_t> get_data(uint32_t position,
+			uint32_t data_length) = 0;
 
 	static std::shared_ptr<Resource> create_resource(
 		category_t category,
@@ -104,11 +99,9 @@ public:
 	);
 	virtual ~InMemoryResource() = default;
 
-	virtual uint32_t get_length() const;
-
-	virtual std::tuple<const int16_t*,uint32_t> get_samples(
+	virtual std::tuple<const int16_t*,uint32_t> get_data(
 		uint32_t position,
-		uint32_t num_samples
+		uint32_t data_length
 	);
 };
 
@@ -136,11 +129,9 @@ public:
 	virtual void use();
 	virtual void stop_using();
 
-	virtual uint32_t get_length() const;
-
-	virtual std::tuple<const int16_t*,uint32_t> get_samples(
+	virtual std::tuple<const int16_t*,uint32_t> get_data(
 		uint32_t position,
-		uint32_t num_samples
+		uint32_t data_length
 	);
 
 private:

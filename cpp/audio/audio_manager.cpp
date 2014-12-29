@@ -119,8 +119,8 @@ void remove_from_vector(std::vector<std::shared_ptr<SoundImpl>> &v, size_t i) {
 	}
 }
 
-void AudioManager::audio_callback(int16_t *stream, int len) {
-	std::memset(mix_buffer.get(), 0, len*4);
+void AudioManager::audio_callback(int16_t *stream, int length) {
+	std::memset(mix_buffer.get(), 0, length*4);
 
 	// iterate over all categories
 	for (auto &entry : playing_sounds) {
@@ -128,7 +128,7 @@ void AudioManager::audio_callback(int16_t *stream, int len) {
 		// iterate over all sounds in one category
 		for (size_t i = 0; i < playing_list.size(); i++) {
 			auto &sound = playing_list[i];
-			auto sound_finished = sound->mix_audio(mix_buffer.get(), len);
+			auto sound_finished = sound->mix_audio(mix_buffer.get(), length);
 			// if the sound is finished, it should be removed from the playing
 			// list
 			if (sound_finished) {
@@ -139,7 +139,7 @@ void AudioManager::audio_callback(int16_t *stream, int len) {
 	}
 
 	// write the mix buffer to the output stream and adjust volume
-	for (int i = 0; i < len; i++) {
+	for (int i = 0; i < length; i++) {
 		auto value = mix_buffer[i]/256;
 		if (value > 32767) {
 			value = 32767;

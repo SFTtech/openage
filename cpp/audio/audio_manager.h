@@ -74,7 +74,7 @@ public:
 	 */
 	Sound get_sound(category_t category, int id);
 
-	void audio_callback(int16_t *stream, int len);
+	void audio_callback(int16_t *stream, int length);
 
 	/**
 	 * Returns the currently used audio output format.
