@@ -4,6 +4,7 @@ add_sources(${PROJECT_NAME}
 	dynamic_loader.cpp
 	format.cpp
 	in_memory_loader.cpp
+	in_memory_resource.cpp
 	loader_policy.cpp
 	resource.cpp
 	sound.cpp

@@ -83,28 +83,6 @@ public:
 	);
 };
 
-/**
- * A InMemoryResource loads the whole pcm data into memory and keeps it there.
- */
-class InMemoryResource : public Resource {
-private:
-	/** The resource's internal buffer. */
-	pcm_data_t buffer;
-
-public:
-	InMemoryResource(
-		category_t category, int id,
-		const std::string &path,
-		format_t format=format_t::OPUS
-	);
-	virtual ~InMemoryResource() = default;
-
-	virtual std::tuple<const int16_t*,uint32_t> get_data(
-		uint32_t position,
-		uint32_t data_length
-	);
-};
-
 constexpr uint32_t CHUNK_SIZE = 96000;
 
 class DynamicResource : public Resource {
