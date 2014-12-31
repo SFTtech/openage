@@ -55,26 +55,26 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	// determine number of channels and number of pcm samples
 	auto op_channels = op_channel_count(op_file.get(), -1);
 	auto pcm_length = op_pcm_total(op_file.get(), -1);
-	log::dbg("Opus channels=%d, pcm_length=%" PRIuPTR, op_channels, static_cast<uintptr_t>(pcm_length));
+	log::dbg("Opus channels=%d, pcm_length=%u", op_channels, static_cast<uint32_t>(pcm_length));
 
 	// calculate pcm buffer size depending on the number of channels
 	// if the opus file only had one channel, the pcm buffer size must be
 	// doubled
-	uint32_t length = pcm_length * 2;
+	uint32_t length = static_cast<uint32_t>(pcm_length) * 2;
 	pcm_data_t buffer(static_cast<size_t>(length), 0);
 
 	// read data from opus file
 	int position = 0;
 	while (true) {
-		int num_read = op_read(op_file.get(), &buffer.front()+position,
-				pcm_length-position, nullptr);
-		if (num_read < 0) {
-			throw util::Error{"Failed to read from opus file: errorcode=%d", num_read};
-		} else if(num_read == 0) {
+		int samples_read = op_read(op_file.get(), &buffer.front()+position,
+				length-position, nullptr);
+		if (samples_read < 0) {
+			throw util::Error{"Failed to read from opus file: errorcode=%d", samples_read};
+		} else if(samples_read == 0) {
 			break;
 		}
 
-		position += num_read * op_channels;
+		position += samples_read * op_channels;
 	}
 
 	// convert from mono to stereo

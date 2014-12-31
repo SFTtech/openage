@@ -7,8 +7,9 @@
 namespace openage {
 namespace util {
 
-Dir::Dir(std::string basedir) {
-	this->basedir = basedir;
+Dir::Dir(const std::string &basedir)
+	:
+	basedir(basedir) {
 }
 
 Dir::~Dir() {}

@@ -112,31 +112,31 @@ int SoundImpl::get_id() const {
 	return resource->get_id();
 }
 
-bool SoundImpl::mix_audio(int32_t *stream, int len) {
+bool SoundImpl::mix_audio(int32_t *stream, int length) {
 	uint32_t stream_index = 0;
-	while (len > 0) {
-		const int16_t *samples;
-		uint32_t num_samples;
-		std::tie(samples, num_samples) = resource->get_samples(offset, len);
+	while (length > 0) {
+		const int16_t *data;
+		uint32_t data_length;
+		std::tie(data, data_length) = resource->get_data(offset, length);
 
-		if (num_samples == 0) {
+		if (data_length == 0) {
 			if (looping) {
 				offset = 0;
 			} else {
 				playing = false;
 				return true;
 			}
-		} else if (samples == nullptr) {
+		} else if (data == nullptr) {
 			return false;
 		}
 
-		for (uint32_t i = 0; i < num_samples; i++) {
-			stream[i+stream_index] += volume * samples[i];
+		for (uint32_t i = 0; i < data_length; i++) {
+			stream[i+stream_index] += volume * data[i];
 		}
 
-		offset += num_samples;
-		len -= num_samples;
-		stream_index += num_samples;
+		offset += data_length;
+		length -= data_length;
+		stream_index += data_length;
 	}
 
 	return false;

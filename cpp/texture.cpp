@@ -53,7 +53,7 @@ Texture::Texture(int width, int height, void *data)
 	glGenBuffers(1, &this->vertbuf);
 }
 
-Texture::Texture(std::string filename, bool use_metafile)
+Texture::Texture(const std::string &filename, bool use_metafile)
 	:
 	use_metafile{use_metafile},
 	filename{filename} {

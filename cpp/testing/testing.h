@@ -27,7 +27,7 @@ void list_tests();
  * @param name: test name
  * @returns false if the test didn't exist or has failed
  */
-bool run_test(std::string name);
+bool run_test(const std::string &name);
 
 /**
  * runs the given demo.
@@ -35,7 +35,7 @@ bool run_test(std::string name);
  * @param name: demo name
  * @returns false if the demo didn't exist or has failed
  */
-bool run_demo(std::string name, int argc, char **argv);
+bool run_demo(const std::string &name, int argc, char **argv);
 
 } //namespace testing
 

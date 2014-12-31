@@ -282,7 +282,7 @@ void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 				item.resource_id,
 				snd_file_location,
 				gamedata::audio_format_t::OPUS,
-				gamedata::audio_loader_policy_t::IN_MEMORY
+				gamedata::audio_loader_policy_t::DYNAMIC
 			};
 			sound_files.push_back(f);
 		}
