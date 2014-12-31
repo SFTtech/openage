@@ -15,7 +15,7 @@
 namespace openage {
 namespace util {
 
-ssize_t file_size(std::string filename) {
+ssize_t file_size(const std::string &filename) {
 	struct stat st;
 
 	if (stat(filename.c_str(), &st) < 0) {
@@ -25,12 +25,12 @@ ssize_t file_size(std::string filename) {
 	return st.st_size;
 }
 
-ssize_t file_size(Dir basedir, std::string fname) {
+ssize_t file_size(Dir basedir, const std::string &fname) {
 	return file_size(basedir.join(fname));
 }
 
 
-ssize_t read_whole_file(char **result, std::string filename) {
+ssize_t read_whole_file(char **result, const std::string &filename) {
 	return read_whole_file(result, filename.c_str());
 }
 
@@ -67,7 +67,7 @@ ssize_t read_whole_file(char **result, const char *filename) {
 	return content_length;
 }
 
-std::vector<std::string> file_get_lines(std::string &file_name) {
+std::vector<std::string> file_get_lines(const std::string &file_name) {
 	char *file_content;
 	ssize_t fsize = util::read_whole_file(&file_content, file_name);
 

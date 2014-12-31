@@ -16,18 +16,18 @@
 namespace openage {
 namespace util {
 
-ssize_t file_size(std::string filename);
-ssize_t file_size(Dir basedir, std::string fname);
+ssize_t file_size(const std::string &filename);
+ssize_t file_size(Dir basedir, const std::string &fname);
 
 ssize_t read_whole_file(char **result, const char *filename);
-ssize_t read_whole_file(char **result, std::string filename);
+ssize_t read_whole_file(char **result, const std::string &filename);
 
 /**
  * get the lines of a file.
  *
  * returns vector of strings, each entry is one line in the file.
  */
-std::vector<std::string> file_get_lines(std::string &file_name);
+std::vector<std::string> file_get_lines(const std::string &file_name);
 
 
 /**
@@ -35,7 +35,7 @@ std::vector<std::string> file_get_lines(std::string &file_name);
  * call the destination struct .fill() method for actually storing line data
  */
 template <class lineformat>
-std::vector<lineformat> read_csv_file(std::string fname) {
+std::vector<lineformat> read_csv_file(const std::string &fname) {
 	std::vector<std::string> lines = file_get_lines(fname);
 
 	size_t line_count = 0;
@@ -77,7 +77,7 @@ std::vector<lineformat> read_csv_file(std::string fname) {
  * should be called from the .recurse() method of the struct.
  */
 template <class lineformat>
-std::vector<lineformat> recurse_data_files(Dir basedir, std::string fname) {
+std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname) {
 	std::vector<lineformat> result;
 	std::string merged_filename = basedir.join(fname);
 
