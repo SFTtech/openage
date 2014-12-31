@@ -43,13 +43,11 @@ private:
 			playing_sounds;
 
 public:
-	AudioManager(int freq, SDL_AudioFormat format, uint8_t channels,
-			uint16_t samples);
+	AudioManager();
 
 	// pass empty device name to indicate, that the default device should be
 	// used
-	AudioManager(const std::string &device_name, int freq,
-			SDL_AudioFormat format, uint8_t channels, uint16_t samples);
+	AudioManager(const std::string &device_name);
 
 	~AudioManager();
 

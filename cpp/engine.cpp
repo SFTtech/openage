@@ -69,7 +69,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	camhud_window{0, 600},
 	tile_halfsize{48, 24},  // TODO: get from convert script
 	data_dir{data_dir},
-	audio_manager{48000, AUDIO_S16LSB, 2, 4096}
+	audio_manager{}
 {
 
 	for (uint32_t size : {12, 20}) {
