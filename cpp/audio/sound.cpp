@@ -113,10 +113,10 @@ int SoundImpl::get_id() const {
 }
 
 bool SoundImpl::mix_audio(int32_t *stream, int length) {
-	uint32_t stream_index = 0;
+	size_t stream_index = 0;
 	while (length > 0) {
 		const int16_t *data;
-		uint32_t data_length;
+		size_t data_length;
 		std::tie(data, data_length) = resource->get_data(offset, length);
 
 		if (data_length == 0) {
@@ -130,7 +130,7 @@ bool SoundImpl::mix_audio(int32_t *stream, int length) {
 			return false;
 		}
 
-		for (uint32_t i = 0; i < data_length; i++) {
+		for (size_t i = 0; i < data_length; i++) {
 			stream[i+stream_index] += volume * data[i];
 		}
 

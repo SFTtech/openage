@@ -30,9 +30,9 @@ public:
 	);
 	virtual ~InMemoryResource() = default;
 
-	virtual std::tuple<const int16_t*,uint32_t> get_data(
-		uint32_t position,
-		uint32_t data_length
+	virtual std::tuple<const int16_t*,size_t> get_data(
+		size_t position,
+		size_t data_length
 	);
 };
 

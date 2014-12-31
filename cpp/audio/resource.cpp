@@ -84,14 +84,14 @@ void DynamicResource::stop_using() {
 	}
 }
 
-std::tuple<const int16_t*,uint32_t> DynamicResource::get_data(
-		uint32_t position, uint32_t data_length) {
+std::tuple<const int16_t*,size_t> DynamicResource::get_data(
+		size_t position, size_t data_length) {
 	// TODO refactor implementation into single methods, probably change
 	// preloading behavior = rewrite DynamicResource
 	log::msg("DYNRES: request pos=%u, num=%u", position, data_length);
 	// calculate chunk index and offset
-	int chunk_index = position / CHUNK_SIZE;
-	auto chunk_offset = position % CHUNK_SIZE;
+	size_t chunk_index = position / CHUNK_SIZE;
+	size_t chunk_offset = position % CHUNK_SIZE;
 	// the chunk is beyond the end of the resource, so the resource has finished
 	if (chunk_index >= num_chunks) {
 		return std::make_tuple(nullptr, 0);

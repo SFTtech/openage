@@ -73,8 +73,8 @@ public:
 	 * @param position the current position in the resource
 	 * @param num_samples the number of samples that should be returned
 	 */
-	virtual std::tuple<const int16_t*,uint32_t> get_data(uint32_t position,
-			uint32_t data_length) = 0;
+	virtual std::tuple<const int16_t*,size_t> get_data(size_t position,
+			size_t data_length) = 0;
 
 	static std::shared_ptr<Resource> create_resource(
 		category_t category,
@@ -83,7 +83,7 @@ public:
 	);
 };
 
-constexpr uint32_t CHUNK_SIZE = 96000;
+constexpr size_t CHUNK_SIZE = 96000;
 
 class DynamicResource : public Resource {
 private:
@@ -107,9 +107,9 @@ public:
 	virtual void use();
 	virtual void stop_using();
 
-	virtual std::tuple<const int16_t*,uint32_t> get_data(
-		uint32_t position,
-		uint32_t data_length
+	virtual std::tuple<const int16_t*,size_t> get_data(
+		size_t position,
+		size_t data_length
 	);
 
 private:
