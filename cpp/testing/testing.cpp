@@ -14,7 +14,7 @@ using namespace openage;
 
 namespace testing {
 
-bool run_test(std::string name) {
+bool run_test(const std::string &name) {
 	auto test = tests.find(name);
 	if (test == tests.end()) {
 		log::err("no such test: %s", name.c_str());
@@ -30,7 +30,7 @@ bool run_test(std::string name) {
 	}
 }
 
-bool run_demo(std::string name, int argc, char **argv) {
+bool run_demo(const std::string &name, int argc, char **argv) {
 	auto demo = demos.find(name);
 	if (demo == demos.end()) {
 		log::err("no such demo: %s", name.c_str());

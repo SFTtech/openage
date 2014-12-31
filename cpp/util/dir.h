@@ -17,7 +17,7 @@ namespace util {
  */
 class Dir {
 public:
-	Dir(std::string basedir);
+	Dir(const std::string &basedir);
 	~Dir();
 
 	std::string join(const std::string &fname) const;

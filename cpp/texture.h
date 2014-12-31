@@ -59,7 +59,7 @@ public:
 	size_t atlas_dimensions;
 
 	Texture(int width, int height, void *data); // single frame rgba8 texture
-	Texture(std::string filename, bool use_metafile = false);
+	Texture(const std::string &filename, bool use_metafile = false);
 	~Texture();
 
 	void draw(coord::camhud pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0) const;
