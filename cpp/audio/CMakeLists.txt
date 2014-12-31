@@ -5,6 +5,7 @@ add_sources(${PROJECT_NAME}
 	format.cpp
 	in_memory_loader.cpp
 	in_memory_resource.cpp
+	opus_in_memory_loader.cpp
 	loader_policy.cpp
 	resource.cpp
 	sound.cpp

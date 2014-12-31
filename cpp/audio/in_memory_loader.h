@@ -4,6 +4,7 @@
 #define OPENAGE_AUDIO_IN_MEMORY_LOADER_H_
 
 #include <memory>
+#include <string>
 #include <tuple>
 
 #include "format.h"
@@ -45,17 +46,6 @@ public:
 			format_t format);
 };
 
-/**
- * A OpusInMemoryLoader load's opus encoded data.
- */
-class OpusInMemoryLoader : public InMemoryLoader {
-public:
-	OpusInMemoryLoader(const std::string &path);
-	virtual ~OpusInMemoryLoader() = default;
-
-	virtual pcm_data_t get_resource();
-};
-	
 }
 }
 
