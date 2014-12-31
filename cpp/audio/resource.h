@@ -66,12 +66,12 @@ public:
 	virtual void stop_using();
 
 	/**
-	 * TODO fix docReturns a pointer to the sample buffer at the given position and the
-	 * number of samples that are actually available. If the end of the resource
-	 * is reached, 0 will be returned. If the resource is not ready yet, a
-	 * nullptr with a length, different to zero, will be returned.
-	 * @param position the current position in the resource
-	 * @param num_samples the number of samples that should be returned
+	 * Returns a pointer to the sample buffer at the given position and the
+	 * number of int16_t values that are actually available. If the end of the
+	 * resource is reached, 0 will be returned. If the resource is not ready
+	 * yet, a nullptr with a length, different to zero, will be returned.
+	 * @param position the current position in the resource @param data_length
+	 * the number of int16_t values that should be returned
 	 */
 	virtual std::tuple<const int16_t*,size_t> get_data(size_t position,
 			size_t data_length) = 0;
