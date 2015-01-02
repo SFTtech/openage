@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_AUDIO_OPUS_DYNAMIC_LOADER_H_
 #define OPENAGE_AUDIO_OPUS_DYNAMIC_LOADER_H_
@@ -30,6 +30,11 @@ private:
 	 */
 	int channels;
 
+	/**
+	 * A mutex that is used to synchronize the load_chunk method because it can
+	 * be used from multiple threads. Therefore concurrent accesses to the opus
+	 * file must be avoided.
+	 */
 	std::mutex mutex;
 
 public:

@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "opus_dynamic_loader.h"
 
@@ -26,15 +26,18 @@ OpusDynamicLoader::OpusDynamicLoader(const std::string &path)
 	// read channels from the opus file
 	channels = op_channel_count(source.get(), -1);
 
-	length = static_cast<size_t>(op_pcm_total(source.get(), -1)) * 2;
-	// TODO check length < 0 -> not seekable
+	int64_t pcm_length = op_pcm_total(source.get(), -1);
+	if (pcm_length < 0) {
+		throw util::Error{"Could not seek in %s: %ld", path.c_str(), pcm_length};
+	}
+
+	length = static_cast<size_t>(pcm_length) * 2;
 	log::msg("Create dynamic opus loader: length=%lu, channels=%d",
 			length, channels);
 }
 
 size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 		size_t chunk_size) {
-	std::unique_lock<std::mutex> lock{this->mutex};
 	// if the requested offset is greater than the resource's length, there is
 	// no chunk left to load
 	if (offset > length) {
@@ -45,6 +48,10 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 	// while the requested offset is given in int16_t values, so the division
 	// by 2 is necessary
 	int64_t pcm_offset = static_cast<int64_t>(offset / 2);
+
+	// synchronize all accesses to the opus file, as multiple threads can use
+	// this audio loader to concurrently load audio
+	std::unique_lock<std::mutex> lock{this->mutex};
 	int op_ret = op_pcm_seek(source.get(), pcm_offset);
 	if (op_ret < 0) {
 		throw util::Error{"Could not seek in %s: %d", path.c_str(), op_ret};
@@ -76,6 +83,7 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 		// read
 		read_count += samples_read * channels;
 	}
+	lock.unlock();
 
 	// convert to stereo
 	if (channels == 1) {

@@ -1,5 +1,7 @@
-#ifndef OPENAGE_DATASTUCTURE_CONCURRENT_QUEUE_H_
-#define OPENAGE_DATASTUCTURE_CONCURRENT_QUEUE_H_
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+
+#ifndef OPENAGE_DATASTRUCTURE_CONCURRENT_QUEUE_H_
+#define OPENAGE_DATASTRUCTURE_CONCURRENT_QUEUE_H_
 
 #include <condition_variable>
 #include <mutex>
