@@ -9,9 +9,11 @@
 namespace openage {
 namespace datastructure {
 
+/** A threadsafe queue. */
 template<typename T>
 class ConcurrentQueue {
 public:
+	/** Removes all elements from the queue. */
 	void clear() {
 		std::unique_lock<std::mutex> lock{mutex};
 		while (!this->queue.empty()) {
@@ -19,11 +21,13 @@ public:
 		}
 	}
 
+	/** Returns whether the queue is empty. */
 	bool empty() {
 		std::unique_lock<std::mutex> lock{mutex};
 		return this->queue.empty();
 	}
 
+	/** Returns the front item of the queue without removing it. */
 	T &front() {
 		std::unique_lock<std::mutex> lock{mutex};
 		while (this->queue.empty()) {
@@ -32,6 +36,7 @@ public:
 		return this->queue.front();
 	}
 
+	/** Removes the front item of the queue and returns it. */
 	T &pop() {
 		std::unique_lock<std::mutex> lock{mutex};
 		while (this->queue.empty()) {
@@ -42,6 +47,7 @@ public:
 		return item;
 	}
 
+	/** Appends the given item to the queue. */
 	void push(const T &item) {
 		std::unique_lock<std::mutex> lock{mutex};
 		this->queue.push(item);
@@ -50,8 +56,16 @@ public:
 	}
 
 private:
+	/** The internally used queue. */
 	std::queue<T> queue;
+
+	/** The mutex to synchronize the queue. */
 	std::mutex mutex;
+
+	/**
+	 * Condition variable to signal, whether elements are avaiable from the
+	 * queue.
+	 */
 	std::condition_variable elements_available;
 };
 
