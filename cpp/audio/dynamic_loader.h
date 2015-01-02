@@ -6,8 +6,6 @@
 #include <memory>
 #include <string>
 
-#include <opus/opusfile.h>
-
 #include "format.h"
 #include "types.h"
 
@@ -35,17 +33,16 @@ public:
 	virtual ~DynamicLoader() = default;
 
 	/**
-	 * Returns the resource's length in int16_t values.
-	 */
-	virtual uint32_t get_length() = 0;
-	/**
 	 * Loads a chunk of stereo pcm data from the resource. The chunk of data
-	 * begins at the given offset from the beginning of the resource and the
-	 * maximum length is supplied.
+	 * begins at the given offset from the beginning of the resource. The actual
+	 * read number of int16_t values is returned. TODO Returns zero if the end
+	 * of resource is reached.
+	 * @param chunk_buffer the buffer to save the chunk into
 	 * @param offset the offset from the resource's beginning
 	 * @param chunk_size the number of int16_t values that fit in one chunk
 	 */
-	virtual pcm_chunk_t load_chunk(uint32_t offset, uint32_t chunk_size) = 0;
+	virtual size_t load_chunk(int16_t *chunk_buffer, size_t offset,
+			size_t chunk_size) = 0;
 
 	/**
 	 * Creates a DynamicLoader instance that supports the given format.
@@ -54,40 +51,6 @@ public:
 	 */
 	static std::unique_ptr<DynamicLoader> create(const std::string &path,
 			format_t format);
-};
-
-
-/**
- * A OpusDynamicLoader load's opus encoded data.
- */
-class OpusDynamicLoader : public DynamicLoader {
-private:
-	/**
-	 * The resource's length in int16_t values.
-	 */
-	uint32_t length;
-	/**
-	 * The resource's pcm channels.
-	 */
-	int channels;
-
-public:
-	/**
-	 * Creates a new OpusDynamicLoader.
-	 * @param path the resource's location in the filesystem
-	 */
-	OpusDynamicLoader(const std::string &path);
-	virtual ~OpusDynamicLoader() = default;
-
-	virtual uint32_t get_length();
-	virtual pcm_chunk_t load_chunk(uint32_t offset, uint32_t chunk_size);
-
-private:
-	/**
-	 * Opens a opus file. Its location is specified by the path stored in the
-	 * DynamicLoader.
-	 */
-	opus_file_t open_opus_file();
 };
 
 }

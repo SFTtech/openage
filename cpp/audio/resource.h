@@ -3,19 +3,12 @@
 #ifndef OPENAGE_AUDIO_RESOURCE_H_
 #define OPENAGE_AUDIO_RESOURCE_H_
 
-#include <atomic>
 #include <memory>
 #include <string>
 #include <tuple>
-#include <unordered_map>
-#include <vector>
-
-#include <SDL2/SDL.h>
 
 #include "category.h"
-#include "dynamic_loader.h"
 #include "format.h"
-#include "../job/job_manager.h"
 #include "loader_policy.h"
 #include "types.h"
 
@@ -76,44 +69,9 @@ public:
 	virtual std::tuple<const int16_t*,size_t> get_data(size_t position,
 			size_t data_length) = 0;
 
-	static std::shared_ptr<Resource> create_resource(
-		category_t category,
-		int id, const std::string &path, format_t format,
-		loader_policy_t loader_policy
-	);
-};
-
-constexpr size_t CHUNK_SIZE = 96000;
-
-class DynamicResource : public Resource {
-private:
-	std::atomic_int use_count;
-
-	std::vector<pcm_chunk_t> chunks;
-	int num_chunks;
-	uint32_t length;
-
-	std::unordered_map<int,job::Job<pcm_chunk_t>> running_jobs;
-
-	std::unique_ptr<DynamicLoader> loader;
-
-public:
-	DynamicResource(
-		category_t category, int id, const std::string &path,
-		format_t format=format_t::OPUS
-	);
-	virtual ~DynamicResource() = default;
-
-	virtual void use();
-	virtual void stop_using();
-
-	virtual std::tuple<const int16_t*,size_t> get_data(
-		size_t position,
-		size_t data_length
-	);
-
-private:
-	void load_chunk(int chunk_index);
+	static std::shared_ptr<Resource> create_resource(category_t category,
+			int id, const std::string &path, format_t format,
+			loader_policy_t loader_policy);
 };
 
 }
