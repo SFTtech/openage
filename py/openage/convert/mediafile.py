@@ -1,4 +1,4 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 # media files conversion stuff
 
@@ -71,21 +71,28 @@ def media_convert(args):
     dbg("setting age2 input directory to " + args.srcdir, 1)
     util.set_read_dir(args.srcdir)
 
+    if os.path.isdir(util.file_get_path("Data")):
+        data_dir = "Data"
+    elif os.path.isfile(util.file_get_path("DATA")):
+        data_dir = "DATA"
+    else:
+        raise Exception("Could not find Data directory")
+
     drsfiles = {
-        "graphics":  DRS("Data/graphics.drs"),
-        "interface": DRS("Data/interfac.drs"),
-        "sounds0":   DRS("Data/sounds.drs"),
-        "sounds1":   DRS("Data/sounds_x1.drs"),
-        "gamedata1": DRS("Data/gamedata_x1.drs"),
-        "gamedata2": DRS("Data/gamedata_x1_p1.drs"),
-        "terrain":   DRS("Data/terrain.drs")
+        "graphics":  DRS("%s/graphics.drs" % (data_dir)),
+        "interface": DRS("%s/interfac.drs" % (data_dir)),
+        "sounds0":   DRS("%s/sounds.drs" % (data_dir)),
+        "sounds1":   DRS("%s/sounds_x1.drs" % (data_dir)),
+        "gamedata1": DRS("%s/gamedata_x1.drs" % (data_dir)),
+        "gamedata2": DRS("%s/gamedata_x1_p1.drs" % (data_dir)),
+        "terrain":   DRS("%s/terrain.drs" % (data_dir))
     }
 
     # gamedata.drs does not exist in HD edition,
     # but its contents are in gamedata_x1.drs instead,
     # so we can ignore this file if it doesn't exist
-    if os.path.isfile(util.file_get_path("Data/gamedata.drs")):
-        drsfiles["gamedata0"] = DRS("Data/gamedata.drs")
+    if os.path.isfile(util.file_get_path("%s/gamedata.drs" % (data_dir))):
+        drsfiles["gamedata0"] = DRS("%s/gamedata.drs" % (data_dir))
 
     # this is the ingame color palette file id,
     # 256 color lookup for all graphics pixels
@@ -118,13 +125,13 @@ def media_convert(args):
         from . import blendomatic
 
         # HD Edition has a blendomatic_x1.dat in addition to its new
-        # blendomatic.dat blendomatic_x1.dat is the same file as AoK:TC's
+        # blendomatic.dat. blendomatic_x1.dat is the same file as AoK:TC's
         # blendomatic.dat, and TC does not have blendomatic.dat, so we try
         # _x1 first and fall back to the AoK:TC way if it does not exist
         # TODO: replace by sane game version detection.
-        blend_file = "Data/blendomatic_x1.dat"
+        blend_file = "%s/blendomatic_x1.dat" % (data_dir)
         if not os.path.isfile(util.file_get_path(blend_file)):
-            blend_file = "Data/blendomatic.dat"
+            blend_file = "%s/blendomatic.dat" % (data_dir)
 
         blend_data = blendomatic.Blendomatic(blend_file)
         blend_data.save(os.path.join(asset_folder, "blendomatic.dat/"),
@@ -135,9 +142,18 @@ def media_convert(args):
 
         # AoK:TC uses .DLL files for its string resources,
         # HD uses plaintext files
+        # The AoK:TC Collector's Edition has some uppercase file names
+        languagedll_name = ""
         if os.path.isfile(util.file_get_path("language.dll")):
+            # The usual case
+            languagedll_name = "language.dll"
+        elif os.path.isfile(util.file_get_path("LANGUAGE.DLL")):
+            languagedll_name = "LANGUAGE.DLL"
+
+        # Found a language.dll, assume AoK:TC
+        if languagedll_name != "":
             from .pefile import PEFile
-            stringres.fill_from(PEFile("language.dll"))
+            stringres.fill_from(PEFile(languagedll_name))
             stringres.fill_from(PEFile("language_x1.dll"))
             stringres.fill_from(PEFile("language_x1_p1.dll"))
             # stringres.fill_from(PEFile("Games/Forgotten Empires/Data/"
@@ -174,7 +190,7 @@ def media_convert(args):
                 parse_empiresdat = True
 
         if not args.use_dat_cache or parse_empiresdat:
-            datfile = empiresdat.EmpiresDatGzip("Data/%s" % datfile_name)
+            datfile = empiresdat.EmpiresDatGzip("%s/%s" % (data_dir, datfile_name))
             gamedata = empiresdat.EmpiresDatWrapper()
 
             if args.extrafiles:
