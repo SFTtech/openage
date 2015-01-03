@@ -34,16 +34,13 @@ struct chunk_info_t {
 	/** The chunk's current state. */
 	std::atomic_int state;
 
-	/** The chunk's index within the resource. */
-	size_t resource_index;
-
 	/** The chunk's actual size. */
 	size_t actual_size;
 
 	/** The chunk's buffer. */
 	int16_t *buffer;
 
-	chunk_info_t(int state, size_t resource_index, int16_t *buffer);
+	chunk_info_t(int state, int16_t *buffer);
 	~chunk_info_t() = default;
 };
 

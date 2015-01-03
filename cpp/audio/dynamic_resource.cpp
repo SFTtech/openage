@@ -8,10 +8,9 @@
 namespace openage {
 namespace audio {
 
-chunk_info_t::chunk_info_t(int state, size_t resource_index, int16_t *buffer)
+chunk_info_t::chunk_info_t(int state, int16_t *buffer)
 		:
 		state{state},
-		resource_index{resource_index},
 		actual_size{0},
 		buffer{buffer} {
 }
@@ -43,7 +42,7 @@ void DynamicResource::use() {
 		for (size_t i = 0; i < this->max_chunks; i++) {
 			int16_t *buffer = this->chunk_buffer.get() + i * this->chunk_size;
 			this->chunk_infos.push(std::make_shared<chunk_info_t>(
-					chunk_info_t::UNUSED, 0, buffer));
+					chunk_info_t::UNUSED, buffer));
 		}
 	}
 }
