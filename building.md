@@ -63,9 +63,9 @@ Dependency list:
  - `sudo apt-get install cmake libfreetype6-dev python3-dev libglew-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools python3-pil python3-numpy`
 
 
-### Prerequisite steps for Fedora users (Fedora 20)
+### Prerequisite steps for Fedora users (Fedora 20, 21)
 
-`sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel glew-devel opus-tools opusfile-devel`
+`sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel glew-devel opus-tools opusfile-devel fontconfig-devel`
 
 
 ### Prerequisite steps for openSUSE users (openSUSE 13.1)
