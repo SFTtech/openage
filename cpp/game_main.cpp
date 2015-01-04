@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "game_main.h"
 
@@ -24,6 +24,7 @@
 #include "util/strings.h"
 #include "util/timer.h"
 #include "util/externalprofiler.h"
+#include "rng/global_rng.h"
 
 namespace openage {
 
@@ -685,7 +686,7 @@ void TestSound::play() {
 	}
 	audio::AudioManager &am = Engine::get().get_audio_manager();
 
-	int rand = util::random_range(0, this->sound_items.size());
+	int rand = rng::random_range(0, this->sound_items.size());
 	int sndid = this->sound_items[rand];
 	try {
 		audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();

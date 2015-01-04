@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UNIT_PRODUCER_H_
 #define OPENAGE_UNIT_PRODUCER_H_
@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include <vector>
 
-
+#include "../rng/rng.h"
 #include "../coord/tile.h"
 #include "../gamedata/gamedata.gen.h"
 #include "../gamedata/graphic.gen.h"
@@ -81,6 +81,7 @@ private:
 	TestSound *on_destroy;
 	TestSound *on_move;
 	TestSound *on_attack;
+	rng::rng rnd;
 };
 
 /**
@@ -108,6 +109,7 @@ private:
 	Texture *texture;
 	coord::tile_delta size;
 	int foundation_terrain;
+	rng::rng rnd;
 };
 
 class AssetManager;
