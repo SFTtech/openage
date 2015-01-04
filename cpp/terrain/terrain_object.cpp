@@ -20,17 +20,23 @@
 
 namespace openage {
 
-TerrainObject::TerrainObject(Unit *u, std::function<bool(const coord::phys3 &)> pass)
+TerrainObject::TerrainObject(Unit *u, std::function<bool(const coord::phys3 &)> pass, std::shared_ptr<Texture> out_tex)
 	:
 	unit{u},
 	passable{pass},
 	placed{false},
 	terrain{nullptr},
-	occupied_chunk_count{0} {
-	unit->location = this; // ensure the unit points back
+	occupied_chunk_count{0},
+	outline_texture(out_tex) {
 }
 
-TerrainObject::~TerrainObject() {}
+TerrainObject::TerrainObject(Unit *u, std::function<bool(const coord::phys3 &)> pass)
+	:
+	TerrainObject(u, pass, nullptr) {
+}
+
+TerrainObject::~TerrainObject() {
+}
 
 bool TerrainObject::place(Terrain *terrain, coord::phys3 &position) {
 	if (this->placed) {
@@ -187,14 +193,11 @@ SquareObject::SquareObject(Unit *u, std::function<bool(const coord::phys3 &)> pa
 
 }
 
-SquareObject::SquareObject(Unit *u, std::function<bool(const coord::phys3 &)> pass, coord::tile_delta foundation_size, Texture *out_tex)
+SquareObject::SquareObject(Unit *u, std::function<bool(const coord::phys3 &)> pass, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex)
 	:
-	TerrainObject(u, pass),
+	TerrainObject(u, pass, out_tex),
 	size(foundation_size) {
-	this->outline_texture = out_tex;
 }
-
-SquareObject::~SquareObject() {}
 
 tile_range SquareObject::get_range(const coord::phys3 &pos) const {
 	tile_range result;
@@ -270,14 +273,11 @@ RadialObject::RadialObject(Unit *u, std::function<bool(const coord::phys3 &)> pa
 
 }
 
-RadialObject::RadialObject(Unit *u, std::function<bool(const coord::phys3 &)> pass, float rad, Texture *out_tex)
+RadialObject::RadialObject(Unit *u, std::function<bool(const coord::phys3 &)> pass, float rad, std::shared_ptr<Texture> out_tex)
 	:
-	TerrainObject(u, pass),
+	TerrainObject(u, pass, out_tex),
 	phys_radius(coord::settings::phys_per_tile * rad) {
-	this->outline_texture = out_tex;
 }
-
-RadialObject::~RadialObject() {}
 
 tile_range RadialObject::get_range(const coord::phys3 &pos) const {
 	tile_range result;

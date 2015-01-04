@@ -1,19 +1,19 @@
 // Copyright 2014-2014 the openage authors. See copying.md for legal info.
 
 #include <cmath>
-#include <math.h>
 
 #include "../texture.h"
+#include "../util/unique.h"
 #include "terrain_outline.h"
 
 namespace openage {
 
-Texture *square_outline(coord::tile_delta foundation_size) {
+std::unique_ptr<Texture> square_outline(coord::tile_delta foundation_size) {
 	int width = (foundation_size.ne + foundation_size.se) * 48;
 	int height = (foundation_size.ne + foundation_size.se) * 24;
-	int *image_data = new int[width * height];
-	for (int i = 0; i < width; ++i) {
-		for (int j = 0; j < height; ++j) {
+	std::vector<int> image_data(width*height);
+	for (int j = 0; j < height; ++j) {
+		for (int i = 0; i < width; ++i) {
 			float w_percent = (float) abs(i - (width / 2)) / (float) (width / 2);
 			float h_percent = (float) abs(j - (height / 2)) / (float) (height / 2);
 
@@ -25,12 +25,10 @@ Texture *square_outline(coord::tile_delta foundation_size) {
 		}
 	}
 
-	Texture *ret = new Texture(width, height, image_data);
-	delete[] image_data;
-	return ret;
+	return util::make_unique<Texture>(width, height, image_data.data());
 }
 
-Texture *radial_outline(float radius) {
+std::unique_ptr<Texture> radial_outline(float radius) {
 	// additional pixels around the edge
 	int border = 4;
 
@@ -39,10 +37,10 @@ Texture *radial_outline(float radius) {
 	int height = border + radius * 48 * 2;
 	int half_width = width / 2;
 	int half_height = height / 2;
-	int *image_data = new int[width*height];
+	std::vector<int> image_data(width*height);
 
-	for (int i = 0; i < width; ++i) {
-		for (int j = 0; j < height; ++j) {
+	for (int j = 0; j < height; ++j) {
+		for (int i = 0; i < width; ++i) {
 			float w_percent = (float) (border+i-half_width) / (float) (half_width-border);
 			float h_percent = (float) (border/2+j-half_height) / (float) (half_height-border/2);
 
@@ -54,9 +52,7 @@ Texture *radial_outline(float radius) {
 		}
 	}
 
-	Texture *ret = new Texture(width, height, image_data);
-	delete[] image_data;
-	return ret;
+	return util::make_unique<Texture>(width, height, image_data.data());
 }
 
 } // namespace openage

@@ -14,6 +14,14 @@
 
 namespace openage {
 
+UnitProducer::~UnitProducer(){
+}
+
+UnitProducer::UnitProducer(std::shared_ptr<Texture> outline)
+	:
+	terrain_outline(outline) {
+}
+
 UnitTypeTest::UnitTypeTest(const gamedata::unit_living *ud,
                            Texture *dd,
                            Texture *idl,
@@ -24,6 +32,7 @@ UnitTypeTest::UnitTypeTest(const gamedata::unit_living *ud,
                            TestSound *ms,
                            TestSound *atts)
 	:
+	UnitProducer(radial_outline(ud->radius_size1)),
 	unit_data(*ud),
 	dead(dd),
 	idle(idl),
@@ -33,11 +42,6 @@ UnitTypeTest::UnitTypeTest(const gamedata::unit_living *ud,
 	on_destroy(ds),
 	on_move(ms), 
 	on_attack(atts) {
-	terrain_outline = radial_outline(ud->radius_size1);
-}
-
-UnitTypeTest::~UnitTypeTest() {
-	delete this->terrain_outline;
 }
 
 void UnitTypeTest::initialise(Unit *unit) {
@@ -49,28 +53,28 @@ void UnitTypeTest::initialise(Unit *unit) {
 	/*
 	 * basic attributes
 	 */
-	unit->add_attribute(new Attribute<attr_type::color>(util::random_range(1, 8 + 1)));
-	unit->add_attribute(new Attribute<attr_type::hitpoints>(50, 50));
-	unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));
+	unit->add_attribute(util::make_unique<Attribute<attr_type::color>>(util::random_range(1, 8 + 1)));
+	unit->add_attribute(util::make_unique<Attribute<attr_type::hitpoints>>(50, 50));
+	unit->add_attribute(util::make_unique<Attribute<attr_type::direction>>(coord::phys3_delta{ 1, 0, 0 }));
 
 	/*
 	 * distance per millisecond -- consider game speed
 	 */
 	coord::phys_t sp = this->unit_data.speed * (1 << 16) / 500; 
-	unit->add_attribute(new Attribute<attr_type::speed>(sp));
+	unit->add_attribute(util::make_unique<Attribute<attr_type::speed>>(sp));
 
 	/*
 	 * Initial action stack
 	 */
-	unit->push_action( util::make_unique<DeadAction>( unit, this->dead,
-	                                                  this->on_destroy ) );
-	unit->push_action( util::make_unique<IdleAction>( unit, this->idle ) );
+	unit->push_action(util::make_unique<DeadAction>(unit, this->dead,
+	                                                this->on_destroy));
+	unit->push_action(util::make_unique<IdleAction>(unit, this->idle));
 
-	unit->give_ability( util::make_unique<MoveAbility>( this->moving, this->on_move )  );
-	unit->give_ability( util::make_unique<AttackAbility>( this->attacking, this->on_attack )  );
+	unit->give_ability(util::make_unique<MoveAbility>(this->moving, this->on_move));
+	unit->give_ability(util::make_unique<AttackAbility>(this->attacking, this->on_attack));
 
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
-		unit->give_ability( util::make_unique<GatherAbility>( this->attacking, this->on_attack )  );
+		unit->give_ability(util::make_unique<GatherAbility>( this->attacking, this->on_attack));
 	}
 }
 
@@ -93,7 +97,7 @@ bool UnitTypeTest::place(Unit *unit, Terrain *terrain, coord::tile init_tile) {
 
 			// ensure no intersections with other objects
 			for (auto obj_cmp : tc->obj) {
-				if (unit->location != obj_cmp && unit->location->intersects(obj_cmp, pos)) {
+				if (unit->location.get() != obj_cmp && unit->location->intersects(obj_cmp, pos)) {
 					return false;
 				}
 			}
@@ -104,8 +108,7 @@ bool UnitTypeTest::place(Unit *unit, Terrain *terrain, coord::tile init_tile) {
 	/*
 	 * radial base shape
 	 */
-	unit->location = new RadialObject(unit, passable, this->unit_data.radius_size1, this->terrain_outline);
-
+	util::set_unique<RadialObject>(unit->location, unit, passable, this->unit_data.radius_size1, this->terrain_outline);
 
 	// try to place the obj, it knows best whether it will fit.
 	coord::phys3 init_pos = init_tile.to_phys2().to_phys3();
@@ -120,34 +123,30 @@ Texture *UnitTypeTest::default_texture() {
 	return idle;
 }
 
-BuldingProducer::BuldingProducer(Texture *tex,
-                                 coord::tile_delta foundation_size,
-                                 int foundation,
-                                 TestSound *create,
-                                 TestSound *destroy)
+BuildingProducer::BuildingProducer(Texture *tex,
+                                   coord::tile_delta foundation_size,
+                                   int foundation,
+                                   TestSound *create,
+                                   TestSound *destroy)
 	:
+	UnitProducer(square_outline(foundation_size)),
 	on_create(create),
 	on_destroy(destroy),
 	texture(tex),
 	size(foundation_size),
 	foundation_terrain(foundation){
-	terrain_outline = square_outline(foundation_size);
 }
 
-BuldingProducer::~BuldingProducer() {
-	delete this->terrain_outline;
+void BuildingProducer::initialise(Unit *unit) {
+	unit->add_attribute(util::make_unique<Attribute<attr_type::color>>(util::random_range(1, 8 + 1)));
+	unit->add_attribute(util::make_unique<Attribute<attr_type::dropsite>>());
+
+	unit->push_action(util::make_unique<DeadAction>(unit, this->texture,
+	                                                this->on_destroy));
+	unit->push_action(util::make_unique<IdleAction>(unit, this->texture));
 }
 
-void BuldingProducer::initialise(Unit *unit) {
-	unit->add_attribute(new Attribute<attr_type::color>(util::random_range(1, 8 + 1)));
-	unit->add_attribute(new Attribute<attr_type::dropsite>());
-
-	unit->push_action( util::make_unique<DeadAction>(unit, this->texture,
-	                                                 this->on_destroy));
-	unit->push_action( util::make_unique<IdleAction>(unit, this->texture));
-}
-
-bool BuldingProducer::place(Unit *unit, Terrain *terrain, coord::tile init_tile) {
+bool BuildingProducer::place(Unit *unit, Terrain *terrain, coord::tile init_tile) {
 
 	/*
 	 * decide what terrain is passable using this lambda
@@ -159,14 +158,13 @@ bool BuldingProducer::place(Unit *unit, Terrain *terrain, coord::tile init_tile)
 		// look at all tiles in the bases range
 		for (coord::tile check_pos : tile_list(unit->location->get_range(pos))) {
 			TileContent *tc = terrain->get_data(check_pos);
-			if (!tc) return false;
-			if (!tc->obj.empty()) return false;
+			if (!tc || !tc->obj.empty()) return false;
 		}
 		return true;
 	};
 
 	// buildings have a square baase
-	unit->location = new SquareObject(unit, passable, this->size, this->terrain_outline);
+	util::set_unique<SquareObject>(unit->location, unit, passable, this->size, this->terrain_outline);
 
 	// try to place the obj, it knows best whether it will fit.
 	coord::phys3 init_pos = init_tile.to_phys2().to_phys3();
@@ -182,13 +180,14 @@ bool BuldingProducer::place(Unit *unit, Terrain *terrain, coord::tile init_tile)
 	return obj_placed;
 }
 
-Texture *BuldingProducer::default_texture() {
+Texture *BuildingProducer::default_texture() {
 	return this->texture;
 }
 
 ProducerLoader::ProducerLoader(GameMain *m)
 	:
-	main(m) {}
+	main(m) {
+}
 
 std::unique_ptr<UnitProducer> ProducerLoader::load_building(const gamedata::unit_building &building) {
 	Texture *tex = this->main->find_graphic(building.graphic_standing0);
@@ -216,7 +215,7 @@ std::unique_ptr<UnitProducer> ProducerLoader::load_building(const gamedata::unit
 	}
 
 	// make and return producer
-	return util::make_unique<BuldingProducer>(
+	return util::make_unique<BuildingProducer>(
 		tex,
 		foundation_size,
 		building.terrain_id,
@@ -272,7 +271,7 @@ std::unique_ptr<UnitProducer> ProducerLoader::load_object(const gamedata::unit_o
 	}
 
 	// make and return producer
-	return util::make_unique<BuldingProducer>(
+	return util::make_unique<BuildingProducer>(
 		tex,
 		foundation_size,
 		0,
@@ -301,6 +300,7 @@ std::vector<std::unique_ptr<UnitProducer>> ProducerLoader::create_producers(cons
 		std::unique_ptr<UnitProducer> producer = this->load_object(obj);
 		if (producer) producer_objects.emplace_back(std::move(producer));
 	}
+
 	return producer_objects;
 }
 

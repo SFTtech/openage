@@ -62,9 +62,39 @@ make_unique(size_t n) {
 }
 
 template<class T, class... Args>
-typename _unique_help::unique_rval<T>::known_bound
+inline typename _unique_help::unique_rval<T>::known_bound
 make_unique(Args&&...) {
 	return std::unique_ptr<T>(nullptr);
+}
+
+
+/**
+ * Changes the value of the passed unique_ptr<OldT>
+ * to be make_unique<NewT>(Args...), and destroys the old value
+ * OldT and Args are inferred, so one will generally call like
+ * set_unique<derived>(unique_ptr<base>, stuff)
+ *
+ * @param oldptr The unique_ptr<OldT> which will be made to point to
+ * new NewT(Args...)
+ * @param Args The arguments being passed to the constructer of NewT
+ */
+template<class NewT, class OldT, class... Args>
+inline void
+set_unique(std::unique_ptr<OldT>& oldptr, Args&&... args) {
+	std::unique_ptr<OldT> temp(make_unique<NewT>(std::forward<Args>(args)...));
+	oldptr.swap(temp);
+}
+
+/**
+ * Changes the value of the passed unique_ptr<T>
+ * to be equal make_unique<T>(Args...);
+ * @param oldptr The unique_ptr<T> being set to new T(Args)
+ * @param Args the arguments passed to the constructor of T
+ */
+template<class T, class... Args>
+inline void
+set_unique(std::unique_ptr<T>& oldptr, Args&&... args) {
+	set_unique<T, T, Args...>(oldptr, std::forward<Args>(args)...);
 }
 
 } //namespace util

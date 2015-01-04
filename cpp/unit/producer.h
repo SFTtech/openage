@@ -24,13 +24,15 @@ class UnitAbility;
 class UnitAction;
 
 /**
- * Initializes a unit with the required attributes, each unit type should implement these funcrtions
+ * Initializes a unit with the required attributes, each unit type should implement these functions
  * initialise should be called on construction of units 'new Unit(some_unit_producer)'
  * place is called to customise how the unit gets added to the world -- used to setup the TerrainObject position
  */
 class UnitProducer {
 public:
-	virtual ~UnitProducer() {}
+	virtual ~UnitProducer();
+
+	UnitProducer(std::shared_ptr<Texture> outline);
 
 	/**
 	 * Initialize units attributes
@@ -46,6 +48,9 @@ public:
 	 * Get a default text for HUD drawing
 	 */
 	virtual Texture *default_texture() = 0;
+
+protected:
+	std::shared_ptr<Texture> terrain_outline;
 };
 
 /**
@@ -64,15 +69,12 @@ public:
 	             TestSound *,
 	             TestSound *);
 
-	virtual ~UnitTypeTest();
-
 	void initialise(Unit *);
 	bool place(Unit *, Terrain *, coord::tile);
 	Texture *default_texture();
 
 private:
 	const gamedata::unit_living unit_data;
-	Texture *terrain_outline;
 	Texture *dead;
 	Texture *idle;
 	Texture *moving;
@@ -87,11 +89,10 @@ private:
  * Stores graphics and attributes for a building type
  * Will be replaced with nyan system in future
  */
-class BuldingProducer: public UnitProducer {
+class BuildingProducer: public UnitProducer {
 public:
-	BuldingProducer(Texture *tex, coord::tile_delta foundation_size,
-	                int foundation, TestSound *create,  TestSound *destroy);
-	virtual ~BuldingProducer();
+	BuildingProducer(Texture *tex, coord::tile_delta foundation_size,
+	                 int foundation, TestSound *create,  TestSound *destroy);
 
 	/**
 	 * Sound id played when object is created or destroyed.
@@ -104,7 +105,6 @@ public:
 	Texture *default_texture();
 
 private:
-	Texture *terrain_outline;
 	Texture *texture;
 	coord::tile_delta size;
 	int foundation_terrain;
