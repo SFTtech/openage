@@ -1,4 +1,4 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 import os
 import os.path
@@ -119,4 +119,8 @@ def zstr(data):
     terminates on end of string, or when \0 is reached.
     """
 
-    return data.decode("utf-8").rstrip("\x00")
+    end = data.find(0)
+    if end != -1:
+        data = data[0:end]
+
+    return data.decode("utf-8")
