@@ -1,12 +1,13 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "texture.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include <math.h>
-#include <stdio.h>
+#include <cassert>
+#include <cmath>
+#include <cstdio>
 
 #include "log.h"
 #include "util/error.h"
@@ -36,6 +37,9 @@ GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 Texture::Texture(int width, int height, void *data)
 	:
 	use_metafile{false} {
+
+	assert(glGenBuffers != nullptr && "gl not initialized properly");
+
 	this->w = width;
 	this->h = height;
 	this->id = make_gl_texture(
