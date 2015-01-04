@@ -17,7 +17,7 @@ namespace openage {
  * Container class for all available assets.
  * Responsible for loading, providing and updating requested files.
  */
-class AssetManager {
+class AssetManager final {
 public:
 	AssetManager(util::Dir *root);
 
