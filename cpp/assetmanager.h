@@ -48,7 +48,7 @@ protected:
 	/**
 	 * Create an internal texture handle.
 	 */
-	Texture* load_texture(const std::string &name);
+	Texture *load_texture(const std::string &name);
 	
 	/**
 	 * Retrieves the texture for missing textures.

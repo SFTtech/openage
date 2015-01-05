@@ -15,7 +15,7 @@ namespace openage {
 AssetManager::AssetManager(util::Dir *root)
 	:
 	root{root},
-	missing_tex(nullptr, [](Texture* t) { delete t; }) {
+	missing_tex(nullptr, [](Texture *t) { delete t; }) {
 
 #if WITH_INOTIFY
 	// initialize the inotify instance
@@ -30,10 +30,10 @@ bool AssetManager::can_load(const std::string &name) const {
 	return util::file_size(this->root->join(name)) > 0;
 }
 
-Texture* AssetManager::load_texture(const std::string &name) {
+Texture *AssetManager::load_texture(const std::string &name) {
 	std::string filename = this->root->join(name);
 
-	tex_ptr ret(nullptr, [](Texture* t) { delete t; });
+	tex_ptr ret(nullptr, [](Texture *t) { delete t; });
 
 	if (!this->can_load(name)) {
 		log::msg("   file %s is not there...", filename.c_str());
@@ -108,7 +108,7 @@ void AssetManager::check_updates() {
 
 AssetManager::tex_ptr AssetManager::get_missing_tex() {
 	// Lazily load the missing texture.
-	if(!missing_tex) {
+	if (!missing_tex) {
 		missing_tex.reset(new Texture{root->join("missing.png"), false});
 	}
 	
