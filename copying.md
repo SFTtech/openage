@@ -40,6 +40,7 @@ _the openage authors_ are:
 | Jonathan Remnant            | Jon0                        | jono4728@gmail.com               |
 | Sam Schetterer              | schets                      | samschet@gmail.com               |
 | Georg Kilzer                | leper                       | leper@wildfiregames.com          |
+| Florian Erler               | ethon                       | ethon@ethon.cc                   |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
