@@ -32,17 +32,20 @@ Path to_point(coord::phys3 start,
 		coord::phys_t dy = point.se - end.se;
 		return std::hypot(dx, dy) < path_grid_size;
 	};
-	auto h = [&](const coord::phys3 &point) -> cost_t { return euclidean_cost(point, end); };
-	return a_star(start, valid_end, h, passable);
+
+	auto heuristic = [&](const coord::phys3 &point){
+		return euclidean_cost(point, end);
+	};
+	return a_star(start, valid_end, heuristic, passable);
 }
 
 Path to_object(openage::TerrainObject *to_move,
                openage::TerrainObject *end) {
 	coord::phys3 start = to_move->pos.draw;
-	auto valid_end = [&](const coord::phys3 &pos) -> bool {
+	auto valid_end = [&](const coord::phys3 &pos) {
 		return end->from_edge(pos) < (path_grid_size + to_move->min_axis() / 2);
 	};
-	auto heuristic = [&](const coord::phys3 &pos) -> cost_t {
+	auto heuristic = [&](const coord::phys3 &pos) {
 		return end->from_edge(pos) - to_move->min_axis() / 2;
 	};
 	return a_star(start, valid_end, heuristic, to_move->passable);
@@ -52,7 +55,7 @@ Path find_nearest(coord::phys3 start,
                   std::function<bool(const coord::phys3 &)> valid_end,
                   std::function<bool(const coord::phys3 &)> passable) {
 	// Use Dijkstra (hueristic = 0)
-	auto zero = [](const coord::phys3 &) -> cost_t { return .0f; };
+	auto zero = [](const coord::phys3 &) { return .0f; };
 	return a_star(start, valid_end, zero, passable);
 }
 
@@ -61,6 +64,13 @@ Path a_star(coord::phys3 start,
             std::function<cost_t(const coord::phys3 &)> heuristic,
             std::function<bool(const coord::phys3 &)> passable) {
 
+	// improved allocator for nodes - similar performance
+	// to stack and takes care of deallocation
+	util::stack_allocator<Node> alloc(1000);
+
+	//temporary storage for neighbors
+	node_pt neighbors[8];
+
 	// path node storage, always provides cheapest next node.
 	heap_t node_candidates;
 
@@ -68,7 +78,7 @@ Path a_star(coord::phys3 start,
 	nodemap_t visited_tiles;
 
 	// add starting node
-	node_pt start_node = std::make_shared<Node>(start, nullptr, .0f, heuristic(start));
+	node_pt start_node = alloc.create(start, nullptr, .0f, heuristic(start));
 	visited_tiles[start_node->position] = start_node;
 	node_candidates.push(start_node);
 
@@ -87,7 +97,10 @@ Path a_star(coord::phys3 start,
 		// node to terminate the search was found
 		if (valid_end(best_candidate->position)) {
 			log::dbg("path cost is %f", best_candidate->future_cost);
-			return best_candidate->generate_backtrace();
+			log::dbg("Total nodes created: %d", visited_tiles.size());
+			auto rval = closest_node->generate_backtrace();
+			log::dbg("Number of nodes in path: %d", rval.waypoints.size());
+			return rval;
 		}
 
 		// closest node for cases when target cannot be reached
@@ -96,7 +109,8 @@ Path a_star(coord::phys3 start,
 		}
 
 		// evaluate all neighbors of the current candidate for further progress
-		for (node_pt neighbor : best_candidate->get_neighbors(visited_tiles)) {
+		best_candidate->get_neighbors(visited_tiles, neighbors, alloc);
+		for (node_pt neighbor : neighbors) {
 			if (neighbor->was_best) {
 				continue;
 			}
@@ -105,7 +119,7 @@ Path a_star(coord::phys3 start,
 			}
 
 			bool not_visited = (visited_tiles.count(neighbor->position) == 0);
-			cost_t new_past_cost = best_candidate->past_cost + best_candidate->cost_to(*neighbor);
+			cost_t new_past_cost = best_candidate->past_cost +best_candidate->cost_to(*neighbor);
 
 			// if new cost is better than the previous path
 			if (not_visited or new_past_cost < neighbor->past_cost) {
@@ -133,7 +147,11 @@ Path a_star(coord::phys3 start,
 	}
 
 	log::dbg("incomplete path cost is %f", closest_node->future_cost);
-	return closest_node->generate_backtrace();
+	log::dbg("Total nodes created: %d", visited_tiles.size());
+	
+	auto rval = closest_node->generate_backtrace();
+	log::dbg("Number of nodes in path: %d", rval.waypoints.size());
+	return rval;
 }
 
 } // namespace path

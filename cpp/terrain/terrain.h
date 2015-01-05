@@ -332,7 +332,8 @@ public:
 	 * @param neigh_tiles: the destination buffer where the neighbors will be stored
 	 * @param influences_by_terrain_id: influence buffer that is reset in the same step
 	 */
-	void get_neighbors(coord::tile basepos, struct neighbor_tile *neigh_tiles, struct influence *influences_by_terrain_id);
+	void get_neighbors(coord::tile basepos, struct neighbor_tile *neigh_tiles,
+	                   std::vector<influence>& influences_by_terrain_id);
 
 	/**
 	 * look at neighbor tiles around the base_tile, and store the influence bits.
@@ -342,7 +343,9 @@ public:
 	 * @param influences_by_terrain_id: influences will be stored to this buffer, as bitmasks
 	 * @returns an influence group that describes the maximum 8 possible influences on the base_tile
 	 */
-	struct influence_group calculate_influences(struct tile_data *base_tile, struct neighbor_tile *neigh_tiles, struct influence *influences_by_terrain_id);
+	struct influence_group calculate_influences(struct tile_data *base_tile,
+	                                            struct neighbor_tile *neigh_tiles,
+	                                            std::vector<influence>& influences_by_terrain_id);
 
 	/**
 	 * calculate blending masks for a given tile position.
@@ -364,13 +367,13 @@ private:
 	 */
 	std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash> chunks;
 
-	Texture **textures;
-	Texture **blending_masks;
+	std::vector<Texture*> textures;
+	std::vector<Texture*> blending_masks;
 
-	int *terrain_id_priority_map;
-	int *terrain_id_blendmode_map;
+	std::vector<int> terrain_id_priority_map;
+	std::vector<int> terrain_id_blendmode_map;
 
-	struct influence *influences_buf;
+	std::vector<influence> influences_buf;
 };
 
 } // namespace openage

@@ -20,7 +20,6 @@
 #include "util/opengl.h"
 #include "util/strings.h"
 
-
 /**
  * stores all things that have to do with the game.
  *

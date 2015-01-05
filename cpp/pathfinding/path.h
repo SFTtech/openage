@@ -4,7 +4,6 @@
 #define OPENAGE_PATHFINDING_PATH_H_
 
 #include <functional>
-#include <memory>
 #include <unordered_map>
 #include <vector>
 
@@ -13,6 +12,7 @@
 #include "../coord/tile.h"
 #include "../datastructure/pairing_heap.h"
 #include "../util/misc.h"
+#include "../util/stack_allocator.h"
 
 
 namespace openage {
@@ -29,7 +29,7 @@ using cost_t = float;
 /**
  * Type for storing navigation nodes.
  */
-using node_pt = std::shared_ptr<Node>;
+using node_pt = Node*;
 
 /**
  * Type for mapping tiles to nodes.
@@ -75,12 +75,14 @@ constexpr coord::phys3_delta const neigh_phys[] = {
 /**
  *
  */
-bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::phys3 &)>passable, float samples=5.0f);
+bool passable_line(node_pt start, node_pt end,
+                   std::function<bool(const coord::phys3 &)>passable,
+                   float samples=5.0f);
 
 /**
  * One navigation waypoint in a path.
  */
-class Node: public std::enable_shared_from_this<Node> {
+class Node {
 public:
 	Node(const coord::phys3 &pos, node_pt prev);
 	Node(const coord::phys3 &pos, node_pt prev, cost_t past, cost_t heuristic);
@@ -110,7 +112,10 @@ public:
 	/**
 	 * Get all neighbors of this graph node.
 	 */
-	std::vector<node_pt> get_neighbors(const nodemap_t &, float scale=1.0f);
+	void get_neighbors(const nodemap_t &,
+	                   node_pt out_nodes[8],
+	                   util::stack_allocator<Node>& alloc,
+	                   float scale=1.0f);
 
 	/**
 	 * The tile position this node is associated to.
@@ -201,7 +206,6 @@ namespace std {
 /**
  * Hash function for path nodes.
  * Just uses their position.
- * TODO: tile_t should provide its own hash function.
  */
 template <>
 struct hash<openage::path::Node &> {
@@ -209,20 +213,6 @@ struct hash<openage::path::Node &> {
 		openage::coord::phys3 node_pos = x.position;
 		size_t nehash = std::hash<openage::coord::phys_t>{}(node_pos.ne);
 		size_t sehash = std::hash<openage::coord::phys_t>{}(node_pos.se);
-		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
-	}
-};
-
-/**
- * Hash function for tiles
- *
- * TODO: relocate to coord/
- */
-template <>
-struct hash<openage::coord::tile> {
-	size_t operator ()(const openage::coord::tile &tile) const {
-		size_t nehash = std::hash<openage::coord::tile_t> {}(tile.ne);
-		size_t sehash = std::hash<openage::coord::tile_t> {}(tile.se);
 		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
 	}
 };
