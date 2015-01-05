@@ -15,7 +15,7 @@ namespace openage {
 AssetManager::AssetManager(util::Dir *root)
 	:
 	root{root},
-	missing_tex(nullptr, [](Texture *t) { delete t; }) {
+	missing_tex{nullptr, [](Texture *t) { delete t; }} {
 
 #if WITH_INOTIFY
 	// initialize the inotify instance
@@ -56,7 +56,10 @@ Texture *AssetManager::load_texture(const std::string &name) {
 #endif
 	}
 
-	return textures.emplace(std::move(filename), std::move(ret)).first->second.get();
+	// Insert the texture into the map and return the texture.
+	auto emplacedAt = textures.emplace(std::move(filename), std::move(ret)).first;
+	tex_ptr& tex = emplacedAt->second;
+	return tex.get();
 }
 
 Texture *AssetManager::get_texture(const std::string &name) {

@@ -81,7 +81,7 @@ private:
 	 * Map from inotify watch handle fd to texture instance ptr.
 	 * The kernel returns the handle fd when events are triggered.
 	 */
-	std::unordered_map<int, Texture*> watch_fds;
+	std::unordered_map<int, Texture *> watch_fds;
 #endif
 };
 
