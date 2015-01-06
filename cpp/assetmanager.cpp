@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "assetmanager.h"
 
@@ -14,9 +14,8 @@ namespace openage {
 
 AssetManager::AssetManager(util::Dir *root)
 	:
-	root{root} {
-
-	this->missing_tex = new Texture{root->join("missing.png"), false};
+	root{root},
+	missing_tex{nullptr, [](Texture *t) { delete t; }} {
 
 #if WITH_INOTIFY
 	// initialize the inotify instance
@@ -27,15 +26,6 @@ AssetManager::AssetManager(util::Dir *root)
 #endif
 }
 
-AssetManager::~AssetManager() {
-	for (auto &tex : this->textures) {
-		if (tex.second != this->missing_tex) {
-			delete tex.second;
-		}
-	}
-	delete this->missing_tex;
-}
-
 bool AssetManager::can_load(const std::string &name) const {
 	return util::file_size(this->root->join(name)) > 0;
 }
@@ -43,7 +33,7 @@ bool AssetManager::can_load(const std::string &name) const {
 Texture *AssetManager::load_texture(const std::string &name) {
 	std::string filename = this->root->join(name);
 
-	Texture *ret;
+	tex_ptr ret(nullptr, [](Texture *t) { delete t; });
 
 	if (!this->can_load(name)) {
 		log::msg("   file %s is not there...", filename.c_str());
@@ -52,9 +42,9 @@ Texture *AssetManager::load_texture(const std::string &name) {
 		// to display the tex as soon at it exists.
 
 		// return the big X texture instead
-		ret = this->missing_tex;
+		ret = this->get_missing_tex();
 	} else {
-		ret = new Texture{filename, true};
+		ret.reset(new Texture{filename, true});
 
 #if WITH_INOTIFY
 		// create inotify update trigger for the requested file
@@ -62,13 +52,14 @@ Texture *AssetManager::load_texture(const std::string &name) {
 		if (wd < 0) {
 			throw util::Error{"failed to add inotify watch for %s", filename.c_str()};
 		}
-		this->watch_fds[wd] = ret;
+		this->watch_fds[wd] = ret.get();
 #endif
 	}
 
-	this->textures[filename] = ret;
-
-	return ret;
+	// Insert the texture into the map and return the texture.
+	auto emplaced_at = textures.emplace(std::move(filename), std::move(ret)).first;
+	tex_ptr& tex = emplaced_at->second;
+	return tex.get();
 }
 
 Texture *AssetManager::get_texture(const std::string &name) {
@@ -79,7 +70,7 @@ Texture *AssetManager::get_texture(const std::string &name) {
 		return this->load_texture(name);
 	}
 
-	return tex_it->second;
+	return tex_it->second.get();
 }
 
 void AssetManager::check_updates() {
@@ -116,6 +107,16 @@ void AssetManager::check_updates() {
 		}
 	}
 #endif
+}
+
+AssetManager::tex_ptr AssetManager::get_missing_tex() {
+	// Lazily load the missing texture.
+	if (!missing_tex) {
+		this->missing_tex.reset(new Texture{root->join("missing.png"), false});
+	}
+	
+	// Create pseudo owning ptr with a dummy deleter so there are no double deletes.
+	return tex_ptr(missing_tex.get(), [](Texture*) { });
 }
 
 }
