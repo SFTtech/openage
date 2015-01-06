@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UTIL_UNIQUE_H_
 #define OPENAGE_UTIL_UNIQUE_H_
@@ -39,7 +39,7 @@ struct unique_rval<T[N]> {
 /**
  * Creates a unique_ptr pointing towards new T(Args...)
  * Implementation of http://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique
- * 
+ *
  * @param Args The arguments forwarded to the constructor of T
  */
 template<class T, class... Args>
@@ -51,7 +51,7 @@ make_unique(Args&&... args) {
 /**
  * Creates a unique_ptr pointing towards a new T[n]
  * Implementation of http://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique
- * 
+ *
  * @param n The size of the array being allocated
  */
 template<class T>

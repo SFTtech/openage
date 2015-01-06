@@ -1,10 +1,12 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "strings.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+#include <memory>
+#include <string>
 #include <vector>
 
 namespace openage {
@@ -33,6 +35,21 @@ char *vformat(const char *fmt, va_list ap) {
 	vsnprintf(result, sz, fmt, ap);
 
 	return result;
+}
+
+std::string sformat(const char *fmt, ...) {
+	va_list ap;
+	va_start(ap, fmt);
+	std::string ret = vsformat(fmt, ap);
+	va_end(ap);
+
+	return ret;
+}
+
+std::string vsformat(const char *fmt, va_list ap) {
+	std::unique_ptr<char> str{vformat(fmt, ap)};
+	std::string ret{str.get()};
+	return ret;
 }
 
 char *copy(const char *s) {

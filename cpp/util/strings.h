@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UTIL_STRINGS_H_
 #define OPENAGE_UTIL_STRINGS_H_
@@ -6,6 +6,7 @@
 #include <cstdarg>
 #include <cstdlib>
 #include <functional>
+#include <string>
 
 namespace openage {
 namespace util {
@@ -21,6 +22,16 @@ char *format(const char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
  * same as format, but takes a va_list instead of ...
  */
 char *vformat(const char *fmt, va_list ap);
+
+/**
+ * formats fmt to a std::string
+ */
+std::string sformat(const char *fmt, ...);
+
+/**
+ * same as sformat, but takes va_list instead of ...
+ */
+std::string vsformat(const char *fmt, va_list ap);
 
 /**
  * makes a copy of the string (up to and including the first null byte).
