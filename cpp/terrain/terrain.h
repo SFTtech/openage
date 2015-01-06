@@ -1,9 +1,10 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_TERRAIN_TERRAIN_H_
 #define OPENAGE_TERRAIN_TERRAIN_H_
 
 #include <functional>
+#include <memory>
 #include <stddef.h>
 #include <set>
 #include <unordered_map>
@@ -318,7 +319,8 @@ public:
 	 *
 	 * @returns a drawing instruction struct that contains all information for rendering
 	 */
-	struct terrain_render_data create_draw_advice(coord::tile ab, coord::tile cd, coord::tile ef, coord::tile gh);
+	struct terrain_render_data create_draw_advice(coord::tile ab, coord::tile cd,
+	                                              coord::tile ef, coord::tile gh);
 
 	/**
 	 * create rendering and blending information for a single tile on the terrain.
@@ -332,7 +334,9 @@ public:
 	 * @param neigh_tiles: the destination buffer where the neighbors will be stored
 	 * @param influences_by_terrain_id: influence buffer that is reset in the same step
 	 */
-	void get_neighbors(coord::tile basepos, struct neighbor_tile *neigh_tiles, struct influence *influences_by_terrain_id);
+	void get_neighbors(coord::tile basepos,
+	                   struct neighbor_tile *neigh_tiles,
+	                   struct influence *influences_by_terrain_id);
 
 	/**
 	 * look at neighbor tiles around the base_tile, and store the influence bits.
@@ -342,7 +346,9 @@ public:
 	 * @param influences_by_terrain_id: influences will be stored to this buffer, as bitmasks
 	 * @returns an influence group that describes the maximum 8 possible influences on the base_tile
 	 */
-	struct influence_group calculate_influences(struct tile_data *base_tile, struct neighbor_tile *neigh_tiles, struct influence *influences_by_terrain_id);
+	struct influence_group calculate_influences(struct tile_data *base_tile,
+	                                            struct neighbor_tile *neigh_tiles,
+	                                            struct influence *influences_by_terrain_id);
 
 	/**
 	 * calculate blending masks for a given tile position.
@@ -353,7 +359,9 @@ public:
 	 *
 	 * @see calculate_influences
 	 */
-	void calculate_masks(coord::tile position, struct tile_draw_data *tile_data, struct influence_group *influences);
+	void calculate_masks(coord::tile position,
+	                     struct tile_draw_data *tile_data,
+	                     struct influence_group *influences);
 
 	size_t terrain_id_count;
 	size_t blendmode_count;
@@ -364,13 +372,13 @@ private:
 	 */
 	std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash> chunks;
 
-	Texture **textures;
-	Texture **blending_masks;
+	std::vector<Texture *> textures;
+	std::vector<Texture *> blending_masks;
 
-	int *terrain_id_priority_map;
-	int *terrain_id_blendmode_map;
+	std::unique_ptr<int[]> terrain_id_priority_map;
+	std::unique_ptr<int[]> terrain_id_blendmode_map;
 
-	struct influence *influences_buf;
+	std::unique_ptr<influence[]> influences_buf;
 };
 
 } // namespace openage

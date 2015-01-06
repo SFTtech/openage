@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "terrain.h"
 
@@ -18,6 +18,7 @@
 #include "../util/error.h"
 #include "../util/misc.h"
 #include "../util/strings.h"
+#include "../util/unique.h"
 
 namespace openage {
 
@@ -46,16 +47,15 @@ Terrain::Terrain(AssetManager &assetmanager,
 
 	this->terrain_id_count         = terrain_meta.size();
 	this->blendmode_count          = blending_meta.size();
-	this->textures                 = new Texture*[this->terrain_id_count];
-	this->blending_masks           = new Texture*[this->blendmode_count];
-	this->terrain_id_priority_map  = new int[this->terrain_id_count];
-	this->terrain_id_blendmode_map = new int[this->terrain_id_count];
-	this->influences_buf           = new struct influence[this->terrain_id_count];
+	this->textures.reserve(this->terrain_id_count);
+	this->blending_masks.reserve(this->blendmode_count);
+	this->terrain_id_priority_map  = util::make_unique<int[]>(this->terrain_id_count);
+	this->terrain_id_blendmode_map = util::make_unique<int[]>(this->terrain_id_count);
+	this->influences_buf           = util::make_unique<struct influence[]>(this->terrain_id_count);
 
 
-	log::dbg("terrain prefs: %" PRIuPTR " tiletypes, %" PRIuPTR " blendmodes",
-	         static_cast<uintptr_t>(this->terrain_id_count),
-		 static_cast<uintptr_t>(this->blendmode_count));
+	log::dbg("terrain prefs: %zu tiletypes, %zu blendmodes",
+	         this->terrain_id_count, this->blendmode_count);
 
 	// create tile textures (snow, ice, grass, whatever)
 	for (size_t i = 0; i < this->terrain_id_count; i++) {
@@ -68,11 +68,8 @@ Terrain::Terrain(AssetManager &assetmanager,
 		this->terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
 		// TODO: remove hardcoding and rely on nyan data
-		char *terraintex_filename = util::format("converted/Data/terrain.drs/%d.slp.png", line->slp_id);
-		std::string terraintex_filename_str{terraintex_filename};
-		delete[] terraintex_filename;
-
-		auto new_texture = assetmanager.get_texture(terraintex_filename_str);
+		auto terraintex_filename = util::sformat("converted/Data/terrain.drs/%d.slp.png", line->slp_id);
+		auto new_texture = assetmanager.get_texture(terraintex_filename);
 
 		this->textures[terrain_id] = new_texture;
 	}
@@ -81,11 +78,8 @@ Terrain::Terrain(AssetManager &assetmanager,
 	for (size_t i = 0; i < this->blendmode_count; i++) {
 		auto line = &blending_meta[i];
 
-		char *mask_filename = util::format("converted/blendomatic.dat/mode%02d.png", line->blend_mode);
-		std::string mask_filename_str{mask_filename};
-		delete[] mask_filename;
-
-		this->blending_masks[i] = assetmanager.get_texture(mask_filename_str);
+		std::string mask_filename = util::sformat("converted/blendomatic.dat/mode%02d.png", line->blend_mode);
+		this->blending_masks[i] = assetmanager.get_texture(mask_filename);
 	}
 
 }
@@ -97,12 +91,6 @@ Terrain::~Terrain() {
 			delete chunk.second;
 		}
 	}
-
-	delete[] this->blending_masks;
-	delete[] this->textures;
-	delete[] this->terrain_id_priority_map;
-	delete[] this->terrain_id_blendmode_map;
-	delete[] this->influences_buf;
 }
 
 
@@ -446,7 +434,6 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 
 	// chunk of this tile does not exist
 	if (base_tile_content == nullptr) {
-		//throw Error("requested base tile that's nonexistant");
 		return tile;
 	}
 
@@ -462,14 +449,14 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 
 	this->validate_terrain(base_tile_data.terrain_id);
 
-	base_tile_data.state      = tile_state::existing;
-	base_tile_data.pos        = position;
-	base_tile_data.priority   = this->priority(base_tile_data.terrain_id);
-	base_tile_data.tex        = this->texture(base_tile_data.terrain_id);
+	base_tile_data.state         = tile_state::existing;
+	base_tile_data.pos           = position;
+	base_tile_data.priority      = this->priority(base_tile_data.terrain_id);
+	base_tile_data.tex           = this->texture(base_tile_data.terrain_id);
 	base_tile_data.subtexture_id = this->get_subtexture_id(position, base_tile_data.tex->atlas_dimensions);
-	base_tile_data.blend_mode = -1;
-	base_tile_data.mask_tex   = nullptr;
-	base_tile_data.mask_id    = -1;
+	base_tile_data.blend_mode    = -1;
+	base_tile_data.mask_tex      = nullptr;
+	base_tile_data.mask_id       = -1;
 
 	tile.data[tile.count] = base_tile_data;
 	tile.count += 1;
@@ -482,11 +469,13 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 		struct neighbor_tile neigh_data[8];
 
 		// get all neighbor tiles around position, reset the influence directions.
-		this->get_neighbors(position, neigh_data, this->influences_buf);
+		this->get_neighbors(position, neigh_data, this->influences_buf.get());
 
 		// create influence list (direction, priority)
 		// strip and order influences, get the final influence data structure
-		struct influence_group influence_group = this->calculate_influences(&base_tile_data, neigh_data, this->influences_buf);
+		struct influence_group influence_group = this->calculate_influences(
+			&base_tile_data, neigh_data,
+			this->influences_buf.get());
 
 		// create the draw_masks from the calculated influences
 		this->calculate_masks(position, &tile, &influence_group);
@@ -496,8 +485,8 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 }
 
 void Terrain::get_neighbors(coord::tile basepos,
-                            struct neighbor_tile *neigh_data,
-                            struct influence *influences_by_terrain_id) {
+                            neighbor_tile *neigh_data,
+                            influence *influences_by_terrain_id) {
 	// walk over all given neighbor tiles and store them to the influence list,
 	// group them by terrain id.
 
