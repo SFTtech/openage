@@ -42,7 +42,7 @@ Texture *AssetManager::load_texture(const std::string &name) {
 		// to display the tex as soon at it exists.
 
 		// return the big X texture instead
-		ret = get_missing_tex();
+		ret = this->get_missing_tex();
 	} else {
 		ret.reset(new Texture{filename, true});
 
@@ -57,8 +57,8 @@ Texture *AssetManager::load_texture(const std::string &name) {
 	}
 
 	// Insert the texture into the map and return the texture.
-	auto emplacedAt = textures.emplace(std::move(filename), std::move(ret)).first;
-	tex_ptr& tex = emplacedAt->second;
+	auto emplaced_at = textures.emplace(std::move(filename), std::move(ret)).first;
+	tex_ptr& tex = emplaced_at->second;
 	return tex.get();
 }
 
@@ -112,7 +112,7 @@ void AssetManager::check_updates() {
 AssetManager::tex_ptr AssetManager::get_missing_tex() {
 	// Lazily load the missing texture.
 	if (!missing_tex) {
-		missing_tex.reset(new Texture{root->join("missing.png"), false});
+		this->missing_tex.reset(new Texture{root->join("missing.png"), false});
 	}
 	
 	// Create pseudo owning ptr with a dummy deleter so there are no double deletes.
