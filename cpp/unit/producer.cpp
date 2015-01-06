@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "../terrain/terrain.h"
 #include "../terrain/terrain_object.h"
@@ -15,29 +15,29 @@
 namespace openage {
 
 UnitTypeTest::UnitTypeTest(const gamedata::unit_living *ud,
-                           Texture *dd,
-                           Texture *idl,
-                           Texture *wa,
-                           Texture *att,
-                           TestSound *cs,
-                           TestSound *ds,
-                           TestSound *ms,
-                           TestSound *atts)
+                           Texture *deadt,
+                           Texture *idlet,
+                           Texture *movet,
+                           Texture *attackt,
+                           TestSound *creates,
+                           TestSound *destroys,
+                           TestSound *moves,
+                           TestSound *attacks)
 	:
-	unit_data(*ud),
-	dead(dd),
-	idle(idl),
-	moving(wa),
-	attacking(att),
-	on_create(cs),
-	on_destroy(ds),
-	on_move(ms), 
-	on_attack(atts) {
-	terrain_outline = radial_outline(ud->radius_size1);
+	unit_data{*ud},
+	terrain_outline{radial_outline(ud->radius_size1)},
+	dead{deadt},
+	idle{idlet},
+	moving{movet},
+	attacking{attackt},
+	on_create{creates},
+	on_destroy{destroys},
+	on_move{moves},
+	on_attack{attacks} {
 }
 
 UnitTypeTest::~UnitTypeTest() {
-	delete this->terrain_outline;
+
 }
 
 void UnitTypeTest::initialise(Unit *unit) {
@@ -51,26 +51,26 @@ void UnitTypeTest::initialise(Unit *unit) {
 	 */
 	unit->add_attribute(new Attribute<attr_type::color>(util::random_range(1, 8 + 1)));
 	unit->add_attribute(new Attribute<attr_type::hitpoints>(50, 50));
-	unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));
+	unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{1, 0, 0}));
 
 	/*
 	 * distance per millisecond -- consider game speed
 	 */
-	coord::phys_t sp = this->unit_data.speed * (1 << 16) / 500; 
+	coord::phys_t sp = this->unit_data.speed * (1 << 16) / 500;
 	unit->add_attribute(new Attribute<attr_type::speed>(sp));
 
 	/*
 	 * Initial action stack
 	 */
-	unit->push_action( util::make_unique<DeadAction>( unit, this->dead,
-	                                                  this->on_destroy ) );
-	unit->push_action( util::make_unique<IdleAction>( unit, this->idle ) );
+	unit->push_action(util::make_unique<DeadAction>(unit, this->dead,
+	                                                this->on_destroy));
+	unit->push_action(util::make_unique<IdleAction>(unit, this->idle));
 
-	unit->give_ability( util::make_unique<MoveAbility>( this->moving, this->on_move )  );
-	unit->give_ability( util::make_unique<AttackAbility>( this->attacking, this->on_attack )  );
+	unit->give_ability(util::make_unique<MoveAbility>(this->moving, this->on_move));
+	unit->give_ability(util::make_unique<AttackAbility>(this->attacking, this->on_attack));
 
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
-		unit->give_ability( util::make_unique<GatherAbility>( this->attacking, this->on_attack )  );
+		unit->give_ability(util::make_unique<GatherAbility>(this->attacking, this->on_attack));
 	}
 }
 
@@ -126,25 +126,24 @@ BuldingProducer::BuldingProducer(Texture *tex,
                                  TestSound *create,
                                  TestSound *destroy)
 	:
-	on_create(create),
-	on_destroy(destroy),
-	texture(tex),
+	on_create{create},
+	on_destroy{destroy},
+	terrain_outline{square_outline(foundation_size)},
+	texture{tex},
 	size(foundation_size),
-	foundation_terrain(foundation){
-	terrain_outline = square_outline(foundation_size);
+	foundation_terrain{foundation} {
 }
 
 BuldingProducer::~BuldingProducer() {
-	delete this->terrain_outline;
 }
 
 void BuldingProducer::initialise(Unit *unit) {
 	unit->add_attribute(new Attribute<attr_type::color>(util::random_range(1, 8 + 1)));
 	unit->add_attribute(new Attribute<attr_type::dropsite>());
 
-	unit->push_action( util::make_unique<DeadAction>(unit, this->texture,
-	                                                 this->on_destroy));
-	unit->push_action( util::make_unique<IdleAction>(unit, this->texture));
+	unit->push_action(util::make_unique<DeadAction>(unit, this->texture,
+	                                                this->on_destroy));
+	unit->push_action(util::make_unique<IdleAction>(unit, this->texture));
 }
 
 bool BuldingProducer::place(Unit *unit, Terrain *terrain, coord::tile init_tile) {
@@ -191,13 +190,14 @@ ProducerLoader::ProducerLoader(GameMain *m)
 	main(m) {}
 
 std::unique_ptr<UnitProducer> ProducerLoader::load_building(const gamedata::unit_building &building) {
-	Texture *tex = this->main->find_graphic(building.graphic_standing0);
-	if ( !tex ) {
+	auto tex = this->main->find_graphic(building.graphic_standing0);
+
+	if (tex == nullptr) {
 		return nullptr;
 	}
 
 	// convert the float to the discrete foundation size...
-	openage::coord::tile_delta foundation_size = {
+	coord::tile_delta foundation_size = {
 		(int)(building.radius_size0 * 2),
 		(int)(building.radius_size1 * 2),
 	};
@@ -228,22 +228,26 @@ std::unique_ptr<UnitProducer> ProducerLoader::load_building(const gamedata::unit
 std::unique_ptr<UnitProducer> ProducerLoader::load_living(const gamedata::unit_living &unit) {
 
 	// find and load graphics
-	Texture *tex0 = this->main->find_graphic(unit.graphic_dying0);
-	Texture *tex1 = this->main->find_graphic(unit.graphic_standing0);
-	Texture *tex2 = this->main->find_graphic(unit.walking_graphics0);
-	Texture *tex3 = this->main->find_graphic(unit.attack_graphic);
+	auto tex_die    = this->main->find_graphic(unit.graphic_dying0);
+	auto tex_stand  = this->main->find_graphic(unit.graphic_standing0);
+	auto tex_walk   = this->main->find_graphic(unit.walking_graphics0);
+	auto tex_attack = this->main->find_graphic(unit.attack_graphic);
 
 	// check graphics exist
-	if (!(tex0 && tex1 && tex2 && tex3)) {
+	if (not (tex_die && tex_stand && tex_walk && tex_attack)) {
 		return nullptr;
 	}
 
 	// get required sounds
-	TestSound *on_create = this->main->find_sound(unit.sound_creation0);
-	TestSound *on_destroy = this->main->find_sound(unit.sound_dying);
-	TestSound *on_move = this->main->find_sound(unit.move_sound);
-	return util::make_unique<UnitTypeTest>(&unit, tex0, tex1, tex2, tex3,
-	                                       on_create, on_destroy, on_move, on_move);
+	TestSound *snd_create  = this->main->find_sound(unit.sound_creation0);
+	TestSound *snd_destroy = this->main->find_sound(unit.sound_dying);
+	TestSound *snd_move    = this->main->find_sound(unit.move_sound);
+
+	return util::make_unique<UnitTypeTest>(
+		&unit,
+		tex_die, tex_stand, tex_walk, tex_attack,
+		snd_create, snd_destroy, snd_move, snd_move
+	);
 }
 
 std::unique_ptr<UnitProducer> ProducerLoader::load_object(const gamedata::unit_object &object) {
