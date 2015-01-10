@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_JOB_JOB_H_
 #define OPENAGE_JOB_JOB_H_
@@ -35,12 +35,13 @@ public:
 	/* Creates an empty Job object that is not bound to any state. */
 	Job() = default;
 
-	/** Returns whether this Job has finished. */
+	/** Returns whether this Job has finished. If this job wrapper has no
+	 * assigned background job, true will be returned. */
 	bool is_finished() const {
 		if (this->state) {
 			return this->state->finished.load();
 		}
-		return false;
+		return true;
 	}
 
 	/**
@@ -49,6 +50,7 @@ public:
 	 * called, if the Job's execution has not yet finished.
 	 */
 	T get_result() {
+		assert(this->state);
 		assert(this->state->finished.load());
 		if (this->state->exception != nullptr) {
 			std::rethrow_exception(this->state->exception);
