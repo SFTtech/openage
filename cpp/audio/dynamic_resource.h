@@ -46,7 +46,13 @@ struct chunk_info_t {
 };
 
 struct loading_info_t {
+	/** The chunk into which audio data should be loaded. */
 	std::shared_ptr<chunk_info_t> chunk_info;
+
+	/**
+	 * The offset of the audio data, that should be loaded, within the
+	 * resource.
+	 */
 	size_t resource_chunk_offset;
 };
 
@@ -65,23 +71,43 @@ public:
 	static const size_t DEFAULT_MAX_CHUNKS = 100;
 
 private:
+	/** The resource's path. */
 	std::string path;
+
+	/** The resource's audio format. */
 	format_t format;
+
+	/** The number of chunks that should be preloaded. */
 	int preload_threshold;
+
+	/** The size of one audio chunk in bytes. */
 	size_t chunk_size;
+
+	/** The number of chunks that are used to store audio data. */
 	size_t max_chunks;
 
+	/** The number of sounds that currently use this resource. */
 	std::atomic_int use_count;
+
+	/** The background audio loader. */
 	std::unique_ptr<DynamicLoader> loader;
 
+	/** Queue of audio chunks, that should be used next for loading audio data. */
 	openage::datastructure::ConcurrentQueue<std::shared_ptr<chunk_info_t>> chunk_infos;
 
 	/** Resource chunk index to chunk mapping. */
 	std::unordered_map<size_t,std::shared_ptr<chunk_info_t>> chunk_mapping;
 
-	// background loading
+	/**
+	 * Mutex for synchronizing the loading queue between audio thread and
+	 * background loading thread.
+	 */
 	std::mutex loading_mutex;
+
+	/** Queue with chunks that should be loaded. */
 	std::queue<loading_info_t> loading_queue;
+
+	/** The background loading job. */
 	openage::job::Job<int> loading_job;
 
 public:
