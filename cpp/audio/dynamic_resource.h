@@ -15,6 +15,7 @@
 #include "resource.h"
 #include "types.h"
 #include "../datastructure/concurrent_queue.h"
+#include "../job/job.h"
 
 namespace openage {
 namespace audio {
@@ -38,10 +39,15 @@ struct chunk_info_t {
 	size_t actual_size;
 
 	/** The chunk's buffer. */
-	int16_t *buffer;
+	std::unique_ptr<int16_t[]> buffer;
 
-	chunk_info_t(int state, int16_t *buffer);
+	chunk_info_t(int state, size_t buffer_size);
 	~chunk_info_t() = default;
+};
+
+struct loading_info_t {
+	std::shared_ptr<chunk_info_t> chunk_info;
+	size_t resource_chunk_offset;
 };
 
 class DynamicResource : public Resource {
@@ -68,12 +74,15 @@ private:
 	std::atomic_int use_count;
 	std::unique_ptr<DynamicLoader> loader;
 
-	size_t chunk_buffer_size;
 	openage::datastructure::ConcurrentQueue<std::shared_ptr<chunk_info_t>> chunk_infos;
-	std::unique_ptr<int16_t[]> chunk_buffer;
 
 	/** Resource chunk index to chunk mapping. */
 	std::unordered_map<size_t,std::shared_ptr<chunk_info_t>> chunk_mapping;
+
+	// background loading
+	std::mutex loading_mutex;
+	std::queue<loading_info_t> loading_queue;
+	openage::job::Job<int> loading_job;
 
 public:
 	DynamicResource(category_t category, int id, const std::string &path,
@@ -94,6 +103,8 @@ private:
 
 	void start_loading(std::shared_ptr<chunk_info_t> chunk_info,
 			size_t resource_chunk_offset);
+
+	int process_loading_queue();
 };
 
 }

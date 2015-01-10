@@ -8,11 +8,11 @@
 namespace openage {
 namespace audio {
 
-chunk_info_t::chunk_info_t(int state, int16_t *buffer)
+chunk_info_t::chunk_info_t(int state, size_t buffer_size)
 		:
 		state{state},
 		actual_size{0},
-		buffer{buffer} {
+		buffer{new int16_t[buffer_size]} {
 }
 
 DynamicResource::DynamicResource(category_t category, int id,
@@ -25,24 +25,20 @@ DynamicResource::DynamicResource(category_t category, int id,
 		preload_threshold{preload_threshold},
 		chunk_size{chunk_size},
 		max_chunks{max_chunks},
-		use_count{0},
-		chunk_buffer_size{chunk_size * max_chunks} {
+		use_count{0} {
 }
 
 void DynamicResource::use() {
 	log::msg("DYNRES: now in use");
-	log::msg("CS=%lu, MX=%lu, CBS=%lu", chunk_size, max_chunks, chunk_buffer_size);
+	log::msg("CS=%lu, MX=%lu", chunk_size, max_chunks);
 	// if the resource is new in use
 	if ((this->use_count++) == 0) {
 		// create loader
 		this->loader = DynamicLoader::create(this->path, this->format);
-		// allocate chunk buffer
-		this->chunk_buffer.reset(new int16_t[this->chunk_buffer_size]);
 		// create chunk information
 		for (size_t i = 0; i < this->max_chunks; i++) {
-			int16_t *buffer = this->chunk_buffer.get() + i * this->chunk_size;
 			this->chunk_infos.push(std::make_shared<chunk_info_t>(
-					chunk_info_t::UNUSED, buffer));
+					chunk_info_t::UNUSED, this->chunk_size));
 		}
 	}
 }
@@ -51,13 +47,18 @@ void DynamicResource::stop_using() {
 	log::msg("DYNRES: no longer in use");
 	// if the resource is not used anymore
 	if ((--this->use_count) == 0) {
+		// clear the chunk_mapping
+		this->chunk_mapping.clear();
 		// clear chunk information
 		this->chunk_infos.clear();
-		// delete the internal chunk buffer
-		this->chunk_buffer.reset(nullptr);
+
+		this->loading_job = openage::job::Job<int>();
+		
+		std::unique_lock<std::mutex> lock;
+		while (!this->loading_queue.empty()) {
+			this->loading_queue.pop();
+		}
 	}
-	//
-	this->chunk_mapping.clear();
 }
 
 std::tuple<const int16_t*,size_t> DynamicResource::get_data(
@@ -69,7 +70,7 @@ std::tuple<const int16_t*,size_t> DynamicResource::get_data(
 	// the chunk is either in loading state or ready
 	if (chunk_map_it != std::end(this->chunk_mapping)) {
 		auto chunk_info = chunk_map_it->second;
-		int16_t *chunk = chunk_info->buffer + chunk_offset;
+		int16_t *chunk = chunk_info->buffer.get() + chunk_offset;
 		// switch chunk's current state
 		switch (chunk_info->state.load()) {
 		case chunk_info_t::UNUSED:
@@ -90,6 +91,7 @@ std::tuple<const int16_t*,size_t> DynamicResource::get_data(
 		}
 	}
 
+	// the chunk is not yet loading or ready, so start loading it
 	auto chunk_info = this->chunk_infos.front();
 	this->chunk_infos.pop();
 
@@ -114,7 +116,6 @@ void DynamicResource::start_preloading(size_t resource_chunk_index) {
 		if (chunk_map_it != std::end(this->chunk_mapping)) {
 			//log::msg("ALREADY_THERE: %lu", resource_chunk_index);
 			auto chunk_info = chunk_map_it->second;
-			// TODO atomic?
 			if (chunk_info->state.load() == chunk_info_t::UNUSED) {
 				this->chunk_mapping.erase(chunk_map_it);
 				// there is a chunk that is the end of the stream, so abort here
@@ -136,10 +137,36 @@ void DynamicResource::start_loading(
 		std::shared_ptr<chunk_info_t> chunk_info,
 		size_t resource_chunk_offset) {
 	chunk_info->state.store(chunk_info_t::LOADING);
-	auto load_function = [this,chunk_info,resource_chunk_offset]() -> int {
-		int16_t *buffer = chunk_info->buffer;
+
+	std::unique_lock<std::mutex> lock{this->loading_mutex};
+	this->loading_queue.push({chunk_info, resource_chunk_offset});
+	lock.unlock();
+
+	// if the loading job has finished, add it again
+	if (this->loading_job.is_finished()) {
+		Engine &e = Engine::get();
+		auto loading_function = [this]() -> int {
+			return this->process_loading_queue();
+		};
+		loading_job = e.get_job_manager()->enqueue<int>(loading_function);
+	}
+}
+
+int DynamicResource::process_loading_queue() {
+	while (true) {
+		std::unique_lock<std::mutex> lock{this->loading_mutex};
+		if (this->loading_queue.empty()) {
+			break;
+		}
+		loading_info_t loading_info = this->loading_queue.front();
+		this->loading_queue.pop();
+		lock.unlock();
+
+		auto &chunk_info = loading_info.chunk_info;
+		int16_t *buffer = chunk_info->buffer.get();
+		size_t resource_chunk_offset = loading_info.resource_chunk_offset;
+
 		size_t loaded = this->loader->load_chunk(buffer, resource_chunk_offset, this->chunk_size);
-		//log::msg("LOADED=%lu, ROFF=%lu", loaded, resource_chunk_offset);
 		if (loaded == 0) {
 			chunk_info->state.store(chunk_info_t::UNUSED);
 			this->chunk_infos.push(chunk_info);
@@ -149,11 +176,8 @@ void DynamicResource::start_loading(
 			this->chunk_infos.push(chunk_info);
 		}
 
-		return 0;
-	};
-
-	Engine &e = Engine::get();
-	auto job = e.get_job_manager()->enqueue<int>(load_function);
+	}
+	return 0;
 }
 
 }

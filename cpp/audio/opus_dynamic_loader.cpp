@@ -49,9 +49,6 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 	// by 2 is necessary
 	int64_t pcm_offset = static_cast<int64_t>(offset / 2);
 
-	// synchronize all accesses to the opus file, as multiple threads can use
-	// this audio loader to concurrently load audio
-	std::unique_lock<std::mutex> lock{this->mutex};
 	int op_ret = op_pcm_seek(source.get(), pcm_offset);
 	if (op_ret < 0) {
 		throw util::Error{"Could not seek in %s: %d", path.c_str(), op_ret};
@@ -83,7 +80,6 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 		// read
 		read_count += samples_read * channels;
 	}
-	lock.unlock();
 
 	// convert to stereo
 	if (channels == 1) {

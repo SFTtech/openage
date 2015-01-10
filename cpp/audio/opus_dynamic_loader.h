@@ -30,13 +30,6 @@ private:
 	 */
 	int channels;
 
-	/**
-	 * A mutex that is used to synchronize the load_chunk method because it can
-	 * be used from multiple threads. Therefore concurrent accesses to the opus
-	 * file must be avoided.
-	 */
-	std::mutex mutex;
-
 public:
 	/**
 	 * Creates a new OpusDynamicLoader.
