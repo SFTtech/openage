@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "../terrain/terrain.h"
 #include "../terrain/terrain_object.h"
@@ -31,8 +31,9 @@ UnitTypeTest::UnitTypeTest(const gamedata::unit_living *ud,
 	attacking(att),
 	on_create(cs),
 	on_destroy(ds),
-	on_move(ms), 
-	on_attack(atts) {
+	on_move(ms),
+	on_attack(atts),
+	rnd(rng::random_seed()) {
 	terrain_outline = radial_outline(ud->radius_size1);
 }
 
@@ -49,7 +50,7 @@ void UnitTypeTest::initialise(Unit *unit) {
 	/*
 	 * basic attributes
 	 */
-	unit->add_attribute(new Attribute<attr_type::color>(util::random_range(1, 8 + 1)));
+	unit->add_attribute(new Attribute<attr_type::color>(this->rnd.random_range(1, 8 + 1)));
 	unit->add_attribute(new Attribute<attr_type::hitpoints>(50, 50));
 	unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));
 
@@ -130,7 +131,8 @@ BuldingProducer::BuldingProducer(Texture *tex,
 	on_destroy(destroy),
 	texture(tex),
 	size(foundation_size),
-	foundation_terrain(foundation){
+	foundation_terrain(foundation),
+	rnd(rng::random_seed()) {
 	terrain_outline = square_outline(foundation_size);
 }
 
@@ -139,7 +141,7 @@ BuldingProducer::~BuldingProducer() {
 }
 
 void BuldingProducer::initialise(Unit *unit) {
-	unit->add_attribute(new Attribute<attr_type::color>(util::random_range(1, 8 + 1)));
+	unit->add_attribute(new Attribute<attr_type::color>(this->rnd.random_range(1, 8 + 1)));
 	unit->add_attribute(new Attribute<attr_type::dropsite>());
 
 	unit->push_action( util::make_unique<DeadAction>(unit, this->texture,
