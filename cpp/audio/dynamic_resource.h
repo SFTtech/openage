@@ -16,6 +16,7 @@
 #include "types.h"
 #include "../datastructure/concurrent_queue.h"
 #include "../job/job.h"
+#include "../job/job_group.h"
 
 namespace openage {
 namespace audio {
@@ -98,17 +99,8 @@ private:
 	/** Resource chunk index to chunk mapping. */
 	std::unordered_map<size_t,std::shared_ptr<chunk_info_t>> chunk_mapping;
 
-	/**
-	 * Mutex for synchronizing the loading queue between audio thread and
-	 * background loading thread.
-	 */
-	std::mutex loading_mutex;
-
-	/** Queue with chunks that should be loaded. */
-	std::queue<loading_info_t> loading_queue;
-
-	/** The background loading job. */
-	openage::job::Job<int> loading_job;
+	/** The background loading job group. */
+	openage::job::JobGroup loading_job_group;
 
 public:
 	DynamicResource(category_t category, int id, const std::string &path,
@@ -129,8 +121,6 @@ private:
 
 	void start_loading(std::shared_ptr<chunk_info_t> chunk_info,
 			size_t resource_chunk_offset);
-
-	int process_loading_queue();
 };
 
 }

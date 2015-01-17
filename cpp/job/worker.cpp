@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #include "job_manager.h"
 #include "thread_id.h"

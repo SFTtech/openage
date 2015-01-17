@@ -40,6 +40,9 @@ void DynamicResource::use() {
 			this->chunk_infos.push(std::make_shared<chunk_info_t>(
 					chunk_info_t::UNUSED, this->chunk_size));
 		}
+		// get loading job group
+		Engine &e = Engine::get();
+		this->loading_job_group = e.get_job_manager()->get_job_group();
 	}
 }
 
@@ -51,13 +54,6 @@ void DynamicResource::stop_using() {
 		this->chunk_mapping.clear();
 		// clear chunk information
 		this->chunk_infos.clear();
-
-		this->loading_job = openage::job::Job<int>();
-
-		std::unique_lock<std::mutex> lock;
-		while (!this->loading_queue.empty()) {
-			this->loading_queue.pop();
-		}
 	}
 }
 
@@ -141,34 +137,8 @@ void DynamicResource::start_loading(
 		size_t resource_chunk_offset) {
 	chunk_info->state.store(chunk_info_t::LOADING);
 
-	std::unique_lock<std::mutex> lock{this->loading_mutex};
-	this->loading_queue.push({chunk_info, resource_chunk_offset});
-	lock.unlock();
-
-	// if the loading job has finished, add it again
-	if (this->loading_job.is_finished()) {
-		Engine &e = Engine::get();
-		auto loading_function = [this]() -> int {
-			return this->process_loading_queue();
-		};
-		loading_job = e.get_job_manager()->enqueue<int>(loading_function);
-	}
-}
-
-int DynamicResource::process_loading_queue() {
-	while (true) {
-		std::unique_lock<std::mutex> lock{this->loading_mutex};
-		if (this->loading_queue.empty()) {
-			break;
-		}
-		loading_info_t loading_info = this->loading_queue.front();
-		this->loading_queue.pop();
-		lock.unlock();
-
-		auto &chunk_info = loading_info.chunk_info;
+	auto loading_function = [this,chunk_info,resource_chunk_offset]() -> int {
 		int16_t *buffer = chunk_info->buffer.get();
-		size_t resource_chunk_offset = loading_info.resource_chunk_offset;
-
 		size_t loaded = this->loader->load_chunk(buffer, resource_chunk_offset, this->chunk_size);
 		if (loaded == 0) {
 			chunk_info->state.store(chunk_info_t::UNUSED);
@@ -178,9 +148,9 @@ int DynamicResource::process_loading_queue() {
 			chunk_info->actual_size = loaded;
 			this->chunk_infos.push(chunk_info);
 		}
-
-	}
-	return 0;
+		return 0;
+	};
+	this->loading_job_group.enqueue<int>(loading_function);
 }
 
 }

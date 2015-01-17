@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_JOB_JOB_GROUP_H_
 #define OPENAGE_JOB_JOB_GROUP_H_
