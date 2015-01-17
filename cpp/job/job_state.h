@@ -7,22 +7,11 @@
 #include <exception>
 #include <functional>
 
+#include "job_state_base.h"
+#include "thread_id.h"
+
 namespace openage {
 namespace job {
-
-/**
- * An abstract base class for a shared state of a Job. The real shared state
- * implementation is done in JobState<T>. This is necessary in order to be able
- * to store generic JobStates within the same container in the JobManager.
- */
-class BaseJobState {
-public:
-	/** Default constructor. */
-	virtual ~BaseJobState() = default;
-
-	/** This function executes the Job. */
-	virtual void execute() = 0;
-};
 
 /**
  * A JobState is the internal state of a Job. It keeps track of its execution
@@ -35,10 +24,15 @@ public:
  *		constructor and support move semantics.
  */
 template<class T>
-class JobState : public BaseJobState {
+class JobState : public JobStateBase {
 public:
+	/** Id of the thread, that created this job state. */
+	unsigned thread_id;
+	
 	/** A function object which is executed by the JobManager. */
 	std::function<T()> function;
+
+	std::function<void(T)> callback;
 
 	/**
 	 * Whether the Job's execution has already been finished. An atomic_bool is
@@ -56,9 +50,11 @@ public:
 	/**
 	 * Creates a new JobState with the given function, that is to be executed.
 	 */
-	JobState(std::function<T()> function)
+	JobState(std::function<T()> function, std::function<void(T)> callback)
 			:
+			thread_id{openage::job::thread_id.id},
 			function{function},
+			callback{callback},
 			finished{false} {
 	}
 
@@ -76,6 +72,20 @@ public:
 			this->exception = std::current_exception();
 		}
 		this->finished.store(true);
+	}
+
+	virtual void execute_callback() {
+		if (this->callback) {
+			if (this->exception != nullptr) {
+				std::rethrow_exception(this->exception);
+			} else {
+				this->callback(std::move(this->result));
+			}
+		}
+	}
+
+	virtual unsigned get_thread_id() {
+		return this->thread_id;
 	}
 };
 

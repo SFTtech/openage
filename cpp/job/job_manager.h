@@ -1,17 +1,22 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_JOB_JOB_MANAGER_H_
 #define OPENAGE_JOB_JOB_MANAGER_H_
 
 #include <atomic>
+#include <cassert>
 #include <condition_variable>
 #include <memory>
 #include <mutex>
 #include <queue>
 #include <thread>
+#include <unordered_map>
 
 #include "job.h"
+#include "job_group.h"
 #include "job_state.h"
+#include "job_state_base.h"
+#include "worker.h"
 
 namespace openage {
 namespace job {
@@ -24,18 +29,21 @@ class JobManager {
 private:
 	/** The number of internal worker threads. */
 	int number_of_workers;
+	
+	int group_index;
 
 	/** A vector of all worker threads. */
-	std::vector<std::thread> workers;
+	std::vector<std::unique_ptr<Worker>> workers;
 
 	/** A mutex to synchronize accesses to the internal JobState queue. */
-	std::mutex queue_mtx;
-
-	/** A condition variable, whether jobs are currently available or not. */
-	std::condition_variable jobs_available;
+	std::mutex pending_jobs_mutex;
 
 	/** A queue of JobStates that are to be executed. */
-	std::queue<std::shared_ptr<BaseJobState>> pending_jobs;
+	std::queue<std::shared_ptr<JobStateBase>> pending_jobs;
+
+	std::mutex finished_jobs_mutex;
+
+	std::unordered_map<unsigned, std::vector<std::shared_ptr<JobStateBase>>> finished_jobs;
 
 	/** Whether the JobManager is currently running. */
 	std::atomic_bool is_running;
@@ -68,22 +76,29 @@ public:
 	 * returned, that allows to keep track of the Job's state.
 	 */
 	template<class T>
-	Job<T> enqueue(std::function<T()> function) {
-		auto state = std::make_shared<JobState<T>>(function);
+	Job<T> enqueue(std::function<T()> function,
+			std::function<void(T)> callback={}) {
+		auto state = std::make_shared<JobState<T>>(function, callback);
 
-		std::unique_lock<std::mutex> lock{this->queue_mtx};
+		std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
 		this->pending_jobs.push(state);
-		this->jobs_available.notify_all();
+		for (auto &worker : this->workers) {
+			worker->notify();
+		}
 
 		return Job<T>{state};
 	}
 
+	JobGroup get_job_group();
+
+	void execute_callbacks();
+
 private:
-	/**
-	 * This function is passed to all worker threads, takes Job's from the
-	 * internal queue and executes them.
-	 */
-	void dispatch_queue();
+	std::shared_ptr<JobStateBase> fetch_job();
+
+	void finish_job(std::shared_ptr<JobStateBase> job);
+
+	friend class Worker;
 };
 
 }

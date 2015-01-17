@@ -12,6 +12,7 @@
 namespace openage {
 namespace job {
 
+class JobGroup;
 class JobManager;
 
 /**
@@ -70,9 +71,10 @@ private:
 	}
 
 	/*
-	 * JobManager has to be a friend of Job in order to access the private
-	 * constructor.
+	 * JobManager and JobGroup have to be friends of Job in order to access the
+	 * private constructor.
 	 */
+	friend class JobGroup;
 	friend class JobManager;
 };
 
