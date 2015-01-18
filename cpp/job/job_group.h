@@ -8,7 +8,6 @@
 
 #include "job.h"
 #include "job_state.h"
-#include "job_state_base.h"
 #include "worker.h"
 
 namespace openage {
@@ -29,7 +28,7 @@ public:
 		assert(this->parent_worker);
 		auto state = std::make_shared<JobState<T>>(function, callback);
 		this->parent_worker->enqueue(state);
-		return state;
+		return Job<T>{state};
 	}
 
 private:

@@ -12,6 +12,7 @@
 #include <thread>
 #include <unordered_map>
 
+#include "abortable_job_state.h"
 #include "job.h"
 #include "job_group.h"
 #include "job_state.h"
@@ -79,13 +80,15 @@ public:
 	Job<T> enqueue(std::function<T()> function,
 			std::function<void(T)> callback={}) {
 		auto state = std::make_shared<JobState<T>>(function, callback);
+		this->enqueue_state(state);
+		return Job<T>{state};
+	}
 
-		std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
-		this->pending_jobs.push(state);
-		for (auto &worker : this->workers) {
-			worker->notify();
-		}
-
+	template<class T>
+	Job<T> enqueue(std::function<T(std::function<bool()>)> function,
+			std::function<void(T)> callback={}) {
+		auto state = std::make_shared<AbortableJobState<T>>(function, callback);
+		this->enqueue_state(state);
 		return Job<T>{state};
 	}
 
@@ -94,6 +97,8 @@ public:
 	void execute_callbacks();
 
 private:
+	void enqueue_state(std::shared_ptr<JobStateBase> state);
+
 	std::shared_ptr<JobStateBase> fetch_job();
 
 	void finish_job(std::shared_ptr<JobStateBase> job);

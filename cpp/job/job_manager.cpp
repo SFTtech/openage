@@ -62,6 +62,14 @@ JobGroup JobManager::get_job_group() {
 	return JobGroup{this->workers[index].get()};
 }
 
+void JobManager::enqueue_state(std::shared_ptr<JobStateBase> state) {
+	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
+	this->pending_jobs.push(state);
+	for (auto &worker : this->workers) {
+		worker->notify();
+	}
+}
+
 std::shared_ptr<JobStateBase> JobManager::fetch_job() {
 	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
 	if (this->pending_jobs.empty()) {

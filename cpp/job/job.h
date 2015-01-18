@@ -7,7 +7,7 @@
 #include <exception>
 #include <memory>
 
-#include "job_state.h"
+#include "typed_job_state_base.h"
 
 namespace openage {
 namespace job {
@@ -30,7 +30,7 @@ template<class T>
 class Job {
 private:
 	/** A shared pointer to the Job's shared state. */
-	std::shared_ptr<JobState<T>> state;
+	std::shared_ptr<TypedJobStateBase<T>> state;
 
 public:
 	/* Creates an empty Job object that is not bound to any state. */
@@ -65,7 +65,7 @@ private:
 	 * Creates a Job with the given shared state. This method may only be called
 	 * by the JobManager.
 	 */
-	Job(std::shared_ptr<JobState<T>> state)
+	Job(std::shared_ptr<TypedJobStateBase<T>> state)
 			:
 			state{state} {
 	}

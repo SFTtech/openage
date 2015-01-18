@@ -39,7 +39,9 @@ void Worker::join() {
 }
 
 void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
-	job->execute();
+	job->execute([this] () {
+			return not this->is_running.load();
+		});
 	this->parent_manager->finish_job(job);
 }
 

@@ -3,6 +3,8 @@
 #ifndef OPENAGE_JOB_JOB_STATE_BASE_H_
 #define OPENAGE_JOB_JOB_STATE_BASE_H_
 
+#include <functional>
+
 namespace openage {
 namespace job {
 
@@ -17,7 +19,7 @@ public:
 	virtual ~JobStateBase() = default;
 
 	/** This function executes the Job. */
-	virtual void execute() = 0;
+	virtual void execute(const std::function<bool()> abort) = 0;
 
 	/** TODO */
 	virtual void execute_callback() = 0;
