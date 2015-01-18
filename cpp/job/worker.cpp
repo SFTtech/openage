@@ -43,18 +43,20 @@ void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
 	bool aborted = job->execute([this] () {
 			return not this->is_running.load();
 		});
+	// if the job was not aborted, tell the job manager, that the job has
+	// finished
 	if (not aborted) {
 		this->parent_manager->finish_job(job);
 	}
 }
 
 void Worker::process() {
-	// TODO comment control flow
 	while (this->is_running.load()) {
 		// first fetch jobs from the job manager and execute them
 		auto global_job = this->parent_manager->fetch_job();
 		if (global_job.get() != nullptr) {
 			this->execute_job(global_job);
+			// check after each execution if the worker thread is still running
 			if (not this->is_running.load()) {
 				break;
 			}
@@ -63,33 +65,50 @@ void Worker::process() {
 		}
 
 
+		// true if jobs from the local job queue should be fetched
 		bool fetch_local = true;
-		bool break_out = false;
+		// true, if the inner loop should be exited
+		bool escape = false;
 
 		while (fetch_local) {
 			std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
 			while (this->pending_jobs.empty()) {
+				// wait for new jobs from the local job queue or from the job
+				// manager
 				this->jobs_available.wait(lock);
+				// check if the worker thread is still running after a wake-up
 				if (not this->is_running.load()) {
-					break_out = true;
+					escape = true;
 					break;
 				}
 
+				// check if there is a job from the job manager that has to be
+				// executed
 				global_job = this->parent_manager->fetch_job();
 				if (global_job.get() != nullptr) {
+					// if there is a job, execute it and leave the local
+					// fetching loop, in order to check for more jobs from the
+					// job manager
 					lock.unlock();
 					this->execute_job(global_job);
-					break_out = true;
+					escape = true;
 					break;
 				}
 			}
 
-			if (break_out) {
+			// if escape is true, exit the local fetching loop in order to check
+			// for jobs from the job manager in the next iteration of the outer
+			// loop 
+			if (escape) {
 				break;
 			}
 
+			// fetch a job from the local job queue and execute it
 			auto job = this->pending_jobs.front();
 			this->pending_jobs.pop();
+			// if the local job queue is empty afterwards, exit the local
+			// fetching loop and check for  jobs from the job manager in the
+			// next iteration of the outer loop
 			if (this->pending_jobs.empty()) {
 				fetch_local = false;
 			}
