@@ -231,7 +231,7 @@ GameMain::GameMain(Engine *engine)
 	auto gamedata_load_callback = [this](std::vector<gamedata::empiresdat> data) {
 		this->on_gamedata_loaded(data);
 	};
-	this->gamedata_load_job = engine->get_job_manager()->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function, gamedata_load_callback);
+	engine->get_job_manager()->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function, gamedata_load_callback);
 }
 
 void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
