@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "input.h"
 
@@ -45,13 +45,13 @@ bool CoreInputHandler::on_input(SDL_Event *event) {
 		break;
 
 	case SDL_KEYUP: {
-		SDL_Keycode sym = ((SDL_KeyboardEvent *) event)->keysym.sym;
+		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(event)->keysym.sym;
 		this->key_states[sym] = false;
 	}
 		break;
 
 	case SDL_KEYDOWN: {
-		SDL_Keycode sym = ((SDL_KeyboardEvent *) event)->keysym.sym;
+		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(event)->keysym.sym;
 		this->key_states[sym] = true;
 	}
 		break;
