@@ -254,6 +254,8 @@ void Engine::loop() {
 	while (this->running) {
 		this->fpscounter.frame();
 
+		this->job_manager->execute_callbacks();
+
 		while (SDL_PollEvent(&event)) {
 			for (auto &action : this->on_input_event) {
 				if (false == action->on_input(&event)) {

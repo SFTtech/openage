@@ -228,7 +228,10 @@ GameMain::GameMain(Engine *engine)
 		util::Dir gamedata_dir = asset_dir.append("gamedata");
 		return std::move(util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx"));
 	};
-	this->gamedata_load_job = engine->get_job_manager()->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function);
+	auto gamedata_load_callback = [this](std::vector<gamedata::empiresdat> data) {
+		this->on_gamedata_loaded(data);
+	};
+	this->gamedata_load_job = engine->get_job_manager()->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function, gamedata_load_callback);
 }
 
 void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
@@ -293,6 +296,9 @@ void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 	// load the requested sounds.
 	audio::AudioManager &am = engine->get_audio_manager();
 	am.load_resources(asset_dir, sound_files);
+
+	this->gamedata_loaded = true;
+
 }
 
 GameMain::~GameMain() {
@@ -533,12 +539,6 @@ void GameMain::move_camera() {
 bool GameMain::on_tick() {
 	this->move_camera();
 	assetmanager.check_updates();
-
-	if (not gamedata_loaded and this->gamedata_load_job.is_finished()) {
-		auto gamedata = this->gamedata_load_job.get_result();
-		this->on_gamedata_loaded(gamedata);
-		gamedata_loaded = true;
-	}
 	return true;
 }
 
