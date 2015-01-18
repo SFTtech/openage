@@ -1,5 +1,6 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
+#include "job_aborted_exception.h"
 #include "job_manager.h"
 #include "thread_id.h"
 #include "worker.h"
@@ -39,10 +40,12 @@ void Worker::join() {
 }
 
 void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
-	job->execute([this] () {
+	bool aborted = job->execute([this] () {
 			return not this->is_running.load();
 		});
-	this->parent_manager->finish_job(job);
+	if (not aborted) {
+		this->parent_manager->finish_job(job);
+	}
 }
 
 void Worker::process() {
@@ -51,8 +54,13 @@ void Worker::process() {
 		auto global_job = this->parent_manager->fetch_job();
 		if (global_job.get() != nullptr) {
 			this->execute_job(global_job);
+			if (not this->is_running.load()) {
+				break;
+			}
+
 			global_job = this->parent_manager->fetch_job();
 		}
+
 
 		bool fetch_local = true;
 		bool break_out = false;
@@ -62,7 +70,8 @@ void Worker::process() {
 			while (this->pending_jobs.empty()) {
 				this->jobs_available.wait(lock);
 				if (not this->is_running.load()) {
-					return;
+					break_out = true;
+					break;
 				}
 
 				global_job = this->parent_manager->fetch_job();

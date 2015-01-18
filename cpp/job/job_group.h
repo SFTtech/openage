@@ -6,8 +6,10 @@
 #include <cassert>
 #include <memory>
 
+#include "abortable_job_state.h"
 #include "job.h"
 #include "job_state.h"
+#include "types.h"
 #include "worker.h"
 
 namespace openage {
@@ -23,10 +25,19 @@ public:
 	JobGroup();
 
 	template<class T>
-	Job<T> enqueue(std::function<T()> function,
-			std::function<void(T)> callback={}) {
+	Job<T> enqueue(job_function_t<T> function,
+			callback_function_t<T> callback={}) {
 		assert(this->parent_worker);
 		auto state = std::make_shared<JobState<T>>(function, callback);
+		this->parent_worker->enqueue(state);
+		return Job<T>{state};
+	}
+
+	template<class T>
+	Job<T> enqueue(abortable_function_t<T> function,
+			callback_function_t<T> callback={}) {
+		assert(this->parent_worker);
+		auto state = std::make_shared<AbortableJobState<T>>(function, callback);
 		this->parent_worker->enqueue(state);
 		return Job<T>{state};
 	}

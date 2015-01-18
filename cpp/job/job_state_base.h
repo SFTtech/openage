@@ -5,6 +5,8 @@
 
 #include <functional>
 
+#include "types.h"
+
 namespace openage {
 namespace job {
 
@@ -18,8 +20,11 @@ public:
 	/** Default constructor. */
 	virtual ~JobStateBase() = default;
 
-	/** This function executes the Job. */
-	virtual void execute(const std::function<bool()> abort) = 0;
+	/** 
+	 * This function executes the job. It returns whether the job has been
+	 * aborted.
+	 */
+	virtual bool execute(should_abort_t should_abort) = 0;
 
 	/** TODO */
 	virtual void execute_callback() = 0;

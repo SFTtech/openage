@@ -25,9 +25,9 @@ void JobManager::start() {
 		for (auto &worker : this->workers) {
 			worker->start();
 		}
+		log::msg("Started JobManager with %d worker threads",
+				this->number_of_workers);
 	}
-	log::msg("Started JobManager with %d worker threads",
-			this->number_of_workers);
 }
 
 void JobManager::stop() {
@@ -36,11 +36,13 @@ void JobManager::stop() {
 		this->is_running.store(false);
 		for (auto &worker : this->workers) {
 			worker->stop();
+		}
+		for (auto &worker : this->workers) {
 			worker->join();
 		}
+		log::msg("Stopped JobManager with %d worker threads",
+				this->number_of_workers);
 	}
-	log::msg("Stopped JobManager with %d worker threads",
-			this->number_of_workers);
 }
 
 void JobManager::execute_callbacks() {
@@ -49,10 +51,12 @@ void JobManager::execute_callbacks() {
 	std::unique_lock<std::mutex> lock{this->finished_jobs_mutex};
 	auto it = this->finished_jobs.find(id);
 	if (it != std::end(this->finished_jobs)) {
-		for (auto &job : it->second) {
+		std::vector<std::shared_ptr<JobStateBase>> jobs{it->second}; 
+		it->second.clear();
+		lock.unlock();
+		for (auto &job : jobs) {
 			job->execute_callback();
 		}
-		it->second.clear();
 	}
 }
 

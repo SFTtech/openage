@@ -228,8 +228,9 @@ GameMain::GameMain(Engine *engine)
 		util::Dir gamedata_dir = asset_dir.append("gamedata");
 		return std::move(util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx"));
 	};
-	auto gamedata_load_callback = [this](std::vector<gamedata::empiresdat> data) {
-		this->on_gamedata_loaded(data);
+	auto gamedata_load_callback = [this](job::result_function_t<std::vector<gamedata::empiresdat>> get_result) {
+		auto result = get_result();
+		this->on_gamedata_loaded(result);
 	};
 	engine->get_job_manager()->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function, gamedata_load_callback);
 }

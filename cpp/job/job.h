@@ -36,8 +36,10 @@ public:
 	/* Creates an empty Job object that is not bound to any state. */
 	Job() = default;
 
-	/** Returns whether this Job has finished. If this job wrapper has no
-	 * assigned background job, true will be returned. */
+	/**
+	 * Returns whether this Job has finished. If this job wrapper has no
+	 * assigned background job, true will be returned.
+	 */
 	bool is_finished() const {
 		if (this->state) {
 			return this->state->finished.load();

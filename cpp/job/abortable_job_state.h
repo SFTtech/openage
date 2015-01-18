@@ -5,7 +5,9 @@
 
 #include <functional>
 
+#include "job_aborted_exception.h"
 #include "typed_job_state_base.h"
+#include "types.h"
 
 namespace openage {
 namespace job {
@@ -13,10 +15,10 @@ namespace job {
 template<class T>
 class AbortableJobState : public TypedJobStateBase<T> {
 public:
-	std::function<T(std::function<bool()>)> function;
+	abortable_function_t<T> function;
 
-	AbortableJobState(std::function<T(std::function<bool()>)> function,
-			std::function<void(T)> callback)
+	AbortableJobState(abortable_function_t<T> function,
+			callback_function_t<T> callback)
 			:
 			TypedJobStateBase<T>{callback},
 			function{function} {
@@ -25,8 +27,11 @@ public:
 	virtual ~AbortableJobState() = default;
 
 protected:
-	virtual T execute_and_get(std::function<bool()> abort) {
-		return std::move(this->function(abort));
+	virtual T execute_and_get(should_abort_t should_abort) {
+		static auto abort = []() {
+			throw JobAbortedException{};
+		};
+		return std::move(this->function(should_abort, abort));
 	}
 };
 

@@ -6,6 +6,7 @@
 #include <functional>
 
 #include "typed_job_state_base.h"
+#include "types.h"
 
 namespace openage {
 namespace job {
@@ -24,12 +25,12 @@ template<class T>
 class JobState : public TypedJobStateBase<T> {
 public:
 	/** A function object which is executed by the JobManager. */
-	std::function<T()> function;
+	job_function_t<T> function;
 
 	/**
 	 * Creates a new JobState with the given function, that is to be executed.
 	 */
-	JobState(std::function<T()> function, std::function<void(T)> callback)
+	JobState(job_function_t<T> function, callback_function_t<T> callback)
 			:
 			TypedJobStateBase<T>{callback},
 			function{function} {
@@ -39,7 +40,7 @@ public:
 	virtual ~JobState() = default;
 
 protected:
-	virtual T execute_and_get(std::function<bool()> /*abort*/) {
+	virtual T execute_and_get(should_abort_t /*should_abort*/) {
 		return std::move(this->function());
 	}
 };
