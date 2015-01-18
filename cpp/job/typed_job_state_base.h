@@ -15,12 +15,23 @@
 namespace openage {
 namespace job {
 
+/**
+ * A templated job state base class, that implements basic functionality of job
+ * states.
+ *
+ * @param T the result type of this job state. This type must have a default
+ *		constructor and support move semantics.
+ */
 template<class T>
 class TypedJobStateBase : public JobStateBase {
 public:
 	/** Id of the thread, that created this job state. */
 	unsigned thread_id;
 	
+	/**
+	 * A callback function that is called when the job has finished. Can be
+	 * empty.
+	 */
 	callback_function_t<T> callback;
 
 	/**
@@ -36,6 +47,7 @@ public:
 	/** If executing the Job throws an exception, it is stored here. */
 	std::exception_ptr exception;
 
+	/** Creates a new typed job with the given callback. */
 	TypedJobStateBase(callback_function_t<T> callback)
 			:
 			thread_id{openage::job::thread_id.id},
@@ -43,6 +55,7 @@ public:
 			finished{false} {
 	}
 
+	/** Default destructor. */
 	virtual ~TypedJobStateBase() = default;
 
 	/**
@@ -63,7 +76,7 @@ public:
 	}
 
 	virtual void execute_callback() {
-		// TODO assure finished
+		assert(this->finished.load());
 		if (this->callback) {
 			auto get_result = [this]() {
 				if (this->exception != nullptr) {
@@ -81,6 +94,10 @@ public:
 	}
 
 protected:
+	/**
+	 * Executes the job and returns the result. If an exception is thrown it
+	 * must be passed to the calling function.
+	 */
 	virtual T execute_and_get(should_abort_t should_abort) = 0;
 };
 

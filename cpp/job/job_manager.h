@@ -84,7 +84,7 @@ public:
 	/**
 	 * Enqueues the given function into the job manager's queue, so that it will
 	 * be dispatched by one of the worker threads. A lightweight Job object is
-	 * returned, that allows to keep track of the Job's state.
+	 * returned, that allows to keep track of the job's state.
 	 */
 	template<class T>
 	Job<T> enqueue(job_function_t<T> function,
@@ -96,10 +96,11 @@ public:
 
 	/**
 	 * Enqueues the given function into the job manager's queue, so that it will
-	 * be dispatched by one of the worker threads. A lightweight Job object is
-	 * returned, that allows to keep track of the Job's state. The passed
+	 * be dispatched by one of the worker threads. A lightweight job object is
+	 * returned, that allows to keep track of the job's state. The passed
 	 * function must accept a function object that returns, whether the job
-	 * should be aborted at any time.
+	 * should be aborted at any time. Further it must accept a function that
+	 * can be used to abort the execution of the function.
 	 */
 	template<class T>
 	Job<T> enqueue(abortable_function_t<T> function,

@@ -11,16 +11,8 @@
 namespace openage {
 namespace job {
 
-/**
- * A JobState is the internal state of a Job. It keeps track of its execution
- * state and stores the Job's result. Further it keeps track of exceptions that
- * occured during the Job's execution.
- * A JobState is created by a JobManager and passed to the user by a lightweight
- * proxy Job object.
- *
- * @param T the result type of this JobState. This type must have a default
- *		constructor and support move semantics.
- */
+/** A job state supports simple job's with functions that return a single
+ * result. While executing the job, it cannot be aborted safely. */
 template<class T>
 class JobState : public TypedJobStateBase<T> {
 public:

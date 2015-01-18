@@ -49,6 +49,7 @@ void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
 }
 
 void Worker::process() {
+	// TODO comment control flow
 	while (this->is_running.load()) {
 		// first fetch jobs from the job manager and execute them
 		auto global_job = this->parent_manager->fetch_job();

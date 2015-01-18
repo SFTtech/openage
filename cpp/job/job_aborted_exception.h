@@ -8,6 +8,7 @@
 namespace openage {
 namespace job {
 
+/** An exception that is thrown, when a job wants to abort itself. */
 class JobAbortedException : public std::exception {
 public:
 	JobAbortedException() = default;
