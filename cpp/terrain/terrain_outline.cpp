@@ -14,7 +14,7 @@ std::shared_ptr<Texture> square_outline(coord::tile_delta foundation_size) {
 	int width = (foundation_size.ne + foundation_size.se) * 48;
 	int height = (foundation_size.ne + foundation_size.se) * 24;
 
-	auto image_data = util::make_unique<int[]>(width * height);
+	auto image_data = util::make_unique<uint32_t[]>(width * height);
 	for (int i = 0; i < width; ++i) {
 		for (int j = 0; j < height; ++j) {
 			float w_percent = (float) abs(i - (width / 2)) / (float) (width / 2);
@@ -28,7 +28,7 @@ std::shared_ptr<Texture> square_outline(coord::tile_delta foundation_size) {
 		}
 	}
 
-	return std::make_shared<Texture>(width, height, image_data.get());
+	return std::make_shared<Texture>(width, height, std::move(image_data));
 }
 
 std::shared_ptr<Texture> radial_outline(float radius) {
@@ -41,7 +41,7 @@ std::shared_ptr<Texture> radial_outline(float radius) {
 	int half_width = width / 2;
 	int half_height = height / 2;
 
-	auto image_data = util::make_unique<int[]>(width * height);
+	auto image_data = util::make_unique<uint32_t[]>(width * height);
 
 	for (int i = 0; i < width; ++i) {
 		for (int j = 0; j < height; ++j) {
@@ -56,7 +56,7 @@ std::shared_ptr<Texture> radial_outline(float radius) {
 		}
 	}
 
-	return std::make_shared<Texture>(width, height, image_data.get());
+	return std::make_shared<Texture>(width, height, std::move(image_data));
 }
 
 } // namespace openage

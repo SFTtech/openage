@@ -1,10 +1,11 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_TEXTURE_H_
 #define OPENAGE_TEXTURE_H_
 
 #include "crossplatform/opengl.h"
 #include <vector>
+#include <memory>
 
 #include "gamedata/texture.gen.h"
 #include "coord/camgame.h"
@@ -20,18 +21,18 @@ namespace openage {
 namespace texture_shader {
 extern shader::Program *program;
 extern GLint texture, tex_coord;
-} //namespace texture_shader
+} // namespace texture_shader
 
 namespace teamcolor_shader {
 extern shader::Program *program;
 extern GLint texture, tex_coord;
 extern GLint player_id_var, alpha_marker_var, player_color_var;
-} //namespace teamcolor_shader
+} // namespace teamcolor_shader
 
 namespace alphamask_shader {
 extern shader::Program *program;
 extern GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
-} //namespace alphamask_shader
+} // namespace alphamask_shader
 
 // bitmasks for shader modes
 constexpr int PLAYERCOLORED = 1 << 0;
@@ -39,7 +40,7 @@ constexpr int ALPHAMASKED   = 1 << 1;
 
 
 /**
- * a texture for rendering graphically.
+ * A texture for rendering graphically.
  *
  * You may believe it or not, but this class represents a single texture,
  * which can be drawn on the screen.
@@ -58,8 +59,8 @@ public:
 	 */
 	size_t atlas_dimensions;
 
-	Texture(int width, int height, void *data); // single frame rgba8 texture
 	Texture(const std::string &filename, bool use_metafile = false);
+	Texture(int width, int height, std::unique_ptr<uint32_t[]> data);
 	~Texture();
 
 	void draw(coord::camhud pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0) const;
