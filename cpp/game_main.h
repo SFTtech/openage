@@ -1,9 +1,8 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_GAME_MAIN_H_
 #define OPENAGE_GAME_MAIN_H_
 
-#include <memory>
 #include <SDL2/SDL.h>
 #include <unordered_map>
 #include <unordered_set>
@@ -73,8 +72,15 @@ public:
 	virtual bool on_drawhud();
 	virtual bool on_input(SDL_Event *e);
 
-	Texture *find_graphic(int16_t graphic_id);
-	TestSound *find_sound(int16_t sound_id);
+	/**
+	 * return a texture handle associated with the given graphic id.
+	 */
+	Texture *find_graphic(int graphic_id);
+
+	/**
+	 * return a testsound ptr for a given sound id.
+	 */
+	TestSound *find_sound(int sound_id);
 
 	/**
 	 * all available game objects.
@@ -90,7 +96,6 @@ public:
 	 * map graphic id to gamedata graphic.
 	 */
 	std::unordered_map<int, gamedata::graphic *> graphics;
-
 
 	/**
 	 * all the buildings that have been placed.

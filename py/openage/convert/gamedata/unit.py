@@ -24,7 +24,7 @@ class UnitCommand(Exportable):
                 3: "GARRISON",
                 4: "EXPLORE",
                 5: "GATHER",   # gather, rebuild
-                6: "UNKNOWN_ANIMAL",
+                6: "NATURAL_WONDERS_CHEAT",
                 7: "ATTACK",
                 8: "SHOOT",
                 10: "FLY",
@@ -32,15 +32,16 @@ class UnitCommand(Exportable):
                 12: "UNLOAD",    # transport, garrison
                 13: "GUARD",
                 20: "ESCAPE",    # sure?
-                21: "UNKNOWN_FARM",
+                21: "MAKE_FARM",
                 101: "BUILD",
                 102: "MAKE_OBJECT",
                 103: "MAKE_TECH",
                 104: "CONVERT",
                 105: "HEAL",
                 106: "REPAIR",
-                107: "CONVERT_AUTO",
-                109: "UNKNOWN_109",
+                107: "CONVERT_AUTO",  # can get auto-converted
+                108: "DISCOVERY",
+                109: "SHOOTING_RANGE_RETREAT",
                 110: "HUNT",
                 111: "TRADE",
                 120: "WONDER_VICTORY_GENERATE",
@@ -48,10 +49,12 @@ class UnitCommand(Exportable):
                 122: "LOOT",
                 123: "HOUSING",
                 125: "UNPACK_ATTACK",
-                131: "UNKNOWN_131",
+                130: "OFF_MAP_TRADE_0",
+                131: "OFF_MAP_TRADE_1",
                 132: "PICKUP_UNIT",
                 135: "KIDNAP_UNIT",
                 136: "DEPOSIT_UNIT",
+                149: "SHEAR",
                 768: "UNKNOWN_768",
                 1024: "UNKNOWN_1024",
             },
@@ -218,45 +221,50 @@ class ResourceCost(Exportable):
                 11: "POPULATION",           # both current population and population headroom
                 12: "CORPSE_DECAY_TIME",
                 13: "DISCOVERY",
-                14: "RUIN_MONUMENTS_CAPTURED",  # unused
-                15: "PREDATOR_ANIMAL_FOOD",
-                16: "CROPS",
+                14: "RUIN_MONUMENTS_CAPTURED",
+                15: "MEAT_STORAGE",
+                16: "BERRY_STORAGE",
                 17: "FISH_STORAGE",
-                18: "UNKNOWN_18",
+                18: "UNKNOWN_18",           # in starwars: power core range
                 19: "TOTAL_UNITS_OWNED",    # or just military ones? used for counting losses
                 20: "UNITS_KILLED",
                 21: "RESEARCHED_TECHNOLOGIES_COUNT",
-                23: "TECHNOLOGY_ID_0",      # default: 102
-                24: "TECHNOLOGY_ID_1",      # default: 103
-                25: "TECHNOLOGY_ID_2",      # default: 101
-                27: "ATONEMENT",            # bool
-                28: "REDEMPTION",           # bool
-                30: "VAL_500",              # default: 500
+                22: "MAP_EXPLORED_PERCENTAGE",
+                23: "CASTLE_AGE_TECH_INDEX",      # default: 102
+                24: "IMPERIAL_AGE_TECH_INDEX",    # default: 103
+                25: "FEUDAL_AGE_TECH_INDEX",      # default: 101
+                26: "ATTACK_WARNING_SOUND",
+                27: "ENABLE_MONK_CONVERSION",
+                28: "ENABLE_BUILDING_CONVERSION",
+                30: "BUILDING_COUNT",              # default: 500
+                31: "FOOD_COUNT",
                 32: "BONUS_POPULATION",
+                33: "MAINTENANCE",
+                34: "FAITH",
                 35: "FAITH_RECHARGE_RATE",  # default: 1.6
                 36: "FARM_FOOD_AMOUNT",     # default: 175
                 37: "CIVILIAN_POPULATION",
-                38: "UNKNOWN_38",
+                38: "UNKNOWN_38",           # starwars: shields for bombers/fighters
                 39: "ALL_TECHS_ACHIEVED",   # default: 178
                 40: "MILITARY_POPULATION",  # -> largest army
-                41: "UNITS_CONVERTED",
+                41: "UNITS_CONVERTED",      # monk success count
                 42: "WONDERS_STANDING",
                 43: "BUILDINGS_RAZED",
                 44: "KILL_RATIO",
                 45: "SURVIVAL_TO_FINISH",   # bool
                 46: "TRIBUTE_FEE",          # default: 0.3
                 47: "GOLD_MINING_PRODUCTIVITY",  # default: 1
-                48: "TOWN_CENTER_AVAILABLE",
+                48: "TOWN_CENTER_UNAVAILABLE",  # -> you may build a new one
                 49: "GOLD_COUNTER",
                 50: "REVEAL_ALLY",          # bool, ==cartography discovered
-                51: "HOUSES_UNUSED",
+                51: "HOUSES_COUNT",
                 52: "MONASTERY_COUNT",
                 53: "TRIBUTE_SENT",
                 54: "RUINES_CAPTURED_ALL",  # bool
                 55: "RELICS_CAPTURED_ALL",  # bool
-                56: "LOAD_STORAGE",         # or unit unload room?
+                56: "ORE_STORAGE",
                 57: "CAPTURED_UNITS",
-                58: "DARK_AGE",             # default: 104
+                58: "DARK_AGE_TECH_INDEX",  # default: 104
                 59: "TRADE_GOOD_QUALITY",   # default: 1
                 60: "TRADE_MARKET_LEVEL",
                 61: "FORMATIONS",
@@ -265,7 +273,7 @@ class ResourceCost(Exportable):
                 64: "GATHER_ACCUMULATOR",
                 65: "SALVAGE_DECAY_RATE",     # default: 5
                 66: "ALLOW_FORMATION",        # bool, something with age?
-                67: "CONVERSIONS",            # bool?
+                67: "ALLOW_CONVERSIONS",      # bool
                 68: "HIT_POINTS_KILLED",      # unused
                 69: "KILLED_PLAYER_1",        # bool
                 70: "KILLED_PLAYER_2",        # bool
@@ -276,7 +284,7 @@ class ResourceCost(Exportable):
                 75: "KILLED_PLAYER_7",        # bool
                 76: "KILLED_PLAYER_8",        # bool
                 77: "CONVERSION_RESISTANCE",
-                78: "TRADE_FEE",              # default: 0.3
+                78: "TRADE_VIG_RATE",             # default: 0.3
                 79: "STONE_MINING_PRODUCTIVITY",  # default: 1
                 80: "QUEUED_UNITS",
                 81: "TRAINING_COUNT",
@@ -285,19 +293,19 @@ class ResourceCost(Exportable):
                 84: "STARTING_VILLAGERS",        # default: 3
                 85: "RESEARCH_COST_MULTIPLIER",
                 86: "RESEARCH_TIME_MULTIPLIER",
-                87: "CONVERT_SHIPS_ABILITY",     # bool
+                87: "CONVERT_SHIPS_ALLOWED",     # bool
                 88: "FISH_TRAP_FOOD_AMOUNT",     # default: 700
-                89: "BONUS_HEALING_RATE",
+                89: "HEALING_RATE_MULTIPLIER",
                 90: "HEALING_RANGE",
-                91: "BONUS_STARTING_FOOD",
-                92: "BONUS_STARTING_WOOD",
-                93: "BONUS_STARTING_STONE",
-                94: "BONUS_STARTING_GOLD",
-                95: "TOWN_CENTER_PACKING",       # or raider, default: 3
-                96: "SELF_HEALING_SECONDS_BERSERKER",
-                97: "ANIMAL_DISCOVERY_DOMINANT_LOS",  # bool, sheep/turkey
-                98: "SCORE_ECONOMY",                  # object cost summary
-                99: "SCORE_TECHNOLOGY",
+                91: "STARTING_FOOD",
+                92: "STARTING_WOOD",
+                93: "STARTING_STONE",
+                94: "STARTING_GOLD",
+                95: "TOWN_CENTER_PACKING",        # or raider, default: 3
+                96: "BERSERKER_HEAL_TIME",        # in seconds
+                97: "DOMINANT_ANIMAL_DISCOVERY",  # bool, sheep/turkey
+                98: "SCORE_OBJECT_COST",          # object cost summary, economy?
+                99: "SCORE_RESEARCH",
                 100: "RELIC_GOLD_COLLECTED",
                 101: "TRADE_PROFIT",
                 102: "TRIBUTE_P1",
@@ -382,7 +390,7 @@ class ResourceCost(Exportable):
                 181: "CONVERT_BUILDIN_MAX",             # default: 25
                 182: "CONVERT_BUILDIN_CHANCE",          # default: 25
                 183: "REVEAL_ENEMY",
-                184: "SCORE_SOCIETY",
+                184: "SCORE_SOCIETY",                   # wonders, castles
                 185: "SCORE_FOOD",
                 186: "SCORE_WOOD",
                 187: "SCORE_STONE",
@@ -390,11 +398,11 @@ class ResourceCost(Exportable):
                 189: "CHOPPING_PRODUCTIVITY",           # default: 1
                 190: "FOOD_GATHERING_PRODUCTIVITY",     # default: 1
                 191: "RELIC_GOLD_PRODUCTION_RATE",      # default: 30
-                192: "HERESY_ACTIVE",                   # bool
+                192: "CONVERTED_UNITS_DIE",             # bool
                 193: "THEOCRACY_ACTIVE",                # bool
                 194: "CRENELLATIONS_ACTIVE",            # bool
-                195: "CONSTRUCTION_RATE",               # except for wonders
-                196: "WONDER_BONUS",
+                195: "CONSTRUCTION_RATE_MULTIPLIER",    # except for wonders
+                196: "HUN_WONDER_BONUS",
                 197: "SPIES_DISCOUNT",                  # or atheism_active?
             }
         )),
@@ -609,7 +617,7 @@ class UnitObject(Exportable):
             },
         )),
         (READ_EXPORT, "command_attribute", EnumLookupMember(
-            raw_type    = "int16_t",             # selects the available ui command buttons for the unit
+            raw_type    = "int8_t",         # selects the available ui command buttons for the unit
             type_name   = "command_attributes",
             lookup_dict = {
                 0: "LIVING",                # commands: delete, garrison, stop, attributes: hit points
@@ -626,8 +634,8 @@ class UnitObject(Exportable):
                 11: "SHIELDED_BUILDING",    # shield building (build page 3)
             },
         )),
-        (READ_UNKNOWN, None, "int16_t"),
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ_UNKNOWN, None, "float"),
+        (READ_UNKNOWN, None, "int8_t"),
         (READ_EXPORT, "language_dll_help", "uint16_t"),
         (READ, "hot_keys", "int16_t[4]"),
         (READ_UNKNOWN, None, "int8_t"),
@@ -688,7 +696,8 @@ class UnitObject(Exportable):
         )),
         (READ_EXPORT, "sound_selection", "int16_t"),
         (READ_EXPORT, "sound_dying", "int16_t"),
-        (READ_EXPORT, "attack_mode", "int16_t"),      # 0: no attack, 1: attack by following, 2: run when attacked, 3:?, 4: attack
+        (READ_EXPORT, "attack_mode", "int8_t"),     # 0: no attack, 1: attack by following, 2: run when attacked, 3:?, 4: attack
+        (READ, "is_edible_meat", "int8_t"),         # 1: yup, you may eat it
         (READ_EXPORT, "name", "char[name_length]"),
         (READ_EXPORT, "id1", "int16_t"),
         (READ_EXPORT, "id2", "int16_t"),
@@ -801,11 +810,11 @@ class UnitMovable(UnitBird):
         (READ, "attacks", SubdataMember(ref_type=HitType, length="attack_count")),
         (READ, "armor_count", "uint16_t"),
         (READ, "armors", SubdataMember(ref_type=HitType, length="armor_count")),
-        (READ_EXPORT, "interaction_type", EnumLookupMember(
-            raw_type    = "int16_t",
+        (READ_EXPORT, "interaction_type", EnumLookupMember(  # the damage received by this unit is multiplied by
+            raw_type    = "int16_t",                         # the accessible values on the specified terrain restriction
             type_name   = "interaction_types",
             lookup_dict = {
-                -1: "UNIT",
+                -1: "NONE",
                 4: "BUILDING",
                 6: "DOCK",
                 10: "WALL",
@@ -934,18 +943,18 @@ class UnitBuilding(UnitLiving):
         (READ_EXPORT, None, IncludeMembers(cls=UnitLiving)),
         (READ_EXPORT, "construction_graphic_id", "int16_t"),
         (READ, "snow_graphic_id", "int16_t"),
-        (READ, "adjacent_mode", "int16_t"),           # 1=adjacent units may change the graphics
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "adjacent_mode", "int8_t"),            # 1=adjacent units may change the graphics
+        (READ, "icon_disabler", "int16_t"),
+        (READ, "disappears_when_built", "int8_t"),
         (READ, "stack_unit_id", "int16_t"),           # second building to place directly on top
         (READ_EXPORT, "terrain_id", "int16_t"),       # change underlying terrain to this id when building completed
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ, "resource_id", "int16_t"),
         (READ, "research_id", "int16_t"),             # research_id to be enabled when building creation
         (READ_UNKNOWN, None, "int8_t"),
         (READ_EXPORT, "building_annex", SubdataMember(ref_type=BuildingAnnex, length=4)),
         (READ, "head_unit_id", "int16_t"),            # building at which an annex building is attached to
         (READ, "transform_unit_id", "int16_t"),       # destination unit id when unit shall transform (e.g. unpack)
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ_UNKNOWN, None, "int16_t"),              # unit_id for something unknown
         (READ, "construction_sound_id", "int16_t"),
         (READ_EXPORT, "garrison_type", EnumLookupMember(
             raw_type    = "int8_t",
@@ -963,7 +972,7 @@ class UnitBuilding(UnitLiving):
         (READ, "garrison_heal_rate", "float"),
         (READ_UNKNOWN, None, "int32_t"),
         (READ_UNKNOWN, None, "int16_t"),
-        (READ_UNKNOWN, None, "int8_t[6]"),
+        (READ_UNKNOWN, None, "int8_t[6]"),  # might be related to building annexes?
     )
 
     def __init__(self):

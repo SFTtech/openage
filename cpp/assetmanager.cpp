@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "assetmanager.h"
 
@@ -8,15 +8,15 @@
 #include <limits.h> /* for NAME_MAX */
 #endif
 
+#include "util/compiler.h"
 #include "util/error.h"
 
 namespace openage {
 
 AssetManager::AssetManager(util::Dir *root)
 	:
-	root{root} {
-
-	this->missing_tex = new Texture{root->join("missing.png"), false};
+	root{root},
+	missing_tex{nullptr} {
 
 #if WITH_INOTIFY
 	// initialize the inotify instance
@@ -27,34 +27,28 @@ AssetManager::AssetManager(util::Dir *root)
 #endif
 }
 
-AssetManager::~AssetManager() {
-	for (auto &tex : this->textures) {
-		if (tex.second != this->missing_tex) {
-			delete tex.second;
-		}
-	}
-	delete this->missing_tex;
-}
-
 bool AssetManager::can_load(const std::string &name) const {
 	return util::file_size(this->root->join(name)) > 0;
 }
 
-Texture *AssetManager::load_texture(const std::string &name) {
+std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name) {
 	std::string filename = this->root->join(name);
 
-	Texture *ret;
+	// the texture to be associated with the given filename
+	std::shared_ptr<Texture> tex;
 
-	if (!this->can_load(name)) {
+	// try to open the texture filename.
+	if (not this->can_load(name)) {
 		log::msg("   file %s is not there...", filename.c_str());
 
 		// TODO: add/fetch inotify watch on the containing folder
 		// to display the tex as soon at it exists.
 
 		// return the big X texture instead
-		ret = this->missing_tex;
+		tex = this->get_missing_tex();
 	} else {
-		ret = new Texture{filename, true};
+		// create the texture!
+		tex = std::make_shared<Texture>(filename, true);
 
 #if WITH_INOTIFY
 		// create inotify update trigger for the requested file
@@ -62,24 +56,27 @@ Texture *AssetManager::load_texture(const std::string &name) {
 		if (wd < 0) {
 			throw util::Error{"failed to add inotify watch for %s", filename.c_str()};
 		}
-		this->watch_fds[wd] = ret;
+		this->watch_fds[wd] = tex;
 #endif
 	}
 
-	this->textures[filename] = ret;
+	// insert the texture into the map and return the texture.
+	this->textures[filename] = tex;
 
-	return ret;
+	// pass back the shared_ptr<Texture>
+	return tex;
 }
 
 Texture *AssetManager::get_texture(const std::string &name) {
+	// check whether the requested texture was loaded already
 	auto tex_it = this->textures.find(this->root->join(name));
 
 	// the texture was not loaded yet:
 	if (tex_it == this->textures.end()) {
-		return this->load_texture(name);
+		return this->load_texture(name).get();
 	}
 
-	return tex_it->second;
+	return tex_it->second.get();
 }
 
 void AssetManager::check_updates() {
@@ -116,6 +113,16 @@ void AssetManager::check_updates() {
 		}
 	}
 #endif
+}
+
+std::shared_ptr<Texture> AssetManager::get_missing_tex() {
+
+	// if not loaded, fetch the "missing" texture (big red X).
+	if (unlikely(this->missing_tex.get() == nullptr)) {
+		this->missing_tex = std::make_shared<Texture>(root->join("missing.png"), false);
+	}
+
+	return this->missing_tex;
 }
 
 }

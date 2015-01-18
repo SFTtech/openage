@@ -1,10 +1,11 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_TEXTURE_H_
 #define OPENAGE_TEXTURE_H_
 
 #include "crossplatform/opengl.h"
 #include <vector>
+#include <memory>
 
 #include "gamedata/texture.gen.h"
 #include "coord/camgame.h"
@@ -20,18 +21,18 @@ namespace openage {
 namespace texture_shader {
 extern shader::Program *program;
 extern GLint texture, tex_coord;
-} //namespace texture_shader
+} // namespace texture_shader
 
 namespace teamcolor_shader {
 extern shader::Program *program;
 extern GLint texture, tex_coord;
 extern GLint player_id_var, alpha_marker_var, player_color_var;
-} //namespace teamcolor_shader
+} // namespace teamcolor_shader
 
 namespace alphamask_shader {
 extern shader::Program *program;
 extern GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
-} //namespace alphamask_shader
+} // namespace alphamask_shader
 
 // bitmasks for shader modes
 constexpr int PLAYERCOLORED = 1 << 0;
@@ -39,7 +40,7 @@ constexpr int ALPHAMASKED   = 1 << 1;
 
 
 /**
- * a texture for rendering graphically.
+ * A texture for rendering graphically.
  *
  * You may believe it or not, but this class represents a single texture,
  * which can be drawn on the screen.
@@ -58,19 +59,45 @@ public:
 	 */
 	size_t atlas_dimensions;
 
-	Texture(int width, int height, void *data); // single frame rgba8 texture
-	Texture(const std::string &filename, bool use_metafile = false);
+	/**
+	 * Create a texture from a rgba8 array.
+	 * It will have w * h * 32bit storage.
+	 */
+	Texture(int width, int height, std::unique_ptr<uint32_t[]> data);
+
+	/**
+	 * Create a texture from a existing image file.
+	 * For supported image file types, see the SDL_Image initialization in the engine.
+	 */
+	Texture(const std::string &filename, bool use_metafile=false);
 	~Texture();
 
-	void draw(coord::camhud pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0) const;
-	void draw(coord::camgame pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0) const;
-	void draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture = nullptr, int alpha_subid = -1) const;
+	void draw(coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
+	void draw(coord::camgame pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
+	void draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture=nullptr, int alpha_subid=-1) const;
 	void draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) const;
 
+	/**
+	 * Reload the image file. Used for inotify refreshing.
+	 */
 	void reload();
 
-	const struct gamedata::subtexture *get_subtexture(int subid) const;
+	/**
+	 * Get the subtexture coordinates by its idea.
+	 */
+	const gamedata::subtexture *get_subtexture(int subid) const;
+
+	/**
+	 * @return the number of available subtextures
+	 */
 	int get_subtexture_count() const;
+
+	/**
+	 * Fetch the size of the given subtexture.
+	 * @param subid: index of the requested subtexture
+	 * @param w: the subtexture width
+	 * @param h: the subtexture height
+	 */
 	void get_subtexture_size(int subid, int *w, int *h) const;
 
 	/**
@@ -84,25 +111,25 @@ public:
 	void get_subtexture_coordinates(const gamedata::subtexture *subtex, float *txl, float *txr, float *txt, float *txb) const;
 
 	/**
-	fixes the hotspots of all subtextures to (x,y).
-	this is a temporary workaround; such fixes should actually be done in the
-	convert script.
-	*/
+	 * fixes the hotspots of all subtextures to (x,y).
+	 * this is a temporary workaround; such fixes should actually be done in the
+	 * convert script.
+	 */
 	void fix_hotspots(unsigned x, unsigned y);
 
 	/**
-	activates the influence of a given alpha mask to this texture.
-	*/
+	 * activates the influence of a given alpha mask to this texture.
+	 */
 	void activate_alphamask(Texture *mask, int subid);
 
 	/**
-	disable a previously activated alpha mask.
-	*/
+	 * disable a previously activated alpha mask.
+	 */
 	void disable_alphamask();
 
 	/**
-	returns the opengl texture id of this texture.
-	*/
+	 * returns the opengl texture id of this texture.
+	 */
 	GLuint get_texture_id() const;
 
 private:
@@ -118,6 +145,6 @@ private:
 	void unload();
 };
 
-} //namespace openage
+} // namespace openage
 
 #endif

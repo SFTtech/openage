@@ -1,12 +1,13 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "texture.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include <math.h>
-#include <stdio.h>
+#include <cassert>
+#include <cmath>
+#include <cstdio>
 
 #include "log.h"
 #include "util/error.h"
@@ -33,17 +34,20 @@ shader::Program *program;
 GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 }
 
-Texture::Texture(int width, int height, void *data)
+Texture::Texture(int width, int height, std::unique_ptr<uint32_t[]> data)
 	:
 	use_metafile{false} {
+
+	assert(glGenBuffers != nullptr && "gl not initialized properly");
+
 	this->w = width;
 	this->h = height;
-	this->id = make_gl_texture(
+	this->id = this->make_gl_texture(
 		GL_RGBA8,
 		GL_RGBA,
 		width,
 		height,
-		data
+		data.get()
 	);
 
 	gamedata::subtexture s{0, 0, this->w, this->h, this->w/2, this->h/2};
@@ -92,7 +96,7 @@ void Texture::load() {
 
 	this->w = surface->w;
 	this->h = surface->h;
-	this->id = make_gl_texture(
+	this->id = this->make_gl_texture(
 		texture_format_in,
 		texture_format_out,
 		surface->w,

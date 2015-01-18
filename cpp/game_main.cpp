@@ -1,19 +1,19 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "game_main.h"
 
 #include <SDL2/SDL.h>
-#include "crossplatform/opengl.h"
+#include <cinttypes>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <cinttypes>
 
 #include "args.h"
 #include "audio/sound.h"
 #include "callbacks.h"
 #include "console/console.h"
 #include "coord/vec2f.h"
+#include "crossplatform/opengl.h"
 #include "engine.h"
 #include "gamedata/string_resource.gen.h"
 #include "log.h"
@@ -571,7 +571,7 @@ bool GameMain::on_draw() {
 	Engine &engine = Engine::get();
 
 	// draw gaben, our great and holy protector, bringer of the half-life 3.
-	gaben->draw(coord::camgame {0, 0});
+	gaben->draw(coord::camgame{0, 0});
 
 	// draw terrain
 	terrain->draw(&engine);
@@ -582,7 +582,7 @@ bool GameMain::on_draw() {
 
 	if (not gamedata_loaded) {
 		// Show that gamedata is still loading
-		engine.dejavuserif20->render(0, 0, "Loading gamedata...");
+		engine.render_text({0, 0}, 20, "Loading gamedata...");
 	}
 
 	return true;
@@ -605,26 +605,25 @@ bool GameMain::on_drawhud() {
 	return true;
 }
 
-Texture *GameMain::find_graphic(int16_t graphic_id) {
-	if (graphic_id <= 0 || this->graphics.count(graphic_id) == 0) {
-		log::msg("  -> ignoring graphics_id: %d", graphic_id);
+Texture *GameMain::find_graphic(int graphic_id) {
+	auto tex_it = this->graphics.find(graphic_id);
+	if (tex_it == this->graphics.end()) {
+		log::msg("  -> ignoring graphics_id: %zd", graphic_id);
 		return nullptr;
 	}
 
-	int slp_id = this->graphics[graphic_id]->slp_id;
+	int slp_id = tex_it->second->slp_id;
 	if (slp_id <= 0) {
 		log::msg("  -> ignoring slp_id: %d", slp_id);
 		return nullptr;
 	}
 
 	log::msg("   slp id/name: %d %s", slp_id, this->graphics[graphic_id]->name0.c_str());
-	char *tex_fname = util::format("converted/Data/graphics.drs/%d.slp.png", slp_id);
-	Texture *tex = this->assetmanager.get_texture(tex_fname);
-	delete[] tex_fname;
-	return tex;
+	std::string tex_fname = util::sformat("converted/Data/graphics.drs/%d.slp.png", slp_id);
+	return this->assetmanager.get_texture(tex_fname);
 }
 
-TestSound *GameMain::find_sound(int16_t sound_id) {
+TestSound *GameMain::find_sound(int sound_id) {
 	return &this->available_sounds[sound_id];
 }
 

@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UNIT_PRODUCER_H_
 #define OPENAGE_UNIT_PRODUCER_H_
@@ -55,14 +55,14 @@ public:
 class UnitTypeTest: public UnitProducer {
 public:
 	UnitTypeTest(const gamedata::unit_living *,
-	             Texture *,
-	             Texture *,
-	             Texture *,
-	             Texture *,
-	             TestSound *,
-	             TestSound *,
-	             TestSound *,
-	             TestSound *);
+	             Texture *deadt,
+	             Texture *idlet,
+	             Texture *movet,
+	             Texture *attackt,
+	             TestSound *on_create,
+	             TestSound *on_destroy,
+	             TestSound *on_move,
+	             TestSound *on_attack);
 
 	virtual ~UnitTypeTest();
 
@@ -72,7 +72,7 @@ public:
 
 private:
 	const gamedata::unit_living unit_data;
-	Texture *terrain_outline;
+	std::shared_ptr<Texture> terrain_outline;
 	Texture *dead;
 	Texture *idle;
 	Texture *moving;
@@ -104,7 +104,7 @@ public:
 	Texture *default_texture();
 
 private:
-	Texture *terrain_outline;
+	std::shared_ptr<Texture> terrain_outline;
 	Texture *texture;
 	coord::tile_delta size;
 	int foundation_terrain;

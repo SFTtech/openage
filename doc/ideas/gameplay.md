@@ -101,6 +101,51 @@ Bridges
  - Destructible, repairable, ...
  - Long build time
 
+
+Team interaction
+----------------
+
+ - Better team interaction
+ - Work/ressource sharing
+ - Unit sharing (transport boats)
+
+
+Unit grouping
+-------------
+
+ - Manually coloring units (e.g. for teammates)
+ - "Mobile ping": designated unit pings its position periodically
+ - Implicite group definitions/reselections
+
+
+Color marking / signs on map
+----------------------------
+
+- For better team coordination:
+  - Create signs
+  - Paint on map
+  - Create arrows
+
+
+More intelligent units
+----------------------
+
+ - Restrictions for action areas (don't do anything here)
+   - Wood chopping
+   - Castle rampages
+ - Emergency evacuation points
+ - Formations and movement when attacking
+ - Dynamic hardlocking on target units when attacking
+   - Don't lock on unreachable current target
+   - Attack the blocking units first
+
+
+Infinite Ressources
+-------------------
+
+ - Forest regeneration
+
+
 For the lulz
 ------------
 

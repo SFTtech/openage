@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_ASSETMANAGER_H_
 #define OPENAGE_ASSETMANAGER_H_
@@ -7,6 +7,7 @@
 
 #include <unordered_map>
 #include <string>
+#include <memory>
 
 #include "texture.h"
 
@@ -16,10 +17,9 @@ namespace openage {
  * Container class for all available assets.
  * Responsible for loading, providing and updating requested files.
  */
-class AssetManager {
+class AssetManager final {
 public:
 	AssetManager(util::Dir *root);
-	virtual ~AssetManager();
 
 	/**
 	 * Test whether a requested asset filename can be loaded.
@@ -46,7 +46,12 @@ protected:
 	/**
 	 * Create an internal texture handle.
 	 */
-	Texture *load_texture(const std::string &name);
+	std::shared_ptr<Texture> load_texture(const std::string &name);
+
+	/**
+	 * Retrieves the texture for missing textures.
+	 */
+	std::shared_ptr<Texture> get_missing_tex();
 
 private:
 	/**
@@ -57,12 +62,12 @@ private:
 	/**
 	 * The replacement texture for missing textures.
 	 */
-	Texture *missing_tex;
+	std::shared_ptr<Texture> missing_tex;
 
 	/**
 	 * Map from texture filename to texture instance ptr.
 	 */
-	std::unordered_map<std::string, Texture *> textures;
+	std::unordered_map<std::string, std::shared_ptr<Texture>> textures;
 
 #if WITH_INOTIFY
 	/**
@@ -74,7 +79,7 @@ private:
 	 * Map from inotify watch handle fd to texture instance ptr.
 	 * The kernel returns the handle fd when events are triggered.
 	 */
-	std::unordered_map<int, Texture *> watch_fds;
+	std::unordered_map<int, std::shared_ptr<Texture>> watch_fds;
 #endif
 };
 

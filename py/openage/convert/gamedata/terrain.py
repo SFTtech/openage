@@ -35,8 +35,8 @@ class TerrainRestriction(Exportable):
     data_format = (
         # index of each array == terrain id
         # when this restriction was selected, can the terrain be accessed?
-        (READ, "terrain_accessible", "float[terrain_count]"),
-        (READ, "terrain_pass_graphics", SubdataMember(
+        (READ, "accessible_dmgmultiplier", "float[terrain_count]"),  # unit interaction_type activates this as damage multiplier
+        (READ, "pass_graphics", SubdataMember(
             ref_type=TerrainPassGraphic,
             length="terrain_count",
         )),

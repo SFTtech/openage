@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 import os
 import itertools
@@ -104,7 +104,8 @@ def find_issues(paths, git_copyright_timespan=False):
                     # them (probably it's an empty file)
                     pass
                 else:
-                    test_git_copyright_timespan(filename, start_year, end_year)
+                    test_git_copyright_timespan(filename,
+                                                int(start_year), int(end_year))
 
             if headertype is thirdpartylegalheader:
                 third_party_files.add(filename)
@@ -156,9 +157,9 @@ def test_git_copyright_timespan(filename, hdr_start_year, hdr_stop_year):
     if proc.returncode != 0 or not output:
         return
 
-    output = output.split('\n')
+    years = sorted(int(y[:4]) for y in output.split('\n'))
 
-    if hdr_start_year != output[-1][:4]:
+    if hdr_start_year != years[0]:
         raise LegalIssue((
             "\tBad copyright start year in legal header:\n"
             "\texpected {} (from git history start {})\n"
@@ -166,7 +167,7 @@ def test_git_copyright_timespan(filename, hdr_start_year, hdr_stop_year):
                 output[-1][:4], output[-1],
                 hdr_start_year))
 
-    if hdr_stop_year != output[0][:4]:
+    if hdr_stop_year != years[-1]:
         raise LegalIssue((
             "\tBad copyright stop year in legal header:\n"
             "\texpected {} (from git history end {})\n"

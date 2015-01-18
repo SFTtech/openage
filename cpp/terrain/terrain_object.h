@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_TERRAIN_TERRAIN_OBJECT_H_
 #define OPENAGE_TERRAIN_TERRAIN_OBJECT_H_
@@ -45,8 +45,10 @@ std::vector<coord::tile> tile_list(const tile_range &rng);
  * half a tile
  */
 constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
-		coord::settings::phys_per_tile / 2, 
-		coord::settings::phys_per_tile / 2, 0};
+	coord::settings::phys_per_tile / 2,
+	coord::settings::phys_per_tile / 2,
+	0
+};
 
 /**
  * Base class for map location types which include square tile aligned
@@ -62,7 +64,9 @@ constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
  */
 class TerrainObject {
 public:
-	TerrainObject(Unit *, std::function<bool(const coord::phys3 &)> pass);
+	TerrainObject(Unit *,
+	              std::function<bool(const coord::phys3 &)> pass,
+	              std::shared_ptr<Texture> outline_tex);
 	virtual ~TerrainObject();
 
 	/**
@@ -165,7 +169,7 @@ protected:
 	/**
 	 * texture for drawing outline
 	 */
-	Texture *outline_texture;
+	std::shared_ptr<Texture> outline_texture;
 
 	/**
 	 * placement function which does not check passibility
@@ -180,8 +184,10 @@ protected:
  */
 class SquareObject: public TerrainObject {
 public:
-	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass, coord::tile_delta foundation_size);
-	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass, coord::tile_delta foundation_size, Texture *out_tex);
+	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
+	             coord::tile_delta foundation_size);
+	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
+	             coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex);
 	virtual ~SquareObject();
 
 
@@ -220,8 +226,10 @@ public:
  */
 class RadialObject: public TerrainObject {
 public:
-	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass, float rad);
-	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass, float rad, Texture *out_tex);
+	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
+	             float rad);
+	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
+	             float rad, std::shared_ptr<Texture> out_tex);
 	virtual ~RadialObject();
 
 	/**

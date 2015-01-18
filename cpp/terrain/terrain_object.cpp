@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
@@ -20,14 +20,17 @@
 
 namespace openage {
 
-TerrainObject::TerrainObject(Unit *u, std::function<bool(const coord::phys3 &)> pass)
+TerrainObject::TerrainObject(Unit *u,
+                             std::function<bool(const coord::phys3 &)> pass,
+                             std::shared_ptr<Texture> outline_tex)
 	:
 	unit{u},
 	passable{pass},
 	placed{false},
 	terrain{nullptr},
-	occupied_chunk_count{0} {
-	unit->location = this; // ensure the unit points back
+	occupied_chunk_count{0},
+	outline_texture{outline_tex} {
+	this->unit->location = this; // ensure the unit points back
 }
 
 TerrainObject::~TerrainObject() {}
@@ -181,17 +184,21 @@ void TerrainObject::place_unchecked(Terrain *terrain, coord::phys3 &position) {
 	this->placed = true;
 }
 
-SquareObject::SquareObject(Unit *u, std::function<bool(const coord::phys3 &)> pass, coord::tile_delta foundation_size)
+SquareObject::SquareObject(Unit *u,
+                           std::function<bool(const coord::phys3 &)> pass,
+                           coord::tile_delta foundation_size)
 	:
-	SquareObject(u, pass, foundation_size, square_outline(foundation_size)) {
+	SquareObject{u, pass, foundation_size, square_outline(foundation_size)} {
 
 }
 
-SquareObject::SquareObject(Unit *u, std::function<bool(const coord::phys3 &)> pass, coord::tile_delta foundation_size, Texture *out_tex)
+SquareObject::SquareObject(Unit *u,
+                           std::function<bool(const coord::phys3 &)> pass,
+                           coord::tile_delta foundation_size,
+                           std::shared_ptr<Texture> out_tex)
 	:
-	TerrainObject(u, pass),
+	TerrainObject{u, pass, out_tex},
 	size(foundation_size) {
-	this->outline_texture = out_tex;
 }
 
 SquareObject::~SquareObject() {}
@@ -239,7 +246,7 @@ bool SquareObject::contains(const coord::phys3 &other) const {
 bool SquareObject::intersects(const TerrainObject *other, const coord::phys3 &position) const {
 	if (const SquareObject *sq = dynamic_cast<const SquareObject *>(other)) {
 		tile_range rng = this->get_range(position);
-		return this->pos.end.ne < rng.start.ne 
+		return this->pos.end.ne < rng.start.ne
 		       || rng.end.ne < sq->pos.start.ne
 		       || rng.end.se < sq->pos.start.se
 		       || rng.end.se < sq->pos.start.se;
@@ -264,17 +271,20 @@ coord::phys_t SquareObject::min_axis() const {
 	return std::min( this->size.ne, this->size.se ) * coord::settings::phys_per_tile;
 }
 
-RadialObject::RadialObject(Unit *u, std::function<bool(const coord::phys3 &)> pass, float rad)
+RadialObject::RadialObject(Unit *u,
+                           std::function<bool(const coord::phys3 &)> pass,
+                           float rad)
 	:
-	RadialObject(u, pass, rad, radial_outline(rad)) {
-
+	RadialObject{u, pass, rad, radial_outline(rad)} {
 }
 
-RadialObject::RadialObject(Unit *u, std::function<bool(const coord::phys3 &)> pass, float rad, Texture *out_tex)
+RadialObject::RadialObject(Unit *u,
+                           std::function<bool(const coord::phys3 &)> pass,
+                           float rad,
+                           std::shared_ptr<Texture> out_tex)
 	:
-	TerrainObject(u, pass),
+	TerrainObject{u, pass, out_tex},
 	phys_radius(coord::settings::phys_per_tile * rad) {
-	this->outline_texture = out_tex;
 }
 
 RadialObject::~RadialObject() {}
@@ -299,7 +309,7 @@ tile_range RadialObject::get_range(const coord::phys3 &pos) const {
 coord::phys_t RadialObject::from_edge(const coord::phys3 &point) const {
 	coord::phys_t dx = point.ne - this->pos.draw.ne;
 	coord::phys_t dy = point.se - this->pos.draw.se;
-	return std::max(std::hypot(dx, dy) - this->phys_radius, 0.0); 
+	return std::max(std::hypot(dx, dy) - this->phys_radius, 0.0);
 }
 
 bool RadialObject::contains(const coord::phys3 &other) const {

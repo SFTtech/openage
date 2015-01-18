@@ -1,17 +1,20 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include <cmath>
 #include <math.h>
+#include <memory>
 
 #include "../texture.h"
+#include "../util/unique.h"
 #include "terrain_outline.h"
 
 namespace openage {
 
-Texture *square_outline(coord::tile_delta foundation_size) {
+std::shared_ptr<Texture> square_outline(coord::tile_delta foundation_size) {
 	int width = (foundation_size.ne + foundation_size.se) * 48;
 	int height = (foundation_size.ne + foundation_size.se) * 24;
-	int *image_data = new int[width * height];
+
+	auto image_data = util::make_unique<uint32_t[]>(width * height);
 	for (int i = 0; i < width; ++i) {
 		for (int j = 0; j < height; ++j) {
 			float w_percent = (float) abs(i - (width / 2)) / (float) (width / 2);
@@ -25,12 +28,10 @@ Texture *square_outline(coord::tile_delta foundation_size) {
 		}
 	}
 
-	Texture *ret = new Texture(width, height, image_data);
-	delete[] image_data;
-	return ret;
+	return std::make_shared<Texture>(width, height, std::move(image_data));
 }
 
-Texture *radial_outline(float radius) {
+std::shared_ptr<Texture> radial_outline(float radius) {
 	// additional pixels around the edge
 	int border = 4;
 
@@ -39,7 +40,8 @@ Texture *radial_outline(float radius) {
 	int height = border + radius * 48 * 2;
 	int half_width = width / 2;
 	int half_height = height / 2;
-	int *image_data = new int[width*height];
+
+	auto image_data = util::make_unique<uint32_t[]>(width * height);
 
 	for (int i = 0; i < width; ++i) {
 		for (int j = 0; j < height; ++j) {
@@ -54,9 +56,7 @@ Texture *radial_outline(float radius) {
 		}
 	}
 
-	Texture *ret = new Texture(width, height, image_data);
-	delete[] image_data;
-	return ret;
+	return std::make_shared<Texture>(width, height, std::move(image_data));
 }
 
 } // namespace openage

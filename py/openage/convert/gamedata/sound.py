@@ -28,9 +28,10 @@ class Sound(Exportable):
     struct_description = "describes a sound, consisting of several sound items."
 
     data_format = (
-        (READ_EXPORT, "id", "int32_t"),
+        (READ_EXPORT, "id", "int16_t"),
+        (READ_UNKNOWN, None, "int16_t"),
         (READ_EXPORT, "item_count", "uint16_t"),
-        (READ_UNKNOWN, None, "int32_t"),
+        (READ_UNKNOWN, None, "int32_t"),  # always 300000
         (READ_EXPORT, "sound_items", SubdataMember(
             ref_type=SoundItem,
             ref_to="id",

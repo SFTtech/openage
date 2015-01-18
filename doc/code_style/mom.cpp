@@ -1,68 +1,57 @@
 #include "mom.h"
 
+#include <cmath>
 #include <cstdio>
 #include <SDL/SDL.h>
 
-#include "lolinclude.h"
 #include "../whatever.h"
+#include "lolinclude.h"
+#include "roflinclude.h"
+#include "wtfinclude.h"
 
 // [SFT]tech coding guidelines
 // ---------------------------
 //
-// to make the code look nice and be readable:
-//  * sort things alphabetically.
-//  * align things beautifully
-//  * if you write documentation correctly, then:
-//    * it's parsable by Doxygen
-//    * cool generated docs!
-//  * look at the following example code
-//  * look at the "mom.h" header file for a header example.
+// please also have a look at `mom.h` for a header example.
 
 
-// indentation:
+// Indentation:
 //    ========> see doc/code_style/tabs_n_spaces.md <=========
-// use tabs to indent code, if you display that as 4 or 8 or 13.37 doesn't matter.
-// use spaces for drawing ascii-art or adapting code positions after indentation.
+// Use tabs to indent code: you can display that as 4 or 8 or 13.37,
+// it doesn't matter and always looks correct.
+// Use spaces for drawing ascii-art or adapting code positions
+// after tab indentation.
 //
 // => this ensures custom tab-widths AND correct indentation levels.
 
 
 
-/**
- * Write a short introductory sentence here first.
- * Then you can explain what the class/struct is doing,
- * explain why it is the way it is.
- * If you got time afterwards, explain how to achieve world peace,
- * solve P=NP or just browse cat pictures on the internet.
- *
- * Write class name in CamelCase!
- */
-class UselessDemonstration {
-// the access modifier is at the same indent level
+class HalfLife3 {
+// The access modifier is at the same indent level
 // as the class definition:
 public:
-	// i hope you read the tabs_n_spaces.md file,
+	// I hope you read the tabs_n_spaces.md file,
 	// now follows a practical application for it:
 
-	// example for using tabs for indentation and spaces for adjustment
+	// Example for using tabs for indentation and spaces for adjustment
 	// the argument list is too long, therefore wrap it
-	// => tabs are used to reach level of `void`,
+	// => Tabs are used to reach level of `void`,
 	//    spaces indent the alignment of each argument.
-	void lol_useless_function(char *rofl_a_text,
-	                          int   asdf,
-	                          bool  another_argument,
-	                          char  yeah_really_thats_many_arguments,
-	                          int   you_wont_believe_me,
-	                          bool  fak_u) {
+	void calculate_release_date(std::string &,
+	                          ValveTeam team,
+	                          bool      randomize_delay,
+	                          char      yeah_really_thats_many_arguments,
+	                          int       you_wont_believe_me,
+	                          bool      fak_u) {
 		if (fak_u) {
-			// try to align things nicely:
-			asdf                *= 20;
+			// try to align things nicely by = and friends
+			qwertyuiop          *= 20;
 			you_wont_believe_me  = 5;
 
 			printf("%s: %d \n", rofl_a_text, asdf);
 		}
 		else if (another_argument) {
-			// the argument list is too long again, so wrap the args
+			// The argument list is too long again, so wrap the args
 			// and indent them with spaces.
 			printf("%05d pls... %c %s\n",
 			       you_wont_believe_me,
@@ -76,8 +65,7 @@ public:
 };
 
 
-/**
- * Just a short struct demonstration.
+/*
  * Structs should be used to pack variables etc.
  * Use as few member functions as possible, mainly use them as a container.
  *
@@ -90,15 +78,14 @@ struct another_stupid_type {
 	ub0rtype røfëlkøptør;  //!< proper documentation is Doxygen parsable.
 };
 
-// variables in lowercase with _ as word separator,
-// classes are written in camel case.
+// variables in lowercase with _ as word separator
 elts::YourMom *my_special_mom;
 
 
-// a namespace does not increase the indentation level.
 namespace elts {
+// A namespace does not increase the indentation level!
 
-// classes are written in camel case (structs are lowercase like variables)
+// Classes are written in camel case (structs are lowercase like variables)
 YourMom::YourMom(int her_mass)
 	:
 	mass{her_mass},
