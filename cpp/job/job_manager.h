@@ -63,8 +63,8 @@ public:
 	/** Create a new job manager with a specified number of worker threads. */
 	JobManager(int number_of_workers);
 
-	/** Default destructor. */
-	~JobManager() = default;
+	/** Destructor that stops the job manager if it is still running. */
+	~JobManager();
 
 	JobManager(const JobManager&) = delete;
 	JobManager(JobManager&&) = delete;

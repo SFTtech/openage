@@ -18,6 +18,10 @@ JobManager::JobManager(int number_of_workers)
 	}
 }
 
+JobManager::~JobManager() {
+	this->stop();
+}
+
 void JobManager::start() {
 	// if the workers have not been started, start them now
 	if (not this->is_running.load()) {
