@@ -1,14 +1,14 @@
-#!/usr/bin/env python3
-#
-#version detection routines
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
-from util import dbg
+from openage.log import dbg
 import os
+
 
 class GameVersion:
     """
-    Has lists of files belonging to a version of the game.
+    Has sets of files belonging to a version of the game.
     Other versions can be given as prerequisites.
+    Can check if all the needed files exist.
     """
 
     def __init__(self, name, drs_files=None, dat_files=None,
@@ -18,9 +18,9 @@ class GameVersion:
 
         Arguments:
         name          -- Name of the version (for debug messages)
-        drs_files     -- Set of search paths to DRS archives
-        dat_files     -- Set of search paths to gamedata DAT files
-        langdll_files -- Set of search paths to language DLL files
+        drs_files     -- Set of paths to DRS archives
+        dat_files     -- Set of paths to gamedata DAT files
+        langdll_files -- Set of paths to language DLL files
         prereqs       -- Set of prerequisite GameVersion objects.
         """
 
@@ -40,13 +40,16 @@ class GameVersion:
 
     def exists(self, basedir):
         """
-        Checks recursively if the required files exist for this version
-        and all prerequisite versions.
+        Checks if the prerequisite versions exist. Then checks if all the files
+        needed for this version exist.
+
+        Arguments:
+        basedir -- Path to an AoE2 installation
         """
 
         if self.checked:
             dbg("Check for %s has already been done, omitting." %
-                self.name, 2)
+                self.name, 3)
             return self.available
 
         self.checked = True
@@ -54,61 +57,100 @@ class GameVersion:
         for prereq in self.prereqs:
             dbg("'%s' requires '%s'. Checking '%s' now..." % (
                 self.name, prereq.name, prereq.name
-            ), 2)
+            ), 3)
 
             if not prereq.exists(basedir):
                 dbg("Check for '%s' failed because of prerequisite '%s'!" % (
                     self.name, prereq.name
-                ), 1)
+                ), 2)
                 return False
 
-        for filename in (self.files["drs"] |
-                         self.files["dat"] |
-                         self.files["langdll"]):
+        for filename in self.get_own_files("all"):
 
             if not os.path.isfile(os.path.join(basedir, filename)):
                 dbg("Check for '%s' failed: File '%s' not found." % (
                     self.name, filename
-                ), 1)
+                ), 2)
                 return False
 
-            dbg("File '%s' OK." % filename, 3)
+            dbg("File '%s' OK." % filename, 4)
 
-        dbg("Check for '%s' successful." % self.name, 2)
+        dbg("Check for '%s' successful." % self.name, 3)
         self.available = True
         return True
 
     def get_files(self, filetype):
         """
-        Returns a set of all files defined in the version and its dependencies.
-        Valid arguments for filetype are 'drs', 'dat', 'langdll' and 'all'.
+        Returns a set of all files defined in this version and its prerequisites.
+
+        Arguments:
+        filetype -- One of 'drs', 'dat', 'langdll' or 'all'
+        """
+
+        result = self.get_own_files(filetype)
+        for prereq in self.prereqs:
+            result |= prereq.get_files(filetype)
+
+        return result
+
+    def get_own_files(self, filetype):
+        """
+        Returns a set of all files defined in this version.
+
+        Arguments:
+        filetype -- One of 'drs', 'dat', 'langdll' or 'all'
         """
 
         if filetype == "all":
             return (
-                self.get_files("drs") |
-                self.get_files("dat") |
-                self.get_files("langdll")
+                self.get_own_files("drs") |
+                self.get_own_files("dat") |
+                self.get_own_files("langdll")
             )
 
-        else:
-            result = set(self.files[filetype])
-            for prereq in self.prereqs:
-                result |= prereq.get_files(filetype)
-
-            return result
+        return set(self.files[filetype])
 
 
 class VersionDetector:
-    def __init__(self, basedir):
-        self.basedir = basedir
+    """
+    Detects the "best" AoE2 version at a path.
+    Gives access to the version name and relevant files.
+    """
 
-    def get_version(self):
-        from hardcoded.version_detection import known_versions
+    def __init__(self, basedir):
+        """
+        Creates a new VersionDetector object.
+
+        Arguments:
+        basedir -- Path to an AoE2 installation
+        """
+
+        self.basedir = basedir
+        self.version = None
+
+        from .hardcoded.version_detection import known_versions
         for version in known_versions:
             if version.exists(self.basedir):
-                dbg("Found version '%s'." % version.name, 0)
-                return version
+                dbg("Found version '%s'." % version.name, 1)
+                self.version = version
+                break
 
-        dbg("No valid version found!", 0)
-        return None
+        if self.version is None:
+            raise Exception("No valid version found!")
+
+    def get_version_name(self):
+        """
+        Returns the name of the version found.
+        """
+
+        return self.version.name
+
+    def get_files(self, filetype):
+        """
+        Returns a set of all relevant files found, filtered by filetype.
+
+        Arguments:
+        filetype -- One of 'drs', 'dat', 'langdll' or 'all'
+        """
+
+        return self.version.get_files(filetype)

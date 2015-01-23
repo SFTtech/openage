@@ -1,8 +1,6 @@
-#!/usr/bin/env python3
-#
-#version detection hardcoded shit
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
-from version_detection import GameVersion
+from ..version_detection import GameVersion
 
 base = GameVersion(
     name = "base",
@@ -40,5 +38,5 @@ x1_p1 = GameVersion(
     prereqs = {x1}
 )
 
-#best version first
+# best version first
 known_versions = (x1_p1, x1, base)
