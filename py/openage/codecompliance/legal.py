@@ -161,16 +161,16 @@ def test_git_copyright_timespan(filename, hdr_start_year, hdr_stop_year):
 
     if hdr_start_year != years[0]:
         raise LegalIssue((
-            "\tBad copyright start year in legal header:\n"
-            "\texpected {} (from git history start {})\n"
+            "Bad copyright start year in legal header:\n"
+            "\texpected {}\n"
             "\tfound    {}").format(
-                output[-1][:4], output[-1],
+                years[0],
                 hdr_start_year))
 
     if hdr_stop_year != years[-1]:
         raise LegalIssue((
-            "\tBad copyright stop year in legal header:\n"
-            "\texpected {} (from git history end {})\n"
+            "Bad copyright stop year in legal header:\n"
+            "\texpected {}\n"
             "\tfound    {}").format(
-                output[0][:4], output[0],
+                years[-1],
                 hdr_stop_year))
