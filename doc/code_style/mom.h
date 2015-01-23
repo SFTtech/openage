@@ -10,16 +10,9 @@
 //  * align things beautifully
 //  * if you write documentation correctly, then:
 //    * it's parsable by Doxygen
-//    * cool generated docs!
+//    * -> cool generated docs!
 //  * look at the following example code
 //  * look at the "mom.cpp" file for a implementation example.
-
-
-// .h files that don't need header guards shouldn't exist.
-// if they are necessary, they must be explicitly marked with a comment
-// of the following format:
-
-// has no header guard: including your mom _twice_ would be impossible anyway.
 
 #include <cstddef>
 #include <cstdint>
@@ -40,21 +33,7 @@ constexpr int DEFAULT_MOM_MASS = 9001;
  * This documentation will also show up in generated docs then.
  */
 namespace elts {
-
-// the namespace does not increase the indentation level!
-
-/**
- * Write a short introductory sentence here first.
- * Then you can explain what the class/struct/variable/method is doing,
- * explain why it is the way it is.
- * If you got time afterwards, explain how to achieve world peace,
- * solve P=NP or just browse cat pictures on the internet.
- *
- * Global variables are declared extern in the header.
- * Keep in mind that we will probably murder you if you actually
- * use global variables.
- */
-extern int64_t sum_mom_masses;
+// <- the namespace does not increase the indentation level!
 
 /**
  * Class about your mother.
@@ -65,6 +44,7 @@ extern int64_t sum_mom_masses;
 class YourMom {
 public:
 	/**
+	 * Creates your mom.
 	 * @param mass: initial mass for this mother.
 	 */
 	YourMom(int mass=DEFAULT_MOM_MASS);
@@ -89,22 +69,25 @@ public:
 
 protected:
 	// To have doxygen parse one-liners, write the following:
-	int mass; //!< your mom's mass (solar masses).
+	int64_t mass; //!< your mom's mass (solar masses).
 
 	/**
 	 * Your mom's number of non-artificial satellites.
 	 * Scales well with your mom's mass.
+	 * @see mass.
 	 */
 	int number_of_moons;
+
+	/**
+	 * Your mom's stupidity.
+	 * Measured in unit of tolerating DRM.
+	 */
+	int stupidity;
+
+	static int64_t sum_mom_masses; //!< sum of all mom's masses in the world
 };
 
 } // namespace elts
-
-
-// Try to avoid forward declarations,
-// use the newly defined types after their definition.
-// avoid global variables whenever possible though!
-extern elts::YourMom *my_special_mom;
 
 
 #endif
