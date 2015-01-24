@@ -140,6 +140,9 @@ private:
 	 */
 	std::shared_ptr<JobStateBase> fetch_job();
 
+	/** Returns whether there are jobs to be executed. */
+	bool has_job();
+
 	/** Adds a finished job to the internal finished job map. */
 	void finish_job(std::shared_ptr<JobStateBase> job);
 

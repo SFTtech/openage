@@ -45,7 +45,7 @@ public:
 	 */
 	template<class T>
 	Job<T> enqueue(job_function_t<T> function,
-		           callback_function_t<T> callback={}) {
+	               callback_function_t<T> callback={}) {
 		assert(this->parent_worker);
 		auto state = std::make_shared<JobState<T>>(function, callback);
 		this->parent_worker->enqueue(state);

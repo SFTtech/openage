@@ -91,6 +91,11 @@ std::shared_ptr<JobStateBase> JobManager::fetch_job() {
 	return job;
 }
 
+bool JobManager::has_job() {
+	std::unique_lock<std::mutex> lock(this->pending_jobs_mutex);
+	return not this->pending_jobs.empty();
+}
+
 void JobManager::finish_job(std::shared_ptr<JobStateBase> job) {
 	std::unique_lock<std::mutex> lock{this->finished_jobs_mutex};
 	auto it = this->finished_jobs.find(job->get_thread_id());

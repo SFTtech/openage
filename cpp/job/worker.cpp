@@ -40,7 +40,7 @@ void Worker::join() {
 }
 
 void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
-	auto should_abort = [this] () {
+	auto should_abort = [this]() {
 		return not this->is_running.load();
 	};
 
