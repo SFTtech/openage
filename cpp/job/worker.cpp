@@ -53,69 +53,47 @@ void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
 }
 
 void Worker::process() {
+	// as long as this worker thread is running repeat all steps
 	while (this->is_running.load()) {
-		// first fetch jobs from the job manager and execute them
-		auto global_job = this->manager->fetch_job();
-		while (global_job.get() != nullptr) {
-			this->execute_job(global_job);
-			// check after each execution if the worker thread is still running
+		// lock the local thread queue
+		std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
+		// as long as there are no jobs from the local queue or the job manager
+		while (this->pending_jobs.empty() and not this->manager->has_job()) {
+			// the thread should wait
+			this->jobs_available.wait(lock);
+			
+			// when the thread is notified, first check if the thread should be
+			// stopped 
 			if (not this->is_running.load()) {
-				break;
+				return;
 			}
-
-			global_job = this->manager->fetch_job();
 		}
 
-
-		// true if jobs from the local job queue should be fetched
-		bool fetch_local = true;
-		// true, if the inner loop should be exited
-		bool escape = false;
-
-		while (fetch_local) {
-			std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
-			while (this->pending_jobs.empty()) {
-				// wait for new jobs from the local job queue or from the job
-				// manager
-				this->jobs_available.wait(lock);
-				// check if the worker thread is still running after a wake-up
-				if (not this->is_running.load()) {
-					escape = true;
-					break;
-				}
-
-				// check if there is a job from the job manager that has to be
-				// executed
-				global_job = this->manager->fetch_job();
-				if (global_job.get() != nullptr) {
-					// if there is a job, execute it and leave the local
-					// fetching loop, in order to check for more jobs from the
-					// job manager
-					lock.unlock();
-					this->execute_job(global_job);
-					std::unique_lock<std::mutex> other_lock{this->pending_jobs_mutex};
-					break;
-				}
-			}
-
-			// if escape is true, exit the local fetching loop in order to check
-			// for jobs from the job manager in the next iteration of the outer
-			// loop 
-			if (escape) {
-				break;
-			}
-
-			// fetch a job from the local job queue and execute it
+		// check if there are jobs in the local queue
+		if (not this->pending_jobs.empty()) {
+			// fetch the job
 			auto job = this->pending_jobs.front();
 			this->pending_jobs.pop();
-			// if the local job queue is empty afterwards, exit the local
-			// fetching loop and check for  jobs from the job manager in the
-			// next iteration of the outer loop
-			if (this->pending_jobs.empty()) {
-				fetch_local = false;
-			}
+			// release the local queue lock
 			lock.unlock();
+			// and execute the job
 			this->execute_job(job);
+		} else {
+			// otherwise just unlock the local queue
+			lock.unlock();
+		}
+
+		// after possibly executing a job from the local queue, check again if
+		// the thread should still continue running
+		if (not this->is_running.load()) {
+			return;
+		}
+
+		// now try to fetch a job from the job manager
+		auto manager_job = this->manager->fetch_job();
+		if (manager_job.get() != nullptr) {
+			// and execute it
+			this->execute_job(manager_job);
 		}
 	}
 }
