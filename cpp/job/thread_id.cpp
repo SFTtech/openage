@@ -12,6 +12,8 @@ ThreadId::ThreadId()
 		id{ThreadId::counting_id++} {
 }
 
+// For each thread a new thread_local ThreadId object is created and counting_id
+// will be incremented in its constructor.
 thread_local ThreadId thread_id;
 
 }

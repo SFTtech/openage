@@ -63,11 +63,12 @@ public:
 	 * number of int16_t values that are actually available. If the end of the
 	 * resource is reached, 0 will be returned. If the resource is not ready
 	 * yet, a nullptr with a length, different to zero, will be returned.
+	 *
 	 * @param position the current position in the resource @param data_length
-	 * the number of int16_t values that should be returned
+	 *        the number of int16_t values that should be returned
+	 * @param data_length the number of bytes of audio data that is requested
 	 */
-	virtual std::tuple<const int16_t*,size_t> get_data(size_t position,
-			size_t data_length) = 0;
+	virtual audio_chunk_t get_data(size_t position, size_t data_length) = 0;
 
 	static std::shared_ptr<Resource> create_resource(category_t category,
 			int id, const std::string &path, format_t format,

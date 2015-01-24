@@ -11,9 +11,9 @@ namespace openage {
 namespace audio {
 
 Sound::Sound(AudioManager *audio_manager, std::shared_ptr<SoundImpl> sound_impl)
-		:
-		audio_manager{audio_manager},
-		sound_impl{sound_impl} {
+	:
+	audio_manager{audio_manager},
+	sound_impl{sound_impl} {
 }
 
 category_t Sound::get_category() const {
@@ -89,13 +89,13 @@ bool Sound::is_playing() const {
 // here begins the internal sound implementation
 
 SoundImpl::SoundImpl(std::shared_ptr<Resource> resource, int32_t volume)
-		:
-		resource{resource},
-		in_use{false},
-		volume{volume},
-		offset{0},
-		playing{false},
-		looping{false} {
+	:
+	resource{resource},
+	in_use{false},
+	volume{volume},
+	offset{0},
+	playing{false},
+	looping{false} {
 }
 
 SoundImpl::~SoundImpl() {
@@ -115,28 +115,26 @@ int SoundImpl::get_id() const {
 bool SoundImpl::mix_audio(int32_t *stream, int length) {
 	size_t stream_index = 0;
 	while (length > 0) {
-		const int16_t *data;
-		size_t data_length;
-		std::tie(data, data_length) = resource->get_data(offset, length);
+		auto chunk = resource->get_data(offset, length);
 
-		if (data_length == 0) {
+		if (chunk.length == 0) {
 			if (looping) {
 				offset = 0;
 			} else {
 				playing = false;
 				return true;
 			}
-		} else if (data == nullptr) {
+		} else if (chunk.data == nullptr) {
 			return false;
 		}
 
-		for (size_t i = 0; i < data_length; i++) {
-			stream[i+stream_index] += volume * data[i];
+		for (size_t i = 0; i < chunk.length; i++) {
+			stream[i+stream_index] += volume * chunk.data[i];
 		}
 
-		offset += data_length;
-		length -= data_length;
-		stream_index += data_length;
+		offset += chunk.length;
+		length -= chunk.length;
+		stream_index += chunk.length;
 	}
 
 	return false;

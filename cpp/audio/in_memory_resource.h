@@ -30,10 +30,7 @@ public:
 	);
 	virtual ~InMemoryResource() = default;
 
-	virtual std::tuple<const int16_t*,size_t> get_data(
-		size_t position,
-		size_t data_length
-	);
+	virtual audio_chunk_t get_data(size_t position, size_t data_length);
 };
 
 }

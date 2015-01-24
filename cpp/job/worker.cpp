@@ -9,10 +9,10 @@
 namespace openage {
 namespace job {
 
-Worker::Worker(JobManager *parent_manager)
-		:
-		parent_manager{parent_manager},
-		is_running{false} {
+Worker::Worker(JobManager *manager)
+	:
+	manager{manager},
+	is_running{false} {
 }
 
 void Worker::start() {
@@ -40,28 +40,30 @@ void Worker::join() {
 }
 
 void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
-	bool aborted = job->execute([this] () {
-			return not this->is_running.load();
-		});
+	auto should_abort = [this] () {
+		return not this->is_running.load();
+	};
+
+	bool aborted = job->execute(should_abort);
 	// if the job was not aborted, tell the job manager, that the job has
 	// finished
 	if (not aborted) {
-		this->parent_manager->finish_job(job);
+		this->manager->finish_job(job);
 	}
 }
 
 void Worker::process() {
 	while (this->is_running.load()) {
 		// first fetch jobs from the job manager and execute them
-		auto global_job = this->parent_manager->fetch_job();
-		if (global_job.get() != nullptr) {
+		auto global_job = this->manager->fetch_job();
+		while (global_job.get() != nullptr) {
 			this->execute_job(global_job);
 			// check after each execution if the worker thread is still running
 			if (not this->is_running.load()) {
 				break;
 			}
 
-			global_job = this->parent_manager->fetch_job();
+			global_job = this->manager->fetch_job();
 		}
 
 
@@ -84,14 +86,14 @@ void Worker::process() {
 
 				// check if there is a job from the job manager that has to be
 				// executed
-				global_job = this->parent_manager->fetch_job();
+				global_job = this->manager->fetch_job();
 				if (global_job.get() != nullptr) {
 					// if there is a job, execute it and leave the local
 					// fetching loop, in order to check for more jobs from the
 					// job manager
 					lock.unlock();
 					this->execute_job(global_job);
-					escape = true;
+					std::unique_lock<std::mutex> other_lock{this->pending_jobs_mutex};
 					break;
 				}
 			}

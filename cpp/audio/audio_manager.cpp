@@ -18,13 +18,14 @@ namespace audio {
 void global_audio_callback(void *userdata, uint8_t *stream, int len);
 
 AudioManager::AudioManager()
-		:
-		AudioManager{""} {
+	:
+	AudioManager{""} {
 }
 
 AudioManager::AudioManager(const std::string &device_name)
-		:
-		device_name{device_name} {
+	:
+	device_name{device_name} {
+
 	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
 		throw util::Error("SDL audio initialization: %s", SDL_GetError());
 	} else {

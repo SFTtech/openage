@@ -20,9 +20,9 @@ static auto opus_deleter = [](OggOpusFile *op_file) {
 };
 
 OpusDynamicLoader::OpusDynamicLoader(const std::string &path)
-		:
-		DynamicLoader{path},
-		source{std::move(open_opus_file())} {
+	:
+	DynamicLoader{path},
+	source{std::move(this->open_opus_file())} {
 	// read channels from the opus file
 	channels = op_channel_count(source.get(), -1);
 
@@ -40,7 +40,7 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 		size_t chunk_size) {
 	// if the requested offset is greater than the resource's length, there is
 	// no chunk left to load
-	if (offset > length) {
+	if (offset > this->length) {
 		return 0;
 	}
 
@@ -91,7 +91,7 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 	}
 
 	log::msg("DYNLOAD: file=%d all=%d", read_count, read_count * 2 / channels);
-	return read_count * 2 / channels;
+	return (read_count * 2) / channels;
 }
 
 opus_file_t OpusDynamicLoader::open_opus_file() {

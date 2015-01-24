@@ -22,7 +22,7 @@ namespace openage {
 namespace audio {
 
 struct chunk_info_t {
-	enum {
+	enum class state_t {
 		/** The chunk is currently unused. */
 		UNUSED,
 
@@ -34,7 +34,7 @@ struct chunk_info_t {
 	};
 
 	/** The chunk's current state. */
-	std::atomic_int state;
+	std::atomic<state_t> state;
 
 	/** The chunk's actual size. */
 	size_t actual_size;
@@ -42,7 +42,7 @@ struct chunk_info_t {
 	/** The chunk's buffer. */
 	std::unique_ptr<int16_t[]> buffer;
 
-	chunk_info_t(int state, size_t buffer_size);
+	chunk_info_t(chunk_info_t::state_t state, size_t buffer_size);
 	~chunk_info_t() = default;
 };
 
@@ -104,23 +104,22 @@ private:
 
 public:
 	DynamicResource(category_t category, int id, const std::string &path,
-			format_t format=format_t::OPUS,
-			int preload_threshold=DEFAULT_PRELOAD_THRESHOLD,
-			size_t chunk_size=DEFAULT_CHUNK_SIZE,
-			size_t max_chunks=DEFAULT_MAX_CHUNKS);
+	                format_t format=format_t::OPUS,
+	                int preload_threshold=DEFAULT_PRELOAD_THRESHOLD,
+	                size_t chunk_size=DEFAULT_CHUNK_SIZE,
+	                size_t max_chunks=DEFAULT_MAX_CHUNKS);
 	virtual ~DynamicResource() = default;
 
 	virtual void use();
 	virtual void stop_using();
 
-	virtual std::tuple<const int16_t*,size_t> get_data(size_t position,
-			size_t data_length);
+	virtual audio_chunk_t get_data(size_t position, size_t data_length);
 
 private:
 	void start_preloading(size_t resource_chunk_index);
 
 	void start_loading(std::shared_ptr<chunk_info_t> chunk_info,
-			size_t resource_chunk_offset);
+	                   size_t resource_chunk_offset);
 };
 
 }

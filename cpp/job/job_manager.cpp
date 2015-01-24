@@ -9,10 +9,11 @@ namespace openage {
 namespace job {
 
 JobManager::JobManager(int number_of_workers)
-		:
-		number_of_workers{number_of_workers},
-		group_index{0},
-		is_running{false} {
+	:
+	number_of_workers{number_of_workers},
+	group_index{0},
+	is_running{false} {
+
 	for (int i = 0; i < number_of_workers; i++) {
 		this->workers.emplace_back(new Worker{this});
 	}
@@ -30,7 +31,7 @@ void JobManager::start() {
 			worker->start();
 		}
 		log::msg("Started JobManager with %d worker threads",
-				this->number_of_workers);
+		         this->number_of_workers);
 	}
 }
 
@@ -45,7 +46,7 @@ void JobManager::stop() {
 			worker->join();
 		}
 		log::msg("Stopped JobManager with %d worker threads",
-				this->number_of_workers);
+		         this->number_of_workers);
 	}
 }
 
@@ -55,7 +56,8 @@ void JobManager::execute_callbacks() {
 	std::unique_lock<std::mutex> lock{this->finished_jobs_mutex};
 	auto it = this->finished_jobs.find(id);
 	if (it != std::end(this->finished_jobs)) {
-		std::vector<std::shared_ptr<JobStateBase>> jobs{it->second}; 
+		std::vector<std::shared_ptr<JobStateBase>> jobs;
+		std::swap(jobs, it->second); 
 		it->second.clear();
 		lock.unlock();
 		for (auto &job : jobs) {
@@ -64,7 +66,7 @@ void JobManager::execute_callbacks() {
 	}
 }
 
-JobGroup JobManager::get_job_group() {
+JobGroup JobManager::create_job_group() {
 	auto index = this->group_index;
 	this->group_index = (this->group_index + 1) % this->number_of_workers;
 	return JobGroup{this->workers[index].get()};
@@ -92,8 +94,11 @@ std::shared_ptr<JobStateBase> JobManager::fetch_job() {
 void JobManager::finish_job(std::shared_ptr<JobStateBase> job) {
 	std::unique_lock<std::mutex> lock{this->finished_jobs_mutex};
 	auto it = this->finished_jobs.find(job->get_thread_id());
+	// if there haven't been a finished job for the thread_id, create a new
+	// entry
 	if (it == std::end(this->finished_jobs)) {
 		this->finished_jobs.insert({job->get_thread_id(), {job}});
+	// otherwise, we append the job to the existing entryy	
 	} else {
 		it->second.push_back(job);
 	}

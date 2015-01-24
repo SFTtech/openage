@@ -12,6 +12,11 @@
 namespace openage {
 namespace audio {
 
+struct audio_chunk_t {
+	const int16_t *data;
+	size_t length;
+};
+
 /**
  * pcm_data_t is a vector consisting of signed 16 bit integer samples. It is
  * used to represent one complete audio resource's buffer.

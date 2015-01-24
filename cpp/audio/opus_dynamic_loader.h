@@ -17,17 +17,11 @@ namespace audio {
  */
 class OpusDynamicLoader : public DynamicLoader {
 private:
-	/** 
-	 * The source file.
-	 */
+	/** The source file. */
 	opus_file_t source;
-	/**
-	 * The resource's length in int16_t values.
-	 */
+	/** The resource's length in int16_t values. */
 	size_t length;
-	/**
-	 * The resource's pcm channels.
-	 */
+	/** The resource's pcm channels. */
 	int channels;
 
 public:

@@ -6,13 +6,13 @@ namespace openage {
 namespace job {
 
 JobGroup::JobGroup()
-		:
-		JobGroup{nullptr} {
+	:
+	JobGroup{nullptr} {
 }
 
 JobGroup::JobGroup(Worker *parent_worker)
-		:
-		parent_worker{parent_worker} {
+	:
+	parent_worker{parent_worker} {
 }
 
 }

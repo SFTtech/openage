@@ -49,10 +49,10 @@ public:
 
 	/** Creates a new typed job with the given callback. */
 	TypedJobStateBase(callback_function_t<T> callback)
-			:
-			thread_id{openage::job::thread_id.id},
-			callback{callback},
-			finished{false} {
+		:
+		thread_id{openage::job::thread_id.id},
+		callback{callback},
+		finished{false} {
 	}
 
 	/** Default destructor. */

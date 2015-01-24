@@ -52,7 +52,7 @@ int test_simple_job_with_exception() {
 			result = 0;
 		}
 		finished = true;
-		
+
 	};
 	manager.enqueue<int>(job_function, job_callback);
 

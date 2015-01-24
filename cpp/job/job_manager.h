@@ -85,10 +85,14 @@ public:
 	 * Enqueues the given function into the job manager's queue, so that it will
 	 * be dispatched by one of the worker threads. A lightweight Job object is
 	 * returned, that allows to keep track of the job's state.
+	 *
+	 * @param function the function that is executed as background job
+	 * @param callback the callback function that is executed, when the background
+	 *        job has finished 
 	 */
 	template<class T>
 	Job<T> enqueue(job_function_t<T> function,
-			callback_function_t<T> callback={}) {
+		           callback_function_t<T> callback={}) {
 		auto state = std::make_shared<JobState<T>>(function, callback);
 		this->enqueue_state(state);
 		return Job<T>{state};
@@ -101,20 +105,24 @@ public:
 	 * function must accept a function object that returns, whether the job
 	 * should be aborted at any time. Further it must accept a function that
 	 * can be used to abort the execution of the function.
+	 *
+	 * @param function the function that is executed as background job
+	 * @param callback the callback function that is executed, when the background
+	 *        job has finished 
 	 */
 	template<class T>
 	Job<T> enqueue(abortable_function_t<T> function,
-			callback_function_t<T> callback={}) {
+		           callback_function_t<T> callback={}) {
 		auto state = std::make_shared<AbortableJobState<T>>(function, callback);
 		this->enqueue_state(state);
 		return Job<T>{state};
 	}
 
 	/**
-	 * Returns a job group, in order to be able to execute multiple jobs on the
+	 * Creates a job group, in order to be able to execute multiple jobs on the
 	 * same worker thread.
 	 */
-	JobGroup get_job_group();
+	JobGroup create_job_group();
 
 	/**
 	 * Executes callbacks for all job's, that were created by the current thread

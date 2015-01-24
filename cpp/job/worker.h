@@ -23,7 +23,7 @@ class JobManager;
 class Worker {
 private:
 	/** The parent job manager, this worker is fetching jobs from. */
-	JobManager *parent_manager;
+	JobManager *manager;
 
 	/** Whether this worker thread is still running. */
 	std::atomic_bool is_running;
@@ -42,7 +42,7 @@ private:
 
 public:
 	/** Constructs a new worker with the parent job manager. */
-	Worker(JobManager *parent_manager);
+	Worker(JobManager *manager);
 
 	/** Default destructor. */
 	~Worker() = default;

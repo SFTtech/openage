@@ -17,7 +17,7 @@ class ConcurrentQueue {
 public:
 	/** Removes all elements from the queue. */
 	void clear() {
-		std::unique_lock<std::mutex> lock{mutex};
+		std::unique_lock<std::mutex> lock{this->mutex};
 		while (!this->queue.empty()) {
 			this->queue.pop();
 		}
@@ -25,13 +25,13 @@ public:
 
 	/** Returns whether the queue is empty. */
 	bool empty() {
-		std::unique_lock<std::mutex> lock{mutex};
+		std::unique_lock<std::mutex> lock{this->mutex};
 		return this->queue.empty();
 	}
 
 	/** Returns the front item of the queue without removing it. */
 	T &front() {
-		std::unique_lock<std::mutex> lock{mutex};
+		std::unique_lock<std::mutex> lock{this->mutex};
 		while (this->queue.empty()) {
 			this->elements_available.wait(lock);
 		}
@@ -40,7 +40,7 @@ public:
 
 	/** Removes the front item of the queue and returns it. */
 	T &pop() {
-		std::unique_lock<std::mutex> lock{mutex};
+		std::unique_lock<std::mutex> lock{this->mutex};
 		while (this->queue.empty()) {
 			this->elements_available.wait(lock);
 		}
@@ -51,7 +51,7 @@ public:
 
 	/** Appends the given item to the queue. */
 	void push(const T &item) {
-		std::unique_lock<std::mutex> lock{mutex};
+		std::unique_lock<std::mutex> lock{this->mutex};
 		this->queue.push(item);
 		lock.unlock();
 		this->elements_available.notify_one();

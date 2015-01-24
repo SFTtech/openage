@@ -21,8 +21,10 @@ std::unique_ptr<DynamicLoader> DynamicLoader::create(const std::string &path,
 		loader.reset(new OpusDynamicLoader{path});
 		break;
 	default:
-		throw util::Error{"No dynamic audio loader for format supported: %d",
-			format};
+		throw util::Error{
+			"No dynamic audio loader for format supported: %d",
+			format
+		};
 	}
 	return std::move(loader);
 }

@@ -71,8 +71,8 @@ private:
 	 * by the job manager.
 	 */
 	Job(std::shared_ptr<TypedJobStateBase<T>> state)
-			:
-			state{state} {
+		:
+		state{state} {
 	}
 
 	/*

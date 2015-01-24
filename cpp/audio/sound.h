@@ -69,7 +69,6 @@ public:
 	 * @param length the number of values that should mixed
 	 */
 	bool mix_audio(int32_t *stream, int length);
-
 };
 
 /**

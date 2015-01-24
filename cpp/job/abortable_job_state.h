@@ -36,9 +36,13 @@ public:
 
 protected:
 	virtual T execute_and_get(should_abort_t should_abort) {
+		// abort is a function, that can be used to abort a running job. It is
+		// passed to the executing function.
 		static auto abort = []() {
 			throw JobAbortedException{};
 		};
+		// should_abort is a function, that returns, whether a running job
+		// should be aborted.
 		return std::move(this->function(should_abort, abort));
 	}
 };
