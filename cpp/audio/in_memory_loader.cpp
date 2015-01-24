@@ -9,12 +9,12 @@ namespace openage {
 namespace audio {
 
 InMemoryLoader::InMemoryLoader(const std::string &path)
-		:
-		path{path} {
+	:
+	path{path} {
 }
 
 std::unique_ptr<InMemoryLoader> InMemoryLoader::create(const std::string &path,
-		format_t format) {
+                                                       format_t format) {
 	std::unique_ptr<InMemoryLoader> loader;
 	// switch format and return an appropriate loader
 	switch (format) {

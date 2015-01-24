@@ -9,12 +9,12 @@ namespace openage {
 namespace audio {
 
 DynamicLoader::DynamicLoader(const std::string &path)
-		:
-		path{path} {
+	:
+	path{path} {
 }
 
 std::unique_ptr<DynamicLoader> DynamicLoader::create(const std::string &path,
-		format_t format) {
+                                                     format_t format) {
 	std::unique_ptr<DynamicLoader> loader;
 	switch (format) {
 	case format_t::OPUS:

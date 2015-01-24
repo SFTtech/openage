@@ -41,7 +41,7 @@ public:
 	 *
 	 * @param function the function that is executed as background job
 	 * @param callback the callback function that is executed, when the background
-	 *        job has finished 
+	 *        job has finished
 	 */
 	template<class T>
 	Job<T> enqueue(job_function_t<T> function,
@@ -62,7 +62,7 @@ public:
 	 *
 	 * @param function the function that is executed as background job
 	 * @param callback the callback function that is executed, when the background
-	 *        job has finished 
+	 *        job has finished
 	 */
 	template<class T>
 	Job<T> enqueue(abortable_function_t<T> function,
@@ -77,7 +77,7 @@ private:
 	/** Creates a new job group with the given parent worker. */
 	JobGroup(Worker *parent_worker);
 
-	/** 
+	/**
 	 * The job manager must be a friend of the worker in order to call the
 	 * private constructor.
 	 */

@@ -22,7 +22,7 @@ public:
 	/** Default constructor. */
 	virtual ~JobStateBase() = default;
 
-	/** 
+	/**
 	 * This function executes the job. It returns whether the job has been
 	 * aborted.
 	 */

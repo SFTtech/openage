@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "opus_in_memory_loader.h"
 
@@ -13,8 +13,8 @@ namespace openage {
 namespace audio {
 
 OpusInMemoryLoader::OpusInMemoryLoader(const std::string &path)
-		:
-		InMemoryLoader{path} {
+	:
+	InMemoryLoader{path} {
 }
 
 // custom deleter for OggOpusFile unique pointers

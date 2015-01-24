@@ -27,7 +27,7 @@ class TypedJobStateBase : public JobStateBase {
 public:
 	/** Id of the thread, that created this job state. */
 	unsigned thread_id;
-	
+
 	/**
 	 * A callback function that is called when the job has finished. Can be
 	 * empty.

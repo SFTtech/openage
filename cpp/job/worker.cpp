@@ -61,9 +61,9 @@ void Worker::process() {
 		while (this->pending_jobs.empty() and not this->manager->has_job()) {
 			// the thread should wait
 			this->jobs_available.wait(lock);
-			
+
 			// when the thread is notified, first check if the thread should be
-			// stopped 
+			// stopped
 			if (not this->is_running.load()) {
 				return;
 			}

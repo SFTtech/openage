@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_AUDIO_SOUND_H_
 #define OPENAGE_AUDIO_SOUND_H_
@@ -116,7 +116,7 @@ public:
 	 * restarts automatically after it has finishes.
 	 * @param looping true, if this sound should be looping, otherwise false
 	 */
-	void set_looping(bool looping);	
+	void set_looping(bool looping);
 	/**
 	 * Returns whether this sound is looping.
 	 */

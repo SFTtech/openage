@@ -25,10 +25,10 @@ public:
 
 	/** Creates a new abortable job with the given function and callback. */
 	AbortableJobState(abortable_function_t<T> function,
-			callback_function_t<T> callback)
-			:
-			TypedJobStateBase<T>{callback},
-			function{function} {
+                      callback_function_t<T> callback)
+		:
+		TypedJobStateBase<T>{callback},
+		function{function} {
 	}
 
 	/** Default destructor. */

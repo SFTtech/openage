@@ -37,7 +37,7 @@ OpusDynamicLoader::OpusDynamicLoader(const std::string &path)
 }
 
 size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
-		size_t chunk_size) {
+                                     size_t chunk_size) {
 	// if the requested offset is greater than the resource's length, there is
 	// no chunk left to load
 	if (offset > this->length) {

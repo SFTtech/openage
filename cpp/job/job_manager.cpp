@@ -57,7 +57,7 @@ void JobManager::execute_callbacks() {
 	auto it = this->finished_jobs.find(id);
 	if (it != std::end(this->finished_jobs)) {
 		std::vector<std::shared_ptr<JobStateBase>> jobs;
-		std::swap(jobs, it->second); 
+		std::swap(jobs, it->second);
 		it->second.clear();
 		lock.unlock();
 		for (auto &job : jobs) {
@@ -99,11 +99,11 @@ bool JobManager::has_job() {
 void JobManager::finish_job(std::shared_ptr<JobStateBase> job) {
 	std::unique_lock<std::mutex> lock{this->finished_jobs_mutex};
 	auto it = this->finished_jobs.find(job->get_thread_id());
-	// if there haven't been a finished job for the thread_id, create a new
+	// if there hasn't been a finished job for the thread_id, create a new
 	// entry
 	if (it == std::end(this->finished_jobs)) {
 		this->finished_jobs.insert({job->get_thread_id(), {job}});
-	// otherwise, we append the job to the existing entryy	
+	// otherwise, we append the job to the existing entry
 	} else {
 		it->second.push_back(job);
 	}

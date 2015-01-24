@@ -8,8 +8,8 @@ namespace job {
 std::atomic_uint ThreadId::counting_id;
 
 ThreadId::ThreadId()
-		:
-		id{ThreadId::counting_id++} {
+	:
+	id{ThreadId::counting_id++} {
 }
 
 // For each thread a new thread_local ThreadId object is created and counting_id

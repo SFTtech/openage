@@ -31,10 +31,10 @@ void Resource::use() {
 void Resource::stop_using() {
 }
 
-std::shared_ptr<Resource> Resource::create_resource(category_t category,
-		int id, const std::string &path, format_t format,
-		loader_policy_t loader_policy) {
-
+std::shared_ptr<Resource> Resource::create_resource(category_t category, int id,
+                                                    const std::string &path,
+                                                    format_t format,
+                                                    loader_policy_t loader_policy) {
 	switch (loader_policy) {
 	case loader_policy_t::IN_MEMORY:
 		return std::make_shared<InMemoryResource>(category, id, path, format);

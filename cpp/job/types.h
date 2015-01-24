@@ -27,7 +27,7 @@ using abortable_function_t = std::function<T(std::function<bool()>,std::function
 
 /**
  * Type of a function to retrieve the result of a job. If the job threw an
- * exception, it is rethrown by this function. 
+ * exception, it is rethrown by this function.
  *
  * @param T the job's result type
  */

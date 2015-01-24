@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "in_memory_resource.h"
 
@@ -8,9 +8,9 @@ namespace openage {
 namespace audio {
 
 InMemoryResource::InMemoryResource(category_t category,
-	                               int id,
-	                               const std::string &path,
-	                               format_t format)
+                                   int id,
+                                   const std::string &path,
+                                   format_t format)
 	:
 	Resource{category, id} {
 
@@ -19,7 +19,7 @@ InMemoryResource::InMemoryResource(category_t category,
 }
 
 audio_chunk_t InMemoryResource::get_data(size_t position,
-	                                     size_t data_length) {
+                                         size_t data_length) {
 	// if the resource's end has been reached
 	size_t length = buffer.size();
 	if (position >= length) {

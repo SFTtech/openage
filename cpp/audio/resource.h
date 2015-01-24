@@ -70,9 +70,10 @@ public:
 	 */
 	virtual audio_chunk_t get_data(size_t position, size_t data_length) = 0;
 
-	static std::shared_ptr<Resource> create_resource(category_t category,
-			int id, const std::string &path, format_t format,
-			loader_policy_t loader_policy);
+	static std::shared_ptr<Resource> create_resource(category_t category, int id,
+	                                                 const std::string &path,
+	                                                 format_t format,
+	                                                 loader_policy_t loader_policy);
 };
 
 }

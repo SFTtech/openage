@@ -31,7 +31,7 @@ class JobManager {
 private:
 	/** The number of internal worker threads. */
 	int number_of_workers;
-	
+
 	/**
 	 * The index of the worker thread, that is used for the next returned job
 	 * group.
@@ -50,7 +50,7 @@ private:
 	/** A mutex to synchronize the finished job map. */
 	std::mutex finished_jobs_mutex;
 
-	/** 
+	/**
 	 * Mapping from thread id's to a list of jobs, that have been created by the
 	 * corresponding thread and have finished.
 	 */
@@ -88,11 +88,11 @@ public:
 	 *
 	 * @param function the function that is executed as background job
 	 * @param callback the callback function that is executed, when the background
-	 *        job has finished 
+	 *        job has finished
 	 */
 	template<class T>
 	Job<T> enqueue(job_function_t<T> function,
-		           callback_function_t<T> callback={}) {
+	               callback_function_t<T> callback={}) {
 		auto state = std::make_shared<JobState<T>>(function, callback);
 		this->enqueue_state(state);
 		return Job<T>{state};
@@ -108,11 +108,11 @@ public:
 	 *
 	 * @param function the function that is executed as background job
 	 * @param callback the callback function that is executed, when the background
-	 *        job has finished 
+	 *        job has finished
 	 */
 	template<class T>
 	Job<T> enqueue(abortable_function_t<T> function,
-		           callback_function_t<T> callback={}) {
+	               callback_function_t<T> callback={}) {
 		auto state = std::make_shared<AbortableJobState<T>>(function, callback);
 		this->enqueue_state(state);
 		return Job<T>{state};

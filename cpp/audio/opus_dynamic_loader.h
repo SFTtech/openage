@@ -33,7 +33,7 @@ public:
 	virtual ~OpusDynamicLoader() = default;
 
 	virtual size_t load_chunk(int16_t *chunk_buffer, size_t offset,
-			size_t chunk_size);
+	                          size_t chunk_size);
 
 private:
 	/**

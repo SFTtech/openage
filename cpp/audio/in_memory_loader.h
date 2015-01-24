@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_AUDIO_IN_MEMORY_LOADER_H_
 #define OPENAGE_AUDIO_IN_MEMORY_LOADER_H_
@@ -43,7 +43,7 @@ public:
 	 * @param format the resource's audio format
 	 */
 	static std::unique_ptr<InMemoryLoader> create(const std::string &path,
-			format_t format);
+	                                              format_t format);
 };
 
 }

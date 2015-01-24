@@ -23,11 +23,11 @@ int test_simple_job() {
 			result = 0;
 		}
 		finished = true;
-		
+
 	};
 	manager.enqueue<int>(job_function, job_callback);
 
-	while(!finished) {
+	while (not finished) {
 		manager.execute_callbacks();
 	}
 
@@ -56,7 +56,7 @@ int test_simple_job_with_exception() {
 	};
 	manager.enqueue<int>(job_function, job_callback);
 
-	while(!finished) {
+	while (not finished) {
 		manager.execute_callbacks();
 	}
 

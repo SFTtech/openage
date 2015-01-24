@@ -9,7 +9,7 @@ namespace openage {
 namespace audio {
 
 chunk_info_t::chunk_info_t(chunk_info_t::state_t state,
-	                       size_t buffer_size)
+                           size_t buffer_size)
 	:
 	state{state},
 	actual_size{0},
@@ -17,12 +17,12 @@ chunk_info_t::chunk_info_t(chunk_info_t::state_t state,
 }
 
 DynamicResource::DynamicResource(category_t category,
-	                             int id,
-	                             const std::string &path,
-	                             format_t format,
-	                             int preload_threshold,
-	                             size_t chunk_size,
-	                             size_t max_chunks)
+                                 int id,
+                                 const std::string &path,
+                                 format_t format,
+                                 int preload_threshold,
+                                 size_t chunk_size,
+                                 size_t max_chunks)
 	:
 	Resource{category, id},
 	path{path},
@@ -136,7 +136,7 @@ void DynamicResource::start_preloading(size_t resource_chunk_index) {
 }
 
 void DynamicResource::start_loading(std::shared_ptr<chunk_info_t> chunk_info,
-	                                size_t resource_chunk_offset) {
+                                    size_t resource_chunk_offset) {
 	chunk_info->state.store(chunk_info_t::state_t::LOADING);
 
 	auto loading_function = [this,chunk_info,resource_chunk_offset]() -> int {
