@@ -12,3 +12,5 @@ add_sources(${PROJECT_NAME}
 	timer.cpp
 	unicode.cpp
 )
+
+add_subdirectory("block_allocator")
