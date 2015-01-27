@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_PATHFINDING_PATH_H_
 #define OPENAGE_PATHFINDING_PATH_H_
@@ -201,7 +201,6 @@ namespace std {
 /**
  * Hash function for path nodes.
  * Just uses their position.
- * TODO: tile_t should provide its own hash function.
  */
 template <>
 struct hash<openage::path::Node &> {
@@ -209,34 +208,6 @@ struct hash<openage::path::Node &> {
 		openage::coord::phys3 node_pos = x.position;
 		size_t nehash = std::hash<openage::coord::phys_t>{}(node_pos.ne);
 		size_t sehash = std::hash<openage::coord::phys_t>{}(node_pos.se);
-		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
-	}
-};
-
-/**
- * Hash function for tiles
- *
- * TODO: relocate to coord/
- */
-template <>
-struct hash<openage::coord::tile> {
-	size_t operator ()(const openage::coord::tile &tile) const {
-		size_t nehash = std::hash<openage::coord::tile_t> {}(tile.ne);
-		size_t sehash = std::hash<openage::coord::tile_t> {}(tile.se);
-		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
-	}
-};
-
-/**
- * Hash function for phys3 coordinates.
- *
- * TODO: relocate to coord/
- */
-template <>
-struct hash<openage::coord::phys3> {
-	size_t operator ()(const openage::coord::phys3 &pos) const {
-		size_t nehash = std::hash<openage::coord::phys_t> {}(pos.ne);
-		size_t sehash = std::hash<openage::coord::phys_t> {}(pos.se);
 		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
 	}
 };
