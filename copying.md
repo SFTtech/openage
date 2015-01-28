@@ -1,5 +1,5 @@
 Any file in this project that doesn't state otherwise, and isn't listed as an
-exception below, is Copyright 2013-2014 The openage authors, and licensed
+exception below, is Copyright 2013-2015 The openage authors, and licensed
 under the terms of the GNU General Public License Version 3, or
 (at your option) any later version ("GPL3+").
 A copy of the license can be found in [legal/GPLV3](legal/GPLv3).
@@ -41,6 +41,7 @@ _the openage authors_ are:
 | Sam Schetterer              | schets                      | samschet@gmail.com               |
 | Georg Kilzer                | leper                       | leper@wildfiregames.com          |
 | Florian Erler               | ethon                       | ethon@ethon.cc                   |
+| Michał Janiszewski          | janisozaur                  | janisozaur+openage@gmail.com     |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
