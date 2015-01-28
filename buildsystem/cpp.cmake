@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 # sets CXXFLAGS and compiler for the project
 
@@ -12,26 +12,35 @@ function(cpp_init)
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-mismatched-tags")
 	endif()
 
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}" PARENT_SCOPE)
-	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g" PARENT_SCOPE)
-	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS}" PARENT_SCOPE)
-
-	set(CPP_SOURCE_DIR "${CMAKE_SOURCE_DIR}/cpp" PARENT_SCOPE)
-
 	function(require_cxx_version CXXNAME MINIMAL)
 		if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MINIMAL})
 			message(FATAL_ERROR ">=${CXXNAME}-${MINIMAL} required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
 		endif()
 	endfunction()
 
+	function(set_cxx_versioned_flags CXXNAME MINIMAL FLAGS)
+		if(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MINIMAL})
+			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${FLAGS}" PARENT_SCOPE)
+		endif()
+	endfunction()
+
 	# check for compiler versions
 	if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 		require_cxx_version("gcc" 4.8)
+		set_cxx_versioned_flags("gcc" 4.9 "-fdiagnostics-color=auto")
 	elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 		require_cxx_version("clang" 3.3)
+		# clang has colors enabled by default, no need to enable it here
 	else() #"Intel", "MSVC", etc..
 		message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 	endif()
+
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}" PARENT_SCOPE)
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g" PARENT_SCOPE)
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS}" PARENT_SCOPE)
+
+	set(CPP_SOURCE_DIR "${CMAKE_SOURCE_DIR}/cpp" PARENT_SCOPE)
+
 endfunction()
 
 # declare a new 'empty' executable file.
