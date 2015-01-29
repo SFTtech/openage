@@ -377,4 +377,20 @@ void Engine::render_text(coord::window position, size_t size, const char *format
 	font->render_static(position.x, position.y, buf.c_str());
 }
 
+void Engine::move_phys_camera(float x, float y, float amount) {
+	// move the cam
+	coord::vec2f cam_movement {x, y};
+
+	// this factor controls the scroll speed
+	cam_movement *= amount;
+
+	// calculate camera position delta from velocity and frame duration
+	coord::camgame_delta cam_delta;
+	cam_delta.x = cam_movement.x;
+	cam_delta.y = - cam_movement.y;
+
+	//update camera phys position
+	this->camgame_phys += cam_delta.to_phys3();
+}
+
 } //namespace openage
