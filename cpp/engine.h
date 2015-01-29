@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_ENGINE_H_
 #define OPENAGE_ENGINE_H_
@@ -11,6 +11,7 @@
 
 #include "audio/audio_manager.h"
 #include "coord/camgame.h"
+#include "coord/vec2f.h"
 #include "coord/phys3.h"
 #include "coord/window.h"
 #include "font.h"
@@ -187,6 +188,11 @@ public:
 	 * render text with the at a position with specified font size
 	 */
 	void render_text(coord::window position, size_t size, const char *format, ...);
+
+	/**
+	 * move the phys3 camera incorporated in the engine
+	 */
+	void move_phys_camera(float x, float y, float amount = 1.0);
 
 	/**
 	 * current engine state variable.

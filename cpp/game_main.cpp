@@ -426,22 +426,7 @@ bool GameMain::on_input(SDL_Event *e) {
 		// scroll, if middle mouse is being pressed
 		//  SDL_GetRelativeMouseMode() queries sdl for that.
 		if (scrolling_active) {
-
-			// move the cam
-			coord::vec2f cam_movement {0.0, 0.0};
-			cam_movement.x = e->motion.xrel;
-			cam_movement.y = e->motion.yrel;
-
-			// this factor controls the scroll speed
-			// cam_movement *= 1;
-
-			// calculate camera position delta from velocity and frame duration
-			coord::camgame_delta cam_delta;
-			cam_delta.x = cam_movement.x;
-			cam_delta.y = - cam_movement.y;
-
-			//update camera phys position
-			engine.camgame_phys += cam_delta.to_phys3();
+			engine.move_phys_camera(e->motion.xrel, e->motion.yrel);
 		}
 		break;
 
@@ -524,34 +509,24 @@ void GameMain::move_camera() {
 
 	// camera movement speed, in pixels per millisecond
 	// one pixel per millisecond equals 14.3 tiles/second
-	float cam_movement_speed_keyboard = 0.5;
-
-	coord::vec2f cam_movement {0.0, 0.0};
+	float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
 
 	CoreInputHandler &input_handler = engine.get_input_handler();
 
 	if (input_handler.is_key_down(SDLK_LEFT)) {
-		cam_movement.x -= cam_movement_speed_keyboard;
+		mov_x = -cam_movement_speed_keyboard;
 	}
 	if (input_handler.is_key_down(SDLK_RIGHT)) {
-		cam_movement.x += cam_movement_speed_keyboard;
+		mov_x = cam_movement_speed_keyboard;
 	}
 	if (input_handler.is_key_down(SDLK_DOWN)) {
-		cam_movement.y -= cam_movement_speed_keyboard;
+		mov_y = cam_movement_speed_keyboard;
 	}
 	if (input_handler.is_key_down(SDLK_UP)) {
-		cam_movement.y += cam_movement_speed_keyboard;
+		mov_y = -cam_movement_speed_keyboard;
 	}
 
-	cam_movement *= (float) engine.lastframe_msec();
-
-	// calculate camera position delta from velocity and frame duration
-	coord::camgame_delta cam_delta;
-	cam_delta.x = cam_movement.x;
-	cam_delta.y = cam_movement.y;
-
-	// update camera phys position
-	engine.camgame_phys += cam_delta.to_phys3();
+	engine.move_phys_camera(mov_x, mov_y, (float) engine.lastframe_msec());
 }
 
 
