@@ -585,6 +585,15 @@ bool GameMain::on_draw() {
 		engine.render_text({0, 0}, 20, "Loading gamedata...");
 	}
 
+	// draw construction or actions mode indicator
+	int x = 400 - (engine.window_size.x / 2);
+	int y = 35 - (engine.window_size.y / 2);
+	if (construct_mode) {
+		engine.render_text({x, y}, 20, "Construct mode");
+	} else {
+		engine.render_text({x, y}, 20, "Actions mode");
+	}
+
 	return true;
 }
 
