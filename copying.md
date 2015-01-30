@@ -42,6 +42,7 @@ _the openage authors_ are:
 | Georg Kilzer                | leper                       | leper@wildfiregames.com          |
 | Florian Erler               | ethon                       | ethon@ethon.cc                   |
 | Michał Janiszewski          | janisozaur                  | janisozaur+openage@gmail.com     |
+| Paul Tolstoi                | ptolstoi, antodias          | paul.tolstoi@gmail.com           |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

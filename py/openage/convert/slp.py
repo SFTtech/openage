@@ -1,4 +1,4 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 import os
 from struct import Struct, unpack_from
@@ -539,9 +539,9 @@ def determine_rgba_matrix(image_matrix, palette, player_number=0):
             elif isinstance(pixel, SpecialColor):
                 base_pcolor, is_outline = pixel.get_pcolor()
                 if is_outline:
-                    alpha = 253  # mark this pixel as outline
+                    alpha = 5  # mark this pixel as outline
                 else:
-                    alpha = 254  # mark this pixel as player color
+                    alpha = 35 + base_pcolor * 25  # mark this pixel as player color
 
                 # get rgb base color from the color table
                 # store it the preview player color

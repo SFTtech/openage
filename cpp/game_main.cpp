@@ -192,11 +192,9 @@ GameMain::GameMain(Engine *engine)
 	teamcolor_shader::texture = teamcolor_shader::program->get_uniform_id("texture");
 	teamcolor_shader::tex_coord = teamcolor_shader::program->get_attribute_id("tex_coordinates");
 	teamcolor_shader::player_id_var = teamcolor_shader::program->get_uniform_id("player_number");
-	teamcolor_shader::alpha_marker_var = teamcolor_shader::program->get_uniform_id("alpha_marker");
 	teamcolor_shader::player_color_var = teamcolor_shader::program->get_uniform_id("player_color");
 	teamcolor_shader::program->use();
 	glUniform1i(teamcolor_shader::texture, 0);
-	glUniform1f(teamcolor_shader::alpha_marker_var, 254.0/255.0);
 	// fill the teamcolor shader's player color table:
 	glUniform4fv(teamcolor_shader::player_color_var, 64, playercolors);
 	teamcolor_shader::program->stopusing();
