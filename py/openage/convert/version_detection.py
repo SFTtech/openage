@@ -11,22 +11,26 @@ class GameVersion:
     Can check if all the needed files exist.
     """
 
-    def __init__(self, name, drs_files=None, dat_files=None,
-                 langdll_files=None, prereqs=None):
+    def __init__(self, name, interfac=None, drs_files=None, blendomatic=None,
+                 dat_files=None, langdll_files=None, prereqs=None):
         """
         Creates a new GameVersion object.
 
         Arguments:
         name          -- Name of the version (for debug messages)
-        drs_files     -- Set of paths to DRS archives
+        interfac      -- Set of paths to interface DRS archives
+        drs_files     -- Set of paths to other DRS archives
+        blendomatic   -- Set of paths to blendomatic DAT files
         dat_files     -- Set of paths to gamedata DAT files
         langdll_files -- Set of paths to language DLL files
-        prereqs       -- Set of prerequisite GameVersion objects.
+        prereqs       -- Set of prerequisite GameVersion objects
         """
 
         self.name = name
         self.files = {
+            "interfac": interfac or set(),
             "drs": drs_files or set(),
+            "blendomatic": blendomatic or set(),
             "dat": dat_files or set(),
             "langdll": langdll_files or set(),
         }
@@ -84,7 +88,7 @@ class GameVersion:
         Returns a set of all files defined in this version and its prerequisites.
 
         Arguments:
-        filetype -- One of 'drs', 'dat', 'langdll' or 'all'
+        filetype -- One of 'interfac', 'drs', 'blendomatic', 'dat', 'langdll' or 'all'
         """
 
         result = self.get_own_files(filetype)
@@ -98,12 +102,14 @@ class GameVersion:
         Returns a set of all files defined in this version.
 
         Arguments:
-        filetype -- One of 'drs', 'dat', 'langdll' or 'all'
+        filetype -- One of 'interfac', 'drs', 'blendomatic', 'dat', 'langdll' or 'all'
         """
 
         if filetype == "all":
             return (
+                self.get_own_files("interfac") |
                 self.get_own_files("drs") |
+                self.get_own_files("blendomatic") |
                 self.get_own_files("dat") |
                 self.get_own_files("langdll")
             )
@@ -133,6 +139,7 @@ class VersionDetector:
             if version.exists(self.basedir):
                 dbg("Found version '%s'." % version.name, 1)
                 self.version = version
+                self.get_files = self.version.get_files
                 break
 
         if self.version is None:
@@ -145,12 +152,5 @@ class VersionDetector:
 
         return self.version.name
 
-    def get_files(self, filetype):
-        """
-        Returns a set of all relevant files found, filtered by filetype.
-
-        Arguments:
-        filetype -- One of 'drs', 'dat', 'langdll' or 'all'
-        """
-
-        return self.version.get_files(filetype)
+    # get_files(self, filetype):
+        # this function is created in the constructor

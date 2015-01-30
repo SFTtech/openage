@@ -4,19 +4,16 @@ from ..version_detection import GameVersion
 
 base = GameVersion(
     name = "base",
+    interfac = {"Data/interfac.drs"},
     drs_files = {
         "Data/gamedata.drs",
         "Data/graphics.drs",
-        "Data/interfac.drs",
         "Data/sounds.drs",
         "Data/terrain.drs",
     },
-    dat_files = {
-        "Data/empires2.dat",
-        "Data/blendomatic.dat",
-    },
+    blendomatic = {"Data/blendomatic.dat"},
+    dat_files = {"Data/empires2.dat"},
     langdll_files = {"language.dll"},
-    prereqs = set()
 )
 
 x1 = GameVersion(
