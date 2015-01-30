@@ -26,7 +26,7 @@ GLint texture, tex_coord;
 namespace teamcolor_shader {
 shader::Program *program;
 GLint texture, tex_coord;
-GLint player_id_var, alpha_marker_var, player_color_var;
+GLint player_id_var, player_color_var;
 }
 
 namespace alphamask_shader {
