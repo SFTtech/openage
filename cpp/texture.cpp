@@ -1,12 +1,14 @@
 // Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+
 #include "texture.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
 #include <cassert>
-#include <cmath>
 #include <cstdio>
 
 #include "log.h"

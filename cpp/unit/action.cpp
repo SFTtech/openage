@@ -1,5 +1,6 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
+#define _USE_MATH_DEFINES
 #include <cmath>
 
 #include "../game_main.h"
