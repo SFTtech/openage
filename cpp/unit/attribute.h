@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UNIT_ATTRIBUTE_H_
 #define OPENAGE_UNIT_ATTRIBUTE_H_
@@ -48,24 +48,24 @@ template<attr_type T> Attribute<T> get_attr(attr_map_t &map) {
 
 template<> class Attribute<attr_type::color>: public AttributeContainer {
 public:
-	Attribute(uint c)
+	Attribute(unsigned int c)
 		:
 		AttributeContainer{attr_type::color},
 		color{c} {}
 
-	uint color;
+	unsigned int color;
 };
 
 template<> class Attribute<attr_type::hitpoints>: public AttributeContainer {
 public:
-	Attribute(uint i, uint m)
+	Attribute(unsigned int i, unsigned int m)
 		:
 		AttributeContainer{attr_type::hitpoints},
 		current{i},
 		max{m} {}
 
-	uint current;
-	uint max;
+	unsigned int current;
+	unsigned int max;
 };
 
 template<> class Attribute<attr_type::speed>: public AttributeContainer {
@@ -94,7 +94,7 @@ public:
 		:
 		AttributeContainer{attr_type::dropsite} {}
 
-	uint resource_type; // todo resource type enum
+	unsigned int resource_type; // todo resource type enum
 };
 
 } // namespace openage

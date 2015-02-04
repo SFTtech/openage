@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
@@ -145,7 +145,7 @@ UnitReference Unit::get_ref() {
 	return UnitReference(container, id, this);
 }
 
-uint dir_group(coord::phys3_delta dir, uint angles, uint first_angle) {
+unsigned int dir_group(coord::phys3_delta dir, unsigned int angles, unsigned int first_angle) {
 	// normalise dir
 	double len = std::hypot(dir.ne, dir.se);
 	double dir_ne = static_cast<double>(dir.ne) / len;
@@ -154,7 +154,7 @@ uint dir_group(coord::phys3_delta dir, uint angles, uint first_angle) {
 	/*
 	 * formula to find the correct angle...
 	 */
-	return static_cast<uint>(round(angles * atan2(dir_se, dir_ne) * M_1_PI / 2 ) + first_angle) % angles;
+	return static_cast<unsigned int>(round(angles * atan2(dir_se, dir_ne) * M_1_PI / 2 ) + first_angle) % angles;
 }
 
 } /* namespace openage */

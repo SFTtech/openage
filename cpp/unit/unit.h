@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UNIT_UNIT_H_
 #define OPENAGE_UNIT_UNIT_H_
@@ -159,7 +159,7 @@ private:
  * @param first_angle offset added to angle, modulo number of angles
  * @return image set index
  */
-uint dir_group(coord::phys3_delta dir, uint angles=8, uint first_angle=5);
+unsigned int dir_group(coord::phys3_delta dir, unsigned int angles=8, unsigned int first_angle=5);
 
 } // namespace openage
 

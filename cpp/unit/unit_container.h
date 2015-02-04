@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UNIT_UNIT_CONTAINER_H_
 #define OPENAGE_UNIT_UNIT_CONTAINER_H_
@@ -68,7 +68,7 @@ public:
 	bool on_tick();
 
 private:
-	uint next_new_id;
+	unsigned int next_new_id;
 
 	/**
 	 * mapping unit ids to unit objects
