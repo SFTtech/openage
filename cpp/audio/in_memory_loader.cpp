@@ -4,7 +4,7 @@
 
 #include <cinttypes>
 
-#include <opusfile.h>
+#include <opus/opusfile.h>
 
 #include "../log.h"
 #include "../util/error.h"

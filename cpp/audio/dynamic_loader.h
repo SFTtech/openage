@@ -6,7 +6,7 @@
 #include <memory>
 #include <string>
 
-#include <opusfile.h>
+#include <opus/opusfile.h>
 
 #include "format.h"
 #include "types.h"

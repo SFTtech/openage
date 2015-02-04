@@ -7,7 +7,7 @@
 #include <memory>
 #include <vector>
 
-#include <opusfile.h>
+#include <opus/opusfile.h>
 
 namespace openage {
 namespace audio {
