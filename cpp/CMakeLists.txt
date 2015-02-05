@@ -54,8 +54,6 @@ finalize_executable(${PROJECT_NAME})
 
 # freetype includedir hint for ubuntu...
 find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2)
-find_package(Opusfile REQUIRED)
-
 include(FindPkgConfig)
 include(FindPackageHandleStandardArgs)
 
@@ -76,6 +74,7 @@ find_package(OpenGL REQUIRED)
 find_package(SDL2 REQUIRED)
 find_package(FTGL REQUIRED)
 find_package(SDL2Image REQUIRED)
+find_package(Opus REQUIRED )
 
 if(WANT_GPERFTOOLS_PROFILER OR WANT_GPERFTOOLS_TCMALLOC)
 	find_package(GPerfTools)
@@ -119,7 +118,7 @@ include_directories(
 	${OPENGL_INCLUDE_DIR}
 	${FREETYPE_INCLUDE_DIRS}
 	${FTGL_INCLUDE_DIRS}
-	${OPUSFILE_INCLUDE_DIR}
+	${OPUS_INCLUDE_DIRS}
 	${PYTHON_INCLUDE_DIR}
 	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
@@ -133,7 +132,7 @@ target_link_libraries(${PROJECT_NAME}
 	${GLEW_LIBRARIES}
 	${MATH_LIB}
 	${OPENGL_LIBRARY}
-	${OPUSFILE_LIBRARIES}
+	${OPUS_LIBRARIES}
 	${PYTHON_LIBRARY}
 	${SDL2IMAGE_LIBRARIES}
 	${SDL2_LIBRARY}
