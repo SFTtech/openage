@@ -43,6 +43,7 @@ _the openage authors_ are:
 | Florian Erler               | ethon                       | ethon@ethon.cc                   |
 | Michał Janiszewski          | janisozaur                  | janisozaur+openage@gmail.com     |
 | Lautaro Nahuel De León      | lndl                        | laudleon@gmail.com               |
+| Robin Kreis                 | rkreis                      | r.kreis@uni-bremen.de            |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
