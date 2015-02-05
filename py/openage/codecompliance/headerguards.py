@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 import os
 import re
@@ -41,7 +41,7 @@ def find_issues(dirname, guardprefix):
     """
     checks all headerguards in header files in the cpp folders.
     """
-    for fname in util.findfiles((dirname,), ('.h')):
+    for fname in util.findfiles((dirname,), ('.h',)):
         try:
             expected_guard = fname[len(dirname) + 1:].upper()
             expected_guard = expected_guard.replace('.', '_').replace('/', '_')
