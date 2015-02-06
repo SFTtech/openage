@@ -1,10 +1,10 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "in_memory_loader.h"
 
 #include <cinttypes>
 
-#include <opusfile.h>
+#include <opus/opusfile.h>
 
 #include "../log.h"
 #include "../util/error.h"
