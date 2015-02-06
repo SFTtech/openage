@@ -1,4 +1,4 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 # media files conversion stuff
 
@@ -12,9 +12,7 @@ import subprocess
 
 from . import filelist
 from . import util
-from .colortable import ColorTable, PlayerColorTable
 from .dataformat.data_formatter import DataFormatter
-from .drs import DRS
 from .hardcoded import termcolors
 from .texture import Texture
 
@@ -66,35 +64,15 @@ def media_convert(args):
         args.extract.append('*:*.*')
 
     extraction_rules = [ExtractionRule(e) for e in args.extract]
-
-    # set path in utility class
-    dbg("setting age2 input directory to " + args.srcdir, 1)
-    util.set_read_dir(args.srcdir)
-
-    drsfiles = {
-        "graphics":  DRS("Data/graphics.drs"),
-        "interface": DRS("Data/interfac.drs"),
-        "sounds0":   DRS("Data/sounds.drs"),
-        "sounds1":   DRS("Data/sounds_x1.drs"),
-        "gamedata1": DRS("Data/gamedata_x1.drs"),
-        "gamedata2": DRS("Data/gamedata_x1_p1.drs"),
-        "terrain":   DRS("Data/terrain.drs")
-    }
-
     # gamedata.drs does not exist in HD edition,
     # but its contents are in gamedata_x1.drs instead,
     # so we can ignore this file if it doesn't exist
-    if os.path.isfile(util.file_get_path("Data/gamedata.drs")):
-        drsfiles["gamedata0"] = DRS("Data/gamedata.drs")
 
-    # this is the ingame color palette file id,
-    # 256 color lookup for all graphics pixels
-    palette_id = 50500
-    palette = ColorTable(drsfiles["interface"].get_file_data('bin',
-                                                             palette_id))
+    palette_id = None  # 50500
+    palette = None  # read_palettes()
 
     # metadata dumping output format, more to come?
-    output_formats = ("csv",)
+    output_formats = None  # metadata_formats
 
     termcolortable = ColorTable(termcolors.urxvtcoltable)
 
@@ -109,11 +87,7 @@ def media_convert(args):
         dbg("setting write dir to " + args.output, 1)
         util.set_write_dir(args.output)
 
-        player_palette = PlayerColorTable(palette)
-
-        if args.extrafiles:
-            palette.save_visualization('info/colortable.pal.png')
-            player_palette.save_visualization('info/playercolortable.pal.png')
+        player_palette = None  # read_palettes()
 
         from . import blendomatic
 
