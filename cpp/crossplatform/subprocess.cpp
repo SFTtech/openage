@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "subprocess.h"
 
@@ -6,7 +6,7 @@
 #include <cstring>
 #include <cerrno>
 
-#ifdef WIN32
+#ifdef _WIN32
 // TODO not yet implemented
 #else
 #include <sys/types.h>
@@ -23,7 +23,7 @@ namespace openage {
 namespace subprocess {
 
 bool is_executable(const char *filename) {
-	#ifdef WIN32
+	#ifdef _WIN32
 	// TODO not yet implemented
 	static_assert(false, "subprocess::is_executable is not yet implemented for WIN32");
 	#else
@@ -35,7 +35,7 @@ bool is_executable(const char *filename) {
 }
 
 std::string which(const char *name) {
-	#ifdef WIN32
+	#ifdef _WIN32
 	// TODO not yet implemented
 	static_assert(false, "subprocess::which is not yet implemented for WIN32");
 	#else
@@ -61,7 +61,7 @@ std::string which(const char *name) {
 }
 
 int call(const std::vector<const char *> &argv, bool wait, const char *redirect_stdout_to) {
-	#ifdef WIN32
+	#ifdef _WIN32
 	static_assert(false, "subprocess::call is not yet implemented for WIN32");
 	#else
 
