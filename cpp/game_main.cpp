@@ -592,7 +592,7 @@ bool GameMain::on_drawhud() {
 Texture *GameMain::find_graphic(int graphic_id) {
 	auto tex_it = this->graphics.find(graphic_id);
 	if (tex_it == this->graphics.end()) {
-		log::msg("  -> ignoring graphics_id: %zd", graphic_id);
+		log::msg("  -> ignoring graphics_id: %d", graphic_id);
 		return nullptr;
 	}
 
