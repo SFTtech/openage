@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include <cmath>
 
@@ -48,14 +48,14 @@ void UnitAction::draw() {
 	auto &d_attr = this->entity->get_attribute<attr_type::direction>();
 	coord::phys3_delta draw_dir = d_attr.unit_dir;
 	bool mirror = false;
-	uint angle = dir_group(draw_dir);
+	unsigned int angle = dir_group(draw_dir);
 	if (angle > 4) {
 		angle = 8 - angle;
 		mirror = true;
 	}
 
-	uint groupsize = this->tex->get_subtexture_count() / 5;
-	uint to_draw = angle * groupsize + ((uint) frame % groupsize);
+	unsigned int groupsize = this->tex->get_subtexture_count() / 5;
+	unsigned int to_draw = angle * groupsize + ((unsigned int) frame % groupsize);
 	this->tex->draw(draw_pos.to_camgame(), PLAYERCOLORED, mirror, to_draw, color);
 	this->frame += this->frame_rate;
 
