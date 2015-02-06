@@ -1,9 +1,9 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
-#include "heuristics.h"
-
+#define _USE_MATH_DEFINES
 #include <cmath>
 
+#include "heuristics.h"
 
 namespace openage {
 namespace path {

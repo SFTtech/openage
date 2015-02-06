@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 /** @file
  *
@@ -10,9 +10,10 @@
  * Cybernetics, IEEE Transactions on 4, no. 2 (1968): 100-107.
  */
 
-#include "a_star.h"
-
+#define _USE_MATH_DEFINES
 #include <cmath>
+
+#include "a_star.h"
 
 #include "../datastructure/pairing_heap.h"
 #include "../log.h"

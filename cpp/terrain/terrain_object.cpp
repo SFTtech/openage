@@ -1,7 +1,9 @@
 // Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
-#include <algorithm>
+#define _USE_MATH_DEFINES
 #include <cmath>
+
+#include <algorithm>
 
 #include "terrain_object.h"
 
