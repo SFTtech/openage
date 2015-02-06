@@ -125,6 +125,10 @@ cmake modules ([3-clause BSD license](legal/BSD-3-clause))
  - `buildsystem/modules/FindFTGL.cmake` (taken from [ulrichard's FTGL fork](https://github.com/ulrichard/ftgl))
  - `buildsystem/modules/FindGPerfTools.cmake` (taken from [VAST](https://github.com/mavam/vast))
 
+ cmake modules ([GPLv3](legal/GPLv3))
+
+ - `buildsystem/modules/FindOpus.cmake` (taken from [Unvanquished](https://github.com/Unvanquished/Unvanquished))
+
 Notes about this file:
 
 I (mic_e) am not a lawyer. This is an open-source project, we're doing this for
