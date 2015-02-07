@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 # data fixing script
 #
@@ -20,8 +20,7 @@ def fix_data(data):
 
     # remove terrains with slp_id == -1
     # we'll need them again in the future, with fixed slp ids
-    slp_ge0 = lambda x: x.slp_id >= 0
-    data.terrains = list(filter(slp_ge0, data.terrains))
+    data.terrains = list(filter(lambda x: x.slp_id >= 0, data.terrains))
 
     # assign correct blending modes
     # key:   dat file stored mode
