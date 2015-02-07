@@ -47,7 +47,7 @@ std::string sformat(const char *fmt, ...) {
 }
 
 std::string vsformat(const char *fmt, va_list ap) {
-	std::unique_ptr<char> str{vformat(fmt, ap)};
+	std::unique_ptr<char[]> str{vformat(fmt, ap)};
 	std::string ret{str.get()};
 	return ret;
 }
