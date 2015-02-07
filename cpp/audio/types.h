@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_AUDIO_TYPES_H_
 #define OPENAGE_AUDIO_TYPES_H_
@@ -7,7 +7,7 @@
 #include <memory>
 #include <vector>
 
-#include <opusfile.h>
+#include <opus/opusfile.h>
 
 namespace openage {
 namespace audio {
@@ -28,7 +28,7 @@ using pcm_chunk_t = std::vector<int16_t>;
  * opus_file_t is a OggOpusFile pointer that is stored inside a unique_ptr and
  * uses a custom deleter.
  */
-using opus_file_t = std::unique_ptr<OggOpusFile,std::function<void(OggOpusFile*)>>;
+using opus_file_t = std::unique_ptr<OggOpusFile, std::function<void(OggOpusFile*)>>;
 
 }
 }

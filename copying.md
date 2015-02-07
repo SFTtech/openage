@@ -124,6 +124,7 @@ cmake modules ([3-clause BSD license](legal/BSD-3-clause))
  - `buildsystem/modules/FindSDL2.cmake` (taken from [openmw](https://github.com/OpenMW/openmw))
  - `buildsystem/modules/FindFTGL.cmake` (taken from [ulrichard's FTGL fork](https://github.com/ulrichard/ftgl))
  - `buildsystem/modules/FindGPerfTools.cmake` (taken from [VAST](https://github.com/mavam/vast))
+ - `buildsystem/modules/FindOpusfile.cmake` (taken from [Unvanquished](https://github.com/Unvanquished/Unvanquished))
 
 Notes about this file:
 
