@@ -193,6 +193,8 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 			close(pipefd[0]);
 			return -1;
 		}
+
+		total += read_count;
 	}
 
 	close(pipefd[0]);
@@ -203,8 +205,10 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 			return -1;
 		}
 
-		log::err("execv has failed: %s", strerror(child_errno));
-		return -1;
+		if (child_errno > 0) {
+		    log::err("execv has failed: %s", strerror(child_errno));
+		    return -1;
+		}
 	}
 
 	if (!wait) {
