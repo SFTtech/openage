@@ -67,6 +67,8 @@ find_path(SDL2_INCLUDE_DIR SDL.h
 	/Library/Frameworks
 	/usr/local/include/SDL2
 	/usr/include/SDL2
+	/usr/i686-w64-mingw32/include/SDL2 # mingw-w64-sdl2 on arch
+	/usr/x86_64-w64-mingw32/include/SDL2 # mingw-w64-sdl2 on arch
 	/sw # Fink
 	/opt/local # DarwinPorts
 	/opt/csw # Blastwave
