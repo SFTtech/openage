@@ -26,7 +26,7 @@ extern GLint texture, tex_coord;
 namespace teamcolor_shader {
 extern shader::Program *program;
 extern GLint texture, tex_coord;
-extern GLint player_id_var, alpha_marker_var, player_color_var;
+extern GLint player_id_var, player_color_var;
 } // namespace teamcolor_shader
 
 namespace alphamask_shader {
