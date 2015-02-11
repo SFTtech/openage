@@ -52,13 +52,13 @@ class Graphic(Exportable):
     struct_description = "metadata for ingame graphics files."
 
     data_format = (
-        (READ_EXPORT, "name0", "char[21]"),
+        (READ_EXPORT, "name0", "char[21]"),             # internal name: e.g. ARRG2NNE = archery range feudal Age north european
         (READ_EXPORT, "name1", "char[13]"),
-        (READ_EXPORT, "slp_id", "int32_t"),
+        (READ_EXPORT, "slp_id", "int32_t"),             # id of the graphics file in the drs
         (READ_UNKNOWN, None, "int8_t"),
         (READ_UNKNOWN, None, "int8_t"),                 # somehow correlated to the forced player color
-        (READ_EXPORT, "layer", EnumLookupMember(
-            raw_type    = "int8_t",
+        (READ_EXPORT, "layer", EnumLookupMember(        # originally 40 layers, higher -> drawn on top
+            raw_type    = "int8_t",                     # -> same layer -> order according to map position.
             type_name   = "graphics_layer",
             lookup_dict = {
                 0: "TERRAIN",      # cliff
@@ -80,8 +80,8 @@ class Graphic(Exportable):
         (READ, "delta_count", "uint16_t"),
         (READ_EXPORT, "sound_id", "int16_t"),
         (READ_EXPORT, "attack_sound_used", "uint8_t"),
-        (READ_EXPORT, "frame_count", "uint16_t"),
-        (READ_EXPORT, "angle_count", "uint16_t"),
+        (READ_EXPORT, "frame_count", "uint16_t"),       # number of frames per angle
+        (READ_EXPORT, "angle_count", "uint16_t"),       # number of heading angles stored, some of the frames must be mirrored
         (READ, "speed_adjust", "float"),                # multiplies the speed of the unit this graphic is applied to
         (READ_EXPORT, "frame_rate", "float"),           # playtime for one frame in seconds
         (READ_EXPORT, "replay_delay", "float"),         # seconds to wait before current_frame=0 again
