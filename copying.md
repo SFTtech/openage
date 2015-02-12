@@ -27,7 +27,7 @@ _the openage authors_ are:
 | Alexandre Arpin             | AlexandreArpin              | arpin.alexandre@gmail.com        |
 | Henry Snoek                 | snoek09                     | ?                                |
 | ?                           | gasche                      | gasche.dylc@gmail.com            |
-| ?                           | awestin1                    | awestin1@gmail.com               |
+| Austin Eyler                | awestin1                    | awestin1@gmail.com               |
 | Francisco Demartino         | franciscod                  | demartino.francisco@gmail.com    |
 | Peter Piwowarski            | oldlaptop                   | oldlaptop654@aol.com             |
 | Charles Pigott              | LordAro                     | charlespigott@googlemail.com     |
