@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 # type lookup for C -> python struct
 struct_type_lookup = {
@@ -121,4 +121,4 @@ def determine_headers(for_types):
 
 
 def commentify_lines(commentstr, text):
-    return "".join(commentstr + line for line in text.split("\n"))
+    return "".join(commentstr + line + "\n" for line in text.split("\n"))
