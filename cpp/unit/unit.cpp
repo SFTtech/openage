@@ -5,6 +5,7 @@
 
 #include "../terrain/terrain.h"
 #include "../engine.h"
+#include "../crossplatform/math_constants.h"
 #include "ability.h"
 #include "action.h"
 #include "producer.h"
@@ -151,10 +152,11 @@ unsigned int dir_group(coord::phys3_delta dir, unsigned int angles, unsigned int
 	double dir_ne = static_cast<double>(dir.ne) / len;
 	double dir_se = static_cast<double>(dir.se) / len;
 
-	/*
-	 * formula to find the correct angle...
-	 */
-	return static_cast<unsigned int>(round(angles * atan2(dir_se, dir_ne) * M_1_PI / 2 ) + first_angle) % angles;
+	// formula to find the correct angle...
+	return static_cast<unsigned int>(
+		round(angles * atan2(dir_se, dir_ne) * (math::INV_PI / 2))
+		+ first_angle
+	) % angles;
 }
 
 } /* namespace openage */
