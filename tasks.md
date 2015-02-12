@@ -66,17 +66,6 @@ that).
 * This means even drawing one building will help
 * `png` images or better `svg` vectorgraphics
 
-### Inotify asset monitoring
-* Inotify is (if you don't know) a handy Linux kernel feature
-  * Monitors file modifications, creations, etc.
-  * Allows instaneous reaction to observed file updates without active polling
-* When some cool guy/gal (might be you!) changes or creates media files,
-  the change can instantly appear ingame
-* Very useful feature for people creating free media replacement files
-* As this feature is Linux-specific, we have to make this feature "optional"
-  -> preprocessor/cmake stuff
-* Implemented in `C++`
-
 ### Game launcher
 * Startup program
 * Contains shiny buttons etc, we don't want to implement that in the game
