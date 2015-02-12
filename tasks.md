@@ -77,9 +77,11 @@ that).
 * Written in `Python` with *gtk3*
 
 ### Lobby server
-* Server for mediate between game launchers
-* Maybe support for match-making
-* Could track player ranks and stats
+* [Repo is here](https://github.com/SFTtech/openage-masterserver)
+* Server for mediating between game launchers
+* Track player ranks and stats
+* Support for match-making
+* `PostgreSQL` database for storing the information
 * Written in `Python` or `Haskell`
 
 ### Multilanguage support
