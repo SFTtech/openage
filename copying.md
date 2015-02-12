@@ -25,8 +25,8 @@ _the openage authors_ are:
 | Oliver Fawcett-Griffiths    | ollyfg                      | olly@ollyfg.com                  |
 | Ross Murray                 | rossmurray                  | rm@egoorb.com                    |
 | Alexandre Arpin             | AlexandreArpin              | arpin.alexandre@gmail.com        |
-| Henry Snoek                 | snoek09                     | ?                                |
-| ?                           | gasche                      | gasche.dylc@gmail.com            |
+| Henry Snoek                 | snoek09                     | snoek09@gmail.com                |
+| Gabriel Scherer             | gasche                      | gasche.dylc@gmail.com            |
 | Austin Eyler                | awestin1                    | awestin1@gmail.com               |
 | Francisco Demartino         | franciscod                  | demartino.francisco@gmail.com    |
 | Peter Piwowarski            | oldlaptop                   | oldlaptop654@aol.com             |
