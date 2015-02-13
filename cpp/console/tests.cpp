@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include <unistd.h>
 #include "../crossplatform/pty.h"
@@ -35,6 +35,7 @@ void render() {
 }
 
 void demo(int /* unused */, char ** /* unused */) {
+	#ifndef _WIN32
 	console::Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
 
@@ -158,6 +159,7 @@ void demo(int /* unused */, char ** /* unused */) {
 
 	// show cursor
 	termout.puts("\x1b[?25h");
+	#endif
 }
 
 } // namespace tests

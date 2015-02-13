@@ -1,11 +1,14 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UTIL_FDS_H_
 #define OPENAGE_UTIL_FDS_H_
 
 #include <stdlib.h>
 #include <unistd.h>
+
+#ifndef _WIN32
 #include <termios.h>
+#endif
 
 namespace openage {
 namespace util {
@@ -83,7 +86,9 @@ public:
 	 */
 	void restoreinputmode();
 
+	#ifndef _WIN32
 	struct termios old_tio;
+	#endif
 };
 
 } //namespace util
