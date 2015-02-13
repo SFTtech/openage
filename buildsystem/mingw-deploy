@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# prepare win32 dir
-mkdir -p dist-win32
-
 cp openage dist-win32/openage.exe
 
 for d in \

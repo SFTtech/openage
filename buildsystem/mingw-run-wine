@@ -1,4 +1,5 @@
 #!/bin/bash
 
-export FONTCONFIG_FILE=/etc/fonts/fonts.conf
+export FONTCONFIG_PATH=./dist-win32/
+
 wine dist-win32/openage.exe
