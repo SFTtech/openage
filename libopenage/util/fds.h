@@ -5,7 +5,10 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+
+#ifndef _WIN32
 #include <termios.h>
+#endif
 
 namespace openage {
 namespace util {
@@ -83,7 +86,9 @@ public:
 	 */
 	void restoreinputmode();
 
+	#ifndef _WIN32
 	struct termios old_tio;
+	#endif
 };
 
 }} // openage::util
