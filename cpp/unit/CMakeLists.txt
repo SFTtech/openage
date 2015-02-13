@@ -3,6 +3,8 @@ add_sources(${PROJECT_NAME}
 	action.cpp
 	command.cpp
 	producer.cpp
+	selection.cpp
 	unit.cpp
 	unit_container.cpp
+	unit_texture.cpp
 )

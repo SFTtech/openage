@@ -36,6 +36,10 @@ struct tile_range {
 	coord::phys3 draw; // gets used as center point of radial objects
 };
 
+coord::phys_t distance(const coord::phys3 &a, const coord::phys3 &b);
+
+coord::phys3_delta normalize(const coord::phys3_delta &a, const coord::phys_t &length);
+
 /**
  * get all tiles in the tile range -- useful for iterating
  */
@@ -64,9 +68,7 @@ constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
  */
 class TerrainObject {
 public:
-	TerrainObject(Unit *,
-	              std::function<bool(const coord::phys3 &)> pass,
-	              std::shared_ptr<Texture> outline_tex);
+	TerrainObject(bool collisions=true);
 	virtual ~TerrainObject();
 
 	/**
@@ -76,15 +78,33 @@ public:
 
 	/**
 	 * unit which is inside this base
-	 * this pointer is mainly for drawing purposes
+	 * used to find the unit from user actions
+	 *
+	 * this could be a reference, every terrain object
+	 * should contain a unit
 	 */
 	Unit *unit;
+
+	/**
+	 * should this object be tested for collisions, arrows should not
+	 */
+	const bool check_collisions;
 
 	/**
 	 * decide which terrains this object can be on
 	 * this function should be true if given a valid position for the object
 	 */
 	std::function<bool(const coord::phys3 &)> passable;
+
+	/**
+	 * specifies content to be drawn
+	 */
+	std::function<void()> draw;
+
+	/**
+	 * draws outline of this terrain space in current position
+	 */
+	void draw_outline() const;
 
 	/**
 	 * binds the TerrainObject to a certain TerrainChunk.
@@ -114,9 +134,11 @@ public:
 	void set_ground(int id, int additional=0);
 
 	/**
-	 * display the texture of this object at the placement position.
+	 * add a child terrain object
 	 */
-	bool draw();
+	void annex(TerrainObject *other);
+
+	const TerrainObject *get_parent() const;
 
 	/*
 	 * terrain this object was placed on
@@ -146,12 +168,17 @@ public:
 	virtual coord::phys_t from_edge(const coord::phys3 &point) const = 0;
 
 	/**
+	 * get a position on the edge of this object
+	 */
+	virtual coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const = 0;
+
+	/**
 	 * does this space contain a given point
 	 */
 	virtual bool contains(const coord::phys3 &other) const = 0;
 
 	/**
-	 * does this intersect with another object if it were positioned at the given point
+	 * would this intersect with another object if it were positioned at the given point
 	 */
 	virtual bool intersects(const TerrainObject *other, const coord::phys3 &position) const = 0;
 
@@ -162,9 +189,16 @@ public:
 
 protected:
 	bool placed;
+
 	Terrain *terrain;
 	int occupied_chunk_count;
 	TerrainChunk *occupied_chunk[4];
+
+	/**
+	 * annexes and grouped units
+	 */
+	TerrainObject *parent;
+	std::vector<TerrainObject *> children;
 
 	/**
 	 * texture for drawing outline
@@ -184,10 +218,8 @@ protected:
  */
 class SquareObject: public TerrainObject {
 public:
-	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
-	             coord::tile_delta foundation_size);
-	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
-	             coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex);
+	SquareObject(coord::tile_delta foundation_size, bool collisions=true);
+	SquareObject(coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex, bool collisions=true);
 	virtual ~SquareObject();
 
 
@@ -216,6 +248,7 @@ public:
 	tile_range get_range(const coord::phys3 &pos) const;
 
 	coord::phys_t from_edge(const coord::phys3 &point) const;
+	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const;
 	bool contains(const coord::phys3 &other) const;
 	bool intersects(const TerrainObject *other, const coord::phys3 &position) const;
 	coord::phys_t min_axis() const;
@@ -226,10 +259,8 @@ public:
  */
 class RadialObject: public TerrainObject {
 public:
-	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
-	             float rad);
-	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
-	             float rad, std::shared_ptr<Texture> out_tex);
+	RadialObject(float rad, bool collisions=true);
+	RadialObject(float rad, std::shared_ptr<Texture> out_tex, bool collisions=true);
 	virtual ~RadialObject();
 
 	/**
@@ -243,6 +274,7 @@ public:
 	tile_range get_range(const coord::phys3 &pos) const;
 
 	coord::phys_t from_edge(const coord::phys3 &point) const;
+	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const;
 	bool contains(const coord::phys3 &other) const;
 	bool intersects(const TerrainObject *other, const coord::phys3 &position) const;
 	coord::phys_t min_axis() const;

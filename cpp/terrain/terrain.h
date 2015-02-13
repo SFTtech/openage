@@ -221,6 +221,11 @@ public:
 	TileContent *get_data(coord::tile position);
 
 	/**
+	 * an object which contains the given point, null otherwise
+	 */
+	TerrainObject *obj_at_point(const coord::phys3 &point);
+
+	/**
 	 * get the neighbor chunks of a given chunk.
 	 *
 	 *

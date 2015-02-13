@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_COORD_PHYS3_H_
 #define OPENAGE_COORD_PHYS3_H_
@@ -19,7 +19,7 @@ struct phys3 {
 	#include "ops/abs.h"
 
 	phys2 to_phys2() const;
-	camgame to_camgame();
+	camgame to_camgame() const;
 	tile3 to_tile3() const;
 	phys3_delta get_fraction();
 };
@@ -30,7 +30,7 @@ struct phys3_delta {
 	#include "ops/rel.h"
 
 	phys2_delta to_phys2() const;
-	camgame_delta to_camgame();
+	camgame_delta to_camgame() const;
 };
 
 #include "ops/free.h"

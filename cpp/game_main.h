@@ -10,16 +10,16 @@
 
 #include "args.h"
 #include "assetmanager.h"
+#include "datamanager.h"
 #include "engine.h"
 #include "coord/tile.h"
 #include "handlers.h"
 #include "terrain/terrain.h"
 #include "terrain/terrain_object.h"
-#include "gamedata/graphic.gen.h"
+#include "unit/selection.h"
 #include "unit/unit_container.h"
 #include "util/externalprofiler.h"
 #include "gamedata/gamedata.gen.h"
-#include "job/job.h"
 
 namespace openage {
 
@@ -33,28 +33,6 @@ int run_game(openage::Arguments *args);
 
 void gametest_init(openage::Engine *engine);
 void gametest_destroy();
-
-bool on_engine_tick();
-bool draw_method();
-bool hud_draw_method();
-bool input_handler(SDL_Event *e);
-
-class TestBuilding {
-public:
-	Texture *texture;
-	std::string name;
-	openage::coord::tile_delta foundation_size;
-	int foundation_terrain;
-	int sound_id_creation;
-	int sound_id_destruction;
-};
-
-class TestSound {
-public:
-	void play();
-
-	std::vector<int> sound_items;
-};
 
 class GameMain :
 		openage::InputHandler,
@@ -71,31 +49,6 @@ public:
 	virtual bool on_draw();
 	virtual bool on_drawhud();
 	virtual bool on_input(SDL_Event *e);
-
-	/**
-	 * return a texture handle associated with the given graphic id.
-	 */
-	Texture *find_graphic(int graphic_id);
-
-	/**
-	 * return a testsound ptr for a given sound id.
-	 */
-	TestSound *find_sound(int sound_id);
-
-	/**
-	 * all available game objects.
-	 */
-	std::vector<std::unique_ptr<UnitProducer>> available_objects;
-
-	/**
-	 * all available sounds.
-	 */
-	std::unordered_map<int, TestSound> available_sounds;
-
-	/**
-	 * map graphic id to gamedata graphic.
-	 */
-	std::unordered_map<int, gamedata::graphic *> graphics;
 
 	/**
 	 * all the buildings that have been placed.
@@ -115,20 +68,18 @@ public:
 	bool clicking_active;
 	bool ctrl_active;
 	bool scrolling_active;
+	bool draging_active;
 	bool construct_mode;
 
-	Unit *selected_unit;
+	UnitSelection selection;
 	Terrain *terrain;
 	Texture *gaben;
 
 	AssetManager assetmanager;
+	DataManager datamanager;
 
 	util::ExternalProfiler external_profiler;
 private:
-	void on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata);
-
-	bool gamedata_loaded;
-	openage::job::Job<std::vector<gamedata::empiresdat>> gamedata_load_job;
 
 	openage::Engine *engine;
 };

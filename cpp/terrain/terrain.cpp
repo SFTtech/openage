@@ -176,6 +176,20 @@ TileContent *Terrain::get_data(coord::tile position) {
 	}
 }
 
+TerrainObject *Terrain::obj_at_point(const coord::phys3 &point) {
+	coord::tile t = point.to_tile3().to_tile();
+	TileContent *tc = this->get_data(t);
+	if (!tc) {
+		return nullptr;
+	}
+	for (auto o : tc->obj) {
+		if (o->contains(point)) {
+			return o;
+		}
+	}
+	return nullptr;
+}
+
 bool Terrain::validate_terrain(terrain_t terrain_id) {
 	if (terrain_id >= (ssize_t)this->terrain_id_count) {
 		throw util::Error("requested terrain_id is out of range: %d", terrain_id);

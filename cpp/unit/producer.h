@@ -11,17 +11,20 @@
 #include "../coord/tile.h"
 #include "../gamedata/gamedata.gen.h"
 #include "../gamedata/graphic.gen.h"
+#include "unit.h"
 
 namespace openage {
 
+class DataManager;
 class GameMain;
 class Terrain;
+class TerrainObject;
 class Texture;
-class TestSound;
+class Sound;
 
-class Unit;
 class UnitAbility;
 class UnitAction;
+class UnitTexture;
 
 /**
  * Initializes a unit with the required attributes, each unit type should implement these funcrtions
@@ -33,109 +36,145 @@ public:
 	virtual ~UnitProducer() {}
 
 	/**
+	 * gets the id of the unit type being produced
+	 */
+	virtual int producer_id() = 0;
+
+	/**
 	 * Initialize units attributes
+	 * This can be called using existing units to modify type
 	 */
 	virtual void initialise(Unit *) = 0;
 
 	/**
 	 * set unit in place -- return if placement was successful
+	 *
+	 * This should be used when initially creating a unit or
+	 * when a unit is ungarrsioned from a building or object
 	 */
-	virtual bool place(Unit *, Terrain *, coord::tile) = 0;
+	virtual TerrainObject *place(Unit *, Terrain *, coord::phys3) = 0;
 
 	/**
-	 * Get a default text for HUD drawing
+	 * Get a default texture for HUD drawing
 	 */
-	virtual Texture *default_texture() = 0;
+	virtual UnitTexture *default_texture() = 0;
+
+	/**
+	 * all instances of units made from this producer
+	 * this could allow all units of a type to be upgraded
+	 */
+	std::vector<UnitReference> instances;
+
+	/**
+	 * The set of graphics used for this type
+	 */
+	graphic_set graphics;
+};
+
+/**
+ * base game data unit type
+ */
+class ObjectProducer: public UnitProducer {
+public:
+	ObjectProducer(DataManager &dm, const gamedata::unit_object *ud);
+	virtual ~ObjectProducer();
+
+	int producer_id();
+	void initialise(Unit *);
+	TerrainObject *place(Unit *, Terrain *, coord::phys3);
+	UnitTexture *default_texture();
+
+protected:
+	DataManager &datamanager;
+	const gamedata::unit_object unit_data;
+
+	/**
+	 * Sound id played when object is created or destroyed.
+	 */
+	Sound *on_create;
+	Sound *on_destroy;
+	std::shared_ptr<Texture> terrain_outline;
+	std::shared_ptr<UnitTexture> default_tex;
+	UnitProducer *dead_unit_producer;
+	coord::tile_delta foundation_size;
 };
 
 /**
  * temporary class -- will be replaced with nyan system in future
  * Stores graphics and attributes for a single unit type
+ * in aoe living units are derived from objects
  */
-class UnitTypeTest: public UnitProducer {
+class LivingProducer: public ObjectProducer {
 public:
-	UnitTypeTest(const gamedata::unit_living *,
-	             Texture *deadt,
-	             Texture *idlet,
-	             Texture *movet,
-	             Texture *attackt,
-	             TestSound *on_create,
-	             TestSound *on_destroy,
-	             TestSound *on_move,
-	             TestSound *on_attack);
-
-	virtual ~UnitTypeTest();
+	LivingProducer(DataManager &dm, const gamedata::unit_living *);
+	virtual ~LivingProducer();
 
 	void initialise(Unit *);
-	bool place(Unit *, Terrain *, coord::tile);
-	Texture *default_texture();
+	TerrainObject *place(Unit *, Terrain *, coord::phys3);
 
 private:
 	const gamedata::unit_living unit_data;
-	std::shared_ptr<Texture> terrain_outline;
-	Texture *dead;
-	Texture *idle;
-	Texture *moving;
-	Texture *attacking;
-	TestSound *on_create;
-	TestSound *on_destroy;
-	TestSound *on_move;
-	TestSound *on_attack;
+	UnitTexture *moving;
+	UnitTexture *attacking;
+	Sound *on_move;
+	Sound *on_attack;
+	UnitProducer *projectile;
+
 };
 
 /**
  * Stores graphics and attributes for a building type
  * Will be replaced with nyan system in future
+ * in aoe buildings are derived from living units
  */
 class BuldingProducer: public UnitProducer {
 public:
-	BuldingProducer(Texture *tex, coord::tile_delta foundation_size,
-	                int foundation, TestSound *create,  TestSound *destroy);
+	BuldingProducer(DataManager &dm, const gamedata::unit_building *ud);
 	virtual ~BuldingProducer();
+
+	int producer_id();
+	void initialise(Unit *);
+	TerrainObject *place(Unit *, Terrain *, coord::phys3);
+	UnitTexture *default_texture();
+
+private:
+	DataManager &datamanager;
+	const gamedata::unit_building unit_data;
 
 	/**
 	 * Sound id played when object is created or destroyed.
 	 */
-	TestSound *on_create;
-	TestSound *on_destroy;
-
-	void initialise(Unit *);
-	bool place(Unit *, Terrain *, coord::tile);
-	Texture *default_texture();
-
-private:
+	Sound *on_create;
+	Sound *on_destroy;
 	std::shared_ptr<Texture> terrain_outline;
-	Texture *texture;
-	coord::tile_delta size;
+	std::shared_ptr<UnitTexture> texture;
+	std::shared_ptr<UnitTexture> destroyed;
+	UnitProducer *trainable1;
+	UnitProducer *trainable2;
+	UnitProducer *projectile;
+	coord::tile_delta foundation_size;
 	int foundation_terrain;
+
+	TerrainObject *make_annex(int annex_id, Terrain *t, coord::phys3 annex_pos, bool c);
 };
 
-class AssetManager;
-
-/**
- * another temporary class to be later replaced with nyan
- */
-class ProducerLoader {
+class ProjectileProducer: public UnitProducer {
 public:
-	ProducerLoader(GameMain *);
+	ProjectileProducer(DataManager &dm, const gamedata::unit_projectile *);
 
-	/**
-	 * makes producers for all types in the game data
-	 */
-	std::vector<std::unique_ptr<UnitProducer>> create_producers(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id);
+	virtual ~ProjectileProducer();
 
-	/**
-	 * loads required assets to produce an entity type
-	 * returns null if type cannot be created
-	 */
-	std::unique_ptr<UnitProducer> load_building(const gamedata::unit_building &);
-	std::unique_ptr<UnitProducer> load_living(const gamedata::unit_living &);
-	std::unique_ptr<UnitProducer> load_object(const gamedata::unit_object &);
-
+	int producer_id();
+	void initialise(Unit *);
+	TerrainObject *place(Unit *, Terrain *, coord::phys3);
+	UnitTexture *default_texture();
 
 private:
-	GameMain *main;
-
+	const gamedata::unit_projectile unit_data;
+	std::shared_ptr<Texture> terrain_outline;
+	std::shared_ptr<UnitTexture> tex;
+	std::shared_ptr<UnitTexture> sh; // shadow texture
+	std::shared_ptr<UnitTexture> destroyed;
 };
 
 } // namespace openage

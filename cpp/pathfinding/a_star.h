@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_PATHFINDING_A_STAR_H_
 #define OPENAGE_PATHFINDING_A_STAR_H_
@@ -12,16 +12,32 @@
 namespace openage {
 namespace path {
 
+/**
+ * path between two static points
+ */
 Path to_point(coord::phys3 start,
               coord::phys3 end,
               std::function<bool(const coord::phys3 &)> passable);
 
+/**
+ * path between 2 objects, with how close to come to end point
+ */
 Path to_object(openage::TerrainObject *to_move,
-               openage::TerrainObject *end);
+               openage::TerrainObject *end,
+               coord::phys_t rad);
 
+/**
+ * path to nearest object with lambda
+ */
 Path find_nearest(coord::phys3 start,
                   std::function<bool(const coord::phys3 &)> valid_end,
                   std::function<bool(const coord::phys3 &)> passable);
+
+/**
+ * search outwards to find an object and return object
+ */
+openage::TerrainObject *find_nearest(openage::TerrainObject *to_move,
+            std::function<bool(const openage::TerrainObject *)> valid_end);
 
 /**
  * finds a path between two endpoints

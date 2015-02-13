@@ -21,6 +21,8 @@ class AssetManager final {
 public:
 	AssetManager(util::Dir *root);
 
+	util::Dir *get_data_dir();
+
 	/**
 	 * Test whether a requested asset filename can be loaded.
 	 *

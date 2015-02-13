@@ -20,20 +20,41 @@
 
 namespace openage {
 
-TerrainObject::TerrainObject(Unit *u,
-                             std::function<bool(const coord::phys3 &)> pass,
-                             std::shared_ptr<Texture> outline_tex)
+coord::phys_t distance(const coord::phys3 &a, const coord::phys3 &b) {
+	coord::phys_t dx = a.ne - b.ne;
+	coord::phys_t dy = a.se - b.se;
+	return std::hypot(dx, dy);
+}
+
+coord::phys3_delta normalize(const coord::phys3_delta &a, const coord::phys_t &length) {
+	coord::phys3_delta result = (a * length) / std::hypot(a.ne, a.se);
+	return result;
+}
+
+TerrainObject::TerrainObject(bool collisions)
 	:
-	unit{u},
-	passable{pass},
+	unit{nullptr},
+	check_collisions{collisions},
+	passable{[](const coord::phys3 &) -> bool {return true;}},
+	draw{[]() {}},
 	placed{false},
 	terrain{nullptr},
 	occupied_chunk_count{0},
-	outline_texture{outline_tex} {
-	this->unit->location = this; // ensure the unit points back
+	parent{nullptr} {
 }
 
-TerrainObject::~TerrainObject() {}
+TerrainObject::~TerrainObject() {
+	// remove all connections from terrain
+	this->remove();
+	for (auto c : children) {
+		c->remove();
+		delete c;
+	}
+}
+
+void TerrainObject::draw_outline() const {
+	this->outline_texture->draw(this->pos.draw.to_camgame());
+}
 
 bool TerrainObject::place(Terrain *terrain, coord::phys3 &position) {
 	if (this->placed) {
@@ -110,11 +131,14 @@ void TerrainObject::set_ground(int id, int additional) {
 	}
 }
 
-bool TerrainObject::draw() {
+void TerrainObject::annex(TerrainObject *other) {
+	this->children.push_back(other);
+	other->parent = this;
+	other->unit = this->unit;
+}
 
-	// should only draw outline when unit is selected
-	this->outline_texture->draw(this->pos.draw.to_camgame());
-	return this->unit->draw();
+const TerrainObject *TerrainObject::get_parent() const {
+	return this->parent;
 }
 
 bool TerrainObject::operator <(const TerrainObject &other) {
@@ -184,21 +208,16 @@ void TerrainObject::place_unchecked(Terrain *terrain, coord::phys3 &position) {
 	this->placed = true;
 }
 
-SquareObject::SquareObject(Unit *u,
-                           std::function<bool(const coord::phys3 &)> pass,
-                           coord::tile_delta foundation_size)
+SquareObject::SquareObject(coord::tile_delta foundation_size, bool collisions)
 	:
-	SquareObject{u, pass, foundation_size, square_outline(foundation_size)} {
-
+	SquareObject(foundation_size, square_outline(foundation_size), collisions) {
 }
 
-SquareObject::SquareObject(Unit *u,
-                           std::function<bool(const coord::phys3 &)> pass,
-                           coord::tile_delta foundation_size,
-                           std::shared_ptr<Texture> out_tex)
+SquareObject::SquareObject(coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex, bool collisions)
 	:
-	TerrainObject{u, pass, out_tex},
+	TerrainObject(collisions),
 	size(foundation_size) {
+	this->outline_texture = out_tex;
 }
 
 SquareObject::~SquareObject() {}
@@ -230,6 +249,17 @@ coord::phys_t SquareObject::from_edge(const coord::phys3 &point) const {
 	coord::phys_t dx = point.ne - cx;
 	coord::phys_t dy = point.se - cy;
 	return std::hypot(dx, dy);
+}
+
+coord::phys3 SquareObject::on_edge(const coord::phys3 &angle, coord::phys_t) const {
+	// clamp between start and end
+	coord::phys3 start_phys = this->pos.start.to_phys2().to_phys3() - phys_half_tile;
+	coord::phys3 end_phys = this->pos.end.to_phys2().to_phys3() - phys_half_tile;
+	coord::phys_t cx = std::max(start_phys.ne, std::min(end_phys.ne, angle.ne));
+	coord::phys_t cy = std::max(start_phys.se, std::min(end_phys.se, angle.se));
+
+	// todo use extra distance
+	return coord::phys3{cx, cy, 0};
 }
 
 bool SquareObject::contains(const coord::phys3 &other) const {
@@ -271,20 +301,16 @@ coord::phys_t SquareObject::min_axis() const {
 	return std::min( this->size.ne, this->size.se ) * coord::settings::phys_per_tile;
 }
 
-RadialObject::RadialObject(Unit *u,
-                           std::function<bool(const coord::phys3 &)> pass,
-                           float rad)
+RadialObject::RadialObject(float rad, bool collisions)
 	:
-	RadialObject{u, pass, rad, radial_outline(rad)} {
+	RadialObject(rad, radial_outline(rad), collisions) {
 }
 
-RadialObject::RadialObject(Unit *u,
-                           std::function<bool(const coord::phys3 &)> pass,
-                           float rad,
-                           std::shared_ptr<Texture> out_tex)
+RadialObject::RadialObject(float rad, std::shared_ptr<Texture> out_tex, bool collisions)
 	:
-	TerrainObject{u, pass, out_tex},
+	TerrainObject(collisions),
 	phys_radius(coord::settings::phys_per_tile * rad) {
+	this->outline_texture = out_tex;
 }
 
 RadialObject::~RadialObject() {}
@@ -307,16 +333,16 @@ tile_range RadialObject::get_range(const coord::phys3 &pos) const {
 }
 
 coord::phys_t RadialObject::from_edge(const coord::phys3 &point) const {
-	coord::phys_t dx = point.ne - this->pos.draw.ne;
-	coord::phys_t dy = point.se - this->pos.draw.se;
-	return std::max(std::hypot(dx, dy) - this->phys_radius, 0.0);
+	return std::max(distance(point, this->pos.draw) - this->phys_radius, (coord::phys_t) 0); 
+}
+
+coord::phys3 RadialObject::on_edge(const coord::phys3 &angle, coord::phys_t extra) const {
+	coord::phys3_delta d = normalize(angle - this->pos.draw, this->phys_radius + extra);
+	return this->pos.draw + d;
 }
 
 bool RadialObject::contains(const coord::phys3 &other) const {
-	auto dx = this->pos.draw.ne - other.ne;
-	auto dy = this->pos.draw.se - other.se;
-	auto dist = std::hypot(dx,dy);
-	return dist < this->phys_radius;
+	return distance(this->pos.draw, other) < this->phys_radius;
 }
 
 bool RadialObject::intersects(const TerrainObject *other, const coord::phys3 &position) const {
@@ -324,9 +350,7 @@ bool RadialObject::intersects(const TerrainObject *other, const coord::phys3 &po
 		return sq->from_edge(position) < this->phys_radius;
 	}
 	else if (const RadialObject *rad = dynamic_cast<const RadialObject *>(other)) {
-		coord::phys_t dx = position.ne - rad->pos.draw.ne;
-		coord::phys_t dy = position.se - rad->pos.draw.se;
-		return std::hypot(dx, dy) < this->phys_radius + rad->phys_radius;
+		return distance(position, rad->pos.draw) < this->phys_radius + rad->phys_radius;
 	}
 	return false;
 }
@@ -339,8 +363,8 @@ std::vector<coord::tile> tile_list(const tile_range &rng) {
 	std::vector<coord::tile> tiles;
 
 	coord::tile check_pos = rng.start;
-	while (check_pos.ne < rng.end.ne) {
-		while (check_pos.se < rng.end.se) {
+	while (check_pos.ne <= rng.end.ne) {
+		while (check_pos.se <= rng.end.se) {
 			tiles.push_back(check_pos);
 			check_pos.se += 1;
 		}

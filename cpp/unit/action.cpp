@@ -2,85 +2,135 @@
 
 #include <cmath>
 
-#include "../game_main.h"
 #include "../pathfinding/a_star.h"
 #include "../pathfinding/heuristics.h"
+#include "../terrain/terrain.h"
 #include "action.h"
+#include "producer.h"
 #include "unit.h"
+#include "unit_texture.h"
 
 namespace openage {
 
 bool UnitAction::show_debug = false;
 
-UnitAction::UnitAction(Unit *u, Texture *t, TestSound *s, float fr)
+UnitAction::UnitAction(Unit *u, graphic_type gt)
 	:
 	entity{u},
-	tex{t},
-	on_begin{s},
+	graphic{gt},
 	frame{.0f},
-	frame_rate{fr} {}
+	frame_rate{.0f} {
 
-void UnitAction::draw() {
-	// play sound if available
-	if (this->on_begin && this->frame == 0.0f) {
-		on_begin->play();
+	if (u->graphics->count(gt) > 0) {
+		this->frame_rate = u->graphics->at(gt)->frame_rate;
 	}
 
-	coord::phys3 &draw_pos = this->entity->location->pos.draw;
-	unsigned color = 0;
-	if (this->entity->has_attribute(attr_type::color)) {
-		auto &c_attr = this->entity->get_attribute<attr_type::color>();
-		color = c_attr.color;
+	if (frame_rate == 0) {
+		// TODO: this breaks the trees
+		//frame = rand(); //randomize variation graphics
 	}
-	if (this->tex->get_subtexture_count() < 5
-	    || !this->entity->has_attribute(attr_type::direction)) {
-
-		// draw single frame
-		this->tex->draw(draw_pos.to_camgame(), PLAYERCOLORED, false, 0, color);
-		this->frame += this->frame_rate; // sound gets played on frame 0
-		return;
-	}
-
-	/*
-	 * assume group has 5 image sets
-	 * mirroring is used to make additional image sets
-	 */
-	auto &d_attr = this->entity->get_attribute<attr_type::direction>();
-	coord::phys3_delta draw_dir = d_attr.unit_dir;
-	bool mirror = false;
-	unsigned int angle = dir_group(draw_dir);
-	if (angle > 4) {
-		angle = 8 - angle;
-		mirror = true;
-	}
-
-	unsigned int groupsize = this->tex->get_subtexture_count() / 5;
-	unsigned int to_draw = angle * groupsize + ((unsigned int) frame % groupsize);
-	this->tex->draw(draw_pos.to_camgame(), PLAYERCOLORED, mirror, to_draw, color);
-	this->frame += this->frame_rate;
-
-	// draw debug content if available
-	if(show_debug && debug_draw_action) debug_draw_action();
 }
 
-void DeadAction::update(unsigned int) {
-	if ( this->entity->has_attribute(attr_type::hitpoints) ) {
+graphic_type UnitAction::type() const {
+	return this->graphic;
+}
+
+float UnitAction::current_frame() const {
+	return this->frame;
+}
+
+void UnitAction::draw_debug() {
+	// draw debug content if available
+	if(show_debug && this->debug_draw_action) this->debug_draw_action();
+}
+
+void UnitAction::face_towards(const coord::phys3 pos) {
+	if (this->entity->has_attribute(attr_type::direction)) {
+		auto &d_attr = this->entity->get_attribute<attr_type::direction>();
+		d_attr.unit_dir = pos - this->entity->location->pos.draw;
+	}
+}
+
+void UnitAction::damage_object(Unit *target, unsigned dmg) {
+	if (target->has_attribute(attr_type::hitpoints)) {
+		auto &hp = target->get_attribute<attr_type::hitpoints>();
+		hp.current -= dmg;
+	}
+}
+
+DeadAction::DeadAction(Unit *e, std::function<void()> on_complete)
+	:
+	UnitAction(e, graphic_type::dying),
+	end_frame{.0f},
+	on_complete_func{on_complete} {
+
+	if (this->entity->graphics->count(graphic) > 0) {
+		this->end_frame = this->entity->graphics->at(graphic)->frame_count - 1;
+	}
+}
+
+void DeadAction::update(unsigned int time) {
+	if (this->entity->has_attribute(attr_type::hitpoints)) {
 		auto &h_attr = this->entity->get_attribute<attr_type::hitpoints>();
 		h_attr.current = 0;
+	}
+
+	// inc frame but do not pass the end frame
+	if (this->frame < this->end_frame) {
+		this->frame += 0.01 + time * this->frame_rate / 3.0f;
+	}
+	else {
+		this->frame = this->end_frame;
+	}
+	
+
+	if (this->completed()) {
+		this->on_complete_func();
 	}
 }
 
 bool DeadAction::completed() {
-	return this->frame > (this->tex->get_subtexture_count() / 5);
+	// check resource, trees/huntables with resource are not removed
+	if (this->entity->has_attribute(attr_type::resource)) {
+		auto &res_attr = this->entity->get_attribute<attr_type::resource>();
+		if (res_attr.amount > 0) {
+			return false; // cannot complete when resource remains
+		}
+	}
+	return this->frame >= this->end_frame;
 }
 
-MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, coord::phys3 tar, bool repath)
+void IdleAction::update(unsigned int time) {
+	// inc frame
+	this->frame += time * this->frame_rate / 20.0f;
+}
+
+bool IdleAction::completed() {
+	if (this->entity->has_attribute(attr_type::hitpoints)) {
+		auto &hp = this->entity->get_attribute<attr_type::hitpoints>();
+		if (hp.current <= 0) {
+			log::dbg("unit has 0 hitpoints");
+		}
+		return hp.current <= 0;
+	}
+	return false;
+}
+
+MoveAction::MoveAction(Unit *e, coord::phys3 tar, bool repath)
 	:
-	UnitAction{e, t, s},
+	UnitAction{e, graphic_type::walking},
 	unit_target{},
 	target(tar),
-	radius{7500},
+	radius{path::path_grid_size},
 	allow_repath{repath} {
+
+	// switch workers to the carrying graphic
+	if (this->entity->has_attribute(attr_type::gatherer)) {
+		auto &gather_attr = this->entity->get_attribute<attr_type::gatherer>();
+		if (gather_attr.amount > 0) {
+			this->graphic = graphic_type::carrying;
+		}
+	}
 
 	// set an initial path
 	this->set_path();
@@ -89,13 +139,21 @@ MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, coord::phys3 tar, bool
 	};
 }
 
-MoveAction::MoveAction(Unit *e, Texture *t, TestSound *s, UnitReference tar, coord::phys_t rad)
+MoveAction::MoveAction(Unit *e, UnitReference tar, coord::phys_t rad)
 	:
-	UnitAction{e, t, s},
+	UnitAction{e, graphic_type::walking},
 	unit_target{tar},
 	target(tar.get()->location->pos.draw),
 	radius{rad},
 	allow_repath{false} {
+
+	// switch workers to the carrying graphic
+	if (this->entity->has_attribute(attr_type::gatherer)) {
+		auto &gather_attr = this->entity->get_attribute<attr_type::gatherer>();
+		if (gather_attr.amount > 0) {
+			this->graphic = graphic_type::carrying;
+		}
+	}
 
 	// set an initial path
 	this->set_path();
@@ -108,15 +166,18 @@ MoveAction::~MoveAction() {}
 
 void MoveAction::update(unsigned int time) {
 	if (this->unit_target.is_valid()) {
+		// a unit is targeted, which may move
 		coord::phys3 &target_pos = this->unit_target.get()->location->pos.draw;
 		coord::phys3 &unit_pos = this->entity->location->pos.draw;
 
 		// repath if target changes tiles by a threshold
+		// this repathing is more frequent when the unit is
+		// close to its target
 		coord::phys_t tdx = target_pos.ne - this->target.ne;
 		coord::phys_t tdy = target_pos.se - this->target.se;
 		coord::phys_t udx = unit_pos.ne - this->target.ne;
 		coord::phys_t udy = unit_pos.se - this->target.se;
-		if (this->path.waypoints.empty() || std::hypot(tdx, tdy) > std::hypot(udx, udy) / 8) {
+		if (this->path.waypoints.empty() || std::hypot(tdx, tdy) > std::hypot(udx, udy)) {
 			this->target = target_pos;
 			this->set_path();
 		}
@@ -183,6 +244,9 @@ void MoveAction::update(unsigned int time) {
 			this->path.waypoints.clear();
 		}
 	}
+
+	// inc frame
+	this->frame += time * this->frame_rate / 5.0f;
 }
 
 bool MoveAction::completed() {
@@ -202,11 +266,10 @@ bool MoveAction::completed() {
 		this->distance_to_target = (coord::phys_t) std::hypot(move_dir.ne, move_dir.se);
 	}
 
-
 	/*
 	 * close enough to end action
 	 */
-	if (this->distance_to_target < radius) {
+	if (this->distance_to_target < this->radius) {
 		return true;
 	}
 	return false;
@@ -222,7 +285,7 @@ coord::phys3 MoveAction::next_waypoint() const {
 
 void MoveAction::set_path() {
 	if (this->unit_target.is_valid()) {
-		this->path = path::to_object(this->entity->location, this->unit_target.get()->location);
+		this->path = path::to_object(this->entity->location, this->unit_target.get()->location, this->radius);
 	}
 	else {
 		coord::phys3 start = this->entity->location->pos.draw;
@@ -231,52 +294,132 @@ void MoveAction::set_path() {
 	}
 }
 
-GatherAction::GatherAction(Unit *e, UnitReference tar, Texture *t, TestSound *s)
+void TrainAction::update(unsigned int) {
+	UnitContainer *container = this->entity->get_container();
+	Terrain *terrain = this->entity->location->get_terrain();
+
+	// find a free position adjacent to the building
+	coord::phys3 p = this->entity->location->pos.draw;
+	coord::tile t = p.to_tile3().to_tile() + coord::tile_delta{2, 2};
+	for (int i = 1; i < 6; ++i) {
+		if (terrain->get_data(t)->obj.empty()) {
+			break;
+		}
+		t.ne -= 1;
+	}
+	coord::phys3 pos = t.to_phys2().to_phys3();
+
+
+	// create using the producer
+	auto &bl_attr = this->entity->get_attribute<attr_type::building>();
+	auto uref = container->new_unit(*bl_attr.pp, terrain, pos);
+	if (uref.is_valid()) {
+		uref.get()->invoke(ability_type::move, coord::tile{ 8, 10 }.to_phys2().to_phys3());
+
+		// try again next update if cannot place
+		this->complete = true;
+	}
+}
+
+GatherAction::GatherAction(Unit *e, UnitReference tar)
 	:
-	UnitAction{e, t, s},
+	UnitAction{e, graphic_type::gather},
 	target{tar},
-	range{40000},
-	carrying{0} {
+	dropsite{},
+	range{path::path_grid_size + (e->location->min_axis() / 2)} {
+
+	// find nearest dropsite from the targeted resource
+	TerrainObject *ds = path::find_nearest(this->target.get()->location,
+		[=](const openage::TerrainObject *other) -> bool {
+			if (!other || !other->unit) {
+				return false;
+			}
+			return other->unit != this->entity &&
+			       other->unit != tar.get() &&
+			       other->unit->has_attribute(attr_type::building);
+	});
+
+	if (ds && ds->unit) {
+		log::dbg("dropsite found");
+		this->dropsite = ds->unit->get_ref();
+	}
+	else {
+		log::dbg("no dropsite found");
+	}
 }
 
 GatherAction::~GatherAction() {}
 
 void GatherAction::update(unsigned int time) {
-	if (!this->target.is_valid()) return;
-	if (carrying > 10) {
-		auto move_ability = this->entity->get_ability(ability_type::move);
-		this->entity->push_action(move_ability->target(this->entity, coord::phys3{0, 0, 0}));
-		carrying = 0;
-	}
+	if (!this->target.is_valid() || !this->dropsite.is_valid()) return;
+
+	// the targets attributes
+	auto &resource_attr = this->target.get()->get_attribute<attr_type::resource>();
+
+	// the gatherer attributes attached to the unit
+	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+	gatherer_attr.current_type = resource_attr.resource_type;
+
+	// set relevant graphics
+	this->entity->graphics = &gatherer_attr.graphics[this->target.get()->unit_class]->graphics;
 
 	// set direction unit should face
 	TerrainObject *target_location = this->target.get()->location;
-	if (this->entity->has_attribute(attr_type::direction)) {
-		auto &d_attr = this->entity->get_attribute<attr_type::direction>();
-		d_attr.unit_dir = target_location->pos.draw - this->entity->location->pos.draw;
+	this->face_towards(target_location->pos.draw);
+
+	// return to dropsite
+	if (gatherer_attr.amount > gatherer_attr.capacity) {
+		// dropsite position
+		TerrainObject *dropsite_location = this->dropsite.get()->location;
+
+		// move to resource being collected
+		auto distance_to_dropsite = dropsite_location->from_edge(this->entity->location->pos.draw);
+		if (distance_to_dropsite > range) {
+			this->entity->invoke(ability_type::move, this->dropsite.get());
+			return;
+		}
+		else {
+			// TODO: add value to player stockpile
+			gatherer_attr.amount = 0.0f;
+		}
 	}
 
+	// attack objects which have hitpoints (trees, hunt)
+	if (this->target.get()->has_attribute(attr_type::hitpoints)) {
+		auto &hp_attr = this->target.get()->get_attribute<attr_type::hitpoints>();
+		if (hp_attr.current > 0) {
+			this->entity->invoke(ability_type::attack, this->target.get());
+			return;
+		}
+	}
+
+	// move to resource being collected
 	this->distance_to_target = target_location->from_edge(this->entity->location->pos.draw);
 	if (distance_to_target > range) {
-		auto move_ability = this->entity->get_ability(ability_type::move);
-		this->entity->push_action(move_ability->target(this->entity, target.get()));
+		this->entity->invoke(ability_type::move, this->target.get());
+		return;
 	}
 
-	// gather rate
-	carrying += 0.01 * time;
+	// transfer using gather rate
+	gatherer_attr.amount += gatherer_attr.gather_rate * time;
+	resource_attr.amount -= gatherer_attr.gather_rate * time;
+
+	// inc frame
+	this->frame += time * this->frame_rate / 3.0f;
 }
 
 bool GatherAction::completed() {
-	if (!this->target.is_valid()) return true;
+	if (!this->target.is_valid() || !this->dropsite.is_valid()) return true;
 	return false;
 }
 
-AttackAction::AttackAction(Unit *e, UnitReference tar, Texture *t, TestSound *s)
+AttackAction::AttackAction(Unit *e, UnitReference tar)
 	:
-	UnitAction{e, t, s},
+	UnitAction{e, graphic_type::attack},
 	target{tar},
-	range{40000},
-	strike_percent{0.0f} {
+	range{3*path::path_grid_size + (e->location->min_axis() / 2)},
+	strike_percent{0.0f},
+	rate_of_fire{0.002f} {
 }
 
 AttackAction::~AttackAction() {}
@@ -285,25 +428,32 @@ void AttackAction::update(unsigned int time) {
 	if (!this->target.is_valid()) return;
 
 	// set direction unit should face
-	if (this->entity->has_attribute(attr_type::direction)) {
-		auto &d_attr = this->entity->get_attribute<attr_type::direction>();
-		d_attr.unit_dir = this->target.get()->location->pos.draw - this->entity->location->pos.draw;
-	}
+	this->face_towards(this->target.get()->location->pos.draw);
 
+	// find distance
 	this->distance_to_target = target.get()->location->from_edge(this->entity->location->pos.draw);
+
+	// subtract range of this unit
+	auto &attack = this->entity->get_attribute<attr_type::attack>();
+	this->distance_to_target -= attack.range;
+
 	if (strike_percent > 0.0) {
-		strike_percent -= 0.002 * time;
-		return;
+		strike_percent -= rate_of_fire * time;
+
+		// inc frame
+		this->frame += time * this->entity->graphics->at(graphic)->frame_count * rate_of_fire;
 	}
 	else if (distance_to_target <= range) {
 		strike_percent = 1.0f;
+		this->frame = 0.0f;
+		this->attack(this->target.get());
 	}
 	else {
+		// out of range so try move towards
+		// if this unit has a move ability
 		auto move_ability = this->entity->get_ability(ability_type::move);
-
-		// if this unit can move
 		if (move_ability) {
-			this->entity->push_action(move_ability->target(this->entity, target.get()));
+			move_ability->invoke(this->entity, target.get());
 		}
 	}
 }
@@ -312,6 +462,117 @@ bool AttackAction::completed() {
 	if (!this->target.is_valid()) return true;
 	auto &h_attr = this->target.get()->get_attribute<attr_type::hitpoints>();
 	return h_attr.current < 1; // is unit still alive?
+}
+
+void AttackAction::attack(Unit *target) {
+	auto &attack = this->entity->get_attribute<attr_type::attack>();
+	if (attack.pp) {
+
+		// add projectile to the game
+		this->fire_projectile(attack, target->location->pos.draw);
+	}
+	else {
+		this->damage_object(target, 1);
+	}
+}
+
+void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, const coord::phys3 &target) {
+	// container terrain and initial position
+	UnitContainer *container = this->entity->get_container();
+	Terrain *terrain = this->entity->location->get_terrain();
+	coord::phys3 current_pos = this->entity->location->pos.draw;
+	current_pos.up = att.init_height;
+
+	// create using the producer
+	auto uref = container->new_unit(*att.pp, terrain, current_pos);
+
+	// send towards target using a projectile ability (creates projectile motion action)
+	if (uref.is_valid()) {
+		auto u = uref.get();
+		auto &projectile_attr = u->get_attribute<attr_type::projectile>();
+		projectile_attr.launcher = this->entity->get_ref();
+		projectile_attr.launched = true;
+
+		u->invoke(ability_type::projectile, target);
+	}
+	else {
+		log::dbg("projectile launch failed");
+	}
+}
+
+ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
+	:
+	UnitAction{e, graphic_type::standing},
+	has_hit{false} {
+
+	// find speed to move
+	auto &sp_attr = this->entity->get_attribute<attr_type::speed>();
+	coord::phys_t projectile_speed = sp_attr.unit_speed;
+
+	// arc of projectile
+	auto &pr_attr = this->entity->get_attribute<attr_type::projectile>();
+	float projectile_arc = pr_attr.projectile_arc;
+
+	// distance and time to target
+	coord::phys3_delta d = target - this->entity->location->pos.draw;
+	coord::phys_t distance_to_target = (coord::phys_t) std::hypot(d.ne, d.se);
+	int flight_time = distance_to_target / projectile_speed;
+
+
+	if (projectile_arc < 0) {
+		// TODO negative values probably indicate something
+		projectile_arc += 0.2;
+	}
+
+	// now figure gravity from arc parameter
+	// TODO projectile arc is the ratio between horizontal and
+	// vertical components of the initial direction
+
+	this->grav = 0.01f * (exp(pow(projectile_arc, 0.5f)) - 1) * projectile_speed;
+	log::dbg("gravity = %ld", this->grav);
+
+	// inital launch direction
+	auto &d_attr = this->entity->get_attribute<attr_type::direction>();
+	d_attr.unit_dir = (projectile_speed * d) / distance_to_target;
+
+	// account for initial height
+	coord::phys_t initial_height = this->entity->location->pos.draw.up;
+	d_attr.unit_dir.up = (grav * flight_time) / 2 - (initial_height / flight_time);
+}
+
+ProjectileAction::~ProjectileAction() {}
+
+void ProjectileAction::update(unsigned int time) {
+	auto &d_attr = this->entity->get_attribute<attr_type::direction>();
+
+	// apply gravity
+	d_attr.unit_dir.up -= this->grav * time;
+
+	coord::phys3 new_position = this->entity->location->pos.draw + d_attr.unit_dir * time;
+	if (!this->entity->location->move(new_position)) {
+		log::dbg("arrow hit object");
+
+		// find object which was hit
+		Terrain *terrain = this->entity->location->get_terrain();
+		TileContent *tc = terrain->get_data(new_position.to_tile3().to_tile());
+		if (tc && !tc->obj.empty()) {
+			for (auto loc : tc->obj) {
+				if (this->entity->location != loc) {
+					this->damage_object(loc->unit, 1);
+					break;
+				}
+			}
+		}
+
+		has_hit = true;
+	}
+
+	// inc frame
+	this->frame += time * this->frame_rate;
+}
+
+bool ProjectileAction::completed() {
+	return (has_hit || this->entity->location->pos.draw.up <= 0);
 }
 
 } /* namespace openage */

@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #define GEN_IMPL_PHYS3_CPP
 #include "phys3.h"
@@ -20,7 +20,7 @@ phys2_delta phys3_delta::to_phys2() const {
 	return phys2_delta {ne, se};
 }
 
-camgame phys3::to_camgame() {
+camgame phys3::to_camgame() const {
 	Engine &e = Engine::get();
 
 	//determine the phys3 position relative to the camera position
@@ -29,7 +29,7 @@ camgame phys3::to_camgame() {
 	return relative_phys.to_camgame().as_absolute();
 }
 
-camgame_delta phys3_delta::to_camgame() {
+camgame_delta phys3_delta::to_camgame() const {
 	Engine &e = Engine::get();
 
 	//apply transformation matrix to relative_phys, to get 'scaled':

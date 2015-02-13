@@ -27,6 +27,10 @@ AssetManager::AssetManager(util::Dir *root)
 #endif
 }
 
+util::Dir *AssetManager::get_data_dir() {
+	return this->root;
+}
+
 bool AssetManager::can_load(const std::string &name) const {
 	return util::file_size(this->root->join(name)) > 0;
 }

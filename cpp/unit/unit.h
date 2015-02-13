@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "../coord/phys3.h"
+#include "../terrain/terrain_object.h"
 #include "../handlers.h"
 #include "ability.h"
 #include "attribute.h"
@@ -15,7 +16,6 @@
 
 namespace openage {
 
-class TerrainObject;
 class UnitAbility;
 class UnitAction;
 
@@ -23,10 +23,17 @@ class UnitAction;
  * A game object with current state represented by a stack of actions
  * since this class represents both unit and building objects it may be better to
  * name as GameObject
+ *
+ * it is possible that abilities are not required here and they could be moved
+ * to selection controller -- units only need the attributes
  */
 class Unit {
 public:
 	Unit(UnitContainer *c, id_t id);
+
+	/**
+     * unit cleanup will delete terrain object
+     */
 	virtual ~Unit();
 
 	/**
@@ -35,10 +42,32 @@ public:
 	const id_t id;
 
 	/**
+	 * class of this unit instance
+	 */
+	gamedata::unit_classes unit_class;
+
+	/**
+	 * should selection features be drawn
+	 * TODO: should be a pointer to selection to be updated
+	 * when unit is removed, or null if not selected
+	 */	
+	bool selected;
+
+	/**
 	 * space on the map used by this unit
 	 * null if the object is not yet placed or garrisoned
 	 */
 	TerrainObject *location;
+
+	/**
+	 * graphics sets which can be modified for gathering
+	 */
+	graphic_set *graphics;
+
+	/** 
+	 * removes all actions and abilities
+	 */
+	void clear_actions();
 
 	/**
 	 * checks the entity has an action, if it has no action it should be removed from the game
@@ -47,21 +76,27 @@ public:
 	bool has_action();
 
 	/**
+	 * returns the current action on top of the stack
+	 */
+	UnitAction *top();
+
+	/**
 	 * update this object using the action currently on top of the stack
 	 */
 	bool update();
 
 	/**
-	 * draw this object using the action currently on top of the stack
+	 * draws this action by taking the graphic type of the top action
+	 * the graphic is found from the current graphic set
 	 */
-	bool draw();
+	void draw();
 
 	/**
 	 * adds an available ability to this unit
 	 * this turns targeted objects into actions which are pushed
 	 * onto the stack, eg. targeting a relic may push a collect relic action
 	 */
-	void give_ability(std::unique_ptr<UnitAbility>);
+	void give_ability(std::shared_ptr<UnitAbility>);
 
 	/**
 	 * get ability with specified type, null if not available
@@ -72,7 +107,7 @@ public:
 	 * adds a new action on top of the action stack
 	 * will be performed immediately
 	 */
-	void push_action(std::unique_ptr<UnitAction>);
+	void push_action(std::unique_ptr<UnitAction>, bool force=false);
 
 	/**
 	 * give a new attribute this this unit
@@ -89,8 +124,7 @@ public:
 	 * returns attribute based on templated value
 	 */
 	template<attr_type T> Attribute<T> &get_attribute() {
-		//return attribute_map[T]->get<T>();
-	 return *reinterpret_cast<Attribute<T> *>(attribute_map[T]);
+		return *reinterpret_cast<Attribute<T> *>(attribute_map[T]);
 	}
 
 	/**
@@ -104,6 +138,11 @@ public:
 	bool target(coord::phys3 target, ability_set type=ability_all);
 	bool target(Unit *target,        ability_set type=ability_all);
 
+	// these functions will stack actions (do not erase current action)
+	bool invoke(ability_type type, uint arg,            bool sound=false);
+	bool invoke(ability_type type, coord::phys3 target, bool sound=false);
+	bool invoke(ability_type type, Unit *target,        bool sound=false);
+
 	/**
 	 * delete action
 	 */
@@ -115,12 +154,14 @@ public:
 	 */
 	UnitReference get_ref();
 
+	UnitContainer *get_container();
+
 private:
 	/**
 	 * ability available -- actions that this entity
 	 * can perform when controlled
 	 */
-	std::vector<std::unique_ptr<UnitAbility>> ability_available;
+	std::unordered_map<ability_type, std::shared_ptr<UnitAbility>, ability_hash> ability_available;
 
 	/**
 	 * action stack -- top action determines graphic to be drawn
@@ -135,13 +176,14 @@ private:
 
 	/**
 	 * pop any destructable actions on the next update cycle
+	 * and prevent additional actions being added
 	 */
 	bool pop_destructables;
 
 	/**
 	 * the container that updates this unit
 	 */
-	const UnitContainer *container;
+	UnitContainer *const container;
 
 	/**
 	 * removes all actions above and including the first interuptable action
@@ -149,17 +191,6 @@ private:
 	 */
 	void erase_interuptables();
 };
-
-/**
- * the set of images to used based on unit direction,
- * usually 8 directions to draw for each unit (3 are mirrored)
- *
- * @param dir a world space direction,
- * @param angles number of angles, usually 8
- * @param first_angle offset added to angle, modulo number of angles
- * @return image set index
- */
-unsigned int dir_group(coord::phys3_delta dir, unsigned int angles=8, unsigned int first_angle=5);
 
 } // namespace openage
 

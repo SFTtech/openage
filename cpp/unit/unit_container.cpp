@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "../terrain/terrain_object.h"
 #include "unit_container.h"
@@ -34,7 +34,7 @@ Unit *UnitReference::get() const {
 
 UnitContainer::UnitContainer()
 	:
-	next_new_id{0} {
+	next_new_id{1} {
 
 }
 
@@ -54,18 +54,19 @@ UnitReference UnitContainer::get_unit(id_t id) {
 	}
 }
 
-bool UnitContainer::new_unit(UnitProducer& producer, Terrain *terrain,
-                             coord::tile tile) {
+UnitReference UnitContainer::new_unit(UnitProducer &producer, Terrain *terrain,
+                             coord::phys3 position) {
 	auto newobj = util::make_unique<Unit>(this, next_new_id++);
 
-	// try creating a unit at this location
-	bool placed = producer.place(newobj.get(), terrain, tile);
+	// try placing unit at this location
+	bool placed = producer.place(newobj.get(), terrain, position);
 	if (placed) {
 		producer.initialise(newobj.get());
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
+		return this->live_units[id]->get_ref();
 	}
-	return placed;
+	return UnitReference(); // is not valid
 }
 
 bool dispatch_command(id_t, const Command &) {
@@ -84,7 +85,9 @@ bool UnitContainer::on_tick() {
 
 	// cleanup and removal of objects
 	for (auto &obj : to_remove) {
-		this->live_units[obj]->location->remove();
+
+		// unique pointer triggers cleanup
+		log::dbg("remove object %lu", obj);
 		this->live_units.erase(obj);
 	}
 	return true;
