@@ -22,7 +22,9 @@ namespace os {
 
 std::string read_symlink(const char *path) {
 	#ifdef _WIN32
-	static_assert(false, "os::read_symlink is not yet implemented for WIN32");
+	// TODO not yet implemented
+	// static_assert(false, "os::read_symlink is not yet implemented for WIN32");
+	return std::string();
 	#else
 	size_t bufsize = 1024;
 
@@ -67,7 +69,9 @@ std::string self_exec_filename() {
 		return std::string{buf.get()};
 	}
 	#elif _WIN32
-	static_assert(false, "subprocess::self_filename is not yet implemented for WIN32");
+	// TODO not yet implemented
+	// static_assert(false, "subprocess::self_filename is not yet implemented for WIN32");
+	return std::string("openage.exe"); // FIXME: wild guess though
 	#else
 	static_assert(false, "subprocess::self_filename is not yet implemented for... whatever platform you're using right now.");
 	#endif
@@ -75,8 +79,9 @@ std::string self_exec_filename() {
 
 int execute_file(const char *path, bool background) {
 	#ifdef _WIN32
-	// some sort of shell-open
-	static_assert(false, "subprocess::execute_file is not yet implemented for WIN32");
+	// TODO some sort of shell-open, not yet implemented
+	// static_assert(false, "subprocess::execute_file is not yet implemented for WIN32");
+	return -1; // failure
 	#else
 		std::string runner = "";
 		#ifdef __APPLE__
