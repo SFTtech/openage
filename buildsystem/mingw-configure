@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./configure --mode=debug --cpp-compiler=g++ --c-compiler=gcc
