@@ -80,7 +80,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 
 	this->font_manager = std::make_unique<renderer::FontManager>();
 	for (uint32_t size : {12, 20}) {
-		fonts[size] = this->font_manager->get_font("DejaVu Serif", "Book", size);
+		fonts[size] = this->font_manager->get_font("Arial", "Book", size);
 	}
 
 	this->logsink_file = std::make_unique<log::FileSink>("/tmp/openage-log", true);

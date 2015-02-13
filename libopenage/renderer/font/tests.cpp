@@ -13,12 +13,12 @@ void font_manager_test_get_font() {
 	FontManager font_manager;
 
 	// FontManager should provide different font instances for different sizes of same font face.
-	Font *font1 = font_manager.get_font("DejaVu Serif", "Book", 12);
-	Font *font2 = font_manager.get_font("DejaVu Serif", "Book", 20);
+	Font *font1 = font_manager.get_font("Arial", "Book", 12);
+	Font *font2 = font_manager.get_font("Arial", "Book", 20);
 	(font1 != font2) or TESTFAIL;
 
 	// FontManager should provide the cached font instance
-	Font *font3 = font_manager.get_font("DejaVu Serif", "Book", 12);
+	Font *font3 = font_manager.get_font("Arial", "Book", 12);
 	(font3 == font1) or TESTFAIL;
 }
 
@@ -28,13 +28,13 @@ void font_manager() {
 
 void font_test_font_description() {
 	// Test default direction, language, script of font_description
-	font_description fd1{"DejaVu Serif", "Book", 12};
+	font_description fd1{"Arial", "Book", 12};
 	(fd1.direction == font_direction::left_to_right) or TESTFAIL;
 	(fd1.language == "en") or TESTFAIL;
 	(fd1.script == "Latn") or TESTFAIL;
 
 	// Equality check of two different font_description instances
-	font_description fd2{"DejaVu Serif", "Book", 20};
+	font_description fd2{"Arial", "Book", 20};
 	(fd1 != fd2) or TESTFAIL;
 
 	// a font_description instance constructed from family,style,size should be equal to another with same font file.

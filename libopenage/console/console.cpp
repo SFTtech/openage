@@ -28,7 +28,7 @@ Console::Console()
 	charsize{1, 1},
 	visible(false),
 	buf{{80, 25}, 1337, 80},
-	font{{"DejaVu Sans Mono", "Book", 12}} {
+	font{{"Arial", "Book", 12}} {
 
 	termcolors.reserve(256);
 
