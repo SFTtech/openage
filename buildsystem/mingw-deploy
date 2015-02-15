@@ -1,5 +1,10 @@
 #!/bin/bash
 
+WINEPREFIX=/tmp/wine_openage
+WINE_FONTS=$WINEPREFIX/drive_c/windows/Fonts
+
+mkdir -p $WINE_FONTS
+
 cp openage dist-win32/openage.exe
 
 for d in \
@@ -33,4 +38,4 @@ for d in \
     cp "/usr/i686-w64-mingw32/bin/$d" "dist-win32/$d"
 done
 
-echo "done. run it!"
+cp /usr/share/fonts/TTF/arial.ttf $WINE_FONTS

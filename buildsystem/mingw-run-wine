@@ -2,4 +2,14 @@
 
 export FONTCONFIG_PATH=./dist-win32/
 
-wine dist-win32/openage.exe
+export WINEPREFIX=/tmp/wine_openage
+export WINEOPENAGE=$WINEPREFIX/drive_c/openage/
+
+#export WINEDEBUG=warn+all
+
+mkdir -p $WINEOPENAGE
+ln -r -s -t $WINEOPENAGE assets dist-win32
+
+
+cd $WINEOPENAGE
+wine dist-win32/openage.exe $@
