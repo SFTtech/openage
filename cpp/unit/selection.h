@@ -32,30 +32,23 @@ public:
 
 	void toggle_unit(Unit *);
 
+	/**
+	 * point unit selection
+	 */
 	void select_point(Terrain *terrain, coord::camgame p, bool append=false);
 
+	/**
+	 * boxed unit selcetion
+	 */
 	void select_space(Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append=false);
 
 	/**
-	 * TODO: use this function instead
+	 * uses command on every selected unit
 	 */
 	void all_invoke(Command &cmd);
 
-
-	// old and unused functions
-	void set_ability(ability_type ability);
-	void all_invoke(ability_type ability, uint arg);
-	void all_target(Terrain *terrain, coord::phys3 target);
-
-
-
 private:
 	std::unordered_map<id_t, UnitReference> units;
-
-	/**
-	 * TODO: moving this to command
-	 */
-	ability_set modifiers;
 
 	bool drag_active;
 	coord::camgame start, end;

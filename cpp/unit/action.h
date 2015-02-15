@@ -165,11 +165,7 @@ private:
  */
 class TrainAction: public UnitAction {
 public:
-	TrainAction(Unit *e)
-		:
-		UnitAction{e, graphic_type::standing},
-		complete{false} {
-	}
+	TrainAction(Unit *e, UnitProducer *pp);
 	virtual ~TrainAction() {}
 
 	void update(unsigned int);
@@ -178,7 +174,30 @@ public:
 	bool allow_destruction() { return true; }
 
 private:
+	UnitProducer *trained;
 	bool complete;
+};
+
+/**
+ * builds a building
+ */
+class BuildAction: public UnitAction {
+public:
+	BuildAction(Unit *e, UnitProducer *pp, const coord::phys3 &pos);
+	BuildAction(Unit *e, Unit *foundation);
+	virtual ~BuildAction() {}
+
+	void update(unsigned int);
+	bool completed() { return complete >= 1.0f; }
+	bool allow_interupt() { return true; }
+	bool allow_destruction() { return true; }
+
+private:
+	Unit *building;
+	UnitProducer *producer;
+	coord::phys3 position;
+	float complete;
+	coord::phys_t range;
 };
 
 /**

@@ -95,7 +95,7 @@ void ObjectProducer::initialise(Unit *unit) {
 	log::dbg("dead unit id = %d", this->unit_data.dead_unit_id);
 
 	// reset existing attributes
-	unit->clear_actions();
+	unit->reset();
 
 	// set the class 
 	unit->unit_class = this->unit_data.unit_class;
@@ -274,6 +274,7 @@ void LivingProducer::initialise(Unit *unit) {
 		if (this->unit_data.id0 == 83) {
 
 			// male graphics
+			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->datamanager.get_producer(156); // builder 118
 			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->datamanager.get_producer(120); // forager
 			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->datamanager.get_producer(592); // sheperd
 			gather_attr.graphics[gamedata::unit_classes::TREES] = this->datamanager.get_producer(123); // woodcutter
@@ -284,6 +285,7 @@ void LivingProducer::initialise(Unit *unit) {
 		else {
 
 			// female graphics
+			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->datamanager.get_producer(222); // builder 212
 			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->datamanager.get_producer(354); // forager
 			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->datamanager.get_producer(590); // sheperd
 			gather_attr.graphics[gamedata::unit_classes::TREES] = this->datamanager.get_producer(218); // woodcutter
@@ -291,6 +293,7 @@ void LivingProducer::initialise(Unit *unit) {
 			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->datamanager.get_producer(220); // stone miner
 		}
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
+		unit->give_ability(std::make_shared<BuildAbility>(this->on_attack));
 	}
 }
 
@@ -404,8 +407,9 @@ BuldingProducer::BuldingProducer(DataManager &dm, const gamedata::unit_building 
 		(int)(this->unit_data.radius_size0 * 2),
 		(int)(this->unit_data.radius_size1 * 2),
 	};
-
+	
 	// graphic set
+	this->graphics[graphic_type::construct] = dm.get_unit_texture(ud->construction_graphic_id);
 	this->graphics[graphic_type::standing] = dm.get_unit_texture(ud->graphic_standing0);
 	this->graphics[graphic_type::attack] = dm.get_unit_texture(ud->graphic_standing0);
 	auto dying_tex = dm.get_unit_texture(ud->graphic_dying0);
@@ -610,10 +614,7 @@ void ProjectileProducer::initialise(Unit *unit) {
 	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;
 	unit->add_attribute(new Attribute<attr_type::speed>(sp));
 	unit->add_attribute(new Attribute<attr_type::projectile>(this->unit_data.projectile_arc));
-
-
 	unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));
-	unit->give_ability(std::make_shared<ProjectileAbility>());
 
 	// if destruction graphic is available
 	if (this->destroyed) {

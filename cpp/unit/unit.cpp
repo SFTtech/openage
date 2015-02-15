@@ -7,6 +7,7 @@
 #include "../engine.h"
 #include "ability.h"
 #include "action.h"
+#include "command.h"
 #include "producer.h"
 #include "unit.h"
 #include "unit_texture.h"
@@ -30,14 +31,15 @@ Unit::~Unit() {
 	}
 }
 
-void Unit::clear_actions() {
+void Unit::reset() {
 	this->ability_available.clear();
 	this->action_stack.clear();
 	this->attribute_map.clear();
-	pop_destructables = false;
+	this->pop_destructables = false;
 }
 
 bool Unit::has_action() {
+	log::dbg("has action %d", this->action_stack.empty());
 	return !this->action_stack.empty();
 }
 
@@ -167,65 +169,29 @@ bool Unit::has_attribute(attr_type type) {
 	return (this->attribute_map.count(type) > 0);
 }
 
-bool Unit::target(coord::phys3 target, ability_set type) {
+bool Unit::invoke(const Command &cmd, bool direct_command) {
+	if (direct_command) {
+
+		// drop other actions
+		this->stop_actions(); 
+	}
+
 	// find suitable ability for this target
 	for (auto &action : this->ability_available) {
-		if (type[action.first] && action.second->can_invoke(this, target)) {
-			erase_interuptables();
-			action.second->invoke(this, target, true);
+		if (cmd.ability()[action.first] && action.second->can_invoke(*this, cmd)) {
+			
+			action.second->invoke(*this, cmd, direct_command);
 			return true;
 		}
 	}
 	return false;
-}
-
-bool Unit::target(Unit *target, ability_set type) {
-	// find suitable ability for this target
-	for (auto &action : this->ability_available) {
-		if (type[action.first] && action.second->can_invoke(this, target)) {
-			erase_interuptables();
-			action.second->invoke(this, target, true);
-			return true;
-		}
-	}
-	return false;
-}
-
-bool Unit::invoke(ability_type type, uint arg, bool sound) {
-	if (this->ability_available.count(type) == 0 ||
-	    not this->ability_available[type]->can_invoke(this, arg) ) {
-		log::dbg("could not use ability %d with arg %u", type, arg);
-		return false;
-	}
-	this->ability_available[type]->invoke(this, arg, sound);
-	return true;
-}
-
-bool Unit::invoke(ability_type type, coord::phys3 target, bool sound) {
-	if (this->ability_available.count(type) == 0 ||
-	    not this->ability_available[type]->can_invoke(this, target) ) {
-		log::dbg("could not use ability %d with position target", type);
-		return false;
-	}
-	this->ability_available[type]->invoke(this, target, sound);
-	return true;
-}
-
-bool Unit::invoke(ability_type type, Unit *target, bool sound) {
-	if (this->ability_available.count(type) == 0 ||
-	    not this->ability_available[type]->can_invoke(this, target) ) {
-		log::dbg("could not use ability %d with unit target", type);
-		return false;
-	}
-	this->ability_available[type]->invoke(this, target, sound);
-	return true;
 }
 
 void Unit::delete_unit() {
 	this->pop_destructables = true;
 }
 
-void Unit::erase_interuptables() {
+void Unit::stop_actions() {
 	/*
 	 * discard all interruptible tasks
 	 */

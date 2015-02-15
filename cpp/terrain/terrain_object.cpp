@@ -363,13 +363,18 @@ std::vector<coord::tile> tile_list(const tile_range &rng) {
 	std::vector<coord::tile> tiles;
 
 	coord::tile check_pos = rng.start;
-	while (check_pos.ne <= rng.end.ne) {
-		while (check_pos.se <= rng.end.se) {
+	while (check_pos.ne < rng.end.ne) {
+		while (check_pos.se < rng.end.se) {
 			tiles.push_back(check_pos);
 			check_pos.se += 1;
 		}
 		check_pos.se = rng.start.se;
 		check_pos.ne += 1;
+	}
+
+	// a case when the objects radius is zero
+	if (tiles.empty()) {
+		tiles.push_back(rng.start);
 	}
 	return tiles;
 }

@@ -67,7 +67,7 @@ public:
 	/** 
 	 * removes all actions and abilities
 	 */
-	void clear_actions();
+	void reset();
 
 	/**
 	 * checks the entity has an action, if it has no action it should be removed from the game
@@ -100,6 +100,8 @@ public:
 
 	/**
 	 * get ability with specified type, null if not available
+	 *
+	 * To invoke commands use the invoke function instead
 	 */
 	UnitAbility *get_ability(ability_type type);
 
@@ -128,23 +130,23 @@ public:
 	}
 
 	/**
-	 * discards all interruptible tasks and sets a new target
-	 * for this entity to move towards
+	 * applies the command to this unit
 	 *
-	 * @param type allows a specific ability type to be used
-	 * this is used to set a unit to patrol rather than the default move
+	 * a direct command discards all interruptible tasks and sets a new target
+	 * for this entity to complete, and play action sound if available
+	 *
 	 * @return true if an action was created
 	 */
-	bool target(coord::phys3 target, ability_set type=ability_all);
-	bool target(Unit *target,        ability_set type=ability_all);
-
-	// these functions will stack actions (do not erase current action)
-	bool invoke(ability_type type, uint arg,            bool sound=false);
-	bool invoke(ability_type type, coord::phys3 target, bool sound=false);
-	bool invoke(ability_type type, Unit *target,        bool sound=false);
+	bool invoke(const Command &cmd, bool direct_command=false);
 
 	/**
-	 * delete action
+	 * removes all actions above and including the first interuptable action
+	 * this will stop any of the units current moving or attacking actions
+	 */
+	void stop_actions();
+
+	/**
+	 * begins unit removal by popping some actions
 	 */
 	void delete_unit();
 
@@ -154,6 +156,9 @@ public:
 	 */
 	UnitReference get_ref();
 
+	/**
+	 * the container used when constructing this unit
+	 */
 	UnitContainer *get_container();
 
 private:
@@ -185,11 +190,6 @@ private:
 	 */
 	UnitContainer *const container;
 
-	/**
-	 * removes all actions above and including the first interuptable action
-	 * this will stop any of the units current moving or attacking actions
-	 */
-	void erase_interuptables();
 };
 
 } // namespace openage

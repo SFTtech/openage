@@ -5,7 +5,9 @@
 #include "../pathfinding/a_star.h"
 #include "../pathfinding/heuristics.h"
 #include "../terrain/terrain.h"
+#include "../util/unique.h"
 #include "action.h"
+#include "command.h"
 #include "producer.h"
 #include "unit.h"
 #include "unit_texture.h"
@@ -97,10 +99,22 @@ bool DeadAction::completed() {
 			return false; // cannot complete when resource remains
 		}
 	}
-	return this->frame >= this->end_frame;
+	return this->frame > this->end_frame;
 }
 
 void IdleAction::update(unsigned int time) {
+
+	// possibly use a seperate action for building construction
+	if (this->entity->has_attribute(attr_type::building)) {
+		auto &build = this->entity->get_attribute<attr_type::building>();
+		if (build.completed < 1.0f) {
+			this->graphic = graphic_type::construct;
+		}
+		else {
+			this->graphic = graphic_type::standing;
+		}
+	}
+
 	// inc frame
 	this->frame += time * this->frame_rate / 20.0f;
 }
@@ -294,6 +308,13 @@ void MoveAction::set_path() {
 	}
 }
 
+TrainAction::TrainAction(Unit *e, UnitProducer *pp)
+	:
+	UnitAction{e, graphic_type::standing},
+	trained{pp},
+	complete{false} {
+}
+
 void TrainAction::update(unsigned int) {
 	UnitContainer *container = this->entity->get_container();
 	Terrain *terrain = this->entity->location->get_terrain();
@@ -311,14 +332,82 @@ void TrainAction::update(unsigned int) {
 
 
 	// create using the producer
-	auto &bl_attr = this->entity->get_attribute<attr_type::building>();
-	auto uref = container->new_unit(*bl_attr.pp, terrain, pos);
+	auto uref = container->new_unit(*this->trained, terrain, pos);
 	if (uref.is_valid()) {
-		uref.get()->invoke(ability_type::move, coord::tile{ 8, 10 }.to_phys2().to_phys3());
+
+		// use a move command with the position
+		// TODO: use a position on edge of the buildings
+		Command cmd(coord::tile{ 8, 10 }.to_phys2().to_phys3());
+		cmd.set_ability(ability_type::move);
+		uref.get()->invoke(cmd);
 
 		// try again next update if cannot place
 		this->complete = true;
 	}
+}
+
+BuildAction::BuildAction(Unit *e, UnitProducer *pp, const coord::phys3 &pos)
+	:
+	UnitAction{e, graphic_type::gather},
+	building{nullptr},
+	producer{pp},
+	position(pos),
+	complete{.0f},
+	range{path::path_grid_size + (e->location->min_axis() / 2)} {
+}
+
+BuildAction::BuildAction(Unit *e, Unit *foundation)
+	:
+	UnitAction{e, graphic_type::gather},
+	building{foundation},
+	producer{nullptr},
+	complete{.0f},
+	range{path::path_grid_size + (e->location->min_axis() / 2)} {
+}
+
+void BuildAction::update(unsigned int time) {
+	if (this->building) {
+
+		// the worker attributes attached to the unit
+		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+
+		// set relevant graphics
+		this->entity->graphics = &gatherer_attr.graphics[gamedata::unit_classes::BUILDING]->graphics;
+
+		// set direction unit should face
+		TerrainObject *target_location = this->building->location;
+		this->face_towards(target_location->pos.draw);
+
+		// move to resource being collected
+		auto distance_to_dropsite = target_location->from_edge(this->entity->location->pos.draw);
+		if (distance_to_dropsite > this->range) {
+
+			// move to dropsite
+			Command cmd(this->building);
+			cmd.set_ability(ability_type::move);
+			this->entity->invoke(cmd);
+			return;
+		}
+		else {
+			// increment building completion
+			auto &build = this->building->get_attribute<attr_type::building>();
+			build.completed += 0.001;
+			this->complete = build.completed;
+		}
+	}
+	else {
+
+		// create foundation using the producer
+		UnitContainer *container = this->entity->get_container();
+		Terrain *terrain = this->entity->location->get_terrain();
+		auto uref = container->new_unit(*this->producer, terrain, this->position);
+		if (uref.is_valid()) {
+			this->building = uref.get();
+		}
+	}
+
+	// inc frame
+	this->frame += time * this->frame_rate / 3.0f;
 }
 
 GatherAction::GatherAction(Unit *e, UnitReference tar)
@@ -374,8 +463,12 @@ void GatherAction::update(unsigned int time) {
 
 		// move to resource being collected
 		auto distance_to_dropsite = dropsite_location->from_edge(this->entity->location->pos.draw);
-		if (distance_to_dropsite > range) {
-			this->entity->invoke(ability_type::move, this->dropsite.get());
+		if (distance_to_dropsite > this->range) {
+
+			// move to dropsite
+			Command cmd(this->dropsite.get());
+			cmd.set_ability(ability_type::move);
+			this->entity->invoke(cmd);
 			return;
 		}
 		else {
@@ -384,11 +477,13 @@ void GatherAction::update(unsigned int time) {
 		}
 	}
 
-	// attack objects which have hitpoints (trees, hunt)
+	// attack objects which have hitpoints (trees, hunt, sheep)
 	if (this->target.get()->has_attribute(attr_type::hitpoints)) {
 		auto &hp_attr = this->target.get()->get_attribute<attr_type::hitpoints>();
 		if (hp_attr.current > 0) {
-			this->entity->invoke(ability_type::attack, this->target.get());
+			Command cmd(this->target.get());
+			cmd.set_ability(ability_type::attack);
+			this->entity->invoke(cmd);
 			return;
 		}
 	}
@@ -396,7 +491,9 @@ void GatherAction::update(unsigned int time) {
 	// move to resource being collected
 	this->distance_to_target = target_location->from_edge(this->entity->location->pos.draw);
 	if (distance_to_target > range) {
-		this->entity->invoke(ability_type::move, this->target.get());
+		Command cmd(this->target.get());
+		cmd.set_ability(ability_type::move);
+		this->entity->invoke(cmd);
 		return;
 	}
 
@@ -451,10 +548,9 @@ void AttackAction::update(unsigned int time) {
 	else {
 		// out of range so try move towards
 		// if this unit has a move ability
-		auto move_ability = this->entity->get_ability(ability_type::move);
-		if (move_ability) {
-			move_ability->invoke(this->entity, target.get());
-		}
+		Command cmd(this->target.get());
+		cmd.set_ability(ability_type::move);
+		this->entity->invoke(cmd);
 	}
 }
 
@@ -477,6 +573,10 @@ void AttackAction::attack(Unit *target) {
 }
 
 void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, const coord::phys3 &target) {
+	if (!this->target.is_valid()) {
+		return;
+	}
+
 	// container terrain and initial position
 	UnitContainer *container = this->entity->get_container();
 	Terrain *terrain = this->entity->location->get_terrain();
@@ -484,16 +584,15 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 	current_pos.up = att.init_height;
 
 	// create using the producer
-	auto uref = container->new_unit(*att.pp, terrain, current_pos);
+	auto projectile_ref = container->new_unit(*att.pp, terrain, current_pos);
 
 	// send towards target using a projectile ability (creates projectile motion action)
-	if (uref.is_valid()) {
-		auto u = uref.get();
-		auto &projectile_attr = u->get_attribute<attr_type::projectile>();
+	if (projectile_ref.is_valid()) {
+		auto projectile = projectile_ref.get();
+		auto &projectile_attr = projectile->get_attribute<attr_type::projectile>();
 		projectile_attr.launcher = this->entity->get_ref();
 		projectile_attr.launched = true;
-
-		u->invoke(ability_type::projectile, target);
+		projectile->push_action(util::make_unique<ProjectileAction>(projectile, target), true);
 	}
 	else {
 		log::dbg("projectile launch failed");

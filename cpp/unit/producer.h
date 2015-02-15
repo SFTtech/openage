@@ -43,6 +43,7 @@ public:
 	/**
 	 * Initialize units attributes
 	 * This can be called using existing units to modify type
+	 * TODO: make const
 	 */
 	virtual void initialise(Unit *) = 0;
 
@@ -51,6 +52,7 @@ public:
 	 *
 	 * This should be used when initially creating a unit or
 	 * when a unit is ungarrsioned from a building or object
+	 * TODO: make const
 	 */
 	virtual TerrainObject *place(Unit *, Terrain *, coord::phys3) = 0;
 

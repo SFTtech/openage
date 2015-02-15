@@ -19,6 +19,7 @@
 #include "log.h"
 #include "terrain/terrain.h"
 #include "unit/action.h"
+#include "unit/command.h"
 #include "unit/producer.h"
 #include "unit/unit.h"
 #include "unit/unit_texture.h"
@@ -111,6 +112,7 @@ GameMain::GameMain(Engine *engine)
 	scrolling_active{false},
 	draging_active{false},
 	construct_mode{true},
+	building_placement{false},
 	assetmanager{engine->get_data_dir()},
 	engine{engine} {
 
@@ -255,16 +257,27 @@ bool GameMain::on_input(SDL_Event *e) {
 		// a mouse button was pressed...
 		// subtract value from window height to get position relative to lower right (0,0).
 		coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
-		coord::camgame mousepos_camgame = mousepos_window.to_camgame();
+		this->mousepos_camgame = mousepos_window.to_camgame();
 		// TODO once the terrain elevation milestone is implemented, use a method
 		// more suitable for converting camgame to phys3
-		coord::phys3 mousepos_phys3 = mousepos_camgame.to_phys3();
-		coord::tile mousepos_tile = mousepos_phys3.to_tile3().to_tile();
+		this->mousepos_phys3 = mousepos_camgame.to_phys3();
+		this->mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
 		if (clicking_active and e->button.button == SDL_BUTTON_LEFT and !construct_mode) {
-			//selection.select_point(terrain, mousepos_camgame, this->ctrl_active);
-			selection.drag_begin(mousepos_camgame);
-			draging_active = true;
+			if (this->building_placement) {
+
+				// confirm building placement with left click
+				Command cmd(this->datamanager.get_producer_index(this->editor_current_building), mousepos_phys3);
+				cmd.set_ability(ability_type::build);
+				selection.all_invoke(cmd);
+				this->building_placement = false;
+			}
+			else {
+
+				// begin a boxed selection
+				selection.drag_begin(mousepos_camgame);
+				draging_active = true;
+			}
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_LEFT and construct_mode) {
 			log::dbg("LMB [window]:    x %9hd y %9hd",
@@ -287,7 +300,15 @@ bool GameMain::on_input(SDL_Event *e) {
 			chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and !construct_mode) {
-			selection.all_target(terrain, mousepos_phys3);
+
+			// right click can cancel building placement
+			if (this->building_placement) {
+				this->building_placement = false;
+			}
+			else {
+				auto cmd = this->get_action(mousepos_phys3);
+				selection.all_invoke(cmd);
+			}
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and construct_mode) {
 			// get chunk clicked on, don't create it if it's not there already
@@ -338,11 +359,15 @@ bool GameMain::on_input(SDL_Event *e) {
 		}
 		break;
 
-	case SDL_MOUSEMOTION:
+	case SDL_MOUSEMOTION: {
+
+		// update mouse position values
+		coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
+		this->mousepos_camgame = mousepos_window.to_camgame();
+		this->mousepos_phys3 = mousepos_camgame.to_phys3();
+		this->mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
 		if (draging_active) {
-			coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
-			coord::camgame mousepos_camgame = mousepos_window.to_camgame();
 			selection.drag_update(mousepos_camgame);
 		}
 
@@ -352,6 +377,8 @@ bool GameMain::on_input(SDL_Event *e) {
 			engine.move_phys_camera(e->motion.xrel, e->motion.yrel);
 		}
 		break;
+	}
+		
 
 	case SDL_MOUSEWHEEL:
 		if (this->ctrl_active && this->datamanager.producer_count() > 0) {
@@ -410,7 +437,15 @@ bool GameMain::on_input(SDL_Event *e) {
 			UnitAction::show_debug = !UnitAction::show_debug;
 			break;
 		case SDLK_t:
-			this->selection.all_invoke(ability_type::train, 0);
+			// attempt to train editor selected object
+			if ( this->datamanager.producer_count() > 0 ) {
+				UnitProducer *producer = this->datamanager.get_producer_index(this->editor_current_building);
+				Command cmd(producer);
+				this->selection.all_invoke(cmd);
+			}
+			break;
+		case SDLK_y:
+			this->building_placement = true;
 			break;
 		}
 
@@ -484,10 +519,15 @@ bool GameMain::on_draw() {
 	// draw construction or actions mode indicator
 	int x = 400 - (engine.window_size.x / 2);
 	int y = 35 - (engine.window_size.y / 2);
-	if (construct_mode) {
+	if (this->construct_mode) {
 		engine.render_text({x, y}, 20, "Construct mode");
 	} else {
 		engine.render_text({x, y}, 20, "Actions mode");
+	}
+
+	if (this->building_placement) {
+		auto txt = this->datamanager.get_producer_index(this->editor_current_building)->default_texture();
+		txt->draw(mousepos_tile.to_phys2().to_phys3().to_camgame(), 0, 1);
 	}
 
 	return true;
@@ -559,6 +599,17 @@ void GameMain::draw_debug_grid() {
 
 	} glEnd();
 
+}
+
+Command GameMain::get_action(const coord::phys3 &pos) const {
+	// TODO: lol
+	TerrainObject *obj = this->terrain->obj_at_point(pos);
+	if (obj) {
+		return Command(obj->unit);
+	}
+	else {
+		return Command(pos);
+	}
 }
 
 } //namespace openage

@@ -3,6 +3,8 @@
 #ifndef OPENAGE_UNIT_COMMAND_H_
 #define OPENAGE_UNIT_COMMAND_H_
 
+#include "../coord/phys3.h"
+#include "ability.h"
 #include "producer.h"
 #include "unit.h"
 
@@ -17,31 +19,48 @@ public:
 	/**
 	 * target another unit
 	 */
-	Command(Unit *);
+	Command(Unit *unit);
 
 	/**
 	 * target a position
 	 */
-	Command(coord::phys3);
+	Command(coord::phys3 position);
 
 	/**
 	 * select a type
 	 */
-	Command(UnitProducer *);
+	Command(UnitProducer *producer);
 
 	/** 
 	 * place building foundation
 	 */ 
 	Command(UnitProducer *, coord::phys3);
 
+	bool has_unit() const;
+	bool has_position() const;
+	bool has_producer()const;
+
+	Unit *unit() const;
+	coord::phys3 position() const;
+	UnitProducer *producer() const;
+
 	/**
 	 * the action can only be this ability
+	 *
+	 * @param type allows a specific ability type to be used
+	 * for example to set a unit to patrol rather than the default move
 	 */
-	void set_ability(ability_type);
+	void set_ability(ability_type t);
+
+	/**
+	 * the ability types allowed to use this command
+	 */
+	const ability_set &ability() const;
 
 private:
-	Unit *unit;
-	coord::phys3 position;
+	bool has_pos;
+	Unit *u;
+	coord::phys3 pos;
 	UnitProducer *type;
 
 	/**

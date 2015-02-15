@@ -33,6 +33,7 @@ namespace openage {
  * types of action graphics
  */
 enum class graphic_type {
+	construct,
 	shadow,
 	decay,
 	dying,
@@ -40,7 +41,7 @@ enum class graphic_type {
 	walking,
 	carrying,
 	attack,
-	gather
+	gather // rename to working
 };
 
 class UnitTexture;
@@ -181,8 +182,10 @@ template<> class Attribute<attr_type::building>: public AttributeContainer {
 public:
 	Attribute()
 		:
-		AttributeContainer{attr_type::building} {}
+		AttributeContainer{attr_type::building},
+		completed{.0f} {}
 
+	float completed;
 	bool is_dropsite;
 	game_resource resource_type; // todo resource type enum
 
@@ -208,6 +211,9 @@ public:
 
 class UnitTexture;
 
+/**
+ * TODO: rename to worker
+ */
 template<> class Attribute<attr_type::gatherer>: public AttributeContainer {
 public:
 	Attribute()

@@ -13,7 +13,6 @@ namespace openage {
 UnitSelection::UnitSelection()
 	:
 	drag_active{false} {
-	modifiers.set();
 }
 
 bool UnitSelection::on_drawhud() {
@@ -92,9 +91,6 @@ void UnitSelection::clear() {
 		}
 	}
 	this->units.clear();
-
-	// reset modifiers
-	modifiers.set();
 }
 
 void UnitSelection::toggle_unit(Unit *u) {
@@ -113,31 +109,15 @@ void UnitSelection::select_point(Terrain *terrain, coord::camgame p, bool append
 		this->clear();
 	}
 
-	// find the tile
-	coord::phys3 p_phys3 = p.to_phys3();
-	coord::tile p_tile = p_phys3.to_tile3().to_tile();
-	TileContent *tc = terrain->get_data(p_tile);
-	if (!tc || tc->obj.empty()) {
+	if (!terrain) {
+		log::dbg("terrain not specified");
 		return;
 	}
 
-	// at least one object is on the tile
-	// find the one nearest to the click
-	coord::phys_t nearest_dist = (1 << 16);
-	Unit *nearest_unit = nullptr;
-	for (auto o : tc->obj) {
-		coord::camgame upos = o->pos.draw.to_camgame();
-		coord::phys_t dx = p.x - upos.x;
-		coord::phys_t dy = p.y - upos.y;
-		coord::phys_t dist = std::hypot(dx, dy);
-		if (dist < nearest_dist) { //  && this->units.count(o->unit->id) == 0
-			nearest_dist = dist;
-			nearest_unit = o->unit;
-		}
-	}
-
-	if (nearest_unit) {
-		this->toggle_unit(nearest_unit);
+	// find any object at selected point
+	auto obj = terrain->obj_at_point(p.to_phys3());
+	if (obj) {
+		this->toggle_unit(obj->unit);
 	}
 }
 
@@ -175,49 +155,12 @@ void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::cam
 	}
 }
 
-void UnitSelection::all_invoke(Command &) {
-	// TODO: use commands to control units
-}
-
-
-void UnitSelection::set_ability(ability_type ability) {
-	modifiers = 0;
-	modifiers[ability] = true;
-}
-
-void UnitSelection::all_invoke(ability_type ability, uint arg) {
+void UnitSelection::all_invoke(Command &cmd) {
 	for (auto u : this->units) {
 		if (u.second.is_valid()) {
-			u.second.get()->invoke(ability, arg);
-		}
-	}
-}
 
-void UnitSelection::all_target(Terrain *terrain, coord::phys3 target) {
-	// get object currently standing at the clicked position
-
-	coord::tile tile = target.to_tile3().to_tile();
-	TileContent *tc = terrain->get_data(tile);
-	if (!tc) {
-		return;
-	}
-
-	if (tc->obj.empty()) {
-		for (auto u : this->units) {
-			if (u.second.is_valid()) {
-				u.second.get()->target(target, modifiers);
-			}
-		}
-	}
-	else {
-		Unit *obj = tc->obj[0]->unit;
-		for (auto u : this->units) {
-			if (u.second.is_valid()) {
-				// try target unit
-				if (!u.second.get()->target(obj, modifiers)) {
-					u.second.get()->target(target, modifiers);
-				}
-			}
+			// allow unit to find best use of the command
+			u.second.get()->invoke(cmd, true);
 		}
 	}
 }

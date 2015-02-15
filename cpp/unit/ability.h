@@ -13,6 +13,7 @@
 
 namespace openage {
 
+class Command;
 class Sound;
 class Unit;
 class UnitAction;
@@ -29,8 +30,7 @@ enum ability_type {
 	build,
 	research,
 	gather,
-	attack,
-	projectile
+	attack
 };
 
 struct ability_hash {
@@ -62,13 +62,15 @@ public:
 
 	virtual ability_type type() = 0;
 
-	virtual bool can_invoke(Unit *to_modify, uint arg) = 0;
-	virtual bool can_invoke(Unit *to_modify, coord::phys3 target) = 0;
-	virtual bool can_invoke(Unit *to_modify, Unit *target) = 0;
+	/** 
+	 * true if the paramaters allow an action to be performed
+	 */
+	virtual bool can_invoke(Unit &to_modify, const Command &cmd) = 0;
 
-	virtual void invoke(Unit *to_modify, uint arg,            bool play_sound=false) = 0;
-	virtual void invoke(Unit *to_modify, coord::phys3 target, bool play_sound=false) = 0;
-	virtual void invoke(Unit *to_modify, Unit *target,        bool play_sound=false) = 0;
+ 	/**
+ 	 * applys command to a given unit
+ 	 */
+	virtual void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) = 0;
 };
 
 /*
@@ -82,13 +84,9 @@ public:
 		return ability_type::move;
 	}
 
-	bool can_invoke(Unit *to_modify, uint arg);
-	bool can_invoke(Unit *to_modify, coord::phys3 target);
-	bool can_invoke(Unit *to_modify, Unit *target);
+	bool can_invoke(Unit &to_modify, const Command &cmd);
 
-	void invoke(Unit *to_modify, uint arg,            bool play_sound=false);
-	void invoke(Unit *to_modify, coord::phys3 target, bool play_sound=false);
-	void invoke(Unit *to_modify, Unit *target,        bool play_sound=false);
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false);
 
 private:
 	Sound *sound;
@@ -105,13 +103,28 @@ public:
 		return ability_type::train;
 	}
 
-	bool can_invoke(Unit *to_modify, uint arg);
-	bool can_invoke(Unit *to_modify, coord::phys3 target);
-	bool can_invoke(Unit *to_modify, Unit *target);
+	bool can_invoke(Unit &to_modify, const Command &cmd);
 
-	void invoke(Unit *to_modify, uint arg,            bool play_sound=false);
-	void invoke(Unit *to_modify, coord::phys3 target, bool play_sound=false);
-	void invoke(Unit *to_modify, Unit *target,        bool play_sound=false);
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false);
+
+private:
+	Sound *sound;
+};
+
+/*
+ * villagers build new buildings
+ */
+class BuildAbility: public UnitAbility {
+public:
+	BuildAbility(Sound *s=nullptr);
+
+	ability_type type() {
+		return ability_type::build;
+	}
+
+	bool can_invoke(Unit &to_modify, const Command &cmd);
+
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false);
 
 private:
 	Sound *sound;
@@ -128,13 +141,9 @@ public:
 		return ability_type::gather;
 	}
 
-	bool can_invoke(Unit *to_modify, uint arg);
-	bool can_invoke(Unit *to_modify, coord::phys3 target);
-	bool can_invoke(Unit *to_modify, Unit *target);
+	bool can_invoke(Unit &to_modify, const Command &cmd);
 
-	void invoke(Unit *to_modify, uint arg,            bool play_sound=false);
-	void invoke(Unit *to_modify, coord::phys3 target, bool play_sound=false);
-	void invoke(Unit *to_modify, Unit *target,        bool play_sound=false);
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false);
 
 private:
 	Sound *sound;
@@ -151,37 +160,12 @@ public:
 		return ability_type::attack;
 	}
 
-	bool can_invoke(Unit *to_modify, uint arg);
-	bool can_invoke(Unit *to_modify, coord::phys3 target);
-	bool can_invoke(Unit *to_modify, Unit *target);
+	bool can_invoke(Unit &to_modify, const Command &cmd);
 
-	void invoke(Unit *to_modify, uint arg,            bool play_sound=false);
-	void invoke(Unit *to_modify, coord::phys3 target, bool play_sound=false);
-	void invoke(Unit *to_modify, Unit *target,        bool play_sound=false);
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false);
 
 private:
 	Sound *sound;
-};
-
-/*
- * moves a projectile action when given a valid target
- */
-class ProjectileAbility: public UnitAbility {
-public:
-	ProjectileAbility();
-
-	ability_type type() {
-		return ability_type::projectile;
-	}
-
-	bool can_invoke(Unit *to_modify, uint arg);
-	bool can_invoke(Unit *to_modify, coord::phys3 target);
-	bool can_invoke(Unit *to_modify, Unit *target);
-
-	void invoke(Unit *to_modify, uint arg,            bool play_sound=false);
-	void invoke(Unit *to_modify, coord::phys3 target, bool play_sound=false);
-	void invoke(Unit *to_modify, Unit *target,        bool play_sound=false);
-
 };
 
 } // namespace openage
