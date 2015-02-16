@@ -159,7 +159,12 @@ public:
 	/**
 	 * the container used when constructing this unit
 	 */
-	UnitContainer *get_container();
+	UnitContainer *get_container() const;
+
+	/**
+	 *
+	 */
+	std::vector<UnitAction *> current_actions() const;
 
 private:
 	/**

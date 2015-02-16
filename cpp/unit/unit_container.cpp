@@ -93,4 +93,12 @@ bool UnitContainer::on_tick() {
 	return true;
 }
 
+std::vector<openage::Unit *> UnitContainer::all_units() {
+	std::vector<openage::Unit *> result;
+	for (auto u : this->live_units) {
+		result.push_back(u.second);
+	}
+	return result;
+}
+
 } // namespace openage

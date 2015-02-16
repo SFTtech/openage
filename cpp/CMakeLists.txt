@@ -11,6 +11,7 @@ add_sources(${PROJECT_NAME}
 	main.cpp
 	args.cpp
 	game_main.cpp
+	game_save.cpp
 	assetmanager.cpp
 	callbacks.cpp
 	datamanager.cpp

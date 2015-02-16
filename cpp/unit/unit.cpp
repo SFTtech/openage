@@ -208,8 +208,14 @@ UnitReference Unit::get_ref() {
 	return UnitReference(container, id, this);
 }
 
-UnitContainer *Unit::get_container() {
+UnitContainer *Unit::get_container() const {
 	return container;
+}
+
+std::vector<UnitAction *> Unit::current_actions() const {
+	std::vector<UnitAction *> result;
+
+	return result;
 }
 
 } /* namespace openage */

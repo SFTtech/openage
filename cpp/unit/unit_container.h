@@ -74,6 +74,11 @@ public:
 	 */
 	bool on_tick();
 
+	/**
+	 * gets a list of all units in the container
+	 */
+	std::vector<openage::Unit *> all_units();
+
 private:
 	id_t next_new_id;
 

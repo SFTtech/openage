@@ -170,6 +170,11 @@ public:
 	//TODO: non-square shaped terrain bounds
 
 	/**
+	 * returns a list of all referenced chunks
+	 */
+	std::vector<coord::chunk> used_chunks() const;
+
+	/**
 	 * fill the terrain with given terrain_id values.
 	 * @returns whether the data filled on the terrain was cut because of
 	 * the terrains size limit.

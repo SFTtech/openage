@@ -93,6 +93,13 @@ Terrain::~Terrain() {
 	}
 }
 
+std::vector<coord::chunk> Terrain::used_chunks() const {
+	std::vector<coord::chunk> result;
+	for (auto &c : chunks) {
+		result.push_back(c.first);
+	}
+	return result;
+}
 
 bool Terrain::fill(const int *data, coord::tile_delta size) {
 	bool was_cut = false;
