@@ -32,10 +32,10 @@ void DataManager::initialize(AssetManager *am) {
 }
 
 void DataManager::check_updates() {
-	if (not gamedata_loaded and this->gamedata_load_job.is_finished()) {
+	if (not this->gamedata_loaded and this->gamedata_load_job.is_finished()) {
 		auto gamedata = this->gamedata_load_job.get_result();
 		this->on_gamedata_loaded(gamedata);
-		gamedata_loaded = true;
+		this->gamedata_loaded = true;
 		log::msg("Loading time     [data]: %5.3f s", load_timer.getval() / 1000.f);
 	}
 }
@@ -45,11 +45,11 @@ bool DataManager::load_complete() {
 }
 
 size_t DataManager::producer_count() {
-	return available_objects.size();
+	return this->available_objects.size();
 }
 
 index_t DataManager::get_slp_graphic(index_t slp) {
-	return slp_to_graphic[slp];
+	return this->slp_to_graphic[slp];
 }
 
 Texture *DataManager::get_texture(index_t graphic_id) {
@@ -307,7 +307,7 @@ void DataManager::create_producers(const std::vector<gamedata::empiresdat> &game
 	}
 
 	// create dead unit types
-	for (auto &unit : gamedata[0].civs.data[your_civ_id].units.dead_or_fish.data) {
+	for (auto &unit : gamedata[0].civs.data[0].units.dead_or_fish.data) {
 		this->load_object(unit, available_objects);
 	}
 

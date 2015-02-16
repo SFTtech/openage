@@ -39,7 +39,6 @@ void Unit::reset() {
 }
 
 bool Unit::has_action() {
-	log::dbg("has action %d", this->action_stack.empty());
 	return !this->action_stack.empty();
 }
 

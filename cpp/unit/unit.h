@@ -32,8 +32,8 @@ public:
 	Unit(UnitContainer *c, id_t id);
 
 	/**
-     * unit cleanup will delete terrain object
-     */
+	 * unit cleanup will delete terrain object
+	*/
 	virtual ~Unit();
 
 	/**

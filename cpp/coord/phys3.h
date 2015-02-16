@@ -33,6 +33,16 @@ struct phys3_delta {
 	camgame_delta to_camgame() const;
 };
 
+/**
+ * distance between two points
+ */
+coord::phys_t distance(const coord::phys3 &a, const coord::phys3 &b);
+
+/**
+ * modify the length of a phys3_delta vector
+ */
+coord::phys3_delta normalize(const coord::phys3_delta &a, const coord::phys_t &length);
+
 #include "ops/free.h"
 
 #ifdef GEN_IMPL_PHYS3_CPP

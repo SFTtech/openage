@@ -1,5 +1,7 @@
 // Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
+#include <cmath>
+
 #define GEN_IMPL_PHYS3_CPP
 #include "phys3.h"
 
@@ -67,6 +69,17 @@ phys3_delta phys3::get_fraction() {
 	result.ne = (ne & bitmask);
 	result.se = (se & bitmask);
 	result.up = (up & bitmask);
+	return result;
+}
+
+phys_t distance(const phys3 &a, const phys3 &b) {
+	phys_t dx = a.ne - b.ne;
+	phys_t dy = a.se - b.se;
+	return std::hypot(dx, dy);
+}
+
+phys3_delta normalize(const phys3_delta &a, const phys_t &length) {
+	phys3_delta result = (a * length) / std::hypot(a.ne, a.se);
 	return result;
 }
 

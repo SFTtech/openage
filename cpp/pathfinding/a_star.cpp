@@ -82,7 +82,7 @@ openage::TerrainObject *find_nearest(openage::TerrainObject *to_move,
 	}
 
 	// use endpoint to identify an object
-	openage::coord::phys3 end = p.waypoints.front().position;
+	coord::phys3 end = p.waypoints.front().position;
 	return terrain->obj_at_point(end);
 }
 

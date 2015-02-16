@@ -43,7 +43,9 @@ float UnitAction::current_frame() const {
 
 void UnitAction::draw_debug() {
 	// draw debug content if available
-	if(show_debug && this->debug_draw_action) this->debug_draw_action();
+	if(show_debug && this->debug_draw_action) {
+		this->debug_draw_action();
+	}
 }
 
 void UnitAction::face_towards(const coord::phys3 pos) {
@@ -449,8 +451,11 @@ void GatherAction::update(unsigned int time) {
 	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
 	gatherer_attr.current_type = resource_attr.resource_type;
 
-	// set relevant graphics
-	this->entity->graphics = &gatherer_attr.graphics[this->target.get()->unit_class]->graphics;
+	// set relevant graphics if available
+	auto class_type = this->target.get()->unit_class;
+	if (gatherer_attr.graphics.count(class_type) > 0) {
+		this->entity->graphics = &gatherer_attr.graphics[class_type]->graphics;
+	}
 
 	// set direction unit should face
 	TerrainObject *target_location = this->target.get()->location;

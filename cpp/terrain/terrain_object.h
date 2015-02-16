@@ -36,10 +36,6 @@ struct tile_range {
 	coord::phys3 draw; // gets used as center point of radial objects
 };
 
-coord::phys_t distance(const coord::phys3 &a, const coord::phys3 &b);
-
-coord::phys3_delta normalize(const coord::phys3_delta &a, const coord::phys_t &length);
-
 /**
  * get all tiles in the tile range -- useful for iterating
  */
