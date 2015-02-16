@@ -22,8 +22,8 @@ Path to_point(coord::phys3 start,
 /**
  * path between 2 objects, with how close to come to end point
  */
-Path to_object(openage::TerrainObject *to_move,
-               openage::TerrainObject *end,
+Path to_object(TerrainObject *to_move,
+               TerrainObject *end,
                coord::phys_t rad);
 
 /**
@@ -36,8 +36,8 @@ Path find_nearest(coord::phys3 start,
 /**
  * search outwards to find an object and return object
  */
-openage::TerrainObject *find_nearest(openage::TerrainObject *to_move,
-            std::function<bool(const openage::TerrainObject *)> valid_end);
+openage::TerrainObject *find_nearest(TerrainObject *to_move,
+            std::function<bool(const TerrainObject *)> valid_end);
 
 /**
  * finds a path between two endpoints

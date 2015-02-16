@@ -59,7 +59,7 @@ public:
 	 * to be pushed while it is active
 	 * eg dead action must be completed and cannot be discarded
 	 *
-     * TODO: rename as allow_stack_modification
+	 * TODO: rename as allow_stack_modification
 	 */
 	virtual bool allow_destruction() = 0;
 

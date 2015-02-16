@@ -16,6 +16,32 @@
 
 namespace openage {
 
+std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &restriction) {
+	std::unordered_set<terrain_t> result;
+
+	// 1, 14, and 15 are water, 2 is shore
+	if (restriction == gamedata::ground_type::WATER ||
+	    restriction == gamedata::ground_type::WATER_0x0D ||
+	    restriction == gamedata::ground_type::WATER_SHIP_0x03 ||
+	    restriction == gamedata::ground_type::WATER_SHIP_0x0F ||
+	    restriction == gamedata::ground_type::WATER_ANY_0x11 ||
+	    restriction == gamedata::ground_type::WATER_ANY_0x14) {
+		result.insert(1);
+		result.insert(2);
+		result.insert(14);
+		result.insert(15);
+	}
+	else {
+		for (int i = 0; i < 32; ++i) {
+			if (i != 1 && i != 14 && i != 15) {
+				result.insert(i);
+			}
+		}
+	}
+
+	return result;
+}
+
 ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	:
 	datamanager(dm),
@@ -59,6 +85,11 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	if (dying_tex) {
 		this->graphics[graphic_type::dying] = dying_tex;
 	}
+
+	// default extra graphics
+	this->graphics[graphic_type::attack] = this->graphics[graphic_type::standing];
+	this->graphics[graphic_type::gather] = this->graphics[graphic_type::standing];
+	this->graphics[graphic_type::carrying] = this->graphics[graphic_type::standing];
 
 	// pull extra graphics from unit commands
 	auto cmds = dm.get_command_data(this->unit_data.id0);
@@ -266,9 +297,6 @@ void LivingProducer::initialise(Unit *unit) {
 		gather_attr.capacity = 10.0f;
 		gather_attr.gather_rate = 0.002f;
 
-		auto index = this->datamanager.get_slp_graphic(1536);
-		log::dbg("graphic found %d", index);
-
 		// currently not sure where the game data keeps these values
 		// todo PREY_ANIMAL SEA_FISH
 		if (this->unit_data.id0 == 83) {
@@ -295,6 +323,18 @@ void LivingProducer::initialise(Unit *unit) {
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 		unit->give_ability(std::make_shared<BuildAbility>(this->on_attack));
 	}
+	else if (this->unit_data.unit_class == gamedata::unit_classes::FISHING_BOAT) {
+		unit->add_attribute(new Attribute<attr_type::gatherer>());
+
+		// add fishing abilites
+		auto &gather_attr = unit->get_attribute<attr_type::gatherer>();
+		gather_attr.current_type = game_resource::food;
+		gather_attr.capacity = 15.0f;
+		gather_attr.gather_rate = 0.002f;
+		gather_attr.graphics[gamedata::unit_classes::SEA_FISH] = this;
+
+		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
+	}
 }
 
 TerrainObject *LivingProducer::place(Unit *u, Terrain *terrain, coord::phys3 init_pos) {
@@ -304,26 +344,8 @@ TerrainObject *LivingProducer::place(Unit *u, Terrain *terrain, coord::phys3 ini
 	 */
 	TerrainObject *obj = new RadialObject(this->unit_data.radius_size1, this->terrain_outline);
 
-	// 1, 14, and 15 are water, 2 is shore
-	std::unordered_set<terrain_t> allowed_terrains;
-
-	// testing setup
-	if (this->unit_data.terrain_restriction == gamedata::ground_type::WATER ||
-		this->unit_data.terrain_restriction == gamedata::ground_type::WATER_SHIP_0x03 ||
-	    this->unit_data.terrain_restriction == gamedata::ground_type::WATER_SHIP_0x0F) {
-		allowed_terrains.insert(1);
-		allowed_terrains.insert(2);
-		allowed_terrains.insert(14);
-		allowed_terrains.insert(15);
-	}
-	else {
-		for (int i = 0; i < 32; ++i) {
-			if (i != 1 && i != 14 && i != 15) {
-				allowed_terrains.insert(i);
-			}
-		}
-	}
-
+	// find set of allowed terrains
+	std::unordered_set<terrain_t> terrains = allowed_terrains(this->unit_data.terrain_restriction);
 
 	/*
 	 * decide what terrain is passable using this lambda
@@ -335,10 +357,11 @@ TerrainObject *LivingProducer::place(Unit *u, Terrain *terrain, coord::phys3 ini
 		// look at all tiles in the bases range
 		for (coord::tile check_pos : tile_list(obj->get_range(pos))) {
 			TileContent *tc = terrain->get_data(check_pos);
-			if (!tc) return false;
 
-			// terrain type restrictons	
-			if (allowed_terrains.count(tc->terrain_id) == 0) return false;
+			// invalid tile types
+			if (!tc || terrains.count(tc->terrain_id) == 0) {
+				return false;
+			}
 
 			// ensure no intersections with other objects
 			for (auto obj_cmp : tc->obj) {
@@ -539,8 +562,8 @@ TerrainObject *BuldingProducer::make_annex(int annex_id, Terrain *t, coord::phys
 
 	auto b = datamanager.get_building_data(annex_id);
 	coord::tile_delta annex_foundation = {
-		(int)(b->radius_size0 * 2),
-		(int)(b->radius_size1 * 2),
+		static_cast<int>(b->radius_size0 * 2),
+		static_cast<int>(b->radius_size1 * 2),
 	};
 
 	// producers place by the nw tile

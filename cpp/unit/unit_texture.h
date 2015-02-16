@@ -37,17 +37,17 @@ public:
 	/**
 	 * const attributes of the graphic
 	 */
-	const int16_t		id;
-	const unsigned int	frame_count;
-	const unsigned int	angle_count;
-	const int16_t		mirroring_mode;
-	const float			frame_rate;
+	const int16_t      id;
+	const unsigned int frame_count;
+	const unsigned int angle_count;
+	const int16_t      mirroring_mode;
+	const float        frame_rate;
 
 	/**
 	 * draw object with vertial orientation (arrows)
 	 * adding an addtion degree of orientation
 	 */
-	const bool     use_up_angles;
+	const bool         use_up_angles;
 
 	/**
 	 * invalid unit textures will cause errors if drawn

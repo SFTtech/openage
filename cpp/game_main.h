@@ -88,7 +88,7 @@ public:
 private:
 
 	/**
-	 * decides which type of right nouse click command to issue based on position
+	 * decides which type of right mouse click command to issue based on position
 	 *
 	 * if a unit is at the position the command should target the unit,
 	 * otherwise target ground position

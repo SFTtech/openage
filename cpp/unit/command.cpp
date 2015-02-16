@@ -4,38 +4,34 @@
 
 namespace openage {
 
+Command::Command(Unit *unit, bool haspos, UnitProducer *producer)
+	:
+	has_pos{haspos},
+	u{unit},
+	type{producer} {
+	this->modifiers.set();
+}
+
 Command::Command(Unit *unit)
 	:
-	has_pos{false},
-	u{unit},
-	type{nullptr} {
-	this->modifiers.set();
+	Command{unit, false, nullptr} {
 }
 
 Command::Command(coord::phys3 position)
 	:
-	has_pos{true},
-	u{nullptr},
-	pos(position),
-	type{nullptr} {
-	this->modifiers.set();
+	Command{nullptr, true, nullptr} {
+	this->pos = position;
 }
 
 Command::Command(UnitProducer *producer)
 	:
-	has_pos{false},
-	u{nullptr},
-	type{producer} {
-	this->modifiers.set();
+	Command{nullptr, false, producer} {
 }
 
 Command::Command(UnitProducer *producer, coord::phys3 position)
 	:
-	has_pos{true},
-	u{nullptr},
-	pos(position),
-	type{producer} {
-	this->modifiers.set();
+	Command{nullptr, true, producer} {
+	this->pos = position;
 }
 
 bool Command::has_unit() const {

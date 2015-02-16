@@ -26,6 +26,9 @@ class UnitAbility;
 class UnitAction;
 class UnitTexture;
 
+
+std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &restriction);
+
 /**
  * Initializes a unit with the required attributes, each unit type should implement these funcrtions
  * initialise should be called on construction of units 'new Unit(some_unit_producer)'

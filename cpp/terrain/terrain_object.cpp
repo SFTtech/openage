@@ -1,7 +1,6 @@
 // Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
-#include <cmath>
 
 #include "terrain_object.h"
 
@@ -19,17 +18,6 @@
 #include "../util/error.h"
 
 namespace openage {
-
-coord::phys_t distance(const coord::phys3 &a, const coord::phys3 &b) {
-	coord::phys_t dx = a.ne - b.ne;
-	coord::phys_t dy = a.se - b.se;
-	return std::hypot(dx, dy);
-}
-
-coord::phys3_delta normalize(const coord::phys3_delta &a, const coord::phys_t &length) {
-	coord::phys3_delta result = (a * length) / std::hypot(a.ne, a.se);
-	return result;
-}
 
 TerrainObject::TerrainObject(bool collisions)
 	:
@@ -333,7 +321,7 @@ tile_range RadialObject::get_range(const coord::phys3 &pos) const {
 }
 
 coord::phys_t RadialObject::from_edge(const coord::phys3 &point) const {
-	return std::max(distance(point, this->pos.draw) - this->phys_radius, (coord::phys_t) 0); 
+	return std::max(distance(point, this->pos.draw) - this->phys_radius, static_cast<coord::phys_t>(0));
 }
 
 coord::phys3 RadialObject::on_edge(const coord::phys3 &angle, coord::phys_t extra) const {

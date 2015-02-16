@@ -58,6 +58,12 @@ public:
 	const ability_set &ability() const;
 
 private:
+
+	/**
+	 * basic constructor, which shouldnt be used directly
+	 */
+	Command(Unit *unit, bool haspos, UnitProducer *producer);
+
 	bool has_pos;
 	Unit *u;
 	coord::phys3 pos;

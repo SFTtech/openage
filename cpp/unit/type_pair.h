@@ -10,12 +10,12 @@ namespace openage {
  */
 class UnitType {
 public:
-	UnitType() {}
+	UnitType();
 
 	/**
 	 * the unit must have either same class or id as this
 	 */
-	bool match(Unit *) {}
+	bool match(Unit *);
 
 private:
 	uint class_id;
@@ -28,7 +28,7 @@ private:
  */
 class TypePair {
 public:
-	TypePair() {}
+	TypePair();
 
 private:
 	UnitType a, b;
