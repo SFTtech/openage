@@ -59,6 +59,11 @@ public:
 	UnitReference get_unit(id_t id);
 
 	/**
+	 * creates a new unit without initialising
+	 */
+	UnitReference new_unit();
+
+	/**
 	 * adds a new unit to the container and initialises using a producer
 	 */
 	UnitReference new_unit(UnitProducer &producer, Terrain *terrain, coord::phys3 position);

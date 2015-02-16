@@ -75,7 +75,13 @@ BuildAbility::BuildAbility(Sound *s)
 }
 
 bool BuildAbility::can_invoke(Unit &, const Command &cmd) {
-	return (cmd.has_producer() && cmd.has_position()) || cmd.has_unit();
+	if (cmd.has_producer() && cmd.has_position()) {
+		return true;
+	}
+	if (cmd.has_unit()) {
+		return cmd.unit()->has_attribute(attr_type::building);
+	}
+	return false;
 }
 
 void BuildAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {

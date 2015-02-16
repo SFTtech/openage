@@ -16,6 +16,7 @@
 #include "crossplatform/opengl.h"
 #include "engine.h"
 #include "gamedata/string_resource.gen.h"
+#include "game_save.h"
 #include "log.h"
 #include "terrain/terrain.h"
 #include "unit/action.h"
@@ -413,6 +414,14 @@ bool GameMain::on_input(SDL_Event *e) {
 			this->debug_grid_active = !this->debug_grid_active;
 			break;
 
+		case SDLK_F5:
+			gameio::save(this, "default_save.txt");
+			break;
+
+		case SDLK_F9:
+			gameio::load(this, "default_save.txt");
+			break;
+
 		case SDLK_SPACE:
 			this->terrain->blending_enabled = !terrain->blending_enabled;
 			break;
@@ -602,7 +611,6 @@ void GameMain::draw_debug_grid() {
 }
 
 Command GameMain::get_action(const coord::phys3 &pos) const {
-	// TODO: lol
 	TerrainObject *obj = this->terrain->obj_at_point(pos);
 	if (obj) {
 		return Command(obj->unit);

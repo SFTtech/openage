@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #include <fstream>
 #include <vector>
@@ -12,26 +12,20 @@ namespace openage {
 namespace gameio {
 
 void save_unit(std::ofstream &file, Unit *unit) {
-	
-
-	coord::tile tile = unit->location->pos.draw.to_tile3().to_tile();
-	file << tile.ne << " " << tile.se << std::endl;
+	file << unit->producer->producer_id() << std::endl;
+	coord::tile pos = unit->location->pos.start;
+	file << pos.ne << " " << pos.se << std::endl;
 }
 
 void load_unit(std::ifstream &file, openage::GameMain *game) {
-	unsigned int id, pr_id;
-	coord::tile_t ne, se;
-	file >> id;
+	int pr_id;
+	coord::phys_t ne, se;
 	file >> pr_id;
 	file >> ne;
 	file >> se;
 
-	for (auto p : game->available_objects) {
-		if ( p->pr_id == pr_id ) {
-			game->placed_units.new_unit(p, game->terrain, coord::tile{ne, se});
-			return;
-		}
-	}
+	auto p = game->datamanager.get_producer(pr_id);
+	game->placed_units.new_unit(*p, game->terrain, coord::tile{ne, se}.to_phys2().to_phys3());
 }
 
 void save_tile_content(std::ofstream &file, openage::TileContent *content) {

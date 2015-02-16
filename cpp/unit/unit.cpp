@@ -17,6 +17,7 @@ namespace openage {
 Unit::Unit(UnitContainer *c, id_t id)
 	:
 	id{id},
+	producer{nullptr},
 	selected{false},
 	location{nullptr},
 	pop_destructables{false},

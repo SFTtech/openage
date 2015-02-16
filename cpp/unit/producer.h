@@ -40,6 +40,7 @@ public:
 
 	/**
 	 * gets the id of the unit type being produced
+	 * TODO: make const
 	 */
 	virtual int producer_id() = 0;
 

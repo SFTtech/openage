@@ -42,6 +42,11 @@ public:
 	const id_t id;
 
 	/**
+	 * producer used to create this object
+	 */
+	UnitProducer *producer;
+
+	/**
 	 * class of this unit instance
 	 */
 	gamedata::unit_classes unit_class;

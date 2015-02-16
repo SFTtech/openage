@@ -54,6 +54,12 @@ UnitReference UnitContainer::get_unit(id_t id) {
 	}
 }
 
+UnitReference UnitContainer::new_unit() {
+	auto id = next_new_id++;
+	this->live_units.emplace(id, util::make_unique<Unit>(this, id));
+	return this->live_units[id]->get_ref();
+}
+
 UnitReference UnitContainer::new_unit(UnitProducer &producer, Terrain *terrain,
                              coord::phys3 position) {
 	auto newobj = util::make_unique<Unit>(this, next_new_id++);
@@ -93,10 +99,10 @@ bool UnitContainer::on_tick() {
 	return true;
 }
 
-std::vector<openage::Unit *> UnitContainer::all_units() {
-	std::vector<openage::Unit *> result;
-	for (auto u : this->live_units) {
-		result.push_back(u.second);
+std::vector<Unit *> UnitContainer::all_units() {
+	std::vector<Unit *> result;
+	for (auto &u : this->live_units) {
+		result.push_back(u.second.get());
 	}
 	return result;
 }

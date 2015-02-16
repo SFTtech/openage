@@ -128,16 +128,15 @@ void ObjectProducer::initialise(Unit *unit) {
 	// reset existing attributes
 	unit->reset();
 
-	// set the class 
+	// initialise unit
+	unit->producer = this;
 	unit->unit_class = this->unit_data.unit_class;
-
-	// initialize graphic set
 	unit->graphics = &this->graphics;
 
 	// colour
 	unit->add_attribute(new Attribute<attr_type::color>(util::random_range(1, 8 + 1)));
 
-	// hitpoints
+	// hitpoints if available
 	if (this->unit_data.hit_points > 0) {
 		unit->add_attribute(new Attribute<attr_type::hitpoints>(this->unit_data.hit_points));
 	}
@@ -456,6 +455,8 @@ void BuldingProducer::initialise(Unit *unit) {
 	log::dbg("standing graphic = %u", this->unit_data.graphic_standing0);
 
 	// initialize graphic set
+	unit->producer = this;
+	unit->unit_class = this->unit_data.unit_class;
 	unit->graphics = &this->graphics;
 
 	unit->add_attribute(new Attribute<attr_type::color>(util::random_range(1, 8 + 1)));
@@ -631,6 +632,8 @@ void ProjectileProducer::initialise(Unit *unit) {
 	log::dbg("projectile arc = %f", this->unit_data.projectile_arc);
 
 	// initialize graphic set
+	unit->producer = this;
+	unit->unit_class = this->unit_data.unit_class;
 	unit->graphics = &this->graphics;
 
 	// projectile speed
