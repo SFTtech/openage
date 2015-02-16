@@ -80,8 +80,8 @@ class SpecialColor:
 
     def __eq__(self, other):
         return (
-            self.special_id == other.special_id
-            and self.base_color == other.base_color
+            self.special_id == other.special_id and
+            self.base_color == other.base_color
         )
 
     def __repr__(self):
@@ -212,8 +212,8 @@ class SLPFrame:
 
         # process bondary table
         for i in range(self.info.size[1]):
-            outline_entry_position = (self.info.outline_table_offset + i
-                                      * SLPFrame.slp_frame_row_edge.size)
+            outline_entry_position = (self.info.outline_table_offset + i *
+                                      SLPFrame.slp_frame_row_edge.size)
 
             left, right = SLPFrame.slp_frame_row_edge.unpack_from(
                 data, outline_entry_position
@@ -230,8 +230,8 @@ class SLPFrame:
 
         # process cmd table
         for i in range(self.info.size[1]):
-            cmd_table_position = (self.info.qdl_table_offset + i
-                                  * SLPFrame.slp_command_offset.size)
+            cmd_table_position = (self.info.qdl_table_offset + i *
+                                  SLPFrame.slp_command_offset.size)
             cmd_offset, = SLPFrame.slp_command_offset.unpack_from(
                 data, cmd_table_position
             )

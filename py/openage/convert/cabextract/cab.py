@@ -489,8 +489,8 @@ class CABFile:
                                 folder.pseudofile.read,
                                 decomp_write)
             else:
-                raise Exception("Unsupported folder compression: "
-                                + folder.comptype)
+                raise Exception("Unsupported folder compression: " +
+                                folder.comptype)
 
             if buf:
                 print("warning: the last %d bytes of folder %d"
@@ -605,8 +605,8 @@ class FolderPseudoFile:
             bytecount = min(rem, size)
 
             # this is the last datablock we need
-            result.append(read_at(self.f, self.datablock_physicalstart(idx)
-                                  + self.pos_in_datablock(idx), bytecount))
+            result.append(read_at(self.f, self.datablock_physicalstart(idx) +
+                                  self.pos_in_datablock(idx), bytecount))
             self.pos += bytecount
             size -= bytecount
 

@@ -80,13 +80,13 @@ $members
             return False
 
         return (
-            self.struct_name     == other.struct_name
-            and self.file_name   == other.file_name
-            and self.data        == other.data
-            and self.member_list == other.member_list
-            and self.section     == other.section
-            and self.typedefs    == other.typedefs
-            and self.typerefs    == other.typerefs
+            self.struct_name == other.struct_name and
+            self.file_name   == other.file_name and
+            self.data        == other.data and
+            self.member_list == other.member_list and
+            self.section     == other.section and
+            self.typedefs    == other.typedefs and
+            self.typerefs    == other.typerefs
         )
 
     def __str__(self):

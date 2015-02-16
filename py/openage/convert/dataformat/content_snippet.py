@@ -132,11 +132,11 @@ class ContentSnippet:
             return False
 
         return (
-            self.file_name    == other.file_name
-            and self.data     == other.data
-            and self.section  == other.section
-            and self.typedefs == other.typedefs
-            and self.typerefs == other.typerefs
+            self.file_name == other.file_name and
+            self.data      == other.data and
+            self.section   == other.section and
+            self.typedefs  == other.typedefs and
+            self.typerefs  == other.typerefs
         )
 
     def __repr__(self):
