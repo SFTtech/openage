@@ -44,7 +44,7 @@ public:
 	 * register this console to the engine.
 	 * this leads to the drawing calls, and input handling.
 	 */
-	void register_to_engine(Game *engine);
+	void register_to_engine(Game *game);
 
 	/**
 	 * prints the given text on the console.

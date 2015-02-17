@@ -21,16 +21,16 @@ phys2_delta phys3_delta::to_phys2() const {
 }
 
 camgame phys3::to_camgame() {
-	Game &e = Game::get();
+	Game &g = Game::get();
 
 	//determine the phys3 position relative to the camera position
-	phys3_delta relative_phys = *this - e.camgame_phys;
+	phys3_delta relative_phys = *this - g.camgame_phys;
 
 	return relative_phys.to_camgame().as_absolute();
 }
 
 camgame_delta phys3_delta::to_camgame() {
-	Game &e = Game::get();
+	Game &g = Game::get();
 
 	//apply transformation matrix to relative_phys, to get 'scaled':
 	//                  (ne)
@@ -44,8 +44,8 @@ camgame_delta phys3_delta::to_camgame() {
 	//scaling factor: w/2 for x, h/2 for y
 	//and the (1 << 16) fixed-point scaling factor for both.
 	camgame_delta result;
-	result.x = (pixel_t) util::div(scaled.x * e.tile_halfsize.x, settings::phys_per_tile);
-	result.y = (pixel_t) util::div(scaled.y * e.tile_halfsize.y, settings::phys_per_tile);
+	result.x = (pixel_t) util::div(scaled.x * g.tile_halfsize.x, settings::phys_per_tile);
+	result.y = (pixel_t) util::div(scaled.y * g.tile_halfsize.y, settings::phys_per_tile);
 
 	return result;
 }

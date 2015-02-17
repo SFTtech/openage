@@ -48,8 +48,8 @@ bool Unit::update() {
 	 * the active action is on top
 	 */
 	if (this->has_action()) {
-		Game &engine = Game::get();
-		this->action_stack.back()->update(engine.lastframe_msec());
+		Game &game = Game::get();
+		this->action_stack.back()->update(game.lastframe_msec());
 
 		/*
 		 * check completion of all actions,

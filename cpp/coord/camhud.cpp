@@ -13,8 +13,8 @@ namespace openage {
 namespace coord {
 
 window camhud::to_window() {
-	Game &e = Game::get();
-	return e.camhud_window + this->as_relative().to_window();
+	Game &g = Game::get();
+	return g.camhud_window + this->as_relative().to_window();
 }
 
 window_delta camhud_delta::to_window() const {

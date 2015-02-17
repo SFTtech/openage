@@ -11,8 +11,8 @@ namespace openage {
 namespace coord {
 
 camgame window::to_camgame() const {
-	Game &e = Game::get();
-	return (*this - e.camgame_window).to_camgame().as_absolute();
+	Game &g = Game::get();
+	return (*this - g.camgame_window).to_camgame().as_absolute();
 }
 
 camgame_delta window_delta::to_camgame() const {
@@ -21,8 +21,8 @@ camgame_delta window_delta::to_camgame() const {
 }
 
 camhud window::to_camhud() const {
-	Game &e = Game::get();
-	return (*this - e.camhud_window).to_camhud().as_absolute();
+	Game &g = Game::get();
+	return (*this - g.camhud_window).to_camhud().as_absolute();
 }
 
 camhud_delta window_delta::to_camhud() const {

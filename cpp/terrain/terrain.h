@@ -302,9 +302,9 @@ public:
 
 	/**
 	 * draw the currently visible terrain area on screen.
-	 * @param engine: the engine where the terrain should be drawn to.
+	 * @param game: the game where the terrain should be drawn to.
 	 */
-	void draw(Game *engine);
+	void draw(Game *game);
 
 	/**
 	 * create the drawing instruction data.
