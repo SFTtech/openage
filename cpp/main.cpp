@@ -8,7 +8,7 @@
 #include "args.h"
 #include "log.h"
 #include "util/error.h"
-#include "game_main.h"
+#include "game.h"
 #include "testing/testing.h"
 
 #include "config.h"

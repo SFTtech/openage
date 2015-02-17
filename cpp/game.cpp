@@ -1,6 +1,6 @@
 // Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
-#include "game_main.h"
+#include "game.h"
 
 #include <SDL2/SDL.h>
 #include <cinttypes>
@@ -89,7 +89,7 @@ int run_game(Arguments *args) {
 
 	// init the test run
 	timer.start();
-	GameMain test{&engine};
+	Game test{&engine};
 	log::msg("Loading time   [game]: %5.3f s", timer.getval() / 1000.f);
 
 	// run main loop
@@ -100,7 +100,7 @@ int run_game(Arguments *args) {
 	return 0;
 }
 
-GameMain::GameMain(Engine *engine)
+Game::Game(Engine *engine)
 	:
 	editor_current_terrain{0},
 	editor_current_building{0},
@@ -235,7 +235,7 @@ GameMain::GameMain(Engine *engine)
 	engine->get_job_manager()->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function, gamedata_load_callback);
 }
 
-void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
+void Game::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 	util::Dir *data_dir = this->engine->get_data_dir();
 	util::Dir asset_dir = data_dir->append("converted");
 
@@ -302,7 +302,7 @@ void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 
 }
 
-GameMain::~GameMain() {
+Game::~Game() {
 	// oh noes, release hl3 before that!
 	delete this->gaben;
 
@@ -314,7 +314,7 @@ GameMain::~GameMain() {
 }
 
 
-bool GameMain::on_input(SDL_Event *e) {
+bool Game::on_input(SDL_Event *e) {
 	Engine &engine = Engine::get();
 
 	switch (e->type) {
@@ -509,7 +509,7 @@ bool GameMain::on_input(SDL_Event *e) {
 	return true;
 }
 
-void GameMain::move_camera() {
+void Game::move_camera() {
 	Engine &engine = Engine::get();
 	// read camera movement input keys, and move camera
 	// accordingly.
@@ -537,13 +537,13 @@ void GameMain::move_camera() {
 }
 
 
-bool GameMain::on_tick() {
+bool Game::on_tick() {
 	this->move_camera();
 	assetmanager.check_updates();
 	return true;
 }
 
-bool GameMain::on_draw() {
+bool Game::on_draw() {
 	Engine &engine = Engine::get();
 
 	// draw gaben, our great and holy protector, bringer of the half-life 3.
@@ -573,7 +573,7 @@ bool GameMain::on_draw() {
 	return true;
 }
 
-bool GameMain::on_drawhud() {
+bool Game::on_drawhud() {
 	Engine &e = Engine::get();
 
 	// draw the currently selected editor texture tile
@@ -590,7 +590,7 @@ bool GameMain::on_drawhud() {
 	return true;
 }
 
-Texture *GameMain::find_graphic(int graphic_id) {
+Texture *Game::find_graphic(int graphic_id) {
 	auto tex_it = this->graphics.find(graphic_id);
 	if (tex_it == this->graphics.end()) {
 		log::msg("  -> ignoring graphics_id: %d", graphic_id);
@@ -608,11 +608,11 @@ Texture *GameMain::find_graphic(int graphic_id) {
 	return this->assetmanager.get_texture(tex_fname);
 }
 
-TestSound *GameMain::find_sound(int sound_id) {
+TestSound *Game::find_sound(int sound_id) {
 	return &this->available_sounds[sound_id];
 }
 
-void GameMain::draw_debug_grid() {
+void Game::draw_debug_grid() {
 	Engine &e = Engine::get();
 
 	coord::camgame camera = coord::tile{0, 0}.to_tile3().to_phys3().to_camgame();

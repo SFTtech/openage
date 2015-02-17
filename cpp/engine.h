@@ -30,7 +30,7 @@ class InputHandler;
 class ResizeHandler;
 class CoreInputHandler;
 
-class GameMain;
+class Game;
 
 /**
  * main engine container.

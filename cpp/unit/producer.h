@@ -14,7 +14,7 @@
 
 namespace openage {
 
-class GameMain;
+class Game;
 class Terrain;
 class Texture;
 class TestSound;
@@ -117,7 +117,7 @@ class AssetManager;
  */
 class ProducerLoader {
 public:
-	ProducerLoader(GameMain *);
+	ProducerLoader(Game *);
 
 	/**
 	 * makes producers for all types in the game data
@@ -134,7 +134,7 @@ public:
 
 
 private:
-	GameMain *main;
+	Game *main;
 
 };
 

@@ -1,7 +1,7 @@
 // Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_GAME_MAIN_H_
-#define OPENAGE_GAME_MAIN_H_
+#ifndef OPENAGE_GAME_H_
+#define OPENAGE_GAME_H_
 
 #include <SDL2/SDL.h>
 #include <unordered_map>
@@ -56,14 +56,14 @@ public:
 	std::vector<int> sound_items;
 };
 
-class GameMain :
+class Game :
 		openage::InputHandler,
 		openage::DrawHandler,
 		openage::HudHandler,
 		openage::TickHandler {
 public:
-	GameMain(openage::Engine *engine);
-	~GameMain();
+	Game(openage::Engine *engine);
+	~Game();
 
 	void move_camera();
 

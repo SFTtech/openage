@@ -4,7 +4,7 @@
 #include "../terrain/terrain_object.h"
 #include "../terrain/terrain_outline.h"
 #include "../util/strings.h"
-#include "../game_main.h"
+#include "../game.h"
 #include "../log.h"
 #include "ability.h"
 #include "action.h"
@@ -184,7 +184,7 @@ Texture *BuldingProducer::default_texture() {
 	return this->texture;
 }
 
-ProducerLoader::ProducerLoader(GameMain *m)
+ProducerLoader::ProducerLoader(Game *m)
 	:
 	main(m) {}
 
