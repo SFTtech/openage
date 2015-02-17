@@ -109,7 +109,7 @@ int run_game(Arguments *args) {
 	auto termcolors = util::read_csv_file<gamedata::palette_color>(data_dir.join("converted/termcolors.docx"));
 
 	console::Console console(termcolors);
-	console.register_to_engine(&game);
+	console.register_to_game(&game);
 
 	log::msg("Loading time [engine]: %5.3f s", timer.getval() / 1000.f);
 
@@ -908,7 +908,7 @@ void Game::loop() {
 		}
 
 		// call engine tick callback methods
-		for (auto &action : this->on_engine_tick) {
+		for (auto &action : this->on_game_tick) {
 			if (false == action->on_tick()) {
 				break;
 			}
@@ -981,7 +981,7 @@ void Game::register_input_action(InputHandler *handler) {
 }
 
 void Game::register_tick_action(TickHandler *handler) {
-	this->on_engine_tick.push_back(handler);
+	this->on_game_tick.push_back(handler);
 }
 
 void Game::register_drawhud_action(HudHandler *handler) {

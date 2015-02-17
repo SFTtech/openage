@@ -35,7 +35,7 @@ public:
 	Font font;
 
 	//callback functions
-	bool on_engine_tick();
+	bool on_game_tick();
 	bool draw_console();
 	bool handle_inputs(SDL_Event *e);
 	bool on_window_resize();
@@ -44,7 +44,7 @@ public:
 	 * register this console to the engine.
 	 * this leads to the drawing calls, and input handling.
 	 */
-	void register_to_engine(Game *game);
+	void register_to_game(Game *game);
 
 	/**
 	 * prints the given text on the console.

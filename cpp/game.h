@@ -59,7 +59,7 @@ int run_game(openage::Arguments *args);
 void gametest_init();
 void gametest_destroy();
 
-bool on_engine_tick();
+bool on_game_tick();
 bool draw_method();
 bool hud_draw_method();
 bool input_handler(SDL_Event *e);
@@ -326,7 +326,7 @@ private:
 	/**
 	* run on every engine tick, after input handling, before rendering
 	*/
-	std::vector<TickHandler *> on_engine_tick;
+	std::vector<TickHandler *> on_game_tick;
 
 	/**
 	* run every time the game is being drawn,
