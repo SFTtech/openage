@@ -146,7 +146,7 @@ ctrl_active{false},
 scrolling_active{false},
 construct_mode{true},
 selected_unit{nullptr},
-assetmanager{this->get_data_dir()},
+assetmanager{this->data_dir},
 gamedata_loaded{false}
 {
 
@@ -363,11 +363,13 @@ gamedata_loaded{false}
 		util::Dir gamedata_dir = asset_dir.append("gamedata");
 		return std::move(util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx"));
 	};
+
 	auto gamedata_load_callback = [this](job::result_function_t<std::vector<gamedata::empiresdat>> get_result) {
 		auto result = get_result();
 		this->on_gamedata_loaded(result);
 	};
-	engine->get_job_manager()->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function, gamedata_load_callback);
+	this->job_manager->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function, gamedata_load_callback);
+
 }
 
 void Game::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
@@ -597,7 +599,7 @@ bool Game::on_input(SDL_Event *e) {
 			break;
 
 		case SDLK_F2:
-			this->get_screenshot_manager().save_screenshot();
+			this->screenshot_manager.save_screenshot();
 			break;
 
 		case SDLK_F3:
@@ -655,7 +657,7 @@ void Game::move_camera() {
 	// one pixel per millisecond equals 14.3 tiles/second
 	float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
 
-	CoreInputHandler &input_handler = this->get_input_handler();
+	CoreInputHandler &input_handler = this->input_handler;
 
 	if (input_handler.is_key_down(SDLK_LEFT)) {
 		mov_x = -cam_movement_speed_keyboard;
