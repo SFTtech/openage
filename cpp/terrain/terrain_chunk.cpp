@@ -6,7 +6,7 @@
 #include <cinttypes>
 
 #include "terrain_object.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../log.h"
 #include "../texture.h"
 #include "../coord/tile.h"

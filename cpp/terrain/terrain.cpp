@@ -8,7 +8,7 @@
 #include <unordered_map>
 
 #include "terrain_chunk.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../log.h"
 #include "../texture.h"
 #include "../coord/camgame.h"

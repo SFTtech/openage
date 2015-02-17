@@ -9,7 +9,7 @@
 #include "buf.h"
 #include "../handlers.h"
 #include "../coord/camhud.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../util/color.h"
 #include "../font.h"
 #include "../gamedata/color.gen.h"

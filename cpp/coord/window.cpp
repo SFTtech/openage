@@ -5,7 +5,7 @@
 
 #include "camgame.h"
 #include "camhud.h"
-#include "../engine.h"
+#include "../game.h"
 
 namespace openage {
 namespace coord {

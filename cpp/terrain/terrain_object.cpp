@@ -8,7 +8,7 @@
 #include "terrain.h"
 #include "terrain_chunk.h"
 #include "terrain_outline.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../log.h"
 #include "../texture.h"
 #include "../coord/tile.h"

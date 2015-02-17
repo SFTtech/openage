@@ -4,7 +4,7 @@
 
 #include "dynamic_resource.h"
 #include "in_memory_resource.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../util/error.h"
 #include "../log.h"
 

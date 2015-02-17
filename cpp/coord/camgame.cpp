@@ -3,7 +3,7 @@
 #define GEN_IMPL_CAMGAME_CPP
 #include "camgame.h"
 
-#include "../engine.h"
+#include "../game.h"
 #include "../terrain/terrain.h"
 #include "phys3.h"
 #include "vec2.h"

@@ -5,7 +5,7 @@
 
 #include "term.h"
 #include "window.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../console/console.h"
 #include "../util/misc.h"
 

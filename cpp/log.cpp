@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 #include "util/strings.h"
-#include "engine.h"
+#include "game.h"
 #include "console/console.h"
 
 namespace openage {

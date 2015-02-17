@@ -13,7 +13,6 @@ add_sources(${PROJECT_NAME}
 	game.cpp
 	assetmanager.cpp
 	callbacks.cpp
-	engine.cpp
 	font.cpp
 	handlers.cpp
 	input.cpp

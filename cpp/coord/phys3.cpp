@@ -7,7 +7,7 @@
 #include "vec2.h"
 #include "tile3.h"
 #include "../terrain/terrain.h"
-#include "../engine.h"
+#include "../game.h"
 
 namespace openage {
 namespace coord {

@@ -4,7 +4,7 @@
 #include <cmath>
 
 #include "../terrain/terrain.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../crossplatform/math_constants.h"
 #include "ability.h"
 #include "action.h"
