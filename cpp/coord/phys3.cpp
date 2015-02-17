@@ -21,7 +21,7 @@ phys2_delta phys3_delta::to_phys2() const {
 }
 
 camgame phys3::to_camgame() {
-	Engine &e = Engine::get();
+	Game &e = Game::get();
 
 	//determine the phys3 position relative to the camera position
 	phys3_delta relative_phys = *this - e.camgame_phys;
@@ -30,7 +30,7 @@ camgame phys3::to_camgame() {
 }
 
 camgame_delta phys3_delta::to_camgame() {
-	Engine &e = Engine::get();
+	Game &e = Game::get();
 
 	//apply transformation matrix to relative_phys, to get 'scaled':
 	//                  (ne)

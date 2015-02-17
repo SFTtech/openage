@@ -299,7 +299,7 @@ bool Terrain::check_tile_position(coord::tile pos) {
 
 }
 
-void Terrain::draw(Engine *engine) {
+void Terrain::draw(Game *engine) {
 	// TODO: move this draw invokation to a render manager.
 	//       it can reorder the draw instructions and minimize texture switching.
 

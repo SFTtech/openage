@@ -48,7 +48,7 @@ Console::Console(std::vector<gamedata::palette_color> &colortable)
 
 Console::~Console () {}
 
-void Console::register_to_engine(Engine *engine) {
+void Console::register_to_engine(Game *engine) {
 	engine->register_input_action(this);
 	engine->register_tick_action(this);
 	engine->register_drawhud_action(this);

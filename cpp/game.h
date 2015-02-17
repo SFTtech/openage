@@ -56,7 +56,7 @@ class UnitProducer;
  */
 int run_game(openage::Arguments *args);
 
-void gametest_init(openage::Engine *engine);
+void gametest_init();
 void gametest_destroy();
 
 bool on_engine_tick();
@@ -80,89 +80,26 @@ public:
 
 	std::vector<int> sound_items;
 };
-
-class Game :
-		openage::InputHandler,
-		openage::DrawHandler,
-		openage::HudHandler,
-		openage::TickHandler {
-public:
-	Game(openage::Engine *engine);
-	~Game();
-
-	void move_camera();
-
-	virtual bool on_tick();
-	virtual bool on_draw();
-	virtual bool on_drawhud();
-	virtual bool on_input(SDL_Event *e);
-
-	/**
-	 * return a texture handle associated with the given graphic id.
-	 */
-	Texture *find_graphic(int graphic_id);
-
-	/**
-	 * return a testsound ptr for a given sound id.
-	 */
-	TestSound *find_sound(int sound_id);
-
-	/**
-	 * all available game objects.
-	 */
-	std::vector<std::unique_ptr<UnitProducer>> available_objects;
-
-	/**
-	 * all available sounds.
-	 */
-	std::unordered_map<int, TestSound> available_sounds;
-
-	/**
-	 * map graphic id to gamedata graphic.
-	 */
-	std::unordered_map<int, gamedata::graphic *> graphics;
-
-	/**
-	 * all the buildings that have been placed.
-	 */
-	UnitContainer placed_units;
-
-	/**
-	 * debug function that draws a simple overlay grid
-	 */
-	void draw_debug_grid();
-
-	// currently selected terrain id
-	openage::terrain_t editor_current_terrain;
-	int editor_current_building;
-
-	bool debug_grid_active;
-	bool clicking_active;
-	bool ctrl_active;
-	bool scrolling_active;
-	bool construct_mode;
-
-	Unit *selected_unit;
-	Terrain *terrain;
-	Texture *gaben;
-
-	AssetManager assetmanager;
-
-	util::ExternalProfiler external_profiler;
-private:
-	void on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata);
-
-	bool gamedata_loaded;
-
-	openage::Engine *engine;
-};
-
 /**
 * main engine container.
 *
 * central foundation for everything the openage engine is capable of.
 */
-class Engine : public ResizeHandler {
+
+class Game :
+		openage::InputHandler,
+		openage::DrawHandler,
+		openage::TickHandler,
+		ResizeHandler {
+
+
+public:
+	/**
+	* engine initialization method.
+	* opens a window and initializes the OpenGL context.
+	*/
+	Game(util::Dir *data_dir, const char *windowtitle);
+
 private:
 	/**
 	* global engine singleton instance.
@@ -170,7 +107,7 @@ private:
 	* TODO: use unique_ptr again, but that segfaults in ftgl/freetype
 	*       because of a wrong deinit-order.
 	*/
-	static Engine *instance;
+	static Game *instance;
 
 public:
 	/**
@@ -187,41 +124,36 @@ public:
 	* singleton instance fetcher.
 	* @returns the pointer to the global engine instance.
 	*/
-	static Engine &get();
+	static Game &get();
 
 private:
-	/**
-	* engine initialization method.
-	* opens a window and initializes the OpenGL context.
-	*/
-	Engine(util::Dir *data_dir, const char *windowtitle);
 
 	/**
 	* engine copy constructor.
 	*/
-	Engine(const Engine &copy) = delete;
+	Game(const Game &copy) = delete;
 
 	/**
 	* engine assignment operator.
 	*/
-	Engine &operator=(const Engine &copy) = delete;
+	Game &operator=(const Game &copy) = delete;
 
 	/**
 	* engine move constructor.
 	*/
-	Engine(Engine &&other) = delete;
+	Game(Game &&other) = delete;
 
 	/**
 	* engine move operator.
 	*/
-	Engine &operator=(Engine &&other);
+	Game &operator=(Game &&other);
 
 public:
 	/**
 	* engine destructor, cleans up memory etc.
 	* deletes opengl context, the SDL window, and engine variables.
 	*/
-	virtual ~Engine();
+	virtual ~Game();
 
 	/**
 	* starts the engine loop.
@@ -444,6 +376,73 @@ private:
 	* but it would allow having multiple ones.
 	*/
 	SDL_GLContext glcontext;
+
+public:
+	void move_camera();
+
+	virtual bool on_tick();
+	virtual bool on_draw();
+	virtual bool on_input(SDL_Event *e);
+
+	/**
+	 * return a texture handle associated with the given graphic id.
+	 */
+	Texture *find_graphic(int graphic_id);
+
+	/**
+	 * return a testsound ptr for a given sound id.
+	 */
+	TestSound *find_sound(int sound_id);
+
+	/**
+	 * all available game objects.
+	 */
+	std::vector<std::unique_ptr<UnitProducer>> available_objects;
+
+	/**
+	 * all available sounds.
+	 */
+	std::unordered_map<int, TestSound> available_sounds;
+
+	/**
+	 * map graphic id to gamedata graphic.
+	 */
+	std::unordered_map<int, gamedata::graphic *> graphics;
+
+	/**
+	 * all the buildings that have been placed.
+	 */
+	UnitContainer placed_units;
+
+	/**
+	 * debug function that draws a simple overlay grid
+	 */
+	void draw_debug_grid();
+
+	// currently selected terrain id
+	openage::terrain_t editor_current_terrain;
+	int editor_current_building;
+
+	bool debug_grid_active;
+	bool clicking_active;
+	bool ctrl_active;
+	bool scrolling_active;
+	bool construct_mode;
+
+	Unit *selected_unit;
+	Terrain *terrain;
+	Texture *gaben;
+
+	AssetManager assetmanager;
+
+	util::ExternalProfiler external_profiler;
+private:
+	void on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata);
+
+	bool gamedata_loaded;
+
+	openage::Engine *engine;
+
 };
 
 } //namespace openage

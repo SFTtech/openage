@@ -11,7 +11,7 @@ namespace openage {
 namespace coord {
 
 camgame window::to_camgame() const {
-	Engine &e = Engine::get();
+	Game &e = Game::get();
 	return (*this - e.camgame_window).to_camgame().as_absolute();
 }
 
@@ -21,7 +21,7 @@ camgame_delta window_delta::to_camgame() const {
 }
 
 camhud window::to_camhud() const {
-	Engine &e = Engine::get();
+	Game &e = Game::get();
 	return (*this - e.camhud_window).to_camhud().as_absolute();
 }
 

@@ -24,7 +24,7 @@
 namespace openage {
 
 class TerrainChunk;
-class Engine;
+class Game;
 
 /**
  * type that for terrain ids.
@@ -304,7 +304,7 @@ public:
 	 * draw the currently visible terrain area on screen.
 	 * @param engine: the engine where the terrain should be drawn to.
 	 */
-	void draw(Engine *engine);
+	void draw(Game *engine);
 
 	/**
 	 * create the drawing instruction data.

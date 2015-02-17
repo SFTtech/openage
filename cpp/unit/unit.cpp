@@ -48,7 +48,7 @@ bool Unit::update() {
 	 * the active action is on top
 	 */
 	if (this->has_action()) {
-		Engine &engine = Engine::get();
+		Game &engine = Game::get();
 		this->action_stack.back()->update(engine.lastframe_msec());
 
 		/*

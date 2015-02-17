@@ -102,52 +102,161 @@ int run_game(Arguments *args) {
 	util::Dir data_dir{args->data_directory};
 
 	timer.start();
-	Engine::create(&data_dir, "openage");
-	Engine &engine = Engine::get();
+	Game::create(&data_dir, "openage");
+	Game &game = Game::get();
 
 	// initialize terminal colors
 	auto termcolors = util::read_csv_file<gamedata::palette_color>(data_dir.join("converted/termcolors.docx"));
 
 	console::Console console(termcolors);
-	console.register_to_engine(&engine);
+	console.register_to_engine(&game);
 
 	log::msg("Loading time [engine]: %5.3f s", timer.getval() / 1000.f);
 
 	// init the test run
 	timer.start();
-	Game test{&engine};
+	// Game test{&engine}; FIXME ????
 	log::msg("Loading time   [game]: %5.3f s", timer.getval() / 1000.f);
 
 	// run main loop
-	engine.run();
+	game.run();
 
-	Engine::destroy();
+	Game::destroy();
 
 	return 0;
 }
 
-Game::Game(Engine *engine)
-	:
-	editor_current_terrain{0},
-	editor_current_building{0},
-	debug_grid_active{false},
-	clicking_active{true},
-	ctrl_active{false},
-	scrolling_active{false},
-	construct_mode{true},
-	selected_unit{nullptr},
-	assetmanager{engine->get_data_dir()},
-	gamedata_loaded{false},
-	engine{engine} {
+Game::Game(util::Dir *data_dir, const char *windowtitle)
+:
+running{false},
+drawing_debug_overlay{true},
+drawing_huds{true},
+window_size{800, 600},
+camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0},
+camgame_window{400, 300},
+camhud_window{0, 600},
+tile_halfsize{48, 24},  // TODO: get from convert script
+data_dir{data_dir},
+audio_manager{},
+editor_current_terrain{0},
+editor_current_building{0},
+debug_grid_active{false},
+clicking_active{true},
+ctrl_active{false},
+scrolling_active{false},
+construct_mode{true},
+selected_unit{nullptr},
+assetmanager{this->get_data_dir()},
+gamedata_loaded{false}
+{
 
-	engine->register_draw_action(this);
-	engine->register_input_action(this);
-	engine->register_tick_action(this);
-	engine->register_tick_action(&this->placed_units);
-	engine->register_drawhud_action(this);
+	for (uint32_t size : {12, 20}) {
+		fonts[size] = std::unique_ptr<Font>{new Font{"DejaVu Serif", "Book", size}};
+	}
 
-	util::Dir *data_dir = engine->get_data_dir();
-	util::Dir asset_dir = data_dir->append("converted");
+	// enqueue the engine's own input handler to the
+	// execution list.
+	this->register_input_action(&this->input_handler);
+	this->input_handler.register_resize_action(this);
+
+	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+		throw util::Error("SDL video initialization: %s", SDL_GetError());
+	} else {
+		log::msg("initialized SDL video subsystems.");
+	}
+
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+
+	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
+	this->window = SDL_CreateWindow(
+	windowtitle,
+	SDL_WINDOWPOS_CENTERED,
+	SDL_WINDOWPOS_CENTERED,
+	this->window_size.x,
+	this->window_size.y,
+	window_flags
+	);
+
+	if (this->window == nullptr) {
+		throw util::Error("Failed creating SDL window: %s", SDL_GetError());
+	}
+
+	// load support for the PNG image formats, jpg bit: IMG_INIT_JPG
+	int wanted_image_formats = IMG_INIT_PNG;
+	int sdlimg_inited = IMG_Init(wanted_image_formats);
+	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
+		throw util::Error("Failed to init PNG support: %s", IMG_GetError());
+	}
+
+	this->glcontext = SDL_GL_CreateContext(this->window);
+
+	if (this->glcontext == nullptr) {
+		throw util::Error("Failed creating OpenGL context: %s", SDL_GetError());
+	}
+
+	// initialize glew, for shaders n stuff
+	GLenum glew_state = glewInit();
+	if (glew_state != GLEW_OK) {
+		throw util::Error("GLEW initialization failed");
+	}
+	if (!GLEW_VERSION_2_1) {
+		throw util::Error("OpenGL 2.1 not available");
+	}
+
+	// to quote the standard doc:
+	// 'The value gives a rough estimate
+	// of the largest texture that the GL can handle'
+	// -> wat?
+	// anyways, we need at least 1024x1024.
+	int max_texture_size;
+	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
+	log::dbg("Maximum supported texture size: %d", max_texture_size);
+	if (max_texture_size < 1024) {
+		throw util::Error("Maximum supported texture size too small: %d", max_texture_size);
+	}
+
+	int max_texture_units;
+	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_texture_units);
+	log::dbg("Maximum supported texture units: %d", max_texture_units);
+	if (max_texture_units < 2) {
+		throw util::Error("Your GPU has too less texture units: %d", max_texture_units);
+	}
+
+	// vsync on
+	SDL_GL_SetSwapInterval(1);
+
+	// enable alpha blending
+	glEnable(GL_BLEND);
+
+	// order of drawing relevant for depth
+	// what gets drawn last is displayed on top.
+	glDisable(GL_DEPTH_TEST);
+
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	// initialize job manager with cpucount-2 worker threads
+	int number_of_worker_threads = SDL_GetCPUCount() - 2;
+	if (number_of_worker_threads <= 0) {
+		number_of_worker_threads = 1;
+	}
+	this->job_manager = new job::JobManager{number_of_worker_threads};
+
+	// initialize audio
+	auto devices = audio::AudioManager::get_devices();
+	if (devices.empty()) {
+		throw util::Error{"No audio devices found"};
+	}
+
+	this->register_draw_action(this);
+	this->register_input_action(this);
+	this->register_tick_action(this);
+	this->register_tick_action(&this->placed_units);
+
+	util::Dir asset_dir = this->data_dir->append("converted");
 
 	// load textures and stuff
 	gaben      = new Texture{data_dir->join("gaben.png")};
@@ -249,7 +358,7 @@ Game::Game(Engine *engine)
 	delete alphamask_vert;
 	delete alphamask_frag;
 
-	auto gamedata_load_function = [this, engine, asset_dir]() -> std::vector<gamedata::empiresdat> {
+	auto gamedata_load_function = [this, asset_dir]() -> std::vector<gamedata::empiresdat> {
 		log::msg("loading game specification files... stand by, will be faster soon...");
 		util::Dir gamedata_dir = asset_dir.append("gamedata");
 		return std::move(util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx"));
@@ -262,8 +371,7 @@ Game::Game(Engine *engine)
 }
 
 void Game::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
-	util::Dir *data_dir = this->engine->get_data_dir();
-	util::Dir asset_dir = data_dir->append("converted");
+	util::Dir asset_dir = this->data_dir->append("converted");
 
 	// create graphic id => graphic map
 	for (auto &graphic : gamedata[0].graphics.data) {
@@ -321,7 +429,7 @@ void Game::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 	}
 
 	// load the requested sounds.
-	audio::AudioManager &am = engine->get_audio_manager();
+	audio::AudioManager &am = this->audio_manager;
 	am.load_resources(asset_dir, sound_files);
 
 	this->gamedata_loaded = true;
@@ -337,11 +445,17 @@ Game::~Game() {
 	delete texture_shader::program;
 	delete teamcolor_shader::program;
 	delete alphamask_shader::program;
+
+	delete this->job_manager;
+	SDL_GL_DeleteContext(glcontext);
+	SDL_DestroyWindow(window);
+	IMG_Quit();
+	SDL_Quit();
 }
 
 
 bool Game::on_input(SDL_Event *e) {
-	Engine &engine = Engine::get();
+	Game &engine = Game::get();
 
 	switch (e->type) {
 
@@ -536,7 +650,7 @@ bool Game::on_input(SDL_Event *e) {
 }
 
 void Game::move_camera() {
-	Engine &engine = Engine::get();
+	Game &engine = Game::get();
 	// read camera movement input keys, and move camera
 	// accordingly.
 
@@ -570,7 +684,7 @@ bool Game::on_tick() {
 }
 
 bool Game::on_draw() {
-	Engine &engine = Engine::get();
+	Game &engine = Game::get();
 
 	// draw gaben, our great and holy protector, bringer of the half-life 3.
 	gaben->draw(coord::camgame{0, 0});
@@ -599,23 +713,6 @@ bool Game::on_draw() {
 	return true;
 }
 
-bool Game::on_drawhud() {
-	Engine &e = Engine::get();
-
-	// draw the currently selected editor texture tile
-	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
-
-	if (this->available_objects.size() > 0) {
-		// and the current active building
-		coord::window bpreview_pos;
-		bpreview_pos.x = e.window_size.x - 200;
-		bpreview_pos.y = 200;
-		auto txt = this->available_objects[this->editor_current_building].get()->default_texture();
-		txt->draw(bpreview_pos.to_camhud());
-	}
-	return true;
-}
-
 Texture *Game::find_graphic(int graphic_id) {
 	auto tex_it = this->graphics.find(graphic_id);
 	if (tex_it == this->graphics.end()) {
@@ -639,7 +736,7 @@ TestSound *Game::find_sound(int sound_id) {
 }
 
 void Game::draw_debug_grid() {
-	Engine &e = Engine::get();
+	Game &e = Game::get();
 
 	coord::camgame camera = coord::tile{0, 0}.to_tile3().to_phys3().to_camgame();
 
@@ -693,7 +790,7 @@ void TestSound::play() {
 	if (this->sound_items.size() <= 0) {
 		return;
 	}
-	audio::AudioManager &am = Engine::get().get_audio_manager();
+	audio::AudioManager &am = Game::get().get_audio_manager();
 
 	int rand = util::random_range(0, this->sound_items.size());
 	int sndid = this->sound_items[rand];
@@ -706,157 +803,33 @@ void TestSound::play() {
 }
 
 // engine singleton instance allocation
-Engine *Engine::instance = nullptr;
+Game *Game::instance = nullptr;
 
-void Engine::create(util::Dir *data_dir, const char *windowtitle) {
+void Game::create(util::Dir *data_dir, const char *windowtitle) {
 	// only create the singleton instance if it was not created before..
-	if (Engine::instance == nullptr) {
+	if (Game::instance == nullptr) {
 		// reset the pointer to the new engine
-		Engine::instance = new Engine(data_dir, windowtitle);
+		Game::instance = new Game(data_dir, windowtitle);
 	}
 	else {
 		throw util::Error{"you tried to create another singleton instance!!111"};
 	}
 }
 
-void Engine::destroy() {
-	if (Engine::instance == nullptr) {
-		throw util::Error{"you tried to destroy a nonexistant engine."};
+void Game::destroy() {
+	if (Game::instance == nullptr) {
+		throw util::Error{"you tried to destroy a nonexistant game."};
 	}
 	else {
-		delete Engine::instance;
+		delete Game::instance;
 	}
 }
 
-Engine &Engine::get() {
-	return *Engine::instance;
+Game &Game::get() {
+	return *Game::instance;
 }
 
-
-Engine::Engine(util::Dir *data_dir, const char *windowtitle)
-:
-running{false},
-drawing_debug_overlay{true},
-drawing_huds{true},
-window_size{800, 600},
-camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0},
-camgame_window{400, 300},
-camhud_window{0, 600},
-tile_halfsize{48, 24},  // TODO: get from convert script
-data_dir{data_dir},
-audio_manager{} {
-
-	for (uint32_t size : {12, 20}) {
-		fonts[size] = std::unique_ptr<Font>{new Font{"DejaVu Serif", "Book", size}};
-	}
-
-	// enqueue the engine's own input handler to the
-	// execution list.
-	this->register_input_action(&this->input_handler);
-	this->input_handler.register_resize_action(this);
-
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		throw util::Error("SDL video initialization: %s", SDL_GetError());
-	} else {
-		log::msg("initialized SDL video subsystems.");
-	}
-
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-
-	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
-	this->window = SDL_CreateWindow(
-	windowtitle,
-	SDL_WINDOWPOS_CENTERED,
-	SDL_WINDOWPOS_CENTERED,
-	this->window_size.x,
-	this->window_size.y,
-	window_flags
-	);
-
-	if (this->window == nullptr) {
-		throw util::Error("Failed creating SDL window: %s", SDL_GetError());
-	}
-
-	// load support for the PNG image formats, jpg bit: IMG_INIT_JPG
-	int wanted_image_formats = IMG_INIT_PNG;
-	int sdlimg_inited = IMG_Init(wanted_image_formats);
-	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		throw util::Error("Failed to init PNG support: %s", IMG_GetError());
-	}
-
-	this->glcontext = SDL_GL_CreateContext(this->window);
-
-	if (this->glcontext == nullptr) {
-		throw util::Error("Failed creating OpenGL context: %s", SDL_GetError());
-	}
-
-	// initialize glew, for shaders n stuff
-	GLenum glew_state = glewInit();
-	if (glew_state != GLEW_OK) {
-		throw util::Error("GLEW initialization failed");
-	}
-	if (!GLEW_VERSION_2_1) {
-		throw util::Error("OpenGL 2.1 not available");
-	}
-
-	// to quote the standard doc:
-	// 'The value gives a rough estimate
-	// of the largest texture that the GL can handle'
-	// -> wat?
-	// anyways, we need at least 1024x1024.
-	int max_texture_size;
-	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
-	log::dbg("Maximum supported texture size: %d", max_texture_size);
-	if (max_texture_size < 1024) {
-		throw util::Error("Maximum supported texture size too small: %d", max_texture_size);
-	}
-
-	int max_texture_units;
-	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_texture_units);
-	log::dbg("Maximum supported texture units: %d", max_texture_units);
-	if (max_texture_units < 2) {
-		throw util::Error("Your GPU has too less texture units: %d", max_texture_units);
-	}
-
-	// vsync on
-	SDL_GL_SetSwapInterval(1);
-
-	// enable alpha blending
-	glEnable(GL_BLEND);
-
-	// order of drawing relevant for depth
-	// what gets drawn last is displayed on top.
-	glDisable(GL_DEPTH_TEST);
-
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	// initialize job manager with cpucount-2 worker threads
-	int number_of_worker_threads = SDL_GetCPUCount() - 2;
-	if (number_of_worker_threads <= 0) {
-		number_of_worker_threads = 1;
-	}
-	this->job_manager = new job::JobManager{number_of_worker_threads};
-
-	// initialize audio
-	auto devices = audio::AudioManager::get_devices();
-	if (devices.empty()) {
-		throw util::Error{"No audio devices found"};
-	}
-}
-
-Engine::~Engine() {
-	delete this->job_manager;
-	SDL_GL_DeleteContext(glcontext);
-	SDL_DestroyWindow(window);
-	IMG_Quit();
-	SDL_Quit();
-}
-
-bool Engine::on_resize(coord::window new_size) {
+bool Game::on_resize(coord::window new_size) {
 	log::dbg("engine window resize to: %hdx%hd\n", new_size.x, new_size.y);
 
 	// update engine window size
@@ -888,7 +861,7 @@ bool Engine::on_resize(coord::window new_size) {
 	return true;
 }
 
-bool Engine::draw_debug_overlay() {
+bool Game::draw_debug_overlay() {
 	util::col {255, 255, 255, 255}.use();
 
 	// Draw FPS counter in the lower right corner
@@ -910,19 +883,19 @@ this->render_text(
 return true;
 }
 
-void Engine::run() {
+void Game::run() {
 	this->job_manager->start();
 	this->running = true;
 	this->loop();
 	this->running = false;
 }
 
-void Engine::stop() {
+void Game::stop() {
 	this->job_manager->stop();
 	this->running = false;
 }
 
-void Engine::loop() {
+void Game::loop() {
 	SDL_Event event;
 
 	while (this->running) {
@@ -981,6 +954,20 @@ void Engine::loop() {
 						break;
 					}
 				}
+
+				// old method implemented on the old GameMain
+
+				// draw the currently selected editor texture tile
+				this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
+
+				if (this->available_objects.size() > 0) {
+					// and the current active building
+					coord::window bpreview_pos;
+					bpreview_pos.x = this->window_size.x - 200;
+					bpreview_pos.y = 200;
+					auto txt = this->available_objects[this->editor_current_building].get()->default_texture();
+					txt->draw(bpreview_pos.to_camhud());
+				}
 			}
 		}
 		glPopMatrix();
@@ -993,51 +980,51 @@ void Engine::loop() {
 	}
 }
 
-void Engine::register_input_action(InputHandler *handler) {
+void Game::register_input_action(InputHandler *handler) {
 	this->on_input_event.push_back(handler);
 }
 
-void Engine::register_tick_action(TickHandler *handler) {
+void Game::register_tick_action(TickHandler *handler) {
 	this->on_engine_tick.push_back(handler);
 }
 
-void Engine::register_drawhud_action(HudHandler *handler) {
+void Game::register_drawhud_action(HudHandler *handler) {
 	this->on_drawhud.push_back(handler);
 }
 
-void Engine::register_draw_action(DrawHandler *handler) {
+void Game::register_draw_action(DrawHandler *handler) {
 	this->on_drawgame.push_back(handler);
 }
 
-void Engine::register_resize_action(ResizeHandler *handler) {
+void Game::register_resize_action(ResizeHandler *handler) {
 	this->input_handler.register_resize_action(handler);
 }
 
-util::Dir *Engine::get_data_dir() {
+util::Dir *Game::get_data_dir() {
 	return this->data_dir;
 }
 
-job::JobManager *Engine::get_job_manager() {
+job::JobManager *Game::get_job_manager() {
 	return this->job_manager;
 }
 
-audio::AudioManager &Engine::get_audio_manager() {
+audio::AudioManager &Game::get_audio_manager() {
 	return this->audio_manager;
 }
 
-ScreenshotManager &Engine::get_screenshot_manager() {
+ScreenshotManager &Game::get_screenshot_manager() {
 	return this->screenshot_manager;
 }
 
-CoreInputHandler &Engine::get_input_handler() {
+CoreInputHandler &Game::get_input_handler() {
 	return this->input_handler;
 }
 
-unsigned int Engine::lastframe_msec() {
+unsigned int Game::lastframe_msec() {
 	return this->fpscounter.msec_lastframe;
 }
 
-void Engine::render_text(coord::window position, size_t size, const char *format, ...) {
+void Game::render_text(coord::window position, size_t size, const char *format, ...) {
 	auto it = this->fonts.find(size);
 	if (it == this->fonts.end()) {
 		throw util::Error("unknown font size %zu requested.", size);
@@ -1053,7 +1040,7 @@ void Engine::render_text(coord::window position, size_t size, const char *format
 	font->render_static(position.x, position.y, buf.c_str());
 }
 
-void Engine::move_phys_camera(float x, float y, float amount) {
+void Game::move_phys_camera(float x, float y, float amount) {
 	// move the cam
 	coord::vec2f cam_movement {x, y};
 

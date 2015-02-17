@@ -13,13 +13,13 @@ namespace openage {
 namespace coord {
 
 phys3 camgame::to_phys3(phys_t up) {
-	Engine &e = Engine::get();
+	Game &e = Game::get();
 	return this->as_relative().to_phys3(up - e.camgame_phys.up)
 		+ e.camgame_phys;
 }
 
 phys3_delta camgame_delta::to_phys3(phys_t up) {
-	Engine &e = Engine::get();
+	Game &e = Game::get();
 
 	// apply scaling factor, to get 'scaled'
 	// scaling factor: w/2 for x, h/2 for y
@@ -53,7 +53,7 @@ phys3_delta camgame_delta::to_phys3(phys_t up) {
 }
 
 window camgame::to_window() {
-	Engine &e = Engine::get();
+	Game &e = Game::get();
 	return e.camgame_window + this->as_relative().to_window();
 }
 
