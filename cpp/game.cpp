@@ -115,7 +115,7 @@ int run_game(Arguments *args) {
 
 	// init the test run
 	timer.start();
-	// Game test{&engine}; FIXME ????
+	// Game test{&engine}; FIXME what about this ???
 	log::msg("Loading time   [game]: %5.3f s", timer.getval() / 1000.f);
 
 	// run main loop
@@ -455,12 +455,10 @@ Game::~Game() {
 
 
 bool Game::on_input(SDL_Event *e) {
-	Game &engine = Game::get();
-
 	switch (e->type) {
 
 	case SDL_QUIT:
-		engine.stop();
+		this->stop();
 		break;
 
 	case SDL_MOUSEBUTTONDOWN: { //thanks C++! we need a separate scope because of new variables...
@@ -573,7 +571,7 @@ bool Game::on_input(SDL_Event *e) {
 		// scroll, if middle mouse is being pressed
 		//  SDL_GetRelativeMouseMode() queries sdl for that.
 		if (scrolling_active) {
-			engine.move_phys_camera(e->motion.xrel, e->motion.yrel);
+			this->move_phys_camera(e->motion.xrel, e->motion.yrel);
 		}
 		break;
 
@@ -591,19 +589,19 @@ bool Game::on_input(SDL_Event *e) {
 
 		case SDLK_ESCAPE:
 			//stop the game
-			engine.stop();
+			this->stop();
 			break;
 
 		case SDLK_F1:
-			engine.drawing_huds = !engine.drawing_huds;
+			this->drawing_huds = !this->drawing_huds;
 			break;
 
 		case SDLK_F2:
-			engine.get_screenshot_manager().save_screenshot();
+			this->get_screenshot_manager().save_screenshot();
 			break;
 
 		case SDLK_F3:
-			engine.drawing_debug_overlay = !engine.drawing_debug_overlay;
+			this->drawing_debug_overlay = !this->drawing_debug_overlay;
 			break;
 
 		case SDLK_F4:
@@ -650,7 +648,6 @@ bool Game::on_input(SDL_Event *e) {
 }
 
 void Game::move_camera() {
-	Game &engine = Game::get();
 	// read camera movement input keys, and move camera
 	// accordingly.
 
@@ -658,7 +655,7 @@ void Game::move_camera() {
 	// one pixel per millisecond equals 14.3 tiles/second
 	float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
 
-	CoreInputHandler &input_handler = engine.get_input_handler();
+	CoreInputHandler &input_handler = this->get_input_handler();
 
 	if (input_handler.is_key_down(SDLK_LEFT)) {
 		mov_x = -cam_movement_speed_keyboard;
@@ -673,7 +670,7 @@ void Game::move_camera() {
 		mov_y = -cam_movement_speed_keyboard;
 	}
 
-	engine.move_phys_camera(mov_x, mov_y, (float) engine.lastframe_msec());
+	this->move_phys_camera(mov_x, mov_y, (float) this->lastframe_msec());
 }
 
 
@@ -684,13 +681,12 @@ bool Game::on_tick() {
 }
 
 bool Game::on_draw() {
-	Game &engine = Game::get();
 
 	// draw gaben, our great and holy protector, bringer of the half-life 3.
 	gaben->draw(coord::camgame{0, 0});
 
 	// draw terrain
-	terrain->draw(&engine);
+	terrain->draw(this);
 
 	if (this->debug_grid_active) {
 		this->draw_debug_grid();
@@ -698,16 +694,16 @@ bool Game::on_draw() {
 
 	if (not gamedata_loaded) {
 		// Show that gamedata is still loading
-		engine.render_text({0, 0}, 20, "Loading gamedata...");
+		this->render_text({0, 0}, 20, "Loading gamedata...");
 	}
 
 	// draw construction or actions mode indicator
-	int x = 400 - (engine.window_size.x / 2);
-	int y = 35 - (engine.window_size.y / 2);
+	int x = 400 - (this->window_size.x / 2);
+	int y = 35 - (this->window_size.y / 2);
 	if (construct_mode) {
-		engine.render_text({x, y}, 20, "Construct mode");
+		this->render_text({x, y}, 20, "Construct mode");
 	} else {
-		engine.render_text({x, y}, 20, "Actions mode");
+		this->render_text({x, y}, 20, "Actions mode");
 	}
 
 	return true;
