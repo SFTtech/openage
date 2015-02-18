@@ -42,6 +42,13 @@ TerrainChunk::~TerrainChunk() {
 	delete[] this->data;
 }
 
+void TerrainChunk::set_id(coord::tile pos, int id){
+	this->terrain->remove_cache_pos(pos);
+	if(auto* content = this->get_data(pos)){
+		content->terrain_id = id;
+	}
+}
+
 TileContent *TerrainChunk::get_data(coord::tile pos) {
 	return this->get_data(this->tile_position_neigh(pos));
 }

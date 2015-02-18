@@ -106,7 +106,7 @@ bool Terrain::fill(const int *data, coord::tile_delta size) {
 			}
 			int terrain_id = data[pos.ne * size.ne + pos.se];
 			TerrainChunk *chunk = this->get_create_chunk(pos);
-			chunk->get_data(pos)->terrain_id = terrain_id;
+			chunk->set_id(pos, terrain_id);
 		}
 	}
 	return was_cut;
@@ -115,6 +115,11 @@ bool Terrain::fill(const int *data, coord::tile_delta size) {
 void Terrain::attach_chunk(TerrainChunk *new_chunk,
                            coord::chunk position,
                            bool manually_created) {
+
+	//TODO only modify the relevant tile coordinates
+	this->blend_cache.clear();
+	this->unblend_cache.clear();
+	
 	new_chunk->set_terrain(this);
 	new_chunk->manually_created = manually_created;
 	log::dbg("inserting new chunk at (%02d,%02d)", position.ne, position.se);
@@ -165,6 +170,13 @@ TerrainChunk *Terrain::get_create_chunk(coord::chunk position) {
 
 TerrainChunk *Terrain::get_create_chunk(coord::tile position) {
 	return this->get_create_chunk(position.to_chunk());
+}
+
+void Terrain::set_id(coord::tile position, int id){
+	this->remove_cache_pos(position);
+	if(auto* content = this->get_data(position)){
+		content->terrain_id = id;
+	}
 }
 
 TileContent *Terrain::get_data(coord::tile position) {
@@ -299,6 +311,18 @@ bool Terrain::check_tile_position(coord::tile pos) {
 
 }
 
+void Terrain::remove_cache_pos(coord::tile pos) {
+	auto rm_tile = [this](coord::tile tpos){
+		this->blend_cache.erase(tpos);
+		this->unblend_cache.erase(tpos);
+	};
+	
+	rm_tile(pos);
+	for(auto offset : neigh_offsets){
+		rm_tile(pos + offset);
+	}
+}
+
 void Terrain::draw(Engine *engine) {
 	// TODO: move this draw invokation to a render manager.
 	//       it can reorder the draw instructions and minimize texture switching.
@@ -402,13 +426,31 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab,
 	size_t tiles_count = std::abs(cf.ne - gb.ne) * std::abs(cf.se - gb.se);
 	tiles->reserve(tiles_count);
 
+	std::unordered_map<coord::tile, tile_draw_data>* cache;
+	if(this->blending_enabled){
+		cache = &blend_cache;
+	}
+	else{
+		cache = &unblend_cache;
+	}
 	// sweep the whole rhombus area
 	for (coord::tile tilepos = gb; tilepos.ne <= (ssize_t) cf.ne; tilepos.ne++) {
 		for (tilepos.se = gb.se; tilepos.se <= (ssize_t) cf.se; tilepos.se++) {
 
 			// get the terrain tile drawing data
-			auto tile = this->create_tile_advice(tilepos);
-			tiles->push_back(tile);
+			auto check = [cache, tilepos, this](){
+				auto tile_iter = cache->find(tilepos);
+				if(tile_iter != cache->end()){
+					return tile_iter->second;
+				}
+				else{
+					auto pair = cache->emplace(tilepos,
+					                           this->create_tile_advice(tilepos));
+					return pair.first->second;
+				}	
+			};
+			
+			tiles->push_back(check());
 
 			// get the object standing on the tile
 			// TODO: make the terrain independent of objects standing on it.
@@ -480,7 +522,6 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 		// create the draw_masks from the calculated influences
 		this->calculate_masks(position, &tile, &influence_group);
 	}
-
 	return tile;
 }
 
@@ -498,7 +539,6 @@ void Terrain::get_neighbors(coord::tile basepos,
 		// calculate the pos of the neighbor tile
 		coord::tile neigh_pos = basepos + neigh_offsets[neigh_id];
 
-		// get the neighbor data
 		TileContent *neigh_content = this->get_data(neigh_pos);
 
 		// chunk for neighbor or single tile is not existant
@@ -638,11 +678,11 @@ void Terrain::calculate_masks(coord::tile position,
 		int adjacent_mask_id = -1;
 
 		/* neighbor ids:
-		     0
-		   7   1      => 8 neighbors that can have influence on
-		 6   @   2         the mask id selection.
-		   5   3
-		     4
+		        0
+		      7   1      => 8 neighbors that can have influence on
+		    6   @   2         the mask id selection.
+		      5   3
+		        4
 		*/
 
 		// filter adjacent and diagonal influences    neighbor_id: 76543210

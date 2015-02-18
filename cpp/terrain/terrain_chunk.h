@@ -72,6 +72,11 @@ public:
 	 * the 8 neighbors this chunk has.
 	 */
 	chunk_neighbors neighbors;
+	
+	/**
+	 * Sets the id for the given tile and notifies the engine
+	 */
+	void set_id(coord::tile pos, int id);
 
 	/**
 	 * draws the terrain chunk on screen.

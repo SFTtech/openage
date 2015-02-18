@@ -38,7 +38,7 @@ _the openage authors_ are:
 | James Hagborg               | blucoat                     | jameshagborg@gmail.com           |
 | Prashanth Jonnala           | jprashanth                  | prashanth.neo@gmail.com          |
 | Jonathan Remnant            | Jon0                        | jono4728@gmail.com               |
-| Sam Schetterer              | schets                      | samschet@gmail.com               |
+| Sam Schetterer              | sams, schets                | samschet@gmail.com               |
 | Georg Kilzer                | leper                       | leper@wildfiregames.com          |
 | Florian Erler               | ethon                       | ethon@ethon.cc                   |
 | Michał Janiszewski          | janisozaur                  | janisozaur+openage@gmail.com     |

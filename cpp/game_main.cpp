@@ -357,7 +357,7 @@ bool GameMain::on_input(SDL_Event *e) {
 			         mousepos_tile.se);
 
 			TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
-			chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
+			chunk->set_id(mousepos_tile, editor_current_terrain);
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and !construct_mode and selected_unit) {
 			TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);

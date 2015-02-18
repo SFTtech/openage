@@ -163,12 +163,17 @@ public:
 	        bool is_infinite);
 	~Terrain();
 
-	bool blending_enabled; //!< is terrain blending active. increases memory accesses by factor ~8
+	bool blending_enabled; //!< is terrain blending active.
 	bool infinite; //!< chunks are automagically created as soon as they are referenced
 
 	coord::tile limit_positive, limit_negative; //!< for non-infinite terrains, this is the size limit.
 	//TODO: non-square shaped terrain bounds
 
+	/**
+	 * Sets the id for the given tile and notifies the engine
+	 */
+	void set_id(coord::tile pos, int id);
+	
 	/**
 	 * fill the terrain with given terrain_id values.
 	 * @returns whether the data filled on the terrain was cut because of
@@ -328,6 +333,11 @@ public:
 	struct tile_draw_data create_tile_advice(coord::tile position);
 
 	/**
+	 * Informs the terrain that the given tile has been modified
+	 */
+	void remove_cache_pos(coord::tile pos);
+
+	/**
 	 * gather neighbors of a given base tile.
 	 *
 	 * @param basepos: the base position, around which the neighbors will be fetched
@@ -371,6 +381,8 @@ private:
 	 * maps chunk coordinates to chunks.
 	 */
 	std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash> chunks;
+	std::unordered_map<coord::tile, tile_draw_data> blend_cache;
+	std::unordered_map<coord::tile, tile_draw_data> unblend_cache;
 
 	std::vector<Texture *> textures;
 	std::vector<Texture *> blending_masks;

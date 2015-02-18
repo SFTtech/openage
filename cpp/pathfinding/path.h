@@ -212,21 +212,6 @@ struct hash<openage::path::Node &> {
 		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
 	}
 };
-
-/**
- * Hash function for tiles
- *
- * TODO: relocate to coord/
- */
-template <>
-struct hash<openage::coord::tile> {
-	size_t operator ()(const openage::coord::tile &tile) const {
-		size_t nehash = std::hash<openage::coord::tile_t> {}(tile.ne);
-		size_t sehash = std::hash<openage::coord::tile_t> {}(tile.se);
-		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
-	}
-};
-
 /**
  * Hash function for phys3 coordinates.
  *
