@@ -29,27 +29,27 @@ Dependencies are needed for:
 
 * C = compiling
 * R = running
-* T = media convert script
+* M = media convert script
 
 Dependency list:
 
-    CRT   python >=3.3
-    T     python imaging library (PIL) -> pillow
-    T     numpy
+    CRM   python >=3.3
+      M   python imaging library (PIL) -> pillow
+      M   numpy
     CR    opengl >=2.1
     CR    glew
     CR    ftgl
-    R     dejavu font
+     R    dejavu font
     CR    freetype2
     CR    fontconfig
     C     cmake >=2.8.10
     CR    sdl2
     CR    sdl2_image
     CR    opusfile
-    T     opus-tools
+      M   opus-tools
     C     gcc >=4.8 or clang >=3.3
 
-    T     An installed version of any of the following (wine is your friend).
+      M   An installed version of any of the following (wine is your friend).
           Other versions _might_ work; setup disk support will be added soon:
 
      - Age of Empires II: The Conquerors Patch 1.0c
