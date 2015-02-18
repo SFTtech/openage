@@ -1,4 +1,4 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import SubdataMember
@@ -11,7 +11,7 @@ class SoundItem(Exportable):
     struct_description = "one possible file for a sound."
 
     data_format = (
-        (READ_EXPORT, "filename",    "char[13]"),
+        (READ_EXPORT, "filename",     "char[13]"),
         (READ_EXPORT, "resource_id",  "int32_t"),
         (READ_EXPORT, "probablilty",  "int16_t"),
         (READ_EXPORT, "civilisation", "int16_t"),
