@@ -2,6 +2,7 @@
 
 # TODO pylint: disable=C,R
 
+import hashlib
 import struct
 
 from .util import struct_type_lookup
@@ -356,7 +357,7 @@ class Exportable:
         for _, _, _, member_type in members:
             self_member_count += 1
             if isinstance(member_type, MultisubtypeMember):
-                for _, subtype_class in member_type.class_lookup.items():
+                for _, subtype_class in sorted(member_type.class_lookup.items()):
                     if not issubclass(subtype_class, Exportable):
                         raise Exception("tried to export structs from non-exportable %s" % subtype_class)
                     ret += subtype_class.structs()
@@ -377,13 +378,63 @@ class Exportable:
         return ret
 
     @classmethod
+    def format_hash(cls, hasher=None):
+        """
+        provides a deterministic hash of all exported structure members
+
+        used for determining changes in the exported data, which requires
+        data reconversion.
+        """
+
+        if not hasher:
+            hasher = hashlib.sha512()
+
+        # struct properties
+        hasher.update(cls.name_struct.encode())
+        hasher.update(cls.name_struct_file.encode())
+        hasher.update(cls.struct_description.encode())
+
+        # only hash exported struct members!
+        # non-exported values don't influence anything.
+        members = cls.get_data_format(
+            allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
+            flatten_includes=False,
+        )
+        for is_parent, export, member_name, member_type in members:
+
+            # includemembers etc have no name.
+            if member_name:
+                hasher.update(member_name.encode())
+
+            if isinstance(member_type, DataMember):
+                hasher = member_type.format_hash(hasher)
+
+            elif isinstance(member_type, str):
+                hasher.update(member_type.encode())
+
+            else:
+                raise Exception("can't hash unsupported member")
+
+            hasher.update(export.name.encode())
+
+        return hasher
+
+    @classmethod
     def get_effective_type(cls):
         # TODO pylint: disable=no-member
         return cls.name_struct
 
     @classmethod
     def get_data_format(cls, allowed_modes=False, flatten_includes=False, is_parent=False):
+        """
+        return all members of this exportable (a struct.)
+
+        can filter by export modes and can also return included members:
+        inherited members can either be returned as to-be-included,
+        or can be fetched and displayed as if they weren't inherited.
+        """
         # TODO pylint: disable=no-member
+
         for member in cls.data_format:
             export, _, member_type = member
 

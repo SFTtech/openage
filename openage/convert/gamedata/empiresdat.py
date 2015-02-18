@@ -44,7 +44,7 @@ class EmpiresDat(Exportable):
     data_format = (
         (READ, "versionstr", "char[8]"),
 
-        # terain header data
+        # terrain header data
         (READ, "terrain_restriction_count", "uint16_t"),
         (READ, "terrain_count", "uint16_t"),   # number of "used" terrains
         (READ, "terrain_restriction_offset0", "int32_t[terrain_restriction_count]"),

@@ -13,7 +13,7 @@ class SoundItem(Exportable):
     struct_description = "one possible file for a sound."
 
     data_format = (
-        (READ_EXPORT, "filename",    "char[13]"),
+        (READ_EXPORT, "filename",     "char[13]"),
         (READ_EXPORT, "resource_id",  "int32_t"),
         (READ_EXPORT, "probablilty",  "int16_t"),
         (READ_EXPORT, "civilisation", "int16_t"),
