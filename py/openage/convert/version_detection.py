@@ -12,7 +12,7 @@ class GameVersion:
     """
 
     def __init__(self, name, interfac=None, drs_files=None, blendomatic=None,
-                 dat_files=None, langdll_files=None, prereqs=None):
+                 dat_files=None, langdll_files=None, langhd_files, prereqs=None):
         """
         Creates a new GameVersion object.
 
@@ -23,6 +23,7 @@ class GameVersion:
         blendomatic   -- Set of paths to blendomatic DAT files
         dat_files     -- Set of paths to gamedata DAT files
         langdll_files -- Set of paths to language DLL files
+        langhd_files  -- Set of paths to HD edition language files
         prereqs       -- Set of prerequisite GameVersion objects
         """
 
@@ -33,6 +34,7 @@ class GameVersion:
             "blendomatic": blendomatic or set(),
             "dat": dat_files or set(),
             "langdll": langdll_files or set(),
+            "langhd": langhd_files or set(),
         }
         self.prereqs = prereqs or set()
 
@@ -111,7 +113,8 @@ class GameVersion:
                 self.get_own_files("drs") |
                 self.get_own_files("blendomatic") |
                 self.get_own_files("dat") |
-                self.get_own_files("langdll")
+                self.get_own_files("langdll") |
+                self.get_own_files("langhd")
             )
 
         return set(self.files[filetype])
