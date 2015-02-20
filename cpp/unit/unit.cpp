@@ -49,7 +49,10 @@ bool Unit::update() {
 	 */
 	if (this->has_action()) {
 		Engine &engine = Engine::get();
-		this->action_stack.back()->update(engine.lastframe_msec());
+
+		// TODO: change the entire unit action timing to a higher resolution like
+		// nsecs or usecs.
+		this->action_stack.back()->update(engine.lastframe_duration_nsec() / 1e6);
 
 		/*
 		 * check completion of all actions,

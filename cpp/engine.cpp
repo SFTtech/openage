@@ -58,6 +58,11 @@ Engine &Engine::get() {
 }
 
 
+std::string Engine::logger_name() {
+	return "engine";
+}
+
+
 Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	:
 	running{false},
@@ -219,7 +224,7 @@ bool Engine::draw_debug_overlay() {
 	// Draw FPS counter in the lower right corner
 	this->render_text(
 		{this->window_size.x - 100, 15}, 20,
-		"%.1f fps", this->fpscounter.fps
+		"%.1f fps", this->fps_counter.fps
 	);
 
 	// Draw version string in the lower left corner
@@ -251,7 +256,7 @@ void Engine::loop() {
 	SDL_Event event;
 
 	while (this->running) {
-		this->fpscounter.frame();
+		this->fps_counter.frame();
 
 		this->job_manager->execute_callbacks();
 
@@ -358,8 +363,8 @@ CoreInputHandler &Engine::get_input_handler() {
 	return this->input_handler;
 }
 
-unsigned int Engine::lastframe_msec() {
-	return this->fpscounter.msec_lastframe;
+int64_t Engine::lastframe_duration_nsec() {
+	return this->fps_counter.nsec_lastframe;
 }
 
 void Engine::render_text(coord::window position, size_t size, const char *format, ...) {

@@ -2,19 +2,19 @@
 
 #include "timer.h"
 
-#include <SDL2/SDL.h>
+#include "../crossplatform/timing.h"
 
 namespace openage {
 namespace util {
 
-Timer::Timer() {
-	reset(true);
+Timer::Timer(bool stopped) {
+	reset(stopped);
 }
 
 void Timer::reset(bool stopped) {
 	this->stopped = stopped;
 	if(stopped) {
-		starttime = SDL_GetTicks();
+		starttime = timing::get_monotonic_time();
 	} else {
 		stoppedat = 0;
 	}
@@ -23,32 +23,32 @@ void Timer::reset(bool stopped) {
 void Timer::stop() {
 	if(!stopped) {
 		stopped = true;
-		stoppedat = SDL_GetTicks() - starttime;
+		stoppedat = timing::get_monotonic_time() - starttime;
 	}
 }
 
 void Timer::start() {
 	if(stopped) {
 		stopped = false;
-		starttime = SDL_GetTicks() - stoppedat;
+		starttime = timing::get_monotonic_time() - stoppedat;
 	}
 }
 
-unsigned Timer::getval() const {
+int64_t Timer::getval() const {
 	if(stopped) {
 		return stoppedat;
 	} else {
-		return SDL_GetTicks() - starttime;
+		return timing::get_monotonic_time() - starttime;
 	}
 }
 
-unsigned Timer::getandresetval() {
-	unsigned result;
+int64_t Timer::getandresetval() {
+	int64_t result;
 	if(stopped) {
 		result = stoppedat;
 		stoppedat = 0;
 	} else {
-		unsigned now = SDL_GetTicks();
+		int64_t now = timing::get_monotonic_time();
 		result = now - starttime;
 		starttime = now;
 	}

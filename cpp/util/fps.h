@@ -3,6 +3,8 @@
 #ifndef OPENAGE_UTIL_FPS_H_
 #define OPENAGE_UTIL_FPS_H_
 
+#include "timer.h"
+
 namespace openage {
 namespace util {
 
@@ -20,13 +22,14 @@ public:
 	/** contains the number of completed frames */
 	unsigned count;
 
-	/** milliseconds used for the last frame */
-	unsigned int msec_lastframe;
+	/** nanoseconds used for the last frame */
+	int64_t nsec_lastframe;
 
 private:
 	float frame_count_weighted;
 	float frame_length_sum_weighted;
-	int lastframe_timestamp;
+
+	Timer frame_timer;
 };
 
 } //namespace util

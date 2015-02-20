@@ -1,4 +1,4 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2014 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UTIL_UNIQUE_IDENTIFIER_H_
 #define OPENAGE_UTIL_UNIQUE_IDENTIFIER_H_

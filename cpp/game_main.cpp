@@ -85,12 +85,12 @@ int run_game(Arguments *args) {
 	console::Console console(termcolors);
 	console.register_to_engine(&engine);
 
-	log::msg("Loading time [engine]: %5.3f s", timer.getval() / 1000.f);
+	log::msg("Loading time [engine]: %5.3f s", timer.getval() / 1.0e9);
 
 	// init the test run
 	timer.start();
 	GameMain test{&engine};
-	log::msg("Loading time   [game]: %5.3f s", timer.getval() / 1000.f);
+	log::msg("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9);
 
 	// run main loop
 	engine.run();
@@ -533,7 +533,7 @@ void GameMain::move_camera() {
 		mov_y = -cam_movement_speed_keyboard;
 	}
 
-	engine.move_phys_camera(mov_x, mov_y, (float) engine.lastframe_msec());
+	engine.move_phys_camera(mov_x, mov_y, (float) engine.lastframe_duration_nsec() / 1e6);
 }
 
 
