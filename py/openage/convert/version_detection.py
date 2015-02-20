@@ -2,6 +2,12 @@
 
 from openage.log import dbg
 import os
+import glob
+import itertools
+
+
+def is_glob(txt):
+    return txt != glob.escape(txt)
 
 
 class GameVersion:
@@ -12,18 +18,19 @@ class GameVersion:
     """
 
     def __init__(self, name, interfac=None, drs_files=None, blendomatic=None,
-                 dat_files=None, langdll_files=None, langhd_files, prereqs=None):
+                 dat_files=None, langdll_files=None, langhd_files=None,
+                 prereqs=None):
         """
         Creates a new GameVersion object.
 
         Arguments:
         name          -- Name of the version (for debug messages)
-        interfac      -- Set of paths to interface DRS archives
-        drs_files     -- Set of paths to other DRS archives
-        blendomatic   -- Set of paths to blendomatic DAT files
-        dat_files     -- Set of paths to gamedata DAT files
-        langdll_files -- Set of paths to language DLL files
-        langhd_files  -- Set of paths to HD edition language files
+        interfac      -- Set of globs of interface DRS archives
+        drs_files     -- Set of globs of other DRS archives
+        blendomatic   -- Set of globs of blendomatic DAT files
+        dat_files     -- Set of globs of gamedata DAT files
+        langdll_files -- Set of globs of language DLL files
+        langhd_files  -- Set of globs of HD edition language files
         prereqs       -- Set of prerequisite GameVersion objects
         """
 
@@ -72,14 +79,23 @@ class GameVersion:
                 return False
 
         for filename in self.get_own_files("all"):
+            filepath = os.path.join(basedir, filename)
+            if is_glob(filename):
+                glob_result = glob.glob(filepath)
+                if len(glob_result) == 0:
+                    dbg("Check for '%s' failed: No match for glob '%s'." % (
+                        self.name, filename
+                    ), 2)
+                    return False
+                dbg("Glob '%s' OK." % filename, 4)
 
-            if not os.path.isfile(os.path.join(basedir, filename)):
-                dbg("Check for '%s' failed: File '%s' not found." % (
-                    self.name, filename
-                ), 2)
-                return False
-
-            dbg("File '%s' OK." % filename, 4)
+            else:
+                if not os.path.isfile(filepath):
+                    dbg("Check for '%s' failed: File '%s' not found." % (
+                        self.name, filename
+                    ), 2)
+                    return False
+                dbg("File '%s' OK." % filename, 4)
 
         dbg("Check for '%s' successful." % self.name, 3)
         self.available = True
@@ -87,10 +103,11 @@ class GameVersion:
 
     def get_files(self, filetype):
         """
-        Returns a set of all files defined in this version and its prerequisites.
+        Returns a set of all file globs defined in this version and its prerequisites.
 
         Arguments:
-        filetype -- One of 'interfac', 'drs', 'blendomatic', 'dat', 'langdll' or 'all'
+        filetype -- One of 'interfac', 'drs', 'blendomatic', 'dat',
+                    'langdll', 'langhd' or 'all'
         """
 
         result = self.get_own_files(filetype)
@@ -101,10 +118,11 @@ class GameVersion:
 
     def get_own_files(self, filetype):
         """
-        Returns a set of all files defined in this version.
+        Returns a set of all file globs defined in this version.
 
         Arguments:
-        filetype -- One of 'interfac', 'drs', 'blendomatic', 'dat', 'langdll' or 'all'
+        filetype -- One of 'interfac', 'drs', 'blendomatic', 'dat',
+                    'langdll', 'langhd' or 'all'
         """
 
         if filetype == "all":
@@ -142,7 +160,6 @@ class VersionDetector:
             if version.exists(self.basedir):
                 dbg("Found version '%s'." % version.name, 1)
                 self.version = version
-                self.get_files = self.version.get_files
                 break
 
         if self.version is None:
@@ -155,5 +172,12 @@ class VersionDetector:
 
         return self.version.name
 
-    # get_files(self, filetype):
-        # this function is created in the constructor
+    def get_files(self, filetype):
+        """
+        Returns a set of absolute paths to files. Globs are resolved.
+        """
+
+        globs = self.version.get_files(filetype)
+        results = [glob.glob(os.path.join(self.basedir, g)) for g in globs]
+        # Flatten the nested lists
+        return set(itertools.chain(*results))
