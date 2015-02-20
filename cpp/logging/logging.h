@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_LOGGING_LOGGING_H_
 #define OPENAGE_LOGGING_LOGGING_H_
@@ -10,14 +10,26 @@
 #include "../util/constexpr.h"
 #include "../util/strings.h"
 #include "../util/unique_identifier.h"
-#include "defs.h"
+#include "../config.h"
 
 namespace openage {
 namespace logging {
 
 
+enum class level {
+	MIN,   // not designed for use in messages
+	spam,
+	dbg,
+	info,
+	warn,
+	err,
+	crit,
+	MAX    // not designed for use in messages
+};
+
+
 /**
- * loglevel metadata
+ * Data associated with a log level.
  */
 struct level_properties {
 	const char *name;
@@ -26,13 +38,32 @@ struct level_properties {
 
 
 /**
- * returns metadata for a log level
+ * Returns data associated with a log level.
  */
 level_properties get_level_properties(level lvl);
 
 
 /**
- * prints log level to stream
+ * A completed logmessage, containing the actual message, plus all sorts of metadata.
+ */
+class Message {
+public:
+	Message(size_t msg_id, const char *sourcefile, unsigned lineno, const char *functionname, level lvl);
+
+	std::string text;
+
+	const size_t msg_id;
+	const char *const sourcefile;
+	const unsigned lineno;
+	const char *const functionname;
+	const level lvl;
+	const unsigned thread_id;
+	const int64_t timestamp;
+};
+
+
+/**
+ * Prints a log level to an output stream.
  */
 std::ostream &operator <<(std::ostream &os, level lvl);
 
@@ -51,14 +82,19 @@ private:
 extern thread_local const ThreadId current_thread_id;
 
 
-class Message : public util::OSStreamPtr {
+/**
+ * Represents a log message that is still in construction.
+ */
+class MessageBuilder : public util::OSStreamPtr {
 public:
-	MessageInfo info;
+	/**
+	 * Upon completion, this object contains the finished message and metadata.
+	 */
+	Message constructed_message;
 
 public:
 	/**
-	 * constructor.
-	 * don't use this directly; use the MSG macro instead.
+	 * Don't use this constructor directly; use the MSG macro instead.
 	 *
 	 *
 	 * @param msg_id             unique identifier (UNIQUE_VALUE from util/unique_identifier.h).
@@ -66,55 +102,35 @@ public:
 	 * @param functionname       (fully qualified) function name (__PRETTY_FUNCTION__).
 	 * @param lvl                loglevel of the message. Also required for exception messages.
 	 */
-	Message(size_t msg_id,
+	MessageBuilder(size_t msg_id,
 	        const char *sourcefile, unsigned lineno, const char *functionname,
 	        level lvl = level::info);
 
 	template<typename T>
-	Message &operator <<(const T &t) {
+	MessageBuilder &operator <<(const T &t) {
 		this->stream_ptr->stream << t;
 		return *this;
 	}
 
 	template<typename T>
-	Message &operator <<(T &(*t)(T &)) {
+	MessageBuilder &operator <<(T &(*t)(T &)) {
 		this->stream_ptr->stream << t;
 		return *this;
 	}
 };
-
-// we don't need/want any linkage for these compile-time constants
-namespace {
-
-// important: if you rename this file or move it to an other directory,
-// you MUST adapt the constant literal below.
-constexpr const char *logging_h_relative_filename = "cpp/logging/logging.h";
-
-constexpr openage::util::constexpr_::truncated_string_literal cpp_filename_prefix = openage::util::constexpr_::get_prefix(__FILE__, logging_h_relative_filename);
-
-} // anonymous namespace
 
 
 // macros suck, yes. but there's just no other way to include
 // __FILE__, __LINE__ and __PRETTY_FUNCTION__.
 
-#define MSG(LVL) ::openage::logging::Message(                    \
+#define MSG(LVL) ::openage::logging::MessageBuilder(             \
 	UNIQUE_VALUE,                                            \
 	::openage::util::constexpr_::strip_prefix(               \
 		__FILE__,                                        \
-		::openage::logging::cpp_filename_prefix),        \
+		::openage::config::buildsystem_sourcefile_dir),  \
 	__LINE__,                                                \
 	__PRETTY_FUNCTION__,                                     \
 	::openage::logging::level:: LVL)
-
-
-class LoggedMessage {
-public:
-	const MessageInfo info;
-	const std::string text;
-
-	LoggedMessage(const Message &msg);
-};
 
 
 class LogSink;
@@ -134,7 +150,7 @@ public:
 	/**
 	 * Logs a message
 	 */
-	void log(const Message &msg);
+	void log(MessageBuilder &msg);
 
 	/**
 	 * Initialized during the Logger constructor,
@@ -159,9 +175,10 @@ private:
 
 
 /**
- * prints LoggedMessage to a stream (with color codes and everything)
+ * prints Message to a stream (with color codes and everything)
  */
-std::ostream &operator <<(std::ostream &os, const LoggedMessage &msg);
+std::ostream &operator <<(std::ostream &os, const Message &msg);
+
 
 /**
  * Abstract base for classes that - in one way or an other - print log messages.
@@ -186,7 +203,7 @@ private:
 	/**
 	 * Called internally by put_log_message if a message is accepted
 	 */
-	virtual void output_log_message(const LoggedMessage &msg, Logger *source) = 0;
+	virtual void output_log_message(const Message &msg, Logger *source) = 0;
 
 	friend class Logger;
 };

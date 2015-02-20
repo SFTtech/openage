@@ -94,6 +94,14 @@ constexpr truncated_string_literal get_prefix(const char *str, const char *suffi
 		throw false; // string literal ends with wrong suffix
 }
 
+
+/**
+ * creates a truncated_string_literal from a regular string literal
+ */
+constexpr truncated_string_literal create_truncated_string_literal(const char *str) {
+	return truncated_string_literal{str, strlen(str)};
+}
+
 /**
  * tests whether a string literal starts with the given prefix
  *
@@ -132,6 +140,17 @@ constexpr const char *strip_prefix(const char *str, const truncated_string_liter
 		// else:
 		str;
 }
+
+
+/**
+ * strips a prefix, given as const char *, from a given string literal.
+ *
+ * if the string literal doesn't have that prefix, returns the string literal itself.
+ */
+constexpr const char *strip_prefix(const char *str, const char *prefix) {
+	return strip_prefix(str, create_truncated_string_literal(prefix));
+}
+
 
 } // namespace constexpr_
 } // namespace util

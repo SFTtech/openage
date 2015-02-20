@@ -27,7 +27,7 @@ public:
 private:
 	std::ostream &os;
 
-	void output_log_message(const LoggedMessage &msg, Logger * /*source*/) {
+	void output_log_message(const Message &msg, Logger * /*source*/) {
 		this->os << msg << std::endl;
 	}
 };

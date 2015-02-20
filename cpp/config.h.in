@@ -16,6 +16,8 @@ extern const char *const global_asset_dir;
 extern const char *const version;
 extern const char *const config_option_string;
 
+constexpr const char *buildsystem_sourcefile_dir = "${CMAKE_SOURCE_DIR}/";
+
 } // namespace config
 } // namespace openage
 

@@ -10,6 +10,8 @@
 #include <SDL2/SDL.h>
 
 #include "logging/logging.h"
+#include "logging/stdoutsink.h"
+#include "logging/filesink.h"
 #include "audio/audio_manager.h"
 #include "coord/camgame.h"
 #include "coord/vec2f.h"
@@ -94,6 +96,10 @@ private:
 	 * engine move operator.
 	 */
 	Engine &operator=(Engine &&other);
+
+	// log sinks
+	std::unique_ptr<logging::StdOutSink> logsink_stdout;
+	std::unique_ptr<logging::FileSink> logsink_file;
 
 public:
 	/**

@@ -19,6 +19,7 @@
 #include "util/fps.h"
 #include "util/opengl.h"
 #include "util/strings.h"
+#include "util/unique.h"
 
 
 /**
@@ -74,11 +75,15 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	camhud_window{0, 600},
 	tile_halfsize{48, 24},  // TODO: get from convert script
 	data_dir{data_dir},
+
 	audio_manager{} {
 
 	for (uint32_t size : {12, 20}) {
 		fonts[size] = std::unique_ptr<Font>{new Font{"DejaVu Serif", "Book", size}};
 	}
+
+	this->logsink_stdout = util::make_unique<logging::StdOutSink>();
+	this->logsink_file = util::make_unique<logging::FileSink>("/tmp/openage-log", true);
 
 	// enqueue the engine's own input handler to the
 	// execution list.

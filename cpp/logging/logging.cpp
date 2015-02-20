@@ -2,9 +2,10 @@
 
 #include "logging.h"
 
-#include <iomanip>
 #include <iostream>
+#include <iomanip>
 
+#include "../crossplatform/timing.h"
 
 namespace openage {
 namespace logging {
@@ -27,12 +28,27 @@ const thread_local ThreadId current_thread_id;
 
 
 Message::Message(size_t msg_id,
+                             const char *sourcefile,
+                             unsigned lineno,
+                             const char *functionname,
+                             level lvl)
+	:
+	msg_id{msg_id},
+	sourcefile{sourcefile},
+	lineno{lineno},
+	functionname{functionname},
+	lvl{lvl},
+	thread_id{current_thread_id.val},
+	timestamp{timing::get_real_time()} {}
+
+
+MessageBuilder::MessageBuilder(size_t msg_id,
                  const char *sourcefile,
                  unsigned lineno,
                  const char *functionname,
                  level lvl)
 	:
-	info{msg_id, sourcefile, lineno, functionname, current_thread_id.val, lvl} {}
+	constructed_message{msg_id, sourcefile, lineno, functionname, lvl} {}
 
 
 level_properties get_level_properties(level lvl) {
@@ -50,20 +66,14 @@ level_properties get_level_properties(level lvl) {
 }
 
 
-LoggedMessage::LoggedMessage(const Message &msg)
-	:
-	info(msg.info),
-	text{msg.get()} {}
-
-
-std::ostream &operator <<(std::ostream &os, const LoggedMessage &msg) {
-	level_properties props = get_level_properties(msg.info.lvl);
+std::ostream &operator <<(std::ostream &os, const Message &msg) {
+	level_properties props = get_level_properties(msg.lvl);
 
 	os << "\x1b[" << props.colorcode << "m" << std::setw(4) << props.name << "\x1b[m ";
-	os << msg.info.sourcefile << ":" << msg.info.lineno << " ";
-	os << "(" << msg.info.functionname;
-	os << ", thread " << msg.info.thread_id << ")";
-	os << ": " << msg.text.c_str();
+	os << msg.sourcefile << ":" << msg.lineno << " ";
+	os << "(" << msg.functionname;
+	os << ", thread " << msg.thread_id << ")";
+	os << ": " << msg.text;
 
 	return os;
 }
@@ -74,10 +84,22 @@ Logger::Logger()
 	logger_id{Logger::get_unique_logger_id()} {}
 
 
-void Logger::log(const Message &msg) {
+void Logger::log(MessageBuilder &msg) {
+	msg.constructed_message.text = msg.get();
+
+	// TODO: protect with mutex/atomics?
+
+	// TODO handle situation: log_sink_list empty
+	// makeshift solution:
+	if (Logger::log_sink_list.size() == 0) {
+		std::cout << "no logsink exist. dumping message to stdout." << std::endl;
+		std::cout << msg.constructed_message;
+	}
+
 	for (LogSink *sink : Logger::log_sink_list) {
-		if (msg.info.lvl >= sink->loglevel) {
-			sink->output_log_message(msg, this);
+		// TODO more sophisticated filtering (iptables-chains-like)
+		if (msg.constructed_message.lvl >= sink->loglevel) {
+			sink->output_log_message(msg.constructed_message, this);
 		}
 	}
 }
@@ -92,6 +114,7 @@ size_t Logger::get_unique_logger_id() {
 
 
 LogSink::LogSink() {
+	// TODO mutex this
 	Logger::log_sink_list.push_back(this);
 
 	this->loglevel = level::dbg;
@@ -99,6 +122,10 @@ LogSink::LogSink() {
 
 
 LogSink::~LogSink() {
+	// TODO de-constructing log_sink_list takes O(n^2) time...
+	// while this is utterly insignificant, building a map upon
+	// start-of-deinitialization might be prettier.
+
 	for (size_t i = 0; i < Logger::log_sink_list.size(); i++) {
 		if (Logger::log_sink_list[i] == this) {
 			// replace the element with the last element on
