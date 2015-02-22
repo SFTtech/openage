@@ -32,3 +32,20 @@ class MediaExtractor:
             player_palette.save_visualization('info/playercolortable.pal.png')
 
         # TODO: player_palette -> metadata dump
+
+    def read_termcolortable(self):
+        from .hardcoded.termcolors import urxvtcoltable
+        from .colortable import ColorTable
+
+        termcolortable = ColorTable(urxvtcoltable)
+
+        # TODO: termcolortable -> metadata dump
+
+    def read_blendomatic(self):
+        from .blendomatic import Blendomatic
+
+        blend_file = vd.get_files("blendomatic").pop()
+        blend_data = Blendomatic(blend_file)
+        blend_data.save("blendomatic.dat", self.metadata_formats)
+
+        # TODO: blend_data -> metadata dump

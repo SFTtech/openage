@@ -74,7 +74,7 @@ def media_convert(args):
     # metadata dumping output format, more to come?
     output_formats = None  # metadata_formats
 
-    termcolortable = ColorTable(termcolors.urxvtcoltable)
+    termcolortable = None  # read_termcolortable()
 
     # saving files is disabled by default
     write_enabled = False
@@ -89,20 +89,10 @@ def media_convert(args):
 
         player_palette = None  # read_palettes()
 
-        from . import blendomatic
+        # HD Edition: blendomatic_x1.dat
+        # AoK:TC: blendomatic.dat
 
-        # HD Edition has a blendomatic_x1.dat in addition to its new
-        # blendomatic.dat blendomatic_x1.dat is the same file as AoK:TC's
-        # blendomatic.dat, and TC does not have blendomatic.dat, so we try
-        # _x1 first and fall back to the AoK:TC way if it does not exist
-        # TODO: replace by sane game version detection.
-        blend_file = "Data/blendomatic_x1.dat"
-        if not os.path.isfile(util.file_get_path(blend_file)):
-            blend_file = "Data/blendomatic.dat"
-
-        blend_data = blendomatic.Blendomatic(blend_file)
-        blend_data.save(os.path.join(asset_folder, "blendomatic.dat/"),
-                        output_formats)
+        blend_data = None  # read_blendomatic()
 
         from .stringresource import StringResource
         stringres = StringResource()
