@@ -33,26 +33,15 @@ Terrain::Terrain(AssetManager &assetmanager,
                  const std::vector<gamedata::blending_mode> &blending_meta,
                  bool is_infinite)
 	:
-	infinite{is_infinite} {
-
-	// TODO:
-	//this->limit_positive =
-	//this->limit_negative =
-
-	// maps chunk position to chunks
-	this->chunks = std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash>{};
-
-	// activate blending
-	this->blending_enabled = true;
-
-	this->terrain_id_count         = terrain_meta.size();
-	this->blendmode_count          = blending_meta.size();
-	this->textures.reserve(this->terrain_id_count);
-	this->blending_masks.reserve(this->blendmode_count);
-	this->terrain_id_priority_map  = util::make_unique<int[]>(this->terrain_id_count);
-	this->terrain_id_blendmode_map = util::make_unique<int[]>(this->terrain_id_count);
-	this->influences_buf           = util::make_unique<struct influence[]>(this->terrain_id_count);
-
+	blending_enabled{true},
+	infinite{is_infinite},
+	terrain_id_count{terrain_meta.size()},
+	blendmode_count{blending_meta.size()},
+	textures(this->terrain_id_count),
+	blending_masks(this->blendmode_count),
+	terrain_id_priority_map(this->terrain_id_count),
+	terrain_id_blendmode_map(this->terrain_id_count),
+	influences_buf(this->terrain_id_count) {
 
 	log::dbg("terrain prefs: %zu tiletypes, %zu blendmodes",
 	         this->terrain_id_count, this->blendmode_count);
@@ -469,13 +458,14 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 		struct neighbor_tile neigh_data[8];
 
 		// get all neighbor tiles around position, reset the influence directions.
-		this->get_neighbors(position, neigh_data, this->influences_buf.get());
+		this->get_neighbors(position, neigh_data, this->influences_buf);
 
 		// create influence list (direction, priority)
 		// strip and order influences, get the final influence data structure
 		struct influence_group influence_group = this->calculate_influences(
 			&base_tile_data, neigh_data,
-			this->influences_buf.get());
+			this->influences_buf
+		);
 
 		// create the draw_masks from the calculated influences
 		this->calculate_masks(position, &tile, &influence_group);
@@ -486,7 +476,7 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 
 void Terrain::get_neighbors(coord::tile basepos,
                             neighbor_tile *neigh_data,
-                            influence *influences_by_terrain_id) {
+                            std::vector<influence> &influences_by_terrain_id) {
 	// walk over all given neighbor tiles and store them to the influence list,
 	// group them by terrain id.
 
@@ -518,7 +508,7 @@ void Terrain::get_neighbors(coord::tile basepos,
 
 struct influence_group Terrain::calculate_influences(struct tile_data *base_tile,
                                                      struct neighbor_tile *neigh_data,
-                                                     struct influence *influences_by_terrain_id) {
+                                                     std::vector<influence> &influences_by_terrain_id) {
 	// influences to actually draw (-> maximum 8)
 	struct influence_group influences;
 	influences.count = 0;

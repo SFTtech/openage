@@ -10,11 +10,11 @@
 namespace openage {
 namespace util {
 
-//essentially the implementation from libc++, clang
+// essentially the implementation from libc++, clang
 
 namespace _unique_help {
-//make_unique is different for T, T[], and T[N] (ill formed for T[N])
-//These helper structs allow proper specializations
+// make_unique is different for T, T[], and T[N] (ill formed for T[N])
+// These helper structs allow proper specializations
 
 template<class T>
 struct unique_rval {
