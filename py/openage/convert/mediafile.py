@@ -94,32 +94,7 @@ def media_convert(args):
 
         blend_data = None  # read_blendomatic()
 
-        from .stringresource import StringResource
-        stringres = StringResource()
-
-        # AoK:TC uses .DLL files for its string resources,
-        # HD uses plaintext files
-        if os.path.isfile(util.file_get_path("language.dll")):
-            from .pefile import PEFile
-            stringres.fill_from(PEFile("language.dll"))
-            stringres.fill_from(PEFile("language_x1.dll"))
-            stringres.fill_from(PEFile("language_x1_p1.dll"))
-            # stringres.fill_from(PEFile("Games/Forgotten Empires/Data/"
-            #                            "language_x1_p1.dll"))
-        else:
-            from .hdlanguagefile import HDLanguageFile
-            for lang in os.listdir(util.file_get_path("Bin")):
-                langfile = "Bin/%s/%s-language.txt" % (lang, lang)
-
-                # there is some "base language" files in HD that we don't
-                # need and only the dir for the language that's currently in
-                # use contains a language file
-                if os.path.isdir(util.file_get_path("Bin/%s" % (lang)))\
-                   and os.path.isfile(util.file_get_path(langfile)):
-                    stringres.fill_from(HDLanguageFile(langfile, lang))
-
-        # TODO: transform and cleanup the read strings...
-        # (strip html, insert formatchars/identifiers, ...)
+        stringres = None  # read_langfiles()
 
         # create the dump for the dat file
         from .gamedata import empiresdat

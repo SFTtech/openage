@@ -49,3 +49,21 @@ class MediaExtractor:
         blend_data.save("blendomatic.dat", self.metadata_formats)
 
         # TODO: blend_data -> metadata dump
+
+    def read_langfiles(self):
+        from .stringresource import StringResource
+        from .pefile import PEFile
+        from .hdlanguagefile import HDLanguageFile
+
+        stringres = StringResource()
+
+        for langdll in vd.get_files("langdll"):
+            stringres.fill_from(PEFile(langdll))
+
+        for langhd in vd.get_files("langhd"):
+            stringres.fill_from(PEFile(langhd))
+
+        # TODO: transform and cleanup the read strings...
+        #       (strip html, insert formatchars/identifiers, ...)
+
+        # TODO: stringres -> metadata dump
