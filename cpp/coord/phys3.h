@@ -1,9 +1,12 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_COORD_PHYS3_H_
 #define OPENAGE_COORD_PHYS3_H_
 
+#include <functional>
+
 #include "decl.h"
+#include "../util/misc.h"
 
 #define MEMBERS ne, se, up
 #define SCALAR_TYPE phys_t
@@ -37,14 +40,32 @@ struct phys3_delta {
 
 #ifdef GEN_IMPL_PHYS3_CPP
 #include "ops/impl.h"
-#endif //GEN_IMPL_PHYS3_CPP
+#endif
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE
 #undef ABSOLUTE_TYPE
 #undef SCALAR_TYPE
+
+
+namespace std {
+
+/**
+ * Hash function for phys3 coordinates.
+ */
+template <>
+struct hash<openage::coord::phys3> {
+	size_t operator ()(const openage::coord::phys3 &pos) const {
+		size_t nehash = std::hash<openage::coord::phys_t>{}(pos.ne);
+		size_t sehash = std::hash<openage::coord::phys_t>{}(pos.se);
+		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
+	}
+};
+
+} // namespace std
+
 
 #endif

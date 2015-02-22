@@ -1,11 +1,13 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_COORD_TILE_H_
 #define OPENAGE_COORD_TILE_H_
 
-#include "decl.h"
+#include <functional>
 
+#include "decl.h"
 #include "phys2.h"
+#include "../util/misc.h"
 
 #define MEMBERS ne, se
 #define SCALAR_TYPE tile_t
@@ -39,14 +41,25 @@ struct tile_delta {
 
 #ifdef GEN_IMPL_TILE_CPP
 #include "ops/impl.h"
-#endif //GEN_IMPL_TILE_CPP
+#endif
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE
 #undef ABSOLUTE_TYPE
 #undef SCALAR_TYPE
+
+namespace std {
+template<>
+struct hash<openage::coord::tile> {
+	size_t operator ()(const openage::coord::tile& pos) const {
+		size_t nehash = hash<openage::coord::tile_t>{}(pos.ne);
+		size_t sehash = hash<openage::coord::tile_t>{}(pos.se);
+		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
+	}
+};
+} // namespace std
 
 #endif
