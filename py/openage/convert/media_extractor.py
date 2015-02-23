@@ -1,6 +1,7 @@
 # Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 from .drs import DRS
+import os
 
 
 class MediaExtractor:
@@ -67,3 +68,57 @@ class MediaExtractor:
         #       (strip html, insert formatchars/identifiers, ...)
 
         # TODO: stringres -> metadata dump
+
+    def read_gamedata_cache(self, cachefile):
+        import pickle
+
+        if self.args.use_dat_cache:
+            dbg("trying to use cache file %s..." % (cachefile), lvl=1)
+            try:
+                with open(cachefile, 'rb') as f:
+                    gamedata = pickle.load(f)
+                    dbg("could successfully load cached gamedata!", lvl=1)
+                    return gamedata
+
+            except FileNotFoundError as err:
+                return None
+
+        return None
+
+    def write_gamedata_cache(self, cachefile, gamedata):
+        import pickle
+
+        if self.args.use_dat_cache:
+            with open(cachefile, 'wb') as f:
+                pickle.dump(gamedata, f)
+
+    def read_gamedata(self):
+        from .gamedata.empiresdat import EmpiresDatGzip, EmpiresDatWrapper
+        from .fix_data import fix_data
+        from tempfile import gettempdir
+
+        filepath = self.vd.get_files('dat').pop()
+        filename = os.path.split(filepath)[1]
+        filetrunk = os.path.splitext(filename)[0]
+
+        cachefile = os.path.join(gettempdir(), filename + '.pickle')
+
+        gamedata = self.read_gamedata_cache(cachefile)
+
+        if gamedata is None:
+            datfile = EmpiresDatGzip(dat_filepath)
+            gamedata = EmpiresDatWrapper()
+
+            if self.args.extrafiles:
+                datfile.raw_dump(os.path.join('raw', filetrunk + '.raw'))
+
+            dbg("reading main data file %s..." % (filename), lvl=1)
+            gamedata.read(datfile.content, 0)
+            self.write_gamedata_cache(cachefile, gamedata)
+
+        dbg("repairing values in main data file %s..." % (filename), lvl=1)
+        gamedata.empiresdat[0] = fix_data(gamedata.empiresdat[0])
+
+        # TODO: data transformation (merge stuff, etc.)
+
+        # TODO: gamedata -> metadata dump

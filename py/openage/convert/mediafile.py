@@ -18,7 +18,6 @@ from .texture import Texture
 
 
 asset_folder = ""  # TODO: optimize out
-dat_cache_file = os.path.join(gettempdir(), "empires2_x1_p1.dat.pickle")
 
 
 class ExtractionRule:
@@ -96,44 +95,9 @@ def media_convert(args):
 
         stringres = None  # read_langfiles()
 
-        # create the dump for the dat file
-        from .gamedata import empiresdat
-        datfile_name = "empires2_x1_p1.dat"
+        gamedata = None  # read_gamedata()
 
-        # try to use cached version?
-        parse_empiresdat = False
-        if args.use_dat_cache:
-            dbg("trying to use cache file %s..." % (dat_cache_file), lvl=1)
-            try:
-                with open(dat_cache_file, "rb") as f:
-                    gamedata = pickle.load(f)
-                    dbg("could successfully load cached gamedata!", lvl=1)
-
-            except FileNotFoundError as err:
-                parse_empiresdat = True
-
-        if not args.use_dat_cache or parse_empiresdat:
-            datfile = empiresdat.EmpiresDatGzip("Data/%s" % datfile_name)
-            gamedata = empiresdat.EmpiresDatWrapper()
-
-            if args.extrafiles:
-                datfile.raw_dump('raw/empires2x1p1.raw')
-
-            dbg("reading main data file %s..." % (datfile_name), lvl=1)
-            gamedata.read(datfile.content, 0)
-
-            # store the datfile serialization for caching
-            with open(dat_cache_file, "wb") as f:
-                pickle.dump(gamedata, f)
-
-        # modify the read contents of datfile
-        dbg("repairing some values in main data file %s..." % (datfile_name),
-            lvl=1)
-        from . import fix_data
-        gamedata.empiresdat[0] = fix_data.fix_data(gamedata.empiresdat[0])
-
-        # dbg("transforming main data file %s..." % (datfile_name), lvl=1)
-        # TODO: data transformation nao! (merge stuff, etcetc)
+        # BLOCK BORDER: gamedata / output formatting
 
         dbg("formatting output data...", lvl=1)
         data_formatter = DataFormatter()
