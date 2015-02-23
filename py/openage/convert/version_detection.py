@@ -10,6 +10,35 @@ def is_glob(txt):
     return txt != glob.escape(txt)
 
 
+def file_exists(basedir, filename):
+    filepath = os.path.join(basedir, filename)
+    if is_glob(filename):
+        glob_result = glob.glob(filepath)
+        if len(glob_result) == 0:
+            dbg("FAIL: No match for glob '%s'." % (filename), 2)
+            return False
+        dbg("Glob '%s' OK." % filename, 4)
+
+    else:
+        if not os.path.isfile(filepath):
+            dbg("FAIL: File '%s' not found." % (filename), 2)
+            return False
+        dbg("File '%s' OK." % filename, 4)
+
+    return True
+
+
+class FU:
+    """
+    Something like a File Update. Also Fak U.
+    A set of file globs with additional information if the set from
+    the prerequisite should be updated or overridden.
+    """
+    def __init__(self, *files, override=False):
+        self.files = set(files)
+        self.override = override
+
+
 class GameVersion:
     """
     Has sets of files belonging to a version of the game.
@@ -25,23 +54,23 @@ class GameVersion:
 
         Arguments:
         name          -- Name of the version (for debug messages)
-        interfac      -- Set of globs of interface DRS archives
-        drs_files     -- Set of globs of other DRS archives
-        blendomatic   -- Set of globs of blendomatic DAT files
-        dat_files     -- Set of globs of gamedata DAT files
-        langdll_files -- Set of globs of language DLL files
-        langhd_files  -- Set of globs of HD edition language files
+        interfac      -- FU of globs of interface DRS archives
+        drs_files     -- FU of globs of other DRS archives
+        blendomatic   -- FU of globs of blendomatic DAT files
+        dat_files     -- FU of globs of gamedata DAT files
+        langdll_files -- FU of globs of language DLL files
+        langhd_files  -- FU of globs of HD edition language files
         prereqs       -- Set of prerequisite GameVersion objects
         """
 
         self.name = name
         self.files = {
-            "interfac": interfac or set(),
-            "drs": drs_files or set(),
-            "blendomatic": blendomatic or set(),
-            "dat": dat_files or set(),
-            "langdll": langdll_files or set(),
-            "langhd": langhd_files or set(),
+            "interfac":    interfac or FU(),
+            "drs":         drs_files or FU(),
+            "blendomatic": blendomatic or FU(),
+            "dat":         dat_files or FU(),
+            "langdll":     langdll_files or FU(),
+            "langhd":      langhd_files or FU(),
         }
         self.prereqs = prereqs or set()
 
@@ -52,90 +81,27 @@ class GameVersion:
         return self.name
 
     def exists(self, basedir):
-        """
-        Checks if the prerequisite versions exist. Then checks if all the files
-        needed for this version exist.
-
-        Arguments:
-        basedir -- Path to an AoE2 installation
-        """
-
-        if self.checked:
-            dbg("Check for %s has already been done, omitting." %
-                self.name, 3)
-            return self.available
-
-        self.checked = True
-
-        for prereq in self.prereqs:
-            dbg("'%s' requires '%s'. Checking '%s' now..." % (
-                self.name, prereq.name, prereq.name
-            ), 3)
-
-            if not prereq.exists(basedir):
-                dbg("Check for '%s' failed because of prerequisite '%s'!" % (
-                    self.name, prereq.name
-                ), 2)
+        for filename in self.get_files('all'):
+            if not file_exists(basedir, filename):
                 return False
 
-        for filename in self.get_own_files("all"):
-            filepath = os.path.join(basedir, filename)
-            if is_glob(filename):
-                glob_result = glob.glob(filepath)
-                if len(glob_result) == 0:
-                    dbg("Check for '%s' failed: No match for glob '%s'." % (
-                        self.name, filename
-                    ), 2)
-                    return False
-                dbg("Glob '%s' OK." % filename, 4)
-
-            else:
-                if not os.path.isfile(filepath):
-                    dbg("Check for '%s' failed: File '%s' not found." % (
-                        self.name, filename
-                    ), 2)
-                    return False
-                dbg("File '%s' OK." % filename, 4)
-
-        dbg("Check for '%s' successful." % self.name, 3)
-        self.available = True
         return True
 
     def get_files(self, filetype):
-        """
-        Returns a set of all file globs defined in this version and its prerequisites.
-
-        Arguments:
-        filetype -- One of 'interfac', 'drs', 'blendomatic', 'dat',
-                    'langdll', 'langhd' or 'all'
-        """
-
-        result = self.get_own_files(filetype)
-        for prereq in self.prereqs:
-            result |= prereq.get_files(filetype)
-
-        return result
-
-    def get_own_files(self, filetype):
-        """
-        Returns a set of all file globs defined in this version.
-
-        Arguments:
-        filetype -- One of 'interfac', 'drs', 'blendomatic', 'dat',
-                    'langdll', 'langhd' or 'all'
-        """
-
+        res = set()
         if filetype == "all":
-            return (
-                self.get_own_files("interfac") |
-                self.get_own_files("drs") |
-                self.get_own_files("blendomatic") |
-                self.get_own_files("dat") |
-                self.get_own_files("langdll") |
-                self.get_own_files("langhd")
-            )
+            for ft in self.files.keys():
+                res |= self.get_files(ft)
+            return res
 
-        return set(self.files[filetype])
+        fu = self.files[filetype]
+        res |= fu.files
+
+        if not fu.override:
+            for prereq in self.prereqs:
+                res |= prereq.get_files(filetype)
+
+        return res
 
 
 class VersionDetector:
