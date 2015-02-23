@@ -1,11 +1,32 @@
 nyan data format
 ================
 
-**nyan** is the recursive acronym for **nyan: yet another notation**. It
-consists of two separate, but very similar file formats. Firstly, there is the
-nyan specification (short: nyanspec) which describes a domain of object types.
-Secondly, there is the data file format itself, which defines a set of objects,
-with their attribute values.
+**nyan** is the recursive acronym for **nyan: yet another notation**. *nyan* is
+a human-readable text data format used in openage to represent game assets 
+informations. *nyan* is the data format in which game developers specify game 
+entities characteristics such as units health points, abilities, technologies, etc.
+*nyan* is designed for human readability, simplicity and moddability. It enforce
+a minimum set of grammatical rules to achieve its goal.
+
+By default, the game engine does not know anything about entities properties.
+The nyan reader provides all those characteristics to the game engine. nyan is used
+in different contexts :
+
+- definition of game entities (unit, building) base properties such as health points, 
+ressource cost, abilities, civilization informations, etc...
+- definition of game modes taking the form of patch applied over the game entities 
+base properties. Those patch or "deltas" are applied by the game engine during the 
+game initialization. Modes consists of a bunch of patches and can be exchanged
+without tweaking the game base properties.
+- definition of technologies properties such as base entities properties enhancement
+and ressource cost. Those technologies benefits are applied at runtime (after the game
+initialization) and may be refered as "runtime deltas". Like the game entities base 
+properties, technologies can be patched without modifying the base properties.
+
+*nyan* consists of two separate, but very similar file formats. First, there
+is the nyan specification (short: nyanspec) which describes a domain of object
+types. Then, there is the data file format itself (called nyan), which defines
+a set of objects, with their attribute values.
 
 nyan specification (nyanspec)
 -----------------------------
