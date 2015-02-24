@@ -67,58 +67,11 @@ def media_convert(args):
     # but its contents are in gamedata_x1.drs instead,
     # so we can ignore this file if it doesn't exist
 
-    palette_id = None  # 50500
-    palette = None  # read_palettes()
-
-    # metadata dumping output format, more to come?
-    output_formats = None  # metadata_formats
-
-    termcolortable = None  # read_termcolortable()
-
     # saving files is disabled by default
     write_enabled = False
 
-    if args.output:
-        from .slp import SLP
-
-        write_enabled = True
-
-        dbg("setting write dir to " + args.output, 1)
-        util.set_write_dir(args.output)
-
-        player_palette = None  # read_palettes()
-
-        # HD Edition: blendomatic_x1.dat
-        # AoK:TC: blendomatic.dat
-
-        blend_data = None  # read_blendomatic()
-
-        stringres = None  # read_langfiles()
-
-        gamedata = None  # read_gamedata()
-
-        # BLOCK BORDER: gamedata / output formatting
-
-        dbg("formatting output data...", lvl=1)
-        data_formatter = DataFormatter()
-
-        # dump metadata information
-        data_dump = list()
-        data_dump += blend_data.dump("blending_modes")
-        data_dump += player_palette.dump("player_palette_%d" % palette_id)
-        data_dump += termcolortable.dump("termcolors")
-        data_dump += stringres.dump("string_resources")
-        data_formatter.add_data(data_dump)
-
-        # dump gamedata datfile data
-        gamedata_dump = gamedata.dump("gamedata")
-        data_formatter.add_data(gamedata_dump[0], prefix="gamedata/")
-
-        output_data = data_formatter.export(output_formats)
-
-        # save the meta files
-        dbg("saving output data files...", lvl=1)
-        util.file_write_multi(output_data, file_prefix=asset_folder)
+    # HD Edition: blendomatic_x1.dat
+    # AoK:TC: blendomatic.dat
 
     file_list = defaultdict(lambda: list())
     media_files_extracted = 0

@@ -1,6 +1,7 @@
 # Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 from .drs import DRS
+from . import util
 import os
 
 
@@ -10,8 +11,13 @@ class MediaExtractor:
         self.args = args
 
         self.metadata_formats = ("csv",)
+        self.metadata_dump = list()
+        self.gamedata_dump = list()
 
         self.ensure_version_sanity()
+
+        dbg("setting write dir to " + self.args.output, 1)
+        util.set_write_dir(self.args.output)
 
     def ensure_version_sanity(self):
         if len(self.vd.get_files("interfac")) != 1:
@@ -25,14 +31,15 @@ class MediaExtractor:
 
         # 50500 is the file id of the color id lookup table
         interfac_drs = DRS(self.vd.get_files("interfac").pop())
-        palette = ColorTable(interfac_drs.get_file_data('bin', 50500))
+        palette_id = 50500
+        palette = ColorTable(interfac_drs.get_file_data('bin', palette_id))
         player_palette = PlayerColorTable(palette)
 
         if self.args.extrafiles:
             palette.save_visualization('info/colortable.pal.png')
             player_palette.save_visualization('info/playercolortable.pal.png')
 
-        # TODO: player_palette -> metadata dump
+        self.metadata_dump += player_palette.dump("player_palette_%d" % palette_id)
 
     def read_termcolortable(self):
         from .hardcoded.termcolors import urxvtcoltable
@@ -40,7 +47,7 @@ class MediaExtractor:
 
         termcolortable = ColorTable(urxvtcoltable)
 
-        # TODO: termcolortable -> metadata dump
+        self.metadata_dump += termcolortable.dump("termcolors")
 
     def read_blendomatic(self):
         from .blendomatic import Blendomatic
@@ -49,7 +56,7 @@ class MediaExtractor:
         blend_data = Blendomatic(blend_file)
         blend_data.save("blendomatic.dat", self.metadata_formats)
 
-        # TODO: blend_data -> metadata dump
+        self.metadata_dump += blend_data.dump("blending_modes")
 
     def read_langfiles(self):
         from .stringresource import StringResource
@@ -67,7 +74,7 @@ class MediaExtractor:
         # TODO: transform and cleanup the read strings...
         #       (strip html, insert formatchars/identifiers, ...)
 
-        # TODO: stringres -> metadata dump
+        self.metadata_dump += stringres.dump("string_resources")
 
     def read_gamedata_cache(self, cachefile):
         import pickle
@@ -121,4 +128,15 @@ class MediaExtractor:
 
         # TODO: data transformation (merge stuff, etc.)
 
-        # TODO: gamedata -> metadata dump
+        self.gamedata_dump += gamedata.dump("gamedata")
+
+    def save_data_dumps(self):
+        from .dataformat.data_formatter import DataFormatter
+
+        formatter = DataFormatter()
+        formatter.add_data(self.metadata_dump)
+        formatter.add_data(self.gamedata_dump, prefix="gamedata/")
+        output_data = formatter.export(self.metadata_formats)
+
+        dbg("saving output data files...", lvl=1)
+        util.file_write_multi(output_data, file_prefix="")
