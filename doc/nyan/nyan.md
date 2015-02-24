@@ -18,14 +18,14 @@ ressource cost, abilities, civilization informations, etc...
 base properties. Those patch or "deltas" are applied by the game engine during the 
 game initialization. Modes consists of a bunch of patches and can be exchanged
 without tweaking the game base properties.
-- definition of technologies properties such as base entities properties enhancement
-and ressource cost. Those technologies benefits are applied at runtime (after the game
+- definition of technologies properties such as base properties enhancement
+and ressource cost. These technologies benefits are applied at runtime (after the game
 initialization) and may be refered as "runtime deltas". Like the game entities base 
 properties, technologies can be patched without modifying the base properties.
 
 *nyan* consists of two separate, but very similar file formats. First, there
 is the nyan specification (short: nyanspec) which describes a domain of object
-types. Then, there is the data file format itself (called nyan), which defines
+types. Then, there is the data file format itself (simply called nyan), which defines
 a set of objects, with their attribute values.
 
 nyan specification (nyanspec)
@@ -62,9 +62,11 @@ of sets and not of bags. Therefore no duplicates are allowed within a set and no
 order is guaranteed. For each attribute a default value can be specified after
 the attribute type separated by an equals sign.
 
-### Dynamic attributes
+### nyan interfaces
 
-Sometimes there are cases where nyan types need dynamic attributes.
+A nyan set can store objects of heterogeneous types thanks to implicit interface.
+A nyan interface is simply a nyan type that define a minimum set of attributes
+that other types can implement.
 Imagine a unit in **openage** has multiple abilities. This would lead to the
 following definition:
 
@@ -79,12 +81,18 @@ following definition:
 This definition works, as every ability should have a name, but it is not really
 obvious what other attributes an ability has. The abilitiy to attack probably
 needs an attribute that describes an attack damage, while the ability to build a
-building needs a construction time attribute. Thus abilities should have dynamic
-attributes. Those can be specified with ellipsis:
+building needs a construction speed attribute. Thus abilities can implicitly
+extend the ABILITY interface. For example, the following types are valid
+implementation of the ABILITY interface :
 
-    ABILITY {
+    ATTACK_ABILITY {
     	name : string,
-    	...
+    	int : damage
+    }
+    
+    BUILD_ABILITY {
+    	name : string,
+    	int : construction_speed
     }
 
 ### Runtime deltas
