@@ -4,7 +4,6 @@
 #include "../terrain/terrain_object.h"
 #include "../terrain/terrain_outline.h"
 #include "../util/strings.h"
-#include "../util/unique.h"
 #include "../game_main.h"
 #include "../log.h"
 #include "ability.h"
@@ -62,15 +61,15 @@ void UnitTypeTest::initialise(Unit *unit) {
 	/*
 	 * Initial action stack
 	 */
-	unit->push_action(util::make_unique<DeadAction>(unit, this->dead,
-	                                                this->on_destroy));
-	unit->push_action(util::make_unique<IdleAction>(unit, this->idle));
+	unit->push_action(std::make_unique<DeadAction>(unit, this->dead,
+	                                               this->on_destroy));
+	unit->push_action(std::make_unique<IdleAction>(unit, this->idle));
 
-	unit->give_ability(util::make_unique<MoveAbility>(this->moving, this->on_move));
-	unit->give_ability(util::make_unique<AttackAbility>(this->attacking, this->on_attack));
+	unit->give_ability(std::make_unique<MoveAbility>(this->moving, this->on_move));
+	unit->give_ability(std::make_unique<AttackAbility>(this->attacking, this->on_attack));
 
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
-		unit->give_ability(util::make_unique<GatherAbility>(this->attacking, this->on_attack));
+		unit->give_ability(std::make_unique<GatherAbility>(this->attacking, this->on_attack));
 	}
 }
 
@@ -141,9 +140,9 @@ void BuldingProducer::initialise(Unit *unit) {
 	unit->add_attribute(new Attribute<attr_type::color>(util::random_range(1, 8 + 1)));
 	unit->add_attribute(new Attribute<attr_type::dropsite>());
 
-	unit->push_action(util::make_unique<DeadAction>(unit, this->texture,
-	                                                this->on_destroy));
-	unit->push_action(util::make_unique<IdleAction>(unit, this->texture));
+	unit->push_action(std::make_unique<DeadAction>(unit, this->texture,
+	                                               this->on_destroy));
+	unit->push_action(std::make_unique<IdleAction>(unit, this->texture));
 }
 
 bool BuldingProducer::place(Unit *unit, Terrain *terrain, coord::tile init_tile) {
@@ -216,7 +215,7 @@ std::unique_ptr<UnitProducer> ProducerLoader::load_building(const gamedata::unit
 	}
 
 	// make and return producer
-	return util::make_unique<BuldingProducer>(
+	return std::make_unique<BuldingProducer>(
 		tex,
 		foundation_size,
 		building.terrain_id,
@@ -243,7 +242,7 @@ std::unique_ptr<UnitProducer> ProducerLoader::load_living(const gamedata::unit_l
 	TestSound *snd_destroy = this->main->find_sound(unit.sound_dying);
 	TestSound *snd_move    = this->main->find_sound(unit.move_sound);
 
-	return util::make_unique<UnitTypeTest>(
+	return std::make_unique<UnitTypeTest>(
 		&unit,
 		tex_die, tex_stand, tex_walk, tex_attack,
 		snd_create, snd_destroy, snd_move, snd_move
@@ -276,7 +275,7 @@ std::unique_ptr<UnitProducer> ProducerLoader::load_object(const gamedata::unit_o
 	}
 
 	// make and return producer
-	return util::make_unique<BuldingProducer>(
+	return std::make_unique<BuldingProducer>(
 		tex,
 		foundation_size,
 		0,

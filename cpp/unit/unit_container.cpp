@@ -1,8 +1,10 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+
+#include "unit_container.h"
+
+#include <memory>
 
 #include "../terrain/terrain_object.h"
-#include "unit_container.h"
-#include "../util/unique.h"
 #include "producer.h"
 #include "unit.h"
 
@@ -56,7 +58,7 @@ UnitReference UnitContainer::get_unit(id_t id) {
 
 bool UnitContainer::new_unit(UnitProducer& producer, Terrain *terrain,
                              coord::tile tile) {
-	auto newobj = util::make_unique<Unit>(this, next_new_id++);
+	auto newobj = std::make_unique<Unit>(this, next_new_id++);
 
 	// try creating a unit at this location
 	bool placed = producer.place(newobj.get(), terrain, tile);
