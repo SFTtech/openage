@@ -9,7 +9,6 @@
 #include "terrain_chunk.h"
 #include "terrain_outline.h"
 #include "../engine.h"
-#include "../log.h"
 #include "../texture.h"
 #include "../coord/tile.h"
 #include "../coord/tile3.h"
@@ -37,7 +36,7 @@ TerrainObject::~TerrainObject() {}
 
 bool TerrainObject::place(Terrain *terrain, coord::phys3 &position) {
 	if (this->placed) {
-		throw util::Error("this object has already been placed.");
+		throw util::Error(MSG(err) << "This object has already been placed.");
 	}
 
 	// use passiblity test
@@ -87,7 +86,7 @@ void TerrainObject::remove() {
 
 void TerrainObject::set_ground(int id, int additional) {
 	if (not this->placed) {
-		throw util::Error("setting ground for object that is not placed yet.");
+		throw util::Error(MSG(err) << "Setting ground for object that is not placed yet.");
 	}
 
 	coord::tile temp_pos = this->pos.start;

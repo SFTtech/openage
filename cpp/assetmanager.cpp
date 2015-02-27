@@ -10,6 +10,7 @@
 
 #include "util/compiler.h"
 #include "util/error.h"
+#include "log/log.h"
 
 namespace openage {
 
@@ -22,7 +23,7 @@ AssetManager::AssetManager(util::Dir *root)
 	// initialize the inotify instance
 	this->inotify_fd = inotify_init1(IN_NONBLOCK);
 	if (this->inotify_fd < 0) {
-		throw util::Error{"failed to initialize inotify!"};
+		throw util::Error{MSG(err) << "Failed to initialize inotify!"};
 	}
 #endif
 }
@@ -39,7 +40,7 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name) {
 
 	// try to open the texture filename.
 	if (not this->can_load(name)) {
-		log::msg("   file %s is not there...", filename.c_str());
+		log::log(MSG(warn) <<  "   file " << filename << " is not there...");
 
 		// TODO: add/fetch inotify watch on the containing folder
 		// to display the tex as soon at it exists.
@@ -54,7 +55,7 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name) {
 		// create inotify update trigger for the requested file
 		int wd = inotify_add_watch(this->inotify_fd, filename.c_str(), IN_CLOSE_WRITE);
 		if (wd < 0) {
-			throw util::Error{"failed to add inotify watch for %s", filename.c_str()};
+			throw util::Error{MSG(warn) << "Failed to add inotify watch for " << filename};
 		}
 		this->watch_fds[wd] = tex;
 #endif
@@ -94,7 +95,7 @@ void AssetManager::check_updates() {
 			break;
 		}
 		else if (len == -1) {
-			throw util::Error{"failed to read inotify events!"};
+			throw util::Error{MSG(err) << "Failed to read inotify events!"};
 		}
 
 		// process fetched events,

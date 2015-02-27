@@ -1,11 +1,12 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #include "job_manager.h"
-#include "../log.h"
+#include "../log/log.h"
 
 namespace openage {
 namespace job {
 namespace tests {
+
 
 int test_simple_job() {
 	JobManager manager{4};
@@ -34,6 +35,7 @@ int test_simple_job() {
 	manager.stop();
 	return result;
 }
+
 
 int test_simple_job_with_exception() {
 	JobManager manager{4};
@@ -65,6 +67,7 @@ int test_simple_job_with_exception() {
 
 }
 
+
 void test_job_manager() {
 	int ret;
 	const char *testname;
@@ -77,10 +80,9 @@ void test_job_manager() {
 	}
 	return;
 out:
-	log::err("%s failed with return value %d", testname, ret);
+	log::log(MSG(err) << testname << " failed with return value " << ret);
 	throw "job manager tests failed";
 }
 
-}
-}
-}
+
+}}} // namespace openage::job::tests

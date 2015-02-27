@@ -16,7 +16,7 @@
 #include <sys/wait.h>
 #endif
 
-#include "../log.h"
+#include "../log/log.h"
 #include "../util/strings.h"
 
 namespace openage {
@@ -72,7 +72,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 
 	if (pipe(pipefd) < 0) {
 		// the pipe could not be created
-		log::err("could not create pipe");
+		log::log(MSG(err) << "could not create pipe: " << strerror(errno));
 
 		return -1;
 	}
@@ -85,7 +85,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 			0644);
 
 		if (replacement_stdout_fd < 0) {
-			log::err("could not open output redirection file %s: %s", redirect_stdout_to, strerror(errno));
+			log::log(MSG(err) << "could not open output redirection file " << redirect_stdout_to << ": " << strerror(errno));
 
 			close(pipefd[0]);
 			close(pipefd[1]);
@@ -96,7 +96,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 
 	// mark write end of pipe as close-on-exec
 	if (fcntl(pipefd[1], F_SETFD, FD_CLOEXEC) < 0) {
-		log::err("could not fcntl write-end of pipe");
+		log::log(MSG(err) << "could not fcntl write-end of pipe: " << strerror(errno));
 
 		close(pipefd[0]);
 		close(pipefd[1]);
@@ -112,7 +112,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 
 	if (child_pid == -1) {
 		// the fork has failed
-		log::err("could not fork");
+		log::log(MSG(err) << "could not fork: " << strerror(errno));
 
 		close(pipefd[0]);
 		close(pipefd[1]);
@@ -189,7 +189,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 		}
 
 		if (read_count < 0) {
-			log::err("read from child pipe failed");
+			log::log(MSG(err) << "read from child pipe failed" << strerror(errno));
 			close(pipefd[0]);
 			return -1;
 		}
@@ -201,12 +201,12 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 
 	if (total > 0) {
 		if (total != sizeof(int)) {
-			log::err("wrong number of bytes read from child pipe: %ld", total);
+			log::log(MSG(err) << "wrong number of bytes read from child pipe: " << total);
 			return -1;
 		}
 
 		if (child_errno > 0) {
-		    log::err("execv has failed: %s", strerror(child_errno));
+		    log::log(MSG(err) << "execv has failed: " << strerror(child_errno));
 		    return -1;
 		}
 	}
@@ -220,7 +220,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 	// wait for the child process to finish
 	int status;
 	if (waitpid(child_pid, &status, 0) < 0) {
-		log::err("could not wait for child process");
+		log::log(MSG(err) << "could not wait for child process");
 		return -1;
 	}
 

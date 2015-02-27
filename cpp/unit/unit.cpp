@@ -149,6 +149,12 @@ UnitReference Unit::get_ref() {
 	return UnitReference(container, id, this);
 }
 
+
+std::string Unit::logsource_name() {
+	return "Unit " + std::to_string(this->id);
+}
+
+
 unsigned int dir_group(coord::phys3_delta dir, unsigned int angles, unsigned int first_angle) {
 	// normalise dir
 	double len = std::hypot(dir.ne, dir.se);

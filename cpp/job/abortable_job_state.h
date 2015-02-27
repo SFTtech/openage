@@ -12,6 +12,7 @@
 namespace openage {
 namespace job {
 
+
 /**
  * An abortable job state supports job that can be aborted. This is done by
  * providing two function objects to the job's function. One is used to check
@@ -47,7 +48,7 @@ protected:
 	}
 };
 
-}
-}
+
+}} // namespace openage::job
 
 #endif

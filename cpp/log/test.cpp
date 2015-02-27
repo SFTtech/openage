@@ -1,20 +1,22 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
-#include "logging.h"
+#include "log.h"
 
 #include <iostream>
 #include <iomanip>
 #include <thread>
 
+#include "../util/strings.h"
+
 namespace openage {
-namespace logging {
-namespace test {
+namespace log {
+namespace tests {
 
 
-class TestLogger : public Logger {
+class TestLogSource : public LogSource {
 public:
-	std::string logger_name() {
-		return "TestLogger";
+	std::string logsource_name() {
+		return "TestLogSource";
 	}
 };
 
@@ -27,14 +29,14 @@ public:
 private:
 	std::ostream &os;
 
-	void output_log_message(const Message &msg, Logger * /*source*/) {
+	void output_log_message(const Message &msg, LogSource * /*source*/) {
 		this->os << msg << std::endl;
 	}
 };
 
 
 void test() {
-	TestLogger logger;
+	TestLogSource logger;
 	TestLogSink sink{std::cout};
 
 	logger.log(MSG(err) << 1337 << "asdf...");
@@ -59,4 +61,4 @@ void test() {
 	t1.join();
 }
 
-}}} // openage::logging::test
+}}} // openage::log::tests

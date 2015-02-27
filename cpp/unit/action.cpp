@@ -175,11 +175,11 @@ void MoveAction::update(unsigned int time) {
 	else {
 		// cases for modifying path when blocked
 		if (this->allow_repath) {
-			log::dbg("path blocked -- finding new path");
+			this->entity->log(MSG(dbg) << "Path blocked -- finding new path");
 			this->set_path();
 		}
 		else {
-			log::dbg("path blocked -- drop action");
+			this->entity->log(MSG(dbg) << "Path blocked -- drop action");
 			this->path.waypoints.clear();
 		}
 	}
@@ -216,7 +216,7 @@ coord::phys3 MoveAction::next_waypoint() const {
 	if (this->path.waypoints.size() > 0) {
 		return this->path.waypoints.back().position;
 	} else {
-		throw util::Error{"no next waypoint available!"};
+		throw util::Error{MSG(err) << "No next waypoint available!"};
 	}
 }
 

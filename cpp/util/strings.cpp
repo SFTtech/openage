@@ -12,32 +12,8 @@
 namespace openage {
 namespace util {
 
-std::string sformat(const char *fmt, ...) {
-	va_list ap;
-	va_start(ap, fmt);
 
-	char *buf = vformat(fmt, ap);
-
-	va_end(ap);
-
-	std::string result = buf;
-
-	delete[] buf;
-
-	return result;
-}
-
-char *format(const char *fmt, ...) {
-	va_list ap;
-	va_start(ap, fmt);
-
-	char *result = vformat(fmt, ap);
-
-	va_end(ap);
-
-	return result;
-}
-
+// Warning: deprecated for memory leak reasons (except for usage by vsformat).
 char *vformat(const char *fmt, va_list ap) {
 	va_list aq;
 	va_copy(aq, ap);
@@ -52,6 +28,7 @@ char *vformat(const char *fmt, va_list ap) {
 	return result;
 }
 
+
 std::string sformat(const char *fmt, ...) {
 	va_list ap;
 	va_start(ap, fmt);
@@ -61,12 +38,15 @@ std::string sformat(const char *fmt, ...) {
 	return ret;
 }
 
+
 std::string vsformat(const char *fmt, va_list ap) {
 	std::unique_ptr<char[]> str{vformat(fmt, ap)};
 	std::string ret{str.get()};
 	return ret;
 }
 
+
+// Warning: deprecated for memory leak reasons.
 char *copy(const char *s) {
 	size_t sz = strlen(s) + 1;
 
@@ -75,6 +55,7 @@ char *copy(const char *s) {
 
 	return result;
 }
+
 
 size_t rstrip(char *s) {
 	size_t strippedlen = strlen(s);
@@ -94,6 +75,7 @@ size_t rstrip(char *s) {
 
 	return strippedlen;
 }
+
 
 void string_tokenize_base(char *str, char delim, std::function<void(char *)> callback) {
 	callback(str);
@@ -154,6 +136,7 @@ void string_tokenize_base(char *str, char delim, std::function<void(char *)> cal
 	}
 }
 
+
 size_t string_tokenize_to_buf(char *str, char delim, char **buf, size_t bufsize) {
 	size_t count = 0;
 
@@ -169,6 +152,7 @@ size_t string_tokenize_to_buf(char *str, char delim, char **buf, size_t bufsize)
 
 	return count;
 }
+
 
 size_t string_tokenize_dynamic(char *str, char delim, char ***result) {
 	std::vector<char *> resultvector;
@@ -188,6 +172,7 @@ size_t string_tokenize_dynamic(char *str, char delim, char ***result) {
 
 	return resultvector.size();
 }
+
 
 bool string_matches_pattern(const char *str, const char *pattern) {
 	while (true) {
@@ -231,6 +216,7 @@ bool string_matches_pattern(const char *str, const char *pattern) {
 		pattern += 1;
 	}
 }
+
 
 } //namespace util
 } //namespace openage

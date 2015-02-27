@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UTIL_SSTREAMCACHE_H_
 #define OPENAGE_UTIL_SSTREAMCACHE_H_
@@ -12,7 +12,7 @@ namespace util {
 
 
 /**
- * designed for usage by OSStreamPtr.
+ * Designed for usage by OSStreamPtr.
  */
 class CachableOSStream {
 public:
@@ -49,7 +49,7 @@ private:
 
 /**
  * Wraps an output string stream.
- * Designed mainly for usage by the logging/MSG system.
+ * Designed mainly for usage by the Formatter / logging / MSG system.
  *
  * When creating a message, an internal string stream is used to accumulate
  * the message string. The entire moviation for this cache is the fact that
@@ -61,15 +61,19 @@ private:
  */
 class OSStreamPtr {
 public:
-	CachableOSStream *stream_ptr;
-
 	/**
-	 * acquires a CachableOSStream object via CachableOSStream::acquire().
+	 * Acquires a CachableOSStream object via CachableOSStream::acquire().
 	 */
 	OSStreamPtr();
 
 	/**
-	 * releases the CachableOSStream object back to the pool/frees it
+	 * Acquires the CachableOSStream object only if acquire = true.
+	 * Otherwise, the pointer remains nullptr for later acquiring.
+	 */
+	OSStreamPtr(bool acquire);
+
+	/**
+	 * Releases the CachableOSStream object back to the pool/frees it
 	 */
 	~OSStreamPtr();
 
@@ -86,6 +90,20 @@ public:
 	 * does not change the internal state, and may be called any number of times.
 	 */
 	std::string get() const;
+
+	/**
+	 * If no CachableOSStream object has been acquired so far, fetches one.
+	 *
+	 * @returns: true if a stream was acquired.
+	 */
+	bool acquire_if_needed();
+
+	/**
+	 * @returns: true if a stream is already acquired.
+	 */
+	bool is_acquired() const;
+
+	CachableOSStream *stream_ptr;
 };
 
 }} // namespace openage::util

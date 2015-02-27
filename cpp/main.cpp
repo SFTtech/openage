@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
@@ -6,7 +6,7 @@
 #include <time.h>
 
 #include "args.h"
-#include "log.h"
+#include "log/log.h"
 #include "util/error.h"
 #include "game_main.h"
 #include "testing/testing.h"
@@ -16,7 +16,20 @@
 
 using namespace openage;
 
+
+void init() {
+	log::init();
+}
+
+
+void deinit() {
+	log::deinit();
+}
+
+
 int main(int argc, char **argv) {
+	init();
+
 	try {
 		Arguments args = parse_args(argc, argv);
 
@@ -34,9 +47,8 @@ int main(int argc, char **argv) {
 		}
 
 		if (args.version) {
-			printf("openage %s\n%s\n",
-			       config::version,
-			       config::config_option_string);
+			std::cout << "openage " << config::version << std::endl;
+			std::cout << config::config_option_string << std::endl;
 
 			return 0;
 		}
@@ -65,7 +77,9 @@ int main(int argc, char **argv) {
 		return (result == false) ? 1 : 0;
 
 	} catch (util::Error e) {
-		log::fatal("Exception: %s", e.str());
+		log::log(MSG(crit) << "Exception: " << e);
 		return 1;
 	}
+
+	deinit();
 }

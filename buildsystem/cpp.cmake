@@ -5,7 +5,7 @@
 #TODO: integrate PGO (profile-guided optimization) build
 
 function(cpp_init)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -D__STDC_FORMAT_MACROS")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
 
 	function(require_cxx_version CXXNAME MINIMAL)
 		if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MINIMAL})

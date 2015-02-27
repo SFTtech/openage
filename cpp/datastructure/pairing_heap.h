@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_DATASTRUCTURE_PAIRING_HEAP_H_
 #define OPENAGE_DATASTRUCTURE_PAIRING_HEAP_H_
@@ -21,7 +21,6 @@
 #include <type_traits>
 #include <unordered_set>
 
-#include "../log.h"
 #include "../util/compiler.h"
 #include "../util/error.h"
 
@@ -191,7 +190,7 @@ public:
 	 */
 	T pop() {
 		if (this->root_node == nullptr) {
-			throw util::Error{"can't pop an empty heap!"};
+			throw util::Error{MSG(err) << "Can't pop an empty heap!"};
 		}
 
 		// 0. remove tree root, it's the minimum.
@@ -365,7 +364,7 @@ protected:
 			delete node;
 			this->node_count -= 1;
 		} else {
-			throw util::Error{"specified node not found for deletion!"};
+			throw util::Error{MSG(err) << "Specified node not found for deletion!"};
 		}
 	}
 

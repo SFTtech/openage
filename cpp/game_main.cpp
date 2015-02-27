@@ -3,7 +3,6 @@
 #include "game_main.h"
 
 #include <SDL2/SDL.h>
-#include <cinttypes>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -16,7 +15,7 @@
 #include "crossplatform/opengl.h"
 #include "engine.h"
 #include "gamedata/string_resource.gen.h"
-#include "log.h"
+#include "log/log.h"
 #include "terrain/terrain.h"
 #include "unit/action.h"
 #include "unit/producer.h"
@@ -68,11 +67,13 @@ int run_game(Arguments *args) {
 	struct stat data_dir_stat;
 
 	if (stat(args->data_directory, &data_dir_stat) == -1) {
-		throw util::Error("Failed checking directory %s: %s",
-		                  args->data_directory, strerror(errno));
+		throw util::Error(MSG(err) <<
+			"Failed checking directory " << args->data_directory <<
+			": " << strerror(errno));
 	}
 
-	log::msg("launching engine with data directory '%s'", args->data_directory);
+	log::log(MSG(info) << "launching engine with data directory '" << args->data_directory << "'");
+
 	util::Dir data_dir{args->data_directory};
 
 	timer.start();
@@ -85,12 +86,13 @@ int run_game(Arguments *args) {
 	console::Console console(termcolors);
 	console.register_to_engine(&engine);
 
-	log::msg("Loading time [engine]: %5.3f s", timer.getval() / 1.0e9);
+	log::log(MSG(info).fmt("Loading time [engine]: %5.3f s", timer.getval() / 1.0e9));
 
 	// init the test run
 	timer.start();
 	GameMain test{&engine};
-	log::msg("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9);
+
+	log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
 
 	// run main loop
 	engine.run();
@@ -224,7 +226,7 @@ GameMain::GameMain(Engine *engine)
 	delete alphamask_frag;
 
 	auto gamedata_load_function = [this, engine, asset_dir]() -> std::vector<gamedata::empiresdat> {
-		log::msg("loading game specification files... stand by, will be faster soon...");
+		log::log(MSG(info) << "loading game specification files... stand by, will be faster soon...");
 		util::Dir gamedata_dir = asset_dir.append("gamedata");
 		return std::move(util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx"));
 	};
@@ -249,20 +251,21 @@ void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 	// we cannot rely on it being polished... it might be VERY broken.
 	// British or any other civ is a way safer bet.
 
-	log::msg("Using the %s civilisation.", gamedata[0].civs.data[your_civ_id].name.c_str());
+	log::log(MSG(info) << "Using civilisation: " << gamedata[0].civs.data[your_civ_id].name);
 
 	ProducerLoader pload(this);
 	available_objects = pload.create_producers(gamedata, your_civ_id);
 
 	auto get_sound_file_location = [asset_dir](int32_t resource_id) -> std::string {
-		std::unique_ptr<char[]> snd_file_location;
+		std::string snd_file_location;
 		// We check in sounds_x1.drs folder first in case we need to override
 		for (const char *sound_dir : {"sounds_x1.drs", "sounds.drs"}) {
-			snd_file_location.reset(util::format("Data/%s/%d.opus", sound_dir, resource_id));
-			if (util::file_size(asset_dir.join(snd_file_location.get())) > 0) {
-				return std::move(std::string(snd_file_location.get()));
+			snd_file_location = util::sformat("Data/%s/%d.opus", sound_dir, resource_id);
+			if (util::file_size(asset_dir.join(snd_file_location)) > 0) {
+				return snd_file_location;
 			}
 		}
+
 		// We could not find the sound file for the provided resource_id in both directories
 		return "";
 	};
@@ -275,7 +278,10 @@ void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 		for (gamedata::sound_item &item : sound.sound_items.data) {
 			std::string snd_file_location = get_sound_file_location(item.resource_id);
 			if (snd_file_location.empty()) {
-				log::msg("   No sound file found for resource_id %d, ignoring...", item.resource_id);
+				log::log(MSG(warn) <<
+					"   No sound file found for resource_id " <<
+					item.resource_id << ", ignoring...");
+
 				continue;
 			}
 
@@ -347,21 +353,23 @@ bool GameMain::on_input(SDL_Event *e) {
 			}
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_LEFT and construct_mode) {
-			log::dbg("LMB [window]:    x %9hd y %9hd",
-			         mousepos_window.x,
-			         mousepos_window.y);
-			log::dbg("LMB [camgame]:   x %9hd y %9hd",
-			         mousepos_camgame.x,
-			         mousepos_camgame.y);
+			log::log(MSG(dbg) <<
+				"LMB [window]:   "
+				" x " << std::setw(9) << mousepos_window.x <<
+				" y " << std::setw(9) << mousepos_window.y);
 
-			auto phys_per_tile = openage::coord::settings::phys_per_tile;
-			log::dbg("LMB [phys3]:     NE %8.3f SE %8.3f UP %8.3f",
-			         ((float) mousepos_phys3.ne) / phys_per_tile,
-			         ((float) mousepos_phys3.se) / phys_per_tile,
-			         ((float) mousepos_phys3.up) / phys_per_tile);
-			log::dbg("LMB [tile]:      NE %8" PRIi64 " SE %8" PRIi64,
-			         mousepos_tile.ne,
-			         mousepos_tile.se);
+			constexpr auto phys_per_tile = openage::coord::settings::phys_per_tile;
+
+			log::log(MSG(dbg) <<
+				"LMB [phys3]:    "
+				" NE " << util::FixedPoint<3, 8, phys_per_tile>{mousepos_phys3.ne} <<
+				" SE " << util::FixedPoint<3, 8, phys_per_tile>{mousepos_phys3.se} <<
+				" UP " << util::FixedPoint<3, 8, phys_per_tile>{mousepos_phys3.up});
+
+			log::log(MSG(dbg) <<
+				"LMB [tile]:     "
+				" NE " << std::setw(8) << mousepos_tile.ne <<
+				" SE " << std::setw(8) << mousepos_tile.se);
 
 			TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
 			chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
@@ -593,17 +601,17 @@ bool GameMain::on_drawhud() {
 Texture *GameMain::find_graphic(int graphic_id) {
 	auto tex_it = this->graphics.find(graphic_id);
 	if (tex_it == this->graphics.end()) {
-		log::msg("  -> ignoring graphics_id: %d", graphic_id);
+		log::log(MSG(info) << "   -> ignoring graphics_id: " << graphic_id);
 		return nullptr;
 	}
 
 	int slp_id = tex_it->second->slp_id;
 	if (slp_id <= 0) {
-		log::msg("  -> ignoring slp_id: %d", slp_id);
+		log::log(MSG(info) << "  -> ignoring slp_id: " << slp_id);
 		return nullptr;
 	}
 
-	log::msg("   slp id/name: %d %s", slp_id, this->graphics[graphic_id]->name0.c_str());
+	log::log(MSG(info) << "   slp id/name: " << slp_id << " " << this->graphics[graphic_id]->name0);
 	std::string tex_fname = util::sformat("converted/Data/graphics.drs/%d.slp.png", slp_id);
 	return this->assetmanager.get_texture(tex_fname);
 }
@@ -673,9 +681,8 @@ void TestSound::play() {
 	int sndid = this->sound_items[rand];
 	try {
 		audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();
-	}
-	catch(util::Error &e) {
-		log::dbg("cannot play: %s", e.str());
+	} catch(util::Error &e) {
+		log::log(MSG(info) << "cannot play: " << e);
 	}
 }
 

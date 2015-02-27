@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UTIL_CONSTEXPR_H_
 #define OPENAGE_UTIL_CONSTEXPR_H_

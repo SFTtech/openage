@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "opengl.h"
 
@@ -63,7 +63,9 @@ void gl_check_error() {
 			// unknown error state
 			errormsg = "unknown error";
 		}
-		throw util::Error("OpenGL error state after running draw method: %d\n\t%s", glerrorstate, errormsg);
+		throw util::Error(MSG(err) <<
+			"OpenGL error state after running draw method: " << glerrorstate << "\n"
+			"\t" << errormsg);
 	}
 }
 

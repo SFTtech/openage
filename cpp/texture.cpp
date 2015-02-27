@@ -9,7 +9,7 @@
 #include <cmath>
 #include <cstdio>
 
-#include "log.h"
+#include "log/log.h"
 #include "util/error.h"
 #include "util/file.h"
 
@@ -73,10 +73,11 @@ void Texture::load() {
 	surface = IMG_Load(this->filename.c_str());
 
 	if (!surface) {
-		throw util::Error("Could not load texture from '%s': %s", filename.c_str(), IMG_GetError());
-	}
-	else {
-		log::dbg1("Loaded texture from '%s'", filename.c_str());
+		throw util::Error(MSG(err) <<
+			"Could not load texture from " <<
+			filename << ": " << IMG_GetError());
+	} else {
+		log::log(MSG(dbg) << "Texture has been loaded from " << filename);
 	}
 
 	// glTexImage2D format determination
@@ -90,7 +91,10 @@ void Texture::load() {
 		texture_format_out = GL_RGBA;
 		break;
 	default:
-		throw util::Error("Unknown texture bit depth for '%s': %d bytes per pixel)", filename.c_str(), surface->format->BytesPerPixel);
+		throw util::Error(MSG(err) <<
+			"Unknown texture bit depth for " << filename << ": " <<
+			surface->format->BytesPerPixel << " bytes per pixel");
+
 		break;
 	}
 
@@ -113,7 +117,7 @@ void Texture::load() {
 		strncpy(meta_filename, filename.c_str(), m_len - 5);
 		strncpy(meta_filename + m_len - 5, "docx", 5);
 
-		log::msg("loading meta file %s", meta_filename);
+		log::log(MSG(info) << "Loading meta file: " << meta_filename);
 
 		// get subtexture information by meta file exported by script
 		this->subtextures = util::read_csv_file<gamedata::subtexture>(meta_filename);
@@ -200,8 +204,6 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
                    int subid, unsigned player,
                    Texture *alpha_texture, int alpha_subid) const {
 	glColor4f(1, 1, 1, 1);
-
-	//log::dbg("drawing texture at %hd, %hd", x, y);
 
 	bool use_playercolors = false;
 	bool use_alphashader = false;
@@ -350,7 +352,7 @@ const gamedata::subtexture *Texture::get_subtexture(int subid) const {
 		return &this->subtextures[subid];
 	}
 	else {
-		throw util::Error("requested unknown subtexture %d", subid);
+		throw util::Error(MSG(err) << "Unknown subtexture requested: " << subid);
 	}
 }
 

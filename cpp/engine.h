@@ -9,9 +9,8 @@
 
 #include <SDL2/SDL.h>
 
-#include "logging/logging.h"
-#include "logging/stdoutsink.h"
-#include "logging/filesink.h"
+#include "log/log.h"
+#include "log/file_logsink.h"
 #include "audio/audio_manager.h"
 #include "coord/camgame.h"
 #include "coord/vec2f.h"
@@ -40,7 +39,7 @@ class GameMain;
  *
  * central foundation for everything the openage engine is capable of.
  */
-class Engine : public ResizeHandler, public logging::Logger {
+class Engine : public ResizeHandler {
 	friend class GameMain;
 private:
 	/**
@@ -67,8 +66,6 @@ public:
 	 * @returns the pointer to the global engine instance.
 	 */
 	static Engine &get();
-
-	std::string logger_name();
 
 private:
 	/**
@@ -98,8 +95,7 @@ private:
 	Engine &operator=(Engine &&other);
 
 	// log sinks
-	std::unique_ptr<logging::StdOutSink> logsink_stdout;
-	std::unique_ptr<logging::FileSink> logsink_file;
+	std::unique_ptr<log::FileSink> logsink_file;
 
 public:
 	/**

@@ -1,13 +1,12 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "terrain_chunk.h"
 
 #include <cmath>
-#include <cinttypes>
 
 #include "terrain_object.h"
 #include "../engine.h"
-#include "../log.h"
+#include "../log/log.h"
 #include "../texture.h"
 #include "../coord/tile.h"
 #include "../coord/tile3.h"
@@ -33,10 +32,11 @@ TerrainChunk::TerrainChunk()
 		this->neighbors.neighbor[i] = nullptr;
 	}
 
-	log::dbg("created terrain chunk: %" PRIuPTR " size, %" PRIuPTR " tiles",
-	         static_cast<uintptr_t>(chunk_size),
-	         static_cast<uintptr_t>(this->tile_count));
+	log::log(MSG(dbg) << "Terrain chunk created: " <<
+		"size=" << chunk_size << ", " <<
+		"tiles=" << this->tile_count);
 }
+
 
 TerrainChunk::~TerrainChunk() {
 	delete[] this->data;
@@ -154,7 +154,9 @@ int TerrainChunk::neighbor_id_by_pos(coord::tile pos) {
  */
 size_t TerrainChunk::tile_position(coord::tile pos) {
 	if (this->neighbor_id_by_pos(pos) != -1) {
-		throw util::Error("requested tile (%jd, %jd) that's not on this terrain chunk.", (intmax_t) pos.ne, (intmax_t) pos.se);
+		throw util::Error(MSG(err) << "Tile "
+			"(" << pos.ne << ", " << pos.se << ") "
+			"has been requested, but is not part of this chunk.");
 	}
 
 	return pos.se * chunk_size + pos.ne;

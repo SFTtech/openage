@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 from openage.util import NamedObject
 
@@ -319,7 +319,7 @@ class ContinueReadMember(NumberMember):
             "} else if (0 == strcmp(buf[%d], \"%s\")) {" % (idx, repr(self.CONTINUE)),
             "\tthis->%s = 1;" % (member),
             "} else {",
-            "\tthrow openage::util::Error(\"unexpected value '%%s' for %s\", buf[%d]);" % (self.__class__.__name__, idx),
+            "\tthrow openage::util::Error(MSG(err) << \"unexpected value '\" << buf[%d] << \"' for %s\");" % (idx, self.__class__.__name__),
             "}",
         )
 
@@ -357,7 +357,7 @@ class EnumMember(RefMember):
 
         enum_parser.extend([
             "else {",
-            "\tthrow openage::util::Error(\"unknown enum value '%%s' encountered. valid are: %s\\n---\\nIf this is an inconsistency due to updates in the media converter, `make media` should fix it\\n---\", buf[%d]);" % (",".join(self.values), idx),
+            "\tthrow openage::util::Error(MSG(err) << \"unknown enum value '\" << buf[%d] << \"' encountered. valid are: %s\\n---\\nIf this is an inconsistency due to updates in the media converter, `make media` should fix it\\n---\");" % (idx, ",".join(self.values)),
             "}",
         ])
 
@@ -620,7 +620,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 "	this->index_file.read(basedir); //read ref-file entries\n",
                 "	int subtype_count = this->index_file.data.size();\n"
                 "	if (subtype_count != %s) {\n" % len(self.class_lookup),
-                "		throw openage::util::Error(\"multisubtype index file entry count mismatched! %%d != %d\", subtype_count);\n" % (len(self.class_lookup)),
+                "		throw openage::util::Error(MSG(err) << \"multisubtype index file entry count mismatched! \" << subtype_count << \" != %d\");\n" % (len(self.class_lookup)),
                 "	}\n\n",
                 "	openage::util::Dir new_basedir = basedir.append(openage::util::dirname(this->index_file.filename));\n",
                 "	int idx = -1, idxtry;\n\n",
@@ -639,7 +639,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                     "		idxtry += 1;\n",
                     "	}\n",
                     "	if (idx == -1) {\n",
-                    "		throw openage::util::Error(\"multisubtype index file contains no entry for %s!\");\n" % (entry_name),
+                    "		throw openage::util::Error(MSG(err) << \"multisubtype index file contains no entry for %s!\");\n" % (entry_name),
                     "	}\n",
                     "	this->%s.filename = this->index_file.data[idx].filename;\n" % (entry_name),
                     "	this->%s.read(new_basedir);\n" % (entry_name),

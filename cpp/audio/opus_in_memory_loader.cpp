@@ -6,7 +6,7 @@
 
 #include <opusfile.h>
 
-#include "../log.h"
+#include "../log/log.h"
 #include "../util/error.h"
 
 namespace openage {
@@ -30,16 +30,16 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	opus_file_t op_file{op_open_file(path.c_str(), &op_err), opus_deleter};
 
 	if (op_err != 0) {
-		throw util::Error{"Could not open: %s", path.c_str()};
+		throw util::Error{MSG(err) << "Could not open: " << path};
 	}
 
 	auto op_channels = op_channel_count(op_file.get(), -1);
 	auto pcm_length = op_pcm_total(op_file.get(), -1);
 	// the stream is not seekable
 	if (pcm_length < 0) {
-		throw util::Error{"Opus file is not seekable"};
+		throw util::Error{MSG(err) << "Opus file is not seekable"};
 	}
-	log::dbg("Opus channels=%d, pcm_length=%u", op_channels, static_cast<uint32_t>(pcm_length));
+	log::log(MSG(dbg) << "Opus channels=" << op_channels << ", pcm_length=" << pcm_length);
 
 	// calculate pcm buffer size depending on the number of channels
 	// if the opus file only had one channel, the pcm buffer size must be
@@ -53,7 +53,7 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 		int samples_read = op_read(op_file.get(), &buffer.front()+position,
 				length-position, nullptr);
 		if (samples_read < 0) {
-			throw util::Error{"Failed to read from opus file: errorcode=%d", samples_read};
+			throw util::Error{MSG(err) << "Failed to read from opus file: errorcode=" << samples_read};
 		} else if(samples_read == 0) {
 			break;
 		}
@@ -73,5 +73,4 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	return std::move(buffer);
 }
 
-}
-}
+}} // openage::audio

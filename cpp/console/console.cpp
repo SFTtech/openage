@@ -1,10 +1,10 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "console.h"
 
 #include "draw.h"
 #include "../callbacks.h"
-#include "../log.h"
+#include "../log/log.h"
 #include "../util/error.h"
 #include "../util/strings.h"
 
@@ -36,14 +36,14 @@ Console::Console(std::vector<gamedata::palette_color> &colortable)
 	}
 
 	if (termcolors.size() != 256) {
-		throw util::Error("Exactly 256 terminal colors are required.");
+		throw util::Error(MSG(err) << "Exactly 256 terminal colors are required.");
 	}
 
 	// this better be representative for the width of all other characters
 	charsize.x = ceilf(font.internal_font->Advance("W", 1));
 	charsize.y = ceilf(font.internal_font->LineHeight());
 
-	log::dbg("console font character size: %hdx%hd", charsize.x, charsize.y);
+	log::log(MSG(dbg) << "Console font character size: " << charsize.x << "x" << charsize.y);
 }
 
 Console::~Console () {}

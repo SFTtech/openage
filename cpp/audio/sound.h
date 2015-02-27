@@ -11,6 +11,7 @@
 namespace openage {
 namespace audio {
 
+
 // forward declaration of AudioManager
 class AudioManager;
 
@@ -70,6 +71,7 @@ public:
 	 */
 	bool mix_audio(int32_t *stream, int length);
 };
+
 
 /**
  * A sound object is the direct interface to the user. It provides methods to
@@ -150,7 +152,7 @@ private:
 	friend class AudioManager;
 };
 
-}
-}
+
+}} // namespace openage::audio
 
 #endif

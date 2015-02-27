@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include <unistd.h>
 #include "../crossplatform/pty.h"
@@ -9,7 +9,7 @@
 
 #include "../console/buf.h"
 #include "../console/draw.h"
-#include "../log.h"
+#include "../log/log.h"
 
 namespace openage {
 namespace console {
@@ -46,7 +46,7 @@ void demo(int /* unused */, char ** /* unused */) {
 	int amaster;
 	switch (forkpty(&amaster, nullptr, nullptr, &ws)) {
 	case -1:
-		log::err("fork() failed");
+		log::log(MSG(err) << "fork() failed: " << strerror(errno));
 		throw "fork() failed";
 	case 0: {
 		// we are the child, spawn a shell
@@ -55,7 +55,7 @@ void demo(int /* unused */, char ** /* unused */) {
 			shell = "/bin/sh";
 		}
 		execl(shell, shell, nullptr);
-		log::err("execl(\"%s\", \"%s\", nullptr) failed", shell, shell);
+		log::log(MSG(err) << "execl(\"" << shell << "\", \"" << shell << "\", nullptr) failed: " << strerror(errno));
 		throw "couldn't exec shell";
 	}
 	default:
@@ -160,6 +160,5 @@ void demo(int /* unused */, char ** /* unused */) {
 	termout.puts("\x1b[?25h");
 }
 
-} // namespace tests
-} // namespace console
-} // namespace openage
+
+}}} // namespace openage::console::tests

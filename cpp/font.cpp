@@ -1,10 +1,10 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "font.h"
 
 #include <fontconfig/fontconfig.h>
 
-#include "log.h"
+#include "log/log.h"
 #include "util/error.h"
 #include "util/strings.h"
 #include "coord/camhud.h"
@@ -18,7 +18,7 @@ namespace openage {
 char *get_font_filename(const char *family, const char *style) {
 	//initialize fontconfig
 	if (!FcInit()) {
-		throw util::Error("Failed to initialize fontconfig.");
+		throw util::Error{MSG(err) << "Failed to initialize fontconfig."};
 	}
 
 	//FcPattern *font_pattern = FcNameParse((const unsigned char *)"DejaVu Serif:style=Book");
@@ -27,7 +27,7 @@ char *get_font_filename(const char *family, const char *style) {
 
 	//debug output: display above pattern as parsable string.
 	FcChar8 *query_string = FcNameUnparse(font_pattern);
-	log::dbg2("queried font: %s", query_string);
+	log::log(MSG(info) << "Font queried: " << query_string);
 	free(query_string);
 
 	//tell fontconfig to find the best match
@@ -44,13 +44,13 @@ char *get_font_filename(const char *family, const char *style) {
 	//get attibute FC_FILE (= filename) of best-matched font
 	FcChar8 *font_filename_tmp;
 	if (FcPatternGetString(font_match, FC_FILE, 0, &font_filename_tmp) != FcResultMatch) {
-		throw util::Error("fontconfig could not provide font %s %s", family, style);
+		throw util::Error(MSG(err) << "Fontconfig could not provide font " << family << " " << style);
 	}
 
 	//copy the font filename because it will be freed when the pattern is destroyed.
 	char *font_filename = util::copy((const char *)font_filename_tmp);
 
-	log::dbg2("returning font file %s", font_filename);
+	log::log(MSG(info) << "Font file: " << font_filename);
 
 	//deinitialize fontconfig.
 	FcPatternDestroy(font_match);
@@ -68,13 +68,13 @@ Font::Font(const char *family, const char *style, unsigned size) {
 	if (internal_font->Error()) {
 		delete[] this->font_filename;
 		delete this->internal_font;
-		throw util::Error("Failed to create FTGL texture font from %s", font_filename);
+		throw util::Error(MSG(err) << "Failed to create FTGL texture font from " << font_filename);
 	}
 
 	if (!internal_font->FaceSize(size)) {
 		delete[] this->font_filename;
 		delete this->internal_font;
-		throw util::Error("Failed to set font face size to %u", size);
+		throw util::Error(MSG(err) << "Failed to set font face size to " << size);
 	}
 }
 

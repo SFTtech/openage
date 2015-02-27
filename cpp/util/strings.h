@@ -9,22 +9,26 @@
 #include <functional>
 #include <string>
 #include <memory>
+#include <iomanip>
 
 #include "sstreamcache.h"
 
 namespace openage {
 namespace util {
 
+
 /**
- * stringstream-style to-std::string formatter class for general usage
+ * Stringstream-style to-std::string formatter class for general use.
  */
-class Formatter : public OSStreamPtr {
+class Formatter : OSStreamPtr {
 public:
+	// The following operators allow usage in an iostreams-style manner.
 	template<typename T>
 	Formatter &operator <<(const T &t) {
 		this->stream_ptr->stream << t;
 		return *this;
 	}
+
 
 	template<typename T>
 	Formatter &operator <<(T &(*t)(T &)) {
@@ -35,41 +39,75 @@ public:
 
 
 /**
- * formats fmt to a std::string
+ * Quick-formatter for floats when working with string streams.
+ * Usage: cout << FormatFloat{1.0, 10};
+ */
+template<unsigned decimals, unsigned w=0>
+struct FloatFixed {
+	float value;
+};
+
+
+template<unsigned decimals, unsigned w>
+std::ostream &operator <<(std::ostream &os, FloatFixed<decimals, w> f) {
+	os.precision(decimals);
+	os << std::fixed;
+
+	if (w) {
+		os << std::setw(w);
+	}
+
+	os << f.value;
+
+	return os;
+}
+
+
+template<unsigned divisor, unsigned decimals=3, unsigned w=0>
+struct FixedPoint {
+	int64_t value;
+};
+
+
+template<unsigned divisor, unsigned decimals, unsigned w>
+std::ostream &operator <<(std::ostream &os, FixedPoint<divisor, decimals, w> f) {
+	os << FloatFixed<decimals, w>{((float) f.value) / (float) divisor};
+	return os;
+}
+
+
+/**
+ * Formats fmt to a std::string
  */
 std::string sformat(const char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
 
-/**
- * formats fmt to a newly allocated memory area
- *
- * note that you need to manually free the returned result.
- */
-char *format(const char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
 
 /**
- * same as format, but takes a va_list instead of ...
+ * Same as sformat, but takes va_list instead of ...
+ */
+std::string vsformat(const char *fmt, va_list ap);
+
+
+/**
+ * Formats fmt to a newly allocated memory area.
+ *
+ * Note that you need to manually free the returned result.
+ *
+ * Please use vsformat() instead.
  */
 char *vformat(const char *fmt, va_list ap);
 
 /**
- * formats fmt to a std::string
- */
-std::string sformat(const char *fmt, ...);
-
-/**
- * same as sformat, but takes va_list instead of ...
- */
-std::string vsformat(const char *fmt, va_list ap);
-
-/**
- * makes a copy of the string (up to and including the first null byte).
+ * Makes a copy of the string (up to and including the first null byte).
  *
- * note that you need to manually free both copies.
+ * Note that you need to manually free both copies.
+ *
+ * This method is deprecated for the above reason. Use std::string instead.
  */
 char *copy(const char *s);
 
 /**
- * removes all whitespace characters on the right of the string.
+ * Returns the number of whitespace characters on the right of the string.
  */
 size_t rstrip(char *s);
 

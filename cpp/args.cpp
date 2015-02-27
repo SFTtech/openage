@@ -1,11 +1,12 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "args.h"
 
+#include <iostream>
 #include <getopt.h>
 #include <string.h>
 
-#include "log.h"
+#include "log/log.h"
 #include "util/error.h"
 #include "util/strings.h"
 
@@ -14,22 +15,18 @@
 namespace openage {
 
 void print_usage() {
-	log::msg(
-		PROJECT_NAME " - a free (as in freedom) real time strategy game\n"
-		"\n"
-		"usage:\n"
-		"   " PROJECT_NAME " [OPTION]\n"
-		"available options:\n"
-		"-h, --help                              display this help\n"
-		"-t, --test=NAME                         run test NAME\n"
-		"-d, --demo=NAME [arg [arg [...]]]       run demo NAME\n"
-		"--list-tests                            print a list of all available tests\n"
-		"--version                               print the openage version to the console\n"
-		"--data=FOLDER                           specify the data folder\n"
-		"\n"
-		""
-		"\n\n"
-	);
+	std::cout << PROJECT_NAME " - a free (as in freedom) real time strategy game" << std::endl;
+	std::cout << std::endl;
+	std::cout << "usage:" << std::endl;
+	std::cout << "    " PROJECT_NAME " [OPTION]" << std::endl;
+	std::cout << "available options:" << std::endl;
+	std::cout << "-h, --help                              display this help" << std::endl;
+	std::cout << "-t, --test=NAME                         run test NAME" << std::endl;
+	std::cout << "-d, --demo=NAME [arg [arg [...]]]       run demo NAME" << std::endl;
+	std::cout << "--list-tests                            print a list of all available tests" << std::endl;
+	std::cout << "--version                               print the openage version to the console" << std::endl;
+	std::cout << "--data=FOLDER                           specify the data folder" << std::endl;
+	std::cout << std::endl << std::endl << std::endl;
 }
 
 Arguments::Arguments()
@@ -80,7 +77,7 @@ Arguments parse_args(int argc, char **argv) {
 			if (optarg) {
 				// with arg
 				if (0 == strcmp("data", opt_name)) {
-					log::msg("data folder will be %s", optarg);
+					log::log(MSG(info) << "data folder will be " << optarg);
 					ret.data_directory = optarg;
 				} else {
 					handled = false;
@@ -98,7 +95,7 @@ Arguments parse_args(int argc, char **argv) {
 
 			if (not handled) {
 				ret.error_occured = true;
-				throw util::Error("internal error: argument %s registered but unhandled", opt_name);
+				throw util::Error(MSG(err) << "Internal error: argument registered but unhandled: " << opt_name);
 			}
 
 			break;
@@ -114,7 +111,7 @@ Arguments parse_args(int argc, char **argv) {
 
 		case 'd':
 			if (ret.demo_specified) {
-				throw util::Error("--demo may be used only once");
+				throw util::Error(MSG(err) << "--demo may be used only once");
 			}
 
 			ret.demo_specified = true;
@@ -127,12 +124,15 @@ Arguments parse_args(int argc, char **argv) {
 		case '?':
 			print_usage();
 			ret.error_occured = true;
-			throw util::Error("unknown argument: %s", ret.argv[optind - 1]);
+			throw util::Error(MSG(err) << "Unknown argument: " << ret.argv[optind - 1]);
 			break;
 
 		default:
 			ret.error_occured = true;
-			throw util::Error("getopt returned code 0x%02x, wtf?", c);
+			throw util::Error(MSG(err) <<
+				"getopt returned code 0x" <<
+				std::setw(2) << std::hex << c << ", wtf?");
+
 			break;
 		}
 	}
@@ -140,8 +140,9 @@ Arguments parse_args(int argc, char **argv) {
 	if (optind < ret.argc and not aborted) {
 		//more arguments than processed options
 		ret.error_occured = true;
-		throw util::Error("%d unknown additional arguments, starting with %s",
-		                  ret.argc - optind, ret.argv[optind]);
+		throw util::Error(MSG(err) <<
+			(ret.argc - optind) << " unknown additional arguments, starting with " <<
+			ret.argv[optind]);
 	}
 
 	return ret;

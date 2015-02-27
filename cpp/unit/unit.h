@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "../log/logsource.h"
 #include "../coord/phys3.h"
 #include "../handlers.h"
 #include "ability.h"
@@ -24,7 +25,7 @@ class UnitAction;
  * since this class represents both unit and building objects it may be better to
  * name as GameObject
  */
-class Unit {
+class Unit : public log::LogSource {
 public:
 	Unit(UnitContainer *c, id_t id);
 	virtual ~Unit();
@@ -115,6 +116,10 @@ public:
 	 */
 	UnitReference get_ref();
 
+	/**
+	 * Returns the unit's name as the LogSource name.
+	 */
+	virtual std::string logsource_name();
 private:
 	/**
 	 * ability available -- actions that this entity

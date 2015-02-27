@@ -17,15 +17,12 @@ add_sources(${PROJECT_NAME}
 	font.cpp
 	handlers.cpp
 	input.cpp
-	log.cpp
 	python.cpp
 	screenshot.cpp
 	texture.cpp
 
 	config.cpp
 )
-
-add_test_cpp(openage::logging::test::test "tests the logging")
 
 
 # add subsystem folders
@@ -34,7 +31,7 @@ add_subdirectory("console")
 add_subdirectory("coord")
 add_subdirectory("crossplatform")
 add_subdirectory("datastructure")
-add_subdirectory("logging")
+add_subdirectory("log")
 add_subdirectory("job")
 add_subdirectory("pathfinding")
 add_subdirectory("shader")

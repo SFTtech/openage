@@ -10,6 +10,7 @@ add_sources(${PROJECT_NAME}
 	opengl.cpp
 	sstreamcache.cpp
 	strings.cpp
+	thread_id.cpp
 	timer.cpp
 	unicode.cpp
 )

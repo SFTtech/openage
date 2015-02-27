@@ -10,11 +10,13 @@
 
 namespace openage {
 
+
 UnitReference::UnitReference()
 	:
 	container{nullptr},
 	unit_id{0},
 	unit_ptr{nullptr} {}
+
 
 UnitReference::UnitReference(const UnitContainer *c, id_t id, Unit *u)
 	:
@@ -22,17 +24,20 @@ UnitReference::UnitReference(const UnitContainer *c, id_t id, Unit *u)
 	unit_id{id},
 	unit_ptr{u} {}
 
+
 bool UnitReference::is_valid() const {
 	return this->container && this->unit_ptr &&
 		this->container->valid_id(this->unit_id);
 }
 
+
 Unit *UnitReference::get() const {
 	if (!this->is_valid()) {
-		throw util::Error{"unit reference is no longer valid"};
+		throw util::Error{MSG(err) << "Unit reference is no longer valid"};
 	}
 	return this->unit_ptr;
 }
+
 
 UnitContainer::UnitContainer()
 	:
@@ -40,12 +45,15 @@ UnitContainer::UnitContainer()
 
 }
 
+
 UnitContainer::~UnitContainer() {
 }
+
 
 bool UnitContainer::valid_id(id_t id) const {
 	return (this->live_units.count(id) > 0);
 }
+
 
 UnitReference UnitContainer::get_unit(id_t id) {
 	if (this->valid_id(id)) {
@@ -55,6 +63,7 @@ UnitReference UnitContainer::get_unit(id_t id) {
 		return UnitReference(this, id, nullptr);
 	}
 }
+
 
 bool UnitContainer::new_unit(UnitProducer& producer, Terrain *terrain,
                              coord::tile tile) {
@@ -70,9 +79,11 @@ bool UnitContainer::new_unit(UnitProducer& producer, Terrain *terrain,
 	return placed;
 }
 
+
 bool dispatch_command(id_t, const Command &) {
 	return true;
 }
+
 
 bool UnitContainer::on_tick() {
 	// update everything and find objects with no actions
@@ -91,5 +102,6 @@ bool UnitContainer::on_tick() {
 	}
 	return true;
 }
+
 
 } // namespace openage

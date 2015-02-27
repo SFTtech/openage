@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 from openage.log import dbg
 
@@ -44,7 +44,9 @@ class DataFormatter:
 \tint count = openage::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
 
 \tif (count != $member_count) {
-\t\tthrow openage::util::Error("tokenizing $struct_name led to %d columns (expecting %zu)!", count, $member_count);
+\t\tthrow openage::util::Error(MSG(err) <<
+\t\t\t"Tokenizing $struct_name led to " << count << " columns ("
+\t\t\t"expected " << $member_count << ")!");
 \t}
 
 $parsers

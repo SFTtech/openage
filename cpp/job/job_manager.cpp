@@ -2,11 +2,12 @@
 
 #include "job_manager.h"
 
-#include "thread_id.h"
-#include "../log.h"
+#include "../util/thread_id.h"
+#include "../log/log.h"
 
 namespace openage {
 namespace job {
+
 
 JobManager::JobManager(int number_of_workers)
 	:
@@ -19,9 +20,11 @@ JobManager::JobManager(int number_of_workers)
 	}
 }
 
+
 JobManager::~JobManager() {
 	this->stop();
 }
+
 
 void JobManager::start() {
 	// if the workers have not been started, start them now
@@ -30,10 +33,10 @@ void JobManager::start() {
 		for (auto &worker : this->workers) {
 			worker->start();
 		}
-		log::msg("Started JobManager with %d worker threads",
-		         this->number_of_workers);
+		log::log(MSG(info) << "Started JobManager with " << this->number_of_workers << " worker threads");
 	}
 }
+
 
 void JobManager::stop() {
 	// set is_running to false, notify and join all workers
@@ -45,13 +48,14 @@ void JobManager::stop() {
 		for (auto &worker : this->workers) {
 			worker->join();
 		}
-		log::msg("Stopped JobManager with %d worker threads",
-		         this->number_of_workers);
+
+		log::log(MSG(info) << "Stopped JobManager with " << this->number_of_workers << " worker threads");
 	}
 }
 
+
 void JobManager::execute_callbacks() {
-	unsigned id = thread_id.id;
+	unsigned id = util::current_thread_id.val;
 
 	std::unique_lock<std::mutex> lock{this->finished_jobs_mutex};
 	auto it = this->finished_jobs.find(id);
@@ -66,11 +70,13 @@ void JobManager::execute_callbacks() {
 	}
 }
 
+
 JobGroup JobManager::create_job_group() {
 	auto index = this->group_index;
 	this->group_index = (this->group_index + 1) % this->number_of_workers;
 	return JobGroup{this->workers[index].get()};
 }
+
 
 void JobManager::enqueue_state(std::shared_ptr<JobStateBase> state) {
 	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
@@ -79,6 +85,7 @@ void JobManager::enqueue_state(std::shared_ptr<JobStateBase> state) {
 		worker->notify();
 	}
 }
+
 
 std::shared_ptr<JobStateBase> JobManager::fetch_job() {
 	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
@@ -91,10 +98,12 @@ std::shared_ptr<JobStateBase> JobManager::fetch_job() {
 	return job;
 }
 
+
 bool JobManager::has_job() {
 	std::unique_lock<std::mutex> lock(this->pending_jobs_mutex);
 	return not this->pending_jobs.empty();
 }
+
 
 void JobManager::finish_job(std::shared_ptr<JobStateBase> job) {
 	std::unique_lock<std::mutex> lock{this->finished_jobs_mutex};
@@ -109,5 +118,5 @@ void JobManager::finish_job(std::shared_ptr<JobStateBase> job) {
 	}
 }
 
-}
-}
+
+}} // namespace openage::job

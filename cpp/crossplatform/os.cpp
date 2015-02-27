@@ -14,7 +14,7 @@
 #include <mach-o/dyld.h>
 #endif
 
-#include "../log.h"
+#include "../log/log.h"
 #include "subprocess.h"
 
 namespace openage {
@@ -33,7 +33,7 @@ std::string read_symlink(const char *path) {
 		ssize_t len = readlink(path, buf.get(), bufsize);
 
 		if (len < 0) {
-			log::err("could not read link '%s'", path);
+			log::log(MSG(err) << "could not read link " << path);
 			return "";
 		}
 
@@ -89,7 +89,7 @@ int execute_file(const char *path, bool background) {
 			}
 		#endif
 		if (runner.size() == 0) {
-			log::err("could not locate file-opener");
+			log::log(MSG(err) << "could not locate file-opener");
 			return -1;
 		}
 

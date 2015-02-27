@@ -2,14 +2,13 @@
 
 #include "terrain.h"
 
-#include <cinttypes>
 #include <memory>
 #include <set>
 #include <unordered_map>
 
 #include "terrain_chunk.h"
 #include "../engine.h"
-#include "../log.h"
+#include "../log/log.h"
 #include "../texture.h"
 #include "../coord/camgame.h"
 #include "../coord/chunk.h"
@@ -54,8 +53,9 @@ Terrain::Terrain(AssetManager &assetmanager,
 	this->influences_buf           = std::make_unique<struct influence[]>(this->terrain_id_count);
 
 
-	log::dbg("terrain prefs: %zu tiletypes, %zu blendmodes",
-	         this->terrain_id_count, this->blendmode_count);
+	log::log(MSG(dbg) << "Terrain prefs: " <<
+		"tiletypes=" << this->terrain_id_count << ", "
+		"blendmodes=" << this->blendmode_count);
 
 	// create tile textures (snow, ice, grass, whatever)
 	for (size_t i = 0; i < this->terrain_id_count; i++) {
@@ -117,7 +117,7 @@ void Terrain::attach_chunk(TerrainChunk *new_chunk,
                            bool manually_created) {
 	new_chunk->set_terrain(this);
 	new_chunk->manually_created = manually_created;
-	log::dbg("inserting new chunk at (%02d,%02d)", position.ne, position.se);
+	log::log(MSG(dbg) << "Inserting new chunk at (" << position.ne << "," << position.se << ")");
 	this->chunks[position] = new_chunk;
 
 	struct chunk_neighbors neigh = this->get_chunk_neighbors(position);
@@ -131,10 +131,10 @@ void Terrain::attach_chunk(TerrainChunk *new_chunk,
 			//to the new chunk
 			neighbor->neighbors.neighbor[(i+4) % 8] = new_chunk;
 
-			log::dbg("neighbor %d gets notified of new neighbor.", i);
+			log::log(MSG(dbg) << "Neighbor " << i << " gets notified of new neighbor.");
 		}
 		else {
-			log::dbg("neighbor %d not found.", i);
+			log::log(MSG(dbg) << "Neighbor " << i << " not found.");
 		}
 	}
 }
@@ -178,7 +178,7 @@ TileContent *Terrain::get_data(coord::tile position) {
 
 bool Terrain::validate_terrain(terrain_t terrain_id) {
 	if (terrain_id >= (ssize_t)this->terrain_id_count) {
-		throw util::Error("requested terrain_id is out of range: %d", terrain_id);
+		throw util::Error(MSG(err) << "Requested terrain_id is out of range: " << terrain_id);
 	}
 	else {
 		return true;
@@ -187,7 +187,7 @@ bool Terrain::validate_terrain(terrain_t terrain_id) {
 
 bool Terrain::validate_mask(ssize_t mask_id) {
 	if (mask_id >= (ssize_t)this->blendmode_count) {
-		throw util::Error("requested mask_id is out of range: %" PRIiPTR, static_cast<intptr_t>(mask_id));
+		throw util::Error(MSG(err) << "Requested mask_id is out of range: " << mask_id);
 	}
 	else {
 		return true;

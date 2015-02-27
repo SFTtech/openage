@@ -1,8 +1,8 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
-#include "../log.h"
+#include "../log/log.h"
 #include "../datastructure/doubly_linked_list.h"
 #include "../datastructure/pairing_heap.h"
 
@@ -153,7 +153,7 @@ void pairing_heap() {
 
 	return;
 out:
-	log::err("%s failed at stage %d", testname, ret);
+	log::log(MSG(err) << testname << " failed at stage " << ret);
 	throw "failed pairing heap tests";
 }
 
@@ -203,7 +203,7 @@ void doubly_linked_list() {
 	return;
 
 out:
-	log::err("linked list test failed at stage %d", stage);
+	log::log(MSG(err) << "linked list test failed at stage " << stage);
 	throw "linked lisst test failed";
 }
 

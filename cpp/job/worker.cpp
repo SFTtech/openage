@@ -2,12 +2,12 @@
 
 #include "job_aborted_exception.h"
 #include "job_manager.h"
-#include "thread_id.h"
 #include "worker.h"
-#include "../log.h"
+
 
 namespace openage {
 namespace job {
+
 
 Worker::Worker(JobManager *manager)
 	:
@@ -15,15 +15,18 @@ Worker::Worker(JobManager *manager)
 	is_running{false} {
 }
 
+
 void Worker::start() {
 	this->is_running.store(true);
 	this->executor.reset(new std::thread{&Worker::process, this});
 }
 
+
 void Worker::stop() {
 	this->is_running.store(false);
 	this->notify();
 }
+
 
 void Worker::enqueue(std::shared_ptr<JobStateBase> job) {
 	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
@@ -31,13 +34,16 @@ void Worker::enqueue(std::shared_ptr<JobStateBase> job) {
 	this->notify();
 }
 
+
 void Worker::notify() {
 	this->jobs_available.notify_all();
 }
 
+
 void Worker::join() {
 	this->executor->join();
 }
+
 
 void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
 	auto should_abort = [this]() {
@@ -51,6 +57,7 @@ void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
 		this->manager->finish_job(job);
 	}
 }
+
 
 void Worker::process() {
 	// as long as this worker thread is running repeat all steps
@@ -98,5 +105,5 @@ void Worker::process() {
 	}
 }
 
-}
-}
+
+}} // namespace openage::job
