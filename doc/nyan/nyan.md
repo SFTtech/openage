@@ -62,7 +62,7 @@ of sets and not of bags. Therefore no duplicates are allowed within a set and no
 order is guaranteed. For each attribute a default value can be specified after
 the attribute type separated by an equals sign.
 
-### nyan interfaces
+### nyanspec - nyan interfaces definition
 
 A nyan set can store objects of heterogeneous types thanks to implicit interface.
 A nyan interface is simply a nyan type that define a minimum set of attributes
@@ -95,14 +95,14 @@ implementation of the ABILITY interface :
     	int : construction_speed
     }
 
-### Runtime deltas
+### nyanspec - Runtime deltas declaration
 
 Currently we are able to define nyan types that consist of named attributes and
 dynamic attributes. Thus we are able to define types with static attribute
 values and relations. But this is not always the case in **openage**.
 Ingame technologies should have the ability to update other nyan objects
 attributes during runtime. For example the _loom_ technology should update the
-_villager_'s health points. Those so called _runtime-deltas_ can be specified in
+_villager_'s health points. Those so called _runtime-deltas_ can be declared in
 the **nyanspec** the following way:
 
     TECHNOLOGY {
@@ -124,7 +124,7 @@ In contrast to the **nyanspec**, which describes all existing types, their
 relations and attributes, the nyan data files, describe the concrete nyan
 objects. Nyan data files have the file extension `*.nyan`.
 
-### Basic object definition
+### nyan - Basic object definition
 
 All objects that are defined in nyan data files must be of a type defined in the
 **nyanspec**. Hereafter we will use the following **nyanspec** as a base for all
@@ -132,7 +132,17 @@ nyan data files.
 
     ABILITY {
     	description : string,
-    	...
+    }
+    
+    MOVE_ABILITY {
+    	description : string,
+    	speed : float
+    }
+    
+    FIGHT_ABILITY {
+    	description : string,
+    	damage : int,
+    	ranged : bool
     }
     
     UNITTYPE {
@@ -147,12 +157,12 @@ nyan data files.
 
 Firstly we define a few abilites and a unit type that makes use of them.
 
-    +ABILITY MOVE {
+    +MOVE_ABILITY MOVE {
     	description = "Allows units to move.",
     	speed = 10.0
     }
     
-    +ABILITY FIGHT {
+    +FIGHT_ABILITY FIGHT {
     	description = "Allows units to fight.",
     	damage = 20,
     	ranged = false
@@ -162,7 +172,7 @@ Firstly we define a few abilites and a unit type that makes use of them.
     	health_points = 50,
     	abilites = [ MOVE, FIGHT ]
     }
-
+    
 New objects can be introduced using the `+`-operator combined with the object's
 nyan type. Each object must have a unique name within the whole nyan context
 (which will be explained later). Attribute values are assigned using `=` with a
@@ -177,19 +187,39 @@ built-in types look like the following:
 Sets are defined using brackets. Values within the set are separated by commas.
 
 ### Anonymous object definition
+TODO: Do we really need this? Why?
 
-### Runtime-delta definition
+### nyan - Delta definition
+The syntax used to defined deltas is very simple. A delta is an overlay over an pre-existring objects.
+Suppose that a VILLAGER object is defined (with variaous attributes and values). To define a delta that updates the villager properties, we need to refer to the previously defined VILLAGER object with the following syntax using the @ character :
+@UNIT VILLAGER {
+	health_points *= 1.1
+}
 
-### Delta definition and application
+The previous definition defines a delta over the VILLAGER object that increase the villager health_points by 10%. This delta would be applied at the game initialization.
+
+### nyan - Runtime-delta definition
+A runtime-delta is simply a delta that is defined inside the scope of another object (typically a technology object). The game runtime can then decides when to apply the delta associated with a particular object.
+The following example defines the LOOM technology that upgrades the VILLAGER objects healh_points attribute :
++TECHNOLOGY LOOM {
+	name = "Loom"
+	@UNIT VILLAGER {
+		health_points = 50
+	}
+}
 
 nyanspec compiler
 -----------------
+The nyanspec compiler is used to generate C++ code from a nyanspec file. The generated C++ code consists of structs and parsers associated with the nyan types defined in the nyanspec file. The nyanspec compiler itself is written in Python and resides in py/openage/nyan.
 
-Using the generated code
+Using the generated code with _libnyan_
 ------------------------
+The generated C++ code is used by openage to parse the nyan files and to create an in-memory game data model. libnyan is written in C++, it manages and combines all the informations contained in the game data model. During the game, libnyan is queried by the game engine and can be considered as a _view_ over the game data model.
 
 Questions
 ---------
 
 Why is there no inheritance between nyan types? This would avoid redefining same
 attributes for multiple types.
+
+Why not generate the nyanspec and nyan files directly by the convert script ? Then generate the associated C++ code (structs and parsers) used by libnyan ?
