@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "audio_manager.h"
 
@@ -17,16 +17,14 @@ namespace audio {
 
 void global_audio_callback(void *userdata, uint8_t *stream, int len);
 
-AudioManager::AudioManager(int freq, SDL_AudioFormat format, uint8_t channels,
-		uint16_t samples)
-		:
-		AudioManager{"", freq, format, channels, samples} {
+AudioManager::AudioManager()
+	:
+	AudioManager{""} {
 }
 
-AudioManager::AudioManager(const std::string &device_name, int freq,
-		SDL_AudioFormat format, Uint8 channels, Uint16 samples)
-		:
-		device_name{device_name} {
+AudioManager::AudioManager(const std::string &device_name)
+	:
+	device_name{device_name} {
 
 	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
 		throw util::Error("SDL audio initialization: %s", SDL_GetError());
@@ -37,10 +35,10 @@ AudioManager::AudioManager(const std::string &device_name, int freq,
 	//set desired audio output format
 	SDL_AudioSpec desired_spec;
 	SDL_zero(desired_spec);
-	desired_spec.freq = freq;
-	desired_spec.format = format;
-	desired_spec.channels = channels;
-	desired_spec.samples = samples;
+	desired_spec.freq = 48000;
+	desired_spec.format = AUDIO_S16LSB;
+	desired_spec.channels = 2;
+	desired_spec.samples = 4096;
 	desired_spec.callback = global_audio_callback;
 	desired_spec.userdata = this;
 

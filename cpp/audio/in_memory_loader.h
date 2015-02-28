@@ -1,9 +1,10 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_AUDIO_IN_MEMORY_LOADER_H_
 #define OPENAGE_AUDIO_IN_MEMORY_LOADER_H_
 
 #include <memory>
+#include <string>
 #include <tuple>
 
 #include "format.h"
@@ -42,20 +43,9 @@ public:
 	 * @param format the resource's audio format
 	 */
 	static std::unique_ptr<InMemoryLoader> create(const std::string &path,
-			format_t format);
+	                                              format_t format);
 };
 
-/**
- * A OpusInMemoryLoader load's opus encoded data.
- */
-class OpusInMemoryLoader : public InMemoryLoader {
-public:
-	OpusInMemoryLoader(const std::string &path);
-	virtual ~OpusInMemoryLoader() = default;
-
-	virtual pcm_data_t get_resource();
-};
-	
 }
 }
 

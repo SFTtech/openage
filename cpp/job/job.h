@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_JOB_JOB_H_
 #define OPENAGE_JOB_JOB_H_
@@ -7,48 +7,56 @@
 #include <exception>
 #include <memory>
 
-#include "job_state.h"
+#include "typed_job_state_base.h"
 
 namespace openage {
 namespace job {
 
+class JobGroup;
 class JobManager;
 
 /**
- * A Job is a wrapper around a shared job state object and is returned by the
- * JobManager. It can be used to retrieve the current state of the Job and its
+ * A job is a wrapper around a shared job state object and is returned by the
+ * job manager. It can be used to retrieve the current state of the job and its
  * result.
- * A Job is a lightweight object which only contains a pointer to its internal
+ * A job is a lightweight object which only contains a pointer to its internal
  * shared state. Thus it can be copied around without worrying about
- * performance. Further it is not necessary to create or pass pointers to Job
+ * performance. Further it is not necessary to create or pass pointers to job
  * objects.
  *
- * @param T the type that is returned by the Job
+ * @param T the job's result type
  */
 template<class T>
 class Job {
 private:
-	/** A shared pointer to the Job's shared state. */
-	std::shared_ptr<JobState<T>> state;
+	/** A shared pointer to the job's shared state. */
+	std::shared_ptr<TypedJobStateBase<T>> state;
 
 public:
-	/* Creates an empty Job object that is not bound to any state. */
+	/**
+	 * Creates an empty job object that is not bound to any state. Should only
+	 * be used as dummy object.
+	 */
 	Job() = default;
 
-	/** Returns whether this Job has finished. */
+	/**
+	 * Returns whether this job has finished. If this job wrapper has no
+	 * assigned background job, true will be returned.
+	 */
 	bool is_finished() const {
 		if (this->state) {
 			return this->state->finished.load();
 		}
-		return false;
+		return true;
 	}
 
 	/**
-	 * Returns this Job's result if the background execution was successful. If
+	 * Returns this job's result if the background execution was successful. If
 	 * an exception has happened, it will be rethrown. This method must not be
-	 * called, if the Job's execution has not yet finished.
+	 * called, if the job's execution has not yet finished.
 	 */
 	T get_result() {
+		assert(this->state);
 		assert(this->state->finished.load());
 		if (this->state->exception != nullptr) {
 			std::rethrow_exception(this->state->exception);
@@ -59,18 +67,19 @@ public:
 
 private:
 	/**
-	 * Creates a Job with the given shared state. This method may only be called
-	 * by the JobManager.
+	 * Creates a job with the given shared state. This method may only be called
+	 * by the job manager.
 	 */
-	Job(std::shared_ptr<JobState<T>> state)
-			:
-			state{state} {
+	Job(std::shared_ptr<TypedJobStateBase<T>> state)
+		:
+		state{state} {
 	}
 
 	/*
-	 * JobManager has to be a friend of Job in order to access the private
-	 * constructor.
+	 * Job manager and job group have to be friends of job in order to access the
+	 * private constructor.
 	 */
+	friend class JobGroup;
 	friend class JobManager;
 };
 
