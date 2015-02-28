@@ -19,7 +19,7 @@ The foundation of **openage**:
 
 Technology     | Component
 ---------------|----------
-**C++11**      | Engine core
+**C++14**      | Engine core
 **Python**     | Scripting, media conversion, in-game console, code generation
 **CMake**      | Build system
 **OpenGL2.1**  | Rendering, shaders
@@ -134,7 +134,7 @@ To prevent accidential violation of one of those guidelines, you should *never*
 * [learn git](http://git-scm.com/book/en/Git-Basics)
 * [fork the repo](https://help.github.com/articles/fork-a-repo)
 * [learn python](http://docs.python.org/3/tutorial/appetite.html)
-* [learn c++11](http://www.cplusplus.com/doc/tutorial/)
+* [learn c++14](http://www.cplusplus.com/doc/tutorial/)
 * read the code and documentation
 * contribute anything to the code
 * [contact us](#contact)

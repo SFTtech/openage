@@ -5,32 +5,43 @@
 #TODO: integrate PGO (profile-guided optimization) build
 
 function(cpp_init)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -std=c++11 -D__STDC_FORMAT_MACROS")
-	if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-		# suppress useless warnings about using struct hash as friend class hash
-		# which occur with older stdlib versions, like the one used by travis
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-mismatched-tags")
-	endif()
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -D__STDC_FORMAT_MACROS")
 
 	function(require_cxx_version CXXNAME MINIMAL)
 		if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MINIMAL})
-			message(FATAL_ERROR ">=${CXXNAME}-${MINIMAL} required (c++11, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
+			message(FATAL_ERROR ">=${CXXNAME}-${MINIMAL} required (c++14, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
 		endif()
 	endfunction()
 
-	function(set_cxx_versioned_flags CXXNAME MINIMAL FLAGS)
-		if(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MINIMAL})
-			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${FLAGS}" PARENT_SCOPE)
+
+	macro(set_cxx_version_flags MINIMAL FLAGS INVERS EQTYPE)
+		if(${INVERS} CMAKE_CXX_COMPILER_VERSION "VERSION_${EQTYPE}" ${MINIMAL})
+			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${FLAGS}")
 		endif()
-	endfunction()
+	endmacro()
+
+	macro(set_cxx_greater_flags MINIMAL FLAGS)
+		set_cxx_version_flags(${MINIMAL} ${FLAGS} "NOT" "LESS")
+	endmacro()
+
+	macro(set_cxx_equal_flags MINIMAL FLAGS)
+		set_cxx_version_flags(${MINIMAL} ${FLAGS} "" "EQUAL")
+	endmacro()
+
+	macro(set_cxx_flags FLAGS)
+		set_cxx_version_flags("0.0" ${FLAGS} "" "GREATER")
+	endmacro()
 
 	# check for compiler versions
 	if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-		require_cxx_version("gcc" 4.8)
-		set_cxx_versioned_flags("gcc" 4.9 "-fdiagnostics-color=auto")
+		require_cxx_version("gcc" 4.9)
+		set_cxx_flags("-std=c++14")
+		set_cxx_greater_flags(4.9 "-fdiagnostics-color=auto")
 	elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-		require_cxx_version("clang" 3.3)
-		# clang has colors enabled by default, no need to enable it here
+		require_cxx_version("clang" 3.4)
+		set_cxx_flags("-Wno-mismatched-tags")
+		set_cxx_equal_flags(3.4 "-std=c++1y")
+		set_cxx_greater_flags(3.5 "-std=c++14")
 	else() #"Intel", "MSVC", etc..
 		message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 	endif()
@@ -40,7 +51,6 @@ function(cpp_init)
 	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS}" PARENT_SCOPE)
 
 	set(CPP_SOURCE_DIR "${CMAKE_SOURCE_DIR}/cpp" PARENT_SCOPE)
-
 endfunction()
 
 # declare a new 'empty' executable file.

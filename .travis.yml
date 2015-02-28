@@ -10,7 +10,7 @@ compiler:
 before_install:
   - uname -a
   - lsb_release -a
-  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test     # gcc 4.8
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test     # newer
   - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots       # libsdl2
   - sudo add-apt-repository --yes ppa:kubuntu-ppa/backports       # cmake >=2.8.10
   - sudo add-apt-repository --yes ppa:fkrull/deadsnakes           # python3.x
@@ -18,7 +18,7 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - export CVERSION="4.8"
+  - export CVERSION="4.9"
   - export PYVERSION="3.3"
   - sudo apt-get install -qq g++-${CVERSION}; #also needed for newer stdlib
   - if [ "$CXX" = "g++" ]; then export CXX="g++-${CVERSION}" CC="gcc-${CVERSION}"; fi

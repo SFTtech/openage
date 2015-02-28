@@ -47,7 +47,7 @@ Dependency list:
     CR    sdl2_image
     CR    opusfile
       M   opus-tools
-    C     gcc >=4.8 or clang >=3.3
+    C     gcc >=4.9 or clang >=3.4
 
       M   An installed version of any of the following (wine is your friend).
           Other versions _might_ work; setup disk support will be added soon:

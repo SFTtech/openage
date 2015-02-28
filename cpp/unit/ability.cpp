@@ -1,8 +1,10 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+
+#include "ability.h"
+
+#include <memory>
 
 #include "../terrain/terrain_object.h"
-#include "../util/unique.h"
-#include "ability.h"
 #include "action.h"
 #include "unit.h"
 
@@ -23,15 +25,15 @@ bool MoveAbility::can_target(Unit *, Unit *) {
 }
 
 std::unique_ptr<UnitAction> MoveAbility::target(Unit *to_modify, coord::phys3 target) {
-	return util::make_unique<MoveAction>(to_modify, this->tex,
-	                                     this->sound, target);
+	return std::make_unique<MoveAction>(to_modify, this->tex,
+	                                    this->sound, target);
 }
 
 std::unique_ptr<UnitAction> MoveAbility::target(Unit *to_modify, Unit *target) {
 	coord::phys_t radius = (path::path_grid_size * 2) + to_modify->location->min_axis() / 2;
-	return util::make_unique<MoveAction>(to_modify, this->tex,
-	                                     nullptr, target->get_ref(),
-	                                     radius);
+	return std::make_unique<MoveAction>(to_modify, this->tex,
+	                                    nullptr, target->get_ref(),
+	                                    radius);
 }
 
 GatherAbility::GatherAbility(Texture *t, TestSound *s)
@@ -53,8 +55,8 @@ std::unique_ptr<UnitAction> GatherAbility::target(Unit *, coord::phys3) {
 }
 
 std::unique_ptr<UnitAction> GatherAbility::target(Unit *to_modify, Unit *target) {
-	return util::make_unique<GatherAction>(to_modify, target->get_ref(),
-	                                                this->tex, this->sound);
+	return std::make_unique<GatherAction>(to_modify, target->get_ref(),
+	                                      this->tex, this->sound);
 }
 
 AttackAbility::AttackAbility(Texture *t, TestSound *s)
@@ -69,7 +71,7 @@ bool AttackAbility::can_target(Unit *, coord::phys3) {
 }
 
 bool AttackAbility::can_target(Unit *u1, Unit *target) {
-	return u1 != target && 
+	return u1 != target &&
 	       target->has_attribute(attr_type::hitpoints) &&
 	       target->get_attribute<attr_type::hitpoints>().current > 0;
 }
@@ -79,8 +81,8 @@ std::unique_ptr<UnitAction> AttackAbility::target(Unit *, coord::phys3) {
 }
 
 std::unique_ptr<UnitAction> AttackAbility::target(Unit *to_modify, Unit *target) {
-	return util::make_unique<AttackAction>(to_modify, target->get_ref(),
-	                                                 this->tex, this->sound);
+	return std::make_unique<AttackAction>(to_modify, target->get_ref(),
+	                                      this->tex, this->sound);
 }
 
 } /* namespace openage */

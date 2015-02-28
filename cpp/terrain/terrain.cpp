@@ -2,9 +2,10 @@
 
 #include "terrain.h"
 
-#include <unordered_map>
-#include <set>
 #include <cinttypes>
+#include <memory>
+#include <set>
+#include <unordered_map>
 
 #include "terrain_chunk.h"
 #include "../engine.h"
@@ -18,7 +19,6 @@
 #include "../util/error.h"
 #include "../util/misc.h"
 #include "../util/strings.h"
-#include "../util/unique.h"
 
 namespace openage {
 
@@ -49,9 +49,9 @@ Terrain::Terrain(AssetManager &assetmanager,
 	this->blendmode_count          = blending_meta.size();
 	this->textures.reserve(this->terrain_id_count);
 	this->blending_masks.reserve(this->blendmode_count);
-	this->terrain_id_priority_map  = util::make_unique<int[]>(this->terrain_id_count);
-	this->terrain_id_blendmode_map = util::make_unique<int[]>(this->terrain_id_count);
-	this->influences_buf           = util::make_unique<struct influence[]>(this->terrain_id_count);
+	this->terrain_id_priority_map  = std::make_unique<int[]>(this->terrain_id_count);
+	this->terrain_id_blendmode_map = std::make_unique<int[]>(this->terrain_id_count);
+	this->influences_buf           = std::make_unique<struct influence[]>(this->terrain_id_count);
 
 
 	log::dbg("terrain prefs: %zu tiletypes, %zu blendmodes",
