@@ -441,8 +441,6 @@ private:
 
 	bool gamedata_loaded;
 
-	openage::Engine *engine;
-
 };
 
 } //namespace openage
