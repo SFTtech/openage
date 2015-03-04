@@ -6,46 +6,46 @@ A copy of the license can be found in [legal/GPLV3](legal/GPLv3).
 
 _the openage authors_ are:
 
-| Full name                   | aliases                     | E-Mail                           |
-|-----------------------------|-----------------------------|----------------------------------|
-| Jonas Jelten                | TheJJ                       | jj@sft.mx                        |
-| Michael Enßlin              | mic_e                       | michael@ensslin.cc               |
-| Andre Kupka                 | freakout                    | kupka@in.tum.de                  |
-| Frank Schmidt               | gellardo                    | rubiccuber@googlemail.com        |
-| Markus Otto                 | zuntrax                     | otto@fs.tum.de                   |
-| Sascha Vincent Kurowski     | svkurowski                  | svkurowski@gmail.com             |
-| James Mintram               | JimmyJazz                   | jamesmintram@gmail.com           |
-| Martin McGrath              | MartinMcGrath               | mcgrath.martin@gmail.com         |
-| René Kooi                   | goto-bus-stop               | rene@kooi.me                     |
-| Markus Elfring              | elfring                     | elfring@users.sourceforge.net    |
-| Jimmy Berry                 | boombatower                 | jimmy@boombatower.com            |
-| João Roque                  | joaoroque                   | joaoroque@gmail.com              |
-| Julius Michaelis            | jcaesar                     | gitter@liftm.de                  |
-| Matthias Bogad              | delirium, masterofjellyfish | matthias@bogad.at                |
-| Oliver Fawcett-Griffiths    | ollyfg                      | olly@ollyfg.com                  |
-| Ross Murray                 | rossmurray                  | rm@egoorb.com                    |
-| Alexandre Arpin             | AlexandreArpin              | arpin.alexandre@gmail.com        |
-| Henry Snoek                 | snoek09                     | snoek09@gmail.com                |
-| Gabriel Scherer             | gasche                      | gasche.dylc@gmail.com            |
-| Austin Eyler                | awestin1                    | awestin1@gmail.com               |
-| Francisco Demartino         | franciscod                  | demartino.francisco@gmail.com    |
-| Peter Piwowarski            | oldlaptop                   | oldlaptop654@aol.com             |
-| Charles Pigott              | LordAro                     | charlespigott@googlemail.com     |
-| Andrew Eikum                | ColdPie1                    | coldpies@gmail.com               |
-| Michael Sebastiyan          | BugExplorer                 | sebastiyan.michael@outlook.com   |
-| Adam Miartus                | miartad                     | adam.miartus@gmail.com           |
-| Benoît Legat                | blegat                      | benoit.legat@gmail.com           |
-| James Hagborg               | blucoat                     | jameshagborg@gmail.com           |
-| Prashanth Jonnala           | jprashanth                  | prashanth.neo@gmail.com          |
-| Jonathan Remnant            | Jon0                        | jono4728@gmail.com               |
-| Sam Schetterer              | schets                      | samschet@gmail.com               |
-| Georg Kilzer                | leper                       | leper@wildfiregames.com          |
-| Florian Erler               | ethon                       | ethon@ethon.cc                   |
-| Michał Janiszewski          | janisozaur                  | janisozaur+openage@gmail.com     |
-| Lautaro Nahuel De León      | lndl                        | laudleon@gmail.com               |
-| Robin Kreis                 | rkreis                      | r.kreis@uni-bremen.de            |
-| Shion Ryuu                  | shion                       | shionryuu@outlook.com            |
-| Jonas Borchelt              | riotjones                   | jonas.borchelt@gmx.de            |
+| Full name                   | aliases                     | E-Mail                           		|
+|-----------------------------|-----------------------------|---------------------------------------|
+| Jonas Jelten                | TheJJ                       | jj@sft.mx                        		|
+| Michael Enßlin              | mic_e                       | michael@ensslin.cc               		|
+| Andre Kupka                 | freakout                    | kupka@in.tum.de                  		|
+| Frank Schmidt               | gellardo                    | rubiccuber@googlemail.com        		|
+| Markus Otto                 | zuntrax                     | otto@fs.tum.de                   		|
+| Sascha Vincent Kurowski     | svkurowski                  | svkurowski@gmail.com             		|
+| James Mintram               | JimmyJazz                   | jamesmintram@gmail.com           		|
+| Martin McGrath              | MartinMcGrath               | mcgrath.martin@gmail.com         		|
+| René Kooi                   | goto-bus-stop               | rene@kooi.me                     		|
+| Markus Elfring              | elfring                     | elfring@users.sourceforge.net    		|
+| Jimmy Berry                 | boombatower                 | jimmy@boombatower.com            		|
+| João Roque                  | joaoroque                   | joaoroque@gmail.com              		|
+| Julius Michaelis            | jcaesar                     | gitter@liftm.de                  		|
+| Matthias Bogad              | delirium, masterofjellyfish | matthias@bogad.at                		|
+| Oliver Fawcett-Griffiths    | ollyfg                      | olly@ollyfg.com                  		|
+| Ross Murray                 | rossmurray                  | rm@egoorb.com                    		|
+| Alexandre Arpin             | AlexandreArpin              | arpin.alexandre@gmail.com        		|
+| Henry Snoek                 | snoek09                     | snoek09@gmail.com                		|
+| Gabriel Scherer             | gasche                      | gasche.dylc@gmail.com            		|
+| Austin Eyler                | awestin1                    | awestin1@gmail.com               		|
+| Francisco Demartino         | franciscod                  | demartino.francisco@gmail.com    		|
+| Peter Piwowarski            | oldlaptop                   | oldlaptop654@aol.com             		|
+| Charles Pigott              | LordAro                     | charlespigott@googlemail.com     		|
+| Andrew Eikum                | ColdPie1                    | coldpies@gmail.com               		|
+| Michael Sebastiyan          | BugExplorer                 | sebastiyan.michael@outlook.com   		|
+| Adam Miartus                | miartad                     | adam.miartus@gmail.com           		|
+| Benoît Legat                | blegat                      | benoit.legat@gmail.com           		|
+| James Hagborg               | blucoat                     | jameshagborg@gmail.com           		|
+| Prashanth Jonnala           | jprashanth                  | prashanth.neo@gmail.com          		|
+| Jonathan Remnant            | Jon0                        | jono4728@gmail.com               		|
+| Sam Schetterer              | schets                      | samschet@gmail.com               		|
+| Georg Kilzer                | leper                       | leper@wildfiregames.com          		|
+| Florian Erler               | ethon                       | ethon@ethon.cc                   		|
+| Michał Janiszewski          | janisozaur                  | janisozaur+openage@gmail.com     		|
+| Lautaro Nahuel De León      | lndl                        | laudleon@gmail.com               		|
+| Robin Kreis                 | rkreis                      | r.kreis@uni-bremen.de            		|
+| Shion Ryuu                  | shion                       | shionryuu@outlook.com                 |
+| Jonas Borchelt              | riotjones                   | jonasbr-github@bellatrix.uberspace.de |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
