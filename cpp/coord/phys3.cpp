@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #define GEN_IMPL_PHYS3_CPP
 #include "phys3.h"
