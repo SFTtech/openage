@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 
 class NamedObject:
@@ -48,3 +48,66 @@ def gen_dict_key2lists(keys):
             ([list() for _ in range(len(keys))])
         )
     )
+
+
+def ifilename(directory, name):
+    """\
+    returns the case-sensitive filename in a directory
+    for a given case-insensitive filename.
+
+    because some operating systems had the great idea to have case insensitive
+    filenames, this function will find the correct case for
+    a file of any case.
+    """
+
+    import os
+
+    # get actual file names
+    files = os.listdir(directory)
+
+    # create idx->filename dict
+    idxmap = dict(enumerate(files))
+
+    # create filename.lower() -> idx dict
+    filemap = {v.lower(): k for k, v in idxmap.items()}
+
+    # find the lowercase match that we know
+    try:
+        idx = filemap[name.lower()]
+    except KeyError:
+        raise FileNotFoundError(
+            "could not find '%s' in '%s' case-insensitively" %
+            (name.lower(), directory)
+        ) from None
+
+    # and return the whatever-case actual existing filename
+    return idxmap[idx]
+
+
+def ifilepath(basepath, path, test=False):
+    """\
+    returns the actual case-sensitive path for a given
+    case-insensitive path.
+
+    basepath must exist case-sensitively of course.
+    """
+
+    import os.path
+
+    # normalize path so no ../ are left
+    path = os.path.normpath(path)
+
+    # split at /
+    parts = path.split(os.path.sep)
+
+    try:
+        for p in parts:
+            realcase = ifilename(basepath, p)
+            basepath = os.path.normpath(os.path.join(basepath, realcase))
+    except FileNotFoundError as e:
+        if not test:
+            raise e from None
+        else:
+            return False
+
+    return basepath
