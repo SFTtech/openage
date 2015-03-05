@@ -1,4 +1,4 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 from binascii import hexlify
 from openage.log import dbg
@@ -49,13 +49,15 @@ class DRS:
     # };
     drs_file_info = Struct(endianness + "i i i")
 
-    def __init__(self, fname):
+    def __init__(self, fname, name):
+        # queried from the outside:
+        self.fname = fname
+        self.name = name
+
         # (extension, id): (data offset, size)
         self.files = {}
 
-        self.fname = fname
-        fname = util.file_get_path(fname, write=False)
-        f = util.file_open(fname, binary=True, write=False)
+        f = open(fname, "rb")
 
         # read header
         buf = f.read(DRS.drs_header.size)

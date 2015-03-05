@@ -1,4 +1,4 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 import zlib
 
@@ -14,14 +14,12 @@ from . import unit
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import SubdataMember
 from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
-from ..util import file_get_path, file_open, file_write
 from openage.log import dbg
 
 
-# this file can parse and represent the empires2_x1_p1.dat file,
-# and also its predecessors, empires2.dat and empires2_x1.dat.
+# this file can parse and represent the empires2_x1_p1.dat file.
 #
-# these files contain all the information needed for running the game.
+# the dat file contain all the information needed for running the game.
 # all units, buildings, terrains, whatever are defined in this dat file.
 #
 # documentation for this can be found in `doc/gamedata`
@@ -33,14 +31,13 @@ class EmpiresDatGzip:
     uncompresses the gzip'd empires dat.
     """
 
-    def __init__(self, datfile_name):
-        self.fname = datfile_name
-        dbg("reading empires2*.dat from %s..." % self.fname, lvl=1)
+    def __init__(self, fname):
+        self.fname = fname
+        dbg("reading empires2*.dat from %s..." % fname, lvl=1)
 
-        filename = file_get_path(self.fname, write=False)
-        f = file_open(filename, binary=True, write=False)
+        f = open(fname, "rb")
 
-        dbg("decompressing data from %s" % filename, lvl=2)
+        dbg("decompressing data from %s" % fname, lvl=2)
 
         compressed_data = f.read()
         # decompress content with zlib (note the magic -15)
@@ -57,14 +54,14 @@ class EmpiresDatGzip:
         dbg("length of compressed data: %d = %d kB" % (self.compressed_size, self.compressed_size / 1024), lvl=2)
         dbg("length of decompressed data: %d = %d kB" % (self.decompressed_size, self.decompressed_size / 1024), lvl=2)
 
-    def raw_dump(self, filename):
+    def raw_dump(self, fname):
         """
         save the dat file in uncompressed format.
         """
 
-        rawfile_writepath = file_get_path(filename, write=True)
-        dbg("saving uncompressed %s file to %s" % (self.fname, rawfile_writepath), 1)
-        file_write(rawfile_writepath, self.content)
+        dbg("saving uncompressed %s file to %s" % (self.fname, fname), 1)
+        with open(fname, "rb") as f:
+            f.write(self.content)
 
 
 class EmpiresDat(Exportable):
