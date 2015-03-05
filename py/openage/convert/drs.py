@@ -30,15 +30,15 @@ class DRS:
     #   char version[4];
     #   char ftype[12];
     #   int table_count;
-    #   int file_offset; //offset of first file
+    #   int file_offset;         // offset of first file
     # };
     drs_header = Struct(endianness + str(copyright_size) + "s 4s 12s i i")
 
     # struct table_info {
     #   char file_type;
-    #   char file_extension[3]; //reversed extension
-    #   int file_info_offset;   //table offset
-    #   int file_count;          //number of files in table
+    #   char file_extension[3];  // reversed extension
+    #   int file_info_offset;    // table offset
+    #   int file_count;          // number of files in table
     # };
     drs_table_info = Struct(endianness + "c 3s i i")
 
@@ -55,7 +55,7 @@ class DRS:
         self.name = name
 
         # (extension, id): (data offset, size)
-        self.files = {}
+        self.files = dict()
 
         f = open(fname, "rb")
 
@@ -63,7 +63,7 @@ class DRS:
         buf = f.read(DRS.drs_header.size)
         self.header = DRS.drs_header.unpack(buf)
 
-        dbg("DRS header [%s]" % (fname), 1, push="drs")
+        dbg("DRS header [%s]" % (name), 1, push="drs")
         dbg("copyright:          %s" % util.zstr(self.header[0]))
         dbg("version:            %s" % util.zstr(self.header[1]))
         dbg("ftype:              %s" % util.zstr(self.header[2]))
@@ -78,7 +78,8 @@ class DRS:
         for i in range(table_count):
             table_header = DRS.drs_table_info.unpack_from(
                 table_header_buf,
-                i * DRS.drs_table_info.size)
+                i * DRS.drs_table_info.size
+            )
 
             file_type, file_extension, file_info_offset,\
                 file_count = table_header
