@@ -1,6 +1,15 @@
 # Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 
+def mkdirs(path):
+    """\
+    just create these dirs recursively
+    """
+
+    import os
+    os.makedirs(path, exist_ok=True)
+
+
 class NamedObject:
     def __init__(self, name, **kw):
         self.name = name

@@ -4,7 +4,7 @@ import math
 import os.path
 from struct import Struct, unpack_from
 
-from ..util import NamedObject
+from ..util import NamedObject, mkdirs
 from .dataformat.exportable import Exportable
 from .dataformat.data_definition import DataDefinition
 from .dataformat.struct_definition import StructDefinition
@@ -250,6 +250,7 @@ class Blendomatic(Exportable):
 
     def save(self, output_folder, save_format):
         for idx, texture in enumerate(self.get_textures()):
+            mkdirs(output_folder)
             fname = os.path.join(output_folder, "mode%02d" % idx)
             dbg("saving blending mode%02d texture -> %s.png" % (idx, fname), 1)
             texture.save(fname, save_format)

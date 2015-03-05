@@ -4,11 +4,7 @@ import os
 import os.path
 
 from openage.log import dbg
-
-
-def mkdirs(path):
-    os.makedirs(path, exist_ok=True)
-
+from openage.util import mkdirs
 
 
 def file_write_multi(file_dict, output_folder=False):
