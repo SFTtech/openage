@@ -1,4 +1,4 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 # media files conversion stuff
 
@@ -10,16 +10,17 @@ import os.path
 import pickle
 import subprocess
 
-from . import filelist
-from . import util
+from .. import util
 from .colortable import ColorTable, PlayerColorTable
 from .dataformat.data_formatter import DataFormatter
 from .drs import DRS
-from .hardcoded import termcolors
+from .hardcoded import termcolors, terrain_tile_size
+from .util import file_write_multi
 from .texture import Texture
 
 
-asset_folder = ""  # TODO: optimize out
+# path of a file where the python structure gets serialized to.
+# speeds up massively as the binary doesn't need to be reparsed.
 dat_cache_file = os.path.join(gettempdir(), "empires2_x1_p1.dat.pickle")
 
 
@@ -61,31 +62,44 @@ class ExtractionRule:
 
 
 def media_convert(args):
+    """\
+    perform asset conversion.
+    requires original assets and stores them in usable and free formats.
+    """
+
     # assume to extract all files when nothing specified.
     if not args.extract:
         args.extract.append('*:*.*')
 
     extraction_rules = [ExtractionRule(e) for e in args.extract]
 
-    # set path in utility class
-    dbg("setting age2 input directory to " + args.srcdir, 1)
-    util.set_read_dir(args.srcdir)
+    dbg("age2 input directory: %s" % (args.srcdir,), 1)
+
+    # soon to be replaced by a sane version detection
+    drsmap = {
+        "graphics":  "graphics.drs",
+        "interface": "interfac.drs",
+        "sounds0":   "sounds.drs",
+        "sounds1":   "sounds_x1.drs",
+        "gamedata0": "gamedata.drs",
+        "gamedata1": "gamedata_x1.drs",
+        "gamedata2": "gamedata_x1_p1.drs",
+        "terrain":   "terrain.drs",
+    }
 
     drsfiles = {
-        "graphics":  DRS("Data/graphics.drs"),
-        "interface": DRS("Data/interfac.drs"),
-        "sounds0":   DRS("Data/sounds.drs"),
-        "sounds1":   DRS("Data/sounds_x1.drs"),
-        "gamedata1": DRS("Data/gamedata_x1.drs"),
-        "gamedata2": DRS("Data/gamedata_x1_p1.drs"),
-        "terrain":   DRS("Data/terrain.drs")
+        k: util.ifilepath(args.srcdir, os.path.join("data", v), True)
+        for k, v in drsmap.items()
     }
 
     # gamedata.drs does not exist in HD edition,
     # but its contents are in gamedata_x1.drs instead,
     # so we can ignore this file if it doesn't exist
-    if os.path.isfile(util.file_get_path("Data/gamedata.drs")):
-        drsfiles["gamedata0"] = DRS("Data/gamedata.drs")
+    drsfiles = {
+        k: DRS(p, drsmap[k])
+        for k, p in drsfiles.items()
+        if p
+    }
 
     # this is the ingame color palette file id,
     # 256 color lookup for all graphics pixels
@@ -102,12 +116,8 @@ def media_convert(args):
     write_enabled = False
 
     if args.output:
-        from .slp import SLP
-
+        dbg("storing files to %s" % args.output, 1)
         write_enabled = True
-
-        dbg("setting write dir to " + args.output, 1)
-        util.set_write_dir(args.output)
 
         player_palette = PlayerColorTable(palette)
 
@@ -119,15 +129,15 @@ def media_convert(args):
 
         # HD Edition has a blendomatic_x1.dat in addition to its new
         # blendomatic.dat blendomatic_x1.dat is the same file as AoK:TC's
-        # blendomatic.dat, and TC does not have blendomatic.dat, so we try
+        # blendomatic.dat, and HD does not have blendomatic.dat, so we try
         # _x1 first and fall back to the AoK:TC way if it does not exist
-        # TODO: replace by sane game version detection.
-        blend_file = "Data/blendomatic_x1.dat"
-        if not os.path.isfile(util.file_get_path(blend_file)):
-            blend_file = "Data/blendomatic.dat"
+        blend_file = util.ifilepath(args.srcdir,
+                                    "data/blendomatic_x1.dat", True)
+        if not blend_file:
+            blend_file = util.ifilepath(args.srcdir, "data/blendomatic.dat")
 
         blend_data = blendomatic.Blendomatic(blend_file)
-        blend_data.save(os.path.join(asset_folder, "blendomatic.dat/"),
+        blend_data.save(os.path.join(args.output, "blendomatic.dat/"),
                         output_formats)
 
         from .stringresource import StringResource
@@ -135,23 +145,23 @@ def media_convert(args):
 
         # AoK:TC uses .DLL files for its string resources,
         # HD uses plaintext files
-        if os.path.isfile(util.file_get_path("language.dll")):
+        lang_dll = util.ifilepath(args.srcdir, "language.dll", True)
+        if lang_dll:
             from .pefile import PEFile
-            stringres.fill_from(PEFile("language.dll"))
-            stringres.fill_from(PEFile("language_x1.dll"))
-            stringres.fill_from(PEFile("language_x1_p1.dll"))
-            # stringres.fill_from(PEFile("Games/Forgotten Empires/Data/"
-            #                            "language_x1_p1.dll"))
+            for l in ["language.dll", "language_x1.dll", "language_x1_p1.dll"]:
+                lpath = util.ifilepath(args.srcdir, l)
+                stringres.fill_from(PEFile(lpath))
+
         else:
             from .hdlanguagefile import HDLanguageFile
-            for lang in os.listdir(util.file_get_path("Bin")):
-                langfile = "Bin/%s/%s-language.txt" % (lang, lang)
+            bindir = util.ifilepath(args.srcdir, "bin")
+            for lang in os.listdir(bindir):
+                langfile = "%s/%s/%s-language.txt" % (bindir, lang, lang)
 
-                # there is some "base language" files in HD that we don't
+                # there are some "base language" files in HD that we don't
                 # need and only the dir for the language that's currently in
                 # use contains a language file
-                if os.path.isdir(util.file_get_path("Bin/%s" % (lang)))\
-                   and os.path.isfile(util.file_get_path(langfile)):
+                if os.path.isfile(langfile):
                     stringres.fill_from(HDLanguageFile(langfile, lang))
 
         # TODO: transform and cleanup the read strings...
@@ -159,7 +169,6 @@ def media_convert(args):
 
         # create the dump for the dat file
         from .gamedata import empiresdat
-        datfile_name = "empires2_x1_p1.dat"
 
         # try to use cached version?
         parse_empiresdat = False
@@ -174,7 +183,10 @@ def media_convert(args):
                 parse_empiresdat = True
 
         if not args.use_dat_cache or parse_empiresdat:
-            datfile = empiresdat.EmpiresDatGzip("Data/%s" % datfile_name)
+            datfile_name = util.ifilepath(args.srcdir,
+                                          os.path.join("data",
+                                                       "empires2_x1_p1.dat"))
+            datfile = empiresdat.EmpiresDatGzip(datfile_name)
             gamedata = empiresdat.EmpiresDatWrapper()
 
             if args.extrafiles:
@@ -215,7 +227,7 @@ def media_convert(args):
 
         # save the meta files
         dbg("saving output data files...", lvl=1)
-        util.file_write_multi(output_data, file_prefix=asset_folder)
+        file_write_multi(output_data, args.output)
 
     file_list = defaultdict(lambda: list())
     media_files_extracted = 0
@@ -235,19 +247,25 @@ def media_convert(args):
 
             # generate output filename where data will be stored in
             if write_enabled:
-                fbase = os.path.join(asset_folder, drsfile.fname, str(file_id))
+                fbase = os.path.join(args.output, "Data",
+                                     drsfile.name, str(file_id))
                 fname = "%s.%s" % (fbase, file_extension)
+
+                # create output folder
+                util.mkdirs(os.path.split(fbase)[0])
 
                 dbg("Extracting to %s..." % (fname), 2)
                 file_data = drsfile.get_file_data(file_extension, file_id)
             else:
                 continue
 
+            # create an image file
             if file_extension == 'slp':
+                from .slp import SLP
                 s = SLP(file_data)
-                out_file_tmp = "%s: %d.%s" % (drsname, file_id, file_extension)
 
-                dbg("%s -> %s -> generating atlas" % (out_file_tmp, fname), 1)
+                dbg("%s: %d.%s -> %s -> generating atlas" % (
+                    drsname, file_id, file_extension, fname), 1)
 
                 # create exportable texture from the slp
                 texture = Texture(s, palette)
@@ -255,28 +273,30 @@ def media_convert(args):
                 # the hotspots of terrain textures have to be fixed:
                 if drsname == "terrain":
                     for entry in texture.image_metadata:
-                        entry["cx"] = 48
-                        entry["cy"] = 24
+                        entry["cx"] = terrain_tile_size.tile_halfsize["x"]
+                        entry["cy"] = terrain_tile_size.tile_halfsize["y"]
 
                 # save the image and the corresponding metadata file
                 texture.save(fname, output_formats)
 
+            # create a sound file
             elif file_extension == 'wav':
                 sound_filename = fname
 
-                wav_output_file = util.file_get_path(fname, write=True)
-                util.file_write(wav_output_file, file_data)
+                dbg("%s: %d.%s -> %s -> storing wav file" % (
+                    drsname, file_id, file_extension, fname), 1)
+
+                with open(fname, "wb") as f:
+                    f.write(file_data)
 
                 if not args.no_opus:
                     file_extension = "opus"
                     sound_filename = "%s.%s" % (fbase, file_extension)
-                    opus_output_file = util.file_get_path(sound_filename,
-                                                          write=True)
 
                     # opusenc invokation (TODO: ffmpeg? some python-lib?)
                     opus_convert_call = ('opusenc',
-                                         wav_output_file,
-                                         opus_output_file)
+                                         fname,
+                                         sound_filename)
                     dbg("opus convert: %s -> %s ..." % (fname,
                                                         sound_filename), 1)
 
@@ -293,12 +313,12 @@ def media_convert(args):
                         dbg(oc_out + "\n" + oc_err, 2)
 
                     # remove extracted original wave file
-                    os.remove(wav_output_file)
+                    os.remove(fname)
 
             else:
                 # format does not require conversion, store it as plain blob
-                output_file = util.file_get_path(fname, write=True)
-                util.file_write(output_file, file_data)
+                with open(fname, "wb") as f:
+                    f.write(file_data)
 
             media_files_extracted += 1
 

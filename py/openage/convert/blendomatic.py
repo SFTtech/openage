@@ -1,14 +1,13 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 import math
 import os.path
 from struct import Struct, unpack_from
 
-from ..util import NamedObject
+from ..util import NamedObject, mkdirs
 from .dataformat.exportable import Exportable
 from .dataformat.data_definition import DataDefinition
 from .dataformat.struct_definition import StructDefinition
-from .util import file_open, file_get_path, file_write
 from openage.log import dbg
 
 endianness = "< "
@@ -199,11 +198,9 @@ class Blendomatic(Exportable):
     blendomatic_header = Struct(endianness + "I I")
 
     def __init__(self, fname):
-        self.fname = fname
         dbg("reading blendomatic data from %s" % fname, 1, push="blendomatic")
 
-        fname = file_get_path(fname, write=False)
-        f = file_open(fname, binary=True, write=False)
+        f = open(fname, "rb")
 
         buf = f.read(Blendomatic.blendomatic_header.size)
         self.header = Blendomatic.blendomatic_header.unpack_from(buf)
@@ -253,6 +250,7 @@ class Blendomatic(Exportable):
 
     def save(self, output_folder, save_format):
         for idx, texture in enumerate(self.get_textures()):
+            mkdirs(output_folder)
             fname = os.path.join(output_folder, "mode%02d" % idx)
             dbg("saving blending mode%02d texture -> %s.png" % (idx, fname), 1)
             texture.save(fname, save_format)

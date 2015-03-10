@@ -1,11 +1,11 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 from collections import defaultdict
 from . import dataformat
 from .hardcoded.langcodes import langcodes
 import os
 from struct import unpack_from, Struct
-from .util import dbg, file_get_path, file_read
+from openage.log import dbg
 
 # PE file
 IMAGE_OPTIONAL_HDR32_MAGIC = 0x010b
@@ -198,8 +198,8 @@ class PEFile:
         self.todefaultcharsetcd = 0
         self.fromdefaultcharsetcd = 0
 
-        fname = file_get_path(fname, write=False)
-        data = file_read(fname, bytes)
+        with open(fname, "rb") as f:
+            data = f.read()
 
         # read DOS header
         dosheader = image_dos_header.unpack_from(data, 0)
