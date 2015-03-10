@@ -1,4 +1,4 @@
-#travis ci config script
+# travis ci config script for openage
 
 
 language: cpp
@@ -45,9 +45,6 @@ after_script:
   - echo test build exited
 
 notifications:
-#  recipients:
-#    - lol@mail.ie
-#    - rofl@liam.ei
   email:
     on_success: change
     on_failure: always
@@ -58,18 +55,3 @@ notifications:
       - "%{repository}/%{branch} (%{commit} - %{author}): %{message}"
     use_notice: true
     skip_join: true
-
-#static analysis with coverty
-env:
-  global:
-   - secure: "CK04R9TuA+gFFMBvyTw0DKbhr8wDnZY5wTTNs5CylArGAyzokHUr7tDRislQdJhvB4QI2rzIEuH3priHdPacl58ftwHL6Zy8tl3ByvUpGoN+XLHHw9TZP1gHK0S9bFwRcZdXyWNxZjudYvJDTbK7IwWuv/+HC2Ie/x161k4qeHc="
-
-#addons:
-#  coverity_scan:
-#    project:
-#      name: "SFTtech/openage"
-#      description: "free age of empires 2 engine"
-#    notification_email: openage+coverty@sft.mx
-#    build_command_prepend: "./configure"
-#    build_command: "make"
-#    branch_pattern: master
