@@ -3,6 +3,10 @@
 #ifndef OPENAGE_JOB_THREAD_ID_H_
 #define OPENAGE_JOB_THREAD_ID_H_
 
+#if defined(__APPLE__) && defined(__clang__)
+  #define thread_local __thread
+#endif
+
 #include <atomic>
 
 namespace openage {

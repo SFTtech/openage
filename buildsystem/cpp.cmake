@@ -15,33 +15,54 @@ function(cpp_init)
 
 
 	macro(set_cxx_version_flags MINIMAL FLAGS INVERS EQTYPE)
-		if(${INVERS} CMAKE_CXX_COMPILER_VERSION "VERSION_${EQTYPE}" ${MINIMAL})
+		if(${INVERS} CMAKE_CXX_COMPILER_VERSION VERSION_${EQTYPE} ${MINIMAL})
 			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${FLAGS}")
 		endif()
 	endmacro()
 
 	macro(set_cxx_greater_flags MINIMAL FLAGS)
-		set_cxx_version_flags(${MINIMAL} ${FLAGS} "NOT" "LESS")
+		set_cxx_version_flags(${MINIMAL} ${FLAGS} NOT LESS)
 	endmacro()
 
 	macro(set_cxx_equal_flags MINIMAL FLAGS)
-		set_cxx_version_flags(${MINIMAL} ${FLAGS} "" "EQUAL")
+		set_cxx_version_flags(${MINIMAL} ${FLAGS} "" EQUAL)
 	endmacro()
 
 	macro(set_cxx_flags FLAGS)
-		set_cxx_version_flags("0.0" ${FLAGS} "" "GREATER")
+		set_cxx_version_flags("0.0" ${FLAGS} "" GREATER)
+	endmacro()
+
+	macro(test_cxx_flag_apply FLAG NAME DONTRUN)
+		if(NOT ${DONTRUN})
+			include(CheckCXXCompilerFlag)
+			check_cxx_compiler_flag("${FLAG}" "${NAME}")
+			if("${NAME}")
+				set_cxx_flags("${FLAG}")
+			endif()
+		endif()
 	endmacro()
 
 	# check for compiler versions
 	if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 		require_cxx_version("gcc" 4.9)
-		set_cxx_flags("-std=c++14")
+		test_cxx_flag_apply("-std=c++14" GCC_SUPPORTS_CPP14 FALSE)
 		set_cxx_greater_flags(4.9 "-fdiagnostics-color=auto")
+
 	elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 		require_cxx_version("clang" 3.4)
 		set_cxx_flags("-Wno-mismatched-tags")
-		set_cxx_equal_flags(3.4 "-std=c++1y")
-		set_cxx_greater_flags(3.5 "-std=c++14")
+
+		if(APPLE)
+			set_cxx_flags("-stdlib=libc++")
+		endif()
+
+		test_cxx_flag_apply("-std=c++14" CXX_SUPPORTS_CXX14 FALSE)
+		test_cxx_flag_apply("-std=c++1y" CXX_SUPPORTS_CXX1Y CXX_SUPPORTS_CXX14)
+
+		if(NOT (CXX_SUPPORTS_CXX14 OR CXX_SUPPORTS_CXX1Y))
+			message(FATAL_ERROR "compiler doesn't support c++14!")
+		endif()
+
 	else() #"Intel", "MSVC", etc..
 		message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 	endif()
