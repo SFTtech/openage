@@ -55,3 +55,8 @@ notifications:
       - "%{repository}/%{branch} (%{commit} - %{author}): %{message}"
     use_notice: true
     skip_join: true
+
+cache:
+  directories:
+    - .cicache
+  apt: true
