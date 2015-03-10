@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
@@ -8,7 +8,7 @@
 #include "args.h"
 #include "log.h"
 #include "util/error.h"
-#include "game_main.h"
+#include "game.h"
 #include "testing/testing.h"
 
 #include "config.h"

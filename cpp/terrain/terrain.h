@@ -13,7 +13,6 @@
 #include "terrain_chunk.h"
 #include "terrain_object.h"
 #include "../assetmanager.h"
-#include "../engine.h"
 #include "../texture.h"
 #include "../coord/camgame.h"
 #include "../coord/chunk.h"
@@ -25,6 +24,7 @@
 namespace openage {
 
 class TerrainChunk;
+class Game;
 
 /**
  * type that for terrain ids.
@@ -302,9 +302,9 @@ public:
 
 	/**
 	 * draw the currently visible terrain area on screen.
-	 * @param engine: the engine where the terrain should be drawn to.
+	 * @param game: the game where the terrain should be drawn to.
 	 */
-	void draw(Engine *engine);
+	void draw(Game *game);
 
 	/**
 	 * create the drawing instruction data.

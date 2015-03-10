@@ -10,10 +10,9 @@ declare_executable(${PROJECT_NAME})
 add_sources(${PROJECT_NAME}
 	main.cpp
 	args.cpp
-	game_main.cpp
+	game.cpp
 	assetmanager.cpp
 	callbacks.cpp
-	engine.cpp
 	font.cpp
 	handlers.cpp
 	input.cpp

@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_CONSOLE_CONSOLE_H_
 #define OPENAGE_CONSOLE_CONSOLE_H_
@@ -9,7 +9,7 @@
 #include "buf.h"
 #include "../handlers.h"
 #include "../coord/camhud.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../util/color.h"
 #include "../font.h"
 #include "../gamedata/color.gen.h"
@@ -35,7 +35,7 @@ public:
 	Font font;
 
 	//callback functions
-	bool on_engine_tick();
+	bool on_game_tick();
 	bool draw_console();
 	bool handle_inputs(SDL_Event *e);
 	bool on_window_resize();
@@ -44,7 +44,7 @@ public:
 	 * register this console to the engine.
 	 * this leads to the drawing calls, and input handling.
 	 */
-	void register_to_engine(Engine *engine);
+	void register_to_game(Game *game);
 
 	/**
 	 * prints the given text on the console.

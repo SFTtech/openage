@@ -8,7 +8,7 @@
 #include <unordered_map>
 
 #include "terrain_chunk.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../log.h"
 #include "../texture.h"
 #include "../coord/camgame.h"
@@ -299,7 +299,7 @@ bool Terrain::check_tile_position(coord::tile pos) {
 
 }
 
-void Terrain::draw(Engine *engine) {
+void Terrain::draw(Game *game) {
 	// TODO: move this draw invokation to a render manager.
 	//       it can reorder the draw instructions and minimize texture switching.
 
@@ -308,11 +308,11 @@ void Terrain::draw(Engine *engine) {
 	coord::tile tl, tr, bl, br;
 	coord::window wtl, wtr, wbl, wbr;
 
-	// query the window coordinates from the engine first
-	wtl = coord::window{                    0,                     0};
-	wtr = coord::window{engine->window_size.x,                     0};
-	wbl = coord::window{                    0, engine->window_size.y};
-	wbr = coord::window{engine->window_size.x, engine->window_size.y};
+	// query the window coordinates from the game first
+	wtl = coord::window{                  0,                     0};
+	wtr = coord::window{game->window_size.x,                     0};
+	wbl = coord::window{                  0, game->window_size.y};
+	wbr = coord::window{game->window_size.x, game->window_size.y};
 
 	// then convert them to tile coordinates.
 	tl = wtl.to_camgame().to_phys3(0).to_phys2().to_tile();

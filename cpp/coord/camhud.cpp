@@ -1,11 +1,11 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #define GEN_IMPL_CAMHUD_CPP
 #include "camhud.h"
 
 #include "term.h"
 #include "window.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../console/console.h"
 #include "../util/misc.h"
 
@@ -13,8 +13,8 @@ namespace openage {
 namespace coord {
 
 window camhud::to_window() {
-	Engine &e = Engine::get();
-	return e.camhud_window + this->as_relative().to_window();
+	Game &g = Game::get();
+	return g.camhud_window + this->as_relative().to_window();
 }
 
 window_delta camhud_delta::to_window() const {

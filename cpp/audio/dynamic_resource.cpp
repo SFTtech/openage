@@ -2,7 +2,7 @@
 
 #include "dynamic_resource.h"
 
-#include "../engine.h"
+#include "../game.h"
 #include "../log.h"
 
 namespace openage {
@@ -48,8 +48,8 @@ void DynamicResource::use() {
 			);
 		}
 		// get loading job group
-		Engine &e = Engine::get();
-		this->loading_job_group = e.get_job_manager()->create_job_group();
+		Game &g = Game::get();
+		this->loading_job_group = g.get_job_manager()->create_job_group();
 	}
 }
 

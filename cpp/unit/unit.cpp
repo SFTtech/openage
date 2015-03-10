@@ -4,7 +4,7 @@
 #include <cmath>
 
 #include "../terrain/terrain.h"
-#include "../engine.h"
+#include "../game.h"
 #include "../crossplatform/math_constants.h"
 #include "ability.h"
 #include "action.h"
@@ -48,8 +48,8 @@ bool Unit::update() {
 	 * the active action is on top
 	 */
 	if (this->has_action()) {
-		Engine &engine = Engine::get();
-		this->action_stack.back()->update(engine.lastframe_msec());
+		Game &game = Game::get();
+		this->action_stack.back()->update(game.lastframe_msec());
 
 		/*
 		 * check completion of all actions,

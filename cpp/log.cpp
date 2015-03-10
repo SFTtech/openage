@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "log.h"
 
@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 #include "util/strings.h"
-#include "engine.h"
+#include "game.h"
 #include "console/console.h"
 
 namespace openage {

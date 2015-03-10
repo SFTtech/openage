@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-#include "../game_main.h"
+#include "../game.h"
 #include "../pathfinding/a_star.h"
 #include "../pathfinding/heuristics.h"
 #include "action.h"
