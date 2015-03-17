@@ -26,23 +26,45 @@ class VirtualFile:
     operates in binary mode.
     """
 
-    def __init__(self):
-        self.buf = b""
+    def __init__(self, name=None, binary=True):
+        self.buf = b"" if binary else ""
+        self.name = name
+        self.pos = 0
 
-    def seek(self, destination, whence=0):
-        raise NotImplementedError("seek not implemented")
+    def seek(self, offset, whence=0):
+        raise NotImplementedError("seeking not implemented")
 
     def tell(self):
-        raise NotImplementedError("tell not implemented")
+        return self.pos
 
     def read(self):
-        raise NotImplementedError("read not implemented")
+        return self.buf[self.pos:]
 
     def write(self, data):
-        self.buf += data
+        # we're at the end:
+        if self.pos == len(self.buf) - 1:
+            self.buf += data
+        # we're somewhere in the middle:
+        else:
+            self.buf = (self.buf[0:self.pos] + data +
+                        self.buf[(self.pos + len(data)):])
+
+        self.pos += len(data)
 
     def data(self):
         return self.buf
+
+    def set_data(self, data):
+        self.buf = data
+        self.pos = 0
+
+    def __iter__(self):
+        lines = self.data().split("\n")
+
+        def get_lines():
+            for l in lines:
+                yield l
+        return get_lines()
 
 
 def gen_dict_key2lists(keys):
