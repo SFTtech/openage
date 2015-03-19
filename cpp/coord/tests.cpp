@@ -1,7 +1,5 @@
 // Copyright 2016-2015 the openage authors. See copying.md for legal info.
 
-#include "tests.h"
-
 #include <unistd.h>
 #include "../log.h"
 #include "../util/error.h"
@@ -71,14 +69,14 @@ int phys2_0() {
 	
 	stage += 1; // 6
 	// Test get fraction
-  // As seen above 65536 is a whole tile, so here test getting the
-  // Fraction with the whole tiles removed
+	// As seen above 65536 is a whole tile, so here test getting the
+	// Fraction with the whole tiles removed
 	phys2_delta expectedP2D{32768, 32768};
 	
 	p = {98304, 98304};
 	
 	phys2_delta resultsP2D = p.get_fraction();
-  if (not (resultsP2D == expectedP2D)) { return stage; }
+	if (not (resultsP2D == expectedP2D)) { return stage; }
 	
 	return -1;
 }
@@ -193,16 +191,14 @@ int tile_0() {
 	
 	stage += 1; // 9
 	// Test get_pos_on_chunk
-  // Similar to phys2.get_fraction
+	// Similar to phys2.get_fraction
 	
-	// TODO This is not the results I expect. I would think that we
-	// should get 4,4 back. Possibly a bug.
-	tile_delta expectedTD{20, 20};
+	tile_delta expectedTD{4, 4};
 
-  t = {20, 20};
+	t = {20, 20};
 	
 	tile_delta resultsTD = t.get_pos_on_chunk();
-  if (not (resultsTD == expectedTD)) { return stage; }
+	if (not (resultsTD == expectedTD)) { return stage; }
 
 	return -1;
 }
@@ -329,8 +325,8 @@ int phys3_0() {
 	// Get the current camgame_phys position
 	phys3 gameP3 = e.camgame_phys;
 
-  // Since we know we start centered out camgame should be
-  // at 0, 0
+	// Since we know we start centered out camgame should be
+	// at 0, 0
 	camgame expectedC{0, 0};
 	
 	camgame resultsC = gameP3.to_camgame();
@@ -506,6 +502,23 @@ int camgame_0() {
 	int stage = 0;
 	// Test camgame to phys3 with default arg and 0,0 camgame
 	// to show we get the engines camgame_phys back
+	// Since we are not running from the main engine, get the cwd
+	char currentPath[128];
+	char* stop;
+	getcwd(currentPath, sizeof(currentPath));
+
+	// Cut off the un-needed stuff
+	stop = strstr(currentPath, ".bin");
+  	stop--;
+	*stop = 0;
+
+	// Add the correct assets dir
+	util::Dir assetDir(currentPath);
+	assetDir = assetDir.append("assets/converted");
+
+	auto termcolors = util::read_csv_file<gamedata::palette_color>(assetDir.join("termcolors.docx"));
+	console::Console con(termcolors);
+
 
 	Engine &e = Engine::get();
 	phys3 expectedP3 = e.camgame_phys;
@@ -683,7 +696,7 @@ int camhud_0() {
 
 	// Cut off the un-needed stuff
 	stop = strstr(currentPath, ".bin");
-  stop--;
+	stop--;
 	*stop = 0;
 
 	// Add the correct assets dir
@@ -741,7 +754,7 @@ int term_0() {
 
 	// Cut off the un-needed stuff
 	stop = strstr(currentPath, ".bin");
-  stop--;
+	stop--;
 	*stop = 0;
 
 	// Add the correct assets dir

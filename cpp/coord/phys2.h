@@ -41,8 +41,8 @@ struct phys2_delta {
 #include "ops/impl.h"
 #endif //GEN_IMPL_PHYS2_CPP
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

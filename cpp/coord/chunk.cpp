@@ -17,5 +17,5 @@ tile chunk::to_tile(tile_delta pos_on_chunk) {
 	return result;
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

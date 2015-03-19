@@ -30,5 +30,5 @@ camhud_delta window_delta::to_camhud() const {
 	return camhud_delta {(pixel_t) x, (pixel_t) -y};
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

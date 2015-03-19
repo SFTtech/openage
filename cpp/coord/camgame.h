@@ -37,8 +37,8 @@ struct camgame_delta {
 #include "ops/impl.h"
 #endif //GEN_IMPL_CAMGAME_CPP
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

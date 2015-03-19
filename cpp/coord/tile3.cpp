@@ -25,5 +25,5 @@ phys3 tile3::to_phys3(phys3_delta frac) {
 	return result;
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

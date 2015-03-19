@@ -16,5 +16,5 @@ camhud term::to_camhud(console::Console *c) const {
 	return result;
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

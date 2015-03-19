@@ -83,5 +83,5 @@ phys3_delta normalize(const phys3_delta &a, const phys_t &length) {
 	return result;
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

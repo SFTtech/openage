@@ -62,5 +62,5 @@ window_delta camgame_delta::to_window() {
 	return window_delta {(pixel_t) x, (pixel_t) -y};
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

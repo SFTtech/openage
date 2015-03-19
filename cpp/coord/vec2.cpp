@@ -6,5 +6,5 @@
 namespace openage {
 namespace coord {
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

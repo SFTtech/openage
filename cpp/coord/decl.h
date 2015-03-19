@@ -69,10 +69,10 @@ constexpr phys_t   phys_t_scaling_factor = (1 << phys_t_radix_pos);
 constexpr phys_t   phys_per_tile         = phys_t_scaling_factor;
 constexpr unsigned tiles_per_chunk_bits  = 4; //yeah, this needs a better name.
 constexpr tile_t   tiles_per_chunk       = (1 << tiles_per_chunk_bits);
-} //namespace settings
+} // namespace settings
 
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #endif

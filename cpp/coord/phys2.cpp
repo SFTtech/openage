@@ -35,5 +35,5 @@ phys2_delta phys2::get_fraction() const {
 	return result;
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

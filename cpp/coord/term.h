@@ -13,7 +13,7 @@
 namespace openage {
 namespace console {
 class Console;
-} //namespace console
+} // namespace console
 
 namespace coord {
 
@@ -37,8 +37,8 @@ struct term_delta {
 #include "ops/impl.h"
 #endif //GEN_IMPL_TERM_CPP
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

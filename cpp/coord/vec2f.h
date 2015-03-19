@@ -31,8 +31,8 @@ struct vec2f_delta {
 #include "ops/impl.h"
 #endif //GEN_IMPL_VEC2F_CPP
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

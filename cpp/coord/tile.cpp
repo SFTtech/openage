@@ -43,12 +43,12 @@ tile_delta tile::get_pos_on_chunk() const {
 	tile_delta result;
 
 	// define a bitmask that keeps the last n bits
-	decltype(result.ne) bitmask = ((1 << settings::phys_t_radix_pos) - 1);
+	decltype(result.ne) bitmask = ((1 << settings::tiles_per_chunk_bits) - 1);
 
 	result.ne = (ne & bitmask);
 	result.se = (se & bitmask);
 	return result;
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
