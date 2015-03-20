@@ -8,34 +8,13 @@
 #include <cstdlib>
 #include <functional>
 #include <string>
+#include <vector>
 #include <memory>
 #include <iomanip>
 
-#include "sstreamcache.h"
 
 namespace openage {
 namespace util {
-
-
-/**
- * Stringstream-style to-std::string formatter class for general use.
- */
-class Formatter : OSStreamPtr {
-public:
-	// The following operators allow usage in an iostreams-style manner.
-	template<typename T>
-	Formatter &operator <<(const T &t) {
-		this->stream_ptr->stream << t;
-		return *this;
-	}
-
-
-	template<typename T>
-	Formatter &operator <<(T &(*t)(T &)) {
-		this->stream_ptr->stream << t;
-		return *this;
-	}
-};
 
 
 /**
@@ -82,39 +61,29 @@ std::ostream &operator <<(std::ostream &os, FixedPoint<divisor, decimals, w> f) 
 
 
 /**
- * Formats fmt to a std::string
+ * printf-style to-string formatting.
  */
 std::string sformat(const char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
 
 
 /**
- * Same as sformat, but takes va_list instead of ...
+ * printf-style valist-to-string formatting; the result is appended to output.
  */
-std::string vsformat(const char *fmt, va_list ap);
+size_t vsformat(const char *fmt, va_list ap, std::string &output);
 
 
 /**
- * Formats fmt to a newly allocated memory area.
- *
- * Note that you need to manually free the returned result.
- *
- * Please use vsformat() instead.
+ * Copies the given string to the vector target.
+ * Target is resized to exactly hold the data (including the NULL byte).
  */
-char *vformat(const char *fmt, va_list ap);
+void copy_string(const char *s, std::vector<char> target);
 
-/**
- * Makes a copy of the string (up to and including the first null byte).
- *
- * Note that you need to manually free both copies.
- *
- * This method is deprecated for the above reason. Use std::string instead.
- */
-char *copy(const char *s);
 
 /**
  * Returns the number of whitespace characters on the right of the string.
  */
 size_t rstrip(char *s);
+
 
 /**
  * tokenizes str by splitting it up to substrings at the deliminiters.
@@ -126,6 +95,7 @@ size_t rstrip(char *s);
  */
 size_t string_tokenize_to_buf(char *str, char delim, char **buf, size_t bufsize);
 
+
 /**
  * behaviour is as with string_tokenize_to_buf, but the result buffer is
  * dynamically allocated to match the token count.
@@ -136,6 +106,7 @@ size_t string_tokenize_to_buf(char *str, char delim, char **buf, size_t bufsize)
  */
 size_t string_tokenize_dynamic(char *str, char delim, char ***result);
 
+
 /**
  * base tokenizer method, which is used internally by string_tokenize_to_buf
  * and string_tokenize_dynamic.
@@ -144,12 +115,14 @@ size_t string_tokenize_dynamic(char *str, char delim, char ***result);
  */
 void string_tokenize_base(char *str, char delim, std::function<void(char *)> callback);
 
+
 /**
  * returns true if str matches the basic globbing pattern
  * in the pattern, '*' matches any number of characters, while all other
  * characters are interpreted as literal.
  */
 bool string_matches_pattern(const char *str, const char *pattern);
+
 
 } // namespace util
 } // namespace openage

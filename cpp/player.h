@@ -46,6 +46,6 @@ private:
 
 };
 
-}
+} // player.h
 
 #endif

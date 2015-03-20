@@ -1,7 +1,9 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_FONT_H_
 #define OPENAGE_FONT_H_
+
+#include <string>
 
 #include <FTGL/ftgl.h>
 
@@ -19,7 +21,7 @@ namespace openage {
  * the filename is returned as a newly allocated c string.
  * you'll have to free that yourself using delete[].
  */
-char *get_font_filename(const char *family, const char *style);
+std::string get_font_filename(const char *family, const char *style);
 
 class Font {
 public:
@@ -36,7 +38,7 @@ public:
 	//besides, sooner or later some whistleblower would release the
 	//pointers anyway.
 	FTFont *internal_font;
-	char *font_filename;
+	std::string font_filename;
 };
 
 }

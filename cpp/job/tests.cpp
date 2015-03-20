@@ -1,30 +1,33 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#include "job_manager.h"
 #include "../log/log.h"
+#include "../testing/testing.h"
 
-#include <thread>
+#include "job_manager.h"
+
+#include <atomic>
 
 namespace openage {
 namespace job {
 namespace tests {
 
 
-int test_simple_job() {
+void test_simple_job() {
 	JobManager manager{4};
 	manager.start();
 
 	std::atomic<int> finish_count(0);
 	int job_count = 10;
-	bool result = -1;
+	bool result = false;
 
 	auto job_function = []() -> int {
 		return 42;
 	};
+
 	auto job_callback = [&](result_function_t<int> get_result) {
 		int job_result = get_result();
 		if (job_result == 42) {
-			result = 0;
+			result = true;
 		}
 		finish_count++;
 	};
@@ -38,11 +41,12 @@ int test_simple_job() {
 	}
 
 	manager.stop();
-	return result;
+
+	result or TESTFAIL;
 }
 
 
-int test_simple_job_with_exception() {
+void test_simple_job_with_exception() {
 	JobManager manager{4};
 	manager.start();
 
@@ -82,27 +86,13 @@ int test_simple_job_with_exception() {
 
 	manager.stop();
 
-	if (errors.load() == bad_jobs) {
-		return 0;
-	}
-	return -1;
+	errors.load() == bad_jobs or TESTFAIL;
 }
 
 
 void test_job_manager() {
-	int ret;
-	const char *testname;
-	if ((ret = test_simple_job()) == -1) {
-		testname = "test_simple_job";
-		goto out;
-	} else if ((ret = test_simple_job_with_exception()) == -1) {
-		testname = "test_simple_job_with_exception";
-		goto out;
-	}
-	return;
-out:
-	log::log(MSG(err) << testname << " failed with return value " << ret);
-	throw "job manager tests failed";
+	test_simple_job();
+	test_simple_job_with_exception();
 }
 
 

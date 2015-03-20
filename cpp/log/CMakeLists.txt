@@ -1,13 +1,19 @@
-add_test_cpp(openage::log::tests::test "tests the logging")
-
 add_sources(${PROJECT_NAME}
 	file_logsink.cpp
 	level.cpp
 	log.cpp
-	logsource.cpp
 	logsink.cpp
+	logsource.cpp
 	message.cpp
 	named_logsource.cpp
 	stdout_logsink.cpp
 	test.cpp
+)
+
+pxdgen(
+	level.h
+	log.h
+	logsource.h
+	named_logsource.h
+	message.h
 )

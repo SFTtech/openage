@@ -2,8 +2,9 @@
 
 #include "dynamic_loader.h"
 
+#include "../error/error.h"
+
 #include "opus_dynamic_loader.h"
-#include "../util/error.h"
 
 namespace openage {
 namespace audio {
@@ -23,12 +24,11 @@ std::unique_ptr<DynamicLoader> DynamicLoader::create(const std::string &path,
 		loader.reset(new OpusDynamicLoader{path});
 		break;
 	default:
-		throw util::Error{MSG(err) <<
+		throw Error{MSG(err) <<
 			"No dynamic audio loader for format supported: " << format};
 	}
 	return std::move(loader);
 }
 
 
-}
-}
+}} // openage::audio

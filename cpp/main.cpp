@@ -1,85 +1,53 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
-#include <stdlib.h>
-#include <time.h>
+#include "console/console.h"
+#include "gamedata/color.gen.h"
+#include "util/file.h"
 
-#include "args.h"
-#include "log/log.h"
-#include "util/error.h"
+#include "engine.h"
 #include "game_main.h"
-#include "testing/testing.h"
 
-#include "config.h"
-
-
-using namespace openage;
+namespace openage {
 
 
-void init() {
-	log::init();
-}
+int run_game(const main_arguments &args) {
+	log::log(MSG(info) << "launching engine with data directory '" << args.data_directory << "'");
 
+	util::Timer timer;
+	timer.start();
 
-void deinit() {
-	log::deinit();
-}
+	util::Dir data_dir{args.data_directory.c_str()};
 
+	Engine::create(&data_dir, "openage");
+	Engine &engine = Engine::get();
 
-int main(int argc, char **argv) {
-	init();
+	// initialize terminal colors
+	auto termcolors = util::read_csv_file<gamedata::palette_color>(data_dir.join("converted/termcolors.docx"));
 
-	try {
-		Arguments args = parse_args(argc, argv);
+	console::Console console;
+	console.load_colors(termcolors);
+	console.register_to_engine(&engine);
 
-		if (args.error_occured) {
-			return 1;
-		}
+	log::log(MSG(info).fmt("Loading time [engine]: %5.3f s", timer.getval() / 1.0e9));
 
-		if (args.display_help) {
-			return 0;
-		}
+	timer.start();
 
-		if (args.list_tests) {
-			testing::list_tests();
-			return 0;
-		}
+	{
+		// create a game that uses the engine.
+		GameMain game{&engine};
 
-		if (args.version) {
-			std::cout << "openage " << config::version << std::endl;
-			std::cout << config::config_option_string << std::endl;
+		log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
 
-			return 0;
-		}
-
-		// set global random seed
-		srand(time(NULL));
-
-		// shall we run a test?
-		if (args.tests.empty() and not args.demo_specified) {
-			return run_game(&args);
-		}
-
-		bool result = true;
-		for (auto &ti : args.tests) {
-			if (!testing::run_test(ti)) {
-				result = false;
-			}
-		}
-
-		if (args.demo_specified) {
-			if (!testing::run_demo(args.demo, args.demo_argc, args.demo_argv)) {
-				result = false;
-			};
-		}
-
-		return (result == false) ? 1 : 0;
-
-	} catch (util::Error e) {
-		log::log(MSG(crit) << "Exception: " << e);
-		return 1;
+		// run main loop
+		engine.run();
 	}
 
-	deinit();
+	Engine::destroy();
+
+	return 0;
 }
+
+
+} // openage

@@ -16,9 +16,9 @@ message("(running cmake...)
 
 Welcome to the SFT technologies computer-aided openage build system!
 
-You have chosen, or been chosen, to attempt the daring task of building
-openage. If you have installed all the dependencies that are conveniently
-listed in [doc/building.md], this _might_ work!
+You have chosen, or been chosen, to attempt the daring task of building openage.
+If you have installed all the dependencies that are conveniently listed in
+[doc/building.md], this _might_ just work!
 
 If it doesn't, consider reporting the issue/asking for help in #sfttech on freenode.net.
 ")
@@ -50,7 +50,6 @@ include("${BUILDSYSTEM_DIR}/python.cmake")
 include("${BUILDSYSTEM_DIR}/cpp.cmake")
 include("${BUILDSYSTEM_DIR}/codegen.cmake")
 
-include("${BUILDSYSTEM_DIR}/testing.cmake")
 include("${BUILDSYSTEM_DIR}/assets.cmake")
 include("${BUILDSYSTEM_DIR}/version.cmake")
 
@@ -58,18 +57,14 @@ include("${BUILDSYSTEM_DIR}/doxygen.cmake")
 
 disallow_in_source_builds()
 
-# create python config file
-configure_file(py/openage/config.py.in "${CMAKE_SOURCE_DIR}/py/openage/config.py")
-
 # create documentation for cpp and py folders
-doxygen_configure(cpp/ py/)
+doxygen_configure(cpp/ openage/)
 
 add_subdirectory(cpp/)
 add_subdirectory(dist/)
-add_subdirectory(py/)
+add_subdirectory(openage/)
 
-# process the included python sources, generate setup.py
-process_python_modules()
+python_finalize()
 
 print_config_options()
 

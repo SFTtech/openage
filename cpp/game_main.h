@@ -3,15 +3,13 @@
 #ifndef OPENAGE_GAME_MAIN_H_
 #define OPENAGE_GAME_MAIN_H_
 
-#include <SDL2/SDL.h>
-#include <unordered_map>
-#include <unordered_set>
 #include <vector>
+#include <SDL2/SDL.h>
 
-#include "args.h"
+// TODO remove as many of these as possible.
+//      this is a header file, for fucks sake.
 #include "assetmanager.h"
 #include "datamanager.h"
-#include "engine.h"
 #include "coord/tile.h"
 #include "handlers.h"
 #include "keybinds/keybind_manager.h"
@@ -26,13 +24,9 @@
 namespace openage {
 
 class Unit;
+class Engine;
 
-/**
- * runs the game.
- */
-int run_game(openage::Arguments *args);
-
-void gametest_init(openage::Engine *engine);
+void gametest_init(Engine *engine);
 void gametest_destroy();
 
 class GameMain :
@@ -41,8 +35,8 @@ class GameMain :
 		openage::HudHandler,
 		openage::TickHandler {
 public:
-	GameMain(openage::Engine *engine);
-	~GameMain();
+	GameMain(Engine *engine);
+	virtual ~GameMain();
 
 	void move_camera();
 
@@ -100,7 +94,7 @@ private:
 	 */
 	Command get_action(const coord::phys3 &pos) const;
 
-	openage::Engine *engine;
+	Engine *engine;
 };
 
 } //namespace openage

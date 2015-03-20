@@ -75,11 +75,12 @@ function(cpp_init)
 endfunction()
 
 # declare a new 'empty' executable file.
-# you need to use add_sources to add source files to it, and finalize_executable to finalize it.
+# you need to use add_sources to add source files to it, and finalize_binary to finalize it.
 # then you can add libraries, include dirs, etc.
-function(declare_executable binary_name)
+function(declare_binary binary_name)
 	set_property(GLOBAL APPEND PROPERTY SFT_BINARIES "${binary_name}")
 endfunction()
+
 
 # add source files to a binary
 #
@@ -122,7 +123,12 @@ endfunction()
 
 # finalize the executable definition,
 # no sources can be added to the binary afterwards.
-function(finalize_executable binary_name)
+# type must be one of {library, executable}.
+# additional flags may be specified:
+#
+#  - allow_no_undefined (only valid for libraries):
+#     the linker will allow no undefined symbols (same linker errors as for executables)
+function(finalize_binary binary_name type)
 	get_property(sources GLOBAL PROPERTY SFT_BINARY_SRCS_${binary_name})
 	get_property(generatedsources GLOBAL PROPERTY SFT_BINARY_GENERATED_SRCS_${binary_name})
 
@@ -131,8 +137,8 @@ function(finalize_executable binary_name)
 		set_source_files_properties(${generatedsources} PROPERTIES GENERATED ON)
 	endif()
 
-	# print overview of the executable's files
-	message("C++ executable: ${binary_name}")
+	# print overview of the binary's files
+	message("cpp binary: ${binary_name}")
 	foreach(source ${sources})
 		list_contains(contained "${source}" "${generatedsources}")
 		if(contained)
@@ -143,7 +149,23 @@ function(finalize_executable binary_name)
 	endforeach()
 
 	# create the executable
-	add_executable("${binary_name}" ${sources})
+	if(type STREQUAL "executable")
+		add_executable("${binary_name}" ${sources})
+	elseif(type STREQUAL "library")
+		add_library("${binary_name}" SHARED ${sources})
+	endif()
+
+	foreach(flag ${ARGN})
+		if(flag STREQUAL "allow_no_undefined")
+			if(NOT type STREQUAL "library")
+				message(FATAL_ERROR "finalize_binary flag 'allow_no_undefined' is only valid for libraries!")
+			endif()
+
+			set_target_properties(${binary_name} PROPERTIES LINK_FLAGS -Wl,--no-undefined)
+		else()
+			message(FATAL_ERROR "finalize_binary flag unknown: ${flag}")
+		endif()
+	endforeach()
 
 	# make the binary depend on codegen iff it has any generated files
 	if(generatedsources)

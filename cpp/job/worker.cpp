@@ -29,7 +29,7 @@ void Worker::stop() {
 
 
 void Worker::enqueue(std::shared_ptr<JobStateBase> job) {
-	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
+	std::lock_guard<std::mutex> lock{this->pending_jobs_mutex};
 	this->pending_jobs.push(job);
 	this->notify();
 }

@@ -12,6 +12,7 @@ To play, you require *an original AoE II installation or [AoE II: HD](http://sto
 [![Bountysource](https://www.bountysource.com/badge/team?team_id=6026&style=bounties_received)](https://www.bountysource.com/teams/sfttech/issues?utm_source=SFTtech&utm_medium=shield&utm_campaign=bounties_received)
 [![tip for next commit](http://prime4commit.com/projects/143.svg)](http://prime4commit.com/projects/143)
 [![github stars](https://img.shields.io/github/stars/SFTtech/openage.svg)](https://github.com/SFTtech/openage/stargazers)
+[![#sfttech on Freenode](http://img.shields.io/Freenode/%23sfttech.png)](https://webchat.freenode.net/?channels=sfttech)
 
 
 The foundation of **openage**:
@@ -20,6 +21,7 @@ Technology     | Component
 ---------------|----------
 **C++14**      | Engine core
 **Python**     | Scripting, media conversion, in-game console, code generation
+**Cython**     | Glue code
 **CMake**      | Build system
 **OpenGL2.1**  | Rendering, shaders
 **SDL2**       | Cross-platform Audio/Input/Window handling
@@ -61,6 +63,16 @@ See [docs/usage.md](/doc/usage.md).
  - What's the plan?
 
 See [doc/milestones.md](/doc/milestones.md). We also have a [list of crazy xor good ideas](/doc/ideas).
+
+
+Code philosophy
+---------------
+
+ - If upstream code (other parts of openage, other libraries, or even the compilers) doesn't work or is missing some feature, _report / fix it_.
+ - Do things properly, not quickly. It takes research, time and maybe even upstream fixes, but it's worth it.
+ - If you absolutely _must_ use a dirty hack (e.g. because you're waiting for upstream to fix it), write a TO-DO message with an explaination.
+ - Regularily review old code to find rusty parts. Remove them, rewrite them, refactor them or at least update the comments.
+ - The project is in development. Don't be shy about adding, removing and changing interfaces, but tell other people if you break their WIP stuff.
 
 Dependencies, Building and Running
 ----------------------------------
@@ -154,6 +166,7 @@ There's no openage mailing list, but the github issue tracker comes pretty close
 
 License
 -------
+
 **GNU GPLv3** or later; see [copying.md](copying.md) and [legal/GPLv3](/legal/GPLv3).
 
 I know that probably nobody is ever gonna look at the `copying.md` file,

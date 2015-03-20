@@ -1,10 +1,13 @@
 // Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
-#include "log.h"
-
 #include <iostream>
 #include <iomanip>
 #include <thread>
+#include <vector>
+
+#include "log.h"
+#include "logsource.h"
+#include "logsink.h"
 
 #include "../util/strings.h"
 
@@ -29,13 +32,13 @@ public:
 private:
 	std::ostream &os;
 
-	void output_log_message(const Message &msg, LogSource * /*source*/) {
+	void output_log_message(const message &msg, LogSource * /*source*/) {
 		this->os << msg << std::endl;
 	}
 };
 
 
-void test() {
+void demo() {
 	TestLogSource logger;
 	TestLogSink sink{std::cout};
 

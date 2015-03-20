@@ -22,7 +22,7 @@
 #include <unordered_set>
 
 #include "../util/compiler.h"
-#include "../util/error.h"
+#include "../error/error.h"
 
 namespace openage {
 namespace datastructure {
@@ -190,7 +190,7 @@ public:
 	 */
 	T pop() {
 		if (this->root_node == nullptr) {
-			throw util::Error{MSG(err) << "Can't pop an empty heap!"};
+			throw Error{MSG(err) << "Can't pop an empty heap!"};
 		}
 
 		// 0. remove tree root, it's the minimum.
@@ -364,7 +364,7 @@ protected:
 			delete node;
 			this->node_count -= 1;
 		} else {
-			throw util::Error{MSG(err) << "Specified node not found for deletion!"};
+			throw Error{MSG(err) << "Specified node not found for deletion!"};
 		}
 	}
 
@@ -377,7 +377,6 @@ protected:
 	std::unordered_set<node_t *> nodes;
 };
 
-} // namespace datastructure
-} // namespace openage
+}} // openage::datastructure
 
 #endif

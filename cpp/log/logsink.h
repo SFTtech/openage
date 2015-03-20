@@ -6,7 +6,8 @@
 #include <vector>
 #include <mutex>
 
-#include "logsource.h"
+#include "level.h"
+#include "message.h"
 
 namespace openage {
 namespace log {
@@ -36,27 +37,26 @@ private:
 	/**
 	 * Called internally by put_log_message if a message is accepted
 	 */
-	virtual void output_log_message(const Message &msg, LogSource *source) = 0;
-
-
-	/**
-	 * Contains a list of all registered log sinks;
-	 * Maintained from the LogSink constructor/destructors.
-	 */
-	static std::vector<LogSink *> log_sink_list;
-
-
-	/**
-	 * Secures log_sink_list.
-	 *
-	 * TODO: Use a more efficient multi-read, single-write lock that uses
-	 *       atomics to lock the reading.
-	 */
-	static std::mutex log_sink_list_mutex;
+	virtual void output_log_message(const class message &msg, class LogSource *source) = 0;
 
 
 	friend class LogSource;
 };
+
+
+/**
+* Protects sink_list.
+*
+* TODO: use a more efficient multi-read, single-write lock
+*/
+extern std::mutex sink_list_mutex;
+
+
+/**
+* Holds a list of all registered log sinks;
+* Maintained from the LogSink constructors/destructors.
+*/
+std::vector<LogSink *> &sink_list();
 
 
 }} // namespace openage::log

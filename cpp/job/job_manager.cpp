@@ -79,7 +79,7 @@ JobGroup JobManager::create_job_group() {
 
 
 void JobManager::enqueue_state(std::shared_ptr<JobStateBase> state) {
-	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
+	std::lock_guard<std::mutex> lock{this->pending_jobs_mutex};
 	this->pending_jobs.push(state);
 	for (auto &worker : this->workers) {
 		worker->notify();
@@ -88,7 +88,7 @@ void JobManager::enqueue_state(std::shared_ptr<JobStateBase> state) {
 
 
 std::shared_ptr<JobStateBase> JobManager::fetch_job() {
-	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
+	std::lock_guard<std::mutex> lock{this->pending_jobs_mutex};
 	if (this->pending_jobs.empty()) {
 		return std::shared_ptr<JobStateBase>{};
 	}
@@ -100,13 +100,13 @@ std::shared_ptr<JobStateBase> JobManager::fetch_job() {
 
 
 bool JobManager::has_job() {
-	std::unique_lock<std::mutex> lock(this->pending_jobs_mutex);
+	std::lock_guard<std::mutex> lock(this->pending_jobs_mutex);
 	return not this->pending_jobs.empty();
 }
 
 
 void JobManager::finish_job(std::shared_ptr<JobStateBase> job) {
-	std::unique_lock<std::mutex> lock{this->finished_jobs_mutex};
+	std::lock_guard<std::mutex> lock{this->finished_jobs_mutex};
 	auto it = this->finished_jobs.find(job->get_thread_id());
 	// if there hasn't been a finished job for the thread_id, create a new
 	// entry

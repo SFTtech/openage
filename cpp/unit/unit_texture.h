@@ -20,7 +20,7 @@ class Sound;
  * graphics data.
  *
  * These objects handle the drawing of regular textures to use a
- * units direction and include delta graphics.
+ * unit's direction and include delta graphics.
  *
  * This type can also deals with playing position based game sounds.
  */

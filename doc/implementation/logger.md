@@ -1,5 +1,7 @@
 Synopsis:
 
+    #include "log/log.h"
+
     log::log(MSG(info) << "test" << 1337);
 
     auto msg = MSG(warn);
@@ -12,7 +14,7 @@ Synopsis:
             "long. " << 1337 <<
             "foo");
 
-    throw util::Error(MSG(err) << "Exceptions use the MSG system as well!");
+    throw Error(MSG(err) << "Exceptions use the MSG system as well!");
 
 The logging system consists of the following main components:
 
@@ -29,11 +31,11 @@ The `MSG` macro collects all sorts of information, including `__FILE__` and `__L
  - "c++-style" with `operator <<` ("iostreams")
  - "c-style" with `.fmt()` ("printf")
 
-`log::MessageBuilder::finalize()` returns an actual `log::Message` object; that method is invoked by `log()`.
+All input is appended to the internal `log::message` object, which can be obtained by auto-conversion to `log::message`.
 
-#### Message
+#### message
 
-Message objects have two members: `std::string text` and `message_meta_data meta`.
+Dumb struct that holds the text and metadata.
 
 #### LogSource
 
@@ -56,12 +58,3 @@ Popular `LogSink` classes include¹:
 | ConsoleSink  | Prints them to a in-game terminal buffer.                   |
 
 ¹) Disclaimer: May not actually be popular and/or available.
-
-#### init()
-
-`log::init()` must be invoked before using the logger for the first time;
-
-it instantiates
-
- - `log::stdout_log_sink` as a `StdOutLogSink`
- - `log::general_log_source` as a `NamedLogSource`

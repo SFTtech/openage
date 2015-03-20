@@ -6,18 +6,19 @@
 #include <set>
 #include <unordered_map>
 
-#include "terrain_chunk.h"
-#include "../engine.h"
 #include "../log/log.h"
+#include "../error/error.h"
+#include "../engine.h"
 #include "../texture.h"
 #include "../coord/camgame.h"
 #include "../coord/chunk.h"
 #include "../coord/tile.h"
 #include "../coord/tile3.h"
 #include "../util/dir.h"
-#include "../util/error.h"
 #include "../util/misc.h"
 #include "../util/strings.h"
+
+#include "terrain_chunk.h"
 
 namespace openage {
 
@@ -68,7 +69,7 @@ Terrain::Terrain(AssetManager &assetmanager,
 		this->terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
 		// TODO: remove hardcoding and rely on nyan data
-		auto terraintex_filename = util::sformat("converted/Data/terrain.drs/%d.slp.png", line->slp_id);
+		auto terraintex_filename = util::sformat("converted/terrain/%d.slp.png", line->slp_id);
 		auto new_texture = assetmanager.get_texture(terraintex_filename);
 
 		this->textures[terrain_id] = new_texture;
@@ -78,7 +79,7 @@ Terrain::Terrain(AssetManager &assetmanager,
 	for (size_t i = 0; i < this->blendmode_count; i++) {
 		auto line = &blending_meta[i];
 
-		std::string mask_filename = util::sformat("converted/blendomatic.dat/mode%02d.png", line->blend_mode);
+		std::string mask_filename = util::sformat("converted/blendomatic/mode%02d.png", line->blend_mode);
 		this->blending_masks[i] = assetmanager.get_texture(mask_filename);
 	}
 
@@ -201,7 +202,7 @@ TerrainObject *Terrain::obj_at_point(const coord::phys3 &point) {
 
 bool Terrain::validate_terrain(terrain_t terrain_id) {
 	if (terrain_id >= (ssize_t)this->terrain_id_count) {
-		throw util::Error(MSG(err) << "Requested terrain_id is out of range: " << terrain_id);
+		throw Error(MSG(err) << "Requested terrain_id is out of range: " << terrain_id);
 	}
 	else {
 		return true;
@@ -210,7 +211,7 @@ bool Terrain::validate_terrain(terrain_t terrain_id) {
 
 bool Terrain::validate_mask(ssize_t mask_id) {
 	if (mask_id >= (ssize_t)this->blendmode_count) {
-		throw util::Error(MSG(err) << "Requested mask_id is out of range: " << mask_id);
+		throw Error(MSG(err) << "Requested mask_id is out of range: " << mask_id);
 	}
 	else {
 		return true;

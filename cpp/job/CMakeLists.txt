@@ -4,5 +4,3 @@ add_sources(${PROJECT_NAME}
 	tests.cpp
 	worker.cpp
 )
-
-add_test_cpp(openage::job::tests::test_job_manager "Tests the job manager")

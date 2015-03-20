@@ -3,15 +3,16 @@
 #include "in_memory_loader.h"
 
 #include "opus_in_memory_loader.h"
-#include "../util/error.h"
+#include "../error/error.h"
 
 namespace openage {
 namespace audio {
 
+
 InMemoryLoader::InMemoryLoader(const std::string &path)
 	:
-	path{path} {
-}
+	path{path} {}
+
 
 std::unique_ptr<InMemoryLoader> InMemoryLoader::create(const std::string &path,
                                                        format_t format) {
@@ -24,7 +25,7 @@ std::unique_ptr<InMemoryLoader> InMemoryLoader::create(const std::string &path,
 		loader.reset(new OpusInMemoryLoader{path});
 		break;
 	default:
-		throw util::Error{MSG(err) << "Not supported for format: " << format};
+		throw Error{MSG(err) << "Not supported for format: " << format};
 	}
 
 	return std::move(loader);

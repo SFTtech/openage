@@ -551,7 +551,7 @@ coord::phys3 MoveAction::next_waypoint() const {
 	if (this->path.waypoints.size() > 0) {
 		return this->path.waypoints.back().position;
 	} else {
-		throw util::Error{MSG(err) << "No next waypoint available!"};
+		throw Error{MSG(err) << "No next waypoint available!"};
 	}
 }
 

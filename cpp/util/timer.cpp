@@ -14,9 +14,9 @@ Timer::Timer(bool stopped) {
 void Timer::reset(bool stopped) {
 	this->stopped = stopped;
 	if(stopped) {
-		starttime = timing::get_monotonic_time();
-	} else {
 		stoppedat = 0;
+	} else {
+		starttime = timing::get_monotonic_time();
 	}
 }
 

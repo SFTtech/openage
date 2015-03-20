@@ -3,7 +3,10 @@
 #ifndef OPENAGE_LOG_LOGSOURCE_H_
 #define OPENAGE_LOG_LOGSOURCE_H_
 
+// pxd: from libcpp.string cimport string
+#include <string>
 
+// pxd: from libopenage.log.message cimport message
 #include "message.h"
 
 
@@ -14,6 +17,13 @@ namespace log {
 /**
  * Any class that wants to provide .log() shall inherit from this.
  * Examples: Engine, Unit, ...
+ *
+ * pxd:
+ *
+ * cppclass LogSource:
+ *     void log(message msg) except +
+ *     const size_t logger_id
+ *     string logsource_name() except +
  */
 class LogSource {
 public:
@@ -23,9 +33,9 @@ public:
 	virtual ~LogSource() = default;
 
 	/**
-	 * Logs a message (from a MessageBuilder through MSG(level)).
+	 * Logs a message (get one via MSG(level)).
 	 */
-	void log(MessageBuilder &msg_builder);
+	void log(const message &msg);
 
 	/**
 	 * Initialized during the LogSource constructor,
@@ -34,6 +44,7 @@ public:
 	const size_t logger_id;
 
 	virtual std::string logsource_name() = 0;
+
 private:
 	/**
 	 * Provides unique logger ids.

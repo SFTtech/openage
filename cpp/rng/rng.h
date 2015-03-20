@@ -27,7 +27,7 @@ public:
 	 * Initializes the rng using data from the buffer pointed to by data
 	 * @param data The buffer that contains data for seeding the rng
 	 * @param count The number of bytes in the buffer
-	 * @throws util::Error if 0 bytes are passed
+	 * @throws Error if 0 bytes are passed
 	 */
 	RNG(const void *data, size_t count);
 
@@ -37,7 +37,7 @@ public:
 	 * use the data in the string as a seed, then pass the c_str() to
 	 * rng(const void*, size_t).
 	 * @param instr The string from which the rng is serialized
-	 * @throws util::Error if the rng cannot be read from the string
+	 * @throws Error if the rng cannot be read from the string
 	 */
 	RNG(const std::string &instr);
 
@@ -46,7 +46,7 @@ public:
 	 * Reads the rng in from the passed std::istream. This serializes
 	 * the rng, and does not use the data as a random seed.
 	 * @param instream The input stream for serializing the rng
-	 * @throws util::Error if stream initialization fails
+	 * @throws Error if stream initialization fails
 	 */
 	RNG(std::istream &instream);
 
@@ -61,7 +61,7 @@ public:
 	 * Initializes the rng using bits from the buffer pointed to by data
 	 * @param data The buffer that contains data for seeding the rng
 	 * @param count The number of bytes in the buffer
-	 * @throws util::Error if 0 bytes are passed
+	 * @throws Error if 0 bytes are passed
 	 */
 	void seed(const void *data, size_t count);
 
@@ -138,14 +138,14 @@ public:
 
 	/**
 	 * Outputs the rng state to a stream
-	 * @throws util::Error if writing data fails
+	 * @throws Error if writing data fails
 	 */
 	std::ostream &to_stream(std::ostream &out) const;
 
 
 	/**
 	 * Reads the rng state from a stream
-	 * @throws util::Error if reading the stream fails
+	 * @throws Error if reading the stream fails
 	 */
 	std::istream &from_stream(std::istream &in);
 
@@ -158,7 +158,7 @@ public:
 
 	/**
 	 * Reads the rng in from a string
-	 * @throws util::Error if reading from the string fails
+	 * @throws Error if reading from the string fails
 	 */
 	void from_string(const std::string &instr);
 
@@ -189,24 +189,15 @@ private:
 
 /**
  * Reads the rng from a stream
- * @throws util::Error if reading from the stream fails
+ * @throws Error if reading from the stream fails
  */
-template <class StreamType>
-StreamType &operator >>(StreamType &instream, RNG &inrng) {
-	inrng.from_stream(instream);
-	return instream;
-}
-
+std::istream &operator >>(std::istream &instream, RNG &inrng);
 
 /**
  * Writes the rng state to a stream
- * @throws util::Error if writing data fails
+ * @throws Error if writing data fails
  */
-template <class StreamType>
-StreamType &operator <<(StreamType &ostream, const RNG &inrng) {
-	inrng.to_stream(ostream);
-	return ostream;
-}
+std::ostream &operator <<(std::ostream &ostream, const RNG &inrng);
 
 
 /**

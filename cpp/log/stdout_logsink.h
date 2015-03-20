@@ -8,9 +8,21 @@
 namespace openage {
 namespace log {
 
+
+/**
+ * Simple logsink that prints messages to stdout (via std::cout).
+ */
 class StdOutSink : public LogSink {
-	virtual void output_log_message(const Message &msg, LogSource *source);
+	virtual void output_log_message(const message &msg, LogSource *source);
 };
+
+
+/**
+ * Returns a reference to the global stdout logsink object;
+ * Initializes the object if needed.
+ */
+StdOutSink &global_stdoutsink();
+
 
 }} // namespace openage::log
 

@@ -5,6 +5,7 @@
 
 #include "../terrain/terrain.h"
 #include "../engine.h"
+
 #include "ability.h"
 #include "action.h"
 #include "command.h"
@@ -58,7 +59,7 @@ bool Unit::is_own_unit() {
 
 UnitAction *Unit::top() const {
 	if (this->action_stack.empty()) {
-		throw util::Error{MSG(err) << "Unit stack empty - no top action exists"};
+		throw Error{MSG(err) << "Unit stack empty - no top action exists"};
 	}
 	return this->action_stack.back().get();
 }

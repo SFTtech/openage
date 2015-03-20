@@ -39,7 +39,7 @@ UnitTexture::UnitTexture(DataManager *dm, const gamedata::graphic *graphic, bool
 			}
 		}
 	}
-	
+
 	if (this->draw_this) {
 
 		// the graphic frame count includes deltas

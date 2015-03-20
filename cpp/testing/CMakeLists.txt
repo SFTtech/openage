@@ -1,4 +1,7 @@
-# add source files to binary
+pxdgen(
+	testlist.h
+)
+
 add_sources(${PROJECT_NAME}
 	testing.cpp
 )

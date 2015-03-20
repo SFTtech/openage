@@ -34,12 +34,13 @@ Dependencies are needed for:
 
 * C = compiling
 * R = running
-* M = media convert script
+* M = media conversion (when running for the first time)
 
 Dependency list:
 
-    CRM   python >=3.3
+    CRM   python >=3.4
       M   python imaging library (PIL) -> pillow
+    C     cython
       M   numpy
     CR    opengl >=2.1
     CR    libepoxy
@@ -53,6 +54,7 @@ Dependency list:
     CR    opusfile
       M   opus-tools
     C     gcc >=4.9 or clang >=3.4
+    C     pygments
 
       M   An installed version of any of the following (wine is your friend).
           Other versions _might_ work; setup disk support will be added soon:
@@ -120,9 +122,6 @@ You can install both compilers and select the one to be used by `./configure`.
   - You could also use `./configure --mode=debug --compiler=gcc` here
  - `make` will do code generation, build all python modules and the
    openage executable
- - `make media AGE2DIR="$HOME/.wine/drive_c/age2"` will convert all media
-   files from the given age2 install folder, storing them in
-   `./assets/converted`
  - `make run` or `./openage` will run the game. try
    `./openage --help`
  - `make test` will run the unit tests

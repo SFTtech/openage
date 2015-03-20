@@ -3,29 +3,29 @@
 #include "level.h"
 
 namespace openage {
+
+template<> log::level::data_type log::level::data{};
+
 namespace log {
 
+namespace lvl {
 
-level_properties get_level_properties(level lvl) {
-	switch (lvl) {
-	case level::MIN:  return {">min",     "5"};
-	case level::spam: return {"SPAM",     ""};
-	case level::dbg:  return {"DBG",      ""};
-	case level::info: return {"INFO",     ""};
-	case level::warn: return {"WARN",     "33"};
-	case level::err:  return {"ERR",      "31;1"};
-	case level::crit: return {"CRIT",     "31;1;47"};
-	case level::MAX:  return {">max",     "5"};
-	default:          return {">unknown", "5"};
-	}
-}
+level MIN  {{-1000, "min loglevel", "5"}};
+level spam {{ -100, "SPAM",         ""}};
+level dbg  {{  -20, "DBG",          ""}};
+level info {{    0, "INFO",         ""}};
+level warn {{  100, "WARN",         "33"}};
+level err  {{  200, "ERR",          "31;1"}};
+level crit {{  500, "CRIT",         "31;1;47"}};
+level MAX  {{ 1000, "MAX",          "5"}};
+
+} // lvl
 
 
 std::ostream &operator <<(std::ostream &os, level lvl) {
-	level_properties lvl_properties = get_level_properties(lvl);
-	os << lvl_properties.name;
+	os << lvl->name;
 	return os;
 }
 
 
-}} // namespace openage::log
+}} // openage::log

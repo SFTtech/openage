@@ -9,7 +9,7 @@
 #endif
 
 #include "util/compiler.h"
-#include "util/error.h"
+#include "error/error.h"
 #include "log/log.h"
 
 namespace openage {
@@ -23,7 +23,7 @@ AssetManager::AssetManager(util::Dir *root)
 	// initialize the inotify instance
 	this->inotify_fd = inotify_init1(IN_NONBLOCK);
 	if (this->inotify_fd < 0) {
-		throw util::Error{MSG(err) << "Failed to initialize inotify!"};
+		throw Error{MSG(err) << "Failed to initialize inotify!"};
 	}
 #endif
 }
@@ -59,7 +59,7 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name) {
 		// create inotify update trigger for the requested file
 		int wd = inotify_add_watch(this->inotify_fd, filename.c_str(), IN_CLOSE_WRITE);
 		if (wd < 0) {
-			throw util::Error{MSG(warn) << "Failed to add inotify watch for " << filename};
+			throw Error{MSG(warn) << "Failed to add inotify watch for " << filename};
 		}
 		this->watch_fds[wd] = tex;
 #endif
@@ -99,7 +99,7 @@ void AssetManager::check_updates() {
 			break;
 		}
 		else if (len == -1) {
-			throw util::Error{MSG(err) << "Failed to read inotify events!"};
+			throw Error{MSG(err) << "Failed to read inotify events!"};
 		}
 
 		// process fetched events,

@@ -17,7 +17,7 @@ class ConcurrentQueue {
 public:
 	/** Removes all elements from the queue. */
 	void clear() {
-		std::unique_lock<std::mutex> lock{this->mutex};
+		std::lock_guard<std::mutex> lock{this->mutex};
 		while (!this->queue.empty()) {
 			this->queue.pop();
 		}
@@ -25,7 +25,7 @@ public:
 
 	/** Returns whether the queue is empty. */
 	bool empty() {
-		std::unique_lock<std::mutex> lock{this->mutex};
+		std::lock_guard<std::mutex> lock{this->mutex};
 		return this->queue.empty();
 	}
 

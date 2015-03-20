@@ -7,7 +7,7 @@
 #include <opusfile.h>
 
 #include "../log/log.h"
-#include "../util/error.h"
+#include "../error/error.h"
 
 namespace openage {
 namespace audio {
@@ -28,7 +28,7 @@ OpusDynamicLoader::OpusDynamicLoader(const std::string &path)
 
 	int64_t pcm_length = op_pcm_total(source.get(), -1);
 	if (pcm_length < 0) {
-		throw util::Error{MSG(err) << "Could not seek in " << path << ": " << pcm_length};
+		throw Error{MSG(err) << "Could not seek in " << path << ": " << pcm_length};
 	}
 
 	length = static_cast<size_t>(pcm_length) * 2;
@@ -50,7 +50,7 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 
 	int op_ret = op_pcm_seek(source.get(), pcm_offset);
 	if (op_ret < 0) {
-		throw util::Error{MSG(err) << "Could not seek in " << path << ": " << op_ret};
+		throw Error{MSG(err) << "Could not seek in " << path << ": " << op_ret};
 	}
 
 	// read a chunk from the requested offset
@@ -66,9 +66,9 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 			read_num_values - read_count, nullptr
 		);
 
-		// an error occured
+		// an error occurred
 		if (samples_read < 0) {
-			throw util::Error{MSG(err) << "Could not read from " << path << ": " << samples_read};
+			throw Error{MSG(err) << "Could not read from " << path << ": " << samples_read};
 		}
 		// end of the resource
 		else if (samples_read == 0) {
@@ -97,7 +97,7 @@ opus_file_t OpusDynamicLoader::open_opus_file() {
 	int op_err;
 	opus_file_t op_file{op_open_file(path.c_str(), &op_err), opus_deleter};
 	if (op_err != 0) {
-		throw util::Error{MSG(err) << "Could not open: " << path.c_str()};
+		throw Error{MSG(err) << "Could not open: " << path.c_str()};
 	}
 	return std::move(op_file);
 }

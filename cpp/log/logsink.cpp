@@ -1,19 +1,17 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#include <mutex>
-
 #include "logsink.h"
+
 
 namespace openage {
 namespace log {
 
 
 LogSink::LogSink() {
-	std::lock_guard<std::mutex> lock(LogSink::log_sink_list_mutex);
+	std::lock_guard<std::mutex> lock(sink_list_mutex);
+	sink_list().push_back(this);
 
-	LogSink::log_sink_list.push_back(this);
-
-	this->loglevel = level::dbg;
+	this->loglevel = lvl::dbg;
 }
 
 
@@ -22,31 +20,32 @@ LogSink::~LogSink() {
 	// while this is utterly insignificant, building a map upon
 	// start-of-deinitialization might be prettier.
 
-	std::lock_guard<std::mutex> lock(LogSink::log_sink_list_mutex);
+	std::lock_guard<std::mutex> lock(sink_list_mutex);
+	auto &sinks = sink_list();
 
-	for (size_t i = 0; i < LogSink::log_sink_list.size(); i++) {
-		if (LogSink::log_sink_list[i] == this) {
+	for (size_t i = 0; i < sinks.size(); i++) {
+		if (sinks[i] == this) {
 			// Replace the element with the last element on the vector.
-			LogSink::log_sink_list[i] = LogSink::log_sink_list[LogSink::log_sink_list.size() - 1];
+			sinks[i] = sinks[sinks.size() - 1];
 			// Delete the last element on the vector.
-			LogSink::log_sink_list.pop_back();
+			sinks.pop_back();
 
 			return;
 		}
 	}
 
 	// We didn't find the source in the global sink list.
-
 	// It should have been there!
-
 	// Seriously, I'm freaked out!
-
-	// TODO: Log the logger error!
+	std::cout << "Logger error: Couldn't find log sink in global sink list." << std::endl;
 }
 
 
-std::mutex LogSink::log_sink_list_mutex;
-std::vector<LogSink *> LogSink::log_sink_list;
+std::mutex sink_list_mutex;
+std::vector<LogSink *> &sink_list() {
+	static std::vector<LogSink *> value;
+	return value;
+}
 
 
 }} // namespace openage::log

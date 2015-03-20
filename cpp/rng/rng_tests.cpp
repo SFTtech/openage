@@ -3,7 +3,8 @@
 #include "rng.h"
 
 #include "../log/log.h"
-#include "../util/error.h"
+#include "../error/error.h"
+#include "../testing/testing.h"
 
 #include <limits>
 #include <vector>
@@ -26,13 +27,13 @@ constexpr float difference_factor = 0.1;
 
 
 /**
- * Test the distribution of the bit generator
+ * Tests the distribution of the bit generator.
  *
  * We generate many many random numbers, and select a bucket by it.
  * After n random numbers, each bucket should have been selected
  * n/bucket_count times.
  */
-static int rng_freq_dist() {
+void freq_dist() {
 	// one random sample from the generator.
 	uint64_t sample;
 
@@ -71,19 +72,16 @@ static int rng_freq_dist() {
 
 	// test if each bucket was selected the amount we expected.
 	for (ssize_t count : buckets) {
-		if (std::abs(mean - count) > max_diff) {
-			return 0;
-		}
+		std::abs(mean - count) > max_diff and TESTFAIL;
 	}
-	return -1;
 }
 
 /**
- * Test the distribution of the boolean generation.
+ * Tests the distribution of the boolean generation.
  *
  * For n draws it should result in n/2 trues and n/2 falses.
  */
-static int rng_bool_dist() {
+void bool_dist() {
 	constexpr float expected = num_rand / 2;
 	constexpr float max_diff = expected * difference_factor;
 
@@ -96,22 +94,18 @@ static int rng_bool_dist() {
 		}
 	}
 
-	if (std::abs(num_true - expected) > max_diff) {
-		return 0;
-	}
-
-	return -1;
+	std::abs(num_true - expected) > max_diff and TESTFAIL;
 }
 
 /**
- * Test the distribution of the floating point numbers.
+ * Tests the distribution of the floating point numbers.
  *
  * Perform the test by placing the [0, 1] range into buckets.
  * each bucket should be drawn n/bucket_count times.
  *
  * Also, the sum of all numbers drawn should be n/2.
  */
-static int rng_real_dist() {
+void real_dist() {
 	constexpr size_t bckt_cnt    = num_rand >> 11;
 	constexpr float  mean        = num_rand / bckt_cnt;
 	constexpr float  max_diff    = mean * difference_factor;
@@ -132,160 +126,118 @@ static int rng_real_dist() {
 		buckets[static_cast<size_t>(val * bckt_cnt)] += 1;
 	}
 
-	if (std::abs(sum - (num_rand / 2)) > max_sumdiff) {
-		return 0;
-	}
+	std::abs(sum - (num_rand / 2)) > max_sumdiff and TESTFAIL;
 
 	for (size_t i = 0; i < bckt_cnt; i++) {
-		if (std::abs(mean - buckets[i]) > max_diff) {
-			return 1;
-		}
+		std::abs(mean - buckets[i]) > max_diff and TESTFAIL;
 	}
 
-	if (buckets[bckt_cnt]) {
-		return 2;
-	}
-
-	return -1;
+	buckets[bckt_cnt] and TESTFAIL;
 }
 
 
-/**
- * returns last arg if calling rn1() != rn2()
- * this is repeated num_rand times.
- */
-#define ret_if_neq(rn1, rn2, val) \
-	for (size_t qq = 0; qq < num_rand; qq++) { \
-		if (rn1() != rn2()) { \
-			return val; \
-		} \
-	}
 
 /**
- * test if two rngs produce the same values with the same seeds.
+ * Tests reproducibility.
  */
-static int rng_reproduce() {
+void reproduce() {
 	auto val = time_seed();
-	RNG test{val};
-	RNG test2{val};
-	ret_if_neq(test, test2, 0);
+	RNG test0{val};
+	RNG test1{val};
+
+	for (size_t i = 0; i < num_rand; i++) {
+		test0() == test1() or TESTFAIL;
+	}
 
 	// seed both rngs
 	char initstr[] = "abcdefghijk";
-	test.seed(initstr, sizeof(initstr));
-	test2.seed(initstr, sizeof(initstr));
-	ret_if_neq(test, test2, 1);
+	test0.seed(initstr, sizeof(initstr));
+	test1.seed(initstr, sizeof(initstr));
+	for (size_t i = 0; i < num_rand; i++) {
+		test0() == test1() or TESTFAIL;
+	}
 
 	// same result expected, as we only use the first 3 chars as seed.
 	char initstr2[] = "abcqq";
-	test.seed(initstr, 3);
-	test2.seed(initstr2, 3);
-	ret_if_neq(test, test2, 2);
+	test0.seed(initstr, 3);
+	test1.seed(initstr2, 3);
+	for (size_t i = 0; i < num_rand; i++) {
+		test0() == test1() or TESTFAIL;
+	}
 
-	// test if seeding with nothing will fail.
-	try {
-		test.seed(nullptr, 0);
-	}
-	catch (util::Error &e) {
-		return -1;
-	}
-	return 3;
+	// make sure that seeding with nullptr fails.
+	TESTTHROWS(test0.seed(nullptr, 0));
 }
 
 /**
- * test the serializing functionality.
+ * Tests the serializing functionality.
  */
-static int rng_serialize() {
+void serialize() {
 	// create seeded rng
 	// and duplicate state to another one.
-	RNG test{random_seed()};
-	RNG test2{test.to_string()};
-	ret_if_neq(test, test2, 0);
+	RNG test0{random_seed()};
+	RNG test1{test0.to_string()};
+	for (size_t i = 0; i < num_rand; i++) {
+		test0() == test1() or TESTFAIL;
+	}
 
-	try {
-		test.from_string("100 aa");
-		return 1;
-		test.from_string("");
-		return 2;
-		test.from_string("100");
-		return 3;
-		test.from_string("100 ");
-		return 4;
-	}
-	catch (util::Error) {
-		// this error is expected!
-		return -1;
-	}
-	return 5;
+	TESTTHROWS(test0.from_string("100 aa"));
+	TESTTHROWS(test0.from_string(""));
+	TESTTHROWS(test0.from_string("100"));
+	TESTTHROWS(test0.from_string("100 "));
 }
 
-static int rng_real_fill() {
-	constexpr size_t n = 1 << 7;
-	RNG test{time_seed()};
-	RNG test2{test};
-	double data[n];
-
-	test2.fill_real(data, n);
-	for (size_t i = 0; i < n; i++) {
-		if (test.real() != data[i]) {
-			return 0;
-		}
-	}
-
-	ret_if_neq(test, test2, 1);
-	return -1;
-}
 
 /**
- * Tests filling n randoms.
+ * Tests filling integers.
  */
-static int rng_fill() {
+void fill() {
 	constexpr size_t n = 1 << 7;
 	uint64_t data[n];
 
-	RNG test{random_seed()};
-	RNG test2{test};
+	RNG test0{random_seed()};
+	RNG test1{test0};
 
-	test.fill(data, n);
+	test0.fill(data, n);
 
 	for (size_t i = 0; i < n; i++) {
-		if (test2() != data[i]) {
-			return 0;
-		}
+		test1() == data[i] or TESTFAIL;
 	}
 
-	ret_if_neq(test, test2, 1);
-	return -1;
+	for (size_t i = 0; i < num_rand; i++) {
+		test0() == test1() or TESTFAIL;
+	}
 }
+
 
 /**
- * contains a test function and description of this test.
+ * Tests filling doubles.
  */
-struct data_test {
-	int (*test_fnc)();
-	const char *name;
-};
+void fill_real() {
+	constexpr size_t n = 1 << 7;
+	RNG test0{time_seed()};
+	RNG test1{test0};
+	double data[n];
 
-static void perform_tests(std::vector<data_test> tests) {
-	int ret;
-	for (data_test test : tests) {
-		if ((ret = test.test_fnc()) != -1) {
-			log::log(MSG(err) << "Testing " << test.name << " failed at stage " << ret);
-			throw "failed random number generator tests";
-		}
+	test1.fill_real(data, n);
+	for (size_t i = 0; i < n; i++) {
+		test0.real() == data[i] or TESTFAIL;
+	}
+
+	for (size_t i = 0; i < num_rand; i++) {
+		test0() == test1() or TESTFAIL;
 	}
 }
 
-void rng_tests() {
-	perform_tests({
-		{rng_freq_dist, "the distribution of the generic generator"},
-		{rng_bool_dist, "the distribution of the specialized bool generator"},
-		{rng_real_dist, "the distribution of floating point numbers"},
-		{rng_reproduce, "whether the rngs are reproducible"},
-		{rng_serialize, "whether the rngs are serializable"},
-		{rng_fill, "whether the fill function works properly"},
-		{rng_real_fill, "the fill process for generating doubles"},
-	});
+
+void run() {
+	freq_dist();
+	bool_dist();
+	real_dist();
+	reproduce();
+	fill();
+	fill_real();
 }
+
 
 }}} // namespace openage::rng::tests

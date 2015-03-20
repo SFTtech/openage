@@ -1,5 +1,8 @@
 // Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
+#include <vector>
+#include <string>
+
 #include <unistd.h>
 #include "../crossplatform/pty.h"
 #include <stdio.h>
@@ -7,17 +10,21 @@
 #include <fcntl.h>
 #include <errno.h>
 
-#include "../console/buf.h"
-#include "../console/draw.h"
 #include "../log/log.h"
+#include "../error/error.h"
+
+#include "buf.h"
+#include "draw.h"
 
 namespace openage {
 namespace console {
 namespace tests {
 
+
 int max(int a, int b) {
 	return (a > b) ? a : b;
 }
+
 
 void render() {
 	console::Buf buf{{80, 25}, 1337, 80};
@@ -34,7 +41,8 @@ void render() {
 	console::draw::to_terminal(&buf, &outfd, true);
 }
 
-void demo(int /* unused */, char ** /* unused */) {
+
+void interactive() {
 	console::Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
 
@@ -46,8 +54,7 @@ void demo(int /* unused */, char ** /* unused */) {
 	int amaster;
 	switch (forkpty(&amaster, nullptr, nullptr, &ws)) {
 	case -1:
-		log::log(MSG(err) << "fork() failed: " << strerror(errno));
-		throw "fork() failed";
+		throw Error(MSG(err) << "fork() failed: " << strerror(errno));
 	case 0: {
 		// we are the child, spawn a shell
 		const char *shell = getenv("SHELL");
@@ -55,8 +62,7 @@ void demo(int /* unused */, char ** /* unused */) {
 			shell = "/bin/sh";
 		}
 		execl(shell, shell, nullptr);
-		log::log(MSG(err) << "execl(\"" << shell << "\", \"" << shell << "\", nullptr) failed: " << strerror(errno));
-		throw "couldn't exec shell";
+		throw Error(MSG(err) << "execl(\"" << shell << "\", \"" << shell << "\", nullptr) failed: " << strerror(errno));
 	}
 	default:
 		//we are the parent

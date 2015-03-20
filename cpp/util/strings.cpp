@@ -9,51 +9,56 @@
 #include <string>
 #include <vector>
 
+#include "compiler.h"
+
 namespace openage {
 namespace util {
 
 
-// Warning: deprecated for memory leak reasons (except for usage by vsformat).
-char *vformat(const char *fmt, va_list ap) {
-	va_list aq;
-	va_copy(aq, ap);
-
-	size_t sz = vsnprintf(NULL, 0, fmt, aq) + 1;
-	va_end(aq);
-
-	char *result = new char[sz];
-
-	vsnprintf(result, sz, fmt, ap);
-
-	return result;
-}
-
-
 std::string sformat(const char *fmt, ...) {
+	std::string ret;
+
 	va_list ap;
 	va_start(ap, fmt);
-	std::string ret = vsformat(fmt, ap);
+	vsformat(fmt, ap, ret);
 	va_end(ap);
 
 	return ret;
 }
 
 
-std::string vsformat(const char *fmt, va_list ap) {
-	std::unique_ptr<char[]> str{vformat(fmt, ap)};
-	std::string ret{str.get()};
-	return ret;
+size_t vsformat(const char *fmt, va_list ap, std::string &output) {
+	static thread_local std::vector<char> buf(64);
+
+	va_list aq;
+	va_copy(aq, ap);
+	size_t length = vsnprintf(buf.data(), buf.size(), fmt, aq);
+	va_end(aq);
+
+	if (unlikely(length >= buf.size())) {
+		size_t target_size = buf.size();
+		if (unlikely(target_size < 64)) {
+			target_size = 64;
+		}
+		while (length >= target_size) {
+			target_size *= 2;
+		}
+
+		buf.resize(target_size);
+
+		vsnprintf(buf.data(), buf.size(), fmt, ap);
+	}
+
+	output.append(buf.data(), length);
+
+	return length;
 }
 
 
-// Warning: deprecated for memory leak reasons.
-char *copy(const char *s) {
+void copy_string(const char *s, std::vector<char> target) {
 	size_t sz = strlen(s) + 1;
-
-	char *result = new char[sz];
-	memcpy(result, s, sz);
-
-	return result;
+	target.resize(sz);
+	memcpy(target.data(), s, sz);
 }
 
 

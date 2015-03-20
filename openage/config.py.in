@@ -1,0 +1,16 @@
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+
+# ${AUTOGEN_WARNING}
+
+"""
+Project configuration, writen by the build system.
+"""
+
+GLOBAL_ASSET_DIR = "${INSTALLED_GLOBAL_ASSET_DIR}"
+
+# version information
+VERSION = "${PROJECT_VERSION}"
+CONFIG_OPTIONS = "${CONFIG_OPTION_STRING}"
+COMPILER = "${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}"
+COMPILERFLAGS = "${CMAKE_CXX_FLAGS}"
+CYTHONVERSION = "${CYTHON_VERSION}"

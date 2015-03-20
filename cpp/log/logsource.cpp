@@ -2,7 +2,10 @@
 
 #include "logsource.h"
 
+#include "../util/compiler.h"
+
 #include "logsink.h"
+#include "stdout_logsink.h"
 
 namespace openage {
 namespace log {
@@ -13,21 +16,16 @@ LogSource::LogSource()
 	logger_id{LogSource::get_unique_logger_id()} {}
 
 
-void LogSource::log(MessageBuilder &msg_builder) {
-	Message &msg = msg_builder.finalize();
+void LogSource::log(const message &msg) {
+	// ensure that the global stdoutsink has been constructed
+	// (and thus at least one sink exists).
+	global_stdoutsink();
 
-	std::lock_guard<std::mutex> lock(LogSink::log_sink_list_mutex);
+	std::lock_guard<std::mutex> lock(sink_list_mutex);
 
-	// By the docs of log::init, an empty log_sink_list means undefined behavior.
-	// However, we're generous.
-	if (LogSink::log_sink_list.size() == 0) {
-		std::cout << "No log sinks are available; Dumping message stdout." << std::endl;
-		std::cout << msg;
-	}
-
-	for (LogSink *sink : LogSink::log_sink_list) {
+	for (LogSink *sink : sink_list()) {
 		// TODO: more sophisticated filtering (iptables-chains-like)
-		if (msg.meta.lvl >= sink->loglevel) {
+		if (msg.lvl->priority >= sink->loglevel->priority) {
 			sink->output_log_message(msg, this);
 		}
 	}

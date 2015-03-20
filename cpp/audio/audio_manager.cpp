@@ -6,11 +6,12 @@
 #include <SDL2/SDL.h>
 #include <sstream>
 
-#include "resource.h"
-
 #include "../log/log.h"
 #include "../util/dir.h"
-#include "../util/error.h"
+#include "../error/error.h"
+
+#include "resource.h"
+
 
 namespace openage {
 namespace audio {
@@ -27,7 +28,7 @@ AudioManager::AudioManager(const std::string &device_name)
 	device_name{device_name} {
 
 	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
-		throw util::Error(MSG(err) << "SDL audio initialization failed: " << SDL_GetError());
+		throw Error(MSG(err) << "SDL audio initialization failed: " << SDL_GetError());
 	} else {
 		log::log(MSG(info) << "SDL audio subsystems initialized");
 	}
@@ -53,7 +54,7 @@ AudioManager::AudioManager(const std::string &device_name)
 
 	// no device could be opened
 	if (device_id == 0) {
-		throw util::Error(MSG(err) << "Error opening audio device: " << SDL_GetError());
+		throw Error{MSG(err) << "Error opening audio device: " << SDL_GetError()};
 	}
 
 	// initialize playing sounds vectors
@@ -102,7 +103,7 @@ void AudioManager::load_resources(const util::Dir &asset_dir,
 Sound AudioManager::get_sound(category_t category, int id) {
 	auto resource = resources.find(std::make_tuple(category, id));
 	if (resource == std::end(resources)) {
-		throw util::Error{MSG(err) <<
+		throw Error{MSG(err) <<
 			"Sound resource does not exist: "
 			"category=" << category << ", " <<
 			"id=" << id};

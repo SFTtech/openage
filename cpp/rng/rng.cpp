@@ -7,7 +7,7 @@
 #include <string.h>
 
 #include "../crossplatform/timing.h"
-#include "../util/error.h"
+#include "../error/error.h"
 
 
 namespace openage {
@@ -103,7 +103,7 @@ static void hash_bytes(uint64_t *state, const char *data, size_t count) {
 
 void RNG::seed(const void *dat, size_t count) {
 	if (count == 0) {
-		throw util::Error(MSG(err) << "0 bytes supplied as seed data");
+		throw Error(MSG(err) << "0 bytes supplied as seed data");
 	}
 
 	constexpr uint64_t default_seed = 0x0123456789abcdef;
@@ -204,7 +204,7 @@ std::ostream &RNG::to_stream(std::ostream &out) const {
 	    !(out << this->state[1]).fail()) {
 		return out;
 	}
-	throw util::Error(MSG(err) << "Unable to write rng state serialization to output stream");
+	throw Error(MSG(err) << "Unable to write rng state serialization to output stream");
 }
 
 
@@ -213,19 +213,32 @@ std::istream &RNG::from_stream(std::istream &in) {
 	    !(in >> this->state[1]).fail()) {
 		return in;
 	}
-	throw util::Error(MSG(err) << "Unable to read rng state serialization from input stream");
+	throw Error(MSG(err) << "Unable to read rng state serialization from input stream");
 }
 
 
 std::string RNG::to_string() const {
-	std::stringstream strstr;
-	return (strstr << *this).str();
+	util::FString fs;
+	fs << *this;
+	return fs;
 }
 
 
 void RNG::from_string(const std::string &instr) {
 	std::stringstream strstr(instr);
 	strstr >> *this;
+}
+
+
+std::ostream &operator <<(std::ostream &ostream, const RNG &inrng) {
+	inrng.to_stream(ostream);
+	return ostream;
+}
+
+
+std::istream &operator >>(std::istream &instream, RNG &inrng) {
+	inrng.from_stream(instream);
+	return instream;
 }
 
 
@@ -239,7 +252,7 @@ static uint64_t try_random_device() {
 		}
 	}
 	catch (std::exception &e) {
-		throw util::Error(MSG(err) << "failed using std::random_device: " << e.what());
+		throw Error(MSG(err) << "failed using std::random_device: " << e.what());
 	}
 	return rand1;
 }

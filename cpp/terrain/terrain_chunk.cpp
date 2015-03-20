@@ -4,16 +4,17 @@
 
 #include <cmath>
 
-#include "terrain_object.h"
-#include "../engine.h"
+#include "../error/error.h"
 #include "../log/log.h"
+#include "../engine.h"
 #include "../texture.h"
 #include "../coord/tile.h"
 #include "../coord/tile3.h"
 #include "../coord/phys3.h"
 #include "../coord/camgame.h"
-#include "../util/error.h"
 #include "../util/misc.h"
+
+#include "terrain_object.h"
 
 namespace openage {
 
@@ -154,7 +155,7 @@ int TerrainChunk::neighbor_id_by_pos(coord::tile pos) {
  */
 size_t TerrainChunk::tile_position(coord::tile pos) {
 	if (this->neighbor_id_by_pos(pos) != -1) {
-		throw util::Error(MSG(err) << "Tile "
+		throw Error(MSG(err) << "Tile "
 			"(" << pos.ne << ", " << pos.se << ") "
 			"has been requested, but is not part of this chunk.");
 	}

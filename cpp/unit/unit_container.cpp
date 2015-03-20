@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "../terrain/terrain_object.h"
+
 #include "producer.h"
 #include "unit.h"
 #include "unit_container.h"
@@ -32,7 +33,7 @@ bool UnitReference::is_valid() const {
 
 Unit *UnitReference::get() const {
 	if (!this->is_valid()) {
-		throw util::Error{MSG(err) << "Unit reference is no longer valid"};
+		throw Error{MSG(err) << "Unit reference is no longer valid"};
 	}
 	return this->unit_ptr;
 }
@@ -58,7 +59,7 @@ void UnitContainer::set_terrain(std::shared_ptr<Terrain> &t) {
 
 std::shared_ptr<Terrain> UnitContainer::get_terrain() const {
 	if (this->terrain.expired()) {
-		throw util::Error{MSG(err) << "Terrain has expired"};
+		throw Error{MSG(err) << "Terrain has expired"};
 	}
 	return this->terrain.lock();
 }

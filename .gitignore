@@ -8,7 +8,6 @@
 *.o
 *.a
 *.so
-/openage
 
 # python bytecode
 *.pyc

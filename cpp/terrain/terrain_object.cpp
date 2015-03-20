@@ -1,20 +1,21 @@
 // Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
-#include <algorithm>
-
 #include "terrain_object.h"
 
-#include "terrain.h"
-#include "terrain_chunk.h"
-#include "terrain_outline.h"
+#include <algorithm>
+
 #include "../engine.h"
+#include "../error/error.h"
 #include "../texture.h"
 #include "../coord/tile.h"
 #include "../coord/tile3.h"
 #include "../coord/phys3.h"
 #include "../coord/camgame.h"
 #include "../unit/unit.h"
-#include "../util/error.h"
+
+#include "terrain.h"
+#include "terrain_chunk.h"
+#include "terrain_outline.h"
 
 namespace openage {
 
@@ -69,7 +70,7 @@ void TerrainObject::draw_outline() const {
 
 bool TerrainObject::place(object_state init_state) {
 	if (this->state == object_state::removed) {
-		throw util::Error(MSG(err) << "Building cannot change state with no position");
+		throw Error(MSG(err) << "Building cannot change state with no position");
 	}
 
 	// remove any other floating objects
@@ -116,10 +117,10 @@ bool TerrainObject::place(object_state init_state) {
 
 bool TerrainObject::place(std::shared_ptr<Terrain> t, coord::phys3 &position, object_state init_state) {
 	if (this->state != object_state::removed) {
-		throw util::Error(MSG(err) << "This object has already been placed.");
+		throw Error(MSG(err) << "This object has already been placed.");
 	}
 	else if (init_state == object_state::removed) {
-		throw util::Error(MSG(err) << "Cannot place an object with removed state.");
+		throw Error(MSG(err) << "Cannot place an object with removed state.");
 	}
 
 	// use passiblity test
@@ -187,7 +188,7 @@ void TerrainObject::remove() {
 
 void TerrainObject::set_ground(int id, int additional) {
 	if (not this->is_placed()) {
-		throw util::Error(MSG(err) << "Setting ground for object that is not placed yet.");
+		throw Error(MSG(err) << "Setting ground for object that is not placed yet.");
 	}
 
 	coord::tile temp_pos = this->pos.start;

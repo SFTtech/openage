@@ -3,7 +3,7 @@
 #include "category.h"
 
 #include "../log/log.h"
-#include "../util/error.h"
+#include "../error/error.h"
 #include "../util/strings.h"
 
 namespace openage {
@@ -21,7 +21,7 @@ category_t from_category(const gamedata::audio_category_t category) {
 	case gamedata::audio_category_t::TAUNT:
 		return category_t::TAUNT;
 	default:
-		throw util::Error{MSG(err) << "Unknown audio category: " << static_cast<int>(category)};
+		throw Error{MSG(err) << "Unknown audio category: " << static_cast<int>(category)};
 	}
 }
 

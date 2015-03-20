@@ -4,7 +4,7 @@
 #define OPENAGE_DATASTRUCTURE_DOUBLY_LINKED_LIST_H_
 
 #include "../util/compiler.h"
-#include "../util/error.h"
+#include "../error/error.h"
 
 namespace openage {
 namespace datastructure {
@@ -59,7 +59,7 @@ public:
 	 */
 	node_t *insert_first_item(const T &item) {
 		if (this->size() != 0) {
-			throw util::Error{MSG(err) <<
+			throw Error{MSG(err) <<
 				"can't insert item as the first one "
 				"if there's already something in the list."
 			};
@@ -131,7 +131,7 @@ public:
 				current = current->next;
 			} while (current != this->end);
 		}
-		throw util::Error(MSG(err) << "element not found!");
+		throw Error(MSG(err) << "element not found!");
 	}
 
 	/**
@@ -147,7 +147,7 @@ public:
 			this->erase_node(current);
 			return;
 		}
-		throw util::Error{MSG(err) << "element " << pos << " not in linked list!"};
+		throw Error{MSG(err) << "element " << pos << " not in linked list!"};
 	}
 
 	/**
@@ -170,7 +170,7 @@ public:
 	 */
 	T pop_back() {
 		if (this->node_count == 0) {
-			throw util::Error{MSG(err) << "can't pop from an empty list!"};
+			throw Error{MSG(err) << "can't pop from an empty list!"};
 		}
 		T data = this->last->data;
 		node_t *new_last_node = this->last->previous;
@@ -200,7 +200,7 @@ public:
 	 */
 	T pop_front() {
 		if (this->node_count == 0) {
-			throw util::Error{MSG(err) << "can't pop from an empty list!"};
+			throw Error{MSG(err) << "can't pop from an empty list!"};
 		}
 		T data = this->first->data;
 		node_t *new_first_node = this->first->next;

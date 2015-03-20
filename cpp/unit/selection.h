@@ -76,10 +76,8 @@ public:
 	void all_invoke(Command &cmd);
 
 private:
-
 	/**
-	 * must be given a valid unit to
-	 * display text attribute indicators
+	 * Must be given a valid unit to display text attribute indicators.
 	 */
 	void show_attributes(Unit *);
 

@@ -32,4 +32,4 @@ bool Player::owns(Unit &unit) const {
 	return false;
 }
 
-}
+} // openage

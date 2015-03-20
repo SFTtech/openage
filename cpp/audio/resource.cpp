@@ -2,10 +2,11 @@
 
 #include "resource.h"
 
+#include "../engine.h"
+#include "../error/error.h"
+
 #include "dynamic_resource.h"
 #include "in_memory_resource.h"
-#include "../engine.h"
-#include "../util/error.h"
 
 namespace openage {
 namespace audio {
@@ -44,7 +45,7 @@ std::shared_ptr<Resource> Resource::create_resource(category_t category, int id,
 	case loader_policy_t::DYNAMIC:
 		return std::make_shared<DynamicResource>(category, id, path, format);
 	default:
-		throw util::Error{MSG(err) << "Unsupported loader policy: " << loader_policy};
+		throw Error{MSG(err) << "Unsupported loader policy: " << loader_policy};
 	}
 }
 

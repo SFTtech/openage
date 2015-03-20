@@ -6,7 +6,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "log.h"
+#include "logsink.h"
 
 namespace openage {
 namespace log {
@@ -16,7 +16,7 @@ public:
 	FileSink(const char *filename, bool append);
 
 private:
-	virtual void output_log_message(const Message &msg, LogSource *source);
+	virtual void output_log_message(const message &msg, LogSource *source);
 
 	std::ofstream outfile;
 };

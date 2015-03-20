@@ -2,11 +2,12 @@
 
 #include "console.h"
 
-#include "draw.h"
-#include "../callbacks.h"
 #include "../log/log.h"
-#include "../util/error.h"
+#include "../error/error.h"
+#include "../callbacks.h"
 #include "../util/strings.h"
+
+#include "draw.h"
 
 namespace openage {
 namespace console {
@@ -50,7 +51,7 @@ void Console::load_colors(std::vector<gamedata::palette_color> &colortable) {
 	}
 
 	if (termcolors.size() != 256) {
-		throw util::Error(MSG(err) << "Exactly 256 terminal colors are required.");
+		throw Error(MSG(err) << "Exactly 256 terminal colors are required.");
 	}
 }
 

@@ -1,24 +1,26 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_TESTING_TESTLIST_H_
 #define OPENAGE_TESTING_TESTLIST_H_
 
-#include <map>
-
 #include "testing.h"
 
+// pxd: from libcpp.string cimport string
+// pxd: from libcpp.vector cimport vector
+
+
+namespace openage {
 namespace testing {
 
-/**
- * list of all available tests
- */
-extern std::map<std::string, test_function_t> tests;
 
 /**
- * list of all available demos
+ * Invokes the test or demo with the given name.
+ *
+ * pxd: void run_method(string name) except +
  */
-extern std::map<std::string, demo_function_t> demos;
+void run_method(const std::string &name);
 
-} //namespace testing
+
+}} //namespace openage::testing
 
 #endif

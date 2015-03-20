@@ -11,11 +11,11 @@ namespace job {
 /** An exception that is thrown when a job wants to abort itself. */
 class JobAbortedException : public std::exception {
 public:
-	JobAbortedException() = default;
-	~JobAbortedException() = default;
+	virtual const char *what() const noexcept {
+		return "job aborted";
+	}
 };
 
-}
-}
+}} // openage::job
 
 #endif

@@ -10,12 +10,13 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "error/error.h"
+#include "log/log.h"
+
 #include "callbacks.h"
 #include "config.h"
 #include "texture.h"
-#include "log/log.h"
 #include "util/color.h"
-#include "util/error.h"
 #include "util/fps.h"
 #include "util/opengl.h"
 #include "util/strings.h"
@@ -45,13 +46,13 @@ void Engine::create(util::Dir *data_dir, const char *windowtitle) {
 		// reset the pointer to the new engine
 		Engine::instance = new Engine(data_dir, windowtitle);
 	} else {
-		throw util::Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
+		throw Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
 	}
 }
 
 void Engine::destroy() {
 	if (Engine::instance == nullptr) {
-		throw util::Error{MSG(err) << "You tried to destroy a nonexistant engine."};
+		throw Error{MSG(err) << "You tried to destroy a nonexistant engine."};
 	}
 	else {
 		delete Engine::instance;
@@ -84,7 +85,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	this->register_resize_action(this);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		throw util::Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
+		throw Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
 	} else {
 		log::log(MSG(info) << "Initialized SDL video subsystems.");
 	}
@@ -106,25 +107,25 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	);
 
 	if (this->window == nullptr) {
-		throw util::Error(MSG(err) << "Failed to create SDL window: " << SDL_GetError());
+		throw Error(MSG(err) << "Failed to create SDL window: " << SDL_GetError());
 	}
 
 	// load support for the PNG image formats, jpg bit: IMG_INIT_JPG
 	int wanted_image_formats = IMG_INIT_PNG;
 	int sdlimg_inited = IMG_Init(wanted_image_formats);
 	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		throw util::Error(MSG(err) << "Failed to init PNG support: " << IMG_GetError());
+		throw Error(MSG(err) << "Failed to init PNG support: " << IMG_GetError());
 	}
 
 	this->glcontext = SDL_GL_CreateContext(this->window);
 
 	if (this->glcontext == nullptr) {
-		throw util::Error(MSG(err) << "Failed creating OpenGL context: " << SDL_GetError());
+		throw Error(MSG(err) << "Failed creating OpenGL context: " << SDL_GetError());
 	}
 
 	// check the OpenGL version, for shaders n stuff
 	if (!epoxy_is_desktop_gl() || epoxy_gl_version() < 21) {
-		throw util::Error(MSG(err) << "OpenGL 2.1 not available");
+		throw Error(MSG(err) << "OpenGL 2.1 not available");
 	}
 
 	// to quote the standard doc:
@@ -136,14 +137,14 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
 	log::log(MSG(dbg) << "Maximum supported texture size: " << max_texture_size);
 	if (max_texture_size < 1024) {
-		throw util::Error(MSG(err) << "Maximum supported texture size too small: " << max_texture_size);
+		throw Error(MSG(err) << "Maximum supported texture size too small: " << max_texture_size);
 	}
 
 	int max_texture_units;
 	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_texture_units);
 	log::log(MSG(dbg) << "Maximum supported texture units: " << max_texture_units);
 	if (max_texture_units < 2) {
-		throw util::Error(MSG(err) << "Your GPU has too less texture units: " << max_texture_units);
+		throw Error(MSG(err) << "Your GPU has too less texture units: " << max_texture_units);
 	}
 
 	// vsync on
@@ -168,7 +169,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	// initialize audio
 	auto devices = audio::AudioManager::get_devices();
 	if (devices.empty()) {
-		throw util::Error{MSG(err) << "No audio devices found"};
+		throw Error{MSG(err) << "No audio devices found"};
 	}
 }
 
@@ -377,14 +378,15 @@ int64_t Engine::lastframe_duration_nsec() {
 void Engine::render_text(coord::window position, size_t size, const char *format, ...) {
 	auto it = this->fonts.find(size);
 	if (it == this->fonts.end()) {
-		throw util::Error(MSG(err) << "Unknown font size requested: " << size);
+		throw Error(MSG(err) << "Unknown font size requested: " << size);
 	}
 
 	Font *font = it->second.get();
 
+	std::string buf;
 	va_list vl;
 	va_start(vl, format);
-	std::string buf = util::vsformat(format, vl);
+	util::vsformat(format, vl, buf);
 	va_end(vl);
 
 	font->render_static(position.x, position.y, buf.c_str());

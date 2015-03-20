@@ -92,7 +92,7 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	if (!standing) {
 
 		// indicates problems with data converion
-		throw util::Error(MSG(err) << "Unit id " << this->unit_data.id0
+		throw Error(MSG(err) << "Unit id " << this->unit_data.id0
 			<< " has invalid graphic data, try reconverting the data");
 	}
 	this->graphics[graphic_type::standing] = standing;

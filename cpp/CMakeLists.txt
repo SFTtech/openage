@@ -5,25 +5,27 @@
 # add new sources here, dependencies for linking and including
 # are specified below the source file list.
 
-declare_executable(${PROJECT_NAME})
+declare_binary(${PROJECT_NAME})
 
 add_sources(${PROJECT_NAME}
-	main.cpp
-	args.cpp
-	game_main.cpp
-	game_save.cpp
 	assetmanager.cpp
 	callbacks.cpp
 	datamanager.cpp
 	engine.cpp
 	font.cpp
+	game_main.cpp
+	game_save.cpp
 	handlers.cpp
+	main.cpp
 	player.cpp
-	python.cpp
 	screenshot.cpp
 	texture.cpp
 
 	config.cpp
+)
+
+pxdgen(
+	main.h
 )
 
 
@@ -33,10 +35,12 @@ add_subdirectory("console")
 add_subdirectory("coord")
 add_subdirectory("crossplatform")
 add_subdirectory("datastructure")
+add_subdirectory("error")
 add_subdirectory("log")
 add_subdirectory("job")
 add_subdirectory("keybinds")
 add_subdirectory("pathfinding")
+add_subdirectory("pyinterface")
 add_subdirectory("shader")
 add_subdirectory("terrain")
 add_subdirectory("testing")
@@ -44,15 +48,12 @@ add_subdirectory("unit")
 add_subdirectory("util")
 add_subdirectory("rng")
 
-# finalize testing
-finalize_tests(cpp)
-
 # run codegen, add files to executable
 codegen_run()
 add_sources(${PROJECT_NAME} GENERATED ${CODEGEN_TARGET_TUS})
 
 # after this point, no further sources can be added to the executable
-finalize_executable(${PROJECT_NAME})
+finalize_binary(${PROJECT_NAME} library allow_no_undefined)
 
 # library dependency specification
 
@@ -78,6 +79,19 @@ find_package(FTGL REQUIRED)
 find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
 pkg_search_module(EPOXY REQUIRED epoxy)
+
+target_link_libraries(${PROJECT_NAME} dl rt)
+
+if(WANT_BACKTRACE)
+	find_package(Backtrace)
+endif()
+
+if(BACKTRACE_FOUND)
+	target_link_libraries(${PROJECT_NAME} "${BACKTRACE_LIBRARY}")
+	have_config_option(backtrace BACKTRACE true)
+else()
+	have_config_option(backtrace BACKTRACE false)
+endif()
 
 if(WANT_GPERFTOOLS_PROFILER OR WANT_GPERFTOOLS_TCMALLOC)
 	find_package(GPerfTools)
@@ -123,7 +137,6 @@ include_directories(
 	${FTGL_INCLUDE_DIRS}
 	${EPOXY_INCLUDE_DIRS}
 	${OPUS_INCLUDE_DIRS}
-	${PYTHON_INCLUDE_DIR}
 	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
 )
@@ -137,11 +150,10 @@ target_link_libraries(${PROJECT_NAME}
 	${MATH_LIB}
 	${OPENGL_LIBRARY}
 	${OPUS_LIBRARIES}
-	${PYTHON_LIBRARY}
 	${SDL2IMAGE_LIBRARIES}
 	${SDL2_LIBRARY}
 	${UTIL_LIB}
 )
 
 # main binary installation
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)

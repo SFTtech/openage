@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+
+# Together with the Makefile, ./configure provides an autotools-like build
+# experience. For more info, see --help and doc/buildsystem.
+
 import sys
 if not sys.version_info >= (3, 3):
     print("openage requires Python 3.3 or higher")
@@ -28,9 +34,12 @@ def getenv(*varnames, default=""):
 
 # argparsing
 description = """./configure is a convenience script that creates the build \
-directory and invokes cmake for an out-of-source build.
+directory,
+symlinks it, and invokes cmake for an out-of-source build.
 
-don't feel obliged to use this, especially if you're packaging openage."""
+Nobody is stopping you from skipping ./configure and Makefile,
+and using CMake directly (e.g. when packaging, or using an IDE).
+For your convenience, ./configure even prints the direct CMake invocation!"""
 
 epilog = """environment variables like CXX and CXXFLAGS are honored, \
 but overwritten by command-line arguments."""
@@ -91,6 +100,7 @@ except:
 defines = {}
 
 options = {
+    "backtrace":           "if_available",
     "inotify":             "if_available",
     "gperftools-tcmalloc": False,
     "gperftools-profiler": "if_available",
@@ -99,7 +109,8 @@ options = {
 
 def sanitize_option_name(option):
     if option not in options:
-        ap.error("unknown option: '{}'".format(option))
+        ap.error("unknown option: '{}'.\navailable options:\n\t{}".format(
+            option, '\n\t'.join(options)))
 
 if args.with_:
     for x in args.with_:
@@ -232,7 +243,7 @@ if not flags and not ldflags:
     elif omode == '1':
         flags.append("-O1")
     elif omode == 'g':
-        if csuite in {'gcc'}:
+        if csuite in {'gnu'}:
             flags.append("-Og")
         else:
             flags.append("-O1")
@@ -242,7 +253,7 @@ if not flags and not ldflags:
         flags.append("-O3")
         flags.append("-march=native")
 
-        if csuite in {'gcc'}:
+        if csuite in {'gnu'}:
             flags.append("-flto=%d" % multiprocessing.cpu_count())
             ldflags.append("-flto=%d" % multiprocessing.cpu_count())
 
@@ -296,7 +307,6 @@ def forcesymlink(linkto, name):
 
 # create the build dir and symlink it to 'bin'
 forcesymlink(bindir, 'bin')
-forcesymlink('%s/cpp/openage' % bindir, 'openage')
 
 # the project root directory contains this configure file.
 project_root = os.path.dirname(os.path.realpath(__file__))

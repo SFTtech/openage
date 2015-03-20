@@ -4,7 +4,7 @@
 
 #include <epoxy/gl.h>
 
-#include "error.h"
+#include "../error/error.h"
 
 namespace openage {
 namespace util {
@@ -63,7 +63,7 @@ void gl_check_error() {
 			// unknown error state
 			errormsg = "unknown error";
 		}
-		throw util::Error(MSG(err) <<
+		throw Error(MSG(err) <<
 			"OpenGL error state after running draw method: " << glerrorstate << "\n"
 			"\t" << errormsg);
 	}

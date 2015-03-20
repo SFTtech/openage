@@ -1,22 +1,12 @@
 # type 'make help' for a list/explaination of recipes.
 
 # original asset directory
-AGE2DIR=
-
-# this list specifies needed media files for the convert script
-# TODO: don't rely on the make system, let our binary call the convert script
-needed_media = graphics:*.* terrain:*.* sounds0:*.* sounds1:*.* gamedata0:*.* gamedata1:*.* gamedata2:*.* interface:*.*
-
-binary = ./openage
-runargs = --data=assets
 BUILDDIR = bin
 
 MAKEARGS += $(if $(VERBOSE),,--no-print-directory)
 
-RUN_PYMODULE = buildsystem/runinenv PYTHONPATH=prependpath:py -- python3 -m
-
-.PHONY: all
-all: openage check
+.PHONY: default
+default: build
 
 $(BUILDDIR):
 	@echo "call ./configure to initialize the build directory."
@@ -24,49 +14,40 @@ $(BUILDDIR):
 	@echo ""
 	@false
 
-.PHONY: openage
-openage: $(BUILDDIR)
-	@$(MAKE) $(MAKEARGS) -C $(BUILDDIR)
-
 .PHONY: install
 install: $(BUILDDIR)
 	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) install
 
-.PHONY: media
-media: $(BUILDDIR)
-	@if test ! -d "$(AGE2DIR)"; then echo "you need to specify AGE2DIR (e.g. /home/user/.wine/drive_c/age)."; false; fi
-	$(RUN_PYMODULE) openage.convert -v media -o "assets/converted" "$(AGE2DIR)" $(needed_media)
-
-.PHONY: medialist
-medialist:
-	@echo "$(needed_media)"
-
 .PHONY: run
-run: openage
-	$(binary) $(runargs)
+run: build
+	python3 -m openage.game
 
-.PHONY: runval
-runval: openage
-	valgrind --leak-check=full --track-origins=yes -v $(binary) $(runargs)
-
-.PHONY: rungdb
-rungdb: openage
-	gdb --args $(binary) $(runargs)
-
-.PHONY: runtest
-runtest: $(binary)
-	@CTEST_OUTPUT_ON_FAILURE=1 $(MAKE) $(MAKEARGS) -C $(BUILDDIR) test
+.PHONY: tests
+tests: build
+	python3 -m openage test -a
 
 .PHONY: test
-test: runtest check
+test: tests checkfast
+
+.PHONY: build
+build: $(BUILDDIR)
+	@$(MAKE) $(MAKEARGS) -C $(BUILDDIR)
+
+.PHONY: openage
+openage: $(BUILDDIR)
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) openage
 
 .PHONY: codegen
 codegen: $(BUILDDIR)
 	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) codegen
 
-.PHONY: pymodules
-pymodules: $(BUILDDIR)
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) pymodules
+.PHONY: pxdgen
+pxdgen: $(BUILDDIR)
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) pxdgen
+
+.PHONY: python
+python: $(BUILDDIR)
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) python
 
 .PHONY: doc
 doc: $(BUILDDIR)
@@ -82,21 +63,26 @@ cleancodegen: $(BUILDDIR)
 	@# removes all generated sourcefiles
 	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleancodegen
 
-.PHONY: cleanpymodules
-cleanpymodules: $(BUILDDIR)
+.PHONY: cleanpxdgen
+cleanpxdgen: $(BUILDDIR)
+	@# removes all generated .pxd files
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleanpxdgen
+
+.PHONY: cleanpython
+cleanpython: $(BUILDDIR)
 	@# removes all built python modules (+ extension modules)
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleanpymodules
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleanpython
 	@# removes all in-place built extension modules
-	@find py -name "*.so" -type f -print -delete
+	@find openage -name "*.so" -type f -print -delete
 
 .PHONY: clean
-clean: $(BUILDDIR) cleancodegen cleanpymodules cleanelf
-	@# removes object files, binaries, pymodules, generated code
+clean: $(BUILDDIR) cleancodegen cleanpython cleanpxdgen cleanelf
+	@# removes object files, binaries, py modules, generated code
 
 .PHONY: cleaninsourcebuild
 cleaninsourcebuild:
 	@echo "cleaning remains of in-source builds"
-	rm -rf DartConfiguration.tcl codegen_depend_cache codegen_target_cache tests_cpp tests_python Doxyfile Testing py/setup.py
+	rm -rf DartConfiguration.tcl codegen_depend_cache codegen_target_cache Doxyfile Testing py/setup.py
 	@find . -not -path "./.bin/*" -type f -name CTestTestfile.cmake              -print -delete
 	@find . -not -path "./.bin/*" -type f -name cmake_install.cmake              -print -delete
 	@find . -not -path "./.bin/*" -type f -name CMakeCache.txt                   -print -delete
@@ -107,7 +93,7 @@ cleaninsourcebuild:
 cleanbuilddirs: cleaninsourcebuild
 	@if test -d bin; then $(MAKE) $(MAKEARGS) -C bin clean || true; fi
 	@echo cleaning symlinks to build directories
-	rm -f openage bin
+	rm -f bin
 	@echo cleaning build directories
 	rm -rf .bin
 	@echo cleaning cmake-time generated code
@@ -126,28 +112,21 @@ mrproperer: mrproper
 	@echo removing ANYTHING that is not checked into the git repo
 	git clean -x -d -f
 
-.PHONY: checkheaderguards
-checkheaderguards:
-	@$(RUN_PYMODULE) openage.codecompliance --headerguards
+.PHONY: checkfast
+checkfast:
+	python3 -m buildsystem.codecompliance --fast
 
-.PHONY: checklegal
-checklegal:
-	@$(RUN_PYMODULE) openage.codecompliance --legal --authors
+.PHONY: checkall
+checkall:
+	python3 -m buildsystem.codecompliance --all
 
-.PHONY: checklegalfull
-checklegalfull:
-	@$(RUN_PYMODULE) openage.codecompliance --legal --authors --test-git-years
+.PHONY: checkchanged
+checkchanged:
+	python3 -m buildsystem.codecompliance --all --only-changed-files=origin/master
 
-.PHONY: check
-check:
-	@$(RUN_PYMODULE) openage.codecompliance --quick
-
-.PHONY: checkfull
-checkfull:
-	@$(RUN_PYMODULE) openage.codecompliance --all
-
-.PHONY: runci
-runci: checkfull openage runtest
+.PHONY: checkuncommited
+checkuncommited:
+	python3 -m buildsystem.codecompliance --all --only-changed-files=HEAD
 
 .PHONY: help
 help: $(BUILDDIR)/Makefile
@@ -157,15 +136,17 @@ help: $(BUILDDIR)/Makefile
 	@echo ""
 	@echo "targets:"
 	@echo ""
-	@echo "openage            -> compile main binary"
+	@echo "build              -> build entire project"
+	@echo "openage            -> build libopenage"
+	@echo "pxdgen             -> generate .pxd files"
+	@echo "python             -> compile python modules"
 	@echo "codegen            -> generate cpp sources"
-	@echo "media              -> convert media files, usage: $(MAKE) media AGE2DIR=~/.wine/ms-games/age2"
-	@echo "medialist          -> list needed media files for current version"
 	@echo "doc                -> create documentation files"
 	@echo ""
 	@echo "cleanelf           -> remove C++ ELF files"
 	@echo "cleancodegen       -> undo '$(MAKE) codegen'"
-	@echo "cleanpymodules     -> undo '$(MAKE) pymodules'"
+	@echo "cleanpython        -> undo '$(MAKE) python'"
+	@echo "cleanpxdgen        -> undo '$(MAKE) pxdgen'"
 	@echo "clean              -> undo '$(MAKE)' (all of the above)"
 	@echo "cleanbuilddirs     -> undo '$(MAKE)' and './configure'"
 	@echo "cleaninsourcebuild -> undo in-source build accidents"
@@ -173,18 +154,14 @@ help: $(BUILDDIR)/Makefile
 	@echo "mrproperer         -> this recipe is serious business. it will leave no witnesses."
 	@echo ""
 	@echo "run                -> run openage"
-	@echo "runval             -> run openage in valgrind, analyzing for memleaks"
-	@echo "rungdb             -> run openage in gdb"
-	@echo "runci              -> run the continuous integration script (checkfull, tests)"
-	@echo "runtest            -> run the tests (py modules + openage)"
+	@echo "tests              -> run the tests (py + cpp)"
 	@echo ""
-	@echo "checkheaderguards  -> check header guards"
-	@echo "checklegal         -> check legal header texts, authors list, 3rd-party file list"
-	@echo "check              -> all of the above"
-	@echo "checklegalfull     -> as 'checklegal', but also check git modification dates vs. copyright years"
-	@echo "checkfull          -> all of the above"
+	@echo "checkall           -> full code compliance check"
+	@echo "checkfast          -> fast checks only"
+	@echo "checkchanged       -> full check for all files changed since origin/master"
+	@echo "checkuncommited    -> full check for all currently uncommited files"
 	@echo ""
-	@echo "test               -> runtest + check. this is what you should use for regular development building"
+	@echo "test               -> tests + checkfast. this is what you should use for regular devbuilds"
 	@echo ""
 	@echo "CMake help:"
 	@test -d $(BUILDDIR) && $(MAKE) -C $(BUILDDIR) help || echo "no builddir is configured"

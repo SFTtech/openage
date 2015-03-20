@@ -14,5 +14,3 @@ add_sources(${PROJECT_NAME}
 	vec3f.cpp
 	window.cpp
 )
-
-add_test_cpp(openage::coord::tests::coord "test functionality of the coord system")

@@ -7,7 +7,7 @@
 
 namespace openage {
 
-/** 
+/**
  * probably becomes part of the nyan game spec in future
  */
 enum class game_resource {

@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "../error/error.h"
 #include "../log/log.h"
-#include "../util/error.h"
 #include "../util/file.h"
 #include "../util/strings.h"
 
@@ -56,7 +56,7 @@ Shader::Shader(GLenum type, const char *source) {
 
 		glDeleteShader(this->id);
 
-		throw util::Error(errmsg);
+		throw Error(errmsg);
 	}
 }
 

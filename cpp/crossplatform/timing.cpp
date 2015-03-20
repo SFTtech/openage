@@ -1,9 +1,10 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
+#include "timing.h"
+
 #include <cstring>
 
-#include "timing.h"
-#include "../util/error.h"
+#include "../error/error.h"
 
 #ifdef __linux
 #include <time.h>
@@ -20,7 +21,7 @@ int64_t posix_get_time(clockid_t clk_id) {
 	struct timespec t;
 
 	if (clock_gettime(clk_id, &t) != 0) {
-		throw util::Error(MSG(err) << "clock_gettime failed: " << strerror(errno));
+		throw Error(MSG(err) << "clock_gettime failed: " << strerror(errno));
 	};
 
 	return static_cast<int64_t>(t.tv_sec) * 1000000000L + static_cast<int64_t>(t.tv_nsec);
@@ -64,7 +65,7 @@ int64_t get_monotonic_time() {
 		mach_timebase_info_data_t info;
 
 		if (mach_timebase_info(&info) != 0) {
-			throw util::Error(MSG(err) << "could not determine monotime: " << strerror(errno));
+			throw Error(MSG(err) << "could not determine monotime: " << strerror(errno));
 		}
 
 		numerator = info.numer;

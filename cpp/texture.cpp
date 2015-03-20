@@ -10,7 +10,7 @@
 #include <cstdio>
 
 #include "log/log.h"
-#include "util/error.h"
+#include "error/error.h"
 #include "util/file.h"
 
 namespace openage {
@@ -73,7 +73,7 @@ void Texture::load() {
 	surface = IMG_Load(this->filename.c_str());
 
 	if (!surface) {
-		throw util::Error(MSG(err) <<
+		throw Error(MSG(err) <<
 			"Could not load texture from " <<
 			filename << ": " << IMG_GetError());
 	} else {
@@ -91,7 +91,7 @@ void Texture::load() {
 		texture_format_out = GL_RGBA;
 		break;
 	default:
-		throw util::Error(MSG(err) <<
+		throw Error(MSG(err) <<
 			"Unknown texture bit depth for " << filename << ": " <<
 			surface->format->BytesPerPixel << " bytes per pixel");
 
@@ -352,7 +352,9 @@ const gamedata::subtexture *Texture::get_subtexture(int subid) const {
 		return &this->subtextures[subid];
 	}
 	else {
-		throw util::Error(MSG(err) << "Unknown subtexture requested: " << subid);
+		throw Error(MSG(err) <<
+			"Unknown subtexture requested for texture " <<
+			this->filename << ": " << subid);
 	}
 }
 

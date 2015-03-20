@@ -5,30 +5,31 @@
 #include <iostream>
 #include <iomanip>
 
-#include "log.h"
+#include "named_logsource.h"
 
 namespace openage {
 namespace log {
 
 
-void StdOutSink::output_log_message(const Message &msg, LogSource *source) {
-	// TODO: Add some sort of sophisticated filter to ignore duplicates.
-	//       Or maybe that should be part of the regular TODO filter chains?
-
-	level_properties props = get_level_properties(msg.meta.lvl);
-
+void StdOutSink::output_log_message(const message &msg, LogSource *source) {
 	// print log level (width 4)
-	std::cout << "\x1b[" << props.colorcode << "m" << std::setw(4) << props.name << "\x1b[m" " ";
+	std::cout << "\x1b[" << msg.lvl->colorcode << "m" << std::setw(4) << msg.lvl->name << "\x1b[m" " ";
 
-	if (msg.meta.thread_id != 0) {
-		std::cout << "\x1b[32m" "[T" << msg.meta.thread_id << "]\x1b[m ";
+	if (msg.thread_id != 0) {
+		std::cout << "\x1b[32m" "[T" << msg.thread_id << "]\x1b[m ";
 	}
 
-	if (source != general_log_source) {
+	if (source != &general_source()) {
 		std::cout << "\x1b[36m" "[" << source->logsource_name() << "]\x1b[m ";
 	}
 
 	std::cout << msg.text << std::endl;
+}
+
+
+StdOutSink &global_stdoutsink() {
+	static StdOutSink value;
+	return value;
 }
 
 

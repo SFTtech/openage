@@ -16,4 +16,10 @@ std::string NamedLogSource::logsource_name() {
 }
 
 
+NamedLogSource &general_source() {
+	static NamedLogSource value{"general"};
+	return value;
+}
+
+
 }} // namespace openage::log

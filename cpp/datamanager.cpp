@@ -53,18 +53,18 @@ index_t DataManager::get_slp_graphic(index_t slp) {
 
 Texture *DataManager::get_texture(index_t graphic_id) {
 	if (graphic_id <= 0 || this->graphics.count(graphic_id) == 0) {
-		log::log(MSG(info) << "  -> ignoring graphics_id: " << graphic_id);
+		log::log(DBG << "  -> ignoring graphics_id: " << graphic_id);
 		return nullptr;
 	}
 
 	int slp_id = this->graphics[graphic_id]->slp_id;
 	if (slp_id <= 0) {
-		log::log(MSG(info) << "  -> ignoring slp_id: " << slp_id);
+		log::log(DBG << "  -> ignoring slp_id: " << slp_id);
 		return nullptr;
 	}
 
 	log::log(MSG(info) << "   slp id/name: " << slp_id << " " << this->graphics[graphic_id]->name0);
-	std::string tex_fname = util::sformat("converted/Data/graphics.drs/%d.slp.png", slp_id);
+	std::string tex_fname = util::sformat("converted/graphics/%d.slp.png", slp_id);
 
 	// get tex if file is available
 	Texture *tex = nullptr;
@@ -77,7 +77,7 @@ Texture *DataManager::get_texture(index_t graphic_id) {
 std::shared_ptr<UnitTexture> DataManager::get_unit_texture(index_t unit_id) {
 	if (this->unit_textures.count(unit_id) == 0) {
 		if (unit_id > 0) {
-			log::log(MSG(info) << "  -> ignoring unit_id: " << unit_id);
+			log::log(DBG << "  -> ignoring unit_id: " << unit_id);
 		}
 		return nullptr;
 	}
@@ -87,7 +87,7 @@ std::shared_ptr<UnitTexture> DataManager::get_unit_texture(index_t unit_id) {
 Sound *DataManager::get_sound(index_t sound_id) {
 	if (this->available_sounds.count(sound_id) == 0) {
 		if (sound_id > 0) {
-			log::log(MSG(info) << "  -> ignoring sound_id: " << sound_id);
+			log::log(DBG << "  -> ignoring sound_id: " << sound_id);
 		}
 		return nullptr;
 	}
@@ -97,7 +97,7 @@ Sound *DataManager::get_sound(index_t sound_id) {
 UnitType *DataManager::get_type(index_t type_id) {
 	if (this->producers.count(type_id) == 0) {
 		if (type_id > 0) {
-			log::log(MSG(info) << "  -> ignoring type_id: " << type_id);
+			log::log(DBG << "  -> ignoring type_id: " << type_id);
 		}
 		return nullptr;
 	}
@@ -108,13 +108,13 @@ UnitType *DataManager::get_type_index(size_t type_index) {
 	if (type_index < available_objects.size()) {
 		return available_objects[type_index].get();
 	}
-	log::log(MSG(info) << "  -> ignoring type_index: " << type_index);
+	log::log(DBG << "  -> ignoring type_index: " << type_index);
 	return nullptr;
 }
 
 const gamedata::graphic *DataManager::get_graphic_data(index_t grp_id) {
 	if (this->graphics.count(grp_id) == 0) {
-		log::log(MSG(info) << "  -> ignoring grp_id: " << grp_id);
+		log::log(DBG << "  -> ignoring grp_id: " << grp_id);
 		return nullptr;
 	}
 	return this->graphics[grp_id];
@@ -122,7 +122,7 @@ const gamedata::graphic *DataManager::get_graphic_data(index_t grp_id) {
 
 const gamedata::unit_building *DataManager::get_building_data(index_t unit_id) {
 	if (this->buildings.count(unit_id) == 0) {
-		log::log(MSG(info) << "  -> ignoring unit_id: " << unit_id);
+		log::log(DBG << "  -> ignoring unit_id: " << unit_id);
 		return nullptr;
 	}
 	return this->buildings[unit_id];
@@ -151,13 +151,9 @@ void DataManager::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata
 	}
 
 	auto get_sound_file_location = [asset_dir](int32_t resource_id) -> std::string {
-		std::string snd_file_location;
-		// We check in sounds_x1.drs folder first in case we need to override
-		for (const char *sound_dir : {"sounds_x1.drs", "sounds.drs"}) {
-			snd_file_location = util::sformat("Data/%s/%d.opus", sound_dir, resource_id);
-			if (util::file_size(asset_dir.join(snd_file_location)) > 0) {
-				return snd_file_location;
-			}
+		std::string snd_file_location = util::sformat("sounds/%d.opus", resource_id);
+		if (util::file_size(asset_dir.join(snd_file_location)) > 0) {
+			return snd_file_location;
 		}
 
 		// We could not find the sound file for the provided resource_id in both directories
@@ -172,7 +168,7 @@ void DataManager::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata
 		for (gamedata::sound_item &item : sound.sound_items.data) {
 			std::string snd_file_location = get_sound_file_location(item.resource_id);
 			if (snd_file_location.empty()) {
-				log::log(MSG(warn) <<
+				log::log(SPAM <<
 					"   No sound file found for resource_id " <<
 					item.resource_id << ", ignoring...");
 				continue;
@@ -243,7 +239,6 @@ void DataManager::load_living(const gamedata::unit_living &unit, unit_type_list 
 
 		auto producer_ptr = list.back().get();
 		this->producers[producer_ptr->id()] = producer_ptr;
-		
 	}
 }
 
@@ -334,9 +329,9 @@ void Sound::play() {
 	try {
 		audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();
 	}
-	catch(util::Error &e) {
+	catch (Error &e) {
 		log::log(MSG(warn) << "cannot play: " << e);
 	}
 }
 
-}
+} // openage

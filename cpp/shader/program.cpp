@@ -7,11 +7,11 @@
 #include <stdio.h>
 #include <iostream>
 
+#include "../error/error.h"
 #include "../log/log.h"
 #include "../util/compiler.h"
 #include "../util/file.h"
 #include "../util/strings.h"
-#include "../util/error.h"
 
 namespace openage {
 namespace shader {
@@ -98,7 +98,7 @@ void Program::check(GLenum what_to_check) {
 		errormsg << "Program " << what_str << " failed\n" << infolog;
 		delete[] infolog;
 
-		throw util::Error(errormsg);
+		throw Error(errormsg);
 	}
 }
 
@@ -116,7 +116,7 @@ GLint Program::get_uniform_id(const char *name) {
 
 GLint Program::get_attribute_id(const char *name) {
 	if (unlikely(!this->is_linked)) {
-		throw util::Error(MSG(err) <<
+		throw Error(MSG(err) <<
 			"Attribute " << name <<
 			" was queried before program was linked!");
 	}
@@ -125,7 +125,7 @@ GLint Program::get_attribute_id(const char *name) {
 
 	if (unlikely(aid == -1)) {
 		this->dump_active_attributes();
-		throw util::Error(MSG(err) <<
+		throw Error(MSG(err) <<
 			"Attribute " << name << " queried but not found or active"
 			" (pwnt by the compiler).");
 	}
@@ -139,7 +139,7 @@ void Program::set_attribute_id(const char *name, GLuint id) {
 	}
 	else {
 		//TODO: maybe enable overwriting, but after that relink the program
-		throw util::Error(MSG(err) << "assigned attribute " << name << " = " << id << " after program was linked!");
+		throw Error(MSG(err) << "assigned attribute " << name << " = " << id << " after program was linked!");
 	}
 }
 

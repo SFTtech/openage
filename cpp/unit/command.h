@@ -27,7 +27,7 @@ namespace std {
 /**
  * hasher for game command flags
  */
-template<> 
+template<>
 struct hash<openage::command_flag> {
 	typedef underlying_type<openage::command_flag>::type underlying_type;
 	typedef hash<underlying_type>::result_type result_type;
@@ -69,9 +69,9 @@ public:
 	 */
 	Command(const Player &, UnitType *t);
 
-	/** 
+	/**
 	 * place building foundation
-	 */ 
+	 */
 	Command(const Player &, UnitType *, coord::phys3);
 
 	bool has_unit() const;

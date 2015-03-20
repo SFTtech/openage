@@ -5,6 +5,7 @@
 #ifndef OPENAGE_CONFIG_H_
 #define OPENAGE_CONFIG_H_
 
+#define WITH_BACKTRACE ${WITH_BACKTRACE}
 #define WITH_INOTIFY ${WITH_INOTIFY}
 #define WITH_GPERFTOOLS_PROFILER ${WITH_GPERFTOOLS_PROFILER}
 #define WITH_GPERFTOOLS_TCMALLOC ${WITH_GPERFTOOLS_TCMALLOC}
@@ -18,7 +19,6 @@ extern const char *const config_option_string;
 
 constexpr const char *buildsystem_sourcefile_dir = "${CMAKE_SOURCE_DIR}/";
 
-} // namespace config
-} // namespace openage
+}} // openage::config
 
 #endif

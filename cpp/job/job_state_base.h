@@ -13,7 +13,7 @@ namespace job {
 /**
  * An abstract base class for a shared state of a job. A job state keeps track
  * of its execution state and store's the job's result. Further it keeps track
- * of exceptions that occured during the job's execution. The real shared state
+ * of exceptions that occurred during the job's execution. The real shared state
  * implementation is done in templated subclasses. This is necessary to support
  * arbitrary result types.
  */

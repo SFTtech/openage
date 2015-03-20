@@ -3,195 +3,138 @@
 #ifndef OPENAGE_LOG_MESSAGE_H_
 #define OPENAGE_LOG_MESSAGE_H_
 
-#include <memory>
+// pxd: from libc.stdint cimport int64_t
+#include <cstdint>
+// pxd: from libcpp.string cimport string
+#include <string>
 
-#include "level.h"
-#include "../util/unique_identifier.h"
 #include "../config.h"
 #include "../util/constexpr.h"
-#include "../util/sstreamcache.h"
+#include "../util/stringformatter.h"
+
+// pxd: from libopenage.log.level cimport level
+#include "level.h"
 
 namespace openage {
+
+
+// forward-declaration for use in 'friend' declaration below.
+namespace error { class Error; }
+
+
 namespace log {
 
 
 /**
- * The meta data for a log/exception message.
+ * A complete log/exception message, containing a text message and metadata.
+ *
+ * The preferred way of creating a `message` object is to use MessageBuilder
+ * via the MSG macro.
+ * MessageBuilder is auto-converted to message when needed.
+ *
+ * pxd:
+ *
+ * cppclass message:
+ *    string text
+ *    char *filename
+ *    unsigned lineno
+ *    const char *functionname
+ *    level lvl
+ *    unsigned thread_id
+ *    int64_t timestamp
+ *
+ *    void init() except +
+ *    void init_with_metadata_copy(string filename, string functionname) except +
  */
-struct message_meta_data {
-	/**
-	 * An ID that is unique to the constructor invocation of the message.
-	 */
-	const size_t msg_id;
+struct message {
+	std::string text;
 
 	/**
 	 * The filename where the message has been constructed.
 	 */
-	const char *const sourcefile;
+	const char *filename;
 
 	/**
 	 * The line number where the message has been constructed.
 	 */
-	const unsigned lineno;
+	unsigned lineno;
 
 	/**
 	 * The (pretty) function name where the message has been constructed.
 	 */
-	const char *const functionname;
+	const char *functionname;
 
 	/**
-	 * The message's log level.
+	 * The log level.
 	 */
-	const level lvl;
+	level lvl;
 
 	/**
 	 * A unique id for the thread where the message has been constructed.
 	 */
-	const unsigned thread_id;
+	unsigned int thread_id;
 
 	/**
 	 * A (nanosecond-resolution) timestamp of the message construction.
 	 */
-	const int64_t timestamp;
-};
-
-
-/**
- * A comple log/exception message, containing the actual message, plus message metadata.
- */
-class Message {
-public:
-	// Standard constructor (via MessageBuilder via the MSG macro).
-	Message(size_t msg_id, const char *sourcefile, unsigned lineno, const char *functionname, level lvl);
-
-	// Default copy/assignment operators.
-	Message(const Message &msg) = default;
-	Message &operator =(const Message &msg) = default;
-
-	Message(Message &&msg) = default;
-	Message &operator =(Message &&msg) = default;
+	int64_t timestamp;
 
 	/**
-	 * The actual message text
+	 * Sets all members except for filename, lineno, functionname and lvl.
 	 */
-	std::string text;
+	void init();
 
-	message_meta_data meta;
+	/**
+	 * Sets all members except for lineno and lvl.
+	 *
+	 * filename and functionname are copied to an internal cache.
+	 *
+	 * Designed to be used when filename and functionname are temporary
+	 * objects (e.g. from Python).
+	 */
+	void init_with_metadata_copy(const std::string &filename, const std::string &functionname);
 };
 
 
 /**
- * prints Message to a stream (with color codes and everything!)
+ * prints message to a stream (with color codes and everything!)
  */
-std::ostream &operator <<(std::ostream &os, const Message &msg);
+std::ostream &operator <<(std::ostream &os, const message &msg);
 
 
 /**
- * Represents a log message that is still in construction.
+ * Wrapper around a log message that allows appending to the message with operator <<.
+ *
+ * Auto-converts to message; via the MSG macro, this is the preferred way of creating
+ * log and exc messages.
  */
-class MessageBuilder {
+class MessageBuilder : public util::StringFormatter<MessageBuilder> {
 public:
 	/**
 	 * Don't use this constructor directly; instead use the MSG macro.
 	 *
 	 *
-	 * @param msg_id             unique identifier (UNIQUE_VALUE from util/unique_identifier.h).
-	 * @param sourcefile, lineno source file name and line number (__FILE__, __LINE__).
+	 * @param filename, lineno source file name and line number (__FILE__, __LINE__).
 	 * @param functionname       (fully qualified) function name (__PRETTY_FUNCTION__).
 	 * @param lvl                loglevel of the message. Also required for exception messages.
 	 */
-	MessageBuilder(size_t msg_id,
-	               const char *sourcefile, unsigned lineno, const char *functionname,
-	               level lvl=level::info);
+	MessageBuilder(const char *filename, unsigned lineno, const char *functionname,
+	               level lvl=lvl::info);
 
-
-	// These methods allow usage like an ostream object.
-	template<typename T>
-	MessageBuilder &operator <<(const T &t) {
-		this->init_stream_if_necessary();
-		this->str_stream.stream_ptr->stream << t;
-		return *this;
+	// auto-convert to message
+	inline operator const message &() const {
+		return this->msg;
 	}
 
-
-	template<typename T>
-	MessageBuilder &operator <<(T &(*t)(T &)) {
-		this->init_stream_if_necessary();
-		this->str_stream.stream_ptr->stream << t;
-		return *this;
+	inline operator message &() {
+		return this->msg;
 	}
-
-
-	// Optimizations to prevent needless stringstream initialization if just a
-	// simple string is added.
-	MessageBuilder &operator <<(const char *s);
-	MessageBuilder &operator <<(const std::string &s);
-
-
-	// Allow directly inputting 
-	template<typename T>
-	MessageBuilder &operator <<(const std::unique_ptr<T> &t) {
-		*this << t.get();
-		return *this;
-	}
-
-
-	template<typename T>
-	MessageBuilder &operator <<(const std::shared_ptr<T> &t) {
-		*this << t.get();
-		return *this;
-	}
-
-
-	/**
-	 * Allows printf-style formatting.
-	 *
-	 * The formatted string is appended to the current result.
-	 */
-	MessageBuilder &fmt(const char *fmt, ...);
-
-
-	/**
-	 * Appends a string (identical to << s).
-	 */
-	MessageBuilder &str(const char *s);
-
-
-	/**
-	 * Returns the constructed message.
-	 *
-	 * Continuing to use the MessageBuilder object after this is possible,
-	 * but invalidates the finalized message.
-	 *
-	 * Designed to be invoked by LogSource.log().
-	 */
-	Message &finalize();
-
 
 private:
-	/**
-	 * Wraps the stringstream object that is used to construct the message
-	 * text.
-	 */
-	util::OSStreamPtr str_stream;
+	message msg;
 
-
-	/**
-	 * By default, str_stream is not used.
-	 * If only one instance of fmt() or <<(std::string) is used, this saves
-	 * significant performance.
-	 *
-	 * This method is called to initialize the stream and feed it with any
-	 * already-existing content.
-	 */
-	void init_stream_if_necessary();
-
-
-	/**
-	 * Collects the message and metadata.
-	 * Obtained through finalize().
-	 */
-	Message constructed_message;
+	friend error::Error;
+	friend class LogSource;
 };
 
 
@@ -200,15 +143,29 @@ private:
 //
 // Unfortunately, macros are the only way to achieve that.
 
-#define MSG(LVL) \
+
+// for use with existing log::level objects
+#define MSG_LVLOBJ(LVLOBJ) \
 	::openage::log::MessageBuilder( \
-	UNIQUE_VALUE, \
 	::openage::util::constexpr_::strip_prefix( \
 		__FILE__, \
 		::openage::config::buildsystem_sourcefile_dir), \
 	__LINE__, \
 	__PRETTY_FUNCTION__, \
-	::openage::log::level:: LVL)
+	LVLOBJ)
+
+
+// for use with log::level iterals (auto-prefixes full qualification)
+#define MSG(LVL) MSG_LVLOBJ(::openage::log::lvl:: LVL)
+
+
+// some convenience shorteners for MSG(...).
+#define SPAM MSG(spam)
+#define DBG MSG(dbg)
+#define INFO MSG(info)
+#define WARN MSG(warn)
+#define ERR MSG(err)
+#define CRIT MSG(crit)
 
 
 }} // openage::log

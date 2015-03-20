@@ -39,13 +39,14 @@ std::string which(const char *name) {
 	// TODO not yet implemented
 	static_assert(false, "subprocess::which is not yet implemented for WIN32");
 	#else
-	char *path = util::copy(getenv("PATH"));
+	std::vector<char> path;
+	util::copy_string(getenv("PATH"), path);
 
 	if (is_executable(name)) {
 		return name;
 	}
 
-	for (char *dir = strtok(path, ":"); dir; dir = strtok(NULL, ":")) {
+	for (char *dir = strtok(path.data(), ":"); dir; dir = strtok(NULL, ":")) {
 		std::string filename;
 		filename.append(dir);
 		filename.push_back('/');

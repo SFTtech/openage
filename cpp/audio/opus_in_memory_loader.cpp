@@ -7,7 +7,7 @@
 #include <opusfile.h>
 
 #include "../log/log.h"
-#include "../util/error.h"
+#include "../error/error.h"
 
 namespace openage {
 namespace audio {
@@ -30,14 +30,14 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	opus_file_t op_file{op_open_file(path.c_str(), &op_err), opus_deleter};
 
 	if (op_err != 0) {
-		throw util::Error{MSG(err) << "Could not open: " << path};
+		throw Error{MSG(err) << "Could not open: " << path};
 	}
 
 	auto op_channels = op_channel_count(op_file.get(), -1);
 	auto pcm_length = op_pcm_total(op_file.get(), -1);
 	// the stream is not seekable
 	if (pcm_length < 0) {
-		throw util::Error{MSG(err) << "Opus file is not seekable"};
+		throw Error{MSG(err) << "Opus file is not seekable"};
 	}
 	log::log(MSG(dbg) << "Opus channels=" << op_channels << ", pcm_length=" << pcm_length);
 
@@ -53,7 +53,7 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 		int samples_read = op_read(op_file.get(), &buffer.front()+position,
 				length-position, nullptr);
 		if (samples_read < 0) {
-			throw util::Error{MSG(err) << "Failed to read from opus file: errorcode=" << samples_read};
+			throw Error{MSG(err) << "Failed to read from opus file: errorcode=" << samples_read};
 		} else if(samples_read == 0) {
 			break;
 		}

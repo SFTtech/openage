@@ -21,13 +21,15 @@ example, this document resides in there, because it documents something. wow.
 See [doc/README.md](/doc/README.md) for documentation guidelines.
 
 
-### py/openage/convert/ ###
+### openage/ ###
 
-This is a *Python* module for the conversion of the original media, stored in
-the `convert/` folder. Documentation about media files being converted is in
-`doc/media/`. The entry point for finding information about the implementation
-and design thoughts can be found in the [doc/implementation/convert/README.md](/doc/implementation/convert/README.md)
-file.
+Contains the Python components of openage, including
+ - the main game entry point
+ - testing code
+ - code generation
+ - asset conversion
+  - see `doc/media/`
+  - see [doc/implementation/convert/README.md](/doc/implementation/convert/README.md)
 
 
 ### assets/ ###
@@ -53,9 +55,11 @@ are placed in this folder. This includes scripts for test integration, python
 module definition, source file gathering and executable definitions are placed
 in this directory.
 
+The code compliance checker also lives here.
+
 
 ### cpp/ ###
 
-Source files written in *C++11* live here.
+Source files written in *C++14* live here.
 All engine components, data structures and tests are located in this folder,
 each subsystem resides in its own subfolder.
