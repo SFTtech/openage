@@ -1,10 +1,10 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "python.h"
 
 #include <Python.h>
 
-#include "log.h"
+#include "log/log.h"
 
 
 namespace openage {
@@ -16,7 +16,7 @@ void python_init() {
 		Py_InitializeEx(init_signals);
 
 		const char *py_version = Py_GetVersion();
-		log::msg("initialized python %s", py_version);
+		log::log(MSG(info) << "Python " << py_version << " has been initialized");
 	}
 }
 

@@ -9,6 +9,8 @@
 
 #include <SDL2/SDL.h>
 
+#include "log/log.h"
+#include "log/file_logsink.h"
 #include "audio/audio_manager.h"
 #include "coord/camgame.h"
 #include "coord/vec2f.h"
@@ -38,6 +40,7 @@ class GameMain;
  * central foundation for everything the openage engine is capable of.
  */
 class Engine : public ResizeHandler {
+	friend class GameMain;
 private:
 	/**
 	 * global engine singleton instance.
@@ -90,6 +93,9 @@ private:
 	 * engine move operator.
 	 */
 	Engine &operator=(Engine &&other);
+
+	// log sinks
+	std::unique_ptr<log::FileSink> logsink_file;
 
 public:
 	/**
@@ -177,12 +183,12 @@ public:
 	CoreInputHandler &get_input_handler();
 
 	/**
-	 * return the number of milliseconds that passed
+	 * return the number of nanoseconds that have passed
 	 * for rendering the last frame.
 	 *
 	 * use that for fps-independent input actions.
 	 */
-	unsigned int lastframe_msec();
+	int64_t lastframe_duration_nsec();
 
 	/**
 	 * render text with the at a position with specified font size
@@ -286,7 +292,7 @@ private:
 	/**
 	 * the frame counter measuring fps.
 	 */
-	util::FrameCounter fpscounter;
+	util::FrameCounter fps_counter;
 
 	/**
 	* the engine's screenshot manager.

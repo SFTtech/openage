@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "shader.h"
 
@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "../log.h"
+#include "../log/log.h"
 #include "../util/error.h"
 #include "../util/file.h"
 #include "../util/strings.h"
@@ -48,14 +48,15 @@ Shader::Shader(GLenum type, const char *source) {
 		GLint loglen;
 		glGetShaderiv(this->id, GL_INFO_LOG_LENGTH, &loglen);
 
-		char *infolog = new char[loglen];
-		glGetShaderInfoLog(this->id, loglen, NULL, infolog);
+		auto infolog = std::make_unique<char[]>(loglen);
+		glGetShaderInfoLog(this->id, loglen, NULL, infolog.get());
 
-		util::Error e("Failed to compile %s shader\n%s", type_to_string(type), infolog);
-		delete[] infolog;
+		auto errmsg = MSG(err);
+		errmsg << "Failed to compile " << type_to_string(type) << " shader\n" << infolog;
+
 		glDeleteShader(this->id);
 
-		throw e;
+		throw util::Error(errmsg);
 	}
 }
 

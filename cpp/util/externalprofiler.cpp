@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "externalprofiler.h"
 
@@ -12,31 +12,35 @@
 
 #include "../crossplatform/subprocess.h"
 #include "../crossplatform/os.h"
-#include "../log.h"
+#include "../log/log.h"
+
 
 namespace openage {
 namespace util {
+
 
 ExternalProfiler::ExternalProfiler()
 	:
 	currently_profiling{false},
 	can_profile{WITH_GPERFTOOLS_PROFILER} {}
 
+
 const char *const ExternalProfiler::profiling_filename = "/tmp/openage-gperftools-cpuprofile";
 const char *const ExternalProfiler::profiling_pdf_filename = "/tmp/openage-gperftools-cpuprofile.pdf";
 
+
 void ExternalProfiler::start() {
 	if (not this->can_profile) {
-		log::err("can not profile: gperftools is missing");
+		log::log(MSG(err) << "Can not profile: gperftools is missing");
 		return;
 	}
 
 	if (this->currently_profiling) {
-		log::msg("profiler is already running");
+		log::log(MSG(info) << "Profiler is already running");
 		return;
 	}
 
-	log::msg("starting profiler; writing data to %s", this->profiling_filename);
+	log::log(MSG(info) << "Starting profiler; writing data to " << this->profiling_filename);
 
 	this->currently_profiling = true;
 	#if WITH_GPERFTOOLS_PROFILER
@@ -44,14 +48,15 @@ void ExternalProfiler::start() {
 	#endif
 }
 
+
 void ExternalProfiler::stop() {
 	if (not this->can_profile) {
-		log::err("can not profile: gperftools is missing");
+		log::log(MSG(err) << "Can not profile: gperftools is missing");
 		return;
 	}
 
 	if (not this->currently_profiling) {
-		log::msg("profiler is not currently running");
+		log::log(MSG(err) << "Profiler is not currently running");
 		return;
 	}
 
@@ -60,17 +65,18 @@ void ExternalProfiler::stop() {
 	ProfilerStop();
 	#endif
 
-	log::msg("profiler stopped; data written to %s", this->profiling_filename);
+	log::log(MSG(info) << "Profiler stopped; data written to " << this->profiling_filename);
 }
+
 
 void ExternalProfiler::show_results() {
 	if (not this->can_profile) {
-		log::err("can not profile: gperftools is missing");
+		log::log(MSG(err) << "Can not profile: gperftools is missing");
 		return;
 	}
 
 	if (this->currently_profiling) {
-		log::warn("profiler is currently running; trying to show results anyway");
+		log::log(MSG(warn) << "Profiler is currently running; trying to show results anyway");
 	}
 
 	#if WITH_GPERFTOOLS_PROFILER
@@ -81,7 +87,7 @@ void ExternalProfiler::show_results() {
 	}
 
 	if (pprof_path.size() == 0) {
-		log::err("can not process profiling results: google-pprof is missing");
+		log::log(MSG(err) << "Can not process profiling results: google-pprof is missing");
 		return;
 	}
 
@@ -98,14 +104,16 @@ void ExternalProfiler::show_results() {
 		this->profiling_pdf_filename);
 
 	if (retval != 0) {
-		log::err("profile analysis failed: %d", retval);
+		log::log(MSG(err) << "Profile analysis failed: " << retval);
 		return;
 	}
 
 	retval = os::execute_file(this->profiling_pdf_filename);
 
 	if (retval != 0) {
-		log::err("could not view profiling visualization %s: %d", this->profiling_pdf_filename, retval);
+		log::log(MSG(err) <<
+			"Could not view profiling visualization " <<
+			this->profiling_pdf_filename << ": " << retval);
 		return;
 	}
 	#endif

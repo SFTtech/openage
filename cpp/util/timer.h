@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UTIL_TIMER_H_
 #define OPENAGE_UTIL_TIMER_H_
@@ -9,28 +9,57 @@ namespace openage {
 namespace util {
 
 /**
-Time measurement class.
-
-Start it some time, and get the passed time since the start.
+ * Time measurement class.
  */
 class Timer {
 	bool stopped;
 	union {
-		//while paused, stores the current timer value
-		uint32_t stoppedat;
+		/**
+		 * while paused, stores the current timer value
+		 */
+		int64_t stoppedat;
 
-		//while not paused, stores the time the timer has been started
-		uint32_t starttime;
+		/**
+		 * while running, stores the time the timer is counting from
+		 */
+		int64_t starttime;
 	};
 
 public:
-	Timer();
+	/**
+	 * creates the timer, in either stopped or running state.
+	 */
+	Timer(bool stopped = true);
 
+	/**
+	 * resets the timer, in either stopped or running state.
+	 */
 	void reset(bool stopped = true);
+
+	/**
+	 * stops/pauses the timer.
+	 */
 	void stop();
+
+	/**
+	 * starts/unpauses the timer.
+	 */
 	void start();
-	unsigned getval() const;
-	unsigned getandresetval();
+
+	/**
+	 * reads the current timer value, in nanoseconds.
+	 */
+	int64_t getval() const;
+
+	/**
+	 * reads the current timer value, in nanoseconds,
+	 * and resets the timer to zero (preserving started/stopped state).
+	 */
+	int64_t getandresetval();
+
+	/**
+	 * returns whether the timer is currently running.
+	 */
 	bool isstopped() const;
 };
 

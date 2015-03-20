@@ -4,21 +4,23 @@
 // [SFT]tech coding guidelines
 // ---------------------------
 //
-// please also have a look at `mom.cpp`
-// to make the code look nice and be readable:
-//  * sort things alphabetically.
-//  * align things beautifully
-//  * if you write documentation correctly, then:
-//    * it's parsable by Doxygen
-//    * -> cool generated docs!
-//  * look at the following example code
-//  * look at the "mom.cpp" file for a implementation example.
+// Please also have a look at `mom.cpp`!
+// To make the code look nice and be readable:
+//  * Sort things alphabetically.
+//  * Align things beautifully!
+//  * If you write documentation correctly, then:
+//    * It's parsable by Doxygen!
+//    * -> Cool generated docs!
+//  * Look at the following example code.
+//  * Look at the "mom.cpp" file for a implementation example.
+//  * Comment guideline: Use punctuation!
 
 #include <cstddef>
 #include <cstdint>
 
-// Try to keep the code < 120 chars in width (no hard limit...)
-// All documentation is in the header
+
+// Try to keep the code < 120 chars in width (no hard limit...).
+// All documentation is in the header.
 // No swearing in comments!
 
 // No preprocessor shit crap!
@@ -33,7 +35,9 @@ constexpr int DEFAULT_MOM_MASS = 9001;
  * This documentation will also show up in generated docs then.
  */
 namespace elts {
-// <- the namespace does not increase the indentation level!
+namespace mom {
+// <- The namespace does not increase the indentation level!
+
 
 /**
  * Class about your mother.
@@ -45,13 +49,13 @@ class YourMom {
 public:
 	/**
 	 * Creates your mom.
-	 * @param mass: initial mass for this mother.
+	 * @param mass: Initial mass for this mother.
 	 */
 	YourMom(int mass=DEFAULT_MOM_MASS);
 
 	~YourMom();
-	// note that the destructor has no doc,
-	// because that would be entirely unnecessary.
+	// Note that the destructor has no doc,
+	// Because that would be entirely unnecessary (in most cases).
 
 	/**
 	 * Prints your mom's current mass to stdout.
@@ -69,7 +73,7 @@ public:
 
 protected:
 	// To have doxygen parse one-liners, write the following:
-	int64_t mass; //!< your mom's mass (solar masses).
+	int64_t mass; //!< Your mom's mass (solar masses).
 
 	/**
 	 * Your mom's number of non-artificial satellites.
@@ -84,10 +88,11 @@ protected:
 	 */
 	int stupidity;
 
-	static int64_t sum_mom_masses; //!< sum of all mom's masses in the world
+	static int64_t sum_mom_masses; //!< Sum of all mom's masses in the world.
 };
 
-} // namespace elts
+
+}} // namespace elts::mom
 
 
 #endif

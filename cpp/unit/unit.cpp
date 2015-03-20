@@ -49,7 +49,10 @@ bool Unit::update() {
 	 */
 	if (this->has_action()) {
 		Engine &engine = Engine::get();
-		this->action_stack.back()->update(engine.lastframe_msec());
+
+		// TODO: change the entire unit action timing to a higher resolution like
+		// nsecs or usecs.
+		this->action_stack.back()->update(engine.lastframe_duration_nsec() / 1e6);
 
 		/*
 		 * check completion of all actions,
@@ -145,6 +148,12 @@ void Unit::erase_interuptables() {
 UnitReference Unit::get_ref() {
 	return UnitReference(container, id, this);
 }
+
+
+std::string Unit::logsource_name() {
+	return "Unit " + std::to_string(this->id);
+}
+
 
 unsigned int dir_group(coord::phys3_delta dir, unsigned int angles, unsigned int first_angle) {
 	// normalise dir

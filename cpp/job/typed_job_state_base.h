@@ -7,9 +7,9 @@
 #include <exception>
 #include <functional>
 
+#include "../util/thread_id.h"
 #include "job_aborted_exception.h"
 #include "job_state_base.h"
-#include "thread_id.h"
 #include "types.h"
 
 namespace openage {
@@ -50,7 +50,7 @@ public:
 	/** Creates a new typed job with the given callback. */
 	TypedJobStateBase(callback_function_t<T> callback)
 		:
-		thread_id{openage::job::thread_id.id},
+		thread_id{openage::util::current_thread_id.val},
 		callback{callback},
 		finished{false} {
 	}

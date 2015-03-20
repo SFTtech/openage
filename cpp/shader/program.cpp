@@ -1,12 +1,14 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "program.h"
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <iostream>
 
-#include "../log.h"
+#include "../log/log.h"
+#include "../util/compiler.h"
 #include "../util/file.h"
 #include "../util/strings.h"
 #include "../util/error.h"
@@ -92,9 +94,11 @@ void Program::check(GLenum what_to_check) {
 			break;
 		}
 
-		util::Error e("Program %s failed\n%s", what_str, infolog);
+		auto errormsg = MSG(err);
+		errormsg << "Program " << what_str << " failed\n" << infolog;
 		delete[] infolog;
-		throw e;
+
+		throw util::Error(errormsg);
 	}
 }
 
@@ -111,18 +115,22 @@ GLint Program::get_uniform_id(const char *name) {
 }
 
 GLint Program::get_attribute_id(const char *name) {
-	if (this->is_linked) {
-		GLint aid = glGetAttribLocation(this->id, name);
-		if (aid == -1) {
-			this->dump_active_attributes();
-			throw util::Error("queried attribute '%s' not found or not active (pwnt by the compiler).", name);
-		} else {
-			return aid;
-		}
+	if (unlikely(!this->is_linked)) {
+		throw util::Error(MSG(err) <<
+			"Attribute " << name <<
+			" was queried before program was linked!");
 	}
-	else {
-		throw util::Error("queried attribute '%s' id before program was linked.", name);
+
+	GLint aid = glGetAttribLocation(this->id, name);
+
+	if (unlikely(aid == -1)) {
+		this->dump_active_attributes();
+		throw util::Error(MSG(err) <<
+			"Attribute " << name << " queried but not found or active"
+			" (pwnt by the compiler).");
 	}
+
+	return aid;
 }
 
 void Program::set_attribute_id(const char *name, GLuint id) {
@@ -131,12 +139,13 @@ void Program::set_attribute_id(const char *name, GLuint id) {
 	}
 	else {
 		//TODO: maybe enable overwriting, but after that relink the program
-		throw util::Error("assigned attribute '%s' = %u after program was linked!", name, id);
+		throw util::Error(MSG(err) << "assigned attribute " << name << " = " << id << " after program was linked!");
 	}
 }
 
 void Program::dump_active_attributes() {
-	log::imp("dumping shader program active attribute list:");
+	auto msg = MSG(warn);
+	msg << "Dumping shader program active attribute list:";
 
 	GLint num_attribs;
 	glGetProgramiv(this->id, GL_ACTIVE_ATTRIBUTES, &num_attribs);
@@ -151,7 +160,9 @@ void Program::dump_active_attributes() {
 		char *attrib_name = new char[attrib_max_length];
 		glGetActiveAttrib(this->id, i, attrib_max_length, &attrib_length, &attrib_size, &attrib_type, attrib_name);
 
-		log::imp("-> attribute %s : type=%d, size=%u", attrib_name, attrib_type, attrib_size);
+		msg << "\n" <<
+			"-> attribute " << attrib_name << ": "
+			" : type=" << attrib_type << ", size=" << attrib_size;
 		delete[] attrib_name;
 	}
 }

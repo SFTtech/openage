@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "draw.h"
 
@@ -7,6 +7,7 @@
 #include <stdlib.h>
 
 #include "../crossplatform/opengl.h"
+#include "../crossplatform/timing.h"
 #include <FTGL/ftgl.h>
 
 #include <unistd.h>
@@ -25,9 +26,10 @@ void to_opengl(Console *console) {
 	coord::camhud chartopleft;
 	coord::pixel_t ascender = console->font.internal_font->Ascender();
 
-	uint32_t sdl_tickcount = SDL_GetTicks();
-	bool fastblinking_visible = (sdl_tickcount % 600 < 300);
-	bool slowblinking_visible = (sdl_tickcount % 300 < 150);
+	int64_t monotime = timing::get_monotonic_time();
+
+	bool fastblinking_visible = (monotime % 600000000 < 300000000);
+	bool slowblinking_visible = (monotime % 300000000 < 150000000);
 
 	for (coord::term_t x = 0; x < console->buf.dims.x; x++) {
 		chartopleft.x = topleft.x + console->charsize.x * x;

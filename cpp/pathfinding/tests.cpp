@@ -1,6 +1,6 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#include "../log.h"
+#include "../log/log.h"
 #include "../util/error.h"
 #include "heuristics.h"
 #include "path.h"
@@ -462,7 +462,7 @@ void path_node() {
 	return;
 
 out:
-	log::err("%s failed at stage %d", testname, ret);
+	log::log(MSG(err) << testname << " failed at stage " << ret);
 	throw "failed node tests";
 }
 

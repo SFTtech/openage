@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "file.h"
 
@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../log.h"
 #include "error.h"
 
 namespace openage {
@@ -40,13 +39,13 @@ ssize_t read_whole_file(char **result, const char *filename) {
 	ssize_t content_length = file_size(filename);
 
 	if (content_length < 0) {
-		throw Error("file nonexistant: %s", filename);
+		throw Error(MSG(err) << "File nonexistant: " << filename);
 	}
 
 	//open the file
 	FILE *filehandle = fopen(filename, "r");
 	if (filehandle == NULL) {
-		throw Error("failed opening file %s", filename);
+		throw Error(MSG(err) << "Failed to open file: " << filename);
 	}
 
 	//allocate filesize + nullbyte
@@ -55,7 +54,7 @@ ssize_t read_whole_file(char **result, const char *filename) {
 	//read the whole content
 	if (content_length != (ssize_t)fread(*result, 1, content_length, filehandle)) {
 		fclose(filehandle);
-		throw Error("failed reading the file %s", filename);
+		throw Error(MSG(err) << "Failed to read file: " << filename);
 	} else {
 		fclose(filehandle);
 	}

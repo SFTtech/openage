@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "error.h"
 
@@ -7,43 +7,34 @@
 #include <cstring>
 
 #include "strings.h"
-#include "../log.h"
+#include "../log/log.h"
 
 namespace openage {
 namespace util {
 
-Error::Error(const char *fmt, ...) {
-	va_list vl;
-	va_start(vl, fmt);
-	this->buf = vformat(fmt, vl);
-	va_end(vl);
-	log::msg("ERROR: %s", buf);
-}
 
-Error::Error(const Error &other) {
-	buf = copy(other.buf);
-}
+// TODO: exception-hierarchy; automatically storing the cause on throw-again,
+//       lightweight exceptions, stacktrace-collecting exceptions.
 
-Error &Error::operator=(const Error &other) {
-	if (this != &other) {
-		delete[] buf;
-		buf = copy(other.buf);
-	}
-	return *this;
-}
 
-Error::Error(Error &&other) {
-	buf = other.buf;
-	other.buf = NULL;
+Error::Error(log::MessageBuilder &msg)
+	:
+	msg{msg.finalize()} {
+
+	// TODO the logging should actually happen when _catching_ the error.
+	log::log(MSG(err) << *this);
 }
 
 
-Error::~Error() {
-	delete[] buf;
+std::string Error::type_name() const {
+	return "Error";
 }
 
-const char *Error::str() const {
-	return buf;
+
+std::ostream &operator <<(std::ostream &os, const Error &e) {
+	os << e.type_name() << ": " << e.msg;
+
+	return os;
 }
 
 } //namespace util

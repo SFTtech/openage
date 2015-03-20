@@ -1,10 +1,11 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 from collections import OrderedDict
 import re
 
 from .members import IncludeMembers, ContinueReadMember, MultisubtypeMember, GroupMember, StringMember, CharArrayMember, NumberMember, DataMember, RefMember
 from .member_access import READ_EXPORT, NOREAD_EXPORT
+from .content_snippet import ContentSnippet
 from .struct_snippet import StructSnippet
 from .util import determine_header
 from openage.log import dbg
@@ -156,6 +157,14 @@ class StructDefinition:
 
         # returned snippets
         ret = list()
+
+        # constexpr member count definition
+        ret.append(ContentSnippet(
+            data="constexpr size_t %s::member_count;" % self.name_struct,
+            file_name=self.name_struct_file,
+            section=ContentSnippet.section_body,
+            orderby=self.name_struct,
+        ))
 
         # variables to be replaced in the function template
         template_args = {

@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UTIL_FILE_H_
 #define OPENAGE_UTIL_FILE_H_
@@ -7,11 +7,9 @@
 #include <string.h>
 #include <string>
 #include <vector>
-#include <cinttypes>
 
 #include "error.h"
 #include "dir.h"
-#include "../log.h"
 
 namespace openage {
 namespace util {
@@ -58,9 +56,10 @@ std::vector<lineformat> read_csv_file(const std::string &fname) {
 			//use the line copy to fill the current line struct.
 			int error_column = current_line_data.fill(line_rw);
 			if (error_column != -1) {
-				throw Error("failed reading csv file %s in line %" PRIuPTR " column %d: error parsing '%s'",
-				            fname.c_str(), static_cast<uintptr_t>(line_count), error_column,
-				            line.c_str());
+				throw Error(MSG(err) <<
+					"Failed to read CSV file: " <<
+					fname << ":" << line_count << ":" << error_column << ": "
+					"error parsing " << line);
 			}
 
 			delete[] line_rw;
@@ -92,14 +91,15 @@ std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname
 		for (auto &entry : result) {
 			line_count += 1;
 			if (not entry.recurse(new_basedir)) {
-				throw Error("failed reading follow up files for %s in line %" PRIuPTR,
-				            merged_filename.c_str(), static_cast<uintptr_t>(line_count));
+				throw Error(MSG(err) <<
+					"Failed to read follow-up files for " <<
+					merged_filename << ":" << line_count);
 			}
 		}
 	}
 	else {
 		//nonexistant file skipped, would return empty vector.
-		throw Error("failed recursing to file %s", merged_filename.c_str());
+		throw Error(MSG(err) << "Failed to recurse to file " << merged_filename);
 	}
 
 	return result;

@@ -1,22 +1,24 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "dir.h"
 
-#include "../log.h"
-
 namespace openage {
 namespace util {
+
 
 Dir::Dir(const std::string &basedir)
 	:
 	basedir(basedir) {
 }
 
+
 Dir::~Dir() {}
+
 
 std::string Dir::join(const std::string &fname) const {
 	return this->basedir + PATHSEP + fname;
 }
+
 
 Dir Dir::append(const std::string &suffix) const {
 	if (suffix.length() == 0) {
@@ -49,5 +51,5 @@ std::string dirname(const std::string &fullpath) {
 	return ret;
 }
 
-} //namespace util
-} //namespace openage
+
+}} //namespace openage::util

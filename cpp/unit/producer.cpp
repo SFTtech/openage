@@ -5,7 +5,6 @@
 #include "../terrain/terrain_outline.h"
 #include "../util/strings.h"
 #include "../game_main.h"
-#include "../log.h"
 #include "ability.h"
 #include "action.h"
 #include "producer.h"
@@ -43,7 +42,11 @@ void UnitTypeTest::initialise(Unit *unit) {
 	/*
 	 * log attributes
 	 */
-	log::dbg("creating %d (%d %d) %s", this->unit_data.id0, this->unit_data.id1, this->unit_data.id2, this->unit_data.name.c_str());
+	unit->log(MSG(dbg) << "creating " <<
+		this->unit_data.id0 << " (" <<
+		this->unit_data.id1 << " " <<
+		this->unit_data.id2 << ") " <<
+		this->unit_data.name);
 
 	/*
 	 * basic attributes

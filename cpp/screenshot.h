@@ -1,12 +1,13 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_SCREENSHOT_H_
 #define OPENAGE_SCREENSHOT_H_
 
+#include <string>
+#include <ctime>
+
 #include <SDL2/SDL.h>
 #include "coord/window.h"
-
-#include <ctime>
 
 namespace openage {
 
@@ -25,7 +26,7 @@ public:
 private:
 
 	/** to be called to get the next screenshot filename into the array */
-	char *gen_next_filename();
+	std::string gen_next_filename();
 
 	/** contains the number to be in the next screenshot filename */
 	unsigned count;

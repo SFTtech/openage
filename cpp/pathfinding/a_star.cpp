@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 /** @file
  *
@@ -15,14 +15,16 @@
 #include <cmath>
 
 #include "../datastructure/pairing_heap.h"
-#include "../log.h"
+#include "../log/log.h"
 #include "../terrain/terrain.h"
+#include "../util/strings.h"
 #include "path.h"
 #include "heuristics.h"
 
 
 namespace openage {
 namespace path {
+
 
 Path to_point(coord::phys3 start,
               coord::phys3 end,
@@ -36,6 +38,7 @@ Path to_point(coord::phys3 start,
 	return a_star(start, valid_end, h, passable);
 }
 
+
 Path to_object(openage::TerrainObject *to_move,
                openage::TerrainObject *end) {
 	coord::phys3 start = to_move->pos.draw;
@@ -48,6 +51,7 @@ Path to_object(openage::TerrainObject *to_move,
 	return a_star(start, valid_end, heuristic, to_move->passable);
 }
 
+
 Path find_nearest(coord::phys3 start,
                   std::function<bool(const coord::phys3 &)> valid_end,
                   std::function<bool(const coord::phys3 &)> passable) {
@@ -55,6 +59,7 @@ Path find_nearest(coord::phys3 start,
 	auto zero = [](const coord::phys3 &) -> cost_t { return .0f; };
 	return a_star(start, valid_end, zero, passable);
 }
+
 
 Path a_star(coord::phys3 start,
             std::function<bool(const coord::phys3 &)> valid_end,
@@ -86,7 +91,7 @@ Path a_star(coord::phys3 start,
 
 		// node to terminate the search was found
 		if (valid_end(best_candidate->position)) {
-			log::dbg("path cost is %f", best_candidate->future_cost);
+			log::log(MSG(dbg) << "path cost is " << util::FloatFixed<8, 3>{best_candidate->future_cost});
 			return best_candidate->generate_backtrace();
 		}
 
@@ -132,9 +137,9 @@ Path a_star(coord::phys3 start,
 		}
 	}
 
-	log::dbg("incomplete path cost is %f", closest_node->future_cost);
+	log::log(MSG(dbg) << "incomplete path cost is " << util::FloatFixed<8, 3>{closest_node->future_cost});
 	return closest_node->generate_backtrace();
 }
 
-} // namespace path
-} // namespace openage
+
+}} // namespace openage::path

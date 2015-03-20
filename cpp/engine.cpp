@@ -13,7 +13,7 @@
 #include "callbacks.h"
 #include "config.h"
 #include "texture.h"
-#include "log.h"
+#include "log/log.h"
 #include "util/color.h"
 #include "util/error.h"
 #include "util/fps.h"
@@ -38,15 +38,14 @@ void Engine::create(util::Dir *data_dir, const char *windowtitle) {
 	if (Engine::instance == nullptr) {
 		// reset the pointer to the new engine
 		Engine::instance = new Engine(data_dir, windowtitle);
-	}
-	else {
-		throw util::Error{"you tried to create another singleton instance!!111"};
+	} else {
+		throw util::Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
 	}
 }
 
 void Engine::destroy() {
 	if (Engine::instance == nullptr) {
-		throw util::Error{"you tried to destroy a nonexistant engine."};
+		throw util::Error{MSG(err) << "You tried to destroy a nonexistant engine."};
 	}
 	else {
 		delete Engine::instance;
@@ -69,11 +68,14 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	camhud_window{0, 600},
 	tile_halfsize{48, 24},  // TODO: get from convert script
 	data_dir{data_dir},
+
 	audio_manager{} {
 
 	for (uint32_t size : {12, 20}) {
 		fonts[size] = std::unique_ptr<Font>{new Font{"DejaVu Serif", "Book", size}};
 	}
+
+	this->logsink_file = std::make_unique<log::FileSink>("/tmp/openage-log", true);
 
 	// enqueue the engine's own input handler to the
 	// execution list.
@@ -81,9 +83,9 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	this->input_handler.register_resize_action(this);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		throw util::Error("SDL video initialization: %s", SDL_GetError());
+		throw util::Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
 	} else {
-		log::msg("initialized SDL video subsystems.");
+		log::log(MSG(info) << "Initialized SDL video subsystems.");
 	}
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
@@ -103,29 +105,29 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	);
 
 	if (this->window == nullptr) {
-		throw util::Error("Failed creating SDL window: %s", SDL_GetError());
+		throw util::Error(MSG(err) << "Failed to create SDL window: " << SDL_GetError());
 	}
 
 	// load support for the PNG image formats, jpg bit: IMG_INIT_JPG
 	int wanted_image_formats = IMG_INIT_PNG;
 	int sdlimg_inited = IMG_Init(wanted_image_formats);
 	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		throw util::Error("Failed to init PNG support: %s", IMG_GetError());
+		throw util::Error(MSG(err) << "Failed to init PNG support: " << IMG_GetError());
 	}
 
 	this->glcontext = SDL_GL_CreateContext(this->window);
 
 	if (this->glcontext == nullptr) {
-		throw util::Error("Failed creating OpenGL context: %s", SDL_GetError());
+		throw util::Error(MSG(err) << "Failed creating OpenGL context: " << SDL_GetError());
 	}
 
 	// initialize glew, for shaders n stuff
 	GLenum glew_state = glewInit();
 	if (glew_state != GLEW_OK) {
-		throw util::Error("GLEW initialization failed");
+		throw util::Error(MSG(err) << "GLEW initialization failed");
 	}
 	if (!GLEW_VERSION_2_1) {
-		throw util::Error("OpenGL 2.1 not available");
+		throw util::Error(MSG(err) << "OpenGL 2.1 not available");
 	}
 
 	// to quote the standard doc:
@@ -135,16 +137,16 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	// anyways, we need at least 1024x1024.
 	int max_texture_size;
 	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
-	log::dbg("Maximum supported texture size: %d", max_texture_size);
+	log::log(MSG(dbg) << "Maximum supported texture size: " << max_texture_size);
 	if (max_texture_size < 1024) {
-		throw util::Error("Maximum supported texture size too small: %d", max_texture_size);
+		throw util::Error(MSG(err) << "Maximum supported texture size too small: " << max_texture_size);
 	}
 
 	int max_texture_units;
 	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_texture_units);
-	log::dbg("Maximum supported texture units: %d", max_texture_units);
+	log::log(MSG(dbg) << "Maximum supported texture units: " << max_texture_units);
 	if (max_texture_units < 2) {
-		throw util::Error("Your GPU has too less texture units: %d", max_texture_units);
+		throw util::Error(MSG(err) << "Your GPU has too less texture units: " << max_texture_units);
 	}
 
 	// vsync on
@@ -169,7 +171,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	// initialize audio
 	auto devices = audio::AudioManager::get_devices();
 	if (devices.empty()) {
-		throw util::Error{"No audio devices found"};
+		throw util::Error{MSG(err) << "No audio devices found"};
 	}
 }
 
@@ -182,7 +184,7 @@ Engine::~Engine() {
 }
 
 bool Engine::on_resize(coord::window new_size) {
-	log::dbg("engine window resize to: %hdx%hd\n", new_size.x, new_size.y);
+	log::log(MSG(dbg) << "engine window resize to " << new_size.x << "x" << new_size.y);
 
 	// update engine window size
 	this->window_size = new_size;
@@ -219,7 +221,7 @@ bool Engine::draw_debug_overlay() {
 	// Draw FPS counter in the lower right corner
 	this->render_text(
 		{this->window_size.x - 100, 15}, 20,
-		"%.1f fps", this->fpscounter.fps
+		"%.1f fps", this->fps_counter.fps
 	);
 
 	// Draw version string in the lower left corner
@@ -251,7 +253,7 @@ void Engine::loop() {
 	SDL_Event event;
 
 	while (this->running) {
-		this->fpscounter.frame();
+		this->fps_counter.frame();
 
 		this->job_manager->execute_callbacks();
 
@@ -358,14 +360,14 @@ CoreInputHandler &Engine::get_input_handler() {
 	return this->input_handler;
 }
 
-unsigned int Engine::lastframe_msec() {
-	return this->fpscounter.msec_lastframe;
+int64_t Engine::lastframe_duration_nsec() {
+	return this->fps_counter.nsec_lastframe;
 }
 
 void Engine::render_text(coord::window position, size_t size, const char *format, ...) {
 	auto it = this->fonts.find(size);
 	if (it == this->fonts.end()) {
-		throw util::Error("unknown font size %zu requested.", size);
+		throw util::Error(MSG(err) << "Unknown font size requested: " << size);
 	}
 
 	Font *font = it->second.get();

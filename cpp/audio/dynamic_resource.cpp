@@ -3,7 +3,7 @@
 #include "dynamic_resource.h"
 
 #include "../engine.h"
-#include "../log.h"
+#include "../log/log.h"
 
 namespace openage {
 namespace audio {
@@ -34,12 +34,14 @@ DynamicResource::DynamicResource(category_t category,
 }
 
 void DynamicResource::use() {
-	log::msg("DYNRES: now in use");
-	log::msg("CS=%lu, MX=%lu", chunk_size, max_chunks);
+	log::log(MSG(info) << "DYNRES: now in use");
+	log::log(MSG(info) << "CS=" << chunk_size << ", MX=" << max_chunks);
+
 	// if the resource is new in use
 	if ((this->use_count++) == 0) {
 		// create loader
 		this->loader = DynamicLoader::create(this->path, this->format);
+
 		// create chunk information
 		for (size_t i = 0; i < this->max_chunks; i++) {
 			this->chunk_infos.push(std::make_shared<chunk_info_t>(
@@ -47,6 +49,7 @@ void DynamicResource::use() {
 				this->chunk_size)
 			);
 		}
+
 		// get loading job group
 		Engine &e = Engine::get();
 		this->loading_job_group = e.get_job_manager()->create_job_group();
@@ -54,7 +57,8 @@ void DynamicResource::use() {
 }
 
 void DynamicResource::stop_using() {
-	log::msg("DYNRES: no longer in use");
+	log::log(MSG(info) << "DYNRES: no longer in use");
+
 	// if the resource is not used anymore
 	if ((--this->use_count) == 0) {
 		// clear the chunk_mapping
@@ -108,6 +112,7 @@ audio_chunk_t DynamicResource::get_data(size_t position, size_t data_length) {
 	return {nullptr, 1};
 }
 
+
 void DynamicResource::start_preloading(size_t resource_chunk_index) {
 	size_t resource_chunk_offset = resource_chunk_index * this->chunk_size;
 
@@ -135,6 +140,7 @@ void DynamicResource::start_preloading(size_t resource_chunk_index) {
 	}
 }
 
+
 void DynamicResource::start_loading(std::shared_ptr<chunk_info_t> chunk_info,
                                     size_t resource_chunk_offset) {
 	chunk_info->state.store(chunk_info_t::state_t::LOADING);
@@ -157,5 +163,5 @@ void DynamicResource::start_loading(std::shared_ptr<chunk_info_t> chunk_info,
 	this->loading_job_group.enqueue<int>(loading_function);
 }
 
-}
-}
+
+}} // namespace openage::audio

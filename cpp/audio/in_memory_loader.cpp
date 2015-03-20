@@ -15,17 +15,19 @@ InMemoryLoader::InMemoryLoader(const std::string &path)
 
 std::unique_ptr<InMemoryLoader> InMemoryLoader::create(const std::string &path,
                                                        format_t format) {
+
 	std::unique_ptr<InMemoryLoader> loader;
+
 	// switch format and return an appropriate loader
 	switch (format) {
 	case format_t::OPUS:
 		loader.reset(new OpusInMemoryLoader{path});
 		break;
 	default:
-		throw util::Error{"Not supported for format: %d", format};
+		throw util::Error{MSG(err) << "Not supported for format: " << format};
 	}
+
 	return std::move(loader);
 }
 
-}
-}
+}} // namespace openage::audio

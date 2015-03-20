@@ -6,10 +6,10 @@
 #include "in_memory_resource.h"
 #include "../engine.h"
 #include "../util/error.h"
-#include "../log.h"
 
 namespace openage {
 namespace audio {
+
 
 Resource::Resource(category_t category, int id)
 		:
@@ -17,19 +17,22 @@ Resource::Resource(category_t category, int id)
 		id{id} {
 }
 
+
 category_t Resource::get_category() const {
 	return category;
 }
+
 
 int Resource::get_id() const {
 	return id;
 }
 
-void Resource::use() {
-}
 
-void Resource::stop_using() {
-}
+void Resource::use() {}
+
+
+void Resource::stop_using() {}
+
 
 std::shared_ptr<Resource> Resource::create_resource(category_t category, int id,
                                                     const std::string &path,
@@ -41,9 +44,9 @@ std::shared_ptr<Resource> Resource::create_resource(category_t category, int id,
 	case loader_policy_t::DYNAMIC:
 		return std::make_shared<DynamicResource>(category, id, path, format);
 	default:
-		throw util::Error{"Unsupported loader policy"};
+		throw util::Error{MSG(err) << "Unsupported loader policy: " << loader_policy};
 	}
 }
 
-}
-}
+
+}} // namespace openage::audio

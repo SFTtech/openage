@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "testing.h"
 
@@ -7,8 +7,7 @@
 #include <map>
 
 #include "testlist.h"
-#include "../log.h"
-#include "../util/error.h"
+#include "../log/log.h"
 
 using namespace openage;
 
@@ -17,7 +16,7 @@ namespace testing {
 bool run_test(const std::string &name) {
 	auto test = tests.find(name);
 	if (test == tests.end()) {
-		log::err("no such test: %s", name.c_str());
+		log::log(MSG(err) << "No such test: " << name);
 		return false;
 	}
 
@@ -25,7 +24,7 @@ bool run_test(const std::string &name) {
 		test->second();
 		return true;
 	} catch(... /* gotta catch em all TODO change when new exception system is finished */) {
-		log::err("test failed: %s", name.c_str());
+		log::log(MSG(err) << "Test failed: " << name);
 		return false;
 	}
 }
@@ -33,7 +32,7 @@ bool run_test(const std::string &name) {
 bool run_demo(const std::string &name, int argc, char **argv) {
 	auto demo = demos.find(name);
 	if (demo == demos.end()) {
-		log::err("no such demo: %s", name.c_str());
+		log::log(MSG(err) << "No such demo: " << name);
 		return false;
 	}
 
@@ -41,26 +40,32 @@ bool run_demo(const std::string &name, int argc, char **argv) {
 		demo->second(argc, argv);
 		return true;
 	} catch (... /* gotta catch em all */) {
-		log::err("demo failed: %s", name.c_str());
+		log::log(MSG(err) << "Demo failed: " << name);
 		return false;
 	}
 }
 
 void list_tests() {
 	if (tests.empty()) {
-		printf("no tests are available\n");
+		std::cout << "No tests are available" << std::endl;
 	} else {
 		for (auto &test : tests) {
 			// TODO load description from tests_cpp asset
-			printf("[test] %s: %s\n", test.first.c_str(), "(no description loaded)");
+			std::cout <<
+				"[test] " << test.first << ": " <<
+				"(no description loaded)" <<
+				std::endl;
 		}
 	}
 
 	if (demos.empty()) {
-		printf("no demos are available\n");
+		std::cout << "no demos are available" << std::endl;
 	} else {
 		for (auto &demo : demos) {
-			printf("[demo] %s: %s\n", demo.first.c_str(), "(no description loaded)");
+			std::cout <<
+				"[demo] " << demo.first << ": " <<
+				"(no description loaded)" <<
+				std::endl;
 		}
 	}
 }

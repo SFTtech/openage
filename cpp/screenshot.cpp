@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "screenshot.h"
 #include "util/strings.h"
@@ -11,19 +11,22 @@
 #include "crossplatform/opengl.h"
 
 #include "coord/window.h"
-#include "log.h"
+#include "log/log.h"
 #include <ctime>
 
 namespace openage {
+
 
 ScreenshotManager::ScreenshotManager()
 	:
 	count{0} {
 }
 
+
 ScreenshotManager::~ScreenshotManager() {}
 
-char *ScreenshotManager::gen_next_filename() {
+
+std::string ScreenshotManager::gen_next_filename() {
 
 	std::time_t t = std::time(NULL);
 
@@ -38,13 +41,14 @@ char *ScreenshotManager::gen_next_filename() {
 	char timestamp[32];
 	std::strftime(timestamp, 32, "%Y-%m-%d_%H-%M-%S", std::localtime(&t));
 
-	return util::format("/tmp/openage_%s_%02d.png", timestamp, this->count);
+	return util::sformat("/tmp/openage_%s_%02d.png", timestamp, this->count);
 }
 
-void ScreenshotManager::save_screenshot() {
-	char *filename = this->gen_next_filename();
 
-	log::msg("saving screenshot to %s...", filename);
+void ScreenshotManager::save_screenshot() {
+	std::string filename = this->gen_next_filename();
+
+	log::log(MSG(info) << "Saving screenshot to " << filename);
 
 	int32_t rmask, gmask, bmask, amask;
 	rmask = 0x000000FF;
@@ -60,11 +64,12 @@ void ScreenshotManager::save_screenshot() {
 	rmask, gmask, bmask, amask);
 
 	size_t pxcount = screen->w * screen->h;
-	uint32_t *pxdata = new uint32_t[pxcount];
+
+	auto pxdata = std::make_unique<uint32_t[]>(pxcount);
 
 	glReadPixels(0, 0,
 	             this->window_size.x, this->window_size.y,
-	             GL_RGBA, GL_UNSIGNED_BYTE, pxdata);
+	             GL_RGBA, GL_UNSIGNED_BYTE, pxdata.get());
 
 	uint32_t *surface_pxls = (uint32_t *)screen->pixels;
 
@@ -79,13 +84,10 @@ void ScreenshotManager::save_screenshot() {
 		}
 	}
 
-	delete[] pxdata;
-
 	// call sdl_image for saving the screenshot to png
-	IMG_SavePNG(screen, filename);
+	IMG_SavePNG(screen, filename.c_str());
 	SDL_FreeSurface(screen);
-
-	delete[] filename;
 }
+
 
 } //namespace openage

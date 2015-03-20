@@ -23,16 +23,15 @@
 
 
 
-// structs: used to pack variables
-// -> as few member functions as possible, structs are a container only.
+// Structs: Used to pack variables, nothing else!
+// Need member functions/constructor? Use a class!
 //
-// constructor needed? more member functions?
-// -> use a class instead of struct!
-//
-// struct name: lower_case_with_underscores
+// Struct names: lower_case_with_underscores.
+
+
 /**
- * struct documentation.
- * incredibly good example for writing docs.
+ * Struct documentation.
+ * Incredibly good example for writing docs.
  */
 struct another_stupid_type {
 	rofl_t blergh;         //!< variables and functions in lowercase
@@ -42,8 +41,11 @@ struct another_stupid_type {
 };
 
 
-// classes: complex containers.
-// class name: CamelCase
+// Classes: complex containers.
+//
+// Class names: CamelCase
+
+
 /**
  * Represents yet another Valve game.
  * Go on, nothing to see here.
@@ -57,12 +59,19 @@ public:
 	// Example for using tabs for indentation and spaces for alignment.
 	// The argument list is too long, therefore wrap it.
 	// => Tabs are used to reach level of `void release_...`,
-	//    spaces indent the alignment of each argument:
+	//    spaces indent the alignment of each argument!
+	//
+	// Variable name alignment is optional.
 	void release_game(const ValveTeam &team,
 	                  uint128_t        passed_time,
 	                  Engine          *game_engine,
 	                  Internet        *community,
 	                  bool             keep_secret=true) {
+
+		// ^ this empty line is mandatory due to the broken line and
+		// indentation change.
+		// In general, if in doubt, insert a newline.
+		// They make things more readable (TM).
 
 		// http://www.abstrusegoose.com/440
 		auto gaben = team.get_human("gaben");
@@ -72,23 +81,24 @@ public:
 		    and (this->story->awesomeness > 9000)
 		    and (game_engine->quality_points > min_quality)) {
 
+			// ^ This empty line is mandatory, too.
 			team->start_ARG(community);
 
-			this->estimated_release_time = passed_time + to_seconds("66 days");
+			// https://developer.valvesoftware.com/wiki/Valve_Time
+			this->estimated_release_time = passed_time + ValveTime("66 days").seconds();
 
 			team.get_product("steam")->release(this);
 			community->go_crazy();
 			world::infrastructure.collapse();
-		}
-		else {
+		} else {
 			gaben->motivate(team);
 
-			// when the argument list gets too long, align with spaces:
+			// When the argument list gets too long, align with spaces:
 			team.drop_hint(community,
 			               "we think you're kind of wasting your time, "
 			               "but it's your time to waste.");
 
-			// you may also start one line later and then indent with tabs.
+			// You may also start one line later and then indent with tabs.
 			team.relocate(
 				game_engine->get_team()->get_current_hq_location(),
 				gaben.get_table_location()
@@ -105,10 +115,19 @@ private:
 };
 
 
+// ^ At the top level, use two newlines between statements.
+// Note: Comments and preprocessor directives don't count as statements,
+// In some cases variables and functions may be grouped, always judge
+// yourself instead of blindly following the style guide, blah blah.
+
+
 // Documentation for a namespace is in the header.
 namespace elts {
+namespace mom {
 // <- A namespace does not increase the indentation level!
 
+
+// ^ At the top level, use two newlines between statements.
 YourMom::YourMom(int her_mass)
 	:
 	mass{her_mass},
@@ -135,31 +154,30 @@ void YourMom::print_mass() {
 
 
 bool YourMom::tick() {
-	// note the spaces!
-	//|                     |
-	//v                     v
+	// Note the spaces!
+	//|                | |  |
+	//v                v v  v
 	if (this->stupidity > 5) {
 		// spaces here:
 		//        v  v
 		this->mass += 1;
 	}
 
-	// spaces again:
+	// Spaces again:
 	// v      v v  v v v   v    v
 	for (int i = 0; i < 42; i++) {
-		// always use {...} for the conditional code block,
+		// Always use {...} for the conditional code block,
 		// even if it's one statement only:
 		if (this->mass > 20) {
-			// black hole?
+			// Black hole? I guess it depends on the density.
 			break;
 		}
 		else if (this->stupidity > 100) {
 			this->die();
-		}
-		else {
+		} else { // Both styles are allowed: } else { and } \n else {
 			// your mom eats a bit.
 			this->mass += 1;
-			// ^ we're not using var++, except in for(..)
+			// ^ We're not using var++, except in for(..)
 
 			if ((this->mass % 5) == 0) {
 				this->number_of_moons += 1;
@@ -168,16 +186,16 @@ bool YourMom::tick() {
 	}
 
 	switch (this->stupidity) {
-	// the case label is at the same indentation level
+	// The case label is at the same indentation level
 	// as its switch statement:
 	// vvv
 	case 0:
-		throw ContentMafia::Error{"your mom opposes DRM, investigation required."};
+		throw ContentMafia::Error{"Your mom opposes DRM, investigation required."};
 		break;
 
 	case 8: {
-		//  ^ when defining new variables for a specific case,
-		//  | braces are required.
+		// ^ when defining new variables for a specific case,
+		// | braces are required. Use them like this.
 
 		Apple::iPhone shiny_thing;
 		shiny_thing.get_bought_by(this);
@@ -187,8 +205,8 @@ bool YourMom::tick() {
 
 	case 42:
 		ContentMafia::try_recruit_lobbyist(this);
-		// if you don't want to break, write a comment like this:
-		// fall through
+		// If you don't want to break, write a comment like this:
+		// Fall through
 
 	default:
 		this->stupidity += 1;
@@ -198,14 +216,15 @@ bool YourMom::tick() {
 	return true;
 }
 
-} // namespace elts
+}} // namespace elts::mom
+// ^ When closing namespaces, close all in the same line and write a comment like this.
 
 
 int main(int argc, char **argv) {
-	// use {}-style constructors
+	// Use {}-style constructors!
 	elts::YourMom my_special_mom{1337};
 
-	// no space after function name calling
+	// No space after function name calling!
 	//                       |
 	//                       v
 	my_special_mom.print_mass();

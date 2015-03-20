@@ -8,7 +8,7 @@
 
 #include "resource.h"
 
-#include "../log.h"
+#include "../log/log.h"
 #include "../util/dir.h"
 #include "../util/error.h"
 
@@ -27,9 +27,9 @@ AudioManager::AudioManager(const std::string &device_name)
 	device_name{device_name} {
 
 	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
-		throw util::Error("SDL audio initialization: %s", SDL_GetError());
+		throw util::Error(MSG(err) << "SDL audio initialization failed: " << SDL_GetError());
 	} else {
-		log::msg("initialized SDL audio subsystems.");
+		log::log(MSG(info) << "SDL audio subsystems initialized");
 	}
 
 	//set desired audio output format
@@ -52,7 +52,7 @@ AudioManager::AudioManager(const std::string &device_name)
 			&device_spec, 0);
 	// no device could be opened
 	if (device_id == 0) {
-		throw util::Error{"Error opening audio device: %s", SDL_GetError()};
+		throw util::Error{MSG(err) << "Error opening audio device: " << SDL_GetError()};
 	}
 
 	// initialize playing sounds vectors
@@ -65,10 +65,13 @@ AudioManager::AudioManager(const std::string &device_name)
 	mix_buffer.reset(new int32_t[4 * device_spec.samples *
 			device_spec.channels]);
 
-	log::msg("Using audio device '%s' [freq=%d,format=%d,channels=%d,samples=%d]",
-			device_name.empty() ? "default" : device_name.c_str(),
-			device_spec.freq, device_spec.format, device_spec.channels,
-			device_spec.samples);
+	log::log(MSG(info) <<
+		"Using audio device: " << (device_name.empty() ? "default" : device_name) << " ["
+		"freq=" << device_spec.freq << ", "
+		"format=" << device_spec.format << ", "
+		"channels=" << device_spec.channels << ", "
+		"samples=" << device_spec.samples <<
+		"]");
 
 	SDL_PauseAudioDevice(device_id, 0);
 }
@@ -98,7 +101,10 @@ void AudioManager::load_resources(const util::Dir &asset_dir,
 Sound AudioManager::get_sound(category_t category, int id) {
 	auto resource = resources.find(std::make_tuple(category, id));
 	if (resource == std::end(resources)) {
-		throw util::Error{"sound resource does not exist: category=%d, id=%d", static_cast<int>(category), id};
+		throw util::Error{MSG(err) <<
+			"Sound resource does not exist: "
+			"category=" << category << ", " <<
+			"id=" << id};
 	}
 
 	auto sound_impl = std::make_shared<SoundImpl>(resource->second);
