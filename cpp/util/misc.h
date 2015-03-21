@@ -1,17 +1,10 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UTIL_MISC_H_
 #define OPENAGE_UTIL_MISC_H_
 
 namespace openage {
 namespace util {
-
-/**
- * returns a random number in the given range
- * @param lower the (included) lower limit of the generated number
- * @param upper the (excluded) upper limit of the generated number
- */
-int random_range(int lower, int upper);
 
 /**
  * modulo operation that guarantees to return positive values.
@@ -74,7 +67,7 @@ struct less {
 	}
 };
 
-} //namespace util
-} //namespace openage
+} // namespace util
+} // namespace openage
 
 #endif
