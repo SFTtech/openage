@@ -15,11 +15,14 @@
 #include "crossplatform/opengl.h"
 #include "engine.h"
 #include "gamedata/string_resource.gen.h"
+#include "game_save.h"
 #include "log/log.h"
 #include "terrain/terrain.h"
 #include "unit/action.h"
+#include "unit/command.h"
 #include "unit/producer.h"
 #include "unit/unit.h"
+#include "unit/unit_texture.h"
 #include "util/strings.h"
 #include "util/timer.h"
 #include "util/externalprofiler.h"
@@ -110,17 +113,23 @@ GameMain::GameMain(Engine *engine)
 	clicking_active{true},
 	ctrl_active{false},
 	scrolling_active{false},
+	draging_active{false},
 	construct_mode{true},
-	selected_unit{nullptr},
+	building_placement{false},
+	use_set_ability{false},
 	assetmanager{engine->get_data_dir()},
-	gamedata_loaded{false},
 	engine{engine} {
 
+	// prepare data loading
+	datamanager.initialize(&assetmanager);
+
+	// engine callbacks
 	engine->register_draw_action(this);
 	engine->register_input_action(this);
 	engine->register_tick_action(this);
 	engine->register_tick_action(&this->placed_units);
 	engine->register_drawhud_action(this);
+	engine->register_drawhud_action(&this->selection);
 
 	util::Dir *data_dir = engine->get_data_dir();
 	util::Dir asset_dir = data_dir->append("converted");
@@ -133,8 +142,15 @@ GameMain::GameMain(Engine *engine)
 	auto blending_modes = util::read_csv_file<gamedata::blending_mode>(asset_dir.join("blending_modes.docx"));
 
 	// create the terrain which will be filled by chunks
-	terrain = new Terrain(assetmanager, terrain_types, blending_modes, true);
-	terrain->fill(terrain_data, terrain_data_size);
+	this->terrain = new Terrain(assetmanager, terrain_types, blending_modes, true);
+	this->terrain->fill(terrain_data, terrain_data_size);
+	this->placed_units.set_terrain(this->terrain);
+
+	// players
+	unsigned int number_of_players = 8;
+	for (unsigned int i = 0; i < number_of_players; ++i) {
+		this->players.emplace_back(i);
+	}
 
 	auto player_color_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("player_palette_50500.docx"));
 
@@ -224,88 +240,6 @@ GameMain::GameMain(Engine *engine)
 	delete teamcolor_frag;
 	delete alphamask_vert;
 	delete alphamask_frag;
-
-	auto gamedata_load_function = [this, engine, asset_dir]() -> std::vector<gamedata::empiresdat> {
-		log::log(MSG(info) << "loading game specification files... stand by, will be faster soon...");
-		util::Dir gamedata_dir = asset_dir.append("gamedata");
-		return std::move(util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx"));
-	};
-	auto gamedata_load_callback = [this](job::result_function_t<std::vector<gamedata::empiresdat>> get_result) {
-		auto result = get_result();
-		this->on_gamedata_loaded(result);
-	};
-	engine->get_job_manager()->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function, gamedata_load_callback);
-}
-
-void GameMain::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
-	util::Dir *data_dir = this->engine->get_data_dir();
-	util::Dir asset_dir = data_dir->append("converted");
-
-	// create graphic id => graphic map
-	for (auto &graphic : gamedata[0].graphics.data) {
-		this->graphics[graphic.id] = &graphic;
-	}
-
-	int your_civ_id = 1; //British by default
-	// 0 is gaia and not very useful (it's not an user facing civilization so
-	// we cannot rely on it being polished... it might be VERY broken.
-	// British or any other civ is a way safer bet.
-
-	log::log(MSG(info) << "Using civilisation: " << gamedata[0].civs.data[your_civ_id].name);
-
-	ProducerLoader pload(this);
-	available_objects = pload.create_producers(gamedata, your_civ_id);
-
-	auto get_sound_file_location = [asset_dir](int32_t resource_id) -> std::string {
-		std::string snd_file_location;
-		// We check in sounds_x1.drs folder first in case we need to override
-		for (const char *sound_dir : {"sounds_x1.drs", "sounds.drs"}) {
-			snd_file_location = util::sformat("Data/%s/%d.opus", sound_dir, resource_id);
-			if (util::file_size(asset_dir.join(snd_file_location)) > 0) {
-				return snd_file_location;
-			}
-		}
-
-		// We could not find the sound file for the provided resource_id in both directories
-		return "";
-	};
-
-	// playable sound files for the audio manager
-	std::vector<gamedata::sound_file> sound_files;
-	for (gamedata::sound &sound : gamedata[0].sounds.data) {
-		std::vector<int> sound_items;
-
-		for (gamedata::sound_item &item : sound.sound_items.data) {
-			std::string snd_file_location = get_sound_file_location(item.resource_id);
-			if (snd_file_location.empty()) {
-				log::log(MSG(warn) <<
-					"   No sound file found for resource_id " <<
-					item.resource_id << ", ignoring...");
-
-				continue;
-			}
-
-			sound_items.push_back(item.resource_id);
-
-			gamedata::sound_file f {
-				gamedata::audio_category_t::GAME,
-				item.resource_id,
-				snd_file_location,
-				gamedata::audio_format_t::OPUS,
-				gamedata::audio_loader_policy_t::DYNAMIC
-			};
-			sound_files.push_back(f);
-		}
-		// create test sound objects that can be played later
-		this->available_sounds[sound.id] = TestSound{sound_items};
-	}
-
-	// load the requested sounds.
-	audio::AudioManager &am = engine->get_audio_manager();
-	am.load_resources(asset_dir, sound_files);
-
-	this->gamedata_loaded = true;
-
 }
 
 GameMain::~GameMain() {
@@ -334,22 +268,26 @@ bool GameMain::on_input(SDL_Event *e) {
 		// a mouse button was pressed...
 		// subtract value from window height to get position relative to lower right (0,0).
 		coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
-		coord::camgame mousepos_camgame = mousepos_window.to_camgame();
+		this->mousepos_camgame = mousepos_window.to_camgame();
 		// TODO once the terrain elevation milestone is implemented, use a method
 		// more suitable for converting camgame to phys3
-		coord::phys3 mousepos_phys3 = mousepos_camgame.to_phys3();
-		coord::tile mousepos_tile = mousepos_phys3.to_tile3().to_tile();
+		this->mousepos_phys3 = mousepos_camgame.to_phys3();
+		this->mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
 		if (clicking_active and e->button.button == SDL_BUTTON_LEFT and !construct_mode) {
-			TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
-			if (chunk == nullptr) {
-				break;
-			}
+			if (this->building_placement) {
 
-			// get object currently standing at the clicked position
-			if (!chunk->get_data(mousepos_tile)->obj.empty()) {
-				TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
-				selected_unit = obj->unit;
+				// confirm building placement with left click
+				Command cmd(this->players[0], this->datamanager.get_producer_index(this->editor_current_building), mousepos_phys3);
+				cmd.set_ability(ability_type::build);
+				selection.all_invoke(cmd);
+				this->building_placement = false;
+			}
+			else {
+
+				// begin a boxed selection
+				selection.drag_begin(mousepos_camgame);
+				draging_active = true;
 			}
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_LEFT and construct_mode) {
@@ -374,22 +312,15 @@ bool GameMain::on_input(SDL_Event *e) {
 			TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
 			chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
 		}
-		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and !construct_mode and selected_unit) {
-			TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
-			if (chunk == nullptr) {
-				break;
-			}
+		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and !construct_mode) {
 
-			// get object currently standing at the clicked position
-			if (chunk->get_data(mousepos_tile)->obj.empty()) {
-				selected_unit->target(mousepos_phys3);
+			// right click can cancel building placement
+			if (this->building_placement) {
+				this->building_placement = false;
 			}
 			else {
-				// try target unit
-				Unit *obj = chunk->get_data(mousepos_tile)->obj[0]->unit;
-				if (!selected_unit->target(obj)) {
-					selected_unit->target(mousepos_phys3);
-				}
+				auto cmd = this->get_action(mousepos_phys3);
+				selection.all_invoke(cmd);
 			}
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and construct_mode) {
@@ -404,12 +335,13 @@ bool GameMain::on_input(SDL_Event *e) {
 			if (!chunk->get_data(mousepos_tile)->obj.empty()) {
 				// get first object currently standing at the clicked position
 				TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
-				if (obj->unit == selected_unit) selected_unit = nullptr;
-				obj->unit->delete_unit();
-			} else if ( this->available_objects.size() > 0 ) {
+				log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
+				obj->unit.delete_unit();
+			} else if ( this->datamanager.producer_count() > 0 ) {
 				// try creating a unit
-				UnitProducer &producer = *this->available_objects[this->editor_current_building];
-				this->placed_units.new_unit(producer, terrain, mousepos_tile);
+				log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
+				UnitProducer &producer = *this->datamanager.get_producer_index(this->editor_current_building);
+				this->placed_units.new_unit(producer, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
 			}
 			break;
 		}
@@ -426,7 +358,11 @@ bool GameMain::on_input(SDL_Event *e) {
 	}
 
 	case SDL_MOUSEBUTTONUP:
-		if (scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
+		if (draging_active and e->button.button == SDL_BUTTON_LEFT) {
+			selection.drag_release(terrain, this->ctrl_active);
+			draging_active = false;
+		}
+		else if (scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
 			// stop scrolling
 			SDL_SetRelativeMouseMode(SDL_FALSE);
 			scrolling_active = false;
@@ -436,18 +372,30 @@ bool GameMain::on_input(SDL_Event *e) {
 		}
 		break;
 
-	case SDL_MOUSEMOTION:
+	case SDL_MOUSEMOTION: {
+
+		// update mouse position values
+		coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
+		this->mousepos_camgame = mousepos_window.to_camgame();
+		this->mousepos_phys3 = mousepos_camgame.to_phys3();
+		this->mousepos_tile = mousepos_phys3.to_tile3().to_tile();
+
+		if (draging_active) {
+			selection.drag_update(mousepos_camgame);
+		}
 
 		// scroll, if middle mouse is being pressed
 		//  SDL_GetRelativeMouseMode() queries sdl for that.
-		if (scrolling_active) {
+		else if (scrolling_active) {
 			engine.move_phys_camera(e->motion.xrel, e->motion.yrel);
 		}
 		break;
+	}
+		
 
 	case SDL_MOUSEWHEEL:
-		if (this->ctrl_active && this->available_objects.size() > 0) {
-			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->available_objects.size());
+		if (this->ctrl_active && this->datamanager.producer_count() > 0) {
+			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
 		}
 		else {
 			editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
@@ -478,6 +426,14 @@ bool GameMain::on_input(SDL_Event *e) {
 			this->debug_grid_active = !this->debug_grid_active;
 			break;
 
+		case SDLK_F5:
+			gameio::save(this, "default_save.txt");
+			break;
+
+		case SDLK_F9:
+			gameio::load(this, "default_save.txt");
+			break;
+
 		case SDLK_SPACE:
 			this->terrain->blending_enabled = !terrain->blending_enabled;
 			break;
@@ -500,6 +456,28 @@ bool GameMain::on_input(SDL_Event *e) {
 			break;
 		case SDLK_p:
 			UnitAction::show_debug = !UnitAction::show_debug;
+			break;
+		case SDLK_t:
+			// attempt to train editor selected object
+			if ( this->datamanager.producer_count() > 0 ) {
+				UnitProducer *producer = this->datamanager.get_producer_index(this->editor_current_building);
+				Command cmd(this->players[0], producer);
+				this->selection.all_invoke(cmd);
+			}
+			break;
+		case SDLK_y:
+			this->building_placement = true;
+			break;
+		case SDLK_z:
+			this->use_set_ability = false;
+			break;
+		case SDLK_x:
+			this->use_set_ability = true;
+			this->ability = ability_type::move;
+			break;
+		case SDLK_c:
+			this->use_set_ability = true;
+			this->ability = ability_type::gather;
 			break;
 		}
 
@@ -548,6 +526,7 @@ void GameMain::move_camera() {
 bool GameMain::on_tick() {
 	this->move_camera();
 	assetmanager.check_updates();
+	datamanager.check_updates();
 	return true;
 }
 
@@ -564,7 +543,7 @@ bool GameMain::on_draw() {
 		this->draw_debug_grid();
 	}
 
-	if (not gamedata_loaded) {
+	if (not this->datamanager.load_complete()) {
 		// Show that gamedata is still loading
 		engine.render_text({0, 0}, 20, "Loading gamedata...");
 	}
@@ -572,10 +551,19 @@ bool GameMain::on_draw() {
 	// draw construction or actions mode indicator
 	int x = 400 - (engine.window_size.x / 2);
 	int y = 35 - (engine.window_size.y / 2);
-	if (construct_mode) {
+	if (this->construct_mode) {
 		engine.render_text({x, y}, 20, "Construct mode");
 	} else {
-		engine.render_text({x, y}, 20, "Actions mode");
+		std::string ability_str = "Actions mode";
+		if (this->use_set_ability) {
+			ability_str += " (" + std::to_string(this->ability) + ")";
+		}
+		engine.render_text({x, y}, 20, ability_str.c_str());
+	}
+
+	if (this->building_placement) {
+		auto txt = this->datamanager.get_producer_index(this->editor_current_building)->default_texture();
+		txt->draw(mousepos_tile.to_phys2().to_phys3().to_camgame(), 0, 1);
 	}
 
 	return true;
@@ -587,37 +575,15 @@ bool GameMain::on_drawhud() {
 	// draw the currently selected editor texture tile
 	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
 
-	if (this->available_objects.size() > 0) {
+	if (this->datamanager.producer_count() > 0) {
 		// and the current active building
 		coord::window bpreview_pos;
 		bpreview_pos.x = e.window_size.x - 200;
 		bpreview_pos.y = 200;
-		auto txt = this->available_objects[this->editor_current_building].get()->default_texture();
-		txt->draw(bpreview_pos.to_camhud());
+		auto txt = this->datamanager.get_producer_index(this->editor_current_building)->default_texture();
+		txt->sample(bpreview_pos.to_camhud());
 	}
 	return true;
-}
-
-Texture *GameMain::find_graphic(int graphic_id) {
-	auto tex_it = this->graphics.find(graphic_id);
-	if (tex_it == this->graphics.end()) {
-		log::log(MSG(info) << "   -> ignoring graphics_id: " << graphic_id);
-		return nullptr;
-	}
-
-	int slp_id = tex_it->second->slp_id;
-	if (slp_id <= 0) {
-		log::log(MSG(info) << "  -> ignoring slp_id: " << slp_id);
-		return nullptr;
-	}
-
-	log::log(MSG(info) << "   slp id/name: " << slp_id << " " << this->graphics[graphic_id]->name0);
-	std::string tex_fname = util::sformat("converted/Data/graphics.drs/%d.slp.png", slp_id);
-	return this->assetmanager.get_texture(tex_fname);
-}
-
-TestSound *GameMain::find_sound(int sound_id) {
-	return &this->available_sounds[sound_id];
 }
 
 void GameMain::draw_debug_grid() {
@@ -671,19 +637,23 @@ void GameMain::draw_debug_grid() {
 
 }
 
-void TestSound::play() {
-	if (this->sound_items.size() <= 0) {
-		return;
+Command GameMain::get_action(const coord::phys3 &pos) const {
+	TerrainObject *obj = this->terrain->obj_at_point(pos);
+	if (obj) {
+		Command c(this->players[0], &obj->unit, pos);
+		if (this->use_set_ability) {
+			c.set_ability(ability);
+		}
+		return c;
 	}
-	audio::AudioManager &am = Engine::get().get_audio_manager();
+	else {
+		Command c(this->players[0], pos);
+		if (this->use_set_ability) {
+			c.set_ability(ability);
+		}
+		return c;
+	}
 
-	int rand = util::random_range(0, this->sound_items.size());
-	int sndid = this->sound_items[rand];
-	try {
-		audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();
-	} catch(util::Error &e) {
-		log::log(MSG(info) << "cannot play: " << e);
-	}
 }
 
 } //namespace openage

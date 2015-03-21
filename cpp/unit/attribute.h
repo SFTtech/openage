@@ -3,25 +3,75 @@
 #ifndef OPENAGE_UNIT_ATTRIBUTE_H_
 #define OPENAGE_UNIT_ATTRIBUTE_H_
 
+#include <functional>
 #include <map>
 
 #include "../coord/tile.h"
+#include "../gamedata/unit.gen.h"
+#include "resource.h"
+#include "unit_container.h"
+
+namespace std {
+
+/**
+ * hasher for unit classes enum type
+ */
+template<> struct hash<gamedata::unit_classes> {
+	typedef underlying_type<gamedata::unit_classes>::type underlying_type;
+	typedef hash<underlying_type>::result_type result_type;
+	result_type operator()(const gamedata::unit_classes &arg) const {
+		hash<underlying_type> hasher;
+		return hasher(static_cast<underlying_type>(arg));
+	}
+};
+
+} // namespace std
 
 namespace openage {
+
+/** 
+ * types of action graphics
+ */
+enum class graphic_type {
+	construct,
+	shadow,
+	decay,
+	dying,
+	standing,
+	walking,
+	carrying,
+	attack,
+	work
+};
+
+class UnitTexture;
+
+/** 
+ * collection of graphics attached to each unit
+ */
+using graphic_set = std::map<graphic_type, std::shared_ptr<UnitTexture>>;
 
 /**
  * list of attribute types
  */
 enum class attr_type {
-	color,
+	owner,
 	hitpoints,
+	attack,
 	speed,
 	direction,
-	dropsite
+	projectile,
+	building,
+	resource,
+	gatherer,
+	garrison
 };
 
+/**
+ * this type gets specialized for each attribute
+ */
 template<attr_type T> class Attribute;
-
+ 
 /**
  * wraps a templated attribute
  */
@@ -38,6 +88,10 @@ public:
 
 using attr_map_t = std::map<attr_type, AttributeContainer *>;
 
+
+/**
+ * return attribute from a container
+ */
 template<attr_type T> Attribute<T> get_attr(attr_map_t &map) {
 	return *reinterpret_cast<Attribute<T> *>(map[T]);
 }
@@ -46,26 +100,52 @@ template<attr_type T> Attribute<T> get_attr(attr_map_t &map) {
 // attribute definitions go here
 // -----------------------------
 
-template<> class Attribute<attr_type::color>: public AttributeContainer {
-public:
-	Attribute(unsigned int c)
-		:
-		AttributeContainer{attr_type::color},
-		color{c} {}
+class Player;
 
-	unsigned int color;
+template<> class Attribute<attr_type::owner>: public AttributeContainer {
+public:
+	Attribute(Player &p)
+		:
+		AttributeContainer{attr_type::owner},
+		player(p) {}
+
+	Player &player;
 };
 
 template<> class Attribute<attr_type::hitpoints>: public AttributeContainer {
 public:
-	Attribute(unsigned int i, unsigned int m)
+	Attribute(unsigned int i)
 		:
 		AttributeContainer{attr_type::hitpoints},
-		current{i},
-		max{m} {}
+		current{static_cast<int>(i)},
+		max{i} {}
 
-	unsigned int current;
+	int current; // can become negative
 	unsigned int max;
+	float hp_bar_height;
+};
+
+template<> class Attribute<attr_type::attack>: public AttributeContainer {
+public:
+	Attribute(UnitProducer *p, coord::phys_t r, coord::phys_t h, uint d, graphic_set &grp)
+		:
+		AttributeContainer{attr_type::attack},
+		pp{p},
+		range{r},
+		init_height{h},
+		damage{d},
+		attack_graphic_set{&grp} {}
+
+	// TODO: can a unit have multiple attacks such as villagers hunting
+	// map target classes onto attacks
+
+	UnitProducer *pp; // projectile producer
+	coord::phys_t range;
+	coord::phys_t init_height;
+	unsigned int damage;
+
+	// used to change graphics back to normal for villagers
+	graphic_set *attack_graphic_set;
 };
 
 template<> class Attribute<attr_type::speed>: public AttributeContainer {
@@ -88,13 +168,80 @@ public:
 	coord::phys3_delta unit_dir;
 };
 
-template<> class Attribute<attr_type::dropsite>: public AttributeContainer {
+template<> class Attribute<attr_type::projectile>: public AttributeContainer {
+public:
+	Attribute(float arc)
+		:
+		AttributeContainer{attr_type::projectile},
+		projectile_arc{arc},
+		launched{false} {}
+
+	float projectile_arc;
+	UnitReference launcher;
+	bool launched;
+};
+
+template<> class Attribute<attr_type::building>: public AttributeContainer {
 public:
 	Attribute()
 		:
-		AttributeContainer{attr_type::dropsite} {}
+		AttributeContainer{attr_type::building},
+		completed{.0f} {}
 
-	unsigned int resource_type; // todo resource type enum
+	float completed;
+	bool is_dropsite;
+
+	// TODO: use unit class, fish and forage have different dropsites
+	game_resource resource_type; 
+
+	// TODO: list allowed trainable producers
+	UnitProducer *pp;
+	coord::phys3 gather_point;
+};
+
+/**
+ * resource capacity of an object, trees, mines, villagers etc.
+ */
+template<> class Attribute<attr_type::resource>: public AttributeContainer {
+public:
+	Attribute(game_resource type, float init_amount)
+		:
+		AttributeContainer{attr_type::resource},
+		resource_type{type},
+		amount{init_amount} {}
+
+	game_resource resource_type;
+	float amount;
+};
+
+class UnitTexture;
+
+/**
+ * TODO: rename to worker
+ */
+template<> class Attribute<attr_type::gatherer>: public AttributeContainer {
+public:
+	Attribute()
+		:
+		AttributeContainer{attr_type::gatherer},
+		amount{.0f} {}
+
+	game_resource current_type;
+	float amount;
+	float capacity;
+	float gather_rate;
+
+	// texture sets available for each resource
+	std::unordered_map<gamedata::unit_classes, UnitProducer *> graphics;
+};
+
+template<> class Attribute<attr_type::garrison>: public AttributeContainer {
+public:
+	Attribute()
+		:
+		AttributeContainer{attr_type::garrison} {}
+
+	std::vector<UnitReference> content;
 };
 
 } // namespace openage

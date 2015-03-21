@@ -170,6 +170,11 @@ public:
 	//TODO: non-square shaped terrain bounds
 
 	/**
+	 * returns a list of all referenced chunks
+	 */
+	std::vector<coord::chunk> used_chunks() const;
+
+	/**
 	 * fill the terrain with given terrain_id values.
 	 * @returns whether the data filled on the terrain was cut because of
 	 * the terrains size limit.
@@ -219,6 +224,11 @@ public:
 	 * the only reason the chunks exist, is because of this data.
 	 */
 	TileContent *get_data(coord::tile position);
+
+	/**
+	 * an object which contains the given point, null otherwise
+	 */
+	TerrainObject *obj_at_point(const coord::phys3 &point);
 
 	/**
 	 * get the neighbor chunks of a given chunk.

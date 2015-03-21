@@ -1,12 +1,11 @@
 // Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
-#include "unit_container.h"
-
 #include <memory>
 
 #include "../terrain/terrain_object.h"
 #include "producer.h"
 #include "unit.h"
+#include "unit_container.h"
 
 namespace openage {
 
@@ -26,8 +25,8 @@ UnitReference::UnitReference(const UnitContainer *c, id_t id, Unit *u)
 
 
 bool UnitReference::is_valid() const {
-	return this->container && this->unit_ptr &&
-		this->container->valid_id(this->unit_id);
+	return this->unit_ptr &&
+	       this->container->valid_id(this->unit_id);
 }
 
 
@@ -41,12 +40,24 @@ Unit *UnitReference::get() const {
 
 UnitContainer::UnitContainer()
 	:
-	next_new_id{0} {
-
+	next_new_id{1} {
 }
 
 
 UnitContainer::~UnitContainer() {
+	log::log(MSG(info) << "cleanup container");
+}
+
+void UnitContainer::reset() {
+	this->live_units.clear();
+}
+
+void UnitContainer::set_terrain(Terrain *t) {
+	this->terrain = t;
+}
+
+Terrain *UnitContainer::get_terrain() const {
+	return this->terrain;
 }
 
 
@@ -64,19 +75,25 @@ UnitReference UnitContainer::get_unit(id_t id) {
 	}
 }
 
+UnitReference UnitContainer::new_unit() {
+	auto id = next_new_id++;
+	this->live_units.emplace(id, std::make_unique<Unit>(*this, id));
+	return this->live_units[id]->get_ref();
+}
 
-bool UnitContainer::new_unit(UnitProducer& producer, Terrain *terrain,
-                             coord::tile tile) {
-	auto newobj = std::make_unique<Unit>(this, next_new_id++);
+UnitReference UnitContainer::new_unit(UnitProducer &producer, Player &owner,
+                             coord::phys3 position) {
+	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
 
-	// try creating a unit at this location
-	bool placed = producer.place(newobj.get(), terrain, tile);
+	// try placing unit at this location
+	bool placed = producer.place(newobj.get(), *this->terrain, position);
 	if (placed) {
-		producer.initialise(newobj.get());
+		producer.initialise(newobj.get(), owner);
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
+		return this->live_units[id]->get_ref();
 	}
-	return placed;
+	return UnitReference(); // is not valid
 }
 
 
@@ -97,11 +114,20 @@ bool UnitContainer::on_tick() {
 
 	// cleanup and removal of objects
 	for (auto &obj : to_remove) {
-		this->live_units[obj]->location->remove();
+
+		// unique pointer triggers cleanup
+		log::log(MSG(info) << "remove object " << obj);
 		this->live_units.erase(obj);
 	}
 	return true;
 }
 
+std::vector<Unit *> UnitContainer::all_units() {
+	std::vector<Unit *> result;
+	for (auto &u : this->live_units) {
+		result.push_back(u.second.get());
+	}
+	return result;
+}
 
 } // namespace openage
