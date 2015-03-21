@@ -25,7 +25,11 @@ TileContent::TileContent() :
 	terrain_id{0} {
 }
 
-TileContent::~TileContent() {}
+TileContent::~TileContent() {
+	for (auto &o : this->obj) {
+		delete o;
+	}
+}
 
 Terrain::Terrain(AssetManager &assetmanager,
                  const std::vector<gamedata::terrain_type> &terrain_meta,
@@ -93,6 +97,13 @@ Terrain::~Terrain() {
 	}
 }
 
+std::vector<coord::chunk> Terrain::used_chunks() const {
+	std::vector<coord::chunk> result;
+	for (auto &c : chunks) {
+		result.push_back(c.first);
+	}
+	return result;
+}
 
 bool Terrain::fill(const int *data, coord::tile_delta size) {
 	bool was_cut = false;
@@ -174,6 +185,20 @@ TileContent *Terrain::get_data(coord::tile position) {
 	} else {
 		return c->get_data(position.get_pos_on_chunk().to_tile());
 	}
+}
+
+TerrainObject *Terrain::obj_at_point(const coord::phys3 &point) {
+	coord::tile t = point.to_tile3().to_tile();
+	TileContent *tc = this->get_data(t);
+	if (!tc) {
+		return nullptr;
+	}
+	for (auto o : tc->obj) {
+		if (o->contains(point)) {
+			return o;
+		}
+	}
+	return nullptr;
 }
 
 bool Terrain::validate_terrain(terrain_t terrain_id) {

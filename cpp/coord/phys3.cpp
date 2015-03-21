@@ -1,4 +1,6 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+
+#include <cmath>
 
 #define GEN_IMPL_PHYS3_CPP
 #include "phys3.h"
@@ -20,7 +22,7 @@ phys2_delta phys3_delta::to_phys2() const {
 	return phys2_delta {ne, se};
 }
 
-camgame phys3::to_camgame() {
+camgame phys3::to_camgame() const {
 	Engine &e = Engine::get();
 
 	//determine the phys3 position relative to the camera position
@@ -29,7 +31,7 @@ camgame phys3::to_camgame() {
 	return relative_phys.to_camgame().as_absolute();
 }
 
-camgame_delta phys3_delta::to_camgame() {
+camgame_delta phys3_delta::to_camgame() const {
 	Engine &e = Engine::get();
 
 	//apply transformation matrix to relative_phys, to get 'scaled':
@@ -67,6 +69,17 @@ phys3_delta phys3::get_fraction() {
 	result.ne = (ne & bitmask);
 	result.se = (se & bitmask);
 	result.up = (up & bitmask);
+	return result;
+}
+
+phys_t distance(const phys3 &a, const phys3 &b) {
+	phys_t dx = a.ne - b.ne;
+	phys_t dy = a.se - b.se;
+	return std::hypot(dx, dy);
+}
+
+phys3_delta normalize(const phys3_delta &a, const phys_t &length) {
+	phys3_delta result = (a * length) / std::hypot(a.ne, a.se);
 	return result;
 }
 

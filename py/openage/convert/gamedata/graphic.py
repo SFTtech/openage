@@ -11,12 +11,12 @@ class GraphicDelta(Exportable):
     struct_description = "delta definitions for ingame graphics files."
 
     data_format = (
-        (READ, "graphic_id",  "int16_t"),
+        (READ_EXPORT, "graphic_id",  "int16_t"),
         (READ_UNKNOWN, None,  "int16_t"),
         (READ_UNKNOWN, None,  "int16_t"),
         (READ_UNKNOWN, None,  "int16_t"),
-        (READ, "direction_x", "int16_t"),
-        (READ, "direction_y", "int16_t"),
+        (READ_EXPORT, "direction_x", "int16_t"),
+        (READ_EXPORT, "direction_y", "int16_t"),
         (READ_UNKNOWN, None,  "int16_t"),
         (READ_UNKNOWN, None,  "int16_t"),
     )
@@ -77,7 +77,7 @@ class Graphic(Exportable):
         (READ_EXPORT, "adapt_color", "int8_t"),         # playercolor can be changed on sight (like sheep)
         (READ_EXPORT, "replay", "uint8_t"),             # loop animation
         (READ, "coordinates", "int16_t[4]"),
-        (READ, "delta_count", "uint16_t"),
+        (READ_EXPORT, "delta_count", "uint16_t"),
         (READ_EXPORT, "sound_id", "int16_t"),
         (READ_EXPORT, "attack_sound_used", "uint8_t"),
         (READ_EXPORT, "frame_count", "uint16_t"),       # number of frames per angle
@@ -89,7 +89,7 @@ class Graphic(Exportable):
         (READ_EXPORT, "id", "int16_t"),
         (READ_EXPORT, "mirroring_mode", "int8_t"),
         (READ_UNKNOWN, None, "int8_t"),                 # maybe something for the sprite editor of aoe:hd?
-        (READ, "graphic_deltas", SubdataMember(
+        (READ_EXPORT, "graphic_deltas", SubdataMember(
             ref_type=GraphicDelta,
             length="delta_count",
         )),

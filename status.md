@@ -30,3 +30,7 @@ Features
 * automatic asset reloading by `inotify`
 * integrated profiler: F12 to start/stop + show results
 * unit selecting and moving mode entered by pushing 'm'
+* villager functions
+  * selected villagers place and construct buildings with 'y' which uses current editor building
+  * villagers can gather resource objects
+* selected buildings can train the current editor item by pressing 't'

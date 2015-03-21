@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_UNIT_ACTION_H_
 #define OPENAGE_UNIT_ACTION_H_
@@ -7,30 +7,44 @@
 #include <vector>
 
 #include "../pathfinding/path.h"
+#include "attribute.h"
+#include "unit.h"
 #include "unit_container.h"
 
 namespace openage {
 
-class Texture;
-class TestSound;
-class Unit;
-
 /**
- * an action to be used on the entities stack
+ * Actions can be pushed onto any units action stack
+ *
+ * Each update cycle will perform the update function of the
+ * action on top of this stack
  */
 class UnitAction {
 public:
-	UnitAction(Unit *u, Texture *t, TestSound *s = nullptr, float fr = 0.3f);
-	virtual ~UnitAction() {}
+	/**
+	 * an action radius is how close a unit must come to another
+	 * unit to be considered to touch the other, for example in 
+	 * gathering resource and melee attack
 
-	Texture *getTex() {
-		return tex;
-	}
+	 * this constructor uses the default action radius formula
+	 */
+	UnitAction(Unit *u, graphic_type initial_gt);
 
 	/**
-	 * use this actions graphic to draw
+	 * used to set a specific action radius
 	 */
-	void draw();
+	UnitAction(Unit *u, graphic_type initial_gt, coord::phys_t action_radius);
+	virtual ~UnitAction() {}
+
+	/**
+	 * type of graphic this action should use
+	 */
+	graphic_type type() const;
+
+	/**
+	 * frame number to use on the current graphic
+	 */
+	float current_frame() const;
 
 	/**
 	 * each action has its own update functionality which gets called when this
@@ -39,21 +53,47 @@ public:
 	virtual void update(unsigned int) = 0;
 
 	/**
+	 * action to perform when popped from a units action stack
+	 */
+	virtual void on_completion() = 0;
+
+	/**
 	 *	gets called for all actions on stack each update cycle
 	 *	@return true when action is completed so it and everything above it can be popped
 	 */
-	virtual bool completed() = 0;
+	virtual bool completed() const = 0;
+
+
 
 	/**
 	 *	checks if the action can be interrupted, allowing to be popped if the user specifies a new action
 	 */
-	virtual bool allow_interupt() = 0;
+	virtual bool allow_interupt() const = 0;
 
 	/**
-	 *	this action gets popped if the unit is killed
+	 * control whether stack can discard the action automatically and
+	 * should the stack be modifiable when this action is on top
+	 *
+	 * if true this action must complete and will not allow new actions
+	 * to be pushed while it is active
+	 * eg dead action must be completed and cannot be discarded
+	 *
+	 * TODO: rename as allow_stack_modification
 	 */
-	virtual bool allow_destruction() = 0;
+	virtual bool allow_destruction() const = 0;
 
+	void draw_debug();
+
+	/**
+	 * common functions for actions
+	 */
+	void face_towards(const coord::phys3 pos);
+	void damage_object(Unit &target, unsigned dmg);
+	void move_to(Unit &target);
+
+	/**
+	 * produce debug info such as visualising paths
+	 */
 	static bool show_debug;
 
 protected:
@@ -63,10 +103,14 @@ protected:
 	Unit *entity;
 
 	/**
-	 * common controls
+	 * common positional attributes
 	 */
-	Texture *tex;
-	TestSound *on_begin;
+	coord::phys_t distance_to_target, radius;
+
+	/**
+	 * common graphic controls
+	 */
+	graphic_type graphic;
 	float frame;
 	float frame_rate;
 
@@ -81,15 +125,18 @@ protected:
  */
 class DeadAction: public UnitAction {
 public:
-	DeadAction(Unit *e, Texture *t, TestSound *s = nullptr)
-		:
-		UnitAction( e, t, s ) {}
+	DeadAction(Unit *e, std::function<void()> on_complete=[]() {});
 	virtual ~DeadAction() {}
 
-	void update(unsigned int);
-	bool completed();
-	bool allow_interupt() { return false; }
-	bool allow_destruction() { return false; }
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override;
+	bool allow_interupt() const override { return false; }
+	bool allow_destruction() const override { return false; }
+
+private:
+	float end_frame;
+	std::function<void()> on_complete_func;
 };
 
 /**
@@ -97,15 +144,16 @@ public:
  */
 class IdleAction: public UnitAction {
 public:
-	IdleAction(Unit *e, Texture *t, TestSound *s = nullptr)
+	IdleAction(Unit *e)
 		:
-		UnitAction( e, t, s ) {}
+		UnitAction(e, graphic_type::standing) {}
 	virtual ~IdleAction() {}
 
-	void update(unsigned int) {}
-	bool completed() { return false; }
-	bool allow_interupt() { return false; }
-	bool allow_destruction() { return true; }
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override;
+	bool allow_interupt() const override { return false; }
+	bool allow_destruction() const override { return true; }
 };
 
 /**
@@ -116,30 +164,132 @@ public:
 	/**
 	 * moves unit to a given fixed location
 	 */
-	MoveAction(Unit *e, Texture *t, TestSound *s, coord::phys3 tar, bool repath=true);
+	MoveAction(Unit *e, coord::phys3 tar, bool repath=true);
 
 	/**
-	 * moves a unit towards another unit
+	 * moves a unit to within a distance to another unit
 	 */
-	MoveAction(Unit *e, Texture *t, TestSound *s, UnitReference tar, coord::phys_t rad);
+	MoveAction(Unit *e, UnitReference tar, coord::phys_t within_range);
 	virtual ~MoveAction();
 
-	void update(unsigned int);
-	bool completed();
-	bool allow_interupt() { return true; }
-	bool allow_destruction() { return false; }
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override;
+	bool allow_interupt() const override { return true; }
+	bool allow_destruction() const override { return true; }
+
 	coord::phys3 next_waypoint() const;
 
 private:
 	UnitReference unit_target;
 	coord::phys3 target;
-	coord::phys_t distance_to_target, radius;
+	
 	path::Path path;
 
 	// should a new path be found if unit gets blocked
 	bool allow_repath;
 
+	void initialise();
 	void set_path();
+};
+
+/**
+ * garrison inside a building
+ */
+class GarrisonAction: public UnitAction {
+public:
+	GarrisonAction(Unit *e, UnitReference build);
+	virtual ~GarrisonAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override { return complete; }
+	bool allow_interupt() const override { return true; }
+	bool allow_destruction() const override { return true; }
+
+private:
+	UnitReference building;
+	bool complete;
+};
+
+
+/**
+ * garrison inside a building
+ */
+class UngarrisonAction: public UnitAction {
+public:
+	UngarrisonAction(Unit *e, const coord::phys3 &pos);
+	virtual ~UngarrisonAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override { return complete; }
+	bool allow_interupt() const override { return true; }
+	bool allow_destruction() const override { return true; }
+
+private:
+	coord::phys3 position;
+	bool complete;
+};
+
+/**
+ * trains a new unit
+ */
+class TrainAction: public UnitAction {
+public:
+	TrainAction(Unit *e, UnitProducer *pp);
+	virtual ~TrainAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override { return complete; }
+	bool allow_interupt() const override { return false; }
+	bool allow_destruction() const override { return true; }
+
+private:
+	UnitProducer *trained;
+	bool complete;
+};
+
+/**
+ * builds a building
+ */
+class BuildAction: public UnitAction {
+public:
+	BuildAction(Unit *e, UnitProducer *pp, const coord::phys3 &pos);
+	BuildAction(Unit *e, UnitReference foundation);
+	virtual ~BuildAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override { return complete >= 1.0f; }
+	bool allow_interupt() const override { return true; }
+	bool allow_destruction() const override { return true; }
+
+private:
+	UnitReference building;
+	UnitProducer *producer;
+	coord::phys3 position;
+	float complete;
+};
+
+/**
+ * repairs an object
+ */
+class RepairAction: public UnitAction {
+public:
+	RepairAction(Unit *e, UnitReference tar);
+	virtual ~RepairAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override { return complete; }
+	bool allow_interupt() const override { return true; }
+	bool allow_destruction() const override { return true; }
+
+private:
+	UnitReference target;
+	bool complete;
 };
 
 /**
@@ -147,18 +297,19 @@ private:
  */
 class GatherAction: public UnitAction {
 public:
-	GatherAction(Unit *e, UnitReference tar, Texture *t, TestSound *s);
+	GatherAction(Unit *e, UnitReference tar);
 	virtual ~GatherAction();
 
-	void update(unsigned int);
-	bool completed();
-	bool allow_interupt() { return true; }
-	bool allow_destruction() { return false; }
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override;
+	bool allow_interupt() const override { return true; }
+	bool allow_destruction() const override { return true; }
 
 private:
+	bool complete;
 	UnitReference target;
-	coord::phys_t distance_to_target, range;
-	float carrying;
+	UnitReference dropsite;
 };
 
 /**
@@ -166,18 +317,66 @@ private:
  */
 class AttackAction: public UnitAction {
 public:
-	AttackAction(Unit *e, UnitReference tar, Texture *t, TestSound *s);
+	AttackAction(Unit *e, UnitReference tar);
 	virtual ~AttackAction();
 
-	void update(unsigned int);
-	bool completed();
-	bool allow_interupt() { return true; }
-	bool allow_destruction() { return false; }
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override;
+	bool allow_interupt() const override { return true; }
+	bool allow_destruction() const override { return true; }
 
 private:
 	UnitReference target;
-	coord::phys_t distance_to_target, range;
-	float strike_percent;
+	float strike_percent, rate_of_fire;
+
+	/**
+	 * use attack action
+	 */
+	void attack(Unit &target);
+
+	/**
+	 * add a projectile game object which moves towards the target
+	 */
+	void fire_projectile(const Attribute<attr_type::attack> &att, const coord::phys3 &target);
+};
+
+/**
+ * convert an object
+ */
+class ConvertAction: public UnitAction {
+public:
+	ConvertAction(Unit *e, UnitReference tar);
+	virtual ~ConvertAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override { return complete >= 1.0; }
+	bool allow_interupt() const override { return true; }
+	bool allow_destruction() const override { return true; }
+
+private:
+	UnitReference target;
+	float complete;
+};
+
+/**
+ * moves object to fly in a parabolic shape
+ */
+class ProjectileAction: public UnitAction {
+public:
+	ProjectileAction(Unit *e, coord::phys3 target);
+	virtual ~ProjectileAction();
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override;
+	bool allow_interupt() const override { return false; }
+	bool allow_destruction() const override { return false; }
+
+private:
+	coord::phys_t grav;
+	bool has_hit;
 };
 
 } // namespace openage

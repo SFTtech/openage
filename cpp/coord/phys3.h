@@ -22,7 +22,7 @@ struct phys3 {
 	#include "ops/abs.h"
 
 	phys2 to_phys2() const;
-	camgame to_camgame();
+	camgame to_camgame() const;
 	tile3 to_tile3() const;
 	phys3_delta get_fraction();
 };
@@ -33,8 +33,18 @@ struct phys3_delta {
 	#include "ops/rel.h"
 
 	phys2_delta to_phys2() const;
-	camgame_delta to_camgame();
+	camgame_delta to_camgame() const;
 };
+
+/**
+ * distance between two points
+ */
+coord::phys_t distance(const coord::phys3 &a, const coord::phys3 &b);
+
+/**
+ * modify the length of a phys3_delta vector
+ */
+coord::phys3_delta normalize(const coord::phys3_delta &a, const coord::phys_t &length);
 
 #include "ops/free.h"
 

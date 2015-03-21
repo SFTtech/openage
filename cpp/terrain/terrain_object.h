@@ -64,9 +64,7 @@ constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
  */
 class TerrainObject {
 public:
-	TerrainObject(Unit *,
-	              std::function<bool(const coord::phys3 &)> pass,
-	              std::shared_ptr<Texture> outline_tex);
+	TerrainObject(Unit &u, bool collisions=true);
 	virtual ~TerrainObject();
 
 	/**
@@ -76,15 +74,32 @@ public:
 
 	/**
 	 * unit which is inside this base
-	 * this pointer is mainly for drawing purposes
+	 * used to find the unit from user actions
+	 *
+	 * every terrain object should contain a single unit
 	 */
-	Unit *unit;
+	Unit &unit;
+
+	/**
+	 * should this object be tested for collisions, arrows should not
+	 */
+	const bool check_collisions;
 
 	/**
 	 * decide which terrains this object can be on
 	 * this function should be true if given a valid position for the object
 	 */
 	std::function<bool(const coord::phys3 &)> passable;
+
+	/**
+	 * specifies content to be drawn
+	 */
+	std::function<void()> draw;
+
+	/**
+	 * draws outline of this terrain space in current position
+	 */
+	void draw_outline() const;
 
 	/**
 	 * binds the TerrainObject to a certain TerrainChunk.
@@ -114,9 +129,18 @@ public:
 	void set_ground(int id, int additional=0);
 
 	/**
-	 * display the texture of this object at the placement position.
+	 * finds a space next to this object for placing new objects
 	 */
-	bool draw();
+	coord::phys3 free_adjacent_place() const;
+
+	/**
+	 * add a child terrain object
+	 */
+	void annex(TerrainObject *other);
+
+	const TerrainObject *get_parent() const;
+
+	std::vector<TerrainObject *> get_children() const;
 
 	/*
 	 * terrain this object was placed on
@@ -146,12 +170,17 @@ public:
 	virtual coord::phys_t from_edge(const coord::phys3 &point) const = 0;
 
 	/**
+	 * get a position on the edge of this object
+	 */
+	virtual coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const = 0;
+
+	/**
 	 * does this space contain a given point
 	 */
 	virtual bool contains(const coord::phys3 &other) const = 0;
 
 	/**
-	 * does this intersect with another object if it were positioned at the given point
+	 * would this intersect with another object if it were positioned at the given point
 	 */
 	virtual bool intersects(const TerrainObject *other, const coord::phys3 &position) const = 0;
 
@@ -162,9 +191,16 @@ public:
 
 protected:
 	bool placed;
+
 	Terrain *terrain;
 	int occupied_chunk_count;
 	TerrainChunk *occupied_chunk[4];
+
+	/**
+	 * annexes and grouped units
+	 */
+	TerrainObject *parent;
+	std::vector<TerrainObject *> children;
 
 	/**
 	 * texture for drawing outline
@@ -184,10 +220,8 @@ protected:
  */
 class SquareObject: public TerrainObject {
 public:
-	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
-	             coord::tile_delta foundation_size);
-	SquareObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
-	             coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex);
+	SquareObject(Unit &u, coord::tile_delta foundation_size, bool collisions=true);
+	SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex, bool collisions=true);
 	virtual ~SquareObject();
 
 
@@ -213,12 +247,13 @@ public:
 	 *         @   @
 	 *           @
 	 */
-	tile_range get_range(const coord::phys3 &pos) const;
+	tile_range get_range(const coord::phys3 &pos) const override;
 
-	coord::phys_t from_edge(const coord::phys3 &point) const;
-	bool contains(const coord::phys3 &other) const;
-	bool intersects(const TerrainObject *other, const coord::phys3 &position) const;
-	coord::phys_t min_axis() const;
+	coord::phys_t from_edge(const coord::phys3 &point) const override;
+	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const override;
+	bool contains(const coord::phys3 &other) const override;
+	bool intersects(const TerrainObject *other, const coord::phys3 &position) const override;
+	coord::phys_t min_axis() const override;
 };
 
 /**
@@ -226,10 +261,8 @@ public:
  */
 class RadialObject: public TerrainObject {
 public:
-	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
-	             float rad);
-	RadialObject(Unit *, std::function<bool(const coord::phys3 &)> pass,
-	             float rad, std::shared_ptr<Texture> out_tex);
+	RadialObject(Unit &u, float rad, bool collisions=true);
+	RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex, bool collisions=true);
 	virtual ~RadialObject();
 
 	/**
@@ -240,12 +273,13 @@ public:
 	/**
 	 * finds the range covered if the object was in a position
 	 */
-	tile_range get_range(const coord::phys3 &pos) const;
+	tile_range get_range(const coord::phys3 &pos) const override;
 
-	coord::phys_t from_edge(const coord::phys3 &point) const;
-	bool contains(const coord::phys3 &other) const;
-	bool intersects(const TerrainObject *other, const coord::phys3 &position) const;
-	coord::phys_t min_axis() const;
+	coord::phys_t from_edge(const coord::phys3 &point) const override;
+	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const override;
+	bool contains(const coord::phys3 &other) const override;
+	bool intersects(const TerrainObject *other, const coord::phys3 &position) const override;
+	coord::phys_t min_axis() const override;
 };
 
 } //namespace openage

@@ -12,6 +12,7 @@
 namespace openage {
 
 class Command;
+class Player;
 class Terrain;
 class Unit;
 class UnitProducer;
@@ -21,7 +22,14 @@ using id_t = unsigned long int;
 
 class UnitReference {
 public:
+	/**
+	 * create an invalid reference
+	 */
 	UnitReference();
+
+	/**
+	 * create referece by unit id
+	 */
 	UnitReference(const UnitContainer *c, id_t id, Unit *);
 	bool is_valid() const;
 	Unit *get() const;
@@ -41,6 +49,18 @@ public:
 	UnitContainer();
 	~UnitContainer();
 
+	void reset();
+
+	/**
+	 * sets terrain to initialise units on
+	 */
+	void set_terrain(Terrain *t);
+
+	/** 
+	 * returns the terrain which units are placed on
+	 */
+	Terrain *get_terrain() const;
+
 	/**
 	 * checks the id is valid
 	 */
@@ -52,9 +72,14 @@ public:
 	UnitReference get_unit(id_t id);
 
 	/**
-	 * adds a new unit to the container
+	 * creates a new unit without initialising
 	 */
-	bool new_unit(UnitProducer &producer, Terrain *terrain, coord::tile tile);
+	UnitReference new_unit();
+
+	/**
+	 * adds a new unit to the container and initialises using a producer
+	 */
+	UnitReference new_unit(UnitProducer &producer, Player &owner, coord::phys3 position);
 
 	/**
 	 * give a command to a unit -- unit creation and deletion should be done as commands
@@ -67,13 +92,23 @@ public:
 	 */
 	bool on_tick();
 
+	/**
+	 * gets a list of all units in the container
+	 */
+	std::vector<openage::Unit *> all_units();
+
 private:
-	unsigned int next_new_id;
+	id_t next_new_id;
 
 	/**
 	 * mapping unit ids to unit objects
 	 */
 	std::unordered_map<id_t, std::unique_ptr<Unit>> live_units;
+
+	/**
+	 * Terrain for initialising new units
+	 */
+	Terrain *terrain;
 
 };
 

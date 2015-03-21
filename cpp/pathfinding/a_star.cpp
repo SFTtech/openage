@@ -40,10 +40,11 @@ Path to_point(coord::phys3 start,
 
 
 Path to_object(openage::TerrainObject *to_move,
-               openage::TerrainObject *end) {
+               openage::TerrainObject *end,
+               coord::phys_t rad) {
 	coord::phys3 start = to_move->pos.draw;
 	auto valid_end = [&](const coord::phys3 &pos) -> bool {
-		return end->from_edge(pos) < (path_grid_size + to_move->min_axis() / 2);
+		return end->from_edge(pos) < rad;
 	};
 	auto heuristic = [&](const coord::phys3 &pos) -> cost_t {
 		return end->from_edge(pos) - to_move->min_axis() / 2;
@@ -60,6 +61,34 @@ Path find_nearest(coord::phys3 start,
 	return a_star(start, valid_end, zero, passable);
 }
 
+openage::TerrainObject *find_nearest(openage::TerrainObject *to_move,
+            std::function<bool(const openage::TerrainObject *)> valid_end) {
+	coord::phys3 start = to_move->pos.draw;
+
+	// check any objects containing the serach point
+	openage::Terrain *terrain = to_move->get_terrain();
+	auto valid_end_pos = [=](const coord::phys3 &p) -> bool {
+		openage::TerrainObject *obj = terrain->obj_at_point(p);
+		if (obj) {
+			return valid_end(obj);
+		}
+		return false;
+	};
+
+	// Use Dijkstra (hueristic = 0)
+	auto zero = [](const coord::phys3 &) -> cost_t { return .0f; };
+	auto passable = [](const coord::phys3 &) -> bool { return true; };
+
+	// find using a star
+	Path p = a_star(start, valid_end_pos, zero, passable);
+	if (p.waypoints.empty()) {
+		return nullptr;
+	}
+
+	// use endpoint to identify an object
+	coord::phys3 end = p.waypoints.front().position;
+	return terrain->obj_at_point(end);
+}
 
 Path a_star(coord::phys3 start,
             std::function<bool(const coord::phys3 &)> valid_end,

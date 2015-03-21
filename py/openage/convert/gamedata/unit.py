@@ -1,4 +1,4 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 from ..dataformat.exportable import Exportable
 from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
@@ -91,12 +91,12 @@ class UnitCommand(Exportable):
         )),
         (READ_UNKNOWN, None, "int8_t"),
         (READ_UNKNOWN, None, "int8_t"),
-        (READ, "tool_graphic_id", "int16_t"),               # walking with tool but no resource
-        (READ, "proceed_graphic_id", "int16_t"),            # proceeding resource gathering or attack
-        (READ, "action_graphic_id", "int16_t"),             # actual execution or transformation graphic
-        (READ, "carrying_graphic_id", "int16_t"),           # display resources in hands
-        (READ, "execution_sound_id", "int16_t"),            # sound to play when execution starts
-        (READ, "resource_deposit_sound_id", "int16_t"),     # sound to play on resource drop
+        (READ_EXPORT, "tool_graphic_id", "int16_t"),               # walking with tool but no resource
+        (READ_EXPORT, "proceed_graphic_id", "int16_t"),            # proceeding resource gathering or attack
+        (READ_EXPORT, "action_graphic_id", "int16_t"),             # actual execution or transformation graphic
+        (READ_EXPORT, "carrying_graphic_id", "int16_t"),           # display resources in hands
+        (READ_EXPORT, "execution_sound_id", "int16_t"),            # sound to play when execution starts
+        (READ_EXPORT, "resource_deposit_sound_id", "int16_t"),     # sound to play on resource drop
     )
 
 
@@ -512,10 +512,10 @@ class UnitObject(Exportable):
         (READ, "garrison_capacity", "int8_t"),           # number of units that can garrison in there
         (READ_EXPORT, "radius_size0", "float"),          # size of the unit
         (READ_EXPORT, "radius_size1", "float"),
-        (READ, "hp_bar_height0", "float"),               # vertical hp bar distance from ground
+        (READ_EXPORT, "hp_bar_height0", "float"),               # vertical hp bar distance from ground
         (READ_EXPORT, "sound_creation0", "int16_t"),
         (READ_EXPORT, "sound_creation1", "int16_t"),
-        (READ, "dead_unit_id", "int16_t"),               # unit id to become on death
+        (READ_EXPORT, "dead_unit_id", "int16_t"),               # unit id to become on death
         (READ, "placement_mode", "int8_t"),              # 0=placable on top of others in scenario editor, 5=can't
         (READ, "air_mode", "int8_t"),                    # 1=no footprints
         (READ, "icon_id", "int16_t"),                    # frame id of the icon slp (57029) to place on the creation button
@@ -651,7 +651,7 @@ class UnitObject(Exportable):
         # val == {6, 10}: building, causes mask to appear on units behind it
         (READ, "selection_mask", "int8_t"),
         (READ, "selection_shape_type", "int8_t"),
-        (READ, "selection_shape", "int8_t"),            # 0=square, 1<=round
+        (READ_EXPORT, "selection_shape", "int8_t"),            # 0=square, 1<=round
 
         # bitfield of unit attributes:
         # bit 0: allow garrison,
@@ -684,7 +684,7 @@ class UnitObject(Exportable):
         (READ, "editor_selection_color", "uint8_t"),  # 0: default, -16: fish trap, farm, 52: deadfarm, OLD-*, 116: flare, whale, dolphin -123: fish
         (READ, "selection_radius0", "float"),
         (READ, "selection_radius1", "float"),
-        (READ, "hp_bar_height1", "float"),            # vertical hp bar distance from ground
+        (READ_EXPORT, "hp_bar_height1", "float"),           # vertical hp bar distance from ground
         (READ_EXPORT, "resource_storage", SubdataMember(
             ref_type=ResourceStorage,
             length=3,
@@ -781,9 +781,9 @@ class UnitBird(UnitDeadOrFish):
         (READ_EXPORT, None, IncludeMembers(cls=UnitDeadOrFish)),
         (READ, "sheep_conversion", "int16_t"),     # 0=can be converted by unit command 107 (you found sheep!!1)
         (READ, "search_radius", "float"),
-        (READ, "work_rate", "float"),
-        (READ, "drop_site0", "int16_t"),           # unit id where gathered resources shall be delivered to
-        (READ, "drop_site1", "int16_t"),           # alternative unit id
+        (READ_EXPORT, "work_rate", "float"),
+        (READ_EXPORT, "drop_site0", "int16_t"),           # unit id where gathered resources shall be delivered to
+        (READ_EXPORT, "drop_site1", "int16_t"),           # alternative unit id
         (READ_EXPORT, "villager_mode", "int8_t"),  # unit can switch villager type (holza? gathara!) 1=male, 2=female
         (READ_EXPORT, "move_sound", "int16_t"),
         (READ_EXPORT, "stop_sound", "int16_t"),
@@ -820,10 +820,10 @@ class UnitMovable(UnitBird):
                 10: "WALL",
             },
         )),
-        (READ, "max_range", "float"),
+        (READ_EXPORT, "max_range", "float"),
         (READ, "blast_radius", "float"),
         (READ, "reload_time0", "float"),
-        (READ, "projectile_unit_id", "int16_t"),
+        (READ_EXPORT, "projectile_unit_id", "int16_t"),
         (READ, "accuracy_percent", "int16_t"),       # probablity of attack hit
         (READ, "tower_mode", "int8_t"),
         (READ, "delay", "int16_t"),                  # delay in frames before projectile is shot
@@ -869,7 +869,7 @@ class UnitProjectile(UnitMovable):
         (READ, "drop_animation_mode", "int8_t"),  # 1 = disappear on hit
         (READ, "penetration_mode", "int8_t"),     # 1 = pass through hit object
         (READ_UNKNOWN, None, "int8_t"),
-        (READ, "projectile_arc", "float"),
+        (READ_EXPORT, "projectile_arc", "float"),
     )
 
     def __init__(self):
@@ -887,9 +887,9 @@ class UnitLiving(UnitMovable):
 
     data_format = (
         (READ_EXPORT, None, IncludeMembers(cls=UnitMovable)),
-        (READ, "resource_cost", SubdataMember(ref_type=ResourceCost, length=3)),
-        (READ, "creation_time", "int16_t"),         # in seconds
-        (READ, "creation_location_id", "int16_t"),  # e.g. 118 = villager
+        (READ_EXPORT, "resource_cost", SubdataMember(ref_type=ResourceCost, length=3)),
+        (READ_EXPORT, "creation_time", "int16_t"),         # in seconds
+        (READ_EXPORT, "creation_location_id", "int16_t"),  # e.g. 118 = villager
 
         # where to place the button with the given icon
         # creation page:
@@ -913,8 +913,8 @@ class UnitLiving(UnitMovable):
         (READ_UNKNOWN, None, "int32_t"),
         (READ_UNKNOWN, None, "int32_t"),
         (READ, "missile_graphic_delay", "int8_t"),           # delay before the projectile is fired.
-        (READ, "hero_mode", "int8_t"),  # if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
-        (READ, "garrison_graphic", "int32_t"),               # graphic to display when units are garrisoned
+        (READ, "hero_mode", "int8_t"),                       # if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
+        (READ_EXPORT, "garrison_graphic", "int32_t"),        # graphic to display when units are garrisoned
         (READ, "attack_missile_duplication_min", "float"),   # projectile duplication when nothing garrisoned
         (READ, "attack_missile_duplication_max", "int8_t"),  # duplication when fully garrisoned
         (READ, "attack_missile_duplication_spawning_width", "float"),
@@ -946,7 +946,7 @@ class UnitBuilding(UnitLiving):
         (READ, "adjacent_mode", "int8_t"),            # 1=adjacent units may change the graphics
         (READ, "icon_disabler", "int16_t"),
         (READ, "disappears_when_built", "int8_t"),
-        (READ, "stack_unit_id", "int16_t"),           # second building to place directly on top
+        (READ_EXPORT, "stack_unit_id", "int16_t"),    # second building to place directly on top
         (READ_EXPORT, "terrain_id", "int16_t"),       # change underlying terrain to this id when building completed
         (READ, "resource_id", "int16_t"),
         (READ, "research_id", "int16_t"),             # research_id to be enabled when building creation
