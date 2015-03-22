@@ -50,6 +50,9 @@ struct FloatFixed {
 
 template<unsigned decimals, unsigned w>
 std::ostream &operator <<(std::ostream &os, FloatFixed<decimals, w> f) {
+	static_assert(decimals < 50, "Refusing to print float with >= 50 decimals");
+	static_assert(w < 70, "Refusing to print float with a width >= 70");
+
 	os.precision(decimals);
 	os << std::fixed;
 
@@ -71,6 +74,8 @@ struct FixedPoint {
 
 template<unsigned divisor, unsigned decimals, unsigned w>
 std::ostream &operator <<(std::ostream &os, FixedPoint<divisor, decimals, w> f) {
+	static_assert(divisor > 0, "Divisor for fixed-point numbers must be > 0");
+
 	os << FloatFixed<decimals, w>{((float) f.value) / (float) divisor};
 	return os;
 }
