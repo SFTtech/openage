@@ -124,12 +124,12 @@ GameMain::GameMain(Engine *engine)
 	datamanager.initialize(&assetmanager);
 
 	// engine callbacks
-	engine->register_draw_action(this);
-	engine->register_input_action(this);
-	engine->register_tick_action(this);
-	engine->register_tick_action(&this->placed_units);
-	engine->register_drawhud_action(this);
-	engine->register_drawhud_action(&this->selection);
+	this->engine->register_draw_action(this);
+	this->engine->register_input_action(this);
+	this->engine->register_tick_action(this);
+	this->engine->register_tick_action(&this->placed_units);
+	this->engine->register_drawhud_action(this);
+	this->engine->register_drawhud_action(&this->selection);
 
 	util::Dir *data_dir = engine->get_data_dir();
 	util::Dir asset_dir = data_dir->append("converted");
@@ -391,7 +391,6 @@ bool GameMain::on_input(SDL_Event *e) {
 		}
 		break;
 	}
-		
 
 	case SDL_MOUSEWHEEL:
 		if (this->ctrl_active && this->datamanager.producer_count() > 0) {
