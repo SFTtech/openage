@@ -68,14 +68,14 @@ public:
 
 	virtual ability_type type() = 0;
 
-	/** 
+	/**
 	 * true if the paramaters allow an action to be performed
 	 */
 	virtual bool can_invoke(Unit &to_modify, const Command &cmd) = 0;
 
- 	/**
- 	 * applys command to a given unit
- 	 */
+	/**
+	 * applys command to a given unit
+	 */
 	virtual void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) = 0;
 };
 
@@ -86,7 +86,7 @@ class MoveAbility: public UnitAbility {
 public:
 	MoveAbility(Sound *s=nullptr);
 
-	ability_type type() {
+	ability_type type() override {
 		return ability_type::move;
 	}
 
@@ -105,7 +105,7 @@ class GarrisonAbility: public UnitAbility {
 public:
 	GarrisonAbility(Sound *s=nullptr);
 
-	ability_type type() {
+	ability_type type() override {
 		return ability_type::garrison;
 	}
 
@@ -124,7 +124,7 @@ class UngarrisonAbility: public UnitAbility {
 public:
 	UngarrisonAbility(Sound *s=nullptr);
 
-	ability_type type() {
+	ability_type type() override {
 		return ability_type::ungarrison;
 	}
 
@@ -143,7 +143,7 @@ class TrainAbility: public UnitAbility {
 public:
 	TrainAbility(Sound *s=nullptr);
 
-	ability_type type() {
+	ability_type type() override {
 		return ability_type::train;
 	}
 
@@ -162,7 +162,7 @@ class BuildAbility: public UnitAbility {
 public:
 	BuildAbility(Sound *s=nullptr);
 
-	ability_type type() {
+	ability_type type() override {
 		return ability_type::build;
 	}
 
@@ -181,7 +181,7 @@ class GatherAbility: public UnitAbility {
 public:
 	GatherAbility(Sound *s=nullptr);
 
-	ability_type type() {
+	ability_type type() override {
 		return ability_type::gather;
 	}
 
@@ -200,7 +200,7 @@ class AttackAbility: public UnitAbility {
 public:
 	AttackAbility(Sound *s=nullptr);
 
-	ability_type type() {
+	ability_type type() override {
 		return ability_type::attack;
 	}
 
