@@ -89,7 +89,7 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 		}
 	}
 
-	log::log(MSG(info) << "DYNLOAD: file=" << read_count << ", all=" << read_count * 2 / channels);
+	log::log(MSG(spam) << "DYNLOAD: file=" << read_count << ", all=" << read_count * 2 / channels);
 	return (read_count * 2) / channels;
 }
 

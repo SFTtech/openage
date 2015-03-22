@@ -35,7 +35,7 @@ void DataManager::check_updates() {
 		auto gamedata = this->gamedata_load_job.get_result();
 		this->on_gamedata_loaded(gamedata);
 		this->gamedata_loaded = true;
-		log::log(MSG(info) << "Loading time     [data]: " << (load_timer.getval() / 1000.f) << " s");
+		log::log(MSG(info).fmt("Loading time  [data]: %5.3f s", load_timer.getval() / 1e9));
 	}
 }
 

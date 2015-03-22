@@ -300,9 +300,9 @@ bool GameMain::on_input(SDL_Event *e) {
 
 			log::log(MSG(dbg) <<
 				"LMB [phys3]:    "
-				" NE " << util::FixedPoint<3, 8, phys_per_tile>{mousepos_phys3.ne} <<
-				" SE " << util::FixedPoint<3, 8, phys_per_tile>{mousepos_phys3.se} <<
-				" UP " << util::FixedPoint<3, 8, phys_per_tile>{mousepos_phys3.up});
+				" NE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.ne} <<
+				" SE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.se} <<
+				" UP " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.up});
 
 			log::log(MSG(dbg) <<
 				"LMB [tile]:     "

@@ -120,7 +120,10 @@ Path a_star(coord::phys3 start,
 
 		// node to terminate the search was found
 		if (valid_end(best_candidate->position)) {
-			log::log(MSG(dbg) << "path cost is " << util::FloatFixed<8, 3>{best_candidate->future_cost});
+			log::log(MSG(dbg) <<
+				"path cost is " <<
+				util::FloatFixed<3, 8>{closest_node->future_cost / coord::settings::phys_per_tile});
+
 			return best_candidate->generate_backtrace();
 		}
 
@@ -166,7 +169,10 @@ Path a_star(coord::phys3 start,
 		}
 	}
 
-	log::log(MSG(dbg) << "incomplete path cost is " << util::FloatFixed<8, 3>{closest_node->future_cost});
+	log::log(MSG(dbg) <<
+		"incomplete path cost is " <<
+		util::FloatFixed<3, 8>{closest_node->future_cost / coord::settings::phys_per_tile});
+
 	return closest_node->generate_backtrace();
 }
 
