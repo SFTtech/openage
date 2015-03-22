@@ -21,16 +21,14 @@ void StdOutSink::output_log_message(const Message &msg, LogSource *source) {
 	std::cout << "\x1b[" << props.colorcode << "m" << std::setw(4) << props.name << "\x1b[m" " ";
 
 	if (msg.meta.thread_id != 0) {
-		std::cout << "\x1b[32m" "[T" << msg.meta.thread_id << "]\x1b[m" " ";
+		std::cout << "\x1b[32m" "[T" << msg.meta.thread_id << "]\x1b[m ";
 	}
-
-	std::cout << msg.text;
 
 	if (source != general_log_source) {
-		std::cout << " [logged by " << source->logsource_name() << "]" << std::endl;
+		std::cout << "\x1b[36m" "[" << source->logsource_name() << "]\x1b[m ";
 	}
 
-	std::cout << std::endl;
+	std::cout << msg.text << std::endl;
 }
 
 
