@@ -71,12 +71,12 @@ if(NOT WIN32)
 endif()
 
 find_package(Freetype REQUIRED)
-find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(SDL2 REQUIRED)
 find_package(FTGL REQUIRED)
 find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
+pkg_search_module(EPOXY REQUIRED epoxy)
 
 if(WANT_GPERFTOOLS_PROFILER OR WANT_GPERFTOOLS_TCMALLOC)
 	find_package(GPerfTools)
@@ -120,6 +120,7 @@ include_directories(
 	${OPENGL_INCLUDE_DIR}
 	${FREETYPE_INCLUDE_DIRS}
 	${FTGL_INCLUDE_DIRS}
+	${EPOXY_INCLUDE_DIRS}
 	${OPUS_INCLUDE_DIRS}
 	${PYTHON_INCLUDE_DIR}
 	${SDL2_INCLUDE_DIR}
@@ -131,7 +132,7 @@ target_link_libraries(${PROJECT_NAME}
 	${FONTCONFIG_LIB}
 	${FREETYPE_LIBRARIES}
 	${FTGL_LIBRARIES}
-	${GLEW_LIBRARIES}
+	${EPOXY_LIBRARIES}
 	${MATH_LIB}
 	${OPENGL_LIBRARY}
 	${OPUS_LIBRARIES}

@@ -3,7 +3,7 @@
 #ifndef OPENAGE_TEXTURE_H_
 #define OPENAGE_TEXTURE_H_
 
-#include "crossplatform/opengl.h"
+#include <epoxy/gl.h>
 #include <vector>
 #include <memory>
 

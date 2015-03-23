@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../crossplatform/opengl.h"
+#include <epoxy/gl.h>
 #include "../crossplatform/timing.h"
 #include <FTGL/ftgl.h>
 

@@ -8,7 +8,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "crossplatform/opengl.h"
+#include <epoxy/gl.h>
 
 #include "coord/window.h"
 #include "log/log.h"

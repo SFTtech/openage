@@ -1,9 +1,9 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_SHADER_SHADER_H_
 #define OPENAGE_SHADER_SHADER_H_
 
-#include "../crossplatform/opengl.h"
+#include <epoxy/gl.h>
 
 namespace openage {
 namespace shader {

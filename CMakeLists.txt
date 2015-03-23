@@ -1,6 +1,5 @@
-cmake_minimum_required(VERSION 2.8.10)
+cmake_minimum_required(VERSION 2.8.8)
 #git tag --contains=fa7141f => 2.8.8    # compiler version detection
-#git tag --contains=fbda7bb => 2.8.10   # find GLEW module
 
 # main build configuration file
 

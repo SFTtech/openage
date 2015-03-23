@@ -37,12 +37,12 @@ Dependency list:
       M   python imaging library (PIL) -> pillow
       M   numpy
     CR    opengl >=2.1
-    CR    glew
+    CR    libepoxy
     CR    ftgl
      R    dejavu font
     CR    freetype2
     CR    fontconfig
-    C     cmake >=2.8.10
+    C     cmake >=2.8.8
     CR    sdl2
     CR    sdl2_image
     CR    opusfile
@@ -60,12 +60,12 @@ Dependency list:
 ### Prerequisite steps for Ubuntu users (Ubuntu 14.10)
 
  - `sudo apt-get update`
- - `sudo apt-get install cmake libfreetype6-dev python3-dev libglew-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools python3-pil python3-numpy`
+ - `sudo apt-get install cmake libfreetype6-dev python3-dev libepoxy-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools python3-pil python3-numpy`
 
 
 ### Prerequisite steps for Fedora users (Fedora 20, 21)
 
-`sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel glew-devel opus-tools opusfile-devel fontconfig-devel`
+`sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel libepoxy-devel opus-tools opusfile-devel fontconfig-devel`
 
 
 ### Prerequisite steps for openSUSE users (openSUSE 13.1)
@@ -78,7 +78,7 @@ Also feel free to drop `--no-recommends` from last line.
  - `zypper addrepo http://download.opensuse.org/repositories/devel:languages:python3/openSUSE_13.1/devel:languages:python3.repo`
  - `zypper addrepo http://packman.inode.at/suse/openSUSE_13.1/ packman`
  - `zypper refresh`
- - `zypper install --no-recommends cmake fontconfig-devel ftgl-devel gcc-c++ glew-devel libfreetype6 libogg-devel libopus-devel libSDL2-devel libSDL2_image-devel opusfile-devel opus-tools python3-devel python3-numpy python3-Pillow`
+ - `zypper install --no-recommends cmake fontconfig-devel ftgl-devel gcc-c++ libepoxy-devel libfreetype6 libogg-devel libopus-devel libSDL2-devel libSDL2_image-devel opusfile-devel opus-tools python3-devel python3-numpy python3-Pillow`
 
 
 ### Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)
@@ -87,7 +87,7 @@ Also feel free to drop `--no-recommends` from last line.
  - Install the needed fonts (e.g. using [homebrew-cask](https://github.com/caskroom/homebrew-cask)).
  - `brew tap homebrew/python`
  - `brew update`
- - `brew install python3 glew ftgl freetype fontconfig cmake sdl2 sdl2_image opus opus-tools opusfile`
+ - `brew install python3 libepoxy ftgl freetype fontconfig cmake sdl2 sdl2_image opus opus-tools opusfile`
  - `brew install numpy --with-python3`
  - `brew install pillow --with-python3`
 
@@ -96,7 +96,7 @@ Also feel free to drop `--no-recommends` from last line.
 
 This command should provide required packages for Arch Linux installation:
 
-`sudo pacman -S --needed python python-pillow python-numpy glew ftgl ttf-dejavu freetype2 fontconfig cmake sdl2 sdl2_image opusfile opus-tools`
+`sudo pacman -S --needed python python-pillow python-numpy libepoxy ftgl ttf-dejavu freetype2 fontconfig cmake sdl2 sdl2_image opusfile opus-tools`
 
 If you don't have a compiler installed, you can select between these commands to install it:
  - `sudo pacman -S --needed gcc`

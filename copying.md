@@ -47,6 +47,7 @@ _the openage authors_ are:
 | Shion Ryuu                  | shion                       | shionryuu@outlook.com                 |
 | Jonas Borchelt              | riotjones                   | jonasbr-github@bellatrix.uberspace.de |
 | Jon Gelderloos              | jgelderloos                 | jgelderloos@gmail.com                 |
+| Emmanuel Gil Peyrot         | Link Mauve                  | linkmauve@linkmauve.fr                |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

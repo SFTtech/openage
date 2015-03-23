@@ -1,8 +1,8 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #include "color.h"
 
-#include "../crossplatform/opengl.h"
+#include <epoxy/gl.h>
 
 namespace openage {
 namespace util {

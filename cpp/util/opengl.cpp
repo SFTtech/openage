@@ -2,7 +2,7 @@
 
 #include "opengl.h"
 
-#include "../crossplatform/opengl.h"
+#include <epoxy/gl.h>
 
 #include "error.h"
 
