@@ -120,10 +120,8 @@ std::string ObjectProducer::producer_name() const {
 void ObjectProducer::initialise(Unit *unit, Player &player) {
 
 	// log attributes
-	unit->log(MSG(dbg) << "creating " <<
-		this->unit_data.id0 << " (" <<
-		this->unit_data.id1 << " " <<
-		this->unit_data.id2 << ") " <<
+	unit->log(MSG(dbg) << "setting unit type " <<
+		this->unit_data.id0 <<
 		this->unit_data.name);
 
 	// reset existing attributes
