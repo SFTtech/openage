@@ -124,7 +124,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 
 	// log attributes
 	unit->log(MSG(dbg) << "setting unit type " <<
-		this->unit_data.id0 <<
+		this->unit_data.id0 << " " <<
 		this->unit_data.name);
 
 	// reset existing attributes
