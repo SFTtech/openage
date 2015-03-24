@@ -128,6 +128,26 @@ protected:
 /**
  * plays a fixed number of frames for the units dying animation
  */
+class DecayAction: public UnitAction {
+public:
+	DecayAction(Unit *e);
+	virtual ~DecayAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override;
+	bool allow_interupt() const override { return false; }
+	bool allow_destruction() const override { return false; }
+	std::string name() const override { return "decay"; }
+
+private:
+	float end_frame;
+
+};
+
+/**
+ * plays a fixed number of frames for the units dying animation
+ */
 class DeadAction: public UnitAction {
 public:
 	DeadAction(Unit *e, std::function<void()> on_complete=[]() {});

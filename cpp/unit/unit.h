@@ -72,6 +72,7 @@ public:
 
 	/** 
 	 * removes all actions and abilities
+	 * current attributes are kept
 	 */
 	void reset();
 
@@ -205,6 +206,8 @@ private:
 	 * the container that updates this unit
 	 */
 	UnitContainer &container;
+
+	void erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func);
 
 };
 

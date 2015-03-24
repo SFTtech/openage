@@ -35,7 +35,6 @@ Unit::~Unit() {
 void Unit::reset() {
 	this->ability_available.clear();
 	this->action_stack.clear();
-	this->attribute_map.clear();
 	this->pop_destructables = false;
 }
 
@@ -57,13 +56,10 @@ bool Unit::update() {
 	}
 
 	if (this->pop_destructables) {
-		auto position_it = std::find_if(
-			std::begin(this->action_stack),
-			std::end(this->action_stack),
+		this->erase_after(
 			[](std::unique_ptr<UnitAction> &e) {
 				return e->allow_destruction();
 			});
-		this->action_stack.erase(position_it, std::end(this->action_stack));
 	}
 
 	/*
@@ -80,13 +76,10 @@ bool Unit::update() {
 		 * check completion of all actions,
 		 * pop completed actions and anything above
 		 */
-		auto position_it = std::find_if(
-			std::begin(this->action_stack),
-			std::end(this->action_stack),
+		this->erase_after(
 			[](std::unique_ptr<UnitAction> &e) {
 				return e->completed();
 			});
-		this->action_stack.erase(position_it, std::end(this->action_stack));
 	}
 	return true;
 }
@@ -197,13 +190,10 @@ void Unit::stop_actions() {
 	/*
 	 * discard all interruptible tasks
 	 */
-	auto position_it = std::find_if(
-		std::begin(this->action_stack),
-		std::end(this->action_stack),
+	this->erase_after(
 		[](std::unique_ptr<UnitAction> &e) {
 			return e->allow_interupt();
 		});
-	this->action_stack.erase(position_it, std::end(this->action_stack));
 }
 
 UnitReference Unit::get_ref() {
@@ -221,6 +211,23 @@ std::vector<UnitAction *> Unit::current_actions() const {
 
 std::string Unit::logsource_name() {
 	return "Unit " + std::to_string(this->id);
+}
+
+void Unit::erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func) {
+	auto position_it = std::find_if(
+		std::begin(this->action_stack),
+		std::end(this->action_stack),
+		func);
+
+	if (position_it < std::end(this->action_stack)) {
+		auto completed_action = std::move(*position_it);
+
+		// erase from the stack
+		this->action_stack.erase(position_it, std::end(this->action_stack));
+
+		// perform any completion actions
+		completed_action->on_completion();
+	}
 }
 
 } /* namespace openage */
