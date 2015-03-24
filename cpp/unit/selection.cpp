@@ -5,6 +5,7 @@
 #include "../coord/tile.h"
 #include "../coord/tile3.h"
 #include "../terrain/terrain.h"
+#include "action.h"
 #include "producer.h"
 #include "selection.h"
 #include "unit.h"
@@ -178,6 +179,7 @@ void UnitSelection::all_invoke(Command &cmd) {
 
 void UnitSelection::show_attributes(Unit *u) {
 	std::vector<std::string> lines;
+	lines.push_back(u->top()->name());
 
 	if (u->has_attribute(attr_type::owner)) {
 		auto &own_attr = u->get_attribute<attr_type::owner>();

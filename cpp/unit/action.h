@@ -82,6 +82,11 @@ public:
 	 */
 	virtual bool allow_destruction() const = 0;
 
+	/**
+	 * debug string to identify action types
+	 */
+	virtual std::string name() const = 0;
+
 	void draw_debug();
 
 	/**
@@ -133,6 +138,7 @@ public:
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
 	bool allow_destruction() const override { return false; }
+	std::string name() const override { return "dead"; }
 
 private:
 	float end_frame;
@@ -154,6 +160,7 @@ public:
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
 	bool allow_destruction() const override { return true; }
+	std::string name() const override { return "idle"; }
 };
 
 /**
@@ -177,6 +184,7 @@ public:
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
+	std::string name() const override { return "move"; }
 
 	coord::phys3 next_waypoint() const;
 
@@ -206,6 +214,7 @@ public:
 	bool completed() const override { return complete; }
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
+	std::string name() const override { return "garrison"; }
 
 private:
 	UnitReference building;
@@ -226,6 +235,7 @@ public:
 	bool completed() const override { return complete; }
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
+	std::string name() const override { return "ungarrison"; }
 
 private:
 	coord::phys3 position;
@@ -245,6 +255,7 @@ public:
 	bool completed() const override { return complete; }
 	bool allow_interupt() const override { return false; }
 	bool allow_destruction() const override { return true; }
+	std::string name() const override { return "train"; }
 
 private:
 	UnitProducer *trained;
@@ -265,6 +276,7 @@ public:
 	bool completed() const override { return complete >= 1.0f; }
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
+	std::string name() const override { return "build"; }
 
 private:
 	UnitReference building;
@@ -286,6 +298,7 @@ public:
 	bool completed() const override { return complete; }
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
+	std::string name() const override { return "repair"; }
 
 private:
 	UnitReference target;
@@ -305,6 +318,7 @@ public:
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
+	std::string name() const override { return "gather"; }
 
 private:
 	bool complete;
@@ -325,6 +339,7 @@ public:
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
+	std::string name() const override { return "attack"; }
 
 private:
 	UnitReference target;
@@ -354,6 +369,7 @@ public:
 	bool completed() const override { return complete >= 1.0; }
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
+	std::string name() const override { return "convert"; }
 
 private:
 	UnitReference target;
@@ -373,6 +389,7 @@ public:
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
 	bool allow_destruction() const override { return false; }
+	std::string name() const override { return "projectile"; }
 
 private:
 	coord::phys_t grav;
