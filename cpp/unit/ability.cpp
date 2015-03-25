@@ -21,6 +21,16 @@ bool has_resource(Unit &target) {
 	       target.get_attribute<attr_type::resource>().amount > 0;
 }
 
+bool is_ally(Unit &to_modify, Unit &target) {
+	if (to_modify.has_attribute(attr_type::owner) &&
+		target.has_attribute(attr_type::owner)) {
+		auto &mod_player = to_modify.get_attribute<attr_type::owner>().player;
+		auto &tar_player = target.get_attribute<attr_type::owner>().player;
+		return mod_player.is_ally(tar_player);
+	}
+	return false;
+}
+
 bool is_enemy(Unit &to_modify, Unit &target) {
 	if (to_modify.has_attribute(attr_type::owner) &&
 		target.has_attribute(attr_type::owner)) {
@@ -63,16 +73,11 @@ void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 		// distance from the targets edge that is required to stop moving
 		coord::phys_t radius = path::path_grid_size + (to_modify.location->min_axis() / 2);
 
-
+		// add the range of the unit if cmd indicator is set
 		if (cmd.is_ranged() && to_modify.has_attribute(attr_type::attack)) {
 			auto &att = to_modify.get_attribute<attr_type::attack>();
 			radius += att.range;
 		}
-		// else if (target->has_attribute(attr_type::speed)) {
-		// 	auto &sp = target->get_attribute<attr_type::speed>();
-		// 	radius += 8 * sp.unit_speed;
-		// }
-
 		to_modify.push_action(std::make_unique<MoveAction>(&to_modify, target->get_ref(), radius));
 	}
 }
@@ -83,9 +88,23 @@ GarrisonAbility::GarrisonAbility(Sound *s)
 }
 
 bool GarrisonAbility::can_invoke(Unit &to_modify, const Command &cmd) {
-	return to_modify.location &&
-	       cmd.has_unit() &&
-	       cmd.unit()->has_attribute(attr_type::garrison);
+	if (cmd.has_unit()) {
+		Unit &target = *cmd.unit();
+
+		// make sure buildings are completed
+		if (target.has_attribute(attr_type::building)) {
+			auto &build_attr = target.get_attribute<attr_type::building>();
+			if (build_attr.completed < 1.0f) {
+				return false;
+			}
+		}
+
+		return to_modify.location &&
+	           target.has_attribute(attr_type::garrison) &&
+	           is_ally(to_modify, target);
+
+	}
+	return false;
 }
 
 void GarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {

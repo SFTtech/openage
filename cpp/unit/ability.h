@@ -51,6 +51,7 @@ const ability_set ability_all = ability_set().set();
  */
 bool has_hitpoints(Unit &target);
 bool has_resource(Unit &target);
+bool is_ally(Unit &to_modify, Unit &target);
 bool is_enemy(Unit &to_modify, Unit &target);
 
 /**

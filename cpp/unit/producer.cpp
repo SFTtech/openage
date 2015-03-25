@@ -22,9 +22,7 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 	if (restriction == gamedata::ground_type::WATER ||
 	    restriction == gamedata::ground_type::WATER_0x0D ||
 	    restriction == gamedata::ground_type::WATER_SHIP_0x03 ||
-	    restriction == gamedata::ground_type::WATER_SHIP_0x0F ||
-	    restriction == gamedata::ground_type::WATER_ANY_0x11 ||
-	    restriction == gamedata::ground_type::WATER_ANY_0x14) {
+	    restriction == gamedata::ground_type::WATER_SHIP_0x0F) {
 		result.insert(1);
 		result.insert(2);
 		result.insert(14);
