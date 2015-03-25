@@ -62,14 +62,16 @@ void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 
 		// distance from the targets edge that is required to stop moving
 		coord::phys_t radius = path::path_grid_size + (to_modify.location->min_axis() / 2);
-		if (to_modify.has_attribute(attr_type::attack)) {
+
+
+		if (cmd.is_ranged() && to_modify.has_attribute(attr_type::attack)) {
 			auto &att = to_modify.get_attribute<attr_type::attack>();
 			radius += att.range;
 		}
-		if (target->has_attribute(attr_type::speed)) {
-			auto &sp = target->get_attribute<attr_type::speed>();
-			radius += 8 * sp.unit_speed;
-		}
+		// else if (target->has_attribute(attr_type::speed)) {
+		// 	auto &sp = target->get_attribute<attr_type::speed>();
+		// 	radius += 8 * sp.unit_speed;
+		// }
 
 		to_modify.push_action(std::make_unique<MoveAction>(&to_modify, target->get_ref(), radius));
 	}

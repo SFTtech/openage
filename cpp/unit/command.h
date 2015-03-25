@@ -60,9 +60,20 @@ public:
 	void set_ability(ability_type t);
 
 	/**
+	 * setting to true makes a move command account for units range,
+	 * when false a unit moves as near as possible to a target.
+	 */
+	void set_range(bool r);
+
+	/**
 	 * the ability types allowed to use this command
 	 */
 	const ability_set &ability() const;
+
+	/**
+	 * read the range setting
+	 */
+	bool is_ranged() const;
 
 	/**
 	 * player who created the command
@@ -80,6 +91,11 @@ private:
 	Unit *u;
 	coord::phys3 pos;
 	UnitProducer *type;
+
+	/**
+	 * modified units will use their range parameter
+	 */
+	bool use_range;
 
 	/**
 	 * select actions to use when targeting

@@ -63,8 +63,6 @@ public:
 	 */
 	virtual bool completed() const = 0;
 
-
-
 	/**
 	 *	checks if the action can be interrupted, allowing to be popped if the user specifies a new action
 	 */
@@ -94,7 +92,7 @@ public:
 	 */
 	void face_towards(const coord::phys3 pos);
 	void damage_object(Unit &target, unsigned dmg);
-	void move_to(Unit &target);
+	void move_to(Unit &target, bool use_range=true);
 
 	/**
 	 * produce debug info such as visualising paths

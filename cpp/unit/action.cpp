@@ -69,10 +69,11 @@ void UnitAction::damage_object(Unit &target, unsigned dmg) {
 	}
 }
 
-void UnitAction::move_to(Unit &target) {
+void UnitAction::move_to(Unit &target, bool use_range) {
 	auto &player = this->entity->get_attribute<attr_type::owner>().player;
 	Command cmd(player, &target);
 	cmd.set_ability(ability_type::move);
+	cmd.set_range(use_range);
 	this->entity->invoke(cmd);
 }
 
@@ -353,7 +354,7 @@ void GarrisonAction::update(unsigned int) {
 	if (this->distance_to_target > this->radius) {
 
 		// move to foundation
-		this->move_to(*build_ptr);
+		this->move_to(*build_ptr, false);
 		return;
 	}
 	else {

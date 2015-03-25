@@ -9,7 +9,8 @@ Command::Command(const Player &p, Unit *unit, bool haspos, UnitProducer *produce
 	player(p),
 	has_pos{haspos},
 	u{unit},
-	type{producer} {
+	type{producer},
+	use_range{true} {
 	this->modifiers.set();
 }
 
@@ -70,8 +71,16 @@ void Command::set_ability(ability_type t) {
 	this->modifiers[t] = true;
 }
 
+void Command::set_range(bool r) {
+	this->use_range = r;
+}
+
 const ability_set &Command::ability() const {
 	return this->modifiers;
+}
+
+bool Command::is_ranged() const {
+	return this->use_range;
 }
 
 } // namespace openage
