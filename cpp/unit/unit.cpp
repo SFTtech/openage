@@ -219,7 +219,7 @@ void Unit::erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func) 
 		std::end(this->action_stack),
 		func);
 
-	if (position_it < std::end(this->action_stack)) {
+	if (position_it != std::end(this->action_stack)) {
 		auto completed_action = std::move(*position_it);
 
 		// erase from the stack

@@ -203,10 +203,10 @@ TerrainObject *ObjectProducer::place(Unit *u, Terrain &terrain, coord::phys3 ini
 	// create new object with correct base shape
 	TerrainObject *obj = nullptr;
 	if (this->unit_data.selection_shape > 1) {
-		obj = new RadialObject(*u, this->unit_data.radius_size0, this->terrain_outline, !decay);
+		obj = new RadialObject(*u, this->unit_data.radius_size0, this->terrain_outline, !this->decay);
 	}
 	else {
-		obj = new SquareObject(*u, this->foundation_size, this->terrain_outline, !decay);
+		obj = new SquareObject(*u, this->foundation_size, this->terrain_outline, !this->decay);
 	}
 
 	// find set of allowed terrains
