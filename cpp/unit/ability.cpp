@@ -133,13 +133,14 @@ BuildAbility::BuildAbility(Sound *s)
 	sound{s} {
 }
 
-bool BuildAbility::can_invoke(Unit &, const Command &cmd) {
+bool BuildAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	if (cmd.has_producer() && cmd.has_position()) {
-		return true;
+		return to_modify.location;
 	}
 	if (cmd.has_unit()) {
 		Unit *target = cmd.unit();
-		return target->has_attribute(attr_type::building) &&
+		return to_modify.location &&
+		       target->has_attribute(attr_type::building) &&
 		       target->get_attribute<attr_type::building>().completed < 1.0f;
 	}
 	return false;
@@ -168,6 +169,7 @@ bool GatherAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	if (cmd.has_unit()) {
 		Unit &target = *cmd.unit();
 		return &to_modify != &target &&
+		       to_modify.location &&
 		       to_modify.has_attribute(attr_type::gatherer) &&
 		       has_resource(target);
 	}
@@ -193,6 +195,7 @@ bool AttackAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	if (cmd.has_unit()) {
 		Unit &target = *cmd.unit();
 		return &to_modify != &target &&
+		       to_modify.location &&
 		       to_modify.has_attribute(attr_type::attack) &&
 		       has_hitpoints(target) &&
 		       (is_enemy(to_modify, target) || has_resource(target));
