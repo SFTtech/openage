@@ -109,6 +109,11 @@ protected:
 	const gamedata::unit_object unit_data;
 
 	/**
+	 * decaying objects have a timed lifespan
+	 */
+	bool decay;
+
+	/**
 	 * Sound id played when object is created or destroyed.
 	 */
 	Sound *on_create;

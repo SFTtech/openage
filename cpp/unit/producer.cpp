@@ -49,6 +49,9 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	default_tex{dm.get_unit_texture(ud->graphic_standing0)},
 	dead_unit_producer{dm.get_producer(ud->dead_unit_id)} {
 
+	// for now just look for type names ending with "_D"
+	this->decay = unit_data.name.substr(unit_data.name.length() - 2) == "_D";
+
 	// find suitable sounds
 	int creation_sound = this->unit_data.sound_creation0;
 	int dying_sound = this->unit_data.sound_dying;
@@ -120,10 +123,8 @@ std::string ObjectProducer::producer_name() const {
 void ObjectProducer::initialise(Unit *unit, Player &player) {
 
 	// log attributes
-	unit->log(MSG(dbg) << "creating " <<
-		this->unit_data.id0 << " (" <<
-		this->unit_data.id1 << " " <<
-		this->unit_data.id2 << ") " <<
+	unit->log(MSG(dbg) << "setting unit type " <<
+		this->unit_data.id0 << " " <<
 		this->unit_data.name);
 
 	// reset existing attributes
@@ -165,26 +166,32 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::stone, 350));
 	}
 	
-	// if destruction graphic is available
-	if (this->dead_unit_producer) {
-		unit->push_action(
-			std::make_unique<DeadAction>(
-				unit, 
-				[this, unit, &player]() {
-
-					// modify unit to have  dead type
-					this->dead_unit_producer->initialise(unit, player);
-				}
-			), 
-			true);
+	// decaying units have a timed lifespan
+	if (decay) {
+		unit->push_action(std::make_unique<DecayAction>(unit), true);
 	}
 	else {
-		unit->push_action(std::make_unique<DeadAction>(unit), true);
+		// if destruction graphic is available
+		if (this->dead_unit_producer) {
+			unit->push_action(
+				std::make_unique<DeadAction>(
+					unit, 
+					[this, unit, &player]() {
+
+						// modify unit to have  dead type
+						this->dead_unit_producer->initialise(unit, player);
+					}
+				), 
+				true);
+		}
+		else {
+			unit->push_action(std::make_unique<DeadAction>(unit), true);
+		}
+
+		// the default action
+		unit->push_action(std::make_unique<IdleAction>(unit), true);
 	}
-
-	// the default standing graphic
-	unit->push_action(std::make_unique<IdleAction>(unit), true);
-
+	
 	// give required abilitys
 	for (auto &a : this->type_abilities) {
 		unit->give_ability(a);
@@ -196,10 +203,10 @@ TerrainObject *ObjectProducer::place(Unit *u, Terrain &terrain, coord::phys3 ini
 	// create new object with correct base shape
 	TerrainObject *obj = nullptr;
 	if (this->unit_data.selection_shape > 1) {
-		obj = new RadialObject(*u, this->unit_data.radius_size0, this->terrain_outline.get());
+		obj = new RadialObject(*u, this->unit_data.radius_size0, this->terrain_outline, !this->decay);
 	}
 	else {
-		obj = new SquareObject(*u, this->foundation_size, this->terrain_outline.get());
+		obj = new SquareObject(*u, this->foundation_size, this->terrain_outline, !this->decay);
 	}
 
 	// find set of allowed terrains
@@ -289,7 +296,9 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	/*
 	 * basic attributes
 	 */
-	unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));
+	if (!unit->has_attribute(attr_type::direction)) {
+		unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));
+	}
 
 	/*
 	 * distance per millisecond -- consider original game speed

@@ -75,6 +75,26 @@ void UnitAction::move_to(Unit &target) {
 	this->entity->invoke(cmd);
 }
 
+DecayAction::DecayAction(Unit *e)
+	:
+	UnitAction(e, graphic_type::standing),
+	end_frame{.0f} {
+
+	if (this->entity->graphics->count(graphic) > 0) {
+		this->end_frame = this->entity->graphics->at(graphic)->frame_count - 1;
+	}
+}
+
+void DecayAction::update(unsigned int time) {
+	this->frame += time * this->frame_rate / 10000.0f;
+}
+
+void DecayAction::on_completion() {}
+
+bool DecayAction::completed() const {
+	return this->frame > this->end_frame;
+}
+
 DeadAction::DeadAction(Unit *e, std::function<void()> on_complete)
 	:
 	UnitAction(e, graphic_type::dying),
@@ -93,21 +113,18 @@ void DeadAction::update(unsigned int time) {
 	}
 
 	// inc frame but do not pass the end frame
+	// the end frame will remain if the object carries resources
 	if (this->frame < this->end_frame) {
-		this->frame += 0.01 + time * this->frame_rate / 3.0f;
+		this->frame += 0.001 + time * this->frame_rate / 3.0f;
 	}
 	else {
 		this->frame = this->end_frame;
 	}
-	
-
-	// TODO: move to on_completion
-	if (this->completed()) {
-		this->on_complete_func();
-	}
 }
 
-void DeadAction::on_completion() {}
+void DeadAction::on_completion() {
+	this->on_complete_func();
+}
 
 bool DeadAction::completed() const {
 	// check resource, trees/huntables with resource are not removed
