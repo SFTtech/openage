@@ -100,8 +100,8 @@ bool GarrisonAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 		}
 
 		return to_modify.location &&
-	           target.has_attribute(attr_type::garrison) &&
-	           is_ally(to_modify, target);
+		       target.has_attribute(attr_type::garrison) &&
+		       is_ally(to_modify, target);
 
 	}
 	return false;
