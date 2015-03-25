@@ -1,5 +1,6 @@
 // Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
+#include <algorithm>
 #include <cmath>
 
 #include "../player.h"
@@ -378,27 +379,39 @@ UngarrisonAction::UngarrisonAction(Unit *e, const coord::phys3 &pos)
 void UngarrisonAction::update(unsigned int) {
 	Terrain *terrain = this->entity->get_container()->get_terrain();
 	auto &garrison_attr = this->entity->get_attribute<attr_type::garrison>();
+	
+	// try unload all objects currently garrisoned
+	auto position_it = std::remove_if(
+		std::begin(garrison_attr.content),
+		std::end(garrison_attr.content),
+		[terrain, this](UnitReference &u) {
+			if (u.is_valid()) {
 
-	// unload all objects currently garrisoned
-	for (auto &u : garrison_attr.content) {
-		if (u.is_valid()) {
+				// ptr to unit being ungarrisoned
+				Unit *unit_ptr = u.get();
 
-			// ptr to unit being ungarrisoned
-			Unit *unit_ptr = u.get();
+				// find a free position adjacent to the building
+				coord::phys3 pos = this->entity->location->free_adjacent_place();
 
-			// find a free position adjacent to the building
-			coord::phys3 pos = this->entity->location->free_adjacent_place();
-			unit_ptr->producer->place(unit_ptr, *terrain, pos);
+				// make sure it was placed outside
+				if (unit_ptr->producer->place(unit_ptr, *terrain, pos)) {
 
-			// task unit to move to position
-			auto &player = this->entity->get_attribute<attr_type::owner>().player;
-			Command cmd(player, this->position);
-			cmd.set_ability(ability_type::move);
-			unit_ptr->invoke(cmd);
-		}
-	}
-	garrison_attr.content.clear();
-	this->complete = true;
+					// task unit to move to position
+					auto &player = this->entity->get_attribute<attr_type::owner>().player;
+					Command cmd(player, this->position);
+					cmd.set_ability(ability_type::move);
+					unit_ptr->invoke(cmd);
+					return true;
+				}
+			}
+			return false;
+		});
+
+	// remove elements which were ungarrisoned
+	garrison_attr.content.erase(position_it, std::end(garrison_attr.content));
+
+	// completed when no units are remaining
+	this->complete = garrison_attr.content.empty();
 }
 
 void UngarrisonAction::on_completion() {}
