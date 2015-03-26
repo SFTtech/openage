@@ -15,6 +15,7 @@ before_install:
   - sudo add-apt-repository --yes ppa:kubuntu-ppa/backports       # cmake >=2.8.10
   - sudo add-apt-repository --yes ppa:fkrull/deadsnakes           # python3.x
   - sudo apt-add-repository --yes ppa:sfttech/opusfile            # opusfile
+  - sudo apt-add-repository --yes ppa:sfttech/random              # libepoxy
   - sudo apt-get update -qq
 
 install:
