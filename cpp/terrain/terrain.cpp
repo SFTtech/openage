@@ -26,7 +26,11 @@ TileContent::TileContent() :
 }
 
 TileContent::~TileContent() {
-	for (auto &o : this->obj) {
+	// objects will try remove themselves from the list
+	// TODO: a better cleanup
+
+	auto copy = this->obj;
+	for (auto &o : copy) {
 		delete o;
 	}
 }
