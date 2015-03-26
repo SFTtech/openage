@@ -129,7 +129,9 @@ void UngarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_so
 	if (play_sound && this->sound) {
 		this->sound->play();
 	}
-	to_modify.push_action(std::make_unique<UngarrisonAction>(&to_modify, cmd.position()));
+
+	// add as secondary, so primary action is not disrupted
+	to_modify.secondary_action(std::make_unique<UngarrisonAction>(&to_modify, cmd.position()));
 }
 
 TrainAbility::TrainAbility(Sound *s)

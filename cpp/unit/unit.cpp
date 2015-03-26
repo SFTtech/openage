@@ -70,7 +70,18 @@ bool Unit::update() {
 
 		// TODO: change the entire unit action timing to a higher resolution like
 		// nsecs or usecs.
-		this->action_stack.back()->update(engine.lastframe_duration_nsec() / 1e6);
+		auto time_elapsed = engine.lastframe_duration_nsec() / 1e6;
+		this->action_stack.back()->update(time_elapsed);
+
+		// update and remove secondary actions
+		auto position_it = std::remove_if(
+			std::begin(this->action_secondary),
+			std::end(this->action_secondary),
+			[time_elapsed](std::unique_ptr<UnitAction> &action) {
+				action->update(time_elapsed);
+				return action->completed();
+			});
+		this->action_secondary.erase(position_it, std::end(this->action_secondary));
 
 		/*
 		 * check completion of all actions,
@@ -157,11 +168,15 @@ void Unit::push_action(std::unique_ptr<UnitAction> action, bool force) {
 	this->action_stack.push_back(std::move(action));
 }
 
+void Unit::secondary_action(std::unique_ptr<UnitAction> action) {
+	this->action_secondary.push_back(std::move(action));
+}
+
 void Unit::add_attribute(AttributeContainer *attr) {
 	this->attribute_map.insert(attr_map_t::value_type(attr->type, attr));
 }
 
-bool Unit::has_attribute(attr_type type) {
+bool Unit::has_attribute(attr_type type) const {
 	return (this->attribute_map.count(type) > 0);
 }
 

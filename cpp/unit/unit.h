@@ -116,7 +116,12 @@ public:
 	 * adds a new action on top of the action stack
 	 * will be performed immediately
 	 */
-	void push_action(std::unique_ptr<UnitAction>, bool force=false);
+	void push_action(std::unique_ptr<UnitAction> action, bool force=false);
+
+	/**
+	 * adds a seconadry action which is always updated
+	 */
+	void secondary_action(std::unique_ptr<UnitAction> action);
 
 	/**
 	 * give a new attribute this this unit
@@ -127,7 +132,7 @@ public:
 	/**
 	 * returns whether attribute is available
 	 */
-	bool has_attribute(attr_type type);
+	bool has_attribute(attr_type type) const;
 
 	/**
 	 * returns attribute based on templated value
@@ -189,6 +194,11 @@ private:
 	 * action stack -- top action determines graphic to be drawn
 	 */
 	std::vector<std::unique_ptr<UnitAction>> action_stack;
+
+	/**
+	 * seconadry actions are always updated
+	 */
+	std::vector<std::unique_ptr<UnitAction>> action_secondary;
 
 	/**
 	 * Unit attributes include color, hitpoints, speed, objects garrisoned etc
