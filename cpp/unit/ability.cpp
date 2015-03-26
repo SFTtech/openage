@@ -74,7 +74,7 @@ void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 		coord::phys_t radius = path::path_grid_size + (to_modify.location->min_axis() / 2);
 
 		// add the range of the unit if cmd indicator is set
-		if (cmd.is_ranged() && to_modify.has_attribute(attr_type::attack)) {
+		if (cmd.has_flag(command_flag::use_range) && to_modify.has_attribute(attr_type::attack)) {
 			auto &att = to_modify.get_attribute<attr_type::attack>();
 			radius += att.range;
 		}

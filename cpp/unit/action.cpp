@@ -73,7 +73,9 @@ void UnitAction::move_to(Unit &target, bool use_range) {
 	auto &player = this->entity->get_attribute<attr_type::owner>().player;
 	Command cmd(player, &target);
 	cmd.set_ability(ability_type::move);
-	cmd.set_range(use_range);
+	if (use_range) {
+		cmd.add_flag(command_flag::use_range);
+	}
 	this->entity->invoke(cmd);
 }
 
