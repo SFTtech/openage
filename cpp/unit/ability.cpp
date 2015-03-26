@@ -139,8 +139,12 @@ TrainAbility::TrainAbility(Sound *s)
 	sound{s} {
 }
 
-bool TrainAbility::can_invoke(Unit &, const Command &cmd) {
-	return cmd.has_producer();
+bool TrainAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	if (to_modify.has_attribute(attr_type::building)) {
+		auto &build_attr = to_modify.get_attribute<attr_type::building>();
+		return cmd.has_producer() && 1.0f <= build_attr.completed;
+	}
+	return false;
 }
 
 void TrainAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {

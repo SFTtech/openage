@@ -273,7 +273,7 @@ public:
 	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return false; }
 	bool allow_destruction() const override { return true; }
-	std::string name() const override { return "train " + std::to_string(train_percent); }
+	std::string name() const override { return "train"; }
 
 private:
 	UnitProducer *trained;
