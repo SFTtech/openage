@@ -270,14 +270,15 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return this->complete >= 1.0f; }
+	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return false; }
 	bool allow_destruction() const override { return true; }
-	std::string name() const override { return "train"; }
+	std::string name() const override { return "train " + std::to_string(train_percent); }
 
 private:
 	UnitProducer *trained;
-	float complete;
+	bool complete;
+	float train_percent;
 };
 
 /**

@@ -423,13 +423,14 @@ TrainAction::TrainAction(Unit *e, UnitProducer *pp)
 	:
 	UnitAction{e, graphic_type::standing},
 	trained{pp},
-	complete{.0f} {
+	complete{false},
+	train_percent{.0f} {
 }
 
-void TrainAction::update(unsigned int) {
+void TrainAction::update(unsigned int time) {
 
 	// place unit when ready
-	if (this->complete > 1.0f) {
+	if (this->train_percent > 1.0f) {
 
 		// find a free position adjacent to the building
 		coord::phys3 pos = this->entity->location->free_adjacent_place();
@@ -451,7 +452,7 @@ void TrainAction::update(unsigned int) {
 		}
 	}
 	else {
-		this->complete += 0.001;
+		this->train_percent += 0.001 * time;
 	}
 }
 
