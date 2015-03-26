@@ -216,7 +216,16 @@ private:
 	bool allow_repath;
 
 	void initialise();
+
+	/**
+	 * use a star to find a path to target
+	 */
 	void set_path();
+
+	/**
+	 * updates the distance_to_target value
+	 */
+	void set_distance();
 };
 
 /**

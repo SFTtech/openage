@@ -120,8 +120,12 @@ UngarrisonAbility::UngarrisonAbility(Sound *s)
 	sound{s} {
 }
 
-bool UngarrisonAbility::can_invoke(Unit &, const Command &cmd) {
-	return cmd.has_position();
+bool UngarrisonAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	if (to_modify.has_attribute(attr_type::garrison)) {
+		auto &garison_attr = to_modify.get_attribute<attr_type::garrison>();
+		return cmd.has_position() && !garison_attr.content.empty();
+	}
+	return false;
 }
 
 void UngarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {

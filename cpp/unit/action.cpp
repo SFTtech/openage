@@ -197,6 +197,9 @@ void MoveAction::initialise() {
 		}
 	}
 
+	// set initial distance
+	this->set_distance();
+
 	// set an initial path
 	this->set_path();
 	this->debug_draw_action = [&]() {
@@ -277,17 +280,7 @@ void MoveAction::update(unsigned int time) {
 	bool move_completed = this->entity->location->move(new_position);
 	if (move_completed) {
 		d_attr.unit_dir = new_direction;
-
-		// update distance
-		if (this->unit_target.is_valid()) {
-			auto target_object = this->unit_target.get()->location;
-			coord::phys3 &unit_pos = this->entity->location->pos.draw;
-			this->distance_to_target = target_object->from_edge(unit_pos);
-		}
-		else {
-			coord::phys3_delta move_dir = this->target - this->entity->location->pos.draw;
-			this->distance_to_target = static_cast<coord::phys_t>(std::hypot(move_dir.ne, move_dir.se));
-		}
+		this->set_distance();
 	}
 	else {
 		// cases for modifying path when blocked
@@ -338,6 +331,18 @@ void MoveAction::set_path() {
 		coord::phys3 start = this->entity->location->pos.draw;
 		coord::phys3 end = this->target;
 		this->path = path::to_point(start, end, this->entity->location->passable);
+	}
+}
+
+void MoveAction::set_distance() {
+	if (this->unit_target.is_valid()) {
+		auto target_object = this->unit_target.get()->location;
+		coord::phys3 &unit_pos = this->entity->location->pos.draw;
+		this->distance_to_target = target_object->from_edge(unit_pos);
+	}
+	else {
+		coord::phys3_delta move_dir = this->target - this->entity->location->pos.draw;
+		this->distance_to_target = static_cast<coord::phys_t>(std::hypot(move_dir.ne, move_dir.se));
 	}
 }
 
