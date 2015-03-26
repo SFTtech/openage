@@ -423,28 +423,35 @@ TrainAction::TrainAction(Unit *e, UnitProducer *pp)
 	:
 	UnitAction{e, graphic_type::standing},
 	trained{pp},
-	complete{false} {
+	complete{.0f} {
 }
 
 void TrainAction::update(unsigned int) {
 
-	// find a free position adjacent to the building
-	coord::phys3 pos = this->entity->location->free_adjacent_place();
+	// place unit when ready
+	if (this->complete > 1.0f) {
 
-	// create using the producer
-	UnitContainer *container = this->entity->get_container();
-	auto &player = this->entity->get_attribute<attr_type::owner>().player;
-	auto uref = container->new_unit(*this->trained, player, pos);
-	if (uref.is_valid()) {
+		// find a free position adjacent to the building
+		coord::phys3 pos = this->entity->location->free_adjacent_place();
 
-		// use a move command with the position
-		// TODO: use a position on edge of the buildings
-		Command cmd(player, coord::tile{8, 10}.to_phys2().to_phys3());
-		cmd.set_ability(ability_type::move);
-		uref.get()->invoke(cmd);
+		// create using the producer
+		UnitContainer *container = this->entity->get_container();
+		auto &player = this->entity->get_attribute<attr_type::owner>().player;
+		auto uref = container->new_unit(*this->trained, player, pos);
+		if (uref.is_valid()) {
 
-		// try again next update if cannot place
-		this->complete = true;
+			// use a move command with the position
+			// TODO: use a position on edge of the buildings
+			Command cmd(player, coord::tile{8, 10}.to_phys2().to_phys3());
+			cmd.set_ability(ability_type::move);
+			uref.get()->invoke(cmd);
+
+			// try again next update if cannot place
+			this->complete = true;
+		}
+	}
+	else {
+		this->complete += 0.001;
 	}
 }
 

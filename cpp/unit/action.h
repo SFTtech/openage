@@ -229,7 +229,7 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete; }
+	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
 	std::string name() const override { return "garrison"; }
@@ -250,7 +250,7 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete; }
+	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
 	std::string name() const override { return "ungarrison"; }
@@ -270,14 +270,14 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete; }
+	bool completed() const override { return this->complete >= 1.0f; }
 	bool allow_interupt() const override { return false; }
 	bool allow_destruction() const override { return true; }
 	std::string name() const override { return "train"; }
 
 private:
 	UnitProducer *trained;
-	bool complete;
+	float complete;
 };
 
 /**
@@ -291,7 +291,7 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete >= 1.0f; }
+	bool completed() const override { return this->complete >= 1.0f; }
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
 	std::string name() const override { return "build"; }
@@ -313,7 +313,7 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete; }
+	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
 	std::string name() const override { return "repair"; }
@@ -384,7 +384,7 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete >= 1.0; }
+	bool completed() const override { return this->complete >= 1.0; }
 	bool allow_interupt() const override { return true; }
 	bool allow_destruction() const override { return true; }
 	std::string name() const override { return "convert"; }
