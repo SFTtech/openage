@@ -152,10 +152,11 @@ void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::cam
 		if (tc) {
 			// find objects within selection box
 			for (auto o : tc->obj) {
-				coord::camgame pos = o->pos.draw.to_camgame();
+				auto unit_location = o.lock();
+				coord::camgame pos = unit_location->pos.draw.to_camgame();
 				if ((min.x < pos.x && pos.x < max.x) &&
 				     (min.y < pos.y && pos.y < max.y)) {
-					boxed_units.insert(&o->unit);
+					boxed_units.insert(&unit_location->unit);
 				}
 			}
 		}

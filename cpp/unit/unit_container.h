@@ -54,12 +54,12 @@ public:
 	/**
 	 * sets terrain to initialise units on
 	 */
-	void set_terrain(Terrain *t);
+	void set_terrain(std::shared_ptr<Terrain> &t);
 
 	/** 
 	 * returns the terrain which units are placed on
 	 */
-	Terrain *get_terrain() const;
+	std::shared_ptr<Terrain> get_terrain() const;
 
 	/**
 	 * checks the id is valid
@@ -108,7 +108,7 @@ private:
 	/**
 	 * Terrain for initialising new units
 	 */
-	Terrain *terrain;
+	std::weak_ptr<Terrain> terrain;
 
 };
 

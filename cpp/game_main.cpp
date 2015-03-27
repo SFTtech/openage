@@ -142,7 +142,7 @@ GameMain::GameMain(Engine *engine)
 	auto blending_modes = util::read_csv_file<gamedata::blending_mode>(asset_dir.join("blending_modes.docx"));
 
 	// create the terrain which will be filled by chunks
-	this->terrain = new Terrain(assetmanager, terrain_types, blending_modes, true);
+	this->terrain = std::make_shared<Terrain>(assetmanager, terrain_types, blending_modes, true);
 	this->terrain->fill(terrain_data, terrain_data_size);
 	this->placed_units.set_terrain(this->terrain);
 
@@ -246,8 +246,6 @@ GameMain::~GameMain() {
 	// oh noes, release hl3 before that!
 	delete this->gaben;
 
-	delete this->terrain;
-
 	delete texture_shader::program;
 	delete teamcolor_shader::program;
 	delete alphamask_shader::program;
@@ -334,7 +332,7 @@ bool GameMain::on_input(SDL_Event *e) {
 			// delete any unit on the tile
 			if (!chunk->get_data(mousepos_tile)->obj.empty()) {
 				// get first object currently standing at the clicked position
-				TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
+				auto obj = chunk->get_data(mousepos_tile)->obj[0].lock();
 				log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
 				obj->unit.delete_unit();
 			} else if ( this->datamanager.producer_count() > 0 ) {
@@ -359,7 +357,7 @@ bool GameMain::on_input(SDL_Event *e) {
 
 	case SDL_MOUSEBUTTONUP:
 		if (draging_active and e->button.button == SDL_BUTTON_LEFT) {
-			selection.drag_release(terrain, this->ctrl_active);
+			selection.drag_release(terrain.get(), this->ctrl_active);
 			draging_active = false;
 		}
 		else if (scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
@@ -637,7 +635,7 @@ void GameMain::draw_debug_grid() {
 }
 
 Command GameMain::get_action(const coord::phys3 &pos) const {
-	TerrainObject *obj = this->terrain->obj_at_point(pos);
+	auto obj = this->terrain->obj_at_point(pos);
 	if (obj) {
 		Command c(this->players[0], &obj->unit, pos);
 		if (this->use_set_ability) {

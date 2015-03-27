@@ -26,24 +26,26 @@ TerrainObject::TerrainObject(Unit &u, bool collisions)
 	draw{[]() {}},
 	placed{false},
 	terrain{nullptr},
-	occupied_chunk_count{0},
-	parent{nullptr} {
-
-	// delete any exisitng location	
-	if (unit.location) {
-		delete unit.location;
-	}
-	unit.location = this;
+	occupied_chunk_count{0} {
 }
 
 TerrainObject::~TerrainObject() {
 	// remove all connections from terrain
+	this->unit.log(MSG(dbg) << "Cleanup terrain object");
 	this->remove();
-	for (auto &c : children) {
-		c->remove();
-		delete c;
-	}
 	this->unit.location = nullptr;
+}
+
+void TerrainObject::initialise() {
+
+	// remove any exisitng location	
+	if (unit.location) {
+		unit.location->remove();
+	}
+
+	// shared_from_this cannot be used in the constructor,
+	// so an initalise function is required
+	unit.location = this->shared_from_this();
 }
 
 void TerrainObject::draw_outline() const {
@@ -83,6 +85,7 @@ void TerrainObject::remove() {
 		return;
 	}
 
+	auto shared_this = this->shared_from_this();
 	for (coord::tile temp_pos : tile_list(this->pos)) {
 		TerrainChunk *chunk = terrain->get_chunk(temp_pos);
 
@@ -91,9 +94,14 @@ void TerrainObject::remove() {
 		}
 
 		int tile_pos = chunk->tile_position_neigh(temp_pos);
-
 		auto &v = chunk->get_data(tile_pos)->obj;
-		v.erase(std::remove(v.begin(), v.end(), this), v.end());
+		auto position_it = std::remove_if(
+			std::begin(v),
+			std::end(v),
+			[shared_this](std::weak_ptr<TerrainObject> &obj) {
+				return shared_this == obj.lock();
+			});
+		v.erase(position_it, std::end(v));
 	}
 
 	this->occupied_chunk_count = 0;
@@ -139,17 +147,17 @@ coord::phys3 TerrainObject::free_adjacent_place() const {
 	return t.to_phys2().to_phys3();
 }
 
-void TerrainObject::annex(TerrainObject *other) {
+void TerrainObject::annex(std::shared_ptr<TerrainObject> &other) {
 	this->children.push_back(other);
-	other->parent = this;
+	other->parent = this->shared_from_this();
 }
 
-const TerrainObject *TerrainObject::get_parent() const {
+const std::shared_ptr<TerrainObject> TerrainObject::get_parent() const {
 	return this->parent;
 }
 
-std::vector<TerrainObject *> TerrainObject::get_children() const {
-	return children;
+std::vector<std::shared_ptr<TerrainObject>> TerrainObject::get_children() const {
+	return this->children;
 }
 
 bool TerrainObject::operator <(const TerrainObject &other) {
@@ -191,7 +199,6 @@ void TerrainObject::place_unchecked(Terrain *terrain, coord::phys3 &position) {
 
 	// set pointers to this object on each terrain tile
 	// where the building will stand and block the ground
-
 	for (coord::tile temp_pos : tile_list(this->pos)) {
 		TerrainChunk *chunk = terrain->get_chunk(temp_pos);
 
@@ -213,7 +220,7 @@ void TerrainObject::place_unchecked(Terrain *terrain, coord::phys3 &position) {
 		}
 
 		int tile_pos = chunk->tile_position_neigh(temp_pos);
-		chunk->get_data(tile_pos)->obj.push_back(this);
+		chunk->get_data(tile_pos)->obj.push_back(this->shared_from_this());
 	}
 
 	this->placed = true;
@@ -284,15 +291,15 @@ bool SquareObject::contains(const coord::phys3 &other) const {
 	return false;
 }
 
-bool SquareObject::intersects(const TerrainObject *other, const coord::phys3 &position) const {
-	if (const SquareObject *sq = dynamic_cast<const SquareObject *>(other)) {
+bool SquareObject::intersects(const TerrainObject &other, const coord::phys3 &position) const {
+	if (const SquareObject *sq = dynamic_cast<const SquareObject *>(&other)) {
 		tile_range rng = this->get_range(position);
 		return this->pos.end.ne < rng.start.ne
 		       || rng.end.ne < sq->pos.start.ne
 		       || rng.end.se < sq->pos.start.se
 		       || rng.end.se < sq->pos.start.se;
 	}
-	else if (const RadialObject *rad = dynamic_cast<const RadialObject *>(other)) {
+	else if (const RadialObject *rad = dynamic_cast<const RadialObject *>(&other)) {
 		// clamp between start and end
 		tile_range rng = this->get_range(position);
 		coord::phys3 start_phys = rng.start.to_phys2().to_phys3() - phys_half_tile;
@@ -356,11 +363,11 @@ bool RadialObject::contains(const coord::phys3 &other) const {
 	return distance(this->pos.draw, other) < this->phys_radius;
 }
 
-bool RadialObject::intersects(const TerrainObject *other, const coord::phys3 &position) const {
-	if (const SquareObject *sq = dynamic_cast<const SquareObject *>(other)) {
+bool RadialObject::intersects(const TerrainObject &other, const coord::phys3 &position) const {
+	if (const SquareObject *sq = dynamic_cast<const SquareObject *>(&other)) {
 		return sq->from_edge(position) < this->phys_radius;
 	}
-	else if (const RadialObject *rad = dynamic_cast<const RadialObject *>(other)) {
+	else if (const RadialObject *rad = dynamic_cast<const RadialObject *>(&other)) {
 		return distance(position, rad->pos.draw) < this->phys_radius + rad->phys_radius;
 	}
 	return false;

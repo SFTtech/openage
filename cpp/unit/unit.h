@@ -63,7 +63,7 @@ public:
 	 * space on the map used by this unit
 	 * null if the object is not yet placed or garrisoned
 	 */
-	TerrainObject *location;
+	std::shared_ptr<TerrainObject> location;
 
 	/**
 	 * graphics sets which can be modified for gathering

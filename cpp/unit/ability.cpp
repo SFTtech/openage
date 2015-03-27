@@ -47,8 +47,9 @@ MoveAbility::MoveAbility(Sound *s)
 }
 
 bool MoveAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	to_modify.log(MSG(dbg) << "check unit can invoke move action");
 	if (cmd.has_position()) {
-		return to_modify.location;
+		return bool(to_modify.location);
 	}
 	else if (cmd.has_unit()) {
 		return to_modify.location &&
@@ -88,23 +89,21 @@ GarrisonAbility::GarrisonAbility(Sound *s)
 }
 
 bool GarrisonAbility::can_invoke(Unit &to_modify, const Command &cmd) {
-	if (cmd.has_unit()) {
-		Unit &target = *cmd.unit();
-
-		// make sure buildings are completed
-		if (target.has_attribute(attr_type::building)) {
-			auto &build_attr = target.get_attribute<attr_type::building>();
-			if (build_attr.completed < 1.0f) {
-				return false;
-			}
-		}
-
-		return to_modify.location &&
-		       target.has_attribute(attr_type::garrison) &&
-		       is_ally(to_modify, target);
-
+	if (!cmd.has_unit()) {
+		return false;
 	}
-	return false;
+	Unit &target = *cmd.unit();
+
+	// make sure buildings are completed
+	if (target.has_attribute(attr_type::building)) {
+		auto &build_attr = target.get_attribute<attr_type::building>();
+		if (build_attr.completed < 1.0f) {
+			return false;
+		}
+	}
+	return to_modify.location &&
+	       target.has_attribute(attr_type::garrison) &&
+	       is_ally(to_modify, target);
 }
 
 void GarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
@@ -166,7 +165,7 @@ BuildAbility::BuildAbility(Sound *s)
 
 bool BuildAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	if (cmd.has_producer() && cmd.has_position()) {
-		return to_modify.location;
+		return bool(to_modify.location);
 	}
 	if (cmd.has_unit()) {
 		Unit *target = cmd.unit();

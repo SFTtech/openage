@@ -19,16 +19,16 @@ Unit::Unit(UnitContainer &c, id_t id)
 	id{id},
 	producer{nullptr},
 	selected{false},
-	location{nullptr},
 	pop_destructables{false},
 	container(c) {
 
 }
 
 Unit::~Unit() {
-	// make sure terrain references are removed
+
+	// remove any used location from the map
 	if (this->location) {
-		delete this->location;
+		this->location->remove();
 	}
 }
 

@@ -325,7 +325,7 @@ coord::phys3 MoveAction::next_waypoint() const {
 
 void MoveAction::set_path() {
 	if (this->unit_target.is_valid()) {
-		this->path = path::to_object(this->entity->location, this->unit_target.get()->location, this->radius);
+		this->path = path::to_object(this->entity->location.get(), this->unit_target.get()->location.get(), this->radius);
 	}
 	else {
 		coord::phys3 start = this->entity->location->pos.draw;
@@ -369,7 +369,8 @@ void GarrisonAction::update(unsigned int) {
 		garrison_attr.content.push_back(this->entity->get_ref());
 
 		if (this->entity->location) {
-			delete this->entity->location;
+			this->entity->location->remove();
+			this->entity->location = nullptr;
 		}
 		this->complete = true;
 	}
@@ -385,7 +386,7 @@ UngarrisonAction::UngarrisonAction(Unit *e, const coord::phys3 &pos)
 }
 
 void UngarrisonAction::update(unsigned int) {
-	Terrain *terrain = this->entity->get_container()->get_terrain();
+	auto terrain = this->entity->get_container()->get_terrain();
 	auto &garrison_attr = this->entity->get_attribute<attr_type::garrison>();
 	
 	// try unload all objects currently garrisoned
@@ -491,7 +492,7 @@ void BuildAction::update(unsigned int time) {
 
 		// set direction unit should face
 		Unit *b = this->building.get();
-		TerrainObject *target_location = b->location;
+		auto target_location = b->location;
 		this->face_towards(target_location->pos.draw);
 
 		// move to resource being collected
@@ -546,7 +547,7 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	dropsite{} {
 
 	// find nearest dropsite from the targeted resource
-	TerrainObject *ds = path::find_nearest(this->target.get()->location,
+	TerrainObject *ds = path::find_nearest(this->target.get()->location.get(),
 		[=](const openage::TerrainObject *other) -> bool {
 			if (!other) {
 				return false;
@@ -593,7 +594,7 @@ void GatherAction::update(unsigned int time) {
 	}
 
 	// set direction unit should face
-	TerrainObject *target_location = targeted_resource->location;
+	auto target_location = targeted_resource->location;
 	this->face_towards(target_location->pos.draw);
 
 	// owner of gatherer
@@ -602,7 +603,7 @@ void GatherAction::update(unsigned int time) {
 	// return to dropsite
 	if (gatherer_attr.amount > gatherer_attr.capacity) {
 		// dropsite position
-		TerrainObject *dropsite_location = this->dropsite.get()->location;
+		auto dropsite_location = this->dropsite.get()->location;
 
 		// move to resource being collected
 		auto distance_to_dropsite = dropsite_location->from_edge(this->entity->location->pos.draw);
@@ -806,9 +807,10 @@ void ProjectileAction::update(unsigned int time) {
 		Terrain *terrain = this->entity->location->get_terrain();
 		TileContent *tc = terrain->get_data(new_position.to_tile3().to_tile());
 		if (tc && !tc->obj.empty()) {
-			for (auto loc : tc->obj) {
-				if (this->entity->location != loc) {
-					this->damage_object(loc->unit, 1);
+			for (auto item : tc->obj) {
+				auto obj_location = item.lock();
+				if (this->entity->location != obj_location) {
+					this->damage_object(obj_location->unit, 1);
 					break;
 				}
 			}
