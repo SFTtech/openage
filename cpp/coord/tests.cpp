@@ -1,7 +1,7 @@
-// Copyright 2016-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #include <unistd.h>
-#include "../log.h"
+#include "../log/log.h"
 #include "../util/error.h"
 #include "../util/file.h"
 #include "phys2.h"
@@ -865,7 +865,7 @@ out:
 	// Cleanup engine
 	Engine::destroy();
 
-	log::err("%s failed at stage %d", testname, ret);
+	log::log(MSG(err) << testname << " failed at stage " << ret);
 	throw "failed coord tests";
 }
 
