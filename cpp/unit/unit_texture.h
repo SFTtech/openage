@@ -92,11 +92,6 @@ private:
 	// delta graphics
 	std::vector<std::pair<std::unique_ptr<UnitTexture>, coord::camgame_delta>> deltas;
 
-
-	uint8_t replay;
-	float replay_delay;
-	int8_t sequence_type;
-
 	/**
 	 * find which subtexture should be used for drawing this texture
 	 */
