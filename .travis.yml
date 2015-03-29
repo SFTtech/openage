@@ -53,7 +53,8 @@ notifications:
     channels:
       - "chat.freenode.net#sfttech"
     template:
-      - "%{repository}/%{branch} (%{commit} - %{author}): %{message}"
+      - "%{repository_slug}/%{branch} (%{commit} - %{author}): %{message}"
+      - "took %{duration}, moar info: %{build_url}"
     use_notice: true
     skip_join: true
 
