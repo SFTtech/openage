@@ -133,20 +133,6 @@ void TerrainObject::set_ground(int id, int additional) {
 	}
 }
 
-coord::phys3 TerrainObject::free_adjacent_place() const {
-
-	// find a free position adjacent to the object
-	coord::phys3 p = this->pos.draw;
-	coord::tile t = p.to_tile3().to_tile() + coord::tile_delta{2, 2};
-	for (int i = 1; i < 6; ++i) {
-		if (terrain->get_data(t)->obj.empty()) {
-			break;
-		}
-		t.ne -= 1;
-	}
-	return t.to_phys2().to_phys3();
-}
-
 void TerrainObject::annex(std::shared_ptr<TerrainObject> &other) {
 	this->children.push_back(other);
 	other->parent = this->shared_from_this();

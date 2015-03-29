@@ -82,6 +82,12 @@ public:
 	UnitReference new_unit(UnitProducer &producer, Player &owner, coord::phys3 position);
 
 	/**
+	 * adds a new unit to the container and initialises using a producer
+	 * places outside an existing object using the player of that object
+	 */
+	UnitReference new_unit(UnitProducer &producer, Player &owner, std::shared_ptr<TerrainObject> other);
+
+	/**
 	 * give a command to a unit -- unit creation and deletion should be done as commands
 	 */
 	bool dispatch_command(id_t to_id, const Command &cmd);

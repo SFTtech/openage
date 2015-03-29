@@ -386,24 +386,20 @@ UngarrisonAction::UngarrisonAction(Unit *e, const coord::phys3 &pos)
 }
 
 void UngarrisonAction::update(unsigned int) {
-	auto terrain = this->entity->get_container()->get_terrain();
 	auto &garrison_attr = this->entity->get_attribute<attr_type::garrison>();
 	
 	// try unload all objects currently garrisoned
 	auto position_it = std::remove_if(
 		std::begin(garrison_attr.content),
 		std::end(garrison_attr.content),
-		[terrain, this](UnitReference &u) {
+		[this](UnitReference &u) {
 			if (u.is_valid()) {
 
 				// ptr to unit being ungarrisoned
 				Unit *unit_ptr = u.get();
 
-				// find a free position adjacent to the building
-				coord::phys3 pos = this->entity->location->free_adjacent_place();
-
 				// make sure it was placed outside
-				if (unit_ptr->producer->place(unit_ptr, *terrain, pos)) {
+				if (unit_ptr->producer->place_beside(unit_ptr, this->entity->location)) {
 
 					// task unit to move to position
 					auto &player = this->entity->get_attribute<attr_type::owner>().player;
@@ -438,18 +434,15 @@ void TrainAction::update(unsigned int time) {
 	// place unit when ready
 	if (this->train_percent > 1.0f) {
 
-		// find a free position adjacent to the building
-		coord::phys3 pos = this->entity->location->free_adjacent_place();
-
 		// create using the producer
 		UnitContainer *container = this->entity->get_container();
 		auto &player = this->entity->get_attribute<attr_type::owner>().player;
-		auto uref = container->new_unit(*this->trained, player, pos);
+		auto uref = container->new_unit(*this->trained, player, this->entity->location);
 		if (uref.is_valid()) {
 
-			// use a move command with the position
-			// TODO: use a position on edge of the buildings
-			Command cmd(player, coord::tile{8, 10}.to_phys2().to_phys3());
+			// use a move command to the gather point
+			// TODO: use buildings gather point, assume {3, 3} for now
+			Command cmd(player, coord::tile{3, 3}.to_phys2().to_phys3());
 			cmd.set_ability(ability_type::move);
 			uref.get()->invoke(cmd);
 

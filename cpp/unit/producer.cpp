@@ -39,6 +39,33 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 	return result;
 }
 
+std::shared_ptr<TerrainObject> UnitProducer::place_beside(Unit *u, std::shared_ptr<TerrainObject> other) const {
+	if (!other) {
+		return nullptr;
+	}
+
+	// find the range of possible tiles
+	tile_range outline{other->pos.start - coord::tile_delta{1, 1}, 
+	                   other->pos.end   + coord::tile_delta{1, 1}, 
+	                   other->pos.draw};
+
+	// find a free position adjacent to the object
+	auto terrain = other->get_terrain();
+	for (coord::tile temp_pos : tile_list(outline)) {
+		TerrainChunk *chunk = terrain->get_chunk(temp_pos);
+
+		if (chunk == nullptr) {
+			continue;
+		}
+
+		auto placed = this->place(u, *terrain, temp_pos.to_phys2().to_phys3());
+		if (placed) {
+			return placed;
+		}
+	}
+	return nullptr;
+}
+
 ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	:
 	datamanager(dm),
@@ -196,7 +223,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) {
+std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) const {
 
 	// create new object with correct base shape
 	std::shared_ptr<TerrainObject> obj;
@@ -318,7 +345,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-std::shared_ptr<TerrainObject> MovableProducer::place(Unit *unit, Terrain &terrain, coord::phys3 init_pos) {
+std::shared_ptr<TerrainObject> MovableProducer::place(Unit *unit, Terrain &terrain, coord::phys3 init_pos) const {
 	return ObjectProducer::place(unit, terrain, init_pos);
 }
 
@@ -390,7 +417,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-std::shared_ptr<TerrainObject> LivingProducer::place(Unit *unit, Terrain &terrain, coord::phys3 init_pos) {
+std::shared_ptr<TerrainObject> LivingProducer::place(Unit *unit, Terrain &terrain, coord::phys3 init_pos) const {
 	return MovableProducer::place(unit, terrain, init_pos);
 }
 
@@ -492,7 +519,7 @@ void BuldingProducer::initialise(Unit *unit, Player &player) {
 	unit->give_ability(std::make_shared<UngarrisonAbility>());
 }
 
-std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) {
+std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) const {
 
 	// not a tc --- hacks / fix me
 	bool collisions = this->unit_data.id0 != 109;
@@ -562,7 +589,7 @@ UnitTexture *BuldingProducer::default_texture() {
 	return this->texture.get();
 }
 
-std::shared_ptr<TerrainObject> BuldingProducer::make_annex(Unit &u, Terrain &t, int annex_id, coord::phys3 annex_pos, bool c) {
+std::shared_ptr<TerrainObject> BuldingProducer::make_annex(Unit &u, Terrain &t, int annex_id, coord::phys3 annex_pos, bool c) const {
 
 	// find annex foundation size
 	auto b = datamanager.get_building_data(annex_id);
@@ -659,7 +686,7 @@ void ProjectileProducer::initialise(Unit *unit, Player &) {
 	}
 }
 
-std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) {
+std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) const {
 	/*
 	 * radial base shape without collision checking
 	 */

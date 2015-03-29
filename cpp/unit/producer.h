@@ -66,12 +66,17 @@ public:
 	 * when a unit is ungarrsioned from a building or object
 	 * TODO: make const
 	 */
-	virtual std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) = 0;
+	virtual std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const = 0;
 
 	/**
 	 * Get a default texture for HUD drawing
 	 */
 	virtual UnitTexture *default_texture() = 0;
+
+	/**
+	 * similiar to place but places adjacent to an existing object
+	 */
+	std::shared_ptr<TerrainObject> place_beside(Unit *, std::shared_ptr<TerrainObject>) const;
 
 	/**
 	 * all instances of units made from this producer
@@ -101,7 +106,7 @@ public:
 	int producer_id() const override;
 	std::string producer_name() const override;
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) override;
+	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const override;
 	UnitTexture *default_texture() override;
 
 protected:
@@ -134,7 +139,7 @@ public:
 	virtual ~MovableProducer();
 
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) override;
+	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const override;
 
 protected:
 	const gamedata::unit_movable unit_data;
@@ -157,7 +162,7 @@ public:
 	virtual ~LivingProducer();
 
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) override;
+	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const override;
 
 private:
 	const gamedata::unit_living unit_data;
@@ -177,7 +182,7 @@ public:
 	int producer_id() const override;
 	std::string producer_name() const override;
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) override;
+	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const override;
 	UnitTexture *default_texture() override;
 
 private:
@@ -198,7 +203,7 @@ private:
 	coord::tile_delta foundation_size;
 	int foundation_terrain;
 
-	std::shared_ptr<TerrainObject> make_annex(Unit &u, Terrain &t, int annex_id, coord::phys3 annex_pos, bool c);
+	std::shared_ptr<TerrainObject> make_annex(Unit &u, Terrain &t, int annex_id, coord::phys3 annex_pos, bool c) const;
 };
 
 /**
@@ -213,7 +218,7 @@ public:
 	int producer_id() const override;
 	std::string producer_name() const override;
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) override;
+	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const override;
 	UnitTexture *default_texture() override;
 
 private:

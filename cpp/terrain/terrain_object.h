@@ -134,11 +134,6 @@ public:
 	void set_ground(int id, int additional=0);
 
 	/**
-	 * finds a space next to this object for placing new objects
-	 */
-	coord::phys3 free_adjacent_place() const;
-
-	/**
 	 * add a child terrain object
 	 */
 	void annex(std::shared_ptr<TerrainObject> &other);
