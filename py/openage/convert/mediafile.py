@@ -3,7 +3,7 @@
 # media files conversion stuff
 
 from collections import defaultdict
-from openage.log import dbg, ifdbg, set_verbosity
+from openage.log import dbg, ifdbg
 from tempfile import gettempdir
 import os
 import os.path
@@ -62,7 +62,7 @@ class ExtractionRule:
 
 
 def media_convert(args):
-    """\
+    """
     perform asset conversion.
     requires original assets and stores them in usable and free formats.
     """
@@ -179,7 +179,7 @@ def media_convert(args):
                     gamedata = pickle.load(f)
                     dbg("could successfully load cached gamedata!", lvl=1)
 
-            except FileNotFoundError as err:
+            except FileNotFoundError:
                 parse_empiresdat = True
 
         if not args.use_dat_cache or parse_empiresdat:

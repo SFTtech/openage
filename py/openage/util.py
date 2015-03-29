@@ -2,11 +2,11 @@
 
 
 def mkdirs(path):
-    """\
-    just create these dirs recursively
     """
-
+    Create directories recursively. Like `mkdir -p`.
+    """
     import os
+
     os.makedirs(path, exist_ok=True)
 
 
@@ -60,7 +60,7 @@ def gen_dict_key2lists(keys):
 
 
 def ifilename(directory, name):
-    """\
+    """
     returns the case-sensitive filename in a directory
     for a given case-insensitive filename.
 
@@ -94,7 +94,7 @@ def ifilename(directory, name):
 
 
 def ifilepath(basepath, path, test=False):
-    """\
+    """
     returns the actual case-sensitive path for a given
     case-insensitive path.
 
