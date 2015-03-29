@@ -12,23 +12,24 @@
 namespace openage {
 namespace coord {
 
+
 phys3 camgame::to_phys3(phys_t up) {
-	Engine &e = Engine::get();
-	return this->as_relative().to_phys3(up - e.camgame_phys.up)
-		+ e.camgame_phys;
+	coord_data* engine_coord_data{ Engine::get_coord_data() };
+	return this->as_relative().to_phys3(up - engine_coord_data->camgame_phys.up)
+		+ engine_coord_data->camgame_phys;
 }
 
 phys3_delta camgame_delta::to_phys3(phys_t up) {
-	Engine &e = Engine::get();
+	coord_data* engine_coord_data{ Engine::get_coord_data() };
 
 	// apply scaling factor, to get 'scaled'
 	// scaling factor: w/2 for x, h/2 for y
 	// plus the phys_per_tu fixed-point scaling factor
 	vec2 scaled;
 	scaled.x = (settings::phys_per_tile * (phys_t) x) /
-		(phys_t) e.tile_halfsize.x;
+		(phys_t) engine_coord_data->tile_halfsize.x;
 	scaled.y = (settings::phys_per_tile * (phys_t) y) /
-		(phys_t) e.tile_halfsize.y;
+		(phys_t) engine_coord_data->tile_halfsize.y;
 
 	// apply transformation matrix to 'scaled',
 	// to get the relative phys3 position
@@ -53,8 +54,7 @@ phys3_delta camgame_delta::to_phys3(phys_t up) {
 }
 
 window camgame::to_window() {
-	Engine &e = Engine::get();
-	return e.camgame_window + this->as_relative().to_window();
+	return Engine::get_coord_data()->camgame_window + this->as_relative().to_window();
 }
 
 window_delta camgame_delta::to_window() {

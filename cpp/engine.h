@@ -32,6 +32,14 @@ class InputHandler;
 class ResizeHandler;
 class CoreInputHandler;
 
+struct coord_data {
+	coord::window window_size{800, 600};
+	coord::phys3 camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0};
+	coord::window camgame_window{400, 300};
+	coord::window camhud_window{0, 600};
+	coord::camgame_delta tile_halfsize{48, 24};  // TODO: get from convert script
+};
+
 class GameMain;
 
 /**
@@ -51,6 +59,11 @@ private:
 	static Engine *instance;
 
 public:
+	/**
+	 * Returns a pointer to the engines coordinate data.
+	 */
+	static coord_data* get_coord_data( void );
+
 	/**
 	 * singleton constructor, use this to create the engine instance.
 	 */
@@ -217,32 +230,9 @@ public:
 	bool drawing_huds;
 
 	/**
-	 * size of the game window, in coord_sdl.
+	 * Holds the data for the coord system.
 	 */
-	coord::window window_size;
-
-	/**
-	 * position of the game camera, in the phys3 system.
-	 * (the position that it is rendered at camgame {0, 0})
-	 */
-	coord::phys3 camgame_phys;
-
-	/**
-	 * position of the game camera, in the window system.
-	 * (the position where the camgame {0, 0} is rendered)
-	 */
-	coord::window camgame_window;
-
-	/**
-	 * position of the hud camera, in the window system.
-	 * (the position where camhud {0, 0} is rendered)
-	 */
-	coord::window camhud_window;
-
-	/**
-	 * half the size of one terrain diamond tile, in camgame.
-	 */
-	coord::camgame_delta tile_halfsize;
+	coord_data* engine_coord_data;
 
 private:
 	/**

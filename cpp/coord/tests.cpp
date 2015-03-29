@@ -311,6 +311,8 @@ int phys3_0() {
 	int stage = 0;
 	// Test the up component getting cut off
 
+	coord_data* engine_coord_data{ Engine::get_coord_data() };
+
 	phys2 expectedP2{10, 10};
 	phys3 p3{10, 10, 10};
 
@@ -319,11 +321,9 @@ int phys3_0() {
 	
 	stage += 1; // 1
 	// Test to camgame
-
-	Engine &e = Engine::get();
 	
 	// Get the current camgame_phys position
-	phys3 gameP3 = e.camgame_phys;
+	phys3 gameP3 = engine_coord_data->camgame_phys;
 
 	// Since we know we start centered out camgame should be
 	// at 0, 0
@@ -333,15 +333,18 @@ int phys3_0() {
 	if( not(resultsC == expectedC)) { return stage; } 
 	
 	stage += 1; // 2
-	// Test that camgame movement changes the distance to 
-	// the given phys3
+	// Test the change in camgame_phys causes a camgame change
 	
-	expectedC = {-100, 99};
-	e.move_phys_camera(100, 100, 1);
+	// the base camgame_phy pos is {655360, 655360, 0}
+	// by adding one tile(65536 to each component of camgame_phys
+	// we should see -96 in x from moving one ne and one se
+	// then -24 from moving one up
+	expectedC = {-96, -24};
+	engine_coord_data->camgame_phys = {720896, 720896, 65536};
 	
 	resultsC = gameP3.to_camgame();
 	if( not(resultsC == expectedC)) { return stage; } 
-	
+
 	stage += 1; // 3
 	// Testing phys3 to tile3 just under a whole tile size
 
@@ -519,9 +522,11 @@ int camgame_0() {
 	auto termcolors = util::read_csv_file<gamedata::palette_color>(assetDir.join("termcolors.docx"));
 	console::Console con(termcolors);
 
+	coord_data* engine_coord_data{ Engine::get_coord_data() };
 
-	Engine &e = Engine::get();
-	phys3 expectedP3 = e.camgame_phys;
+	// Reset camgame_phys to its normal starting value
+	engine_coord_data->camgame_phys = {655360, 655360, 0};
+	phys3 expectedP3 = engine_coord_data->camgame_phys;
 	camgame c{0, 0};
 
 	phys3 resultsP3 = c.to_phys3();
@@ -530,11 +535,11 @@ int camgame_0() {
 	stage += 1; // 1
 	// Test camgame to phys3 with default arg and x=1 for camagame
 
-	// This is the base camgame_phys position {587094, 860159, 0}
+	// This is the base camgame_phys position {655360, 655360, 0}
 	// plus ((1 pixel / 48(px per tile)) * 65536 phys per tile ) / 2
 	// for both the ne and se components since we only added x.
 	// Also this get rounded down so we end up adding 682 to ne and se
-	expectedP3 = {587776, 860841, 0};
+	expectedP3 = {656042, 656042, 0};
 	c = {1, 0};
 
 	resultsP3 = c.to_phys3();
@@ -543,11 +548,11 @@ int camgame_0() {
 	stage += 1; // 2
 	// Test camgame to phys3 with default arg and y=1 for camagame
 
-	// This is the base camgame_phys position {587094, 860159, 0}
+	// This is the base camgame_phys position {655360, 655360, 0}
 	// plus ((1 pixel / 24(px per tile)) * 65536 phys per tile ) / 2
-	// this add to ne and subracted frim se
+	// this add to ne and subracted from se
 	// Also this get rounded down so we end up adding 1365 to ne and se
-	expectedP3 = {588459, 858794, 0};
+	expectedP3 = {656725, 653995, 0};
 	c = {0, 1};
 	
 	resultsP3 = c.to_phys3();
@@ -559,7 +564,7 @@ int camgame_0() {
 	// Here we start with the same ne and se ad before but we add/subract
 	// the passed arg divided by 2. The passed arg is also applied directly
 	// to the up component
-	expectedP3 = {588460, 858793, 2};
+	expectedP3 = {656726, 653994, 2};
 
 	resultsP3 = c.to_phys3(2);
 	if( not(resultsP3 == expectedP3)) { return stage; }
@@ -781,10 +786,6 @@ int term_0() {
 void coord() {
 	int ret;
 	const char *testname;
-
-	// Some tests below need the engine to be initialized
-	util::Dir dataDir{"assets"};
-	Engine::create( &dataDir ,"testing openage");
 	
 	if ((ret = phys2_0()) != -1) {
 		testname = "phys2 test";
@@ -856,15 +857,9 @@ void coord() {
 		goto out;
 	}
 
-
-	// Cleanup engine
-	Engine::destroy();
 	return;
 
 out:
-	// Cleanup engine
-	Engine::destroy();
-
 	log::log(MSG(err) << testname << " failed at stage " << ret);
 	throw "failed coord tests";
 }

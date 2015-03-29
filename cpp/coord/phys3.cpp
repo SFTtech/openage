@@ -23,16 +23,15 @@ phys2_delta phys3_delta::to_phys2() const {
 }
 
 camgame phys3::to_camgame() const {
-	Engine &e = Engine::get();
 
 	//determine the phys3 position relative to the camera position
-	phys3_delta relative_phys = *this - e.camgame_phys;
+	phys3_delta relative_phys = *this - Engine::get_coord_data()->camgame_phys;
 
 	return relative_phys.to_camgame().as_absolute();
 }
 
 camgame_delta phys3_delta::to_camgame() const {
-	Engine &e = Engine::get();
+	coord_data* engine_coord_data{ Engine::get_coord_data() };
 
 	//apply transformation matrix to relative_phys, to get 'scaled':
 	//                  (ne)
@@ -46,8 +45,8 @@ camgame_delta phys3_delta::to_camgame() const {
 	//scaling factor: w/2 for x, h/2 for y
 	//and the (1 << 16) fixed-point scaling factor for both.
 	camgame_delta result;
-	result.x = (pixel_t) util::div(scaled.x * e.tile_halfsize.x, settings::phys_per_tile);
-	result.y = (pixel_t) util::div(scaled.y * e.tile_halfsize.y, settings::phys_per_tile);
+	result.x = (pixel_t) util::div(scaled.x * engine_coord_data->tile_halfsize.x, settings::phys_per_tile);
+	result.y = (pixel_t) util::div(scaled.y * engine_coord_data->tile_halfsize.y, settings::phys_per_tile);
 
 	return result;
 }
