@@ -1,12 +1,11 @@
 # Copyright 2014-2015 the openage authors. See copying.md for legal info.
+import os
 
 
 def mkdirs(path):
     """
     Create directories recursively. Like `mkdir -p`.
     """
-    import os
-
     os.makedirs(path, exist_ok=True)
 
 
@@ -69,8 +68,6 @@ def ifilename(directory, name):
     a file of any case.
     """
 
-    import os
-
     # get actual file names
     files = os.listdir(directory)
 
@@ -100,8 +97,6 @@ def ifilepath(basepath, path, test=False):
 
     basepath must exist case-sensitively of course.
     """
-
-    import os.path
 
     # normalize path so no ../ are left
     path = os.path.normpath(path)
