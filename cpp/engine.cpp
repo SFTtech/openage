@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "crossplatform/opengl.h"
+#include <epoxy/gl.h>
 #include <FTGL/ftgl.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -121,12 +121,8 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 		throw util::Error(MSG(err) << "Failed creating OpenGL context: " << SDL_GetError());
 	}
 
-	// initialize glew, for shaders n stuff
-	GLenum glew_state = glewInit();
-	if (glew_state != GLEW_OK) {
-		throw util::Error(MSG(err) << "GLEW initialization failed");
-	}
-	if (!GLEW_VERSION_2_1) {
+	// check the OpenGL version, for shaders n stuff
+	if (!epoxy_is_desktop_gl() || epoxy_gl_version() < 21) {
 		throw util::Error(MSG(err) << "OpenGL 2.1 not available");
 	}
 

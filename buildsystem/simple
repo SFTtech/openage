@@ -29,4 +29,4 @@ echo "version = '`cat openage_version`'" >> py/openage/config.py
 PYTHONPATH="$PYTHONPATH:py" python3 -m openage.codegen --target-cache=/tmp/codegentargets --depend-cache=/tmp/codegendepends --cpp-src-dir=cpp --write-to-sourcedir
 
 # build binary (bin/openage)
-g++ -O3 -Wall -Wextra -pedantic -std=c++11 -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/opus -I/usr/include/python${PYVER} -I/usr/include/SDL2 -lfontconfig -lfreetype -lftgl -lGLEW -lm -lGLU -lGL -lSM -lICE -lX11 -lXext -lopusfile -lpython${PYVER} -lSDL2_image -lSDL2 -lpthread -lSDL2 -lpthread -lutil -o openage cpp/**/*.cpp
+g++ -O3 -Wall -Wextra -pedantic -std=c++11 -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/opus -I/usr/include/python${PYVER} -I/usr/include/SDL2 -lfontconfig -lfreetype -lftgl -lepoxy -lm -lGLU -lGL -lSM -lICE -lX11 -lXext -lopusfile -lpython${PYVER} -lSDL2_image -lSDL2 -lpthread -lSDL2 -lpthread -lutil -o openage cpp/**/*.cpp

@@ -2,6 +2,7 @@
 
 #include "game_main.h"
 
+#include <epoxy/gl.h>
 #include <SDL2/SDL.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -12,7 +13,6 @@
 #include "callbacks.h"
 #include "console/console.h"
 #include "coord/vec2f.h"
-#include "crossplatform/opengl.h"
 #include "engine.h"
 #include "gamedata/string_resource.gen.h"
 #include "game_save.h"

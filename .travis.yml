@@ -15,6 +15,7 @@ before_install:
   - sudo add-apt-repository --yes ppa:kubuntu-ppa/backports       # cmake >=2.8.10
   - sudo add-apt-repository --yes ppa:fkrull/deadsnakes           # python3.x
   - sudo apt-add-repository --yes ppa:sfttech/opusfile            # opusfile
+  - sudo apt-add-repository --yes ppa:sfttech/random              # libepoxy
   - sudo apt-get update -qq
 
 install:
@@ -24,7 +25,7 @@ install:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-${CVERSION}" CC="gcc-${CVERSION}"; fi
   - export CC=`which $CC`
   - export CXX=`which $CXX`
-  - sudo apt-get install -qq python${PYVERSION} python${PYVERSION}-dev libglew-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev libopusfile-dev cmake
+  - sudo apt-get install -qq python${PYVERSION} python${PYVERSION}-dev libepoxy-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev libopusfile-dev cmake
   - wget -O /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py
   - sudo python${PYVERSION} /tmp/get-pip.py
   - sudo python${PYVERSION} -m pip install pep8
