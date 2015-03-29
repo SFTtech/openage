@@ -146,6 +146,8 @@ Contact
 Most of us hang around on our **IRC** channel (`#sfttech` on `freenode.net`).
 Do not hesitate to ping us, we probably won't notice you otherwise.
 
+There's no openage mailing list, but the github issue tracker comes pretty close to it: Everybody who 'watches' the repository will receive all the issue tracker posts via mail, and can even conveniently reply via their mail client. In addition, all the issue tracker discussions are auto-posted to the IRC channel. Feel free to use the issue tracker for any sorts of discussion, proposal or questions that the IRC is unsuitable for.
+
 License
 -------
 **GNU GPLv3** or later; see [copying.md](copying.md) and [legal/GPLv3](legal/GPLv3).
