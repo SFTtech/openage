@@ -142,9 +142,12 @@ checklegalfull:
 check:
 	@$(RUN_PYMODULE) openage.codecompliance --quick
 
-.PHONY: checkallfull
+.PHONY: checkfull
 checkfull:
 	@$(RUN_PYMODULE) openage.codecompliance --all
+
+.PHONY: runci
+runci: checkfull openage runtest
 
 .PHONY: help
 help: $(BUILDDIR)/Makefile
@@ -172,6 +175,7 @@ help: $(BUILDDIR)/Makefile
 	@echo "run                -> run openage"
 	@echo "runval             -> run openage in valgrind, analyzing for memleaks"
 	@echo "rungdb             -> run openage in gdb"
+	@echo "runci              -> run the continuous integration script (checkfull, tests)"
 	@echo "runtest            -> run the tests (py modules + openage)"
 	@echo ""
 	@echo "checkheaderguards  -> check header guards"
