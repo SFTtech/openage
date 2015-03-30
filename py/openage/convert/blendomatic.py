@@ -4,7 +4,7 @@ import math
 import os.path
 from struct import Struct, unpack_from
 
-from ..util import NamedObject, mkdirs
+from ..util import mkdirs
 from .dataformat.exportable import Exportable
 from .dataformat.data_definition import DataDefinition
 from .dataformat.struct_definition import StructDefinition

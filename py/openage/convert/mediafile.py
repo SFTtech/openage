@@ -3,7 +3,7 @@
 # media files conversion stuff
 
 from collections import defaultdict
-from openage.log import dbg, ifdbg, set_verbosity
+from openage.log import dbg, ifdbg
 from tempfile import gettempdir
 import os
 import os.path
@@ -62,9 +62,14 @@ class ExtractionRule:
 
 
 def media_convert(args):
-    """\
-    perform asset conversion.
-    requires original assets and stores them in usable and free formats.
+    """
+    Perform asset conversion.
+
+    Requires original assets and stores them in usable and free formats.
+
+    The data is extracted from AoE's DRS files. See `doc/media/drs-files.md`
+    for more information.
+
     """
 
     # assume to extract all files when nothing specified.
@@ -104,8 +109,8 @@ def media_convert(args):
     # this is the ingame color palette file id,
     # 256 color lookup for all graphics pixels
     palette_id = 50500
-    palette = ColorTable(drsfiles["interface"].get_file_data('bin',
-                                                             palette_id))
+    palette_data = drsfiles["interface"].get_file_data('bin', palette_id)
+    palette = ColorTable(palette_data)
 
     # metadata dumping output format, more to come?
     output_formats = ("csv",)
@@ -179,7 +184,7 @@ def media_convert(args):
                     gamedata = pickle.load(f)
                     dbg("could successfully load cached gamedata!", lvl=1)
 
-            except FileNotFoundError as err:
+            except FileNotFoundError:
                 parse_empiresdat = True
 
         if not args.use_dat_cache or parse_empiresdat:

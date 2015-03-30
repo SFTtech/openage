@@ -1,12 +1,11 @@
 # Copyright 2014-2015 the openage authors. See copying.md for legal info.
+import os
 
 
 def mkdirs(path):
-    """\
-    just create these dirs recursively
     """
-
-    import os
+    Create directories recursively. Like `mkdir -p`.
+    """
     os.makedirs(path, exist_ok=True)
 
 
@@ -60,7 +59,7 @@ def gen_dict_key2lists(keys):
 
 
 def ifilename(directory, name):
-    """\
+    """
     returns the case-sensitive filename in a directory
     for a given case-insensitive filename.
 
@@ -68,8 +67,6 @@ def ifilename(directory, name):
     filenames, this function will find the correct case for
     a file of any case.
     """
-
-    import os
 
     # get actual file names
     files = os.listdir(directory)
@@ -94,14 +91,12 @@ def ifilename(directory, name):
 
 
 def ifilepath(basepath, path, test=False):
-    """\
+    """
     returns the actual case-sensitive path for a given
     case-insensitive path.
 
     basepath must exist case-sensitively of course.
     """
-
-    import os.path
 
     # normalize path so no ../ are left
     path = os.path.normpath(path)
