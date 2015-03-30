@@ -83,6 +83,11 @@ public:
 	bool has_action();
 
 	/**
+	 * true when the unit is alive and able to add new actions
+	 */
+	bool accept_commands();
+
+	/**
 	 * returns the current action on top of the stack
 	 */
 	UnitAction *top();
@@ -159,6 +164,9 @@ public:
 
 	/**
 	 * begins unit removal by popping some actions
+	 *
+	 * this is the action that occurs when pressing the delete key
+	 * which plays death sequence and does not remove instantly
 	 */
 	void delete_unit();
 
@@ -217,6 +225,15 @@ private:
 	 */
 	UnitContainer &container;
 
+	/**
+	 * update all secondary actions
+	 */
+	void update_secondary(int64_t time_elapsed);
+
+	/**
+	 * erase from action specified by func to the end of the stack
+	 * all actions erased will have the on_complete function called
+	 */
 	void erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func);
 
 };
