@@ -49,6 +49,7 @@ part of a nyanspec describes a simple unit-type in **openage**.
     
 For sake of completeness, here is a *very* basic (and not realistic) usage example
 of this type in nyan data file :
+
     +UNITTYPE VILLAGER {
 	    health_points = 10,
 	    speed = 1,
@@ -168,7 +169,7 @@ the following way:
 		armor_melee = 0
     }
     
-   +TECH BLOODLINES {
+	+TECH BLOODLINES {
 	   description = "through centuries of in-breeding horses and knights, you manage to somehow increase their hp."
 	   cost_food = 300
 	   cost_gold = 200
@@ -255,15 +256,17 @@ TODO: Do we really need this? Why?
 nyan deltas enable the user to modify the game base properties and to patch existing objects.
 The syntax used to defined deltas is very simple. A delta is an overlay over a pre-existring objects.
 Suppose that a VILLAGER object is defined (with variaous attributes and values). To define a delta that updates the villager properties, we need to refer to the previously defined VILLAGER object with the following syntax using the @ character :
-@UNIT VILLAGER {
-	health_points *= 1.1
-}
+
+	@UNIT VILLAGER {
+		health_points *= 1.1
+	}
 
 The previous definition defines a delta over the VILLAGER object that increase the villager health_points by 10%. This delta would be applied at the game initialization.
 
 ### nyan - Runtime-delta definition
 A runtime-delta is simply a delta that is defined inside the scope of another object (typically a technology object). The game runtime can then decides when to apply the delta associated with a particular object.
 The following example defines the LOOM technology that upgrades the VILLAGER objects health_points attribute :
+	
 	+TECH LOOM {
 		description = "Loom"
 		^UNITTYPE VILLAGER {
@@ -273,6 +276,7 @@ The following example defines the LOOM technology that upgrades the VILLAGER obj
 
 A runtime delta can also be part of a nyan delta. For example, The previously defined LOOM technology can be
 patched the following way :
+	
 	@TECH LOOM {
 		^UNITTYPE VILLAGER {
 			health_points += 50    # The loom technologie now gives 100 more health points to the villager
@@ -299,6 +303,7 @@ nyan objects can inherit attribute values *from objects of the same type*. When 
 	}
 
 When a subobject inherits from an object, the subobject is still concerned by deltas and runtime deltas primary applied to the original object. Continuing the previous example :
+	
 	# nyan base properties
 	+TECH BLOODLINES {
 		description = "through centuries of in-breeding horses and knights, you manage to somehow increase their hp."
