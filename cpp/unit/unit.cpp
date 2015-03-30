@@ -77,18 +77,18 @@ bool Unit::update() {
 		auto time_elapsed = engine.lastframe_duration_nsec() / 1e6;
 		this->top()->update(time_elapsed);
 
-		// check completion of all actions,
-		// pop completed actions and anything above
-		this->erase_after(
-			[](std::unique_ptr<UnitAction> &e) {
-				return e->completed();
-			});
-
 		// the top primary action specifies whether
 		// secondary actions are updated
 		if (this->top()->allow_control()) {
 			this->update_secondary(time_elapsed);
 		}
+
+		// check completion of all primary actions,
+		// pop completed actions and anything above
+		this->erase_after(
+			[](std::unique_ptr<UnitAction> &e) {
+				return e->completed();
+			});
 	}
 	return true;
 }

@@ -496,11 +496,14 @@ void BuildAction::update(unsigned int time) {
 			this->move_to(*b);
 			return;
 		}
-		else {
+		else if (b->has_attribute(attr_type::building)) {
 			// increment building completion
 			auto &build = b->get_attribute<attr_type::building>();
 			build.completed += 0.001;
 			this->complete = build.completed;
+		}
+		else {
+			this->complete = 1.0;
 		}
 	}
 	else {
