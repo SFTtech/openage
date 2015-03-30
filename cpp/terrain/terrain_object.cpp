@@ -38,7 +38,7 @@ TerrainObject::~TerrainObject() {
 
 void TerrainObject::initialise() {
 
-	// remove any exisitng location	
+	// remove any existing location	
 	if (unit.location) {
 		unit.location->remove();
 	}

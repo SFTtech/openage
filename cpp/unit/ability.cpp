@@ -23,7 +23,7 @@ bool has_resource(Unit &target) {
 
 bool is_ally(Unit &to_modify, Unit &target) {
 	if (to_modify.has_attribute(attr_type::owner) &&
-		target.has_attribute(attr_type::owner)) {
+	    target.has_attribute(attr_type::owner)) {
 		auto &mod_player = to_modify.get_attribute<attr_type::owner>().player;
 		auto &tar_player = target.get_attribute<attr_type::owner>().player;
 		return mod_player.is_ally(tar_player);

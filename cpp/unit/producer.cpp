@@ -40,7 +40,7 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 }
 
 std::shared_ptr<TerrainObject> UnitProducer::place_beside(Unit *u, std::shared_ptr<TerrainObject> other) const {
-	if (!other) {
+	if (!u || !other) {
 		return nullptr;
 	}
 
@@ -537,7 +537,9 @@ std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, Terrain &terrain,
 		// look at all tiles in the bases range
 		for (coord::tile check_pos : tile_list(obj->get_range(pos))) {
 			TileContent *tc = terrain.get_data(check_pos);
-			if (!tc) return false;
+			if (!tc) {
+				return false;
+			}
 			for (auto item : tc->obj) {
 				auto tobj = item.lock();
 				if (tobj->check_collisions) return false;
@@ -721,7 +723,7 @@ std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, Terrain &terra
 			for (auto item : tc->obj) {
 				auto obj_cmp = item.lock();
 				if (obj != obj_cmp && 
-					&obj_cmp->unit != launcher &&
+				    &obj_cmp->unit != launcher &&
 				    obj_cmp->check_collisions &&
 				    obj->intersects(*obj_cmp, pos)) {
 					return false;

@@ -30,7 +30,7 @@ template<>
 struct hash<openage::command_flag> {
 	typedef underlying_type<openage::command_flag>::type underlying_type;
 	typedef hash<underlying_type>::result_type result_type;
-	result_type operator()(const openage::command_flag& arg) const {
+	result_type operator()(const openage::command_flag &arg) const {
 		hash<underlying_type> hasher;
 		return hasher(static_cast<underlying_type>(arg));
 	}
