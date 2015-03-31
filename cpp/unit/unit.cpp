@@ -19,16 +19,16 @@ Unit::Unit(UnitContainer &c, id_t id)
 	id{id},
 	producer{nullptr},
 	selected{false},
-	location{nullptr},
 	pop_destructables{false},
 	container(c) {
 
 }
 
 Unit::~Unit() {
-	// make sure terrain references are removed
+
+	// remove any used location from the map
 	if (this->location) {
-		delete this->location;
+		this->location->remove();
 	}
 }
 
@@ -40,6 +40,10 @@ void Unit::reset() {
 
 bool Unit::has_action() {
 	return !this->action_stack.empty();
+}
+
+bool Unit::accept_commands() {
+	return (this->has_action() && this->top()->allow_control());
 }
 
 UnitAction *Unit::top() {
@@ -58,7 +62,7 @@ bool Unit::update() {
 	if (this->pop_destructables) {
 		this->erase_after(
 			[](std::unique_ptr<UnitAction> &e) {
-				return e->allow_destruction();
+				return e->allow_control();
 			});
 	}
 
@@ -70,18 +74,35 @@ bool Unit::update() {
 
 		// TODO: change the entire unit action timing to a higher resolution like
 		// nsecs or usecs.
-		this->action_stack.back()->update(engine.lastframe_duration_nsec() / 1e6);
+		auto time_elapsed = engine.lastframe_duration_nsec() / 1e6;
+		this->top()->update(time_elapsed);
 
-		/*
-		 * check completion of all actions,
-		 * pop completed actions and anything above
-		 */
+		// the top primary action specifies whether
+		// secondary actions are updated
+		if (this->top()->allow_control()) {
+			this->update_secondary(time_elapsed);
+		}
+
+		// check completion of all primary actions,
+		// pop completed actions and anything above
 		this->erase_after(
 			[](std::unique_ptr<UnitAction> &e) {
 				return e->completed();
 			});
 	}
 	return true;
+}
+
+void Unit::update_secondary(int64_t time_elapsed) {
+	// update secondary actions and remove when completed
+	auto position_it = std::remove_if(
+		std::begin(this->action_secondary),
+		std::end(this->action_secondary),
+		[time_elapsed](std::unique_ptr<UnitAction> &action) {
+			action->update(time_elapsed);
+			return action->completed();
+		});
+	this->action_secondary.erase(position_it, std::end(this->action_secondary));
 }
 
 void Unit::draw() {
@@ -148,20 +169,21 @@ UnitAbility *Unit::get_ability(ability_type type) {
 }
 
 void Unit::push_action(std::unique_ptr<UnitAction> action, bool force) {
-	// unit being deleted -- can no longer control
-	if (not force && 
-	    (this->has_action() && 
-	    not this->action_stack.back()->allow_destruction())) {
-		return;
+	// unit not being deleted -- can control unit
+	if (force || this->accept_commands()) {
+	    this->action_stack.push_back(std::move(action));
 	}
-	this->action_stack.push_back(std::move(action));
+}
+
+void Unit::secondary_action(std::unique_ptr<UnitAction> action) {
+	this->action_secondary.push_back(std::move(action));
 }
 
 void Unit::add_attribute(AttributeContainer *attr) {
 	this->attribute_map.insert(attr_map_t::value_type(attr->type, attr));
 }
 
-bool Unit::has_attribute(attr_type type) {
+bool Unit::has_attribute(attr_type type) const {
 	return (this->attribute_map.count(type) > 0);
 }
 

@@ -22,9 +22,7 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 	if (restriction == gamedata::ground_type::WATER ||
 	    restriction == gamedata::ground_type::WATER_0x0D ||
 	    restriction == gamedata::ground_type::WATER_SHIP_0x03 ||
-	    restriction == gamedata::ground_type::WATER_SHIP_0x0F ||
-	    restriction == gamedata::ground_type::WATER_ANY_0x11 ||
-	    restriction == gamedata::ground_type::WATER_ANY_0x14) {
+	    restriction == gamedata::ground_type::WATER_SHIP_0x0F) {
 		result.insert(1);
 		result.insert(2);
 		result.insert(14);
@@ -39,6 +37,33 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 	}
 
 	return result;
+}
+
+std::shared_ptr<TerrainObject> UnitProducer::place_beside(Unit *u, std::shared_ptr<TerrainObject> other) const {
+	if (!u || !other) {
+		return nullptr;
+	}
+
+	// find the range of possible tiles
+	tile_range outline{other->pos.start - coord::tile_delta{1, 1}, 
+	                   other->pos.end   + coord::tile_delta{1, 1}, 
+	                   other->pos.draw};
+
+	// find a free position adjacent to the object
+	auto terrain = other->get_terrain();
+	for (coord::tile temp_pos : tile_list(outline)) {
+		TerrainChunk *chunk = terrain->get_chunk(temp_pos);
+
+		if (chunk == nullptr) {
+			continue;
+		}
+
+		auto placed = this->place(u, *terrain, temp_pos.to_phys2().to_phys3());
+		if (placed) {
+			return placed;
+		}
+	}
+	return nullptr;
 }
 
 ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
@@ -198,15 +223,15 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-TerrainObject *ObjectProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) {
+std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) const {
 
 	// create new object with correct base shape
-	TerrainObject *obj = nullptr;
+	std::shared_ptr<TerrainObject> obj;
 	if (this->unit_data.selection_shape > 1) {
-		obj = new RadialObject(*u, this->unit_data.radius_size0, this->terrain_outline, !this->decay);
+		obj = std::make_shared<RadialObject>(*u, this->unit_data.radius_size0, this->terrain_outline, !this->decay);
 	}
 	else {
-		obj = new SquareObject(*u, this->foundation_size, this->terrain_outline, !this->decay);
+		obj = std::make_shared<SquareObject>(*u, this->foundation_size, this->terrain_outline, !this->decay);
 	}
 
 	// find set of allowed terrains
@@ -229,10 +254,11 @@ TerrainObject *ObjectProducer::place(Unit *u, Terrain &terrain, coord::phys3 ini
 			}
 
 			// ensure no intersections with other objects
-			for (auto obj_cmp : tc->obj) {
+			for (auto item : tc->obj) {
+				auto obj_cmp = item.lock();
 				if (obj != obj_cmp && 
 				    obj_cmp->check_collisions &&
-				    obj->intersects(obj_cmp, pos)) {
+				    obj->intersects(*obj_cmp, pos)) {
 					return false;
 				}
 			}
@@ -250,6 +276,7 @@ TerrainObject *ObjectProducer::place(Unit *u, Terrain &terrain, coord::phys3 ini
 	// try to place the obj, it knows best whether it will fit.
 	bool obj_placed = obj->place(&terrain, init_pos);
 	if (obj_placed) {
+		obj->initialise();
 		if (this->on_create) {
 			this->on_create->play();
 		}
@@ -258,7 +285,6 @@ TerrainObject *ObjectProducer::place(Unit *u, Terrain &terrain, coord::phys3 ini
 
 	// placing at the given position failed
 	u->log(MSG(dbg) << "failed to place object");
-	delete obj;
 	return nullptr;
 }
 
@@ -319,7 +345,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-TerrainObject *MovableProducer::place(Unit *unit, Terrain &terrain, coord::phys3 init_pos) {
+std::shared_ptr<TerrainObject> MovableProducer::place(Unit *unit, Terrain &terrain, coord::phys3 init_pos) const {
 	return ObjectProducer::place(unit, terrain, init_pos);
 }
 
@@ -391,7 +417,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-TerrainObject *LivingProducer::place(Unit *unit, Terrain &terrain, coord::phys3 init_pos) {
+std::shared_ptr<TerrainObject> LivingProducer::place(Unit *unit, Terrain &terrain, coord::phys3 init_pos) const {
 	return MovableProducer::place(unit, terrain, init_pos);
 }
 
@@ -451,6 +477,11 @@ std::string BuldingProducer::producer_name() const {
 
 void BuldingProducer::initialise(Unit *unit, Player &player) {
 
+	// log type
+	unit->log(MSG(dbg) << "setting unit type " <<
+		this->unit_data.id0 << " " <<
+		this->unit_data.name);
+
 	// initialize graphic set
 	unit->producer = this;
 	unit->unit_class = this->unit_data.unit_class;
@@ -488,13 +519,13 @@ void BuldingProducer::initialise(Unit *unit, Player &player) {
 	unit->give_ability(std::make_shared<UngarrisonAbility>());
 }
 
-TerrainObject *BuldingProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) {
+std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) const {
 
 	// not a tc --- hacks / fix me
 	bool collisions = this->unit_data.id0 != 109;
 
 	// buildings have a square base
-	TerrainObject *obj = new SquareObject(*u, this->foundation_size, this->terrain_outline, collisions);
+	auto obj = std::make_shared<SquareObject>(*u, this->foundation_size, this->terrain_outline, collisions);
 
 	/*
 	 * decide what terrain is passable using this lambda
@@ -506,8 +537,11 @@ TerrainObject *BuldingProducer::place(Unit *u, Terrain &terrain, coord::phys3 in
 		// look at all tiles in the bases range
 		for (coord::tile check_pos : tile_list(obj->get_range(pos))) {
 			TileContent *tc = terrain.get_data(check_pos);
-			if (!tc) return false;
-			for (auto tobj : tc->obj) {
+			if (!tc) {
+				return false;
+			}
+			for (auto item : tc->obj) {
+				auto tobj = item.lock();
 				if (tobj->check_collisions) return false;
 			}
 		}
@@ -525,9 +559,9 @@ TerrainObject *BuldingProducer::place(Unit *u, Terrain &terrain, coord::phys3 in
 	// try to place the obj, it knows best whether it will fit.
 	bool obj_placed = obj->place(&terrain, init_pos);
 	if (!obj_placed) {
-		delete obj;
 		return nullptr;
 	}
+	obj->initialise();
 
 	// annex objects
 	for (unsigned i = 0; i < 4; ++i) {
@@ -538,7 +572,7 @@ TerrainObject *BuldingProducer::place(Unit *u, Terrain &terrain, coord::phys3 in
 			coord::phys3 a_pos = obj->pos.draw;
 			a_pos.ne += annex.misplaced0 * coord::settings::phys_per_tile;
 			a_pos.se += annex.misplaced1 * coord::settings::phys_per_tile;
-			TerrainObject *annex_obj = this->make_annex(*u, terrain, annex.unit_id, a_pos, i == 0);
+			auto annex_obj = this->make_annex(*u, terrain, annex.unit_id, a_pos, i == 0);
 			obj->annex(annex_obj);
 		}
 	}
@@ -557,7 +591,7 @@ UnitTexture *BuldingProducer::default_texture() {
 	return this->texture.get();
 }
 
-TerrainObject *BuldingProducer::make_annex(Unit &u, Terrain &t, int annex_id, coord::phys3 annex_pos, bool c) {
+std::shared_ptr<TerrainObject> BuldingProducer::make_annex(Unit &u, Terrain &t, int annex_id, coord::phys3 annex_pos, bool c) const {
 
 	// find annex foundation size
 	auto b = datamanager.get_building_data(annex_id);
@@ -577,7 +611,7 @@ TerrainObject *BuldingProducer::make_annex(Unit &u, Terrain &t, int annex_id, co
 	Unit *annex_unit = u.get_container()->new_unit().get();
 	annex_unit->producer = p;
 	annex_unit->graphics = &p->graphics;
-	TerrainObject *annex_obj = new SquareObject(*annex_unit, annex_foundation, c);
+	auto annex_obj = std::make_shared<SquareObject>(*annex_unit, annex_foundation, c);
 	annex_obj->place(&t, start_tile);
 
 	if (c) {
@@ -654,11 +688,11 @@ void ProjectileProducer::initialise(Unit *unit, Player &) {
 	}
 }
 
-TerrainObject *ProjectileProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) {
+std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) const {
 	/*
 	 * radial base shape without collision checking
 	 */
-	TerrainObject *obj = new RadialObject(*u, this->unit_data.radius_size1, this->terrain_outline, false);
+	auto obj = std::make_shared<RadialObject>(*u, this->unit_data.radius_size1, this->terrain_outline, false);
 
 	obj->passable = [obj, u, &terrain](const coord::phys3 &pos) -> bool {
 		if (pos.up > 64000) {
@@ -686,11 +720,12 @@ TerrainObject *ProjectileProducer::place(Unit *u, Terrain &terrain, coord::phys3
 			if (!tc) return false;
 
 			// ensure no intersections with other objects
-			for (auto obj_cmp : tc->obj) {
+			for (auto item : tc->obj) {
+				auto obj_cmp = item.lock();
 				if (obj != obj_cmp && 
-					&obj_cmp->unit != launcher &&
+				    &obj_cmp->unit != launcher &&
 				    obj_cmp->check_collisions &&
-				    obj->intersects(obj_cmp, pos)) {
+				    obj->intersects(*obj_cmp, pos)) {
 					return false;
 				}
 			}
@@ -706,9 +741,9 @@ TerrainObject *ProjectileProducer::place(Unit *u, Terrain &terrain, coord::phys3
 	// try to place the obj, it knows best whether it will fit.
 	bool obj_placed = obj->place(&terrain, init_pos);
 	if (obj_placed) {
+		obj->initialise();
 		return obj;
 	}
-	delete obj;
 	return nullptr;
 }
 

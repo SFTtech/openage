@@ -68,7 +68,7 @@ openage::TerrainObject *find_nearest(openage::TerrainObject *to_move,
 	// check any objects containing the serach point
 	openage::Terrain *terrain = to_move->get_terrain();
 	auto valid_end_pos = [=](const coord::phys3 &p) -> bool {
-		openage::TerrainObject *obj = terrain->obj_at_point(p);
+		auto obj = terrain->obj_at_point(p).get();
 		if (obj) {
 			return valid_end(obj);
 		}
@@ -87,7 +87,7 @@ openage::TerrainObject *find_nearest(openage::TerrainObject *to_move,
 
 	// use endpoint to identify an object
 	coord::phys3 end = p.waypoints.front().position;
-	return terrain->obj_at_point(end);
+	return terrain->obj_at_point(end).get();
 }
 
 Path a_star(coord::phys3 start,

@@ -63,10 +63,10 @@ public:
 	 */
 	virtual bool completed() const = 0;
 
-
-
 	/**
-	 *	checks if the action can be interrupted, allowing to be popped if the user specifies a new action
+	 * checks if the action can be interrupted, allowing it to be popped if the user 
+	 * specifies a new action, if false the action must reach a completed state 
+	 * before removal
 	 */
 	virtual bool allow_interupt() const = 0;
 
@@ -77,10 +77,9 @@ public:
 	 * if true this action must complete and will not allow new actions
 	 * to be pushed while it is active
 	 * eg dead action must be completed and cannot be discarded
-	 *
-	 * TODO: rename as allow_stack_modification
+	 * and also does not update the secondary actions
 	 */
-	virtual bool allow_destruction() const = 0;
+	virtual bool allow_control() const = 0;
 
 	/**
 	 * debug string to identify action types
@@ -94,7 +93,7 @@ public:
 	 */
 	void face_towards(const coord::phys3 pos);
 	void damage_object(Unit &target, unsigned dmg);
-	void move_to(Unit &target);
+	void move_to(Unit &target, bool use_range=true);
 
 	/**
 	 * produce debug info such as visualising paths
@@ -137,7 +136,7 @@ public:
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
-	bool allow_destruction() const override { return false; }
+	bool allow_control() const override { return false; }
 	std::string name() const override { return "decay"; }
 
 private:
@@ -157,7 +156,7 @@ public:
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
-	bool allow_destruction() const override { return false; }
+	bool allow_control() const override { return false; }
 	std::string name() const override { return "dead"; }
 
 private:
@@ -179,7 +178,7 @@ public:
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
-	bool allow_destruction() const override { return true; }
+	bool allow_control() const override { return true; }
 	std::string name() const override { return "idle"; }
 };
 
@@ -203,7 +202,7 @@ public:
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
-	bool allow_destruction() const override { return true; }
+	bool allow_control() const override { return true; }
 	std::string name() const override { return "move"; }
 
 	coord::phys3 next_waypoint() const;
@@ -218,7 +217,16 @@ private:
 	bool allow_repath;
 
 	void initialise();
+
+	/**
+	 * use a star to find a path to target
+	 */
 	void set_path();
+
+	/**
+	 * updates the distance_to_target value
+	 */
+	void set_distance();
 };
 
 /**
@@ -231,9 +239,9 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete; }
+	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return true; }
-	bool allow_destruction() const override { return true; }
+	bool allow_control() const override { return true; }
 	std::string name() const override { return "garrison"; }
 
 private:
@@ -252,9 +260,9 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete; }
+	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return true; }
-	bool allow_destruction() const override { return true; }
+	bool allow_control() const override { return true; }
 	std::string name() const override { return "ungarrison"; }
 
 private:
@@ -272,14 +280,15 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete; }
+	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return false; }
-	bool allow_destruction() const override { return true; }
+	bool allow_control() const override { return true; }
 	std::string name() const override { return "train"; }
 
 private:
 	UnitProducer *trained;
 	bool complete;
+	float train_percent;
 };
 
 /**
@@ -293,9 +302,9 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete >= 1.0f; }
+	bool completed() const override { return this->complete >= 1.0f; }
 	bool allow_interupt() const override { return true; }
-	bool allow_destruction() const override { return true; }
+	bool allow_control() const override { return true; }
 	std::string name() const override { return "build"; }
 
 private:
@@ -315,9 +324,9 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete; }
+	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return true; }
-	bool allow_destruction() const override { return true; }
+	bool allow_control() const override { return true; }
 	std::string name() const override { return "repair"; }
 
 private:
@@ -337,7 +346,7 @@ public:
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
-	bool allow_destruction() const override { return true; }
+	bool allow_control() const override { return true; }
 	std::string name() const override { return "gather"; }
 
 private:
@@ -358,7 +367,7 @@ public:
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
-	bool allow_destruction() const override { return true; }
+	bool allow_control() const override { return true; }
 	std::string name() const override { return "attack"; }
 
 private:
@@ -386,9 +395,9 @@ public:
 
 	void update(unsigned int) override;
 	void on_completion() override;
-	bool completed() const override { return complete >= 1.0; }
+	bool completed() const override { return this->complete >= 1.0; }
 	bool allow_interupt() const override { return true; }
-	bool allow_destruction() const override { return true; }
+	bool allow_control() const override { return true; }
 	std::string name() const override { return "convert"; }
 
 private:
@@ -408,7 +417,7 @@ public:
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
-	bool allow_destruction() const override { return false; }
+	bool allow_control() const override { return false; }
 	std::string name() const override { return "projectile"; }
 
 private:

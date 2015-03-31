@@ -62,7 +62,7 @@ constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
  *
  * The name of this class is likely to change to TerrainBase or TerrainSpace
  */
-class TerrainObject {
+class TerrainObject : public std::enable_shared_from_this<TerrainObject> {
 public:
 	TerrainObject(Unit &u, bool collisions=true);
 	virtual ~TerrainObject();
@@ -97,6 +97,11 @@ public:
 	std::function<void()> draw;
 
 	/**
+	 * sets this as the location of the unit
+	 */
+	void initialise();
+
+	/**
 	 * draws outline of this terrain space in current position
 	 */
 	void draw_outline() const;
@@ -129,18 +134,13 @@ public:
 	void set_ground(int id, int additional=0);
 
 	/**
-	 * finds a space next to this object for placing new objects
-	 */
-	coord::phys3 free_adjacent_place() const;
-
-	/**
 	 * add a child terrain object
 	 */
-	void annex(TerrainObject *other);
+	void annex(std::shared_ptr<TerrainObject> &other);
 
-	const TerrainObject *get_parent() const;
+	const std::shared_ptr<TerrainObject> get_parent() const;
 
-	std::vector<TerrainObject *> get_children() const;
+	std::vector<std::shared_ptr<TerrainObject>> get_children() const;
 
 	/*
 	 * terrain this object was placed on
@@ -182,7 +182,7 @@ public:
 	/**
 	 * would this intersect with another object if it were positioned at the given point
 	 */
-	virtual bool intersects(const TerrainObject *other, const coord::phys3 &position) const = 0;
+	virtual bool intersects(const TerrainObject &other, const coord::phys3 &position) const = 0;
 
 	/**
 	 * the shortest line that can be placed across the objects center
@@ -199,8 +199,8 @@ protected:
 	/**
 	 * annexes and grouped units
 	 */
-	TerrainObject *parent;
-	std::vector<TerrainObject *> children;
+	std::shared_ptr<TerrainObject> parent;
+	std::vector<std::shared_ptr<TerrainObject>> children;
 
 	/**
 	 * texture for drawing outline
@@ -252,7 +252,7 @@ public:
 	coord::phys_t from_edge(const coord::phys3 &point) const override;
 	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const override;
 	bool contains(const coord::phys3 &other) const override;
-	bool intersects(const TerrainObject *other, const coord::phys3 &position) const override;
+	bool intersects(const TerrainObject &other, const coord::phys3 &position) const override;
 	coord::phys_t min_axis() const override;
 };
 
@@ -278,7 +278,7 @@ public:
 	coord::phys_t from_edge(const coord::phys3 &point) const override;
 	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const override;
 	bool contains(const coord::phys3 &other) const override;
-	bool intersects(const TerrainObject *other, const coord::phys3 &position) const override;
+	bool intersects(const TerrainObject &other, const coord::phys3 &position) const override;
 	coord::phys_t min_axis() const override;
 };
 

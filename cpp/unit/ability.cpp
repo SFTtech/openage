@@ -21,6 +21,16 @@ bool has_resource(Unit &target) {
 	       target.get_attribute<attr_type::resource>().amount > 0;
 }
 
+bool is_ally(Unit &to_modify, Unit &target) {
+	if (to_modify.has_attribute(attr_type::owner) &&
+	    target.has_attribute(attr_type::owner)) {
+		auto &mod_player = to_modify.get_attribute<attr_type::owner>().player;
+		auto &tar_player = target.get_attribute<attr_type::owner>().player;
+		return mod_player.is_ally(tar_player);
+	}
+	return false;
+}
+
 bool is_enemy(Unit &to_modify, Unit &target) {
 	if (to_modify.has_attribute(attr_type::owner) &&
 		target.has_attribute(attr_type::owner)) {
@@ -37,8 +47,9 @@ MoveAbility::MoveAbility(Sound *s)
 }
 
 bool MoveAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	to_modify.log(MSG(dbg) << "check unit can invoke move action");
 	if (cmd.has_position()) {
-		return to_modify.location;
+		return bool(to_modify.location);
 	}
 	else if (cmd.has_unit()) {
 		return to_modify.location &&
@@ -62,15 +73,12 @@ void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 
 		// distance from the targets edge that is required to stop moving
 		coord::phys_t radius = path::path_grid_size + (to_modify.location->min_axis() / 2);
-		if (to_modify.has_attribute(attr_type::attack)) {
+
+		// add the range of the unit if cmd indicator is set
+		if (cmd.has_flag(command_flag::use_range) && to_modify.has_attribute(attr_type::attack)) {
 			auto &att = to_modify.get_attribute<attr_type::attack>();
 			radius += att.range;
 		}
-		if (target->has_attribute(attr_type::speed)) {
-			auto &sp = target->get_attribute<attr_type::speed>();
-			radius += 8 * sp.unit_speed;
-		}
-
 		to_modify.push_action(std::make_unique<MoveAction>(&to_modify, target->get_ref(), radius));
 	}
 }
@@ -81,9 +89,21 @@ GarrisonAbility::GarrisonAbility(Sound *s)
 }
 
 bool GarrisonAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	if (!cmd.has_unit()) {
+		return false;
+	}
+	Unit &target = *cmd.unit();
+
+	// make sure buildings are completed
+	if (target.has_attribute(attr_type::building)) {
+		auto &build_attr = target.get_attribute<attr_type::building>();
+		if (build_attr.completed < 1.0f) {
+			return false;
+		}
+	}
 	return to_modify.location &&
-	       cmd.has_unit() &&
-	       cmd.unit()->has_attribute(attr_type::garrison);
+	       target.has_attribute(attr_type::garrison) &&
+	       is_ally(to_modify, target);
 }
 
 void GarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
@@ -99,8 +119,12 @@ UngarrisonAbility::UngarrisonAbility(Sound *s)
 	sound{s} {
 }
 
-bool UngarrisonAbility::can_invoke(Unit &, const Command &cmd) {
-	return cmd.has_position();
+bool UngarrisonAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	if (to_modify.has_attribute(attr_type::garrison)) {
+		auto &garison_attr = to_modify.get_attribute<attr_type::garrison>();
+		return cmd.has_position() && !garison_attr.content.empty();
+	}
+	return false;
 }
 
 void UngarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
@@ -108,7 +132,9 @@ void UngarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_so
 	if (play_sound && this->sound) {
 		this->sound->play();
 	}
-	to_modify.push_action(std::make_unique<UngarrisonAction>(&to_modify, cmd.position()));
+
+	// add as secondary, so primary action is not disrupted
+	to_modify.secondary_action(std::make_unique<UngarrisonAction>(&to_modify, cmd.position()));
 }
 
 TrainAbility::TrainAbility(Sound *s)
@@ -116,8 +142,12 @@ TrainAbility::TrainAbility(Sound *s)
 	sound{s} {
 }
 
-bool TrainAbility::can_invoke(Unit &, const Command &cmd) {
-	return cmd.has_producer();
+bool TrainAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	if (to_modify.has_attribute(attr_type::building)) {
+		auto &build_attr = to_modify.get_attribute<attr_type::building>();
+		return cmd.has_producer() && 1.0f <= build_attr.completed;
+	}
+	return false;
 }
 
 void TrainAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
@@ -135,7 +165,7 @@ BuildAbility::BuildAbility(Sound *s)
 
 bool BuildAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	if (cmd.has_producer() && cmd.has_position()) {
-		return to_modify.location;
+		return bool(to_modify.location);
 	}
 	if (cmd.has_unit()) {
 		Unit *target = cmd.unit();

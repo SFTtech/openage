@@ -56,7 +56,7 @@ public:
 	TileContent();
 	~TileContent();
 	terrain_t terrain_id;
-	std::vector<TerrainObject *> obj;
+	std::vector<std::weak_ptr<TerrainObject>> obj;
 };
 
 
@@ -228,7 +228,7 @@ public:
 	/**
 	 * an object which contains the given point, null otherwise
 	 */
-	TerrainObject *obj_at_point(const coord::phys3 &point);
+	std::shared_ptr<TerrainObject> obj_at_point(const coord::phys3 &point);
 
 	/**
 	 * get the neighbor chunks of a given chunk.

@@ -76,7 +76,7 @@ public:
 	coord::tile mousepos_tile;
 
 	UnitSelection selection;
-	Terrain *terrain;
+	std::shared_ptr<Terrain> terrain;
 	Texture *gaben;
 	std::vector<Player> players;
 

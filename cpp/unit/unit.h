@@ -63,7 +63,7 @@ public:
 	 * space on the map used by this unit
 	 * null if the object is not yet placed or garrisoned
 	 */
-	TerrainObject *location;
+	std::shared_ptr<TerrainObject> location;
 
 	/**
 	 * graphics sets which can be modified for gathering
@@ -81,6 +81,11 @@ public:
 	 * @return true if the entity currently has an action
 	 */
 	bool has_action();
+
+	/**
+	 * true when the unit is alive and able to add new actions
+	 */
+	bool accept_commands();
 
 	/**
 	 * returns the current action on top of the stack
@@ -116,7 +121,12 @@ public:
 	 * adds a new action on top of the action stack
 	 * will be performed immediately
 	 */
-	void push_action(std::unique_ptr<UnitAction>, bool force=false);
+	void push_action(std::unique_ptr<UnitAction> action, bool force=false);
+
+	/**
+	 * adds a seconadry action which is always updated
+	 */
+	void secondary_action(std::unique_ptr<UnitAction> action);
 
 	/**
 	 * give a new attribute this this unit
@@ -127,7 +137,7 @@ public:
 	/**
 	 * returns whether attribute is available
 	 */
-	bool has_attribute(attr_type type);
+	bool has_attribute(attr_type type) const;
 
 	/**
 	 * returns attribute based on templated value
@@ -154,6 +164,9 @@ public:
 
 	/**
 	 * begins unit removal by popping some actions
+	 *
+	 * this is the action that occurs when pressing the delete key
+	 * which plays death sequence and does not remove instantly
 	 */
 	void delete_unit();
 
@@ -191,6 +204,11 @@ private:
 	std::vector<std::unique_ptr<UnitAction>> action_stack;
 
 	/**
+	 * seconadry actions are always updated
+	 */
+	std::vector<std::unique_ptr<UnitAction>> action_secondary;
+
+	/**
 	 * Unit attributes include color, hitpoints, speed, objects garrisoned etc
 	 * contains 0 or 1 values for each type
 	 */
@@ -207,6 +225,15 @@ private:
 	 */
 	UnitContainer &container;
 
+	/**
+	 * update all secondary actions
+	 */
+	void update_secondary(int64_t time_elapsed);
+
+	/**
+	 * erase from action specified by func to the end of the stack
+	 * all actions erased will have the on_complete function called
+	 */
 	void erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func);
 
 };

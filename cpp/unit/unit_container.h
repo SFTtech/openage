@@ -54,12 +54,12 @@ public:
 	/**
 	 * sets terrain to initialise units on
 	 */
-	void set_terrain(Terrain *t);
+	void set_terrain(std::shared_ptr<Terrain> &t);
 
 	/** 
 	 * returns the terrain which units are placed on
 	 */
-	Terrain *get_terrain() const;
+	std::shared_ptr<Terrain> get_terrain() const;
 
 	/**
 	 * checks the id is valid
@@ -80,6 +80,12 @@ public:
 	 * adds a new unit to the container and initialises using a producer
 	 */
 	UnitReference new_unit(UnitProducer &producer, Player &owner, coord::phys3 position);
+
+	/**
+	 * adds a new unit to the container and initialises using a producer
+	 * places outside an existing object using the player of that object
+	 */
+	UnitReference new_unit(UnitProducer &producer, Player &owner, std::shared_ptr<TerrainObject> other);
 
 	/**
 	 * give a command to a unit -- unit creation and deletion should be done as commands
@@ -108,7 +114,7 @@ private:
 	/**
 	 * Terrain for initialising new units
 	 */
-	Terrain *terrain;
+	std::weak_ptr<Terrain> terrain;
 
 };
 

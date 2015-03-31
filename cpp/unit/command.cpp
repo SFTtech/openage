@@ -74,4 +74,12 @@ const ability_set &Command::ability() const {
 	return this->modifiers;
 }
 
+void Command::add_flag(command_flag flag) {
+	this->flags.insert(flag);
+}
+
+bool Command::has_flag(command_flag flag) const {
+	return 0 < this->flags.count(flag);
+}
+
 } // namespace openage

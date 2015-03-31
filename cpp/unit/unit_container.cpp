@@ -45,19 +45,22 @@ UnitContainer::UnitContainer()
 
 
 UnitContainer::~UnitContainer() {
-	log::log(MSG(info) << "cleanup container");
+	log::log(MSG(dbg) << "Cleanup container");
 }
 
 void UnitContainer::reset() {
 	this->live_units.clear();
 }
 
-void UnitContainer::set_terrain(Terrain *t) {
+void UnitContainer::set_terrain(std::shared_ptr<Terrain> &t) {
 	this->terrain = t;
 }
 
-Terrain *UnitContainer::get_terrain() const {
-	return this->terrain;
+std::shared_ptr<Terrain> UnitContainer::get_terrain() const {
+	if (this->terrain.expired()) {
+		throw util::Error{MSG(err) << "Terrain has expired"};
+	}
+	return this->terrain.lock();
 }
 
 
@@ -81,12 +84,14 @@ UnitReference UnitContainer::new_unit() {
 	return this->live_units[id]->get_ref();
 }
 
-UnitReference UnitContainer::new_unit(UnitProducer &producer, Player &owner,
-                             coord::phys3 position) {
+UnitReference UnitContainer::new_unit(UnitProducer &producer, 
+                                      Player &owner,
+                                      coord::phys3 position) {
 	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
 
 	// try placing unit at this location
-	bool placed = producer.place(newobj.get(), *this->terrain, position);
+	auto terrain_shared = this->get_terrain();
+	auto placed = producer.place(newobj.get(), *terrain_shared, position);
 	if (placed) {
 		producer.initialise(newobj.get(), owner);
 		auto id = newobj->id;
@@ -94,6 +99,22 @@ UnitReference UnitContainer::new_unit(UnitProducer &producer, Player &owner,
 		return this->live_units[id]->get_ref();
 	}
 	return UnitReference(); // is not valid
+}
+
+UnitReference UnitContainer::new_unit(UnitProducer &producer, 
+                                      Player &owner, 
+                                      std::shared_ptr<TerrainObject> other) {
+	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
+
+	// try placing unit
+	auto placed = producer.place_beside(newobj.get(), other);
+	if (placed) {
+		producer.initialise(newobj.get(), owner);
+		auto id = newobj->id;
+		this->live_units.emplace(id, std::move(newobj));
+		return this->live_units[id]->get_ref();
+	}
+	return UnitReference(); // is not valid	
 }
 
 

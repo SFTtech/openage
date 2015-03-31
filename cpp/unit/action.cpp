@@ -69,10 +69,13 @@ void UnitAction::damage_object(Unit &target, unsigned dmg) {
 	}
 }
 
-void UnitAction::move_to(Unit &target) {
+void UnitAction::move_to(Unit &target, bool use_range) {
 	auto &player = this->entity->get_attribute<attr_type::owner>().player;
 	Command cmd(player, &target);
 	cmd.set_ability(ability_type::move);
+	if (use_range) {
+		cmd.add_flag(command_flag::use_range);
+	}
 	this->entity->invoke(cmd);
 }
 
@@ -194,6 +197,9 @@ void MoveAction::initialise() {
 		}
 	}
 
+	// set initial distance
+	this->set_distance();
+
 	// set an initial path
 	this->set_path();
 	this->debug_draw_action = [&]() {
@@ -274,17 +280,7 @@ void MoveAction::update(unsigned int time) {
 	bool move_completed = this->entity->location->move(new_position);
 	if (move_completed) {
 		d_attr.unit_dir = new_direction;
-
-		// update distance
-		if (this->unit_target.is_valid()) {
-			auto target_object = this->unit_target.get()->location;
-			coord::phys3 &unit_pos = this->entity->location->pos.draw;
-			this->distance_to_target = target_object->from_edge(unit_pos);
-		}
-		else {
-			coord::phys3_delta move_dir = this->target - this->entity->location->pos.draw;
-			this->distance_to_target = static_cast<coord::phys_t>(std::hypot(move_dir.ne, move_dir.se));
-		}
+		this->set_distance();
 	}
 	else {
 		// cases for modifying path when blocked
@@ -329,12 +325,24 @@ coord::phys3 MoveAction::next_waypoint() const {
 
 void MoveAction::set_path() {
 	if (this->unit_target.is_valid()) {
-		this->path = path::to_object(this->entity->location, this->unit_target.get()->location, this->radius);
+		this->path = path::to_object(this->entity->location.get(), this->unit_target.get()->location.get(), this->radius);
 	}
 	else {
 		coord::phys3 start = this->entity->location->pos.draw;
 		coord::phys3 end = this->target;
 		this->path = path::to_point(start, end, this->entity->location->passable);
+	}
+}
+
+void MoveAction::set_distance() {
+	if (this->unit_target.is_valid()) {
+		auto target_object = this->unit_target.get()->location;
+		coord::phys3 &unit_pos = this->entity->location->pos.draw;
+		this->distance_to_target = target_object->from_edge(unit_pos);
+	}
+	else {
+		coord::phys3_delta move_dir = this->target - this->entity->location->pos.draw;
+		this->distance_to_target = static_cast<coord::phys_t>(std::hypot(move_dir.ne, move_dir.se));
 	}
 }
 
@@ -353,7 +361,7 @@ void GarrisonAction::update(unsigned int) {
 	if (this->distance_to_target > this->radius) {
 
 		// move to foundation
-		this->move_to(*build_ptr);
+		this->move_to(*build_ptr, false);
 		return;
 	}
 	else {
@@ -361,7 +369,8 @@ void GarrisonAction::update(unsigned int) {
 		garrison_attr.content.push_back(this->entity->get_ref());
 
 		if (this->entity->location) {
-			delete this->entity->location;
+			this->entity->location->remove();
+			this->entity->location = nullptr;
 		}
 		this->complete = true;
 	}
@@ -377,24 +386,20 @@ UngarrisonAction::UngarrisonAction(Unit *e, const coord::phys3 &pos)
 }
 
 void UngarrisonAction::update(unsigned int) {
-	Terrain *terrain = this->entity->get_container()->get_terrain();
 	auto &garrison_attr = this->entity->get_attribute<attr_type::garrison>();
 	
 	// try unload all objects currently garrisoned
 	auto position_it = std::remove_if(
 		std::begin(garrison_attr.content),
 		std::end(garrison_attr.content),
-		[terrain, this](UnitReference &u) {
+		[this](UnitReference &u) {
 			if (u.is_valid()) {
 
 				// ptr to unit being ungarrisoned
 				Unit *unit_ptr = u.get();
 
-				// find a free position adjacent to the building
-				coord::phys3 pos = this->entity->location->free_adjacent_place();
-
 				// make sure it was placed outside
-				if (unit_ptr->producer->place(unit_ptr, *terrain, pos)) {
+				if (unit_ptr->producer->place_beside(unit_ptr, this->entity->location)) {
 
 					// task unit to move to position
 					auto &player = this->entity->get_attribute<attr_type::owner>().player;
@@ -420,28 +425,33 @@ TrainAction::TrainAction(Unit *e, UnitProducer *pp)
 	:
 	UnitAction{e, graphic_type::standing},
 	trained{pp},
-	complete{false} {
+	complete{false},
+	train_percent{.0f} {
 }
 
-void TrainAction::update(unsigned int) {
+void TrainAction::update(unsigned int time) {
 
-	// find a free position adjacent to the building
-	coord::phys3 pos = this->entity->location->free_adjacent_place();
+	// place unit when ready
+	if (this->train_percent > 1.0f) {
 
-	// create using the producer
-	UnitContainer *container = this->entity->get_container();
-	auto &player = this->entity->get_attribute<attr_type::owner>().player;
-	auto uref = container->new_unit(*this->trained, player, pos);
-	if (uref.is_valid()) {
+		// create using the producer
+		UnitContainer *container = this->entity->get_container();
+		auto &player = this->entity->get_attribute<attr_type::owner>().player;
+		auto uref = container->new_unit(*this->trained, player, this->entity->location);
+		if (uref.is_valid()) {
 
-		// use a move command with the position
-		// TODO: use a position on edge of the buildings
-		Command cmd(player, coord::tile{8, 10}.to_phys2().to_phys3());
-		cmd.set_ability(ability_type::move);
-		uref.get()->invoke(cmd);
+			// use a move command to the gather point
+			// TODO: use buildings gather point, assume {3, 3} for now
+			Command cmd(player, coord::tile{3, 3}.to_phys2().to_phys3());
+			cmd.set_ability(ability_type::move);
+			uref.get()->invoke(cmd);
 
-		// try again next update if cannot place
-		this->complete = true;
+			// try again next update if cannot place
+			this->complete = true;
+		}
+	}
+	else {
+		this->train_percent += 0.001 * time;
 	}
 }
 
@@ -475,7 +485,7 @@ void BuildAction::update(unsigned int time) {
 
 		// set direction unit should face
 		Unit *b = this->building.get();
-		TerrainObject *target_location = b->location;
+		auto target_location = b->location;
 		this->face_towards(target_location->pos.draw);
 
 		// move to resource being collected
@@ -486,11 +496,14 @@ void BuildAction::update(unsigned int time) {
 			this->move_to(*b);
 			return;
 		}
-		else {
+		else if (b->has_attribute(attr_type::building)) {
 			// increment building completion
 			auto &build = b->get_attribute<attr_type::building>();
 			build.completed += 0.001;
 			this->complete = build.completed;
+		}
+		else {
+			this->complete = 1.0;
 		}
 	}
 	else {
@@ -530,7 +543,7 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	dropsite{} {
 
 	// find nearest dropsite from the targeted resource
-	TerrainObject *ds = path::find_nearest(this->target.get()->location,
+	TerrainObject *ds = path::find_nearest(this->target.get()->location.get(),
 		[=](const openage::TerrainObject *other) -> bool {
 			if (!other) {
 				return false;
@@ -577,7 +590,7 @@ void GatherAction::update(unsigned int time) {
 	}
 
 	// set direction unit should face
-	TerrainObject *target_location = targeted_resource->location;
+	auto target_location = targeted_resource->location;
 	this->face_towards(target_location->pos.draw);
 
 	// owner of gatherer
@@ -586,7 +599,7 @@ void GatherAction::update(unsigned int time) {
 	// return to dropsite
 	if (gatherer_attr.amount > gatherer_attr.capacity) {
 		// dropsite position
-		TerrainObject *dropsite_location = this->dropsite.get()->location;
+		auto dropsite_location = this->dropsite.get()->location;
 
 		// move to resource being collected
 		auto distance_to_dropsite = dropsite_location->from_edge(this->entity->location->pos.draw);
@@ -790,9 +803,10 @@ void ProjectileAction::update(unsigned int time) {
 		Terrain *terrain = this->entity->location->get_terrain();
 		TileContent *tc = terrain->get_data(new_position.to_tile3().to_tile());
 		if (tc && !tc->obj.empty()) {
-			for (auto loc : tc->obj) {
-				if (this->entity->location != loc) {
-					this->damage_object(loc->unit, 1);
+			for (auto item : tc->obj) {
+				auto obj_location = item.lock();
+				if (this->entity->location != obj_location) {
+					this->damage_object(obj_location->unit, 1);
 					break;
 				}
 			}
