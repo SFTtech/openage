@@ -37,10 +37,7 @@ before_script:
   - sudo ln -sf /usr/bin/python${PYVERSION} /usr/bin/python3
 
 script:
-  - ./configure
-  - make checkfull  # test code quality, copyright, etc
-  - make openage    # running 'make'/'make all' would cause 'make check' to run after building
-  - make runtest    # running 'make test' would cause 'make check' to run after testing
+  - ./configure && make runci
 
 after_script:
   - echo test build exited
@@ -53,7 +50,8 @@ notifications:
     channels:
       - "chat.freenode.net#sfttech"
     template:
-      - "%{repository}/%{branch} (%{commit} - %{author}): %{message}"
+      - "%{repository_slug}/%{branch} (%{commit} - %{author}): %{message}"
+      - "took %{duration}, moar info: %{build_url}"
     use_notice: true
     skip_join: true
 
