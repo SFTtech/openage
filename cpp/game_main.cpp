@@ -86,7 +86,8 @@ int run_game(Arguments *args) {
 	// initialize terminal colors
 	auto termcolors = util::read_csv_file<gamedata::palette_color>(data_dir.join("converted/termcolors.docx"));
 
-	console::Console console(termcolors);
+	console::Console console;
+	console.load_colors(termcolors);
 	console.register_to_engine(&engine);
 
 	log::log(MSG(info).fmt("Loading time [engine]: %5.3f s", timer.getval() / 1.0e9));

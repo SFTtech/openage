@@ -21,6 +21,7 @@ namespace draw {
 void to_opengl(Console *console) {
 	coord::camhud topleft = {
 		console->bottomleft.x,
+		// TODO This should probably just be console->topright.y
 		console->bottomleft.y + console->charsize.y * console->buf.dims.y
 	};
 	coord::camhud chartopleft;

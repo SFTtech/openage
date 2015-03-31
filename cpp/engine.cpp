@@ -68,11 +68,6 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	running{false},
 	drawing_debug_overlay{true},
 	drawing_huds{true},
-	//window_size{800, 600},
-	//camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0},
-	//camgame_window{400, 300},
-	//camhud_window{0, 600},
-	//tile_halfsize{48, 24},  // TODO: get from convert script
 	engine_coord_data{this->get_coord_data()},
 	data_dir{data_dir},
 
