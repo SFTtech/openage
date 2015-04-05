@@ -42,6 +42,7 @@ add_subdirectory("terrain")
 add_subdirectory("testing")
 add_subdirectory("unit")
 add_subdirectory("util")
+add_subdirectory("rng")
 
 # finalize testing
 finalize_tests(cpp)

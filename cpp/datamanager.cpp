@@ -1,8 +1,8 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #include "unit/producer.h"
-#include "util/misc.h"
 #include "util/strings.h"
+#include "rng/global_rng.h"
 #include "assetmanager.h"
 #include "datamanager.h"
 #include "engine.h"
@@ -329,7 +329,7 @@ void Sound::play() {
 	}
 	audio::AudioManager &am = Engine::get().get_audio_manager();
 
-	int rand = util::random_range(0, this->sound_items.size());
+	int rand = rng::random_range(0, this->sound_items.size());
 	int sndid = this->sound_items[rand];
 	try {
 		audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();
