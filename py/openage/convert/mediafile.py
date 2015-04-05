@@ -103,7 +103,7 @@ def media_convert(args):
     drsfiles = {
         k: DRS(p, drsmap[k])
         for k, p in drsfiles.items()
-        if p
+        if p and os.path.getsize(p) > 0
     }
 
     # this is the ingame color palette file id,
