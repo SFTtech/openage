@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_COORD_DECL_H_
 #define OPENAGE_COORD_DECL_H_
@@ -69,10 +69,10 @@ constexpr phys_t   phys_t_scaling_factor = (1 << phys_t_radix_pos);
 constexpr phys_t   phys_per_tile         = phys_t_scaling_factor;
 constexpr unsigned tiles_per_chunk_bits  = 4; //yeah, this needs a better name.
 constexpr tile_t   tiles_per_chunk       = (1 << tiles_per_chunk_bits);
-} //namespace settings
+} // namespace settings
 
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #endif

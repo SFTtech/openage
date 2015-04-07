@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #define GEN_IMPL_CHUNK_CPP
 #include "chunk.h"
@@ -17,5 +17,5 @@ tile chunk::to_tile(tile_delta pos_on_chunk) {
 	return result;
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

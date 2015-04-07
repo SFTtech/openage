@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_COORD_VEC3F_H_
 #define OPENAGE_COORD_VEC3F_H_
@@ -31,8 +31,8 @@ struct vec3f_delta {
 #include "ops/impl.h"
 #endif //GEN_IMPL_VEC3F_CPP
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

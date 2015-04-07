@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_COORD_PHYS2_H_
 #define OPENAGE_COORD_PHYS2_H_
@@ -41,8 +41,8 @@ struct phys2_delta {
 #include "ops/impl.h"
 #endif //GEN_IMPL_PHYS2_CPP
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

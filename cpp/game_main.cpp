@@ -86,7 +86,8 @@ int run_game(Arguments *args) {
 	// initialize terminal colors
 	auto termcolors = util::read_csv_file<gamedata::palette_color>(data_dir.join("converted/termcolors.docx"));
 
-	console::Console console(termcolors);
+	console::Console console;
+	console.load_colors(termcolors);
 	console.register_to_engine(&engine);
 
 	log::log(MSG(info).fmt("Loading time [engine]: %5.3f s", timer.getval() / 1.0e9));
@@ -546,8 +547,8 @@ bool GameMain::on_draw() {
 	}
 
 	// draw construction or actions mode indicator
-	int x = 400 - (engine.window_size.x / 2);
-	int y = 35 - (engine.window_size.y / 2);
+	int x = 400 - (engine.engine_coord_data->window_size.x / 2);
+	int y = 35 - (engine.engine_coord_data->window_size.y / 2);
 	if (this->construct_mode) {
 		engine.render_text({x, y}, 20, "Construct mode");
 	} else {
@@ -575,7 +576,7 @@ bool GameMain::on_drawhud() {
 	if (this->datamanager.producer_count() > 0) {
 		// and the current active building
 		coord::window bpreview_pos;
-		bpreview_pos.x = e.window_size.x - 200;
+		bpreview_pos.x = e.engine_coord_data->window_size.x - 200;
 		bpreview_pos.y = 200;
 		auto txt = this->datamanager.get_producer_index(this->editor_current_building)->default_texture();
 		txt->sample(bpreview_pos.to_camhud());
@@ -588,11 +589,11 @@ void GameMain::draw_debug_grid() {
 
 	coord::camgame camera = coord::tile{0, 0}.to_tile3().to_phys3().to_camgame();
 
-	int cam_offset_x = util::mod(camera.x, e.tile_halfsize.x * 2);
-	int cam_offset_y = util::mod(camera.y, e.tile_halfsize.y * 2);
+	int cam_offset_x = util::mod(camera.x, e.engine_coord_data->tile_halfsize.x * 2);
+	int cam_offset_y = util::mod(camera.y, e.engine_coord_data->tile_halfsize.y * 2);
 
-	int line_half_width = e.window_size.x / 2;
-	int line_half_height = e.window_size.y / 2;
+	int line_half_width = e.engine_coord_data->window_size.x / 2;
+	int line_half_height = e.engine_coord_data->window_size.y / 2;
 
 	// rounding so we get 2:1 proportion needed for the isometric perspective
 
@@ -609,10 +610,10 @@ void GameMain::draw_debug_grid() {
 	}
 
 	// quantity of lines to draw to each side from the center
-	int k = line_half_width / (e.tile_halfsize.x);
+	int k = line_half_width / (e.engine_coord_data->tile_halfsize.x);
 
-	int tilesize_x = e.tile_halfsize.x * 2;
-	int common_x   = cam_offset_x + e.tile_halfsize.x;
+	int tilesize_x = e.engine_coord_data->tile_halfsize.x * 2;
+	int common_x   = cam_offset_x + e.engine_coord_data->tile_halfsize.x;
 	int x0         = common_x     - line_half_width;
 	int x1         = common_x     + line_half_width;
 	int y0         = cam_offset_y - line_half_height;

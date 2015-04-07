@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_COORD_CHUNK_H_
 #define OPENAGE_COORD_CHUNK_H_
@@ -33,8 +33,8 @@ struct chunk_delta {
 #include "ops/impl.h"
 #endif //GEN_IMPL_CHUNK_CPP
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

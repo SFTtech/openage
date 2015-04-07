@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #define GEN_IMPL_PHYS2_CPP
 #include "phys2.h"
@@ -35,5 +35,5 @@ phys2_delta phys2::get_fraction() const {
 	return result;
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

@@ -30,6 +30,12 @@
  */
 namespace openage {
 
+static coord_data base_coord_data{};
+
+coord_data* Engine::get_coord_data( void ) {
+	return &base_coord_data;
+}
+
 // engine singleton instance allocation
 Engine *Engine::instance = nullptr;
 
@@ -62,11 +68,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	running{false},
 	drawing_debug_overlay{true},
 	drawing_huds{true},
-	window_size{800, 600},
-	camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0},
-	camgame_window{400, 300},
-	camhud_window{0, 600},
-	tile_halfsize{48, 24},  // TODO: get from convert script
+	engine_coord_data{this->get_coord_data()},
 	data_dir{data_dir},
 
 	audio_manager{} {
@@ -99,8 +101,8 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 		windowtitle,
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
-		this->window_size.x,
-		this->window_size.y,
+		this->engine_coord_data->window_size.x,
+		this->engine_coord_data->window_size.y,
 		window_flags
 	);
 
@@ -183,26 +185,26 @@ bool Engine::on_resize(coord::window new_size) {
 	log::log(MSG(dbg) << "engine window resize to " << new_size.x << "x" << new_size.y);
 
 	// update engine window size
-	this->window_size = new_size;
+	this->engine_coord_data->window_size = new_size;
 
 	// tell the screenshot manager about the new size
 	this->screenshot_manager.window_size = new_size;
 
 	// update camgame window position, set it to center.
-	this->camgame_window = this->window_size / 2;
+	this->engine_coord_data->camgame_window = this->engine_coord_data->window_size / 2;
 
 	// update camhud window position
-	this->camhud_window = {0, (coord::pixel_t) this->window_size.y};
+	this->engine_coord_data->camhud_window = {0, (coord::pixel_t) this->engine_coord_data->window_size.y};
 
 	// reset previous projection matrix
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
 	// update OpenGL viewport: the renderin area
-	glViewport(0, 0, this->window_size.x, this->window_size.y);
+	glViewport(0, 0, this->engine_coord_data->window_size.x, this->engine_coord_data->window_size.y);
 
 	// set orthographic projection: left, right, bottom, top, near_val, far_val
-	glOrtho(0, this->window_size.x, 0, this->window_size.y, 9001, -1);
+	glOrtho(0, this->engine_coord_data->window_size.x, 0, this->engine_coord_data->window_size.y, 9001, -1);
 
 	// reset the modelview matrix
 	glMatrixMode(GL_MODELVIEW);
@@ -216,7 +218,7 @@ bool Engine::draw_debug_overlay() {
 
 	// Draw FPS counter in the lower right corner
 	this->render_text(
-		{this->window_size.x - 100, 15}, 20,
+		{this->engine_coord_data->window_size.x - 100, 15}, 20,
 		"%.1f fps", this->fps_counter.fps
 	);
 
@@ -275,7 +277,7 @@ void Engine::loop() {
 
 		glPushMatrix(); {
 			// set the framebuffer up for camgame rendering
-			glTranslatef(camgame_window.x, camgame_window.y, 0);
+			glTranslatef(engine_coord_data->camgame_window.x, engine_coord_data->camgame_window.y, 0);
 
 			// invoke all game drawing handlers
 			for (auto &action : this->on_drawgame) {
@@ -389,7 +391,7 @@ void Engine::move_phys_camera(float x, float y, float amount) {
 	cam_delta.y = - cam_movement.y;
 
 	//update camera phys position
-	this->camgame_phys += cam_delta.to_phys3();
+	this->engine_coord_data->camgame_phys += cam_delta.to_phys3();
 }
 
 } //namespace openage

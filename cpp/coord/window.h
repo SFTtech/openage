@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_COORD_WINDOW_H_
 #define OPENAGE_COORD_WINDOW_H_
@@ -37,8 +37,8 @@ struct window_delta {
 #include "ops/impl.h"
 #endif //GEN_IMPL_WINDOW_CPP
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage
 
 #undef MEMBERS
 #undef RELATIVE_TYPE

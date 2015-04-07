@@ -20,7 +20,7 @@ namespace console {
  * log console, command console
  */
 
-Console::Console(std::vector<gamedata::palette_color> &colortable)
+Console::Console()
 	:
 	bottomleft{0, 0},
 	topright{1, 1},
@@ -31,6 +31,20 @@ Console::Console(std::vector<gamedata::palette_color> &colortable)
 {
 	termcolors.reserve(256);
 
+	// this better be representative for the width of all other characters
+	charsize.x = ceilf(font.internal_font->Advance("W", 1));
+	charsize.y = ceilf(font.internal_font->LineHeight());
+
+	log::log(MSG(dbg) << "Console font character size: " << charsize.x << "x" << charsize.y);
+
+	// Adjust the corners of the console based on the default buffer size and char size
+	topright.x = charsize.x * buf.dims.x;
+	topright.y = charsize.y * buf.dims.y;
+}
+
+Console::~Console () {}
+
+void Console::load_colors(std::vector<gamedata::palette_color> &colortable) {
 	for (auto &c : colortable) {
 		this->termcolors.emplace_back(c);
 	}
@@ -38,15 +52,7 @@ Console::Console(std::vector<gamedata::palette_color> &colortable)
 	if (termcolors.size() != 256) {
 		throw util::Error(MSG(err) << "Exactly 256 terminal colors are required.");
 	}
-
-	// this better be representative for the width of all other characters
-	charsize.x = ceilf(font.internal_font->Advance("W", 1));
-	charsize.y = ceilf(font.internal_font->LineHeight());
-
-	log::log(MSG(dbg) << "Console font character size: " << charsize.x << "x" << charsize.y);
 }
-
-Console::~Console () {}
 
 void Console::register_to_engine(Engine *engine) {
 	engine->register_input_action(this);

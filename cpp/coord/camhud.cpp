@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #define GEN_IMPL_CAMHUD_CPP
 #include "camhud.h"
@@ -13,8 +13,7 @@ namespace openage {
 namespace coord {
 
 window camhud::to_window() {
-	Engine &e = Engine::get();
-	return e.camhud_window + this->as_relative().to_window();
+	return Engine::get_coord_data()->camhud_window + this->as_relative().to_window();
 }
 
 window_delta camhud_delta::to_window() const {
@@ -29,5 +28,5 @@ term camhud::to_term(console::Console *c) {
 	return result;
 }
 
-} //namespace coord
-} //namespace openage
+} // namespace coord
+} // namespace openage

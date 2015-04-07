@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_CONSOLE_CONSOLE_H_
 #define OPENAGE_CONSOLE_CONSOLE_H_
@@ -20,7 +20,7 @@ namespace console {
 class Console : InputHandler, TickHandler, HudHandler, ResizeHandler {
 
 public:
-	Console(std::vector<gamedata::palette_color> &colortable);
+	Console();
 	~Console();
 
 	coord::camhud bottomleft;
@@ -39,6 +39,8 @@ public:
 	bool draw_console();
 	bool handle_inputs(SDL_Event *e);
 	bool on_window_resize();
+
+	void load_colors(std::vector<gamedata::palette_color> &colortable);
 
 	/**
 	 * register this console to the engine.
