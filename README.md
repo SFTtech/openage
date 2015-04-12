@@ -52,18 +52,18 @@ Current State of the Project
 
  - What features are currently implemented?
 
-See [status.md](status.md).
+See [doc/status.md](doc/status.md).
 
  - What's the plan?
 
-See [milestones.md](milestones.md). We also have a [list of crazy xor good ideas](doc/ideas).
+See [doc/milestones.md](doc/milestones.md). We also have a [list of crazy xor good ideas](doc/ideas).
 
 Dependencies, Building and Running
 ----------------------------------
 
  - How do I get this to run on my box?
 
-See [building.md](building.md).
+See [doc/building.md](doc/building.md).
 
  - I compiled everything. Now how do I run it?
 
@@ -89,7 +89,7 @@ Development Process
 * Can I help?
   * Yes, please!
 
-See [development.md](development.md).
+See [doc/development.md](doc/development.md).
 
 
 Project documentation is accompanying the source code in the `doc/` folder:
@@ -126,7 +126,7 @@ Guidelines:
 * Don't implement any features, your code is crap.
 * Don't even think about sending a **pull request**
 * Don't note the irony, you idiot
-* We even have a [list of tasks](tasks.md) that definitely don't need your work.
+* We even have a [list of tasks](doc/tasks.md) that definitely don't need your work.
 
 To prevent accidential violation of one of those guidelines, you should *never*
 

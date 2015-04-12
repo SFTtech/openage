@@ -20,7 +20,7 @@ all: openage check
 
 $(BUILDDIR):
 	@echo "call ./configure to initialize the build directory."
-	@echo "also see ./configure --help, and building.md"
+	@echo "also see ./configure --help, and doc/building.md"
 	@echo ""
 	@false
 
