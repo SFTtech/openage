@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 # Doxygen integration
 
@@ -40,6 +40,13 @@ function(doxygen_configure)
 		# adapt doxygen config
 		configure_file("${BUILDSYSTEM_DIR}/templates/Doxyfile.in" "${CMAKE_BINARY_DIR}/Doxyfile" @ONLY)
 	else()
+		# add no-op doc target
+		add_custom_target(doc
+			COMMAND echo "When you configured openage, Doxygen could not be found."
+			COMMAND echo "Install Doxygen and `./configure` openage again, then try to generate docs."
+			COMMAND false
+			VERBATIM
+		)
 		message(WARNING "doxygen couldn't be found, you won't be able to generate docs")
 	endif()
 endfunction()
