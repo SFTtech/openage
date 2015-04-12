@@ -16,8 +16,9 @@ message("(running cmake...)
 
 Welcome to the SFT technologies computer-aided openage build system!
 
-You have chosen, or been chosen, to attempt the daring task of building openage.
-If you have installed all the dependencies that are conveniently listed in [building.md], this _might_ work!
+You have chosen, or been chosen, to attempt the daring task of building
+openage. If you have installed all the dependencies that are conveniently
+listed in [doc/building.md], this _might_ work!
 
 If it doesn't, consider reporting the issue/asking for help in #sfttech on freenode.net.
 ")
