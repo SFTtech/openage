@@ -54,6 +54,10 @@ Current State of the Project
 
 See [doc/status.md](doc/status.md).
 
+ - What can I do once I start the game?
+
+See [docs/usage.md](doc/usage.md).
+
  - What's the plan?
 
 See [doc/milestones.md](doc/milestones.md). We also have a [list of crazy xor good ideas](doc/ideas).
