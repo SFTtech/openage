@@ -50,6 +50,7 @@ _the openage authors_ are:
 | Emmanuel Gil Peyrot         | Link Mauve                  | linkmauve@linkmauve.fr                |
 | Danilo Bargen               | dbrgn                       | mail@dbrgn.ch                         |
 | Niklas Fiekas               | niklasf                     | niklas.fiekas@tu-clausthal.de         |
+| Charles Gould               | charlesrgould               | charles.r.gould@gmail.com             |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
