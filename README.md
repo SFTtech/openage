@@ -33,7 +33,7 @@ Our goals *include*:
     and guessing/experimenting can only get you this close
   * We will not implement useless artificial limitations (max 30 selectable units...))
 * Multiplayer (obviously)
-* Optionally, [Improvements](doc/ideas/) over the original game
+* Optionally, [Improvements](/doc/ideas/) over the original game
 * AI
 * Re-creating free game assets
 * An easily-moddable content format
@@ -52,26 +52,26 @@ Current State of the Project
 
  - What features are currently implemented?
 
-See [doc/status.md](doc/status.md).
+See [doc/status.md](/doc/status.md).
 
  - What can I do once I start the game?
 
-See [docs/usage.md](doc/usage.md).
+See [docs/usage.md](/doc/usage.md).
 
  - What's the plan?
 
-See [doc/milestones.md](doc/milestones.md). We also have a [list of crazy xor good ideas](doc/ideas).
+See [doc/milestones.md](/doc/milestones.md). We also have a [list of crazy xor good ideas](/doc/ideas).
 
 Dependencies, Building and Running
 ----------------------------------
 
  - How do I get this to run on my box?
 
-See [doc/building.md](doc/building.md).
+See [doc/building.md](/doc/building.md).
 
  - I compiled everything. Now how do I run it?
 
-You first need to use [the convert script](doc/media_convert.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `./openage --data=assets`.
+You first need to use [the convert script](/doc/media_convert.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `./openage --data=assets`.
 
  - Waaaaaah! It
   - segfaults
@@ -93,13 +93,13 @@ Development Process
 * Can I help?
   * Yes, please!
 
-See [doc/development.md](doc/development.md).
+See [doc/development.md](/doc/development.md).
 
 
 Project documentation is accompanying the source code in the `doc/` folder:
 
-- Have a look at the [doc directory](doc/).
-- We use Doxygen, as described in the [doc readme](doc/README.md)
+- Have a look at the [doc directory](/doc/).
+- We use Doxygen, as described in the [doc readme](/doc/README.md)
 - Have a look at the source.
 
 
@@ -130,7 +130,7 @@ Guidelines:
 * Don't implement any features, your code is crap.
 * Don't even think about sending a **pull request**
 * Don't note the irony, you idiot
-* We even have a [list of tasks](doc/tasks.md) that definitely don't need your work.
+* We even have a [list of tasks](/doc/tasks.md) that definitely don't need your work.
 
 To prevent accidential violation of one of those guidelines, you should *never*
 
@@ -154,7 +154,7 @@ There's no openage mailing list, but the github issue tracker comes pretty close
 
 License
 -------
-**GNU GPLv3** or later; see [copying.md](copying.md) and [legal/GPLv3](legal/GPLv3).
+**GNU GPLv3** or later; see [copying.md](copying.md) and [legal/GPLv3](/legal/GPLv3).
 
 I know that probably nobody is ever gonna look at the `copying.md` file,
 but if you want to contribute code to openage, please take the time to

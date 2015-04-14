@@ -45,7 +45,7 @@ Media Files
 -----------
 
 A media file is a sound or image file. In the original media files, they are
-stored in [drs archives](../../media/drs-files.md).
+stored in [drs archives](/doc/media/drs-files.md).
 
 Each media file has an id and a file extension.
 Files can be "redefined" by overlay archives.
@@ -66,7 +66,7 @@ archive each should be obtained from.
 
 The files can then be converted to the appropriate format, the conversion
 procedure is selected by their file extension. Graphics are stored in the
-[SLP format](../../media/slp-files.md) and are converted to *png*. Sounds are
+[SLP format](/doc/media/slp-files.md) and are converted to *png*. Sounds are
 *wav* files which are compressed to *opus*.
 
 
@@ -77,7 +77,7 @@ Gamedata means data describing the configuration and behavior of the game
 entities. Namely this defines the available buildings, units, their creation
 cost, etc.
 
-The [gamedata files](../../media/gamedata.md) are parsed and converted to a
+The [gamedata files](/doc/media/gamedata.md) are parsed and converted to a
 huge tree of *csv* files. This is not optimal and will be improved soon(tm).
 
 

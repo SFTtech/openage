@@ -103,7 +103,7 @@ frame_id = (x % tc) + ((y % tc) * tc)
 Terrain blending modes
 ----------------------
 
-blending mode: see the [doc/media/blendomatic.md](blendomatic docs) for
+blending mode: see the [blendomatic docs](/doc/media/blendomatic.md) for
 more information about terrain blending.
 
 blending mode id correction:

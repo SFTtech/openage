@@ -2,7 +2,7 @@ Any file in this project that doesn't state otherwise, and isn't listed as an
 exception below, is Copyright 2013-2015 The openage authors, and licensed
 under the terms of the GNU General Public License Version 3, or
 (at your option) any later version ("GPL3+").
-A copy of the license can be found in [legal/GPLV3](legal/GPLv3).
+A copy of the license can be found in [legal/GPLV3](/legal/GPLv3).
 
 _the openage authors_ are:
 
@@ -105,7 +105,7 @@ source projects, require the following, longer header:
     (Modifications|Other (data|code)|Everything else) Copyright 2014-2014 the openage authors.
     See copying.md for further legal info.
 
-For even more details, see the [regular expressions](py/openage/codecompliance/legal.py).
+For even more details, see the [regular expressions](/py/openage/codecompliance/legal.py).
 
 In addition to the openage header, the file's original license header should
 be retained if in doubt.
@@ -120,12 +120,12 @@ All 3rd-party files **must** be included in the following list:
 
 List of all 3rd-party files in openage:
 
-From [cabextract/libmspack](http://www.cabextract.org.uk/) ([LGPL 2.0](legal/LGPLv2.0))
+From [cabextract/libmspack](http://www.cabextract.org.uk/) ([LGPL 2.0](/legal/LGPLv2.0))
 
  - `py/openage/convert/cabextract/lzxd/lzxd.cpp`
  - `py/openage/convert/cabextract/lzxd/lzx_compression_info`
 
-cmake modules ([3-clause BSD license](legal/BSD-3-clause))
+cmake modules ([3-clause BSD license](/legal/BSD-3-clause))
 
  - `buildsystem/modules/FindSDL2.cmake` (taken from [openmw](https://github.com/OpenMW/openmw))
  - `buildsystem/modules/FindFTGL.cmake` (taken from [ulrichard's FTGL fork](https://github.com/ulrichard/ftgl))
