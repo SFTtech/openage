@@ -1,7 +1,7 @@
 Documentation
 =============
 
-Most readers love documentation, it's creators hate it.
+Most readers love documentation, its creators hate it.
 
 Unfortunately, nobody can look inside your head and have the same ingenious
 thoughts as you do. To ensure your thoughts also reach the afterworld, please

@@ -20,7 +20,7 @@ script is a _cmake wrapper_ that will create a build directory and
 invoke cmake with the appropriate flags. The `Makefile` in the project
 root acts as a wrapper around several useful features.
 
-For more build system internals, see [doc/buildsystem.md](doc/buildsystem.md).
+For more build system internals, see [doc/buildsystem.md](/doc/buildsystem.md).
 
 
 ## Dependencies
@@ -177,7 +177,7 @@ Maybe you've found a bug... `irc.freenode.net/#sfttech`
 
 Why did you make the simple task of invoking a compiler so incredibly
 complicated? Seriously. I've been trying to get this pile of utter
-crap you call a 'build system' to simply do it's job for half an hour
+crap you call a 'build system' to simply do its job for half an hour
 now, but all it does is sputter unreadable error messages. I hate
 CMake. I'm fed up with you. Why are you doing this to me? I thought we
 were friends. I'm the most massive collection of wisdom that has ever
@@ -191,5 +191,5 @@ existed, and now **I HATE YOU**. It can't be for no reason. You
 - Unfortunately, it's not as simple as invoking an compiler. Building
   `openage` involves code generation and the building of Python C++
   extension modules.
-- See [buildsystem/simple](buildsystem/simple), which does exactly
+- See [buildsystem/simple](/buildsystem/simple), which does exactly
   these three things, manually.

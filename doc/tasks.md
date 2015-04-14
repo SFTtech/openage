@@ -33,10 +33,10 @@ If you've never programmed before, or are inexperienced:
 3. You might have guessed it, we will still make fun of you, though.
 
 
-The [documentation tree description](doc/README.md) might be your first clue.
+The [documentation tree description](/doc/README.md) might be your first clue.
 
 To get an overview about where to find what in the code,
-take a look at [the project structure info documentation](doc/implementation/project_structure.md).
+take a look at [the project structure info documentation](/doc/implementation/project_structure.md).
 
 
 Task proposals

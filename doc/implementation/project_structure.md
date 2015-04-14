@@ -18,7 +18,7 @@ of the project.
 You may not believe it, but documentation stuff is in the `doc/` folder. For
 example, this document resides in there, because it documents something. wow.
 
-See [doc/README.md](../doc/README.md) for documentation guidelines.
+See [doc/README.md](/doc/README.md) for documentation guidelines.
 
 
 ### py/openage/convert/ ###
@@ -26,7 +26,7 @@ See [doc/README.md](../doc/README.md) for documentation guidelines.
 This is a *Python* module for the conversion of the original media, stored in
 the `convert/` folder. Documentation about media files being converted is in
 `doc/media/`. The entry point for finding information about the implementation
-and design thoughts can be found in the [convert/README.md](convert/README.md)
+and design thoughts can be found in the [doc/implementation/convert/README.md](/doc/implementation/convert/README.md)
 file.
 
 
