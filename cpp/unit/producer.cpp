@@ -39,40 +39,13 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 	return result;
 }
 
-std::shared_ptr<TerrainObject> UnitProducer::place_beside(Unit *u, std::shared_ptr<TerrainObject> other) const {
-	if (!u || !other) {
-		return nullptr;
-	}
-
-	// find the range of possible tiles
-	tile_range outline{other->pos.start - coord::tile_delta{1, 1}, 
-	                   other->pos.end   + coord::tile_delta{1, 1}, 
-	                   other->pos.draw};
-
-	// find a free position adjacent to the object
-	auto terrain = other->get_terrain();
-	for (coord::tile temp_pos : tile_list(outline)) {
-		TerrainChunk *chunk = terrain->get_chunk(temp_pos);
-
-		if (chunk == nullptr) {
-			continue;
-		}
-
-		auto placed = this->place(u, *terrain, temp_pos.to_phys2().to_phys3());
-		if (placed) {
-			return placed;
-		}
-	}
-	return nullptr;
-}
-
 ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	:
 	datamanager(dm),
 	unit_data(*ud),
 	terrain_outline{nullptr},
 	default_tex{dm.get_unit_texture(ud->graphic_standing0)},
-	dead_unit_producer{dm.get_producer(ud->dead_unit_id)} {
+	dead_unit_producer{dm.get_type(ud->dead_unit_id)} {
 
 	// for now just look for type names ending with "_D"
 	this->decay = unit_data.name.substr(unit_data.name.length() - 2) == "_D";
@@ -137,11 +110,11 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 
 ObjectProducer::~ObjectProducer() {}
 
-int ObjectProducer::producer_id() const {
+int ObjectProducer::id() const {
 	return this->unit_data.id0;
 }
 
-std::string ObjectProducer::producer_name() const {
+std::string ObjectProducer::name() const {
 	return this->unit_data.name;
 }
 
@@ -156,7 +129,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	unit->reset();
 
 	// initialise unit
-	unit->producer = this;
+	unit->unit_type = this;
 	unit->unit_class = this->unit_data.unit_class;
 	unit->graphics = &this->graphics;
 
@@ -223,15 +196,14 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) const {
+std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// create new object with correct base shape
-	std::shared_ptr<TerrainObject> obj;
 	if (this->unit_data.selection_shape > 1) {
-		obj = std::make_shared<RadialObject>(*u, this->unit_data.radius_size0, this->terrain_outline, !this->decay);
+		u->make_location<RadialObject>(this->unit_data.radius_size0, this->terrain_outline);
 	}
 	else {
-		obj = std::make_shared<SquareObject>(*u, this->foundation_size, this->terrain_outline, !this->decay);
+		u->make_location<SquareObject>(this->foundation_size, this->terrain_outline);
 	}
 
 	// find set of allowed terrains
@@ -242,11 +214,15 @@ std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, Terrain &terrain, 
 	 * currently unit avoids water and tiles with another unit
 	 * this function should be true if pos is a valid position of the object
 	 */
-	obj->passable = [obj, &terrain, terrains](const coord::phys3 &pos) -> bool {
+	std::weak_ptr<TerrainObject> obj_ptr = u->location;
+	std::weak_ptr<Terrain> terrain_ptr = terrain;
+	u->location->passable = [obj_ptr, terrain_ptr, terrains](const coord::phys3 &pos) -> bool {
+		auto obj = obj_ptr.lock();
+		auto terrain = terrain_ptr.lock();
 
 		// look at all tiles in the bases range
 		for (coord::tile check_pos : tile_list(obj->get_range(pos))) {
-			TileContent *tc = terrain.get_data(check_pos);
+			TileContent *tc = terrain->get_data(check_pos);
 
 			// invalid tile types
 			if (!tc || terrains.count(tc->terrain_id) == 0) {
@@ -257,7 +233,7 @@ std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, Terrain &terrain, 
 			for (auto item : tc->obj) {
 				auto obj_cmp = item.lock();
 				if (obj != obj_cmp && 
-				    obj_cmp->check_collisions &&
+				    obj_cmp->check_collisions() &&
 				    obj->intersects(*obj_cmp, pos)) {
 					return false;
 				}
@@ -266,21 +242,20 @@ std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, Terrain &terrain, 
 		return true;
 	};
 
-	obj->draw = [=]() {
+	u->location->draw = [u, obj_ptr]() {
 		if (u->selected) {
-			obj->draw_outline();
+			obj_ptr.lock()->draw_outline();
 		}
 		u->draw();
 	};
 
 	// try to place the obj, it knows best whether it will fit.
-	bool obj_placed = obj->place(&terrain, init_pos);
-	if (obj_placed) {
-		obj->initialise();
+	auto state = this->decay? object_state::placed_no_collision : object_state::placed;
+	if (u->location->place(terrain, init_pos, state)) {
 		if (this->on_create) {
 			this->on_create->play();
 		}
-		return obj;
+		return u->location;
 	}
 
 	// placing at the given position failed
@@ -288,18 +263,13 @@ std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, Terrain &terrain, 
 	return nullptr;
 }
 
-UnitTexture *ObjectProducer::default_texture() {
-	return this->default_tex.get();
-}
-
-
 MovableProducer::MovableProducer(DataManager &dm, const gamedata::unit_movable *um)
 	:
 	ObjectProducer(dm, um),
 	unit_data(*um),
 	on_move{dm.get_sound(this->unit_data.move_sound)},
 	on_attack{dm.get_sound(this->unit_data.move_sound)},
-	projectile{dm.get_producer(this->unit_data.projectile_unit_id)} {
+	projectile{dm.get_type(this->unit_data.projectile_unit_id)} {
 
 	// extra graphics
 	this->graphics[graphic_type::walking] = dm.get_unit_texture(this->unit_data.walking_graphics0);
@@ -345,7 +315,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-std::shared_ptr<TerrainObject> MovableProducer::place(Unit *unit, Terrain &terrain, coord::phys3 init_pos) const {
+std::shared_ptr<TerrainObject> MovableProducer::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	return ObjectProducer::place(unit, terrain, init_pos);
 }
 
@@ -382,23 +352,23 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 		if (this->unit_data.id0 == 83) {
 
 			// male graphics
-			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->datamanager.get_producer(156); // builder 118
-			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->datamanager.get_producer(120); // forager
-			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->datamanager.get_producer(592); // sheperd
-			gather_attr.graphics[gamedata::unit_classes::TREES] = this->datamanager.get_producer(123); // woodcutter
-			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->datamanager.get_producer(579); // gold miner
-			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->datamanager.get_producer(124); // stone miner
+			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->datamanager.get_type(156); // builder 118
+			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->datamanager.get_type(120); // forager
+			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->datamanager.get_type(592); // sheperd
+			gather_attr.graphics[gamedata::unit_classes::TREES] = this->datamanager.get_type(123); // woodcutter
+			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->datamanager.get_type(579); // gold miner
+			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->datamanager.get_type(124); // stone miner
 			
 		}
 		else {
 
 			// female graphics
-			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->datamanager.get_producer(222); // builder 212
-			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->datamanager.get_producer(354); // forager
-			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->datamanager.get_producer(590); // sheperd
-			gather_attr.graphics[gamedata::unit_classes::TREES] = this->datamanager.get_producer(218); // woodcutter
-			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->datamanager.get_producer(581); // gold miner
-			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->datamanager.get_producer(220); // stone miner
+			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->datamanager.get_type(222); // builder 212
+			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->datamanager.get_type(354); // forager
+			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->datamanager.get_type(590); // sheperd
+			gather_attr.graphics[gamedata::unit_classes::TREES] = this->datamanager.get_type(218); // woodcutter
+			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->datamanager.get_type(581); // gold miner
+			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->datamanager.get_type(220); // stone miner
 		}
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 		unit->give_ability(std::make_shared<BuildAbility>(this->on_attack));
@@ -417,7 +387,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-std::shared_ptr<TerrainObject> LivingProducer::place(Unit *unit, Terrain &terrain, coord::phys3 init_pos) const {
+std::shared_ptr<TerrainObject> LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	return MovableProducer::place(unit, terrain, init_pos);
 }
 
@@ -427,9 +397,9 @@ BuldingProducer::BuldingProducer(DataManager &dm, const gamedata::unit_building 
 	unit_data{*ud},
 	texture{dm.get_unit_texture(ud->graphic_standing0)},
 	destroyed{dm.get_unit_texture(ud->graphic_dying0)},
-	trainable1{dm.get_producer(83)}, // 83 = m villager 
-	trainable2{dm.get_producer(293)}, // 293 = f villager 
-	projectile{dm.get_producer(this->unit_data.projectile_unit_id)},
+	trainable1{dm.get_type(83)}, // 83 = m villager 
+	trainable2{dm.get_type(293)}, // 293 = f villager 
+	projectile{dm.get_type(this->unit_data.projectile_unit_id)},
 	foundation_terrain{ud->terrain_id} {
 
 	// find suitable sounds
@@ -467,11 +437,11 @@ BuldingProducer::BuldingProducer(DataManager &dm, const gamedata::unit_building 
 
 BuldingProducer::~BuldingProducer() {}
 
-int BuldingProducer::producer_id() const {
+int BuldingProducer::id() const {
 	return this->unit_data.id0;
 }
 
-std::string BuldingProducer::producer_name() const {
+std::string BuldingProducer::name() const {
 	return this->unit_data.name;
 }
 
@@ -483,30 +453,24 @@ void BuldingProducer::initialise(Unit *unit, Player &player) {
 		this->unit_data.name);
 
 	// initialize graphic set
-	unit->producer = this;
+	unit->unit_type = this;
 	unit->unit_class = this->unit_data.unit_class;
 	unit->graphics = &this->graphics;
 
 	auto player_attr = new Attribute<attr_type::owner>(player);
 	unit->add_attribute(player_attr);
-	unit->add_attribute(new Attribute<attr_type::building>());
+	auto build_attr = new Attribute<attr_type::building>();
+	build_attr->foundation_terrain = this->foundation_terrain;
+	build_attr->pp = trainable2;
+	unit->add_attribute(build_attr);
 	unit->add_attribute(new Attribute<attr_type::garrison>());
 	unit->add_attribute(new Attribute<attr_type::hitpoints>(this->unit_data.hit_points));
-
-	// basic attributes on annexes
-	for (auto obj : unit->location->get_children()) {
-		obj->unit.add_attribute(player_attr);
-		obj->unit.push_action(std::make_unique<IdleAction>(&obj->unit), true);
-	}
-
-	auto &bl_attr = unit->get_attribute<attr_type::building>();
-	bl_attr.pp = trainable2;
 
 	// if a destroyed texture exists
 	if (this->destroyed) {
 		unit->push_action(std::make_unique<DeadAction>(unit), true);
 	}
-	unit->push_action(std::make_unique<IdleAction>(unit), true);
+	unit->push_action(std::make_unique<FoundationAction>(unit), true);
 
 	if (this->unit_data.projectile_unit_id > 0 && this->projectile) {
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
@@ -519,49 +483,51 @@ void BuldingProducer::initialise(Unit *unit, Player &player) {
 	unit->give_ability(std::make_shared<UngarrisonAbility>());
 }
 
-std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) const {
-
-	// not a tc --- hacks / fix me
-	bool collisions = this->unit_data.id0 != 109;
+std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// buildings have a square base
-	auto obj = std::make_shared<SquareObject>(*u, this->foundation_size, this->terrain_outline, collisions);
+	u->make_location<SquareObject>(this->foundation_size, this->terrain_outline);
 
 	/*
 	 * decide what terrain is passable using this lambda
 	 * currently unit avoids water and tiles with another unit
 	 * this function should be true if pos is a valid position of the object
 	 */
-	obj->passable = [obj, &terrain](const coord::phys3 &pos) -> bool {
+	std::weak_ptr<TerrainObject> obj_ptr = u->location;
+	std::weak_ptr<Terrain> terrain_ptr = terrain;
+	u->location->passable = [obj_ptr, terrain_ptr](const coord::phys3 &pos) -> bool {
+		auto obj = obj_ptr.lock();
+		auto terrain = terrain_ptr.lock();
 
 		// look at all tiles in the bases range
 		for (coord::tile check_pos : tile_list(obj->get_range(pos))) {
-			TileContent *tc = terrain.get_data(check_pos);
+			TileContent *tc = terrain->get_data(check_pos);
 			if (!tc) {
 				return false;
 			}
 			for (auto item : tc->obj) {
 				auto tobj = item.lock();
-				if (tobj->check_collisions) return false;
+				if (tobj->check_collisions()) return false;
 			}
 		}
 		return true;
 	};
 
 	// drawing function
-	obj->draw = [=]() {
+	// not a tc --- hacks / fix me
+	bool collisions = this->unit_data.id0 != 109;
+	u->location->draw = [u, obj_ptr, collisions]() {
 		if (u->selected && collisions) {
-			obj->draw_outline();
+			obj_ptr.lock()->draw_outline();
 		}
 		u->draw();
 	};
 
 	// try to place the obj, it knows best whether it will fit.
-	bool obj_placed = obj->place(&terrain, init_pos);
-	if (!obj_placed) {
+	auto state = object_state::floating; //collisions? object_state::placed : object_state::placed_no_collision;
+	if (!u->location->place(terrain, init_pos, state)) {
 		return nullptr;
 	}
-	obj->initialise();
 
 	// annex objects
 	for (unsigned i = 0; i < 4; ++i) {
@@ -569,29 +535,22 @@ std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, Terrain &terrain,
 		if (annex.unit_id > 0) {
 
 			// make objects for annex	
-			coord::phys3 a_pos = obj->pos.draw;
+			coord::phys3 a_pos = u->location->pos.draw;
 			a_pos.ne += annex.misplaced0 * coord::settings::phys_per_tile;
 			a_pos.se += annex.misplaced1 * coord::settings::phys_per_tile;
-			auto annex_obj = this->make_annex(*u, terrain, annex.unit_id, a_pos, i == 0);
-			obj->annex(annex_obj);
+			this->make_annex(*u, terrain, annex.unit_id, a_pos, i == 0);
 		}
 	}
 
+	// TODO: play sound once built
 	if (this->on_create) {
 		this->on_create->play();
 	}
-	if (this->foundation_terrain > 0) {
-		// TODO: use the gamedata terrain lookup!
-		obj->set_ground(this->foundation_terrain, 0);
-	}
-	return obj;
+	return u->location;
 }
 
-UnitTexture *BuldingProducer::default_texture() {
-	return this->texture.get();
-}
-
-std::shared_ptr<TerrainObject> BuldingProducer::make_annex(Unit &u, Terrain &t, int annex_id, coord::phys3 annex_pos, bool c) const {
+std::shared_ptr<TerrainObject> BuldingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
+	u.log(MSG(dbg) << "adding annex " << annex_id);
 
 	// find annex foundation size
 	auto b = datamanager.get_building_data(annex_id);
@@ -601,44 +560,35 @@ std::shared_ptr<TerrainObject> BuldingProducer::make_annex(Unit &u, Terrain &t, 
 	};
 
 	// producers place by the nw tile
-	auto p = datamanager.get_producer(annex_id);
 	coord::phys3 start_tile = annex_pos;
 	start_tile.ne -= b->radius_size0 * coord::settings::phys_per_tile;
 	start_tile.se -= b->radius_size1 * coord::settings::phys_per_tile;
 
-	// place on terrain
-	// TODO: less hacks
-	Unit *annex_unit = u.get_container()->new_unit().get();
-	annex_unit->producer = p;
-	annex_unit->graphics = &p->graphics;
-	auto annex_obj = std::make_shared<SquareObject>(*annex_unit, annex_foundation, c);
-	annex_obj->place(&t, start_tile);
+	// create and place on terrain
+	auto annex_loc = u.make_location_annex<SquareObject>(annex_foundation);
+	annex_loc->place(t, start_tile, object_state::floating);
 
-	if (c) {
-		annex_obj->draw = [annex_obj, annex_pos, p, &u]() {
+	// weak ptr for use in lambda drawing functions
+	std::weak_ptr<TerrainObject> annex_weak_ptr = annex_loc;
+	auto annex_type = datamanager.get_type(annex_id);
 
-			// draws the outline in the right order
-			if (u.selected) {
-				annex_obj->get_parent()->draw_outline();
-			}
+	// create special drawing functions for annexes,
+	annex_loc->draw = [annex_weak_ptr, annex_type, &u, c]() {
+		auto annex_location = annex_weak_ptr.lock();
 
-			if (u.has_attribute(attr_type::building) &&
-			    u.get_attribute<attr_type::building>().completed >= 1.0f) {
-				annex_obj->unit.draw();
-			}
-			
-		};
-	}
-	else {
-		annex_obj->draw = [annex_obj, annex_pos, p, &u]() {
-			if (u.has_attribute(attr_type::building) &&
-			    u.get_attribute<attr_type::building>().completed >= 1.0f) {
-				annex_obj->unit.draw();
-			}
-		};
-	}
+		// hack which draws the outline in the right order
+		// removable once rendering system is improved
+		if (c && u.selected) {
+			annex_location->get_parent()->draw_outline();
+		}
 
-	return annex_obj;
+		// only draw if building is completed
+		if (u.has_attribute(attr_type::building) &&
+		    u.get_attribute<attr_type::building>().completed >= 1.0f) {
+			u.draw(annex_location, &annex_type->graphics);
+		}
+	};
+	return annex_loc;
 }
 
 ProjectileProducer::ProjectileProducer(DataManager &dm, const gamedata::unit_projectile *pd)
@@ -661,18 +611,18 @@ ProjectileProducer::ProjectileProducer(DataManager &dm, const gamedata::unit_pro
 
 ProjectileProducer::~ProjectileProducer() {}
 
-int ProjectileProducer::producer_id() const {
+int ProjectileProducer::id() const {
 	return this->unit_data.id0;
 }
 
-std::string ProjectileProducer::producer_name() const {
+std::string ProjectileProducer::name() const {
 	return this->unit_data.name;
 }
 
 void ProjectileProducer::initialise(Unit *unit, Player &) {
 
 	// initialize graphic set
-	unit->producer = this;
+	unit->unit_type = this;
 	unit->unit_class = this->unit_data.unit_class;
 	unit->graphics = &this->graphics;
 
@@ -688,19 +638,23 @@ void ProjectileProducer::initialise(Unit *unit, Player &) {
 	}
 }
 
-std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, Terrain &terrain, coord::phys3 init_pos) const {
+std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	/*
 	 * radial base shape without collision checking
 	 */
-	auto obj = std::make_shared<RadialObject>(*u, this->unit_data.radius_size1, this->terrain_outline, false);
+	u->make_location<RadialObject>(this->unit_data.radius_size1, this->terrain_outline);
 
-	obj->passable = [obj, u, &terrain](const coord::phys3 &pos) -> bool {
+	std::weak_ptr<TerrainObject> obj_ptr = u->location;
+	std::weak_ptr<Terrain> terrain_ptr = terrain;
+	u->location->passable = [obj_ptr, u, terrain_ptr](const coord::phys3 &pos) -> bool {
 		if (pos.up > 64000) {
 			return true;
 		}
 
 		// avoid intersections with launcher
 		Unit *launcher = nullptr;
+		auto obj = obj_ptr.lock();
+		auto terrain = terrain_ptr.lock();
 		if (u->has_attribute(attr_type::projectile)) {
 			auto &pr_attr = u->get_attribute<attr_type::projectile>();
 			if (pr_attr.launched && pr_attr.launcher.is_valid()) {
@@ -716,7 +670,7 @@ std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, Terrain &terra
 
 		// look at all tiles in the bases range
 		for (coord::tile check_pos : tile_list(obj->get_range(pos))) {
-			TileContent *tc = terrain.get_data(check_pos);
+			TileContent *tc = terrain->get_data(check_pos);
 			if (!tc) return false;
 
 			// ensure no intersections with other objects
@@ -724,7 +678,7 @@ std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, Terrain &terra
 				auto obj_cmp = item.lock();
 				if (obj != obj_cmp && 
 				    &obj_cmp->unit != launcher &&
-				    obj_cmp->check_collisions &&
+				    obj_cmp->check_collisions() &&
 				    obj->intersects(*obj_cmp, pos)) {
 					return false;
 				}
@@ -733,22 +687,15 @@ std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, Terrain &terra
 		return true;
 	};
 
-	obj->draw = [=]() {
+	u->location->draw = [u]() {
 		u->draw();
 	};
 
-
 	// try to place the obj, it knows best whether it will fit.
-	bool obj_placed = obj->place(&terrain, init_pos);
-	if (obj_placed) {
-		obj->initialise();
-		return obj;
+	if (u->location->place(terrain, init_pos, object_state::placed_no_collision)) {
+		return u->location;
 	}
 	return nullptr;
-}
-
-UnitTexture *ProjectileProducer::default_texture() {
-	return this->tex.get();
 }
 
 } /* namespace openage */

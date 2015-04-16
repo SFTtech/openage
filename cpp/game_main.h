@@ -26,7 +26,6 @@
 namespace openage {
 
 class Unit;
-class UnitProducer;
 
 /**
  * runs the game.

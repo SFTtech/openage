@@ -47,12 +47,12 @@ MoveAbility::MoveAbility(Sound *s)
 }
 
 bool MoveAbility::can_invoke(Unit &to_modify, const Command &cmd) {
-	to_modify.log(MSG(dbg) << "check unit can invoke move action");
 	if (cmd.has_position()) {
 		return bool(to_modify.location);
 	}
 	else if (cmd.has_unit()) {
 		return to_modify.location &&
+		       cmd.unit()->location &&
 		       &to_modify != cmd.unit(); // cannot target self
 	}
 	return false; 
@@ -145,7 +145,7 @@ TrainAbility::TrainAbility(Sound *s)
 bool TrainAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	if (to_modify.has_attribute(attr_type::building)) {
 		auto &build_attr = to_modify.get_attribute<attr_type::building>();
-		return cmd.has_producer() && 1.0f <= build_attr.completed;
+		return cmd.has_type() && 1.0f <= build_attr.completed;
 	}
 	return false;
 }
@@ -155,7 +155,7 @@ void TrainAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) 
 	if (play_sound && this->sound) {
 		this->sound->play();
 	}
-	to_modify.push_action(std::make_unique<TrainAction>(&to_modify, cmd.producer()));
+	to_modify.push_action(std::make_unique<TrainAction>(&to_modify, cmd.type()));
 }
 
 BuildAbility::BuildAbility(Sound *s)
@@ -164,7 +164,7 @@ BuildAbility::BuildAbility(Sound *s)
 }
 
 bool BuildAbility::can_invoke(Unit &to_modify, const Command &cmd) {
-	if (cmd.has_producer() && cmd.has_position()) {
+	if (cmd.has_type() && cmd.has_position()) {
 		return bool(to_modify.location);
 	}
 	if (cmd.has_unit()) {
@@ -186,7 +186,7 @@ void BuildAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) 
 		to_modify.push_action(std::make_unique<BuildAction>(&to_modify, cmd.unit()->get_ref()));
 	}
 	else {
-		to_modify.push_action(std::make_unique<BuildAction>(&to_modify, cmd.producer(), cmd.position()));
+		to_modify.push_action(std::make_unique<BuildAction>(&to_modify, cmd.type(), cmd.position()));
 	}
 }
 
@@ -224,11 +224,13 @@ AttackAbility::AttackAbility(Sound *s)
 bool AttackAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	if (cmd.has_unit()) {
 		Unit &target = *cmd.unit();
+		bool target_is_resource = has_resource(target);
 		return &to_modify != &target &&
 		       to_modify.location &&
 		       to_modify.has_attribute(attr_type::attack) &&
 		       has_hitpoints(target) &&
-		       (is_enemy(to_modify, target) || has_resource(target));
+		       (is_enemy(to_modify, target) || target_is_resource) &&
+		       (cmd.has_flag(command_flag::attack_res) == target_is_resource);
 	}
 	return false;
 }
@@ -241,6 +243,14 @@ void AttackAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound)
 
 	Unit *target = cmd.unit();
 	to_modify.push_action(std::make_unique<AttackAction>(&to_modify, target->get_ref()));
+}
+
+ability_set from_list(const std::vector<ability_type> &items) {
+	ability_set result;
+	for (auto i : items) {
+		result[i] = 1;
+	}
+	return result;
 }
 
 } /* namespace openage */

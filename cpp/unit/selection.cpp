@@ -206,7 +206,7 @@ void UnitSelection::show_attributes(Unit *u) {
 	// render text
 	Engine &engine = Engine::get();
 	int vpos = 120;
-	engine.render_text({0, vpos}, 20, u->producer->producer_name().c_str());
+	engine.render_text({0, vpos}, 20, u->unit_type->name().c_str());
 	for (auto &s : lines) {
 		vpos -= this->font_size;
 		engine.render_text({0, vpos}, this->font_size, s.c_str());

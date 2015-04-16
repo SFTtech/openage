@@ -7,6 +7,7 @@
 #include "../pathfinding/a_star.h"
 #include "../pathfinding/heuristics.h"
 #include "../terrain/terrain.h"
+#include "../terrain/terrain_search.h"
 #include "action.h"
 #include "command.h"
 #include "producer.h"
@@ -131,6 +132,12 @@ void DeadAction::on_completion() {
 }
 
 bool DeadAction::completed() const {
+	// floating buildings are removed instantly
+	if (this->entity->top() == this &&
+	    this->entity->location->is_floating()) {
+		return true;
+	}
+
 	// check resource, trees/huntables with resource are not removed
 	if (this->entity->has_attribute(attr_type::resource)) {
 		auto &res_attr = this->entity->get_attribute<attr_type::resource>();
@@ -139,16 +146,64 @@ bool DeadAction::completed() const {
 	return this->frame > this->end_frame;
 }
 
+FoundationAction::FoundationAction(Unit *e)
+	:
+	UnitAction(e, graphic_type::construct) {
+}
+
+void FoundationAction::update(unsigned int) {}
+
+void FoundationAction::on_completion() {
+	this->entity->push_action(std::make_unique<IdleAction>(this->entity), true);
+}
+
+bool FoundationAction::completed() const {
+	return this->entity->has_attribute(attr_type::building) &&
+	       (this->entity->get_attribute<attr_type::building>().completed >= 1.0f);
+}
+
+IdleAction::IdleAction(Unit *e)
+	:
+	UnitAction(e, graphic_type::standing) {
+	auto terrain = this->entity->location->get_terrain();
+	auto current_tile = this->entity->location->pos.draw.to_tile3().to_tile();
+	this->search = std::make_shared<TerrainSearch>(terrain, current_tile, 5.0f);
+
+	// currently allow attack and heal automatically
+	this->auto_abilities = from_list({ability_type::attack, ability_type::heal});
+}
+
 void IdleAction::update(unsigned int time) {
 
-	// possibly use a seperate action for building construction
-	if (this->entity->has_attribute(attr_type::building)) {
-		auto &build = this->entity->get_attribute<attr_type::building>();
-		if (build.completed < 1.0f) {
-			this->graphic = graphic_type::construct;
+	// auto task searching
+	if (this->entity->location &&
+		this->entity->has_attribute(attr_type::owner)) {
+
+		// restart search from new tile when moved
+		auto terrain = this->entity->location->get_terrain();
+		auto current_tile = this->entity->location->pos.draw.to_tile3().to_tile();
+		if (!(current_tile == this->search->start_tile())) {
+			this->search = std::make_shared<TerrainSearch>(terrain, current_tile, 5.0f);
 		}
-		else {
-			this->graphic = graphic_type::standing;
+
+		// search one tile per update
+		// next tile will always be valid
+		coord::tile tile = this->search->next_tile();
+		auto tile_data = terrain->get_data(tile);
+		auto &player = this->entity->get_attribute<attr_type::owner>().player;
+
+		// find and actions which can be invoked
+		for (auto o : tile_data->obj) {
+			auto object_location = o.lock();
+			if (object_location) {
+				Command to_object(player, &object_location->unit);
+
+				// only allow abilities in the set of auto ability types
+				to_object.set_ability_set(auto_abilities);
+				if (this->entity->invoke(to_object)) {
+					break;
+				}
+			}
 		}
 	}
 
@@ -175,7 +230,8 @@ MoveAction::MoveAction(Unit *e, coord::phys3 tar, bool repath)
 	UnitAction{e, graphic_type::walking, path::path_grid_size},
 	unit_target{},
 	target(tar),
-	allow_repath{repath} {
+	allow_repath{repath},
+	end_action{false} {
 	this->initialise();
 }
 
@@ -184,7 +240,8 @@ MoveAction::MoveAction(Unit *e, UnitReference tar, coord::phys_t within_range)
 	UnitAction{e, graphic_type::walking, within_range},
 	unit_target{tar},
 	target(tar.get()->location->pos.draw),
-	allow_repath{false} {
+	allow_repath{false},
+	end_action{false} {
 	this->initialise();
 }
 
@@ -213,6 +270,12 @@ void MoveAction::update(unsigned int time) {
 	if (this->unit_target.is_valid()) {
 		// a unit is targeted, which may move
 		auto target_object = this->unit_target.get()->location;
+
+		// check for garrisoning objects
+		if (!target_object) {
+			this->end_action = true;
+			return;
+		}
 		coord::phys3 &target_pos = target_object->pos.draw;
 		coord::phys3 &unit_pos = this->entity->location->pos.draw;
 
@@ -231,6 +294,10 @@ void MoveAction::update(unsigned int time) {
 
 	// path not found
 	if (this->path.waypoints.empty()) {
+		if (!this->allow_repath) {
+			this->entity->log(MSG(dbg) << "Path not found -- drop action");
+			this->end_action = true;
+		}
 		return;
 	}
 
@@ -290,7 +357,7 @@ void MoveAction::update(unsigned int time) {
 		}
 		else {
 			this->entity->log(MSG(dbg) << "Path blocked -- drop action");
-			this->path.waypoints.clear();
+			this->end_action = true;
 		}
 	}
 
@@ -303,8 +370,9 @@ void MoveAction::on_completion() {}
 bool MoveAction::completed() const {
 
 	// no more waypoints to a static location
-	if (!this->unit_target.is_valid() &&
-		this->path.waypoints.empty()) {
+	if (this->end_action ||
+	    (!this->unit_target.is_valid() &&
+	    this->path.waypoints.empty())) {
 		return true;
 	}
 
@@ -399,7 +467,7 @@ void UngarrisonAction::update(unsigned int) {
 				Unit *unit_ptr = u.get();
 
 				// make sure it was placed outside
-				if (unit_ptr->producer->place_beside(unit_ptr, this->entity->location)) {
+				if (unit_ptr->unit_type->place_beside(unit_ptr, this->entity->location)) {
 
 					// task unit to move to position
 					auto &player = this->entity->get_attribute<attr_type::owner>().player;
@@ -421,7 +489,7 @@ void UngarrisonAction::update(unsigned int) {
 
 void UngarrisonAction::on_completion() {}
 
-TrainAction::TrainAction(Unit *e, UnitProducer *pp)
+TrainAction::TrainAction(Unit *e, UnitType *pp)
 	:
 	UnitAction{e, graphic_type::standing},
 	trained{pp},
@@ -457,11 +525,11 @@ void TrainAction::update(unsigned int time) {
 
 void TrainAction::on_completion() {}
 
-BuildAction::BuildAction(Unit *e, UnitProducer *pp, const coord::phys3 &pos)
+BuildAction::BuildAction(Unit *e, UnitType *pp, const coord::phys3 &pos)
 	:
 	UnitAction{e, graphic_type::work},
 	building{},
-	producer{pp},
+	place_type{pp},
 	position(pos),
 	complete{.0f} {
 }
@@ -470,7 +538,7 @@ BuildAction::BuildAction(Unit *e, UnitReference foundation)
 	:
 	UnitAction{e, graphic_type::work},
 	building{foundation},
-	producer{nullptr},
+	place_type{nullptr},
 	complete{.0f} {
 }
 
@@ -497,8 +565,15 @@ void BuildAction::update(unsigned int time) {
 			return;
 		}
 		else if (b->has_attribute(attr_type::building)) {
-			// increment building completion
 			auto &build = b->get_attribute<attr_type::building>();
+
+			// upgrade floating outlines
+			if (target_location->is_floating()) {
+				target_location->place(object_state::placed);
+				target_location->set_ground(build.foundation_terrain, 0);
+			}	
+
+			// increment building completion
 			build.completed += 0.001;
 			this->complete = build.completed;
 		}
@@ -506,12 +581,19 @@ void BuildAction::update(unsigned int time) {
 			this->complete = 1.0;
 		}
 	}
-	else {
+	else if (place_type) {
 
-		// create foundation using the producer
+		// create foundation using the type
 		UnitContainer *container = this->entity->get_container();
 		auto &player = this->entity->get_attribute<attr_type::owner>().player;
-		this->building = container->new_unit(*this->producer, player, this->position);
+		this->building = container->new_unit(*this->place_type, player, this->position);
+		if (!this->building.is_valid()) {
+			// placement failed, abort action
+			this->complete = 1.0;
+		}
+	}
+	else {
+		this->complete = 1.0;
 	}
 
 	// inc frame
@@ -543,14 +625,13 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	dropsite{} {
 
 	// find nearest dropsite from the targeted resource
-	TerrainObject *ds = path::find_nearest(this->target.get()->location.get(),
-		[=](const openage::TerrainObject *other) -> bool {
-			if (!other) {
-				return false;
-			}
-			return &other->unit != this->entity &&
-			       &other->unit != tar.get() &&
-			       other->unit.has_attribute(attr_type::building);
+	auto ds = find_near(*this->target.get()->location,
+		[=](const TerrainObject &obj) {
+			return &obj.unit != this->entity &&
+			       &obj.unit != tar.get() &&
+			       obj.unit.has_attribute(attr_type::building) &&
+			       obj.unit.has_attribute(attr_type::owner) &&
+			       obj.unit.get_attribute<attr_type::owner>().player.owns(*this->entity);
 	});
 
 	if (ds) {
@@ -621,6 +702,7 @@ void GatherAction::update(unsigned int time) {
 		if (hp_attr.current > 0) {
 			Command cmd(player, this->target.get());
 			cmd.set_ability(ability_type::attack);
+			cmd.add_flag(command_flag::attack_res);
 			this->entity->invoke(cmd);
 			return;
 		}
@@ -654,19 +736,29 @@ AttackAction::AttackAction(Unit *e, UnitReference tar)
 	UnitAction{e, graphic_type::attack},
 	target{tar},
 	strike_percent{0.0f},
-	rate_of_fire{0.002f} {
+	rate_of_fire{0.002f},
+	allow_move{true},
+	end_action{false} {
 }
 
 AttackAction::~AttackAction() {}
 
 void AttackAction::update(unsigned int time) {
-	if (!this->target.is_valid()) return;
+	if (!this->target.is_valid()) {
+		return;
+	}
+
+	// make sure object is not garrisoned
+	auto target_ptr = this->target.get();
+	if (!target_ptr->location) {
+		return;
+	}
 
 	// set direction unit should face
-	this->face_towards(this->target.get()->location->pos.draw);
+	this->face_towards(target_ptr->location->pos.draw);
 
 	// find distance
-	this->distance_to_target = target.get()->location->from_edge(this->entity->location->pos.draw);
+	this->distance_to_target = target_ptr->location->from_edge(this->entity->location->pos.draw);
 
 	// subtract range of this unit
 	auto &attack = this->entity->get_attribute<attr_type::attack>();
@@ -681,19 +773,29 @@ void AttackAction::update(unsigned int time) {
 	else if (distance_to_target <= this->radius) {
 		strike_percent = 1.0f;
 		this->frame = 0.0f;
-		this->attack(*this->target.get());
+		this->attack(*target_ptr);
+		this->allow_move = true;
 	}
-	else {
+	else if (this->allow_move) {
 		// out of range so try move towards
 		// if this unit has a move ability
-		this->move_to(*this->target.get());
+		this->move_to(*target_ptr);
+		this->allow_move = false;
+	}
+	else {
+		// unit is stuck
+		this->end_action = true;
 	}
 }
 
 void AttackAction::on_completion() {}
 
 bool AttackAction::completed() const {
-	if (!this->target.is_valid()) return true;
+	if (this->end_action ||
+	    !this->target.is_valid() ||
+	    !this->target.get()->location) {
+		return true;
+	}
 	auto &h_attr = this->target.get()->get_attribute<attr_type::hitpoints>();
 	return h_attr.current < 1; // is unit still alive?
 }
@@ -800,12 +902,13 @@ void ProjectileAction::update(unsigned int time) {
 	if (!this->entity->location->move(new_position)) {
 
 		// find object which was hit
-		Terrain *terrain = this->entity->location->get_terrain();
+		auto terrain = this->entity->location->get_terrain();
 		TileContent *tc = terrain->get_data(new_position.to_tile3().to_tile());
 		if (tc && !tc->obj.empty()) {
 			for (auto item : tc->obj) {
 				auto obj_location = item.lock();
-				if (this->entity->location != obj_location) {
+				if (this->entity->location != obj_location &&
+				    obj_location->check_collisions()) {
 					this->damage_object(obj_location->unit, 1);
 					break;
 				}

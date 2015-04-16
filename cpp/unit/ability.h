@@ -7,6 +7,7 @@
 #include <memory>
 #include <type_traits>
 #include <unordered_map>
+#include <vector>
 
 #include "../coord/phys3.h"
 #include "resource.h"
@@ -17,8 +18,8 @@ class Command;
 class Sound;
 class Unit;
 class UnitAction;
-class UnitProducer;
 class UnitTexture;
+class UnitType;
 
 /**
  * roughly the same as command_ability in game data
@@ -40,6 +41,11 @@ enum ability_type {
 
 using ability_set = std::bitset<16>;
 using ability_id_t = unsigned int;
+
+/**
+ * set bits corresponding to abilities
+ */
+ability_set from_list(const std::vector<ability_type> &items);
 
 /**
  * all bits set to 1

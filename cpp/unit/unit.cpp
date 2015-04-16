@@ -17,7 +17,7 @@ namespace openage {
 Unit::Unit(UnitContainer &c, id_t id)
 	:
 	id{id},
-	producer{nullptr},
+	unit_type{nullptr},
 	selected{false},
 	pop_destructables{false},
 	container(c) {
@@ -38,15 +38,15 @@ void Unit::reset() {
 	this->pop_destructables = false;
 }
 
-bool Unit::has_action() {
+bool Unit::has_action() const {
 	return !this->action_stack.empty();
 }
 
-bool Unit::accept_commands() {
+bool Unit::accept_commands() const {
 	return (this->has_action() && this->top()->allow_control());
 }
 
-UnitAction *Unit::top() {
+UnitAction *Unit::top() const {
 	if (this->action_stack.empty()) {
 		throw util::Error{MSG(err) << "Unit stack empty - no top action exists"};
 	}
@@ -62,8 +62,8 @@ bool Unit::update() {
 	if (this->pop_destructables) {
 		this->erase_after(
 			[](std::unique_ptr<UnitAction> &e) {
-				return e->allow_control();
-			});
+				return e->allow_interupt() || e->allow_control();
+			}, false);
 	}
 
 	/*
@@ -106,16 +106,20 @@ void Unit::update_secondary(int64_t time_elapsed) {
 }
 
 void Unit::draw() {
+	this->draw(this->location, this->graphics);
+}
+
+void Unit::draw(std::shared_ptr<TerrainObject> loc, graphic_set *grpc) {
 	auto top_action = this->top();
-	auto &draw_pos = this->location->pos.draw;
+	auto &draw_pos = loc->pos.draw;
 	auto draw_graphic = top_action->type();
-	if (this->graphics->count(draw_graphic) == 0) {
+	if (grpc->count(draw_graphic) == 0) {
 		this->log(MSG(warn) << "graphic not available");
 		return;
 	}
 
 	// the texture to draw with
-	auto draw_texture = this->graphics->at(draw_graphic);
+	auto draw_texture = grpc->at(draw_graphic);
 	if (!draw_texture) {
 		this->log(MSG(warn) << "graphic null");
 		return;
@@ -139,8 +143,8 @@ void Unit::draw() {
 		coord::phys3_delta draw_dir = d_attr.unit_dir;
 		draw_texture->draw(draw_pos.to_camgame(), draw_dir, draw_frame, color);
 
-		if (this->graphics->count(graphic_type::shadow) > 0) {
-			auto unit_shadow = this->graphics->at(graphic_type::shadow);
+		if (grpc->count(graphic_type::shadow) > 0) {
+			auto unit_shadow = grpc->at(graphic_type::shadow);
 			if (unit_shadow) {
 
 				// position without height component
@@ -235,7 +239,7 @@ std::string Unit::logsource_name() {
 	return "Unit " + std::to_string(this->id);
 }
 
-void Unit::erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func) {
+void Unit::erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func, bool run_completed) {
 	auto position_it = std::find_if(
 		std::begin(this->action_stack),
 		std::end(this->action_stack),
@@ -248,7 +252,9 @@ void Unit::erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func) 
 		this->action_stack.erase(position_it, std::end(this->action_stack));
 
 		// perform any completion actions
-		completed_action->on_completion();
+		if (run_completed) {
+			completed_action->on_completion();
+		}
 	}
 }
 

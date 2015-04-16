@@ -4,12 +4,12 @@
 
 namespace openage {
 
-Command::Command(const Player &p, Unit *unit, bool haspos, UnitProducer *producer)
+Command::Command(const Player &p, Unit *unit, bool haspos, UnitType *t)
 	:
 	player(p),
 	has_pos{haspos},
 	u{unit},
-	type{producer} {
+	unit_type{t} {
 	this->modifiers.set();
 }
 
@@ -27,17 +27,17 @@ Command::Command(const Player &p, coord::phys3 position)
 Command::Command(const Player &p, Unit *unit, coord::phys3 position)
 	:
 	Command{p, unit, true, nullptr} {
-	this->pos = position;	
+	this->pos = position;
 }
 
-Command::Command(const Player &p, UnitProducer *producer)
+Command::Command(const Player &p, UnitType *t)
 	:
-	Command{p, nullptr, false, producer} {
+	Command{p, nullptr, false, t} {
 }
 
-Command::Command(const Player &p, UnitProducer *producer, coord::phys3 position)
+Command::Command(const Player &p, UnitType *t, coord::phys3 position)
 	:
-	Command{p, nullptr, true, producer} {
+	Command{p, nullptr, true, t} {
 	this->pos = position;
 }
 
@@ -49,8 +49,8 @@ bool Command::has_position() const {
 	return this->has_pos;
 }
 
-bool Command::has_producer() const {
-	return this->type;
+bool Command::has_type() const {
+	return this->unit_type;
 }
 
 Unit *Command::unit() const {
@@ -61,13 +61,17 @@ coord::phys3 Command::position() const {
 	return this->pos;
 }
 
-UnitProducer *Command::producer() const {
-	return this->type;
+UnitType *Command::type() const {
+	return this->unit_type;
 }
 
 void Command::set_ability(ability_type t) {
 	this->modifiers = 0;
 	this->modifiers[t] = true;
+}
+
+void Command::set_ability_set(ability_set set) {
+	this->modifiers = set;
 }
 
 const ability_set &Command::ability() const {

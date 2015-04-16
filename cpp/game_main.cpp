@@ -289,8 +289,8 @@ GameMain::GameMain(Engine *engine)
 	this->keybind_context.bind(keybinds::action_t::TRAIN_OBJECT, [this]() {
 		// attempt to train editor selected object
 		if ( this->datamanager.producer_count() > 0 ) {
-			UnitProducer *producer = this->datamanager.get_producer_index(this->editor_current_building);
-			Command cmd(this->players[0], producer);
+			auto type = this->datamanager.get_type_index(this->editor_current_building);
+			Command cmd(this->players[0], type);
 			this->selection.all_invoke(cmd);
 		}
 	});
@@ -346,7 +346,7 @@ bool GameMain::on_input(SDL_Event *e) {
 			if (this->building_placement) {
 
 				// confirm building placement with left click
-				Command cmd(this->players[0], this->datamanager.get_producer_index(this->editor_current_building), mousepos_phys3);
+				Command cmd(this->players[0], this->datamanager.get_type_index(this->editor_current_building), mousepos_phys3);
 				cmd.set_ability(ability_type::build);
 				selection.all_invoke(cmd);
 				this->building_placement = false;
@@ -408,7 +408,7 @@ bool GameMain::on_input(SDL_Event *e) {
 			} else if ( this->datamanager.producer_count() > 0 ) {
 				// try creating a unit
 				log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
-				UnitProducer &producer = *this->datamanager.get_producer_index(this->editor_current_building);
+				auto &producer = *this->datamanager.get_type_index(this->editor_current_building);
 				this->placed_units.new_unit(producer, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
 			}
 			break;
@@ -560,7 +560,7 @@ bool GameMain::on_draw() {
 	}
 
 	if (this->building_placement) {
-		auto txt = this->datamanager.get_producer_index(this->editor_current_building)->default_texture();
+		auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
 		txt->draw(mousepos_tile.to_phys2().to_phys3().to_camgame(), 0, 1);
 	}
 
@@ -578,7 +578,7 @@ bool GameMain::on_drawhud() {
 		coord::window bpreview_pos;
 		bpreview_pos.x = e.engine_coord_data->window_size.x - 200;
 		bpreview_pos.y = 200;
-		auto txt = this->datamanager.get_producer_index(this->editor_current_building)->default_texture();
+		auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
 		txt->sample(bpreview_pos.to_camhud());
 	}
 	return true;

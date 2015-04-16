@@ -43,9 +43,9 @@ public:
 	const id_t id;
 
 	/**
-	 * producer used to create this object
+	 * type which was used to create this object
 	 */
-	UnitProducer *producer;
+	UnitType *unit_type;
 
 	/**
 	 * class of this unit instance
@@ -62,6 +62,7 @@ public:
 	/**
 	 * space on the map used by this unit
 	 * null if the object is not yet placed or garrisoned
+	 * TODO: make private field
 	 */
 	std::shared_ptr<TerrainObject> location;
 
@@ -69,6 +70,41 @@ public:
 	 * graphics sets which can be modified for gathering
 	 */
 	graphic_set *graphics;
+
+	/**
+	 * constructs a new location for this unit replacing any
+	 * existing location
+	 *
+	 * uses same args as the location constructor
+	 * except the first which will filled automatically
+	 */
+	template<class T, typename ... Arg>
+	void make_location(Arg ... args) {
+
+		// remove any existing location	
+		if (this->location) {
+			this->location->remove();
+		}
+
+		// since Unit is a friend of the location
+		// make_shared will not work
+		this->location = std::shared_ptr<T>(new T(*this, args ...));
+	}
+
+	/**
+	 * constructs a new annex location for this unit
+	 *
+	 * this does not replace the units location
+	 */
+	template<class T, typename ... Arg>
+	std::shared_ptr<T> make_location_annex(Arg ... args) {
+
+		// since Unit is a friend of the location
+		// make_shared will not work
+		auto annex_ptr = std::shared_ptr<T>(new T(*this, args ...));
+		this->location->annex(annex_ptr);
+		return annex_ptr;
+	}
 
 	/** 
 	 * removes all actions and abilities
@@ -80,17 +116,17 @@ public:
 	 * checks the entity has an action, if it has no action it should be removed from the game
 	 * @return true if the entity currently has an action
 	 */
-	bool has_action();
+	bool has_action() const;
 
 	/**
 	 * true when the unit is alive and able to add new actions
 	 */
-	bool accept_commands();
+	bool accept_commands() const;
 
 	/**
 	 * returns the current action on top of the stack
 	 */
-	UnitAction *top();
+	UnitAction *top() const;
 
 	/**
 	 * update this object using the action currently on top of the stack
@@ -102,6 +138,11 @@ public:
 	 * the graphic is found from the current graphic set
 	 */
 	void draw();
+
+	/**
+	 * an generalized draw function which is useful for drawing annexes
+	 */
+	void draw(std::shared_ptr<TerrainObject> loc, graphic_set *graphics);
 
 	/**
 	 * adds an available ability to this unit
@@ -142,7 +183,8 @@ public:
 	/**
 	 * returns attribute based on templated value
 	 */
-	template<attr_type T> Attribute<T> &get_attribute() {
+	template<attr_type T>
+	Attribute<T> &get_attribute() {
 		return *reinterpret_cast<Attribute<T> *>(attribute_map[T]);
 	}
 
@@ -233,8 +275,10 @@ private:
 	/**
 	 * erase from action specified by func to the end of the stack
 	 * all actions erased will have the on_complete function called
+	 *
+	 * popped actions on_complete function is ignored when run_completed is false
 	 */
-	void erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func);
+	void erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func, bool run_completed=true);
 
 };
 

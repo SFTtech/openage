@@ -13,6 +13,8 @@
 
 namespace openage {
 
+class TerrainSearch;
+
 /**
  * Actions can be pushed onto any units action stack
  *
@@ -66,7 +68,8 @@ public:
 	/**
 	 * checks if the action can be interrupted, allowing it to be popped if the user 
 	 * specifies a new action, if false the action must reach a completed state 
-	 * before removal
+	 * before removal 
+	 * eg dead action must be completed and cannot be discarded
 	 */
 	virtual bool allow_interupt() const = 0;
 
@@ -75,9 +78,7 @@ public:
 	 * should the stack be modifiable when this action is on top
 	 *
 	 * if true this action must complete and will not allow new actions
-	 * to be pushed while it is active
-	 * eg dead action must be completed and cannot be discarded
-	 * and also does not update the secondary actions
+	 * to be pushed while it is active and also does not update the secondary actions
 	 */
 	virtual bool allow_control() const = 0;
 
@@ -165,13 +166,28 @@ private:
 };
 
 /**
+ * places an idle action on the stack once building is complete
+ */
+class FoundationAction: public UnitAction {
+public:
+	FoundationAction(Unit *e);
+	virtual ~FoundationAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override;
+	bool allow_interupt() const override { return true; }
+	bool allow_control() const override { return false; }
+	std::string name() const override { return "foundation"; }
+	
+};
+
+/**
  * keeps an entity in a fixed position
  */
 class IdleAction: public UnitAction {
 public:
-	IdleAction(Unit *e)
-		:
-		UnitAction(e, graphic_type::standing) {}
+	IdleAction(Unit *e);
 	virtual ~IdleAction() {}
 
 	void update(unsigned int) override;
@@ -180,6 +196,12 @@ public:
 	bool allow_interupt() const override { return false; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "idle"; }
+
+private:
+	// look for auto task actions
+	std::shared_ptr<TerrainSearch> search;
+	ability_set auto_abilities;
+
 };
 
 /**
@@ -214,7 +236,7 @@ private:
 	path::Path path;
 
 	// should a new path be found if unit gets blocked
-	bool allow_repath;
+	bool allow_repath, end_action;
 
 	void initialise();
 
@@ -275,7 +297,7 @@ private:
  */
 class TrainAction: public UnitAction {
 public:
-	TrainAction(Unit *e, UnitProducer *pp);
+	TrainAction(Unit *e, UnitType *pp);
 	virtual ~TrainAction() {}
 
 	void update(unsigned int) override;
@@ -286,7 +308,7 @@ public:
 	std::string name() const override { return "train"; }
 
 private:
-	UnitProducer *trained;
+	UnitType *trained;
 	bool complete;
 	float train_percent;
 };
@@ -296,7 +318,7 @@ private:
  */
 class BuildAction: public UnitAction {
 public:
-	BuildAction(Unit *e, UnitProducer *pp, const coord::phys3 &pos);
+	BuildAction(Unit *e, UnitType *pp, const coord::phys3 &pos);
 	BuildAction(Unit *e, UnitReference foundation);
 	virtual ~BuildAction() {}
 
@@ -309,7 +331,7 @@ public:
 
 private:
 	UnitReference building;
-	UnitProducer *producer;
+	UnitType *place_type;
 	coord::phys3 position;
 	float complete;
 };
@@ -373,6 +395,7 @@ public:
 private:
 	UnitReference target;
 	float strike_percent, rate_of_fire;
+	bool allow_move, end_action;
 
 	/**
 	 * use attack action

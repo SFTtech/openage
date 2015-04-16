@@ -18,14 +18,12 @@
 
 namespace openage {
 
-TerrainObject::TerrainObject(Unit &u, bool collisions)
+TerrainObject::TerrainObject(Unit &u)
 	:
 	unit(u),
-	check_collisions{collisions},
 	passable{[](const coord::phys3 &) -> bool {return true;}},
 	draw{[]() {}},
-	placed{false},
-	terrain{nullptr},
+	state{object_state::removed},
 	occupied_chunk_count{0} {
 }
 
@@ -33,28 +31,42 @@ TerrainObject::~TerrainObject() {
 	// remove all connections from terrain
 	this->unit.log(MSG(dbg) << "Cleanup terrain object");
 	this->remove();
-	this->unit.location = nullptr;
 }
 
-void TerrainObject::initialise() {
+bool TerrainObject::is_floating() const {
+	return this->state == object_state::floating;
+}
 
-	// remove any existing location	
-	if (unit.location) {
-		unit.location->remove();
-	}
+bool TerrainObject::is_placed() const {
+	return this->state == object_state::placed || 
+	       this->state == object_state::placed_no_collision;
+}
 
-	// shared_from_this cannot be used in the constructor,
-	// so an initalise function is required
-	unit.location = this->shared_from_this();
+
+bool TerrainObject::check_collisions() const {
+	return this->state == object_state::placed;
 }
 
 void TerrainObject::draw_outline() const {
 	this->outline_texture->draw(this->pos.draw.to_camgame());
 }
 
-bool TerrainObject::place(Terrain *terrain, coord::phys3 &position) {
-	if (this->placed) {
+bool TerrainObject::place(object_state init_state) {
+		if (this->state != object_state::floating) {
+		throw util::Error(MSG(err) << "Building must be floating");
+	}
+
+	// set state
+	this->state = init_state;
+	return true;
+}
+
+bool TerrainObject::place(std::shared_ptr<Terrain> t, coord::phys3 &position, object_state init_state) {
+	if (this->state != object_state::removed) {
 		throw util::Error(MSG(err) << "This object has already been placed.");
+	}
+	else if (init_state == object_state::removed) {
+		throw util::Error(MSG(err) << "Cannot place an object with removed state.");
 	}
 
 	// use passiblity test
@@ -62,32 +74,45 @@ bool TerrainObject::place(Terrain *terrain, coord::phys3 &position) {
 		return false;
 	}
 
-	this->place_unchecked(terrain, position);
+	// place on terrain
+	this->place_unchecked(t, position);
+
+	// set state
+	this->state = init_state;
 	return true;
 }
 
 bool TerrainObject::move(coord::phys3 &position) {
-	if (not this->placed) {
+	if (this->state == object_state::removed) {
 		return false;
 	}
+	auto old_state = this->state;
 
 	// todo should do outside of this function
 	bool can_move = this->passable(position);
 	if (can_move) {
 		this->remove();
-		this->place_unchecked(terrain, position);
+		this->place_unchecked(this->get_terrain(), position);
+		this->state = old_state;
 	}
 	return can_move;
 }
 
 void TerrainObject::remove() {
-	if (this->occupied_chunk_count == 0 or not this->placed) {
+	// remove all children first
+	for (auto &c : this->children) {
+		c->remove();
+	}
+	this->children.clear();
+
+	if (this->occupied_chunk_count == 0 ||
+	    this->state == object_state::removed) {
 		return;
 	}
 
 	auto shared_this = this->shared_from_this();
 	for (coord::tile temp_pos : tile_list(this->pos)) {
-		TerrainChunk *chunk = terrain->get_chunk(temp_pos);
+		TerrainChunk *chunk = this->get_terrain()->get_chunk(temp_pos);
 
 		if (chunk == nullptr) {
 			continue;
@@ -105,11 +130,11 @@ void TerrainObject::remove() {
 	}
 
 	this->occupied_chunk_count = 0;
-	this->placed = false;
+	this->state = object_state::removed;
 }
 
 void TerrainObject::set_ground(int id, int additional) {
-	if (not this->placed) {
+	if (not this->is_placed()) {
 		throw util::Error(MSG(err) << "Setting ground for object that is not placed yet.");
 	}
 
@@ -118,7 +143,7 @@ void TerrainObject::set_ground(int id, int additional) {
 	temp_pos.se -= additional;
 	while (temp_pos.ne < this->pos.end.ne + additional) {
 		while (temp_pos.se < this->pos.end.se + additional) {
-			TerrainChunk *chunk = terrain->get_chunk(temp_pos);
+			TerrainChunk *chunk = this->get_terrain()->get_chunk(temp_pos);
 
 			if (chunk == nullptr) {
 				continue;
@@ -133,7 +158,7 @@ void TerrainObject::set_ground(int id, int additional) {
 	}
 }
 
-void TerrainObject::annex(std::shared_ptr<TerrainObject> &other) {
+void TerrainObject::annex(std::shared_ptr<TerrainObject> other) {
 	this->children.push_back(other);
 	other->parent = this->shared_from_this();
 }
@@ -174,10 +199,10 @@ bool TerrainObject::operator <(const TerrainObject &other) {
 	return true;
 }
 
-void TerrainObject::place_unchecked(Terrain *terrain, coord::phys3 &position) {
+void TerrainObject::place_unchecked(std::shared_ptr<Terrain> t, coord::phys3 &position) {
 	// storing the position:
 	this->pos = get_range(position);
-	this->terrain = terrain;
+	this->terrain = t;
 	this->occupied_chunk_count = 0;
 
 	bool chunk_known = false;
@@ -186,7 +211,7 @@ void TerrainObject::place_unchecked(Terrain *terrain, coord::phys3 &position) {
 	// set pointers to this object on each terrain tile
 	// where the building will stand and block the ground
 	for (coord::tile temp_pos : tile_list(this->pos)) {
-		TerrainChunk *chunk = terrain->get_chunk(temp_pos);
+		TerrainChunk *chunk = this->get_terrain()->get_chunk(temp_pos);
 
 		if (chunk == nullptr) {
 			continue;
@@ -208,18 +233,16 @@ void TerrainObject::place_unchecked(Terrain *terrain, coord::phys3 &position) {
 		int tile_pos = chunk->tile_position_neigh(temp_pos);
 		chunk->get_data(tile_pos)->obj.push_back(this->shared_from_this());
 	}
-
-	this->placed = true;
 }
 
-SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size, bool collisions)
+SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size)
 	:
-	SquareObject(u, foundation_size, square_outline(foundation_size), collisions) {
+	SquareObject(u, foundation_size, square_outline(foundation_size)) {
 }
 
-SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex, bool collisions)
+SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex)
 	:
-	TerrainObject(u, collisions),
+	TerrainObject(u),
 	size(foundation_size) {
 	this->outline_texture = out_tex;
 }
@@ -305,14 +328,14 @@ coord::phys_t SquareObject::min_axis() const {
 	return std::min( this->size.ne, this->size.se ) * coord::settings::phys_per_tile;
 }
 
-RadialObject::RadialObject(Unit &u, float rad, bool collisions)
+RadialObject::RadialObject(Unit &u, float rad)
 	:
-	RadialObject(u, rad, radial_outline(rad), collisions) {
+	RadialObject(u, rad, radial_outline(rad)) {
 }
 
-RadialObject::RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex, bool collisions)
+RadialObject::RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex)
 	:
-	TerrainObject(u, collisions),
+	TerrainObject(u),
 	phys_radius(coord::settings::phys_per_tile * rad) {
 	this->outline_texture = out_tex;
 }

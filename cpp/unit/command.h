@@ -16,7 +16,8 @@ namespace openage {
  * additional flags which may affect some abilities
  */
 enum class command_flag {
-	use_range // move command account for units range
+	use_range, // move command account for units range
+	attack_res // allow attack on a resource object
 };
 
 } // namespace openage
@@ -66,28 +67,34 @@ public:
 	/**
 	 * select a type
 	 */
-	Command(const Player &, UnitProducer *producer);
+	Command(const Player &, UnitType *t);
 
 	/** 
 	 * place building foundation
 	 */ 
-	Command(const Player &, UnitProducer *, coord::phys3);
+	Command(const Player &, UnitType *, coord::phys3);
 
 	bool has_unit() const;
 	bool has_position() const;
-	bool has_producer()const;
+	bool has_type()const;
 
 	Unit *unit() const;
 	coord::phys3 position() const;
-	UnitProducer *producer() const;
+	UnitType *type() const;
 
 	/**
-	 * the action can only be this ability
+	 * sets invoked ability type, no other type may be used if
+	 * this gets set
 	 *
 	 * @param type allows a specific ability type to be used
 	 * for example to set a unit to patrol rather than the default move
 	 */
 	void set_ability(ability_type t);
+
+	/**
+	 * restricts action to a set of possible ability types
+	 */
+	void set_ability_set(ability_set set);
 
 	/**
 	 * the ability types allowed to use this command
@@ -114,12 +121,12 @@ private:
 	/**
 	 * basic constructor, which shouldnt be used directly
 	 */
-	Command(const Player &, Unit *unit, bool haspos, UnitProducer *producer);
+	Command(const Player &, Unit *unit, bool haspos, UnitType *t);
 
 	bool has_pos;
 	Unit *u;
 	coord::phys3 pos;
-	UnitProducer *type;
+	UnitType *unit_type;
 
 	/**
 	 * additional options

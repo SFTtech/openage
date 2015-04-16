@@ -14,13 +14,13 @@
 namespace openage {
 
 class AssetManager;
-class UnitProducer;
+class UnitType;
 
 /**
  * the key type mapped to data objects
  */
 using index_t = int;
-using producer_list = std::vector<std::unique_ptr<UnitProducer>>;
+using unit_type_list = std::vector<std::unique_ptr<UnitType>>;
 
 /**
  * simple sound object
@@ -88,12 +88,12 @@ public:
 	/**
 	 * producers by aoe unit ids -- the producer which corresponds to an aoe unit id
 	 */
-	UnitProducer *get_producer(index_t producer_id);
+	UnitType *get_type(index_t type_id);
 
 	/**
 	 * producers by list index -- a continuous array of all producers
 	 */
-	UnitProducer *get_producer_index(size_t producer_index);
+	UnitType *get_type_index(size_t type_index);
 
 	/** 
 	 * data for a graphic
@@ -117,7 +117,7 @@ private:
 	/**
 	 * all available game objects.
 	 */
-	producer_list available_objects;
+	unit_type_list available_objects;
 
 	/**
 	 * slp to graphic reverse lookup
@@ -142,7 +142,7 @@ private:
 	/**
 	 * unit ids -> producer for that id
 	 */
-	std::unordered_map<index_t, UnitProducer *> producers;
+	std::unordered_map<index_t, UnitType *> producers;
 
 	/**
 	 * unit ids -> producer for that id
@@ -167,16 +167,16 @@ private:
 	/**
 	 * makes producers for all types in the game data
 	 */
-	void create_producers(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id);
+	void create_unit_types(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id);
 
 	/**
 	 * loads required assets to produce an entity type
 	 * adds to the producer list if the object can be created safely
 	 */
-	void load_building(const gamedata::unit_building &, producer_list &);
-	void load_living(const gamedata::unit_living &, producer_list &);
-	void load_object(const gamedata::unit_object &, producer_list &);
-	void load_projectile(const gamedata::unit_projectile &, producer_list &);
+	void load_building(const gamedata::unit_building &, unit_type_list &);
+	void load_living(const gamedata::unit_living &, unit_type_list &);
+	void load_object(const gamedata::unit_object &, unit_type_list &);
+	void load_projectile(const gamedata::unit_projectile &, unit_type_list &);
 
 	/**
 	 * has game data been load yet

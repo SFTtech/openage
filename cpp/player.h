@@ -10,6 +10,8 @@
 
 namespace openage {
 
+class Unit;
+
 class Player {
 public:
 	Player(unsigned int number);
@@ -24,8 +26,20 @@ public:
 
 	const std::string name;
 
+	/**
+	 * the specified player is an enemy of this player
+	 */
 	bool is_enemy(const Player &) const;
+
+	/**
+	 * the specified player is an ally of this player
+	 */
 	bool is_ally(const Player &) const;
+
+	/**
+	 * this player owns the specified unit
+	 */ 
+	bool owns(Unit &) const;
 
 private:
 	std::unordered_map<game_resource, double> resources;
