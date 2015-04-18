@@ -14,6 +14,7 @@
 #include "engine.h"
 #include "coord/tile.h"
 #include "handlers.h"
+#include "keybinds/keybinds.h"
 #include "player.h"
 #include "terrain/terrain.h"
 #include "terrain/terrain_object.h"
@@ -64,7 +65,7 @@ public:
 	bool clicking_active;
 	bool ctrl_active;
 	bool scrolling_active;
-	bool draging_active;
+	bool dragging_active;
 	bool construct_mode;
 	bool building_placement;
 	bool use_set_ability;
@@ -87,6 +88,8 @@ public:
 
 	AssetManager assetmanager;
 	DataManager datamanager;
+
+	keybinds::Keybinds keybinds;
 
 	util::ExternalProfiler external_profiler;
 private:
