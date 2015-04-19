@@ -54,6 +54,14 @@ if(NOT DEFINED WANT_INOTIFY)
 	set(WANT_INOTIFY if_available)
 endif()
 
+if(NOT DEFINED WANT_OPENGL)
+	set(WANT_OPENGL if_available)
+endif()
+
+if(NOT DEFINED WANT_VULKAN)
+	set(WANT_VULKAN if_available)
+endif()
+
 if(NOT DEFINED WANT_GPERFTOOLS_PROFILER)
 	set(WANT_GPERFTOOLS_PROFILER if_available)
 endif()

@@ -150,6 +150,35 @@ else()
 	have_config_option(inotify INOTIFY false)
 endif()
 
+# opengl support
+if(WANT_OPENGL)
+	find_package(OpenGL)
+endif()
+
+# vulkan support
+if(WANT_VULKAN)
+	find_package(Vulkan)
+endif()
+
+if(WANT_OPENGL AND OPENGL_FOUND)
+	have_config_option(opengl OPENGL true)
+	include_directories(${OPENGL_INCLUDE_DIR})
+else()
+	have_config_option(opengl OPENGL false)
+endif()
+
+if(WANT_VULKAN AND VULKAN_FOUND)
+	have_config_option(vulkan VULKAN true)
+	include_directories(${VULKAN_INCLUDE_DIR})
+else()
+	have_config_option(vulkan VULKAN false)
+endif()
+
+if(NOT (OPENGL_FOUND OR VULKAN_FOUND))
+	message(FATAL_ERROR "One of OpenGL or Vulkan is required!")
+endif()
+
+
 get_config_option_string()
 
 configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
