@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_KEYBINDS_KEYBINDS_H_
 #define OPENAGE_KEYBINDS_KEYBINDS_H_
@@ -9,6 +9,7 @@
 #include <SDL2/SDL.h>
 
 #include "action.h"
+#include "key.h"
 
 namespace openage {
 namespace keybinds {
@@ -19,9 +20,9 @@ public:
     Keybinds();
 
     void bind(action_t a, std::function<void()> f);
-    void press(SDL_Keycode c);
+    void press(key_t k);
 
-    std::unordered_map<SDL_Keycode, action_t> keys;
+    std::unordered_map<key_t, action_t, key_hash> keys;
     std::array<std::function<void()>, (std::size_t)action_t::MAX> binds;
 };
 

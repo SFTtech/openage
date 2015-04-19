@@ -63,13 +63,13 @@ public:
 
 	bool debug_grid_active;
 	bool clicking_active;
-	bool ctrl_active;
 	bool scrolling_active;
 	bool dragging_active;
 	bool construct_mode;
 	bool building_placement;
 	bool use_set_ability;
 	ability_type ability;
+	SDL_Keymod keymod;
 
 	// mouse position
 	coord::camgame mousepos_camgame;

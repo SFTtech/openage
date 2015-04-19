@@ -113,7 +113,6 @@ GameMain::GameMain(Engine *engine)
 	editor_current_building{0},
 	debug_grid_active{false},
 	clicking_active{true},
-	ctrl_active{false},
 	scrolling_active{false},
 	dragging_active{false},
 	construct_mode{true},
@@ -422,7 +421,7 @@ bool GameMain::on_input(SDL_Event *e) {
 
 	case SDL_MOUSEBUTTONUP:
 		if (dragging_active and e->button.button == SDL_BUTTON_LEFT) {
-			selection.drag_release(terrain.get(), this->ctrl_active);
+			selection.drag_release(terrain.get(), this->keymod == KMOD_LCTRL);
 			dragging_active = false;
 		}
 		else if (scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
@@ -456,7 +455,7 @@ bool GameMain::on_input(SDL_Event *e) {
 	}
 
 	case SDL_MOUSEWHEEL:
-		if (this->ctrl_active && this->datamanager.producer_count() > 0) {
+		if (this->keymod == KMOD_LCTRL && this->datamanager.producer_count() > 0) {
 			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
 		}
 		else {
@@ -464,27 +463,16 @@ bool GameMain::on_input(SDL_Event *e) {
 		}
 		break;
 
-	case SDL_KEYUP: {
-
-		auto key = ((SDL_KeyboardEvent *) e)->keysym.sym;
-		keybinds.press(key);
-		
-		if (key == SDLK_LCTRL) {
-			this->ctrl_active = false;			
-		}
-
+	case SDL_KEYUP:
+		this->keymod = SDL_GetModState();
+		keybinds.press(keybinds::key_t(((SDL_KeyboardEvent *) e)->keysym.sym, keymod));
 		break;
-	}
 
 	case SDL_KEYDOWN:
-		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
-		case SDLK_LCTRL:
-			this->ctrl_active = true;
-			break;
-		}
-
+		this->keymod = SDL_GetModState();
 		break;
-	}
+
+	} // switch (e->type)
 
 	return true;
 }

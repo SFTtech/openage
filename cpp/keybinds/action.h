@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_KEYBINDS_ACTION_H_
 #define OPENAGE_KEYBINDS_ACTION_H_
