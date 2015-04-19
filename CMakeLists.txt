@@ -52,6 +52,14 @@ if(NOT DEFINED WANT_INOTIFY)
 	set(WANT_INOTIFY if_available)
 endif()
 
+if(NOT DEFINED WANT_OPENGL)
+	set(WANT_OPENGL if_available)
+endif()
+
+if(NOT DEFINED WANT_VULKAN)
+	set(WANT_VULKAN if_available)
+endif()
+
 if(NOT DEFINED WANT_GPERFTOOLS_PROFILER)
 	set(WANT_GPERFTOOLS_PROFILER if_available)
 endif()
@@ -59,7 +67,9 @@ endif()
 if(NOT DEFINED WANT_GPERFTOOLS_TCMALLOC)
 	set(WANT_GPERFTOOLS_TCMALLOC false)
 endif()
+# -- options
 
+# set cmake paths
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
 set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
 
