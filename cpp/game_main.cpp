@@ -463,14 +463,23 @@ bool GameMain::on_input(SDL_Event *e) {
 		}
 		break;
 
-	case SDL_KEYUP:
+	case SDL_KEYUP: {
 		this->keymod = SDL_GetModState();
-		keybinds.press(keybinds::key_t(((SDL_KeyboardEvent *) e)->keysym.sym, keymod));
-		break;
 
-	case SDL_KEYDOWN:
-		this->keymod = SDL_GetModState();
+		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+		keybinds.set_key_state(sym, false);
+		keybinds.press(keybinds::key_t(sym, keymod));
 		break;
+	}
+
+	case SDL_KEYDOWN: {
+		this->keymod = SDL_GetModState();
+
+		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+		keybinds.set_key_state(sym, true);
+		break;
+	}
+
 
 	} // switch (e->type)
 
@@ -486,18 +495,16 @@ void GameMain::move_camera() {
 	// one pixel per millisecond equals 14.3 tiles/second
 	float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
 
-	CoreInputHandler &input_handler = engine.get_input_handler();
-
-	if (input_handler.is_key_down(SDLK_LEFT)) {
+	if (keybinds.is_key_down(SDLK_LEFT)) {
 		mov_x = -cam_movement_speed_keyboard;
 	}
-	if (input_handler.is_key_down(SDLK_RIGHT)) {
+	if (keybinds.is_key_down(SDLK_RIGHT)) {
 		mov_x = cam_movement_speed_keyboard;
 	}
-	if (input_handler.is_key_down(SDLK_DOWN)) {
+	if (keybinds.is_key_down(SDLK_DOWN)) {
 		mov_y = cam_movement_speed_keyboard;
 	}
-	if (input_handler.is_key_down(SDLK_UP)) {
+	if (keybinds.is_key_down(SDLK_UP)) {
 		mov_y = -cam_movement_speed_keyboard;
 	}
 

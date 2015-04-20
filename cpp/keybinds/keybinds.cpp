@@ -42,5 +42,21 @@ void Keybinds::press(key_t k) {
     }
 }
 
+void Keybinds::set_key_state(SDL_Keycode k, bool is_down) {
+    key_states[k] = is_down;
+}
+
+// not that the function stores a unknown/new keycode
+// as 'not pressed' when it was requested
+bool Keybinds::is_key_down(SDL_Keycode k) {
+    auto it = this->key_states.find(k);
+    if (it != this->key_states.end()) {
+        return it->second;
+    } else {
+        this->key_states[k] = false;
+        return false;
+    }
+}
+
 } //namespace keybinds
 } //namespace openage

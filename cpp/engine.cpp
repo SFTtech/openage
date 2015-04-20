@@ -81,8 +81,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 
 	// enqueue the engine's own input handler to the
 	// execution list.
-	this->register_input_action(&this->input_handler);
-	this->input_handler.register_resize_action(this);
+	this->register_resize_action(this);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw util::Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
@@ -256,9 +255,22 @@ void Engine::loop() {
 		this->job_manager->execute_callbacks();
 
 		while (SDL_PollEvent(&event)) {
-			for (auto &action : this->on_input_event) {
-				if (false == action->on_input(&event)) {
-					break;
+			if (event.type == SDL_WINDOWEVENT) {
+				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+					coord::window new_size{event.window.data1, event.window.data2};
+
+					// call additional handlers for the resize event
+					for (auto &handler : on_resize_handler) {
+						if (!handler->on_resize(new_size)) {
+							break;
+						}
+					}
+				}
+			} else {
+				for (auto &action : this->on_input_event) {
+					if (false == action->on_input(&event)) {
+						break;
+					}
 				}
 			}
 		}
@@ -335,7 +347,7 @@ void Engine::register_draw_action(DrawHandler *handler) {
 }
 
 void Engine::register_resize_action(ResizeHandler *handler) {
-	this->input_handler.register_resize_action(handler);
+	this->on_resize_handler.push_back(handler);
 }
 
 util::Dir *Engine::get_data_dir() {
@@ -352,10 +364,6 @@ audio::AudioManager &Engine::get_audio_manager() {
 
 ScreenshotManager &Engine::get_screenshot_manager() {
 	return this->screenshot_manager;
-}
-
-CoreInputHandler &Engine::get_input_handler() {
-	return this->input_handler;
 }
 
 int64_t Engine::lastframe_duration_nsec() {

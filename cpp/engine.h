@@ -18,7 +18,6 @@
 #include "coord/window.h"
 #include "font.h"
 #include "handlers.h"
-#include "input.h"
 #include "job/job_manager.h"
 #include "util/dir.h"
 #include "util/fps.h"
@@ -28,9 +27,7 @@ namespace openage {
 
 class DrawHandler;
 class TickHandler;
-class InputHandler;
 class ResizeHandler;
-class CoreInputHandler;
 
 struct coord_data {
 	coord::window window_size{800, 600};
@@ -191,11 +188,6 @@ public:
 	ScreenshotManager &get_screenshot_manager();
 
 	/**
-	 * return the core input handler of the engine.
-	 */
-	CoreInputHandler &get_input_handler();
-
-	/**
 	 * return the number of nanoseconds that have passed
 	 * for rendering the last frame.
 	 *
@@ -250,13 +242,6 @@ private:
 	util::Dir *data_dir;
 
 	/**
-	 * the core engine input handler.
-	 * additional input handlers may be registered with
-	 * `register_input_action`
-	 */
-	CoreInputHandler input_handler;
-
-	/**
 	 * input event processor objects.
 	 * called for each captured sdl input event.
 	 */
@@ -278,6 +263,11 @@ private:
 	 * with the renderer set to the camhud system
 	 */
 	std::vector<HudHandler *> on_drawhud;
+
+	/**
+	 * list of handlers that are executed upon a resize event.
+	 */
+	std::vector<ResizeHandler *> on_resize_handler;
 
 	/**
 	 * the frame counter measuring fps.

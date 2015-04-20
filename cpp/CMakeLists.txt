@@ -18,7 +18,6 @@ add_sources(${PROJECT_NAME}
 	engine.cpp
 	font.cpp
 	handlers.cpp
-	input.cpp
 	player.cpp
 	python.cpp
 	screenshot.cpp
