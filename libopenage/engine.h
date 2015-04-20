@@ -432,7 +432,7 @@ private:
 	 * This is actually a void * but sdl2 thought it was a good idea to
 	 * name it like a differently.
 	 */
-	SDL_GLContext glcontext;
+	std::unique_ptr<renderer::Window> window;
 
 	/**
 	 * the gui binding

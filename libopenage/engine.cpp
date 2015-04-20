@@ -8,7 +8,6 @@
 #include <time.h>
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 
 #include "config.h"
 #include "error/error.h"
@@ -161,7 +160,7 @@ Engine::Engine(const util::Path &root_dir,
 	// what gets drawn last is displayed on top.
 	glDisable(GL_DEPTH_TEST);
 
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	this->window = std::make_unique<renderer::Window>(windowtitle);
 
 	//// -- initialize the gui
 	util::Path qml_root = this->root_dir / "assets" / "qml";
@@ -441,7 +440,6 @@ void Engine::loop() {
 
 			if (this->drawing_debug_overlay.value) {
 				this->draw_debug_overlay();
-
 			}
 
 			if (this->drawing_huds.value) {
@@ -465,7 +463,7 @@ void Engine::loop() {
 
 		// the rendering is done
 		// swap the drawing buffers to actually show the frame
-		SDL_GL_SwapWindow(window);
+		this->window->swap();
 
 		if (this->ns_per_frame != 0) {
 			uint64_t ns_for_current_frame = cap_timer.getval();
@@ -474,6 +472,7 @@ void Engine::loop() {
 			}
 		}
 
+		// vsync wait time is over.
 		this->profiler.end_measure("idle");
 
 		this->profiler.end_frame_measure();
