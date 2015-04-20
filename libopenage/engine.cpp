@@ -8,7 +8,6 @@
 #include <time.h>
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 
 #include "error/error.h"
 #include "error/gl_debug.h"
@@ -104,84 +103,10 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 	// execution list.
 	this->register_resize_action(this);
 
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		throw Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
-	} else {
-		log::log(MSG(info) << "Initialized SDL video subsystems.");
-	}
+	// register the engines input manager
+	this->register_input_action(&this->input_manager);
 
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-
-	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
-	this->window = SDL_CreateWindow(
-		windowtitle,
-		SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED,
-		this->engine_coord_data->window_size.x,
-		this->engine_coord_data->window_size.y,
-		window_flags
-	);
-
-	if (this->window == nullptr) {
-		throw Error(MSG(err) << "Failed to create SDL window: " << SDL_GetError());
-	}
-
-	// load support for the PNG image formats, jpg bit: IMG_INIT_JPG
-	int wanted_image_formats = IMG_INIT_PNG;
-	int sdlimg_inited = IMG_Init(wanted_image_formats);
-	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		throw Error(MSG(err) << "Failed to init PNG support: " << IMG_GetError());
-	}
-
-	if (gl_debug)
-		this->glcontext = error::create_debug_context(this->window);
-	else
-		this->glcontext = SDL_GL_CreateContext(this->window);
-
-	if (this->glcontext == nullptr) {
-		throw Error(MSG(err) << "Failed creating OpenGL context: " << SDL_GetError());
-	}
-
-	// check the OpenGL version, for shaders n stuff
-	if (!epoxy_is_desktop_gl() || epoxy_gl_version() < 21) {
-		throw Error(MSG(err) << "OpenGL 2.1 not available");
-	}
-
-	// to quote the standard doc:
-	// 'The value gives a rough estimate
-	// of the largest texture that the GL can handle'
-	// -> wat?
-	// anyways, we need at least 1024x1024.
-	int max_texture_size;
-	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
-	log::log(MSG(dbg) << "Maximum supported texture size: " << max_texture_size);
-	if (max_texture_size < 1024) {
-		throw Error(MSG(err) << "Maximum supported texture size too small: " << max_texture_size);
-	}
-
-	int max_texture_units;
-	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_texture_units);
-	log::log(MSG(dbg) << "Maximum supported texture units: " << max_texture_units);
-	if (max_texture_units < 2) {
-		throw Error(MSG(err) << "Your GPU has not enough texture units: " << max_texture_units);
-	}
-
-	// vsync on
-	SDL_GL_SetSwapInterval(1);
-
-	// enable alpha blending
-	glEnable(GL_BLEND);
-
-	// order of drawing relevant for depth
-	// what gets drawn last is displayed on top.
-	glDisable(GL_DEPTH_TEST);
-
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	this->window = std::make_unique<renderer::Window>(windowtitle);
 
 	// qml sources will be installed to the asset dir
 	// otherwise assume that launched from the source dir
@@ -251,10 +176,6 @@ Engine::~Engine() {
 	this->gui.reset();
 
 	delete this->job_manager;
-	SDL_GL_DeleteContext(glcontext);
-	SDL_DestroyWindow(window);
-	IMG_Quit();
-	SDL_Quit();
 }
 
 bool Engine::on_resize(coord::window new_size) {
@@ -443,7 +364,6 @@ void Engine::loop() {
 
 			if (this->drawing_debug_overlay.value) {
 				this->draw_debug_overlay();
-
 			}
 
 			if (this->drawing_huds.value) {
@@ -467,7 +387,7 @@ void Engine::loop() {
 
 		// the rendering is done
 		// swap the drawing buffers to actually show the frame
-		SDL_GL_SwapWindow(window);
+		this->window->swap();
 
 		if (this->ns_per_frame != 0) {
 			uint64_t ns_for_current_frame = cap_timer.getval();
@@ -476,6 +396,7 @@ void Engine::loop() {
 			}
 		}
 
+		// vsync wait time is over.
 		this->profiler.end_measure("idle");
 
 		this->profiler.end_frame_measure();

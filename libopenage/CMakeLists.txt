@@ -40,8 +40,8 @@ add_subdirectory("gui")
 add_subdirectory("error")
 add_subdirectory("gamestate")
 add_subdirectory("input")
-add_subdirectory("log")
 add_subdirectory("job")
+add_subdirectory("log")
 add_subdirectory("pathfinding")
 add_subdirectory("pyinterface")
 add_subdirectory("renderer")
@@ -51,7 +51,6 @@ add_subdirectory("terrain")
 add_subdirectory("testing")
 add_subdirectory("unit")
 add_subdirectory("util")
-
 
 # run codegen, add files to executable
 codegen_run()

@@ -5,10 +5,7 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
-
 #include <cstdint>
-
-#include <SDL2/SDL.h>
 
 #include <QObject>
 
@@ -24,10 +21,11 @@
 #include "game_singletons_info.h"
 #include "handlers.h"
 #include "options.h"
-#include "job/job_manager.h"
 // pxd: from libopenage.input.input_manager cimport InputManager
 #include "input/input_manager.h"
 #include "input/action.h"
+#include "job/job_manager.h"
+#include "renderer/window.h"
 #include "util/externalprofiler.h"
 #include "util/dir.h"
 #include "util/fps.h"
@@ -424,15 +422,10 @@ private:
 	std::unordered_map<int, renderer::Font *> fonts;
 
 	/**
-	 * SDL window where everything is displayed within.
+	 * The render window. Everything is drawn in here.
+	 * Also contains the context.
 	 */
-	SDL_Window *window;
-
-	/**
-	 * SDL OpenGL context, we'll only have one,
-	 * but it would allow having multiple ones.
-	 */
-	SDL_GLContext glcontext;
+	std::unique_ptr<renderer::Window> window;
 
 	/**
 	 * the gui binding
@@ -444,7 +437,14 @@ private:
 	 */
 	util::Profiler profiler;
 
+	/**
+	 * The font manager to provide different sized and styled fonts.
+	 */
 	std::unique_ptr<renderer::FontManager> font_manager;
+
+	/**
+	 * The engine's text renderer. To be integrated into the main renderer.
+	 */
 	std::unique_ptr<renderer::TextRenderer> text_renderer;
 
 public:
