@@ -366,6 +366,10 @@ ScreenshotManager &Engine::get_screenshot_manager() {
 	return this->screenshot_manager;
 }
 
+keybinds::KeybindManager &Engine::get_keybind_manager() {
+	return this->keybind_manager;
+}
+
 int64_t Engine::lastframe_duration_nsec() {
 	return this->fps_counter.nsec_lastframe;
 }

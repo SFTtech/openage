@@ -16,7 +16,7 @@
 #include "engine.h"
 #include "gamedata/string_resource.gen.h"
 #include "game_save.h"
-#include "keybinds/keybinds.h"
+#include "keybinds/keybind_manager.h"
 #include "log/log.h"
 #include "terrain/terrain.h"
 #include "unit/action.h"
@@ -118,6 +118,7 @@ GameMain::GameMain(Engine *engine)
 	construct_mode{true},
 	building_placement{false},
 	use_set_ability{false},
+	keymod{KMOD_NONE},
 	assetmanager{engine->get_data_dir()},
 	engine{engine} {
 
@@ -242,33 +243,31 @@ GameMain::GameMain(Engine *engine)
 	delete alphamask_vert;
 	delete alphamask_frag;
 
+	// initialize global keybinds
+	auto &global_keybind_context = engine->get_keybind_manager().get_global_keybind_context();
 
-	// initialize keybinds
-	keybinds.bind(keybinds::action_t::STOP_GAME, [this]() {
+	global_keybind_context.bind(keybinds::action_t::STOP_GAME, [this]() {
 		this->engine->stop();
 	});
-	keybinds.bind(keybinds::action_t::TOGGLE_HUD, [this]() {
+	global_keybind_context.bind(keybinds::action_t::TOGGLE_HUD, [this]() {
 		this->engine->drawing_huds = !this->engine->drawing_huds;
 	});
-	keybinds.bind(keybinds::action_t::SCREENSHOT, [this]() {
+	global_keybind_context.bind(keybinds::action_t::SCREENSHOT, [this]() {
 		this->engine->get_screenshot_manager().save_screenshot();
 	});
-	keybinds.bind(keybinds::action_t::TOGGLE_DEBUG_OVERLAY, [this]() {
+	global_keybind_context.bind(keybinds::action_t::TOGGLE_DEBUG_OVERLAY, [this]() {
 		this->engine->drawing_debug_overlay = !this->engine->drawing_debug_overlay;
 	});
-	keybinds.bind(keybinds::action_t::TOGGLE_DEBUG_GRID, [this]() {
+	global_keybind_context.bind(keybinds::action_t::TOGGLE_DEBUG_GRID, [this]() {
 		this->debug_grid_active = !this->debug_grid_active;
 	});
-	keybinds.bind(keybinds::action_t::QUICK_SAVE, [this]() {
+	global_keybind_context.bind(keybinds::action_t::QUICK_SAVE, [this]() {
 		gameio::save(this, "default_save.txt");
 	});
-	keybinds.bind(keybinds::action_t::QUICK_LOAD, [this]() {
+	global_keybind_context.bind(keybinds::action_t::QUICK_LOAD, [this]() {
 		gameio::load(this, "default_save.txt");
 	});
-	keybinds.bind(keybinds::action_t::TOGGLE_BLENDING, [this]() {
-		this->terrain->blending_enabled = !terrain->blending_enabled;
-	});
-	keybinds.bind(keybinds::action_t::TOGGLE_PROFILER, [this]() {
+	global_keybind_context.bind(keybinds::action_t::TOGGLE_PROFILER, [this]() {
 		if (this->external_profiler.currently_profiling) {
 			this->external_profiler.stop();
 			this->external_profiler.show_results();
@@ -276,13 +275,18 @@ GameMain::GameMain(Engine *engine)
 			this->external_profiler.start();
 		}
 	});
-	keybinds.bind(keybinds::action_t::TOGGLE_CONSTRUCT_MODE, [this]() {
-			this->construct_mode = !this->construct_mode;
+
+	// Local keybinds
+	this->keybind_context.bind(keybinds::action_t::TOGGLE_BLENDING, [this]() {
+		this->terrain->blending_enabled = !terrain->blending_enabled;
 	});
-	keybinds.bind(keybinds::action_t::TOGGLE_UNIT_DEBUG, [this]() {
-			UnitAction::show_debug = !UnitAction::show_debug;
+	this->keybind_context.bind(keybinds::action_t::TOGGLE_CONSTRUCT_MODE, [this]() {
+		this->construct_mode = !this->construct_mode;
 	});
-	keybinds.bind(keybinds::action_t::TRAIN_OBJECT, [this]() {
+	this->keybind_context.bind(keybinds::action_t::TOGGLE_UNIT_DEBUG, [this]() {
+		UnitAction::show_debug = !UnitAction::show_debug;
+	});
+	this->keybind_context.bind(keybinds::action_t::TRAIN_OBJECT, [this]() {
 		// attempt to train editor selected object
 		if ( this->datamanager.producer_count() > 0 ) {
 			UnitProducer *producer = this->datamanager.get_producer_index(this->editor_current_building);
@@ -290,20 +294,22 @@ GameMain::GameMain(Engine *engine)
 			this->selection.all_invoke(cmd);
 		}
 	});
-	keybinds.bind(keybinds::action_t::ENABLE_BUILDING_PLACEMENT, [this]() {
+	this->keybind_context.bind(keybinds::action_t::ENABLE_BUILDING_PLACEMENT, [this]() {
 		this->building_placement = true;
 	});
-	keybinds.bind(keybinds::action_t::DISABLE_SET_ABILITY, [this]() {
+	this->keybind_context.bind(keybinds::action_t::DISABLE_SET_ABILITY, [this]() {
 		this->use_set_ability = false;
 	});
-	keybinds.bind(keybinds::action_t::SET_ABILITY_MOVE, [this]() {
+	this->keybind_context.bind(keybinds::action_t::SET_ABILITY_MOVE, [this]() {
 		this->use_set_ability = true;
 		this->ability = ability_type::move;
 	});
-	keybinds.bind(keybinds::action_t::SET_ABILITY_GATHER, [this]() {
+	this->keybind_context.bind(keybinds::action_t::SET_ABILITY_GATHER, [this]() {
 		this->use_set_ability = true;
 		this->ability = ability_type::gather;
 	});
+
+	engine->get_keybind_manager().register_context(&this->keybind_context);
 }
 
 GameMain::~GameMain() {
@@ -467,6 +473,7 @@ bool GameMain::on_input(SDL_Event *e) {
 		this->keymod = SDL_GetModState();
 
 		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+		auto keybinds = engine.get_keybind_manager();
 		keybinds.set_key_state(sym, false);
 		keybinds.press(keybinds::key_t(sym, keymod));
 		break;
@@ -476,7 +483,7 @@ bool GameMain::on_input(SDL_Event *e) {
 		this->keymod = SDL_GetModState();
 
 		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
-		keybinds.set_key_state(sym, true);
+		engine.get_keybind_manager().set_key_state(sym, true);
 		break;
 	}
 
@@ -494,6 +501,8 @@ void GameMain::move_camera() {
 	// camera movement speed, in pixels per millisecond
 	// one pixel per millisecond equals 14.3 tiles/second
 	float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
+
+	auto keybinds = engine.get_keybind_manager();
 
 	if (keybinds.is_key_down(SDLK_LEFT)) {
 		mov_x = -cam_movement_speed_keyboard;

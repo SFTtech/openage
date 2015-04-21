@@ -8,27 +8,25 @@ namespace openage {
 namespace keybinds {
 
 key_t::key_t(SDL_Keycode key)
-    :
-    key(key),
-    mod(KMOD_NONE)
-{
+	:
+	key{key},
+	mod{KMOD_NONE} {
 
 }
 
 key_t::key_t(SDL_Keycode key, SDL_Keymod mod)
-    :
-    key(key),
-    mod(mod)
-{
+	:
+	key{key},
+	mod{mod} {
 
 }
 
 bool operator==(key_t a, key_t b) {
-    return a.key == b.key && a.mod == b.mod;
+	return a.key == b.key && a.mod == b.mod;
 }
 
-size_t key_hash::operator()(const key_t& k) const {
-    return std::hash<int>()(k.key);
+int key_hash::operator()(const key_t& k) const {
+	return std::hash<int>()(k.key);
 }
 
 } //namespace keybinds

@@ -59,6 +59,21 @@ void Console::register_to_engine(Engine *engine) {
 	engine->register_tick_action(this);
 	engine->register_drawhud_action(this);
 	engine->register_resize_action(this);
+
+	// TODO bind any needed keybinds to keybindContext
+
+	// Bind the console toggle key globally
+	auto &keybinds = engine->get_keybind_manager();
+	keybinds.get_global_keybind_context()
+	        .bind(keybinds::action_t::TOGGLE_CONSOLE, [this, &keybinds]() {
+		if (!visible) { // Show the console, add keybinds
+			visible = true;
+			keybinds.override_context(&this->keybind_context);
+		} else { // Hide the console, remove the keybinds
+			visible = false;
+			keybinds.remove_context();
+		}
+	});
 }
 
 void Console::write(const char *text) {
@@ -87,10 +102,6 @@ bool Console::on_drawhud() {
 }
 
 bool Console::on_input(SDL_Event *e) {
-	if ((e->type == SDL_KEYDOWN) && (((SDL_KeyboardEvent *) e)->keysym.sym == SDLK_BACKQUOTE)) {
-		visible = !visible;
-	}
-
 	// only handle inputs if the console is visible
 	if (!this->visible) {
 		return true;

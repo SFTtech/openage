@@ -14,7 +14,7 @@
 #include "engine.h"
 #include "coord/tile.h"
 #include "handlers.h"
-#include "keybinds/keybinds.h"
+#include "keybinds/keybind_manager.h"
 #include "player.h"
 #include "terrain/terrain.h"
 #include "terrain/terrain_object.h"
@@ -89,7 +89,7 @@ public:
 	AssetManager assetmanager;
 	DataManager datamanager;
 
-	keybinds::Keybinds keybinds;
+	keybinds::KeybindContext keybind_context;
 
 	util::ExternalProfiler external_profiler;
 private:

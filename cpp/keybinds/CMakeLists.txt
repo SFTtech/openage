@@ -1,4 +1,6 @@
 add_sources(${PROJECT_NAME}
-    key.cpp
-    keybinds.cpp
+	action.cpp
+	keybind_context.cpp
+	key.cpp
+	keybind_manager.cpp
 )

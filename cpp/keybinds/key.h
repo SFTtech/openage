@@ -10,18 +10,17 @@ namespace keybinds {
 
 struct key_t {
 public:
+	key_t(SDL_Keycode key);
+	key_t(SDL_Keycode key, SDL_Keymod mod);
 
-    key_t(SDL_Keycode key);
-    key_t(SDL_Keycode key, SDL_Keymod mod);
-
-    SDL_Keycode key;
-    SDL_Keymod mod;
+	SDL_Keycode key;
+	SDL_Keymod mod;
 };
 
 bool operator==(key_t a, key_t b);
 
 struct key_hash {
-    size_t operator()(const key_t& k) const;
+	int operator()(const key_t& k) const;
 };
 
 } //namespace keybinds

@@ -19,6 +19,7 @@
 #include "font.h"
 #include "handlers.h"
 #include "job/job_manager.h"
+#include "keybinds/keybind_manager.h"
 #include "util/dir.h"
 #include "util/fps.h"
 #include "screenshot.h"
@@ -188,6 +189,11 @@ public:
 	ScreenshotManager &get_screenshot_manager();
 
 	/**
+	* return this engine's keybind manager.
+	*/
+	keybinds::KeybindManager &get_keybind_manager();
+
+	/**
 	 * return the number of nanoseconds that have passed
 	 * for rendering the last frame.
 	 *
@@ -288,6 +294,12 @@ private:
 	 * the engine's job manager, for asynchronous background task queuing.
 	 */
 	job::JobManager *job_manager;
+
+
+	/**
+	 * the engine's keybind manager.
+	 */
+	keybinds::KeybindManager keybind_manager;
 
 	/**
 	 * the text fonts to be used for (can you believe it?) texts.
