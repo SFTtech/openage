@@ -33,12 +33,11 @@ int main(int argc, char **argv) {
 	try {
 		Arguments args = parse_args(argc, argv);
 
+		if (args.error_occured) {
+			return 1;
+		} 
 		if (args.display_help) {
-			if (args.error_occured) {
-				return 1;
-			} else {
-				return 0;
-			}
+			return 0;
 		}
 
 		if (args.list_tests) {

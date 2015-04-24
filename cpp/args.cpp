@@ -21,10 +21,10 @@ void print_usage() {
 	std::cout << "    " PROJECT_NAME " [OPTION]" << std::endl;
 	std::cout << "available options:" << std::endl;
 	std::cout << "-h, --help                              display this help" << std::endl;
+	std::cout << "-v, --version                           print the openage version to the console" << std::endl;
 	std::cout << "-t, --test=NAME                         run test NAME" << std::endl;
 	std::cout << "-d, --demo=NAME [arg [arg [...]]]       run demo NAME" << std::endl;
 	std::cout << "--list-tests                            print a list of all available tests" << std::endl;
-	std::cout << "--version                               print the openage version to the console" << std::endl;
 	std::cout << "--data=FOLDER                           specify the data folder" << std::endl;
 	std::cout << std::endl << std::endl << std::endl;
 }
@@ -50,20 +50,23 @@ Arguments parse_args(int argc, char **argv) {
 	ret.argc = argc;
 	ret.argv = argv;
 
+	static struct option long_options[] = {
+		{"help",                 no_argument, 0, 'h'},
+		{"test",           required_argument, 0, 't'},
+		{"demo",           required_argument, 0, 'd'},
+		{"data",           required_argument, 0,  0 },
+		{"list-tests",           no_argument, 0, 'l'},
+		{"version",              no_argument, 0, 'v'},
+		{0,                                0, 0,  0 }
+	};
+
 	bool aborted = false;
 	while (not aborted) {
 		int option_index = 0;
-		static struct option long_options[] = {
-			{"help",                 no_argument, 0, 'h'},
-			{"test",           required_argument, 0, 't'},
-			{"demo",           required_argument, 0, 'd'},
-			{"data",           required_argument, 0,  0 },
-			{"list-tests",           no_argument, 0,  0 },
-			{"version",              no_argument, 0,  0 },
-			{0,                                0, 0,  0 }
-		};
 
-		int c = getopt_long(ret.argc, ret.argv, "htd:", long_options, &option_index);
+		// 3rd argument: use colon after the letter to specify required argument,
+		//   and use 2 colons after the letter for optional argument 
+		int c = getopt_long(ret.argc, ret.argv, "ht:d:lv", long_options, &option_index);
 
 		if (c == -1) {
 			break;
@@ -76,7 +79,7 @@ Arguments parse_args(int argc, char **argv) {
 
 			if (optarg) {
 				// with arg
-				if (0 == strcmp("data", opt_name)) {
+				if (!strcmp("data", opt_name)) {
 					log::log(MSG(info) << "data folder will be " << optarg);
 					ret.data_directory = optarg;
 				} else {
@@ -84,13 +87,7 @@ Arguments parse_args(int argc, char **argv) {
 				}
 			} else {
 				// without arg
-				if (0 == strcmp("list-tests", opt_name)) {
-					ret.list_tests = true;
-				} else if (0 == strcmp("version", opt_name)) {
-					ret.version = true;
-				} else {
-					handled = false;
-				}
+				handled = false;
 			}
 
 			if (not handled) {
@@ -100,17 +97,18 @@ Arguments parse_args(int argc, char **argv) {
 
 			break;
 		}
-		case 'h':
+		case 'h': // --help
 			print_usage();
 			ret.display_help = true;
 			break;
 
-		case 't':
+		case 't': // --test
 			ret.tests.push_back(optarg);
 			break;
 
-		case 'd':
+		case 'd': // --demo
 			if (ret.demo_specified) {
+				ret.error_occured = true;
 				throw util::Error(MSG(err) << "--demo may be used only once");
 			}
 
@@ -121,13 +119,18 @@ Arguments parse_args(int argc, char **argv) {
 			aborted = true;
 			break;
 
-		case '?':
-			print_usage();
-			ret.error_occured = true;
-			throw util::Error(MSG(err) << "Unknown argument: " << ret.argv[optind - 1]);
+		case 'l': // --list-tests
+			ret.list_tests = true;
+
+		case 'v': // --version
+			ret.version = true;
 			break;
 
-		default:
+		case '?': // Unknown argument
+			ret.error_occured = true;
+			break;
+
+		default: // Error occured
 			ret.error_occured = true;
 			throw util::Error(MSG(err) <<
 				"getopt returned code 0x" <<
