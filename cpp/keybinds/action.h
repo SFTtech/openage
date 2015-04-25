@@ -23,7 +23,8 @@ enum class action_t {
 	DISABLE_SET_ABILITY,
 	SET_ABILITY_MOVE,
 	SET_ABILITY_GATHER,
-	TOGGLE_CONSOLE
+	TOGGLE_CONSOLE,
+	SPAWN_VILLAGER
 };
 
 struct action_hash {

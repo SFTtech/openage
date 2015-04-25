@@ -307,6 +307,12 @@ GameMain::GameMain(Engine *engine)
 		this->use_set_ability = true;
 		this->ability = ability_type::gather;
 	});
+	this->keybind_context.bind(keybinds::action_t::SPAWN_VILLAGER, [this]() {
+		if (this->construct_mode && this->datamanager.producer_count() > 0) {
+			UnitProducer &producer = *this->datamanager.get_producer(590);
+			this->placed_units.new_unit(producer, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
+		}
+	});
 
 	engine->get_keybind_manager().register_context(&this->keybind_context);
 }
@@ -474,8 +480,7 @@ bool GameMain::on_input(SDL_Event *e) {
 	case SDL_MOUSEWHEEL:
 		if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
 			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
-		}
-		else {
+		} else {
 			editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
 		}
 		break;
