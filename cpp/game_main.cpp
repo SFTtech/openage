@@ -309,9 +309,12 @@ GameMain::GameMain(Engine *engine)
 	});
 	this->keybind_context.bind(keybinds::action_t::SPAWN_VILLAGER, [this]() {
 		if (this->construct_mode && this->datamanager.producer_count() > 0) {
-			UnitProducer &producer = *this->datamanager.get_producer(590);
-			this->placed_units.new_unit(producer, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
+			UnitType &type = *this->datamanager.get_type(590);
+			this->placed_units.new_unit(type, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
 		}
+	});
+	this->keybind_context.bind(keybinds::action_t::KILL_UNIT, [this]() {
+		selection.kill_unit();
 	});
 
 	engine->get_keybind_manager().register_context(&this->keybind_context);
@@ -587,16 +590,20 @@ bool GameMain::on_draw() {
 bool GameMain::on_drawhud() {
 	Engine &e = Engine::get();
 
-	// draw the currently selected editor texture tile
-	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
+	if (this->construct_mode) {
 
-	if (this->datamanager.producer_count() > 0) {
-		// and the current active building
-		coord::window bpreview_pos;
-		bpreview_pos.x = e.engine_coord_data->window_size.x - 200;
-		bpreview_pos.y = 200;
-		auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
-		txt->sample(bpreview_pos.to_camhud());
+		// draw the currently selected editor texture tile
+		this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
+
+		if (this->datamanager.producer_count() > 0) {
+			// and the current active building
+			coord::window bpreview_pos;
+			bpreview_pos.x = e.engine_coord_data->window_size.x - 200;
+			bpreview_pos.y = 200;
+
+			auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
+			txt->sample(bpreview_pos.to_camhud());
+		}
 	}
 	return true;
 }

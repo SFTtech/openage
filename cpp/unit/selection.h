@@ -33,6 +33,11 @@ public:
 	void toggle_unit(Unit *);
 
 	/**
+	 * kill a single unit in the selection
+	 */
+	void kill_unit();
+
+	/**
 	 * point unit selection
 	 */
 	void select_point(Terrain *terrain, coord::camgame p, bool append=false);

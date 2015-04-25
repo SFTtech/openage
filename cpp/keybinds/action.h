@@ -24,7 +24,8 @@ enum class action_t {
 	SET_ABILITY_MOVE,
 	SET_ABILITY_GATHER,
 	TOGGLE_CONSOLE,
-	SPAWN_VILLAGER
+	SPAWN_VILLAGER,
+	KILL_UNIT
 };
 
 struct action_hash {

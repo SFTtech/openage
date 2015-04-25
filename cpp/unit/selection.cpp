@@ -110,9 +110,17 @@ void UnitSelection::toggle_unit(Unit *u) {
 		u->selected = false;
 		this->units.erase(u->id);
 	}
-	else {
+	else if (u->has_attribute(attr_type::hitpoints) && u->get_attribute<attr_type::hitpoints>().current > 0){
 		u->selected = true;
 		this->units[u->id] = u->get_ref();
+	}
+}
+
+void UnitSelection::kill_unit() {
+	if (!this->units.empty()) {
+		auto it = this->units.begin();
+		it->second.get()->delete_unit();
+		this->units.erase(it);
 	}
 }
 
