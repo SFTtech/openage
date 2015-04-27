@@ -86,12 +86,12 @@ void UnitSelection::drag_update(coord::camgame pos) {
 	this->end = pos;
 }
 
-void UnitSelection::drag_release(Terrain *terrain, bool append) {
+void UnitSelection::drag_release(Terrain *terrain, int player, bool append) {
 	if (this->start == this->end) {
-		this->select_point(terrain, this->start, append);
+		this->select_point(terrain, player, this->start, append);
 	}
 	else {
-		this->select_space(terrain, this->start, this->end, append);
+		this->select_space(terrain, player, this->start, this->end, append);
 		drag_active = false;
 	}
 }
@@ -105,12 +105,26 @@ void UnitSelection::clear() {
 	this->units.clear();
 }
 
-void UnitSelection::toggle_unit(Unit *u) {
+void UnitSelection::toggle_unit(Unit *u, int player) {
 	if (this->units.count(u->id) > 0) {
 		u->selected = false;
 		this->units.erase(u->id);
 	}
-	else if (u->has_attribute(attr_type::hitpoints) && u->get_attribute<attr_type::hitpoints>().current > 0){
+	else { // Try adding this unit
+
+		// Dead units aren't selectable
+		if (u->has_attribute(attr_type::hitpoints) && u->get_attribute<attr_type::hitpoints>().current <= 0) {
+			return;
+		}
+
+		// Check player
+		if (u->has_attribute(attr_type::owner)) {
+			int color = u->get_attribute<attr_type::owner>().player.color;
+			if (color != player) {
+				return;
+			}
+		}
+
 		u->selected = true;
 		this->units[u->id] = u->get_ref();
 	}
@@ -133,7 +147,7 @@ bool UnitSelection::contains_villagers() {
 	return false;
 }
 
-void UnitSelection::select_point(Terrain *terrain, coord::camgame p, bool append) {
+void UnitSelection::select_point(Terrain *terrain, int player, coord::camgame p, bool append) {
 	if (!append) {
 		this->clear();
 	}
@@ -146,11 +160,11 @@ void UnitSelection::select_point(Terrain *terrain, coord::camgame p, bool append
 	// find any object at selected point
 	auto obj = terrain->obj_at_point(p.to_phys3());
 	if (obj) {
-		this->toggle_unit(&obj->unit);
+		this->toggle_unit(&obj->unit, player);
 	}
 }
 
-void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append) {
+void UnitSelection::select_space(Terrain *terrain, int player, coord::camgame p1, coord::camgame p2, bool append) {
 	if (!append) {
 		this->clear();
 	}
@@ -178,9 +192,8 @@ void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::cam
 		}
 	}
 
-	// toggle each unit in the box
 	for (Unit *u : boxed_units) {
-		this->toggle_unit(u);
+		this->toggle_unit(u, player);
 	}
 }
 

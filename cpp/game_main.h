@@ -59,6 +59,7 @@ public:
 	// currently selected terrain id
 	openage::terrain_t editor_current_terrain;
 	int editor_current_building;
+	int current_player; // 1-8
 
 	bool debug_grid_active;
 	bool clicking_active;

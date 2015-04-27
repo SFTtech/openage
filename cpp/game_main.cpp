@@ -111,6 +111,7 @@ GameMain::GameMain(Engine *engine)
 	:
 	editor_current_terrain{0},
 	editor_current_building{0},
+	current_player{1},
 	debug_grid_active{false},
 	clicking_active{true},
 	scrolling_active{false},
@@ -289,7 +290,7 @@ GameMain::GameMain(Engine *engine)
 		// attempt to train editor selected object
 		if ( this->datamanager.producer_count() > 0 ) {
 			auto type = this->datamanager.get_type_index(this->editor_current_building);
-			Command cmd(this->players[0], type);
+			Command cmd(this->players[this->current_player - 1], type);
 			this->selection.all_invoke(cmd);
 		}
 	});
@@ -310,7 +311,7 @@ GameMain::GameMain(Engine *engine)
 	this->keybind_context.bind(keybinds::action_t::SPAWN_VILLAGER, [this]() {
 		if (this->construct_mode && this->datamanager.producer_count() > 0) {
 			UnitType &type = *this->datamanager.get_type(590);
-			this->placed_units.new_unit(type, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
+			this->placed_units.new_unit(type, this->players[this->current_player - 1], mousepos_tile.to_phys2().to_phys3());
 		}
 	});
 	this->keybind_context.bind(keybinds::action_t::KILL_UNIT, [this]() {
@@ -322,7 +323,7 @@ GameMain::GameMain(Engine *engine)
 	this->keybind_context.bind(keybinds::action_t::BUILDING_1, [this]() {
 		if (this->selection.contains_villagers()) {
 			this->building_placement = true;
-			if (this->keymod == KMOD_LCTRL) {
+			if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
 				this->editor_current_building = 609; // Barracks
 			} else {
 				this->editor_current_building = 598; // House
@@ -332,7 +333,7 @@ GameMain::GameMain(Engine *engine)
 	this->keybind_context.bind(keybinds::action_t::BUILDING_2, [this]() {
 		if (this->selection.contains_villagers()) {
 			this->building_placement = true;
-			if (this->keymod == KMOD_LCTRL) {
+			if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
 				this->editor_current_building = 558; // Archery range
 			} else {
 				this->editor_current_building = 574; // Mill
@@ -342,7 +343,7 @@ GameMain::GameMain(Engine *engine)
 	this->keybind_context.bind(keybinds::action_t::BUILDING_3, [this]() {
 		if (this->selection.contains_villagers()) {
 			this->building_placement = true;
-			if (this->keymod == KMOD_LCTRL) {
+			if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
 				this->editor_current_building = 581; // Stable
 			} else {
 				this->editor_current_building = 616; // Mining camp
@@ -352,12 +353,46 @@ GameMain::GameMain(Engine *engine)
 	this->keybind_context.bind(keybinds::action_t::BUILDING_4, [this]() {
 		if (this->selection.contains_villagers()) {
 			this->building_placement = true;
-			if (this->keymod == KMOD_LCTRL) {
+			if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
 				this->editor_current_building = 580; // Siege workshop
 			} else {
 				this->editor_current_building = 611; // Lumber camp
 			}
 		}
+	});
+
+	// Switching between players with the 1-8 keys
+	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_1, [this]() {
+		this->current_player = 1;
+		this->selection.clear();
+	});
+	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_2, [this]() {
+		this->current_player = 2;
+		this->selection.clear();
+	});
+	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_3, [this]() {
+		this->current_player = 3;
+		this->selection.clear();
+	});
+	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_4, [this]() {
+		this->current_player = 4;
+		this->selection.clear();
+	});
+	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_5, [this]() {
+		this->current_player = 5;
+		this->selection.clear();
+	});
+	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_6, [this]() {
+		this->current_player = 6;
+		this->selection.clear();
+	});
+	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_7, [this]() {
+		this->current_player = 7;
+		this->selection.clear();
+	});
+	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_8, [this]() {
+		this->current_player = 8;
+		this->selection.clear();
 	});
 
 	engine->get_keybind_manager().register_context(&this->keybind_context);
@@ -418,7 +453,7 @@ bool GameMain::on_input(SDL_Event *e) {
 
 		case SDL_BUTTON_LEFT:
 			if (this->dragging_active) { // Stop dragging
-				selection.drag_release(terrain.get(), this->keymod == KMOD_LCTRL);
+				selection.drag_release(terrain.get(), this->current_player, this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL));
 				dragging_active = false;
 			} else if (clicking_active) {
 				if (construct_mode) {
@@ -445,18 +480,15 @@ bool GameMain::on_input(SDL_Event *e) {
 				} else if (this->building_placement) {
 					// confirm building placement with left click
 					// first create foundation using the producer
-					Player *player = this->selection.owner();
-					if (player) {
-						UnitContainer *container = &this->placed_units;
-						UnitType *building_type = this->datamanager.get_type_index(this->editor_current_building);
-						UnitReference new_building = container->new_unit(*building_type, *player, mousepos_phys3);
+					UnitContainer *container = &this->placed_units;
+					UnitType *building_type = this->datamanager.get_type_index(this->editor_current_building);
+					UnitReference new_building = container->new_unit(*building_type, this->players[this->current_player - 1], mousepos_phys3);
 
-						// task all selected villagers to build
-						if (new_building.is_valid()) {
-							Command cmd(*player, new_building.get());
-							cmd.set_ability(ability_type::build);
-							this->selection.all_invoke(cmd);
-						}
+					// task all selected villagers to build
+					if (new_building.is_valid()) {
+						Command cmd(this->players[this->current_player - 1], new_building.get());
+						cmd.set_ability(ability_type::build);
+						this->selection.all_invoke(cmd);
 					}
 					this->building_placement = false;
 				}
@@ -481,24 +513,23 @@ bool GameMain::on_input(SDL_Event *e) {
 						break;
 					}
 
-				// delete any unit on the tile
-				if (!chunk->get_data(mousepos_tile)->obj.empty()) {
-					// get first object currently standing at the clicked position
-					TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
-					log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
-					obj->unit.delete_unit();
-				} else if ( this->datamanager.producer_count() > 0 ) {
-					// try creating a unit
-					log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
-					UnitType &producer = *this->datamanager.get_type_index(this->editor_current_building);
-					this->placed_units.new_unit(producer, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
+					// delete any unit on the tile
+					if (!chunk->get_data(mousepos_tile)->obj.empty()) {
+						// get first object currently standing at the clicked position
+						TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
+						log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
+						obj->unit.delete_unit();
+					} else if ( this->datamanager.producer_count() > 0 ) {
+						// try creating a unit
+						log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
+						UnitType &producer = *this->datamanager.get_type_index(this->editor_current_building);
+						this->placed_units.new_unit(producer, this->players[this->current_player - 1], mousepos_tile.to_phys2().to_phys3());
 					}
 				} else {
 					// right click can cancel building placement
 					if (this->building_placement) {
 						this->building_placement = false;
-					}
-					else {
+					} else {
 						auto cmd = this->get_action(mousepos_phys3);
 						selection.all_invoke(cmd);
 					}
@@ -616,15 +647,18 @@ bool GameMain::on_draw() {
 	// draw construction or actions mode indicator
 	int x = 400 - (engine.engine_coord_data->window_size.x / 2);
 	int y = 35 - (engine.engine_coord_data->window_size.y / 2);
+
+	std::string mode_str;
 	if (this->construct_mode) {
-		engine.render_text({x, y}, 20, "Construct mode");
+		mode_str += "Construct mode";
 	} else {
-		std::string ability_str = "Actions mode";
+		mode_str += "Actions mode";
 		if (this->use_set_ability) {
-			ability_str += " (" + std::to_string(this->ability) + ")";
+			mode_str += " (" + std::to_string(this->ability) + ")";
 		}
-		engine.render_text({x, y}, 20, ability_str.c_str());
 	}
+	mode_str += " (player " + std::to_string(this->current_player) + ")";
+	engine.render_text({x, y}, 20, mode_str.c_str());
 
 	if (this->building_placement) {
 		auto building_type = this->datamanager.get_type_index(this->editor_current_building);
@@ -712,14 +746,14 @@ void GameMain::draw_debug_grid() {
 Command GameMain::get_action(const coord::phys3 &pos) const {
 	auto obj = this->terrain->obj_at_point(pos);
 	if (obj) {
-		Command c(this->players[0], &obj->unit, pos);
+		Command c(this->players[current_player - 1], &obj->unit, pos);
 		if (this->use_set_ability) {
 			c.set_ability(ability);
 		}
 		return c;
 	}
 	else {
-		Command c(this->players[0], pos);
+		Command c(this->players[current_player - 1], pos);
 		if (this->use_set_ability) {
 			c.set_ability(ability);
 		}

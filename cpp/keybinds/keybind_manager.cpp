@@ -27,7 +27,6 @@ KeybindManager::KeybindManager()
 	      { key_t(SDLK_c), action_t::SET_ABILITY_GATHER },
 	      { key_t(SDLK_BACKQUOTE), action_t::TOGGLE_CONSOLE},
 	      { key_t(SDLK_v), action_t::SPAWN_VILLAGER},
-	      { key_t(SDLK_DELETE), action_t::KILL_UNIT}},
 	      { key_t(SDLK_DELETE), action_t::KILL_UNIT},
 	      { key_t(SDLK_q), action_t::BUILDING_1},
 	      { key_t(SDLK_w), action_t::BUILDING_2},
@@ -36,7 +35,15 @@ KeybindManager::KeybindManager()
 	      { key_t(SDLK_q, KMOD_LCTRL), action_t::BUILDING_1},
 	      { key_t(SDLK_w, KMOD_LCTRL), action_t::BUILDING_2},
 	      { key_t(SDLK_e, KMOD_LCTRL), action_t::BUILDING_3},
-	      { key_t(SDLK_r, KMOD_LCTRL), action_t::BUILDING_4}},
+	      { key_t(SDLK_r, KMOD_LCTRL), action_t::BUILDING_4},
+	      { key_t(SDLK_1), action_t::SWITCH_TO_PLAYER_1},
+	      { key_t(SDLK_2), action_t::SWITCH_TO_PLAYER_2},
+	      { key_t(SDLK_3), action_t::SWITCH_TO_PLAYER_3},
+	      { key_t(SDLK_4), action_t::SWITCH_TO_PLAYER_4},
+	      { key_t(SDLK_5), action_t::SWITCH_TO_PLAYER_5},
+	      { key_t(SDLK_6), action_t::SWITCH_TO_PLAYER_6},
+	      { key_t(SDLK_7), action_t::SWITCH_TO_PLAYER_7},
+	      { key_t(SDLK_8), action_t::SWITCH_TO_PLAYER_8}},
 	keymod{KMOD_NONE} {
 
 }

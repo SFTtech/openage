@@ -21,6 +21,17 @@ bool UnitAbility::has_resource(Unit &target) {
 	       target.get_attribute<attr_type::resource>().amount > 0;
 }
 
+bool UnitAbility::is_same_player(Unit &to_modify, Unit &target) {
+	if (to_modify.has_attribute(attr_type::owner) &&
+	    target.has_attribute(attr_type::owner)) {
+		auto &mod_player = to_modify.get_attribute<attr_type::owner>().player;
+		auto &tar_player = target.get_attribute<attr_type::owner>().player;
+		return mod_player.color == tar_player.color;
+	}
+	return false;
+
+}
+
 bool UnitAbility::is_ally(Unit &to_modify, Unit &target) {
 	if (to_modify.has_attribute(attr_type::owner) &&
 	    target.has_attribute(attr_type::owner)) {
@@ -167,6 +178,7 @@ bool BuildAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	if (cmd.has_unit()) {
 		Unit *target = cmd.unit();
 		return to_modify.location &&
+		       is_same_player(to_modify, *target) &&
 		       target->has_attribute(attr_type::building) &&
 		       target->get_attribute<attr_type::building>().completed < 1.0f;
 	}
