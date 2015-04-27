@@ -48,10 +48,11 @@ Massively slow down the game speed, and you get a "browser game"-like experience
 Research
 --------
 
-Only newly-built units receive the bonus when units are upgraded
-Already-built units need to be "overhauled" for a cost back at the barracks.
-(reminder: just an idea, there will be vanilla mode)
-
+* Only newly-built units receive the bonus when units are upgraded
+  Already-built units need to be "overhauled" for a cost back at the barracks.
+  (reminder: just an idea, there will be vanilla mode)
+* Research should be placed in creating order, like in WarCraft. It's too annoying
+  to click on building again after each research
 
 Zombie Survival Mode
 --------------------
@@ -138,7 +139,6 @@ More intelligent units
  - Dynamic hardlocking on target units when attacking
    - Don't lock on unreachable current target
    - Attack the blocking units first
-
 
 Infinite Ressources
 -------------------
