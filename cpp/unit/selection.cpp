@@ -124,6 +124,15 @@ void UnitSelection::kill_unit() {
 	}
 }
 
+bool UnitSelection::contains_villagers() {
+	for (auto &it : units) {
+		if (it.second.is_valid() && it.second.get()->get_ability(ability_type::build)) {
+			return true;
+		}
+	}
+	return false;
+}
+
 void UnitSelection::select_point(Terrain *terrain, coord::camgame p, bool append) {
 	if (!append) {
 		this->clear();

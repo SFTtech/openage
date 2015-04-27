@@ -38,6 +38,11 @@ public:
 	void kill_unit();
 
 	/**
+	 * checks whether there are any villagers in the selection
+	 */
+	bool contains_villagers();
+
+	/**
 	 * point unit selection
 	 */
 	void select_point(Terrain *terrain, coord::camgame p, bool append=false);

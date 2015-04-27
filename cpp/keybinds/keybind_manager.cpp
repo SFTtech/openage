@@ -28,6 +28,15 @@ KeybindManager::KeybindManager()
 	      { key_t(SDLK_BACKQUOTE), action_t::TOGGLE_CONSOLE},
 	      { key_t(SDLK_v), action_t::SPAWN_VILLAGER},
 	      { key_t(SDLK_DELETE), action_t::KILL_UNIT}},
+	      { key_t(SDLK_DELETE), action_t::KILL_UNIT},
+	      { key_t(SDLK_q), action_t::BUILDING_1},
+	      { key_t(SDLK_w), action_t::BUILDING_2},
+	      { key_t(SDLK_e), action_t::BUILDING_3},
+	      { key_t(SDLK_r), action_t::BUILDING_4},
+	      { key_t(SDLK_q, KMOD_LCTRL), action_t::BUILDING_1},
+	      { key_t(SDLK_w, KMOD_LCTRL), action_t::BUILDING_2},
+	      { key_t(SDLK_e, KMOD_LCTRL), action_t::BUILDING_3},
+	      { key_t(SDLK_r, KMOD_LCTRL), action_t::BUILDING_4}},
 	keymod{KMOD_NONE} {
 
 }

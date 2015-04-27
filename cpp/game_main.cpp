@@ -317,6 +317,49 @@ GameMain::GameMain(Engine *engine)
 		selection.kill_unit();
 	});
 
+	// Villager build commands
+	// TODO place this into separate building menus instead of global hotkeys
+	this->keybind_context.bind(keybinds::action_t::BUILDING_1, [this]() {
+		if (this->selection.contains_villagers()) {
+			this->building_placement = true;
+			if (this->keymod == KMOD_LCTRL) {
+				this->editor_current_building = 609; // Barracks
+			} else {
+				this->editor_current_building = 598; // House
+			}
+		}
+	});
+	this->keybind_context.bind(keybinds::action_t::BUILDING_2, [this]() {
+		if (this->selection.contains_villagers()) {
+			this->building_placement = true;
+			if (this->keymod == KMOD_LCTRL) {
+				this->editor_current_building = 558; // Archery range
+			} else {
+				this->editor_current_building = 574; // Mill
+			}
+		}
+	});
+	this->keybind_context.bind(keybinds::action_t::BUILDING_3, [this]() {
+		if (this->selection.contains_villagers()) {
+			this->building_placement = true;
+			if (this->keymod == KMOD_LCTRL) {
+				this->editor_current_building = 581; // Stable
+			} else {
+				this->editor_current_building = 616; // Mining camp
+			}
+		}
+	});
+	this->keybind_context.bind(keybinds::action_t::BUILDING_4, [this]() {
+		if (this->selection.contains_villagers()) {
+			this->building_placement = true;
+			if (this->keymod == KMOD_LCTRL) {
+				this->editor_current_building = 580; // Siege workshop
+			} else {
+				this->editor_current_building = 611; // Lumber camp
+			}
+		}
+	});
+
 	engine->get_keybind_manager().register_context(&this->keybind_context);
 }
 
