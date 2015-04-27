@@ -382,9 +382,30 @@ bool GameMain::on_input(SDL_Event *e) {
 		engine.stop();
 		break;
 
-	case SDL_MOUSEBUTTONDOWN: { //thanks C++! we need a separate scope because of new variables...
+	case SDL_MOUSEBUTTONDOWN: {
 
-		// a mouse button was pressed...
+		switch (e->button.button) {
+			case SDL_BUTTON_LEFT:
+				if (this->clicking_active && !construct_mode && !this->building_placement) {
+					// begin a boxed selection
+					selection.drag_begin(mousepos_camgame);
+					dragging_active = true;
+				}
+				break;
+			case SDL_BUTTON_MIDDLE:
+				// activate scrolling
+				SDL_SetRelativeMouseMode(SDL_TRUE);
+				scrolling_active = true;
+
+				// deactivate clicking as long as mousescrolling is active
+				clicking_active = false;
+				break;
+		}
+		break;
+	}
+
+	case SDL_MOUSEBUTTONUP: {
+
 		// subtract value from window height to get position relative to lower right (0,0).
 		coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
 		this->mousepos_camgame = mousepos_window.to_camgame();
@@ -393,115 +414,101 @@ bool GameMain::on_input(SDL_Event *e) {
 		this->mousepos_phys3 = mousepos_camgame.to_phys3();
 		this->mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
-		if (clicking_active and e->button.button == SDL_BUTTON_LEFT and !construct_mode) {
-			if (this->building_placement) {
+		switch (e->button.button) {
 
-				// confirm building placement with left click
-				// first create foundation using the producer
-				Player *player = this->selection.owner();
-				if (player) {
-					UnitContainer *container = &this->placed_units;
-					UnitType *building_type = this->datamanager.get_type_index(this->editor_current_building);
-					UnitReference new_building = container->new_unit(*building_type, *player, mousepos_phys3);
+		case SDL_BUTTON_LEFT:
+			if (this->dragging_active) { // Stop dragging
+				selection.drag_release(terrain.get(), this->keymod == KMOD_LCTRL);
+				dragging_active = false;
+			} else if (clicking_active) {
+				if (construct_mode) {
+					log::log(MSG(dbg) <<
+					    "LMB [window]:   "
+					    " x " << std::setw(9) << mousepos_window.x <<
+					    " y " << std::setw(9) << mousepos_window.y);
 
-					// task all selected villagers to build
-					if (new_building.is_valid()) {
-						Command cmd(*player, new_building.get());
-						cmd.set_ability(ability_type::build);
-						this->selection.all_invoke(cmd);
+					constexpr auto phys_per_tile = openage::coord::settings::phys_per_tile;
+
+					log::log(MSG(dbg) <<
+					    "LMB [phys3]:    "
+					    " NE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.ne} <<
+					    " SE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.se} <<
+					    " UP " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.up});
+
+					log::log(MSG(dbg) <<
+					    "LMB [tile]:     "
+					    " NE " << std::setw(8) << mousepos_tile.ne <<
+					    " SE " << std::setw(8) << mousepos_tile.se);
+
+					TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
+					chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
+				} else if (this->building_placement) {
+					// confirm building placement with left click
+					// first create foundation using the producer
+					Player *player = this->selection.owner();
+					if (player) {
+						UnitContainer *container = &this->placed_units;
+						UnitType *building_type = this->datamanager.get_type_index(this->editor_current_building);
+						UnitReference new_building = container->new_unit(*building_type, *player, mousepos_phys3);
+
+						// task all selected villagers to build
+						if (new_building.is_valid()) {
+							Command cmd(*player, new_building.get());
+							cmd.set_ability(ability_type::build);
+							this->selection.all_invoke(cmd);
+						}
 					}
+					this->building_placement = false;
 				}
-				this->building_placement = false;
-			}
-			else {
-
-				// begin a boxed selection
-				this->selection.drag_begin(mousepos_camgame);
-				this->dragging_active = true;
-			}
-		}
-		else if (clicking_active and e->button.button == SDL_BUTTON_LEFT and construct_mode) {
-			log::log(MSG(dbg) <<
-				"LMB [window]:   "
-				" x " << std::setw(9) << mousepos_window.x <<
-				" y " << std::setw(9) << mousepos_window.y);
-
-			constexpr auto phys_per_tile = openage::coord::settings::phys_per_tile;
-
-			log::log(MSG(dbg) <<
-				"LMB [phys3]:    "
-				" NE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.ne} <<
-				" SE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.se} <<
-				" UP " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.up});
-
-			log::log(MSG(dbg) <<
-				"LMB [tile]:     "
-				" NE " << std::setw(8) << mousepos_tile.ne <<
-				" SE " << std::setw(8) << mousepos_tile.se);
-
-			TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
-			chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
-		}
-		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and !construct_mode) {
-
-			// right click can cancel building placement
-			if (this->building_placement) {
-				this->building_placement = false;
-			}
-			else {
-				auto cmd = this->get_action(mousepos_phys3);
-				selection.all_invoke(cmd);
-			}
-		}
-		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and construct_mode) {
-			// get chunk clicked on, don't create it if it's not there already
-			// -> placing buildings in void is forbidden that way
-			TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
-			if (chunk == nullptr) {
-				break;
-			}
-
-			// delete any unit on the tile
-			if (!chunk->get_data(mousepos_tile)->obj.empty()) {
-				// get first object currently standing at the clicked position
-				TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
-				log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
-				obj->unit.delete_unit();
-			} else if ( this->datamanager.producer_count() > 0 ) {
-				// try creating a unit
-				log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
-				UnitType &producer = *this->datamanager.get_type_index(this->editor_current_building);
-				this->placed_units.new_unit(producer, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
 			}
 			break;
-		}
-		else if (not scrolling_active
-		         and e->button.button == SDL_BUTTON_MIDDLE) {
-			// activate scrolling
-			SDL_SetRelativeMouseMode(SDL_TRUE);
-			scrolling_active = true;
+		case SDL_BUTTON_MIDDLE:
+			if (scrolling_active) { // Stop scrolling
+				SDL_SetRelativeMouseMode(SDL_FALSE);
+				scrolling_active = false;
 
-			// deactivate clicking as long as mousescrolling is active
-			clicking_active = false;
-		}
+				// reactivate mouse clicks as scrolling is over
+				clicking_active = true;
+			}
+			break;
+		case SDL_BUTTON_RIGHT:
+			if (clicking_active) {
+				if (construct_mode) {
+					// get chunk clicked on, don't create it if it's not there already
+					// -> placing buildings in void is forbidden that way
+					TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
+					if (chunk == nullptr) {
+						break;
+					}
+
+				// delete any unit on the tile
+				if (!chunk->get_data(mousepos_tile)->obj.empty()) {
+					// get first object currently standing at the clicked position
+					TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
+					log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
+					obj->unit.delete_unit();
+				} else if ( this->datamanager.producer_count() > 0 ) {
+					// try creating a unit
+					log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
+					UnitType &producer = *this->datamanager.get_type_index(this->editor_current_building);
+					this->placed_units.new_unit(producer, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
+					}
+				} else {
+					// right click can cancel building placement
+					if (this->building_placement) {
+						this->building_placement = false;
+					}
+					else {
+						auto cmd = this->get_action(mousepos_phys3);
+						selection.all_invoke(cmd);
+					}
+				}
+			}
+			break;
+		} // switch (e->button.button)
+
 		break;
-	}
-
-	case SDL_MOUSEBUTTONUP:
-		if (dragging_active and e->button.button == SDL_BUTTON_LEFT) {
-			bool ctrl_down = engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL);
-			selection.drag_release(terrain.get(), ctrl_down);
-			dragging_active = false;
-		}
-		else if (scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
-			// stop scrolling
-			SDL_SetRelativeMouseMode(SDL_FALSE);
-			scrolling_active = false;
-
-			// reactivate mouse clicks as scrolling is over
-			clicking_active = true;
-		}
-		break;
+	} // case SDL_MOUSEBUTTONUP:
 
 	case SDL_MOUSEMOTION: {
 
