@@ -473,7 +473,7 @@ bool GameMain::on_input(SDL_Event *e) {
 		this->keymod = SDL_GetModState();
 
 		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
-		auto keybinds = engine.get_keybind_manager();
+		keybinds::KeybindManager &keybinds = engine.get_keybind_manager();
 		keybinds.set_key_state(sym, false);
 		keybinds.press(keybinds::key_t(sym, keymod));
 		break;
@@ -502,7 +502,7 @@ void GameMain::move_camera() {
 	// one pixel per millisecond equals 14.3 tiles/second
 	float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
 
-	auto keybinds = engine.get_keybind_manager();
+	keybinds::KeybindManager &keybinds = engine.get_keybind_manager();
 
 	if (keybinds.is_key_down(SDLK_LEFT)) {
 		mov_x = -cam_movement_speed_keyboard;
