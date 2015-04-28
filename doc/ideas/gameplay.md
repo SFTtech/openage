@@ -145,6 +145,10 @@ Infinite Ressources
 
  - Forest regeneration
 
+Conversion
+-------------------
+
+ - Monk automatically try to convert each enemy unit in his area.
 
 For the lulz
 ------------
