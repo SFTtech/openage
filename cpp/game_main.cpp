@@ -16,6 +16,7 @@
 #include "engine.h"
 #include "gamedata/string_resource.gen.h"
 #include "game_save.h"
+#include "keybinds/keybind_manager.h"
 #include "log/log.h"
 #include "terrain/terrain.h"
 #include "unit/action.h"
@@ -112,12 +113,12 @@ GameMain::GameMain(Engine *engine)
 	editor_current_building{0},
 	debug_grid_active{false},
 	clicking_active{true},
-	ctrl_active{false},
 	scrolling_active{false},
-	draging_active{false},
+	dragging_active{false},
 	construct_mode{true},
 	building_placement{false},
 	use_set_ability{false},
+	keymod{KMOD_NONE},
 	assetmanager{engine->get_data_dir()},
 	engine{engine} {
 
@@ -241,6 +242,74 @@ GameMain::GameMain(Engine *engine)
 	delete teamcolor_frag;
 	delete alphamask_vert;
 	delete alphamask_frag;
+
+	// initialize global keybinds
+	auto &global_keybind_context = engine->get_keybind_manager().get_global_keybind_context();
+
+	global_keybind_context.bind(keybinds::action_t::STOP_GAME, [this]() {
+		this->engine->stop();
+	});
+	global_keybind_context.bind(keybinds::action_t::TOGGLE_HUD, [this]() {
+		this->engine->drawing_huds = !this->engine->drawing_huds;
+	});
+	global_keybind_context.bind(keybinds::action_t::SCREENSHOT, [this]() {
+		this->engine->get_screenshot_manager().save_screenshot();
+	});
+	global_keybind_context.bind(keybinds::action_t::TOGGLE_DEBUG_OVERLAY, [this]() {
+		this->engine->drawing_debug_overlay = !this->engine->drawing_debug_overlay;
+	});
+	global_keybind_context.bind(keybinds::action_t::TOGGLE_DEBUG_GRID, [this]() {
+		this->debug_grid_active = !this->debug_grid_active;
+	});
+	global_keybind_context.bind(keybinds::action_t::QUICK_SAVE, [this]() {
+		gameio::save(this, "default_save.txt");
+	});
+	global_keybind_context.bind(keybinds::action_t::QUICK_LOAD, [this]() {
+		gameio::load(this, "default_save.txt");
+	});
+	global_keybind_context.bind(keybinds::action_t::TOGGLE_PROFILER, [this]() {
+		if (this->external_profiler.currently_profiling) {
+			this->external_profiler.stop();
+			this->external_profiler.show_results();
+		} else {
+			this->external_profiler.start();
+		}
+	});
+
+	// Local keybinds
+	this->keybind_context.bind(keybinds::action_t::TOGGLE_BLENDING, [this]() {
+		this->terrain->blending_enabled = !terrain->blending_enabled;
+	});
+	this->keybind_context.bind(keybinds::action_t::TOGGLE_CONSTRUCT_MODE, [this]() {
+		this->construct_mode = !this->construct_mode;
+	});
+	this->keybind_context.bind(keybinds::action_t::TOGGLE_UNIT_DEBUG, [this]() {
+		UnitAction::show_debug = !UnitAction::show_debug;
+	});
+	this->keybind_context.bind(keybinds::action_t::TRAIN_OBJECT, [this]() {
+		// attempt to train editor selected object
+		if ( this->datamanager.producer_count() > 0 ) {
+			UnitProducer *producer = this->datamanager.get_producer_index(this->editor_current_building);
+			Command cmd(this->players[0], producer);
+			this->selection.all_invoke(cmd);
+		}
+	});
+	this->keybind_context.bind(keybinds::action_t::ENABLE_BUILDING_PLACEMENT, [this]() {
+		this->building_placement = true;
+	});
+	this->keybind_context.bind(keybinds::action_t::DISABLE_SET_ABILITY, [this]() {
+		this->use_set_ability = false;
+	});
+	this->keybind_context.bind(keybinds::action_t::SET_ABILITY_MOVE, [this]() {
+		this->use_set_ability = true;
+		this->ability = ability_type::move;
+	});
+	this->keybind_context.bind(keybinds::action_t::SET_ABILITY_GATHER, [this]() {
+		this->use_set_ability = true;
+		this->ability = ability_type::gather;
+	});
+
+	engine->get_keybind_manager().register_context(&this->keybind_context);
 }
 
 GameMain::~GameMain() {
@@ -286,7 +355,7 @@ bool GameMain::on_input(SDL_Event *e) {
 
 				// begin a boxed selection
 				selection.drag_begin(mousepos_camgame);
-				draging_active = true;
+				dragging_active = true;
 			}
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_LEFT and construct_mode) {
@@ -357,9 +426,9 @@ bool GameMain::on_input(SDL_Event *e) {
 	}
 
 	case SDL_MOUSEBUTTONUP:
-		if (draging_active and e->button.button == SDL_BUTTON_LEFT) {
-			selection.drag_release(terrain.get(), this->ctrl_active);
-			draging_active = false;
+		if (dragging_active and e->button.button == SDL_BUTTON_LEFT) {
+			selection.drag_release(terrain.get(), this->keymod == KMOD_LCTRL);
+			dragging_active = false;
 		}
 		else if (scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
 			// stop scrolling
@@ -379,7 +448,7 @@ bool GameMain::on_input(SDL_Event *e) {
 		this->mousepos_phys3 = mousepos_camgame.to_phys3();
 		this->mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
-		if (draging_active) {
+		if (dragging_active) {
 			selection.drag_update(mousepos_camgame);
 		}
 
@@ -392,7 +461,7 @@ bool GameMain::on_input(SDL_Event *e) {
 	}
 
 	case SDL_MOUSEWHEEL:
-		if (this->ctrl_active && this->datamanager.producer_count() > 0) {
+		if (this->keymod == KMOD_LCTRL && this->datamanager.producer_count() > 0) {
 			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
 		}
 		else {
@@ -400,95 +469,26 @@ bool GameMain::on_input(SDL_Event *e) {
 		}
 		break;
 
-	case SDL_KEYUP:
-		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
+	case SDL_KEYUP: {
+		this->keymod = SDL_GetModState();
 
-		case SDLK_ESCAPE:
-			//stop the game
-			engine.stop();
-			break;
-
-		case SDLK_F1:
-			engine.drawing_huds = !engine.drawing_huds;
-			break;
-
-		case SDLK_F2:
-			engine.get_screenshot_manager().save_screenshot();
-			break;
-
-		case SDLK_F3:
-			engine.drawing_debug_overlay = !engine.drawing_debug_overlay;
-			break;
-
-		case SDLK_F4:
-			this->debug_grid_active = !this->debug_grid_active;
-			break;
-
-		case SDLK_F5:
-			gameio::save(this, "default_save.txt");
-			break;
-
-		case SDLK_F9:
-			gameio::load(this, "default_save.txt");
-			break;
-
-		case SDLK_SPACE:
-			this->terrain->blending_enabled = !terrain->blending_enabled;
-			break;
-
-		case SDLK_F12:
-			if (this->external_profiler.currently_profiling) {
-				this->external_profiler.stop();
-				this->external_profiler.show_results();
-			} else {
-				this->external_profiler.start();
-			}
-
-			break;
-
-		case SDLK_LCTRL:
-			this->ctrl_active = false;
-			break;
-		case SDLK_m:
-			this->construct_mode = !this->construct_mode;
-			break;
-		case SDLK_p:
-			UnitAction::show_debug = !UnitAction::show_debug;
-			break;
-		case SDLK_t:
-			// attempt to train editor selected object
-			if ( this->datamanager.producer_count() > 0 ) {
-				UnitProducer *producer = this->datamanager.get_producer_index(this->editor_current_building);
-				Command cmd(this->players[0], producer);
-				this->selection.all_invoke(cmd);
-			}
-			break;
-		case SDLK_y:
-			this->building_placement = true;
-			break;
-		case SDLK_z:
-			this->use_set_ability = false;
-			break;
-		case SDLK_x:
-			this->use_set_ability = true;
-			this->ability = ability_type::move;
-			break;
-		case SDLK_c:
-			this->use_set_ability = true;
-			this->ability = ability_type::gather;
-			break;
-		}
-
-		break;
-	case SDL_KEYDOWN:
-		switch (((SDL_KeyboardEvent *) e)->keysym.sym) {
-		case SDLK_LCTRL:
-			this->ctrl_active = true;
-			break;
-		}
-
+		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+		keybinds::KeybindManager &keybinds = engine.get_keybind_manager();
+		keybinds.set_key_state(sym, false);
+		keybinds.press(keybinds::key_t(sym, keymod));
 		break;
 	}
+
+	case SDL_KEYDOWN: {
+		this->keymod = SDL_GetModState();
+
+		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+		engine.get_keybind_manager().set_key_state(sym, true);
+		break;
+	}
+
+
+	} // switch (e->type)
 
 	return true;
 }
@@ -502,18 +502,18 @@ void GameMain::move_camera() {
 	// one pixel per millisecond equals 14.3 tiles/second
 	float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
 
-	CoreInputHandler &input_handler = engine.get_input_handler();
+	keybinds::KeybindManager &keybinds = engine.get_keybind_manager();
 
-	if (input_handler.is_key_down(SDLK_LEFT)) {
+	if (keybinds.is_key_down(SDLK_LEFT)) {
 		mov_x = -cam_movement_speed_keyboard;
 	}
-	if (input_handler.is_key_down(SDLK_RIGHT)) {
+	if (keybinds.is_key_down(SDLK_RIGHT)) {
 		mov_x = cam_movement_speed_keyboard;
 	}
-	if (input_handler.is_key_down(SDLK_DOWN)) {
+	if (keybinds.is_key_down(SDLK_DOWN)) {
 		mov_y = cam_movement_speed_keyboard;
 	}
-	if (input_handler.is_key_down(SDLK_UP)) {
+	if (keybinds.is_key_down(SDLK_UP)) {
 		mov_y = -cam_movement_speed_keyboard;
 	}
 

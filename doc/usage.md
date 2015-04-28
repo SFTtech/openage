@@ -36,6 +36,10 @@ This document describes what you can do so far once you start the game.
 
 - You can take a screenshot by pressing `F2`, it will be saved in a file named
   like `/tmp/openage_2019-12-31_23-59-59_xx.png`
+- Press `y` to enable villagers to place the selected building
+- You can change the right-click commands with the `z`, `x` and `c` keys: move
+  commands only with `z`, gather commands with `x` and all commands (default)
+  with `c`
 - Open the ingame console with the backtick key
 
 ## Development

@@ -18,8 +18,8 @@
 #include "coord/window.h"
 #include "font.h"
 #include "handlers.h"
-#include "input.h"
 #include "job/job_manager.h"
+#include "keybinds/keybind_manager.h"
 #include "util/dir.h"
 #include "util/fps.h"
 #include "screenshot.h"
@@ -28,9 +28,7 @@ namespace openage {
 
 class DrawHandler;
 class TickHandler;
-class InputHandler;
 class ResizeHandler;
-class CoreInputHandler;
 
 struct coord_data {
 	coord::window window_size{800, 600};
@@ -191,9 +189,9 @@ public:
 	ScreenshotManager &get_screenshot_manager();
 
 	/**
-	 * return the core input handler of the engine.
-	 */
-	CoreInputHandler &get_input_handler();
+	* return this engine's keybind manager.
+	*/
+	keybinds::KeybindManager &get_keybind_manager();
 
 	/**
 	 * return the number of nanoseconds that have passed
@@ -250,13 +248,6 @@ private:
 	util::Dir *data_dir;
 
 	/**
-	 * the core engine input handler.
-	 * additional input handlers may be registered with
-	 * `register_input_action`
-	 */
-	CoreInputHandler input_handler;
-
-	/**
 	 * input event processor objects.
 	 * called for each captured sdl input event.
 	 */
@@ -280,6 +271,11 @@ private:
 	std::vector<HudHandler *> on_drawhud;
 
 	/**
+	 * list of handlers that are executed upon a resize event.
+	 */
+	std::vector<ResizeHandler *> on_resize_handler;
+
+	/**
 	 * the frame counter measuring fps.
 	 */
 	util::FrameCounter fps_counter;
@@ -298,6 +294,12 @@ private:
 	 * the engine's job manager, for asynchronous background task queuing.
 	 */
 	job::JobManager *job_manager;
+
+
+	/**
+	 * the engine's keybind manager.
+	 */
+	keybinds::KeybindManager keybind_manager;
 
 	/**
 	 * the text fonts to be used for (can you believe it?) texts.

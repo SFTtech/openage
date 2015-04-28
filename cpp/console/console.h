@@ -10,6 +10,7 @@
 #include "../handlers.h"
 #include "../coord/camhud.h"
 #include "../engine.h"
+#include "../keybinds/keybind_manager.h"
 #include "../util/color.h"
 #include "../font.h"
 #include "../gamedata/color.gen.h"
@@ -33,6 +34,8 @@ public:
 
 	Buf buf;
 	Font font;
+
+	keybinds::KeybindContext keybind_context;
 
 	//callback functions
 	bool on_engine_tick();

@@ -35,7 +35,8 @@ int main(int argc, char **argv) {
 
 		if (args.error_occured) {
 			return 1;
-		} 
+		}
+
 		if (args.display_help) {
 			return 0;
 		}

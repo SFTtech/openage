@@ -18,7 +18,6 @@ add_sources(${PROJECT_NAME}
 	engine.cpp
 	font.cpp
 	handlers.cpp
-	input.cpp
 	player.cpp
 	python.cpp
 	screenshot.cpp
@@ -36,6 +35,7 @@ add_subdirectory("crossplatform")
 add_subdirectory("datastructure")
 add_subdirectory("log")
 add_subdirectory("job")
+add_subdirectory("keybinds")
 add_subdirectory("pathfinding")
 add_subdirectory("shader")
 add_subdirectory("terrain")
