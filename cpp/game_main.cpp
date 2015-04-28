@@ -111,7 +111,6 @@ GameMain::GameMain(Engine *engine)
 	:
 	editor_current_terrain{0},
 	editor_current_building{0},
-	current_player{1},
 	debug_grid_active{false},
 	clicking_active{true},
 	scrolling_active{false},
@@ -290,7 +289,7 @@ GameMain::GameMain(Engine *engine)
 		// attempt to train editor selected object
 		if ( this->datamanager.producer_count() > 0 ) {
 			auto type = this->datamanager.get_type_index(this->editor_current_building);
-			Command cmd(this->players[this->current_player - 1], type);
+			Command cmd(this->players[this->engine->current_player - 1], type);
 			this->selection.all_invoke(cmd);
 		}
 	});
@@ -311,7 +310,7 @@ GameMain::GameMain(Engine *engine)
 	this->keybind_context.bind(keybinds::action_t::SPAWN_VILLAGER, [this]() {
 		if (this->construct_mode && this->datamanager.producer_count() > 0) {
 			UnitType &type = *this->datamanager.get_type(590);
-			this->placed_units.new_unit(type, this->players[this->current_player - 1], mousepos_tile.to_phys2().to_phys3());
+			this->placed_units.new_unit(type, this->players[this->engine->current_player - 1], mousepos_tile.to_phys2().to_phys3());
 		}
 	});
 	this->keybind_context.bind(keybinds::action_t::KILL_UNIT, [this]() {
@@ -363,35 +362,35 @@ GameMain::GameMain(Engine *engine)
 
 	// Switching between players with the 1-8 keys
 	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_1, [this]() {
-		this->current_player = 1;
+		this->engine->current_player = 1;
 		this->selection.clear();
 	});
 	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_2, [this]() {
-		this->current_player = 2;
+		this->engine->current_player = 2;
 		this->selection.clear();
 	});
 	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_3, [this]() {
-		this->current_player = 3;
+		this->engine->current_player = 3;
 		this->selection.clear();
 	});
 	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_4, [this]() {
-		this->current_player = 4;
+		this->engine->current_player = 4;
 		this->selection.clear();
 	});
 	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_5, [this]() {
-		this->current_player = 5;
+		this->engine->current_player = 5;
 		this->selection.clear();
 	});
 	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_6, [this]() {
-		this->current_player = 6;
+		this->engine->current_player = 6;
 		this->selection.clear();
 	});
 	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_7, [this]() {
-		this->current_player = 7;
+		this->engine->current_player = 7;
 		this->selection.clear();
 	});
 	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_8, [this]() {
-		this->current_player = 8;
+		this->engine->current_player = 8;
 		this->selection.clear();
 	});
 
@@ -453,7 +452,7 @@ bool GameMain::on_input(SDL_Event *e) {
 
 		case SDL_BUTTON_LEFT:
 			if (this->dragging_active) { // Stop dragging
-				selection.drag_release(terrain.get(), this->current_player, this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL));
+				selection.drag_release(terrain.get(), this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL));
 				dragging_active = false;
 			} else if (clicking_active) {
 				if (construct_mode) {
@@ -482,11 +481,11 @@ bool GameMain::on_input(SDL_Event *e) {
 					// first create foundation using the producer
 					UnitContainer *container = &this->placed_units;
 					UnitType *building_type = this->datamanager.get_type_index(this->editor_current_building);
-					UnitReference new_building = container->new_unit(*building_type, this->players[this->current_player - 1], mousepos_phys3);
+					UnitReference new_building = container->new_unit(*building_type, this->players[engine.current_player - 1], mousepos_phys3);
 
 					// task all selected villagers to build
 					if (new_building.is_valid()) {
-						Command cmd(this->players[this->current_player - 1], new_building.get());
+						Command cmd(this->players[engine.current_player - 1], new_building.get());
 						cmd.set_ability(ability_type::build);
 						this->selection.all_invoke(cmd);
 					}
@@ -523,7 +522,7 @@ bool GameMain::on_input(SDL_Event *e) {
 						// try creating a unit
 						log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
 						UnitType &producer = *this->datamanager.get_type_index(this->editor_current_building);
-						this->placed_units.new_unit(producer, this->players[this->current_player - 1], mousepos_tile.to_phys2().to_phys3());
+						this->placed_units.new_unit(producer, this->players[engine.current_player - 1], mousepos_tile.to_phys2().to_phys3());
 					}
 				} else {
 					// right click can cancel building placement
@@ -657,7 +656,7 @@ bool GameMain::on_draw() {
 			mode_str += " (" + std::to_string(this->ability) + ")";
 		}
 	}
-	mode_str += " (player " + std::to_string(this->current_player) + ")";
+	mode_str += " (player " + std::to_string(engine.current_player) + ")";
 	engine.render_text({x, y}, 20, mode_str.c_str());
 
 	if (this->building_placement) {
@@ -665,7 +664,7 @@ bool GameMain::on_draw() {
 		auto txt = building_type->default_texture();
 		auto size = building_type->foundation_size;
 		tile_range center = building_center(mousepos_tile.to_phys2().to_phys3(), size);
-		txt->draw(center.draw.to_camgame(), 0, this->current_player);
+		txt->draw(center.draw.to_camgame(), 0, engine.current_player);
 	}
 
 	return true;
@@ -686,7 +685,7 @@ bool GameMain::on_drawhud() {
 			bpreview_pos.y = 200;
 
 			auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
-			txt->sample(bpreview_pos.to_camhud(), this->current_player);
+			txt->sample(bpreview_pos.to_camhud(), engine->current_player);
 		}
 	}
 	return true;
@@ -746,14 +745,14 @@ void GameMain::draw_debug_grid() {
 Command GameMain::get_action(const coord::phys3 &pos) const {
 	auto obj = this->terrain->obj_at_point(pos);
 	if (obj) {
-		Command c(this->players[current_player - 1], &obj->unit, pos);
+		Command c(this->players[engine->current_player - 1], &obj->unit, pos);
 		if (this->use_set_ability) {
 			c.set_ability(ability);
 		}
 		return c;
 	}
 	else {
-		Command c(this->players[current_player - 1], pos);
+		Command c(this->players[engine->current_player - 1], pos);
 		if (this->use_set_ability) {
 			c.set_ability(ability);
 		}

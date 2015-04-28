@@ -26,11 +26,11 @@ public:
 	bool on_drawhud();
 	void drag_begin(coord::camgame pos);
 	void drag_update(coord::camgame pos);
-	void drag_release(Terrain *terrain, int player, bool append=false);
+	void drag_release(Terrain *terrain, bool append=false);
 
 	void clear();
 
-	void toggle_unit(Unit *u, int player);
+	void toggle_unit(Unit *u);
 
 	/**
 	 * kill a single unit in the selection
@@ -45,12 +45,12 @@ public:
 	/**
 	 * point unit selection
 	 */
-	void select_point(Terrain *terrain, int player, coord::camgame p, bool append=false);
+	void select_point(Terrain *terrain, coord::camgame p, bool append=false);
 
 	/**
 	 * boxed unit selcetion
 	 */
-	void select_space(Terrain *terrain, int player, coord::camgame p1, coord::camgame p2, bool append=false);
+	void select_space(Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append=false);
 
 	/**
 	 * uses command on every selected unit

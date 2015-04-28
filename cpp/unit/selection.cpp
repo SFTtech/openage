@@ -86,12 +86,12 @@ void UnitSelection::drag_update(coord::camgame pos) {
 	this->end = pos;
 }
 
-void UnitSelection::drag_release(Terrain *terrain, int player, bool append) {
+void UnitSelection::drag_release(Terrain *terrain, bool append) {
 	if (this->start == this->end) {
-		this->select_point(terrain, player, this->start, append);
+		this->select_point(terrain, this->start, append);
 	}
 	else {
-		this->select_space(terrain, player, this->start, this->end, append);
+		this->select_space(terrain, this->start, this->end, append);
 		drag_active = false;
 	}
 }
@@ -105,7 +105,7 @@ void UnitSelection::clear() {
 	this->units.clear();
 }
 
-void UnitSelection::toggle_unit(Unit *u, int player) {
+void UnitSelection::toggle_unit(Unit *u) {
 	if (this->units.count(u->id) > 0) {
 		u->selected = false;
 		this->units.erase(u->id);
@@ -118,6 +118,7 @@ void UnitSelection::toggle_unit(Unit *u, int player) {
 		}
 
 		// Check player
+		int player = Engine::get().current_player;
 		if (u->has_attribute(attr_type::owner)) {
 			int color = u->get_attribute<attr_type::owner>().player.color;
 			if (color != player) {
@@ -147,7 +148,7 @@ bool UnitSelection::contains_villagers() {
 	return false;
 }
 
-void UnitSelection::select_point(Terrain *terrain, int player, coord::camgame p, bool append) {
+void UnitSelection::select_point(Terrain *terrain, coord::camgame p, bool append) {
 	if (!append) {
 		this->clear();
 	}
@@ -160,11 +161,11 @@ void UnitSelection::select_point(Terrain *terrain, int player, coord::camgame p,
 	// find any object at selected point
 	auto obj = terrain->obj_at_point(p.to_phys3());
 	if (obj) {
-		this->toggle_unit(&obj->unit, player);
+		this->toggle_unit(&obj->unit);
 	}
 }
 
-void UnitSelection::select_space(Terrain *terrain, int player, coord::camgame p1, coord::camgame p2, bool append) {
+void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append) {
 	if (!append) {
 		this->clear();
 	}
@@ -193,7 +194,7 @@ void UnitSelection::select_space(Terrain *terrain, int player, coord::camgame p1
 	}
 
 	for (Unit *u : boxed_units) {
-		this->toggle_unit(u, player);
+		this->toggle_unit(u);
 	}
 }
 
