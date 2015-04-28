@@ -308,7 +308,9 @@ void IdleAction::update(unsigned int time) {
 
 	// auto task searching
 	if (this->entity->location &&
-		this->entity->has_attribute(attr_type::owner)) {
+	    this->entity->has_attribute(attr_type::owner) &&
+	    this->entity->has_attribute(attr_type::attack) &&
+	    this->entity->get_attribute<attr_type::attack>().stance != attack_stance::do_nothing) {
 
 		// restart search from new tile when moved
 		auto terrain = this->entity->location->get_terrain();

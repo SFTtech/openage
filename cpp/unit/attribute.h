@@ -67,6 +67,13 @@ enum class attr_type {
 	garrison
 };
 
+enum class attack_stance {
+	aggresive,
+	devensive,
+	stand_ground,
+	do_nothing
+};
+
 /**
  * this type gets specialized for each attribute
  */
@@ -144,6 +151,7 @@ public:
 		range{r},
 		init_height{h},
 		damage{d},
+		stance{attack_stance::do_nothing},
 		attack_graphic_set{&grp} {}
 
 	AttributeContainer *copy() const override {
@@ -157,6 +165,7 @@ public:
 	coord::phys_t range;
 	coord::phys_t init_height;
 	unsigned int damage;
+	attack_stance stance;
 
 	// used to change graphics back to normal for villagers
 	graphic_set *attack_graphic_set;
