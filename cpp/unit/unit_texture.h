@@ -58,7 +58,7 @@ public:
 	/**
 	 * a sample drawing for hud
 	 */
-	void sample(const coord::camhud &draw_pos) const;
+	void sample(const coord::camhud &draw_pos, unsigned color = 1) const;
 
 	/**
 	 * draw object with no direction

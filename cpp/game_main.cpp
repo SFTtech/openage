@@ -665,7 +665,7 @@ bool GameMain::on_draw() {
 		auto txt = building_type->default_texture();
 		auto size = building_type->foundation_size;
 		tile_range center = building_center(mousepos_tile.to_phys2().to_phys3(), size);
-		txt->draw(center.draw.to_camgame(), 0, 1);
+		txt->draw(center.draw.to_camgame(), 0, this->current_player);
 	}
 
 	return true;
@@ -686,7 +686,7 @@ bool GameMain::on_drawhud() {
 			bpreview_pos.y = 200;
 
 			auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
-			txt->sample(bpreview_pos.to_camhud());
+			txt->sample(bpreview_pos.to_camhud(), this->current_player);
 		}
 	}
 	return true;

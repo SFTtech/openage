@@ -64,7 +64,7 @@ bool UnitTexture::is_valid() const {
 	return texture;
 }
 
-void UnitTexture::sample(const coord::camhud &draw_pos) const {
+void UnitTexture::sample(const coord::camhud &draw_pos, unsigned color) const {
 
 	// draw delta list first
 	for (auto &d : this->deltas) {
@@ -74,7 +74,7 @@ void UnitTexture::sample(const coord::camhud &draw_pos) const {
 
 	// draw texture
 	if (this->draw_this) {
-		this->texture->draw(draw_pos, PLAYERCOLORED, false, 0, 1);
+		this->texture->draw(draw_pos, PLAYERCOLORED, false, 0, color);
 	}
 }
 
