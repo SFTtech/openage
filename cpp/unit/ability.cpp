@@ -11,17 +11,17 @@
 
 namespace openage {
 
-bool has_hitpoints(Unit &target) {
+bool UnitAbility::has_hitpoints(Unit &target) {
 	return target.has_attribute(attr_type::hitpoints) &&
 	       target.get_attribute<attr_type::hitpoints>().current > 0;
 }
 
-bool has_resource(Unit &target) {
+bool UnitAbility::has_resource(Unit &target) {
 	return target.has_attribute(attr_type::resource) &&
 	       target.get_attribute<attr_type::resource>().amount > 0;
 }
 
-bool is_ally(Unit &to_modify, Unit &target) {
+bool UnitAbility::is_ally(Unit &to_modify, Unit &target) {
 	if (to_modify.has_attribute(attr_type::owner) &&
 	    target.has_attribute(attr_type::owner)) {
 		auto &mod_player = to_modify.get_attribute<attr_type::owner>().player;
@@ -31,7 +31,7 @@ bool is_ally(Unit &to_modify, Unit &target) {
 	return false;
 }
 
-bool is_enemy(Unit &to_modify, Unit &target) {
+bool UnitAbility::is_enemy(Unit &to_modify, Unit &target) {
 	if (to_modify.has_attribute(attr_type::owner) &&
 		target.has_attribute(attr_type::owner)) {
 		auto &mod_player = to_modify.get_attribute<attr_type::owner>().player;
@@ -164,9 +164,6 @@ BuildAbility::BuildAbility(Sound *s)
 }
 
 bool BuildAbility::can_invoke(Unit &to_modify, const Command &cmd) {
-	if (cmd.has_type() && cmd.has_position()) {
-		return bool(to_modify.location);
-	}
 	if (cmd.has_unit()) {
 		Unit *target = cmd.unit();
 		return to_modify.location &&
@@ -184,9 +181,6 @@ void BuildAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) 
 
 	if (cmd.has_unit()) {
 		to_modify.push_action(std::make_unique<BuildAction>(&to_modify, cmd.unit()->get_ref()));
-	}
-	else {
-		to_modify.push_action(std::make_unique<BuildAction>(&to_modify, cmd.type(), cmd.position()));
 	}
 }
 
@@ -227,6 +221,8 @@ bool AttackAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 		bool target_is_resource = has_resource(target);
 		return &to_modify != &target &&
 		       to_modify.location &&
+		       target.location &&
+		       target.location->is_placed() &&
 		       to_modify.has_attribute(attr_type::attack) &&
 		       has_hitpoints(target) &&
 		       (is_enemy(to_modify, target) || target_is_resource) &&

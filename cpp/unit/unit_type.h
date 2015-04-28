@@ -9,6 +9,7 @@
 
 #include "../coord/phys3.h"
 #include "attribute.h"
+#include "unit_container.h"
 
 namespace openage {
 
@@ -18,7 +19,6 @@ class TerrainObject;
 class Unit;
 class UnitAbility;
 class UnitContainer;
-class UnitReference;
 class UnitTexture;
 
 /**

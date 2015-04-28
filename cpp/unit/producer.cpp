@@ -89,23 +89,41 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	// default extra graphics
 	this->graphics[graphic_type::attack] = this->graphics[graphic_type::standing];
 	this->graphics[graphic_type::work] = this->graphics[graphic_type::standing];
-	this->graphics[graphic_type::carrying] = this->graphics[graphic_type::standing];
 
 	// pull extra graphics from unit commands
 	auto cmds = dm.get_command_data(this->unit_data.id0);
 	for (auto cmd : cmds) {
+
+		// same attack / work graphic
 		if (cmd->action_graphic_id == -1 && cmd->proceed_graphic_id > 0) {
-			this->graphics[graphic_type::work] = dm.get_unit_texture(cmd->proceed_graphic_id);
+			auto task = dm.get_unit_texture(cmd->proceed_graphic_id);
+			if (task) {
+				this->graphics[graphic_type::work] = task;
+				this->graphics[graphic_type::attack] = task;
+			}
 		}
+
+		// seperate work and attack graphics
 		if (cmd->action_graphic_id > 0 && cmd->proceed_graphic_id > 0 ) {
-			this->graphics[graphic_type::attack] = dm.get_unit_texture(cmd->proceed_graphic_id);
-			this->graphics[graphic_type::work] = dm.get_unit_texture(cmd->action_graphic_id);
+			auto attack = dm.get_unit_texture(cmd->proceed_graphic_id);
+			auto work = dm.get_unit_texture(cmd->action_graphic_id);
+			if (attack) {
+				this->graphics[graphic_type::attack] = attack;
+			}
+			if (work) {
+				this->graphics[graphic_type::work] = work;
+			}
 		}
+
+		// villager carrying resources graphics
 		if (cmd->carrying_graphic_id > 0) {
-			this->graphics[graphic_type::carrying] = dm.get_unit_texture(cmd->carrying_graphic_id);
+			auto carry = dm.get_unit_texture(cmd->carrying_graphic_id);
+			this->graphics[graphic_type::carrying] = carry;
+			if (carry) {
+				
+			}
 		}
 	}
-
 }
 
 ObjectProducer::~ObjectProducer() {}
@@ -271,9 +289,22 @@ MovableProducer::MovableProducer(DataManager &dm, const gamedata::unit_movable *
 	on_attack{dm.get_sound(this->unit_data.move_sound)},
 	projectile{dm.get_type(this->unit_data.projectile_unit_id)} {
 
-	// extra graphics
-	this->graphics[graphic_type::walking] = dm.get_unit_texture(this->unit_data.walking_graphics0);
-	this->graphics[graphic_type::attack] = dm.get_unit_texture(this->unit_data.attack_graphic);
+	// extra graphics if available
+	// villagers have invalid attack and walk graphics
+	// it seems these come from the command data instead
+	auto walk = dm.get_unit_texture(this->unit_data.walking_graphics0);
+	auto attack = dm.get_unit_texture(this->unit_data.attack_graphic);
+	if (walk && walk->is_valid()) {
+		this->graphics[graphic_type::walking] = walk;
+
+		// reuse as carry graphic if not already set
+		if (this->graphics.count(graphic_type::carrying) == 0) {
+			this->graphics[graphic_type::carrying] = walk;
+		}
+	}
+	if (attack && attack->is_valid()) {
+		this->graphics[graphic_type::attack] = attack;
+	}
 
 	// extra abilities
 	this->type_abilities.emplace_back(std::make_shared<MoveAbility>(this->on_move));

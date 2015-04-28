@@ -86,12 +86,12 @@ public:
 	Sound *get_sound(index_t sound_id);
 
 	/**
-	 * producers by aoe unit ids -- the producer which corresponds to an aoe unit id
+	 * unit types by aoe gamedata unit ids -- the unit type which corresponds to an aoe unit id
 	 */
 	UnitType *get_type(index_t type_id);
 
 	/**
-	 * producers by list index -- a continuous array of all producers
+	 * unit types by list index -- a continuous array of all types
 	 */
 	UnitType *get_type_index(size_t type_index);
 
@@ -140,12 +140,12 @@ private:
 	std::unordered_map<index_t, std::vector<const gamedata::unit_command *>> commands;
 
 	/**
-	 * unit ids -> producer for that id
+	 * unit ids -> unit type for that id
 	 */
 	std::unordered_map<index_t, UnitType *> producers;
 
 	/**
-	 * unit ids -> producer for that id
+	 * unit ids -> unit type for that id
 	 */
 	std::unordered_map<index_t, std::shared_ptr<UnitTexture>> unit_textures;
 

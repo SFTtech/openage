@@ -54,6 +54,7 @@ UnitAction *Unit::top() const {
 }
 
 bool Unit::update() {
+
 	// if unit is not on the map then do nothing
 	if (!this->location) {
 		return true;

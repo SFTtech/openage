@@ -53,14 +53,6 @@ ability_set from_list(const std::vector<ability_type> &items);
 const ability_set ability_all = ability_set().set();
 
 /**
- * some common functions
- */
-bool has_hitpoints(Unit &target);
-bool has_resource(Unit &target);
-bool is_ally(Unit &to_modify, Unit &target);
-bool is_enemy(Unit &to_modify, Unit &target);
-
-/**
  * Abilities create an action when given a target
  * some abilities target positions such as moving or patroling
  * others target other game objects, such as attacking or
@@ -84,6 +76,15 @@ public:
 	 * applys command to a given unit
 	 */
 	virtual void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) = 0;
+
+	/**
+ 	 * some common functions
+	 */
+	bool has_hitpoints(Unit &target);
+	bool has_resource(Unit &target);
+	bool is_ally(Unit &to_modify, Unit &target);
+	bool is_enemy(Unit &to_modify, Unit &target);
+
 };
 
 /*
