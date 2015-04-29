@@ -80,7 +80,14 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	}
 
 	// graphic set
-	this->graphics[graphic_type::standing] = dm.get_unit_texture(this->unit_data.graphic_standing0);
+	auto standing = dm.get_unit_texture(this->unit_data.graphic_standing0);
+	if (!standing) {
+
+		// indicates problems with data converion
+		throw util::Error(MSG(err) << "Unit id " << this->unit_data.id0 
+			<< " has invalid graphic data, try reconverting the data");
+	}
+	this->graphics[graphic_type::standing] = standing;
 	auto dying_tex = dm.get_unit_texture(this->unit_data.graphic_dying0);
 	if (dying_tex) {
 		this->graphics[graphic_type::dying] = dying_tex;

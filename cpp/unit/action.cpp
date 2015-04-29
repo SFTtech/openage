@@ -39,7 +39,16 @@ UnitAction::UnitAction(Unit *u, graphic_type initial_gt)
 	frame_rate{.0f} {
 
 	if (u->graphics->count(initial_gt) > 0) {
-		this->frame_rate = u->graphics->at(initial_gt)->frame_rate;
+		auto utex = u->graphics->at(initial_gt);
+		if (utex) {
+			this->frame_rate = utex->frame_rate;
+		}
+		else {
+			this->entity->log(MSG(dbg) << "Broken graphic (null)");
+		}
+	}
+	else {
+		this->entity->log(MSG(dbg) << "Broken graphic (not available)");
 	}
 
 	if (frame_rate == 0) {
