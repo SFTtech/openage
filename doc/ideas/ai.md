@@ -1,16 +1,16 @@
-Computer AI plays bad. Approach of this file is to describe how to make computer plays AoE well
+Improvements for the AI's gameplay
 
 Villagers
----------------
+---------
 
-* Don't mine gold, stone, food or wood around the towers and castles
-* Don't build something in the impact zone of the towers and castles
-* Don't go inside impact zone of the towers and castles
-* Build more gates in the walls (computer often lock itself)
+ - Don't collect ressources in hazardous areas / send the military to clear them out
+ - Send military task forces to guard strategic resources / tower them
+ - Don't build in hazardous areas
+ - Build more gates in walls to prevent lock-ins
 
-Forces
----------------
+Military
+--------
 
-* Don't go through impact zone of towers and castles
-* If somebody attacks unit of the forces, forces react on it (include attacking towers and castles)
-* Computer disable scout in the regime "All visible"
+ - Avoid fighting in hazardous areas / prefer fighting in range of own castles
+ - Coordinates reaction to attacks on units (during march, ...) (including attacks by towers/castles)
+ - Disable scouting if the "all visible" option was selected.

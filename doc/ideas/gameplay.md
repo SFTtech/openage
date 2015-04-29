@@ -134,6 +134,9 @@ More intelligent units
  - Restrictions for action areas (don't do anything here)
    - Wood chopping
    - Castle rampages
+   - Avoid hazardous areas during pathfinding (via a cost modifier)
+     - Automatically for stationary hazards (castles, towers, ...)
+     - Manually "painted" areas
  - Emergency evacuation points
  - Formations and movement when attacking
  - Dynamic hardlocking on target units when attacking
@@ -145,10 +148,13 @@ Infinite Ressources
 
  - Forest regeneration
 
-Conversion
--------------------
+Better attack stances
+---------------------
 
- - Monk automatically try to convert each enemy unit in his area.
+ - Aggressive stance for monks (auto-convert)
+ - Auto-flee stance (especially for monks): Auto-task "flee" action as soon as an enemy unit comes near
+ - Non-coward stance for villagers
+ - Allow selecting the default stance
 
 For the lulz
 ------------
