@@ -3,11 +3,11 @@ This file contains ideas to "enhance" the original Age of Kings gameplay. Don't 
 Weather
 -------
 
-* Change view distance (Line of sight / Fog of War)
-* Fog, rain, winter, summer
-* Unit slowdowns (depending on terrain)
-* Can be predicted by tech
-* Can be modified globally or locally (by voodoo priests)
+ - Change view distance (Line of sight / Fog of War)
+ - Fog, rain, winter, summer
+ - Unit slowdowns (depending on terrain)
+ - Can be predicted by tech
+ - Can be modified globally or locally (by voodoo priests)
 
 Fire
 ----
@@ -48,11 +48,11 @@ Massively slow down the game speed, and you get a "browser game"-like experience
 Research
 --------
 
-* Only newly-built units receive the bonus when units are upgraded
-  Already-built units need to be "overhauled" for a cost back at the barracks.
-  (reminder: just an idea, there will be vanilla mode)
-* Research should be placed in creating order, like in WarCraft. It's too annoying
-  to click on building again after each research
+ - Only newly-built units receive the bonus when units are upgraded
+ - Already-built units need to be "overhauled" for a cost back at the barracks.
+   (reminder: just an idea, there will be vanilla mode)
+ - Research should be placed in creating order, like in WarCraft. It's too annoying
+   to click on building again after each research
 
 Zombie Survival Mode
 --------------------
@@ -122,10 +122,10 @@ Unit grouping
 Color marking / signs on map
 ----------------------------
 
-- For better team coordination:
-  - Create signs
-  - Paint on map
-  - Create arrows
+ - For better team coordination:
+   - Create signs
+   - Paint on map
+   - Create arrows
 
 
 More intelligent units
@@ -145,6 +145,10 @@ Infinite Ressources
 
  - Forest regeneration
 
+Conversion
+-------------------
+
+ - Monk automatically try to convert each enemy unit in his area.
 
 For the lulz
 ------------
