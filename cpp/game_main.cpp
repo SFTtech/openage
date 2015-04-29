@@ -346,16 +346,27 @@ bool GameMain::on_input(SDL_Event *e) {
 			if (this->building_placement) {
 
 				// confirm building placement with left click
-				Command cmd(this->players[0], this->datamanager.get_type_index(this->editor_current_building), mousepos_phys3);
-				cmd.set_ability(ability_type::build);
-				selection.all_invoke(cmd);
+				// first create foundation using the producer
+				auto player = this->selection.owner();
+				if (player) {
+					auto container = &this->placed_units;
+					auto building_type = this->datamanager.get_type_index(this->editor_current_building);
+					auto new_building = container->new_unit(*building_type, *player, mousepos_phys3);
+
+					// task all selected villagers to build
+					if (new_building.is_valid()) {
+						Command cmd(*player, new_building.get());
+						cmd.set_ability(ability_type::build);
+						this->selection.all_invoke(cmd);
+					}	
+				}
 				this->building_placement = false;
 			}
 			else {
 
 				// begin a boxed selection
-				selection.drag_begin(mousepos_camgame);
-				dragging_active = true;
+				this->selection.drag_begin(mousepos_camgame);
+				this->dragging_active = true;
 			}
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_LEFT and construct_mode) {
@@ -560,8 +571,11 @@ bool GameMain::on_draw() {
 	}
 
 	if (this->building_placement) {
-		auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
-		txt->draw(mousepos_tile.to_phys2().to_phys3().to_camgame(), 0, 1);
+		auto building_type = this->datamanager.get_type_index(this->editor_current_building);
+		auto txt = building_type->default_texture();
+		auto size = building_type->foundation_size;
+		tile_range center = building_center(mousepos_tile.to_phys2().to_phys3(), size);
+		txt->draw(center.draw.to_camgame(), 0, 1);
 	}
 
 	return true;

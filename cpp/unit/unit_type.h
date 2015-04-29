@@ -89,6 +89,11 @@ public:
 	 * The set of graphics used for this type
 	 */
 	graphic_set graphics;
+
+	/**
+	 * the square dimensions of the placement
+	 */
+	coord::tile_delta foundation_size;
 };
 
 /**

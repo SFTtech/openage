@@ -250,19 +250,7 @@ SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size, std::shar
 SquareObject::~SquareObject() {}
 
 tile_range SquareObject::get_range(const coord::phys3 &pos) const {
-	tile_range result;
-	result.start = pos.to_tile3().to_tile();
-	result.end   = result.start + this->size;
-
-	// TODO temporary hacky solution until openage::coord has been properly fixed.
-	coord::phys2 draw_pos = result.start.to_phys2();
-
-	draw_pos.ne += ((this->size.ne - 1) * coord::settings::phys_per_tile) / 2;
-	draw_pos.se += ((this->size.se - 1) * coord::settings::phys_per_tile) / 2;
-
-	result.draw  = draw_pos.to_phys3();
-
-	return result;
+	return building_center(pos, this->size);
 }
 
 coord::phys_t SquareObject::from_edge(const coord::phys3 &point) const {
@@ -404,6 +392,21 @@ std::vector<coord::tile> tile_list(const tile_range &rng) {
 		tiles.push_back(rng.start);
 	}
 	return tiles;
+}
+
+tile_range building_center(coord::phys3 west, coord::tile_delta size) {
+	tile_range result;
+	result.start = west.to_tile3().to_tile();
+	result.end   = result.start + size;
+
+	// TODO temporary hacky solution until openage::coord has been properly fixed.
+	coord::phys2 draw_pos = result.start.to_phys2();
+
+	draw_pos.ne += ((size.ne - 1) * coord::settings::phys_per_tile) / 2;
+	draw_pos.se += ((size.se - 1) * coord::settings::phys_per_tile) / 2;
+
+	result.draw  = draw_pos.to_phys3();
+	return result;
 }
 
 } //namespace openage

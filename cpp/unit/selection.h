@@ -47,6 +47,12 @@ public:
 	 */
 	void all_invoke(Command &cmd);
 
+	/**
+	 * player who owns units in the selection
+	 * returns nullptr if no owned units are selected
+	 */ 
+	Player *owner();
+
 private:
 
 	/**

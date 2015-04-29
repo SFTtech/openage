@@ -207,7 +207,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 				), 
 				true);
 		}
-		else {
+		else if (this->graphics.count(graphic_type::dying) > 0) {
 			unit->push_action(std::make_unique<DeadAction>(unit), true);
 		}
 
@@ -457,8 +457,8 @@ BuldingProducer::BuldingProducer(DataManager &dm, const gamedata::unit_building 
 
 	// convert the float to the discrete foundation size...
 	this->foundation_size = {
-		(int)(this->unit_data.radius_size0 * 2),
-		(int)(this->unit_data.radius_size1 * 2),
+		static_cast<int>(this->unit_data.radius_size0 * 2),
+		static_cast<int>(this->unit_data.radius_size1 * 2),
 	};
 	
 	// graphic set

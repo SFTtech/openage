@@ -178,6 +178,18 @@ void UnitSelection::all_invoke(Command &cmd) {
 	}
 }
 
+Player *UnitSelection::owner() {
+	for (auto u : this->units) {
+		if (u.second.is_valid()) {
+			auto unit_ptr = u.second.get();
+			if (unit_ptr->has_attribute(attr_type::owner)) {
+				return &unit_ptr->get_attribute<attr_type::owner>().player;
+			}
+		}
+	}
+	return nullptr;
+}
+
 void UnitSelection::show_attributes(Unit *u) {
 	std::vector<std::string> lines;
 	lines.push_back(u->top()->name());

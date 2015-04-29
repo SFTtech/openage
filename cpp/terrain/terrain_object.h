@@ -45,6 +45,8 @@ struct tile_range {
  */
 std::vector<coord::tile> tile_list(const tile_range &rng);
 
+tile_range building_center(coord::phys3 west, coord::tile_delta size);
+
 /**
  * half a tile
  */

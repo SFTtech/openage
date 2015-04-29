@@ -168,7 +168,8 @@ public:
 
 private:
 	UnitReference target;
-	bool allow_move, end_action;
+	int repath_attempts;
+	bool end_action;
 
 	/**
 	 * tracks distance to target from last update

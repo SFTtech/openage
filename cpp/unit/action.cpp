@@ -100,7 +100,7 @@ TargetAction::TargetAction(Unit *u, graphic_type gt, UnitReference r, coord::phy
 	:
 	UnitAction(u, gt),
 	target{r},
-	allow_move{true},
+	repath_attempts{10},
 	end_action{false},
 	radius{rad} {
 	this->update_distance();
@@ -162,14 +162,14 @@ void TargetAction::update(unsigned int time) {
 		// the derived class controls what to
 		// do when in range of the target
 		this->update_in_range(time, target_ptr);
-		this->allow_move = true;
+		this->repath_attempts = 10;
 	}
-	else if (this->allow_move) {
+	else if (this->repath_attempts) {
 
 		// out of range so try move towards
 		// if this unit has a move ability
 		this->move_to(*target_ptr);
-		this->allow_move = false;
+		this->repath_attempts -= 1;
 	}
 	else {
 
@@ -669,7 +669,9 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 		auto target_location = target_unit->location;
 		if (target_location->is_floating()) {
 			target_location->place(object_state::placed);
-			target_location->set_ground(build.foundation_terrain, 0);
+			if (build.foundation_terrain) {
+				target_location->set_ground(build.foundation_terrain, 0);
+			}
 		}	
 
 		// increment building completion
