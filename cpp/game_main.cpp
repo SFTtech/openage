@@ -319,80 +319,38 @@ GameMain::GameMain(Engine *engine)
 
 	// Villager build commands
 	// TODO place this into separate building menus instead of global hotkeys
-	this->keybind_context.bind(keybinds::action_t::BUILDING_1, [this]() {
-		if (this->selection.contains_villagers()) {
-			this->building_placement = true;
-			if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
-				this->editor_current_building = 609; // Barracks
-			} else {
-				this->editor_current_building = 598; // House
+	auto bind_building_key = [this](keybinds::action_t action, int building, int military_building) {
+		this->keybind_context.bind(action, [this, building, military_building]() {
+			if (this->selection.contains_villagers()) {
+				this->building_placement = true;
+				if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
+					this->editor_current_building = military_building;
+				} else {
+					this->editor_current_building = building;
+				}
 			}
-		}
-	});
-	this->keybind_context.bind(keybinds::action_t::BUILDING_2, [this]() {
-		if (this->selection.contains_villagers()) {
-			this->building_placement = true;
-			if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
-				this->editor_current_building = 558; // Archery range
-			} else {
-				this->editor_current_building = 574; // Mill
-			}
-		}
-	});
-	this->keybind_context.bind(keybinds::action_t::BUILDING_3, [this]() {
-		if (this->selection.contains_villagers()) {
-			this->building_placement = true;
-			if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
-				this->editor_current_building = 581; // Stable
-			} else {
-				this->editor_current_building = 616; // Mining camp
-			}
-		}
-	});
-	this->keybind_context.bind(keybinds::action_t::BUILDING_4, [this]() {
-		if (this->selection.contains_villagers()) {
-			this->building_placement = true;
-			if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
-				this->editor_current_building = 580; // Siege workshop
-			} else {
-				this->editor_current_building = 611; // Lumber camp
-			}
-		}
-	});
+		});
+	};
+	bind_building_key(keybinds::action_t::BUILDING_1, 598, 609); // House, barracks
+	bind_building_key(keybinds::action_t::BUILDING_2, 574, 558); // Mill, archery range
+	bind_building_key(keybinds::action_t::BUILDING_3, 616, 581); // Mining camp, stable
+	bind_building_key(keybinds::action_t::BUILDING_4, 611, 580); // Lumber camp, siege workshop
 
 	// Switching between players with the 1-8 keys
-	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_1, [this]() {
-		this->engine->current_player = 1;
-		this->selection.clear();
-	});
-	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_2, [this]() {
-		this->engine->current_player = 2;
-		this->selection.clear();
-	});
-	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_3, [this]() {
-		this->engine->current_player = 3;
-		this->selection.clear();
-	});
-	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_4, [this]() {
-		this->engine->current_player = 4;
-		this->selection.clear();
-	});
-	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_5, [this]() {
-		this->engine->current_player = 5;
-		this->selection.clear();
-	});
-	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_6, [this]() {
-		this->engine->current_player = 6;
-		this->selection.clear();
-	});
-	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_7, [this]() {
-		this->engine->current_player = 7;
-		this->selection.clear();
-	});
-	this->keybind_context.bind(keybinds::action_t::SWITCH_TO_PLAYER_8, [this]() {
-		this->engine->current_player = 8;
-		this->selection.clear();
-	});
+	auto bind_player_switch = [this](keybinds::action_t action, int player) {
+		this->keybind_context.bind(action, [this, player]() {
+			this->engine->current_player = player;
+			this->selection.clear();
+		});
+	};
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_1, 1);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_2, 2);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_3, 3);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_4, 4);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_5, 5);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_6, 6);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_7, 7);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_8, 8);
 
 	engine->get_keybind_manager().register_context(&this->keybind_context);
 }
@@ -561,10 +519,12 @@ bool GameMain::on_input(SDL_Event *e) {
 	}
 
 	case SDL_MOUSEWHEEL:
-		if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
-			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
-		} else {
-			editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
+		if (this->construct_mode) {
+			if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
+				editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
+			} else {
+				editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
+			}
 		}
 		break;
 
