@@ -16,7 +16,7 @@ class Player {
 public:
 	Player(unsigned int number);
 
-	const unsigned int player_number; 
+	const unsigned int player_number;
 
 	/**
 	 * would be better to have rgb color value
@@ -38,7 +38,7 @@ public:
 
 	/**
 	 * this player owns the specified unit
-	 */ 
+	 */
 	bool owns(Unit &) const;
 
 private:

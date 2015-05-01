@@ -84,7 +84,7 @@ UnitReference UnitContainer::new_unit() {
 	return this->live_units[id]->get_ref();
 }
 
-UnitReference UnitContainer::new_unit(UnitType &type, 
+UnitReference UnitContainer::new_unit(UnitType &type,
                                       Player &owner,
                                       coord::phys3 position) {
 	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
@@ -101,20 +101,20 @@ UnitReference UnitContainer::new_unit(UnitType &type,
 	return UnitReference(); // is not valid
 }
 
-UnitReference UnitContainer::new_unit(UnitType &type, 
-                                      Player &owner, 
+UnitReference UnitContainer::new_unit(UnitType &type,
+                                      Player &owner,
                                       std::shared_ptr<TerrainObject> other) {
 	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
 
 	// try placing unit
-	auto placed = type.place_beside(newobj.get(), other);
+	std::shared_ptr<TerrainObject> placed = type.place_beside(newobj.get(), other);
 	if (placed) {
 		type.initialise(newobj.get(), owner);
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
 		return this->live_units[id]->get_ref();
 	}
-	return UnitReference(); // is not valid	
+	return UnitReference(); // is not valid
 }
 
 

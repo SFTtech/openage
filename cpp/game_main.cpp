@@ -347,18 +347,18 @@ bool GameMain::on_input(SDL_Event *e) {
 
 				// confirm building placement with left click
 				// first create foundation using the producer
-				auto player = this->selection.owner();
+				Player *player = this->selection.owner();
 				if (player) {
-					auto container = &this->placed_units;
-					auto building_type = this->datamanager.get_type_index(this->editor_current_building);
-					auto new_building = container->new_unit(*building_type, *player, mousepos_phys3);
+					UnitContainer *container = &this->placed_units;
+					UnitType *building_type = this->datamanager.get_type_index(this->editor_current_building);
+					UnitReference new_building = container->new_unit(*building_type, *player, mousepos_phys3);
 
 					// task all selected villagers to build
 					if (new_building.is_valid()) {
 						Command cmd(*player, new_building.get());
 						cmd.set_ability(ability_type::build);
 						this->selection.all_invoke(cmd);
-					}	
+					}
 				}
 				this->building_placement = false;
 			}
@@ -419,7 +419,7 @@ bool GameMain::on_input(SDL_Event *e) {
 			} else if ( this->datamanager.producer_count() > 0 ) {
 				// try creating a unit
 				log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
-				auto &producer = *this->datamanager.get_type_index(this->editor_current_building);
+				UnitType &producer = *this->datamanager.get_type_index(this->editor_current_building);
 				this->placed_units.new_unit(producer, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
 			}
 			break;

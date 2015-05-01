@@ -77,12 +77,12 @@ public:
 	UnitReference new_unit();
 
 	/**
-	 * adds a new unit to the container and initialises using a producer
+	 * adds a new unit to the container and initialises using a unit type
 	 */
 	UnitReference new_unit(UnitType &type, Player &owner, coord::phys3 position);
 
 	/**
-	 * adds a new unit to the container and initialises using a producer
+	 * adds a new unit to the container and initialises using a unit type
 	 * places outside an existing object using the player of that object
 	 */
 	UnitReference new_unit(UnitType &type, Player &owner, std::shared_ptr<TerrainObject> other);

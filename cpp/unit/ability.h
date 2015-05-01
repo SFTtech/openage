@@ -24,7 +24,7 @@ class UnitType;
 /**
  * roughly the same as command_ability in game data
  */
-enum ability_type {
+enum class ability_type {
 	move,
 	garrison,
 	ungarrison,
@@ -36,16 +36,13 @@ enum ability_type {
 	attack,
 	convert,
 	repair,
-	heal
+	heal,
+	MAX
 };
 
-using ability_set = std::bitset<16>;
+constexpr int ability_type_size = static_cast<int>(ability_type::MAX);
+using ability_set = std::bitset<ability_type_size>;
 using ability_id_t = unsigned int;
-
-/**
- * set bits corresponding to abilities
- */
-ability_set from_list(const std::vector<ability_type> &items);
 
 /**
  * all bits set to 1
@@ -73,7 +70,7 @@ public:
 	virtual bool can_invoke(Unit &to_modify, const Command &cmd) = 0;
 
 	/**
-	 * applys command to a given unit
+	 * applies command to a given unit
 	 */
 	virtual void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) = 0;
 
@@ -84,6 +81,12 @@ public:
 	bool has_resource(Unit &target);
 	bool is_ally(Unit &to_modify, Unit &target);
 	bool is_enemy(Unit &to_modify, Unit &target);
+
+	/**
+ 	 * set bits corresponding to abilities, useful for initialising an ability_set
+ 	 * using a brace enclosed list
+	 */
+	static ability_set set_from_list(const std::vector<ability_type> &items);
 
 };
 
@@ -231,8 +234,11 @@ std::string to_string(const openage::ability_type &at);
  */
 template<>
 struct hash<openage::ability_type> {
-	size_t operator()(const openage::ability_type &arg) const {
-		return arg;
+	typedef underlying_type<openage::ability_type>::type underlying_type;
+	typedef hash<underlying_type>::result_type result_type;
+	result_type operator()(const openage::ability_type &arg) const {
+		hash<underlying_type> hasher;
+		return hasher(static_cast<underlying_type>(arg));
 	}
 };
 

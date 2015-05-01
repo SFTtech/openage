@@ -103,6 +103,8 @@ TargetAction::TargetAction(Unit *u, graphic_type gt, UnitReference r, coord::phy
 	repath_attempts{10},
 	end_action{false},
 	radius{rad} {
+
+	// initial value for distance
 	this->update_distance();
 }
 
@@ -114,9 +116,14 @@ TargetAction::TargetAction(Unit *u, graphic_type gt, UnitReference r)
 void TargetAction::update(unsigned int time) {
 	auto target_ptr = update_distance();
 	if (!target_ptr) {
-		return;
+		return; // target has become invalid
 	}
 
+	// this update moves a unit within radius of the target
+	// once within the radius the update gets passed to the class
+	// derived from TargetAction
+
+	// first any apply graphic modifications
 	if (this->entity->has_attribute(attr_type::gatherer)) {
 
 		// the gatherer attributes attached to the unit
@@ -178,7 +185,11 @@ void TargetAction::update(unsigned int time) {
 	}
 }
 
-void TargetAction::on_completion() {}
+void TargetAction::on_completion() {
+	// TODO: retask units on nearby objects
+	// such as gathers targeting a new resource
+	// when the current target expires
+}
 
 bool TargetAction::completed() const {
 	if (this->end_action ||
@@ -310,7 +321,7 @@ IdleAction::IdleAction(Unit *e)
 	this->search = std::make_shared<TerrainSearch>(terrain, current_tile, 5.0f);
 
 	// currently allow attack and heal automatically
-	this->auto_abilities = from_list({ability_type::attack, ability_type::heal});
+	this->auto_abilities = UnitAbility::set_from_list({ability_type::attack, ability_type::heal});
 }
 
 void IdleAction::update(unsigned int time) {
@@ -486,7 +497,7 @@ void MoveAction::update(unsigned int time) {
 			break;
 		}
 	}
-	
+
 	// check move collisions
 	bool move_completed = this->entity->location->move(new_position);
 	if (move_completed) {
@@ -584,7 +595,7 @@ UngarrisonAction::UngarrisonAction(Unit *e, const coord::phys3 &pos)
 
 void UngarrisonAction::update(unsigned int) {
 	auto &garrison_attr = this->entity->get_attribute<attr_type::garrison>();
-	
+
 	// try unload all objects currently garrisoned
 	auto position_it = std::remove_if(
 		std::begin(garrison_attr.content),
@@ -672,7 +683,7 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 			if (build.foundation_terrain) {
 				target_location->set_ground(build.foundation_terrain, 0);
 			}
-		}	
+		}
 
 		// increment building completion
 		build.completed += build_rate * time;
@@ -746,7 +757,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 			if (resource_attr.amount <= 0.0f) {
 				this->complete = true;
-			}	
+			}
 		}
 	}
 	else {
@@ -814,7 +825,7 @@ bool AttackAction::completed_in_range(Unit *target_ptr) const {
 
 void AttackAction::attack(Unit &target) {
 	auto &attack = this->entity->get_attribute<attr_type::attack>();
-	if (attack.pp) {
+	if (attack.ptype) {
 
 		// add projectile to the game
 		this->fire_projectile(attack, target.location->pos.draw);
@@ -833,7 +844,7 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 
 	// create using the producer
 	auto player = this->entity->get_attribute<attr_type::owner>().player;
-	auto projectile_ref = container->new_unit(*att.pp, player, current_pos);
+	auto projectile_ref = container->new_unit(*att.ptype, player, current_pos);
 
 	// send towards target using a projectile ability (creates projectile motion action)
 	if (projectile_ref.is_valid()) {

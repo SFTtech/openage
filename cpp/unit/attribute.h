@@ -29,7 +29,7 @@ template<> struct hash<gamedata::unit_classes> {
 
 namespace openage {
 
-/** 
+/**
  * types of action graphics
  */
 enum class graphic_type {
@@ -46,7 +46,7 @@ enum class graphic_type {
 
 class UnitTexture;
 
-/** 
+/**
  * collection of graphics attached to each unit
  */
 using graphic_set = std::map<graphic_type, std::shared_ptr<UnitTexture>>;
@@ -78,7 +78,7 @@ enum class attack_stance {
  * this type gets specialized for each attribute
  */
 template<attr_type T> class Attribute;
- 
+
 /**
  * wraps a templated attribute
  */
@@ -147,7 +147,7 @@ public:
 	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, uint d, graphic_set &grp)
 		:
 		AttributeContainer{attr_type::attack},
-		pp{type},
+		ptype{type},
 		range{r},
 		init_height{h},
 		damage{d},
@@ -161,7 +161,7 @@ public:
 	// TODO: can a unit have multiple attacks such as villagers hunting
 	// map target classes onto attacks
 
-	UnitType *pp; // projectile type
+	UnitType *ptype; // projectile type
 	coord::phys_t range;
 	coord::phys_t init_height;
 	unsigned int damage;
@@ -234,7 +234,7 @@ public:
 	int foundation_terrain;
 
 	// TODO: use unit class, fish and forage have different dropsites
-	game_resource resource_type; 
+	game_resource resource_type;
 
 	// TODO: list allowed trainable producers
 	UnitType *pp;

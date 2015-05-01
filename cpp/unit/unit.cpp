@@ -111,18 +111,23 @@ void Unit::draw() {
 }
 
 void Unit::draw(std::shared_ptr<TerrainObject> loc, graphic_set *grpc) {
+
+	// there should always be a location
+	if (!loc) {
+		this->log(MSG(warn) << "Cannot draw unit with no location");
+	}
 	auto top_action = this->top();
 	auto &draw_pos = loc->pos.draw;
 	auto draw_graphic = top_action->type();
-	if (grpc->count(draw_graphic) == 0) {
-		this->log(MSG(warn) << "graphic not available");
+	if (!grpc || grpc->count(draw_graphic) == 0) {
+		this->log(MSG(warn) << "Graphic not available");
 		return;
 	}
 
 	// the texture to draw with
 	auto draw_texture = grpc->at(draw_graphic);
 	if (!draw_texture) {
-		this->log(MSG(warn) << "graphic null");
+		this->log(MSG(warn) << "Graphic null");
 		return;
 	}
 
@@ -196,11 +201,11 @@ bool Unit::invoke(const Command &cmd, bool direct_command) {
 
 	// find suitable ability for this target if available
 	for (auto &action : this->ability_available) {
-		if (cmd.ability()[action.first] && action.second->can_invoke(*this, cmd)) {
+		if (cmd.ability()[static_cast<int>(action.first)] && action.second->can_invoke(*this, cmd)) {
 			if (direct_command) {
 
 				// drop other actions if a new action is found
-				this->stop_actions(); 
+				this->stop_actions();
 			}
 			action.second->invoke(*this, cmd, direct_command);
 			return true;

@@ -8,15 +8,19 @@
 
 namespace openage {
 
-std::shared_ptr<TerrainObject> find_near(const TerrainObject &start, 
-                                         std::function<bool(const TerrainObject &)> found) {
-	
+std::shared_ptr<TerrainObject> find_near(const TerrainObject &start,
+                                         std::function<bool(const TerrainObject &)> found,
+                                         unsigned int search_limit) {
+
 	auto terrain = start.get_terrain();
 	auto tile = start.pos.draw.to_tile3().to_tile();
 	TerrainSearch search(terrain, tile);
 
-	for (int i = 0; i < 500; ++i) {
+	for (int i = 0; i < search_limit; ++i) {
 		for (auto o : terrain->get_data(tile)->obj) {
+
+			// lock should always work as the weak pointers
+			// are removed when the object is deleted
 			auto shared_o = o.lock();
 			if (found(*shared_o)) {
 				return shared_o;
@@ -26,7 +30,7 @@ std::shared_ptr<TerrainObject> find_near(const TerrainObject &start,
 	}
 
 	return nullptr;
-}	
+}
 
 TerrainSearch::TerrainSearch(std::shared_ptr<Terrain> t, coord::tile s)
 	:
@@ -40,8 +44,6 @@ TerrainSearch::TerrainSearch(std::shared_ptr<Terrain> t, coord::tile s, float ra
 	previous_radius{.0f},
 	max_radius{radius} {
 }
-
-TerrainSearch::~TerrainSearch() {}
 
 coord::tile TerrainSearch::start_tile() const {
 	return this->start;

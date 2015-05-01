@@ -55,7 +55,7 @@ public:
 	void check_updates();
 
 	/**
-	 * check if loading has been completed 
+	 * check if loading has been completed
 	 */
 	bool load_complete();
 
@@ -69,7 +69,7 @@ public:
 	 */
 	index_t get_slp_graphic(index_t slp);
 
-	/** 
+	/**
 	 * get a texture by id, this specifically avoids returning the missing placeholder texture
 	 */
 	Texture *get_texture(index_t graphic_id);
@@ -95,7 +95,7 @@ public:
 	 */
 	UnitType *get_type_index(size_t type_index);
 
-	/** 
+	/**
 	 * data for a graphic
 	 */
 	const gamedata::graphic *get_graphic_data(index_t grp_id);
@@ -170,8 +170,8 @@ private:
 	void create_unit_types(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id);
 
 	/**
-	 * loads required assets to produce an entity type
-	 * adds to the producer list if the object can be created safely
+	 * loads required assets to construct a unit type
+	 * adds to the type list if the object can be created safely
 	 */
 	void load_building(const gamedata::unit_building &, unit_type_list &);
 	void load_living(const gamedata::unit_living &, unit_type_list &);

@@ -33,15 +33,19 @@ enum class object_state {
 /**
  * A rectangle or square of tiles which is the minimim
  * space to fit the units foundation or radius
+ * the end tile will have ne and se values greater or equal to
+ * the start tile
  */
 struct tile_range {
 	coord::tile start;
-	coord::tile end;
-	coord::phys3 draw; // gets used as center point of radial objects
+	coord::tile end;	// start <= end
+	coord::phys3 draw;	// gets used as center point of radial objects
 };
 
 /**
  * get all tiles in the tile range -- useful for iterating
+ * returns a flat list of tiles between the rectangle enclosed
+ * by the tile_range start and end tiles
  */
 std::vector<coord::tile> tile_list(const tile_range &rng);
 
@@ -87,7 +91,9 @@ public:
 	Unit &unit;
 
 	/**
-	 * is the object a floating outline
+	 * is the object a floating outline -- it is only an indicator
+	 * of where a building will be built, but not yet started building
+	 * and does not affect any collisions
 	 */
 	bool is_floating() const;
 

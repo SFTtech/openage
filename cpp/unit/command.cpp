@@ -67,7 +67,7 @@ UnitType *Command::type() const {
 
 void Command::set_ability(ability_type t) {
 	this->modifiers = 0;
-	this->modifiers[t] = true;
+	this->modifiers[static_cast<int>(t)] = true;
 }
 
 void Command::set_ability_set(ability_set set) {

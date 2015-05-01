@@ -28,8 +28,8 @@ void load_unit(std::ifstream &file, openage::GameMain *game) {
 	file >> ne;
 	file >> se;
 
-	auto p = game->datamanager.get_type(pr_id);
-	game->placed_units.new_unit(*p, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
+	UnitType &saved_type = *game->datamanager.get_type(pr_id);
+	game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
 }
 
 void save_tile_content(std::ofstream &file, openage::TileContent *content) {

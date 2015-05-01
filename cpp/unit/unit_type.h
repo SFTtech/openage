@@ -22,9 +22,12 @@ class UnitContainer;
 class UnitTexture;
 
 /**
- * Initializes a unit with the required attributes, each unit type should implement these funcrtions
- * initialise should be called on construction of units 'new Unit(some_unit_producer)'
- * place is called to customise how the unit gets added to the world -- used to setup the TerrainObject position
+ * UnitType has to main roles:
+ *
+ * initialise(unit, player) should be called on a unit to give it a type and the required attributes, abilities and initial actions
+ * of that type
+ *
+ * place(unit, terrain, initial position) is called to customise how the unit gets added to the world -- used to setup the TerrainObject location
  */
 class UnitType {
 public:
@@ -70,7 +73,7 @@ public:
 	std::shared_ptr<TerrainObject> place_beside(Unit *, std::shared_ptr<TerrainObject>) const;
 
 	/**
-	 * all instances of units made from this producer
+	 * all instances of units made from this unit type
 	 * this could allow all units of a type to be upgraded
 	 */
 	std::vector<UnitReference> instances;
@@ -103,7 +106,7 @@ class NyanType: public UnitType {
 public:
 	/**
 	 * TODO: give the parsed nyan attributes
-	 * to the constructor 
+	 * to the constructor
 	 */
 	NyanType();
 	virtual ~NyanType();

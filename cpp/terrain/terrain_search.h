@@ -16,18 +16,21 @@ namespace openage {
 class Terrain;
 class TerrainObject;
 
-std::shared_ptr<TerrainObject> find_near(const TerrainObject &start, 
-                                         std::function<bool(const TerrainObject &)> found);
+std::shared_ptr<TerrainObject> find_near(const TerrainObject &start,
+                                         std::function<bool(const TerrainObject &)> found,
+                                         unsigned int search_limit=500);
 
 constexpr coord::tile_delta const neigh_tile[] = {
-	{0, 1},
-	{0,  -1},
+	{0,  1},
+	{0, -1},
 	{1,  0},
-	{-1,  0}
+	{-1, 0}
 };
 
 /**
  * searches outward from a point and returns nearby objects
+ * The state of the search is kept within the class, which allows
+ * a user to look at a limited number of tiles per update cycle
  */
 class TerrainSearch {
 public:
@@ -40,7 +43,7 @@ public:
 	 * next_tile will iterate over a range of tiles within a radius
 	 */
 	TerrainSearch(std::shared_ptr<Terrain> t, coord::tile s, float radius);
-	~TerrainSearch();
+	~TerrainSearch() = default;
 
 	/**
 	 * the tile the search began on

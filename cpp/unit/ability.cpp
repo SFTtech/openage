@@ -55,7 +55,7 @@ bool MoveAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 		       cmd.unit()->location &&
 		       &to_modify != cmd.unit(); // cannot target self
 	}
-	return false; 
+	return false;
 }
 
 void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
@@ -241,10 +241,10 @@ void AttackAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound)
 	to_modify.push_action(std::make_unique<AttackAction>(&to_modify, target->get_ref()));
 }
 
-ability_set from_list(const std::vector<ability_type> &items) {
+ability_set UnitAbility::set_from_list(const std::vector<ability_type> &items) {
 	ability_set result;
 	for (auto i : items) {
-		result[i] = 1;
+		result[static_cast<int>(i)] = 1;
 	}
 	return result;
 }
@@ -279,8 +279,9 @@ string to_string(const openage::ability_type &at) {
 		return "repair";
 	case openage::ability_type::heal:
 		return "heal";
+	default:
+		return "unknown";
 	}
-	return "unknown";
-}	
+}
 
 } // namespace std

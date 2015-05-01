@@ -43,7 +43,8 @@ public:
 	const id_t id;
 
 	/**
-	 * type which was used to create this object
+	 * type of this object, this is set by the the UnitType which
+	 * was most recently applied to this unit
 	 */
 	UnitType *unit_type;
 
@@ -56,7 +57,7 @@ public:
 	 * should selection features be drawn
 	 * TODO: should be a pointer to selection to be updated
 	 * when unit is removed, or null if not selected
-	 */	
+	 */
 	bool selected;
 
 	/**
@@ -81,7 +82,7 @@ public:
 	template<class T, typename ... Arg>
 	void make_location(Arg ... args) {
 
-		// remove any existing location	
+		// remove any existing location
 		if (this->location) {
 			this->location->remove();
 		}
@@ -106,7 +107,7 @@ public:
 		return annex_ptr;
 	}
 
-	/** 
+	/**
 	 * removes all actions and abilities
 	 * current attributes are kept
 	 */
@@ -276,7 +277,8 @@ private:
 	 * erase from action specified by func to the end of the stack
 	 * all actions erased will have the on_complete function called
 	 *
-	 * popped actions on_complete function is ignored when run_completed is false
+	 * @param run_completed usually each action has an on_complete() function called when it is removed
+	 * but when run_completed is false this on_complete() function is not called for all popped actions
 	 */
 	void erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func, bool run_completed=true);
 
