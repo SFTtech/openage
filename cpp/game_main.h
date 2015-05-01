@@ -22,6 +22,7 @@
 #include "unit/unit_container.h"
 #include "util/externalprofiler.h"
 #include "gamedata/gamedata.gen.h"
+#include "gui/forward.h"
 
 namespace openage {
 
@@ -101,6 +102,10 @@ private:
 	Command get_action(const coord::phys3 &pos) const;
 
 	openage::Engine *engine;
+
+	std::unique_ptr<gui::TopLevel> gui_top_level;
+	gui::Label *gui_loading_message;
+	gui::Label *gui_framerate;
 };
 
 } //namespace openage

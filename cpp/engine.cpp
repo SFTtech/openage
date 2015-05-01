@@ -374,20 +374,22 @@ int64_t Engine::lastframe_duration_nsec() {
 	return this->fps_counter.nsec_lastframe;
 }
 
-void Engine::render_text(coord::window position, size_t size, const char *format, ...) {
+Font &Engine::get_font(size_t size) {
 	auto it = this->fonts.find(size);
 	if (it == this->fonts.end()) {
 		throw util::Error(MSG(err) << "Unknown font size requested: " << size);
 	}
 
-	Font *font = it->second.get();
+	return *(it->second);
+}
 
+void Engine::render_text(coord::window position, size_t size, const char *format, ...) {
 	va_list vl;
 	va_start(vl, format);
 	std::string buf = util::vsformat(format, vl);
 	va_end(vl);
 
-	font->render_static(position.x, position.y, buf.c_str());
+	get_font(size).render_static(position.x, position.y, buf.c_str());
 }
 
 void Engine::move_phys_camera(float x, float y, float amount) {

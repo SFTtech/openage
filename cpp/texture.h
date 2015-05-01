@@ -76,6 +76,7 @@ public:
 	void draw(coord::camgame pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
 	void draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture=nullptr, int alpha_subid=-1) const;
 	void draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) const;
+	void draw_clipped(coord::pixel_t x, coord::pixel_t y, coord::pixel_t source_x, coord::pixel_t source_y, coord::pixel_t width, coord::pixel_t height, int subid=0) const;
 
 	/**
 	 * Reload the image file. Used for inotify refreshing.

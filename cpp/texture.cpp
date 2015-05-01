@@ -347,6 +347,93 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
 }
 
 
+void Texture::draw_clipped(coord::pixel_t x, coord::pixel_t y,
+                           coord::pixel_t source_x, coord::pixel_t source_y,
+                           coord::pixel_t width, coord::pixel_t height,
+                           int subid) const {
+	glColor4f(1, 1, 1, 1);
+
+	int *pos_id, *texcoord_id;
+
+	texture_shader::program->use();
+	pos_id = &texture_shader::program->pos_id;
+	texcoord_id = &texture_shader::tex_coord;
+
+	glActiveTexture(GL_TEXTURE0);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, this->id);
+
+	const gamedata::subtexture *tx = this->get_subtexture(subid);
+
+	// convert the texture boundaries to float
+	// these will be the vertex coordinates.
+	float leftf, rightf, bottomf, topf;
+	leftf   = (float) x;
+	rightf  = (float) (x + width);
+	bottomf = (float) y;
+	topf    = (float) (y + height);
+
+	// subtexture coordinates
+	// left, right, top and bottom bounds as coordinates
+	// these pick the requested area out of the big texture.
+
+	float txl = tx->x + source_x;
+	float txr = tx->x + source_x + width;
+	float txt = tx->y + source_y;
+	float txb = tx->y + source_y + height;
+
+	txl /= this->w;
+	txr /= this->w;
+	txt /= this->h;
+	txb /= this->h;
+
+	// this array will be uploaded to the GPU.
+	// it contains all dynamic vertex data (position, tex coordinates, mask coordinates)
+	float vdata[] {
+		leftf,  topf,
+		leftf,  bottomf,
+		rightf, bottomf,
+		rightf, topf,
+		txl,    txt,
+		txl,    txb,
+		txr,    txb,
+		txr,    txt,
+		0,      0,
+		0,      0,
+		0,      0,
+		0,      0
+	};
+
+
+	// store vertex buffer data, TODO: prepare this sometime earlier.
+	glBindBuffer(GL_ARRAY_BUFFER, this->vertbuf);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vdata), vdata, GL_STREAM_DRAW);
+
+	// enable vertex buffer and bind it to the vertex attribute
+	glEnableVertexAttribArray(*pos_id);
+	glEnableVertexAttribArray(*texcoord_id);
+
+	// set data types, offsets in the vdata array
+	glVertexAttribPointer(*pos_id,      2, GL_FLOAT, GL_FALSE, 0, (void *)(0));
+	glVertexAttribPointer(*texcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(sizeof(float) * 8));
+
+	// draw the vertex array
+	glDrawArrays(GL_QUADS, 0, 4);
+
+	// unbind the current buffer
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	glDisableVertexAttribArray(*pos_id);
+	glDisableVertexAttribArray(*texcoord_id);
+
+	// disable the shaders.
+	texture_shader::program->stopusing();
+
+	glActiveTexture(GL_TEXTURE0);
+	glDisable(GL_TEXTURE_2D);
+}
+
+
 const gamedata::subtexture *Texture::get_subtexture(int subid) const {
 	if (subid < (ssize_t)this->subtexture_count && subid >= 0) {
 		return &this->subtextures[subid];
