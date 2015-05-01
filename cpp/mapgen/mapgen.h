@@ -23,7 +23,10 @@ public:
 	int *generate();
 	coord::tile_delta get_size() const;
 
+
 private:
+	//create_land();
+
 	std::vector<int> map;
 	coord::tile_delta size;
 };
