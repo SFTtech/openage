@@ -8,7 +8,7 @@ comparable in its goals to projects like [OpenMW](https://openmw.org/), [OpenRA]
 openage uses the original game assets (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
 To play, you require *an original AoE II installation or [AoE II: HD](http://store.steampowered.com/app/221380/)* (wine is your friend; in the near future, setup discs will be supported).
 
-[![build status](https://travis-ci.org/SFTtech/openage.png?branch=master)](https://travis-ci.org/SFTtech/openage)
+[![build status](https://travis-ci.org/SFTtech/openage.svg?branch=master)](https://travis-ci.org/SFTtech/openage)
 [![Bountysource](https://www.bountysource.com/badge/team?team_id=6026&style=bounties_received)](https://www.bountysource.com/teams/sfttech/issues?utm_source=SFTtech&utm_medium=shield&utm_campaign=bounties_received)
 [![tip for next commit](http://prime4commit.com/projects/143.svg)](http://prime4commit.com/projects/143)
 [![github stars](https://img.shields.io/github/stars/SFTtech/openage.svg)](https://github.com/SFTtech/openage/stargazers)
