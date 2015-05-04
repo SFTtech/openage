@@ -118,7 +118,6 @@ GameMain::GameMain(Engine *engine)
 	construct_mode{true},
 	building_placement{false},
 	use_set_ability{false},
-	keymod{KMOD_NONE},
 	assetmanager{engine->get_data_dir()},
 	engine{engine} {
 
@@ -427,7 +426,8 @@ bool GameMain::on_input(SDL_Event *e) {
 
 	case SDL_MOUSEBUTTONUP:
 		if (dragging_active and e->button.button == SDL_BUTTON_LEFT) {
-			selection.drag_release(terrain.get(), this->keymod == KMOD_LCTRL);
+			bool ctrl_down = engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL);
+			selection.drag_release(terrain.get(), ctrl_down);
 			dragging_active = false;
 		}
 		else if (scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
@@ -461,7 +461,7 @@ bool GameMain::on_input(SDL_Event *e) {
 	}
 
 	case SDL_MOUSEWHEEL:
-		if (this->keymod == KMOD_LCTRL && this->datamanager.producer_count() > 0) {
+		if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
 			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
 		}
 		else {
@@ -470,20 +470,18 @@ bool GameMain::on_input(SDL_Event *e) {
 		break;
 
 	case SDL_KEYUP: {
-		this->keymod = SDL_GetModState();
+		SDL_Keymod keymod = SDL_GetModState();
 
 		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
 		keybinds::KeybindManager &keybinds = engine.get_keybind_manager();
-		keybinds.set_key_state(sym, false);
+		keybinds.set_key_state(sym, keymod, false);
 		keybinds.press(keybinds::key_t(sym, keymod));
 		break;
 	}
 
 	case SDL_KEYDOWN: {
-		this->keymod = SDL_GetModState();
-
 		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
-		engine.get_keybind_manager().set_key_state(sym, true);
+		engine.get_keybind_manager().set_key_state(sym, SDL_GetModState(), true);
 		break;
 	}
 
