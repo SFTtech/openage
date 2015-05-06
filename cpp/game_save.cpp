@@ -5,6 +5,7 @@
 
 #include "unit/producer.h"
 #include "unit/unit.h"
+#include "unit/unit_type.h"
 #include "game_main.h"
 #include "game_save.h"
 
@@ -12,7 +13,7 @@ namespace openage {
 namespace gameio {
 
 void save_unit(std::ofstream &file, Unit *unit) {
-	file << unit->producer->producer_id() << std::endl;
+	file << unit->unit_type->id() << std::endl;
 	file << unit->get_attribute<attr_type::owner>().player.player_number << std::endl;
 	coord::tile pos = unit->location->pos.start;
 	file << pos.ne << " " << pos.se << std::endl;
@@ -27,8 +28,8 @@ void load_unit(std::ifstream &file, openage::GameMain *game) {
 	file >> ne;
 	file >> se;
 
-	auto p = game->datamanager.get_producer(pr_id);
-	game->placed_units.new_unit(*p, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
+	UnitType &saved_type = *game->datamanager.get_type(pr_id);
+	game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
 }
 
 void save_tile_content(std::ofstream &file, openage::TileContent *content) {

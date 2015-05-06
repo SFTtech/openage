@@ -34,12 +34,6 @@ Path find_nearest(coord::phys3 start,
                   std::function<bool(const coord::phys3 &)> passable);
 
 /**
- * search outwards to find an object and return object
- */
-openage::TerrainObject *find_nearest(TerrainObject *to_move,
-            std::function<bool(const TerrainObject *)> valid_end);
-
-/**
  * finds a path between two endpoints
  * @param start the starting tile coords
  * @param end the ending tile coords

@@ -1,5 +1,6 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
+#include "unit/unit.h"
 #include "player.h"
 
 namespace openage {
@@ -22,6 +23,13 @@ bool Player::is_ally(const Player &other) const {
 
 	// everyone else is enemy
 	return player_number == other.player_number;
+}
+
+bool Player::owns(Unit &unit) const {
+	if (unit.has_attribute(attr_type::owner)) {
+		return this == &unit.get_attribute<attr_type::owner>().player;
+	}
+	return false;
 }
 
 }

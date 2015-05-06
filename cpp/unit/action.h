@@ -13,6 +13,8 @@
 
 namespace openage {
 
+class TerrainSearch;
+
 /**
  * Actions can be pushed onto any units action stack
  *
@@ -21,19 +23,12 @@ namespace openage {
  */
 class UnitAction {
 public:
-	/**
-	 * an action radius is how close a unit must come to another
-	 * unit to be considered to touch the other, for example in 
-	 * gathering resource and melee attack
 
-	 * this constructor uses the default action radius formula
+	/**
+	 * Require unit to be updated and an initial graphic type
 	 */
 	UnitAction(Unit *u, graphic_type initial_gt);
 
-	/**
-	 * used to set a specific action radius
-	 */
-	UnitAction(Unit *u, graphic_type initial_gt, coord::phys_t action_radius);
 	virtual ~UnitAction() {}
 
 	/**
@@ -64,9 +59,10 @@ public:
 	virtual bool completed() const = 0;
 
 	/**
-	 * checks if the action can be interrupted, allowing it to be popped if the user 
-	 * specifies a new action, if false the action must reach a completed state 
+	 * checks if the action can be interrupted, allowing it to be popped if the user
+	 * specifies a new action, if false the action must reach a completed state
 	 * before removal
+	 * eg dead action must be completed and cannot be discarded
 	 */
 	virtual bool allow_interupt() const = 0;
 
@@ -75,9 +71,7 @@ public:
 	 * should the stack be modifiable when this action is on top
 	 *
 	 * if true this action must complete and will not allow new actions
-	 * to be pushed while it is active
-	 * eg dead action must be completed and cannot be discarded
-	 * and also does not update the secondary actions
+	 * to be pushed while it is active and also does not update the secondary actions
 	 */
 	virtual bool allow_control() const = 0;
 
@@ -100,16 +94,23 @@ public:
 	 */
 	static bool show_debug;
 
+	/**
+	 * a small distance to which units are considered touching
+	 * when within this distance
+	 */
+	static coord::phys_t adjacent_range(Unit *u);
+
+	/**
+	 * looks at an ranged attributes on the unit
+	 * otherwise returns same as adjacent_range()
+	 */
+	static coord::phys_t get_attack_range(Unit *u);
+
 protected:
 	/**
 	 * the entity being updated
 	 */
 	Unit *entity;
-
-	/**
-	 * common positional attributes
-	 */
-	coord::phys_t distance_to_target, radius;
 
 	/**
 	 * common graphic controls
@@ -122,6 +123,59 @@ protected:
 	 * additional drawing for debug purposes
 	 */
 	std::function<void(void)> debug_draw_action;
+};
+
+/**
+ * Base class for actions which target another unit such as
+ * gather, attack, heal and convert
+ */
+class TargetAction: public UnitAction {
+public:
+
+	/**
+	 * action_rad is how close a unit must come to another
+	 * unit to be considered to touch the other, for example in
+	 * gathering resource and melee attack
+	 */
+	TargetAction(Unit *e, graphic_type gt, UnitReference r, coord::phys_t action_rad);
+
+	/**
+	 * this constructor uses the default action radius formula which will
+	 * bring the object as near to the target as the pathing grid will allow.
+	 */
+	TargetAction(Unit *e, graphic_type gt, UnitReference r);
+	virtual ~TargetAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override;
+	bool allow_interupt() const override { return true; }
+	bool allow_control() const override { return true; }
+	virtual std::string name() const override = 0;
+
+	/**
+	 * Control units action when in range of the target
+	 */
+	virtual void update_in_range(unsigned int, Unit *) = 0;
+	virtual bool completed_in_range(Unit *) const = 0;
+
+	coord::phys_t distance_to_target();
+	Unit *update_distance();
+
+	// change the target
+	UnitReference get_target() const;
+	void set_target(UnitReference new_target);
+
+private:
+	UnitReference target;
+	int repath_attempts;
+	bool end_action;
+
+	/**
+	 * tracks distance to target from last update
+	 */
+	coord::phys_t dist_to_target, radius;
+
 };
 
 /**
@@ -162,6 +216,27 @@ public:
 private:
 	float end_frame;
 	std::function<void()> on_complete_func;
+
+};
+
+/**
+ * places an idle action on the stack once building is complete
+ */
+class FoundationAction: public UnitAction {
+public:
+	FoundationAction(Unit *e, bool add_destuction=false);
+	virtual ~FoundationAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override;
+	bool allow_interupt() const override { return true; }
+	bool allow_control() const override { return false; }
+	std::string name() const override { return "foundation"; }
+
+private:
+	bool add_destruct_effect, cancel;
+
 };
 
 /**
@@ -169,9 +244,7 @@ private:
  */
 class IdleAction: public UnitAction {
 public:
-	IdleAction(Unit *e)
-		:
-		UnitAction(e, graphic_type::standing) {}
+	IdleAction(Unit *e);
 	virtual ~IdleAction() {}
 
 	void update(unsigned int) override;
@@ -180,6 +253,12 @@ public:
 	bool allow_interupt() const override { return false; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "idle"; }
+
+private:
+	// look for auto task actions
+	std::shared_ptr<TerrainSearch> search;
+	ability_set auto_abilities;
+
 };
 
 /**
@@ -210,11 +289,14 @@ public:
 private:
 	UnitReference unit_target;
 	coord::phys3 target;
-	
+
+	// how near the units should come to target
+	coord::phys_t distance_to_target, radius;
+
 	path::Path path;
 
 	// should a new path be found if unit gets blocked
-	bool allow_repath;
+	bool allow_repath, end_action;
 
 	void initialise();
 
@@ -232,23 +314,18 @@ private:
 /**
  * garrison inside a building
  */
-class GarrisonAction: public UnitAction {
+class GarrisonAction: public TargetAction {
 public:
 	GarrisonAction(Unit *e, UnitReference build);
 	virtual ~GarrisonAction() {}
 
-	void update(unsigned int) override;
-	void on_completion() override;
-	bool completed() const override { return this->complete; }
-	bool allow_interupt() const override { return true; }
-	bool allow_control() const override { return true; }
+	void update_in_range(unsigned int time, Unit *target_unit) override;
+	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "garrison"; }
 
 private:
-	UnitReference building;
 	bool complete;
 };
-
 
 /**
  * garrison inside a building
@@ -275,7 +352,7 @@ private:
  */
 class TrainAction: public UnitAction {
 public:
-	TrainAction(Unit *e, UnitProducer *pp);
+	TrainAction(Unit *e, UnitType *pp);
 	virtual ~TrainAction() {}
 
 	void update(unsigned int) override;
@@ -286,7 +363,7 @@ public:
 	std::string name() const override { return "train"; }
 
 private:
-	UnitProducer *trained;
+	UnitType *trained;
 	bool complete;
 	float train_percent;
 };
@@ -294,84 +371,68 @@ private:
 /**
  * builds a building
  */
-class BuildAction: public UnitAction {
+class BuildAction: public TargetAction {
 public:
-	BuildAction(Unit *e, UnitProducer *pp, const coord::phys3 &pos);
 	BuildAction(Unit *e, UnitReference foundation);
 	virtual ~BuildAction() {}
 
-	void update(unsigned int) override;
-	void on_completion() override;
-	bool completed() const override { return this->complete >= 1.0f; }
-	bool allow_interupt() const override { return true; }
-	bool allow_control() const override { return true; }
+	void update_in_range(unsigned int time, Unit *target_unit) override;
+	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	std::string name() const override { return "build"; }
 
 private:
-	UnitReference building;
-	UnitProducer *producer;
-	coord::phys3 position;
-	float complete;
+	float complete, build_rate;
+
 };
 
 /**
  * repairs an object
  */
-class RepairAction: public UnitAction {
+class RepairAction: public TargetAction {
 public:
 	RepairAction(Unit *e, UnitReference tar);
 	virtual ~RepairAction() {}
 
-	void update(unsigned int) override;
-	void on_completion() override;
-	bool completed() const override { return this->complete; }
-	bool allow_interupt() const override { return true; }
-	bool allow_control() const override { return true; }
+	void update_in_range(unsigned int time, Unit *target_unit) override;
+	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "repair"; }
 
 private:
-	UnitReference target;
 	bool complete;
+
 };
 
 /**
  * gathers resource from another object
  */
-class GatherAction: public UnitAction {
+class GatherAction: public TargetAction {
 public:
 	GatherAction(Unit *e, UnitReference tar);
 	virtual ~GatherAction();
 
-	void update(unsigned int) override;
-	void on_completion() override;
-	bool completed() const override;
-	bool allow_interupt() const override { return true; }
-	bool allow_control() const override { return true; }
+	void update_in_range(unsigned int time, Unit *target_unit) override;
+	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "gather"; }
 
 private:
-	bool complete;
+	bool complete, target_resource;
 	UnitReference target;
-	UnitReference dropsite;
+	UnitReference nearest_dropsite();
 };
 
 /**
  * attacks another unit
  */
-class AttackAction: public UnitAction {
+class AttackAction: public TargetAction {
 public:
 	AttackAction(Unit *e, UnitReference tar);
 	virtual ~AttackAction();
 
-	void update(unsigned int) override;
-	void on_completion() override;
-	bool completed() const override;
-	bool allow_interupt() const override { return true; }
-	bool allow_control() const override { return true; }
+	void update_in_range(unsigned int time, Unit *target_unit) override;
+	bool completed_in_range(Unit *) const override;
 	std::string name() const override { return "attack"; }
 
 private:
-	UnitReference target;
 	float strike_percent, rate_of_fire;
 
 	/**
@@ -388,21 +449,18 @@ private:
 /**
  * convert an object
  */
-class ConvertAction: public UnitAction {
+class ConvertAction: public TargetAction {
 public:
 	ConvertAction(Unit *e, UnitReference tar);
 	virtual ~ConvertAction() {}
 
-	void update(unsigned int) override;
-	void on_completion() override;
-	bool completed() const override { return this->complete >= 1.0; }
-	bool allow_interupt() const override { return true; }
-	bool allow_control() const override { return true; }
+	void update_in_range(unsigned int time, Unit *target_unit) override;
+	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	std::string name() const override { return "convert"; }
 
 private:
-	UnitReference target;
 	float complete;
+
 };
 
 /**

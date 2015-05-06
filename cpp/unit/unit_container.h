@@ -15,8 +15,8 @@ class Command;
 class Player;
 class Terrain;
 class Unit;
-class UnitProducer;
 class UnitContainer;
+class UnitType;
 
 using id_t = unsigned long int;
 
@@ -56,7 +56,7 @@ public:
 	 */
 	void set_terrain(std::shared_ptr<Terrain> &t);
 
-	/** 
+	/**
 	 * returns the terrain which units are placed on
 	 */
 	std::shared_ptr<Terrain> get_terrain() const;
@@ -77,15 +77,15 @@ public:
 	UnitReference new_unit();
 
 	/**
-	 * adds a new unit to the container and initialises using a producer
+	 * adds a new unit to the container and initialises using a unit type
 	 */
-	UnitReference new_unit(UnitProducer &producer, Player &owner, coord::phys3 position);
+	UnitReference new_unit(UnitType &type, Player &owner, coord::phys3 position);
 
 	/**
-	 * adds a new unit to the container and initialises using a producer
+	 * adds a new unit to the container and initialises using a unit type
 	 * places outside an existing object using the player of that object
 	 */
-	UnitReference new_unit(UnitProducer &producer, Player &owner, std::shared_ptr<TerrainObject> other);
+	UnitReference new_unit(UnitType &type, Player &owner, TerrainObject *other);
 
 	/**
 	 * give a command to a unit -- unit creation and deletion should be done as commands

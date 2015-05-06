@@ -151,8 +151,7 @@ void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::cam
 		TileContent *tc = terrain->get_data(check_pos);
 		if (tc) {
 			// find objects within selection box
-			for (auto o : tc->obj) {
-				auto unit_location = o.lock();
+			for (auto unit_location : tc->obj) {
 				coord::camgame pos = unit_location->pos.draw.to_camgame();
 				if ((min.x < pos.x && pos.x < max.x) &&
 				     (min.y < pos.y && pos.y < max.y)) {
@@ -176,6 +175,18 @@ void UnitSelection::all_invoke(Command &cmd) {
 			u.second.get()->invoke(cmd, true);
 		}
 	}
+}
+
+Player *UnitSelection::owner() {
+	for (auto u : this->units) {
+		if (u.second.is_valid()) {
+			auto unit_ptr = u.second.get();
+			if (unit_ptr->has_attribute(attr_type::owner)) {
+				return &unit_ptr->get_attribute<attr_type::owner>().player;
+			}
+		}
+	}
+	return nullptr;
 }
 
 void UnitSelection::show_attributes(Unit *u) {
@@ -206,7 +217,7 @@ void UnitSelection::show_attributes(Unit *u) {
 	// render text
 	Engine &engine = Engine::get();
 	int vpos = 120;
-	engine.render_text({0, vpos}, 20, u->producer->producer_name().c_str());
+	engine.render_text({0, vpos}, 20, u->unit_type->name().c_str());
 	for (auto &s : lines) {
 		vpos -= this->font_size;
 		engine.render_text({0, vpos}, this->font_size, s.c_str());

@@ -289,8 +289,8 @@ GameMain::GameMain(Engine *engine)
 	this->keybind_context.bind(keybinds::action_t::TRAIN_OBJECT, [this]() {
 		// attempt to train editor selected object
 		if ( this->datamanager.producer_count() > 0 ) {
-			UnitProducer *producer = this->datamanager.get_producer_index(this->editor_current_building);
-			Command cmd(this->players[0], producer);
+			auto type = this->datamanager.get_type_index(this->editor_current_building);
+			Command cmd(this->players[0], type);
 			this->selection.all_invoke(cmd);
 		}
 	});
@@ -346,16 +346,27 @@ bool GameMain::on_input(SDL_Event *e) {
 			if (this->building_placement) {
 
 				// confirm building placement with left click
-				Command cmd(this->players[0], this->datamanager.get_producer_index(this->editor_current_building), mousepos_phys3);
-				cmd.set_ability(ability_type::build);
-				selection.all_invoke(cmd);
+				// first create foundation using the producer
+				Player *player = this->selection.owner();
+				if (player) {
+					UnitContainer *container = &this->placed_units;
+					UnitType *building_type = this->datamanager.get_type_index(this->editor_current_building);
+					UnitReference new_building = container->new_unit(*building_type, *player, mousepos_phys3);
+
+					// task all selected villagers to build
+					if (new_building.is_valid()) {
+						Command cmd(*player, new_building.get());
+						cmd.set_ability(ability_type::build);
+						this->selection.all_invoke(cmd);
+					}
+				}
 				this->building_placement = false;
 			}
 			else {
 
 				// begin a boxed selection
-				selection.drag_begin(mousepos_camgame);
-				dragging_active = true;
+				this->selection.drag_begin(mousepos_camgame);
+				this->dragging_active = true;
 			}
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_LEFT and construct_mode) {
@@ -402,13 +413,13 @@ bool GameMain::on_input(SDL_Event *e) {
 			// delete any unit on the tile
 			if (!chunk->get_data(mousepos_tile)->obj.empty()) {
 				// get first object currently standing at the clicked position
-				auto obj = chunk->get_data(mousepos_tile)->obj[0].lock();
+				TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
 				log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
 				obj->unit.delete_unit();
 			} else if ( this->datamanager.producer_count() > 0 ) {
 				// try creating a unit
 				log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
-				UnitProducer &producer = *this->datamanager.get_producer_index(this->editor_current_building);
+				UnitType &producer = *this->datamanager.get_type_index(this->editor_current_building);
 				this->placed_units.new_unit(producer, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
 			}
 			break;
@@ -560,8 +571,11 @@ bool GameMain::on_draw() {
 	}
 
 	if (this->building_placement) {
-		auto txt = this->datamanager.get_producer_index(this->editor_current_building)->default_texture();
-		txt->draw(mousepos_tile.to_phys2().to_phys3().to_camgame(), 0, 1);
+		auto building_type = this->datamanager.get_type_index(this->editor_current_building);
+		auto txt = building_type->default_texture();
+		auto size = building_type->foundation_size;
+		tile_range center = building_center(mousepos_tile.to_phys2().to_phys3(), size);
+		txt->draw(center.draw.to_camgame(), 0, 1);
 	}
 
 	return true;
@@ -578,7 +592,7 @@ bool GameMain::on_drawhud() {
 		coord::window bpreview_pos;
 		bpreview_pos.x = e.engine_coord_data->window_size.x - 200;
 		bpreview_pos.y = 200;
-		auto txt = this->datamanager.get_producer_index(this->editor_current_building)->default_texture();
+		auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
 		txt->sample(bpreview_pos.to_camhud());
 	}
 	return true;

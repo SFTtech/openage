@@ -94,21 +94,21 @@ Sound *DataManager::get_sound(index_t sound_id) {
 	return &this->available_sounds[sound_id];
 }
 
-UnitProducer *DataManager::get_producer(index_t producer_id) {
-	if (this->producers.count(producer_id) == 0) {
-		if (producer_id > 0) {
-			log::log(MSG(info) << "  -> ignoring producer_id: " << producer_id);
+UnitType *DataManager::get_type(index_t type_id) {
+	if (this->producers.count(type_id) == 0) {
+		if (type_id > 0) {
+			log::log(MSG(info) << "  -> ignoring type_id: " << type_id);
 		}
 		return nullptr;
 	}
-	return this->producers[producer_id];
+	return this->producers[type_id];
 }
 
-UnitProducer *DataManager::get_producer_index(size_t producer_index) {
-	if (producer_index < available_objects.size()) {
-		return available_objects[producer_index].get();
+UnitType *DataManager::get_type_index(size_t type_index) {
+	if (type_index < available_objects.size()) {
+		return available_objects[type_index].get();
 	}
-	log::log(MSG(info) << "  -> ignoring producer_index: " << producer_index);
+	log::log(MSG(info) << "  -> ignoring type_index: " << type_index);
 	return nullptr;
 }
 
@@ -208,7 +208,7 @@ void DataManager::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata
 
 	log::log(MSG(info) << "Using the " << gamedata[0].civs.data[your_civ_id].name << " civilisation.");
 	this->create_abilities(gamedata);
-	this->create_producers(gamedata, your_civ_id);
+	this->create_unit_types(gamedata, your_civ_id);
 }
 
 bool DataManager::valid_graphic_id(index_t graphic_id) {
@@ -221,19 +221,19 @@ bool DataManager::valid_graphic_id(index_t graphic_id) {
 	return true;
 }
 
-void DataManager::load_building(const gamedata::unit_building &building, producer_list &list) {
+void DataManager::load_building(const gamedata::unit_building &building, unit_type_list &list) {
 
 	// check graphics
 	if (this->valid_graphic_id(building.graphic_standing0)) {
 		list.emplace_back(std::make_unique<BuldingProducer>(*this, &building));
 
 		auto producer_ptr = list.back().get();
-		this->producers[producer_ptr->producer_id()] = producer_ptr;
+		this->producers[producer_ptr->id()] = producer_ptr;
 		this->buildings[building.id0] = &building;
 	}
 }
 
-void DataManager::load_living(const gamedata::unit_living &unit, producer_list &list) {
+void DataManager::load_living(const gamedata::unit_living &unit, unit_type_list &list) {
 
 	// check graphics
 	if (this->valid_graphic_id(unit.graphic_dying0) &&
@@ -242,30 +242,30 @@ void DataManager::load_living(const gamedata::unit_living &unit, producer_list &
 		list.emplace_back(std::make_unique<LivingProducer>(*this, &unit));
 
 		auto producer_ptr = list.back().get();
-		this->producers[producer_ptr->producer_id()] = producer_ptr;
+		this->producers[producer_ptr->id()] = producer_ptr;
 		
 	}
 }
 
-void DataManager::load_object(const gamedata::unit_object &object, producer_list &list) {
+void DataManager::load_object(const gamedata::unit_object &object, unit_type_list &list) {
 
 	// check graphics
 	if (this->valid_graphic_id(object.graphic_standing0)) {
 		list.emplace_back(std::make_unique<ObjectProducer>(*this, &object));
 
 		auto producer_ptr = list.back().get();
-		this->producers[producer_ptr->producer_id()] = producer_ptr;
+		this->producers[producer_ptr->id()] = producer_ptr;
 	}
 }
 
-void DataManager::load_projectile(const gamedata::unit_projectile &proj, producer_list &list) {
+void DataManager::load_projectile(const gamedata::unit_projectile &proj, unit_type_list &list) {
 
 	// check graphics
 	if (this->valid_graphic_id(proj.graphic_standing0)) {
 		list.emplace_back(std::make_unique<ProjectileProducer>(*this, &proj));
 
 		auto producer_ptr = list.back().get();
-		this->producers[producer_ptr->producer_id()] = producer_ptr;
+		this->producers[producer_ptr->id()] = producer_ptr;
 	}
 }
 
@@ -295,7 +295,7 @@ void DataManager::create_abilities(const std::vector<gamedata::empiresdat> &game
 	}
 }
 
-void DataManager::create_producers(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id) {
+void DataManager::create_unit_types(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id) {
 
 	// create projectile types first
 	for (auto &obj : gamedata[0].civs.data[0].units.projectile.data) {

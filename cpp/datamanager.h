@@ -14,13 +14,13 @@
 namespace openage {
 
 class AssetManager;
-class UnitProducer;
+class UnitType;
 
 /**
  * the key type mapped to data objects
  */
 using index_t = int;
-using producer_list = std::vector<std::unique_ptr<UnitProducer>>;
+using unit_type_list = std::vector<std::unique_ptr<UnitType>>;
 
 /**
  * simple sound object
@@ -55,7 +55,7 @@ public:
 	void check_updates();
 
 	/**
-	 * check if loading has been completed 
+	 * check if loading has been completed
 	 */
 	bool load_complete();
 
@@ -69,7 +69,7 @@ public:
 	 */
 	index_t get_slp_graphic(index_t slp);
 
-	/** 
+	/**
 	 * get a texture by id, this specifically avoids returning the missing placeholder texture
 	 */
 	Texture *get_texture(index_t graphic_id);
@@ -86,16 +86,16 @@ public:
 	Sound *get_sound(index_t sound_id);
 
 	/**
-	 * producers by aoe unit ids -- the producer which corresponds to an aoe unit id
+	 * unit types by aoe gamedata unit ids -- the unit type which corresponds to an aoe unit id
 	 */
-	UnitProducer *get_producer(index_t producer_id);
+	UnitType *get_type(index_t type_id);
 
 	/**
-	 * producers by list index -- a continuous array of all producers
+	 * unit types by list index -- a continuous array of all types
 	 */
-	UnitProducer *get_producer_index(size_t producer_index);
+	UnitType *get_type_index(size_t type_index);
 
-	/** 
+	/**
 	 * data for a graphic
 	 */
 	const gamedata::graphic *get_graphic_data(index_t grp_id);
@@ -117,7 +117,7 @@ private:
 	/**
 	 * all available game objects.
 	 */
-	producer_list available_objects;
+	unit_type_list available_objects;
 
 	/**
 	 * slp to graphic reverse lookup
@@ -140,12 +140,12 @@ private:
 	std::unordered_map<index_t, std::vector<const gamedata::unit_command *>> commands;
 
 	/**
-	 * unit ids -> producer for that id
+	 * unit ids -> unit type for that id
 	 */
-	std::unordered_map<index_t, UnitProducer *> producers;
+	std::unordered_map<index_t, UnitType *> producers;
 
 	/**
-	 * unit ids -> producer for that id
+	 * unit ids -> unit type for that id
 	 */
 	std::unordered_map<index_t, std::shared_ptr<UnitTexture>> unit_textures;
 
@@ -167,16 +167,16 @@ private:
 	/**
 	 * makes producers for all types in the game data
 	 */
-	void create_producers(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id);
+	void create_unit_types(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id);
 
 	/**
-	 * loads required assets to produce an entity type
-	 * adds to the producer list if the object can be created safely
+	 * loads required assets to construct a unit type
+	 * adds to the type list if the object can be created safely
 	 */
-	void load_building(const gamedata::unit_building &, producer_list &);
-	void load_living(const gamedata::unit_living &, producer_list &);
-	void load_object(const gamedata::unit_object &, producer_list &);
-	void load_projectile(const gamedata::unit_projectile &, producer_list &);
+	void load_building(const gamedata::unit_building &, unit_type_list &);
+	void load_living(const gamedata::unit_living &, unit_type_list &);
+	void load_object(const gamedata::unit_object &, unit_type_list &);
+	void load_projectile(const gamedata::unit_projectile &, unit_type_list &);
 
 	/**
 	 * has game data been load yet

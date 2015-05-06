@@ -7,4 +7,5 @@ add_sources(${PROJECT_NAME}
 	unit.cpp
 	unit_container.cpp
 	unit_texture.cpp
+	unit_type.cpp
 )

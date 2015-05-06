@@ -84,16 +84,16 @@ UnitReference UnitContainer::new_unit() {
 	return this->live_units[id]->get_ref();
 }
 
-UnitReference UnitContainer::new_unit(UnitProducer &producer, 
+UnitReference UnitContainer::new_unit(UnitType &type,
                                       Player &owner,
                                       coord::phys3 position) {
 	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
 
 	// try placing unit at this location
 	auto terrain_shared = this->get_terrain();
-	auto placed = producer.place(newobj.get(), *terrain_shared, position);
+	auto placed = type.place(newobj.get(), terrain_shared, position);
 	if (placed) {
-		producer.initialise(newobj.get(), owner);
+		type.initialise(newobj.get(), owner);
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
 		return this->live_units[id]->get_ref();
@@ -101,27 +101,26 @@ UnitReference UnitContainer::new_unit(UnitProducer &producer,
 	return UnitReference(); // is not valid
 }
 
-UnitReference UnitContainer::new_unit(UnitProducer &producer, 
-                                      Player &owner, 
-                                      std::shared_ptr<TerrainObject> other) {
+UnitReference UnitContainer::new_unit(UnitType &type,
+                                      Player &owner,
+                                      TerrainObject *other) {
 	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
 
 	// try placing unit
-	auto placed = producer.place_beside(newobj.get(), other);
+	TerrainObject *placed = type.place_beside(newobj.get(), other);
 	if (placed) {
-		producer.initialise(newobj.get(), owner);
+		type.initialise(newobj.get(), owner);
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
 		return this->live_units[id]->get_ref();
 	}
-	return UnitReference(); // is not valid	
+	return UnitReference(); // is not valid
 }
 
 
 bool dispatch_command(id_t, const Command &) {
 	return true;
 }
-
 
 bool UnitContainer::on_tick() {
 	// update everything and find objects with no actions
@@ -137,7 +136,6 @@ bool UnitContainer::on_tick() {
 	for (auto &obj : to_remove) {
 
 		// unique pointer triggers cleanup
-		log::log(MSG(info) << "remove object " << obj);
 		this->live_units.erase(obj);
 	}
 	return true;

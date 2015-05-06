@@ -185,14 +185,13 @@ TileContent *Terrain::get_data(coord::tile position) {
 	}
 }
 
-std::shared_ptr<TerrainObject> Terrain::obj_at_point(const coord::phys3 &point) {
+TerrainObject *Terrain::obj_at_point(const coord::phys3 &point) {
 	coord::tile t = point.to_tile3().to_tile();
 	TileContent *tc = this->get_data(t);
 	if (!tc) {
 		return nullptr;
 	}
-	for (auto o : tc->obj) {
-		auto obj_ptr = o.lock();
+	for (auto obj_ptr : tc->obj) {
 		if (obj_ptr->contains(point)) {
 			return obj_ptr;
 		}
@@ -438,8 +437,8 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab,
 			// TODO: make the terrain independent of objects standing on it.
 			TileContent *tile_content = this->get_data(tilepos);
 			if (tile_content != nullptr) {
-				for (auto obj_item : tile_content->obj ) {
-					objects->insert(obj_item.lock().get());
+				for (auto obj_item : tile_content->obj) {
+					objects->insert(obj_item);
 				}
 			}
 		}

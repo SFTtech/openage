@@ -20,26 +20,41 @@ class TerrainChunk;
 class Texture;
 class Unit;
 
+/**
+ * only placed will enable collision checks
+ */
 enum class object_state {
-	placed,
 	removed,
 	floating,
+	placed,
+	placed_no_collision
 };
 
 /**
  * A rectangle or square of tiles which is the minimim
  * space to fit the units foundation or radius
+ * the end tile will have ne and se values greater or equal to
+ * the start tile
  */
 struct tile_range {
 	coord::tile start;
-	coord::tile end;
-	coord::phys3 draw; // gets used as center point of radial objects
+	coord::tile end;	// start <= end
+	coord::phys3 draw;	// gets used as center point of radial objects
 };
 
 /**
  * get all tiles in the tile range -- useful for iterating
+ * returns a flat list of tiles between the rectangle enclosed
+ * by the tile_range start and end tiles
  */
 std::vector<coord::tile> tile_list(const tile_range &rng);
+
+/**
+ * given the west most point of a building foundation and the tile_delta
+ * size of the foundation, this will return the tile range covered by the base,
+ * which includes start and end tiles, and phys3 center point (used for drawing)
+ */
+tile_range building_center(coord::phys3 west, coord::tile_delta size);
 
 /**
  * half a tile
@@ -55,6 +70,9 @@ constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
  * positions and radial positions This enables two inheriting classes
  * SquareObject and RadialObject to specify different areas of the map
  *
+ * All TerrainObjects are owned by a Unit, to construct TerrainObjects,
+ * use the make_location function on any Unit
+ *
  * This class allows intersection testing between two TerrainObjects to
  * cover all cases of intersection (water, land or flying objects) the units
  * lambda function is used which takes a tile and returns a bool value of
@@ -64,7 +82,9 @@ constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
  */
 class TerrainObject : public std::enable_shared_from_this<TerrainObject> {
 public:
-	TerrainObject(Unit &u, bool collisions=true);
+	TerrainObject(Unit &u);
+	TerrainObject(const TerrainObject &) = delete;	// disable copy constructor
+	TerrainObject(TerrainObject &&) = delete;		// disable move constructor
 	virtual ~TerrainObject();
 
 	/**
@@ -81,9 +101,21 @@ public:
 	Unit &unit;
 
 	/**
+	 * is the object a floating outline -- it is only an indicator
+	 * of where a building will be built, but not yet started building
+	 * and does not affect any collisions
+	 */
+	bool is_floating() const;
+
+	/**
+	 * has the object been placed
+	 */
+	bool is_placed() const;
+
+	/**
 	 * should this object be tested for collisions, arrows should not
 	 */
-	const bool check_collisions;
+	bool check_collisions() const;
 
 	/**
 	 * decide which terrains this object can be on
@@ -97,23 +129,24 @@ public:
 	std::function<void()> draw;
 
 	/**
-	 * sets this as the location of the unit
-	 */
-	void initialise();
-
-	/**
 	 * draws outline of this terrain space in current position
 	 */
 	void draw_outline() const;
+
+	/**
+	 * upgrades a floating building to a placed state
+	 */
+	bool place(object_state init_state);
 
 	/**
 	 * binds the TerrainObject to a certain TerrainChunk.
 	 *
 	 * @param terrain: the terrain where the object will be placed onto.
 	 * @param pos: (tile) position of the (nw,sw) corner
+	 * @param init_state should be floating, placed or placed_no_collision
 	 * @returns true when the object was placed, false when it did not fit at pos.
 	 */
-	bool place(Terrain *terrain, coord::phys3 &pos);
+	bool place(std::shared_ptr<Terrain> t, coord::phys3 &pos, object_state init_state);
 
 	/**
 	 * moves the object -- returns false if object cannot be moved here
@@ -136,17 +169,17 @@ public:
 	/**
 	 * add a child terrain object
 	 */
-	void annex(std::shared_ptr<TerrainObject> &other);
+	void annex(TerrainObject *other);
 
-	const std::shared_ptr<TerrainObject> get_parent() const;
+	const TerrainObject *get_parent() const;
 
-	std::vector<std::shared_ptr<TerrainObject>> get_children() const;
+	std::vector<TerrainObject *> get_children() const;
 
 	/*
 	 * terrain this object was placed on
 	 */
-	Terrain *get_terrain() {
-		return terrain;
+	std::shared_ptr<Terrain> get_terrain() const {
+		return terrain.lock();
 	}
 
 	/**
@@ -190,17 +223,17 @@ public:
 	virtual coord::phys_t min_axis() const = 0;
 
 protected:
-	bool placed;
+	object_state state;
 
-	Terrain *terrain;
+	std::weak_ptr<Terrain> terrain;
 	int occupied_chunk_count;
 	TerrainChunk *occupied_chunk[4];
 
 	/**
 	 * annexes and grouped units
 	 */
-	std::shared_ptr<TerrainObject> parent;
-	std::vector<std::shared_ptr<TerrainObject>> children;
+	TerrainObject *parent;
+	std::vector<TerrainObject *> children;
 
 	/**
 	 * texture for drawing outline
@@ -211,17 +244,18 @@ protected:
 	 * placement function which does not check passibility
 	 * used only when passibilty is already checked
 	 * otherwise the place function should be used
+	 * this does not modify the units placement state
 	 */
-	void place_unchecked(Terrain *terrain, coord::phys3 &position);
+	void place_unchecked(std::shared_ptr<Terrain> t, coord::phys3 &position);
 };
 
 /**
  * terrain object class represents one immobile object on the map (building, trees, fish, ...).
+ * can only be constructed by unit->make_location<SquareObject>(...)
  */
 class SquareObject: public TerrainObject {
+
 public:
-	SquareObject(Unit &u, coord::tile_delta foundation_size, bool collisions=true);
-	SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex, bool collisions=true);
 	virtual ~SquareObject();
 
 
@@ -254,15 +288,20 @@ public:
 	bool contains(const coord::phys3 &other) const override;
 	bool intersects(const TerrainObject &other, const coord::phys3 &position) const override;
 	coord::phys_t min_axis() const override;
+
+private:
+	SquareObject(Unit &u, coord::tile_delta foundation_size);
+	SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex);
+
+	friend class Unit;
 };
 
 /**
  * Represents circular shaped objects (movable game units)
+ * can only be constructed by unit->make_location<RadialObject>(...)
  */
 class RadialObject: public TerrainObject {
 public:
-	RadialObject(Unit &u, float rad, bool collisions=true);
-	RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex, bool collisions=true);
 	virtual ~RadialObject();
 
 	/**
@@ -280,6 +319,12 @@ public:
 	bool contains(const coord::phys3 &other) const override;
 	bool intersects(const TerrainObject &other, const coord::phys3 &position) const override;
 	coord::phys_t min_axis() const override;
+
+private:
+	RadialObject(Unit &u, float rad);
+	RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex);
+
+	friend class Unit;
 };
 
 } //namespace openage

@@ -7,12 +7,12 @@
 #include <unordered_map>
 #include <vector>
 
-
 #include "../coord/tile.h"
 #include "../gamedata/gamedata.gen.h"
 #include "../gamedata/graphic.gen.h"
 #include "../player.h"
 #include "unit.h"
+#include "unit_type.h"
 
 namespace openage {
 
@@ -31,83 +31,17 @@ class UnitTexture;
 std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &restriction);
 
 /**
- * A partial implementation of unit types 
- *
- * Initializes a unit with the required attributes, each unit type should implement these funcrtions
- * initialise should be called on construction of units 'new Unit(some_unit_producer)'
- * place is called to customise how the unit gets added to the world -- used to setup the TerrainObject position
- */
-class UnitProducer {
-public:
-	virtual ~UnitProducer() {}
-
-	/**
-	 * gets the id of the unit type being produced
-	 * TODO: make const
-	 */
-	virtual int producer_id() const = 0;
-
-	/**
-	 * gets the name of the unit type being produced
-	 */
-	virtual std::string producer_name() const = 0;
-
-	/**
-	 * Initialize units attributes
-	 * This can be called using existing units to modify type
-	 * TODO: make const
-	 */
-	virtual void initialise(Unit *, Player &) = 0;
-
-	/**
-	 * set unit in place -- return if placement was successful
-	 *
-	 * This should be used when initially creating a unit or
-	 * when a unit is ungarrsioned from a building or object
-	 * TODO: make const
-	 */
-	virtual std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const = 0;
-
-	/**
-	 * Get a default texture for HUD drawing
-	 */
-	virtual UnitTexture *default_texture() = 0;
-
-	/**
-	 * similiar to place but places adjacent to an existing object
-	 */
-	std::shared_ptr<TerrainObject> place_beside(Unit *, std::shared_ptr<TerrainObject>) const;
-
-	/**
-	 * all instances of units made from this producer
-	 * this could allow all units of a type to be upgraded
-	 */
-	std::vector<UnitReference> instances;
-
-	/**
-	 * The set of graphics used for this type
-	 */
-	graphic_set graphics;
-
-	/**
-	 * abilities given to all instances
-	 */
-	std::vector<std::shared_ptr<UnitAbility>> type_abilities;
-};
-
-/**
  * base game data unit type
  */
-class ObjectProducer: public UnitProducer {
+class ObjectProducer: public UnitType {
 public:
 	ObjectProducer(DataManager &dm, const gamedata::unit_object *ud);
 	virtual ~ObjectProducer();
 
-	int producer_id() const override;
-	std::string producer_name() const override;
+	int id() const override;
+	std::string name() const override;
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const override;
-	UnitTexture *default_texture() override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
 	DataManager &datamanager;
@@ -125,9 +59,8 @@ protected:
 	Sound *on_destroy;
 	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> default_tex;
-	UnitProducer *dead_unit_producer;
-	coord::tile_delta foundation_size;
-	
+	UnitType *dead_unit_producer;
+
 };
 
 /**
@@ -139,7 +72,7 @@ public:
 	virtual ~MovableProducer();
 
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
 	const gamedata::unit_movable unit_data;
@@ -147,7 +80,7 @@ protected:
 	UnitTexture *attacking;
 	Sound *on_move;
 	Sound *on_attack;
-	UnitProducer *projectile;
+	UnitType *projectile;
 
 };
 
@@ -162,7 +95,7 @@ public:
 	virtual ~LivingProducer();
 
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
 	const gamedata::unit_living unit_data;
@@ -174,16 +107,15 @@ private:
  * Will be replaced with nyan system in future
  * in aoe buildings are derived from living units
  */
-class BuldingProducer: public UnitProducer {
+class BuldingProducer: public UnitType {
 public:
 	BuldingProducer(DataManager &dm, const gamedata::unit_building *ud);
 	virtual ~BuldingProducer();
 
-	int producer_id() const override;
-	std::string producer_name() const override;
+	int id() const override;
+	std::string name() const override;
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const override;
-	UnitTexture *default_texture() override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
 	DataManager &datamanager;
@@ -197,29 +129,27 @@ private:
 	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> texture;
 	std::shared_ptr<UnitTexture> destroyed;
-	UnitProducer *trainable1;
-	UnitProducer *trainable2;
-	UnitProducer *projectile;
-	coord::tile_delta foundation_size;
+	UnitType *trainable1;
+	UnitType *trainable2;
+	UnitType *projectile;
 	int foundation_terrain;
 
-	std::shared_ptr<TerrainObject> make_annex(Unit &u, Terrain &t, int annex_id, coord::phys3 annex_pos, bool c) const;
+	TerrainObject *make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const;
 };
 
 /**
  * creates projectiles
  * todo use MovableProducer as base class
  */
-class ProjectileProducer: public UnitProducer {
+class ProjectileProducer: public UnitType {
 public:
 	ProjectileProducer(DataManager &dm, const gamedata::unit_projectile *);
 	virtual ~ProjectileProducer();
 
-	int producer_id() const override;
-	std::string producer_name() const override;
+	int id() const override;
+	std::string name() const override;
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, Terrain &, coord::phys3) const override;
-	UnitTexture *default_texture() override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
 	const gamedata::unit_projectile unit_data;
