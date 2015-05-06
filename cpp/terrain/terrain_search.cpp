@@ -8,7 +8,7 @@
 
 namespace openage {
 
-std::shared_ptr<TerrainObject> find_near(const TerrainObject &start,
+TerrainObject *find_near(const TerrainObject &start,
                                          std::function<bool(const TerrainObject &)> found,
                                          unsigned int search_limit) {
 
@@ -16,14 +16,12 @@ std::shared_ptr<TerrainObject> find_near(const TerrainObject &start,
 	auto tile = start.pos.draw.to_tile3().to_tile();
 	TerrainSearch search(terrain, tile);
 
-	for (int i = 0; i < search_limit; ++i) {
+	for (unsigned int i = 0; i < search_limit; ++i) {
 		for (auto o : terrain->get_data(tile)->obj) {
 
-			// lock should always work as the weak pointers
-			// are removed when the object is deleted
-			auto shared_o = o.lock();
-			if (found(*shared_o)) {
-				return shared_o;
+			// invalid pointers are removed when the object is deleted
+			if (found(*o)) {
+				return o;
 			}
 		}
 		tile = search.next_tile();

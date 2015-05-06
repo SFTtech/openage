@@ -283,11 +283,6 @@ void DeadAction::on_completion() {
 }
 
 bool DeadAction::completed() const {
-	// floating buildings are removed instantly
-	if (this->entity->top() == this &&
-	    this->entity->location->is_floating()) {
-		return true;
-	}
 
 	// check resource, trees/huntables with resource are not removed
 	if (this->entity->has_attribute(attr_type::resource)) {
@@ -297,20 +292,37 @@ bool DeadAction::completed() const {
 	return this->frame > this->end_frame;
 }
 
-FoundationAction::FoundationAction(Unit *e)
+FoundationAction::FoundationAction(Unit *e, bool add_destruction)
 	:
-	UnitAction(e, graphic_type::construct) {
+	UnitAction(e, graphic_type::construct),
+	add_destruct_effect{add_destruction},
+	cancel{false} {
 }
 
-void FoundationAction::update(unsigned int) {}
+void FoundationAction::update(unsigned int) {
+	if (!this->entity->location) {
+		this->cancel = true;
+	}
+}
 
 void FoundationAction::on_completion() {
+
+	// do nothing if construction is cancelled
+	if (this->cancel) {
+		return;
+	}
+
+	// add destruction effect when available
+	if (this->add_destruct_effect) {
+		this->entity->push_action(std::make_unique<DeadAction>(this->entity), true);
+	}
 	this->entity->push_action(std::make_unique<IdleAction>(this->entity), true);
 }
 
 bool FoundationAction::completed() const {
-	return this->entity->has_attribute(attr_type::building) &&
-	       (this->entity->get_attribute<attr_type::building>().completed >= 1.0f);
+	return this->cancel ||
+	       (this->entity->has_attribute(attr_type::building) &&
+	       (this->entity->get_attribute<attr_type::building>().completed >= 1.0f));
 }
 
 IdleAction::IdleAction(Unit *e)
@@ -346,16 +358,13 @@ void IdleAction::update(unsigned int time) {
 		auto &player = this->entity->get_attribute<attr_type::owner>().player;
 
 		// find and actions which can be invoked
-		for (auto o : tile_data->obj) {
-			auto object_location = o.lock();
-			if (object_location) {
-				Command to_object(player, &object_location->unit);
+		for (auto object_location : tile_data->obj) {
+			Command to_object(player, &object_location->unit);
 
-				// only allow abilities in the set of auto ability types
-				to_object.set_ability_set(auto_abilities);
-				if (this->entity->invoke(to_object)) {
-					break;
-				}
+			// only allow abilities in the set of auto ability types
+			to_object.set_ability_set(auto_abilities);
+			if (this->entity->invoke(to_object)) {
+				break;
 			}
 		}
 	}
@@ -424,7 +433,7 @@ MoveAction::~MoveAction() {}
 void MoveAction::update(unsigned int time) {
 	if (this->unit_target.is_valid()) {
 		// a unit is targeted, which may move
-		auto target_object = this->unit_target.get()->location;
+		auto &target_object = this->unit_target.get()->location;
 
 		// check for garrisoning objects
 		if (!target_object) {
@@ -559,7 +568,7 @@ void MoveAction::set_path() {
 
 void MoveAction::set_distance() {
 	if (this->unit_target.is_valid()) {
-		auto target_object = this->unit_target.get()->location;
+		auto &target_object = this->unit_target.get()->location;
 		coord::phys3 &unit_pos = this->entity->location->pos.draw;
 		this->distance_to_target = target_object->from_edge(unit_pos);
 	}
@@ -607,7 +616,7 @@ void UngarrisonAction::update(unsigned int) {
 				Unit *unit_ptr = u.get();
 
 				// make sure it was placed outside
-				if (unit_ptr->unit_type->place_beside(unit_ptr, this->entity->location)) {
+				if (unit_ptr->unit_type->place_beside(unit_ptr, this->entity->location.get())) {
 
 					// task unit to move to position
 					auto &player = this->entity->get_attribute<attr_type::owner>().player;
@@ -645,7 +654,7 @@ void TrainAction::update(unsigned int time) {
 		// create using the producer
 		UnitContainer *container = this->entity->get_container();
 		auto &player = this->entity->get_attribute<attr_type::owner>().player;
-		auto uref = container->new_unit(*this->trained, player, this->entity->location);
+		auto uref = container->new_unit(*this->trained, player, this->entity->location.get());
 		if (uref.is_valid()) {
 
 			// use a move command to the gather point
@@ -677,11 +686,22 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 		auto &build = target_unit->get_attribute<attr_type::building>();
 
 		// upgrade floating outlines
-		auto target_location = target_unit->location;
+		auto target_location = target_unit->location.get();
 		if (target_location->is_floating()) {
-			target_location->place(object_state::placed);
-			if (build.foundation_terrain) {
-				target_location->set_ground(build.foundation_terrain, 0);
+
+			// try to place the object
+			if (target_location->place(object_state::placed)) {
+
+				// modify ground terrain
+				if (build.foundation_terrain) {
+					target_location->set_ground(build.foundation_terrain, 0);
+				}
+			}
+			else {
+
+				// failed to start construction
+				this->complete = 1.0;
+				return;
 			}
 		}
 
@@ -920,9 +940,8 @@ void ProjectileAction::update(unsigned int time) {
 		auto terrain = this->entity->location->get_terrain();
 		TileContent *tc = terrain->get_data(new_position.to_tile3().to_tile());
 		if (tc && !tc->obj.empty()) {
-			for (auto item : tc->obj) {
-				auto obj_location = item.lock();
-				if (this->entity->location != obj_location &&
+			for (auto obj_location : tc->obj) {
+				if (this->entity->location.get() != obj_location &&
 				    obj_location->check_collisions()) {
 					this->damage_object(obj_location->unit, 1);
 					break;

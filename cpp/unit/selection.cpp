@@ -151,8 +151,7 @@ void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::cam
 		TileContent *tc = terrain->get_data(check_pos);
 		if (tc) {
 			// find objects within selection box
-			for (auto o : tc->obj) {
-				auto unit_location = o.lock();
+			for (auto unit_location : tc->obj) {
 				coord::camgame pos = unit_location->pos.draw.to_camgame();
 				if ((min.x < pos.x && pos.x < max.x) &&
 				     (min.y < pos.y && pos.y < max.y)) {

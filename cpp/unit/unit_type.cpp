@@ -11,14 +11,14 @@ UnitTexture *UnitType::default_texture() {
 	return this->graphics[graphic_type::standing].get();
 }
 
-std::shared_ptr<TerrainObject> UnitType::place_beside(Unit *u, std::shared_ptr<TerrainObject> other) const {
+TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const {
 	if (!u || !other) {
 		return nullptr;
 	}
 
 	// find the range of possible tiles
-	tile_range outline{other->pos.start - coord::tile_delta{1, 1}, 
-	                   other->pos.end   + coord::tile_delta{1, 1}, 
+	tile_range outline{other->pos.start - coord::tile_delta{1, 1},
+	                   other->pos.end   + coord::tile_delta{1, 1},
 	                   other->pos.draw};
 
 	// find a free position adjacent to the object
@@ -46,7 +46,7 @@ NyanType::~NyanType() {}
 
 int NyanType::id() const {
 	return 1;
-}	
+}
 
 std::string NyanType::name() const {
 	return "Nyan";
@@ -75,7 +75,7 @@ void NyanType::initialise(Unit *unit, Player &) {
 	unit->push_action(std::make_unique<IdleAction>(unit), true);
 }
 
-std::shared_ptr<TerrainObject> NyanType::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *NyanType::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	// the parsed nyan data gives the rules for terrain placement
 	// which includes valid terrains, base radius and shape
 
@@ -88,7 +88,7 @@ std::shared_ptr<TerrainObject> NyanType::place(Unit *unit, std::shared_ptr<Terra
 
 	// try to place the obj, it knows best whether it will fit.
 	if (unit->location->place(terrain, init_pos, object_state::placed)) {
-		return unit->location;
+		return unit->location.get();
 	}
 
 	// placing at the given position failed

@@ -107,10 +107,10 @@ void Unit::update_secondary(int64_t time_elapsed) {
 }
 
 void Unit::draw() {
-	this->draw(this->location, this->graphics);
+	this->draw(this->location.get(), this->graphics);
 }
 
-void Unit::draw(std::shared_ptr<TerrainObject> loc, graphic_set *grpc) {
+void Unit::draw(TerrainObject *loc, graphic_set *grpc) {
 
 	// there should always be a location
 	if (!loc) {

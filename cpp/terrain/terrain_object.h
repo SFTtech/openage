@@ -49,6 +49,11 @@ struct tile_range {
  */
 std::vector<coord::tile> tile_list(const tile_range &rng);
 
+/**
+ * given the west most point of a building foundation and the tile_delta
+ * size of the foundation, this will return the tile range covered by the base,
+ * which includes start and end tiles, and phys3 center point (used for drawing)
+ */
 tile_range building_center(coord::phys3 west, coord::tile_delta size);
 
 /**
@@ -65,6 +70,9 @@ constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
  * positions and radial positions This enables two inheriting classes
  * SquareObject and RadialObject to specify different areas of the map
  *
+ * All TerrainObjects are owned by a Unit, to construct TerrainObjects,
+ * use the make_location function on any Unit
+ *
  * This class allows intersection testing between two TerrainObjects to
  * cover all cases of intersection (water, land or flying objects) the units
  * lambda function is used which takes a tile and returns a bool value of
@@ -75,6 +83,8 @@ constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
 class TerrainObject : public std::enable_shared_from_this<TerrainObject> {
 public:
 	TerrainObject(Unit &u);
+	TerrainObject(const TerrainObject &) = delete;	// disable copy constructor
+	TerrainObject(TerrainObject &&) = delete;		// disable move constructor
 	virtual ~TerrainObject();
 
 	/**
@@ -159,11 +169,11 @@ public:
 	/**
 	 * add a child terrain object
 	 */
-	void annex(std::shared_ptr<TerrainObject> other);
+	void annex(TerrainObject *other);
 
-	const std::shared_ptr<TerrainObject> get_parent() const;
+	const TerrainObject *get_parent() const;
 
-	std::vector<std::shared_ptr<TerrainObject>> get_children() const;
+	std::vector<TerrainObject *> get_children() const;
 
 	/*
 	 * terrain this object was placed on
@@ -222,8 +232,8 @@ protected:
 	/**
 	 * annexes and grouped units
 	 */
-	std::shared_ptr<TerrainObject> parent;
-	std::vector<std::shared_ptr<TerrainObject>> children;
+	TerrainObject *parent;
+	std::vector<TerrainObject *> children;
 
 	/**
 	 * texture for drawing outline

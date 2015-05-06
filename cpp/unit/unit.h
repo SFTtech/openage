@@ -65,7 +65,7 @@ public:
 	 * null if the object is not yet placed or garrisoned
 	 * TODO: make private field
 	 */
-	std::shared_ptr<TerrainObject> location;
+	std::unique_ptr<TerrainObject> location;
 
 	/**
 	 * graphics sets which can be modified for gathering
@@ -82,14 +82,14 @@ public:
 	template<class T, typename ... Arg>
 	void make_location(Arg ... args) {
 
-		// remove any existing location
+		// remove any existing location first
 		if (this->location) {
 			this->location->remove();
 		}
 
 		// since Unit is a friend of the location
 		// make_shared will not work
-		this->location = std::shared_ptr<T>(new T(*this, args ...));
+		this->location = std::unique_ptr<T>(new T(*this, args ...));
 	}
 
 	/**
@@ -98,11 +98,10 @@ public:
 	 * this does not replace the units location
 	 */
 	template<class T, typename ... Arg>
-	std::shared_ptr<T> make_location_annex(Arg ... args) {
+	T *make_location_annex(Arg ... args) {
 
-		// since Unit is a friend of the location
-		// make_shared will not work
-		auto annex_ptr = std::shared_ptr<T>(new T(*this, args ...));
+		// Unit is a friend of the location
+		auto annex_ptr = new T(*this, args ...);
 		this->location->annex(annex_ptr);
 		return annex_ptr;
 	}
@@ -143,7 +142,7 @@ public:
 	/**
 	 * an generalized draw function which is useful for drawing annexes
 	 */
-	void draw(std::shared_ptr<TerrainObject> loc, graphic_set *graphics);
+	void draw(TerrainObject *loc, graphic_set *graphics);
 
 	/**
 	 * adds an available ability to this unit

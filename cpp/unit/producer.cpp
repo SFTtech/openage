@@ -221,7 +221,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// create new object with correct base shape
 	if (this->unit_data.selection_shape > 1) {
@@ -239,17 +239,16 @@ std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, std::shared_ptr<Te
 	 * currently unit avoids water and tiles with another unit
 	 * this function should be true if pos is a valid position of the object
 	 */
-	std::weak_ptr<TerrainObject> obj_ptr = u->location;
+	TerrainObject *obj_ptr = u->location.get();
 	std::weak_ptr<Terrain> terrain_ptr = terrain;
 	u->location->passable = [obj_ptr, terrain_ptr, terrains](const coord::phys3 &pos) -> bool {
 
 		// if location is deleted, then so is this lambda (deleting terrain implies location is deleted)
 		// so locking objects here will not return null
-		auto obj = obj_ptr.lock();
 		auto terrain = terrain_ptr.lock();
 
 		// look at all tiles in the bases range
-		for (coord::tile check_pos : tile_list(obj->get_range(pos))) {
+		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos))) {
 			TileContent *tc = terrain->get_data(check_pos);
 
 			// invalid tile types
@@ -257,12 +256,12 @@ std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, std::shared_ptr<Te
 				return false;
 			}
 
+			// compare with objects intersecting the units tile
 			// ensure no intersections with other objects
-			for (auto item : tc->obj) {
-				auto obj_cmp = item.lock();
-				if (obj != obj_cmp &&
+			for (auto obj_cmp : tc->obj) {
+				if (obj_ptr != obj_cmp &&
 				    obj_cmp->check_collisions() &&
-				    obj->intersects(*obj_cmp, pos)) {
+				    obj_ptr->intersects(*obj_cmp, pos)) {
 					return false;
 				}
 			}
@@ -272,7 +271,7 @@ std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, std::shared_ptr<Te
 
 	u->location->draw = [u, obj_ptr]() {
 		if (u->selected) {
-			obj_ptr.lock()->draw_outline();
+			obj_ptr->draw_outline();
 		}
 		u->draw();
 	};
@@ -283,7 +282,7 @@ std::shared_ptr<TerrainObject> ObjectProducer::place(Unit *u, std::shared_ptr<Te
 		if (this->on_create) {
 			this->on_create->play();
 		}
-		return u->location;
+		return u->location.get();
 	}
 
 	// placing at the given position failed
@@ -356,7 +355,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-std::shared_ptr<TerrainObject> MovableProducer::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *MovableProducer::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	return ObjectProducer::place(unit, terrain, init_pos);
 }
 
@@ -428,7 +427,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 	}
 }
 
-std::shared_ptr<TerrainObject> LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	return MovableProducer::place(unit, terrain, init_pos);
 }
 
@@ -507,11 +506,8 @@ void BuldingProducer::initialise(Unit *unit, Player &player) {
 	unit->add_attribute(new Attribute<attr_type::garrison>());
 	unit->add_attribute(new Attribute<attr_type::hitpoints>(this->unit_data.hit_points));
 
-	// if a destroyed texture exists
-	if (this->destroyed) {
-		unit->push_action(std::make_unique<DeadAction>(unit), true);
-	}
-	unit->push_action(std::make_unique<FoundationAction>(unit), true);
+	bool has_destruct_graphic = this->destroyed != nullptr;
+	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
 
 	if (this->unit_data.projectile_unit_id > 0 && this->projectile) {
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
@@ -524,7 +520,7 @@ void BuldingProducer::initialise(Unit *unit, Player &player) {
 	unit->give_ability(std::make_shared<UngarrisonAbility>());
 }
 
-std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *BuldingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// buildings have a square base
 	u->make_location<SquareObject>(this->foundation_size, this->terrain_outline);
@@ -534,20 +530,18 @@ std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, std::shared_ptr<T
 	 * currently unit avoids water and tiles with another unit
 	 * this function should be true if pos is a valid position of the object
 	 */
-	std::weak_ptr<TerrainObject> obj_ptr = u->location;
+	TerrainObject *obj_ptr = u->location.get();
 	std::weak_ptr<Terrain> terrain_ptr = terrain;
 	u->location->passable = [obj_ptr, terrain_ptr](const coord::phys3 &pos) -> bool {
-		auto obj = obj_ptr.lock();
 		auto terrain = terrain_ptr.lock();
 
 		// look at all tiles in the bases range
-		for (coord::tile check_pos : tile_list(obj->get_range(pos))) {
+		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos))) {
 			TileContent *tc = terrain->get_data(check_pos);
 			if (!tc) {
 				return false;
 			}
-			for (auto item : tc->obj) {
-				auto tobj = item.lock();
+			for (auto tobj : tc->obj) {
 				if (tobj->check_collisions()) return false;
 			}
 		}
@@ -559,7 +553,7 @@ std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, std::shared_ptr<T
 	bool collisions = this->unit_data.id0 != 109;
 	u->location->draw = [u, obj_ptr, collisions]() {
 		if (u->selected && collisions) {
-			obj_ptr.lock()->draw_outline();
+			obj_ptr->draw_outline();
 		}
 		u->draw();
 	};
@@ -587,10 +581,10 @@ std::shared_ptr<TerrainObject> BuldingProducer::place(Unit *u, std::shared_ptr<T
 	if (this->on_create) {
 		this->on_create->play();
 	}
-	return u->location;
+	return u->location.get();
 }
 
-std::shared_ptr<TerrainObject> BuldingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
+TerrainObject *BuldingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
 	u.log(MSG(dbg) << "adding annex " << annex_id);
 
 	// find annex foundation size
@@ -606,27 +600,25 @@ std::shared_ptr<TerrainObject> BuldingProducer::make_annex(Unit &u, std::shared_
 	start_tile.se -= b->radius_size1 * coord::settings::phys_per_tile;
 
 	// create and place on terrain
-	auto annex_loc = u.make_location_annex<SquareObject>(annex_foundation);
+	TerrainObject *annex_loc = u.make_location_annex<SquareObject>(annex_foundation);
 	annex_loc->place(t, start_tile, object_state::floating);
 
 	// weak ptr for use in lambda drawing functions
-	std::weak_ptr<TerrainObject> annex_weak_ptr = annex_loc;
 	auto annex_type = datamanager.get_type(annex_id);
 
 	// create special drawing functions for annexes,
-	annex_loc->draw = [annex_weak_ptr, annex_type, &u, c]() {
-		auto annex_location = annex_weak_ptr.lock();
+	annex_loc->draw = [annex_loc, annex_type, &u, c]() {
 
 		// hack which draws the outline in the right order
 		// removable once rendering system is improved
 		if (c && u.selected) {
-			annex_location->get_parent()->draw_outline();
+			annex_loc->get_parent()->draw_outline();
 		}
 
 		// only draw if building is completed
 		if (u.has_attribute(attr_type::building) &&
 		    u.get_attribute<attr_type::building>().completed >= 1.0f) {
-			u.draw(annex_location, &annex_type->graphics);
+			u.draw(annex_loc, &annex_type->graphics);
 		}
 	};
 	return annex_loc;
@@ -679,13 +671,13 @@ void ProjectileProducer::initialise(Unit *unit, Player &) {
 	}
 }
 
-std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	/*
 	 * radial base shape without collision checking
 	 */
 	u->make_location<RadialObject>(this->unit_data.radius_size1, this->terrain_outline);
 
-	std::weak_ptr<TerrainObject> obj_ptr = u->location;
+	TerrainObject *obj_ptr = u->location.get();
 	std::weak_ptr<Terrain> terrain_ptr = terrain;
 	u->location->passable = [obj_ptr, u, terrain_ptr](const coord::phys3 &pos) -> bool {
 		if (pos.up > 64000) {
@@ -694,7 +686,6 @@ std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, std::shared_pt
 
 		// avoid intersections with launcher
 		Unit *launcher = nullptr;
-		auto obj = obj_ptr.lock();
 		auto terrain = terrain_ptr.lock();
 		if (u->has_attribute(attr_type::projectile)) {
 			auto &pr_attr = u->get_attribute<attr_type::projectile>();
@@ -710,17 +701,16 @@ std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, std::shared_pt
 		}
 
 		// look at all tiles in the bases range
-		for (coord::tile check_pos : tile_list(obj->get_range(pos))) {
+		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos))) {
 			TileContent *tc = terrain->get_data(check_pos);
 			if (!tc) return false;
 
 			// ensure no intersections with other objects
-			for (auto item : tc->obj) {
-				auto obj_cmp = item.lock();
-				if (obj != obj_cmp &&
+			for (auto obj_cmp : tc->obj) {
+				if (obj_ptr != obj_cmp &&
 				    &obj_cmp->unit != launcher &&
 				    obj_cmp->check_collisions() &&
-				    obj->intersects(*obj_cmp, pos)) {
+				    obj_ptr->intersects(*obj_cmp, pos)) {
 					return false;
 				}
 			}
@@ -734,7 +724,7 @@ std::shared_ptr<TerrainObject> ProjectileProducer::place(Unit *u, std::shared_pt
 
 	// try to place the obj, it knows best whether it will fit.
 	if (u->location->place(terrain, init_pos, object_state::placed_no_collision)) {
-		return u->location;
+		return u->location.get();
 	}
 	return nullptr;
 }

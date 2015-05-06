@@ -60,7 +60,7 @@ public:
 	 * when a unit is ungarrsioned from a building or object
 	 * TODO: make const
 	 */
-	virtual std::shared_ptr<TerrainObject> place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const = 0;
+	virtual TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const = 0;
 
 	/**
 	 * Get a default texture for HUD drawing
@@ -70,7 +70,7 @@ public:
 	/**
 	 * similiar to place but places adjacent to an existing object
 	 */
-	std::shared_ptr<TerrainObject> place_beside(Unit *, std::shared_ptr<TerrainObject>) const;
+	TerrainObject *place_beside(Unit *, TerrainObject const *) const;
 
 	/**
 	 * all instances of units made from this unit type
@@ -114,7 +114,7 @@ public:
 	int id() const override;
 	std::string name() const override;
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 };
 

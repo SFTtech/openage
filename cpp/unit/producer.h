@@ -41,7 +41,7 @@ public:
 	int id() const override;
 	std::string name() const override;
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
 	DataManager &datamanager;
@@ -60,7 +60,7 @@ protected:
 	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> default_tex;
 	UnitType *dead_unit_producer;
-	
+
 };
 
 /**
@@ -72,7 +72,7 @@ public:
 	virtual ~MovableProducer();
 
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
 	const gamedata::unit_movable unit_data;
@@ -95,7 +95,7 @@ public:
 	virtual ~LivingProducer();
 
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
 	const gamedata::unit_living unit_data;
@@ -115,7 +115,7 @@ public:
 	int id() const override;
 	std::string name() const override;
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
 	DataManager &datamanager;
@@ -134,7 +134,7 @@ private:
 	UnitType *projectile;
 	int foundation_terrain;
 
-	std::shared_ptr<TerrainObject> make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const;
+	TerrainObject *make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const;
 };
 
 /**
@@ -149,7 +149,7 @@ public:
 	int id() const override;
 	std::string name() const override;
 	void initialise(Unit *, Player &) override;
-	std::shared_ptr<TerrainObject> place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
 	const gamedata::unit_projectile unit_data;

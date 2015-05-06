@@ -413,7 +413,7 @@ bool GameMain::on_input(SDL_Event *e) {
 			// delete any unit on the tile
 			if (!chunk->get_data(mousepos_tile)->obj.empty()) {
 				// get first object currently standing at the clicked position
-				auto obj = chunk->get_data(mousepos_tile)->obj[0].lock();
+				TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
 				log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
 				obj->unit.delete_unit();
 			} else if ( this->datamanager.producer_count() > 0 ) {

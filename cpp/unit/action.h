@@ -59,9 +59,9 @@ public:
 	virtual bool completed() const = 0;
 
 	/**
-	 * checks if the action can be interrupted, allowing it to be popped if the user 
-	 * specifies a new action, if false the action must reach a completed state 
-	 * before removal 
+	 * checks if the action can be interrupted, allowing it to be popped if the user
+	 * specifies a new action, if false the action must reach a completed state
+	 * before removal
 	 * eg dead action must be completed and cannot be discarded
 	 */
 	virtual bool allow_interupt() const = 0;
@@ -134,7 +134,7 @@ public:
 
 	/**
 	 * action_rad is how close a unit must come to another
-	 * unit to be considered to touch the other, for example in 
+	 * unit to be considered to touch the other, for example in
 	 * gathering resource and melee attack
 	 */
 	TargetAction(Unit *e, graphic_type gt, UnitReference r, coord::phys_t action_rad);
@@ -143,7 +143,7 @@ public:
 	 * this constructor uses the default action radius formula which will
 	 * bring the object as near to the target as the pathing grid will allow.
 	 */
-	TargetAction(Unit *e, graphic_type gt, UnitReference r); 
+	TargetAction(Unit *e, graphic_type gt, UnitReference r);
 	virtual ~TargetAction() {}
 
 	void update(unsigned int) override;
@@ -224,7 +224,7 @@ private:
  */
 class FoundationAction: public UnitAction {
 public:
-	FoundationAction(Unit *e);
+	FoundationAction(Unit *e, bool add_destuction=false);
 	virtual ~FoundationAction() {}
 
 	void update(unsigned int) override;
@@ -233,7 +233,10 @@ public:
 	bool allow_interupt() const override { return true; }
 	bool allow_control() const override { return false; }
 	std::string name() const override { return "foundation"; }
-	
+
+private:
+	bool add_destruct_effect, cancel;
+
 };
 
 /**
@@ -289,7 +292,7 @@ private:
 
 	// how near the units should come to target
 	coord::phys_t distance_to_target, radius;
-	
+
 	path::Path path;
 
 	// should a new path be found if unit gets blocked
@@ -457,7 +460,7 @@ public:
 
 private:
 	float complete;
-	
+
 };
 
 /**

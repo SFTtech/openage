@@ -38,7 +38,7 @@ bool TerrainObject::is_floating() const {
 }
 
 bool TerrainObject::is_placed() const {
-	return this->state == object_state::placed || 
+	return this->state == object_state::placed ||
 	       this->state == object_state::placed_no_collision;
 }
 
@@ -52,11 +52,38 @@ void TerrainObject::draw_outline() const {
 }
 
 bool TerrainObject::place(object_state init_state) {
-		if (this->state != object_state::floating) {
+	if (this->state != object_state::floating) {
 		throw util::Error(MSG(err) << "Building must be floating");
 	}
 
-	// set state
+	// remove any other floating objects
+	// which intersect with the new placement
+	// if non-floating objects are on the foundation
+	// then this placement will fail
+	std::vector<TerrainObject *> to_remove;
+	for (coord::tile temp_pos : tile_list(this->pos)) {
+		TerrainChunk *chunk = this->get_terrain()->get_chunk(temp_pos);
+
+		if (chunk == nullptr) {
+			continue;
+		}
+
+		for (auto obj : chunk->get_data(temp_pos)->obj) {
+			if (obj != this &&
+				obj->is_floating()) {
+				to_remove.push_back(obj);
+			}
+			else if (obj != this &&
+				     obj->check_collisions()) {
+				return false;
+			}
+		}
+	}
+	for (auto remove_obj : to_remove) {
+		remove_obj->unit.location = nullptr;
+	}
+
+	// set new state
 	this->state = init_state;
 	return true;
 }
@@ -110,7 +137,6 @@ void TerrainObject::remove() {
 		return;
 	}
 
-	auto shared_this = this->shared_from_this();
 	for (coord::tile temp_pos : tile_list(this->pos)) {
 		TerrainChunk *chunk = this->get_terrain()->get_chunk(temp_pos);
 
@@ -123,8 +149,8 @@ void TerrainObject::remove() {
 		auto position_it = std::remove_if(
 			std::begin(v),
 			std::end(v),
-			[shared_this](std::weak_ptr<TerrainObject> &obj) {
-				return shared_this == obj.lock();
+			[this](TerrainObject *obj) {
+				return this == obj;
 			});
 		v.erase(position_it, std::end(v));
 	}
@@ -158,16 +184,16 @@ void TerrainObject::set_ground(int id, int additional) {
 	}
 }
 
-void TerrainObject::annex(std::shared_ptr<TerrainObject> other) {
+void TerrainObject::annex(TerrainObject *other) {
 	this->children.push_back(other);
-	other->parent = this->shared_from_this();
+	other->parent = this;
 }
 
-const std::shared_ptr<TerrainObject> TerrainObject::get_parent() const {
+const TerrainObject *TerrainObject::get_parent() const {
 	return this->parent;
 }
 
-std::vector<std::shared_ptr<TerrainObject>> TerrainObject::get_children() const {
+std::vector<TerrainObject *> TerrainObject::get_children() const {
 	return this->children;
 }
 
@@ -231,7 +257,7 @@ void TerrainObject::place_unchecked(std::shared_ptr<Terrain> t, coord::phys3 &po
 		}
 
 		int tile_pos = chunk->tile_position_neigh(temp_pos);
-		chunk->get_data(tile_pos)->obj.push_back(this->shared_from_this());
+		chunk->get_data(tile_pos)->obj.push_back(this);
 	}
 }
 

@@ -103,11 +103,11 @@ UnitReference UnitContainer::new_unit(UnitType &type,
 
 UnitReference UnitContainer::new_unit(UnitType &type,
                                       Player &owner,
-                                      std::shared_ptr<TerrainObject> other) {
+                                      TerrainObject *other) {
 	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
 
 	// try placing unit
-	std::shared_ptr<TerrainObject> placed = type.place_beside(newobj.get(), other);
+	TerrainObject *placed = type.place_beside(newobj.get(), other);
 	if (placed) {
 		type.initialise(newobj.get(), owner);
 		auto id = newobj->id;

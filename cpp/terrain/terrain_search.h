@@ -16,7 +16,7 @@ namespace openage {
 class Terrain;
 class TerrainObject;
 
-std::shared_ptr<TerrainObject> find_near(const TerrainObject &start,
+TerrainObject *find_near(const TerrainObject &start,
                                          std::function<bool(const TerrainObject &)> found,
                                          unsigned int search_limit=500);
 
