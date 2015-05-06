@@ -25,7 +25,8 @@ KeybindManager::KeybindManager()
 		{ key_t(SDLK_z), action_t::DISABLE_SET_ABILITY },
 		{ key_t(SDLK_x), action_t::SET_ABILITY_MOVE },
 		{ key_t(SDLK_c), action_t::SET_ABILITY_GATHER },
-		{ key_t(SDLK_BACKQUOTE), action_t::TOGGLE_CONSOLE}} {
+		{ key_t(SDLK_BACKQUOTE), action_t::TOGGLE_CONSOLE}},
+	keymod{KMOD_NONE} {
 
 }
 
@@ -63,6 +64,9 @@ void KeybindManager::remove_context() {
 
 
 void KeybindManager::press(key_t k) {
+	// Remove modifiers like num lock and caps lock
+	k.mod = static_cast<SDL_Keymod>(k.mod & this->used_keymods);
+
 	// Check whether key combination is bound to an action
 	auto a = this->keys.find(k);
 	if (a == this->keys.end()) {
@@ -84,7 +88,8 @@ void KeybindManager::press(key_t k) {
 }
 
 
-void KeybindManager::set_key_state(SDL_Keycode k, bool is_down) {
+void KeybindManager::set_key_state(SDL_Keycode k, SDL_Keymod mod, bool is_down) {
+	this->keymod = mod;
 	this->key_states[k] = is_down;
 }
 
@@ -99,6 +104,10 @@ bool KeybindManager::is_key_down(SDL_Keycode k) {
 		this->key_states[k] = false;
 		return false;
 	}
+}
+
+bool KeybindManager::is_keymod_down(SDL_Keymod mod) const {
+	return (this->keymod & mod) == mod;
 }
 
 

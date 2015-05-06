@@ -51,13 +51,19 @@ public:
 	/**
 	 * sets the state of a specific key
 	 */
-	void set_key_state(SDL_Keycode k, bool is_down);
+	void set_key_state(SDL_Keycode k, SDL_Keymod mod, bool is_down);
 
 	/**
 	 * query stored pressing stat for a key.
 	 * @return true when the key is pressed, false else.
 	 */
 	bool is_key_down(SDL_Keycode k);
+
+	/**
+	 * Checks whether a key modifier is held down.
+	 */
+	bool is_keymod_down(SDL_Keymod mod) const;
+
 private:
 	KeybindContext global_hotkeys;
 	std::unordered_map<key_t, action_t, key_hash> keys;
@@ -70,6 +76,19 @@ private:
 	 * false indicates the key is untouched.
 	 */
 	std::unordered_map<SDL_Keycode, bool> key_states;
+
+	/*
+	 * Current key modifiers.
+	 * Included ALL modifiers including num lock and caps lock.
+	 */
+	SDL_Keymod keymod;
+
+	/**
+	 * used key modifiers to check for.
+	 * this excludes keys like num lock and caps lock, which would
+	 * otherwise mess up key combinations
+	 */
+	static constexpr SDL_Keymod used_keymods = static_cast<SDL_Keymod>(KMOD_CTRL | KMOD_SHIFT | KMOD_ALT | KMOD_GUI);
 };
 
 } //namespace keybinds
