@@ -693,7 +693,7 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 			if (target_location->place(object_state::placed)) {
 
 				// modify ground terrain
-				if (build.foundation_terrain) {
+				if (build.foundation_terrain > 0) {
 					target_location->set_ground(build.foundation_terrain, 0);
 				}
 			}
