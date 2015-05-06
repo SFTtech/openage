@@ -302,15 +302,19 @@ MovableProducer::MovableProducer(DataManager &dm, const gamedata::unit_movable *
 	// villagers have invalid attack and walk graphics
 	// it seems these come from the command data instead
 	auto walk = dm.get_unit_texture(this->unit_data.walking_graphics0);
-	auto attack = dm.get_unit_texture(this->unit_data.attack_graphic);
-	if (walk && walk->is_valid()) {
-		this->graphics[graphic_type::walking] = walk;
+	if (!walk) {
 
-		// reuse as carry graphic if not already set
-		if (this->graphics.count(graphic_type::carrying) == 0) {
-			this->graphics[graphic_type::carrying] = walk;
-		}
+		// use standing instead
+		walk = this->graphics[graphic_type::standing];
 	}
+	this->graphics[graphic_type::walking] = walk;
+
+	// reuse as carry graphic if not already set
+	if (this->graphics.count(graphic_type::carrying) == 0) {
+		this->graphics[graphic_type::carrying] = walk;
+	}
+
+	auto attack = dm.get_unit_texture(this->unit_data.attack_graphic);
 	if (attack && attack->is_valid()) {
 		this->graphics[graphic_type::attack] = attack;
 	}
