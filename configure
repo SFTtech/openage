@@ -153,7 +153,7 @@ def getcsuite(name):
 # determine compiler binaries from args.{c_compiler, cxx_compiler, compiler}
 if args.compiler and (args.c_compiler or args.cpp_compiler):
     ap.error("""either specify a compiler suite via --compiler, or manually \
-specify the C and C++ compilers via --c-compiler and -cpp-compiler""")
+specify the C and C++ compilers via --c-compiler and --cpp-compiler""")
 
 if args.c_compiler or args.cpp_compiler:
     cc = args.c_compiler
