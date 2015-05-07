@@ -22,6 +22,7 @@
 #include "unit/unit_container.h"
 #include "util/externalprofiler.h"
 #include "gamedata/gamedata.gen.h"
+#include "minimap.h"
 
 namespace openage {
 
