@@ -5,8 +5,8 @@
 
 #include <vector>
 
-#include "../coord/tile.h"
-#include "../rng/rng.h"
+#include "../../coord/tile.h"
+#include "../../rng/rng.h"
 
 namespace openage {
 namespace mapgen {

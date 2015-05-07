@@ -1,5 +1,8 @@
 add_sources(${PROJECT_NAME}
-	heightmap.cpp
-	land_gen.cpp
 	mapgen.cpp
+	mapgenbase.cpp
 )
+
+add_subdirectory(static)
+add_subdirectory(diamondsquare)
+add_subdirectory(mandelbrot)

@@ -18,7 +18,6 @@
 #include "game_save.h"
 #include "keybinds/keybind_manager.h"
 #include "log/log.h"
-#include "mapgen/mapgen.h"
 #include "terrain/terrain.h"
 #include "unit/action.h"
 #include "unit/command.h"
@@ -121,9 +120,10 @@ GameMain::GameMain(Engine *engine)
 
 	// create the terrain which will be filled by chunks
 	this->terrain = std::make_shared<Terrain>(assetmanager, terrain_types, blending_modes, true);
-	mapgen::MapGen mapgen{4};
+	// choose map engine
+ 	map = new mapgen::MapGen(1,16,mapgen::MapGen::Engine::Mandelbrot);
 
-	this->terrain->fill(mapgen.generate(), mapgen.get_size());
+	this->terrain->fill(map->getMap(), map->get_size());
 	this->placed_units.set_terrain(this->terrain);
 
 	// players

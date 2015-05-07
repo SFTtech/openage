@@ -52,6 +52,7 @@ _the openage authors_ are:
 | Niklas Fiekas               | niklasf                     | niklas.fiekas@tu-clausthal.de         |
 | Charles Gould               | charlesrgould               | charles.r.gould@gmail.com             |
 | Wilco Kusee                 | detrumi                     | wilcokusee@gmail.com                  |
+| Timo Haas                   | alue-42                     | haastimo@gmx.de                       |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

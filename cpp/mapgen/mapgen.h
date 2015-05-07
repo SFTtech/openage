@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "../coord/tile.h"
+#include "mapgenbase.h"
 
 namespace openage {
 namespace mapgen {
@@ -14,22 +15,38 @@ namespace mapgen {
 // TODO this should be a parameter to allow the correct map sizes
 // For example, tiny, small and medium maps are of size 120x120, 144x144 and 168x168
 // There's no chunk size which divides all these sizes evenly
-constexpr int chunk_size = 16;
 
 class MapGen {
 public:
-	MapGen(int chunks_per_size);
+	enum Engine {
+		DiamondSquare,
+		Mandelbrot,
+		Static,
+	};
 
-	int *generate();
+	//TODO create enum for all Terrain tiles
+	enum Terrain : int {
+		Dirt_1 = 2,
+		Grass_1 = 0,
+		Water_Light = 1,
+		Water_Dark = 14,
+	};
+
+	MapGen(int chunks_per_side,int chunk_size, MapGen::Engine enginge);
+
+	int *getMap();
+	int *getMap(int32_t x, int32_t y);
 	coord::tile_delta get_size() const;
+
+	// TODO define a method for returning placed objects,
+	// like Town Center, Villagers, Scouts, Gold, Wood...
+	// std::vector<objects> getObjects();
 
 
 private:
-	//create_land();
-
-	std::vector<int> map;
-	coord::tile_delta size;
+	mapgen::MapGenBase  *map;
 };
+
 
 } // namespace mapgen
 } // namespace openage

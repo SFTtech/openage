@@ -4,7 +4,7 @@
 #include <ctime>
 
 #include "heightmap.h"
-#include "../log/log.h"
+#include "../../log/log.h"
 
 namespace openage {
 namespace mapgen {
