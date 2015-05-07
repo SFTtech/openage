@@ -79,6 +79,8 @@ public:
 	Texture *gaben;
 	std::vector<Player> players;
 
+  Minimap *minimap;
+
 	/**
 	 * all the objects that have been placed.
 	 */

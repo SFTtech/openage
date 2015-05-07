@@ -137,6 +137,7 @@ GameMain::GameMain(Engine *engine)
 
 	// load textures and stuff
 	gaben      = new Texture{data_dir->join("gaben.png")};
+  this->minimap = new Minimap();
 
 	auto string_resources = util::read_csv_file<gamedata::string_resource>(asset_dir.join("string_resources.docx"));
 	auto terrain_types  = util::read_csv_file<gamedata::terrain_type>(asset_dir.join("gamedata/gamedata-empiresdat/0000-terrains.docx"));
@@ -314,6 +315,7 @@ GameMain::GameMain(Engine *engine)
 GameMain::~GameMain() {
 	// oh noes, release hl3 before that!
 	delete this->gaben;
+  delete this->minimap;
 
 	delete texture_shader::program;
 	delete teamcolor_shader::program;
@@ -593,6 +595,9 @@ bool GameMain::on_drawhud() {
 		auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
 		txt->sample(bpreview_pos.to_camhud());
 	}
+
+  this->minimap->draw();
+
 	return true;
 }
 
