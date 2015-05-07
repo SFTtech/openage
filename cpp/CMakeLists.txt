@@ -22,6 +22,7 @@ add_sources(${PROJECT_NAME}
 	python.cpp
 	screenshot.cpp
 	texture.cpp
+  minimap.cpp
 
 	config.cpp
 )
