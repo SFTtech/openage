@@ -193,6 +193,15 @@ GameMain::GameMain(Engine *engine)
 	auto alphamask_frag = new shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
 	delete[] alphamask_frag_code;
 
+	char *minimap_vert_code;
+	util::read_whole_file(&minimap_vert_code, data_dir->join("shaders/minimap.vert.glsl"));
+	auto minimap_vert = new shader::Shader(GL_VERTEX_SHADER, minimap_vert_code);
+	delete[] minimap_vert_code;
+
+	char *minimap_frag_code;
+	util::read_whole_file(&minimap_frag_code, data_dir->join("shaders/minimap.frag.glsl"));
+	auto minimap_frag = new shader::Shader(GL_FRAGMENT_SHADER, minimap_frag_code);
+	delete[] minimap_frag_code;
 
 
 	// create program for rendering simple textures
@@ -236,12 +245,19 @@ GameMain::GameMain(Engine *engine)
 	glUniform1i(alphamask_shader::mask_texture, 1);
 	alphamask_shader::program->stopusing();
 
+	// create program for rendering simple textures
+	minimap_shader::program = new shader::Program(minimap_vert, minimap_frag);
+	minimap_shader::program->link();
+
 	// after linking, the shaders are no longer necessary
 	delete plaintexture_vert;
 	delete plaintexture_frag;
 	delete teamcolor_frag;
 	delete alphamask_vert;
 	delete alphamask_frag;
+  delete minimap_vert;
+	delete minimap_frag;
+
 
 	// initialize global keybinds
 	auto &global_keybind_context = engine->get_keybind_manager().get_global_keybind_context();
