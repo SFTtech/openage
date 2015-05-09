@@ -108,7 +108,7 @@ public:
 	bool is_floating() const;
 
 	/**
-	 * has the object been placed which indicates the the object has a position and exists
+	 * returns true if this object has been placed. this indicates that the object has a position and exists
 	 * on the map, floating buildings are not considered placed as they are only an indicator
 	 * for where something can begin construction
 	 */
