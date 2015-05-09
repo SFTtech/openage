@@ -69,13 +69,21 @@ bool TerrainObject::place(object_state init_state) {
 		}
 
 		for (auto obj : chunk->get_data(temp_pos)->obj) {
+
+			// ignore self and annexes of self
 			if (obj != this &&
-				obj->is_floating()) {
-				to_remove.push_back(obj);
-			}
-			else if (obj != this &&
-				     obj->check_collisions()) {
-				return false;
+				obj->get_parent() != this) {
+
+				if (obj->is_floating()) {
+
+					// floating objects get removed
+					to_remove.push_back(obj);
+				}
+				else if (obj->check_collisions()) {
+
+					// solid objects obstruct placement
+					return false;
+				}
 			}
 		}
 	}
