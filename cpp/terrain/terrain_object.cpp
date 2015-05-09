@@ -24,7 +24,8 @@ TerrainObject::TerrainObject(Unit &u)
 	passable{[](const coord::phys3 &) -> bool {return true;}},
 	draw{[]() {}},
 	state{object_state::removed},
-	occupied_chunk_count{0} {
+	occupied_chunk_count{0},
+	parent{nullptr} {
 }
 
 TerrainObject::~TerrainObject() {
@@ -103,6 +104,7 @@ bool TerrainObject::place(object_state init_state) {
 		}
 	}
 	for (auto remove_obj : to_remove) {
+		this->unit.log(MSG(dbg) << "Removing...");
 		remove_obj->unit.location = nullptr;
 	}
 
@@ -207,17 +209,16 @@ void TerrainObject::set_ground(int id, int additional) {
 	}
 }
 
-void TerrainObject::annex(TerrainObject *other) {
-	this->children.push_back(other);
-	other->parent = this;
-}
-
 const TerrainObject *TerrainObject::get_parent() const {
 	return this->parent;
 }
 
 std::vector<TerrainObject *> TerrainObject::get_children() const {
-	return this->children;
+	std::vector<TerrainObject *> result;
+	for (auto &obj: this->children) {
+		result.push_back(obj.get());
+	}
+	return result;
 }
 
 bool TerrainObject::operator <(const TerrainObject &other) {

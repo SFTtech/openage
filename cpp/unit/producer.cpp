@@ -609,7 +609,7 @@ TerrainObject *BuldingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, 
 	start_tile.se -= b->radius_size1 * coord::settings::phys_per_tile;
 
 	// create and place on terrain
-	TerrainObject *annex_loc = u.make_location_annex<SquareObject>(annex_foundation);
+	TerrainObject *annex_loc = u.location->make_annex<SquareObject>(annex_foundation);
 	object_state state = c? object_state::placed : object_state::placed_no_collision;
 	annex_loc->place(t, start_tile, state);
 

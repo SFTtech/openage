@@ -170,10 +170,20 @@ public:
 	 */
 	void set_ground(int id, int additional=0);
 
+
 	/**
-	 * add a child terrain object
+	 * appends new annex location for this object
+	 *
+	 * this does not replace any existing annex
 	 */
-	void annex(TerrainObject *other);
+	template<class T, typename ... Arg>
+	TerrainObject *make_annex(Arg ... args) {
+
+		this->children.push_back(std::unique_ptr<T>(new T(this->unit, args ...)));
+		auto &annex_ptr = this->children.back();
+		annex_ptr->parent = this;
+		return annex_ptr.get();
+	}
 
 	const TerrainObject *get_parent() const;
 
@@ -237,7 +247,7 @@ protected:
 	 * annexes and grouped units
 	 */
 	TerrainObject *parent;
-	std::vector<TerrainObject *> children;
+	std::vector<std::unique_ptr<TerrainObject>> children;
 
 	/**
 	 * texture for drawing outline
@@ -297,6 +307,8 @@ private:
 	SquareObject(Unit &u, coord::tile_delta foundation_size);
 	SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex);
 
+
+	friend class TerrainObject;
 	friend class Unit;
 };
 
@@ -328,6 +340,7 @@ private:
 	RadialObject(Unit &u, float rad);
 	RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex);
 
+	friend class TerrainObject;
 	friend class Unit;
 };
 
