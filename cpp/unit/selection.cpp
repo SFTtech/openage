@@ -159,10 +159,27 @@ void UnitSelection::remove_unit(Unit *u) {
 }
 
 void UnitSelection::kill_unit() {
-	if (!this->units.empty()) {
-		Unit *u = this->units.begin()->second.get();
-		this->remove_unit(u);
-		u->delete_unit();
+	if (this->units.empty()) {
+		return;
+	}
+
+	UnitReference &ref = this->units.begin()->second;
+	if (!ref.is_valid()) {
+		this->units.erase(this->units.begin());
+
+		if (this->units.empty()) {
+			this->selection_type = selection_type_t::nothing;
+		}
+	} else {
+		Unit *u = ref.get();
+
+		// Check color: you can only kill your own units
+		int player = Engine::get().current_player;
+		int color = u->get_attribute<attr_type::owner>().player.color;
+		if (player == color) {
+			this->remove_unit(u);
+			u->delete_unit();
+		}
 	}
 }
 
