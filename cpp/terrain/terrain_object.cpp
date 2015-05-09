@@ -34,16 +34,31 @@ TerrainObject::~TerrainObject() {
 }
 
 bool TerrainObject::is_floating() const {
+
+	// if parent is floating then all children also are
+	if (this->parent && this->parent->is_floating()) {
+		return true;
+	}
 	return this->state == object_state::floating;
 }
 
 bool TerrainObject::is_placed() const {
+
+	// if object has a parent it must be placed
+	if (this->parent && !this->parent->is_placed()) {
+		return false;
+	}
 	return this->state == object_state::placed ||
 	       this->state == object_state::placed_no_collision;
 }
 
 
 bool TerrainObject::check_collisions() const {
+
+	// if object has a parent it must be placed
+	if (this->parent && !this->parent->is_placed()) {
+		return false;
+	}
 	return this->state == object_state::placed;
 }
 
@@ -52,8 +67,8 @@ void TerrainObject::draw_outline() const {
 }
 
 bool TerrainObject::place(object_state init_state) {
-	if (this->state != object_state::floating) {
-		throw util::Error(MSG(err) << "Building must be floating");
+	if (this->state == object_state::removed) {
+		throw util::Error(MSG(err) << "Building cannot change state with no position");
 	}
 
 	// remove any other floating objects

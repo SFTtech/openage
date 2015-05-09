@@ -108,12 +108,15 @@ public:
 	bool is_floating() const;
 
 	/**
-	 * has the object been placed
+	 * has the object been placed which indicates the the object has a position and exists
+	 * on the map, floating buildings are not considered placed as they are only an indicator
+	 * for where something can begin construction
 	 */
 	bool is_placed() const;
 
 	/**
-	 * should this object be tested for collisions, arrows should not
+	 * should this object be tested for collisions, which decides whether another object is allowed
+	 * to overlap the location of this object. arrows and decaying objects will return false
 	 */
 	bool check_collisions() const;
 
@@ -134,7 +137,8 @@ public:
 	void draw_outline() const;
 
 	/**
-	 * upgrades a floating building to a placed state
+	 * changes the placement state of this object keeping the existing
+	 * position. this is useful for upgrading a floating building to a placed state
 	 */
 	bool place(object_state init_state);
 

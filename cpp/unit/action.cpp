@@ -700,7 +700,7 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 			else {
 
 				// failed to start construction
-				this->complete = 1.0;
+				this->complete = 1.0f;
 				return;
 			}
 		}
@@ -708,9 +708,13 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 		// increment building completion
 		build.completed += build_rate * time;
 		this->complete = build.completed;
+
+		if (this->complete >= 1.0f) {
+			target_location->place(build.completion_state);
+		}
 	}
 	else {
-		this->complete = 1.0;
+		this->complete = 1.0f;
 	}
 
 	// inc frame

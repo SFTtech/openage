@@ -133,6 +133,7 @@ private:
 	UnitType *trainable2;
 	UnitType *projectile;
 	int foundation_terrain;
+	bool enable_collisions;
 
 	TerrainObject *make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const;
 };
