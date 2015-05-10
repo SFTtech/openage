@@ -28,6 +28,7 @@ public:
 	std::vector<int> map;
 	coord::tile_delta size;
 protected:
+	int chunk_size;
 	uint64_t seed;
 };
 

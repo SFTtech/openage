@@ -21,6 +21,7 @@ public:
 	enum Engine {
 		DiamondSquare,
 		Mandelbrot,
+		Perlin,
 		Static,
 	};
 

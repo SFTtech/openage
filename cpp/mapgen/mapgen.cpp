@@ -6,6 +6,7 @@
 #include "diamondsquare/diamondsquare.h"
 #include "mandelbrot/mandelbrot.h"
 #include "static/static.h"
+#include "perlinnoise/perlin.h"
 #include "../log/log.h"
 
 namespace openage {
@@ -22,6 +23,9 @@ MapGen::MapGen(int chunks_per_side,int chunk_size, MapGen::Engine engine,uint64_
 			break;
 		case Engine::Static :
 			this->map = new mapgen::Static(chunks_per_side,chunk_size,seed);
+			break;
+		case Engine::Perlin :
+			this->map = new mapgen::Perlin(chunks_per_side,chunk_size,seed);
 			break;
 	}
 }
