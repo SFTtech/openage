@@ -97,6 +97,13 @@ public:
 	 */
 	TileContent *get_data_neigh(coord::tile pos);
 
+	/**
+	 * fill the terrain with given terrain_id values.
+	 * @returns whether the data filled on the terrain was cut because of
+	 * the terrains size limit.
+	 */
+	bool fill(const int *data, coord::tile_delta size);
+
 	int neighbor_id_by_pos(coord::tile pos);
 
 	size_t tile_position(coord::tile pos);
