@@ -15,8 +15,8 @@ namespace mapgen {
 Diamondsquare::Diamondsquare(int chunks_per_side, int chunk_size)
 	:
 	MapGenBase(chunks_per_side,chunk_size) {}
-	  
-int *Diamondsquare::generate() {
+
+int *Diamondsquare::get_map(int32_t x, int32_t y) {
 	Heightmap heightmap(this->size);
 	heightmap.generate();
 

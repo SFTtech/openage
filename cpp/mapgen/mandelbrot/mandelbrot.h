@@ -15,14 +15,14 @@ namespace mapgen {
 /* generates a map in shape of the Mandelbrot Set:
  * http://en.wikipedia.org/wiki/Mandelbrot_set
  */
-	
+
 class Mandelbrot : public MapGenBase {
 public:
-	
+
 	Mandelbrot(int chunks_per_size, int chunk_size);
 	~Mandelbrot();
 
-	int *generate();
+	int *get_map(int32_t x, int32_t y);
 private:
 	int mandelbrot(int x,int maxx, int y, int maxy);
 

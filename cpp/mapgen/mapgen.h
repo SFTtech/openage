@@ -33,6 +33,7 @@ public:
 	};
 
 	MapGen(int chunks_per_side,int chunk_size, MapGen::Engine enginge);
+	~MapGen();
 
 	int *getMap();
 	int *getMap(int32_t x, int32_t y);

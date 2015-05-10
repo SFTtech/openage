@@ -14,9 +14,9 @@ namespace mapgen {
 Static::Static(int chunks_per_side, int chunk_size)
 	:
 	MapGenBase(chunks_per_side,chunk_size) {}
-	  
-int *Static::generate() {
-  
+
+int *Static::get_map(int32_t x, int32_t y) {
+
 	for (int y = 0; y < this->size.se; y++) {
 		for (int x = 0; x < this->size.ne; x++) {
 			int index = this->size.ne * y + x;

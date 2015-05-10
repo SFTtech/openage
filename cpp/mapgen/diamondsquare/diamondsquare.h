@@ -12,14 +12,14 @@
 namespace openage {
 namespace mapgen {
 
-	
+
 class Diamondsquare : public MapGenBase {
 public:
-	
+
 	Diamondsquare(int chunks_per_size, int chunk_size);
 	~Diamondsquare();
 
-	int *generate();
+	int *get_map(int32_t x, int32_t y);
 
 };
 

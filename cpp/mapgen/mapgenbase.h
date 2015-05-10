@@ -17,14 +17,13 @@ namespace mapgen {
 
 class MapGenBase {
 public:
-	
+
 	MapGenBase(int chunks_per_size, int chunk_size);
 	~MapGenBase() {};
 
 	// this function is the only thing, which an engine needs to implement
-	virtual int *generate() = 0;
+	virtual int *get_map(int32_t x, int32_t y) = 0;
 	coord::tile_delta get_size() const;
-	std::vector<int> get_map();
 
 	std::vector<int> map;
 	coord::tile_delta size;

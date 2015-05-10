@@ -13,14 +13,14 @@ namespace openage {
 namespace mapgen {
 
 /* generates a map full of Dirt */
-	
+
 class Static : public MapGenBase {
 public:
-	
+
 	Static(int chunks_per_size, int chunk_size);
 	~Static();
 
-	int *generate();
+	int *get_map(int32_t x, int32_t y);
 
 };
 

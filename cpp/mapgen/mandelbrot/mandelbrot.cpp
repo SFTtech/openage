@@ -15,9 +15,9 @@ Mandelbrot::Mandelbrot(int chunks_per_side, int chunk_size)
 	:
 	MapGenBase(chunks_per_side,chunk_size) {}
 
-	
-int *Mandelbrot::generate() {
-  
+
+int *Mandelbrot::get_map(int32_t x, int32_t y) {
+
 	for (int y = 0; y < this->size.se; y++) {
 		for (int x = 0; x < this->size.ne; x++) {
 			int index = this->size.ne * y + x;
@@ -36,10 +36,10 @@ int Mandelbrot::mandelbrot(int x,int maxx, int y, int maxy) {
 	/* x.y Transformation to -2 .. 1 */
 	double cx = -2.0 + 3.0 * x/maxx;
 	double cy = -1.0 + 2.0 * y/maxy;
-	
+
 	double zx = 0.0, zy = 0.0;
 	double zx2 = 0.0, zy2 = 0.0;
-	
+
 	int iteration = 0;
 	int max_iteration = 999;
 

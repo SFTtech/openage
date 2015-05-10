@@ -26,9 +26,12 @@ MapGen::MapGen(int chunks_per_side,int chunk_size, MapGen::Engine engine) {
 	}
 }
 
+MapGen::~MapGen() {
+	delete(this->map);
+}
+
 int *MapGen::getMap(int32_t x, int32_t y) {
-	this->map->generate();
-	return this->map->map.data();
+	return this->map->get_map(x,y);
 }
 
 int *MapGen::getMap() {
