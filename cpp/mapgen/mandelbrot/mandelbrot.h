@@ -19,7 +19,7 @@ namespace mapgen {
 class Mandelbrot : public MapGenBase {
 public:
 
-	Mandelbrot(int chunks_per_size, int chunk_size);
+	Mandelbrot(int chunks_per_size, int chunk_size, uint64_t seed);
 	~Mandelbrot();
 
 	int *get_map(int32_t x, int32_t y);

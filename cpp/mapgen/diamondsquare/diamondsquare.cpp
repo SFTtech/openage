@@ -12,9 +12,9 @@ namespace openage {
 namespace mapgen {
 
 
-Diamondsquare::Diamondsquare(int chunks_per_side, int chunk_size)
+Diamondsquare::Diamondsquare(int chunks_per_side, int chunk_size, uint64_t seed)
 	:
-	MapGenBase(chunks_per_side,chunk_size) {}
+	MapGenBase(chunks_per_side,chunk_size, seed) {}
 
 int *Diamondsquare::get_map(int32_t x, int32_t y) {
 	Heightmap heightmap(this->size);

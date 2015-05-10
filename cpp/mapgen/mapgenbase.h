@@ -18,7 +18,7 @@ namespace mapgen {
 class MapGenBase {
 public:
 
-	MapGenBase(int chunks_per_size, int chunk_size);
+	MapGenBase(int chunks_per_size, int chunk_size, uint64_t seed);
 	~MapGenBase() {};
 
 	// this function is the only thing, which an engine needs to implement
@@ -27,6 +27,8 @@ public:
 
 	std::vector<int> map;
 	coord::tile_delta size;
+protected:
+	uint64_t seed;
 };
 
 } // namespace mapgen

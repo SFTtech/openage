@@ -11,9 +11,9 @@ namespace openage {
 namespace mapgen {
 
 
-Static::Static(int chunks_per_side, int chunk_size)
+Static::Static(int chunks_per_side, int chunk_size, uint64_t seed)
 	:
-	MapGenBase(chunks_per_side,chunk_size) {}
+	MapGenBase(chunks_per_side,chunk_size, seed) {}
 
 int *Static::get_map(int32_t x, int32_t y) {
 

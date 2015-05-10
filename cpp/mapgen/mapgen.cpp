@@ -12,16 +12,16 @@ namespace openage {
 namespace mapgen {
 
 
-MapGen::MapGen(int chunks_per_side,int chunk_size, MapGen::Engine engine) {
+MapGen::MapGen(int chunks_per_side,int chunk_size, MapGen::Engine engine,uint64_t seed) {
 	switch(engine) {
 		case Engine::Mandelbrot :
-			this->map = new mapgen::Mandelbrot(chunks_per_side,chunk_size);
+			this->map = new mapgen::Mandelbrot(chunks_per_side,chunk_size,seed);
 			break;
 		case Engine::DiamondSquare :
-			this->map = new mapgen::Diamondsquare(chunks_per_side,chunk_size);
+			this->map = new mapgen::Diamondsquare(chunks_per_side,chunk_size,seed);
 			break;
 		case Engine::Static :
-			this->map = new mapgen::Static(chunks_per_side,chunk_size);
+			this->map = new mapgen::Static(chunks_per_side,chunk_size,seed);
 			break;
 	}
 }

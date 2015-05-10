@@ -8,7 +8,7 @@ namespace openage {
 namespace mapgen {
 
 
-MapGenBase::MapGenBase(int chunks_per_side, int chunk_size)
+MapGenBase::MapGenBase(int chunks_per_side, int chunk_size, uint64_t seed)
 	:
 	map((chunks_per_side * chunk_size) * (chunks_per_side * chunk_size), 5),
 	size{chunks_per_side * chunk_size, chunks_per_side * chunk_size} {}
