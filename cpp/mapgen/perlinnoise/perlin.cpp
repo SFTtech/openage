@@ -31,10 +31,10 @@ int *Perlin::get_map(int32_t x, int32_t y)
 	noise::module::Perlin noise;
 	noise.SetSeed(this->seed);
 
-	/* set default parameter */
+	/* set parameters */
 	noise.SetFrequency(  this->frequency);
-	noise.SetLacunarity( this->lacunarity = 2.0);
-	noise.SetPersistence(this->persistence = 0.5);
+	noise.SetLacunarity( this->lacunarity);
+	noise.SetPersistence(this->persistence);
 	noise.SetOctaveCount( this->octavecount);
 
 	std::vector<int> mapint;
