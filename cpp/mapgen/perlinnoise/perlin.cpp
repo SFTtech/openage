@@ -20,6 +20,19 @@ Perlin::Perlin(int chunk_size, uint64_t seed)
 int *Perlin::get_map(int32_t x, int32_t y)
 {
 
+	/* terrain engine uses diffrent coordinate system
+	 * terrain chunk:
+	 *           ( 1,-1)
+	 *    ( 0,-1)       ( 1, 0)
+	 *(-1,-1)    ( 0, 0)    ( 1, 1)
+	 *    (-1, 0)       ( 0, 1)
+	 *           (-1, 1)
+	 * me:
+	 * (-1, 1)( 0, 1)( 1. 1)
+	 * (-1, 0)( 0, 0)( 1, 0)
+	 * (-1,-1)( 0,-1)( 1,-1)
+	 * so, we transform the system:
+	 */
 	int32_t t = x;
 	x = y;
 	y= t;
@@ -34,8 +47,7 @@ int *Perlin::get_map(int32_t x, int32_t y)
 	noise.SetPersistence(this->persistence);
 	noise.SetOctaveCount( this->octavecount);
 
-	std::vector<int> mapint;
-	mapint.resize(map->tilesCount());
+	//calculate all tiles
 	for(int32_t xlocal=0;xlocal<this->chunk_size;xlocal++) {
 	  for(int32_t ylocal=0;ylocal<this->chunk_size;ylocal++) {
 
@@ -66,3 +78,4 @@ int *Perlin::get_map(int32_t x, int32_t y)
 
 } // namespace mapgen
 } // namespace openage
+

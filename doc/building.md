@@ -48,6 +48,7 @@ Dependency list:
     CR    opusfile
       M   opus-tools
     C     gcc >=4.9 or clang >=3.4
+    CR    noise
 
       M   An installed version of any of the following (wine is your friend).
           Other versions _might_ work; setup disk support will be added soon:
@@ -60,7 +61,7 @@ Dependency list:
 ### Prerequisite steps for Ubuntu users (Ubuntu 14.10)
 
  - `sudo apt-get update`
- - `sudo apt-get install cmake libfreetype6-dev python3-dev libepoxy-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools python3-pil python3-numpy`
+ - `sudo apt-get install cmake libfreetype6-dev python3-dev libepoxy-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools python3-pil python3-numpy libnoise-dev`
 
 
 ### Prerequisite steps for Fedora users (Fedora 20, 21)

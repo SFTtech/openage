@@ -12,7 +12,6 @@ Heightmap::Heightmap(uint32_t size)
 }
 
 void Heightmap::scale(float value) {
-	#pragma omp parallel for
 	uint32_t x;
 	for(x=0;x<this->x;x++) {
 	    for(uint32_t y=0;y<this->y;y++) {
@@ -22,7 +21,6 @@ void Heightmap::scale(float value) {
 }
 
 void Heightmap::add(float value) {
- 	#pragma omp parallel for
 	uint32_t x;
 	for(x=0;x<this->x;x++) {
 	    for(uint32_t y=0;y<this->y;y++) {
