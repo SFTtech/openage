@@ -22,16 +22,21 @@ Perlin::Perlin(int chunks_per_side,
 
 int *Perlin::get_map(int32_t x, int32_t y)
 {
+
+	int32_t t = x;
+	x = y;
+	y= t;
+
 	Heightmap *map = new Heightmap(this->chunk_size);
-  	noise::module::Perlin noise;
+	noise::module::Perlin noise;
 	noise.SetSeed(this->seed);
 
 	/* set default parameter */
 	noise.SetFrequency(  this->frequency);
 	noise.SetLacunarity( this->lacunarity = 2.0);
 	noise.SetPersistence(this->persistence = 0.5);
-
 	noise.SetOctaveCount( this->octavecount);
+
 	std::vector<int> mapint;
 	mapint.resize(map->tilesCount());
 	for(int32_t xlocal=0;xlocal<this->chunk_size;xlocal++) {
@@ -44,12 +49,13 @@ int *Perlin::get_map(int32_t x, int32_t y)
 	    int64_t y64 = y * (int64_t)this->chunk_size + ylocal;
 	    double  yd = (double)y64/ (double)this->scaleParameter;
 
-	    map->tile(xlocal,ylocal) = noise.GetValue(xd,yd,0.6);
+	    // chunks uses other Cartesian coordinate system, therfore inverse y
+	    map->tile(xlocal,ylocal) = noise.GetValue(xd,this->chunk_size-yd-1,0.6);
 
-	    if( map->tile(xlocal,ylocal) < -0.5 ) {
-		  this->map[this->chunk_size*ylocal+xlocal] = mapgen::MapGen::Terrain::Water_Light;
-	    } else if ( map->tile(xlocal,ylocal) < -1.0 ) {
-		    this->map[this->chunk_size*ylocal+xlocal] = mapgen::MapGen::Terrain::Water_Dark;
+	    if( map->tile(xlocal,ylocal) < -0.4 ) {
+		  this->map[this->chunk_size*ylocal+xlocal] = mapgen::MapGen::Terrain::Water_Dark;
+	    } else if ( map->tile(xlocal,ylocal) < 0.0 ) {
+		    this->map[this->chunk_size*ylocal+xlocal] = mapgen::MapGen::Terrain::Water_Light;
 	    } else {
 	      this->map[this->chunk_size*ylocal+xlocal] = mapgen::MapGen::Terrain::Grass_1;
 	    }

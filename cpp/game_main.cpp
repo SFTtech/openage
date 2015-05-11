@@ -367,7 +367,8 @@ bool GameMain::on_input(SDL_Event *e) {
 				" SE " << std::setw(8) << mousepos_tile.se);
 
 			TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
-			chunk->fill(map->getMap(),map->get_size());
+			std::cout << "my chunk index " << mousepos_tile.to_chunk().ne << " " << mousepos_tile.to_chunk().se << "\n";
+			chunk->fill(map->getMap(mousepos_tile.to_chunk().ne, mousepos_tile.to_chunk().se),map->get_size());
 			chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and !construct_mode) {
