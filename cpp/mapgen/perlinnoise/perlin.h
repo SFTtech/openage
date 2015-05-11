@@ -4,7 +4,7 @@
 #define OPENAGE_ENGINE_PERLIN_H_
 
 #include <stdint.h>
-#include <libnoise/noise.h>
+#include "libnoise/perlin.h"
 
 #include "heightmap.h"
 #include "../mapgen.h"
