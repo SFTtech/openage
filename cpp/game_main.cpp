@@ -137,7 +137,7 @@ GameMain::GameMain(Engine *engine)
 
 	// load textures and stuff
 	gaben      = new Texture{data_dir->join("gaben.png")};
-  this->minimap = new Minimap();
+  this->minimap = new Minimap(this->engine, this->terrain, 200, coord::camhud{0, 0});
 
 	auto string_resources = util::read_csv_file<gamedata::string_resource>(asset_dir.join("string_resources.docx"));
 	auto terrain_types  = util::read_csv_file<gamedata::terrain_type>(asset_dir.join("gamedata/gamedata-empiresdat/0000-terrains.docx"));

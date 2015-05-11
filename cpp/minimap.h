@@ -5,18 +5,24 @@
 
 #include "epoxy/gl.h"
 
-#include "terrain/terrain.h"
 #include "shader/program.h"
-#include "shader/shader.h"
+#include "terrain/terrain.h"
+#include "coord/camhud.h"
 
 namespace openage {
 namespace minimap_shader {
 extern shader::Program *program;
-}
+} // namespace minimap_shader
 
 class Minimap {
 public:
-  Minimap();
+  openage::Engine *engine;  
+  std::shared_ptr<Terrain> terrain;
+  int size;
+  coord::camhud hudpos;
+  
+  Minimap(openage::Engine *engine, std::shared_ptr<Terrain> terrain, int size,
+      coord::camhud hudpos);
 
   // Draw a simple minimap
   void draw();
@@ -25,6 +31,6 @@ private:
   GLuint vertbuf;
 };
 
-}
+} // namespace openage
 
 #endif
