@@ -8,11 +8,11 @@ namespace openage {
 namespace mapgen {
 
 
-MapGenBase::MapGenBase(int chunks_per_side, int chunk_size, uint64_t seed)
+MapGenBase::MapGenBase(int chunk_size, uint64_t seed)
 	:
-	map((chunks_per_side * chunk_size) * (chunks_per_side * chunk_size), 5),
+	map(chunk_size * chunk_size, 5),
 	chunk_size(chunk_size),
-	size{chunks_per_side * chunk_size, chunks_per_side * chunk_size} {}
+	size{chunk_size,chunk_size} {}
 
 coord::tile_delta MapGenBase::get_size() const {
 	return this->size;

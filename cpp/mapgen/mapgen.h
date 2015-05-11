@@ -33,7 +33,7 @@ public:
 		Water_Dark = 14,
 	};
 
-	MapGen(int chunks_per_side,int chunk_size, MapGen::Engine enginge,uint64_t seed);
+	MapGen(int chunk_size, MapGen::Engine enginge,uint64_t seed);
 	~MapGen();
 
 	int *getMap();

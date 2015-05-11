@@ -11,9 +11,9 @@ namespace openage {
 namespace mapgen {
 
 
-Mandelbrot::Mandelbrot(int chunks_per_side, int chunk_size, uint64_t seed)
+Mandelbrot::Mandelbrot(int chunk_size, uint64_t seed)
 	:
-	MapGenBase(chunks_per_side,chunk_size, seed) {}
+	MapGenBase(chunk_size, seed) {}
 
 
 int *Mandelbrot::get_map(int32_t x, int32_t y) {

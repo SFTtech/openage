@@ -17,10 +17,7 @@ class Perlin : public MapGenBase {
 
 public:
 
-	Perlin(int chunks_per_size,
-		     int chunk_size,
-		     uint64_t seed
-		    );
+	Perlin(int chunk_size, uint64_t seed);
 
 	int *get_map(int32_t x, int32_t y);
 

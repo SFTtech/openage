@@ -16,7 +16,7 @@ namespace mapgen {
 class Diamondsquare : public MapGenBase {
 public:
 
-	Diamondsquare(int chunks_per_size, int chunk_size, uint64_t seed);
+	Diamondsquare(int chunk_size, uint64_t seed);
 	~Diamondsquare();
 
 	int *get_map(int32_t x, int32_t y);

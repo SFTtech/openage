@@ -5,12 +5,9 @@
 namespace openage {
 namespace mapgen {
 
-Perlin::Perlin(int chunks_per_side,
-			   int chunk_size,
-			   uint64_t seed
-			  )
+Perlin::Perlin(int chunk_size, uint64_t seed)
 	    :
-	    MapGenBase(chunks_per_side, chunk_size, seed) {
+	    MapGenBase(chunk_size, seed) {
 
 	    /* set default parameters */
 	    this->frequency = 1.0;
@@ -52,6 +49,7 @@ int *Perlin::get_map(int32_t x, int32_t y)
 	    // chunks uses other Cartesian coordinate system, therfore inverse y
 	    map->tile(xlocal,ylocal) = noise.GetValue(xd,this->chunk_size-yd-1,0.6);
 
+	    // Heighmap to Terrain IDs
 	    if( map->tile(xlocal,ylocal) < -0.4 ) {
 		  this->map[this->chunk_size*ylocal+xlocal] = mapgen::MapGen::Terrain::Water_Dark;
 	    } else if ( map->tile(xlocal,ylocal) < 0.0 ) {
