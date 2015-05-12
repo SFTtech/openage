@@ -137,7 +137,6 @@ GameMain::GameMain(Engine *engine)
 
 	// load textures and stuff
 	gaben      = new Texture{data_dir->join("gaben.png")};
-  this->minimap = new Minimap(this->engine, this->terrain, 200, coord::camhud{0, 0});
 
 	auto string_resources = util::read_csv_file<gamedata::string_resource>(asset_dir.join("string_resources.docx"));
 	auto terrain_types  = util::read_csv_file<gamedata::terrain_type>(asset_dir.join("gamedata/gamedata-empiresdat/0000-terrains.docx"));
@@ -147,6 +146,8 @@ GameMain::GameMain(Engine *engine)
 	this->terrain = std::make_shared<Terrain>(assetmanager, terrain_types, blending_modes, true);
 	this->terrain->fill(terrain_data, terrain_data_size);
 	this->placed_units.set_terrain(this->terrain);
+
+  this->minimap = new Minimap(this->engine, this->terrain, coord::camhud_delta{200, 100}, coord::camhud{0, 0});
 
 	// players
 	unsigned int number_of_players = 8;

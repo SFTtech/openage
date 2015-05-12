@@ -13,23 +13,31 @@ namespace openage {
 namespace minimap_shader {
 extern shader::Program *program;
 } // namespace minimap_shader
+namespace texture_shader {
+extern shader::Program *program;
+}
+
 
 class Minimap {
 public:
   openage::Engine *engine;  
   std::shared_ptr<Terrain> terrain;
-  int size;
+  coord::camhud_delta size;
   coord::camhud hudpos;
   
-  Minimap(openage::Engine *engine, std::shared_ptr<Terrain> terrain, int size,
-      coord::camhud hudpos);
+  Minimap(openage::Engine *engine, std::shared_ptr<Terrain> terrain, coord::camhud_delta size, coord::camhud hudpos);
 
   // Draw a simple minimap
   void draw();
+  void generate_background();
+
+  // Draw 
 
 private:
   GLuint vertbuf;
+  GLuint tertex; // Minimap terrain as texture
 };
+
 
 } // namespace openage
 
