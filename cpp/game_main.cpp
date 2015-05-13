@@ -147,7 +147,7 @@ GameMain::GameMain(Engine *engine)
 	this->terrain->fill(terrain_data, terrain_data_size);
 	this->placed_units.set_terrain(this->terrain);
 
-  this->minimap = new Minimap(this->engine, this->terrain, coord::camhud_delta{200, 100}, coord::camhud{0, 0});
+  this->minimap = new Minimap(this->engine, this->terrain, coord::camhud_delta{150, 150}, coord::camhud{0, 0});
 
 	// players
 	unsigned int number_of_players = 8;
@@ -560,7 +560,7 @@ bool GameMain::on_draw() {
 	Engine &engine = Engine::get();
 
 	// draw gaben, our great and holy protector, bringer of the half-life 3.
-	gaben->draw(coord::camgame{0, 0});
+	/* gaben->draw(coord::camgame{0, 0}); */
 
 	// draw terrain
 	terrain->draw(&engine);

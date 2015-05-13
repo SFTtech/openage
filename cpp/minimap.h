@@ -30,12 +30,15 @@ public:
   // Draw a simple minimap
   void draw();
   void generate_background();
+  coord::camhud_delta tile_to_minimap_position(coord::tile tile_pos, int ppmt_x, int ppmt_y);
 
   // Draw 
 
 private:
   GLuint vertbuf;
   GLuint tertex; // Minimap terrain as texture
+  coord::chunk ne_least, ne_most, se_least, se_most;
+  int resolution;
 };
 
 
