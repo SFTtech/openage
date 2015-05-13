@@ -14,6 +14,12 @@ namespace mapgen {
 
 
 MapGen::MapGen(int chunk_size, MapGen::Engine engine,uint64_t seed) {
+	log::log(MSG(dbg) <<
+		"new MapGen:"
+		" chunk size=" << chunk_size <<
+		", seed=" << seed <<
+		", engine id=" << engine);
+	
 	switch(engine) {
 		case Engine::Mandelbrot :
 			this->map = new mapgen::Mandelbrot(chunk_size,seed);
