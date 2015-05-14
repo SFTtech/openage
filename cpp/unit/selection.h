@@ -56,9 +56,9 @@ public:
 	void kill_unit();
 
 	/**
-	 * checks whether there are any villagers in the selection
+	 * checks whether there are any builders in the selection
 	 */
-	bool contains_villagers();
+	bool contains_builders();
 
 	/**
 	 * point unit selection

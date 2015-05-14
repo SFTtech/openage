@@ -174,18 +174,18 @@ void UnitSelection::kill_unit() {
 		Unit *u = ref.get();
 
 		// Check color: you can only kill your own units
-		int player = Engine::get().current_player;
-		int color = u->get_attribute<attr_type::owner>().player.color;
-		if (player == color) {
+		if (u->is_own_unit()) {
 			this->remove_unit(u);
 			u->delete_unit();
 		}
 	}
 }
 
-bool UnitSelection::contains_villagers() {
+bool UnitSelection::contains_builders() {
 	for (auto &it : units) {
-		if (it.second.is_valid() && it.second.get()->get_ability(ability_type::build)) {
+		if (it.second.is_valid() &&
+		    it.second.get()->get_ability(ability_type::build) &&
+		    it.second.get()->is_own_unit()) {
 			return true;
 		}
 	}
@@ -239,7 +239,7 @@ void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::cam
 
 void UnitSelection::all_invoke(Command &cmd) {
 	for (auto u : this->units) {
-		if (u.second.is_valid()) {
+		if (u.second.is_valid() && u.second.get()->is_own_unit()) {
 
 			// allow unit to find best use of the command
 			u.second.get()->invoke(cmd, true);
@@ -286,9 +286,7 @@ selection_type_t UnitSelection::get_unit_selection_type(Unit *u) {
 	bool is_building = u->has_attribute(attr_type::building);
 
 	// Check color
-	int player = Engine::get().current_player;
-	int color = u->get_attribute<attr_type::owner>().player.color;
-	if (color == player) {
+	if (u->is_own_unit()) {
 		return is_building ? selection_type_t::own_buildings : selection_type_t::own_units;
 	} else {
 		return is_building ? selection_type_t::enemy_building : selection_type_t::enemy_unit;

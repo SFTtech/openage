@@ -46,6 +46,12 @@ bool Unit::accept_commands() const {
 	return (this->has_action() && this->top()->allow_control());
 }
 
+bool Unit::is_own_unit() {
+	int player = Engine::get().current_player;
+	int color = this->get_attribute<attr_type::owner>().player.color;
+	return player == color;
+}
+
 UnitAction *Unit::top() const {
 	if (this->action_stack.empty()) {
 		throw util::Error{MSG(err) << "Unit stack empty - no top action exists"};

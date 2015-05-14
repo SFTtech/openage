@@ -321,7 +321,7 @@ GameMain::GameMain(Engine *engine)
 	// TODO place this into separate building menus instead of global hotkeys
 	auto bind_building_key = [this](keybinds::action_t action, int building, int military_building) {
 		this->keybind_context.bind(action, [this, building, military_building]() {
-			if (this->selection.contains_villagers()) {
+			if (this->selection.contains_builders()) {
 				this->building_placement = true;
 				if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
 					this->editor_current_building = military_building;
@@ -335,6 +335,7 @@ GameMain::GameMain(Engine *engine)
 	bind_building_key(keybinds::action_t::BUILDING_2, 574, 558); // Mill, archery range
 	bind_building_key(keybinds::action_t::BUILDING_3, 616, 581); // Mining camp, stable
 	bind_building_key(keybinds::action_t::BUILDING_4, 611, 580); // Lumber camp, siege workshop
+	bind_building_key(keybinds::action_t::BUILDING_TOWN_CENTER, 568, 568); // Town center
 
 	// Switching between players with the 1-8 keys
 	auto bind_player_switch = [this](keybinds::action_t action, int player) {
@@ -479,8 +480,8 @@ bool GameMain::on_input(SDL_Event *e) {
 					} else if ( this->datamanager.producer_count() > 0 ) {
 						// try creating a unit
 						log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
-						UnitType &producer = *this->datamanager.get_type_index(this->editor_current_building);
-						this->placed_units.new_unit(producer, this->players[engine.current_player - 1], mousepos_tile.to_phys2().to_phys3());
+						UnitType &type = *this->datamanager.get_type_index(this->editor_current_building);
+						this->placed_units.new_unit(type, this->players[engine.current_player - 1], mousepos_tile.to_phys2().to_phys3());
 					}
 				} else {
 					// right click can cancel building placement
