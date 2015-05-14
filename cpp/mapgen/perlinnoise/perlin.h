@@ -1,7 +1,7 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_ENGINE_PERLIN_H_
-#define OPENAGE_ENGINE_PERLIN_H_
+#ifndef OPENAGE_MAPGEN_PERLINNOISE_PERLIN_H_
+#define OPENAGE_MAPGEN_PERLINNOISE_PERLIN_H_
 
 #include <stdint.h>
 #include "libnoise/perlin.h"

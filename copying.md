@@ -135,6 +135,18 @@ cmake modules ([3-clause BSD license](/legal/BSD-3-clause))
  - `buildsystem/modules/FindGPerfTools.cmake` (taken from [VAST](https://github.com/mavam/vast))
  - `buildsystem/modules/FindOpusfile.cmake` (taken from [Unvanquished](https://github.com/Unvanquished/Unvanquished))
 
+From [libnoise](http://libnoise.sourceforge.net/) ([GPL 2.1](/legal/GPL 2.1 or later))
+ - `cpp/mapgen/perlinnoise/libnoise/basictypes.h`
+ - `cpp/mapgen/perlinnoise/libnoise/exception.h`
+ - `cpp/mapgen/perlinnoise/libnoise/interp.h`
+ - `cpp/mapgen/perlinnoise/libnoise/modulebase.cpp`
+ - `cpp/mapgen/perlinnoise/libnoise/modulebase.h`
+ - `cpp/mapgen/perlinnoise/libnoise/noisegen.cpp`
+ - `cpp/mapgen/perlinnoise/libnoise/noisegen.h`
+ - `cpp/mapgen/perlinnoise/libnoise/perlin.cpp`
+ - `cpp/mapgen/perlinnoise/libnoise/perlin.h`
+ - `cpp/mapgen/perlinnoise/libnoise/vectortable.h`
+
 Notes about this file:
 
 I (mic_e) am not a lawyer. This is an open-source project, we're doing this for

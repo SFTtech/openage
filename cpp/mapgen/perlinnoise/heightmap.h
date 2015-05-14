@@ -1,7 +1,7 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef _HEIGHTMAP_H_
-#define _HEIGHTMAP_H_
+#ifndef OPENAGE_MAPGEN_PERLINNOISE_HEIGHTMAP_H_
+#define OPENAGE_MAPGEN_PERLINNOISE_HEIGHTMAP_H_
 
 #include <stdint.h>
 #include <vector>

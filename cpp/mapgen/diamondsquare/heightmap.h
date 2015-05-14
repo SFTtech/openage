@@ -1,7 +1,7 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_MAPGEN_HEIGHTMAP_H_
-#define OPENAGE_MAPGEN_HEIGHTMAP_H_
+#ifndef OPENAGE_MAPGEN_DIAMONDSQUARE_HEIGHTMAP_H_
+#define OPENAGE_MAPGEN_DIAMONDSQUARE_HEIGHTMAP_H_
 
 #include <vector>
 

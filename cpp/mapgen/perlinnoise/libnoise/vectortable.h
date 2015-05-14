@@ -1,17 +1,15 @@
-// vectortable.h
-//
-// Written by Jason Bevins.  Actually it's the output of a program written
-// by me.  I'm not going to copyright a bunch of random numbers (although
-// you could probably do so in the States, the way things are going down
-// there :-)
-//
-// This file is in the public domain.
-//
+// This file was taken from <http://libnoise.sourceforge.net/>,
+// Copyright 2004-2005 libnoise Authors.
+// It's licensed under the terms of the GPL 2.1 or later license.
+// Modifications Copyright 2015-2015 the openage authors.
+// See copying.md for further legal info.
 
-#ifndef NOISE_VECTORTABLE_H
-#define NOISE_VECTORTABLE_H
+#ifndef OPENAGE_MAPGEN_PERLINNOISE_LIBNOISE_VECTORTABLE_H_
+#define OPENAGE_MAPGEN_PERLINNOISE_LIBNOISE_VECTORTABLE_H_
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
+
+
 
 namespace noise
 {

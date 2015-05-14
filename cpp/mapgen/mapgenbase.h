@@ -1,7 +1,7 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_MAPGEN_MAPGENBASE_ENGINE_H_
-#define OPENAGE_MAPGEN_MAPGENBASE_ENGINE_H_
+#ifndef OPENAGE_MAPGEN_MAPGENBASE_H_
+#define OPENAGE_MAPGEN_MAPGENBASE_H_
 
 #include <stddef.h>
 #include <vector>
