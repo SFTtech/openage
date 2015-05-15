@@ -116,37 +116,37 @@ void UnitSelection::toggle_unit(Unit *u, bool append) {
 }
 
 void UnitSelection::add_unit(Unit *u, bool append) {
-	// Dead units aren't selectable
-	if (u->has_attribute(attr_type::hitpoints) && u->get_attribute<attr_type::hitpoints>().current <= 0) {
-		return;
+	// Only select resources and units with hitpoints > 0
+	if (u->has_attribute(attr_type::resource) ||
+	   (u->has_attribute(attr_type::hitpoints) && u->get_attribute<attr_type::hitpoints>().current > 0)) {
+
+		selection_type_t unit_type = get_unit_selection_type(u);
+		int unit_type_i = static_cast<int>(unit_type);
+		int selection_type_i = static_cast<int>(this->selection_type);
+
+		if (unit_type_i > selection_type_i) {
+			// Don't select this unit as it has too low priority
+			return;
+		}
+
+		if (unit_type_i < selection_type_i) {
+			// Upgrade selection to a higher priority selection
+			this->units.clear();
+			this->selection_type = unit_type;
+		}
+
+		// Can't select multiple enemies at once
+		if (not (unit_type == selection_type_t::own_units ||
+		        (unit_type == selection_type_t::own_buildings && append))) {
+
+			this->clear();
+			this->selection_type = unit_type; // Clear resets selection_type
+		}
+
+		// Finally, add the unit to the selection
+		u->selected = true;
+		this->units[u->id] = u->get_ref();
 	}
-
-	selection_type_t unit_type = get_unit_selection_type(u);
-	int unit_type_i = static_cast<int>(unit_type);
-	int selection_type_i = static_cast<int>(this->selection_type);
-
-	if (unit_type_i > selection_type_i) {
-		// Don't select this unit as it has too low priority
-		return;
-	}
-
-	if (unit_type_i < selection_type_i) {
-		// Upgrade selection to a higher priority selection
-		this->units.clear();
-		this->selection_type = unit_type;
-	}
-
-	// Can't select multiple enemies at once
-	if (not (unit_type == selection_type_t::own_units ||
-	        (unit_type == selection_type_t::own_buildings && append))) {
-
-		this->clear();
-		this->selection_type = unit_type; // Clear resets selection_type
-	}
-
-	// Finally, add the unit to the selection
-	u->selected = true;
-	this->units[u->id] = u->get_ref();
 }
 
 void UnitSelection::remove_unit(Unit *u) {
