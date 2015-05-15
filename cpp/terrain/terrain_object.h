@@ -185,8 +185,22 @@ public:
 		return annex_ptr.get();
 	}
 
+	/**
+	 * Returns the parent terrain object,
+	 * if null the object has no parent which is
+	 * the case for most objects
+	 *
+	 * objects with a parent are owned by that object
+	 * and to be placed on the map the parent must also be placed
+	 */
 	const TerrainObject *get_parent() const;
 
+	/**
+	 * Returns a list of child objects, this is the inverse of the
+	 * get_parent() function
+	 *
+	 * TODO: this does not perform optimally and is likely to change
+	 */
 	std::vector<TerrainObject *> get_children() const;
 
 	/*

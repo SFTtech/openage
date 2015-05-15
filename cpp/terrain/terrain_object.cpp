@@ -214,6 +214,11 @@ const TerrainObject *TerrainObject::get_parent() const {
 }
 
 std::vector<TerrainObject *> TerrainObject::get_children() const {
+
+	// TODO: a better performing way of doing this
+	// for example accept a lambda to use for each element
+	// or maintain a duplicate class field for raw pointers
+
 	std::vector<TerrainObject *> result;
 	for (auto &obj: this->children) {
 		result.push_back(obj.get());

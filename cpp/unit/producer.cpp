@@ -13,6 +13,14 @@
 #include "unit.h"
 #include "unit_texture.h"
 
+/**
+ * Many values in this file are hardcoded, due to limited understanding of how the original
+ * game files work -- as more becomes known these will be removed.
+ *
+ * It is likely the conversion from gamedata to openage units will be done by the nyan
+ * system in future
+ */
+
 namespace openage {
 
 std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &restriction) {
@@ -445,7 +453,7 @@ BuldingProducer::BuldingProducer(DataManager &dm, const gamedata::unit_building 
 	trainable2{dm.get_type(293)}, // 293 = f villager
 	projectile{dm.get_type(this->unit_data.projectile_unit_id)},
 	foundation_terrain{ud->terrain_id},
-	enable_collisions{this->unit_data.id0 == 109} {
+	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
 
 	// find suitable sounds
 	int creation_sound = this->unit_data.sound_creation0;
@@ -509,7 +517,7 @@ void BuldingProducer::initialise(Unit *unit, Player &player) {
 	auto build_attr = new Attribute<attr_type::building>();
 	build_attr->foundation_terrain = this->foundation_terrain;
 	build_attr->pp = trainable2;
-	build_attr->completion_state = this->enable_collisions? object_state::placed_no_collision : object_state::placed;
+	build_attr->completion_state = this->enable_collisions? object_state::placed : object_state::placed_no_collision;
 	unit->add_attribute(build_attr);
 
 	// garrison and hp for all buildings
@@ -559,7 +567,7 @@ TerrainObject *BuldingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain,
 	};
 
 	// drawing function
-	bool draw_outline = this->enable_collisions;
+	bool draw_outline = !this->enable_collisions;
 	u->location->draw = [u, obj_ptr, draw_outline]() {
 		if (u->selected && draw_outline) {
 			obj_ptr->draw_outline();
