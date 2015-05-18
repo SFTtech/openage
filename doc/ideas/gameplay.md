@@ -34,15 +34,15 @@ Infinite maps
 -------------
 
 Maps with infinite size! (Your PC is the limit!)
-Spherical/Toroidal/Cylindrical surfaces would be possible, too
+Spherical/Toroidal/Cylindrical surfaces would be possible, too.
 
 
 MMO games
 ---------
 
-Play on one single map with 9001 players
+Play on one single map with 9001 players.
 
-Massively slow down the game speed, and you get a "browser game"-like experience
+Massively slow down the game speed, and you get a "browser game"-like experience.
 
 
 Research
@@ -62,8 +62,8 @@ they start producing waves zombie hordes, fast zombies, tanks, petard zombies;
 the zombie AI tries to get to your villagers (magic pathfinding);
 killed units turn into zombies as well. spawners can be destroyed,
 but the closer or the more powerful you get, the more zombies will spawn.
-to win, survive for a specified period of time, build a wonder,
-or destroy the spawners (or something...)
+To win, survive for a specified period of time, build a wonder,
+or destroy the spawners (or something...).
 
 
 Better movement
@@ -107,7 +107,7 @@ Team interaction
 ----------------
 
  - Better team interaction
- - Work/ressource sharing
+ - Work/resource sharing
  - Unit sharing (transport boats)
 
 
@@ -143,7 +143,7 @@ More intelligent units
    - Don't lock on unreachable current target
    - Attack the blocking units first
 
-Infinite Ressources
+Infinite Resources
 -------------------
 
  - Forest regeneration
