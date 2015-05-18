@@ -103,8 +103,9 @@ bool TerrainObject::place(object_state init_state) {
 			}
 		}
 	}
+
+	// all obstructing objects get deleted
 	for (auto remove_obj : to_remove) {
-		this->unit.log(MSG(dbg) << "Removing...");
 		remove_obj->unit.location = nullptr;
 	}
 
