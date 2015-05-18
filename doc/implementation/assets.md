@@ -43,7 +43,7 @@ Data assets
 - Game content files
    Describe the game logic
      - techtree
-     - civilsations
+     - civilizations
      - ages
      - units
      - etc, you get the point

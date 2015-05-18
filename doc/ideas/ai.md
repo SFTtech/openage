@@ -3,7 +3,7 @@ Improvements for the AI's gameplay
 Villagers
 ---------
 
- - Don't collect ressources in hazardous areas / send the military to clear them out
+ - Don't collect resources in hazardous areas / send the military to clear them out
  - Send military task forces to guard strategic resources / tower them
  - Don't build in hazardous areas
  - Build more gates in walls to prevent lock-ins

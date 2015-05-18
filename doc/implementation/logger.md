@@ -49,7 +49,7 @@ Each time a message is passed to `LogSource::log()`, it is forwarded to each `Lo
 Popular `LogSink` classes include¹:
 
 | Sink         | What does it do to my messages?                             |
-------------------------------------------------------------------------------
+|--------------|-------------------------------------------------------------|
 | StdOutSink   | Prints them to stdout.                                      |
 | FileSink     | Writes them and all their metadata to a file.               |
 | InGameSink   | Displays them next to the in-game objects they refer to.    |
