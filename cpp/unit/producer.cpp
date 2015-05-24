@@ -13,7 +13,7 @@
 #include "unit.h"
 #include "unit_texture.h"
 
-/**
+/** @file
  * Many values in this file are hardcoded, due to limited understanding of how the original
  * game files work -- as more becomes known these will be removed.
  *
