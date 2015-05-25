@@ -61,14 +61,14 @@ class Terrain(Exportable):
         (READ_EXPORT, "slp_id",              "int32_t"),
         (READ_UNKNOWN, None,                 "int32_t"),
         (READ_EXPORT, "sound_id",            "int32_t"),
-        (READ_EXPORT, "blend_priority",      "int32_t"),    # see doc/media/blendomatic for blending stuff
+        (READ_EXPORT, "blend_priority",      "int32_t"),     # see doc/media/blendomatic.md for blending stuff
         (READ_EXPORT, "blend_mode",          "int32_t"),
-        (READ, "color",                      "uint8_t[3]"),
+        (READ, "color",                      "uint8_t[3]"),  # color of this terrain tile, mainly used in the minimap.
         (READ_UNKNOWN, None,                 "uint8_t[5]"),
         (READ_UNKNOWN, None,                 "float"),
         (READ_UNKNOWN, None,                 "int8_t[18]"),
-        (READ, "frame_count",                "int16_t"),
-        (READ, "angle_count",                "int16_t"),
+        (READ_EXPORT, "frame_count",         "int16_t"),
+        (READ_EXPORT, "angle_count",         "int16_t"),
         (READ_EXPORT, "terrain_id",          "int16_t"),
         (READ, "elevation_graphic",          "int16_t[54]"),
         (READ, "terrain_replacement_id",     "int16_t"),
