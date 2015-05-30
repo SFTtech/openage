@@ -9,6 +9,7 @@
 #include <thread>
 #include <sstream>
 #include <string>
+#include <algorithm>
 
 #include "../util/strings.h"
 
@@ -103,9 +104,40 @@ void file_log_sink () {
 	remove(filelog_name);
 }
 
+/**
+ * Tests that the FileSink doesn't write any
+ * message into the the filelog because it
+ * has a too low log level.
+ */
+void empty_file_log_sink () {
+	const char *filelog_name = "/tmp/openage-log-test";
+	TestLogSource logger;
+	FileSink filelog(filelog_name, true);
+
+	filelog.loglevel = log::level::crit;
+
+	// filelog should ignore all these Messages
+	logger.log(MSG(dbg) << "This message should not appear in openage-log-test");
+	logger.log(MSG(info) << "This message should not appear in openage-log-test");
+	logger.log(MSG(warn) << "This message should not appear in openage-log-test");
+	logger.log(MSG(err) << "This message should not appear in openage-log-test");
+
+	std::ifstream infile(filelog_name); 
+	int lines = std::count(std::istreambuf_iterator<char>(infile), std::istreambuf_iterator<char>(), '\n');
+
+	if (lines != 0) {
+		remove(filelog_name);
+		log::log(MSG(err) << "empty_file_log_sink failed");
+		throw "failed log tests";
+	}
+
+	remove(filelog_name);
+}
+
 void test() {
 	std_out_log_sink();
 	file_log_sink();
+	empty_file_log_sink();
 }
 
 }}} // openage::log::tests
