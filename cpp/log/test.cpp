@@ -7,6 +7,8 @@
 #include <iostream>
 #include <iomanip>
 #include <thread>
+#include <sstream>
+#include <string>
 
 #include "../util/strings.h"
 
@@ -72,8 +74,9 @@ void std_out_log_sink () {
  * than level::err will be printed in that file.
  */
 void file_log_sink () {
+	const char *filelog_name = "/tmp/openage-log-test";
 	TestLogSource logger;
-	FileSink filelog("/tmp/openage-log-test", true);
+	FileSink filelog(filelog_name, true);
 
 	filelog.loglevel = log::level::err;
 
@@ -85,6 +88,19 @@ void file_log_sink () {
 	// filelog should write these Messages
 	logger.log(MSG(err) << "This message should appear in openage-log-test");
 	logger.log(MSG(crit) << "This message should appear in openage-log-test");
+
+	std::string line;
+	std::ifstream infile(filelog_name);
+
+	while (std::getline(infile, line)) {
+		if ((line.find("ERR") == std::string::npos) && (line.find("CRIT") == std::string::npos)) {
+			remove(filelog_name);
+			log::log(MSG(err) << "file_log_sink failed");
+			throw "failed log tests";
+		}
+	}
+
+	remove(filelog_name);
 }
 
 void test() {
