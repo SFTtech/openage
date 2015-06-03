@@ -76,16 +76,10 @@ int std_out_log_sink () {
  * than level::err will be printed in that file.
  */
 int file_log_sink () {
-	char filelog_name[20];
-	char buffer[256];
-	int filedes = -1, result = 0;
+	char filelog_name[L_tmpnam];
+	int result = 0;
 
-	memset(filelog_name, 0, sizeof(filelog_name));
-	memset(buffer, 0, sizeof(buffer));
-
-	strncpy(filelog_name, "/tmp/log-test-XXXXXX", 20);
-
-	filedes = mkstemp(filelog_name);
+	tmpnam(filelog_name);
 
 	TestLogSource logger;
 	FileSink filelog(filelog_name, false);
@@ -121,16 +115,10 @@ int file_log_sink () {
  * has a too low log level.
  */
 int empty_file_log_sink () {
-	char filelog_name[20];
-	char buffer[256];
-	int filedes = -1, result = 0;
+	char filelog_name[L_tmpnam];
+	int result = 0;
 
-	memset(filelog_name, 0, sizeof(filelog_name));
-	memset(buffer, 0, sizeof(buffer));
-
-	strncpy(filelog_name, "/tmp/log-test-XXXXXX", 20);
-
-	filedes = mkstemp(filelog_name);
+	tmpnam(filelog_name);
 
 	TestLogSource logger;
 	FileSink filelog(filelog_name, false);
@@ -155,7 +143,7 @@ int empty_file_log_sink () {
 }
 
 
-void test() {
+void test () {
 	const char *testname;
 
 	if (std_out_log_sink() == -1) {
