@@ -134,6 +134,12 @@ private:
 	UnitType *projectile;
 	int foundation_terrain;
 
+	/**
+	 * used for objects like town centers or gates
+	 * where the base does not apply collision checks
+	 */
+	bool enable_collisions;
+
 	TerrainObject *make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const;
 };
 

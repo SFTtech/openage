@@ -13,6 +13,14 @@
 #include "unit.h"
 #include "unit_texture.h"
 
+/** @file
+ * Many values in this file are hardcoded, due to limited understanding of how the original
+ * game files work -- as more becomes known these will be removed.
+ *
+ * It is likely the conversion from gamedata to openage units will be done by the nyan
+ * system in future
+ */
+
 namespace openage {
 
 std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &restriction) {
@@ -444,7 +452,8 @@ BuldingProducer::BuldingProducer(DataManager &dm, const gamedata::unit_building 
 	trainable1{dm.get_type(83)}, // 83 = m villager
 	trainable2{dm.get_type(293)}, // 293 = f villager
 	projectile{dm.get_type(this->unit_data.projectile_unit_id)},
-	foundation_terrain{ud->terrain_id} {
+	foundation_terrain{ud->terrain_id},
+	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
 
 	// find suitable sounds
 	int creation_sound = this->unit_data.sound_creation0;
@@ -503,10 +512,15 @@ void BuldingProducer::initialise(Unit *unit, Player &player) {
 
 	auto player_attr = new Attribute<attr_type::owner>(player);
 	unit->add_attribute(player_attr);
+
+	// building specific attribute
 	auto build_attr = new Attribute<attr_type::building>();
 	build_attr->foundation_terrain = this->foundation_terrain;
 	build_attr->pp = trainable2;
+	build_attr->completion_state = this->enable_collisions? object_state::placed : object_state::placed_no_collision;
 	unit->add_attribute(build_attr);
+
+	// garrison and hp for all buildings
 	unit->add_attribute(new Attribute<attr_type::garrison>());
 	unit->add_attribute(new Attribute<attr_type::hitpoints>(this->unit_data.hit_points));
 
@@ -553,10 +567,9 @@ TerrainObject *BuldingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain,
 	};
 
 	// drawing function
-	// not a tc --- hacks / fix me
-	bool collisions = this->unit_data.id0 != 109;
-	u->location->draw = [u, obj_ptr, collisions]() {
-		if (u->selected && collisions) {
+	bool draw_outline = !this->enable_collisions;
+	u->location->draw = [u, obj_ptr, draw_outline]() {
+		if (u->selected && draw_outline) {
 			obj_ptr->draw_outline();
 		}
 		u->draw();
@@ -604,8 +617,9 @@ TerrainObject *BuldingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, 
 	start_tile.se -= b->radius_size1 * coord::settings::phys_per_tile;
 
 	// create and place on terrain
-	TerrainObject *annex_loc = u.make_location_annex<SquareObject>(annex_foundation);
-	annex_loc->place(t, start_tile, object_state::floating);
+	TerrainObject *annex_loc = u.location->make_annex<SquareObject>(annex_foundation);
+	object_state state = c? object_state::placed : object_state::placed_no_collision;
+	annex_loc->place(t, start_tile, state);
 
 	// weak ptr for use in lambda drawing functions
 	auto annex_type = datamanager.get_type(annex_id);
