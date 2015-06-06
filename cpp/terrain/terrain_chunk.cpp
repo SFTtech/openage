@@ -76,6 +76,23 @@ TileContent *TerrainChunk::get_data_neigh(coord::tile pos) {
 	}
 }
 
+bool TerrainChunk::fill(const int *data, coord::tile_delta size) {
+	bool was_cut = false;
+
+	coord::tile pos = {0, 0};
+	for (; pos.ne < size.ne; pos.ne++) {
+		for (pos.se = 0; pos.se < size.se; pos.se++) {
+			if (this->tile_count < size.ne * size.se) {
+				was_cut = true;
+				continue;
+			}
+			int terrain_id = data[pos.ne * size.ne + pos.se];
+			this->get_data(pos)->terrain_id = terrain_id;
+		}
+	}
+	return was_cut;
+}
+
 /*
  * get the chunk neighbor id by a given position not lying on this chunk.
  *

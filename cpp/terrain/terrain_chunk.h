@@ -1,4 +1,4 @@
-// Copyright 2013-2014 the openage authors. See copying.md for legal info.
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_TERRAIN_TERRAIN_CHUNK_H_
 #define OPENAGE_TERRAIN_TERRAIN_CHUNK_H_
@@ -96,6 +96,13 @@ public:
 	 * also queries neighbors if the position is not on this chunk.
 	 */
 	TileContent *get_data_neigh(coord::tile pos);
+
+	/**
+	 * fill the terrain with given terrain_id values.
+	 * @returns whether the data filled on the terrain was cut because of
+	 * the terrains size limit.
+	 */
+	bool fill(const int *data, coord::tile_delta size);
 
 	int neighbor_id_by_pos(coord::tile pos);
 

@@ -15,6 +15,7 @@
 #include "coord/tile.h"
 #include "handlers.h"
 #include "keybinds/keybind_manager.h"
+#include "mapgen/mapgen.h"
 #include "player.h"
 #include "terrain/terrain.h"
 #include "terrain/terrain_object.h"
@@ -100,6 +101,7 @@ private:
 	 */
 	Command get_action(const coord::phys3 &pos) const;
 
+	mapgen::MapGen *map;
 	openage::Engine *engine;
 };
 

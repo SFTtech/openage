@@ -52,6 +52,7 @@ _the openage authors_ are:
 | Niklas Fiekas               | niklasf                     | niklas.fiekas@tu-clausthal.de         |
 | Charles Gould               | charlesrgould               | charles.r.gould@gmail.com             |
 | Wilco Kusee                 | detrumi                     | wilcokusee@gmail.com                  |
+| Timo Haas                   | alue-42                     | haastimo@gmx.de                       |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
@@ -133,6 +134,18 @@ cmake modules ([3-clause BSD license](/legal/BSD-3-clause))
  - `buildsystem/modules/FindFTGL.cmake` (taken from [ulrichard's FTGL fork](https://github.com/ulrichard/ftgl))
  - `buildsystem/modules/FindGPerfTools.cmake` (taken from [VAST](https://github.com/mavam/vast))
  - `buildsystem/modules/FindOpusfile.cmake` (taken from [Unvanquished](https://github.com/Unvanquished/Unvanquished))
+
+From [libnoise](http://libnoise.sourceforge.net/) ([GPL 2.1](/legal/GPL 2.1 or later))
+ - `cpp/mapgen/perlinnoise/libnoise/basictypes.h`
+ - `cpp/mapgen/perlinnoise/libnoise/exception.h`
+ - `cpp/mapgen/perlinnoise/libnoise/interp.h`
+ - `cpp/mapgen/perlinnoise/libnoise/modulebase.cpp`
+ - `cpp/mapgen/perlinnoise/libnoise/modulebase.h`
+ - `cpp/mapgen/perlinnoise/libnoise/noisegen.cpp`
+ - `cpp/mapgen/perlinnoise/libnoise/noisegen.h`
+ - `cpp/mapgen/perlinnoise/libnoise/perlin.cpp`
+ - `cpp/mapgen/perlinnoise/libnoise/perlin.h`
+ - `cpp/mapgen/perlinnoise/libnoise/vectortable.h`
 
 Notes about this file:
 

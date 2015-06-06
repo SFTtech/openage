@@ -41,30 +41,6 @@ namespace openage {
  * Please try to move out anything located in here and create engine features instead.
  */
 
-// size of the initial terrain
-constexpr coord::tile_delta terrain_data_size = {16, 16};
-
-// terrain ids for the initial terrain
-constexpr int terrain_data[16 * 16] = {
-	  0,  0,  0,  0,  0,  0,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1,
-	  0, 18, 18, 18, 18, 18,  0,  0, 16,  0,  2,  1, 15, 14, 15,  1,
-	 18, 18,  0,  0, 18, 18,  0,  0, 16,  0,  2,  1, 15, 15, 15,  1,
-	 18, 18,  0,  0, 18, 18,  0,  0, 16,  0,  2,  1,  1,  1,  2,  2,
-	 18, 18, 18,  0, 18, 18,  9,  9, 16,  0,  0,  2,  2,  2,  0,  0,
-	 18, 18,  0,  0,  0,  0,  9,  9, 16,  0,  0,  0,  0,  0,  0,  0,
-	  0, 18,  0,  0,  0,  9,  9,  9, 16,  0,  0,  0,  0,  0,  0,  0,
-	  0,  0,  0,  2,  0,  9,  9,  0,  2,  2,  0,  0,  0,  0, 23, 23,
-	  0,  0,  2, 15,  2,  9,  0,  2, 15, 15,  2,  0,  0,  0,  0,  0,
-	  0,  0,  2, 15,  2,  2,  2, 15,  2,  2,  0,  0,  0,  0,  0,  0,
-	  0,  0,  2, 15,  2,  2,  2, 15,  2,  0,  0,  0, 20, 20, 20,  0,
-	  0,  2,  2, 15,  2,  2,  2, 14,  2,  0,  0,  0, 21, 21, 21,  0,
-	  2, 15, 15, 15, 15, 15, 14, 14,  2,  0,  0,  0, 22, 22, 22,  0,
-	  0,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  5,  5,  5,  0,
-	  0,  0,  0,  0,  0,  0,  0,  0, 16, 16, 16, 16,  5,  5,  5,  5,
-	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5,  5
-};
-
-
 int run_game(Arguments *args) {
 	util::Timer timer;
 
@@ -144,7 +120,10 @@ GameMain::GameMain(Engine *engine)
 
 	// create the terrain which will be filled by chunks
 	this->terrain = std::make_shared<Terrain>(assetmanager, terrain_types, blending_modes, true);
-	this->terrain->fill(terrain_data, terrain_data_size);
+	// choose map engine
+ 	map = new mapgen::MapGen(16,mapgen::MapGen::Engine::Perlin,0);
+
+	this->terrain->fill(map->getMap(), map->get_size());
 	this->placed_units.set_terrain(this->terrain);
 
 	// players
@@ -388,6 +367,8 @@ bool GameMain::on_input(SDL_Event *e) {
 				" SE " << std::setw(8) << mousepos_tile.se);
 
 			TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
+			log::log(MSG(dbg) << "adding Chunk at Position: (" << mousepos_tile.to_chunk().ne << "," << mousepos_tile.to_chunk().se << ")\n");
+			chunk->fill(map->getMap(mousepos_tile.to_chunk().ne, mousepos_tile.to_chunk().se),map->get_size());
 			chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
 		}
 		else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and !construct_mode) {
