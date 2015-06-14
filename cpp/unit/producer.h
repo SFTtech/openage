@@ -107,10 +107,10 @@ private:
  * Will be replaced with nyan system in future
  * in aoe buildings are derived from living units
  */
-class BuldingProducer: public UnitType {
+class BuildingProducer: public UnitType {
 public:
-	BuldingProducer(DataManager &dm, const gamedata::unit_building *ud);
-	virtual ~BuldingProducer();
+	BuildingProducer(DataManager &dm, const gamedata::unit_building *ud);
+	virtual ~BuildingProducer();
 
 	int id() const override;
 	std::string name() const override;

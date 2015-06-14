@@ -443,7 +443,7 @@ TerrainObject *LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrai
 	return MovableProducer::place(unit, terrain, init_pos);
 }
 
-BuldingProducer::BuldingProducer(DataManager &dm, const gamedata::unit_building *ud)
+BuildingProducer::BuildingProducer(DataManager &dm, const gamedata::unit_building *ud)
 	:
 	datamanager(dm),
 	unit_data{*ud},
@@ -488,17 +488,17 @@ BuldingProducer::BuldingProducer(DataManager &dm, const gamedata::unit_building 
 	this->terrain_outline = square_outline(this->foundation_size);
 }
 
-BuldingProducer::~BuldingProducer() {}
+BuildingProducer::~BuildingProducer() {}
 
-int BuldingProducer::id() const {
+int BuildingProducer::id() const {
 	return this->unit_data.id0;
 }
 
-std::string BuldingProducer::name() const {
+std::string BuildingProducer::name() const {
 	return this->unit_data.name;
 }
 
-void BuldingProducer::initialise(Unit *unit, Player &player) {
+void BuildingProducer::initialise(Unit *unit, Player &player) {
 
 	// log type
 	unit->log(MSG(dbg) << "setting unit type " <<
@@ -538,7 +538,7 @@ void BuldingProducer::initialise(Unit *unit, Player &player) {
 	unit->give_ability(std::make_shared<UngarrisonAbility>());
 }
 
-TerrainObject *BuldingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// buildings have a square base
 	u->make_location<SquareObject>(this->foundation_size, this->terrain_outline);
@@ -601,7 +601,7 @@ TerrainObject *BuldingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain,
 	return u->location.get();
 }
 
-TerrainObject *BuldingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
+TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
 	u.log(MSG(dbg) << "adding annex " << annex_id);
 
 	// find annex foundation size

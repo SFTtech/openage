@@ -19,7 +19,7 @@ class Sound;
  * Handling animated and directional textures based on the game
  * graphics data.
  *
- * These objects handle the drawing of regular textures to use a 
+ * These objects handle the drawing of regular textures to use a
  * units direction and include delta graphics.
  *
  * This type can also deals with playing position based game sounds.
@@ -58,7 +58,7 @@ public:
 	/**
 	 * a sample drawing for hud
 	 */
-	void sample(const coord::camhud &draw_pos) const;
+	void sample(const coord::camhud &draw_pos, unsigned color=1) const;
 
 	/**
 	 * draw object with no direction

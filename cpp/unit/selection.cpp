@@ -14,6 +14,7 @@ namespace openage {
 
 UnitSelection::UnitSelection()
 	:
+	selection_type{selection_type_t::nothing},
 	drag_active{false},
 	font_size{12} {
 }
@@ -103,17 +104,92 @@ void UnitSelection::clear() {
 		}
 	}
 	this->units.clear();
+	this->selection_type = selection_type_t::nothing;
 }
 
-void UnitSelection::toggle_unit(Unit *u) {
-	if (this->units.count(u->id) > 0) {
-		u->selected = false;
-		this->units.erase(u->id);
+void UnitSelection::toggle_unit(Unit *u, bool append) {
+	if (this->units.count(u->id) == 0) {
+		this->add_unit(u, append);
+	} else {
+		this->remove_unit(u);
 	}
-	else {
+}
+
+void UnitSelection::add_unit(Unit *u, bool append) {
+	// Only select resources and units with hitpoints > 0
+	if (u->has_attribute(attr_type::resource) ||
+	   (u->has_attribute(attr_type::hitpoints) && u->get_attribute<attr_type::hitpoints>().current > 0)) {
+
+		selection_type_t unit_type = get_unit_selection_type(u);
+		int unit_type_i = static_cast<int>(unit_type);
+		int selection_type_i = static_cast<int>(this->selection_type);
+
+		if (unit_type_i > selection_type_i) {
+			// Don't select this unit as it has too low priority
+			return;
+		}
+
+		if (unit_type_i < selection_type_i) {
+			// Upgrade selection to a higher priority selection
+			this->units.clear();
+			this->selection_type = unit_type;
+		}
+
+		// Can't select multiple enemies at once
+		if (not (unit_type == selection_type_t::own_units ||
+		        (unit_type == selection_type_t::own_buildings && append))) {
+
+			this->clear();
+			this->selection_type = unit_type; // Clear resets selection_type
+		}
+
+		// Finally, add the unit to the selection
 		u->selected = true;
 		this->units[u->id] = u->get_ref();
 	}
+}
+
+void UnitSelection::remove_unit(Unit *u) {
+	u->selected = false;
+	this->units.erase(u->id);
+
+	if (this->units.empty()) {
+		this->selection_type = selection_type_t::nothing;
+	}
+}
+
+void UnitSelection::kill_unit() {
+	if (this->units.empty()) {
+		return;
+	}
+
+	UnitReference &ref = this->units.begin()->second;
+	if (!ref.is_valid()) {
+		this->units.erase(this->units.begin());
+
+		if (this->units.empty()) {
+			this->selection_type = selection_type_t::nothing;
+		}
+	} else {
+		Unit *u = ref.get();
+
+		// Check color: you can only kill your own units
+		if (u->is_own_unit()) {
+			this->remove_unit(u);
+			u->delete_unit();
+		}
+	}
+}
+
+bool UnitSelection::contains_builders() {
+	for (auto &it : units) {
+		if (it.second.is_valid() &&
+		    it.second.get()->get_ability(ability_type::build) &&
+		    it.second.get()->is_own_unit()) {
+			return true;
+		}
+	}
+	return false;
 }
 
 void UnitSelection::select_point(Terrain *terrain, coord::camgame p, bool append) {
@@ -145,8 +221,7 @@ void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::cam
 	max.x = std::max(p1.x, p2.x);
 	max.y = std::max(p1.y, p2.y);
 
-	// look at each tile in the range and find all unique units
-	std::unordered_set<Unit *> boxed_units;
+	// look at each tile in the range and find all units
 	for (coord::tile check_pos : tiles_in_range(p1, p2)) {
 		TileContent *tc = terrain->get_data(check_pos);
 		if (tc) {
@@ -155,38 +230,21 @@ void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::cam
 				coord::camgame pos = unit_location->pos.draw.to_camgame();
 				if ((min.x < pos.x && pos.x < max.x) &&
 				     (min.y < pos.y && pos.y < max.y)) {
-					boxed_units.insert(&unit_location->unit);
+					this->add_unit(&unit_location->unit, append);
 				}
 			}
 		}
-	}
-
-	// toggle each unit in the box
-	for (Unit *u : boxed_units) {
-		this->toggle_unit(u);
 	}
 }
 
 void UnitSelection::all_invoke(Command &cmd) {
 	for (auto u : this->units) {
-		if (u.second.is_valid()) {
+		if (u.second.is_valid() && u.second.get()->is_own_unit()) {
 
 			// allow unit to find best use of the command
 			u.second.get()->invoke(cmd, true);
 		}
 	}
-}
-
-Player *UnitSelection::owner() {
-	for (auto u : this->units) {
-		if (u.second.is_valid()) {
-			auto unit_ptr = u.second.get();
-			if (unit_ptr->has_attribute(attr_type::owner)) {
-				return &unit_ptr->get_attribute<attr_type::owner>().player;
-			}
-		}
-	}
-	return nullptr;
 }
 
 void UnitSelection::show_attributes(Unit *u) {
@@ -221,6 +279,17 @@ void UnitSelection::show_attributes(Unit *u) {
 	for (auto &s : lines) {
 		vpos -= this->font_size;
 		engine.render_text({0, vpos}, this->font_size, s.c_str());
+	}
+}
+
+selection_type_t UnitSelection::get_unit_selection_type(Unit *u) {
+	bool is_building = u->has_attribute(attr_type::building);
+
+	// Check color
+	if (u->is_own_unit()) {
+		return is_building ? selection_type_t::own_buildings : selection_type_t::own_units;
+	} else {
+		return is_building ? selection_type_t::enemy_building : selection_type_t::enemy_unit;
 	}
 }
 
