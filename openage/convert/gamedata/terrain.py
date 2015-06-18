@@ -3,8 +3,20 @@
 # TODO pylint: disable=C,R
 
 from ..dataformat.exportable import Exportable
-from ..dataformat.members import SubdataMember
+from ..dataformat.members import SubdataMember, IncludeMembers
 from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
+
+
+class FrameData(Exportable):
+    name_struct        = "frame_data"
+    name_struct_file   = ""
+    struct_description = "specification of terrain frames."
+
+    data_format = (
+        (READ, "frame_count", "int16_t"),
+        (READ, "angle_count", "int16_t"),
+        (READ, "shape_id", "int16_t"),
+    )
 
 
 class TerrainPassGraphic(Exportable):
@@ -47,6 +59,23 @@ class TerrainRestriction(Exportable):
     def __init__(self, **args):
         super().__init__(**args)
 
+class TerrainAnimation(Exportable):
+    name_struct        = "terrain_animation"
+    name_struct_file   = "terrain"
+    struct_description = "describes animation properties of a terrain type"
+
+    data_format = (
+        (READ, "is_animated",                "int8_t"),
+        (READ, "animation_frame_count",      "int16_t"),        # number of frames to animate
+        (READ, "pause_frame_count",          "int16_t"),        # pause n * (frame rate) after last frame draw
+        (READ, "interval",                   "float"),         # time between frames
+        (READ, "pause_after_loop",           "float"),         # pause time after last frame
+        (READ, "frame",                      "int16_t"),       # current frame (including animation and pause frames)
+        (READ, "draw_frame",                 "int16_t"),       # current frame id to draw
+        (READ, "animate_last",               "float"),         # last time animation frame was changed
+        (READ, "frame_changed",              "int8_t"),        # has the drawframe changed since terrain was drawn
+        (READ, "drawn",                      "int8_t"),
+    )
 
 class Terrain(Exportable):
     name_struct        = "terrain_type"
@@ -64,37 +93,30 @@ class Terrain(Exportable):
         (READ_EXPORT, "blend_priority",      "int32_t"),     # see doc/media/blendomatic.md for blending stuff
         (READ_EXPORT, "blend_mode",          "int32_t"),
         (READ, "color",                      "uint8_t[3]"),  # color of this terrain tile, mainly used in the minimap.
-        (READ_UNKNOWN, None,                 "uint8_t[5]"),
-        (READ_UNKNOWN, None,                 "float"),
-        (READ_UNKNOWN, None,                 "int8_t[18]"),
-        (READ_EXPORT, "frame_count",         "int16_t"),
-        (READ_EXPORT, "angle_count",         "int16_t"),
-        (READ_EXPORT, "terrain_id",          "int16_t"),
-        (READ, "elevation_graphic",          "int16_t[54]"),
-        (READ, "terrain_replacement_id",     "int16_t"),
-        (READ_EXPORT, "terrain_dimensions0", "int16_t"),
-        (READ_EXPORT, "terrain_dimensions1", "int16_t"),
-        (READ, "terrain_border_id",          "int8_t[84]"),
-        (READ, "terrain_unit_id",            "int16_t[30]"),
-        (READ, "terrain_unit_density",       "int16_t[30]"),
-        (READ, "terrain_unit_priority",      "int8_t[30]"),  # when placing two terrain units on the same spot, selects which prevails(=1)
-        (READ, "terrain_units_used_count",   "int16_t"),     # shall we place units implicitly when this terrain is used
+        (READ, "cliff_colors",               "uint8_t[2]"),
+        (READ, "passable_terrain",           "int8_t"),
+        (READ, "impassable_terrain",         "int8_t"),
+
+        (READ_EXPORT, None, IncludeMembers(cls=TerrainAnimation)),
+
+        (READ, "elevation_graphics", SubdataMember(
+            ref_type=FrameData,
+            length=19,
+        )),
+
+        (READ, "terrain_replacement_id",     "int16_t"),     # draw this ground instead (e.g. forrest draws forrest ground)
+        (READ_EXPORT, "terrain_dimension0",  "int16_t"),
+        (READ_EXPORT, "terrain_dimension1",  "int16_t"),
+
+        (READ, "borders",                    "int16_t[42]"),  # probably references to the TerrainBorders
+        (READ, "terrain_unit_id",            "int16_t[30]"),  # place these unit id on the terrain, with prefs from fields below
+        (READ, "terrain_unit_density",       "int16_t[30]"),  # how many of the above units to place
+        (READ, "terrain_unit_priority",      "int8_t[30]"),   # when placing two terrain units on the same spot, selects which prevails(=1)
+        (READ, "terrain_units_used_count",   "int16_t"),      # how many entries of the above lists shall we use to place units implicitly when this terrain is placed
     )
 
     def __init__(self):
         super().__init__()
-
-
-class FrameData(Exportable):
-    name_struct        = "frame_data"
-    name_struct_file   = ""
-    struct_description = "specification of terrain borders."
-
-    data_format = (
-        (READ, "frame_id", "int16_t"),
-        (READ, "flag0", "int16_t"),
-        (READ, "flag1", "int16_t"),
-    )
 
 
 class TerrainBorder(Exportable):
@@ -103,22 +125,23 @@ class TerrainBorder(Exportable):
     struct_description = "one inter-terraintile border specification."
 
     data_format = (
-        (READ, "enabled", "int16_t"),
+        (READ, "enabled", "int8_t"),
+        (READ_UNKNOWN, None, "int8_t"),
         (READ, "name0", "char[13]"),
         (READ, "name1", "char[13]"),
-        (READ, "resource_id", "int32_t"),
+        (READ, "slp_id", "int32_t"),
         (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
+        (READ, "sound_id", "int32_t"),
         (READ, "color", "uint8_t[3]"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
+
+        (READ_EXPORT, None, IncludeMembers(cls=TerrainAnimation)),
+
         (READ, "frames", SubdataMember(
             ref_type=FrameData,
-            length=230,
+            length=19 * 12,
         )),
-        (READ, "frame_count", "int16_t"),
-        (READ_UNKNOWN, None, "int16_t"),
-        (READ_UNKNOWN, None, "int16_t"),
-        (READ_UNKNOWN, None, "int16_t"),
+
+        (READ, "draw_tile", "int16_t"),         # always 0
+        (READ, "underlay_terrain", "int16_t"),
+        (READ, "border_style", "int16_t"),
     )
