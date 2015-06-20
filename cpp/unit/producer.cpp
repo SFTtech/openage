@@ -567,7 +567,7 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 	};
 
 	// drawing function
-	bool draw_outline = !this->enable_collisions;
+	bool draw_outline = this->enable_collisions;
 	u->location->draw = [u, obj_ptr, draw_outline]() {
 		if (u->selected && draw_outline) {
 			obj_ptr->draw_outline();
