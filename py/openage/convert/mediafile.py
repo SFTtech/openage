@@ -9,6 +9,7 @@ import os
 import os.path
 import pickle
 import subprocess
+import multiprocessing as mp
 
 from .. import util
 from .colortable import ColorTable, PlayerColorTable
@@ -61,6 +62,64 @@ class ExtractionRule:
         return True
 
 
+def export_texture(file_data, drsname, file_id, file_extension, fname, palette,
+                   output_formats):
+    from .slp import SLP
+    s = SLP(file_data)
+
+    dbg("%s: %d.%s -> %s -> generating atlas" % (
+        drsname, file_id, file_extension, fname), 1)
+
+    # create exportable texture from the slp
+    texture = Texture(s, palette)
+
+    # the hotspots of terrain textures have to be fixed:
+    if drsname == "terrain":
+        for entry in texture.image_metadata:
+            entry["cx"] = terrain_tile_size.tile_halfsize["x"]
+            entry["cy"] = terrain_tile_size.tile_halfsize["y"]
+
+    # save the image and the corresponding metadata file
+    texture.save(fname, output_formats)
+
+
+def export_sound(file_data, drsname, file_id, file_extension, fname, no_opus,
+                 fbase):
+    sound_filename = fname
+
+    dbg("%s: %d.%s -> %s -> storing wav file" % (
+        drsname, file_id, file_extension, fname), 1)
+
+    with open(fname, "wb") as f:
+        f.write(file_data)
+
+    if not no_opus:
+        file_extension = "opus"
+        sound_filename = "%s.%s" % (fbase, file_extension)
+
+        # opusenc invocation (TODO: ffmpeg? some python-lib?)
+        opus_convert_call = ('opusenc',
+                             fname,
+                             sound_filename)
+        dbg("opus convert: %s -> %s ..." % (fname,
+                                            sound_filename), 1)
+
+        # TODO: when the output is big enough, this deadlocks.
+        oc = subprocess.Popen(opus_convert_call,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE)
+        oc_out, oc_err = oc.communicate()
+
+        if ifdbg(2):
+            oc_out = oc_out.decode("utf-8")
+            oc_err = oc_err.decode("utf-8")
+
+            dbg(oc_out + "\n" + oc_err, 2)
+
+        # remove extracted original wave file
+        os.remove(fname)
+
+
 def media_convert(args):
     """
     Perform asset conversion.
@@ -77,6 +136,10 @@ def media_convert(args):
         args.extract.append('*:*.*')
 
     extraction_rules = [ExtractionRule(e) for e in args.extract]
+    if args.jobs == 0:
+        args.jobs = os.cpu_count()
+    pool = mp.Pool(processes=args.jobs)
+    media_out = []
 
     dbg("age2 input directory: %s" % (args.srcdir,), 1)
 
@@ -236,6 +299,8 @@ def media_convert(args):
 
     file_list = defaultdict(lambda: list())
     media_files_extracted = 0
+    dbg("Converting data using %i threads, this may take a while" % args.jobs,
+        1)
 
     # iterate over all available files in the drs, check whether they should
     # be extracted
@@ -266,59 +331,15 @@ def media_convert(args):
 
             # create an image file
             if file_extension == 'slp':
-                from .slp import SLP
-                s = SLP(file_data)
-
-                dbg("%s: %d.%s -> %s -> generating atlas" % (
-                    drsname, file_id, file_extension, fname), 1)
-
-                # create exportable texture from the slp
-                texture = Texture(s, palette)
-
-                # the hotspots of terrain textures have to be fixed:
-                if drsname == "terrain":
-                    for entry in texture.image_metadata:
-                        entry["cx"] = terrain_tile_size.tile_halfsize["x"]
-                        entry["cy"] = terrain_tile_size.tile_halfsize["y"]
-
-                # save the image and the corresponding metadata file
-                texture.save(fname, output_formats)
+                _args = (file_data, drsname, file_id, file_extension, fname,
+                         palette, output_formats)
+                media_out.append(pool.apply_async(export_texture, args=_args))
 
             # create a sound file
             elif file_extension == 'wav':
-                sound_filename = fname
-
-                dbg("%s: %d.%s -> %s -> storing wav file" % (
-                    drsname, file_id, file_extension, fname), 1)
-
-                with open(fname, "wb") as f:
-                    f.write(file_data)
-
-                if not args.no_opus:
-                    file_extension = "opus"
-                    sound_filename = "%s.%s" % (fbase, file_extension)
-
-                    # opusenc invokation (TODO: ffmpeg? some python-lib?)
-                    opus_convert_call = ('opusenc',
-                                         fname,
-                                         sound_filename)
-                    dbg("opus convert: %s -> %s ..." % (fname,
-                                                        sound_filename), 1)
-
-                    # TODO: when the output is big enough, this deadlocks.
-                    oc = subprocess.Popen(opus_convert_call,
-                                          stdout=subprocess.PIPE,
-                                          stderr=subprocess.PIPE)
-                    oc_out, oc_err = oc.communicate()
-
-                    if ifdbg(2):
-                        oc_out = oc_out.decode("utf-8")
-                        oc_err = oc_err.decode("utf-8")
-
-                        dbg(oc_out + "\n" + oc_err, 2)
-
-                    # remove extracted original wave file
-                    os.remove(fname)
+                _args = (file_data, drsname, file_id, file_extension, fname,
+                         args.no_opus, fbase)
+                media_out.append(pool.apply_async(export_sound, args=_args))
 
             else:
                 # format does not require conversion, store it as plain blob
@@ -326,6 +347,17 @@ def media_convert(args):
                     f.write(file_data)
 
             media_files_extracted += 1
+
+    pool.close()
+    for i in media_out:
+        try:
+            i.wait()
+            # if anything was raised in child, it will be re-raised here
+            i.get()
+        except:
+            dbg("got exception", 1)
+    pool.join()
+    dbg("Conversion done", 1)
 
     if write_enabled:
         dbg("media files extracted: %d" % (media_files_extracted), 0)

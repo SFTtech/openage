@@ -1,4 +1,4 @@
-# Copyright 2013-2014 the openage authors. See copying.md for legal info.
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 import argparse
 from openage.log import set_verbosity
@@ -39,6 +39,8 @@ def main():
                            help="Don't use opus conversion for audio files")
     media_cmd.add_argument("--use-dat-cache", action='store_true',
                            help="Use cache file for the empires.dat file")
+    media_cmd.add_argument("-j", "--jobs", type=int, default=0,
+                           help="How many jobs to use in parallel")
 
     mcmd_g0 = media_cmd.add_mutually_exclusive_group(required=True)
     mcmd_g0.add_argument("-o", "--output", metavar="output_directory",
