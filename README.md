@@ -1,5 +1,5 @@
-openage
-=======
+[![openage](/assets/logo/banner.png)](http://openage.sft.mx)
+============================================================
 
 **openage**: a volunteer project to create a free engine clone of *Age of Empires II*,
 primarily aimed at POSIX platforms such as **GNU/Linux**,
