@@ -1,0 +1,15 @@
+add_sources(${PROJECT_NAME}
+	border.cpp
+	button.cpp
+	checkbox.cpp
+	container.cpp
+	control.cpp
+	drawer.cpp
+	formlayout.cpp
+	gridlayout.cpp
+	image.cpp
+	label.cpp
+	layout.cpp
+	style.cpp
+	toplevel.cpp
+)

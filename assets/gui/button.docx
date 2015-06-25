@@ -1,0 +1,33 @@
+# struct subtexture
+# one sprite, as part of a texture atlas.
+# 
+# this struct stores information about positions and sizes
+# of sprites included in the 'big texture'.
+# int32_t,int32_t,int32_t,int32_t,int32_t,int32_t
+# x,y,w,h,cx,cy
+
+# normal
+0,0,3,3,0,0
+3,0,122,3,0,0
+125,0,3,3,0,0
+
+0,3,3,58,0,0
+3,3,122,58,0,0
+125,3,3,58,0,0
+
+0,61,3,3,0,0
+3,61,122,3,0,0
+125,61,3,3,0,0
+
+# pressed
+0,64,3,3,0,0
+3,64,122,3,0,0
+125,64,3,3,0,0
+
+0,67,3,58,0,0
+3,67,122,58,0,0
+125,67,3,58,0,0
+
+0,125,3,3,0,0
+3,125,122,3,0,0
+125,125,3,3,0,0

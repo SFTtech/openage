@@ -28,6 +28,15 @@
 #include "util/timer.h"
 #include "util/externalprofiler.h"
 
+#include "gui/container.h"
+#include "gui/drawer.h"
+#include "gui/label.h"
+#include "gui/toplevel.h"
+#include "gui/imagebutton.h"
+#include "gui/imagecheckbox.h"
+#include "gui/style.h"
+#include "gui/formlayout.h"
+
 namespace openage {
 
 /** @file
@@ -354,6 +363,59 @@ GameMain::GameMain(Engine *engine)
 	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_8, 8);
 
 	engine->get_keybind_manager().register_context(&this->keybind_context);
+
+	// create GUI
+	gui_top_level.reset(new gui::TopLevel);
+	gui_top_level->set_layout(std::make_unique<gui::FormLayout>());
+
+	gui::Style style{&assetmanager};
+
+	gui_loading_message = gui_top_level->create<gui::Label>();
+	gui_loading_message->set_text("Loading gamedata...");
+	gui_loading_message->set_layout_data(gui::FormLayoutData::best_size(gui_loading_message)
+			.set_left(gui::FormAttachment::center())
+			.set_top(gui::FormAttachment::center()));
+
+	gui_framerate = gui_top_level->create<gui::Label>();
+	gui_framerate->set_text("⸘FPS here maybe‽");
+	gui_framerate->set_layout_data(gui::FormLayoutData::best_size(gui_framerate)
+			.set_left(gui::FormAttachment::right().offset_by(-100))
+			.set_bottom(gui::FormAttachment::bottom().offset_by(-30)));
+
+	auto gui_idle_villager = gui_top_level->add_control(style.create_image_button("converted/Data/interfac.drs/50788.slp.png", 12));
+	gui_idle_villager->set_layout_data(gui::FormLayoutData::best_size(gui_idle_villager)
+			.set_left(gui::FormAttachment::left().offset_by(5))
+			.set_bottom(gui::FormAttachment::bottom().offset_by(-5)));
+	gui_idle_villager->on_click([]{
+		log::log(MSG(info).fmt("Idle villager, anyone?"));
+	});
+
+#if 0
+	auto gui_flare = gui_top_level->add_control(style.create_image_button("converted/Data/interfac.drs/50788.slp.png", 2));
+	gui_flare->set_right(gui::FormAttachment::left().offset_by(90)); // tmp
+	gui_flare->set_top(gui::FormAttachment::bottom().offset_by(-85)); // tmp
+	gui_flare->set_left(gui::FormAttachment::adjacent_to(gui_idle_villager).offset_by(10));
+	gui_flare->set_bottom(gui::FormAttachment::bottom().offset_by(-50));
+	gui_flare->on_click([]{
+		log::log(MSG(info).fmt("Send a flare!"));
+	});
+
+	auto gui_quit = gui_top_level->add_control(style.create_button());
+	gui_quit->set_left(gui::FormAttachment::right().offset_by(-42));
+	gui_quit->set_right(gui::FormAttachment::right().offset_by(-10));
+	gui_quit->set_top(gui::FormAttachment::top().offset_by(10));
+	gui_quit->set_bottom(gui::FormAttachment::top().offset_by(40));
+	gui_quit->get_label()->set_text("X");
+	gui_quit->on_click([engine]{
+		engine->stop();
+	});
+
+	auto gui_palalol = gui_top_level->add_control(style.create_image_button("converted/Data/interfac.drs/50730.slp.png", 2));
+	gui_palalol->set_left(gui::FormAttachment::left().offset_by(10));
+	gui_palalol->set_right(gui::FormAttachment::left().offset_by(50));
+	gui_palalol->set_top(gui::FormAttachment::center().offset_by(10));
+	gui_palalol->set_bottom(gui::FormAttachment::center().offset_by(50));
+#endif
 }
 
 GameMain::~GameMain() {
@@ -368,6 +430,11 @@ GameMain::~GameMain() {
 
 bool GameMain::on_input(SDL_Event *e) {
 	Engine &engine = Engine::get();
+	
+	// first, see if the gui wants to process the event
+	if (gui_top_level->process_event(e)) {
+		return true;
+	}
 
 	switch (e->type) {
 
@@ -651,6 +718,13 @@ bool GameMain::on_drawhud() {
 			txt->sample(bpreview_pos.to_camhud(), engine->current_player);
 		}
 	}
+
+	// draw the mighty GUI over everything
+	gui::Drawer drawer{e.engine_coord_data->window_size.x, e.engine_coord_data->window_size.y};
+	gui_top_level->resize(e.engine_coord_data->window_size.x, e.engine_coord_data->window_size.y); // FIXME only resize when size actually changes
+	gui_top_level->update(0.0);
+	gui_top_level->draw(drawer);
+
 	return true;
 }
 
