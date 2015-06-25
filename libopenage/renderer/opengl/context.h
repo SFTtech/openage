@@ -4,18 +4,19 @@
 #define OPENAGE_RENDERER_OPENGL_CONTEXT_H_
 
 #include <SDL2/SDL.h>
+#include <memory>
 
 #include "../context.h"
-#include "../../config.h"
 
 
 namespace openage {
 namespace renderer {
+namespace opengl {
 
-class GLContext : public Context {
+class Context : public renderer::Context {
 public:
-	GLContext();
-	~GLContext();
+	Context();
+	~Context();
 
 	SDL_GLContext glcontext;
 
@@ -26,6 +27,6 @@ public:
 	virtual void destroy();
 };
 
-}} // namespace openage::renderer
+}}} // namespace openage::renderer
 
 #endif

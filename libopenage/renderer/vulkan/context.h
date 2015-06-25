@@ -11,8 +11,9 @@
 
 namespace openage {
 namespace renderer {
+namespace vulkan {
 
-class VulkanContext : public Context {
+class Context : public renderer::Context {
 public:
 	SDL_VulkanContext vkcontext;
 

@@ -21,6 +21,8 @@ public:
 	Window &operator =(const Window &other) = delete;
 	Window &operator =(Window &&other) = delete;
 
+	coord::window get_size();
+	void set_size(const coord::window &, bool update=false);
 
 	Window(const char *title);
 	~Window();
@@ -28,7 +30,7 @@ public:
 	void swap();
 
 private:
-	coord::window window_size;
+	coord::window size;
 	SDL_Window *window;
 
 	std::unique_ptr<Context> context;

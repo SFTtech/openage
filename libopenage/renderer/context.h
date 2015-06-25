@@ -7,9 +7,6 @@
 
 #include <memory>
 
-#include "../coord/window.h"
-
-
 namespace openage {
 namespace renderer {
 

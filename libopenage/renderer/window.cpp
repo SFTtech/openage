@@ -13,7 +13,10 @@
 namespace openage {
 namespace renderer {
 
-Window::Window(const char *title) {
+Window::Window(const char *title)
+	:
+	size{800, 600} {
+
 	this->context = Context::generate(context_type::autodetect);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -29,8 +32,8 @@ Window::Window(const char *title) {
 		title,
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
-		this->window_size.x,
-		this->window_size.y,
+		this->size.x,
+		this->size.y,
 		window_flags
 	);
 
@@ -66,6 +69,19 @@ Window::~Window() {
 
 void Window::swap() {
 	SDL_GL_SwapWindow(this->window);
+}
+
+coord::window Window::get_size() {
+	return this->size;
+}
+
+void Window::set_size(const coord::window &new_size, bool update) {
+	if (this->size.x != new_size.x or this->size.y != new_size.y) {
+		this->size = new_size;
+		if (update) {
+			SDL_SetWindowSize(this->window, this->size.x, this->size.y);
+		}
+	}
 }
 
 }} // namespace openage::renderer
