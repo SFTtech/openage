@@ -13,19 +13,20 @@
 
 namespace openage {
 namespace renderer {
+namespace opengl {
 
 // TODO: get max available gl version
 constexpr int opengl_version_major = 2;
 constexpr int opengl_version_minor = 1;
 
-GLContext::GLContext() {}
-GLContext::~GLContext() {}
+Context::Context() {}
+Context::~Context() {}
 
-uint32_t GLContext::get_window_flags() {
+uint32_t Context::get_window_flags() {
 	return SDL_WINDOW_OPENGL;
 }
 
-void GLContext::prepare() {
+void Context::prepare() {
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, opengl_version_major);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, opengl_version_minor);
@@ -34,7 +35,7 @@ void GLContext::prepare() {
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 }
 
-void GLContext::create(SDL_Window *window) {
+void Context::create(SDL_Window *window) {
 	this->glcontext = SDL_GL_CreateContext(window);
 
 	if (this->glcontext == nullptr) {
@@ -50,7 +51,7 @@ void GLContext::create(SDL_Window *window) {
 	}
 }
 
-void GLContext::setup() {
+void Context::setup() {
 	// to quote the standard doc: 'The value gives a rough estimate of the
 	// largest texture that the GL can handle'
 	// -> wat?  anyways, we need at least 1024x1024.
@@ -83,10 +84,10 @@ void GLContext::setup() {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
-void GLContext::destroy() {
+void Context::destroy() {
 	SDL_GL_DeleteContext(this->glcontext);
 }
 
-}} // namespace openage::renderer
+}}} // namespace openage::renderer::opengl
 
 #endif // if WITH_OPENGL

@@ -7,7 +7,7 @@
 #include "../util/error.h"
 
 #if WITH_OPENGL
-#include "gl/context.h"
+#include "opengl/context.h"
 #endif
 
 #if WITH_VULKAN
@@ -22,29 +22,38 @@ Context::Context() {}
 Context::~Context() {}
 
 std::unique_ptr<Context> Context::generate(context_type t) {
-	if (t == context_type::opengl and not WITH_OPENGL) {
-		throw util::Error(MSG(err) << "OpenGL support not enabled!");
-	}
-	else if (t == context_type::vulkan and not WITH_VULKAN) {
-		throw util::Error(MSG(err) << "Vulkan support not enabled!");
-	}
-	else if (t == context_type::autodetect) {
+	context_type ctx_requested = t;
+
+	if (t == context_type::autodetect) {
 		// priority: vulkan > opengl
 		if (WITH_VULKAN) {
-#if WITH_VULKAN
-			log::log(MSG(dbg) << "Using Vulkan context...");
-			return std::make_unique<VulkanContext>();
-#endif
+			ctx_requested = context_type::vulkan;
 		}
 		else if (WITH_OPENGL) {
-#if WITH_OPENGL
-			log::log(MSG(dbg) << "Using OpenGL context...");
-			return std::make_unique<GLContext>();
-#endif
+			ctx_requested = context_type::opengl;
 		}
 		else {
 			throw util::Error(MSG(err) << "No render context available!");
 		}
+	}
+
+	if (ctx_requested == context_type::opengl) {
+		if (not WITH_OPENGL) {
+			throw util::Error(MSG(err) << "OpenGL support not enabled!");
+		}
+#if WITH_OPENGL
+		log::log(MSG(dbg) << "Using OpenGL context...");
+		return std::make_unique<opengl::Context>();
+#endif
+	}
+	else if (ctx_requested == context_type::vulkan) {
+		if (not WITH_VULKAN) {
+			throw util::Error(MSG(err) << "Vulkan support not enabled!");
+		}
+#if WITH_VULKAN
+		log::log(MSG(dbg) << "Using Vulkan context...");
+		return std::make_unique<vulkan::Context>();
+#endif
 	}
 	else {
 		throw util::Error(MSG(err) << "Unknown context type requested!");
