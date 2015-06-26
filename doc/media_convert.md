@@ -29,6 +29,13 @@ To convert ALL original media files to openage format, execute the following:
 You will then find the converted files in `./userassets`
 the conversion takes some time, so be patient.
 
+The conversion script is multithreaded, but bear in mind that the bottleneck can come from I/O of
+your storage device.
+
+By default the script will use all of available CPUs (Python's `os.cpu_count`). You can explicitly
+specify amount of processes to spawn for conversion with `-j`/`--jobs` option to `media` command:
+
+	python3 -m openage.convert media -j 666 …
 
 Try
 
