@@ -39,7 +39,7 @@ def main():
                            help="Don't use opus conversion for audio files")
     media_cmd.add_argument("--use-dat-cache", action='store_true',
                            help="Use cache file for the empires.dat file")
-    media_cmd.add_argument("-j", "--jobs", type=int, default=0,
+    media_cmd.add_argument("-j", "--jobs", type=int, default=None,
                            help="How many jobs to use in parallel")
 
     mcmd_g0 = media_cmd.add_mutually_exclusive_group(required=True)

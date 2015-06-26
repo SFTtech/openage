@@ -9,7 +9,8 @@ import os
 import os.path
 import pickle
 import subprocess
-import multiprocessing as mp
+from multiprocessing import Pool
+import traceback
 
 from .. import util
 from .colortable import ColorTable, PlayerColorTable
@@ -136,9 +137,11 @@ def media_convert(args):
         args.extract.append('*:*.*')
 
     extraction_rules = [ExtractionRule(e) for e in args.extract]
-    if args.jobs == 0:
-        args.jobs = os.cpu_count()
-    pool = mp.Pool(processes=args.jobs)
+    if args.jobs is None:
+        threads = os.cpu_count()
+    else:
+        threads = args.jobs
+    pool = Pool(processes=threads)
     media_out = []
 
     dbg("age2 input directory: %s" % (args.srcdir,), 1)
@@ -299,8 +302,7 @@ def media_convert(args):
 
     file_list = defaultdict(lambda: list())
     media_files_extracted = 0
-    dbg("Converting data using %i threads, this may take a while" % args.jobs,
-        1)
+    dbg("Converting data using %i threads, this may take a while" % threads, 1)
 
     # iterate over all available files in the drs, check whether they should
     # be extracted
@@ -349,15 +351,20 @@ def media_convert(args):
             media_files_extracted += 1
 
     pool.close()
-    for i in media_out:
+    exc_count = 0
+    for entry in media_out:
         try:
-            i.wait()
+            entry.wait()
             # if anything was raised in child, it will be re-raised here
-            i.get()
+            entry.get()
         except:
-            dbg("got exception", 1)
+            exc_count += 1
+            traceback.print_exc()
     pool.join()
     dbg("Conversion done", 1)
+    if exc_count > 0:
+        raise Exception("There were %i exceptions during media conversion. "
+                        "Please check the logs." % exc_count)
 
     if write_enabled:
         dbg("media files extracted: %d" % (media_files_extracted), 0)
