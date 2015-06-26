@@ -1,13 +1,14 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_DATAMANAGER_H_
-#define OPENAGE_DATAMANAGER_H_
+#ifndef OPENAGE_GAME_SPEC_H_
+#define OPENAGE_GAME_SPEC_H_
 
 #include <unordered_map>
 
 #include "job/job.h"
 #include "gamedata/gamedata.gen.h"
 #include "gamedata/graphic.gen.h"
+#include "terrain/terrain.h"
 #include "unit/unit_texture.h"
 #include "util/timer.h"
 
@@ -33,24 +34,23 @@ public:
 };
 
 /**
- * Data manager uses game data to setup
- * graphic data, composite textures and sounds.
- * also sorts each data type by id values
+ * GameSpec gives a collection of all game elements
+ * this currently includes unit types and terrain types
+ * This provides a system which can easily allow game modding
  *
+ * uses the AssetManager to gather
+ * graphic data, composite textures and sounds.
+ *
+ * all types are sorted and stored by id values,
  * each data object is referenced by a type and id pair
  *
  * dealing directly with files done by asset manager
  * TODO: should the audio loading should be moved there?
  */
-class DataManager {
+class GameSpec {
 public:
-	DataManager();
-	virtual ~DataManager();
-
-	/**
-	 * begin the main loading job
-	 */
-	void initialize(AssetManager *am);
+	GameSpec(AssetManager *am);
+	virtual ~GameSpec();
 
 	void check_updates();
 
@@ -58,6 +58,11 @@ public:
 	 * check if loading has been completed
 	 */
 	bool load_complete();
+
+	/**
+	 * return data used for constructing terrain objects
+	 */
+	terrain_meta *get_terrain_meta();
 
 	/**
 	 * number of producers available
@@ -115,6 +120,11 @@ private:
 	AssetManager *assetmanager;
 
 	/**
+	 * data used for constructing terrain objects
+	 */
+	terrain_meta terrain_data;
+
+	/**
 	 * all available game objects.
 	 */
 	unit_type_list available_objects;
@@ -155,6 +165,11 @@ private:
 	std::unordered_map<index_t, Sound> available_sounds;
 
 	/**
+	 * begin the main loading job
+	 */
+	void initialize(AssetManager *am);
+
+	/**
 	 * check graphic id is valid
 	 */
 	bool valid_graphic_id(index_t);
@@ -177,6 +192,11 @@ private:
 	void load_living(const gamedata::unit_living &, unit_type_list &);
 	void load_object(const gamedata::unit_object &, unit_type_list &);
 	void load_projectile(const gamedata::unit_projectile &, unit_type_list &);
+
+	/**
+	 * fill in the terrain_data attribute of this
+	 */
+	void load_terrain(AssetManager *am);
 
 	/**
 	 * has game data been load yet

@@ -5,17 +5,17 @@
 
 #include "../coord/phys3.h"
 #include "../crossplatform/math_constants.h"
-#include "../datamanager.h"
+#include "../game_spec.h"
 #include "../texture.h"
 #include "unit_texture.h"
 
 namespace openage {
 
-UnitTexture::UnitTexture(DataManager *dm, uint16_t graphic_id, bool delta)
+UnitTexture::UnitTexture(GameSpec &spec, uint16_t graphic_id, bool delta)
 	:
-	UnitTexture{dm, dm->get_graphic_data(graphic_id), delta} {}
+	UnitTexture{spec, spec.get_graphic_data(graphic_id), delta} {}
 
-UnitTexture::UnitTexture(DataManager *dm, const gamedata::graphic *graphic, bool delta)
+UnitTexture::UnitTexture(GameSpec &spec, const gamedata::graphic *graphic, bool delta)
 	:
 	id{graphic->id},
 	frame_count{graphic->frame_count},
@@ -23,17 +23,17 @@ UnitTexture::UnitTexture(DataManager *dm, const gamedata::graphic *graphic, bool
 	mirroring_mode{graphic->mirroring_mode},
 	frame_rate{graphic->frame_rate},
 	use_up_angles{graphic->mirroring_mode == 24},
-	texture{dm->get_texture(graphic->id)},
+	texture{spec.get_texture(graphic->id)},
 	draw_this{true},
-	sound{dm->get_sound(graphic->sound_id)} {
+	sound{spec.get_sound(graphic->sound_id)} {
 	if (not is_valid()) {
 		this->draw_this = false;
 	}
 
 	// find deltas
 	if (delta) for (auto d : graphic->graphic_deltas.data) {
-		if (dm->get_graphic_data(d.graphic_id)) {
-			auto ut = std::make_unique<UnitTexture>(dm, d.graphic_id, false);
+		if (spec.get_graphic_data(d.graphic_id)) {
+			auto ut = std::make_unique<UnitTexture>(spec, d.graphic_id, false);
 			if (ut->is_valid()) {
 				this->deltas.push_back({std::move(ut), coord::camgame_delta{d.direction_x, d.direction_y}});
 			}

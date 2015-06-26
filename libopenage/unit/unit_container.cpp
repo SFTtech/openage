@@ -123,7 +123,7 @@ bool dispatch_command(id_t, const Command &) {
 	return true;
 }
 
-bool UnitContainer::on_tick() {
+bool UnitContainer::update_all() {
 	// update everything and find objects with no actions
 	std::vector<id_t> to_remove;
 	for (auto &obj : this->live_units) {

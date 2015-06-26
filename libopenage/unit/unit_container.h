@@ -14,6 +14,7 @@ namespace openage {
 class Command;
 class Player;
 class Terrain;
+class TerrainObject;
 class Unit;
 class UnitContainer;
 class UnitType;
@@ -44,7 +45,7 @@ private:
  * the list of units that are currently in use
  * will also give a view of the current game state for networking in later milestones
  */
-class UnitContainer : public TickHandler {
+class UnitContainer {
 public:
 	UnitContainer();
 	~UnitContainer();
@@ -96,7 +97,7 @@ public:
 	 * update dispatched by the game engine
 	 * this will update all game objects
 	 */
-	bool on_tick();
+	bool update_all();
 
 	/**
 	 * gets a list of all units in the container
