@@ -7,7 +7,8 @@
 #include "util/file.h"
 
 #include "engine.h"
-#include "game_main.h"
+#include "game_control.h"
+#include "game_renderer.h"
 
 namespace openage {
 
@@ -35,8 +36,9 @@ int run_game(const main_arguments &args) {
 	timer.start();
 
 	{
-		// create a game that uses the engine.
-		GameMain game{&engine};
+		// create components that use the engine.
+		GameRenderer renderer{&engine};
+		GameControl control{&engine};
 
 		log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
 

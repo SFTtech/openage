@@ -30,6 +30,10 @@ class DrawHandler;
 class TickHandler;
 class ResizeHandler;
 
+class GameSpec;
+class GameMain;
+class Player;
+
 struct coord_data {
 	coord::window window_size{800, 600};
 	coord::phys3 camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0};
@@ -38,7 +42,22 @@ struct coord_data {
 	coord::camgame_delta tile_halfsize{48, 24};  // TODO: get from convert script
 };
 
-class GameMain;
+/**
+ * required values used to construct a game
+ * this includes game spec and players
+ *
+ * this will be identical for each networked
+ * player in a game
+ */
+struct game_settings {
+	int generation_seed;
+
+	// TODO use vector of players
+	unsigned int number_of_players;
+
+	// data version used to create a game
+	std::shared_ptr<GameSpec> spec;
+};
 
 /**
  * main engine container.
@@ -131,6 +150,8 @@ public:
 	 */
 	bool on_resize(coord::window new_size);
 
+	void start_game(const game_settings &settings);
+
 	/**
 	 * draw the current frames per second number on screen.
 	 * save the current framebuffer to a given png file.
@@ -172,6 +193,17 @@ public:
 	 * return the data directory where the engine was started from.
 	 */
 	util::Dir *get_data_dir();
+
+	/**
+	 * return currently running game or null if a game is not
+	 * currently running
+	 */
+	GameMain *get_game();
+
+	/**
+	 * return the current player or null if no active game
+	 */
+	Player *player_focus() const;
 
 	/**
 	 * return this engine's job manager.
@@ -280,6 +312,11 @@ private:
 	 * list of handlers that are executed upon a resize event.
 	 */
 	std::vector<ResizeHandler *> on_resize_handler;
+
+	/**
+	 * the currently running game
+	 */
+	std::unique_ptr<GameMain> game;
 
 	/**
 	 * the frame counter measuring fps.

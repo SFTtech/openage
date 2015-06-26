@@ -5,7 +5,7 @@
 #include "../terrain/terrain_object.h"
 #include "../terrain/terrain_outline.h"
 #include "../util/strings.h"
-#include "../datamanager.h"
+#include "../game_spec.h"
 #include "../log/log.h"
 #include "ability.h"
 #include "action.h"
@@ -47,13 +47,13 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 	return result;
 }
 
-ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
+ObjectProducer::ObjectProducer(GameSpec &spec, const gamedata::unit_object *ud)
 	:
-	datamanager(dm),
+	dataspec(spec),
 	unit_data(*ud),
 	terrain_outline{nullptr},
-	default_tex{dm.get_unit_texture(ud->graphic_standing0)},
-	dead_unit_producer{dm.get_type(ud->dead_unit_id)} {
+	default_tex{spec.get_unit_texture(ud->graphic_standing0)},
+	dead_unit_producer{spec.get_type(ud->dead_unit_id)} {
 
 	// for now just look for type names ending with "_D"
 	this->decay = unit_data.name.substr(unit_data.name.length() - 2) == "_D";
@@ -70,8 +70,8 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	if (dying_sound == -1) {
 		dying_sound = 323; //generic explosion sound
 	}
-	on_create = dm.get_sound(creation_sound);
-	on_destroy = dm.get_sound(dying_sound);
+	on_create = spec.get_sound(creation_sound);
+	on_destroy = spec.get_sound(dying_sound);
 
 	// convert the float to the discrete foundation size...
 	this->foundation_size = {
@@ -88,7 +88,7 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	}
 
 	// graphic set
-	auto standing = dm.get_unit_texture(this->unit_data.graphic_standing0);
+	auto standing = spec.get_unit_texture(this->unit_data.graphic_standing0);
 	if (!standing) {
 
 		// indicates problems with data converion
@@ -96,7 +96,7 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 			<< " has invalid graphic data, try reconverting the data");
 	}
 	this->graphics[graphic_type::standing] = standing;
-	auto dying_tex = dm.get_unit_texture(this->unit_data.graphic_dying0);
+	auto dying_tex = spec.get_unit_texture(this->unit_data.graphic_dying0);
 	if (dying_tex) {
 		this->graphics[graphic_type::dying] = dying_tex;
 	}
@@ -106,12 +106,12 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	this->graphics[graphic_type::work] = this->graphics[graphic_type::standing];
 
 	// pull extra graphics from unit commands
-	auto cmds = dm.get_command_data(this->unit_data.id0);
+	auto cmds = spec.get_command_data(this->unit_data.id0);
 	for (auto cmd : cmds) {
 
 		// same attack / work graphic
 		if (cmd->action_graphic_id == -1 && cmd->proceed_graphic_id > 0) {
-			auto task = dm.get_unit_texture(cmd->proceed_graphic_id);
+			auto task = spec.get_unit_texture(cmd->proceed_graphic_id);
 			if (task) {
 				this->graphics[graphic_type::work] = task;
 				this->graphics[graphic_type::attack] = task;
@@ -120,8 +120,8 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 
 		// seperate work and attack graphics
 		if (cmd->action_graphic_id > 0 && cmd->proceed_graphic_id > 0 ) {
-			auto attack = dm.get_unit_texture(cmd->proceed_graphic_id);
-			auto work = dm.get_unit_texture(cmd->action_graphic_id);
+			auto attack = spec.get_unit_texture(cmd->proceed_graphic_id);
+			auto work = spec.get_unit_texture(cmd->action_graphic_id);
 			if (attack) {
 				this->graphics[graphic_type::attack] = attack;
 			}
@@ -132,7 +132,7 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 
 		// villager carrying resources graphics
 		if (cmd->carrying_graphic_id > 0) {
-			auto carry = dm.get_unit_texture(cmd->carrying_graphic_id);
+			auto carry = spec.get_unit_texture(cmd->carrying_graphic_id);
 			this->graphics[graphic_type::carrying] = carry;
 			if (carry) {
 
@@ -298,18 +298,18 @@ TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, 
 	return nullptr;
 }
 
-MovableProducer::MovableProducer(DataManager &dm, const gamedata::unit_movable *um)
+MovableProducer::MovableProducer(GameSpec &spec, const gamedata::unit_movable *um)
 	:
-	ObjectProducer(dm, um),
+	ObjectProducer(spec, um),
 	unit_data(*um),
-	on_move{dm.get_sound(this->unit_data.move_sound)},
-	on_attack{dm.get_sound(this->unit_data.move_sound)},
-	projectile{dm.get_type(this->unit_data.projectile_unit_id)} {
+	on_move{spec.get_sound(this->unit_data.move_sound)},
+	on_attack{spec.get_sound(this->unit_data.move_sound)},
+	projectile{spec.get_type(this->unit_data.projectile_unit_id)} {
 
 	// extra graphics if available
 	// villagers have invalid attack and walk graphics
 	// it seems these come from the command data instead
-	auto walk = dm.get_unit_texture(this->unit_data.walking_graphics0);
+	auto walk = spec.get_unit_texture(this->unit_data.walking_graphics0);
 	if (!walk) {
 
 		// use standing instead
@@ -322,7 +322,7 @@ MovableProducer::MovableProducer(DataManager &dm, const gamedata::unit_movable *
 		this->graphics[graphic_type::carrying] = walk;
 	}
 
-	auto attack = dm.get_unit_texture(this->unit_data.attack_graphic);
+	auto attack = spec.get_unit_texture(this->unit_data.attack_graphic);
 	if (attack && attack->is_valid()) {
 		this->graphics[graphic_type::attack] = attack;
 	}
@@ -371,9 +371,9 @@ TerrainObject *MovableProducer::place(Unit *unit, std::shared_ptr<Terrain> terra
 	return ObjectProducer::place(unit, terrain, init_pos);
 }
 
-LivingProducer::LivingProducer(DataManager &dm, const gamedata::unit_living *ud)
+LivingProducer::LivingProducer(GameSpec &spec, const gamedata::unit_living *ud)
 	:
-	MovableProducer(dm, ud),
+	MovableProducer(spec, ud),
 	unit_data(*ud) {
 
 	// extra abilities
@@ -404,23 +404,23 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 		if (this->unit_data.id0 == 83) {
 
 			// male graphics
-			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->datamanager.get_type(156); // builder 118
-			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->datamanager.get_type(120); // forager
-			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->datamanager.get_type(592); // sheperd
-			gather_attr.graphics[gamedata::unit_classes::TREES] = this->datamanager.get_type(123); // woodcutter
-			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->datamanager.get_type(579); // gold miner
-			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->datamanager.get_type(124); // stone miner
+			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->dataspec.get_type(156); // builder 118
+			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->dataspec.get_type(120); // forager
+			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->dataspec.get_type(592); // sheperd
+			gather_attr.graphics[gamedata::unit_classes::TREES] = this->dataspec.get_type(123); // woodcutter
+			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->dataspec.get_type(579); // gold miner
+			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->dataspec.get_type(124); // stone miner
 
 		}
 		else {
 
 			// female graphics
-			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->datamanager.get_type(222); // builder 212
-			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->datamanager.get_type(354); // forager
-			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->datamanager.get_type(590); // sheperd
-			gather_attr.graphics[gamedata::unit_classes::TREES] = this->datamanager.get_type(218); // woodcutter
-			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->datamanager.get_type(581); // gold miner
-			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->datamanager.get_type(220); // stone miner
+			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->dataspec.get_type(222); // builder 212
+			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->dataspec.get_type(354); // forager
+			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->dataspec.get_type(590); // sheperd
+			gather_attr.graphics[gamedata::unit_classes::TREES] = this->dataspec.get_type(218); // woodcutter
+			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->dataspec.get_type(581); // gold miner
+			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->dataspec.get_type(220); // stone miner
 		}
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 		unit->give_ability(std::make_shared<BuildAbility>(this->on_attack));
@@ -443,15 +443,15 @@ TerrainObject *LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrai
 	return MovableProducer::place(unit, terrain, init_pos);
 }
 
-BuildingProducer::BuildingProducer(DataManager &dm, const gamedata::unit_building *ud)
+BuildingProducer::BuildingProducer(GameSpec &spec, const gamedata::unit_building *ud)
 	:
-	datamanager(dm),
+	dataspec(spec),
 	unit_data{*ud},
-	texture{dm.get_unit_texture(ud->graphic_standing0)},
-	destroyed{dm.get_unit_texture(ud->graphic_dying0)},
-	trainable1{dm.get_type(83)}, // 83 = m villager
-	trainable2{dm.get_type(293)}, // 293 = f villager
-	projectile{dm.get_type(this->unit_data.projectile_unit_id)},
+	texture{spec.get_unit_texture(ud->graphic_standing0)},
+	destroyed{spec.get_unit_texture(ud->graphic_dying0)},
+	trainable1{spec.get_type(83)}, // 83 = m villager
+	trainable2{spec.get_type(293)}, // 293 = f villager
+	projectile{spec.get_type(this->unit_data.projectile_unit_id)},
 	foundation_terrain{ud->terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
 
@@ -467,8 +467,8 @@ BuildingProducer::BuildingProducer(DataManager &dm, const gamedata::unit_buildin
 	if (dying_sound == -1) {
 		dying_sound = 323; //generic explosion sound
 	}
-	on_create = dm.get_sound(creation_sound);
-	on_destroy = dm.get_sound(dying_sound);
+	on_create = spec.get_sound(creation_sound);
+	on_destroy = spec.get_sound(dying_sound);
 
 	// convert the float to the discrete foundation size...
 	this->foundation_size = {
@@ -477,10 +477,10 @@ BuildingProducer::BuildingProducer(DataManager &dm, const gamedata::unit_buildin
 	};
 
 	// graphic set
-	this->graphics[graphic_type::construct] = dm.get_unit_texture(ud->construction_graphic_id);
-	this->graphics[graphic_type::standing] = dm.get_unit_texture(ud->graphic_standing0);
-	this->graphics[graphic_type::attack] = dm.get_unit_texture(ud->graphic_standing0);
-	auto dying_tex = dm.get_unit_texture(ud->graphic_dying0);
+	this->graphics[graphic_type::construct] = spec.get_unit_texture(ud->construction_graphic_id);
+	this->graphics[graphic_type::standing] = spec.get_unit_texture(ud->graphic_standing0);
+	this->graphics[graphic_type::attack] = spec.get_unit_texture(ud->graphic_standing0);
+	auto dying_tex = spec.get_unit_texture(ud->graphic_dying0);
 	if (dying_tex) {
 		this->graphics[graphic_type::dying] = dying_tex;
 	}
@@ -605,7 +605,7 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	u.log(MSG(dbg) << "adding annex " << annex_id);
 
 	// find annex foundation size
-	auto b = datamanager.get_building_data(annex_id);
+	auto b = dataspec.get_building_data(annex_id);
 	coord::tile_delta annex_foundation = {
 		static_cast<int>(b->radius_size0 * 2),
 		static_cast<int>(b->radius_size1 * 2),
@@ -622,7 +622,7 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	annex_loc->place(t, start_tile, state);
 
 	// weak ptr for use in lambda drawing functions
-	auto annex_type = datamanager.get_type(annex_id);
+	auto annex_type = dataspec.get_type(annex_id);
 
 	// create special drawing functions for annexes,
 	annex_loc->draw = [annex_loc, annex_type, &u, c]() {
@@ -642,12 +642,12 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	return annex_loc;
 }
 
-ProjectileProducer::ProjectileProducer(DataManager &dm, const gamedata::unit_projectile *pd)
+ProjectileProducer::ProjectileProducer(GameSpec &spec, const gamedata::unit_projectile *pd)
 	:
 	unit_data{*pd},
-	tex{dm.get_unit_texture(this->unit_data.graphic_standing0)},
-	sh{dm.get_unit_texture(3379)}, // 3379 = general arrow shadow
-	destroyed{dm.get_unit_texture(this->unit_data.graphic_dying0)} {
+	tex{spec.get_unit_texture(this->unit_data.graphic_standing0)},
+	sh{spec.get_unit_texture(3379)}, // 3379 = general arrow shadow
+	destroyed{spec.get_unit_texture(this->unit_data.graphic_dying0)} {
 
 	// graphic set
 	this->graphics[graphic_type::standing] = this->tex;

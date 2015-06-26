@@ -9,6 +9,8 @@
 #include "unit/unit.h"
 #include "unit/unit_type.h"
 #include "game_main.h"
+#include "game_save.h"
+#include "game_spec.h"
 
 namespace openage {
 namespace gameio {
@@ -29,7 +31,7 @@ void load_unit(std::ifstream &file, openage::GameMain *game) {
 	file >> ne;
 	file >> se;
 
-	UnitType &saved_type = *game->datamanager.get_type(pr_id);
+	UnitType &saved_type = *game->get_settings()->spec->get_type(pr_id);
 	game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
 }
 

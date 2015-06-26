@@ -16,8 +16,8 @@
 
 namespace openage {
 
-class DataManager;
 class GameMain;
+class GameSpec;
 class Terrain;
 class TerrainObject;
 class Texture;
@@ -35,7 +35,7 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
  */
 class ObjectProducer: public UnitType {
 public:
-	ObjectProducer(DataManager &dm, const gamedata::unit_object *ud);
+	ObjectProducer(GameSpec &spec, const gamedata::unit_object *ud);
 	virtual ~ObjectProducer();
 
 	int id() const override;
@@ -44,7 +44,7 @@ public:
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
-	DataManager &datamanager;
+	GameSpec &dataspec;
 	const gamedata::unit_object unit_data;
 
 	/**
@@ -68,7 +68,7 @@ protected:
  */
 class MovableProducer: public ObjectProducer {
 public:
-	MovableProducer(DataManager &dm, const gamedata::unit_movable *);
+	MovableProducer(GameSpec &spec, const gamedata::unit_movable *);
 	virtual ~MovableProducer();
 
 	void initialise(Unit *, Player &) override;
@@ -91,7 +91,7 @@ protected:
  */
 class LivingProducer: public MovableProducer {
 public:
-	LivingProducer(DataManager &dm, const gamedata::unit_living *);
+	LivingProducer(GameSpec &spec, const gamedata::unit_living *);
 	virtual ~LivingProducer();
 
 	void initialise(Unit *, Player &) override;
@@ -109,7 +109,7 @@ private:
  */
 class BuildingProducer: public UnitType {
 public:
-	BuildingProducer(DataManager &dm, const gamedata::unit_building *ud);
+	BuildingProducer(GameSpec &spec, const gamedata::unit_building *ud);
 	virtual ~BuildingProducer();
 
 	int id() const override;
@@ -118,7 +118,7 @@ public:
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
-	DataManager &datamanager;
+	GameSpec &dataspec;
 	const gamedata::unit_building unit_data;
 
 	/**
@@ -149,7 +149,7 @@ private:
  */
 class ProjectileProducer: public UnitType {
 public:
-	ProjectileProducer(DataManager &dm, const gamedata::unit_projectile *);
+	ProjectileProducer(GameSpec &spec, const gamedata::unit_projectile *);
 	virtual ~ProjectileProducer();
 
 	int id() const override;

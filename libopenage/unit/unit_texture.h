@@ -11,7 +11,7 @@
 
 namespace openage {
 
-class DataManager;
+class GameSpec;
 class Texture;
 class Sound;
 
@@ -32,8 +32,8 @@ public:
 	 * Note that the game data contains loops in delta links
 	 * which mean recursive loading should be avoided
 	 */
-	UnitTexture(DataManager *dm, uint16_t graphic_id, bool delta=true);
-	UnitTexture(DataManager *dm, const gamedata::graphic *graphic, bool delta=true);
+	UnitTexture(GameSpec &spec, uint16_t graphic_id, bool delta=true);
+	UnitTexture(GameSpec &spec, const gamedata::graphic *graphic, bool delta=true);
 
 	/**
 	 * const attributes of the graphic
