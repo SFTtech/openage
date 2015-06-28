@@ -352,14 +352,14 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	 * distance per millisecond -- consider original game speed
 	 * where 1.5 in game seconds pass in 1 real second
 	 */
-	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;
+	coord::phys_t sp = coord::phys_t{this->unit_data.speed} * 666;
 	unit->add_attribute(new Attribute<attr_type::speed>(sp));
 
 	// projectile of melee attacks
 	if (this->unit_data.projectile_unit_id > 0 && this->projectile) {
 
 		// calculate requirements for ranged attacks
-		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
+		coord::phys_t range_phys = coord::phys_t{this->unit_data.max_range};
 		unit->add_attribute(new Attribute<attr_type::attack>(this->projectile, range_phys, 48000, 1, this->graphics));
 	}
 	else {
@@ -528,7 +528,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
 
 	if (this->unit_data.projectile_unit_id > 0 && this->projectile) {
-		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
+		coord::phys_t range_phys = coord::phys_t{this->unit_data.max_range};
 		unit->add_attribute(new Attribute<attr_type::attack>(this->projectile, range_phys, 350000, 1, this->graphics));
 		unit->give_ability(std::make_shared<AttackAbility>());
 	}
@@ -588,8 +588,8 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 
 			// make objects for annex
 			coord::phys3 a_pos = u->location->pos.draw;
-			a_pos.ne += annex.misplaced0 * coord::settings::phys_per_tile;
-			a_pos.se += annex.misplaced1 * coord::settings::phys_per_tile;
+			a_pos.ne += coord::phys_t{annex.misplaced0};
+			a_pos.se += coord::phys_t{annex.misplaced1};
 			this->make_annex(*u, terrain, annex.unit_id, a_pos, i == 0);
 		}
 	}
@@ -613,8 +613,8 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 
 	// producers place by the nw tile
 	coord::phys3 start_tile = annex_pos;
-	start_tile.ne -= b->radius_size0 * coord::settings::phys_per_tile;
-	start_tile.se -= b->radius_size1 * coord::settings::phys_per_tile;
+	start_tile.ne -= coord::phys_t{b->radius_size0};
+	start_tile.se -= coord::phys_t{b->radius_size1};
 
 	// create and place on terrain
 	TerrainObject *annex_loc = u.location->make_annex<SquareObject>(annex_foundation);
@@ -678,7 +678,7 @@ void ProjectileProducer::initialise(Unit *unit, Player &) {
 	unit->graphics = &this->graphics;
 
 	// projectile speed
-	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;
+	coord::phys_t sp = coord::phys_t{this->unit_data.speed} / 666;
 	unit->add_attribute(new Attribute<attr_type::speed>(sp));
 	unit->add_attribute(new Attribute<attr_type::projectile>(this->unit_data.projectile_arc));
 	unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));

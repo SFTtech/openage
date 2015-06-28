@@ -19,6 +19,8 @@ struct chunk {
 	#include "ops/abs.h"
 
 	tile to_tile(tile_delta pos_on_chunk);
+
+	static constexpr tile_t tiles_per_chunk = 16;
 };
 
 struct chunk_delta {

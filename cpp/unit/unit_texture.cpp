@@ -98,7 +98,7 @@ void UnitTexture::draw(const coord::camgame &draw_pos, coord::phys3_delta &dir, 
 		// up  1 => tilt 0
 		// up -1 => tilt 1
 		// up has a scale 5 times smaller
-		double len = sqrt(dir.ne*dir.ne + dir.se*dir.se + dir.up*dir.up/25);
+		double len = std::sqrt(dir.ne*dir.ne + dir.se*dir.se + dir.up*dir.up/25).to_double();
 		double up = static_cast<double>(dir.up/5.0) / len;
 		frame_to_use = (0.5 - (0.5 * up)) * this->frame_count;
 	}
@@ -145,7 +145,7 @@ unsigned int dir_group(coord::phys3_delta dir, unsigned int angles) {
 	unsigned int first_angle = 5 * angles / 8;
 
 	// normalise direction vector
-	double len = std::hypot(dir.ne, dir.se);
+	double len = std::hypot(dir.ne, dir.se).to_double();
 	double dir_ne = static_cast<double>(dir.ne) / len;
 	double dir_se = static_cast<double>(dir.se) / len;
 

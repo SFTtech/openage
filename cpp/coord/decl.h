@@ -5,6 +5,8 @@
 
 #include <stdint.h>
 
+#include "fixed_point.h"
+
 /*
  * forward declarations of all coordinate structs,
  * scalar type name aliases, and scaling factors
@@ -16,7 +18,7 @@ namespace openage {
 namespace coord {
 
 /* physics-based vector types */
-using phys_t = int64_t;
+using phys_t = FixedPoint<int64_t, 16>;
 
 struct phys2;
 struct phys2_delta;
@@ -61,16 +63,6 @@ struct vec2f;
 struct vec2f_delta;
 struct vec3f;
 struct vec3f_delta;
-
-
-namespace settings {
-constexpr unsigned phys_t_radix_pos      = 16;
-constexpr phys_t   phys_t_scaling_factor = (1 << phys_t_radix_pos);
-constexpr phys_t   phys_per_tile         = phys_t_scaling_factor;
-constexpr unsigned tiles_per_chunk_bits  = 4; //yeah, this needs a better name.
-constexpr tile_t   tiles_per_chunk       = (1 << tiles_per_chunk_bits);
-} // namespace settings
-
 
 } // namespace coord
 } // namespace openage

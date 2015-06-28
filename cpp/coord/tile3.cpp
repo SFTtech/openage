@@ -19,9 +19,9 @@ tile_delta tile3_delta::to_tile() const {
 
 phys3 tile3::to_phys3(phys3_delta frac) {
 	phys3 result;
-	result.ne = (((phys_t) ne) << settings::phys_t_radix_pos) + frac.ne;
-	result.se = (((phys_t) se) << settings::phys_t_radix_pos) + frac.se;
-	result.up = (((phys_t) up) << settings::phys_t_radix_pos) + frac.up;
+	result.ne = phys_t{ne} + frac.ne;
+	result.se = phys_t{se} + frac.se;
+	result.up = phys_t{up} + frac.up;
 	return result;
 }
 

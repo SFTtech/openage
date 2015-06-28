@@ -66,21 +66,6 @@ std::ostream &operator <<(std::ostream &os, FloatFixed<decimals, w> f) {
 }
 
 
-template<unsigned divisor, unsigned decimals=3, unsigned w=0>
-struct FixedPoint {
-	int64_t value;
-};
-
-
-template<unsigned divisor, unsigned decimals, unsigned w>
-std::ostream &operator <<(std::ostream &os, FixedPoint<divisor, decimals, w> f) {
-	static_assert(divisor > 0, "Divisor for fixed-point numbers must be > 0");
-
-	os << FloatFixed<decimals, w>{((float) f.value) / (float) divisor};
-	return os;
-}
-
-
 /**
  * Formats fmt to a std::string
  */

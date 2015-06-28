@@ -369,7 +369,7 @@ bool SquareObject::intersects(const TerrainObject &other, const coord::phys3 &po
 }
 
 coord::phys_t SquareObject::min_axis() const {
-	return std::min( this->size.ne, this->size.se ) * coord::settings::phys_per_tile;
+	return coord::phys_t{std::min( this->size.ne, this->size.se )};
 }
 
 RadialObject::RadialObject(Unit &u, float rad)
@@ -380,7 +380,7 @@ RadialObject::RadialObject(Unit &u, float rad)
 RadialObject::RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex)
 	:
 	TerrainObject(u),
-	phys_radius(coord::settings::phys_per_tile * rad) {
+	phys_radius(rad) {
 	this->outline_texture = out_tex;
 }
 
@@ -458,8 +458,8 @@ tile_range building_center(coord::phys3 west, coord::tile_delta size) {
 	// TODO temporary hacky solution until openage::coord has been properly fixed.
 	coord::phys2 draw_pos = result.start.to_phys2();
 
-	draw_pos.ne += ((size.ne - 1) * coord::settings::phys_per_tile) / 2;
-	draw_pos.se += ((size.se - 1) * coord::settings::phys_per_tile) / 2;
+	draw_pos.ne += coord::phys_t{size.ne - 1} / 2;
+	draw_pos.se += coord::phys_t{size.se - 1} / 2;
 
 	result.draw  = draw_pos.to_phys3();
 	return result;

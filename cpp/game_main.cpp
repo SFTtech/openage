@@ -419,13 +419,11 @@ bool GameMain::on_input(SDL_Event *e) {
 					    " x " << std::setw(9) << mousepos_window.x <<
 					    " y " << std::setw(9) << mousepos_window.y);
 
-					constexpr auto phys_per_tile = openage::coord::settings::phys_per_tile;
-
 					log::log(MSG(dbg) <<
 					    "LMB [phys3]:    "
-					    " NE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.ne} <<
-					    " SE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.se} <<
-					    " UP " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.up});
+					    " NE " << util::FloatFixed<3, 8>{mousepos_phys3.ne.to_float()} <<
+					    " SE " << util::FloatFixed<3, 8>{mousepos_phys3.se.to_float()} <<
+					    " UP " << util::FloatFixed<3, 8>{mousepos_phys3.up.to_float()});
 
 					log::log(MSG(dbg) <<
 					    "LMB [tile]:     "

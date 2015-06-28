@@ -25,11 +25,9 @@ phys3_delta camgame_delta::to_phys3(phys_t up) {
 	// apply scaling factor, to get 'scaled'
 	// scaling factor: w/2 for x, h/2 for y
 	// plus the phys_per_tu fixed-point scaling factor
-	vec2 scaled;
-	scaled.x = (settings::phys_per_tile * (phys_t) x) /
-		(phys_t) engine_coord_data->tile_halfsize.x;
-	scaled.y = (settings::phys_per_tile * (phys_t) y) /
-		(phys_t) engine_coord_data->tile_halfsize.y;
+	phys_t scaled_x = phys_t{x} / phys_t{engine_coord_data->tile_halfsize.x};
+	phys_t scaled_y = phys_t{y} / phys_t{engine_coord_data->tile_halfsize.y};
+
 
 	// apply transformation matrix to 'scaled',
 	// to get the relative phys3 position
@@ -46,8 +44,8 @@ phys3_delta camgame_delta::to_phys3(phys_t up) {
 	//  (se) = (+0.5 -0.5 -0.5) (scaled.y)
 	//  (up) = (+0.0 +0.0 +1.0) (      up)
 	phys3_delta result;
-	result.ne = (scaled.x + scaled.y + up)/2;
-	result.se = (scaled.x - scaled.y - up)/2;
+	result.ne = (scaled_x + scaled_y + up) / 2;
+	result.se = (scaled_x - scaled_y - up) / 2;
 	result.up = (                      up);
 
 	return result;

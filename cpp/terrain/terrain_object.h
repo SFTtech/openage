@@ -60,8 +60,8 @@ tile_range building_center(coord::phys3 west, coord::tile_delta size);
  * half a tile
  */
 constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
-	coord::settings::phys_per_tile / 2,
-	coord::settings::phys_per_tile / 2,
+	0.5f,
+	0.5f,
 	0
 };
 

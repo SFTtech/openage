@@ -32,7 +32,7 @@ Path to_point(coord::phys3 start,
 	auto valid_end = [&](const coord::phys3 &point) -> bool {
 		coord::phys_t dx = point.ne - end.ne;
 		coord::phys_t dy = point.se - end.se;
-		return std::hypot(dx, dy) < path_grid_size;
+		return std::hypot(dx, dy).to_float() < path_grid_size;
 	};
 	auto h = [&](const coord::phys3 &point) -> cost_t { return euclidean_cost(point, end); };
 	return a_star(start, valid_end, h, passable);
@@ -47,7 +47,7 @@ Path to_object(openage::TerrainObject *to_move,
 		return end->from_edge(pos) < rad;
 	};
 	auto heuristic = [&](const coord::phys3 &pos) -> cost_t {
-		return end->from_edge(pos) - to_move->min_axis() / 2;
+		return static_cast<cost_t>(end->from_edge(pos) - (to_move->min_axis() / 2));
 	};
 	return a_star(start, valid_end, heuristic, to_move->passable);
 }
@@ -93,7 +93,7 @@ Path a_star(coord::phys3 start,
 		if (valid_end(best_candidate->position)) {
 			log::log(MSG(dbg) <<
 				"path cost is " <<
-				util::FloatFixed<3, 8>{closest_node->future_cost / coord::settings::phys_per_tile});
+				util::FloatFixed<3, 8>{ coord::phys_t {closest_node->future_cost}.to_float() });
 
 			return best_candidate->generate_backtrace();
 		}
@@ -142,7 +142,7 @@ Path a_star(coord::phys3 start,
 
 	log::log(MSG(dbg) <<
 		"incomplete path cost is " <<
-		util::FloatFixed<3, 8>{closest_node->future_cost / coord::settings::phys_per_tile});
+		util::FloatFixed<3, 8>{ coord::phys_t {closest_node->future_cost}.to_float()});
 
 	return closest_node->generate_backtrace();
 }
