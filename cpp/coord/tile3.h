@@ -20,7 +20,7 @@ struct tile3 {
 	#include "ops/abs.h"
 
 	tile to_tile() const;
-	phys3 to_phys3(phys3_delta frac = {settings::phys_per_tile / 2, settings::phys_per_tile / 2, 0});
+	phys3 to_phys3(phys3_delta frac = {0.5f, 0.5f, 0});
 };
 
 struct tile3_delta {

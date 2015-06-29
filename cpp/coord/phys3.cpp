@@ -37,37 +37,29 @@ camgame_delta phys3_delta::to_camgame() const {
 	//                  (ne)
 	// (x) = (+1 +1 +0) (se)
 	// (y) = (+1 -1 +1) (up)
-	vec2 scaled;
-	scaled.x = +1 * this->ne +1 * this->se +0 * this->up;
-	scaled.y = +1 * this->ne -1 * this->se +1 * this->up;
+	phys_t x = +1 * this->ne +1 * this->se +0 * this->up;
+	phys_t y = +1 * this->ne -1 * this->se +1 * this->up;
 
 	//remove scaling factor from scaled, to get result
 	//scaling factor: w/2 for x, h/2 for y
 	//and the (1 << 16) fixed-point scaling factor for both.
 	camgame_delta result;
-	result.x = (pixel_t) util::div(scaled.x * engine_coord_data->tile_halfsize.x, settings::phys_per_tile);
-	result.y = (pixel_t) util::div(scaled.y * engine_coord_data->tile_halfsize.y, settings::phys_per_tile);
+	result.x = static_cast<pixel_t>(x * phys_t{engine_coord_data->tile_halfsize.x});
+	result.y = static_cast<pixel_t>(y * phys_t{engine_coord_data->tile_halfsize.y});
 
 	return result;
 }
 
 tile3 phys3::to_tile3() const {
-	tile3 result;
-	result.ne = (ne >> settings::phys_t_radix_pos);
-	result.se = (se >> settings::phys_t_radix_pos);
-	result.up = (up >> settings::phys_t_radix_pos);
-	return result;
+	return tile3 { ne.to_int(), se.to_int(), up.to_int() };
 }
 
 phys3_delta phys3::get_fraction() {
 	phys3_delta result;
 
-	// define a bitmask that keeps the last n bits
-	decltype(result.ne) bitmask = ((1 << settings::phys_t_radix_pos) - 1);
-
-	result.ne = (ne & bitmask);
-	result.se = (se & bitmask);
-	result.up = (up & bitmask);
+	result.ne = ne.get_fraction();
+	result.se = se.get_fraction();
+	result.up = up.get_fraction();
 	return result;
 }
 

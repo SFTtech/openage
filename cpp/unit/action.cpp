@@ -484,7 +484,7 @@ void MoveAction::update(unsigned int time) {
 		coord::phys3_delta move_dir = waypoint - new_position;
 
 		// normalise dir
-		coord::phys_t distance_to_waypoint = (coord::phys_t) std::hypot(move_dir.ne, move_dir.se);
+		coord::phys_t distance_to_waypoint = std::hypot(move_dir.ne, move_dir.se);
 
 		if (distance_to_waypoint <= distance_to_move) {
 			distance_to_move -= distance_to_waypoint;
@@ -574,7 +574,7 @@ void MoveAction::set_distance() {
 	}
 	else {
 		coord::phys3_delta move_dir = this->target - this->entity->location->pos.draw;
-		this->distance_to_target = static_cast<coord::phys_t>(std::hypot(move_dir.ne, move_dir.se));
+		this->distance_to_target = std::hypot(move_dir.ne, move_dir.se);
 	}
 }
 
@@ -906,8 +906,8 @@ ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
 
 	// distance and time to target
 	coord::phys3_delta d = target - this->entity->location->pos.draw;
-	coord::phys_t distance_to_target = (coord::phys_t) std::hypot(d.ne, d.se);
-	int flight_time = distance_to_target / projectile_speed;
+	coord::phys_t distance_to_target = std::hypot(d.ne, d.se);
+	int flight_time = (distance_to_target / projectile_speed).to_int();
 
 
 	if (projectile_arc < 0) {

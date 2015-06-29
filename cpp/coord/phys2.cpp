@@ -18,20 +18,14 @@ phys3_delta phys2_delta::to_phys3(phys_t up) const {
 }
 
 tile phys2::to_tile() const {
-	tile result;
-	result.ne = (ne >> settings::phys_t_radix_pos);
-	result.se = (se >> settings::phys_t_radix_pos);
-	return result;
+	return tile{ ne.to_int(), se.to_int() };
 }
 
 phys2_delta phys2::get_fraction() const {
 	phys2_delta result;
 
-	// define a bitmask that keeps the last n bits
-	decltype(result.ne) bitmask = ((1 << settings::phys_t_radix_pos) - 1);
-
-	result.ne = (ne & bitmask);
-	result.se = (se & bitmask);
+	result.ne = ne.get_fraction();
+	result.se = se.get_fraction();
 	return result;
 }
 

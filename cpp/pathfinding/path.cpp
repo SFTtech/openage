@@ -27,8 +27,8 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 	heap_node(nullptr) {
 
 	if (prev) {
-		cost_t dx = this->position.ne - prev->position.ne;
-		cost_t dy = this->position.se - prev->position.se;
+		cost_t dx = static_cast<cost_t>(this->position.ne - prev->position.ne);
+		cost_t dy = static_cast<cost_t>(this->position.se - prev->position.se);
 		cost_t hyp = std::hypot(dx, dy);
 		this->dir_ne = dx / hyp;
 		this->dir_se = dy / hyp;
@@ -59,9 +59,9 @@ bool Node::operator ==(const Node &other) const {
 }
 
 cost_t Node::cost_to(const Node &other) const {
-	cost_t dx = this->position.ne - other.position.ne;
-	cost_t dy = this->position.se - other.position.se;
-	return std::hypot(dx, dy) * other.factor * this->factor;
+	coord::phys_t dx = this->position.ne - other.position.ne;
+	coord::phys_t dy = this->position.se - other.position.se;
+	return static_cast<cost_t>(std::hypot(dx, dy)) * other.factor * this->factor;
 }
 
 Path Node::generate_backtrace() {
@@ -97,10 +97,11 @@ bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::p
 	// interpolate between points and make passablity checks
 	// (dont check starting position)
 	for (int i = 1; i <= samples; ++i) {
-		double percent = (double) i / samples;
-		coord::phys_t ne = (1.0 - percent) * start->position.ne + percent * end->position.ne;
-		coord::phys_t se = (1.0 - percent) * start->position.se + percent * end->position.se;
-		coord::phys_t up = (1.0 - percent) * start->position.up + percent * end->position.up;
+		coord::phys_t percent = coord::phys_t {(double) i / samples};
+
+		coord::phys_t ne = (1 - percent) * start->position.ne + percent * end->position.ne;
+		coord::phys_t se = (1 - percent) * start->position.se + percent * end->position.se;
+		coord::phys_t up = (1 - percent) * start->position.up + percent * end->position.up;
 
 		if (!passable(coord::phys3{ne, se, up})) {
 			return false;

@@ -56,7 +56,7 @@ using heap_t = datastructure::PairingHeap<node_pt, compare_node_cost>;
  *
  * This equals a node grid size of (phys/tile) / 8.
  */
-constexpr int path_grid_size = coord::settings::phys_per_tile >> 3;
+constexpr float path_grid_size = 1 / 8.0f;
 
 /**
  * Phys3 delta coordinates to select for path neighbors.

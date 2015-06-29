@@ -32,7 +32,7 @@ class ResizeHandler;
 
 struct coord_data {
 	coord::window window_size{800, 600};
-	coord::phys3 camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0};
+	coord::phys3 camgame_phys{10, 10, 0};
 	coord::window camgame_window{400, 300};
 	coord::window camhud_window{0, 600};
 	coord::camgame_delta tile_halfsize{48, 24};  // TODO: get from convert script

@@ -19,6 +19,40 @@ namespace coord {
 namespace tests {
 
 /**
+ * This function tests fixed point numbers (the FixedPoint class)
+ */
+int fixed_point_0() {
+	phys_t expected;
+	phys_t results;
+
+	int stage = 0;
+	if (phys_t{3} + phys_t{5} != phys_t{8}) { return stage; }
+
+	stage = 1;
+	if (phys_t{1} * phys_t{1} != phys_t{1}) { return stage; }
+
+	stage = 2;
+	results = phys_t{2};
+	results *= phys_t{5};
+	if (results != phys_t{10}) { return stage; }
+
+	stage = 3;
+	if (phys_t{12} / phys_t{4} != phys_t{3}) { return stage; }
+
+	stage = 4;
+	if (phys_t{1} / phys_t{2} != phys_t::from_raw(32768)) { return stage; }
+
+	stage = 5;
+	// Test calculations with 2-powers (1/2, 1/4 and 1/8 etc. should be fine)
+	if (phys_t{0.5f} * phys_t{3} != phys_t{1.5f}) { return stage; }
+
+	stage = 6;
+	if (phys_t{7} - 1 != phys_t{4} + 2) { return stage; }
+
+	return -1;
+}
+
+/**
  * This function tests the methods of phys2.
  */
 int phys2_0() {
@@ -44,7 +78,7 @@ int phys2_0() {
 	// Test phys size just under a whole tile
 	tile expected_tile{0, 0};
 	
-	p = {65535, 65535};
+	p = {phys_t::from_raw(65535), phys_t::from_raw(65535)};
 	
 	tile results_tile = p.to_tile();
 	if (not (results_tile == expected_tile)) { return stage; }
@@ -53,7 +87,7 @@ int phys2_0() {
 	// Test phys size right at a whole tile size
 	expected_tile = {1, 2};
 	
-	p = {65536, 131072};
+	p = {phys_t::from_raw(65536), phys_t::from_raw(131072)};
 
 	results_tile = p.to_tile();
 	if ( not(results_tile == expected_tile)) { return stage; }
@@ -62,7 +96,7 @@ int phys2_0() {
 	// Test phys size in the middle of tile size
 	expected_tile = {1, 2};
 	
-	p = {65789, 142311};
+	p = {phys_t::from_raw(65789), phys_t::from_raw(142311)};
 	
 	results_tile = p.to_tile();
 	if ( not(results_tile == expected_tile)) { return stage; }
@@ -71,9 +105,9 @@ int phys2_0() {
 	// Test get fraction
 	// As seen above 65536 is a whole tile, so here test getting the
 	// Fraction with the whole tiles removed
-	phys2_delta expected_p2d{32768, 32768};
+	phys2_delta expected_p2d{phys_t::from_raw(32768), phys_t::from_raw(32768)};
 	
-	p = {98304, 98304};
+	p = {phys_t::from_raw(98304), phys_t::from_raw(98304)};
 	
 	phys2_delta results_p2d = p.get_fraction();
 	if (not (results_p2d == expected_p2d)) { return stage; }
@@ -132,7 +166,7 @@ int tile_0() {
 	stage += 1; // 3
 	// Test to_phys2 with default arg
 	
-	phys2 expected_p2{32768, 32768};
+	phys2 expected_p2{phys_t::from_raw(32768), phys_t::from_raw(32768)};
 	
 	t = {0, 0};
 	
@@ -142,7 +176,7 @@ int tile_0() {
 	stage += 1; // 4
 	// Test to_phys with default arg and non zero tile
 	
-	expected_p2 = {98304, 98304};
+	expected_p2 = {phys_t::from_raw(98304), phys_t::from_raw(98304)};
   
 	t = {1, 1};
 	
@@ -152,11 +186,11 @@ int tile_0() {
 	stage += 1; // 5
 	// Test to_phys with arg
 	
-	expected_p2 = {16384, 16384};
+	expected_p2 = {phys_t::from_raw(16384), phys_t::from_raw(16384)};
 	
 	t = {0, 0};
 	
-	results_p2 = t.to_phys2({16384, 16384});
+	results_p2 = t.to_phys2({phys_t::from_raw(16384), phys_t::from_raw(16384)});
 	if (not (results_p2 == expected_p2)) { return stage; }
 	
 	stage += 1; // 6
@@ -254,7 +288,7 @@ int tile_and_phys2_0() {
 	// Test convert phys2 to tile and back, phys under whole tile size
 	
 	phys2 expected_p2{0, 0};
-	phys2 p2{65535, 65535};
+	phys2 p2{phys_t::from_raw(65535), phys_t::from_raw(65535)};
 	
 	phys2 results_p2 = p2.to_tile().to_phys2({0, 0});
 	if (not (results_p2 == expected_p2)) { return stage; }
@@ -262,8 +296,8 @@ int tile_and_phys2_0() {
 	stage += 1; // 3
 	// Test convert phys2 to tile and back, phys at whole tile size
 	
-	expected_p2 = {65536, 65536};
-	p2 = {65536, 65536};
+	expected_p2 = {phys_t::from_raw(65536), phys_t::from_raw(65536)};
+	p2 = {phys_t::from_raw(65536), phys_t::from_raw(65536)};
 	
 	results_p2 = p2.to_tile().to_phys2({0, 0});
 	if (not (results_p2 == expected_p2)) { return stage; }
@@ -340,7 +374,7 @@ int phys3_0() {
 	// we should see -96 in x from moving one ne and one se
 	// then -24 from moving one up
 	expected_c = {-96, -24};
-	engine_coord_data->camgame_phys = {720896, 720896, 65536};
+	engine_coord_data->camgame_phys = {phys_t::from_raw(720896), phys_t::from_raw(720896), phys_t::from_raw(65536)};
 	
 	results_c = gameP3.to_camgame();
 	if( not(results_c == expected_c)) { return stage; } 
@@ -349,7 +383,7 @@ int phys3_0() {
 	// Testing phys3 to tile3 just under a whole tile size
 
 	tile3 expected_tile{0, 0, 0}; 
-	p3 = {65535, 65535, 65535};
+	p3 = {0.99f, 0.99f, 0.99f};
 
 	tile3 results_tile = p3.to_tile3();
 	if (not(results_tile == expected_tile)) { return stage; }
@@ -358,7 +392,7 @@ int phys3_0() {
 	// Testing phys3 to tile3 at whole tile sizes
 
 	expected_tile = {1, 2, 3};
-	p3 = {65536, 131072, 196608};
+	p3 = {phys_t::from_raw(65536), phys_t::from_raw(131072), phys_t::from_raw(196608)};
 
 	results_tile = p3.to_tile3();
 	if( not(results_tile == expected_tile)) { return stage; }
@@ -367,7 +401,7 @@ int phys3_0() {
 	// Testing phys3 to tile3 above whole tile sizes
 
 	expected_tile = {1, 2, 3};
-	p3 = {85641, 171072, 205465};
+	p3 = {phys_t::from_raw(85641), phys_t::from_raw(171072), phys_t::from_raw(205465)};
 
 	results_tile = p3.to_tile3();
 	if( not(results_tile == expected_tile)) { return stage; }
@@ -375,8 +409,8 @@ int phys3_0() {
 	stage += 1; // 6
 	// Testing phys3 get_fraction just below whole tile size
 
-	phys3_delta expected_p3d{65535, 65535, 65535};
-	p3 = {65535, 131071, 196607};
+	phys3_delta expected_p3d{phys_t::from_raw(65535), phys_t::from_raw(65535), phys_t::from_raw(65535)};
+	p3 = {phys_t::from_raw(65535), phys_t::from_raw(131071), phys_t::from_raw(196607)};
 
 	phys3_delta results_p3d = p3.get_fraction();
 	if( not(results_p3d == expected_p3d)) { return stage; }
@@ -385,16 +419,16 @@ int phys3_0() {
 	// Testing phys3 get_fraction at whole tile size
 
 	expected_p3d = {0, 0, 0};
-	p3 = {65536, 131072, 196608};
+	p3 = {phys_t::from_raw(65536), phys_t::from_raw(131072), phys_t::from_raw(196608)};
 
 	results_p3d = p3.get_fraction();
 	if( not(results_p3d == expected_p3d)) { return stage; }
 	
-	stage += 1; // 7
+	stage += 1; // 8
 	// Testing phys3 get_fraction above whole tile size
 
-	expected_p3d = {1, 1, 1};
-	p3 = {65537, 131073, 196609};
+	expected_p3d = {phys_t::from_raw(1), phys_t::from_raw(1), phys_t::from_raw(1)};
+	p3 = {phys_t::from_raw(65537), phys_t::from_raw(131073), phys_t::from_raw(196609)};
 
 	results_p3d = p3.get_fraction();
 	if( not(results_p3d == expected_p3d)) { return stage; }
@@ -412,7 +446,7 @@ int phys3_delta_0() {
 
 	// phys3_delta to camgame_delta 1 tile ne
 	camgame_delta expected_cd{48, 24};
-	phys3_delta p3d{65536, 0, 0};
+	phys3_delta p3d{1, 0, 0};
 	
 	camgame_delta results_cd = p3d.to_camgame();
 	if( not(results_cd == expected_cd)) { return stage; }
@@ -421,7 +455,7 @@ int phys3_delta_0() {
 	// Testing that se has the same effect on x and negative on y
 
 	expected_cd = {48, -24};
-	p3d = {0, 65536, 0};
+	p3d = {0, 1, 0};
 
 	results_cd = p3d.to_camgame();
 	if( not(results_cd == expected_cd)) { return stage; }
@@ -430,7 +464,7 @@ int phys3_delta_0() {
 	// Testing that up effects y only
 
 	expected_cd = {0, 24};
-	p3d = {0, 0, 65536};
+	p3d = {0, 0, 1};
 
 	results_cd = p3d.to_camgame();
 	if( not(results_cd == expected_cd)) { return stage; }
@@ -439,7 +473,7 @@ int phys3_delta_0() {
 	// Testing ne and se add on x and cancel on y
 
 	expected_cd = {96, 0};
-	p3d = {65536, 65536, 0};
+	p3d = {1, 1, 0};
 
 	results_cd = p3d.to_camgame();
 	if( not(results_cd == expected_cd)) { return stage; }
@@ -472,7 +506,7 @@ int tile3_0() {
 	stage += 1; // 1
 	// Tests tile3 to phys3 with default arg
 
-	phys3 expected_p3{32768, 32768, 0};
+	phys3 expected_p3{0.5f, 0.5f, 0};
 	t3 = {0, 0, 0};
 
 	phys3 results_p3 = t3.to_phys3();
@@ -489,7 +523,7 @@ int tile3_0() {
 	stage += 1; // 3
 	// Test tile3 to phys3 with args
 
-	expected_p3 = {65536, 131072, 196608};
+	expected_p3 = {1, 2, 3};
 	t3 = {1, 2, 3};
 
 	results_p3 = t3.to_phys3({0, 0, 0});
@@ -509,7 +543,7 @@ int camgame_0() {
 	coord_data* engine_coord_data{ Engine::get_coord_data() };
 
 	// Reset camgame_phys to its normal starting value
-	engine_coord_data->camgame_phys = {655360, 655360, 0};
+	engine_coord_data->camgame_phys = {10, 10, 0};
 	phys3 expected_p3 = engine_coord_data->camgame_phys;
 	camgame c{0, 0};
 
@@ -523,34 +557,34 @@ int camgame_0() {
 	// plus ((1 pixel / 48(px per tile)) * 65536 phys per tile ) / 2
 	// for both the ne and se components since we only added x.
 	// Also this get rounded down so we end up adding 682 to ne and se
-	expected_p3 = {656042, 656042, 0};
+	expected_p3 = {phys_t::from_raw(656042), phys_t::from_raw(656042), 0};
 	c = {1, 0};
 
 	results_p3 = c.to_phys3();
 	if( not(results_p3 == expected_p3)) { return stage; }
 
 	stage += 1; // 2
-	// Test camgame to phys3 with default arg and y=1 for camagame
+	// Test camgame to phys3 with default arg and y=1 for camgame
 
 	// This is the base camgame_phys position {655360, 655360, 0}
 	// plus ((1 pixel / 24(px per tile)) * 65536 phys per tile ) / 2
 	// this add to ne and subracted from se
 	// Also this get rounded down so we end up adding 1365 to ne and se
-	expected_p3 = {656725, 653995, 0};
+	expected_p3 = {phys_t::from_raw(656725), phys_t::from_raw(653995), 0};
 	c = {0, 1};
 	
 	results_p3 = c.to_phys3();
 	if( not(results_p3 == expected_p3)) { return stage; }
 
 	stage += 1; // 3
-	// Test camgame to phys3 with a pased arg
+	// Test camgame to phys3 with a passed arg
 
 	// Here we start with the same ne and se ad before but we add/subract
 	// the passed arg divided by 2. The passed arg is also applied directly
 	// to the up component
-	expected_p3 = {656726, 653994, 2};
+	expected_p3 = {phys_t::from_raw(656726), phys_t::from_raw(653994), phys_t::from_raw(2)};
 
-	results_p3 = c.to_phys3(2);
+	results_p3 = c.to_phys3(phys_t::from_raw(2));
 	if( not(results_p3 == expected_p3)) { return stage; }
 
 	stage += 1; // 4
@@ -593,7 +627,7 @@ int camgame_delta_0() {
 	// This is ((1 pixel / 48(px per tile)) * 65536 phys per tile ) / 2
 	// for both the ne and se components since we only added x.
 	// Also this get rounded down so we end up adding 682 to ne and se
-	expected_p3d = {682, 682, 0};
+	expected_p3d = {phys_t::from_raw(682), phys_t::from_raw(682), 0};
 	cd = {1, 0};
 
 	results_p3d = cd.to_phys3();
@@ -605,7 +639,7 @@ int camgame_delta_0() {
 	// This is ((1 pixel / 24(px per tile)) * 65536 phys per tile ) / 2
 	// this add to ne and subracted frim se
 	// Also this get rounded down so we end up adding 1365 to ne and se
-	expected_p3d = {1365, -1365, 0};
+	expected_p3d = {phys_t::from_raw(1365), phys_t::from_raw(-1365), 0};
 	cd = {0, 1};
 
 	results_p3d = cd.to_phys3();
@@ -617,9 +651,9 @@ int camgame_delta_0() {
 	// Here we start with the same ne and se ad before but we add/subract
 	// the passed arg divided by 2. The passed arg is also applied directly
 	// to the up component
-	expected_p3d = {1366, -1366, 2};
+	expected_p3d = {phys_t::from_raw(1366), phys_t::from_raw(-1366), phys_t::from_raw(2)};
 	
-	results_p3d = cd.to_phys3(2);
+	results_p3d = cd.to_phys3(phys_t::from_raw(2));
 	if( not(results_p3d == expected_p3d)) { return stage; }
 
 	stage += 1; // 4
@@ -736,6 +770,11 @@ void coord() {
 	int ret;
 	const char *testname;
 	
+	if ((ret = fixed_point_0()) != -1) {
+		testname = "fixed_point test";
+		goto out;
+	}
+
 	if ((ret = phys2_0()) != -1) {
 		testname = "phys2 test";
 		goto out;
