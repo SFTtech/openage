@@ -29,7 +29,7 @@ Technology     | Component
 **Qt5**        | Graphical user interface
 **Cython**     | Glue code
 **CMake**      | Build system
-**OpenGL2.1**  | Rendering, shaders
+**OpenGL3.3**  | Rendering, shaders
 **SDL2**       | Cross-platform Audio/Input/Window handling
 **Opus**       | Audio codec
 **Humans**     | Mixing together all of the above
