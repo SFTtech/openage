@@ -7,7 +7,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "../log/log.h"
-#include "../util/error.h"
+#include "../error/error.h"
 
 
 namespace openage {
@@ -20,7 +20,7 @@ Window::Window(const char *title)
 	this->context = Context::generate(context_type::autodetect);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		throw util::Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
+		throw Error{MSG(err) << "SDL video initialization: " << SDL_GetError()};
 	} else {
 		log::log(MSG(info) << "Initialized SDL video subsystems.");
 	}
@@ -38,7 +38,7 @@ Window::Window(const char *title)
 	);
 
 	if (this->window == nullptr) {
-		throw util::Error(MSG(err) << "Failed to create SDL window: " << SDL_GetError());
+		throw Error{MSG(err) << "Failed to create SDL window: " << SDL_GetError()};
 	} else {
 		log::log(MSG(info) << "Created SDL window.");
 	}
@@ -49,7 +49,7 @@ Window::Window(const char *title)
 	int wanted_image_formats = IMG_INIT_PNG;
 	int sdlimg_inited = IMG_Init(wanted_image_formats);
 	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		throw util::Error(MSG(err) << "Failed to init PNG support: " << IMG_GetError());
+		throw Error{MSG(err) << "Failed to init PNG support: " << IMG_GetError()};
 	}
 
 	this->context->setup();

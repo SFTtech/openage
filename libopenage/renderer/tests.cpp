@@ -6,6 +6,9 @@
 #include <unordered_map>
 
 #include "../log/log.h"
+#include "../util/opengl.h"
+#include "opengl/shader.h"
+#include "opengl/program.h"
 #include "window.h"
 
 namespace openage {
@@ -20,8 +23,7 @@ struct render_demo {
 };
 
 
-void create_window(const render_demo *actions) {
-	Window window{"openage renderer testing"};
+void render_test(Window &window, const render_demo *actions) {
 	SDL_Event event;
 
 	actions->setup(&window);
@@ -68,33 +70,84 @@ void create_window(const render_demo *actions) {
 }
 
 
-void renderer_demo(int argc, char **argv) {
-	int demo_id ;
-	if (argc == 2) {
-		demo_id = atoi(argv[1]);
-		log::log(MSG(info) << "running renderer demo " << demo_id << "...");
-	} else {
-		demo_id = 0;
-		log::log(MSG(info) << "executing default renderer demo " << demo_id << "...");
-	}
+void renderer_demo() {
+	int demo_id = 0;
+
+	Window window{"openage renderer testing"};
+
+	const char *vshader = "#version 330\n"
+	                      "layout(location = 0) in vec4 position;"
+	                      "smooth out vec4 fragpos;"
+	                      "void main() {"
+	                      "fragpos = position;"
+	                      "gl_Position = position;"
+	                      "}";
+
+	const char *fshader = "#version 330\n"
+	                      "out vec4 color;\n"
+	                      "smooth in vec4 fragpos;"
+	                      "void main() {"
+	                      "color = vec4(1.0f, fragpos.y, fragpos.x, 1.0f);"
+	                      "}";
+
+
+	const float vpos[] = {
+		.0f, .0f, .0f, 1.0f,
+		1.0f, .0f, .0f, 1.0f,
+		.0f, 1.0f, .0f, 1.0f,
+
+		1.0f, .0f, .0f, 1.0f,
+		.0f, 1.0f, .0f, 1.0f,
+		1.0f, 1.0f, .0f, 1.0f,
+	};
+
+	GLuint vpos_buf, posattr_id;
+
+	opengl::VertexShader vert{vshader};
+	opengl::FragmentShader frag{fshader};
+
+	opengl::Program simplequad;
+	simplequad.attach_shader(vert);
+	simplequad.attach_shader(frag);
+	simplequad.link();
+
+	simplequad.dump_active_attributes();
+
+	posattr_id = simplequad.get_attribute_id("position");
+
+	GLuint vao;
 
 	render_demo test0{
 		// init
-		[=](Window */*window*/) {
+		[&](Window */*window*/) {
 			glEnable(GL_BLEND);
+
+			glGenBuffers(1, &vpos_buf);
+			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
+			// save vertex attributes to GPU:
+			glBufferData(GL_ARRAY_BUFFER, sizeof(vpos), vpos, GL_STATIC_DRAW);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+			glGenVertexArrays(1, &vao);
+			glBindVertexArray(vao); // stores all the vertex attrib state.
 		},
 		// frame
-		[] {
-			glClearColor(0.0, 0.0, 1.0, 1.0);
-			glClear(GL_COLOR_BUFFER_BIT);
+		[&]() {
+			glClearColor(0.0, 0.0, 0.2, 1.0);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			glColor3f(1, 0, 0);
-			glBegin(GL_QUADS); {
-				glVertex2f(.0f, .0f);
-				glVertex2f(1.0f, .0f);
-				glVertex2f(1.0f, 1.0f);
-				glVertex2f(.0f, 1.0f);
-			} glEnd();
+			simplequad.use();
+
+			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
+			glEnableVertexAttribArray(posattr_id);
+			glVertexAttribPointer(posattr_id, 4, GL_FLOAT, GL_FALSE, 0, (void *)0);
+			glDrawArrays(GL_TRIANGLES, 0, 6);
+
+			glDisableVertexAttribArray(posattr_id);
+
+			simplequad.stopusing();
+
+			util::gl_check_error();
 		},
 		// resize
 		[](const coord::window &new_size) {
@@ -106,7 +159,7 @@ void renderer_demo(int argc, char **argv) {
 	demos[0] = &test0;
 
 	if (demos.find(demo_id) != demos.end()) {
-		create_window(demos[demo_id]);
+		render_test(window, demos[demo_id]);
 	}
 	else {
 		log::log(MSG(err) << "unknown renderer demo " << demo_id << " requested.");

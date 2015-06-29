@@ -24,7 +24,7 @@ namespace renderer {
  */
 class Texture {
 public:
-	virtual ~Texture();
+	virtual ~Texture() {};
 
 	/**
 	 * Return the dimensions of the whole texture bitmap

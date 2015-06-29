@@ -2,7 +2,7 @@
 
 #include "texture.h"
 
-#include "../util/error.h"
+#include "../error/error.h"
 
 namespace openage {
 namespace renderer {
@@ -17,7 +17,7 @@ const gamedata::subtexture *Texture::get_subtexture(size_t subid) const {
 		return &this->subtextures[subid];
 	}
 	else {
-		throw util::Error(MSG(err) << "Unknown subtexture requested: " << subid);
+		throw Error(MSG(err) << "Unknown subtexture requested: " << subid);
 	}
 }
 

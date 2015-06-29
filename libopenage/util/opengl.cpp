@@ -63,6 +63,7 @@ void gl_check_error() {
 			// unknown error state
 			errormsg = "unknown error";
 		}
+
 		throw Error(MSG(err) <<
 			"OpenGL error state after running draw method: " << glerrorstate << "\n"
 			"\t" << errormsg << "\n"
