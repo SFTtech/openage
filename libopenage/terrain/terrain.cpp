@@ -61,7 +61,7 @@ Terrain::Terrain(AssetManager &assetmanager,
 	// create tile textures (snow, ice, grass, whatever)
 	for (size_t i = 0; i < this->terrain_id_count; i++) {
 		auto line = &terrain_meta[i];
-		terrain_t terrain_id = line->terrain_id;
+		terrain_t terrain_id = i;
 		this->validate_terrain(terrain_id);
 
 		// TODO: terrain double-define check?
