@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-// pxd: from libopenage.pyinterface.functional cimport PyIfFunc1
+// pxd: from cpp.pyinterface.functional cimport PyIfFunc1
 #include "../pyinterface/functional.h"
 
 #include "../pyinterface/pyobject.h"

@@ -1,7 +1,7 @@
 # Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 
-from libopenage.main cimport main_arguments, run_game as run_game_cpp
+from cpp.main cimport main_arguments, run_game as run_game_cpp
 
 
 def run_game(args):

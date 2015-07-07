@@ -2,11 +2,16 @@
 
 # ${AUTOGEN_WARNING}
 
+# autogen produces lines of config-dependent length (e.g. COMPILERFLAGS).
+# pylint: disable=line-too-long
+
 """
 Project configuration, writen by the build system.
 """
 
 GLOBAL_ASSET_DIR = "${INSTALLED_GLOBAL_ASSET_DIR}"
+BUILD_SRC_DIR = "${CMAKE_SOURCE_DIR}"
+BUILD_BIN_DIR = "${CMAKE_BINARY_DIR}"
 
 # version information
 VERSION = "${PROJECT_VERSION}"
@@ -14,3 +19,10 @@ CONFIG_OPTIONS = "${CONFIG_OPTION_STRING}"
 COMPILER = "${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}"
 COMPILERFLAGS = "${CMAKE_CXX_FLAGS}"
 CYTHONVERSION = "${CYTHON_VERSION}"
+
+try:
+    import importlib
+    importlib.import_module("openage.devmode")
+    DEVMODE = True
+except ImportError:
+    DEVMODE = False

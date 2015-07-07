@@ -3,7 +3,7 @@
 #ifndef OPENAGE_PYINTERFACE_EXCTRANSLATE_TESTS_H_
 #define OPENAGE_PYINTERFACE_EXCTRANSLATE_TESTS_H_
 
-// pxd: from libopenage.pyinterface.functional cimport PyIfFunc0, PyIfFunc2, Func0
+// pxd: from cpp.pyinterface.functional cimport PyIfFunc0, PyIfFunc2, Func0
 #include "functional.h"
 
 namespace openage {

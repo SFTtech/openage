@@ -13,7 +13,7 @@ namespace datastructure {
  * Storage node for the doubly linked list.
  * Contains pointers to next and previous elements.
  */
-template <class T>
+template<class T>
 class DoublyLinkedListNode {
 public:
 	DoublyLinkedListNode(const T &data)
@@ -39,7 +39,7 @@ public:
  * Stores the start and end node pointers, allows traversing over all present nodes and
  * can push/pop items to the front/back.
  */
-template <class T, class node_t=DoublyLinkedListNode<T>>
+template<class T, class node_t=DoublyLinkedListNode<T>>
 class DoublyLinkedList {
 public:
 	DoublyLinkedList()

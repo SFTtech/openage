@@ -65,15 +65,6 @@ See [docs/usage.md](/doc/usage.md).
 See [doc/milestones.md](/doc/milestones.md). We also have a [list of crazy xor good ideas](/doc/ideas).
 
 
-Code philosophy
----------------
-
- - If upstream code (other parts of openage, other libraries, or even the compilers) doesn't work or is missing some feature, _report / fix it_.
- - Do things properly, not quickly. It takes research, time and maybe even upstream fixes, but it's worth it.
- - If you absolutely _must_ use a dirty hack (e.g. because you're waiting for upstream to fix it), write a TO-DO message with an explaination.
- - Regularily review old code to find rusty parts. Remove them, rewrite them, refactor them or at least update the comments.
- - The project is in development. Don't be shy about adding, removing and changing interfaces, but tell other people if you break their WIP stuff.
-
 Dependencies, Building and Running
 ----------------------------------
 
@@ -91,28 +82,30 @@ You first need to use [the convert script](/doc/media_convert.md) (will be autom
   - ate my dog
 
 All of those are features, not bugs.
-To turn them off, use `./openage --dont-segfault --no-errors --dont-eat-dog`.
+To turn them off, use `./run --dont-segfault --no-errors --dont-eat-dog`.
 
 If this still does not help, try the [contact section](#contact)
 or the [bug tracker](https://github.com/SFTtech/openage/issues).
 
+ATM, openage is mostly designed to be built and run inside the development folder via `make run`, `./run`, `./run.py` or `python3 -m openage` (those all are equivalent), but `make install` might actually work! Run the installed version from outside the development folder by typing `python3 -m openage`.
+
 Development Process
 -------------------
 
-* How does openage development look in practice?
-  * Awesome.
+* What does openage development look like in practice?
+
+[doc/development.md](/doc/development.md).
 
 * Can I help?
-  * Yes, please!
 
-See [doc/development.md](/doc/development.md).
+[doc/contributing.md](/doc/contributing.md).
 
 
 Project documentation is accompanying the source code in the `doc/` folder:
 
 - Have a look at the [doc directory](/doc/).
 - We use Doxygen, as described in the [doc readme](/doc/README.md)
-- Have a look at the source.
+- Unfortunately, docs that are kept in some seperate folder keep getting outdated... thus, as much of the doc as possible is kept directly in the source code.
 
 
 Windows Version
@@ -120,10 +113,11 @@ Windows Version
 
 None of us uses Windows, so a port has low priority.
 
-However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into porting using `mingw32`/`mingw64` or maybe `cygwin`.
+However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into porting using `mingw`/`msys2`.
 
 If you want to beat us to it, go for it!
-We'd prefer as few preprocessor switches as possible, preferably they should all be placed in a few 'cross-platform abstraction files' (just talk to us for details...).
+
+We'd prefer as few preprocessor switches as possible, keep those centralized.
 
 Contributing
 ============
@@ -160,9 +154,9 @@ Contact
 -------
 
 Most of us hang around on our **IRC** channel (`#sfttech` on `freenode.net`).
-Do not hesitate to ping us, we probably won't notice you otherwise.
+Do not hesitate to ping us, we might not see your message otherwise.
 
-There's no openage mailing list, but the github issue tracker comes pretty close to it: Everybody who 'watches' the repository will receive all the issue tracker posts via mail, and can even conveniently reply via their mail client. In addition, all the issue tracker discussions are auto-posted to the IRC channel. Feel free to use the issue tracker for any sorts of discussion, proposal or questions that the IRC is unsuitable for.
+There's no openage mailing list, but the github issue tracker comes pretty close to it: Everybody who 'watches' the repository will receive all the issue tracker posts via mail, and can even reply directly via their mail client. All issue tracker discussions are auto-posted to the IRC channel by a bot. Use the issue tracker for any sorts of discussion, proposal or questions that the IRC is unsuitable for.
 
 License
 -------

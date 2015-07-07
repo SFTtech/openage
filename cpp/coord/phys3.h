@@ -66,7 +66,7 @@ namespace std {
 /**
  * Hash function for phys3 coordinates.
  */
-template <>
+template<>
 struct hash<openage::coord::phys3> {
 	size_t operator ()(const openage::coord::phys3 &pos) const {
 		size_t nehash = std::hash<openage::coord::phys_t>{}(pos.ne);

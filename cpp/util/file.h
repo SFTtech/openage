@@ -33,7 +33,7 @@ std::vector<std::string> file_get_lines(const std::string &file_name);
  * read a single csv file.
  * call the destination struct .fill() method for actually storing line data
  */
-template <class lineformat>
+template<class lineformat>
 std::vector<lineformat> read_csv_file(const std::string &fname) {
 	std::vector<std::string> lines = file_get_lines(fname);
 
@@ -76,7 +76,7 @@ std::vector<lineformat> read_csv_file(const std::string &fname) {
  * reads data files recursively.
  * should be called from the .recurse() method of the struct.
  */
-template <class lineformat>
+template<class lineformat>
 std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname) {
 	std::vector<lineformat> result;
 	std::string merged_filename = basedir.join(fname);
@@ -107,7 +107,7 @@ std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname
 }
 
 
-template <class lineformat>
+template<class lineformat>
 std::vector<lineformat> read_csv_file(const char *fname) {
 	std::string filename{fname};
 	return read_csv_file<lineformat>(filename);
@@ -119,7 +119,7 @@ std::vector<lineformat> read_csv_file(const char *fname) {
  * used to store the filename and resulting data of a file down
  * the gamedata tree.
  */
-template <class cls>
+template<class cls>
 struct subdata {
 	std::string filename;
 	std::vector<cls> data;
@@ -135,7 +135,6 @@ struct subdata {
 };
 
 
-} //namespace util
-} //namespace openage
+}} // openage::util
 
 #endif

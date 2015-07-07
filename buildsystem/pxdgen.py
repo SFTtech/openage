@@ -13,6 +13,9 @@ from pygments.token import Token
 from pygments.lexers import get_lexer_for_filename
 
 
+CWD = os.getcwd()
+
+
 class ParserError(Exception):
     """
     Represents a fatal parsing error in PXDGenerator.
@@ -26,15 +29,13 @@ class PXDGenerator:
     Represents, and performs, a single conversion of a C++ header file to a
     PXD file.
 
-    @param infilename:
+    @param filename:
         input (C++ header) file name. is opened and read.
-    @param outfilename:
-        output (pxd) file name. is opened and written.
+        the output filename is the same, but with .pxd instead of .h.
     """
 
-    def __init__(self, infilename, outfilename):
-        self.infilename = infilename
-        self.outfilename = outfilename
+    def __init__(self, filename):
+        self.filename = filename
 
         self.warnings = []
 
@@ -48,7 +49,7 @@ class PXDGenerator:
         if lineno is None:
             lineno = self.lineno
 
-        return ParserError(self.infilename, lineno, message)
+        return ParserError(self.filename, lineno, message)
 
     def tokenize(self):
         """
@@ -69,7 +70,7 @@ class PXDGenerator:
 
         lexer = get_lexer_for_filename('.cpp')
 
-        with open(self.infilename) as infile:
+        with open(self.filename) as infile:
             code = infile.read()
 
         for token, val in lexer.get_tokens(code):
@@ -245,21 +246,21 @@ class PXDGenerator:
 
         yield ""
 
-        yield ("# this PXD definition file was auto-generated from "
-               "the pxd annotations in")
+        yield ("# Auto-generated from annotations in " +
+               os.path.split(self.filename)[1])
 
-        yield "# " + self.infilename
+        yield "# " + self.filename
+
+        hacksheader = os.path.abspath("cpp/pyinterface/hacks.h")
 
         # Include hacks.h, which contains various hacks and workarounds
         # that should be run on Cython-compiled files.
         # See the header file for more info.
         yield ""
-        yield 'cdef extern from "cpp/pyinterface/hacks.h":'
-        yield '    # this extern cdef is auto-added by pxdgen.'
-        yield '    # it ensures that all of the Cython-specific hacks are'
-        yield "    # included, including the replacement for Cython's own"
-        yield "    # exception handler. See the header file for further docs."
-        yield "    int hacks"
+        yield '# Auto-added by pxdgen. Makes Cython include "hacks.h".'
+        yield '# See that header file for further docs.'
+        yield 'cdef extern from "%s":' % hacksheader
+        yield '    int hacks'
 
         self.parse()
 
@@ -277,12 +278,18 @@ class PXDGenerator:
 
                 if namespace != previous_namespace:
                     yield 'cdef extern from "{}" namespace "{}":'.format(
-                        self.infilename, namespace)
+                        self.filename, namespace)
             else:
                 prefix = ""
 
             for annotation in annotation_lines:
-                yield prefix + self.postprocess_annotation_line(annotation)
+                annotation = self.postprocess_annotation_line(annotation)
+                if annotation:
+                    yield prefix + annotation
+                else:
+                    # don't emit a line that consists of just the prefix
+                    # (avoids trailing whitespace)
+                    yield ""
 
             previous_namespace = namespace
 
@@ -311,56 +318,49 @@ class PXDGenerator:
 
         return annotation
 
-    def generate(self, print_warnings=True):
+    def generate(self, ignore_timestamps=False, print_warnings=True):
         """
         reads the input file and writes the output file.
         the output file is updated only if its content will change.
 
-        on parsing failure, raises ParserError
-
-        returns True if the output file was actually written.
+        on parsing failure, raises ParserError.
         """
-        result = "\n".join(line for line in self.get_pxd_lines())
+        pxdfile = os.path.splitext(self.filename)[0] + '.pxd'
 
-        if os.path.exists(self.outfilename):
-            with open(self.outfilename) as outfile:
+        # create empty __init__.py in all parent directories.
+        # CMake requires this; else it won't find the .pxd files.
+        dirname = os.path.abspath(os.path.dirname(self.filename))
+        while dirname.startswith(CWD + os.path.sep):
+            initfile = os.path.join(dirname, "__init__.py")
+            if not os.path.isfile(initfile):
+                print("generating " + initfile)
+                with open(initfile, "w"):
+                    pass
+
+            # parent dir
+            dirname = os.path.dirname(dirname)
+
+        if not ignore_timestamps and os.path.exists(pxdfile):
+            # skip the file if the timestamp is up to date
+            if os.path.getmtime(self.filename) <= os.path.getmtime(pxdfile):
+                return
+
+        result = "\n".join(self.get_pxd_lines())
+
+        if os.path.exists(pxdfile):
+            with open(pxdfile) as outfile:
                 if outfile.read() == result:
-                    # don't write the file if the content wouldn't change
-                    return False
+                    # don't write the file if the content is up to date
+                    return
 
-        def create_parent_dir(filename):
-            """
-            creates the parent directory of 'filename'; recurses if needed.
-
-            an empty __init__.py is created in each directory.
-            """
-            dirname = os.path.dirname(filename)
-
-            if not os.path.exists(dirname):
-                # recursively create the parent directories
-                create_parent_dir(dirname)
-
-                # create the directory itself
-                os.mkdir(dirname)
-
-                # create __init__.py
-                init_filename = os.path.join(dirname, "__init__.py")
-                if not os.path.exists(init_filename):
-                    print("generating " + init_filename)
-                    with open(init_filename, "w"):
-                        pass
-
-        create_parent_dir(self.outfilename)
-
-        with open(self.outfilename, 'w') as outfile:
+        with open(pxdfile, 'w') as outfile:
+            print("generating " + os.path.relpath(pxdfile, CWD))
             outfile.write(result)
 
         if print_warnings and self.warnings:
-            print("\x1b[33;1mWARNING\x1b[m pxdgen[" + self.infilename + "]:")
+            print("\x1b[33;1mWARNING\x1b[m pxdgen[" + self.filename + "]:")
             for warning in self.warnings:
                 print(warning)
-
-        return True
 
 
 def parse_args():
@@ -372,15 +372,13 @@ def parse_args():
     import argparse
 
     cli = argparse.ArgumentParser()
-    cli.add_argument('files', nargs='*', metavar='PXDSOURCE',
+    cli.add_argument('files', nargs='*', metavar='HEADERFILE',
                      help="input files (usually cpp .h files).")
     cli.add_argument('--file-list',
                      help="semicolon-separated list of input files.")
     cli.add_argument('--ignore-timestamps', action='store_false',
                      help="force generating even if the output file is already"
                           "up to date")
-    cli.add_argument('--target-dir',
-                     help="output files are created in this directory.")
 
     args = cli.parse_args()
 
@@ -396,28 +394,19 @@ def parse_args():
 
 
 def main():
-    """ main function """
+    """ CLI entry point """
     args = parse_args()
-    cwd = os.getcwd()
-    cppdir = cwd + "/cpp"
+    cppdir = CWD + "/cpp"
 
-    for inputfile in args.all_files:
-        if not (os.path.isabs(inputfile) and inputfile.startswith(cppdir)):
-            print("pxdgen source file is not an absolute path in " + cppdir)
+    for filename in args.all_files:
+        filename = os.path.abspath(filename)
+        if not filename.startswith(cppdir):
+            print("pxdgen source file is not in " + cppdir + ": " + filename)
             exit(1)
 
-        outputfile = os.path.relpath(inputfile, cppdir)
-        outputfile = os.path.splitext(outputfile)[0] + '.pxd'
-
-        if args.target_dir:
-            outputfile = os.path.join(args.target_dir, outputfile)
-
-        if not args.ignore_timestamps and os.path.exists(outputfile):
-            if os.path.getmtime(inputfile) <= os.path.getmtime(outputfile):
-                continue
-
-        if PXDGenerator(inputfile, outputfile).generate():
-            print("generating " + outputfile)
+        PXDGenerator(filename).generate(
+            ignore_timestamps=args.ignore_timestamps,
+            print_warnings=True)
 
 
 if __name__ == '__main__':

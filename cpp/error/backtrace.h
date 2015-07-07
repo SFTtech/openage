@@ -9,7 +9,7 @@
 // pxd: from libcpp.string cimport string
 #include <string>
 #include <iostream>
-// pxd: from libopenage.pyinterface.functional cimport Func1
+// pxd: from cpp.pyinterface.functional cimport Func1
 #include <functional>
 
 namespace openage {
@@ -68,7 +68,7 @@ public:
 	 *    if true, the most recent call is given last.
 	 */
 	virtual void get_symbols(std::function<void (const backtrace_symbol *)> cb,
-	                         bool reversed = true) const = 0;
+	                         bool reversed=true) const = 0;
 
 	/**
 	 * Removes all the lower frames that are also present in the current stack.

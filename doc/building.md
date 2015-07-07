@@ -2,31 +2,19 @@
 
 This file should assist you in compiling and running the game.
 
-A quick guide for the lost:
+Note the [troubleshooting](#troubleshooting) and [FAQ](#faq) sections.
 
-1. Check the [dependencies](#dependencies) to see what you need, we have [prerequisite steps](#prerequisite-steps-for-ubuntu-users-ubuntu-1410) for most common platforms to install most things
-2. Run the build commands for [developers](#for-developersusers-who-want-to-try-the-project), [users](#for-installing-on-your-local-system) or [packagers](#for-packagers)
-3. If you run into problems, check out the [troubleshooting](#troubleshooting) section and the [FAQ](#faq)
 
 ## Buildsystem Design
 
-*openage* currently consists of a pure C++ binary and the
-`openage.convert` python package which in turn includes C++ extension
-modules.  `openage.convert` is used to generate parts of the C++
-binary code.
+*openage* consists of a pure C++ library, `libopenage`, and the `openage` python package.
+There's a special python package, `openage.codegen`, which generates parts of the C++ binary code.
 
-To actually run *openage*, it needs original game assets that need to
-be extracted by the `openage.convert` python module from an
-*Microsoft Age of Empires 2* installation directory (Support for
-setup CDs is almost finished).
-
-We use the `cmake` system for all our building needs. The `configure`
-script is a _cmake wrapper_ that will create a build directory and
-invoke cmake with the appropriate flags. The `Makefile` in the project
-root acts as a wrapper around several useful features.
+We use `CMake` for all our building needs. The `configure` is a an optional wrapper that will
+create a build directory, `bin`, and invoke cmake with the appropriate flags to build inside that directory.
+Likewise, the root `Makefile` provides some convenience options that may otherwise be accessed directly in the CMake build folder.
 
 For more build system internals, see [doc/buildsystem.md](/doc/buildsystem.md).
-
 
 ## Dependencies
 
@@ -34,29 +22,29 @@ Dependencies are needed for:
 
 * C = compiling
 * R = running
-* M = media conversion (when running for the first time)
+* A = asset conversion
 
 Dependency list:
 
-    CRM   python >=3.4
-      M   python imaging library (PIL) -> pillow
-    C     cython
-      M   numpy
+    C     gcc >=4.9 or clang >=3.4
+    CRA   python >=3.4
+    C     cython >= 0.22
+    C     cmake >=3.0.0
+      A   numpy
+      A   python imaging library (PIL) -> pillow
     CR    opengl >=2.1
     CR    libepoxy
     CR    ftgl
      R    dejavu font
     CR    freetype2
     CR    fontconfig
-    C     cmake >=2.8.8
     CR    sdl2
     CR    sdl2_image
     CR    opusfile
-      M   opus-tools
-    C     gcc >=4.9 or clang >=3.4
+      A   opus-tools
     C     pygments
 
-      M   An installed version of any of the following (wine is your friend).
+      A   An installed version of any of the following (wine is your friend).
           Other versions _might_ work; setup disk support will be added soon:
 
      - Age of Empires II: The Conquerors Patch 1.0c
@@ -118,27 +106,22 @@ You can install both compilers and select the one to be used by `./configure`.
 
  - (obviously) clone this repo or acquire the sources some other way
  - make sure you have everything from the [dependency list](#dependencies)
- - `./configure --mode=debug --compiler=clang` will prepare building
-  - You could also use `./configure --mode=debug --compiler=gcc` here
- - `make` will do code generation, build all python modules and the
-   openage executable
- - `make run` or `./openage` will run the game. try
-   `./openage --help`
- - `make test` will run the unit tests
+ - `./configure --compiler=clang` will prepare building
+  - You could also use `./configure --mode=release --compiler=gcc` here
+ - `make` does code generation, builds all Cython modules, and libopenage.
+ - `make run`, `./run`, `./run.py` or `python3 -m openage` runs the game.
+    try `./run --help` and `./run game --help`.
+ - `make test` runs the built-in tests.
 
 
-### For installing on your local system
+### For installing on your local system (not yet fully tested)
 
  - `./configure --mode=release --compiler=gcc --prefix=/usr`
   - You could also use `./configure --mode=release --compiler=clang --prefix=/usr`
  - `make` to compile the project
  - `make install` will install the binary to /usr/bin/openage, python
    packages to `/usr/lib/python...`, static assets to `/usr/share`
-   etc.
- - after installing, the user will still need to run the convert
-   script using `python3 -m openage.convert`, to store the convert
-   original assets to `~/.openage`. This does not work yet, and the
-   convert invocation will later be integrated into the main binary.
+   etc. Python packages may use their own prefix, which will be printed.
 
 
 ### For packagers
@@ -192,8 +175,8 @@ existed, and now **I HATE YOU**. It can't be for no reason. You
 
 - Coincidentially, the exact same question crosses my mind whenever I
   have to build an `automake` project, so I can sympathize.
-- Unfortunately, it's not as simple as invoking an compiler. Building
-  `openage` involves code generation and the building of Python C++
+- Unfortunately, it's not as simple as invoking a compiler. Building
+  `openage` involves code generation and the building of Cython
   extension modules.
 - See [buildsystem/simple](/buildsystem/simple), which does exactly
-  these three things, manually.
+  these things, manually (don't use this for production).

@@ -24,6 +24,9 @@ def find_issues(dirnames, exts):
             else:
                 yield "Trailing whitespace", filename
 
+        if data.endswith('\n\n') or data.endswith('\n\r\n'):
+            yield "Trailing newline", filename
+
         if len(data) > 0 and not data.endswith('\n'):
             yield "File does not end in '\\n'", filename
 

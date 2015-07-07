@@ -9,14 +9,14 @@
 // pxd: from libcpp.vector cimport vector
 #include <vector>
 
-// pxd: from libopenage.error.error cimport Error
+// pxd: from cpp.error.error cimport Error
 #include "../error/error.h"
-// pxd: from libopenage.error.backtrace cimport backtrace_symbol_constptr
+// pxd: from cpp.error.backtrace cimport backtrace_symbol_constptr
 #include "../error/backtrace.h"
 
-// pxd: from libopenage.pyinterface.functional cimport PyIfFunc2, Func1
+// pxd: from cpp.pyinterface.functional cimport PyIfFunc2, Func1
 #include "functional.h"
-// pxd: from libopenage.pyinterface.pyobject cimport PyObjectRef
+// pxd: from cpp.pyinterface.pyobject cimport PyObjectRef
 #include "pyobject.h"
 
 

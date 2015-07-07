@@ -17,7 +17,7 @@ if py_version < (3, 4):
 
 
 try:
-    from . import config
+    import openage.config as config
 
 except ImportError:
     VERSION = "< unknown version; ./configure incomplete >"
@@ -27,12 +27,13 @@ else:
     VERSION = config.VERSION
 
     LONGVERSION = (
-        "openage {version}\n"
+        "openage {version}{devmode}\n"
         "{config_options}\n"
         "{compiler} [{compilerflags}]\n"
-        "{cython}"
+        "Cython {cython}"
     ).format(
         version=config.VERSION,
+        devmode=(" [devmode]" if config.DEVMODE else ""),
         config_options=config.CONFIG_OPTIONS,
         compiler=config.COMPILER,
         compilerflags=config.COMPILERFLAGS,

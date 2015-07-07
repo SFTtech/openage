@@ -6,12 +6,12 @@ from libcpp cimport bool
 from cpython.ref cimport PyObject
 from cpython.bytes cimport PyBytes_FromStringAndSize
 
-from libopenage.util.compress.lzxd cimport (
+from cpp.util.compress.lzxd cimport (
     LZXDecompressor as c_LZXDecompressor,
     LZX_FRAME_SIZE
 )
 
-from libopenage.pyinterface.functional cimport Func2
+from cpp.pyinterface.functional cimport Func2
 
 from openage.cppinterface.typedefs cimport voidptr
 
@@ -64,20 +64,22 @@ cdef class LZXDecompressor:
         cdef object lzxdecompressor_obj = <object> <PyObject *> context
         cdef bytes result
 
-        try:
-            result = lzxdecompressor_obj.py_read_callback(size)
+        result = lzxdecompressor_obj.py_read_callback(size)
 
-            if len(result) > <ssize_t> size:
-                raise Exception("read callback returned too much data")
+        cdef size_t resultsize
+        cdef unsigned char *resultbuf
+        resultsize, resultbuf = len(result), <unsigned char *> result
 
-        except BaseException as exc:
-            lzxdecompressor_obj.py_read_callback_exception = exc
-            return -1
+        if resultsize > size:
+            raise Exception(
+                "read callback returned more data then requested.")
 
-        cdef unsigned char *result_buf = result
-        memcpy(buf, result_buf, len(result))
+        if resultbuf == NULL:
+            raise Exception(
+                "internal error in read callback")
 
-        return len(result)
+        memcpy(buf, resultbuf, resultsize)
+        return resultsize
 
     def __cinit__(self, py_read_callback,
                   unsigned int window_bits=21,
@@ -114,28 +116,24 @@ cdef class LZXDecompressor:
 
         # alloc the 32-KiB frame buffer
         cdef bytes result = PyBytes_FromStringAndSize(NULL, LZX_FRAME_SIZE)
+        cdef unsigned char *result_buf = result
 
         # call the C method to fill the frame buffer
         cdef unsigned int frame_size
         try:
-            frame_size = self.thisptr.decompress_next_frame(result)
-        except Exception as exc:
-            # decompress_next_frame threw a C++ exception.
-            # the decompressor is now in an invalid state.
+            with nogil:
+                frame_size = self.thisptr.decompress_next_frame(result_buf)
+        except:
+            # set self.invalid to make sure we'll never call the decompressor
+            # again (as that would be undefined behavior now).
             self.invalid = True
+            raise
 
-            # re-raise the exception.
-            # if the reason was a failed python read callback, be sure to
-            # include that info in the exception.
-            if self.py_read_callback_exception:
-                raise exc from self.py_read_callback_exception
-            else:
-                raise
-
-        # performance optimization
-        if frame_size == len(result):
+        # performance optimization:
+        # all but the last frame have this size.
+        if frame_size == LZX_FRAME_SIZE:
             return result
 
-        # in case of EOF, frame_size is 0, and we'll return b"".
-        # this is the desired behavior for a file-like stream.
+        # the last frame will have some non-zero size.
+        # EOF is indicated by a zero return value (so we'll return b"").
         return result[:frame_size]

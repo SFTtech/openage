@@ -12,10 +12,10 @@
 
 // pxd: from libcpp cimport bool as cppbool
 // pxd: from libcpp.string cimport string
-// pxd: from libopenage.error.error cimport Error
-// pxd: from libopenage.log.message cimport message
+// pxd: from cpp.error.error cimport Error
+// pxd: from cpp.log.message cimport message
 
-// pxd: from libopenage.pyinterface.pyexception cimport PyException
+// pxd: from cpp.pyinterface.pyexception cimport PyException
 
 #include "../error/error.h"
 
@@ -32,6 +32,9 @@ class PyException;
  *
  * If there's no current C++ exception, this terminates the
  * program non-gracefully (std::terminate).
+ *
+ * Designed to be called by auto-generated Cython code;
+ * Do not use in any other way.
  */
 void translate_exc_cpp_to_py();
 
@@ -41,7 +44,7 @@ void translate_exc_cpp_to_py();
  * and creates and throws an analogous C++ PyException object.
  *
  * Works, and is designed to be used in, situations where
- * there is no current Python exception.
+ * there is no current Python exception (it's a no-op then).
  */
 void translate_exc_py_to_cpp();
 

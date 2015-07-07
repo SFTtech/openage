@@ -1,4 +1,4 @@
-// Copyright 2014-2014 the openage authors. See copying.md for legal info.
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include "fds.h"
 
@@ -104,7 +104,7 @@ int FD::printf(const char *format, ...) {
 }
 
 void FD::setinputmodecanon() {
-	if (isatty(this->fd)) {
+	if (::isatty(this->fd)) {
 		//get the terminal settings for stdin
 		::tcgetattr(this->fd, &this->old_tio);
 		//backup old settings

@@ -2,8 +2,8 @@
 
 from libcpp.string cimport string
 
-from libopenage.util.enum cimport Enum
-from libopenage.util.enum_test cimport (
+from cpp.util.enum cimport Enum
+from cpp.util.enum_test cimport (
     testtype,
 
     foo,

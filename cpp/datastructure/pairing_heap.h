@@ -27,7 +27,7 @@
 namespace openage {
 namespace datastructure {
 
-template <class T, class compare=std::less<T>>
+template<class T, class compare=std::less<T>>
 class PairingHeapNode {
 public:
 	using this_type = PairingHeapNode<T, compare>;
@@ -150,9 +150,9 @@ public:
 };
 
 
-template <class T,
-          class compare=std::less<T>,
-          class heapnode_t=PairingHeapNode<T, compare>>
+template<class T,
+         class compare=std::less<T>,
+         class heapnode_t=PairingHeapNode<T, compare>>
 class PairingHeap {
 public:
 	using node_t = heapnode_t;

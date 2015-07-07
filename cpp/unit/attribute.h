@@ -145,7 +145,7 @@ public:
 
 template<> class Attribute<attr_type::attack>: public AttributeContainer {
 public:
-	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, uint d, graphic_set &grp)
+	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d, graphic_set &grp)
 		:
 		AttributeContainer{attr_type::attack},
 		ptype{type},

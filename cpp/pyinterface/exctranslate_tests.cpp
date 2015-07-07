@@ -13,7 +13,7 @@ namespace pyinterface {
 namespace tests {
 
 
-template<int i = 3>
+template<int i=3>
 void throw_foo() {
 	throw_foo<i - 1>();
 }

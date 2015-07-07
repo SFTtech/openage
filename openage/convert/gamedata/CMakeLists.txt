@@ -1,0 +1,12 @@
+add_py_modules(
+	__init__.py
+	civ.py
+	empiresdat.py
+	graphic.py
+	playercolor.py
+	research.py
+	sound.py
+	tech.py
+	terrain.py
+	unit.py
+)

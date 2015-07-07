@@ -59,10 +59,16 @@ def mscab_csum(bytes data):
     """
     cdef unsigned int result = 0
 
-    cdef unsigned int *data_ptr = <unsigned int *> <unsigned char *> data
+    cdef size_t bufsize
+    cdef unsigned char *buf
+    bufsize, buf = len(data), data
+    if buf == NULL:
+        raise Exception("invalid data for checksum")
 
-    cdef unsigned int count = len(data) // 4
-    cdef unsigned int remainder = len(data) % 4
+    cdef unsigned int *data_ptr = <unsigned int *> buf
+
+    cdef unsigned int count = bufsize // 4
+    cdef unsigned int remainder = bufsize % 4
 
     with nogil:
         for i in range(count):
@@ -71,7 +77,10 @@ def mscab_csum(bytes data):
     # we have so far ignored endianess issues.
     # on a non-little endian system, the interpretation is wrong.
     # thus, interpret it as binary data and decode it as little endian.
-    result = as_little_endian(<unsigned char *> &result)
+    result = (
+        as_little_endian(<unsigned char *> &result)
+        ^
+        as_big_endian(<unsigned char *> &data_ptr[count], remainder)
+    )
 
-    return result ^ as_big_endian(<unsigned char *> &data_ptr[count],
-                                remainder)
+    return result

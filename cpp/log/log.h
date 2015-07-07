@@ -3,7 +3,7 @@
 #ifndef OPENAGE_LOG_LOG_H_
 #define OPENAGE_LOG_LOG_H_
 
-// pxd: from libopenage.log.level cimport level
+// pxd: from cpp.log.level cimport level
 #include "level.h"
 #include "message.h"
 

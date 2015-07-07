@@ -7,7 +7,6 @@
 #include <mutex>
 
 #include "level.h"
-#include "message.h"
 
 namespace openage {
 namespace log {
@@ -37,7 +36,7 @@ private:
 	/**
 	 * Called internally by put_log_message if a message is accepted
 	 */
-	virtual void output_log_message(const class message &msg, class LogSource *source) = 0;
+	virtual void output_log_message(const struct message &msg, class LogSource *source) = 0;
 
 
 	friend class LogSource;

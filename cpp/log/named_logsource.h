@@ -6,7 +6,7 @@
 // pxd: from libcpp.string cimport string
 #include <string>
 
-// pxd: from libopenage.log.logsource cimport LogSource
+// pxd: from cpp.log.logsource cimport LogSource
 #include "logsource.h"
 
 namespace openage {

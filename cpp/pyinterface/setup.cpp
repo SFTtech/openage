@@ -17,46 +17,34 @@ namespace pyinterface {
 namespace {
 
 
-/**
- * Secures access to all of these globals.
- */
-auto &checker_lock() {
-	static std::mutex val;
-	return val;
-}
+struct state {
+	// secures the state object
+	std::mutex lock;
 
+	// holds the checker function for each component
+	std::map<void *, std::function<bool ()>> map;
 
-/**
- * Holds all checker functions.
- */
-auto &checker_map() {
-	static std::map<void *, std::function<bool ()>> val;
-	return val;
-}
+	// holds the components that have been destroyed so far
+	std::set<void *> destroyed_components;
 
+	// set to true once the check has run for the first time.
+	bool check_performed;
 
-/**
- * Holds all components that have been destroyed so far.
- */
-auto &destroyed_components() {
-	static std::set<void *> val;
-	return val;
-}
+	// returns the global singleton object
+	static state &get() {
+		static state val{{}, {}, {}, false};
+		return val;
+	}
+};
 
-
-/**
- * Set to 'true' once the check has run for the first time.
- */
-auto &check_performed() {
-	static bool val = false;
-	return val;
-}
 
 } // anonymous namespace
 
 
 void add_py_if_component(void *thisptr, std::function<bool ()> checker) {
-	std::unique_lock<std::mutex> lock{checker_lock()};
+	state &checkers = state::get();
+
+	std::unique_lock<std::mutex> lock{checkers.lock};
 
 	// enforce that the object has an associated symbol name.
 	if (unlikely(not util::is_symbol(thisptr))) {
@@ -68,49 +56,53 @@ void add_py_if_component(void *thisptr, std::function<bool ()> checker) {
 			true);
 	}
 
-	checker_map()[thisptr] = checker;
+	checkers.map[thisptr] = checker;
 }
 
 
 void destroy_py_if_component(void *thisptr) {
-	std::unique_lock<std::mutex> lock{checker_lock()};
+	state &checkers = state::get();
 
-	destroyed_components().insert(thisptr);
-	checker_map().erase(thisptr);
+	std::unique_lock<std::mutex> lock{checkers.lock};
+
+	checkers.destroyed_components.insert(thisptr);
+	checkers.map.erase(thisptr);
 }
 
 
 void check() {
-	std::unique_lock<std::mutex> lock{checker_lock()};
+	state &checkers = state::get();
 
-	if (check_performed()) {
+	std::unique_lock<std::mutex> lock{checkers.lock};
+
+	if (checkers.check_performed) {
 		throw Error(MSG(err) <<
 			"py interface initialization check has already been performed. "
 			"fix your init code.");
 	}
 
-	check_performed() = true;
+	checkers.check_performed = true;
 
 	bool error_found = false;
 	auto msg = MSG(err);
 	msg << "Fix your init code: ";
 
-	if (not destroyed_components().empty()) {
+	if (not checkers.destroyed_components.empty()) {
 		msg << std::endl <<
 			"Py interface components have been de-initialized before "
 			"initialization had even been completed:";
 
-		for (void *thisptr : destroyed_components()) {
+		for (void *thisptr : checkers.destroyed_components) {
 			msg << std::endl << "\t" << util::symbol_name(thisptr);
 		}
 
 		error_found = true;
 	}
 
-	destroyed_components().clear();
+	checkers.destroyed_components.clear();
 
 	bool first = true;
-	for (auto &checker : checker_map()) {
+	for (auto &checker : checkers.map) {
 		if (not checker.second()) {
 			if (first) {
 				msg << std::endl <<
@@ -124,7 +116,7 @@ void check() {
 		}
 	}
 
-	checker_map().clear();
+	checkers.map.clear();
 
 	if (error_found) {
 		throw Error(msg);

@@ -20,14 +20,14 @@ install: $(BUILDDIR)
 
 .PHONY: run
 run: build
-	python3 -m openage.game
-
-.PHONY: tests
-tests: build
-	python3 -m openage test -a
+	./run game
 
 .PHONY: test
 test: tests checkfast
+
+.PHONY: tests
+tests: build
+	./run test -a
 
 .PHONY: build
 build: $(BUILDDIR)
@@ -45,9 +45,17 @@ codegen: $(BUILDDIR)
 pxdgen: $(BUILDDIR)
 	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) pxdgen
 
-.PHONY: python
-python: $(BUILDDIR)
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) python
+.PHONY: compilepy
+compilepy: $(BUILDDIR)
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) compilepy
+
+.PHONY: inplacemodules
+inplacemodules:
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) inplacemodules
+
+.PHONY: cythonize
+cythonize: $(BUILDDIR)
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cythonize
 
 .PHONY: doc
 doc: $(BUILDDIR)
@@ -60,7 +68,7 @@ cleanelf: $(BUILDDIR)
 
 .PHONY: cleancodegen
 cleancodegen: $(BUILDDIR)
-	@# removes all generated sourcefiles
+	@# removes all sourcefiles created by codegen
 	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleancodegen
 
 .PHONY: cleanpxdgen
@@ -68,21 +76,19 @@ cleanpxdgen: $(BUILDDIR)
 	@# removes all generated .pxd files
 	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleanpxdgen
 
-.PHONY: cleanpython
-cleanpython: $(BUILDDIR)
-	@# removes all built python modules (+ extension modules)
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleanpython
-	@# removes all in-place built extension modules
-	@find openage -name "*.so" -type f -print -delete
+.PHONY: cleancython
+cleancython: $(BUILDDIR)
+	@# removes all .cpp files created by Cython
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleancython
 
 .PHONY: clean
-clean: $(BUILDDIR) cleancodegen cleanpython cleanpxdgen cleanelf
+clean: $(BUILDDIR) cleancodegen cleanpxdgen cleancython cleanelf
 	@# removes object files, binaries, py modules, generated code
 
 .PHONY: cleaninsourcebuild
 cleaninsourcebuild:
 	@echo "cleaning remains of in-source builds"
-	rm -rf DartConfiguration.tcl codegen_depend_cache codegen_target_cache Doxyfile Testing py/setup.py
+	rm -rf DartConfiguration.tcl codegen_depend_cache codegen_target_cache Doxyfile Testing
 	@find . -not -path "./.bin/*" -type f -name CTestTestfile.cmake              -print -delete
 	@find . -not -path "./.bin/*" -type f -name cmake_install.cmake              -print -delete
 	@find . -not -path "./.bin/*" -type f -name CMakeCache.txt                   -print -delete
@@ -91,7 +97,7 @@ cleaninsourcebuild:
 
 .PHONY: cleanbuilddirs
 cleanbuilddirs: cleaninsourcebuild
-	@if test -d bin; then $(MAKE) $(MAKEARGS) -C bin clean || true; fi
+	@if test -d bin; then $(MAKE) $(MAKEARGS) -C bin clean cleancython cleanpxdgen cleancodegen || true; fi
 	@echo cleaning symlinks to build directories
 	rm -f bin
 	@echo cleaning build directories
@@ -110,6 +116,8 @@ mrproper: cleanbuilddirs
 mrproperer: mrproper
 	@if ! test -d .git; then echo "mrproperer is only available for gitrepos."; false; fi
 	@echo removing ANYTHING that is not checked into the git repo
+	@echo ENTER to confirm
+	@read val
 	git clean -x -d -f
 
 .PHONY: checkfast
@@ -139,19 +147,21 @@ help: $(BUILDDIR)/Makefile
 	@echo "build              -> build entire project"
 	@echo "openage            -> build libopenage"
 	@echo "pxdgen             -> generate .pxd files"
-	@echo "python             -> compile python modules"
+	@echo "cythonize          -> compile .pyx files to .cpp"
+	@echo "compilepy          -> compile .py files to .pyc"
+	@echo "inplacemodules     -> create in-place modules"
 	@echo "codegen            -> generate cpp sources"
 	@echo "doc                -> create documentation files"
 	@echo ""
 	@echo "cleanelf           -> remove C++ ELF files"
-	@echo "cleancodegen       -> undo '$(MAKE) codegen'"
-	@echo "cleanpython        -> undo '$(MAKE) python'"
-	@echo "cleanpxdgen        -> undo '$(MAKE) pxdgen'"
-	@echo "clean              -> undo '$(MAKE)' (all of the above)"
-	@echo "cleanbuilddirs     -> undo '$(MAKE)' and './configure'"
+	@echo "cleancodegen       -> undo 'make codegen'"
+	@echo "cleancython        -> undo 'make cythonize inplacemodules'"
+	@echo "cleanpxdgen        -> undo 'make pxdgen'"
+	@echo "clean              -> undo 'make' (all of the above)"
+	@echo "cleanbuilddirs     -> undo 'make' and './configure'"
 	@echo "cleaninsourcebuild -> undo in-source build accidents"
 	@echo "mrproper           -> as above, but additionally delete user assets"
-	@echo "mrproperer         -> this recipe is serious business. it will leave no witnesses."
+	@echo "mrproperer         -> leaves nothing but ashes"
 	@echo ""
 	@echo "run                -> run openage"
 	@echo "tests              -> run the tests (py + cpp)"

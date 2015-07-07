@@ -16,17 +16,17 @@ from cpython.exc cimport (
 from libcpp.string cimport string
 from libcpp cimport bool as cppbool
 
-from libopenage.log.level cimport level, err as lvl_err
-from libopenage.log.message cimport message
-from libopenage.error.error cimport Error
-from libopenage.error.backtrace cimport Backtrace, backtrace_symbol
-from libopenage.pyinterface.functional cimport Func1
-from libopenage.pyinterface.pyexception cimport (
+from cpp.log.level cimport level, err as lvl_err
+from cpp.log.message cimport message
+from cpp.error.error cimport Error
+from cpp.error.backtrace cimport Backtrace, backtrace_symbol
+from cpp.pyinterface.functional cimport Func1
+from cpp.pyinterface.pyexception cimport (
     PyException,
     pyexception_bt_get_symbols
 )
 
-from libopenage.pyinterface.exctranslate cimport (
+from cpp.pyinterface.exctranslate cimport (
     init_exc_message,
     set_exc_translation_funcs
 )

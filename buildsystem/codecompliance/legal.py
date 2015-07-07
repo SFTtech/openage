@@ -4,6 +4,7 @@
 Checks the legal headers of all files.
 """
 
+from datetime import date
 import re
 from subprocess import Popen, PIPE
 
@@ -48,6 +49,24 @@ EXTENSIONS_REQUIRING_LEGAL_HEADERS = {
 }
 
 
+def get_git_change_year(filename):
+    """ Returns git-log's opinion on when the file was last changed. """
+
+    invocation = [
+        'git', 'log', '-1', '--format=%ad', '--date=short', '--',
+        filename
+    ]
+
+    proc = Popen(invocation, stdout=PIPE)
+    output = proc.communicate()[0].decode('utf-8', errors='ignore').strip()
+
+    if proc.returncode != 0 or not output:
+        # git doesn't know about the file
+        return None
+
+    return int(output[:4])
+
+
 def match_legalheader(data):
     """
     Tests whether data matches any of the regular expressions,
@@ -62,45 +81,61 @@ def match_legalheader(data):
         if match is not None:
             return hdr, match
 
-    raise LegalIssue("No valid legal header text found")
+    raise ValueError("no match found")
 
 
-class LegalIssue(Exception):
-    """ Some issue with the legal header. """
-    pass
+def test_headers(check_files, paths, git_change_years, third_party_files):
+    """ Tests all in-sourcefile legal headers """
+
+    # determine all uncommited files from git.
+    # those definitely need the current year in the copyright message.
+    proc = Popen(['git', 'diff', '--name-only', 'HEAD'], stdout=PIPE)
+    uncommited = set(proc.communicate()[0].decode('ascii').strip().split('\n'))
+    current_calendar_year = date.today().year
+
+    for filename in findfiles(paths, EXTENSIONS_REQUIRING_LEGAL_HEADERS):
+        try:
+            headertype, match = match_legalheader(readfile(filename))
+        except ValueError:
+            yield "Legal header missing or invalid", (
+                filename + "\nSee copying.md for a template")
+            continue
+
+        if headertype is THIRDPARTYLEGALHEADER:
+            third_party_files.add(filename)
+
+        try:
+            found_end_year = int(match.group('crend'))
+        except IndexError:
+            # this header type has/needs no copyright years
+            # (e.g. empty file)
+            continue
+
+        expected_end_year = None
+        if filename in uncommited:
+            expected_end_year = current_calendar_year
+        elif git_change_years:
+            if check_files is None or filename in check_files:
+                expected_end_year = get_git_change_year(filename)
+
+        if expected_end_year is None:
+            continue
+
+        if found_end_year != expected_end_year:
+            yield "Bad copyright year", (
+                filename + "\n" +
+                "\tExpected %d\n" % expected_end_year +
+                "\tFound    %d\n" % found_end_year)
 
 
-def find_issues(check_files, paths, git_copyright_year=False):
+def find_issues(check_files, paths, git_change_years=False):
     """
     tests all source files for the required legal headers.
     """
     third_party_files = set()
 
-    # test all in-sourcefile legal headers
-    for filename in findfiles(paths, EXTENSIONS_REQUIRING_LEGAL_HEADERS):
-        try:
-            headertype, match = match_legalheader(readfile(filename))
-
-            if git_copyright_year and (check_files is None or
-                                       filename in check_files):
-
-                try:
-                    end_year = match.group('crend')
-                except IndexError:
-                    # the header doesn't contain copyright years; don't check
-                    # them (probably it's an empty file)
-                    pass
-                else:
-                    test_git_copyright_year(filename, int(end_year))
-
-            if headertype is THIRDPARTYLEGALHEADER:
-                third_party_files.add(filename)
-
-        except LegalIssue as exc:
-            yield (
-                "legal header text issue in {}".format(filename),
-                "\n\t{}\n\tSee copying.md for guidelines and a "
-                "template".format(exc.args[0]))
+    yield from test_headers(
+        check_files, paths, git_change_years, third_party_files)
 
     # test whether all third-party files are listed in copying.md
     listed_files = set()
@@ -125,34 +160,3 @@ def find_issues(check_files, paths, git_copyright_year=False):
         yield ("third-party file listing issue",
                ("{}\n\thas a third-party license header, but isn't "
                 "listed in copying.md").format(filename))
-
-
-def test_git_copyright_year(filename, statedyear):
-    """
-    Checks whether the stated copyright year concurs with the git log.
-    """
-
-    invocation = [
-        'git',
-        'log',
-        '-1',
-        '--format=%ad',
-        '--date=short',
-        '--',
-        filename]
-
-    proc = Popen(invocation, stdout=PIPE)
-    output = proc.communicate()[0].decode('utf-8', errors='ignore').strip()
-
-    if proc.returncode != 0 or not output:
-        return
-
-    logyear = int(output[:4])
-
-    if logyear != statedyear:
-        raise LegalIssue((
-            "Bad last copyright year in legal header:\n"
-            "\texpected {}\n"
-            "\tfound    {}").format(
-                repr(logyear),
-                repr(statedyear)))

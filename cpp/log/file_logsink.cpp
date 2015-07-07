@@ -23,7 +23,7 @@ void FileSink::output_log_message(const message &msg, LogSource *source) {
 	this->outfile << msg.filename << ":" << msg.lineno << "|";
 	this->outfile << msg.functionname << "|";
 	this->outfile << msg.thread_id << "|";
-	this->outfile << msg.timestamp / 1e9 << "|";
+	this->outfile << std::setprecision(7) << std::fixed << msg.timestamp / 1e9 << "|";
 	this->outfile << msg.text << std::endl;
 }
 

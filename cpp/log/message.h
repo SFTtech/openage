@@ -12,7 +12,7 @@
 #include "../util/constexpr.h"
 #include "../util/stringformatter.h"
 
-// pxd: from libopenage.log.level cimport level
+// pxd: from cpp.log.level cimport level
 #include "level.h"
 
 namespace openage {

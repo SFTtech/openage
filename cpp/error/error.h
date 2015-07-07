@@ -9,11 +9,11 @@
 // pxd: from libcpp.string cimport string
 #include <string>
 
-// pxd: from libopenage.log.message cimport message
+// pxd: from cpp.log.message cimport message
 #include "../log/log.h"
 #include "../log/message.h"
 
-// pxd: from libopenage.error.backtrace cimport Backtrace
+// pxd: from cpp.error.backtrace cimport Backtrace
 namespace openage {
 namespace error {
 // forward-declaration to avoid the header include.

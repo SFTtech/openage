@@ -1,3 +1,3 @@
-add_sources(${PROJECT_NAME}
+add_sources(libopenage
 	tests.cpp
 )

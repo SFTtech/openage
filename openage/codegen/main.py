@@ -74,11 +74,6 @@ def init_subparser(cli):
               "cmake re-runs"))
 
     cli.add_argument(
-        "--project-dir", required=True,
-        help=("templates are read from here, and generated code is written "
-              "here."))
-
-    cli.add_argument(
         "--mode", required=True,
         help=("operating mode; must be one of {'codegen', 'dryrun', 'clean'}. "
               "in dry run mode, only the caches are updated. "
@@ -124,9 +119,6 @@ def main(args, error):
     old_generated = set(read_cache_file_lines(args.generated_list_file))
     old_depends = set(read_cache_file_lines(args.depend_list_file))
 
-    if not os.path.isdir(args.project_dir):
-        error("not a directory: " + args.project_dir)
-
     try:
         mode = CodegenMode(args.mode)
     except ValueError as exc:
@@ -135,7 +127,7 @@ def main(args, error):
     # arguments are OK.
 
     # generate sources
-    generated, depends = codegen(Directory(args.project_dir), mode)
+    generated, depends = codegen(Directory(os.getcwd()), mode)
 
     def print_set_differences(old, new, name):
         """ Prints the difference between old and new. """

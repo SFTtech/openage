@@ -10,7 +10,7 @@ Features
 
 * convert all original media files
 * create a csv representation of all gamedata
-* generate C structures for media files and gamedata
+* generate C code to read that representation
 * flat, infinite terrain rendering
 * tile blending (toggle with space)
 * placement of a building (right click)

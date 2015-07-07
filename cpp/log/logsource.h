@@ -6,7 +6,7 @@
 // pxd: from libcpp.string cimport string
 #include <string>
 
-// pxd: from libopenage.log.message cimport message
+// pxd: from cpp.log.message cimport message
 #include "message.h"
 
 

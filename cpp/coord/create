@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#this script creates types for all coordinate systems defined in
-#doc/implementation/coordinate-systems
+# this script creates types for all coordinate systems defined in
+# doc/code/coordinate-systems
 
-#this script deliberately does not have its x flag set to prevent
-#accidential execution. after all, it would reset all files.
+# this script deliberately does not have its x flag set to prevent
+# accidential execution. after all, it would reset all files.
 
 ./create.py phys2   phys_t   ne se
 ./create.py phys3   phys_t   ne se up

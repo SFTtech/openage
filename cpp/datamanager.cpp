@@ -63,7 +63,7 @@ Texture *DataManager::get_texture(index_t graphic_id) {
 		return nullptr;
 	}
 
-	log::log(MSG(info) << "   slp id/name: " << slp_id << " " << this->graphics[graphic_id]->name0);
+	log::log(DBG << "   slp id/name: " << slp_id << " " << this->graphics[graphic_id]->name0);
 	std::string tex_fname = util::sformat("converted/graphics/%d.slp.png", slp_id);
 
 	// get tex if file is available

@@ -1,4 +1,4 @@
-add_sources(${PROJECT_NAME}
+add_sources(libopenage
 	audio_manager.cpp
 	category.cpp
 	dynamic_loader.cpp

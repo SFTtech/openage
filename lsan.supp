@@ -1,0 +1,15 @@
+# Curse you, Python! (this list is probably incomplete)
+leak:_PyObject_Malloc
+leak:_PyObject_GC_Resize
+leak:PyThread_allocate_lock
+leak:PyCode_New
+leak:PyList_New
+leak:new_keys_object
+leak:make_keys_shared
+leak:new_dict_with_shared_keys
+leak:list_resize
+leak:set_table_resize
+leak:resize_compact
+
+# stdlib
+leak:__strdup

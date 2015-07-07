@@ -1,4 +1,4 @@
-add_sources(${PROJECT_NAME}
+add_sources(libopenage
 	a_star.cpp
 	heuristics.cpp
 	path.cpp

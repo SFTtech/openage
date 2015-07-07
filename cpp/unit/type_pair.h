@@ -15,11 +15,11 @@ public:
 	/**
 	 * the unit must have either same class or id as this
 	 */
-	bool match(Unit *);
+	bool match(class Unit *);
 
 private:
-	uint class_id;
-	uint unit_type_id;
+	unsigned int class_id;
+	unsigned int unit_type_id;
 };
 
 /**

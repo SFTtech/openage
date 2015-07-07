@@ -8,8 +8,8 @@
 // pxd: from libcpp.string cimport string
 #include <string>
 
-// pxd: from libopenage.pyinterface.functional cimport PyIfFunc1, PyIfFunc2, PyIfFunc3
-// pxd: from libopenage.pyinterface.functional cimport Func1
+// pxd: from cpp.pyinterface.functional cimport PyIfFunc1, PyIfFunc2, PyIfFunc3
+// pxd: from cpp.pyinterface.functional cimport Func1
 #include "functional.h"
 
 namespace openage {

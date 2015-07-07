@@ -1,4 +1,4 @@
-add_sources(${PROJECT_NAME}
+add_sources(libopenage
 	terrain.cpp
 	terrain_chunk.cpp
 	terrain_object.cpp

@@ -9,7 +9,7 @@
  * forward declarations of all coordinate structs,
  * scalar type name aliases, and scaling factors
  *
- * in accordance to doc/implementation/coordinate-systems
+ * in accordance to doc/code/coordinate-systems
  */
 
 namespace openage {

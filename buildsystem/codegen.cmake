@@ -10,7 +10,10 @@ function(codegen_run)
 	endif()
 	set_property(GLOBAL PROPERTY SFT_CODEGEN_HAS_BEEN_RUN 1)
 
-	set(CODEGEN_INVOCATION "${PYTHON3}" -m openage codegen "--generated-list-file=${CMAKE_BINARY_DIR}/codegen_generated_files" "--depend-list-file=${CMAKE_BINARY_DIR}/codegen_depends" "--project-dir=${CMAKE_SOURCE_DIR}")
+	set(CODEGEN_INVOCATION
+		"${PYTHON}" -m openage codegen
+		"--generated-list-file=${CMAKE_BINARY_DIR}/codegen_generated_files"
+		"--depend-list-file=${CMAKE_BINARY_DIR}/codegen_depends")
 
 	execute_process(COMMAND
 		${CODEGEN_INVOCATION} --mode=dryrun

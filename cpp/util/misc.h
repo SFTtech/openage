@@ -9,7 +9,7 @@ namespace util {
 /**
  * modulo operation that guarantees to return positive values.
  */
-template <typename T>
+template<typename T>
 T mod(T x, T m) {
 	T r = x % m;
 
@@ -23,7 +23,7 @@ T mod(T x, T m) {
 /**
  * compiletime defined modulo function.
  */
-template <typename T, unsigned int modulo>
+template<typename T, unsigned int modulo>
 T mod(T x) {
 	T r = x % modulo;
 
@@ -38,7 +38,7 @@ T mod(T x) {
 /**
  * compiletime defined rotate left function
  */
-template <typename T, int amount>
+template<typename T, int amount>
 T rol(T x) {
 	static_assert(sizeof(T) > amount && amount > 0, "invalid rotation amount");
 	return (x << amount) | (x >> (sizeof(T)*8 - amount));
@@ -49,7 +49,7 @@ T rol(T x) {
  * implements the 'correct' version of the division operator,
  * which always rounds to -inf
  */
-template <typename T>
+template<typename T>
 inline T div(T x, T m) {
 	return (x - mod<T>(x, m)) / m;
 }
@@ -60,7 +60,7 @@ inline T div(T x, T m) {
  * use for stdlib structures like std::set.
  * the template paramter has to be a pointer type.
  */
-template <typename T>
+template<typename T>
 struct less {
 	bool operator ()(const T x, const T y) const {
 		return *x < *y;

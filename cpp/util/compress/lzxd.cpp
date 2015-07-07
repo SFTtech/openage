@@ -776,13 +776,13 @@ unsigned LZXDStream::decompress_next_frame(unsigned char *output_buf) {
 	unsigned int frame_size = 0;
 
 	if (unlikely(this->frame_posn - this->window_posn)) {
-		frame_size = this->frame_posn - this->window_posn;
-
 		// Warning: untested code.
 		// In theory, a symbol may have overshot the last frame's boundary.
 		// If it did, the amount of data would be available in frame_size.
 
-		throw Error(MSG(err) << "untested code path: extra frame data available from last frame");
+		throw Error(MSG(err) <<
+			"untested code path: extra frame data available from last frame. " <<
+			"frame size = " << this->frame_posn - this->window_posn);
 	}
 
 	// decode symbols until we have enough data for the frame.

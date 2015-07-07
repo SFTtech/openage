@@ -36,4 +36,3 @@ double real_range(double lower, double upper) {
 }
 
 }} // rng::openage
-

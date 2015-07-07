@@ -1,7 +1,7 @@
 # This file was taken from VAST,
 # Copyright 2014-2014 Matthias Vallentin.
 # It's licensed under the terms of the 3-clause BSD license.
-# Modifications Copyright 2014-2014 the openage authors.
+# Modifications Copyright 2014-2015 the openage authors.
 # See copying.md for further legal info.
 
 # Tries to find Gperftools.
@@ -57,4 +57,3 @@ mark_as_advanced(
 	GPERFTOOLS_TCMALLOC_AND_PROFILER
 	GPERFTOOLS_LIBRARIES
 	GPERFTOOLS_INCLUDE_DIR)
-

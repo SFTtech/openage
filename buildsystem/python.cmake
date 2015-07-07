@@ -1,163 +1,399 @@
 # Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
-# checks python availability,
-# provides macros for defining python packages, python cpp extension modules,
-# and a generator macro that must be called after including alle source dirs
-
-# for an example usage, see py/openage/convert/CMakeLists.txt
+# finds the python interpreter, install destination and extension flags.
+# provides macros for defining python extension modules and pxdgen sources.
+# and a 'finalize' function that must be called in the end.
 
 function(python_init)
-	find_package(Python 3.4 REQUIRED)
+	# the Python version number requirement is in modules/FindPython_test.cpp
+	find_package(Python REQUIRED)
+	find_package(Cython 0.22 REQUIRED)
 
-	# this list is filled by the add_py_packages function.
-	# it's then written to bin/py/packages for use by setup.py.
-	set_property(GLOBAL PROPERTY SFT_PY_PACKAGES)
-
-	# this list is filled by the pxdgen function.
-	# it's then written to bin/py/pxdgen_sources for use by pxdgen.
+	# filled by pxdgen; written to bin/py/pxdgen_sources for use by pxdgen.py.
 	set_property(GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
 
-	# this list is filled by the add_cython_modules function.
-	# it's then written to bin/py/cython_modules for use by setup.py build_ext.
+	# filled by add_cython_modules. used by cythonize.py.
 	set_property(GLOBAL PROPERTY SFT_CYTHON_MODULES)
+	set_property(GLOBAL PROPERTY SFT_CYTHON_MODULES_EMBED)
 
-	set(PYTHON3 "${PYTHON_EXECUTABLE}")
-	set(PYTHON3 "${PYTHON3}" PARENT_SCOPE)
-	set(PYTHON_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}" PARENT_SCOPE)
-	set(PYTHON_VERSION_STRING "${PYTHON_VERSION_STRING}" PARENT_SCOPE)
+	# filled by pxdgen and add_pxd. for use as depends list for cythonize.py.
+	set_property(GLOBAL PROPERTY SFT_PXD_FILES)
 
-	exec_program(
-		"${PYTHON3}"
-		ARGS -m cython --version
-		OUTPUT_VARIABLE CYTHON_VERSION
-		RETURN_VALUE CYTHON_RETVAL
-	)
+	# filled with all .py filenames; used for installing.
+	set_property(GLOBAL PROPERTY SFT_PY_FILES)
 
-	if (NOT "${CYTHON_RETVAL}" EQUAL 0)
-		message(FATAL_ERROR "${PYTHON3} can not call Cython")
+	# filled with all cython module target names; used for in-place creation.
+	set_property(GLOBAL PROPERTY SFT_CYTHON_MODULE_TARGETS)
+
+	# filled with all __pycache__ folders that have already been selected for installation.
+	set_property(GLOBAL PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS)
+
+
+	py_get_config_var(OPT PYEXT_CXXFLAGS)
+	py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)
+
+	# fix the CXXFLAGS
+	set(PYEXT_CXXFLAGS " ${PYEXT_CXXFLAGS} ") # padding required for the replacements below
+	# C++ doesn't have the -Wstrict-prototypes warning
+	string(REGEX REPLACE " -Wstrict-prototypes " " " PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}")
+	# thanks, but I'd like to choose my debug mode myself.
+	string(REPLACE " -g " " " PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}")
+
+	# add our own regular C++ flags
+	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} ${CMAKE_CXX_FLAGS}")
+
+	if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+		# some things clang complains about
+		set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-extended-offsetof")
+		set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unneeded-internal-declaration")
+
+		if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.5)
+			# doesn't have that warning yet
+		else()
+			# https://github.com/cython/cython/pull/402 (fix pending cython 0.23)
+			set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-absolute-value")
+		endif()
 	endif()
 
+	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unused-function")
+
+	set(PYTHON "${PYTHON}" PARENT_SCOPE)
+	set(CYTHON "${CYTHON}" PARENT_SCOPE)
 	set(CYTHON_VERSION "${CYTHON_VERSION}" PARENT_SCOPE)
 
-	set(PYTHON_INVOCATION env "PYTHON_INTERP=${PYTHON3}" ${CMAKE_SOURCE_DIR}/run PARENT_SCOPE)
-endfunction()
+	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}" PARENT_SCOPE)
+	set(PYEXT_PYLIB "${PYTHON_LIBRARY}" PARENT_SCOPE)
+	set(PYEXT_SUFFIX "${PYEXT_SUFFIX}" PARENT_SCOPE)
+	set(PYEXT_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}" PARENT_SCOPE)
 
-
-function(add_py_packages)
-	foreach(package ${ARGN})
-		set_property(GLOBAL APPEND PROPERTY SFT_PY_PACKAGES "${package}")
-	endforeach()
+	if(NOT CMAKE_PY_INSTALL_PREFIX)
+		py_exec("import site; print(site.getsitepackages()[0])" PREFIX)
+		set(CMAKE_PY_INSTALL_PREFIX "${PREFIX}" PARENT_SCOPE)
+	endif()
 endfunction()
 
 
 function(add_cython_modules)
-	foreach(source ${ARGN})
-		if(NOT IS_ABSOLUTE "${source}")
-			set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
-		endif()
+	# adds a new module for cython compilation, by relative filename.
+	# synoposis:
+	# add_cython_modules(
+	#    test.pyx
+	#    EMBED __main__.pyx
+	#    STANDALONE EMBED foo/bar.pyx
+	#    NOINSTALL STANDALONE foo/test.pyx
+	# )
+	#
+	# test.pyx is compiled to a shared library linked against PYEXT_LINK_LIBRARY
+	# __main__.pyx is compiled to a executable with embedded python interpreter,
+	# linked against libpython and PYEXT_LINK_LIBRARY.
+	# foo/bar.pyx is compiled to a executable with embedded pytthon interpreter,
+	# linked only against libpython.
+	# foo/test.pyx is compiled to a shared library linked against nothing, and will
+	# not be installed.
 
-		set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES "${source}")
+	file(RELATIVE_PATH REL_CURRENT_SOURCE_DIR
+		"${CMAKE_SOURCE_DIR}"
+		"${CMAKE_CURRENT_SOURCE_DIR}")
+
+	set(EMBED_NEXT FALSE)
+	set(STANDALONE_NEXT FALSE)
+	foreach(source ${ARGN})
+		if(source STREQUAL "EMBED")
+			set(EMBED_NEXT TRUE)
+		elseif(source STREQUAL "STANDALONE")
+			set(STANDALONE_NEXT TRUE)
+		elseif(source STREQUAL "NOINSTALL")
+			set(NOINSTALL_NEXT TRUE)
+		else()
+			if(NOT IS_ABSOLUTE "${source}")
+				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
+			endif()
+
+			if(NOT "${source}" MATCHES "${CMAKE_CURRENT_SOURCE_DIR}/.*\\.pyx?$")
+				message(FATAL_ERROR "non-.py/.pyx file given to add_cython_modules: ${source}")
+			endif()
+
+			get_filename_component(OUTPUTNAME "${source}" NAME_WE)
+			string(REGEX REPLACE "\\.pyx?$" ".cpp" CPPNAME "${source}")
+			set_source_files_properties("${CPPNAME}" PROPERTIES GENERATED ON)
+
+			# construct some hopefully unique target name
+			file(RELATIVE_PATH TARGETNAME "${CMAKE_SOURCE_DIR}" "${source}")
+			string(REGEX REPLACE "\\.pyx?$" "" TARGETNAME "${TARGETNAME}")
+			string(REGEX REPLACE "/" "_" TARGETNAME "${TARGETNAME}")
+
+			# generate the pretty module name
+			file(RELATIVE_PATH PRETTY_MODULE_NAME "${CMAKE_SOURCE_DIR}" "${source}")
+			string(REGEX REPLACE "\\.pyx?$" "" PRETTY_MODULE_NAME "${PRETTY_MODULE_NAME}")
+			string(REGEX REPLACE "/" "." PRETTY_MODULE_NAME "${PRETTY_MODULE_NAME}")
+			set(PRETTY_MODULE_PROPERTIES "")
+
+			if(EMBED_NEXT)
+				set(EMBED_NEXT FALSE)
+				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [embedded interpreter]")
+
+				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES_EMBED "${source}")
+				add_executable("${TARGETNAME}" "${CPPNAME}")
+
+				target_link_libraries("${TARGETNAME}" "${PYEXT_PYLIB}")
+			else()
+				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES "${source}")
+				add_library("${TARGETNAME}" MODULE "${CPPNAME}")
+
+				set_target_properties("${TARGETNAME}" PROPERTIES
+					PREFIX ""
+					SUFFIX ".cpython-34m.so"
+				)
+			endif()
+
+			if(NOINSTALL_NEXT)
+				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [noinstall]")
+				set(NOINSTALL_NEXT FALSE)
+			else()
+				install(
+					TARGETS "${TARGETNAME}"
+					DESTINATION "${CMAKE_PY_INSTALL_PREFIX}/${REL_CURRENT_SOURCE_DIR}"
+				)
+			endif()
+
+			set_target_properties("${TARGETNAME}" PROPERTIES
+				COMPILE_FLAGS "${PYEXT_CXXFLAGS}"
+				INCLUDE_DIRECTORIES "${PYEXT_INCLUDE_DIR}"
+				OUTPUT_NAME "${OUTPUTNAME}"
+			)
+
+			if (STANDALONE_NEXT)
+				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [standalone]")
+				set(STANDALONE_NEXT FALSE)
+			else()
+				target_link_libraries("${TARGETNAME}" "${PYEXT_LINK_LIBRARY}")
+			endif()
+
+			add_dependencies("${TARGETNAME}" cythonize)
+
+			set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULE_TARGETS "${TARGETNAME}")
+
+			pretty_print_target("cython module" "${PRETTY_MODULE_NAME}" "${PRETTY_MODULE_PROPERTIES}")
+		endif()
 	endforeach()
 endfunction()
 
 
 function(pxdgen)
+	# add a C++ header file as pxdgen source file
 	foreach(source ${ARGN})
 		if(NOT IS_ABSOLUTE "${source}")
 			set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 		endif()
 
+		if(NOT "${source}" MATCHES "${CMAKE_CURRENT_SOURCE_DIR}/.*\\.h$")
+			message(FATAL_ERROR "non-.h file given to pxdgen: ${source}")
+		endif()
+
+		string(REGEX REPLACE "\\.h$" ".pxd" PXDNAME "${source}")
+		set_source_files_properties("${PXDNAME}" PROPERTIES GENERATED ON)
+
 		set_property(GLOBAL APPEND PROPERTY SFT_PXDGEN_SOURCES "${source}")
+		set_property(GLOBAL APPEND PROPERTY SFT_PXD_FILES "${PXDNAME}")
+	endforeach()
+endfunction()
+
+
+function(add_pxds)
+	# add a .pxd or other additional Cython source
+	foreach(source ${ARGN})
+		if(NOT IS_ABSOLUTE "${source}")
+			set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
+		endif()
+
+		if(NOT "${source}" MATCHES "${CMAKE_CURRENT_SOURCE_DIR}/.*\\.px[id]$")
+			message(FATAL_ERROR "non-pxd/pxi file given to add_pyd: ${source}")
+		endif()
+
+		set_property(GLOBAL APPEND PROPERTY SFT_PXD_FILES "${source}")
+	endforeach()
+endfunction()
+
+
+function(add_py_modules)
+	# add a .py file for installing
+
+	file(RELATIVE_PATH REL_CURRENT_SOURCE_DIR
+		"${CMAKE_SOURCE_DIR}"
+		"${CMAKE_CURRENT_SOURCE_DIR}")
+
+	set(NOINSTALL_NEXT FALSE)
+	foreach(source ${ARGN})
+		if("${source}" STREQUAL "NOINSTALL")
+			set(NOINSTALL_NEXT TRUE)
+		else()
+			if(NOT IS_ABSOLUTE "${source}")
+				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
+			endif()
+
+			if(NOT "${source}" MATCHES "${CMAKE_CURRENT_SOURCE_DIR}/.*\\.py$")
+				message(FATAL_ERROR "non-Python file given to add_py_modules: ${source}")
+			endif()
+
+			if(NOINSTALL_NEXT)
+				set(NOINSTALL_NEXT FALSE)
+			else()
+				install(
+					FILES "${source}"
+					DESTINATION  "${CMAKE_PY_INSTALL_PREFIX}/${REL_CURRENT_SOURCE_DIR}"
+				)
+
+				# install the corresponding __pycache__ folder, but at most once.
+				get_filename_component(DIR_NAME "${source}" DIRECTORY)
+				get_property(installed_pycache_folders GLOBAL PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS)
+				list(FIND installed_pycache_folders "${DIR_NAME}" idx)
+				if(idx LESS 0)
+					install(
+						DIRECTORY "${DIR_NAME}/__pycache__"
+						DESTINATION  "${CMAKE_PY_INSTALL_PREFIX}/${REL_CURRENT_SOURCE_DIR}"
+					)
+					set_property(GLOBAL APPEND PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS "${DIR_NAME}")
+				endif()
+			endif()
+
+			set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES "${source}")
+		endif()
 	endforeach()
 endfunction()
 
 
 function(python_finalize)
-	get_property(packages GLOBAL PROPERTY SFT_PY_PACKAGES)
-	file(WRITE "${CMAKE_BINARY_DIR}/py/packages" "${packages}")
+	# pxdgen (.h -> .pxd)
+
 	get_property(pxdgen_sources GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
 	file(WRITE "${CMAKE_BINARY_DIR}/py/pxdgen_sources" "${pxdgen_sources}")
+	set(PXDGEN_TIMEFILE "${CMAKE_BINARY_DIR}/py/pxdgen_timefile")
+	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}"
+		COMMAND "${PYTHON}" -m buildsystem.pxdgen
+		--file-list "${CMAKE_BINARY_DIR}/py/pxdgen_sources"
+		COMMAND "${CMAKE_COMMAND}" -E touch "${PXDGEN_TIMEFILE}"
+		DEPENDS ${pxdgen_sources} "${CMAKE_BINARY_DIR}/py/pxdgen_sources"
+		COMMENT "pxdgen: generating .pxd files from headers"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+	)
+	add_custom_target(pxdgen ALL DEPENDS "${PXDGEN_TIMEFILE}")
+
+
+	# cythonize (.pyx -> .cpp)
+
 	get_property(cython_modules GLOBAL PROPERTY SFT_CYTHON_MODULES)
 	file(WRITE "${CMAKE_BINARY_DIR}/py/cython_modules" "${cython_modules}")
-
-	set(PXDGEN_TIMEFILE "${CMAKE_BINARY_DIR}/py/pxdgen_timefile")
-	set(PXDGEN_SOURCES_FILE "${CMAKE_BINARY_DIR}/py/pxdgen_sources")
-	set(PXDGEN_DIR "${CMAKE_BINARY_DIR}/py/pxds")
-	file(MAKE_DIRECTORY "${PXDGEN_DIR}")
-
-	# cmake automatically adds -rpath to all executable it links, and removes it when installing them.
-	# since the python extension modules are, however, not compiled by cmake, we need to do it manually here.
-	# setup.py appends this to the linker flags if called with --inplace.
-	set(CYTHON_INPLACE_LINKER_FLAGS "-Wl,-rpath,${CMAKE_BINARY_DIR}/cpp")
-
-	set(CYTHON_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-	if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-		# with our flags, clang complains about some unused functions when compiling cython-generated code.
-
-		# TODO -Wno-absolute-value is required to avoid a warning:
-		#      https://github.com/cython/cython/pull/402
-		#      (pending cython 0.23)
-		# TODO it's not implemented in all compilers, though.
-		set(CYTHON_CXX_FLAGS "${CYTHON_CXX_FLAGS} -Wno-absolute-value -Wno-unused-function -Wno-unneeded-internal-declaration -Wno-extended-offsetof")
-	endif()
-
-	configure_file("${BUILDSYSTEM_DIR}/templates/py.conf.in" "${CMAKE_BINARY_DIR}/py/py.conf")
-
-	message("py packages")
-	foreach(package ${packages})
-		message("\t${package}")
-	endforeach()
-	message("")
-
-	message("cython modules")
-	foreach(filename ${cython_modules})
-		print_filename("${filename}")
-	endforeach()
-	message("")
-
-	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}"
-		COMMAND "${PYTHON3}" -m buildsystem.pxdgen --target-dir "${PXDGEN_DIR}/libopenage" --file-list "${PXDGEN_SOURCES_FILE}"
-		COMMAND "${CMAKE_COMMAND}" -E touch "${PXDGEN_TIMEFILE}"
-		DEPENDS ${pxdgen_sources}
+	get_property(cython_modules_embed GLOBAL PROPERTY SFT_CYTHON_MODULES_EMBED)
+	file(WRITE "${CMAKE_BINARY_DIR}/py/cython_modules_embed" "${cython_modules_embed}")
+	get_property(pxd_list GLOBAL PROPERTY SFT_PXD_FILES)
+	file(WRITE "${CMAKE_BINARY_DIR}/py/pxd_list" "${pxd_list}")
+	set(CYTHONIZE_TIMEFILE "${CMAKE_BINARY_DIR}/py/cythonize_timefile")
+	add_custom_command(OUTPUT "${CYTHONIZE_TIMEFILE}"
+		COMMAND "${PYTHON}" -m buildsystem.cythonize
+		"${CMAKE_BINARY_DIR}/py/cython_modules"
+		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
+		"${CMAKE_BINARY_DIR}/py/pxd_list"
+		COMMAND "${CMAKE_COMMAND}" -E touch "${CYTHONIZE_TIMEFILE}"
+		DEPENDS
+		"${PXDGEN_TIMEFILE}"
+		${cython_modules}
+		${cython_modules_embed}
+		${pxd_list}
+		"${CMAKE_BINARY_DIR}/py/cython_modules"
+		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
+		"${CMAKE_BINARY_DIR}/py/pxd_list"
+		COMMENT "cythonize.py: compiling .pyx files to .cpp"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-		COMMENT "pxdgen.py: generating cython .pxd files"
 	)
+	add_custom_target(cythonize ALL DEPENDS "${CYTHONIZE_TIMEFILE}")
 
-	add_custom_target(pxdgen DEPENDS "${PXDGEN_TIMEFILE}")
 
-	set(PY_TIMEFILE "${CMAKE_BINARY_DIR}/py/py_timefile")
+	# py compile (.py -> .pyc)
 
-	add_custom_command(OUTPUT "${PY_TIMEFILE}"
-		COMMAND "${PYTHON3}" "${BUILDSYSTEM_DIR}/setup.py" build_ext --inplace
-		COMMAND "${CMAKE_COMMAND}" -E touch "${PY_TIMEFILE}"
-		DEPENDS ${cython_modules} ${PXDGEN_TIMEFILE} "${PROJECT_NAME}"
-		COMMENT "setup.py: cython extensions"
+	get_property(py_files GLOBAL PROPERTY SFT_PY_FILES)
+	file(WRITE "${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
+	set(BUILDPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
+	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
+		COMMAND "${PYTHON}" -m compileall openage
+		COMMAND "${CMAKE_COMMAND}" -E touch "${COMPILEPY_TIMEFILE}"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIRECTORY}"
+		DEPENDS ${py_files}
+		COMMENT "compiling .py files to .pyc files in __pycache__"
 	)
+	add_custom_target(compilepy ALL DEPENDS "${COMPILEPY_TIMEFILE}")
 
-	add_custom_target(python ALL DEPENDS "${PY_TIMEFILE}"
-		SOURCES ${cython_sourcefiles}
+
+	# inplace module install (bin/module.so -> module.so)
+
+	get_property(cython_module_targets GLOBAL PROPERTY SFT_CYTHON_MODULE_TARGETS)
+	set(cython_module_files_expr)
+	foreach(cython_module_target ${cython_module_targets})
+		list(APPEND cython_module_files_expr "$<TARGET_FILE:${cython_module_target}>")
+	endforeach()
+	file(GENERATE
+		OUTPUT "${CMAKE_BINARY_DIR}/py/inplace_module_list"
+		CONTENT "${cython_module_files_expr}"
 	)
+	set(INPLACEMODULES_TIMEFILE "${CMAKE_BINARY_DIR}/py/inplacemodules_timefile")
+	add_custom_command(OUTPUT "${INPLACEMODULES_TIMEFILE}"
+		COMMAND "${PYTHON}" -m buildsystem.inplacemodules
+		"${CMAKE_BINARY_DIR}/py/inplace_module_list"
+		"${CMAKE_BINARY_DIR}"
+		DEPENDS
+		"${CMAKE_BINARY_DIR}/py/inplace_module_list"
+		${cython_module_targets}
+		COMMAND "${CMAKE_COMMAND}" -E touch "${INPLACEMODULES_TIMEFILE}"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+		COMMENT "creating in-place modules"
+	)
+	add_custom_target(inplacemodules ALL DEPENDS "${INPLACEMODULES_TIMEFILE}")
 
-	add_custom_target(cleanpython
-		COMMAND "${PYTHON3}" "${BUILDSYSTEM_DIR}/setup.py" clean --all
-		COMMAND "${CMAKE_COMMAND}" -E remove "${PY_TIMEFILE}"
+
+	# cleaning of all in-sourcedir stuff
+
+	add_custom_target(cleancython
+		COMMAND "${PYTHON}" -m buildsystem.inplacemodules --clean
+		"${CMAKE_BINARY_DIR}/py/inplace_module_list"
+		"${CMAKE_BINARY_DIR}"
+		COMMAND "${PYTHON}" -m buildsystem.cythonize --clean
+		"${CMAKE_BINARY_DIR}/py/cython_modules"
+		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
+		"${CMAKE_BINARY_DIR}/py/pxd_list"
+		# general deleters to catch files that have already been un-listed.
+		COMMAND find openage -name "*.cpp" -type f -print -delete
+		COMMAND find openage -name "*.html" -type f -print -delete
+		COMMAND find openage -name "*.so" -type f -print -delete
+		COMMAND "${CMAKE_COMMAND}" -E remove "${CYTHONIZE_TIMEFILE}"
+		COMMAND "${CMAKE_COMMAND}" -E remove "${INPLACEMODULES_TIMEFILE}"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 	)
 
 	add_custom_target(cleanpxdgen
-		COMMAND "${CMAKE_COMMAND}" -E remove_directory "${PXDGEN_DIR}"
+		COMMAND find cpp -name "*.pxd" -type f -print -delete
+		COMMAND find cpp -name "__init__.py" -type f -print -delete
 		COMMAND "${CMAKE_COMMAND}" -E remove "${PXDGEN_TIMEFILE}"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 	)
 
-	# add setup.py to the install target
-	# * set the install prefix at configure time
-	# * evaluate the temporary install destination parameter DESTDIR at 'make install'-time
-	install(CODE "execute_process(COMMAND ${PYTHON3} \"${BUILDSYSTEM_DIR}/setup.py\" install --prefix=${CMAKE_INSTALL_PREFIX} --root=\$ENV{DESTDIR})")
+
+	# check for any unlisted .py files, and error.
+
+	execute_process(
+		COMMAND "${PYTHON}" -m buildsystem.check_py_file_list
+		${CMAKE_BINARY_DIR}/py/py_files
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+		RESULT_VARIABLE res
+	)
+	if(NOT res EQUAL 0)
+		message(FATAL_ERROR ".py file listing inconsistent")
+	endif()
 endfunction()
 
 
 function(warn_runtime_depends)
+	# warns about missing runtime dependencies of openage.
 	execute_process(
-		COMMAND "${PYTHON3}" -m buildsystem.warn_runtime_depends
+		COMMAND "${PYTHON}" -m buildsystem.warn_runtime_depends
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 	)
 endfunction()

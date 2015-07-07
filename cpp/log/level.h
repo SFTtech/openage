@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-// pxd: from libopenage.util.enum cimport Enum
+// pxd: from cpp.util.enum cimport Enum
 #include "../util/enum.h"
 
 namespace openage {

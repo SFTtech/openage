@@ -41,7 +41,7 @@ namespace util {
  *     cppbool operator ==(Enum[T] arg) except +
  *     cppbool operator !=(Enum[T] arg) except +
  */
-template <typename T>
+template<typename T>
 class Enum {
 public:
 	/**

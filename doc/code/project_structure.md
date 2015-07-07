@@ -29,7 +29,7 @@ Contains the Python components of openage, including
  - code generation
  - asset conversion
   - see `doc/media/`
-  - see [doc/implementation/convert/README.md](/doc/implementation/convert/README.md)
+  - see [doc/code/convert/README.md](/doc/code/convert/README.md)
 
 
 ### assets/ ###

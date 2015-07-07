@@ -5,9 +5,9 @@
 # add new sources here, dependencies for linking and including
 # are specified below the source file list.
 
-declare_binary(${PROJECT_NAME})
+declare_binary(libopenage)
 
-add_sources(${PROJECT_NAME}
+add_sources(libopenage
 	assetmanager.cpp
 	callbacks.cpp
 	datamanager.cpp
@@ -50,10 +50,10 @@ add_subdirectory("rng")
 
 # run codegen, add files to executable
 codegen_run()
-add_sources(${PROJECT_NAME} GENERATED ${CODEGEN_TARGET_TUS})
+add_sources(libopenage GENERATED ${CODEGEN_TARGET_TUS})
 
 # after this point, no further sources can be added to the executable
-finalize_binary(${PROJECT_NAME} library allow_no_undefined)
+finalize_binary(libopenage openage library allow_no_undefined)
 
 # library dependency specification
 
@@ -80,14 +80,12 @@ find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
 pkg_search_module(EPOXY REQUIRED epoxy)
 
-target_link_libraries(${PROJECT_NAME} dl rt)
-
 if(WANT_BACKTRACE)
 	find_package(Backtrace)
 endif()
 
 if(BACKTRACE_FOUND)
-	target_link_libraries(${PROJECT_NAME} "${BACKTRACE_LIBRARY}")
+	target_link_libraries(libopenage "${BACKTRACE_LIBRARY}")
 	have_config_option(backtrace BACKTRACE true)
 else()
 	have_config_option(backtrace BACKTRACE false)
@@ -100,7 +98,7 @@ endif()
 if(WANT_GPERFTOOLS_PROFILER AND GPERFTOOLS_FOUND)
 	have_config_option(gperftools-profiler GPERFTOOLS_PROFILER true)
 	include_directories(${GPERFTOOLS_INCLUDE_DIR})
-	target_link_libraries(${PROJECT_NAME} ${GPERFTOOLS_PROFILER})
+	target_link_libraries(libopenage ${GPERFTOOLS_PROFILER})
 else()
 	have_config_option(gperftools-profiler GPERFTOOLS_PROFILER false)
 endif()
@@ -108,7 +106,7 @@ endif()
 if(WITH_GPERFTOOLS_TCMALLOC AND GPERFTOOLS_FOUND)
 	have_config_option(gperftools-tcmalloc GPERFTOOLS_TCMALLOC true)
 	include_directories(${GPERFTOOLS_INCLUDE_DIR})
-	target_link_libraries(${PROJECT_NAME} ${GPERFTOOLS_TCMALLOC})
+	target_link_libraries(libopenage ${GPERFTOOLS_TCMALLOC})
 else()
 	have_config_option(gperftools-tcmalloc GPERFTOOLS_TCMALLOC false)
 endif()
@@ -142,7 +140,9 @@ include_directories(
 )
 
 # link the executable to those libraries
-target_link_libraries(${PROJECT_NAME}
+target_link_libraries(libopenage
+	dl
+	rt
 	${FONTCONFIG_LIB}
 	${FREETYPE_LIBRARIES}
 	${FTGL_LIBRARIES}
@@ -155,5 +155,4 @@ target_link_libraries(${PROJECT_NAME}
 	${UTIL_LIB}
 )
 
-# main binary installation
-install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
+install(TARGETS libopenage LIBRARY DESTINATION lib)

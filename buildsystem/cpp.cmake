@@ -5,6 +5,7 @@
 #TODO: integrate PGO (profile-guided optimization) build
 
 function(cpp_init)
+	set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
 
 	function(require_cxx_version CXXNAME MINIMAL)
@@ -110,7 +111,7 @@ function(add_sources binary_name)
 				"${source}"
 			)
 
-			if(${generated})
+			if(generated)
 				set_property(
 					GLOBAL APPEND PROPERTY
 					"SFT_BINARY_GENERATED_SRCS_${binary_name}"
@@ -123,14 +124,16 @@ endfunction()
 
 # finalize the executable definition,
 # no sources can be added to the binary afterwards.
+# include paths, libraries etc can only be specified afterwards.
 # type must be one of {library, executable}.
 # additional flags may be specified:
 #
 #  - allow_no_undefined (only valid for libraries):
 #     the linker will allow no undefined symbols (same linker errors as for executables)
-function(finalize_binary binary_name type)
-	get_property(sources GLOBAL PROPERTY SFT_BINARY_SRCS_${binary_name})
-	get_property(generatedsources GLOBAL PROPERTY SFT_BINARY_GENERATED_SRCS_${binary_name})
+#     is ignored when any sanitizers are active.
+function(finalize_binary target_name output_name type)
+	get_property(sources GLOBAL PROPERTY SFT_BINARY_SRCS_${target_name})
+	get_property(generatedsources GLOBAL PROPERTY SFT_BINARY_GENERATED_SRCS_${target_name})
 
 	# mark the generated sources as GENERATED.
 	if(generatedsources)
@@ -138,21 +141,20 @@ function(finalize_binary binary_name type)
 	endif()
 
 	# print overview of the binary's files
-	message("cpp binary: ${binary_name}")
-	foreach(source ${sources})
-		list_contains(contained "${source}" "${generatedsources}")
-		if(contained)
-			print_filename("${source}" "[gen]")
-		else()
-			print_filename("${source}")
-		endif()
-	endforeach()
+	list(LENGTH sources source_file_count)
+	list(LENGTH generatedsources generated_source_file_count)
+	set(pretty_binary_properties "[${source_file_count} sources]")
+	if (generatedsources)
+		set(pretty_binary_properties "${pretty_binary_properties} [${generated_source_file_count} generated]")
+	endif()
+
+	pretty_print_target("cpp ${type}" "${target_name}" "${pretty_binary_properties}")
 
 	# create the executable
 	if(type STREQUAL "executable")
-		add_executable("${binary_name}" ${sources})
+		add_executable("${target_name}" ${sources})
 	elseif(type STREQUAL "library")
-		add_library("${binary_name}" SHARED ${sources})
+		add_library("${target_name}" SHARED ${sources})
 	endif()
 
 	foreach(flag ${ARGN})
@@ -161,17 +163,20 @@ function(finalize_binary binary_name type)
 				message(FATAL_ERROR "finalize_binary flag 'allow_no_undefined' is only valid for libraries!")
 			endif()
 
-			set_target_properties(${binary_name} PROPERTIES LINK_FLAGS -Wl,--no-undefined)
+			if(NOT "${CMAKE_CXX_FLAGS}" MATCHES "-fsanitize")
+				set_target_properties("${target_name}" PROPERTIES LINK_FLAGS -Wl,--no-undefined)
+			endif()
 		else()
 			message(FATAL_ERROR "finalize_binary flag unknown: ${flag}")
 		endif()
 	endforeach()
 
+	set_target_properties("${target_name}" PROPERTIES OUTPUT_NAME "${output_name}")
+
 	# make the binary depend on codegen iff it has any generated files
 	if(generatedsources)
-		add_dependencies("${binary_name}" codegen)
+		add_dependencies("${target_name}" codegen)
 	endif()
-	message("")
 endfunction()
 
 cpp_init()

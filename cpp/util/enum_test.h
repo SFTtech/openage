@@ -6,7 +6,7 @@
 // pxd: from libcpp.string cimport string
 #include <string>
 
-// pxd: from libopenage.util.enum cimport Enum
+// pxd: from cpp.util.enum cimport Enum
 #include "enum.h"
 
 namespace openage {

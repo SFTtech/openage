@@ -36,9 +36,9 @@ def parse_args():
                            "repo must be a git repository."))
     cli.add_argument("--legal", action="store_true",
                      help="check whether all sourcefiles have legal headers")
-    cli.add_argument("--test-git-years", action="store_true",
+    cli.add_argument("--test-git-change-years", action="store_true",
                      help=("when doing legal checks, test whether the "
-                           "last copyright year matches the git history."))
+                           "copyright year matches the git history."))
 
     args = cli.parse_args()
     process_args(args, cli.error)
@@ -64,10 +64,10 @@ def process_args(args, error):
 
         args.pystyle = True
         args.pylint = True
-        args.test_git_years = True
+        args.test_git_change_years = True
 
     if not any((args.headerguards, args.legal, args.authors, args.pystyle,
-                args.test_git_years, args.pylint)):
+                args.test_git_change_years, args.pylint)):
         error("no checks were specified")
 
     has_git = bool(shutil.which('git'))
@@ -82,12 +82,12 @@ def process_args(args, error):
             print("can not check author list for compliance: git is required")
             args.authors = False
 
-    if args.test_git_years:
+    if args.test_git_change_years:
         if not args.legal:
-            error("--test-git-years may only be passed with --legal")
+            error("--test-git-change-years may only be passed with --legal")
 
         if not all((has_git, is_git_repo)):
-            error("--test-git-years requires git")
+            error("--test-git-change-years requires git")
 
     if args.pystyle:
         try:
@@ -120,10 +120,7 @@ def main(args):
     issues_found = False
     for title, text in find_all_issues(args, check_files):
         issues_found = True
-        if os.isatty(1):
-            print("\x1b[33;1mWARNING\x1b[m {}: {}".format(title, text))
-        else:
-            print("WARNING {}: {}".format(title, text))
+        print("\x1b[33;1mWARNING\x1b[m {}: {}".format(title, text))
 
     return not issues_found
 
@@ -164,7 +161,7 @@ def find_all_issues(args, check_files=None):
     if args.legal:
         from .legal import find_issues
         yield from find_issues(check_files, ('openage', 'buildsystem', 'cpp'),
-                               args.test_git_years)
+                               args.test_git_change_years)
 
 
 if __name__ == '__main__':

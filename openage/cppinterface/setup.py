@@ -8,7 +8,7 @@ from ..util.decorators import run_once
 
 from ..log import dbg
 
-from openage.log.log_cpp import enable_log_translation
+from ..log.log_cpp import enable_log_translation
 
 
 @run_once

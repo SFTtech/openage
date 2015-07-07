@@ -38,7 +38,7 @@ namespace pyinterface {
  * Thus, Func has aliases to allow usage like regular templated types,
  * one for each number of arguments:
  *
- *   from libopenage.pyinterface.functional import Func2
+ *   from cpp.pyinterface.functional import Func2
  *   void myfunc(float a0, int a1, int a2): pass
  *   Func2[void, int, int] fobj
  *   Func2.bind1[float](myfunc, 5.0)

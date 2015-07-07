@@ -1,4 +1,4 @@
-add_sources(${PROJECT_NAME}
+add_sources(libopenage
 	exctranslate.cpp
 	exctranslate_tests.cpp
 	functional.cpp

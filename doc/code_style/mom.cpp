@@ -1,23 +1,36 @@
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+
+// The associated header file comes first!
 #include "mom.h"
 
+// C++ standard includes next.
+#include <iostream>
+
+// C includes next (use <cmath>, not <math.h>).
 #include <cmath>
 #include <cstdio>
+
+// Libraries next.
 #include <SDL/SDL.h>
 
+// Headers from different openage folders.
 #include "../valve.h"
 #include "crossplattform/opengl.h"
+
+// Lastly, headers from the same folder.
 #include "half_life.h"
 
 // [SFT]tech coding guidelines
 // ---------------------------
 //
-// please also have a look at `mom.h` for a header example.
+// See `mom.h` for a header example.
 
 
 // Indentation:
 //    ========> see doc/code_style/tabs_n_spaces.md <=========
-// Tabs for indentation. Display that as 4 or 8 or 13.37: fully flexible.
-// Spaces for ascii-arts or code alignments after tabs.
+// Tabs for indentation. Fully flexible, everyone can choose their own width.
+// Use spaces for ascii-arts or code alignments after tabs (everywhere where
+// flexible tab width could cause breakage). Examples below.
 //
 // => this ensures custom tab-widths AND correct indentation levels.
 
@@ -47,8 +60,7 @@ struct another_stupid_type {
 
 
 /**
- * Represents yet another Valve game.
- * Go on, nothing to see here.
+ * Yet another Valve game. Go on, nothing to see here.
  */
 class HalfLife3 : public ValveGame {
 // vvv The access modifier is at the same indent level as the class definition:
@@ -98,7 +110,7 @@ public:
 			               "we think you're kind of wasting your time, "
 			               "but it's your time to waste.");
 
-			// You may also start one line later and then indent with tabs.
+			// You may also start one line later and then indent with a tab.
 			team.relocate(
 				game_engine->get_team()->get_current_hq_location(),
 				gaben.get_table_location()
@@ -122,7 +134,8 @@ private:
 
 
 // Documentation for a namespace is in the header.
-namespace elts {
+// Can't wait for C++17's "namespace parents::mom {" style!
+namespace parents {
 namespace mom {
 // <- A namespace does not increase the indentation level!
 
@@ -139,6 +152,7 @@ YourMom::YourMom(int her_mass)
 	// use this-> for referencing member variables/functions!
 	this->number_of_moons = (this->mass - (this->mass % 10)) / 10;
 
+	// access static variables like this:
 	YourMom::sum_mom_masses += this->mass;
 }
 
@@ -166,15 +180,15 @@ bool YourMom::tick() {
 	// Spaces again:
 	// v      v v  v v v   v    v
 	for (int i = 0; i < 42; i++) {
-		// Always use {...} for the conditional code block,
+		// Always use braces for the conditional code block,
 		// even if it's one statement only:
 		if (this->mass > 20) {
-			// Black hole? I guess it depends on the density.
+			// Black hole? I guess it depends on the radius.
 			break;
 		}
 		else if (this->stupidity > 100) {
 			this->die();
-		} else { // Both styles are allowed: } else { and } \n else {
+		} else { // Both styles are allowed: '} else {' and '} \n else {'
 			// your mom eats a bit.
 			this->mass += 1;
 			// ^ We're not using var++, except in for(..)
@@ -195,7 +209,7 @@ bool YourMom::tick() {
 
 	case 8: {
 		// ^ when defining new variables for a specific case,
-		// | braces are required. Use them like this.
+		// | braces are required by C++ because it is "special". Use them like this.
 
 		Apple::iPhone shiny_thing;
 		shiny_thing.get_bought_by(this);
@@ -206,8 +220,8 @@ bool YourMom::tick() {
 	case 42:
 		ContentMafia::try_recruit_lobbyist(this);
 		// If you don't want to break, write a comment like this:
-		// Fall through
 
+		// Fall through.
 	default:
 		this->stupidity += 1;
 		break;
@@ -216,13 +230,13 @@ bool YourMom::tick() {
 	return true;
 }
 
-}} // namespace elts::mom
+}} // parents::mom
 // ^ When closing namespaces, close all in the same line and write a comment like this.
 
 
 int main(int argc, char **argv) {
 	// Use {}-style constructors!
-	elts::YourMom my_special_mom{1337};
+	parents::YourMom my_special_mom{1337};
 
 	// No space after function name calling!
 	//                       |

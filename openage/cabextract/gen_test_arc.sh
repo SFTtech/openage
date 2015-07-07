@@ -2,6 +2,8 @@
 # Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 # Used to create the test archive file for openage.cabextract.test
+# (this shell script does not actually run at test time;
+#  the tests use a pre-prepared CAB file that was created by this script).
 
 cd `mktemp -d`
 

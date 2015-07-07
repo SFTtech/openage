@@ -7,7 +7,12 @@ Checks PEP8 compliance, with some exceptions.
 from pep8 import StyleGuide
 
 # these errors will be ignored by pep8
-IGNORE_ERRORS = "E251,E221,E501,E241"
+IGNORE_ERRORS = (
+    "E221",  # multiple spaces before operator
+    "E241",  # multiple spaces after ','
+    "E251",  # unexpected spaces around keyword / parameter equals
+    "E501",  # line too long
+)
 
 
 def filter_file_list(check_files, dirnames):
@@ -28,7 +33,7 @@ def find_issues(check_files, dirnames):
     Finds all issues in the given directories (filtered by check_files).
     """
     checker = StyleGuide()
-    checker.options.ignore = tuple(IGNORE_ERRORS.split(","))
+    checker.options.ignore = IGNORE_ERRORS
 
     filenames = dirnames
     if check_files is not None:

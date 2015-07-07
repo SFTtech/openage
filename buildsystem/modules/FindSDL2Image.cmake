@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 find_package(PackageHandleStandardArgs)
 
@@ -26,4 +26,4 @@ endif()
 
 # handle the QUIETLY and REQUIRED arguments and set OPENGL_FOUND to TRUE if
 # all listed variables are TRUE
-find_package_handle_standard_args(SDL2 DEFAULT_MSG SDL2IMAGE_LIBRARIES)
+find_package_handle_standard_args(SDL2Image DEFAULT_MSG SDL2IMAGE_LIBRARIES)

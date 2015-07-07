@@ -2,29 +2,20 @@
 get_config_option_string()
 configure_file(config.py.in "${CMAKE_SOURCE_DIR}/openage/config.py")
 
-add_py_packages(
-	openage
-	openage.cabextract
-	openage.convert
-	openage.convert.gamedata
-	openage.convert.hardcoded
-	openage.cppinterface
-	openage.game
-	openage.log
-	openage.testing
-	openage.util
+add_py_modules(
+	__init__.py
+	__main__.py
+	assets.py
+	config.py
+	NOINSTALL devmode.py
 )
 
-add_cython_modules(
-	cabextract/lzxd.pyx
-	cabextract/cabchecksum.pyx
-	cppinterface/exctranslate.pyx
-	cppinterface/exctranslate_tests.pyx
-	cppinterface/pyobject.pyx
-	cppinterface/setup_checker.pyx
-	game/main_cpp.pyx
-	log/log_cpp.pyx
-	util/fslike_cpp.pyx
-	testing/cpp_testing.pyx
-	testing/misc_cpp.pyx
-)
+add_subdirectory(cabextract)
+add_subdirectory(codegen)
+add_subdirectory(convert)
+add_subdirectory(cppinterface)
+add_subdirectory(game)
+add_subdirectory(log)
+add_subdirectory(nyan)
+add_subdirectory(util)
+add_subdirectory(testing)

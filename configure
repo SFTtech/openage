@@ -6,8 +6,8 @@
 # experience. For more info, see --help and doc/buildsystem.
 
 import sys
-if not sys.version_info >= (3, 3):
-    print("openage requires Python 3.3 or higher")
+if not sys.version_info >= (3, 4):
+    print("openage requires Python 3.4 or higher")
     exit(1)
 
 import argparse
@@ -49,19 +49,20 @@ ap = argparse.ArgumentParser(
     epilog=epilog,
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-ap.add_argument("--mode", "-m", choices=["debug",
-                                         "release"],
-                default="release",
+ap.add_argument("--mode", "-m",
+                choices=["debug", "release"],
+                default=getenv("BUILDMODE", default="debug"),
                 help="controls cmake build mode")
-ap.add_argument("--optimize", "-O", choices=["auto",
-                                             "0",
-                                             "1",
-                                             "g",
-                                             "2",
-                                             "max"], default="auto",
+ap.add_argument("--optimize", "-O",
+                choices=["auto", "0", "1", "g", "2", "max"],
+                default=getenv("OPTIMIZE", default="auto"),
                 help="controls optimization-related flags. " +
                      "is set according to mode if 'auto'. " +
                      "conflicts with --flags")
+ap.add_argument("--sanitize",
+                choices=["none", "addr", "mem", "thread", "undef"],
+                default=getenv("SANITIZER", default="none"),
+                help="enable one of those (run-time) code sanitizers")
 ap.add_argument("--compiler", "-c",
                 default="",
                 help="compiler suite")
@@ -83,8 +84,12 @@ ap.add_argument("--ldflags", "-l",
                 help="linker flags")
 ap.add_argument("--prefix", "-p", default="/usr/local",
                 help="installation directory prefix")
+ap.add_argument("--py-prefix", default=None,
+                help="python module installation directory prefix")
 ap.add_argument("--dry-run", action='store_true',
                 help="do not actually invoke cmake or create any directories")
+ap.add_argument("--cmake-binary", default="cmake",
+                help="path to the cmake binary")
 ap.add_argument("--raw-cmake-args", nargs=argparse.REMAINDER, default=[],
                 help="everything that follows is passed to cmake directly")
 
@@ -127,27 +132,12 @@ if args.without:
 mode = args.mode
 if mode == 'debug':
     build_type = 'Debug'
-else:
+elif mode == 'release':
     build_type = 'Release'
-defines.update(build_type=build_type)
-
-# args.optimize
-omode = args.optimize
-
-# args.flags, args.ldflags
-flags = shlex.split(args.flags)
-ldflags = shlex.split(args.ldflags)
-
-if omode == 'auto':
-    # auto-set omode depending on mode
-    if mode == 'debug':
-        omode = 'g'
-    else:
-        omode = '2'
 else:
-    if flags:
-        ap.error("--optimize is forbidden when flags are specified manually " +
-                 "(conflicting: -O%s, -f %s)" % (omode, shlex.join(flags)))
+    ap.error("unknown build mode: " + mode)
+
+defines.update(build_type=build_type)
 
 # maps csuite names to lists of (cc, cxx, other aliases...)
 csuites = {"gnu": ("gcc", "g++"), "llvm": ("clang", "clang++")}
@@ -236,37 +226,69 @@ print('compiler suite: %s\n' % csuite)
 
 defines.update(c_compiler=cc, cxx_compiler=cxx)
 
-# if no flags have been given, populate them from the other args
-if not flags and not ldflags:
-    if omode == '0':
-        flags.append("-O0")
-    elif omode == '1':
+# populate flags
+flags = []
+ldflags = []
+
+
+if args.optimize == 'auto':
+    # auto-set args.optimize depending on mode
+    if mode == 'debug':
+        args.optimize = 'g'
+    else:
+        args.optimize = '2'
+
+if args.optimize == '0':
+    flags.append("-O0")
+elif args.optimize == '1':
+    flags.append("-O1")
+elif args.optimize == 'g':
+    if csuite in {'gnu'}:
+        flags.append("-Og")
+    else:
         flags.append("-O1")
-    elif omode == 'g':
-        if csuite in {'gnu'}:
-            flags.append("-Og")
-        else:
-            flags.append("-O1")
-    elif omode == '2':
-        flags.append("-O2")
-    elif omode == 'max':
-        flags.append("-O3")
-        flags.append("-march=native")
+elif args.optimize == '2':
+    flags.append("-O2")
+elif args.optimize == 'max':
+    flags.append("-O3")
+    flags.append("-march=native")
 
-        if csuite in {'gnu'}:
-            flags.append("-flto=%d" % multiprocessing.cpu_count())
-            ldflags.append("-flto=%d" % multiprocessing.cpu_count())
+    if csuite in {'gnu'}:
+        flags.append("-flto=%d" % multiprocessing.cpu_count())
+        ldflags.append("-flto=%d" % multiprocessing.cpu_count())
+else:
+    ap.error("unknown optimization mode: " + args.optimize)
 
-flags = shlex.join(flags)
-ldflags = shlex.join(ldflags)
+if args.sanitize != 'none':
+    flags.append('-fno-omit-frame-pointer')
+
+if args.sanitize == 'none':
+    pass
+elif args.sanitize == 'addr':
+    flags.append('-fsanitize=address')
+elif args.sanitize == 'mem':
+    flags.append('-fsanitize=memory')
+    flags.append('-fsanitize-memory-track-origins=2')
+elif args.sanitize == 'thread':
+    flags.append('-fsanitize=thread')
+elif args.sanitize == 'undef':
+    flags.append('-fsanitize=undefined')
+else:
+    ap.error("unknown sanitizer mode")
+
+
+flags = shlex.join(flags + shlex.split(args.flags))
+ldflags = shlex.join(ldflags + shlex.split(args.ldflags))
 defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
                module_linker_flags=ldflags, shared_linker_flags=ldflags)
 
 # args.prefix
 defines.update(install_prefix=args.prefix)
+if args.py_prefix is not None:
+    defines.update(py_install_prefix=args.py_prefix)
 
 
-def sanitize(s, fallback='-'):
+def sanitize_for_filename(s, fallback='-'):
     """
     sanitizes a string for safe usage in a filename
     """
@@ -277,7 +299,7 @@ def sanitize(s, fallback='-'):
         for c in s:
             if c == fallback and fallingback:
                 fallingback = False
-            elif c.isalnum() or c in "+-_=,":
+            elif c.isalnum() or c in "+-_,":
                 fallingback = False
                 yield c
             elif not fallingback:
@@ -286,7 +308,11 @@ def sanitize(s, fallback='-'):
 
     return "".join(yieldsanitizedchars())
 
-bindir = ".bin/%s-%s-%s" % (sanitize(cc), sanitize(mode), sanitize(flags))
+bindir = ".bin/%s-%s-%s" % (
+    sanitize_for_filename(cc),
+    sanitize_for_filename(mode),
+    sanitize_for_filename(flags))
+
 if not args.dry_run:
     os.makedirs(bindir, exist_ok=True)
 
@@ -312,7 +338,7 @@ forcesymlink(bindir, 'bin')
 project_root = os.path.dirname(os.path.realpath(__file__))
 
 # calculate cmake invocation from defines dict
-invocation = ['cmake']
+invocation = [args.cmake_binary]
 maxkeylen = max(len(k) for k in defines)
 for k, v in sorted(defines.items()):
     print('%s | %s' % (k.rjust(maxkeylen), v))

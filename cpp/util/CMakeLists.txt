@@ -1,4 +1,4 @@
-add_sources(${PROJECT_NAME}
+add_sources(libopenage
 	color.cpp
 	compiler.cpp
 	constinit_vector.cpp

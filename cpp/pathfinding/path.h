@@ -202,7 +202,7 @@ namespace std {
  * Hash function for path nodes.
  * Just uses their position.
  */
-template <>
+template<>
 struct hash<openage::path::Node &> {
 	size_t operator ()(const openage::path::Node &x) const {
 		openage::coord::phys3 node_pos = x.position;

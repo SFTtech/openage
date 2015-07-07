@@ -2,6 +2,6 @@ pxdgen(
 	testlist.h
 )
 
-add_sources(${PROJECT_NAME}
+add_sources(libopenage
 	testing.cpp
 )

@@ -5,7 +5,7 @@
 
 #include <cstdlib>
 
-// pxd: from libopenage.pyinterface.functional cimport Func2
+// pxd: from cpp.pyinterface.functional cimport Func2
 #include "bitstream.h"
 
 namespace openage {

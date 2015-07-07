@@ -156,6 +156,7 @@ def codegen(projectdir, mode):
             pass
         elif mode == CodegenMode.clean:
             if projectdir.isfile(pathcomponents):
+                print(os.path.sep.join(pathcomponents))
                 projectdir.remove(pathcomponents)
         else:
             dbg("unknown codegen mode: " + str(mode))
