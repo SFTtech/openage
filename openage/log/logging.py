@@ -30,6 +30,21 @@ class Level(Enum):
     MAX = 4
 
 
+def level_colorcode(lvl):
+    """ returns the same color codes as in libopenage/log/level.cpp. """
+    if lvl in [Level.spam, Level.dbg, Level.info]:
+        return ""
+    elif lvl == Level.warn:
+        return "33"
+    elif lvl == Level.err:
+        return "31;1"
+    elif lvl == Level.crit:
+        return "31;1;47"
+    else:
+        # unknown
+        return "5"
+
+
 Level.current = Level.MIN
 # protects the global objects.
 LOCK = Lock()
@@ -51,7 +66,9 @@ def log(lvl, msg, stackframes=1):
         # the C++ interface is uninitialized.
         with LOCK:
             if lvl.value >= Level.current.value:
-                print(lvl.name.ljust(4) + " " + msg)
+                print("\x1b[" + level_colorcode(lvl) + "m" +
+                      lvl.name.upper().ljust(4) + "\x1b[m " +
+                      msg)
 
     else:
         from .log_cpp import log as log_cpp

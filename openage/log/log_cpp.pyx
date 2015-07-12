@@ -4,8 +4,8 @@
 Translates Python log messages to C++ log messages.
 """
 
-from cpp.log.message cimport message
-from cpp.log.level cimport (
+from libopenage.log.message cimport message
+from libopenage.log.level cimport (
     level,
 
     MIN,
@@ -18,8 +18,8 @@ from cpp.log.level cimport (
     MAX
 )
 
-from cpp.log.named_logsource cimport NamedLogSource
-from cpp.log.log cimport set_level as cpp_set_level
+from libopenage.log.named_logsource cimport NamedLogSource
+from libopenage.log.log cimport set_level as cpp_set_level
 
 from ..cppinterface.typedefs cimport unique_ptr
 

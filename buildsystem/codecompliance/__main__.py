@@ -135,7 +135,7 @@ def find_all_issues(args, check_files=None):
     """
     if args.headerguards:
         from .headerguards import find_issues
-        yield from find_issues('cpp', 'OPENAGE_')
+        yield from find_issues('libopenage', 'OPENAGE_')
 
     if args.authors:
         from .authors import find_issues
@@ -152,7 +152,7 @@ def find_all_issues(args, check_files=None):
     if args.textfiles:
         from .textfiles import find_issues
         yield from find_issues(
-            ('openage', 'cpp', 'buildsystem', 'doc', 'legal'),
+            ('openage', 'libopenage', 'buildsystem', 'doc', 'legal'),
             ('.pxd', '.pyx', '.pxi', '.py',
              '.h', '.cpp', '.template',
              '', '.txt', '.conf',
@@ -160,7 +160,8 @@ def find_all_issues(args, check_files=None):
 
     if args.legal:
         from .legal import find_issues
-        yield from find_issues(check_files, ('openage', 'buildsystem', 'cpp'),
+        yield from find_issues(check_files,
+                               ('openage', 'buildsystem', 'libopenage'),
                                args.test_git_change_years)
 
 

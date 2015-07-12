@@ -1,6 +1,6 @@
 Steps in building openage:
 
- - generate `py/openage/config.py` and `cpp/config.h`, which contain install prefix and version info
+ - generate `py/openage/config.py` and `libopenage/config.{h, cpp}`, which contain install prefix and version info
  - run `openage.codegen` (python module) to generate C++ source files (recipe: `codegen`)
  - generate `.pxd` cython extension declaration files from annotated `.h` files (recipe: `pxdgen`)
  - build and link `libopenage.so` (recipe: `openage`)
@@ -83,7 +83,7 @@ It sets the variable `CODEGEN_TARGET_TUS`, containing a list of created `cpp` fi
 
 The python script automatically determines the python dependencies of the codegen script (via `sys.modules`) and adds them as dependencies of the `codegen` recipe. When the list of python dependencies, or output TUS, have changed, it automatically triggers a new `cmake` run.
 
-The generated `.cpp` files are placed in the `cpp` folder, and all end in `.gen.cpp` (or `.gen.h`).
+The generated `.cpp` files are placed in the `libopenage` folder, and all end in `.gen.cpp` (or `.gen.h`).
 
 other modules
 -------------

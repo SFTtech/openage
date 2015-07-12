@@ -5,7 +5,7 @@ Wraps openage::pyinterface::check, which checks whether setup has
 properly initialized all interface components.
 """
 
-from cpp.pyinterface.setup cimport check as check_cpp
+from libopenage.pyinterface.setup cimport check as check_cpp
 
 
 def check():

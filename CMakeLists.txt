@@ -58,9 +58,9 @@ include("${BUILDSYSTEM_DIR}/doxygen.cmake")
 disallow_in_source_builds()
 
 # create documentation
-doxygen_configure(cpp/ openage/)
+doxygen_configure(libopenage/ openage/)
 
-add_subdirectory(cpp/)
+add_subdirectory(libopenage/)
 set(PYEXT_LINK_LIBRARY libopenage)
 add_cython_modules(EMBED NOINSTALL run.py)
 add_subdirectory(openage/)

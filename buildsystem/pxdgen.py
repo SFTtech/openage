@@ -251,7 +251,7 @@ class PXDGenerator:
 
         yield "# " + self.filename
 
-        hacksheader = os.path.abspath("cpp/pyinterface/hacks.h")
+        hacksheader = os.path.abspath("libopenage/pyinterface/hacks.h")
 
         # Include hacks.h, which contains various hacks and workarounds
         # that should be run on Cython-compiled files.
@@ -396,7 +396,7 @@ def parse_args():
 def main():
     """ CLI entry point """
     args = parse_args()
-    cppdir = CWD + "/cpp"
+    cppdir = CWD + "/libopenage"
 
     for filename in args.all_files:
         filename = os.path.abspath(filename)

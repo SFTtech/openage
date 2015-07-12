@@ -13,7 +13,7 @@ from itertools import chain
 
 from ..util.fslike import FSLikeObjectWrapper
 from ..util.filelike import FIFO
-from ..log import dbg
+from ..log import err
 
 from .listing import generate_all
 
@@ -133,7 +133,7 @@ def codegen(projectdir, mode):
         try:
             data = postprocess_write(pathcomponents, data)
         except ValueError as exc:
-            dbg("code generation issue with output file " +
+            err("code generation issue with output file " +
                 '/'.join(pathcomponents) + ":\n" + exc.args[0])
             exit(1)
 
@@ -159,7 +159,7 @@ def codegen(projectdir, mode):
                 print(os.path.sep.join(pathcomponents))
                 projectdir.remove(pathcomponents)
         else:
-            dbg("unknown codegen mode: " + str(mode))
+            err("unknown codegen mode: " + str(mode))
             exit(1)
 
     generated = {os.path.abspath(path) for path in generated}
@@ -220,8 +220,8 @@ def postprocess_write(pathcomponents, data):
     Post-processes a single write operation, as intercepted during codegen.
     """
     # test whether filename starts with 'cpp/'
-    if not pathcomponents[0] == 'cpp':
-        raise ValueError("Not in C++ source directory")
+    if not pathcomponents[0] == 'libopenage':
+        raise ValueError("Not in libopenage source directory")
 
     # test whether filename matches the pattern *.gen.*
     name, extension = os.path.splitext(pathcomponents[-1])

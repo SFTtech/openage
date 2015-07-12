@@ -30,8 +30,6 @@ __pycache__
 /DartConfiguration.tcl
 /codegen_depend_cache
 /codegen_target_cache
-/tests_cpp
-/tests_python
 /Doxyfile
 /Testing
 /py/setup.py
@@ -46,4 +44,3 @@ Makefile
 callgrind.out.*
 perf.data*
 .gdb_history
-

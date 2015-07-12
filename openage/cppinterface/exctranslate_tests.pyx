@@ -5,14 +5,14 @@ Testing code for exctranslate.pyx.
 Also see the sister file, cpp/pyinterface/exctranslate_tests.h.
 """
 
-from cpp.pyinterface.exctranslate_tests cimport (
+from libopenage.pyinterface.exctranslate_tests cimport (
     err_py_to_cpp_helper,
     err_cpp_to_py_helper,
     bounce_call_py,
     bounce_call as bounce_call_cpp,
 )
 
-from cpp.pyinterface.functional cimport Func0
+from libopenage.pyinterface.functional cimport Func0
 
 import argparse
 import traceback

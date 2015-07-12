@@ -29,6 +29,6 @@ def generate_gamespec_structs(projectdir):
     generator.add_data(SoundList.structs())
     generator.add_data(StringResource.structs())
 
-    cppdir = SubDirectory(projectdir, 'cpp/gamedata')
+    cppdir = SubDirectory(projectdir, 'libopenage/gamedata')
 
     generator.export(cppdir, ("struct", "structimpl"))

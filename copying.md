@@ -125,7 +125,7 @@ List of all 3rd-party files in openage:
 
 From [cabextract/libmspack](http://www.cabextract.org.uk/) ([LGPL 2.0](/legal/LGPLv2.0))
 
- - `cpp/util/compress/lzxd.cpp`
+ - `libopenage/util/compress/lzxd.cpp`
  - `doc/code/lzx_compression_info`
 
 cmake modules ([3-clause BSD license](/legal/BSD-3-clause))

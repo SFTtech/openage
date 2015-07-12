@@ -22,7 +22,7 @@ function(codegen_run)
 	)
 
 	if(NOT ${COMMAND_RESULT} EQUAL 0)
-		message(FATAL_ERROR "failed to get target list from convert script invocation")
+		message(FATAL_ERROR "failed to get target list from codegen invocation")
 	endif()
 
 	FILE(READ "${CMAKE_BINARY_DIR}/codegen_generated_files" CODEGEN_TARGET_FILES)

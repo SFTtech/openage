@@ -5,9 +5,9 @@ from libcpp cimport bool as cppbool
 
 from cpython.ref cimport Py_XINCREF, Py_XDECREF, PyObject
 
-from cpp.pyinterface.functional cimport Func1
+from libopenage.pyinterface.functional cimport Func1
 
-from cpp.pyinterface.pyobject cimport (
+from libopenage.pyinterface.pyobject cimport (
     PyObjectRef,
 
     py_xincref,

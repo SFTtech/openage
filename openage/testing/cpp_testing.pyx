@@ -4,7 +4,7 @@
 Provides a wrapper for openage::testing::run_method.
 """
 
-from cpp.testing.testlist cimport run_method as run_method
+from libopenage.testing.testlist cimport run_method as run_method
 
 
 def run_cpp_method(str methodname):

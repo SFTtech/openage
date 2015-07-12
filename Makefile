@@ -103,9 +103,7 @@ cleanbuilddirs: cleaninsourcebuild
 	@echo cleaning build directories
 	rm -rf .bin
 	@echo cleaning cmake-time generated code
-	rm -f Doxyfile py/openage/config.py cpp/config.h
-	@echo cleaning cmake-time generated assets
-	rm -f assets/tests_py assets/tests_cpp
+	rm -f Doxyfile py/openage/config.py libopenage/config.h libopenage/config.cpp
 
 .PHONY: mrproper
 mrproper: cleanbuilddirs

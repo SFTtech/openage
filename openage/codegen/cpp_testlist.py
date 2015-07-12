@@ -76,11 +76,11 @@ def generate_testlist(projectdir):
         "{\"%s\", ::%s}" % (functionname, functionname)
         for functionname in root_namespace.get_functionnames()]
 
-    with projectdir.open("cpp/testing/testlist.cpp.template") as template:
-        content = template.read()
+    with projectdir.open("libopenage/testing/testlist.cpp.template") as tmpl:
+        content = tmpl.read()
 
     content = content.replace('FUNCTION_PROTOTYPES', "".join(func_prototypes))
     content = content.replace('METHOD_MAPPINGS', ",\n\t".join(method_mappings))
 
-    with projectdir.open("cpp/testing/testlist.gen.cpp", "w") as genfile:
-        genfile.write(content)
+    with projectdir.open("libopenage/testing/testlist.gen.cpp", "w") as gen:
+        gen.write(content)

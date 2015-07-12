@@ -369,8 +369,8 @@ function(python_finalize)
 	)
 
 	add_custom_target(cleanpxdgen
-		COMMAND find cpp -name "*.pxd" -type f -print -delete
-		COMMAND find cpp -name "__init__.py" -type f -print -delete
+		COMMAND find libopenage -name "*.pxd" -type f -print -delete
+		COMMAND find libopenage -name "__init__.py" -type f -print -delete
 		COMMAND "${CMAKE_COMMAND}" -E remove "${PXDGEN_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 	)

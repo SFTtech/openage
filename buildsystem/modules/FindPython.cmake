@@ -84,7 +84,7 @@ unset(PYTHON_INTERP)
 foreach(PYTHON ${PYTHON_INTERPRETERS})
 	# the above globbing patterns might have caught some files
 	# like /usr/bin/python-config; skip those.
-	if(NOT PYTHON MATCHES "^.*/[^/]*-[^/]*$")
+	if(PYTHON MATCHES ".*-dbg$" OR NOT PYTHON MATCHES "^.*/[^/]*-[^/]*$")
 
 		# ask the interpreter for the essential extension-building flags
 		py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)

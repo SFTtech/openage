@@ -95,7 +95,7 @@ def init_subparser(cli):
 
 
 def main(args, error):
-    """ Codegen entry point. """
+    """ Codegen CLI entry point. """
 
     if args.file_to_touch and not os.path.isfile(args.file_to_touch):
         error("file doesn't exist: " + args.file_to_touch)

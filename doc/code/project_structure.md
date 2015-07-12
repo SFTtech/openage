@@ -58,8 +58,8 @@ in this directory.
 The code compliance checker also lives here.
 
 
-### cpp/ ###
+### libopenage/ ###
 
 Source files written in *C++14* live here.
-All engine components, data structures and tests are located in this folder,
+All engine components, data structures and C++ tests are located in this folder,
 each subsystem resides in its own subfolder.

@@ -32,7 +32,7 @@ They shall return on success, and raise `openage::testing::TestError` on failure
 
 They shall not be declared in a header file; instead, add them to `openage/testing/testlist.py`.
 
-The header `cpp/testing/testing.h` provides `TestError` and some convenience macros:
+The header `libopenage/testing/testing.h` provides `TestError` and some convenience macros:
 
  - `TESTFAIL`
     throws `TestError`

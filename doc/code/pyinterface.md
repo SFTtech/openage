@@ -56,16 +56,16 @@ def atoi(s):
 ```
 
 Openage has a helper, `pxdgen`, which auto-generates `.pxd` files for `.h`
-files in the `cpp/` subdirectory, from `pxd:` annotations in these files, as part
+files in the `libopenage/` subdirectory, from `pxd:` annotations in these files, as part
 of the build system.
 
 The pxd annotations are really simple; just have a look at some of the headers.
 You'll find the generated `.pxd` files next to the C++ header files.
 
-To `cimport` a class Foo that was pxd-annotated in `util/foo.h`, use
+To `cimport` a class Foo that was pxd-annotated in `util/foo.h`, type
 
 ``` cython
-from cpp.util.foo cimport Foo
+from libopenage.util.foo cimport Foo
 ```
 
 Cython [ships `.pxd` files](https://github.com/cython/cython/tree/master/Cython/Includes) for most C, C++ and CPython functions:
@@ -91,7 +91,7 @@ Calling C++ functions from Python
 To make a C++ function available for calling from Cython code, annotate the header
 file with `pxd` comments:
 
-`cpp/example.cpp`
+`libopenage/example.cpp`
 
 ``` cpp
 namespace openage {
@@ -103,7 +103,7 @@ int foo(int arg0, std::string arg1) {
 } // openage
 ```
 
-`cpp/example.h`
+`libopenage/example.h`
 
 ``` cpp
 // pxd: from libcpp.string cimport string
@@ -128,7 +128,7 @@ If a function that is not declared `except +` throws anyways, the entire CPython
 
 `cmake` must be informed about the `pxd`-annotated header file:
 
-`cpp/CMakeLists.txt`
+`libopenage/CMakeLists.txt`
 
 ``` cmake
 pxdgen(example.h)
@@ -139,7 +139,7 @@ The function is now available from Cython. To make it available for pure-python 
 `openage/foo.pyx`
 
 ``` cython
-from cpp.foo cimport foo as c_foo
+from libopenage.foo cimport foo as c_foo
 
 def foo(int arg0, str arg1):
     with nogil:
@@ -182,7 +182,7 @@ def bar(arg0, arg1):
 
 Declare, define and pxd-export the function pointer:
 
-`cpp/foo.cpp`
+`libopenage/foo.cpp`
 
 ``` cpp
 #include "foo.h"
@@ -190,7 +190,7 @@ Declare, define and pxd-export the function pointer:
 PyIfFunc<float, int, std::string> bar;
 ```
 
-`cpp/foo.h`
+`libopenage/foo.h`
 
 ``` cpp
 // pxd: from libcpp.string cimport string
@@ -208,7 +208,7 @@ which binds the `cdef` function to the PyIfFunc object.
 `openage/foo.pyx`
 
 ``` cython
-from cpp.foo cimport bar as c_bar
+from libopenage.foo cimport bar as c_bar
 
 from .bar import bar as py_bar
 
@@ -238,7 +238,7 @@ def setup():
 
 If you forget to do that, `openage.pyinterface.setup.setup` will raise a fatal exception.
 
-`cpp/bar.cpp`
+`libopenage/bar.cpp`
 
 ``` cpp
 #include "foo.h"
@@ -253,8 +253,8 @@ guarantee that exceptions are properly translated, among other things.
 Real-life examples
 ------------------
 
-For code that wraps a C++ class for Python, see `openage/cabextract/lzxd.pyx` and `cpp/util/lzxd.h`.
-For code that wraps a Python class for C++, see `openage/util/fslike_cpp.pyx` and `cpp/util/fslikeobject.h`.
+For code that wraps a C++ class for Python, see `openage/cabextract/lzxd.pyx` and `libopenage/util/lzxd.h`.
+For code that wraps a Python class for C++, see `openage/util/fslike_cpp.pyx` and `libopenage/util/fslikeobject.h`.
 
 
 Notes on the GIL

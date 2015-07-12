@@ -6,12 +6,12 @@ from libcpp cimport bool
 from cpython.ref cimport PyObject
 from cpython.bytes cimport PyBytes_FromStringAndSize
 
-from cpp.util.compress.lzxd cimport (
+from libopenage.util.compress.lzxd cimport (
     LZXDecompressor as c_LZXDecompressor,
     LZX_FRAME_SIZE
 )
 
-from cpp.pyinterface.functional cimport Func2
+from libopenage.pyinterface.functional cimport Func2
 
 from openage.cppinterface.typedefs cimport voidptr
 
