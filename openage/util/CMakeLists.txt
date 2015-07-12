@@ -11,6 +11,7 @@ add_py_modules(
 	fslike.py
 	fslikeabstract.py
 	fsprinting.py
+	fslike_synchronized.py
 	iterators.py
 	math.py
 	strings.py
