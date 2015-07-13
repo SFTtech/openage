@@ -6,8 +6,8 @@ Some types that are not available in Cython's shipped include files.
 
 cdef extern from "<memory>" namespace "std":
     cppclass unique_ptr[T]:
-        void reset(T *ptr)  # noexcept
-        T *get()            # noexcept
+        void reset(T *ptr) nogil  # noexcept
+        T *get() nogil            # noexcept
 
 
 # in some cases, pointers can't be properly used for template arguments.

@@ -36,7 +36,7 @@ from ..testing.testing import TestError
 
 
 cdef extern from "Python.h":
-    void _PyTraceback_Add(char *funcname, char *filename, int lineno)
+    void _PyTraceback_Add(char *funcname, char *filename, int lineno) with gil
     int PyException_SetTraceback(PyObject *ex, PyObject *tb)
 
 

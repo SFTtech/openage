@@ -1,6 +1,5 @@
 # type 'make help' for a list/explaination of recipes.
 
-# original asset directory
 BUILDDIR = bin
 
 MAKEARGS += $(if $(VERBOSE),,--no-print-directory)

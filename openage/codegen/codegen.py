@@ -110,6 +110,9 @@ class CodegenDirWrapper(FSLikeObjectWrapper):
 
         self.writes.clear()
 
+    def __repr__(self):
+        return "CodegenDirWrapper({})".format(self.wrapped)
+
 
 def codegen(projectdir, mode):
     """

@@ -4,6 +4,8 @@
 
 import argparse
 
+from ..util.strings import format_progress
+
 from .testing import TestError
 from .list_processor import get_all_tests_and_demos
 
@@ -78,8 +80,10 @@ def main(args, error):
         for idx, name in enumerate(args.test):
             lang, _, testfun = test_list[name, 'test']
 
-            print("\x1b[32m[%*d/%d]\x1b[m %3s %s" % (
-                len(str(len(args.test))), idx, len(args.test), lang, name))
+            print("\x1b[32m[%s]\x1b[m %3s %s" % (
+                format_progress(idx, len(args.test)),
+                lang,
+                name))
 
             try:
                 testfun()
@@ -106,4 +110,4 @@ def main(args, error):
 
     if args.demo:
         _, _, demofun = test_list[args.demo[0], 'demo']
-        demofun(args.demo[1:])
+        exit(demofun(args.demo[1:]))

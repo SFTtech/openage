@@ -94,6 +94,10 @@ class Texture(exportable.Exportable):
             if palette is None:
                 raise Exception("palette needed for SLP -> texture generation")
             frames = [
+                # TODO this needs some _serious_ performance work
+                # (at least a 10x improvement, 50x would be better).
+                # ideas: remove PIL and use libpng via CPPInterface,
+                #        cythonize parts of SLP.py
                 TextureImage(frame.get_picture_data(palette, self.player_id),
                              hotspot=frame.info.hotspot)
                 for frame in input_data.frames
@@ -118,7 +122,7 @@ class Texture(exportable.Exportable):
         """
         # generate PNG file
         with targetdir.open(filename + ".png", "wb") as imagefile:
-            self.image_data.get_pil_image().save(imagefile)
+            self.image_data.get_pil_image().save(imagefile, 'png')
 
         # generate formatted texture metadata
         formatter = data_formatter.DataFormatter()

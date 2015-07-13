@@ -26,6 +26,7 @@ def setup():
     Do _not_ invoke from a .pyx extension module that itself provides
     a setup method (circular imports)!
     """
+    dbg("initializing libopenage...")
 
     # this is where calls to the setup methods of all other modules belong.
     from .exctranslate import setup as exctranslate_setup

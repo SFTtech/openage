@@ -1,6 +1,6 @@
 # Copyright 2015-2015 the openage authors. See copying.md for legal info.
 """
-Some string helper functions; this includes encoding, decoding,
+Misc string helper functions; this includes encoding, decoding,
 manipulation, ...
 """
 
@@ -100,3 +100,13 @@ def rstrip_once(string, substr):
                          (repr(string), repr(substr)))
 
     return string[:-len(substr)]
+
+
+def format_progress(progress, total):
+    """
+    Formats an "x out of y" string with fixed width.
+
+    >>> format_progress(5, 20)
+    ' 5/20'
+    """
+    return "%*d/%d" % (len(str(total)), progress, total)

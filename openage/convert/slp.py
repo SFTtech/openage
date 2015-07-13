@@ -94,7 +94,7 @@ class SpecialColor:
 
 class SLP:
     """
-    Class for reading/converting the greated image format ever: SLP.
+    Class for reading/converting the greatest image format ever: SLP.
     This format is used to store all graphics within AOE.
     """
 

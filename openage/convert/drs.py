@@ -80,16 +80,16 @@ class DRS(ReadOnlyFileSystemLikeObject):
 
         # read header
         header = DRSHeader.read(fileobj)
-        header.copyright = decode_until_null(header.copyright)
+        header.copyright = decode_until_null(header.copyright).strip()
         header.version = decode_until_null(header.version)
         header.ftype = decode_until_null(header.ftype)
         self.header = header
 
-        dbg("DRS file: " + str(header))
+        dbg(str(header))
 
         # read table info
         self.tables = []
-        for i in range(header.table_count):
+        for _ in range(header.table_count):
             table_header = DRSTableInfo.read(fileobj)
 
             # decode and un-flip the file extension
@@ -97,7 +97,7 @@ class DRS(ReadOnlyFileSystemLikeObject):
             fileext = fileext.decode('latin-1').lower()[::-1]
             table_header.file_extension = fileext
 
-            spam("Table header %d: %s" % (i, table_header))
+            dbg(str(table_header))
             self.tables.append(table_header)
 
         self.files = OrderedDict()

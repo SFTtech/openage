@@ -1,16 +1,16 @@
 # Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-""" Driver for all of the asset conversion. """
+"""
+Receives cleaned-up srcdir and targetdir objects from .main, and drives the
+actual conversion process.
+"""
 
-# TODO pylint: disable=R,no-member
-
-import os
-import subprocess
 from tempfile import gettempdir
+import os
+from subprocess import Popen, PIPE
 
-from ..log import dbg, info
 from ..config import VERSION as openage_version
-from ..util.fslike import CaseIgnoringReadOnlyDirectory, FSLikeObjectWrapper
+from ..log import info, dbg
 
 from .blendomatic import Blendomatic
 from .colortable import ColorTable, PlayerColorTable
@@ -20,52 +20,6 @@ from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .slp import SLP
 from .texture import Texture
-
-
-class DirectoryCreator(FSLikeObjectWrapper):
-    """
-    Wrapper around a filesystem-like object that automatically creates
-    directories when attempting to create a file.
-    """
-    def _open_impl(self, pathcomponents, mode):
-        if 'w' in mode or 'x' in mode or '+' in mode:
-            self.mkdirs(pathcomponents[:-1])
-
-        return self.wrapped.open(pathcomponents, mode)
-
-
-def mount_drs_archives(srcdir):
-    """
-    Returns a Union where srcdir is mounted at /, and all the DRS files
-    are mounted in subfolders.
-    """
-    from ..util.fslike import Union
-    from .drs import DRS
-
-    result = Union()
-    result.mount(srcdir, '.')
-
-    def mount_drs(filename, target, ignore_nonexistant=False):
-        """ Mounts the DRS file from srcdir's filename at result's target. """
-        if ignore_nonexistant and not srcdir.isfile(filename):
-            return
-
-        result.mount(DRS(srcdir.open(filename, 'rb')), target)
-
-    mount_drs("data/graphics.drs", "graphics")
-    mount_drs("data/interfac.drs", "interface")
-
-    mount_drs("data/sounds.drs", "sounds")
-    mount_drs("data/sounds_x1.drs", "sounds")
-
-    # In the HD edition, gamedata.drs has been merged into gamedata_x1.drs
-    mount_drs("data/gamedata.drs", "gamedata", ignore_nonexistant=True)
-    mount_drs("data/gamedata_x1.drs", "gamedata")
-    mount_drs("data/gamedata_x1_p1.drs", "gamedata")
-
-    mount_drs("data/terrain.drs", "terrain")
-
-    return result
 
 
 def get_string_resources(srcdir):
@@ -125,175 +79,126 @@ def get_gamespec(srcdir):
 
     # modify the read contents of datfile
     from .fix_data import fix_data
+    # pylint: disable=no-member
     gamespec.empiresdat[0] = fix_data(gamespec.empiresdat[0])
 
     return gamespec
 
 
-def convert_assets(srcdir, targetdir, gen_extra_files=False):
+def convert(args):
     """
-    Perform asset conversion.
+    args must hold srcdir and targetdir (FS-like objects),
+    plus any additional configuration options.
 
-    Requires original assets and stores them in usable and free formats.
-
-    The data is extracted from AoE's DRS files. See `doc/media/drs-files.md`
-    for more information.
-
-    sourcedir and targetdir are filesystem-like objects.
-
-    If gen_extra_files is True, some more files, mostly for debugging purposes,
-    are created.
+    Yields progress information in the form of:
+        strings (filenames) that indicate the currently-converted object
+        ints that predict the amount of objects remaining
     """
-    srcdir = mount_drs_archives(srcdir)
-    targetdir = DirectoryCreator(targetdir)
     data_formatter = DataFormatter()
 
     # required for player palette and color lookup during SLP conversion.
-    info("reading color palette")
-    palette = ColorTable(srcdir.open("interface/50500.bin", "rb").read())
+    yield "palette"
+    palette = ColorTable(args.srcdir.open("interface/50500.bin", "rb").read())
+    # store for usage in convert_mediafile
+    args.palette = palette
 
-    info("reading empires.dat")
-    data_dump = get_gamespec(srcdir).dump("gamedata")
+    yield "empires.dat"
+    data_dump = get_gamespec(args.srcdir).dump("gamedata")
     data_formatter.add_data(data_dump[0], prefix="gamedata/")
 
-    info("reading blendomatic.dat")
-    blend_data = get_blendomatic_data(srcdir)
-    blend_data.save(targetdir, "blendomatic/", ("csv",))
+    yield "blendomatic.dat"
+    blend_data = get_blendomatic_data(args.srcdir)
+    blend_data.save(args.targetdir, "blendomatic", ("csv",))
     data_formatter.add_data(blend_data.dump("blending_modes"))
 
-    dbg("creating player color palette")
+    yield "player color palette"
     player_palette = PlayerColorTable(palette)
     data_formatter.add_data(player_palette.dump("player_palette"))
 
-    dbg("creating terminal color palette")
+    yield "terminal color palette"
     termcolortable = ColorTable(URXVTCOLS)
     data_formatter.add_data(termcolortable.dump("termcolors"))
 
-    info("reading string resources")
-    stringres = get_string_resources(srcdir)
+    yield "string resources"
+    stringres = get_string_resources(args.srcdir)
     data_formatter.add_data(stringres.dump("string_resources"))
 
-    info("exporting all metadata")
-    data_formatter.export(targetdir, ("csv",))
+    yield "gamespec"
+    data_formatter.export(args.targetdir, ("csv",))
 
-    if gen_extra_files:
+    if args.flag('gen_extra_files'):
         dbg("generating extra files for visualization")
-        palette.save_visualization(
-            targetdir.open('info/colortable.pal.png', 'wb'))
-        player_palette.save_visualization(
-            targetdir.open('info/playercolortable.pal.png', 'wb'))
+        tgt = args.targetdir
+        with tgt.open('info/colortable.pal.png', 'wb') as outfile:
+            palette.save_visualization(outfile)
+
+        with tgt.open('info/playercolortable.pal.png', 'wb') as outfile:
+            player_palette.save_visualization(outfile)
 
     dbg("collecting list of files to convert")
     files_to_convert = []
-    for dirname in ['sounds', 'graphics', 'terrain']:
-        for filename in srcdir.listfiles(dirname):
-            files_to_convert.append(dirname + '/' + filename)
+    if not args.flag('no_media'):
+        for dirname in ['sounds', 'graphics', 'terrain']:
+            for filename in args.srcdir.listfiles(dirname):
+                files_to_convert.append(dirname + '/' + filename)
 
-    info("converting a total of %d files" % len(files_to_convert))
-    for progress, filename in enumerate(files_to_convert):
-        infile = srcdir.open(filename, 'rb')
+    yield len(files_to_convert)
 
-        info("[%d/%d] %s" % (progress, len(files_to_convert), filename))
+    for filename in files_to_convert:
+        yield filename
+        convert_mediafile(filename, args)
 
-        if filename.endswith('.slp'):
-            # convert the SLP file to a PNG/CSV atlas
-            texture = Texture(SLP(infile.read()), palette)
+    args.targetdir.open('converted_by', 'w').write(openage_version)
+    info("asset conversion complete; converted by: " + openage_version)
 
-            # the hotspots of terrain textures must be fixed:
-            if filename.startswith('terrain.drs'):
-                for entry in texture.image_metadata:
-                    entry["cx"] = TILE_HALFSIZE["x"]
-                    entry["cy"] = TILE_HALFSIZE["y"]
-
-            # save the image and the corresponding metadata file
-            texture.save(targetdir, filename, ("csv",))
-
-        elif filename.endswith('.wav'):
-            # convert the WAV file to an opus file
-            # TODO use libopusfile directly
-
-            tmpwavname = os.path.join(gettempdir(), "tmpsound.wav")
-            tmpopusname = os.path.join(gettempdir(), "tmpsound.opus")
-
-            with open(tmpwavname, 'wb') as tmpfile:
-                tmpfile.write(infile.read())
-
-            invocation = ('opusenc', '--quiet', tmpwavname, tmpopusname)
-            if subprocess.call(invocation) != 0:
-                raise Exception("opusenc failed")
-
-            with targetdir.open(filename + ".opus", "wb") as outfile:
-                outfile.write(open(tmpopusname, "rb").read())
-
-            os.remove(tmpwavname)
-            os.remove(tmpopusname)
-
-        else:
-            # simply copy the file over.
-            with targetdir.open(filename, "wb") as outfile:
-                outfile.write(infile.read())
-
-    targetdir.open('converted_by', 'w').write(openage_version)
-
-    info("conversion complete; converted by: " + openage_version)
+    # clean args
+    del args.palette
 
 
-def acquire_conversion_source_data():
+def convert_mediafile(filename, args):
     """
-    Acquires source data for the asset conversion.
+    Converts a single media file, according to the supplied arguments.
 
-    Returns a file system-like object that holds all the required files.
+    May write multiple output files (e.g. in the case of textures: csv, png).
+
+    Args shall contain srcdir, targetdir and palette.
     """
-    # ask the for conversion source
-    print("media conversion is required.")
+    with args.srcdir.open(filename, 'rb') as infile:
+        indata = infile.read()
 
-    if 'AGE2DIR' in os.environ:
-        sourcedir = os.environ['AGE2DIR']
-        print("using AGE2DIR: " + sourcedir)
+    if filename.endswith('.slp'):
+        # TODO this is slooooow beyond imagination (TM).
+        # optimize SLP conversion with Cython.
+
+        # parse indata as SLP
+        slp = SLP(indata)
+
+        # rasterize to a PNG/CSV atlas
+        # about 80% of the time seems to be spent in this method.
+        texture = Texture(slp, args.palette)
+
+        # the hotspots of terrain textures must be fixed:
+        if filename.startswith('terrain.drs'):
+            for entry in texture.image_metadata:
+                entry["cx"] = TILE_HALFSIZE["x"]
+                entry["cy"] = TILE_HALFSIZE["y"]
+
+        # save atlas to targetdir
+        texture.save(args.targetdir, filename, ("csv",))
+
+    elif filename.endswith('.wav'):
+        # convert the WAV file to an opus file
+        # TODO use libav or something to avoid this utility dependency
+        invocation = ('opusenc', '--quiet', '-', '-')
+        opusenc = Popen(invocation, stdin=PIPE, stdout=PIPE)
+        outdata = opusenc.communicate(input=indata)[0]
+        if opusenc.returncode != 0:
+            raise Exception("opusenc failed")
+
+        with args.targetdir.open(filename + ".opus", "wb") as outfile:
+            outfile.write(outdata)
+
     else:
-        print("please provide your AoE II installation dir:")
-
-        try:
-            sourcedir = input("> ")
-        except KeyboardInterrupt:
-            print("")
-            exit(0)
-        except EOFError:
-            print("")
-            exit(0)
-
-    return CaseIgnoringReadOnlyDirectory(sourcedir)
-
-
-def ensure_assets(force_reconvert=False):
-    """
-    Makes sure that all assets have been converted, and are up to date.
-    """
-    from ..util.fslike import Directory
-    targetdir = Directory("assets/converted")
-
-    try:
-        converted_by = targetdir.open("converted_by").read().strip()
-
-        if converted_by:
-            # assets have already been converted; no conversion needed.
-            # TODO check whether conversion has been done by a recent-enough
-            #      version of openage.
-            if not force_reconvert:
-                return True
-
-    except FileNotFoundError:
-        # assets do not exist yet.
-        pass
-
-    # acquire conversion source data
-    srcdir = acquire_conversion_source_data()
-
-    testfile = 'data/empires2_x1_p1.dat'
-    if not srcdir.isfile(testfile):
-        print("file not found: " + testfile)
-        return False
-
-    convert_assets(srcdir, targetdir)
-
-    return True
+        # simply copy the file over.
+        with args.targetdir.open(filename, "wb") as outfile:
+            outfile.write(indata)

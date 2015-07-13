@@ -7,11 +7,17 @@ add_py_modules(
 	filelist.py
 	fix_data.py
 	hdlanguagefile.py
+	main.py
 	pefile.py
 	peresource.py
 	slp.py
 	stringresource.py
 	texture.py
+)
+
+add_cython_modules(
+	# hoping that this will somewhat increase the horrible performance.
+	slp.py
 )
 
 add_subdirectory(dataformat)

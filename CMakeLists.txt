@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 # required for finding Python 3.4.
+# (determined via git tag --contains)
 
 # main build configuration file
 
@@ -90,6 +91,3 @@ warn_runtime_depends()
 # no effect.
 # http://www.cmake.org/pipermail/cmake-developers/2015-July/025649.html
 set_property(GLOBAL PROPERTY TARGET_MESSAGES OFF)
-
-# make compile command metadata available (e.g. to clang-tools)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

@@ -67,7 +67,7 @@ def log(lvl, msg, stackframes=1):
         with LOCK:
             if lvl.value >= Level.current.value:
                 print("\x1b[" + level_colorcode(lvl) + "m" +
-                      lvl.name.upper().ljust(4) + "\x1b[m " +
+                      lvl.name.upper().rjust(4) + "\x1b[m " +
                       msg)
 
     else:

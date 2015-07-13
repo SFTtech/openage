@@ -46,7 +46,13 @@ class Directory(FileSystemLikeObject):
     #      (raise FileNotFoundError if the wrong case is used).
     #      otherwise, mods created on Win32 might not work on other platforms.
 
-    def __init__(self, fspath):
+    def __init__(self, fspath, create_if_noexist=False):
+        if not os.path.isdir(fspath):
+            if create_if_noexist:
+                os.makedirs(fspath)
+            else:
+                raise FileNotFoundError(fspath)
+
         self.fspath = fspath
 
     def actual_filepath(self, pathcomponents):
@@ -126,6 +132,9 @@ class Directory(FileSystemLikeObject):
         # TODO implement
         # pylint: disable=no-self-use
         del self  # unused for now
+
+    def __repr__(self):
+        return "Directory({})".format(repr(self.fspath))
 
 
 class CaseIgnoringReadOnlyDirectory(ReadOnlyFileSystemLikeObject):
@@ -265,6 +274,9 @@ class CaseIgnoringReadOnlyDirectory(ReadOnlyFileSystemLikeObject):
         del self, pathcomponents, callback  # unused
         return
 
+    def __repr__(self):
+        return "CaseIgnoringReadOnlyDirectory({})".format(repr(self.fspath))
+
 
 class SubDirectory(FileSystemLikeObject):
     """
@@ -276,9 +288,15 @@ class SubDirectory(FileSystemLikeObject):
 
     # pylint: disable=too-few-public-methods
 
-    def __init__(self, obj, path):
+    def __init__(self, obj, path, create_if_noexist=False):
         self.obj = obj
         self.prefixpathcomponents = parse_pathname(path)
+        if not self.obj.isdir(self.prefixpathcomponents):
+            if create_if_noexist:
+                self.obj.mkdirs(self.prefixpathcomponents)
+            else:
+                raise FileNotFoundError(
+                    "subdirectory " + str(path) + " of " + str(obj))
 
     def _listfiles_impl(self, pathcomponents):
         pathcomponents = self.prefixpathcomponents + pathcomponents
@@ -328,6 +346,11 @@ class SubDirectory(FileSystemLikeObject):
         # no actual functionality
         del self, pathcomponents, callback  # unused
         return
+
+    def __repr__(self):
+        return "SubDirectory({}, {})".format(
+            repr(self.obj),
+            repr('/'.join(self.prefixpathcomponents)))
 
 
 class FileCollection(ReadOnlyFileSystemLikeObject):
@@ -457,6 +480,9 @@ class FileCollection(ReadOnlyFileSystemLikeObject):
         # no actual functionality
         del self, pathcomponents, callback  # unused
         return
+
+    def __repr__(self):
+        return "FileCollection(<{} objects>)".format(len(self.openers))
 
 
 class Union(FileSystemLikeObject):
@@ -675,6 +701,9 @@ class Union(FileSystemLikeObject):
         del self, pathcomponents, callback  # unused
         return
 
+    def __repr__(self):
+        return "Union({})".format(repr(self.mounts))
+
 
 class FSLikeObjectWrapper(FileSystemLikeObject):
     """
@@ -726,3 +755,15 @@ class FSLikeObjectWrapper(FileSystemLikeObject):
 
     def _watch_impl(self, pathcomponents, callback):
         return self.wrapped.watch(pathcomponents, callback)
+
+    def __repr__(self):
+        return "FSLikeObjectWrapper({})".format(self.wrapped)
+
+
+class WriteBlocker(ReadOnlyFileSystemLikeObject, FSLikeObjectWrapper):
+    """
+    Wraps an other filesystem-like object, blocking all writing
+    (and returning False for writable()).
+    """
+    def __repr__(self):
+        return "WriteBlocker({})".format(self.wrapped)

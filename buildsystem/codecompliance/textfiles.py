@@ -22,6 +22,7 @@ def find_issues(dirnames, exts):
                 # TODO all this for now, until someone fixes the codegen.
                 pass
             else:
+                # TODO calculate the line number
                 yield "Trailing whitespace", filename
 
         if data.endswith('\n\n') or data.endswith('\n\r\n'):

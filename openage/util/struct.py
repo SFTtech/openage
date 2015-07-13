@@ -192,6 +192,12 @@ class NamedStruct(metaclass=NamedStructMeta):
     def __repr__(self):
         return str(type(self)) + ": " + repr(self.as_dict())
 
+    def __str__(self):
+        return type(self).__name__ + ":\n\t" + "\n\t".join(
+            str(key).ljust(20) + " = " + str(value)
+            for key, value in sorted(self.as_dict().items())
+        )
+
 
 class FlagsMeta(type):
     """

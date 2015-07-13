@@ -44,7 +44,7 @@ def main(argv=None):
 
     # shared data-directory argument for most subcommands
     datadir_cli = argparse.ArgumentParser(add_help=False)
-    datadir_cli.add_argument("--data-dir", default='./assets',
+    datadir_cli.add_argument("--asset-dir", default='./assets',
                              help="Use this as the asset directory.")
 
     subparsers = cli.add_subparsers(dest="subcommand")
@@ -58,6 +58,11 @@ def main(argv=None):
     from .testing.main import init_subparser
     init_subparser(subparsers.add_parser(
         "test",
+        parents=[global_cli, datadir_cli]))
+
+    from .convert.main import init_subparser
+    init_subparser(subparsers.add_parser(
+        "convert",
         parents=[global_cli, datadir_cli]))
 
     from .codegen.main import init_subparser
@@ -74,12 +79,12 @@ def main(argv=None):
     # process the shared args
     set_loglevel(verbosity_to_level(args.verbose - args.quiet))
 
-    if "data_dir" in args:
-        if not os.path.exists(args.data_dir):
-            cli.error("data dir does not exist")
+    if "asset_dir" in args:
+        if not os.path.exists(args.asset_dir):
+            cli.error("directory does not exist: " + args.asset_dir)
 
     # call the entry point for the subcommand.
-    args.entrypoint(args, cli.error)
+    return args.entrypoint(args, cli.error)
 
 
 if __name__ == '__main__':

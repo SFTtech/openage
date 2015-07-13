@@ -75,6 +75,10 @@ class Synchronizer(FileSystemLikeObject):
         with self.lock:
             return self.obj.watch(pathcomponents, callback)
 
+    def __repr__(self):
+        with self.lock:
+            return "Synchronizer({})".format(repr(self.obj))
+
 
 class FileSynchronizer(FileLikeObject):
     """
@@ -126,3 +130,7 @@ class FileSynchronizer(FileLikeObject):
     def get_size(self):
         with self.lock:
             return self.obj.get_size()
+
+    def __repr__(self):
+        with self.lock:
+            return "FileSynchronizer({})".format(repr(self.obj))
