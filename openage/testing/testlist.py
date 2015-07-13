@@ -27,6 +27,7 @@ def tests_py():
            "translates the exception back and forth a few times")
     yield ("openage.testing.misc_cpp.enum",
            "tests the interface for C++'s util::Enum class")
+    yield "openage.util.threading.test_concurrent_chain"
 
 
 def demos_py():
