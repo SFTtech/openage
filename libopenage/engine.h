@@ -19,7 +19,7 @@
 #include "font.h"
 #include "handlers.h"
 #include "job/job_manager.h"
-#include "keybinds/keybind_manager.h"
+#include "input/input_manager.h"
 #include "util/dir.h"
 #include "util/fps.h"
 #include "screenshot.h"
@@ -223,7 +223,7 @@ public:
 	/**
 	* return this engine's keybind manager.
 	*/
-	keybinds::KeybindManager &get_keybind_manager();
+	input::InputManager &get_input_manager();
 
 	/**
 	 * return the number of nanoseconds that have passed
@@ -342,7 +342,7 @@ private:
 	/**
 	 * the engine's keybind manager.
 	 */
-	keybinds::KeybindManager keybind_manager;
+	input::InputManager input_manager;
 
 	/**
 	 * the text fonts to be used for (can you believe it?) texts.

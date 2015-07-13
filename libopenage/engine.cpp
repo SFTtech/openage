@@ -85,6 +85,9 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	// execution list.
 	this->register_resize_action(this);
 
+	// register the engines input manager
+	this->register_input_action(&this->input_manager);
+
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
 	} else {
@@ -260,8 +263,15 @@ void Engine::loop() {
 
 		this->job_manager->execute_callbacks();
 
+		// top level input handling
 		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_WINDOWEVENT) {
+			switch (event.type) {
+
+			case SDL_QUIT:
+				this->stop();
+				break;
+
+			case SDL_WINDOWEVENT: {
 				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
 					coord::window new_size{event.window.data1, event.window.data2};
 
@@ -272,17 +282,42 @@ void Engine::loop() {
 						}
 					}
 				}
-			} else {
+			}
+
+			default:
 				for (auto &action : this->on_input_event) {
 					if (false == action->on_input(&event)) {
 						break;
 					}
 				}
-			}
+			} // switch event
 		}
 
-		// update any currently running game
 		if (this->game) {
+			// read camera movement input keys, and move camera
+			// accordingly.
+
+			// camera movement speed, in pixels per millisecond
+			// one pixel per millisecond equals 14.3 tiles/second
+			float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
+
+			input::InputManager &input = this->get_input_manager();
+
+			if (input.is_down(SDLK_LEFT)) {
+				mov_x = -cam_movement_speed_keyboard;
+			}
+			if (input.is_down(SDLK_RIGHT)) {
+				mov_x = cam_movement_speed_keyboard;
+			}
+			if (input.is_down(SDLK_DOWN)) {
+				mov_y = cam_movement_speed_keyboard;
+			}
+			if (input.is_down(SDLK_UP)) {
+				mov_y = -cam_movement_speed_keyboard;
+			}
+			this->move_phys_camera(mov_x, mov_y, (float) this->lastframe_duration_nsec() / 1e6);
+
+			// update the currently running game
 			this->game->update();
 		}
 
@@ -388,8 +423,8 @@ ScreenshotManager &Engine::get_screenshot_manager() {
 	return this->screenshot_manager;
 }
 
-keybinds::KeybindManager &Engine::get_keybind_manager() {
-	return this->keybind_manager;
+input::InputManager &Engine::get_input_manager() {
+	return this->input_manager;
 }
 
 int64_t Engine::lastframe_duration_nsec() {

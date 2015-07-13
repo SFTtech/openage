@@ -61,18 +61,18 @@ void Console::register_to_engine(Engine *engine) {
 	engine->register_drawhud_action(this);
 	engine->register_resize_action(this);
 
-	// TODO bind any needed keybinds to keybindContext
+	// TODO bind any needed input to InputContext
 
 	// Bind the console toggle key globally
-	auto &keybinds = engine->get_keybind_manager();
-	keybinds.get_global_keybind_context()
-	        .bind(keybinds::action_t::TOGGLE_CONSOLE, [this, &keybinds]() {
+	auto &input = engine->get_input_manager();
+	input.get_global_context()
+	        .bind(input::action_t::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
 		if (!visible) { // Show the console, add keybinds
 			visible = true;
-			keybinds.override_context(&this->keybind_context);
+			input.override_context(&this->input_context);
 		} else { // Hide the console, remove the keybinds
 			visible = false;
-			keybinds.remove_context();
+			input.remove_context();
 		}
 	});
 }

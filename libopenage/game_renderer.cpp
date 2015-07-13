@@ -11,7 +11,7 @@
 #include "engine.h"
 #include "game_main.h"
 #include "game_spec.h"
-#include "keybinds/keybind_manager.h"
+#include "input/input_manager.h"
 #include "log/log.h"
 #include "terrain/terrain.h"
 #include "unit/action.h"
@@ -131,18 +131,18 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	// Renderer keybinds
 	// TODO: a renderer settings struct
 	// would allow these to be put somewher better
-	auto &global_keybind_context = engine->get_keybind_manager().get_global_keybind_context();
-	global_keybind_context.bind(keybinds::action_t::TOGGLE_DEBUG_GRID, [this]() {
+	auto &global_input_context = engine->get_input_manager().get_global_context();
+	global_input_context.bind(input::action_t::TOGGLE_DEBUG_GRID, [this](const input::action_arg_t &) {
 		this->debug_grid_active = !this->debug_grid_active;
 	});
-	global_keybind_context.bind(keybinds::action_t::TOGGLE_BLENDING, [this]() {
+	global_input_context.bind(input::action_t::TOGGLE_BLENDING, [this](const input::action_arg_t &) {
 		GameMain *game = this->engine->get_game();
 		if (game && game->terrain) {
 			Terrain *terrain = game->terrain.get();
 			terrain->blending_enabled = !terrain->blending_enabled;
 		}
 	});
-	global_keybind_context.bind(keybinds::action_t::TOGGLE_UNIT_DEBUG, [this]() {
+	global_input_context.bind(input::action_t::TOGGLE_UNIT_DEBUG, [this](const input::action_arg_t &) {
 		UnitAction::show_debug = !UnitAction::show_debug;
 	});
 
