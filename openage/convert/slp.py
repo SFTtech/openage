@@ -125,7 +125,6 @@ class SLP:
         dbg(" version:     " + version.decode('ascii'))
         dbg(" frame count: " + str(frame_count))
         dbg(" comment:     " + comment.decode('ascii'))
-        dbg("")
 
         self.frames = list()
 

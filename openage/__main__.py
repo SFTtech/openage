@@ -88,4 +88,10 @@ def main(argv=None):
 
 
 if __name__ == '__main__':
+    # TODO remove this once all multiprocessing has been eliminated.
+    import multiprocessing
+    # openage is complicated and multithreaded; better not use fork.
+    # TODO fix pending pylint 1.5: pylint: disable=no-member
+    multiprocessing.set_start_method('spawn')
+
     exit(main())

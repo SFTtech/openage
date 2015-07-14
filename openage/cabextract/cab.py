@@ -253,6 +253,7 @@ class CABFile(ReadOnlyFileSystemLikeObject):
             header.next_cab = try_decode(read_nullterminated_string(cab))
             header.next_disk = try_decode(read_nullterminated_string(cab))
 
+        dbg(header)
         self.header = header
 
         self.folders = tuple(self.read_folder_headers(cab))
@@ -317,6 +318,7 @@ class CABFile(ReadOnlyFileSystemLikeObject):
                 raise Exception("Unknown compression type %d"
                                 % compression_type)
 
+            dbg(folder)
             yield folder
 
     def read_file_headers(self, cab):

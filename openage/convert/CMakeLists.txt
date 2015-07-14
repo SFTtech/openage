@@ -11,13 +11,14 @@ add_py_modules(
 	pefile.py
 	peresource.py
 	slp.py
+	slp_converter_pool.py
 	stringresource.py
 	texture.py
 )
 
 add_cython_modules(
 	# hoping that this will somewhat increase the horrible performance.
-	slp.py
+	STANDALONE slp.py
 )
 
 add_subdirectory(dataformat)

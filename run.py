@@ -11,5 +11,5 @@ which satisifies that requirement.
 """
 
 if __name__ == '__main__':
-	from openage.__main__ import main
-	main()
+    from openage.__main__ import main
+    main()

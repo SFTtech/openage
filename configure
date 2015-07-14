@@ -11,7 +11,6 @@ if not sys.version_info >= (3, 4):
     exit(1)
 
 import argparse
-import multiprocessing
 import os
 import subprocess
 import shutil
@@ -254,8 +253,8 @@ elif args.optimize == 'max':
     flags.append("-march=native")
 
     if csuite in {'gnu'}:
-        flags.append("-flto=%d" % multiprocessing.cpu_count())
-        ldflags.append("-flto=%d" % multiprocessing.cpu_count())
+        flags.append("-flto=%d" % os.cpu_count())
+        ldflags.append("-flto=%d" % os.cpu_count())
 else:
     ap.error("unknown optimization mode: " + args.optimize)
 

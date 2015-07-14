@@ -6,11 +6,12 @@ Threading utilities.
 
 from concurrent.futures import ThreadPoolExecutor
 from enum import Enum
+import itertools
 import os
 from queue import Queue
 
 
-def concurrent_chain(generators, thread_count=None):
+def concurrent_chain(generators, jobs=None):
     """
     Similar to itertools.chain(), but runs the individual generators in a
     thread pool. The resulting items may be out of order accordingly.
@@ -19,13 +20,20 @@ def concurrent_chain(generators, thread_count=None):
     generators are stopped (they may run until their next 'yield' statement).
     The exception is then raised.
     """
-    if thread_count is None:
-        thread_count = os.cpu_count()
+    if jobs is None:
+        jobs = os.cpu_count()
+
+    if jobs == 1:
+        # we don't need to do all that threading stuff;
+        # let's just behave _precisely_ like itertools.chain.
+        for generator in generators:
+            yield from generator
+        return
 
     queue = ClosableQueue()
     running_generator_count = 0
 
-    with ThreadPoolExecutor(thread_count) as pool:
+    with ThreadPoolExecutor(jobs) as pool:
         for generator in generators:
             pool.submit(generator_to_queue, generator, queue)
             running_generator_count += 1
@@ -107,7 +115,6 @@ def generator_to_queue(generator, queue):
 
 def test_concurrent_chain():
     """ Tests concurrent_chain """
-    import itertools
     from ..testing.testing import assert_result, assert_raises
 
     def errorgen():
@@ -116,12 +123,12 @@ def test_concurrent_chain():
         raise ValueError()
 
     assert_result(
-        lambda: list(concurrent_chain([range(10)])),
+        lambda: list(concurrent_chain([range(10)], 2)),
         list(range(10))
     )
 
     assert_result(
-        lambda: sorted(list(concurrent_chain([range(10), range(20)]))),
+        lambda: sorted(list(concurrent_chain([range(10), range(20)], 2))),
         sorted(list(itertools.chain(range(10), range(20))))
     )
 

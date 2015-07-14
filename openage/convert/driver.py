@@ -5,9 +5,9 @@ Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
 """
 
-from tempfile import gettempdir
 import os
 from subprocess import Popen, PIPE
+from tempfile import gettempdir
 
 from ..config import VERSION as openage_version
 from ..log import info, dbg
@@ -18,8 +18,7 @@ from .dataformat.data_formatter import DataFormatter
 from .gamedata.empiresdat import load_gamespec
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
-from .slp import SLP
-from .texture import Texture
+from .slp_converter_pool import SLPConverterPool
 
 
 def get_string_resources(srcdir):
@@ -94,13 +93,32 @@ def convert(args):
         strings (filenames) that indicate the currently-converted object
         ints that predict the amount of objects remaining
     """
-    data_formatter = DataFormatter()
+    yield from convert_metadata(args)
+
+    if not args.flag('no_media'):
+        yield from convert_media(args)
+
+    # clean args (set by convert_metadata for convert_media)
+    del args.palette
+
+    args.targetdir.open('converted_by', 'w').write(openage_version)
+    info("asset conversion complete; converted by: " + openage_version)
+
+
+def convert_metadata(args):
+    """ Converts the metadata part """
+    if not args.flag("no_metadata"):
+        info("converting metadata")
+        data_formatter = DataFormatter()
 
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
     palette = ColorTable(args.srcdir.open("interface/50500.bin", "rb").read())
-    # store for usage in convert_mediafile
+    # store for use by convert_media
     args.palette = palette
+
+    if args.flag("no_metadata"):
+        return
 
     yield "empires.dat"
     data_dump = get_gamespec(args.srcdir).dump("gamedata")
@@ -135,49 +153,53 @@ def convert(args):
         with tgt.open('info/playercolortable.pal.png', 'wb') as outfile:
             player_palette.save_visualization(outfile)
 
-    dbg("collecting list of files to convert")
+
+def convert_media(args):
+    """ Converts the media part """
+    info("converting media")
+
     files_to_convert = []
-    if not args.flag('no_media'):
-        for dirname in ['sounds', 'graphics', 'terrain']:
-            for filename in args.srcdir.listfiles(dirname):
-                files_to_convert.append(dirname + '/' + filename)
+    for dirname in ['sounds', 'graphics', 'terrain']:
+        for filename in args.srcdir.listfiles(dirname):
+            if args.flag("no_sounds") and filename.endswith('.wav'):
+                continue
+            files_to_convert.append(dirname + '/' + filename)
 
     yield len(files_to_convert)
 
-    for filename in files_to_convert:
-        yield filename
-        convert_mediafile(filename, args)
+    jobs = getattr(args, "jobs", None)
+    with SLPConverterPool(args.palette, jobs) as slp_converter:
+        args.slp_converter = slp_converter
 
-    args.targetdir.open('converted_by', 'w').write(openage_version)
-    info("asset conversion complete; converted by: " + openage_version)
+        from ..util.threading import concurrent_chain
+        yield from concurrent_chain(
+            (convert_mediafile(fname, args) for fname in files_to_convert),
+            jobs)
 
     # clean args
-    del args.palette
+    del args.slp_converter
 
 
 def convert_mediafile(filename, args):
     """
     Converts a single media file, according to the supplied arguments.
+    Designed to be run in a thread via concurrent_chain.
 
     May write multiple output files (e.g. in the case of textures: csv, png).
 
     Args shall contain srcdir, targetdir and palette.
     """
+    # progress message
+    yield filename
+
     with args.srcdir.open(filename, 'rb') as infile:
         indata = infile.read()
 
     if filename.endswith('.slp'):
-        # TODO this is slooooow beyond imagination (TM).
-        # optimize SLP conversion with Cython.
+        # do the CPU-intense part in a subprocess
+        texture = args.slp_converter.convert(indata)
 
-        # parse indata as SLP
-        slp = SLP(indata)
-
-        # rasterize to a PNG/CSV atlas
-        # about 80% of the time seems to be spent in this method.
-        texture = Texture(slp, args.palette)
-
-        # the hotspots of terrain textures must be fixed:
+        # the hotspots of terrain textures must be fixed
         if filename.startswith('terrain.drs'):
             for entry in texture.image_metadata:
                 entry["cx"] = TILE_HALFSIZE["x"]

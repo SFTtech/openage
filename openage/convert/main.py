@@ -200,6 +200,18 @@ def init_subparser(cli):
         "--no-media", action='store_true',
         help="do not convert any media files (slp, wav, ...)")
 
+    cli.add_argument(
+        "--no-metadata", action='store_true',
+        help=("do not store any metadata "
+              "(except for those associated with media files)"))
+
+    cli.add_argument(
+        "--no-sounds", action='store_true',
+        help="do not convert any sound files")
+
+    cli.add_argument(
+        "--jobs", "-j", type=int, default=None)
+
 
 def main(args, error):
     """ CLI entry point """
