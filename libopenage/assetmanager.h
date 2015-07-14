@@ -9,9 +9,11 @@
 #include <string>
 #include <memory>
 
-#include "texture.h"
+#include "util/dir.h"
 
 namespace openage {
+
+class Texture;
 
 /**
  * Container class for all available assets.

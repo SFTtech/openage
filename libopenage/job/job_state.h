@@ -33,7 +33,7 @@ public:
 
 protected:
 	virtual T execute_and_get(should_abort_t /*should_abort*/) {
-		return std::move(this->function());
+		return this->function();
 	}
 };
 

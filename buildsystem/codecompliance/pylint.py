@@ -19,7 +19,7 @@ def find_pyx_modules(dirnames):
 def find_issues(check_files, dirnames):
     """ Invokes the external utility. """
 
-    invocation = ['pylint', '--rcfile=.pylintrc', '--reports=n']
+    invocation = ['pylint', '--rcfile=etc/pylintrc', '--reports=n']
 
     ignored_modules = list(find_pyx_modules(dirnames))
     ignored_modules.append('numpy')

@@ -10,6 +10,11 @@ leak:new_dict_with_shared_keys
 leak:list_resize
 leak:set_table_resize
 leak:resize_compact
+leak:atexit_register
+leak:PyInit_atexit
+leak:PyModule_Create2
+leak:newblock
+leak:_buffered_init
 
 # stdlib
 leak:__strdup

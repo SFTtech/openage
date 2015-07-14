@@ -1,6 +1,7 @@
 // Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 
 #include "../terrain/terrain.h"
@@ -122,13 +123,9 @@ void Unit::draw() {
 }
 
 void Unit::draw(TerrainObject *loc, graphic_set *grpc) {
-
 	// there should always be a location
-	if (!loc) {
-		// TODO change this to an assertion or an exception?
-		//      using *loc further down leads to disaster, obviously.
-		this->log(MSG(warn) << "Cannot draw unit with no location");
-	}
+	assert(loc != nullptr);
+
 	auto top_action = this->top();
 	auto &draw_pos = loc->pos.draw;
 	auto draw_graphic = top_action->type();
@@ -277,4 +274,4 @@ void Unit::erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func, 
 	}
 }
 
-} /* namespace openage */
+} // openage

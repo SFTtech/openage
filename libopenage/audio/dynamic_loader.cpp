@@ -27,7 +27,7 @@ std::unique_ptr<DynamicLoader> DynamicLoader::create(const std::string &path,
 		throw Error{MSG(err) <<
 			"No dynamic audio loader for format supported: " << format};
 	}
-	return std::move(loader);
+	return loader;
 }
 
 

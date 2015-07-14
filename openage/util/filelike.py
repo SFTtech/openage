@@ -163,7 +163,7 @@ class ReadOnlyFileLikeObject(FileLikeObject):
     This abstract class avoids code duplication.
     """
 
-    # pylint doesn't understand that this file is supposed to be abstract.
+    # pylint doesn't understand that this class is supposed to be abstract.
     # pylint: disable=abstract-method
 
     def flush(self):

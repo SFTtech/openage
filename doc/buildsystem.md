@@ -4,7 +4,7 @@ Steps in building openage:
  - run `openage.codegen` (python module) to generate C++ source files (recipe: `codegen`)
  - generate `.pxd` cython extension declaration files from annotated `.h` files (recipe: `pxdgen`)
  - build and link `libopenage.so` (recipe: `openage`)
- - build Cython extension modules (generate cpp files and compile them, via `distutils.cythonize`) (recipe: `python`); those link against libopenage.
+ - build Cython extension modules (generate cpp files and compile them, via `buildsystem.cythonize`) (recipe: `cython`); those link against libopenage.
 
 Additional recipes:
 

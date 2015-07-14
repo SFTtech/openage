@@ -251,17 +251,6 @@ class PXDGenerator:
 
         yield "# " + self.filename
 
-        hacksheader = os.path.abspath("libopenage/pyinterface/hacks.h")
-
-        # Include hacks.h, which contains various hacks and workarounds
-        # that should be run on Cython-compiled files.
-        # See the header file for more info.
-        yield ""
-        yield '# Auto-added by pxdgen. Makes Cython include "hacks.h".'
-        yield '# See that header file for further docs.'
-        yield 'cdef extern from "%s":' % hacksheader
-        yield '    int hacks'
-
         self.parse()
 
         # namespace of the previous pxd annotation
@@ -313,7 +302,7 @@ class PXDGenerator:
 
         if 'cdef ' in annotation:
             self.warnings.append(
-                "there's no need to use 'cdef' in PXD files:\n" +
+                "there's no need to use 'cdef' in PXD annotations:\n" +
                 annotation)
 
         return annotation

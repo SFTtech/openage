@@ -6,8 +6,8 @@ and the library `libopenage.so`, which contains all C++ code.
 
 Cython is used for glue code.
 
-Quick overview of Cython
-------------------------
+Cython crash course
+-------------------
 
 Cython modules are written in `.pyx` files, and roughly equivalent to .py files.
 In addition to regular Python syntax, `.pyx` files allow you to define typed
@@ -24,7 +24,7 @@ cdef cppclass Rectangle:
         return this.h * this.w
 
 def foo():
-    Rectangle r
+    cdef Rectangle r
     r.h = 5
     r.w = 6
     return square(r.size())
@@ -32,11 +32,21 @@ def foo():
 
 `.pyx` files are translated to `.cpp` by Cython ("cythonized") as part of the
 openage build process; syntax errors are shown in this step.
+
 Each `.cpp` file is then compiled to a Python extension module, which may be
 used from everywhere.
 
     - `def` functions and `cdef class` classes can be used from Python.
     - `cdef` functions are suitable for storage in a `C` function pointer.
+
+```
+$ cython --cplus -3 test.pyx
+$ g++ -shared -fPIC -I/usr/include/python3.4m test.cpp -o test.so
+$ python3
+>>> import test
+>>> test.foo()
+900
+```
 
 Cython can use any regular C++ function or type; for that purpose, they
 need to be declared in `.pxd` files (which are analogous to C++ `.h` files):
@@ -82,7 +92,7 @@ print(vector_sin(range(10)))
 
 From time to time, it may be useful to have a look at the generated `.cpp` file,
 especially if you require more exotic functionality or something doesn't work
-out as you expected.
+out as you expected. For that purpose, `.html` files are generated next to the `.cpp` files.
 
 
 Calling C++ functions from Python

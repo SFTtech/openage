@@ -154,8 +154,6 @@ class PEFile:
     """
 
     def __init__(self, fileobj):
-        self.fileobj = fileobj
-
         # read DOS header
         doshdr = PEDOSHeader.read(fileobj)
         if doshdr.signature != b'MZ':

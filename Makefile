@@ -32,9 +32,9 @@ tests: build
 build: $(BUILDDIR)
 	@$(MAKE) $(MAKEARGS) -C $(BUILDDIR)
 
-.PHONY: openage
-openage: $(BUILDDIR)
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) openage
+.PHONY: libopenage
+libopenage: $(BUILDDIR)
+	@$(MAKE) $(MAKEARGS) -C $(BUILDDIR) libopenage
 
 .PHONY: codegen
 codegen: $(BUILDDIR)
@@ -142,7 +142,7 @@ help: $(BUILDDIR)/Makefile
 	@echo "targets:"
 	@echo ""
 	@echo "build              -> build entire project"
-	@echo "openage            -> build libopenage"
+	@echo "libopenage         -> build libopenage"
 	@echo "pxdgen             -> generate .pxd files"
 	@echo "cythonize          -> compile .pyx files to .cpp"
 	@echo "compilepy          -> compile .py files to .pyc"

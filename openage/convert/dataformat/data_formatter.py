@@ -123,6 +123,8 @@ $parsers
     def export(self, projectdir, requested_formats):
         """
         Generates files in the requested formats to projectdir.
+
+        projectdir is a util.fslike.path.Path.
         """
         # storage of all needed content snippets
         generate_files = list()
@@ -182,5 +184,5 @@ $parsers
         # we now invoke the content generation for each generated file
         for gen_file in generate_files:
             file_name, content = gen_file.generate()
-            with projectdir.open(file_name, 'w') as outfile:
+            with projectdir[file_name].open('w') as outfile:
                 outfile.write(content)

@@ -10,16 +10,15 @@ compiler:
 env:
   - BUILDMODE=release
   - STATICCHECKER=scan-build
-  - SANITIZER=addr LSAN_OPTIONS=suppressions=lsan.supp ASAN_OPTIONS=check_initialization_order=1
+  - SANITIZER=yes LSAN_OPTIONS=suppressions=etc/lsan.supp ASAN_OPTIONS=check_initialization_order=1
   - SANITIZER=mem     # TODO this needs a custom-built libstd++
-  - SANITIZER=thread
-  - SANITIZER=undef
+  - SANITIZER=thread SANITIZER_FATAL=1
 
 matrix:
   allow_failures:
     - env: SANITIZER=mem
     - compiler: gcc
-      env: SANITIZER=thread
+      env: SANITIZER=thread SANITIZER_FATAL=1
   exclude:
     - compiler: gcc                   # gcc can't do that yet
       env: SANITIZER=mem

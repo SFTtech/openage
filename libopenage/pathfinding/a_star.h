@@ -5,11 +5,13 @@
 
 #include <memory>
 
-#include "../terrain/terrain_object.h"
 #include "heuristics.h"
 #include "path.h"
 
 namespace openage {
+
+class TerrainObject;
+
 namespace path {
 
 /**

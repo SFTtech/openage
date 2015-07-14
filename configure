@@ -31,6 +31,18 @@ def getenv(*varnames, default=""):
     return default
 
 
+def getenv_bool(varname):
+    """
+    fetches a "boolean" environment variable.
+    """
+    value = os.environ.get(varname)
+    if isinstance(value, str):
+        if value.lower() in {"0", "false", "no", "off", "n"}:
+            value = False
+
+    return bool(value)
+
+
 # argparsing
 description = """./configure is a convenience script that creates the build \
 directory,
@@ -59,9 +71,13 @@ ap.add_argument("--optimize", "-O",
                      "is set according to mode if 'auto'. " +
                      "conflicts with --flags")
 ap.add_argument("--sanitize",
-                choices=["none", "addr", "mem", "thread", "undef"],
+                choices=["none", "yes", "mem", "thread"],
                 default=getenv("SANITIZER", default="none"),
-                help="enable one of those (run-time) code sanitizers")
+                help=("enable one of those (run-time) code sanitizers."
+                      "'yes' enables the address and undefined sanitizers."))
+ap.add_argument("--sanitize-fatal", action='store_true',
+                default=getenv_bool("SANITIZER_FATAL"),
+                help="With --sanitize, abort program execution on first find.")
 ap.add_argument("--compiler", "-c",
                 default="",
                 help="compiler suite")
@@ -260,22 +276,27 @@ else:
 
 if args.sanitize != 'none':
     flags.append('-fno-omit-frame-pointer')
+    if args.sanitize_fatal and csuite=='llvm':
+        flags.append('-fno-sanitize-recover')
+else:
+    if args.sanitize_fatal:
+        ap.error('--sanitize-fatal only valid with --sanitize')
 
 if args.sanitize == 'none':
     pass
-elif args.sanitize == 'addr':
+elif args.sanitize == 'yes':
     flags.append('-fsanitize=address')
+    flags.append('-fsanitize=undefined')
 elif args.sanitize == 'mem':
     flags.append('-fsanitize=memory')
-    flags.append('-fsanitize-memory-track-origins=2')
 elif args.sanitize == 'thread':
     flags.append('-fsanitize=thread')
-elif args.sanitize == 'undef':
-    flags.append('-fsanitize=undefined')
+    if csuite in {'gnu'}:
+        flags.append('-fPIC')
+        flags.append('-pie')
 else:
     ap.error("unknown sanitizer mode")
-
-
+all
 flags = shlex.join(flags + shlex.split(args.flags))
 ldflags = shlex.join(ldflags + shlex.split(args.ldflags))
 defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,

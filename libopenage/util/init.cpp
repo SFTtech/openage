@@ -39,4 +39,4 @@ void init() {
 	TESTEQUALS(i, 8);
 }
 
-}}}// openage::util::tests
+}}} // openage::util::tests

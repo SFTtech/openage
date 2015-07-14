@@ -17,7 +17,7 @@ void test_simple_job() {
 	manager.start();
 
 	std::atomic<int> finish_count(0);
-	int job_count = 10;
+	int job_count = 1337;
 	bool result = false;
 
 	auto job_function = []() -> int {

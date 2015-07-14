@@ -8,6 +8,7 @@
 namespace openage {
 namespace path {
 
+
 bool compare_node_cost::operator ()(const node_pt lhs, const node_pt rhs) const {
 	// TODO: use node operator <
 	return lhs->future_cost < rhs->future_cost;
@@ -46,17 +47,16 @@ Node::Node(const coord::phys3 &pos, node_pt prev, cost_t past, cost_t heuristic)
 	this->future_cost = past + heuristic;
 }
 
-Node::~Node() {
-
-}
 
 bool Node::operator <(const Node &other) const {
 	return this->future_cost < other.future_cost;
 }
 
+
 bool Node::operator ==(const Node &other) const {
 	return this->position == other.position;
 }
+
 
 cost_t Node::cost_to(const Node &other) const {
 	cost_t dx = this->position.ne - other.position.ne;
@@ -64,11 +64,13 @@ cost_t Node::cost_to(const Node &other) const {
 	return std::hypot(dx, dy) * other.factor * this->factor;
 }
 
+
 Path Node::generate_backtrace() {
 	std::vector<Node> waypoints;
 
 	node_pt current = this->shared_from_this();
 	do {
+		Node other = *current;
 		waypoints.push_back(*current);
 		current = current->path_predecessor;
 	} while (current != nullptr);
@@ -76,6 +78,7 @@ Path Node::generate_backtrace() {
 
 	return {waypoints};
 }
+
 
 std::vector<node_pt> Node::get_neighbors(const nodemap_t &nodes, float scale) {
 	std::vector<node_pt> neighbors;
@@ -92,6 +95,7 @@ std::vector<node_pt> Node::get_neighbors(const nodemap_t &nodes, float scale) {
 	}
 	return neighbors;
 }
+
 
 bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::phys3 &)> passable, float samples) {
 	// interpolate between points and make passablity checks
@@ -110,17 +114,10 @@ bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::p
 }
 
 
-Path::Path() {
-
-}
-
 Path::Path(const std::vector<Node> &nodes)
 	:
-	waypoints{nodes} {
-}
+	waypoints{nodes} {}
 
-Path::~Path() {
-}
 
 void Path::draw_path() {
 	glLineWidth(1);
@@ -134,5 +131,5 @@ void Path::draw_path() {
 	glEnd();
 }
 
-} // namespace path
-} // namespace openage
+
+}} // openage::path

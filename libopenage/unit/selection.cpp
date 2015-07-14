@@ -4,7 +4,9 @@
 
 #include "../coord/tile.h"
 #include "../coord/tile3.h"
+#include "../engine.h"
 #include "../terrain/terrain.h"
+
 #include "action.h"
 #include "producer.h"
 #include "selection.h"

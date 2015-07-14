@@ -11,7 +11,7 @@ from enum import Enum
 from io import UnsupportedOperation
 from itertools import chain
 
-from ..util.fslike import FSLikeObjectWrapper
+from ..util.fslike.wrapper import Wrapper
 from ..util.filelike import FIFO
 from ..log import err
 
@@ -51,7 +51,7 @@ class WriteCatcher(FIFO):
         return super().read(size)
 
 
-class CodegenDirWrapper(FSLikeObjectWrapper):
+class CodegenDirWrapper(Wrapper):
     """
     Only allows pure-read and pure-write operations;
 
@@ -59,44 +59,31 @@ class CodegenDirWrapper(FSLikeObjectWrapper):
 
     The constructor takes the to-be-wrapped fslike object.
     """
-    def __init__(self, wrapped):
-        super().__init__(wrapped)
+    def __init__(self, obj):
+        super().__init__(obj)
 
-        # stores tuples (pathcomponents, intercept_obj), where
-        # intercept_obj is a FIFO.
+        # stores tuples (parts, intercept_obj), where intercept_obj is a FIFO.
         self.writes = []
 
-        # stores a list of pathcomponents.
+        # stores a list of parts.
         self.reads = []
 
-    def _open_impl(self, pathcomponents, mode):
-        if 'w' in mode:
-            # file creation
-            intercept_obj = WriteCatcher()
-            self.writes.append((pathcomponents, intercept_obj))
+    def open_r(self, parts):
+        self.reads.append(parts)
+        return super().open_r(parts)
 
-            if 'b' in mode:
-                return intercept_obj
-            else:
-                from io import TextIOWrapper
-                # use ascii encoding to disallow any non-ascii chars.
-                return TextIOWrapper(intercept_obj, encoding='ascii')
-
-        elif 'r' in mode and '+' not in mode:
-            self.reads.append(pathcomponents)
-
-            return self.wrapped.open(pathcomponents, mode)
-
-        else:
-            raise UnsupportedOperation("illegal open mode: " + str(mode))
+    def open_w(self, parts):
+        intercept_obj = WriteCatcher()
+        self.writes.append((parts, intercept_obj))
+        return intercept_obj
 
     def get_reads(self):
         """
         Returns an iterable of all path component tuples for files that have
         been read.
         """
-        for pathcomponents in self.reads:
-            yield pathcomponents
+        for parts in self.reads:
+            yield parts
 
         self.reads.clear()
 
@@ -105,70 +92,95 @@ class CodegenDirWrapper(FSLikeObjectWrapper):
         Returns an iterable of all (path components, data_written) tuples for
         files that have been written.
         """
-        for pathcomponents, intercept_obj in self.writes:
-            yield pathcomponents, intercept_obj.read()
+        for parts, intercept_obj in self.writes:
+            yield parts, intercept_obj.read()
 
         self.writes.clear()
 
     def __repr__(self):
-        return "CodegenDirWrapper({})".format(self.wrapped)
+        return "CodegenDirWrapper({})".format(repr(self.obj))
 
 
 def codegen(projectdir, mode):
     """
     Calls .listing.generate_all(), and post-processes the generated
     data, checking them and adding a header.
-    Writes them to projectdir according to mode.
+    Writes them to projectdir according to mode. projectdir is a FSLikeObject.
 
     Returns ({generated}, {depends}), where
     generated is a list of (absolute) filenames of generated files, and
     depends is a list of (absolute) filenames of dependency files.
     """
+    # this wrapper intercepts all writes and logs all reads.
     wrapper = CodegenDirWrapper(projectdir)
-    generate_all(wrapper)
+    generate_all(wrapper.root)
 
     # set of all generated filenames
     generated = set()
 
-    for pathcomponents, data in wrapper.get_writes():
-        generated.add(projectdir.actual_filepath(pathcomponents))
+    for parts, data in wrapper.get_writes():
+        generated.add(projectdir.fsobj.resolve(parts))
+        wpath = projectdir[parts]
 
         try:
-            data = postprocess_write(pathcomponents, data)
+            data = postprocess_write(parts, data)
         except ValueError as exc:
             err("code generation issue with output file " +
-                '/'.join(pathcomponents) + ":\n" + exc.args[0])
+                b'/'.join(parts).decode(errors='replace') +
+                ":\n" + str(exc.args[0]))
             exit(1)
 
         if mode == CodegenMode.codegen:
             # skip writing if the file already has that exact content
             try:
-                with projectdir.open(pathcomponents, 'rb') as outfile:
+                with wpath.open('rb') as outfile:
                     if outfile.read() == data:
                         continue
             except FileNotFoundError:
                 pass
 
             # write new content to file
-            projectdir.mkdirs(pathcomponents[:-1])
-            with projectdir.open(pathcomponents, 'wb') as outfile:
-                print('/'.join(pathcomponents))
+            wpath.parent.mkdirs()
+            with wpath.open('wb') as outfile:
+                print(b'/'.join(parts).decode(errors='replace'))
                 outfile.write(data)
         elif mode == CodegenMode.dryrun:
             # no-op
             pass
         elif mode == CodegenMode.clean:
-            if projectdir.isfile(pathcomponents):
-                print(os.path.sep.join(pathcomponents))
-                projectdir.remove(pathcomponents)
+            if wpath.is_file():
+                print(b'/'.join(parts).decode(errors='replace'))
+                wpath.unlink()
         else:
             err("unknown codegen mode: " + str(mode))
             exit(1)
 
-    generated = {os.path.abspath(path) for path in generated}
+    generated = {os.path.abspath(path).decode() for path in generated}
     depends = {os.path.abspath(path) for path in get_codegen_depends(wrapper)}
 
     return generated, depends
+
+
+def depend_module_blacklist():
+    """
+    Yields all modules whose source files shall explicitly not appear in the
+    dependency list, even if they have been imported.
+    """
+    # openage.config is created only after the first run of cmake,
+    # thus, the depends list will change at the second run of codegen,
+    # re-triggering cmake.
+    try:
+        import openage.config
+        yield openage.config
+    except ImportError:
+        pass
+
+    # devmode is imported by config, so the same reason as above applies.
+    try:
+        import openage.devmode
+        yield openage.devmode
+    except ImportError:
+        pass
 
 
 def get_codegen_depends(outputwrapper):
@@ -181,15 +193,21 @@ def get_codegen_depends(outputwrapper):
     In addition, all imported python modules are yielded.
     """
     # add all files that have been read as depends
-    for pathcomponents in outputwrapper.get_reads():
-        yield outputwrapper.wrapped.actual_filepath(pathcomponents)
+    for parts in outputwrapper.get_reads():
+        yield outputwrapper.obj.fsobj.resolve(parts).decode()
+
+    module_blacklist = set(depend_module_blacklist())
 
     # add all source files that have been loaded as depends
     for module in modules.values():
+        if module in module_blacklist:
+            continue
+
         try:
             filename = module.__file__
         except AttributeError:
-            # built-in modules don't have __file__, but that's fine.
+            # built-in modules don't have __file__, we don't want those as
+            # depends.
             continue
 
         if module.__package__ == '':
@@ -218,16 +236,16 @@ def get_header_lines():
     yield ""
 
 
-def postprocess_write(pathcomponents, data):
+def postprocess_write(parts, data):
     """
     Post-processes a single write operation, as intercepted during codegen.
     """
     # test whether filename starts with 'cpp/'
-    if not pathcomponents[0] == 'libopenage':
+    if not parts[0] == b"libopenage":
         raise ValueError("Not in libopenage source directory")
 
     # test whether filename matches the pattern *.gen.*
-    name, extension = os.path.splitext(pathcomponents[-1])
+    name, extension = os.path.splitext(parts[-1].decode())
     if not name.endswith('.gen'):
         raise ValueError("Doesn't match required filename format .gen.SUFFIX")
 

@@ -38,8 +38,8 @@ def setup():
     from .pyobject import setup as pyobject_setup
     pyobject_setup()
 
-    from ..util.fslike_cpp import setup as fslike_cpp_setup
-    fslike_cpp_setup()
+    from ..util.fslike.cpp import setup as fslike_setup
+    fslike_setup()
 
     # verify that everything has been properly initialized.
     from .setup_checker import check

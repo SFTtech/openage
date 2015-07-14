@@ -13,7 +13,6 @@
 #include "terrain_chunk.h"
 #include "terrain_object.h"
 #include "../assetmanager.h"
-#include "../engine.h"
 #include "../texture.h"
 #include "../coord/camgame.h"
 #include "../coord/chunk.h"
@@ -24,6 +23,7 @@
 
 namespace openage {
 
+class Engine;
 class TerrainChunk;
 
 /**

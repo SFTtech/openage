@@ -106,7 +106,7 @@ class Texture(exportable.Exportable):
             frames = [
                 TextureImage(
                     tile.get_picture_data(),
-                    hotspot=tuple(TILE_HALFSIZE.values())
+                    hotspot=(TILE_HALFSIZE["x"], TILE_HALFSIZE["y"])
                 )
                 for tile in input_data.alphamasks
             ]
@@ -121,7 +121,7 @@ class Texture(exportable.Exportable):
         save the texture png and csv to the given path in obj.
         """
         # generate PNG file
-        with targetdir.open(filename + ".png", "wb") as imagefile:
+        with targetdir[filename + ".png"].open("wb") as imagefile:
             self.image_data.get_pil_image().save(imagefile, 'png')
 
         # generate formatted texture metadata

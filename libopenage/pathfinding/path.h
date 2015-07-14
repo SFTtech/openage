@@ -84,7 +84,6 @@ class Node: public std::enable_shared_from_this<Node> {
 public:
 	Node(const coord::phys3 &pos, node_pt prev);
 	Node(const coord::phys3 &pos, node_pt prev, cost_t past, cost_t heuristic);
-	~Node();
 
 	/**
 	 * Orders nodes according to their future cost value.
@@ -141,19 +140,19 @@ public:
 	/**
 	 * Can this node be passed?
 	 */
-	bool accessible;
+	bool accessible = false;
 
 	/**
 	 * Has this Node been visited?
 	 */
-	bool visited;
+	bool visited = false;
 
 	/**
 	 * Does this node already have an alternative path?
 	 * If the node was once selected as the best next hop,
 	 * this is set to true.
 	 */
-	bool was_best;
+	bool was_best = false;
 
 	/**
 	 * Factor to adjust movement cost.
@@ -179,9 +178,8 @@ public:
  */
 class Path {
 public:
-	Path();
+	Path() = default;
 	Path(const std::vector<Node> &nodes);
-	~Path();
 
 	void draw_path();
 

@@ -15,7 +15,7 @@
 
 // Headers from different openage folders.
 #include "../valve.h"
-#include "crossplattform/opengl.h"
+#include "log/log.h"
 
 // Lastly, headers from the same folder.
 #include "half_life.h"

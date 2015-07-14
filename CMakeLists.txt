@@ -63,6 +63,7 @@ doxygen_configure(libopenage/ openage/)
 
 add_subdirectory(libopenage/)
 set(PYEXT_LINK_LIBRARY libopenage)
+set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -include \"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")
 add_cython_modules(EMBED NOINSTALL run.py)
 add_subdirectory(openage/)
 add_subdirectory(dist/)

@@ -65,7 +65,7 @@ public:
 	 */
 	virtual bool execute(should_abort_t should_abort) {
 		try {
-			this->result = std::move(this->execute_and_get(should_abort));
+			this->result = this->execute_and_get(should_abort);
 		} catch (JobAbortedException &e) {
 			return true;
 		} catch (...) {

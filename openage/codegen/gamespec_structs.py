@@ -14,8 +14,6 @@ from ..convert.texture import Texture
 from ..convert.filelist import SoundList
 from ..convert.stringresource import StringResource
 
-from ..util.fslike import SubDirectory
-
 
 def generate_gamespec_structs(projectdir):
     """ Header and C++ files for the gamespec structs """
@@ -29,6 +27,5 @@ def generate_gamespec_structs(projectdir):
     generator.add_data(SoundList.structs())
     generator.add_data(StringResource.structs())
 
-    cppdir = SubDirectory(projectdir, 'libopenage/gamedata')
-
-    generator.export(cppdir, ("struct", "structimpl"))
+    cpppath = projectdir.joinpath('libopenage/gamedata')
+    generator.export(cpppath, ("struct", "structimpl"))

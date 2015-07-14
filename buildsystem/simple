@@ -71,7 +71,7 @@ run python3 -m buildsystem.pxdgen libopenage/**/*.h
 for file in openage/**/*.pyx; do
 
 run python3 -m cython --cplus -3 $file || exit
-run g++ -Wall -Wextra -pedantic -std=c++14 -O2 -fPIC -shared -fwrapv -fstack-protector-strong -D_FORTIFY_SOURCE=2 \
+run g++ -Wall -Wextra -pedantic -std=c++14 -O2 -fPIC -shared -fwrapv -fstack-protector-strong -D_FORTIFY_SOURCE=2 -include libopenage/pyinterface/hacks.h \
         -I/usr/include/python${PYVER} \
         -pthread -Wl,-O2,-Bsymbolic-functions,-z,relro,-rpath,`pwd` -lopenage -L`pwd` \
         -o ${file%.pyx}.cpython-${PYVERDOTLESS}.so ${file%.pyx}.cpp

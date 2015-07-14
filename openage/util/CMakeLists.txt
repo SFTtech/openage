@@ -1,20 +1,18 @@
-add_cython_modules(
-	fslike_cpp.pyx
-)
-
 add_py_modules(
 	__init__.py
 	bytequeue.py
+	context.py
 	decorators.py
 	filelike.py
 	files.py
-	fslike.py
-	fslikeabstract.py
 	fsprinting.py
-	fslike_synchronized.py
 	iterators.py
 	math.py
 	strings.py
 	struct.py
 	threading.py
+)
+
+add_subdirectory(
+	fslike
 )

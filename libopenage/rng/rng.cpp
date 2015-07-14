@@ -71,7 +71,9 @@ static uint64_t hash64(uint64_t val) {
  * reinterpret_casts 8 chars from a buffer as a uint64_t.
  */
 static inline uint64_t from_cptr(const char *data) {
-	return *reinterpret_cast<const uint64_t *>(data);
+	uint64_t result;
+	memcpy(reinterpret_cast<char *>(&result), data, sizeof(result));
+	return result;
 }
 
 

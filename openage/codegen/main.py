@@ -49,7 +49,7 @@ depending on the specified invocation commands,
 
 import os
 
-from ..util.fslike import Directory
+from ..util.fslike.directory import Directory
 
 from .codegen import CodegenMode, codegen
 
@@ -127,7 +127,7 @@ def main(args, error):
     # arguments are OK.
 
     # generate sources
-    generated, depends = codegen(Directory(os.getcwd()), mode)
+    generated, depends = codegen(Directory(os.getcwd()).root, mode)
 
     def print_set_differences(old, new, name):
         """ Prints the difference between old and new. """

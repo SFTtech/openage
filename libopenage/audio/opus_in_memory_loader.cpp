@@ -70,7 +70,7 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 		}
 	}
 
-	return std::move(buffer);
+	return buffer;
 }
 
 }} // openage::audio

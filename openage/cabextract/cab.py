@@ -7,7 +7,6 @@ Struct definitions are according to the documentation at
 https://msdn.microsoft.com/en-us/library/bb417343.aspx.
 """
 
-from io import UnsupportedOperation
 from bisect import bisect
 from collections import OrderedDict
 from calendar import timegm
@@ -15,7 +14,7 @@ from calendar import timegm
 from ..log import dbg
 from ..util.filelike import PosSavingReadOnlyFileLikeObject, StreamFragment
 from ..util.files import read_guaranteed, read_nullterminated_string
-from ..util.fslikeabstract import ReadOnlyFileSystemLikeObject
+from ..util.fslike.filecollection import FileCollection
 from ..util.math import INF
 from ..util.strings import try_decode
 from ..util.struct import NamedStruct, Flags
@@ -162,7 +161,7 @@ class CFFile(NamedStruct):
     attribs         = CFFileAttributes
 
     # filled in later manually
-    name            = None  # string filename
+    path            = None  # array of path parts
 
     continued       = None  # file continued from previous CAB file
     continues       = None  # file continues in next CAB file
@@ -211,7 +210,7 @@ class CFData(NamedStruct):
             raise ValueError("checksum error in MSCAB data block")
 
 
-class CABFile(ReadOnlyFileSystemLikeObject):
+class CABFile(FileCollection):
     """
     The actual file system-like CAB object.
 
@@ -225,6 +224,8 @@ class CABFile(ReadOnlyFileSystemLikeObject):
     descriptions. Most CAB file issues should cause the constructor to fail.
     """
     def __init__(self, cab):
+        super().__init__()
+
         # read header
         cab.seek(0)
         header = CFHeader.read(cab)
@@ -258,9 +259,32 @@ class CABFile(ReadOnlyFileSystemLikeObject):
 
         self.folders = tuple(self.read_folder_headers(cab))
 
-        self.rootdir = CABDirectory()
+        # {filename: fileobj}, {subdirname: subdir}
+        self.rootdir = OrderedDict(), OrderedDict()
+
         for fileobj in self.read_file_headers(cab):
-            self.rootdir.add_file(fileobj.name.lower(), fileobj)
+            if self.is_file(fileobj.path) or self.is_dir(fileobj.path):
+                raise ValueError(
+                    "CABFile has multiple entries with the same path: " +
+                    b'/'.join(fileobj.path).decode())
+
+            def open_r(fileobj=fileobj):
+                """ Returns a opened ('rb') file-like object for fileobj. """
+                return StreamFragment(
+                    fileobj.folder.plain_stream,
+                    fileobj.pos,
+                    fileobj.size
+                )
+
+            self.add_fileentry(fileobj.path, (
+                open_r,
+                None,
+                lambda fileobj=fileobj: fileobj.size,
+                lambda fileobj=fileobj: fileobj.timestamp
+            ))
+
+    def __repr__(self):
+        return "CABFile"
 
     def read_folder_headers(self, cab):
         """
@@ -337,14 +361,15 @@ class CABFile(ReadOnlyFileSystemLikeObject):
             fileobj = CFFile.read(cab)
 
             # read filename
-            fileobj.name = read_nullterminated_string(cab)
+            path = read_nullterminated_string(cab)
 
             # decode filename according to flags
             if fileobj.attribs.name_is_utf:
-                fileobj.name = fileobj.name.decode('utf-8')
+                path = path.decode('utf-8')
             else:
-                fileobj.name = fileobj.name.decode('iso-8859-1')
-            fileobj.name = fileobj.name.replace('\\', '/')
+                path = path.decode('iso-8859-1')
+
+            fileobj.path = path.replace('\\', '/').lower().encode().split(b'/')
 
             # interpret the special values of folderid
             if fileobj.folderid == 0xFFFD:
@@ -366,6 +391,7 @@ class CABFile(ReadOnlyFileSystemLikeObject):
             month = (fileobj.date >> 5) & 0x000f
             day = (fileobj.date >> 0) & 0x001f
 
+            # it's sort of sad that there's no bit for AM/PM.
             hour = (fileobj.time >> 11)
             minute = (fileobj.time >> 5) & 0x003f
             sec = (fileobj.time << 1) & 0x003f
@@ -374,85 +400,6 @@ class CABFile(ReadOnlyFileSystemLikeObject):
             fileobj.timestamp = timegm((year, month, day, hour, minute, sec))
 
             yield fileobj
-
-    def _listfiles_impl(self, pathcomponents):
-        cabpath = '/'.join(pathcomponents).lower()
-        try:
-            dirobj = self.rootdir.get_directory(cabpath)
-        except KeyError:
-            raise FileNotFoundError("No such directory: " + cabpath) from None
-
-        return dirobj.files
-
-    def _listdirs_impl(self, pathcomponents):
-        cabpath = '/'.join(pathcomponents).lower()
-        try:
-            dirobj = self.rootdir.get_directory(cabpath)
-        except KeyError:
-            raise FileNotFoundError("No such directory: " + cabpath) from None
-
-        for dirname in dirobj.subdirs:
-            if dirname not in {'.', ''}:
-                yield dirname
-
-    def _isfile_impl(self, pathcomponents):
-        cabpath = '/'.join(pathcomponents).lower()
-        try:
-            self.rootdir.get_file(cabpath)
-            return True
-        except KeyError:
-            return False
-
-    def _isdir_impl(self, pathcomponents):
-        cabpath = '/'.join(pathcomponents).lower()
-        try:
-            self.rootdir.get_directory(cabpath)
-            return True
-        except KeyError:
-            return False
-
-    def _open_impl(self, pathcomponents, mode):
-        cabpath = '/'.join(pathcomponents).lower()
-        if mode != 'rb':
-            raise UnsupportedOperation("open mode for files in CAB file "
-                                       "most be 'rb'")
-
-        try:
-            fileobj = self.rootdir.get_file(cabpath)
-        except KeyError:
-            raise FileNotFoundError("No such file: " + cabpath) from None
-
-        return StreamFragment(fileobj.folder.plain_stream,
-                              fileobj.pos,
-                              fileobj.size)
-
-    def _mtime_impl(self, pathcomponents):
-        cabpath = '/'.join(pathcomponents).lower()
-        try:
-            fileobj = self.rootdir.get_file(cabpath)
-        except KeyError:
-            if self.isdir(cabpath):
-                raise UnsupportedOperation(
-                    "CABFile implements mtime only for files") from None
-            else:
-                raise FileNotFoundError(
-                    "CABFile has no file " + cabpath) from None
-
-        return fileobj.timestamp
-
-    def _filesize_impl(self, pathcomponents):
-        cabpath = '/'.join(pathcomponents).lower()
-        try:
-            fileobj = self.rootdir.get_file(cabpath)
-        except KeyError:
-            raise FileNotFoundError("No such file: " + cabpath) from None
-
-        return fileobj.size
-
-    def _watch_impl(self, pathcomponents, callback):
-        # no actual functionality
-        del self, pathcomponents, callback  # unused
-        return
 
 
 class CABFolderStream(PosSavingReadOnlyFileLikeObject):
@@ -603,69 +550,3 @@ class CABFolderStream(PosSavingReadOnlyFileLikeObject):
         del self.fileobj
         del self.blockoffsets
         del self.streamindex
-
-
-class CABDirectory:
-    """
-    Stores the files and subdirs for one cab directory.
-    """
-    def __init__(self):
-        self.files = OrderedDict()
-        self.subdirs = OrderedDict()
-        self.subdirs[''] = self
-        self.subdirs['.'] = self
-
-    def add_file(self, filename, fileobj):
-        """
-        Adds a file object with a given filename.
-
-        Raises an Exception if the file already exists.
-        """
-        if '/' not in filename:
-            # the file is directly part of this drectory;
-            # there is no subdir.
-            if filename in self.files:
-                raise Exception("CAB file contains multiple files with the"
-                                "same name " + filename)
-
-            self.files[filename] = fileobj
-            return
-
-        subdir, filename = filename.split('/', 1)
-
-        try:
-            subdirobj = self.subdirs[subdir]
-        except KeyError:
-            # the subdir object doesn't exist yet.
-            subdirobj = CABDirectory()
-            self.subdirs[subdir] = subdirobj
-
-        subdirobj.add_file(filename, fileobj)
-
-    def get_file(self, filename):
-        """
-        Returns the file object for a given filename.
-
-        Raises KeyError if the file doesn't exist.
-        """
-        if '/' not in filename:
-            # the file is directly part of this directory;
-            # there is no subdir.
-            return self.files[filename]
-
-        subdir, filename = filename.split('/', 1)
-
-        return self.subdirs[subdir].get_file(filename)
-
-    def get_directory(self, path):
-        """
-        Returns the directory object for a given path.
-
-        Raises KeyError if the path doesn't exist.
-        """
-        dirobj = self
-
-        for subdirname in path.lower().split('/'):
-            dirobj = dirobj.subdirs[subdirname]
-
-        return dirobj

@@ -22,7 +22,7 @@ void DataManager::initialize(AssetManager *am) {
 	auto gamedata_load_function = [this]() -> std::vector<gamedata::empiresdat> {
 		log::log(MSG(info) << "loading game specification files... stand by, will be faster soon...");
 		util::Dir gamedata_dir = this->assetmanager->get_data_dir()->append("converted/gamedata");
-		return std::move(util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx"));
+		return util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
 	};
 
 	// add job

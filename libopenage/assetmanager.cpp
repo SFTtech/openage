@@ -9,8 +9,11 @@
 #endif
 
 #include "util/compiler.h"
+#include "util/file.h"
 #include "error/error.h"
 #include "log/log.h"
+
+#include "texture.h"
 
 namespace openage {
 

@@ -19,14 +19,40 @@ namespace util {
 
 
 /**
- * A wrapper for openage.util.fslikeobject.FileSystemLikeObject.
- *
- * Exposes the most important methods, including open(), which
- * returns a stream or FILE-like object.
- *
- * Rather lightweight, as it merely contains a PyObjectRef.
+ * Analogous to util.fslike.path.Path.
+ * For use as constructor argument by RFile and WFile.
  */
-class FileSystemLikeObject : public pyinterface::PyObjectRef {};
+class Path {
+public:
+    Path(pyinterface::PyObjectRef fs, std::vector<std::string> parts);
+
+    std::shared_ptr<pyinterface::PyObjectRef> fs;
+    std::vector<std::string> parts;
+};
+
+
+/**
+ * Wraps a Python file-like object ('rb').
+ */
+class RFile : public std::istream {
+public:
+    RFile(Path &path);
+
+private:
+    pyinterface::PyObjectRef obj;
+};
+
+
+/**
+ * Wraps a Python file-like object ('wb').
+ */
+class WFile : public std::ostream {
+public:
+    WFile(Path &path);
+
+private:
+    pyinterface::PyObjectRef obj;
+};
 
 
 }} // openage::util

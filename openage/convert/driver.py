@@ -28,10 +28,10 @@ def get_string_resources(srcdir):
 
     # AoK:TC uses .DLL PE files for its string resources,
     # HD uses plaintext files
-    if srcdir.isfile("language.dll"):
+    if srcdir["language.dll"].is_file():
         from .pefile import PEFile
         for name in ["language.dll", "language_x1.dll", "language_x1_p1.dll"]:
-            pefile = PEFile(srcdir.open(name, 'rb'))
+            pefile = PEFile(srcdir[name].open('rb'))
             stringres.fill_from(pefile.resources().strings)
     else:
         count = 0
@@ -62,16 +62,17 @@ def get_blendomatic_data(srcdir):
     # blendomatic_x1.dat; their new blendomatic.dat has a new, unsupported
     # format.
     try:
-        blendomatic_dat = srcdir.open("data/blendomatic_x1.dat", 'rb')
+        blendomatic_dat = srcdir["data/blendomatic_x1.dat"].open('rb')
     except FileNotFoundError:
-        blendomatic_dat = srcdir.open("data/blendomatic.dat", 'rb')
+        blendomatic_dat = srcdir["data/blendomatic.dat"].open('rb')
 
-    return Blendomatic(blendomatic_dat)
+    with blendomatic_dat:
+        return Blendomatic(blendomatic_dat)
 
 
 def get_gamespec(srcdir):
     """ reads empires.dat """
-    with srcdir.open("data/empires2_x1_p1.dat", "rb") as empiresdat_file:
+    with srcdir["data/empires2_x1_p1.dat"].open('rb') as empiresdat_file:
         gamespec = load_gamespec(
             empiresdat_file,
             os.path.join(gettempdir(), "empires2_x1_p1.dat.pickle"))
@@ -101,7 +102,7 @@ def convert(args):
     # clean args (set by convert_metadata for convert_media)
     del args.palette
 
-    args.targetdir.open('converted_by', 'w').write(openage_version)
+    args.targetdir['converted_by'].open('w').write(openage_version)
     info("asset conversion complete; converted by: " + openage_version)
 
 
@@ -113,7 +114,7 @@ def convert_metadata(args):
 
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
-    palette = ColorTable(args.srcdir.open("interface/50500.bin", "rb").read())
+    palette = ColorTable(args.srcdir["interface/50500.bin"].open("rb").read())
     # store for use by convert_media
     args.palette = palette
 
@@ -160,10 +161,11 @@ def convert_media(args):
 
     files_to_convert = []
     for dirname in ['sounds', 'graphics', 'terrain']:
-        for filename in args.srcdir.listfiles(dirname):
-            if args.flag("no_sounds") and filename.endswith('.wav'):
+        for filepath in args.srcdir[dirname].iterdir():
+            if args.flag("no_sounds") and filepath.suffix == '.wav':
                 continue
-            files_to_convert.append(dirname + '/' + filename)
+
+            files_to_convert.append(filepath)
 
     yield len(files_to_convert)
 
@@ -173,26 +175,27 @@ def convert_media(args):
 
         from ..util.threading import concurrent_chain
         yield from concurrent_chain(
-            (convert_mediafile(fname, args) for fname in files_to_convert),
+            (convert_mediafile(fpath, args) for fpath in files_to_convert),
             jobs)
 
     # clean args
     del args.slp_converter
 
 
-def convert_mediafile(filename, args):
+def convert_mediafile(filepath, args):
     """
     Converts a single media file, according to the supplied arguments.
     Designed to be run in a thread via concurrent_chain.
 
     May write multiple output files (e.g. in the case of textures: csv, png).
 
-    Args shall contain srcdir, targetdir and palette.
+    Args shall contain srcdir, targetdir, and slp_converter.
     """
     # progress message
+    filename = b'/'.join(filepath.parts).decode()
     yield filename
 
-    with args.srcdir.open(filename, 'rb') as infile:
+    with filepath.open('rb') as infile:
         indata = infile.read()
 
     if filename.endswith('.slp'):
@@ -200,7 +203,7 @@ def convert_mediafile(filename, args):
         texture = args.slp_converter.convert(indata)
 
         # the hotspots of terrain textures must be fixed
-        if filename.startswith('terrain.drs'):
+        if filename.startswith('terrain/'):
             for entry in texture.image_metadata:
                 entry["cx"] = TILE_HALFSIZE["x"]
                 entry["cy"] = TILE_HALFSIZE["y"]
@@ -217,10 +220,10 @@ def convert_mediafile(filename, args):
         if opusenc.returncode != 0:
             raise Exception("opusenc failed")
 
-        with args.targetdir.open(filename + ".opus", "wb") as outfile:
+        with args.targetdir[filename + ".opus"].open("wb") as outfile:
             outfile.write(outdata)
 
     else:
         # simply copy the file over.
-        with args.targetdir.open(filename, "wb") as outfile:
+        with args.targetdir[filename].open("wb") as outfile:
             outfile.write(indata)

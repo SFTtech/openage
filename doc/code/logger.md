@@ -31,7 +31,7 @@ The `MSG` macro collects all sorts of information, including `__FILE__` and `__L
  - "c++-style" with `operator <<` ("iostreams")
  - "c-style" with `.fmt()` ("printf")
 
-All input is appended to the internal `log::message` object, which can be obtained by auto-conversion to `log::message`.
+All input is appended to the internal `log::message` object. The `MessageBuilder` is auto-converted to `log::message` if needed.
 
 #### message
 

@@ -9,12 +9,18 @@ def read_guaranteed(fileobj, size):
     As regular fileobj.read(size), but raises EOFError if fewer bytes
     than requested are returned.
     """
-    data = fileobj.read(size)
+    remaining = size
+    result = []
 
-    if len(data) != size:
-        raise EOFError()
+    while remaining:
+        data = fileobj.read(remaining)
+        if not data:
+            raise EOFError()
 
-    return data
+        remaining -= len(data)
+        result.append(data)
+
+    return b"".join(result)
 
 
 def read_nullterminated_string(fileobj, maxlen=255):
@@ -24,11 +30,7 @@ def read_nullterminated_string(fileobj, maxlen=255):
     result = bytearray()
 
     while True:
-        try:
-            char = read_guaranteed(fileobj, 1)[0]
-        except IndexError:
-            raise EOFError("EOF while reading null-terminated string: " +
-                           repr(b"".join(result))) from None
+        char = ord(read_guaranteed(fileobj, 1))
 
         if char == 0:
             return bytes(result)

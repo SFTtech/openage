@@ -10,7 +10,7 @@ namespace util {
 
 CachableOSStream::CachableOSStream()
 	:
-	flag{ATOMIC_FLAG_INIT} {}
+	flag(ATOMIC_FLAG_INIT) {}
 
 
 CachableOSStream::CachableOSStream(std::string &output)

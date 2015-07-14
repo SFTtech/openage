@@ -63,6 +63,8 @@ class Namespace:
 def generate_testlist(projectdir):
     """
     Generates the test/demo method symbol lookup file from tests_cpp.
+
+    projectdir is a util.fslike.path.Path.
     """
     root_namespace = Namespace()
 
@@ -76,11 +78,13 @@ def generate_testlist(projectdir):
         "{\"%s\", ::%s}" % (functionname, functionname)
         for functionname in root_namespace.get_functionnames()]
 
-    with projectdir.open("libopenage/testing/testlist.cpp.template") as tmpl:
+    tmpl_path = projectdir.joinpath("libopenage/testing/testlist.cpp.template")
+    with tmpl_path.open() as tmpl:
         content = tmpl.read()
 
     content = content.replace('FUNCTION_PROTOTYPES', "".join(func_prototypes))
     content = content.replace('METHOD_MAPPINGS', ",\n\t".join(method_mappings))
 
-    with projectdir.open("libopenage/testing/testlist.gen.cpp", "w") as gen:
+    gen_path = projectdir.joinpath("libopenage/testing/testlist.gen.cpp")
+    with gen_path.open("w") as gen:
         gen.write(content)

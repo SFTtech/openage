@@ -63,8 +63,8 @@ function(python_init)
 
 	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}" PARENT_SCOPE)
 	set(PYEXT_PYLIB "${PYTHON_LIBRARY}" PARENT_SCOPE)
-	set(PYEXT_SUFFIX "${PYEXT_SUFFIX}" PARENT_SCOPE)
 	set(PYEXT_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}" PARENT_SCOPE)
+	set(PYEXT_SUFFIX "${PYEXT_SUFFIX}" PARENT_SCOPE)
 
 	if(NOT CMAKE_PY_INSTALL_PREFIX)
 		py_exec("import site; print(site.getsitepackages()[0])" PREFIX)
@@ -142,7 +142,7 @@ function(add_cython_modules)
 
 				set_target_properties("${TARGETNAME}" PROPERTIES
 					PREFIX ""
-					SUFFIX ".cpython-34m.so"
+					SUFFIX "${PYEXT_SUFFIX}"
 				)
 			endif()
 
@@ -166,6 +166,7 @@ function(add_cython_modules)
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [standalone]")
 				set(STANDALONE_NEXT FALSE)
 			else()
+				set_target_properties("${TARGETNAME}" PROPERTIES CMAKE_LINK_DEPENDS_NO_SHARED 1)
 				target_link_libraries("${TARGETNAME}" "${PYEXT_LINK_LIBRARY}")
 			endif()
 
@@ -314,7 +315,7 @@ function(python_finalize)
 	file(WRITE "${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
 	set(BUILDPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
 	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
-		COMMAND "${PYTHON}" -m compileall openage
+		COMMAND "${PYTHON}" -m buildsystem.compileall openage
 		COMMAND "${CMAKE_COMMAND}" -E touch "${COMPILEPY_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIRECTORY}"
 		DEPENDS ${py_files}

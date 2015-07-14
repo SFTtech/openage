@@ -22,7 +22,7 @@ static auto opus_deleter = [](OggOpusFile *op_file) {
 OpusDynamicLoader::OpusDynamicLoader(const std::string &path)
 	:
 	DynamicLoader{path},
-	source{std::move(this->open_opus_file())} {
+	source{this->open_opus_file()} {
 	// read channels from the opus file
 	channels = op_channel_count(source.get(), -1);
 
@@ -99,7 +99,7 @@ opus_file_t OpusDynamicLoader::open_opus_file() {
 	if (op_err != 0) {
 		throw Error{MSG(err) << "Could not open: " << path.c_str()};
 	}
-	return std::move(op_file);
+	return op_file;
 }
 
 }} // namespace openage::audio

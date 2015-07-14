@@ -1,5 +1,7 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
+#include "game_save.h"
+
 #include <fstream>
 #include <vector>
 
@@ -7,7 +9,6 @@
 #include "unit/unit.h"
 #include "unit/unit_type.h"
 #include "game_main.h"
-#include "game_save.h"
 
 namespace openage {
 namespace gameio {

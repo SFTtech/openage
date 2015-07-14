@@ -62,8 +62,10 @@ Rebasing - What the hell is it, and (why) do I need it?
 git checkout master
 git pull
 git checkout my_feature_branch
-git checkout -b my_feature_branch-backup       # you never know, you know?
+# make backup (you never know, you know?)
+git checkout -b my_feature_branch-backup
 get checkout my_feature_branch
+# rebase
 git rebase master
 ```
 

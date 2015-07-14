@@ -561,6 +561,7 @@ bool GameMain::on_draw() {
 
 	if (not this->datamanager.load_complete()) {
 		// Show that gamedata is still loading
+		glColor3f(1.0, 1.0, 1.0);
 		engine.render_text({0, 0}, 20, "Loading gamedata...");
 	}
 
@@ -578,6 +579,7 @@ bool GameMain::on_draw() {
 		}
 	}
 	mode_str += " (player " + std::to_string(engine.current_player) + ")";
+	glColor3f(1.0, 1.0, 1.0);
 	engine.render_text({x, y}, 20, "%s", mode_str.c_str());
 
 	if (this->building_placement) {

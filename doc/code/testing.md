@@ -37,7 +37,7 @@ The header `libopenage/testing/testing.h` provides `TestError` and some convenie
  - `TESTFAIL`
     throws `TestError`
  - `TESTFAILMSG("a" << "b")`
-    throws `TestError("AB")`
+    throws `TestError("ab")`
  - `TESTEQUALS(left, right)`
     evaluates `left` and `right`
     throws `TestError(left)` if `left != right`
@@ -95,9 +95,9 @@ Example doctest for a function:
         """
         High-performance, state-of-the-art primality tester.
 
-        > is_prime(23)
+        >>> is_prime(23)
         True
-        > is_prime(42)
+        >>> is_prime(42)
         False
         """
         return not any(p % x == 0 for x in range(2, p))
@@ -121,9 +121,9 @@ Example demo:
     def prime_demo(argv):
         import argparse
         cli = argparse.ArgumentParser()
-        cli.add_argument(max_number, type=int)
+        cli.add_argument('max_number', type=int)
         args = cli.parse_args(argv)
 
-        for p in range(2, max_number):
+        for p in range(2, args.max_number):
             if is_prime(p):
                 print(p)

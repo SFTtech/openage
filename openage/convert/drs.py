@@ -7,13 +7,10 @@ Note that .DRS archives can't store file names; they just store the file
 extension, and a file number.
 """
 
-from io import UnsupportedOperation
-from collections import OrderedDict
-
 from ..log import spam, dbg
 from ..util.strings import decode_until_null
 from ..util.struct import NamedStruct
-from ..util.fslikeabstract import ReadOnlyFileSystemLikeObject
+from ..util.fslike.filecollection import FileCollection
 from ..util.filelike import StreamFragment
 
 # version of the drs files, hardcoded for now
@@ -70,11 +67,13 @@ class DRSFileInfo(NamedStruct):
     file_size        = "i"
 
 
-class DRS(ReadOnlyFileSystemLikeObject):
+class DRS(FileCollection):
     """
     represents a file archive in DRS format.
     """
     def __init__(self, fileobj):
+        super().__init__()
+
         # queried from the outside
         self.fileobj = fileobj
 
@@ -100,9 +99,15 @@ class DRS(ReadOnlyFileSystemLikeObject):
             dbg(str(table_header))
             self.tables.append(table_header)
 
-        self.files = OrderedDict()
         for filename, offset, size in self.read_tables():
-            self.files[filename] = offset, size
+            def open_r(offset=offset, size=size):
+                """ Returns a opened ('rb') file-like object for fileobj. """
+                return StreamFragment(self.fileobj, offset, size)
+
+            self.add_fileentry(
+                [filename.encode()],
+                (open_r, None, lambda size=size: size, None)
+            )
 
     def read_tables(self):
         """
@@ -120,60 +125,3 @@ class DRS(ReadOnlyFileSystemLikeObject):
                 spam(file_name + ": " + str(fileinfo))
 
                 yield file_name, fileinfo.file_data_offset, fileinfo.file_size
-
-    def get_file_info(self, pathcomponents):
-        """
-        For a given path, returns the file metadata from self.files.
-
-        Raises FileNotFoundError, or returns a tuple of offset, size.
-        """
-        if len(pathcomponents) != 1:
-            raise FileNotFoundError('/'.join(pathcomponents))
-
-        filename = pathcomponents[0].lower()
-
-        try:
-            return self.files[filename]
-        except KeyError:
-            raise FileNotFoundError(filename) from None
-
-    def _listfiles_impl(self, pathcomponents):
-        if pathcomponents != []:
-            raise FileNotFoundError("DRS file has no subdirectories")
-
-        return self.files
-
-    def _listdirs_impl(self, pathcomponents):
-        if pathcomponents != []:
-            raise FileNotFoundError("DRS file has no subdirectories")
-
-        return []
-
-    def _isfile_impl(self, pathcomponents):
-        if len(pathcomponents) != 1:
-            return False
-
-        return pathcomponents[0].lower() in self.files
-
-    def _isdir_impl(self, pathcomponents):
-        return len(pathcomponents) == 0
-
-    def _open_impl(self, pathcomponents, mode):
-        if mode != 'rb':
-            raise UnsupportedOperation(
-                "open mode for files in DRS archive must be 'rb'")
-
-        offset, size = self.get_file_info(pathcomponents)
-        return StreamFragment(self.fileobj, offset, size)
-
-    def _mtime_impl(self, pathcomponents):
-        raise UnsupportedOperation("mtime not known in DRS archives")
-
-    def _filesize_impl(self, pathcomponents):
-        _, size = self.get_file_info(pathcomponents)
-        return size
-
-    def _watch_impl(self, pathcomponents, callback):
-        # no actual functionality
-        del self, pathcomponents, callback  # unused
-        return

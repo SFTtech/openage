@@ -5,47 +5,45 @@
 import os
 
 from ..log import info
-from ..util.fslike import (
-    CaseIgnoringReadOnlyDirectory,
-    FSLikeObjectWrapper,
-    SubDirectory
+from ..util.fslike.wrapper import (
+    Wrapper as FSLikeObjWrapper,
+    Synchronizer as FSLikeObjSynchronizer
 )
-from ..util.fslike_synchronized import Synchronizer
+from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.strings import format_progress
 
 
-class DirectoryCreator(FSLikeObjectWrapper):
+class DirectoryCreator(FSLikeObjWrapper):
     """
     Wrapper around a filesystem-like object that automatically creates
     directories when attempting to create a file.
     """
-    def _open_impl(self, pathcomponents, mode):
-        if 'w' in mode or 'x' in mode or '+' in mode:
-            self.mkdirs(pathcomponents[:-1])
-
-        return self.wrapped.open(pathcomponents, mode)
+    def open_w(self, parts):
+        self.mkdirs(parts[:-1])
+        return super().open_w(parts)
 
     def __repr__(self):
-        return "DirectoryCreator({})".format(self.wrapped)
+        return "DirectoryCreator({})".format(self.obj)
 
 
 def mount_drs_archives(srcdir):
     """
-    Returns a Union where srcdir is mounted at /, and all the DRS files
+    Returns a Union path where srcdir is mounted at /, and all the DRS files
     are mounted in subfolders.
     """
-    from ..util.fslike import Union
+    from ..util.fslike.union import Union
     from .drs import DRS
 
-    result = Union()
-    result.mount(srcdir, '.')
+    result = Union().root
+    result.mount(srcdir)
 
     def mount_drs(filename, target, ignore_nonexistant=False):
         """ Mounts the DRS file from srcdir's filename at result's target. """
-        if ignore_nonexistant and not srcdir.isfile(filename):
+        drspath = srcdir.joinpath(filename)
+        if ignore_nonexistant and not drspath.is_file():
             return
 
-        result.mount(DRS(srcdir.open(filename, 'rb')), target)
+        result.joinpath(target).mount(DRS(drspath.open('rb')).root)
 
     mount_drs("data/graphics.drs", "graphics")
     mount_drs("data/interfac.drs", "interface")
@@ -83,16 +81,19 @@ def convert_assets(assets, args, srcdir=None):
         srcdir = acquire_conversion_source_dir()
 
     testfile = 'data/empires2_x1_p1.dat'
-    if not srcdir.isfile(testfile):
+    if not srcdir.joinpath(testfile).is_file():
         print("file not found: " + testfile)
         return False
 
     srcdir = mount_drs_archives(srcdir)
-    targetdir = DirectoryCreator(SubDirectory(assets, "converted", True))
+
+    converted_path = assets.joinpath("converted")
+    converted_path.mkdirs()
+    targetdir = DirectoryCreator(converted_path).root
 
     # make srcdir and targetdir safe for threaded conversion
-    args.srcdir = Synchronizer(srcdir)
-    args.targetdir = Synchronizer(targetdir)
+    args.srcdir = FSLikeObjSynchronizer(srcdir).root
+    args.targetdir = FSLikeObjSynchronizer(targetdir).root
 
     def flag(name):
         """
@@ -129,6 +130,8 @@ def convert_assets(assets, args, srcdir=None):
     del args.srcdir
     del args.targetdir
 
+    return True
+
 
 def acquire_conversion_source_dir():
     """
@@ -155,7 +158,7 @@ def acquire_conversion_source_dir():
             print("")
             exit(0)
 
-    return CaseIgnoringReadOnlyDirectory(sourcedir)
+    return CaseIgnoringDirectory(sourcedir).root
 
 
 def conversion_required(asset_dir, args):
@@ -165,19 +168,36 @@ def conversion_required(asset_dir, args):
     Sets options in args according to what sorts of conversion are required.
     """
     try:
-        converted_by = asset_dir.open("converted/converted_by").read().strip()
-
-        # TODO this is the place where we can do sophisticated checks whether
-        #      the assets are outdated.
-        if converted_by:
-            return False
-        else:
-            args.no_media = False
-            return True
-
+        with asset_dir.joinpath("converted/converted_by").open() as fileobj:
+            converted_by = fileobj.read().strip()
     except FileNotFoundError:
         # assets have not been converted yet
         return True
+
+    if not converted_by:
+        return True
+
+    # this is the place where we can do sophisticated checks whether
+    # the assets are outdated, and select which parts require reconversion.
+    try:
+        version, commits, commitid = converted_by.split('-')
+        commits = int(commits)
+    except ValueError:
+        version, commits, commitid = converted_by, 0, "<unknown>"
+
+    try:
+        major, minor, patch = [int(i) for i in version[1:].split('.')]
+    except ValueError:
+        major, minor, patch = 0, 0, 0
+
+    if (major, minor, patch, commits) < (0, 2, 3, 297):
+        if commits > 296:
+            args.no_media = True
+        if commits > 294:
+            args.no_sounds = True
+        return True
+
+    del commitid  # unused
 
 
 def init_subparser(cli):
@@ -223,7 +243,7 @@ def main(args, error):
 
     # conversion source
     if args.source_dir is not None:
-        srcdir = CaseIgnoringReadOnlyDirectory(args.source_dir)
+        srcdir = CaseIgnoringDirectory(args.source_dir).root
     else:
         srcdir = None
 

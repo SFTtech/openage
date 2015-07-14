@@ -28,7 +28,7 @@ std::unique_ptr<InMemoryLoader> InMemoryLoader::create(const std::string &path,
 		throw Error{MSG(err) << "Not supported for format: " << format};
 	}
 
-	return std::move(loader);
+	return loader;
 }
 
 }} // namespace openage::audio
