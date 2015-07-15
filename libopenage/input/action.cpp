@@ -7,10 +7,11 @@
 namespace openage {
 namespace input {
 
-action_arg_t::action_arg_t(Event e, coord::window m)
+action_arg_t::action_arg_t(Event e, coord::window m, coord::window_delta mm)
 	:
 	e(e),
-	mouse(m) {
+	mouse(m),
+	motion(mm) {
 }
 
 Action::Action(const action_func_t f)

@@ -101,11 +101,15 @@ class Event {
 public:
 	Event(event_class cl, code_t code, modset_t mod);
 
+	/**
+	 * logable debug info
+	 */
+	std::string info() const;
+
 	bool operator ==(const Event &other) const;
 
 	const class_code_t cc;
 	const modset_t mod;
-
 };
 
 struct event_hash {
@@ -121,6 +125,7 @@ modset_t sdl_mod(SDL_Keymod mod);
 Event sdl_key(SDL_Keycode code);
 Event sdl_key(SDL_Keycode code, SDL_Keymod mod);
 Event sdl_mouse(int button);
+Event sdl_wheel(int direction);
 
 
 } //namespace input

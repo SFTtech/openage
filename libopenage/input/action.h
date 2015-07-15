@@ -11,7 +11,11 @@
 namespace openage {
 namespace input {
 
-// TODO: use as hint for action arg
+/**
+ * list of available action labels
+ * more labels will be added in future,
+ * maybe it would be better to use std::string
+ */
 enum class action_t {
 	UNDEFINED,
 	START_GAME,
@@ -66,26 +70,38 @@ struct action_hash {
 // std::make_pair(action_t::BUILD, 123)
 using action_id_t = action_t; //std::pair<action_t, int>;
 
-// TODO use std::vector<action_id_t> to global bindings
-// these binds get set globally in input manager
+
 struct action_arg_t {
 public:
-	action_arg_t(Event e, coord::window m);
+	action_arg_t(Event e, coord::window m, coord::window_delta mm);
 
 	// Triggering event
 	const Event e;
 
 	// Mouse position
 	const coord::window mouse;
+	const coord::window_delta motion;
 
 	// hints for arg reciever
+	// these get set globally in input manager
 	std::vector<action_id_t> hints;
 };
 
+/**
+ * complete the effect of an action
+ */
 using action_func_t = std::function<void(const action_arg_t &)>;
+
+/**
+ * for recievers of sets of events a bool is returned
+ * to indicate if the event was used
+ */
+using action_check_t = std::function<bool(const action_arg_t &)>;
+
 
 // TODO string description
 // This is a base class for event_class, event, action_t mapped to a function
+// This could be constructed with a context and bind itself using the required types
 class Action {
 public:
 	Action(const action_func_t f);

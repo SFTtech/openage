@@ -82,10 +82,13 @@ bool UnitSelection::on_drawhud() {
 void UnitSelection::drag_begin(coord::camgame pos) {
 	this->start = pos;
 	this->end = pos;
-	drag_active = true;
+	this->drag_active = true;
 }
 
 void UnitSelection::drag_update(coord::camgame pos) {
+	if (!this->drag_active) {
+		this->drag_begin(pos);
+	}
 	this->end = pos;
 }
 
@@ -95,8 +98,8 @@ void UnitSelection::drag_release(Terrain *terrain, bool append) {
 	}
 	else {
 		this->select_space(terrain, this->start, this->end, append);
-		drag_active = false;
 	}
+	this->drag_active = false;
 }
 
 void UnitSelection::clear() {

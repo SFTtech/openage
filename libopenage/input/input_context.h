@@ -41,7 +41,7 @@ public:
 	 * bind all events of a specific class
 	 * this is the lowest matching priority
 	 */
-	void bind(event_class ec, const action_func_t act);
+	void bind(event_class ec, const action_check_t act);
 
 	/**
 	 * lookup an action. If it is bound, execute it.
@@ -65,7 +65,7 @@ private:
 	 * event to action map
 	 * event_class as key, to ensure all events can be mapped
 	 */
-	std::unordered_map<event_class, action_func_t, event_class_hash> by_class;
+	std::unordered_map<event_class, action_check_t, event_class_hash> by_class;
 
 };
 
