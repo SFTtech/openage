@@ -175,6 +175,58 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	if (devices.empty()) {
 		throw Error{MSG(err) << "No audio devices found"};
 	}
+
+	// initialize engine related global keybinds
+	auto &global_input_context = this->get_input_manager().get_global_context();
+	global_input_context.bind(input::action_t::STOP_GAME, [this](const input::action_arg_t &) {
+		this->stop();
+	});
+	global_input_context.bind(input::action_t::TOGGLE_HUD, [this](const input::action_arg_t &) {
+		this->drawing_huds = !this->drawing_huds;
+	});
+	global_input_context.bind(input::action_t::SCREENSHOT, [this](const input::action_arg_t &) {
+		this->get_screenshot_manager().save_screenshot();
+	});
+	global_input_context.bind(input::action_t::TOGGLE_DEBUG_OVERLAY, [this](const input::action_arg_t &) {
+		this->drawing_debug_overlay = !this->drawing_debug_overlay;
+	});
+	global_input_context.bind(input::action_t::QUICK_SAVE, [this](const input::action_arg_t &) {
+		gameio::save(this->get_game(), "default_save.txt");
+	});
+	global_input_context.bind(input::action_t::QUICK_LOAD, [this](const input::action_arg_t &) {
+		gameio::load(this->get_game(), "default_save.txt");
+	});
+	global_input_context.bind(input::action_t::TOGGLE_PROFILER, [this](const input::action_arg_t &) {
+		if (this->external_profiler.currently_profiling) {
+			this->external_profiler.stop();
+			this->external_profiler.show_results();
+		} else {
+			this->external_profiler.start();
+		}
+	});
+	global_input_context.bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
+		if (arg.e.cc.has_class(input::event_class::MOUSE_MOTION) &&
+			this->get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 2)) {
+			this->move_phys_camera(arg.motion.x, arg.motion.y);
+			return true;
+		}
+		return false;
+	});
+
+	// Switching between players with the 1-8 keys
+	auto bind_player_switch = [this, &global_input_context](input::action_t action, int player) {
+		global_input_context.bind(action, [this, player](const input::action_arg_t &) {
+			this->current_player = player;
+		});
+	};
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_1, 1);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_2, 2);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_3, 3);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_4, 4);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_5, 5);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_6, 6);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_7, 7);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_8, 8);
 }
 
 Engine::~Engine() {

@@ -12,7 +12,7 @@ namespace input {
 
 InputManager::InputManager()
 	: // TODO get this from a file instead of hardcoding it here
-	keys {{ sdl_key(SDLK_o), action_t::START_GAME },
+	keys {{ sdl_key(SDLK_RETURN), action_t::START_GAME },
 	      { sdl_key(SDLK_ESCAPE), action_t::STOP_GAME },
 	      { sdl_key(SDLK_F1), action_t::TOGGLE_HUD },
 	      { sdl_key(SDLK_F2), action_t::SCREENSHOT },
@@ -49,11 +49,11 @@ InputManager::InputManager()
 	      { sdl_key(SDLK_6), action_t::SWITCH_TO_PLAYER_6},
 	      { sdl_key(SDLK_7), action_t::SWITCH_TO_PLAYER_7},
 	      { sdl_key(SDLK_8), action_t::SWITCH_TO_PLAYER_8},
-	      { sdl_mouse(0), action_t::PAINT_TERRAIN},
-	      { sdl_mouse(0), action_t::SELECT},
-	      { sdl_mouse(0), action_t::DESELECT},
-	      { sdl_mouse(1), action_t::FORWARD},
-	      { sdl_mouse(-1), action_t::BACK}} {
+	      { sdl_mouse(1), action_t::PAINT_TERRAIN},
+	      { sdl_mouse(1), action_t::SELECT},
+	      { sdl_mouse(3), action_t::DESELECT},
+	      { sdl_wheel(1), action_t::FORWARD},
+	      { sdl_wheel(-1), action_t::BACK}} {
 }
 
 
@@ -91,11 +91,10 @@ void InputManager::remove_context() {
 	}
 }
 
-void InputManager::trigger(const Event &e) {
-	log::log(MSG(dbg) << "event");
 
+void InputManager::trigger(const Event &e) {
 	// arg passed to recievers
-	action_arg_t arg(e, this->mouse_position);
+	action_arg_t arg(e, this->mouse_position, this->mouse_motion);
 
 	// Check whether key combination is bound to an action
 	auto range = keys.equal_range(e);
@@ -128,11 +127,34 @@ void InputManager::set_state(const Event &ev, bool is_down) {
 	}
 }
 
+void InputManager::set_mouse(int x, int y) {
+	coord::window last_position = this->mouse_position;
+	this->mouse_position = coord::window {(coord::pixel_t) x, (coord::pixel_t) y};
+	this->mouse_motion = this->mouse_position - last_position;
+}
 
-// not that the function stores a unknown/new keycode
-// as 'not pressed' when it was requested
-bool InputManager::is_down(SDL_Keycode k) {
-	auto it = this->states.find(sdl_key(k).cc);
+void InputManager::set_motion(int x, int y) {
+	this->mouse_motion.x = x;
+	this->mouse_motion.y = y;
+}
+
+void InputManager::set_relative(bool mode) {
+	if (this->relative_mode == mode) {
+		return;
+	}
+
+	// change mode
+	this->relative_mode = mode;
+	if (this->relative_mode) {
+		SDL_SetRelativeMouseMode(SDL_TRUE);
+	}
+	else {
+		SDL_SetRelativeMouseMode(SDL_FALSE);
+	}
+}
+
+bool InputManager::is_down(class_code_t cc) const {
+	auto it = this->states.find(cc);
 	if (it != this->states.end()) {
 		return it->second;
 	}
@@ -140,8 +162,18 @@ bool InputManager::is_down(SDL_Keycode k) {
 }
 
 
+bool InputManager::is_down(event_class ec, code_t code) const {
+	return is_down(class_code_t(ec, code));
+}
+
+
+bool InputManager::is_down(SDL_Keycode k) const {
+	return is_down(sdl_key(k).cc);
+}
+
+
 bool InputManager::is_mod_down(SDL_Keymod mod) const {
-	return this->keymod == sdl_mod(mod);
+	return false; //this->keymod == sdl_mod(mod);
 }
 
 
@@ -172,19 +204,32 @@ bool InputManager::on_input(SDL_Event *e) {
 	} // case SDL_KEYDOWN
 
 	case SDL_MOUSEBUTTONUP: {
-		Event ev(event_class::MOUSE, e->button.button, this->get_mod());
+		this->set_relative(false);
+		Event ev(event_class::MOUSE_BUTTON, e->button.button, this->get_mod());
 		this->set_state(ev, false);
 		break;
 	} // case SDL_MOUSEBUTTONUP
 
 	case SDL_MOUSEBUTTONDOWN: {
-		Event ev(event_class::MOUSE, e->button.button, this->get_mod());
+
+		// TODO: set which buttons
+		if (e->button.button == 2) {
+			this->set_relative(true);
+		}
+		Event ev(event_class::MOUSE_BUTTON, e->button.button, this->get_mod());
 		this->set_state(ev, true);
 		break;
 	} // case SDL_MOUSEBUTTONDOWN
 
 	case SDL_MOUSEMOTION: {
-		this->mouse_position = coord::window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
+		if (this->relative_mode) {
+			this->set_motion(e->motion.xrel, e->motion.yrel);
+		}
+		else {
+			this->set_mouse(e->button.x, e->button.y);
+		}
+
+		// must occur after setting mouse position
 		Event ev(event_class::MOUSE_MOTION, 0, this->get_mod());
 		this->set_state(ev, false);
 		break;

@@ -15,13 +15,26 @@ class_code_t::class_code_t(event_class cl, code_t code)
 
 
 std::vector<event_class> class_code_t::get_classes() const {
-	return std::vector<event_class>{eclass};
+	std::vector<event_class> result;
+
+	// use event_base to traverse up the class tree
+	event_class ec = this->eclass;
+	result.push_back(ec);
+	while (event_base.count(ec) > 0) {
+		ec = event_base.at(ec);
+		result.push_back(ec);
+	}
+	return result;
 }
 
 
-bool class_code_t::has_class(const event_class &) const {
-	// TODO
-	return true;
+bool class_code_t::has_class(const event_class &ec) const {
+	for (auto c : this->get_classes()) {
+		if (c == ec) {
+			return true;
+		}
+	}
+	return false;
 }
 
 
@@ -34,6 +47,19 @@ Event::Event(event_class cl, code_t code, modset_t mod)
 	:
 	cc(cl, code),
 	mod(mod) {}
+
+
+std::string Event::info() const {
+	std::string result;
+	result += "[Event: ";
+	result += std::to_string(static_cast<int>(this->cc.eclass));
+	result += ", ";
+	result += std::to_string(this->cc.code);
+	result += " (";
+	result += std::to_string(this->mod.size());
+	result += ")]";
+	return result;
+}
 
 
 bool Event::operator ==(const Event &other) const {
@@ -81,6 +107,11 @@ Event sdl_key(SDL_Keycode code, SDL_Keymod mod) {
 
 Event sdl_mouse(int button) {
 	return Event(event_class::MOUSE_BUTTON, button, modset_t());
+}
+
+
+Event sdl_wheel(int direction) {
+	return Event(event_class::MOUSE_WHEEL, direction, modset_t());
 }
 
 

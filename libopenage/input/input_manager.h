@@ -57,10 +57,38 @@ public:
 	void set_state(const Event &ev, bool is_down);
 
 	/**
-	 * query stored pressing stat for a key.
+	 * updates mouse position state and motion
+	 */
+	void set_mouse(int x, int y);
+
+	/**
+	 * updates mouse motion only
+	 */
+	void set_motion(int x, int y);
+
+	/**
+	 * enable relative mouse mode
+	 */
+	void set_relative(bool mode);
+
+	/**
+	 * Query stored pressing stat for a key.
+	 *
+	 * note that the function stores a unknown/new keycode
+	 * as 'not pressed' if requested
 	 * @return true when the key is pressed, false else.
 	 */
-	bool is_down(SDL_Keycode k);
+	bool is_down(class_code_t cc) const;
+	bool is_down(event_class ec, code_t code) const;
+
+	/**
+	 * Most cases should use above is_down(class, code)
+	 * instead to avoid relying on sdl types
+	 *
+	 * Query stored pressing stat for a key.
+	 * @return true when the key is pressed, false else.
+	 */
+	bool is_down(SDL_Keycode k) const;
 
 	/**
 	 * Checks whether a key modifier is held down.
@@ -94,7 +122,9 @@ private:
 	/**
 	 * current mouse position
 	 */
+	bool relative_mode;
 	coord::window mouse_position;
+	coord::window_delta mouse_motion;
 
 	/**
 	 * used key modifiers to check for.
