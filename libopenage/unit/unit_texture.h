@@ -39,6 +39,7 @@ public:
 	 * const attributes of the graphic
 	 */
 	const int16_t      id;
+	const int16_t      sound_id;
 	const unsigned int frame_count;
 	const unsigned int angle_count;
 	const int16_t      mirroring_mode;
@@ -49,6 +50,11 @@ public:
 	 * adding an addtion degree of orientation
 	 */
 	const bool         use_up_angles;
+
+	/**
+	 * use delta information
+	 */
+	const bool         use_deltas;
 
 	/**
 	 * invalid unit textures will cause errors if drawn
@@ -70,6 +76,11 @@ public:
 	 */
 	void draw(const coord::camgame &draw_pos, coord::phys3_delta &dir, unsigned int frame, unsigned color) const;
 
+	/**
+	 * initialise graphic data
+	 */
+	void initialise(GameSpec &spec);
+
 private:
 	/**
 	 * use a regular texture for drawing
@@ -88,6 +99,9 @@ private:
 	// avoid drawing missing graphics
 	bool draw_this;
 	Sound *sound;
+
+	// delta graphic ids
+	std::vector<gamedata::graphic_delta> delta_id;
 
 	// delta graphics
 	std::vector<std::pair<std::unique_ptr<UnitTexture>, coord::camgame_delta>> deltas;

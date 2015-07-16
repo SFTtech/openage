@@ -13,6 +13,7 @@
 #include "terrain_chunk.h"
 #include "terrain_object.h"
 #include "../assetmanager.h"
+#include "../game_renderer.h"
 #include "../texture.h"
 #include "../coord/camgame.h"
 #include "../coord/chunk.h"
@@ -175,7 +176,6 @@ public:
 	Terrain(terrain_meta *meta, bool is_infinite);
 	~Terrain();
 
-	bool blending_enabled; //!< is terrain blending active. increases memory accesses by factor ~8
 	bool infinite; //!< chunks are automagically created as soon as they are referenced
 
 	coord::tile limit_positive, limit_negative; //!< for non-infinite terrains, this is the size limit.
@@ -326,7 +326,7 @@ public:
 	 * draw the currently visible terrain area on screen.
 	 * @param engine: the engine where the terrain should be drawn to.
 	 */
-	void draw(Engine *engine);
+	void draw(Engine *engine, render_settings *settings);
 
 	/**
 	 * create the drawing instruction data.
@@ -342,12 +342,13 @@ public:
 	 * @returns a drawing instruction struct that contains all information for rendering
 	 */
 	struct terrain_render_data create_draw_advice(coord::tile ab, coord::tile cd,
-	                                              coord::tile ef, coord::tile gh);
+	                                              coord::tile ef, coord::tile gh,
+	                                              bool blending_enabled);
 
 	/**
 	 * create rendering and blending information for a single tile on the terrain.
 	 */
-	struct tile_draw_data create_tile_advice(coord::tile position);
+	struct tile_draw_data create_tile_advice(coord::tile position, bool blending_enabled);
 
 	/**
 	 * gather neighbors of a given base tile.

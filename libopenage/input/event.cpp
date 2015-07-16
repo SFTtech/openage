@@ -49,12 +49,19 @@ Event::Event(event_class cl, code_t code, modset_t mod)
 	mod(mod) {}
 
 
+char Event::as_char() const {
+	return (cc.code & 0xff);
+}
+
+
 std::string Event::info() const {
 	std::string result;
 	result += "[Event: ";
 	result += std::to_string(static_cast<int>(this->cc.eclass));
 	result += ", ";
 	result += std::to_string(this->cc.code);
+	result += ", ";
+	result += this->as_char();
 	result += " (";
 	result += std::to_string(this->mod.size());
 	result += ")]";
@@ -88,20 +95,46 @@ int class_code_hash::operator()(const class_code_t &e) const {
 }
 
 
-modset_t sdl_mod(SDL_Keymod) {
+modset_t sdl_mod(SDL_Keymod mod) {
 	// Remove modifiers like num lock and caps lock
 	// mod = static_cast<SDL_Keymod>(mod & this->used_keymods);
-	return modset_t();
-}
-
-
-Event sdl_key(SDL_Keycode code) {
-	return Event(event_class::KEYBOARD, code, modset_t());
+	modset_t result;
+	if (mod & KMOD_CTRL) {
+		result.emplace(modifier::CTRL);
+	}
+	if (mod & KMOD_SHIFT) {
+		result.emplace(modifier::SHIFT);
+	}
+	if (mod & KMOD_ALT) {
+		result.emplace(modifier::ALT);
+	}
+	return result;
 }
 
 
 Event sdl_key(SDL_Keycode code, SDL_Keymod mod) {
-	return Event(event_class::KEYBOARD, code, sdl_mod(mod));
+
+	// sdl values for non printable keys
+	if (code & (1 << 30)) {
+		return Event(event_class::OTHER, code, sdl_mod(mod));
+	}
+	else {
+		event_class ec;
+		char c = (code & 0xff);
+		if (isdigit(c)) {
+			ec = event_class::DIGIT;
+		}
+		else if (isalpha(c)) {
+			ec = event_class::ALPHA;
+		}
+		else if (isprint(c)) {
+			ec = event_class::PRINT;
+		}
+		else {
+			ec = event_class::NONPRINT;
+		}
+		return Event(ec, code, sdl_mod(mod));
+	}
 }
 
 

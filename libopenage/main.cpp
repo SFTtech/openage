@@ -9,6 +9,7 @@
 #include "engine.h"
 #include "game_control.h"
 #include "game_renderer.h"
+#include "generator.h"
 
 namespace openage {
 
@@ -40,6 +41,7 @@ int run_game(const main_arguments &args) {
 		// create components that use the engine.
 		GameRenderer renderer{&engine};
 		GameControl control{&engine};
+		Generator generator{&engine};
 
 		log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
 

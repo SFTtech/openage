@@ -37,37 +37,29 @@ GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 Texture::Texture(int width, int height, std::unique_ptr<uint32_t[]> data)
 	:
 	use_metafile{false} {
-
 	assert(glGenBuffers != nullptr && "gl not initialized properly");
 
 	this->w = width;
 	this->h = height;
-	this->id = this->make_gl_texture(
-		GL_RGBA8,
-		GL_RGBA,
-		width,
-		height,
-		data.get()
-	);
-
+	this->buffer = std::make_unique<gl_texture_buffer>();
+	this->buffer->transferred = false;
+	this->buffer->texture_format_in = GL_RGBA8;
+	this->buffer->texture_format_out = GL_RGBA;
+	this->buffer->data = std::move(data);
 	this->subtextures.push_back({0, 0, this->w, this->h, this->w/2, this->h/2});
-
-	glGenBuffers(1, &this->vertbuf);
 }
 
 Texture::Texture(const std::string &filename, bool use_metafile)
 	:
 	use_metafile{use_metafile},
 	filename{filename} {
+
 	// load the texture upon creation
 	this->load();
 }
 
 void Texture::load() {
 	SDL_Surface *surface;
-	int texture_format_in;
-	int texture_format_out;
-
 	surface = IMG_Load(this->filename.c_str());
 
 	if (!surface) {
@@ -78,15 +70,17 @@ void Texture::load() {
 		log::log(MSG(dbg) << "Texture has been loaded from " << filename);
 	}
 
+	this->buffer = std::make_unique<gl_texture_buffer>();
+
 	// glTexImage2D format determination
 	switch (surface->format->BytesPerPixel) {
 	case 3: // RGB 24 bit
-		texture_format_in  = GL_RGB8;
-		texture_format_out = GL_RGB;
+		this->buffer->texture_format_in  = GL_RGB8;
+		this->buffer->texture_format_out = GL_RGB;
 		break;
 	case 4: // RGBA 32 bit
-		texture_format_in  = GL_RGBA8;
-		texture_format_out = GL_RGBA;
+		this->buffer->texture_format_in  = GL_RGBA8;
+		this->buffer->texture_format_out = GL_RGBA;
 		break;
 	default:
 		throw Error(MSG(err) <<
@@ -95,17 +89,18 @@ void Texture::load() {
 
 		break;
 	}
-
 	this->w = surface->w;
 	this->h = surface->h;
-	this->id = this->make_gl_texture(
-		texture_format_in,
-		texture_format_out,
-		surface->w,
-		surface->h,
-		surface->pixels
-	);
 
+	// temporary buffer for pixel data
+	this->buffer->transferred = false;
+	this->buffer->data = std::make_unique<uint32_t[]>(this->w * this->h);
+	memcpy(
+		this->buffer->data.get(),
+		surface->pixels,
+		this->w * this->h *
+		surface->format->BytesPerPixel
+	);
 	SDL_FreeSurface(surface);
 
 	if (use_metafile) {
@@ -131,10 +126,9 @@ void Texture::load() {
 
 		this->subtextures.push_back(s);
 	}
-	glGenBuffers(1, &this->vertbuf);
 }
 
-GLuint Texture::make_gl_texture(int iformat, int oformat, int w, int h, void *data) {
+GLuint Texture::make_gl_texture(int iformat, int oformat, int w, int h, void *data) const {
 	// generate 1 texture handle
 	GLuint textureid;
 	glGenTextures(1, &textureid);
@@ -154,9 +148,24 @@ GLuint Texture::make_gl_texture(int iformat, int oformat, int w, int h, void *da
 	return textureid;
 }
 
+void Texture::main_thread_load() const {
+	if (!this->buffer->transferred) {
+		this->buffer->id = this->make_gl_texture(
+			this->buffer->texture_format_in,
+			this->buffer->texture_format_out,
+			this->w,
+			this->h,
+			this->buffer->data.get()
+		);
+		this->buffer->data = nullptr;
+		glGenBuffers(1, &this->buffer->vertbuf);
+		this->buffer->transferred = true;
+	}
+}
+
 void Texture::unload() {
-	glDeleteTextures(1, &this->id);
-	glDeleteBuffers(1, &this->vertbuf);
+	glDeleteTextures(1, &this->buffer->id);
+	glDeleteBuffers(1, &this->buffer->vertbuf);
 }
 
 
@@ -199,6 +208,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
                    unsigned int mode, bool mirrored,
                    int subid, unsigned player,
                    Texture *alpha_texture, int alpha_subid) const {
+	main_thread_load();
 	glColor4f(1, 1, 1, 1);
 
 	bool use_playercolors = false;
@@ -242,7 +252,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
 
 	glActiveTexture(GL_TEXTURE0);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, this->id);
+	glBindTexture(GL_TEXTURE_2D, this->buffer->id);
 
 	const gamedata::subtexture *tx = this->get_subtexture(subid);
 
@@ -298,7 +308,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
 
 
 	// store vertex buffer data, TODO: prepare this sometime earlier.
-	glBindBuffer(GL_ARRAY_BUFFER, this->vertbuf);
+	glBindBuffer(GL_ARRAY_BUFFER, this->buffer->vertbuf);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vdata), vdata, GL_STREAM_DRAW);
 
 	// enable vertex buffer and bind it to the vertex attribute
@@ -383,7 +393,8 @@ void Texture::get_subtexture_size(int subid, int *w, int *h) const {
 
 
 GLuint Texture::get_texture_id() const {
-	return this->id;
+	main_thread_load();
+	return this->buffer->id;
 }
 
 } //namespace openage

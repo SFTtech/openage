@@ -14,8 +14,11 @@ class Unit;
 
 class Player {
 public:
-	Player(unsigned int number);
+	Player(unsigned int number, std::string name);
 
+	/**
+	 * numbers 0-7
+	 */
 	const unsigned int player_number;
 
 	/**
@@ -40,6 +43,7 @@ public:
 	 * this player owns the specified unit
 	 */
 	bool owns(Unit &) const;
+
 
 private:
 	std::unordered_map<game_resource, double> resources;

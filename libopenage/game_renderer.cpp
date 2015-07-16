@@ -26,14 +26,27 @@
 
 namespace openage {
 
+render_settings::render_settings()
+	:
+	draw_grid{false},
+	draw_debug{false},
+	terrain_blending{true} {
+}
+
 GameRenderer::GameRenderer(openage::Engine *e)
 	:
-	debug_grid_active{false},
+	OptionNode{"Renderer"},
 	engine{e} {
+
+	// set options structure
+	this->set_parent(this->engine);
 
 	// engine callbacks
 	this->engine->register_draw_action(this);
 
+	this->add_bool("draw_grid", &settings.draw_grid);
+	this->add_bool("draw_debug", &settings.draw_debug);
+	this->add_bool("terrain_blending", &settings.terrain_blending);
 	util::Dir *data_dir = engine->get_data_dir();
 	util::Dir asset_dir = data_dir->append("converted");
 
@@ -134,17 +147,13 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	// TODO: a renderer settings struct
 	// would allow these to be put somewher better
 	auto &global_input_context = engine->get_input_manager().get_global_context();
-	global_input_context.bind(input::action_t::TOGGLE_DEBUG_GRID, [this](const input::action_arg_t &) {
-		this->debug_grid_active = !this->debug_grid_active;
-	});
 	global_input_context.bind(input::action_t::TOGGLE_BLENDING, [this](const input::action_arg_t &) {
-		GameMain *game = this->engine->get_game();
-		if (game && game->terrain) {
-			Terrain *terrain = game->terrain.get();
-			terrain->blending_enabled = !terrain->blending_enabled;
-		}
+		this->settings.terrain_blending = !this->settings.terrain_blending;
 	});
 	global_input_context.bind(input::action_t::TOGGLE_UNIT_DEBUG, [this](const input::action_arg_t &) {
+		this->settings.draw_debug = !this->settings.draw_debug;
+
+		// TODO remove this hack
 		UnitAction::show_debug = !UnitAction::show_debug;
 	});
 
@@ -172,10 +181,10 @@ bool GameRenderer::on_draw() {
 
 		// TODO move render code out of terrain
 		if (game->terrain) {
-			game->terrain->draw(&engine);
+			game->terrain->draw(&engine, &this->settings);
 		}
 
-		if (this->debug_grid_active) {
+		if (this->settings.draw_grid) {
 			this->draw_debug_grid();
 		}
 	}

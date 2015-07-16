@@ -16,6 +16,7 @@
 #include "callbacks.h"
 #include "config.h"
 #include "game_main.h"
+#include "generator.h"
 #include "texture.h"
 #include "util/color.h"
 #include "util/fps.h"
@@ -67,6 +68,7 @@ Engine &Engine::get() {
 
 Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	:
+	OptionNode{"Engine"},
 	running{false},
 	drawing_debug_overlay{true},
 	drawing_huds{true},
@@ -74,6 +76,12 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	current_player{1},
 	data_dir{data_dir},
 	audio_manager{} {
+
+	// register engine variables
+	this->add_bool("running", &this->running);
+	this->add_bool("drawing_debug_overlay", &this->drawing_debug_overlay);
+	this->add_bool("drawing_huds", &this->drawing_huds);
+	this->add_int("current_player", &this->current_player);
 
 	for (uint32_t size : {12, 20}) {
 		fonts[size] = std::unique_ptr<Font>{new Font{"DejaVu Serif", "Book", size}};
@@ -190,12 +198,6 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	global_input_context.bind(input::action_t::TOGGLE_DEBUG_OVERLAY, [this](const input::action_arg_t &) {
 		this->drawing_debug_overlay = !this->drawing_debug_overlay;
 	});
-	global_input_context.bind(input::action_t::QUICK_SAVE, [this](const input::action_arg_t &) {
-		gameio::save(this->get_game(), "default_save.txt");
-	});
-	global_input_context.bind(input::action_t::QUICK_LOAD, [this](const input::action_arg_t &) {
-		gameio::load(this->get_game(), "default_save.txt");
-	});
 	global_input_context.bind(input::action_t::TOGGLE_PROFILER, [this](const input::action_arg_t &) {
 		if (this->external_profiler.currently_profiling) {
 			this->external_profiler.stop();
@@ -269,8 +271,13 @@ bool Engine::on_resize(coord::window new_size) {
 	return true;
 }
 
-void Engine::start_game(const game_settings &settings) {
-	this->game = std::make_unique<GameMain>(settings);
+void Engine::start_game(const Generator &generator) {
+	this->game = std::make_unique<GameMain>(generator);
+	this->game->set_parent(this);
+}
+
+void Engine::end_game() {
+	this->game = nullptr;
 }
 
 bool Engine::draw_debug_overlay() {

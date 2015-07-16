@@ -18,12 +18,12 @@
 #include "coord/window.h"
 #include "font.h"
 #include "handlers.h"
+#include "options.h"
 #include "job/job_manager.h"
 #include "input/input_manager.h"
 #include "util/externalprofiler.h"
 #include "util/dir.h"
 #include "util/fps.h"
-#include "game_save.h"
 #include "screenshot.h"
 
 namespace openage {
@@ -32,6 +32,7 @@ class DrawHandler;
 class TickHandler;
 class ResizeHandler;
 
+class Generator;
 class GameSpec;
 class GameMain;
 class Player;
@@ -45,28 +46,11 @@ struct coord_data {
 };
 
 /**
- * required values used to construct a game
- * this includes game spec and players
- *
- * this will be identical for each networked
- * player in a game
- */
-struct game_settings {
-	int generation_seed;
-
-	// TODO use vector of players
-	unsigned int number_of_players;
-
-	// data version used to create a game
-	std::shared_ptr<GameSpec> spec;
-};
-
-/**
  * main engine container.
  *
  * central foundation for everything the openage engine is capable of.
  */
-class Engine : public ResizeHandler {
+class Engine : public ResizeHandler, public options::OptionNode {
 	friend class GameMain;
 private:
 	/**
@@ -152,7 +136,8 @@ public:
 	 */
 	bool on_resize(coord::window new_size);
 
-	void start_game(const game_settings &settings);
+	void start_game(const Generator &generator);
+	void end_game();
 
 	/**
 	 * draw the current frames per second number on screen.

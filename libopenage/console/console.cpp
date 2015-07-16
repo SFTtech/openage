@@ -65,21 +65,60 @@ void Console::register_to_engine(Engine *engine) {
 
 	// Bind the console toggle key globally
 	auto &input = engine->get_input_manager();
-	input.get_global_context()
-	        .bind(input::action_t::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
-		if (!visible) { // Show the console, add keybinds
-			visible = true;
-			input.override_context(&this->input_context);
-		} else { // Hide the console, remove the keybinds
-			visible = false;
-			input.remove_context();
-		}
+	auto &global = input.get_global_context();
+	global.bind(input::action_t::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
+		this->set_visible(!this->visible);
 	});
+
+	// toggle console will take highest priority
+	this->input_context.bind(input::action_t::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
+		this->set_visible(false);
+	});
+	this->input_context.bind(input::event_class::TEXT, [this](const input::action_arg_t &arg) {
+		// a single char typed into the console
+		char c = arg.e.as_char();
+		this->buf.write(c);
+		command += c;
+		return true;
+	});
+	this->input_context.bind(input::event_class::NONPRINT, [this](const input::action_arg_t &arg) {
+		if (arg.e.as_char() == 13) {
+			this->buf.write('\n');
+			this->interpret(this->command);
+			this->command = "";
+			return true;
+		}
+		return false;
+	});
+}
+
+void Console::set_visible(bool make_visible) {
+	Engine &e = Engine::get();
+	if (make_visible) {
+		e.get_input_manager().override_context(&this->input_context);
+		this->visible = true;
+	}
+	else {
+		e.get_input_manager().remove_context();
+		this->visible = false;
+	}
 }
 
 void Console::write(const char *text) {
 	this->buf.write(text);
 	this->buf.write('\n');
+}
+
+void Console::interpret(const std::string &command) {
+	if (command == "exit") {
+		this->set_visible(false);
+	}
+	else if (command == "list") {
+		Engine &e = Engine::get();
+		for (auto &line : e.list_options()) {
+			this->write(line.c_str());
+		}
+	}
 }
 
 bool Console::on_tick() {
