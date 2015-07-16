@@ -287,9 +287,13 @@ void GameSpec::load_terrain(AssetManager *am) {
 	// Terrain data files
 	util::Dir *data_dir = am->get_data_dir();
 	util::Dir asset_dir = data_dir->append("converted");
-	auto string_resources = util::read_csv_file<gamedata::string_resource>(asset_dir.join("string_resources.docx"));
-	auto terrain_meta  = util::read_csv_file<gamedata::terrain_type>(asset_dir.join("gamedata/gamedata-empiresdat/0000-terrains.docx"));
-	auto blending_meta = util::read_csv_file<gamedata::blending_mode>(asset_dir.join("blending_modes.docx"));
+
+	std::vector<gamedata::string_resource> string_resources;
+	util::read_csv_file(asset_dir.join("string_resources.docx"), string_resources);
+	std::vector<gamedata::terrain_type> terrain_meta;
+	util::read_csv_file(asset_dir.join("gamedata/gamedata-empiresdat/0000-terrains.docx"), terrain_meta);
+	std::vector<gamedata::blending_mode> blending_meta;
+	util::read_csv_file(asset_dir.join("blending_modes.docx"), blending_meta);
 
 
 	// result attributes

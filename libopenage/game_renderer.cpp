@@ -40,7 +40,9 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	// load textures and stuff
 	gaben = new Texture{data_dir->join("gaben.png")};
 
-	auto player_color_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("player_palette_50500.docx"));
+	std::vector<gamedata::palette_color> player_color_lines;
+	util::read_csv_file(asset_dir.join("player_palette_50500.docx"), player_color_lines);
+
 	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
 	for (size_t i = 0; i < player_color_lines.size(); i++) {
 		auto line = &player_color_lines[i];

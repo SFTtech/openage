@@ -25,7 +25,8 @@ int run_game(const main_arguments &args) {
 	Engine &engine = Engine::get();
 
 	// initialize terminal colors
-	auto termcolors = util::read_csv_file<gamedata::palette_color>(data_dir.join("converted/termcolors.docx"));
+	std::vector<gamedata::palette_color> termcolors;
+	util::read_csv_file(data_dir.join("converted/termcolors.docx"), termcolors);
 
 	console::Console console;
 	console.load_colors(termcolors);
