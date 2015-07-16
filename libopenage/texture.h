@@ -134,8 +134,7 @@ public:
 
 private:
 	GLuint id, vertbuf;
-	std::vector<gamedata::subtexture>subtextures;
-	size_t subtexture_count;
+	std::vector<gamedata::subtexture> subtextures;
 	bool use_metafile;
 
 	std::string filename;

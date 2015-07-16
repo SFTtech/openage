@@ -50,9 +50,7 @@ Texture::Texture(int width, int height, std::unique_ptr<uint32_t[]> data)
 		data.get()
 	);
 
-	gamedata::subtexture s{0, 0, this->w, this->h, this->w/2, this->h/2};
-	this->subtexture_count = 1;
-	this->subtextures.push_back(s);
+	this->subtextures.push_back({0, 0, this->w, this->h, this->w/2, this->h/2});
 
 	glGenBuffers(1, &this->vertbuf);
 }
@@ -120,11 +118,10 @@ void Texture::load() {
 		log::log(MSG(info) << "Loading meta file: " << meta_filename);
 
 		// get subtexture information by meta file exported by script
-		this->subtextures = util::read_csv_file<gamedata::subtexture>(meta_filename);
-		this->subtexture_count = this->subtextures.size();
+		util::read_csv_file(meta_filename, this->subtextures);
 
 		// TODO: use information from empires.dat for that, also use x and y sizes:
-		this->atlas_dimensions = sqrt(this->subtexture_count);
+		this->atlas_dimensions = sqrt(this->subtextures.size());
 		delete[] meta_filename;
 	}
 	else {
@@ -132,7 +129,6 @@ void Texture::load() {
 		// use the whole image as one texture then.
 		gamedata::subtexture s{0, 0, this->w, this->h, this->w/2, this->h/2};
 
-		this->subtexture_count = 1;
 		this->subtextures.push_back(s);
 	}
 	glGenBuffers(1, &this->vertbuf);
@@ -176,9 +172,9 @@ Texture::~Texture() {
 
 
 void Texture::fix_hotspots(unsigned x, unsigned y) {
-	for(size_t i = 0; i < subtexture_count; i++) {
-		this->subtextures[i].cx = x;
-		this->subtextures[i].cy = y;
+	for (auto &subtexture : this->subtextures) {
+		subtexture.cx = x;
+		subtexture.cy = y;
 	}
 }
 
@@ -348,7 +344,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
 
 
 const gamedata::subtexture *Texture::get_subtexture(int subid) const {
-	if (subid < (ssize_t)this->subtexture_count && subid >= 0) {
+	if (subid >= 0 && (static_cast<size_t>(subid) < this->subtextures.size())) {
 		return &this->subtextures[subid];
 	}
 	else {
@@ -375,7 +371,7 @@ void Texture::get_subtexture_coordinates(const gamedata::subtexture *tx,
 
 
 int Texture::get_subtexture_count() const {
-	return this->subtexture_count;
+	return this->subtextures.size();
 }
 
 
