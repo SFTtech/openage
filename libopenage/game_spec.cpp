@@ -28,23 +28,24 @@ void GameSpec::initialize(AssetManager *am) {
 	this->load_terrain(am);
 
 	this->assetmanager = am;
-	auto gamedata_load_function = [this]() -> std::vector<gamedata::empiresdat> {
+	auto gamedata_load_function = [this]() {
 		log::log(MSG(info) << "loading game specification files... stand by, will be faster soon...");
 		util::Dir gamedata_dir = this->assetmanager->get_data_dir()->append("converted/gamedata");
-		return std::move(util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx"));
+		auto gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
+		this->on_gamedata_loaded(gamedata);
+		this->gamedata_loaded = true;
+		log::log(MSG(info).fmt("Loading time  [data]: %5.3f s", load_timer.getval() / 1e9));
+		return true;
 	};
 
 	// add job
 	Engine &engine = Engine::get();
-	this->gamedata_load_job = engine.get_job_manager()->enqueue<std::vector<gamedata::empiresdat>>(gamedata_load_function);
+	this->gamedata_load_job = engine.get_job_manager()->enqueue<bool>(gamedata_load_function);
 }
 
 void GameSpec::check_updates() {
 	if (not this->gamedata_loaded and this->gamedata_load_job.is_finished()) {
-		auto gamedata = this->gamedata_load_job.get_result();
-		this->on_gamedata_loaded(gamedata);
-		this->gamedata_loaded = true;
-		log::log(MSG(info).fmt("Loading time  [data]: %5.3f s", load_timer.getval() / 1e9));
+		//auto gamedata = this->gamedata_load_job.get_result();
 	}
 }
 
@@ -115,6 +116,18 @@ UnitType *GameSpec::get_type(index_t type_id) {
 		return nullptr;
 	}
 	return this->producers[type_id];
+}
+
+std::vector<index_t> GameSpec::get_category(const std::string &c) const {
+	auto cat = this->categories.find(c);
+	if (cat == this->categories.end()) {
+		return std::vector<index_t>();
+	}
+	return cat->second;
+}
+
+std::vector<std::string> GameSpec::get_type_categories() const {
+	return this->all_categories;
 }
 
 UnitType *GameSpec::get_type_index(size_t type_index) {
@@ -234,6 +247,14 @@ bool GameSpec::valid_graphic_id(index_t graphic_id) {
 	return true;
 }
 
+void GameSpec::add_to_category(const std::string &c, index_t type) {
+	if (this->categories.count(c) == 0) {
+		this->all_categories.push_back(c);
+		this->categories[c] = std::vector<index_t>();
+	}
+	this->categories[c].push_back(type);
+}
+
 void GameSpec::load_building(const gamedata::unit_building &building, unit_type_list &list) {
 
 	// check graphics
@@ -241,8 +262,10 @@ void GameSpec::load_building(const gamedata::unit_building &building, unit_type_
 		list.emplace_back(std::make_unique<BuildingProducer>(*this, &building));
 
 		auto producer_ptr = list.back().get();
-		this->producers[producer_ptr->id()] = producer_ptr;
+		index_t id = producer_ptr->id();
+		this->producers[id] = producer_ptr;
 		this->buildings[building.id0] = &building;
+		add_to_category("building", id);
 	}
 }
 
@@ -255,8 +278,9 @@ void GameSpec::load_living(const gamedata::unit_living &unit, unit_type_list &li
 		list.emplace_back(std::make_unique<LivingProducer>(*this, &unit));
 
 		auto producer_ptr = list.back().get();
-		this->producers[producer_ptr->id()] = producer_ptr;
-
+		index_t id = producer_ptr->id();
+		this->producers[id] = producer_ptr;
+		add_to_category("living", id);
 	}
 }
 
@@ -267,7 +291,9 @@ void GameSpec::load_object(const gamedata::unit_object &object, unit_type_list &
 		list.emplace_back(std::make_unique<ObjectProducer>(*this, &object));
 
 		auto producer_ptr = list.back().get();
-		this->producers[producer_ptr->id()] = producer_ptr;
+		index_t id = producer_ptr->id();
+		this->producers[id] = producer_ptr;
+		add_to_category("object", id);
 	}
 }
 

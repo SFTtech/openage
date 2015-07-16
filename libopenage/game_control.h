@@ -33,16 +33,10 @@ public:
  */
 class CreateMode : public OutputMode {
 public:
-	CreateMode(Engine &engine);
+	CreateMode();
 
 	void on_enter() override;
 	void render() override;
-
-private:
-	game_settings settings;
-
-	// access to games asset files
-	AssetManager assetmanager;
 
 };
 
@@ -68,8 +62,9 @@ private:
 	bool use_set_ability;
 	ability_type ability;
 
-	// a selected type
+	// a selected type for placement
 	UnitType *type_focus;
+	coord::phys3 mousepos_phys3;
 	coord::tile mousepos_tile;
 
 	/**
@@ -94,14 +89,15 @@ public:
 
 	bool on_mouse_wheel(int direction, coord::window point);
 	bool on_single_click(int button, coord::window point);
-	bool on_drag_start(int button, coord::window point);
-	bool on_drag_end(int button, coord::window point);
 
 private:
 
 	// currently selected terrain id
 	openage::terrain_t editor_current_terrain;
-	int editor_current_building;
+	unsigned int editor_current_type;
+	unsigned int editor_category;
+	UnitType *selected_type;
+	std::string category;
 
 	// TODO assign placement to player object
 	bool paint_terrain;

@@ -1,7 +1,7 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_KEYBINDS_ACTION_H_
-#define OPENAGE_KEYBINDS_ACTION_H_
+#ifndef OPENAGE_INPUT_ACTION_H_
+#define OPENAGE_INPUT_ACTION_H_
 
 #include <vector>
 
@@ -97,30 +97,6 @@ using action_func_t = std::function<void(const action_arg_t &)>;
  * to indicate if the event was used
  */
 using action_check_t = std::function<bool(const action_arg_t &)>;
-
-
-// TODO string description
-// This is a base class for event_class, event, action_t mapped to a function
-// This could be constructed with a context and bind itself using the required types
-class Action {
-public:
-	Action(const action_func_t f);
-	Action(const action_id_t &type, const action_func_t f);
-
-	/**
-	 * pass mouse position
-	 */
-	bool do_action(const action_arg_t &e);
-
-	/**
-	 * type of this action
-	 */
-	const action_id_t type;
-
-private:
-	const action_func_t on_action;
-
-};
 
 
 } //namespace input

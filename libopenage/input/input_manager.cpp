@@ -172,8 +172,8 @@ bool InputManager::is_down(SDL_Keycode k) const {
 }
 
 
-bool InputManager::is_mod_down(SDL_Keymod mod) const {
-	return false; //this->keymod == sdl_mod(mod);
+bool InputManager::is_mod_down(modifier mod) const {
+	return (this->keymod.count(mod) > 0);
 }
 
 
@@ -191,15 +191,14 @@ bool InputManager::on_input(SDL_Event *e) {
 
 	case SDL_KEYUP: {
 		SDL_Keycode code = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
-		Event ev(event_class::KEYBOARD, code, this->get_mod());
+		Event ev = sdl_key(code, SDL_GetModState());
 		this->set_state(ev, false);
 		break;
 	} // case SDL_KEYUP
 
 	case SDL_KEYDOWN: {
 		SDL_Keycode code = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
-		Event ev(event_class::KEYBOARD, code, this->get_mod());
-		this->set_state(ev, true);
+		this->set_state(sdl_key(code, SDL_GetModState()), true);
 		break;
 	} // case SDL_KEYDOWN
 

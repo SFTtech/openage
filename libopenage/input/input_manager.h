@@ -1,7 +1,7 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_KEYBINDS_KEYBIND_MANAGER_H_
-#define OPENAGE_KEYBINDS_KEYBIND_MANAGER_H_
+#ifndef OPENAGE_INPUT_INPUT_MANAGER_H_
+#define OPENAGE_INPUT_INPUT_MANAGER_H_
 
 #include <functional>
 #include <map>
@@ -93,7 +93,7 @@ public:
 	/**
 	 * Checks whether a key modifier is held down.
 	 */
-	bool is_mod_down(SDL_Keymod mod) const;
+	bool is_mod_down(modifier mod) const;
 
 
 	bool on_input(SDL_Event *e) override;

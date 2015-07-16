@@ -37,12 +37,12 @@ public:
 
 	input::InputContext input_context;
 
-	//callback functions
-	bool on_engine_tick();
-	bool draw_console();
-	bool handle_inputs(SDL_Event *e);
-	bool on_window_resize();
+	// the command state
+	std::string command;
 
+	/**
+	 * load the consoles color table
+	 */
 	void load_colors(std::vector<gamedata::palette_color> &colortable);
 
 	/**
@@ -51,10 +51,17 @@ public:
 	 */
 	void register_to_engine(Engine *engine);
 
+	void set_visible(bool make_visible);
+
 	/**
 	 * prints the given text on the console.
 	 */
 	void write(const char *text);
+
+	/**
+	 * a temporary console command interpreter
+	 */
+	void interpret(const std::string &command);
 
 	virtual bool on_drawhud();
 	virtual bool on_tick();

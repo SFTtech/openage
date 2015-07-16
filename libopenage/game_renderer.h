@@ -8,17 +8,30 @@
 #include <unordered_set>
 #include <vector>
 
-#include "engine.h"
 #include "coord/tile.h"
+#include "engine.h"
+#include "game_main.h"
 #include "handlers.h"
+#include "options.h"
 #include "player.h"
 
 namespace openage {
 
+// TODO include fog drawing etc
+struct render_settings {
+public:
+	render_settings();
+
+	bool draw_grid;
+	bool draw_debug;
+	bool terrain_blending;
+};
+
 /**
  * renders the editor and action views
+ *
  */
-class GameRenderer : openage::DrawHandler {
+class GameRenderer : DrawHandler, options::OptionNode {
 public:
 	GameRenderer(openage::Engine *e);
 	~GameRenderer();
@@ -42,9 +55,7 @@ public:
 
 	Texture *gaben;
 
-	// TODO shared renderer state,
-	// include fog drawing etc
-	bool debug_grid_active;
+	render_settings settings;
 
 private:
 	openage::Engine *engine;

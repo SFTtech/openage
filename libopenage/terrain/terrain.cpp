@@ -40,10 +40,6 @@ Terrain::Terrain(terrain_meta *meta, bool is_infinite)
 	// maps chunk position to chunks
 	this->chunks = std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash>{};
 
-	// activate blending
-	// TODO move to renderer
-	this->blending_enabled = true;
-
 }
 
 Terrain::~Terrain() {
@@ -284,7 +280,7 @@ bool Terrain::check_tile_position(coord::tile pos) {
 
 }
 
-void Terrain::draw(Engine *engine) {
+void Terrain::draw(Engine *engine, render_settings *settings) {
 	// TODO: move this draw invokation to a render manager.
 	//       it can reorder the draw instructions and minimize texture switching.
 
@@ -306,7 +302,7 @@ void Terrain::draw(Engine *engine) {
 	br = wbr.to_camgame().to_phys3(0).to_phys2().to_tile();
 
 	// main terrain calculation call: get the `terrain_render_data`
-	auto draw_data = this->create_draw_advice(tl, tr, br, bl);
+	auto draw_data = this->create_draw_advice(tl, tr, br, bl, settings->terrain_blending);
 
 	// TODO: the following loop is totally inefficient and shit.
 	//       it reloads the drawing texture to the gpu FOR EACH TILE!
@@ -341,7 +337,8 @@ void Terrain::draw(Engine *engine) {
 struct terrain_render_data Terrain::create_draw_advice(coord::tile ab,
                                                        coord::tile cd,
                                                        coord::tile ef,
-                                                       coord::tile gh) {
+                                                       coord::tile gh,
+                                                       bool blending_enabled) {
 
 	/*
 	 * The passed parameters define the screen corners.
@@ -392,7 +389,7 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab,
 		for (tilepos.se = gb.se; tilepos.se <= (ssize_t) cf.se; tilepos.se++) {
 
 			// get the terrain tile drawing data
-			auto tile = this->create_tile_advice(tilepos);
+			auto tile = this->create_tile_advice(tilepos, blending_enabled);
 			tiles->push_back(tile);
 
 			// get the object standing on the tile
@@ -410,7 +407,7 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab,
 }
 
 
-struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
+struct tile_draw_data Terrain::create_tile_advice(coord::tile position, bool blending_enabled) {
 	// this struct will be filled with all tiles and overlays to draw.
 	struct tile_draw_data tile;
 	tile.count = 0;
@@ -448,7 +445,7 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position) {
 
 	// blendomatic!!111
 	//  see doc/media/blendomatic for the idea behind this.
-	if (this->blending_enabled) {
+	if (blending_enabled) {
 
 		// the neighbors of the base tile
 		struct neighbor_tile neigh_data[8];

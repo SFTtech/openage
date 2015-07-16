@@ -18,46 +18,18 @@ UnitTexture::UnitTexture(GameSpec &spec, uint16_t graphic_id, bool delta)
 UnitTexture::UnitTexture(GameSpec &spec, const gamedata::graphic *graphic, bool delta)
 	:
 	id{graphic->id},
+	sound_id{graphic->sound_id},
 	frame_count{graphic->frame_count},
 	angle_count{graphic->angle_count},
 	mirroring_mode{graphic->mirroring_mode},
 	frame_rate{graphic->frame_rate},
 	use_up_angles{graphic->mirroring_mode == 24},
-	texture{spec.get_texture(graphic->id)},
+	use_deltas{delta},
+	texture{nullptr},
 	draw_this{true},
-	sound{spec.get_sound(graphic->sound_id)} {
-	if (not is_valid()) {
-		this->draw_this = false;
-	}
-
-	// find deltas
-	if (delta) for (auto d : graphic->graphic_deltas.data) {
-		if (spec.get_graphic_data(d.graphic_id)) {
-			auto ut = std::make_unique<UnitTexture>(spec, d.graphic_id, false);
-			if (ut->is_valid()) {
-				this->deltas.push_back({std::move(ut), coord::camgame_delta{d.direction_x, d.direction_y}});
-			}
-		}
-	}
-
-	if (this->draw_this) {
-
-		// the graphic frame count includes deltas
-		unsigned int subtextures = this->texture->get_subtexture_count();
-		if (subtextures >= graphic->frame_count) {
-			this->angles_included = subtextures / graphic->frame_count;
-			this->angles_mirrored = this->angle_count - this->angles_included;
-			this->safe_frame_count = graphic->frame_count;
-		}
-		else{
-			this->angles_included = 1;
-			this->angles_mirrored = 0;
-			this->safe_frame_count = subtextures;
-		}
-
-		// find the top direction for mirroring over
-		this->top_frame = this->angle_count - (1 - (this->angles_included - this->angles_mirrored) / 2);
-	}
+	sound{nullptr},
+	delta_id{graphic->graphic_deltas.data} {
+	this->initialise(spec);
 }
 
 bool UnitTexture::is_valid() const {
@@ -127,6 +99,43 @@ void UnitTexture::draw(const coord::camgame &draw_pos, coord::phys3_delta &dir, 
 	if (this->draw_this) {
 		unsigned int to_draw = this->subtexture(this->texture, angle, frame_to_use);
 		this->texture->draw(draw_pos, PLAYERCOLORED, mirror, to_draw, color);
+	}
+}
+
+void UnitTexture::initialise(GameSpec &spec) {
+	this->texture = spec.get_texture(this->id);
+	this->sound = spec.get_sound(this->sound_id);
+	if (not is_valid()) {
+		this->draw_this = false;
+	}
+
+	// find deltas
+	if (this->use_deltas) for (auto d : this->delta_id) {
+		if (spec.get_graphic_data(d.graphic_id)) {
+			auto ut = std::make_unique<UnitTexture>(spec, d.graphic_id, false);
+			if (ut->is_valid()) {
+				this->deltas.push_back({std::move(ut), coord::camgame_delta{d.direction_x, d.direction_y}});
+			}
+		}
+	}
+
+	if (this->draw_this) {
+
+		// the graphic frame count includes deltas
+		unsigned int subtextures = this->texture->get_subtexture_count();
+		if (subtextures >= this->frame_count) {
+			this->angles_included = subtextures / this->frame_count;
+			this->angles_mirrored = this->angle_count - this->angles_included;
+			this->safe_frame_count = this->frame_count;
+		}
+		else{
+			this->angles_included = 1;
+			this->angles_mirrored = 0;
+			this->safe_frame_count = subtextures;
+		}
+
+		// find the top direction for mirroring over
+		this->top_frame = this->angle_count - (1 - (this->angles_included - this->angles_mirrored) / 2);
 	}
 }
 

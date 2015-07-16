@@ -17,8 +17,10 @@ add_sources(libopenage
 	game_renderer.cpp
 	game_save.cpp
 	game_spec.cpp
+	generator.cpp
 	handlers.cpp
 	main.cpp
+	options.cpp
 	player.cpp
 	screenshot.cpp
 	texture.cpp

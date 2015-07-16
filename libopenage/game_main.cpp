@@ -2,6 +2,7 @@
 
 #include "game_main.h"
 #include "game_spec.h"
+#include "generator.h"
 
 namespace openage {
 
@@ -28,30 +29,32 @@ constexpr int terrain_data[16 * 16] = {
 	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5,  5
 };
 
-GameMain::GameMain(const game_settings &sets)
+GameMain::GameMain(const Generator &generator)
 	:
-	terrain{std::make_shared<Terrain>(sets.spec->get_terrain_meta(), true)},
-	settings(sets) {
+	OptionNode{"GameMain"},
+	terrain{std::make_shared<Terrain>(generator.get_spec()->get_terrain_meta(), true)},
+	spec{generator.get_spec()} {
 
 	// the initial map should be determined by game settings
 	this->terrain->fill(terrain_data, terrain_data_size);
 	this->placed_units.set_terrain(this->terrain);
 
 	// players
-	for (unsigned int i = 0; i < this->settings.number_of_players; ++i) {
-		this->players.emplace_back(i);
+	unsigned int i = 0;
+	for (auto &name : generator.player_names) {
+		this->players.emplace_back(i++, name);
 	}
 
 }
 
 GameMain::~GameMain() {}
 
-game_settings *GameMain::get_settings() {
-	return &this->settings;
+unsigned int GameMain::player_count() const {
+	return this->players.size();
 }
 
 GameSpec *GameMain::get_spec() {
-	return this->settings.spec.get();
+	return this->spec.get();
 }
 
 void GameMain::update() {

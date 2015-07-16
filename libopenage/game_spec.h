@@ -52,10 +52,15 @@ public:
 	GameSpec(AssetManager *am);
 	virtual ~GameSpec();
 
+	/**
+	 * remove this when a better load system
+	 * such as nyan is implemented
+	 */
 	void check_updates();
 
 	/**
-	 * check if loading has been completed
+	 * Check if loading has been completed,
+	 * a load percent would be nice
 	 */
 	bool load_complete();
 
@@ -65,7 +70,7 @@ public:
 	terrain_meta *get_terrain_meta();
 
 	/**
-	 * number of producers available
+	 * total number of unit types available
 	 */
 	size_t producer_count();
 
@@ -75,13 +80,13 @@ public:
 	index_t get_slp_graphic(index_t slp);
 
 	/**
-	 * get a texture by id, this specifically avoids returning the missing placeholder texture
+	 * lookup using a texture id, this specifically avoids returning the missing placeholder texture
 	 */
 	Texture *get_texture(index_t graphic_id);
 
 	/**
 	 * get unit texture by graphic id -- this is an directional texture
-	 * and also includes graphic deltas
+	 * which also includes graphic deltas
 	 */
 	std::shared_ptr<UnitTexture> get_unit_texture(index_t graphic_id);
 
@@ -96,22 +101,36 @@ public:
 	UnitType *get_type(index_t type_id);
 
 	/**
+	 * return all types in a particular named category
+	 */
+	std::vector<index_t> get_category(const std::string &c) const;
+
+	/**
+	 * return all used categories, such as living, building or projectile
+	 */
+	std::vector<std::string> get_type_categories() const;
+
+	/**
 	 * unit types by list index -- a continuous array of all types
+	 * probably not a useful function / can be removed
 	 */
 	UnitType *get_type_index(size_t type_index);
 
 	/**
-	 * data for a graphic
+	 * gamedata for a graphic
+	 * nyan will have to replace this somehow
 	 */
 	const gamedata::graphic *get_graphic_data(index_t grp_id);
 
 	/**
-	 * get game data for a building
+	 * gamedata for a building
+	 * nyan will have to replace this somehow
 	 */
 	const gamedata::unit_building *get_building_data(index_t unit_id);
 
 	/**
 	 * get available commands for a unit id
+	 * nyan will have to replace this somehow
 	 */
 	std::vector<const gamedata::unit_command *> get_command_data(index_t unit_id);
 
@@ -128,6 +147,22 @@ private:
 	 * all available game objects.
 	 */
 	unit_type_list available_objects;
+
+	/**
+	 * unit ids -> unit type for that id
+	 */
+	std::unordered_map<index_t, UnitType *> producers;
+
+	/**
+	 * all available categories of units
+	 */
+	std::vector<std::string> all_categories;
+
+	/**
+	 * category lists
+	 */
+	std::unordered_map<std::string, std::vector<index_t>> categories;
+
 
 	/**
 	 * slp to graphic reverse lookup
@@ -149,10 +184,6 @@ private:
 	 */
 	std::unordered_map<index_t, std::vector<const gamedata::unit_command *>> commands;
 
-	/**
-	 * unit ids -> unit type for that id
-	 */
-	std::unordered_map<index_t, UnitType *> producers;
 
 	/**
 	 * unit ids -> unit type for that id
@@ -185,6 +216,11 @@ private:
 	void create_unit_types(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id);
 
 	/**
+	 * creates and adds items to categories
+	 */
+	void add_to_category(const std::string &c, index_t type);
+
+	/**
 	 * loads required assets to construct a unit type
 	 * adds to the type list if the object can be created safely
 	 */
@@ -202,7 +238,7 @@ private:
 	 * has game data been load yet
 	 */
 	bool gamedata_loaded;
-	openage::job::Job<std::vector<gamedata::empiresdat>> gamedata_load_job;
+	openage::job::Job<bool> gamedata_load_job;
 	void on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata);
 	util::Timer load_timer;
 };

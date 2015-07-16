@@ -1,7 +1,7 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_KEYBINDS_KEYBIND_CONTEXT_H_
-#define OPENAGE_KEYBINDS_KEYBIND_CONTEXT_H_
+#ifndef OPENAGE_INPUT_INPUT_CONTEXT_H_
+#define OPENAGE_INPUT_INPUT_CONTEXT_H_
 
 #include <functional>
 #include <stack>

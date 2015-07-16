@@ -31,7 +31,7 @@ void load_unit(std::ifstream &file, openage::GameMain *game) {
 	file >> ne;
 	file >> se;
 
-	UnitType &saved_type = *game->get_settings()->spec->get_type(pr_id);
+	UnitType &saved_type = *game->get_spec()->get_type(pr_id);
 	game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
 }
 

@@ -38,6 +38,19 @@ extern GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 constexpr int PLAYERCOLORED = 1 << 0;
 constexpr int ALPHAMASKED   = 1 << 1;
 
+/**
+ * enables transfer of data to opengl
+ */
+struct gl_texture_buffer {
+	GLuint id, vertbuf;
+
+	// this requires loading on the main thread
+	bool transferred;
+	int texture_format_in;
+	int texture_format_out;
+	std::unique_ptr<uint32_t[]> data;
+};
+
 
 /**
  * A texture for rendering graphically.
@@ -133,15 +146,21 @@ public:
 	GLuint get_texture_id() const;
 
 private:
-	GLuint id, vertbuf;
+	std::unique_ptr<gl_texture_buffer> buffer;
 	std::vector<gamedata::subtexture> subtextures;
 	bool use_metafile;
 
 	std::string filename;
 
 	void load();
-	GLuint make_gl_texture(int iformat, int oformat, int w, int h, void *);
+
+	/**
+	 * the gl loading which must occur on the main thread
+	 */
+	void main_thread_load() const;
+	GLuint make_gl_texture(int iformat, int oformat, int w, int h, void *) const;
 	void unload();
+
 };
 
 } // namespace openage

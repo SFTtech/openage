@@ -8,6 +8,7 @@
 #include <SDL2/SDL.h>
 
 #include "engine.h"
+#include "options.h"
 #include "player.h"
 #include "terrain/terrain.h"
 #include "unit/unit_container.h"
@@ -21,21 +22,24 @@ namespace openage {
  * TODO: include a list of actions to be saved
  *       as the game replay file
  */
-class GameMain {
+class GameMain : public options::OptionNode {
 public:
-	GameMain(const game_settings &sets);
+	GameMain(const Generator &generator);
 	~GameMain();
 
 	/**
-	 * get the game settings
+	 * the number of players
 	 */
-	game_settings *get_settings();
+	unsigned int player_count() const;
 
 	/**
 	 * the spec in this games settings
 	 */
 	GameSpec *get_spec();
 
+	/**
+	 * updates the game by one frame
+	 */
 	void update();
 
 	/**
@@ -54,7 +58,7 @@ public:
 	UnitContainer placed_units;
 
 private:
-	game_settings settings;
+	std::shared_ptr<GameSpec> spec;
 
 };
 

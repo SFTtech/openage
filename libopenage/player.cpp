@@ -5,12 +5,12 @@
 
 namespace openage {
 
-Player::Player(unsigned int number)
+Player::Player(unsigned int number, std::string name)
 	:
 	player_number{number},
 	color{number+1},
 	civ{1},
-	name{"player " + std::to_string(color)} {
+	name{name} {
 }
 
 bool Player::is_enemy(const Player &other) const {
