@@ -38,6 +38,12 @@ public:
 	void on_enter() override;
 	void render() override;
 
+private:
+	int selected;
+
+	bool setting_value;
+	std::string new_value;
+
 };
 
 /**
@@ -55,6 +61,22 @@ public:
 
 private:
 
+
+
+	/**
+	 * decides which type of right mouse click command to issue based on position
+	 *
+	 * if a unit is at the position the command should target the unit,
+	 * otherwise target ground position
+	 */
+	Command get_action(const coord::phys3 &pos) const;
+
+
+	/**
+	 * places hovering building
+	 */
+	bool place_selection(coord::phys3 point);
+
 	// currently selected units
 	UnitSelection selection;
 
@@ -66,14 +88,6 @@ private:
 	UnitType *type_focus;
 	coord::phys3 mousepos_phys3;
 	coord::tile mousepos_tile;
-
-	/**
-	 * decides which type of right mouse click command to issue based on position
-	 *
-	 * if a unit is at the position the command should target the unit,
-	 * otherwise target ground position
-	 */
-	Command get_action(const coord::phys3 &pos) const;
 
 };
 

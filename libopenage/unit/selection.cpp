@@ -136,7 +136,7 @@ void UnitSelection::add_unit(Unit *u, bool append) {
 
 		if (unit_type_i < selection_type_i) {
 			// Upgrade selection to a higher priority selection
-			this->units.clear();
+			this->clear();
 			this->selection_type = unit_type;
 		}
 
@@ -255,6 +255,7 @@ void UnitSelection::all_invoke(Command &cmd) {
 void UnitSelection::show_attributes(Unit *u) {
 	std::vector<std::string> lines;
 	lines.push_back(u->top()->name());
+	lines.push_back("type: "+std::to_string(u->unit_type->id()));
 
 	if (u->has_attribute(attr_type::owner)) {
 		auto &own_attr = u->get_attribute<attr_type::owner>();

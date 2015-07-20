@@ -168,6 +168,7 @@ public:
 
 private:
 	UnitReference target;
+	int target_type_id;
 	int repath_attempts;
 	bool end_action;
 

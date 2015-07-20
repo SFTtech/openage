@@ -49,13 +49,11 @@ bool Unit::accept_commands() const {
 }
 
 bool Unit::is_own_unit() {
-	if (!this->has_attribute(attr_type::owner)) {
-		return false;
+	Player *player = Engine::get().player_focus();
+	if (player) {
+		return player->owns(*this);
 	}
-
-	int player = Engine::get().current_player;
-	int color = this->get_attribute<attr_type::owner>().player.color;
-	return player == color;
+	return false;
 }
 
 UnitAction *Unit::top() const {

@@ -465,7 +465,8 @@ GameMain *Engine::get_game() {
 
 Player *Engine::player_focus() const {
 	if (this->game) {
-		return &this->game->players[this->current_player - 1];
+		unsigned int number = this->game->players.size();
+		return &this->game->players[this->current_player % number];
 	}
 	return nullptr;
 }
