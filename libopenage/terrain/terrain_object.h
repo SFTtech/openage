@@ -57,6 +57,11 @@ std::vector<coord::tile> tile_list(const tile_range &rng);
 tile_range building_center(coord::phys3 west, coord::tile_delta size);
 
 /**
+ * sets a building to a fully completed state
+ */
+bool complete_building(Unit &);
+
+/**
  * half a tile
  */
 constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{

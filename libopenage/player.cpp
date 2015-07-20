@@ -8,7 +8,7 @@ namespace openage {
 Player::Player(unsigned int number, std::string name)
 	:
 	player_number{number},
-	color{number+1},
+	color{number},
 	civ{1},
 	name{name} {
 }
@@ -30,6 +30,38 @@ bool Player::owns(Unit &unit) const {
 		return this == &unit.get_attribute<attr_type::owner>().player;
 	}
 	return false;
+}
+
+void Player::recieve(const game_resource resource, double amount) {
+	auto r = this->resources.find(resource);
+	if (r == this->resources.end()) {
+		this->resources[resource] = amount;
+	}
+	else {
+		this->resources[resource] += amount;
+	}
+}
+
+bool Player::deduct(const game_resource resource, double amount) {
+	auto r = this->resources.find(resource);
+	if (r == this->resources.end()) {
+		return false;
+	}
+	else if (this->resources[resource] >= amount) {
+		this->resources[resource] -= amount;
+		return true;
+	}
+	return false;
+}
+
+double Player::amount(const game_resource resource) const {
+	auto r = this->resources.find(resource);
+	if (r == this->resources.end()) {
+		return 0.0;
+	}
+	else {
+		return this->resources.at(resource);
+	}
 }
 
 } // openage

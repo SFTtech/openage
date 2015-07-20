@@ -94,6 +94,19 @@ void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 	}
 }
 
+SetPointAbility::SetPointAbility() {}
+
+bool SetPointAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	return cmd.has_position() &&
+	       to_modify.has_attribute(attr_type::building);
+}
+
+void SetPointAbility::invoke(Unit &to_modify, const Command &cmd, bool) {
+	auto &build_attr = to_modify.get_attribute<attr_type::building>();
+	build_attr.gather_point = cmd.position();
+}
+
+
 GarrisonAbility::GarrisonAbility(Sound *s)
 	:
 	sound{s} {

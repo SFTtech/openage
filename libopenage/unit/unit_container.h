@@ -21,8 +21,24 @@ class UnitType;
 
 using id_t = unsigned long int;
 
+/**
+ * immutable reference data
+ */
+struct reference_data {
+	reference_data(const UnitContainer *c, id_t id, Unit *);
+
+	const UnitContainer *const container;
+	const id_t unit_id;
+	Unit *const unit_ptr;
+};
+
+/**
+ * Reference to a single unit, which may have been removed
+ * from the game, check is_valid() before calling get()
+ */
 class UnitReference {
 public:
+
 	/**
 	 * create an invalid reference
 	 */
@@ -32,13 +48,18 @@ public:
 	 * create referece by unit id
 	 */
 	UnitReference(const UnitContainer *c, id_t id, Unit *);
+
 	bool is_valid() const;
 	Unit *get() const;
 
 private:
-	const UnitContainer *container;
-	id_t unit_id;
-	Unit *unit_ptr;
+
+	/**
+	 * The default copy constructor and assignment
+	 * will just copy the shared pointer
+	 */
+	std::shared_ptr<reference_data> data;
+
 };
 
 /**

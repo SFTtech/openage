@@ -2,43 +2,87 @@
 
 #include "util/strings.h"
 #include "game_control.h"
-#include "game_save.h"
 #include "game_spec.h"
 
 namespace openage {
 
-CreateMode::CreateMode() {
+CreateMode::CreateMode()
+	:
+	selected{0},
+	setting_value{false} {
 
 	// action bindings
 	this->bind(input::action_t::START_GAME, [this](const input::action_arg_t &) {
-		log::log(MSG(dbg) << "start game");
 		Engine &engine = Engine::get();
-		options::OptionNode *n = engine.get_child("Generator");
-		if (n) {
-			n->do_action("start");
+		options::OptionNode *node = engine.get_child("Generator");
+		if (!node) {
+			return;
 		}
-		// engine.start_game(this->settings);
-	});
-	this->bind(input::action_t::STOP_GAME, [this](const input::action_arg_t &) {
-		log::log(MSG(dbg) << "stop game");
-		Engine &engine = Engine::get();
-		engine.end_game();
-	});
 
-	// TODO add load and save here
-	this->bind(input::action_t::QUICK_SAVE, [this](const input::action_arg_t &) {
-		if (true) {
-			log::log(MSG(warn) << "game required for saving");
-			return;
+		std::vector<std::string> list = node->list_variables();
+		std::vector<std::string> flist = node->list_functions();
+		unsigned int size = list.size() + flist.size();
+
+		if (this->setting_value) {
+
+			// modifying a value
+			std::vector<std::string> list = node->list_variables();
+			std::string selected_name = list[this->selected % size];
+			auto &var = node->get_variable_rw(selected_name);
+
+			// try change the value
+			// deal with number parsing exceptions
+			try {
+				if (var.type == options::option_type::list_type) {
+					auto list = var.value<options::option_list>();
+					list.push_back(this->new_value);
+					var = list;
+					log::log(MSG(dbg) << selected_name << " appended with " << this->new_value);
+				}
+				else {
+					var = options::parse(var.type, this->new_value);
+					log::log(MSG(dbg) << selected_name << " set to " << this->new_value);
+				}
+			}
+			catch (const std::invalid_argument &e) {
+				log::log(MSG(dbg) << "exception setting " << selected_name << " to " << this->new_value);
+			}
+			catch (const std::out_of_range &e) {
+				log::log(MSG(dbg) << "exception setting " << selected_name << " to " << this->new_value);
+			}
+
+			this->setting_value = false;
+			this->new_value = "";
 		}
-		//gameio::save(this->get_game(), "default_save.txt");
+		else {
+			unsigned int select = (this->selected % size);
+			if (select >= list.size()) {
+				node->do_action(flist[select - list.size()]);
+			}
+			else {
+				this->setting_value = !this->setting_value;
+				this->new_value = "";
+			}
+		}
+
 	});
-	this->bind(input::action_t::QUICK_LOAD, [this](const input::action_arg_t &) {
-		if (true) {
-			log::log(MSG(warn) << "close existing game before loading");
-			return;
+	this->bind(input::action_t::UP_ARROW, [this](const input::action_arg_t &) {
+		this->selected -= 1;
+	});
+	this->bind(input::action_t::DOWN_ARROW, [this](const input::action_arg_t &) {
+		this->selected += 1;
+	});
+	this->bind(input::action_t::RIGHT_ARROW, [this](const input::action_arg_t &) {
+		//this->setting_value = !this->setting_value;
+		//this->new_value = "";
+	});
+	this->bind(input::event_class::TEXT, [this](const input::action_arg_t &arg) {
+		if (this->setting_value) {
+			char c = arg.e.as_char();
+			this->new_value += c;
+			return true;
 		}
-		//gameio::load(this->get_game(), "default_save.txt");
+		return false;
 	});
 }
 
@@ -47,16 +91,52 @@ void CreateMode::on_enter() {}
 void CreateMode::render() {
 	Engine &engine = Engine::get();
 
-	if (engine.get_child("Generator")) {
+	// initial draw positions
+	int x = 75;
+	int y = engine.engine_coord_data->window_size.y - 65;
 
-		// Show that gamedata is still loading
-		engine.render_text({0, 100}, 12, "Loading gamedata...");
+	options::OptionNode *node = engine.get_child("Generator");
+	if (node) {
+		unsigned int i = 0;
+
+		// list everything
+		std::vector<std::string> list = node->list_variables();
+		std::vector<std::string> flist = node->list_functions();
+		unsigned int size = list.size() + flist.size();
+
+		for (auto &s : list) {
+			engine.render_text({x, y}, 20, s.c_str());
+			if (i == (this->selected % size)) {
+				engine.render_text({x - 35, y}, 20, ">>");
+			}
+			auto var = node->get_variable(s);
+			engine.render_text({x + 320, y}, 20, var.str_value().c_str());
+			y -= 24;
+			i++;
+		}
+		for (auto &s : flist) {
+			engine.render_text({x, y}, 20, (s + "()").c_str());
+			if (i == (this->selected % size)) {
+				engine.render_text({x - 35, y}, 20, ">>");
+			}
+			y -= 24;
+			i++;
+		}
+
+		if (this->setting_value) {
+			y -= 36;
+			engine.render_text({x + 45, y}, 20, "set value:");
+			engine.render_text({x + 320, y}, 20, this->new_value.c_str());
+			y -= 24;
+		}
 	}
 	else {
 		engine.render_text({0, 100}, 12, "No generator");
 	}
 
-	engine.render_text({0, 160}, 12, "Return -> start a new game");
+
+	// TODO show all bindings
+	engine.render_text({0, 160}, 12, "Return -> use selection");
 	engine.render_text({0, 140}, 12, "M      -> toggle modes");
 }
 
@@ -138,7 +218,13 @@ ActionMode::ActionMode()
 		}
 		else if (arg.e.cc == input::class_code_t(input::event_class::MOUSE_BUTTON, 1)) {
 			if (this->type_focus) {
-				this->on_single_click(0, arg.mouse);
+				this->place_selection(this->mousepos_phys3);
+
+				// shift click can place many buildings
+				if (!engine.get_input_manager().is_mod_down(input::modifier::SHIFT)) {
+					this->type_focus = nullptr;
+					return false;
+				}
 			}
 			else {
 				log::log(MSG(dbg) << "select");
@@ -181,27 +267,55 @@ Command ActionMode::get_action(const coord::phys3 &pos) const {
 	}
 }
 
+bool ActionMode::place_selection(coord::phys3 point) {
+	if (this->type_focus) {
+
+		// confirm building placement with left click
+		// first create foundation using the producer
+		Engine &engine = Engine::get();
+		UnitContainer *container = &engine.get_game()->placed_units;
+		UnitReference new_building = container->new_unit(*this->type_focus, *engine.player_focus(), point);
+
+		// task all selected villagers to build
+		// TODO: editor placed objects are completed already
+		if (new_building.is_valid()) {
+			Command cmd(*engine.player_focus(), new_building.get());
+			cmd.set_ability(ability_type::build);
+			this->selection.all_invoke(cmd);
+			return true;
+		}
+	}
+	return false;
+}
+
 void ActionMode::render() {
 	Engine &engine = Engine::get();
+	if (engine.get_game()) {
+		Player *player = engine.player_focus();
+		// draw actions mode indicator
+		int x = 5;
+		int y = engine.engine_coord_data->window_size.y - 25;
 
-	// draw actions mode indicator
-	int x = 5;
-	int y = engine.engine_coord_data->window_size.y - 25;
+		std::string status;
+		status += "Food: " + std::to_string(static_cast<int>(player->amount(game_resource::food)));
+		status += " | Wood: " + std::to_string(static_cast<int>(player->amount(game_resource::wood)));
+		status += " | Gold: " + std::to_string(static_cast<int>(player->amount(game_resource::gold)));
+		status += " | Stone: " + std::to_string(static_cast<int>(player->amount(game_resource::stone)));
+		status += " | Actions mode";
+		status += " ([" + std::to_string(player->color) + "] " + player->name + ")";
+		if (this->use_set_ability) {
+			status += " (" + std::to_string(this->ability) + ")";
+		}
+		engine.render_text({x, y}, 20, status.c_str());
 
-	std::string status;
-	status += "F: 0 | W: 0 | G: 0 | S: 0 | Actions mode";
-	if (this->use_set_ability) {
-		status += " (" + std::to_string(this->ability) + ")";
-	}
-	status += " (player " + std::to_string(engine.current_player) + ")";
-	engine.render_text({x, y}, 20, status.c_str());
 
-	// when a building is being placed
-	if (this->type_focus) {
-		auto txt = this->type_focus->default_texture();
-		auto size = this->type_focus->foundation_size;
-		tile_range center = building_center(this->mousepos_phys3, size);
-		txt->sample(center.draw.to_camgame().to_window().to_camhud(), engine.current_player);
+		// when a building is being placed
+		if (this->type_focus) {
+			auto txt = this->type_focus->default_texture();
+			auto size = this->type_focus->foundation_size;
+			tile_range center = building_center(this->mousepos_phys3, size);
+			txt->sample(center.draw.to_camgame().to_window().to_camhud(), player->color);
+		}
 	}
 
 	this->selection.on_drawhud();
@@ -214,25 +328,10 @@ bool ActionMode::on_mouse_wheel(int, coord::window) {
 bool ActionMode::on_single_click(int, coord::window point) {
 	if (this->type_focus) {
 
-		// confirm building placement with left click
-		// first create foundation using the producer
-		Engine &engine = Engine::get();
-		UnitContainer *container = &engine.get_game()->placed_units;
-		UnitReference new_building = container->new_unit(*this->type_focus, *engine.player_focus(), this->mousepos_phys3);
-
-		// task all selected villagers to build
-		// TODO: editor placed objects are completed already
-		if (new_building.is_valid()) {
-			Command cmd(*engine.player_focus(), new_building.get());
-			cmd.set_ability(ability_type::build);
-			this->selection.all_invoke(cmd);
-		}
-
 		// right click can cancel building placement
 		this->type_focus = nullptr;
 		return false;
 	}
-
 
 	auto mousepos_camgame = point.to_camgame();
 	auto mousepos_phys3 = mousepos_camgame.to_phys3();
@@ -417,7 +516,8 @@ bool EditorMode::on_single_click(int del, coord::window point) {
 
 GameControl::GameControl(openage::Engine *engine)
 	:
-	engine{engine} {
+	engine{engine},
+	active_mode_index{0} {
 
 	// add handlers
 	engine->register_drawhud_action(this);

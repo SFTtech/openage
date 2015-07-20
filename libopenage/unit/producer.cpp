@@ -517,6 +517,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	auto build_attr = new Attribute<attr_type::building>();
 	build_attr->foundation_terrain = this->foundation_terrain;
 	build_attr->pp = trainable2;
+	build_attr->gather_point = unit->location->pos.draw;
 	build_attr->completion_state = this->enable_collisions? object_state::placed : object_state::placed_no_collision;
 	unit->add_attribute(build_attr);
 
@@ -534,6 +535,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	}
 
 	// building can train new units and ungarrison
+	unit->give_ability(std::make_shared<SetPointAbility>());
 	unit->give_ability(std::make_shared<TrainAbility>());
 	unit->give_ability(std::make_shared<UngarrisonAbility>());
 }

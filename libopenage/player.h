@@ -44,6 +44,21 @@ public:
 	 */
 	bool owns(Unit &) const;
 
+	/**
+	 * add to stockpile
+	 */
+	void recieve(const game_resource resource, double amount);
+
+	/**
+	 * remove from stockpile if available
+	 * TODO parameter uses set of resources
+	 */
+	bool deduct(const game_resource resource, double amount);
+
+	/**
+	 * current stockpile amount
+	 */
+	double amount(const game_resource resource) const;
 
 private:
 	std::unordered_map<game_resource, double> resources;

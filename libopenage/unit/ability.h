@@ -26,9 +26,10 @@ class UnitType;
  */
 enum class ability_type {
 	move,
+	patrol,
+	set_point,
 	garrison,
 	ungarrison,
-	patrol,
 	train,
 	build,
 	research,
@@ -109,6 +110,23 @@ public:
 private:
 	Sound *sound;
 };
+
+/*
+ * sets the gather point on buildings
+ */
+class SetPointAbility: public UnitAbility {
+public:
+	SetPointAbility();
+
+	ability_type type() override {
+		return ability_type::set_point;
+	}
+
+	bool can_invoke(Unit &to_modify, const Command &cmd) override;
+
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+};
+
 
 /*
  * ability to garrision inside a building

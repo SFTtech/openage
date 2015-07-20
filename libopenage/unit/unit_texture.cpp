@@ -59,7 +59,7 @@ void UnitTexture::draw(const coord::camgame &draw_pos, unsigned int frame, unsig
 
 	// draw texture
 	if (this->draw_this) {
-		unsigned int to_draw = this->subtexture(this->texture, 0, frame);
+		unsigned int to_draw = frame % this->texture->get_subtexture_count();
 		this->texture->draw(draw_pos, PLAYERCOLORED, false, to_draw, color);
 	}
 }
@@ -124,11 +124,13 @@ void UnitTexture::initialise(GameSpec &spec) {
 		// the graphic frame count includes deltas
 		unsigned int subtextures = this->texture->get_subtexture_count();
 		if (subtextures >= this->frame_count) {
+
+			// angles with graphic data
 			this->angles_included = subtextures / this->frame_count;
 			this->angles_mirrored = this->angle_count - this->angles_included;
 			this->safe_frame_count = this->frame_count;
 		}
-		else{
+		else {
 			this->angles_included = 1;
 			this->angles_mirrored = 0;
 			this->safe_frame_count = subtextures;
