@@ -62,6 +62,11 @@ public:
 	bool is_valid() const;
 
 	/**
+	 * pixel size of this texture
+	 */
+	coord::window size() const;
+
+	/**
 	 * a sample drawing for hud
 	 */
 	void sample(const coord::camhud &draw_pos, unsigned color=1) const;

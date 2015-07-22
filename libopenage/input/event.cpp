@@ -7,14 +7,14 @@
 namespace openage {
 namespace input {
 
-class_code_t::class_code_t(event_class cl, code_t code)
+ClassCode::ClassCode(event_class cl, code_t code)
 	:
 	eclass(cl),
 	code(code) {
 }
 
 
-std::vector<event_class> class_code_t::get_classes() const {
+std::vector<event_class> ClassCode::get_classes() const {
 	std::vector<event_class> result;
 
 	// use event_base to traverse up the class tree
@@ -28,7 +28,7 @@ std::vector<event_class> class_code_t::get_classes() const {
 }
 
 
-bool class_code_t::has_class(const event_class &ec) const {
+bool ClassCode::has_class(const event_class &ec) const {
 	for (auto c : this->get_classes()) {
 		if (c == ec) {
 			return true;
@@ -38,7 +38,7 @@ bool class_code_t::has_class(const event_class &ec) const {
 }
 
 
-bool operator ==(class_code_t a, class_code_t b) {
+bool operator ==(ClassCode a, ClassCode b) {
 	return a.eclass == b.eclass && a.code == b.code;
 }
 
@@ -89,7 +89,7 @@ int modifier_hash::operator()(const modifier &m) const {
 }
 
 
-int class_code_hash::operator()(const class_code_t &e) const {
+int class_code_hash::operator()(const ClassCode &e) const {
 	return event_class_hash()(e.eclass) ^
 	       std::hash<int>()(e.code) * 3664657;
 }

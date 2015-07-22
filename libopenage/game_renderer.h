@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_GAME_RENDERER_H_
 #define OPENAGE_GAME_RENDERER_H_
@@ -17,21 +17,29 @@
 
 namespace openage {
 
-// TODO include fog drawing etc
-struct render_settings {
-public:
-	render_settings();
 
-	bool draw_grid;
-	bool draw_debug;
-	bool terrain_blending;
+/**
+ * Options for the renderer.
+ * These will be included in the user interface
+ * via reflection, so adding new members will
+ * always be visible
+ *
+ * TODO include fog drawing etc
+ */
+class RenderOptions : public options::OptionNode {
+public:
+	RenderOptions();
+
+	options::Var<bool> draw_grid;
+	options::Var<bool> draw_debug;
+	options::Var<bool> terrain_blending;
 };
 
 /**
  * renders the editor and action views
  *
  */
-class GameRenderer : DrawHandler, options::OptionNode {
+class GameRenderer : DrawHandler {
 public:
 	GameRenderer(openage::Engine *e);
 	~GameRenderer();
@@ -55,7 +63,7 @@ public:
 
 	Texture *gaben;
 
-	render_settings settings;
+	RenderOptions settings;
 
 private:
 	openage::Engine *engine;

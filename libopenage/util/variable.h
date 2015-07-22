@@ -16,7 +16,7 @@ public:
 	/**
 	 * sets the type and value
 	 */
-    template<class T, class V> void set(const V &value);
+	template<class T, class V> void set(const V &value);
 
 	/**
 	 * returns the stored value
@@ -36,17 +36,18 @@ public:
 		value(initial_value) {}
 
 
-    const T &get() const {
-    	return this->value;
-    }
+	const T &get() const {
+		return this->value;
+	}
 
-    void set(const T &v) {
-    	this->value = v;
-    }
+	void set(const T &v) {
+		this->value = v;
+	}
 
-private:
+	/**
+	 * accessable typed value
+	 */
 	T value;
-
 };
 
 

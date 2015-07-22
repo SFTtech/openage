@@ -16,6 +16,13 @@ using tileset_t = std::unordered_set<coord::tile>;
 
 coord::tile random_tile(rng::RNG &rng, tileset_t tiles);
 
+constexpr coord::tile_delta const neigh_tiles[] = {
+	{ 1,  0},
+	{-1,  0},
+	{ 0,  1},
+	{ 0, -1}
+};
+
 class Region {
 public:
 	Region(int size);

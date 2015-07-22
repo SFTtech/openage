@@ -167,34 +167,34 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	unit->graphics = &this->graphics;
 
 	// colour
-	unit->add_attribute(new Attribute<attr_type::owner>(player));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::owner>>(player));
 
 	// hitpoints if available
 	if (this->unit_data.hit_points > 0) {
-		unit->add_attribute(new Attribute<attr_type::hitpoints>(this->unit_data.hit_points));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(this->unit_data.hit_points));
 	}
 
 	// collectable resources
 	if (this->unit_data.unit_class == gamedata::unit_classes::TREES) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::wood, 125));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::wood, 125));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::BERRY_BUSH) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::food, 100));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 100));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::SEA_FISH) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::food, 200));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 200));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::PREY_ANIMAL) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::food, 140));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 140));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::SHEEP) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::food, 100));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 100));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::GOLD_MINE) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::gold, 800));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::gold, 800));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::STONE_MINE) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::stone, 350));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::stone, 350));
 	}
 
 	// decaying units have a timed lifespan
@@ -345,7 +345,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	 * basic attributes
 	 */
 	if (!unit->has_attribute(attr_type::direction)) {
-		unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::direction>>(coord::phys3_delta{ 1, 0, 0 }));
 	}
 
 	/*
@@ -353,17 +353,17 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	 * where 1.5 in game seconds pass in 1 real second
 	 */
 	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;
-	unit->add_attribute(new Attribute<attr_type::speed>(sp));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::speed>>(sp));
 
 	// projectile of melee attacks
 	if (this->unit_data.projectile_unit_id > 0 && this->projectile) {
 
 		// calculate requirements for ranged attacks
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
-		unit->add_attribute(new Attribute<attr_type::attack>(this->projectile, range_phys, 48000, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(this->projectile, range_phys, 48000, 1, this->graphics));
 	}
 	else {
-		unit->add_attribute(new Attribute<attr_type::attack>(nullptr, 0, 0, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(nullptr, 0, 0, 1, this->graphics));
 	}
 }
 
@@ -391,7 +391,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 
 	// add worker attributes
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
-		unit->add_attribute(new Attribute<attr_type::gatherer>());
+		unit->add_attribute(std::make_shared<Attribute<attr_type::gatherer>>());
 
 		// add graphic ids for resource actions
 		auto &gather_attr = unit->get_attribute<attr_type::gatherer>();
@@ -426,7 +426,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 		unit->give_ability(std::make_shared<BuildAbility>(this->on_attack));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::FISHING_BOAT) {
-		unit->add_attribute(new Attribute<attr_type::gatherer>());
+		unit->add_attribute(std::make_shared<Attribute<attr_type::gatherer>>());
 
 		// add fishing abilites
 		auto &gather_attr = unit->get_attribute<attr_type::gatherer>();
@@ -510,11 +510,11 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	unit->unit_class = this->unit_data.unit_class;
 	unit->graphics = &this->graphics;
 
-	auto player_attr = new Attribute<attr_type::owner>(player);
+	auto player_attr = std::make_shared<Attribute<attr_type::owner>>(player);
 	unit->add_attribute(player_attr);
 
 	// building specific attribute
-	auto build_attr = new Attribute<attr_type::building>();
+	auto build_attr = std::make_shared<Attribute<attr_type::building>>();
 	build_attr->foundation_terrain = this->foundation_terrain;
 	build_attr->pp = trainable2;
 	build_attr->gather_point = unit->location->pos.draw;
@@ -522,15 +522,15 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	unit->add_attribute(build_attr);
 
 	// garrison and hp for all buildings
-	unit->add_attribute(new Attribute<attr_type::garrison>());
-	unit->add_attribute(new Attribute<attr_type::hitpoints>(this->unit_data.hit_points));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::garrison>>());
+	unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(this->unit_data.hit_points));
 
 	bool has_destruct_graphic = this->destroyed != nullptr;
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
 
 	if (this->unit_data.projectile_unit_id > 0 && this->projectile) {
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
-		unit->add_attribute(new Attribute<attr_type::attack>(this->projectile, range_phys, 350000, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(this->projectile, range_phys, 350000, 1, this->graphics));
 		unit->give_ability(std::make_shared<AttackAbility>());
 	}
 
@@ -604,10 +604,25 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 }
 
 TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
-	u.log(MSG(dbg) << "adding annex " << annex_id);
 
 	// find annex foundation size
-	auto b = dataspec.get_building_data(annex_id);
+	auto b = this->dataspec.get_building_data(annex_id);
+	if (b) {
+		u.log(MSG(dbg) << "Adding annex " << annex_id);
+	}
+	else {
+		u.log(MSG(warn) << "Invalid annex data id " << annex_id);
+		return nullptr;
+	}
+
+	// for use in lambda drawing functions
+	auto annex_type = this->dataspec.get_type(annex_id);
+	if (!annex_type) {
+		u.log(MSG(warn) << "Invalid annex type id " << annex_id);
+		return nullptr;
+	}
+
+	// foundation size
 	coord::tile_delta annex_foundation = {
 		static_cast<int>(b->radius_size0 * 2),
 		static_cast<int>(b->radius_size1 * 2),
@@ -622,9 +637,6 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	TerrainObject *annex_loc = u.location->make_annex<SquareObject>(annex_foundation);
 	object_state state = c? object_state::placed : object_state::placed_no_collision;
 	annex_loc->place(t, start_tile, state);
-
-	// weak ptr for use in lambda drawing functions
-	auto annex_type = dataspec.get_type(annex_id);
 
 	// create special drawing functions for annexes,
 	annex_loc->draw = [annex_loc, annex_type, &u, c]() {
@@ -681,9 +693,9 @@ void ProjectileProducer::initialise(Unit *unit, Player &) {
 
 	// projectile speed
 	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;
-	unit->add_attribute(new Attribute<attr_type::speed>(sp));
-	unit->add_attribute(new Attribute<attr_type::projectile>(this->unit_data.projectile_arc));
-	unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::speed>>(sp));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::projectile>>(this->unit_data.projectile_arc));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::direction>>(coord::phys3_delta{ 1, 0, 0 }));
 
 	// if destruction graphic is available
 	if (this->destroyed) {

@@ -22,12 +22,13 @@ CreateMode::CreateMode()
 		std::vector<std::string> list = node->list_variables();
 		std::vector<std::string> flist = node->list_functions();
 		unsigned int size = list.size() + flist.size();
+		unsigned int selected = util::mod<int>(this->selected, size);
 
 		if (this->setting_value) {
 
 			// modifying a value
 			std::vector<std::string> list = node->list_variables();
-			std::string selected_name = list[this->selected % size];
+			std::string selected_name = list[selected];
 			auto &var = node->get_variable_rw(selected_name);
 
 			// try change the value
@@ -55,9 +56,8 @@ CreateMode::CreateMode()
 			this->new_value = "";
 		}
 		else {
-			unsigned int select = (this->selected % size);
-			if (select >= list.size()) {
-				node->do_action(flist[select - list.size()]);
+			if (selected >= list.size()) {
+				node->do_action(flist[selected - list.size()]);
 			}
 			else {
 				this->setting_value = !this->setting_value;
@@ -71,10 +71,6 @@ CreateMode::CreateMode()
 	});
 	this->bind(input::action_t::DOWN_ARROW, [this](const input::action_arg_t &) {
 		this->selected += 1;
-	});
-	this->bind(input::action_t::RIGHT_ARROW, [this](const input::action_arg_t &) {
-		//this->setting_value = !this->setting_value;
-		//this->new_value = "";
 	});
 	this->bind(input::event_class::TEXT, [this](const input::action_arg_t &arg) {
 		if (this->setting_value) {
@@ -99,24 +95,26 @@ void CreateMode::render() {
 	if (node) {
 		unsigned int i = 0;
 
+
 		// list everything
 		std::vector<std::string> list = node->list_variables();
 		std::vector<std::string> flist = node->list_functions();
 		unsigned int size = list.size() + flist.size();
+		unsigned int selected = util::mod<int>(this->selected, size);
 
 		for (auto &s : list) {
-			engine.render_text({x, y}, 20, s.c_str());
-			if (i == (this->selected % size)) {
+			engine.render_text({x, y}, 20, "%s", s.c_str());
+			if (i == selected) {
 				engine.render_text({x - 35, y}, 20, ">>");
 			}
 			auto var = node->get_variable(s);
-			engine.render_text({x + 320, y}, 20, var.str_value().c_str());
+			engine.render_text({x + 320, y}, 20, "%s", var.str_value().c_str());
 			y -= 24;
 			i++;
 		}
 		for (auto &s : flist) {
-			engine.render_text({x, y}, 20, (s + "()").c_str());
-			if (i == (this->selected % size)) {
+			engine.render_text({x, y}, 20, "%s", (s + "()").c_str());
+			if (i == selected) {
 				engine.render_text({x - 35, y}, 20, ">>");
 			}
 			y -= 24;
@@ -126,7 +124,7 @@ void CreateMode::render() {
 		if (this->setting_value) {
 			y -= 36;
 			engine.render_text({x + 45, y}, 20, "set value:");
-			engine.render_text({x + 320, y}, 20, this->new_value.c_str());
+			engine.render_text({x + 320, y}, 20, "%s", this->new_value.c_str());
 			y -= 24;
 		}
 	}
@@ -143,14 +141,18 @@ void CreateMode::render() {
 ActionMode::ActionMode()
 	:
 	use_set_ability{false},
-	type_focus{nullptr} {
+	type_focus{nullptr},
+	rng{0} {
 
 	this->bind(input::action_t::TRAIN_OBJECT, [this](const input::action_arg_t &) {
 
 		// attempt to train editor selected object
 		Engine &engine = Engine::get();
 		GameSpec *spec = engine.get_game()->get_spec();
-		Command cmd(*engine.player_focus(), spec->get_type(590));
+
+		// randomly select between male and female villagers
+		auto type = spec->get_type(this->rng.probability(0.5)? 83 : 293);
+		Command cmd(*engine.player_focus(), type);
 		this->selection.all_invoke(cmd);
 	});
 	this->bind(input::action_t::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
@@ -166,6 +168,10 @@ ActionMode::ActionMode()
 	this->bind(input::action_t::SET_ABILITY_GATHER, [this](const input::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::gather;
+	});
+	this->bind(input::action_t::SET_ABILITY_GARRISON, [this](const input::action_arg_t &) {
+		this->use_set_ability = true;
+		this->ability = ability_type::garrison;
 	});
 	this->bind(input::action_t::SPAWN_VILLAGER, [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
@@ -211,12 +217,12 @@ ActionMode::ActionMode()
 		this->mousepos_tile = this->mousepos_phys3.to_tile3().to_tile();
 
 		// drag selection box
-		if (arg.e.cc == input::class_code_t(input::event_class::MOUSE_MOTION, 0) &&
+		if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_MOTION, 0) &&
 			engine.get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 1)) {
 			this->selection.drag_update(mousepos_camgame);
 			return true;
 		}
-		else if (arg.e.cc == input::class_code_t(input::event_class::MOUSE_BUTTON, 1)) {
+		else if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_BUTTON, 1)) {
 			if (this->type_focus) {
 				this->place_selection(this->mousepos_phys3);
 
@@ -234,7 +240,7 @@ ActionMode::ActionMode()
 			}
 			return true;
 		}
-		else if (arg.e.cc == input::class_code_t(input::event_class::MOUSE_BUTTON, 3)) {
+		else if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_BUTTON, 3)) {
 			this->on_single_click(0, arg.mouse);
 			return true;
 		}
@@ -306,7 +312,7 @@ void ActionMode::render() {
 		if (this->use_set_ability) {
 			status += " (" + std::to_string(this->ability) + ")";
 		}
-		engine.render_text({x, y}, 20, status.c_str());
+		engine.render_text({x, y}, 20, "%s", status.c_str());
 
 
 		// when a building is being placed
@@ -316,6 +322,9 @@ void ActionMode::render() {
 			tile_range center = building_center(this->mousepos_phys3, size);
 			txt->sample(center.draw.to_camgame().to_window().to_camhud(), player->color);
 		}
+	}
+	else {
+		engine.render_text({0, 140}, 12, "Action Mode requires a game");
 	}
 
 	this->selection.on_drawhud();
@@ -338,6 +347,7 @@ bool ActionMode::on_single_click(int, coord::window point) {
 
 	auto cmd = this->get_action(mousepos_phys3);
 	this->selection.all_invoke(cmd);
+	this->use_set_ability = false;
 
 	return false;
 }
@@ -348,9 +358,9 @@ EditorMode::EditorMode()
 	editor_current_type{0},
 	editor_category{0},
 	selected_type{nullptr},
-	paint_terrain{true},
-	building_placement{false} {
+	paint_terrain{true} {
 
+	// bind required hotkeys
 	this->bind(input::action_t::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
 		log::log(MSG(dbg) << "change category");
 		Engine &engine = Engine::get();
@@ -394,12 +404,12 @@ EditorMode::EditorMode()
 
 	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
 		Engine &engine = Engine::get();
-		if (arg.e.cc == input::class_code_t(input::event_class::MOUSE_BUTTON, 1) ||
+		if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_BUTTON, 1) ||
 			engine.get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 1)) {
 			this->on_single_click(0, arg.mouse);
 			return true;
 		}
-		else if (arg.e.cc == input::class_code_t(input::event_class::MOUSE_BUTTON, 3) ||
+		else if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_BUTTON, 3) ||
 			engine.get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 3)) {
 			this->on_single_click(1, arg.mouse);
 			return true;
@@ -423,14 +433,16 @@ void EditorMode::render() {
 		if (this->paint_terrain && game->terrain) {
 			coord::window bpreview_pos{63, 84};
 			game->terrain->texture(this->editor_current_terrain)->draw(bpreview_pos.to_camhud(), ALPHAMASKED);
-			engine.render_text(text_pos, 20, ("Terrain " + std::to_string(this->editor_current_terrain)).c_str());
+			engine.render_text(text_pos, 20, "%s", ("Terrain " + std::to_string(this->editor_current_terrain)).c_str());
 		}
-		else if (selected_type) {
+		else if (this->selected_type) {
 			// and the current active building
-			auto txt = selected_type->default_texture();
-			coord::window bpreview_pos{163, 124};
-			txt->sample(bpreview_pos.to_camhud(), engine.current_player);
-			engine.render_text(text_pos, 20, this->category.c_str());
+			auto txt = this->selected_type->default_texture();
+			coord::window bpreview_pos {163, 154};
+			txt->sample(bpreview_pos.to_camhud(), engine.player_focus()->color);
+
+			std::string selected_str = this->category + " - " + this->selected_type->name();
+			engine.render_text(text_pos, 20, "%s", selected_str.c_str());
 		}
 
 		engine.render_text({0, 180}, 12, "Wheel  -> change item");

@@ -38,6 +38,7 @@ enum class action_t {
 	DISABLE_SET_ABILITY,
 	SET_ABILITY_MOVE,
 	SET_ABILITY_GATHER,
+	SET_ABILITY_GARRISON,
 	TOGGLE_CONSOLE,
 	SPAWN_VILLAGER,
 	KILL_UNIT,
@@ -76,8 +77,6 @@ using action_id_t = action_t; //std::pair<action_t, int>;
 
 
 struct action_arg_t {
-public:
-	action_arg_t(Event e, coord::window m, coord::window_delta mm);
 
 	// Triggering event
 	const Event e;

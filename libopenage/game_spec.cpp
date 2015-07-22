@@ -12,8 +12,13 @@
 
 namespace openage {
 
-GameSpec::GameSpec(AssetManager *am)
+GameSpec::GameSpec(AssetManager &am)
 	:
+	data_path{"converted/gamedata"},
+	graphics_path{"converted/graphics"},
+	terrain_path{"converted/terrain"},
+	blend_path{"converted/blendomatic"},
+	sound_path{"converted/sounds/"},
 	gamedata_loaded{false} {
 
 	// begin loading gamedata
@@ -22,17 +27,17 @@ GameSpec::GameSpec(AssetManager *am)
 
 GameSpec::~GameSpec() {}
 
-void GameSpec::initialize(AssetManager *am) {
+void GameSpec::initialize(AssetManager &am) {
 	load_timer.start();
 
 	this->load_terrain(am);
 
-	this->assetmanager = am;
+	this->assetmanager = &am;
 	auto gamedata_load_function = [this]() {
 		log::log(MSG(info) << "loading game specification files... stand by, will be faster soon...");
-		util::Dir gamedata_dir = this->assetmanager->get_data_dir()->append("converted/gamedata");
-		auto gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
-		this->on_gamedata_loaded(gamedata);
+		util::Dir gamedata_dir = this->assetmanager->get_data_dir()->append(this->data_path);
+		this->gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
+		this->on_gamedata_loaded(this->gamedata);
 		this->gamedata_loaded = true;
 		log::log(MSG(info).fmt("Loading time  [data]: %5.3f s", load_timer.getval() / 1e9));
 		return true;
@@ -41,12 +46,6 @@ void GameSpec::initialize(AssetManager *am) {
 	// add job
 	Engine &engine = Engine::get();
 	this->gamedata_load_job = engine.get_job_manager()->enqueue<bool>(gamedata_load_function);
-}
-
-void GameSpec::check_updates() {
-	if (not this->gamedata_loaded and this->gamedata_load_job.is_finished()) {
-		//auto gamedata = this->gamedata_load_job.get_result();
-	}
 }
 
 bool GameSpec::load_complete() {
@@ -78,7 +77,7 @@ Texture *GameSpec::get_texture(index_t graphic_id) {
 	}
 
 	log::log(MSG(info) << "   slp id/name: " << slp_id << " " << this->graphics[graphic_id]->name0);
-	std::string tex_fname = util::sformat("converted/Data/graphics.drs/%d.slp.png", slp_id);
+	std::string tex_fname = util::sformat((this->graphics_path + "/%d.slp.png").c_str(), slp_id);
 
 	// get tex if file is available
 	Texture *tex = nullptr;
@@ -163,7 +162,7 @@ std::vector<const gamedata::unit_command *> GameSpec::get_command_data(index_t u
 
 void GameSpec::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 	util::Dir *data_dir = this->assetmanager->get_data_dir();
-	util::Dir asset_dir = data_dir->append("converted");
+	util::Dir sound_dir = data_dir->append(this->sound_path);
 
 	// create graphic id => graphic map
 	for (auto &graphic : gamedata[0].graphics.data) {
@@ -176,14 +175,10 @@ void GameSpec::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 		this->unit_textures.insert({g.first, std::make_shared<UnitTexture>(*this, g.second)});
 	}
 
-	auto get_sound_file_location = [asset_dir](int32_t resource_id) -> std::string {
-		std::string snd_file_location;
-		// We check in sounds_x1.drs folder first in case we need to override
-		for (const char *sound_dir : {"sounds_x1.drs", "sounds.drs"}) {
-			snd_file_location = util::sformat("Data/%s/%d.opus", sound_dir, resource_id);
-			if (util::file_size(asset_dir.join(snd_file_location)) > 0) {
-				return snd_file_location;
-			}
+	auto get_sound_file_location = [sound_dir](int32_t resource_id) -> std::string {
+		std::string snd_filename = util::sformat("/%d.opus", resource_id);
+		if (util::file_size(sound_dir.join(snd_filename)) > 0) {
+			return snd_filename;
 		}
 
 		// We could not find the sound file for the provided resource_id in both directories
@@ -222,7 +217,7 @@ void GameSpec::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 	// load the requested sounds.
 	Engine &engine = Engine::get();
 	audio::AudioManager &am = engine.get_audio_manager();
-	am.load_resources(asset_dir, sound_files);
+	am.load_resources(sound_dir, sound_files);
 
 	// this final step occurs after loading media
 	// as producers require both the graphics and sounds
@@ -308,12 +303,11 @@ void GameSpec::load_projectile(const gamedata::unit_projectile &proj, unit_type_
 	}
 }
 
-void GameSpec::load_terrain(AssetManager *am) {
+void GameSpec::load_terrain(AssetManager &am) {
 
 	// Terrain data files
-	util::Dir *data_dir = am->get_data_dir();
+	util::Dir *data_dir = am.get_data_dir();
 	util::Dir asset_dir = data_dir->append("converted");
-
 	std::vector<gamedata::string_resource> string_resources;
 	util::read_csv_file(asset_dir.join("string_resources.docx"), string_resources);
 	std::vector<gamedata::terrain_type> terrain_meta;
@@ -348,8 +342,8 @@ void GameSpec::load_terrain(AssetManager *am) {
 		terrain_data.terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
 		// TODO: remove hardcoding and rely on nyan data
-		auto terraintex_filename = util::sformat("converted/Data/terrain.drs/%d.slp.png", line->slp_id);
-		auto new_texture = am->get_texture(terraintex_filename);
+		auto terraintex_filename = util::sformat((this->terrain_path + "/%d.slp.png").c_str(), line->slp_id);
+		auto new_texture = am.get_texture(terraintex_filename);
 
 		terrain_data.textures[terrain_id] = new_texture;
 	}
@@ -358,8 +352,8 @@ void GameSpec::load_terrain(AssetManager *am) {
 	for (size_t i = 0; i < terrain_data.blendmode_count; i++) {
 		auto line = &blending_meta[i];
 
-		std::string mask_filename = util::sformat("converted/blendomatic.dat/mode%02d.png", line->blend_mode);
-		terrain_data.blending_masks[i] = am->get_texture(mask_filename);
+		std::string mask_filename = util::sformat((this->blend_path + "/mode%02d.png").c_str(), line->blend_mode);
+		terrain_data.blending_masks[i] = am.get_texture(mask_filename);
 	}
 }
 

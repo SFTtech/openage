@@ -76,12 +76,11 @@ using modset_t = std::unordered_set<modifier, modifier_hash>;
 
 
 /**
- * a set sdl event types
- * TODO to char function
+ * base event type containing event class and event code
  */
-struct class_code_t {
+class ClassCode {
 public:
-	class_code_t(event_class cl, code_t code);
+	ClassCode(event_class cl, code_t code);
 
 	/**
 	 * classes ordered with most specific first
@@ -94,11 +93,11 @@ public:
 };
 
 
-bool operator ==(class_code_t a, class_code_t b);
+bool operator ==(ClassCode a, ClassCode b);
 
 
 struct class_code_hash {
-	int operator()(const class_code_t &k) const;
+	int operator()(const ClassCode &k) const;
 };
 
 
@@ -122,7 +121,7 @@ public:
 
 	bool operator ==(const Event &other) const;
 
-	const class_code_t cc;
+	const ClassCode cc;
 	const modset_t mod;
 };
 

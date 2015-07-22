@@ -9,44 +9,100 @@ namespace options {
 OptionValue::OptionValue(bool b)
 	:
 	type{option_type::bool_type},
-	var{std::make_unique<util::Variable<bool>>(b)} {}
+	owner{true},
+	var{new util::Variable<bool>(b)} {}
 
 
 OptionValue::OptionValue(int i)
 	:
 	type{option_type::int_type},
-	var{std::make_unique<util::Variable<int>>(i)} {}
+	owner{true},
+	var{new util::Variable<int>(i)} {}
 
 
 OptionValue::OptionValue(double d)
 	:
 	type{option_type::double_type},
-	var{std::make_unique<util::Variable<double>>(d)} {}
+	owner{true},
+	var{new util::Variable<double>(d)} {}
 
 
 OptionValue::OptionValue(const char *s)
 	:
 	type{option_type::string_type},
-	var{std::make_unique<util::Variable<std::string>>(std::string(s))} {}
+	owner{true},
+	var{new util::Variable<std::string>(std::string(s))} {}
 
 
 OptionValue::OptionValue(const std::string &s)
 	:
 	type{option_type::string_type},
-	var{std::make_unique<util::Variable<std::string>>(s)} {}
+	owner{true},
+	var{new util::Variable<std::string>(s)} {}
 
 
 OptionValue::OptionValue(const option_list &l)
 	:
 	type{option_type::list_type},
-	var{std::make_unique<util::Variable<option_list>>(l)} {}
+	owner{true},
+	var{new util::Variable<option_list>(l)} {}
 
 
 OptionValue::OptionValue(const OptionValue &v)
 	:
-	type{v.type} {
+	type{v.type},
+	owner{false},
+	var{nullptr} {
 	this->set(v);
 }
+
+
+OptionValue::OptionValue(util::Variable<bool> *b)
+	:
+	type{option_type::bool_type},
+	owner{false},
+	var{b} {}
+
+
+OptionValue::OptionValue(util::Variable<int> *i)
+	:
+	type{option_type::int_type},
+	owner{false},
+	var{i} {}
+
+
+OptionValue::OptionValue(util::Variable<double> *d)
+	:
+	type{option_type::double_type},
+	owner{false},
+	var{d} {}
+
+
+OptionValue::OptionValue(util::Variable<std::string> *s)
+	:
+	type{option_type::string_type},
+	owner{false},
+	var{s} {}
+
+
+OptionValue::OptionValue(util::Variable<option_list> *l)
+	:
+	type{option_type::list_type},
+	owner{false},
+	var{l} {}
+
+
+OptionValue::~OptionValue() {
+	if (this->owner) {
+		delete this->var;
+	}
+}
+
+
+bool OptionValue::is_reference() const {
+	return !this->owner;
+}
+
 
 bool OptionValue::operator ==(const OptionValue &other) const {
 	if (this->type != other.type) {
@@ -83,6 +139,7 @@ const OptionValue &OptionValue::operator =(const OptionValue &other) {
 	}
 	return *this;
 }
+
 
 void OptionValue::set(const OptionValue &other) {
 	switch (this->type) {
@@ -139,6 +196,7 @@ std::string OptionValue::str_value() const {
 	return "";
 }
 
+
 OptionValue parse(option_type t, std::string s) {
 	switch(t) {
 	case options::option_type::bool_type:
@@ -189,19 +247,13 @@ std::vector<std::string> OptionNode::list_options(bool recurse, std::string inde
 	std::vector<std::string> result;
 	result.push_back(indent + "node " + this->name + " {");
 	std::string inner_indent = indent + "\t";
-	for (auto &p : bools) {
-		result.push_back(inner_indent + "bool " + p.first + " = " + (*p.second ? "true" : "false"));
-	}
-	for (auto &p : ints) {
-		result.push_back(inner_indent + "int " + p.first + " = " + std::to_string(*p.second));
-	}
 	for (auto &v : varmap) {
 		result.push_back(inner_indent + "var " + v.first + " = " + v.second.str_value());
 	}
 	for (auto &f : actions) {
 		result.push_back(inner_indent + "func " + f.first + "()");
 	}
-	for (auto &p : panels) {
+	for (auto &p : children) {
 		for (auto &line : p.second->list_options(recurse, inner_indent)) {
 			result.push_back(line);
 		}
@@ -209,6 +261,7 @@ std::vector<std::string> OptionNode::list_options(bool recurse, std::string inde
 	result.push_back(indent + "}");
 	return result;
 }
+
 
 std::vector<std::string> OptionNode::list_variables() const {
 	std::vector<std::string> result;
@@ -218,6 +271,7 @@ std::vector<std::string> OptionNode::list_variables() const {
 	return result;
 }
 
+
 std::vector<std::string> OptionNode::list_functions() const {
 	std::vector<std::string> result;
 	for (auto &f : this->actions) {
@@ -226,17 +280,20 @@ std::vector<std::string> OptionNode::list_functions() const {
 	return result;
 }
 
+
 OptionValue &OptionNode::get_variable_rw(const std::string &name) {
 	return this->varmap.at(name);
 }
+
 
 const OptionValue &OptionNode::get_variable(const std::string &name) const {
 	return this->varmap.at(name);
 }
 
+
 OptionNode *OptionNode::get_child(const std::string &name) const {
-	auto child = this->panels.find(name);
-	if (child == this->panels.end()) {
+	auto child = this->children.find(name);
+	if (child == this->children.end()) {
 		return nullptr;
 	}
 	return child->second;
@@ -260,25 +317,6 @@ void OptionNode::do_action(const std::string &aname) {
 }
 
 
-bool OptionNode::get_bool(const std::string &vname, bool def) const {
-	auto b = bools.find(vname);
-	if (b != bools.end()) {
-		return *b->second;
-	}
-	return def;
-}
-
-
-void OptionNode::add_bool(const std::string &vname, bool *value) {
-	bools.emplace(std::make_pair(vname, value));
-}
-
-
-void OptionNode::add_int(const std::string &vname, int *value) {
-	ints.emplace(std::make_pair(vname, value));
-}
-
-
 void OptionNode::add(const std::string &vname, const OptionValue &value) {
 	varmap.emplace(std::make_pair(vname, value));
 }
@@ -290,12 +328,12 @@ void OptionNode::add_action(const OptionAction &action) {
 
 
 void OptionNode::add_panel(OptionNode *child) {
-	panels.emplace(std::make_pair(child->name, child));
+	children.emplace(std::make_pair(child->name, child));
 }
 
 
 void OptionNode::remove_panel(OptionNode *child) {
-	panels.erase(child->name);
+	children.erase(child->name);
 }
 
 

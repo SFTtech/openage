@@ -66,21 +66,14 @@ tileset_t Region::subset(rng::RNG &rng, coord::tile tile, unsigned int number) c
 
 			// try fill the edge list
 			for (auto &t : subtiles) {
-				coord::tile a{t.ne + 1, t.se};
-				if (this->tiles.count(a) && !subtiles.count(a)) {
-					edge_set.emplace(a);
-				}
-				coord::tile b{t.ne, t.se + 1};
-				if (this->tiles.count(b) && !subtiles.count(b)) {
-					edge_set.emplace(b);
-				}
-				coord::tile c{t.ne - 1, t.se};
-				if (this->tiles.count(c) && !subtiles.count(c)) {
-					edge_set.emplace(c);
-				}
-				coord::tile d{t.ne, t.se - 1};
-				if (this->tiles.count(d) && !subtiles.count(d)) {
-					edge_set.emplace(d);
+
+				// check adjacent tiles
+				for (int i = 0; i < 4; ++i) {
+					coord::tile adj = t + neigh_tiles[i];
+					if (this->tiles.count(adj) &&
+						!subtiles.count(adj)) {
+						edge_set.emplace(adj);
+					}
 				}
 			}
 			if (edge_set.empty()) {
@@ -93,7 +86,9 @@ tileset_t Region::subset(rng::RNG &rng, coord::tile tile, unsigned int number) c
 		// transfer a random tile
 		coord::tile next_tile = random_tile(rng, edge_set);
 		edge_set.erase(next_tile);
-		subtiles.emplace(next_tile);
+		if (rng.probability(0.5)) {
+			subtiles.emplace(next_tile);
+		}
 	}
 	return subtiles;
 }
@@ -121,7 +116,7 @@ Generator::Generator(Engine *engine)
 	:
 	OptionNode{"Generator"},
 	assetmanager{engine->get_data_dir()},
-	spec{std::make_shared<GameSpec>(&this->assetmanager)} {
+	spec{std::make_shared<GameSpec>(this->assetmanager)} {
 
 	// node settings
 	this->set_parent(engine);
@@ -129,7 +124,8 @@ Generator::Generator(Engine *engine)
 	this->add("terrain_size", 2);
 	this->add("terrain_base_id", 0);
 	this->add("player_area", 850);
-	this->add("load_filename", "default_save.txt");
+	this->add("player_radius", 10);
+	this->add("load_filename", "/tmp/default_save.oas");
 	this->add("player_names", options::option_list{"name1", "name2"});
 
 	// Save game functions
@@ -172,6 +168,13 @@ Generator::Generator(Engine *engine)
 		engine.end_game();
 	});
 	this->add_action(end_action);
+
+	// reload all assets
+	options::OptionAction reload_action("reload_assets", [this]() {
+		this->assetmanager.check_updates();
+		this->spec = std::make_shared<GameSpec>(this->assetmanager);
+	});
+	this->add_action(reload_action);
 }
 
 
@@ -198,19 +201,21 @@ void Generator::create_regions() {
 	int size = this->getv<int>("terrain_size");
 	int base_id = this->getv<int>("terrain_base_id");
 	int p_area = this->getv<int>("player_area");
+	int p_radius = this->getv<int>("player_radius");
 
 	rng::RNG rng(seed);
 	Region base(size * 16);
 	base.terrain_id = base_id;
 	std::vector<Region> player_regions;
-	std::vector<int> objs{59, 66, 102, 349, 351, 594};
 
 	int player_count = this->player_names().size() - 1;
 	for (int i = 0; i < player_count; ++i) {
 		log::log(MSG(dbg) << "generate player " << i);
+
+		// space players in a circular pattern
 		double angle = static_cast<double>(i) / static_cast<double>(player_count);
-		int ne = size * 11.0 * sin(2 * M_PI * angle);
-		int se = size * 11.0 * cos(2 * M_PI * angle);
+		int ne = size * p_radius * sin(2 * M_PI * angle);
+		int se = size * p_radius * cos(2 * M_PI * angle);
 		coord::tile player_tile{ne, se};
 
 		Region player = base.take_tiles(rng, player_tile, p_area);
@@ -295,15 +300,17 @@ void Generator::add_units(GameMain &m) const {
 		else if (r.owner) {
 			Player &p = m.players[r.owner];
 			auto tctype = this->spec->get_type(109); // town center
-			auto mvtype = this->spec->get_type(83);  // villager
-			auto fvtype = this->spec->get_type(293); // villager
+			auto mvtype = this->spec->get_type(83);  // male villager
+			auto fvtype = this->spec->get_type(293); // female villager
 			coord::tile tile = r.get_center();
 			tile.ne -= 1;
 			tile.se -= 1;
 
 			// Place a completed town center
 	 		auto ref = m.placed_units.new_unit(*tctype, p, tile.to_tile3().to_phys3());
-	 		complete_building(*ref.get());
+	 		if (ref.is_valid()) {
+	 			complete_building(*ref.get());
+	 		}
 
 	 		// Place three villagers
 			tile.ne -= 1;
@@ -330,10 +337,5 @@ void Generator::create() {
 	e.start_game(*this);
 }
 
-
-void lol() {
-	// TODO: move these somewhere else
-	//this->assetmanager.check_updates();
-}
 
 } // namespace openage

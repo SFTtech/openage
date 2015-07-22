@@ -28,13 +28,21 @@ enum class option_type {
 
 class OptionValue;
 
+/**
+ * set the container used for lists
+ */
 using option_list = std::vector<OptionValue>;
+
 
 /**
  * stores a type and value
  */
 class OptionValue {
 public:
+
+	/**
+	 * value ownership managed by this
+	 */
 	OptionValue(bool b);
 	OptionValue(int i);
 	OptionValue(double d);
@@ -44,17 +52,35 @@ public:
 	OptionValue(const OptionValue &v);
 
 	/**
-	 * check equality
+	 * value owned by another object
+	 */
+	OptionValue(util::Variable<bool> *b);
+	OptionValue(util::Variable<int> *i);
+	OptionValue(util::Variable<double> *d);
+	OptionValue(util::Variable<std::string> *s);
+	OptionValue(util::Variable<option_list> *l);
+
+	virtual ~OptionValue();
+
+	/**
+	 * True if this value references an object
+	 * not owned by itself
+	 */
+	bool is_reference() const;
+
+	/**
+	 * Checks equality
 	 */
 	bool operator ==(const OptionValue &other) const;
 
 	/**
-	 * assignment
+	 * Assignment, reference values share their values
+	 * non reference values are copied
 	 */
 	const OptionValue &operator =(const OptionValue &other);
 
 	/**
-	 * type converted to a string
+	 * Value converted to a string
 	 */
 	std::string str_value() const;
 
@@ -81,12 +107,24 @@ private:
 		if (this->var) {
 			this->var->set<T>(other_value);
 		}
+		else if (other.owner) {
+			this->owner = true;
+			this->var = new util::Variable<T>(other_value);
+		}
 		else {
-			this->var = std::make_unique<util::Variable<T>>(other_value);
+			this->var = other.var;
 		}
 	}
 
-	std::unique_ptr<util::VariableBase> var;
+
+	/**
+	 * Use of shared_ptr and unique_ptr doesnt work here
+	 * possibly solved by templating ownership type
+	 *
+	 * non-owned variables act as references
+	 */
+	bool owner;
+	util::VariableBase *var;
 
 };
 
@@ -124,6 +162,8 @@ private:
  * with console interaction or gui elements
  */
 class OptionNode {
+	template<class T>
+	friend class Var;
 public:
 	OptionNode(const std::string &panel_name);
 	virtual ~OptionNode();
@@ -138,6 +178,9 @@ public:
 	 */
 	std::vector<std::string> list_variables() const;
 
+	/**
+	 * shows all the available function names
+	 */
 	std::vector<std::string> list_functions() const;
 
 	OptionValue &get_variable_rw(const std::string &name);
@@ -162,12 +205,10 @@ public:
 	 */
 	void set_parent(OptionNode *parent);
 
-	void do_action(const std::string &aname);
-
 	/**
-	 * read state of a bool
+	 * performs the named action
 	 */
-	bool get_bool(const std::string &vname, bool def=false) const;
+	void do_action(const std::string &aname);
 
 	/**
 	 * name of this node
@@ -175,12 +216,6 @@ public:
 	const std::string name;
 
 protected:
-
-	/**
-	 * deprecated
-	 */
-	void add_bool(const std::string &vname, bool *value);
-	void add_int(const std::string &vname, int *value);
 
 	/**
 	 * add types to the interface
@@ -201,22 +236,43 @@ private:
 	 */
 	void remove_panel(OptionNode *child);
 
+	/**
+	 * parent of this node
+	 */
 	OptionNode *parent;
 
-	// allow read only variables
-	// variables which can be viewed:
-	std::unordered_map<std::string, bool *> bools;
-	std::unordered_map<std::string, int *> ints;
-
+	/**
+	 * Variables which can be used
+	 * TODO: read only variables
+	 */
 	std::unordered_map<std::string, OptionValue> varmap;
 
 
 	// list available functions for interaction
 	std::unordered_map<std::string, OptionAction> actions;
 
-
-	std::unordered_map<std::string, OptionNode *> panels;
+	/**
+	 * children of this node
+	 */
+	std::unordered_map<std::string, OptionNode *> children;
 };
+
+
+/**
+ * A interaface variable which gets monitored by an
+ * option node allowing reflection, while also
+ * being directly accessable as a typed member
+ */
+template<class T>
+class Var : public util::Variable<T> {
+public:
+	Var(OptionNode *owner, const std::string &name, const T &init)
+		:
+		util::Variable<T>{init} {
+		owner->add(name, &this->value);
+	}
+};
+
 
 /**
  * A thing for drawing OptionNodes

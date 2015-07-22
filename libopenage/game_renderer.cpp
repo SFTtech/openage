@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
@@ -26,27 +26,25 @@
 
 namespace openage {
 
-render_settings::render_settings()
+RenderOptions::RenderOptions()
 	:
-	draw_grid{false},
-	draw_debug{false},
-	terrain_blending{true} {
+	OptionNode{"RendererOptions"},
+	draw_grid{this, "draw_grid", false},
+	draw_debug{this, "draw_debug", false},
+	terrain_blending{this, "terrain_blending", true} {
 }
 
 GameRenderer::GameRenderer(openage::Engine *e)
 	:
-	OptionNode{"Renderer"},
+
 	engine{e} {
 
 	// set options structure
-	this->set_parent(this->engine);
+	this->settings.set_parent(this->engine);
 
 	// engine callbacks
 	this->engine->register_draw_action(this);
 
-	this->add_bool("draw_grid", &settings.draw_grid);
-	this->add_bool("draw_debug", &settings.draw_debug);
-	this->add_bool("terrain_blending", &settings.terrain_blending);
 	util::Dir *data_dir = engine->get_data_dir();
 	util::Dir asset_dir = data_dir->append("converted");
 
@@ -54,7 +52,7 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	gaben = new Texture{data_dir->join("gaben.png")};
 
 	std::vector<gamedata::palette_color> player_color_lines;
-	util::read_csv_file(asset_dir.join("player_palette_50500.docx"), player_color_lines);
+	util::read_csv_file(asset_dir.join("player_palette.docx"), player_color_lines);
 
 	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
 	for (size_t i = 0; i < player_color_lines.size(); i++) {
@@ -148,12 +146,12 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	// would allow these to be put somewher better
 	auto &global_input_context = engine->get_input_manager().get_global_context();
 	global_input_context.bind(input::action_t::TOGGLE_BLENDING, [this](const input::action_arg_t &) {
-		this->settings.terrain_blending = !this->settings.terrain_blending;
+		this->settings.terrain_blending.value = !this->settings.terrain_blending.value;
 	});
 	global_input_context.bind(input::action_t::TOGGLE_UNIT_DEBUG, [this](const input::action_arg_t &) {
-		this->settings.draw_debug = !this->settings.draw_debug;
+		this->settings.draw_debug.value = !this->settings.draw_debug.value;
 
-		// TODO remove this hack
+		// TODO remove this hack, use render settings instead
 		UnitAction::show_debug = !UnitAction::show_debug;
 	});
 
@@ -184,7 +182,7 @@ bool GameRenderer::on_draw() {
 			game->terrain->draw(&engine, &this->settings);
 		}
 
-		if (this->settings.draw_grid) {
+		if (this->settings.draw_grid.value) {
 			this->draw_debug_grid();
 		}
 	}
@@ -231,11 +229,11 @@ void GameRenderer::draw_debug_grid() {
 	glBegin(GL_LINES); {
 
 		for (int i = -k; i < k; i++) {
-				glVertex3f(i * tilesize_x + x0, y1, 0);
-				glVertex3f(i * tilesize_x + x1, y0, 0);
+			glVertex3f(i * tilesize_x + x0, y1, 0);
+			glVertex3f(i * tilesize_x + x1, y0, 0);
 
-				glVertex3f(i * tilesize_x + x0, y0 - 1, 0);
-				glVertex3f(i * tilesize_x + x1, y1 - 1, 0);
+			glVertex3f(i * tilesize_x + x0, y0 - 1, 0);
+			glVertex3f(i * tilesize_x + x1, y1 - 1, 0);
 		}
 
 	} glEnd();

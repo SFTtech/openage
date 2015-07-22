@@ -70,18 +70,12 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	:
 	OptionNode{"Engine"},
 	running{false},
-	drawing_debug_overlay{true},
-	drawing_huds{true},
+	drawing_debug_overlay{this, "drawing_debug_overlay", true},
+	drawing_huds{this, "drawing_huds", true},
 	engine_coord_data{this->get_coord_data()},
-	current_player{1},
+	current_player{this, "current_player", 1},
 	data_dir{data_dir},
 	audio_manager{} {
-
-	// register engine variables
-	this->add_bool("running", &this->running);
-	this->add_bool("drawing_debug_overlay", &this->drawing_debug_overlay);
-	this->add_bool("drawing_huds", &this->drawing_huds);
-	this->add_int("current_player", &this->current_player);
 
 	for (uint32_t size : {12, 20}) {
 		fonts[size] = std::unique_ptr<Font>{new Font{"DejaVu Serif", "Book", size}};
@@ -190,13 +184,13 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 		this->stop();
 	});
 	global_input_context.bind(input::action_t::TOGGLE_HUD, [this](const input::action_arg_t &) {
-		this->drawing_huds = !this->drawing_huds;
+		this->drawing_huds.value = !this->drawing_huds.value;
 	});
 	global_input_context.bind(input::action_t::SCREENSHOT, [this](const input::action_arg_t &) {
 		this->get_screenshot_manager().save_screenshot();
 	});
 	global_input_context.bind(input::action_t::TOGGLE_DEBUG_OVERLAY, [this](const input::action_arg_t &) {
-		this->drawing_debug_overlay = !this->drawing_debug_overlay;
+		this->drawing_debug_overlay.value = !this->drawing_debug_overlay.value;
 	});
 	global_input_context.bind(input::action_t::TOGGLE_PROFILER, [this](const input::action_arg_t &) {
 		if (this->external_profiler.currently_profiling) {
@@ -218,7 +212,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	// Switching between players with the 1-8 keys
 	auto bind_player_switch = [this, &global_input_context](input::action_t action, int player) {
 		global_input_context.bind(action, [this, player](const input::action_arg_t &) {
-			this->current_player = player;
+			this->current_player.value = player;
 		});
 	};
 	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_1, 1);
@@ -412,11 +406,11 @@ void Engine::loop() {
 
 			// draw the fps overlay
 
-			if (this->drawing_debug_overlay) {
+			if (this->drawing_debug_overlay.value) {
 				this->draw_debug_overlay();
 			}
 
-			if (this->drawing_huds) {
+			if (this->drawing_huds.value) {
 				// invoke all hud drawing callback methods
 				for (auto &action : this->on_drawhud) {
 					if (false == action->on_drawhud()) {
@@ -466,7 +460,7 @@ GameMain *Engine::get_game() {
 Player *Engine::player_focus() const {
 	if (this->game) {
 		unsigned int number = this->game->players.size();
-		return &this->game->players[this->current_player % number];
+		return &this->game->players[this->current_player.value % number];
 	}
 	return nullptr;
 }

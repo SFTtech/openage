@@ -280,7 +280,7 @@ void UnitSelection::show_attributes(Unit *u) {
 
 	// render text
 	Engine &engine = Engine::get();
-	int vpos = 120;
+	int vpos = 160;
 	engine.render_text({0, vpos}, 20, "%s", u->unit_type->name().c_str());
 	for (auto &s : lines) {
 		vpos -= this->font_size;
