@@ -208,7 +208,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
                    unsigned int mode, bool mirrored,
                    int subid, unsigned player,
                    Texture *alpha_texture, int alpha_subid) const {
-	main_thread_load();
+	this->main_thread_load();
 	glColor4f(1, 1, 1, 1);
 
 	bool use_playercolors = false;
@@ -393,7 +393,7 @@ void Texture::get_subtexture_size(int subid, int *w, int *h) const {
 
 
 GLuint Texture::get_texture_id() const {
-	main_thread_load();
+	this->main_thread_load();
 	return this->buffer->id;
 }
 

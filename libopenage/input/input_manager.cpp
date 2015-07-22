@@ -29,6 +29,7 @@ InputManager::InputManager()
 	      { sdl_key(SDLK_z, KMOD_LCTRL), action_t::DISABLE_SET_ABILITY },
 	      { sdl_key(SDLK_x, KMOD_LCTRL), action_t::SET_ABILITY_MOVE },
 	      { sdl_key(SDLK_c, KMOD_LCTRL), action_t::SET_ABILITY_GATHER },
+	      { sdl_key(SDLK_g), action_t::SET_ABILITY_GARRISON },
 	      { sdl_key(SDLK_BACKQUOTE), action_t::TOGGLE_CONSOLE},
 	      { sdl_key(SDLK_v), action_t::SPAWN_VILLAGER},
 	      { sdl_key(SDLK_DELETE), action_t::KILL_UNIT},
@@ -98,13 +99,13 @@ void InputManager::remove_context() {
 
 void InputManager::trigger(const Event &e) {
 	// arg passed to recievers
-	action_arg_t arg(e, this->mouse_position, this->mouse_motion);
+	action_arg_t arg{e, this->mouse_position, this->mouse_motion, {}};
 
 	// Check whether key combination is bound to an action
 	auto range = keys.equal_range(e);
 	if (range.first != keys.end()) {
 		std::for_each(range.first, range.second, [&arg](binding_map_t::value_type &v) {
-			arg.hints.push_back(v.second);
+			arg.hints.emplace_back(v.second);
 		});
 	}
 
@@ -157,7 +158,7 @@ void InputManager::set_relative(bool mode) {
 	}
 }
 
-bool InputManager::is_down(class_code_t cc) const {
+bool InputManager::is_down(const ClassCode &cc) const {
 	auto it = this->states.find(cc);
 	if (it != this->states.end()) {
 		return it->second;
@@ -167,7 +168,7 @@ bool InputManager::is_down(class_code_t cc) const {
 
 
 bool InputManager::is_down(event_class ec, code_t code) const {
-	return is_down(class_code_t(ec, code));
+	return is_down(ClassCode(ec, code));
 }
 
 
@@ -188,7 +189,6 @@ modset_t InputManager::get_mod() const {
 
 
 bool InputManager::on_input(SDL_Event *e) {
-	Engine &engine = Engine::get();
 
 	// top level input handler
 	switch (e->type) {

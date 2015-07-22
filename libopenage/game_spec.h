@@ -49,14 +49,8 @@ public:
  */
 class GameSpec {
 public:
-	GameSpec(AssetManager *am);
+	GameSpec(AssetManager &am);
 	virtual ~GameSpec();
-
-	/**
-	 * remove this when a better load system
-	 * such as nyan is implemented
-	 */
-	void check_updates();
 
 	/**
 	 * Check if loading has been completed,
@@ -139,6 +133,20 @@ private:
 	AssetManager *assetmanager;
 
 	/**
+	 * the used file paths
+	 */
+	std::string data_path;
+	std::string graphics_path;
+	std::string terrain_path;
+	std::string blend_path;
+	std::string sound_path;
+
+	/**
+	 * complete gamedata
+	 */
+	std::vector<gamedata::empiresdat> gamedata;
+
+	/**
 	 * data used for constructing terrain objects
 	 */
 	terrain_meta terrain_data;
@@ -198,7 +206,7 @@ private:
 	/**
 	 * begin the main loading job
 	 */
-	void initialize(AssetManager *am);
+	void initialize(AssetManager &am);
 
 	/**
 	 * check graphic id is valid
@@ -232,7 +240,7 @@ private:
 	/**
 	 * fill in the terrain_data attribute of this
 	 */
-	void load_terrain(AssetManager *am);
+	void load_terrain(AssetManager &am);
 
 	/**
 	 * has game data been load yet

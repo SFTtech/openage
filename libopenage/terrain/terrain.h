@@ -326,7 +326,7 @@ public:
 	 * draw the currently visible terrain area on screen.
 	 * @param engine: the engine where the terrain should be drawn to.
 	 */
-	void draw(Engine *engine, render_settings *settings);
+	void draw(Engine *engine, RenderOptions *settings);
 
 	/**
 	 * create the drawing instruction data.

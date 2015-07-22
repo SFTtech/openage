@@ -5,6 +5,7 @@
 
 #include "coord/camgame.h"
 #include "input/input_context.h"
+#include "rng/rng.h"
 #include "unit/command.h"
 #include "unit/selection.h"
 #include "unit/unit_type.h"
@@ -61,8 +62,6 @@ public:
 
 private:
 
-
-
 	/**
 	 * decides which type of right mouse click command to issue based on position
 	 *
@@ -89,6 +88,8 @@ private:
 	coord::phys3 mousepos_phys3;
 	coord::tile mousepos_tile;
 
+	// used for random type creation
+	rng::RNG rng;
 };
 
 /**
@@ -113,9 +114,8 @@ private:
 	UnitType *selected_type;
 	std::string category;
 
-	// TODO assign placement to player object
+	// true = terrain painting, false = unit placement
 	bool paint_terrain;
-	bool building_placement;
 
 };
 

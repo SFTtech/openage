@@ -36,6 +36,10 @@ bool UnitTexture::is_valid() const {
 	return texture;
 }
 
+coord::window UnitTexture::size() const {
+	return coord::window{this->texture->w, this->texture->h};
+}
+
 void UnitTexture::sample(const coord::camhud &draw_pos, unsigned color) const {
 
 	// draw delta list first

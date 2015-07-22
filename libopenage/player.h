@@ -17,14 +17,19 @@ public:
 	Player(unsigned int number, std::string name);
 
 	/**
-	 * numbers 0-7
+	 * values 0 .. player count - 1
 	 */
 	const unsigned int player_number;
 
 	/**
+	 * values 1 .. player count
 	 * would be better to have rgb color value
 	 */
 	const unsigned int color;
+
+	/**
+	 * civ index of this player
+	 */
 	const unsigned int civ;
 
 	const std::string name;

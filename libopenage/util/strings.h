@@ -59,7 +59,6 @@ std::ostream &operator <<(std::ostream &os, FixedPoint<divisor, decimals, w> f) 
 	return os;
 }
 
-
 /**
  * printf-style to-string formatting.
  */

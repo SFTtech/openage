@@ -78,7 +78,7 @@ public:
 	 * as 'not pressed' if requested
 	 * @return true when the key is pressed, false else.
 	 */
-	bool is_down(class_code_t cc) const;
+	bool is_down(const ClassCode &cc) const;
 	bool is_down(event_class ec, code_t code) const;
 
 	/**
@@ -111,7 +111,7 @@ private:
 	 * a true value means the key is currently pressed,
 	 * false indicates the key is untouched.
 	 */
-	std::unordered_map<class_code_t, bool, class_code_hash> states;
+	std::unordered_map<ClassCode, bool, class_code_hash> states;
 
 	/**
 	 * Current key modifiers.
@@ -126,12 +126,6 @@ private:
 	coord::window mouse_position;
 	coord::window_delta mouse_motion;
 
-	/**
-	 * used key modifiers to check for.
-	 * this excludes keys like num lock and caps lock, which would
-	 * otherwise mess up key combinations
-	 */
-	static constexpr SDL_Keymod used_keymods = static_cast<SDL_Keymod>(KMOD_CTRL | KMOD_SHIFT | KMOD_ALT | KMOD_GUI);
 };
 
 } //namespace input

@@ -149,12 +149,17 @@ TerrainObject *Terrain::obj_at_point(const coord::phys3 &point) {
 	if (!tc) {
 		return nullptr;
 	}
+
+
+	// prioritise selecting the smallest object
+	TerrainObject *smallest = nullptr;
 	for (auto obj_ptr : tc->obj) {
-		if (obj_ptr->contains(point)) {
-			return obj_ptr;
+		if (obj_ptr->contains(point) &&
+		    (!smallest || obj_ptr->min_axis() < smallest->min_axis())) {
+			smallest = obj_ptr;
 		}
 	}
-	return nullptr;
+	return smallest;
 }
 
 bool Terrain::validate_terrain(terrain_t terrain_id) {
@@ -280,7 +285,7 @@ bool Terrain::check_tile_position(coord::tile pos) {
 
 }
 
-void Terrain::draw(Engine *engine, render_settings *settings) {
+void Terrain::draw(Engine *engine, RenderOptions *settings) {
 	// TODO: move this draw invokation to a render manager.
 	//       it can reorder the draw instructions and minimize texture switching.
 
@@ -302,7 +307,7 @@ void Terrain::draw(Engine *engine, render_settings *settings) {
 	br = wbr.to_camgame().to_phys3(0).to_phys2().to_tile();
 
 	// main terrain calculation call: get the `terrain_render_data`
-	auto draw_data = this->create_draw_advice(tl, tr, br, bl, settings->terrain_blending);
+	auto draw_data = this->create_draw_advice(tl, tr, br, bl, settings->terrain_blending.value);
 
 	// TODO: the following loop is totally inefficient and shit.
 	//       it reloads the drawing texture to the gpu FOR EACH TILE!

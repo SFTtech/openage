@@ -176,7 +176,7 @@ void Unit::draw(TerrainObject *loc, graphic_set *grpc) {
 }
 
 void Unit::give_ability(std::shared_ptr<UnitAbility> ability) {
-	this->ability_available.insert({ability->type(), ability});
+	this->ability_available.emplace(std::make_pair(ability->type(), ability));
 }
 
 UnitAbility *Unit::get_ability(ability_type type) {
@@ -197,8 +197,8 @@ void Unit::secondary_action(std::unique_ptr<UnitAction> action) {
 	this->action_secondary.push_back(std::move(action));
 }
 
-void Unit::add_attribute(AttributeContainer *attr) {
-	this->attribute_map.insert(attr_map_t::value_type(attr->type, attr));
+void Unit::add_attribute(std::shared_ptr<AttributeContainer> attr) {
+	this->attribute_map.emplace(attr_map_t::value_type(attr->type, attr));
 }
 
 bool Unit::has_attribute(attr_type type) const {
@@ -207,15 +207,18 @@ bool Unit::has_attribute(attr_type type) const {
 
 bool Unit::invoke(const Command &cmd, bool direct_command) {
 
+	// following the specified ability priority
 	// find suitable ability for this target if available
-	for (auto &action : this->ability_available) {
-		if (cmd.ability()[static_cast<int>(action.first)] && action.second->can_invoke(*this, cmd)) {
+	for (auto &ability : ability_priority) {
+		auto pair = this->ability_available.find(ability);
+		if (pair != this->ability_available.end() &&
+		    cmd.ability()[static_cast<int>(pair->first)] && pair->second->can_invoke(*this, cmd)) {
 			if (direct_command) {
 
 				// drop other actions if a new action is found
 				this->stop_actions();
 			}
-			action.second->invoke(*this, cmd, direct_command);
+			pair->second->invoke(*this, cmd, direct_command);
 			return true;
 		}
 	}

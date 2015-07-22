@@ -184,7 +184,7 @@ public:
 	template<class T, typename ... Arg>
 	TerrainObject *make_annex(Arg ... args) {
 
-		this->children.push_back(std::unique_ptr<T>(new T(this->unit, args ...)));
+		this->children.emplace_back(std::unique_ptr<T>(new T(this->unit, args ...)));
 		auto &annex_ptr = this->children.back();
 		annex_ptr->parent = this;
 		return annex_ptr.get();

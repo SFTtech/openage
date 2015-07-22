@@ -41,6 +41,9 @@ enum class ability_type {
 	MAX
 };
 
+/**
+ * a containter where each ability uses 1 bit
+ */
 constexpr int ability_type_size = static_cast<int>(ability_type::MAX);
 using ability_set = std::bitset<ability_type_size>;
 using ability_id_t = unsigned int;
@@ -49,6 +52,26 @@ using ability_id_t = unsigned int;
  * all bits set to 1
  */
 const ability_set ability_all = ability_set().set();
+
+/**
+ * the order abilities should be used when available
+ */
+static std::vector<ability_type> ability_priority {
+	ability_type::gather,	// targeting
+	ability_type::convert,
+	ability_type::repair,
+	ability_type::heal,
+	ability_type::attack,
+	ability_type::build,
+	ability_type::move,	// positional
+	ability_type::patrol,
+	ability_type::garrison,
+	ability_type::ungarrison, // inside buildings
+	ability_type::train,
+	ability_type::research,
+	ability_type::set_point,
+};
+
 
 /**
  * Abilities create an action when given a target

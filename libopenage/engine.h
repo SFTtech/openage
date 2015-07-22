@@ -239,12 +239,12 @@ public:
 	/**
 	 * FPS and game version are drawn when this is true.
 	 */
-	bool drawing_debug_overlay;
+	options::Var<bool> drawing_debug_overlay;
 
 	/**
 	* this allows to disable drawing of every registered hud.
 	*/
-	bool drawing_huds;
+	options::Var<bool> drawing_huds;
 
 	/**
 	 * Holds the data for the coord system.
@@ -255,7 +255,7 @@ public:
 	 * Holds the current player color/number
 	 * is a number between 1 and 8
 	 */
-	 int current_player;
+	options::Var<int> current_player;
 
 	/**
 	 * profiler used by the engine

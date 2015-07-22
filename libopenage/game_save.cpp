@@ -71,6 +71,7 @@ void save(openage::GameMain *game, std::string fname) {
 	log::log(MSG(dbg) << "saving " + fname);
 
 	// metadata
+	file << save_label << std::endl;
 	file << save_version << std::endl;
 	file << config::version << std::endl;
 
@@ -106,6 +107,12 @@ void load(openage::GameMain *game, std::string fname) {
 	log::log(MSG(dbg) << "loading " + fname);
 
 	// load metadata
+	std::string file_label;
+	file >> file_label;
+	if (file_label != save_label) {
+		log::log(MSG(warn) << fname << " is not a savefile");
+		return;
+	}
 	std::string version;
 	file >> version;
 	if (version != save_version) {
