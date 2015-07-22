@@ -147,8 +147,6 @@ GameMain::GameMain(Engine *engine)
 	this->terrain->fill(terrain_data, terrain_data_size);
 	this->placed_units.set_terrain(this->terrain);
 
-  this->minimap = new Minimap(this->engine, this->terrain, coord::camhud_delta{150, 150}, coord::camhud{0, 0});
-
 	// players
 	unsigned int number_of_players = 8;
 	for (unsigned int i = 0; i < number_of_players; ++i) {
@@ -249,6 +247,9 @@ GameMain::GameMain(Engine *engine)
 	// create program for rendering simple textures
 	minimap_shader::program = new shader::Program(minimap_vert, minimap_frag);
 	minimap_shader::program->link();
+  minimap_shader::size = minimap_shader::program->get_uniform_id("minimap_size");
+  minimap_shader::orig = minimap_shader::program->get_uniform_id("minimap_orig");
+  minimap_shader::color = minimap_shader::program->get_attribute_id("color");
 
 	// after linking, the shaders are no longer necessary
 	delete plaintexture_vert;
@@ -259,6 +260,8 @@ GameMain::GameMain(Engine *engine)
   delete minimap_vert;
 	delete minimap_frag;
 
+  // minimap here, because it is dependent on shaders
+  this->minimap = new Minimap(this->engine, this->terrain, coord::camhud_delta{300, 150}, coord::camhud{100, 100});
 
 	// initialize global keybinds
 	auto &global_keybind_context = engine->get_keybind_manager().get_global_keybind_context();

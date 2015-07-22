@@ -10,56 +10,12 @@
 #include <stdio.h>
 #include "terrain/terrain.h"
 
+
 namespace openage {
 namespace minimap_shader {
 shader::Program *program;
-} // namespace texture_shader
-
-
-coord::camhud_delta Minimap::tile_to_minimap_position(coord::tile tilepos, int ppmt_x, int ppmt_y) {
-  // Tile difference from point to west corner 
-  /* coord::tile_delta point_to_west{this->ne_least.ne * 16 + tilepos.ne, this->se_least.se * 16 + tilepos.se}; */
-
-  coord::tile_delta relative_to_west{(-this->ne_least.ne * 16 + tilepos.ne), (-this->se_least.se * 16 + tilepos.se)};
-
-  int d = relative_to_west.ne - relative_to_west.se;
-  int x, y;
-  x = y = 0;
-
-  if (d == 0) {
-    x = 2 * ppmt_x * relative_to_west.se;
-  } else if (d > 0) {
-    x = 2 * relative_to_west.ne * ppmt_x + relative_to_west.se * ppmt_x;
-    y = relative_to_west.se * ppmt_y; 
-  } else {
-    x = 2 * relative_to_west.ne * ppmt_x + relative_to_west.se * ppmt_x;
-    y = - relative_to_west.se * ppmt_y;
-  }
-
-  /* coord::camhud_delta minimap_pos{point_to_west / } */
-
-  /* int minimap_pos_x, minimap_pos_y; */
-  /* if (point_to_west.ne != 0) */
-  /*   minimap_pos_x = (this->hudpos.x + this->size.x / 2) / (this->resolution * point_to_west.ne); */
-  /* else */
-  /*   minimap_pos_x = 0; */
-
-  /* if (point_to_west.se != 0) */ 
-  /*   minimap_pos_y = this->hudpos.y/(this->resolution * point_to_west.se); */
-  /* else */
-  /*   minimap_pos_y = 0; */
-
-  log::log(MSG(dbg) << "tilepos = " << tilepos.ne << ", " << tilepos.se);
-  /* log::log(MSG(dbg) << "LEAST NE: ne=" << this->ne_least.ne << ", se=" << this->ne_least.se); */
-  /* log::log(MSG(dbg) << "LEAST SE: ne=" << this->se_least.ne << ", se=" << this->se_least.se); */
-  /* return coord::camhud_delta{((-this->ne_least.ne * 16 + tilepos.ne) - (-this->se_least.se * 16 + tilepos.se)) * ppmt_x, */
-  /*                            ((-this->se_least.se * 16 + tilepos.se) - (-this->ne_least.ne * 16 + tilepos.ne)) * ppmt_y}; */
-
-
-
-
-  return coord::camhud_delta{x, y};
-}
+GLint size, orig, color;
+} // namespace minimap_shader
 
 
 void map_terrain_id(unsigned char *pixel, int terrain_id) {
@@ -169,7 +125,18 @@ Minimap::Minimap(Engine *engine, std::shared_ptr<Terrain> terrain, coord::camhud
   this->size = size;
   this->hudpos = hudpos;
 
-  glGenBuffers(1, &this->vertbuf);
+  this->update();
+
+  // Setup minimap dimensions for rendering
+  this->left = (GLfloat)this->hudpos.x;
+  this->right = (GLfloat)(this->hudpos.x + this->size.x);
+  this->bottom = (GLfloat)(this->hudpos.y);
+  this->top = (GLfloat)(this->hudpos.y + this->size.y);
+  this->center_vertical = (this->bottom + this->top) / 2;
+  this->center_horizontal = (this->left + this->right) / 2;
+
+  glGenBuffers(1, &this->tervertbuf);
+  glGenBuffers(1, &this->viewvertbuf);
 
   // Generate minimap terrain texture
   glGenTextures(1, &this->tertex);
@@ -178,34 +145,83 @@ Minimap::Minimap(Engine *engine, std::shared_ptr<Terrain> terrain, coord::camhud
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+  glBindTexture(GL_TEXTURE_2D, 0);
+
+  minimap_shader::program->use();
+  
+  minimap_shader::program->stopusing();
+
 }
 
 
-void Minimap::generate_background() {
+void Minimap::update() {
   std::vector<coord::chunk> used = this->terrain->used_chunks();
-
-  this->ne_least = this->ne_most = this->se_least = this->se_most = {0, 0};
+  coord::chunk ne_least, ne_most, se_least, se_most;
+  ne_least = ne_most = se_least = se_most = {0, 0};
 
   for (coord::chunk c : used) {
-    if (c.ne < this->ne_least.ne) this->ne_least = c;
-    if (c.se < this->se_least.se) this->se_least = c;
-    if (c.ne > this->ne_most.ne) this->ne_most = c;
-    if (c.se > this->se_most.se) this->se_most = c;
+    if (c.ne < ne_least.ne) ne_least = c;
+    if (c.se < se_least.se) se_least = c;
+    if (c.ne > ne_most.ne) ne_most = c;
+    if (c.se > se_most.se) se_most = c;
   }
 
-  uint32_t ne_size = 1 + this->ne_most.ne - this->ne_least.ne;
-  uint32_t se_size = 1 + this->se_most.se - this->se_least.se;
+  int ne_res = ne_most.ne - ne_least.ne;
+  int se_res = se_most.se - se_least.se;
 
-  if (ne_size > se_size) {
-    this->resolution = ne_size * 16;
+  if (ne_res < se_res) {
+    ne_most.ne = ne_least.ne + (se_res);
   } else {
-    this->resolution = se_size * 16;
+    se_most.se = se_least.se + (ne_res); 
   }
+
+  this->north = {ne_most.ne, se_least.se};
+  this->east  = {ne_most.ne, se_most.se};
+  this->south = {ne_least.ne, se_most.se};
+  this->west  = {ne_least.ne, se_least.se};
+
+  // Compute resolution
+  if ((this->east.se - this->north.se) > (this->east.ne - this->south.ne)) {
+    this->resolution = (this->east.se - this->north.se + 1) * 16;
+  } else {
+    this->resolution = (this->east.ne - this->south.ne + 1) * 16;
+  }
+
+  // Corners to camhud
+  coord::camhud_delta north_rel = this->north.to_tile({16, 0}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
+  coord::camhud_delta east_rel = this->east.to_tile({16, 16}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
+  coord::camhud_delta south_rel = this->south.to_tile({0, 16}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
+  coord::camhud_delta west_rel = this->west.to_tile({0, 0}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
+
+  this->ratio_horizontal =  (double)this->size.x / (double)(east_rel.x - west_rel.x);
+  this->ratio_vertical = (double)this->size.y / (double)(north_rel.y - south_rel.y);
+
+/*   glPointSize(5); */
+/*   glColor3f(1.0f, 0.0f, 0.0f); */
+/*   glBegin(GL_POINTS); */
+/*       glVertex3i(north_rel.x, north_rel.y, 0); */
+/*   glEnd(); */
+/*   glColor3f(0.0f, 1.0f, 0.0f); */
+/*   glBegin(GL_POINTS); */
+/*       glVertex3i(south_rel.x, south_rel.y, 0); */
+/*   glEnd(); */
+/*   glColor3f(0.0f, 0.0f, 1.0f); */
+/*   glBegin(GL_POINTS); */
+/*       glVertex3i(west_rel.x, west_rel.y, 0); */
+/*   glEnd(); */
+/*   glColor3f(1.0f, 1.0f, 0.0f); */
+/*   glBegin(GL_POINTS); */
+/*       glVertex3i(east_rel.x, east_rel.y, 0); */
+/*   glEnd(); */
+}
+
+
+void Minimap::generate_background() { 
   // Generate terrain texture
   unsigned char *pixels = new unsigned char[this->resolution * this->resolution * 3];
   for (int i = 0; i < this->resolution; i++){
     for (int j = 0; j < this->resolution; j++) {
-      coord::tile tile_pos{i + this->ne_least.ne * 16, j + this->se_least.se * 16};
+      coord::tile tile_pos{i + this->west.ne * 16, j + this->west.se * 16};
       TileContent *tile_data = this->terrain->get_data(tile_pos);
 
       if (tile_data == nullptr) {
@@ -229,27 +245,26 @@ void Minimap::generate_background() {
   delete pixels;
 }
 
+coord::camhud Minimap::from_phys(coord::phys3 coord) { 
+  coord::camhud_delta west_rel = this->west.to_tile({0, 0}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
+  coord::camhud_delta coord_rel = coord.to_camgame().to_window().to_camhud().as_relative() - west_rel;
+  coord_rel.x = coord_rel.x * this->ratio_horizontal;
+  coord_rel.y = coord_rel.y * this->ratio_vertical;
+
+  return (coord_rel + coord::camhud{(coord::pixel_t)this->left, (coord::pixel_t)this->center_vertical});
+}
+
 
 void Minimap::draw() {
+  this->update();
   this->generate_background();
 
-  GLfloat left = (GLfloat)this->hudpos.x;
-  GLfloat right = (GLfloat)(this->hudpos.x + this->size.x);
-  GLfloat bottom = (GLfloat)(this->hudpos.y);
-  GLfloat top = (GLfloat)(this->hudpos.y + this->size.y);
-  /* GLfloat ymid = (bottom + top) / 2; */
-  /* GLfloat xmid = (left + right) / 2; */
-
-  GLfloat vdata[] {
+  GLfloat tervdata[] {
     // vertices
-		/* left, ymid, */
-		/* xmid, top, */
-		/* right, ymid, */
-		/* xmid, bottom, */
-    left, bottom,
-    left, top,
-    right, top,
-    right, bottom,
+		this->left, this->center_vertical,
+		this->center_horizontal, this->top,
+		this->right, this->center_vertical,
+		this->center_horizontal, this->bottom,
     // tex coords
     0.0f, 0.0f,
     0.0f, 1.0f,
@@ -265,8 +280,8 @@ void Minimap::draw() {
   tex_coord = &texture_shader::tex_coord;
 
 	// store vertex buffer data, TODO: prepare this sometime earlier.
-	glBindBuffer(GL_ARRAY_BUFFER, this->vertbuf);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vdata), vdata, GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, this->tervertbuf);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(tervdata), tervdata, GL_STATIC_DRAW);
   glVertexAttribPointer(*pos_id, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
   glEnableVertexAttribArray(*pos_id);
   glVertexAttribPointer(*tex_coord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)(8*sizeof(GLfloat)));
@@ -280,63 +295,64 @@ void Minimap::draw() {
   glBindTexture(GL_TEXTURE_2D, 0);
   texture_shader::program->stopusing();
 
+  coord::window view_size{this->engine->engine_coord_data->window_size.x / 2 * this->ratio_horizontal, this->engine->engine_coord_data->window_size.y / 2 * this->ratio_vertical};
+  coord::camhud view = this->from_phys(this->engine->engine_coord_data->camgame_phys);
 
-  ///////////////////////////
-  // VIEW SPACE ON MINIMAP //
-  ///////////////////////////
+  if (this->old_camgame_phys.ne != this->engine->engine_coord_data->camgame_phys.ne ||
+      this->old_camgame_phys.se != this->engine->engine_coord_data->camgame_phys.se) {
+    old_camgame_phys = this->engine->engine_coord_data->camgame_phys;
+  }
 
-/*   // minimap side in pixels */
-/*   /1* GLfloat ydist = top - bottom; *1/ */
-/*   /1* GLfloat xdist = right - left; *1/ */
-/*   /1* GLint minimap_side = sqrt(ydist*ydist+xdist*xdist); *1/ */
+  // Draw minimap view box 
+  int *color;
+  minimap_shader::program->use();
+  glUniform2i(minimap_shader::orig, (GLint)this->left, (GLint)this->bottom);
+  glUniform2i(minimap_shader::size, (GLint)this->size.x, (GLint)this->size.y);
 
-/*   /1* int ppmt_x = xdist / this->resolution; *1/ */
-/*   /1* int ppmt_y = ydist / this->resolution; *1/ */
-/*   /1* log::log(MSG(dbg) << "PIXELS PER MINIMAP_TILE: " << ppmt_x << ", " << ppmt_y); *1/ */
+  color = &minimap_shader::color;
+  pos_id = &minimap_shader::program->pos_id;
 
-/*   /1* coord::window win_pos  = *1/ */ 
-/*   /1* coord::window win_pos = this->engine->engine_coord_data->camgame_window; *1/ */
+  GLfloat view_bg_vdata[] {
+    // black border
+		view.x + view_size.x + 1, view.y + view_size.y - 1,
+    view.x - view_size.x + 1, view.y + view_size.y - 1,
+    view.x - view_size.x + 1, view.y - view_size.y - 1,
+    view.x + view_size.x + 1, view.y - view_size.y - 1,
+    // colors
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 0.0f,
+  };
 
-/*   // center of window in phys */
-/*   coord::phys3 win_pos = this->engine->engine_coord_data->camgame_phys; */
-/*     // window size */
-/*   coord::window win_size = this->engine->engine_coord_data->window_size; */  
-/*   /1* coord::tile camtiles{win_pos.ne / coord::settings::phys_per_tile, win_pos.se / coord::settings::phys_per_tile}; *1/ */
-/*   coord::tile win_pos_tile = this->engine->engine_coord_data->camgame_phys.to_tile3().to_tile(); */
-/*   coord::phys3_delta phys_frac = this->engine->engine_coord_data->camgame_phys.get_fraction(); */
-  
-/*   float phys_frac_se = 0.0f; */
-/*   if (phys_frac.se != 0) */
-/*     phys_frac_se = coord::settings::phys_per_tile / phys_frac.se; */
+  GLfloat view_fg_vdata[] {
+    // white border
+    view.x + view_size.x, view.y + view_size.y,
+    view.x - view_size.x, view.y + view_size.y,
+    view.x - view_size.x, view.y - view_size.y,
+    view.x + view_size.x, view.y - view_size.y,
+    // colors
+    1.0f, 1.0f, 1.0f,
+    1.0f, 1.0f, 1.0f,
+    1.0f, 1.0f, 1.0f,
+    1.0f, 1.0f, 1.0f,
+  };
 
-/*   float phys_frac_ne = 0.0f; */ 
-/*   if (phys_frac.ne != 0) */
-/*     phys_frac_ne = coord::settings::phys_per_tile / phys_frac.ne; */
-/*   else */
-/*     log::log(MSG(dbg) << "It IS zero!"); */
+  glBindBuffer(GL_ARRAY_BUFFER, this->viewvertbuf);
+  glVertexAttribPointer(*pos_id, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(*pos_id);
+  glVertexAttribPointer(*color, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)(8*sizeof(GLfloat)));
+  glEnableVertexAttribArray(*color);
 
-/*   /1* coord::camhud_delta camera_rel_pos = tile_to_minimap_position(camtiles, ppmt_x, ppmt_y); *1/ */
+  glLineWidth(1);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(view_bg_vdata), view_bg_vdata, GL_STATIC_DRAW);
+	glDrawArrays(GL_LINE_LOOP, 0, 4);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(view_fg_vdata), view_fg_vdata, GL_STATIC_DRAW);
+	glDrawArrays(GL_LINE_LOOP, 0, 4);
 
-/*   coord::tile_delta relative_to_west{(this->ne_least.ne * 16 + win_pos_tile.ne), (this->se_least.se * 16 + win_pos_tile.se)}; */
-/*   coord::camhud camera_rel_pos{relative_to_west.se * (top - bottom) / this->resolution, relative_to_west.ne * (left - right) / this->resolution}; */
-
-/*   /1* coord::tile_delta west_to_center{this->ne_least.ne * 16, this->se_least.se * 16}; *1/ */
-
-/*   /1* coord::gamehud minimap_view{camtiles} *1/ */
-
-/*   /1* log::log(MSG(dbg) << "Center Camera Tile: " << camtiles.ne << ", " << camtiles.se); *1/ */
-/*   log::log(MSG(dbg) << "Camera Rel Pos: " << camera_rel_pos.x << ", " << camera_rel_pos.y); */
-/*   log::log(MSG(dbg) << "Window Tile Position: " << win_pos_tile.ne << "." << phys_frac_ne << ", " << win_pos_tile.se << "." << phys_frac_se); */
-/*   log::log(MSG(dbg) << "Relative to west: " << relative_to_west.ne << ", " << relative_to_west.se); */
-/*   /1* log::log(MSG(dbg) << "Minimap Position: " << minimap_pos.x << ", " << minimap_pos.y); *1/ */
-
-/*   glPointSize(5); */
-/*   glColor3f(1.0, 1.0, 1.0); */
-/*   glBegin(GL_POINTS); { */
-/*     glVertex3i(camera_rel_pos.x, camera_rel_pos.y, 0); */
-/*   } */
-/*   glEnd(); */   
+  // unbind view box buffer
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+  minimap_shader::program->stopusing();
 }
-
 
 } // namespace openage
