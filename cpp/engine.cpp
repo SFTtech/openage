@@ -178,9 +178,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 }
 
 Engine::~Engine() {
-	this->profiler.unregister_category(util::Profiler::Categorie::EVENT_PROCESSING);
-	this->profiler.unregister_category(util::Profiler::Categorie::RENDERING);
-	this->profiler.unregister_category(util::Profiler::Categorie::IDLE_TIME);
+	this->profiler.unregister_all();
 
 	delete this->job_manager;
 	SDL_GL_DeleteContext(glcontext);
