@@ -24,6 +24,7 @@ GameMain::GameMain(const Generator &generator)
 
 GameMain::~GameMain() {
 	log::log(MSG(warn) << "Cleanup gamemain");
+		engine.profiler_draw(true);
 }
 
 unsigned int GameMain::player_count() const {

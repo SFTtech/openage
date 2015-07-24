@@ -268,6 +268,11 @@ public:
 	  */
 	 void profiler_draw(bool debug_mode = false);
 
+	 /**
+	  * TODO add docstring
+	  */
+	 void profiler_draw(bool debug_mode = false);
+
 private:
 	/**
 	 * main engine loop function.
