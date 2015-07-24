@@ -6,69 +6,69 @@
 namespace openage {
 namespace util {
 
-void Profiler::register_category(Categorie cat) {
+void Profiler::register_component(component cat) {
 	if (this->registered(cat)) {
 		return;
 	}
 
-	this->categories[cat] = std::make_shared<CategorieTimeData>();
+	this->components[cat] = component_time_data();
 }
 
-void Profiler::unregister_category(Categorie cat) {
+void Profiler::unregister_component(component cat) {
 	if (not this->registered(cat)) {
 		return;
 	}
 
-	this->categories.erase(cat);
+	this->components.erase(cat);
 }
 
 void Profiler::unregister_all() {
-	std::vector<Categorie> registered_categories = this->registered_categories();
+	std::vector<component> registered_components = this->registered_components();
 
-	for (auto cat : registered_categories) {
-		this->unregister_category(cat);
+	for (auto cat : registered_components) {
+		this->unregister_component(cat);
 	}
 }
 
-std::vector<Profiler::Categorie> Profiler::registered_categories() {
-	std::vector<Categorie> registered_categories;
-	for (auto it = this->categories.begin(); it != this->categories.end(); ++it) {
-		registered_categories.push_back(it->first);
+std::vector<Profiler::component> Profiler::registered_components() {
+	std::vector<component> registered_components;
+	for (auto it = this->components.begin(); it != this->components.end(); ++it) {
+		registered_components.push_back(it->first);
 	}
 
-	return registered_categories;
+	return registered_components;
 }
 
-void Profiler::start_measure(Categorie cat) {
+void Profiler::start_measure(component cat) {
 	if (not this->registered(cat)) {
-		this->register_category(cat);
+		this->register_component(cat);
 	}
 
-	this->categories[cat].start = std::chrono::high_resolution_clock::now();
+	this->components[cat].start = std::chrono::high_resolution_clock::now();
 }
 
-void Profiler::end_measure(Categorie cat) {
+void Profiler::end_measure(component cat) {
 	auto end = std::chrono::high_resolution_clock::now();
-	this->categories[cat].duration = end - this->categories[cat].start;
+	this->components[cat].duration = end - this->components[cat].start;
 }
 
 /**
  * Just for debugging
  */
-long Profiler::last_duration(Categorie cat) {
-	auto dur = this->categories[cat].duration;
+long Profiler::last_duration(component cat) {
+	auto dur = this->components[cat].duration;
 	return std::chrono::duration_cast<std::chrono::microseconds>(dur).count();
 }
 
-void Profiler::show(Categorie cat) {
+void Profiler::show(component cat) {
 	// TODO do drawing stuff
 
 	// append duration in history
-	auto dur = this->categories[cat].duration;
-	this->categories[cat].history.push_front(dur);
+	auto dur = this->components[cat].duration;
+	this->components[cat].history.push_front(dur);
 
-	if (this->categories[cat].history.size() > MAX_DURATION_HISTORY) {
-		this->categories[cat].history.pop_back();
+	if (this->components[cat].history.size() > MAX_DURATION_HISTORY) {
+		this->components[cat].history.pop_back();
 	}
 }
 
@@ -79,17 +79,17 @@ void Profiler::show(bool debug_mode) {
 }
 
 void Profiler::show() {
-	for (auto cat : this->categories) {
+	for (auto cat : this->components) {
 		this->show(cat.first);
 	}
 }
 
-bool Profiler::registered(Categorie cat) const {
-	return this->categories.find(cat) != this->categories.end();
+bool Profiler::registered(component cat) const {
+	return this->components.find(cat) != this->components.end();
 }
 
 unsigned Profiler::size() const {
-	return this->categories.size();
+	return this->components.size();
 }
 
 } //namespace util

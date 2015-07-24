@@ -13,7 +13,7 @@ constexpr int MAX_DURATION_HISTORY = 100;
 namespace openage {
 namespace util {
 
-struct CategorieTimeData {
+struct component_time_data {
 	std::chrono::high_resolution_clock::time_point start;
 	std::chrono::high_resolution_clock::duration duration;
 	std::list<std::chrono::high_resolution_clock::duration> history;
@@ -21,32 +21,32 @@ struct CategorieTimeData {
 
 class Profiler {
 public:
-	enum class Categorie {
+	enum class component {
 		IDLE_TIME,
 		EVENT_PROCESSING,
 		RENDERING,
 	};
 
 	Profiler() = default;
-	void register_category(Categorie cat);
-	void unregister_category(Categorie cat);
+	void register_component(component cat);
+	void unregister_component(component cat);
 	void unregister_all();
-	std::vector<Categorie> registered_categories();
+	std::vector<component> registered_components();
 
-	void start_measure(Categorie cat);
-	void end_measure(Categorie cat);
-	long last_duration(Categorie cat);
-	void show(Categorie cat);
+	void start_measure(component cat);
+	void end_measure(component cat);
+	long last_duration(component cat);
+	void show(component cat);
 	void show(bool debug_mode);
 	void show();
-	bool registered(Categorie cat) const;
+	bool registered(component cat) const;
 	unsigned size() const;
 
 private:
-	std::map<Categorie, CategorieTimeData> categories;
+	std::map<component, component_time_data> components;
 };
 
 } //namespace util
 } //namespace openage
 
-#endif // OPENAGE_UTIL_PROFILER_H_
+#endif
