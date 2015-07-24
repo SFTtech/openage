@@ -257,7 +257,7 @@ void Engine::loop() {
 
 		this->job_manager->execute_callbacks();
 
-		this->profiler.start_measure(util::Profiler::Categorie::EVENT_PROCESSING);
+		this->profiler.start_measure(util::Profiler::component::EVENT_PROCESSING);
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_WINDOWEVENT) {
 				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
@@ -278,10 +278,10 @@ void Engine::loop() {
 				}
 			}
 		}
-		this->profiler.end_measure(util::Profiler::Categorie::EVENT_PROCESSING);
+		this->profiler.end_measure(util::Profiler::component::EVENT_PROCESSING);
 
 		// TODO remove me later
-		std::cout << "Measured time: " << this->profiler.last_duration(util::Profiler::Categorie::EVENT_PROCESSING) << std::endl;
+		std::cout << "Measured time: " << this->profiler.last_duration(util::Profiler::component::EVENT_PROCESSING) << std::endl;
 
 		// call engine tick callback methods
 		for (auto &action : this->on_engine_tick) {
@@ -290,7 +290,7 @@ void Engine::loop() {
 			}
 		}
 
-		this->profiler.start_measure(util::Profiler::Categorie::RENDERING);
+		this->profiler.start_measure(util::Profiler::component::RENDERING);
 		// clear the framebuffer to black
 		// in the future, we might disable it for lazy drawing
 		glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -333,15 +333,15 @@ void Engine::loop() {
 
 		util::gl_check_error();
 
-		this->profiler.end_measure(util::Profiler::Categorie::RENDERING);
+		this->profiler.end_measure(util::Profiler::component::RENDERING);
 
-		this->profiler.start_measure(util::Profiler::Categorie::IDLE_TIME);
+		this->profiler.start_measure(util::Profiler::component::IDLE_TIME);
 
 		// the rendering is done
 		// swap the drawing buffers to actually show the frame
 		SDL_GL_SwapWindow(window);
 
-		this->profiler.end_measure(util::Profiler::Categorie::IDLE_TIME);
+		this->profiler.end_measure(util::Profiler::component::IDLE_TIME);
 	}
 }
 
