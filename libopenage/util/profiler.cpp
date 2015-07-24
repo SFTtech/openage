@@ -71,29 +71,6 @@ unsigned Profiler::size() const {
 	return this->categories.size();
 }
 
-//void PerformancePie::draw(float frame_time) {
-//	float step = 5.0f;
-//	int radius = 100;
-//
-//	float prev_angle = 0.0f;
-//	for (auto it = this->categories.begin(); it != this->categories.end(); ++it) {
-//		glBegin(GL_POLYGON);
-//		glColor4f(it->second.color.r, it->second.color.g, it->second.color.b, this->alpha_value);
-//		float angle = prev_angle;
-//		float percentage = get_percentage(frame_time, it->second.last_measured_time);
-//		for(; angle <= percentage + prev_angle; angle += step) {
-//			float rad = this->degree2radian(angle);
-//			float x = this->radius*sin(rad);
-//			float y = this->radius*cos(rad);
-//
-//			glVertex3f(this->center.x + x, this->center.y + y, 0.0f);
-//		}
-//		glVertex3f(this->center.x, this->center.y, 0.0f);
-//
-//		glEnd();
-//	}
-//}
-
 } //namespace util
 } //namespace openage
 
