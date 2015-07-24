@@ -172,10 +172,6 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 		throw Error{MSG(err) << "No audio devices found"};
 	}
 
-	// initialize profiler
-	this->profiler.register_category(util::Profiler::Categorie::EVENT_PROCESSING);
-	this->profiler.register_category(util::Profiler::Categorie::RENDERING);
-	this->profiler.register_category(util::Profiler::Categorie::IDLE_TIME);
 }
 
 Engine::~Engine() {

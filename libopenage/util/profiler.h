@@ -6,10 +6,9 @@
 #include <map>
 #include <vector>
 #include <chrono>
-#include <memory>
 #include <list>
 
-#define MAX_DURATION_HISTORY 100
+constexpr int MAX_DURATION_HISTORY = 100;
 
 namespace openage {
 namespace util {
@@ -44,7 +43,7 @@ public:
 	unsigned size() const;
 
 private:
-	std::map<Categorie, std::shared_ptr<CategorieTimeData>> categories;
+	std::map<Categorie, CategorieTimeData> categories;
 };
 
 } //namespace util
