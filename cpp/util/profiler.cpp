@@ -40,19 +40,23 @@ std::vector<Profiler::Categorie> Profiler::registered_categories() {
 }
 
 void Profiler::start_measure(Categorie cat) {
-	this->categories[cat]->start = std::chrono::high_resolution_clock::now();
+	if (not this->registered(cat)) {
+		this->register_category(cat);
+	}
+
+	this->categories[cat].start = std::chrono::high_resolution_clock::now();
 }
 
 void Profiler::end_measure(Categorie cat) {
 	auto end = std::chrono::high_resolution_clock::now();
-	this->categories[cat]->duration = end - this->categories[cat]->start;
+	this->categories[cat].duration = end - this->categories[cat].start;
 }
 
 /**
  * Just for debugging
  */
 long Profiler::last_duration(Categorie cat) {
-	auto dur = this->categories[cat]->duration;
+	auto dur = this->categories[cat].duration;
 	return std::chrono::duration_cast<std::chrono::microseconds>(dur).count();
 }
 
@@ -60,11 +64,11 @@ void Profiler::show(Categorie cat) {
 	// TODO do drawing stuff
 
 	// append duration in history
-	auto dur = this->categories[cat]->duration;
-	this->categories[cat]->history.push_front(dur);
+	auto dur = this->categories[cat].duration;
+	this->categories[cat].history.push_front(dur);
 
-	if (this->categories[cat]->history.size() > MAX_DURATION_HISTORY) {
-		this->categories[cat]->history.pop_back();
+	if (this->categories[cat].history.size() > MAX_DURATION_HISTORY) {
+		this->categories[cat].history.pop_back();
 	}
 }
 
