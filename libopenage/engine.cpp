@@ -280,6 +280,8 @@ void Engine::loop() {
 			}
 		}
 		this->profiler.end_measure(util::Profiler::Categorie::EVENT_PROCESSING);
+
+		// TODO remove me later
 		std::cout << "Measured time: " << this->profiler.last_duration(util::Profiler::Categorie::EVENT_PROCESSING) << std::endl;
 
 		// call engine tick callback methods

@@ -11,7 +11,7 @@ void Profiler::register_category(Categorie cat) {
 		return;
 	}
 
-	this->categories[cat] = std::make_shared<CategorieTimeData>();
+	this->categories[cat] = CategorieTimeData();
 }
 
 void Profiler::unregister_category(Categorie cat) {
