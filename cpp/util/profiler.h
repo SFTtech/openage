@@ -4,6 +4,7 @@
 #define OPENAGE_UTIL_PROFILER_H_
 
 #include <map>
+#include <vector>
 #include <chrono>
 #include <memory>
 #include <list>
@@ -30,6 +31,8 @@ public:
 	Profiler() = default;
 	void register_category(Categorie cat);
 	void unregister_category(Categorie cat);
+	void unregister_all();
+	std::vector<Categorie> registered_categories();
 
 	void start_measure(Categorie cat);
 	void end_measure(Categorie cat);

@@ -22,6 +22,23 @@ void Profiler::unregister_category(Categorie cat) {
 	this->categories.erase(cat);
 }
 
+void Profiler::unregister_all() {
+	std::vector<Categorie> registered_categories = this->registered_categories();
+
+	for (auto cat : registered_categories) {
+		this->unregister_category(cat);
+	}
+}
+
+std::vector<Profiler::Categorie> Profiler::registered_categories() {
+	std::vector<Categorie> registered_categories;
+	for (auto it = this->categories.begin(); it != this->categories.end(); ++it) {
+		registered_categories.push_back(it->first);
+	}
+
+	return registered_categories;
+}
+
 void Profiler::start_measure(Categorie cat) {
 	this->categories[cat]->start = std::chrono::high_resolution_clock::now();
 }
