@@ -227,8 +227,6 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 Engine::~Engine() {
 	this->profiler.unregister_all();
 
-	this->profiler.unregister_category(util::Profiler::Categorie::IDLE_TIME);
-
 	delete this->job_manager;
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
