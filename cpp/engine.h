@@ -22,6 +22,7 @@
 #include "keybinds/keybind_manager.h"
 #include "util/dir.h"
 #include "util/fps.h"
+#include "util/profiler.h"
 #include "screenshot.h"
 
 namespace openage {
@@ -323,6 +324,9 @@ private:
 	 * but it would allow having multiple ones.
 	 */
 	SDL_GLContext glcontext;
+
+	// TODO doc
+	util::Profiler profiler;
 };
 
 } // namespace openage

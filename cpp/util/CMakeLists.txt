@@ -8,6 +8,7 @@ add_sources(${PROJECT_NAME}
 	fds.cpp
 	fps.cpp
 	opengl.cpp
+	profiler.cpp
 	sstreamcache.cpp
 	strings.cpp
 	thread_id.cpp
