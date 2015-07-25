@@ -9,6 +9,7 @@
 #include "coord/chunk.h"
 #include <stdio.h>
 #include "terrain/terrain.h"
+#include "player.h"
 
 
 namespace openage {
@@ -118,9 +119,10 @@ void map_terrain_id(unsigned char *pixel, int terrain_id) {
 }
 
 
-Minimap::Minimap(Engine *engine, std::shared_ptr<Terrain> terrain, coord::camhud_delta size, coord::camhud hudpos)
+Minimap::Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size, coord::camhud hudpos)
   :
   engine{engine},
+  container{container},
   terrain{terrain} {
   this->size = size;
   this->hudpos = hudpos;
@@ -137,6 +139,7 @@ Minimap::Minimap(Engine *engine, std::shared_ptr<Terrain> terrain, coord::camhud
 
   glGenBuffers(1, &this->tervertbuf);
   glGenBuffers(1, &this->viewvertbuf);
+  glGenBuffers(1, &this->unitvertbuf);
 
   // Generate minimap terrain texture
   glGenTextures(1, &this->tertex);
@@ -148,7 +151,8 @@ Minimap::Minimap(Engine *engine, std::shared_ptr<Terrain> terrain, coord::camhud
   glBindTexture(GL_TEXTURE_2D, 0);
 
   minimap_shader::program->use();
-  
+  glUniform2i(minimap_shader::orig, (GLint)this->left, (GLint)this->bottom);
+  glUniform2i(minimap_shader::size, (GLint)this->size.x, (GLint)this->size.y); 
   minimap_shader::program->stopusing();
 
 }
@@ -195,24 +199,6 @@ void Minimap::update() {
 
   this->ratio_horizontal =  (double)this->size.x / (double)(east_rel.x - west_rel.x);
   this->ratio_vertical = (double)this->size.y / (double)(north_rel.y - south_rel.y);
-
-/*   glPointSize(5); */
-/*   glColor3f(1.0f, 0.0f, 0.0f); */
-/*   glBegin(GL_POINTS); */
-/*       glVertex3i(north_rel.x, north_rel.y, 0); */
-/*   glEnd(); */
-/*   glColor3f(0.0f, 1.0f, 0.0f); */
-/*   glBegin(GL_POINTS); */
-/*       glVertex3i(south_rel.x, south_rel.y, 0); */
-/*   glEnd(); */
-/*   glColor3f(0.0f, 0.0f, 1.0f); */
-/*   glBegin(GL_POINTS); */
-/*       glVertex3i(west_rel.x, west_rel.y, 0); */
-/*   glEnd(); */
-/*   glColor3f(1.0f, 1.0f, 0.0f); */
-/*   glBegin(GL_POINTS); */
-/*       glVertex3i(east_rel.x, east_rel.y, 0); */
-/*   glEnd(); */
 }
 
 
@@ -254,6 +240,78 @@ coord::camhud Minimap::from_phys(coord::phys3 coord) {
   return (coord_rel + coord::camhud{(coord::pixel_t)this->left, (coord::pixel_t)this->center_vertical});
 }
 
+void Minimap::draw_unit(Unit *unit) {
+  int *color, *pos_id;
+  minimap_shader::program->use();
+  color = &minimap_shader::color;
+  pos_id = &minimap_shader::program->pos_id;
+
+  coord::camhud unit_pos = this->from_phys(unit->location.get()->pos.draw);
+
+  // player color
+  float rgb[3];
+
+  if (unit->selected) {
+    rgb[0] = 1.0; rgb[1] = 1.0; rgb[2] = 1.0;
+  } else if (unit->has_attribute(attr_type::owner)) {
+    rgb[0] = 1.0; rgb[1] = 1.0; rgb[2] = 0.0;
+    Attribute<attr_type::owner> owner = unit->get_attribute<attr_type::owner>();
+    Player *p = &owner.player;
+    int col = p->color;
+    switch (col) {
+      case 1: // blue
+        rgb[0] = 0.0; rgb[1] = 0.0; rgb[2] = 1.0;
+        break;
+      case 2: // red
+        rgb[0] = 1.0; rgb[1] = 0.0; rgb[2] = 0.0;
+        break;
+      case 3: // green
+        rgb[0] = 0.0; rgb[1] = 1.0; rgb[2] = 0.0;
+        break;
+      case 4: // yellow
+        rgb[0] = 1.0; rgb[1] = 1.0; rgb[2] = 0.0;
+        break;
+      case 5: // orange
+        rgb[0] = 1.0; rgb[1] = 0.5; rgb[2] = 0.0;
+        break;
+      case 6: // cyan
+        rgb[0] = 0.0; rgb[1] = 1.0; rgb[2] = 1.0;
+        break;
+      case 7: // purple
+        rgb[0] = 1.0; rgb[1] = 0.0; rgb[2] = 1.0;
+        break;
+      case 8: // grey
+        rgb[0] = 0.5; rgb[1] = 0.5; rgb[2] = 0.5;
+        break;
+      default:
+        rgb[0] = 0.0; rgb[1] = 0.0; rgb[2] = 0.0;
+        break;
+    }
+  } else { 
+    rgb[0] = 0.5; rgb[1] = 0.5; rgb[2] = 0.5; 
+  }
+
+
+  GLfloat unit_vdata[] {
+    unit_pos.x, unit_pos.y,
+    rgb[0], rgb[1], rgb[2]
+  };
+
+  glBindBuffer(GL_ARRAY_BUFFER, this->viewvertbuf);
+  glVertexAttribPointer(*pos_id, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(*pos_id);
+  glVertexAttribPointer(*color, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)(2*sizeof(GLfloat)));
+  glEnableVertexAttribArray(*color);
+
+  glPointSize(4); 
+  glBufferData(GL_ARRAY_BUFFER, sizeof(unit_vdata), unit_vdata, GL_STATIC_DRAW);
+	glDrawArrays(GL_POINTS, 0, 1);
+
+  // unbind buffer
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+  minimap_shader::program->stopusing(); 
+}
 
 void Minimap::draw() {
   this->update();
@@ -303,12 +361,15 @@ void Minimap::draw() {
     old_camgame_phys = this->engine->engine_coord_data->camgame_phys;
   }
 
+  // Draw units
+  std::vector<Unit *> units = this->container->all_units();
+  for (Unit *u : units) {
+    this->draw_unit(u);
+  }
+
   // Draw minimap view box 
   int *color;
   minimap_shader::program->use();
-  glUniform2i(minimap_shader::orig, (GLint)this->left, (GLint)this->bottom);
-  glUniform2i(minimap_shader::size, (GLint)this->size.x, (GLint)this->size.y);
-
   color = &minimap_shader::color;
   pos_id = &minimap_shader::program->pos_id;
 

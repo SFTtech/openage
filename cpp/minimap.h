@@ -8,6 +8,8 @@
 #include "shader/program.h"
 #include "terrain/terrain.h"
 #include "coord/camhud.h"
+#include "unit/unit_container.h"
+#include "unit/unit.h"
 
 namespace openage {
 namespace minimap_shader {
@@ -20,23 +22,23 @@ extern shader::Program *program;
 
 
 class Minimap {
-public:
-  openage::Engine *engine;  
+private:
+  Engine *engine;  
+  UnitContainer *container;
   std::shared_ptr<Terrain> terrain;
   coord::camhud_delta size;
   coord::camhud hudpos;
-  
-  Minimap(openage::Engine *engine, std::shared_ptr<Terrain> terrain, coord::camhud_delta size,
+
+public:  
+  Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size,
           coord::camhud hudpos);
 
   // Draw a simple minimap
   void draw();
+  void draw_unit(Unit *unit);
   void generate_background();
   void update();
-  /* coord::camhud_delta tile_to_minimap_position(coord::tile tile_pos, int ppmt_x, int ppmt_y); */
   coord::camhud from_phys(coord::phys3 position);
-
-  // Draw 
 
 private:
   GLfloat left, right, bottom, top, center_vertical, center_horizontal;
@@ -45,6 +47,7 @@ private:
   GLuint tervertbuf;
   GLuint tertex; // Minimap terrain as texture
   GLuint viewvertbuf;
+  GLuint unitvertbuf;
   double ratio_horizontal;
   double ratio_vertical;
   int resolution;
