@@ -14,18 +14,18 @@ Profiler::~Profiler() {
 	this->unregister_all();
 }
 
-void Profiler::register_component(component com, color c, std::string abbreviation) {
+void Profiler::register_component(std::string com, color component_color) {
 	if (this->registered(com)) {
 		return;
 	}
 
 	component_time_data cdt = component_time_data();
-	cdt.name = abbreviation;
-	cdt.drawing_color = c;
+	cdt.display_name = com;
+	cdt.drawing_color = component_color;
 	this->components[com] = cdt;
 }
 
-void Profiler::unregister_component(component com) {
+void Profiler::unregister_component(std::string com) {
 	if (not this->registered(com)) {
 		return;
 	}
@@ -34,15 +34,15 @@ void Profiler::unregister_component(component com) {
 }
 
 void Profiler::unregister_all() {
-	std::vector<component> registered_components = this->registered_components();
+	std::vector<std::string> registered_components = this->registered_components();
 
 	for (auto com : registered_components) {
 		this->unregister_component(com);
 	}
 }
 
-std::vector<Profiler::component> Profiler::registered_components() {
-	std::vector<component> registered_components;
+std::vector<std::string> Profiler::registered_components() {
+	std::vector<std::string> registered_components;
 	for (auto it = this->components.begin(); it != this->components.end(); ++it) {
 		registered_components.push_back(it->first);
 	}
@@ -50,15 +50,15 @@ std::vector<Profiler::component> Profiler::registered_components() {
 	return registered_components;
 }
 
-void Profiler::start_measure(component com, color c, std::string abbreviation) {
+void Profiler::start_measure(std::string com, color component_color) {
 	if (not this->registered(com)) {
-		this->register_component(com, c, abbreviation);
+		this->register_component(com, component_color);
 	}
 
 	this->components[com].start = std::chrono::high_resolution_clock::now();
 }
 
-void Profiler::end_measure(component com) {
+void Profiler::end_measure(std::string com) {
 	auto end = std::chrono::high_resolution_clock::now();
 	this->components[com].duration = end - this->components[com].start;
 }
@@ -66,12 +66,12 @@ void Profiler::end_measure(component com) {
 /**
  * Just for debugging
  */
-long Profiler::last_duration(component cat) {
+long Profiler::last_duration(std::string cat) {
 	auto dur = this->components[cat].duration;
 	return std::chrono::duration_cast<std::chrono::microseconds>(dur).count();
 }
 
-void Profiler::show(component com) {
+void Profiler::show(std::string com) {
 	// TODO do drawing stuff
 
 	// for each component draw a line
@@ -103,7 +103,7 @@ void Profiler::show() {
 	}
 }
 
-bool Profiler::registered(component com) const {
+bool Profiler::registered(std::string com) const {
 	return this->components.find(com) != this->components.end();
 }
 
@@ -135,7 +135,7 @@ void Profiler::draw_legend() {
 		coord::window position = coord::window();
 		position.x = box_x + PROFILER_COM_BOX_WIDTH + 2;
 		position.y = box_y + 2;
-		Engine::get().render_text(position, 12, com.second.name.c_str());
+		Engine::get().render_text(position, 12, com.second.display_name.c_str());
 
 		offset += PROFILER_COM_BOX_HEIGHT + 2;
 	}
