@@ -8,6 +8,7 @@
 
 #include "../coord/tile.h"
 #include "../gamedata/unit.gen.h"
+#include "../terrain/terrain_object.h"
 #include "resource.h"
 #include "unit_container.h"
 
@@ -232,6 +233,10 @@ public:
 	float completed;
 	bool is_dropsite;
 	int foundation_terrain;
+
+	// set the TerrainObject to this state
+	// once building has been completed
+	object_state completion_state;
 
 	// TODO: use unit class, fish and forage have different dropsites
 	game_resource resource_type;

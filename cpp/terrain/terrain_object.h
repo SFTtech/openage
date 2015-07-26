@@ -108,12 +108,15 @@ public:
 	bool is_floating() const;
 
 	/**
-	 * has the object been placed
+	 * returns true if this object has been placed. this indicates that the object has a position and exists
+	 * on the map, floating buildings are not considered placed as they are only an indicator
+	 * for where something can begin construction
 	 */
 	bool is_placed() const;
 
 	/**
-	 * should this object be tested for collisions, arrows should not
+	 * should this object be tested for collisions, which decides whether another object is allowed
+	 * to overlap the location of this object. arrows and decaying objects will return false
 	 */
 	bool check_collisions() const;
 
@@ -134,7 +137,8 @@ public:
 	void draw_outline() const;
 
 	/**
-	 * upgrades a floating building to a placed state
+	 * changes the placement state of this object keeping the existing
+	 * position. this is useful for upgrading a floating building to a placed state
 	 */
 	bool place(object_state init_state);
 
@@ -166,13 +170,37 @@ public:
 	 */
 	void set_ground(int id, int additional=0);
 
-	/**
-	 * add a child terrain object
-	 */
-	void annex(TerrainObject *other);
 
+	/**
+	 * appends new annex location for this object
+	 *
+	 * this does not replace any existing annex
+	 */
+	template<class T, typename ... Arg>
+	TerrainObject *make_annex(Arg ... args) {
+
+		this->children.push_back(std::unique_ptr<T>(new T(this->unit, args ...)));
+		auto &annex_ptr = this->children.back();
+		annex_ptr->parent = this;
+		return annex_ptr.get();
+	}
+
+	/**
+	 * Returns the parent terrain object,
+	 * if null the object has no parent which is
+	 * the case for most objects
+	 *
+	 * objects with a parent are owned by that object
+	 * and to be placed on the map the parent must also be placed
+	 */
 	const TerrainObject *get_parent() const;
 
+	/**
+	 * Returns a list of child objects, this is the inverse of the
+	 * get_parent() function
+	 *
+	 * TODO: this does not perform optimally and is likely to change
+	 */
 	std::vector<TerrainObject *> get_children() const;
 
 	/*
@@ -233,7 +261,7 @@ protected:
 	 * annexes and grouped units
 	 */
 	TerrainObject *parent;
-	std::vector<TerrainObject *> children;
+	std::vector<std::unique_ptr<TerrainObject>> children;
 
 	/**
 	 * texture for drawing outline
@@ -293,6 +321,8 @@ private:
 	SquareObject(Unit &u, coord::tile_delta foundation_size);
 	SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex);
 
+
+	friend class TerrainObject;
 	friend class Unit;
 };
 
@@ -324,6 +354,7 @@ private:
 	RadialObject(Unit &u, float rad);
 	RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex);
 
+	friend class TerrainObject;
 	friend class Unit;
 };
 

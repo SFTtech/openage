@@ -2,6 +2,11 @@
 
 This file should assist you in compiling and running the game.
 
+A quick guide for the lost:
+
+1. Check the [dependencies](#dependencies) to see what you need, we have [prerequisite steps](#prerequisite-steps-for-ubuntu-users-ubuntu-1410) for most common platforms to install most things
+2. Run the build commands for [developers](#for-developersusers-who-want-to-try-the-project), [users](#for-installing-on-your-local-system) or [packagers](#for-packagers)
+3. If you run into problems, check out the [troubleshooting](#troubleshooting) section and the [FAQ](#faq)
 
 ## Buildsystem Design
 
@@ -111,8 +116,8 @@ You can install both compilers and select the one to be used by `./configure`.
 
  - (obviously) clone this repo or acquire the sources some other way
  - make sure you have everything from the [dependency list](#dependencies)
- - `./configure --mode=debug --compiler=llvm` will prepare building
-  - You could also use `./configure --mode=debug --compiler=gnu` here
+ - `./configure --mode=debug --compiler=clang` will prepare building
+  - You could also use `./configure --mode=debug --compiler=gcc` here
  - `make` will do code generation, build all python modules and the
    openage executable
  - `make media AGE2DIR="$HOME/.wine/drive_c/age2"` will convert all media
@@ -125,8 +130,8 @@ You can install both compilers and select the one to be used by `./configure`.
 
 ### For installing on your local system
 
- - `./configure --mode=release --compiler=gnu --prefix=/usr`
-  - You could also use `./configure --mode=release --compiler=llvm --prefix=/usr`
+ - `./configure --mode=release --compiler=gcc --prefix=/usr`
+  - You could also use `./configure --mode=release --compiler=clang --prefix=/usr`
  - `make` to compile the project
  - `make install` will install the binary to /usr/bin/openage, python
    packages to `/usr/lib/python...`, static assets to `/usr/share`

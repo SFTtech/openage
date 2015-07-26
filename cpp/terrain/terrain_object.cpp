@@ -24,7 +24,8 @@ TerrainObject::TerrainObject(Unit &u)
 	passable{[](const coord::phys3 &) -> bool {return true;}},
 	draw{[]() {}},
 	state{object_state::removed},
-	occupied_chunk_count{0} {
+	occupied_chunk_count{0},
+	parent{nullptr} {
 }
 
 TerrainObject::~TerrainObject() {
@@ -34,16 +35,31 @@ TerrainObject::~TerrainObject() {
 }
 
 bool TerrainObject::is_floating() const {
+
+	// if parent is floating then all children also are
+	if (this->parent && this->parent->is_floating()) {
+		return true;
+	}
 	return this->state == object_state::floating;
 }
 
 bool TerrainObject::is_placed() const {
+
+	// if object has a parent it must be placed
+	if (this->parent && !this->parent->is_placed()) {
+		return false;
+	}
 	return this->state == object_state::placed ||
 	       this->state == object_state::placed_no_collision;
 }
 
 
 bool TerrainObject::check_collisions() const {
+
+	// if object has a parent it must be placed
+	if (this->parent && !this->parent->is_placed()) {
+		return false;
+	}
 	return this->state == object_state::placed;
 }
 
@@ -52,8 +68,8 @@ void TerrainObject::draw_outline() const {
 }
 
 bool TerrainObject::place(object_state init_state) {
-	if (this->state != object_state::floating) {
-		throw util::Error(MSG(err) << "Building must be floating");
+	if (this->state == object_state::removed) {
+		throw util::Error(MSG(err) << "Building cannot change state with no position");
 	}
 
 	// remove any other floating objects
@@ -69,16 +85,26 @@ bool TerrainObject::place(object_state init_state) {
 		}
 
 		for (auto obj : chunk->get_data(temp_pos)->obj) {
+
+			// ignore self and annexes of self
 			if (obj != this &&
-				obj->is_floating()) {
-				to_remove.push_back(obj);
-			}
-			else if (obj != this &&
-				     obj->check_collisions()) {
-				return false;
+				obj->get_parent() != this) {
+
+				if (obj->is_floating()) {
+
+					// floating objects get removed
+					to_remove.push_back(obj);
+				}
+				else if (obj->check_collisions()) {
+
+					// solid objects obstruct placement
+					return false;
+				}
 			}
 		}
 	}
+
+	// all obstructing objects get deleted
 	for (auto remove_obj : to_remove) {
 		remove_obj->unit.location = nullptr;
 	}
@@ -184,17 +210,21 @@ void TerrainObject::set_ground(int id, int additional) {
 	}
 }
 
-void TerrainObject::annex(TerrainObject *other) {
-	this->children.push_back(other);
-	other->parent = this;
-}
-
 const TerrainObject *TerrainObject::get_parent() const {
 	return this->parent;
 }
 
 std::vector<TerrainObject *> TerrainObject::get_children() const {
-	return this->children;
+
+	// TODO: a better performing way of doing this
+	// for example accept a lambda to use for each element
+	// or maintain a duplicate class field for raw pointers
+
+	std::vector<TerrainObject *> result;
+	for (auto &obj: this->children) {
+		result.push_back(obj.get());
+	}
+	return result;
 }
 
 bool TerrainObject::operator <(const TerrainObject &other) {

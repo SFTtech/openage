@@ -93,20 +93,6 @@ public:
 	}
 
 	/**
-	 * constructs a new annex location for this unit
-	 *
-	 * this does not replace the units location
-	 */
-	template<class T, typename ... Arg>
-	T *make_location_annex(Arg ... args) {
-
-		// Unit is a friend of the location
-		auto annex_ptr = new T(*this, args ...);
-		this->location->annex(annex_ptr);
-		return annex_ptr;
-	}
-
-	/**
 	 * removes all actions and abilities
 	 * current attributes are kept
 	 */
@@ -122,6 +108,11 @@ public:
 	 * true when the unit is alive and able to add new actions
 	 */
 	bool accept_commands() const;
+
+	/**
+	 * checks whether the current player is the owner of this unit
+	 */
+	bool is_own_unit();
 
 	/**
 	 * returns the current action on top of the stack

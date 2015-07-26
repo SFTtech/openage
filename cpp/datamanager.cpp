@@ -216,7 +216,7 @@ bool DataManager::valid_graphic_id(index_t graphic_id) {
 		return false;
 	}
 	if (this->graphics[graphic_id]->slp_id <= 0) {
-	 	return false;
+		return false;
 	}
 	return true;
 }
@@ -225,7 +225,7 @@ void DataManager::load_building(const gamedata::unit_building &building, unit_ty
 
 	// check graphics
 	if (this->valid_graphic_id(building.graphic_standing0)) {
-		list.emplace_back(std::make_unique<BuldingProducer>(*this, &building));
+		list.emplace_back(std::make_unique<BuildingProducer>(*this, &building));
 
 		auto producer_ptr = list.back().get();
 		this->producers[producer_ptr->id()] = producer_ptr;

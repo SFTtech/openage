@@ -310,7 +310,7 @@ GameMain::GameMain(Engine *engine)
 		// attempt to train editor selected object
 		if ( this->datamanager.producer_count() > 0 ) {
 			auto type = this->datamanager.get_type_index(this->editor_current_building);
-			Command cmd(this->players[0], type);
+			Command cmd(this->players[this->engine->current_player - 1], type);
 			this->selection.all_invoke(cmd);
 		}
 	});
@@ -328,6 +328,51 @@ GameMain::GameMain(Engine *engine)
 		this->use_set_ability = true;
 		this->ability = ability_type::gather;
 	});
+	this->keybind_context.bind(keybinds::action_t::SPAWN_VILLAGER, [this]() {
+		if (this->construct_mode && this->datamanager.producer_count() > 0) {
+			UnitType &type = *this->datamanager.get_type(590);
+			this->placed_units.new_unit(type, this->players[this->engine->current_player - 1], mousepos_tile.to_phys2().to_phys3());
+		}
+	});
+	this->keybind_context.bind(keybinds::action_t::KILL_UNIT, [this]() {
+		selection.kill_unit();
+	});
+
+	// Villager build commands
+	// TODO place this into separate building menus instead of global hotkeys
+	auto bind_building_key = [this](keybinds::action_t action, int building, int military_building) {
+		this->keybind_context.bind(action, [this, building, military_building]() {
+			if (this->selection.contains_builders()) {
+				this->building_placement = true;
+				if (this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL)) {
+					this->editor_current_building = military_building;
+				} else {
+					this->editor_current_building = building;
+				}
+			}
+		});
+	};
+	bind_building_key(keybinds::action_t::BUILDING_1, 598, 609); // House, barracks
+	bind_building_key(keybinds::action_t::BUILDING_2, 574, 558); // Mill, archery range
+	bind_building_key(keybinds::action_t::BUILDING_3, 616, 581); // Mining camp, stable
+	bind_building_key(keybinds::action_t::BUILDING_4, 611, 580); // Lumber camp, siege workshop
+	bind_building_key(keybinds::action_t::BUILDING_TOWN_CENTER, 568, 568); // Town center
+
+	// Switching between players with the 1-8 keys
+	auto bind_player_switch = [this](keybinds::action_t action, int player) {
+		this->keybind_context.bind(action, [this, player]() {
+			this->engine->current_player = player;
+			this->selection.clear();
+		});
+	};
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_1, 1);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_2, 2);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_3, 3);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_4, 4);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_5, 5);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_6, 6);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_7, 7);
+	bind_player_switch(keybinds::action_t::SWITCH_TO_PLAYER_8, 8);
 
 	engine->get_keybind_manager().register_context(&this->keybind_context);
 }
@@ -352,9 +397,29 @@ bool GameMain::on_input(SDL_Event *e) {
 		engine.stop();
 		break;
 
-	case SDL_MOUSEBUTTONDOWN: { //thanks C++! we need a separate scope because of new variables...
+	case SDL_MOUSEBUTTONDOWN: {
+		switch (e->button.button) {
+		case SDL_BUTTON_LEFT:
+			if (this->clicking_active && !construct_mode && !this->building_placement) {
+				// begin a boxed selection
+				selection.drag_begin(mousepos_camgame);
+				dragging_active = true;
+			}
+			break;
+		case SDL_BUTTON_MIDDLE:
+			// activate scrolling
+			SDL_SetRelativeMouseMode(SDL_TRUE);
+			scrolling_active = true;
 
-		// a mouse button was pressed...
+			// deactivate clicking as long as mousescrolling is active
+			clicking_active = false;
+			break;
+		}
+		break;
+
+	}
+
+	case SDL_MOUSEBUTTONUP: {
 		// subtract value from window height to get position relative to lower right (0,0).
 		coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
 		this->mousepos_camgame = mousepos_window.to_camgame();
@@ -363,157 +428,152 @@ bool GameMain::on_input(SDL_Event *e) {
 		this->mousepos_phys3 = mousepos_camgame.to_phys3();
 		this->mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
-		if (clicking_active and e->button.button == SDL_BUTTON_LEFT and !construct_mode) {
-			if (this->building_placement) {
+		switch (e->button.button) {
 
-      // confirm building placement with left click
-      // first create foundation using the producer
-      Player *player = this->selection.owner();
-      if (player) {
-        UnitContainer *container = &this->placed_units;
-        UnitType *building_type = this->datamanager.get_type_index(this->editor_current_building);
-        UnitReference new_building = container->new_unit(*building_type, *player, mousepos_phys3);
+		case SDL_BUTTON_LEFT:
+			if (this->dragging_active) { // Stop dragging
+				selection.drag_release(terrain.get(), this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL));
+				dragging_active = false;
+			} else if (clicking_active) {
+				if (construct_mode) {
+					log::log(MSG(dbg) <<
+					    "LMB [window]:   "
+					    " x " << std::setw(9) << mousepos_window.x <<
+					    " y " << std::setw(9) << mousepos_window.y);
 
-        // task all selected villagers to build
-        if (new_building.is_valid()) {
-          Command cmd(*player, new_building.get());
-          cmd.set_ability(ability_type::build);
-          this->selection.all_invoke(cmd);
-        }
-      }
-      this->building_placement = false;
+					constexpr auto phys_per_tile = openage::coord::settings::phys_per_tile;
+
+					log::log(MSG(dbg) <<
+					    "LMB [phys3]:    "
+					    " NE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.ne} <<
+					    " SE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.se} <<
+					    " UP " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.up});
+
+					log::log(MSG(dbg) <<
+					    "LMB [tile]:     "
+					    " NE " << std::setw(8) << mousepos_tile.ne <<
+					    " SE " << std::setw(8) << mousepos_tile.se);
+
+					TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
+					chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
+				} else if (this->building_placement) {
+					// confirm building placement with left click
+					// first create foundation using the producer
+					UnitContainer *container = &this->placed_units;
+					UnitType *building_type = this->datamanager.get_type_index(this->editor_current_building);
+					UnitReference new_building = container->new_unit(*building_type, this->players[engine.current_player - 1], mousepos_phys3);
+
+					// task all selected villagers to build
+					if (new_building.is_valid()) {
+						Command cmd(this->players[engine.current_player - 1], new_building.get());
+						cmd.set_ability(ability_type::build);
+						this->selection.all_invoke(cmd);
+					}
+					this->building_placement = false;
+				}
+			}
+			break;
+
+		case SDL_BUTTON_MIDDLE:
+			if (scrolling_active) { // Stop scrolling
+				SDL_SetRelativeMouseMode(SDL_FALSE);
+				scrolling_active = false;
+
+				// reactivate mouse clicks as scrolling is over
+				clicking_active = true;
+			}
+			break;
+
+		case SDL_BUTTON_RIGHT:
+			if (clicking_active) {
+				if (construct_mode) {
+					// get chunk clicked on, don't create it if it's not there already
+					// -> placing buildings in void is forbidden that way
+					TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
+					if (chunk == nullptr) {
+						break;
+					}
+
+					// delete any unit on the tile
+					if (!chunk->get_data(mousepos_tile)->obj.empty()) {
+						// get first object currently standing at the clicked position
+						TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
+						log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
+						obj->unit.delete_unit();
+					} else if ( this->datamanager.producer_count() > 0 ) {
+						// try creating a unit
+						log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
+						UnitType &type = *this->datamanager.get_type_index(this->editor_current_building);
+						this->placed_units.new_unit(type, this->players[engine.current_player - 1], mousepos_tile.to_phys2().to_phys3());
+					}
+				} else {
+					// right click can cancel building placement
+					if (this->building_placement) {
+						this->building_placement = false;
+					} else {
+						auto cmd = this->get_action(mousepos_phys3);
+						selection.all_invoke(cmd);
+					}
+				}
+			}
+			break;
+
+		} // switch (e->button.button)
+		break;
+
+	} // case SDL_MOUSEBUTTONUP:
+
+	case SDL_MOUSEMOTION: {
+
+		// update mouse position values
+		coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
+		this->mousepos_camgame = mousepos_window.to_camgame();
+		this->mousepos_phys3 = mousepos_camgame.to_phys3();
+		this->mousepos_tile = mousepos_phys3.to_tile3().to_tile();
+
+		if (dragging_active) {
+			selection.drag_update(mousepos_camgame);
+		}
+
+		// scroll, if middle mouse is being pressed
+		//  SDL_GetRelativeMouseMode() queries sdl for that.
+		else if (scrolling_active) {
+			engine.move_phys_camera(e->motion.xrel, e->motion.yrel);
+		}
+		break;
+	}
+
+	case SDL_MOUSEWHEEL:
+		if (this->construct_mode) {
+			if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
+				editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
+			} else {
+				editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
+			}
+		}
+		break;
+
+  case SDL_MOUSEWHEEL:
+    if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
+      editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
     }
     else {
-
-      // begin a boxed selection
-      this->selection.drag_begin(mousepos_camgame);
-      this->dragging_active = true;
-    }
-  }
-  else if (clicking_active and e->button.button == SDL_BUTTON_LEFT and construct_mode) {
-    log::log(MSG(dbg) <<
-      "LMB [window]:   "
-      " x " << std::setw(9) << mousepos_window.x <<
-      " y " << std::setw(9) << mousepos_window.y);
-
-    constexpr auto phys_per_tile = openage::coord::settings::phys_per_tile;
-
-    log::log(MSG(dbg) <<
-      "LMB [phys3]:    "
-      " NE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.ne} <<
-      " SE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.se} <<
-      " UP " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.up});
-
-    log::log(MSG(dbg) <<
-      "LMB [tile]:     "
-      " NE " << std::setw(8) << mousepos_tile.ne <<
-      " SE " << std::setw(8) << mousepos_tile.se);
-
-    TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
-    chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
-  }
-  else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and !construct_mode) {
-
-    // right click can cancel building placement
-    if (this->building_placement) {
-      this->building_placement = false;
-    }
-    else {
-      auto cmd = this->get_action(mousepos_phys3);
-      selection.all_invoke(cmd);
-    }
-  }
-  else if (clicking_active and e->button.button == SDL_BUTTON_RIGHT and construct_mode) {
-    // get chunk clicked on, don't create it if it's not there already
-    // -> placing buildings in void is forbidden that way
-    TerrainChunk *chunk = terrain->get_chunk(mousepos_tile);
-    if (chunk == nullptr) {
-      break;
-    }
-
-    // delete any unit on the tile
-    if (!chunk->get_data(mousepos_tile)->obj.empty()) {
-      // get first object currently standing at the clicked position
-      TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
-      log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
-      obj->unit.delete_unit();
-    } else if ( this->datamanager.producer_count() > 0 ) {
-      // try creating a unit
-      log::log(MSG(dbg) << "create unit with producer id " << this->editor_current_building);
-      UnitType &producer = *this->datamanager.get_type_index(this->editor_current_building);
-      this->placed_units.new_unit(producer, this->players[rand() % this->players.size()], mousepos_tile.to_phys2().to_phys3());
+      editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
     }
     break;
-  }
-  else if (not scrolling_active
-           and e->button.button == SDL_BUTTON_MIDDLE) {
-    // activate scrolling
-    SDL_SetRelativeMouseMode(SDL_TRUE);
-    scrolling_active = true;
 
-    // deactivate clicking as long as mousescrolling is active
-    clicking_active = false;
-  }
-  break;
-}
+  case SDL_KEYUP: {
+    SDL_Keymod keymod = SDL_GetModState();
 
-case SDL_MOUSEBUTTONUP:
-  if (dragging_active and e->button.button == SDL_BUTTON_LEFT) {
-    bool ctrl_down = engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL);
-    selection.drag_release(terrain.get(), ctrl_down);
-    dragging_active = false;
-  }
-  else if (scrolling_active and e->button.button == SDL_BUTTON_MIDDLE) {
-    // stop scrolling
-    SDL_SetRelativeMouseMode(SDL_FALSE);
-    scrolling_active = false;
-
-    // reactivate mouse clicks as scrolling is over
-    clicking_active = true;
-  }
-  break;
-
-case SDL_MOUSEMOTION: {
-
-  // update mouse position values
-  coord::window mousepos_window {(coord::pixel_t) e->button.x, (coord::pixel_t) e->button.y};
-  this->mousepos_camgame = mousepos_window.to_camgame();
-  this->mousepos_phys3 = mousepos_camgame.to_phys3();
-  this->mousepos_tile = mousepos_phys3.to_tile3().to_tile();
-
-  if (dragging_active) {
-    selection.drag_update(mousepos_camgame);
+    SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+    keybinds::KeybindManager &keybinds = engine.get_keybind_manager();
+    keybinds.set_key_state(sym, keymod, false);
+    keybinds.press(keybinds::key_t(sym, keymod));
+    break;
   }
 
-  // scroll, if middle mouse is being pressed
-  //  SDL_GetRelativeMouseMode() queries sdl for that.
-  else if (scrolling_active) {
-    engine.move_phys_camera(e->motion.xrel, e->motion.yrel);
-  }
-  break;
-}
-
-case SDL_MOUSEWHEEL:
-  if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
-    editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
-  }
-  else {
-    editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
-  }
-  break;
-
-case SDL_KEYUP: {
-  SDL_Keymod keymod = SDL_GetModState();
-
-  SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
-  keybinds::KeybindManager &keybinds = engine.get_keybind_manager();
-  keybinds.set_key_state(sym, keymod, false);
-  keybinds.press(keybinds::key_t(sym, keymod));
-  break;
-}
-
-case SDL_KEYDOWN: {
-  SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+  case SDL_KEYDOWN: {
+    SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
 		engine.get_keybind_manager().set_key_state(sym, SDL_GetModState(), true);
 		break;
 	}
@@ -580,22 +640,25 @@ bool GameMain::on_draw() {
 	// draw construction or actions mode indicator
 	int x = 400 - (engine.engine_coord_data->window_size.x / 2);
 	int y = 35 - (engine.engine_coord_data->window_size.y / 2);
+
+	std::string mode_str;
 	if (this->construct_mode) {
-		engine.render_text({x, y}, 20, "Construct mode");
+		mode_str += "Construct mode";
 	} else {
-		std::string ability_str = "Actions mode";
+		mode_str += "Actions mode";
 		if (this->use_set_ability) {
-			ability_str += " (" + std::to_string(this->ability) + ")";
+			mode_str += " (" + std::to_string(this->ability) + ")";
 		}
-		engine.render_text({x, y}, 20, ability_str.c_str());
 	}
+	mode_str += " (player " + std::to_string(engine.current_player) + ")";
+	engine.render_text({x, y}, 20, mode_str.c_str());
 
 	if (this->building_placement) {
 		auto building_type = this->datamanager.get_type_index(this->editor_current_building);
 		auto txt = building_type->default_texture();
 		auto size = building_type->foundation_size;
 		tile_range center = building_center(mousepos_tile.to_phys2().to_phys3(), size);
-		txt->draw(center.draw.to_camgame(), 0, 1);
+		txt->draw(center.draw.to_camgame(), 0, engine.current_player);
 	}
 
 	return true;
@@ -604,16 +667,20 @@ bool GameMain::on_draw() {
 bool GameMain::on_drawhud() {
 	Engine &e = Engine::get();
 
-	// draw the currently selected editor texture tile
-	this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
+	if (this->construct_mode) {
 
-	if (this->datamanager.producer_count() > 0) {
-		// and the current active building
-		coord::window bpreview_pos;
-		bpreview_pos.x = e.engine_coord_data->window_size.x - 200;
-		bpreview_pos.y = 200;
-		auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
-		txt->sample(bpreview_pos.to_camhud());
+		// draw the currently selected editor texture tile
+		this->terrain->texture(this->editor_current_terrain)->draw(coord::window{63, 84}.to_camhud(), ALPHAMASKED);
+
+		if (this->datamanager.producer_count() > 0) {
+			// and the current active building
+			coord::window bpreview_pos;
+			bpreview_pos.x = e.engine_coord_data->window_size.x - 200;
+			bpreview_pos.y = 200;
+
+			auto txt = this->datamanager.get_type_index(this->editor_current_building)->default_texture();
+			txt->sample(bpreview_pos.to_camhud(), engine->current_player);
+		}
 	}
 
   this->minimap->draw();
@@ -675,14 +742,14 @@ void GameMain::draw_debug_grid() {
 Command GameMain::get_action(const coord::phys3 &pos) const {
 	auto obj = this->terrain->obj_at_point(pos);
 	if (obj) {
-		Command c(this->players[0], &obj->unit, pos);
+		Command c(this->players[engine->current_player - 1], &obj->unit, pos);
 		if (this->use_set_ability) {
 			c.set_ability(ability);
 		}
 		return c;
 	}
 	else {
-		Command c(this->players[0], pos);
+		Command c(this->players[engine->current_player - 1], pos);
 		if (this->use_set_ability) {
 			c.set_ability(ability);
 		}

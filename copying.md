@@ -52,7 +52,8 @@ _the openage authors_ are:
 | Niklas Fiekas               | niklasf                     | niklas.fiekas@tu-clausthal.de         |
 | Charles Gould               | charlesrgould               | charles.r.gould@gmail.com             |
 | Wilco Kusee                 | detrumi                     | wilcokusee@gmail.com                  |
-| Jens Feodor Nielsen         | jfeo                        | xws747@alumni.ku.dk                   |
+| Sreejith R                  | sreejithr                   | sreejith.r44@gmail.com                |
+| Jens Feodor Nielsen         | jfeo                        | jensfeodor@gmail.com                  |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

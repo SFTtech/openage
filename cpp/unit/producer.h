@@ -107,10 +107,10 @@ private:
  * Will be replaced with nyan system in future
  * in aoe buildings are derived from living units
  */
-class BuldingProducer: public UnitType {
+class BuildingProducer: public UnitType {
 public:
-	BuldingProducer(DataManager &dm, const gamedata::unit_building *ud);
-	virtual ~BuldingProducer();
+	BuildingProducer(DataManager &dm, const gamedata::unit_building *ud);
+	virtual ~BuildingProducer();
 
 	int id() const override;
 	std::string name() const override;
@@ -133,6 +133,12 @@ private:
 	UnitType *trainable2;
 	UnitType *projectile;
 	int foundation_terrain;
+
+	/**
+	 * used for objects like town centers or gates
+	 * where the base does not apply collision checks
+	 */
+	bool enable_collisions;
 
 	TerrainObject *make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const;
 };

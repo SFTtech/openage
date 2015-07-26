@@ -233,6 +233,12 @@ public:
 	 */
 	coord_data* engine_coord_data;
 
+	/**
+	 * Holds the current player color/number
+	 * is a number between 1 and 8
+	 */
+	 int current_player;
+
 private:
 	/**
 	 * main engine loop function.

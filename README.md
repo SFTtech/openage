@@ -31,7 +31,7 @@ Our goals *include*:
 * Fully authentic look and feel
   * This can only be approximated, since the behaviour of the original game is mostly undocumented,
     and guessing/experimenting can only get you this close
-  * We will not implement useless artificial limitations (max 30 selectable units...))
+  * We will not implement useless artificial limitations (max 30 selectable units...)
 * Multiplayer (obviously)
 * Optionally, [Improvements](/doc/ideas/) over the original game
 * AI
@@ -106,7 +106,7 @@ Project documentation is accompanying the source code in the `doc/` folder:
 Windows Version
 ---------------
 
-None of us uses Windows, so a port has no priority.
+None of us uses Windows, so a port has low priority.
 
 However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into porting using `mingw32`/`mingw64` or maybe `cygwin`.
 

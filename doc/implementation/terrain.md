@@ -14,7 +14,7 @@ You might know the infinite terrain epicness of minecraft. That's exactly what w
 
 The terrain consists of loads of small tiles, grouped in "chunks".
 
-One chunk contains an area of (currently) 16×16 tiles. Terrain is blended by the technique described in `doc/media/blendomatic`.
+One chunk contains an area of (currently) 16×16 tiles. Terrain is blended by the technique described in [doc/media/blendomatic.md](/doc/media/blendomatic.md).
 
 (short summary:
 a neighbor tile is blended onto the current one,

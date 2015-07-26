@@ -69,8 +69,8 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	drawing_debug_overlay{true},
 	drawing_huds{true},
 	engine_coord_data{this->get_coord_data()},
+	current_player{1},
 	data_dir{data_dir},
-
 	audio_manager{} {
 
 	for (uint32_t size : {12, 20}) {
