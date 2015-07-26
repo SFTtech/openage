@@ -250,6 +250,10 @@ void Engine::stop() {
 	this->running = false;
 }
 
+void Engine::profiler_draw(bool debug_mode) {
+	profiler.show(debug_mode);
+}
+
 void Engine::loop() {
 	SDL_Event event;
 
@@ -258,7 +262,7 @@ void Engine::loop() {
 
 		this->job_manager->execute_callbacks();
 
-		this->profiler.start_measure(util::Profiler::component::EVENT_PROCESSING);
+		this->profiler.start_measure(util::Profiler::component::EVENT_PROCESSING, {255,0,0},"events");
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_WINDOWEVENT) {
 				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
@@ -291,7 +295,7 @@ void Engine::loop() {
 			}
 		}
 
-		this->profiler.start_measure(util::Profiler::component::RENDERING);
+		this->profiler.start_measure(util::Profiler::component::RENDERING, {0,255,0}, "render");
 		// clear the framebuffer to black
 		// in the future, we might disable it for lazy drawing
 		glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -319,6 +323,7 @@ void Engine::loop() {
 
 			if (this->drawing_debug_overlay) {
 				this->draw_debug_overlay();
+				//this->profiler.show();
 			}
 
 			if (this->drawing_huds) {
@@ -336,7 +341,7 @@ void Engine::loop() {
 
 		this->profiler.end_measure(util::Profiler::component::RENDERING);
 
-		this->profiler.start_measure(util::Profiler::component::IDLE_TIME);
+		this->profiler.start_measure(util::Profiler::component::IDLE_TIME, {0,0,255},"idle");
 
 		// the rendering is done
 		// swap the drawing buffers to actually show the frame
