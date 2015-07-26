@@ -543,16 +543,6 @@ bool GameMain::on_input(SDL_Event *e) {
 		break;
 	}
 
-	case SDL_MOUSEWHEEL:
-		if (this->construct_mode) {
-			if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
-				editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
-			} else {
-				editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
-			}
-		}
-		break;
-
   case SDL_MOUSEWHEEL:
     if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
       editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
