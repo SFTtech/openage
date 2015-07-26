@@ -263,6 +263,11 @@ public:
 	 */
 	util::ExternalProfiler external_profiler;
 
+	 /**
+	  * TODO add docstring
+	  */
+	 void profiler_draw(bool debug_mode = false);
+
 private:
 	/**
 	 * main engine loop function.
