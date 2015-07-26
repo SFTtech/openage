@@ -26,43 +26,34 @@ struct color {
 };
 
 struct component_time_data {
+	std::string display_name;
+	color drawing_color;
 	std::chrono::high_resolution_clock::time_point start;
 	std::chrono::high_resolution_clock::duration duration;
 	std::array<std::chrono::high_resolution_clock::duration, MAX_DURATION_HISTORY> history;
-	color drawing_color;
-	std::string name;
 };
 
 class Profiler {
 public:
-	// TODO Maybe remove enum class and use strings instead
-	// PROS:
-	//  - no later adjustment of the component enum class
-	//  - no unessessary string abbreviation parameter
-	enum class component {
-		IDLE_TIME,
-		EVENT_PROCESSING,
-		RENDERING,
-	};
 
 	Profiler() = default;
 	~Profiler();
-	void register_component(component com, color c, std::string abbreviation);
-	void unregister_component(component com);
+	void register_component(std::string com, color component_color);
+	void unregister_component(std::string com);
 	void unregister_all();
-	std::vector<component> registered_components();
+	std::vector<std::string> registered_components();
 
-	void start_measure(component com, color c, std::string abbreviation = "undef");
-	void end_measure(component com);
-	long last_duration(component com);
-	void show(component com);
+	void start_measure(std::string com, color component_color);
+	void end_measure(std::string com);
+	long last_duration(std::string com);
+	void show(std::string com);
 	void show(bool debug_mode);
 	void show();
-	bool registered(component com) const;
+	bool registered(std::string com) const;
 	unsigned size() const;
 
 private:
-	std::map<component, component_time_data> components;
+	std::map<std::string, component_time_data> components;
 	int insert_pos = 0;
 
 	void draw_canvas();
