@@ -599,6 +599,7 @@ bool GameMain::on_draw() {
 
 	if (this->debug_grid_active) {
 		this->draw_debug_grid();
+		engine.profiler_draw(true);
 	}
 
 	if (not this->datamanager.load_complete()) {
