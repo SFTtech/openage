@@ -3,7 +3,7 @@ Guide to using Integer Types
 
 If integer width does not matter (most cases):
 ```cpp
-int, unsigned
+int, unsigned int
 ```
 
 If integer width matters:

@@ -1,0 +1,14 @@
+// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+
+// ${AUTOGEN_WARNING}
+
+#include "config.h"
+
+namespace openage {
+namespace config {
+
+const char *const global_asset_dir = "${INSTALLED_GLOBAL_ASSET_DIR}";
+const char *const version = "${PROJECT_VERSION}";
+const char *const config_option_string = "${CONFIG_OPTION_STRING}";
+
+}} // openage::config

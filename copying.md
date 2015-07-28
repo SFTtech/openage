@@ -91,7 +91,7 @@ the first line, as a comment:
 
     Copyright 20XX-20YY the openage authors. See copying.md for legal info.
 
-`XXXX` is the year when the file was created, and `YYYY` is the year when the
+`20XX` is the year when the file was created, and `20YY` is the year when the
 file was last edited. When editing a file, make sure the last-modification year
 is still correct.
 
@@ -125,8 +125,8 @@ List of all 3rd-party files in openage:
 
 From [cabextract/libmspack](http://www.cabextract.org.uk/) ([LGPL 2.0](/legal/LGPLv2.0))
 
- - `py/openage/convert/cabextract/lzxd/lzxd.cpp`
- - `py/openage/convert/cabextract/lzxd/lzx_compression_info`
+ - `libopenage/util/compress/lzxd.cpp`
+ - `doc/code/lzx_compression_info`
 
 cmake modules ([3-clause BSD license](/legal/BSD-3-clause))
 

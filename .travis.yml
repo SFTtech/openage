@@ -7,37 +7,68 @@ compiler:
   - clang
   - gcc
 
+env:
+  - BUILDMODE=release
+  - STATICCHECKER=scan-build
+  - SANITIZER=yes LSAN_OPTIONS=suppressions=etc/lsan.supp ASAN_OPTIONS=check_initialization_order=1
+  - SANITIZER=mem     # TODO this needs a custom-built libstd++
+  - SANITIZER=thread SANITIZER_FATAL=1
+
+matrix:
+  allow_failures:
+    - env: SANITIZER=mem
+    - compiler: gcc
+      env: SANITIZER=thread SANITIZER_FATAL=1
+  exclude:
+    - compiler: gcc                   # gcc can't do that yet
+      env: SANITIZER=mem
+    - compiler: gcc                   # no need to run the static analysis twice
+      env: STATICCHECKER=scan-build
+
 before_install:
   - uname -a
   - lsb_release -a
-  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test     # newer
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test     # newer toolchain
   - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots       # libsdl2
-  - sudo add-apt-repository --yes ppa:kubuntu-ppa/backports       # cmake >=2.8.10
-  - sudo add-apt-repository --yes ppa:fkrull/deadsnakes           # python3.x
-  - sudo apt-add-repository --yes ppa:sfttech/opusfile            # opusfile
-  - sudo apt-add-repository --yes ppa:sfttech/random              # libepoxy
+  - sudo apt-add-repository --yes ppa:sfttech/random              # cmake, opus, epoxy, python3-* (3.4)
   - sudo apt-get update -qq
 
 install:
   - export CVERSION="4.9"
-  - export PYVERSION="3.3"
-  - sudo apt-get install -qq g++-${CVERSION}; #also needed for newer stdlib
+  - export PYVERSION="3.4"
+  - sudo apt-get install -qq g++-${CVERSION}  # also needed for newer stdlib
   - if [ "$CXX" = "g++" ]; then export CXX="g++-${CVERSION}" CC="gcc-${CVERSION}"; fi
   - export CC=`which $CC`
   - export CXX=`which $CXX`
-  - sudo apt-get install -qq python${PYVERSION} python${PYVERSION}-dev libepoxy-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev libopusfile-dev cmake
+  - sudo apt-get remove -qq cmake  # remove the museum edition
+  - sudo apt-get install -qq python3 python3-dev libepoxy-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libsdl2-dev libsdl2-image-dev libopusfile-dev opus-tools cmake python3-numpy cython3 python3-pil python3-pygments clang
+
+# we install those from PyPi on purpose, because we always want the most recent linters available.
+# all other python packages should be properly backported to precise, and installed from the PPA.
   - wget -O /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py
-  - sudo python${PYVERSION} /tmp/get-pip.py
-  - sudo python${PYVERSION} -m pip install pep8
+  - sudo -H python3 /tmp/get-pip.py
+  - sudo -H python3 -m pip install pep8
+  - sudo -H python3 -m pip install pylint
+
+# this is required because software museum scan-build doesn't support --use-cc/--use-c++
+  - sudo ln -sf "$CC" /usr/bin/gcc
+  - sudo ln -sf "$CXX" /usr/bin/g++
 
 before_script:
   - git pull --unshallow    # the full git history is required for 'make checkfull'
   - cmake --version
-  - ls -l /usr/bin/python*
-  - sudo ln -sf /usr/bin/python${PYVERSION} /usr/bin/python3
+  - python3 --version
+  - python3 -m cython --version
+  - python3 -c 'import pygments; print(pygments.__version__)'
+  - python3 -c 'import PIL; print(PIL.VERSION)'
+  - python3 -c 'import numpy; print(numpy.version.version)'
+  - python3 -m pep8 --version
+  - python3 -m pylint --version
 
 script:
-  - ./configure && make runci
+  - $STATICCHECKER ./configure --mode=debug
+  - $STATICCHECKER make build tests
+  - make checkall
 
 after_script:
   - echo test build exited

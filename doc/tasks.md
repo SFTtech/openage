@@ -36,7 +36,7 @@ If you've never programmed before, or are inexperienced:
 The [documentation tree description](/doc/README.md) might be your first clue.
 
 To get an overview about where to find what in the code,
-take a look at [the project structure info documentation](/doc/implementation/project_structure.md).
+take a look at [the project structure info documentation](/doc/code/project_structure.md).
 
 
 Task proposals

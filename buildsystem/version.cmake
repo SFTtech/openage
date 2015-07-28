@@ -1,4 +1,4 @@
-# Copyright 2014-2014 the openage authors. See copying.md for legal info.
+# Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
 # provides detect_version, which will store the project version to PROJECT_VERSION.
 
@@ -6,7 +6,12 @@ function(init_version)
 	set(res 1)
 	if(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/.git")
 		# if .git exists, try running git describe
-		execute_process(COMMAND git describe WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}" RESULT_VARIABLE res OUTPUT_VARIABLE version ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
+		execute_process(
+			COMMAND git describe
+			WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+			RESULT_VARIABLE res
+			OUTPUT_VARIABLE version
+			ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
 	endif()
 
 	if(NOT res EQUAL 0)
@@ -70,7 +75,6 @@ function(print_config_options)
 	endif()
 
 	message("")
-
 endfunction()
 
 function(get_config_option_string)

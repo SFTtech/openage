@@ -12,6 +12,7 @@ To play, you require *an original AoE II installation or [AoE II: HD](http://sto
 [![Bountysource](https://www.bountysource.com/badge/team?team_id=6026&style=bounties_received)](https://www.bountysource.com/teams/sfttech/issues?utm_source=SFTtech&utm_medium=shield&utm_campaign=bounties_received)
 [![tip for next commit](http://prime4commit.com/projects/143.svg)](http://prime4commit.com/projects/143)
 [![github stars](https://img.shields.io/github/stars/SFTtech/openage.svg)](https://github.com/SFTtech/openage/stargazers)
+[![#sfttech on Freenode](http://img.shields.io/Freenode/%23sfttech.png)](https://webchat.freenode.net/?channels=sfttech)
 
 
 The foundation of **openage**:
@@ -20,6 +21,7 @@ Technology     | Component
 ---------------|----------
 **C++14**      | Engine core
 **Python**     | Scripting, media conversion, in-game console, code generation
+**Cython**     | Glue code
 **CMake**      | Build system
 **OpenGL2.1**  | Rendering, shaders
 **SDL2**       | Cross-platform Audio/Input/Window handling
@@ -62,6 +64,7 @@ See [docs/usage.md](/doc/usage.md).
 
 See [doc/milestones.md](/doc/milestones.md). We also have a [list of crazy xor good ideas](/doc/ideas).
 
+
 Dependencies, Building and Running
 ----------------------------------
 
@@ -79,28 +82,30 @@ You first need to use [the convert script](/doc/media_convert.md) (will be autom
   - ate my dog
 
 All of those are features, not bugs.
-To turn them off, use `./openage --dont-segfault --no-errors --dont-eat-dog`.
+To turn them off, use `./run --dont-segfault --no-errors --dont-eat-dog`.
 
 If this still does not help, try the [contact section](#contact)
 or the [bug tracker](https://github.com/SFTtech/openage/issues).
 
+ATM, openage is mostly designed to be built and run inside the development folder via `make run`, `./run`, `./run.py` or `python3 -m openage` (those all are equivalent), but `make install` might actually work! Run the installed version from outside the development folder by typing `python3 -m openage`.
+
 Development Process
 -------------------
 
-* How does openage development look in practice?
-  * Awesome.
+* What does openage development look like in practice?
+
+[doc/development.md](/doc/development.md).
 
 * Can I help?
-  * Yes, please!
 
-See [doc/development.md](/doc/development.md).
+[doc/contributing.md](/doc/contributing.md).
 
 
 Project documentation is accompanying the source code in the `doc/` folder:
 
 - Have a look at the [doc directory](/doc/).
 - We use Doxygen, as described in the [doc readme](/doc/README.md)
-- Have a look at the source.
+- Unfortunately, docs that are kept in some seperate folder keep getting outdated... thus, as much of the doc as possible is kept directly in the source code.
 
 
 Windows Version
@@ -108,10 +113,11 @@ Windows Version
 
 None of us uses Windows, so a port has low priority.
 
-However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into porting using `mingw32`/`mingw64` or maybe `cygwin`.
+However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into porting using `mingw`/`msys2`.
 
 If you want to beat us to it, go for it!
-We'd prefer as few preprocessor switches as possible, preferably they should all be placed in a few 'cross-platform abstraction files' (just talk to us for details...).
+
+We'd prefer as few preprocessor switches as possible, keep those centralized.
 
 Contributing
 ============
@@ -148,12 +154,13 @@ Contact
 -------
 
 Most of us hang around on our **IRC** channel (`#sfttech` on `freenode.net`).
-Do not hesitate to ping us, we probably won't notice you otherwise.
+Do not hesitate to ping us, we might not see your message otherwise.
 
-There's no openage mailing list, but the github issue tracker comes pretty close to it: Everybody who 'watches' the repository will receive all the issue tracker posts via mail, and can even conveniently reply via their mail client. In addition, all the issue tracker discussions are auto-posted to the IRC channel. Feel free to use the issue tracker for any sorts of discussion, proposal or questions that the IRC is unsuitable for.
+There's no openage mailing list, but the github issue tracker comes pretty close to it: Everybody who 'watches' the repository will receive all the issue tracker posts via mail, and can even reply directly via their mail client. All issue tracker discussions are auto-posted to the IRC channel by a bot. Use the issue tracker for any sorts of discussion, proposal or questions that the IRC is unsuitable for.
 
 License
 -------
+
 **GNU GPLv3** or later; see [copying.md](copying.md) and [legal/GPLv3](/legal/GPLv3).
 
 I know that probably nobody is ever gonna look at the `copying.md` file,

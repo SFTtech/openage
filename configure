@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
+
+# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+
+# Together with the Makefile, ./configure provides an autotools-like build
+# experience. For more info, see --help and doc/buildsystem.
+
 import sys
-if not sys.version_info >= (3, 3):
-    print("openage requires Python 3.3 or higher")
+if not sys.version_info >= (3, 4):
+    print("openage requires Python 3.4 or higher")
     exit(1)
 
 import argparse
-import multiprocessing
 import os
 import subprocess
 import shutil
@@ -26,11 +31,26 @@ def getenv(*varnames, default=""):
     return default
 
 
+def getenv_bool(varname):
+    """
+    fetches a "boolean" environment variable.
+    """
+    value = os.environ.get(varname)
+    if isinstance(value, str):
+        if value.lower() in {"0", "false", "no", "off", "n"}:
+            value = False
+
+    return bool(value)
+
+
 # argparsing
 description = """./configure is a convenience script that creates the build \
-directory and invokes cmake for an out-of-source build.
+directory,
+symlinks it, and invokes cmake for an out-of-source build.
 
-don't feel obliged to use this, especially if you're packaging openage."""
+Nobody is stopping you from skipping ./configure and Makefile,
+and using CMake directly (e.g. when packaging, or using an IDE).
+For your convenience, ./configure even prints the direct CMake invocation!"""
 
 epilog = """environment variables like CXX and CXXFLAGS are honored, \
 but overwritten by command-line arguments."""
@@ -40,19 +60,24 @@ ap = argparse.ArgumentParser(
     epilog=epilog,
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-ap.add_argument("--mode", "-m", choices=["debug",
-                                         "release"],
-                default="release",
+ap.add_argument("--mode", "-m",
+                choices=["debug", "release"],
+                default=getenv("BUILDMODE", default="debug"),
                 help="controls cmake build mode")
-ap.add_argument("--optimize", "-O", choices=["auto",
-                                             "0",
-                                             "1",
-                                             "g",
-                                             "2",
-                                             "max"], default="auto",
+ap.add_argument("--optimize", "-O",
+                choices=["auto", "0", "1", "g", "2", "max"],
+                default=getenv("OPTIMIZE", default="auto"),
                 help="controls optimization-related flags. " +
                      "is set according to mode if 'auto'. " +
                      "conflicts with --flags")
+ap.add_argument("--sanitize",
+                choices=["none", "yes", "mem", "thread"],
+                default=getenv("SANITIZER", default="none"),
+                help=("enable one of those (run-time) code sanitizers."
+                      "'yes' enables the address and undefined sanitizers."))
+ap.add_argument("--sanitize-fatal", action='store_true',
+                default=getenv_bool("SANITIZER_FATAL"),
+                help="With --sanitize, abort program execution on first find.")
 ap.add_argument("--compiler", "-c",
                 default="",
                 help="compiler suite")
@@ -74,8 +99,12 @@ ap.add_argument("--ldflags", "-l",
                 help="linker flags")
 ap.add_argument("--prefix", "-p", default="/usr/local",
                 help="installation directory prefix")
+ap.add_argument("--py-prefix", default=None,
+                help="python module installation directory prefix")
 ap.add_argument("--dry-run", action='store_true',
                 help="do not actually invoke cmake or create any directories")
+ap.add_argument("--cmake-binary", default="cmake",
+                help="path to the cmake binary")
 ap.add_argument("--raw-cmake-args", nargs=argparse.REMAINDER, default=[],
                 help="everything that follows is passed to cmake directly")
 
@@ -91,6 +120,7 @@ except:
 defines = {}
 
 options = {
+    "backtrace":           "if_available",
     "inotify":             "if_available",
     "gperftools-tcmalloc": False,
     "gperftools-profiler": "if_available",
@@ -99,7 +129,8 @@ options = {
 
 def sanitize_option_name(option):
     if option not in options:
-        ap.error("unknown option: '{}'".format(option))
+        ap.error("unknown option: '{}'.\navailable options:\n\t{}".format(
+            option, '\n\t'.join(options)))
 
 if args.with_:
     for x in args.with_:
@@ -116,27 +147,12 @@ if args.without:
 mode = args.mode
 if mode == 'debug':
     build_type = 'Debug'
-else:
+elif mode == 'release':
     build_type = 'Release'
-defines.update(build_type=build_type)
-
-# args.optimize
-omode = args.optimize
-
-# args.flags, args.ldflags
-flags = shlex.split(args.flags)
-ldflags = shlex.split(args.ldflags)
-
-if omode == 'auto':
-    # auto-set omode depending on mode
-    if mode == 'debug':
-        omode = 'g'
-    else:
-        omode = '2'
 else:
-    if flags:
-        ap.error("--optimize is forbidden when flags are specified manually " +
-                 "(conflicting: -O%s, -f %s)" % (omode, shlex.join(flags)))
+    ap.error("unknown build mode: " + mode)
+
+defines.update(build_type=build_type)
 
 # maps csuite names to lists of (cc, cxx, other aliases...)
 csuites = {"gnu": ("gcc", "g++"), "llvm": ("clang", "clang++")}
@@ -225,37 +241,74 @@ print('compiler suite: %s\n' % csuite)
 
 defines.update(c_compiler=cc, cxx_compiler=cxx)
 
-# if no flags have been given, populate them from the other args
-if not flags and not ldflags:
-    if omode == '0':
-        flags.append("-O0")
-    elif omode == '1':
+# populate flags
+flags = []
+ldflags = []
+
+
+if args.optimize == 'auto':
+    # auto-set args.optimize depending on mode
+    if mode == 'debug':
+        args.optimize = 'g'
+    else:
+        args.optimize = '2'
+
+if args.optimize == '0':
+    flags.append("-O0")
+elif args.optimize == '1':
+    flags.append("-O1")
+elif args.optimize == 'g':
+    if csuite in {'gnu'}:
+        flags.append("-Og")
+    else:
         flags.append("-O1")
-    elif omode == 'g':
-        if csuite in {'gcc'}:
-            flags.append("-Og")
-        else:
-            flags.append("-O1")
-    elif omode == '2':
-        flags.append("-O2")
-    elif omode == 'max':
-        flags.append("-O3")
-        flags.append("-march=native")
+elif args.optimize == '2':
+    flags.append("-O2")
+elif args.optimize == 'max':
+    flags.append("-O3")
+    flags.append("-march=native")
 
-        if csuite in {'gcc'}:
-            flags.append("-flto=%d" % multiprocessing.cpu_count())
-            ldflags.append("-flto=%d" % multiprocessing.cpu_count())
+    if csuite in {'gnu'}:
+        flags.append("-flto=%d" % os.cpu_count())
+        ldflags.append("-flto=%d" % os.cpu_count())
+else:
+    ap.error("unknown optimization mode: " + args.optimize)
 
-flags = shlex.join(flags)
-ldflags = shlex.join(ldflags)
+if args.sanitize != 'none':
+    flags.append('-fno-omit-frame-pointer')
+    if args.sanitize_fatal and csuite=='llvm':
+        flags.append('-fno-sanitize-recover')
+else:
+    if args.sanitize_fatal:
+        ap.error('--sanitize-fatal only valid with --sanitize')
+
+if args.sanitize == 'none':
+    pass
+elif args.sanitize == 'yes':
+    flags.append('-fsanitize=address')
+    flags.append('-fsanitize=undefined')
+elif args.sanitize == 'mem':
+    flags.append('-fsanitize=memory')
+elif args.sanitize == 'thread':
+    flags.append('-fsanitize=thread')
+    if csuite in {'gnu'}:
+        flags.append('-fPIC')
+        flags.append('-pie')
+else:
+    ap.error("unknown sanitizer mode")
+all
+flags = shlex.join(flags + shlex.split(args.flags))
+ldflags = shlex.join(ldflags + shlex.split(args.ldflags))
 defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
                module_linker_flags=ldflags, shared_linker_flags=ldflags)
 
 # args.prefix
 defines.update(install_prefix=args.prefix)
+if args.py_prefix is not None:
+    defines.update(py_install_prefix=args.py_prefix)
 
 
-def sanitize(s, fallback='-'):
+def sanitize_for_filename(s, fallback='-'):
     """
     sanitizes a string for safe usage in a filename
     """
@@ -266,7 +319,7 @@ def sanitize(s, fallback='-'):
         for c in s:
             if c == fallback and fallingback:
                 fallingback = False
-            elif c.isalnum() or c in "+-_=,":
+            elif c.isalnum() or c in "+-_,":
                 fallingback = False
                 yield c
             elif not fallingback:
@@ -275,7 +328,11 @@ def sanitize(s, fallback='-'):
 
     return "".join(yieldsanitizedchars())
 
-bindir = ".bin/%s-%s-%s" % (sanitize(cc), sanitize(mode), sanitize(flags))
+bindir = ".bin/%s-%s-%s" % (
+    sanitize_for_filename(cc),
+    sanitize_for_filename(mode),
+    sanitize_for_filename(flags))
+
 if not args.dry_run:
     os.makedirs(bindir, exist_ok=True)
 
@@ -296,13 +353,12 @@ def forcesymlink(linkto, name):
 
 # create the build dir and symlink it to 'bin'
 forcesymlink(bindir, 'bin')
-forcesymlink('%s/cpp/openage' % bindir, 'openage')
 
 # the project root directory contains this configure file.
 project_root = os.path.dirname(os.path.realpath(__file__))
 
 # calculate cmake invocation from defines dict
-invocation = ['cmake']
+invocation = [args.cmake_binary]
 maxkeylen = max(len(k) for k in defines)
 for k, v in sorted(defines.items()):
     print('%s | %s' % (k.rjust(maxkeylen), v))

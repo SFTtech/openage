@@ -1,36 +1,21 @@
 # This file was taken from openmw,
 # Copyright 2003-2009 Kitware, Inc.
 # It's licensed under the terms of the 3-clause OpenBSD license.
-# Modifications Copyright 2014-2014 the openage authors.
+# Modifications Copyright 2014-2015 the openage authors.
 # See copying.md for further legal info.
 
 # Locate SDL2 library
 # This module defines
-# SDL2_LIBRARY, the name of the library to link against
-# SDL2_FOUND, if false, do not try to link to SDL2
-# SDL2_INCLUDE_DIR, where to find SDL.h
-#
-# This module responds to the the flag:
-# SDL2_BUILDING_LIBRARY
-# If this is defined, then no SDL2_main will be linked in because
-# only applications need main().
-# Otherwise, it is assumed you are building an application and this
-# module will attempt to locate and set the the proper link flags
-# as part of the returned SDL2_LIBRARY variable.
-#
-# Don't forget to include SDL2main.h and SDL2main.m your project for the
-# OS X framework based version. (Other versions link to -lSDL2main which
-# this module will try to find on your behalf.) Also for OS X, this
-# module will automatically add the -framework Cocoa on your behalf.
-#
+# SDL2_FOUND             - whether SDL2 was found
+# SDL2_INCLUDE_DIR       - include dir
+# SDL2_LIBRARY           - linker directives
 #
 # Additional Note: If you see an empty SDL2_LIBRARY_TEMP in your configuration
 # and no SDL2_LIBRARY, it means CMake did not find your SDL2 library
 # (SDL2.dll, libsdl2.so, SDL2.framework, etc).
 # Set SDL2_LIBRARY_TEMP to point to your SDL2 library, and configure again.
-# Similarly, if you see an empty SDL2MAIN_LIBRARY, you should set this value
-# as appropriate. These values are used to generate the final SDL2_LIBRARY
-# variable, but when these values are unset, SDL2_LIBRARY does not get created.
+# These values are used to generate the final SDL2_LIBRARY variable,
+# but when these values are unset, SDL2_LIBRARY does not get created.
 #
 #
 # $SDL2DIR is an environment variable that would
@@ -44,7 +29,6 @@
 # Added new modifications to recognize OS X frameworks and
 # additional Unix paths (FreeBSD, etc).
 # Also corrected the header search path to follow "proper" SDL2 guidelines.
-# Added a search for SDL2main which is needed by some platforms.
 # Added a search for threads which is needed by some platforms.
 # Added needed compile switches for MinGW.
 #
@@ -101,26 +85,6 @@ find_library(SDL2_LIBRARY_TEMP
 	/opt
 )
 
-if(NOT SDL2_BUILDING_LIBRARY)
-	if(NOT ${SDL2_INCLUDE_DIR} MATCHES ".framework")
-		# Non-OS X framework versions expect you to also dynamically link to
-		# SDL2main. This is mainly for Windows and OS X. Other (Unix) platforms
-		# seem to provide SDL2main for compatibility even though they don't
-		# necessarily need it.
-		find_library(SDL2MAIN_LIBRARY
-			NAMES SDL2main
-			HINTS
-			$ENV{SDL2DIR}
-			PATH_SUFFIXES lib64 lib
-			PATHS
-			/sw
-			/opt/local
-			/opt/csw
-			/opt
-		)
-	endif()
-endif()
-
 # SDL2 may require threads on your system.
 # The Apple build may not need an explicit flag because one of the
 # frameworks may already provide it.
@@ -136,15 +100,8 @@ if(MINGW)
 	set(MINGW32_LIBRARY mingw32 CACHE STRING "mwindows for MinGW")
 endif()
 
-set(SDL2_FOUND "NO")
+set(SDL2_FOUND FALSE)
 if(SDL2_LIBRARY_TEMP)
-	# For SDL2main
-	if(NOT SDL2_BUILDING_LIBRARY)
-		if(SDL2MAIN_LIBRARY)
-			set(SDL2_LIBRARY_TEMP ${SDL2MAIN_LIBRARY} ${SDL2_LIBRARY_TEMP})
-		endif()
-	endif()
-
 	# For OS X, SDL2 uses Cocoa as a backend so it must link to Cocoa.
 	# CMake doesn't display the -framework Cocoa string in the UI even
 	# though it actually is there if I modify a pre-used variable.
@@ -172,9 +129,10 @@ if(SDL2_LIBRARY_TEMP)
 	# Set the temp variable to INTERNAL so it is not seen in the CMake GUI
 	set(SDL2_LIBRARY_TEMP "${SDL2_LIBRARY_TEMP}" CACHE INTERNAL "")
 
-	set(SDL2_FOUND "YES")
+	mark_as_advanced(SDL2_LIBRARY_TEMP)
+
+	set(SDL2_FOUND TRUE)
 endif()
 
 include(FindPackageHandleStandardArgs)
-
-find_package_handle_standard_args(SDL2 REQUIRED_VARS SDL2_LIBRARY SDL2_INCLUDE_DIR)
+find_package_handle_standard_args(SDL2 SDL2_LIBRARY SDL2_INCLUDE_DIR)
