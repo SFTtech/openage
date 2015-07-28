@@ -55,7 +55,8 @@ Dependency list:
 ### Prerequisite steps for Ubuntu users (Ubuntu 14.10)
 
  - `sudo apt-get update`
- - `sudo apt-get install cmake libfreetype6-dev python3-dev libepoxy-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools python3-pil python3-numpy`
+ - `sudo apt-get install cmake libfreetype6-dev python3-dev libepoxy-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev opus-tools python3-pil python3-numpy python3-pygments python3-pip`
+ - `sudo pip3 install cython
 
 
 ### Prerequisite steps for Fedora users (Fedora 20, 21)
