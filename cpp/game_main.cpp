@@ -154,6 +154,7 @@ GameMain::GameMain(Engine *engine)
 	}
 
 	auto player_color_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("player_palette_50500.docx"));
+  std::vector<gamedata::palette_color> palette_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("palette_50500.docx")); 
 
 	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
 	for (size_t i = 0; i < player_color_lines.size(); i++) {
@@ -261,7 +262,7 @@ GameMain::GameMain(Engine *engine)
 	delete minimap_frag;
 
   // minimap here, because it is dependent on shaders
-  this->minimap = new Minimap(this->engine, &this->placed_units, this->terrain, coord::camhud_delta{300, 150}, coord::camhud{100, 100});
+  this->minimap = new Minimap(this->engine, &this->placed_units, this->terrain, coord::camhud_delta{300, 150}, coord::camhud{100, 100}, palette_lines, player_color_lines);
 
 	// initialize global keybinds
 	auto &global_keybind_context = engine->get_keybind_manager().get_global_keybind_context();

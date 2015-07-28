@@ -18,114 +18,15 @@ shader::Program *program;
 GLint size, orig, color;
 } // namespace minimap_shader
 
-
-void map_terrain_id(unsigned char *pixel, int terrain_id) {
-  switch (terrain_id) {
-/* Snow Forest,13 */
-/* Forest,9 */
-    case 13:
-    case 9:
-      *pixel = 240;
-      *(pixel+1) = 170;
-      *(pixel+2) = 30;
-      break;
-/* Ice,18 */
-    case 18:
-      *pixel = 200;
-      *(pixel+1) = 245;
-      *(pixel+2) = 255;
-      break;
-/* Foundation,19 130 140 80*/
-    case 19:
-      *pixel = 130;
-      *(pixel+1) = 140;
-      *(pixel+2) = 80;
-      break;
-/* Farm1,6 */
-/* Farm2,7 */
-/* Farm Cnst1,20 */
-/* Farm Cnst2,21 */
-/* Farm Cnst3,22 */
-    case 6:
-    case 7:
-    case 20:
-    case 21:
-    case 22:
-      *pixel     = 230;
-      *(pixel+1) = 180;
-      *(pixel+2) = 120;
-      break;
-    // Snow
-    case 23:
-      *pixel     = 230;
-      *(pixel+1) = 250;
-      *(pixel+2) = 255;
-      break;
-    // Dirt
-    case 3: // Dirt 3
-    case 5: // Dirt
-    case 10: // Dirt 2
-    case 24: // Snow Dirt
-      *pixel     = 210;
-      *(pixel+1) = 160;
-      *(pixel+2) = 90;
-      break;
-    // Road
-    case 16:
-    case 17: // Road 2
-    case 26: // Snow Road
-    case 27: // Snow Road 2
-      *pixel     = 235;
-      *(pixel+1)     = 215;
-      *(pixel+2)     = 190;
-      break;
-    // Grass
-    case 0: // Grass
-    case 8: // Grass
-    case 11: // Grass
-    case 25: // Snow Grass
-      *pixel     = 50;
-      *(pixel+1) = 150;
-      *(pixel+2) = 40;
-      break;
-    // Water
-    case 14: //Water 2
-    case 15: // Water 3
-    case 1: // Water
-      *pixel     = 50;
-      *(pixel+1) = 90;
-      *(pixel+2) = 180;
-      break;
-    /* Palm Desert,12 */
-    /* Beach,2 250 200 230*/
-    case 12:
-    case 2:
-      *pixel     = 250;
-      *(pixel+1) = 200;
-      *(pixel+2) = 150;
-      break;
-    /* Shallows,4 */
-    case 4:
-      *pixel     = 80;
-      *(pixel+1) = 150;
-      *(pixel+2) = 180;
-      break;
-    /* KOH,28, ... other */
-    default:
-      *pixel     = 255;
-      *(pixel+1) = 0;
-      *(pixel+2) = 255;
-  }
-}
-
-
-Minimap::Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size, coord::camhud hudpos)
+Minimap::Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size, coord::camhud hudpos, std::vector<gamedata::palette_color> palette, std::vector<gamedata::palette_color> player_palette)
   :
   engine{engine},
   container{container},
   terrain{terrain} {
   this->size = size;
   this->hudpos = hudpos;
+  this->palette = palette;
+  this->player_palette = player_palette;
 
   this->update();
 
@@ -201,10 +102,9 @@ void Minimap::update() {
   this->ratio_vertical = (double)this->size.y / (double)(north_rel.y - south_rel.y);
 }
 
-
 void Minimap::generate_background() { 
   // Generate terrain texture
-  unsigned char *pixels = new unsigned char[this->resolution * this->resolution * 3];
+  uint8_t *pixels = new uint8_t[this->resolution * this->resolution * 3];
   for (int i = 0; i < this->resolution; i++){
     for (int j = 0; j < this->resolution; j++) {
       coord::tile tile_pos{i + this->west.ne * 16, j + this->west.se * 16};
@@ -215,7 +115,11 @@ void Minimap::generate_background() {
         pixels[i * this->resolution * 3 + j * 3 + 1] = 0;
         pixels[i * this->resolution * 3 + j * 3 + 2] = 0;  
       } else {
-        map_terrain_id(&pixels[i * this->resolution * 3 + j * 3], tile_data->terrain_id);
+        uint8_t pal_idx = this->terrain->map_hi(tile_data->terrain_id);
+        gamedata::palette_color hi_color = palette[pal_idx];
+        pixels[i * this->resolution * 3 + j * 3 + 0] = hi_color.r;
+        pixels[i * this->resolution * 3 + j * 3 + 1] = hi_color.g;
+        pixels[i * this->resolution * 3 + j * 3 + 2] = hi_color.b; 
       }
     }
   }
@@ -254,43 +158,10 @@ void Minimap::draw_unit(Unit *unit) {
   if (unit->selected) {
     rgb[0] = 1.0; rgb[1] = 1.0; rgb[2] = 1.0;
   } else if (unit->has_attribute(attr_type::owner)) {
-    rgb[0] = 1.0; rgb[1] = 1.0; rgb[2] = 0.0;
     Attribute<attr_type::owner> owner = unit->get_attribute<attr_type::owner>();
-    Player *p = &owner.player;
-    int col = p->color;
-    switch (col) {
-      case 1: // blue
-        rgb[0] = 0.0; rgb[1] = 0.0; rgb[2] = 1.0;
-        break;
-      case 2: // red
-        rgb[0] = 1.0; rgb[1] = 0.0; rgb[2] = 0.0;
-        break;
-      case 3: // green
-        rgb[0] = 0.0; rgb[1] = 1.0; rgb[2] = 0.0;
-        break;
-      case 4: // yellow
-        rgb[0] = 1.0; rgb[1] = 1.0; rgb[2] = 0.0;
-        break;
-      case 5: // orange
-        rgb[0] = 1.0; rgb[1] = 0.5; rgb[2] = 0.0;
-        break;
-      case 6: // cyan
-        rgb[0] = 0.0; rgb[1] = 1.0; rgb[2] = 1.0;
-        break;
-      case 7: // purple
-        rgb[0] = 1.0; rgb[1] = 0.0; rgb[2] = 1.0;
-        break;
-      case 8: // grey
-        rgb[0] = 0.5; rgb[1] = 0.5; rgb[2] = 0.5;
-        break;
-      default:
-        rgb[0] = 0.0; rgb[1] = 0.0; rgb[2] = 0.0;
-        break;
-    }
-  } else { 
-    rgb[0] = 0.5; rgb[1] = 0.5; rgb[2] = 0.5; 
+    gamedata::palette_color player_color = this->player_palette[owner.player.player_number * 8];
+    rgb[0] = player_color.r; rgb[1] = player_color.g; rgb[2] = player_color.b;
   }
-
 
   GLfloat unit_vdata[] {
     unit_pos.x, unit_pos.y,

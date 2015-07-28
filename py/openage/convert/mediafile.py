@@ -219,6 +219,7 @@ def media_convert(args):
         # dump metadata information
         data_dump = list()
         data_dump += blend_data.dump("blending_modes")
+        data_dump += palette.dump("palette_%d" % palette_id)
         data_dump += player_palette.dump("player_palette_%d" % palette_id)
         data_dump += termcolortable.dump("termcolors")
         data_dump += stringres.dump("string_resources")

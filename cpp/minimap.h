@@ -10,6 +10,7 @@
 #include "coord/camhud.h"
 #include "unit/unit_container.h"
 #include "unit/unit.h"
+#include "gamedata/color.gen.h"
 
 namespace openage {
 namespace minimap_shader {
@@ -31,7 +32,7 @@ private:
 
 public:  
   Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size,
-          coord::camhud hudpos);
+          coord::camhud hudpos, std::vector<gamedata::palette_color> palette, std::vector<gamedata::palette_color> player_palette);
 
   // Draw a simple minimap
   void draw();
@@ -41,6 +42,7 @@ public:
   coord::camhud from_phys(coord::phys3 position);
 
 private:
+  std::vector<gamedata::palette_color> palette, player_palette;
   GLfloat left, right, bottom, top, center_vertical, center_horizontal;
   coord::chunk north, east, south, west;
   coord::phys3 old_camgame_phys;
