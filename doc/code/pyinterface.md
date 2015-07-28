@@ -126,7 +126,7 @@ namespace openage {
  *
  * pxd:
  *
- * int foo(int arg0, string arg1) nogil except +
+ * int foo(int arg0, string arg1) except +
  */
 int foo(int arg0, std::string arg1);
 
@@ -274,7 +274,7 @@ The GIL must be acquired for any Python functionality (even as simple as `PyErr_
 
 However, GIL-safety is guaranteed by the combination of Cython, the pyinterface code, and the fact that libopenage doesn't link against Python itself / include any Python headers.
 
-Any code in `libopenage` can safely be run without the GIL; functions should be declared `nogil` or Cython won't allow you to call them inside `with nogil:` blocks.
+Any code in `libopenage` can safely be run without the GIL.
 
 Only functions that are marked `with gil` can be bound to `PyIfFunc` or `Func` objects; this ensures that the GIL is always re-acquired when jumping into Cython code.
 

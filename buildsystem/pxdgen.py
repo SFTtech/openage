@@ -266,8 +266,13 @@ class PXDGenerator:
                 prefix = "    "
 
                 if namespace != previous_namespace:
-                    yield 'cdef extern from "{}" namespace "{}":'.format(
-                        self.filename, namespace)
+                    yield (
+                        "cdef extern "
+                        "from \"" + self.filename + "\" "
+                        "namespace \"" + namespace + "\" "
+                        "nogil"
+                        ":"
+                    )
             else:
                 prefix = ""
 

@@ -27,7 +27,7 @@ struct main_arguments {
 /**
  * runs the game.
  *
- * pxd: int run_game(main_arguments args) nogil except +
+ * pxd: int run_game(main_arguments args) except +
  */
 int run_game(const main_arguments &args);
 

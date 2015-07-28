@@ -29,9 +29,9 @@ constexpr unsigned LZX_FRAME_SIZE = 32768;
  *         Func2[size_t, unsigned char *, size_t],
  *         unsigned int window_bits,
  *         unsigned int reset_interval
- *     ) nogil except +
+ *     ) except +
  *
- *     unsigned decompress_next_frame(unsigned char *out_buf) nogil except +
+ *     unsigned decompress_next_frame(unsigned char *out_buf) except +
  */
 class LZXDecompressor {
 public:
