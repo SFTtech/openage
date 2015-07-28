@@ -10,7 +10,12 @@ from cpython.exc cimport (
     PyErr_Occurred,
     PyErr_Fetch,
     PyErr_NormalizeException,
-    PyErr_SetObject
+    PyErr_SetObject,
+    PyErr_Restore
+)
+from cpython.pystate cimport (
+    PyThreadState,
+    PyThreadState_Get
 )
 
 from libcpp.string cimport string
@@ -36,8 +41,59 @@ from ..testing.testing import TestError
 
 
 cdef extern from "Python.h":
-    void _PyTraceback_Add(char *funcname, char *filename, int lineno) with gil
+    cdef cppclass PyCodeObject:
+        pass
     int PyException_SetTraceback(PyObject *ex, PyObject *tb)
+    PyCodeObject *PyCode_NewEmpty(const char *filename, const char *funcname, int firstlineno)
+
+
+cdef extern from "frameobject.h":
+    cdef cppclass PyFrameObject:
+        int f_lineno
+    PyFrameObject *PyFrame_New(PyThreadState *, PyCodeObject *, PyObject *, PyObject *)
+
+
+cdef extern from "Python.h":
+    int PyTraceBack_Here(PyFrameObject *)
+
+
+
+cdef void PyTraceback_Add(const char *functionname, const char *filename, int lineno) with gil:
+    """ This function is identical to Python 3.4.3's _PyTraceback_Add. """
+    # TODO remove once we update our minimum Python requirement to 3.4.3 or higher.
+    # note that there's a slight difference in the function prototype:
+    # Python 3.4.3's PyTraceback_Add has non-const functionname and filename,
+    # though it doesn't actually use them in a non-const way.
+    # see http://bugs.python.org/issue24436.
+    cdef PyObject *exc_type = NULL
+    cdef PyObject *exc_value = NULL
+    cdef PyObject *exc_tb = NULL
+
+    # save and clear the current exception.
+    # Python functions must not be called with an exception set.
+    # Calling Python functions happens when the codec of the filesystem
+    # encoding is implemented in pure Python.
+    PyErr_Fetch(&exc_type, &exc_value, &exc_tb)
+
+    cdef PyCodeObject *code = PyCode_NewEmpty(filename, functionname, lineno);
+    if code == NULL:
+        PyErr_Restore(exc_type, exc_value, exc_tb);
+        return
+
+    globals_ = dict()
+    cdef PyFrameObject *frame = PyFrame_New(PyThreadState_Get(), code, <PyObject *> globals_, NULL);
+    if frame == NULL:
+        Py_XDECREF(<PyObject *> code)
+        PyErr_Restore(exc_type, exc_value, exc_tb);
+        return
+
+    frame.f_lineno = lineno;
+
+    PyErr_Restore(exc_type, exc_value, exc_tb);
+    PyTraceBack_Here(frame);
+
+    Py_XDECREF(<PyObject *> code);
+    Py_XDECREF(<PyObject *> frame);
 
 
 cdef class CPPMessageObject:
@@ -58,7 +114,7 @@ cdef void py_add_backtrace_frame_from_symbol(const backtrace_symbol *symbol) wit
     For use as a callback with Error->backtrace->get_symbols(), from within
     raise_exception.
     """
-    _PyTraceback_Add(
+    PyTraceback_Add(
         <char *> symbol.functionname.c_str(),
         <char *> symbol.filename.c_str(),
         <int> symbol.lineno)
@@ -118,13 +174,9 @@ cdef void raise_cpp_error(Error *cpp_error_obj) except * with gil:
 
 
     # add traceback lines for cpp message obj metadata
-    # note that we have to reinterpret_cast functionname and sourcefile to
-    # char *, casting away the const qualifier.
-    # _PyTraceback_Add does not perform any write access, so this is OK.
-    # see http://bugs.python.org/issue24436.
-    _PyTraceback_Add(<char *> cpp_error_obj.msg.functionname,
-                     <char *> cpp_error_obj.msg.filename,
-                     <int> cpp_error_obj.msg.lineno)
+    PyTraceback_Add(cpp_error_obj.msg.functionname,
+                    cpp_error_obj.msg.filename,
+                    <int> cpp_error_obj.msg.lineno)
 
     # add traceback lines for cpp_error_obj.backtrace
     if cpp_error_obj.backtrace != NULL:
