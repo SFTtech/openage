@@ -85,37 +85,40 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 	# the above globbing patterns might have caught some files
 	# like /usr/bin/python-config; skip those.
 	if(PYTHON MATCHES ".*-dbg$" OR NOT PYTHON MATCHES "^.*/[^/]*-[^/]*$")
+		# check whether this is a proper Python interpreter.
+		exec_program("${PYTHON}" ARGS -c True OUTPUT_VARIABLE TEST_OUTPUT RETURN_VALUE TEST_RETVAL)
+		if (TEST_RETVAL EQUAL 0)
+			# ask the interpreter for the essential extension-building flags
+			py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
+			py_get_config_var(BLDLIBRARY PYTHON_LIBRARY)
 
-		# ask the interpreter for the essential extension-building flags
-		py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
-		py_get_config_var(BLDLIBRARY PYTHON_LIBRARY)
+			# there's a static_assert that tests the Python version.
+			try_compile(PYTHON_TEST_RESULT
+				"${CMAKE_BINARY_DIR}"
+				"${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
+				LINK_LIBRARIES "${PYTHON_LIBRARY}"
+				CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}"
+				OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
+			)
 
-		# there's a static_assert that tests the Python version.
-		try_compile(PYTHON_TEST_RESULT
-			"${CMAKE_BINARY_DIR}"
-			"${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
-			LINK_LIBRARIES "${PYTHON_LIBRARY}"
-			CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}"
-			OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
-		)
-
-		if(PYTHON_TEST_RESULT)
-			set(PYTHON_INTERP "${PYTHON}")
-			break()
-		else()
-			set(PYTHON_TEST_ERRORS "${PYTHON_TEST_ERRORS}candidate ${PYTHON}:\n${PYTHON_TEST_OUTPUT}\n\n")
+			if(PYTHON_TEST_RESULT)
+				set(PYTHON_INTERP "${PYTHON}")
+				break()
+			else()
+				set(PYTHON_TEST_ERRORS "${PYTHON_TEST_ERRORS}candidate ${PYTHON}:\n${PYTHON_TEST_OUTPUT}\n\n")
+			endif()
 		endif()
-
 	endif()
 endforeach()
 
 if(PYTHON_INTERP)
 	set(PYTHON "${PYTHON_INTERP}")
 else()
+	message("Python interpreter candidates:")
+	message("${PYTHON_TEST_ERRORS}")
 	message("No suitable Python interpreter found.")
 	message("We need an interpreter that is shipped with libpython and header files.")
-	message("Specify your own with -DPYTHON=/path/to/file")
-	message("${PYTHON_TEST_ERRORS}")
+	message("Specify your own with -DPYTHON=/path/to/executable\n\n\n")
 	set(PYTHON "")
 	set(PYTHON_INCLUDE_DIR "")
 	set(PYTHON_LIBRARY "")
