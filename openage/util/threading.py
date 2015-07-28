@@ -115,29 +115,20 @@ def generator_to_queue(generator, queue):
 
 def test_concurrent_chain():
     """ Tests concurrent_chain """
-    from ..testing.testing import assert_result, assert_raises
+    from ..testing.testing import assert_value, assert_raises, result
 
     def errorgen():
         """ Test generator that raises an exception """
         yield "errorgen"
         raise ValueError()
 
-    assert_result(
-        lambda: list(concurrent_chain([range(10)], 2)),
-        list(range(10))
-    )
+    assert_value(list(concurrent_chain([range(10)], 2)), list(range(10)))
 
-    assert_result(
-        lambda: sorted(list(concurrent_chain([range(10), range(20)], 2))),
+    assert_value(
+        sorted(list(concurrent_chain([range(10), range(20)], 2))),
         sorted(list(itertools.chain(range(10), range(20))))
     )
 
-    assert_raises(
-        lambda: list(concurrent_chain([
-            range(10),
-            range(20),
-            errorgen(),
-            range(30)], 2)),
-
-        ValueError
-    )
+    chain = concurrent_chain([range(10), range(20), errorgen(), range(30)], 2)
+    with assert_raises(ValueError):
+        result(list(chain))

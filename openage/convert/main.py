@@ -4,13 +4,15 @@
 
 import os
 
-from ..log import info
+from ..log import info, dbg
 from ..util.fslike.wrapper import (
     Wrapper as FSLikeObjWrapper,
     Synchronizer as FSLikeObjSynchronizer
 )
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.strings import format_progress
+
+from . import ASSET_VERSION_FILENAME
 
 
 class DirectoryCreator(FSLikeObjWrapper):
@@ -168,36 +170,35 @@ def conversion_required(asset_dir, args):
     Sets options in args according to what sorts of conversion are required.
     """
     try:
-        with asset_dir.joinpath("converted/converted_by").open() as fileobj:
-            converted_by = fileobj.read().strip()
+        with asset_dir['converted', ASSET_VERSION_FILENAME].open() as fileobj:
+            asset_version = fileobj.read().strip()
     except FileNotFoundError:
         # assets have not been converted yet
+        info("No converted assets have been found")
         return True
 
-    if not converted_by:
+    try:
+        asset_version = int(asset_version)
+    except ValueError:
+        info("Converted assets have improper format; expected integer version")
         return True
 
     # this is the place where we can do sophisticated checks whether
     # the assets are outdated, and select which parts require reconversion.
-    try:
-        version, commits, commitid = converted_by.split('-')
-        commits = int(commits)
-    except ValueError:
-        version, commits, commitid = converted_by, 0, "<unknown>"
+    if asset_version >= 0:
+        dbg("Converted assets are up to date")
+        return False
 
-    try:
-        major, minor, patch = [int(i) for i in version[1:].split('.')]
-    except ValueError:
-        major, minor, patch = 0, 0, 0
+    info("Converted assets outdated: Version " + str(asset_version))
 
-    if (major, minor, patch, commits) < (0, 2, 3, 297):
-        if commits > 296:
-            args.no_media = True
-        if commits > 294:
-            args.no_sounds = True
+    if asset_version == -1:
+        info("Re-converting everything except for the sounds")
+        args.no_sounds = True
         return True
 
-    del commitid  # unused
+    if asset_version == -2:
+        info("Re-converting everything")
+        return True
 
 
 def init_subparser(cli):

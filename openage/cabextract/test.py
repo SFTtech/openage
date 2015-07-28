@@ -8,8 +8,6 @@ from tempfile import gettempdir
 from hashlib import md5
 from urllib.request import urlopen
 
-from ..testing.testing import assert_result, assert_raises
-
 from .cab import CABFile
 
 # the test archive file has been generated using ./gen_test_arc.sh
@@ -62,6 +60,8 @@ def test():
     """
     The actual test function; registered in openage.testing.testlist.
     """
+    from ..testing.testing import assert_value, assert_raises, result
+
     # acquire the actual test archive file and create the CABFile Path object
     cab = CABFile(open_test_archive()).root
 
@@ -71,115 +71,64 @@ def test():
     testfilea = cab["testfilea"]
 
     # list dir
-    assert_result(
-        lambda: sorted(path.name for path in cab.iterdir()),
-        ["testdir", "testfilea", "testfileb", "testfilec"]
+    assert_value(
+        list(cab.list()),
+        [b"testdir", b"testfilea", b"testfileb", b"testfilec"]
     )
 
     # list subdir
-    assert_result(
-        lambda: sorted(path.name for path in testdir.iterdir()),
-        ["testfiled", "testfilee"]
+    assert_value(
+        list(testdir.list()),
+        [b"testfiled", b"testfilee"]
     )
 
     # list nonexisting dir
-    assert_raises(
-        lambda: tuple(nonexistingdir.iterdir()),
-        FileNotFoundError
-    )
+    with assert_raises(FileNotFoundError):
+        result(tuple(nonexistingdir.iterdir()))
 
     # filesize for nonexisting file
-    assert_raises(
-        lambda: nonexistingfile.filesize,
-        FileNotFoundError
-    )
+    with assert_raises(FileNotFoundError):
+        result(nonexistingfile.filesize)
 
     # filesize for dir
-    assert_raises(
-        lambda: testdir.filesize,
-        IsADirectoryError
-    )
+    with assert_raises(IsADirectoryError):
+        result(testdir.filesize)
 
     # mtime for a non-existing file
-    assert_raises(
-        lambda: nonexistingfile.mtime,
-        FileNotFoundError
-    )
+    with assert_raises(FileNotFoundError):
+        result(nonexistingfile.mtime)
 
     # attempt getting mtime for a directory
-    assert_raises(
-        lambda: testdir.mtime,
-        IsADirectoryError
-    )
+    with assert_raises(IsADirectoryError):
+        result(testdir.mtime)
 
     # attempt getting mtime for a file
-    assert_result(
-        lambda: testfilea.mtime,
-        1430844692
-    )
+    assert_value(testfilea.mtime, 1430844692)
 
     # open nonexisting file
-    assert_raises(
-        lambda: nonexistingfile.open('rb'),
-        FileNotFoundError
-    )
+    with assert_raises(FileNotFoundError):
+        result(nonexistingfile.open('rb'))
 
     # open existing file
-    testfiled = assert_result(
-        lambda: cab.joinpath('///testdir//.//testfiled').open('rb'),
-        validator=bool
-    )
+    testfiled = cab.joinpath('///testdir//.//testfiled').open('rb')
+    assert_value(testfiled, validator=bool)
 
     # seek around and read a bit
-    assert_result(
-        lambda: testfiled.seek(3),
-        None
-    )
+    testfiled.seek(3)
+    assert_value(testfiled.read(4), b"tfil")
+    testfiled.seek(-1, os.SEEK_CUR)
+    assert_value(testfiled.tell(), 6)
 
-    assert_result(
-        lambda: testfiled.read(4),
-        b"tfil"
-    )
+    with assert_raises(ValueError):
+        result(testfiled.seek(-8, os.SEEK_CUR))
 
-    assert_result(
-        lambda: testfiled.seek(-1, os.SEEK_CUR),
-        None
-    )
-
-    assert_result(
-        testfiled.tell,
-        6
-    )
-
-    assert_raises(
-        lambda: testfiled.seek(-8, os.SEEK_CUR),
-        ValueError
-    )
-
-    assert_result(
-        lambda: testfiled.seek(-4, os.SEEK_END),
-        None
-    )
-
-    assert_result(
-        testfiled.tell,
-        6
-    )
-
-    assert_result(
-        lambda: testfiled.read(5),
-        b"led\n"
-    )
+    testfiled.seek(-4, os.SEEK_END)
+    assert_value(testfiled.tell(), 6)
+    assert_value(testfiled.read(5), b"led\n")
 
     # test filesize and md5sum for all files
     for filename, (md5sum, size) in TEST_FILES.items():
-        assert_result(
-            lambda name=filename:
-            md5(cab.joinpath(name).open('rb').read()).hexdigest(),
-            md5sum
-        )
+        path = cab[filename]
 
-        assert_result(
-            lambda name=filename: cab.joinpath(name).filesize,
-            size
-        )
+        assert_value(md5(path.open('rb').read()).hexdigest(), md5sum)
+        assert_value(path.filesize, size)

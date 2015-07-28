@@ -51,11 +51,10 @@ def test():
     """
     Tests whether a specific asset exists.
     """
-    from .testing.testing import assert_result
+    from .testing.testing import assert_value
     import argparse
     fakecli = argparse.ArgumentParser()
     fakecli.add_argument("--asset-dir", default=None)
     args = fakecli.parse_args([])
 
-    assets = get_assets(args)
-    assert_result(lambda: assets.joinpath('missing.png').filesize, 580)
+    assert_value(get_assets(args)['missing.png'].filesize, 580)

@@ -17,7 +17,7 @@ from libopenage.pyinterface.functional cimport Func0
 import argparse
 import traceback
 
-from ..testing.testing import TestError, assert_result, assert_raises
+from ..testing.testing import TestError, assert_value
 
 from .exctranslate import CPPException
 
@@ -75,20 +75,20 @@ def cpp_to_py(int bounce_count = 0):
         raise TestError("Expected a CPPException, but method returned.")
 
     # now let's see about the detailed contents of excobj.
-    assert_result(lambda: excobj.args[0], "foo")
-    assert_result(lambda: excobj.typename, b"openage::error::Error")
+    assert_value(excobj.args[0], "foo")
+    assert_value(excobj.typename, b"openage::error::Error")
 
     cause = getattr(excobj, "__cause__", None)
 
-    assert_result(lambda: type(cause), TestError)
+    assert_value(type(cause), TestError)
 
     causeofcause = getattr(cause, "__cause__", None)
 
-    assert_result(lambda: type(causeofcause), CPPException)
-    assert_result(lambda: causeofcause.args[0], "rofl")
-    assert_result(lambda: causeofcause.typename, b"openage::error::Error")
+    assert_value(type(causeofcause), CPPException)
+    assert_value(causeofcause.args[0], "rofl")
+    assert_value(causeofcause.typename, b"openage::error::Error")
 
-    assert_result(lambda: getattr(causeofcause, "__cause__", None), None)
+    assert_value(getattr(causeofcause, "__cause__", None), None)
 
 
 def cpp_to_py_bounce():

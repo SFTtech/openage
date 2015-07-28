@@ -87,19 +87,13 @@ def main(args, error):
 
             try:
                 testfun()
-            except TestError:
-                failed += 1
+            except BaseException as exc:
                 print("\x1b[31;1mTest failed\x1b[m")
+                if not isinstance(exc, TestError):
+                    print("\x1b[31;1mUnexpected exception\x1b[m")
+                failed += 1
                 import traceback
                 traceback.print_exc()
-            except BaseException as exc:
-                print("\x1b[31;1mFatal: Unexpected exception\x1b[m")
-                if isinstance(exc, SystemExit):
-                    # make sure that no test sneakily calls exit(0).
-                    print("SystemExit(%s)" % exc.args[0])
-                    exit(1)
-
-                raise
 
         if failed:
             print("\x1b[31;1m%d out of %d tests have failed\x1b[m" % (

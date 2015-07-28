@@ -48,10 +48,12 @@ The header `libopenage/testing/testing.h` provides `TestError` and some convenie
 
 Example test function:
 
-    void test_prime() {
-        is_prime(23) or TESTFAIL;
-        is_prime(42) and TESTFAIL;
-    }
+``` cpp
+void test_prime() {
+    is_prime(23) or TESTFAIL;
+    is_prime(42) and TESTFAIL;
+}
+```
 
 Python tests
 ------------
@@ -64,21 +66,24 @@ Add their names to `openage/testing/testlist.py`.
 
 The module `openage.testing.testing` provides `TestError` and some convenience functions:
 
- - `assert_result(callable, expected)`
-    evaluates `callable()`, and checks whether its result equals `expected`.
-    raises `TestError` if the result is wrong, or if an exception has occurred.
-    more complex checking of the result is possible via `validator`; consult the docs.
- - `assert_raises(callable, expected)`
-    evaluates `callable()`, and checks whether it raises an exception of type `expected`.
-    raises `TestError` otherwise.
+ - `assert_value(<expr>, expected)`
+    checks whether expr == expected, and raises `TestError` if not.
+ - `assert_raises(expected_exception_type)`
+    a context guard that verifies that the named exception occurs inside;
+    consult the example in `openage/testing/testing.py`.
 
 You may define tests in `.pyx` files.
 
 Example test function:
 
-    def test_prime():
-        assert_result(is_prime(23), True)
-        assert_result(is_prime(42), True)
+``` python
+def test_prime():
+    assert_value(is_prime(23), True)
+    assert_value(is_prime(42), False)
+
+    with assert_raises(ValueError):
+        result(is_prime(-1337))
+```
 
 Python doctests
 ---------------
@@ -91,16 +96,18 @@ Simply add the name of a Python module to `openage/testing/testlist.py`, and all
 
 Example doctest for a function:
 
-    def is_prime(p):
-        """
-        High-performance, state-of-the-art primality tester.
+``` python
+def is_prime(p):
+    """
+    High-performance, state-of-the-art primality tester.
 
-        >>> is_prime(23)
-        True
-        >>> is_prime(42)
-        False
-        """
-        return not any(p % x == 0 for x in range(2, p))
+    >>> is_prime(23)
+    True
+    >>> is_prime(42)
+    False
+    """
+    return not any(p % x == 0 for x in range(2, p))
+```
 
 C++ demos
 ---------
@@ -118,12 +125,14 @@ Similar to Python tests, but have one argument, `argv`. Pass arguments in the in
 
 Example demo:
 
-    def prime_demo(argv):
-        import argparse
-        cli = argparse.ArgumentParser()
-        cli.add_argument('max_number', type=int)
-        args = cli.parse_args(argv)
+``` python
+def prime_demo(argv):
+    import argparse
+    cli = argparse.ArgumentParser()
+    cli.add_argument('max_number', type=int)
+    args = cli.parse_args(argv)
 
-        for p in range(2, args.max_number):
-            if is_prime(p):
-                print(p)
+    for p in range(2, args.max_number):
+        if is_prime(p):
+            print(p)
+```

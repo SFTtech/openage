@@ -4,7 +4,7 @@
 Holds openage's main main method, used for launching the game.
 """
 
-from ..log import info, err
+from ..log import err
 
 
 def init_subparser(cli):
@@ -30,7 +30,6 @@ def main(args, error):
     # ensure that the assets have been converted
     from ..convert.main import conversion_required, convert_assets
     if conversion_required(assets, args):
-        info("game asset conversion required...")
         if not convert_assets(assets, args):
             err("game asset conversion failed")
             return 1

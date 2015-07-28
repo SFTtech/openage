@@ -9,9 +9,9 @@ import os
 from subprocess import Popen, PIPE
 from tempfile import gettempdir
 
-from ..config import VERSION as openage_version
 from ..log import info, dbg
 
+from . import ASSET_VERSION, ASSET_VERSION_FILENAME
 from .blendomatic import Blendomatic
 from .colortable import ColorTable, PlayerColorTable
 from .dataformat.data_formatter import DataFormatter
@@ -102,8 +102,8 @@ def convert(args):
     # clean args (set by convert_metadata for convert_media)
     del args.palette
 
-    args.targetdir['converted_by'].open('w').write(openage_version)
-    info("asset conversion complete; converted by: " + openage_version)
+    args.targetdir[ASSET_VERSION_FILENAME].open('w').write(str(ASSET_VERSION))
+    info("asset conversion complete; asset version: " + str(ASSET_VERSION))
 
 
 def convert_metadata(args):
