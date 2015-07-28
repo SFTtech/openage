@@ -159,10 +159,16 @@ def convert_media(args):
     """ Converts the media part """
     info("converting media")
 
+    ignored_suffixes = set()
+    if args.flag("no_sounds"):
+        ignored_suffixes.add('.wav')
+    if args.flag("no_graphics"):
+        ignored_suffixes.add('.slp')
+
     files_to_convert = []
     for dirname in ['sounds', 'graphics', 'terrain']:
         for filepath in args.srcdir[dirname].iterdir():
-            if args.flag("no_sounds") and filepath.suffix == '.wav':
+            if filepath.suffix in ignored_suffixes:
                 continue
 
             files_to_convert.append(filepath)
@@ -195,7 +201,7 @@ def convert_mediafile(filepath, args):
     filename = b'/'.join(filepath.parts).decode()
     yield filename
 
-    with filepath.open('rb') as infile:
+    with filepath.open_r() as infile:
         indata = infile.read()
 
     if filename.endswith('.slp'):
@@ -220,10 +226,10 @@ def convert_mediafile(filepath, args):
         if opusenc.returncode != 0:
             raise Exception("opusenc failed")
 
-        with args.targetdir[filename + ".opus"].open("wb") as outfile:
+        with args.targetdir[filename].with_suffix('.opus').open_w() as outfile:
             outfile.write(outdata)
 
     else:
         # simply copy the file over.
-        with args.targetdir[filename].open("wb") as outfile:
+        with args.targetdir[filename].open_w() as outfile:
             outfile.write(indata)

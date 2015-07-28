@@ -185,18 +185,19 @@ def conversion_required(asset_dir, args):
 
     # this is the place where we can do sophisticated checks whether
     # the assets are outdated, and select which parts require reconversion.
-    if asset_version >= 0:
+    if asset_version >= 1:
         dbg("Converted assets are up to date")
         return False
 
     info("Converted assets outdated: Version " + str(asset_version))
 
-    if asset_version == -1:
-        info("Re-converting everything except for the sounds")
-        args.no_sounds = True
+    if asset_version == 0:
+        info("Re-converting only sounds")
+        args.no_metadata = True
+        args.no_graphics = True
         return True
 
-    if asset_version == -2:
+    if asset_version == -1:
         info("Re-converting everything")
         return True
 
@@ -229,6 +230,10 @@ def init_subparser(cli):
     cli.add_argument(
         "--no-sounds", action='store_true',
         help="do not convert any sound files")
+
+    cli.add_argument(
+        "--no-graphics", action='store_true',
+        help="do not convert any graphics")
 
     cli.add_argument(
         "--jobs", "-j", type=int, default=None)
