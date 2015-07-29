@@ -142,7 +142,7 @@ class ColorTable(Exportable):
         return palette_image
 
     def save_visualization(self, fileobj):
-        self.gen_image().save(fileobj)
+        self.gen_image().save(fileobj, 'png')
 
     def dump(self, filename):
         data = list()

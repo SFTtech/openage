@@ -142,16 +142,16 @@ def convert_metadata(args):
     stringres = get_string_resources(args.srcdir)
     data_formatter.add_data(stringres.dump("string_resources"))
 
-    yield "gamespec"
+    yield "writing gamespec csv files"
     data_formatter.export(args.targetdir, ("csv",))
 
     if args.flag('gen_extra_files'):
         dbg("generating extra files for visualization")
         tgt = args.targetdir
-        with tgt.open('info/colortable.pal.png', 'wb') as outfile:
+        with tgt['info/colortable.pal.png'].open_w() as outfile:
             palette.save_visualization(outfile)
 
-        with tgt.open('info/playercolortable.pal.png', 'wb') as outfile:
+        with tgt['info/playercolortable.pal.png'].open_w() as outfile:
             player_palette.save_visualization(outfile)
 
 
