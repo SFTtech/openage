@@ -159,8 +159,6 @@ def convert_metadata(args):
 
 def convert_media(args):
     """ Converts the media part """
-    info("converting media")
-
     ignored_suffixes = set()
     if args.flag("no_sounds"):
         ignored_suffixes.add('.wav')
@@ -176,6 +174,11 @@ def convert_media(args):
             files_to_convert.append(filepath)
 
     yield len(files_to_convert)
+
+    if not files_to_convert:
+        return
+
+    info("converting media")
 
     jobs = getattr(args, "jobs", None)
     with SLPConverterPool(args.palette, jobs) as slp_converter:

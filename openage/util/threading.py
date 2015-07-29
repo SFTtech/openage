@@ -38,7 +38,7 @@ def concurrent_chain(generators, jobs=None):
             pool.submit(generator_to_queue, generator, queue)
             running_generator_count += 1
 
-        while True:
+        while running_generator_count > 0:
             event_type, value = queue.get()
 
             if event_type == GeneratorEvent.VALUE:
@@ -48,8 +48,6 @@ def concurrent_chain(generators, jobs=None):
                 raise value
             elif event_type == GeneratorEvent.STOP_ITERATION:
                 running_generator_count -= 1
-                if running_generator_count == 0:
-                    return
 
 
 class ClosableQueue(Queue):
@@ -121,6 +119,8 @@ def test_concurrent_chain():
         """ Test generator that raises an exception """
         yield "errorgen"
         raise ValueError()
+
+    assert_value(list(concurrent_chain([], 2)), [])
 
     assert_value(list(concurrent_chain([range(10)], 2)), list(range(10)))
 
