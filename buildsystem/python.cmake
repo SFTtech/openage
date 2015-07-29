@@ -109,7 +109,7 @@ function(add_cython_modules)
 				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 			endif()
 
-			if(NOT "${source}" MATCHES "${CMAKE_CURRENT_SOURCE_DIR}/.*\\.pyx?$")
+			if(NOT "${source}" MATCHES ".*\\.pyx?$")
 				message(FATAL_ERROR "non-.py/.pyx file given to add_cython_modules: ${source}")
 			endif()
 
@@ -187,7 +187,7 @@ function(pxdgen)
 			set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 		endif()
 
-		if(NOT "${source}" MATCHES "${CMAKE_CURRENT_SOURCE_DIR}/.*\\.h$")
+		if(NOT "${source}" MATCHES ".*\\.h$")
 			message(FATAL_ERROR "non-.h file given to pxdgen: ${source}")
 		endif()
 
@@ -207,7 +207,7 @@ function(add_pxds)
 			set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 		endif()
 
-		if(NOT "${source}" MATCHES "${CMAKE_CURRENT_SOURCE_DIR}/.*\\.px[id]$")
+		if(NOT "${source}" MATCHES ".*\\.px[id]$")
 			message(FATAL_ERROR "non-pxd/pxi file given to add_pyd: ${source}")
 		endif()
 
@@ -232,7 +232,7 @@ function(add_py_modules)
 				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 			endif()
 
-			if(NOT "${source}" MATCHES "${CMAKE_CURRENT_SOURCE_DIR}/.*\\.py$")
+			if(NOT "${source}" MATCHES ".*\\.py$")
 				message(FATAL_ERROR "non-Python file given to add_py_modules: ${source}")
 			endif()
 
