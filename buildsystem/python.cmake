@@ -313,11 +313,11 @@ function(python_finalize)
 
 	get_property(py_files GLOBAL PROPERTY SFT_PY_FILES)
 	file(WRITE "${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
-	set(BUILDPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
+	set(COMPILEPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
 	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
-		COMMAND "${PYTHON}" -m buildsystem.compileall openage
+		COMMAND "${PYTHON}" -m compileall openage
 		COMMAND "${CMAKE_COMMAND}" -E touch "${COMPILEPY_TIMEFILE}"
-		WORKING_DIRECTORY "${CMAKE_SOURCE_DIRECTORY}"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		DEPENDS ${py_files}
 		COMMENT "compiling .py files to .pyc files in __pycache__"
 	)
