@@ -15,6 +15,7 @@ add_sources(libopenage
 	language.cpp
 	misc.cpp
 	opengl.cpp
+	profiler.cpp
 	stringformatter.cpp
 	strings.cpp
 	thread_id.cpp

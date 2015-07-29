@@ -227,6 +227,8 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 Engine::~Engine() {
 	this->profiler.unregister_all();
 
+	this->profiler.unregister_category(util::Profiler::Categorie::IDLE_TIME);
+
 	delete this->job_manager;
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
@@ -317,6 +319,7 @@ void Engine::loop() {
 	SDL_Event event;
 
 	while (this->running) {
+		this->profiler.start_frame_measure();
 		this->fps_counter.frame();
 
 		this->job_manager->execute_callbacks();
@@ -381,7 +384,7 @@ void Engine::loop() {
 		this->profiler.end_measure("events");
 
 		// TODO remove me later
-		std::cout << "Measured time: " << this->profiler.last_duration("events") << std::endl;
+		//std::cout << "Measured time: " << this->profiler.last_duration("events") << std::endl;
 
 		// call engine tick callback methods
 		for (auto &action : this->on_engine_tick) {
@@ -390,7 +393,7 @@ void Engine::loop() {
 			}
 		}
 
-		this->profiler.start_measure("rendering", {0,255,0});
+		this->profiler.start_measure("rendering", {0.0, 1.0, 0.0});
 		// clear the framebuffer to black
 		// in the future, we might disable it for lazy drawing
 		glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -436,13 +439,14 @@ void Engine::loop() {
 
 		this->profiler.end_measure("rendering");
 
-		this->profiler.start_measure("idle", {0,0,255});
+		this->profiler.start_measure("idle", {0.0, 0.0, 1.0});
 
 		// the rendering is done
 		// swap the drawing buffers to actually show the frame
 		SDL_GL_SwapWindow(window);
 
 		this->profiler.end_measure("idle");
+		this->profiler.end_frame_measure();
 	}
 }
 
