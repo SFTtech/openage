@@ -17,5 +17,12 @@ DEGSPERRAD = TAU / 360
 def clamp(val, minval, maxval):
     """
     clamps val to be at least minval, and at most maxval.
+
+    >>> clamp(9, 3, 7)
+    7
+    >>> clamp(1, 3, 7)
+    3
+    >>> clamp(5, 3, 7)
+    5
     """
     return min(maxval, max(minval, val))

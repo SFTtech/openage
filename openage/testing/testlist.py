@@ -8,7 +8,9 @@ def doctest_modules():
     Yields the names of all Python modules that shall be tested during doctest.
     """
 
+    yield "openage.util.math"
     yield "openage.util.strings"
+    yield "openage.util.system"
 
 
 def tests_py():
