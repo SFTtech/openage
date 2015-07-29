@@ -18,6 +18,8 @@ function(python_init)
 
 	# filled by pxdgen and add_pxd. for use as depends list for cythonize.py.
 	set_property(GLOBAL PROPERTY SFT_PXD_FILES)
+	# filled by pxdgen. for use as output list for the pxdgen target.
+	set_property(GLOBAL PROPERTY SFT_GENERATED_PXD_FILES)
 
 	# filled with all .py filenames; used for installing.
 	set_property(GLOBAL PROPERTY SFT_PY_FILES)
@@ -196,6 +198,7 @@ function(pxdgen)
 
 		set_property(GLOBAL APPEND PROPERTY SFT_PXDGEN_SOURCES "${source}")
 		set_property(GLOBAL APPEND PROPERTY SFT_PXD_FILES "${PXDNAME}")
+		set_property(GLOBAL APPEND PROPERTY SFT_GENERATED_PXD_FILES "${PXDNAME}")
 	endforeach()
 endfunction()
 
@@ -267,9 +270,10 @@ function(python_finalize)
 	# pxdgen (.h -> .pxd)
 
 	get_property(pxdgen_sources GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
+	get_property(generated_pxd_list GLOBAL PROPERTY SFT_GENERATED_PXD_FILES)
 	file(WRITE "${CMAKE_BINARY_DIR}/py/pxdgen_sources" "${pxdgen_sources}")
 	set(PXDGEN_TIMEFILE "${CMAKE_BINARY_DIR}/py/pxdgen_timefile")
-	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}"
+	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}" ${generated_pxd_list}
 		COMMAND "${PYTHON}" -m buildsystem.pxdgen
 		--file-list "${CMAKE_BINARY_DIR}/py/pxdgen_sources"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${PXDGEN_TIMEFILE}"
