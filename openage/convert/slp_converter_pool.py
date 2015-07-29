@@ -13,8 +13,14 @@ Multiprocessing-based SLP-to-texture converter service.
 import multiprocessing
 import os
 from queue import Queue
+from threading import Lock
 
 from ..log.logging import get_loglevel
+from ..log import warn
+from ..util.system import free_memory
+
+from .slp import SLP
+from .texture import Texture
 
 
 class SLPConverterPool:
@@ -25,11 +31,12 @@ class SLPConverterPool:
         if jobs is None:
             jobs = os.cpu_count()
 
+        self.palette = palette
+
         self.fake = (jobs == 1)
         if self.fake:
             # don't actually create the entire multiprocessing thing.
             # self.convert() will just do the conversion directly.
-            self.palette = palette
             return
 
         # Holds the queues for all currently-idle processes.
@@ -37,6 +44,8 @@ class SLPConverterPool:
         # Texture objects in return.
         # Note that this is a queue.Queue, not a multiprocessing.Queue.
         self.idle = Queue()
+
+        self.job_mutex = Lock()
 
         # Holds tuples of (process, queue) for all processes.
         # Needed for proper termination in close().
@@ -78,19 +87,26 @@ class SLPConverterPool:
         a Texture object (or throws an Exception).
         """
         if self.fake:
-            from .slp import SLP
-            from .texture import Texture
+            # convert right here, without entering the thread.
             return Texture(SLP(slpdata), self.palette)
+
+        if free_memory() < 2**30:
+            warn("Low on memory; disabling parallel SLP conversion")
+            # acquire job_mutex in order to block any concurrent activity until
+            # this job is done.
+            with self.job_mutex:
+                return Texture(SLP(slpdata), self.palette)
 
         inqueue, outqueue = self.idle.get()
 
-        inqueue.put(slpdata)
+        with self.job_mutex:
+            inqueue.put(slpdata)
 
         # TODO not sure why this synchronization is needed.
         #      (But it is. otherwise, there are non-deterministic crashes when
         #       depickling some of Texture's numpy internals, especially with
         #       high job counts.).
-        with self.idle.mutex:
+        with self.job_mutex:
             result = outqueue.get()
 
         self.idle.put((inqueue, outqueue))
@@ -115,9 +131,6 @@ def converter_process(inqueue, outqueue):
     import sys
 
     from ..log.logging import set_loglevel
-
-    from .slp import SLP
-    from .texture import Texture
 
     # prevent writes to sys.stdout
     sys.stdout.write = sys.stderr.write
