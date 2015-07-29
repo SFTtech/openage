@@ -3,10 +3,9 @@
 #ifndef OPENAGE_UTIL_PROFILER_H_
 #define OPENAGE_UTIL_PROFILER_H_
 
-#include <map>
-#include <vector>
-#include <chrono>
 #include <array>
+#include <chrono>
+#include <unordered_map>
 #include <vector>
 
 constexpr int MAX_DURATION_HISTORY = 100;
@@ -22,7 +21,7 @@ namespace openage {
 namespace util {
 
 struct color {
-	int r, g, b;
+	float r, g, b;
 };
 
 struct component_time_data {
@@ -30,12 +29,11 @@ struct component_time_data {
 	color drawing_color;
 	std::chrono::high_resolution_clock::time_point start;
 	std::chrono::high_resolution_clock::duration duration;
-	std::array<std::chrono::high_resolution_clock::duration, MAX_DURATION_HISTORY> history;
+	std::array<float, MAX_DURATION_HISTORY> history;
 };
 
 class Profiler {
 public:
-
 	Profiler() = default;
 	~Profiler();
 
@@ -62,13 +60,43 @@ public:
 	 */
 	std::vector<std::string> registered_components();
 
-	void start_measure(std::string com, color component_color);
+	/*
+	 * starts a measurement for the component com. If com is not yet
+	 * registered, the profiler uses the color information given by
+	 * component_color. The default value is white.
+	 */
+	void start_measure(std::string com, color component_color = {1.0, 1.0, 1.0});
+
+	/*
+	 * stops the measurement for the component com. If com is not yet
+	 * registered it does nothing.
+	 */
 	void end_measure(std::string com);
+
+	/*
+	 * depreciated
+	 * TODO remove me when profiler is finished
+	 */
 	long last_duration(std::string com);
-	void show(std::string com);
+
+	/*
+	 * draws the profiler gui if debug_mode is set
+	 */
 	void show(bool debug_mode);
+
+	/*
+	 * draws the profiler gui
+	 */
 	void show();
+
+	/*
+	 * true if the component com is already registered, otherwise false
+	 */
 	bool registered(std::string com) const;
+
+	/*
+	 * returns the number of registered components
+	 */
 	unsigned size() const;
 
 	/**
@@ -86,12 +114,15 @@ public:
 private:
 	std::chrono::high_resolution_clock::time_point frame_start;
 	std::chrono::high_resolution_clock::duration frame_duration;
-	std::map<std::string, component_time_data> components;
+	std::unordered_map<std::string, component_time_data> components;
 	int insert_pos = 0;
 
 	void draw_canvas();
 	void draw_legend();
+	int keep_in_duration_bound(int value);
+	void draw_component_performance(std::string com);
 	float duration_to_percentage(std::chrono::high_resolution_clock::duration duration);
+	void append_percentage_to_history(std::string com, float percentage);
 };
 
 } //namespace util
