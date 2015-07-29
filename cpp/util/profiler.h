@@ -38,9 +38,28 @@ public:
 
 	Profiler() = default;
 	~Profiler();
+
+	/**
+	 * registers a component
+	 * @param com the identifier to distinguish the components
+	 * @param component_color color of the plotted line
+	 */
 	void register_component(std::string com, color component_color);
+
+	/**
+	 * unregisters an individual component
+	 * @param com component name which should be unregistered
+	 */
 	void unregister_component(std::string com);
+
+	/**
+	 * unregisters all remaining components
+	 */
 	void unregister_all();
+
+	/**
+	 *returns a vector of registered component names
+	 */
 	std::vector<std::string> registered_components();
 
 	void start_measure(std::string com, color component_color);
@@ -52,12 +71,27 @@ public:
 	bool registered(std::string com) const;
 	unsigned size() const;
 
+	/**
+	 * sets the start point for the actual frame which is used as a reference
+	 * value for the registered components
+	 */
+	void start_frame_measure();
+
+	/**
+	 * sets the end point for the reference time used to compute the portions
+	 * of the components
+	 */
+	void end_frame_measure();
+
 private:
+	std::chrono::high_resolution_clock::time_point frame_start;
+	std::chrono::high_resolution_clock::duration frame_duration;
 	std::map<std::string, component_time_data> components;
 	int insert_pos = 0;
 
 	void draw_canvas();
 	void draw_legend();
+	float duration_to_percentage(std::chrono::high_resolution_clock::duration duration);
 };
 
 } //namespace util
