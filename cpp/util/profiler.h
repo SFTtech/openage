@@ -30,7 +30,7 @@ struct component_time_data {
 	color drawing_color;
 	std::chrono::high_resolution_clock::time_point start;
 	std::chrono::high_resolution_clock::duration duration;
-	std::array<std::chrono::high_resolution_clock::duration, MAX_DURATION_HISTORY> history;
+	std::array<float, MAX_DURATION_HISTORY> history;
 };
 
 class Profiler {
@@ -92,6 +92,7 @@ private:
 	void draw_canvas();
 	void draw_legend();
 	float duration_to_percentage(std::chrono::high_resolution_clock::duration duration);
+	void append_percentage_to_history(std::string com, float percentage);
 };
 
 } //namespace util

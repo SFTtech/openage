@@ -257,6 +257,7 @@ void Engine::loop() {
 	SDL_Event event;
 
 	while (this->running) {
+		this->profiler.start_frame_measure();
 		this->fps_counter.frame();
 
 		this->job_manager->execute_callbacks();
@@ -285,7 +286,7 @@ void Engine::loop() {
 		this->profiler.end_measure("events");
 
 		// TODO remove me later
-		std::cout << "Measured time: " << this->profiler.last_duration("events") << std::endl;
+		//std::cout << "Measured time: " << this->profiler.last_duration("events") << std::endl;
 
 		// call engine tick callback methods
 		for (auto &action : this->on_engine_tick) {
@@ -347,6 +348,7 @@ void Engine::loop() {
 		SDL_GL_SwapWindow(window);
 
 		this->profiler.end_measure("idle");
+		this->profiler.end_frame_measure();
 	}
 }
 
