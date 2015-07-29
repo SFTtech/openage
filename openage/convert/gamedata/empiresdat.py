@@ -223,7 +223,7 @@ class EmpiresDatWrapper(Exportable):
     )
 
 
-def load_gamespec(fileobj, cachefile_name=None):
+def load_gamespec(fileobj, cachefile_name=None, load_cache=False):
     """
     Helper method that loads the contents of a 'empires.dat' gzipped gamespec
     file.
@@ -232,7 +232,7 @@ def load_gamespec(fileobj, cachefile_name=None):
     load.
     """
     # try to use the cached result from a previous run
-    if cachefile_name:
+    if cachefile_name and load_cache:
         try:
             with open(cachefile_name, "rb") as cachefile:
                 # pickle.load() can fail in many ways, we need to catch all.
