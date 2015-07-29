@@ -59,19 +59,18 @@ void Profiler::start_measure(std::string com, color component_color) {
 }
 
 void Profiler::end_measure(std::string com) {
-	auto end = std::chrono::high_resolution_clock::now();
-	this->components[com].duration = end - this->components[com].start;
+	if (this->registered(com)) {
+		auto end = std::chrono::high_resolution_clock::now();
+		this->components[com].duration = end - this->components[com].start;
+	}
 }
 
-/**
- * Just for debugging
- */
 long Profiler::last_duration(std::string cat) {
 	auto dur = this->components[cat].duration;
 	return std::chrono::duration_cast<std::chrono::microseconds>(dur).count();
 }
 
-void Profiler::show(std::string com) {
+void Profiler::draw_component_performance(std::string com) {
 	coord::window camgame_window = Engine::get_coord_data()->camgame_window;
 	coord::window zero;
 	zero.x = -camgame_window.x + PROFILER_CANVAS_POSITION_X;
@@ -91,7 +90,6 @@ void Profiler::show(std::string com) {
 		glVertex3f(zero.x + x_offset, zero.y + percentage * percentage_factor, 0.0);
 		x_offset += offset_factor;
 	}
-	std::cout << "percentage_factor: " << percentage_factor << std::endl;
 	glEnd();
 
 	// reset color
@@ -107,11 +105,10 @@ void Profiler::show(bool debug_mode) {
 void Profiler::show() {
 
 	this->draw_canvas();
-
 	this->draw_legend();
 
 	for (auto com : this->components) {
-		this->show(com.first);
+		this->draw_component_performance(com.first);
 	}
 }
 
@@ -163,16 +160,9 @@ void Profiler::draw_legend() {
 }
 
 float Profiler::duration_to_percentage(std::chrono::high_resolution_clock::duration duration) {
-	auto reference_value = this->frame_duration;
-	//auto percentage = duration / reference_value;
 	float dur = std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
 	float ref = std::chrono::duration_cast<std::chrono::microseconds>(this->frame_duration).count();
 	float percentage = dur / ref * 100;
-
-	std::cout << "Reference: " << std::chrono::duration_cast<std::chrono::microseconds>(this->frame_duration).count()
-			  << ", measured: " << std::chrono::duration_cast<std::chrono::microseconds>(duration).count()
-			  << ", percentage: " << percentage << std::endl;
-
 	return percentage;
 }
 
