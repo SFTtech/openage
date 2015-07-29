@@ -263,7 +263,7 @@ void Engine::loop() {
 
 		this->job_manager->execute_callbacks();
 
-		this->profiler.start_measure("events", {255,0,0});
+		this->profiler.start_measure("events", {1.0, 0.0, 0.0});
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_WINDOWEVENT) {
 				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
@@ -296,7 +296,7 @@ void Engine::loop() {
 			}
 		}
 
-		this->profiler.start_measure("rendering", {0,255,0});
+		this->profiler.start_measure("rendering", {0.0, 1.0, 0.0});
 		// clear the framebuffer to black
 		// in the future, we might disable it for lazy drawing
 		glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -342,7 +342,7 @@ void Engine::loop() {
 
 		this->profiler.end_measure("rendering");
 
-		this->profiler.start_measure("idle", {0,0,255});
+		this->profiler.start_measure("idle", {0.0, 0.0, 1.0});
 
 		// the rendering is done
 		// swap the drawing buffers to actually show the frame
