@@ -8,7 +8,7 @@ compiler:
   - gcc
 
 env:
-  - BUILDMODE=release
+  - BUILDMODE=release DOINSTALL=1
   - STATICCHECKER=scan-build
   - SANITIZER=yes LSAN_OPTIONS=suppressions=etc/lsan.supp ASAN_OPTIONS=check_initialization_order=1
   - SANITIZER=mem     # TODO this needs a custom-built libstd++
@@ -69,6 +69,7 @@ script:
   - $STATICCHECKER ./configure --mode=debug
   - $STATICCHECKER make build tests
   - make checkall
+  - if [[ $DOINSTALL -gt 0 ]]; then make install DESTDIR=/tmp/destdir; fi
 
 after_script:
   - echo test build exited

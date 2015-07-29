@@ -10,6 +10,7 @@ add_py_modules(
 	math.py
 	strings.py
 	struct.py
+	system.py
 	threading.py
 )
 
