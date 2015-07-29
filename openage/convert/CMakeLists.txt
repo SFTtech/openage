@@ -1,6 +1,7 @@
 add_py_modules(
 	__init__.py
 	blendomatic.py
+	changelog.py
 	colortable.py
 	driver.py
 	drs.py

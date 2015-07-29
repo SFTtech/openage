@@ -11,8 +11,8 @@ from tempfile import gettempdir
 
 from ..log import info, dbg
 
-from . import ASSET_VERSION, ASSET_VERSION_FILENAME
 from .blendomatic import Blendomatic
+from .changelog import ASSET_VERSION, ASSET_VERSION_FILENAME
 from .colortable import ColorTable, PlayerColorTable
 from .dataformat.data_formatter import DataFormatter
 from .gamedata.empiresdat import load_gamespec
@@ -70,12 +70,13 @@ def get_blendomatic_data(srcdir):
         return Blendomatic(blendomatic_dat)
 
 
-def get_gamespec(srcdir):
+def get_gamespec(srcdir, dont_pickle):
     """ reads empires.dat """
+
+    cache_file = os.path.join(gettempdir(), "empires2_x1_p1.dat.pickle")
+
     with srcdir["data/empires2_x1_p1.dat"].open('rb') as empiresdat_file:
-        gamespec = load_gamespec(
-            empiresdat_file,
-            os.path.join(gettempdir(), "empires2_x1_p1.dat.pickle"))
+        gamespec = load_gamespec(empiresdat_file, cache_file, not dont_pickle)
 
     # modify the read contents of datfile
     from .fix_data import fix_data
@@ -122,7 +123,8 @@ def convert_metadata(args):
         return
 
     yield "empires.dat"
-    data_dump = get_gamespec(args.srcdir).dump("gamedata")
+    gamespec = get_gamespec(args.srcdir, args.no_pickle_cache)
+    data_dump = gamespec.dump("gamedata")
     data_formatter.add_data(data_dump[0], prefix="gamedata/")
 
     yield "blendomatic.dat"

@@ -3,6 +3,7 @@ add_py_modules(
 	civ.py
 	empiresdat.py
 	graphic.py
+	maps.py
 	playercolor.py
 	research.py
 	sound.py

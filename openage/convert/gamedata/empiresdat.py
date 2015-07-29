@@ -6,6 +6,7 @@ import pickle
 
 from . import civ
 from . import graphic
+from . import maps
 from . import playercolor
 from . import research
 from . import sound
@@ -45,7 +46,7 @@ class EmpiresDat(Exportable):
 
         # terain header data
         (READ, "terrain_restriction_count", "uint16_t"),
-        (READ, "terrain_count", "uint16_t"),
+        (READ, "terrain_count", "uint16_t"),   # number of "used" terrains
         (READ, "terrain_restriction_offset0", "int32_t[terrain_restriction_count]"),
         (READ, "terrain_restriction_offset1", "int32_t[terrain_restriction_count]"),
         (READ, "terrain_restrictions", SubdataMember(
@@ -70,27 +71,77 @@ class EmpiresDat(Exportable):
 
         # graphic data
         (READ, "graphic_count", "uint16_t"),
-        (READ, "graphic_offsets", "int32_t[graphic_count]"),
+        (READ, "graphic_offsets", "uint32_t[graphic_count]"),
         (READ_EXPORT, "graphics", SubdataMember(
             ref_type  = graphic.Graphic,
             length    = "graphic_count",
             offset_to = ("graphic_offsets", lambda o: o > 0),
         )),
-        (READ_UNKNOWN, "rendering_blob", "uint8_t[138]"),
 
         # terrain data
+        (READ, "map_pointer", "int32_t"),
+        (READ_UNKNOWN, None, "int32_t"),
+        (READ, "map_width", "int32_t"),
+        (READ, "map_height", "int32_t"),
+        (READ, "world_width", "int32_t"),
+        (READ, "world_height", "int32_t"),
+        (READ_EXPORT,  "tile_sizes", SubdataMember(
+            ref_type=terrain.TileSize,
+            length=19,      # number of tile types
+        )),
+        (READ_UNKNOWN, None, "int16_t"),
         (READ_EXPORT,  "terrains", SubdataMember(
             ref_type=terrain.Terrain,
-            length="terrain_count",
+            length=42,      # 42 terrains are stored, but less are used.
+                            # TODO: maybe this number is defined somewhere.
         )),
-        (READ_UNKNOWN, "terrain_blob0", "uint8_t[438]"),
         (READ,         "terrain_border", SubdataMember(
             ref_type=terrain.TerrainBorder,
             length=16,
         )),
-        (READ_UNKNOWN, "zero", "int8_t[28]"),
+
+        (READ_UNKNOWN, None, "uint32_t"),
+        (READ,         "map_min_x", "float"),
+        (READ,         "map_min_y", "float"),
+        (READ,         "map_max_x", "float"),
+        (READ,         "map_max_y", "float"),
+        (READ,         "map_max_xplus1", "float"),
+        (READ,         "map_min_yplus1", "float"),
+
         (READ,         "terrain_count_additional", "uint16_t"),
-        (READ_UNKNOWN, "terrain_blob1", "uint8_t[12722]"),
+        (READ,         "borders_used", "uint16_t"),
+        (READ,         "max_terrain", "int16_t"),
+        (READ_EXPORT,  "tile_width", "int16_t"),
+        (READ_EXPORT,  "tile_height", "int16_t"),
+        (READ_EXPORT,  "tile_half_height", "int16_t"),
+        (READ_EXPORT,  "tile_half_width", "int16_t"),
+        (READ_EXPORT,  "elev_height", "int16_t"),
+        (READ,         "current_row", "int16_t"),
+        (READ,         "current_column", "int16_t"),
+        (READ,         "block_beginn_row", "int16_t"),
+        (READ,         "block_end_row", "int16_t"),
+        (READ,         "block_begin_column", "int16_t"),
+        (READ,         "block_end_column", "int16_t"),
+        (READ_UNKNOWN, None, "uint32_t"),
+        (READ_UNKNOWN, None, "uint32_t"),
+        (READ,         "any_frame_change", "int8_t"),
+        (READ,         "map_visible_flag", "int8_t"),
+        (READ,         "fog_flag", "int8_t"),
+
+        (READ_UNKNOWN, "terrain_blob0", "uint8_t[21]"),
+        (READ_UNKNOWN, "terrain_blob1", "uint32_t[157]"),
+
+        # random map config
+        (READ, "random_map_count", "uint32_t"),
+        (READ, "random_map_ptr", "uint32_t"),
+        (READ, "map_headers", SubdataMember(
+            ref_type=maps.MapHeader,
+            length="random_map_count",
+        )),
+        (READ, "maps", SubdataMember(
+            ref_type=maps.Map,
+            length="random_map_count",
+        )),
 
         # technology data
         (READ_EXPORT, "tech_count", "uint32_t"),
@@ -149,6 +200,16 @@ class EmpiresDat(Exportable):
 
 
 class EmpiresDatWrapper(Exportable):
+    """
+    This wrapper exists because the top-level element is discarded:
+    The gathered data fields are passed to the parent,
+    and are accumulated there to be written out.
+
+    This class acts as the parent for the "real" data values,
+    and has no parent itself. Thereby this class is discarded
+    and the child classes use this as parent for their return values.
+    """
+
     name_struct_file   = "gamedata"
     name_struct        = "gamedata"
     struct_description = "wrapper for empires2_x1_p1.dat structure"
@@ -162,7 +223,7 @@ class EmpiresDatWrapper(Exportable):
     )
 
 
-def load_gamespec(fileobj, cachefile_name=None):
+def load_gamespec(fileobj, cachefile_name=None, load_cache=False):
     """
     Helper method that loads the contents of a 'empires.dat' gzipped gamespec
     file.
@@ -171,7 +232,7 @@ def load_gamespec(fileobj, cachefile_name=None):
     load.
     """
     # try to use the cached result from a previous run
-    if cachefile_name:
+    if cachefile_name and load_cache:
         try:
             with open(cachefile_name, "rb") as cachefile:
                 # pickle.load() can fail in many ways, we need to catch all.

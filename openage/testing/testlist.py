@@ -24,6 +24,7 @@ def tests_py():
            "doctest on all modules from DOCTEST_MODULES")
     yield "openage.assets.test"
     yield "openage.cabextract.test.test"
+    yield "openage.convert.changelog.test"
     yield "openage.cppinterface.exctranslate_tests.cpp_to_py"
     yield ("openage.cppinterface.exctranslate_tests.cpp_to_py_bounce",
            "translates the exception back and forth a few times")

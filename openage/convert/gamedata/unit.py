@@ -30,7 +30,7 @@ class UnitCommand(Exportable):
                 7: "ATTACK",
                 8: "SHOOT",
                 10: "FLY",
-                11: "UNKNOWN_PREDATOR",
+                11: "SCARE_HUNT",  # triggers flee
                 12: "UNLOAD",    # transport, garrison
                 13: "GUARD",
                 20: "ESCAPE",    # sure?
@@ -50,10 +50,13 @@ class UnitCommand(Exportable):
                 121: "DESELECT_ON_TASK",
                 122: "LOOT",
                 123: "HOUSING",
+                124: "PACK",
                 125: "UNPACK_ATTACK",
                 130: "OFF_MAP_TRADE_0",
                 131: "OFF_MAP_TRADE_1",
                 132: "PICKUP_UNIT",
+                133: "PICKUP_133",
+                134: "PICKUP_134",
                 135: "KIDNAP_UNIT",
                 136: "DEPOSIT_UNIT",
                 149: "SHEAR",
@@ -64,9 +67,9 @@ class UnitCommand(Exportable):
         (READ_EXPORT, "class_id", "int16_t"),
         (READ_EXPORT, "unit_id", "int16_t"),
         (READ_UNKNOWN, None, "int16_t"),
-        (READ_EXPORT, "resource_in", "int16_t"),
+        (READ_EXPORT, "resource_in", "int16_t"),            # carry resource
         (READ_EXPORT, "resource_productivity", "int16_t"),  # resource that multiplies the amount you can gather
-        (READ_EXPORT, "resource_out", "int16_t"),
+        (READ_EXPORT, "resource_out", "int16_t"),           # drop resource
         (READ_EXPORT, "resource", "int16_t"),
         (READ_EXPORT, "work_rate_multiplier", "float"),
         (READ_EXPORT, "execution_radius", "float"),
@@ -578,7 +581,7 @@ class UnitObject(Exportable):
         (READ_EXPORT, "fly_mode", "int8_t"),
         (READ_EXPORT, "resource_capacity", "int16_t"),
         (READ_EXPORT, "resource_decay", "float"),                 # when animals rot, their resources decay
-        (READ_EXPORT, "blast_type", EnumLookupMember(
+        (READ_EXPORT, "blast_armor_level", EnumLookupMember(  # Receive blast damage from units that have lower or same blast_attack_level.
             raw_type    = "int8_t",
             type_name   = "blast_types",
             lookup_dict = {
@@ -588,7 +591,9 @@ class UnitObject(Exportable):
                 3: "UNIT_3",    # boar, farm, fishingship, villager, tradecart, sheep, turkey, archers, junk, ships, monk, siege
             }
         )),
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "trigger_type", "int8_t"),  # associated scenario trigger type:
+                                           # 0:Projectile/Dead/Resource 1:Boar 2:Building
+                                           # 3:Civilian 4:Military 5:Other
         (READ_EXPORT, "interaction_mode", EnumLookupMember(
             raw_type    = "int8_t",  # what can be done with this unit?
             type_name   = "interaction_modes",
@@ -637,14 +642,14 @@ class UnitObject(Exportable):
             },
         )),
         (READ_UNKNOWN, None, "float"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ_EXPORT, "language_dll_help", "uint16_t"),
-        (READ, "hot_keys", "int16_t[4]"),
+        (READ_EXPORT, "minimap_color", "int8_t"),        # palette color id for the minimap
+        (READ_EXPORT, "language_dll_help", "uint16_t"),  # help text for this unit, stored in the translation dll.
+        (READ, "hot_keys", "int16_t[4]"),                # language dll dependent (kezb lazouts!)
         (READ_UNKNOWN, None, "int8_t"),
         (READ_UNKNOWN, None, "int8_t"),
         (READ, "unselectable", "uint8_t"),
         (READ_UNKNOWN, None, "int8_t"),
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "selection_mode", "int8_t"),
         (READ_UNKNOWN, None, "int8_t"),
 
         # bit 0 == 1 && val != 7: mask shown behind buildings,
@@ -762,8 +767,8 @@ class UnitDeadOrFish(UnitDoppelganger):
         (READ, "tracking_unit_id", "int16_t"),          # unit id what for the ground traces are for
         (READ, "tracking_unit_used", "uint8_t"),        # -1: no tracking present, 2: projectiles with tracking unit
         (READ, "tracking_unit_density", "float"),       # 0: no tracking, 0.5: trade cart, 0.12: some projectiles, 0.4: other projectiles
-        (READ_UNKNOWN, None, "float"),
-        (READ_UNKNOWN, None, "int8_t[17]"),
+        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "rotation_angles", "float[5]"),
     )
 
     def __init__(self, **args):
@@ -829,10 +834,10 @@ class UnitMovable(UnitBird):
         (READ, "accuracy_percent", "int16_t"),       # probablity of attack hit
         (READ, "tower_mode", "int8_t"),
         (READ, "delay", "int16_t"),                  # delay in frames before projectile is shot
-        (READ, "projectile_graphics_displacement_lr", "float"),
-        (READ, "projectile_graphics_displacement_distance", "float"),
-        (READ, "projectile_graphics_displacement_height", "float"),
-        (READ_EXPORT, "blast_level", EnumLookupMember(
+        (READ, "graphics_displacement_lr", "float"),
+        (READ, "graphics_displacement_distance", "float"),
+        (READ, "graphics_displacement_height", "float"),
+        (READ_EXPORT, "blast_attack_level", EnumLookupMember(  # Blasts damage units that have higher or same blast_armor_level
             raw_type    = "int8_t",
             type_name   = "range_damage_type",
             lookup_dict = {
@@ -843,7 +848,7 @@ class UnitMovable(UnitBird):
             },
         )),
         (READ, "min_range", "float"),
-        (READ, "garrison_recovery_rate", "float"),
+        (READ, "garrison_recovery_rate", "float"),  # accuracy_error_radius?
         (READ_EXPORT, "attack_graphic", "int16_t"),
         (READ, "melee_armor_displayed", "int16_t"),
         (READ, "attack_displayed", "int16_t"),
@@ -912,13 +917,13 @@ class UnitLiving(UnitMovable):
         # | 31 | 32 | 33 | 34 | 35 |
         # +------------------------+
         (READ, "creation_button_id", "int8_t"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
+        (READ_UNKNOWN, None, "float"),
+        (READ_UNKNOWN, None, "float"),
         (READ, "missile_graphic_delay", "int8_t"),           # delay before the projectile is fired.
         (READ, "hero_mode", "int8_t"),                       # if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
         (READ_EXPORT, "garrison_graphic", "int32_t"),        # graphic to display when units are garrisoned
-        (READ, "attack_missile_duplication_min", "float"),   # projectile duplication when nothing garrisoned
-        (READ, "attack_missile_duplication_max", "int8_t"),  # duplication when fully garrisoned
+        (READ, "attack_missile_count", "float"),             # projectile count when nothing garrisoned, including both normal and duplicated projectiles
+        (READ, "attack_missile_max_count", "int8_t"),        # total missiles when fully garrisoned
         (READ, "attack_missile_duplication_spawning_width", "float"),
         (READ, "attack_missile_duplication_spawning_length", "float"),
         (READ, "attack_missile_duplication_spawning_randomness", "float"),  # placement randomness, 0=from single spot, 1=random, 1<less random

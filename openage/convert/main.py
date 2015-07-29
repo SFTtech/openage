@@ -4,6 +4,8 @@
 
 import os
 
+from . import changelog
+
 from ..log import info, dbg
 from ..util.fslike.wrapper import (
     Wrapper as FSLikeObjWrapper,
@@ -11,8 +13,6 @@ from ..util.fslike.wrapper import (
 )
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.strings import format_progress
-
-from . import ASSET_VERSION_FILENAME
 
 
 class DirectoryCreator(FSLikeObjWrapper):
@@ -170,12 +170,15 @@ def conversion_required(asset_dir, args):
     Sets options in args according to what sorts of conversion are required.
     """
     try:
-        with asset_dir['converted', ASSET_VERSION_FILENAME].open() as fileobj:
+        version_path = asset_dir['converted', changelog.ASSET_VERSION_FILENAME]
+        with version_path.open() as fileobj:
             asset_version = fileobj.read().strip()
     except FileNotFoundError:
         # assets have not been converted yet
         info("No converted assets have been found")
         return True
+
+    # TODO: datapack parsing
 
     try:
         asset_version = int(asset_version)
@@ -183,22 +186,23 @@ def conversion_required(asset_dir, args):
         info("Converted assets have improper format; expected integer version")
         return True
 
-    # this is the place where we can do sophisticated checks whether
-    # the assets are outdated, and select which parts require reconversion.
-    if asset_version >= 1:
+    changes = changelog.changes(asset_version)
+
+    if not changes:
         dbg("Converted assets are up to date")
         return False
 
-    info("Converted assets outdated: Version " + str(asset_version))
+    else:
+        info("Converted assets outdated: Version " + str(asset_version))
+        info("Reconverting " + ", ".join(sorted(changes)))
+        for component in changelog.COMPONENTS:
+            if component not in changes:
+                # don't reconvert this component:
+                setattr(args, "no_{}".format(component), True)
 
-    if asset_version == 0:
-        info("Re-converting only sounds")
-        args.no_metadata = True
-        args.no_graphics = True
-        return True
+        if "metadata" in changes:
+            args.no_pickle_cache = True
 
-    if asset_version == -1:
-        info("Re-converting everything")
         return True
 
 
@@ -234,6 +238,10 @@ def init_subparser(cli):
     cli.add_argument(
         "--no-graphics", action='store_true',
         help="do not convert any graphics")
+
+    cli.add_argument(
+        "--no-pickle-cache", action='store_true',
+        help="don't use a pickle file to skip the dat file reading.")
 
     cli.add_argument(
         "--jobs", "-j", type=int, default=None)
