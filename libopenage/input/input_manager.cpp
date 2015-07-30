@@ -12,7 +12,8 @@ namespace input {
 
 InputManager::InputManager()
 	: // TODO get this from a file instead of hardcoding it here
-	keys {{ sdl_key(SDLK_RETURN), action_t::START_GAME },
+	keys {{ utf8("`"), action_t::TOGGLE_CONSOLE},
+	      { sdl_key(SDLK_RETURN), action_t::START_GAME },
 	      { sdl_key(SDLK_ESCAPE), action_t::STOP_GAME },
 	      { sdl_key(SDLK_F1), action_t::TOGGLE_HUD },
 	      { sdl_key(SDLK_F2), action_t::SCREENSHOT },
@@ -30,7 +31,6 @@ InputManager::InputManager()
 	      { sdl_key(SDLK_x, KMOD_LCTRL), action_t::SET_ABILITY_MOVE },
 	      { sdl_key(SDLK_c, KMOD_LCTRL), action_t::SET_ABILITY_GATHER },
 	      { sdl_key(SDLK_g), action_t::SET_ABILITY_GARRISON },
-	      { sdl_key(SDLK_BACKQUOTE), action_t::TOGGLE_CONSOLE},
 	      { sdl_key(SDLK_v), action_t::SPAWN_VILLAGER},
 	      { sdl_key(SDLK_DELETE), action_t::KILL_UNIT},
 	      { sdl_key(SDLK_q), action_t::BUILDING_1},
@@ -205,6 +205,11 @@ bool InputManager::on_input(SDL_Event *e) {
 		this->set_state(sdl_key(code, SDL_GetModState()), true);
 		break;
 	} // case SDL_KEYDOWN
+
+	case SDL_TEXTINPUT: {
+		this->set_state(utf8(e->text.text), false);
+		break;
+	} // case SDL_TEXTINPUT
 
 	case SDL_MOUSEBUTTONUP: {
 		this->set_relative(false);

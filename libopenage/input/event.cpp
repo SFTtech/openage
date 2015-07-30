@@ -49,8 +49,20 @@ Event::Event(event_class cl, code_t code, modset_t mod)
 	mod(mod) {}
 
 
+Event::Event(event_class cl, const std::string &text, modset_t mod)
+	:
+	cc(cl, 0),
+	mod(mod),
+	utf8(text) {}
+
+
 char Event::as_char() const {
 	return (cc.code & 0xff);
+}
+
+
+std::string Event::as_utf8() const {
+	return utf8;
 }
 
 
@@ -70,7 +82,7 @@ std::string Event::info() const {
 
 
 bool Event::operator ==(const Event &other) const {
-	return this->cc == other.cc && this->mod == other.mod;
+	return this->cc == other.cc && this->mod == other.mod && this->utf8 == other.utf8;
 }
 
 
@@ -137,6 +149,9 @@ Event sdl_key(SDL_Keycode code, SDL_Keymod mod) {
 	}
 }
 
+Event utf8(const std::string &text) {
+	return Event(event_class::UTF8, text, modset_t());
+}
 
 Event sdl_mouse(int button) {
 	return Event(event_class::MOUSE_BUTTON, button, modset_t());

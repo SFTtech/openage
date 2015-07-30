@@ -74,11 +74,11 @@ void Console::register_to_engine(Engine *engine) {
 	this->input_context.bind(input::action_t::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
 		this->set_visible(false);
 	});
-	this->input_context.bind(input::event_class::TEXT, [this](const input::action_arg_t &arg) {
+	this->input_context.bind(input::event_class::UTF8, [this](const input::action_arg_t &arg) {
 		// a single char typed into the console
-		char c = arg.e.as_char();
-		this->buf.write(c);
-		command += c;
+		std::string utf8 = arg.e.as_utf8();
+		this->buf.write(utf8.c_str());
+		command += utf8;
 		return true;
 	});
 	this->input_context.bind(input::event_class::NONPRINT, [this](const input::action_arg_t &arg) {
