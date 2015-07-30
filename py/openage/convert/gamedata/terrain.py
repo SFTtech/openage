@@ -61,9 +61,9 @@ class Terrain(Exportable):
         (READ_EXPORT, "sound_id",            "int32_t"),
         (READ_EXPORT, "blend_priority",      "int32_t"),    # see doc/media/blendomatic for blending stuff
         (READ_EXPORT, "blend_mode",          "int32_t"),
-        (READ_EXPORT, "color_red",           "uint8_t"),
-        (READ_EXPORT, "color_green",         "uint8_t"),
-        (READ_EXPORT, "color_blue",          "uint8_t"),
+        (READ_EXPORT, "map_hi",              "uint8_t"),
+        (READ_EXPORT, "map_med",             "uint8_t"),
+        (READ_EXPORT, "mad_low",             "uint8_t"),
         (READ_UNKNOWN, None,                 "uint8_t[5]"),
         (READ_UNKNOWN, None,                 "float"),
         (READ_UNKNOWN, None,                 "int8_t[18]"),
