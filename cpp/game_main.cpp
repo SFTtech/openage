@@ -154,7 +154,7 @@ GameMain::GameMain(Engine *engine)
 	}
 
 	auto player_color_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("player_palette_50500.docx"));
-  std::vector<gamedata::palette_color> palette_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("palette_50500.docx")); 
+	std::vector<gamedata::palette_color> palette_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("palette_50500.docx")); 
 
 	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
 	for (size_t i = 0; i < player_color_lines.size(); i++) {
@@ -248,9 +248,9 @@ GameMain::GameMain(Engine *engine)
 	// create program for rendering simple textures
 	minimap_shader::program = new shader::Program(minimap_vert, minimap_frag);
 	minimap_shader::program->link();
-  minimap_shader::size = minimap_shader::program->get_uniform_id("minimap_size");
-  minimap_shader::orig = minimap_shader::program->get_uniform_id("minimap_orig");
-  minimap_shader::color = minimap_shader::program->get_attribute_id("color");
+	minimap_shader::size = minimap_shader::program->get_uniform_id("minimap_size");
+	minimap_shader::orig = minimap_shader::program->get_uniform_id("minimap_orig");
+	minimap_shader::color = minimap_shader::program->get_attribute_id("color");
 
 	// after linking, the shaders are no longer necessary
 	delete plaintexture_vert;
@@ -258,11 +258,12 @@ GameMain::GameMain(Engine *engine)
 	delete teamcolor_frag;
 	delete alphamask_vert;
 	delete alphamask_frag;
-  delete minimap_vert;
+	delete minimap_vert;
 	delete minimap_frag;
 
-  // minimap here, because it is dependent on shaders
-  this->minimap = new Minimap(this->engine, &this->placed_units, this->terrain, coord::camhud_delta{300, 150}, coord::camhud{100, 100}, palette_lines, player_color_lines);
+	// minimap here, because it is dependent on shaders
+	this->minimap = new Minimap(this->engine, &this->placed_units, this->terrain, coord::camhud_delta{256, 128}, coord::camhud{16, 16}, palette_lines, player_color_lines);
+	this->engine->register_drawhud_action(this->minimap);
 
 	// initialize global keybinds
 	auto &global_keybind_context = engine->get_keybind_manager().get_global_keybind_context();
@@ -381,7 +382,7 @@ GameMain::GameMain(Engine *engine)
 GameMain::~GameMain() {
 	// oh noes, release hl3 before that!
 	delete this->gaben;
-  delete this->minimap;
+	delete this->minimap;
 
 	delete texture_shader::program;
 	delete teamcolor_shader::program;
@@ -401,6 +402,10 @@ bool GameMain::on_input(SDL_Event *e) {
 	case SDL_MOUSEBUTTONDOWN: {
 		switch (e->button.button) {
 		case SDL_BUTTON_LEFT:
+			if (this->minimap->is_within(mousepos_camgame.to_window().to_camhud())) {
+				this->engine->engine_coord_data->camgame_phys = this->minimap->to_phys(mousepos_camgame.to_window().to_camhud());
+				break;
+			}
 			if (this->clicking_active && !construct_mode && !this->building_placement) {
 				// begin a boxed selection
 				selection.drag_begin(mousepos_camgame);
@@ -436,6 +441,8 @@ bool GameMain::on_input(SDL_Event *e) {
 				selection.drag_release(terrain.get(), this->engine->get_keybind_manager().is_keymod_down(KMOD_LCTRL));
 				dragging_active = false;
 			} else if (clicking_active) {
+				if (this->minimap->is_within(mousepos_camgame.to_window().to_camhud()))
+					break;
 				if (construct_mode) {
 					log::log(MSG(dbg) <<
 					    "LMB [window]:   "
@@ -508,11 +515,15 @@ bool GameMain::on_input(SDL_Event *e) {
 						this->placed_units.new_unit(type, this->players[engine.current_player - 1], mousepos_tile.to_phys2().to_phys3());
 					}
 				} else {
-					// right click can cancel building placement
+					// right click can cancel building placement 
 					if (this->building_placement) {
 						this->building_placement = false;
 					} else {
-						auto cmd = this->get_action(mousepos_phys3);
+						coord::phys3 pos = mousepos_phys3;
+						if (this->minimap->is_within(mousepos_camgame.to_window().to_camhud())) {
+							pos = this->minimap->to_phys(mousepos_camgame.to_window().to_camhud());
+						}
+						auto cmd = this->get_action(pos);
 						selection.all_invoke(cmd);
 					}
 				}
@@ -544,27 +555,27 @@ bool GameMain::on_input(SDL_Event *e) {
 		break;
 	}
 
-  case SDL_MOUSEWHEEL:
-    if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
-      editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
-    }
-    else {
-      editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
-    }
-    break;
+	case SDL_MOUSEWHEEL:
+		if (engine.get_keybind_manager().is_keymod_down(KMOD_LCTRL) && this->datamanager.producer_count() > 0) {
+			editor_current_building = util::mod<ssize_t>(editor_current_building + e->wheel.y, this->datamanager.producer_count());
+		}
+		else {
+			editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + e->wheel.y, this->terrain->terrain_id_count);
+		}
+		break;
 
-  case SDL_KEYUP: {
-    SDL_Keymod keymod = SDL_GetModState();
+	case SDL_KEYUP: {
+		SDL_Keymod keymod = SDL_GetModState();
 
-    SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
-    keybinds::KeybindManager &keybinds = engine.get_keybind_manager();
-    keybinds.set_key_state(sym, keymod, false);
-    keybinds.press(keybinds::key_t(sym, keymod));
-    break;
-  }
+		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+		keybinds::KeybindManager &keybinds = engine.get_keybind_manager();
+		keybinds.set_key_state(sym, keymod, false);
+		keybinds.press(keybinds::key_t(sym, keymod));
+		break;
+	}
 
-  case SDL_KEYDOWN: {
-    SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+	case SDL_KEYDOWN: {
+		SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
 		engine.get_keybind_manager().set_key_state(sym, SDL_GetModState(), true);
 		break;
 	}
@@ -673,8 +684,6 @@ bool GameMain::on_drawhud() {
 			txt->sample(bpreview_pos.to_camhud(), engine->current_player);
 		}
 	}
-
-  this->minimap->draw();
 
 	return true;
 }

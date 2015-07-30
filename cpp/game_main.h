@@ -79,8 +79,7 @@ public:
 	std::shared_ptr<Terrain> terrain;
 	Texture *gaben;
 	std::vector<Player> players;
-
-  Minimap *minimap;
+	Minimap *minimap;
 
 	/**
 	 * all the objects that have been placed.
