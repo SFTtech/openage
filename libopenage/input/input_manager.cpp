@@ -67,37 +67,27 @@ InputContext &InputManager::get_global_context() {
 }
 
 
-void InputManager::override_context(InputContext *context) {
-	// Create a new context list, unless no context lists exist
-	if (!this->contexts.empty()) {
-		this->contexts.push(std::vector<InputContext *>());
-	}
-	this->contexts.top().push_back(context);
-}
-
-
 void InputManager::register_context(InputContext *context) {
 	// Create a context list if none exist
-	if (this->contexts.empty()) {
-		this->contexts.push(std::vector<InputContext *>());
-	}
-	this->contexts.top().push_back(context);
+	this->contexts.push_back(context);
 }
 
 
-void InputManager::remove_context() {
+void InputManager::remove_context(InputContext *context) {
 	if (this->contexts.empty()) {
 		return;
 	}
-	auto top = this->contexts.top();
-	top.pop_back();
-	if (top.size() == 0) {
-		this->contexts.pop();
+
+	for (auto it = this->contexts.begin(); it != this->contexts.end(); ++it) {
+		if ((*it) == context) {
+			this->contexts.erase(it);
+			return;
+		}
 	}
 }
 
 
-void InputManager::trigger(const Event &e) {
+bool InputManager::trigger(const Event &e) {
 	// arg passed to recievers
 	action_arg_t arg{e, this->mouse_position, this->mouse_motion, {}};
 
@@ -109,24 +99,21 @@ void InputManager::trigger(const Event &e) {
 		});
 	}
 
-	if (!this->contexts.empty()) {
-		// Check context list on top of the stack (most recent bound first)
-		for (auto it = this->contexts.top().rbegin(); it != this->contexts.top().rend(); ++it) {
-			if ((*it)->execute_if_bound(arg)) {
-				return;
-			}
+	// Check context list on top of the stack (most recent bound first)
+	for (auto it = this->contexts.rbegin(); it != this->contexts.rend(); ++it) {
+		if ((*it)->execute_if_bound(arg)) {
+			return true;
 		}
 	}
 
 	// If no local keybinds were bound, check the global keybinds
-	this->global_hotkeys.execute_if_bound(arg);
+	return this->global_hotkeys.execute_if_bound(arg);
 }
 
 
 void InputManager::set_state(const Event &ev, bool is_down) {
 	this->keymod = ev.mod;
 	this->states[ev.cc] = is_down;
-
 	if (!is_down) {
 		this->trigger(ev);
 	}

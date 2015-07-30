@@ -81,6 +81,10 @@ CreateMode::CreateMode()
 	});
 }
 
+bool CreateMode::available() const {
+	return true;
+}
+
 void CreateMode::on_enter() {}
 
 void CreateMode::render() {
@@ -246,6 +250,17 @@ ActionMode::ActionMode()
 		return false;
 	});
 
+}
+
+bool ActionMode::available() const {
+	Engine &engine = Engine::get();
+	if (engine.get_game()) {
+		return true;
+	}
+	else {
+		log::log(MSG(warn) << "Cannot enter action mode without a game");
+		return false;
+	}
 }
 
 void ActionMode::on_enter() {
@@ -417,6 +432,17 @@ EditorMode::EditorMode()
 	});
 }
 
+bool EditorMode::available() const {
+	Engine &engine = Engine::get();
+	if (engine.get_game()) {
+		return true;
+	}
+	else {
+		log::log(MSG(warn) << "Cannot enter editor mode without a game");
+		return false;
+	}
+}
+
 void EditorMode::on_enter() {}
 
 void EditorMode::render() {
@@ -550,13 +576,18 @@ GameControl::GameControl(openage::Engine *engine)
 }
 
 void GameControl::toggle_mode() {
-	this->active_mode_index = (this->active_mode_index + 1) % this->modes.size();
-	this->active_mode = this->modes[this->active_mode_index].get();
-	this->active_mode->on_enter();
+	int next_mode = (this->active_mode_index + 1) % this->modes.size();
+	if (this->modes[next_mode]->available()) {
+		engine->get_input_manager().remove_context(this->active_mode);
 
-	// update the context
-	engine->get_input_manager().remove_context();
-	engine->get_input_manager().register_context(this->active_mode);
+		// set the new active mode
+		this->active_mode_index = next_mode;
+		this->active_mode = this->modes[next_mode].get();
+		this->active_mode->on_enter();
+
+		// update the context
+		engine->get_input_manager().register_context(this->active_mode);
+	}
 }
 
 

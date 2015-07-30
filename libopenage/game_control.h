@@ -22,6 +22,11 @@ class OutputMode : public input::InputContext {
 public:
 
 	/**
+	 * is this mode able to be used
+	 */
+	virtual bool available() const = 0;
+
+	/**
 	 * used when switching modes
 	 */
 	virtual void on_enter() = 0;
@@ -36,6 +41,7 @@ class CreateMode : public OutputMode {
 public:
 	CreateMode();
 
+	bool available() const override;
 	void on_enter() override;
 	void render() override;
 
@@ -54,6 +60,7 @@ class ActionMode : public OutputMode {
 public:
 	ActionMode();
 
+	bool available() const override;
 	void on_enter() override;
 	void render() override;
 
@@ -99,6 +106,7 @@ class EditorMode : public OutputMode {
 public:
 	EditorMode();
 
+	bool available() const override;
 	void on_enter() override;
 	void render() override;
 
