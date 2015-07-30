@@ -168,7 +168,7 @@ function(add_cython_modules)
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [standalone]")
 				set(STANDALONE_NEXT FALSE)
 			else()
-				set_target_properties("${TARGETNAME}" PROPERTIES CMAKE_LINK_DEPENDS_NO_SHARED 1)
+				set_target_properties("${TARGETNAME}" PROPERTIES LINK_DEPENDS_NO_SHARED 1)
 				target_link_libraries("${TARGETNAME}" "${PYEXT_LINK_LIBRARY}")
 			endif()
 
