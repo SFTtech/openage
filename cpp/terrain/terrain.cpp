@@ -50,9 +50,9 @@ Terrain::Terrain(AssetManager &assetmanager,
 	this->blending_masks.reserve(this->blendmode_count);
 	this->terrain_id_priority_map  = std::make_unique<int[]>(this->terrain_id_count);
 	this->terrain_id_blendmode_map = std::make_unique<int[]>(this->terrain_id_count);
-  this->terrain_id_map_hi_map  = std::make_unique<uint8_t[]>(this->terrain_id_count);
-  this->terrain_id_color_med_map = std::make_unique<uint8_t[]>(this->terrain_id_count);
-  this->terrain_id_color_low_map = std::make_unique<uint8_t[]>(this->terrain_id_count);
+	this->terrain_id_map_hi_map    = std::make_unique<uint8_t[]>(this->terrain_id_count);
+	this->terrain_id_map_med_map   = std::make_unique<uint8_t[]>(this->terrain_id_count);
+	this->terrain_id_map_low_map   = std::make_unique<uint8_t[]>(this->terrain_id_count);
 	this->influences_buf           = std::make_unique<struct influence[]>(this->terrain_id_count);
 
 
@@ -69,9 +69,9 @@ Terrain::Terrain(AssetManager &assetmanager,
 		// TODO: terrain double-define check?
 		this->terrain_id_priority_map[terrain_id]  = line->blend_priority;
 		this->terrain_id_blendmode_map[terrain_id] = line->blend_mode;
-    this->terrain_id_map_hi_map[terrain_id] = line->map_hi;
-    this->terrain_id_map_med_map[terrain_id] = line->map_med;
-    this->terrain_id_map_low_map[terrain_id] = line->color_blue;
+		this->terrain_id_map_hi_map[terrain_id] = line->map_hi;
+		this->terrain_id_map_med_map[terrain_id] = line->map_med;
+		this->terrain_id_map_low_map[terrain_id] = line->map_low;
 
 		// TODO: remove hardcoding and rely on nyan data
 		auto terraintex_filename = util::sformat("converted/Data/terrain.drs/%d.slp.png", line->slp_id);
@@ -234,18 +234,18 @@ int Terrain::blendmode(terrain_t terrain_id) {
 }
 
 uint8_t Terrain::map_hi(terrain_t terrain_id) {
-  this->validate_terrain(terrain_id);
-  return this->terrain_id_map_hi_map[terrain_id];
+	this->validate_terrain(terrain_id);
+	return this->terrain_id_map_hi_map[terrain_id];
 }
 
 uint8_t Terrain::map_med(terrain_t terrain_id) {
-  this->validate_terrain(terrain_id);
-  return this->terrain_id_map_med_map[terrain_id];
+	this->validate_terrain(terrain_id);
+	return this->terrain_id_map_med_map[terrain_id];
 }
 
 uint8_t Terrain::map_low(terrain_t terrain_id) {
-  this->validate_terrain(terrain_id);
-  return this->terrain_id_map_low_map[terrain_id];
+	this->validate_terrain(terrain_id);
+	return this->terrain_id_map_low_map[terrain_id];
 }
 
 Texture *Terrain::texture(terrain_t terrain_id) {
