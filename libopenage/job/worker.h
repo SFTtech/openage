@@ -26,7 +26,7 @@ private:
 	JobManager *manager;
 
 	/** Whether this worker thread is still running. */
-	std::atomic_bool is_running;
+	bool is_running;
 
 	/** The executing thread. */
 	std::unique_ptr<std::thread> executor;
