@@ -95,11 +95,11 @@ void Console::register_to_engine(Engine *engine) {
 void Console::set_visible(bool make_visible) {
 	Engine &e = Engine::get();
 	if (make_visible) {
-		e.get_input_manager().override_context(&this->input_context);
+		e.get_input_manager().register_context(&this->input_context);
 		this->visible = true;
 	}
 	else {
-		e.get_input_manager().remove_context();
+		e.get_input_manager().remove_context(&this->input_context);
 		this->visible = false;
 	}
 }

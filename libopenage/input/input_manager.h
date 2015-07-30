@@ -30,26 +30,22 @@ public:
 	InputContext &get_global_context();
 
 	/**
-	 * register a hotkey context, and override old keybinds.
-	 */
-	void override_context(InputContext *context);
-
-	/**
 	 * register a hotkey context.
 	 */
 	void register_context(InputContext *context);
 
 	/**
-	 * removes the most recently registered context.
+	 * removes any matching registered context.
 	 */
-	void remove_context();
+	void remove_context(InputContext *context);
 
 	/**
 	 * manages the pressing of a key.
 	 * first checks whether an action is bound to it.
 	 * if it is, look for an handler to execute that handler.
+	 * returns true if the event was responded to
 	 */
-	void trigger(const Event &e);
+	bool trigger(const Event &e);
 
 	/**
 	 * sets the state of a specific key
@@ -103,7 +99,7 @@ private:
 
 	InputContext global_hotkeys;
 	binding_map_t keys;
-	std::stack<std::vector<InputContext *>> contexts;
+	std::vector<InputContext *> contexts;
 
 	/**
 	 * key to is_down map.
