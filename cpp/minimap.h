@@ -5,12 +5,15 @@
 
 #include "epoxy/gl.h"
 
+#include "handlers.h"
+
 #include "shader/program.h"
 #include "terrain/terrain.h"
 #include "coord/camhud.h"
 #include "unit/unit_container.h"
 #include "unit/unit.h"
 #include "gamedata/color.gen.h"
+
 
 namespace openage {
 namespace minimap_shader {
@@ -22,37 +25,87 @@ extern shader::Program *program;
 }
 
 
-class Minimap {
-private:
-  Engine *engine;  
-  UnitContainer *container;
-  std::shared_ptr<Terrain> terrain;
-  coord::camhud_delta size;
-  coord::camhud hudpos;
-
+/**
+ * Implements a minimap, as a HudHandler.
+ *
+ * Supports dynamic terrain sizes, changing terrain, and displays units.
+ */
+class Minimap: public HudHandler {
 public:  
-  Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size,
+	/**
+	 * Creates the minimap.
+	 */
+	Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size,
           coord::camhud hudpos, std::vector<gamedata::palette_color> palette, std::vector<gamedata::palette_color> player_palette);
+	~Minimap();
 
-  // Draw a simple minimap
-  void draw();
-  void draw_unit(Unit *unit);
-  void generate_background();
-  void update();
-  coord::camhud from_phys(coord::phys3 position);
+	bool on_drawhud();
+	void draw_unit(Unit *unit);
+	void generate_background();
+
+	/**
+	 * Updates various variables crucial to the function of the minimap, including
+	 * the minimap resolution and the minimap corner position.
+	 */
+	void update();
+
+	/**
+	 * Converts a phys3 coordinate to a camhud coordinate, that corresponds to the
+	 * given position on the minimap.
+	 *
+	 * @param coord: The phys3 coordinate to be converted.
+	 * @returns The given coordinate position in minimap camhud.
+	 */
+	coord::camhud from_phys(coord::phys3 coord);
+
+	/**
+	 * Converts a camhud coordinate to a phys3 coordinate, assuming that the 
+	 * camhud coordinate refers to a position on the minimap.
+	 *
+	 * @param coord: The minimap camhud coordinate to be converted.
+	 * @returns The given coordinate position in phys3.
+	 */
+	coord::phys3 to_phys(coord::camhud coord);
+
+	/**
+	 * Check if a camhud coordinate is within the drawing area of the minimap.
+	 *
+	 * @param coord: The camhud coordinate to be checked.
+	 * @returns True if the coordinate is within the minimap.
+	 */
+	bool is_within(coord::camhud coord);
 
 private:
-  std::vector<gamedata::palette_color> palette, player_palette;
-  GLfloat left, right, bottom, top, center_vertical, center_horizontal;
-  coord::chunk north, east, south, west;
-  coord::phys3 old_camgame_phys;
-  GLuint tervertbuf;
-  GLuint tertex; // Minimap terrain as texture
-  GLuint viewvertbuf;
-  GLuint unitvertbuf;
-  double ratio_horizontal;
-  double ratio_vertical;
-  int resolution;
+	Engine *engine;  
+	UnitContainer *container;
+	std::shared_ptr<Terrain> terrain;
+	coord::camhud_delta size;
+	coord::camhud hudpos;
+	std::vector<gamedata::palette_color> palette, player_palette;
+
+	GLint left, right, bottom, top, center_vertical, center_horizontal;
+	coord::chunk north, east, south, west;
+	GLuint terrain_vertbuf;
+	GLuint terrain_tex; 
+	GLuint view_vertbuf;
+	GLuint unit_vertbuf;
+
+	/**
+	 * The ratio of distance between eastern and western minimap corners
+	 * (NOT terrain corners!) in camhud game to camhud minimap.
+	 */ 
+	float ratio_horizontal; 
+
+	/**
+	 * The ratio of distance between nortern and southern minimap corners
+	 * (NOT terrain corners!) in camhud game to camhud minimap.
+	 */
+	float ratio_vertical;
+
+	/**
+	 * The minimap side length in tiles
+	 */
+	int resolution;
 };
 
 
