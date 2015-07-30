@@ -72,10 +72,9 @@ CreateMode::CreateMode()
 	this->bind(input::action_t::DOWN_ARROW, [this](const input::action_arg_t &) {
 		this->selected += 1;
 	});
-	this->bind(input::event_class::TEXT, [this](const input::action_arg_t &arg) {
+	this->bind(input::event_class::UTF8, [this](const input::action_arg_t &arg) {
 		if (this->setting_value) {
-			char c = arg.e.as_char();
-			this->new_value += c;
+			this->new_value += arg.e.as_utf8();
 			return true;
 		}
 		return false;

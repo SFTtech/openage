@@ -18,12 +18,13 @@ namespace input {
 enum class event_class {
 	ANY,
 	KEYBOARD,
-	TEXT,
+	CHAR,			// basic keycodes (lower-case, non-modified)
 	ALPHA,			// abc
 	DIGIT,			// 123
 	PRINT,			// remaining printable chars
 	NONPRINT,		// tab, return, backspace, delete
 	OTHER,			// arrows, home, end
+	UTF8,			// events with utf8 encoded data
 	MOUSE,
 	MOUSE_BUTTON,
 	MOUSE_WHEEL,
@@ -41,12 +42,13 @@ struct event_class_hash {
  */
 static std::unordered_map<event_class, event_class, event_class_hash> event_base {
 	{event_class::KEYBOARD, event_class::ANY},
-	{event_class::TEXT, event_class::KEYBOARD},
-	{event_class::ALPHA, event_class::TEXT},
-	{event_class::DIGIT, event_class::TEXT},
-	{event_class::PRINT, event_class::TEXT},
+	{event_class::CHAR, event_class::KEYBOARD},
+	{event_class::ALPHA, event_class::CHAR},
+	{event_class::DIGIT, event_class::CHAR},
+	{event_class::PRINT, event_class::CHAR},
 	{event_class::NONPRINT, event_class::KEYBOARD},
 	{event_class::OTHER, event_class::KEYBOARD},
+	{event_class::UTF8, event_class::KEYBOARD},
 	{event_class::MOUSE, event_class::ANY},
 	{event_class::MOUSE_BUTTON, event_class::MOUSE},
 	{event_class::MOUSE_WHEEL, event_class::MOUSE},
@@ -107,12 +109,19 @@ struct class_code_hash {
 class Event {
 public:
 	Event(event_class cl, code_t code, modset_t mod);
+	Event(event_class cl, const std::string &, modset_t mod);
 
 	/**
-	 * return keyboard text as char
+	 * Return keyboard text as char
 	 * returns 0 for non-text events
 	 */
 	char as_char() const;
+
+	/**
+	 * Returns a utf encoded char
+	 * or an empty string for non-utf8 events
+	 */
+	std::string as_utf8() const;
 
 	/**
 	 * logable debug info
@@ -123,6 +132,7 @@ public:
 
 	const ClassCode cc;
 	const modset_t mod;
+	const std::string utf8;
 };
 
 
@@ -138,6 +148,7 @@ using event_set_t = std::unordered_set<Event, event_hash>;
 
 modset_t sdl_mod(SDL_Keymod mod);
 Event sdl_key(SDL_Keycode code, SDL_Keymod mod=KMOD_NONE);
+Event utf8(const std::string &text);
 Event sdl_mouse(int button);
 Event sdl_wheel(int direction);
 
