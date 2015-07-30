@@ -17,20 +17,23 @@ Worker::Worker(JobManager *manager)
 
 
 void Worker::start() {
-	this->is_running.store(true);
+	this->is_running = true;
 	this->executor.reset(new std::thread{&Worker::process, this});
 }
 
 
 void Worker::stop() {
-	this->is_running.store(false);
+	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
+	this->is_running = false;
+	lock.unlock();
 	this->notify();
 }
 
 
 void Worker::enqueue(std::shared_ptr<JobStateBase> job) {
-	std::lock_guard<std::mutex> lock{this->pending_jobs_mutex};
+	std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
 	this->pending_jobs.push(job);
+	lock.unlock();
 	this->notify();
 }
 
@@ -47,7 +50,7 @@ void Worker::join() {
 
 void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
 	auto should_abort = [this]() {
-		return not this->is_running.load();
+		return not this->is_running;
 	};
 
 	bool aborted = job->execute(should_abort);
@@ -61,9 +64,15 @@ void Worker::execute_job(std::shared_ptr<JobStateBase> &job) {
 
 void Worker::process() {
 	// as long as this worker thread is running repeat all steps
-	while (this->is_running.load()) {
+	while (true) {
 		// lock the local thread queue
 		std::unique_lock<std::mutex> lock{this->pending_jobs_mutex};
+
+		// if this thread shall not run any longer, exit the loop
+		if (not this->is_running) {
+			return;
+		}
+
 		// as long as there are no jobs from the local queue or the job manager
 		while (this->pending_jobs.empty() and not this->manager->has_job()) {
 			// the thread should wait
@@ -71,7 +80,7 @@ void Worker::process() {
 
 			// when the thread is notified, first check if the thread should be
 			// stopped
-			if (not this->is_running.load()) {
+			if (not this->is_running) {
 				return;
 			}
 		}
@@ -92,7 +101,7 @@ void Worker::process() {
 
 		// after possibly executing a job from the local queue, check again if
 		// the thread should still continue running
-		if (not this->is_running.load()) {
+		if (not this->is_running) {
 			return;
 		}
 
