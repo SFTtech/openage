@@ -19,9 +19,9 @@ namespace coord {
 namespace tests {
 
 /**
- * This function tests fixed point numbers (the FixedPoint class)
+ * This function tests the phys_t type
  */
-int fixed_point_0() {
+int phys_t_0() {
 	phys_t expected;
 	phys_t results;
 
@@ -770,8 +770,8 @@ void coord() {
 	int ret;
 	const char *testname;
 	
-	if ((ret = fixed_point_0()) != -1) {
-		testname = "fixed_point test";
+	if ((ret = phys_t_0()) != -1) {
+		testname = "phys_t test";
 		goto out;
 	}
 
