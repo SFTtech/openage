@@ -36,10 +36,15 @@ def get_string_resources(srcdir):
     else:
         count = 0
         from .hdlanguagefile import read_hd_language_file
-        for lang in srcdir.listdirs("bin"):
+        
+        bin_path = srcdir.joinpath("bin") 
+        for lang in bin_path.list():
+            if bin_path.joinpath(lang).is_file():
+                continue
+            
             try:
-                langfilename = ["bin", lang, lang + "-language.txt"]
-                with srcdir.open(langfilename, 'rb') as langfile:
+                langfilename = [b"bin", lang, lang + b"-language.txt"]
+                with srcdir[langfilename].open('rb') as langfile:
                     stringres.fill_from(read_hd_language_file(langfile, lang))
 
                 count += 1
