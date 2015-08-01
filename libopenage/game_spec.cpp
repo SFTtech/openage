@@ -77,7 +77,7 @@ Texture *GameSpec::get_texture(index_t graphic_id) {
 	}
 
 	log::log(MSG(info) << "   slp id/name: " << slp_id << " " << this->graphics[graphic_id]->name0);
-	std::string tex_fname = util::sformat((this->graphics_path + "/%d.slp.png").c_str(), slp_id);
+	std::string tex_fname = util::sformat("%s/%d.slp.png", this->graphics_path.c_str(), slp_id);
 
 	// get tex if file is available
 	Texture *tex = nullptr;
@@ -342,7 +342,7 @@ void GameSpec::load_terrain(AssetManager &am) {
 		terrain_data.terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
 		// TODO: remove hardcoding and rely on nyan data
-		auto terraintex_filename = util::sformat((this->terrain_path + "/%d.slp.png").c_str(), line->slp_id);
+		auto terraintex_filename = util::sformat("%s/%d.slp.png", this->terrain_path.c_str(), line->slp_id);
 		auto new_texture = am.get_texture(terraintex_filename);
 
 		terrain_data.textures[terrain_id] = new_texture;
@@ -352,7 +352,7 @@ void GameSpec::load_terrain(AssetManager &am) {
 	for (size_t i = 0; i < terrain_data.blendmode_count; i++) {
 		auto line = &blending_meta[i];
 
-		std::string mask_filename = util::sformat((this->blend_path + "/mode%02d.png").c_str(), line->blend_mode);
+		std::string mask_filename = util::sformat("%s/mode%02d.png", this->blend_path.c_str(), line->blend_mode);
 		terrain_data.blending_masks[i] = am.get_texture(mask_filename);
 	}
 }

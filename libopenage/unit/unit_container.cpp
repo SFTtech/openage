@@ -52,7 +52,7 @@ UnitContainer::UnitContainer()
 
 
 UnitContainer::~UnitContainer() {
-	log::log(MSG(dbg) << "Cleanup container");
+	log::log(MSG(warn) << "Cleanup container");
 }
 
 void UnitContainer::reset() {
