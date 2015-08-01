@@ -12,7 +12,7 @@ def read_hd_language_file(fileobj, langcode):
     """
     Takes a file object, and the file's language code.
     """
-    dbg("HD Language file " + langcode)
+    dbg("HD Language file " + str(langcode))
     strings = {}
 
     for line in fileobj.read().decode('iso-8859-1').split('\n'):
