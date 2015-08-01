@@ -54,9 +54,14 @@ coord::tile Region::get_tile(rng::RNG &rng) const {
 }
 
 
-tileset_t Region::subset(rng::RNG &rng, coord::tile tile, unsigned int number) const {
+tileset_t Region::subset(rng::RNG &rng, coord::tile start_point, unsigned int number, double p) const {
+	if (p == 0.0) {
+		return tileset_t();
+	}
+
+	// the set of included tiles
 	std::unordered_set<coord::tile> subtiles;
-	subtiles.emplace(tile);
+	subtiles.emplace(start_point);
 
 	// outside layer of tiles
 	std::unordered_set<coord::tile> edge_set;
@@ -86,30 +91,29 @@ tileset_t Region::subset(rng::RNG &rng, coord::tile tile, unsigned int number) c
 		// transfer a random tile
 		coord::tile next_tile = random_tile(rng, edge_set);
 		edge_set.erase(next_tile);
-		if (rng.probability(0.5)) {
+		if (rng.probability(p)) {
 			subtiles.emplace(next_tile);
 		}
 	}
 	return subtiles;
 }
 
-Region Region::take_tiles(rng::RNG &rng, coord::tile tile, unsigned int number) {
+Region Region::take_tiles(rng::RNG &rng, coord::tile start_point, unsigned int number, double p) {
 
-	// take a random subset
-	tileset_t new_set = this->subset(rng, tile, number);
+	tileset_t new_set = this->subset(rng, start_point, number, p);
 
 	// erase from current set
 	for (auto &t: new_set) {
 		this->tiles.erase(t);
 	}
 
-	Region new_region(tile, new_set);
+	Region new_region(start_point, new_set);
 	new_region.terrain_id = this->terrain_id;
 	return new_region;
 }
 
-Region Region::take_random(rng::RNG &rng, unsigned int number) {
-	return this->take_tiles(rng, this->get_tile(rng), number);
+Region Region::take_random(rng::RNG &rng, unsigned int number, double p) {
+	return this->take_tiles(rng, this->get_tile(rng), number, p);
 }
 
 Generator::Generator(Engine *engine)
@@ -218,31 +222,31 @@ void Generator::create_regions() {
 		int se = size * p_radius * cos(2 * M_PI * angle);
 		coord::tile player_tile{ne, se};
 
-		Region player = base.take_tiles(rng, player_tile, p_area);
+		Region player = base.take_tiles(rng, player_tile, p_area, 0.5);
 		player.terrain_id = 10;
 
-		Region obj_space = player.take_tiles(rng, player.get_center(), p_area / 5);
+		Region obj_space = player.take_tiles(rng, player.get_center(), p_area / 5, 0.5);
 		obj_space.owner = i + 1;
 		obj_space.terrain_id = 8;
 
-		Region trees1 = player.take_random(rng, p_area / 10);
+		Region trees1 = player.take_random(rng, p_area / 10, 0.3);
 		trees1.terrain_id = 9;
 		trees1.object_id = 349;
 
-		Region trees2 = player.take_random(rng, p_area / 10);
+		Region trees2 = player.take_random(rng, p_area / 10, 0.3);
 		trees2.terrain_id = 9;
 		trees2.object_id = 351;
 
-		Region stone = player.take_random(rng, 5);
+		Region stone = player.take_random(rng, 5, 0.3);
 		stone.object_id = 102;
 
-		Region gold = player.take_random(rng, 7);
+		Region gold = player.take_random(rng, 7, 0.3);
 		gold.object_id = 66;
 
-		Region forage = player.take_random(rng, 6);
+		Region forage = player.take_random(rng, 6, 0.3);
 		forage.object_id = 59;
 
-		Region sheep = player.take_random(rng, 4);
+		Region sheep = player.take_random(rng, 4, 0.3);
 		sheep.owner = obj_space.owner;
 		sheep.object_id = 594;
 
@@ -257,7 +261,7 @@ void Generator::create_regions() {
 	}
 
 	for (int i = 0; i < 6; ++i) {
-		Region extra_trees = base.take_random(rng, 160);
+		Region extra_trees = base.take_random(rng, 160, 0.3);
 		extra_trees.terrain_id = 9;
 		extra_trees.object_id = 349;
 		player_regions.push_back(extra_trees);
