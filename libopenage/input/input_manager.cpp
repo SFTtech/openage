@@ -58,7 +58,8 @@ InputManager::InputManager()
 	      { sdl_mouse(1), action_t::SELECT},
 	      { sdl_mouse(3), action_t::DESELECT},
 	      { sdl_wheel(1), action_t::FORWARD},
-	      { sdl_wheel(-1), action_t::BACK}} {
+	      { sdl_wheel(-1), action_t::BACK}},
+	relative_mode{false} {
 }
 
 
@@ -66,6 +67,12 @@ InputContext &InputManager::get_global_context() {
 	return this->global_hotkeys;
 }
 
+InputContext &InputManager::get_top_context() {
+	if (this->contexts.empty()) {
+		return this->global_hotkeys;
+	}
+	return *this->contexts.back();
+}
 
 void InputManager::register_context(InputContext *context) {
 	// Create a context list if none exist
@@ -88,6 +95,16 @@ void InputManager::remove_context(InputContext *context) {
 
 
 bool InputManager::trigger(const Event &e) {
+
+	// filter duplicate utf8 events
+	// these are ignored unless the top mode enables
+	// utf8 mode, in which case regular char codes are ignored
+	if ((e.cc.has_class(event_class::CHAR) || e.cc.has_class(event_class::UTF8)) &&
+	     this->get_top_context().utf8_mode != e.cc.has_class(event_class::UTF8)) {
+		return false;
+	}
+
+
 	// arg passed to recievers
 	action_arg_t arg{e, this->mouse_position, this->mouse_motion, {}};
 
@@ -114,10 +131,12 @@ bool InputManager::trigger(const Event &e) {
 void InputManager::set_state(const Event &ev, bool is_down) {
 	this->keymod = ev.mod;
 	this->states[ev.cc] = is_down;
+
 	if (!is_down) {
 		this->trigger(ev);
 	}
 }
+
 
 void InputManager::set_mouse(int x, int y) {
 	coord::window last_position = this->mouse_position;
@@ -125,10 +144,12 @@ void InputManager::set_mouse(int x, int y) {
 	this->mouse_motion = this->mouse_position - last_position;
 }
 
+
 void InputManager::set_motion(int x, int y) {
 	this->mouse_motion.x = x;
 	this->mouse_motion.y = y;
 }
+
 
 void InputManager::set_relative(bool mode) {
 	if (this->relative_mode == mode) {
@@ -144,6 +165,7 @@ void InputManager::set_relative(bool mode) {
 		SDL_SetRelativeMouseMode(SDL_FALSE);
 	}
 }
+
 
 bool InputManager::is_down(const ClassCode &cc) const {
 	auto it = this->states.find(cc);

@@ -124,7 +124,7 @@ Generator::Generator(Engine *engine)
 
 	// node settings
 	this->set_parent(engine);
-	this->add("generation_seed", 12345);
+	this->add("generation_seed", 4321);
 	this->add("terrain_size", 2);
 	this->add("terrain_base_id", 0);
 	this->add("player_area", 850);

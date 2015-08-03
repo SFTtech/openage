@@ -53,6 +53,7 @@ CreateMode::CreateMode()
 			}
 
 			this->setting_value = false;
+			this->utf8_mode = false;
 			this->new_value = "";
 		}
 		else {
@@ -60,17 +61,22 @@ CreateMode::CreateMode()
 				node->do_action(flist[selected - list.size()]);
 			}
 			else {
-				this->setting_value = !this->setting_value;
+				this->setting_value = true;
+				this->utf8_mode = true;
 				this->new_value = "";
 			}
 		}
 
 	});
 	this->bind(input::action_t::UP_ARROW, [this](const input::action_arg_t &) {
-		this->selected -= 1;
+		if (!this->setting_value) {
+			this->selected -= 1;
+		}
 	});
 	this->bind(input::action_t::DOWN_ARROW, [this](const input::action_arg_t &) {
-		this->selected += 1;
+		if (!this->setting_value) {
+			this->selected += 1;
+		}
 	});
 	this->bind(input::event_class::UTF8, [this](const input::action_arg_t &arg) {
 		if (this->setting_value) {

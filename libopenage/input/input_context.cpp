@@ -5,7 +5,9 @@
 namespace openage {
 namespace input {
 
-InputContext::InputContext() {}
+InputContext::InputContext()
+	:
+	utf8_mode{false} {}
 
 std::vector<std::string> InputContext::active_binds() const {
 	std::vector<std::string> result;

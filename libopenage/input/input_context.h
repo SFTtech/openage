@@ -49,6 +49,14 @@ public:
 	 */
 	bool execute_if_bound(const action_arg_t &e);
 
+
+	/**
+	 * Affects which keyboard events are recieved:
+	 * true to accpet utf8 text events,
+	 * false to recieve regular char events
+	 */
+	bool utf8_mode;
+
 private:
 
 	/**
