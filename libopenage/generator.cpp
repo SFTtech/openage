@@ -136,11 +136,12 @@ Generator::Generator(Engine *engine)
 	options::OptionAction save_action("save_game", [this]() {
 		Engine &engine = Engine::get();
 		if (!engine.get_game()) {
-			log::log(MSG(warn) << "game required for saving");
-			return;
+			log::log(MSG(warn) << "no open game to save");
+			return options::OptionValue("Error: no open game to save");
 		}
 		auto filename = this->get_variable("load_filename").value<std::string>();
 		gameio::save(engine.get_game(), filename);
+		return options::OptionValue("Game saved");
 	});
 	this->add_action(save_action);
 
@@ -149,7 +150,7 @@ Generator::Generator(Engine *engine)
 		Engine &engine = Engine::get();
 		if (engine.get_game()) {
 			log::log(MSG(warn) << "close existing game before loading");
-			return;
+			return options::OptionValue("Error: close existing game before loading");
 		}
 		auto filename = this->get_variable("load_filename").value<std::string>();
 
@@ -157,12 +158,16 @@ Generator::Generator(Engine *engine)
 		this->regions.clear();
 		engine.start_game(*this);
 		gameio::load(engine.get_game(), filename);
+		return options::OptionValue("Game loaded");
 	});
 	this->add_action(load_action);
 
 	// create a game using this generator
 	options::OptionAction start_action("generate_game", [this]() {
-		this->create();
+		if (this->create()) {
+			return options::OptionValue("Game generated");
+		}
+		return options::OptionValue("Error: game data has not finished loading");
 	});
 	this->add_action(start_action);
 
@@ -170,6 +175,7 @@ Generator::Generator(Engine *engine)
 	options::OptionAction end_action("end_game", [this]() {
 		Engine &engine = Engine::get();
 		engine.end_game();
+		return options::OptionValue("Game ended");
 	});
 	this->add_action(end_action);
 
@@ -177,6 +183,7 @@ Generator::Generator(Engine *engine)
 	options::OptionAction reload_action("reload_assets", [this]() {
 		this->assetmanager.check_updates();
 		this->spec = std::make_shared<GameSpec>(this->assetmanager);
+		return options::OptionValue("Starting asset reload");
 	});
 	this->add_action(reload_action);
 }
@@ -327,10 +334,9 @@ void Generator::add_units(GameMain &m) const {
 	}
 }
 
-void Generator::create() {
+bool Generator::create() {
 	if (!this->spec->load_complete()) {
-		log::log(MSG(dbg) << "loading not completed");
-		return;
+		return false;
 	}
 
 	// generation
@@ -339,6 +345,7 @@ void Generator::create() {
 	// create main
 	Engine &e = Engine::get();
 	e.start_game(*this);
+	return true;
 }
 
 

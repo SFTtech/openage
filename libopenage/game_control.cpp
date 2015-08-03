@@ -58,7 +58,7 @@ CreateMode::CreateMode()
 		}
 		else {
 			if (selected >= list.size()) {
-				node->do_action(flist[selected - list.size()]);
+				this->response_value = node->do_action(flist[selected - list.size()]).str_value();
 			}
 			else {
 				this->setting_value = true;
@@ -136,9 +136,10 @@ void CreateMode::render() {
 			engine.render_text({x + 320, y}, 20, "%s", this->new_value.c_str());
 			y -= 24;
 		}
+		engine.render_text({0, 100}, 20, "%s", this->response_value.c_str());
 	}
 	else {
-		engine.render_text({0, 100}, 12, "No generator");
+		engine.render_text({0, 100}, 20, "Error: No generator");
 	}
 
 

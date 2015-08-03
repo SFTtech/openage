@@ -149,7 +149,7 @@ public:
 	 */
 	void add_units(GameMain &m) const;
 
-	void create();
+	bool create();
 
 private:
 	void create_regions();
