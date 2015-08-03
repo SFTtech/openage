@@ -59,6 +59,7 @@ CreateMode::CreateMode()
 		else {
 			if (selected >= list.size()) {
 				this->response_value = node->do_action(flist[selected - list.size()]).str_value();
+				log::log(MSG(dbg) << this->response_value);
 			}
 			else {
 				this->setting_value = true;

@@ -13,6 +13,7 @@ namespace input {
 InputManager::InputManager()
 	: // TODO get this from a file instead of hardcoding it here
 	keys {{ utf8("`"), action_t::TOGGLE_CONSOLE},
+		  { sdl_key(SDLK_BACKQUOTE), action_t::TOGGLE_CONSOLE},
 	      { sdl_key(SDLK_RETURN), action_t::START_GAME },
 	      { sdl_key(SDLK_ESCAPE), action_t::STOP_GAME },
 	      { sdl_key(SDLK_F1), action_t::TOGGLE_HUD },
@@ -94,16 +95,19 @@ void InputManager::remove_context(InputContext *context) {
 }
 
 
-bool InputManager::trigger(const Event &e) {
-
+bool InputManager::ignored(const Event &e) {
 	// filter duplicate utf8 events
 	// these are ignored unless the top mode enables
 	// utf8 mode, in which case regular char codes are ignored
-	if ((e.cc.has_class(event_class::CHAR) || e.cc.has_class(event_class::UTF8)) &&
-	     this->get_top_context().utf8_mode != e.cc.has_class(event_class::UTF8)) {
+	return ((e.cc.has_class(event_class::CHAR) || e.cc.has_class(event_class::UTF8)) &&
+	        this->get_top_context().utf8_mode != e.cc.has_class(event_class::UTF8));
+}
+
+
+bool InputManager::trigger(const Event &e) {
+	if (this->ignored(e)) {
 		return false;
 	}
-
 
 	// arg passed to recievers
 	action_arg_t arg{e, this->mouse_position, this->mouse_motion, {}};
@@ -129,10 +133,18 @@ bool InputManager::trigger(const Event &e) {
 
 
 void InputManager::set_state(const Event &ev, bool is_down) {
+	if (this->ignored(ev)) {
+		return;
+	}
+
+	// update key states
 	this->keymod = ev.mod;
+	bool was_down = this->states[ev.cc];
 	this->states[ev.cc] = is_down;
 
-	if (!is_down) {
+	// a key going from pressed to unpressed
+	// will automatically trigger event handling
+	if (was_down && !is_down) {
 		this->trigger(ev);
 	}
 }
@@ -216,7 +228,7 @@ bool InputManager::on_input(SDL_Event *e) {
 	} // case SDL_KEYDOWN
 
 	case SDL_TEXTINPUT: {
-		this->set_state(utf8(e->text.text), false);
+		this->trigger(utf8(e->text.text));
 		break;
 	} // case SDL_TEXTINPUT
 
@@ -248,13 +260,13 @@ bool InputManager::on_input(SDL_Event *e) {
 
 		// must occur after setting mouse position
 		Event ev(event_class::MOUSE_MOTION, 0, this->get_mod());
-		this->set_state(ev, false);
+		this->trigger(ev);
 		break;
 	} // case SDL_MOUSEMOTION
 
 	case SDL_MOUSEWHEEL: {
 		Event ev(event_class::MOUSE_WHEEL, e->wheel.y, this->get_mod());
-		this->set_state(ev, false);
+		this->trigger(ev);
 		break;
 	} // case SDL_MOUSEWHEEL
 

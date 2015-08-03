@@ -48,6 +48,11 @@ public:
 	void remove_context(InputContext *context);
 
 	/**
+	 * true if the given event type is being ignored
+	 */
+	bool ignored(const Event &e);
+
+	/**
 	 * manages the pressing of a key.
 	 * first checks whether an action is bound to it.
 	 * if it is, look for an handler to execute that handler.
