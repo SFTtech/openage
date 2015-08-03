@@ -315,6 +315,11 @@ void GameSpec::load_terrain(AssetManager &am) {
 	std::vector<gamedata::blending_mode> blending_meta;
 	util::read_csv_file(asset_dir.join("blending_modes.docx"), blending_meta);
 
+	// remove any disabled textures
+	terrain_meta.erase(
+		std::remove_if(terrain_meta.begin(), terrain_meta.end(),
+			[](const gamedata::terrain_type &t) { return !t.enabled; }),
+		terrain_meta.end());
 
 	// result attributes
 	terrain_data.terrain_id_count         = terrain_meta.size();

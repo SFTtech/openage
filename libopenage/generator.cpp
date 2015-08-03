@@ -136,7 +136,6 @@ Generator::Generator(Engine *engine)
 	options::OptionAction save_action("save_game", [this]() {
 		Engine &engine = Engine::get();
 		if (!engine.get_game()) {
-			log::log(MSG(warn) << "no open game to save");
 			return options::OptionValue("Error: no open game to save");
 		}
 		auto filename = this->get_variable("load_filename").value<std::string>();
@@ -149,8 +148,10 @@ Generator::Generator(Engine *engine)
 	options::OptionAction load_action("load_game", [this]() {
 		Engine &engine = Engine::get();
 		if (engine.get_game()) {
-			log::log(MSG(warn) << "close existing game before loading");
 			return options::OptionValue("Error: close existing game before loading");
+		}
+		else if (!this->spec->load_complete()) {
+			return options::OptionValue("Error: game data has not finished loading");
 		}
 		auto filename = this->get_variable("load_filename").value<std::string>();
 
@@ -181,6 +182,9 @@ Generator::Generator(Engine *engine)
 
 	// reload all assets
 	options::OptionAction reload_action("reload_assets", [this]() {
+		if (!this->spec->load_complete()) {
+			return options::OptionValue("Error: game data has not finished loading");
+		}
 		this->assetmanager.check_updates();
 		this->spec = std::make_shared<GameSpec>(this->assetmanager);
 		return options::OptionValue("Starting asset reload");
