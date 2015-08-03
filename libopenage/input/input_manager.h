@@ -30,6 +30,14 @@ public:
 	InputContext &get_global_context();
 
 	/**
+	 * Returns the context on top.
+	 * Note there is always a top context
+	 * since the global context will be
+	 * considered on top when none are registered
+	 */
+	InputContext &get_top_context();
+
+	/**
 	 * register a hotkey context.
 	 */
 	void register_context(InputContext *context);
@@ -116,9 +124,14 @@ private:
 	modset_t keymod;
 
 	/**
-	 * current mouse position
+	 * mode where mouse position is ignored
+	 * used for map scrolling
 	 */
 	bool relative_mode;
+
+	/**
+	 * mouse position and postion delta
+	 */
 	coord::window mouse_position;
 	coord::window_delta mouse_motion;
 

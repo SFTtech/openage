@@ -90,6 +90,7 @@ void Console::register_to_engine(Engine *engine) {
 		}
 		return false;
 	});
+	this->input_context.utf8_mode = true;
 }
 
 void Console::set_visible(bool make_visible) {
