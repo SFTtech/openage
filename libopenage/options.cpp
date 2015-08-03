@@ -223,9 +223,8 @@ OptionAction::OptionAction(const std::string &name, const opt_func_t f)
 }
 
 
-bool OptionAction::do_action() {
-	this->function();
-	return true;
+OptionValue OptionAction::do_action() {
+	return this->function();
 }
 
 
@@ -309,11 +308,12 @@ void OptionNode::set_parent(OptionNode *new_parent) {
 }
 
 
-void OptionNode::do_action(const std::string &aname) {
+OptionValue OptionNode::do_action(const std::string &aname) {
 	auto a = this->actions.find(aname);
 	if (a != this->actions.end()) {
-		a->second.do_action();
+		return a->second.do_action();
 	}
+	return OptionValue(false);
 }
 
 

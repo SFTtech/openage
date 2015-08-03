@@ -50,6 +50,7 @@ private:
 
 	bool setting_value;
 	std::string new_value;
+	std::string response_value;
 
 };
 

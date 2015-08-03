@@ -131,7 +131,7 @@ private:
 OptionValue parse(option_type t, std::string s);
 
 
-using opt_func_t = std::function<void()>;
+using opt_func_t = std::function<OptionValue()>;
 
 // TODO string description
 // This is a base class for event_class, event, action_t mapped to a function
@@ -143,7 +143,7 @@ public:
 	/**
 	 * pass mouse position
 	 */
-	bool do_action();
+	OptionValue do_action();
 
 	/**
 	 * name of this action
@@ -207,8 +207,9 @@ public:
 
 	/**
 	 * performs the named action
+	 * returning the actions response
 	 */
-	void do_action(const std::string &aname);
+	OptionValue do_action(const std::string &aname);
 
 	/**
 	 * name of this node
