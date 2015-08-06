@@ -17,7 +17,7 @@ Dedicated documentation files reside in the `doc/` directory, where this
 readme file lies in as well. You can find ideas, milestones, planning and
 workflow descriptions etc in here.
 
-a good entry point may be the file [doc/implementation/project_structure](implementation/project_structure.md).
+a good entry point may be the file [doc/code/project_structure](/doc/code/project_structure.md).
 it roughly explains where to find what code in the project.
 
 If **you** made any relevant discoveries or gained insights that help others

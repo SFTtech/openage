@@ -1,0 +1,9 @@
+add_py_modules(
+	__init__.py
+	nyan_spec_analyzer.py
+	nyan_spec_ast.py
+	nyan_spec_parser.py
+	parser_exception.py
+	token.py
+	tokenizer.py
+)

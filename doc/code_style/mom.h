@@ -1,3 +1,5 @@
+// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+
 #ifndef OPENAGE_DOC_CODESTYLE_MOM_H_
 #define OPENAGE_DOC_CODESTYLE_MOM_H_
 
@@ -28,13 +30,13 @@ constexpr int DEFAULT_MOM_MASS = 9001;
 
 
 // Doxygen will then generate nice shiny documentation files.
-// Exported (API) documentation of all source code is in the header file:
+// Exported (API) documentation of all source code is in the header files:
 
 /**
  * You may document a namespace if it's something special.
  * This documentation will also show up in generated docs then.
  */
-namespace elts {
+namespace parents {
 namespace mom {
 // <- The namespace does not increase the indentation level!
 
@@ -45,7 +47,7 @@ namespace mom {
  *
  * Classes are written in CamelCase!
  */
-class YourMom {
+class YourMom : public MassiveEntity {
 public:
 	/**
 	 * Creates your mom.
@@ -84,7 +86,7 @@ protected:
 
 	/**
 	 * Your mom's stupidity.
-	 * Measured in unit of tolerating DRM.
+	 * Measured in unit of tolerance towards DRM.
 	 */
 	int stupidity;
 
@@ -92,7 +94,7 @@ protected:
 };
 
 
-}} // namespace elts::mom
+}} // namespace parents::mom
 
 
 #endif

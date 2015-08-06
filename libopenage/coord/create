@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# this script creates types for all coordinate systems defined in
+# doc/code/coordinate-systems
+
+# this script deliberately does not have its x flag set to prevent
+# accidential execution. after all, it would reset all files.
+
+./create.py phys2   phys_t   ne se
+./create.py phys3   phys_t   ne se up
+./create.py tile    tile_t   ne se
+./create.py tile3   tile_t   ne se up
+./create.py chunk   chunk_t  ne se
+
+./create.py window  pixel_t  x y
+./create.py camgame pixel_t  x y
+./create.py camhud  pixel_t  x y
+
+./create.py term    term_t   x y
+
+./create.py vec2    int64_t  x y
+./create.py vec3    int64_t  x y z
+
+./create.py vec2f   float    x y
+./create.py vec3f   float    x y z

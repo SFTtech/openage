@@ -1,0 +1,32 @@
+add_sources(libopenage
+	color.cpp
+	compiler.cpp
+	constinit_vector.cpp
+	dir.cpp
+	enum.cpp
+	enum_test.cpp
+	externalprofiler.cpp
+	externalsstream.cpp
+	file.cpp
+	fds.cpp
+	fps.cpp
+	fslikeobject.cpp
+	init.cpp
+	language.cpp
+	misc.cpp
+	opengl.cpp
+	stringformatter.cpp
+	strings.cpp
+	thread_id.cpp
+	timer.cpp
+	unicode.cpp
+)
+
+pxdgen(
+	compiler.h
+	enum.h
+	enum_test.h
+	fslikeobject.h
+)
+
+add_subdirectory(compress)

@@ -16,12 +16,12 @@ Ahem, nope, this is the real roadmap:
       _no_ menu, it directly launches into the game
 - [x] 2: render a single building (university),
       reading it from the stock age2 media files
-- [ ] 3: render diamond-shaped map (monoterrain),
+- [x] 3: render diamond-shaped map (monoterrain),
       with any number of buildings (of any kind, in grid),
       with mouse/keyboard scrolling
-- [ ] 4: render units on the map (with animations)
-- [ ] 5: mouse selection and basic commands ("go here, delete")
-- [ ] 6: path finding and collision
+- [x] 4: render units on the map (with animations)
+- [x] 5: mouse selection and basic commands ("go here, delete")
+- [x] 6: path finding and collision
 - [ ] 7: hud (lower control panel), could for example display unit name.
       hud for buildings supports unit creation
 - [ ] 8: civ research state tracker, support for research in building hud
@@ -56,4 +56,4 @@ things to keep in mind:
 
 * performance (responsiveness, fps, needed resources)
 * exactly cloning age2 (also include the networking bugs, for original feeling!)
-* good and funny code (coding standards..)
+* high-quality code

@@ -1,0 +1,11 @@
+add_sources(libopenage
+	ability.cpp
+	action.cpp
+	command.cpp
+	producer.cpp
+	selection.cpp
+	unit.cpp
+	unit_container.cpp
+	unit_texture.cpp
+	unit_type.cpp
+)

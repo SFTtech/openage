@@ -1,13 +1,28 @@
-message("Cropping gaben.png to create placeholder desktop icon...")
+set(DIST_DIR "${CMAKE_SOURCE_DIR}/dist")
 
-file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/dist")
-execute_process(COMMAND python3 -c "
-import PIL.Image;
-cropped=PIL.Image.open('${GLOBAL_ASSET_DIR}/gaben.png').crop((92,137,604,649));
-cropped.save('${CMAKE_BINARY_DIR}/dist/openage.png')")
+set(BIN_DIST_DIR "${CMAKE_BINARY_DIR}/dist")
+file(MAKE_DIRECTORY "${BIN_DIST_DIR}")
 
-install(FILES "${CMAKE_SOURCE_DIR}/dist/openage.desktop"
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
+set(GABEN_PNG "${GLOBAL_ASSET_DIR}/gaben.png")
+set(OPENAGE_ICON "${BIN_DIST_DIR}/openage.png")
 
-install(FILES "${CMAKE_BINARY_DIR}/dist/openage.png"
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/pixmaps")
+
+add_custom_command(
+	OUTPUT "${OPENAGE_ICON}"
+	COMMAND python3 -c "import PIL.Image; PIL.Image.open('${GABEN_PNG}').crop((92,137,604,649)).save('${OPENAGE_ICON}')"
+	DEPENDS "${GABEN_PNG}"
+	VERBATIM
+	COMMENT "cropping gaben.png to create placeholder desktop icon")
+
+add_custom_target(distfiles ALL DEPENDS "${OPENAGE_ICON}")
+
+
+install(
+	FILES "${DIST_DIR}/openage.desktop"
+	DESTINATION "share/applications"
+)
+
+install(
+	FILES "${OPENAGE_ICON}"
+	DESTINATION "share/pixmaps"
+)
