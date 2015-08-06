@@ -1,0 +1,19 @@
+add_sources(libopenage
+	exctranslate.cpp
+	exctranslate_tests.cpp
+	functional.cpp
+	hacks.cpp
+	pyexception.cpp
+	pyobject.cpp
+	setup.cpp
+)
+
+pxdgen(
+	exctranslate.h
+	exctranslate_tests.h
+	functional.h
+	hacks.h
+	pyexception.h
+	pyobject.h
+	setup.h
+)

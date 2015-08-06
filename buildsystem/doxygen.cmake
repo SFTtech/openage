@@ -42,8 +42,8 @@ function(doxygen_configure)
 	else()
 		# add no-op doc target
 		add_custom_target(doc
-			COMMAND echo "When you configured openage, Doxygen could not be found."
-			COMMAND echo "Install Doxygen and `./configure` openage again, then try to generate docs."
+			COMMAND echo "When you configured the project, Doxygen could not be found."
+			COMMAND echo "Install Doxygen and `./configure` again, then try to generate docs."
 			COMMAND false
 			VERBATIM
 		)

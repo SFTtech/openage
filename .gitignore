@@ -8,7 +8,6 @@
 *.o
 *.a
 *.so
-/openage
 
 # python bytecode
 *.pyc
@@ -22,12 +21,15 @@ __pycache__
 /bin
 /.bin
 
+# root dir run script
+/run
+/run.cpp
+/run.html
+
 # CMake in-source builds
 /DartConfiguration.tcl
 /codegen_depend_cache
 /codegen_target_cache
-/tests_cpp
-/tests_python
 /Doxyfile
 /Testing
 /py/setup.py
@@ -42,4 +44,3 @@ Makefile
 callgrind.out.*
 perf.data*
 .gdb_history
-
