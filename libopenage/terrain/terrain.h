@@ -298,17 +298,17 @@ public:
   /**
    * get the red color component for a given terrain id. 
    */
-  uint8_t map_hi(terrain_t terrain_id);
+  uint8_t map_color_hi(terrain_t terrain_id);
   
   /**
    * get the red color component for a given terrain id. 
    */
-  uint8_t map_med(terrain_t terrain_id);
+  uint8_t map_color_med(terrain_t terrain_id);
 
   /**
    * get the red color component for a given terrain id. 
    */
-  uint8_t map_low(terrain_t terrain_id);
+  uint8_t map_color_low(terrain_t terrain_id);
 
 
 	/**
@@ -403,9 +403,9 @@ private:
 
 	std::unique_ptr<int[]> terrain_id_priority_map;
 	std::unique_ptr<int[]> terrain_id_blendmode_map;
-  std::unique_ptr<uint8_t[]> terrain_id_map_hi_map;
-  std::unique_ptr<uint8_t[]> terrain_id_map_med_map;
-  std::unique_ptr<uint8_t[]> terrain_id_map_low_map;
+  std::unique_ptr<uint8_t[]> terrain_id_map_color_hi_map;
+  std::unique_ptr<uint8_t[]> terrain_id_map_color_med_map;
+  std::unique_ptr<uint8_t[]> terrain_id_map_color_low_map;
 
 	std::unique_ptr<influence[]> influences_buf;
 };

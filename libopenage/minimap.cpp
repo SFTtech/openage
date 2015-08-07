@@ -10,6 +10,7 @@
 #include "terrain/terrain.h"
 
 #include "player.h"
+#include "engine.h"
 
 
 namespace openage {
@@ -19,9 +20,8 @@ GLint size, orig, color;
 } // namespace minimap_shader
 
 
-Minimap::Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size, coord::camhud hudpos, std::vector<gamedata::palette_color> palette, std::vector<gamedata::palette_color> player_palette)
+Minimap::Minimap(UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size, coord::camhud hudpos, std::vector<gamedata::palette_color> palette, std::vector<gamedata::palette_color> player_palette)
 	:
-	engine{engine},
 	container{container},
 	terrain{terrain},
 	size{size},
@@ -30,7 +30,7 @@ Minimap::Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terra
 	player_palette{player_palette} {
 
 	// Initial update to setup the minimap resolution, etc
-	this->update();
+	this->set_mapping(coord::chunk{-1, -1}, 3);
 
 	// Setup minimap dimensions for rendering
 	this->left = this->hudpos.x;
@@ -63,7 +63,7 @@ Minimap::Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terra
 Minimap::~Minimap() {}
 
 
-void Minimap::update() {
+void Minimap::auto_mapping() {
 	std::vector<coord::chunk> used = this->terrain->used_chunks();
 	coord::chunk ne_least, ne_most, se_least, se_most;
 	ne_least = ne_most = se_least = se_most = {0, 0};
@@ -79,31 +79,29 @@ void Minimap::update() {
 	int se_res = se_most.se - se_least.se;
 
 	if (ne_res < se_res) {
-		ne_most.ne = ne_least.ne + (se_res);
+    this->set_mapping({ne_least.ne, se_least.se}, se_res + 1);
 	} else {
-		se_most.se = se_least.se + (ne_res); 
+    this->set_mapping({ne_least.ne, se_least.se}, ne_res + 1);
 	}
+}
 
-	this->north = {ne_most.ne, se_least.se};
-	this->east  = {ne_most.ne, se_most.se};
-	this->south = {ne_least.ne, se_most.se};
-	this->west  = {ne_least.ne, se_least.se};
+void Minimap::set_mapping(coord::chunk west, int resolution) {
+  if (resolution < 1) {
+    resolution = 1; 
+  }
+	this->resolution = resolution * 16;
+	this->west  = west;
+	this->east  = west + coord::chunk_delta{resolution - 1, resolution - 1};
+	this->north = west + coord::chunk_delta{resolution - 1, 0};
+	this->south = west + coord::chunk_delta{0, resolution - 1};
 
-	// Compute resolution
-	if ((this->east.se - this->north.se) > (this->east.ne - this->south.ne)) {
-		this->resolution = (this->east.se - this->north.se + 1) * 16;
-	} else {
-		this->resolution = (this->east.ne - this->south.ne + 1) * 16;
-	}
-
-	// Corners to camhud
 	coord::camhud_delta north_rel = this->north.to_tile({16, 0}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
-	coord::camhud_delta east_rel = this->east.to_tile({16, 16}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
+	coord::camhud_delta east_rel  = this->east.to_tile({16, 16}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
 	coord::camhud_delta south_rel = this->south.to_tile({0, 16}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
-	coord::camhud_delta west_rel = this->west.to_tile({0, 0}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
+	coord::camhud_delta west_rel  = this->west.to_tile({0,   0}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
 
-	this->ratio_horizontal =  (float)this->size.x / (float)(east_rel.x - west_rel.x);
-	this->ratio_vertical = (float)this->size.y / (float)(north_rel.y - south_rel.y);
+	this->ratio_horizontal = (float)this->size.x / (float)(east_rel.x - west_rel.x);
+	this->ratio_vertical   = (float)this->size.y / (float)(north_rel.y - south_rel.y);
 }
 
 
@@ -120,7 +118,7 @@ void Minimap::generate_background() {
 				pixels[i * this->resolution * 3 + j * 3 + 1] = 0;
 				pixels[i * this->resolution * 3 + j * 3 + 2] = 0;  
 			} else {
-				uint8_t pal_idx = this->terrain->map_hi(tile_data->terrain_id);
+				uint8_t pal_idx = this->terrain->map_color_hi(tile_data->terrain_id);
 				gamedata::palette_color hi_color = palette[pal_idx];
 				pixels[i * this->resolution * 3 + j * 3 + 0] = hi_color.r;
 				pixels[i * this->resolution * 3 + j * 3 + 1] = hi_color.g;
@@ -213,8 +211,9 @@ void Minimap::draw_unit(Unit *unit) {
 
 
 bool Minimap::on_drawhud() {
-	this->update();
 	this->generate_background();
+
+  Engine &engine = Engine::get();
 
 	GLint terrain_vdata[] {
 		// vertices
@@ -252,9 +251,9 @@ bool Minimap::on_drawhud() {
 	glBindTexture(GL_TEXTURE_2D, 0);
 	texture_shader::program->stopusing();
 
-	coord::window view_size{(coord::pixel_t)(this->engine->engine_coord_data->window_size.x / 2 * this->ratio_horizontal),
-													(coord::pixel_t)(this->engine->engine_coord_data->window_size.y / 2 * this->ratio_vertical)};
-	coord::camhud view = this->from_phys(this->engine->engine_coord_data->camgame_phys);
+	coord::window view_size{(coord::pixel_t)(engine.get_coord_data()->window_size.x / 2 * this->ratio_horizontal),
+													(coord::pixel_t)(engine.get_coord_data()->window_size.y / 2 * this->ratio_vertical)};
+	coord::camhud view = this->from_phys(engine.get_coord_data()->camgame_phys);
 
 	// Draw units
 	std::vector<Unit *> units = this->container->all_units();
