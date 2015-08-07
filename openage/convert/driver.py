@@ -36,11 +36,12 @@ def get_string_resources(srcdir):
     else:
         count = 0
         from .hdlanguagefile import read_hd_language_file
-        for lang in srcdir["bin"].list():
+        for lang in srcdir["resources"].list():
             try:
                 if lang == b'_common':
                     continue
-                langfilename = ["resources", lang.decode(), "strings", "key-value", "key-value-strings-utf8.txt"]
+                langfilename = ["resources", lang.decode(), "strings", "key-value",
+                                "key-value-strings-utf8.txt"]
 
                 with srcdir[langfilename].open('rb') as langfile:
                     stringres.fill_from(read_hd_language_file(langfile, lang))
