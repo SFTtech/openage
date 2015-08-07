@@ -47,7 +47,7 @@ def mount_drs_archives(srcdir):
 
         result.joinpath(target).mount(DRS(drspath.open('rb')).root)
 
-    if result['AoK HD'].exists():
+    if result['AoK HD.exe'].exists():
         # Mounts for HD edition version 4.0
         result['graphics'].mount(srcdir['resources/_common/drs/graphics'])
         result['interface'].mount(srcdir['resources/_common/drs/interface'])
@@ -59,11 +59,12 @@ def mount_drs_archives(srcdir):
         # Mounts for AoC
         mount_drs("data/graphics.drs", "graphics")
         mount_drs("data/interfac.drs", "interface")
-
         mount_drs("data/sounds.drs", "sounds")
         mount_drs("data/sounds_x1.drs", "sounds")
-
         mount_drs("data/terrain.drs", "terrain")
+        mount_drs("data/gamedata.drs", "gamedata")
+        mount_drs("data/gamedata_x1.drs", "gamedata")
+        mount_drs("data/gamedata_x1_p1.drs", "gamedata")
 
     return result
 
@@ -87,7 +88,10 @@ def convert_assets(assets, args, srcdir=None):
     if srcdir is None:
         srcdir = acquire_conversion_source_dir()
 
-    testfile = 'data/empires2_x1_p1.dat'
+    if srcdir['AoK HD.exe'].exists():
+        testfile = 'resources/_common/dat/empires2_x1_p1.dat'
+    else:
+        testfile = 'data/empires2_x1_p1.dat'
     if not srcdir.joinpath(testfile).is_file():
         print("file not found: " + testfile)
         return False
@@ -114,7 +118,6 @@ def convert_assets(assets, args, srcdir=None):
     from .driver import convert
     converted_count = 0
     total_count = None
-
     for current_item in convert(args):
         if isinstance(current_item, int):
             # convert is informing us about the estimated number of remaining
