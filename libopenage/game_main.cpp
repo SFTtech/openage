@@ -111,8 +111,8 @@ GameMain::GameMain(Engine *engine)
 		this->players.emplace_back(i);
 	}
 
-	auto player_color_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("player_palette_50500.docx"));
-	std::vector<gamedata::palette_color> palette_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("palette_50500.docx")); 
+	auto player_color_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("player_palette.docx"));
+	auto general_color_lines = util::read_csv_file<gamedata::palette_color>(asset_dir.join("general_palette.docx")); 
 
 	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
 	for (size_t i = 0; i < player_color_lines.size(); i++) {
@@ -220,7 +220,7 @@ GameMain::GameMain(Engine *engine)
 	delete minimap_frag;
 
 	// minimap here, because it is dependent on shaders
-	this->minimap = new Minimap(this->engine, &this->placed_units, this->terrain, coord::camhud_delta{256, 128}, coord::camhud{16, 16}, palette_lines, player_color_lines);
+	this->minimap = new Minimap(&this->placed_units, this->terrain, coord::camhud_delta{256, 128}, coord::camhud{16, 16}, general_color_lines, player_color_lines);
 	this->engine->register_drawhud_action(this->minimap);
 
 	// initialize global keybinds
@@ -422,6 +422,7 @@ bool GameMain::on_input(SDL_Event *e) {
 
 					TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
 					chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
+          this->minimap->auto_mapping();
 				} else if (this->building_placement) {
 					// confirm building placement with left click
 					// first create foundation using the producer

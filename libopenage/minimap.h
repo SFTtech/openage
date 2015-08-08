@@ -35,7 +35,7 @@ public:
 	/**
 	 * Creates the minimap.
 	 */
-	Minimap(Engine *engine, UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size,
+	Minimap(UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size,
           coord::camhud hudpos, std::vector<gamedata::palette_color> palette, std::vector<gamedata::palette_color> player_palette);
 	~Minimap();
 
@@ -47,7 +47,8 @@ public:
 	 * Updates various variables crucial to the function of the minimap, including
 	 * the minimap resolution and the minimap corner position.
 	 */
-	void update();
+  void auto_mapping();
+	void set_mapping(coord::chunk, int resolution);
 
 	/**
 	 * Converts a phys3 coordinate to a camhud coordinate, that corresponds to the
@@ -76,7 +77,6 @@ public:
 	bool is_within(coord::camhud coord);
 
 private:
-	Engine *engine;  
 	UnitContainer *container;
 	std::shared_ptr<Terrain> terrain;
 	coord::camhud_delta size;
