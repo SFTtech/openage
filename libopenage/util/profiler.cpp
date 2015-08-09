@@ -176,4 +176,3 @@ void Profiler::append_percentage_to_history(std::string com, float percentage) {
 
 } //namespace util
 } //namespace openage
-
