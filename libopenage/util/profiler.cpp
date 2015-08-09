@@ -22,6 +22,11 @@ void Profiler::register_component(std::string com, color component_color) {
 	component_time_data cdt = component_time_data();
 	cdt.display_name = com;
 	cdt.drawing_color = component_color;
+
+	for (auto it = cdt.history.begin(); it != cdt.history.end(); ++it) {
+		*it = 0;
+	}
+
 	this->components[com] = cdt;
 }
 
@@ -86,7 +91,13 @@ void Profiler::draw_component_performance(std::string com) {
 	float x_offset = 0.0;
 	float offset_factor = (float)PROFILER_CANVAS_WIDTH / (float)MAX_DURATION_HISTORY;
 	float percentage_factor = (float)PROFILER_CANVAS_HEIGHT / 100.0;
-	for (float percentage : this->components[com].history) {
+
+	int read_start = keep_in_duration_bound(this->insert_pos + 1);
+
+	for (auto i = read_start; i != this->insert_pos; ++i) {
+		i = keep_in_duration_bound(i);
+
+		auto percentage = this->components[com].history.at(i);
 		glVertex3f(zero.x + x_offset, zero.y + percentage * percentage_factor, 0.0);
 		x_offset += offset_factor;
 	}
@@ -153,7 +164,7 @@ void Profiler::draw_legend() {
 		coord::window position = coord::window();
 		position.x = box_x + PROFILER_COM_BOX_WIDTH + 2;
 		position.y = box_y + 2;
-		Engine::get().render_text(position, 12, com.second.display_name.c_str());
+		Engine::get().render_text(position, 12, "%s", com.second.display_name.c_str());
 
 		offset += PROFILER_COM_BOX_HEIGHT + 2;
 	}
@@ -172,6 +183,10 @@ void Profiler::append_percentage_to_history(std::string com, float percentage) {
 	}
 	this->components[com].history[this->insert_pos] = percentage;
 	this->insert_pos++;
+}
+
+int Profiler::keep_in_duration_bound(int value) {
+	return (value >= MAX_DURATION_HISTORY) ? 0 : value;
 }
 
 } //namespace util

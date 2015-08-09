@@ -119,6 +119,7 @@ private:
 
 	void draw_canvas();
 	void draw_legend();
+	int keep_in_duration_bound(int value);
 	void draw_component_performance(std::string com);
 	float duration_to_percentage(std::chrono::high_resolution_clock::duration duration);
 	void append_percentage_to_history(std::string com, float percentage);
