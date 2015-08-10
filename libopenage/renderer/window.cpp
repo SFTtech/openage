@@ -16,8 +16,10 @@ namespace renderer {
 Window::Window(const char *title)
 	:
 	size{800, 600} {
+	// TODO: ^ detect screen resolution and determine window size from it.
 
-	this->context = Context::generate(context_type::autodetect);
+	// TODO: make the type user-selectable
+	this->context = std::move(Context::generate(context_type::autodetect));
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw Error{MSG(err) << "SDL video initialization: " << SDL_GetError()};
@@ -82,6 +84,10 @@ void Window::set_size(const coord::window &new_size, bool update) {
 			SDL_SetWindowSize(this->window, this->size.x, this->size.y);
 		}
 	}
+}
+
+std::shared_ptr<Context> Window::get_context() {
+	return this->context;
 }
 
 }} // namespace openage::renderer

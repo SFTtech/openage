@@ -21,19 +21,39 @@ public:
 	Window &operator =(const Window &other) = delete;
 	Window &operator =(Window &&other) = delete;
 
-	coord::window get_size();
-	void set_size(const coord::window &, bool update=false);
-
+	/**
+	 * Create a shiny window with the given title.
+	 */
 	Window(const char *title);
 	~Window();
 
+	/**
+	 * @returns the window dimensions
+	 */
+	coord::window get_size();
+
+	/**
+	 * Resize the drawing window.
+	 */
+	void set_size(const coord::window &new_size, bool update=false);
+
+	/**
+	 * Swaps the back and front framebuffers.
+	 * Used to actually display the newly rendered frame.
+	 */
 	void swap();
+
+	/**
+	 * Return the context created for this window.
+	 */
+	std::shared_ptr<Context> get_context();
+
 
 private:
 	coord::window size;
 	SDL_Window *window;
 
-	std::unique_ptr<Context> context;
+	std::shared_ptr<Context> context;
 };
 
 }} // namespace openage::renderer

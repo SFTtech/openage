@@ -22,9 +22,31 @@ enum class layer {
 /**
  * struct to submit to the renderer
  */
-struct Task {
-	layer layer;
+class Task {
+public:
+	layer position;
 	std::vector<Material> materials;
+
+	bool operator <(const Task &other) const;
+};
+
+
+/**
+ * corresponding state storage for a render task.
+ */
+class TaskState {
+public:
+	TaskState();
+	~TaskState();
+
+	/**
+	 * true if the assigned task has been rendered on screen.
+	 */
+	bool rendered;
+
+private:
+	Task *task;
+	class Renderer *renderer;
 };
 
 
