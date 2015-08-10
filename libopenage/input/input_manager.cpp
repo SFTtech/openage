@@ -13,7 +13,7 @@ namespace input {
 InputManager::InputManager()
 	: // TODO get this from a file instead of hardcoding it here
 	keys {{ utf8("`"), action_t::TOGGLE_CONSOLE},
-		  { sdl_key(SDLK_BACKQUOTE), action_t::TOGGLE_CONSOLE},
+	      { sdl_key(SDLK_BACKQUOTE), action_t::TOGGLE_CONSOLE},
 	      { sdl_key(SDLK_RETURN), action_t::START_GAME },
 	      { sdl_key(SDLK_ESCAPE), action_t::STOP_GAME },
 	      { sdl_key(SDLK_F1), action_t::TOGGLE_HUD },
