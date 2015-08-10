@@ -123,7 +123,6 @@ void string_tokenize_base(char *str, char delim, std::function<void(char *)> cal
 bool string_matches_pattern(const char *str, const char *pattern);
 
 
-} // namespace util
-} // namespace openage
+}} // openage::util
 
 #endif

@@ -69,5 +69,4 @@ void gl_check_error() {
 	}
 }
 
-} //namespace util
-} //namespace openage
+}} // openage::util

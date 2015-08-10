@@ -52,4 +52,4 @@ std::string dirname(const std::string &fullpath) {
 }
 
 
-}} //namespace openage::util
+}} // openage::util

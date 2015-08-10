@@ -69,7 +69,6 @@ public:
 	virtual bool on_resize(coord::window new_size);
 };
 
-} //namespace console
-} //namespace openage
+}} // openage::console
 
 #endif

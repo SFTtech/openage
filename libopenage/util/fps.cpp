@@ -47,5 +47,4 @@ void FrameCounter::frame() {
 	count += 1;
 }
 
-} //namespace util
-} //namespace openage
+}} // openage::util

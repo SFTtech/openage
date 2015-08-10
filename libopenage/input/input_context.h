@@ -77,7 +77,6 @@ private:
 
 };
 
-} //namespace input
-} //namespace openage
+}} // openage::input
 
 #endif

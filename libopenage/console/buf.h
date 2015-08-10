@@ -498,7 +498,6 @@ public:
 	buf_line *linedataptr(coord::term_t lineno);
 };
 
-} //namespace console
-} //namespace openage
+}} // openage::console
 
 #endif

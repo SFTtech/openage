@@ -276,5 +276,4 @@ bool InputManager::on_input(SDL_Event *e) {
 }
 
 
-} //namespace input
-} //namespace openage
+}} // openage::input

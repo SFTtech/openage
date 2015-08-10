@@ -144,5 +144,4 @@ void load(openage::GameMain *game, std::string fname) {
 	}
 }
 
-} //namespace gameio
-} //namespace openage
+}} // openage::gameio

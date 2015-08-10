@@ -62,7 +62,6 @@ void VariableBase::set(const V& value) {
 }
 
 
-}	// namespace util
-}	// namespace openage
+}} // openage::util
 
 #endif

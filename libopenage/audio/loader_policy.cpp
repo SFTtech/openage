@@ -35,5 +35,4 @@ loader_policy_t from_loader_policy(const gamedata::audio_loader_policy_t loader_
 }
 
 
-} //namespace audio
-} //namespace openage
+}} // openage::audio

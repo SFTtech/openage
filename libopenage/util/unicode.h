@@ -92,7 +92,6 @@ size_t utf8_decode(const unsigned char *s, size_t len, codepoint_t *outbuf);
  */
 size_t utf8_encode(int cp, char *outbuf);
 
-} //namespace util
-} //namespace openage
+}} // openage::util
 
 #endif

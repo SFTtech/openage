@@ -118,4 +118,4 @@ void Font::render(coord::camgame pos, const char *format, ...) {
 	this->render_static(pos.x, pos.y, buf.c_str());
 }
 
-} //namespace openage
+} // openage

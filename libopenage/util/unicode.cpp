@@ -149,5 +149,4 @@ size_t utf8_encode(int cp, char *outbuf) {
 	}
 }
 
-} //namespace util
-} //namespace openage
+}} // openage::util

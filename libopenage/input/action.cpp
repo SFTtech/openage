@@ -13,5 +13,4 @@ int action_hash::operator()(const action_t& a) const {
 }
 
 
-} //namespace input
-} //namespace openage
+}} // openage::input

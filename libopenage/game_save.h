@@ -25,7 +25,6 @@ void save(openage::GameMain *, std::string fname);
  */
 void load(openage::GameMain *, std::string fname);
 
-} //namespace gameio
-} //namespace openage
+}} // openage::gameio
 
 #endif

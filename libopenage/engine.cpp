@@ -517,4 +517,4 @@ void Engine::move_phys_camera(float x, float y, float amount) {
 	this->engine_coord_data->camgame_phys += cam_delta.to_phys3();
 }
 
-} //namespace openage
+} // openage

@@ -153,7 +153,6 @@ Event sdl_mouse(int button);
 Event sdl_wheel(int direction);
 
 
-} //namespace input
-} //namespace openage
+}} // openage::input
 
 #endif

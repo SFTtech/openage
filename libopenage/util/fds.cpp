@@ -124,5 +124,4 @@ void FD::restoreinputmode() {
 	}
 }
 
-} //namespace util
-} //namespace openage
+}} // openage::util

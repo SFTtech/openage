@@ -44,7 +44,6 @@ private:
 };
 
 
-} //namespace shader
-} //namespace openage
+}} // openage::shader
 
 #endif

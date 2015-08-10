@@ -163,5 +163,4 @@ Event sdl_wheel(int direction) {
 }
 
 
-} //namespace input
-} //namespace openage
+}} // openage::input
