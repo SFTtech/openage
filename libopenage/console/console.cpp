@@ -4,7 +4,6 @@
 
 #include "../log/log.h"
 #include "../error/error.h"
-#include "../callbacks.h"
 #include "../util/strings.h"
 
 #include "draw.h"

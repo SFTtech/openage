@@ -13,7 +13,6 @@
 #include "error/error.h"
 #include "log/log.h"
 
-#include "callbacks.h"
 #include "config.h"
 #include "game_main.h"
 #include "generator.h"

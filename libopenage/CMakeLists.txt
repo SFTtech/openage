@@ -9,7 +9,6 @@ declare_binary(libopenage)
 
 add_sources(libopenage
 	assetmanager.cpp
-	callbacks.cpp
 	engine.cpp
 	font.cpp
 	game_control.cpp
