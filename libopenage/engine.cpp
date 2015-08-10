@@ -34,7 +34,7 @@ namespace openage {
 
 static coord_data base_coord_data{};
 
-coord_data* Engine::get_coord_data( void ) {
+coord_data* Engine::get_coord_data() {
 	return &base_coord_data;
 }
 

@@ -318,22 +318,22 @@ OptionValue OptionNode::do_action(const std::string &aname) {
 
 
 void OptionNode::add(const std::string &vname, const OptionValue &value) {
-	varmap.emplace(std::make_pair(vname, value));
+	this->varmap.emplace(std::make_pair(vname, value));
 }
 
 
 void OptionNode::add_action(const OptionAction &action) {
-	actions.emplace(std::make_pair(action.name, action));
+	this->actions.emplace(std::make_pair(action.name, action));
 }
 
 
 void OptionNode::add_panel(OptionNode *child) {
-	children.emplace(std::make_pair(child->name, child));
+	this->children.emplace(std::make_pair(child->name, child));
 }
 
 
 void OptionNode::remove_panel(OptionNode *child) {
-	children.erase(child->name);
+	this->children.erase(child->name);
 }
 
 

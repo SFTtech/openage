@@ -16,6 +16,10 @@
 #include "../gamedata/color.gen.h"
 
 namespace openage {
+
+/**
+ * In-game console subsystem. Featuring a full terminal emulator.
+ */
 namespace console {
 
 class Console : InputHandler, TickHandler, HudHandler, ResizeHandler {
