@@ -5,17 +5,30 @@
 
 #include <epoxy/gl.h>
 
+#include "../shader.h"
+
 namespace openage {
 namespace renderer {
 namespace opengl {
 
 class Shader {
 public:
+	/**
+	 * Create an OpenGL shader from a source code string.
+	 */
 	Shader(GLenum type, const char *source);
 
+	/**
+	 * Create an OpenGL shader from a ShaderSource object.
+	 */
+	Shader(const ShaderSource &source);
+
+	// don't allow copying as the shader has a context-bound opengl handle id
 	Shader(const Shader &copy) = delete;
-	Shader(Shader &&other) = delete;
 	Shader &operator=(const Shader &copy) = delete;
+
+	// moving could be enabled i guess, but beware the destructor call.
+	Shader(Shader &&other) = delete;
 	Shader &operator=(Shader &&other) = delete;
 
 	virtual ~Shader();
@@ -23,9 +36,22 @@ public:
 	/**
 	 * Return the shader type name.
 	 */
-	virtual const char *typestring() = 0;
+	const char *typestring();
 
+	/**
+	 * OpenGL handle id.
+	 */
 	GLuint id;
+
+protected:
+	/**
+	 * actually create the shader.
+	 */
+	void create_from_source(const char *source);
+
+	/**
+	 * OpenGL shader type enum.
+	 */
 	GLenum type;
 };
 
@@ -34,10 +60,6 @@ class VertexShader : public Shader {
 public:
 	VertexShader(const char *source);
 	virtual ~VertexShader() {};
-
-	virtual const char *typestring() {
-		return "vertex shader";
-	}
 };
 
 
@@ -45,10 +67,6 @@ class FragmentShader : public Shader {
 public:
 	FragmentShader(const char *source);
 	virtual ~FragmentShader() {};
-
-	virtual const char *typestring() {
-		return "fragment shader";
-	}
 };
 
 
@@ -56,10 +74,6 @@ class GeometryShader : public Shader {
 public:
 	GeometryShader(const char *source);
 	virtual ~GeometryShader() {};
-
-	virtual const char *typestring() {
-		return "geometry shader";
-	}
 };
 
 

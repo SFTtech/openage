@@ -1,6 +1,9 @@
 add_sources(libopenage
 	color.cpp
 	context.cpp
+	renderer.cpp
+	shader.cpp
+	task.cpp
 	tests.cpp
 	text.cpp
 	texture.cpp

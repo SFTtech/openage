@@ -3,12 +3,18 @@
 #ifndef OPENAGE_RENDERER_MATERIAL_H_
 #define OPENAGE_RENDERER_MATERIAL_H_
 
+#include <memory>
+
+#include "texture.h"
+#include "shader.h"
+
 namespace openage {
 namespace renderer {
 
-
-class material {
-	Shader code;
+class Material {
+protected:
+	std::shared_ptr<Texture> txt;
+	std::shared_ptr<Program> code;
 };
 
 }} // namespace openage::renderer

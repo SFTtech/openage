@@ -10,12 +10,16 @@
 #include "opengl/shader.h"
 #include "opengl/program.h"
 #include "window.h"
+#include "renderer.h"
+#include "shader.h"
 
 namespace openage {
 namespace renderer {
 namespace tests {
 
-
+/**
+ * render demo function collection.
+ */
 struct render_demo {
 	std::function<void(Window *)> setup;
 	std::function<void()> frame;
@@ -74,22 +78,34 @@ void renderer_demo() {
 	int demo_id = 0;
 
 	Window window{"openage renderer testing"};
+	Renderer renderer{window.get_context()};
 
-	const char *vshader = "#version 330\n"
-	                      "layout(location = 0) in vec4 position;"
-	                      "smooth out vec4 fragpos;"
-	                      "void main() {"
-	                      "fragpos = position;"
-	                      "gl_Position = position;"
-	                      "}";
+	ShaderSourceCode vshader_src(
+		shader_type::vertex,
+		"#version 330\n"
+		"layout(location = 0) in vec4 position;"
+		"smooth out vec4 fragpos;"
+		"void main() {"
+		"fragpos = position;"
+		"gl_Position = position;"
+		"}"
+	);
 
-	const char *fshader = "#version 330\n"
-	                      "out vec4 color;\n"
-	                      "smooth in vec4 fragpos;"
-	                      "void main() {"
-	                      "color = vec4(1.0f, fragpos.y, fragpos.x, 1.0f);"
-	                      "}";
+	ShaderSourceCode fshader_src(
+		shader_type::fragment,
+		"#version 330\n"
+		"out vec4 color;\n"
+		"smooth in vec4 fragpos;"
+		"void main() {"
+		"color = vec4(1.0f, fragpos.y, fragpos.x, 1.0f);"
+		"}"
+	);
 
+	ProgramSource simplequad_src({&vshader_src, &fshader_src});
+
+	std::shared_ptr<Program> simplequad = renderer.add_program(simplequad_src);
+
+	simplequad->dump_attributes();
 
 	const float vpos[] = {
 		.0f, .0f, .0f, 1.0f,
@@ -101,19 +117,9 @@ void renderer_demo() {
 		1.0f, 1.0f, .0f, 1.0f,
 	};
 
-	GLuint vpos_buf, posattr_id;
+	GLuint vpos_buf, posattr_id = 0;
 
-	opengl::VertexShader vert{vshader};
-	opengl::FragmentShader frag{fshader};
-
-	opengl::Program simplequad;
-	simplequad.attach_shader(vert);
-	simplequad.attach_shader(frag);
-	simplequad.link();
-
-	simplequad.dump_active_attributes();
-
-	posattr_id = simplequad.get_attribute_id("position");
+	//posattr_id = simplequad->get_attribute_id("position");
 
 	GLuint vao;
 
@@ -136,7 +142,7 @@ void renderer_demo() {
 			glClearColor(0.0, 0.0, 0.2, 1.0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			simplequad.use();
+			simplequad->use();
 
 			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
 			glEnableVertexAttribArray(posattr_id);
@@ -144,8 +150,6 @@ void renderer_demo() {
 			glDrawArrays(GL_TRIANGLES, 0, 6);
 
 			glDisableVertexAttribArray(posattr_id);
-
-			simplequad.stopusing();
 
 			util::gl_check_error();
 		},

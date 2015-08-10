@@ -8,6 +8,8 @@
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
 
+#include "program.h"
+#include "texture.h"
 #include "../../log/log.h"
 #include "../../error/error.h"
 
@@ -19,10 +21,13 @@ namespace opengl {
 constexpr int opengl_version_major = 3;
 constexpr int opengl_version_minor = 3;
 
-Context::Context() {}
+Context::Context()
+	:
+	renderer::Context{context_type::opengl} {}
+
 Context::~Context() {}
 
-uint32_t Context::get_window_flags() {
+uint32_t Context::get_window_flags() const {
 	return SDL_WINDOW_OPENGL;
 }
 
@@ -74,7 +79,7 @@ void Context::setup() {
 	// vsync on
 	SDL_GL_SetSwapInterval(1);
 
-	// TODO: move the following statements to some other place.
+	// TODO: transform the following to this::set_feature
 
 	// enable alpha blending
 	glEnable(GL_BLEND);
@@ -89,6 +94,44 @@ void Context::setup() {
 void Context::destroy() {
 	SDL_GL_DeleteContext(this->glcontext);
 }
+
+
+void Context::set_feature(context_feature feature, bool on) {
+	// what feature to change? this is the argument to glEnable and glDisable.
+	GLenum what;
+
+	switch (feature) {
+	case context_feature::blending:
+		what = GL_BLEND;
+		break;
+
+	case context_feature::depth_test:
+		what = GL_DEPTH_TEST;
+		break;
+
+	default:
+		throw Error(MSG(err) << "unknown opengl context feature to set");
+	}
+
+	if (on) {
+		glEnable(what);
+	} else {
+		glDisable(what);
+	}
+}
+
+
+std::shared_ptr<renderer::Texture> Context::register_texture(const TextureData &data) {
+	std::shared_ptr<renderer::Texture> txt = std::make_shared<opengl::Texture>(data);
+	return txt;
+}
+
+std::shared_ptr<renderer::Program> Context::register_program(const ProgramSource &data) {
+	std::shared_ptr<renderer::Program> txt = std::make_shared<opengl::Program>(data);
+	return txt;
+}
+
+
 
 }}} // namespace openage::renderer::opengl
 

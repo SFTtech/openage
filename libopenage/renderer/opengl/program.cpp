@@ -1,11 +1,9 @@
 // Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
-#include "program.h"
+#include "../../config.h"
+#if WITH_OPENGL
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <iostream>
+#include "program.h"
 
 #include "../../log/log.h"
 #include "../../error/error.h"
@@ -17,11 +15,28 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-Program::Program()
+Program::Program(const ProgramSource &source)
 	:
 	is_linked{false} {
 
+	// tell OpenGL we wanna have a new pipeline program
 	this->id = glCreateProgram();
+
+	if (unlikely(this->id == 0)) {
+		throw Error{MSG(err) << "no gl program created! wtf?", true};
+	}
+
+	// add all shader sources
+	for (auto &shadersource : source.get_shaders()) {
+		// create the shader from the source code
+		Shader shader{*shadersource};
+
+		// attach the shader to this program
+		this->attach_shader(shader);
+	}
+
+	// link the sources together.
+	this->link();
 }
 
 Program::~Program() {
@@ -51,7 +66,6 @@ void Program::link() {
 	this->check(GL_VALIDATE_STATUS);
 
 	this->is_linked = true;
-	this->post_link_hook();
 
 	for (auto &id : this->shader_ids) {
 		glDetachShader(this->id, id);
@@ -124,7 +138,7 @@ GLint Program::get_attribute_id(const char *name) {
 	GLint aid = glGetAttribLocation(this->id, name);
 
 	if (unlikely(aid == -1)) {
-		this->dump_active_attributes();
+		this->dump_attributes();
 		throw Error{MSG(err) << "Attribute " << name
 		                     << " queried but not found or active"
 		                     << " (optimized out by the compiler?).", true};
@@ -145,7 +159,7 @@ void Program::set_attribute_id(const char *name, GLuint id) {
 	}
 }
 
-void Program::dump_active_attributes() {
+void Program::dump_attributes() {
 	auto msg = MSG(info);
 	msg << "Dumping shader program " << this->id << " active attribute list:";
 
@@ -171,7 +185,6 @@ void Program::dump_active_attributes() {
 	log::log(msg);
 }
 
-
-void Program::post_link_hook() {}
-
 }}} // openage::renderer::opengl
+
+#endif // WITH_OPENGL

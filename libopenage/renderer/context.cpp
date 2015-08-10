@@ -18,14 +18,17 @@
 namespace openage {
 namespace renderer {
 
-Context::Context() {}
-Context::~Context() {}
+Context::Context(context_type type)
+	:
+	type{type} {}
 
 std::unique_ptr<Context> Context::generate(context_type t) {
 	context_type ctx_requested = t;
 
 	if (t == context_type::autodetect) {
 		// priority: vulkan > opengl
+		// TODO: could use some boosting, that autodetection is kinda lame.
+
 		if (WITH_VULKAN) {
 			ctx_requested = context_type::vulkan;
 		}
@@ -59,7 +62,7 @@ std::unique_ptr<Context> Context::generate(context_type t) {
 		throw Error{MSG(err) << "Unknown context type requested!"};
 	}
 
-	throw Error{MSG(err) << "Context creation dead code reached! Veeery bad."};
+	throw Error{MSG(err) << "No context was created! Veeery bad."};
 	return nullptr;
 }
 

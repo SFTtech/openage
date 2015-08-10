@@ -1,13 +1,13 @@
 // Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
-#include "shader.h"
+#include "../../config.h"
+#if WITH_OPENGL
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "shader.h"
 
 #include "../../error/error.h"
 #include "../../log/log.h"
+#include "../../util/compiler.h"
 #include "../../util/file.h"
 #include "../../util/strings.h"
 
@@ -15,12 +15,52 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-Shader::Shader(GLenum type, const char *source) {
-	// create shader
-	this->id = glCreateShader(type);
+Shader::Shader(const ShaderSource &source) {
+	// assign gl shader type
+	switch (source.get_type()) {
+	case shader_type::vertex:
+		this->type = GL_VERTEX_SHADER;
+		break;
 
-	// store type
-	this->type = type;
+	case shader_type::fragment:
+		this->type = GL_FRAGMENT_SHADER;
+		break;
+
+	case shader_type::geometry:
+		this->type = GL_GEOMETRY_SHADER;
+		break;
+
+	case shader_type::tesselation_control:
+		this->type = GL_TESS_CONTROL_SHADER;
+		break;
+
+	case shader_type::tesselation_evaluation:
+		this->type = GL_TESS_EVALUATION_SHADER;
+		break;
+
+	default:
+		throw Error{MSG(err) << "Unknown shader type requested."};
+	}
+
+	// create shader from source code!
+	this->create_from_source(source.get_source());
+}
+
+Shader::Shader(GLenum type, const char *source)
+	:
+	type{type} {
+
+	// create the shader!
+	this->create_from_source(source);
+}
+
+void Shader::create_from_source(const char *source) {
+	// allocate shader in opengl
+	this->id = glCreateShader(this->type);
+
+	if (unlikely(this->id == 0)) {
+		throw Error{MSG(err) << "no gl shader created! wtf?", true};
+	}
 
 	// load shader source
 	glShaderSource(this->id, 1, &source, NULL);
@@ -48,9 +88,25 @@ Shader::Shader(GLenum type, const char *source) {
 	}
 }
 
-
 Shader::~Shader() {
 	glDeleteShader(this->id);
+}
+
+const char *Shader::typestring() {
+	switch (this->type) {
+	case GL_VERTEX_SHADER:
+		return "vertex shader";
+	case GL_FRAGMENT_SHADER:
+		return "fragment shader";
+	case GL_GEOMETRY_SHADER:
+		return "geometry shader";
+	case GL_TESS_CONTROL_SHADER:
+		return "tesselation control shader";
+	case GL_TESS_EVALUATION_SHADER:
+		return "tesselation evaluation shader";
+	default:
+		return "unknown shader type";
+	}
 }
 
 
@@ -70,3 +126,5 @@ GeometryShader::GeometryShader(const char *source)
 
 
 }}} // openage::renderer::opengl
+
+#endif // WITH_OPENGL

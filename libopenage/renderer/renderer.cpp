@@ -2,34 +2,41 @@
 
 #include "renderer.h"
 
+namespace openage {
+namespace renderer {
 
-Renderer::Renderer() {
+Renderer::Renderer(const std::shared_ptr<Context> &ctx)
+	:
+	context{ctx} {}
 
+Renderer::~Renderer() {}
+
+TaskState Renderer::add_task(const Task &task) {
+	// sort by:
+	// layer, texture, shader
+	this->tasks.push(task);
+
+	TaskState ret;
+	return ret;
 }
 
-Renderer::~Renderer() {
 
+std::shared_ptr<Program> Renderer::add_program(const ProgramSource &source) {
+	return this->context->register_program(source);
 }
 
-void Renderer::render() {
-	sort instructions;
-	for (each instruction) {
-		apply necessary shader/texture changes;
-		render instruction;
+
+std::shared_ptr<Texture> Renderer::add_texture(const TextureData &data) {
+	return this->context->register_texture(data);
+}
+
+
+void Renderer::render() const {
+	while (not this->tasks.empty()) {
+		// Task = this->tasks.pop();
+		// apply necessary shader/texture changes;
+		// render instruction;
 	}
 }
 
-void add_instruction(task t) {
-	// insertion sort?
-	// place the new task according to its order?
-	this->tasks.push_back(t);
-}
-
-void render() {
-
-}
-
-std::vector<task> instructions_sorted() {
-	// stably sort by:
-	// layer, texture, shader
-}
+}} // openage::renderer

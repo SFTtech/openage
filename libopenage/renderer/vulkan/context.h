@@ -11,8 +11,19 @@
 
 namespace openage {
 namespace renderer {
+
+/**
+ * Vulkan specific renderer code.
+ * Is selected if the requested backend is Vulkan.
+ */
 namespace vulkan {
 
+/**
+ * Vulkan render context.
+ *
+ * No API has been published yet, but it's likely to be very similar
+ * to OpenGL and Mantle.
+ */
 class Context : public renderer::Context {
 public:
 	SDL_VulkanContext vkcontext;
