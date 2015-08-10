@@ -63,7 +63,7 @@ public:
 	 * exceptions are stored, as well. Returns whether this job has been
 	 * aborted.
 	 */
-	virtual bool execute(should_abort_t should_abort) {
+	bool execute(should_abort_t should_abort) override {
 		try {
 			this->result = this->execute_and_get(should_abort);
 		} catch (JobAbortedException &e) {
@@ -75,7 +75,7 @@ public:
 		return false;
 	}
 
-	virtual void execute_callback() {
+	void execute_callback() override {
 		assert(this->finished.load());
 		if (this->callback) {
 			auto get_result = [this]() {
@@ -89,7 +89,7 @@ public:
 		}
 	}
 
-	virtual unsigned get_thread_id() {
+	unsigned get_thread_id() override {
 		return this->thread_id;
 	}
 

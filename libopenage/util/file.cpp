@@ -93,5 +93,4 @@ std::vector<std::string> file_get_lines(const std::string &file_name) {
 }
 
 
-} //namespace util
-} //namespace openage
+}} // openage::util

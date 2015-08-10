@@ -32,7 +32,7 @@ public:
 	virtual ~JobState() = default;
 
 protected:
-	virtual T execute_and_get(should_abort_t /*should_abort*/) {
+	T execute_and_get(should_abort_t /*should_abort*/) override{
 		return this->function();
 	}
 };

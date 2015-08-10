@@ -164,7 +164,7 @@ public:
 	 * give a new attribute this this unit
 	 * this is used to set things like color, hitpoints and speed
 	 */
-	void add_attribute(AttributeContainer *attr);
+	void add_attribute(std::shared_ptr<AttributeContainer> attr);
 
 	/**
 	 * returns whether attribute is available
@@ -176,7 +176,7 @@ public:
 	 */
 	template<attr_type T>
 	Attribute<T> &get_attribute() {
-		return *reinterpret_cast<Attribute<T> *>(attribute_map[T]);
+		return *reinterpret_cast<Attribute<T> *>(attribute_map[T].get());
 	}
 
 	/**
@@ -222,7 +222,7 @@ public:
 	/**
 	 * Returns the unit's name as the LogSource name.
 	 */
-	virtual std::string logsource_name();
+	std::string logsource_name() override;
 
 private:
 	/**

@@ -64,7 +64,6 @@ public:
 };
 
 
-} //namespace util
-} //namespace openage
+}} // openage::util
 
 #endif

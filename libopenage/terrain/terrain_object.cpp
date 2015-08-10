@@ -466,4 +466,20 @@ tile_range building_center(coord::phys3 west, coord::tile_delta size) {
 	return result;
 }
 
-} //namespace openage
+bool complete_building(Unit &u) {
+	if (u.has_attribute(attr_type::building)) {
+		auto &build = u.get_attribute<attr_type::building>();
+		build.completed = 1.0f;
+
+		// set ground under a completed building
+		auto target_location = u.location.get();
+		bool placed_ok = target_location->place(build.completion_state);
+		if (placed_ok) {
+			target_location->set_ground(build.foundation_terrain, 0);
+		}
+		return placed_ok;
+	}
+	return false;
+}
+
+} // openage

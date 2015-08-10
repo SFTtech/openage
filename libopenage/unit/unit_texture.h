@@ -11,7 +11,7 @@
 
 namespace openage {
 
-class DataManager;
+class GameSpec;
 class Texture;
 class Sound;
 
@@ -32,13 +32,14 @@ public:
 	 * Note that the game data contains loops in delta links
 	 * which mean recursive loading should be avoided
 	 */
-	UnitTexture(DataManager *dm, uint16_t graphic_id, bool delta=true);
-	UnitTexture(DataManager *dm, const gamedata::graphic *graphic, bool delta=true);
+	UnitTexture(GameSpec &spec, uint16_t graphic_id, bool delta=true);
+	UnitTexture(GameSpec &spec, const gamedata::graphic *graphic, bool delta=true);
 
 	/**
 	 * const attributes of the graphic
 	 */
 	const int16_t      id;
+	const int16_t      sound_id;
 	const unsigned int frame_count;
 	const unsigned int angle_count;
 	const int16_t      mirroring_mode;
@@ -51,9 +52,19 @@ public:
 	const bool         use_up_angles;
 
 	/**
+	 * use delta information
+	 */
+	const bool         use_deltas;
+
+	/**
 	 * invalid unit textures will cause errors if drawn
 	 */
 	bool is_valid() const;
+
+	/**
+	 * pixel size of this texture
+	 */
+	coord::window size() const;
 
 	/**
 	 * a sample drawing for hud
@@ -69,6 +80,11 @@ public:
 	 * draw object with direction
 	 */
 	void draw(const coord::camgame &draw_pos, coord::phys3_delta &dir, unsigned int frame, unsigned color) const;
+
+	/**
+	 * initialise graphic data
+	 */
+	void initialise(GameSpec &spec);
 
 private:
 	/**
@@ -88,6 +104,9 @@ private:
 	// avoid drawing missing graphics
 	bool draw_this;
 	Sound *sound;
+
+	// delta graphic ids
+	std::vector<gamedata::graphic_delta> delta_id;
 
 	// delta graphics
 	std::vector<std::pair<std::unique_ptr<UnitTexture>, coord::camgame_delta>> deltas;

@@ -57,6 +57,11 @@ std::vector<coord::tile> tile_list(const tile_range &rng);
 tile_range building_center(coord::phys3 west, coord::tile_delta size);
 
 /**
+ * sets a building to a fully completed state
+ */
+bool complete_building(Unit &);
+
+/**
  * half a tile
  */
 constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
@@ -179,7 +184,7 @@ public:
 	template<class T, typename ... Arg>
 	TerrainObject *make_annex(Arg ... args) {
 
-		this->children.push_back(std::unique_ptr<T>(new T(this->unit, args ...)));
+		this->children.emplace_back(std::unique_ptr<T>(new T(this->unit, args ...)));
 		auto &annex_ptr = this->children.back();
 		annex_ptr->parent = this;
 		return annex_ptr.get();
@@ -358,6 +363,6 @@ private:
 	friend class Unit;
 };
 
-} //namespace openage
+} // openage
 
 #endif

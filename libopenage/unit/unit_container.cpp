@@ -10,24 +10,30 @@
 
 namespace openage {
 
+reference_data::reference_data(const UnitContainer *c, id_t id, Unit *u)
+	:
+	container{c},
+	unit_id{id},
+	unit_ptr{u} {
+	if (!u) {
+		throw Error{MSG(err) << "Cannot reference null unit pointer"};
+	}
+}
+
 
 UnitReference::UnitReference()
 	:
-	container{nullptr},
-	unit_id{0},
-	unit_ptr{nullptr} {}
+	data{nullptr} {}
 
 
 UnitReference::UnitReference(const UnitContainer *c, id_t id, Unit *u)
 	:
-	container{c},
-	unit_id{id},
-	unit_ptr{u} {}
+	data{std::make_shared<reference_data>(c, id, u)} {}
 
 
 bool UnitReference::is_valid() const {
-	return this->unit_ptr &&
-	       this->container->valid_id(this->unit_id);
+	return this->data &&
+	       this->data->container->valid_id(this->data->unit_id);
 }
 
 
@@ -35,7 +41,7 @@ Unit *UnitReference::get() const {
 	if (!this->is_valid()) {
 		throw Error{MSG(err) << "Unit reference is no longer valid"};
 	}
-	return this->unit_ptr;
+	return this->data->unit_ptr;
 }
 
 
@@ -46,7 +52,7 @@ UnitContainer::UnitContainer()
 
 
 UnitContainer::~UnitContainer() {
-	log::log(MSG(dbg) << "Cleanup container");
+	log::log(MSG(warn) << "Cleanup container");
 }
 
 void UnitContainer::reset() {
@@ -123,7 +129,7 @@ bool dispatch_command(id_t, const Command &) {
 	return true;
 }
 
-bool UnitContainer::on_tick() {
+bool UnitContainer::update_all() {
 	// update everything and find objects with no actions
 	std::vector<id_t> to_remove;
 	for (auto &obj : this->live_units) {

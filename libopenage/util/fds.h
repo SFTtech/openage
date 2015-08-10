@@ -86,7 +86,6 @@ public:
 	struct termios old_tio;
 };
 
-} //namespace util
-} //namespace openage
+}} // openage::util
 
 #endif

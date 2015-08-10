@@ -22,6 +22,6 @@ std::ostream &operator <<(std::ostream &os, loader_policy_t val);
 loader_policy_t from_loader_policy(const gamedata::audio_loader_policy_t loader_policy);
 
 
-}} //namespace openage::audio
+}} // openage::audio
 
 #endif

@@ -5,10 +5,13 @@
 #include <fstream>
 #include <vector>
 
+#include "log/log.h"
 #include "unit/producer.h"
 #include "unit/unit.h"
 #include "unit/unit_type.h"
 #include "game_main.h"
+#include "game_save.h"
+#include "game_spec.h"
 
 namespace openage {
 namespace gameio {
@@ -18,6 +21,12 @@ void save_unit(std::ofstream &file, Unit *unit) {
 	file << unit->get_attribute<attr_type::owner>().player.player_number << std::endl;
 	coord::tile pos = unit->location->pos.start;
 	file << pos.ne << " " << pos.se << std::endl;
+
+	bool has_building_attr = unit->has_attribute(attr_type::building);
+	file << has_building_attr << std::endl;
+	if (has_building_attr) {
+		file << unit->get_attribute<attr_type::building>().completed << std::endl;
+	}
 }
 
 void load_unit(std::ifstream &file, openage::GameMain *game) {
@@ -29,8 +38,18 @@ void load_unit(std::ifstream &file, openage::GameMain *game) {
 	file >> ne;
 	file >> se;
 
-	UnitType &saved_type = *game->datamanager.get_type(pr_id);
-	game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
+	UnitType &saved_type = *game->get_spec()->get_type(pr_id);
+	auto ref = game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
+
+	bool has_building_attr;
+	file >> has_building_attr;
+	if (has_building_attr) {
+		float completed;
+		file >> completed;
+		if (completed >= 1.0f && ref.is_valid()) {
+			complete_building(*ref.get());
+		}
+	}
 }
 
 void save_tile_content(std::ofstream &file, openage::TileContent *content) {
@@ -49,6 +68,12 @@ TileContent load_tile_content(std::ifstream &file) {
 
 void save(openage::GameMain *game, std::string fname) {
 	std::ofstream file(fname, std::ofstream::out);
+	log::log(MSG(dbg) << "saving " + fname);
+
+	// metadata
+	file << save_label << std::endl;
+	file << save_version << std::endl;
+	file << config::version << std::endl;
 
 	// how many chunks
 	std::vector<coord::chunk> used = game->terrain->used_chunks();
@@ -69,13 +94,34 @@ void save(openage::GameMain *game, std::string fname) {
 	std::vector<openage::Unit *> units = game->placed_units.all_units();
 	file << units.size() << std::endl;
 	for (Unit *u : units) {
-		save_unit( file, u );
+		save_unit(file, u);
 	}
 }
 
 void load(openage::GameMain *game, std::string fname) {
 	std::ifstream file(fname, std::ifstream::in);
+	if (!file.good()) {
+		log::log(MSG(dbg) << "could not find " + fname);
+		return;
+	}
+	log::log(MSG(dbg) << "loading " + fname);
 
+	// load metadata
+	std::string file_label;
+	file >> file_label;
+	if (file_label != save_label) {
+		log::log(MSG(warn) << fname << " is not a savefile");
+		return;
+	}
+	std::string version;
+	file >> version;
+	if (version != save_version) {
+		log::log(MSG(warn) << "savefile has different version");
+	}
+	std::string build;
+	file >> build;
+
+	// read terrain chunks
 	unsigned int num_chunks;
 	file >> num_chunks;
 	for (unsigned int c = 0; c < num_chunks; ++c) {
@@ -98,5 +144,4 @@ void load(openage::GameMain *game, std::string fname) {
 	}
 }
 
-} //namespace gameio
-} //namespace openage
+}} // openage::gameio

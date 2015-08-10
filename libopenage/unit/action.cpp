@@ -51,9 +51,12 @@ UnitAction::UnitAction(Unit *u, graphic_type initial_gt)
 		this->entity->log(MSG(dbg) << "Broken graphic (not available)");
 	}
 
-	if (frame_rate == 0) {
-		// TODO: this breaks the trees
-		//frame = rand(); //randomize variation graphics
+	if (this->frame_rate == 0) {
+
+		// a random starting point for static graphics
+		// this creates variations in trees / houses etc
+		// this value is also deterministic to match across clients
+		this->frame = (u->id * u->id * 19249) & 0xff;
 	}
 }
 
@@ -100,9 +103,16 @@ TargetAction::TargetAction(Unit *u, graphic_type gt, UnitReference r, coord::phy
 	:
 	UnitAction(u, gt),
 	target{r},
+	target_type_id{0},
 	repath_attempts{10},
 	end_action{false},
 	radius{rad} {
+
+	// update type
+	if (this->target.is_valid()) {
+		auto target_ptr = this->target.get();
+		this->target_type_id = target_ptr->unit_type->id();
+	}
 
 	// initial value for distance
 	this->update_distance();
@@ -186,9 +196,31 @@ void TargetAction::update(unsigned int time) {
 }
 
 void TargetAction::on_completion() {
+	if (!this->entity->location) {
+		return;
+	}
+
 	// TODO: retask units on nearby objects
 	// such as gathers targeting a new resource
 	// when the current target expires
+
+	// find a different target with same type
+	TerrainObject *new_target = nullptr;
+	if (this->name() == "gather") {
+		new_target = find_near(*this->entity->location,
+			[this](const TerrainObject &obj) {
+				return obj.unit.unit_type->id() == this->target_type_id &&
+				       obj.unit.has_attribute(attr_type::resource) &&
+				       obj.unit.get_attribute<attr_type::resource>().amount > 0.0f;
+			});
+	}
+
+	if (new_target) {
+		this->entity->log(MSG(dbg) << "auto retasking");
+		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
+		Command cmd(pl_attr.player, &new_target->unit);
+		this->entity->invoke(cmd);
+	}
 }
 
 bool TargetAction::completed() const {
@@ -228,6 +260,7 @@ UnitReference TargetAction::get_target() const {
 
 void TargetAction::set_target(UnitReference new_target) {
 	this->target = new_target;
+	this->update_distance();
 }
 
 
@@ -655,15 +688,18 @@ void TrainAction::update(unsigned int time) {
 		UnitContainer *container = this->entity->get_container();
 		auto &player = this->entity->get_attribute<attr_type::owner>().player;
 		auto uref = container->new_unit(*this->trained, player, this->entity->location.get());
+
+		// make sure unit got placed
+		// try again next update if cannot place
 		if (uref.is_valid()) {
+			if (this->entity->has_attribute(attr_type::building)) {
 
-			// use a move command to the gather point
-			// TODO: use buildings gather point, assume {3, 3} for now
-			Command cmd(player, coord::tile{3, 3}.to_phys2().to_phys3());
-			cmd.set_ability(ability_type::move);
-			uref.get()->invoke(cmd);
-
-			// try again next update if cannot place
+				// use a move command to the gather point
+				auto &build_attr = this->entity->get_attribute<attr_type::building>();
+				Command cmd(player, build_attr.gather_point);
+				cmd.set_ability(ability_type::move);
+				uref.get()->invoke(cmd);
+			}
 			this->complete = true;
 		}
 	}
@@ -774,29 +810,51 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 		}
 		else {
 
-			// transfer using gather rate
 			auto &resource_attr = targeted_resource->get_attribute<attr_type::resource>();
-			gatherer_attr.amount += gatherer_attr.gather_rate * time;
-			resource_attr.amount -= gatherer_attr.gather_rate * time;
-
 			if (resource_attr.amount <= 0.0f) {
-				this->complete = true;
+
+				// when the resource runs out
+				if (gatherer_attr.amount > 0.0f) {
+					this->target_resource = false;
+					this->set_target(this->nearest_dropsite());
+				}
+				else {
+					this->complete = true;
+				}
+			}
+			else {
+
+				// transfer using gather rate
+				gatherer_attr.amount += gatherer_attr.gather_rate * time;
+				resource_attr.amount -= gatherer_attr.gather_rate * time;
 			}
 		}
 	}
 	else {
 
 		// dropsite has been reached
-		// TODO: add value to player stockpile
+		// add value to player stockpile
+		Player &player = this->entity->get_attribute<attr_type::owner>().player;
+		player.recieve(gatherer_attr.current_type, gatherer_attr.amount);
 		gatherer_attr.amount = 0.0f;
 
-		// return to resouce
-		this->target_resource = true;
-		this->set_target(this->target);
+		// make sure the resource stil exists
+		if (this->target.is_valid() &&
+		    this->target.get()->get_attribute<attr_type::resource>().amount > 0.0f) {
+
+			// return to resouce collection
+			this->target_resource = true;
+			this->set_target(this->target);
+		}
+		else {
+
+			// resource depleted
+			this->complete = true;
+		}
 	}
 
 	// inc frame
-	this->frame += time * this->frame_rate / 5.0f;
+	this->frame += time * this->frame_rate / 3.0f;
 }
 
 UnitReference GatherAction::nearest_dropsite() {
@@ -807,6 +865,7 @@ UnitReference GatherAction::nearest_dropsite() {
 			return &obj.unit != this->entity &&
 			       &obj.unit != this->target.get() &&
 			       obj.unit.has_attribute(attr_type::building) &&
+			       obj.unit.get_attribute<attr_type::building>().completed >= 1.0f &&
 			       obj.unit.has_attribute(attr_type::owner) &&
 			       obj.unit.get_attribute<attr_type::owner>().player.owns(*this->entity);
 	});

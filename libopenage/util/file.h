@@ -3,13 +3,15 @@
 #ifndef OPENAGE_UTIL_FILE_H_
 #define OPENAGE_UTIL_FILE_H_
 
-#include <stdlib.h>
-#include <string.h>
+#include <cstdlib>
+#include <cstring>
+#include <fstream>
 #include <string>
 #include <vector>
 
 #include "../error/error.h"
 
+#include "compiler.h"
 #include "dir.h"
 
 namespace openage {
@@ -33,43 +35,46 @@ std::vector<std::string> file_get_lines(const std::string &file_name);
  * read a single csv file.
  * call the destination struct .fill() method for actually storing line data
  */
-template<class lineformat>
-std::vector<lineformat> read_csv_file(const std::string &fname) {
-	std::vector<std::string> lines = file_get_lines(fname);
-
+template<typename lineformat>
+void read_csv_file(const std::string &fname, std::vector<lineformat> &out) {
 	size_t line_count = 0;
-
 	lineformat current_line_data;
-	auto result = std::vector<lineformat>{};
+	std::string line;
+	std::vector<char> strbuf;
 
-	for (auto &line : lines) {
-		int line_length = line.length();
+	std::ifstream csvfile{fname};
+
+	while (std::getline(csvfile, line)) {
 		line_count += 1;
 
-		//ignore empty and lines starting with #, that's a comment.
-		if (line_length > 0 && line[0] != '#') {
-
-			//create writable tokenisation copy of the string
-			char *line_rw = new char[line_length + 1];
-			strncpy(line_rw, line.c_str(), line_length);
-			line_rw[line_length] = '\0';
-
-			//use the line copy to fill the current line struct.
-			int error_column = current_line_data.fill(line_rw);
-			if (error_column != -1) {
-				throw Error(MSG(err) <<
-					"Failed to read CSV file: " <<
-					fname << ":" << line_count << ":" << error_column << ": "
-					"error parsing " << line);
-			}
-
-			delete[] line_rw;
-
-			result.push_back(current_line_data);
+		// ignore comments and empty lines
+		if (line.empty() || line[0] == '#') {
+			continue;
 		}
+
+		// create writable copy, for tokenisation
+		if (unlikely(strbuf.size() <= line.size())) {
+			strbuf.resize(line.size() + 1);
+		}
+		memcpy(strbuf.data(), line.c_str(), line.size() + 1);
+
+		// use the line copy to fill the current line struct.
+		int error_column = current_line_data.fill(strbuf.data());
+		if (error_column != -1) {
+			throw Error(MSG(err) <<
+				"Failed to read CSV file: " <<
+				fname << ":" << line_count << ":" << error_column << ": "
+				"error parsing " << line);
+		}
+
+		out.push_back(current_line_data);
 	}
 
-	return result;
+	if (unlikely(!line_count)) {
+		throw Error(MSG(err) <<
+			"Failed to read CSV file " << fname << ": " <<
+			"Empty or missing.");
+	}
 }
 
 /**
@@ -81,37 +86,25 @@ std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname
 	std::vector<lineformat> result;
 	std::string merged_filename = basedir.join(fname);
 
-	if (0 < file_size(merged_filename)) {
-		result = read_csv_file<lineformat>(merged_filename);
+	read_csv_file<lineformat>(merged_filename, result);
 
-		//the new basedir is the old basedir
-		// + the directory part of the current relative file name
-		Dir new_basedir = basedir.append(dirname(fname));
+	//the new basedir is the old basedir
+	// + the directory part of the current relative file name
+	Dir new_basedir = basedir.append(dirname(fname));
 
-		size_t line_count = 0;
-		for (auto &entry : result) {
-			line_count += 1;
-			if (not entry.recurse(new_basedir)) {
-				throw Error(MSG(err) <<
-					"Failed to read follow-up files for " <<
-					merged_filename << ":" << line_count);
-			}
+	size_t line_count = 0;
+	for (auto &entry : result) {
+		line_count += 1;
+		if (not entry.recurse(new_basedir)) {
+			throw Error(MSG(err) <<
+				"Failed to read follow-up files for " <<
+				merged_filename << ":" << line_count);
 		}
-	}
-	else {
-		//nonexistant file skipped, would return empty vector.
-		throw Error(MSG(err) << "Failed to recurse to file " << merged_filename);
 	}
 
 	return result;
 }
 
-
-template<class lineformat>
-std::vector<lineformat> read_csv_file(const char *fname) {
-	std::string filename{fname};
-	return read_csv_file<lineformat>(filename);
-}
 
 /**
  * referenced file tree structure.
