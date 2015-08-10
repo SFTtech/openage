@@ -60,5 +60,4 @@ bool Timer::isstopped() const {
 	return stopped;
 }
 
-} //namespace util
-} //namespace openage
+}} // openage::util

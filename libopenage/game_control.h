@@ -156,6 +156,6 @@ private:
 
 };
 
-} //namespace openage
+} // openage
 
 #endif

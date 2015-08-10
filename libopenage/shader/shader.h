@@ -19,7 +19,6 @@ public:
 	GLenum type;
 };
 
-} //namespace shader
-} //namespace openage
+}} // openage::shader
 
 #endif

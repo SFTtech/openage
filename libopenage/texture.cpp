@@ -397,4 +397,4 @@ GLuint Texture::get_texture_id() const {
 	return this->buffer->id;
 }
 
-} //namespace openage
+} // openage

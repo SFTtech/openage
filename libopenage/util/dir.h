@@ -37,7 +37,6 @@ std::string basename(const std::string &fullpath);
  */
 std::string dirname(const std::string &fullpath);
 
-} //namespace util
-} //namespace openage
+}} // openage::util
 
 #endif

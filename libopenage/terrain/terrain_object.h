@@ -363,6 +363,6 @@ private:
 	friend class Unit;
 };
 
-} //namespace openage
+} // openage
 
 #endif

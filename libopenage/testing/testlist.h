@@ -21,6 +21,6 @@ namespace testing {
 void run_method(const std::string &name);
 
 
-}} //namespace openage::testing
+}} // openage::testing
 
 #endif

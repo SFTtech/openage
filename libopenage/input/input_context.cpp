@@ -57,5 +57,4 @@ bool InputContext::execute_if_bound(const action_arg_t &arg) {
 }
 
 
-} //namespace input
-} //namespace openage
+}} // openage::input

@@ -173,5 +173,4 @@ void Program::post_link_hook() {
 	this->mvpm_id = this->get_uniform_id("mvp_matrix");
 }
 
-} //namespace shader
-} //namespace openage
+}} // openage::shader

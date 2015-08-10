@@ -26,8 +26,6 @@ void to_opengl(Console *console);
 void to_terminal(Buf *buf, util::FD *fd,
                  bool clear=false);
 
-} //namespace draw
-} //namespace console
-} //namespace openage
+}}} // openage::console::draw
 
 #endif

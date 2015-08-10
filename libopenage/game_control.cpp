@@ -607,4 +607,4 @@ bool GameControl::on_drawhud() {
 }
 
 
-} //namespace openage
+} // openage

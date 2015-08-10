@@ -38,4 +38,4 @@ void GameMain::update() {
 	this->placed_units.update_all();
 }
 
-} //namespace openage
+} // openage

@@ -102,7 +102,6 @@ using action_func_t = std::function<void(const action_arg_t &)>;
 using action_check_t = std::function<bool(const action_arg_t &)>;
 
 
-} //namespace input
-} //namespace openage
+}} // openage::input
 
 #endif

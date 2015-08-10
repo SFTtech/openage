@@ -248,4 +248,4 @@ GameSpec *GameRenderer::game_spec() const {
 	return this->game()->get_spec();
 }
 
-} //namespace openage
+} // openage

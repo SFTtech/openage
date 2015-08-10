@@ -169,5 +169,4 @@ bool Console::on_resize(coord::window new_size) {
 	return true;
 }
 
-} //namespace console
-} //namespace openage
+}} // openage::console

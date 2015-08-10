@@ -482,4 +482,4 @@ bool complete_building(Unit &u) {
 	return false;
 }
 
-} //namespace openage
+} // openage
