@@ -63,13 +63,13 @@ public:
 	 * The number of chunks that have to be loaded, before a sound actually
 	 * starts playing.
 	 */
-	static const int DEFAULT_PRELOAD_THRESHOLD = 10;
+	static constexpr int DEFAULT_PRELOAD_THRESHOLD = 10;
 
 	/** The default used chunk size in bytes (100ms). */
-	static const size_t DEFAULT_CHUNK_SIZE = 9600*2;
+	static constexpr size_t DEFAULT_CHUNK_SIZE = 9600*2;
 
 	/** The default number of chunks, that can be loaded at the same time. */
-	static const size_t DEFAULT_MAX_CHUNKS = 100;
+	static constexpr size_t DEFAULT_MAX_CHUNKS = 100;
 
 private:
 	/** The resource's path. */
@@ -110,10 +110,10 @@ public:
 	                size_t max_chunks=DEFAULT_MAX_CHUNKS);
 	virtual ~DynamicResource() = default;
 
-	virtual void use();
-	virtual void stop_using();
+	void use() override;
+	void stop_using() override;
 
-	virtual audio_chunk_t get_data(size_t position, size_t data_length);
+	audio_chunk_t get_data(size_t position, size_t data_length) override;
 
 private:
 	void start_preloading(size_t resource_chunk_index);

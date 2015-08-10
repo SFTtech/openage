@@ -67,10 +67,10 @@ public:
 	 */
 	void interpret(const std::string &command);
 
-	virtual bool on_drawhud();
-	virtual bool on_tick();
-	virtual bool on_input(SDL_Event *event);
-	virtual bool on_resize(coord::window new_size);
+	bool on_drawhud() override;
+	bool on_tick() override;
+	bool on_input(SDL_Event *event) override;
+	bool on_resize(coord::window new_size) override;
 };
 
 }} // openage::console

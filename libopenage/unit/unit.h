@@ -222,7 +222,7 @@ public:
 	/**
 	 * Returns the unit's name as the LogSource name.
 	 */
-	virtual std::string logsource_name();
+	std::string logsource_name() override;
 
 private:
 	/**

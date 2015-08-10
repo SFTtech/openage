@@ -11,7 +11,7 @@ namespace job {
 /** An exception that is thrown when a job wants to abort itself. */
 class JobAbortedException : public std::exception {
 public:
-	virtual const char *what() const noexcept {
+	const char *what() const noexcept override {
 		return "job aborted";
 	}
 };

@@ -30,7 +30,7 @@ public:
 	);
 	virtual ~InMemoryResource() = default;
 
-	virtual audio_chunk_t get_data(size_t position, size_t data_length);
+	audio_chunk_t get_data(size_t position, size_t data_length) override;
 };
 
 }
