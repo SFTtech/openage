@@ -16,7 +16,7 @@ public:
 	FileSink(const char *filename, bool append);
 
 private:
-	virtual void output_log_message(const message &msg, LogSource *source);
+	virtual void output_log_message(const message &msg, LogSource *source) override;
 
 	std::ofstream outfile;
 };

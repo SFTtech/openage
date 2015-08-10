@@ -134,7 +134,7 @@ public:
 	 * window resize handler function.
 	 * recalculates opengl settings like viewport and projection matrices.
 	 */
-	bool on_resize(coord::window new_size);
+	bool on_resize(coord::window new_size) override;
 
 	void start_game(const Generator &generator);
 	void end_game();

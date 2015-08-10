@@ -18,7 +18,7 @@ namespace tests {
 
 class TestLogSource : public LogSource {
 public:
-	std::string logsource_name() {
+	std::string logsource_name() override {
 		return "TestLogSource";
 	}
 };
@@ -32,7 +32,7 @@ public:
 private:
 	std::ostream &os;
 
-	void output_log_message(const message &msg, LogSource * /*source*/) {
+	void output_log_message(const message &msg, LogSource * /*source*/) override {
 		this->os << msg << std::endl;
 	}
 };
