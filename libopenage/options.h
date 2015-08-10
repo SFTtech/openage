@@ -270,7 +270,8 @@ public:
 	Var(OptionNode *owner, const std::string &name, const T &init)
 		:
 		util::Variable<T>{init} {
-		owner->add(name, &this->value);
+
+		owner->add(name, this->value);
 	}
 };
 
