@@ -218,6 +218,12 @@ void Generator::create_regions() {
 	int p_area = this->getv<int>("player_area");
 	int p_radius = this->getv<int>("player_radius");
 
+	// enforce some lower limits
+	size = std::max(1, size);
+	base_id = std::max(0, base_id);
+	p_area = std::max(50, p_area);
+	p_radius = std::max(2, p_radius);
+
 	rng::RNG rng(seed);
 	Region base(size * 16);
 	base.terrain_id = base_id;
