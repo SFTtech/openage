@@ -328,18 +328,18 @@ void Generator::add_units(GameMain &m) const {
 			tile.se -= 1;
 
 			// Place a completed town center
-	 		auto ref = m.placed_units.new_unit(*tctype, p, tile.to_tile3().to_phys3());
-	 		if (ref.is_valid()) {
-	 			complete_building(*ref.get());
-	 		}
+			auto ref = m.placed_units.new_unit(*tctype, p, tile.to_tile3().to_phys3());
+			if (ref.is_valid()) {
+				complete_building(*ref.get());
+			}
 
-	 		// Place three villagers
+			// Place three villagers
 			tile.ne -= 1;
-	 		m.placed_units.new_unit(*fvtype, p, tile.to_tile3().to_phys3());
-	 		tile.se += 1;
-	 		m.placed_units.new_unit(*mvtype, p, tile.to_tile3().to_phys3());
-	 		tile.se += 1;
-	 		m.placed_units.new_unit(*fvtype, p, tile.to_tile3().to_phys3());
+			m.placed_units.new_unit(*fvtype, p, tile.to_tile3().to_phys3());
+			tile.se += 1;
+			m.placed_units.new_unit(*mvtype, p, tile.to_tile3().to_phys3());
+			tile.se += 1;
+			m.placed_units.new_unit(*fvtype, p, tile.to_tile3().to_phys3());
 		}
 	}
 }

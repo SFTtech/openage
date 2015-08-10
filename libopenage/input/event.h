@@ -18,13 +18,13 @@ namespace input {
 enum class event_class {
 	ANY,
 	KEYBOARD,
-	CHAR,			// basic keycodes (lower-case, non-modified)
-	ALPHA,			// abc
-	DIGIT,			// 123
-	PRINT,			// remaining printable chars
-	NONPRINT,		// tab, return, backspace, delete
-	OTHER,			// arrows, home, end
-	UTF8,			// events with utf8 encoded data
+	CHAR,           // basic keycodes (lower-case, non-modified)
+	ALPHA,          // abc
+	DIGIT,          // 123
+	PRINT,          // remaining printable chars
+	NONPRINT,       // tab, return, backspace, delete
+	OTHER,          // arrows, home, end
+	UTF8,           // events with utf8 encoded data
 	MOUSE,
 	MOUSE_BUTTON,
 	MOUSE_WHEEL,

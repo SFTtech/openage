@@ -65,7 +65,7 @@ public:
 	/**
 	 * Returns a pointer to the engines coordinate data.
 	 */
-	static coord_data* get_coord_data( void );
+	static coord_data* get_coord_data();
 
 	/**
 	 * singleton constructor, use this to create the engine instance.

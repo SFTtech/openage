@@ -135,7 +135,6 @@ void CreateMode::render() {
 			y -= 36;
 			engine.render_text({x + 45, y}, 20, "set value:");
 			engine.render_text({x + 320, y}, 20, "%s", this->new_value.c_str());
-			y -= 24;
 		}
 		engine.render_text({0, 100}, 20, "%s", this->response_value.c_str());
 	}
