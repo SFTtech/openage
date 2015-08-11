@@ -108,12 +108,12 @@ void renderer_demo() {
 	simplequad->dump_attributes();
 
 	const float vpos[] = {
-		.0f, .0f, .0f, 1.0f,
-		1.0f, .0f, .0f, 1.0f,
-		.0f, 1.0f, .0f, 1.0f,
+		-1.0f, -1.0f, .0f, 1.0f,
+		1.0f, -1.0f, .0f, 1.0f,
+		-1.0f, 1.0f, .0f, 1.0f,
 
-		1.0f, .0f, .0f, 1.0f,
-		.0f, 1.0f, .0f, 1.0f,
+		1.0f, -1.0f, .0f, 1.0f,
+		-1.0f, 1.0f, .0f, 1.0f,
 		1.0f, 1.0f, .0f, 1.0f,
 	};
 
