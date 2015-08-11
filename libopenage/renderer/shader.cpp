@@ -7,6 +7,7 @@
 #include "shader.h"
 
 #include "../error/error.h"
+#include "../util/file.h"
 
 namespace openage {
 namespace renderer {
@@ -15,36 +16,39 @@ ShaderSource::ShaderSource(shader_type type)
 	:
 	type{type} {}
 
+
 shader_type ShaderSource::get_type() const {
 	return this->type;
+}
+
+
+const char *ShaderSource::get_source() const {
+	return this->code.c_str();
 }
 
 
 ShaderSourceFile::ShaderSourceFile(shader_type type, const std::string &path)
 	:
 	ShaderSource{type},
-	path{path} {}
+	path{path} {
 
-
-const char *ShaderSourceFile::get_source() const {
-	throw Error{MSG(err) << "not implemented yet"};
+	this->code = util::read_whole_file(this->path);
 }
 
 
 ShaderSourceCode::ShaderSourceCode(shader_type type, const char *code)
 	:
-	ShaderSource{type},
-	code{code} {}
+	ShaderSource{type} {
+
+	this->code = code;
+}
 
 
 ShaderSourceCode::ShaderSourceCode(shader_type type, const std::string &code)
 	:
-	ShaderSource{type},
-	code{code} {}
+	ShaderSource{type} {
 
-
-const char *ShaderSourceCode::get_source() const {
-	return this->code.c_str();
+	this->code = code;
 }
 
 
@@ -56,6 +60,7 @@ ProgramSource::ProgramSource(const std::vector<const ShaderSource *> &shaders) {
 		this->attach_shader(*shader);
 	}
 }
+
 
 const std::vector<const ShaderSource *> &ProgramSource::get_shaders() const {
 	return this->shaders;

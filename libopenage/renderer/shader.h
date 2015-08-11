@@ -36,7 +36,7 @@ public:
 	/**
 	 * Return the shader source code.
 	 */
-	virtual const char *get_source() const = 0;
+	const char *get_source() const;
 
 	/**
 	 * Return the shader type.
@@ -48,6 +48,11 @@ protected:
 	 * The shader's pipeline stage position.
 	 */
 	shader_type type;
+
+	/**
+	 * Stores the shader source code.
+	 */
+	std::string code;
 };
 
 
@@ -58,11 +63,6 @@ class ShaderSourceFile : public ShaderSource {
 public:
 	ShaderSourceFile(shader_type type, const std::string &path);
 	virtual ~ShaderSourceFile() {};
-
-	/**
-	 * Return the file contents: the shader code.
-	 */
-	const char *get_source() const override;
 
 protected:
 	/**
@@ -82,17 +82,6 @@ public:
 	ShaderSourceCode(shader_type type, const std::string &code);
 
 	virtual ~ShaderSourceCode() {};
-
-	/**
-	 * Return the stored source code.
-	 */
-	const char *get_source() const override;
-
-protected:
-	/**
-	 * Stores the shader source code.
-	 */
-	std::string code;
 };
 
 
