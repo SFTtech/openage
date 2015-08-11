@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   height="254.06776"
+   width="971.35059"
+   id="svg2"
+   viewBox="40 40 971.35059 254.06776"
+   version="1.1">
+  <metadata
+     id="metadata27">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4">
+    <clipPath
+       id="c"
+       clipPathUnits="userSpaceOnUse">
+      <circle
+         id="circle7"
+         cx="150"
+         cy="150"
+         r="111" />
+    </clipPath>
+  </defs>
+  <path
+     id="circle9"
+     d="m 170,60 a 110,110 0 0 0 -110,110 110,110 0 0 0 51.76172,93.16211 l 16.97461,-29.39844 A 62.5,62.5 0 0 1 107.5,186.89258 l 0,-77.5 27,0 0,26.14648 a 62.5,62.5 0 0 1 22,-9.59179 l 0,-16.55469 27,0 0,16.52344 a 62.5,62.5 0 0 1 22,9.55078 l 0,-26.07422 27,0 0,77.5 a 62.5,62.5 0 0 1 -21.24805,46.84961 l 17.02344,29.48437 A 110,110 0 0 0 280,170 110,110 0 0 0 170,60 Z" />
+  <g
+     transform="translate(20,22.392579)"
+     style="fill:#ffffff"
+     id="g11" />
+  <path
+     id="path23"
+     d="m 133.29891,194.63816 0,-33.37064 c 0,0 13.26216,-9.24097 36.7011,-9.24097 23.43893,0 36.70108,9.24097 36.70108,9.24097 l 0,33.37064 c 0,20.87024 -36.70108,37.52823 -36.70108,37.52823 0,0 -36.7011,-16.65799 -36.7011,-37.52823 z" />
+  <flowRoot
+     transform="translate(37.861314,124.56032)"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:-10px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="flowRoot3355"
+     xml:space="preserve"><flowRegion
+       id="flowRegion3357"><rect
+         style="letter-spacing:-10px"
+         y="-85.853645"
+         x="261.03027"
+         height="253.12027"
+         width="798.91077"
+         id="rect3359" /></flowRegion><flowPara
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:187.5px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;letter-spacing:-10px"
+       id="flowPara3361">openage</flowPara></flowRoot></svg>
