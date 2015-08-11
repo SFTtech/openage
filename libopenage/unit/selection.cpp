@@ -82,10 +82,13 @@ bool UnitSelection::on_drawhud() {
 void UnitSelection::drag_begin(coord::camgame pos) {
 	this->start = pos;
 	this->end = pos;
-	drag_active = true;
+	this->drag_active = true;
 }
 
 void UnitSelection::drag_update(coord::camgame pos) {
+	if (!this->drag_active) {
+		this->drag_begin(pos);
+	}
 	this->end = pos;
 }
 
@@ -95,8 +98,8 @@ void UnitSelection::drag_release(Terrain *terrain, bool append) {
 	}
 	else {
 		this->select_space(terrain, this->start, this->end, append);
-		drag_active = false;
 	}
+	this->drag_active = false;
 }
 
 void UnitSelection::clear() {
@@ -133,7 +136,7 @@ void UnitSelection::add_unit(Unit *u, bool append) {
 
 		if (unit_type_i < selection_type_i) {
 			// Upgrade selection to a higher priority selection
-			this->units.clear();
+			this->clear();
 			this->selection_type = unit_type;
 		}
 
@@ -252,6 +255,7 @@ void UnitSelection::all_invoke(Command &cmd) {
 void UnitSelection::show_attributes(Unit *u) {
 	std::vector<std::string> lines;
 	lines.push_back(u->top()->name());
+	lines.push_back("type: "+std::to_string(u->unit_type->id()));
 
 	if (u->has_attribute(attr_type::owner)) {
 		auto &own_attr = u->get_attribute<attr_type::owner>();
@@ -276,7 +280,7 @@ void UnitSelection::show_attributes(Unit *u) {
 
 	// render text
 	Engine &engine = Engine::get();
-	int vpos = 120;
+	int vpos = 160;
 	engine.render_text({0, vpos}, 20, "%s", u->unit_type->name().c_str());
 	for (auto &s : lines) {
 		vpos -= this->font_size;

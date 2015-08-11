@@ -18,7 +18,6 @@ struct col {
 	void use(float alpha);
 };
 
-} //namespace util
-} //namespace openage
+}} // openage::util
 
 #endif

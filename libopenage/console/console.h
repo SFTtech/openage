@@ -10,12 +10,16 @@
 #include "../handlers.h"
 #include "../coord/camhud.h"
 #include "../engine.h"
-#include "../keybinds/keybind_manager.h"
+#include "../input/input_manager.h"
 #include "../util/color.h"
 #include "../font.h"
 #include "../gamedata/color.gen.h"
 
 namespace openage {
+
+/**
+ * In-game console subsystem. Featuring a full terminal emulator.
+ */
 namespace console {
 
 class Console : InputHandler, TickHandler, HudHandler, ResizeHandler {
@@ -35,14 +39,14 @@ public:
 	Buf buf;
 	Font font;
 
-	keybinds::KeybindContext keybind_context;
+	input::InputContext input_context;
 
-	//callback functions
-	bool on_engine_tick();
-	bool draw_console();
-	bool handle_inputs(SDL_Event *e);
-	bool on_window_resize();
+	// the command state
+	std::string command;
 
+	/**
+	 * load the consoles color table
+	 */
 	void load_colors(std::vector<gamedata::palette_color> &colortable);
 
 	/**
@@ -51,18 +55,24 @@ public:
 	 */
 	void register_to_engine(Engine *engine);
 
+	void set_visible(bool make_visible);
+
 	/**
 	 * prints the given text on the console.
 	 */
 	void write(const char *text);
 
-	virtual bool on_drawhud();
-	virtual bool on_tick();
-	virtual bool on_input(SDL_Event *event);
-	virtual bool on_resize(coord::window new_size);
+	/**
+	 * a temporary console command interpreter
+	 */
+	void interpret(const std::string &command);
+
+	bool on_drawhud() override;
+	bool on_tick() override;
+	bool on_input(SDL_Event *event) override;
+	bool on_resize(coord::window new_size) override;
 };
 
-} //namespace console
-} //namespace openage
+}} // openage::console
 
 #endif

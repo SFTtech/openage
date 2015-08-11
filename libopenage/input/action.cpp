@@ -5,11 +5,12 @@
 #include "action.h"
 
 namespace openage {
-namespace keybinds {
+namespace input {
+
 
 int action_hash::operator()(const action_t& a) const {
 	return std::hash<int>()(static_cast<int>(a));
 }
 
-} //namespace keybinds
-} //namespace openage
+
+}} // openage::input

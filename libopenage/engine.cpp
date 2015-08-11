@@ -13,8 +13,9 @@
 #include "error/error.h"
 #include "log/log.h"
 
-#include "callbacks.h"
 #include "config.h"
+#include "game_main.h"
+#include "generator.h"
 #include "texture.h"
 #include "util/color.h"
 #include "util/fps.h"
@@ -33,7 +34,7 @@ namespace openage {
 
 static coord_data base_coord_data{};
 
-coord_data* Engine::get_coord_data( void ) {
+coord_data* Engine::get_coord_data() {
 	return &base_coord_data;
 }
 
@@ -66,11 +67,12 @@ Engine &Engine::get() {
 
 Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	:
+	OptionNode{"Engine"},
 	running{false},
-	drawing_debug_overlay{true},
-	drawing_huds{true},
+	drawing_debug_overlay{this, "drawing_debug_overlay", true},
+	drawing_huds{this, "drawing_huds", true},
 	engine_coord_data{this->get_coord_data()},
-	current_player{1},
+	current_player{this, "current_player", 1},
 	data_dir{data_dir},
 	audio_manager{} {
 
@@ -83,6 +85,9 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	// enqueue the engine's own input handler to the
 	// execution list.
 	this->register_resize_action(this);
+
+	// register the engines input manager
+	this->register_input_action(&this->input_manager);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
@@ -172,6 +177,51 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 		throw Error{MSG(err) << "No audio devices found"};
 	}
 
+	// initialize engine related global keybinds
+	auto &global_input_context = this->get_input_manager().get_global_context();
+	global_input_context.bind(input::action_t::STOP_GAME, [this](const input::action_arg_t &) {
+		this->stop();
+	});
+	global_input_context.bind(input::action_t::TOGGLE_HUD, [this](const input::action_arg_t &) {
+		this->drawing_huds.value = !this->drawing_huds.value;
+	});
+	global_input_context.bind(input::action_t::SCREENSHOT, [this](const input::action_arg_t &) {
+		this->get_screenshot_manager().save_screenshot();
+	});
+	global_input_context.bind(input::action_t::TOGGLE_DEBUG_OVERLAY, [this](const input::action_arg_t &) {
+		this->drawing_debug_overlay.value = !this->drawing_debug_overlay.value;
+	});
+	global_input_context.bind(input::action_t::TOGGLE_PROFILER, [this](const input::action_arg_t &) {
+		if (this->external_profiler.currently_profiling) {
+			this->external_profiler.stop();
+			this->external_profiler.show_results();
+		} else {
+			this->external_profiler.start();
+		}
+	});
+	global_input_context.bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
+		if (arg.e.cc.has_class(input::event_class::MOUSE_MOTION) &&
+			this->get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 2)) {
+			this->move_phys_camera(arg.motion.x, arg.motion.y);
+			return true;
+		}
+		return false;
+	});
+
+	// Switching between players with the 1-8 keys
+	auto bind_player_switch = [this, &global_input_context](input::action_t action, int player) {
+		global_input_context.bind(action, [this, player](const input::action_arg_t &) {
+			this->current_player.value = player;
+		});
+	};
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_1, 1);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_2, 2);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_3, 3);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_4, 4);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_5, 5);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_6, 6);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_7, 7);
+	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_8, 8);
 }
 
 Engine::~Engine() {
@@ -214,6 +264,15 @@ bool Engine::on_resize(coord::window new_size) {
 	glLoadIdentity();
 
 	return true;
+}
+
+void Engine::start_game(const Generator &generator) {
+	this->game = std::make_unique<GameMain>(generator);
+	this->game->set_parent(this);
+}
+
+void Engine::end_game() {
+	this->game = nullptr;
 }
 
 bool Engine::draw_debug_overlay() {
@@ -264,8 +323,15 @@ void Engine::loop() {
 		this->job_manager->execute_callbacks();
 
 		this->profiler.start_measure("events", {1.0, 0.0, 0.0});
+		// top level input handling
 		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_WINDOWEVENT) {
+			switch (event.type) {
+
+			case SDL_QUIT:
+				this->stop();
+				break;
+
+			case SDL_WINDOWEVENT: {
 				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
 					coord::window new_size{event.window.data1, event.window.data2};
 
@@ -276,13 +342,43 @@ void Engine::loop() {
 						}
 					}
 				}
-			} else {
+			}
+
+			default:
 				for (auto &action : this->on_input_event) {
 					if (false == action->on_input(&event)) {
 						break;
 					}
 				}
+			} // switch event
+		}
+
+		if (this->game) {
+			// read camera movement input keys, and move camera
+			// accordingly.
+
+			// camera movement speed, in pixels per millisecond
+			// one pixel per millisecond equals 14.3 tiles/second
+			float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
+
+			input::InputManager &input = this->get_input_manager();
+
+			if (input.is_down(SDLK_LEFT)) {
+				mov_x = -cam_movement_speed_keyboard;
 			}
+			if (input.is_down(SDLK_RIGHT)) {
+				mov_x = cam_movement_speed_keyboard;
+			}
+			if (input.is_down(SDLK_DOWN)) {
+				mov_y = cam_movement_speed_keyboard;
+			}
+			if (input.is_down(SDLK_UP)) {
+				mov_y = -cam_movement_speed_keyboard;
+			}
+			this->move_phys_camera(mov_x, mov_y, (float) this->lastframe_duration_nsec() / 1e6);
+
+			// update the currently running game
+			this->game->update();
 		}
 		this->profiler.end_measure("events");
 
@@ -322,12 +418,12 @@ void Engine::loop() {
 
 			// draw the fps overlay
 
-			if (this->drawing_debug_overlay) {
+			if (this->drawing_debug_overlay.value) {
 				this->draw_debug_overlay();
 				//this->profiler.show();
 			}
 
-			if (this->drawing_huds) {
+			if (this->drawing_huds.value) {
 				// invoke all hud drawing callback methods
 				for (auto &action : this->on_drawhud) {
 					if (false == action->on_drawhud()) {
@@ -377,6 +473,18 @@ util::Dir *Engine::get_data_dir() {
 	return this->data_dir;
 }
 
+GameMain *Engine::get_game() {
+	return this->game.get();
+}
+
+Player *Engine::player_focus() const {
+	if (this->game) {
+		unsigned int number = this->game->players.size();
+		return &this->game->players[this->current_player.value % number];
+	}
+	return nullptr;
+}
+
 job::JobManager *Engine::get_job_manager() {
 	return this->job_manager;
 }
@@ -389,8 +497,8 @@ ScreenshotManager &Engine::get_screenshot_manager() {
 	return this->screenshot_manager;
 }
 
-keybinds::KeybindManager &Engine::get_keybind_manager() {
-	return this->keybind_manager;
+input::InputManager &Engine::get_input_manager() {
+	return this->input_manager;
 }
 
 int64_t Engine::lastframe_duration_nsec() {
@@ -430,4 +538,4 @@ void Engine::move_phys_camera(float x, float y, float amount) {
 	this->engine_coord_data->camgame_phys += cam_delta.to_phys3();
 }
 
-} //namespace openage
+} // openage

@@ -3,7 +3,7 @@
 #include <memory>
 
 #include "../terrain/terrain_object.h"
-#include "../datamanager.h"
+#include "../game_spec.h"
 #include "ability.h"
 #include "action.h"
 #include "command.h"
@@ -93,6 +93,19 @@ void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 		to_modify.push_action(std::make_unique<MoveAction>(&to_modify, target->get_ref(), radius));
 	}
 }
+
+SetPointAbility::SetPointAbility() {}
+
+bool SetPointAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	return cmd.has_position() &&
+	       to_modify.has_attribute(attr_type::building);
+}
+
+void SetPointAbility::invoke(Unit &to_modify, const Command &cmd, bool) {
+	auto &build_attr = to_modify.get_attribute<attr_type::building>();
+	build_attr.gather_point = cmd.position();
+}
+
 
 GarrisonAbility::GarrisonAbility(Sound *s)
 	:

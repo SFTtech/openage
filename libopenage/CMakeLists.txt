@@ -9,14 +9,17 @@ declare_binary(libopenage)
 
 add_sources(libopenage
 	assetmanager.cpp
-	callbacks.cpp
-	datamanager.cpp
 	engine.cpp
 	font.cpp
+	game_control.cpp
 	game_main.cpp
+	game_renderer.cpp
 	game_save.cpp
+	game_spec.cpp
+	generator.cpp
 	handlers.cpp
 	main.cpp
+	options.cpp
 	player.cpp
 	screenshot.cpp
 	texture.cpp
@@ -36,9 +39,9 @@ add_subdirectory("coord")
 add_subdirectory("crossplatform")
 add_subdirectory("datastructure")
 add_subdirectory("error")
+add_subdirectory("input")
 add_subdirectory("log")
 add_subdirectory("job")
-add_subdirectory("keybinds")
 add_subdirectory("pathfinding")
 add_subdirectory("pyinterface")
 add_subdirectory("shader")

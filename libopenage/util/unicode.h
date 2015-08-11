@@ -9,9 +9,9 @@
 namespace openage {
 namespace util {
 
-//we could simply use wchar_t here, but legend says there are operating
-//systems where for some sick reason wchar_t might be only 16 bits wide.
-//also, a signed type is useful here to mark errors/illegal characters.
+// we could simply use wchar_t here, but legend says there are operating
+// systems where for some sick reason wchar_t might be only 16 bits wide.
+// also, a signed type is useful here to mark errors/illegal characters.
 using codepoint_t = int32_t;
 
 class utf8_decoder {
@@ -92,7 +92,6 @@ size_t utf8_decode(const unsigned char *s, size_t len, codepoint_t *outbuf);
  */
 size_t utf8_encode(int cp, char *outbuf);
 
-} //namespace util
-} //namespace openage
+}} // openage::util
 
 #endif

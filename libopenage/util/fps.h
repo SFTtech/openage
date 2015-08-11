@@ -32,7 +32,6 @@ private:
 	Timer frame_timer;
 };
 
-} //namespace util
-} //namespace openage
+}} // openage::util
 
 #endif

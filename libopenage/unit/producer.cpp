@@ -5,7 +5,7 @@
 #include "../terrain/terrain_object.h"
 #include "../terrain/terrain_outline.h"
 #include "../util/strings.h"
-#include "../datamanager.h"
+#include "../game_spec.h"
 #include "../log/log.h"
 #include "ability.h"
 #include "action.h"
@@ -47,13 +47,13 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 	return result;
 }
 
-ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
+ObjectProducer::ObjectProducer(GameSpec &spec, const gamedata::unit_object *ud)
 	:
-	datamanager(dm),
+	dataspec(spec),
 	unit_data(*ud),
 	terrain_outline{nullptr},
-	default_tex{dm.get_unit_texture(ud->graphic_standing0)},
-	dead_unit_producer{dm.get_type(ud->dead_unit_id)} {
+	default_tex{spec.get_unit_texture(ud->graphic_standing0)},
+	dead_unit_producer{spec.get_type(ud->dead_unit_id)} {
 
 	// for now just look for type names ending with "_D"
 	this->decay = unit_data.name.substr(unit_data.name.length() - 2) == "_D";
@@ -70,8 +70,8 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	if (dying_sound == -1) {
 		dying_sound = 323; //generic explosion sound
 	}
-	on_create = dm.get_sound(creation_sound);
-	on_destroy = dm.get_sound(dying_sound);
+	on_create = spec.get_sound(creation_sound);
+	on_destroy = spec.get_sound(dying_sound);
 
 	// convert the float to the discrete foundation size...
 	this->foundation_size = {
@@ -88,7 +88,7 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	}
 
 	// graphic set
-	auto standing = dm.get_unit_texture(this->unit_data.graphic_standing0);
+	auto standing = spec.get_unit_texture(this->unit_data.graphic_standing0);
 	if (!standing) {
 
 		// indicates problems with data converion
@@ -96,7 +96,7 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 			<< " has invalid graphic data, try reconverting the data");
 	}
 	this->graphics[graphic_type::standing] = standing;
-	auto dying_tex = dm.get_unit_texture(this->unit_data.graphic_dying0);
+	auto dying_tex = spec.get_unit_texture(this->unit_data.graphic_dying0);
 	if (dying_tex) {
 		this->graphics[graphic_type::dying] = dying_tex;
 	}
@@ -106,12 +106,12 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 	this->graphics[graphic_type::work] = this->graphics[graphic_type::standing];
 
 	// pull extra graphics from unit commands
-	auto cmds = dm.get_command_data(this->unit_data.id0);
+	auto cmds = spec.get_command_data(this->unit_data.id0);
 	for (auto cmd : cmds) {
 
 		// same attack / work graphic
 		if (cmd->action_graphic_id == -1 && cmd->proceed_graphic_id > 0) {
-			auto task = dm.get_unit_texture(cmd->proceed_graphic_id);
+			auto task = spec.get_unit_texture(cmd->proceed_graphic_id);
 			if (task) {
 				this->graphics[graphic_type::work] = task;
 				this->graphics[graphic_type::attack] = task;
@@ -120,8 +120,8 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 
 		// seperate work and attack graphics
 		if (cmd->action_graphic_id > 0 && cmd->proceed_graphic_id > 0 ) {
-			auto attack = dm.get_unit_texture(cmd->proceed_graphic_id);
-			auto work = dm.get_unit_texture(cmd->action_graphic_id);
+			auto attack = spec.get_unit_texture(cmd->proceed_graphic_id);
+			auto work = spec.get_unit_texture(cmd->action_graphic_id);
 			if (attack) {
 				this->graphics[graphic_type::attack] = attack;
 			}
@@ -132,7 +132,7 @@ ObjectProducer::ObjectProducer(DataManager &dm, const gamedata::unit_object *ud)
 
 		// villager carrying resources graphics
 		if (cmd->carrying_graphic_id > 0) {
-			auto carry = dm.get_unit_texture(cmd->carrying_graphic_id);
+			auto carry = spec.get_unit_texture(cmd->carrying_graphic_id);
 			this->graphics[graphic_type::carrying] = carry;
 			if (carry) {
 
@@ -167,34 +167,34 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	unit->graphics = &this->graphics;
 
 	// colour
-	unit->add_attribute(new Attribute<attr_type::owner>(player));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::owner>>(player));
 
 	// hitpoints if available
 	if (this->unit_data.hit_points > 0) {
-		unit->add_attribute(new Attribute<attr_type::hitpoints>(this->unit_data.hit_points));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(this->unit_data.hit_points));
 	}
 
 	// collectable resources
 	if (this->unit_data.unit_class == gamedata::unit_classes::TREES) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::wood, 125));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::wood, 125));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::BERRY_BUSH) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::food, 100));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 100));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::SEA_FISH) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::food, 200));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 200));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::PREY_ANIMAL) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::food, 140));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 140));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::SHEEP) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::food, 100));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 100));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::GOLD_MINE) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::gold, 800));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::gold, 800));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::STONE_MINE) {
-		unit->add_attribute(new Attribute<attr_type::resource>(game_resource::stone, 350));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::stone, 350));
 	}
 
 	// decaying units have a timed lifespan
@@ -298,18 +298,18 @@ TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, 
 	return nullptr;
 }
 
-MovableProducer::MovableProducer(DataManager &dm, const gamedata::unit_movable *um)
+MovableProducer::MovableProducer(GameSpec &spec, const gamedata::unit_movable *um)
 	:
-	ObjectProducer(dm, um),
+	ObjectProducer(spec, um),
 	unit_data(*um),
-	on_move{dm.get_sound(this->unit_data.move_sound)},
-	on_attack{dm.get_sound(this->unit_data.move_sound)},
-	projectile{dm.get_type(this->unit_data.projectile_unit_id)} {
+	on_move{spec.get_sound(this->unit_data.move_sound)},
+	on_attack{spec.get_sound(this->unit_data.move_sound)},
+	projectile{spec.get_type(this->unit_data.projectile_unit_id)} {
 
 	// extra graphics if available
 	// villagers have invalid attack and walk graphics
 	// it seems these come from the command data instead
-	auto walk = dm.get_unit_texture(this->unit_data.walking_graphics0);
+	auto walk = spec.get_unit_texture(this->unit_data.walking_graphics0);
 	if (!walk) {
 
 		// use standing instead
@@ -322,7 +322,7 @@ MovableProducer::MovableProducer(DataManager &dm, const gamedata::unit_movable *
 		this->graphics[graphic_type::carrying] = walk;
 	}
 
-	auto attack = dm.get_unit_texture(this->unit_data.attack_graphic);
+	auto attack = spec.get_unit_texture(this->unit_data.attack_graphic);
 	if (attack && attack->is_valid()) {
 		this->graphics[graphic_type::attack] = attack;
 	}
@@ -345,7 +345,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	 * basic attributes
 	 */
 	if (!unit->has_attribute(attr_type::direction)) {
-		unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::direction>>(coord::phys3_delta{ 1, 0, 0 }));
 	}
 
 	/*
@@ -353,17 +353,17 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	 * where 1.5 in game seconds pass in 1 real second
 	 */
 	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;
-	unit->add_attribute(new Attribute<attr_type::speed>(sp));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::speed>>(sp));
 
 	// projectile of melee attacks
 	if (this->unit_data.projectile_unit_id > 0 && this->projectile) {
 
 		// calculate requirements for ranged attacks
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
-		unit->add_attribute(new Attribute<attr_type::attack>(this->projectile, range_phys, 48000, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(this->projectile, range_phys, 48000, 1, this->graphics));
 	}
 	else {
-		unit->add_attribute(new Attribute<attr_type::attack>(nullptr, 0, 0, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(nullptr, 0, 0, 1, this->graphics));
 	}
 }
 
@@ -371,9 +371,9 @@ TerrainObject *MovableProducer::place(Unit *unit, std::shared_ptr<Terrain> terra
 	return ObjectProducer::place(unit, terrain, init_pos);
 }
 
-LivingProducer::LivingProducer(DataManager &dm, const gamedata::unit_living *ud)
+LivingProducer::LivingProducer(GameSpec &spec, const gamedata::unit_living *ud)
 	:
-	MovableProducer(dm, ud),
+	MovableProducer(spec, ud),
 	unit_data(*ud) {
 
 	// extra abilities
@@ -391,7 +391,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 
 	// add worker attributes
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
-		unit->add_attribute(new Attribute<attr_type::gatherer>());
+		unit->add_attribute(std::make_shared<Attribute<attr_type::gatherer>>());
 
 		// add graphic ids for resource actions
 		auto &gather_attr = unit->get_attribute<attr_type::gatherer>();
@@ -404,29 +404,29 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 		if (this->unit_data.id0 == 83) {
 
 			// male graphics
-			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->datamanager.get_type(156); // builder 118
-			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->datamanager.get_type(120); // forager
-			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->datamanager.get_type(592); // sheperd
-			gather_attr.graphics[gamedata::unit_classes::TREES] = this->datamanager.get_type(123); // woodcutter
-			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->datamanager.get_type(579); // gold miner
-			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->datamanager.get_type(124); // stone miner
+			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->dataspec.get_type(156); // builder 118
+			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->dataspec.get_type(120); // forager
+			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->dataspec.get_type(592); // sheperd
+			gather_attr.graphics[gamedata::unit_classes::TREES] = this->dataspec.get_type(123); // woodcutter
+			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->dataspec.get_type(579); // gold miner
+			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->dataspec.get_type(124); // stone miner
 
 		}
 		else {
 
 			// female graphics
-			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->datamanager.get_type(222); // builder 212
-			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->datamanager.get_type(354); // forager
-			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->datamanager.get_type(590); // sheperd
-			gather_attr.graphics[gamedata::unit_classes::TREES] = this->datamanager.get_type(218); // woodcutter
-			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->datamanager.get_type(581); // gold miner
-			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->datamanager.get_type(220); // stone miner
+			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->dataspec.get_type(222); // builder 212
+			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->dataspec.get_type(354); // forager
+			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->dataspec.get_type(590); // sheperd
+			gather_attr.graphics[gamedata::unit_classes::TREES] = this->dataspec.get_type(218); // woodcutter
+			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->dataspec.get_type(581); // gold miner
+			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->dataspec.get_type(220); // stone miner
 		}
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 		unit->give_ability(std::make_shared<BuildAbility>(this->on_attack));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::FISHING_BOAT) {
-		unit->add_attribute(new Attribute<attr_type::gatherer>());
+		unit->add_attribute(std::make_shared<Attribute<attr_type::gatherer>>());
 
 		// add fishing abilites
 		auto &gather_attr = unit->get_attribute<attr_type::gatherer>();
@@ -443,15 +443,15 @@ TerrainObject *LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrai
 	return MovableProducer::place(unit, terrain, init_pos);
 }
 
-BuildingProducer::BuildingProducer(DataManager &dm, const gamedata::unit_building *ud)
+BuildingProducer::BuildingProducer(GameSpec &spec, const gamedata::unit_building *ud)
 	:
-	datamanager(dm),
+	dataspec(spec),
 	unit_data{*ud},
-	texture{dm.get_unit_texture(ud->graphic_standing0)},
-	destroyed{dm.get_unit_texture(ud->graphic_dying0)},
-	trainable1{dm.get_type(83)}, // 83 = m villager
-	trainable2{dm.get_type(293)}, // 293 = f villager
-	projectile{dm.get_type(this->unit_data.projectile_unit_id)},
+	texture{spec.get_unit_texture(ud->graphic_standing0)},
+	destroyed{spec.get_unit_texture(ud->graphic_dying0)},
+	trainable1{spec.get_type(83)}, // 83 = m villager
+	trainable2{spec.get_type(293)}, // 293 = f villager
+	projectile{spec.get_type(this->unit_data.projectile_unit_id)},
 	foundation_terrain{ud->terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
 
@@ -467,8 +467,8 @@ BuildingProducer::BuildingProducer(DataManager &dm, const gamedata::unit_buildin
 	if (dying_sound == -1) {
 		dying_sound = 323; //generic explosion sound
 	}
-	on_create = dm.get_sound(creation_sound);
-	on_destroy = dm.get_sound(dying_sound);
+	on_create = spec.get_sound(creation_sound);
+	on_destroy = spec.get_sound(dying_sound);
 
 	// convert the float to the discrete foundation size...
 	this->foundation_size = {
@@ -477,10 +477,10 @@ BuildingProducer::BuildingProducer(DataManager &dm, const gamedata::unit_buildin
 	};
 
 	// graphic set
-	this->graphics[graphic_type::construct] = dm.get_unit_texture(ud->construction_graphic_id);
-	this->graphics[graphic_type::standing] = dm.get_unit_texture(ud->graphic_standing0);
-	this->graphics[graphic_type::attack] = dm.get_unit_texture(ud->graphic_standing0);
-	auto dying_tex = dm.get_unit_texture(ud->graphic_dying0);
+	this->graphics[graphic_type::construct] = spec.get_unit_texture(ud->construction_graphic_id);
+	this->graphics[graphic_type::standing] = spec.get_unit_texture(ud->graphic_standing0);
+	this->graphics[graphic_type::attack] = spec.get_unit_texture(ud->graphic_standing0);
+	auto dying_tex = spec.get_unit_texture(ud->graphic_dying0);
 	if (dying_tex) {
 		this->graphics[graphic_type::dying] = dying_tex;
 	}
@@ -510,30 +510,32 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	unit->unit_class = this->unit_data.unit_class;
 	unit->graphics = &this->graphics;
 
-	auto player_attr = new Attribute<attr_type::owner>(player);
+	auto player_attr = std::make_shared<Attribute<attr_type::owner>>(player);
 	unit->add_attribute(player_attr);
 
 	// building specific attribute
-	auto build_attr = new Attribute<attr_type::building>();
+	auto build_attr = std::make_shared<Attribute<attr_type::building>>();
 	build_attr->foundation_terrain = this->foundation_terrain;
 	build_attr->pp = trainable2;
+	build_attr->gather_point = unit->location->pos.draw;
 	build_attr->completion_state = this->enable_collisions? object_state::placed : object_state::placed_no_collision;
 	unit->add_attribute(build_attr);
 
 	// garrison and hp for all buildings
-	unit->add_attribute(new Attribute<attr_type::garrison>());
-	unit->add_attribute(new Attribute<attr_type::hitpoints>(this->unit_data.hit_points));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::garrison>>());
+	unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(this->unit_data.hit_points));
 
 	bool has_destruct_graphic = this->destroyed != nullptr;
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
 
 	if (this->unit_data.projectile_unit_id > 0 && this->projectile) {
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
-		unit->add_attribute(new Attribute<attr_type::attack>(this->projectile, range_phys, 350000, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(this->projectile, range_phys, 350000, 1, this->graphics));
 		unit->give_ability(std::make_shared<AttackAbility>());
 	}
 
 	// building can train new units and ungarrison
+	unit->give_ability(std::make_shared<SetPointAbility>());
 	unit->give_ability(std::make_shared<TrainAbility>());
 	unit->give_ability(std::make_shared<UngarrisonAbility>());
 }
@@ -602,10 +604,25 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 }
 
 TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
-	u.log(MSG(dbg) << "adding annex " << annex_id);
 
 	// find annex foundation size
-	auto b = datamanager.get_building_data(annex_id);
+	auto b = this->dataspec.get_building_data(annex_id);
+	if (b) {
+		u.log(MSG(dbg) << "Adding annex " << annex_id);
+	}
+	else {
+		u.log(MSG(warn) << "Invalid annex data id " << annex_id);
+		return nullptr;
+	}
+
+	// for use in lambda drawing functions
+	auto annex_type = this->dataspec.get_type(annex_id);
+	if (!annex_type) {
+		u.log(MSG(warn) << "Invalid annex type id " << annex_id);
+		return nullptr;
+	}
+
+	// foundation size
 	coord::tile_delta annex_foundation = {
 		static_cast<int>(b->radius_size0 * 2),
 		static_cast<int>(b->radius_size1 * 2),
@@ -620,9 +637,6 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	TerrainObject *annex_loc = u.location->make_annex<SquareObject>(annex_foundation);
 	object_state state = c? object_state::placed : object_state::placed_no_collision;
 	annex_loc->place(t, start_tile, state);
-
-	// weak ptr for use in lambda drawing functions
-	auto annex_type = datamanager.get_type(annex_id);
 
 	// create special drawing functions for annexes,
 	annex_loc->draw = [annex_loc, annex_type, &u, c]() {
@@ -642,12 +656,12 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	return annex_loc;
 }
 
-ProjectileProducer::ProjectileProducer(DataManager &dm, const gamedata::unit_projectile *pd)
+ProjectileProducer::ProjectileProducer(GameSpec &spec, const gamedata::unit_projectile *pd)
 	:
 	unit_data{*pd},
-	tex{dm.get_unit_texture(this->unit_data.graphic_standing0)},
-	sh{dm.get_unit_texture(3379)}, // 3379 = general arrow shadow
-	destroyed{dm.get_unit_texture(this->unit_data.graphic_dying0)} {
+	tex{spec.get_unit_texture(this->unit_data.graphic_standing0)},
+	sh{spec.get_unit_texture(3379)}, // 3379 = general arrow shadow
+	destroyed{spec.get_unit_texture(this->unit_data.graphic_dying0)} {
 
 	// graphic set
 	this->graphics[graphic_type::standing] = this->tex;
@@ -679,9 +693,9 @@ void ProjectileProducer::initialise(Unit *unit, Player &) {
 
 	// projectile speed
 	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;
-	unit->add_attribute(new Attribute<attr_type::speed>(sp));
-	unit->add_attribute(new Attribute<attr_type::projectile>(this->unit_data.projectile_arc));
-	unit->add_attribute(new Attribute<attr_type::direction>(coord::phys3_delta{ 1, 0, 0 }));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::speed>>(sp));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::projectile>>(this->unit_data.projectile_arc));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::direction>>(coord::phys3_delta{ 1, 0, 0 }));
 
 	// if destruction graphic is available
 	if (this->destroyed) {

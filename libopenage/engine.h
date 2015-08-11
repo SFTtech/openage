@@ -18,8 +18,10 @@
 #include "coord/window.h"
 #include "font.h"
 #include "handlers.h"
+#include "options.h"
 #include "job/job_manager.h"
-#include "keybinds/keybind_manager.h"
+#include "input/input_manager.h"
+#include "util/externalprofiler.h"
 #include "util/dir.h"
 #include "util/fps.h"
 #include "util/profiler.h"
@@ -31,6 +33,11 @@ class DrawHandler;
 class TickHandler;
 class ResizeHandler;
 
+class Generator;
+class GameSpec;
+class GameMain;
+class Player;
+
 struct coord_data {
 	coord::window window_size{800, 600};
 	coord::phys3 camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0};
@@ -39,14 +46,12 @@ struct coord_data {
 	coord::camgame_delta tile_halfsize{48, 24};  // TODO: get from convert script
 };
 
-class GameMain;
-
 /**
  * main engine container.
  *
  * central foundation for everything the openage engine is capable of.
  */
-class Engine : public ResizeHandler {
+class Engine : public ResizeHandler, public options::OptionNode {
 	friend class GameMain;
 private:
 	/**
@@ -61,7 +66,7 @@ public:
 	/**
 	 * Returns a pointer to the engines coordinate data.
 	 */
-	static coord_data* get_coord_data( void );
+	static coord_data* get_coord_data();
 
 	/**
 	 * singleton constructor, use this to create the engine instance.
@@ -130,7 +135,10 @@ public:
 	 * window resize handler function.
 	 * recalculates opengl settings like viewport and projection matrices.
 	 */
-	bool on_resize(coord::window new_size);
+	bool on_resize(coord::window new_size) override;
+
+	void start_game(const Generator &generator);
+	void end_game();
 
 	/**
 	 * draw the current frames per second number on screen.
@@ -175,6 +183,17 @@ public:
 	util::Dir *get_data_dir();
 
 	/**
+	 * return currently running game or null if a game is not
+	 * currently running
+	 */
+	GameMain *get_game();
+
+	/**
+	 * return the current player or null if no active game
+	 */
+	Player *player_focus() const;
+
+	/**
 	 * return this engine's job manager.
 	 */
 	job::JobManager *get_job_manager();
@@ -192,7 +211,7 @@ public:
 	/**
 	* return this engine's keybind manager.
 	*/
-	keybinds::KeybindManager &get_keybind_manager();
+	input::InputManager &get_input_manager();
 
 	/**
 	 * return the number of nanoseconds that have passed
@@ -221,12 +240,12 @@ public:
 	/**
 	 * FPS and game version are drawn when this is true.
 	 */
-	bool drawing_debug_overlay;
+	options::Var<bool> drawing_debug_overlay;
 
 	/**
 	* this allows to disable drawing of every registered hud.
 	*/
-	bool drawing_huds;
+	options::Var<bool> drawing_huds;
 
 	/**
 	 * Holds the data for the coord system.
@@ -237,7 +256,12 @@ public:
 	 * Holds the current player color/number
 	 * is a number between 1 and 8
 	 */
-	 int current_player;
+	options::Var<int> current_player;
+
+	/**
+	 * profiler used by the engine
+	 */
+	util::ExternalProfiler external_profiler;
 
 	 /**
 	  * TODO add docstring
@@ -288,6 +312,11 @@ private:
 	std::vector<ResizeHandler *> on_resize_handler;
 
 	/**
+	 * the currently running game
+	 */
+	std::unique_ptr<GameMain> game;
+
+	/**
 	 * the frame counter measuring fps.
 	 */
 	util::FrameCounter fps_counter;
@@ -311,7 +340,7 @@ private:
 	/**
 	 * the engine's keybind manager.
 	 */
-	keybinds::KeybindManager keybind_manager;
+	input::InputManager input_manager;
 
 	/**
 	 * the text fonts to be used for (can you believe it?) texts.

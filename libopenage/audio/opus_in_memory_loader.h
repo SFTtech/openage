@@ -24,7 +24,7 @@ public:
 	OpusInMemoryLoader(const std::string &path);
 	virtual ~OpusInMemoryLoader() = default;
 
-	virtual pcm_data_t get_resource();
+	pcm_data_t get_resource() override;
 };
 
 }

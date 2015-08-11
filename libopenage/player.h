@@ -14,14 +14,22 @@ class Unit;
 
 class Player {
 public:
-	Player(unsigned int number);
+	Player(unsigned int number, std::string name);
 
+	/**
+	 * values 0 .. player count - 1
+	 */
 	const unsigned int player_number;
 
 	/**
+	 * values 1 .. player count
 	 * would be better to have rgb color value
 	 */
 	const unsigned int color;
+
+	/**
+	 * civ index of this player
+	 */
 	const unsigned int civ;
 
 	const std::string name;
@@ -40,6 +48,22 @@ public:
 	 * this player owns the specified unit
 	 */
 	bool owns(Unit &) const;
+
+	/**
+	 * add to stockpile
+	 */
+	void recieve(const game_resource resource, double amount);
+
+	/**
+	 * remove from stockpile if available
+	 * TODO parameter uses set of resources
+	 */
+	bool deduct(const game_resource resource, double amount);
+
+	/**
+	 * current stockpile amount
+	 */
+	double amount(const game_resource resource) const;
 
 private:
 	std::unordered_map<game_resource, double> resources;

@@ -64,5 +64,4 @@ Shader::~Shader() {
 	glDeleteShader(this->id);
 }
 
-} //namespace shader
-} //namespace openage
+}} // openage::shader

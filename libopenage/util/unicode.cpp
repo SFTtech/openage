@@ -18,10 +18,10 @@ bool utf8_decoder::feed(char c) {
 	bool result = true;
 
 	if ((c & (1 << 7)) == 0) {
-		//single-byte character
+		// single-byte character
 		if (remaining) {
-			//successful re-synchronization
-			//(current multi-byte character discarded)
+			// successful re-synchronization
+			// (current multi-byte character discarded)
 			result = false;
 		}
 
@@ -29,34 +29,34 @@ bool utf8_decoder::feed(char c) {
 		out = c;
 	} else if (c & (1 << 6)) {
 		if (remaining) {
-			//successful re-synchronization
-			//(current multi-byte character discarded)
+			// successful re-synchronization
+			// (current multi-byte character discarded)
 			result = false;
 		}
 
-		//beginning of a multi-byte character
+		// beginning of a multi-byte character
 		if ((c & (1 << 5)) == 0) {
-			//2-byte character
+			// 2-byte character
 			remaining = 1;
 			out = c & ((1 << 5) - 1);
 		} else if ((c & (1 << 4)) == 0) {
-			//3-byte character
+			// 3-byte character
 			remaining = 2;
 			out = c & ((1 << 4) - 1);
 		} else if ((c & (1 << 3)) == 0) {
-			//4-byte character
+			// 4-byte character
 			remaining = 3;
 			out = c & ((1 << 3) - 1);
 		} else {
-			//no 5- or 6-byte characters exist in utf8
+			// no 5- or 6-byte characters exist in utf8
 			remaining = 0;
 			out = -1;
 			result = false;
 		}
 	} else {
-		//inside a multi-byte character
+		// inside a multi-byte character
 		if (!remaining) {
-			//we expected the start of a new character
+			// we expected the start of a new character
 			result = false;
 		}
 
@@ -74,11 +74,11 @@ size_t utf8_decode(const unsigned char *s, size_t len, int32_t *outbuf) {
 
 	while(len > 0) {
 		if (s[0] < 0x80) {
-			//1-byte (ASCII) character
+			// 1-byte (ASCII) character
 			w = *s;
 			advance = 1;
 		} else if (len >= 2 && s[0] >= 0xc2 && s[0] <= 0xdf && (s[1] & 0xc0) == 0x80) {
-			//2-byte character
+			// 2-byte character
 			w = ((s[0] & 0x1f) << 6) | (s[1] & 0x3f);
 			advance = 2;
 		} else if (len >= 3 &&
@@ -87,7 +87,7 @@ size_t utf8_decode(const unsigned char *s, size_t len, int32_t *outbuf) {
 			|| (s[0] == 0xed && s[1] >= 0x80 && s[1] <= 0x9f)
 			|| (s[0] >= 0xee && s[0] <= 0xef && s[1] >= 0x80 && s[1] <= 0xbf))
 			&& (s[2] & 0xc0) == 0x80) {
-			//3-byte character
+			// 3-byte character
 			w = ((s[0] & 0x0f) << 12) | ((s[1] & 0x3f) << 6) | (s[2] & 0x3f);
 			advance = 3;
 		} else if (len >= 4 &&
@@ -96,11 +96,11 @@ size_t utf8_decode(const unsigned char *s, size_t len, int32_t *outbuf) {
 			|| (s[0] == 0xf4 && s[1] >= 0x80 && s[1] <= 0x8f))
 			&& (s[2] & 0xc0) == 0x80
 			&& (s[3] & 0xc0) == 0x80) {
-			//4-byte character
+			// 4-byte character
 			w = ((s[0] & 0x07) << 18) | ((s[1] & 0x3f) << 12) | ((s[2] & 0x3f) << 6) | (s[3] & 0x3f);
 			advance = 4;
 		} else {
-			//decoding error; try with next byte
+			// decoding error; try with next byte
 			w = 0xfffd;
 			advance = 1;
 		}
@@ -117,7 +117,7 @@ size_t utf8_decode(const unsigned char *s, size_t len, int32_t *outbuf) {
 
 size_t utf8_encode(int cp, char *outbuf) {
 	if (cp < 0) {
-		//illegal codepoint (negative)
+		// illegal codepoint (negative)
 		outbuf[0] = '\0';
 		return 0;
 	} else if (cp < 0x80) {
@@ -143,11 +143,10 @@ size_t utf8_encode(int cp, char *outbuf) {
 		outbuf[0] = 0xf0 | cp;
 		return 4;
 	} else {
-		//illegal codepoint: unicode is only defined up to 0x1fffff
+		// illegal codepoint: unicode is only defined up to 0x1fffff
 		outbuf[0] = '\0';
 		return 0;
 	}
 }
 
-} //namespace util
-} //namespace openage
+}} // openage::util

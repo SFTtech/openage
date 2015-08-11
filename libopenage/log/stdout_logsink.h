@@ -13,7 +13,7 @@ namespace log {
  * Simple logsink that prints messages to stdout (via std::cout).
  */
 class StdOutSink : public LogSink {
-	virtual void output_log_message(const message &msg, LogSource *source);
+	void output_log_message(const message &msg, LogSource *source) override;
 };
 
 

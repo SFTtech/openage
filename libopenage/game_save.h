@@ -12,6 +12,9 @@ class Terrain;
 
 namespace gameio {
 
+const std::string save_label = "openage-save-file";
+const std::string save_version = "v0.1";
+
 /**
  * a game save function that sometimes works
  */
@@ -22,7 +25,6 @@ void save(openage::GameMain *, std::string fname);
  */
 void load(openage::GameMain *, std::string fname);
 
-} //namespace gameio
-} //namespace openage
+}} // openage::gameio
 
 #endif
