@@ -36,10 +36,14 @@ def get_string_resources(srcdir):
     else:
         count = 0
         from .hdlanguagefile import read_hd_language_file
-        for lang in srcdir.listdirs("bin"):
+        for lang in srcdir["resources"].list():
             try:
-                langfilename = ["bin", lang, lang + "-language.txt"]
-                with srcdir.open(langfilename, 'rb') as langfile:
+                if lang == b'_common':
+                    continue
+                langfilename = ["resources", lang.decode(), "strings", "key-value",
+                                "key-value-strings-utf8.txt"]
+
+                with srcdir[langfilename].open('rb') as langfile:
                     stringres.fill_from(read_hd_language_file(langfile, lang))
 
                 count += 1
@@ -115,7 +119,13 @@ def convert_metadata(args):
 
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
-    palette = ColorTable(args.srcdir["interface/50500.bin"].open("rb").read())
+    # `.bin` files are renamed `.bina` in HD version 4
+    if args.srcdir["AoK HD.exe"].exists:
+        palette_path = "interface/50500.bina"
+    else:
+        palette_path = "interface/50500.bin"
+
+    palette = ColorTable(args.srcdir[palette_path].open("rb").read())
     # store for use by convert_media
     args.palette = palette
 
@@ -169,6 +179,8 @@ def convert_media(args):
     for dirname in ['sounds', 'graphics', 'terrain']:
         for filepath in args.srcdir[dirname].iterdir():
             if filepath.suffix in ignored_suffixes:
+                continue
+            elif filepath.is_dir():
                 continue
 
             files_to_convert.append(filepath)

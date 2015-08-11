@@ -47,18 +47,24 @@ def mount_drs_archives(srcdir):
 
         result.joinpath(target).mount(DRS(drspath.open('rb')).root)
 
-    mount_drs("data/graphics.drs", "graphics")
-    mount_drs("data/interfac.drs", "interface")
-
-    mount_drs("data/sounds.drs", "sounds")
-    mount_drs("data/sounds_x1.drs", "sounds")
-
-    # In the HD edition, gamedata.drs has been merged into gamedata_x1.drs
-    mount_drs("data/gamedata.drs", "gamedata", ignore_nonexistant=True)
-    mount_drs("data/gamedata_x1.drs", "gamedata")
-    mount_drs("data/gamedata_x1_p1.drs", "gamedata")
-
-    mount_drs("data/terrain.drs", "terrain")
+    if result['AoK HD.exe'].exists():
+        # Mounts for HD edition version 4.0
+        result['graphics'].mount(srcdir['resources/_common/drs/graphics'])
+        result['interface'].mount(srcdir['resources/_common/drs/interface'])
+        result['sounds'].mount(srcdir['resources/_common/drs/sounds'])
+        result['gamedata'].mount(srcdir['resources/_common/drs/gamedata'])
+        result['terrain'].mount(srcdir['resources/_common/drs/terrain'])
+        result['data'].mount(srcdir['/resources/_common/dat'])
+    else:
+        # Mounts for AoC
+        mount_drs("data/graphics.drs", "graphics")
+        mount_drs("data/interfac.drs", "interface")
+        mount_drs("data/sounds.drs", "sounds")
+        mount_drs("data/sounds_x1.drs", "sounds")
+        mount_drs("data/terrain.drs", "terrain")
+        mount_drs("data/gamedata.drs", "gamedata")
+        mount_drs("data/gamedata_x1.drs", "gamedata")
+        mount_drs("data/gamedata_x1_p1.drs", "gamedata")
 
     return result
 
@@ -82,7 +88,10 @@ def convert_assets(assets, args, srcdir=None):
     if srcdir is None:
         srcdir = acquire_conversion_source_dir()
 
-    testfile = 'data/empires2_x1_p1.dat'
+    if srcdir['AoK HD.exe'].exists():
+        testfile = 'resources/_common/dat/empires2_x1_p1.dat'
+    else:
+        testfile = 'data/empires2_x1_p1.dat'
     if not srcdir.joinpath(testfile).is_file():
         print("file not found: " + testfile)
         return False
