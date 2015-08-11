@@ -2,12 +2,12 @@
 
 #include "file.h"
 
+#include <cstdio>
+#include <fstream>
+#include <string>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <stdio.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
 
 #include "../error/error.h"
 
@@ -29,66 +29,26 @@ ssize_t file_size(Dir basedir, const std::string &fname) {
 }
 
 
-ssize_t read_whole_file(char **result, const std::string &filename) {
-	return read_whole_file(result, filename.c_str());
-}
+std::string read_whole_file(const std::string &filename) {
+	std::ifstream file{filename};
 
-ssize_t read_whole_file(char **result, const char *filename) {
+	std::string str{
+		(std::istreambuf_iterator<char>(file)),
+		std::istreambuf_iterator<char>()
+	};
 
-	//get the file size
-	ssize_t content_length = file_size(filename);
-
-	if (content_length < 0) {
-		throw Error(MSG(err) << "File nonexistant: " << filename);
-	}
-
-	//open the file
-	FILE *filehandle = fopen(filename, "r");
-	if (filehandle == NULL) {
-		throw Error(MSG(err) << "Failed to open file: " << filename);
-	}
-
-	//allocate filesize + nullbyte
-	*result = new char[content_length + 1];
-
-	//read the whole content
-	if (content_length != (ssize_t)fread(*result, 1, content_length, filehandle)) {
-		fclose(filehandle);
-		throw Error(MSG(err) << "Failed to read file: " << filename);
-	} else {
-		fclose(filehandle);
-	}
-
-	//make sure 0-byte is at the end
-	(*result)[content_length] = '\0';
-
-	//return the file size
-	return content_length;
+	return str;
 }
 
 std::vector<std::string> file_get_lines(const std::string &file_name) {
-	char *file_content;
-	ssize_t fsize = util::read_whole_file(&file_content, file_name);
+	std::string line;
+	std::vector<std::string> result{};
+	std::ifstream file{file_name};
 
-	char *file_seeker = file_content;
-	char *current_line = file_content;
-
-	auto result = std::vector<std::string>{};
-
-	while ((size_t)file_seeker <= ((size_t)file_content + fsize)
-	       && *file_seeker != '\0') {
-
-		if (*file_seeker == '\n') {
-			*file_seeker = '\0';
-
-			result.push_back(std::string{current_line});
-
-			current_line = file_seeker + 1;
-		}
-		file_seeker += 1;
+	while (std::getline(file, line)) {
+		result.push_back(line);
 	}
 
-	delete[] file_content;
 	return result;
 }
 
