@@ -52,15 +52,15 @@ Our goals specifically *exclude*:
 Current State of the Project
 ----------------------------
 
- - What features are currently implemented?
+###What features are currently implemented?
 
 See [doc/status.md](/doc/status.md).
 
- - What can I do once I start the game?
+###What can I do once I start the game?
 
 See [docs/usage.md](/doc/usage.md).
 
- - What's the plan?
+###What's the plan?
 
 See [doc/milestones.md](/doc/milestones.md). We also have a [list of crazy xor good ideas](/doc/ideas).
 
@@ -68,15 +68,15 @@ See [doc/milestones.md](/doc/milestones.md). We also have a [list of crazy xor g
 Dependencies, Building and Running
 ----------------------------------
 
- - How do I get this to run on my box?
+###How do I get this to run on my box?
 
 See [doc/building.md](/doc/building.md).
 
- - I compiled everything. Now how do I run it?
+###I compiled everything. Now how do I run it?
 
 You first need to use [the convert script](/doc/media_convert.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `./openage --data=assets`.
 
- - Waaaaaah! It
+###Waaaaaah! It
   - segfaults
   - prints error messages I don't want to read
   - ate my dog
@@ -92,11 +92,11 @@ ATM, openage is mostly designed to be built and run inside the development folde
 Development Process
 -------------------
 
-* What does openage development look like in practice?
+###What does openage development look like in practice?
 
 [doc/development.md](/doc/development.md).
 
-* Can I help?
+###Can I help?
 
 [doc/contributing.md](/doc/contributing.md).
 
