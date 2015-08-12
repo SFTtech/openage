@@ -120,7 +120,7 @@ def convert_metadata(args):
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
     # `.bin` files are renamed `.bina` in HD version 4
-    if args.srcdir["AoK HD.exe"].exists:
+    if args.srcdir["AoK HD.exe"].exists():
         palette_path = "interface/50500.bina"
     else:
         palette_path = "interface/50500.bin"
