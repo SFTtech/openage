@@ -1,15 +1,18 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
+#include "game_spec.h"
+
+#include "../assetmanager.h"
+#include "../engine.h"
 #include "../gamedata/blending_mode.gen.h"
 #include "../gamedata/string_resource.gen.h"
 #include "../gamedata/terrain.gen.h"
+#include "../job/job_manager.h"
 #include "../unit/producer.h"
 #include "../util/strings.h"
 #include "../rng/global_rng.h"
-#include "../assetmanager.h"
-#include "../engine.h"
 #include "civilisation.h"
-#include "game_spec.h"
+
 
 #include <tuple>
 

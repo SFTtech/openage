@@ -4,6 +4,7 @@
 
 #include "../engine.h"
 #include "../log/log.h"
+#include "../job/job_manager.h"
 
 namespace openage {
 namespace audio {

@@ -154,8 +154,8 @@ void renderer_demo() {
 			util::gl_check_error();
 		},
 		// resize
-		[](const coord::window &new_size) {
-			glViewport(0, 0, new_size.x, new_size.y);
+		[&](const coord::window &new_size) {
+			renderer.on_resize(new_size);
 		}
 	};
 

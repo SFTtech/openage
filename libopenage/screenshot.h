@@ -5,34 +5,43 @@
 #include <string>
 #include <ctime>
 
-#include <SDL2/SDL.h>
 #include "coord/window.h"
 
 namespace openage {
+namespace renderer {
+class Renderer;
+}
 
 class ScreenshotManager {
 public:
-	ScreenshotManager();
+	ScreenshotManager(renderer::Renderer *renderer);
 	~ScreenshotManager();
 
-	/** to be called to save a screenshot */
+	/**
+	 * To be called to save a screenshot.
+	 */
 	void save_screenshot();
 
-	/** size of the game window, in coord_sdl */
-	coord::window window_size;
-
-
 private:
-
-	/** to be called to get the next screenshot filename into the array */
+	/**
+	 * To be called to get the next screenshot filename into the array.
+	 */
 	std::string gen_next_filename();
 
-	/** contains the number to be in the next screenshot filename */
+	/**
+	 * Contains the number to be in the next screenshot filename.
+	 */
 	unsigned count;
 
-	/** contains the last time when a screenshot was taken */
+	/**
+	 * Contains the last time when a screenshot was taken.
+	 */
 	std::time_t last_time;
 
+	/**
+	 * The renderer where to take screenshots from.
+	 */
+	class renderer::Renderer *renderer;
 };
 
 } // openage

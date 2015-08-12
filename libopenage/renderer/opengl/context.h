@@ -26,49 +26,59 @@ public:
 	/**
 	 * Called before the drawing window is created.
 	 */
-	virtual void prepare() override;
+	void prepare() override;
 
 	/**
 	 * Returns the SDL window flags for the opengl window.
 	 */
-	virtual uint32_t get_window_flags() const override;
+	uint32_t get_window_flags() const override;
 
 	/**
 	 * Actually creates the OpenGL context for the given SDL window.
 	 */
-	virtual void create(SDL_Window *window) override;
+	void create(SDL_Window *window) override;
 
 	/**
 	 * Setup calls for the newly created context.
 	 *
 	 * Enables opengl functions like blending etc.
 	 */
-	virtual void setup() override;
+	void setup() override;
 
 	/**
 	 * Deinitializes and unregisters the gl context from SDL2.
 	 */
-	virtual void destroy() override;
+	void destroy() override;
 
 	/**
 	 * use glEnable and glDisable to toggle a given feature.
 	 */
-	virtual void set_feature(context_feature feature, bool on) override;
+	void set_feature(context_feature feature, bool on) override;
+
+	/**
+	 * Read the opengl framebuffer and dump it to a png file.
+	 */
+	void screenshot(const std::string &filename) override;
 
 	/**
 	 * Creates the opengl texture in this context.
 	 * @returns a handle to it.
 	 */
-	virtual std::shared_ptr<renderer::Texture> register_texture(const TextureData &data) override;
+	std::shared_ptr<renderer::Texture> register_texture(const TextureData &data) override;
 
 	/**
 	 * Register a glsl shader pipeline program to the context.
 	 * @returns a handle to the new program.
 	 */
-	virtual std::shared_ptr<renderer::Program> register_program(const ProgramSource &data) override;
+	std::shared_ptr<renderer::Program> register_program(const ProgramSource &data) override;
 
 
 protected:
+	/**
+	 * Resize the opengl viewport.
+	 */
+	void resize_canvas(const coord::window &new_size) override;
+
 	/**
 	 * SDL opengl context state.
 	 */

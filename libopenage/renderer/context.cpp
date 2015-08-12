@@ -66,4 +66,11 @@ std::unique_ptr<Context> Context::generate(context_type t) {
 	return nullptr;
 }
 
+
+void Context::resize(const coord::window &new_size) {
+	this->canvas_size = new_size;
+	this->resize_canvas(this->canvas_size);
+}
+
+
 }} // namespace openage::renderer

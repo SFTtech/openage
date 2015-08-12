@@ -2,6 +2,8 @@
 
 #include "renderer.h"
 
+#include "context.h"
+
 namespace openage {
 namespace renderer {
 
@@ -28,6 +30,16 @@ std::shared_ptr<Program> Renderer::add_program(const ProgramSource &source) {
 
 std::shared_ptr<Texture> Renderer::add_texture(const TextureData &data) {
 	return this->context->register_texture(data);
+}
+
+
+void Renderer::screenshot(const std::string &filename) {
+	this->context->screenshot(filename);
+}
+
+bool Renderer::on_resize(coord::window new_size) {
+	this->context->resize(new_size);
+	return true;
 }
 
 
