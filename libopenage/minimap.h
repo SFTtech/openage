@@ -4,14 +4,14 @@
 #define OPENAGE_MINIMAP_H_
 
 #include "epoxy/gl.h"
+#include <vector>
+#include <memory>
 
 #include "handlers.h"
 
 #include "shader/program.h"
-#include "terrain/terrain.h"
 #include "coord/camhud.h"
-#include "unit/unit_container.h"
-#include "unit/unit.h"
+#include "coord/chunk.h"
 #include "gamedata/color.gen.h"
 
 
@@ -24,6 +24,9 @@ namespace texture_shader {
 extern shader::Program *program;
 }
 
+class Terrain;
+class Unit;
+class UnitContainer;
 
 /**
  * Implements a minimap, as a HudHandler.
@@ -35,11 +38,11 @@ public:
 	/**
 	 * Creates the minimap.
 	 */
-	Minimap(UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size,
-          coord::camhud hudpos, std::vector<gamedata::palette_color> palette, std::vector<gamedata::palette_color> player_palette);
+	Minimap(UnitContainer *container, const std::shared_ptr<Terrain> &terrain, coord::camhud_delta size,
+          coord::camhud hudpos);
 	~Minimap();
 
-	bool on_drawhud();
+	bool on_drawhud() override;
 	void draw_unit(Unit *unit);
 	void generate_background();
 
@@ -78,7 +81,7 @@ public:
 
 private:
 	UnitContainer *container;
-	std::shared_ptr<Terrain> terrain;
+	const std::shared_ptr<Terrain> &terrain;
 	coord::camhud_delta size;
 	coord::camhud hudpos;
 	std::vector<gamedata::palette_color> palette, player_palette;

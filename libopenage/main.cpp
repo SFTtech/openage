@@ -7,7 +7,9 @@
 #include "util/file.h"
 
 #include "engine.h"
-#include "game_main.h"
+#include "game_control.h"
+#include "game_renderer.h"
+#include "generator.h"
 
 namespace openage {
 
@@ -24,7 +26,8 @@ int run_game(const main_arguments &args) {
 	Engine &engine = Engine::get();
 
 	// initialize terminal colors
-	auto termcolors = util::read_csv_file<gamedata::palette_color>(data_dir.join("converted/termcolors.docx"));
+	std::vector<gamedata::palette_color> termcolors;
+	util::read_csv_file(data_dir.join("converted/termcolors.docx"), termcolors);
 
 	console::Console console;
 	console.load_colors(termcolors);
@@ -35,8 +38,10 @@ int run_game(const main_arguments &args) {
 	timer.start();
 
 	{
-		// create a game that uses the engine.
-		GameMain game{&engine};
+		// create components that use the engine.
+		GameRenderer renderer{&engine};
+		GameControl control{&engine};
+		Generator generator{&engine};
 
 		log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
 

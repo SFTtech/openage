@@ -39,7 +39,7 @@ class UnitSelection: public HudHandler {
 public:
 	UnitSelection();
 
-	bool on_drawhud();
+	bool on_drawhud() override;
 	void drag_begin(coord::camgame pos);
 	void drag_update(coord::camgame pos);
 	void drag_release(Terrain *terrain, bool append=false);

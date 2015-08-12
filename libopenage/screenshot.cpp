@@ -90,4 +90,4 @@ void ScreenshotManager::save_screenshot() {
 }
 
 
-} //namespace openage
+} // openage

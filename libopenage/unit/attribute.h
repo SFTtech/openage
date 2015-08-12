@@ -93,10 +93,23 @@ public:
 
 	attr_type type;
 
-	virtual AttributeContainer *copy() const = 0;
+	/**
+	 * shared attributes are common across all units of
+	 * one type, such as max hp, and gather rates
+	 *
+	 * non shared attributes include a units current hp,
+	 * and the amount a villager is carrying
+	 */
+	virtual bool shared() const = 0;
+
+	/**
+	 * produces an copy of the attribute for non-shared attributes
+	 * shared attributes will return themselves
+	 */
+	virtual std::shared_ptr<AttributeContainer> copy() const = 0;
 };
 
-using attr_map_t = std::map<attr_type, AttributeContainer *>;
+using attr_map_t = std::map<attr_type, std::shared_ptr<AttributeContainer>>;
 
 
 /**
@@ -119,8 +132,12 @@ public:
 		AttributeContainer{attr_type::owner},
 		player(p) {}
 
-	AttributeContainer *copy() const override {
-		return new Attribute<attr_type::owner>(*this);
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::owner>>(*this);
 	}
 
 	Player &player;
@@ -134,8 +151,12 @@ public:
 		current{static_cast<int>(i)},
 		max{i} {}
 
-	AttributeContainer *copy() const override {
-		return new Attribute<attr_type::hitpoints>(*this);
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::hitpoints>>(*this);
 	}
 
 	int current; // can become negative
@@ -155,8 +176,12 @@ public:
 		stance{attack_stance::do_nothing},
 		attack_graphic_set{&grp} {}
 
-	AttributeContainer *copy() const override {
-		return new Attribute<attr_type::attack>(*this);
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::attack>>(*this);
 	}
 
 	// TODO: can a unit have multiple attacks such as villagers hunting
@@ -179,8 +204,12 @@ public:
 		AttributeContainer{attr_type::speed},
 		unit_speed{sp} {}
 
-	AttributeContainer *copy() const override {
-		return new Attribute<attr_type::speed>(*this);
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::speed>>(*this);
 	}
 
 	coord::phys_t unit_speed; // possibly use a pointer to account for tech upgrades
@@ -193,8 +222,12 @@ public:
 		AttributeContainer{attr_type::direction},
 		unit_dir(dir) {}
 
-	AttributeContainer *copy() const override {
-		return new Attribute<attr_type::direction>(*this);
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::direction>>(*this);
 	}
 
 	coord::phys3_delta unit_dir;
@@ -208,8 +241,12 @@ public:
 		projectile_arc{arc},
 		launched{false} {}
 
-	AttributeContainer *copy() const override {
-		return new Attribute<attr_type::projectile>(*this);
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::projectile>>(*this);
 	}
 
 	float projectile_arc;
@@ -226,8 +263,12 @@ public:
 		is_dropsite{true},
 		foundation_terrain{0} {}
 
-	AttributeContainer *copy() const override {
-		return new Attribute<attr_type::building>(*this);
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::building>>(*this);
 	}
 
 	float completed;
@@ -257,8 +298,12 @@ public:
 		resource_type{type},
 		amount{init_amount} {}
 
-	AttributeContainer *copy() const override {
-		return new Attribute<attr_type::resource>(*this);
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::resource>>(*this);
 	}
 
 	game_resource resource_type;
@@ -277,8 +322,12 @@ public:
 		AttributeContainer{attr_type::gatherer},
 		amount{.0f} {}
 
-	AttributeContainer *copy() const override {
-		return new Attribute<attr_type::gatherer>(*this);
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::gatherer>>(*this);
 	}
 
 	game_resource current_type;
@@ -296,8 +345,12 @@ public:
 		:
 		AttributeContainer{attr_type::garrison} {}
 
-	AttributeContainer *copy() const override {
-		return new Attribute<attr_type::garrison>(*this);
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::garrison>>(*this);
 	}
 
 	std::vector<UnitReference> content;

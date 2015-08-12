@@ -41,7 +41,7 @@ def get_string_resources(srcdir):
                 if lang == b'_common':
                     continue
                 langfilename = ["resources", lang.decode(), "strings", "key-value",
-                        "key-value-strings-utf8.txt"]
+                                "key-value-strings-utf8.txt"]
 
                 with srcdir[langfilename].open('rb') as langfile:
                     stringres.fill_from(read_hd_language_file(langfile, lang))
@@ -149,6 +149,9 @@ def convert_metadata(args):
     yield "terminal color palette"
     termcolortable = ColorTable(URXVTCOLS)
     data_formatter.add_data(termcolortable.dump("termcolors"))
+
+    yield "general color palette"
+    data_formatter.add_data(palette.dump("general_palette"))
 
     yield "string resources"
     stringres = get_string_resources(args.srcdir)

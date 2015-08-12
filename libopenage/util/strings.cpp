@@ -223,5 +223,4 @@ bool string_matches_pattern(const char *str, const char *pattern) {
 }
 
 
-} //namespace util
-} //namespace openage
+}} // openage::util

@@ -165,6 +165,4 @@ void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 	fd->puts("\u2518\n");
 }
 
-} //namespace draw
-} //namespace console
-} //namespace openage
+}}} // openage::console::draw

@@ -14,12 +14,11 @@
 #include "terrain_object.h"
 #include "../assetmanager.h"
 #include "../texture.h"
+#include "../game_renderer.h"
 #include "../coord/camgame.h"
 #include "../coord/chunk.h"
 #include "../util/dir.h"
 #include "../util/misc.h"
-#include "../gamedata/blending_mode.gen.h"
-#include "../gamedata/terrain.gen.h"
 
 namespace openage {
 
@@ -150,6 +149,27 @@ struct terrain_render_data {
 };
 
 /**
+ * specification for all available
+ * tile types and blending data
+ */
+struct terrain_meta {
+	size_t terrain_id_count;
+	size_t blendmode_count;
+
+	std::vector<Texture *> textures;
+	std::vector<Texture *> blending_masks;
+
+	std::unique_ptr<int[]> terrain_id_priority_map;
+	std::unique_ptr<int[]> terrain_id_blendmode_map;
+
+	std::unique_ptr<uint8_t[]> terrain_id_map_color_hi_map;
+	std::unique_ptr<uint8_t[]> terrain_id_map_color_med_map;
+	std::unique_ptr<uint8_t[]> terrain_id_map_color_low_map;
+
+	std::unique_ptr<influence[]> influences_buf;
+};
+
+/**
  * the terrain class is the main top-management interface
  * for dealing with cost-benefit analysis to maximize company profits.
  *
@@ -157,13 +177,9 @@ struct terrain_render_data {
  */
 class Terrain {
 public:
-	Terrain(AssetManager &assetmanager,
-	        const std::vector<gamedata::terrain_type> &terrain_meta,
-	        const std::vector<gamedata::blending_mode> &blending_meta,
-	        bool is_infinite);
+	Terrain(terrain_meta *meta, bool is_infinite);
 	~Terrain();
 
-	bool blending_enabled; //!< is terrain blending active. increases memory accesses by factor ~8
 	bool infinite; //!< chunks are automagically created as soon as they are referenced
 
 	coord::tile limit_positive, limit_negative; //!< for non-infinite terrains, this is the size limit.
@@ -330,7 +346,7 @@ public:
 	 * draw the currently visible terrain area on screen.
 	 * @param engine: the engine where the terrain should be drawn to.
 	 */
-	void draw(Engine *engine);
+	void draw(Engine *engine, RenderOptions *settings);
 
 	/**
 	 * create the drawing instruction data.
@@ -346,12 +362,13 @@ public:
 	 * @returns a drawing instruction struct that contains all information for rendering
 	 */
 	struct terrain_render_data create_draw_advice(coord::tile ab, coord::tile cd,
-	                                              coord::tile ef, coord::tile gh);
+	                                              coord::tile ef, coord::tile gh,
+	                                              bool blending_enabled);
 
 	/**
 	 * create rendering and blending information for a single tile on the terrain.
 	 */
-	struct tile_draw_data create_tile_advice(coord::tile position);
+	struct tile_draw_data create_tile_advice(coord::tile position, bool blending_enabled);
 
 	/**
 	 * gather neighbors of a given base tile.
@@ -389,25 +406,17 @@ public:
 	                     struct tile_draw_data *tile_data,
 	                     struct influence_group *influences);
 
-	size_t terrain_id_count;
-	size_t blendmode_count;
-
 private:
+
+	/**
+	 * terrain meta data
+	 */
+	terrain_meta *meta;
+
 	/**
 	 * maps chunk coordinates to chunks.
 	 */
 	std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash> chunks;
-
-	std::vector<Texture *> textures;
-	std::vector<Texture *> blending_masks;
-
-	std::unique_ptr<int[]> terrain_id_priority_map;
-	std::unique_ptr<int[]> terrain_id_blendmode_map;
-  std::unique_ptr<uint8_t[]> terrain_id_map_color_hi_map;
-  std::unique_ptr<uint8_t[]> terrain_id_map_color_med_map;
-  std::unique_ptr<uint8_t[]> terrain_id_map_color_low_map;
-
-	std::unique_ptr<influence[]> influences_buf;
 };
 
 } // namespace openage

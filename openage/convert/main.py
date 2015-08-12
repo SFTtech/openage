@@ -89,7 +89,7 @@ def convert_assets(assets, args, srcdir=None):
         srcdir = acquire_conversion_source_dir()
 
     if srcdir['AoK HD.exe'].exists():
-        testfile = 'resources/dat/empires2_x1_p1.dat'
+        testfile = 'resources/_common/dat/empires2_x1_p1.dat'
     else:
         testfile = 'data/empires2_x1_p1.dat'
     if not srcdir.joinpath(testfile).is_file():
@@ -118,7 +118,6 @@ def convert_assets(assets, args, srcdir=None):
     from .driver import convert
     converted_count = 0
     total_count = None
-
     for current_item in convert(args):
         if isinstance(current_item, int):
             # convert is informing us about the estimated number of remaining

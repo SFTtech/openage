@@ -4,7 +4,6 @@
 
 #include "../log/log.h"
 #include "../error/error.h"
-#include "../callbacks.h"
 #include "../util/strings.h"
 
 #include "draw.h"
@@ -61,25 +60,65 @@ void Console::register_to_engine(Engine *engine) {
 	engine->register_drawhud_action(this);
 	engine->register_resize_action(this);
 
-	// TODO bind any needed keybinds to keybindContext
+	// TODO bind any needed input to InputContext
 
 	// Bind the console toggle key globally
-	auto &keybinds = engine->get_keybind_manager();
-	keybinds.get_global_keybind_context()
-	        .bind(keybinds::action_t::TOGGLE_CONSOLE, [this, &keybinds]() {
-		if (!visible) { // Show the console, add keybinds
-			visible = true;
-			keybinds.override_context(&this->keybind_context);
-		} else { // Hide the console, remove the keybinds
-			visible = false;
-			keybinds.remove_context();
-		}
+	auto &input = engine->get_input_manager();
+	auto &global = input.get_global_context();
+	global.bind(input::action_t::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
+		this->set_visible(!this->visible);
 	});
+
+	// toggle console will take highest priority
+	this->input_context.bind(input::action_t::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
+		this->set_visible(false);
+	});
+	this->input_context.bind(input::event_class::UTF8, [this](const input::action_arg_t &arg) {
+		// a single char typed into the console
+		std::string utf8 = arg.e.as_utf8();
+		this->buf.write(utf8.c_str());
+		command += utf8;
+		return true;
+	});
+	this->input_context.bind(input::event_class::NONPRINT, [this](const input::action_arg_t &arg) {
+		if (arg.e.as_char() == 13) {
+			this->buf.write('\n');
+			this->interpret(this->command);
+			this->command = "";
+			return true;
+		}
+		return false;
+	});
+	this->input_context.utf8_mode = true;
+}
+
+void Console::set_visible(bool make_visible) {
+	Engine &e = Engine::get();
+	if (make_visible) {
+		e.get_input_manager().register_context(&this->input_context);
+		this->visible = true;
+	}
+	else {
+		e.get_input_manager().remove_context(&this->input_context);
+		this->visible = false;
+	}
 }
 
 void Console::write(const char *text) {
 	this->buf.write(text);
 	this->buf.write('\n');
+}
+
+void Console::interpret(const std::string &command) {
+	if (command == "exit") {
+		this->set_visible(false);
+	}
+	else if (command == "list") {
+		Engine &e = Engine::get();
+		for (auto &line : e.list_options()) {
+			this->write(line.c_str());
+		}
+	}
 }
 
 bool Console::on_tick() {
@@ -130,5 +169,4 @@ bool Console::on_resize(coord::window new_size) {
 	return true;
 }
 
-} //namespace console
-} //namespace openage
+}} // openage::console

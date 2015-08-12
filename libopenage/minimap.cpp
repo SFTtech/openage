@@ -8,6 +8,7 @@
 #include "coord/window.h"
 #include "coord/chunk.h"
 #include "terrain/terrain.h"
+#include "unit/unit.h"
 
 #include "player.h"
 #include "engine.h"
@@ -20,16 +21,15 @@ GLint size, orig, color;
 } // namespace minimap_shader
 
 
-Minimap::Minimap(UnitContainer *container, std::shared_ptr<Terrain> terrain, coord::camhud_delta size, coord::camhud hudpos, std::vector<gamedata::palette_color> palette, std::vector<gamedata::palette_color> player_palette)
+Minimap::Minimap(UnitContainer *container, const std::shared_ptr<Terrain> &terrain, coord::camhud_delta size, coord::camhud hudpos)
 	:
 	container{container},
 	terrain{terrain},
 	size{size},
-	hudpos{hudpos},
-	palette{palette},
-	player_palette{player_palette} {
+	hudpos{hudpos} {
 
 	// Initial update to setup the minimap resolution, etc
+  // TODO: Change this
 	this->set_mapping(coord::chunk{-1, -1}, 3);
 
 	// Setup minimap dimensions for rendering
@@ -39,6 +39,15 @@ Minimap::Minimap(UnitContainer *container, std::shared_ptr<Terrain> terrain, coo
 	this->top = this->hudpos.y + this->size.y;
 	this->center_vertical = (float)(this->bottom + this->top) / 2;
 	this->center_horizontal = (float)(this->left + this->right) / 2;
+
+  // 
+	util::Dir *data_dir = Engine::get().get_data_dir();
+	util::Dir asset_dir = data_dir->append("converted");
+	util::read_csv_file(asset_dir.join("player_palette.docx"), this->player_palette);
+  util::read_csv_file(asset_dir.join("general_palette.docx"), this->palette);
+
+  /* for (size_t i = 0; i < this->palette.size(); i++) { */
+  /* } */
 
 	glGenBuffers(1, &this->terrain_vertbuf);
 	glGenBuffers(1, &this->view_vertbuf);
@@ -119,7 +128,8 @@ void Minimap::generate_background() {
 				pixels[i * this->resolution * 3 + j * 3 + 2] = 0;  
 			} else {
 				uint8_t pal_idx = this->terrain->map_color_hi(tile_data->terrain_id);
-				gamedata::palette_color hi_color = palette[pal_idx];
+				gamedata::palette_color hi_color = this->palette[pal_idx];
+        /* log::log(MSG(info) << "tile_id: " << tile_data->terrain_id << " pal " << (int)pal_idx<<"("<<(int)hi_color.r<<", "<<(int)hi_color.g<<", "<<(int)hi_color.b<<")"); */
 				pixels[i * this->resolution * 3 + j * 3 + 0] = hi_color.r;
 				pixels[i * this->resolution * 3 + j * 3 + 1] = hi_color.g;
 				pixels[i * this->resolution * 3 + j * 3 + 2] = hi_color.b; 
@@ -184,7 +194,7 @@ void Minimap::draw_unit(Unit *unit) {
 		rgb[0] = 1.0; rgb[1] = 1.0; rgb[2] = 1.0;
 	} else if (unit->has_attribute(attr_type::owner)) {
 		Attribute<attr_type::owner> owner = unit->get_attribute<attr_type::owner>();
-		gamedata::palette_color player_color = this->player_palette[owner.player.player_number * 8];
+		gamedata::palette_color player_color = this->player_palette[(owner.player.player_number * 8 - 1)];
 		rgb[0] = player_color.r; rgb[1] = player_color.g; rgb[2] = player_color.b;
 	}
 

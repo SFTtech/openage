@@ -24,7 +24,7 @@ class NamedLogSource : public LogSource {
 public:
 	NamedLogSource(const std::string &name);
 
-	virtual std::string logsource_name();
+	std::string logsource_name() override;
 
 private:
 	std::string name;

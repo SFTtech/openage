@@ -1129,5 +1129,4 @@ buf_line *Buf::linedataptr(term_t lineno) {
 	return result;
 }
 
-} //namespace console
-} //namespace openage
+}} // openage::console
