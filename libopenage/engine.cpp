@@ -294,6 +294,8 @@ bool Engine::draw_debug_overlay() {
 		"%s", config::config_option_string
 	);
 
+	profiler_draw(true);
+
 	return true;
 }
 
@@ -381,9 +383,6 @@ void Engine::loop() {
 		}
 		this->profiler.end_measure("events");
 
-		// TODO remove me later
-		//std::cout << "Measured time: " << this->profiler.last_duration("events") << std::endl;
-
 		// call engine tick callback methods
 		for (auto &action : this->on_engine_tick) {
 			if (false == action->on_tick()) {
@@ -419,8 +418,10 @@ void Engine::loop() {
 
 			if (this->drawing_debug_overlay.value) {
 				this->draw_debug_overlay();
-				//this->profiler.show();
+
 			}
+
+			this->profiler.show();
 
 			if (this->drawing_huds.value) {
 				// invoke all hud drawing callback methods
