@@ -29,7 +29,7 @@ Minimap::Minimap(UnitContainer *container, const std::shared_ptr<Terrain> &terra
 	hudpos{hudpos} {
 
 	// Initial update to setup the minimap resolution, etc
-  // TODO: Change this
+	// TODO: Change this
 	this->set_mapping(coord::chunk{-1, -1}, 3);
 
 	// Setup minimap dimensions for rendering
@@ -40,14 +40,11 @@ Minimap::Minimap(UnitContainer *container, const std::shared_ptr<Terrain> &terra
 	this->center_vertical = (float)(this->bottom + this->top) / 2;
 	this->center_horizontal = (float)(this->left + this->right) / 2;
 
-  // 
+	// TODO: this could be gotten from game_renderer?
 	util::Dir *data_dir = Engine::get().get_data_dir();
 	util::Dir asset_dir = data_dir->append("converted");
 	util::read_csv_file(asset_dir.join("player_palette.docx"), this->player_palette);
-  util::read_csv_file(asset_dir.join("general_palette.docx"), this->palette);
-
-  /* for (size_t i = 0; i < this->palette.size(); i++) { */
-  /* } */
+	util::read_csv_file(asset_dir.join("general_palette.docx"), this->palette);
 
 	glGenBuffers(1, &this->terrain_vertbuf);
 	glGenBuffers(1, &this->view_vertbuf);
@@ -88,16 +85,16 @@ void Minimap::auto_mapping() {
 	int se_res = se_most.se - se_least.se;
 
 	if (ne_res < se_res) {
-    this->set_mapping({ne_least.ne, se_least.se}, se_res + 1);
+		this->set_mapping({ne_least.ne, se_least.se}, se_res + 1);
 	} else {
-    this->set_mapping({ne_least.ne, se_least.se}, ne_res + 1);
+		this->set_mapping({ne_least.ne, se_least.se}, ne_res + 1);
 	}
 }
 
 void Minimap::set_mapping(coord::chunk west, int resolution) {
-  if (resolution < 1) {
-    resolution = 1; 
-  }
+	if (resolution < 1) {
+		resolution = 1; 
+	}
 	this->resolution = resolution * 16;
 	this->west  = west;
 	this->east  = west + coord::chunk_delta{resolution - 1, resolution - 1};
@@ -129,7 +126,6 @@ void Minimap::generate_background() {
 			} else {
 				uint8_t pal_idx = this->terrain->map_color_hi(tile_data->terrain_id);
 				gamedata::palette_color hi_color = this->palette[pal_idx];
-        /* log::log(MSG(info) << "tile_id: " << tile_data->terrain_id << " pal " << (int)pal_idx<<"("<<(int)hi_color.r<<", "<<(int)hi_color.g<<", "<<(int)hi_color.b<<")"); */
 				pixels[i * this->resolution * 3 + j * 3 + 0] = hi_color.r;
 				pixels[i * this->resolution * 3 + j * 3 + 1] = hi_color.g;
 				pixels[i * this->resolution * 3 + j * 3 + 2] = hi_color.b; 
@@ -190,11 +186,14 @@ void Minimap::draw_unit(Unit *unit) {
 	GLfloat rgb[3];
 	rgb[0] = 0.0; rgb[1] = 0.0; rgb[2] = 0.0;
 
+	// TODO: fix resource colors
 	if (unit->selected) {
 		rgb[0] = 1.0; rgb[1] = 1.0; rgb[2] = 1.0;
+	} else if (unit->has_attribute(attr_type::resource)) {
+		return;  // ignore resources
 	} else if (unit->has_attribute(attr_type::owner)) {
-		Attribute<attr_type::owner> owner = unit->get_attribute<attr_type::owner>();
-		gamedata::palette_color player_color = this->player_palette[(owner.player.player_number * 8 - 1)];
+		int player_color_index = (unit->get_attribute<attr_type::owner>().player.color - 1) * 8;
+		gamedata::palette_color player_color = this->player_palette[player_color_index];
 		rgb[0] = player_color.r; rgb[1] = player_color.g; rgb[2] = player_color.b;
 	}
 
@@ -223,7 +222,7 @@ void Minimap::draw_unit(Unit *unit) {
 bool Minimap::on_drawhud() {
 	this->generate_background();
 
-  Engine &engine = Engine::get();
+	Engine &engine = Engine::get();
 
 	GLint terrain_vdata[] {
 		// vertices
