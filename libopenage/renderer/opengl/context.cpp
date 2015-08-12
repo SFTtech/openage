@@ -7,6 +7,7 @@
 
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 #include "program.h"
 #include "texture.h"
@@ -121,6 +122,53 @@ void Context::set_feature(context_feature feature, bool on) {
 }
 
 
+void Context::screenshot(const std::string &filename) {
+	log::log(MSG(info) << "Saving screenshot to " << filename);
+
+	// surface color masks.
+	int32_t rmask, gmask, bmask, amask;
+	rmask = 0x000000FF;
+	gmask = 0x0000FF00;
+	bmask = 0x00FF0000;
+	amask = 0xFF000000;
+
+	// create output surface which will be stored later.
+	SDL_Surface *screen = SDL_CreateRGBSurface(
+		SDL_SWSURFACE,
+		this->canvas_size.x, this->canvas_size.y,
+		32, rmask, gmask, bmask, amask
+	);
+
+	size_t pxcount = screen->w * screen->h;
+
+	auto pxdata = std::make_unique<uint32_t[]>(pxcount);
+
+	// copy the whole framebuffer to our local buffer.
+	glReadPixels(0, 0,
+	             this->canvas_size.x, this->canvas_size.y,
+	             GL_RGBA, GL_UNSIGNED_BYTE, pxdata.get());
+
+	uint32_t *surface_pxls = reinterpret_cast<uint32_t *>(screen->pixels);
+
+	// now copy the raw data to the sdl surface.
+	// we need to invert all pixel rows, but leave column order the same.
+	for (ssize_t row = 0; row < screen->h; row++) {
+		ssize_t irow = screen->h - 1 - row;
+		for (ssize_t col = 0; col < screen->w; col++) {
+			uint32_t pxl = pxdata[irow * screen->w + col];
+
+			// TODO: store the alpha channels in the screenshot,
+			// is buggy at the moment..
+			surface_pxls[row * screen->w + col] = pxl | 0xFF000000;
+		}
+	}
+
+	// call sdl_image for saving the screenshot to png
+	IMG_SavePNG(screen, filename.c_str());
+	SDL_FreeSurface(screen);
+}
+
+
 std::shared_ptr<renderer::Texture> Context::register_texture(const TextureData &data) {
 	std::shared_ptr<renderer::Texture> txt = std::make_shared<opengl::Texture>(data);
 	return txt;
@@ -131,6 +179,11 @@ std::shared_ptr<renderer::Program> Context::register_program(const ProgramSource
 	return txt;
 }
 
+void Context::resize_canvas(const coord::window &new_size) {
+	log::log(MSG(dbg) << "opengl viewport resize to " << new_size.x << "x" << new_size.y);
+
+	glViewport(0, 0, new_size.x, new_size.y);
+}
 
 
 }}} // namespace openage::renderer::opengl

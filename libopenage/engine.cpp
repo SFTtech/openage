@@ -26,6 +26,7 @@
 #include "util/strings.h"
 #include "util/timer.h"
 
+
 /**
  * Main openage namespace to store all things that make the have to do with the game.
  *
@@ -204,7 +205,7 @@ Engine::Engine(const util::Path &root_dir,
 		this->drawing_huds.value = !this->drawing_huds.value;
 	});
 	global_input_context.bind(action.get("SCREENSHOT"), [this](const input::action_arg_t &) {
-		this->get_screenshot_manager().save_screenshot(this->get_coord_data()->window_size);
+        this->get_screenshot_manager()->save_screenshot(this->get_coord_data()->window_size);
 	});
 	global_input_context.bind(action.get("TOGGLE_DEBUG_OVERLAY"), [this](const input::action_arg_t &) {
 		this->drawing_debug_overlay.value = !this->drawing_debug_overlay.value;
@@ -515,8 +516,8 @@ audio::AudioManager &Engine::get_audio_manager() {
 	return this->audio_manager;
 }
 
-ScreenshotManager &Engine::get_screenshot_manager() {
-	return this->screenshot_manager;
+ScreenshotManager *Engine::get_screenshot_manager() {
+	return this->screenshot_manager.get();
 }
 
 input::ActionManager &Engine::get_action_manager() {

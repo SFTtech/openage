@@ -3,10 +3,10 @@
 #ifndef OPENAGE_RENDERER_CONTEXT_H_
 #define OPENAGE_RENDERER_CONTEXT_H_
 
+#include <memory>
 #include <SDL2/SDL.h>
 
-#include <memory>
-
+#include "../coord/window.h"
 #include "shader.h"
 #include "texture.h"
 
@@ -78,6 +78,11 @@ public:
 	virtual void set_feature(context_feature feature, bool on) = 0;
 
 	/**
+	 * Save this context's framebuffer as a png screenshot.
+	 */
+	virtual void screenshot(const std::string &filename) = 0;
+
+	/**
 	 * Register some texture data to the context.
 	 * @returns the newly created Texture handle.
 	 */
@@ -89,12 +94,26 @@ public:
 	 */
 	virtual std::shared_ptr<Program> register_program(const ProgramSource &data) = 0;
 
+	/**
+	 * Resize the context because the surrounding window size was updated.
+	 */
+	void resize(const coord::window &new_size);
 
 protected:
+	/**
+	 * Perform context-specific calls to resize the drawing canvas.
+	 */
+	virtual void resize_canvas(const coord::window &new_size) = 0;
+
 	/**
 	 * Type of this context, namely the backend variant.
 	 */
 	context_type type;
+
+	/**
+	 * Render surface size.
+	 */
+	coord::window canvas_size;
 };
 
 }} // namespace openage::renderer

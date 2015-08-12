@@ -3,11 +3,11 @@
 #ifndef OPENAGE_RENDERER_RENDERER_H_
 #define OPENAGE_RENDERER_RENDERER_H_
 
-#include "context.h"
 #include "task.h"
 #include "texture.h"
 
 #include "../datastructure/pairing_heap.h"
+#include "../handlers.h"
 
 namespace openage {
 
@@ -22,13 +22,15 @@ namespace openage {
  */
 namespace renderer {
 
+class Context;
+
 /**
  * Main for collecting and rendering renderable things.
  *
  * All tasks are added and aggregated,
  * when the render is invoked, the tasks are sorted and executed.
  */
-class Renderer {
+class Renderer : public ResizeHandler {
 public:
 	/**
 	 * A renderer has to be created for a context.
@@ -68,13 +70,24 @@ public:
 	std::shared_ptr<Texture> add_texture(const TextureData &data);
 
 	/**
+	 * Take a screenshot of the current framebuffer.
+	 * Save it as png to the given filename.
+	 */
+	void screenshot(const std::string &filename);
+
+	/**
+	 * Resize the renderer because the surrounding window size was updated.
+	 */
+	bool on_resize(coord::window new_size) override;
+
+	/**
 	 * Finally, this is the actual drawing invocation.
 	 * Pushes all the aggregated data to the GPU and renders it.
 	 * When this is done, the front and backbuffer are flipped.
 	 */
 	void render() const;
 
-private:
+protected:
 	/**
 	 * All tasks the renderer has to to display on the next drawout
 	 */
