@@ -2,18 +2,12 @@
 
 #include "assetmanager.h"
 
-#if WITH_INOTIFY
-#include <sys/inotify.h>
-#include <unistd.h>
-#include <limits.h> /* for NAME_MAX */
-#endif
-
-#include "util/compiler.h"
-#include "util/file.h"
 #include "error/error.h"
 #include "log/log.h"
-
 #include "texture.h"
+#include "util/compiler.h"
+#include "util/file.h"
+#include "watch/watch.h"
 
 namespace openage {
 
@@ -23,13 +17,7 @@ AssetManager::AssetManager(qtsdl::GuiItemLink *gui_link)
 	missing_tex{nullptr},
 	gui_link{gui_link} {
 
-#if WITH_INOTIFY
-	// initialize the inotify instance
-	this->inotify_fd = inotify_init1(IN_NONBLOCK);
-	if (this->inotify_fd < 0) {
-		throw Error{MSG(err) << "Failed to initialize inotify!"};
-	}
-#endif
+	this->watch_manager = watch::WatchManager::create();
 }
 
 util::Dir *AssetManager::get_data_dir() {
@@ -70,14 +58,12 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name, boo
 		// create the texture!
 		tex = std::make_shared<Texture>(filename, use_metafile);
 
-#if WITH_INOTIFY
-		// create inotify update trigger for the requested file
-		int wd = inotify_add_watch(this->inotify_fd, filename.c_str(), IN_CLOSE_WRITE);
-		if (wd < 0) {
-			throw Error{MSG(warn) << "Failed to add inotify watch for " << filename};
-		}
-		this->watch_fds[wd] = tex;
-#endif
+		this->watch_manager->watch_file(
+			filename,
+			[=](watch::event_type, std::string) {
+				tex->reload();
+			}
+		);
 	}
 
 	// insert the texture into the map and return the texture.
@@ -100,39 +86,7 @@ Texture *AssetManager::get_texture(const std::string &name, bool use_metafile) {
 }
 
 void AssetManager::check_updates() {
-#if WITH_INOTIFY
-	// buffer for at least 4 inotify events
-	char buf[4 * (sizeof(struct inotify_event) + NAME_MAX + 1)];
-	ssize_t len;
-
-	while (true) {
-		// fetch all events, the kernel won't write "half" structs.
-		len = read(this->inotify_fd, buf, sizeof(buf));
-
-		if (len == -1 and errno == EAGAIN) {
-			// no events, nothing to do.
-			break;
-		}
-		else if (len == -1) {
-			throw Error{MSG(err) << "Failed to read inotify events!"};
-		}
-
-		// process fetched events,
-		// the kernel guarantees complete events in the buffer.
-		char *ptr = buf;
-		while (ptr < buf + len) {
-			struct inotify_event *event = (struct inotify_event *)ptr;
-
-			if (event->mask & IN_CLOSE_WRITE) {
-				// TODO: this should invoke callback functions
-				this->watch_fds[event->wd]->reload();
-			}
-
-			// move the buffer ptr to the next event.
-			ptr += sizeof(struct inotify_event) + event->len;
-		}
-	}
-#endif
+	this->watch_manager->check_changes();
 }
 
 std::shared_ptr<Texture> AssetManager::get_missing_tex() {
