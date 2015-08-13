@@ -72,7 +72,7 @@ void ProgramSource::attach_shader(const ShaderSource &shader) {
 }
 
 
-Program::Program() {}
+RawProgram::RawProgram() {}
 
 
 }} // openage::renderer

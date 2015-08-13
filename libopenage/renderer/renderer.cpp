@@ -23,12 +23,12 @@ TaskState Renderer::add_task(const Task &task) {
 }
 
 
-std::shared_ptr<Program> Renderer::add_program(const ProgramSource &source) {
+std::unique_ptr<RawProgram> Renderer::add_program(const ProgramSource &source) {
 	return this->context->register_program(source);
 }
 
 
-std::shared_ptr<Texture> Renderer::add_texture(const TextureData &data) {
+std::unique_ptr<Texture> Renderer::add_texture(const TextureData &data) {
 	return this->context->register_texture(data);
 }
 

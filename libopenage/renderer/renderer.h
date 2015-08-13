@@ -59,7 +59,7 @@ public:
 	 *
 	 * @returns a handle to the usable program for the developer.
 	 */
-	std::shared_ptr<Program> add_program(const ProgramSource &source);
+	std::unique_ptr<RawProgram> add_program(const ProgramSource &source);
 
 	/**
 	 * Register a texture to the renderer.
@@ -67,7 +67,7 @@ public:
 	 *
 	 * @returns a texture handle to be used in the code.
 	 */
-	std::shared_ptr<Texture> add_texture(const TextureData &data);
+	std::unique_ptr<Texture> add_texture(const TextureData &data);
 
 	/**
 	 * Take a screenshot of the current framebuffer.

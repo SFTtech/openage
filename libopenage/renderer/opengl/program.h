@@ -12,7 +12,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-class Program : public renderer::Program {
+class Program : public RawProgram {
 public:
 	/**
 	 * A program is created from shader sources.
