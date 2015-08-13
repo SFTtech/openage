@@ -43,6 +43,37 @@ function(py_get_config_var VAR RESULTVAR)
 	set("${RESULTVAR}" "${RESULT}" PARENT_SCOPE)
 endfunction()
 
+function(find_python_interpreter_builtin)
+	find_package(PythonInterp 3.4 QUIET)
+	if(PYTHONINTERP_FOUND)
+		list(APPEND PYTHON_INTERPRETERS "${PYTHON_EXECUTABLE}")
+	endif()
+	set(PYTHON_INTERPRETERS "${PYTHON_INTERPRETERS}" PARENT_SCOPE)
+endfunction()
+
+function(find_python_interpreters)
+	if(${ARGC} LESS 1)
+		message(WARNING "find_python_interpreters requires atleast one pattern")
+		return()
+	endif()
+
+	foreach(PATTERN ${ARGN})
+		file(GLOB _INTERPRETERS "${PATTERN}")
+		foreach(_TMP_INTERPRETER ${_INTERPRETERS})
+			# resolve symlinks and get the full path of the interpreter
+			get_filename_component(_INTERPRETER ${_TMP_INTERPRETER} REALPATH)
+
+			# the above globbing patterns might have caught some files
+			# like /usr/bin/python-config; skip those.
+			if(${_INTERPRETER} MATCHES ".*-dbg$" OR NOT ${_INTERPRETER} MATCHES "^.*/[^/]*-[^/]*$")
+				list(APPEND PYTHON_INTERPRETERS ${_INTERPRETER})
+			endif()
+		endforeach()
+	endforeach()
+
+	set(PYTHON_INTERPRETERS "${PYTHON_INTERPRETERS}" PARENT_SCOPE)
+endfunction()
+
 # collect a list of possible python interpreters from all sorts of sources,
 # in the hope that one of them will have associated libs and headers.
 set(PYTHON_INTERPRETERS)
@@ -52,62 +83,59 @@ if(PYTHON)
 	list(APPEND PYTHON_INTERPRETERS "${PYTHON}")
 endif()
 
-# cmake's built-in finder
-find_package(PythonInterp 3.4 QUIET)
-if(PYTHONINTERP_FOUND)
-	list(APPEND PYTHON_INTERPRETERS "${PYTHON_EXECUTABLE}")
-endif()
-unset(PYTHONINTERP_FOUND)
-unset(PYTHON_EXECUTABLE)
-unset(PYTHON_VERSION_STRING)
-unset(PYTHON_VERSION_MAJOR)
-unset(PYTHON_VERSION_MINOR)
-unset(PYTHON_VERSION_PATCH)
+# From cmake's built-in finder
+find_python_interpreter_builtin()
 
-# general POSIX / GNU paths
-file(GLOB _tmp "/usr/bin/python*" "/usr/local/bin/python*")
-list(APPEND PYTHON_INTERPRETERS ${_tmp})
-
-# OSX-specific paths
-foreach(dirname
-	/usr/local/Frameworks
-	~/Library/Frameworks
-	/System/Library/Frameworks
+# From known python locations
+find_python_interpreters(
+	# general POSIX / GNU paths
+	"/usr/bin/python*"
+	"/usr/local/bin/python*"
+	# OSX-specific paths
+	"/usr/local/Frameworks/Python.framework/Versions/*/bin/python*"
+	"~/Library/Frameworks/Python.framework/Versions/*/bin/python*"
+	"/System/Library/Frameworks/Python.framework/Versions/*/bin/python*"
 )
-	file(GLOB _tmp "${dirname}/Python.framework/Versions/*/bin/python*")
-	list(APPEND PYTHON_INTERPRETERS ${_tmp})
+
+# After resolving symlinks, the list of interpreters contains duplicates
+list(REMOVE_DUPLICATES PYTHON_INTERPRETERS)
+
+# Retain only the proper python interpreters
+foreach(INTERPRETER ${PYTHON_INTERPRETERS})
+	exec_program("${INTERPRETER}" ARGS -c True OUTPUT_VARIABLE TEST_OUTPUT RETURN_VALUE TEST_RETVAL)
+	if (NOT TEST_RETVAL EQUAL 0)
+		list(REMOVE_ITEM PYTHON_INTERPRETERS INTERPRETER)
+	endif()
 endforeach()
 
 # test all the found interpreters; break on success.
-unset(PYTHON_TEST_ERRORS)
-unset(PYTHON_INTERP)
 foreach(PYTHON ${PYTHON_INTERPRETERS})
-	# the above globbing patterns might have caught some files
-	# like /usr/bin/python-config; skip those.
-	if(PYTHON MATCHES ".*-dbg$" OR NOT PYTHON MATCHES "^.*/[^/]*-[^/]*$")
-		# check whether this is a proper Python interpreter.
-		exec_program("${PYTHON}" ARGS -c True OUTPUT_VARIABLE TEST_OUTPUT RETURN_VALUE TEST_RETVAL)
-		if (TEST_RETVAL EQUAL 0)
-			# ask the interpreter for the essential extension-building flags
-			py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
-			py_get_config_var(BLDLIBRARY PYTHON_LIBRARY)
+	# ask the interpreter for the essential extension-building flags
+	py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
+	if(APPLE)
+		py_get_config_var(DESTLIB PYTHON_LIBRARY_PATH)
+		get_filename_component(PYTHON_LIBRARY ${PYTHON_LIBRARY_PATH} NAME)
+		get_filename_component(PYTHON_LINK_DIRECTORIES ${PYTHON_LIBRARY_PATH} DIRECTORY)
+	else()
+		py_get_config_var(BLDLIBRARY PYTHON_LIBRARY)
+	endif()
 
-			# there's a static_assert that tests the Python version.
-			try_compile(PYTHON_TEST_RESULT
-				"${CMAKE_BINARY_DIR}"
-				"${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
-				LINK_LIBRARIES "${PYTHON_LIBRARY}"
-				CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}"
-				OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
-			)
+	# there's a static_assert that tests the Python version.
+	try_compile(PYTHON_TEST_RESULT
+		"${CMAKE_BINARY_DIR}"
+		"${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
+		LINK_LIBRARIES "${PYTHON_LIBRARY}"
+		CMAKE_FLAGS
+			"-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}"
+			"-DLINK_DIRECTORIES=${PYTHON_LINK_DIRECTORIES}"
+		OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
+	)
 
-			if(PYTHON_TEST_RESULT)
-				set(PYTHON_INTERP "${PYTHON}")
-				break()
-			else()
-				set(PYTHON_TEST_ERRORS "${PYTHON_TEST_ERRORS}candidate ${PYTHON}:\n${PYTHON_TEST_OUTPUT}\n\n")
-			endif()
-		endif()
+	if(PYTHON_TEST_RESULT)
+		set(PYTHON_INTERP "${PYTHON}")
+		break()
+	else()
+		set(PYTHON_TEST_ERRORS "${PYTHON_TEST_ERRORS}candidate ${PYTHON}:\n${PYTHON_TEST_OUTPUT}\n\n")
 	endif()
 endforeach()
 
@@ -127,7 +155,6 @@ endif()
 unset(PYTHON_TEST_RESULT)
 unset(PYTHON_TEST_OUTPUT)
 unset(PYTHON_INTERP)
-unset(_tmp)
 mark_as_advanced(PYTHON_TEST_ERRORS)
 mark_as_advanced(PYTHON_INTERPRETERS)
 

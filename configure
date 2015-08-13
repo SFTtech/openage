@@ -226,7 +226,7 @@ else:
         csuite = getcsuite(compiler)
     except ValueError:
         ap.error("unknown compiler suite: %s. manually specify --c-compiler \
-and --cpp-compiler, or use one of [%s]" % (csuite, ", ".join(csuites)))
+and --cpp-compiler, or use one of [%s]" % (compiler, ", ".join(csuites)))
 
     cc, cxx = csuites[csuite][:2]
 

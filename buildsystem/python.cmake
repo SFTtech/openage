@@ -99,6 +99,7 @@ function(add_cython_modules)
 
 	set(EMBED_NEXT FALSE)
 	set(STANDALONE_NEXT FALSE)
+	set(NOINSTALL_NEXT FALSE)
 	foreach(source ${ARGN})
 		if(source STREQUAL "EMBED")
 			set(EMBED_NEXT TRUE)
@@ -131,7 +132,6 @@ function(add_cython_modules)
 			set(PRETTY_MODULE_PROPERTIES "")
 
 			if(EMBED_NEXT)
-				set(EMBED_NEXT FALSE)
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [embedded interpreter]")
 
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES_EMBED "${source}")
@@ -150,7 +150,6 @@ function(add_cython_modules)
 
 			if(NOINSTALL_NEXT)
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [noinstall]")
-				set(NOINSTALL_NEXT FALSE)
 			else()
 				install(
 					TARGETS "${TARGETNAME}"
@@ -166,10 +165,15 @@ function(add_cython_modules)
 
 			if (STANDALONE_NEXT)
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [standalone]")
-				set(STANDALONE_NEXT FALSE)
 			else()
 				set_target_properties("${TARGETNAME}" PROPERTIES LINK_DEPENDS_NO_SHARED 1)
 				target_link_libraries("${TARGETNAME}" "${PYEXT_LINK_LIBRARY}")
+			endif()
+
+			# Since this module is not embedded with python interpreter,
+			# Mac OS X requires a link flag to resolve undefined symbols
+			if(NOT EMBED_NEXT AND APPLE)
+				set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-undefined dynamic_lookup" )
 			endif()
 
 			add_dependencies("${TARGETNAME}" cythonize)
@@ -177,6 +181,11 @@ function(add_cython_modules)
 			set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULE_TARGETS "${TARGETNAME}")
 
 			pretty_print_target("cython module" "${PRETTY_MODULE_NAME}" "${PRETTY_MODULE_PROPERTIES}")
+
+			# Reset the flags before processing the next cython module
+			set(EMBED_NEXT FALSE)
+			set(NOINSTALL_NEXT FALSE)
+			set(STANDALONE_NEXT FALSE)
 		endif()
 	endforeach()
 endfunction()
