@@ -6,6 +6,7 @@
 #include <epoxy/gl.h>
 #include <vector>
 
+#include "../program.h"
 #include "shader.h"
 
 namespace openage {

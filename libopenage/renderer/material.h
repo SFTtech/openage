@@ -6,7 +6,7 @@
 #include <memory>
 
 #include "texture.h"
-#include "shader.h"
+#include "program.h"
 
 namespace openage {
 namespace renderer {
