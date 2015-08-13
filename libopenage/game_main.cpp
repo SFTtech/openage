@@ -14,11 +14,6 @@ GameMain::GameMain(const Generator &generator)
 	terrain{generator.terrain()},
 	spec{generator.get_spec()} {
 
-  this->minimap = new Minimap(&this->placed_units, this->terrain, coord::camhud_delta{200, 100},
-                              coord::camhud{5, 5});
-  this->minimap->auto_mapping();
-  Engine::get().register_drawhud_action(this->minimap);
-
 	// players
 	unsigned int i = 0;
 	for (auto &name : generator.player_names()) {
@@ -31,7 +26,6 @@ GameMain::GameMain(const Generator &generator)
 
 GameMain::~GameMain() {
 	log::log(MSG(warn) << "Cleanup gamemain");
-  delete this->minimap;
 }
 
 unsigned int GameMain::player_count() const {

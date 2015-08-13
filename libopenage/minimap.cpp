@@ -21,10 +21,8 @@ GLint size, orig, color;
 } // namespace minimap_shader
 
 
-Minimap::Minimap(UnitContainer *container, const std::shared_ptr<Terrain> &terrain, coord::camhud_delta size, coord::camhud hudpos)
+Minimap::Minimap(coord::camhud_delta size, coord::camhud hudpos)
 	:
-	container{container},
-	terrain{terrain},
 	size{size},
 	hudpos{hudpos} {
 
@@ -70,7 +68,11 @@ Minimap::~Minimap() {}
 
 
 void Minimap::auto_mapping() {
-	std::vector<coord::chunk> used = this->terrain->used_chunks();
+	GameMain *game = Engine::get().get_game();
+	if (game == nullptr) {
+		return;
+	}
+	std::vector<coord::chunk> used = game->terrain->used_chunks();
 	coord::chunk ne_least, ne_most, se_least, se_most;
 	ne_least = ne_most = se_least = se_most = {0, 0};
 
@@ -90,6 +92,7 @@ void Minimap::auto_mapping() {
 		this->set_mapping({ne_least.ne, se_least.se}, ne_res + 1);
 	}
 }
+
 
 void Minimap::set_mapping(coord::chunk west, int resolution) {
 	if (resolution < 1) {
@@ -112,19 +115,24 @@ void Minimap::set_mapping(coord::chunk west, int resolution) {
 
 
 void Minimap::generate_background() { 
+	GameMain *game = Engine::get().get_game();
+	if (game == nullptr) {
+		return;
+	}
+	std::shared_ptr<Terrain> &terrain = game->terrain;
 	// Generate terrain texture
 	uint8_t *pixels = new uint8_t[this->resolution * this->resolution * 3];
 	for (int i = 0; i < this->resolution; i++){
 		for (int j = 0; j < this->resolution; j++) {
 			coord::tile tile_pos{i + this->west.ne * 16, j + this->west.se * 16};
-			TileContent *tile_data = this->terrain->get_data(tile_pos);
+			TileContent *tile_data = terrain->get_data(tile_pos);
 
 			if (tile_data == nullptr) {
 				pixels[i * this->resolution * 3 + j * 3 + 0] = 0;
 				pixels[i * this->resolution * 3 + j * 3 + 1] = 0;
 				pixels[i * this->resolution * 3 + j * 3 + 2] = 0;  
 			} else {
-				uint8_t pal_idx = this->terrain->map_color_hi(tile_data->terrain_id);
+				uint8_t pal_idx = terrain->map_color_hi(tile_data->terrain_id);
 				gamedata::palette_color hi_color = this->palette[pal_idx];
 				pixels[i * this->resolution * 3 + j * 3 + 0] = hi_color.r;
 				pixels[i * this->resolution * 3 + j * 3 + 1] = hi_color.g;
@@ -220,10 +228,13 @@ void Minimap::draw_unit(Unit *unit) {
 
 
 bool Minimap::on_drawhud() {
-	this->generate_background();
-
 	Engine &engine = Engine::get();
 
+	if (engine.get_game() == nullptr) {
+		return true;
+	}
+
+	this->generate_background();
 	GLint terrain_vdata[] {
 		// vertices
 		this->left, this->center_vertical,
@@ -265,7 +276,7 @@ bool Minimap::on_drawhud() {
 	coord::camhud view = this->from_phys(engine.get_coord_data()->camgame_phys);
 
 	// Draw units
-	std::vector<Unit *> units = this->container->all_units();
+	std::vector<Unit *> units = engine.get_game()->placed_units.all_units();
 	for (Unit *u : units) {
 		this->draw_unit(u);
 	}

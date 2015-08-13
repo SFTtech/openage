@@ -24,9 +24,7 @@ namespace texture_shader {
 extern shader::Program *program;
 }
 
-class Terrain;
 class Unit;
-class UnitContainer;
 
 /**
  * Implements a minimap, as a HudHandler.
@@ -38,8 +36,7 @@ public:
 	/**
 	 * Creates the minimap.
 	 */
-	Minimap(UnitContainer *container, const std::shared_ptr<Terrain> &terrain, coord::camhud_delta size,
-          coord::camhud hudpos);
+	Minimap(coord::camhud_delta size, coord::camhud hudpos);
 	~Minimap();
 
 	bool on_drawhud() override;
@@ -80,8 +77,6 @@ public:
 	bool is_within(coord::camhud coord);
 
 private:
-	UnitContainer *container;
-	const std::shared_ptr<Terrain> &terrain;
 	coord::camhud_delta size;
 	coord::camhud hudpos;
 	std::vector<gamedata::palette_color> palette, player_palette;

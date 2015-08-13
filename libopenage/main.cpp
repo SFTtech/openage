@@ -42,6 +42,8 @@ int run_game(const main_arguments &args) {
 		GameRenderer renderer{&engine};
 		GameControl control{&engine};
 		Generator generator{&engine};
+		Minimap minimap = Minimap(coord::camhud_delta{200, 100}, coord::camhud{5, 5});
+		engine.register_drawhud_action(&minimap);
 
 		log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
 

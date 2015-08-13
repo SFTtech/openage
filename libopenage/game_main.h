@@ -14,7 +14,6 @@
 #include "unit/unit_container.h"
 
 namespace openage {
-  class Minimap;
 
 /**
  * Contains information for a single game
@@ -57,8 +56,6 @@ public:
 	 * all the objects that have been placed.
 	 */
 	UnitContainer placed_units;
-
-  Minimap *minimap;
 
 private:
 	std::shared_ptr<GameSpec> spec;
