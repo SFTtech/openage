@@ -103,7 +103,7 @@ void renderer_demo() {
 
 	ProgramSource simplequad_src({&vshader_src, &fshader_src});
 
-	std::shared_ptr<Program> simplequad = renderer.add_program(simplequad_src);
+	std::unique_ptr<RawProgram> simplequad = renderer.add_program(simplequad_src);
 
 	simplequad->dump_attributes();
 

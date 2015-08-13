@@ -169,13 +169,13 @@ void Context::screenshot(const std::string &filename) {
 }
 
 
-std::shared_ptr<renderer::Texture> Context::register_texture(const TextureData &data) {
-	std::shared_ptr<renderer::Texture> txt = std::make_shared<opengl::Texture>(data);
+std::unique_ptr<renderer::Texture> Context::register_texture(const TextureData &data) {
+	std::unique_ptr<renderer::Texture> txt = std::make_unique<opengl::Texture>(data);
 	return txt;
 }
 
-std::shared_ptr<renderer::Program> Context::register_program(const ProgramSource &data) {
-	std::shared_ptr<renderer::Program> txt = std::make_shared<opengl::Program>(data);
+std::unique_ptr<RawProgram> Context::register_program(const ProgramSource &data) {
+	std::unique_ptr<RawProgram> txt = std::make_unique<opengl::Program>(data);
 	return txt;
 }
 

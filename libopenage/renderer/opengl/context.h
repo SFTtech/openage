@@ -64,13 +64,13 @@ public:
 	 * Creates the opengl texture in this context.
 	 * @returns a handle to it.
 	 */
-	std::shared_ptr<renderer::Texture> register_texture(const TextureData &data) override;
+	std::unique_ptr<renderer::Texture> register_texture(const TextureData &data) override;
 
 	/**
 	 * Register a glsl shader pipeline program to the context.
 	 * @returns a handle to the new program.
 	 */
-	std::shared_ptr<renderer::Program> register_program(const ProgramSource &data) override;
+	std::unique_ptr<RawProgram> register_program(const ProgramSource &data) override;
 
 
 protected:

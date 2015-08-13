@@ -86,13 +86,13 @@ public:
 	 * Register some texture data to the context.
 	 * @returns the newly created Texture handle.
 	 */
-	virtual std::shared_ptr<Texture> register_texture(const TextureData &data) = 0;
+	virtual std::unique_ptr<Texture> register_texture(const TextureData &data) = 0;
 
 	/**
 	 * Register some shader pipeline program to the context.
 	 * @returns the newly created Program handle.
 	 */
-	virtual std::shared_ptr<Program> register_program(const ProgramSource &data) = 0;
+	virtual std::unique_ptr<RawProgram> register_program(const ProgramSource &data) = 0;
 
 	/**
 	 * Resize the context because the surrounding window size was updated.

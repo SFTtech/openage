@@ -120,12 +120,12 @@ protected:
  * A usable handle, aquired by registering the sources of the program
  * to the renderer and getting back an object of this class.
  */
-class Program {
+class RawProgram {
 protected:
-	Program();
+	RawProgram();
 
 public:
-	virtual ~Program() {};
+	virtual ~RawProgram() {};
 
 	/**
 	 * Use this program now on the GPU.
