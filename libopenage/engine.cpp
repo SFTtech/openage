@@ -421,8 +421,6 @@ void Engine::loop() {
 
 			}
 
-			this->profiler.show();
-
 			if (this->drawing_huds.value) {
 				// invoke all hud drawing callback methods
 				for (auto &action : this->on_drawhud) {
