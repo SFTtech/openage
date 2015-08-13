@@ -3,11 +3,9 @@
 #ifndef OPENAGE_RENDERER_RENDERER_H_
 #define OPENAGE_RENDERER_RENDERER_H_
 
-#include "task.h"
-#include "texture.h"
-
 #include "../datastructure/pairing_heap.h"
 #include "../handlers.h"
+#include "task.h"
 
 namespace openage {
 
@@ -23,6 +21,11 @@ namespace openage {
 namespace renderer {
 
 class Context;
+class ProgramSource;
+class RawProgram;
+class Texture;
+class TextureData;
+
 
 /**
  * Main for collecting and rendering renderable things.

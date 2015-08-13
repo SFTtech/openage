@@ -51,28 +51,4 @@ ShaderSourceCode::ShaderSourceCode(shader_type type, const std::string &code)
 	this->code = code;
 }
 
-
-ProgramSource::ProgramSource() {}
-
-
-ProgramSource::ProgramSource(const std::vector<const ShaderSource *> &shaders) {
-	for (auto &shader : shaders) {
-		this->attach_shader(*shader);
-	}
-}
-
-
-const std::vector<const ShaderSource *> &ProgramSource::get_shaders() const {
-	return this->shaders;
-}
-
-
-void ProgramSource::attach_shader(const ShaderSource &shader) {
-	this->shaders.push_back(&shader);
-}
-
-
-RawProgram::RawProgram() {}
-
-
 }} // openage::renderer

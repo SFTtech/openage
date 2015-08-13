@@ -7,11 +7,15 @@
 #include <SDL2/SDL.h>
 
 #include "../coord/window.h"
-#include "shader.h"
-#include "texture.h"
 
 namespace openage {
 namespace renderer {
+
+class ProgramSource;
+class RawProgram;
+class Texture;
+class TextureData;
+
 
 /**
  * Available context types.
