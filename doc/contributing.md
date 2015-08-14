@@ -21,6 +21,30 @@ You're in luck. There's various sources for tasks:
  - ask on IRC
 
 
+tl;dr
+-----
+
+- Have a [GitHub](https://github.com) account
+- Click the [fork button](https://github.com/SFTtech/openage)
+- `git clone git@github.com:YourUsername/openage.git`
+- `cd openage`
+- `git remote add upstream https://github.com/SFTtech/openage.git`
+- `git checkout -b tentacle-monster-fix`
+- Edit file, adhere to [coding style](/doc/code_style)!
+- Add yourself to `copying.md`
+- `git add file`
+- `git commit -m "engine: fixed vomiting speed of tentacle monster"`
+- `make checkall`
+- `make test`
+- `git push origin tentacle-monster-fix`
+- Create a pull request and look at the CI output
+
+- Watch [cat pictures](https://www.flickr.com/search/?text=cat) while waiting for feedback
+
+
+Read on below if you need more detailed instructions and quality hints.
+
+
 Workflow
 --------
 
@@ -66,7 +90,7 @@ Rebasing - What the hell is it, and (why) do I need it?
 - If you based your work on a older master (so old that stuff can't be automatically merged),
   you can rebase to move your commits to the current [upstream](https://help.github.com/articles/fork-a-repo/) master:
 
-```
+```bash
 # update the upstream remote to receive new commits
 git fetch upstream
 # be on your feature branch (you probably are)

@@ -13,5 +13,5 @@ The game will ask for your AoE II installation folder; examples include:
 
 You will find the converted files in `assets/converted`.
 
-The version of openage that the media files were converted with is written to `assets/converted/converted_for`.
-Delete that file to re-trigger conversion.
+The version of openage that the media files were converted with is written to `assets/converted/asset_version`.
+Delete that file to trigger a full reconversion.

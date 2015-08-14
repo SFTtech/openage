@@ -6,7 +6,8 @@ primarily aimed at POSIX platforms such as **GNU/Linux**,
 comparable in its goals to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/) and [OpenTTD](http://openttd.org/).
 
 openage uses the original game assets (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
-To play, you require *an original AoE II installation or [AoE II: HD](http://store.steampowered.com/app/221380/)* (wine is your friend; in the near future, setup discs will be supported).
+To play, you require *an original AoE II : TC installation or [AoE II: HD](http://store.steampowered.com/app/221380/)*
+([Wine](https://www.winehq.org/) is your friend; in the near future, setup discs will be supported).
 
 [![build status](https://travis-ci.org/SFTtech/openage.svg?branch=master)](https://travis-ci.org/SFTtech/openage)
 [![Bountysource](https://www.bountysource.com/badge/team?team_id=6026&style=bounties_received)](https://www.bountysource.com/teams/sfttech/issues?utm_source=SFTtech&utm_medium=shield&utm_campaign=bounties_received)
@@ -36,9 +37,9 @@ Our goals *include*:
   * We will not implement useless artificial limitations (max 30 selectable units...)
 * Multiplayer (obviously)
 * Optionally, [Improvements](/doc/ideas/) over the original game
-* AI
-* Re-creating free game assets
-* An easily-moddable content format
+* AI scripting in Python, you can use [machine learning](http://scikit-learn.org/stable/)
+* Re-creating [free game assets](https://github.com/SFTtech/openage-data)
+* An easily-moddable content format: **nyan**'s yet another notation
 * A powerful integrated Python console and interface, comparable to [blender](http://blender.org/)
 
 Our goals specifically *exclude*:
@@ -53,59 +54,56 @@ Current State of the Project
 ----------------------------
 
  - What features are currently implemented?
-
-See [doc/status.md](/doc/status.md).
+   - See [doc/status.md](/doc/status.md).
 
  - What can I do once I start the game?
-
-See [docs/usage.md](/doc/usage.md).
+   - See [docs/usage.md](/doc/usage.md).
 
  - What's the plan?
-
-See [doc/milestones.md](/doc/milestones.md). We also have a [list of crazy xor good ideas](/doc/ideas).
+   - See [doc/milestones.md](/doc/milestones.md). We also have a [list of crazy xor good ideas](/doc/ideas).
 
 
 Dependencies, Building and Running
 ----------------------------------
 
  - How do I get this to run on my box?
-
-See [doc/building.md](/doc/building.md).
+   - See [doc/building.md](/doc/building.md).
 
  - I compiled everything. Now how do I run it?
-
-You first need to use [the convert script](/doc/media_convert.md) (will be automated in the near future!) to convert the original game assets to the (a lot saner and more moddable) openage format. Then, you can simply run the game using `./openage --data=assets`.
+   - Execute `./run`, you will be prompted by [the convert script](/doc/media_convert.md) to convert the original game assets to the (a lot saner and more moddable) openage format. The game starts when this is done..
 
  - Waaaaaah! It
-  - segfaults
-  - prints error messages I don't want to read
-  - ate my dog
+   - segfaults
+   - prints error messages I don't want to read
+   - ate my dog
 
 All of those are features, not bugs.
+
 To turn them off, use `./run --dont-segfault --no-errors --dont-eat-dog`.
+
 
 If this still does not help, try the [contact section](#contact)
 or the [bug tracker](https://github.com/SFTtech/openage/issues).
 
-ATM, openage is mostly designed to be built and run inside the development folder via `make run`, `./run`, `./run.py` or `python3 -m openage` (those all are equivalent), but `make install` might actually work! Run the installed version from outside the development folder by typing `python3 -m openage`.
+ATM, openage is mostly designed to be built and run inside the development folder via `make run`, `./run`, `./run.py` or `python3 -m openage` (those all are equivalent), but `make install` might actually work!
+
+To run the globally installed version: `python3 -m openage`.
+
 
 Development Process
 -------------------
 
-* What does openage development look like in practice?
+What does openage development look like in practice?
+ - [doc/development.md](/doc/development.md).
 
-[doc/development.md](/doc/development.md).
-
-* Can I help?
-
-[doc/contributing.md](/doc/contributing.md).
+Can I help?
+ - [doc/contributing.md](/doc/contributing.md).
 
 
-Project documentation is accompanying the source code in the `doc/` folder:
+All documentation is also in this repo:
 
-- Have a look at the [doc directory](/doc/).
-- We use Doxygen, as described in the [doc readme](/doc/README.md)
-- Unfortunately, docs that are kept in some seperate folder keep getting outdated... thus, as much of the doc as possible is kept directly in the source code.
+- Code documentation is embedded in the sources for Doxygen (see [doc readme](/doc/README.md)).
+- Have a look at the [doc directory](/doc/). This folder tends to outdate when code changes.
 
 
 Windows Version
@@ -113,11 +111,14 @@ Windows Version
 
 None of us uses Windows, so a port has low priority.
 
-However, we're using cross-platform libraries wherever possible, so a port should be pretty easy to accomplish. We'll eventually look into porting using `mingw`/`msys2`.
+However, we're using cross-platform libraries wherever possible,
+so a port should be pretty easy to accomplish.
+We'll eventually look into porting using `mingw`/`msys2`.
 
 If you want to beat us to it, go for it!
 
 We'd prefer as few preprocessor switches as possible, keep those centralized.
+
 
 Contributing
 ============
@@ -135,8 +136,8 @@ Guidelines:
 * Don't try to **fix any bugs**, see above.
 * Don't implement any features, your code is crap.
 * Don't even think about sending a **pull request**
-* Don't note the irony, you idiot
 * We even have a [list of tasks](/doc/tasks.md) that definitely don't need your work.
+* Don't note the irony, you idiot
 
 To prevent accidential violation of one of those guidelines, you should *never*
 
@@ -145,10 +146,11 @@ To prevent accidential violation of one of those guidelines, you should *never*
 * [learn python](http://docs.python.org/3/tutorial/appetite.html)
 * [learn c++14](http://www.cplusplus.com/doc/tutorial/)
 * read the code and documentation
-* contribute anything to the code
+* [contribute](/doc/contributing.md) anything to the code
 * [contact us](#contact)
 
 cheers, happy hecking.
+
 
 Contact
 -------
@@ -157,6 +159,7 @@ Most of us hang around on our **IRC** channel (`#sfttech` on `freenode.net`).
 Do not hesitate to ping us, we might not see your message otherwise.
 
 There's no openage mailing list, but the github issue tracker comes pretty close to it: Everybody who 'watches' the repository will receive all the issue tracker posts via mail, and can even reply directly via their mail client. All issue tracker discussions are auto-posted to the IRC channel by a bot. Use the issue tracker for any sorts of discussion, proposal or questions that the IRC is unsuitable for.
+
 
 License
 -------
