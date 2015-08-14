@@ -23,8 +23,8 @@ GLint size, orig, color;
 
 Minimap::Minimap(coord::camhud_delta size, coord::camhud hudpos)
 	:
-	size{size},
-	hudpos{hudpos} {
+	size(size),
+	hudpos(hudpos) {
 
 	// Initial update to setup the minimap resolution, etc
 	// TODO: Change this

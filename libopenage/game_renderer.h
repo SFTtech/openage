@@ -68,7 +68,6 @@ public:
 	GameSpec *game_spec() const;
 
 	Texture *gaben;
-  Minimap *minimap;
 
 	RenderOptions settings;
 
