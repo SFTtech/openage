@@ -348,9 +348,9 @@ void GameSpec::load_terrain(AssetManager &am) {
 		// TODO: terrain double-define check?
 		terrain_data.terrain_id_priority_map[terrain_id]  = line->blend_priority;
 		terrain_data.terrain_id_blendmode_map[terrain_id] = line->blend_mode;
-    terrain_data.terrain_id_map_color_hi_map[terrain_id] = line->map_color_hi; 
-    terrain_data.terrain_id_map_color_med_map[terrain_id] = line->map_color_med; 
-    terrain_data.terrain_id_map_color_low_map[terrain_id] = line->map_color_low; 
+    terrain_data.terrain_id_map_color_hi_map[terrain_id] = line->map_color_hi;
+    terrain_data.terrain_id_map_color_med_map[terrain_id] = line->map_color_med;
+    terrain_data.terrain_id_map_color_low_map[terrain_id] = line->map_color_low;
 
 		// TODO: remove hardcoding and rely on nyan data
 		auto terraintex_filename = util::sformat("%s/%d.slp.png", this->terrain_path.c_str(), line->slp_id);

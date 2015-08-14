@@ -144,7 +144,7 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	alphamask_shader::program->stopusing();
 
 
-	// create program for rendering within the minimap 
+	// create program for rendering within the minimap
 	minimap_shader::program = new shader::Program(minimap_vert, minimap_frag);
 	minimap_shader::program->link();
 	minimap_shader::size = minimap_shader::program->get_uniform_id("minimap_size");
@@ -159,7 +159,7 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	delete alphamask_vert;
 	delete alphamask_frag;
 	delete minimap_vert;
-	delete minimap_frag; 
+	delete minimap_frag;
 
 	// Renderer keybinds
 	// TODO: a renderer settings struct

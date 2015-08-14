@@ -59,7 +59,7 @@ Minimap::Minimap(coord::camhud_delta size, coord::camhud hudpos)
 
 	minimap_shader::program->use();
 	glUniform2i(minimap_shader::orig, (GLint)this->left, (GLint)this->bottom);
-	glUniform2i(minimap_shader::size, (GLint)this->size.x, (GLint)this->size.y); 
+	glUniform2i(minimap_shader::size, (GLint)this->size.x, (GLint)this->size.y);
 	minimap_shader::program->stopusing();
 }
 
@@ -96,7 +96,7 @@ void Minimap::auto_mapping() {
 
 void Minimap::set_mapping(coord::chunk west, int resolution) {
 	if (resolution < 1) {
-		resolution = 1; 
+		resolution = 1;
 	}
 	this->resolution = resolution * 16;
 	this->west  = west;
@@ -114,7 +114,7 @@ void Minimap::set_mapping(coord::chunk west, int resolution) {
 }
 
 
-void Minimap::generate_background() { 
+void Minimap::generate_background() {
 	GameMain *game = Engine::get().get_game();
 	if (game == nullptr) {
 		return;
@@ -130,13 +130,13 @@ void Minimap::generate_background() {
 			if (tile_data == nullptr) {
 				pixels[i * this->resolution * 3 + j * 3 + 0] = 0;
 				pixels[i * this->resolution * 3 + j * 3 + 1] = 0;
-				pixels[i * this->resolution * 3 + j * 3 + 2] = 0;  
+				pixels[i * this->resolution * 3 + j * 3 + 2] = 0;
 			} else {
 				uint8_t pal_idx = terrain->map_color_hi(tile_data->terrain_id);
 				gamedata::palette_color hi_color = this->palette[pal_idx];
 				pixels[i * this->resolution * 3 + j * 3 + 0] = hi_color.r;
 				pixels[i * this->resolution * 3 + j * 3 + 1] = hi_color.g;
-				pixels[i * this->resolution * 3 + j * 3 + 2] = hi_color.b; 
+				pixels[i * this->resolution * 3 + j * 3 + 2] = hi_color.b;
 			}
 		}
 	}
@@ -153,7 +153,7 @@ void Minimap::generate_background() {
 }
 
 
-coord::camhud Minimap::from_phys(coord::phys3 coord) { 
+coord::camhud Minimap::from_phys(coord::phys3 coord) {
 	coord::camhud_delta west_rel = this->west.to_tile({0, 0}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
 	coord::camhud_delta coord_rel = coord.to_camgame().to_window().to_camhud().as_relative() - west_rel;
 	coord_rel.x = coord_rel.x * this->ratio_horizontal;
@@ -163,9 +163,9 @@ coord::camhud Minimap::from_phys(coord::phys3 coord) {
 }
 
 
-coord::phys3 Minimap::to_phys(coord::camhud coord) { 
+coord::phys3 Minimap::to_phys(coord::camhud coord) {
 	coord::camhud_delta coord_rel{(coord::pixel_t)((float)(coord.x - (coord::pixel_t)this->left)/this->ratio_horizontal),
-	                              (coord::pixel_t)((float)(coord.y - (coord::pixel_t)this->center_vertical)/this->ratio_vertical)}; 
+	                              (coord::pixel_t)((float)(coord.y - (coord::pixel_t)this->center_vertical)/this->ratio_vertical)};
 	coord::camhud_delta west_rel = this->west.to_tile({0, 0}).to_tile3(0).to_phys3({0, 0, 0}).to_camgame().to_window().to_camhud().as_relative();
 	return (coord_rel + west_rel).as_absolute().to_window().to_camgame().to_phys3();;
 }
@@ -216,14 +216,14 @@ void Minimap::draw_unit(Unit *unit) {
 	glVertexAttribPointer(*color, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)(2*sizeof(GLfloat)));
 	glEnableVertexAttribArray(*color);
 
-	glPointSize(4); 
+	glPointSize(4);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(unit_vdata), unit_vdata, GL_STATIC_DRAW);
 	glDrawArrays(GL_POINTS, 0, 1);
 
 	// unbind buffer
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	minimap_shader::program->stopusing(); 
+	minimap_shader::program->stopusing();
 }
 
 
@@ -249,7 +249,7 @@ bool Minimap::on_drawhud() {
 	};
 
 	int *pos_id, *tex_coord;
-	
+
 	glBindTexture(GL_TEXTURE_2D, this->terrain_tex);
 	texture_shader::program->use();
 	pos_id = &texture_shader::program->pos_id;
@@ -281,7 +281,7 @@ bool Minimap::on_drawhud() {
 		this->draw_unit(u);
 	}
 
-	// Draw minimap view box 
+	// Draw minimap view box
 	int *color;
 	minimap_shader::program->use();
 	color = &minimap_shader::color;

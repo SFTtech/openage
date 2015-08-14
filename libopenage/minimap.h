@@ -32,7 +32,7 @@ class Unit;
  * Supports dynamic terrain sizes, changing terrain, and displays units.
  */
 class Minimap: public HudHandler {
-public:  
+public:
 	/**
 	 * Creates the minimap.
 	 */
@@ -60,7 +60,7 @@ public:
 	coord::camhud from_phys(coord::phys3 coord);
 
 	/**
-	 * Converts a camhud coordinate to a phys3 coordinate, assuming that the 
+	 * Converts a camhud coordinate to a phys3 coordinate, assuming that the
 	 * camhud coordinate refers to a position on the minimap.
 	 *
 	 * @param coord: The minimap camhud coordinate to be converted.
@@ -84,15 +84,15 @@ private:
 	GLint left, right, bottom, top, center_vertical, center_horizontal;
 	coord::chunk north, east, south, west;
 	GLuint terrain_vertbuf;
-	GLuint terrain_tex; 
+	GLuint terrain_tex;
 	GLuint view_vertbuf;
 	GLuint unit_vertbuf;
 
 	/**
 	 * The ratio of distance between eastern and western minimap corners
 	 * (NOT terrain corners!) in camhud game to camhud minimap.
-	 */ 
-	float ratio_horizontal; 
+	 */
+	float ratio_horizontal;
 
 	/**
 	 * The ratio of distance between nortern and southern minimap corners

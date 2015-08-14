@@ -312,17 +312,17 @@ public:
 	int blendmode(terrain_t terrain_id);
 
   /**
-   * get the red color component for a given terrain id. 
+   * get the red color component for a given terrain id.
    */
   uint8_t map_color_hi(terrain_t terrain_id);
-  
+
   /**
-   * get the red color component for a given terrain id. 
+   * get the red color component for a given terrain id.
    */
   uint8_t map_color_med(terrain_t terrain_id);
 
   /**
-   * get the red color component for a given terrain id. 
+   * get the red color component for a given terrain id.
    */
   uint8_t map_color_low(terrain_t terrain_id);
 
