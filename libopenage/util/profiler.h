@@ -74,9 +74,9 @@ public:
 	void end_measure(std::string com);
 
 	/*
-	 * depreciated
 	 * TODO remove me when profiler is finished
 	 */
+	[[deprecated]]
 	long last_duration(std::string com);
 
 	/*

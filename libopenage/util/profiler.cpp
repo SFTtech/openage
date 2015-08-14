@@ -70,21 +70,18 @@ void Profiler::end_measure(std::string com) {
 	}
 }
 
-long Profiler::last_duration(std::string cat) {
+long Profiler::last_duration(std::string com) {
 
-	if (cat == "abs") {
+	if (com == "abs") {
 		std::chrono::high_resolution_clock::duration dur = this->frame_duration;
 		return std::chrono::duration_cast<std::chrono::microseconds>(dur).count();
 	}
 
-	std::chrono::high_resolution_clock::duration dur = this->components[cat].duration;
+	std::chrono::high_resolution_clock::duration dur = this->components[com].duration;
 	return std::chrono::duration_cast<std::chrono::microseconds>(dur).count();
 }
 
 void Profiler::draw_component_performance(std::string com) {
-	double percentage = this->duration_to_percentage(this->components[com].duration);
-	this->append_to_history(com, percentage);
-
 	color rgb = this->components[com].drawing_color;
 	glColor4f(rgb.r, rgb.g, rgb.b, 1.0);
 
@@ -94,9 +91,7 @@ void Profiler::draw_component_performance(std::string com) {
 	float offset_factor = (float)PROFILER_CANVAS_WIDTH / (float)MAX_DURATION_HISTORY;
 	float percentage_factor = (float)PROFILER_CANVAS_HEIGHT / 100.0;
 
-	int read_start = keep_in_duration_bound(this->insert_pos);
-
-	for (auto i = read_start; i != keep_in_duration_bound(this->insert_pos-1); ++i) {
+	for (auto i = this->insert_pos; keep_in_duration_bound(i) != keep_in_duration_bound(this->insert_pos-1); ++i) {
 		i = keep_in_duration_bound(i);
 
 		auto percentage = this->components[com].history.at(i);
@@ -123,6 +118,15 @@ void Profiler::show() {
 	for (auto com : this->components) {
 		this->draw_component_performance(com.first);
 	}
+
+	double percentage_sum = 0.0;
+	for (auto com : this->components) {
+		percentage_sum += com.second.history.at(keep_in_duration_bound(this->insert_pos-1));
+	}
+
+	if (percentage_sum != 100.0) {
+		std::cout << "percentage_sum is: " << percentage_sum << std::endl;
+	}
 }
 
 bool Profiler::registered(std::string com) const {
@@ -140,6 +144,13 @@ void Profiler::start_frame_measure() {
 void Profiler::end_frame_measure() {
 	auto frame_end = std::chrono::high_resolution_clock::now();
 	this->frame_duration = frame_end - this->frame_start;
+
+	for (auto com : this->registered_components()) {
+		double percentage = this->duration_to_percentage(this->components[com].duration);
+		this->append_to_history(com, percentage);
+	}
+
+	this->insert_pos++;
 }
 
 void Profiler::draw_canvas() {
@@ -172,11 +183,6 @@ double Profiler::duration_to_percentage(std::chrono::high_resolution_clock::dura
 	double dur = std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
 	double ref = std::chrono::duration_cast<std::chrono::microseconds>(this->frame_duration).count();
 	double percentage = dur / ref * 100;
-	if (percentage > 100) {
-		std::cout << "percentage: " << percentage << std::endl
-				  << "dur: " << (double)std::chrono::duration_cast<std::chrono::microseconds>(duration).count() << std::endl
-				  << "ref: " << (double)std::chrono::duration_cast<std::chrono::microseconds>(this->frame_duration).count() << std::endl;
-	}
 	return percentage;
 }
 
@@ -185,12 +191,11 @@ void Profiler::append_to_history(std::string com, double percentage) {
 		this->insert_pos = 0;
 	}
 	this->components[com].history[this->insert_pos] = percentage;
-	this->insert_pos++;
 }
 
 int Profiler::keep_in_duration_bound(int value) {
-	//return (value >= MAX_DURATION_HISTORY) ? 0 : value;
-	return value % MAX_DURATION_HISTORY;
+	int result = value % MAX_DURATION_HISTORY;
+	return result < 0 ? result + MAX_DURATION_HISTORY : result;
 }
 
 } //namespace util

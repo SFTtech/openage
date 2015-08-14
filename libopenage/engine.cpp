@@ -445,9 +445,6 @@ void Engine::loop() {
 
 		this->profiler.end_measure("idle");
 		this->profiler.end_frame_measure();
-
-		std::cout << "events: " << this->profiler.last_duration("events") << ", abs: " << this->profiler.last_duration("abs") << std::endl;
-		//this->profiler.show();
 	}
 }
 
