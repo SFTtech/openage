@@ -20,7 +20,7 @@ void Profiler::register_component(std::string com, color component_color) {
 		return;
 	}
 
-	component_time_data cdt = component_time_data();
+	component_time_data cdt;
 	cdt.display_name = com;
 	cdt.drawing_color = component_color;
 
