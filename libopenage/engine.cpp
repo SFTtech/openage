@@ -294,8 +294,7 @@ bool Engine::draw_debug_overlay() {
 		"%s", config::config_option_string
 	);
 
-	profiler_draw(true);
-	this->profiler.show(debug_mode);
+	this->profiler.show(true);
 
 	return true;
 }
