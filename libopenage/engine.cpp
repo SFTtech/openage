@@ -294,7 +294,7 @@ bool Engine::draw_debug_overlay() {
 		"%s", config::config_option_string
 	);
 
-	profiler_draw(true);
+	this->profiler.show(true);
 
 	return true;
 }
@@ -311,10 +311,6 @@ void Engine::stop() {
 	this->running = false;
 }
 
-void Engine::profiler_draw(bool debug_mode) {
-	profiler.show(debug_mode);
-}
-
 void Engine::loop() {
 	SDL_Event event;
 
@@ -324,6 +320,7 @@ void Engine::loop() {
 
 		this->job_manager->execute_callbacks();
 
+		this->profiler.start_measure("events", {1.0, 0.0, 0.0});
 		// top level input handling
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
