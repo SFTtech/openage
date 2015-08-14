@@ -2,6 +2,7 @@
 
 #include "profiler.h"
 #include "../engine.h"
+#include "misc.h"
 
 #include <chrono>
 #include <epoxy/gl.h>
@@ -23,8 +24,8 @@ void Profiler::register_component(std::string com, color component_color) {
 	cdt.display_name = com;
 	cdt.drawing_color = component_color;
 
-	for (auto it = cdt.history.begin(); it != cdt.history.end(); ++it) {
-		*it = 0;
+	for (auto &val : cdt.history) {
+		val = 0;
 	}
 
 	this->components[com] = cdt;
@@ -48,8 +49,8 @@ void Profiler::unregister_all() {
 
 std::vector<std::string> Profiler::registered_components() {
 	std::vector<std::string> registered_components;
-	for (auto it = this->components.begin(); it != this->components.end(); ++it) {
-		registered_components.push_back(it->first);
+	for (auto &pair : this->components) {
+		registered_components.push_back(pair.first);
 	}
 
 	return registered_components;
@@ -80,8 +81,8 @@ void Profiler::draw_component_performance(std::string com) {
 	float offset_factor = (float)PROFILER_CANVAS_WIDTH / (float)MAX_DURATION_HISTORY;
 	float percentage_factor = (float)PROFILER_CANVAS_HEIGHT / 100.0;
 
-	for (auto i = this->insert_pos; keep_in_duration_bound(i) != keep_in_duration_bound(this->insert_pos-1); ++i) {
-		i = keep_in_duration_bound(i);
+	for (auto i = this->insert_pos; mod(i, MAX_DURATION_HISTORY) != mod(this->insert_pos-1, MAX_DURATION_HISTORY); ++i) {
+		i = mod(i, MAX_DURATION_HISTORY);
 
 		auto percentage = this->components[com].history.at(i);
 		glVertex3f(PROFILER_CANVAS_POSITION_X + x_offset, PROFILER_CANVAS_POSITION_Y + percentage * percentage_factor, 0.0);
@@ -136,9 +137,9 @@ void Profiler::end_frame_measure() {
 void Profiler::draw_canvas() {
 	glColor4f(0.2, 0.2, 0.2, PROFILER_CANVAS_ALPHA);
 	glRecti(PROFILER_CANVAS_POSITION_X,
-			PROFILER_CANVAS_POSITION_Y,
-			PROFILER_CANVAS_POSITION_X + PROFILER_CANVAS_WIDTH,
-			PROFILER_CANVAS_POSITION_Y + PROFILER_CANVAS_HEIGHT);
+	        PROFILER_CANVAS_POSITION_Y,
+	        PROFILER_CANVAS_POSITION_X + PROFILER_CANVAS_WIDTH,
+	        PROFILER_CANVAS_POSITION_Y + PROFILER_CANVAS_HEIGHT);
 }
 
 void Profiler::draw_legend() {
@@ -173,10 +174,4 @@ void Profiler::append_to_history(std::string com, double percentage) {
 	this->components[com].history[this->insert_pos] = percentage;
 }
 
-int Profiler::keep_in_duration_bound(int value) {
-	int result = value % MAX_DURATION_HISTORY;
-	return result < 0 ? result + MAX_DURATION_HISTORY : result;
-}
-
-} //namespace util
-} //namespace openage
+}} // openage::util
