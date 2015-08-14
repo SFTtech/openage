@@ -62,8 +62,8 @@ public:
 
 	/*
 	 * starts a measurement for the component com. If com is not yet
-	 * registered, the profiler uses the color information given by
-	 * component_color. The default value is white.
+	 * registered, its getting registered and the profiler uses the color
+	 * information given by component_color. The default value is white.
 	 */
 	void start_measure(std::string com, color component_color = {1.0, 1.0, 1.0});
 
@@ -72,12 +72,6 @@ public:
 	 * registered it does nothing.
 	 */
 	void end_measure(std::string com);
-
-	/*
-	 * TODO remove me when profiler is finished
-	 */
-	[[deprecated]]
-	long last_duration(std::string com);
 
 	/*
 	 * draws the profiler gui if debug_mode is set
@@ -107,7 +101,8 @@ public:
 
 	/**
 	 * sets the end point for the reference time used to compute the portions
-	 * of the components
+	 * of the components. Each recorded measurement for the registered components
+	 * get appended to their history complete the measurement.
 	 */
 	void end_frame_measure();
 

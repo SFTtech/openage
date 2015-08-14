@@ -70,17 +70,6 @@ void Profiler::end_measure(std::string com) {
 	}
 }
 
-long Profiler::last_duration(std::string com) {
-
-	if (com == "abs") {
-		std::chrono::high_resolution_clock::duration dur = this->frame_duration;
-		return std::chrono::duration_cast<std::chrono::microseconds>(dur).count();
-	}
-
-	std::chrono::high_resolution_clock::duration dur = this->components[com].duration;
-	return std::chrono::duration_cast<std::chrono::microseconds>(dur).count();
-}
-
 void Profiler::draw_component_performance(std::string com) {
 	color rgb = this->components[com].drawing_color;
 	glColor4f(rgb.r, rgb.g, rgb.b, 1.0);
@@ -117,15 +106,6 @@ void Profiler::show() {
 
 	for (auto com : this->components) {
 		this->draw_component_performance(com.first);
-	}
-
-	double percentage_sum = 0.0;
-	for (auto com : this->components) {
-		percentage_sum += com.second.history.at(keep_in_duration_bound(this->insert_pos-1));
-	}
-
-	if (percentage_sum != 100.0) {
-		std::cout << "percentage_sum is: " << percentage_sum << std::endl;
 	}
 }
 
