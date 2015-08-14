@@ -24,6 +24,7 @@
 #include "util/externalprofiler.h"
 #include "util/dir.h"
 #include "util/fps.h"
+#include "util/profiler.h"
 #include "screenshot.h"
 
 namespace openage {
@@ -262,6 +263,11 @@ public:
 	 */
 	util::ExternalProfiler external_profiler;
 
+	 /**
+	  * TODO add docstring
+	  */
+	 void profiler_draw(bool debug_mode = false);
+
 private:
 	/**
 	 * main engine loop function.
@@ -353,6 +359,10 @@ private:
 	 */
 	SDL_GLContext glcontext;
 
+	/*
+	 * the engines profiler
+	 */
+	util::Profiler profiler;
 };
 
 } // namespace openage
