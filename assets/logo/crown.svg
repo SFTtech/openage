@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="40 40 220 220">
+ <defs>
+  <clipPath clipPathUnits="userSpaceOnUse" id="c">
+   <circle cy="150" cx="150" r="110.1"/>
+  </clipPath>
+ </defs>
+ <g fill="#000000">
+  <!-- outer circle -->
+  <circle cx="150" cy="150" r="110"/>
+  <g fill="#ffffff">
+   <!-- head/castle shape -->
+   <circle r="62.5" cy="164.5" cx="150"/>
+   <rect x="136.5" y="87" width="27" height="62.5"/>
+   <rect x="185.5" y="87" width="27" height="77.5"/>
+   <rect x="87.5" y="87" width="27" height="77.5"/>
+   <path clip-path="url(#c)" d="m 229.44326,277.49723 -79.44326,0 -79.443255,0 L 110.27837,208.69735 150,139.89748 l 39.72163,68.79987 z"/>
+  </g>
+ </g>
+ <!-- the shield -->
+ <g fill="#000000">
+  <path d="m 113.29891,172.24558 0,-33.37064 c 0,0 13.26216,-9.24097 36.7011,-9.24097 23.43893,0 36.70108,9.24097 36.70108,9.24097 l 0,33.37064 c 0,20.87024 -36.70108,37.52823 -36.70108,37.52823 0,0 -36.7011,-16.65799 -36.7011,-37.52823 z"/>
+ </g>
+</svg>
