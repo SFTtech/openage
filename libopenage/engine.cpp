@@ -225,6 +225,8 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 }
 
 Engine::~Engine() {
+	this->profiler.unregister_all();
+
 	delete this->job_manager;
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);
@@ -292,6 +294,8 @@ bool Engine::draw_debug_overlay() {
 		"%s", config::config_option_string
 	);
 
+	this->profiler.show(true);
+
 	return true;
 }
 
@@ -311,10 +315,12 @@ void Engine::loop() {
 	SDL_Event event;
 
 	while (this->running) {
+		this->profiler.start_frame_measure();
 		this->fps_counter.frame();
 
 		this->job_manager->execute_callbacks();
 
+		this->profiler.start_measure("events", {1.0, 0.0, 0.0});
 		// top level input handling
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
@@ -372,6 +378,7 @@ void Engine::loop() {
 			// update the currently running game
 			this->game->update();
 		}
+		this->profiler.end_measure("events");
 
 		// call engine tick callback methods
 		for (auto &action : this->on_engine_tick) {
@@ -380,6 +387,7 @@ void Engine::loop() {
 			}
 		}
 
+		this->profiler.start_measure("rendering", {0.0, 1.0, 0.0});
 		// clear the framebuffer to black
 		// in the future, we might disable it for lazy drawing
 		glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -407,6 +415,7 @@ void Engine::loop() {
 
 			if (this->drawing_debug_overlay.value) {
 				this->draw_debug_overlay();
+
 			}
 
 			if (this->drawing_huds.value) {
@@ -422,9 +431,16 @@ void Engine::loop() {
 
 		util::gl_check_error();
 
+		this->profiler.end_measure("rendering");
+
+		this->profiler.start_measure("idle", {0.0, 0.0, 1.0});
+
 		// the rendering is done
 		// swap the drawing buffers to actually show the frame
 		SDL_GL_SwapWindow(window);
+
+		this->profiler.end_measure("idle");
+		this->profiler.end_frame_measure();
 	}
 }
 
