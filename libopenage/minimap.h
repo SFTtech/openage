@@ -47,7 +47,7 @@ public:
 	 * Updates various variables crucial to the function of the minimap, including
 	 * the minimap resolution and the minimap corner position.
 	 */
-  void auto_mapping();
+	void auto_mapping();
 	void set_mapping(coord::chunk, int resolution);
 
 	/**

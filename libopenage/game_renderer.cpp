@@ -53,7 +53,6 @@ GameRenderer::GameRenderer(openage::Engine *e)
 
 	std::vector<gamedata::palette_color> player_color_lines, general_color_lines;
 	util::read_csv_file(asset_dir.join("player_palette.docx"), player_color_lines);
-  util::read_csv_file(asset_dir.join("general_palette.docx"), general_color_lines);
 
 	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
 	for (size_t i = 0; i < player_color_lines.size(); i++) {
@@ -159,9 +158,9 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	delete teamcolor_frag;
 	delete alphamask_vert;
 	delete alphamask_frag;
-  delete minimap_vert;
-  delete minimap_frag; 
- 
+	delete minimap_vert;
+	delete minimap_frag; 
+
 	// Renderer keybinds
 	// TODO: a renderer settings struct
 	// would allow these to be put somewher better
@@ -186,7 +185,7 @@ GameRenderer::~GameRenderer() {
 	delete texture_shader::program;
 	delete teamcolor_shader::program;
 	delete alphamask_shader::program;
-  delete minimap_shader::program;
+	delete minimap_shader::program;
 }
 
 bool GameRenderer::on_draw() {
