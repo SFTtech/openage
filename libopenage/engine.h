@@ -263,11 +263,6 @@ public:
 	 */
 	util::ExternalProfiler external_profiler;
 
-	 /**
-	  * TODO add docstring
-	  */
-	 void profiler_draw(bool debug_mode = false);
-
 private:
 	/**
 	 * main engine loop function.
@@ -359,7 +354,9 @@ private:
 	 */
 	SDL_GLContext glcontext;
 
-	// TODO doc
+	/*
+	 * the engines profiler
+	 */
 	util::Profiler profiler;
 };
 
