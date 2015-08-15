@@ -6,6 +6,7 @@
 
 #include "logsink.h"
 #include "stdout_logsink.h"
+#include "tail_logsink.h"
 
 namespace openage {
 namespace log {
