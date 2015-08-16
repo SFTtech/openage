@@ -57,6 +57,10 @@ std::vector<std::string> Profiler::registered_components() {
 }
 
 void Profiler::start_measure(std::string com, color component_color) {
+	if (not this->engine_in_debug_mode()) {
+		return;
+	}
+
 	if (not this->registered(com)) {
 		this->register_component(com, component_color);
 	}
@@ -65,6 +69,10 @@ void Profiler::start_measure(std::string com, color component_color) {
 }
 
 void Profiler::end_measure(std::string com) {
+	if (not this->engine_in_debug_mode()) {
+		return;
+	}
+
 	if (this->registered(com)) {
 		std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
 		this->components[com].duration = end - this->components[com].start;
@@ -119,10 +127,16 @@ unsigned Profiler::size() const {
 }
 
 void Profiler::start_frame_measure() {
-	this->frame_start = std::chrono::high_resolution_clock::now();
+	if (this->engine_in_debug_mode()) {
+		this->frame_start = std::chrono::high_resolution_clock::now();
+	}
 }
 
 void Profiler::end_frame_measure() {
+	if (not this->engine_in_debug_mode()) {
+		return;
+	}
+
 	auto frame_end = std::chrono::high_resolution_clock::now();
 	this->frame_duration = frame_end - this->frame_start;
 
@@ -172,6 +186,15 @@ void Profiler::append_to_history(std::string com, double percentage) {
 		this->insert_pos = 0;
 	}
 	this->components[com].history[this->insert_pos] = percentage;
+}
+
+bool Profiler::engine_in_debug_mode() {
+	Engine &engine = Engine::get();
+	if (engine.drawing_debug_overlay.value) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 }} // openage::util

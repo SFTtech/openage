@@ -117,6 +117,7 @@ private:
 	void draw_component_performance(std::string com);
 	double duration_to_percentage(std::chrono::high_resolution_clock::duration duration);
 	void append_to_history(std::string com, double percentage);
+	bool engine_in_debug_mode();
 };
 
 }} // openage::util
