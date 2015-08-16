@@ -385,6 +385,29 @@ void Buf::write(char c) {
 	}
 }
 
+void Buf::pop_last_char() {
+	if (this->cursorpos.x > 0) {
+		if (this->cursor_special_lastcol) {
+			this->cursor_special_lastcol = false;
+		}
+		else {
+			this->cursorpos.x -= 1;
+		}
+
+		buf_char *ptr = this->chrdataptr(this->cursorpos);
+		*ptr = this->current_char_fmt;
+		ptr->cp = ' ';
+
+		if (this->cursorpos.x == 0 && this->linedataptr(this->cursorpos.y - 1)->type == LINE_WRAPPED) {
+			this->linedataptr(this->cursorpos.y)->type = LINE_EMPTY;
+			this->cursorpos.y--;
+			this->linedataptr(this->cursorpos.y)->type = LINE_REGULAR;
+			this->cursorpos.x = this->dims.x - 1;
+			this->cursor_special_lastcol = true;
+		}
+	}
+}
+
 void Buf::process_codepoint(int cp) {
 	//if the terminal is currently in escaped state, tread the codepoint as
 	//part of the current escape sequence.

@@ -2,6 +2,8 @@
 
 #include "unicode.h"
 
+#include <string.h>
+
 namespace openage {
 namespace util {
 
@@ -147,6 +149,23 @@ size_t utf8_encode(int cp, char *outbuf) {
 		outbuf[0] = '\0';
 		return 0;
 	}
+}
+
+size_t utf8_last_char_size(char *str) {
+	int r = 0;
+	int i = strlen(str) - 1;
+	while ((i >= 0) && (str[i] & 0x80) && !(str[i] & 0x40)) {
+		i--;
+		r++;
+	}
+	if (i >= 0) {
+		r++;
+	}
+	return r;
+}
+
+void utf8_pop_back(std::string &str) {
+	str.erase(str.size() - utf8_last_char_size(&str[0]));
 }
 
 }} // openage::util

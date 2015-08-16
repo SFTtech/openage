@@ -57,6 +57,7 @@ _the openage authors_ are:
 | Franz-Niclas Muschter       | fm                          | fm@stusta.net                         |
 | Valentin Gagarin            | frickler01                  | valentin@fricklerhandwerk.de          |
 | Emmanouil Kampitakis        | madonius                    | emmanouil@kampitakis.de               |
+| Thomas Oltmann              | tomolt                      | thomas.oltmann.hhg@gmail.com          |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
