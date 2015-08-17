@@ -64,17 +64,20 @@ Dependency list:
 `sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel libepoxy-devel opus-tools opusfile-devel fontconfig-devel`
 
 
-### Prerequisite steps for openSUSE users (openSUSE 13.1)
+### Prerequisite steps for openSUSE users (openSUSE 13.2)
 
 If you already have python3 or one of packman/games repositories then no
-need to run the first two lines.
-If unsure then just run last line and see if all packages can be installed.
-Also feel free to drop `--no-recommends` from last line.
+need to run the first two lines. If unsure then just run last line and see
+if all packages can be installed.
 
- - `zypper addrepo http://download.opensuse.org/repositories/devel:languages:python3/openSUSE_13.1/devel:languages:python3.repo`
- - `zypper addrepo http://packman.inode.at/suse/openSUSE_13.1/ packman`
- - `zypper refresh`
- - `zypper install --no-recommends cmake fontconfig-devel ftgl-devel gcc-c++ libepoxy-devel libfreetype6 libogg-devel libopus-devel libSDL2-devel libSDL2_image-devel opusfile-devel opus-tools python3-devel python3-numpy python3-Pillow`
+- `zypper addrepo http://download.opensuse.org/repositories/devel:languages:python3/openSUSE_13.2/devel:languages:python3.repo`
+- `zypper refresh`
+- `zypper install --no-recommends cmake doxygen fontconfig-devel ftgl-devel gcc49-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel`
+
+
+### Prerequisite steps for openSUSE users (openSUSE Tumbleweed)
+
+ - `zypper install --no-recommends cmake doxygen fontconfig-devel ftgl-devel gcc-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel`
 
 
 ### Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)
