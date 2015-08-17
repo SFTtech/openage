@@ -64,6 +64,11 @@ Dependency list:
 `sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel libepoxy-devel opus-tools opusfile-devel fontconfig-devel`
 
 
+### Prerequisite steps for Fedora users (Fedora 22)
+
+`sudo dnf install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-Cython python3-devel python3-numpy python3-pillow python3-pygments ftgl-devel libepoxy-devel opus-tools opusfile-devel fontconfig-devel`
+
+
 ### Prerequisite steps for openSUSE users (openSUSE 13.2)
 
 If you already have python3 or one of packman/games repositories then no
