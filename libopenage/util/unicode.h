@@ -5,6 +5,7 @@
 
 #include <stdint.h>
 #include <stdlib.h>
+#include <string>
 
 namespace openage {
 namespace util {
@@ -91,6 +92,21 @@ size_t utf8_decode(const unsigned char *s, size_t len, codepoint_t *outbuf);
  *   strlen(outbuf)
  */
 size_t utf8_encode(int cp, char *outbuf);
+
+/**
+ * computes the length of the last character in a given UTF-8 string.
+ *
+ * str
+ *   the UTF-8 string
+ * returns
+ *   the length of the last character in bytes
+ */
+size_t utf8_last_char_size(char *str);
+
+/**
+ * pops back (deletes) the last UTF-8 character in a std::string.
+ */
+void utf8_pop_back(std::string &str);
 
 }} // openage::util
 

@@ -328,6 +328,14 @@ public:
 	 */
 	void write(char c);
 
+	/**
+	 * Pop the last char of the current line
+	 *
+	 * Will correctly handle UTF-8 chars and wrapped lines.
+	 */
+	void pop_last_char();
+
+
 	Buf(coord::term dims, coord::term_t scrollback_lines, coord::term_t min_width,
 	 buf_char default_char_fmt = {0x20, 254, 0, 0});
 	~Buf();

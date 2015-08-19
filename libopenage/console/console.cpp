@@ -5,6 +5,7 @@
 #include "../log/log.h"
 #include "../error/error.h"
 #include "../util/strings.h"
+#include "../util/unicode.h"
 
 #include "draw.h"
 
@@ -81,13 +82,23 @@ void Console::register_to_engine(Engine *engine) {
 		return true;
 	});
 	this->input_context.bind(input::event_class::NONPRINT, [this](const input::action_arg_t &arg) {
-		if (arg.e.as_char() == 13) {
-			this->buf.write('\n');
-			this->interpret(this->command);
-			this->command = "";
-			return true;
-		}
-		return false;
+		switch (arg.e.as_char()) {
+			case 8: // remove a single UTF-8 character
+				if (this->command.size() > 0) {
+					util::utf8_pop_back(this->command);
+					this->buf.pop_last_char();
+				}
+				return true;
+
+			case 13: // interpret command
+	 			this->buf.write('\n');
+	 			this->interpret(this->command);
+	 			this->command = "";
+	 			return true;
+
+			default:
+				return false;
+ 		}
 	});
 	this->input_context.utf8_mode = true;
 }
