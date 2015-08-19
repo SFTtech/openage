@@ -43,7 +43,7 @@ Console::Console()
 	topright.y = charsize.y * buf.dims.y;
 }
 
-Console::~Console () {}
+Console::~Console() {}
 
 void Console::load_colors(std::vector<gamedata::palette_color> &colortable) {
 	for (auto &c : colortable) {
@@ -60,6 +60,9 @@ void Console::register_to_engine(Engine *engine) {
 	engine->register_tick_action(this);
 	engine->register_drawhud_action(this);
 	engine->register_resize_action(this);
+
+	// create & register the TailSink
+	this->tailsink = std::make_unique<log::TailSink>();
 
 	// TODO bind any needed input to InputContext
 
@@ -123,6 +126,10 @@ void Console::write(const char *text) {
 void Console::interpret(const std::string &command) {
 	if (command == "exit") {
 		this->set_visible(false);
+	}
+	else if (command == "log-tail") {
+		for (auto &line : tailsink->tail)
+			this->buf.write(line.c_str());
 	}
 	else if (command == "list") {
 		Engine &e = Engine::get();

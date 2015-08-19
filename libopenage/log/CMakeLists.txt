@@ -7,6 +7,7 @@ add_sources(libopenage
 	message.cpp
 	named_logsource.cpp
 	stdout_logsink.cpp
+	tail_logsink.cpp
 	test.cpp
 )
 

@@ -14,6 +14,7 @@
 #include "../util/color.h"
 #include "../font.h"
 #include "../gamedata/color.gen.h"
+#include "../log/tail_logsink.h"
 
 namespace openage {
 
@@ -26,7 +27,6 @@ class Console : InputHandler, TickHandler, HudHandler, ResizeHandler {
 
 public:
 	Console();
-	~Console();
 
 	coord::camhud bottomleft;
 	coord::camhud topright;
@@ -43,6 +43,11 @@ public:
 
 	// the command state
 	std::string command;
+
+	/**
+	 * the log sink used for the 'log-tail' command.
+	 */
+	std::unique_ptr<log::TailSink> tailsink;
 
 	/**
 	 * load the consoles color table
