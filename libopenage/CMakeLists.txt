@@ -50,6 +50,7 @@ add_subdirectory("testing")
 add_subdirectory("unit")
 add_subdirectory("util")
 add_subdirectory("rng")
+add_subdirectory("renderer")
 
 # run codegen, add files to executable
 codegen_run()
