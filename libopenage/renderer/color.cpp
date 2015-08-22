@@ -43,12 +43,12 @@ Color &Color::operator=(const Color &other) {
 	return *this;
 }
 
-bool operator==(const Color &left, const Color &right) {
-	return left.r == right.r && left.g == right.g && left.b == right.b && left.a == right.a;
+bool Color::operator==(const Color &other) const {
+	return this->r == other.r && this->g == other.g && this->b == other.b && this->a == other.a;
 }
 
-bool operator!=(const Color &left, const Color &right) {
-	return !(left == right);
+bool Color::operator!=(const Color &other) const {
+	return this->r != other.r || this->g != other.g || this->b != other.b || this->a != other.a;
 }
 
 }} // openage::renderer

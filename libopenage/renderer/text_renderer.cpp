@@ -58,24 +58,17 @@ void TextRenderer::draw(coord::window position, const std::string &text) {
 
 void TextRenderer::draw(int x, int y, const std::string &text) {
 	if (this->is_dirty) {
-		TextRenderBatch batch;
-		batch.font = this->current_font;
-		batch.color = this->current_color;
-		render_batches.push_back(batch);
+		this->render_batches.emplace_back(this->current_font, this->current_color);
 		this->is_dirty = false;
 	}
 
-	TextRenderBatchPass batch_pass;
-	batch_pass.x = x;
-	batch_pass.y = y;
-	batch_pass.text = text;
-	render_batches.back().passes.push_back(batch_pass);
+	this->render_batches.back().passes.emplace_back(x, y, text);
 }
 
 void TextRenderer::render() {
 	// Sort the batches by font
 	std::sort(std::begin(this->render_batches), std::end(this->render_batches),
-	          [](const TextRenderBatch &a, const TextRenderBatch &b) -> bool {
+	          [](const text_render_batch &a, const text_render_batch &b) -> bool {
 	              return a.font < b.font;
 	          });
 

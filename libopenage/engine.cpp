@@ -280,27 +280,21 @@ void Engine::end_game() {
 bool Engine::draw_debug_overlay() {
 	util::col {255, 255, 255, 255}.use();
 
-	this->text_renderer->set_color(renderer::Color{255, 0, 0, 255});
 	// Draw FPS counter in the lower right corner
 	this->render_text(
 		{this->engine_coord_data->window_size.x - 100, 15}, 20,
 		"%.1f fps", this->fps_counter.fps
 	);
 
-	this->text_renderer->set_color(renderer::Color{0, 255, 0, 255});
 	// Draw version string in the lower left corner
 	this->render_text(
 		{5, 35}, 20,
 		"openage %s", config::version
 	);
-
-	this->text_renderer->set_color(renderer::Color{0, 0, 255, 255});
 	this->render_text(
 		{5, 15}, 12,
 		"%s", config::config_option_string
 	);
-
-	this->text_renderer->set_color(renderer::Color{255, 255, 255, 255});
 
 	this->profiler.show(true);
 
