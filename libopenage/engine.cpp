@@ -222,6 +222,8 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_6, 6);
 	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_7, 7);
 	bind_player_switch(input::action_t::SWITCH_TO_PLAYER_8, 8);
+
+	this->text_renderer = std::make_unique<renderer::TextRenderer>();
 }
 
 Engine::~Engine() {
@@ -426,6 +428,8 @@ void Engine::loop() {
 					}
 				}
 			}
+
+			this->text_renderer->render();
 		}
 		glPopMatrix();
 
@@ -496,6 +500,10 @@ input::InputManager &Engine::get_input_manager() {
 	return this->input_manager;
 }
 
+renderer::TextRenderer *Engine::get_text_renderer() {
+	return this->text_renderer.get();
+}
+
 int64_t Engine::lastframe_duration_nsec() {
 	return this->fps_counter.nsec_lastframe;
 }
@@ -514,7 +522,8 @@ void Engine::render_text(coord::window position, size_t size, const char *format
 	util::vsformat(format, vl, buf);
 	va_end(vl);
 
-	font->render_static(position.x, position.y, buf.c_str());
+	this->text_renderer->set_font(font);
+	this->text_renderer->draw(position.x, position.y, buf);
 }
 
 void Engine::move_phys_camera(float x, float y, float amount) {

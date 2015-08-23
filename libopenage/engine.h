@@ -26,6 +26,7 @@
 #include "util/fps.h"
 #include "util/profiler.h"
 #include "screenshot.h"
+#include "renderer/text_renderer.h"
 
 namespace openage {
 
@@ -214,6 +215,11 @@ public:
 	input::InputManager &get_input_manager();
 
 	/**
+	 * return this engine's text renderer.
+	 */
+	renderer::TextRenderer *get_text_renderer();
+
+	/**
 	 * return the number of nanoseconds that have passed
 	 * for rendering the last frame.
 	 *
@@ -358,6 +364,8 @@ private:
 	 * the engines profiler
 	 */
 	util::Profiler profiler;
+
+	std::unique_ptr<renderer::TextRenderer> text_renderer;
 };
 
 } // namespace openage
