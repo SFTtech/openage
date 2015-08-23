@@ -145,7 +145,6 @@ include_directories(
 # link the executable to those libraries
 target_link_libraries(libopenage
 	dl
-	rt
 	${FONTCONFIG_LIB}
 	${FREETYPE_LIBRARIES}
 	${FTGL_LIBRARIES}
@@ -157,5 +156,11 @@ target_link_libraries(libopenage
 	${SDL2_LIBRARY}
 	${UTIL_LIB}
 )
+
+if(NOT APPLE)
+	target_link_libraries(libopenage
+		rt
+	)
+endif()
 
 install(TARGETS libopenage LIBRARY DESTINATION lib)

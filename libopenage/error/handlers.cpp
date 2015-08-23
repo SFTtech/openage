@@ -16,8 +16,8 @@
 #include <cstring>
 
 #include <unistd.h>
-#include <signal.h>
 
+#include "../crossplatform/signal.h"
 #include "../util/init.h"
 #include "../util/language.h"
 
