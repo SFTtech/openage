@@ -57,7 +57,7 @@ void TextRenderer::draw(coord::window position, const std::string &text) {
 }
 
 void TextRenderer::draw(int x, int y, const std::string &text) {
-	if (this->is_dirty) {
+	if (this->is_dirty || this->render_batches.empty()) {
 		this->render_batches.emplace_back(this->current_font, this->current_color);
 		this->is_dirty = false;
 	}
