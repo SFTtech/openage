@@ -11,21 +11,23 @@
 
 namespace openage {
 namespace renderer {
+
+class Context;
+
 namespace opengl {
 
-class Program : public RawProgram {
+class Program : public renderer::Program {
 public:
 	/**
 	 * A program is created from shader sources.
 	 */
-	Program(const ProgramSource &source);
-
+	Program(renderer::Context *context, const ProgramSource &source);
 	virtual ~Program();
 
 	/**
 	 * Activate the program on the GPU.
 	 */
-	virtual void use() override;
+	void use() override;
 
 	/**
 	 * Return the opengl handle id for a given pipeline uniform variable.
@@ -51,7 +53,21 @@ public:
 	 * Query OpenGL which of the vertex attributes are actually active
 	 * and haven't been optimized out by the compiler.
 	 */
-	virtual void dump_attributes() override;
+	void dump_attributes() override;
+
+	/* ====== */
+	// shader variables
+
+	/**
+	 * Set a 3 dimensional float vector
+	 */
+	void set_uniform_3f(const char *name, const std::array<float, 3> &value) override;
+
+	/**
+	 * Set 2d texture data.
+	 */
+	void set_uniform_2dtexture(const char *name, const Texture &value) override;
+
 
 protected:
 	/**
@@ -89,7 +105,8 @@ protected:
 	/**
 	 * checks a given status for this program.
 	 *
-	 * @param what_to_check GL_LINK_STATUS GL_VALIDATE_STATUS GL_COMPILE_STATUS
+	 * @param what_to_check can be one of GL_LINK_STATUS
+	 *                      GL_VALIDATE_STATUS GL_COMPILE_STATUS
 	 */
 	void check(GLenum what_to_check);
 

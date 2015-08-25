@@ -16,7 +16,7 @@ namespace opengl {
  */
 class Texture : public renderer::Texture {
 public:
-	Texture(const TextureData &data);
+	Texture(renderer::Context *context, const TextureData &data);
 	~Texture();
 
 protected:

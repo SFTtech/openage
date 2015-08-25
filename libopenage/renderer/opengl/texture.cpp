@@ -15,7 +15,10 @@ namespace renderer {
 namespace opengl {
 
 
-Texture::Texture(const TextureData &txt) {
+Texture::Texture(renderer::Context *context, const TextureData &txt)
+	:
+	renderer::Texture{context} {
+
 	// generate opengl texture handle
 	glGenTextures(1, &this->id);
 	glBindTexture(GL_TEXTURE_2D, id);

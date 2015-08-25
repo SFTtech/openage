@@ -1,7 +1,7 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 /** @file
- * common code for all pipeline programs.
+ * common code for all shader programs.
  */
 
 #include "program.h"
@@ -29,7 +29,9 @@ void ProgramSource::attach_shader(const ShaderSource &shader) {
 }
 
 
-RawProgram::RawProgram() {}
-
+Program::Program(Context *context)
+	:
+	context{context} {
+}
 
 }} // openage::renderer

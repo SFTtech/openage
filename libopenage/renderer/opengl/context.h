@@ -70,7 +70,7 @@ public:
 	 * Register a glsl shader pipeline program to the context.
 	 * @returns a handle to the new program.
 	 */
-	std::unique_ptr<RawProgram> register_program(const ProgramSource &data) override;
+	std::unique_ptr<renderer::Program> register_program(const ProgramSource &data) override;
 
 
 protected:

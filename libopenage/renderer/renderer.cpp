@@ -23,7 +23,7 @@ TaskState Renderer::add_task(const Task &task) {
 }
 
 
-std::unique_ptr<RawProgram> Renderer::add_program(const ProgramSource &source) {
+std::unique_ptr<Program> Renderer::add_program(const ProgramSource &source) {
 	return this->context->register_program(source);
 }
 

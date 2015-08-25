@@ -14,6 +14,7 @@
 namespace openage {
 namespace renderer {
 
+class Context;
 
 /**
  * Texture format, used for setting pixel data size.
@@ -34,9 +35,10 @@ enum class texture_format {
  */
 class Texture {
 protected:
-	Texture() = default;
+	Texture(Context *ctx);
+
 public:
-	virtual ~Texture() {};
+	virtual ~Texture();
 
 	/**
 	 * Return the dimensions of the whole texture bitmap
@@ -68,6 +70,11 @@ public:
 	 * range 0.0 to 1.0, relative to the whole surface size.
 	 */
 	virtual const std::tuple<float, float, float, float> get_subtexture_coordinates(size_t subid) const;
+
+	/**
+	 * The associated graphics context.
+	 */
+	Context *context;
 
 protected:
 	/**

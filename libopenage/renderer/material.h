@@ -13,8 +13,8 @@ namespace renderer {
 
 class Material {
 protected:
-	std::shared_ptr<Texture> txt;
-	std::shared_ptr<RawProgram> code;
+	Texture* txt;
+	Program* code;
 };
 
 }} // namespace openage::renderer

@@ -22,7 +22,7 @@ namespace renderer {
 
 class Context;
 class ProgramSource;
-class RawProgram;
+class Program;
 class Texture;
 class TextureData;
 
@@ -62,7 +62,7 @@ public:
 	 *
 	 * @returns a handle to the usable program for the developer.
 	 */
-	std::unique_ptr<RawProgram> add_program(const ProgramSource &source);
+	std::unique_ptr<Program> add_program(const ProgramSource &source);
 
 	/**
 	 * Register a texture to the renderer.
