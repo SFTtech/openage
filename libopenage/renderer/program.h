@@ -4,12 +4,16 @@
 #define OPENAGE_RENDERER_PROGRAM_H_
 
 #include <memory>
+#include <unordered_map>
 #include <vector>
 
 namespace openage {
 namespace renderer {
 
+class Context;
 class ShaderSource;
+class Texture;
+
 
 /**
  * Create this to assemble shaders to a usable program.
@@ -46,12 +50,12 @@ protected:
  * A usable handle, aquired by registering the sources of the program
  * to the renderer and getting back an object of this class.
  */
-class RawProgram {
+class Program {
 protected:
-	RawProgram();
+	Program(Context *context);
 
 public:
-	virtual ~RawProgram() {};
+	virtual ~Program() {};
 
 	/**
 	 * Use this program now on the GPU.
@@ -62,33 +66,28 @@ public:
 	 * Dump vertex attribute variables.
 	 */
 	virtual void dump_attributes() = 0;
-};
 
+	/* ========================================== */
+	// available pipeline properties
 
-/**
- * Inherit from this class to create statically known program properties.
- *
- * Add members of ProgramVariable to the inherited class
- * to make pipeline variables available to the outside.
- */
-class Program {
-public:
-	Program(std::unique_ptr<RawProgram> prg);
-	virtual ~Program();
+	/**
+	 * Set a 3 dimensional float vector
+	 */
+	virtual void set_uniform_3f(const char *name, const std::array<float, 3> &value) = 0;
+
+	/**
+	 * Set 2d texture data.
+	 */
+	virtual void set_uniform_2dtexture(const char *name, const Texture &value) = 0;
+
+	/* ========================================== */
 
 protected:
 	/**
-	 * Add the given program variable to the list of maintained
-	 * pipeline attributes.
+	 * The associated context.
 	 */
-	void add_var(const ProgramVariable &var);
-
-	/**
-	 * The pipeline program associated with this property definition class.
-	 */
-	std::unique_ptr<RawProgram> raw_program;
+	Context *context;
 };
-
 
 }} // openage::renderer
 

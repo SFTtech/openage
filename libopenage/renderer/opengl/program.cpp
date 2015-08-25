@@ -15,8 +15,9 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-Program::Program(const ProgramSource &source)
+Program::Program(renderer::Context *context, const ProgramSource &source)
 	:
+	renderer::Program{context},
 	is_linked{false} {
 
 	// tell OpenGL we wanna have a new pipeline program
@@ -183,6 +184,16 @@ void Program::dump_attributes() {
 	}
 
 	log::log(msg);
+}
+
+
+void Program::set_uniform_3f(const char *name, const std::array<float, 3> &value) {
+	// TODO
+}
+
+
+void Program::set_uniform_2dtexture(const char *name, const Texture &value) {
+	// TODO
 }
 
 }}} // openage::renderer::opengl

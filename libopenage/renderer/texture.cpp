@@ -10,6 +10,13 @@
 namespace openage {
 namespace renderer {
 
+Texture::Texture(Context *ctx)
+	:
+	context{ctx} {
+}
+
+Texture::~Texture() {}
+
 const std::tuple<size_t, size_t> Texture::get_size() const {
 	return std::make_tuple(this->w, this->h);
 }
@@ -24,6 +31,7 @@ const gamedata::subtexture *Texture::get_subtexture(size_t subid) const {
 	}
 }
 
+
 const std::tuple<float, float, float, float> Texture::get_subtexture_coordinates(size_t subid) const {
 	auto tx = this->get_subtexture(subid);
 	return std::make_tuple(
@@ -34,9 +42,11 @@ const std::tuple<float, float, float, float> Texture::get_subtexture_coordinates
 	);
 }
 
+
 int Texture::get_subtexture_count() const {
 	return this->subtextures.size();
 }
+
 
 const std::tuple<int, int> Texture::get_subtexture_size(size_t subid) const {
 	auto subtex = this->get_subtexture(subid);

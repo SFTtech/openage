@@ -12,7 +12,7 @@ namespace openage {
 namespace renderer {
 
 class ProgramSource;
-class RawProgram;
+class Program;
 class Texture;
 class TextureData;
 
@@ -96,7 +96,7 @@ public:
 	 * Register some shader pipeline program to the context.
 	 * @returns the newly created Program handle.
 	 */
-	virtual std::unique_ptr<RawProgram> register_program(const ProgramSource &data) = 0;
+	virtual std::unique_ptr<Program> register_program(const ProgramSource &data) = 0;
 
 	/**
 	 * Resize the context because the surrounding window size was updated.

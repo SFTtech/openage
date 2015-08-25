@@ -170,12 +170,12 @@ void Context::screenshot(const std::string &filename) {
 
 
 std::unique_ptr<renderer::Texture> Context::register_texture(const TextureData &data) {
-	std::unique_ptr<renderer::Texture> txt = std::make_unique<opengl::Texture>(data);
+	std::unique_ptr<renderer::Texture> txt = std::make_unique<opengl::Texture>(this, data);
 	return txt;
 }
 
-std::unique_ptr<RawProgram> Context::register_program(const ProgramSource &data) {
-	std::unique_ptr<RawProgram> txt = std::make_unique<opengl::Program>(data);
+std::unique_ptr<renderer::Program> Context::register_program(const ProgramSource &data) {
+	std::unique_ptr<renderer::Program> txt = std::make_unique<opengl::Program>(this, data);
 	return txt;
 }
 
