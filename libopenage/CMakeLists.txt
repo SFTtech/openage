@@ -82,7 +82,7 @@ find_package(SDL2 REQUIRED)
 find_package(FTGL REQUIRED)
 find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
-pkg_search_module(EPOXY REQUIRED epoxy)
+find_package(Epoxy REQUIRED)
 
 if(WANT_BACKTRACE)
 	find_package(Backtrace)
