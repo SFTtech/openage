@@ -94,8 +94,8 @@ function(add_sources binary_name)
 	set(generated FALSE)
 
 	get_property(binary_list GLOBAL PROPERTY SFT_BINARIES)
-	list_contains(contained "${binary_name}" "${binary_list}")
-	if(NOT contained)
+	list(FIND binary_list "${binary_name}" index)
+	if(index EQUAL -1)
 		message(FATAL_ERROR "attempting to add source to unknown binary ${binary_name}")
 	endif()
 
