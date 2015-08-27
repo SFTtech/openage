@@ -55,6 +55,7 @@ set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
 set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
 
 include(CheckInSourceBuild)
+include(HandleCXXOptions)
 include(DetectProjectVersion)
 
 # include build configuration modules
