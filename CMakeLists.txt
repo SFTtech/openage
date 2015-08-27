@@ -56,6 +56,7 @@ set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
 
 include(CheckInSourceBuild)
 include(HandleCXXOptions)
+include(HandlePythonOptions)
 include(DetectProjectVersion)
 
 # include build configuration modules

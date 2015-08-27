@@ -1,14 +1,9 @@
 # Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
-# finds the python interpreter, install destination and extension flags.
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
 
 function(python_init)
-	# the Python version number requirement is in modules/FindPython_test.cpp
-	find_package(Python REQUIRED)
-	find_package(Cython 0.22 REQUIRED)
-
 	# filled by pxdgen; written to bin/py/pxdgen_sources for use by pxdgen.py.
 	set_property(GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
 
@@ -29,49 +24,6 @@ function(python_init)
 
 	# filled with all __pycache__ folders that have already been selected for installation.
 	set_property(GLOBAL PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS)
-
-
-	py_get_config_var(OPT PYEXT_CXXFLAGS)
-	py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)
-
-	# fix the CXXFLAGS
-	set(PYEXT_CXXFLAGS " ${PYEXT_CXXFLAGS} ") # padding required for the replacements below
-	# C++ doesn't have the -Wstrict-prototypes warning
-	string(REGEX REPLACE " -Wstrict-prototypes " " " PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}")
-	# thanks, but I'd like to choose my debug mode myself.
-	string(REPLACE " -g " " " PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}")
-
-	# add our own regular C++ flags
-	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} ${CMAKE_CXX_FLAGS}")
-
-	if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-		# some things clang complains about
-		set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-extended-offsetof")
-		set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unneeded-internal-declaration")
-
-		if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.5)
-			# doesn't have that warning yet
-		else()
-			# https://github.com/cython/cython/pull/402 (fix pending cython 0.23)
-			set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-absolute-value")
-		endif()
-	endif()
-
-	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unused-function")
-
-	set(PYTHON "${PYTHON}" PARENT_SCOPE)
-	set(CYTHON "${CYTHON}" PARENT_SCOPE)
-	set(CYTHON_VERSION "${CYTHON_VERSION}" PARENT_SCOPE)
-
-	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}" PARENT_SCOPE)
-	set(PYEXT_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}" PARENT_SCOPE)
-	set(PYEXT_LIBRARY "${PYTHON_LIBRARY}" PARENT_SCOPE)
-	set(PYEXT_SUFFIX "${PYEXT_SUFFIX}" PARENT_SCOPE)
-
-	if(NOT CMAKE_PY_INSTALL_PREFIX)
-		py_exec("import site; print(site.getsitepackages()[0])" PREFIX)
-		set(CMAKE_PY_INSTALL_PREFIX "${PREFIX}" PARENT_SCOPE)
-	endif()
 endfunction()
 
 
