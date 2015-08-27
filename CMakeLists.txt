@@ -26,6 +26,14 @@ If it doesn't, consider reporting the issue/asking for help in #sfttech on freen
 
 project(openage C CXX)
 
+# Ensure CMAKE_BUILD_TYPE is set correctly.
+if(NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE "Debug")
+endif()
+if(NOT CMAKE_BUILD_TYPE MATCHES "^(Debug|Release)$")
+	message(FATAL_ERROR "The type of build can be either Debug or Release. You provided ${CMAKE_BUILD_TYPE}")
+endif()
+
 # options: keep up to date with those in ./configure!
 if(NOT DEFINED WANT_INOTIFY)
 	set(WANT_INOTIFY if_available)
