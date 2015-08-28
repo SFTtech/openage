@@ -63,6 +63,26 @@ bool fail(const log::message &msg);
 
 
 /**
+ * Asserts that the left expression equals the right expression,
+ * within a margin of error epsilon, and that no exception is thrown.
+ */
+#define TESTEQUALS_FLOAT(left, right, epsilon) \
+	do { \
+		try { \
+			auto &&test_result_left = (left); \
+			if ((test_result_left < (right - epsilon)) or \
+			    (test_result_left > (right + epsilon))) { \
+				TESTFAILMSG("unexpected value: " << (test_result_left)); \
+			} \
+		} catch (::openage::testing::TestError &e) { \
+			throw; \
+		} catch (::openage::error::Error &e) { \
+			TESTFAILMSG("unexpected exception: " << e); \
+		} \
+	} while (0)
+
+
+/**
  * Asserts that the expression throws an exception.
  */
 #define TESTTHROWS(expression) \
