@@ -48,21 +48,18 @@ if(NOT DEFINED WANT_GPERFTOOLS_TCMALLOC)
 endif()
 
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
-set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}/modules/")
+set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
 
 # include build configuration modules
-include("CTest")
+include(CTest)
 
-include("${BUILDSYSTEM_DIR}/util.cmake")
-
-include("${BUILDSYSTEM_DIR}/cpp.cmake")
-include("${BUILDSYSTEM_DIR}/python.cmake")
-include("${BUILDSYSTEM_DIR}/codegen.cmake")
-
-include("${BUILDSYSTEM_DIR}/assets.cmake")
-include("${BUILDSYSTEM_DIR}/version.cmake")
-
-include("${BUILDSYSTEM_DIR}/doxygen.cmake")
+include(util)
+include(cpp)
+include(python)
+include(codegen)
+include(assets)
+include(version)
+include(doxygen)
 
 disallow_in_source_builds()
 
