@@ -356,14 +356,4 @@ function(python_finalize)
 	endif()
 endfunction()
 
-
-function(warn_runtime_depends)
-	# warns about missing runtime dependencies of openage.
-	execute_process(
-		COMMAND "${PYTHON}" -m buildsystem.warn_runtime_depends
-		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-	)
-endfunction()
-
-
 python_init()

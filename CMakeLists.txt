@@ -57,6 +57,7 @@ set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
 include(CheckInSourceBuild)
 include(HandleCXXOptions)
 include(HandlePythonOptions)
+include(CheckRuntimeDependencies)
 include(DetectProjectVersion)
 
 # include build configuration modules
@@ -95,9 +96,6 @@ message("${PROJECT_NAME} ${PROJECT_VERSION}
    install prefix | ${CMAKE_INSTALL_PREFIX}
 py install prefix | ${CMAKE_PY_INSTALL_PREFIX}
 ")
-
-# detect missing run-time dependencies
-warn_runtime_depends()
 
 # don't print 'Built target ...' messages
 # this will hopefully be merged into CMake 3.3; until then, this will have
