@@ -50,6 +50,8 @@ endif()
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
 set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
 
+include(DetectProjectVersion)
+
 # include build configuration modules
 include(CTest)
 
