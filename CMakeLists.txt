@@ -60,13 +60,13 @@ include(util)
 include(cpp)
 include(python)
 include(codegen)
-include(assets)
 include(version)
 include(doxygen)
 
 # create documentation
 doxygen_configure(libopenage/ openage/)
 
+add_subdirectory(assets/)
 add_subdirectory(libopenage/)
 set(PYEXT_LINK_LIBRARY libopenage)
 set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -include \"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")
