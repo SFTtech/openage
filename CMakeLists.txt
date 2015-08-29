@@ -50,6 +50,7 @@ endif()
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
 set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
 
+include(CheckInSourceBuild)
 include(DetectProjectVersion)
 
 # include build configuration modules
@@ -62,8 +63,6 @@ include(codegen)
 include(assets)
 include(version)
 include(doxygen)
-
-disallow_in_source_builds()
 
 # create documentation
 doxygen_configure(libopenage/ openage/)
