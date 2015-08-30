@@ -35,6 +35,10 @@ if(NOT CMAKE_BUILD_TYPE MATCHES "^(Debug|Release)$")
 endif()
 
 # options: keep up to date with those in ./configure!
+if(NOT DEFINED WANT_BACKTRACE)
+	set(WANT_BACKTRACE if_available)
+endif()
+
 if(NOT DEFINED WANT_INOTIFY)
 	set(WANT_INOTIFY if_available)
 endif()
