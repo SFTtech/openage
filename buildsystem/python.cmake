@@ -184,45 +184,37 @@ endfunction()
 function(add_py_modules)
 	# add a .py file for installing
 
-	file(RELATIVE_PATH REL_CURRENT_SOURCE_DIR
-		"${CMAKE_SOURCE_DIR}"
-		"${CMAKE_CURRENT_SOURCE_DIR}")
+	file(RELATIVE_PATH REL_CURRENT_SOURCE_DIR ${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
-	set(NOINSTALL_NEXT FALSE)
 	foreach(source ${ARGN})
-		if("${source}" STREQUAL "NOINSTALL")
-			set(NOINSTALL_NEXT TRUE)
-		else()
-			if(NOT IS_ABSOLUTE "${source}")
-				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
-			endif()
+		if(NOT ${source} MATCHES ".*\\.py$")
+			message(FATAL_ERROR "non-Python file given to add_py_modules: ${source}")
+		endif()
 
-			if(NOT "${source}" MATCHES ".*\\.py$")
-				message(FATAL_ERROR "non-Python file given to add_py_modules: ${source}")
-			endif()
+		if(NOT IS_ABSOLUTE ${source})
+			set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
+		endif()
 
-			if(NOINSTALL_NEXT)
-				set(NOINSTALL_NEXT FALSE)
-			else()
+		set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES "${source}")
+
+		get_source_file_property(DONT_INSTALL ${source} NOINSTALL)
+		if(NOT DONT_INSTALL)
+			install(
+				FILES "${source}"
+				DESTINATION  "${CMAKE_PY_INSTALL_PREFIX}/${REL_CURRENT_SOURCE_DIR}"
+			)
+
+			# install the corresponding __pycache__ folder, but at most once.
+			get_filename_component(DIR_NAME "${source}" DIRECTORY)
+			get_property(installed_pycache_folders GLOBAL PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS)
+			list(FIND installed_pycache_folders "${DIR_NAME}" idx)
+			if(idx LESS 0)
 				install(
-					FILES "${source}"
+					DIRECTORY "${DIR_NAME}/__pycache__"
 					DESTINATION  "${CMAKE_PY_INSTALL_PREFIX}/${REL_CURRENT_SOURCE_DIR}"
 				)
-
-				# install the corresponding __pycache__ folder, but at most once.
-				get_filename_component(DIR_NAME "${source}" DIRECTORY)
-				get_property(installed_pycache_folders GLOBAL PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS)
-				list(FIND installed_pycache_folders "${DIR_NAME}" idx)
-				if(idx LESS 0)
-					install(
-						DIRECTORY "${DIR_NAME}/__pycache__"
-						DESTINATION  "${CMAKE_PY_INSTALL_PREFIX}/${REL_CURRENT_SOURCE_DIR}"
-					)
-					set_property(GLOBAL APPEND PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS "${DIR_NAME}")
-				endif()
+				set_property(GLOBAL APPEND PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS "${DIR_NAME}")
 			endif()
-
-			set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES "${source}")
 		endif()
 	endforeach()
 endfunction()

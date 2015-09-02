@@ -2,12 +2,14 @@
 get_config_option_string()
 configure_file(config.py.in "${CMAKE_SOURCE_DIR}/openage/config.py")
 
+set_source_files_properties(devmode.py PROPERTIES NOINSTALL TRUE)
+
 add_py_modules(
 	__init__.py
 	__main__.py
 	assets.py
 	config.py
-	NOINSTALL devmode.py
+	devmode.py
 )
 
 add_subdirectory(cabextract)
