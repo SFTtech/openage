@@ -25,12 +25,17 @@ public:
 	Vector() = default;
 
 	/**
+	 * Default destructor
+	 */
+	~Vector() = default;
+
+	/**
 	 * Constructor for initialisation with N float values
 	 */
 	template<typename ... T>
 	Vector(T ... args)
 	:
-	std::array<float, N> {{static_cast<float>(args)...}} {};
+	std::array<float, N> {{static_cast<float>(args)...}} {}
 
 	/**
 	 * Vector addition with assignment
@@ -173,7 +178,8 @@ std::ostream &operator <<(std::ostream &o, const Vector<N> &v) {
 
 using Vector2 = Vector<2>;
 using Vector3 = Vector<3>;
+using Vector4 = Vector<4>;
 
-} } // openage::util
+}} // openage::util
 
 #endif

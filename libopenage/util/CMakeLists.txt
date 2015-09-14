@@ -21,7 +21,6 @@ add_sources(libopenage
 	thread_id.cpp
 	timer.cpp
 	unicode.cpp
-	vector.h
 	vector.cpp
 	vector_test.cpp
 )
