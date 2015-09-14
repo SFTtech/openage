@@ -62,6 +62,7 @@ def tests_cpp():
     yield "openage::util::tests::constinit_vector"
     yield "openage::util::tests::enum_"
     yield "openage::util::tests::init"
+    yield "openage::util::tests::vector"
 
 
 def demos_cpp():
