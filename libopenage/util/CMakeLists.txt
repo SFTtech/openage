@@ -13,6 +13,8 @@ add_sources(libopenage
 	fslikeobject.cpp
 	init.cpp
 	language.cpp
+	matrix.cpp
+	matrix_test.cpp
 	misc.cpp
 	opengl.cpp
 	profiler.cpp
