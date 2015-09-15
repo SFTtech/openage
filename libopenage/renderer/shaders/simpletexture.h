@@ -5,47 +5,24 @@
 
 #include <memory>
 
-#include "../shader.h"
+#include "../pipeline.h"
+#include "../../util/vector.h"
 
+namespace openage {
+namespace renderer {
 
-class SimpleTextureProgram : public Program {
+class SimpleTexturePipeline : public Pipeline {
 public:
-	SimpleTextureProgram(RawProgram *prg);
-	virtual ~SimpleTextureProgram();
+	SimpleTexturePipeline(Program *prg);
+	virtual ~SimpleTexturePipeline();
 
-	Uniform<vec4> color;
-	Attribute<vec2> position;
-	Attribute<vec3> color_tint;
+	Uniform<Texture> tex;
+	Attribute<util::Vector2> position;
+	Attribute<util::Vector2> texcoord;
 };
 
 
-void lol() {
-	SimpleTextureProgram asdf{program};
-
-	asdf.color = {1, 0, 0, 1};
-	asdf.tex = tentacle_monster;
-
-	DrawHandle draw = asdf.get_handle();
-	draw.position = {
-		{0, 0},
-		{0, 1},
-		{1, 0},
-		{1, 1}
-	};
-
-	draw.color_tint = {
-		{0, 0, 0},
-		{1, 0, 0},
-		{0, 1, 0},
-		{0, 0, 1},
-	};
-
-	// enqueue the call, this tests the constraints internally.
-	// len(whatever)/pervertex == len(positions)/pervertex
-	// packs the buffers when needed,
-	// submits to gpu when needed.
-	renderer.add_task(draw.get_task());
-}
+}} // openage::renderer
 
 
 #endif

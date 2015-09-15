@@ -18,3 +18,4 @@ pxdgen(
 
 add_subdirectory(font/)
 add_subdirectory(opengl/)
+add_subdirectory(shaders/)
