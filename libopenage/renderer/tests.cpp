@@ -73,10 +73,7 @@ void render_test(Window &window, const render_demo *actions) {
 	}
 }
 
-
-void renderer_demo() {
-	int demo_id = 0;
-
+void renderer_demo(int demo_id) {
 	Window window{"openage renderer testing"};
 	Renderer renderer{window.get_context()};
 

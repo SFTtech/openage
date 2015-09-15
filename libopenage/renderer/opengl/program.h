@@ -4,6 +4,7 @@
 #define OPENAGE_RENDERER_OPENGL_PROGRAM_H_
 
 #include <epoxy/gl.h>
+#include <unordered_map>
 #include <vector>
 
 #include "../program.h"
@@ -61,12 +62,17 @@ public:
 	/**
 	 * Set a 3 dimensional float vector
 	 */
-	void set_uniform_3f(const char *name, const std::array<float, 3> &value) override;
+	void set_uniform_3f(const char *name, const util::Vector<3> &value) override;
+
+	/**
+	 * Set a single integer value
+	 */
+	void set_uniform_1i(const char *name, const int &value) override;
 
 	/**
 	 * Set 2d texture data.
 	 */
-	void set_uniform_2dtexture(const char *name, const Texture &value) override;
+	void set_uniform_2dtexture(const char *name, renderer::Texture &value) override;
 
 
 protected:
@@ -101,6 +107,13 @@ protected:
 	 * Shaders attached to this program.
 	 */
 	std::vector<GLuint> shader_ids;
+
+	/**
+	 * Uniform id cache.
+	 *
+	 * Maps uniform variable name to the handle id.
+	 */
+	std::unordered_map<const char *, GLint> uniforms;
 
 	/**
 	 * checks a given status for this program.

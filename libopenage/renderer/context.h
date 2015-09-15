@@ -118,6 +118,11 @@ protected:
 	 * Render surface size.
 	 */
 	coord::window canvas_size;
+
+	/**
+	 * Active pipeline program.
+	 */
+	Program *pipeline;
 };
 
 }} // namespace openage::renderer

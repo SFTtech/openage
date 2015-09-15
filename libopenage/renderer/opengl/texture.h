@@ -19,6 +19,11 @@ public:
 	Texture(renderer::Context *context, const TextureData &data);
 	~Texture();
 
+	/**
+	 * Bind this texture to the given slot id.
+	 */
+	void bind_to(int slot) override;
+
 protected:
 	/**
 	 * OpenGL handle id.

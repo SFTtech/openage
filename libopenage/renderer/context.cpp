@@ -20,7 +20,9 @@ namespace renderer {
 
 Context::Context(context_type type)
 	:
-	type{type} {}
+	type{type},
+	pipeline{nullptr} {
+}
 
 std::unique_ptr<Context> Context::generate(context_type t) {
 	context_type ctx_requested = t;

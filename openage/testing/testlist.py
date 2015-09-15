@@ -46,6 +46,8 @@ def demos_py():
            "translates a C++ exception and its causes to python")
     yield ("openage.log.tests.demo",
            "demonstrates the translation of Python log messages")
+    yield ("openage.renderer.tests.renderer_demo",
+           "showcases the new renderer")
 
 
 def benchmark_py():
