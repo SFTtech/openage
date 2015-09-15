@@ -42,6 +42,8 @@ def demos_py():
            "translates a C++ exception and its causes to python")
     yield ("openage.log.tests.demo",
            "demonstrates the translation of Python log messages")
+    yield ("openage.renderer.tests.renderer_demo",
+           "showcases the new renderer")
 
 
 def tests_cpp():
@@ -87,5 +89,3 @@ def demos_cpp():
            "translates a Python exception to C++")
     yield ("openage::pyinterface::tests::pyobject_demo",
            "a tiny interactive interpreter using PyObjectRef")
-    yield ("openage::renderer::tests::renderer_demo",
-           "showcases the new renderer")

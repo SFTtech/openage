@@ -57,6 +57,11 @@ Texture::~Texture() {
 	glDeleteTextures(1, &this->id);
 }
 
+void Texture::bind_to(int slot) {
+	glActiveTexture(GL_TEXTURE0 + slot);
+	glBindTexture(GL_TEXTURE_2D, this->id);
+}
+
 
 }}} // openage::renderer::opengl
 

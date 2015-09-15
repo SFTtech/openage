@@ -44,23 +44,23 @@ public:
 	 * Return the dimensions of the whole texture bitmap
 	 * @returns tuple(width, height)
 	 */
-	virtual const std::tuple<size_t, size_t> get_size() const;
+	const std::tuple<size_t, size_t> get_size() const;
 
 	/**
 	 * Get the subtexture coordinates by its idea.
 	 */
-	virtual const gamedata::subtexture *get_subtexture(size_t subid) const;
+	const gamedata::subtexture *get_subtexture(size_t subid) const;
 
 	/**
 	 * @return the number of available subtextures
 	 */
-	virtual int get_subtexture_count() const;
+	int get_subtexture_count() const;
 
 	/**
 	 * Fetch the size of the given subtexture.
 	 * @param subid: index of the requested subtexture
 	 */
-	virtual const std::tuple<int, int> get_subtexture_size(size_t subid) const;
+	const std::tuple<int, int> get_subtexture_size(size_t subid) const;
 
 	/**
 	 * get atlas subtexture coordinates.
@@ -69,7 +69,12 @@ public:
 	 * the requested area out of the big texture. returned as floats in
 	 * range 0.0 to 1.0, relative to the whole surface size.
 	 */
-	virtual const std::tuple<float, float, float, float> get_subtexture_coordinates(size_t subid) const;
+	const std::tuple<float, float, float, float> get_subtexture_coordinates(size_t subid) const;
+
+	/**
+	 * Bind the texture to the given texture unit slot id.
+	 */
+	virtual void bind_to(int slot) = 0;
 
 	/**
 	 * The associated graphics context.
@@ -100,9 +105,18 @@ public:
 	/**
 	 * Create a texture from a rgba8 array.
 	 * It will have w * h * 4byte storage.
-	 * Each pixel has one byte, and r g b and alpha values.
+	 * Each pixel has one byte for its r g b and alpha values,
+	 * resulting in 32 bit per pixel.
+	 *
+	 * Copies the data to this texture.
 	 */
-	TextureData(int width, int height, uint8_t *data);
+	TextureData(int width, int height, char *data);
+
+	/**
+	 * Create a texture from an rgba8 array by moving the data.
+	 * Each pixel consists of 4 chars, for r g b and alpha.
+	 */
+	TextureData(int width, int height, std::unique_ptr<uint8_t[]> data);
 
 	virtual ~TextureData() = default;
 

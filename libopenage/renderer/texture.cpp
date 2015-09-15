@@ -54,7 +54,7 @@ const std::tuple<int, int> Texture::get_subtexture_size(size_t subid) const {
 }
 
 
-TextureData::TextureData(int width, int height, uint8_t *data)
+TextureData::TextureData(int width, int height, char *data)
 	:
 	format{texture_format::rgba},
 	w{width},
@@ -66,6 +66,15 @@ TextureData::TextureData(int width, int height, uint8_t *data)
 	// copy pixel data from surface
 	this->data = std::make_unique<uint8_t[]>(pixel_size);
 	memcpy(this->data.get(), data, pixel_size);
+}
+
+TextureData::TextureData(int width, int height, std::unique_ptr<uint8_t[]> data)
+	:
+	format{texture_format::rgba},
+	w{width},
+	h{height} {
+
+	this->data = std::move(data);
 }
 
 

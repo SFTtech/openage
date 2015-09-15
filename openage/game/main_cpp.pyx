@@ -10,7 +10,7 @@ def run_game(args, assets):
 
     del assets  # unused for now.
 
-    cdef main_arguments args_cpp;
+    cdef main_arguments args_cpp
 
     args_cpp.data_directory = args.asset_dir.encode()
     if args.fps is not None:

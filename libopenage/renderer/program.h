@@ -7,6 +7,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include "../util/vector.h"
+
 namespace openage {
 namespace renderer {
 
@@ -73,12 +75,18 @@ public:
 	/**
 	 * Set a 3 dimensional float vector
 	 */
-	virtual void set_uniform_3f(const char *name, const std::array<float, 3> &value) = 0;
+	virtual void set_uniform_3f(const char *name, const util::Vector<3> &value) = 0;
+
+	/**
+	 * Set a single integer value
+	 */
+	virtual void set_uniform_1i(const char *name, const int &value) = 0;
+
 
 	/**
 	 * Set 2d texture data.
 	 */
-	virtual void set_uniform_2dtexture(const char *name, const Texture &value) = 0;
+	virtual void set_uniform_2dtexture(const char *name, Texture &value) = 0;
 
 	/* ========================================== */
 

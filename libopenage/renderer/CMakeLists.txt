@@ -12,5 +12,9 @@ add_sources(libopenage
 	window.cpp
 )
 
+pxdgen(
+	tests.h
+)
+
 add_subdirectory(font/)
 add_subdirectory(opengl/)

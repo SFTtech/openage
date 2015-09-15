@@ -5,6 +5,8 @@
 
 #include "program.h"
 
+#include "texture.h"
+
 #include "../../log/log.h"
 #include "../../error/error.h"
 #include "../../util/compiler.h"
@@ -106,8 +108,9 @@ void Program::check(GLenum what_to_check) {
 
 void Program::use() {
 	if (unlikely(not this->is_linked)) {
-		throw Error{MSG(err) << "using none-linked program!", true};
+		throw Error{MSG(err) << "using program before it was linked!"};
 	}
+
 	glUseProgram(this->id);
 }
 
@@ -116,16 +119,27 @@ void Program::stopusing() {
 }
 
 void Program::check_is_linked(const char *info) {
-	// just throw up when we're not linked yet.
-
 	if (unlikely(not this->is_linked)) {
-		throw Error{MSG(err) << info << " before program was linked!", true};
+		throw Error{MSG(err) << info << " before program was linked!"};
 	}
 }
 
 GLint Program::get_uniform_id(const char *name) {
-	this->check_is_linked("Uniform id requested");
-	return glGetUniformLocation(this->id, name);
+	GLint loc;
+
+	// check if the location is cached.
+	auto it = this->uniforms.find(name);
+	if (it == this->uniforms.end()) {
+		this->check_is_linked("Uniform id requested");
+		loc = glGetUniformLocation(this->id, name);
+
+		// save to cache
+		this->uniforms[name] = loc;
+	} else {
+		loc = it->second;
+	}
+
+	return loc;
 }
 
 GLint Program::get_uniformbuffer_id(const char *name) {
@@ -187,13 +201,27 @@ void Program::dump_attributes() {
 }
 
 
-void Program::set_uniform_3f(const char *name, const std::array<float, 3> &value) {
-	// TODO
+void Program::set_uniform_3f(const char *name, const util::Vector<3> &value) {
+	// TODO: is required? this->use();
+	GLint location = this->get_uniform_id(name);
+	glUniform3f(location, value[0], value[1], value[2]);
 }
 
 
-void Program::set_uniform_2dtexture(const char *name, const Texture &value) {
-	// TODO
+void Program::set_uniform_1i(const char *name, const int &value) {
+	GLint location = this->get_uniform_id(name);
+	glUniform1i(location, value);
+}
+
+
+void Program::set_uniform_2dtexture(const char *name, renderer::Texture &texture) {
+	// set the sampler "value" to the texture slot id.
+	GLint location = this->get_uniform_id(name);
+
+	// TODO: use multiple slots!
+	int slot = 0;
+	glUniform1i(location, slot);
+	texture.bind_to(slot);
 }
 
 }}} // openage::renderer::opengl
