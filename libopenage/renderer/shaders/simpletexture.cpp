@@ -2,10 +2,18 @@
 
 #include "simpletexture.h"
 
-SimpleTextureProgram::SimpleTextureProgram(RawProgram *prg)
-	:
-	Program{prg} {
+namespace openage {
+namespace renderer {
 
-	this->add_var(this->position);
-	this->add_var(this->tex);
+SimpleTexturePipeline::SimpleTexturePipeline(Program *prg)
+	:
+	Pipeline{prg} {
+
+	this->add_var("tex", this->tex);
+	this->add_var("position", this->position);
+	this->add_var("texcoord", this->texcoord);
 }
+
+SimpleTexturePipeline::~SimpleTexturePipeline() {}
+
+}} // openage::renderer

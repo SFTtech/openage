@@ -202,19 +202,22 @@ void Program::dump_attributes() {
 
 
 void Program::set_uniform_3f(const char *name, const util::Vector<3> &value) {
-	// TODO: is required? this->use();
+	this->use();
 	GLint location = this->get_uniform_id(name);
 	glUniform3f(location, value[0], value[1], value[2]);
 }
 
 
 void Program::set_uniform_1i(const char *name, const int &value) {
+	this->use();
 	GLint location = this->get_uniform_id(name);
 	glUniform1i(location, value);
 }
 
 
 void Program::set_uniform_2dtexture(const char *name, renderer::Texture &texture) {
+	this->use();
+
 	// set the sampler "value" to the texture slot id.
 	GLint location = this->get_uniform_id(name);
 

@@ -3,6 +3,7 @@
 #ifndef OPENAGE_RENDERER_PIPELINE_H_
 #define OPENAGE_RENDERER_PIPELINE_H_
 
+#include <memory>
 
 #include "program.h"
 
@@ -23,17 +24,27 @@ class PipelineVariable {
 template<typename T>
 class Uniform : public PipelineVariable {
 public:
-	Uniform(const std::string &name, Program *program=nullptr);
-	virtual ~Uniform();
+	Uniform(Program *program=nullptr)
+		:
+		program{program} {
+	}
+
+	virtual ~Uniform() {};
+
+	void set_name(const std::string &name) {
+		this->name = name;
+	}
 
 	void set(const T &value);
-	void set_program(Program *program);
+
+	void set_program(Program *program) {
+		this->program = program;
+	}
 
 	void apply();
 
 protected:
 	std::string name;
-	T value;
 	Program *program;
 };
 
@@ -49,7 +60,8 @@ protected:
 template<class T>
 class Attribute : public PipelineVariable {
 public:
-	// TODO
+	Attribute() {};
+	virtual ~Attribute() {};
 
 protected:
 	/**

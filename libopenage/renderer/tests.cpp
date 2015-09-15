@@ -12,6 +12,7 @@
 #include "window.h"
 #include "renderer.h"
 #include "shader.h"
+#include "shaders/simpletexture.h"
 
 namespace openage {
 namespace renderer {
@@ -73,7 +74,7 @@ void render_test(Window &window, const render_demo *actions) {
 	}
 }
 
-void renderer_demo(int demo_id) {
+void renderer_demo_0() {
 	Window window{"openage renderer testing"};
 	Renderer renderer{window.get_context()};
 
@@ -104,19 +105,18 @@ void renderer_demo(int demo_id) {
 
 	simplequad->dump_attributes();
 
+	float val = 0.9f;
 	const float vpos[] = {
-		-1.0f, -1.0f, .0f, 1.0f,
-		1.0f, -1.0f, .0f, 1.0f,
-		-1.0f, 1.0f, .0f, 1.0f,
+		-val, -val, .0f, 1.0f,
+		val, -val, .0f, 1.0f,
+		-val, val, .0f, 1.0f,
 
-		1.0f, -1.0f, .0f, 1.0f,
-		-1.0f, 1.0f, .0f, 1.0f,
-		1.0f, 1.0f, .0f, 1.0f,
+		val, -val, .0f, 1.0f,
+		-val, val, .0f, 1.0f,
+		val, val, .0f, 1.0f,
 	};
 
 	GLuint vpos_buf, posattr_id = 0;
-
-	//posattr_id = simplequad->get_attribute_id("position");
 
 	GLuint vao;
 
@@ -156,14 +156,131 @@ void renderer_demo(int demo_id) {
 		}
 	};
 
-	std::unordered_map<int, render_demo*> demos;
-	demos[0] = &test0;
+	render_test(window, &test0);
+}
 
-	if (demos.find(demo_id) != demos.end()) {
-		render_test(window, demos[demo_id]);
-	}
-	else {
+
+void renderer_demo_1() {
+	Window window{"openage renderer testing"};
+	Renderer renderer{window.get_context()};
+
+	ShaderSourceCode vshader_src(
+		shader_type::vertex,
+		"#version 330\n"
+		"layout(location = 0) in vec4 position;"
+		"layout(location = 1) in vec2 texcoord;"
+		"smooth out vec2 texpos;"
+		"void main() {"
+		"texpos = texcoord;"
+		"gl_Position = position;"
+		"}"
+	);
+
+	ShaderSourceCode fshader_src(
+		shader_type::fragment,
+		"#version 330\n"
+		"out vec4 color;\n"
+		"smooth in vec2 texpos;"
+		"uniform sampler2D tex;"
+		"void main() {"
+		"color = texture(tex, texpos.xy);"
+		"}"
+	);
+
+	ProgramSource simpletex_src({&vshader_src, &fshader_src});
+
+	std::unique_ptr<Program> simpletex = renderer.add_program(simpletex_src);
+
+	simpletex->dump_attributes();
+
+	FileTextureData gaben_data{"assets/gaben.png"};
+	std::unique_ptr<Texture> gaben = renderer.add_texture(gaben_data);
+
+	SimpleTexturePipeline tex_pipeline{simpletex.get()};
+
+
+	simpletex->set_uniform_2dtexture("tex", *gaben.get());
+
+	float val = 1.0f;
+	const float vpos[] = {
+		-val, -val, .0f, 1.0f,
+		val, -val, .0f, 1.0f,
+		-val, val, .0f, 1.0f,
+
+		val, -val, .0f, 1.0f,
+		-val, val, .0f, 1.0f,
+		val, val, .0f, 1.0f,
+
+		0.0f, 1.0f,
+		1.0f, 1.0f,
+		0.0f, 0.0f,
+
+		1.0f, 1.0f,
+		0.0f, 0.0f,
+		1.0f, 0.0f,
+	};
+
+	// defined in the layout
+	GLuint vpos_buf, posattr_id = 0, texcoord_id = 1;
+
+	GLuint vao;
+
+	render_demo test1{
+		// init
+		[&](Window */*window*/) {
+			glEnable(GL_BLEND);
+
+			glGenBuffers(1, &vpos_buf);
+			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
+			// save vertex attributes to GPU:
+			glBufferData(GL_ARRAY_BUFFER, sizeof(vpos), vpos, GL_STATIC_DRAW);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+			glGenVertexArrays(1, &vao);
+			glBindVertexArray(vao); // stores all the vertex attrib state.
+		},
+		// frame
+		[&]() {
+			glClearColor(0.0, 0.0, 0.2, 1.0);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			simpletex->use();
+
+			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
+			glEnableVertexAttribArray(posattr_id);
+			glEnableVertexAttribArray(texcoord_id);
+			glVertexAttribPointer(posattr_id, 4, GL_FLOAT, GL_FALSE, 0, (void *)0);
+			glVertexAttribPointer(texcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(4 * 4 * 6));
+			glDrawArrays(GL_TRIANGLES, 0, 6);
+
+			glDisableVertexAttribArray(posattr_id);
+			glDisableVertexAttribArray(texcoord_id);
+
+			util::gl_check_error();
+		},
+		// resize
+		[&](const coord::window &new_size) {
+			renderer.on_resize(new_size);
+		}
+	};
+
+	render_test(window, &test1);
+}
+
+
+void renderer_demo(int demo_id) {
+	switch (demo_id) {
+	case 0:
+		renderer_demo_0();
+		break;
+
+	case 1:
+		renderer_demo_1();
+		break;
+
+	default:
 		log::log(MSG(err) << "unknown renderer demo " << demo_id << " requested.");
+		break;
 	}
 }
 
