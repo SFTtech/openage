@@ -72,7 +72,7 @@ public:
 	/**
 	 * Set 2d texture data.
 	 */
-	void set_uniform_2dtexture(const char *name, renderer::Texture &value) override;
+	void set_uniform_2dtexture(const char *name, const renderer::Texture &value) override;
 
 
 protected:

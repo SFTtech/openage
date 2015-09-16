@@ -215,7 +215,7 @@ void Program::set_uniform_1i(const char *name, const int &value) {
 }
 
 
-void Program::set_uniform_2dtexture(const char *name, renderer::Texture &texture) {
+void Program::set_uniform_2dtexture(const char *name, const renderer::Texture &texture) {
 	this->use();
 
 	// set the sampler "value" to the texture slot id.

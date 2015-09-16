@@ -17,8 +17,8 @@ public:
 	virtual ~SimpleTexturePipeline();
 
 	Uniform<Texture> tex;
-	Attribute<util::Vector2> position;
-	Attribute<util::Vector2> texcoord;
+	Attribute<util::Vector<4>> position;
+	Attribute<util::Vector<2>> texcoord;
 };
 
 

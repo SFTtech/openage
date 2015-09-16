@@ -7,6 +7,8 @@
 
 #include "program.h"
 
+#include "../error/error.h"
+#include "../util/compiler.h"
 
 namespace openage {
 namespace renderer {
@@ -15,6 +17,30 @@ namespace renderer {
  * A pipeline property. Wraps GPU state to be set.
  */
 class PipelineVariable {
+public:
+	PipelineVariable(Program *program);
+	virtual ~PipelineVariable();
+
+	/**
+	 * Assign this uniform to the given pipeline program.
+	 */
+	void set_program(Program *program);
+
+	/**
+	 * Set the shader-defined uniform variable name.
+	 */
+	void set_name(const std::string &name);
+
+protected:
+	/**
+	 * The associated gpu program.
+	 */
+	Program *program;
+
+	/**
+	 * Shader variable name.
+	 */
+	std::string name;
 };
 
 
@@ -26,26 +52,25 @@ class Uniform : public PipelineVariable {
 public:
 	Uniform(Program *program=nullptr)
 		:
-		program{program} {
+		PipelineVariable{program} {
 	}
 
 	virtual ~Uniform() {};
 
-	void set_name(const std::string &name) {
-		this->name = name;
+	/**
+	 * set the uniform value to the gpu.
+	 */
+	void set(const T &value) {
+		if (unlikely(this->program == nullptr)) {
+			throw error::Error(MSG(err) << "can't set uniform when its program is unset.");
+		}
+		this->set_impl(value);
 	}
 
-	void set(const T &value);
-
-	void set_program(Program *program) {
-		this->program = program;
-	}
-
-	void apply();
-
-protected:
-	std::string name;
-	Program *program;
+	/**
+	 * Per-type specialization of how to set the uniform value.
+	 */
+	void set_impl(const T &value);
 };
 
 
@@ -60,7 +85,10 @@ protected:
 template<class T>
 class Attribute : public PipelineVariable {
 public:
-	Attribute() {};
+	Attribute(Program *program=nullptr)
+		:
+		PipelineVariable{program} {
+	}
 	virtual ~Attribute() {};
 
 protected:
@@ -89,17 +117,6 @@ protected:
 	 * pipeline attributes.
 	 */
 	void add_var(const std::string &name, PipelineVariable &var);
-
-	/**
-	 * Set the name of a uniform to a given value.
-	 * e.g. set_uniform<vec3>("color", {0.0, 0.0, 1.0});
-	 */
-	template<typename T>
-	void set_uniform(const std::string &name, const T &value) {
-		Uniform<T> u{name, this->program};
-		u.set(value);
-		u.apply();
-	}
 
 	/**
 	 * The pipeline program associated with this property definition class.

@@ -74,7 +74,7 @@ public:
 	/**
 	 * Bind the texture to the given texture unit slot id.
 	 */
-	virtual void bind_to(int slot) = 0;
+	virtual void bind_to(int slot) const = 0;
 
 	/**
 	 * The associated graphics context.
