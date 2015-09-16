@@ -198,10 +198,9 @@ void renderer_demo_1() {
 
 	SimpleTexturePipeline tex_pipeline{simpletex.get()};
 
+	tex_pipeline.tex.set(*gaben.get());
 
-	simpletex->set_uniform_2dtexture("tex", *gaben.get());
-
-	float val = 1.0f;
+	float val = 0.9f;
 	const float vpos[] = {
 		-val, -val, .0f, 1.0f,
 		val, -val, .0f, 1.0f,

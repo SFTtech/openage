@@ -22,7 +22,7 @@ public:
 	/**
 	 * Bind this texture to the given slot id.
 	 */
-	void bind_to(int slot) override;
+	void bind_to(int slot) const override;
 
 protected:
 	/**

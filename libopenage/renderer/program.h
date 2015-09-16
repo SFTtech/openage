@@ -86,7 +86,7 @@ public:
 	/**
 	 * Set 2d texture data.
 	 */
-	virtual void set_uniform_2dtexture(const char *name, Texture &value) = 0;
+	virtual void set_uniform_2dtexture(const char *name, const Texture &value) = 0;
 
 	/* ========================================== */
 

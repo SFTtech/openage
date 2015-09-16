@@ -57,7 +57,7 @@ Texture::~Texture() {
 	glDeleteTextures(1, &this->id);
 }
 
-void Texture::bind_to(int slot) {
+void Texture::bind_to(int slot) const {
 	glActiveTexture(GL_TEXTURE0 + slot);
 	glBindTexture(GL_TEXTURE_2D, this->id);
 }
