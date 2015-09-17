@@ -13,6 +13,8 @@ add_sources(libopenage
 	fslikeobject.cpp
 	init.cpp
 	language.cpp
+	matrix.cpp
+	matrix_test.cpp
 	misc.cpp
 	opengl.cpp
 	profiler.cpp
@@ -21,7 +23,6 @@ add_sources(libopenage
 	thread_id.cpp
 	timer.cpp
 	unicode.cpp
-	vector.h
 	vector.cpp
 	vector_test.cpp
 )
