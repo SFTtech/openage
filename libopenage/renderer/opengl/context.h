@@ -72,6 +72,11 @@ public:
 	 */
 	std::unique_ptr<renderer::Program> register_program(const ProgramSource &data) override;
 
+	/**
+	 * Create a opengl buffer handle
+	 * @returns the newly created state object.
+	 */
+	std::unique_ptr<renderer::Buffer> create_buffer(size_t size=0) override;
 
 protected:
 	/**

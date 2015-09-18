@@ -188,7 +188,6 @@ void renderer_demo_1() {
 	);
 
 	ProgramSource simpletex_src({&vshader_src, &fshader_src});
-
 	std::unique_ptr<Program> simpletex = renderer.add_program(simpletex_src);
 
 	simpletex->dump_attributes();
@@ -197,31 +196,6 @@ void renderer_demo_1() {
 	std::unique_ptr<Texture> gaben = renderer.add_texture(gaben_data);
 
 	SimpleTexturePipeline tex_pipeline{simpletex.get()};
-
-	tex_pipeline.tex.set(*gaben.get());
-
-	float val = 0.9f;
-	const float vpos[] = {
-		-val, -val, .0f, 1.0f,
-		val, -val, .0f, 1.0f,
-		-val, val, .0f, 1.0f,
-
-		val, -val, .0f, 1.0f,
-		-val, val, .0f, 1.0f,
-		val, val, .0f, 1.0f,
-
-		0.0f, 1.0f,
-		1.0f, 1.0f,
-		0.0f, 0.0f,
-
-		1.0f, 1.0f,
-		0.0f, 0.0f,
-		1.0f, 0.0f,
-	};
-
-	// defined in the layout
-	GLuint vpos_buf, posattr_id = 0, texcoord_id = 1;
-
 	GLuint vao;
 
 	render_demo test1{
@@ -229,31 +203,42 @@ void renderer_demo_1() {
 		[&](Window */*window*/) {
 			glEnable(GL_BLEND);
 
-			glGenBuffers(1, &vpos_buf);
-			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
-			// save vertex attributes to GPU:
-			glBufferData(GL_ARRAY_BUFFER, sizeof(vpos), vpos, GL_STATIC_DRAW);
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			tex_pipeline.tex.set(*gaben.get());
+			tex_pipeline.position.set_layout(0);
+			tex_pipeline.texcoord.set_layout(1);
 
+			float val = 0.9f;
+			tex_pipeline.position.set({
+				-val, -val, .0f, 1.0f,
+				val, -val, .0f, 1.0f,
+				-val, val, .0f, 1.0f,
+
+				val, -val, .0f, 1.0f,
+				-val, val, .0f, 1.0f,
+				val, val, .0f, 1.0f,
+			});
+
+			tex_pipeline.texcoord.set({
+				0.0f, 1.0f,
+				1.0f, 1.0f,
+				0.0f, 0.0f,
+
+				1.0f, 1.0f,
+				0.0f, 0.0f,
+				1.0f, 0.0f,
+			});
+
+			// stores all the vertex attrib state.
+			// pointer pos, buffer assignment
 			glGenVertexArrays(1, &vao);
-			glBindVertexArray(vao); // stores all the vertex attrib state.
+			glBindVertexArray(vao);
 		},
 		// frame
 		[&]() {
 			glClearColor(0.0, 0.0, 0.2, 1.0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			simpletex->use();
-
-			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
-			glEnableVertexAttribArray(posattr_id);
-			glEnableVertexAttribArray(texcoord_id);
-			glVertexAttribPointer(posattr_id, 4, GL_FLOAT, GL_FALSE, 0, (void *)0);
-			glVertexAttribPointer(texcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(4 * 4 * 6));
-			glDrawArrays(GL_TRIANGLES, 0, 6);
-
-			glDisableVertexAttribArray(posattr_id);
-			glDisableVertexAttribArray(texcoord_id);
+			tex_pipeline.draw();
 
 			util::gl_check_error();
 		},

@@ -41,9 +41,9 @@ public:
 	GLint get_uniformbuffer_id(const char *name);
 
 	/**
-	 * Return the opengl handle id for a given vertex attribute name.
+	 * Return the opengl layout id for a given vertex attribute name.
 	 */
-	GLint get_attribute_id(const char *name);
+	int get_attribute_id(const char *name) override;
 
 	/**
 	 * Set vertex attribute with given name to have a custom id.
@@ -58,6 +58,11 @@ public:
 
 	/* ====== */
 	// shader variables
+
+	/**
+	 * Upload the vertex buffer object to the gpu.
+	 */
+	void set_vertex_buffer(const VertexBuffer &buf) override;
 
 	/**
 	 * Set a 3 dimensional float vector
