@@ -22,13 +22,6 @@
 #define likely(x)    __builtin_expect(!!(x), 1)
 #define unlikely(x)  __builtin_expect(!!(x), 0)
 
-/*
- * With older compilers, thread_local does not work properly yet.
- */
-#if defined(__APPLE__) && defined(__clang__)
-  #define thread_local __thread
-#endif
-
 namespace openage {
 namespace util {
 

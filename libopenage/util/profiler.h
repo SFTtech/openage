@@ -7,6 +7,7 @@
 #include <chrono>
 #include <unordered_map>
 #include <vector>
+#include <string>
 
 constexpr int MAX_DURATION_HISTORY = 100;
 constexpr int PROFILER_CANVAS_WIDTH = 250;
