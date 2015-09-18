@@ -114,7 +114,7 @@ source projects, require the following, longer header:
     (Modifications|Other (data|code)|Everything else) Copyright 2014-2014 the openage authors.
     See copying.md for further legal info.
 
-For even more details, see the [regular expressions](/py/openage/codecompliance/legal.py).
+For even more details, see the [regular expressions](buildsystem/codecompliance/legal.py).
 
 In addition to the openage header, the file's original license header should
 be retained if in doubt.
