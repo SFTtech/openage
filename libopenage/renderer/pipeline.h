@@ -3,39 +3,47 @@
 #ifndef OPENAGE_RENDERER_PIPELINE_H_
 #define OPENAGE_RENDERER_PIPELINE_H_
 
+#include <cstring>
 #include <memory>
+#include <type_traits>
+#include <vector>
 
 #include "program.h"
+#include "vertex_buffer.h"
 
 #include "../error/error.h"
 #include "../util/compiler.h"
+#include "../util/vector.h"
 
 namespace openage {
 namespace renderer {
+
+class Pipeline;
 
 /**
  * A pipeline property. Wraps GPU state to be set.
  */
 class PipelineVariable {
 public:
-	PipelineVariable(Program *program);
+	PipelineVariable(const std::string &name,
+	                 Pipeline *pipeline);
 	virtual ~PipelineVariable();
 
 	/**
-	 * Assign this uniform to the given pipeline program.
+	 * Return the associated shader variable name.
 	 */
-	void set_program(Program *program);
+	const std::string &get_name();
 
 	/**
-	 * Set the shader-defined uniform variable name.
+	 * Return the shader variable name as a C string.
 	 */
-	void set_name(const std::string &name);
+	const char *get_name_cstr();
 
 protected:
 	/**
-	 * The associated gpu program.
+	 * The associated pipeline metadata container.
 	 */
-	Program *program;
+	Pipeline *const pipeline;
 
 	/**
 	 * Shader variable name.
@@ -45,32 +53,60 @@ protected:
 
 
 /**
- * Pipeline uniform variable, which is a global value for all shader stages.
+ * Pipeline uniform variable,
+ * which is a global value for all pipeline stages.
  */
 template<typename T>
 class Uniform : public PipelineVariable {
 public:
-	Uniform(Program *program=nullptr)
+	Uniform(const std::string &name, Pipeline *pipeline)
 		:
-		PipelineVariable{program} {
-	}
+		PipelineVariable{name, pipeline} {}
 
-	virtual ~Uniform() {};
-
-	/**
-	 * set the uniform value to the gpu.
-	 */
-	void set(const T &value) {
-		if (unlikely(this->program == nullptr)) {
-			throw error::Error(MSG(err) << "can't set uniform when its program is unset.");
-		}
-		this->set_impl(value);
-	}
+	virtual ~Uniform() = default;
 
 	/**
 	 * Per-type specialization of how to set the uniform value.
+	 * Calls the backend-dependent function to push the data to the gpu.
 	 */
-	void set_impl(const T &value);
+	void set(const T &value);
+};
+
+
+/**
+ * Boilerplate base class for templated vertex attributes.
+ * Stores the attributes until they are packed to a uploadable buffer.
+ */
+class BaseAttribute : public PipelineVariable {
+public:
+	BaseAttribute(const std::string &name, Pipeline *pipeline)
+		:
+		PipelineVariable{name, pipeline} {}
+
+	virtual ~BaseAttribute() = default;
+
+	/**
+	 * Pack all the stored attributes to the given buffer.
+	 * Write a maximum of n chars.
+	 */
+	virtual void pack(char *buffer, size_t n) = 0;
+
+	/**
+	 * Return the number of attribute entries,
+	 * aka the number of configured vertices.
+	 */
+	virtual size_t entry_count() = 0;
+
+	/**
+	 * Return the size of a single attribute entry.
+	 * For a vec2 this is two floats, namely 8 chars.
+	 */
+	virtual size_t entry_size() = 0;
+
+	/**
+	 * Return the glsl layout id for this attribute.
+	 */
+	virtual int get_attr_id() = 0;
 };
 
 
@@ -81,21 +117,91 @@ public:
  * All of those attribtes are merged into a single buffer on request.
  * The buffer merging is done in the respective context.
  * This buffer is then transmitted to the GPU.
+ *
+ * You may only use types for T that can be copied by memcpy to a
+ * char buffer.
+ *
+ * We could extend this to support any class by specializing
+ * the pack method for POD types and some other magic base class type
+ * that provides the availability of a specific packing method.
  */
-template<class T>
-class Attribute : public PipelineVariable {
+template<typename T>
+class Attribute : public BaseAttribute {
 public:
-	Attribute(Program *program=nullptr)
+	Attribute(const std::string &name, Pipeline *pipeline)
 		:
-		PipelineVariable{program} {
+		BaseAttribute{name, pipeline},
+		attr_id{-1} {}
+
+	virtual ~Attribute() = default;
+
+	// as we wanna copy the values to the gpu, they need to be
+	// easily copyable.
+	static_assert(std::is_pod<T>::value,
+	              "only plain old datatypes supported as attributes");
+
+	/**
+	 * Set this attribute to some value array.
+	 */
+	void set(const std::vector<T> &values) {
+		this->pipeline->enqueue_repack();
+		this->values = values;
 	}
-	virtual ~Attribute() {};
+
+	/**
+	 * Set the glsl layout position.
+	 * if unset, determine the position automatically.
+	 */
+	void set_layout(unsigned int position) {
+		this->attr_id = position;
+	}
+
+	/**
+	 * return the glsl layout position.
+	 * If it's unknown until now, determine it by querying the gpu.
+	 */
+	int get_attr_id() override {
+		if (unlikely(this->attr_id < 0)) {
+			this->attr_id = this->pipeline->program->get_attribute_id(this->get_name_cstr());
+		}
+
+		return this->attr_id;
+	}
+
+	/**
+	 * Store the data to the given buffer.
+	 * This could be extended to also support other than POD types.
+	 */
+	void pack(char *buffer, size_t n) override {
+		memcpy(buffer, &this->values[0], n);
+	}
+
+	/**
+	 * Return the number of configured vertices.
+	 */
+	size_t entry_count() override {
+		return this->values.size();
+	}
+
+	/**
+	 * Return the size of one vertex configuration entry.
+	 */
+	size_t entry_size() override {
+		return sizeof(T);
+	}
 
 protected:
 	/**
-	 * The vertex attribute values
+	 * The vertex attribute values to be packed and submitted.
+	 * We need to cache the values as the buffer packing and transfer
+	 * is done after multiple attributes were set.
 	 */
 	std::vector<T> values;
+
+	/**
+	 * glsl layout position of this attribute.
+	 */
+	int attr_id;
 };
 
 
@@ -111,17 +217,30 @@ public:
 	Pipeline(Program *prg);
 	virtual ~Pipeline();
 
-protected:
 	/**
 	 * Add the given program variable to the list of maintained
 	 * pipeline attributes.
 	 */
-	void add_var(const std::string &name, PipelineVariable &var);
+	void add_var(PipelineVariable *var);
+
+	void enqueue_repack();
+
+	void draw();
 
 	/**
 	 * The pipeline program associated with this property definition class.
 	 */
-	Program *program;
+	Program *const program;
+
+protected:
+	void pack_attribute_buffer();
+
+	VertexBuffer buffer;
+
+	/**
+	 * True, when the vertex attribute buffer needs repacking.
+	 */
+	bool attributes_dirty;
 
 	/**
 	 * Syncs attribute entry lengths.
@@ -129,7 +248,7 @@ protected:
 	 * e.g. vec3 1337 color entries require 1337 vec4 positions.
 	 * These have different per-attribute sizes but the same lengths.
 	 */
-	std::unordered_map<std::string, PipelineVariable *> variables;
+	std::vector<BaseAttribute *> attributes;
 };
 
 }} // openage::renderer

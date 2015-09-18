@@ -1,4 +1,5 @@
 add_sources(libopenage
+	buffer.cpp
 	color.cpp
 	context.cpp
 	pipeline.cpp
@@ -9,6 +10,7 @@ add_sources(libopenage
 	tests.cpp
 	text.cpp
 	texture.cpp
+	vertex_buffer.cpp
 	window.cpp
 )
 

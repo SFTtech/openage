@@ -9,6 +9,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "buffer.h"
 #include "program.h"
 #include "texture.h"
 #include "../../log/log.h"
@@ -175,9 +176,15 @@ std::unique_ptr<renderer::Texture> Context::register_texture(const TextureData &
 }
 
 std::unique_ptr<renderer::Program> Context::register_program(const ProgramSource &data) {
-	std::unique_ptr<renderer::Program> txt = std::make_unique<opengl::Program>(this, data);
-	return txt;
+	std::unique_ptr<renderer::Program> prg = std::make_unique<opengl::Program>(this, data);
+	return prg;
 }
+
+std::unique_ptr<renderer::Buffer> Context::create_buffer(size_t size) {
+	std::unique_ptr<renderer::Buffer> buf = std::make_unique<opengl::Buffer>(this, size);
+	return buf;
+}
+
 
 void Context::resize_canvas(const coord::window &new_size) {
 	log::log(MSG(dbg) << "opengl viewport resize to " << new_size.x << "x" << new_size.y);

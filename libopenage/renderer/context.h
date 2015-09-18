@@ -11,6 +11,7 @@
 namespace openage {
 namespace renderer {
 
+class Buffer;
 class ProgramSource;
 class Program;
 class Texture;
@@ -97,6 +98,12 @@ public:
 	 * @returns the newly created Program handle.
 	 */
 	virtual std::unique_ptr<Program> register_program(const ProgramSource &data) = 0;
+
+	/**
+	 * Create a buffer handle
+	 * @returns the newly created buffer state.
+	 */
+	virtual std::unique_ptr<Buffer> create_buffer(size_t size=0) = 0;
 
 	/**
 	 * Resize the context because the surrounding window size was updated.

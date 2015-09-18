@@ -6,7 +6,7 @@
 #include "program.h"
 
 #include "texture.h"
-
+#include "../vertex_buffer.h"
 #include "../../log/log.h"
 #include "../../error/error.h"
 #include "../../util/compiler.h"
@@ -198,6 +198,11 @@ void Program::dump_attributes() {
 	}
 
 	log::log(msg);
+}
+
+
+void Program::set_vertex_buffer(const VertexBuffer &buf) {
+	buf.upload();
 }
 
 

@@ -19,7 +19,7 @@ Window::Window(const char *title)
 	// TODO: ^ detect screen resolution and determine window size from it.
 
 	// TODO: make the type user-selectable
-	this->context = std::move(Context::generate(context_type::autodetect));
+	this->context = Context::generate(context_type::autodetect);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw Error{MSG(err) << "SDL video initialization: " << SDL_GetError()};

@@ -15,6 +15,7 @@ namespace renderer {
 class Context;
 class ShaderSource;
 class Texture;
+class VertexBuffer;
 
 
 /**
@@ -59,6 +60,8 @@ protected:
 public:
 	virtual ~Program() {};
 
+	Context *get_context();
+
 	/**
 	 * Use this program now on the GPU.
 	 */
@@ -69,8 +72,18 @@ public:
 	 */
 	virtual void dump_attributes() = 0;
 
+	/**
+	 * Return the glsl layout id for a given vertex attribute name.
+	 */
+	virtual int get_attribute_id(const char *name) = 0;
+
 	/* ========================================== */
 	// available pipeline properties
+
+	/**
+	 * Upload a vertex buffer to the gpu
+	 */
+	virtual void set_vertex_buffer(const VertexBuffer &buf) = 0;
 
 	/**
 	 * Set a 3 dimensional float vector
@@ -82,7 +95,6 @@ public:
 	 */
 	virtual void set_uniform_1i(const char *name, const int &value) = 0;
 
-
 	/**
 	 * Set 2d texture data.
 	 */
@@ -90,11 +102,10 @@ public:
 
 	/* ========================================== */
 
-protected:
 	/**
 	 * The associated context.
 	 */
-	Context *context;
+	Context *const context;
 };
 
 }} // openage::renderer
