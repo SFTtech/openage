@@ -2,8 +2,11 @@
 
 #include "tests.h"
 
+#include <utility>
+
 #include "../testing/testing.h"
 
+#include "constexpr_map.h"
 #include "doubly_linked_list.h"
 #include "pairing_heap.h"
 
@@ -157,6 +160,46 @@ void doubly_linked_list() {
 	(list.size() == 0) or TESTFAIL;
 }
 
-} // namespace tests
-} // namespace datastructure
-} // namespace openage
+// exported test
+void constexpr_map() {
+	static_assert(create_const_map<int, int>().size() == 0, "wrong size");
+	static_assert(create_const_map<int, int>(std::make_pair(0, 42)).size() == 1,
+	              "wrong size");
+	static_assert(create_const_map<int, int>(std::make_pair(0, 42),
+	                                         std::make_pair(13, 37)).size() == 2,
+	              "wrong size");
+
+	static_assert(not create_const_map<int, int>().contains(9001),
+	              "empty map doesn't contain anything");
+	static_assert(create_const_map<int, int>(std::make_pair(42, 0),
+	                                         std::make_pair(13, 37)).contains(42),
+	              "contained element missing");
+	static_assert(create_const_map<int, int>(std::make_pair(42, 0),
+	                                         std::make_pair(13, 37)).contains(13),
+	              "contained element missing");
+	static_assert(not create_const_map<int, int>(std::make_pair(42, 0),
+	                                             std::make_pair(13, 37)).contains(9001),
+	              "uncontained element seems to be contained.");
+
+	static_assert(create_const_map<int, int>(std::make_pair(42, 9001),
+	                                         std::make_pair(13, 37)).get(42) == 9001,
+	              "fetched wrong value");
+	static_assert(create_const_map<int, int>(std::make_pair(42, 9001),
+	                                         std::make_pair(13, 37)).get(13) == 37,
+	              "fetched wrong value");
+
+	constexpr auto cmap = create_const_map<int, int>(
+		std::make_pair(0, 0),
+		std::make_pair(13, 37),
+		std::make_pair(42, 9001)
+	);
+
+	cmap.contains(0) or TESTFAIL;
+	not cmap.contains(18) or TESTFAIL;
+
+	cmap.size() == 3 or TESTFAIL;
+	cmap.get(13) == 37 or TESTFAIL;
+	cmap.get(42) == 9001 or TESTFAIL;
+}
+
+}}} // openage::datastructure::tests
