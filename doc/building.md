@@ -26,10 +26,10 @@ Dependencies are needed for:
 
 Dependency list:
 
-    C     gcc >=4.9 or clang >=3.5
-    CRA   python >=3.4
+    C     gcc >= 4.9 or clang >= 3.4 (clang >= 3.5 for Mac OS X)
+    CRA   python >= 3.4
     C     cython >= 0.22
-    C     cmake >=3.0.0
+    C     cmake >= 3.0.0
       A   numpy
       A   python imaging library (PIL) -> pillow
     CR    opengl >=2.1
@@ -93,7 +93,7 @@ if all packages can be installed.
  - `brew tap caskroom/fonts`
  - `brew tap homebrew/version`
  - `brew tap homebrew/python`
- - `brew update`
+ - `brew update` (yes, again)
  - `brew cask install font-dejavu-sans`
  - `brew install python3 libepoxy ftgl freetype fontconfig cmake sdl2 sdl2_image opus opus-tools opusfile`
  - `brew install numpy --with-python3`
@@ -128,7 +128,7 @@ You can install both compilers and select the one to be used by `./configure`.
  - For *nix: `./configure --compiler=clang` will prepare building
   - You could also use `./configure --mode=release --compiler=gcc` here
  - For Mac OS X: use instead:  `./configure --cpp-compiler=clang++-3.5`
-  -  Or: `./configure --mode=release --compiler=g++-4.9`
+  -  Or: `./configure --mode=release --cpp-compiler=g++-4.9`
  - `make` does code generation, builds all Cython modules, and libopenage.
  - `make run`, `./run`, `./run.py` or `python3 -m openage` runs the game.
     try `./run --help` and `./run game --help`.
