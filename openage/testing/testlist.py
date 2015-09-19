@@ -54,6 +54,7 @@ def tests_cpp():
     """
 
     yield "openage::coord::tests::coord"
+    yield "openage::datastructure::tests::constexpr_map"
     yield "openage::datastructure::tests::doubly_linked_list"
     yield "openage::datastructure::tests::pairing_heap"
     yield "openage::job::tests::test_job_manager"
