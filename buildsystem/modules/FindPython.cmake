@@ -6,10 +6,10 @@
 #
 # This file defines the following variables:
 #
-# PYTHON_FOUND       - True when python was found.
-# PYTHON             - The full path to the Python interpreter.
-# PYTHON_INCLUDE_DIR - Include path for Python extensions.
-# PYTHON_LIBRARY     - Linker flags for Python extensions.
+# PYTHON_FOUND        - True when python was found.
+# PYTHON              - The full path to the Python interpreter.
+# PYTHON_INCLUDE_DIR  - Include path for Python extensions.
+# PYTHON_LIBRARY      - Library and Linker options for Python extensions.
 #
 # Also defines py_exec and py_get_config_var.
 #
@@ -32,7 +32,6 @@ function(py_exec STATEMENTS RESULTVAR)
 	set("${RESULTVAR}" "${PY_OUTPUT}" PARENT_SCOPE)
 endfunction()
 
-
 function(py_get_config_var VAR RESULTVAR)
 	# uses py_exec to determine a config var as in distutils.sysconfig.get_config_var().
 	py_exec(
@@ -41,6 +40,21 @@ function(py_get_config_var VAR RESULTVAR)
 	)
 
 	set("${RESULTVAR}" "${RESULT}" PARENT_SCOPE)
+endfunction()
+
+function(py_get_lib_name RESULTVAR)
+	# uses py_exec to compute Python's C/C++ library name, just like python-config does.
+	py_get_config_var(VERSION PYTHON_VERSION)
+	if(NOT "${PYTHON_VERSION}" VERSION_LESS "3.2")
+		py_exec(
+			"import sys; print(sys.abiflags)"
+			ABIFLAGS
+		)
+	else()
+		set(ABIFLAGS, "")
+	endif()
+
+	set("${RESULTVAR}" "python${PYTHON_VERSION}${ABIFLAGS}" PARENT_SCOPE)
 endfunction()
 
 function(find_python_interpreter_builtin)
@@ -112,13 +126,9 @@ endforeach()
 foreach(PYTHON ${PYTHON_INTERPRETERS})
 	# ask the interpreter for the essential extension-building flags
 	py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
-	if(APPLE)
-		py_get_config_var(DESTLIB PYTHON_LIBRARY_PATH)
-		get_filename_component(PYTHON_LIBRARY ${PYTHON_LIBRARY_PATH} NAME)
-		get_filename_component(PYTHON_LINK_DIRECTORIES ${PYTHON_LIBRARY_PATH} DIRECTORY)
-	else()
-		py_get_config_var(BLDLIBRARY PYTHON_LIBRARY)
-	endif()
+	py_get_config_var(LIBPL PYTHON_LIBRARY_DIR)
+	py_get_lib_name(PYTHON_LIBRARY_NAME)
+	set(PYTHON_LIBRARY "-L${PYTHON_LIBRARY_DIR} -l${PYTHON_LIBRARY_NAME}")
 
 	# there's a static_assert that tests the Python version.
 	try_compile(PYTHON_TEST_RESULT
@@ -127,7 +137,6 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 		LINK_LIBRARIES "${PYTHON_LIBRARY}"
 		CMAKE_FLAGS
 			"-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}"
-			"-DLINK_DIRECTORIES=${PYTHON_LINK_DIRECTORIES}"
 		OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
 	)
 

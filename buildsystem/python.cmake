@@ -64,8 +64,8 @@ function(python_init)
 	set(CYTHON_VERSION "${CYTHON_VERSION}" PARENT_SCOPE)
 
 	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}" PARENT_SCOPE)
-	set(PYEXT_PYLIB "${PYTHON_LIBRARY}" PARENT_SCOPE)
 	set(PYEXT_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}" PARENT_SCOPE)
+	set(PYEXT_LIBRARY "${PYTHON_LIBRARY}" PARENT_SCOPE)
 	set(PYEXT_SUFFIX "${PYEXT_SUFFIX}" PARENT_SCOPE)
 
 	if(NOT CMAKE_PY_INSTALL_PREFIX)
@@ -137,7 +137,8 @@ function(add_cython_modules)
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES_EMBED "${source}")
 				add_executable("${TARGETNAME}" "${CPPNAME}")
 
-				target_link_libraries("${TARGETNAME}" "${PYEXT_PYLIB}")
+				# TODO: use full ldflags and cflags provided by python${VERSION}-config
+				target_link_libraries("${TARGETNAME}" "${PYEXT_LIBRARY}")
 			else()
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES "${source}")
 				add_library("${TARGETNAME}" MODULE "${CPPNAME}")
