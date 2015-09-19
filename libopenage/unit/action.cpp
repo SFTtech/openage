@@ -862,12 +862,21 @@ UnitReference GatherAction::nearest_dropsite() {
 	// find nearest dropsite from the targeted resource
 	auto ds = find_near(*this->target.get()->location,
 		[=](const TerrainObject &obj) {
-			return &obj.unit != this->entity &&
-			       &obj.unit != this->target.get() &&
-			       obj.unit.has_attribute(attr_type::building) &&
-			       obj.unit.get_attribute<attr_type::building>().completed >= 1.0f &&
+
+			if (not obj.unit.has_attribute(attr_type::building) or &obj.unit == this->entity or &obj.unit == this->target.get()) {
+				return false;
+			}
+
+			auto living_unit = static_cast<LivingProducer*>(this->entity->unit_type);
+			auto building_unit = static_cast<BuildingProducer*>(obj.unit.unit_type);
+
+			auto dropsite0_id = living_unit->unit_data.drop_site0;
+			auto dropsite1_id = living_unit->unit_data.drop_site1;
+
+			return obj.unit.get_attribute<attr_type::building>().completed >= 1.0f &&
 			       obj.unit.has_attribute(attr_type::owner) &&
-			       obj.unit.get_attribute<attr_type::owner>().player.owns(*this->entity);
+			       obj.unit.get_attribute<attr_type::owner>().player.owns(*this->entity) &&
+			       (building_unit->id() == dropsite0_id or building_unit->id() == dropsite1_id);
 	});
 
 	if (ds) {
