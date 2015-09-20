@@ -11,8 +11,12 @@ SimpleTexturePipeline::SimpleTexturePipeline(Program *prg)
 	tex{"tex", this},
 	position{"position", this},
 	texcoord{"texcoord", this} {
-}
 
-SimpleTexturePipeline::~SimpleTexturePipeline() {}
+	// we can't register the variables in the constructor of a
+	// PipelineVariable, as this would store the wrong type.
+	this->add_var(&this->tex);
+	this->add_var(&this->position);
+	this->add_var(&this->texcoord);
+}
 
 }} // openage::renderer

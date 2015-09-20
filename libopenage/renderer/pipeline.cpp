@@ -6,9 +6,14 @@
 
 #include "pipeline.h"
 
+#include "context.h"
 #include "vertex_buffer.h"
+#include "vertex_state.h"
+#include "../log/log.h"
 #include "../util/compiler.h"
 
+#include <epoxy/gl.h>
+#include <typeinfo>
 
 namespace openage {
 namespace renderer {
@@ -17,12 +22,7 @@ PipelineVariable::PipelineVariable(const std::string &name,
                                    Pipeline *pipeline)
 	:
 	pipeline{pipeline},
-	name{name} {
-
-	pipeline->add_var(this);
-}
-
-PipelineVariable::~PipelineVariable() {}
+	name{name} {}
 
 const std::string &PipelineVariable::get_name() {
 	return this->name;
@@ -46,41 +46,50 @@ void Uniform<int>::set(const int &value) {
 
 Pipeline::Pipeline(Program *prg)
 	:
-	program{prg},
-	buffer{prg->context} {}
-
-Pipeline::~Pipeline() {}
+	program{prg} {}
 
 
 void Pipeline::add_var(PipelineVariable *var) {
-	// just add the variable to the known list
+	log::log(MSG(dbg) << "registering pipeline variable '"
+	         << var->get_name() << "'");
+
+	log::log(MSG(dbg) << "  has type: " << util::demangle(typeid(*var).name()));
+
 	if (BaseAttribute *attr = dynamic_cast<BaseAttribute *>(var)) {
+		// just add the variable to the known list
+		log::log(MSG(dbg) << "  adding vertex attribute");
+
 		this->attributes.push_back(attr);
 	} else {
 		// non-attribute variable, ignore it.
+		log::log(MSG(dbg) << "  ignoring");
 	}
 }
 
 
-void Pipeline::enqueue_repack() {
-	this->attributes_dirty = true;
+VertexBuffer Pipeline::create_attribute_buffer() {
+	// create a fresh buffer
+	VertexBuffer vbuf{this->program->context};
+
+	// fill the buffer with the current vertex data.
+	this->update_buffer(&vbuf);
+
+	return std::move(vbuf);
 }
 
-void Pipeline::pack_attribute_buffer() {
+
+void Pipeline::update_buffer(VertexBuffer *vbuf) {
 	// determine vertex attribute buffer size
 	size_t buf_size = 0;
 
 	// number of vertices configured
 	size_t vertex_count = 0;
 
-	VertexBuffer *vbuf = &this->buffer;
-
 	// we'll overwrite the whole buffer, so reset the metadata.
 	vbuf->reset();
 
 	// gather the expected buffer section and sizes.
 	for (auto &var : this->attributes) {
-		size_t entry_size = var->entry_size();
 		size_t entry_count = var->entry_count();
 
 		// the first attribute determines the expected size.
@@ -94,67 +103,32 @@ void Pipeline::pack_attribute_buffer() {
 				<< " has " << entry_count << " entries."};
 		}
 
-		// a new section in the big vbo
+		// a new section in the big vertex buffer
 		VertexBuffer::vbo_section section{
 			var->get_attr_id(),
-			entry_size, buf_size};
+			var->type(),
+			var->dimension(),
+			buf_size   // current buffer size, increased for each section.
+		};
 		vbuf->add_section(section);
 
-		buf_size += entry_size * entry_count;
+		buf_size += var->entry_size() * entry_count;
 	}
 
 	// allocate a buffer to hold all the values.
 	vbuf->alloc(buf_size);
 
+	auto sections = vbuf->get_sections();
+
 	// pack the values to the buffer.
 	for (size_t i = 0; i < this->attributes.size(); i++) {
 		BaseAttribute *var = this->attributes[i];
-		VertexBuffer::vbo_section *section = &vbuf->sections[i];
+		VertexBuffer::vbo_section *section = &sections[i];
 
 		// store the attribute section to the buffer
 		char *pos = vbuf->get() + section->offset;
-		var->pack(pos, section->entry_width * vertex_count);
+		var->pack(pos, var->entry_size() * vertex_count);
 	}
 }
-
-void Pipeline::draw() {
-
-	// opengl-pipeline:
-	// pack buffer. (vmethod?)
-	// upload buffer.
-	// check if attributes are active
-	// enable/set attributes (vmethod?)
-	// draw
-	// disable attributes
-
-	// 0. pack buffer
-	if (this->attributes_dirty) {
-		this->pack_attribute_buffer();
-	}
-
-	// TODO: dirtying:
-	// upload buffer
-	this->program->set_vertex_buffer(this->buffer);
-
-	// next: set attrib ptrs
-	// this->program->activate_vertex_buffer(this->buffer);
-
-	/*
-	// attribute enabling
-	glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
-	glEnableVertexAttribArray(posattr_id);
-	glEnableVertexAttribArray(texcoord_id);
-	glVertexAttribPointer(posattr_id, 4, GL_FLOAT, GL_FALSE, 0, (void *)0);
-	glVertexAttribPointer(texcoord_id, 2, GL_FLOAT, GL_FALSE, 0, (void *)(4 * 4 * 6));
-
-	// draw call
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-
-	// attribute disabling
-	glDisableVertexAttribArray(posattr_id);
-	glDisableVertexAttribArray(texcoord_id);
-	*/
-}
-
 
 }} // openage::renderer

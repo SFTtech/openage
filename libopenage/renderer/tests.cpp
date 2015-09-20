@@ -9,6 +9,7 @@
 #include "../util/opengl.h"
 #include "opengl/shader.h"
 #include "opengl/program.h"
+#include "vertex_state.h"
 #include "window.h"
 #include "renderer.h"
 #include "shader.h"
@@ -196,12 +197,17 @@ void renderer_demo_1() {
 	std::unique_ptr<Texture> gaben = renderer.add_texture(gaben_data);
 
 	SimpleTexturePipeline tex_pipeline{simpletex.get()};
-	GLuint vao;
+
+
+	std::unique_ptr<VertexState> vao = window.get_context()->create_vertex_state();
+
+	vao->bind();
+
 
 	render_demo test1{
 		// init
 		[&](Window */*window*/) {
-			glEnable(GL_BLEND);
+			log::log(MSG(dbg) << "preparing test");
 
 			tex_pipeline.tex.set(*gaben.get());
 			tex_pipeline.position.set_layout(0);
@@ -209,36 +215,36 @@ void renderer_demo_1() {
 
 			float val = 0.9f;
 			tex_pipeline.position.set({
-				-val, -val, .0f, 1.0f,
-				val, -val, .0f, 1.0f,
-				-val, val, .0f, 1.0f,
+				{-val, -val, .0f, 1.0f},
+				{val, -val, .0f, 1.0f},
+				{-val, val, .0f, 1.0f},
 
-				val, -val, .0f, 1.0f,
-				-val, val, .0f, 1.0f,
-				val, val, .0f, 1.0f,
+				{val, -val, .0f, 1.0f},
+				{-val, val, .0f, 1.0f},
+				{val, val, .0f, 1.0f},
 			});
 
 			tex_pipeline.texcoord.set({
-				0.0f, 1.0f,
-				1.0f, 1.0f,
-				0.0f, 0.0f,
+				{0.0f, 1.0f},
+				{1.0f, 1.0f},
+				{0.0f, 0.0f},
 
-				1.0f, 1.0f,
-				0.0f, 0.0f,
-				1.0f, 0.0f,
+				{1.0f, 1.0f},
+				{0.0f, 0.0f},
+				{1.0f, 0.0f},
 			});
-
-			// stores all the vertex attrib state.
-			// pointer pos, buffer assignment
-			glGenVertexArrays(1, &vao);
-			glBindVertexArray(vao);
 		},
 		// frame
 		[&]() {
 			glClearColor(0.0, 0.0, 0.2, 1.0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			tex_pipeline.draw();
+			VertexBuffer vbo = tex_pipeline.create_attribute_buffer();
+			vao->attach_buffer(vbo);
+
+			glDrawArrays(GL_TRIANGLES, 0, 6);
+
+			vao->detach_buffer(vbo);
 
 			util::gl_check_error();
 		},

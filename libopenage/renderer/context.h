@@ -16,6 +16,7 @@ class ProgramSource;
 class Program;
 class Texture;
 class TextureData;
+class VertexState;
 
 
 /**
@@ -38,6 +39,30 @@ enum class context_feature {
 	depth_test,      //!< z-buffering for fragment depth tests
 };
 
+
+/**
+ * Stores information about context capabilities and limitations.
+ */
+struct context_capability {
+	int max_vertex_attributes;
+	int max_texture_slots;
+	int max_texture_size;
+
+	int major_version;
+	int minor_version;
+
+	context_type type;
+};
+
+
+/**
+ * Represents the rendering context.
+ * This class provides functionality that is dispatched according to the
+ * used backend.
+ *
+ * GPUs are state machines, this context stores/manages the state for
+ * the requested backend driver.
+ */
 class Context {
 public:
 	Context(context_type type);
@@ -76,6 +101,12 @@ public:
 	virtual void destroy() = 0;
 
 	/**
+	 * Return the context properties such as max texture units,
+	 * vertex attributes, etc.
+	 */
+	virtual context_capability get_capabilities() = 0;
+
+	/**
 	 * Enable or disable a given context feature.
 	 * @param feature the feature to modify
 	 * @param on whether to set this feature on or off.
@@ -104,6 +135,11 @@ public:
 	 * @returns the newly created buffer state.
 	 */
 	virtual std::unique_ptr<Buffer> create_buffer(size_t size=0) = 0;
+
+	/**
+	 * Create a vertex state tracker
+	 */
+	virtual std::unique_ptr<VertexState> create_vertex_state() = 0;
 
 	/**
 	 * Resize the context because the surrounding window size was updated.

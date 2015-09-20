@@ -11,8 +11,6 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-// TODO
-
 }}} // openage::renderer::opengl
 
 #endif

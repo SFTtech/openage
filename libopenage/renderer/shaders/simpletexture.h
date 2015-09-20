@@ -14,11 +14,11 @@ namespace renderer {
 class SimpleTexturePipeline : public Pipeline {
 public:
 	SimpleTexturePipeline(Program *prg);
-	virtual ~SimpleTexturePipeline();
+	virtual ~SimpleTexturePipeline() = default;
 
 	Uniform<Texture> tex;
-	Attribute<util::Vector<4>> position;
-	Attribute<util::Vector<2>> texcoord;
+	Attribute<util::Vector<4>, vertex_attribute_type::float_32, 4> position;
+	Attribute<util::Vector<2>, vertex_attribute_type::float_32, 2> texcoord;
 };
 
 

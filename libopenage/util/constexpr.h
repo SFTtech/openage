@@ -8,6 +8,17 @@
 namespace openage {
 namespace util {
 
+
+/**
+ * Evaluate `value` at compiletime and return it.
+ * This can force constexpr evaluation.
+ */
+template<typename T, T value>
+constexpr inline T compiletime() {
+	return value;
+}
+
+
 /**
  * this namespace contains constexpr functions, i.e. C++11 functions that are designed
  * to run at compile-time.
@@ -106,7 +117,7 @@ constexpr truncated_string_literal create_truncated_string_literal(const char *s
  *
  * @param pos  start checking at a certain position. for internal recursion usage only.
  */
-constexpr bool has_prefix(const char *str, const truncated_string_literal prefix, size_t pos = 0) {
+constexpr bool has_prefix(const char *str, const truncated_string_literal prefix, size_t pos=0) {
 	// if only c++14 had arrived a little bit earlier...
 
 	return
@@ -150,7 +161,4 @@ constexpr const char *strip_prefix(const char *str, const char *prefix) {
 	return strip_prefix(str, create_truncated_string_literal(prefix));
 }
 
-
-} // namespace constexpr_
-} // namespace util
-} // namespace openage
+}}} // openage::util::constexpr_

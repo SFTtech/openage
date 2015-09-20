@@ -7,12 +7,28 @@
 namespace openage {
 namespace renderer {
 
-VertexBuffer::VertexBuffer(Context *ctx) {
+VertexBuffer::VertexBuffer(Context *ctx, Buffer::usage usage)
+	:
+	usage{usage} {
+
 	this->buffer = ctx->create_buffer();
 }
 
+VertexBuffer::VertexBuffer(VertexBuffer &&other)
+	:
+	sections{std::move(other.sections)},
+	buffer{std::move(other.buffer)},
+	usage{other.usage} {}
+
+const VertexBuffer &VertexBuffer::operator =(VertexBuffer &&other) {
+	sections = std::move(other.sections);
+	buffer = std::move(other.buffer);
+	usage = other.usage;
+	return *this;
+}
+
 void VertexBuffer::upload() const {
-	this->buffer->upload(Buffer::bind_target::vertex_attributes);
+	this->buffer->upload(Buffer::bind_target::vertex_attributes, this->usage);
 }
 
 void VertexBuffer::alloc(size_t size) {
@@ -33,6 +49,10 @@ char *VertexBuffer::get() {
 
 Buffer *VertexBuffer::get_buffer() {
 	return this->buffer.get();
+}
+
+const std::vector<VertexBuffer::vbo_section> &VertexBuffer::get_sections() const {
+	return this->sections;
 }
 
 

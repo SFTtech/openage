@@ -5,4 +5,5 @@ add_sources(libopenage
 	program.cpp
 	shader.cpp
 	texture.cpp
+	vertex_state.cpp
 )

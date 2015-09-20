@@ -8,7 +8,8 @@ namespace renderer {
 Buffer::Buffer(Context *ctx, size_t size)
 	:
 	context{ctx},
-	allocd{size} {
+	allocd{size},
+	on_gpu{false} {
 
 	if (size > 0) {
 		this->create(size);

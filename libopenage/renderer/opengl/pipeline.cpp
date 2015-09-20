@@ -4,6 +4,9 @@
  * OpenGL specific pipeline code.
  */
 
+#include "../../config.h"
+#if WITH_OPENGL
+
 #include "pipeline.h"
 
 namespace openage {
@@ -13,3 +16,5 @@ namespace opengl {
 // TODO
 
 }}} // openage::renderer::opengl
+
+#endif
