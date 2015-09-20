@@ -47,7 +47,7 @@ function(py_get_lib_name RESULTVAR)
 	py_get_config_var(VERSION PYTHON_VERSION)
 	if(NOT "${PYTHON_VERSION}" VERSION_LESS "3.2")
 		py_exec(
-			"import sys; print(sys.abiflags)"
+			"import sys; print(sys.abiflags, end=\"\")"
 			ABIFLAGS
 		)
 	else()
