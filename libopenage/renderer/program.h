@@ -15,7 +15,7 @@ namespace renderer {
 class Context;
 class ShaderSource;
 class Texture;
-class VertexBuffer;
+class VertexState;
 
 
 /**
@@ -79,11 +79,6 @@ public:
 
 	/* ========================================== */
 	// available pipeline properties
-
-	/**
-	 * Upload a vertex buffer to the gpu
-	 */
-	virtual void set_vertex_buffer(const VertexBuffer &buf) = 0;
 
 	/**
 	 * Set a 3 dimensional float vector

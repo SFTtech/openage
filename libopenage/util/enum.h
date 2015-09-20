@@ -65,13 +65,13 @@ public:
 	 */
 	Enum()
 		:
-		id{0} {};
+		id{0} {}
 
 
 	// regular low-cost copying.
 	Enum(const Enum<T> &other)
 		:
-		id{other.id} {};
+		id{other.id} {}
 
 
 	Enum<T> &operator =(const Enum<T> other) {

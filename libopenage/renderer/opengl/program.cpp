@@ -164,10 +164,9 @@ GLint Program::get_attribute_id(const char *name) {
 
 void Program::set_attribute_id(const char *name, GLuint id) {
 	if (unlikely(this->is_linked)) {
-		// TODO: maybe enable overwriting, but after that relink the program
 		throw Error{MSG(err)
-			<< "assigned attribute " << name << " = "
-			<< id << " after program was linked!", true};
+			<< "you assigned attribute '" << name << " = "
+			<< id << "' after program was linked!", true};
 	}
 	else {
 		glBindAttribLocation(this->id, id, name);
@@ -198,11 +197,6 @@ void Program::dump_attributes() {
 	}
 
 	log::log(msg);
-}
-
-
-void Program::set_vertex_buffer(const VertexBuffer &buf) {
-	buf.upload();
 }
 
 

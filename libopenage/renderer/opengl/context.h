@@ -78,6 +78,17 @@ public:
 	 */
 	std::unique_ptr<renderer::Buffer> create_buffer(size_t size=0) override;
 
+	/**
+	 * Create an opengl vertex state tracker
+	 */
+	std::unique_ptr<renderer::VertexState> create_vertex_state() override;
+
+
+	/**
+	 * Return the available OpenGL context properties and limitations.
+	 */
+	context_capability get_capabilities() override;
+
 protected:
 	/**
 	 * Resize the opengl viewport.

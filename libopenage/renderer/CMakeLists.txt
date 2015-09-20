@@ -11,6 +11,7 @@ add_sources(libopenage
 	text.cpp
 	texture.cpp
 	vertex_buffer.cpp
+	vertex_state.cpp
 	window.cpp
 )
 

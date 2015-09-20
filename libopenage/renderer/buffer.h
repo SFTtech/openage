@@ -18,6 +18,20 @@ class Buffer {
 public:
 	enum class bind_target {
 		vertex_attributes,
+		element_indices,
+		query,
+	};
+
+	enum class usage {
+		static_draw,
+		static_read,
+		stream_draw,
+		stream_read,
+		stream_copy,
+		static_copy,
+		dynamic_draw,
+		dynamic_read,
+		dynamic_copy,
 	};
 
 	Buffer(Context *ctx, size_t size=0);
@@ -44,9 +58,14 @@ public:
 	size_t size() const;
 
 	/**
-	 * Uploads the current state of the buffer to the GPU.
+	 * Uploads the current buffer contents to the GPU.
 	 */
-	virtual void upload(bind_target target) const = 0;
+	virtual void upload(bind_target target, usage usage) = 0;
+
+	/**
+	 * Bind this buffer to the given target.
+	 */
+	virtual void bind(bind_target target) const = 0;
 
 	/**
 	 * The associated graphics context.
@@ -63,6 +82,11 @@ protected:
 	 * Stores the allocated buffer size.
 	 */
 	size_t allocd;
+
+	/**
+	 * True, when the buffer is present on the GPU.
+	 */
+	bool on_gpu;
 };
 
 }} // openage::renderer

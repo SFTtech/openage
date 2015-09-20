@@ -12,6 +12,7 @@
 #include "buffer.h"
 #include "program.h"
 #include "texture.h"
+#include "vertex_state.h"
 #include "../../log/log.h"
 #include "../../error/error.h"
 
@@ -61,37 +62,60 @@ void Context::create(SDL_Window *window) {
 }
 
 void Context::setup() {
+	// TODO: context capability checking
+	context_capability caps = this->get_capabilities();
+
 	// to quote the standard doc: 'The value gives a rough estimate of the
 	// largest texture that the GL can handle'
 	// -> wat?  anyways, we need at least 1024x1024.
-	int max_texture_size;
-	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
-	log::log(MSG(dbg) << "Maximum supported texture size: " << max_texture_size);
-	if (max_texture_size < 1024) {
-		throw Error(MSG(err) << "Maximum supported texture size too small: " << max_texture_size);
+	log::log(MSG(dbg) << "Maximum supported texture size: "
+	         << caps.max_texture_size);
+	if (caps.max_texture_size < 1024) {
+		throw Error(MSG(err) << "Maximum supported texture size too small: "
+		            << caps.max_texture_size);
 	}
 
-	int max_texture_units;
-	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_texture_units);
-	log::log(MSG(dbg) << "Maximum supported texture units: " << max_texture_units);
-	if (max_texture_units < 2) {
-		throw Error(MSG(err) << "Your GPU has not enough texture units: " << max_texture_units);
+	log::log(MSG(dbg) << "Maximum supported texture units: "
+	         << caps.max_texture_slots);
+	if (caps.max_texture_slots < 2) {
+		throw Error(MSG(err) << "Your GPU has not enough texture units: "
+		            << caps.max_texture_slots);
 	}
+
 
 	// vsync on
+	// TODO: maybe move somewhere else or to the window.
 	SDL_GL_SetSwapInterval(1);
 
-	// TODO: transform the following to this::set_feature
+	// TODO: move to somewhere else, not all contexts may want those:
 
 	// enable alpha blending
-	glEnable(GL_BLEND);
+	this->set_feature(context_feature::blending, true);
 
 	// order of drawing relevant for depth
 	// what gets drawn last is displayed on top.
-	glDisable(GL_DEPTH_TEST);
+	this->set_feature(context_feature::depth_test, false);
 
+	// TODO: generalize like set_feature.
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
+
+
+context_capability Context::get_capabilities() {
+	context_capability ret;
+
+	ret.type = this->type;
+
+	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &ret.max_texture_size);
+	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &ret.max_texture_slots);
+	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &ret.max_vertex_attributes);
+
+	glGetIntegerv(GL_MAJOR_VERSION, &ret.major_version);
+	glGetIntegerv(GL_MINOR_VERSION, &ret.minor_version);
+
+	return ret;
+}
+
 
 void Context::destroy() {
 	SDL_GL_DeleteContext(this->glcontext);
@@ -184,6 +208,12 @@ std::unique_ptr<renderer::Buffer> Context::create_buffer(size_t size) {
 	std::unique_ptr<renderer::Buffer> buf = std::make_unique<opengl::Buffer>(this, size);
 	return buf;
 }
+
+std::unique_ptr<renderer::VertexState> Context::create_vertex_state() {
+	std::unique_ptr<renderer::VertexState> vstate = std::make_unique<opengl::VertexState>(this);
+	return vstate;
+}
+
 
 
 void Context::resize_canvas(const coord::window &new_size) {

@@ -60,11 +60,6 @@ public:
 	// shader variables
 
 	/**
-	 * Upload the vertex buffer object to the gpu.
-	 */
-	void set_vertex_buffer(const VertexBuffer &buf) override;
-
-	/**
 	 * Set a 3 dimensional float vector
 	 */
 	void set_uniform_3f(const char *name, const util::Vector<3> &value) override;

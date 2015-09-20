@@ -13,6 +13,7 @@
 
 #include "../error/error.h"
 #include "../util/compiler.h"
+#include "../util/constexpr.h"
 #include "../util/vector.h"
 
 namespace openage {
@@ -27,7 +28,7 @@ class PipelineVariable {
 public:
 	PipelineVariable(const std::string &name,
 	                 Pipeline *pipeline);
-	virtual ~PipelineVariable();
+	virtual ~PipelineVariable() = default;
 
 	/**
 	 * Return the associated shader variable name.
@@ -98,10 +99,21 @@ public:
 	virtual size_t entry_count() = 0;
 
 	/**
-	 * Return the size of a single attribute entry.
-	 * For a vec2 this is two floats, namely 8 chars.
+	 * Return the size in chars of one attribute entry.
+	 * This equals dimension() * sizeof(attr_type)
 	 */
 	virtual size_t entry_size() = 0;
+
+	/**
+	 * Return the dimension of a single attribute entry.
+	 * For a vec2 this is two.
+	 */
+	virtual size_t dimension() = 0;
+
+	/**
+	 * Return the vertex attribute type.
+	 */
+	virtual vertex_attribute_type type() = 0;
 
 	/**
 	 * Return the glsl layout id for this attribute.
@@ -125,7 +137,9 @@ public:
  * the pack method for POD types and some other magic base class type
  * that provides the availability of a specific packing method.
  */
-template<typename T>
+template<typename T,
+         vertex_attribute_type attribute_type,
+         size_t dimensions>
 class Attribute : public BaseAttribute {
 public:
 	Attribute(const std::string &name, Pipeline *pipeline)
@@ -144,7 +158,6 @@ public:
 	 * Set this attribute to some value array.
 	 */
 	void set(const std::vector<T> &values) {
-		this->pipeline->enqueue_repack();
 		this->values = values;
 	}
 
@@ -184,10 +197,25 @@ public:
 	}
 
 	/**
-	 * Return the size of one vertex configuration entry.
+	 * Compute the size of a full vertex attribute data value.
+	 * Equals dimensions * sizeof(entry_type)
 	 */
 	size_t entry_size() override {
-		return sizeof(T);
+		return this->dimension() * util::compiletime<size_t, vertex_attribute_size[attribute_type]>();
+	}
+
+	/**
+	 * Return the dimension of one vertex configuration entry.
+	 */
+	size_t dimension() override {
+		return dimensions;
+	}
+
+	/**
+	 * Provide the type of one component of one vertex attribute entry.
+	 */
+	vertex_attribute_type type() override {
+		return attribute_type;
 	}
 
 protected:
@@ -215,7 +243,7 @@ protected:
 class Pipeline {
 public:
 	Pipeline(Program *prg);
-	virtual ~Pipeline();
+	virtual ~Pipeline() = default;
 
 	/**
 	 * Add the given program variable to the list of maintained
@@ -223,9 +251,17 @@ public:
 	 */
 	void add_var(PipelineVariable *var);
 
-	void enqueue_repack();
+	/**
+	 * Create a vertex buffer that stores the attribute
+	 * values set in this pipeline.
+	 */
+	VertexBuffer create_attribute_buffer();
 
-	void draw();
+	/**
+	 * Update the given vertex buffer with attributes set in this
+	 * pipeline instance.
+	 */
+	void update_buffer(VertexBuffer *vbuf);
 
 	/**
 	 * The pipeline program associated with this property definition class.
@@ -233,14 +269,6 @@ public:
 	Program *const program;
 
 protected:
-	void pack_attribute_buffer();
-
-	VertexBuffer buffer;
-
-	/**
-	 * True, when the vertex attribute buffer needs repacking.
-	 */
-	bool attributes_dirty;
 
 	/**
 	 * Syncs attribute entry lengths.

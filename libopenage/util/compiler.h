@@ -2,7 +2,7 @@
 
 #pragma once
 
-/*
+/** @file
  * Some general-purpose utilities related to the C++ compiler and standard
  * library implementations.
  *

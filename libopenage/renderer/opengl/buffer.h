@@ -13,9 +13,7 @@ namespace renderer {
 namespace opengl {
 
 /**
- * Context-specialized graphics system buffer.
- *
- * TODO: auto-dirty flagging when modified.
+ * OpenGL data buffer.
  */
 class Buffer : public renderer::Buffer {
 public:
@@ -30,9 +28,22 @@ public:
 	/**
 	 * Uploads the current state of the buffer to the GPU.
 	 */
-	void upload(bind_target target) const override;
+	void upload(bind_target target, usage usage) override;
 
+	/**
+	 * Bind this buffer to the specified slot.
+	 */
+	void bind(bind_target target) const override;
+
+	/**
+	 * Fetch the OpenGL specific buffer slot identification.
+	 */
 	static GLenum get_target(bind_target target);
+
+	/**
+	 * Fetch the OpenGL specific buffer usage prediction id.
+	 */
+	static GLenum get_usage(usage usage);
 
 protected:
 	GLuint id;
