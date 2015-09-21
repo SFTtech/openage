@@ -26,10 +26,10 @@ Dependencies are needed for:
 
 Dependency list:
 
-    C     gcc >= 4.9 or clang >= 3.4 (clang >= 3.5 for Mac OS X)
-    CRA   python >= 3.4
-    C     cython >= 0.22
-    C     cmake >= 3.0.0
+    C     gcc >=4.9 or clang >=3.4 (clang >=3.5 for Mac OS X)
+    CRA   python >=3.4
+    C     cython >=0.22
+    C     cmake >=3.0.0
       A   numpy
       A   python imaging library (PIL) -> pillow
     CR    opengl >=2.1
@@ -87,7 +87,7 @@ if all packages can be installed.
 
 ### Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)
 
- - Install [Homebrew](http://brew.sh). Other package managers and building from source might also work, but aren't supported as of now. If you figure out fixes for those other options, you're welcome to open pullrequests, as long as the homebrew build doesn't break.
+ - Install [Homebrew](http://brew.sh). Other package managers and building from source might also work, but aren't supported as of now. If you figure out fixes for those other options, you're welcome to open pullrequests, as long as the Homebrew build doesn't break.
  - `brew update`
  - `brew install caskroom/cask/brew-cask`
  - `brew tap caskroom/fonts`
@@ -176,7 +176,7 @@ You can install both compilers and select the one to be used by `./configure`.
 
 **Q**
 
-Help, it does't work!
+Help, it doesn't work!
 
 **A**
 
@@ -196,7 +196,7 @@ existed, and now **I HATE YOU**. It can't be for no reason. You
 
 **A**
 
-- Coincidentially, the exact same question crosses my mind whenever I
+- Coincidentally, the exact same question crosses my mind whenever I
   have to build an `automake` project, so I can sympathize.
 - Unfortunately, it's not as simple as invoking a compiler. Building
   `openage` involves code generation and the building of Cython
