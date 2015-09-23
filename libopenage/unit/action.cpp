@@ -771,6 +771,15 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	complete{false},
 	target_resource{true},
 	target{tar} {
+
+		Unit *target = this->target.get();
+		if (target->has_attribute(attr_type::resource)) {
+			auto &resource_attr = target->get_attribute<attr_type::resource>();
+			this->resource_type = resource_attr.resource_type;
+
+			//TODO toggle docks
+			this->docks = false;
+		}
 }
 
 GatherAction::~GatherAction() {}
@@ -867,16 +876,11 @@ UnitReference GatherAction::nearest_dropsite() {
 				return false;
 			}
 
-			auto living_unit = static_cast<LivingProducer*>(this->entity->unit_type);
-			auto building_unit = static_cast<BuildingProducer*>(obj.unit.unit_type);
-
-			auto dropsite0_id = living_unit->unit_data.drop_site0;
-			auto dropsite1_id = living_unit->unit_data.drop_site1;
-
 			return obj.unit.get_attribute<attr_type::building>().completed >= 1.0f &&
 			       obj.unit.has_attribute(attr_type::owner) &&
 			       obj.unit.get_attribute<attr_type::owner>().player.owns(*this->entity) &&
-			       (building_unit->id() == dropsite0_id or building_unit->id() == dropsite1_id);
+			       obj.unit.has_attribute(attr_type::dropsite) &&
+			       obj.unit.get_attribute<attr_type::dropsite>().accepting_resource(this->resource_type);
 	});
 
 	if (ds) {

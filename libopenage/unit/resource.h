@@ -14,7 +14,8 @@ enum class game_resource {
 	wood,
 	food,
 	gold,
-	stone
+	stone,
+	fish
 };
 
 } // namespace openage

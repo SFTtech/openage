@@ -418,6 +418,8 @@ public:
 private:
 	bool complete, target_resource;
 	UnitReference target;
+	game_resource resource_type;
+	bool docks;
 	UnitReference nearest_dropsite();
 };
 
