@@ -10,33 +10,40 @@ namespace tests {
 
 void vector() {
 	{
+		// zero-initialization test.
+		Vector<5> zero_explicit{0, 0, 0, 0, 0};
+		Vector<5> zero;
+
+		zero.equals(zero_explicit) or TESTFAIL;
+	}
+	{
 		// tests in 2 dimensions.
 		// we want to be able to reuse the variable names later.
 		const Vector<2> a(1.0, 2.0);
 		const Vector<2> b(3.0, 4.0);
 		Vector<2> c;
 
+		// test basic operators.
 		c = a + b;
-		TESTEQUALS(c[0], 4.0);
-		TESTEQUALS(c[1], 6.0);
+		c.equals({4.0, 6.0}) or TESTFAIL;
 
 		c = a - b;
-		TESTEQUALS(c[0], -2.0);
-		TESTEQUALS(c[1], -2.0);
+		c.equals({-2.0, -2.0}) or TESTFAIL;
 
 		c = 5 * a;
-		TESTEQUALS(c[0], 5.0);
-		TESTEQUALS(c[1], 10.0);
+		c.equals({5.0, 10.0}) or TESTFAIL;
 
-		// division by 8 should be precise
 		c = a / 8;
-		TESTEQUALS(c[0], 0.125);
-		TESTEQUALS(c[1], 0.25);
+		c.equals({0.125, 0.25}) or TESTFAIL;
 
-		TESTEQUALS(a.dot_product(b), 11);
+		c.equals({13, 37}) and TESTFAIL;
+
+		// test dot product, norm and normalization.
+		TESTEQUALS_FLOAT(a.dot(b), 11, 1e-7);
 
 		c = b;
-		TESTEQUALS(c.norm(), 5);
+		TESTEQUALS_FLOAT(c.norm(), 5, 1e-7);
+
 		c.normalize();
 		TESTEQUALS_FLOAT(c.norm(), 1, 1e-7);
 	}
@@ -46,9 +53,8 @@ void vector() {
 		const Vector<3> a(1.0, 2.0, 3.0);
 		const Vector<3> b(4.0, 5.0, 6.0);
 		Vector<3> c = a.cross_product(b);
-		TESTEQUALS(c[0], -3.0);
-		TESTEQUALS(c[1],  6.0);
-		TESTEQUALS(c[2], -3.0);
+
+		c.equals({-3.0, 6.0, -3.0}) or TESTFAIL;
 	}
 }
 

@@ -5,9 +5,9 @@
 
 #include "../coord/phys.h"
 #include "../coord/pixel.h"
-#include "../util/math_constants.h"
 #include "../gamestate/game_spec.h"
 #include "../texture.h"
+#include "../util/math_constants.h"
 #include "unit_texture.h"
 
 namespace openage {

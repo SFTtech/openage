@@ -22,6 +22,8 @@ add_sources(libopenage
 	opengl.cpp
 	os.cpp
 	profiler.cpp
+	quaternion.cpp
+	quaternion_test.cpp
 	stringformatter.cpp
 	strings.cpp
 	subprocess.cpp
