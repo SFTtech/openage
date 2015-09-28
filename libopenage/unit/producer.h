@@ -97,6 +97,7 @@ public:
 	void initialise(Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
+private:
 	const gamedata::unit_living unit_data;
 };
 

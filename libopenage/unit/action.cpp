@@ -772,14 +772,13 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	target_resource{true},
 	target{tar} {
 
-		Unit *target = this->target.get();
-		if (target->has_attribute(attr_type::resource)) {
-			auto &resource_attr = target->get_attribute<attr_type::resource>();
-			this->resource_type = resource_attr.resource_type;
-
-			//TODO toggle docks
-			this->docks = false;
-		}
+	Unit *target = this->target.get();
+	if (target->has_attribute(attr_type::resource)) {
+		auto &resource_attr = target->get_attribute<attr_type::resource>();
+		this->resource_type = resource_attr.resource_type;
+	} else {
+		throw std::invalid_argument("Unit reference has no resource attribute");
+	}
 }
 
 GatherAction::~GatherAction() {}

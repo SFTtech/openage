@@ -536,7 +536,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	}
 
 	// dropsite attribute
-	std::vector<game_resource> accepted_resources = get_accepted_resources();
+	std::vector<game_resource> accepted_resources = this->get_accepted_resources();
 	if (accepted_resources.size() != 0) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::dropsite>>(accepted_resources));
 	}
@@ -550,33 +550,22 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 std::vector<game_resource> BuildingProducer::get_accepted_resources() {
 	//TODO use a more general approach instead of hard coded ids
 
-	auto id_in = [id = this->id()](std::initializer_list<int> ids){
-		return std::any_of(ids.begin(), ids.end(), [=](int n){ return n == id; });
+	auto id_in = [=](std::initializer_list<int> ids){
+		return std::any_of(ids.begin(), ids.end(), [=](int n){ return n == this->id(); });
 	};
 
 	if (this->id() == 109) { //Town center
 		return std::vector<game_resource>{game_resource::wood,
 			game_resource::food,
 			game_resource::gold,
-			game_resource::stone,
-			game_resource::fish};
-	}
-
-	if (id_in({584, 585, 586, 587})) { //Mine
+			game_resource::stone};
+	} else if (id_in({584, 585, 586, 587})) { //Mine
 		return std::vector<game_resource>{game_resource::gold,
 			game_resource::stone};
-	}
-
-	if (id_in({68, 129, 130, 131})) { //Mill
+	} else if (id_in({68, 129, 130, 131})) { //Mill
 		return std::vector<game_resource>{game_resource::food};
-	}
-
-	if (id_in({562, 563, 564, 565})) { //Lumberjack camp
+	} else if (id_in({562, 563, 564, 565})) { //Lumberjack camp
 		return std::vector<game_resource>{game_resource::wood};
-	}
-
-	if (id_in({45, 47, 51})) { //Docks
-		return std::vector<game_resource>{game_resource::fish};
 	}
 
 	return std::vector<game_resource>();

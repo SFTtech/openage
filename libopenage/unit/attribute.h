@@ -293,16 +293,16 @@ template<> class Attribute<attr_type::dropsite>: public AttributeContainer {
 public:
 
 	Attribute(std::vector<game_resource> types)
-			:
-			AttributeContainer{attr_type::dropsite},
-			resource_types{types} {}
+		:
+		AttributeContainer{attr_type::dropsite},
+		resource_types{types} {}
 
-		bool shared() const override {
-			return false;
-		}
+	bool shared() const override {
+		return false;
+	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
-			return std::make_shared<Attribute<attr_type::dropsite>>(*this);
+		return std::make_shared<Attribute<attr_type::dropsite>>(*this);
 	}
 
 	bool accepting_resource(game_resource res) {
