@@ -100,7 +100,7 @@ if all packages can be installed.
 
 This command should provide required packages for Arch Linux installation:
 
-`sudo pacman -S --needed python python-pillow python-numpy libepoxy ftgl ttf-dejavu freetype2 fontconfig cmake sdl2 sdl2_image opusfile opus-tools`
+`sudo pacman -S --needed python python-pillow python-numpy python-pygments cython libepoxy ftgl ttf-dejavu freetype2 fontconfig cmake sdl2 sdl2_image opusfile opus-tools`
 
 If you don't have a compiler installed, you can select between these commands to install it:
  - `sudo pacman -S --needed gcc`
