@@ -55,6 +55,7 @@ function(cpp_init)
 		set_cxx_flags("-Wno-mismatched-tags")
 
 		if(APPLE)
+			require_cxx_version("clang" 3.5)
 			set_cxx_flags("-stdlib=libc++")
 		endif()
 

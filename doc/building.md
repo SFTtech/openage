@@ -26,9 +26,9 @@ Dependencies are needed for:
 
 Dependency list:
 
-    C     gcc >=4.9 or clang >=3.4
+    C     gcc >=4.9 or clang >=3.4 (clang >=3.5 for Mac OS X)
     CRA   python >=3.4
-    C     cython >= 0.22
+    C     cython >=0.22
     C     cmake >=3.0.0
       A   numpy
       A   python imaging library (PIL) -> pillow
@@ -87,13 +87,23 @@ if all packages can be installed.
 
 ### Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)
 
- - Install [homebrew](http://brew.sh). Other package managers and building from source might also work, but aren't supported as of now. If you figure out fixes for those other options, you're welcome to open pullrequests, as long as the homebrew build doesn't break.
- - Install the needed fonts (e.g. using [homebrew-cask](https://github.com/caskroom/homebrew-cask)).
- - `brew tap homebrew/python`
+ - Install [Homebrew](http://brew.sh). Other package managers and building from source might also work, but aren't supported as of now. If you figure out fixes for those other options, you're welcome to open pullrequests, as long as the Homebrew build doesn't break.
  - `brew update`
+ - `brew install caskroom/cask/brew-cask`
+ - `brew tap caskroom/fonts`
+ - `brew tap homebrew/version`
+ - `brew tap homebrew/python`
+ - `brew update` (yes, again)
+ - `brew cask install font-dejavu-sans`
  - `brew install python3 libepoxy ftgl freetype fontconfig cmake sdl2 sdl2_image opus opus-tools opusfile`
  - `brew install numpy --with-python3`
  - `brew install pillow --with-python3`
+ - Choose and Install a compatible compiler:
+  - For clang 3.5: `brew install llvm35`
+  - For gcc 4.9: `brew install gcc49`
+ - Permanently add `/usr/local/bin` to your `$PATH` environment variable
+ - Permanently add `/usr/local/lib/pkgconfig` and `/usr/local/lib` to your `$PKG_CONFIG_PATH` environment variable
+ - Then run `pip3.4 install pygments cython`
 
 
 ### Prerequisite steps for Arch Linux users
@@ -115,8 +125,10 @@ You can install both compilers and select the one to be used by `./configure`.
 
  - (obviously) clone this repo or acquire the sources some other way
  - make sure you have everything from the [dependency list](#dependencies)
- - `./configure --compiler=clang` will prepare building
+ - For *nix: `./configure --compiler=clang` will prepare building
   - You could also use `./configure --mode=release --compiler=gcc` here
+ - For Mac OS X: use instead:  `./configure --cpp-compiler=clang++-3.5`
+  -  Or: `./configure --mode=release --cpp-compiler=g++-4.9`
  - `make` does code generation, builds all Cython modules, and libopenage.
  - `make run`, `./run`, `./run.py` or `python3 -m openage` runs the game.
     try `./run --help` and `./run game --help`.
@@ -125,8 +137,10 @@ You can install both compilers and select the one to be used by `./configure`.
 
 ### For installing on your local system (not yet fully tested)
 
- - `./configure --mode=release --compiler=gcc --prefix=/usr`
+ - On *nix: `./configure --mode=release --compiler=gcc --prefix=/usr`
   - You could also use `./configure --mode=release --compiler=clang --prefix=/usr`
+ - On Mac OS X, use instead: `./configure --mode=release --cpp-compiler=g++-4.9 --prefix=/usr`
+  - Or: `./configure --mode=release --cpp-compiler=clang++-3.5 --prefix=/usr`
  - `make` to compile the project
  - `make install` will install the binary to /usr/bin/openage, python
    packages to `/usr/lib/python...`, static assets to `/usr/share`
@@ -162,7 +176,7 @@ You can install both compilers and select the one to be used by `./configure`.
 
 **Q**
 
-Help, it does't work!
+Help, it doesn't work!
 
 **A**
 
@@ -182,7 +196,7 @@ existed, and now **I HATE YOU**. It can't be for no reason. You
 
 **A**
 
-- Coincidentially, the exact same question crosses my mind whenever I
+- Coincidentally, the exact same question crosses my mind whenever I
   have to build an `automake` project, so I can sympathize.
 - Unfortunately, it's not as simple as invoking a compiler. Building
   `openage` involves code generation and the building of Cython

@@ -412,7 +412,6 @@ EditorMode::EditorMode()
 				this->selected_type = spec->get_type(inds[this->editor_current_type]);
 			}
 		}
-		return true;
 	});
 
 	this->bind(input::action_t::FORWARD, [this](const input::action_arg_t &arg) {
