@@ -3,29 +3,27 @@
 #ifndef OPENAGE_RENDERER_TASK_H_
 #define OPENAGE_RENDERER_TASK_H_
 
-#include "material.h"
+#include "../coord/phys3.h"
+#include "../util/quaternion.h"
 
 namespace openage {
 namespace renderer {
 
-/**
- * render layer, their order is important.
- * layers from bottom to top: later in enum = drawn later
- */
-enum class layer {
-	terrain,
-	unit,
-	sky,
-	hud,
-};
+class Geometry;
+class Material;
+class Renderer;
+
 
 /**
- * struct to submit to the renderer
+ * Instructs the renderer to draw something.
  */
 class Task {
 public:
-	layer position;
-	std::vector<Material> materials;
+	Material *material;
+	Geometry *geometry;
+
+	coord::phys3 position;
+	util::Quaternion<> rotation;
 
 	bool operator <(const Task &other) const;
 };
@@ -46,7 +44,23 @@ public:
 
 private:
 	Task *task;
-	class Renderer *renderer;
+	Renderer *renderer;
+};
+
+/**
+ * Groups some tasks together.
+ * The order of tasks in this group is optimized.
+ *
+ * E.g. all unit draw actions are in one group.
+ */
+class TaskGroup {
+public:
+	TaskGroup();
+	~TaskGroup();
+
+protected:
+	std::vector<Task> tasks; // heap?
+	size_t id;
 };
 
 

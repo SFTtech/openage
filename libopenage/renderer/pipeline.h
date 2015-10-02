@@ -151,8 +151,8 @@ public:
 
 	// as we wanna copy the values to the gpu, they need to be
 	// easily copyable.
-	static_assert(std::is_pod<T>::value,
-	              "only plain old datatypes supported as attributes");
+	static_assert(std::is_trivially_copyable<T>::value,
+	              "only trivially copyable types supported as attributes");
 
 	/**
 	 * Set this attribute to some value array.

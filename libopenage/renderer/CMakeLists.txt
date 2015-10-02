@@ -2,6 +2,7 @@ add_sources(libopenage
 	buffer.cpp
 	color.cpp
 	context.cpp
+	context_state.cpp
 	pipeline.cpp
 	program.cpp
 	renderer.cpp

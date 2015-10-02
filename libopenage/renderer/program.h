@@ -60,12 +60,21 @@ protected:
 public:
 	virtual ~Program() {};
 
+	/**
+	 * Return the associated graphics context.
+	 */
 	Context *get_context();
+
+	/**
+	 * Try to use the program on the GPU.
+	 * Does nothing if the context already uses this program.
+	 */
+	void use();
 
 	/**
 	 * Use this program now on the GPU.
 	 */
-	virtual void use() = 0;
+	virtual void activate() = 0;
 
 	/**
 	 * Dump vertex attribute variables.

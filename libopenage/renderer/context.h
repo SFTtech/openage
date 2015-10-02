@@ -6,6 +6,7 @@
 #include <memory>
 #include <SDL2/SDL.h>
 
+#include "context_state.h"
 #include "../coord/window.h"
 
 namespace openage {
@@ -62,6 +63,7 @@ struct context_capability {
  *
  * GPUs are state machines, this context stores/manages the state for
  * the requested backend driver.
+ * This represents, for example: OpenGL, Vulkan, OpenGLES, WebGL, ...
  */
 class Context {
 public:
@@ -119,6 +121,11 @@ public:
 	virtual void screenshot(const std::string &filename) = 0;
 
 	/**
+	 * Perform error checking to detect backend context problems.
+	 */
+	virtual void check_error() = 0;
+
+	/**
 	 * Register some texture data to the context.
 	 * @returns the newly created Texture handle.
 	 */
@@ -146,6 +153,12 @@ public:
 	 */
 	void resize(const coord::window &new_size);
 
+	/**
+	 * Context state tracking. Contains state that is common
+	 * to all actual context backends.
+	 */
+	ContextState state;
+
 protected:
 	/**
 	 * Perform context-specific calls to resize the drawing canvas.
@@ -161,11 +174,6 @@ protected:
 	 * Render surface size.
 	 */
 	coord::window canvas_size;
-
-	/**
-	 * Active pipeline program.
-	 */
-	Program *pipeline;
 };
 
 }} // namespace openage::renderer

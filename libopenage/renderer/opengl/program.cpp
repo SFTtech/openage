@@ -106,7 +106,7 @@ void Program::check(GLenum what_to_check) {
 	}
 }
 
-void Program::use() {
+void Program::activate() {
 	if (unlikely(not this->is_linked)) {
 		throw Error{MSG(err) << "using program before it was linked!"};
 	}
@@ -220,7 +220,8 @@ void Program::set_uniform_2dtexture(const char *name, const renderer::Texture &t
 	// set the sampler "value" to the texture slot id.
 	GLint location = this->get_uniform_id(name);
 
-	// TODO: use multiple slots!
+	// TODO: use multiple slots! use context state tracking!
+	// TODO: slot assignage algorithm.
 	int slot = 0;
 	glUniform1i(location, slot);
 	texture.bind_to(slot);

@@ -1,7 +1,8 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 /** @file
- * common code for all render tasks.
+ * render task implementation to tell the renderer to
+ * perform any drawing on the screen.
  */
 
 #include "task.h"
@@ -12,11 +13,7 @@ namespace renderer {
 
 
 bool Task::operator <(const Task &other) const {
-	if (this->position < other.position) {
-		return true;
-	} else {
-		return false;
-	}
+	return true;
 }
 
 TaskState::TaskState() {}

@@ -79,6 +79,11 @@ public:
 	void screenshot(const std::string &filename);
 
 	/**
+	 * Test if the renderer has an invalid state.
+	 */
+	void check_error();
+
+	/**
 	 * Resize the renderer because the surrounding window size was updated.
 	 */
 	bool on_resize(coord::window new_size) override;
