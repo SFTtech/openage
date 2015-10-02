@@ -13,8 +13,8 @@ namespace renderer {
 
 class Material {
 protected:
-	Texture* txt;
-	Program* code;
+	Texture *txt;
+	Pipeline *code;
 };
 
 }} // namespace openage::renderer

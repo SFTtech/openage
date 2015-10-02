@@ -6,7 +6,6 @@
 #include <unordered_map>
 
 #include "../log/log.h"
-#include "../util/opengl.h"
 #include "opengl/shader.h"
 #include "opengl/program.h"
 #include "vertex_state.h"
@@ -14,6 +13,7 @@
 #include "renderer.h"
 #include "shader.h"
 #include "shaders/simpletexture.h"
+#include "texture.h"
 
 namespace openage {
 namespace renderer {
@@ -149,7 +149,7 @@ void renderer_demo_0() {
 
 			glDisableVertexAttribArray(posattr_id);
 
-			util::gl_check_error();
+			renderer.check_error();
 		},
 		// resize
 		[&](const coord::window &new_size) {
@@ -180,7 +180,7 @@ void renderer_demo_1() {
 	ShaderSourceCode fshader_src(
 		shader_type::fragment,
 		"#version 330\n"
-		"out vec4 color;\n"
+		"out vec4 color;"
 		"smooth in vec2 texpos;"
 		"uniform sampler2D tex;"
 		"void main() {"
@@ -190,18 +190,13 @@ void renderer_demo_1() {
 
 	ProgramSource simpletex_src({&vshader_src, &fshader_src});
 	std::unique_ptr<Program> simpletex = renderer.add_program(simpletex_src);
-
 	simpletex->dump_attributes();
-
-	FileTextureData gaben_data{"assets/gaben.png"};
-	std::unique_ptr<Texture> gaben = renderer.add_texture(gaben_data);
 
 	SimpleTexturePipeline tex_pipeline{simpletex.get()};
 
-
+	FileTextureData gaben_data{"assets/gaben.png"};
+	std::unique_ptr<Texture> gaben = renderer.add_texture(gaben_data);
 	std::unique_ptr<VertexState> vao = window.get_context()->create_vertex_state();
-
-	vao->bind();
 
 
 	render_demo test1{
@@ -239,6 +234,8 @@ void renderer_demo_1() {
 			glClearColor(0.0, 0.0, 0.2, 1.0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+			vao->bind();
+
 			VertexBuffer vbo = tex_pipeline.create_attribute_buffer();
 			vao->attach_buffer(vbo);
 
@@ -246,7 +243,7 @@ void renderer_demo_1() {
 
 			vao->detach_buffer(vbo);
 
-			util::gl_check_error();
+			renderer.check_error();
 		},
 		// resize
 		[&](const coord::window &new_size) {

@@ -28,7 +28,7 @@ public:
 	/**
 	 * Activate the program on the GPU.
 	 */
-	void use() override;
+	void activate() override;
 
 	/**
 	 * Return the opengl handle id for a given pipeline uniform variable.

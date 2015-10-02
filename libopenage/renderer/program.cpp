@@ -6,6 +6,8 @@
 
 #include "program.h"
 
+#include "context.h"
+
 namespace openage {
 namespace renderer {
 
@@ -31,7 +33,15 @@ void ProgramSource::attach_shader(const ShaderSource &shader) {
 
 Program::Program(Context *context)
 	:
-	context{context} {
+	context{context} {}
+
+
+void Program::use() {
+	if (this->context->state.program != this) {
+		this->activate();
+		this->context->state.program = this;
+	}
 }
+
 
 }} // openage::renderer

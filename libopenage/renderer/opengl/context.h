@@ -61,6 +61,11 @@ public:
 	void screenshot(const std::string &filename) override;
 
 	/**
+	 * Check if OpenGL detected any state machine errors.
+	 */
+	void check_error() override;
+
+	/**
 	 * Creates the opengl texture in this context.
 	 * @returns a handle to it.
 	 */

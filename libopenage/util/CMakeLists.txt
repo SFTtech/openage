@@ -17,7 +17,6 @@ add_sources(libopenage
 	matrix.cpp
 	matrix_test.cpp
 	misc.cpp
-	opengl.cpp
 	os.cpp
 	profiler.cpp
 	quaternion.cpp

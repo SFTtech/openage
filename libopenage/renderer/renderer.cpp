@@ -3,6 +3,8 @@
 #include "renderer.h"
 
 #include "context.h"
+#include "program.h"
+#include "texture.h"
 
 namespace openage {
 namespace renderer {
@@ -36,6 +38,12 @@ std::unique_ptr<Texture> Renderer::add_texture(const TextureData &data) {
 void Renderer::screenshot(const std::string &filename) {
 	this->context->screenshot(filename);
 }
+
+
+void Renderer::check_error() {
+	this->context->check_error();
+}
+
 
 bool Renderer::on_resize(coord::window new_size) {
 	this->context->resize(new_size);

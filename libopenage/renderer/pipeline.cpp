@@ -50,19 +50,11 @@ Pipeline::Pipeline(Program *prg)
 
 
 void Pipeline::add_var(PipelineVariable *var) {
-	log::log(MSG(dbg) << "registering pipeline variable '"
-	         << var->get_name() << "'");
-
-	log::log(MSG(dbg) << "  has type: " << util::demangle(typeid(*var).name()));
-
 	if (BaseAttribute *attr = dynamic_cast<BaseAttribute *>(var)) {
 		// just add the variable to the known list
-		log::log(MSG(dbg) << "  adding vertex attribute");
-
 		this->attributes.push_back(attr);
 	} else {
 		// non-attribute variable, ignore it.
-		log::log(MSG(dbg) << "  ignoring");
 	}
 }
 
@@ -74,7 +66,7 @@ VertexBuffer Pipeline::create_attribute_buffer() {
 	// fill the buffer with the current vertex data.
 	this->update_buffer(&vbuf);
 
-	return std::move(vbuf);
+	return vbuf;
 }
 
 
@@ -93,6 +85,8 @@ void Pipeline::update_buffer(VertexBuffer *vbuf) {
 		size_t entry_count = var->entry_count();
 
 		// the first attribute determines the expected size.
+		// all other attribute-definitions will have to provide the same
+		// number of entries (so that all vertices can get the attributes).
 		if (unlikely(vertex_count == 0)) {
 			vertex_count = entry_count;
 		}

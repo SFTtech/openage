@@ -3,21 +3,19 @@
 #ifndef OPENAGE_RENDERER_TARGET_H_
 #define OPENAGE_RENDERER_TARGET_H_
 
-#include <vector>
-
 #include "renderer.h"
 
 namespace openage {
 namespace renderer {
 
 /**
- * Inherit from this to have methods that the renderer
- * uses to fetch render tasks.
+ * A render output destination.
  */
 class Target {
-	std::vector<task> get_render_tasks();
+public:
+	// TODO.
 };
 
-}} // namespace openage::renderer
+}} // openage::renderer
 
 #endif
