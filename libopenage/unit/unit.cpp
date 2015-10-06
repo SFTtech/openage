@@ -216,6 +216,9 @@ bool Unit::invoke(const Command &cmd, bool direct_command) {
 			if (direct_command) {
 
 				// drop other actions if a new action is found
+				if (this->has_attribute(attr_type::gatherer)) {
+					this->stop_gather();
+				}
 				this->stop_actions();
 			}
 			pair->second->invoke(*this, cmd, direct_command);
@@ -227,6 +230,13 @@ bool Unit::invoke(const Command &cmd, bool direct_command) {
 
 void Unit::delete_unit() {
 	this->pop_destructables = true;
+}
+
+void Unit::stop_gather() {
+	this->erase_after(
+		[](std::unique_ptr<UnitAction> &e) {
+			return e->name() == "gather";
+		}, false);
 }
 
 void Unit::stop_actions() {

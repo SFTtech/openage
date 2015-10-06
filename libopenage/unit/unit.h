@@ -190,6 +190,12 @@ public:
 	bool invoke(const Command &cmd, bool direct_command=false);
 
 	/**
+	 * removes all gather actions without calling their on_complete actions
+	 * this cancels the gathering action completely
+	 */
+	void stop_gather();
+
+	/**
 	 * removes all actions above and including the first interuptable action
 	 * this will stop any of the units current moving or attacking actions
 	 */
