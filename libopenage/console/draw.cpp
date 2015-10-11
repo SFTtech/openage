@@ -8,11 +8,11 @@
 
 #include <epoxy/gl.h>
 #include "../crossplatform/timing.h"
-#include <FTGL/ftgl.h>
 
 #include <unistd.h>
 
 #include "console.h"
+#include "../renderer/text.h"
 
 namespace openage {
 namespace console {
@@ -25,7 +25,11 @@ void to_opengl(Console *console) {
 		console->bottomleft.y + console->charsize.y * console->buf.dims.y
 	};
 	coord::camhud chartopleft;
-	coord::pixel_t ascender = console->font.internal_font->Ascender();
+	coord::pixel_t ascender = static_cast<coord::pixel_t>(console->font.get_ascender());
+
+	Engine &engine = Engine::get();
+	renderer::TextRenderer *text_renderer = engine.get_text_renderer();
+	text_renderer->set_font(&console->font);
 
 	int64_t monotime = timing::get_monotonic_time();
 
@@ -77,9 +81,9 @@ void to_opengl(Console *console) {
 			char utf8buf[5];
 			if (util::utf8_encode(p.cp, utf8buf) == 0) {
 				//unrepresentable character (question mark in black rhombus)
-				console->font.render_static(chartopleft.x, chartopleft.y - ascender, "\uFFFD");
+				text_renderer->draw(chartopleft.x, chartopleft.y - ascender, "\uFFFD");
 			} else {
-				console->font.render_static(chartopleft.x, chartopleft.y - ascender, utf8buf);
+				text_renderer->draw(chartopleft.x, chartopleft.y - ascender, utf8buf);
 			}
 		}
 	}

@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <epoxy/gl.h>
-#include <FTGL/ftgl.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
@@ -22,6 +21,9 @@
 #include "util/opengl.h"
 #include "util/strings.h"
 
+#include "renderer/text.h"
+#include "renderer/font/font.h"
+#include "renderer/font/font_manager.h"
 
 /**
  * stores all things that have to do with the game.
@@ -76,8 +78,9 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	data_dir{data_dir},
 	audio_manager{} {
 
+	this->font_manager = std::make_unique<renderer::FontManager>();
 	for (uint32_t size : {12, 20}) {
-		fonts[size] = std::unique_ptr<Font>{new Font{"DejaVu Serif", "Book", size}};
+		fonts[size] = this->font_manager->get_font("DejaVu Serif", "Book", size);
 	}
 
 	this->logsink_file = std::make_unique<log::FileSink>("/tmp/openage-log", true);
@@ -514,7 +517,7 @@ void Engine::render_text(coord::window position, size_t size, const char *format
 		throw Error(MSG(err) << "Unknown font size requested: " << size);
 	}
 
-	Font *font = it->second.get();
+	renderer::Font *font = it->second;
 
 	std::string buf;
 	va_list vl;

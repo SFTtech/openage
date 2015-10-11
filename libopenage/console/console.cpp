@@ -28,13 +28,13 @@ Console::Console()
 	charsize{1, 1},
 	visible(false),
 	buf{{80, 25}, 1337, 80},
-	font{"DejaVu Sans Mono", "Book", 12}
-{
+	font{{"DejaVu Sans Mono", "Book", 12}} {
+
 	termcolors.reserve(256);
 
 	// this better be representative for the width of all other characters
-	charsize.x = ceilf(font.internal_font->Advance("W", 1));
-	charsize.y = ceilf(font.internal_font->LineHeight());
+	charsize.x = ceilf(font.get_advance_width("W"));
+	charsize.y = ceilf(font.get_line_height());
 
 	log::log(MSG(dbg) << "Console font character size: " << charsize.x << "x" << charsize.y);
 

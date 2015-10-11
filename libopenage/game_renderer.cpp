@@ -21,6 +21,7 @@
 #include "unit/unit_texture.h"
 #include "util/timer.h"
 #include "util/externalprofiler.h"
+#include "renderer/text.h"
 
 #include "game_renderer.h"
 
@@ -91,6 +92,15 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	auto alphamask_frag = new shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
 	delete[] alphamask_frag_code;
 
+	char *texturefont_vert_code;
+	util::read_whole_file(&texturefont_vert_code, data_dir->join("shaders/texturefont.vert.glsl"));
+	auto texturefont_vert = new shader::Shader(GL_VERTEX_SHADER, texturefont_vert_code);
+	delete[] texturefont_vert_code;
+
+	char *texturefont_frag_code;
+	util::read_whole_file(&texturefont_frag_code, data_dir->join("shaders/texturefont.frag.glsl"));
+	auto texturefont_frag = new shader::Shader(GL_FRAGMENT_SHADER, texturefont_frag_code);
+	delete[] texturefont_frag_code;
 
 
 	// create program for rendering simple textures
@@ -134,12 +144,25 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	glUniform1i(alphamask_shader::mask_texture, 1);
 	alphamask_shader::program->stopusing();
 
+
+	// Create program for texture based font rendering
+	texturefont_shader::program = new shader::Program(texturefont_vert, texturefont_frag);
+	texturefont_shader::program->link();
+	texturefont_shader::texture = texturefont_shader::program->get_uniform_id("texture");
+	texturefont_shader::color = texturefont_shader::program->get_uniform_id("color");
+	texturefont_shader::tex_coord = texturefont_shader::program->get_attribute_id("tex_coordinates");
+	texturefont_shader::program->use();
+	glUniform1i(texturefont_shader::texture, 0);
+	texturefont_shader::program->stopusing();
+
 	// after linking, the shaders are no longer necessary
 	delete plaintexture_vert;
 	delete plaintexture_frag;
 	delete teamcolor_frag;
 	delete alphamask_vert;
 	delete alphamask_frag;
+	delete texturefont_vert;
+	delete texturefont_frag;
 
 	// Renderer keybinds
 	// TODO: a renderer settings struct
@@ -165,6 +188,7 @@ GameRenderer::~GameRenderer() {
 	delete texture_shader::program;
 	delete teamcolor_shader::program;
 	delete alphamask_shader::program;
+	delete texturefont_shader::program;
 }
 
 bool GameRenderer::on_draw() {

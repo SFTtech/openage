@@ -1,17 +1,23 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_TEXT_RENDERER_H_
-#define OPENAGE_RENDERER_TEXT_RENDERER_H_
+#ifndef OPENAGE_RENDERER_TEXT_H_
+#define OPENAGE_RENDERER_TEXT_H_
 
 #include <vector>
 #include <string>
+#include <epoxy/gl.h>
 
 #include "../coord/window.h"
+#include "../shader/program.h"
 #include "color.h"
+#include "font/glyph_atlas.h"
 
 namespace openage {
 
-class Font;
+namespace texturefont_shader {
+extern shader::Program *program;
+extern GLint texture, color, tex_coord;
+} // openage::texturefont_shader
 
 namespace renderer {
 
@@ -87,11 +93,11 @@ private:
 	 * The set of text draw requests with the same font and color.
 	 */
 	struct text_render_batch {
-		openage::Font *font;
+		Font *font;
 		Color color;
 		std::vector<text_render_batch_pass> passes;
 
-		text_render_batch(openage::Font *font, const Color &color)
+		text_render_batch(Font *font, const Color &color)
 			:
 			font{font},
 			color{color} {
@@ -103,6 +109,10 @@ private:
 	bool is_dirty;
 	std::vector<text_render_batch> render_batches;
 
+	GlyphAtlas glyph_atlas;
+
+	GLuint vbo;
+	GLuint ibo;
 };
 
 }} // openage::renderer

@@ -83,6 +83,7 @@ find_package(FTGL REQUIRED)
 find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
+find_package(HarfBuzz REQUIRED)
 
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
@@ -142,6 +143,7 @@ include_directories(
 	${OPUS_INCLUDE_DIRS}
 	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
+	${HarfBuzz_INCLUDE_DIRS}
 )
 
 # link the executable to those libraries
@@ -157,6 +159,7 @@ target_link_libraries(libopenage
 	${SDL2IMAGE_LIBRARIES}
 	${SDL2_LIBRARY}
 	${UTIL_LIB}
+	${HarfBuzz_LIBRARIES}
 )
 
 if(NOT APPLE)
