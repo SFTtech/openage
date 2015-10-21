@@ -5,6 +5,7 @@
 
 #include <functional>
 #include <map>
+#include <algorithm>
 
 #include "../coord/tile.h"
 #include "../gamedata/unit.gen.h"
@@ -63,6 +64,7 @@ enum class attr_type {
 	direction,
 	projectile,
 	building,
+	dropsite,
 	resource,
 	gatherer,
 	garrison
@@ -285,6 +287,34 @@ public:
 	// TODO: list allowed trainable producers
 	UnitType *pp;
 	coord::phys3 gather_point;
+};
+
+template<> class Attribute<attr_type::dropsite>: public AttributeContainer {
+public:
+
+	Attribute(std::vector<game_resource> types)
+		:
+		AttributeContainer{attr_type::dropsite},
+		resource_types{types} {}
+
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::dropsite>>(*this);
+	}
+
+	bool accepting_resource(game_resource res) {
+		if (std::find(resource_types.begin(), resource_types.end(), res) != resource_types.end()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+private:
+	std::vector<game_resource> resource_types;
 };
 
 /**

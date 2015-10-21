@@ -418,6 +418,7 @@ public:
 private:
 	bool complete, target_resource;
 	UnitReference target;
+	game_resource resource_type;
 	UnitReference nearest_dropsite();
 };
 

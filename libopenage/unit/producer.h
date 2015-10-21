@@ -99,7 +99,6 @@ public:
 
 private:
 	const gamedata::unit_living unit_data;
-
 };
 
 /**
@@ -133,6 +132,7 @@ private:
 	UnitType *trainable2;
 	UnitType *projectile;
 	int foundation_terrain;
+	std::vector<game_resource> get_accepted_resources();
 
 	/**
 	 * used for objects like town centers or gates

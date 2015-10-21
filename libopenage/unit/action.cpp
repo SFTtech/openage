@@ -771,6 +771,14 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	complete{false},
 	target_resource{true},
 	target{tar} {
+
+	Unit *target = this->target.get();
+	if (target->has_attribute(attr_type::resource)) {
+		auto &resource_attr = target->get_attribute<attr_type::resource>();
+		this->resource_type = resource_attr.resource_type;
+	} else {
+		throw std::invalid_argument("Unit reference has no resource attribute");
+	}
 }
 
 GatherAction::~GatherAction() {}
@@ -862,12 +870,16 @@ UnitReference GatherAction::nearest_dropsite() {
 	// find nearest dropsite from the targeted resource
 	auto ds = find_near(*this->target.get()->location,
 		[=](const TerrainObject &obj) {
-			return &obj.unit != this->entity &&
-			       &obj.unit != this->target.get() &&
-			       obj.unit.has_attribute(attr_type::building) &&
-			       obj.unit.get_attribute<attr_type::building>().completed >= 1.0f &&
+
+			if (not obj.unit.has_attribute(attr_type::building) or &obj.unit == this->entity or &obj.unit == this->target.get()) {
+				return false;
+			}
+
+			return obj.unit.get_attribute<attr_type::building>().completed >= 1.0f &&
 			       obj.unit.has_attribute(attr_type::owner) &&
-			       obj.unit.get_attribute<attr_type::owner>().player.owns(*this->entity);
+			       obj.unit.get_attribute<attr_type::owner>().player.owns(*this->entity) &&
+			       obj.unit.has_attribute(attr_type::dropsite) &&
+			       obj.unit.get_attribute<attr_type::dropsite>().accepting_resource(this->resource_type);
 	});
 
 	if (ds) {

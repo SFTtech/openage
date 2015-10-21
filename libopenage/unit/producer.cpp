@@ -12,6 +12,7 @@
 #include "producer.h"
 #include "unit.h"
 #include "unit_texture.h"
+#include <initializer_list>
 
 /** @file
  * Many values in this file are hardcoded, due to limited understanding of how the original
@@ -534,10 +535,40 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 		unit->give_ability(std::make_shared<AttackAbility>());
 	}
 
+	// dropsite attribute
+	std::vector<game_resource> accepted_resources = this->get_accepted_resources();
+	if (accepted_resources.size() != 0) {
+		unit->add_attribute(std::make_shared<Attribute<attr_type::dropsite>>(accepted_resources));
+	}
+
 	// building can train new units and ungarrison
 	unit->give_ability(std::make_shared<SetPointAbility>());
 	unit->give_ability(std::make_shared<TrainAbility>());
 	unit->give_ability(std::make_shared<UngarrisonAbility>());
+}
+
+std::vector<game_resource> BuildingProducer::get_accepted_resources() {
+	//TODO use a more general approach instead of hard coded ids
+
+	auto id_in = [=](std::initializer_list<int> ids){
+		return std::any_of(ids.begin(), ids.end(), [=](int n){ return n == this->id(); });
+	};
+
+	if (this->id() == 109) { //Town center
+		return std::vector<game_resource>{game_resource::wood,
+			game_resource::food,
+			game_resource::gold,
+			game_resource::stone};
+	} else if (id_in({584, 585, 586, 587})) { //Mine
+		return std::vector<game_resource>{game_resource::gold,
+			game_resource::stone};
+	} else if (id_in({68, 129, 130, 131})) { //Mill
+		return std::vector<game_resource>{game_resource::food};
+	} else if (id_in({562, 563, 564, 565})) { //Lumberjack camp
+		return std::vector<game_resource>{game_resource::wood};
+	}
+
+	return std::vector<game_resource>();
 }
 
 TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {

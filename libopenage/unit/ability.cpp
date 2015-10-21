@@ -232,7 +232,11 @@ void GatherAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound)
 	}
 
 	Unit *target = cmd.unit();
-	to_modify.push_action(std::make_unique<GatherAction>(&to_modify, target->get_ref()));
+	try {
+		to_modify.push_action(std::make_unique<GatherAction>(&to_modify, target->get_ref()));
+	} catch (const std::invalid_argument &e) {
+		to_modify.log(MSG(dbg) << "invoke gather action cancelled due to an exception. Reason: " << e.what());
+	}
 }
 
 AttackAbility::AttackAbility(Sound *s)
