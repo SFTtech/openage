@@ -5,19 +5,25 @@
 
 #include <memory>
 
-#include "../pipeline.h"
+#include "../material.h"
 #include "../../util/vector.h"
 
 namespace openage {
 namespace renderer {
 
-class SimpleTexturePipeline : public Pipeline {
+/**
+ * A simple plain texture material.
+ */
+class SimpleTextureMaterial : public Material {
 public:
-	SimpleTexturePipeline(Program *prg);
-	virtual ~SimpleTexturePipeline() = default;
+	SimpleTextureMaterial(Program *prg);
+	virtual ~SimpleTextureMaterial() = default;
 
+	void set_positions(mesh_t positions) override;
+
+	// shader variables:
 	Uniform<Texture> tex;
-	Attribute<util::Vector<4>, vertex_attribute_type::float_32, 4> position;
+	Attribute<position_t, vertex_attribute_type::float_32, 4> position;
 	Attribute<util::Vector<2>, vertex_attribute_type::float_32, 2> texcoord;
 };
 

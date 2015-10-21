@@ -192,12 +192,13 @@ void renderer_demo_1() {
 	std::unique_ptr<Program> simpletex = renderer.add_program(simpletex_src);
 	simpletex->dump_attributes();
 
-	SimpleTexturePipeline tex_pipeline{simpletex.get()};
+	SimpleTextureMaterial tex_pipeline{simpletex.get()};
+
+	VertexBuffer vbo{window.get_context().get()};
 
 	FileTextureData gaben_data{"assets/gaben.png"};
 	std::unique_ptr<Texture> gaben = renderer.add_texture(gaben_data);
 	std::unique_ptr<VertexState> vao = window.get_context()->create_vertex_state();
-
 
 	render_demo test1{
 		// init
@@ -209,7 +210,7 @@ void renderer_demo_1() {
 			tex_pipeline.texcoord.set_layout(1);
 
 			float val = 0.9f;
-			tex_pipeline.position.set({
+			tex_pipeline.set_positions({
 				{-val, -val, .0f, 1.0f},
 				{val, -val, .0f, 1.0f},
 				{-val, val, .0f, 1.0f},
@@ -228,20 +229,18 @@ void renderer_demo_1() {
 				{0.0f, 0.0f},
 				{1.0f, 0.0f},
 			});
+
+			tex_pipeline.update_buffer(&vbo);
+			vao->attach_buffer(vbo); // upload buffer
+
+			vao->bind();
 		},
 		// frame
 		[&]() {
 			glClearColor(0.0, 0.0, 0.2, 1.0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			vao->bind();
-
-			VertexBuffer vbo = tex_pipeline.create_attribute_buffer();
-			vao->attach_buffer(vbo);
-
 			glDrawArrays(GL_TRIANGLES, 0, 6);
-
-			vao->detach_buffer(vbo);
 
 			renderer.check_error();
 		},

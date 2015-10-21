@@ -20,8 +20,15 @@ size_t Buffer::size() const {
 	return this->allocd;
 }
 
-char *Buffer::get() const {
+char *Buffer::get(bool mark_dirty) {
+	if (mark_dirty) {
+		this->mark_dirty();
+	}
 	return this->buffer.get();
+}
+
+void Buffer::mark_dirty() {
+	this->on_gpu = false;
 }
 
 void Buffer::create(size_t size) {

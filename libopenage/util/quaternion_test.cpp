@@ -125,26 +125,32 @@ void quaternion() {
 			switch (a) {
 
 			case axis::x:
-			return {
-				1, 0, 0,
-				0, std::cos(am), -std::sin(am),
-				0, std::sin(am), std::cos(am)
-			};
+				return {
+					1, 0, 0,
+					0, std::cos(am), -std::sin(am),
+					0, std::sin(am), std::cos(am)
+				};
 
 			case axis::y:
-			return {
-				std::cos(am), 0, std::sin(am),
-				0, 1, 0,
-				-std::sin(am), 0, std::cos(am)
-			};
+				return {
+					std::cos(am), 0, std::sin(am),
+					0, 1, 0,
+					-std::sin(am), 0, std::cos(am)
+				};
 
 			case axis::z:
-			return {
-				std::cos(am), -std::sin(am), 0,
-				std::sin(am), std::cos(am), 0,
-				0, 0, 1,
+				return {
+					std::cos(am), -std::sin(am), 0,
+					std::sin(am), std::cos(am), 0,
+					0, 0, 1,
+				};
+			default:
+				return {
+					1, 0, 0,
+					0, 1, 0,
+					0, 0, 1,
+				};
 			};
-			}
 		};
 
 		// zero rotation = identity.

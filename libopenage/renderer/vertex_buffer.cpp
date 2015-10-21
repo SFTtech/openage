@@ -27,7 +27,7 @@ const VertexBuffer &VertexBuffer::operator =(VertexBuffer &&other) {
 	return *this;
 }
 
-void VertexBuffer::upload() const {
+void VertexBuffer::upload() {
 	this->buffer->upload(Buffer::bind_target::vertex_attributes, this->usage);
 }
 
@@ -43,8 +43,8 @@ void VertexBuffer::add_section(const vbo_section &section) {
 	this->sections.push_back(section);
 }
 
-char *VertexBuffer::get() {
-	return this->buffer->get();
+char *VertexBuffer::get(bool will_modify) {
+	return this->buffer->get(will_modify);
 }
 
 Buffer *VertexBuffer::get_buffer() {

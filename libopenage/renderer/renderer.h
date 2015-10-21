@@ -52,7 +52,7 @@ public:
 	 *
 	 * @returns the state handle for the added task.
 	 */
-	TaskState add_task(const Task &task);
+	TaskState add_task(Task &task);
 
 	/**
 	 * Register a pipeline program to this renderer.

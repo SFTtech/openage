@@ -5,18 +5,22 @@
 namespace openage {
 namespace renderer {
 
-SimpleTexturePipeline::SimpleTexturePipeline(Program *prg)
+SimpleTextureMaterial::SimpleTextureMaterial(Program *prg)
 	:
-	Pipeline{prg},
+	Material{prg},
 	tex{"tex", this},
 	position{"position", this},
 	texcoord{"texcoord", this} {
 
-	// we can't register the variables in the constructor of a
-	// PipelineVariable, as this would store the wrong type.
+	// register the variables to the "active" list
 	this->add_var(&this->tex);
 	this->add_var(&this->position);
 	this->add_var(&this->texcoord);
 }
+
+void SimpleTextureMaterial::set_positions(std::vector<position_t> positions) {
+	this->position.set(positions);
+}
+
 
 }} // openage::renderer

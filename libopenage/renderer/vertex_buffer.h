@@ -69,7 +69,7 @@ public:
 	 * Upload this buffer to the GPU and bind it to the
 	 * required vertex attribute buffer slot.
 	 */
-	void upload() const;
+	void upload();
 
 	/**
 	 * Allocate a buffer of given size.
@@ -90,7 +90,7 @@ public:
 	/**
 	 * Return the raw pointer to the allocated buffer.
 	 */
-	char *get();
+	char *get(bool will_modify=false);
 
 	/**
 	 * Return the buffer metadata describing layout and position
