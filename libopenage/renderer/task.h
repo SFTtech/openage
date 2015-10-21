@@ -19,12 +19,21 @@ class Renderer;
  */
 class Task {
 public:
-	Material *material;
-	Geometry *geometry;
+	Geometry *const geometry;
 
+	/**
+	 * Position to draw the geometry at.
+	 */
 	coord::phys3 position;
+
+	/**
+	 * Rotation for the geometry.
+	 */
 	util::Quaternion<> rotation;
 
+	/**
+	 * Ordering condition to draw tasks in the correct order.
+	 */
 	bool operator <(const Task &other) const;
 };
 
@@ -34,7 +43,7 @@ public:
  */
 class TaskState {
 public:
-	TaskState();
+	TaskState(Task *t, Renderer *r);
 	~TaskState();
 
 	/**
@@ -42,28 +51,12 @@ public:
 	 */
 	bool rendered;
 
-private:
-	Task *task;
-	Renderer *renderer;
-};
-
-/**
- * Groups some tasks together.
- * The order of tasks in this group is optimized.
- *
- * E.g. all unit draw actions are in one group.
- */
-class TaskGroup {
-public:
-	TaskGroup();
-	~TaskGroup();
-
 protected:
-	std::vector<Task> tasks; // heap?
-	size_t id;
+	Task *const task;
+	Renderer *const renderer;
 };
 
 
-}} // namespace openage::renderer
+}} // openage::renderer
 
 #endif

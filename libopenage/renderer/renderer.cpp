@@ -15,12 +15,12 @@ Renderer::Renderer(const std::shared_ptr<Context> &ctx)
 
 Renderer::~Renderer() {}
 
-TaskState Renderer::add_task(const Task &task) {
+TaskState Renderer::add_task(Task &task) {
 	// sort by:
 	// layer, texture, shader
 	this->tasks.push(task);
 
-	TaskState ret;
+	TaskState ret{&task, this};
 	return ret;
 }
 

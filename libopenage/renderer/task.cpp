@@ -16,6 +16,9 @@ bool Task::operator <(const Task &other) const {
 	return true;
 }
 
-TaskState::TaskState() {}
+TaskState::TaskState(Task *task, Renderer *renderer)
+	:
+	task{task},
+	renderer{renderer} {}
 
 }} // openage::renderer

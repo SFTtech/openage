@@ -45,7 +45,12 @@ public:
 	/**
 	 * Returns the raw pointer to the buffer memory area.
 	 */
-	char *get() const;
+	char *get(bool mark_dirty=false);
+
+	/**
+	 * Mark the buffer as changed so it will be reuploaded.
+	 */
+	void mark_dirty();
 
 	/**
 	 * Create an empty buffer of the given size.

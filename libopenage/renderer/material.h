@@ -3,20 +3,30 @@
 #ifndef OPENAGE_RENDERER_MATERIAL_H_
 #define OPENAGE_RENDERER_MATERIAL_H_
 
-#include <memory>
+#include <vector>
 
-#include "texture.h"
-#include "program.h"
+#include "pipeline.h"
+#include "../util/vector.h"
 
 namespace openage {
 namespace renderer {
 
-class Material {
-protected:
-	Texture *txt;
-	Pipeline *code;
+/**
+ * A material is a pipeline configuration that allows to setting predefined
+ * properties.
+ */
+class Material : public Pipeline {
+public:
+	// standard position point position.
+	using position_t = util::Vector<4>;
+	using mesh_t = std::vector<position_t>;
+
+	Material(Program *prg);
+	virtual ~Material() = default;
+
+	virtual void set_positions(mesh_t positions) = 0;
 };
 
-}} // namespace openage::renderer
+}} // openage::renderer
 
 #endif

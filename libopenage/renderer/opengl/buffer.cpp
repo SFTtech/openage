@@ -28,10 +28,11 @@ void Buffer::upload(bind_target target, usage usage) {
 	GLenum gl_usage = this->get_usage(usage);
 	GLenum gl_slot = this->get_target(target);
 
-	this->bind(target);
-	glBufferData(gl_slot, this->allocd, this->get(), gl_usage);
-
-	this->on_gpu = true;
+	if (not this->on_gpu) {
+		this->bind(target);
+		glBufferData(gl_slot, this->allocd, this->get(), gl_usage);
+		this->on_gpu = true;
+	}
 }
 
 void Buffer::bind(bind_target target) const {

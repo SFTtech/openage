@@ -23,11 +23,11 @@ VertexState::~VertexState() {
 	glDeleteVertexArrays(1, &this->id);
 }
 
-void VertexState::attach_buffer(const VertexBuffer &buf) {
+void VertexState::attach_buffer(VertexBuffer &buf) {
 	// make the vao active, it will store the section assignment
 	this->bind();
 
-	// make the buffer active.
+	// push the buffer to the gpu, if neccessary.
 	buf.upload();
 
 	// assign the sections, set the pointers
@@ -43,12 +43,17 @@ void VertexState::attach_buffer(const VertexBuffer &buf) {
 			reinterpret_cast<void *>(section.offset)
 		);
 
+		if (this->bound_attributes.count(section.attr_id) > 0) {
+			throw Error(MSG(err) << "attribute " << section.attr_id
+			            << " already set!");
+		}
+
 		// add to the list of active attributes
 		this->bound_attributes.insert(section.attr_id);
 	}
 }
 
-void VertexState::detach_buffer(const VertexBuffer &buf) {
+void VertexState::detach_buffer(VertexBuffer &buf) {
 	// make the vao active, it will store the section removal
 	this->bind();
 

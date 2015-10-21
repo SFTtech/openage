@@ -23,14 +23,15 @@ public:
 
 	/**
 	 * Do attribute buffer section assignments.
-	 * This sets pointers to the given buffer.
+	 * This uploads the buffer to the gpu.
+	 * This sets pointers to the given buffer to prepare usage.
 	 */
-	void attach_buffer(const VertexBuffer &buf) override;
+	void attach_buffer(VertexBuffer &buf) override;
 
 	/**
 	 * Remove attribute buffer section assignments.
 	 */
-	void detach_buffer(const VertexBuffer &buf) override;
+	void detach_buffer(VertexBuffer &buf) override;
 
 	/**
 	 * Make this vertex array object the current one.

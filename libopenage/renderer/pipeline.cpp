@@ -110,6 +110,7 @@ void Pipeline::update_buffer(VertexBuffer *vbuf) {
 	}
 
 	// allocate a buffer to hold all the values.
+	// the next loop will fill into that memory.
 	vbuf->alloc(buf_size);
 
 	auto sections = vbuf->get_sections();
@@ -119,8 +120,11 @@ void Pipeline::update_buffer(VertexBuffer *vbuf) {
 		BaseAttribute *var = this->attributes[i];
 		VertexBuffer::vbo_section *section = &sections[i];
 
+		// raw pointer to to-be-submitted data buffer.
+		char *pos = vbuf->get(true);
+		pos += section->offset;
+
 		// store the attribute section to the buffer
-		char *pos = vbuf->get() + section->offset;
 		var->pack(pos, var->entry_size() * vertex_count);
 	}
 }

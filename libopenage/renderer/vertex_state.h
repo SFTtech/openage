@@ -35,14 +35,17 @@ public:
 	 * Attach the given vertex buffer to this vertex state.
 	 * Buffer contents are assigned to their corresponding
 	 * attribute layout ids.
+	 *
+	 * This just enables the buffer to be used when this vertex
+	 * state is active.
 	 */
-	virtual void attach_buffer(const VertexBuffer &buf) = 0;
+	virtual void attach_buffer(VertexBuffer &buf) = 0;
 
 	/**
 	 * Remove the attributes of the given vertex buffer from the
 	 * active list.
 	 */
-	virtual void detach_buffer(const VertexBuffer &buf) = 0;
+	virtual void detach_buffer(VertexBuffer &buf) = 0;
 
 	/**
 	 * Make this vertex state the current one.
