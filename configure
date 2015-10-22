@@ -149,8 +149,6 @@ if mode == 'debug':
     build_type = 'Debug'
 elif mode == 'release':
     build_type = 'Release'
-else:
-    ap.error("unknown build mode: " + mode)
 
 defines.update(build_type=build_type)
 
@@ -241,66 +239,11 @@ print('compiler suite: %s\n' % csuite)
 
 defines.update(c_compiler=cc, cxx_compiler=cxx)
 
-# populate flags
-flags = []
-ldflags = []
+defines.update(c_flags=args.flags, cxx_flags=args.flags, exe_linker_flags=args.ldflags,
+               module_linker_flags=args.ldflags, shared_linker_flags=args.ldflags)
 
-
-if args.optimize == 'auto':
-    # auto-set args.optimize depending on mode
-    if mode == 'debug':
-        args.optimize = 'g'
-    else:
-        args.optimize = '2'
-
-if args.optimize == '0':
-    flags.append("-O0")
-elif args.optimize == '1':
-    flags.append("-O1")
-elif args.optimize == 'g':
-    if csuite in {'gnu'}:
-        flags.append("-Og")
-    else:
-        flags.append("-O1")
-elif args.optimize == '2':
-    flags.append("-O2")
-elif args.optimize == 'max':
-    flags.append("-O3")
-    flags.append("-march=native")
-
-    if csuite in {'gnu'}:
-        flags.append("-flto=%d" % os.cpu_count())
-        ldflags.append("-flto=%d" % os.cpu_count())
-else:
-    ap.error("unknown optimization mode: " + args.optimize)
-
-if args.sanitize != 'none':
-    flags.append('-fno-omit-frame-pointer')
-    if args.sanitize_fatal and csuite=='llvm':
-        flags.append('-fno-sanitize-recover')
-else:
-    if args.sanitize_fatal:
-        ap.error('--sanitize-fatal only valid with --sanitize')
-
-if args.sanitize == 'none':
-    pass
-elif args.sanitize == 'yes':
-    flags.append('-fsanitize=address')
-    flags.append('-fsanitize=undefined')
-elif args.sanitize == 'mem':
-    flags.append('-fsanitize=memory')
-elif args.sanitize == 'thread':
-    flags.append('-fsanitize=thread')
-    if csuite in {'gnu'}:
-        flags.append('-fPIC')
-        flags.append('-pie')
-else:
-    ap.error("unknown sanitizer mode")
-all
-flags = shlex.join(flags + shlex.split(args.flags))
-ldflags = shlex.join(ldflags + shlex.split(args.ldflags))
-defines.update(c_flags=flags, cxx_flags=flags, exe_linker_flags=ldflags,
-               module_linker_flags=ldflags, shared_linker_flags=ldflags)
+if args.sanitize == 'none' and args.sanitize_fatal:
+    ap.error('--sanitize-fatal only valid with --sanitize')
 
 # args.prefix
 defines.update(install_prefix=args.prefix)
@@ -331,7 +274,7 @@ def sanitize_for_filename(s, fallback='-'):
 bindir = ".bin/%s-%s-%s" % (
     sanitize_for_filename(cc),
     sanitize_for_filename(mode),
-    sanitize_for_filename(flags))
+    sanitize_for_filename("-O%s -sanitize=%s" % (args.optimize, args.sanitize)))
 
 if not args.dry_run:
     os.makedirs(bindir, exist_ok=True)
@@ -371,6 +314,13 @@ for k, v in sorted(defines.items()):
             continue
 
     invocation.append('-DCMAKE_%s=%s' % (k.upper(), shlex.quote(v)))
+
+cxx_options = dict()
+cxx_options["CXX_OPTIMIZATION_LEVEL"] = args.optimize
+cxx_options["CXX_SANITIZE_MODE"] = args.sanitize
+cxx_options["CXX_SANITIZE_FATAL"] = args.sanitize_fatal
+for k, v in sorted(cxx_options.items()):
+    invocation.append('-D%s=%s' % (k, v))
 
 print("\nconfig options:\n")
 

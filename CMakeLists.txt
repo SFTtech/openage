@@ -26,7 +26,19 @@ If it doesn't, consider reporting the issue/asking for help in #sfttech on freen
 
 project(openage C CXX)
 
+# Ensure CMAKE_BUILD_TYPE is set correctly.
+if(NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE "Debug")
+endif()
+if(NOT CMAKE_BUILD_TYPE MATCHES "^(Debug|Release)$")
+	message(FATAL_ERROR "The type of build can be either Debug or Release. You provided ${CMAKE_BUILD_TYPE}")
+endif()
+
 # options: keep up to date with those in ./configure!
+if(NOT DEFINED WANT_BACKTRACE)
+	set(WANT_BACKTRACE if_available)
+endif()
+
 if(NOT DEFINED WANT_INOTIFY)
 	set(WANT_INOTIFY if_available)
 endif()
@@ -40,27 +52,28 @@ if(NOT DEFINED WANT_GPERFTOOLS_TCMALLOC)
 endif()
 
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
-set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}/modules/")
+set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
+
+include(CheckInSourceBuild)
+include(HandleCXXOptions)
+include(HandlePythonOptions)
+include(CheckRuntimeDependencies)
+include(DetectProjectVersion)
 
 # include build configuration modules
-include("CTest")
+include(CTest)
 
-include("${BUILDSYSTEM_DIR}/util.cmake")
-
-include("${BUILDSYSTEM_DIR}/cpp.cmake")
-include("${BUILDSYSTEM_DIR}/python.cmake")
-include("${BUILDSYSTEM_DIR}/codegen.cmake")
-
-include("${BUILDSYSTEM_DIR}/assets.cmake")
-include("${BUILDSYSTEM_DIR}/version.cmake")
-
-include("${BUILDSYSTEM_DIR}/doxygen.cmake")
-
-disallow_in_source_builds()
+include(util)
+include(cpp)
+include(python)
+include(codegen)
+include(version)
+include(doxygen)
 
 # create documentation
 doxygen_configure(libopenage/ openage/)
 
+add_subdirectory(assets/)
 add_subdirectory(libopenage/)
 set(PYEXT_LINK_LIBRARY libopenage)
 set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -include \"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")
@@ -83,9 +96,6 @@ message("${PROJECT_NAME} ${PROJECT_VERSION}
    install prefix | ${CMAKE_INSTALL_PREFIX}
 py install prefix | ${CMAKE_PY_INSTALL_PREFIX}
 ")
-
-# detect missing run-time dependencies
-warn_runtime_depends()
 
 # don't print 'Built target ...' messages
 # this will hopefully be merged into CMake 3.3; until then, this will have
