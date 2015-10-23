@@ -39,7 +39,6 @@ Terrain::Terrain(terrain_meta *meta, bool is_infinite)
 
 	// maps chunk position to chunks
 	this->chunks = std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash>{};
-
 }
 
 Terrain::~Terrain() {
@@ -188,6 +187,21 @@ int Terrain::priority(terrain_t terrain_id) {
 int Terrain::blendmode(terrain_t terrain_id) {
 	this->validate_terrain(terrain_id);
 	return this->meta->terrain_id_blendmode_map[terrain_id];
+}
+
+uint8_t Terrain::map_color_hi(terrain_t terrain_id) {
+	this->validate_terrain(terrain_id);
+	return this->meta->terrain_id_map_color_hi_map[terrain_id];
+}
+
+uint8_t Terrain::map_color_med(terrain_t terrain_id) {
+	this->validate_terrain(terrain_id);
+	return this->meta->terrain_id_map_color_med_map[terrain_id];
+}
+
+uint8_t Terrain::map_color_low(terrain_t terrain_id) {
+	this->validate_terrain(terrain_id);
+	return this->meta->terrain_id_map_color_low_map[terrain_id];
 }
 
 Texture *Terrain::texture(terrain_t terrain_id) {

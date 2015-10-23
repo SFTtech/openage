@@ -3,6 +3,8 @@
 #include "game_main.h"
 #include "game_spec.h"
 #include "generator.h"
+#include "engine.h"
+#include "minimap.h"
 
 namespace openage {
 

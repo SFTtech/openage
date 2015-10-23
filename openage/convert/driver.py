@@ -150,6 +150,9 @@ def convert_metadata(args):
     termcolortable = ColorTable(URXVTCOLS)
     data_formatter.add_data(termcolortable.dump("termcolors"))
 
+    yield "general color palette"
+    data_formatter.add_data(palette.dump("general_palette"))
+
     yield "string resources"
     stringres = get_string_resources(args.srcdir)
     data_formatter.add_data(stringres.dump("string_resources"))

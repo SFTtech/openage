@@ -23,7 +23,7 @@ add_sources(libopenage
 	player.cpp
 	screenshot.cpp
 	texture.cpp
-
+  minimap.cpp
 	config.cpp
 )
 

@@ -15,7 +15,13 @@
 #include "options.h"
 #include "player.h"
 
+#include "minimap.h"
+
 namespace openage {
+/* namespace minimap_shader { */
+/* extern shader::Program *program; */
+/* extern GLint size, orig, color; */
+/* } */
 
 
 /**

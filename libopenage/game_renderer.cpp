@@ -51,7 +51,7 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	// load textures and stuff
 	gaben = new Texture{data_dir->join("gaben.png")};
 
-	std::vector<gamedata::palette_color> player_color_lines;
+	std::vector<gamedata::palette_color> player_color_lines, general_color_lines;
 	util::read_csv_file(asset_dir.join("player_palette.docx"), player_color_lines);
 
 	GLfloat *playercolors = new GLfloat[player_color_lines.size() * 4];
@@ -91,6 +91,15 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	auto alphamask_frag = new shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
 	delete[] alphamask_frag_code;
 
+	char *minimap_vert_code;
+	util::read_whole_file(&minimap_vert_code, data_dir->join("shaders/minimap.vert.glsl"));
+	auto minimap_vert = new shader::Shader(GL_VERTEX_SHADER, minimap_vert_code);
+	delete[] minimap_vert_code;
+
+	char *minimap_frag_code;
+	util::read_whole_file(&minimap_frag_code, data_dir->join("shaders/minimap.frag.glsl"));
+	auto minimap_frag = new shader::Shader(GL_FRAGMENT_SHADER, minimap_frag_code);
+	delete[] minimap_frag_code;
 
 
 	// create program for rendering simple textures
@@ -134,12 +143,23 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	glUniform1i(alphamask_shader::mask_texture, 1);
 	alphamask_shader::program->stopusing();
 
+
+	// create program for rendering within the minimap
+	minimap_shader::program = new shader::Program(minimap_vert, minimap_frag);
+	minimap_shader::program->link();
+	minimap_shader::size = minimap_shader::program->get_uniform_id("minimap_size");
+	minimap_shader::orig = minimap_shader::program->get_uniform_id("minimap_orig");
+	minimap_shader::color = minimap_shader::program->get_attribute_id("color");
+
+
 	// after linking, the shaders are no longer necessary
 	delete plaintexture_vert;
 	delete plaintexture_frag;
 	delete teamcolor_frag;
 	delete alphamask_vert;
 	delete alphamask_frag;
+	delete minimap_vert;
+	delete minimap_frag;
 
 	// Renderer keybinds
 	// TODO: a renderer settings struct
@@ -165,6 +185,7 @@ GameRenderer::~GameRenderer() {
 	delete texture_shader::program;
 	delete teamcolor_shader::program;
 	delete alphamask_shader::program;
+	delete minimap_shader::program;
 }
 
 bool GameRenderer::on_draw() {
