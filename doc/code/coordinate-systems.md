@@ -8,7 +8,7 @@ Physics coordinates
 orthonormal 2D/3D (NE, SE)/(NE, SE, UP), in tu/teu  
 fixed-point integer with a 16-bit fractional part.
 
-origin is in the west corner of tile (0, 0) (at sea level),
+The origin is in the west corner of tile (0, 0) (at sea level),
 and the west corner of chunk (0, 0)
 positive in NE, SE, UP directions
 
@@ -19,7 +19,7 @@ A unit at (8, 8) stands at the center of chunk (0, 0)
  * SE: south-east, in tu (terrain length unit)
  * UP: guess what, in teu (terrain elevation unit)
 
-we believe that `1 teu = 1 tu / sqrt(8)` (from aspect ration calculations).
+We believe that `1 teu = 1 tu / sqrt(8)` (from aspect ration calculations).
 the actual relation is pretty irrelevant, though.
 
 Given in these systems:
@@ -32,7 +32,7 @@ tile/tile3
 Tile coordinates.
 orthonormal 2D/3D (NE, SE)/(NE, SE, UP), integer, in tu/teu
 
-identical to phys2/phys3 systems, but uses integers
+It is Identical to phys2/phys3 systems, but uses integers.
 
 given in these systems:
  * Terrain tiles
@@ -43,9 +43,9 @@ chunk
 Chunk coordinates.
 orthonormal 2D (NE, SE), integer, in 16tu/16teu
 
-similar to tile system, but describes chunks of 16x16 tiles
+It is similar to the tile system, but describes chunks of 16x16 tiles.
 
-given in these systems:
+Given in these systems:
  * Chunks
 
 window
@@ -53,7 +53,7 @@ window
 Window coordinates.
 orthonormal 2D (x, y), integer, in pixels
 
-origin is top left corner of window, positive in right and down directions
+The origin is the top left corner of window, positive in right and down directions.
 
 given in this system:
  * SDL mouse
@@ -61,27 +61,27 @@ given in this system:
 
 camgame
 -------
-game camera coordinates.
+Game camera coordinates.
 orthonormal 2D (x, y), integer, in pixels
 
-origin is center of window, positive in right and up directions
+The origin is the center of the window, positive in right and up directions
 
 while in game rendering mode, the renderer accepts
 coordinates of this type.
 
 camhud
 ------
-game camera coordinates.
+Game camera coordinates.
 orthonormal 2D (x, y), integer, in pixels
 
-origin is bottom left corner of window, positive in right and up directions
+The origin is the bottom left corner of window, positive in right and up directions
 
 while in hud rendering mode, the renderer accepts
 coordinates of this type.
 
 term
 ----
-terminal character coordinates.
+Terminal character coordinates.
 orthonormal 2D (x, y), integer, in characters
 
 origin is top left corner of console area, positive in right and down directions
@@ -92,20 +92,20 @@ Conversions
 
 For rendering
 -------------
-depending on whether objects are rendered as part of hud or by the game
-camera, their coordinates are transformed to camgame or camhud
+Depending on whether objects are rendered as part of hud or by the game
+camera, their coordinates are transformed to camgame or camhud.
 
 For input processing
 --------------------
-again depending on whether inputs were aimed at an HUD object or an
+Again depending on whether inputs were aimed at an HUD object or an
 entity rendered by the game camera, they (i.e. mouse clicks) are
 transformed to camgame or camhud.
 camgame coordinates can then further be converted to phys coordinates,
 for mapping the inputs to physics objects.
 
-idea: HUD drawing code will register HUD objects with the engine
+A possible idea: HUD drawing code will register HUD objects with the engine
 the engine then memorizes the areas where HUD objects are drawn,
-and checks whether the mouse click lies within one of the rectangles
+and checks whether the mouse click lies within one of the rectangles.
 
 ```
 

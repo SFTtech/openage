@@ -7,7 +7,7 @@
 
 import sys
 if not sys.version_info >= (3, 4):
-    print("openage requires Python 3.4 or higher")
+    print("Openage requires Python 3.4 or higher.")
     exit(1)
 
 import argparse
@@ -162,7 +162,7 @@ def getcsuite(name):
         if name == csuite or name in aliases:
             return csuite
     else:
-        raise ValueError("unknown compiler: %s" % name)
+        raise ValueError("Unknown compiler: %s" % name)
 
 # determine compiler binaries from args.{c_compiler, cxx_compiler, compiler}
 if args.compiler and (args.c_compiler or args.cpp_compiler):
@@ -177,7 +177,7 @@ if args.c_compiler or args.cpp_compiler:
         try:
             csuite = getcsuite(cc)
         except ValueError:
-            print("warning: could not identify compiler: %s" % cc)
+            print("Warning: could not identify compiler: %s" % cc)
             csuite = 'unknown'
     else:
         # only one has been specified manually; auto-determine the other
@@ -223,19 +223,19 @@ else:
         # look up csuite name (e.g. gcc -> gnu)
         csuite = getcsuite(compiler)
     except ValueError:
-        ap.error("unknown compiler suite: %s. manually specify --c-compiler \
+        ap.error("Unknown compiler suite: %s. manually specify --c-compiler \
 and --cpp-compiler, or use one of [%s]" % (compiler, ", ".join(csuites)))
 
     cc, cxx = csuites[csuite][:2]
 
 # test whether the specified compilers actually exist
 if not shutil.which(cc):
-    ap.error('could not find c compiler executable: %s' % cc)
+    ap.error('Could not find c compiler executable: %s' % cc)
 
 if not shutil.which(cxx):
-    ap.error('could not find c++ compiler executable: %s' % cxx)
+    ap.error('Could not find c++ compiler executable: %s' % cxx)
 
-print('compiler suite: %s\n' % csuite)
+print('Compiler suite: %s\n' % csuite)
 
 defines.update(c_compiler=cc, cxx_compiler=cxx)
 
@@ -339,9 +339,9 @@ invocation.append(project_root)
 
 # look for traces of an in-source build
 if os.path.isfile('CMakeCache.txt'):
-    print("\nwarning: found traces of an in-source build.")
+    print("\nWarning: found traces of an in-source build.")
     print("CMakeCache.txt was deleted to make building possible.")
-    print("run 'make cleaninsourcebuild' to fully wipe the traces.")
+    print("Run 'make cleaninsourcebuild' to fully wipe the traces.")
     os.remove('CMakeCache.txt')
 
 # switch to build directory
@@ -351,11 +351,11 @@ if not args.dry_run:
 
 # invoke cmake
 try:
-    print('invocation:\n%s\n' % ' '.join(invocation))
+    print('Invocation:\n%s\n' % ' '.join(invocation))
     if args.dry_run:
         exit(0)
     else:
         exit(subprocess.call(invocation))
 except FileNotFoundError:
-    print("cmake was not found")
+    print("CMake was not found")
     exit(1)

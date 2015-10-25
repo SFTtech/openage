@@ -88,4 +88,4 @@ The generated `.cpp` files are placed in the `libopenage` folder, and all end in
 other modules
 -------------
 
-read the source, or nag somebody to write more docs on them! wheeee!
+Read the source, or nag somebody to write more docs on them! Wheeee!

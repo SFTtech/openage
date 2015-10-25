@@ -43,7 +43,7 @@ int run_game(const main_arguments &args) {
 		GameControl control{&engine};
 		Generator generator{&engine};
 
-		log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
+		log::log(MSG(info).fmt("Loading time [game]: %5.3f s", timer.getval() / 1.0e9));
 
 		// run main loop
 		engine.run();

@@ -4,16 +4,16 @@ AI Interface
 This is a very early draft with some ideas taken
 from http://bwmirror.jurenka.sk/javadoc/bwapi/package-summary.html
 
-This file shall provide information about the AI interface design.
+This file provides information about the AI interface design.
 
 
 General ideas
 -------------
 
- * An AI registers hooks for desired events
- * The C++ engine triggers python AI functions when desired events occur
- * The AI then can trigger actions on the controllable units
- * Periodically (1 Hz?), the AI gets ticked to allow event independent decisions
+ * An AI registers hooks for desired events.
+ * The C++ engine triggers python AI functions when desired events occur.
+ * The AI then can trigger actions on the controllable units.
+ * Periodically (1 Hz?), the AI gets ticked to allow event independent decisions.
 
 
 Event types

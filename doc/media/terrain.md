@@ -1,4 +1,4 @@
-terrain documentation
+Terrain documentation
 =====================
 
 This file describes the research done on terrain rendering.
@@ -212,7 +212,7 @@ each 'spans' == pixels from (x0,y) to (x1,y) (inclusive) to set to 1;
 patternmasks.dat format
 -----------------------
 
-No idea what this data is for, also the format's not verified yet.
+No idea what this data is for, also the format is not verified yet.
 filesize = 164000 bytes = 2^5 * 5^3 * 41 bytes
 
 164000 bytes / 16 = 10250 bytes

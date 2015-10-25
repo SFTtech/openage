@@ -61,7 +61,7 @@ def find_issues(dirname, guardprefix):
 
             match = GUARD_RE.match(data)
             if not match:
-                raise HeaderIssue("No valid header guard found")
+                raise HeaderIssue("No valid header guard found.")
 
             ifndef_guard = match.group("ifndef_guard")
             define_guard = match.group("define_guard")
@@ -76,7 +76,7 @@ def find_issues(dirname, guardprefix):
 
             if define_guard != ifndef_guard:
                 raise HeaderIssue((
-                    "Inconsistent header gaurd:\n"
+                    "Inconsistent header guard:\n"
                     "\t#ifndef {}\n"
                     "\t#define {}").format(
                         repr(ifndef_guard),

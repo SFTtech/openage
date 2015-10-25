@@ -31,7 +31,7 @@ def main(args, error):
     from ..convert.main import conversion_required, convert_assets
     if conversion_required(assets, args):
         if not convert_assets(assets, args):
-            err("game asset conversion failed")
+            err("Game asset conversion failed.")
             return 1
 
     # jump into the main method

@@ -150,7 +150,7 @@ unsigned int UnitTexture::subtexture(const Texture *t, unsigned int angle, unsig
 	unsigned int count = tex_frames / this->angles_included;
 	unsigned int to_draw = angle * count + (frame % count);
 	if (tex_frames <= to_draw) {
-		log::log(MSG(err) << "Subtexure out of range (" << angle << ", " << frame << ")");
+		log::log(MSG(err) << "Subtexture out of range (" << angle << ", " << frame << ")");
 		return 0;
 	}
 	return to_draw;

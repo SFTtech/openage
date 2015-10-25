@@ -1,17 +1,16 @@
 Convert Script
 ==============
 
-The convert script exists for transforming media files to openage-compatible
+The convert script transforms media files to openage-compatible
 formats, and generating code for parsing the generated files. It is written
 in **Python** and contains **C++ extensions**.
 
 As we are using the media assets of the original game, the input format is
-preexisting and we have to deal with it.
+pre-existing and we have to deal with it.
 
 Unfortunately the original asset binary formats are a bit "special",
 so we need to convert the files to a format that is less special, and more
 usable. This is what the convert script does.
-
 
 The convert script is divided into two parts:
 original media dependend and independend exports.
@@ -52,7 +51,7 @@ Files can be "redefined" by overlay archives.
 
 All available archives have to be ordered, so that 'high priority' files
 override 'low priority' files. Mods have a higher priority than the base game
-to be able to apply its modifications.
+to be able to apply their modifications.
 
 The overlay procedure works by assigning unique media files to the desired
 file source or archive.
@@ -112,7 +111,7 @@ To ensure correct conversion, game versions and patch levels have to be
 detected and conversion has to be customized for them.
 
 Upon launch, the engine tries to load asset packs.
-An asset pack can be created from the existing age of empires installation,
+An asset pack can be created from the existing Age Of Empires installation,
 or from the installation CD image (or by a modder).
 
 The supported input data versions and their handling must be hardcoded:
@@ -122,13 +121,13 @@ The supported input data versions and their handling must be hardcoded:
 * Type-specific storage and folder structure
   * Define rules for saving specific ids/filesuffixes to specific folders
     * e.g. map "slp" => "graphics/",
-      meaning all slps will be stored into that folders
+      meaning all slps will be stored into that folders.
     * Map specific filenames,
       e.g. "015015.slp" => "graphics/terrain/deepwater",
    -> This leads to "graphics/terrain/deepwater_015015.png"
 * Select profiles by existences of "empires2*.dat"
   * If "Games/Forgotten\ Empires/Data/empires2_x1_p1.dat" exists,
-    use the forgotten profile
+    use the forgotten profile.
   * If no "Data/empires2_x1_p1.dat" exists, the 1.0c patch is missing
   * => We can determine which version is available,
        by checking which dat files are here

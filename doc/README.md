@@ -17,17 +17,17 @@ Dedicated documentation files reside in the `doc/` directory, where this
 readme file lies in as well. You can find ideas, milestones, planning and
 workflow descriptions etc in here.
 
-a good entry point may be the file [doc/code/project_structure](/doc/code/project_structure.md).
+A good entry point may be the file [doc/code/project_structure](/doc/code/project_structure.md).
 it roughly explains where to find what code in the project.
 
 If **you** made any relevant discoveries or gained insights that help others
 understand any part of the project:
 
-* Create a file and write down your thoughts
-* Ideally, use markdown syntax, alternatively plain text
+* Create a file and write down your thoughts.
+* Ideally, use markdown syntax, alternatively plain text.
 * Submit your contribution (pull request) so we can include it in the official
-  repository
-* This ensures newcomers can start developing easily
+  repository.
+* This ensures newcomers can start developing easily.
 
 
 Dynamic Docs
@@ -35,8 +35,8 @@ Dynamic Docs
 
 This type of documentation is written inside code files:
 
- - C++ methods and classes are documented in their header files
- - Python methods and classes are documented via docstrings
+ - C++ methods and classes are documented in their header files.
+ - Python methods and classes are documented via docstrings.
 
 We're lazy, so the above statements might be out-right fabrications.
 
@@ -45,7 +45,7 @@ We're lazy, so the above statements might be out-right fabrications.
 
 Dynamic documentation can be auto-generated from source documentation using **doxygen**.
 
-after calling `./configure`, you can invoke
+After calling `./configure`, you can invoke
 
 	make doc
 
