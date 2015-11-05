@@ -34,13 +34,21 @@ const char *PipelineVariable::get_name_cstr() {
 
 
 template<>
-void Uniform<Texture>::set(const Texture &value) {
-	this->pipeline->program->set_uniform_2dtexture(this->get_name_cstr(), value);
+void Uniform<Texture *>::upload_value() {
+	this->pipeline->get_program()->set_uniform_2dtexture(this->get_name_cstr(), this->value);
 }
 
+
 template<>
-void Uniform<int>::set(const int &value) {
-	this->pipeline->program->set_uniform_1i(this->get_name_cstr(), value);
+void Uniform<int>::upload_value() {
+	this->pipeline->get_program()->set_uniform_1i(this->get_name_cstr(), this->value);
+}
+
+
+template<>
+void Uniform<bool>::upload_value() {
+	unsigned val = this->value ? 1 : 0;
+	this->pipeline->get_program()->set_uniform_1ui(this->get_name_cstr(), val);
 }
 
 
@@ -49,12 +57,45 @@ Pipeline::Pipeline(Program *prg)
 	program{prg} {}
 
 
+Pipeline::Pipeline(Pipeline &&other)
+	:
+	program{other.program} {
+
+	this->update_proplists(other);
+}
+
+Pipeline::Pipeline(const Pipeline &other)
+	:
+	program{other.program} {
+
+	this->update_proplists(other);
+}
+
+Pipeline &Pipeline::operator =(Pipeline &&other) {
+	this->program = other.program;
+	this->update_proplists(other);
+	return *this;
+}
+
+Pipeline &Pipeline::operator =(const Pipeline &other) {
+	this->program = other.program;
+	this->update_proplists(other);
+	return *this;
+}
+
+Program *Pipeline::get_program() {
+	return this->program;
+}
+
 void Pipeline::add_var(PipelineVariable *var) {
 	if (BaseAttribute *attr = dynamic_cast<BaseAttribute *>(var)) {
-		// just add the variable to the known list
 		this->attributes.push_back(attr);
-	} else {
-		// non-attribute variable, ignore it.
+	}
+	else if (BaseUniform *unif = dynamic_cast<BaseUniform *>(var)) {
+		this->uniforms.push_back(unif);
+	}
+	else {
+		// unknown variable, ignore it.
 	}
 }
 
@@ -71,6 +112,9 @@ VertexBuffer Pipeline::create_attribute_buffer() {
 
 
 void Pipeline::update_buffer(VertexBuffer *vbuf) {
+	// TODO: use buffersubdata to only transfer the modified
+	//       parts of the buffer.
+
 	// determine vertex attribute buffer size
 	size_t buf_size = 0;
 
@@ -126,6 +170,40 @@ void Pipeline::update_buffer(VertexBuffer *vbuf) {
 
 		// store the attribute section to the buffer
 		var->pack(pos, var->entry_size() * vertex_count);
+	}
+}
+
+
+void Pipeline::upload_uniforms() {
+	for (auto &uniform : this->uniforms) {
+		uniform->upload();
+	}
+}
+
+
+void Pipeline::update_proplists(const Pipeline &source) {
+	this->update_proplistptr<>(&this->attributes, &source, source.attributes);
+	this->update_proplistptr<>(&this->uniforms, &source, source.uniforms);
+}
+
+
+template <typename T>
+void Pipeline::update_proplistptr(std::vector<T *> *proplist_dest,
+                                  const Pipeline *source,
+                                  const std::vector<T *> &proplist_src) {
+	// the proplist stores pointers to class members.
+	// now we're a new class: the pointers need to be updated
+	// to point to the members of the new class.
+	// The offsets are the same, the base address is different (a new 'this').
+	proplist_dest->clear();
+
+	// beware: ultra dirty hackery.
+	// the new variable offset is calculated from the old one.
+	// all because c++ has no reflection to iterate over member variables.
+	size_t new_base = reinterpret_cast<size_t>(this);
+	for (auto &entry : proplist_src) {
+		size_t distance = reinterpret_cast<size_t>(entry) - reinterpret_cast<size_t>(source);
+		proplist_dest->push_back(reinterpret_cast<T *>(new_base + distance));
 	}
 }
 

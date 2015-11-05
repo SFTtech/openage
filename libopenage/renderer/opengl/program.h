@@ -70,9 +70,14 @@ public:
 	void set_uniform_1i(const char *name, const int &value) override;
 
 	/**
+	 * Set a single unsigned integer value
+	 */
+	void set_uniform_1ui(const char *name, const unsigned &value) override;
+
+	/**
 	 * Set 2d texture data.
 	 */
-	void set_uniform_2dtexture(const char *name, const renderer::Texture &value) override;
+	void set_uniform_2dtexture(const char *name, const renderer::Texture *value) override;
 
 
 protected:

@@ -22,9 +22,9 @@ public:
 	void set_positions(mesh_t positions) override;
 
 	// shader variables:
-	Uniform<Texture> tex;
-	Attribute<position_t, vertex_attribute_type::float_32, 4> position;
-	Attribute<util::Vector<2>, vertex_attribute_type::float_32, 2> texcoord;
+	Uniform<Texture *> tex;
+	Attribute<position_t, 4> position;
+	Attribute<util::Vector<2>, 2> texcoord;
 };
 
 

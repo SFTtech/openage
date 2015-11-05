@@ -54,23 +54,75 @@ protected:
 
 
 /**
- * Pipeline uniform variable,
- * which is a global value for all pipeline stages.
+ * Base class for all uniform properties of the pipeline.
  */
-template<typename T>
-class Uniform : public PipelineVariable {
+class BaseUniform : public PipelineVariable {
 public:
-	Uniform(const std::string &name, Pipeline *pipeline)
+	BaseUniform(const std::string &name, Pipeline *pipeline)
 		:
-		PipelineVariable{name, pipeline} {}
+		PipelineVariable{name, pipeline},
+		dirty{true} {}
 
-	virtual ~Uniform() = default;
+	virtual ~BaseUniform() = default;
 
+	/**
+	 * Push the value to the GPU, if necessary.
+	 *
+	 * TODO: another pipeline could have changed it for the same program.
+	 */
+	void upload() {
+		if (this->dirty) {
+			this->upload_value();
+			this->dirty = false;
+		}
+	}
+
+protected:
 	/**
 	 * Per-type specialization of how to set the uniform value.
 	 * Calls the backend-dependent function to push the data to the gpu.
 	 */
-	void set(const T &value);
+	virtual void upload_value() = 0;
+
+	/**
+	 * True when the value has changed and needs to be reuploaded.
+	 */
+	bool dirty;
+};
+
+
+/**
+ * Pipeline uniform variable,
+ * which is a global value for all pipeline stages.
+ */
+template<typename T>
+class Uniform : public BaseUniform {
+public:
+	Uniform(const std::string &name, Pipeline *pipeline)
+		:
+		BaseUniform{name, pipeline} {}
+
+	virtual ~Uniform() = default;
+
+	/**
+	 * Store the uniform value so it can be applied when requested.
+	 */
+	void set(const T &value) {
+		this->value = value;
+		this->dirty = true;
+	}
+
+protected:
+	/**
+	 * Per-type specialization of how to set the uniform value.
+	 * Calls the backend-dependent function to push the data to the gpu.
+	 */
+	void upload_value() override;
+
+	/**
+	 * Stored value to be uploaded to the gpu.
+	 */
+	T value;
 };
 
 
@@ -138,8 +190,8 @@ public:
  * that provides the availability of a specific packing method.
  */
 template<typename T,
-         vertex_attribute_type attribute_type,
-         size_t dimensions>
+         size_t dimensions,
+         vertex_attribute_type attribute_type=vertex_attribute_type::float_32>
 class Attribute : public BaseAttribute {
 public:
 	Attribute(const std::string &name, Pipeline *pipeline)
@@ -175,7 +227,7 @@ public:
 	 */
 	int get_attr_id() override {
 		if (unlikely(this->attr_id < 0)) {
-			this->attr_id = this->pipeline->program->get_attribute_id(this->get_name_cstr());
+			this->attr_id = this->pipeline->get_program()->get_attribute_id(this->get_name_cstr());
 		}
 
 		return this->attr_id;
@@ -243,7 +295,18 @@ protected:
 class Pipeline {
 public:
 	Pipeline(Program *prg);
+
+	Pipeline(Pipeline &&other);
+	Pipeline(const Pipeline &other);
+	Pipeline &operator =(Pipeline &&other);
+	Pipeline &operator =(const Pipeline &other);
+
 	virtual ~Pipeline() = default;
+
+	/**
+	 * Fetch the program associated with this pipeline.
+	 */
+	Program *get_program();
 
 	/**
 	 * Add the given program variable to the list of maintained
@@ -264,19 +327,48 @@ public:
 	void update_buffer(VertexBuffer *vbuf);
 
 	/**
-	 * The pipeline program associated with this property definition class.
+	 * Apply all the uniform values
 	 */
-	Program *const program;
+	void upload_uniforms();
 
 protected:
+	/**
+	 * The pipeline program associated with this property definition class.
+	 */
+	Program *program;
 
 	/**
-	 * Syncs attribute entry lengths.
+	 * Keeps track of all registered attribute properties.
+	 *
+	 * Used to sync attribute entry lengths.
 	 * Each attribute has to be supplied for each vertex once.
 	 * e.g. vec3 1337 color entries require 1337 vec4 positions.
 	 * These have different per-attribute sizes but the same lengths.
 	 */
 	std::vector<BaseAttribute *> attributes;
+
+	/**
+	 * Keeps track of all uniform properties.
+	 */
+	std::vector<BaseUniform *> uniforms;
+
+private:
+	/**
+	 * Update all membervariable-pointer-lists with offsets
+	 * from another pipeline to have their base to 'this'.
+	 *
+	 * As C++ has no reflection, this needs to be done each time
+	 * a Pipeline object is relocated somewhere else.
+	 */
+	void update_proplists(const Pipeline &source);
+
+	/**
+	 * Update the oneproperty list from another pipeline.
+	 */
+	template <typename T>
+	void update_proplistptr(std::vector<T *> *proplist_dest,
+	                        const Pipeline *source,
+	                        const std::vector<T *> &proplist_src);
 };
 
 }} // openage::renderer

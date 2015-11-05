@@ -41,7 +41,10 @@ constexpr auto vertex_attribute_size = datastructure::create_const_map<vertex_at
 
 /**
  * Represents a graphics vertex buffer.
- * This can be uploaded to the GPU to provide vertex-specific variables
+ * A a vertex buffer supplies potentially different information
+ * for each vertex, e.g. its position, texture coordinates, color, etc.
+ *
+ * This is uploaded to the GPU to provide vertex-specific variables
  * in a shader.
  */
 class VertexBuffer {

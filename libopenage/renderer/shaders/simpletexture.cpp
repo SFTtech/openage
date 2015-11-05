@@ -18,7 +18,7 @@ SimpleTextureMaterial::SimpleTextureMaterial(Program *prg)
 	this->add_var(&this->texcoord);
 }
 
-void SimpleTextureMaterial::set_positions(std::vector<position_t> positions) {
+void SimpleTextureMaterial::set_positions(mesh_t positions) {
 	this->position.set(positions);
 }
 
