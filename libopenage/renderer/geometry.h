@@ -4,6 +4,7 @@
 #define OPENAGE_RENDERER_GEOMETRY_H_
 
 #include "vertex_buffer.h"
+#include "vertex_state.h"
 
 namespace openage {
 namespace renderer {
@@ -12,25 +13,23 @@ class Context;
 class Material;
 
 /**
- * Drawable geometry, initialized by a pipeline.
+ * Drawable geometry, stores all triangles vertices.
  */
 class Geometry {
 public:
-	Geometry(Context *context, Material *material);
-	Geometry(Context *context, Material *material, mesh_t tri_vertices);
-	virtual ~Geometry();
+	Geometry(mesh_t vertices={});
+	virtual ~Geometry() = default;
 
 	/**
-	 * Create a render task from this geometry.
-	 * This is then submitted to the renderer.
+	 * Return the associated vertex list.
 	 */
-	Task get_task();
+	const mesh_t &get_mesh();
 
 protected:
-	Context *const context;
-	Material *material;
-
-	VertexBuffer vbuf;
+	/**
+	 * Triangle vertex storage.
+	 */
+	mesh_t vertices;
 };
 
 }} // openage::renderer

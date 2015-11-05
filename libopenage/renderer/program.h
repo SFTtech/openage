@@ -100,9 +100,13 @@ public:
 	virtual void set_uniform_1i(const char *name, const int &value) = 0;
 
 	/**
+	 * Set a single unsigned integer value
+	 */
+	virtual void set_uniform_1ui(const char *name, const unsigned &value) = 0;
+	/**
 	 * Set 2d texture data.
 	 */
-	virtual void set_uniform_2dtexture(const char *name, const Texture &value) = 0;
+	virtual void set_uniform_2dtexture(const char *name, const Texture *value) = 0;
 
 	/* ========================================== */
 

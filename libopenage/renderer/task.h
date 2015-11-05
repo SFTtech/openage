@@ -19,7 +19,17 @@ class Renderer;
  */
 class Task {
 public:
+	/**
+	 * The geometry to draw.
+	 */
 	Geometry *const geometry;
+
+	/**
+	 * The material to use for drawing the geometry.
+	 * Stores to-be-set uniforms.
+	 * Can create vertex buffers.
+	 */
+	//MaterialApplication material;
 
 	/**
 	 * Position to draw the geometry at.

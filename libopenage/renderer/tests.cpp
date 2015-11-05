@@ -205,7 +205,7 @@ void renderer_demo_1() {
 		[&](Window */*window*/) {
 			log::log(MSG(dbg) << "preparing test");
 
-			tex_pipeline.tex.set(*gaben.get());
+			tex_pipeline.tex.set(gaben.get());
 			tex_pipeline.position.set_layout(0);
 			tex_pipeline.texcoord.set_layout(1);
 
@@ -230,6 +230,8 @@ void renderer_demo_1() {
 				{1.0f, 0.0f},
 			});
 
+			// apply the pipeline properties
+			tex_pipeline.upload_uniforms();
 			tex_pipeline.update_buffer(&vbo);
 			vao->attach_buffer(vbo); // upload buffer
 
@@ -240,6 +242,14 @@ void renderer_demo_1() {
 			glClearColor(0.0, 0.0, 0.2, 1.0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
+			// combination of geometry and material with translations
+			// = draw task.
+
+			// geometry: manager owns.
+			// material: manager owns?
+
+			//Task t = material.draw(geometry);
 			glDrawArrays(GL_TRIANGLES, 0, 6);
 
 			renderer.check_error();

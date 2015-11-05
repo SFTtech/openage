@@ -18,6 +18,8 @@ class VertexBuffer;
  * Represents a vertex buffer state.
  * You can enable this vertex state context so that the
  * GPU pipeline uses the state defined in here for the vertex specification.
+ *
+ * In OpenGL, this represents a vertex array object (vao).
  * This class is specialized by each graphics backend.
  */
 class VertexState {

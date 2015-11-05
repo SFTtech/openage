@@ -213,8 +213,14 @@ void Program::set_uniform_1i(const char *name, const int &value) {
 	glUniform1i(location, value);
 }
 
+void Program::set_uniform_1ui(const char *name, const unsigned &value) {
+	this->use();
+	GLint location = this->get_uniform_id(name);
+	glUniform1ui(location, value);
+}
 
-void Program::set_uniform_2dtexture(const char *name, const renderer::Texture &texture) {
+
+void Program::set_uniform_2dtexture(const char *name, const renderer::Texture *texture) {
 	this->use();
 
 	// set the sampler "value" to the texture slot id.
@@ -224,7 +230,7 @@ void Program::set_uniform_2dtexture(const char *name, const renderer::Texture &t
 	// TODO: slot assignage algorithm.
 	int slot = 0;
 	glUniform1i(location, slot);
-	texture.bind_to(slot);
+	texture->bind_to(slot);
 }
 
 }}} // openage::renderer::opengl

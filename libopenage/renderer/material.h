@@ -21,6 +21,11 @@ public:
 	using position_t = util::Vector<4>;
 	using mesh_t = std::vector<position_t>;
 
+	/**
+	 * Creates a "type wrapper" around the pipeline program.
+	 * This "Material" is then used to create pipeline
+	 * properties and rendering algorithms.
+	 */
 	Material(Program *prg);
 	virtual ~Material() = default;
 
