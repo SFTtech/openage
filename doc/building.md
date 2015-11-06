@@ -34,7 +34,6 @@ Dependency list:
       A   python imaging library (PIL) -> pillow
     CR    opengl >=2.1
     CR    libepoxy
-    CR    ftgl
      R    dejavu font
     CR    freetype2
     CR    fontconfig
@@ -56,18 +55,18 @@ Dependency list:
 ### Prerequisite steps for Ubuntu users (Ubuntu 14.10)
 
  - `sudo apt-get update`
- - `sudo apt-get install cmake libfreetype6-dev python3-dev libepoxy-dev libsdl2-dev ftgl-dev  libsdl2-image-dev libopusfile-dev libfontconfig1-dev libharfbuzz-dev opus-tools python3-pil python3-numpy python3-pygments python3-pip`
+ - `sudo apt-get install cmake libfreetype6-dev python3-dev libepoxy-dev libsdl2-dev libsdl2-image-dev libopusfile-dev libfontconfig1-dev libharfbuzz-dev opus-tools python3-pil python3-numpy python3-pygments python3-pip`
  - `sudo pip3 install cython`
 
 
 ### Prerequisite steps for Fedora users (Fedora 20, 21)
 
-`sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow ftgl-devel libepoxy-devel opus-tools opusfile-devel fontconfig-devel harfbuzz-devel`
+`sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow libepoxy-devel opus-tools opusfile-devel fontconfig-devel harfbuzz-devel`
 
 
 ### Prerequisite steps for Fedora users (Fedora 22)
 
-`sudo dnf install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-Cython python3-devel python3-numpy python3-pillow python3-pygments ftgl-devel libepoxy-devel opus-tools opusfile-devel fontconfig-devel harfbuzz-devel`
+`sudo dnf install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-Cython python3-devel python3-numpy python3-pillow python3-pygments libepoxy-devel opus-tools opusfile-devel fontconfig-devel harfbuzz-devel`
 
 
 ### Prerequisite steps for openSUSE users (openSUSE 13.2)
@@ -78,12 +77,12 @@ if all packages can be installed.
 
 - `zypper addrepo http://download.opensuse.org/repositories/devel:languages:python3/openSUSE_13.2/devel:languages:python3.repo`
 - `zypper refresh`
-- `zypper install --no-recommends cmake doxygen fontconfig-devel harfbuzz-devel ftgl-devel gcc49-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel`
+- `zypper install --no-recommends cmake doxygen fontconfig-devel harfbuzz-devel gcc49-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel`
 
 
 ### Prerequisite steps for openSUSE users (openSUSE Tumbleweed)
 
- - `zypper install --no-recommends cmake doxygen fontconfig-devel harfbuzz-devel ftgl-devel gcc-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel`
+ - `zypper install --no-recommends cmake doxygen fontconfig-devel harfbuzz-devel gcc-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel`
 
 
 ### Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)
@@ -96,7 +95,7 @@ if all packages can be installed.
  - `brew tap homebrew/python`
  - `brew update` (yes, again)
  - `brew cask install font-dejavu-sans`
- - `brew install python3 libepoxy ftgl freetype fontconfig harfbuzz cmake sdl2 sdl2_image opus opus-tools opusfile`
+ - `brew install python3 libepoxy freetype fontconfig harfbuzz cmake sdl2 sdl2_image opus opus-tools opusfile`
  - `brew install numpy --with-python3`
  - `brew install pillow --with-python3`
  - Choose and Install a compatible compiler:
@@ -111,7 +110,7 @@ if all packages can be installed.
 
 This command should provide required packages for Arch Linux installation:
 
-`sudo pacman -S --needed python python-pillow python-numpy python-pygments cython libepoxy ftgl ttf-dejavu freetype2 fontconfig harfbuzz cmake sdl2 sdl2_image opusfile opus-tools`
+`sudo pacman -S --needed python python-pillow python-numpy python-pygments cython libepoxy ttf-dejavu freetype2 fontconfig harfbuzz cmake sdl2 sdl2_image opusfile opus-tools`
 
 If you don't have a compiler installed, you can select between these commands to install it:
  - `sudo pacman -S --needed gcc`

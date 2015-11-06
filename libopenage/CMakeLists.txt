@@ -10,7 +10,6 @@ declare_binary(libopenage)
 add_sources(libopenage
 	assetmanager.cpp
 	engine.cpp
-	font.cpp
 	game_control.cpp
 	game_main.cpp
 	game_renderer.cpp
@@ -79,7 +78,6 @@ endif()
 find_package(Freetype REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(SDL2 REQUIRED)
-find_package(FTGL REQUIRED)
 find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
@@ -138,7 +136,6 @@ configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
 include_directories(
 	${OPENGL_INCLUDE_DIR}
 	${FREETYPE_INCLUDE_DIRS}
-	${FTGL_INCLUDE_DIRS}
 	${EPOXY_INCLUDE_DIRS}
 	${OPUS_INCLUDE_DIRS}
 	${SDL2_INCLUDE_DIR}
@@ -151,7 +148,6 @@ target_link_libraries(libopenage
 	dl
 	${FONTCONFIG_LIB}
 	${FREETYPE_LIBRARIES}
-	${FTGL_LIBRARIES}
 	${EPOXY_LIBRARIES}
 	${MATH_LIB}
 	${OPENGL_LIBRARY}

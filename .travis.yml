@@ -42,7 +42,7 @@ install:
   - export CC=`which $CC`
   - export CXX=`which $CXX`
   - sudo apt-get remove -qq cmake  # remove the museum edition
-  - sudo apt-get install -qq python3 python3-dev libepoxy-dev libftgl-dev libfreetype6-dev libfontconfig1-dev libharfbuzz-dev libsdl2-dev libsdl2-image-dev libopusfile-dev opus-tools cmake python3-numpy cython3 python3-pil python3-pygments clang
+  - sudo apt-get install -qq python3 python3-dev libepoxy-dev libfreetype6-dev libfontconfig1-dev libharfbuzz-dev libsdl2-dev libsdl2-image-dev libopusfile-dev opus-tools cmake python3-numpy cython3 python3-pil python3-pygments clang
 
 # we install those from PyPi on purpose, because we always want the most recent linters available.
 # all other python packages should be properly backported to precise, and installed from the PPA.

@@ -60,8 +60,8 @@ run python3 -m openage codegen --generated-list-file=/tmp/codegen_gen --depend-l
 
 # build libopenage.so
 run g++ -Wall -Wextra -pedantic -std=c++14 -O2 -fPIC -shared \
-        -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/opus -I/usr/include/SDL2 \
-        -lfontconfig -lfreetype -lftgl -lepoxy -lm -lGLU -lGL -lSM -lICE -lX11 -lXext -lopusfile -lSDL2_image -lSDL2 -lpthread -lutil -lrt -ldl \
+        -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/opus -I/usr/include/SDL2 \
+        -lfontconfig -lfreetype -lharfbuzz -lepoxy -lm -lGLU -lGL -lSM -lICE -lX11 -lXext -lopusfile -lSDL2_image -lSDL2 -lpthread -lutil -lrt -ldl \
         -o libopenage.so libopenage/**/*.cpp
 
 # pxdgen
