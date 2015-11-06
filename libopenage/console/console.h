@@ -12,7 +12,7 @@
 #include "../engine.h"
 #include "../input/input_manager.h"
 #include "../util/color.h"
-#include "../font.h"
+#include "../renderer/font/font.h"
 #include "../gamedata/color.gen.h"
 
 namespace openage {
@@ -37,7 +37,7 @@ public:
 	bool visible;
 
 	Buf buf;
-	Font font;
+	renderer::Font font;
 
 	input::InputContext input_context;
 

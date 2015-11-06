@@ -58,6 +58,8 @@ def tests_cpp():
     yield "openage::path::tests::path_node", "pathfinding"
     yield "openage::pyinterface::tests::pyobject"
     yield "openage::pyinterface::tests::err_py_to_cpp"
+    yield "openage::renderer::tests::font"
+    yield "openage::renderer::tests::font_manager"
     yield "openage::rng::tests::run"
     yield "openage::util::tests::constinit_vector"
     yield "openage::util::tests::enum_"

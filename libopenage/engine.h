@@ -16,7 +16,6 @@
 #include "coord/vec2f.h"
 #include "coord/phys3.h"
 #include "coord/window.h"
-#include "font.h"
 #include "handlers.h"
 #include "options.h"
 #include "job/job_manager.h"
@@ -26,9 +25,16 @@
 #include "util/fps.h"
 #include "util/profiler.h"
 #include "screenshot.h"
-#include "renderer/text_renderer.h"
 
 namespace openage {
+
+namespace renderer {
+
+class Font;
+class FontManager;
+class TextRenderer;
+
+} // openage::renderer
 
 class DrawHandler;
 class TickHandler;
@@ -58,7 +64,7 @@ private:
 	/**
 	 * global engine singleton instance.
 	 *
-	 * TODO: use unique_ptr again, but that segfaults in ftgl/freetype
+	 * TODO: use unique_ptr again, but that segfaults in freetype
 	 *       because of a wrong deinit-order.
 	 */
 	static Engine *instance;
@@ -347,7 +353,7 @@ private:
 	 * the text fonts to be used for (can you believe it?) texts.
 	 * maps fontsize -> font
 	 */
-	std::unordered_map<int, std::unique_ptr<Font>> fonts;
+	std::unordered_map<int, renderer::Font *> fonts;
 
 	/**
 	 * SDL window where everything is displayed within.
@@ -365,6 +371,7 @@ private:
 	 */
 	util::Profiler profiler;
 
+	std::unique_ptr<renderer::FontManager> font_manager;
 	std::unique_ptr<renderer::TextRenderer> text_renderer;
 };
 
