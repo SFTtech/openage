@@ -55,7 +55,7 @@ void Engine::create(util::Dir *data_dir, const char *windowtitle) {
 
 void Engine::destroy() {
 	if (Engine::instance == nullptr) {
-		throw Error{MSG(err) << "You tried to destroy a none-xistent engine."};
+		throw Error{MSG(err) << "You tried to destroy a non-existent engine."};
 	}
 	else {
 		delete Engine::instance;
