@@ -7,7 +7,6 @@
 
 #include "console.h"
 #include "../coord/camhud.h"
-#include "../font.h"
 #include "../util/fds.h"
 
 namespace openage {
