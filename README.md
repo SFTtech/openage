@@ -3,7 +3,7 @@
 
 **openage**: a volunteer project to create a free engine clone of *Age of Empires II*,
 primarily aimed at POSIX platforms such as **GNU/Linux**,
-comparable in its goals to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/) and [OpenTTD](http://openttd.org/).
+comparable in its goals to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/), [OpenTTD](http://openttd.org/) and [OpenRCT2](http://openrct.net/)
 
 openage uses the original game assets (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
 To play, you require *an original AoE II : TC installation or [AoE II: HD](http://store.steampowered.com/app/221380/)*
