@@ -30,9 +30,6 @@ project(openage C CXX)
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "Debug")
 endif()
-if(NOT CMAKE_BUILD_TYPE MATCHES "^(Debug|Release)$")
-	message(FATAL_ERROR "The type of build can be either Debug or Release. You provided ${CMAKE_BUILD_TYPE}")
-endif()
 
 # options: keep up to date with those in ./configure!
 if(NOT DEFINED WANT_BACKTRACE)
