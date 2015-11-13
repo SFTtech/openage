@@ -54,7 +54,7 @@ private:
 	 * Mapping from thread id's to a list of jobs, that have been created by the
 	 * corresponding thread and have finished.
 	 */
-	std::unordered_map<unsigned, std::vector<std::shared_ptr<JobStateBase>>> finished_jobs;
+	std::unordered_map<size_t, std::vector<std::shared_ptr<JobStateBase>>> finished_jobs;
 
 	/** Whether the job manager is currently running. */
 	std::atomic_bool is_running;

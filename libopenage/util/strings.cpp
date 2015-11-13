@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 
+#include "../config.h"
 #include "compiler.h"
 
 namespace openage {
@@ -28,7 +29,11 @@ std::string sformat(const char *fmt, ...) {
 
 
 size_t vsformat(const char *fmt, va_list ap, std::string &output) {
+	#if HAVE_THREAD_LOCAL_STORAGE
 	static thread_local std::vector<char> buf(64);
+	#else
+	std::vector<char> buf(64);
+	#endif
 
 	va_list aq;
 	va_copy(aq, ap);

@@ -55,7 +55,7 @@ void JobManager::stop() {
 
 
 void JobManager::execute_callbacks() {
-	unsigned id = util::current_thread_id.val;
+	size_t id = util::get_current_thread_id();
 
 	std::unique_lock<std::mutex> lock{this->finished_jobs_mutex};
 	auto it = this->finished_jobs.find(id);
