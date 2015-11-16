@@ -15,7 +15,7 @@ namespace log {
 
 
 void message::init() {
-	this->thread_id = util::current_thread_id.val;
+	this->thread_id = util::get_current_thread_id();
 	this->timestamp = timing::get_real_time();
 }
 

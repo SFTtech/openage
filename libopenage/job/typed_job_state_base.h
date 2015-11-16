@@ -26,7 +26,7 @@ template<class T>
 class TypedJobStateBase : public JobStateBase {
 public:
 	/** Id of the thread, that created this job state. */
-	unsigned thread_id;
+	size_t thread_id;
 
 	/**
 	 * A callback function that is called when the job has finished. Can be
@@ -50,7 +50,7 @@ public:
 	/** Creates a new typed job with the given callback. */
 	TypedJobStateBase(callback_function_t<T> callback)
 		:
-		thread_id{openage::util::current_thread_id.val},
+		thread_id{openage::util::get_current_thread_id()},
 		callback{callback},
 		finished{false} {
 	}
@@ -89,7 +89,7 @@ public:
 		}
 	}
 
-	unsigned get_thread_id() override {
+	size_t get_thread_id() override {
 		return this->thread_id;
 	}
 

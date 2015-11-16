@@ -40,7 +40,7 @@ namespace log {
  *    unsigned lineno
  *    const char *functionname
  *    level lvl
- *    unsigned thread_id
+ *    size_t thread_id
  *    int64_t timestamp
  *
  *    void init() except +
@@ -72,7 +72,7 @@ struct message {
 	/**
 	 * A unique id for the thread where the message has been constructed.
 	 */
-	unsigned int thread_id;
+	size_t thread_id;
 
 	/**
 	 * A (nanosecond-resolution) timestamp of the message construction.

@@ -36,7 +36,7 @@ public:
 	virtual void execute_callback() = 0;
 
 	/** Returns the id of the thread that has created this job. */
-	virtual unsigned get_thread_id() = 0;
+	virtual size_t get_thread_id() = 0;
 };
 
 }
