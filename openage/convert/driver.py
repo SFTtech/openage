@@ -11,6 +11,7 @@ from tempfile import gettempdir
 
 from ..log import info, dbg
 
+from .main import GameVersion
 from .blendomatic import Blendomatic
 from .changelog import ASSET_VERSION, ASSET_VERSION_FILENAME
 from .colortable import ColorTable, PlayerColorTable
@@ -120,7 +121,7 @@ def convert_metadata(args):
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
     # `.bin` files are renamed `.bina` in HD version 4
-    if args.srcdir["AoK HD.exe"].exists():
+    if args.game_version is GameVersion.age2_fe:
         palette_path = "interface/50500.bina"
     else:
         palette_path = "interface/50500.bin"

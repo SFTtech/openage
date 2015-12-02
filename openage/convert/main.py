@@ -1,12 +1,12 @@
 # Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 """ Entry point for all of the asset conversion. """
-
+import enum
 import os
 
 from . import changelog
 
-from ..log import info, dbg
+from ..log import warn, info, dbg
 from ..util.fslike.wrapper import (
     Wrapper as FSLikeObjWrapper,
     Synchronizer as FSLikeObjSynchronizer
@@ -28,7 +28,35 @@ class DirectoryCreator(FSLikeObjWrapper):
         return "DirectoryCreator({})".format(self.obj)
 
 
-def mount_drs_archives(srcdir):
+@enum.unique
+class GameVersion(enum.Enum):
+    age2_aok = "Age of Empires 2: The Age of Kings"
+    age2_tc = "Age of Empires 2: The Conquerors"
+    age2_tc_10c = "Age of Empires 2: The Conquerors, Patch 1.0c"
+    # HD edition version 4.0
+    age2_fe = "Forgotten Empires"
+
+
+SUPPORTED_GAME_VERSIONS = {
+    GameVersion.age2_aok,
+    GameVersion.age2_tc,
+    GameVersion.age2_tc_10c,
+    GameVersion.age2_fe,
+}
+
+
+class UnknownGameVersionError(Exception):
+    def __init__(self):
+        super().__init__("Could not determine the game version present")
+
+
+class AmbiguousGameVersionError(Exception):
+    def __init__(self, versions):
+        super().__init__('Could not distinguish which of these versions is present: {}'
+                         .format(", ".join(versions)))
+
+
+def mount_drs_archives(srcdir, game_version=None):
     """
     Returns a Union path where srcdir is mounted at /, and all the DRS files
     are mounted in subfolders.
@@ -47,8 +75,7 @@ def mount_drs_archives(srcdir):
 
         result.joinpath(target).mount(DRS(drspath.open('rb')).root)
 
-    if result['AoK HD.exe'].exists():
-        # Mounts for HD edition version 4.0
+    if game_version is GameVersion.age2_fe:
         result['graphics'].mount(srcdir['resources/_common/drs/graphics'])
         result['interface'].mount(srcdir['resources/_common/drs/interface'])
         result['sounds'].mount(srcdir['resources/_common/drs/sounds'])
@@ -56,7 +83,6 @@ def mount_drs_archives(srcdir):
         result['terrain'].mount(srcdir['resources/_common/drs/terrain'])
         result['data'].mount(srcdir['/resources/_common/dat'])
     else:
-        # Mounts for AoC
         mount_drs("data/graphics.drs", "graphics")
         mount_drs("data/interfac.drs", "interface")
         mount_drs("data/sounds.drs", "sounds")
@@ -69,6 +95,41 @@ def mount_drs_archives(srcdir):
     return result
 
 
+def get_game_version(srcdir):
+    """
+    Determine which version of the game is installed in srcdir.
+    Return a GameVersion value, or raise one of UnknownGameVersionError,
+    AmbiguousGameVersionError
+    """
+    fixed_filenames = {
+        GameVersion.age2_aok:
+            ['empires2.exe', 'data/empires2.dat'],
+        GameVersion.age2_tc:
+            ['age2_x1/age2_x1.exe', 'data/empires2_x1.dat'],
+        GameVersion.age2_tc_10c:
+            ['age2_x1/age2_x1.exe', 'data/empires2_x1_p1.dat'],
+        GameVersion.age2_fe:
+            ['AoK HD.exe', 'resources/_common/dat/empires2_x1_p1.dat'],
+    }
+
+    def try_all_versions():
+        """
+        yield each GameVersion whose indicators are present
+        """
+        for version, paths in fixed_filenames.items():
+            if all(map(lambda path: srcdir.joinpath(path).is_file(),
+                       paths)):
+                yield version
+
+    detected_versions = list(try_all_versions())
+    if len(detected_versions) < 1:
+        raise UnknownGameVersionError
+    elif len(detected_versions) > 1:
+        raise AmbiguousGameVersionError(detected_versions)
+    else:
+        return detected_versions[0]
+
+
 def convert_assets(assets, args, srcdir=None):
     """
     Perform asset conversion.
@@ -76,7 +137,7 @@ def convert_assets(assets, args, srcdir=None):
     Requires original assets and stores them in usable and free formats.
 
     assets must be a filesystem-like object pointing at the game's asset dir.
-    sourceidr must be None, or point at some source directory.
+    srcdir must be None, or point at some source directory.
 
     If gen_extra_files is True, some more files, mostly for debugging purposes,
     are created.
@@ -84,19 +145,20 @@ def convert_assets(assets, args, srcdir=None):
     This method prepares srcdir and targetdir to allow a pleasant, unified
     conversion experience, then passes them to .driver.convert().
     """
-    # acquire conversion source data
+    # acquire conversion source directory
     if srcdir is None:
         srcdir = acquire_conversion_source_dir()
 
-    if srcdir['AoK HD.exe'].exists():
-        testfile = 'resources/_common/dat/empires2_x1_p1.dat'
-    else:
-        testfile = 'data/empires2_x1_p1.dat'
-    if not srcdir.joinpath(testfile).is_file():
-        print("file not found: " + testfile)
+    try:
+        args.game_version = get_game_version(srcdir)
+    except (AmbiguousGameVersionError, UnknownGameVersionError) as e:
+        warn(e)
+        return False
+    if args.game_version not in SUPPORTED_GAME_VERSIONS:
+        info("Game version {} not supported".format(args.game_version))
         return False
 
-    srcdir = mount_drs_archives(srcdir)
+    srcdir = mount_drs_archives(srcdir, args.game_version)
 
     converted_path = assets.joinpath("converted")
     converted_path.mkdirs()
@@ -150,7 +212,7 @@ def acquire_conversion_source_dir():
 
     Returns a file system-like object that holds all the required files.
     """
-    # ask the for conversion source
+    # ask for the conversion source
     print("media conversion is required.")
 
     if 'AGE2DIR' in os.environ:
