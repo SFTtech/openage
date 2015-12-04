@@ -4,7 +4,7 @@
 
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import SubdataMember
-from ..dataformat.member_access import READ_EXPORT, READ_UNKNOWN
+from ..dataformat.member_access import READ_EXPORT, READ_UNKNOWN, READ
 
 
 class SoundItem(Exportable):
@@ -17,7 +17,7 @@ class SoundItem(Exportable):
         (READ_EXPORT, "resource_id",  "int32_t"),
         (READ_EXPORT, "probablilty",  "int16_t"),
         (READ_EXPORT, "civilisation", "int16_t"),
-        (READ_UNKNOWN, None,          "int16_t"),
+        (READ,        "player_id",    "int16_t"),
     )
 
     def __init__(self):
@@ -31,9 +31,9 @@ class Sound(Exportable):
 
     data_format = (
         (READ_EXPORT, "id", "int16_t"),
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ, "play_at_update_count", "int16_t"),
         (READ_EXPORT, "item_count", "uint16_t"),
-        (READ_UNKNOWN, None, "int32_t"),  # always 300000
+        (READ, "cache_time", "int32_t"),  # always 300000
         (READ_EXPORT, "sound_items", SubdataMember(
             ref_type=SoundItem,
             ref_to="id",
