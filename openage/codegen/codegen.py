@@ -240,8 +240,8 @@ def postprocess_write(parts, data):
     """
     Post-processes a single write operation, as intercepted during codegen.
     """
-    # test whether filename starts with 'cpp/'
-    if not parts[0] == b"libopenage":
+    # test whether filename starts with 'libopenage/'
+    if parts[0] != b"libopenage":
         raise ValueError("Not in libopenage source directory")
 
     # test whether filename matches the pattern *.gen.*

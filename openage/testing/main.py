@@ -57,11 +57,11 @@ def process_args(args, error):
         args.test = [name for name, type_ in test_list if type_ == 'test']
 
     for test in args.test:
-        if not (test, 'test') in test_list:
+        if (test, 'test') not in test_list:
             error("no such test: " + test)
 
     if args.demo:
-        if not (args.demo[0], 'demo') in test_list:
+        if (args.demo[0], 'demo') not in test_list:
             error("no such demo: " + args.demo[0])
 
     return test_list

@@ -17,6 +17,7 @@ if py_version < (3, 4):
 
 
 try:
+    # TODO pylint: disable=wrong-import-position
     import openage.config as config
 
 except ImportError:

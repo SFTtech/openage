@@ -9,6 +9,8 @@
 Project configuration, writen by the build system.
 """
 
+import importlib
+
 GLOBAL_ASSET_DIR = "${INSTALLED_GLOBAL_ASSET_DIR}"
 BUILD_SRC_DIR = "${CMAKE_SOURCE_DIR}"
 BUILD_BIN_DIR = "${CMAKE_BINARY_DIR}"
@@ -23,7 +25,6 @@ COMPILERFLAGS = "${CMAKE_CXX_FLAGS}"
 CYTHONVERSION = "${CYTHON_VERSION}"
 
 try:
-    import importlib
     importlib.import_module("openage.devmode")
     DEVMODE = True
 except ImportError:

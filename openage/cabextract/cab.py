@@ -206,7 +206,7 @@ class CFData(NamedStruct):
         # the final part is from the actual data
         checksum ^= mscab_csum(self.payload)
 
-        if not checksum == self.csum:
+        if checksum != self.csum:
             raise ValueError("checksum error in MSCAB data block")
 
 
@@ -336,6 +336,7 @@ class CABFile(FileCollection):
                     window_bits=window_bits,
                     reset_interval=0)
 
+                # pylint: disable=redefined-variable-type
                 folder.plain_stream = StreamSeekBuffer(unseekable_plain_stream)
 
             else:
@@ -361,13 +362,13 @@ class CABFile(FileCollection):
             fileobj = CFFile.read(cab)
 
             # read filename
-            path = read_nullterminated_string(cab)
+            rpath = read_nullterminated_string(cab)
 
             # decode filename according to flags
             if fileobj.attribs.name_is_utf:
-                path = path.decode('utf-8')
+                path = rpath.decode('utf-8')
             else:
-                path = path.decode('iso-8859-1')
+                path = rpath.decode('iso-8859-1')
 
             fileobj.path = path.replace('\\', '/').lower().encode().split(b'/')
 

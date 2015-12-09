@@ -5,11 +5,12 @@ Provides the FileLikeObject abstract base class, which specifies a file-like
 interface, and various classes that implement the interface.
 """
 
-from .bytequeue import ByteQueue, ByteBuffer
 from abc import ABC, abstractmethod
 from io import UnsupportedOperation
-from .math import INF, clamp
 import os
+
+from .bytequeue import ByteQueue, ByteBuffer
+from .math import INF, clamp
 
 
 class FileLikeObject(ABC):

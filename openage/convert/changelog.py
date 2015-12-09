@@ -61,6 +61,6 @@ def test():
     """
 
     for entry in CHANGES:
-        if not entry <= COMPONENTS:
+        if entry > COMPONENTS:
             invalid = entry - COMPONENTS
             raise TestError("'{}': invalid changelog entry".format(invalid))
