@@ -190,7 +190,7 @@ class ByteBuffer:
         start = max(start, 0)
         end = min(end, len(self))
 
-        if not end > start:
+        if end <= start:
             yield b""
             return
 
@@ -203,6 +203,7 @@ class ByteBuffer:
 
         # cut off superfluous parts at the left of the first buffer.
         # the negative index is intentional.
+        # pylint: disable=unsubscriptable-object
         buf = buf[start - self.index[idx]:]
 
         remaining = end - start

@@ -130,7 +130,9 @@ class NamedStruct(metaclass=NamedStructMeta):
                             "struct fields")
 
         for name, value in zip(self._attributes, values):
+            # pylint: disable=unsupported-membership-test
             if name in self._postprocessors:
+                # pylint: disable=unsubscriptable-object
                 value = self._postprocessors[name](value)
 
             setattr(self, name, value)
@@ -178,12 +180,14 @@ class NamedStruct(metaclass=NamedStructMeta):
         """
         Returns the n-th field, or raises IndexError.
         """
+        # pylint: disable=unsubscriptable-object
         return getattr(self, self._attributes[index])
 
     def as_dict(self):
         """
         Returns a key-value dict for all attributes.
         """
+        # pylint: disable=not-an-iterable
         return {attr: getattr(self, attr) for attr in self._attributes}
 
     def __iter__(self):
