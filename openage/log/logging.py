@@ -56,7 +56,7 @@ def log(lvl, msg, stackframes=1):
     Goes back the given amount of stackframes for message metadata.
     """
     if lvl not in Level:
-        raise Exception("log expects a Level object for its first argument.")
+        raise Exception("Log expects a Level object for its first argument.")
 
     msg = str(msg)
 

@@ -1,10 +1,10 @@
-This file is reserved for technical ideas
+This file is reserved for technical ideas.
 
-monitor game asset folder (e.g. with inotify)
+Monitor game asset folder (e.g. with inotify)
 ---------------------------------------------
 
-when the user modifies an asset, such as a texture, the in-game models are updated instantly.
+When the user modifies an asset, such as a texture, the in-game models are updated instantly.
 
--> awesome live-testing for modders
+-> Awesome live-testing for modders.
 
-far more challenging: make this work for unit stats.
+Far more challenging: Make this work for unit stats.

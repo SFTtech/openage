@@ -34,12 +34,12 @@ def main():
     success = True
     for filename in sorted(actual - listed):
         success = False
-        print("file was not listed via add_py_module: " +
+        print("File was not listed via add_py_module: " +
               os.path.relpath(filename, cwd))
 
     for filename in sorted(listed - actual):
         success = False
-        print("file was listed via add_py_module but does not exist: " +
+        print("File was listed via add_py_module but does not exist: " +
               os.path.relpath(filename, cwd))
 
     if success:

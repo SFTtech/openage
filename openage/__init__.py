@@ -13,7 +13,7 @@ from sys import version_info as py_version
 
 
 if py_version < (3, 4):
-    raise Exception("openage requires python 3.4 or higher.")
+    raise Exception("openage requires Python 3.4 or higher.")
 
 
 try:

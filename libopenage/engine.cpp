@@ -49,13 +49,13 @@ void Engine::create(util::Dir *data_dir, const char *windowtitle) {
 		// reset the pointer to the new engine
 		Engine::instance = new Engine(data_dir, windowtitle);
 	} else {
-		throw Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
+		throw Error{MSG(err) << "You tried to create another singleton engine instance!"};
 	}
 }
 
 void Engine::destroy() {
 	if (Engine::instance == nullptr) {
-		throw Error{MSG(err) << "You tried to destroy a nonexistant engine."};
+		throw Error{MSG(err) << "You tried to destroy a non-existent engine."};
 	}
 	else {
 		delete Engine::instance;
@@ -122,7 +122,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	int wanted_image_formats = IMG_INIT_PNG;
 	int sdlimg_inited = IMG_Init(wanted_image_formats);
 	if ((sdlimg_inited & wanted_image_formats) != wanted_image_formats) {
-		throw Error(MSG(err) << "Failed to init PNG support: " << IMG_GetError());
+		throw Error(MSG(err) << "Failed to initialize PNG support: " << IMG_GetError());
 	}
 
 	this->glcontext = SDL_GL_CreateContext(this->window);
@@ -133,7 +133,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 
 	// check the OpenGL version, for shaders n stuff
 	if (!epoxy_is_desktop_gl() || epoxy_gl_version() < 21) {
-		throw Error(MSG(err) << "OpenGL 2.1 not available");
+		throw Error(MSG(err) << "OpenGL 2.1 is not available");
 	}
 
 	// to quote the standard doc:
@@ -145,14 +145,14 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
 	log::log(MSG(dbg) << "Maximum supported texture size: " << max_texture_size);
 	if (max_texture_size < 1024) {
-		throw Error(MSG(err) << "Maximum supported texture size too small: " << max_texture_size);
+		throw Error(MSG(err) << "Maximum supported texture size is too small: " << max_texture_size);
 	}
 
 	int max_texture_units;
 	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_texture_units);
 	log::log(MSG(dbg) << "Maximum supported texture units: " << max_texture_units);
 	if (max_texture_units < 2) {
-		throw Error(MSG(err) << "Your GPU has too less texture units: " << max_texture_units);
+		throw Error(MSG(err) << "Your GPU has not enough texture units: " << max_texture_units);
 	}
 
 	// vsync on

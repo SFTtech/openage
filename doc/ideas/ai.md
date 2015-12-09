@@ -1,4 +1,4 @@
-Improvements for the AI's gameplay
+Improvements for the AI's gameplay:
 
 Villagers
 ---------

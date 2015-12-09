@@ -1,7 +1,7 @@
 Game Data
 =========
 
-All data relevant for the game (e.g. how much costs building the castle)
+All data relevant for the game (e.g. the cost of building a castle)
 are stored in a binary format in the file `empires2_x1_p1.dat`.
 The format is descibed in the [huge struct definiton](/doc/media/gamedata-struct.md).
 

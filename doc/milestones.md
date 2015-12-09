@@ -39,7 +39,7 @@ Ahem, nope, this is the real roadmap:
        * at this point, with a proper starting map (one villager per player on grasland),
          battles can be fought.
 
-things to be done sometime:
+Things to be done sometime:
 
 * game recording, playback
 * some rudimentary launch menu
@@ -48,12 +48,12 @@ things to be done sometime:
 * messaging and taunts (important!)
 * client side prediction in multiplayer
 * random map generation (RMS scripts?)
-* age2 map reader
+* AGE2 map reader
   * scenario reader
   * maybe even the singleplayer campaigns
 
-things to keep in mind:
+Things to keep in mind:
 
 * performance (responsiveness, fps, needed resources)
-* exactly cloning age2 (also include the networking bugs, for original feeling!)
+* exactly cloning AGE2 (also include the networking bugs, for original feeling!)
 * high-quality code

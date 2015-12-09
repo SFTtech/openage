@@ -1,8 +1,8 @@
-Openage assets
+openage assets
 ==============
 
 The game engine requires assets to actually run a game.
-Any assets may be used, but the common case will be to convert the original media files.
+Any assets may be used, but most of the time original media files will be converted.
 
 
 Asset directories
@@ -17,7 +17,7 @@ The engine uses two asset directories, global_assets and user_assets.
 Metadata assets
 ---------------
 
-Metadata assets are used to describe the assets (duh.).
+Metadata assets are used to describe the assets.
 
  - Media metadata describe:
   * which areas of an texture images show what (texture atlases...)
@@ -37,7 +37,7 @@ Data assets
 -----------
 
 - Media assets
-   The media asset files feed the engine with images, sounds, animations, whatever.
+   The media asset files feed the engine with images, sounds, animations, etc.
    They are accompanied by metadata assets.
 
 - Game content files
@@ -46,6 +46,7 @@ Data assets
      - civilizations
      - ages
      - units
-     - etc, you get the point
+     - etc.
+
 - Scripting files
    These allow to interactively manipulate and design the game content.
