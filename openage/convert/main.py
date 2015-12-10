@@ -45,17 +45,6 @@ SUPPORTED_GAME_VERSIONS = {
 }
 
 
-class UnknownGameVersionError(Exception):
-    def __init__(self):
-        super().__init__("Could not determine the game version present")
-
-
-class AmbiguousGameVersionError(Exception):
-    def __init__(self, versions):
-        super().__init__('Could not distinguish which of these versions is present: {}'
-                         .format(", ".join(versions)))
-
-
 def mount_drs_archives(srcdir, game_version=None):
     """
     Returns a Union path where srcdir is mounted at /, and all the DRS files
@@ -95,11 +84,9 @@ def mount_drs_archives(srcdir, game_version=None):
     return result
 
 
-def get_game_version(srcdir):
+def get_game_versions(srcdir):
     """
-    Determine which version of the game is installed in srcdir.
-    Return a GameVersion value, or raise one of UnknownGameVersionError,
-    AmbiguousGameVersionError
+    Determine what versions of the game are installed in srcdir. Yield GameVersion values.
     """
     fixed_filenames = {
         GameVersion.age2_aok:
@@ -112,22 +99,10 @@ def get_game_version(srcdir):
             ['AoK HD.exe', 'resources/_common/dat/empires2_x1_p1.dat'],
     }
 
-    def try_all_versions():
-        """
-        yield each GameVersion whose indicators are present
-        """
-        for version, paths in fixed_filenames.items():
-            if all(map(lambda path: srcdir.joinpath(path).is_file(),
-                       paths)):
-                yield version
-
-    detected_versions = list(try_all_versions())
-    if len(detected_versions) < 1:
-        raise UnknownGameVersionError
-    elif len(detected_versions) > 1:
-        raise AmbiguousGameVersionError(detected_versions)
-    else:
-        return detected_versions[0]
+    for version, paths in fixed_filenames.items():
+        if all(map(lambda path: srcdir.joinpath(path).is_file(),
+                   paths)):
+            yield version
 
 
 def convert_assets(assets, args, srcdir=None):
@@ -149,13 +124,12 @@ def convert_assets(assets, args, srcdir=None):
     if srcdir is None:
         srcdir = acquire_conversion_source_dir()
 
-    try:
-        args.game_version = get_game_version(srcdir)
-    except (AmbiguousGameVersionError, UnknownGameVersionError) as e:
-        warn(e)
-        return False
-    if args.game_version not in SUPPORTED_GAME_VERSIONS:
-        info("Game version {} not supported".format(args.game_version))
+    args.game_version = set(get_game_versions(srcdir))
+    if not args.game_version:
+        info("Game version(s) could not be detected in {}".format(srcdir))
+    if not args.game_version.issubset(SUPPORTED_GAME_VERSIONS):
+        info("None supported of the Game version(s) {}"
+             .format("; ".join([gv.value for gv in args.game_version])))
         return False
 
     srcdir = mount_drs_archives(srcdir, args.game_version)
