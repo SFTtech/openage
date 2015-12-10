@@ -7,6 +7,7 @@ add_py_modules(
 	drs.py
 	filelist.py
 	fix_data.py
+	game_versions.py
 	hdlanguagefile.py
 	main.py
 	pefile.py
