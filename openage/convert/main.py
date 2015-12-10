@@ -2,12 +2,13 @@
 
 """ Entry point for all of the asset conversion. """
 import os
+# importing readline enables the raw_input calls to have history etc.
+import readline  # pylint: disable=unused-import
 
-from .game_versions import SUPPORTED_GAME_VERSIONS
 from .game_versions import GameVersion, get_game_versions
 from . import changelog
 
-from ..log import info, dbg
+from ..log import warn, info, dbg
 from ..util.fslike.wrapper import (
     Wrapper as FSLikeObjWrapper,
     Synchronizer as FSLikeObjSynchronizer
@@ -89,11 +90,13 @@ def convert_assets(assets, args, srcdir=None):
 
     args.game_version = set(get_game_versions(srcdir))
     if not args.game_version:
-        info("Game version(s) could not be detected in {}".format(srcdir))
-    if not args.game_version.issubset(SUPPORTED_GAME_VERSIONS):
-        info("None supported of the Game version(s) {}"
-             .format("; ".join([gv.value for gv in args.game_version])))
+        warn("Game version(s) could not be detected in {}".format(srcdir))
+    if not any(version.openage_supported for version in args.game_version):
+        warn("None supported of the Game version(s) {}"
+             .format("; ".join(args.game_version)))
         return False
+    info("Game version(s) detected: {}"
+         .format("; ".join(str(version) for version in args.game_version)))
 
     srcdir = mount_drs_archives(srcdir, args.game_version)
 
