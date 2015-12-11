@@ -14,7 +14,7 @@ usable. This is what the convert script does.
 
 
 The convert script is divided into two parts:
-original media dependend and independend exports.
+original media dependent and independent exports.
 
 Converting Media
 ----------------

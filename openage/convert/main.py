@@ -1,12 +1,14 @@
 # Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
 """ Entry point for all of the asset conversion. """
-
 import os
+# importing readline enables the raw_input calls to have history etc.
+import readline  # pylint: disable=unused-import
 
+from .game_versions import GameVersion, get_game_versions
 from . import changelog
 
-from ..log import info, dbg
+from ..log import warn, info, dbg
 from ..util.fslike.wrapper import (
     Wrapper as FSLikeObjWrapper,
     Synchronizer as FSLikeObjSynchronizer
@@ -28,7 +30,7 @@ class DirectoryCreator(FSLikeObjWrapper):
         return "DirectoryCreator({})".format(self.obj)
 
 
-def mount_drs_archives(srcdir):
+def mount_drs_archives(srcdir, game_version=None):
     """
     Returns a Union path where srcdir is mounted at /, and all the DRS files
     are mounted in subfolders.
@@ -47,8 +49,7 @@ def mount_drs_archives(srcdir):
 
         result.joinpath(target).mount(DRS(drspath.open('rb')).root)
 
-    if result['AoK HD.exe'].exists():
-        # Mounts for HD edition version 4.0
+    if game_version is GameVersion.age2_fe:
         result['graphics'].mount(srcdir['resources/_common/drs/graphics'])
         result['interface'].mount(srcdir['resources/_common/drs/interface'])
         result['sounds'].mount(srcdir['resources/_common/drs/sounds'])
@@ -56,7 +57,6 @@ def mount_drs_archives(srcdir):
         result['terrain'].mount(srcdir['resources/_common/drs/terrain'])
         result['data'].mount(srcdir['/resources/_common/dat'])
     else:
-        # Mounts for AoC
         mount_drs("data/graphics.drs", "graphics")
         mount_drs("data/interfac.drs", "interface")
         mount_drs("data/sounds.drs", "sounds")
@@ -76,7 +76,7 @@ def convert_assets(assets, args, srcdir=None):
     Requires original assets and stores them in usable and free formats.
 
     assets must be a filesystem-like object pointing at the game's asset dir.
-    sourceidr must be None, or point at some source directory.
+    srcdir must be None, or point at some source directory.
 
     If gen_extra_files is True, some more files, mostly for debugging purposes,
     are created.
@@ -84,19 +84,21 @@ def convert_assets(assets, args, srcdir=None):
     This method prepares srcdir and targetdir to allow a pleasant, unified
     conversion experience, then passes them to .driver.convert().
     """
-    # acquire conversion source data
+    # acquire conversion source directory
     if srcdir is None:
         srcdir = acquire_conversion_source_dir()
 
-    if srcdir['AoK HD.exe'].exists():
-        testfile = 'resources/_common/dat/empires2_x1_p1.dat'
-    else:
-        testfile = 'data/empires2_x1_p1.dat'
-    if not srcdir.joinpath(testfile).is_file():
-        print("file not found: " + testfile)
+    args.game_version = set(get_game_versions(srcdir))
+    if not args.game_version:
+        warn("Game version(s) could not be detected in {}".format(srcdir))
+    if not any(version.openage_supported for version in args.game_version):
+        warn("None supported of the Game version(s) {}"
+             .format("; ".join(args.game_version)))
         return False
+    info("Game version(s) detected: {}"
+         .format("; ".join(str(version) for version in args.game_version)))
 
-    srcdir = mount_drs_archives(srcdir)
+    srcdir = mount_drs_archives(srcdir, args.game_version)
 
     converted_path = assets.joinpath("converted")
     converted_path.mkdirs()
@@ -150,7 +152,7 @@ def acquire_conversion_source_dir():
 
     Returns a file system-like object that holds all the required files.
     """
-    # ask the for conversion source
+    # ask for the conversion source
     print("media conversion is required.")
 
     if 'AGE2DIR' in os.environ:
