@@ -85,7 +85,12 @@ void UnitAction::face_towards(const coord::phys3 pos) {
 void UnitAction::damage_object(Unit &target, unsigned dmg) {
 	if (target.has_attribute(attr_type::hitpoints)) {
 		auto &hp = target.get_attribute<attr_type::hitpoints>();
-		hp.current -= dmg;
+		if ((hp.current - dmg) > 0) {
+		    hp.current -= dmg;
+		}
+		else {
+		    hp.current = 0;
+		}
 	}
 }
 
