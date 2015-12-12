@@ -62,6 +62,7 @@ _the openage authors_ are:
 | Darren Strash               | darrenstrash                | darren.strash@gmail.com               |
 | Kyle Robbertze              | paddatrapper                | paddatrapper@gmail.com                |
 | Jonathan Biegert            | azrdev                      | azrdev@qrdn.de                        |
+| Hadrien Mary                | hadim                       | hadrien.mary@gmail.com                        |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
