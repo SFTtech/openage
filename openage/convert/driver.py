@@ -119,8 +119,9 @@ def convert_metadata(args):
 
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
+
     # `.bin` files are renamed `.bina` in HD version 4
-    if args.game_version is GameVersion.age2_fe:
+    if GameVersion.age2_fe in args.game_version:
         palette_path = "interface/50500.bina"
     else:
         palette_path = "interface/50500.bin"

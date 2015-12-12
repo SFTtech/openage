@@ -49,7 +49,7 @@ def mount_drs_archives(srcdir, game_version=None):
 
         result.joinpath(target).mount(DRS(drspath.open('rb')).root)
 
-    if game_version is GameVersion.age2_fe:
+    if GameVersion.age2_fe in game_version:
         result['graphics'].mount(srcdir['resources/_common/drs/graphics'])
         result['interface'].mount(srcdir['resources/_common/drs/interface'])
         result['sounds'].mount(srcdir['resources/_common/drs/sounds'])
