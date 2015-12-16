@@ -1,5 +1,3 @@
-#version 120
-
 attribute vec4 vertex_position;
 attribute vec2 tex_coordinates;
 varying vec2 tex_position;

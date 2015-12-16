@@ -1,5 +1,3 @@
-#version 120
-
 // alpha masking shader
 //
 // applies an alpha mask texture to a base texture,
