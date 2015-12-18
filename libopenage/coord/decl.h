@@ -71,6 +71,12 @@ constexpr unsigned tiles_per_chunk_bits  = 4; //yeah, this needs a better name.
 constexpr tile_t   tiles_per_chunk       = (1 << tiles_per_chunk_bits);
 } // namespace settings
 
+#define SCALAR_MULOPERATOR_IMPL(ST, T) \
+struct T operator*(ST scalar, T vectorval) {\
+	return vectorval * scalar;\
+}
+
+#define SCALAR_MULOPERATOR_DECL(ST, T) struct T operator*(ST scalar, T vectorval);
 
 } // namespace coord
 } // namespace openage

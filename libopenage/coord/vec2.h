@@ -5,38 +5,22 @@
 
 #include "decl.h"
 
-#define MEMBERS x, y
-#define SCALAR_TYPE int64_t
-#define ABSOLUTE_TYPE vec2
-#define RELATIVE_TYPE vec2_delta
+#include "xyz_coord.h"
 
 namespace openage {
 namespace coord {
 
-struct vec2 {
-	int64_t x, y;
-
-	#include "ops/abs.h"
+struct vec2 : public absolute_xyz_coord<vec2, vec2_delta, int64_t, 2 > {
+	vec2() = default;
+	vec2(int64_t x, int64_t y);
 };
 
-struct vec2_delta {
-	int64_t x, y;
-
-	#include "ops/rel.h"
+struct vec2_delta : public relative_xyz_coord<vec2, vec2_delta, int64_t, 2 >{
+	vec2_delta() = default;
+	vec2_delta(int64_t x, int64_t y);
 };
-
-#include "ops/free.h"
-
-#ifdef GEN_IMPL_VEC2_CPP
-#include "ops/impl.h"
-#endif //GEN_IMPL_VEC2_CPP
 
 } // namespace coord
 } // namespace openage
-
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE
 
 #endif

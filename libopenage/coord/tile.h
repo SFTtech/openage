@@ -6,21 +6,16 @@
 #include <functional>
 
 #include "decl.h"
+#include "ne_se_up_coord.h"
 #include "phys2.h"
 #include "../util/misc.h"
-
-#define MEMBERS ne, se
-#define SCALAR_TYPE tile_t
-#define ABSOLUTE_TYPE tile
-#define RELATIVE_TYPE tile_delta
 
 namespace openage {
 namespace coord {
 
-struct tile {
-	tile_t ne, se;
-
-	#include "ops/abs.h"
+struct tile : public absolute_ne_se_up_coord<tile, tile_delta, tile_t, 2> {
+	tile() = default;
+	tile(tile_t ne, tile_t se);
 
 	tile3 to_tile3(tile_t up = 0) const;
 	phys2 to_phys2(phys2_delta frac = {settings::phys_per_tile / 2, settings::phys_per_tile / 2}) const;
@@ -28,28 +23,17 @@ struct tile {
 	tile_delta get_pos_on_chunk() const;
 };
 
-struct tile_delta {
-	tile_t ne, se;
-
-	#include "ops/rel.h"
+struct tile_delta : public relative_ne_se_up_coord<tile, tile_delta, tile_t, 2>{
+	tile_delta() = default;
+	tile_delta(tile_t ne, tile_t se);
 
 	tile3_delta to_tile3(tile_t up = 0) const;
 	tile to_tile();
 };
 
-#include "ops/free.h"
-
-#ifdef GEN_IMPL_TILE_CPP
-#include "ops/impl.h"
-#endif
-
 } // namespace coord
 } // namespace openage
 
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE
 
 namespace std {
 template<>

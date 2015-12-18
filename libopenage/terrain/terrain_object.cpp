@@ -19,6 +19,15 @@
 
 namespace openage {
 
+/**
+ * half a tile
+ */
+coord::phys3_delta phys_half_tile = coord::phys3_delta{
+	coord::settings::phys_per_tile / 2,
+	coord::settings::phys_per_tile / 2,
+	0
+};
+
 TerrainObject::TerrainObject(Unit &u)
 	:
 	unit(u),

@@ -9,6 +9,18 @@
 
 namespace openage {
 namespace coord {
+tile::tile(tile_t ne, tile_t se)
+{
+	this->ne = ne;
+	this->se = se;
+}
+
+tile_delta::tile_delta(tile_t ne, tile_t se)
+{
+	this->ne = ne;
+	this->se = se;
+}
+
 
 tile3 tile::to_tile3(tile_t up) const {
 	return tile3 {ne, se, up};

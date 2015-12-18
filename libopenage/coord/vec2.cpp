@@ -6,5 +6,17 @@
 namespace openage {
 namespace coord {
 
+vec2::vec2(int64_t x, int64_t y)
+{
+	this->x = x;
+	this->y = y;
+}
+
+vec2_delta::vec2_delta(int64_t x, int64_t y)
+{
+	this->x = x;
+	this->y = y;
+}
+
 } // namespace coord
 } // namespace openage

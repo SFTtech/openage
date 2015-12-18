@@ -9,6 +9,18 @@
 namespace openage {
 namespace coord {
 
+term::term(term_t x, term_t y)
+{
+	this->x = x;
+	this->y = y;
+}
+
+term_delta::term_delta(term_t x, term_t y)
+{
+	this->x = x;
+	this->y = y;
+}
+
 camhud term::to_camhud(console::Console *c) const {
 	camhud result;
 	result.x = c->bottomleft.x + x * c->charsize.x;

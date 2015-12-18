@@ -4,39 +4,23 @@
 #define OPENAGE_COORD_VEC3_H_
 
 #include "decl.h"
-
-#define MEMBERS x, y, z
-#define SCALAR_TYPE int64_t
-#define ABSOLUTE_TYPE vec3
-#define RELATIVE_TYPE vec3_delta
+#include "xyz_coord.h"
 
 namespace openage {
 namespace coord {
 
-struct vec3 {
-	int64_t x, y, z;
-
-	#include "ops/abs.h"
+struct vec3 : public absolute_xyz_coord< vec3, vec3_delta, int64_t, 3 > {
+	vec3() = default;
+	vec3(int64_t x, int64_t y, int64_t z);
 };
 
-struct vec3_delta {
-	int64_t x, y, z;
-
-	#include "ops/rel.h"
+struct vec3_delta : public relative_xyz_coord< vec3, vec3_delta, int64_t, 3 >  {
+	vec3_delta() = default;
+	vec3_delta(int64_t x, int64_t y, int64_t z);
 };
 
-#include "ops/free.h"
-
-#ifdef GEN_IMPL_VEC3_CPP
-#include "ops/impl.h"
-#endif //GEN_IMPL_VEC3_CPP
 
 } // namespace coord
 } // namespace openage
-
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE
 
 #endif

@@ -6,5 +6,19 @@
 namespace openage {
 namespace coord {
 
+vec3::vec3(int64_t x, int64_t y, int64_t z)
+{
+	this->x = x;
+	this->y = y;
+	this->z = z;
+}
+
+vec3_delta::vec3_delta(int64_t x, int64_t y, int64_t z)
+{
+	this->x = x;
+	this->y = y;
+	this->z = z;
+}
+
 } // namespace coord
 } // namespace openage

@@ -4,29 +4,23 @@
 #define OPENAGE_COORD_PHYS2_H_
 
 #include "decl.h"
-
-#define MEMBERS ne, se
-#define SCALAR_TYPE phys_t
-#define ABSOLUTE_TYPE phys2
-#define RELATIVE_TYPE phys2_delta
+#include "ne_se_up_coord.h"
 
 namespace openage {
 namespace coord {
 
-struct phys2 {
-	phys_t ne, se;
-
-	#include "ops/abs.h"
+struct phys2 : public absolute_ne_se_up_coord<phys2, phys2_delta, phys_t, 2> {
+	phys2() = default;
+	phys2(phys_t ne, phys_t se);
 
 	phys3 to_phys3(phys_t up = 0) const;
 	tile to_tile() const;
 	phys2_delta get_fraction() const;
 };
 
-struct phys2_delta {
-	phys_t ne, se;
-
-	#include "ops/rel.h"
+struct phys2_delta : public relative_ne_se_up_coord<phys2, phys2_delta, phys_t, 2> {
+	phys2_delta() = default;
+	phys2_delta(phys_t ne, phys_t se);
 
 	phys3_delta to_phys3(phys_t up = 0) const;
 
@@ -35,18 +29,7 @@ struct phys2_delta {
 	//change the tile.
 };
 
-#include "ops/free.h"
-
-#ifdef GEN_IMPL_PHYS2_CPP
-#include "ops/impl.h"
-#endif //GEN_IMPL_PHYS2_CPP
-
 } // namespace coord
 } // namespace openage
-
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE
 
 #endif

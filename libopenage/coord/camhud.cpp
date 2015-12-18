@@ -12,6 +12,18 @@
 namespace openage {
 namespace coord {
 
+camhud::camhud(pixel_t x, pixel_t y)
+{
+	this->x = x;
+	this->y = y;
+}
+
+camhud_delta::camhud_delta(pixel_t x, pixel_t y)
+{
+	this->x = x;
+	this->y = y;
+}
+
 window camhud::to_window() {
 	return Engine::get_coord_data()->camhud_window + this->as_relative().to_window();
 }

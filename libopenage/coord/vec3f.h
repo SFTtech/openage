@@ -4,39 +4,22 @@
 #define OPENAGE_COORD_VEC3F_H_
 
 #include "decl.h"
-
-#define MEMBERS x, y, z
-#define SCALAR_TYPE float
-#define ABSOLUTE_TYPE vec3f
-#define RELATIVE_TYPE vec3f_delta
+#include "xyz_coord.h"
 
 namespace openage {
 namespace coord {
 
-struct vec3f {
-	float x, y, z;
-
-	#include "ops/abs.h"
+struct vec3f : public absolute_xyz_coord<vec3f, vec3f_delta, float, 3> {
+	vec3f() = default;
+	vec3f(float x, float y, float z);
 };
 
-struct vec3f_delta {
-	float x, y, z;
-
-	#include "ops/rel.h"
+struct vec3f_delta : public relative_xyz_coord<vec3f, vec3f_delta, float, 3> {
+	vec3f_delta() = default;
+	vec3f_delta(float x, float y, float z);
 };
-
-#include "ops/free.h"
-
-#ifdef GEN_IMPL_VEC3F_CPP
-#include "ops/impl.h"
-#endif //GEN_IMPL_VEC3F_CPP
 
 } // namespace coord
 } // namespace openage
-
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE
 
 #endif
