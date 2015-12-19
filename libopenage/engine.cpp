@@ -13,6 +13,7 @@
 #include "error/error.h"
 #include "log/log.h"
 #include "config.h"
+#include "gui_basic.h"
 #include "texture.h"
 
 #include "gamestate/game_main.h"
@@ -79,9 +80,10 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	engine_coord_data{this->get_coord_data()},
 	current_player{this, "current_player", 1},
 	data_dir{data_dir},
+	singletons_info{this, data_dir->basedir},
 	cvar_manager {},
 	action_manager{this},
-	audio_manager{}
+	audio_manager{},
 	gui_link{} {
 
 
@@ -102,9 +104,6 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	// execution list.
 	this->register_resize_action(this);
 
-	// register the engines input manager
-	this->register_input_action(&this->input_manager);
-
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
 	} else {
@@ -115,6 +114,7 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
 	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
@@ -179,6 +179,19 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	glDisable(GL_DEPTH_TEST);
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	// qml sources will be installed to the asset dir
+	// otherwise assume that launched from the source dir
+	using namespace std::string_literals;
+	auto qml_search_paths = {this->data_dir->basedir, "libopenage/gui"s};
+
+	this->gui = std::make_unique<gui::GuiBasic>(this->window, "qml/main.qml", &this->singletons_info, qml_search_paths);
+	this->register_resize_action(this->gui.get());
+	this->register_input_action(this->gui.get());
+	this->register_drawhud_action(this->gui.get());
+
+	// register the engines input manager
+	this->register_input_action(&this->input_manager);
 
 	// initialize job manager with cpucount-2 worker threads
 	int number_of_worker_threads = SDL_GetCPUCount() - 2;
@@ -374,6 +387,8 @@ void Engine::loop() {
 			} // switch event
 		}
 
+		this->gui->process_events();
+
 		if (this->game) {
 			// read camera movement input keys, and move camera
 			// accordingly.
@@ -414,7 +429,7 @@ void Engine::loop() {
 		// clear the framebuffer to black
 		// in the future, we might disable it for lazy drawing
 		glClearColor(0.0, 0.0, 0.0, 0.0);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 		glPushMatrix(); {
 			// set the framebuffer up for camgame rendering
