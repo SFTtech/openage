@@ -1,5 +1,3 @@
-#version 120
-
 //total basic standard texture drawing fragment shader
 
 //the texture data

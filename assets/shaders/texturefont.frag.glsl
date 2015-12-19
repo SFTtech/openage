@@ -1,5 +1,3 @@
-#version 120
-
 varying vec2 tex_position;
 uniform sampler2D texture;
 uniform vec4 color;

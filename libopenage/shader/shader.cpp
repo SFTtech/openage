@@ -27,7 +27,7 @@ const char *type_to_string(GLenum type) {
 	}
 }
 
-Shader::Shader(GLenum type, const char *source) {
+Shader::Shader(GLenum type, std::initializer_list<const char *> sources) {
 	//create shader
 	this->id = glCreateShader(type);
 
@@ -35,7 +35,8 @@ Shader::Shader(GLenum type, const char *source) {
 	this->type = type;
 
 	//load shader source
-	glShaderSource(this->id, 1, &source, NULL);
+	std::vector<const char*> x = std::vector<const char*>(sources);
+	glShaderSource(this->id, x.size(), x.data(), NULL);
 
 	//compile shader source
 	glCompileShader(this->id);

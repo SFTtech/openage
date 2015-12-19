@@ -1,5 +1,4 @@
 // vertex shader for applying an alpha mask to a texture
-#version 120
 
 // modelview*projection matrix
 uniform mat4 mvp_matrix;

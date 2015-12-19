@@ -66,42 +66,48 @@ GameRenderer::GameRenderer(openage::Engine *e)
 
 	// shader initialisation
 	// read shader source codes and create shader objects for wrapping them.
+	const char *shader_header_code = "#version 120\n";
+	char *equalsEpsilon_code;
+	util::read_whole_file(&equalsEpsilon_code, data_dir->join("shaders/equalsEpsilon.glsl"));
 
 	char *texture_vert_code;
 	util::read_whole_file(&texture_vert_code, data_dir->join("shaders/maptexture.vert.glsl"));
-	auto plaintexture_vert = new shader::Shader(GL_VERTEX_SHADER, texture_vert_code);
+	auto plaintexture_vert = new shader::Shader(GL_VERTEX_SHADER, { shader_header_code, texture_vert_code });
 	delete[] texture_vert_code;
 
 	char *texture_frag_code;
 	util::read_whole_file(&texture_frag_code, data_dir->join("shaders/maptexture.frag.glsl"));
-	auto plaintexture_frag = new shader::Shader(GL_FRAGMENT_SHADER, texture_frag_code);
+	auto plaintexture_frag = new shader::Shader(GL_FRAGMENT_SHADER, { shader_header_code, texture_frag_code });
 	delete[] texture_frag_code;
 
 	char *teamcolor_frag_code;
 	util::read_whole_file(&teamcolor_frag_code, data_dir->join("shaders/teamcolors.frag.glsl"));
-	auto teamcolor_frag = new shader::Shader(GL_FRAGMENT_SHADER, teamcolor_frag_code);
+	std::stringstream ss;
+	ss << player_color_lines.size();
+	auto teamcolor_frag = new shader::Shader(GL_FRAGMENT_SHADER, { shader_header_code, ("#define NUM_OF_PLAYER_COLORS " + ss.str() + "\n").c_str(), equalsEpsilon_code, teamcolor_frag_code });
 	delete[] teamcolor_frag_code;
 
 	char *alphamask_vert_code;
 	util::read_whole_file(&alphamask_vert_code, data_dir->join("shaders/alphamask.vert.glsl"));
-	auto alphamask_vert = new shader::Shader(GL_VERTEX_SHADER, alphamask_vert_code);
+	auto alphamask_vert = new shader::Shader(GL_VERTEX_SHADER, { shader_header_code, alphamask_vert_code });
 	delete[] alphamask_vert_code;
 
 	char *alphamask_frag_code;
 	util::read_whole_file(&alphamask_frag_code, data_dir->join("shaders/alphamask.frag.glsl"));
-	auto alphamask_frag = new shader::Shader(GL_FRAGMENT_SHADER, alphamask_frag_code);
+	auto alphamask_frag = new shader::Shader(GL_FRAGMENT_SHADER, { shader_header_code, alphamask_frag_code });
 	delete[] alphamask_frag_code;
 
 	char *texturefont_vert_code;
 	util::read_whole_file(&texturefont_vert_code, data_dir->join("shaders/texturefont.vert.glsl"));
-	auto texturefont_vert = new shader::Shader(GL_VERTEX_SHADER, texturefont_vert_code);
+	auto texturefont_vert = new shader::Shader(GL_VERTEX_SHADER, { shader_header_code, texturefont_vert_code });
 	delete[] texturefont_vert_code;
 
 	char *texturefont_frag_code;
 	util::read_whole_file(&texturefont_frag_code, data_dir->join("shaders/texturefont.frag.glsl"));
-	auto texturefont_frag = new shader::Shader(GL_FRAGMENT_SHADER, texturefont_frag_code);
+	auto texturefont_frag = new shader::Shader(GL_FRAGMENT_SHADER, { shader_header_code, texturefont_frag_code });
 	delete[] texturefont_frag_code;
 
+	delete[] equalsEpsilon_code;
 
 	// create program for rendering simple textures
 	texture_shader::program = new shader::Program(plaintexture_vert, plaintexture_frag);

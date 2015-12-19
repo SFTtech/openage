@@ -1,5 +1,4 @@
 //total basic standard texture mapping vertex shader
-#version 120
 
 //modelview*projection matrix
 uniform mat4 mvp_matrix;
