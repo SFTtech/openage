@@ -14,10 +14,20 @@
 #include "input_context.h"
 
 namespace openage {
+
+/**
+ * The openage input layer.
+ * It gets all the events and processes them accordingly.
+ */
 namespace input {
 
 using binding_map_t = std::unordered_multimap<Event, action_t, event_hash>;
 
+
+/**
+ * The input manager manages all input layers (hud, game, ...)
+ * and triggers the registered actions depending on the active layer.
+ */
 class InputManager : public openage::InputHandler {
 
 public:
@@ -104,7 +114,9 @@ public:
 	 */
 	bool is_mod_down(modifier mod) const;
 
-
+	/**
+	 * When a SDL event happens, this is called.
+	 */
 	bool on_input(SDL_Event *e) override;
 
 private:
@@ -140,6 +152,7 @@ private:
 	coord::window mouse_position;
 	coord::window_delta mouse_motion;
 
+	friend InputContext;
 };
 
 }} // openage::input

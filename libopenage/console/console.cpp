@@ -66,12 +66,12 @@ void Console::register_to_engine(Engine *engine) {
 	// Bind the console toggle key globally
 	auto &input = engine->get_input_manager();
 	auto &global = input.get_global_context();
-	global.bind(input::action_t::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
+	global.bind(input::actions::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
 		this->set_visible(!this->visible);
 	});
 
 	// toggle console will take highest priority
-	this->input_context.bind(input::action_t::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
+	this->input_context.bind(input::actions::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
 		this->set_visible(false);
 	});
 	this->input_context.bind(input::event_class::UTF8, [this](const input::action_arg_t &arg) {
