@@ -12,7 +12,7 @@ CreateMode::CreateMode()
 	setting_value{false} {
 
 	// action bindings
-	this->bind(input::action_t::START_GAME, [this](const input::action_arg_t &) {
+	this->bind(input::actions::START_GAME, [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
 		options::OptionNode *node = engine.get_child("Generator");
 		if (!node) {
@@ -69,12 +69,12 @@ CreateMode::CreateMode()
 		}
 
 	});
-	this->bind(input::action_t::UP_ARROW, [this](const input::action_arg_t &) {
+	this->bind(input::actions::UP_ARROW, [this](const input::action_arg_t &) {
 		if (!this->setting_value) {
 			this->selected -= 1;
 		}
 	});
-	this->bind(input::action_t::DOWN_ARROW, [this](const input::action_arg_t &) {
+	this->bind(input::actions::DOWN_ARROW, [this](const input::action_arg_t &) {
 		if (!this->setting_value) {
 			this->selected += 1;
 		}
@@ -91,6 +91,12 @@ CreateMode::CreateMode()
 bool CreateMode::available() const {
 	return true;
 }
+
+std::string CreateMode::name() const
+{
+	return "Creation Mode";
+}
+
 
 void CreateMode::on_enter() {}
 
@@ -141,11 +147,6 @@ void CreateMode::render() {
 	else {
 		engine.render_text({0, 100}, 20, "Error: No generator");
 	}
-
-
-	// TODO show all bindings
-	engine.render_text({0, 160}, 12, "Return -> use selection");
-	engine.render_text({0, 140}, 12, "M      -> toggle modes");
 }
 
 ActionMode::ActionMode()
@@ -154,7 +155,7 @@ ActionMode::ActionMode()
 	type_focus{nullptr},
 	rng{0} {
 
-	this->bind(input::action_t::TRAIN_OBJECT, [this](const input::action_arg_t &) {
+	this->bind(input::actions::TRAIN_OBJECT, [this](const input::action_arg_t &) {
 
 		// attempt to train editor selected object
 		Engine &engine = Engine::get();
@@ -165,25 +166,25 @@ ActionMode::ActionMode()
 		Command cmd(*engine.player_focus(), type);
 		this->selection.all_invoke(cmd);
 	});
-	this->bind(input::action_t::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
+	this->bind(input::actions::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
 		// this->building_placement = true;
 	});
-	this->bind(input::action_t::DISABLE_SET_ABILITY, [this](const input::action_arg_t &) {
+	this->bind(input::actions::DISABLE_SET_ABILITY, [this](const input::action_arg_t &) {
 		this->use_set_ability = false;
 	});
-	this->bind(input::action_t::SET_ABILITY_MOVE, [this](const input::action_arg_t &) {
+	this->bind(input::actions::SET_ABILITY_MOVE, [this](const input::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::move;
 	});
-	this->bind(input::action_t::SET_ABILITY_GATHER, [this](const input::action_arg_t &) {
+	this->bind(input::actions::SET_ABILITY_GATHER, [this](const input::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::gather;
 	});
-	this->bind(input::action_t::SET_ABILITY_GARRISON, [this](const input::action_arg_t &) {
+	this->bind(input::actions::SET_ABILITY_GARRISON, [this](const input::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::garrison;
 	});
-	this->bind(input::action_t::SPAWN_VILLAGER, [this](const input::action_arg_t &) {
+	this->bind(input::actions::SPAWN_VILLAGER, [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
 		GameSpec *spec = engine.get_game()->get_spec();
 		if (spec->producer_count() > 0) {
@@ -193,7 +194,7 @@ ActionMode::ActionMode()
 			engine.get_game()->placed_units.new_unit(type, *engine.player_focus(), this->mousepos_phys3);
 		}
 	});
-	this->bind(input::action_t::KILL_UNIT, [this](const input::action_arg_t &) {
+	this->bind(input::actions::KILL_UNIT, [this](const input::action_arg_t &) {
 		selection.kill_unit();
 	});
 
@@ -212,11 +213,11 @@ ActionMode::ActionMode()
 			}
 		});
 	};
-	bind_building_key(input::action_t::BUILDING_1, 598, 609); // House, barracks
-	bind_building_key(input::action_t::BUILDING_2, 574, 558); // Mill, archery range
-	bind_building_key(input::action_t::BUILDING_3, 616, 581); // Mining camp, stable
-	bind_building_key(input::action_t::BUILDING_4, 611, 580); // Lumber camp, siege workshop
-	bind_building_key(input::action_t::BUILDING_TOWN_CENTER, 568, 568); // Town center
+	bind_building_key(input::actions::BUILDING_1, 598, 609); // House, barracks
+	bind_building_key(input::actions::BUILDING_2, 574, 558); // Mill, archery range
+	bind_building_key(input::actions::BUILDING_3, 616, 581); // Mining camp, stable
+	bind_building_key(input::actions::BUILDING_4, 611, 580); // Lumber camp, siege workshop
+	bind_building_key(input::actions::BUILDING_TOWN_CENTER, 568, 568); // Town center
 
 
 	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
@@ -355,6 +356,12 @@ bool ActionMode::on_mouse_wheel(int, coord::window) {
 	return false;
 }
 
+std::string ActionMode::name() const
+{
+	return "Action Mode";
+}
+
+
 bool ActionMode::on_single_click(int, coord::window point) {
 	if (this->type_focus) {
 
@@ -382,7 +389,7 @@ EditorMode::EditorMode()
 	paint_terrain{true} {
 
 	// bind required hotkeys
-	this->bind(input::action_t::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
+	this->bind(input::actions::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
 		log::log(MSG(dbg) << "change category");
 		Engine &engine = Engine::get();
 		GameSpec *spec = engine.get_game()->get_spec();
@@ -414,11 +421,11 @@ EditorMode::EditorMode()
 		}
 	});
 
-	this->bind(input::action_t::FORWARD, [this](const input::action_arg_t &arg) {
+	this->bind(input::actions::FORWARD, [this](const input::action_arg_t &arg) {
 		this->on_mouse_wheel(1, arg.mouse);
 	});
 
-	this->bind(input::action_t::BACK, [this](const input::action_arg_t &arg) {
+	this->bind(input::actions::BACK, [this](const input::action_arg_t &arg) {
 		this->on_mouse_wheel(-1, arg.mouse);
 	});
 
@@ -475,15 +482,17 @@ void EditorMode::render() {
 			std::string selected_str = this->category + " - " + this->selected_type->name();
 			engine.render_text(text_pos, 20, "%s", selected_str.c_str());
 		}
-
-		engine.render_text({0, 180}, 12, "Wheel  -> change item");
-		engine.render_text({0, 160}, 12, "Y      -> change menu");
-		engine.render_text({0, 140}, 12, "M      -> toggle modes");
 	}
 	else {
 		engine.render_text({0, 140}, 12, "Editor Mode requires a game");
 	}
 }
+
+std::string EditorMode::name() const
+{
+	return "Editor mode";
+}
+
 
 bool EditorMode::on_mouse_wheel(int direction, coord::window) {
 	Engine &engine = Engine::get();
@@ -575,7 +584,7 @@ GameControl::GameControl(openage::Engine *engine)
 	engine->get_input_manager().register_context(this->active_mode);
 
 	auto &global_input_context = engine->get_input_manager().get_global_context();
-	global_input_context.bind(input::action_t::TOGGLE_CONSTRUCT_MODE, [this](const input::action_arg_t &) {
+	global_input_context.bind(input::actions::TOGGLE_CONSTRUCT_MODE, [this](const input::action_arg_t &) {
 		this->toggle_mode();
 	});
 
@@ -596,8 +605,27 @@ void GameControl::toggle_mode() {
 	}
 }
 
-
 bool GameControl::on_drawhud() {
+	Engine &engine = Engine::get();
+	int x = engine.engine_coord_data->window_size.x - 350;
+	int y = engine.engine_coord_data->window_size.y - 24;
+	engine.render_text({x, y}, 20, "%s", active_mode->name().c_str());
+
+	auto binds = this->active_mode->active_binds();
+
+	for (auto it = binds.begin() ; it != binds.end(); ++it) {
+		y -= 14;
+		engine.render_text({x, y}, 12, "%s", it->c_str());
+	}
+
+	y -= 20;
+	engine.render_text({x, y}, 20, "Global Bindings");
+
+	auto global_binds = engine.get_input_manager().get_global_context().active_binds();
+	for (auto it = global_binds.begin() ; it != global_binds.end(); ++it) {
+		y -= 14;
+		engine.render_text({x, y}, 12, "%s", it->c_str());
+	}
 
 	// render the active mode
 	this->active_mode->render();

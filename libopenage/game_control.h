@@ -32,6 +32,10 @@ public:
 	virtual void on_enter() = 0;
 	virtual void render() = 0;
 
+	/**
+	 * Used for displaying the current mode.
+	 */
+	virtual std::string name() const = 0;
 };
 
 /**
@@ -44,6 +48,7 @@ public:
 	bool available() const override;
 	void on_enter() override;
 	void render() override;
+	std::string name() const override;
 
 private:
 	int selected;
@@ -64,6 +69,7 @@ public:
 	bool available() const override;
 	void on_enter() override;
 	void render() override;
+	std::string name() const override;
 
 	bool on_mouse_wheel(int direction, coord::window point);
 	bool on_single_click(int button, coord::window point);
@@ -110,6 +116,7 @@ public:
 	bool available() const override;
 	void on_enter() override;
 	void render() override;
+	std::string name() const override;
 
 	bool on_mouse_wheel(int direction, coord::window point);
 	bool on_single_click(int button, coord::window point);

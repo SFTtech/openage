@@ -9,7 +9,11 @@ namespace input {
 
 
 int action_hash::operator()(const action_t& a) const {
-	return std::hash<int>()(static_cast<int>(a));
+	return std::hash<int>()(a.key);
+}
+
+bool action_t::operator==(const action_t& other) const {
+	return key == other.key;
 }
 
 
