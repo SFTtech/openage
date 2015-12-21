@@ -121,7 +121,7 @@ def convert_metadata(args):
     yield "palette"
 
     # `.bin` files are renamed `.bina` in HD version 4
-    if GameVersion.age2_fe in args.game_version:
+    if GameVersion.age2_fe in args.game_versions:
         palette_path = "interface/50500.bina"
     else:
         palette_path = "interface/50500.bin"
