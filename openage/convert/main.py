@@ -30,7 +30,7 @@ class DirectoryCreator(FSLikeObjWrapper):
         return "DirectoryCreator({})".format(self.obj)
 
 
-def mount_drs_archives(srcdir, game_version=None):
+def mount_drs_archives(srcdir, game_versions=None):
     """
     Returns a Union path where srcdir is mounted at /, and all the DRS files
     are mounted in subfolders.
@@ -49,7 +49,7 @@ def mount_drs_archives(srcdir, game_version=None):
 
         result.joinpath(target).mount(DRS(drspath.open('rb')).root)
 
-    if GameVersion.age2_fe in game_version:
+    if GameVersion.age2_fe in game_versions:
         result['graphics'].mount(srcdir['resources/_common/drs/graphics'])
         result['interface'].mount(srcdir['resources/_common/drs/interface'])
         result['sounds'].mount(srcdir['resources/_common/drs/sounds'])
@@ -88,17 +88,17 @@ def convert_assets(assets, args, srcdir=None):
     if srcdir is None:
         srcdir = acquire_conversion_source_dir()
 
-    args.game_version = set(get_game_versions(srcdir))
-    if not args.game_version:
+    args.game_versions = set(get_game_versions(srcdir))
+    if not args.game_versions:
         warn("Game version(s) could not be detected in {}".format(srcdir))
-    if not any(version.openage_supported for version in args.game_version):
-        warn("None supported of the Game version(s) {}"
-             .format("; ".join(args.game_version)))
-        return False
-    info("Game version(s) detected: {}"
-         .format("; ".join(str(version) for version in args.game_version)))
 
-    srcdir = mount_drs_archives(srcdir, args.game_version)
+    versions = "; ".join(str(version) for version in args.game_versions)
+    if not any(version.openage_supported for version in args.game_versions):
+        warn("None supported of the Game version(s) {}".format(versions))
+        return False
+    info("Game version(s) detected: {}".format(versions))
+
+    srcdir = mount_drs_archives(srcdir, args.game_versions)
 
     converted_path = assets.joinpath("converted")
     converted_path.mkdirs()
