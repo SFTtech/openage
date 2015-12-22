@@ -7,19 +7,14 @@
 
 #include "decl.h"
 #include "../util/misc.h"
-
-#define MEMBERS ne, se, up
-#define SCALAR_TYPE phys_t
-#define ABSOLUTE_TYPE phys3
-#define RELATIVE_TYPE phys3_delta
+#include "ne_se_up_coord.h"
 
 namespace openage {
 namespace coord {
 
-struct phys3 {
-	phys_t ne, se, up;
-
-	#include "ops/abs.h"
+struct phys3 : public absolute_ne_se_up_coord<phys3, phys3_delta, phys_t, 3> {
+	phys3() = default;
+	phys3(phys_t ne, phys_t se, phys_t up);
 
 	phys2 to_phys2() const;
 	camgame to_camgame() const;
@@ -27,10 +22,9 @@ struct phys3 {
 	phys3_delta get_fraction();
 };
 
-struct phys3_delta {
-	phys_t ne, se, up;
-
-	#include "ops/rel.h"
+struct phys3_delta : public relative_ne_se_up_coord<phys3, phys3_delta, phys_t, 3>  {
+	phys3_delta() = default;
+	phys3_delta(phys_t ne, phys_t se, phys_t up);
 
 	phys2_delta to_phys2() const;
 	camgame_delta to_camgame() const;
@@ -46,20 +40,12 @@ coord::phys_t distance(const coord::phys3 &a, const coord::phys3 &b);
  */
 coord::phys3_delta normalize(const coord::phys3_delta &a, const coord::phys_t &length);
 
-#include "ops/free.h"
+SCALAR_MULOPERATOR_DECL(phys_t, phys3)
+SCALAR_MULOPERATOR_DECL(phys_t, phys3_delta)
 
-#ifdef GEN_IMPL_PHYS3_CPP
-#include "ops/impl.h"
-#endif
 
 } // namespace coord
 } // namespace openage
-
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE
-
 
 namespace std {
 

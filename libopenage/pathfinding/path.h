@@ -61,7 +61,7 @@ constexpr int path_grid_size = coord::settings::phys_per_tile >> 3;
 /**
  * Phys3 delta coordinates to select for path neighbors.
  */
-constexpr coord::phys3_delta const neigh_phys[] = {
+coord::phys3_delta const neigh_phys[] = {
 	{ 1 * path_grid_size, -1 * path_grid_size, 0},
 	{ 1 * path_grid_size,  0 * path_grid_size, 0},
 	{ 1 * path_grid_size,  1 * path_grid_size, 0},

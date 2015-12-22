@@ -10,6 +10,18 @@
 namespace openage {
 namespace coord {
 
+window::window(pixel_t x, pixel_t y)
+{
+	this->x = x;
+	this->y = y;
+}
+
+window_delta::window_delta(pixel_t x, pixel_t y)
+{
+	this->x = x;
+	this->y = y;
+}
+
 camgame window::to_camgame() const {
 	return (*this - Engine::get_coord_data()->camgame_window).to_camgame().as_absolute();
 }

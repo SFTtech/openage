@@ -4,39 +4,22 @@
 #define OPENAGE_COORD_VEC2F_H_
 
 #include "decl.h"
-
-#define MEMBERS x, y
-#define SCALAR_TYPE float
-#define ABSOLUTE_TYPE vec2f
-#define RELATIVE_TYPE vec2f_delta
+#include "xyz_coord.h"
 
 namespace openage {
 namespace coord {
 
-struct vec2f {
-	float x, y;
-
-	#include "ops/abs.h"
+struct vec2f : public absolute_xyz_coord< vec2f, vec2f_delta, float, 2  > {
+	vec2f() = default;
+	vec2f(float x, float y);
 };
 
-struct vec2f_delta {
-	float x, y;
-
-	#include "ops/rel.h"
+struct vec2f_delta : public relative_xyz_coord< vec2f, vec2f_delta, float, 2  >  {
+	vec2f_delta() = default;
+	vec2f_delta(float x, float y);
 };
-
-#include "ops/free.h"
-
-#ifdef GEN_IMPL_VEC2F_CPP
-#include "ops/impl.h"
-#endif //GEN_IMPL_VEC2F_CPP
 
 } // namespace coord
 } // namespace openage
-
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE
 
 #endif

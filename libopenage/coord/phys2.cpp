@@ -8,6 +8,17 @@
 
 namespace openage {
 namespace coord {
+phys2::phys2(phys_t ne, phys_t se)
+{
+	this->ne = ne;
+	this->se = se;
+}
+
+phys2_delta::phys2_delta(phys_t ne, phys_t se)
+{
+	this->ne = ne;
+	this->se = se;
+}
 
 phys3 phys2::to_phys3(phys_t up) const {
 	return phys3 {ne, se, up};

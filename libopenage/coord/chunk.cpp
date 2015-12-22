@@ -8,6 +8,18 @@
 namespace openage {
 namespace coord {
 
+chunk::chunk(chunk_t ne, chunk_t se)
+{
+	this->ne = ne;
+	this->se = se;
+}
+
+chunk_delta::chunk_delta(chunk_t ne, chunk_t se)
+{
+	this->ne = ne;
+	this->se = se;
+}
+
 tile chunk::to_tile(tile_delta pos_on_chunk) {
 	tile result;
 	result.ne = (((tile_t) ne) << settings::tiles_per_chunk_bits)

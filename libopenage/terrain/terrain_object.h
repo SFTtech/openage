@@ -64,11 +64,7 @@ bool complete_building(Unit &);
 /**
  * half a tile
  */
-constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
-	coord::settings::phys_per_tile / 2,
-	coord::settings::phys_per_tile / 2,
-	0
-};
+extern coord::phys3_delta phys_half_tile;
 
 /**
  * Base class for map location types which include square tile aligned

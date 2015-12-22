@@ -62,7 +62,7 @@ public:
 /**
  * coordinate offsets for getting tile neighbors by their id.
  */
-constexpr coord::tile_delta const neigh_offsets[] = {
+coord::tile_delta const neigh_offsets[] = {
 	{ 1, -1},
 	{ 1,  0},
 	{ 1,  1},

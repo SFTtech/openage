@@ -12,6 +12,17 @@
 namespace openage {
 namespace coord {
 
+camgame::camgame(pixel_t x, pixel_t y)
+{
+	this->x = x;
+	this->y = y;
+}
+
+camgame_delta::camgame_delta(pixel_t x, pixel_t y)
+{
+	this->x = x;
+	this->y = y;
+}
 
 phys3 camgame::to_phys3(phys_t up) {
 	coord_data* engine_coord_data{ Engine::get_coord_data() };
@@ -26,9 +37,9 @@ phys3_delta camgame_delta::to_phys3(phys_t up) {
 	// scaling factor: w/2 for x, h/2 for y
 	// plus the phys_per_tu fixed-point scaling factor
 	vec2 scaled;
-	scaled.x = (settings::phys_per_tile * (phys_t) x) /
+	scaled.x = (settings::phys_per_tile * (phys_t) this->x) /
 		(phys_t) engine_coord_data->tile_halfsize.x;
-	scaled.y = (settings::phys_per_tile * (phys_t) y) /
+	scaled.y = (settings::phys_per_tile * (phys_t) this->y) /
 		(phys_t) engine_coord_data->tile_halfsize.y;
 
 	// apply transformation matrix to 'scaled',
@@ -59,7 +70,7 @@ window camgame::to_window() {
 
 window_delta camgame_delta::to_window() {
 	//the direction of the y axis is flipped
-	return window_delta {(pixel_t) x, (pixel_t) -y};
+	return window_delta {(pixel_t) this->x, (pixel_t) -this->y};
 }
 
 } // namespace coord

@@ -4,45 +4,30 @@
 #define OPENAGE_COORD_CAMGAME_H_
 
 #include "decl.h"
-
-#define MEMBERS x, y
-#define SCALAR_TYPE pixel_t
-#define ABSOLUTE_TYPE camgame
-#define RELATIVE_TYPE camgame_delta
+#include "xyz_coord.h"
 
 namespace openage {
 namespace coord {
 
-struct camgame {
-	pixel_t x, y;
-
-	#include "ops/abs.h"
+struct camgame : public absolute_xyz_coord<camgame, camgame_delta, pixel_t, 2> {
+	camgame() = default;
+	camgame(pixel_t x, pixel_t y);
 
 	phys3 to_phys3(phys_t up=0);
 	window to_window();
 };
 
-struct camgame_delta {
-	pixel_t x, y;
-
-	#include "ops/rel.h"
+struct camgame_delta : public relative_xyz_coord<camgame, camgame_delta, pixel_t, 2> {
+	camgame_delta() = default;
+	camgame_delta(pixel_t x, pixel_t y);
 
 	phys3_delta to_phys3(phys_t up=0);
 	window_delta to_window();
 };
 
-#include "ops/free.h"
-
-#ifdef GEN_IMPL_CAMGAME_CPP
-#include "ops/impl.h"
-#endif //GEN_IMPL_CAMGAME_CPP
-
 } // namespace coord
 } // namespace openage
 
 #undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE
 
 #endif

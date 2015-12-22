@@ -20,7 +20,7 @@ TerrainObject *find_near(const TerrainObject &start,
                                          std::function<bool(const TerrainObject &)> found,
                                          unsigned int search_limit=500);
 
-constexpr coord::tile_delta const neigh_tile[] = {
+coord::tile_delta const neigh_tile[] = {
 	{0,  1},
 	{0, -1},
 	{1,  0},

@@ -14,6 +14,23 @@
 namespace openage {
 namespace coord {
 
+SCALAR_MULOPERATOR_IMPL(phys_t, phys3)
+SCALAR_MULOPERATOR_IMPL(phys_t, phys3_delta)
+
+phys3::phys3(phys_t ne, phys_t se, phys_t up)
+{
+	this->ne = ne;
+	this->se = se;
+	this->up = up;
+}
+
+phys3_delta::phys3_delta(phys_t ne, phys_t se, phys_t up)
+{
+	this->ne = ne;
+	this->se = se;
+	this->up = up;
+}
+
 phys2 phys3::to_phys2() const {
 	return phys2 {ne, se};
 }

@@ -5,44 +5,30 @@
 
 #include "decl.h"
 
-#define MEMBERS x, y
-#define SCALAR_TYPE pixel_t
-#define ABSOLUTE_TYPE window
-#define RELATIVE_TYPE window_delta
+#include "xyz_coord.h"
 
 namespace openage {
 namespace coord {
 
-struct window {
-	pixel_t x, y;
-
-	#include "ops/abs.h"
+struct window : public absolute_xyz_coord<window, window_delta, pixel_t, 2> {
+	window() = default;
+	window(pixel_t x, pixel_t y);
 
 	camgame to_camgame() const;
 	camhud to_camhud() const;
 };
 
-struct window_delta {
-	pixel_t x, y;
-
-	#include "ops/rel.h"
+struct window_delta : public relative_xyz_coord<window, window_delta, pixel_t, 2> {
+	window_delta() = default;
+	window_delta(pixel_t x, pixel_t y);
 
 	camgame_delta to_camgame() const;
 	camhud_delta to_camhud() const;
 };
 
-#include "ops/free.h"
-
-#ifdef GEN_IMPL_WINDOW_CPP
-#include "ops/impl.h"
-#endif //GEN_IMPL_WINDOW_CPP
 
 } // namespace coord
 } // namespace openage
 
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE
 
 #endif

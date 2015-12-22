@@ -24,7 +24,7 @@ coord::tile random_tile(rng::RNG &rng, tileset_t tiles);
 /**
  * the four directions available for 2d tiles
  */
-constexpr coord::tile_delta const neigh_tiles[] = {
+coord::tile_delta const neigh_tiles[] = {
 	{ 1,  0},
 	{-1,  0},
 	{ 0,  1},
