@@ -140,6 +140,7 @@ private:
 	coord::window mouse_position;
 	coord::window_delta mouse_motion;
 
+	friend InputContext;
 };
 
 }} // openage::input
