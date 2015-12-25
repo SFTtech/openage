@@ -26,7 +26,7 @@ class FileCollection(FSLikeObject):
     def root(self):
         return FileCollectionPath(self, [])
 
-    def get_direntries(self, parts, create=False):
+    def get_direntries(self, parts=None, create=False):
         """
         Fetches the fileentries, subdirentries tuple for the given dir.
 
@@ -35,6 +35,9 @@ class FileCollection(FSLikeObject):
 
         Helper method for internal use.
         """
+        if parts is None:
+            parts = []
+
         entries = self.rootentries
         for idx, subdir in enumerate(parts):
             if subdir not in entries[1]:

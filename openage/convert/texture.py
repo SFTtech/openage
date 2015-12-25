@@ -6,13 +6,13 @@
 
 import math
 
-from ..log import spam
 
+from .blendomatic import BlendingMode
 from .dataformat import (exportable, data_definition,
                          struct_definition, data_formatter)
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
-
-from .blendomatic import BlendingMode
+from ..log import spam
+from ..util.fslike.path import Path
 
 
 def subtexture_meta(tx, ty, hx, hy, cx, cy):
@@ -116,18 +116,22 @@ class Texture(exportable.Exportable):
         self.image_data, (self.width, self.height), self.image_metadata\
             = merge_frames(frames)
 
-    def save(self, targetdir, filename, meta_formats):
+    def save(self, targetdir, filename, meta_formats=None):
         """
         save the texture png and csv to the given path in obj.
         """
+        if not isinstance(targetdir, Path):
+            raise ValueError("util.fslike Path expected as targetdir")
+
         # generate PNG file
         with targetdir[filename + ".png"].open("wb") as imagefile:
             self.image_data.get_pil_image().save(imagefile, 'png')
 
-        # generate formatted texture metadata
-        formatter = data_formatter.DataFormatter()
-        formatter.add_data(self.dump(filename))
-        formatter.export(targetdir, meta_formats)
+        if meta_formats:
+            # generate formatted texture metadata
+            formatter = data_formatter.DataFormatter()
+            formatter.add_data(self.dump(filename))
+            formatter.export(targetdir, meta_formats)
 
     def dump(self, filename):
         return [data_definition.DataDefinition(self,
