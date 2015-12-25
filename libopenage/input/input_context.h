@@ -15,6 +15,14 @@
 namespace openage {
 namespace input {
 
+/**
+ * An input context contains all keybindings and actions
+ * active in e.g. the HUD only.
+ * For the console, there's a different input context.
+ * That way, each context can have the same keys
+ * assigned to different actions, the active context
+ * decides, which one to trigger.
+ */
 class InputContext {
 
 public:
