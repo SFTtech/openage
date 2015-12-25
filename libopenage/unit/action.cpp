@@ -407,8 +407,18 @@ void IdleAction::update(unsigned int time) {
 		}
 	}
 
-	// inc frame
-	this->frame += time * this->frame_rate / 20.0f;
+	// unit carrying ressources take the carrying sprite when idle
+	// we're not updating frames because the carying sprite is walking
+	if (entity->has_attribute(attr_type::gatherer)) {
+		auto gatherer_attrib = entity->get_attribute<attr_type::gatherer>();
+		if (gatherer_attrib.amount > 0) {
+			this->graphic = graphic_type::carrying;
+		}
+	}
+	else {
+		// inc frame
+		this->frame += time * this->frame_rate / 20.0f;
+	}
 }
 
 void IdleAction::on_completion() {}
