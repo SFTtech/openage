@@ -111,7 +111,8 @@ class Texture(exportable.Exportable):
                 for tile in input_data.alphamasks
             ]
         else:
-            raise Exception("cannot create Texture from unknown source type")
+            raise Exception("cannot create Texture "
+                            "from unknown source type: %s" % (type(input_data)))
 
         self.image_data, (self.width, self.height), self.image_metadata\
             = merge_frames(frames)
