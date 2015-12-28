@@ -67,10 +67,11 @@ before_script:
   - python3 -m pylint --version
 
 script:
-  - $STATICCHECKER ./configure --mode=debug
-  - $STATICCHECKER make build tests
-  - make checkall
-  - if [[ $DOINSTALL -gt 0 ]]; then make install DESTDIR=/tmp/destdir; fi
+  - CONTINUE=1
+  - if [[ $CONTINUE -eq 1 ]]; then $STATICCHECKER ./configure --mode=debug || CONTINUE=0; fi
+  - if [[ $CONTINUE -eq 1 ]]; then $STATICCHECKER make build tests || CONTINUE=0; fi
+  - if [[ $CONTINUE -eq 1 ]]; then make checkall || CONTINUE=0; fi
+  - if [[ $CONTINUE -eq 1 && $DOINSTALL -gt 0 ]]; then make install DESTDIR=/tmp/destdir || CONTINUE=0; fi
 
 after_script:
   - echo test build exited
