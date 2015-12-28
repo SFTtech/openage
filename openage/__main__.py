@@ -67,6 +67,11 @@ def main(argv=None):
         "convert",
         parents=[global_cli, datadir_cli]))
 
+    from .convert.singlefile import init_subparser
+    init_subparser(subparsers.add_parser(
+        "convert-file",
+        parents=[global_cli, datadir_cli]))
+
     from .codegen.main import init_subparser
     init_subparser(subparsers.add_parser(
         "codegen",

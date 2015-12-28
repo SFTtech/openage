@@ -17,10 +17,13 @@ class Path:
     Represents a specific path in a given FS-Like object; mostly, that
     object's member methods are simply wrapped.
 
-    Independent of the OS, slashes must be used as separators.
+    fsobj: fs-like object that is e.g. a cab-archive, a real
+           Directory("/lol"), or anything that is like some filesystem.
 
-    Internally, bytes are used instead of str.
-    No lists of strings may be passed to member methods.
+    parts: starting path in the above fsobj,
+           e.g. ["folder", "file"],
+           or "folder/file"
+           or b"folder/file".
     """
 
     # We're re-implementing pathlib.Path's interface, we have no choice about
@@ -28,12 +31,15 @@ class Path:
     # lower.
     # pylint: disable=too-many-public-methods
 
-    def __init__(self, fsobj, parts):
+    def __init__(self, fsobj, parts=None):
         if isinstance(parts, str):
             parts = parts.encode()
 
         if isinstance(parts, bytes):
             parts = parts.split(b'/')
+
+        if parts is None:
+            parts = []
 
         result = []
         for part in parts:

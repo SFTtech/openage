@@ -12,6 +12,7 @@ add_py_modules(
 	main.py
 	pefile.py
 	peresource.py
+	singlefile.py
 	slp.py
 	slp_converter_pool.py
 	stringresource.py
