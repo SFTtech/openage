@@ -50,6 +50,10 @@ class GameSpec;
 class GameMain;
 class Player;
 
+namespace gui {
+class GuiItemLink;
+} // openage::gui
+
 struct coord_data {
 	coord::window window_size{800, 600};
 	coord::phys3 camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0};
@@ -159,6 +163,7 @@ public:
 	bool on_resize(coord::window new_size) override;
 
 	void start_game(const Generator &generator);
+	void start_game(std::unique_ptr<GameMain> game);
 	void end_game();
 
 	/**
@@ -412,6 +417,9 @@ private:
 
 	std::unique_ptr<renderer::FontManager> font_manager;
 	std::unique_ptr<renderer::TextRenderer> text_renderer;
+
+public:
+	gui::GuiItemLink *gui_link;
 };
 
 } // namespace openage
