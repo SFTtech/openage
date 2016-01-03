@@ -72,6 +72,7 @@ script:
   - if [[ $CONTINUE -eq 1 ]]; then $STATICCHECKER make build tests || CONTINUE=0; fi
   - if [[ $CONTINUE -eq 1 ]]; then make checkall || CONTINUE=0; fi
   - if [[ $CONTINUE -eq 1 && $DOINSTALL -gt 0 ]]; then make install DESTDIR=/tmp/destdir || CONTINUE=0; fi
+  - if [[ $CONTINUE -ne 1 ]]; then return 1; fi
 
 after_script:
   - echo test build exited
