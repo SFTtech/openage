@@ -109,7 +109,7 @@ bool InputManager::trigger(const Event &e) {
 		return false;
 	}
 
-	// arg passed to recievers
+	// arg passed to receivers
 	action_arg_t arg{e, this->mouse_position, this->mouse_motion, {}};
 
 	// Check whether key combination is bound to an action
