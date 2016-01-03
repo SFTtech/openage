@@ -1,4 +1,4 @@
-# Copyright 2015-2015 the openage authors. See copying.md for legal info.
+# Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 """ Entry point for all of the asset conversion. """
 import os
@@ -163,7 +163,8 @@ def acquire_conversion_source_dir():
         print("please provide your AoE II installation dir:")
 
         try:
-            sourcedir = input("> ")
+            rawsourcedir = input("> ")
+            sourcedir = os.path.expandvars(os.path.expanduser(rawsourcedir))
         except KeyboardInterrupt:
             print("")
             exit(0)
