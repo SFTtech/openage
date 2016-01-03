@@ -1,4 +1,4 @@
-# Copyright 2015-2015 the openage authors. See copying.md for legal info.
+# Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 """
 Convert a single slp file from some drs archive to a png image.
@@ -8,7 +8,6 @@ import os.path
 
 from .colortable import ColorTable
 from .drs import DRS
-from .slp import SLP
 from .texture import Texture
 from ..util.fslike.directory import Directory
 from ..log import info
@@ -47,6 +46,10 @@ def main(args, error):
     # here, try opening slps from interfac or whereever
     info("opening slp in drs '%s:%s'..." % (args.drs, args.slp))
     slpfile = DRS(open(args.drs, "rb")).root[args.slp].open("rb")
+
+    # import here to prevent that the __main__ depends on SLP
+    # just by importing this singlefile.py.
+    from .slp import SLP
 
     # parse the slp image
     info("parsing slp image...")
