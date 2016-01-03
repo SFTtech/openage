@@ -1,10 +1,11 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <sstream>
 
 #include "console/console.h"
 #include "coord/vec2f.h"
