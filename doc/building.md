@@ -91,7 +91,7 @@ if all packages can be installed.
  - `brew update`
  - `brew install caskroom/cask/brew-cask`
  - `brew tap caskroom/fonts`
- - `brew tap homebrew/version`
+ - `brew tap homebrew/versions`
  - `brew tap homebrew/python`
  - `brew update` (yes, again)
  - `brew cask install font-dejavu-sans`
