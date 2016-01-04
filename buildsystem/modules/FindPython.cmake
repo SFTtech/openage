@@ -1,4 +1,4 @@
-# Copyright 2015-2015 the openage authors. See copying.md for legal info.
+# Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 # Find Python
 # ~~~~~~~~~~~
@@ -126,7 +126,7 @@ endforeach()
 foreach(PYTHON ${PYTHON_INTERPRETERS})
 	# ask the interpreter for the essential extension-building flags
 	py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
-	py_get_config_var(LIBPL PYTHON_LIBRARY_DIR)
+	py_get_config_var(LIBDIR PYTHON_LIBRARY_DIR)
 	py_get_lib_name(PYTHON_LIBRARY_NAME)
 	set(PYTHON_LIBRARY "-L${PYTHON_LIBRARY_DIR} -l${PYTHON_LIBRARY_NAME}")
 
