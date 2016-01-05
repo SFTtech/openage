@@ -1,4 +1,4 @@
-# Copyright 2015-2015 the openage authors. See copying.md for legal info.
+# Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 # python modules
 # a list of imported modules may be obtained via
@@ -18,7 +18,7 @@ set(REQUIRED_UTILITIES "opusenc")
 function(check_python_module_exists MODULE EXISTS)
 	set(STATEMENT "from importlib import import_module; import_module(\"${MODULE}\")")
 	execute_process(
-		COMMAND ${PYTHON} -c "'${STATEMENT}'"
+		COMMAND ${PYTHON} -c "${STATEMENT}"
 		RESULT_VARIABLE PY_RESULT)
 
 	if(PY_RESULT EQUAL 0)
@@ -35,7 +35,7 @@ foreach(_PYTHON_MODULE ${REQUIRED_PYTHON_MODULES})
 	if(EXISTS)
 		message(STATUS "Checking for python module ${_PYTHON_MODULE} - Success")
 	else()
-		message(WARNING "Checking for python module ${_PYTHON_MODULE} - Not Found")
+		message(FATAL_ERROR "Checking for python module ${_PYTHON_MODULE} - Not Found")
 	endif()
 endforeach()
 
@@ -46,7 +46,7 @@ foreach(_UTILITY ${REQUIRED_UTILITIES})
 	)
 
 	if(${_UTILITY}_EXECUTABLE-NOTFOUND)
-		message(WARNING "Checking for utility program ${_UTILITY} - Not Found")
+		message(FATAL_ERROR "Checking for utility program ${_UTILITY} - Not Found")
 	else()
 		message(STATUS "Checking for utility program ${_UTILITY} - Success")
 	endif()

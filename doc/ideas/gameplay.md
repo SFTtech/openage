@@ -173,7 +173,7 @@ Resources
 
 ### Stone balancing
 
-Stone cost for all buildings, rebalce stone amount per pile.
+Stone cost for all buildings, rebalance stone amount per pile.
 Maybe new deep stone mines for later ages.
 
 
