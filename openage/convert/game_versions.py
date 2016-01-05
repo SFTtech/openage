@@ -1,4 +1,4 @@
-# Copyright 2015-2015 the openage authors. See copying.md for legal info.
+# Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 """Detect the version of the original game"""
 
@@ -26,6 +26,11 @@ class GameVersion(enum.Enum):
         "Age of Empires 2: The Conquerors, Patch 1.0c",
         True,
         {'age2_x1/age2_x1.exe', 'data/empires2_x1_p1.dat'},
+    )
+    age2_hd_3x = (
+        "Age of Empires 2: HD Edition (Version 3.x)",
+        True,
+        {'AoK HD.exe', 'data/empires2_x1_p1.dat'}
     )
     # HD edition version 4.0
     age2_fe = (

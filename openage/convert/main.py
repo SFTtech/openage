@@ -62,9 +62,11 @@ def mount_drs_archives(srcdir, game_versions=None):
         mount_drs("data/sounds.drs", "sounds")
         mount_drs("data/sounds_x1.drs", "sounds")
         mount_drs("data/terrain.drs", "terrain")
-        mount_drs("data/gamedata.drs", "gamedata")
+        if GameVersion.age2_hd_3x not in game_versions:
+            mount_drs("data/gamedata.drs", "gamedata")
         mount_drs("data/gamedata_x1.drs", "gamedata")
         mount_drs("data/gamedata_x1_p1.drs", "gamedata")
+        # TODO mount gamedata_x2.drs and _x2_p1 if they exist?
 
     return result
 

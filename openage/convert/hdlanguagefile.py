@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """
 Module for reading AoeII HD Edition text-based language files.
@@ -8,14 +8,14 @@ from .hardcoded.langcodes_hd import LANGCODE_MAP_HD
 from ..log import dbg
 
 
-def read_hd_language_file(fileobj, langcode):
+def read_hd_language_file(fileobj, langcode, enc='utf-8'):
     """
     Takes a file object, and the file's language code.
     """
     dbg("HD Language file " + str(langcode))
     strings = {}
 
-    for line in fileobj.read().decode('utf-8').split('\n'):
+    for line in fileobj.read().decode(enc).split('\n'):
         line = line.strip()
 
         # skip comments & empty lines
