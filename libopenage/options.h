@@ -1,4 +1,4 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_OPTIONS_H_
 #define OPENAGE_OPTIONS_H_

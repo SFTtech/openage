@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2015-2015 the openage authors. See copying.md for legal info.
+# Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 # Used to create the test archive file for openage.cabextract.test
 # (this shell script does not actually run at test time;
