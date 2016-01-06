@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_ERROR_ERROR_H_
 #define OPENAGE_ERROR_ERROR_H_
@@ -54,14 +54,14 @@ public:
 	 * @param generate_backtrace
 	 *     If true, some platform-specific code is run to collect
 	 *     traceback information (e.g.: backtrace (3))
-	 *     (default false).
+	 *     (default true).
 	 *     The performance impacts should be not too bad, as only
 	 *     program counter pointers are collected.
-	 * @param ignore_cause
-	 *     If true, a pointer to the causing exception is not
-	 *     collected and stored (default false).
+	 * @param store_cause
+	 *     If true, a pointer to the causing exception is
+	 *     collected and stored (default true).
 	 */
-	Error(const log::message &msg, bool generate_backtrace=false, bool store_cause=true);
+	Error(const log::message &msg, bool generate_backtrace=true, bool store_cause=true);
 
 
 	/**
