@@ -49,7 +49,7 @@ _the openage authors_ are:
 | Jon Gelderloos              | jgelderloos                 | jgelderloos@gmail.com                 |
 | Emmanuel Gil Peyrot         | Link Mauve                  | linkmauve@linkmauve.fr                |
 | Danilo Bargen               | dbrgn                       | mail@dbrgn.ch                         |
-| Niklas Fiekas               | niklasf                     | niklas.fiekas@tu-clausthal.de         |
+| Niklas Fiekas               | niklasf                     | niklas.fiekas@backscattering.de       |
 | Charles Gould               | charlesrgould               | charles.r.gould@gmail.com             |
 | Wilco Kusee                 | detrumi                     | wilcokusee@gmail.com                  |
 | Sreejith R                  | sreejithr                   | sreejith.r44@gmail.com                |
