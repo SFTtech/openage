@@ -4,13 +4,14 @@
 
 # TODO pylint: disable=C,R
 
-import math
 
-
+from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .blendomatic import BlendingMode
 from .dataformat import (exportable, data_definition,
                          struct_definition, data_formatter)
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
+from .hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
+                                TERRAIN_ASPECT_RATIO)
 from ..log import spam
 from ..util.fslike.path import Path
 
@@ -144,69 +145,52 @@ class Texture(exportable.Exportable):
         return [struct_definition.StructDefinition(cls)]
 
 
-def merge_frames(frames, max_width=0, max_height=0):
+def merge_frames(frames):
     """
     merge all given frames of this slp to a single image file.
 
     frames = [TextureImage, ...]
 
-    returns = TextureImage, [drawn_frames_meta]
+    returns = TextureImage, (width, height), [drawn_frames_meta]
     """
 
     import numpy
 
-    # TODO: actually optimize free space on the texture.
-    # if you ever wanted to implement a combinatoric optimisation
-    # algorithm, go for it, this function just waits for you.
-    # https://en.wikipedia.org/wiki/Bin_packing_problem
-    #
-    # for now, using max values for solving bin packing problem
-    # after determining the maximum frame width and height,
-    # each frame will be placed in a grid with fields of these sizes.
-    # this wastes storage, but works. If your blood boils now because you
-    # wanna optimize for the best alignment, read the above notice again,
-    # and implement a better version.
-
     if len(frames) == 0:
         raise Exception("cannot create texture with empty input frame list")
 
-    # single-frame texture, no merging needed
-    elif len(frames) == 1:
-        cx, cy = frames[0].hotspot
-        w, h = frames[0].width, frames[0].height
-        return frames[0], (w, h), [subtexture_meta(0, 0, w, h, cx, cy)]
+    packer = BestPacker([BinaryTreePacker(margin=MARGIN, aspect_ratio=1),
+                         BinaryTreePacker(margin=MARGIN,
+                                          aspect_ratio=TERRAIN_ASPECT_RATIO),
+                         RowPacker(margin=MARGIN),
+                         ColumnPacker(margin=MARGIN)])
 
-    # if not predefined, get maximum frame size by checking all frames
-    if max_width == 0 or max_height == 0:
-        max_width = max([teximg.width for teximg in frames])
-        max_height = max([teximg.height for teximg in frames])
+    packer.pack(frames)
 
-    max_per_row = math.ceil(math.sqrt(len(frames)))
-    num_rows = math.ceil(len(frames) / max_per_row)
+    width, height = packer.width(), packer.height()
+    assert width <= MAX_TEXTURE_DIMENSION, "Texture width limit exceeded"
+    assert height <= MAX_TEXTURE_DIMENSION, "Texture height limit exceeded"
 
-    # we leave 1 pixel free in between two sprites
-    free_space_px = 1
-    width = (max_width + free_space_px) * max_per_row
-    height = (max_height + free_space_px + 1) * num_rows
+    area = sum(block.width * block.height for block in frames)
+    used_area = width * height
+    efficiency = area / used_area
 
-    spam("merging %d frames to %dx%d atlas, %d pics per row, %d rows." % (
-        len(frames), width, height, max_per_row, num_rows))
+    spam("merging %d frames to %dx%d atlas, efficiency %.3f." %
+         (len(frames), width, height, efficiency))
 
-    # resulting draw pane
     atlas_data = numpy.zeros((height, width, 4), dtype=numpy.uint8)
-    pos_x = 0
-    pos_y = 0
-
-    drawn_frames_meta = list()
-    drawn_current_row = 0
+    drawn_frames_meta = []
 
     for sub_frame in frames:
         sub_w = sub_frame.width
         sub_h = sub_frame.height
 
+        pos_x, pos_y = packer.pos(sub_frame)
+
         spam("drawing frame %03d on atlas at %d x %d..." % (
             len(drawn_frames_meta), pos_x, pos_y))
 
+        # draw the subtexture on atlas_data
         atlas_data[pos_y:pos_y + sub_h, pos_x:pos_x + sub_w] = sub_frame.data
 
         # generate subtexture meta information object
@@ -214,17 +198,6 @@ def merge_frames(frames, max_width=0, max_height=0):
         drawn_frames_meta.append(subtexture_meta(pos_x, pos_y,
                                                  sub_w, sub_h,
                                                  hotspot_x, hotspot_y))
-
-        drawn_current_row += 1
-
-        # place the subtexture with a 1px border
-        pos_x += max_width + free_space_px
-
-        # see if we have to start a new row now
-        if drawn_current_row > max_per_row - 1:
-            drawn_current_row = 0
-            pos_x = 0
-            pos_y += max_height + free_space_px
 
     atlas = TextureImage(atlas_data)
 
