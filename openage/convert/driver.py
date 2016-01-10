@@ -31,13 +31,7 @@ def get_string_resources(args):
 
     # AoK:TC uses .DLL PE files for its string resources,
     # HD uses plaintext files
-    if srcdir["language.dll"].is_file():
-        from .pefile import PEFile
-        for name in ["language.dll", "language_x1.dll", "language_x1_p1.dll"]:
-            pefile = PEFile(srcdir[name].open('rb'))
-            stringres.fill_from(pefile.resources().strings)
-            count += 1
-    elif GameVersion.age2_fe in args.game_versions:
+    if GameVersion.age2_fe in args.game_versions:
         from .hdlanguagefile import read_hd_language_file
 
         for lang in srcdir["resources"].list():
@@ -74,6 +68,12 @@ def get_string_resources(args):
                     # No utf-8 :(
                     stringres.fill_from(read_hd_language_file(langfile, lang, enc='iso-8859-1'))
                 count += 1
+    elif srcdir["language.dll"].is_file():
+        from .pefile import PEFile
+        for name in ["language.dll", "language_x1.dll", "language_x1_p1.dll"]:
+            pefile = PEFile(srcdir[name].open('rb'))
+            stringres.fill_from(pefile.resources().strings)
+            count += 1
 
     if not count:
         raise FileNotFoundError("could not find any language files")
