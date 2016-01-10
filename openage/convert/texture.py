@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """ Routines for texture generation etc """
 
@@ -20,7 +20,7 @@ def subtexture_meta(tx, ty, hx, hy, cx, cy):
     generate a dict that contains the meta information for
     the given parameters:
         origin x, y
-        heigh, width
+        height, width
         center/hotspot x, y
     """
     ret = {
@@ -193,13 +193,7 @@ def merge_frames(frames, max_width=0, max_height=0):
         len(frames), width, height, max_per_row, num_rows))
 
     # resulting draw pane
-    draw_data = list()
-    for _ in range(height):
-        row_data = list()
-        for _ in range(width):
-            row_data.append((0, 0, 0, 0))
-        draw_data.append(row_data)
-
+    atlas_data = numpy.zeros((height, width, 4), dtype=numpy.uint8)
     pos_x = 0
     pos_y = 0
 
@@ -213,11 +207,7 @@ def merge_frames(frames, max_width=0, max_height=0):
         spam("drawing frame %03d on atlas at %d x %d..." % (
             len(drawn_frames_meta), pos_x, pos_y))
 
-        for y, row_data in enumerate(sub_frame.data):
-            for x, pixel_data in enumerate(row_data):
-                draw_data[y + pos_y][x + pos_x] = pixel_data
-
-                # print(pixel_data)
+        atlas_data[pos_y:pos_y + sub_h, pos_x:pos_x + sub_w] = sub_frame.data
 
         # generate subtexture meta information object
         hotspot_x, hotspot_y = sub_frame.hotspot
@@ -236,7 +226,6 @@ def merge_frames(frames, max_width=0, max_height=0):
             pos_x = 0
             pos_y += max_height + free_space_px
 
-    atlas_data = numpy.array(draw_data, dtype=numpy.uint8)
     atlas = TextureImage(atlas_data)
 
     spam("successfully merged %d frames to atlas." % len(frames))
