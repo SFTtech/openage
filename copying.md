@@ -67,6 +67,7 @@ _the openage authors_ are:
 | Camillo Dell'mour           | spjoe                       | cdellmour@gmail.com                   |
 | Timothee Behety             | tim2000                     | tim.behety@gmail.com                  |
 | Vyacheslav Davydov          | tombouctou                  | vissi@vissi.su                        |
+| Lyle Nel                    | lyle-nel                    | pt20100938@gmail.com                  |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
