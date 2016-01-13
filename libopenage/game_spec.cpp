@@ -1,4 +1,4 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 #include "gamedata/blending_mode.gen.h"
 #include "gamedata/string_resource.gen.h"
