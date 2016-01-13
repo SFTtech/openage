@@ -4,4 +4,5 @@ add_py_modules(
 	langcodes_hd.py
 	termcolors.py
 	terrain_tile_size.py
+	texture.py
 )
