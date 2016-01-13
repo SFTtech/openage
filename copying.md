@@ -69,6 +69,7 @@ _the openage authors_ are:
 | Vyacheslav Davydov          | tombouctou                  | vissi@vissi.su                        |
 | Lyle Nel                    | lyle-nel                    | pt20100938@gmail.com                  |
 | Michael Kilby               | kilbyjmichael               | kilbyjmichael@gmail.com               |
+| Michal Kováč                | mirelon                     | miso@github.ksp.sk                    |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
