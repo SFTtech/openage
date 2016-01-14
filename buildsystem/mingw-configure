@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./configure --mode=debug --cpp-compiler=g++ --c-compiler=gcc
+./configure --mode=debug --cpp-compiler=g++ --c-compiler=gcc --cmake-binary=i686-w64-mingw32-cmake
