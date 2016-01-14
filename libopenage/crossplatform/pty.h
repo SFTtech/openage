@@ -5,6 +5,8 @@
 
 #ifdef __APPLE__
 #  include <util.h>
+#elif _WIN32
+//TODO not yet implemented
 #else
 #  include <pty.h>
 #endif

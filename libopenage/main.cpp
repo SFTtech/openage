@@ -15,6 +15,7 @@ namespace openage {
 
 
 int run_game(const main_arguments &args) {
+	setbuf(stdout, NULL);
 	log::log(MSG(info) << "launching engine with data directory '" << args.data_directory << "'");
 
 	util::Timer timer;

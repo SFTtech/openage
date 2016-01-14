@@ -43,6 +43,7 @@ void render() {
 
 
 void interactive() {
+	#ifndef _WIN32
 	console::Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
 
@@ -164,6 +165,7 @@ void interactive() {
 
 	// show cursor
 	termout.puts("\x1b[?25h");
+	#endif
 }
 
 

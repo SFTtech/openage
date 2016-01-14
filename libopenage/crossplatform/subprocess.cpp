@@ -25,7 +25,8 @@ namespace subprocess {
 bool is_executable(const char *filename) {
 	#ifdef _WIN32
 	// TODO not yet implemented
-	static_assert(false, "subprocess::is_executable is not yet implemented for WIN32");
+	// static_assert(false, "subprocess::is_executable is not yet implemented for WIN32");
+	return false;
 	#else
 	struct stat sb;
 	return (stat(filename, &sb) == 0
@@ -37,7 +38,8 @@ bool is_executable(const char *filename) {
 std::string which(const char *name) {
 	#ifdef _WIN32
 	// TODO not yet implemented
-	static_assert(false, "subprocess::which is not yet implemented for WIN32");
+	// static_assert(false, "subprocess::which is not yet implemented for WIN32");
+	return std::string(name);
 	#else
 	std::vector<char> path;
 	util::copy_string(getenv("PATH"), path);
@@ -63,7 +65,9 @@ std::string which(const char *name) {
 
 int call(const std::vector<const char *> &argv, bool wait, const char *redirect_stdout_to) {
 	#ifdef _WIN32
-	static_assert(false, "subprocess::call is not yet implemented for WIN32");
+	// TODO not yet implemented
+	// static_assert(false, "subprocess::call is not yet implemented for WIN32");
+	return -1; // nope
 	#else
 
 	// used by child to communicate execve() to its parent.
