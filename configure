@@ -121,7 +121,7 @@ defines = {}
 
 options = {
     "backtrace":           "if_available",
-    "inotify":             False,
+    "inotify":             "if_available",
     "gperftools-tcmalloc": False,
     "gperftools-profiler": "if_available",
 }
@@ -301,7 +301,7 @@ forcesymlink(bindir, 'bin')
 project_root = os.path.dirname(os.path.realpath(__file__))
 
 # calculate cmake invocation from defines dict
-invocation = ['i686-w64-mingw32-cmake']
+invocation = [args.cmake_binary]
 maxkeylen = max(len(k) for k in defines)
 for k, v in sorted(defines.items()):
     print('%s | %s' % (k.rjust(maxkeylen), v))
