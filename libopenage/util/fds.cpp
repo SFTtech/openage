@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include "fds.h"
 
@@ -25,8 +25,10 @@ FD::FD(int fd, bool set_nonblocking) {
 	this->close_on_destroy = true;
 
 	if (set_nonblocking) {
+		#ifndef _WIN32
 		int flags = ::fcntl(this->fd, F_GETFL, 0);
 		::fcntl(this->fd, F_SETFL, flags | O_NONBLOCK);
+		#endif
 	}
 }
 
@@ -104,6 +106,8 @@ int FD::printf(const char *format, ...) {
 }
 
 void FD::setinputmodecanon() {
+	#ifndef _WIN32
+
 	if (::isatty(this->fd)) {
 		//get the terminal settings for stdin
 		::tcgetattr(this->fd, &this->old_tio);
@@ -115,13 +119,19 @@ void FD::setinputmodecanon() {
 		::tcsetattr(this->fd, TCSANOW, &new_tio);
 		this->restore_input_mode_on_destroy = true;
 	}
+
+	#endif /* _WIN32 */
 }
 
 void FD::restoreinputmode() {
+	#ifndef _WIN32
+
 	if (::isatty(this->fd)) {
 		::tcsetattr(this->fd, TCSANOW, &this->old_tio);
 		this->restore_input_mode_on_destroy = false;
 	}
+
+	#endif /* _WIN32 */
 }
 
 }} // openage::util
