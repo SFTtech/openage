@@ -1,4 +1,4 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 # TODO some major performance optimizations (including profiling).
@@ -6,6 +6,9 @@
 from struct import Struct, unpack_from
 
 from enum import Enum
+
+import numpy
+cimport numpy
 
 from ..log import spam, dbg
 
@@ -62,7 +65,6 @@ class SpecialColor:
 
         returns (base_color, is_outline_pixel)
         """
-
         if self.special_id in (2, SpecialColorValue.black_color):
             # black outline pixel, we will probably never encounter this.
             #  -16 ensures palette[16+(-16)=0] will be used.
@@ -518,20 +520,28 @@ class SLPFrame:
         return repr(self.info)
 
 
+
 def determine_rgba_matrix(image_matrix, palette, player_number=0):
     """
-    converts a palette index image matrix to an rgb matrix.
+    converts a palette index image matrix to an rgba matrix.
     """
-    import numpy
+    cdef int height = len(image_matrix)
+    cdef int width = len(image_matrix[0])
 
-    rgba_data = list()
+    cdef numpy.ndarray[numpy.uint8_t, ndim=3] array_data = \
+        numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
-    for row in image_matrix:
-        for pixel in row:
+    # micro optimization to avoid call to ColorTable.__getitem__()
+    palette = palette.palette
+
+    for y in range(height):
+        for x in range(width):
+            pixel = image_matrix[y][x]
+
             if isinstance(pixel, int):
                 # simply look up the color index in the table
                 r, g, b = palette[pixel]
-                color = (r, g, b, 255)
+                alpha = 255
 
             elif isinstance(pixel, SpecialColor):
                 base_pcolor, is_outline = pixel.get_pcolor()
@@ -544,19 +554,21 @@ def determine_rgba_matrix(image_matrix, palette, player_number=0):
                 # store it the preview player color
                 # in the table: [16*player, 16*player+7]
                 r, g, b = palette[base_pcolor + (16 * player_number)]
-                color = (r, g, b, alpha)
 
             elif pixel is SpecialColorValue.transparent:
-                color = (0, 0, 0, 0)
+                r, g, b, alpha = 0, 0, 0, 0
 
             elif pixel is SpecialColorValue.shadow:
-                color = (0, 0, 0, 100)
+                r, g, b, alpha = 0, 0, 0, 100
 
             else:
                 raise Exception("Unknown color: %s (%s)" % (
                     pixel, type(pixel)))
 
-            rgba_data.append(color)
+            # array_data[y, x] = (r, g, b, alpha)
+            array_data[y, x, 0] = r
+            array_data[y, x, 1] = g
+            array_data[y, x, 2] = b
+            array_data[y, x, 3] = alpha
 
-    array_data = numpy.array(rgba_data, dtype=numpy.uint8)
-    return array_data.reshape(len(image_matrix), len(image_matrix[0]), 4)
+    return array_data
