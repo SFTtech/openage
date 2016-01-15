@@ -164,4 +164,4 @@ if(NOT APPLE)
 	)
 endif()
 
-install(TARGETS libopenage LIBRARY DESTINATION lib)
+install(TARGETS libopenage DESTINATION lib LIBRARY DESTINATION lib)
