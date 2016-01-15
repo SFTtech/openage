@@ -413,6 +413,8 @@ void IdleAction::update(unsigned int time) {
 		auto gatherer_attrib = entity->get_attribute<attr_type::gatherer>();
 		if (gatherer_attrib.amount > 0) {
 			this->graphic = graphic_type::carrying;
+		} else {
+			this->graphic = graphic_type::standing;
 		}
 	}
 	else {
