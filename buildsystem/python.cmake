@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
@@ -112,7 +112,7 @@ function(add_cython_modules)
 
 			set_target_properties("${TARGETNAME}" PROPERTIES
 				COMPILE_FLAGS "${PYEXT_CXXFLAGS}"
-				INCLUDE_DIRECTORIES "${PYEXT_INCLUDE_DIR}"
+				INCLUDE_DIRECTORIES "${PYEXT_INCLUDE_DIRS}"
 				OUTPUT_NAME "${OUTPUTNAME}"
 			)
 
