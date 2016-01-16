@@ -4,7 +4,7 @@
 
 # the Python version number requirement is in modules/FindPython_test.cpp
 find_package(Python REQUIRED)
-find_package(Cython 0.22 REQUIRED)
+find_package(Cython 0.23 REQUIRED)
 find_package(Numpy REQUIRED)
 
 py_get_config_var(OPT PYEXT_CXXFLAGS)
@@ -24,13 +24,6 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 	# some things clang complains about
 	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-extended-offsetof")
 	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unneeded-internal-declaration")
-
-	if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.5)
-		# doesn't have that warning yet
-	else()
-		# https://github.com/cython/cython/pull/402 (fix pending cython 0.23)
-		set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-absolute-value")
-	endif()
 endif()
 
 set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unused-function")
