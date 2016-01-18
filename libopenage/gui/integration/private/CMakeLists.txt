@@ -1,6 +1,13 @@
 add_sources(libopenage
+	gui_filled_texture_handles.cpp
+	gui_game_spec_image_provider_by_filename_impl.cpp
+	gui_game_spec_image_provider_by_graphic_id_impl.cpp
+	gui_game_spec_image_provider_by_id_impl.cpp
+	gui_game_spec_image_provider_by_terrain_id_impl.cpp
+	gui_game_spec_image_provider_impl.cpp
 	gui_make_standalone_subtexture.cpp
 	gui_standalone_subtexture.cpp
 	gui_texture.cpp
+	gui_texture_factory.cpp
 	gui_texture_handle.cpp
 )
