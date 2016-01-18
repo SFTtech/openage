@@ -84,4 +84,10 @@ Item {
 			game: gameObj
 		}
 	}
+
+	Component.onCompleted: {
+		ImageProviderByFilename.gameSpec = specObj
+		ImageProviderById.gameSpec = specObj
+		ImageProviderByTerrainId.gameSpec = specObj
+	}
 }
