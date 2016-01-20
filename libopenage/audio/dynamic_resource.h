@@ -1,4 +1,4 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_AUDIO_DYNAMIC_RESOURCE_H_
 #define OPENAGE_AUDIO_DYNAMIC_RESOURCE_H_

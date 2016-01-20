@@ -1,5 +1,6 @@
 add_py_modules(
 	__init__.py
+	binpack.py
 	blendomatic.py
 	changelog.py
 	colortable.py
@@ -13,15 +14,13 @@ add_py_modules(
 	pefile.py
 	peresource.py
 	singlefile.py
-	slp.py
 	slp_converter_pool.py
 	stringresource.py
 	texture.py
 )
 
 add_cython_modules(
-	# hoping that this will somewhat increase the horrible performance.
-	STANDALONE slp.py
+	slp.pyx
 )
 
 add_subdirectory(dataformat)

@@ -103,7 +103,7 @@ if all packages can be installed.
   - For gcc 4.9: `brew install gcc49`
  - Permanently add `/usr/local/bin` to your `$PATH` environment variable
  - Permanently add `/usr/local/lib/pkgconfig` and `/usr/local/lib` to your `$PKG_CONFIG_PATH` environment variable
- - Then run `pip3.4 install pygments cython`
+ - Then run `pip3.5 install pygments cython`
 
 
 ### Prerequisite steps for Arch Linux users

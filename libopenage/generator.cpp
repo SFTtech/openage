@@ -1,5 +1,6 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
+#include "crossplatform/math_constants.h"
 #include "unit/unit.h"
 #include "game_save.h"
 #include "game_spec.h"
@@ -235,8 +236,8 @@ void Generator::create_regions() {
 
 		// space players in a circular pattern
 		double angle = static_cast<double>(i) / static_cast<double>(player_count);
-		int ne = size * p_radius * sin(2 * M_PI * angle);
-		int se = size * p_radius * cos(2 * M_PI * angle);
+		int ne = size * p_radius * sin(2 * math::PI * angle);
+		int se = size * p_radius * cos(2 * math::PI * angle);
 		coord::tile player_tile{ne, se};
 
 		Region player = base.take_tiles(rng, player_tile, p_area, 0.5);

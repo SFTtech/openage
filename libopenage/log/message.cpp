@@ -1,4 +1,4 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 #include "message.h"
 
@@ -24,9 +24,9 @@ void message::init_with_metadata_copy(const std::string &filename, const std::st
 	static std::unordered_set<std::string> stringconstants;
 	static std::mutex stringconstants_mutex;
 
-	this->init();
-
 	std::lock_guard<std::mutex> lock{stringconstants_mutex};
+
+	this->init();
 	this->filename = stringconstants.insert(filename).first->c_str();
 	this->functionname = stringconstants.insert(functionname).first->c_str();
 }

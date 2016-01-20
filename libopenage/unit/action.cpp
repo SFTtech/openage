@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
@@ -413,6 +413,8 @@ void IdleAction::update(unsigned int time) {
 		auto gatherer_attrib = entity->get_attribute<attr_type::gatherer>();
 		if (gatherer_attrib.amount > 0) {
 			this->graphic = graphic_type::carrying;
+		} else {
+			this->graphic = graphic_type::standing;
 		}
 	}
 	else {
@@ -790,6 +792,9 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	Unit *target = this->target.get();
 	if (target->has_attribute(attr_type::resource)) {
 		auto &resource_attr = target->get_attribute<attr_type::resource>();
+		if (this->resource_type != resource_attr.resource_type) {
+			this->entity->get_attribute<attr_type::gatherer>().amount = 0;
+		}
 		this->resource_type = resource_attr.resource_type;
 	} else {
 		throw std::invalid_argument("Unit reference has no resource attribute");

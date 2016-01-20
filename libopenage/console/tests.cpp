@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include <vector>
 #include <string>
@@ -43,6 +43,8 @@ void render() {
 
 
 void interactive() {
+	#ifndef _WIN32
+
 	console::Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
 
@@ -164,6 +166,8 @@ void interactive() {
 
 	// show cursor
 	termout.puts("\x1b[?25h");
+
+	#endif /* _WIN32 */
 }
 
 

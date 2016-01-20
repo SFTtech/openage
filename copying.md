@@ -49,7 +49,7 @@ _the openage authors_ are:
 | Jon Gelderloos              | jgelderloos                 | jgelderloos@gmail.com                 |
 | Emmanuel Gil Peyrot         | Link Mauve                  | linkmauve@linkmauve.fr                |
 | Danilo Bargen               | dbrgn                       | mail@dbrgn.ch                         |
-| Niklas Fiekas               | niklasf                     | niklas.fiekas@tu-clausthal.de         |
+| Niklas Fiekas               | niklasf                     | niklas.fiekas@backscattering.de       |
 | Charles Gould               | charlesrgould               | charles.r.gould@gmail.com             |
 | Wilco Kusee                 | detrumi                     | wilcokusee@gmail.com                  |
 | Sreejith R                  | sreejithr                   | sreejith.r44@gmail.com                |
@@ -62,10 +62,14 @@ _the openage authors_ are:
 | Darren Strash               | darrenstrash                | darren.strash@gmail.com               |
 | Kyle Robbertze              | paddatrapper                | paddatrapper@gmail.com                |
 | Jonathan Biegert            | azrdev                      | azrdev@qrdn.de                        |
-| Hadrien Mary                | hadim                       | hadrien.mary@gmail.com                        |
+| Hadrien Mary                | hadim                       | hadrien.mary@gmail.com                |
 | Sachin Kelkar               | s4chin                      | sachinkel19@gmail.com                 |
 | Camillo Dell'mour           | spjoe                       | cdellmour@gmail.com                   |
 | Timothee Behety             | tim2000                     | tim.behety@gmail.com                  |
+| Vyacheslav Davydov          | tombouctou                  | vissi@vissi.su                        |
+| Lyle Nel                    | lyle-nel                    | pt20100938@gmail.com                  |
+| Michael Kilby               | kilbyjmichael               | kilbyjmichael@gmail.com               |
+| Michal Kováč                | mirelon                     | miso@github.ksp.sk                    |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
