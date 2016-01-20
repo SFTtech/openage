@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_FONT_GLYPH_ATLAS_H_
-#define OPENAGE_RENDERER_FONT_GLYPH_ATLAS_H_
+#pragma once
 
 #include <memory>
 #include <unordered_map>
@@ -134,5 +133,3 @@ private:
 };
 
 }} // openage::renderer
-
-#endif

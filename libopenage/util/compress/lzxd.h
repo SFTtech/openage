@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_COMPRESS_LZXD_H_
-#define OPENAGE_UTIL_COMPRESS_LZXD_H_
+#pragma once
 
 #include <cstdlib>
 
@@ -89,5 +88,3 @@ private:
 };
 
 }}} // openage::util::compress
-
-#endif

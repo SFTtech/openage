@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_COLOR_H_
-#define OPENAGE_RENDERER_COLOR_H_
+#pragma once
 
 #include <cstdint>
 
@@ -30,5 +29,3 @@ public:
 };
 
 }} // openage::renderer
-
-#endif

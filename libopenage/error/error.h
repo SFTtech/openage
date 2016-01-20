@@ -1,7 +1,6 @@
 // Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_ERROR_ERROR_H_
-#define OPENAGE_ERROR_ERROR_H_
+#pragma once
 
 #include <iostream>
 #include <memory>
@@ -144,5 +143,3 @@ std::ostream &operator <<(std::ostream &os, const Error &e);
 using error::Error;
 
 } // openage::error
-
-#endif

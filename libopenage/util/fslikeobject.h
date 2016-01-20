@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_FSLIKEOBJECT_H_
-#define OPENAGE_UTIL_FSLIKEOBJECT_H_
+#pragma once
 
 #include <iostream>
 
@@ -56,5 +55,3 @@ private:
 
 
 }} // openage::util
-
-#endif

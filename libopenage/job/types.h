@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_JOB_TYPES_H_
-#define OPENAGE_JOB_TYPES_H_
+#pragma once
 
 #include <functional>
 
@@ -51,5 +50,3 @@ using abort_t = std::function<void()>;
 
 }
 }
-
-#endif

@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_AUDIO_FORMAT_H_
-#define OPENAGE_AUDIO_FORMAT_H_
+#pragma once
 
 #include "../gamedata/sound_file.gen.h"
 
@@ -24,5 +23,3 @@ format_t from_format(const gamedata::audio_format_t format);
 
 
 }} // namespace openage::audio
-
-#endif

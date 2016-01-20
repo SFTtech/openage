@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_ERROR_BACKTRACE_H_
-#define OPENAGE_ERROR_BACKTRACE_H_
+#pragma once
 
 // pxd: from libcpp cimport bool as cppbool
 
@@ -88,5 +87,3 @@ std::ostream &operator <<(std::ostream &os, const Backtrace &bt);
 
 
 }} // openage::error
-
-#endif

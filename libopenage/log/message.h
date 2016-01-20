@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_LOG_MESSAGE_H_
-#define OPENAGE_LOG_MESSAGE_H_
+#pragma once
 
 // pxd: from libc.stdint cimport int64_t
 #include <cstdint>
@@ -169,5 +168,3 @@ private:
 
 
 }} // openage::log
-
-#endif

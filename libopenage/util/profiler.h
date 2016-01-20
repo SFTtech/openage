@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_PROFILER_H_
-#define OPENAGE_UTIL_PROFILER_H_
+#pragma once
 
 #include <array>
 #include <chrono>
@@ -122,5 +121,3 @@ private:
 };
 
 }} // openage::util
-
-#endif

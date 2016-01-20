@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_PYINTERFACE_PYEXCEPTION_H_
-#define OPENAGE_PYINTERFACE_PYEXCEPTION_H_
+#pragma once
 
 #include <memory>
 // pxd: from libcpp.string cimport string
@@ -85,5 +84,3 @@ extern PyIfFunc<void, void *, Func<void, const error::backtrace_symbol *>> pyexc
 
 
 }} // openage::pyinterface
-
-#endif

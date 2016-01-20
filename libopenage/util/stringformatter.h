@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_STRINGFORMATTER_H_
-#define OPENAGE_UTIL_STRINGFORMATTER_H_
+#pragma once
 
 #include <atomic>
 #include <type_traits>
@@ -295,5 +294,3 @@ public:
 
 
 }} // namespace openage::util
-
-#endif

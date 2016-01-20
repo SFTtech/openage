@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_DATASTRUCTURE_CONCURRENT_QUEUE_H_
-#define OPENAGE_DATASTRUCTURE_CONCURRENT_QUEUE_H_
+#pragma once
 
 #include <condition_variable>
 #include <mutex>
@@ -73,5 +72,3 @@ private:
 
 }
 }
-
-#endif

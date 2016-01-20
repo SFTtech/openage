@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UNIT_UNIT_TEXTURE_H_
-#define OPENAGE_UNIT_UNIT_TEXTURE_H_
+#pragma once
 
 #include <cstdint>
 #include <vector>
@@ -129,5 +128,3 @@ private:
 unsigned int dir_group(coord::phys3_delta dir, unsigned int angles=8);
 
 } // namespace openage
-
-#endif

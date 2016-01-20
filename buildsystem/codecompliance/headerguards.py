@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """
 Verifies the guard macros of all C++ header files.
@@ -19,14 +19,10 @@ GUARD_RE = re.compile((
     "^(\\n|(#|//).*\\n)*"
 
     # the header guard
-    "#ifndef (?P<ifndef_guard>.*)\n"
-    "#define (?P<define_guard>.*)\n"
+    "#pragma once\n"
 
     # any number of lines of code
     "(.*\\n)*"
-
-    # the #endif part of the header guard
-    "#endif"
 
     # any number of empty lines
     "(\\n)*$"
@@ -62,25 +58,6 @@ def find_issues(dirname, guardprefix):
             match = GUARD_RE.match(data)
             if not match:
                 raise HeaderIssue("No valid header guard found")
-
-            ifndef_guard = match.group("ifndef_guard")
-            define_guard = match.group("define_guard")
-
-            if ifndef_guard != expected_guard:
-                raise HeaderIssue((
-                    "Wrong header guard:\n"
-                    "\texpected {}\n"
-                    "\tfound    {}").format(
-                        repr(expected_guard),
-                        repr(ifndef_guard)))
-
-            if define_guard != ifndef_guard:
-                raise HeaderIssue((
-                    "Inconsistent header gaurd:\n"
-                    "\t#ifndef {}\n"
-                    "\t#define {}").format(
-                        repr(ifndef_guard),
-                        repr(define_guard)))
 
         except HeaderIssue as exc:
             yield ("header guard issue in {}".format(fname), exc.args[0])

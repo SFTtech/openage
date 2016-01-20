@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_PLAYER_H_
-#define OPENAGE_PLAYER_H_
+#pragma once
 
 #include <string>
 #include <unordered_map>
@@ -71,5 +70,3 @@ private:
 };
 
 } // openage
-
-#endif

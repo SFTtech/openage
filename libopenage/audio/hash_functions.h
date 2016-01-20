@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_AUDIO_HASH_FUNCTIONS_H_
-#define OPENAGE_AUDIO_HASH_FUNCTIONS_H_
+#pragma once
 
 #include <tuple>
 
@@ -24,5 +23,3 @@ struct hash<std::tuple<::openage::audio::category_t,int>> {
 };
 
 }
-
-#endif

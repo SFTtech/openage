@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_DATASTRUCTURE_PAIRING_HEAP_H_
-#define OPENAGE_DATASTRUCTURE_PAIRING_HEAP_H_
+#pragma once
 
 /** @file
  * This file contains the implementation of a pairing heap.
@@ -378,5 +377,3 @@ protected:
 };
 
 }} // openage::datastructure
-
-#endif

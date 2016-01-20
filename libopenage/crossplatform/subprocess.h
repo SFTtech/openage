@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_CROSSPLATFORM_SUBPROCESS_H_
-#define OPENAGE_CROSSPLATFORM_SUBPROCESS_H_
+#pragma once
 
 #include <string>
 #include <vector>
@@ -46,5 +45,3 @@ int call(const std::vector<const char *> &argv,
 
 } // namespace subprocess
 } // namespace openage
-
-#endif

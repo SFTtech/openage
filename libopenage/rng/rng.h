@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RNG_RNG_H_
-#define OPENAGE_RNG_RNG_H_
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -214,5 +213,3 @@ uint64_t random_seed();
 
 
 }} // namespace openage::rng
-
-#endif

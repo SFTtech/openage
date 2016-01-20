@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_SCREENSHOT_H_
-#define OPENAGE_SCREENSHOT_H_
+#pragma once
 
 #include <string>
 #include <ctime>
@@ -37,5 +36,3 @@ private:
 };
 
 } // openage
-
-#endif

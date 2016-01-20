@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_INPUT_ACTION_H_
-#define OPENAGE_INPUT_ACTION_H_
+#pragma once
 
 #include <vector>
 
@@ -111,5 +110,3 @@ using action_check_t = std::function<bool(const action_arg_t &)>;
 
 
 }} // openage::input
-
-#endif

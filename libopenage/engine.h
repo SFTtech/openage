@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_ENGINE_H_
-#define OPENAGE_ENGINE_H_
+#pragma once
 
 #include <memory>
 #include <unordered_map>
@@ -376,5 +375,3 @@ private:
 };
 
 } // namespace openage
-
-#endif

@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_DOC_CODESTYLE_MOM_H_
-#define OPENAGE_DOC_CODESTYLE_MOM_H_
+#pragma once
 
 // [SFT]tech coding guidelines
 // ---------------------------
@@ -95,6 +94,3 @@ protected:
 
 
 }} // namespace parents::mom
-
-
-#endif

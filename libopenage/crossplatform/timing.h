@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_CROSSPLATFORM_TIMING_H_
-#define OPENAGE_CROSSPLATFORM_TIMING_H_
+#pragma once
 
 #include <cstdint>
 
@@ -22,5 +21,3 @@ int64_t get_monotonic_time();
 int64_t get_real_time();
 
 }} // namespace openage::timing
-
-#endif

@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_TERRAIN_TERRAIN_OBJECT_H_
-#define OPENAGE_TERRAIN_TERRAIN_OBJECT_H_
+#pragma once
 
 #include <memory>
 #include <stddef.h>
@@ -364,5 +363,3 @@ private:
 };
 
 } // openage
-
-#endif

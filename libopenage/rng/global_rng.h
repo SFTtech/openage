@@ -1,6 +1,5 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
-#ifndef OPENAGE_RNG_GLOBAL_RNG_H_
-#define OPENAGE_RNG_GLOBAL_RNG_H_
+#pragma once
 
 /** @file
  * This file contains functions for the global random number generator.
@@ -30,4 +29,3 @@ double real_range(double lower, double upper);
 
 } // namespace rng
 } // namespace openage
-#endif

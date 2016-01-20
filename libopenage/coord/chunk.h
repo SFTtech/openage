@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_COORD_CHUNK_H_
-#define OPENAGE_COORD_CHUNK_H_
+#pragma once
 
 #include "decl.h"
 
@@ -40,5 +39,3 @@ struct chunk_delta {
 #undef RELATIVE_TYPE
 #undef ABSOLUTE_TYPE
 #undef SCALAR_TYPE
-
-#endif

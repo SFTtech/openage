@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_GAME_SAVE_H_
-#define OPENAGE_GAME_SAVE_H_
+#pragma once
 
 #include <string>
 
@@ -26,5 +25,3 @@ void save(openage::GameMain *, std::string fname);
 void load(openage::GameMain *, std::string fname);
 
 }} // openage::gameio
-
-#endif

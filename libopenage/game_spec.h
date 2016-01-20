@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_GAME_SPEC_H_
-#define OPENAGE_GAME_SPEC_H_
+#pragma once
 
 #include <unordered_map>
 
@@ -252,5 +251,3 @@ private:
 };
 
 }
-
-#endif

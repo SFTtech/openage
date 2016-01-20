@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_LOG_STDOUT_LOGSINK_H_
-#define OPENAGE_LOG_STDOUT_LOGSINK_H_
+#pragma once
 
 #include "logsink.h"
 
@@ -25,5 +24,3 @@ StdOutSink &global_stdoutsink();
 
 
 }} // namespace openage::log
-
-#endif

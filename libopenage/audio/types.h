@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_AUDIO_TYPES_H_
-#define OPENAGE_AUDIO_TYPES_H_
+#pragma once
 
 #include <functional>
 #include <memory>
@@ -37,5 +36,3 @@ using opus_file_t = std::unique_ptr<OggOpusFile, std::function<void(OggOpusFile*
 
 }
 }
-
-#endif

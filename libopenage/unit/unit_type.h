@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UNIT_UNIT_TYPE_H_
-#define OPENAGE_UNIT_UNIT_TYPE_H_
+#pragma once
 
 #include <memory>
 #include <unordered_map>
@@ -119,5 +118,3 @@ public:
 };
 
 } // namespace openage
-
-#endif

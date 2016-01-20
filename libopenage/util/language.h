@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_LANGUAGE_H_
-#define OPENAGE_UTIL_LANGUAGE_H_
+#pragma once
 
 
 /*
@@ -40,5 +39,3 @@ inline void ignore_result(T /* unused result */) {}
 
 
 }} // openage::util
-
-#endif

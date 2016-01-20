@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_INPUT_INPUT_MANAGER_H_
-#define OPENAGE_INPUT_INPUT_MANAGER_H_
+#pragma once
 
 #include <functional>
 #include <map>
@@ -156,5 +155,3 @@ private:
 };
 
 }} // openage::input
-
-#endif

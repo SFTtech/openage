@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_DATASTRUCTURE_TESTS_H_
-#define OPENAGE_DATASTRUCTURE_TESTS_H_
+#pragma once
 
 #include <functional>
 #include <stddef.h>
@@ -41,6 +40,3 @@ struct hash<openage::datastructure::tests::heap_elem> {
 	}
 };
 } // namespace std
-
-
-#endif

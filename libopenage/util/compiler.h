@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_COMPILER_H_
-#define OPENAGE_UTIL_COMPILER_H_
+#pragma once
 
 /*
  * Some general-purpose utilities related to the C++ compiler and standard
@@ -57,6 +56,3 @@ bool is_symbol(const void *addr);
 
 
 }} // openage::util
-
-
-#endif

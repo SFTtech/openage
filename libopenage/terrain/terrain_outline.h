@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_TERRAIN_TERRAIN_OUTLINE_H_
-#define OPENAGE_TERRAIN_TERRAIN_OUTLINE_H_
+#pragma once
 
 #include <memory>
 
@@ -22,5 +21,3 @@ std::shared_ptr<Texture> square_outline(coord::tile_delta foundation_size);
 std::shared_ptr<Texture> radial_outline(float radius);
 
 } // namespace openage
-
-#endif

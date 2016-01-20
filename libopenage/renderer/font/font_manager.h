@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_FONT_FONT_MANAGER_H_
-#define OPENAGE_RENDERER_FONT_FONT_MANAGER_H_
+#pragma once
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -93,6 +92,3 @@ private:
 };
 
 }} // openage::renderer
-
-
-#endif

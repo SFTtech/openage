@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_AUDIO_CATEGORY_H_
-#define OPENAGE_AUDIO_CATEGORY_H_
+#pragma once
 
 #include <iostream>
 
@@ -27,5 +26,3 @@ category_t from_category(const gamedata::audio_category_t category);
 
 
 }} // namespace openage::audio
-
-#endif
