@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_LOG_LEVEL_H_
-#define OPENAGE_LOG_LEVEL_H_
+#pragma once
 
 #include <iostream>
 
@@ -73,5 +72,3 @@ std::ostream &operator <<(std::ostream &os, level lvl);
 
 
 }} // namespace openage::log
-
-#endif

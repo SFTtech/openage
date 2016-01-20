@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_FONT_FONT_H_
-#define OPENAGE_RENDERER_FONT_FONT_H_
+#pragma once
 
 #include <memory>
 #include <string>
@@ -208,5 +207,3 @@ struct hash<openage::renderer::font_description> {
 };
 
 }
-
-#endif

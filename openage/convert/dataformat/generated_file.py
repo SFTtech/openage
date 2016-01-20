@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -38,8 +38,7 @@ class GeneratedFile:
         },
         "struct": {
             "file_suffix": ".gen.h",
-            "content_prefix": Template("""#ifndef OPENAGE_${header_guard}_GEN_H_
-#define OPENAGE_${header_guard}_GEN_H_
+            "content_prefix": Template("""#pragma once
 
 ${headers}
 
@@ -48,8 +47,6 @@ namespace ${namespace} {
 """),
             "content_suffix": Template("""
 } // namespace ${namespace}
-
-#endif
 """),
         },
         "structimpl": {

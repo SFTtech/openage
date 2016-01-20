@@ -3,8 +3,7 @@
 #include <iostream>
 #include <string>
 
-#ifndef OPENAGE_UTIL_EXTERNALSSTREAM_H_
-#define OPENAGE_UTIL_EXTERNALSSTREAM_H_
+#pragma once
 
 namespace openage {
 namespace util {
@@ -62,5 +61,3 @@ private:
 
 
 }} // openage::util
-
-#endif

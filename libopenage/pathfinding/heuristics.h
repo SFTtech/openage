@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_PATHFINDING_HEURISTICS_H_
-#define OPENAGE_PATHFINDING_HEURISTICS_H_
+#pragma once
 
 #include "path.h"
 
@@ -33,5 +32,3 @@ cost_t euclidean_cost(const coord::phys3 &start, const coord::phys3 &end);
 
 } // namespace path
 } // namespace openage
-
-#endif

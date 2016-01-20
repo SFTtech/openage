@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_MAIN_H_
-#define OPENAGE_MAIN_H_
+#pragma once
 
 // pxd: from libcpp.string cimport string
 #include <string>
@@ -32,5 +31,3 @@ struct main_arguments {
 int run_game(const main_arguments &args);
 
 } // openage
-
-#endif

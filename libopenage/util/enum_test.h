@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_ENUM_TEST_H_
-#define OPENAGE_UTIL_ENUM_TEST_H_
+#pragma once
 
 // pxd: from libcpp.string cimport string
 #include <string>
@@ -45,5 +44,3 @@ extern testtype bar;
 
 
 }}} // openage::util::tests
-
-#endif

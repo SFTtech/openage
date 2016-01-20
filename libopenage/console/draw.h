@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_CONSOLE_DRAW_H_
-#define OPENAGE_CONSOLE_DRAW_H_
+#pragma once
 
 #include "buf.h"
 
@@ -26,5 +25,3 @@ void to_terminal(Buf *buf, util::FD *fd,
                  bool clear=false);
 
 }}} // openage::console::draw
-
-#endif

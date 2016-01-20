@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_MISC_H_
-#define OPENAGE_UTIL_MISC_H_
+#pragma once
 
 namespace openage {
 namespace util {
@@ -69,5 +68,3 @@ struct less {
 
 } // namespace util
 } // namespace openage
-
-#endif

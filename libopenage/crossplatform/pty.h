@@ -1,7 +1,6 @@
 // Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_CROSSPLATFORM_PTY_H_
-#define OPENAGE_CROSSPLATFORM_PTY_H_
+#pragma once
 
 #ifdef __APPLE__
 #  include <util.h>
@@ -9,6 +8,4 @@
 // TODO not yet implemented
 #else
 #  include <pty.h>
-#endif
-
 #endif

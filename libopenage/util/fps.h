@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_FPS_H_
-#define OPENAGE_UTIL_FPS_H_
+#pragma once
 
 #include "timer.h"
 
@@ -33,5 +32,3 @@ private:
 };
 
 }} // openage::util
-
-#endif

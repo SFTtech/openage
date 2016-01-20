@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UNIT_RESOURCE_H_
-#define OPENAGE_UNIT_RESOURCE_H_
+#pragma once
 
 #include <functional>
 
@@ -34,5 +33,3 @@ template<> struct hash<openage::game_resource> {
 };
 
 } // namespace std
-
-#endif

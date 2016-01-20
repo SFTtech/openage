@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_COLOR_H_
-#define OPENAGE_UTIL_COLOR_H_
+#pragma once
 
 #include "../gamedata/color.gen.h"
 
@@ -19,5 +18,3 @@ struct col {
 };
 
 }} // openage::util
-
-#endif

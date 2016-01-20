@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_VECTOR_H_
-#define OPENAGE_UTIL_VECTOR_H_
+#pragma once
 
 #include <iostream>
 #include <cmath>
@@ -181,5 +180,3 @@ using Vector3 = Vector<3>;
 using Vector4 = Vector<4>;
 
 }} // openage::util
-
-#endif

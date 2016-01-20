@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_TESTING_TESTLIST_H_
-#define OPENAGE_TESTING_TESTLIST_H_
+#pragma once
 
 #include "testing.h"
 
@@ -22,5 +21,3 @@ void run_method(const std::string &name);
 
 
 }} // openage::testing
-
-#endif

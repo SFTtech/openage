@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_AUDIO_IN_MEMORY_RESOURCE_H_
-#define OPENAGE_AUDIO_IN_MEMORY_RESOURCE_H_
+#pragma once
 
 #include <string>
 #include <tuple>
@@ -35,5 +34,3 @@ public:
 
 }
 }
-
-#endif

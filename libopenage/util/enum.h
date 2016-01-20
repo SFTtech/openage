@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_ENUM_H_
-#define OPENAGE_UTIL_ENUM_H_
+#pragma once
 
 // pxd: from libcpp cimport bool as cppbool
 #include <iostream>
@@ -139,5 +138,3 @@ std::ostream &operator <<(std::ostream &os, Enum<T> val) {
 
 
 }} // openage::util
-
-#endif

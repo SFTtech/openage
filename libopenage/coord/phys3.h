@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_COORD_PHYS3_H_
-#define OPENAGE_COORD_PHYS3_H_
+#pragma once
 
 #include <functional>
 
@@ -76,6 +75,3 @@ struct hash<openage::coord::phys3> {
 };
 
 } // namespace std
-
-
-#endif

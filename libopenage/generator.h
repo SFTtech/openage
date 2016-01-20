@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_GENERATOR_H_
-#define OPENAGE_GENERATOR_H_
+#pragma once
 
 #include "rng/rng.h"
 #include "assetmanager.h"
@@ -162,5 +161,3 @@ private:
 };
 
 } // namespace openage
-
-#endif

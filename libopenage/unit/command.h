@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UNIT_COMMAND_H_
-#define OPENAGE_UNIT_COMMAND_H_
+#pragma once
 
 #include <unordered_set>
 
@@ -141,5 +140,3 @@ private:
 };
 
 } // namespace openage
-
-#endif

@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
-#ifndef OPENAGE_PYINTERFACE_EXCTRANSLATE_H_
-#define OPENAGE_PYINTERFACE_EXCTRANSLATE_H_
 
+#pragma once
 
 /*
  * This hack replaces Cython's default 'except +' exception translator
@@ -146,5 +145,3 @@ void set_exc_translation_funcs(
 
 
 }} // openage::pyinterface
-
-#endif

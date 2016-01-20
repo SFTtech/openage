@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_MACRO_CONCAT_H_
-#define OPENAGE_UTIL_MACRO_CONCAT_H_
+#pragma once
 
 #define CONCAT_1(OP, X)      (X)
 #define CONCAT_2(OP, X, ...) (X) OP CONCAT_1(OP, __VA_ARGS__)
@@ -13,5 +12,3 @@
 #define CONCAT(OP, ...) CONCAT_N(__VA_ARGS__, \
 	CONCAT_5, CONCAT_4, CONCAT_3, CONCAT_2, CONCAT_1 \
 	) (OP, __VA_ARGS__)
-
-#endif

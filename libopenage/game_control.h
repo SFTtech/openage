@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_GAME_CONTROL_H_
-#define OPENAGE_GAME_CONTROL_H_
+#pragma once
 
 #include "coord/camgame.h"
 #include "input/input_context.h"
@@ -164,5 +163,3 @@ private:
 };
 
 } // openage
-
-#endif

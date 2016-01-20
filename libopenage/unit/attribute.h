@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UNIT_ATTRIBUTE_H_
-#define OPENAGE_UNIT_ATTRIBUTE_H_
+#pragma once
 
 #include <functional>
 #include <map>
@@ -387,5 +386,3 @@ public:
 };
 
 } // namespace openage
-
-#endif

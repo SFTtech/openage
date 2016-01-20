@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_HASH_H_
-#define OPENAGE_UTIL_HASH_H_
+#pragma once
 
 #include <cstdlib>
 
@@ -15,5 +14,3 @@ namespace util {
 size_t hash_combine(size_t hash1, size_t hash2);
 
 }} // openage::util
-
-#endif

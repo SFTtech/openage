@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_STRINGS_H_
-#define OPENAGE_UTIL_STRINGS_H_
+#pragma once
 
 // TODO remove some of those
 #include <cstdarg>
@@ -124,5 +123,3 @@ bool string_matches_pattern(const char *str, const char *pattern);
 
 
 }} // openage::util
-
-#endif

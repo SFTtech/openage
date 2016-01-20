@@ -1,7 +1,6 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_MACRO_LOOP_H_
-#define OPENAGE_UTIL_MACRO_LOOP_H_
+#pragma once
 
 #define LOOP_1(MACRO, X) MACRO(X)
 #define LOOP_2(MACRO, X, ...) MACRO(X), LOOP_1(MACRO, __VA_ARGS__)
@@ -13,5 +12,3 @@
 #define LOOP(MACRO, ...) LOOP_N(__VA_ARGS__, \
 	LOOP_5, LOOP_4, LOOP_3, LOOP_2, LOOP_1 \
 	) (MACRO, __VA_ARGS__)
-
-#endif

@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_LOG_LOGSOURCE_H_
-#define OPENAGE_LOG_LOGSOURCE_H_
+#pragma once
 
 // pxd: from libcpp.string cimport string
 #include <string>
@@ -54,5 +53,3 @@ private:
 
 
 }} // namespace openage::log
-
-#endif

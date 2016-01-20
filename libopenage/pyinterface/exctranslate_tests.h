@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_PYINTERFACE_EXCTRANSLATE_TESTS_H_
-#define OPENAGE_PYINTERFACE_EXCTRANSLATE_TESTS_H_
+#pragma once
 
 // pxd: from libopenage.pyinterface.functional cimport PyIfFunc0, PyIfFunc2, Func0
 #include "functional.h"
@@ -46,5 +45,3 @@ extern PyIfFunc<void, Func<void>, int> bounce_call_py;
 
 
 }}} // openage::pyinterface::tests
-
-#endif

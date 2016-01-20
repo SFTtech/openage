@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_ERROR_STACKANALYZER_H_
-#define OPENAGE_ERROR_STACKANALYZER_H_
+#pragma once
 
 #include "backtrace.h"
 
@@ -50,5 +49,3 @@ public:
 };
 
 }} // openage::error
-
-#endif

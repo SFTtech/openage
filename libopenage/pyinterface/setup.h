@@ -2,8 +2,7 @@
 
 #include <functional>
 
-#ifndef OPENAGE_PYINTERFACE_SETUP_H_
-#define OPENAGE_PYINTERFACE_SETUP_H_
+#pragma once
 
 /*
  * Code for verifying that all components of the Python interface have been
@@ -56,5 +55,3 @@ void check();
 
 
 }} // openage::pyinterface
-
-#endif

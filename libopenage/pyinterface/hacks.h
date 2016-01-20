@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_PYINTERFACE_HACKS_H_
-#define OPENAGE_PYINTERFACE_HACKS_H_
+#pragma once
 
 /*
  * This file contains a collection of hacks to work around particular Cython
@@ -20,6 +19,3 @@
  * __Pyx_CppExn2PyErr.
  */
 #include "exctranslate.h"
-
-
-#endif

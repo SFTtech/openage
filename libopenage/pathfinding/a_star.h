@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_PATHFINDING_A_STAR_H_
-#define OPENAGE_PATHFINDING_A_STAR_H_
+#pragma once
 
 #include <memory>
 
@@ -50,5 +49,3 @@ Path a_star(coord::phys3 start,
 
 } // namespace path
 } // namespace openage
-
-#endif

@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_DATASTRUCTURE_DOUBLY_LINKED_LIST_H_
-#define OPENAGE_DATASTRUCTURE_DOUBLY_LINKED_LIST_H_
+#pragma once
 
 #include "../util/compiler.h"
 #include "../error/error.h"
@@ -260,5 +259,3 @@ protected:
 
 } // namespace datastructure
 } // namespace openage
-
-#endif

@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_AUDIO_LOADER_POLICY_H_
-#define OPENAGE_AUDIO_LOADER_POLICY_H_
+#pragma once
 
 #include "../gamedata/sound_file.gen.h"
 
@@ -23,5 +22,3 @@ loader_policy_t from_loader_policy(const gamedata::audio_loader_policy_t loader_
 
 
 }} // openage::audio
-
-#endif

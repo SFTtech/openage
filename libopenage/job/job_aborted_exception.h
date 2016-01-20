@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_JOB_JOB_ABORTED_EXCEPTION_H_
-#define OPENAGE_JOB_JOB_ABORTED_EXCEPTION_H_
+#pragma once
 
 #include <stdexcept>
 
@@ -17,5 +16,3 @@ public:
 };
 
 }} // openage::job
-
-#endif

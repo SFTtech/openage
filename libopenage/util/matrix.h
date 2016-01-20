@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_UTIL_MATRIX_H_
-#define OPENAGE_UTIL_MATRIX_H_
+#pragma once
 
 #include <iostream>
 #include <cmath>
@@ -212,5 +211,3 @@ using Matrix3 = Matrix<3, 3>;
 using Matrix4 = Matrix<4, 4>;
 
 }} // openage::util
-
-#endif

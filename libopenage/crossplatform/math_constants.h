@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_CROSSPLATFORM_MATH_CONSTANTS_H_
-#define OPENAGE_CROSSPLATFORM_MATH_CONSTANTS_H_
+#pragma once
 
 namespace openage {
 namespace math {
@@ -22,5 +21,3 @@ constexpr double INV_SQRT_2   = 0.707106781186547524401; //!< 1/sqrt(2)
 
 } // namespace math
 } // namespace openage
-
-#endif

@@ -1,7 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_LOG_LOGSINK_H_
-#define OPENAGE_LOG_LOGSINK_H_
+#pragma once
 
 #include <vector>
 #include <mutex>
@@ -59,5 +58,3 @@ std::vector<LogSink *> &sink_list();
 
 
 }} // namespace openage::log
-
-#endif

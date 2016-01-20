@@ -1,7 +1,6 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_ASSETMANAGER_H_
-#define OPENAGE_ASSETMANAGER_H_
+#pragma once
 
 #include "config.h"
 
@@ -88,5 +87,3 @@ private:
 };
 
 }
-
-#endif
