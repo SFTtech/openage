@@ -1,5 +1,6 @@
 list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_item.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_list_model.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_property_map_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_singleton_item.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/link/qml_engine_with_singleton_items_info.cpp
