@@ -20,7 +20,7 @@ function(py_exec STATEMENTS RESULTVAR)
 	# aborts with a fatal error on error.
 	# no single quotes are allowed in STATEMENTS.
 	exec_program(
-		"${PYTHON}" ARGS -c "'${STATEMENTS}'"
+		"${PYTHON}" ARGS -c "\"${STATEMENTS}\""
 		OUTPUT_VARIABLE PY_OUTPUT
 		RETURN_VALUE PY_RETVAL
 	)
@@ -35,7 +35,7 @@ endfunction()
 function(py_get_config_var VAR RESULTVAR)
 	# uses py_exec to determine a config var as in distutils.sysconfig.get_config_var().
 	py_exec(
-		"from distutils.sysconfig import get_config_var; print(get_config_var(\"${VAR}\"))"
+		"from distutils.sysconfig import get_config_var; print(get_config_var('${VAR}'))"
 		RESULT
 	)
 
@@ -47,7 +47,7 @@ function(py_get_lib_name RESULTVAR)
 	py_get_config_var(VERSION PYTHON_VERSION)
 	if(NOT "${PYTHON_VERSION}" VERSION_LESS "3.2")
 		py_exec(
-			"import sys; print(sys.abiflags, end=\"\")"
+			"import sys; print(sys.abiflags, end='')"
 			ABIFLAGS
 		)
 	else()
