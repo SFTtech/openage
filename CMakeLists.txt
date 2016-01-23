@@ -68,6 +68,10 @@ include(codegen)
 include(version)
 include(doxygen)
 
+
+# now that all modules and settings are loaded,
+# apply those to the project:
+
 # create documentation
 doxygen_configure(libopenage/ openage/)
 
