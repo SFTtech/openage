@@ -1,5 +1,5 @@
 # Copyright 2015-2016 the openage authors. See copying.md for legal info.
-
+# pylint: disable=R0912
 """
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
@@ -62,12 +62,26 @@ def get_string_resources(args):
             if not srcdir[dirname].is_dir():
                 continue
 
-            for basename in srcdir[dirname].list():
-                langfilename = ["bin", lang.decode(), basename]
-                with srcdir[langfilename].open('rb') as langfile:
-                    # No utf-8 :(
-                    stringres.fill_from(read_hd_language_file(langfile, lang, enc='iso-8859-1'))
-                count += 1
+            # Sometimes we can have language DLLs in Bin/$LANG/
+            # e.g. HD Edition 2.0
+            # We do _not_ want to treat these as text files
+            # so first check explicitly
+
+            if srcdir["bin", lang.decode(), "language.dll"].is_file():
+                from .pefile import PEFile
+                for name in ["language.dll", "language_x1.dll", "language_x1_p1.dll"]:
+                    pefile = PEFile(srcdir["bin", lang.decode(), name].open('rb'))
+                    stringres.fill_from(pefile.resources().strings)
+                    count += 1
+
+            else:
+                for basename in srcdir[dirname].list():
+                    langfilename = ["bin", lang.decode(), basename]
+                    with srcdir[langfilename].open('rb') as langfile:
+                        # No utf-8 :(
+                        stringres.fill_from(read_hd_language_file(langfile, lang, enc='iso-8859-1'))
+                    count += 1
+
     elif srcdir["language.dll"].is_file():
         from .pefile import PEFile
         for name in ["language.dll", "language_x1.dll", "language_x1_p1.dll"]:
