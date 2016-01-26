@@ -165,14 +165,15 @@ def acquire_conversion_source_dir():
         print("please provide your AoE II installation dir:")
 
         try:
-            rawsourcedir = input("> ")
-            sourcedir = os.path.expandvars(os.path.expanduser(rawsourcedir))
+            sourcedir = input("> ")
         except KeyboardInterrupt:
             print("")
             exit(0)
         except EOFError:
             print("")
             exit(0)
+
+    sourcedir = os.path.expandvars(os.path.expanduser(sourcedir))
 
     return CaseIgnoringDirectory(sourcedir).root
 
