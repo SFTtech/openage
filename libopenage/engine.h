@@ -10,6 +10,8 @@
 
 #include <SDL2/SDL.h>
 
+#include <QObject>
+
 #include "log/log.h"
 #include "log/file_logsink.h"
 #include "audio/audio_manager.h"
@@ -65,6 +67,14 @@ struct coord_data {
 	coord::window camgame_window{400, 300};
 	coord::window camhud_window{0, 600};
 	coord::camgame_delta tile_halfsize{48, 24};  // TODO: get from convert script
+};
+
+class EngineSignals : public QObject {
+	Q_OBJECT
+
+public:
+signals:
+	void global_binds_changed(const std::vector<std::string>& global_binds);
 };
 
 /**
@@ -255,6 +265,11 @@ public:
 	input::InputManager &get_input_manager();
 
 	/**
+	* send keybindings help string to gui.
+	*/
+	void announce_global_binds();
+
+	/**
 	 * return this engine's text renderer.
 	 */
 	renderer::TextRenderer *get_text_renderer();
@@ -434,6 +449,7 @@ private:
 	std::unique_ptr<renderer::TextRenderer> text_renderer;
 
 public:
+	EngineSignals gui_signals;
 	gui::GuiItemLink *gui_link;
 };
 

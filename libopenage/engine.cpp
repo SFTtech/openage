@@ -552,6 +552,10 @@ input::InputManager &Engine::get_input_manager() {
 	return this->input_manager;
 }
 
+void Engine::announce_global_binds() {
+	emit this->gui_signals.global_binds_changed(this->get_input_manager().get_global_context().active_binds());
+}
+
 renderer::TextRenderer *Engine::get_text_renderer() {
 	return this->text_renderer.get();
 }
