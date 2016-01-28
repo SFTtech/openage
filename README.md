@@ -15,13 +15,15 @@ To play, you require *an original AoE II : TC installation or [AoE II: HD](http:
 [![github stars](https://img.shields.io/github/stars/SFTtech/openage.svg)](https://github.com/SFTtech/openage/stargazers)
 [![#sfttech on Freenode](http://img.shields.io/Freenode/%23sfttech.png)](https://webchat.freenode.net/?channels=sfttech)
 
+[<img src="https://www.redditstatic.com/about/assets/reddit-logo.png" alt="reddit" height="50"> /r/openage forum](https://www.reddit.com/r/openage/)
+
 
 The foundation of **openage**:
 
 Technology     | Component
 ---------------|----------
 **C++14**      | Engine core
-**Python**     | Scripting, media conversion, in-game console, code generation
+**Python3**    | Scripting, media conversion, in-game console, code generation
 **Cython**     | Glue code
 **CMake**      | Build system
 **OpenGL2.1**  | Rendering, shaders
@@ -36,17 +38,18 @@ Our goals *include*:
     and guessing/experimenting can only get you this close
   * We will not implement useless artificial limitations (max 30 selectable units...)
 * Multiplayer (obviously)
-* Optionally, [Improvements](/doc/ideas/) over the original game
+* Matchmaking and ranking with a [haskell masterserver](https://github.com/SFTtech/openage-masterserver)
+* Optionally, [improvements](/doc/ideas/) over the original game
 * AI scripting in Python, you can use [machine learning](http://scikit-learn.org/stable/)
 * Re-creating [free game assets](https://github.com/SFTtech/openage-data)
 * An easily-moddable content format: **nyan**'s yet another notation
 * A powerful integrated Python console and interface, comparable to [blender](http://blender.org/)
 
-Our goals specifically *exclude*:
+But beware, for sanity reasons:
 
-* Network compatibility with the original game.
+* No network compatibility with the original game.
   You really wanna have the same problems again?
-* Binary compatibility with the original game.
+* No binary compatibility with the original game.
   A one-way script to convert maps/savegames/missions to openage is planned though.
 
 
@@ -94,6 +97,7 @@ Development Process
 -------------------
 
 What does openage development look like in practice?
+ - extensive [syncronization](#contact)!
  - [doc/development.md](/doc/development.md).
 
 Can I help?
@@ -113,7 +117,7 @@ None of us uses Windows, so a port has low priority.
 
 However, we're using cross-platform libraries wherever possible,
 so a port should be pretty easy to accomplish.
-We'll eventually look into porting using `mingw`/`msys2`.
+We'll eventually look into porting using `mingw64`/`msys2`.
 
 If you want to beat us to it, go for it!
 
@@ -135,9 +139,10 @@ Guidelines:
 * No **bugreports** or **feature requests**, the game is perfect as is.
 * Don't try to **fix any bugs**, see above.
 * Don't implement any features, your code is crap.
-* Don't even think about sending a **pull request**
-* We even have a [list of tasks](/doc/tasks.md) that definitely don't need your work.
-* Don't note the irony, you idiot
+* Don't even think about sending a **pull request**.
+* Please ignore the [easy tasks](https://github.com/SFTtech/openage/issues?q=is:issue+is:open+label:%22easy%22) that [could just be done](https://github.com/SFTtech/openage/issues?q=is:issue+is:open+label:%22just+do+it%22).
+* Absolutely never ever participate in this [boring community](https://www.reddit.com/r/openage/).
+* Don't note the irony, you idiot.
 
 To prevent accidential violation of one of those guidelines, you should *never*
 
@@ -155,10 +160,13 @@ cheers, happy hecking.
 Contact
 -------
 
-Most of us hang around on our **IRC** channel (`#sfttech` on `freenode.net`).
+Most of the developers hang around on our **IRC** channel (`#sfttech` on `freenode.net`).
 Do not hesitate to ping us, we might not see your message otherwise.
 
-There's no openage mailing list, but the github issue tracker comes pretty close to it: Everybody who 'watches' the repository will receive all the issue tracker posts via mail, and can even reply directly via their mail client. All issue tracker discussions are auto-posted to the IRC channel by a bot. Use the issue tracker for any sorts of discussion, proposal or questions that the IRC is unsuitable for.
+For all technical discussion (ideas, problems, ...), use the [issue tracker](https://github.com/SFTtech/openage/issues)!
+It's like a mailing list.
+
+For all interactive chit-chat, use our [/r/openage subreddit](https://www.reddit.com/r/openage/)!
 
 
 License
