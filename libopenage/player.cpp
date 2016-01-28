@@ -32,7 +32,7 @@ bool Player::owns(Unit &unit) const {
 	return false;
 }
 
-void Player::recieve(const game_resource resource, double amount) {
+void Player::receive(const game_resource resource, double amount) {
 	auto r = this->resources.find(resource);
 	if (r == this->resources.end()) {
 		this->resources[resource] = amount;

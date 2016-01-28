@@ -51,7 +51,7 @@ public:
 	/**
 	 * add to stockpile
 	 */
-	void recieve(const game_resource resource, double amount);
+	void receive(const game_resource resource, double amount);
 
 	/**
 	 * remove from stockpile if available
