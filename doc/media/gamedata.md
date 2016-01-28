@@ -1,7 +1,8 @@
 Game Data
 =========
 
-All data relevant for the game (e.g. how much costs building the castle)
+All data relevant for the game (e.g. how much costs building the castle?
+What cultures exist? Can my priest overclock his "Wololo?")
 are stored in a binary format in the file `empires2_x1_p1.dat`.
 The format is descibed in the [huge struct definiton](/doc/media/gamedata-struct.md).
 
@@ -19,6 +20,6 @@ The storage format is completely replacable that way.
 For simplicity the minimal format is `CSV`.
 After that, `YAML` might be a candidate.
 
-The long term goal is `nyan`, which will be a custom language.
+The long term goal is [`nyan`](/doc/nyan), which will be a custom language.
 It's designed to be redundancy-free, well readable and
 specially optimized for moddability.

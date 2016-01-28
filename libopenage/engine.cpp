@@ -152,7 +152,7 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_texture_units);
 	log::log(MSG(dbg) << "Maximum supported texture units: " << max_texture_units);
 	if (max_texture_units < 2) {
-		throw Error(MSG(err) << "Your GPU has too less texture units: " << max_texture_units);
+		throw Error(MSG(err) << "Your GPU has not enough texture units: " << max_texture_units);
 	}
 
 	// vsync on
