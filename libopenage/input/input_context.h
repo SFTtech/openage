@@ -58,9 +58,9 @@ public:
 
 
 	/**
-	 * Affects which keyboard events are recieved:
+	 * Affects which keyboard events are received:
 	 * true to accpet utf8 text events,
-	 * false to recieve regular char events
+	 * false to receive regular char events
 	 */
 	bool utf8_mode;
 

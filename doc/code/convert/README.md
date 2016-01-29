@@ -1,12 +1,12 @@
 Convert Script
 ==============
 
-The convert script exists for transforming media files to openage-compatible
-formats, and generating code for parsing the generated files. It is written
-in **Python** and contains **C++ extensions**.
+The convert script transforms media files to openage-compatible
+formats, and generates code for parsing the generated files. It is written
+in **Python**, **Cython** and contains **C++ extensions**.
 
 As we are using the media assets of the original game, the input format is
-preexisting and we have to deal with it.
+pre-existing and we have to deal with it.
 
 Unfortunately the original asset binary formats are a bit "special",
 so we need to convert the files to a format that is less special, and more
@@ -52,7 +52,7 @@ Files can be "redefined" by overlay archives.
 
 All available archives have to be ordered, so that 'high priority' files
 override 'low priority' files. Mods have a higher priority than the base game
-to be able to apply its modifications.
+to be able to apply their modifications.
 
 The overlay procedure works by assigning unique media files to the desired
 file source or archive.

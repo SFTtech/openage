@@ -1,4 +1,4 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-lines
 
@@ -10,7 +10,7 @@ from ..dataformat.members import EnumLookupMember, ContinueReadMember, IncludeMe
 class UnitCommand(Exportable):
     name_struct        = "unit_command"
     name_struct_file   = "unit"
-    struct_description = "a command a single unit may recieve by script or human."
+    struct_description = "a command a single unit may receive by script or human."
 
     data_format = (
         (READ, "command_used", "int16_t"),                  # always 1
