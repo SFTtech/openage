@@ -45,16 +45,21 @@ endfunction()
 function(py_get_lib_name RESULTVAR)
 	# uses py_exec to compute Python's C/C++ library name, just like python-config does.
 	py_get_config_var(VERSION PYTHON_VERSION)
-	if(NOT "${PYTHON_VERSION}" VERSION_LESS "3.2")
-		py_exec(
-			"import sys; print(sys.abiflags, end='')"
-			ABIFLAGS
-		)
-	else()
-		set(ABIFLAGS, "")
-	endif()
 
-	set("${RESULTVAR}" "python${PYTHON_VERSION}${ABIFLAGS}" PARENT_SCOPE)
+    if(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+        set(ABIFLAGS, "")
+    else()
+        if(NOT "${PYTHON_VERSION}" VERSION_LESS "3.2")
+            py_exec(
+                "import sys; print(sys.abiflags, end='')"
+                ABIFLAGS
+            )
+        else()
+            set(ABIFLAGS, "")
+        endif()
+    endif()
+
+    set("${RESULTVAR}" "python${PYTHON_VERSION}${ABIFLAGS}" PARENT_SCOPE)
 endfunction()
 
 function(find_python_interpreter_builtin)
@@ -156,9 +161,11 @@ else()
 	message("No suitable Python interpreter found.")
 	message("We need an interpreter that is shipped with libpython and header files.")
 	message("Specify your own with -DPYTHON=/path/to/executable\n\n\n")
-	set(PYTHON "")
-	set(PYTHON_INCLUDE_DIR "")
-	set(PYTHON_LIBRARY "")
+
+
+    set(PYTHON "D:/Python/Python35-32/python.exe")
+	set(PYTHON_INCLUDE_DIR "D:/Python/Python35-32/include")
+	set(PYTHON_LIBRARY "D:/Python/Python35-32/libs")
 endif()
 
 unset(PYTHON_TEST_RESULT)

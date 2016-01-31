@@ -35,14 +35,14 @@ Dependency list:
     CR    opengl >=2.1
     CR    libepoxy
      R    dejavu font
-    CR    freetype2
+    CR    freetype2 - done
     CR    fontconfig
     CR    harfbuzz
-    CR    sdl2
-    CR    sdl2_image
-    CR    opusfile
-      A   opus-tools
-    C     pygments
+    CR    sdl2  - done
+    CR    sdl2_image  - done
+    CR    opusfile - done
+      A   opus-tools - done
+    C     pygments - done
 
       A   An installed version of any of the following (wine is your friend).
           Other versions _might_ work; setup disk support will be added soon:

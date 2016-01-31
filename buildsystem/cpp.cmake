@@ -79,7 +79,16 @@ function(finalize_binary target_name output_name type)
 	if(type STREQUAL "executable")
 		add_executable("${target_name}" ${sources})
 	elseif(type STREQUAL "library")
-		add_library("${target_name}" SHARED ${sources})
+            
+        SET(${UNIX_SOURCES} "")
+        
+        FOREACH(NATIVE_SOURCE_PATH ${sources})                
+            file(TO_CMAKE_PATH ${NATIVE_SOURCE_PATH} UNIX_SOURCE_PATH )
+            list(APPEND UNIX_SOURCES ${UNIX_SOURCE_PATH})
+        ENDFOREACH()
+        
+        #MESSAGE(">>>>>>>> ${UNIX_SOURCES}")
+        add_library(${target_name} SHARED ${UNIX_SOURCES})
 	endif()
 
 	foreach(flag ${ARGN})

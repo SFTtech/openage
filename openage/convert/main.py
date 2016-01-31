@@ -2,8 +2,9 @@
 
 """ Entry point for all of the asset conversion. """
 import os
+import sys
 # importing readline enables the raw_input calls to have history etc.
-import readline  # pylint: disable=unused-import
+if sys.platform != "win32": import readline  # pylint: disable=unused-import
 
 from .game_versions import GameVersion, get_game_versions
 from . import changelog
