@@ -59,30 +59,142 @@ Item {
 		LR.tag: "game"
 	}
 
+	GameControl {
+		id: gameControlObj
+
+		engine: Engine
+		game: gameObj
+
+		modes: [createModeObj, editorModeObj, actionModeObj]
+
+		LR.tag: "gamecontrol"
+	}
+
+	GeneratorParameters {
+		id: genParamsObj
+
+		LR.tag: "gen"
+	}
+
 	ColumnLayout {
+		id: controls
+
 		anchors.left: parent.left
 		anchors.right: parent.right
 		anchors.top: parent.top
-		anchors.topMargin: fontMetrics.averageCharacterWidth * 4
-		anchors.leftMargin: fontMetrics.averageCharacterWidth * 2
 
 		spacing: fontMetrics.averageCharacterWidth * 2
 
-		GeneratorParameters {
-			id: genParamsObj
+		state: gameControlObj.mode ? gameControlObj.mode.name : ""
 
-			LR.tag: "gen"
+		Component {
+			id: changeMode
+
+			ButtonFlat {
+				text: "change_mode"
+				onClicked: gameControlObj.modeIndex = (gameControlObj.effectiveModeIndex + 1) % gameControlObj.modes.length
+			}
 		}
 
-		GeneratorParametersConfiguration {
-			generatorParameters: genParamsObj
+		CreateMode {
+			id: createModeObj
+			LR.tag: "createMode"
 		}
 
-		GeneratorControl {
-			generatorParameters: genParamsObj
-			gameSpec: specObj
-			game: gameObj
+		ActionMode {
+			id: actionModeObj
+			LR.tag: "actionMode"
 		}
+
+		EditorMode {
+			id: editorModeObj
+
+			currentTypeId: typePicker.current
+			currentTerrainId: typePicker.currentTerrain
+			paintTerrain: typePicker.paintTerrain
+
+			onToggle: typePicker.toggle()
+
+			LR.tag: "editorMode"
+		}
+
+		states: [
+			State {
+				id: creationMode
+				name: createModeObj.name
+
+				property list<Item> content: [
+					Loader {
+						sourceComponent: changeMode
+					},
+					GeneratorParametersConfiguration {
+						generatorParameters: genParamsObj
+					},
+					GeneratorControl {
+						generatorParameters: genParamsObj
+						gameSpec: specObj
+						game: gameObj
+					}
+				]
+
+				PropertyChanges {
+					target: controls
+					children: creationMode.content
+					anchors.topMargin: fontMetrics.averageCharacterWidth * 4
+					anchors.leftMargin: fontMetrics.averageCharacterWidth * 2
+				}
+			},
+			State {
+				id: editorMode
+				name: editorModeObj.name
+
+				property list<Item> content: [
+					Loader {
+						sourceComponent: changeMode
+					},
+					TypePicker {
+						id: typePicker
+
+						Layout.preferredWidth: root.width / 4
+						Layout.preferredHeight: root.height / 2
+
+						iconHeight: fontMetrics.averageCharacterWidth * 8
+
+						editorMode: editorModeObj
+						gameSpec: specObj
+					},
+					Text {
+						color: "white"
+						text: typePicker.currentHighlighted != -1 ? typePicker.currentHighlighted : ""
+					}
+				]
+
+				PropertyChanges {
+					target: controls
+					children: editorMode.content
+					anchors.topMargin: fontMetrics.averageCharacterWidth * 4
+					anchors.leftMargin: fontMetrics.averageCharacterWidth * 2
+				}
+			},
+			State {
+				id: actionMode
+				name: actionModeObj.name
+
+				property list<Item> content: [
+					IngameHud {
+						anchors.fill: root
+
+						actionMode: actionModeObj
+						playerName: gameControlObj.currentPlayerName
+						civIndex: gameControlObj.currentCivIndex
+					}
+				]
+
+				PropertyChanges {
+					target: controls; children: actionMode.content
+				}
+			}
+		]
 	}
 
 	Component.onCompleted: {
