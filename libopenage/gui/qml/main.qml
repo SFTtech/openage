@@ -197,6 +197,22 @@ Item {
 		]
 	}
 
+	ColumnLayout {
+		anchors.left: parent.left
+		anchors.right: parent.right
+		anchors.top: parent.top
+		anchors.topMargin: fontMetrics.averageCharacterWidth * 4
+		anchors.rightMargin: fontMetrics.averageCharacterWidth * 2
+
+		spacing: fontMetrics.averageCharacterWidth * 2
+
+		BindsHelp {
+			Layout.alignment: Qt.AlignRight
+
+			gameControl: gameControlObj
+		}
+	}
+
 	Component.onCompleted: {
 		ImageProviderByFilename.gameSpec = specObj
 		ImageProviderById.gameSpec = specObj
