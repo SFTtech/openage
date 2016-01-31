@@ -246,7 +246,7 @@ ActionMode::ActionMode()
 				log::log(MSG(dbg) << "select");
 				Terrain *terrain = engine.get_game()->terrain.get();
 				this->selection.drag_update(mousepos_camgame);
-				this->selection.drag_release(terrain, engine.get_input_manager().is_mod_down(input::modifier::CTRL));
+				this->selection.drag_release(terrain, engine.get_input_manager().is_mod_down(input::modifier::SHIFT));
 			}
 			return true;
 		}
