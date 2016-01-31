@@ -47,12 +47,8 @@ bool Unit::accept_commands() const {
 	return (this->has_action() && this->top()->allow_control());
 }
 
-bool Unit::is_own_unit() {
-	Player *player = Engine::get().player_focus();
-	if (player) {
-		return player->owns(*this);
-	}
-	return false;
+bool Unit::is_own_unit(const Player &player) {
+	return player.owns(*this);
 }
 
 UnitAction *Unit::top() const {
