@@ -297,7 +297,7 @@ void GameSpec::load_terrain(AssetManager &am) {
 	// result attributes
 	terrain_data.terrain_id_count         = terrain_meta.size();
 	terrain_data.blendmode_count          = blending_meta.size();
-	terrain_data.textures.reserve(terrain_data.terrain_id_count);
+	terrain_data.textures.resize(terrain_data.terrain_id_count);
 	terrain_data.blending_masks.reserve(terrain_data.blendmode_count);
 	terrain_data.terrain_id_priority_map  = std::make_unique<int[]>(terrain_data.terrain_id_count);
 	terrain_data.terrain_id_blendmode_map = std::make_unique<int[]>(terrain_data.terrain_id_count);
