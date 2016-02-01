@@ -81,9 +81,6 @@ ap.add_argument("--sanitize-fatal", action='store_true',
 ap.add_argument("--compiler", "-c",
                 default="",
                 help="compiler suite")
-ap.add_argument("--c-compiler",
-                default=getenv("CC"),
-                help="c compiler executable, default=$ENV[CC]")
 ap.add_argument("--cpp-compiler",
                 default=getenv("CXX"),
                 help="c++ compiler executable, default=$ENV[CXX]")
@@ -152,8 +149,11 @@ elif mode == 'release':
 
 defines.update(build_type=build_type)
 
-# maps csuite names to lists of (cc, cxx, other aliases...)
-csuites = {"gnu": ("gcc", "g++"), "llvm": ("clang", "clang++")}
+# maps suite name -> (cxxname, aliases...)
+csuites = {
+    "gnu": ("g++", "gcc"),
+    "llvm": ("clang++", "clang"),
+}
 
 
 def getcsuite(name):
@@ -164,53 +164,15 @@ def getcsuite(name):
     else:
         raise ValueError("unknown compiler: %s" % name)
 
-# determine compiler binaries from args.{c_compiler, cxx_compiler, compiler}
-if args.compiler and (args.c_compiler or args.cpp_compiler):
+# determine compiler binaries from args.{cxx_compiler, compiler}
+if args.compiler and args.cpp_compiler:
     ap.error("""either specify a compiler suite via --compiler, or manually \
-specify the C and C++ compilers via --c-compiler and --cpp-compiler""")
+specify the C++ compiler via --cpp-compiler""")
 
-if args.c_compiler or args.cpp_compiler:
-    cc = args.c_compiler
+if args.cpp_compiler:
     cxx = args.cpp_compiler
-    if cc and cxx:
-        # both CC and CXX have been specified manually
-        try:
-            csuite = getcsuite(cc)
-        except ValueError:
-            print("warning: could not identify compiler: %s" % cc)
-            csuite = 'unknown'
-    else:
-        # only one has been specified manually; auto-determine the other
-        if cc:
-            known = cc
-            unknownindex = 1
-        else:
-            known = cxx
-            unknownindex = 0
-
-        knowndir, knownbasename = os.path.split(known)
-        knownbasename, knownext = os.path.splitext(knownbasename)
-        try:
-            knownbasename, knownver = knownbasename.split('-', maxsplit=1)
-            knownver = "-%s" % knownver
-        except ValueError:
-            knownver = ""
-
-        try:
-            csuite = getcsuite(knownbasename)
-        except ValueError:
-            ap.error("could not identify compiler: %s" % known)
-
-        unknownbasename = csuites[csuite.lower()][unknownindex]
-        unknownbasename = "".join((unknownbasename, knownver, knownext))
-        unknown = os.path.join(knowndir, unknownbasename)
-
-        if not cc:
-            cc = unknown
-        if not cxx:
-            cxx = unknown
 else:
-    # neither CC, nor CXX has been specified
+    # CXX has not been specified
     compiler = args.compiler
     if not compiler:
         if sys.platform.startswith('darwin'):
@@ -223,24 +185,23 @@ else:
         # look up csuite name (e.g. gcc -> gnu)
         csuite = getcsuite(compiler)
     except ValueError:
-        ap.error("unknown compiler suite: %s. manually specify --c-compiler \
-and --cpp-compiler, or use one of [%s]" % (compiler, ", ".join(csuites)))
+        ap.error("unknown compiler suite: %s. "
+                 "manually specify --cpp-compiler, or use one of [%s]" % (
+                     compiler, ", ".join(csuites)))
 
-    cc, cxx = csuites[csuite][:2]
+    cxx = csuites[csuite][0]
 
-# test whether the specified compilers actually exist
-if not shutil.which(cc):
-    ap.error('could not find c compiler executable: %s' % cc)
-
+# test whether the specified compiler actually exists
 if not shutil.which(cxx):
     ap.error('could not find c++ compiler executable: %s' % cxx)
 
 print('compiler suite: %s\n' % csuite)
 
-defines.update(c_compiler=cc, cxx_compiler=cxx)
+defines.update(cxx_compiler=cxx)
 
-defines.update(c_flags=args.flags, cxx_flags=args.flags, exe_linker_flags=args.ldflags,
-               module_linker_flags=args.ldflags, shared_linker_flags=args.ldflags)
+defines.update(cxx_flags=args.flags, exe_linker_flags=args.ldflags,
+               module_linker_flags=args.ldflags,
+               shared_linker_flags=args.ldflags)
 
 if args.sanitize == 'none' and args.sanitize_fatal:
     ap.error('--sanitize-fatal only valid with --sanitize')
@@ -272,7 +233,7 @@ def sanitize_for_filename(s, fallback='-'):
     return "".join(yieldsanitizedchars())
 
 bindir = ".bin/%s-%s-%s" % (
-    sanitize_for_filename(cc),
+    sanitize_for_filename(cxx),
     sanitize_for_filename(mode),
     sanitize_for_filename("-O%s -sanitize=%s" % (args.optimize, args.sanitize)))
 
@@ -306,7 +267,7 @@ maxkeylen = max(len(k) for k in defines)
 for k, v in sorted(defines.items()):
     print('%s | %s' % (k.rjust(maxkeylen), v))
 
-    if k in ('c_compiler', 'cxx_compiler'):
+    if k in ('cxx_compiler',):
         # work around this cmake 'feature':
         # when run in an existing build directory, if CC or CXX are given,
         # all other arguments are ignored... this is retarded.

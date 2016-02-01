@@ -24,7 +24,7 @@ If you have installed all the dependencies that are conveniently listed in
 If it doesn't, consider reporting the issue/asking for help in #sfttech on freenode.net.
 ")
 
-project(openage C CXX)
+project(openage CXX)
 
 # Ensure CMAKE_BUILD_TYPE is set correctly.
 if(NOT CMAKE_BUILD_TYPE)
