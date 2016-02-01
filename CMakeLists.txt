@@ -30,6 +30,7 @@ project(openage C CXX)
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "Debug")
 endif()
+string(TOUPPER "CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE}" BUILD_TYPE_CXX_FLAGS)
 
 # options: keep up to date with those in ./configure!
 if(NOT DEFINED WANT_BACKTRACE)
@@ -93,7 +94,9 @@ print_config_options()
 message("${PROJECT_NAME} ${PROJECT_VERSION}
 
          compiler | ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}
+       build type | ${CMAKE_BUILD_TYPE}
          cxxflags | ${CMAKE_CXX_FLAGS}
+ build type flags | ${${BUILD_TYPE_CXX_FLAGS}}
         build dir | ${CMAKE_BINARY_DIR}
    install prefix | ${CMAKE_INSTALL_PREFIX}
 py install prefix | ${CMAKE_PY_INSTALL_PREFIX}

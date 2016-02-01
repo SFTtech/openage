@@ -83,10 +83,10 @@ ap.add_argument("--compiler", "-c",
                 help="compiler suite")
 ap.add_argument("--c-compiler",
                 default=getenv("CC"),
-                help="c compiler executable")
+                help="c compiler executable, default=$ENV[CC]")
 ap.add_argument("--cpp-compiler",
                 default=getenv("CXX"),
-                help="c++ compiler executable")
+                help="c++ compiler executable, default=$ENV[CXX]")
 ap.add_argument("--with", action='append', dest='with_', metavar='OPTION',
                 help="enable optional functionality")
 ap.add_argument("--without", action='append', metavar='OPTION',
