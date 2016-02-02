@@ -219,7 +219,7 @@ function(python_finalize)
 
 	get_property(pxdgen_sources GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
 	get_property(generated_pxd_list GLOBAL PROPERTY SFT_GENERATED_PXD_FILES)
-	file(WRITE "${CMAKE_BINARY_DIR}/py/pxdgen_sources" "${pxdgen_sources}")
+	write_on_change("${CMAKE_BINARY_DIR}/py/pxdgen_sources" "${pxdgen_sources}")
 	set(PXDGEN_TIMEFILE "${CMAKE_BINARY_DIR}/py/pxdgen_timefile")
 	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}" ${generated_pxd_list}
 		COMMAND "${PYTHON}" -m buildsystem.pxdgen
@@ -235,11 +235,11 @@ function(python_finalize)
 	# cythonize (.pyx -> .cpp)
 
 	get_property(cython_modules GLOBAL PROPERTY SFT_CYTHON_MODULES)
-	file(WRITE "${CMAKE_BINARY_DIR}/py/cython_modules" "${cython_modules}")
+	write_on_change("${CMAKE_BINARY_DIR}/py/cython_modules" "${cython_modules}")
 	get_property(cython_modules_embed GLOBAL PROPERTY SFT_CYTHON_MODULES_EMBED)
-	file(WRITE "${CMAKE_BINARY_DIR}/py/cython_modules_embed" "${cython_modules_embed}")
+	write_on_change("${CMAKE_BINARY_DIR}/py/cython_modules_embed" "${cython_modules_embed}")
 	get_property(pxd_list GLOBAL PROPERTY SFT_PXD_FILES)
-	file(WRITE "${CMAKE_BINARY_DIR}/py/pxd_list" "${pxd_list}")
+	write_on_change("${CMAKE_BINARY_DIR}/py/pxd_list" "${pxd_list}")
 	set(CYTHONIZE_TIMEFILE "${CMAKE_BINARY_DIR}/py/cythonize_timefile")
 	add_custom_command(OUTPUT "${CYTHONIZE_TIMEFILE}"
 		COMMAND "${PYTHON}" -m buildsystem.cythonize
@@ -269,7 +269,7 @@ function(python_finalize)
 	get_property(py_files_srcdirs GLOBAL PROPERTY SFT_PY_FILES_RELSRCDIRS)
 	get_property(py_files_noinstall GLOBAL PROPERTY SFT_PY_FILES_NOINSTALL)
 
-	file(WRITE "${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
+	write_on_change("${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
 	set(COMPILEPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
 	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
 		COMMAND "${PYTHON}" -m buildsystem.compilepy
