@@ -57,6 +57,7 @@ add_sources(libopenage GENERATED ${CODEGEN_TARGET_TUS})
 
 # after this point, no further sources can be added to the executable
 finalize_binary(libopenage openage library allow_no_undefined)
+set_target_properties(libopenage PROPERTIES VERSION 0)
 
 # library dependency specification
 
