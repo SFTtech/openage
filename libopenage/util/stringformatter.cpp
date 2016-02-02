@@ -8,9 +8,7 @@ namespace openage {
 namespace util {
 
 
-CachableOSStream::CachableOSStream()
-	:
-	flag(ATOMIC_FLAG_INIT) {}
+CachableOSStream::CachableOSStream() {}
 
 
 CachableOSStream::CachableOSStream(std::string &output)
