@@ -24,7 +24,19 @@ If you have installed all the dependencies that are conveniently listed in
 If it doesn't, consider reporting the issue/asking for help in #sfttech on freenode.net.
 ")
 
-project(openage CXX)
+# cmake < 3.4.0 has problems with projects that use C++ but not C,
+# especially in the FindThreads module (when header files are checked).
+if(CMAKE_VERSION VERSION_LESS "3.4.0")
+	message(WARNING "using cmake ${CMAKE_VERSION} < 3.4.0, falling back and setting CC=CXX.")
+	project(openage C CXX)
+
+	# simple hack to set CC=CXX because
+	# older cmake requires CC for some header tests
+	set(CMAKE_C_COMPILER "${CMAKE_CXX_COMPILER}")
+	set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS}")
+else()
+	project(openage CXX)
+endif()
 
 # Ensure CMAKE_BUILD_TYPE is set correctly.
 if(NOT CMAKE_BUILD_TYPE)
