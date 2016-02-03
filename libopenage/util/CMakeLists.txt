@@ -11,6 +11,7 @@ add_sources(libopenage
 	fds.cpp
 	fps.cpp
 	fslikeobject.cpp
+	generator_test.cpp
 	hash.cpp
 	init.cpp
 	language.cpp
