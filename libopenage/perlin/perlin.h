@@ -2,62 +2,84 @@
 
 #pragma once
 
-#include <functional>
-#include <unordered_map>
+#include <algorithm>
 #include <cmath>
+#include <cstdint>
+#include <functional>
+#include <iostream>
+#include <unordered_map>
 
 #include "../coord/decl.h"
+#include "../rng/box_muller.h"
+#include "../rng/rng.h"
+#include "../util/hash.h"
 #include "../util/vector.h"
 
 namespace openage {
 namespace perlin {
 
-using value_t = int64_t;
-using coord_t = coord::phys_t;
-template<size_t N>
-using perlin_vec = util::Vector<N, coord::phys_t>;
 using seed_t = size_t; // std::hash return value
+using coord_t = coord::phys_t;
+using value_t = int64_t;
+template<size_t N>
+using coord_vec = util::Vector<N, coord_t>;
+template<size_t N>
+using value_vec = util::Vector<N, value_t>;
 
 /**
  */
 template<size_t N>
 class Perlin {
-using vector_t = perlin_vec<N>;
+using cvec_t = coord_vec<N>;
+using vvec_t = value_vec<N>;
 
 	seed_t seed;
 	size_t granularity;
-	std::unordered_map<vector_t, vector_t> gradient_cache;
+	std::unordered_map<cvec_t, vvec_t> gradient_cache;
+	// Maximum possible gradient vector component value without risking
+	// overflows during dot_product calculations. TODO: constexpr?
+	value_t comp_max = static_cast<value_t>(sqrt(static_cast<double>(INT64_MAX) / N));
 
 	value_t interpolate(value_t x, value_t y, double pos) const {
 		double factor = (3 * std::pow(pos, 2)) - (2 * std::pow(pos, 3));
 		return (value_t)((1 - factor) * x + factor * y);
 	}
 
-	vector_t calculate_gradient(vector_t node) {
-		// FIXME
-		// seed prng with this->shrink(node) so that granularity does not
-		// influence the overall look of the noise
-		return vector_t{};
+	vvec_t calculate_gradient(const cvec_t &node) const {
+		rng::RNG rng = rng::RNG{util::hash_combine(
+			this->seed,
+			std::hash<cvec_t>{}(this->shrink(node))
+		)};
+		rng::BoxMuller gauss = rng::BoxMuller{std::bind(&rng::RNG::real, &rng)};
+		auto tmp = util::Vector<N, double>{};
+		std::generate(tmp.begin(), tmp.end(), gauss);
+		tmp.normalize();
+		auto res = vvec_t{};
+		for (size_t i = 0; i < N; i++) {
+			res[i] = static_cast<value_t>(this->comp_max * tmp[i]);
+		}
+		std::cout << node << " -> " << res << std::endl;
+		return res;
 	}
 
-	vector_t get_gradient(vector_t node) {
+	vvec_t get_gradient(const cvec_t &node) {
 		auto it = this->gradient_cache.find(node);
 		if (it != this->gradient_cache.end()) {
 			return it->second;
 		}
-		vector_t res = this->calculate_gradient(node);
+		vvec_t res = this->calculate_gradient(node);
 		this->gradient_cache[node] = res;
 		return res;
 	}
 
-	value_t magic_dot_product(vector_t node, vector_t point) {
-		vector_t diff = node - point;
+	value_t magic_dot_product(const cvec_t &node, const cvec_t &point) {
+		vvec_t diff = node - point;
 		return diff.dot_product(this->get_gradient(node));
 	}
 
 	value_t multidim_inter(size_t dim,
-	                       vector_t &point,
-	                       const vector_t &orig_point) {
+	                       cvec_t &point,
+	                       const cvec_t &orig_point) {
 
 		if (dim == N) {
 			return this->magic_dot_product(point, orig_point);
@@ -80,11 +102,11 @@ using vector_t = perlin_vec<N>;
 		return this->interpolate(lo_part, hi_part, pos);
 	}
 
-	coord_t lower_cell_border(coord_t num) {
+	coord_t lower_cell_border(coord_t num) const {
 		return num - (num % this->granularity);
 	}
 
-	vector_t shrink(vector_t node) {
+	cvec_t shrink(const cvec_t &node) const {
 		return node / this->granularity;
 	}
 
@@ -97,9 +119,9 @@ public:
 
 	~Perlin() = default;
 
-	value_t noise_value(const vector_t &point) {
+	value_t noise_value(const cvec_t &point) {
 		// TODO: normalize for different N
-		vector_t tmp = point;
+		cvec_t tmp = point;
 		return this->multidim_inter(0, tmp, point);
 	}
 
