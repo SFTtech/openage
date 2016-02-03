@@ -56,6 +56,7 @@ def tests_cpp():
     yield "openage::datastructure::tests::pairing_heap"
     yield "openage::job::tests::test_job_manager"
     yield "openage::path::tests::path_node", "pathfinding"
+    yield "openage::perlin::tests::perlin"
     yield "openage::pyinterface::tests::pyobject"
     yield "openage::pyinterface::tests::err_py_to_cpp"
     yield "openage::renderer::tests::font"
