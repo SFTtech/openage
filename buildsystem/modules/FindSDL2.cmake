@@ -1,7 +1,7 @@
 # This file was taken from openmw,
 # Copyright 2003-2009 Kitware, Inc.
 # It's licensed under the terms of the 3-clause OpenBSD license.
-# Modifications Copyright 2014-2015 the openage authors.
+# Modifications Copyright 2014-2016 the openage authors.
 # See copying.md for further legal info.
 
 # Locate SDL2 library
@@ -94,7 +94,7 @@ if(NOT APPLE)
 endif()
 
 # MinGW needs an additional library, mwindows
-# It's total link flags should look like -lmingw32 -lSDL2main -lSDL2 -lmwindows
+# Its total link flags should look like -lmingw32 -lSDL2main -lSDL2 -lmwindows
 # (Actually on second look, I think it only needs one of the m* libraries.)
 if(MINGW)
 	set(MINGW32_LIBRARY mingw32 CACHE STRING "mwindows for MinGW")

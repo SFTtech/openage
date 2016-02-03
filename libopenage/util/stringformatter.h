@@ -67,8 +67,10 @@ private:
 	 * true if all of the following are true:
 	 *  - object is part of a larger cache
 	 *  - object is currently in use (-> unavailable)
+	 * http://en.cppreference.com/w/cpp/atomic/ATOMIC_FLAG_INIT
+	 * https://stackoverflow.com/questions/24437396/stdatomic-flag-as-member-variable
 	 */
-	std::atomic_flag flag;
+	std::atomic_flag flag = ATOMIC_FLAG_INIT;
 };
 
 
