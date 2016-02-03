@@ -7,16 +7,21 @@
 #include <array>
 #include <type_traits>
 
+#include "hash.h"
+
 namespace openage {
 namespace util {
 
 /**
  * Vector class with arithmetic.
  */
-template<size_t N>
-class Vector : public std::array<float, N> {
+template<size_t N, typename DT=float>
+class Vector : public std::array<DT, N> {
 public:
 	static_assert(N > 0, "0-dimensional vector not allowed");
+
+	using data_type = DT;
+	using this_type = Vector<N, data_type>;
 
 	/**
 	 * Default constructor
@@ -29,17 +34,17 @@ public:
 	~Vector() = default;
 
 	/**
-	 * Constructor for initialisation with N float values
+	 * Constructor for initialisation with N data_type values
 	 */
 	template<typename ... T>
 	Vector(T ... args)
 	:
-	std::array<float, N> {{static_cast<float>(args)...}} {}
+	std::array<data_type, N> {{static_cast<data_type>(args)...}} {}
 
 	/**
 	 * Vector addition with assignment
 	 */
-	Vector<N> &operator +=(const Vector<N> &other) {
+	this_type &operator +=(const this_type &other) {
 		for (size_t i = 0; i < N; i++) {
 			(*this)[i] += other[i];
 		}
@@ -49,7 +54,7 @@ public:
 	/**
 	 * Vector addition
 	 */
-	Vector<N> operator +(const Vector<N> &other) const {
+	this_type operator +(const this_type &other) const {
 		Vector res(*this);
 		res += other;
 		return res;
@@ -58,7 +63,7 @@ public:
 	/**
 	 * Vector subtraction with assignment
 	 */
-	Vector<N> &operator -=(const Vector<N> &other) {
+	this_type &operator -=(const this_type &other) {
 		for (size_t i = 0; i < N; i++) {
 			(*this)[i] -= other[i];
 		}
@@ -68,7 +73,7 @@ public:
 	/**
 	 * Vector subtraction
 	 */
-	Vector<N> operator -(const Vector<N> &other) const {
+	this_type operator -(const this_type &other) const {
 		Vector res(*this);
 		res -= other;
 		return res;
@@ -77,7 +82,7 @@ public:
 	/**
 	 * Scalar multiplication with assignment
 	 */
-	Vector<N> &operator *=(float a) {
+	this_type &operator *=(data_type a) {
 		for (size_t i = 0; i < N; i++) {
 			(*this)[i] *= a;
 		}
@@ -87,7 +92,7 @@ public:
 	/**
 	 * Scalar multiplication
 	 */
-	Vector<N> operator *(float a) const {
+	this_type operator *(data_type a) const {
 		Vector res(*this);
 		res *= a;
 		return res;
@@ -96,7 +101,7 @@ public:
 	/**
 	 * Scalar division with assignment
 	 */
-	Vector<N> &operator /=(float a) {
+	this_type &operator /=(data_type a) {
 		for (size_t i = 0; i < N; i++) {
 			(*this)[i] /= a;
 		}
@@ -106,7 +111,7 @@ public:
 	/**
 	 * Scalar division
 	 */
-	Vector<N> operator /(float a) const {
+	this_type operator /(data_type a) const {
 		Vector res(*this);
 		res /= a;
 		return res;
@@ -115,8 +120,8 @@ public:
 	/**
 	 * Dot product of two Vectors
 	 */
-	float dot_product(const Vector<N> &other) const {
-		float res = 0;
+	data_type dot_product(const this_type &other) const {
+		data_type res = 0;
 		for (size_t i = 0; i < N; i++) {
 			res += (*this)[i] * other[i];
 		}
@@ -133,7 +138,9 @@ public:
 	/**
 	 * Scales the Vector so that its norm is 1
 	 */
-	Vector<N> &normalize() {
+	template<typename T=this_type>
+	typename std::enable_if<std::is_floating_point<data_type>::value, T>::type
+	/* this_type */ &normalize() {
 		*this /= this->norm();
 		return *this;
 	}
@@ -141,9 +148,9 @@ public:
 	/**
 	 * Cross-product of two 3-dimensional vectors
 	 */
-	template<typename T=Vector<N>>
+	template<typename T=this_type>
 	typename std::enable_if<N==3,T>::type
-	/*Vector<N>*/ cross_product(const Vector<N> &other) const {
+	/*this_type*/ cross_product(const this_type &other) const {
 		return Vector(
 			((*this)[1] * other[2] - (*this)[2] * other[1]),
 			((*this)[2] * other[0] - (*this)[0] * other[2]),
@@ -156,16 +163,16 @@ public:
 /**
  * Scalar multiplication with swapped arguments
  */
-template<size_t N>
-Vector<N> operator *(float a, const Vector<N> &v) {
+template<size_t N, typename mul_type, typename data_type>
+Vector<N, data_type> operator *(mul_type a, const Vector<N, data_type> &v) {
 	return v * a;
 }
 
 /**
  * Print to output stream using '<<'
  */
-template<size_t N>
-std::ostream &operator <<(std::ostream &o, const Vector<N> &v) {
+template<size_t N, typename data_type>
+std::ostream &operator <<(std::ostream &o, const Vector<N, data_type> &v) {
 	o << "(";
 	for (size_t i = 0; i < N-1; i++) {
 		o << v[i] << ", ";
@@ -180,3 +187,19 @@ using Vector3 = Vector<3>;
 using Vector4 = Vector<4>;
 
 }} // openage::util
+
+
+namespace std {
+
+template<size_t N, typename DT>
+struct hash<openage::util::Vector<N, DT>> {
+	size_t operator ()(const openage::util::Vector<N, DT> &arg) const {
+		size_t ret = 0;
+		for (size_t i = 0; i < N; i++) {
+			ret = openage::util::hash_combine(ret, hash<DT>{}(arg[i]));
+		}
+		return ret;
+	}
+};
+
+} // std
