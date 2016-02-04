@@ -6,7 +6,6 @@
 #include <cmath>
 #include <cstdint>
 #include <functional>
-#include <iostream>
 #include <unordered_map>
 
 #include "../coord/decl.h"
@@ -30,14 +29,14 @@ using value_vec = util::Vector<N, value_t>;
  */
 template<size_t N>
 class Perlin {
-using cvec_t = coord_vec<N>;
-using vvec_t = value_vec<N>;
+	using cvec_t = coord_vec<N>;
+	using vvec_t = value_vec<N>;
 
 	seed_t seed;
 	size_t granularity;
 	std::unordered_map<cvec_t, vvec_t> gradient_cache;
 	// Maximum possible gradient vector component value without risking
-	// overflows during dot_product calculations. TODO: constexpr?
+	// overflows during dot_product calculations.
 	value_t comp_max = static_cast<value_t>(sqrt(static_cast<double>(INT64_MAX) / N));
 
 	value_t interpolate(value_t x, value_t y, double pos) const {
@@ -58,7 +57,6 @@ using vvec_t = value_vec<N>;
 		for (size_t i = 0; i < N; i++) {
 			res[i] = static_cast<value_t>(this->comp_max * tmp[i]);
 		}
-		std::cout << node << " -> " << res << std::endl;
 		return res;
 	}
 
@@ -77,7 +75,7 @@ using vvec_t = value_vec<N>;
 		return diff.dot_product(this->get_gradient(node));
 	}
 
-	value_t multidim_inter(size_t dim,
+	value_t multidim_inter(const size_t dim,
 	                       cvec_t &point,
 	                       const cvec_t &orig_point) {
 
