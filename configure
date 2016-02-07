@@ -113,7 +113,18 @@ def get_compiler(args, parser):
 
     # determine compiler binaries from args.compiler
     if args.compiler:
+        # map alias -> actual compiler
+        aliases = {
+            "clang": "clang++",
+            "gcc": "g++",
+        }
+
         cxx = args.compiler
+
+        # try to replace aliases
+        if cxx in aliases:
+            cxx = aliases[cxx]
+
     else:
         # CXX has not been specified
         if sys.platform.startswith('darwin'):
