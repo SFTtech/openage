@@ -278,7 +278,7 @@ function(python_finalize)
 		"${CMAKE_SOURCE_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${COMPILEPY_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-		DEPENDS "${CMAKE_BINARY_DIR}/py/py_files" "${py_files}"
+		DEPENDS "${CMAKE_BINARY_DIR}/py/py_files" ${py_files}
 		COMMENT "compiling .py files to .pyc files"
 	)
 	add_custom_target(compilepy ALL DEPENDS "${COMPILEPY_TIMEFILE}")
