@@ -96,6 +96,11 @@ public:
 	 * the square dimensions of the placement
 	 */
 	coord::tile_delta foundation_size;
+
+	/**
+	 * raw game data class of this unit instance
+	 */
+	gamedata::unit_classes unit_class;
 };
 
 /**

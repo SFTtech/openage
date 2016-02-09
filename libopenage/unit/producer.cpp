@@ -56,6 +56,9 @@ ObjectProducer::ObjectProducer(GameSpec &spec, const gamedata::unit_object *ud)
 	default_tex{spec.get_unit_texture(ud->graphic_standing0)},
 	dead_unit_producer{spec.get_type(ud->dead_unit_id)} {
 
+	// copy the class type
+	this->unit_class = this->unit_data.unit_class;
+
 	// for now just look for type names ending with "_D"
 	this->decay = unit_data.name.substr(unit_data.name.length() - 2) == "_D";
 
@@ -164,7 +167,6 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 
 	// initialise unit
 	unit->unit_type = this;
-	unit->unit_class = this->unit_data.unit_class;
 	unit->graphics = &this->graphics;
 
 	// colour
@@ -456,6 +458,9 @@ BuildingProducer::BuildingProducer(GameSpec &spec, const gamedata::unit_building
 	foundation_terrain{ud->terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
 
+	// copy the class type
+	this->unit_class = this->unit_data.unit_class;
+
 	// find suitable sounds
 	int creation_sound = this->unit_data.sound_creation0;
 	int dying_sound = this->unit_data.sound_dying;
@@ -508,7 +513,6 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 
 	// initialize graphic set
 	unit->unit_type = this;
-	unit->unit_class = this->unit_data.unit_class;
 	unit->graphics = &this->graphics;
 
 	auto player_attr = std::make_shared<Attribute<attr_type::owner>>(player);
@@ -694,6 +698,9 @@ ProjectileProducer::ProjectileProducer(GameSpec &spec, const gamedata::unit_proj
 	sh{spec.get_unit_texture(3379)}, // 3379 = general arrow shadow
 	destroyed{spec.get_unit_texture(this->unit_data.graphic_dying0)} {
 
+	// copy the class type
+	this->unit_class = this->unit_data.unit_class;
+
 	// graphic set
 	this->graphics[graphic_type::standing] = this->tex;
 	this->graphics[graphic_type::shadow] = this->sh;
@@ -719,7 +726,6 @@ void ProjectileProducer::initialise(Unit *unit, Player &) {
 
 	// initialize graphic set
 	unit->unit_type = this;
-	unit->unit_class = this->unit_data.unit_class;
 	unit->graphics = &this->graphics;
 
 	// projectile speed

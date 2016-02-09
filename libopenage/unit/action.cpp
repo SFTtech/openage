@@ -153,7 +153,7 @@ void TargetAction::update(unsigned int time) {
 			gatherer_attr.current_type = resource_attr.resource_type;
 
 			// check graphics are available
-			auto class_type = target_ptr->unit_class;
+			auto class_type = target_ptr->unit_type->unit_class;
 			if (gatherer_attr.graphics.count(class_type) > 0) {
 				this->entity->graphics = &gatherer_attr.graphics[class_type]->graphics;
 			}

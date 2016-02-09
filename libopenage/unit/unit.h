@@ -45,12 +45,7 @@ public:
 	 * type of this object, this is set by the the UnitType which
 	 * was most recently applied to this unit
 	 */
-	UnitType *unit_type;
-
-	/**
-	 * class of this unit instance
-	 */
-	gamedata::unit_classes unit_class;
+	const UnitType *unit_type;
 
 	/**
 	 * should selection features be drawn
