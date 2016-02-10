@@ -9,6 +9,7 @@ declare_binary(libopenage)
 
 add_sources(libopenage
 	assetmanager.cpp
+	civilisation.cpp
 	engine.cpp
 	game_control.cpp
 	game_main.cpp

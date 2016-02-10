@@ -7,6 +7,11 @@
 
 namespace openage {
 
+UnitType::UnitType(const Player &owner)
+	:
+	owner{owner} {
+}
+
 UnitTexture *UnitType::default_texture() {
 	return this->graphics[graphic_type::standing].get();
 }
@@ -38,7 +43,19 @@ TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const
 	return nullptr;
 }
 
-NyanType::NyanType() {
+void UnitType::copy_attributes(Unit *unit) const {
+	for (auto &attr : this->default_attributes) {
+		unit->add_attribute(attr.second->copy());
+	}
+}
+
+void UnitType::upgrade(const AttributeContainer &attr) {
+	*this->default_attributes[attr.type] = attr;
+}
+
+NyanType::NyanType(const Player &owner)
+	:
+	UnitType(owner) {
 	// TODO: the type should be given attributes and abilities
 }
 
@@ -65,10 +82,8 @@ void NyanType::initialise(Unit *unit, Player &) {
 		unit->give_ability(ability);
 	}
 
-	// these are copied to the unit
-	for (auto &attr : this->default_attributes) {
-		unit->add_attribute(attr->copy());
-	}
+	// copy all attributes
+	this->copy_attributes(unit);
 
 	// give idle action
 	unit->push_action(std::make_unique<IdleAction>(unit), true);

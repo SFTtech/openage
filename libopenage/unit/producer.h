@@ -34,7 +34,7 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
  */
 class ObjectProducer: public UnitType {
 public:
-	ObjectProducer(GameSpec &spec, const gamedata::unit_object *ud);
+	ObjectProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_object *ud);
 	virtual ~ObjectProducer();
 
 	int id() const override;
@@ -43,7 +43,7 @@ public:
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
-	GameSpec &dataspec;
+	const GameSpec &dataspec;
 	const gamedata::unit_object unit_data;
 
 	/**
@@ -54,11 +54,11 @@ protected:
 	/**
 	 * Sound id played when object is created or destroyed.
 	 */
-	Sound *on_create;
-	Sound *on_destroy;
+	const Sound *on_create;
+	const Sound *on_destroy;
 	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> default_tex;
-	UnitType *dead_unit_producer;
+	int dead_unit_id;
 
 };
 
@@ -67,7 +67,7 @@ protected:
  */
 class MovableProducer: public ObjectProducer {
 public:
-	MovableProducer(GameSpec &spec, const gamedata::unit_movable *);
+	MovableProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_movable *);
 	virtual ~MovableProducer();
 
 	void initialise(Unit *, Player &) override;
@@ -77,9 +77,9 @@ protected:
 	const gamedata::unit_movable unit_data;
 	UnitTexture *moving;
 	UnitTexture *attacking;
-	Sound *on_move;
-	Sound *on_attack;
-	UnitType *projectile;
+	const Sound *on_move;
+	const Sound *on_attack;
+	int projectile;
 
 };
 
@@ -90,7 +90,7 @@ protected:
  */
 class LivingProducer: public MovableProducer {
 public:
-	LivingProducer(GameSpec &spec, const gamedata::unit_living *);
+	LivingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_living *);
 	virtual ~LivingProducer();
 
 	void initialise(Unit *, Player &) override;
@@ -107,7 +107,7 @@ private:
  */
 class BuildingProducer: public UnitType {
 public:
-	BuildingProducer(GameSpec &spec, const gamedata::unit_building *ud);
+	BuildingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_building *ud);
 	virtual ~BuildingProducer();
 
 	int id() const override;
@@ -116,20 +116,20 @@ public:
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
-	GameSpec &dataspec;
+	const GameSpec &dataspec;
 	const gamedata::unit_building unit_data;
 
 	/**
 	 * Sound id played when object is created or destroyed.
 	 */
-	Sound *on_create;
-	Sound *on_destroy;
+	const Sound *on_create;
+	const Sound *on_destroy;
 	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> texture;
 	std::shared_ptr<UnitTexture> destroyed;
-	UnitType *trainable1;
-	UnitType *trainable2;
-	UnitType *projectile;
+	int trainable1;
+	int trainable2;
+	int projectile;
 	int foundation_terrain;
 	std::vector<game_resource> get_accepted_resources();
 
@@ -148,7 +148,7 @@ private:
  */
 class ProjectileProducer: public UnitType {
 public:
-	ProjectileProducer(GameSpec &spec, const gamedata::unit_projectile *);
+	ProjectileProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_projectile *);
 	virtual ~ProjectileProducer();
 
 	int id() const override;

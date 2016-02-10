@@ -119,7 +119,7 @@ public:
  */
 class MoveAbility: public UnitAbility {
 public:
-	MoveAbility(Sound *s=nullptr);
+	MoveAbility(const Sound *s=nullptr);
 
 	ability_type type() override {
 		return ability_type::move;
@@ -130,7 +130,7 @@ public:
 	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
-	Sound *sound;
+	const Sound *sound;
 };
 
 /*
@@ -155,7 +155,7 @@ public:
  */
 class GarrisonAbility: public UnitAbility {
 public:
-	GarrisonAbility(Sound *s=nullptr);
+	GarrisonAbility(const Sound *s=nullptr);
 
 	ability_type type() override {
 		return ability_type::garrison;
@@ -166,7 +166,7 @@ public:
 	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
-	Sound *sound;
+	const Sound *sound;
 };
 
 /*
@@ -174,7 +174,7 @@ private:
  */
 class UngarrisonAbility: public UnitAbility {
 public:
-	UngarrisonAbility(Sound *s=nullptr);
+	UngarrisonAbility(const Sound *s=nullptr);
 
 	ability_type type() override {
 		return ability_type::ungarrison;
@@ -185,7 +185,7 @@ public:
 	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
-	Sound *sound;
+	const Sound *sound;
 };
 
 /*
@@ -193,7 +193,7 @@ private:
  */
 class TrainAbility: public UnitAbility {
 public:
-	TrainAbility(Sound *s=nullptr);
+	TrainAbility(const Sound *s=nullptr);
 
 	ability_type type() override {
 		return ability_type::train;
@@ -204,7 +204,7 @@ public:
 	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
-	Sound *sound;
+	const Sound *sound;
 };
 
 /*
@@ -212,7 +212,7 @@ private:
  */
 class BuildAbility: public UnitAbility {
 public:
-	BuildAbility(Sound *s=nullptr);
+	BuildAbility(const Sound *s=nullptr);
 
 	ability_type type() override {
 		return ability_type::build;
@@ -223,7 +223,7 @@ public:
 	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
-	Sound *sound;
+	const Sound *sound;
 };
 
 /*
@@ -231,7 +231,7 @@ private:
  */
 class GatherAbility: public UnitAbility {
 public:
-	GatherAbility(Sound *s=nullptr);
+	GatherAbility(const Sound *s=nullptr);
 
 	ability_type type() override {
 		return ability_type::gather;
@@ -242,7 +242,7 @@ public:
 	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
-	Sound *sound;
+	const Sound *sound;
 };
 
 /*
@@ -250,7 +250,7 @@ private:
  */
 class AttackAbility: public UnitAbility {
 public:
-	AttackAbility(Sound *s=nullptr);
+	AttackAbility(const Sound *s=nullptr);
 
 	ability_type type() override {
 		return ability_type::attack;
@@ -261,7 +261,7 @@ public:
 	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
-	Sound *sound;
+	const Sound *sound;
 };
 
 } // namespace openage

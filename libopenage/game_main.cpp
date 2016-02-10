@@ -1,5 +1,6 @@
 // Copyright 2014-2015 the openage authors. See copying.md for legal info.
 
+#include "unit/unit_type.h"
 #include "game_main.h"
 #include "game_spec.h"
 #include "generator.h"
@@ -15,7 +16,11 @@ GameMain::GameMain(const Generator &generator)
 	// players
 	unsigned int i = 0;
 	for (auto &name : generator.player_names()) {
-		this->players.emplace_back(i++, name);
+		this->players.emplace_back(i, name, i);
+		i++;
+	}
+	for (auto &player : this->players) {
+		player.initialise_unit_types(*this->spec);
 	}
 
 	this->placed_units.set_terrain(this->terrain);
@@ -28,6 +33,10 @@ GameMain::~GameMain() {
 
 unsigned int GameMain::player_count() const {
 	return this->players.size();
+}
+
+Player *GameMain::get_player(unsigned int player_id) {
+	return &this->players.at(player_id);
 }
 
 GameSpec *GameMain::get_spec() {

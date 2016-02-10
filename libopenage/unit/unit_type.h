@@ -30,6 +30,7 @@ class UnitTexture;
  */
 class UnitType {
 public:
+	UnitType(const Player &owner);
 	virtual ~UnitType() {}
 
 	/**
@@ -72,6 +73,21 @@ public:
 	TerrainObject *place_beside(Unit *, TerrainObject const *) const;
 
 	/**
+	 * copy attributes of this unit type to a new unit instance
+	 */
+	void copy_attributes(Unit *unit) const;
+
+	/**
+	 * upgrades one attribute of this unit type
+	 */
+	void upgrade(const AttributeContainer &attr);
+
+	/**
+	 * the player who owns this unit type
+	 */
+	const Player &owner;
+
+	/**
 	 * all instances of units made from this unit type
 	 * this could allow all units of a type to be upgraded
 	 */
@@ -85,7 +101,7 @@ public:
 	/**
 	 * default attributes which get copied to new units
 	 */
-	std::vector<std::shared_ptr<AttributeContainer>> default_attributes;
+	attr_map_t default_attributes;
 
 	/**
 	 * The set of graphics used for this type
@@ -112,7 +128,7 @@ public:
 	 * TODO: give the parsed nyan attributes
 	 * to the constructor
 	 */
-	NyanType();
+	NyanType(const Player &owner);
 	virtual ~NyanType();
 
 	int id() const override;

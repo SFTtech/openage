@@ -6,14 +6,16 @@
 #include <unordered_map>
 
 #include "unit/resource.h"
+#include "civilisation.h"
 
 namespace openage {
 
+class GameSpec;
 class Unit;
 
 class Player {
 public:
-	Player(unsigned int number, std::string name);
+	Player(unsigned int number, std::string name, unsigned int civ);
 
 	/**
 	 * values 0 .. player count - 1
@@ -32,6 +34,11 @@ public:
 	const unsigned int civ;
 
 	const std::string name;
+
+	/**
+	 * checks if two players are the same
+	 */
+	bool operator ==(const Player &other) const;
 
 	/**
 	 * the specified player is an enemy of this player
@@ -64,8 +71,49 @@ public:
 	 */
 	double amount(const game_resource resource) const;
 
+	/**
+	 * total number of unit types available
+	 */
+	size_t type_count();
+
+	/**
+	 * unit types by aoe gamedata unit ids -- the unit type which corresponds to an aoe unit id
+	 */
+	UnitType *get_type(index_t type_id) const;
+
+	/**
+	 * unit types by list index -- a continuous array of all types
+	 * probably not a useful function / can be removed
+	 */
+	UnitType *get_type_index(size_t type_index) const;
+
+	/**
+	 * initialise with the base tech level
+	 */
+	void initialise_unit_types(const GameSpec &spec);
+
 private:
+
+	/**
+	 * creates a new unit type
+	 */
+	void add_unit_type(UnitType *unit_type);
+
+	/**
+	 * resources this player currently has
+	 */
 	std::unordered_map<game_resource, double> resources;
+
+	/**
+	 * unit types which can be produced by this player.
+	 */
+	unit_type_list available_objects;
+
+	/**
+	 * available objects mapped using type id
+	 * unit ids -> unit type for that id
+	 */
+	std::unordered_map<index_t, UnitType *> available_ids;
 
 };
 

@@ -158,11 +158,11 @@ ActionMode::ActionMode()
 
 		// attempt to train editor selected object
 		Engine &engine = Engine::get();
-		GameSpec *spec = engine.get_game()->get_spec();
 
 		// randomly select between male and female villagers
-		auto type = spec->get_type(this->rng.probability(0.5)? 83 : 293);
-		Command cmd(*engine.player_focus(), type);
+		auto player = engine.player_focus();
+		auto type = player->get_type(this->rng.probability(0.5)? 83 : 293);
+		Command cmd(*player, type);
 		this->selection.all_invoke(cmd);
 	});
 	this->bind(input::actions::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
@@ -185,12 +185,12 @@ ActionMode::ActionMode()
 	});
 	this->bind(input::actions::SPAWN_VILLAGER, [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
-		GameSpec *spec = engine.get_game()->get_spec();
-		if (spec->producer_count() > 0) {
-			UnitType &type = *spec->get_type(590);
+		auto player = engine.player_focus();
+		if (player->type_count() > 0) {
+			UnitType &type = *player->get_type(590);
 
 			// TODO tile position
-			engine.get_game()->placed_units.new_unit(type, *engine.player_focus(), this->mousepos_phys3);
+			engine.get_game()->placed_units.new_unit(type, *player, this->mousepos_phys3);
 		}
 	});
 	this->bind(input::actions::KILL_UNIT, [this](const input::action_arg_t &) {
@@ -203,11 +203,11 @@ ActionMode::ActionMode()
 		this->bind(action, [this, building, military_building](const input::action_arg_t &) {
 			if (this->selection.contains_builders()) {
 				Engine &engine = Engine::get();
-				GameSpec *spec = engine.get_game()->get_spec();
+				auto player = engine.player_focus();
 				if (engine.get_input_manager().is_mod_down(input::modifier::CTRL)) {
-					this->type_focus = spec->get_type_index(military_building);
+					this->type_focus = player->get_type_index(military_building);
 				} else {
-					this->type_focus = spec->get_type_index(building);
+					this->type_focus = player->get_type_index(building);
 				}
 			}
 		});
@@ -390,6 +390,7 @@ EditorMode::EditorMode()
 	this->bind(input::actions::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
 		log::log(MSG(dbg) << "change category");
 		Engine &engine = Engine::get();
+		auto player = engine.player_focus();
 		GameSpec *spec = engine.get_game()->get_spec();
 		std::vector<std::string> cat = spec->get_type_categories();
 		if (this->paint_terrain) {
@@ -414,7 +415,7 @@ EditorMode::EditorMode()
 			std::vector<index_t> inds = spec->get_category(this->category);
 			if (!inds.empty()) {
 				this->editor_current_type = util::mod<ssize_t>(editor_current_type, inds.size());
-				this->selected_type = spec->get_type(inds[this->editor_current_type]);
+				this->selected_type = player->get_type(inds[this->editor_current_type]);
 			}
 		}
 	});
@@ -493,16 +494,17 @@ std::string EditorMode::name() const {
 
 bool EditorMode::on_mouse_wheel(int direction, coord::window) {
 	Engine &engine = Engine::get();
+	auto player = engine.player_focus();
 	GameSpec *spec = engine.get_game()->get_spec();
 
 	// modify selected item
 	if (this->paint_terrain) {
 		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + direction, spec->get_terrain_meta()->terrain_id_count);
-	} else if (spec->producer_count() > 0) {
+	} else if (player->type_count() > 0) {
 		std::vector<index_t> inds = spec->get_category(this->category);
 		if (!inds.empty()) {
 			this->editor_current_type = util::mod<ssize_t>(editor_current_type + direction, inds.size());
-			this->selected_type = spec->get_type(inds[this->editor_current_type]);
+			this->selected_type = player->get_type(inds[this->editor_current_type]);
 		}
 	}
 	return true;

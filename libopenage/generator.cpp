@@ -312,7 +312,10 @@ void Generator::add_units(GameMain &m) const {
 		// trees / mines
 		if (r.object_id) {
 			Player &p = m.players[r.owner];
-			auto otype = this->spec->get_type(r.object_id);
+			auto otype = p.get_type(r.object_id);
+			if (!otype) {
+				break;
+			}
 			for (auto &tile : r.get_tiles()) {
 				m.placed_units.new_unit(*otype, p, tile.to_tile3().to_phys3());
 			}
@@ -321,9 +324,13 @@ void Generator::add_units(GameMain &m) const {
 		// A space for starting town center and villagers
 		else if (r.owner) {
 			Player &p = m.players[r.owner];
-			auto tctype = this->spec->get_type(109); // town center
-			auto mvtype = this->spec->get_type(83);  // male villager
-			auto fvtype = this->spec->get_type(293); // female villager
+			auto tctype = p.get_type(109); // town center
+			auto mvtype = p.get_type(83);  // male villager
+			auto fvtype = p.get_type(293); // female villager
+			if (!tctype || !mvtype || !fvtype) {
+				break;
+			}
+
 			coord::tile tile = r.get_center();
 			tile.ne -= 1;
 			tile.se -= 1;

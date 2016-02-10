@@ -48,7 +48,7 @@ void GameSpec::initialize(AssetManager &am) {
 	this->gamedata_load_job = engine.get_job_manager()->enqueue<bool>(gamedata_load_function);
 }
 
-bool GameSpec::load_complete() {
+bool GameSpec::load_complete() const {
 	return this->gamedata_loaded;
 }
 
@@ -56,27 +56,24 @@ terrain_meta *GameSpec::get_terrain_meta() {
 	return &this->terrain_data;
 }
 
-size_t GameSpec::producer_count() {
-	return this->available_objects.size();
-}
-
 index_t GameSpec::get_slp_graphic(index_t slp) {
 	return this->slp_to_graphic[slp];
 }
 
-Texture *GameSpec::get_texture(index_t graphic_id) {
+Texture *GameSpec::get_texture(index_t graphic_id) const {
 	if (graphic_id <= 0 || this->graphics.count(graphic_id) == 0) {
 		log::log(MSG(info) << "  -> ignoring graphics_id: " << graphic_id);
 		return nullptr;
 	}
 
-	int slp_id = this->graphics[graphic_id]->slp_id;
+	auto g = this->graphics.at(graphic_id);
+	int slp_id = g->slp_id;
 	if (slp_id <= 0) {
 		log::log(MSG(info) << "  -> ignoring slp_id: " << slp_id);
 		return nullptr;
 	}
 
-	log::log(MSG(info) << "   slp id/name: " << slp_id << " " << this->graphics[graphic_id]->name0);
+	log::log(MSG(info) << "   slp id/name: " << slp_id << " " << g->name0);
 	std::string tex_fname = util::sformat("%s/%d.slp.png", this->graphics_path.c_str(), slp_id);
 
 	// get tex if file is available
@@ -87,34 +84,24 @@ Texture *GameSpec::get_texture(index_t graphic_id) {
 	return tex;
 }
 
-std::shared_ptr<UnitTexture> GameSpec::get_unit_texture(index_t unit_id) {
+std::shared_ptr<UnitTexture> GameSpec::get_unit_texture(index_t unit_id) const {
 	if (this->unit_textures.count(unit_id) == 0) {
 		if (unit_id > 0) {
 			log::log(MSG(info) << "  -> ignoring unit_id: " << unit_id);
 		}
 		return nullptr;
 	}
-	return this->unit_textures[unit_id];
+	return this->unit_textures.at(unit_id);
 }
 
-Sound *GameSpec::get_sound(index_t sound_id) {
+const Sound *GameSpec::get_sound(index_t sound_id) const {
 	if (this->available_sounds.count(sound_id) == 0) {
 		if (sound_id > 0) {
 			log::log(MSG(info) << "  -> ignoring sound_id: " << sound_id);
 		}
 		return nullptr;
 	}
-	return &this->available_sounds[sound_id];
-}
-
-UnitType *GameSpec::get_type(index_t type_id) {
-	if (this->producers.count(type_id) == 0) {
-		if (type_id > 0) {
-			log::log(MSG(info) << "  -> ignoring type_id: " << type_id);
-		}
-		return nullptr;
-	}
-	return this->producers[type_id];
+	return &this->available_sounds.at(sound_id);
 }
 
 std::vector<index_t> GameSpec::get_category(const std::string &c) const {
@@ -129,35 +116,58 @@ std::vector<std::string> GameSpec::get_type_categories() const {
 	return this->all_categories;
 }
 
-UnitType *GameSpec::get_type_index(size_t type_index) {
-	if (type_index < available_objects.size()) {
-		return available_objects[type_index].get();
-	}
-	log::log(MSG(info) << "  -> ignoring type_index: " << type_index);
-	return nullptr;
-}
-
-const gamedata::graphic *GameSpec::get_graphic_data(index_t grp_id) {
+const gamedata::graphic *GameSpec::get_graphic_data(index_t grp_id) const {
 	if (this->graphics.count(grp_id) == 0) {
 		log::log(MSG(info) << "  -> ignoring grp_id: " << grp_id);
 		return nullptr;
 	}
-	return this->graphics[grp_id];
+	return this->graphics.at(grp_id);
 }
 
-const gamedata::unit_building *GameSpec::get_building_data(index_t unit_id) {
+const gamedata::unit_building *GameSpec::get_building_data(index_t unit_id) const {
 	if (this->buildings.count(unit_id) == 0) {
 		log::log(MSG(info) << "  -> ignoring unit_id: " << unit_id);
 		return nullptr;
 	}
-	return this->buildings[unit_id];
+	return this->buildings.at(unit_id);
 }
 
-std::vector<const gamedata::unit_command *> GameSpec::get_command_data(index_t unit_id) {
+std::vector<const gamedata::unit_command *> GameSpec::get_command_data(index_t unit_id) const {
 	if (this->commands.count(unit_id) == 0) {
 		return std::vector<const gamedata::unit_command *>(); // empty vector
 	}
-	return this->commands[unit_id];
+	return this->commands.at(unit_id);
+}
+
+void GameSpec::create_unit_types(unit_type_list &objects, const Player &owner) const {
+	if (!this->load_complete()) {
+		return;
+	}
+
+	// create projectile types first
+	for (auto &obj : gamedata[0].civs.data[0].units.projectile.data) {
+		this->load_projectile(owner, obj, objects);
+	}
+
+	// create object unit types
+	for (auto &obj : gamedata[0].civs.data[0].units.object.data) {
+		this->load_object(owner, obj, objects);
+	}
+
+	// create dead unit types
+	for (auto &unit : gamedata[0].civs.data[0].units.dead_or_fish.data) {
+		this->load_object(owner, unit, objects);
+	}
+
+	// create living unit types
+	for (auto &unit : gamedata[0].civs.data[owner.civ].units.living.data) {
+		this->load_living(owner, unit, objects);
+	}
+
+	// create building unit types
+	for (auto &building : gamedata[0].civs.data[owner.civ].units.building.data) {
+		this->load_building(owner, building, objects);
+	}
 }
 
 void GameSpec::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
@@ -221,22 +231,14 @@ void GameSpec::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 
 	// this final step occurs after loading media
 	// as producers require both the graphics and sounds
-
-	int your_civ_id = 1; //British by default
-	// 0 is gaia and not very useful (it's not an user facing civilization so
-	// we cannot rely on it being polished... it might be VERY broken.
-	// British or any other civ is a way safer bet.
-
-	log::log(MSG(info) << "Using the " << gamedata[0].civs.data[your_civ_id].name << " civilisation.");
 	this->create_abilities(gamedata);
-	this->create_unit_types(gamedata, your_civ_id);
 }
 
-bool GameSpec::valid_graphic_id(index_t graphic_id) {
+bool GameSpec::valid_graphic_id(index_t graphic_id) const {
 	if (graphic_id <= 0 || this->graphics.count(graphic_id) == 0) {
 		return false;
 	}
-	if (this->graphics[graphic_id]->slp_id <= 0) {
+	if (this->graphics.at(graphic_id)->slp_id <= 0) {
 		return false;
 	}
 	return true;
@@ -250,56 +252,37 @@ void GameSpec::add_to_category(const std::string &c, index_t type) {
 	this->categories[c].push_back(type);
 }
 
-void GameSpec::load_building(const gamedata::unit_building &building, unit_type_list &list) {
+void GameSpec::load_building(const Player &owner, const gamedata::unit_building &building, unit_type_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(building.graphic_standing0)) {
-		list.emplace_back(std::make_unique<BuildingProducer>(*this, &building));
-
-		auto producer_ptr = list.back().get();
-		index_t id = producer_ptr->id();
-		this->producers[id] = producer_ptr;
-		this->buildings[building.id0] = &building;
-		add_to_category("building", id);
+		list.emplace_back(std::make_unique<BuildingProducer>(owner, *this, &building));
 	}
 }
 
-void GameSpec::load_living(const gamedata::unit_living &unit, unit_type_list &list) {
+void GameSpec::load_living(const Player &owner, const gamedata::unit_living &unit, unit_type_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(unit.graphic_dying0) &&
 		this->valid_graphic_id(unit.graphic_standing0) &&
 		this->valid_graphic_id(unit.walking_graphics0)) {
-		list.emplace_back(std::make_unique<LivingProducer>(*this, &unit));
-
-		auto producer_ptr = list.back().get();
-		index_t id = producer_ptr->id();
-		this->producers[id] = producer_ptr;
-		add_to_category("living", id);
+		list.emplace_back(std::make_unique<LivingProducer>(owner, *this, &unit));
 	}
 }
 
-void GameSpec::load_object(const gamedata::unit_object &object, unit_type_list &list) {
+void GameSpec::load_object(const Player &owner, const gamedata::unit_object &object, unit_type_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(object.graphic_standing0)) {
-		list.emplace_back(std::make_unique<ObjectProducer>(*this, &object));
-
-		auto producer_ptr = list.back().get();
-		index_t id = producer_ptr->id();
-		this->producers[id] = producer_ptr;
-		add_to_category("object", id);
+		list.emplace_back(std::make_unique<ObjectProducer>(owner, *this, &object));
 	}
 }
 
-void GameSpec::load_projectile(const gamedata::unit_projectile &proj, unit_type_list &list) {
+void GameSpec::load_projectile(const Player &owner, const gamedata::unit_projectile &proj, unit_type_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(proj.graphic_standing0)) {
-		list.emplace_back(std::make_unique<ProjectileProducer>(*this, &proj));
-
-		auto producer_ptr = list.back().get();
-		this->producers[producer_ptr->id()] = producer_ptr;
+		list.emplace_back(std::make_unique<ProjectileProducer>(owner, *this, &proj));
 	}
 }
 
@@ -388,42 +371,14 @@ void GameSpec::create_abilities(const std::vector<gamedata::empiresdat> &gamedat
 	}
 }
 
-void GameSpec::create_unit_types(const std::vector<gamedata::empiresdat> &gamedata, int your_civ_id) {
-
-	// create projectile types first
-	for (auto &obj : gamedata[0].civs.data[0].units.projectile.data) {
-		this->load_projectile(obj, available_objects);
-	}
-
-	// create object unit types
-	for (auto &obj : gamedata[0].civs.data[0].units.object.data) {
-		this->load_object(obj, available_objects);
-	}
-
-	// create dead unit types
-	for (auto &unit : gamedata[0].civs.data[0].units.dead_or_fish.data) {
-		this->load_object(unit, available_objects);
-	}
-
-	// create living unit types
-	for (auto &unit : gamedata[0].civs.data[your_civ_id].units.living.data) {
-		this->load_living(unit, available_objects);
-	}
-
-	// create building unit types
-	for (auto &building : gamedata[0].civs.data[your_civ_id].units.building.data) {
-		this->load_building(building, available_objects);
-	}
-}
-
-void Sound::play() {
+void Sound::play() const {
 	if (this->sound_items.size() <= 0) {
 		return;
 	}
 	audio::AudioManager &am = Engine::get().get_audio_manager();
 
 	int rand = rng::random_range(0, this->sound_items.size());
-	int sndid = this->sound_items[rand];
+	int sndid = this->sound_items.at(rand);
 	try {
 		audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();
 	}

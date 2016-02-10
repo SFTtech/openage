@@ -32,6 +32,11 @@ public:
 	unsigned int player_count() const;
 
 	/**
+	 * player by index
+	 */
+	Player *get_player(unsigned int player_id);
+
+	/**
 	 * the spec in this games settings
 	 */
 	GameSpec *get_spec();

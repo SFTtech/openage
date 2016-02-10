@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include "../gamedata/unit.gen.h"
 #include "../terrain/terrain.h"
@@ -48,13 +48,14 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 	return result;
 }
 
-ObjectProducer::ObjectProducer(GameSpec &spec, const gamedata::unit_object *ud)
+ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_object *ud)
 	:
+	UnitType(owner),
 	dataspec(spec),
 	unit_data(*ud),
 	terrain_outline{nullptr},
 	default_tex{spec.get_unit_texture(ud->graphic_standing0)},
-	dead_unit_producer{spec.get_type(ud->dead_unit_id)} {
+	dead_unit_id{ud->dead_unit_id} {
 
 	// copy the class type
 	this->unit_class = this->unit_data.unit_class;
@@ -156,6 +157,7 @@ std::string ObjectProducer::name() const {
 }
 
 void ObjectProducer::initialise(Unit *unit, Player &player) {
+	assert(this->owner == player);
 
 	// log attributes
 	unit->log(MSG(dbg) << "setting unit type " <<
@@ -205,14 +207,17 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	}
 	else {
 		// if destruction graphic is available
-		if (this->dead_unit_producer) {
+		if (this->dead_unit_id) {
 			unit->push_action(
 				std::make_unique<DeadAction>(
 					unit,
 					[this, unit, &player]() {
 
 						// modify unit to have  dead type
-						this->dead_unit_producer->initialise(unit, player);
+						UnitType *t = player.get_type(this->dead_unit_id);
+						if (t) {
+							t->initialise(unit, player);
+						}
 					}
 				),
 				true);
@@ -300,13 +305,13 @@ TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, 
 	return nullptr;
 }
 
-MovableProducer::MovableProducer(GameSpec &spec, const gamedata::unit_movable *um)
+MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_movable *um)
 	:
-	ObjectProducer(spec, um),
+	ObjectProducer(owner, spec, um),
 	unit_data(*um),
 	on_move{spec.get_sound(this->unit_data.move_sound)},
 	on_attack{spec.get_sound(this->unit_data.move_sound)},
-	projectile{spec.get_type(this->unit_data.projectile_unit_id)} {
+	projectile{this->unit_data.projectile_unit_id} {
 
 	// extra graphics if available
 	// villagers have invalid attack and walk graphics
@@ -358,11 +363,12 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	unit->add_attribute(std::make_shared<Attribute<attr_type::speed>>(sp));
 
 	// projectile of melee attacks
-	if (this->unit_data.projectile_unit_id > 0 && this->projectile) {
+	UnitType *proj_type = this->owner.get_type(this->projectile);
+	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
 
 		// calculate requirements for ranged attacks
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
-		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(this->projectile, range_phys, 48000, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 48000, 1, this->graphics));
 	}
 	else {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(nullptr, 0, 0, 1, this->graphics));
@@ -373,9 +379,9 @@ TerrainObject *MovableProducer::place(Unit *unit, std::shared_ptr<Terrain> terra
 	return ObjectProducer::place(unit, terrain, init_pos);
 }
 
-LivingProducer::LivingProducer(GameSpec &spec, const gamedata::unit_living *ud)
+LivingProducer::LivingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_living *ud)
 	:
-	MovableProducer(spec, ud),
+	MovableProducer(owner, spec, ud),
 	unit_data(*ud) {
 
 	// extra abilities
@@ -406,23 +412,23 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 		if (this->unit_data.id0 == 83) {
 
 			// male graphics
-			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->dataspec.get_type(156); // builder 118
-			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->dataspec.get_type(120); // forager
-			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->dataspec.get_type(592); // sheperd
-			gather_attr.graphics[gamedata::unit_classes::TREES] = this->dataspec.get_type(123); // woodcutter
-			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->dataspec.get_type(579); // gold miner
-			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->dataspec.get_type(124); // stone miner
+			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->owner.get_type(156); // builder 118
+			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(120); // forager
+			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->owner.get_type(592); // sheperd
+			gather_attr.graphics[gamedata::unit_classes::TREES] = this->owner.get_type(123); // woodcutter
+			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(579); // gold miner
+			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(124); // stone miner
 
 		}
 		else {
 
 			// female graphics
-			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->dataspec.get_type(222); // builder 212
-			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->dataspec.get_type(354); // forager
-			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->dataspec.get_type(590); // sheperd
-			gather_attr.graphics[gamedata::unit_classes::TREES] = this->dataspec.get_type(218); // woodcutter
-			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->dataspec.get_type(581); // gold miner
-			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->dataspec.get_type(220); // stone miner
+			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->owner.get_type(222); // builder 212
+			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(354); // forager
+			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->owner.get_type(590); // sheperd
+			gather_attr.graphics[gamedata::unit_classes::TREES] = this->owner.get_type(218); // woodcutter
+			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(581); // gold miner
+			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(220); // stone miner
 		}
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 		unit->give_ability(std::make_shared<BuildAbility>(this->on_attack));
@@ -445,15 +451,16 @@ TerrainObject *LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrai
 	return MovableProducer::place(unit, terrain, init_pos);
 }
 
-BuildingProducer::BuildingProducer(GameSpec &spec, const gamedata::unit_building *ud)
+BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_building *ud)
 	:
+	UnitType(owner),
 	dataspec(spec),
 	unit_data{*ud},
 	texture{spec.get_unit_texture(ud->graphic_standing0)},
 	destroyed{spec.get_unit_texture(ud->graphic_dying0)},
-	trainable1{spec.get_type(83)}, // 83 = m villager
-	trainable2{spec.get_type(293)}, // 293 = f villager
-	projectile{spec.get_type(this->unit_data.projectile_unit_id)},
+	trainable1{83}, // 83 = m villager
+	trainable2{293}, // 293 = f villager
+	projectile{this->unit_data.projectile_unit_id},
 	foundation_terrain{ud->terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
 
@@ -519,7 +526,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	// building specific attribute
 	auto build_attr = std::make_shared<Attribute<attr_type::building>>();
 	build_attr->foundation_terrain = this->foundation_terrain;
-	build_attr->pp = trainable2;
+	build_attr->pp = this->owner.get_type(trainable2);
 	build_attr->gather_point = unit->location->pos.draw;
 	build_attr->completion_state = this->enable_collisions? object_state::placed : object_state::placed_no_collision;
 	unit->add_attribute(build_attr);
@@ -531,9 +538,10 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	bool has_destruct_graphic = this->destroyed != nullptr;
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
 
-	if (this->unit_data.projectile_unit_id > 0 && this->projectile) {
+	UnitType *proj_type = this->owner.get_type(this->projectile);
+	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
-		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(this->projectile, range_phys, 350000, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1, this->graphics));
 		unit->give_ability(std::make_shared<AttackAbility>());
 	}
 
@@ -638,33 +646,20 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 
 TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
 
-	// find annex foundation size
-	auto b = this->dataspec.get_building_data(annex_id);
-	if (b) {
-		u.log(MSG(dbg) << "Adding annex " << annex_id);
-	}
-	else {
-		u.log(MSG(warn) << "Invalid annex data id " << annex_id);
-		return nullptr;
-	}
-
 	// for use in lambda drawing functions
-	auto annex_type = this->dataspec.get_type(annex_id);
+	auto annex_type = this->owner.get_type(annex_id);
 	if (!annex_type) {
 		u.log(MSG(warn) << "Invalid annex type id " << annex_id);
 		return nullptr;
 	}
 
 	// foundation size
-	coord::tile_delta annex_foundation = {
-		static_cast<int>(b->radius_size0 * 2),
-		static_cast<int>(b->radius_size1 * 2),
-	};
+	coord::tile_delta annex_foundation = annex_type->foundation_size;
 
 	// producers place by the nw tile
 	coord::phys3 start_tile = annex_pos;
-	start_tile.ne -= b->radius_size0 * coord::settings::phys_per_tile;
-	start_tile.se -= b->radius_size1 * coord::settings::phys_per_tile;
+	start_tile.ne -= annex_foundation.ne * coord::settings::phys_per_tile / 2;
+	start_tile.se -= annex_foundation.se * coord::settings::phys_per_tile / 2;
 
 	// create and place on terrain
 	TerrainObject *annex_loc = u.location->make_annex<SquareObject>(annex_foundation);
@@ -689,8 +684,9 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	return annex_loc;
 }
 
-ProjectileProducer::ProjectileProducer(GameSpec &spec, const gamedata::unit_projectile *pd)
+ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_projectile *pd)
 	:
+	UnitType(owner),
 	unit_data{*pd},
 	tex{spec.get_unit_texture(this->unit_data.graphic_standing0)},
 	sh{spec.get_unit_texture(3379)}, // 3379 = general arrow shadow
