@@ -38,8 +38,9 @@ UnitAction::UnitAction(Unit *u, graphic_type initial_gt)
 	frame{.0f},
 	frame_rate{.0f} {
 
-	if (u->graphics->count(initial_gt) > 0) {
-		auto utex = u->graphics->at(initial_gt);
+	auto &g_set = this->current_graphics();
+	if (g_set.count(initial_gt) > 0) {
+		auto utex = g_set.at(initial_gt);
 		if (utex) {
 			this->frame_rate = utex->frame_rate;
 		}
@@ -66,6 +67,12 @@ graphic_type UnitAction::type() const {
 
 float UnitAction::current_frame() const {
 	return this->frame;
+}
+
+const graphic_set &UnitAction::current_graphics() const {
+
+	// return the default graphic
+	return this->entity->unit_type->graphics;
 }
 
 void UnitAction::draw_debug() {
@@ -137,43 +144,6 @@ void TargetAction::update(unsigned int time) {
 	// this update moves a unit within radius of the target
 	// once within the radius the update gets passed to the class
 	// derived from TargetAction
-
-	// first any apply graphic modifications
-	if (this->entity->has_attribute(attr_type::gatherer)) {
-
-		// the gatherer attributes attached to the unit
-		// are used to modify the graphic
-		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
-
-		if (target_ptr->has_attribute(attr_type::resource)) {
-
-			// target contains resources
-			// set gatherer graphics
-			auto &resource_attr = target_ptr->get_attribute<attr_type::resource>();
-			gatherer_attr.current_type = resource_attr.resource_type;
-
-			// check graphics are available
-			auto class_type = target_ptr->unit_type->unit_class;
-			if (gatherer_attr.graphics.count(class_type) > 0) {
-				this->entity->graphics = &gatherer_attr.graphics[class_type]->graphics;
-			}
-		}
-		else if (this->name() == "build" &&
-		         target_ptr->has_attribute(attr_type::building)) {
-
-			// set builder graphics if available
-			if (gatherer_attr.graphics.count(gamedata::unit_classes::BUILDING) > 0) {
-				this->entity->graphics = &gatherer_attr.graphics[gamedata::unit_classes::BUILDING]->graphics;
-			}
-		}
-		else if (this->name() == "attack" &&
-		         this->entity->has_attribute(attr_type::attack)) {
-
-			// target does not have resource
-			auto &attack_attr = this->entity->get_attribute<attr_type::attack>();
-			this->entity->graphics = attack_attr.attack_graphic_set;
-		}
-	}
 
 	// set direction unit should face
 	this->face_towards(target_ptr->location->pos.draw);
@@ -274,8 +244,9 @@ DecayAction::DecayAction(Unit *e)
 	UnitAction(e, graphic_type::standing),
 	end_frame{.0f} {
 
-	if (this->entity->graphics->count(graphic) > 0) {
-		this->end_frame = this->entity->graphics->at(graphic)->frame_count - 1;
+	auto &g_set = this->current_graphics();
+	if (g_set.count(this->graphic) > 0) {
+		this->end_frame = g_set.at(this->graphic)->frame_count - 1;
 	}
 }
 
@@ -295,8 +266,9 @@ DeadAction::DeadAction(Unit *e, std::function<void()> on_complete)
 	end_frame{.0f},
 	on_complete_func{on_complete} {
 
-	if (this->entity->graphics->count(graphic) > 0) {
-		this->end_frame = this->entity->graphics->at(graphic)->frame_count - 1;
+	auto &g_set = this->current_graphics();
+	if (g_set.count(graphic) > 0) {
+		this->end_frame = g_set.at(graphic)->frame_count - 1;
 	}
 }
 
@@ -597,6 +569,16 @@ bool MoveAction::completed() const {
 	return false;
 }
 
+const graphic_set &MoveAction::current_graphics() const {
+
+	// apply special graphics from gathering or building actions
+	auto parent = this->entity->before(this);
+	if (parent) {
+		return parent->current_graphics();
+	}
+	return this->entity->unit_type->graphics;
+}
+
 coord::phys3 MoveAction::next_waypoint() const {
 	if (this->path.waypoints.size() > 0) {
 		return this->path.waypoints.back().position;
@@ -774,6 +756,25 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 	this->frame += time * this->frame_rate / 2.5f;
 }
 
+const graphic_set &BuildAction::current_graphics() const {
+	if (this->entity->has_attribute(attr_type::gatherer)) {
+
+		// the gatherer attributes attached to the unit
+		// are used to modify the graphic
+		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+
+		if (this->get_target().is_valid() &&
+		    this->get_target().get()->has_attribute(attr_type::building)) {
+
+			// set builder graphics if available
+			if (gatherer_attr.graphics.count(gamedata::unit_classes::BUILDING) > 0) {
+				return gatherer_attr.graphics[gamedata::unit_classes::BUILDING]->graphics;
+			}
+		}
+	}
+	return this->entity->unit_type->graphics;
+}
+
 RepairAction::RepairAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::work, tar},
@@ -799,6 +800,7 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	} else {
 		throw std::invalid_argument("Unit reference has no resource attribute");
 	}
+	this->resource_class = target->unit_type->unit_class;
 }
 
 GatherAction::~GatherAction() {}
@@ -911,6 +913,21 @@ UnitReference GatherAction::nearest_dropsite() {
 	}
 }
 
+const graphic_set &GatherAction::current_graphics() const {
+	if (this->entity->has_attribute(attr_type::gatherer)) {
+
+		// the gatherer attributes attached to the unit
+		// are used to modify the graphic
+		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+
+		// check graphics are available
+		if (gatherer_attr.graphics.count(this->resource_class) > 0) {
+			return gatherer_attr.graphics[this->resource_class]->graphics;
+		}
+	}
+	return this->entity->unit_type->graphics;
+}
+
 AttackAction::AttackAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::attack, tar, get_attack_range(e)},
@@ -930,7 +947,7 @@ void AttackAction::update_in_range(unsigned int time, Unit *target_ptr) {
 	}
 
 	// inc frame
-	this->frame += time * this->entity->graphics->at(graphic)->frame_count * this->rate_of_fire;
+	this->frame += time * this->current_graphics().at(graphic)->frame_count * this->rate_of_fire;
 }
 
 bool AttackAction::completed_in_range(Unit *target_ptr) const {
@@ -972,6 +989,39 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 	else {
 		this->entity->log(MSG(dbg) << "projectile launch failed");
 	}
+}
+
+const graphic_set &AttackAction::current_graphics() const {
+
+	// attacking to harvest a resource uses special graphics
+	auto attack_ref = this->get_target();
+	if (attack_ref.is_valid()) {
+		auto target_ptr = attack_ref.get();
+		if (this->entity->has_attribute(attr_type::gatherer) &&
+		    target_ptr->has_attribute(attr_type::resource)) {
+			auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+
+			// check graphics are available
+			auto class_type = target_ptr->unit_type->unit_class;
+			if (gatherer_attr.graphics.count(class_type) > 0) {
+				return gatherer_attr.graphics[class_type]->graphics;
+			}
+		}
+	}
+
+	// gatherers need to revert to standard graphics
+	// when attacking normal enemy targets
+	if (this->entity->has_attribute(attr_type::attack)) {
+
+		// use attack attribute graphic override
+		auto attack_graphic = this->entity->get_attribute<attr_type::attack>().attack_graphic_set;
+		if (attack_graphic) {
+			return *attack_graphic;
+		}
+	}
+
+	// the default
+	return this->entity->unit_type->graphics;
 }
 
 ConvertAction::ConvertAction(Unit *e, UnitReference tar)

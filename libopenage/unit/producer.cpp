@@ -167,7 +167,6 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 
 	// initialise unit
 	unit->unit_type = this;
-	unit->graphics = &this->graphics;
 
 	// colour
 	unit->add_attribute(std::make_shared<Attribute<attr_type::owner>>(player));
@@ -513,7 +512,6 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 
 	// initialize graphic set
 	unit->unit_type = this;
-	unit->graphics = &this->graphics;
 
 	auto player_attr = std::make_shared<Attribute<attr_type::owner>>(player);
 	unit->add_attribute(player_attr);
@@ -685,7 +683,7 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 		// only draw if building is completed
 		if (u.has_attribute(attr_type::building) &&
 		    u.get_attribute<attr_type::building>().completed >= 1.0f) {
-			u.draw(annex_loc, &annex_type->graphics);
+			u.draw(annex_loc, annex_type->graphics);
 		}
 	};
 	return annex_loc;
@@ -726,7 +724,6 @@ void ProjectileProducer::initialise(Unit *unit, Player &) {
 
 	// initialize graphic set
 	unit->unit_type = this;
-	unit->graphics = &this->graphics;
 
 	// projectile speed
 	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;

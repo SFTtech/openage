@@ -62,11 +62,6 @@ public:
 	std::unique_ptr<TerrainObject> location;
 
 	/**
-	 * graphics sets which can be modified for gathering
-	 */
-	graphic_set *graphics;
-
-	/**
 	 * constructs a new location for this unit replacing any
 	 * existing location
 	 *
@@ -114,6 +109,12 @@ public:
 	UnitAction *top() const;
 
 	/**
+	 * returns action under the passed action in the stack
+	 * returns null if stack size is less than 2
+	 */
+	UnitAction *before(const UnitAction *action) const;
+
+	/**
 	 * update this object using the action currently on top of the stack
 	 */
 	bool update();
@@ -121,13 +122,20 @@ public:
 	/**
 	 * draws this action by taking the graphic type of the top action
 	 * the graphic is found from the current graphic set
+	 *
+	 * this function should be used for most draw purposes
 	 */
 	void draw();
 
 	/**
 	 * an generalized draw function which is useful for drawing annexes
 	 */
-	void draw(TerrainObject *loc, graphic_set *graphics);
+	void draw(TerrainObject *loc, const graphic_set &graphics);
+
+	/**
+	 * draws with a specific graphic and frame
+	 */
+	void draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame);
 
 	/**
 	 * adds an available ability to this unit

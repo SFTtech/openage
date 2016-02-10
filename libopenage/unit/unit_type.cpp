@@ -58,7 +58,6 @@ void NyanType::initialise(Unit *unit, Player &) {
 
 	// initialise unit
 	unit->unit_type = this;
-	unit->graphics = &this->graphics;
 
 	// the parsed nyan data gives the list of attributes
 	// and abilities which are given to the unit
