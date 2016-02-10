@@ -33,15 +33,15 @@ Dependency list:
       A   numpy
       A   python imaging library (PIL) -> pillow
     CR    opengl >=2.1
-    CR    libepoxy
+    CR    libepoxy - latest windows fork
      R    dejavu font
-    CR    freetype2 - done
-    CR    fontconfig
-    CR    harfbuzz
-    CR    sdl2  - done
-    CR    sdl2_image  - done
-    CR    opusfile - done
-      A   opus-tools - done
+    CR    freetype2 - done, freetype-2.4.6-win32-1
+    CR    fontconfig - done, fontconfig-dev_2.8.0-2_win32
+    CR    harfbuzz - done, latest fork
+    CR    sdl2  - done, SDL2-2.0.4
+    CR    sdl2_image  - done, SDL2_image-2.0.1
+    CR    opusfile - donem, opusfile-0.7
+      A   opus-tools - done, opus-tools-0.1.9
     C     pygments - done
 
       A   An installed version of any of the following (wine is your friend).

@@ -15,6 +15,8 @@
 #
 # You can manually pass an interpreter by defining PYTHON.
 
+message(">>>>> PYTHON: ${PYTHON}")
+
 function(py_exec STATEMENTS RESULTVAR)
 	# executes some python statement(s), and returns the result in RESULTVAR.
 	# aborts with a fatal error on error.
@@ -35,7 +37,7 @@ endfunction()
 function(py_get_config_var VAR RESULTVAR)
 	# uses py_exec to determine a config var as in distutils.sysconfig.get_config_var().
 	py_exec(
-		"from distutils.sysconfig import get_config_var; print(get_config_var('${VAR}'))"
+		"from distutils.sysconfig import get_config_var;from pathlib import Path;libdir=get_config_var('${VAR}');print(Path(get_config_var('BINDIR')) / 'libs') if libdir is None else print(libdir);"
 		RESULT
 	)
 
@@ -127,19 +129,32 @@ foreach(INTERPRETER ${PYTHON_INTERPRETERS})
 	endif()
 endforeach()
 
+set(PYTHON_INTERPRETERS ${PYTHON_INTERPRETERS})
+
 # test all the found interpreters; break on success.
 foreach(PYTHON ${PYTHON_INTERPRETERS})
+    message(">>>> PYTHON INTERP: ${PYTHON}")
+
 	# ask the interpreter for the essential extension-building flags
 	py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
 	py_get_config_var(LIBDIR PYTHON_LIBRARY_DIR)
 	py_get_lib_name(PYTHON_LIBRARY_NAME)
-	set(PYTHON_LIBRARY "-L${PYTHON_LIBRARY_DIR} -l${PYTHON_LIBRARY_NAME}")
-
-	# there's a static_assert that tests the Python version.
+    
+    file(TO_CMAKE_PATH "${PYTHON_INCLUDE_DIR}" PYTHON_INCLUDE_DIR)
+    file(TO_CMAKE_PATH "${PYTHON_LIBRARY_DIR}" PYTHON_LIBRARY_DIR)
+    
+    message(">>>> PYTHON_INCLUDE_DIR: ${PYTHON_INCLUDE_DIR}")
+    message(">>>> PYTHON_LIBRARY_DIR: ${PYTHON_LIBRARY_DIR}")
+    message(">>>> PYTHON_LIBRARY_NAME: ${PYTHON_LIBRARY_NAME}")
+    
+	#set(PYTHON_LIBRARY "-L${PYTHON_LIBRARY_DIR} -l${PYTHON_LIBRARY_NAME}")
+    
+    # there's a static_assert that tests the Python version.
 	try_compile(PYTHON_TEST_RESULT
 		"${CMAKE_BINARY_DIR}"
-		"${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
-		LINK_LIBRARIES "${PYTHON_LIBRARY}"
+		"${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"        
+		LINK_LIBRARIES "${PYTHON_LIBRARY_NAME}"
+        LINK_DIRECTORIES "${PYTHON_LIBRARY_DIR}"
 		CMAKE_FLAGS
 			"-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}"
 		OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
@@ -161,11 +176,6 @@ else()
 	message("No suitable Python interpreter found.")
 	message("We need an interpreter that is shipped with libpython and header files.")
 	message("Specify your own with -DPYTHON=/path/to/executable\n\n\n")
-
-
-    set(PYTHON "D:/Python/Python35-32/python.exe")
-	set(PYTHON_INCLUDE_DIR "D:/Python/Python35-32/include")
-	set(PYTHON_LIBRARY "D:/Python/Python35-32/libs")
 endif()
 
 unset(PYTHON_TEST_RESULT)
