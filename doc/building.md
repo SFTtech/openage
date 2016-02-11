@@ -30,8 +30,8 @@ Dependency list:
     CRA   python >=3.4
     C     cython >=0.22
     C     cmake >=3.0.0
-      A   numpy
-      A   python imaging library (PIL) -> pillow
+      A   numpy  numpy-1.10.4 installed via pip
+      A   python imaging library (PIL) -> pillow   pillow-3.1.1 via pip
     CR    opengl >=2.1
     CR    libepoxy - latest windows fork
      R    dejavu font
@@ -42,7 +42,8 @@ Dependency list:
     CR    sdl2_image  - done, SDL2_image-2.0.1
     CR    opusfile - donem, opusfile-0.7
       A   opus-tools - done, opus-tools-0.1.9
-    C     pygments - done
+    C     pygments - pygments-2.1 via pip
+    pkg-config from  https://sourceforge.net/projects/pkgconfiglite/
 
       A   An installed version of any of the following (wine is your friend).
           Other versions _might_ work; setup disk support will be added soon:

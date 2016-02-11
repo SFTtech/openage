@@ -41,6 +41,8 @@ endforeach()
 
 # loop through all required utilities to find them
 foreach(_UTILITY ${REQUIRED_UTILITIES})
+    message(">> ${_UTILITY}_EXECUTABLE")
+
 	find_program(${_UTILITY}_EXECUTABLE
 		NAMES "${_UTILITY}"
 	)
