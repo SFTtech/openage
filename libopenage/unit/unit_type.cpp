@@ -12,6 +12,14 @@ UnitType::UnitType(const Player &owner)
 	owner{owner} {
 }
 
+bool UnitType::operator==(const UnitType &other) const {
+	return this->type_abilities == other.type_abilities;
+}
+
+bool UnitType::operator!=(const UnitType &other) const {
+	return !(*this == other);
+}
+
 UnitTexture *UnitType::default_texture() {
 	return this->graphics[graphic_type::standing].get();
 }

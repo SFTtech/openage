@@ -572,9 +572,11 @@ bool MoveAction::completed() const {
 const graphic_set &MoveAction::current_graphics() const {
 
 	// apply special graphics from gathering or building actions
-	auto parent = this->entity->before(this);
-	if (parent) {
-		return parent->current_graphics();
+	if (this->entity->has_attribute(attr_type::gatherer)) {
+		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+		if (gatherer_attr.alt_type) {
+			return gatherer_attr.alt_type->graphics;
+		}
 	}
 	return this->entity->unit_type->graphics;
 }
@@ -801,6 +803,14 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 		throw std::invalid_argument("Unit reference has no resource attribute");
 	}
 	this->resource_class = target->unit_type->unit_class;
+
+
+	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+
+	// check graphics are available
+	if (gatherer_attr.graphics.count(this->resource_class) > 0) {
+		gatherer_attr.alt_type = gatherer_attr.graphics.at(this->resource_class);
+	}
 }
 
 GatherAction::~GatherAction() {}
@@ -914,18 +924,10 @@ UnitReference GatherAction::nearest_dropsite() {
 }
 
 const graphic_set &GatherAction::current_graphics() const {
-	if (this->entity->has_attribute(attr_type::gatherer)) {
 
-		// the gatherer attributes attached to the unit
-		// are used to modify the graphic
-		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
-
-		// check graphics are available
-		if (gatherer_attr.graphics.count(this->resource_class) > 0) {
-			return gatherer_attr.graphics[this->resource_class]->graphics;
-		}
-	}
-	return this->entity->unit_type->graphics;
+	// the gatherer graphics attached to the unit
+	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+	return gatherer_attr.alt_type->graphics;
 }
 
 AttackAction::AttackAction(Unit *e, UnitReference tar)

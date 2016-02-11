@@ -349,7 +349,8 @@ public:
 	Attribute()
 		:
 		AttributeContainer{attr_type::gatherer},
-		amount{.0f} {}
+		amount{.0f},
+		alt_type{nullptr} {}
 
 	bool shared() const override {
 		return false;
@@ -363,6 +364,7 @@ public:
 	float amount;
 	float capacity;
 	float gather_rate;
+	UnitType *alt_type;
 
 	// texture sets available for each resource
 	std::unordered_map<gamedata::unit_classes, UnitType *> graphics;

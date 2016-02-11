@@ -63,6 +63,12 @@ public:
 	virtual TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const = 0;
 
 	/**
+	 * compare if two types are the same
+	 */
+	bool operator==(const UnitType &other) const;
+	bool operator!=(const UnitType &other) const;
+
+	/**
 	 * Get a default texture for HUD drawing
 	 */
 	UnitTexture *default_texture();
