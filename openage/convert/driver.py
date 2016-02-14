@@ -215,7 +215,7 @@ def convert_media(args):
         ignored_suffixes.add('.slp')
 
     files_to_convert = []
-    for dirname in ['sounds', 'graphics', 'terrain']:
+    for dirname in ['sounds', 'graphics', 'terrain', 'interface']:
         for filepath in args.srcdir[dirname].iterdir():
             if filepath.suffix in ignored_suffixes:
                 continue
