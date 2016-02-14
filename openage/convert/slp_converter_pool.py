@@ -99,15 +99,15 @@ class SLPConverterPool:
 
         inqueue, outqueue = self.idle.get()
 
-        with self.job_mutex:
-            inqueue.put((slpdata, custom_cutter))
+        #with self.job_mutex:
+        inqueue.put((slpdata, custom_cutter))
 
         # TODO not sure why this synchronization is needed.
         #      (But it is. otherwise, there are non-deterministic crashes when
         #       depickling some of Texture's numpy internals, especially with
         #       high job counts.).
-        with self.job_mutex:
-            result = outqueue.get()
+        #with self.job_mutex:
+        result = outqueue.get()
 
         self.idle.put((inqueue, outqueue))
 
