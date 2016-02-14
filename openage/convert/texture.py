@@ -43,6 +43,11 @@ class TextureImage:
 
     def __init__(self, picture_data, hotspot=None):
 
+        from PIL import Image
+        import numpy
+        if isinstance(picture_data, Image.Image):
+            picture_data = numpy.array(picture_data.getdata(), numpy.uint8).reshape(picture_data.size[1], picture_data.size[0], 4)
+
         self.width = picture_data.shape[1]
         self.height = picture_data.shape[0]
 
