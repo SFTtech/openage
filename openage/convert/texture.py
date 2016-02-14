@@ -90,7 +90,7 @@ class Texture(exportable.Exportable):
     # player-specific colors will be in color blue, but with an alpha of 254
     player_id = 1
 
-    def __init__(self, input_data, palette=None):
+    def __init__(self, input_data, palette=None, custom_cutter=None):
         super().__init__()
         spam("creating Texture from %s" % (repr(input_data)))
 
@@ -99,15 +99,13 @@ class Texture(exportable.Exportable):
         if isinstance(input_data, SLP):
             if palette is None:
                 raise Exception("palette needed for SLP -> texture generation")
-            frames = [
-                # TODO this needs some _serious_ performance work
-                # (at least a 10x improvement, 50x would be better).
-                # ideas: remove PIL and use libpng via CPPInterface,
-                #        cythonize parts of SLP.py
-                TextureImage(frame.get_picture_data(palette, self.player_id),
-                             hotspot=frame.info.hotspot)
-                for frame in input_data.frames
-            ]
+
+            frames = []
+
+            for frame in input_data.frames:
+                for subtex in self.__slp_to_subtextures(frame, palette, custom_cutter):
+                    frames.append(subtex)
+
         elif isinstance(input_data, BlendingMode):
             frames = [
                 TextureImage(
@@ -122,6 +120,21 @@ class Texture(exportable.Exportable):
 
         self.image_data, (self.width, self.height), self.image_metadata\
             = merge_frames(frames)
+
+    def __slp_to_subtextures(self, frame, palette=None, custom_cutter=None):
+        """
+        convert slp to subtexture or subtextures, use a palette.
+        """
+        # TODO this needs some _serious_ performance work
+        # (at least a 10x improvement, 50x would be better).
+        # ideas: remove PIL and use libpng via CPPInterface,
+        #        cythonize parts of SLP.py
+        subtex = TextureImage(frame.get_picture_data(palette, self.player_id), hotspot=frame.info.hotspot)
+
+        if custom_cutter:
+            return custom_cutter(subtex)
+        else:
+            return [subtex]
 
     def save(self, targetdir, filename, meta_formats=None):
         """

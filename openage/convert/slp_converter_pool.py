@@ -81,26 +81,26 @@ class SLPConverterPool:
             inqueue.put(StopIteration)
             process.join()
 
-    def convert(self, slpdata):
+    def convert(self, slpdata, custom_cutter=None):
         """
         Submits slpdata to one of the converter processes, and returns
         a Texture object (or throws an Exception).
         """
         if self.fake:
             # convert right here, without entering the thread.
-            return Texture(SLP(slpdata), self.palette)
+            return Texture(SLP(slpdata), self.palette, custom_cutter)
 
         if free_memory() < 2**30:
             warn("Low on memory; disabling parallel SLP conversion")
             # acquire job_mutex in order to block any concurrent activity until
             # this job is done.
             with self.job_mutex:
-                return Texture(SLP(slpdata), self.palette)
+                return Texture(SLP(slpdata), self.palette, custom_cutter)
 
         inqueue, outqueue = self.idle.get()
 
         with self.job_mutex:
-            inqueue.put(slpdata)
+            inqueue.put((slpdata, custom_cutter))
 
         # TODO not sure why this synchronization is needed.
         #      (But it is. otherwise, there are non-deterministic crashes when
@@ -144,12 +144,14 @@ def converter_process(inqueue, outqueue):
 
     # loop
     while True:
-        slpdata = inqueue.get()
-        if slpdata == StopIteration:
+        work_item = inqueue.get()
+        if work_item == StopIteration:
             return
 
+        slpdata, custom_cutter = work_item
+
         try:
-            texture = Texture(SLP(slpdata), palette)
+            texture = Texture(SLP(slpdata), palette, custom_cutter)
             outqueue.put(texture)
         except BaseException as exc:
             outqueue.put(exc)
