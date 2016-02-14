@@ -19,6 +19,7 @@ from .gamedata.empiresdat import load_gamespec
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .slp_converter_pool import SLPConverterPool
+from .interface.interfacecutter import InterfaceCutter
 
 
 def get_string_resources(args):
@@ -261,8 +262,11 @@ def convert_mediafile(filepath, args):
         indata = infile.read()
 
     if filename.endswith('.slp'):
+        # some user interface textures must be cut using hardcoded values
+        cutter = InterfaceCutter(filename) if filename.startswith('interface/') else None
+
         # do the CPU-intense part in a subprocess
-        texture = args.slp_converter.convert(indata)
+        texture = args.slp_converter.convert(indata, cutter)
 
         # the hotspots of terrain textures must be fixed
         if filename.startswith('terrain/'):
