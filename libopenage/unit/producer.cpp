@@ -152,6 +152,21 @@ int ObjectProducer::id() const {
 	return this->unit_data.id0;
 }
 
+int ObjectProducer::parent_id() const {
+	int uid = this->unit_data.id0;
+
+	// male types
+	if (uid == 156 || uid == 120 || uid == 592 || uid == 123 || uid == 579 || uid == 124) {
+		return 83;
+	}
+
+	// female types
+	else if (uid == 222 || uid == 354 || uid == 590 || uid == 218 || uid == 581 || uid == 220) {
+		return 293;
+	}
+	return uid;
+}
+
 std::string ObjectProducer::name() const {
 	return this->unit_data.name;
 }
@@ -364,14 +379,15 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 
 	// projectile of melee attacks
 	UnitType *proj_type = this->owner.get_type(this->projectile);
+	UnitType *reset_type = this->parent_type();
 	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
 
 		// calculate requirements for ranged attacks
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
-		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 48000, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 48000, 1, reset_type));
 	}
 	else {
-		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(nullptr, 0, 0, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(nullptr, 0, 0, 1, reset_type));
 	}
 }
 
@@ -409,7 +425,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 
 		// currently not sure where the game data keeps these values
 		// todo PREY_ANIMAL SEA_FISH
-		if (this->unit_data.id0 == 83) {
+		if (this->parent_id() == 83) {
 
 			// male graphics
 			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->owner.get_type(156); // builder 118
@@ -506,6 +522,10 @@ int BuildingProducer::id() const {
 	return this->unit_data.id0;
 }
 
+int BuildingProducer::parent_id() const {
+	return this->unit_data.id0;
+}
+
 std::string BuildingProducer::name() const {
 	return this->unit_data.name;
 }
@@ -541,7 +561,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	UnitType *proj_type = this->owner.get_type(this->projectile);
 	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
-		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1, this->graphics));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1, this));
 		unit->give_ability(std::make_shared<AttackAbility>());
 	}
 
@@ -709,6 +729,10 @@ ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec
 ProjectileProducer::~ProjectileProducer() {}
 
 int ProjectileProducer::id() const {
+	return this->unit_data.id0;
+}
+
+int ProjectileProducer::parent_id() const {
 	return this->unit_data.id0;
 }
 

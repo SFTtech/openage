@@ -387,6 +387,7 @@ void IdleAction::update(unsigned int time) {
 			this->graphic = graphic_type::carrying;
 		} else {
 			this->graphic = graphic_type::standing;
+			this->frame += time * this->frame_rate / 20.0f;
 		}
 	}
 	else {
@@ -569,17 +570,6 @@ bool MoveAction::completed() const {
 	return false;
 }
 
-const graphic_set &MoveAction::current_graphics() const {
-
-	// apply special graphics from gathering or building actions
-	if (this->entity->has_attribute(attr_type::gatherer)) {
-		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
-		if (gatherer_attr.alt_type) {
-			return gatherer_attr.alt_type->graphics;
-		}
-	}
-	return this->entity->unit_type->graphics;
-}
 
 coord::phys3 MoveAction::next_waypoint() const {
 	if (this->path.waypoints.size() > 0) {
@@ -588,6 +578,7 @@ coord::phys3 MoveAction::next_waypoint() const {
 		throw Error{MSG(err) << "No next waypoint available!"};
 	}
 }
+
 
 void MoveAction::set_path() {
 	if (this->unit_target.is_valid()) {
@@ -716,6 +707,15 @@ BuildAction::BuildAction(Unit *e, UnitReference foundation)
 	TargetAction{e, graphic_type::work, foundation},
 	complete{.0f},
 	build_rate{.0001f} {
+
+	// update the units type
+	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+	auto building_class = gamedata::unit_classes::BUILDING;
+	if (gatherer_attr.graphics.count(building_class) > 0) {
+		auto *new_type = gatherer_attr.graphics.at(building_class);
+		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
+		new_type->initialise(this->entity, pl_attr.player);
+	}
 }
 
 void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
@@ -809,7 +809,9 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 
 	// check graphics are available
 	if (gatherer_attr.graphics.count(this->resource_class) > 0) {
-		gatherer_attr.alt_type = gatherer_attr.graphics.at(this->resource_class);
+		auto *new_type = gatherer_attr.graphics.at(this->resource_class);
+		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
+		new_type->initialise(this->entity, pl_attr.player);
 	}
 }
 
@@ -924,10 +926,7 @@ UnitReference GatherAction::nearest_dropsite() {
 }
 
 const graphic_set &GatherAction::current_graphics() const {
-
-	// the gatherer graphics attached to the unit
-	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
-	return gatherer_attr.alt_type->graphics;
+	return this->entity->unit_type->graphics;
 }
 
 AttackAction::AttackAction(Unit *e, UnitReference tar)
@@ -935,6 +934,14 @@ AttackAction::AttackAction(Unit *e, UnitReference tar)
 	TargetAction{e, graphic_type::attack, tar, get_attack_range(e)},
 	strike_percent{0.0f},
 	rate_of_fire{0.002f} {
+
+	// switch graphic type for villagers not collecting resources
+	if (this->entity->has_attribute(attr_type::gatherer) &&
+	    !tar.get()->has_attribute(attr_type::resource)) {
+		auto &att_attr = this->entity->get_attribute<attr_type::attack>();
+		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
+		att_attr.attack_type->initialise(this->entity, pl_attr.player);
+	}
 }
 
 AttackAction::~AttackAction() {}
@@ -993,38 +1000,6 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 	}
 }
 
-const graphic_set &AttackAction::current_graphics() const {
-
-	// attacking to harvest a resource uses special graphics
-	auto attack_ref = this->get_target();
-	if (attack_ref.is_valid()) {
-		auto target_ptr = attack_ref.get();
-		if (this->entity->has_attribute(attr_type::gatherer) &&
-		    target_ptr->has_attribute(attr_type::resource)) {
-			auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
-
-			// check graphics are available
-			auto class_type = target_ptr->unit_type->unit_class;
-			if (gatherer_attr.graphics.count(class_type) > 0) {
-				return gatherer_attr.graphics[class_type]->graphics;
-			}
-		}
-	}
-
-	// gatherers need to revert to standard graphics
-	// when attacking normal enemy targets
-	if (this->entity->has_attribute(attr_type::attack)) {
-
-		// use attack attribute graphic override
-		auto attack_graphic = this->entity->get_attribute<attr_type::attack>().attack_graphic_set;
-		if (attack_graphic) {
-			return *attack_graphic;
-		}
-	}
-
-	// the default
-	return this->entity->unit_type->graphics;
-}
 
 ConvertAction::ConvertAction(Unit *e, UnitReference tar)
 	:

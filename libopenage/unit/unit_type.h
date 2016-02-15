@@ -39,6 +39,12 @@ public:
 	virtual int id() const = 0;
 
 	/**
+	 * gets the parent id of this unit type
+	 * which is used for village base and gather types
+	 */
+	virtual int parent_id() const = 0;
+
+	/**
 	 * gets the name of the unit type being produced
 	 */
 	virtual std::string name() const = 0;
@@ -87,6 +93,11 @@ public:
 	 * upgrades one attribute of this unit type
 	 */
 	void upgrade(const AttributeContainer &attr);
+
+	/**
+	 * returns type matching parent_id()
+	 */
+	UnitType *parent_type() const;
 
 	/**
 	 * the player who owns this unit type
@@ -138,6 +149,7 @@ public:
 	virtual ~NyanType();
 
 	int id() const override;
+	int parent_id() const override;
 	std::string name() const override;
 	void initialise(Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;

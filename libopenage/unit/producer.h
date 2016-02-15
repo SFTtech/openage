@@ -38,6 +38,7 @@ public:
 	virtual ~ObjectProducer();
 
 	int id() const override;
+	int parent_id() const override;
 	std::string name() const override;
 	void initialise(Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
@@ -111,6 +112,7 @@ public:
 	virtual ~BuildingProducer();
 
 	int id() const override;
+	int parent_id() const override;
 	std::string name() const override;
 	void initialise(Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
@@ -152,6 +154,7 @@ public:
 	virtual ~ProjectileProducer();
 
 	int id() const override;
+	int parent_id() const override;
 	std::string name() const override;
 	void initialise(Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;

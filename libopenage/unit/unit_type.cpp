@@ -61,6 +61,10 @@ void UnitType::upgrade(const AttributeContainer &attr) {
 	*this->default_attributes[attr.type] = attr;
 }
 
+UnitType *UnitType::parent_type() const {
+	return this->owner.get_type(this->parent_id());
+}
+
 NyanType::NyanType(const Player &owner)
 	:
 	UnitType(owner) {
@@ -71,6 +75,10 @@ NyanType::~NyanType() {}
 
 int NyanType::id() const {
 	return 1;
+}
+
+int NyanType::parent_id() const {
+	return -1;
 }
 
 std::string NyanType::name() const {

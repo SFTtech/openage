@@ -292,7 +292,6 @@ public:
 	bool allow_interupt() const override { return true; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "move"; }
-	const graphic_set &current_graphics() const override;
 
 	coord::phys3 next_waypoint() const;
 
@@ -445,7 +444,6 @@ public:
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override;
 	std::string name() const override { return "attack"; }
-	const graphic_set &current_graphics() const override;
 
 private:
 	float strike_percent, rate_of_fire;
