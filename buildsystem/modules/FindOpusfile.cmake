@@ -41,6 +41,3 @@ find_package_handle_standard_args(Opus DEFAULT_MSG OPUSFILE_LIBRARY OPUS_LIBRARY
 # export the variables
 set(OPUS_LIBRARIES "${OPUSFILE_LIBRARY}" "${OPUS_LIBRARY}")
 set(OPUS_INCLUDE_DIRS "${OPUS_INCLUDE_DIR}" "${OPUS_INCLUDE_DIR}/opus")
-
-# set(OPUS_LIBRARIES "E:/Code/libraries/opusfile-0.7-win32/libopusfile-0.dll" "E:/Code/libraries/opusfile-0.7-win32/libopus-0.dll")
-# set(OPUS_INCLUDE_DIRS "E:/Code/libraries/opusfile-0.7/opusfile-0.7/include")
