@@ -227,7 +227,7 @@ std::unique_ptr<unsigned char> Font::load_glyph(codepoint_t codepoint, Glyph &gl
 			ft_face->glyph->bitmap.buffer + (glyph.height - i - 1) * glyph.width,
 			glyph.width * sizeof(unsigned char));
 	}
-	return std::move(glyph_data);
+	return glyph_data;
 }
 
 }} // openage::renderer

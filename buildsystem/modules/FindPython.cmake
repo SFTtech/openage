@@ -21,17 +21,19 @@ function(py_exec STATEMENTS RESULTVAR)
 	# executes some python statement(s), and returns the result in RESULTVAR.
 	# aborts with a fatal error on error.
 	# no single quotes are allowed in STATEMENTS.
-	exec_program(
-		"${PYTHON}" ARGS -c "\"${STATEMENTS}\""
+	execute_process(
+		COMMAND "${PYTHON}" -c "${STATEMENTS}"
 		OUTPUT_VARIABLE PY_OUTPUT
-		RETURN_VALUE PY_RETVAL
+		RESULT_VARIABLE PY_RETVAL
 	)
 
 	if (NOT PY_RETVAL EQUAL 0)
 		message(FATAL_ERROR "failed:\n${PYTHON} -c '${STATEMENTS}'\n${PY_OUTPUT}")
 	endif()
 
-	set("${RESULTVAR}" "${PY_OUTPUT}" PARENT_SCOPE)
+	string(STRIP "${PY_OUTPUT}" PY_OUTPUT_STRIPPED)
+
+	set("${RESULTVAR}" "${PY_OUTPUT_STRIPPED}" PARENT_SCOPE)
 endfunction()
 
 function(py_get_config_var VAR RESULTVAR)
@@ -47,7 +49,7 @@ endfunction()
 function(py_get_lib_name RESULTVAR)
 	# uses py_exec to compute Python's C/C++ library name, just like python-config does.
 	py_get_config_var(VERSION PYTHON_VERSION)
-
+	endif()
     if(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
         set(ABIFLAGS, "")
     else()
@@ -123,8 +125,14 @@ list(REMOVE_DUPLICATES PYTHON_INTERPRETERS)
 
 # Retain only the proper python interpreters
 foreach(INTERPRETER ${PYTHON_INTERPRETERS})
-	exec_program("${INTERPRETER}" ARGS -c True OUTPUT_VARIABLE TEST_OUTPUT RETURN_VALUE TEST_RETVAL)
-	if (NOT TEST_RETVAL EQUAL 0)
+	set(PY_OUTPUT_TEST "rofl, lol")
+	execute_process(COMMAND
+		"${INTERPRETER}" -c "print('${PY_OUTPUT_TEST}'); exit(42)"
+		OUTPUT_VARIABLE TEST_OUTPUT
+		RESULT_VARIABLE TEST_RETVAL
+	)
+	if(NOT TEST_OUTPUT STREQUAL "${PY_OUTPUT_TEST}\n" OR NOT TEST_RETVAL EQUAL 42)
+		message(WARNING "Dropping invalid python interpreter '${INTERPRETER}'")
 		list(REMOVE_ITEM PYTHON_INTERPRETERS INTERPRETER)
 	endif()
 endforeach()
@@ -133,8 +141,8 @@ set(PYTHON_INTERPRETERS ${PYTHON_INTERPRETERS})
 
 # test all the found interpreters; break on success.
 foreach(PYTHON ${PYTHON_INTERPRETERS})
+	# TODO: sort interpreters by version
     message(">>>> PYTHON INTERP: ${PYTHON}")
-
 	# ask the interpreter for the essential extension-building flags
 	py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
 	py_get_config_var(LIBDIR PYTHON_LIBRARY_DIR)
@@ -152,19 +160,20 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
     # there's a static_assert that tests the Python version.
 	try_compile(PYTHON_TEST_RESULT
 		"${CMAKE_BINARY_DIR}"
-		"${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
+		SOURCES "${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
 		LINK_LIBRARIES "${PYTHON_LIBRARY_NAME}"
 		CMAKE_FLAGS
-			"-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}"
             "-DLINK_DIRECTORIES=${PYTHON_LIBRARY_DIR}"
 		OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
 	)
 
 	if(PYTHON_TEST_RESULT)
+		message("-- Looking for suitable python3 - Success: ${PYTHON}")
 		set(PYTHON_INTERP "${PYTHON}")
+		set(PYTHON_LIBRARY "-l${PYTHON_LIBRARY_NAME} -L${PYTHON_LIBRARY_DIR}")
 		break()
 	else()
-		set(PYTHON_TEST_ERRORS "${PYTHON_TEST_ERRORS}candidate ${PYTHON}:\n${PYTHON_TEST_OUTPUT}\n\n")
+		set(PYTHON_TEST_ERRORS "${PYTHON_TEST_ERRORS}python candidate ${PYTHON}:\n${PYTHON_TEST_OUTPUT}\n\n")
 	endif()
 endforeach()
 

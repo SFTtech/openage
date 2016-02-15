@@ -19,11 +19,14 @@ function(python_init)
 	# filled with all .py filenames; used for installing.
 	set_property(GLOBAL PROPERTY SFT_PY_FILES)
 
+	# filled with the relative source dirs of the above py files.
+	set_property(GLOBAL PROPERTY SFT_PY_FILES_RELSRCDIRS)
+
+	# filled with all .py filenames that should not be installed
+	set_property(GLOBAL PROPERTY SFT_PY_FILES_NOINSTALL)
+
 	# filled with all cython module target names; used for in-place creation.
 	set_property(GLOBAL PROPERTY SFT_CYTHON_MODULE_TARGETS)
-
-	# filled with all __pycache__ folders that have already been selected for installation.
-	set_property(GLOBAL PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS)
 endfunction()
 
 
@@ -186,35 +189,26 @@ function(add_py_modules)
 
 	file(RELATIVE_PATH REL_CURRENT_SOURCE_DIR ${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
+	set(NOINSTALL_NEXT FALSE)
 	foreach(source ${ARGN})
-		if(NOT ${source} MATCHES ".*\\.py$")
-			message(FATAL_ERROR "non-Python file given to add_py_modules: ${source}")
-		endif()
-
-		if(NOT IS_ABSOLUTE ${source})
-			set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
-		endif()
-
-		set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES "${source}")
-
-		get_source_file_property(DONT_INSTALL ${source} NOINSTALL)
-		if(NOT DONT_INSTALL)
-			install(
-				FILES "${source}"
-				DESTINATION  "${CMAKE_PY_INSTALL_PREFIX}/${REL_CURRENT_SOURCE_DIR}"
-			)
-
-			# install the corresponding __pycache__ folder, but at most once.
-			get_filename_component(DIR_NAME "${source}" DIRECTORY)
-			get_property(installed_pycache_folders GLOBAL PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS)
-			list(FIND installed_pycache_folders "${DIR_NAME}" idx)
-			if(idx LESS 0)
-				install(
-					DIRECTORY "${DIR_NAME}/__pycache__"
-					DESTINATION  "${CMAKE_PY_INSTALL_PREFIX}/${REL_CURRENT_SOURCE_DIR}"
-				)
-				set_property(GLOBAL APPEND PROPERTY SFT_INSTALLED_PYCACHE_FOLDERS "${DIR_NAME}")
+		if(source STREQUAL "NOINSTALL")
+			set(NOINSTALL_NEXT TRUE)
+		else()
+			if(NOT ${source} MATCHES ".*\\.py$")
+				message(FATAL_ERROR "non-Python file given to add_py_modules: ${source}")
 			endif()
+
+			if(NOT IS_ABSOLUTE ${source})
+				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
+			endif()
+
+			if(NOINSTALL_NEXT)
+				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_NOINSTALL "${source}")
+				set(NOINSTALL_NEXT FALSE)
+			endif()
+
+			set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES "${source}")
+			set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_RELSRCDIRS "${REL_CURRENT_SOURCE_DIR}")
 		endif()
 	endforeach()
 endfunction()
@@ -225,7 +219,7 @@ function(python_finalize)
 
 	get_property(pxdgen_sources GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
 	get_property(generated_pxd_list GLOBAL PROPERTY SFT_GENERATED_PXD_FILES)
-	file(WRITE "${CMAKE_BINARY_DIR}/py/pxdgen_sources" "${pxdgen_sources}")
+	write_on_change("${CMAKE_BINARY_DIR}/py/pxdgen_sources" "${pxdgen_sources}")
 	set(PXDGEN_TIMEFILE "${CMAKE_BINARY_DIR}/py/pxdgen_timefile")
 	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}" ${generated_pxd_list}
 		COMMAND "${PYTHON}" -m buildsystem.pxdgen
@@ -241,11 +235,11 @@ function(python_finalize)
 	# cythonize (.pyx -> .cpp)
 
 	get_property(cython_modules GLOBAL PROPERTY SFT_CYTHON_MODULES)
-	file(WRITE "${CMAKE_BINARY_DIR}/py/cython_modules" "${cython_modules}")
+	write_on_change("${CMAKE_BINARY_DIR}/py/cython_modules" "${cython_modules}")
 	get_property(cython_modules_embed GLOBAL PROPERTY SFT_CYTHON_MODULES_EMBED)
-	file(WRITE "${CMAKE_BINARY_DIR}/py/cython_modules_embed" "${cython_modules_embed}")
+	write_on_change("${CMAKE_BINARY_DIR}/py/cython_modules_embed" "${cython_modules_embed}")
 	get_property(pxd_list GLOBAL PROPERTY SFT_PXD_FILES)
-	file(WRITE "${CMAKE_BINARY_DIR}/py/pxd_list" "${pxd_list}")
+	write_on_change("${CMAKE_BINARY_DIR}/py/pxd_list" "${pxd_list}")
 	set(CYTHONIZE_TIMEFILE "${CMAKE_BINARY_DIR}/py/cythonize_timefile")
 	add_custom_command(OUTPUT "${CYTHONIZE_TIMEFILE}"
 		COMMAND "${PYTHON}" -m buildsystem.cythonize
@@ -269,17 +263,53 @@ function(python_finalize)
 
 	# py compile (.py -> .pyc)
 
+	set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_RELSRCDIRS "lol test")
+
 	get_property(py_files GLOBAL PROPERTY SFT_PY_FILES)
-	file(WRITE "${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
+	get_property(py_files_srcdirs GLOBAL PROPERTY SFT_PY_FILES_RELSRCDIRS)
+	get_property(py_files_noinstall GLOBAL PROPERTY SFT_PY_FILES_NOINSTALL)
+
+	write_on_change("${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
 	set(COMPILEPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
 	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
-		COMMAND "${PYTHON}" -m compileall openage
+		COMMAND "${PYTHON}" -m buildsystem.compilepy
+		"${CMAKE_BINARY_DIR}/py/py_files"
+		"${CMAKE_SOURCE_DIR}"
+		"${CMAKE_SOURCE_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${COMPILEPY_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-		DEPENDS ${py_files}
-		COMMENT "compiling .py files to .pyc files in __pycache__"
+		DEPENDS "${CMAKE_BINARY_DIR}/py/py_files" ${py_files}
+		COMMENT "compiling .py files to .pyc files"
 	)
 	add_custom_target(compilepy ALL DEPENDS "${COMPILEPY_TIMEFILE}")
+
+	# determine the compiled file name for all source files
+	# avoid doing this call for each file, instead, batch-process.
+	# BUT: i'm unsure when exactly this is called again
+	#      (if a new file was added to the py_files?)
+	py_exec("from importlib import util; print(';'.join(util.cache_from_source(f) for f in open('${CMAKE_BINARY_DIR}/py/py_files').read().split(';')))" py_compiled_files)
+
+	list(LENGTH py_files py_files_count)
+	math(EXPR py_files_count_range "${py_files_count} - 1")
+
+	foreach(idx RANGE ${py_files_count_range})
+		list(GET py_files ${idx} pyfile)
+		list(GET py_compiled_files ${idx} pycfile)
+		list(GET py_files_srcdirs ${idx} pyrelsrcdir)
+
+		# install if it's not in that list.
+		list(FIND py_files_noinstall "${pyfile}" do_install)
+		if(do_install)
+			install(
+				FILES "${pyfile}"
+				DESTINATION  "${CMAKE_PY_INSTALL_PREFIX}/${pyrelsrcdir}"
+			)
+			install(
+				FILES "${pycfile}"
+				DESTINATION "${CMAKE_PY_INSTALL_PREFIX}/${pyrelsrcdir}/__pycache__"
+			)
+		endif()
+	endforeach()
 
 
 	# inplace module install (bin/module.so -> module.so)
