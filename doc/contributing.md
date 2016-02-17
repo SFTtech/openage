@@ -55,7 +55,7 @@ We use Github's fork/commit/pull request model.
 - [Fork the repo and add the needed remotes](https://help.github.com/articles/fork-a-repo/).
 - Create a branch for your feature (*feature branch*: `git checkout -b feature_name`). You can always switch to master and do `git pull upstream master` and rebase (see below) to update your local copy.
 - Discuss your ideas and your work, e.g. on the IRC channel (ask for opinions or at least announce it), to prevent those "duplicate work" situations where two people didn't know of each other's ongoing work ("release early and often!" also applies to pull requests).
-- Once you have commited some work to your feature branch, open a "[WIP]" pull request (prefix your pull request's name with "[WIP] "). That will make it clear to the entire dev community that there's something going on here. People will be able to look at your code (e.g. to see whether that would break the stuff they are doing), and you'll get free checks from the build bot.
+- Once you have committed some work to your feature branch, open a "[WIP]" pull request (prefix your pull request's name with "[WIP] "). That will make it clear to the entire dev community that there's something going on here. People will be able to look at your code (e.g. to see whether that would break the stuff they are doing), and you'll get free checks from the build bot.
 - Finally, once your work is done and you think it's ready to be merged, rename your pull request to remove the "[WIP]" (and announce that fact on the IRC, or it may go unnoticed).
 - Do the changes that are requested by the reviewers.
 - Aaaaaand you're done.
