@@ -11,8 +11,6 @@
 #include <memory>
 #include <iomanip>
 
-#include "crossplatform.h"
-
 
 namespace openage {
 namespace util {

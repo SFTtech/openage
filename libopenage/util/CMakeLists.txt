@@ -26,7 +26,6 @@ add_sources(libopenage
 	unicode.cpp
 	vector.cpp
 	vector_test.cpp
-    crossplatform.h
 )
 
 pxdgen(

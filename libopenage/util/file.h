@@ -8,14 +8,10 @@
 #include <string>
 #include <vector>
 
-#include <stddef.h>
-
 #include "../error/error.h"
 
 #include "compiler.h"
 #include "dir.h"
-
-#define ssize_t long
 
 namespace openage {
 namespace util {
