@@ -28,23 +28,21 @@ Dependency list:
 
     C     gcc >=4.9 or clang >=3.4 (clang >=3.5 for Mac OS X)
     CRA   python >=3.4
-    C     cython >=0.23 via pip
-    C     cmake >=3.0.2
-      A   numpy  numpy-1.10.4 installed via pip
-      A   python imaging library (PIL) -> pillow   pillow-3.1.1 via pip
+    C     cython >=0.22
+    C     cmake >=3.0.0
+      A   numpy
+      A   python imaging library (PIL) -> pillow
     CR    opengl >=2.1
-    CR    libepoxy - latest windows fork
+    CR    libepoxy
      R    dejavu font
-    CR    freetype2 - done, freetype-2.4.6-win32-1
-    CR    fontconfig - done, fontconfig-dev_2.8.0-2_win32
-    CR    harfbuzz - done, from https://github.com/blinkseb/harfbuzz
-    CR    sdl2  - done, SDL2-2.0.4
-    CR    sdl2_image  - done, SDL2_image-2.0.1
-    CR    opusfile - done, opusfile-0.7 from https://www.opus-codec.org/downloads/
-      A   opus-tools - done, opus-tools-0.1.9 from https://www.opus-codec.org/downloads/
-    C     pygments - pygments-2.1 via pip
-          pkg-config from  https://sourceforge.net/projects/pkgconfiglite/
-          libogg 1.3.2 from http://downloads.xiph.org/releases/ogg/
+    CR    freetype2
+    CR    fontconfig
+    CR    harfbuzz
+    CR    sdl2
+    CR    sdl2_image
+    CR    opusfile
+      A   opus-tools
+    C     pygments
 
       A   An installed version of any of the following (wine is your friend).
           Other versions _might_ work; setup disk support will be added soon:
