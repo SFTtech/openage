@@ -15,7 +15,7 @@
 #
 # You can manually pass an interpreter by defining PYTHON.
 
-message(">>>>> PYTHON: ${PYTHON}")
+message(">>>> Command line option passed for PYTHON: ${PYTHON}")
 
 function(py_exec STATEMENTS RESULTVAR)
 	# executes some python statement(s), and returns the result in RESULTVAR.
@@ -151,8 +151,8 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 	file(TO_CMAKE_PATH "${PYTHON_INCLUDE_DIR}" PYTHON_INCLUDE_DIR)
 	file(TO_CMAKE_PATH "${PYTHON_LIBRARY_DIR}" PYTHON_LIBRARY_DIR)
 	
-	message(">>>> PYTHON_INCLUDE_DIR: ${PYTHON_INCLUDE_DIR}")
-	message(">>>> PYTHON_LIBRARY_DIR: ${PYTHON_LIBRARY_DIR}")
+	message(">>>> PYTHON_INCLUDE_DIR : ${PYTHON_INCLUDE_DIR}")
+	message(">>>> PYTHON_LIBRARY_DIR : ${PYTHON_LIBRARY_DIR}")
 	message(">>>> PYTHON_LIBRARY_NAME: ${PYTHON_LIBRARY_NAME}")
 
 	set(PYTHON_LIBRARY "-L${PYTHON_LIBRARY_DIR} -l${PYTHON_LIBRARY_NAME}")

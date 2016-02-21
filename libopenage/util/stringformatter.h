@@ -246,19 +246,19 @@ class Formatter : public StringFormatter<Formatter> {};
 class FString : public StringFormatter<FString> {
 public:
 	FString()
-		:
-		StringFormatter<FString>{this->buffer} {}
+		: StringFormatter<FString>(this->buffer)
+        {}
 
 	// allow assignment and construction from std::string.
 
 	FString(const std::string &other)
 		:
-		StringFormatter<FString>{this->buffer},
-		buffer{other} {}
+		StringFormatter<FString>(this->buffer),
+		buffer(other) {}
 
 	FString(std::string &&other)
 		:
-		StringFormatter<FString>{this->buffer},
+		StringFormatter<FString>(this->buffer),
 		buffer{other} {}
 
 	FString &operator =(const std::string &other) {
