@@ -137,12 +137,11 @@ foreach(INTERPRETER ${PYTHON_INTERPRETERS})
 	endif()
 endforeach()
 
-set(PYTHON_INTERPRETERS ${PYTHON_INTERPRETERS})
-
 # test all the found interpreters; break on success.
 foreach(PYTHON ${PYTHON_INTERPRETERS})
 	# TODO: sort interpreters by version
-	message(">>>> PYTHON INTERP: ${PYTHON}")
+	message(">>>> Checking python interpretor: ${PYTHON}")
+	
 	# ask the interpreter for the essential extension-building flags
 	py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
 	py_get_config_var(LIBDIR PYTHON_LIBRARY_DIR)
@@ -186,6 +185,9 @@ else()
 	message("No suitable Python interpreter found.")
 	message("We need an interpreter that is shipped with libpython and header files.")
 	message("Specify your own with -DPYTHON=/path/to/executable\n\n\n")
+	set(PYTHON "")
+	set(PYTHON_INCLUDE_DIR "")
+	set(PYTHON_LIBRARY "")
 endif()
 
 unset(PYTHON_TEST_RESULT)

@@ -30,16 +30,7 @@ def main():
         dirname = os.path.abspath(dirname)
         for filename in files:
             if filename.endswith('.py'):
-                p = (Path(dirname) / filename).as_posix()
-                # print(p)
-                actual.add(p)
-
-    
-    # for filename in sorted(actual):
-        # print("actual: " + filename)
-    # for filename in sorted(listed):
-        # print("listed:" + filename)
-
+                actual.add((Path(dirname) / filename).as_posix())
 
     success = True
     for filename in sorted(actual - listed):

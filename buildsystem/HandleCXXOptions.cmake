@@ -54,15 +54,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # check for compiler versions
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
 	require_cxx_version("gcc" 4.9)
 	test_cxx_flag_apply("-std=c++14" GCC_SUPPORTS_CPP14 FALSE)
 	set_cxx_greater_flags(4.9 "-fdiagnostics-color=auto")
 	set_cxx_greater_flags(5.0 "-Wsuggest-override")
-    
 
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
 	require_cxx_version("clang" 3.4)
 	set_cxx_flags("-Wno-mismatched-tags")
 
@@ -77,9 +76,9 @@ elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 		message(FATAL_ERROR "compiler doesn't support c++14!")
 	endif()
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic")
 else() #"Intel" etc..
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
 	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 endif()
 
