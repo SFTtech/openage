@@ -9,10 +9,11 @@
 
 #include "coord/tile.h"
 #include "engine.h"
-#include "game_main.h"
 #include "handlers.h"
 #include "options.h"
-#include "player.h"
+
+#include "gamestate/game_main.h"
+#include "gamestate/player.h"
 
 namespace openage {
 

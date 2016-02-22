@@ -1,9 +1,8 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include <memory>
 
 #include "../terrain/terrain_object.h"
-#include "../game_spec.h"
 #include "ability.h"
 #include "action.h"
 #include "command.h"
@@ -52,7 +51,7 @@ bool UnitAbility::is_enemy(Unit &to_modify, Unit &target) {
 	return false;
 }
 
-MoveAbility::MoveAbility(Sound *s)
+MoveAbility::MoveAbility(const Sound *s)
 	:
 	sound{s} {
 }
@@ -107,7 +106,7 @@ void SetPointAbility::invoke(Unit &to_modify, const Command &cmd, bool) {
 }
 
 
-GarrisonAbility::GarrisonAbility(Sound *s)
+GarrisonAbility::GarrisonAbility(const Sound *s)
 	:
 	sound{s} {
 }
@@ -138,7 +137,7 @@ void GarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_soun
 	to_modify.push_action(std::make_unique<GarrisonAction>(&to_modify, cmd.unit()->get_ref()));
 }
 
-UngarrisonAbility::UngarrisonAbility(Sound *s)
+UngarrisonAbility::UngarrisonAbility(const Sound *s)
 	:
 	sound{s} {
 }
@@ -161,7 +160,7 @@ void UngarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_so
 	to_modify.secondary_action(std::make_unique<UngarrisonAction>(&to_modify, cmd.position()));
 }
 
-TrainAbility::TrainAbility(Sound *s)
+TrainAbility::TrainAbility(const Sound *s)
 	:
 	sound{s} {
 }
@@ -182,7 +181,7 @@ void TrainAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) 
 	to_modify.push_action(std::make_unique<TrainAction>(&to_modify, cmd.type()));
 }
 
-BuildAbility::BuildAbility(Sound *s)
+BuildAbility::BuildAbility(const Sound *s)
 	:
 	sound{s} {
 }
@@ -209,7 +208,7 @@ void BuildAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) 
 	}
 }
 
-GatherAbility::GatherAbility(Sound *s)
+GatherAbility::GatherAbility(const Sound *s)
 	:
 	sound{s} {
 }
@@ -239,7 +238,7 @@ void GatherAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound)
 	}
 }
 
-AttackAbility::AttackAbility(Sound *s)
+AttackAbility::AttackAbility(const Sound *s)
 	:
 	sound{s} {
 }

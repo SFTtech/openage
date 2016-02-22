@@ -79,6 +79,15 @@ public:
 	 */
 	virtual std::string name() const = 0;
 
+	/**
+	 * determines which graphic should be used for drawing this unit
+	 * finds the defualt graphic using the units type, used by most actions
+	 *
+	 * this virtual function is overriden for special cases such as
+	 * villager task graphics
+	 */
+	virtual const graphic_set &current_graphics() const;
+
 	void draw_debug();
 
 	/**
@@ -379,6 +388,7 @@ public:
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	std::string name() const override { return "build"; }
+	const graphic_set &current_graphics() const override;
 
 private:
 	float complete, build_rate;
@@ -413,11 +423,13 @@ public:
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "gather"; }
+	const graphic_set &current_graphics() const override;
 
 private:
 	bool complete, target_resource;
 	UnitReference target;
 	game_resource resource_type;
+	gamedata::unit_classes resource_class;
 	UnitReference nearest_dropsite();
 };
 

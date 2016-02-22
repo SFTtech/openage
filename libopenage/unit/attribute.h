@@ -9,7 +9,7 @@
 #include "../coord/tile.h"
 #include "../gamedata/unit.gen.h"
 #include "../terrain/terrain_object.h"
-#include "resource.h"
+#include "../gamestate/resource.h"
 #include "unit_container.h"
 
 namespace std {
@@ -167,7 +167,7 @@ public:
 
 template<> class Attribute<attr_type::attack>: public AttributeContainer {
 public:
-	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d, graphic_set &grp)
+	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d, UnitType *reset_type)
 		:
 		AttributeContainer{attr_type::attack},
 		ptype{type},
@@ -175,7 +175,7 @@ public:
 		init_height{h},
 		damage{d},
 		stance{attack_stance::do_nothing},
-		attack_graphic_set{&grp} {}
+		attack_type{reset_type} {}
 
 	bool shared() const override {
 		return false;
@@ -195,7 +195,7 @@ public:
 	attack_stance stance;
 
 	// used to change graphics back to normal for villagers
-	graphic_set *attack_graphic_set;
+	UnitType *attack_type;
 };
 
 template<> class Attribute<attr_type::speed>: public AttributeContainer {

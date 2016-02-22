@@ -11,11 +11,12 @@
 
 #include "error/error.h"
 #include "log/log.h"
-
 #include "config.h"
-#include "game_main.h"
-#include "generator.h"
 #include "texture.h"
+
+#include "gamestate/game_main.h"
+#include "gamestate/generator.h"
+
 #include "util/color.h"
 #include "util/fps.h"
 #include "util/opengl.h"

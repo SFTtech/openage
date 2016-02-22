@@ -5,10 +5,10 @@
 #include <fstream>
 #include <vector>
 
-#include "log/log.h"
-#include "unit/producer.h"
-#include "unit/unit.h"
-#include "unit/unit_type.h"
+#include "../log/log.h"
+#include "../unit/producer.h"
+#include "../unit/unit.h"
+#include "../unit/unit_type.h"
 #include "game_main.h"
 #include "game_save.h"
 #include "game_spec.h"
@@ -38,7 +38,7 @@ void load_unit(std::ifstream &file, openage::GameMain *game) {
 	file >> ne;
 	file >> se;
 
-	UnitType &saved_type = *game->get_spec()->get_type(pr_id);
+	UnitType &saved_type = *game->get_player(player_no)->get_type(pr_id);
 	auto ref = game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
 
 	bool has_building_attr;

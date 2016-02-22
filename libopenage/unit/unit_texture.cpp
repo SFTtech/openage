@@ -4,8 +4,9 @@
 #include <iostream>
 
 #include "../coord/phys3.h"
+#include "../coord/window.h"
 #include "../crossplatform/math_constants.h"
-#include "../game_spec.h"
+#include "../gamestate/game_spec.h"
 #include "../texture.h"
 #include "unit_texture.h"
 
