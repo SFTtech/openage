@@ -9,21 +9,14 @@ declare_binary(libopenage)
 
 add_sources(libopenage
 	assetmanager.cpp
-	civilisation.cpp
 	engine.cpp
 	game_control.cpp
-	game_main.cpp
 	game_renderer.cpp
-	game_save.cpp
-	game_spec.cpp
-	generator.cpp
 	handlers.cpp
 	main.cpp
 	options.cpp
-	player.cpp
 	screenshot.cpp
 	texture.cpp
-
 	config.cpp
 )
 
@@ -39,18 +32,20 @@ add_subdirectory("coord")
 add_subdirectory("crossplatform")
 add_subdirectory("datastructure")
 add_subdirectory("error")
+add_subdirectory("gamestate")
 add_subdirectory("input")
 add_subdirectory("log")
 add_subdirectory("job")
 add_subdirectory("pathfinding")
 add_subdirectory("pyinterface")
+add_subdirectory("renderer")
+add_subdirectory("rng")
 add_subdirectory("shader")
 add_subdirectory("terrain")
 add_subdirectory("testing")
 add_subdirectory("unit")
 add_subdirectory("util")
-add_subdirectory("rng")
-add_subdirectory("renderer")
+
 
 # run codegen, add files to executable
 codegen_run()

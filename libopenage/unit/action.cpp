@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <cmath>
 
-#include "../player.h"
 #include "../pathfinding/a_star.h"
 #include "../pathfinding/heuristics.h"
 #include "../terrain/terrain.h"

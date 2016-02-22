@@ -1,11 +1,27 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
+#include "../gamestate/player.h"
 #include "../terrain/terrain_object.h"
 #include "action.h"
 #include "unit.h"
 #include "unit_type.h"
 
 namespace openage {
+
+UnitTypeMeta::UnitTypeMeta(const std::string &name, int id, init_func f)
+ 	:
+	init{f},
+	type_name{name},
+	type_id{id} {
+}
+
+std::string UnitTypeMeta::name() const {
+	return this->type_name;
+}
+
+int UnitTypeMeta::id() const {
+	return this->type_id;
+}
 
 UnitType::UnitType(const Player &owner)
 	:

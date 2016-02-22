@@ -5,11 +5,11 @@
 #include "coord/camgame.h"
 #include "input/input_context.h"
 #include "rng/rng.h"
+#include "gamestate/game_main.h"
 #include "unit/command.h"
 #include "unit/selection.h"
 #include "unit/unit_type.h"
 #include "engine.h"
-#include "game_main.h"
 #include "handlers.h"
 
 namespace openage {
@@ -127,6 +127,7 @@ private:
 	unsigned int editor_current_type;
 	unsigned int editor_category;
 	UnitType *selected_type;
+	Player *selected_owner;
 	std::string category;
 
 	// true = terrain painting, false = unit placement

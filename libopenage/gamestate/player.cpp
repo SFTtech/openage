@@ -1,13 +1,12 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#include "unit/unit.h"
-#include "unit/unit_type.h"
-#include "game_spec.h"
+#include "../unit/unit.h"
+#include "../unit/unit_type.h"
 #include "player.h"
 
 namespace openage {
 
-Player::Player(unsigned int number, std::string name, unsigned int civ)
+Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	:
 	player_number{number},
 	color{number},
@@ -92,20 +91,16 @@ UnitType *Player::get_type_index(size_t type_index) const {
 	return nullptr;
 }
 
-void Player::initialise_unit_types(const GameSpec &spec) {
-	log::log(MSG(dbg) << "Init units of player " << player_number);
-	spec.create_unit_types(this->available_objects, *this);
-	for (auto &type : this->available_objects) {
-		this->add_unit_type(type.get());
+
+void Player::initialise_unit_types() {
+	log::log(MSG(info) << name << " has civilisation " << this->civ->civ_name);
+	for (auto &type : this->civ->object_meta()) {
+		auto shared_type = type->init(*this);
+		index_t id = shared_type->id();
+		this->available_objects.emplace_back(shared_type);
+		this->available_ids[id] = shared_type.get();
 	}
 }
 
-void Player::add_unit_type(UnitType *unit_type) {
-	index_t id = unit_type->id();
-	this->available_ids[id] = unit_type;
-
-	// categorize by unit class
-	//add_to_category(, id);
-}
 
 } // openage

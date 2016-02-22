@@ -6,13 +6,14 @@
 #include <vector>
 #include <SDL2/SDL.h>
 
-#include "engine.h"
-#include "options.h"
 #include "player.h"
-#include "terrain/terrain.h"
-#include "unit/unit_container.h"
+#include "../options.h"
+#include "../terrain/terrain.h"
+#include "../unit/unit_container.h"
 
 namespace openage {
+
+class Generator;
 
 /**
  * Contains information for a single game
@@ -53,6 +54,7 @@ public:
 
 	/**
 	 * all players in the game
+	 * no objects should be added of removed once populated
 	 */
 	std::vector<Player> players;
 
@@ -62,6 +64,17 @@ public:
 	UnitContainer placed_units;
 
 private:
+
+	/**
+	 * creates a random civ, owned and managed by this game
+	 */
+	Civilisation *add_civ(int civ_id);
+
+	/**
+	 * civs used in this game
+	 */
+	std::vector<std::shared_ptr<Civilisation>> civs;
+
 	std::shared_ptr<GameSpec> spec;
 
 };

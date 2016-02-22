@@ -4,21 +4,34 @@
 
 #include <unordered_map>
 
-#include "job/job.h"
-#include "gamedata/gamedata.gen.h"
-#include "gamedata/graphic.gen.h"
-#include "terrain/terrain.h"
-#include "unit/unit_texture.h"
-#include "util/timer.h"
-#include "civilisation.h"
+#include "../job/job.h"
+#include "../gamedata/gamedata.gen.h"
+#include "../gamedata/graphic.gen.h"
+#include "../terrain/terrain.h"
+#include "../unit/unit_texture.h"
+#include "../util/timer.h"
 
 namespace openage {
 
 class AssetManager;
 class UnitType;
+class UnitTypeMeta;
+class Player;
+
+/**
+ * the key type mapped to data objects
+ */
+using index_t = int;
+
+/**
+ * could use unique ptr
+ */
+using unit_type_list = std::vector<std::shared_ptr<UnitType>>;
+using unit_meta_list = std::vector<std::shared_ptr<UnitTypeMeta>>;
 
 /**
  * simple sound object
+ * TODO: move to assetmanager
  */
 class Sound {
 public:
@@ -79,26 +92,10 @@ public:
 	const Sound *get_sound(index_t sound_id) const;
 
 	/**
-	 * return all types in a particular named category
-	 */
-	std::vector<index_t> get_category(const std::string &c) const;
-
-	/**
-	 * return all used categories, such as living, building or projectile
-	 */
-	std::vector<std::string> get_type_categories() const;
-
-	/**
 	 * gamedata for a graphic
 	 * nyan will have to replace this somehow
 	 */
 	const gamedata::graphic *get_graphic_data(index_t grp_id) const;
-
-	/**
-	 * gamedata for a building
-	 * TODO: this function is no longer required
-	 */
-	const gamedata::unit_building *get_building_data(index_t unit_id) const;
 
 	/**
 	 * get available commands for a unit id
@@ -107,9 +104,14 @@ public:
 	std::vector<const gamedata::unit_command *> get_command_data(index_t unit_id) const;
 
 	/**
+	 * returns the name of a civ by index
+	 */
+	std::string get_civ_name(int civ_id) const;
+
+	/**
 	 * makes initial unit types for a particular civ id
 	 */
-	void create_unit_types(unit_type_list &objects, const Player &owner) const;
+	void create_unit_types(unit_meta_list &objects, int civ_id) const;
 
 private:
 	AssetManager *assetmanager;
@@ -134,17 +136,7 @@ private:
 	terrain_meta terrain_data;
 
 	/**
-	 * all available categories of units
-	 */
-	std::vector<std::string> all_categories;
-
-	/**
-	 * category lists
-	 */
-	std::unordered_map<std::string, std::vector<index_t>> categories;
-
-	/**
-	 * slp to graphic reverse lookup
+	 * slp to graphic id reverse lookup
 	 */
 	std::unordered_map<index_t, index_t> slp_to_graphic;
 
@@ -154,23 +146,18 @@ private:
 	std::unordered_map<index_t, const gamedata::graphic *> graphics;
 
 	/**
-	 * used for annex creation
-	 */
-	std::unordered_map<index_t, const gamedata::unit_building *> buildings;
-
-	/**
 	 * commands available for each unit id
 	 */
 	std::unordered_map<index_t, std::vector<const gamedata::unit_command *>> commands;
 
 
 	/**
-	 * unit ids -> unit type for that id
+	 * graphic ids -> unit texture for that id
 	 */
 	std::unordered_map<index_t, std::shared_ptr<UnitTexture>> unit_textures;
 
 	/**
-	 * all available sounds.
+	 * sound ids mapped to playable sounds for all available sounds.
 	 */
 	std::unordered_map<index_t, Sound> available_sounds;
 
@@ -190,18 +177,13 @@ private:
 	void create_abilities(const std::vector<gamedata::empiresdat> &gamedata);
 
 	/**
-	 * creates and adds items to categories
-	 */
-	void add_to_category(const std::string &c, index_t type);
-
-	/**
 	 * loads required assets to construct a unit type
 	 * adds to the type list if the object can be created safely
 	 */
-	void load_building(const Player &owner, const gamedata::unit_building &, unit_type_list &) const;
-	void load_living(const Player &owner, const gamedata::unit_living &, unit_type_list &) const;
-	void load_object(const Player &owner, const gamedata::unit_object &, unit_type_list &) const;
-	void load_projectile(const Player &owner, const gamedata::unit_projectile &, unit_type_list &) const;
+	void load_building(const gamedata::unit_building &, unit_meta_list &) const;
+	void load_living(const gamedata::unit_living &, unit_meta_list &) const;
+	void load_object(const gamedata::unit_object &, unit_meta_list &) const;
+	void load_projectile(const gamedata::unit_projectile &, unit_meta_list &) const;
 
 	/**
 	 * fill in the terrain_data attribute of this

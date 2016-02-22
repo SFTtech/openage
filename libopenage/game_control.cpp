@@ -1,8 +1,8 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
+#include "gamestate/game_spec.h"
 #include "util/strings.h"
 #include "game_control.h"
-#include "game_spec.h"
 
 namespace openage {
 
@@ -384,15 +384,15 @@ EditorMode::EditorMode()
 	editor_current_type{0},
 	editor_category{0},
 	selected_type{nullptr},
+	selected_owner{nullptr},
 	paint_terrain{true} {
 
 	// bind required hotkeys
 	this->bind(input::actions::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
 		log::log(MSG(dbg) << "change category");
 		Engine &engine = Engine::get();
-		auto player = engine.player_focus();
-		GameSpec *spec = engine.get_game()->get_spec();
-		std::vector<std::string> cat = spec->get_type_categories();
+		Player *player = engine.player_focus();
+		std::vector<std::string> cat = player->civ->get_type_categories();
 		if (this->paint_terrain) {
 
 			// switch from terrain to first unit category
@@ -412,10 +412,11 @@ EditorMode::EditorMode()
 		// update category string
 		if (!cat.empty()) {
 			this->category = cat[this->editor_category];
-			std::vector<index_t> inds = spec->get_category(this->category);
+			std::vector<index_t> inds = player->civ->get_category(this->category);
 			if (!inds.empty()) {
 				this->editor_current_type = util::mod<ssize_t>(editor_current_type, inds.size());
 				this->selected_type = player->get_type(inds[this->editor_current_type]);
+				this->selected_owner = player;
 			}
 		}
 	});
@@ -476,9 +477,9 @@ void EditorMode::render() {
 			// and the current active building
 			auto txt = this->selected_type->default_texture();
 			coord::window bpreview_pos {163, 154};
-			txt->sample(bpreview_pos.to_camhud(), engine.player_focus()->color);
+			txt->sample(bpreview_pos.to_camhud(), this->selected_owner->color);
 
-			std::string selected_str = this->category + " - " + this->selected_type->name();
+			std::string selected_str = this->selected_owner->name + ": " + this->category + " - " + this->selected_type->name();
 			engine.render_text(text_pos, 20, "%s", selected_str.c_str());
 		}
 	}
@@ -494,17 +495,18 @@ std::string EditorMode::name() const {
 
 bool EditorMode::on_mouse_wheel(int direction, coord::window) {
 	Engine &engine = Engine::get();
-	auto player = engine.player_focus();
+	Player *player = engine.player_focus();
 	GameSpec *spec = engine.get_game()->get_spec();
 
 	// modify selected item
 	if (this->paint_terrain) {
 		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + direction, spec->get_terrain_meta()->terrain_id_count);
 	} else if (player->type_count() > 0) {
-		std::vector<index_t> inds = spec->get_category(this->category);
+		std::vector<index_t> inds = player->civ->get_category(this->category);
 		if (!inds.empty()) {
 			this->editor_current_type = util::mod<ssize_t>(editor_current_type + direction, inds.size());
 			this->selected_type = player->get_type(inds[this->editor_current_type]);
+			this->selected_owner = player;
 		}
 	}
 	return true;
@@ -558,7 +560,7 @@ bool EditorMode::on_single_click(int del, coord::window point) {
 			// tile is empty so try creating a unit
 			log::log(MSG(dbg) << "create unit with producer id " << this->selected_type->id());
 			UnitContainer *container = &engine.get_game()->placed_units;
-			container->new_unit(*this->selected_type, *engine.player_focus(), mousepos_phys3);
+			container->new_unit(*this->selected_type, *this->selected_owner, mousepos_phys3);
 		}
 
 	}

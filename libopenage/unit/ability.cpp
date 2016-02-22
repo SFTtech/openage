@@ -3,7 +3,6 @@
 #include <memory>
 
 #include "../terrain/terrain_object.h"
-#include "../game_spec.h"
 #include "ability.h"
 #include "action.h"
 #include "command.h"

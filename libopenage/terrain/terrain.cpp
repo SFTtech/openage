@@ -9,6 +9,7 @@
 #include "../log/log.h"
 #include "../error/error.h"
 #include "../engine.h"
+#include "../game_renderer.h"
 #include "../texture.h"
 #include "../coord/camgame.h"
 #include "../coord/chunk.h"

@@ -5,17 +5,17 @@
 #include <string>
 #include <unordered_map>
 
-#include "unit/resource.h"
 #include "civilisation.h"
+#include "resource.h"
+
 
 namespace openage {
 
-class GameSpec;
 class Unit;
 
 class Player {
 public:
-	Player(unsigned int number, std::string name, unsigned int civ);
+	Player(Civilisation *civ, unsigned int number, std::string name);
 
 	/**
 	 * values 0 .. player count - 1
@@ -29,10 +29,13 @@ public:
 	const unsigned int color;
 
 	/**
-	 * civ index of this player
+	 * civilisation and techs of this player
 	 */
-	const unsigned int civ;
+	const Civilisation *civ;
 
+	/**
+	 * visible name of this player
+	 */
 	const std::string name;
 
 	/**
@@ -90,14 +93,9 @@ public:
 	/**
 	 * initialise with the base tech level
 	 */
-	void initialise_unit_types(const GameSpec &spec);
+	void initialise_unit_types();
 
 private:
-
-	/**
-	 * creates a new unit type
-	 */
-	void add_unit_type(UnitType *unit_type);
 
 	/**
 	 * resources this player currently has

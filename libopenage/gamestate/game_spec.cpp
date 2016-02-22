@@ -1,14 +1,15 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#include "gamedata/blending_mode.gen.h"
-#include "gamedata/string_resource.gen.h"
-#include "gamedata/terrain.gen.h"
-#include "unit/producer.h"
-#include "util/strings.h"
-#include "rng/global_rng.h"
-#include "assetmanager.h"
+#include "../gamedata/blending_mode.gen.h"
+#include "../gamedata/string_resource.gen.h"
+#include "../gamedata/terrain.gen.h"
+#include "../unit/producer.h"
+#include "../util/strings.h"
+#include "../rng/global_rng.h"
+#include "../assetmanager.h"
+#include "../engine.h"
+#include "civilisation.h"
 #include "game_spec.h"
-#include "engine.h"
 
 namespace openage {
 
@@ -62,18 +63,18 @@ index_t GameSpec::get_slp_graphic(index_t slp) {
 
 Texture *GameSpec::get_texture(index_t graphic_id) const {
 	if (graphic_id <= 0 || this->graphics.count(graphic_id) == 0) {
-		log::log(MSG(info) << "  -> ignoring graphics_id: " << graphic_id);
+		log::log(MSG(dbg) << "  -> ignoring graphics_id: " << graphic_id);
 		return nullptr;
 	}
 
 	auto g = this->graphics.at(graphic_id);
 	int slp_id = g->slp_id;
 	if (slp_id <= 0) {
-		log::log(MSG(info) << "  -> ignoring slp_id: " << slp_id);
+		log::log(MSG(dbg) << "  -> ignoring slp_id: " << slp_id);
 		return nullptr;
 	}
 
-	log::log(MSG(info) << "   slp id/name: " << slp_id << " " << g->name0);
+	log::log(MSG(dbg) << "   slp id/name: " << slp_id << " " << g->name0);
 	std::string tex_fname = util::sformat("%s/%d.slp.png", this->graphics_path.c_str(), slp_id);
 
 	// get tex if file is available
@@ -87,7 +88,7 @@ Texture *GameSpec::get_texture(index_t graphic_id) const {
 std::shared_ptr<UnitTexture> GameSpec::get_unit_texture(index_t unit_id) const {
 	if (this->unit_textures.count(unit_id) == 0) {
 		if (unit_id > 0) {
-			log::log(MSG(info) << "  -> ignoring unit_id: " << unit_id);
+			log::log(MSG(dbg) << "  -> ignoring unit_id: " << unit_id);
 		}
 		return nullptr;
 	}
@@ -97,39 +98,20 @@ std::shared_ptr<UnitTexture> GameSpec::get_unit_texture(index_t unit_id) const {
 const Sound *GameSpec::get_sound(index_t sound_id) const {
 	if (this->available_sounds.count(sound_id) == 0) {
 		if (sound_id > 0) {
-			log::log(MSG(info) << "  -> ignoring sound_id: " << sound_id);
+			log::log(MSG(dbg) << "  -> ignoring sound_id: " << sound_id);
 		}
 		return nullptr;
 	}
 	return &this->available_sounds.at(sound_id);
 }
 
-std::vector<index_t> GameSpec::get_category(const std::string &c) const {
-	auto cat = this->categories.find(c);
-	if (cat == this->categories.end()) {
-		return std::vector<index_t>();
-	}
-	return cat->second;
-}
-
-std::vector<std::string> GameSpec::get_type_categories() const {
-	return this->all_categories;
-}
 
 const gamedata::graphic *GameSpec::get_graphic_data(index_t grp_id) const {
 	if (this->graphics.count(grp_id) == 0) {
-		log::log(MSG(info) << "  -> ignoring grp_id: " << grp_id);
+		log::log(MSG(dbg) << "  -> ignoring grp_id: " << grp_id);
 		return nullptr;
 	}
 	return this->graphics.at(grp_id);
-}
-
-const gamedata::unit_building *GameSpec::get_building_data(index_t unit_id) const {
-	if (this->buildings.count(unit_id) == 0) {
-		log::log(MSG(info) << "  -> ignoring unit_id: " << unit_id);
-		return nullptr;
-	}
-	return this->buildings.at(unit_id);
 }
 
 std::vector<const gamedata::unit_command *> GameSpec::get_command_data(index_t unit_id) const {
@@ -139,34 +121,38 @@ std::vector<const gamedata::unit_command *> GameSpec::get_command_data(index_t u
 	return this->commands.at(unit_id);
 }
 
-void GameSpec::create_unit_types(unit_type_list &objects, const Player &owner) const {
+std::string GameSpec::get_civ_name(int civ_id) const {
+	return gamedata[0].civs.data[civ_id].name;
+}
+
+void GameSpec::create_unit_types(unit_meta_list &objects, int civ_id) const {
 	if (!this->load_complete()) {
 		return;
 	}
 
 	// create projectile types first
-	for (auto &obj : gamedata[0].civs.data[0].units.projectile.data) {
-		this->load_projectile(owner, obj, objects);
+	for (auto &obj : gamedata[0].civs.data[civ_id].units.projectile.data) {
+		this->load_projectile(obj, objects);
 	}
 
 	// create object unit types
-	for (auto &obj : gamedata[0].civs.data[0].units.object.data) {
-		this->load_object(owner, obj, objects);
+	for (auto &obj : gamedata[0].civs.data[civ_id].units.object.data) {
+		this->load_object(obj, objects);
 	}
 
 	// create dead unit types
-	for (auto &unit : gamedata[0].civs.data[0].units.dead_or_fish.data) {
-		this->load_object(owner, unit, objects);
+	for (auto &unit : gamedata[0].civs.data[civ_id].units.dead_or_fish.data) {
+		this->load_object(unit, objects);
 	}
 
 	// create living unit types
-	for (auto &unit : gamedata[0].civs.data[owner.civ].units.living.data) {
-		this->load_living(owner, unit, objects);
+	for (auto &unit : gamedata[0].civs.data[civ_id].units.living.data) {
+		this->load_living(unit, objects);
 	}
 
 	// create building unit types
-	for (auto &building : gamedata[0].civs.data[owner.civ].units.building.data) {
-		this->load_building(owner, building, objects);
+	for (auto &building : gamedata[0].civs.data[civ_id].units.building.data) {
+		this->load_building(building, objects);
 	}
 }
 
@@ -244,45 +230,49 @@ bool GameSpec::valid_graphic_id(index_t graphic_id) const {
 	return true;
 }
 
-void GameSpec::add_to_category(const std::string &c, index_t type) {
-	if (this->categories.count(c) == 0) {
-		this->all_categories.push_back(c);
-		this->categories[c] = std::vector<index_t>();
-	}
-	this->categories[c].push_back(type);
-}
-
-void GameSpec::load_building(const Player &owner, const gamedata::unit_building &building, unit_type_list &list) const {
+void GameSpec::load_building(const gamedata::unit_building &building, unit_meta_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(building.graphic_standing0)) {
-		list.emplace_back(std::make_unique<BuildingProducer>(owner, *this, &building));
+		auto meta_type = std::make_shared<UnitTypeMeta>("Building", building.id0, [this, &building](const Player &owner) {
+			return std::make_shared<BuildingProducer>(owner, *this, &building);
+		});
+		list.emplace_back(meta_type);
 	}
 }
 
-void GameSpec::load_living(const Player &owner, const gamedata::unit_living &unit, unit_type_list &list) const {
+void GameSpec::load_living(const gamedata::unit_living &unit, unit_meta_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(unit.graphic_dying0) &&
 		this->valid_graphic_id(unit.graphic_standing0) &&
 		this->valid_graphic_id(unit.walking_graphics0)) {
-		list.emplace_back(std::make_unique<LivingProducer>(owner, *this, &unit));
+		auto meta_type = std::make_shared<UnitTypeMeta>("Living", unit.id0, [this, &unit](const Player &owner) {
+			return std::make_shared<LivingProducer>(owner, *this, &unit);
+		});
+		list.emplace_back(meta_type);
 	}
 }
 
-void GameSpec::load_object(const Player &owner, const gamedata::unit_object &object, unit_type_list &list) const {
+void GameSpec::load_object(const gamedata::unit_object &object, unit_meta_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(object.graphic_standing0)) {
-		list.emplace_back(std::make_unique<ObjectProducer>(owner, *this, &object));
+		auto meta_type = std::make_shared<UnitTypeMeta>("Object", object.id0, [this, &object](const Player &owner) {
+			return std::make_shared<ObjectProducer>(owner, *this, &object);
+		});
+		list.emplace_back(meta_type);
 	}
 }
 
-void GameSpec::load_projectile(const Player &owner, const gamedata::unit_projectile &proj, unit_type_list &list) const {
+void GameSpec::load_projectile(const gamedata::unit_projectile &proj, unit_meta_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(proj.graphic_standing0)) {
-		list.emplace_back(std::make_unique<ProjectileProducer>(owner, *this, &proj));
+		auto meta_type = std::make_shared<UnitTypeMeta>("Projectile", proj.id0, [this, &proj](const Player &owner) {
+			return std::make_shared<ProjectileProducer>(owner, *this, &proj);
+		});
+		list.emplace_back(meta_type);
 	}
 }
 

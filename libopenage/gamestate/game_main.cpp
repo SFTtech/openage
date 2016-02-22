@@ -1,6 +1,6 @@
 // Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#include "unit/unit_type.h"
+#include "../unit/unit_type.h"
 #include "game_main.h"
 #include "game_spec.h"
 #include "generator.h"
@@ -16,19 +16,22 @@ GameMain::GameMain(const Generator &generator)
 	// players
 	unsigned int i = 0;
 	for (auto &name : generator.player_names()) {
-		this->players.emplace_back(i, name, i);
+		this->players.emplace_back(this->add_civ(i), i, name);
 		i++;
 	}
-	for (auto &player : this->players) {
-		player.initialise_unit_types(*this->spec);
+
+	// initialise types only after all players are added
+	for (auto &p : this->players) {
+		p.initialise_unit_types();
 	}
 
+	// initialise units
 	this->placed_units.set_terrain(this->terrain);
 	generator.add_units(*this);
 }
 
 GameMain::~GameMain() {
-	log::log(MSG(warn) << "Cleanup gamemain");
+	log::log(MSG(info) << "Cleanup gamemain");
 }
 
 unsigned int GameMain::player_count() const {
@@ -45,6 +48,12 @@ GameSpec *GameMain::get_spec() {
 
 void GameMain::update() {
 	this->placed_units.update_all();
+}
+
+Civilisation *GameMain::add_civ(int civ_id) {
+	auto new_civ = std::make_shared<Civilisation>(*this->spec, civ_id);
+	this->civs.emplace_back(new_civ);
+	return new_civ.get();
 }
 
 } // openage

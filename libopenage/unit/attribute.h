@@ -9,7 +9,7 @@
 #include "../coord/tile.h"
 #include "../gamedata/unit.gen.h"
 #include "../terrain/terrain_object.h"
-#include "resource.h"
+#include "../gamestate/resource.h"
 #include "unit_container.h"
 
 namespace std {

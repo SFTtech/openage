@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <functional>
 #include <memory>
 #include <unordered_map>
 #include <vector>
@@ -20,6 +21,31 @@ class UnitAbility;
 class UnitContainer;
 class UnitTexture;
 
+
+/**
+ * an abstract unit type which is not yet owned by any player
+ */
+class UnitTypeMeta {
+public:
+	using type_ptr = std::shared_ptr<UnitType>;
+	using init_func = std::function<type_ptr(const Player &owner)>;
+	UnitTypeMeta(const std::string &name, int id, init_func f);
+
+	std::string name() const;
+
+	int id() const;
+
+	/**
+	 * creates the base unit type for a player
+	 */
+	const init_func init;
+
+private:
+	const std::string type_name;
+	const int type_id;
+
+};
+
 /**
  * UnitType has to main roles:
  *
@@ -27,6 +53,8 @@ class UnitTexture;
  * of that type
  *
  * place(unit, terrain, initial position) is called to customise how the unit gets added to the world -- used to setup the TerrainObject location
+ *
+ * UnitType is connected to a player to allow independent tech levels
  */
 class UnitType {
 public:

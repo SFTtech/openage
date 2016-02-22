@@ -1,18 +1,18 @@
 // Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
+#include <initializer_list>
+
 #include "../gamedata/unit.gen.h"
 #include "../terrain/terrain.h"
 #include "../terrain/terrain_object.h"
 #include "../terrain/terrain_outline.h"
 #include "../util/strings.h"
-#include "../game_spec.h"
 #include "../log/log.h"
 #include "ability.h"
 #include "action.h"
 #include "producer.h"
 #include "unit.h"
 #include "unit_texture.h"
-#include <initializer_list>
 
 /** @file
  * Many values in this file are hardcoded, due to limited understanding of how the original
@@ -531,6 +531,9 @@ std::string BuildingProducer::name() const {
 }
 
 void BuildingProducer::initialise(Unit *unit, Player &player) {
+	unit->log(MSG(info) << "owner " << this->owner.name);
+	unit->log(MSG(info) << "caller " << player.name);
+	assert(this->owner == player);
 
 	// log type
 	unit->log(MSG(dbg) << "setting unit type " <<
@@ -740,7 +743,8 @@ std::string ProjectileProducer::name() const {
 	return this->unit_data.name;
 }
 
-void ProjectileProducer::initialise(Unit *unit, Player &) {
+void ProjectileProducer::initialise(Unit *unit, Player &player) {
+	assert(this->owner == player);
 
 	// initialize graphic set
 	unit->unit_type = this;

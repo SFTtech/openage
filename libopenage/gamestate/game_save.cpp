@@ -5,10 +5,10 @@
 #include <fstream>
 #include <vector>
 
-#include "log/log.h"
-#include "unit/producer.h"
-#include "unit/unit.h"
-#include "unit/unit_type.h"
+#include "../log/log.h"
+#include "../unit/producer.h"
+#include "../unit/unit.h"
+#include "../unit/unit_type.h"
 #include "game_main.h"
 #include "game_save.h"
 #include "game_spec.h"
