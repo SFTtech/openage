@@ -205,18 +205,18 @@ ActionMode::ActionMode()
 				Engine &engine = Engine::get();
 				auto player = engine.player_focus();
 				if (engine.get_input_manager().is_mod_down(input::modifier::CTRL)) {
-					this->type_focus = player->get_type_index(military_building);
+					this->type_focus = player->get_type(military_building);
 				} else {
-					this->type_focus = player->get_type_index(building);
+					this->type_focus = player->get_type(building);
 				}
 			}
 		});
 	};
-	bind_building_key(input::actions::BUILDING_1, 598, 609); // House, barracks
-	bind_building_key(input::actions::BUILDING_2, 574, 558); // Mill, archery range
-	bind_building_key(input::actions::BUILDING_3, 616, 581); // Mining camp, stable
-	bind_building_key(input::actions::BUILDING_4, 611, 580); // Lumber camp, siege workshop
-	bind_building_key(input::actions::BUILDING_TOWN_CENTER, 568, 568); // Town center
+	bind_building_key(input::actions::BUILDING_1, 70, 12); // House, barracks
+	bind_building_key(input::actions::BUILDING_2, 68, 87); // Mill, archery range
+	bind_building_key(input::actions::BUILDING_3, 584, 101); // Mining camp, stable
+	bind_building_key(input::actions::BUILDING_4, 562, 49); // Lumber camp, siege workshop
+	bind_building_key(input::actions::BUILDING_TOWN_CENTER, 109, 109); // Town center
 
 
 	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {

@@ -531,8 +531,6 @@ std::string BuildingProducer::name() const {
 }
 
 void BuildingProducer::initialise(Unit *unit, Player &player) {
-	unit->log(MSG(info) << "owner " << this->owner.name);
-	unit->log(MSG(info) << "caller " << player.name);
 	assert(this->owner == player);
 
 	// log type
