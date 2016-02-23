@@ -42,6 +42,19 @@ public:
 	std::array<data_type, N> {{static_cast<data_type>(args)...}} {}
 
 	/**
+	 * Vector comparison
+	 */
+	typename std::enable_if<std::is_integral<data_type, typename bool>>::type
+	/* bool */ operator ==(this_type &other) {
+		for (size_t i = 0; i < N; i++) {
+			if ((*this)[i] != other[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Vector addition with assignment
 	 */
 	this_type &operator +=(const this_type &other) {
