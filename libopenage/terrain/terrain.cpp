@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 #include "terrain.h"
 
@@ -9,6 +9,7 @@
 #include "../log/log.h"
 #include "../error/error.h"
 #include "../engine.h"
+#include "../game_renderer.h"
 #include "../texture.h"
 #include "../coord/camgame.h"
 #include "../coord/chunk.h"

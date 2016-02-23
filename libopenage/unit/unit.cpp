@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cassert>
@@ -63,6 +63,21 @@ UnitAction *Unit::top() const {
 	return this->action_stack.back().get();
 }
 
+UnitAction *Unit::before(const UnitAction *action) const {
+	auto start = std::find_if(
+		std::begin(this->action_stack),
+		std::end(this->action_stack),
+		[action](const std::unique_ptr<UnitAction> &a) {
+			return action == a.get();
+		});
+
+	if (start != std::begin(this->action_stack) &&
+	    start != std::end(this->action_stack)) {
+		return (*(start - 1)).get();
+	}
+	return nullptr;
+}
+
 bool Unit::update() {
 
 	// if unit is not on the map then do nothing
@@ -117,23 +132,24 @@ void Unit::update_secondary(int64_t time_elapsed) {
 }
 
 void Unit::draw() {
-	this->draw(this->location.get(), this->graphics);
+
+	// the top action decides the graphic type and action
+	this->draw(this->location.get(), this->top()->current_graphics());
 }
 
-void Unit::draw(TerrainObject *loc, graphic_set *grpc) {
+void Unit::draw(TerrainObject *loc, const graphic_set &grpc) {
 	// there should always be a location
 	assert(loc != nullptr);
 
 	auto top_action = this->top();
-	auto &draw_pos = loc->pos.draw;
 	auto draw_graphic = top_action->type();
-	if (!grpc || grpc->count(draw_graphic) == 0) {
+	if (grpc.count(draw_graphic) == 0) {
 		this->log(MSG(warn) << "Graphic not available");
 		return;
 	}
 
 	// the texture to draw with
-	auto draw_texture = grpc->at(draw_graphic);
+	auto draw_texture = grpc.at(draw_graphic);
 	if (!draw_texture) {
 		this->log(MSG(warn) << "Graphic null");
 		return;
@@ -141,6 +157,26 @@ void Unit::draw(TerrainObject *loc, graphic_set *grpc) {
 
 	// frame specified by the current action
 	auto draw_frame = top_action->current_frame();
+	this->draw(loc->pos.draw, draw_texture, draw_frame);
+
+	// draw a shadow if the graphic is available
+	if (grpc.count(graphic_type::shadow) > 0) {
+		auto draw_shadow = grpc.at(graphic_type::shadow);
+		if (draw_shadow) {
+
+			// position without height component
+			// TODO: terrain elevation
+			coord::phys3 shadow_pos = loc->pos.draw;
+			shadow_pos.up = 0;
+			this->draw(shadow_pos, draw_shadow, draw_frame);
+		}
+	}
+
+	// draw debug details
+	top_action->draw_debug();
+}
+
+void Unit::draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame) {
 
 	// players color if available
 	unsigned color = 0;
@@ -155,24 +191,11 @@ void Unit::draw(TerrainObject *loc, graphic_set *grpc) {
 		// directional textures
 		auto &d_attr = this->get_attribute<attr_type::direction>();
 		coord::phys3_delta draw_dir = d_attr.unit_dir;
-		draw_texture->draw(draw_pos.to_camgame(), draw_dir, draw_frame, color);
-
-		if (grpc->count(graphic_type::shadow) > 0) {
-			auto unit_shadow = grpc->at(graphic_type::shadow);
-			if (unit_shadow) {
-
-				// position without height component
-				coord::phys3 shadow_pos = draw_pos;
-				shadow_pos.up = 0;
-				unit_shadow->draw(shadow_pos.to_camgame(), draw_dir, draw_frame, color);
-			}
-		}
+		graphic->draw(draw_pos.to_camgame(), draw_dir, frame, color);
 	}
 	else {
-		draw_texture->draw(draw_pos.to_camgame(), draw_frame, color);
+		graphic->draw(draw_pos.to_camgame(), frame, color);
 	}
-
-	top_action->draw_debug();
 }
 
 void Unit::give_ability(std::shared_ptr<UnitAbility> ability) {

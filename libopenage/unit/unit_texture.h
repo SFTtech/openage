@@ -102,7 +102,7 @@ private:
 
 	// avoid drawing missing graphics
 	bool draw_this;
-	Sound *sound;
+	const Sound *sound;
 
 	// delta graphic ids
 	std::vector<gamedata::graphic_delta> delta_id;

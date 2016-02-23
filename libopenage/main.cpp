@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "game_control.h"
 #include "game_renderer.h"
-#include "generator.h"
+#include "gamestate/generator.h"
 
 namespace openage {
 

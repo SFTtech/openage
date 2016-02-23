@@ -1,8 +1,8 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
+#include "gamestate/game_spec.h"
 #include "util/strings.h"
 #include "game_control.h"
-#include "game_spec.h"
 
 namespace openage {
 
@@ -158,11 +158,11 @@ ActionMode::ActionMode()
 
 		// attempt to train editor selected object
 		Engine &engine = Engine::get();
-		GameSpec *spec = engine.get_game()->get_spec();
 
 		// randomly select between male and female villagers
-		auto type = spec->get_type(this->rng.probability(0.5)? 83 : 293);
-		Command cmd(*engine.player_focus(), type);
+		auto player = engine.player_focus();
+		auto type = player->get_type(this->rng.probability(0.5)? 83 : 293);
+		Command cmd(*player, type);
 		this->selection.all_invoke(cmd);
 	});
 	this->bind(input::actions::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
@@ -185,12 +185,12 @@ ActionMode::ActionMode()
 	});
 	this->bind(input::actions::SPAWN_VILLAGER, [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
-		GameSpec *spec = engine.get_game()->get_spec();
-		if (spec->producer_count() > 0) {
-			UnitType &type = *spec->get_type(590);
+		auto player = engine.player_focus();
+		if (player->type_count() > 0) {
+			UnitType &type = *player->get_type(590);
 
 			// TODO tile position
-			engine.get_game()->placed_units.new_unit(type, *engine.player_focus(), this->mousepos_phys3);
+			engine.get_game()->placed_units.new_unit(type, *player, this->mousepos_phys3);
 		}
 	});
 	this->bind(input::actions::KILL_UNIT, [this](const input::action_arg_t &) {
@@ -203,20 +203,20 @@ ActionMode::ActionMode()
 		this->bind(action, [this, building, military_building](const input::action_arg_t &) {
 			if (this->selection.contains_builders()) {
 				Engine &engine = Engine::get();
-				GameSpec *spec = engine.get_game()->get_spec();
+				auto player = engine.player_focus();
 				if (engine.get_input_manager().is_mod_down(input::modifier::CTRL)) {
-					this->type_focus = spec->get_type_index(military_building);
+					this->type_focus = player->get_type(military_building);
 				} else {
-					this->type_focus = spec->get_type_index(building);
+					this->type_focus = player->get_type(building);
 				}
 			}
 		});
 	};
-	bind_building_key(input::actions::BUILDING_1, 598, 609); // House, barracks
-	bind_building_key(input::actions::BUILDING_2, 574, 558); // Mill, archery range
-	bind_building_key(input::actions::BUILDING_3, 616, 581); // Mining camp, stable
-	bind_building_key(input::actions::BUILDING_4, 611, 580); // Lumber camp, siege workshop
-	bind_building_key(input::actions::BUILDING_TOWN_CENTER, 568, 568); // Town center
+	bind_building_key(input::actions::BUILDING_1, 70, 12); // House, barracks
+	bind_building_key(input::actions::BUILDING_2, 68, 87); // Mill, archery range
+	bind_building_key(input::actions::BUILDING_3, 584, 101); // Mining camp, stable
+	bind_building_key(input::actions::BUILDING_4, 562, 49); // Lumber camp, siege workshop
+	bind_building_key(input::actions::BUILDING_TOWN_CENTER, 109, 109); // Town center
 
 
 	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
@@ -384,14 +384,15 @@ EditorMode::EditorMode()
 	editor_current_type{0},
 	editor_category{0},
 	selected_type{nullptr},
+	selected_owner{nullptr},
 	paint_terrain{true} {
 
 	// bind required hotkeys
 	this->bind(input::actions::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
 		log::log(MSG(dbg) << "change category");
 		Engine &engine = Engine::get();
-		GameSpec *spec = engine.get_game()->get_spec();
-		std::vector<std::string> cat = spec->get_type_categories();
+		Player *player = engine.player_focus();
+		std::vector<std::string> cat = player->civ->get_type_categories();
 		if (this->paint_terrain) {
 
 			// switch from terrain to first unit category
@@ -411,10 +412,11 @@ EditorMode::EditorMode()
 		// update category string
 		if (!cat.empty()) {
 			this->category = cat[this->editor_category];
-			std::vector<index_t> inds = spec->get_category(this->category);
+			std::vector<index_t> inds = player->civ->get_category(this->category);
 			if (!inds.empty()) {
 				this->editor_current_type = util::mod<ssize_t>(editor_current_type, inds.size());
-				this->selected_type = spec->get_type(inds[this->editor_current_type]);
+				this->selected_type = player->get_type(inds[this->editor_current_type]);
+				this->selected_owner = player;
 			}
 		}
 	});
@@ -475,9 +477,9 @@ void EditorMode::render() {
 			// and the current active building
 			auto txt = this->selected_type->default_texture();
 			coord::window bpreview_pos {163, 154};
-			txt->sample(bpreview_pos.to_camhud(), engine.player_focus()->color);
+			txt->sample(bpreview_pos.to_camhud(), this->selected_owner->color);
 
-			std::string selected_str = this->category + " - " + this->selected_type->name();
+			std::string selected_str = this->selected_owner->name + ": " + this->category + " - " + this->selected_type->name();
 			engine.render_text(text_pos, 20, "%s", selected_str.c_str());
 		}
 	}
@@ -493,16 +495,18 @@ std::string EditorMode::name() const {
 
 bool EditorMode::on_mouse_wheel(int direction, coord::window) {
 	Engine &engine = Engine::get();
+	Player *player = engine.player_focus();
 	GameSpec *spec = engine.get_game()->get_spec();
 
 	// modify selected item
 	if (this->paint_terrain) {
 		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + direction, spec->get_terrain_meta()->terrain_id_count);
-	} else if (spec->producer_count() > 0) {
-		std::vector<index_t> inds = spec->get_category(this->category);
+	} else if (player->type_count() > 0) {
+		std::vector<index_t> inds = player->civ->get_category(this->category);
 		if (!inds.empty()) {
 			this->editor_current_type = util::mod<ssize_t>(editor_current_type + direction, inds.size());
-			this->selected_type = spec->get_type(inds[this->editor_current_type]);
+			this->selected_type = player->get_type(inds[this->editor_current_type]);
+			this->selected_owner = player;
 		}
 	}
 	return true;
@@ -556,7 +560,7 @@ bool EditorMode::on_single_click(int del, coord::window point) {
 			// tile is empty so try creating a unit
 			log::log(MSG(dbg) << "create unit with producer id " << this->selected_type->id());
 			UnitContainer *container = &engine.get_game()->placed_units;
-			container->new_unit(*this->selected_type, *engine.player_focus(), mousepos_phys3);
+			container->new_unit(*this->selected_type, *this->selected_owner, mousepos_phys3);
 		}
 
 	}

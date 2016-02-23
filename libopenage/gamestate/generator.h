@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include "rng/rng.h"
-#include "assetmanager.h"
-#include "options.h"
+#include "../rng/rng.h"
+#include "../assetmanager.h"
+#include "../options.h"
 
 namespace openage {
 
