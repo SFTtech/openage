@@ -1,0 +1,20 @@
+# kevin ci config script for openage
+#
+# see here for the CI source code:
+# https://github.com/SFTtech/kevin
+
+
+sanity_check:
+	make checkall
+
+configure:
+	./configure --mode=debug
+
+build: configure
+	make -j4 build
+
+test: build
+	make tests
+
+install: build
+	make install DESTDIR=/tmp/openage
