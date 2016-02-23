@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 # Doxygen integration
 
@@ -34,7 +34,7 @@ function(doxygen_configure)
 
 		# create doc folder name list
 		foreach(folder ${ARGN})
-			set(DOXYGEN_SCAN_FOLDERS "${DOXYGEN_SCAN_FOLDERS} ${CMAKE_CURRENT_SOURCE_DIR}/${folder}")
+			set(DOXYGEN_SCAN_FOLDERS "${DOXYGEN_SCAN_FOLDERS} \"${CMAKE_CURRENT_SOURCE_DIR}/${folder}\"")
 		endforeach()
 
 		# adapt doxygen config
