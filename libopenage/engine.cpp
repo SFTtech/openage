@@ -78,7 +78,6 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	drawing_debug_overlay{this, "drawing_debug_overlay", true},
 	drawing_huds{this, "drawing_huds", true},
 	engine_coord_data{this->get_coord_data()},
-	current_player{this, "current_player", 1},
 	data_dir{data_dir},
 	singletons_info{this, data_dir->basedir},
 	cvar_manager {},
@@ -237,23 +236,6 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 		}
 		return false;
 	});
-
-	// Switching between players with the 1-8 keys
-	auto bind_player_switch = [this, &global_input_context](input::action_t action, int player) {
-		global_input_context.bind(action, [this, player](const input::action_arg_t &) {
-			this->current_player.value = player;
-		});
-
-	};
-
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_1"), 1);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_2"), 2);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_3"), 3);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_4"), 4);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_5"), 5);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_6"), 6);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_7"), 7);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_8"), 8);
 
 	this->text_renderer = std::make_unique<renderer::TextRenderer>();
 }
@@ -518,14 +500,6 @@ util::Dir *Engine::get_data_dir() {
 
 GameMain *Engine::get_game() {
 	return this->game.get();
-}
-
-Player *Engine::player_focus() const {
-	if (this->game) {
-		unsigned int number = this->game->players.size();
-		return &this->game->players[this->current_player.value % number];
-	}
-	return nullptr;
 }
 
 job::JobManager *Engine::get_job_manager() {
