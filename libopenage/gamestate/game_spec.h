@@ -81,6 +81,11 @@ public:
 	Texture *get_texture(index_t graphic_id) const;
 
 	/**
+	 * lookup using a texture file name
+	 */
+	Texture *get_texture(std::string file_name, bool use_metafile=true) const;
+
+	/**
 	 * get unit texture by graphic id -- this is an directional texture
 	 * which also includes graphic deltas
 	 */

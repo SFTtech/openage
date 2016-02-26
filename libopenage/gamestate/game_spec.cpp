@@ -85,6 +85,14 @@ Texture *GameSpec::get_texture(index_t graphic_id) const {
 	return tex;
 }
 
+Texture *GameSpec::get_texture(std::string file_name, bool use_metafile) const {
+	Texture *tex = nullptr;
+	if (this->assetmanager->can_load(file_name)) {
+		tex = this->assetmanager->get_texture(file_name, use_metafile);
+	}
+	return tex;
+}
+
 std::shared_ptr<UnitTexture> GameSpec::get_unit_texture(index_t unit_id) const {
 	if (this->unit_textures.count(unit_id) == 0) {
 		if (unit_id > 0) {
