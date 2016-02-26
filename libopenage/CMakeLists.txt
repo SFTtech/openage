@@ -143,22 +143,24 @@ include_directories(
 
 # link the executable to those libraries
 target_link_libraries(libopenage
-	dl
-	${FONTCONFIG_LIB}
-	${FREETYPE_LIBRARIES}
-	${EPOXY_LIBRARIES}
-	${MATH_LIB}
-	${OPENGL_LIBRARY}
-	${OPUS_LIBRARIES}
-	${SDL2IMAGE_LIBRARIES}
-	${SDL2_LIBRARY}
-	${UTIL_LIB}
-	${HarfBuzz_LIBRARIES}
+	PUBLIC
+		dl
+		${FONTCONFIG_LIB}
+		${FREETYPE_LIBRARIES}
+		${EPOXY_LIBRARIES}
+		${MATH_LIB}
+		${OPENGL_LIBRARY}
+		${OPUS_LIBRARIES}
+		${SDL2IMAGE_LIBRARIES}
+		${SDL2_LIBRARY}
+		${UTIL_LIB}
+		${HarfBuzz_LIBRARIES}
 )
 
 if(NOT APPLE)
 	target_link_libraries(libopenage
-		rt
+		PUBLIC
+			rt
 	)
 endif()
 
