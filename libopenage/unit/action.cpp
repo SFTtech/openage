@@ -1009,18 +1009,33 @@ ConvertAction::ConvertAction(Unit *e, UnitReference tar)
 
 void ConvertAction::update_in_range(unsigned int time, Unit *target_ptr) {
 
-    if (this->complete <= 5)   //just a guess
-        this->complete += this->rate_of_conversion * time;
-	else{
-        if(target_ptr->has_attribute(attr_type::owner))
-        {
-            target_ptr->get_attribute<attr_type::owner>() =
-                 this->entity->get_attribute<attr_type::owner>();
-        }
-	}
-	// inc frame
-	this->frame += time * this->entity->graphics->at(graphic)->frame_count * this->rate_of_conversion;
+    if (target_ptr->has_attribute(attr_type::convertable)) {
 
+        if (this->complete > 0.0) {
+            this->complete -= this->rate_of_conversion * time;
+        }
+        else {
+            this->complete += 1.0f;
+
+                auto &cp = target_ptr->get_attribute<attr_type::convertable>();
+                cp.current -= 1;
+                log::log(MSG(info) << "convert");
+        }
+        // inc frame
+        this->frame += time * this->entity->graphics->at(graphic)->frame_count * this->rate_of_conversion;
+    }
+}
+
+bool ConvertAction::completed_in_range(Unit *target_ptr) const{
+
+	auto &c_attr = target_ptr->get_attribute<attr_type::convertable>();
+	if (c_attr.current < 1)
+	{
+        log::log(MSG(info) << "convert completed");
+        target_ptr->remove_attribute(attr_type::owner);
+        target_ptr->add_attribute(std::make_shared<Attribute<attr_type::owner>>(this->entity->get_attribute<attr_type::owner>().player));
+    }
+	return c_attr.current < 1; // is unit still alive?
 }
 
 ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)

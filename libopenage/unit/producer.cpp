@@ -466,6 +466,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 
 	}
 
+    unit->add_attribute(std::make_shared<Attribute<attr_type::convertable>>(5));
 
 }
 

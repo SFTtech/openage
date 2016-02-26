@@ -224,6 +224,11 @@ void Unit::add_attribute(std::shared_ptr<AttributeContainer> attr) {
 	this->attribute_map.emplace(attr_map_t::value_type(attr->type, attr));
 }
 
+void Unit::remove_attribute(attr_type type) {
+    auto it = this->attribute_map.find(type);
+    this->attribute_map.erase (it);
+}
+
 bool Unit::has_attribute(attr_type type) const {
 	return (this->attribute_map.count(type) > 0);
 }
