@@ -11,6 +11,7 @@ list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_image_provider.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_input.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_renderer.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_subtree.cpp
 )
 
 list(APPEND QT_SDL_SOURCES
@@ -24,6 +25,7 @@ list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_input_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_render_control.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_renderer_impl.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_subtree_impl.cpp
 )
 
 list(APPEND QT_SDL_SOURCES
