@@ -5,6 +5,8 @@
 # add new sources here, dependencies for linking and including
 # are specified below the source file list.
 
+set(CMAKE_AUTOMOC ON)
+
 declare_binary(libopenage)
 
 add_sources(libopenage
@@ -81,13 +83,17 @@ find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
 
+set(QT_VERSION_REQ "5.4")
+find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
+find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
+
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
 endif()
 
 if(GCCBacktrace_FOUND)
 	include_directories(${GCCBacktrace_INCLUDE_DIRS})
-	target_link_libraries(libopenage "${GCCBacktrace_LIBRARIES}")
+	target_link_libraries(libopenage PUBLIC "${GCCBacktrace_LIBRARIES}")
 	have_config_option(backtrace BACKTRACE true)
 else()
 	have_config_option(backtrace BACKTRACE false)
@@ -100,7 +106,7 @@ endif()
 if(WANT_GPERFTOOLS_PROFILER AND GPERFTOOLS_FOUND)
 	have_config_option(gperftools-profiler GPERFTOOLS_PROFILER true)
 	include_directories(${GPERFTOOLS_INCLUDE_DIR})
-	target_link_libraries(libopenage ${GPERFTOOLS_PROFILER})
+	target_link_libraries(libopenage PUBLIC ${GPERFTOOLS_PROFILER})
 else()
 	have_config_option(gperftools-profiler GPERFTOOLS_PROFILER false)
 endif()
@@ -108,7 +114,7 @@ endif()
 if(WITH_GPERFTOOLS_TCMALLOC AND GPERFTOOLS_FOUND)
 	have_config_option(gperftools-tcmalloc GPERFTOOLS_TCMALLOC true)
 	include_directories(${GPERFTOOLS_INCLUDE_DIR})
-	target_link_libraries(libopenage ${GPERFTOOLS_TCMALLOC})
+	target_link_libraries(libopenage PUBLIC ${GPERFTOOLS_TCMALLOC})
 else()
 	have_config_option(gperftools-tcmalloc GPERFTOOLS_TCMALLOC false)
 endif()
@@ -155,6 +161,12 @@ target_link_libraries(libopenage
 		${SDL2_LIBRARY}
 		${UTIL_LIB}
 		${HarfBuzz_LIBRARIES}
+	# TODO: change to PUBLIC (or, alternatively, remove all keywords
+	# of this type) when qt cmake scripts change declarations of the
+	# IMPORTED libraries to GLOBAL.
+	PRIVATE
+		Qt5::Core
+		Qt5::Quick
 )
 
 if(NOT APPLE)
