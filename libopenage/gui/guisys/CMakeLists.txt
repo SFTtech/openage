@@ -4,6 +4,7 @@ list(APPEND QT_SDL_SOURCES
 
 list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_application.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_engine.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_event_queue.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_image_provider.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_input.cpp
@@ -15,6 +16,7 @@ list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_application_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_callback.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_dedicated_thread.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_engine_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_event_queue_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_image_provider_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_input_impl.cpp
