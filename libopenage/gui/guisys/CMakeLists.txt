@@ -1,5 +1,6 @@
 list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_item.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_property_map_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_singleton_item.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/link/qml_engine_with_singleton_items_info.cpp
 )
@@ -10,6 +11,7 @@ list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_event_queue.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_image_provider.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_input.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_property_map.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_renderer.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_subtree.cpp
 )
