@@ -1,4 +1,8 @@
 list(APPEND QT_SDL_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/link/qml_engine_with_singleton_items_info.cpp
+)
+
+list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_application.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_event_queue.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_image_provider.cpp
