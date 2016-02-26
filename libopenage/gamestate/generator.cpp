@@ -122,7 +122,7 @@ Region Region::take_random(rng::RNG &rng, unsigned int number, double p) {
 Generator::Generator(Engine *engine)
 	:
 	OptionNode{"Generator"},
-	assetmanager{engine->get_data_dir()},
+	assetmanager{nullptr},
 	spec{std::make_shared<GameSpec>(this->assetmanager)} {
 
 	// node settings

@@ -10,6 +10,10 @@
 
 #include "util/dir.h"
 
+namespace qtsdl {
+class GuiItemLink;
+} // namespace qtsdl
+
 namespace openage {
 
 class Texture;
@@ -20,9 +24,12 @@ class Texture;
  */
 class AssetManager final {
 public:
-	AssetManager(util::Dir *root);
+	explicit AssetManager(qtsdl::GuiItemLink *gui_link);
 
 	util::Dir *get_data_dir();
+
+	std::string get_data_dir_string() const;
+	void set_data_dir_string(const std::string& data_dir);
 
 	/**
 	 * Test whether a requested asset filename can be loaded.
@@ -57,10 +64,12 @@ protected:
 	std::shared_ptr<Texture> get_missing_tex();
 
 private:
+	void clear();
+
 	/**
 	 * The root directory for the available assets.
 	 */
-	util::Dir *root;
+	util::Dir root;
 
 	/**
 	 * The replacement texture for missing textures.
@@ -84,6 +93,9 @@ private:
 	 */
 	std::unordered_map<int, std::shared_ptr<Texture>> watch_fds;
 #endif
+
+public:
+	qtsdl::GuiItemLink *gui_link;
 };
 
 }
