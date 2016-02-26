@@ -16,6 +16,11 @@ list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_renderer_impl.cpp
 )
 
+list(APPEND QT_SDL_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/recursive_directory_watcher.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/recursive_directory_watcher_worker.cpp
+)
+
 # TODO: platform check
 list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/private/platforms/context_extraction_x11.cpp
