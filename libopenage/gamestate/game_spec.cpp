@@ -11,42 +11,36 @@
 #include "civilisation.h"
 #include "game_spec.h"
 
+#include <tuple>
+
 namespace openage {
 
 GameSpec::GameSpec(AssetManager &am)
 	:
+	assetmanager{&am},
 	data_path{"converted/gamedata"},
 	graphics_path{"converted/graphics"},
 	terrain_path{"converted/terrain"},
 	blend_path{"converted/blendomatic"},
 	sound_path{"converted/sounds/"},
 	gamedata_loaded{false} {
-
-	// begin loading gamedata
-	this->initialize(am);
 }
 
 GameSpec::~GameSpec() {}
 
-void GameSpec::initialize(AssetManager &am) {
-	load_timer.start();
+bool GameSpec::initialize() {
+	this->load_timer.start();
 
-	this->load_terrain(am);
+	this->load_terrain(*this->assetmanager);
 
-	this->assetmanager = &am;
-	auto gamedata_load_function = [this]() {
-		log::log(MSG(info) << "loading game specification files... stand by, will be faster soon...");
-		util::Dir gamedata_dir = this->assetmanager->get_data_dir()->append(this->data_path);
-		this->gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
-		this->on_gamedata_loaded(this->gamedata);
-		this->gamedata_loaded = true;
-		log::log(MSG(info).fmt("Loading time  [data]: %5.3f s", load_timer.getval() / 1e9));
-		return true;
-	};
+	util::Dir gamedata_dir = this->assetmanager->get_data_dir()->append(this->data_path);
 
-	// add job
-	Engine &engine = Engine::get();
-	this->gamedata_load_job = engine.get_job_manager()->enqueue<bool>(gamedata_load_function);
+	log::log(MSG(info) << "loading game specification files... stand by, will be faster soon...");
+	this->gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
+	this->on_gamedata_loaded(this->gamedata);
+	this->gamedata_loaded = true;
+	log::log(MSG(info).fmt("Loading time  [data]: %5.3f s", load_timer.getval() / 1e9));
+	return true;
 }
 
 bool GameSpec::load_complete() const {
@@ -383,6 +377,76 @@ void Sound::play() const {
 	catch(Error &e) {
 		log::log(MSG(warn) << "cannot play: " << e);
 	}
+}
+
+GameSpecHandle::GameSpecHandle(qtsdl::GuiItemLink *gui_link)
+	:
+	active{},
+	asset_manager{},
+	gui_signals{std::make_shared<GameSpecSignals>()},
+	gui_link{gui_link} {
+}
+
+void GameSpecHandle::set_active(bool active) {
+	this->active = active;
+
+	this->start_loading_if_needed();
+}
+
+void GameSpecHandle::set_asset_manager(AssetManager *asset_manager) {
+	if (this->asset_manager != asset_manager) {
+		this->asset_manager = asset_manager;
+
+		this->start_loading_if_needed();
+	}
+}
+
+bool GameSpecHandle::is_ready() const {
+	return this->spec && this->spec->load_complete();
+}
+
+void GameSpecHandle::invalidate() {
+	this->spec = nullptr;
+
+	if (this->asset_manager)
+		this->asset_manager->check_updates();
+
+	this->start_loading_if_needed();
+}
+
+void GameSpecHandle::announce_spec() {
+	if (this->spec && this->spec->load_complete())
+		emit this->gui_signals->game_spec_loaded(this->spec);
+}
+
+std::shared_ptr<GameSpec> GameSpecHandle::get_spec() {
+	return this->spec;
+}
+
+void GameSpecHandle::start_loading_if_needed() {
+	if (this->active && this->asset_manager && !this->spec) {
+		this->spec = std::make_shared<GameSpec>(*this->asset_manager);
+
+		this->start_load_job();
+	}
+}
+
+void GameSpecHandle::start_load_job() {
+	// Acts similar to std::future, but you don't required to store it.
+	// Need to copy the shared_ptr because the next reload request may come.
+	// TODO: what about the possible crash on the deleted AssetManager then?
+	auto spec_and_job = std::make_tuple(this->spec, this->gui_signals, job::Job<bool>{});
+	auto spec_and_job_ptr = std::make_shared<decltype(spec_and_job)>(spec_and_job);
+
+	auto load_job = [spec_and_job_ptr] {
+		return std::get<std::shared_ptr<GameSpec>>(*spec_and_job_ptr)->initialize();
+	};
+
+	Engine &engine = Engine::get();
+	std::get<job::Job<bool>>(*spec_and_job_ptr) = engine.get_job_manager()->enqueue<bool>(load_job, [gui_signals_ptr = this->gui_signals.get()] (job::result_function_t<bool> result) {
+		if (result())
+			emit gui_signals_ptr->load_job_finished();
+	});
 }
 
 }

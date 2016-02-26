@@ -2,13 +2,24 @@
 
 #pragma once
 
+#include <unordered_set>
+
+#include "../coord/tile.h"
 #include "../rng/rng.h"
 #include "../assetmanager.h"
 #include "../options.h"
+#include "../gui/guisys/public/gui_property_map.h"
+
+namespace qtsdl {
+class GuiItemLink;
+} // qtsdl
 
 namespace openage {
 
 class GameSpec;
+class Terrain;
+class GameMain;
+class Engine;
 
 /**
  * the type to store a set of tiles
@@ -120,9 +131,9 @@ private:
  * this will be identical for each networked
  * player in a game
  */
-class Generator : public options::OptionNode {
+class Generator : public qtsdl::GuiPropertyMap {
 public:
-	Generator(Engine *engine);
+	explicit Generator(qtsdl::GuiItemLink *gui_link);
 
 	/**
 	 * game spec used by this generator
@@ -144,13 +155,10 @@ public:
 	 */
 	void add_units(GameMain &m) const;
 
-	bool create();
+	std::unique_ptr<GameMain> create(std::shared_ptr<GameSpec> spec);
 
 private:
 	void create_regions();
-
-	// access to games asset files
-	AssetManager assetmanager;
 
 	// data version used to create a game
 	std::shared_ptr<GameSpec> spec;
@@ -158,6 +166,8 @@ private:
 	// the generated data
 	std::vector<Region> regions;
 
+public:
+	qtsdl::GuiItemLink *gui_link;
 };
 
 } // namespace openage
