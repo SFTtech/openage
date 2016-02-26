@@ -1,4 +1,6 @@
 list(APPEND QT_SDL_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_item.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_singleton_item.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/link/qml_engine_with_singleton_items_info.cpp
 )
 
@@ -25,6 +27,8 @@ list(APPEND QT_SDL_SOURCES
 )
 
 list(APPEND QT_SDL_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/deferred_initial_constant_property_values.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/gui_live_reloader.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/recursive_directory_watcher.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/recursive_directory_watcher_worker.cpp
 )
