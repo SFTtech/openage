@@ -6,7 +6,9 @@ list(APPEND QT_SDL_SOURCES
 )
 
 list(APPEND QT_SDL_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/private/game_logic_caller.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_application_impl.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_callback.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_dedicated_thread.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_event_queue_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_input_impl.cpp
