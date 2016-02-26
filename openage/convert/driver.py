@@ -20,6 +20,7 @@ from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .slp_converter_pool import SLPConverterPool
 from .interface.interfacecutter import InterfaceCutter
+from .interface.interfacerename import interface_rename
 
 
 def get_string_resources(args):
@@ -275,7 +276,7 @@ def convert_mediafile(filepath, args):
                 entry["cy"] = TILE_HALFSIZE["y"]
 
         # save atlas to targetdir
-        texture.save(args.targetdir, filename, ("csv",))
+        texture.save(args.targetdir, interface_rename(filename), ("csv",))
 
     elif filename.endswith('.wav'):
         # convert the WAV file to an opus file
