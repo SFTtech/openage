@@ -1,3 +1,7 @@
+list(APPEND QT_SDL_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_render_control.cpp
+)
+
 # TODO: platform check
 list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/private/platforms/context_extraction_x11.cpp
