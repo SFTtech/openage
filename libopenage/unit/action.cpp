@@ -1001,12 +1001,27 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 
 
 ConvertAction::ConvertAction(Unit *e, UnitReference tar)
-	:
+    :
 	TargetAction{e, graphic_type::attack, tar},
-	complete{.0f} {
+	complete{.0f},
+	rate_of_conversion{0.002f} {
 }
 
-void ConvertAction::update_in_range(unsigned int, Unit *) {}
+void ConvertAction::update_in_range(unsigned int time, Unit *target_ptr) {
+
+    if (this->complete <= 5)   //just a guess
+        this->complete += this->rate_of_conversion * time;
+	else{
+        if(target_ptr->has_attribute(attr_type::owner))
+        {
+            target_ptr->get_attribute<attr_type::owner>() =
+                 this->entity->get_attribute<attr_type::owner>();
+        }
+	}
+	// inc frame
+	this->frame += time * this->entity->graphics->at(graphic)->frame_count * this->rate_of_conversion;
+
+}
 
 ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
 	:

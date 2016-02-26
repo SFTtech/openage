@@ -472,7 +472,7 @@ public:
 	std::string name() const override { return "convert"; }
 
 private:
-	float complete;
+	float complete, rate_of_conversion;
 
 };
 
