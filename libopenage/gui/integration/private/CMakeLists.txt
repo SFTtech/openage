@@ -5,6 +5,7 @@ add_sources(libopenage
 	gui_game_spec_image_provider_by_id_impl.cpp
 	gui_game_spec_image_provider_by_terrain_id_impl.cpp
 	gui_game_spec_image_provider_impl.cpp
+	gui_log.cpp
 	gui_make_standalone_subtexture.cpp
 	gui_standalone_subtexture.cpp
 	gui_texture.cpp
