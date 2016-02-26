@@ -1,5 +1,6 @@
 add_sources(libopenage
 	assetmanager_link.cpp
+	main_args_link.cpp
 )
 
 add_subdirectory("guisys")
