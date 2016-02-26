@@ -38,7 +38,7 @@ public:
 	 * @param name: the asset file name relative to the asset root.
 	 * @returns the queried texture handle.
 	 */
-	Texture *get_texture(const std::string &name);
+	Texture *get_texture(const std::string &name, bool use_metafile=true);
 
 	/**
 	 * Ask the kernel whether there were updates to watched files.
@@ -49,7 +49,7 @@ protected:
 	/**
 	 * Create an internal texture handle.
 	 */
-	std::shared_ptr<Texture> load_texture(const std::string &name);
+	std::shared_ptr<Texture> load_texture(const std::string &name, bool use_metafile=true);
 
 	/**
 	 * Retrieves the texture for missing textures.

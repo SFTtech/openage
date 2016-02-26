@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include "assetmanager.h"
 
@@ -39,7 +39,7 @@ bool AssetManager::can_load(const std::string &name) const {
 	return util::file_size(this->root->join(name)) > 0;
 }
 
-std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name) {
+std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name, bool use_metafile) {
 	std::string filename = this->root->join(name);
 
 	// the texture to be associated with the given filename
@@ -56,7 +56,7 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name) {
 		tex = this->get_missing_tex();
 	} else {
 		// create the texture!
-		tex = std::make_shared<Texture>(filename, true);
+		tex = std::make_shared<Texture>(filename, use_metafile);
 
 #if WITH_INOTIFY
 		// create inotify update trigger for the requested file
@@ -75,13 +75,13 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name) {
 	return tex;
 }
 
-Texture *AssetManager::get_texture(const std::string &name) {
+Texture *AssetManager::get_texture(const std::string &name, bool use_metafile) {
 	// check whether the requested texture was loaded already
 	auto tex_it = this->textures.find(this->root->join(name));
 
 	// the texture was not loaded yet:
 	if (tex_it == this->textures.end()) {
-		return this->load_texture(name).get();
+		return this->load_texture(name, use_metafile).get();
 	}
 
 	return tex_it->second.get();
