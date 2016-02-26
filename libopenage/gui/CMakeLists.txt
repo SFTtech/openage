@@ -19,3 +19,7 @@ add_sources(libopenage
 )
 
 add_subdirectory("integration")
+
+install(DIRECTORY "qml"
+	DESTINATION "${INSTALLED_GLOBAL_ASSET_DIR}"
+)
