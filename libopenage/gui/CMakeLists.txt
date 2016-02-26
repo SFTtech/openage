@@ -1,6 +1,7 @@
 add_sources(libopenage
 	assetmanager_link.cpp
 	engine_link.cpp
+	game_main_link.cpp
 	main_args_link.cpp
 )
 
