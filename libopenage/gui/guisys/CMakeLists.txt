@@ -4,6 +4,7 @@ list(APPEND QT_SDL_SOURCES
 
 list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_application_impl.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_dedicated_thread.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_render_control.cpp
 )
 
