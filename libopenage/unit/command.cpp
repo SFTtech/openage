@@ -28,6 +28,13 @@ Command::Command(const Player &p, Unit *unit, coord::phys3 position)
 	:
 	Command{p, unit, true, nullptr} {
 	this->pos = position;
+
+    //allow units to attack enemy sheep
+    if ((unit->unit_type->unit_class == gamedata::unit_classes::SHEEP)
+        && unit->unit_type->owner.is_enemy(p)) {
+
+        this->add_flag(command_flag::attack_res);
+    }
 }
 
 Command::Command(const Player &p, UnitType *t)
