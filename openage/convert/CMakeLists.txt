@@ -26,3 +26,4 @@ add_cython_modules(
 add_subdirectory(dataformat)
 add_subdirectory(gamedata)
 add_subdirectory(hardcoded)
+add_subdirectory(interface)
