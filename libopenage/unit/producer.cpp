@@ -351,7 +351,8 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 
 	// extra abilities
 	this->type_abilities.emplace_back(std::make_shared<MoveAbility>(this->on_move));
-	this->type_abilities.emplace_back(std::make_shared<AttackAbility>(this->on_attack));
+	if (this->unit_data.unit_class != gamedata::unit_classes::PRIEST)
+		this->type_abilities.emplace_back(std::make_shared<AttackAbility>(this->on_attack));
 }
 
 MovableProducer::~MovableProducer() {}
@@ -385,6 +386,10 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 		// calculate requirements for ranged attacks
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 48000, 1, reset_type));
+	}
+	else if (this->unit_data.unit_class == gamedata::unit_classes::PRIEST) {
+		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(nullptr, range_phys, 0, 1, reset_type));
 	}
 	else {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(nullptr, 0, 0, 1, reset_type));
@@ -461,12 +466,11 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 	}
-	else if (this->unit_data.unit_class == gamedata::unit_classes::PRIEST){
+
+	else if (this->unit_data.unit_class == gamedata::unit_classes::PRIEST)
 		unit->give_ability(std::make_shared<ConvertAbility>(this->on_attack));
 
-	}
-
-    unit->add_attribute(std::make_shared<Attribute<attr_type::convertable>>(5));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::convertable>>(5));
 
 }
 

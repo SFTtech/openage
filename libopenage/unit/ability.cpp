@@ -165,7 +165,7 @@ void UngarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_so
 	to_modify.secondary_action(std::make_unique<UngarrisonAction>(&to_modify, cmd.position()));
 }
 
-ConvertAbility::ConvertAbility(Sound *s)
+ConvertAbility::ConvertAbility(const Sound *s)
 	:
 	sound{s} {
 }
@@ -197,8 +197,6 @@ void ConvertAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound
 }
 
 TrainAbility::TrainAbility(const Sound *s)
-
-TrainAbility::TrainAbility(Sound *s)
 	:
 	sound{s} {
 }

@@ -190,11 +190,11 @@ private:
 };
 
 /*
- * ability to convert a enemies unit
+ * ability to convert an enemy unit
  */
 class ConvertAbility: public UnitAbility {
 public:
-	ConvertAbility(Sound *s=nullptr);
+	ConvertAbility(const Sound *s=nullptr);
 
 	ability_type type() override {
 		return ability_type::convert;
@@ -205,7 +205,7 @@ public:
 	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
-	Sound *sound;
+	const Sound *sound;
 };
 
 /*
