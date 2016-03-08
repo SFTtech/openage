@@ -1,3 +1,5 @@
+# python module configurations
+
 # create python config file
 get_config_option_string()
 configure_file(config.py.in "${CMAKE_SOURCE_DIR}/openage/config.py")

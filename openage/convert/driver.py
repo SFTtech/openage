@@ -19,6 +19,8 @@ from .gamedata.empiresdat import load_gamespec
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .slp_converter_pool import SLPConverterPool
+from .interface.interfacecutter import InterfaceCutter
+from .interface.interfacerename import interface_rename
 
 
 def get_string_resources(args):
@@ -215,7 +217,7 @@ def convert_media(args):
         ignored_suffixes.add('.slp')
 
     files_to_convert = []
-    for dirname in ['sounds', 'graphics', 'terrain']:
+    for dirname in ['sounds', 'graphics', 'terrain', 'interface']:
         for filepath in args.srcdir[dirname].iterdir():
             if filepath.suffix in ignored_suffixes:
                 continue
@@ -261,8 +263,11 @@ def convert_mediafile(filepath, args):
         indata = infile.read()
 
     if filename.endswith('.slp'):
+        # some user interface textures must be cut using hardcoded values
+        cutter = InterfaceCutter(filename) if filename.startswith('interface/') else None
+
         # do the CPU-intense part in a subprocess
-        texture = args.slp_converter.convert(indata)
+        texture = args.slp_converter.convert(indata, cutter)
 
         # the hotspots of terrain textures must be fixed
         if filename.startswith('terrain/'):
@@ -271,7 +276,7 @@ def convert_mediafile(filepath, args):
                 entry["cy"] = TILE_HALFSIZE["y"]
 
         # save atlas to targetdir
-        texture.save(args.targetdir, filename, ("csv",))
+        texture.save(args.targetdir, interface_rename(filename), ("csv",))
 
     elif filename.endswith('.wav'):
         # convert the WAV file to an opus file

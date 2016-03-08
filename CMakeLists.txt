@@ -115,7 +115,5 @@ py install prefix | ${CMAKE_PY_INSTALL_PREFIX}
 ")
 
 # don't print 'Built target ...' messages
-# this will hopefully be merged into CMake 3.3; until then, this will have
-# no effect.
-# http://www.cmake.org/pipermail/cmake-developers/2015-July/025649.html
+# upstream since cmake v3.4.0-rc1 (by commit 1d3984780df8)
 set_property(GLOBAL PROPERTY TARGET_MESSAGES OFF)

@@ -16,6 +16,12 @@ Openage currently depends on the original game assets, so you need a copy of the
       "StateFlags" "1026"
     }
 ```
+* Alternatively, you may download the game assets using [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD).
+  1. Install SteamCMD by following the instructions on [Valve's developer wiki](https://developer.valvesoftware.com/wiki/SteamCMD).
+  2. Download the assets with the following command (replacing `USERNAME` and `ASSET_DIR` as appropriate):
+
+`./steamcmd.sh +@sSteamCmdForcePlatformType windows +login USERNAME +force_install_dir ASSET_DIR +app_update 221380 validate +quit`
+
 In the future, using installation disks may be supported.
 
 ## Conversion
