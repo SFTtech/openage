@@ -1,7 +1,6 @@
 // Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
-#include <cassert>
 #include <cmath>
 
 #include "../terrain/terrain.h"
@@ -138,8 +137,7 @@ void Unit::draw() {
 }
 
 void Unit::draw(TerrainObject *loc, const graphic_set &grpc) {
-	// there should always be a location
-	assert(loc != nullptr);
+	ENSURE(loc != nullptr, "there should always be a location for a placed unit");
 
 	auto top_action = this->top();
 	auto draw_graphic = top_action->type();
