@@ -7,6 +7,7 @@
 #include <functional>
 
 #include "../util/thread_id.h"
+#include "../error/error.h"
 #include "job_aborted_exception.h"
 #include "job_state_base.h"
 #include "types.h"
@@ -75,7 +76,7 @@ public:
 	}
 
 	void execute_callback() override {
-		assert(this->finished.load());
+		ENSURE(this->finished.load(), "trying to report a result of an unfinished job");
 		if (this->callback) {
 			auto get_result = [this]() {
 				if (this->exception != nullptr) {
