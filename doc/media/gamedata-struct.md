@@ -48,7 +48,7 @@ struct {
 	} sound[sound_count];
 
 	int16_t graphic_count;
-	int32_t graphic_offset[graphic_count];
+	int32_t graphic_offsets[graphic_count];
 	struct {
 		struct {
 			char name0[21];
@@ -58,19 +58,21 @@ struct {
 			int8_t unknown;
 			int8_t layer;
 			int16_t player_color;
+			int8_t adapt_color;
 			bool replay;
 			int16_t coordinates[4];
 			uint16_t delta_count;
 			int16_t sound_id;
-			bool attack_sound_used;
+			uint8_t attack_sound_used;
 			uint16_t frame_count;
 			uint16_t angle_count;
-			float new_speed;
+			float speed_adjust;
 			float frame_rate;
 			float replay_delay;
 			int8_t sequence_type;
 			int16_t id;
 			int16_t mirroring_mode;
+			int8_t unknown;
 		} graphic_header;
 
 		struct {
