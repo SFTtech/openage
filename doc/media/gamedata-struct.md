@@ -160,29 +160,29 @@ struct {
 		struct {
 			int8_t type_id;
 			int16_t unit;
-			int16_t class_id;
-			int16_t attribute;
+			int16_t unit_class_id;
+			int16_t attribute_id;
 			float amount;
-		} effect[effect_count];
+		} effects[effect_count];
 	} tech[tech_count];
 
 	uint32_t unit_count;
 	struct {
-		bool exists;
+		uint8_t exists;
 		//if(exists) {
-		uint16_t command_count;
+		uint16_t unit_command_count;
 		struct {
-			int16_t one;
-			int16_t uid;
+			int16_t command_used;
+			int16_t id;
 			int8_t unknown;
-			int16_t type_id;
+			int16_t type;
 			int16_t class_id;
 			int16_t unit_id;
 			int16_t unknown;
 			int16_t resource_in;
-			int16_t sub_type_id;
+			int16_t resource_productivity;
 			int16_t resource_out;
-			int16_t unknown;
+			int16_t resource;
 			float work_rate_multiplier;
 			float execution_radius;
 			float extra_range;
@@ -190,24 +190,30 @@ struct {
 			float unknown;
 			int8_t selection_enabled;
 			int8_t unknown;
-			int32_t unknown;
+			int16_t unknown;
+			int16_t unknown;
+			int8_t targets_allowed;
 			int8_t unknown;
 			int8_t unknown;
-			int8_t unknown;
-			int16_t graphic[6];
+			int16_t tool_graphic_id;
+			int16_t proceed_graphic_id;
+			int16_t action_graphic_id;
+			int16_t carrying_graphic_id;
+			int16_t execution_sound_id;
+			int16_t resource_deposit_sound_id;
 		} unit_command[command_count];
 		//}
 	} unit_header[unit_count];
 
 	uint16_t civ_count;
 	struct {
-		int8_t one;
+		int8_t enabled;
 		char name[20];
 		uint16_t resources_count;
 		int16_t tech_tree_id;
 		int16_t team_bonus_id;
 		float[resources_count] resources;
-		int8_t graphic_set;
+		int8_t icon_set;
 		uint16_t unit_count;
 		int32_t unit_offsets[unit_count];
 
@@ -243,8 +249,8 @@ struct {
 				float radius_size0;
 				float radius_size1;
 				float hp_bar_height0;
-				int16_t sound_train0;
-				int16_t sound_train1;
+				int16_t sound_creation0;
+				int16_t sound_creation1;
 				int16_t dead_unit_id;
 				int8_t placement_mode;
 				int8_t air_mode;
@@ -264,25 +270,25 @@ struct {
 				int8_t fly_mode;
 				int16_t resource_capacity;
 				float resource_decay;
-				int8_t blast_type_id;
-				int8_t unknown;
+				int8_t blast_armor_level;
+				int8_t trigger_type;
 				int8_t interaction_mode;
 				int8_t minimap_mode;
 				int16_t command_attribute;
-				int16_t unknown;
-				int16_t unknown;
+				float unknown;
+				int8_t minimap_color;
 				uint16_t language_dll_help;
 				int16_t[4] hot_keys;
 				int8_t unknown;
 				int8_t unknown;
-				bool unselectable;
+				uint8_t unselectable;
 				int8_t unknown;
-				int8_t unknown;
+				int8_t selection_mode;
 				int8_t unknown;
 				int8_t selection_mask;
-				int8_t selection_shape_type_id;
+				int8_t selection_shape_type;
 				int8_t selection_shape;
-				int8_t attribute;
+				uint8_t attribute;
 				int8_t civilisation;
 				int16_t unknown;
 				int8_t selection_effect;
@@ -292,22 +298,23 @@ struct {
 				float hp_bar_height1;
 
 				struct {
-					int16_t a;
-					float b;
-					int8_t c;
+					int16_t type;
+					float amount;
+					int8_t used_mode;
 				} resource_storage[3];
 
 				int8_t damage_graphic_count;
 				struct {
 					int16_t graphic_id;
 					int8_t damage_percent;
-					int8_t unknown;
+					int8_t apply_mode;
 					int8_t unknown;
 				} damage_graphic[damage_graphic_count];
 
 				int16_t sound_selection;
 				int16_t sound_dying;
-				int16_t attack_mode;
+				int8_t attack_mode;
+				int8_t is_edible_meat;
 				char name[name_length];
 				int16_t id1;
 				int16_t id2;
@@ -324,11 +331,11 @@ struct {
 				int16_t walking_graphics1;
 				float rotation_speed;
 				int8_t unknown;
-				int16_t tracking_unit;
-				bool tracking_unit_used;
+				int16_t tracking_unit_id;
+				uint8_t tracking_unit_used;
 				float tracking_unit_density;
 				float unknown;
-				int8_t unknown[17];
+				float rotation_angles[5];
 			}
 
 			if (type_id >= unit_type.bird = 40) {
@@ -347,15 +354,15 @@ struct {
 				int16_t default_armor;
 				uint16_t attack_count;
 				struct {
-					int16_t used_for_class_id;
+					int16_t type_id;
 					int16_t amount;
 				} attack[attack_count];
 				uint16_t armor_count;
 				struct {
-					int16_t used_for_class_id;
+					int16_t type_id;
 					int16_t amount;
 				} armor[armor_count];
-				int16_t unknown;
+				int16_t interaction_type;
 				float max_range;
 				float blast_radius;
 				float reload_time0;
@@ -363,10 +370,12 @@ struct {
 				int16_t accuracy_percent;
 				int8_t tower_mode;
 				int16_t delay;
-				float graphics_displacement[3];
-				int8_t blast_level;
+				float graphics_displacement_lr;
+				float graphics_displacement_distance;
+				float graphics_displacement_height;
+				int8_t blast_attack_level;
 				float min_range;
-				float garnison_recovery_rate;
+				float garrison_recovery_rate;
 				int16_t attack_graphic;
 				int16_t melee_armor_displayed;
 				int16_t attack_displayed;
@@ -389,23 +398,21 @@ struct {
 					int16_t amount;
 					int16_t enabled;
 				} resource_cost[3];
-				int16_t train_time;
-				int16_t train_location_id;
-				int8_t button_id;
-				int8_t unknown;
-				int16_t unknown[3];
-				int8_t unknown;
+				int16_t creation_time;
+				int16_t creation_location_id;
+				int8_t creation_button_id;
+				float unknown;
+				float unknown;
 				int8_t missile_graphic_delay;
 				int8_t hero_mode;
-				int16_t garnison_graphic0;
-				int16_t garnison_graphic1;
-				float attack_missile_duplication0;
-				int8_t attack_missile_duplication1;
+				int32_t garrison_graphic;
+				float attack_missile_count;
+				int8_t attack_missile_max_count;
 				float attack_missile_duplication_spawning_width;
 				float attack_missile_duplication_spawning_length;
 				float attack_missile_duplication_spawning_randomness;
-				int32_t attack_missile_duplication_unit;
-				int32_t attack_missile_duplication_graphic;
+				int32_t attack_missile_duplication_unit_id;
+				int32_t attack_missile_duplication_graphic_id;
 				int8_t dynamic_image_update;
 				int16_t pierce_armor_displayed;
 			}
@@ -414,11 +421,11 @@ struct {
 				int16_t construction_graphic_id;
 				int16_t snow_graphic_id;
 				int16_t adjacent_mode;
-				int8_t unknown;
-				int8_t unknown;
+				int16_t icon_disabler;
+				int8_t disappears_when_built;
 				int16_t stack_unit_id;
 				int16_t terrain_id;
-				int16_t unknown;
+				int16_t resource_id;
 				int16_t research_id;
 				int8_t unknown;
 				struct {
@@ -426,12 +433,12 @@ struct {
 					float misplaced0;
 					float misplaced1;
 				} building_annex[4];
-				int16_t head_unit;
-				int16_t transform_unit;
+				int16_t head_unit_id;
+				int16_t transform_unit_id;
 				int16_t unknown;
 				int16_t construction_sound_id;
-				int8_t garnison_type_id;
-				float garnison_heal_rate;
+				int8_t garrison_type;
+				float garrison_heal_rate;
 				int32_t unknown;
 				int16_t unknown;
 				int8_t unknown[6];
@@ -463,7 +470,7 @@ struct {
 		char name[name_length];
 	} research[research_count];
 
-	int32_t unknown[7];
+	uint32_t unknown[7];
 
 	struct {
 		int8_t age_entry_count;
@@ -473,7 +480,7 @@ struct {
 
 		struct {
 			int32_t unknown;
-			int32_t uid;
+			int32_t id;
 			int8_t unknown;
 			int8_t building_count;
 			int32_t buildings[building_count];
@@ -482,15 +489,15 @@ struct {
 			int8_t research_count;
 			int32_t research[research_count];
 			int32_t unknown;
-			int32_t unknown;
+			int32_t second_age_id;
 			int16_t zeroes[49];
 		} age_tech_tree[age_entry_count];
 
 		int32_t unknown;
 
 		struct {
-			int32_t uid;
-			int8_t unknown;
+			int32_t id;
+			int8_t prerequisite_count;
 			int8_t building_count;
 			int32_t building[building_count];
 			int8_t unit_count;
@@ -505,12 +512,12 @@ struct {
 			int32_t mode1;
 			int32_t unknown[8];
 			int8_t unknown[11];
-			int32_t connection;
-			int32_t enabling_research;
+			int32_t line_mode;
+			int32_t enabled_by_research_id;
 		} building_connection[building_entry_count];
 
 		struct {
-			int32_t uid;
+			int32_t id;
 			int8_t unknown;
 			int32_t upper_building;
 			int32_t required_researches;
@@ -521,7 +528,7 @@ struct {
 			int32_t mode0;
 			int32_t mode1;
 			int32_t unknown[7];
-			int32_t vertical_line;
+			int32_t vertical_lines;
 			int8_t unit_count;
 			int32_t unit[unit_count];
 			int32_t location_in_age;
@@ -531,7 +538,7 @@ struct {
 		} unit_connection[unit_entry_count];
 
 		struct {
-			int32_t uid;
+			int32_t id;
 			int8_t unknown;
 			int32_t upper_building;
 			int8_t building_count;
