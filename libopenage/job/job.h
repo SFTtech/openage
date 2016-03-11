@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include <cassert>
 #include <exception>
 #include <memory>
 
@@ -55,8 +54,8 @@ public:
 	 * called, if the job's execution has not yet finished.
 	 */
 	T get_result() {
-		assert(this->state);
-		assert(this->state->finished.load());
+		ENSURE(this->state, "getting result of a destroyed or uninitialised job");
+		ENSURE(this->state->finished.load(), "trying to report a result of an unfinished job");
 		if (this->state->exception != nullptr) {
 			std::rethrow_exception(this->state->exception);
 		} else {

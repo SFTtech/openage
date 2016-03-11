@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include <cassert>
 #include <memory>
 
+#include "../error/error.h"
 #include "abortable_job_state.h"
 #include "job.h"
 #include "job_state.h"
@@ -45,7 +45,7 @@ public:
 	template<class T>
 	Job<T> enqueue(job_function_t<T> function,
 	               callback_function_t<T> callback={}) {
-		assert(this->parent_worker);
+		ENSURE(this->parent_worker, "job group has no worker thread associated");
 		auto state = std::make_shared<JobState<T>>(function, callback);
 		this->parent_worker->enqueue(state);
 		return Job<T>{state};
@@ -66,7 +66,7 @@ public:
 	template<class T>
 	Job<T> enqueue(abortable_function_t<T> function,
 	               callback_function_t<T> callback={}) {
-		assert(this->parent_worker);
+		ENSURE(this->parent_worker, "job group has no worker thread associated");
 		auto state = std::make_shared<AbortableJobState<T>>(function, callback);
 		this->parent_worker->enqueue(state);
 		return Job<T>{state};
