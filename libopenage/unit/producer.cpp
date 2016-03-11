@@ -172,7 +172,7 @@ std::string ObjectProducer::name() const {
 }
 
 void ObjectProducer::initialise(Unit *unit, Player &player) {
-	assert(this->owner == player);
+	ENSURE(this->owner == player, "unit init from a UnitType of a wrong player which breaks tech levels");
 
 	// log attributes
 	unit->log(MSG(dbg) << "setting unit type " <<
@@ -531,7 +531,7 @@ std::string BuildingProducer::name() const {
 }
 
 void BuildingProducer::initialise(Unit *unit, Player &player) {
-	assert(this->owner == player);
+	ENSURE(this->owner == player, "unit init from a UnitType of a wrong player which breaks tech levels");
 
 	// log type
 	unit->log(MSG(dbg) << "setting unit type " <<
@@ -742,7 +742,7 @@ std::string ProjectileProducer::name() const {
 }
 
 void ProjectileProducer::initialise(Unit *unit, Player &player) {
-	assert(this->owner == player);
+	ENSURE(this->owner == player, "unit init from a UnitType of a wrong player which breaks tech levels");
 
 	// initialize graphic set
 	unit->unit_type = this;
