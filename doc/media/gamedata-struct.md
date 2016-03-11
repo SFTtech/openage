@@ -97,6 +97,19 @@ struct {
 	} graphic[graphic_count];
 	int8_t[138] rendering_data;
 
+	int32_t map_pointer;
+	int32_t unknown;
+	int32_t map_width;
+	int32_t map_height;
+	int32_t world_width;
+	int32_t world_height;
+	struct {
+		int16_t width;
+		int16_t height;
+		int16_t delta_z;
+	} tile_size[19];
+
+	int16_t unknown;
 	struct {
 		int16_t unknown;
 		int16_t unknown;
@@ -149,9 +162,120 @@ struct {
 		int16_t unknown;
 	} terrain_border[16];
 
-	int8_t zero[28];
+	uint32_t unknown;
+	float map_min_x;
+	float map_min_y;
+	float map_max_x;
+	float map_max_y;
+	float map_max_xplus1;
+	float map_min_yplus1;
 	uint16_t terrain_count_additional;
-	int8_t rendering_etc[12722];
+	uint16_t borders_used;
+	int16_t max_terrain;
+	int16_t tile_width;
+	int16_t tile_height;
+	int16_t tile_half_height;
+	int16_t tile_half_width;
+	int16_t elev_height;
+	int16_t current_row;
+	int16_t current_column;
+	int16_t block_beginn_row;
+	int16_t block_end_row;
+	int16_t block_begin_column;
+	int16_t block_end_column;
+	uint32_t unknown;
+	uint32_t unknown;
+	int8_t any_frame_change;
+	int8_t map_visible_flag;
+	int8_t fog_flag;
+
+	uint8_t terrain_blob0[21];
+	uint32_t terrain_blob1[157];
+
+	uint32_t random_map_count;
+	uint32_t random_map_ptr;
+
+	struct {
+		int32_t script_number;
+		int32_t border_south_west;
+		int32_t border_north_west;
+		int32_t border_north_east;
+		int32_t border_south_east;
+		int32_t border_usage;
+		int32_t water_shape;
+		int32_t non_base_terrain;
+		int32_t base_zone_coverage;
+		int32_t unknown;
+		uint32_t base_zone_count;
+		int32_t base_zone_ptr;
+		uint32_t map_terrain_count;
+		int32_t map_terrain_ptr;
+		uint32_t map_unit_count;
+		int32_t map_unit_ptr;
+		uint32_t unknown;
+		int32_t unknown;
+	} map_header[random_map_count];
+
+	struct {
+		int32_t border_south_west;
+		int32_t border_north_west;
+		int32_t border_north_east;
+		int32_t border_south_east;
+		int32_t border_usage;
+		int32_t water_shape;
+		int32_t non_base_terrain;
+		int32_t base_zone_terrain;
+		int32_t unknown;
+
+		uint32_t base_zone_count;
+		int32_t base_zone_ptr;
+		struct {
+			int32_t unknown;
+			int32_t base_terrain;
+			int32_t spacing_between_players;
+			int32_t unknown;
+			int8_t unknown[4];
+			int32_t unknown;
+			int32_t unknown;
+			int8_t unknown[4];
+			int32_t start_area_radius;
+			int32_t unknown;
+			int32_t unknown;
+		} base_zone[base_zone_count];
+
+		uint32_t map_terrain_count;
+		int32_t map_terrain_ptr;
+		struct {
+			int32_t proportion;
+			int32_t terrain;
+			int32_t number_of_clumps;
+			int32_t spacing_to_other_terrains;
+			int32_t placement_zone;
+			int32_t unknown;
+		} map_terrain[map_terrain_count];
+
+		uint32_t map_unit_count;
+		int32_t map_unit_ptr;
+		struct {
+			int32_t unit;
+			int32_t host_terrain;
+			int8_t unknown[4];
+			int32_t objects_per_group;
+			int32_t fluctuation;
+			int32_t groups_per_player;
+			int32_t group_radius;
+			int32_t own_at_start;
+			int32_t set_place_for_all_players;
+			int32_t min_distance_to_players;
+			int32_t max_distance_to_players;
+		} map_unit[map_unit_count];
+
+		uint32_t map_unknown_count;
+		int32_t map_unknown_ptr;
+		struct {
+			int32_t unknown[6];
+		} map_unknown[map_unknown_count];
+	} map[random_map_count];
 
 	uint32_t tech_count;
 	struct {
