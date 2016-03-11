@@ -29,12 +29,13 @@ struct {
 		int32_t minimap_color;
 		int32_t unknown;
 		int32_t unknown;
-		int32_t unknown;
+		int32_t statistics_text_color;
 	} player_color[player_color_count];
 
 	uint16_t sound_count;
 	struct {
 		int32_t id;
+		int16_t unknown;
 		uint16_t item_count;
 		int32_t unknown;
 		struct {
@@ -440,9 +441,9 @@ struct {
 	struct {
 		int16_t[6] required_techs;
 		struct {
-			int16_t a;
-			int16_t b;
-			int8_t c;
+			int16_t resource_id;
+			int16_t amount;
+			int8_t enabled;
 		} research_resource_cost[3];
 		int16_t required_tech_count;
 		int16_t civilisation_id;
@@ -451,8 +452,8 @@ struct {
 		uint16_t language_dll_name;
 		uint16_t language_dll_description;
 		int16_t research_time;
-		int16_t tech_id;
-		int16_t tech_type_id;
+		int16_t tech_effect_id;
+		int16_t tech_type;
 		int16_t icon_id;
 		int8_t button_id;
 		int32_t pointers[3];
