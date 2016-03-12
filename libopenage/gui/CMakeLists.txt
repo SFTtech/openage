@@ -9,6 +9,7 @@ add_sources(libopenage
 	game_spec_link.cpp
 	generator_link.cpp
 	main_args_link.cpp
+	resources_list_model.cpp
 )
 
 add_subdirectory("guisys")
