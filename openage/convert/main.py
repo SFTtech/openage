@@ -19,7 +19,7 @@ from ..util.strings import format_progress
 _STANDARD_PATH_IN_32BIT_WINEPREFIX =\
     "drive_c/Program Files/Microsoft Games/Age of Empires II/"
 _STANDARD_PATH_IN_64BIT_WINEPREFIX =\
-    "drive_c/Program Files/Microsoft Games (x86)/Age of Empires II/"
+    "drive_c/Program Files (x86)/Microsoft Games/Age of Empires II/"
 
 
 class DirectoryCreator(FSLikeObjWrapper):
