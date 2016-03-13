@@ -7,6 +7,8 @@ from ..texture import TextureImage
 from .interfacehardcoded import (is_ingame_hud_background,
                                  TOP_STRIP_PATTERN_CORNERS,
                                  TOP_STRIP_PATTERN_SEARCH_AREA_CORNERS,
+                                 MID_STRIP_PATTERN_CORNERS,
+                                 MID_STRIP_PATTERN_SEARCH_AREA_CORNERS,
                                  KNOWN_SUBTEX_CORNER_COORDS)
 
 from .visgrep import visgrep
@@ -28,6 +30,10 @@ class InterfaceCutter(object):
             yield self.cut_strip(pil_image,
                                  TOP_STRIP_PATTERN_CORNERS,
                                  TOP_STRIP_PATTERN_SEARCH_AREA_CORNERS)
+
+            yield self.cut_strip(pil_image,
+                                 MID_STRIP_PATTERN_CORNERS,
+                                 MID_STRIP_PATTERN_SEARCH_AREA_CORNERS)
 
             for coords in KNOWN_SUBTEX_CORNER_COORDS:
                 yield TextureImage(pil_image.crop(coords))
