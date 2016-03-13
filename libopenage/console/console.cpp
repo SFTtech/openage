@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 #include "console.h"
 
@@ -64,14 +64,15 @@ void Console::register_to_engine(Engine *engine) {
 	// TODO bind any needed input to InputContext
 
 	// Bind the console toggle key globally
+	auto &action = engine->get().get_action_manager();
 	auto &input = engine->get_input_manager();
 	auto &global = input.get_global_context();
-	global.bind(input::actions::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
+	global.bind(action.get("TOGGLE_CONSOLE"), [this, &input](const input::action_arg_t &) {
 		this->set_visible(!this->visible);
 	});
 
 	// toggle console will take highest priority
-	this->input_context.bind(input::actions::TOGGLE_CONSOLE, [this, &input](const input::action_arg_t &) {
+	this->input_context.bind(action.get("TOGGLE_CONSOLE"), [this, &input](const input::action_arg_t &) {
 		this->set_visible(false);
 	});
 	this->input_context.bind(input::event_class::UTF8, [this](const input::action_arg_t &arg) {

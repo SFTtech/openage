@@ -70,9 +70,6 @@ public:
 	void render() override;
 	std::string name() const override;
 
-	bool on_mouse_wheel(int direction, coord::window point);
-	bool on_single_click(int button, coord::window point);
-
 private:
 
 	/**
@@ -83,6 +80,7 @@ private:
 	 */
 	Command get_action(const coord::phys3 &pos) const;
 
+	InputContext building_context;
 
 	/**
 	 * places hovering building
@@ -117,11 +115,10 @@ public:
 	void render() override;
 	std::string name() const override;
 
-	bool on_mouse_wheel(int direction, coord::window point);
-	bool on_single_click(int button, coord::window point);
-
 private:
 
+	void paint_terrain_at(const coord::window &point);
+	void paint_entity_at(const coord::window &point, const bool del);
 	// currently selected terrain id
 	openage::terrain_t editor_current_terrain;
 	unsigned int editor_current_type;

@@ -18,6 +18,7 @@
 #include "handlers.h"
 #include "options.h"
 #include "job/job_manager.h"
+// pxd: from libopenage.input.input_manager cimport InputManager
 #include "input/input_manager.h"
 #include "util/externalprofiler.h"
 #include "util/dir.h"
@@ -56,6 +57,14 @@ struct coord_data {
  * main engine container.
  *
  * central foundation for everything the openage engine is capable of.
+ *
+ * pxd:
+ *
+ * cppclass Engine:
+ *
+ *     InputManager get_input_manager() except +
+ *     @staticmethod
+ *     Engine &get() except +
  */
 class Engine : public ResizeHandler, public options::OptionNode {
 	friend class GameMain;
@@ -215,6 +224,11 @@ public:
 	ScreenshotManager &get_screenshot_manager();
 
 	/**
+	* return this engine's action manager.
+	*/
+	input::ActionManager &get_action_manager();
+
+	/**
 	* return this engine's keybind manager.
 	*/
 	input::InputManager &get_input_manager();
@@ -342,6 +356,10 @@ private:
 	 */
 	job::JobManager *job_manager;
 
+	/**
+	 * the engine's action manager.
+	 */
+	input::ActionManager action_manager;
 
 	/**
 	 * the engine's keybind manager.

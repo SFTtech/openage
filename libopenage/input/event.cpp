@@ -153,13 +153,13 @@ Event utf8(const std::string &text) {
 	return Event(event_class::UTF8, text, modset_t());
 }
 
-Event sdl_mouse(int button) {
-	return Event(event_class::MOUSE_BUTTON, button, modset_t());
+Event sdl_mouse(int button, SDL_Keymod mod) {
+	return Event(event_class::MOUSE_BUTTON, button, sdl_mod(mod));
 }
 
 
-Event sdl_wheel(int direction) {
-	return Event(event_class::MOUSE_WHEEL, direction, modset_t());
+Event sdl_wheel(int direction, SDL_Keymod mod) {
+	return Event(event_class::MOUSE_WHEEL, direction, sdl_mod(mod));
 }
 
 

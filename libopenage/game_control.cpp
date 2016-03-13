@@ -11,8 +11,9 @@ CreateMode::CreateMode()
 	selected{0},
 	setting_value{false} {
 
+	auto &action = Engine::get().get_action_manager();
 	// action bindings
-	this->bind(input::actions::START_GAME, [this](const input::action_arg_t &) {
+	this->bind(action.get("START_GAME"), [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
 		options::OptionNode *node = engine.get_child("Generator");
 		if (!node) {
@@ -69,12 +70,12 @@ CreateMode::CreateMode()
 		}
 
 	});
-	this->bind(input::actions::UP_ARROW, [this](const input::action_arg_t &) {
+	this->bind(action.get("UP_ARROW"), [this](const input::action_arg_t &) {
 		if (!this->setting_value) {
 			this->selected -= 1;
 		}
 	});
-	this->bind(input::actions::DOWN_ARROW, [this](const input::action_arg_t &) {
+	this->bind(action.get("DOWN_ARROW"), [this](const input::action_arg_t &) {
 		if (!this->setting_value) {
 			this->selected += 1;
 		}
@@ -154,7 +155,8 @@ ActionMode::ActionMode()
 	type_focus{nullptr},
 	rng{0} {
 
-	this->bind(input::actions::TRAIN_OBJECT, [this](const input::action_arg_t &) {
+	auto &action = Engine::get().get_action_manager();
+	this->bind(action.get("TRAIN_OBJECT"), [this](const input::action_arg_t &) {
 
 		// attempt to train editor selected object
 		Engine &engine = Engine::get();
@@ -165,25 +167,25 @@ ActionMode::ActionMode()
 		Command cmd(*player, type);
 		this->selection.all_invoke(cmd);
 	});
-	this->bind(input::actions::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
+	this->bind(action.get("ENABLE_BUILDING_PLACEMENT"), [this](const input::action_arg_t &) {
 		// this->building_placement = true;
 	});
-	this->bind(input::actions::DISABLE_SET_ABILITY, [this](const input::action_arg_t &) {
+	this->bind(action.get("DISABLE_SET_ABILITY"), [this](const input::action_arg_t &) {
 		this->use_set_ability = false;
 	});
-	this->bind(input::actions::SET_ABILITY_MOVE, [this](const input::action_arg_t &) {
+	this->bind(action.get("SET_ABILITY_MOVE"), [this](const input::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::move;
 	});
-	this->bind(input::actions::SET_ABILITY_GATHER, [this](const input::action_arg_t &) {
+	this->bind(action.get("SET_ABILITY_GATHER"), [this](const input::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::gather;
 	});
-	this->bind(input::actions::SET_ABILITY_GARRISON, [this](const input::action_arg_t &) {
+	this->bind(action.get("SET_ABILITY_GARRISON"), [this](const input::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::garrison;
 	});
-	this->bind(input::actions::SPAWN_VILLAGER, [this](const input::action_arg_t &) {
+	this->bind(action.get("SPAWN_VILLAGER"), [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
 		auto player = engine.player_focus();
 		if (player->type_count() > 0) {
@@ -193,31 +195,77 @@ ActionMode::ActionMode()
 			engine.get_game()->placed_units.new_unit(type, *player, this->mousepos_phys3);
 		}
 	});
-	this->bind(input::actions::KILL_UNIT, [this](const input::action_arg_t &) {
+	this->bind(action.get("KILL_UNIT"), [this](const input::action_arg_t &) {
 		selection.kill_unit();
 	});
 
 	// Villager build commands
 	// TODO place this into separate building menus instead of global hotkeys
-	auto bind_building_key = [this](input::action_t action, int building, int military_building) {
-		this->bind(action, [this, building, military_building](const input::action_arg_t &) {
+	auto bind_building_key = [this](input::action_t action, int building) {
+		this->bind(action, [this, building](const input::action_arg_t &) {
 			if (this->selection.contains_builders()) {
 				Engine &engine = Engine::get();
 				auto player = engine.player_focus();
-				if (engine.get_input_manager().is_mod_down(input::modifier::CTRL)) {
-					this->type_focus = player->get_type(military_building);
-				} else {
-					this->type_focus = player->get_type(building);
+				this->type_focus = player->get_type(building);
+				if (&engine.get_input_manager().get_top_context() != &this->building_context) {
+					engine.get_input_manager().register_context(&this->building_context);
 				}
 			}
 		});
 	};
-	bind_building_key(input::actions::BUILDING_1, 70, 12); // House, barracks
-	bind_building_key(input::actions::BUILDING_2, 68, 87); // Mill, archery range
-	bind_building_key(input::actions::BUILDING_3, 584, 101); // Mining camp, stable
-	bind_building_key(input::actions::BUILDING_4, 562, 49); // Lumber camp, siege workshop
-	bind_building_key(input::actions::BUILDING_TOWN_CENTER, 109, 109); // Town center
+	bind_building_key(action.get("BUILDING_1"), 70); // House
+	bind_building_key(action.get("BUILDING_2"), 68); // Mill
+	bind_building_key(action.get("BUILDING_3"), 584); // Mining camp
+	bind_building_key(action.get("BUILDING_4"), 562); // Lumber camp
+	bind_building_key(action.get("BUILDING_5"), 12); // barracks
+	bind_building_key(action.get("BUILDING_6"), 87); // archery range
+	bind_building_key(action.get("BUILDING_7"), 101); // stable
+	bind_building_key(action.get("BUILDING_8"), 49); // siege workshop
+	bind_building_key(action.get("BUILDING_TOWN_CENTER"), 109); // Town center
 
+	auto bind_build = [this](input::action_t action, const bool increase) {
+		this->building_context.bind(action, [this, increase](const input::action_arg_t &arg) {
+			auto mousepos_camgame = arg.mouse.to_camgame();
+			this->mousepos_phys3 = mousepos_camgame.to_phys3();
+			this->mousepos_tile = this->mousepos_phys3.to_tile3().to_tile();
+
+			this->place_selection(this->mousepos_phys3);
+			if (!increase) {
+				this->type_focus = nullptr;
+				Engine::get().get_input_manager().remove_context(&this->building_context);
+			}
+		});
+	};
+
+	bind_build(action.get("BUILD"), false);
+	bind_build(action.get("KEEP_BUILDING"), true);
+
+	auto bind_select = [this](input::action_t action, const bool increase) {
+		this->bind(action, [this, increase](const input::action_arg_t &arg) {
+			auto mousepos_camgame = arg.mouse.to_camgame();
+			Engine &engine = Engine::get();
+			Terrain *terrain = engine.get_game()->terrain.get();
+			this->selection.drag_update(mousepos_camgame);
+			this->selection.drag_release(terrain, increase);
+		});
+	};
+
+	bind_select(action.get("SELECT"), false);
+	bind_select(action.get("INCREASE_SELECTION"), true);
+
+	this->bind(action.get("ORDER_SELECT"), [this](const input::action_arg_t &arg) {
+		if (this->type_focus) {
+			// right click can cancel building placement
+			this->type_focus = nullptr;
+			Engine::get().get_input_manager().remove_context(&this->building_context);
+		}
+		auto mousepos_camgame = arg.mouse.to_camgame();
+		auto mousepos_phys3 = mousepos_camgame.to_phys3();
+
+		auto cmd = this->get_action(mousepos_phys3);
+		this->selection.all_invoke(cmd);
+		this->use_set_ability = false;
+	});
 
 	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
 		Engine &engine = Engine::get();
@@ -228,35 +276,12 @@ ActionMode::ActionMode()
 
 		// drag selection box
 		if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_MOTION, 0) &&
-			engine.get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 1)) {
+			engine.get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 1) && !this->type_focus) {
 			this->selection.drag_update(mousepos_camgame);
-			return true;
-		}
-		else if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_BUTTON, 1)) {
-			if (this->type_focus) {
-				this->place_selection(this->mousepos_phys3);
-
-				// shift click can place many buildings
-				if (!engine.get_input_manager().is_mod_down(input::modifier::SHIFT)) {
-					this->type_focus = nullptr;
-					return false;
-				}
-			}
-			else {
-				log::log(MSG(dbg) << "select");
-				Terrain *terrain = engine.get_game()->terrain.get();
-				this->selection.drag_update(mousepos_camgame);
-				this->selection.drag_release(terrain, engine.get_input_manager().is_mod_down(input::modifier::SHIFT));
-			}
-			return true;
-		}
-		else if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_BUTTON, 3)) {
-			this->on_single_click(0, arg.mouse);
 			return true;
 		}
 		return false;
 	});
-
 }
 
 bool ActionMode::available() const {
@@ -351,32 +376,10 @@ void ActionMode::render() {
 	this->selection.on_drawhud();
 }
 
-bool ActionMode::on_mouse_wheel(int, coord::window) {
-	return false;
-}
-
 std::string ActionMode::name() const {
 	return "Action Mode";
 }
 
-
-bool ActionMode::on_single_click(int, coord::window point) {
-	if (this->type_focus) {
-
-		// right click can cancel building placement
-		this->type_focus = nullptr;
-		return false;
-	}
-
-	auto mousepos_camgame = point.to_camgame();
-	auto mousepos_phys3 = mousepos_camgame.to_phys3();
-
-	auto cmd = this->get_action(mousepos_phys3);
-	this->selection.all_invoke(cmd);
-	this->use_set_ability = false;
-
-	return false;
-}
 
 EditorMode::EditorMode()
 	:
@@ -387,8 +390,9 @@ EditorMode::EditorMode()
 	selected_owner{nullptr},
 	paint_terrain{true} {
 
+	auto &action = Engine::get().get_action_manager();
 	// bind required hotkeys
-	this->bind(input::actions::ENABLE_BUILDING_PLACEMENT, [this](const input::action_arg_t &) {
+	this->bind(action.get("ENABLE_BUILDING_PLACEMENT"), [this](const input::action_arg_t &) {
 		log::log(MSG(dbg) << "change category");
 		Engine &engine = Engine::get();
 		Player *player = engine.player_focus();
@@ -421,24 +425,45 @@ EditorMode::EditorMode()
 		}
 	});
 
-	this->bind(input::actions::FORWARD, [this](const input::action_arg_t &arg) {
-		this->on_mouse_wheel(1, arg.mouse);
-	});
+	auto bind_change_terrain = [this](const input::action_t action, const int direction) {
+		this->bind(action, [this, direction](const input::action_arg_t) {
+			Engine &engine = Engine::get();
+			Player *player = engine.player_focus();
+			GameSpec *spec = engine.get_game()->get_spec();
 
-	this->bind(input::actions::BACK, [this](const input::action_arg_t &arg) {
-		this->on_mouse_wheel(-1, arg.mouse);
-	});
+			// modify selected item
+			if (this->paint_terrain) {
+				editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + direction, spec->get_terrain_meta()->terrain_id_count);
+			} else if (player->type_count() > 0) {
+				std::vector<index_t> inds = player->civ->get_category(this->category);
+				if (!inds.empty()) {
+					this->editor_current_type = util::mod<ssize_t>(editor_current_type + direction, inds.size());
+					this->selected_type = player->get_type(inds[this->editor_current_type]);
+					this->selected_owner = player;
+				}
+			}
+		});
+	};
+
+	bind_change_terrain(action.get("FORWARD"), 1);
+	bind_change_terrain(action.get("BACK"), -1);
 
 	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
 		Engine &engine = Engine::get();
 		if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_BUTTON, 1) ||
 			engine.get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 1)) {
-			this->on_single_click(0, arg.mouse);
+			if (this->paint_terrain) {
+				this->paint_terrain_at(arg.mouse);
+			} else {
+				this->paint_entity_at(arg.mouse, false);
+			}
 			return true;
 		}
 		else if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_BUTTON, 3) ||
 			engine.get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 3)) {
-			this->on_single_click(1, arg.mouse);
+				if (!this->paint_terrain) {
+					this->paint_entity_at(arg.mouse, true);
+				}
 			return true;
 		}
 		return false;
@@ -492,27 +517,7 @@ std::string EditorMode::name() const {
 	return "Editor mode";
 }
 
-
-bool EditorMode::on_mouse_wheel(int direction, coord::window) {
-	Engine &engine = Engine::get();
-	Player *player = engine.player_focus();
-	GameSpec *spec = engine.get_game()->get_spec();
-
-	// modify selected item
-	if (this->paint_terrain) {
-		editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + direction, spec->get_terrain_meta()->terrain_id_count);
-	} else if (player->type_count() > 0) {
-		std::vector<index_t> inds = player->civ->get_category(this->category);
-		if (!inds.empty()) {
-			this->editor_current_type = util::mod<ssize_t>(editor_current_type + direction, inds.size());
-			this->selected_type = player->get_type(inds[this->editor_current_type]);
-			this->selected_owner = player;
-		}
-	}
-	return true;
-}
-
-bool EditorMode::on_single_click(int del, coord::window point) {
+void EditorMode::paint_terrain_at(const coord::window &point) {
 	Engine &engine = Engine::get();
 	Terrain *terrain = engine.get_game()->terrain.get();
 
@@ -520,52 +525,33 @@ bool EditorMode::on_single_click(int del, coord::window point) {
 	auto mousepos_phys3 = mousepos_camgame.to_phys3();
 	auto mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
-	log::log(MSG(dbg) <<
-	    "LMB [window]:   "
-	    " x " << std::setw(9) << point.x <<
-	    " y " << std::setw(9) << point.y);
+	TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
+	chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
+}
 
-	constexpr auto phys_per_tile = openage::coord::settings::phys_per_tile;
+void EditorMode::paint_entity_at(const coord::window &point, const bool del) {
+	Engine &engine = Engine::get();
+	Terrain *terrain = engine.get_game()->terrain.get();
 
-	log::log(MSG(dbg) <<
-	    "LMB [phys3]:    "
-	    " NE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.ne} <<
-	    " SE " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.se} <<
-	    " UP " << util::FixedPoint<phys_per_tile, 3, 8>{mousepos_phys3.up});
-
-	log::log(MSG(dbg) <<
-	    "LMB [tile]:     "
-	    " NE " << std::setw(8) << mousepos_tile.ne <<
-	    " SE " << std::setw(8) << mousepos_tile.se);
-
+	auto mousepos_camgame = point.to_camgame();
+	auto mousepos_phys3 = mousepos_camgame.to_phys3();
+	auto mousepos_tile = mousepos_phys3.to_tile3().to_tile();
 
 	TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
-	if (this->paint_terrain) {
-		chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
-	}
-	else {
-
-		// delete any existing unit on the tile
-		if (!chunk->get_data(mousepos_tile)->obj.empty()) {
-			if (del) {
-
-				// delete first object currently standing at the clicked position
-				TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
-				log::log(MSG(dbg) << "delete unit with unit id " << obj->unit.id);
-				obj->unit.delete_unit();
-			}
-
-		} else if (!del && selected_type) {
-
-			// tile is empty so try creating a unit
-			log::log(MSG(dbg) << "create unit with producer id " << this->selected_type->id());
-			UnitContainer *container = &engine.get_game()->placed_units;
-			container->new_unit(*this->selected_type, *this->selected_owner, mousepos_phys3);
+	// TODO : better detection of presence of unit
+	if (!chunk->get_data(mousepos_tile)->obj.empty()) {
+		if (del) {
+			// delete first object currently standing at the clicked position
+			TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
+			obj->remove();
 		}
-
+	} else if (!del && this->selected_type) {
+		// tile is empty so try creating a unit
+		UnitContainer *container = &engine.get_game()->placed_units;
+		container->new_unit(*this->selected_type, *this->selected_owner, mousepos_phys3);
 	}
-	return false;
 }
+
 
 GameControl::GameControl(openage::Engine *engine)
 	:
@@ -584,8 +570,9 @@ GameControl::GameControl(openage::Engine *engine)
 	this->active_mode = modes.front().get();
 	engine->get_input_manager().register_context(this->active_mode);
 
+	auto &action = engine->get_action_manager();
 	auto &global_input_context = engine->get_input_manager().get_global_context();
-	global_input_context.bind(input::actions::TOGGLE_CONSTRUCT_MODE, [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_CONSTRUCT_MODE"), [this](const input::action_arg_t &) {
 		this->toggle_mode();
 	});
 
