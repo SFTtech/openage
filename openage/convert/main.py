@@ -16,12 +16,18 @@ from ..util.fslike.wrapper import (
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.strings import format_progress
 
+_STANDARD_PATH_IN_32BIT_WINEPREFIX =\
+    "drive_c/Program Files/Microsoft Games/Age of Empires II/"
+_STANDARD_PATH_IN_64BIT_WINEPREFIX =\
+    "drive_c/Program Files (x86)/Microsoft Games/Age of Empires II/"
+
 
 class DirectoryCreator(FSLikeObjWrapper):
     """
     Wrapper around a filesystem-like object that automatically creates
     directories when attempting to create a file.
     """
+
     def open_w(self, parts):
         self.mkdirs(parts[:-1])
         return super().open_w(parts)
@@ -148,6 +154,12 @@ def convert_assets(assets, args, srcdir=None):
     return True
 
 
+def _expand_relative_path(path):
+    """Expand relative path to an absolute one, including abbreviations like
+    ~ and environment variables"""
+    return os.path.realpath(os.path.expandvars(os.path.expanduser(path)))
+
+
 def acquire_conversion_source_dir():
     """
     Acquires source dir for the asset conversion.
@@ -159,23 +171,43 @@ def acquire_conversion_source_dir():
 
     if 'AGE2DIR' in os.environ:
         sourcedir = os.environ['AGE2DIR']
-        print("using AGE2DIR: " + sourcedir)
+        print("found environment variable AGE2DIR")
     else:
-        # TODO use some sort of GTK GUI for this.
-        print("please provide your AoE II installation dir:")
+        # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
+        proposals = [proposal for proposal in _get_source_dir_proposals()
+                     if os.path.exists(_expand_relative_path(proposal))]
+        print("Select an Age of Kings installation directory. "
+              "Insert the index of one of the proposals, or any path:")
+        for index, proposal in enumerate(proposals):
+            print("({}) {}".format(index, proposal))
 
         try:
-            sourcedir = input("> ")
+            user_selection = input("> ")
+            if user_selection.isdecimal():
+                sourcedir = proposals[int(user_selection)]
+            else:
+                sourcedir = user_selection
         except KeyboardInterrupt:
-            print("")
+            print("Interrupted, aborting")
             exit(0)
         except EOFError:
-            print("")
+            print("EOF, aborting")
             exit(0)
 
-    sourcedir = os.path.expandvars(os.path.expanduser(sourcedir))
+    sourcedir = _expand_relative_path(sourcedir)
+    print("converting from " + sourcedir)
 
     return CaseIgnoringDirectory(sourcedir).root
+
+
+def _get_source_dir_proposals():
+    """Yield a list of directory names where an installation might be found"""
+    if "WINEPREFIX" in os.environ:
+        yield "$WINEPREFIX/" + _STANDARD_PATH_IN_32BIT_WINEPREFIX
+        yield "$WINEPREFIX/" + _STANDARD_PATH_IN_64BIT_WINEPREFIX
+    yield "~/.wine/" + _STANDARD_PATH_IN_32BIT_WINEPREFIX
+    yield "~/.wine/" + _STANDARD_PATH_IN_64BIT_WINEPREFIX
+    # TODO: wine reg query "HKLM\Software\Microsoft\Microsoft Games\Age of Empires\2.0"
 
 
 def conversion_required(asset_dir, args):
