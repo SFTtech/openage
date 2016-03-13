@@ -181,11 +181,16 @@ Item {
 				fillMode: Image.Tile
 			}
 
-			Item {
-				id: midRect
-
+			Rectangle {
 				Layout.fillHeight: true
 				Layout.fillWidth: true
+
+				color: "#41110d"
+
+				Paper {
+					anchors.fill: parent
+					tornBottom: false
+				}
 			}
 		}
 
