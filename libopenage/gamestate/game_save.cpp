@@ -12,21 +12,32 @@
 #include "game_main.h"
 #include "game_save.h"
 #include "game_spec.h"
+#include "picojson.h"
 
 namespace openage {
 namespace gameio {
 
-void save_unit(std::ofstream &file, Unit *unit) {
-	file << unit->unit_type->id() << std::endl;
-	file << unit->get_attribute<attr_type::owner>().player.player_number << std::endl;
-	coord::tile pos = unit->location->pos.start;
-	file << pos.ne << " " << pos.se << std::endl;
+picojson::value save_unit(Unit *unit) {
+	picojson::object unitj;
+	unitj["type"]   =  picojson::value((double) unit->unit_type->id() );
+	unitj["player"] =  picojson::value((double) unit->get_attribute<attr_type::owner>().player.player_number );
 
+	//position
+	coord::tile pos = unit->location->pos.start;
+	unitj["position-se"] =  picojson::value((double) pos.ne );
+	unitj["position-ne"] =  picojson::value((double) pos.se );
+
+	//unit properties
+	picojson::object properties;
 	bool has_building_attr = unit->has_attribute(attr_type::building);
-	file << has_building_attr << std::endl;
 	if (has_building_attr) {
-		file << unit->get_attribute<attr_type::building>().completed << std::endl;
+	  unitj["isbuilding"] = picojson::value(true);
+	  properties["iscompleted"] = picojson::value(unit->get_attribute<attr_type::building>().completed);
+	} else {
+	  unitj["isbuilding"] = picojson::value(false);
 	}
+	unitj["properties"] = picojson::value(properties);
+	return picojson::value(unitj);
 }
 
 void load_unit(std::ifstream &file, openage::GameMain *game) {
@@ -52,11 +63,12 @@ void load_unit(std::ifstream &file, openage::GameMain *game) {
 	}
 }
 
-void save_tile_content(std::ofstream &file, openage::TileContent *content) {
-	file << content->terrain_id << std::endl;
-	file << content->obj.size() << std::endl;
+picojson::value save_tile_content( openage::TileContent *content) {
+	picojson::object tile;
+	tile["terrain-id"] = picojson::value((double) content->terrain_id);
+	tile["size"]       = picojson::value((double) content->obj.size());
+	return picojson::value(tile);
 }
-
 TileContent load_tile_content(std::ifstream &file) {
 	openage::TileContent content;
 	file >> content.terrain_id;
@@ -67,35 +79,54 @@ TileContent load_tile_content(std::ifstream &file) {
 }
 
 void save(openage::GameMain *game, std::string fname) {
-	std::ofstream file(fname, std::ofstream::out);
 	log::log(MSG(dbg) << "saving " + fname);
 
-	// metadata
-	file << save_label << std::endl;
-	file << save_version << std::endl;
-	file << config::version << std::endl;
+	picojson::object savegame;
+	//metadata
+	savegame["save_label"] = picojson::value(save_label);
+	savegame["version"]    = picojson::value(save_version);
+	savegame["build"]      = picojson::value(config::version);
 
+	// saving terrain
+	picojson::object terrain;
 	// how many chunks
 	std::vector<coord::chunk> used = game->terrain->used_chunks();
-	file << used.size() << std::endl;
+	terrain["chunks-size"] = picojson::value( (double) used.size());
+	picojson::array chunks;
 
-	// save each chunk
+	// loop through chunks
 	for (coord::chunk &position : used) {
-		file << position.ne << " " << position.se << std::endl;
-		openage::TerrainChunk *chunk = game->terrain->get_chunk(position);
+	  openage::TerrainChunk *chunk = game->terrain->get_chunk(position);
+	  picojson::object chunkj;
 
-		file << chunk->tile_count << std::endl;
-		for (size_t p = 0; p < chunk->tile_count; ++p) {
-			save_tile_content( file, chunk->get_data(p) );
-		}
+	  //chunk metadata
+	  chunkj["position-se"] = picojson::value((double) position.se);
+	  chunkj["position-ne"] = picojson::value((double) position.ne);
+	  chunkj["tile-count"] = picojson::value((double) chunk->tile_count);
+
+	  // saving tiles
+	  picojson::array tiles;
+	  for (size_t p = 0; p < chunk->tile_count; ++p) {
+	    tiles.push_back( save_tile_content( chunk->get_data(p) ));
+	  }
+	  chunkj["tiles"] = picojson::value(tiles);
+
+	  chunks.push_back(picojson::value(chunkj));
 	}
+	terrain["chunks"] = picojson::value(chunks);
+	savegame["terrain"] = picojson::value(terrain);
 
 	// save units
 	std::vector<openage::Unit *> units = game->placed_units.all_units();
-	file << units.size() << std::endl;
+	picojson::array unitsj;
 	for (Unit *u : units) {
-		save_unit(file, u);
+		unitsj.push_back(save_unit(u));
 	}
+	savegame["units"] = picojson::value(unitsj);
+
+	// save to file
+	std::ofstream file(fname, std::ofstream::out);
+	file << picojson::value(savegame).serialize() << "\n";
 }
 
 void load(openage::GameMain *game, std::string fname) {
