@@ -161,7 +161,7 @@ Generator::Generator(Engine *engine)
 		// create an empty game
 		this->regions.clear();
 		engine.start_game(*this);
-		gameio::load(engine.get_game(), filename);
+		gameio::load(engine.get_game(), filename, &engine);
 		return options::OptionValue("Game loaded");
 	});
 	this->add_action(load_action);

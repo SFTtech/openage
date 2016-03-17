@@ -3,6 +3,7 @@
 #pragma once
 
 #include <string>
+#include "../engine.h"
 
 namespace openage {
 
@@ -22,6 +23,6 @@ void save(openage::GameMain *, std::string fname);
 /**
  * a game load function that sometimes works
  */
-void load(openage::GameMain *, std::string fname);
+void load(openage::GameMain *, std::string fname, Engine *);
 
 }} // openage::gameio

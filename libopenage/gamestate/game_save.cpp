@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 
+#include "../engine.h"
 #include "../log/log.h"
 #include "../unit/producer.h"
 #include "../unit/unit.h"
@@ -14,6 +15,7 @@
 #include "game_save.h"
 #include "game_spec.h"
 #include "picojson.h"
+#include "triggers.h"
 
 namespace openage {
 namespace gameio {
@@ -149,7 +151,7 @@ void save(openage::GameMain *game, std::string fname) {
 	file << picojson::value(savegame).serialize() << "\n";
 }
 
-void load(openage::GameMain *game, std::string fname) {
+void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	std::ifstream file(fname, std::ifstream::in);
 	if (!file.good()) {
 		log::log(MSG(dbg) << "could not find " + fname);
@@ -212,6 +214,19 @@ void load(openage::GameMain *game, std::string fname) {
 	for (picojson::array::iterator iter = units.begin(); iter != units.end(); ++iter) {
 		load_unit( (*iter).get<picojson::object>(), game );
 	}
+
+	// triggers
+	Triggers* triggers = new Triggers ();
+	engine->register_tick_action(triggers);
+
+	Condition c;
+	Action a;
+	Trigger t;
+	t.actions.push_back(a);
+	t.conditions.push_back(c);
+	t.gate = Trigger::Trigger::Gate::OR;
+
+	triggers->addTrigger(t);
 
 }
 
