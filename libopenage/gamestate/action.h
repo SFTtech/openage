@@ -9,7 +9,7 @@ namespace openage {
 		public:
 			Action();
 			~Action();
-			virtual void execute();
+			virtual void execute() = 0;
 			openage::GameMain* game;
 	};
 

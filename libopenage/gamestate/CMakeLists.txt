@@ -12,3 +12,5 @@ add_sources(libopenage
 )
 
 add_subdirectory(actions)
+
+add_subdirectory(conditions)

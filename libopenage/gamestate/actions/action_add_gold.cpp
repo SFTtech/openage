@@ -3,8 +3,9 @@
 
 namespace openage {
 
-	ActionAddGold::ActionAddGold() {
-
+	ActionAddGold::ActionAddGold(float amount,uint16_t player) {
+		this->amount = amount;
+		this->player = player;
 	}
 
 	ActionAddGold::~ActionAddGold() {
@@ -13,10 +14,10 @@ namespace openage {
 
 	// default action
 	void ActionAddGold::execute() {
-
-		if(1.0 > 0) {
-			this->game->get_player(1)->receive(game_resource::gold,0.77);
-			return;
+		if(this->amount > 0) {
+			this->game->get_player(this->player)->receive(game_resource::gold,this->amount);
+		} else {
+			this->game->get_player(this->player)->deduct(game_resource::gold,this->amount);
 		}
 	}
 

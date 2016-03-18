@@ -12,13 +12,4 @@ namespace openage {
 	Action::~Action() {
 
 	}
-
-	// default action
-
-	void Action::execute() {
-	  std::cout << "action" << std::flush;
-		log::log(MSG(dbg) << "implement me!! action::execute");
-	}
-
-
 }

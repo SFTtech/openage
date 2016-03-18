@@ -13,7 +13,7 @@ namespace openage {
 	void Trigger::update(uint32_t gametime, uint32_t update) {
 		if(this->check(gametime,update)) {
 			for(auto action : this->actions) {
-				action.execute();
+				action->execute();
 			}
 		}
 	}
@@ -22,7 +22,7 @@ namespace openage {
 		// and gate => everything must be true
 		if( this->gate == Gate::AND ) {
 			for(auto condition : this->conditions) {
-				if( condition.check(gametime,update) == false) {
+				if( condition->check(gametime,update) == false) {
 					return false;
 				}
 			}
@@ -31,7 +31,7 @@ namespace openage {
 		// or gate, one must be true
 		if( this->gate == Gate::OR ) {
 			for(auto condition : this->conditions) {
-				if( condition.check(gametime,update) == true) {
+				if( condition->check(gametime,update) == true) {
 					return true;
 				}
 			}
@@ -41,7 +41,7 @@ namespace openage {
 		uint8_t trues = 0;
 		if( this->gate == Gate::XOR ) {
 			for(auto condition : this->conditions) {
-				if( condition.check(gametime,update) == true) {
+				if( condition->check(gametime,update) == true) {
 					trues++;
 					if( trues > 1) {
 						return false;
