@@ -19,9 +19,10 @@ namespace openage {
 
 			void update(uint32_t gametime,uint32_t update);
 
-			bool isActivated;
-			bool isDeleted;
-			Gate gate;
+			uint32_t id      = 0;
+			bool isActivated = true;
+			bool isDeleted   = false;
+			Gate gate        = Gate::OR;
 			std::vector<Condition> conditions;
 			std::vector<Action>    actions;
 		private:

@@ -10,3 +10,5 @@ add_sources(libopenage
 	trigger.cpp
 	triggers.cpp
 )
+
+add_subdirectory(actions)

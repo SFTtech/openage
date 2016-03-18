@@ -16,6 +16,7 @@
 #include "game_spec.h"
 #include "picojson.h"
 #include "triggers.h"
+#include "actions/action_add_gold.h"
 
 namespace openage {
 namespace gameio {
@@ -219,12 +220,15 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	Triggers* triggers = new Triggers ();
 	engine->register_tick_action(triggers);
 
+	//game->get_player(1)->receive(game_resource::gold,1500);
 	Condition c;
-	Action a;
+	ActionAddGold a;
 	Trigger t;
 	t.actions.push_back(a);
 	t.conditions.push_back(c);
 	t.gate = Trigger::Trigger::Gate::OR;
+	t.isActivated = true;
+	t.isDeleted   = false;
 
 	triggers->addTrigger(t);
 

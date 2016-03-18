@@ -1,13 +1,16 @@
 #ifndef ACTION_H
 #define ACTION_H
 
+#include "game_main.h"
+
 namespace openage {
 
 	class Action {
 		public:
 			Action();
 			~Action();
-			void execute();
+			virtual void execute();
+			openage::GameMain* game;
 	};
 
 }

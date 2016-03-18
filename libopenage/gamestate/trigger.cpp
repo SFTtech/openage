@@ -13,6 +13,7 @@ namespace openage {
 	void Trigger::update(uint32_t gametime, uint32_t update) {
 		if(this->check(gametime,update)) {
 			for(auto action : this->actions) {
+				action.execute();
 			}
 		}
 	}
