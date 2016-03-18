@@ -1,5 +1,4 @@
-#ifndef TRIGGERS_H
-#define TRIGGERS_H
+#pragma once
 
 #include <cstdint>
 #include <vector>
@@ -26,4 +25,3 @@ namespace openage {
 		std::vector<Trigger> triggers;
 	};
 }
-#endif // TRIGGERS_H

@@ -1,11 +1,16 @@
-#ifndef TRIGGER_H
-#define TRIGGER_H
+#pragma once
 
 #include <vector>
 #include <cstdint>
 
 #include "condition.h"
+#include "conditions/condition_every_tick.h"
+#include "conditions/condition_timer_loop.h"
 #include "action.h"
+#include "actions/action_add_gold.h"
+#include "actions/action_add_wood.h"
+#include "actions/action_add_food.h"
+#include "actions/action_add_stone.h"
 
 namespace openage {
 
@@ -29,4 +34,3 @@ namespace openage {
 			bool check(uint32_t gametime,uint32_t update);
 	};
 }
-#endif // TRIGGER_H

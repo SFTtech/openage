@@ -1,5 +1,4 @@
-#ifndef ACTION_H
-#define ACTION_H
+#pragma once
 
 #include "game_main.h"
 
@@ -14,5 +13,3 @@ namespace openage {
 	};
 
 }
-
-#endif // ACTION_H

@@ -5,15 +5,10 @@
 namespace openage {
 
 	Condition::Condition() {
-
+		this->game = Engine::get().get_game();
 	}
 
 	Condition::~Condition() {
 
 	}
-
-	bool Condition::check(uint32_t gametime,uint32_t update) {
-		return true;
-	}
-
 }

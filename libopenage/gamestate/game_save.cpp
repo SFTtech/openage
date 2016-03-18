@@ -16,10 +16,6 @@
 #include "game_spec.h"
 #include "picojson.h"
 #include "triggers.h"
-#include "actions/action_add_gold.h"
-#include "actions/action_add_wood.h"
-#include "actions/action_add_food.h"
-#include "actions/action_add_stone.h"
 
 namespace openage {
 namespace gameio {
@@ -223,7 +219,7 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	Triggers* triggers = new Triggers ();
 	engine->register_tick_action(triggers);
 
-	Condition *c = new Condition();
+	Condition *c = new ConditionTimerLoop(100);
 	ActionAddGold  *a0 = new ActionAddGold (1.0,1);
 	ActionAddWood  *a1 = new ActionAddWood (2.0,1);
 	ActionAddStone *a2 = new ActionAddStone(4.0,1);
