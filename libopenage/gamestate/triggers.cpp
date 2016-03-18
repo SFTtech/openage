@@ -37,4 +37,8 @@ namespace openage {
 		this->triggers.push_back(trigger);
 	}
 
+	void Triggers::reset() {
+		this->triggers.clear();
+	}
+
 }

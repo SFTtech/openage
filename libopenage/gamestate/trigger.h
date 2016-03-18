@@ -5,6 +5,8 @@
 
 #include "condition.h"
 #include "conditions/condition_every_tick.h"
+#include "conditions/condition_max_ressources.h"
+#include "conditions/condition_min_ressources.h"
 #include "conditions/condition_timer_loop.h"
 #include "action.h"
 #include "actions/action_add_gold.h"

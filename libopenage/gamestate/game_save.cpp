@@ -219,7 +219,8 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	Triggers* triggers = new Triggers ();
 	engine->register_tick_action(triggers);
 
-	Condition *c = new ConditionTimerLoop(100);
+	Condition *c0 = new ConditionMinRessources(1,game_resource::wood,5);
+	Condition *c1 = new ConditionMaxRessources(1,game_resource::wood,500);
 	ActionAddGold  *a0 = new ActionAddGold (1.0,1);
 	ActionAddWood  *a1 = new ActionAddWood (2.0,1);
 	ActionAddStone *a2 = new ActionAddStone(4.0,1);
@@ -229,8 +230,9 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	t.actions.push_back(a1);
 	t.actions.push_back(a2);
 	t.actions.push_back(a3);
-	t.conditions.push_back(c);
-	t.gate = Trigger::Trigger::Gate::OR;
+	t.conditions.push_back(c0);
+	t.conditions.push_back(c1);
+	t.gate = Trigger::Trigger::Gate::AND;
 	t.isActivated = true;
 	t.isDeleted   = false;
 

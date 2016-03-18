@@ -15,6 +15,7 @@ namespace openage {
 	~Triggers();
 
 	void addTrigger(Trigger trigger);
+	void reset();
 	bool on_tick();
 
 	private:

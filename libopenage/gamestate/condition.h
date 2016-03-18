@@ -9,7 +9,7 @@ namespace openage {
 	class Condition {
 		public:
 			Condition();
-			~Condition();
+			virtual ~Condition() {};
 			virtual bool check(uint32_t gametime,uint32_t update) = 0;
 			openage::GameMain* game;
 	};

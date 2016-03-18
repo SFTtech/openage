@@ -7,7 +7,13 @@ namespace openage {
 	}
 
 	Trigger::~Trigger() {
-
+		// remover all actions and conditions, since they are references
+		for(auto action : this->actions) {
+			//delete(action);
+		}
+		for(auto condition : this->conditions) {
+			//delete(condition);
+		}
 	}
 
 	void Trigger::update(uint32_t gametime, uint32_t update) {
