@@ -4,8 +4,4 @@
 #include "game_main.h"
 
 namespace openage {
-
-	Action::Action() {
-		this->game = Engine::get().get_game();
-	}
 }

@@ -14,7 +14,7 @@ namespace openage {
 	Triggers();
 	~Triggers();
 
-	void addTrigger(Trigger trigger);
+	void addTrigger(Trigger *trigger);
 	void reset();
 	bool on_tick();
 
@@ -23,6 +23,6 @@ namespace openage {
 		// offset for gamestart and pauses
 		uint32_t offset;
 		// trigger container
-		std::vector<Trigger> triggers;
+		std::vector<Trigger*> triggers;
 	};
 }

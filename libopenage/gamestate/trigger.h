@@ -9,10 +9,7 @@
 #include "conditions/condition_min_ressources.h"
 #include "conditions/condition_timer_loop.h"
 #include "action.h"
-#include "actions/action_add_gold.h"
-#include "actions/action_add_wood.h"
-#include "actions/action_add_food.h"
-#include "actions/action_add_stone.h"
+#include "actions/action_add_resource.h"
 
 namespace openage {
 

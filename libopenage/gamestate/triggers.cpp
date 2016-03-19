@@ -26,14 +26,14 @@ namespace openage {
 
 		// run through all registered triggers
 		for(auto trigger : this->triggers) {
-			if(trigger.isActivated and !trigger.isDeleted) {
-				trigger.update(gametime,frametime);
+			if(trigger->isActivated and !trigger->isDeleted) {
+				trigger->update(gametime,frametime);
 			}
 		}
 		return true;
 	}
 
-	void Triggers::addTrigger(Trigger trigger)  {
+	void Triggers::addTrigger(Trigger *trigger)  {
 		this->triggers.push_back(trigger);
 	}
 

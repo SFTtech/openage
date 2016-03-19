@@ -92,6 +92,91 @@ TileContent load_tile_content(picojson::object tile) {
 	return content;
 }
 
+Action* load_action_add_resource(picojson::value actionjson, game_resource resource) {
+	float    amount = actionjson.get("amount").get<double>();
+	uint16_t player = actionjson.get("player").get<double>();
+	return new ActionAddResource(amount,player,resource);
+}
+
+Condition* load_condition_max_ressources(picojson::value conditionjson) {
+	uint32_t player = conditionjson.get("player").get<double>();
+	float value     = conditionjson.get("value") .get<double>();
+	std::string res = conditionjson.get("resource").to_str();
+	game_resource resource = game_resource::food;
+	if( res.compare("gold") == 0) {
+		resource = game_resource::gold;
+	} else if( res.compare("wood") == 0) {
+		resource = game_resource::wood;
+	} else if( res.compare("stone") == 0) {
+		resource = game_resource::stone;
+	}
+	return new ConditionMaxRessources(player, resource, value);
+}
+
+Condition* load_condition_min_ressources(picojson::value conditionjson) {
+	uint32_t player = conditionjson.get("player").get<double>();
+	float value     = conditionjson.get("value") .get<double>();
+	std::string res = conditionjson.get("resource").to_str();
+	game_resource resource = game_resource::food;
+	if( res.compare("gold") == 0) {
+		resource = game_resource::gold;
+	} else if( res.compare("wood") == 0) {
+		resource = game_resource::wood;
+	} else if( res.compare("stone") == 0) {
+		resource = game_resource::stone;
+	}
+	return new ConditionMinRessources(player, resource, value);
+}
+
+Trigger* load_trigger(picojson::object trigger, openage::GameMain *game) {
+	log::log(MSG(dbg) << "loading trigger");
+	Trigger *t = new Trigger();
+	t->id = picojson::value(trigger).get("id").get<double>();
+	t->isActivated = (bool) picojson::value(trigger).get("active").get<bool>();
+
+	// gate
+	std::string gate = picojson::value(trigger).get("gate").to_str();
+	t->gate = Trigger::Gate::OR;
+
+	if( gate.compare("and") == 0 ) {
+		t->gate = Trigger::Gate::AND;
+	} else if ( gate.compare("xor") == 0) {
+		t->gate = Trigger::Gate::XOR;
+	}
+
+	// load actions
+	picojson::array actions = picojson::value(trigger).get("actions").get<picojson::array>();
+	Action* a;
+	for (picojson::array::iterator iter = actions.begin(); iter != actions.end(); ++iter) {
+		auto action = picojson::value((*iter).get<picojson::object>());
+		if( action.get("type").to_str().compare("add-gold") == 0) {
+			a = load_action_add_resource(action,game_resource::gold);
+		} else if( action.get("type").to_str().compare("add-stone") == 0) {
+			a = load_action_add_resource(action,game_resource::stone);
+		} else if( action.get("type").to_str().compare("add-wood") == 0) {
+			a = load_action_add_resource(action,game_resource::wood);
+		} else if( action.get("type").to_str().compare("add-food") == 0) {
+			a = load_action_add_resource(action,game_resource::food);
+		}
+		t->actions.push_back(a);
+	}
+
+	// load conditions
+	picojson::array conditions = picojson::value(trigger).get("conditions").get<picojson::array>();
+	Condition* c;
+	for (picojson::array::iterator iter = conditions.begin(); iter != conditions.end(); ++iter) {
+		auto condition = picojson::value((*iter).get<picojson::object>());
+		std::string type = condition.get("type").to_str();
+		if( type.compare("min-ressources") == 0) {
+			c = load_condition_min_ressources(condition);
+		} else if( type.compare("max-ressources") == 0) {
+			c = load_condition_max_ressources(condition);
+		}
+		t->conditions.push_back(c);
+	}
+	return t;
+}
+
 void save(openage::GameMain *game, std::string fname) {
 	log::log(MSG(dbg) << "saving " + fname);
 
@@ -216,9 +301,17 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	}
 
 	// triggers
+
 	Triggers* triggers = new Triggers ();
 	engine->register_tick_action(triggers);
+	if(!picojson::value(savegame).get("triggers").is<picojson::null>()) {
+		picojson::array triggersj = picojson::value(savegame).get("triggers").get<picojson::array>();
+		for (picojson::array::iterator iter = triggersj.begin(); iter != triggersj.end(); ++iter) {
+			triggers->addTrigger( load_trigger( (*iter).get<picojson::object>(), game) );
+		}
+	}
 
+	/*
 	Condition *c0 = new ConditionMinRessources(1,game_resource::wood,5);
 	Condition *c1 = new ConditionMaxRessources(1,game_resource::wood,500);
 	ActionAddGold  *a0 = new ActionAddGold (1.0,1);
@@ -237,6 +330,7 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	t.isDeleted   = false;
 
 	triggers->addTrigger(t);
+	*/
 
 }
 
