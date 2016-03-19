@@ -223,10 +223,10 @@ def _get_source_dir_proposals():
             for suffix in _REGISTRY_SUFFIX_AOK, _REGISTRY_SUFFIX_TC:
                 reg_key = _REGISTRY_KEY + suffix
                 if reg_key in reg_parser:
-                    if 'InstallationDirectory' in reg_parser[reg_key]:
-                        yield reg_parser[reg_key]['InstallationDirectory']
-                    if 'EXE Path' in reg_parser[reg_key]:
-                        yield reg_parser[reg_key]['EXE Path']
+                    if '"InstallationDirectory"' in reg_parser[reg_key]:
+                        yield reg_parser[reg_key]['"InstallationDirectory"']
+                    if '"EXE Path"' in reg_parser[reg_key]:
+                        yield reg_parser[reg_key]['"EXE Path"']
             os.remove(tmp_reg_file)
     except OSError as e:
         dbg("wine registry extraction failed: " + str(e))
