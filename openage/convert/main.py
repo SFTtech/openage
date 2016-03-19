@@ -219,7 +219,15 @@ def _get_source_dir_proposals():
         tmp_reg_file = 'aoe_temp.reg'
         if not subprocess.call(['wine', 'regedit', '/E', tmp_reg_file,
                         _REGISTRY_KEY]) and os.path.exists(tmp_reg_file):
-            reg_parser = ConfigParser(tmp_reg_file)
+            # strip the REGEDIT4 header, so it becomes a valid INI
+            lines = open(tmp_reg_file, 'r').readlines()
+            tmp_reg_file_fix = open(tmp_reg_file, 'w')
+            for line in lines[2:]:
+                tmp_reg_file_fix.write(line)
+            tmp_reg_file_fix.close()
+
+            reg_parser = ConfigParser()
+            reg_parser.read(tmp_reg_file)
             for suffix in _REGISTRY_SUFFIX_AOK, _REGISTRY_SUFFIX_TC:
                 reg_key = _REGISTRY_KEY + suffix
                 if reg_key in reg_parser:
