@@ -98,6 +98,11 @@ Action* load_action_add_resource(picojson::value actionjson, game_resource resou
 	return new ActionAddResource(amount,player,resource);
 }
 
+Condition* load_condition_timer_loop(picojson::value conditionjson) {
+	uint16_t ms = conditionjson.get("value").get<double>();
+	return new ConditionTimerLoop(ms);
+}
+
 Condition* load_condition_max_ressources(picojson::value conditionjson) {
 	uint32_t player = conditionjson.get("player").get<double>();
 	float value     = conditionjson.get("value") .get<double>();
@@ -171,6 +176,8 @@ Trigger* load_trigger(picojson::object trigger, openage::GameMain *game) {
 			c = load_condition_min_ressources(condition);
 		} else if( type.compare("max-ressources") == 0) {
 			c = load_condition_max_ressources(condition);
+		} else if( type.compare("timer-loop") == 0) {
+			c = load_condition_timer_loop(condition);
 		}
 		t->conditions.push_back(c);
 	}
