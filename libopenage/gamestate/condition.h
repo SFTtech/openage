@@ -16,4 +16,3 @@ namespace openage {
 			openage::GameMain* game;
 	};
 }
-
