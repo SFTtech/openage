@@ -14,6 +14,8 @@ namespace openage {
 	Triggers();
 	~Triggers();
 
+	static Triggers *getInstance();
+
 	void addTrigger(Trigger *trigger);
 	void reset();
 	bool on_tick();
@@ -24,5 +26,7 @@ namespace openage {
 		uint32_t offset;
 		// trigger container
 		std::vector<Trigger*> triggers;
+		// Singleton
+		static Triggers *instance;
 	};
 }

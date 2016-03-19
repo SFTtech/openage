@@ -40,5 +40,13 @@ namespace openage {
 	void Triggers::reset() {
 		this->triggers.clear();
 	}
-
+	// engine singleton instance allocation
+	Triggers *Triggers::instance = nullptr;
+	Triggers *Triggers::getInstance()  {
+		if (Triggers::instance == nullptr) {
+			// reset the pointer to the new engine
+			Triggers::instance = new Triggers();
+		}
+		return Triggers::instance;
+	 }
 }

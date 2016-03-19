@@ -176,9 +176,9 @@ Trigger* load_trigger(picojson::object trigger, openage::GameMain *game) {
 	for (picojson::array::iterator iter = conditions.begin(); iter != conditions.end(); ++iter) {
 		auto condition = picojson::value((*iter).get<picojson::object>());
 		std::string type = condition.get("type").to_str();
-		if( type.compare("min-ressources") == 0) {
+		if( type.compare("min-resources") == 0) {
 			c = load_condition_min_ressources(condition);
-		} else if( type.compare("max-ressources") == 0) {
+		} else if( type.compare("max-resources") == 0) {
 			c = load_condition_max_ressources(condition);
 		} else if( type.compare("timer-loop") == 0) {
 			c = load_condition_timer_loop(condition);
@@ -315,7 +315,8 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 
 	// triggers
 
-	Triggers* triggers = new Triggers ();
+	Triggers* triggers = Triggers::getInstance();
+	triggers->reset();
 	engine->register_tick_action(triggers);
 	if(!picojson::value(savegame).get("triggers").is<picojson::null>()) {
 		picojson::array triggersj = picojson::value(savegame).get("triggers").get<picojson::array>();
@@ -323,27 +324,6 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 			triggers->addTrigger( load_trigger( (*iter).get<picojson::object>(), game) );
 		}
 	}
-
-	/*
-	Condition *c0 = new ConditionMinRessources(1,game_resource::wood,5);
-	Condition *c1 = new ConditionMaxRessources(1,game_resource::wood,500);
-	ActionAddGold  *a0 = new ActionAddGold (1.0,1);
-	ActionAddWood  *a1 = new ActionAddWood (2.0,1);
-	ActionAddStone *a2 = new ActionAddStone(4.0,1);
-	ActionAddFood  *a3 = new ActionAddFood (5.0,1);
-	Trigger t;
-	t.actions.push_back(a0);
-	t.actions.push_back(a1);
-	t.actions.push_back(a2);
-	t.actions.push_back(a3);
-	t.conditions.push_back(c0);
-	t.conditions.push_back(c1);
-	t.gate = Trigger::Trigger::Gate::AND;
-	t.isActivated = true;
-	t.isDeleted   = false;
-
-	triggers->addTrigger(t);
-	*/
 
 }
 
