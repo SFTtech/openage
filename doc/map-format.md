@@ -45,11 +45,11 @@ actions: add 5 gold
         "gold"         : 100,
         "stone"        : 100,
         "civilisation" : "celts",
-        "max-units     : 200,
+        "max-units"    : 200,
          # technologies: dark-age,castle-age,wheel borrow.., but also special tech: spanish trade +33%
-        "technologies  : [list-of-available-technologies]    # start and end age can be regulated here
-        "researched    : [list-of-researched-technolgies]    # forbid some technoligies
-        "units         : [list-of-available-units]
+        "technologies" : [list-of-available-technologies]    # start and end age can be regulated here
+        "researched"   : [list-of-researched-technolgies]    # forbid some technoligies
+        "units"        : [list-of-available-units]
     }
  ],
  "triggers":[
