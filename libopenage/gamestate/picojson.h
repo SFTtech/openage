@@ -1,3 +1,5 @@
+// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+
 /*
  * Copyright 2009-2010 Cybozu Labs, Inc.
  * Copyright 2011-2014 Kazuho Oku
