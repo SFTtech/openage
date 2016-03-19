@@ -5,6 +5,7 @@ import os
 # importing readline enables the raw_input calls to have history etc.
 import readline  # pylint: disable=unused-import
 import subprocess
+from subprocess import Popen, PIPE
 from configparser import ConfigParser
 
 from .game_versions import GameVersion, get_game_versions
@@ -206,6 +207,19 @@ def acquire_conversion_source_dir():
 
     return CaseIgnoringDirectory(sourcedir).root
 
+def _wine_to_real_path(path):
+    """
+    Turn a Wine file path (C:\\xyz) into a local filesystem path (~/.wine/xyz)
+    """
+    winepath = Popen(('winepath', path), stdout=PIPE)
+    (real_path, err) = winepath.communicate()
+    if winepath.returncode != 0:
+        raise Exception('Could not convert Wine path into real path')
+    return real_path.strip().decode()
+
+def unescape_winreg(value):
+    """Remove quotes and escapes from a Wine registry value"""
+    return value.strip('"').replace(r'\\\\', '\\')
 
 def _get_source_dir_proposals():
     """Yield a list of directory names where an installation might be found"""
@@ -232,9 +246,11 @@ def _get_source_dir_proposals():
                 reg_key = _REGISTRY_KEY + suffix
                 if reg_key in reg_parser:
                     if '"InstallationDirectory"' in reg_parser[reg_key]:
-                        yield reg_parser[reg_key]['"InstallationDirectory"']
+                        yield _wine_to_real_path(unescape_winreg(
+                            reg_parser[reg_key]['"InstallationDirectory"']))
                     if '"EXE Path"' in reg_parser[reg_key]:
-                        yield reg_parser[reg_key]['"EXE Path"']
+                        yield _wine_to_real_path(unescape_winreg(
+                            reg_parser[reg_key]['"EXE Path"']))
             os.remove(tmp_reg_file)
     except OSError as e:
         dbg("wine registry extraction failed: " + str(e))
