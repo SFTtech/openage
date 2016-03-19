@@ -217,7 +217,7 @@ def _get_source_dir_proposals():
     try:
         # get wine registry key of the age installation
         tmp_reg_file = 'aoe_temp.reg'
-        if subprocess.call(['wine', 'regedit', '/E', tmp_reg_file,
+        if not subprocess.call(['wine', 'regedit', '/E', tmp_reg_file,
                         _REGISTRY_KEY]) and os.path.exists(tmp_reg_file):
             reg_parser = ConfigParser(tmp_reg_file)
             for suffix in _REGISTRY_SUFFIX_AOK, _REGISTRY_SUFFIX_TC:
