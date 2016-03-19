@@ -26,6 +26,14 @@ rms-map -> rms-generator -> map-scenario(this format) -> game-engine
 - mappers can do what they want: tower defense, regicide, ..
 - rms can have triggers
 
+**Example savefile**
+
+The doc/default_save.oas is an example savefile with a trigger:
+
+conditions: wood >=10,wood <= 100, time-loop 1s
+
+actions: add 5 gold
+
 **Specification**
 
 ```javascript
