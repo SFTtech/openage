@@ -4,6 +4,8 @@
 import os
 # importing readline enables the raw_input calls to have history etc.
 import readline  # pylint: disable=unused-import
+import subprocess
+from configparser import ConfigParser
 
 from .game_versions import GameVersion, get_game_versions
 from . import changelog
@@ -20,6 +22,10 @@ _STANDARD_PATH_IN_32BIT_WINEPREFIX =\
     "drive_c/Program Files/Microsoft Games/Age of Empires II/"
 _STANDARD_PATH_IN_64BIT_WINEPREFIX =\
     "drive_c/Program Files (x86)/Microsoft Games/Age of Empires II/"
+_REGISTRY_KEY = \
+    "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
+_REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
+_REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
 
 
 class DirectoryCreator(FSLikeObjWrapper):
@@ -174,10 +180,11 @@ def acquire_conversion_source_dir():
         print("found environment variable AGE2DIR")
     else:
         # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
-        proposals = [proposal for proposal in _get_source_dir_proposals()
-                     if os.path.exists(_expand_relative_path(proposal))]
+        proposals = set(proposal for proposal in _get_source_dir_proposals()
+                        if os.path.exists(_expand_relative_path(proposal)))
         print("Select an Age of Kings installation directory. "
               "Insert the index of one of the proposals, or any path:")
+        proposals = sorted(proposals)
         for index, proposal in enumerate(proposals):
             print("({}) {}".format(index, proposal))
 
@@ -207,7 +214,22 @@ def _get_source_dir_proposals():
         yield "$WINEPREFIX/" + _STANDARD_PATH_IN_64BIT_WINEPREFIX
     yield "~/.wine/" + _STANDARD_PATH_IN_32BIT_WINEPREFIX
     yield "~/.wine/" + _STANDARD_PATH_IN_64BIT_WINEPREFIX
-    # TODO: wine reg query "HKLM\Software\Microsoft\Microsoft Games\Age of Empires\2.0"
+    try:
+        # get wine registry key of the age installation
+        tmp_reg_file = 'aoe_temp.reg'
+        if subprocess.call(['wine', 'regedit', '/E', tmp_reg_file,
+                        _REGISTRY_KEY]) and os.path.exists(tmp_reg_file):
+            reg_parser = ConfigParser(tmp_reg_file)
+            for suffix in _REGISTRY_SUFFIX_AOK, _REGISTRY_SUFFIX_TC:
+                reg_key = _REGISTRY_KEY + suffix
+                if reg_key in reg_parser:
+                    if 'InstallationDirectory' in reg_parser[reg_key]:
+                        yield reg_parser[reg_key]['InstallationDirectory']
+                    if 'EXE Path' in reg_parser[reg_key]:
+                        yield reg_parser[reg_key]['EXE Path']
+            os.remove(tmp_reg_file)
+    except OSError as e:
+        dbg("wine registry extraction failed: " + str(e))
 
 
 def conversion_required(asset_dir, args):
