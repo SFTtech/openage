@@ -3,6 +3,7 @@
 #pragma once
 
 #include "../condition.h"
+#include "../picojson.h"
 
 namespace openage {
 
@@ -10,7 +11,9 @@ namespace openage {
 		public:
 			ConditionEveryTick();
 			~ConditionEveryTick();
+
 			bool check(uint32_t gametime,uint32_t update);
+			picojson::value toJson();
 
 	};
 

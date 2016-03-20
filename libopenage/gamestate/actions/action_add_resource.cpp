@@ -26,4 +26,14 @@ namespace openage {
 		}
 	}
 
+	//to Json
+	picojson::value ActionAddResource::toJson() {
+		picojson::object json;
+		json["type"]     = picojson::value( "add-"+this->getResourceString(this->resource) );
+		json["amount"]   = picojson::value( this->amount );
+		json["player"]   = picojson::value( (double) this->player );
+		json["resource"] = picojson::value( this->getResourceString(this->resource) );
+		return picojson::value( json );
+	}
+
 }

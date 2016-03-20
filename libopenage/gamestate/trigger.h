@@ -25,6 +25,11 @@ namespace openage {
 
 			void update(uint32_t gametime,uint32_t update);
 
+			/*
+			 * painful :-(, is there a better solution for enum to string?
+			 */
+			std::string getGateString();
+
 			uint32_t id      = 0;
 			bool isActivated = true;
 			bool isDeleted   = false;

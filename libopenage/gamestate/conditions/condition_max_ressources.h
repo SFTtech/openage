@@ -5,6 +5,7 @@
 #include "../condition.h"
 #include "../game_main.h"
 #include "../resource.h"
+#include "../picojson.h"
 
 namespace openage {
 
@@ -12,7 +13,9 @@ namespace openage {
 		public:
 			ConditionMaxRessources(uint32_t player,game_resource resource, float value);
 			~ConditionMaxRessources();
+
 			bool check(uint32_t gametime,uint32_t update);
+			picojson::value toJson();
 
 			uint32_t player        = 0;
 			game_resource resource = game_resource::food;

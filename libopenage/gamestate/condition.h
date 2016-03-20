@@ -5,6 +5,8 @@
 #include <cstdint>
 
 #include "../engine.h"
+#include "resource.h"
+#include "picojson.h"
 
 namespace openage {
 
@@ -22,5 +24,22 @@ namespace openage {
 			 * nearly every condition need the gamestate
 			 */
 			openage::GameMain* game;
+
+			/*
+			 * json interface
+			 */
+			virtual picojson::value toJson() = 0;
+
+			std::string getResourceString(game_resource e)
+			  {
+			    switch(e)
+			    {
+				case game_resource::food:  return "food";
+				case game_resource::wood:  return "wood";
+				case game_resource::gold:  return "gold";
+				case game_resource::stone: return "stone";
+				default: return("unkown");
+			    }
+			  }
 	};
 }

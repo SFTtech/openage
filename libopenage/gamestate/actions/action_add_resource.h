@@ -11,7 +11,9 @@ namespace openage {
 		public:
 			ActionAddResource(float amount,uint16_t player,game_resource resource);
 			~ActionAddResource();
+
 			void execute();
+			picojson::value toJson();
 
 			float    amount = 0;
 			uint16_t player = 0;

@@ -22,6 +22,8 @@ namespace openage {
 	void reset();
 	bool on_tick();
 
+	std::vector<Trigger*> getTriggers() { return triggers; };
+
 	private:
 		uint32_t gametime;
 		// offset for gamestart and pauses

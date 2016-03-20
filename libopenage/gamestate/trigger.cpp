@@ -21,6 +21,21 @@ namespace openage {
 		this->conditions.clear();
 	}
 
+	std::string Trigger::getGateString() {
+		switch(this->gate) {
+		  case Gate::OR:
+			return "or";
+			break;
+		  case Gate::AND:
+			return "and";
+			break;
+		  case Gate::XOR:
+			return "xor";
+			break;
+		}
+		return "unkown";
+	}
+
 	void Trigger::update(uint32_t gametime, uint32_t update) {
 		if(this->check(gametime,update)) {
 			for(auto action : this->actions) {

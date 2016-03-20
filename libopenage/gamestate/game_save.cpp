@@ -99,7 +99,7 @@ void load_unit(picojson::object unit, openage::GameMain *game) {
 	}
 }
 
-picojson::value save_tile_content( openage::TileContent *content) {
+picojson::value save_tile_content(openage::TileContent *content) {
 	picojson::object tile;
 	tile["terrain-id"] = picojson::value((double) content->terrain_id);
 	//TODO do we need this? see load_tile_content
@@ -158,6 +158,31 @@ Condition* load_condition_min_ressources(picojson::value conditionjson) {
 		resource = game_resource::stone;
 	}
 	return new ConditionMinRessources(player, resource, value);
+}
+
+picojson::value save_trigger(Trigger *trigger) {
+	picojson::object triggerj;
+
+	triggerj["id"]      = picojson::value( (double) trigger->id );
+	triggerj["gate"]    = picojson::value( trigger->getGateString() );
+	triggerj["active"]  = picojson::value( trigger->isActivated );
+	triggerj["deleted"] = picojson::value( trigger->isDeleted );
+
+	// save actions
+	picojson::array actions;
+	for(auto action : trigger->actions) {
+		actions.push_back( action->toJson() );
+	}
+	triggerj["actions"] =  picojson::value( actions );
+
+	// save conditions
+	picojson::array conditions;
+	for(auto condition : trigger->conditions) {
+		conditions.push_back( condition->toJson() );
+	}
+	triggerj["conditions"] =  picojson::value( conditions );
+
+	return picojson::value( triggerj );
 }
 
 Trigger* load_trigger(picojson::object trigger, openage::GameMain *game) {
@@ -267,6 +292,13 @@ void save(openage::GameMain *game, std::string fname) {
 	}
 	savegame["players"] = picojson::value(players);
 
+	// save triggers
+	picojson::array triggers;
+	for(auto trigger : Triggers::getInstance()->getTriggers()) {
+		triggers.push_back( save_trigger(trigger) );
+	}
+	savegame["triggers"] = picojson::value(triggers);
+
 	// save to file
 	std::ofstream file(fname, std::ofstream::out);
 	file << picojson::value(savegame).serialize() << "\n";
@@ -326,10 +358,11 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	}
 
 	// load player
+	/*
 	picojson::array players = picojson::value(savegame).get("players").get<picojson::array>();
 	for (picojson::array::iterator iter = players.begin(); iter != players.end(); ++iter) {
 		load_player( (*iter).get<picojson::object>(), game );
-	}
+	}*/
 
 	// load units
 	game->placed_units.reset();
