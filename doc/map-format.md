@@ -26,6 +26,19 @@ rms-map -> rms-generator -> map-scenario(this format) -> game-engine
 - mappers can do what they want: tower defense, regicide, ..
 - rms can have triggers
 
+**What is a Trigger?**
+
+A Trigger is a set of conditions and actions with a boolean function.
+If the conditions are met, the actions will be executed.
+The conditions are evaluated: 
+
+|gate | description |
+|-----|-------------|
+|or   | one of the conditions must be true  |
+|and  | all conditions must be true         |
+|xor  | exactly one conditions must be true |
+
+
 **Example savefile**
 
 The doc/default_save.oas is an example savefile with a trigger:
