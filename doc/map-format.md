@@ -50,7 +50,7 @@ rms-map -> rms-generator -> map-scenario(this format) -> game-engine
 
 A Trigger is a set of conditions and actions with a boolean function.
 If the conditions are met, the actions will be executed.
-The conditions are evaluated: 
+The conditions are evaluated:
 
 |gate | description |
 |-----|-------------|
@@ -71,8 +71,9 @@ actions: add 5 gold
 
 ```javascript
 {"version" : "v0.2"
- "players"  : [ {
-        "id"           : 1,
+ "players"  : [
+    {
+        "player-id"    : 1,
         "food"         : 1000,
         "wood"         : 1000,
         "gold"         : 100,

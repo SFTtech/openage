@@ -21,12 +21,35 @@ namespace openage {
 namespace gameio {
 
 picojson::value save_player(int player_number,openage::GameMain *game) {
+
 	picojson::object player;
+
 	player["civilisation"] = picojson::value(game->get_player(player_number)->civ->civ_name );
 	player["player-id"]    = picojson::value( (double) player_number );
 	player["color"]        = picojson::value( (double) game->get_player(player_number)->color );
 
+	player["gold"]         = picojson::value( (double) game->get_player(player_number)->amount(game_resource::gold) );
+	player["stone"]        = picojson::value( (double) game->get_player(player_number)->amount(game_resource::stone) );
+	player["wood"]         = picojson::value( (double) game->get_player(player_number)->amount(game_resource::wood) );
+	player["food"]         = picojson::value( (double) game->get_player(player_number)->amount(game_resource::food) );
+
 	return picojson::value(player);
+}
+
+void load_player(picojson::object playerj,openage::GameMain *game) {
+	picojson::value player = picojson::value(playerj);
+
+	uint16_t id= (uint16_t) player.get("player-id").get<double>();
+
+	double gold = player.get("gold") .get<double>();
+	double stone= player.get("stone").get<double>();
+	double wood = player.get("wood") .get<double>();
+	double food = player.get("food") .get<double>();
+
+	game->get_player(id)->receive(game_resource::gold ,gold);
+	game->get_player(id)->receive(game_resource::stone,stone);
+	game->get_player(id)->receive(game_resource::wood ,wood);
+	game->get_player(id)->receive(game_resource::food ,food);
 }
 
 picojson::value save_unit(Unit *unit) {
@@ -269,9 +292,6 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	std::string err;
 	picojson::parse(savegame, json_str.begin(), json_str.end(), &err);
 
-	//loading to json
-	//picojson::object &savegame = json.get<picojson::object>();
-
 	// load metadata
 	std::string file_label = savegame.get("label").to_str();
 	if (file_label != save_label) {
@@ -285,7 +305,6 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	std::string build = savegame.get("build").to_str();
 
 	// read terrain chunks
-	//picojson::object &terrain = picojson::value(savegame).get("terrain").get<picojson::object>();
 	picojson::object &terrain = savegame.get("terrain").get<picojson::object>();
 
 	picojson::array chunks = picojson::value(terrain).get("chunks").get<picojson::array>();
@@ -306,6 +325,12 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 
 	}
 
+	// load player
+	picojson::array players = picojson::value(savegame).get("players").get<picojson::array>();
+	for (picojson::array::iterator iter = players.begin(); iter != players.end(); ++iter) {
+		load_player( (*iter).get<picojson::object>(), game );
+	}
+
 	// load units
 	game->placed_units.reset();
 	picojson::array units = picojson::value(savegame).get("units").get<picojson::array>();
@@ -314,7 +339,6 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	}
 
 	// triggers
-
 	Triggers* triggers = Triggers::getInstance();
 	triggers->reset();
 	engine->register_tick_action(triggers);
@@ -324,7 +348,6 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 			triggers->addTrigger( load_trigger( (*iter).get<picojson::object>(), game) );
 		}
 	}
-
 }
 
 }} // openage::gameio

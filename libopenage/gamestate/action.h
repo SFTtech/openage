@@ -10,6 +10,10 @@ namespace openage {
 		public:
 			Action() {};
 			virtual ~Action() {};
+
+			/*
+			 * this will be executed to change gamestate
+			 */
 			virtual void execute() = 0;
 	};
 

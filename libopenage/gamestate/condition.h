@@ -12,7 +12,15 @@ namespace openage {
 		public:
 			Condition();
 			virtual ~Condition() {};
+
+			/*
+			 * check if condition is true
+			 */
 			virtual bool check(uint32_t gametime,uint32_t update) = 0;
+
+			/*
+			 * nearly every condition need the gamestate
+			 */
 			openage::GameMain* game;
 	};
 }
