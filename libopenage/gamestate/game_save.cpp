@@ -173,6 +173,7 @@ picojson::value save_trigger(Trigger *trigger) {
 	for(auto action : trigger->actions) {
 		actions.push_back( action->toJson() );
 	}
+	// free triggers
 	triggerj["actions"] =  picojson::value( actions );
 
 	// save conditions
@@ -297,6 +298,8 @@ void save(openage::GameMain *game, std::string fname) {
 	for(auto trigger : Triggers::getInstance()->getTriggers()) {
 		triggers.push_back( save_trigger(trigger) );
 	}
+	// free triggers
+	Triggers::getInstance()->reset();
 	savegame["triggers"] = picojson::value(triggers);
 
 	// save to file
@@ -358,11 +361,10 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	}
 
 	// load player
-	/*
 	picojson::array players = picojson::value(savegame).get("players").get<picojson::array>();
 	for (picojson::array::iterator iter = players.begin(); iter != players.end(); ++iter) {
 		load_player( (*iter).get<picojson::object>(), game );
-	}*/
+	}
 
 	// load units
 	game->placed_units.reset();

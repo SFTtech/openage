@@ -5,17 +5,29 @@
         {
             "civilisation": "Gaia",
             "color": 0,
-            "player-id": 0
+            "player-id": 0,
+            "food"     : 0,
+            "wood"     : 0,
+            "gold"     : 0,
+            "stone"    : 0
         },
         {
             "civilisation": "British",
             "color": 1,
-            "player-id": 1
+            "player-id": 1,
+            "food"     : 0,
+            "wood"     : 0,
+            "gold"     : 0,
+            "stone"    : 0
         },
         {
             "civilisation": "French",
             "color": 2,
-            "player-id": 2
+            "player-id": 2,
+            "food"     : 0,
+            "wood"     : 0,
+            "gold"     : 0,
+            "stone"    : 0
         }
     ],
     "terrain": {
