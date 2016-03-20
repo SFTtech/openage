@@ -40,6 +40,9 @@ namespace openage {
 	}
 
 	void Triggers::reset() {
+		for(auto trigger : this->triggers) {
+			delete(trigger);
+		}
 		this->triggers.clear();
 	}
 	// engine singleton instance allocation
