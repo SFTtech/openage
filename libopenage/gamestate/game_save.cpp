@@ -59,8 +59,8 @@ picojson::value save_unit(Unit *unit) {
 
 	//position
 	coord::tile pos = unit->location->pos.start;
-	unitj["position-se"] =  picojson::value((double) pos.ne );
-	unitj["position-ne"] =  picojson::value((double) pos.se );
+	unitj["position-ne"] =  picojson::value((double) pos.ne );
+	unitj["position-se"] =  picojson::value((double) pos.se );
 
 	//unit properties
 	picojson::object properties;
