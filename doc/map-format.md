@@ -90,9 +90,10 @@ actions: add 5 gold
 	   "active"    : true,
 	   "gate"      : "or",
 	   "conditions":[
-	         {  "type"   : "add-gold",
+	         {  "type"   : "min-resources",
 	            "player" : 1,
-	            "amount" : 1000
+	            "value" : 10.0,
+              "resource":"wood"
 	         }
 	   ],
            "actions":[
