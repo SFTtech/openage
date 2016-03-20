@@ -186,3 +186,23 @@ actions: add 5 gold
 | object-invisble(object-id,player-id)
 | object-captured(object-id,player-id)    || example: relics, converted-units
 | defeated(player-id)                     || player-id is defeated
+
+**for devs**
+
+triggers.cpp  is singleton and contains a list of all triggers
+
+trigger.cpp   is a trigger which contains a list of conditions and actions
+
+condition.cpp is virtual, check(..) must be implemented and returns if state is true|false
+
+action.cpp    is virtual, execute() changes the gamestate
+
+howto: new action
+
+create hpp,cpp files in actions directory
+
+gamestate_save.cpp implement json load function analog to the others which are already there, save function are not implemented yet
+
+howto: new condition
+
+analog action
