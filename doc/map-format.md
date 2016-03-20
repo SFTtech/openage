@@ -1,8 +1,28 @@
 # Map Format
 
-**What is this?** This document descrcibes the file format for save files of openage.
+1.  [What is this?](#what-is-this)
+2.  [Version History](#version-history)
+3.  [Random Map Generator](#random-map-generator)
+4.  [Advantages](#advantages)
+5.  [What is a Trigger?](#what-is-a-trigger)
+6.  [Example savefile](#example-savefile)
+7.  [Specification](#specification)
+8.  [Actions implemeted](#actions-implemeted)
+9.  [Action Ideas](#action-ideas)
+10. [Conditions implemeted](#conditions-implemeted)
+11. [Condition ideas](#condition-ideas)
+12. [for devs](#for-devs)
 
-**Version**: 0.2
+## What is this?
+
+This document descrcibes the file format for save files of openage.
+
+## Version History
+
+| Version | changes |
+|---------|---------|
+| 0.2     | new format -> json <br>trigger support |
+| 0.1     | initial custom format |
 
 The game-engine should get a very simple file for map generation. Everything more complex should be done bevorehand(rms in python).
 It should only contain:
@@ -14,19 +34,19 @@ It should only contain:
 
 Since this should be read and written by machines, I choose a simple a simple exchange Format: json
 
-**Random Map Generator**
+## Random Map Generator
 
 rms are "only" a step prior in the pipeline, rms gets a seed value and generates a scenario
 
 rms-map -> rms-generator -> map-scenario(this format) -> game-engine
 
-**Advantages**
+## Advantages
 
 - new multiplayer-modes are as simple as defining the winning/loosing triggers
 - mappers can do what they want: tower defense, regicide, ..
 - rms can have triggers
 
-**What is a Trigger?**
+## What is a Trigger?
 
 A Trigger is a set of conditions and actions with a boolean function.
 If the conditions are met, the actions will be executed.
@@ -39,7 +59,7 @@ The conditions are evaluated:
 |xor  | exactly one conditions must be true |
 
 
-**Example savefile**
+## Example savefile
 
 The doc/default_save.oas is an example savefile with a trigger:
 
@@ -47,7 +67,7 @@ conditions: wood >=10,wood <= 100, time-loop 1s
 
 actions: add 5 gold
 
-**Specification**
+## Specification
 
 ```javascript
 {"version" : "v0.2"
@@ -127,7 +147,7 @@ actions: add 5 gold
 }
 ```
 
-**Actions implemeted**
+## Actions implemeted
 
 | name         |fields                                                                  | description                       |
 | -------------|------------------------------------------------------------------------| ----------------------------------|
@@ -136,7 +156,7 @@ actions: add 5 gold
 | add-wood     |type(string): add-wood <br>amount(float): 1.0<br>player(uint): 1        | adds amount of wood to player     |
 | add-food     |type(string): add-food <br>amount(float): 1.0<br>player(uint): 1        | adds amount of food to player     |
 
-**Action Ideas**
+## Action Ideas
 
 | name         |fields                                                                  | description                       |
 | -------------|------------------------------------------------------------------------| ----------------------------------|
@@ -170,7 +190,7 @@ actions: add 5 gold
 | change-owner(id,player-id)              # change object owner to player-id
 | create-trigger( {trigger} ) | | #dynamic trigger|
 
-**Conditions implemeted**
+## Conditions implemeted
 
 | name         |fields                                                                  | description                                                                           |
 | -------------|------------------------------------------------------------------------| --------------------------------------------------------------------------------------|
@@ -179,7 +199,7 @@ actions: add 5 gold
 | min-resources| type(string): min-resources <br> player(uint):1 <br> value(float):100.0 <br> resource:food,wood,stone,gold| is true, if player has at least of that resource   |
 | timer-loop   | type(string): timer-loop <br> value(uint):1000                                                            | is true, every x milliseconds since trigger creation|
 
-**Condition ideas**
+## Condition ideas
 
 | name         |fields                                                                  | description                                                                           |
 | -------------|------------------------------------------------------------------------| --------------------------------------------------------------------------------------|
@@ -200,7 +220,7 @@ actions: add 5 gold
 | object-captured(object-id,player-id)    || example: relics, converted-units
 | defeated(player-id)                     || player-id is defeated
 
-**for devs**
+## for devs
 
 triggers.cpp  is singleton and contains a list of all triggers
 
