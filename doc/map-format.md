@@ -87,23 +87,23 @@ actions: add 5 gold
     }
  ],
  "triggers":[
-	{  "id"        : 1,
-	   "active"    : true,
-	   "gate"      : "or",
-	   "conditions":[
-	         {  "type"   : "min-resources",
-	            "player" : 1,
-	            "value" : 10.0,
-              "resource":"wood"
-	         }
-	   ],
-           "actions":[
-                 {  "type"  : "add-wood",
-                    "amount": 5,
-                    "player": 1
-                  }
-            ]
-         }
+      {  "id"        : 1,
+         "active"    : true,
+         "gate"      : "or",
+         "conditions":[
+             {  "type"     : "min-resources",
+                "player"   : 1,
+                "value"    : 10.0,
+                "resource" :"wood"
+             }
+         ],
+         "actions":[
+            {  "type"   : "add-wood",
+               "amount" : 5,
+               "player" : 1
+            }
+         ]
+      }
  ],
  "terrain":{
        "chunk-size" : 16,
