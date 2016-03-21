@@ -10,8 +10,6 @@ from configparser import ConfigParser
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
-from pathlib import Path
-
 from . import changelog
 from .game_versions import GameVersion, get_game_versions
 
@@ -188,12 +186,12 @@ def acquire_conversion_source_dir():
     else:
         # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
         proposals = set(proposal for proposal in source_dir_proposals()
-                        if Path(_expand_relative_path(proposal)).is_dir())
+                        if Path(expand_relative_path(proposal)).is_dir())
         print("Select an Age of Kings installation directory. "
               "Insert the index of one of the proposals, or any path:")
 
         proposals = sorted(proposals)
-        for index, proposal in enumerate(sorted(proposals)):
+        for index, proposal in enumerate(proposals):
             print("({}) {}".format(index, proposal))
 
         try:
@@ -204,7 +202,7 @@ def acquire_conversion_source_dir():
                     sourcedir = proposals[int(user_selection)]
                 else:
                     sourcedir = user_selection
-                sourcedir = _expand_relative_path(sourcedir)
+                sourcedir = expand_relative_path(sourcedir)
                 if Path(sourcedir).is_dir():
                     break
                 else:

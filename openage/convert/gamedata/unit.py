@@ -615,7 +615,7 @@ class UnitObject(Exportable):
                 0: "NO_DOT_0",
                 1: "SQUARE_DOT",   # turns white when selected
                 2: "DIAMOND_DOT",  # dito
-                3: "DIAMOND_DOT_KEEPCOLOR", # doesn't turn white when selected
+                3: "DIAMOND_DOT_KEEPCOLOR",  # doesn't turn white when selected
                 4: "LARGEDOT",   # observable by all players, no attacked-blinking
                 5: "NO_DOT_5",
                 6: "NO_DOT_6",

@@ -278,7 +278,10 @@ def convert_mediafile(filepath, args):
 
     if filename.endswith('.slp'):
         # some user interface textures must be cut using hardcoded values
-        cutter = InterfaceCutter(filename) if filename.startswith('interface/') else None
+        if filename.startswith('interface/'):
+            cutter = InterfaceCutter(filename)
+        else:
+            cutter = None
 
         # do the CPU-intense part in a subprocess
         texture = args.slp_converter.convert(indata, cutter)

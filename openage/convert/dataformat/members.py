@@ -1,7 +1,8 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,abstract-method
 
+import types
 from enum import Enum
 
 from .content_snippet import ContentSnippet, SectionType
@@ -217,8 +218,9 @@ class DynLengthMember(DataMember):
             raise Exception("unknown length definition supplied: %s" % target)
 
     def format_hash(self, hasher):
-        if callable(self.length):
+        if isinstance(self.length, types.LambdaType):
             # update hash with the lambda code
+            # pylint: disable=no-member
             hasher.update(self.length.__code__.co_code)
         else:
             hasher.update(str(self.length).encode())
@@ -719,7 +721,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         hasher = RefMember.format_hash(self, hasher)
         hasher = DynLengthMember.format_hash(self, hasher)
 
-        for subtype_name, subtype_class in sorted(self.class_lookup.items()):
+        for _, subtype_class in sorted(self.class_lookup.items()):
             hasher = subtype_class.format_hash(hasher)
 
         return hasher
