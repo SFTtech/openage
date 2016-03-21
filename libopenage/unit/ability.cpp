@@ -15,6 +15,11 @@ bool UnitAbility::has_hitpoints(Unit &target) {
 	       target.get_attribute<attr_type::hitpoints>().current > 0;
 }
 
+bool UnitAbility::is_convertable(Unit &target) {
+	return target.has_attribute(attr_type::convertable) &&
+	       target.get_attribute<attr_type::convertable>().current > 0;
+}
+
 bool UnitAbility::has_resource(Unit &target) {
 	return target.has_attribute(attr_type::resource) &&
 	       target.get_attribute<attr_type::resource>().amount > 0;
@@ -158,6 +163,37 @@ void UngarrisonAbility::invoke(Unit &to_modify, const Command &cmd, bool play_so
 
 	// add as secondary, so primary action is not disrupted
 	to_modify.secondary_action(std::make_unique<UngarrisonAction>(&to_modify, cmd.position()));
+}
+
+ConvertAbility::ConvertAbility(const Sound *s)
+	:
+	sound{s} {
+}
+
+bool ConvertAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	if (cmd.has_unit()) {
+		Unit &target = *cmd.unit();
+		bool target_is_resource = has_resource(target);
+		return &to_modify != &target &&
+		       to_modify.location &&
+		       target.location &&
+		       target.location->is_placed() &&
+		       to_modify.has_attribute(attr_type::convertable) &&
+		       is_convertable(target) &&
+		       (is_enemy(to_modify, target) || target_is_resource) &&
+		       (cmd.has_flag(command_flag::attack_res) == target_is_resource);
+	}
+	return false;
+}
+
+void ConvertAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
+	to_modify.log(MSG(dbg) << "invoke convert action");
+	if (play_sound && this->sound) {
+		this->sound->play();
+	}
+
+	Unit *target = cmd.unit();
+	to_modify.push_action(std::make_unique<ConvertAction>(&to_modify, target->get_ref()));
 }
 
 TrainAbility::TrainAbility(const Sound *s)

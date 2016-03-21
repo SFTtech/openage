@@ -101,6 +101,7 @@ public:
  	 * some common functions
 	 */
 	bool has_hitpoints(Unit &target);
+	bool is_convertable(Unit &target);
 	bool has_resource(Unit &target);
 	bool is_same_player(Unit &to_modify, Unit &target);
 	bool is_ally(Unit &to_modify, Unit &target);
@@ -178,6 +179,25 @@ public:
 
 	ability_type type() override {
 		return ability_type::ungarrison;
+	}
+
+	bool can_invoke(Unit &to_modify, const Command &cmd) override;
+
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+
+private:
+	const Sound *sound;
+};
+
+/*
+ * ability to convert an enemy unit
+ */
+class ConvertAbility: public UnitAbility {
+public:
+	ConvertAbility(const Sound *s=nullptr);
+
+	ability_type type() override {
+		return ability_type::convert;
 	}
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;

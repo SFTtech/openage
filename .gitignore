@@ -3,6 +3,8 @@
 .#*
 *~
 .*.swp
+*.cbp
+*.layout
 
 # ELF files
 *.o

@@ -58,6 +58,7 @@ using graphic_set = std::map<graphic_type, std::shared_ptr<UnitTexture>>;
 enum class attr_type {
 	owner,
 	hitpoints,
+	convertable,
 	attack,
 	speed,
 	direction,
@@ -163,6 +164,24 @@ public:
 	int current; // can become negative
 	unsigned int max;
 	float hp_bar_height;
+};
+
+template<> class Attribute<attr_type::convertable>: public AttributeContainer {
+public:
+	Attribute(unsigned int i)
+		:
+		AttributeContainer{attr_type::convertable},
+		current{static_cast<int>(i)} {}
+
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::convertable>>(*this);
+	}
+
+	int current; // can become negative
 };
 
 template<> class Attribute<attr_type::attack>: public AttributeContainer {
