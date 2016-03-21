@@ -1,3 +1,9 @@
+openage (0.3.1-1) unstable; urgency=low
+
+  * Bumping version
+
+ -- Jonas Jelten <jj@sft.mx>  Mon, 21 Mar 2016 17:26:17 +0100
+
 openage (0.3.0-1) unstable; urgency=low
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
