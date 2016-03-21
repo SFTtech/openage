@@ -15,6 +15,8 @@
 #
 # You can manually pass an interpreter by defining PYTHON.
 
+message(">>>> Command line option passed for PYTHON: ${PYTHON}")
+
 function(py_exec STATEMENTS RESULTVAR)
 	# executes some python statement(s), and returns the result in RESULTVAR.
 	# aborts with a fatal error on error.
@@ -37,7 +39,7 @@ endfunction()
 function(py_get_config_var VAR RESULTVAR)
 	# uses py_exec to determine a config var as in distutils.sysconfig.get_config_var().
 	py_exec(
-		"from distutils.sysconfig import get_config_var; print(get_config_var('${VAR}'))"
+		"from distutils.sysconfig import get_config_var;from pathlib import Path;libdir=get_config_var('${VAR}');print(Path(get_config_var('BINDIR')) / 'libs') if libdir is None else print(libdir);"
 		RESULT
 	)
 
@@ -47,13 +49,18 @@ endfunction()
 function(py_get_lib_name RESULTVAR)
 	# uses py_exec to compute Python's C/C++ library name, just like python-config does.
 	py_get_config_var(VERSION PYTHON_VERSION)
-	if(NOT "${PYTHON_VERSION}" VERSION_LESS "3.2")
-		py_exec(
-			"import sys; print(sys.abiflags)"
-			ABIFLAGS
-		)
-	else()
+
+	if(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
 		set(ABIFLAGS, "")
+	else()
+		if(NOT "${PYTHON_VERSION}" VERSION_LESS "3.2")
+			py_exec(
+				"import sys; print(sys.abiflags, end='')"
+				ABIFLAGS
+			)
+		else()
+			set(ABIFLAGS, "")
+		endif()
 	endif()
 
 	set("${RESULTVAR}" "python${PYTHON_VERSION}${ABIFLAGS}" PARENT_SCOPE)
@@ -133,18 +140,30 @@ endforeach()
 # test all the found interpreters; break on success.
 foreach(PYTHON ${PYTHON_INTERPRETERS})
 	# TODO: sort interpreters by version
-
+	message(">>>> Checking python interpretor: ${PYTHON}")
+	
 	# ask the interpreter for the essential extension-building flags
 	py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
 	py_get_config_var(LIBDIR PYTHON_LIBRARY_DIR)
 	py_get_lib_name(PYTHON_LIBRARY_NAME)
+	
+	file(TO_CMAKE_PATH "${PYTHON_INCLUDE_DIR}" PYTHON_INCLUDE_DIR)
+	file(TO_CMAKE_PATH "${PYTHON_LIBRARY_DIR}" PYTHON_LIBRARY_DIR)
+	
+	message(">>>> PYTHON_INCLUDE_DIR : ${PYTHON_INCLUDE_DIR}")
+	message(">>>> PYTHON_LIBRARY_DIR : ${PYTHON_LIBRARY_DIR}")
+	message(">>>> PYTHON_LIBRARY_NAME: ${PYTHON_LIBRARY_NAME}")
+
+	set(PYTHON_LIBRARY "-L${PYTHON_LIBRARY_DIR} -l${PYTHON_LIBRARY_NAME}")
 
 	# there's a static_assert that tests the Python version.
 	try_compile(PYTHON_TEST_RESULT
 		"${CMAKE_BINARY_DIR}"
 		SOURCES "${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
 		LINK_LIBRARIES "${PYTHON_LIBRARY_NAME}"
-		CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}" "-DLINK_DIRECTORIES=${PYTHON_LIBRARY_DIR}"
+		CMAKE_FLAGS
+			"-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}"
+			"-DLINK_DIRECTORIES=${PYTHON_LIBRARY_DIR}"
 		OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
 	)
 

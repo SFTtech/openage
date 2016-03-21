@@ -7,6 +7,7 @@ Tests whether the files listed via add_py_module are consistent with the
 
 import argparse
 import os
+from pathlib import Path
 
 
 def main():
@@ -29,7 +30,7 @@ def main():
         dirname = os.path.abspath(dirname)
         for filename in files:
             if filename.endswith('.py'):
-                actual.add(os.path.join(dirname, filename))
+                actual.add((Path(dirname) / filename).as_posix())
 
     success = True
     for filename in sorted(actual - listed):
