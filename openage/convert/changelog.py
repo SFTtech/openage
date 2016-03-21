@@ -7,6 +7,8 @@ used to determine whether assets that were converted by an earlier version of
 openage are still up to date.
 """
 
+from .gamedata.empiresdat import EmpiresDat
+
 from ..log import warn
 from ..testing.testing import TestError
 
@@ -14,43 +16,50 @@ from ..testing.testing import TestError
 # filename where to store the versioning information
 ASSET_VERSION_FILENAME = "asset_version"
 
+# filename where to store the gamespec version hash
+GAMESPEC_VERSION_FILENAME = "gamespec_version"
+
 # available components for reconversion
 COMPONENTS = {
-    "metadata",
     "graphics",
     "sounds",
+    "metadata",
 }
 
 # each line represents changes to the assets.
 # the last line is the most recent change.
 CHANGES = (
-    {"metadata", "graphics", "sounds"},
+    {"graphics", "sounds"},
     {"sounds"},
-    {"metadata"},
+    {"graphics"},
 )
 
 # the current version number equals the number of changes
 ASSET_VERSION = len(CHANGES) - 1
 
 
-def changes(detected_version):
+def changes(asset_version, spec_version):
     """
     return all changed components since the passed version number.
     """
 
-    if detected_version >= len(CHANGES):
-        warn("asset version from the future: %d" % detected_version)
+    if asset_version >= len(CHANGES):
+        warn("asset version from the future: %d" % asset_version)
         warn("current version is: %d" % (ASSET_VERSION))
         warn("leaving assets as they are.")
         return set()
 
     changed_components = set()
 
-    first_new_version = detected_version + 1
+    first_new_version = asset_version + 1
 
     # fetch all changes since the detected version
     for version_changes in CHANGES[first_new_version:]:
         changed_components |= version_changes
+
+    if "metadata" not in changed_components:
+        if EmpiresDat.get_hash() != spec_version:
+            changed_components |= {"metadata"}
 
     return changed_components
 

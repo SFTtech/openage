@@ -12,10 +12,11 @@ from tempfile import gettempdir
 from ..log import info, dbg
 from .game_versions import GameVersion
 from .blendomatic import Blendomatic
-from .changelog import ASSET_VERSION, ASSET_VERSION_FILENAME
+from .changelog import (ASSET_VERSION, ASSET_VERSION_FILENAME,
+                        GAMESPEC_VERSION_FILENAME)
 from .colortable import ColorTable, PlayerColorTable
 from .dataformat.data_formatter import DataFormatter
-from .gamedata.empiresdat import load_gamespec
+from .gamedata.empiresdat import load_gamespec, EmpiresDat
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .slp_converter_pool import SLPConverterPool
@@ -40,7 +41,8 @@ def get_string_resources(args):
             try:
                 if lang == b'_common':
                     continue
-                langfilename = ["resources", lang.decode(), "strings", "key-value",
+                langfilename = ["resources", lang.decode(),
+                                "strings", "key-value",
                                 "key-value-strings-utf8.txt"]
 
                 with srcdir[langfilename].open('rb') as langfile:
@@ -53,14 +55,15 @@ def get_string_resources(args):
     elif GameVersion.age2_hd_3x in args.game_versions:
         from .hdlanguagefile import read_hd_language_file
 
-        # HD Edition 3.x and below store language .txt files in the Bin/ folder.
+        # HD Edition 3.x and below store language .txt files
+        # in the Bin/ folder.
         # Specific language strings are in Bin/$LANG/*.txt.
         for lang in srcdir["bin"].list():
             dirname = ["bin", lang.decode()]
 
-            # There are some .txt files immediately in bin/, but they don't seem
-            # to contain anything useful. (Everything is overridden by files in
-            # Bin/$LANG/.)
+            # There are some .txt files immediately in bin/, but they don't
+            # seem to contain anything useful. (Everything is overridden by
+            # files in Bin/$LANG/.)
             if not srcdir[dirname].is_dir():
                 continue
 
@@ -71,8 +74,11 @@ def get_string_resources(args):
 
             if srcdir["bin", lang.decode(), "language.dll"].is_file():
                 from .pefile import PEFile
-                for name in ["language.dll", "language_x1.dll", "language_x1_p1.dll"]:
-                    pefile = PEFile(srcdir["bin", lang.decode(), name].open('rb'))
+                for name in ["language.dll",
+                             "language_x1.dll",
+                             "language_x1_p1.dll"]:
+                    pefile = PEFile(
+                        srcdir["bin", lang.decode(), name].open('rb'))
                     stringres.fill_from(pefile.resources().strings)
                     count += 1
 
@@ -81,7 +87,9 @@ def get_string_resources(args):
                     langfilename = ["bin", lang.decode(), basename]
                     with srcdir[langfilename].open('rb') as langfile:
                         # No utf-8 :(
-                        stringres.fill_from(read_hd_language_file(langfile, lang, enc='iso-8859-1'))
+                        stringres.fill_from(
+                            read_hd_language_file(
+                                langfile, lang, enc='iso-8859-1'))
                     count += 1
 
     elif srcdir["language.dll"].is_file():
@@ -139,15 +147,21 @@ def convert(args):
         strings (filenames) that indicate the currently-converted object
         ints that predict the amount of objects remaining
     """
+    # data conversion
     yield from convert_metadata(args)
+    with args.targetdir[GAMESPEC_VERSION_FILENAME].open('w') as fil:
+        fil.write(EmpiresDat.get_hash())
 
+    # media conversion
     if not args.flag('no_media'):
         yield from convert_media(args)
+
+        with args.targetdir[ASSET_VERSION_FILENAME].open('w') as fil:
+            fil.write(str(ASSET_VERSION))
 
     # clean args (set by convert_metadata for convert_media)
     del args.palette
 
-    args.targetdir[ASSET_VERSION_FILENAME].open('w').write(str(ASSET_VERSION))
     info("asset conversion complete; asset version: " + str(ASSET_VERSION))
 
 

@@ -10,14 +10,14 @@ from configparser import ConfigParser
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
-from .game_versions import GameVersion, get_game_versions
+from pathlib import Path
+
 from . import changelog
+from .game_versions import GameVersion, get_game_versions
 
 from ..log import warn, info, dbg
-from ..util.fslike.wrapper import (
-    Wrapper as FSLikeObjWrapper,
-    Synchronizer as FSLikeObjSynchronizer
-)
+from ..util.fslike.wrapper import (Wrapper as FSLikeObjWrapper,
+                                   Synchronizer as FSLikeObjSynchronizer)
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.strings import format_progress
 
@@ -101,6 +101,10 @@ def convert_assets(assets, args, srcdir=None):
     This method prepares srcdir and targetdir to allow a pleasant, unified
     conversion experience, then passes them to .driver.convert().
     """
+
+    # import here so codegen.py doesn't depend on it.
+    from .driver import convert
+
     # acquire conversion source directory
     if srcdir is None:
         srcdir = acquire_conversion_source_dir()
@@ -112,6 +116,7 @@ def convert_assets(assets, args, srcdir=None):
     versions = "; ".join(str(version) for version in args.game_versions)
     if not any(version.openage_supported for version in args.game_versions):
         warn("None supported of the Game version(s) {}".format(versions))
+        warn("You need \x1b[34mAge of Empires 2: The Conquerors\x1b[m")
         return False
     info("Game version(s) detected: {}".format(versions))
 
@@ -134,7 +139,6 @@ def convert_assets(assets, args, srcdir=None):
 
     args.flag = flag
 
-    from .driver import convert
     converted_count = 0
     total_count = None
     for current_item in convert(args):
@@ -163,7 +167,7 @@ def convert_assets(assets, args, srcdir=None):
     return True
 
 
-def _expand_relative_path(path):
+def expand_relative_path(path):
     """Expand relative path to an absolute one, including abbreviations like
     ~ and environment variables"""
     return os.path.realpath(os.path.expandvars(os.path.expanduser(path)))
@@ -176,19 +180,20 @@ def acquire_conversion_source_dir():
     Returns a file system-like object that holds all the required files.
     """
     # ask for the conversion source
-    print("media conversion is required.")
+    print("\x1b[33mmedia conversion is required.\x1b[m")
 
     if 'AGE2DIR' in os.environ:
         sourcedir = os.environ['AGE2DIR']
-        print("found environment variable AGE2DIR")
+        print("found environment variable 'AGE2DIR'")
     else:
         # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
-        proposals = set(proposal for proposal in _get_source_dir_proposals()
+        proposals = set(proposal for proposal in source_dir_proposals()
                         if Path(_expand_relative_path(proposal)).is_dir())
         print("Select an Age of Kings installation directory. "
               "Insert the index of one of the proposals, or any path:")
+
         proposals = sorted(proposals)
-        for index, proposal in enumerate(proposals):
+        for index, proposal in enumerate(sorted(proposals)):
             print("({}) {}".format(index, proposal))
 
         try:
@@ -211,12 +216,12 @@ def acquire_conversion_source_dir():
             print("EOF, aborting")
             exit(0)
 
-    print("converting from " + sourcedir)
+    print("converting from '%s'" % sourcedir)
 
     return CaseIgnoringDirectory(sourcedir).root
 
 
-def _wine_to_real_path(path):
+def wine_to_real_path(path):
     """
     Turn a Wine file path (C:\\xyz) into a local filesystem path (~/.wine/xyz)
     """
@@ -228,7 +233,7 @@ def unescape_winereg(value):
     return value.strip('"').replace(r'\\\\', '\\')
 
 
-def _get_source_dir_proposals():
+def source_dir_proposals():
     """Yield a list of directory names where an installation might be found"""
     if "WINEPREFIX" in os.environ:
         yield "$WINEPREFIX/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
@@ -255,10 +260,10 @@ def _get_source_dir_proposals():
                     reg_key = REGISTRY_KEY + suffix
                     if reg_key in reg_parser:
                         if '"InstallationDirectory"' in reg_parser[reg_key]:
-                            yield _wine_to_real_path(unescape_winereg(
+                            yield wine_to_real_path(unescape_winereg(
                                 reg_parser[reg_key]['"InstallationDirectory"']))
                         if '"EXE Path"' in reg_parser[reg_key]:
-                            yield _wine_to_real_path(unescape_winereg(
+                            yield wine_to_real_path(unescape_winereg(
                                 reg_parser[reg_key]['"EXE Path"']))
     except OSError as error:
         dbg("wine registry extraction failed: " + str(error))
@@ -270,24 +275,35 @@ def conversion_required(asset_dir, args):
 
     Sets options in args according to what sorts of conversion are required.
     """
+
     try:
-        version_path = asset_dir['converted', changelog.ASSET_VERSION_FILENAME]
+        version_path = asset_dir['converted',
+                                 changelog.ASSET_VERSION_FILENAME]
+
+        spec_path = asset_dir['converted',
+                              changelog.GAMESPEC_VERSION_FILENAME]
+
         with version_path.open() as fileobj:
             asset_version = fileobj.read().strip()
+
+        with spec_path.open() as fileobj:
+            spec_version = fileobj.read().strip()
+
+        asset_version = int(asset_version)
+
     except FileNotFoundError:
         # assets have not been converted yet
         info("No converted assets have been found")
         return True
 
-    # TODO: datapack parsing
-
-    try:
-        asset_version = int(asset_version)
     except ValueError:
-        info("Converted assets have improper format; expected integer version")
+        info("Converted assets have improper format; "
+             "expected integer version")
         return True
 
-    changes = changelog.changes(asset_version)
+    # TODO: datapack parsing
+
+    changes = changelog.changes(asset_version, spec_version)
 
     if not changes:
         dbg("Converted assets are up to date")
@@ -301,6 +317,7 @@ def conversion_required(asset_dir, args):
                 # don't reconvert this component:
                 setattr(args, "no_{}".format(component), True)
 
+        # TODO
         if "metadata" in changes:
             args.no_pickle_cache = True
 
