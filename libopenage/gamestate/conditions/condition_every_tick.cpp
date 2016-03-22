@@ -7,11 +7,14 @@ namespace openage {
 	ConditionEveryTick::ConditionEveryTick() {
 	}
 
+	ConditionEveryTick::ConditionEveryTick(Json::Value) {
+	}
+
 	ConditionEveryTick::~ConditionEveryTick() {
 
 	}
 
-	bool ConditionEveryTick::check(uint32_t gametime,uint32_t update) {
+	bool ConditionEveryTick::check(uint32_t ,uint32_t) {
 		return true;
 	}
 

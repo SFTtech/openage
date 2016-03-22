@@ -183,4 +183,19 @@ void TerrainChunk::set_terrain(Terrain *parent) {
 	this->terrain = parent;
 }
 
+Json::Value TerrainChunk::toJson() {
+	 Json::Value chunk;
+
+	chunk["tile-count"]  = (double) this->tile_count;
+
+	// saving tiles
+	Json::Value tiles;
+	for (size_t p = 0; p < this->tile_count; ++p) {
+		tiles.append( this->get_data(p)->toJson() );
+	}
+
+	chunk["tiles"] = tiles;
+	return chunk;
+}
+
 } // namespace openage

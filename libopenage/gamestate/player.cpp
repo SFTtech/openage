@@ -2,7 +2,9 @@
 
 #include "../unit/unit.h"
 #include "../unit/unit_type.h"
+#include "../engine.h"
 #include "player.h"
+#include "game_main.h"
 
 namespace openage {
 
@@ -100,6 +102,21 @@ void Player::initialise_unit_types() {
 		this->available_objects.emplace_back(shared_type);
 		this->available_ids[id] = shared_type.get();
 	}
+}
+
+Json::Value Player::toJson() {
+	Json::Value player;
+
+	player["civilisation"] = this->civ->civ_name;
+	player["player-id"]    = player_number;
+	player["color"]        = this->color;
+
+	player["gold"]         = this->amount(game_resource::gold);
+	player["stone"]        = this->amount(game_resource::stone);
+	player["wood"]         = this->amount(game_resource::wood);
+	player["food"]         = this->amount(game_resource::food);
+
+	return player;
 }
 
 

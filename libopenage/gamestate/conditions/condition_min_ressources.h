@@ -11,6 +11,7 @@ namespace openage {
 	class ConditionMinRessources : public virtual Condition{
 		public:
 			ConditionMinRessources(uint32_t player,game_resource resource, float value);
+			ConditionMinRessources(Json::Value condition);
 			~ConditionMinRessources();
 
 			bool check(uint32_t gametime,uint32_t update);

@@ -79,4 +79,33 @@ namespace openage {
 		// default case
 		return false;
 	}
+
+	/*
+	 * for Savefile
+	 */
+	Json::Value Trigger::toJson() {
+		Json::Value triggerj;
+
+		triggerj["id"]      = this->id;
+		triggerj["gate"]    = this->getGateString();
+		triggerj["active"]  = this->isActivated;
+		triggerj["deleted"] = this->isDeleted;
+
+		// save actions
+		Json::Value actions;
+		for(auto action : this->actions) {
+			actions.append( action->toJson() );
+		}
+		// free triggers
+		triggerj["actions"] = actions;
+
+		// save conditions
+		Json::Value conditions;
+		for(auto condition : this->conditions) {
+			conditions.append( condition->toJson() );
+		}
+		triggerj["conditions"] = conditions;
+
+		return triggerj;
+	}
 }

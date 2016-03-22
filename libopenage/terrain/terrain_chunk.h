@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <json/json.h>
 #include <stddef.h>
 #include <vector>
 
@@ -96,6 +97,11 @@ public:
 	 */
 	TileContent *get_data_neigh(coord::tile pos);
 
+	/**
+	 * for savegame
+	 */
+	Json::Value toJson();
+
 	int neighbor_id_by_pos(coord::tile pos);
 
 	size_t tile_position(coord::tile pos);
@@ -108,6 +114,7 @@ public:
 	void set_terrain(Terrain *parent);
 
 	bool manually_created;
+
 };
 
 } // namespace openage

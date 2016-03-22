@@ -30,6 +30,11 @@ namespace openage {
 			 */
 			std::string getGateString();
 
+			/*
+			 * for savefile
+			 */
+			Json::Value toJson();
+
 			uint32_t id      = 0;
 			bool isActivated = true;
 			bool isDeleted   = false;

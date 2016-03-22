@@ -98,9 +98,10 @@ actions: add 5 gold
              }
          ],
          "actions":[
-            {  "type"   : "add-wood",
-               "amount" : 5,
-               "player" : 1
+            {  "type"    : "add-resource",
+               "resource": "wood",
+               "amount"  : 5,
+               "player"  : 1
             }
          ]
       }
@@ -151,12 +152,9 @@ actions: add 5 gold
 
 ## Actions implemeted
 
-| name         |fields                                                                  | description                       |
-| -------------|------------------------------------------------------------------------| ----------------------------------|
-| add-gold     |type(string): add-gold <br>amount(float): 1.0<br>player(uint): 1        | adds amount of gold to player     |
-| add-stone    |type(string): add-stone<br>amount(float): 1.0<br>player(uint): 1        | adds amount of stone to player    |
-| add-wood     |type(string): add-wood <br>amount(float): 1.0<br>player(uint): 1        | adds amount of wood to player     |
-| add-food     |type(string): add-food <br>amount(float): 1.0<br>player(uint): 1        | adds amount of food to player     |
+| name         |fields                                                                                         | description                       |
+| -------------|-----------------------------------------------------------------------------------------------| ----------------------------------|
+| add-resouce  |type(string): add-gold <br>amount(float): 1.0<br>player(uint): 1 <br>resource(enum):wood       | adds amount of resource to player |
 
 ## Action Ideas
 

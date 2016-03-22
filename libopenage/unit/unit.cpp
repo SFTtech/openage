@@ -306,4 +306,27 @@ void Unit::erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func, 
 	}
 }
 
+Json::Value Unit::toJson() {
+	Json::Value unitj;
+	unitj["type"]   =  (double) this->unit_type->id();
+	unitj["player"] =  (double) this->get_attribute<attr_type::owner>().player.player_number;
+
+	//position
+	coord::tile pos = this->location->pos.start;
+	unitj["position-ne"] =  (double) pos.ne;
+	unitj["position-se"] =  (double) pos.se;
+
+	//unit properties
+	Json::Value properties;
+	bool has_building_attr = this->has_attribute(attr_type::building);
+	if (has_building_attr) {
+		unitj["isbuilding"] = true;
+		properties["completion"] = this->get_attribute<attr_type::building>().completed;
+	} else {
+		unitj["isbuilding"] = false;
+	}
+	unitj["properties"] = properties;
+	return unitj;
+}
+
 } // openage

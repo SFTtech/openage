@@ -7,6 +7,7 @@ add_sources(libopenage
 	game_spec.cpp
 	generator.cpp
 	player.cpp
+	resource.cpp
 	trigger.cpp
 	triggers.cpp
 )

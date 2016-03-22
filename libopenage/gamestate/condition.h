@@ -30,16 +30,5 @@ namespace openage {
 			 */
 			virtual Json::Value toJson() = 0;
 
-			std::string getResourceString(game_resource e)
-			  {
-			    switch(e)
-			    {
-				case game_resource::food:  return "food";
-				case game_resource::wood:  return "wood";
-				case game_resource::gold:  return "gold";
-				case game_resource::stone: return "stone";
-				default: return("unkown");
-			    }
-			  }
 	};
 }

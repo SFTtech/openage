@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <json/json.h>
 #include <string>
 #include <unordered_map>
 
@@ -16,6 +17,7 @@ class Unit;
 class Player {
 public:
 	Player(Civilisation *civ, unsigned int number, std::string name);
+	Player(Json::Value);
 
 	/**
 	 * values 0 .. player count - 1
@@ -94,6 +96,11 @@ public:
 	 * initialise with the base tech level
 	 */
 	void initialise_unit_types();
+
+	/**
+	 * for savefile
+	 */
+	Json::Value toJson();
 
 private:
 

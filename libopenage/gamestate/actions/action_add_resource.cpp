@@ -14,11 +14,10 @@ namespace openage {
 	}
 
 	ActionAddResource::ActionAddResource(Json::Value action) {
-		ActionAddResource(
-			action.get("amount",0).asFloat(),
-			action.get("player",0).asUInt(),
-			Action::getResourceEnum( action.get("resource","unkown").asString() )
-		);
+		this->amount	= action.get("amount",0).asFloat();
+		this->player	= action.get("player",0).asUInt();
+		this->resource	= Resource::getResourceEnum( action.get("resource","unkown").asString() );
+		this->game      = Engine::get().get_game();
 	}
 
 	ActionAddResource::~ActionAddResource() {
@@ -37,10 +36,10 @@ namespace openage {
 	//to Json
 	Json::Value ActionAddResource::toJson() {
 		Json::Value json;
-		json["type"]     = "add-"+this->getResourceString(this->resource);
+		json["type"]     = "add-resource";
 		json["amount"]   = this->amount;
 		json["player"]   = this->player;
-		json["resource"] = this->getResourceString(this->resource);
+		json["resource"] = Resource::getResourceString(this->resource);
 		return json;
 	}
 

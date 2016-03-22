@@ -43,6 +43,31 @@ Terrain::Terrain(terrain_meta *meta, bool is_infinite)
 
 }
 
+Json::Value Terrain::toJson() {
+	Json::Value terrain;
+	Json::Value chunks;
+	for (coord::chunk &position : this->used_chunks()) {
+		Json::Value chunkj = this->get_chunk(position)->toJson();
+
+		//chunk metadata
+		chunkj["position-se"] = position.se;
+		chunkj["position-ne"] = position.ne;
+
+		chunks.append( chunkj);
+	}
+	terrain["chunks"] = chunks;
+	return terrain;
+}
+
+
+Json::Value TileContent::toJson() {
+	Json::Value tile;
+	tile["terrain-id"] = this->terrain_id;
+	//TODO do we need this? see load_tile_content
+	tile["size"]       = (double) this->obj.size();
+	return tile;
+}
+
 Terrain::~Terrain() {
 	log::log(MSG(dbg) << "Cleanup terrain");
 

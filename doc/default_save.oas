@@ -16537,7 +16537,8 @@
                 {
                     "amount": 5,
                     "player": 1,
-                    "type": "add-gold"
+                    "resource":"gold",
+                    "type": "add-resource"
                 }
             ],
             "active": true,

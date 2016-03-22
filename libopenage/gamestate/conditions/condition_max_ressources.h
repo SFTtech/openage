@@ -11,6 +11,7 @@ namespace openage {
 	class ConditionMaxRessources : public virtual Condition{
 		public:
 			ConditionMaxRessources(uint32_t player,game_resource resource, float value);
+			 ConditionMaxRessources(Json::Value condition);
 			~ConditionMaxRessources();
 
 			bool check(uint32_t gametime,uint32_t update);

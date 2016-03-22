@@ -9,6 +9,7 @@ namespace openage {
 	class ConditionTimerLoop : public virtual Condition{
 		public:
 			ConditionTimerLoop(uint32_t ms);
+			ConditionTimerLoop(Json::Value condition);
 			~ConditionTimerLoop();
 
 			bool check(uint32_t gametime,uint32_t update);

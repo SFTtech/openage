@@ -9,6 +9,7 @@ namespace openage {
 	class ConditionEveryTick : public virtual Condition{
 		public:
 			ConditionEveryTick();
+			ConditionEveryTick(Json::Value condition);
 			~ConditionEveryTick();
 
 			bool check(uint32_t gametime,uint32_t update);

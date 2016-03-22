@@ -22,22 +22,6 @@
 namespace openage {
 namespace gameio {
 
-Json::Value save_player(int player_number,openage::GameMain *game) {
-
-	Json::Value player;
-
-	player["civilisation"] = game->get_player(player_number)->civ->civ_name;
-	player["player-id"]    = player_number;
-	player["color"]        = game->get_player(player_number)->color;
-
-	player["gold"]         = (double) game->get_player(player_number)->amount(game_resource::gold);
-	player["stone"]        = (double) game->get_player(player_number)->amount(game_resource::stone);
-	player["wood"]         = (double) game->get_player(player_number)->amount(game_resource::wood);
-	player["food"]         = (double) game->get_player(player_number)->amount(game_resource::food);
-
-	return player;
-}
-
 void load_player(Json::Value player,openage::GameMain *game) {
 
 	uint16_t id= player.get("player-id",0).asInt();
@@ -51,29 +35,6 @@ void load_player(Json::Value player,openage::GameMain *game) {
 	game->get_player(id)->receive(game_resource::stone,stone);
 	game->get_player(id)->receive(game_resource::wood ,wood);
 	game->get_player(id)->receive(game_resource::food ,food);
-}
-
-Json::Value save_unit(Unit *unit) {
-	Json::Value unitj;
-	unitj["type"]   =  (double) unit->unit_type->id();
-	unitj["player"] =  (double) unit->get_attribute<attr_type::owner>().player.player_number;
-
-	//position
-	coord::tile pos = unit->location->pos.start;
-	unitj["position-ne"] =  (double) pos.ne;
-	unitj["position-se"] =  (double) pos.se;
-
-	//unit properties
-	Json::Value properties;
-	bool has_building_attr = unit->has_attribute(attr_type::building);
-	if (has_building_attr) {
-		unitj["isbuilding"] = true;
-		properties["completion"] = unit->get_attribute<attr_type::building>().completed;
-	} else {
-		unitj["isbuilding"] = false;
-	}
-	unitj["properties"] = properties;
-	return unitj;
 }
 
 void load_unit(Json::Value unit, openage::GameMain *game) {
@@ -99,13 +60,6 @@ void load_unit(Json::Value unit, openage::GameMain *game) {
 	}
 }
 
-Json::Value save_tile_content(openage::TileContent *content) {
-	Json::Value tile;
-	tile["terrain-id"] = (double) content->terrain_id;
-	//TODO do we need this? see load_tile_content
-	tile["size"]       = (double) content->obj.size();
-	return tile;
-}
 TileContent load_tile_content(Json::Value tile) {
 	openage::TileContent content;
 	content.terrain_id = tile.get("terrain-id",0).asInt();
@@ -115,78 +69,7 @@ TileContent load_tile_content(Json::Value tile) {
 	return content;
 }
 
-Action* load_action_add_resource(Json::Value actionjson, game_resource resource) {
-	float    amount = actionjson.get("amount",0).asFloat();
-	uint16_t player = actionjson.get("player",0).asUInt();
-	return new ActionAddResource(amount,player,resource);
-}
-
-Condition* load_condition_every_tick(Json::Value conditionjson) {
-	return new ConditionEveryTick();
-}
-
-Condition* load_condition_timer_loop(Json::Value conditionjson) {
-	uint16_t ms = conditionjson.get("value",0).asUInt();
-	return new ConditionTimerLoop(ms);
-}
-
-Condition* load_condition_max_ressources(Json::Value conditionjson) {
-	uint32_t player = conditionjson.get("player",0).asUInt();
-	float value     = conditionjson.get("value",0) .asFloat();
-	std::string res = conditionjson.get("resource","food").asString();
-	game_resource resource = game_resource::food;
-	if( res.compare("gold") == 0) {
-		resource = game_resource::gold;
-	} else if( res.compare("wood") == 0) {
-		resource = game_resource::wood;
-	} else if( res.compare("stone") == 0) {
-		resource = game_resource::stone;
-	}
-	return new ConditionMaxRessources(player, resource, value);
-}
-
-Condition* load_condition_min_ressources(Json::Value conditionjson) {
-	uint32_t player = conditionjson.get("player",0).asUInt();
-	float value     = conditionjson.get("value",0) .asFloat();
-	std::string res = conditionjson.get("resource","food").asString();
-	game_resource resource = game_resource::food;
-	if( res.compare("gold") == 0) {
-		resource = game_resource::gold;
-	} else if( res.compare("wood") == 0) {
-		resource = game_resource::wood;
-	} else if( res.compare("stone") == 0) {
-		resource = game_resource::stone;
-	}
-	return new ConditionMinRessources(player, resource, value);
-}
-
-Json::Value save_trigger(Trigger *trigger) {
-	Json::Value triggerj;
-
-	triggerj["id"]      = trigger->id;
-	triggerj["gate"]    = trigger->getGateString();
-	triggerj["active"]  = trigger->isActivated;
-	triggerj["deleted"] = trigger->isDeleted;
-
-	// save actions
-	Json::Value actions;
-	for(auto action : trigger->actions) {
-		actions.append( action->toJson() );
-	}
-	// free triggers
-	triggerj["actions"] = actions;
-
-	// save conditions
-	Json::Value conditions;
-	for(auto condition : trigger->conditions) {
-		conditions.append( condition->toJson() );
-	}
-	triggerj["conditions"] = conditions;
-
-	return triggerj;
-}
-
-Trigger* load_trigger(Json::Value trigger, openage::GameMain *game) {
+Trigger* load_trigger(Json::Value trigger) {
 	log::log(MSG(dbg) << "loading trigger");
 	Trigger *t = new Trigger();
 	t->id = trigger.get("id",0).asInt64();
@@ -195,7 +78,6 @@ Trigger* load_trigger(Json::Value trigger, openage::GameMain *game) {
 	// gate
 	std::string gate = trigger.get("gate","or").asString();
 	t->gate = Trigger::Gate::OR;
-
 	if( gate.compare("and") == 0 ) {
 		t->gate = Trigger::Gate::AND;
 	} else if ( gate.compare("xor") == 0) {
@@ -205,17 +87,12 @@ Trigger* load_trigger(Json::Value trigger, openage::GameMain *game) {
 	// load actions
 	Action* a;
 	for (auto action : trigger["actions"]) {
-		std::string type = action.get("type","unkown").asString();
-		if( type.compare("add-gold") == 0) {
-			a = load_action_add_resource(action,game_resource::gold);
-		} else if( type.compare("add-stone") == 0) {
-			a = load_action_add_resource(action,game_resource::stone);
-		} else if( type.compare("add-wood") == 0) {
-			a = load_action_add_resource(action,game_resource::wood);
-		} else if( type.compare("add-food") == 0) {
-			a = load_action_add_resource(action,game_resource::food);
+		std::string type = action.get("type","unknown").asString();
+		if( type.compare("add-resource") == 0) {
+			a = new ActionAddResource(action);
 		}
-		if(type.compare("unkown") != 0) {
+		if(type.compare("unknown") != 0) {
+		  std::cout << "new action";
 			t->actions.push_back(a);
 		}
 	}
@@ -223,17 +100,18 @@ Trigger* load_trigger(Json::Value trigger, openage::GameMain *game) {
 	// load conditions
 	Condition* c;
 	for (auto condition : trigger["conditions"]) {
-		std::string type = condition.get("type","unkown").asString();
+		std::string type = condition.get("type","unknown").asString();
 		if( type.compare("min-resources") == 0) {
-			c = load_condition_min_ressources(condition);
+			c = new ConditionMinRessources(condition);
 		} else if( type.compare("max-resources") == 0) {
-			c = load_condition_max_ressources(condition);
+			c = new ConditionMaxRessources(condition);
 		} else if( type.compare("timer-loop") == 0) {
-			c = load_condition_timer_loop(condition);
+			c = new ConditionTimerLoop(condition);
 		} else if( type.compare("every-tick") == 0) {
-			c = load_condition_every_tick(condition);
+			c = new ConditionEveryTick(condition);
 		}
-		if(type.compare("unkown") != 0) {
+		if(type.compare("unknown") != 0) {
+		  std::cout << "new condition";
 			t->conditions.push_back(c);
 		}
 	}
@@ -245,46 +123,19 @@ void save(openage::GameMain *game, std::string fname) {
 
 	Json::Value savegame;
 
-	//picojson::object savegame;
 	//metadata
 	savegame["label"]   = save_label;
 	savegame["version"] = save_version;
 	savegame["build"]   = config::version;
 
-	// saving terrain
-	Json::Value terrain;
-	// how many chunks
-	std::vector<coord::chunk> used = game->terrain->used_chunks();
-	terrain["chunks-size"] = (double) used.size();
-	Json::Value chunks;
 
-	// loop through chunks
-	for (coord::chunk &position : used) {
-		openage::TerrainChunk *chunk = game->terrain->get_chunk(position);
-		Json::Value chunkj;
-
-		//chunk metadata
-		chunkj["position-se"] = position.se;
-		chunkj["position-ne"] = position.ne;
-		chunkj["tile-count"]  = (double) chunk->tile_count;
-
-		// saving tiles
-		Json::Value tiles;
-		for (size_t p = 0; p < chunk->tile_count; ++p) {
-			tiles.append( save_tile_content( chunk->get_data(p) ));
-		}
-
-		chunkj["tiles"] = tiles;
-		chunks.append( chunkj);
-	}
-	terrain["chunks"]   = chunks;
-	savegame["terrain"] = terrain;
+	// save terrain
+	savegame["terrain"] = game->terrain->toJson();
 
 	// save units
-	std::vector<openage::Unit *> units = game->placed_units.all_units();
 	Json::Value unitsj;
-	for (Unit *u : units) {
-		unitsj.append(save_unit(u));
+	for (Unit *u : game->placed_units.all_units()) {
+		unitsj.append( u->toJson() );
 	}
 	savegame["units"] = unitsj;
 
@@ -292,14 +143,14 @@ void save(openage::GameMain *game, std::string fname) {
 	Json::Value players;
 	int player_count = game->player_count();
 	for(int i=0;i<player_count;i++) {
-		players.append( save_player(i,game) );
+		players.append( game->get_player(i)->toJson() );
 	}
 	savegame["players"] = players;
 
 	// save triggers
 	Json::Value triggers;
 	for(auto trigger : Triggers::getInstance()->getTriggers()) {
-		triggers.append( save_trigger(trigger) );
+		triggers.append( trigger->toJson() );
 	}
 
 	// free triggers
@@ -347,6 +198,13 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	}
 	std::string build = savegame.get("build","unkown").asString();
 
+	// load playera
+	//game->players.clear();
+	for (auto player : savegame["players"]) {
+		//game->players.push_back( Player(player) );
+		 load_player(player,game);
+	}
+
 	// read terrain chunks
 	for (auto chunkjson : savegame["terrain"]["chunks"]) {
 
@@ -359,13 +217,8 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 		size_t p = 0;
 		for (auto tile : chunkjson["tiles"]) {
 			*chunk->get_data(p) = load_tile_content( tile );
+			p++;
 		}
-
-	}
-
-	// load player
-	for (auto player : savegame["players"]) {
-		load_player( player, game );
 	}
 
 	// load units
@@ -379,7 +232,7 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	triggers->reset();
 	engine->register_tick_action(triggers);
 	for (auto trigger : savegame["triggers"]) {
-		triggers->addTrigger( load_trigger( trigger, game) );
+		triggers->addTrigger( load_trigger( trigger ) );
 	}
 }
 

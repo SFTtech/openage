@@ -3,6 +3,7 @@
 #pragma once
 
 #include <functional>
+#include <string>
 
 namespace openage {
 
@@ -14,6 +15,12 @@ enum class game_resource {
 	food,
 	gold,
 	stone
+};
+
+class Resource {
+public:
+	static std::string getResourceString(game_resource e);
+	static game_resource getResourceEnum(std::string resource);
 };
 
 } // namespace openage
