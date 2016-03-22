@@ -13,7 +13,7 @@ namespace openage {
 			~ConditionTimerLoop();
 
 			bool check(uint32_t gametime,uint32_t update);
-			picojson::value toJson();
+			Json::Value toJson();
 
 			uint32_t ms   = 0;
 		private:

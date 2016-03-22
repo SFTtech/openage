@@ -3,7 +3,7 @@
 #pragma once
 
 #include "game_main.h"
-#include "picojson.h"
+#include "jsoncpp/json/json.h"
 
 namespace openage {
 
@@ -20,7 +20,7 @@ namespace openage {
 			/*
 			 * json interface
 			 */
-			virtual picojson::value toJson() = 0;
+			virtual Json::Value toJson() = 0;
 
 			std::string getResourceString(game_resource e)
 			  {

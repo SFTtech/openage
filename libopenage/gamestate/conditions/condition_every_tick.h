@@ -13,7 +13,7 @@ namespace openage {
 			~ConditionEveryTick();
 
 			bool check(uint32_t gametime,uint32_t update);
-			picojson::value toJson();
+			Json::Value toJson();
 
 	};
 

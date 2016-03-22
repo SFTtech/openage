@@ -21,12 +21,12 @@ namespace openage {
 		return false;
 	}
 
-	picojson::value ConditionMaxRessources::toJson() {
-		picojson::object json;
-		json["type"]     = picojson::value("max-resources");
-		json["player"]   = picojson::value( (double) this->player );
-		json["value"]    = picojson::value( this->value );
-		json["resource"] = picojson::value( this->getResourceString(this->resource) );
-		return picojson::value(json);
+	Json::Value ConditionMaxRessources::toJson() {
+		Json::Value json;
+		json["type"]     = "max-resources";
+		json["player"]   = (double) this->player;
+		json["value"]    = this->value;
+		json["resource"] = this->getResourceString(this->resource);
+		return json;
 	}
 }

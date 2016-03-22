@@ -22,20 +22,20 @@
 namespace openage {
 namespace gameio {
 
-picojson::value save_player(int player_number,openage::GameMain *game) {
+Json::Value save_player(int player_number,openage::GameMain *game) {
 
-	picojson::object player;
+	Json::Value player;
 
-	player["civilisation"] = picojson::value(game->get_player(player_number)->civ->civ_name );
-	player["player-id"]    = picojson::value( (double) player_number );
-	player["color"]        = picojson::value( (double) game->get_player(player_number)->color );
+	player["civilisation"] = game->get_player(player_number)->civ->civ_name;
+	player["player-id"]    = player_number;
+	player["color"]        = game->get_player(player_number)->color;
 
-	player["gold"]         = picojson::value( (double) game->get_player(player_number)->amount(game_resource::gold) );
-	player["stone"]        = picojson::value( (double) game->get_player(player_number)->amount(game_resource::stone) );
-	player["wood"]         = picojson::value( (double) game->get_player(player_number)->amount(game_resource::wood) );
-	player["food"]         = picojson::value( (double) game->get_player(player_number)->amount(game_resource::food) );
+	player["gold"]         = (double) game->get_player(player_number)->amount(game_resource::gold);
+	player["stone"]        = (double) game->get_player(player_number)->amount(game_resource::stone);
+	player["wood"]         = (double) game->get_player(player_number)->amount(game_resource::wood);
+	player["food"]         = (double) game->get_player(player_number)->amount(game_resource::food);
 
-	return picojson::value(player);
+	return player;
 }
 
 void load_player(picojson::object playerj,openage::GameMain *game) {
@@ -54,27 +54,27 @@ void load_player(picojson::object playerj,openage::GameMain *game) {
 	game->get_player(id)->receive(game_resource::food ,food);
 }
 
-picojson::value save_unit(Unit *unit) {
-	picojson::object unitj;
-	unitj["type"]   =  picojson::value((double) unit->unit_type->id() );
-	unitj["player"] =  picojson::value((double) unit->get_attribute<attr_type::owner>().player.player_number );
+Json::Value save_unit(Unit *unit) {
+	Json::Value unitj;
+	unitj["type"]   =  (double) unit->unit_type->id();
+	unitj["player"] =  (double) unit->get_attribute<attr_type::owner>().player.player_number;
 
 	//position
 	coord::tile pos = unit->location->pos.start;
-	unitj["position-ne"] =  picojson::value((double) pos.ne );
-	unitj["position-se"] =  picojson::value((double) pos.se );
+	unitj["position-ne"] =  (double) pos.ne;
+	unitj["position-se"] =  (double) pos.se;
 
 	//unit properties
-	picojson::object properties;
+	Json::Value properties;
 	bool has_building_attr = unit->has_attribute(attr_type::building);
 	if (has_building_attr) {
-		unitj["isbuilding"] = picojson::value(true);
-		properties["completion"] = picojson::value(unit->get_attribute<attr_type::building>().completed);
+		unitj["isbuilding"] = true;
+		properties["completion"] = unit->get_attribute<attr_type::building>().completed;
 	} else {
-		unitj["isbuilding"] = picojson::value(false);
+		unitj["isbuilding"] = false;
 	}
-	unitj["properties"] = picojson::value(properties);
-	return picojson::value(unitj);
+	unitj["properties"] = properties;
+	return unitj;
 }
 
 void load_unit(picojson::object unit, openage::GameMain *game) {
@@ -162,30 +162,30 @@ Condition* load_condition_min_ressources(picojson::value conditionjson) {
 	return new ConditionMinRessources(player, resource, value);
 }
 
-picojson::value save_trigger(Trigger *trigger) {
-	picojson::object triggerj;
+Json::Value save_trigger(Trigger *trigger) {
+	Json::Value triggerj;
 
-	triggerj["id"]      = picojson::value( (double) trigger->id );
-	triggerj["gate"]    = picojson::value( trigger->getGateString() );
-	triggerj["active"]  = picojson::value( trigger->isActivated );
-	triggerj["deleted"] = picojson::value( trigger->isDeleted );
+	triggerj["id"]      = trigger->id;
+	triggerj["gate"]    = trigger->getGateString();
+	triggerj["active"]  = trigger->isActivated;
+	triggerj["deleted"] = trigger->isDeleted;
 
 	// save actions
-	picojson::array actions;
+	Json::Value actions;
 	for(auto action : trigger->actions) {
-		actions.push_back( action->toJson() );
+		actions.append( action->toJson() );
 	}
 	// free triggers
-	triggerj["actions"] =  picojson::value( actions );
+	triggerj["actions"] = actions;
 
 	// save conditions
-	picojson::array conditions;
+	Json::Value conditions;
 	for(auto condition : trigger->conditions) {
-		conditions.push_back( condition->toJson() );
+		conditions.append( condition->toJson() );
 	}
-	triggerj["conditions"] =  picojson::value( conditions );
+	triggerj["conditions"] = conditions;
 
-	return picojson::value( triggerj );
+	return triggerj;
 }
 
 Trigger* load_trigger(picojson::object trigger, openage::GameMain *game) {
@@ -280,32 +280,33 @@ void save(openage::GameMain *game, std::string fname) {
 	}
 	terrain["chunks"]   = chunks;
 	savegame["terrain"] = terrain;
-/*
+
 	// save units
 	std::vector<openage::Unit *> units = game->placed_units.all_units();
-	picojson::array unitsj;
+	Json::Value unitsj;
 	for (Unit *u : units) {
-		unitsj.push_back(save_unit(u));
+		unitsj.append(save_unit(u));
 	}
-	savegame["units"] = picojson::value(unitsj);
+	savegame["units"] = unitsj;
 
 	// save player info
-	picojson::array players;
+	Json::Value players;
 	int player_count = game->player_count();
 	for(int i=0;i<player_count;i++) {
-		players.push_back( save_player(i,game) );
+		players.append( save_player(i,game) );
 	}
-	savegame["players"] = picojson::value(players);
+	savegame["players"] = players;
 
 	// save triggers
-	picojson::array triggers;
+	Json::Value triggers;
 	for(auto trigger : Triggers::getInstance()->getTriggers()) {
-		triggers.push_back( save_trigger(trigger) );
+		triggers.append( save_trigger(trigger) );
 	}
+
 	// free triggers
 	Triggers::getInstance()->reset();
-	savegame["triggers"] = picojson::value(triggers);
-*/
+	savegame["triggers"] = triggers;
+
 	// save to file
 	Json::StyledWriter styledWriter;
 	std::ofstream file(fname, std::ofstream::out);

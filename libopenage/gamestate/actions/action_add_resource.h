@@ -13,7 +13,7 @@ namespace openage {
 			~ActionAddResource();
 
 			void execute();
-			picojson::value toJson();
+			Json::Value toJson();
 
 			float    amount = 0;
 			uint16_t player = 0;

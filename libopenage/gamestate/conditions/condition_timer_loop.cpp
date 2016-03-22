@@ -23,10 +23,10 @@ namespace openage {
 		return false;
 	}
 
-	picojson::value ConditionTimerLoop::toJson() {
-		picojson::object json;
-		json["type"]  = picojson::value("timer-loop");
-		json["value"] = picojson::value( (double) this->ms );
-		return picojson::value(json);
+	Json::Value ConditionTimerLoop::toJson() {
+		Json::Value json;
+		json["type"]  = "timer-loop";
+		json["value"] = this->ms;
+		return json;
 	}
 }

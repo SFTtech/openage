@@ -15,9 +15,9 @@ namespace openage {
 		return true;
 	}
 
-	picojson::value ConditionEveryTick::toJson() {
-		picojson::object json;
-		json["type"] = picojson::value("every-tick");
-		return picojson::value(json);
+	Json::Value ConditionEveryTick::toJson() {
+		Json::Value json;
+		json["type"] = "every-tick";
+		return json;
 	}
 }
