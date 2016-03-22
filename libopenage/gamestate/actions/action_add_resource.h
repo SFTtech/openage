@@ -10,6 +10,7 @@ namespace openage {
 	class ActionAddResource  : public virtual Action{
 		public:
 			ActionAddResource(float amount,uint16_t player,game_resource resource);
+			ActionAddResource(Json::Value action);
 			~ActionAddResource();
 
 			void execute();

@@ -13,6 +13,15 @@ namespace openage {
 		this->game     = Engine::get().get_game();
 	}
 
+	ActionAddResource::ActionAddResource(Json::Value action) {
+	  /*
+		ActionAddResource(
+			action.get("amount").asFloat(),
+			action.get("player").asUInt(),
+			game action.get("resource").asString()
+		);*/
+	}
+
 	ActionAddResource::~ActionAddResource() {
 
 	}
