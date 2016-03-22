@@ -5,7 +5,6 @@
 #include "../condition.h"
 #include "../game_main.h"
 #include "../resource.h"
-#include "../picojson.h"
 
 namespace openage {
 

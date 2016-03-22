@@ -16,7 +16,7 @@
 #include "game_main.h"
 #include "game_save.h"
 #include "game_spec.h"
-#include "picojson.h"
+#include "trigger.h"
 #include "triggers.h"
 
 namespace openage {
@@ -38,15 +38,14 @@ Json::Value save_player(int player_number,openage::GameMain *game) {
 	return player;
 }
 
-void load_player(picojson::object playerj,openage::GameMain *game) {
-	picojson::value player = picojson::value(playerj);
+void load_player(Json::Value player,openage::GameMain *game) {
 
-	uint16_t id= (uint16_t) player.get("player-id").get<double>();
+	uint16_t id= player.get("player-id",0).asInt();
 
-	double gold = player.get("gold") .get<double>();
-	double stone= player.get("stone").get<double>();
-	double wood = player.get("wood") .get<double>();
-	double food = player.get("food") .get<double>();
+	double gold = player.get("gold" ,0).asDouble();
+	double stone= player.get("stone",0).asDouble();
+	double wood = player.get("wood" ,0).asDouble();
+	double food = player.get("food" ,0).asDouble();
 
 	game->get_player(id)->receive(game_resource::gold ,gold);
 	game->get_player(id)->receive(game_resource::stone,stone);
@@ -77,24 +76,23 @@ Json::Value save_unit(Unit *unit) {
 	return unitj;
 }
 
-void load_unit(picojson::object unit, openage::GameMain *game) {
+void load_unit(Json::Value unit, openage::GameMain *game) {
 
-	picojson::value unitv = picojson::value(unit);
-	int pr_id	 = unitv.get("type").get<double>();
-	int player_no	 = unitv.get("player").get<double>();
-	coord::phys_t ne = unitv.get("position-ne").get<double>();
-	coord::phys_t se = unitv.get("position-se").get<double>();
+	int pr_id	 = unit.get("type",0).asInt();
+	int player_no	 = unit.get("player",0).asInt();
+	coord::phys_t ne = unit.get("position-ne",0).asInt64();
+	coord::phys_t se = unit.get("position-se",0).asInt64();
 
-	picojson::object properties = unitv.get("properties").get<picojson::object>();
+	Json::Value properties = unit["properties"];
 
 	// place unit on screen
 	UnitType &saved_type = *game->get_player(player_no)->get_type(pr_id);
 	auto ref = game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
 
 	// construct building
-	bool has_building_attr = unitv.get("isbuilding").get<bool>();
+	bool has_building_attr = unit.get("isbuilding",false).asBool();
 	if (has_building_attr) {
-		float completed = (float) picojson::value(properties).get("completion").get<double>();
+		float completed = properties.get("completion",0).asFloat();
 		if (completed >= 1.0f && ref.is_valid()) {
 			complete_building(*ref.get());
 		}
@@ -108,34 +106,34 @@ Json::Value save_tile_content(openage::TileContent *content) {
 	tile["size"]       = (double) content->obj.size();
 	return tile;
 }
-TileContent load_tile_content(picojson::object tile) {
+TileContent load_tile_content(Json::Value tile) {
 	openage::TileContent content;
-	content.terrain_id = picojson::value(tile).get("terrain-id").get<double>();
+	content.terrain_id = tile.get("terrain-id",0).asInt();
 
 	//TODO do we need this? see save_tile_content
 	//unsigned int o_size = picojson::value(tile).get("size").get<double>();
 	return content;
 }
 
-Action* load_action_add_resource(picojson::value actionjson, game_resource resource) {
-	float    amount = actionjson.get("amount").get<double>();
-	uint16_t player = actionjson.get("player").get<double>();
+Action* load_action_add_resource(Json::Value actionjson, game_resource resource) {
+	float    amount = actionjson.get("amount",0).asFloat();
+	uint16_t player = actionjson.get("player",0).asUInt();
 	return new ActionAddResource(amount,player,resource);
 }
 
-Condition* load_condition_every_tick(picojson::value conditionjson) {
+Condition* load_condition_every_tick(Json::Value conditionjson) {
 	return new ConditionEveryTick();
 }
 
-Condition* load_condition_timer_loop(picojson::value conditionjson) {
-	uint16_t ms = conditionjson.get("value").get<double>();
+Condition* load_condition_timer_loop(Json::Value conditionjson) {
+	uint16_t ms = conditionjson.get("value",0).asUInt();
 	return new ConditionTimerLoop(ms);
 }
 
-Condition* load_condition_max_ressources(picojson::value conditionjson) {
-	uint32_t player = conditionjson.get("player").get<double>();
-	float value     = conditionjson.get("value") .get<double>();
-	std::string res = conditionjson.get("resource").to_str();
+Condition* load_condition_max_ressources(Json::Value conditionjson) {
+	uint32_t player = conditionjson.get("player",0).asUInt();
+	float value     = conditionjson.get("value",0) .asFloat();
+	std::string res = conditionjson.get("resource","food").asString();
 	game_resource resource = game_resource::food;
 	if( res.compare("gold") == 0) {
 		resource = game_resource::gold;
@@ -147,10 +145,10 @@ Condition* load_condition_max_ressources(picojson::value conditionjson) {
 	return new ConditionMaxRessources(player, resource, value);
 }
 
-Condition* load_condition_min_ressources(picojson::value conditionjson) {
-	uint32_t player = conditionjson.get("player").get<double>();
-	float value     = conditionjson.get("value") .get<double>();
-	std::string res = conditionjson.get("resource").to_str();
+Condition* load_condition_min_ressources(Json::Value conditionjson) {
+	uint32_t player = conditionjson.get("player",0).asUInt();
+	float value     = conditionjson.get("value",0) .asFloat();
+	std::string res = conditionjson.get("resource","food").asString();
 	game_resource resource = game_resource::food;
 	if( res.compare("gold") == 0) {
 		resource = game_resource::gold;
@@ -188,14 +186,14 @@ Json::Value save_trigger(Trigger *trigger) {
 	return triggerj;
 }
 
-Trigger* load_trigger(picojson::object trigger, openage::GameMain *game) {
+Trigger* load_trigger(Json::Value trigger, openage::GameMain *game) {
 	log::log(MSG(dbg) << "loading trigger");
 	Trigger *t = new Trigger();
-	t->id = picojson::value(trigger).get("id").get<double>();
-	t->isActivated = (bool) picojson::value(trigger).get("active").get<bool>();
+	t->id = trigger.get("id",0).asInt64();
+	t->isActivated = trigger.get("active",true).asBool();
 
 	// gate
-	std::string gate = picojson::value(trigger).get("gate").to_str();
+	std::string gate = trigger.get("gate","or").asString();
 	t->gate = Trigger::Gate::OR;
 
 	if( gate.compare("and") == 0 ) {
@@ -205,28 +203,27 @@ Trigger* load_trigger(picojson::object trigger, openage::GameMain *game) {
 	}
 
 	// load actions
-	picojson::array actions = picojson::value(trigger).get("actions").get<picojson::array>();
 	Action* a;
-	for (picojson::array::iterator iter = actions.begin(); iter != actions.end(); ++iter) {
-		auto action = picojson::value((*iter).get<picojson::object>());
-		if( action.get("type").to_str().compare("add-gold") == 0) {
+	for (auto action : trigger["actions"]) {
+		std::string type = action.get("type","unkown").asString();
+		if( type.compare("add-gold") == 0) {
 			a = load_action_add_resource(action,game_resource::gold);
-		} else if( action.get("type").to_str().compare("add-stone") == 0) {
+		} else if( type.compare("add-stone") == 0) {
 			a = load_action_add_resource(action,game_resource::stone);
-		} else if( action.get("type").to_str().compare("add-wood") == 0) {
+		} else if( type.compare("add-wood") == 0) {
 			a = load_action_add_resource(action,game_resource::wood);
-		} else if( action.get("type").to_str().compare("add-food") == 0) {
+		} else if( type.compare("add-food") == 0) {
 			a = load_action_add_resource(action,game_resource::food);
 		}
-		t->actions.push_back(a);
+		if(type.compare("unkown") != 0) {
+			t->actions.push_back(a);
+		}
 	}
 
 	// load conditions
-	picojson::array conditions = picojson::value(trigger).get("conditions").get<picojson::array>();
 	Condition* c;
-	for (picojson::array::iterator iter = conditions.begin(); iter != conditions.end(); ++iter) {
-		auto condition = picojson::value((*iter).get<picojson::object>());
-		std::string type = condition.get("type").to_str();
+	for (auto condition : trigger["conditions"]) {
+		std::string type = condition.get("type","unkown").asString();
 		if( type.compare("min-resources") == 0) {
 			c = load_condition_min_ressources(condition);
 		} else if( type.compare("max-resources") == 0) {
@@ -236,7 +233,9 @@ Trigger* load_trigger(picojson::object trigger, openage::GameMain *game) {
 		} else if( type.compare("every-tick") == 0) {
 			c = load_condition_every_tick(condition);
 		}
-		t->conditions.push_back(c);
+		if(type.compare("unkown") != 0) {
+			t->conditions.push_back(c);
+		}
 	}
 	return t;
 }
@@ -265,8 +264,8 @@ void save(openage::GameMain *game, std::string fname) {
 		Json::Value chunkj;
 
 		//chunk metadata
-		chunkj["position-se"] = (double) position.se;
-		chunkj["position-ne"] = (double) position.ne;
+		chunkj["position-se"] = position.se;
+		chunkj["position-ne"] = position.ne;
 		chunkj["tile-count"]  = (double) chunk->tile_count;
 
 		// saving tiles
@@ -328,66 +327,59 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	std::istreambuf_iterator<char> last;
 	std::string json_str(first, last);
 
-	// parse json
-	picojson::value savegame;
-	std::string err;
-	picojson::parse(savegame, json_str.begin(), json_str.end(), &err);
+	Json::Value savegame;   // will contains the root value after parsing.
+	Json::Reader reader;
+	bool parsingSuccessful = reader.parse( json_str, savegame );
+	if ( !parsingSuccessful ) {
+	    log::log(MSG(dbg) << "savegame is not a valid json file (" + fname + "()");
+	    return;
+	}
 
 	// load metadata
-	std::string file_label = savegame.get("label").to_str();
+	std::string file_label = savegame.get("label","unkown").asString();
 	if (file_label != save_label) {
 		log::log(MSG(warn) << fname << " is not a savefile");
 		return;
 	}
-	std::string version = savegame.get("version").to_str();
+	std::string version = savegame.get("version","unkown").asString();
 	if (version != save_version) {
 		log::log(MSG(warn) << "savefile has different version");
 	}
-	std::string build = savegame.get("build").to_str();
+	std::string build = savegame.get("build","unkown").asString();
 
 	// read terrain chunks
-	picojson::object &terrain = savegame.get("terrain").get<picojson::object>();
-
-	picojson::array chunks = picojson::value(terrain).get("chunks").get<picojson::array>();
-	for (picojson::array::iterator iter = chunks.begin(); iter != chunks.end(); ++iter) {
-		picojson::object &chunkjson = (*iter).get<picojson::object>();
+	for (auto chunkjson : savegame["terrain"]["chunks"]) {
 
 		// chunk position
-		coord::chunk_t ne = (int32_t) picojson::value(chunkjson).get("position-ne").get<double>();
-		coord::chunk_t se = (int32_t) picojson::value(chunkjson).get("position-se").get<double>();
+		coord::chunk_t ne = chunkjson.get("position-ne",0).asInt();
+		coord::chunk_t se = chunkjson.get("position-se",0).asInt();
 		openage::TerrainChunk *chunk = game->terrain->get_create_chunk(coord::chunk{ne, se});
 
 		// tiles
-		picojson::array tiles = picojson::value(chunkjson).get("tiles").get<picojson::array>();
 		size_t p = 0;
-		for (picojson::array::iterator iter = tiles.begin(); iter != tiles.end(); ++iter,++p) {
-			*chunk->get_data(p) = load_tile_content( (*iter).get<picojson::object>() );
+		for (auto tile : chunkjson["tiles"]) {
+			*chunk->get_data(p) = load_tile_content( tile );
 		}
 
 	}
 
 	// load player
-	picojson::array players = picojson::value(savegame).get("players").get<picojson::array>();
-	for (picojson::array::iterator iter = players.begin(); iter != players.end(); ++iter) {
-		load_player( (*iter).get<picojson::object>(), game );
+	for (auto player : savegame["players"]) {
+		load_player( player, game );
 	}
 
 	// load units
 	game->placed_units.reset();
-	picojson::array units = picojson::value(savegame).get("units").get<picojson::array>();
-	for (picojson::array::iterator iter = units.begin(); iter != units.end(); ++iter) {
-		load_unit( (*iter).get<picojson::object>(), game );
+	for (auto unit : savegame["units"]) {
+		load_unit( unit, game );
 	}
 
 	// triggers
 	Triggers* triggers = Triggers::getInstance();
 	triggers->reset();
 	engine->register_tick_action(triggers);
-	if(!picojson::value(savegame).get("triggers").is<picojson::null>()) {
-		picojson::array triggersj = picojson::value(savegame).get("triggers").get<picojson::array>();
-		for (picojson::array::iterator iter = triggersj.begin(); iter != triggersj.end(); ++iter) {
-			triggers->addTrigger( load_trigger( (*iter).get<picojson::object>(), game) );
-		}
+	for (auto trigger : savegame["triggers"]) {
+		triggers->addTrigger( load_trigger( trigger, game) );
 	}
 }
 

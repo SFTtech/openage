@@ -3,7 +3,6 @@
 #pragma once
 
 #include "../condition.h"
-#include "../picojson.h"
 
 namespace openage {
 
