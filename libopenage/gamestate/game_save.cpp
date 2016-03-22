@@ -6,6 +6,8 @@
 #include <vector>
 #include <string>
 
+#include <jsoncpp/json/json.h>
+
 #include "../engine.h"
 #include "../log/log.h"
 #include "../unit/producer.h"
@@ -99,12 +101,12 @@ void load_unit(picojson::object unit, openage::GameMain *game) {
 	}
 }
 
-picojson::value save_tile_content(openage::TileContent *content) {
-	picojson::object tile;
-	tile["terrain-id"] = picojson::value((double) content->terrain_id);
+Json::Value save_tile_content(openage::TileContent *content) {
+	Json::Value tile;
+	tile["terrain-id"] = (double) content->terrain_id;
 	//TODO do we need this? see load_tile_content
-	tile["size"]       = picojson::value((double) content->obj.size());
-	return picojson::value(tile);
+	tile["size"]       = (double) content->obj.size();
+	return tile;
 }
 TileContent load_tile_content(picojson::object tile) {
 	openage::TileContent content;
@@ -242,41 +244,43 @@ Trigger* load_trigger(picojson::object trigger, openage::GameMain *game) {
 void save(openage::GameMain *game, std::string fname) {
 	log::log(MSG(dbg) << "saving " + fname);
 
-	picojson::object savegame;
+	Json::Value savegame;
+
+	//picojson::object savegame;
 	//metadata
-	savegame["label"] = picojson::value(save_label);
-	savegame["version"]    = picojson::value(save_version);
-	savegame["build"]      = picojson::value(config::version);
+	savegame["label"]   = save_label;
+	savegame["version"] = save_version;
+	savegame["build"]   = config::version;
 
 	// saving terrain
-	picojson::object terrain;
+	Json::Value terrain;
 	// how many chunks
 	std::vector<coord::chunk> used = game->terrain->used_chunks();
-	terrain["chunks-size"] = picojson::value( (double) used.size());
-	picojson::array chunks;
+	terrain["chunks-size"] = (double) used.size();
+	Json::Value chunks;
 
 	// loop through chunks
 	for (coord::chunk &position : used) {
 		openage::TerrainChunk *chunk = game->terrain->get_chunk(position);
-		picojson::object chunkj;
+		Json::Value chunkj;
 
 		//chunk metadata
-		chunkj["position-se"] = picojson::value((double) position.se);
-		chunkj["position-ne"] = picojson::value((double) position.ne);
-		chunkj["tile-count"]  = picojson::value((double) chunk->tile_count);
+		chunkj["position-se"] = (double) position.se;
+		chunkj["position-ne"] = (double) position.ne;
+		chunkj["tile-count"]  = (double) chunk->tile_count;
 
 		// saving tiles
-		picojson::array tiles;
+		Json::Value tiles;
 		for (size_t p = 0; p < chunk->tile_count; ++p) {
-			tiles.push_back( save_tile_content( chunk->get_data(p) ));
+			tiles.append( save_tile_content( chunk->get_data(p) ));
 		}
 
-		chunkj["tiles"] = picojson::value(tiles);
-		chunks.push_back(picojson::value(chunkj));
+		chunkj["tiles"] = tiles;
+		chunks.append( chunkj);
 	}
-	terrain["chunks"]   = picojson::value(chunks);
-	savegame["terrain"] = picojson::value(terrain);
-
+	terrain["chunks"]   = chunks;
+	savegame["terrain"] = terrain;
+/*
 	// save units
 	std::vector<openage::Unit *> units = game->placed_units.all_units();
 	picojson::array unitsj;
@@ -301,10 +305,11 @@ void save(openage::GameMain *game, std::string fname) {
 	// free triggers
 	Triggers::getInstance()->reset();
 	savegame["triggers"] = picojson::value(triggers);
-
+*/
 	// save to file
+	Json::StyledWriter styledWriter;
 	std::ofstream file(fname, std::ofstream::out);
-	file << picojson::value(savegame).serialize() << "\n";
+	file << styledWriter.write(savegame);
 }
 
 void load(openage::GameMain *game, std::string fname, Engine *engine) {

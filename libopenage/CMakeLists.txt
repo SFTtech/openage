@@ -79,6 +79,7 @@ find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
 find_package(HarfBuzz REQUIRED)
+find_package(JsonCpp REQUIRED)
 
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
@@ -138,6 +139,7 @@ include_directories(
 	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
 	${HarfBuzz_INCLUDE_DIRS}
+	${JSONCPP_INCLUDE_DIR}
 )
 
 # link the executable to those libraries
@@ -153,6 +155,7 @@ target_link_libraries(libopenage
 	${SDL2_LIBRARY}
 	${UTIL_LIB}
 	${HarfBuzz_LIBRARIES}
+	${JSONCPP_LIBRARY}
 )
 
 if(NOT APPLE)
