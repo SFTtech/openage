@@ -2,7 +2,7 @@
 
 # find the jsoncpp header
 find_path(JSONCPP_INCLUDE_DIR
-    NAMES jsoncpp/json/json.h
+    NAMES jsoncpp/json/json.h json/json.h
     DOC "JsonCpp include directory"
 )
 mark_as_advanced(OPUS_INCLUDE_DIR)
