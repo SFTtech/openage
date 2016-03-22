@@ -6,7 +6,7 @@
 
 #include "../engine.h"
 #include "resource.h"
-#include "jsoncpp/json/json.h"
+#include "json/json.h"
 
 namespace openage {
 

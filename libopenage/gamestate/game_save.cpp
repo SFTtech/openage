@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 
-#include <jsoncpp/json/json.h>
+#include <json/json.h>
 
 #include "../engine.h"
 #include "../log/log.h"

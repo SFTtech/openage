@@ -3,7 +3,7 @@
 #pragma once
 
 #include "game_main.h"
-#include "jsoncpp/json/json.h"
+#include "json/json.h"
 
 namespace openage {
 
@@ -32,6 +32,19 @@ namespace openage {
 				case game_resource::stone: return "stone";
 				default: return("unkown");
 			    }
+			  }
+
+			  game_resource getResourceEnum(std::string resource) {
+				  if( resource == "food") {
+					      return game_resource::food;
+				  }
+				  if( resource == "wood") {
+					      return game_resource::wood;
+				  }
+				  if( resource == "gold") {
+					      return game_resource::gold;
+				  }
+				  return game_resource::stone;
 			  }
 	};
 

@@ -14,12 +14,11 @@ namespace openage {
 	}
 
 	ActionAddResource::ActionAddResource(Json::Value action) {
-	  /*
 		ActionAddResource(
-			action.get("amount").asFloat(),
-			action.get("player").asUInt(),
-			game action.get("resource").asString()
-		);*/
+			action.get("amount",0).asFloat(),
+			action.get("player",0).asUInt(),
+			Action::getResourceEnum( action.get("resource","unkown").asString() )
+		);
 	}
 
 	ActionAddResource::~ActionAddResource() {
