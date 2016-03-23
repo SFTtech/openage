@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 #include "terrain_chunk.h"
 
@@ -37,7 +37,6 @@ TerrainChunk::TerrainChunk()
 		"size=" << chunk_size << ", " <<
 		"tiles=" << this->tile_count);
 }
-
 
 TerrainChunk::~TerrainChunk() {
 	delete[] this->data;

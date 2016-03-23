@@ -52,6 +52,7 @@ struct coord_chunk_hash {
 class TileContent {
 public:
 	TileContent();
+	TileContent(Json::Value);
 	~TileContent();
 	Json::Value toJson();
 	terrain_t terrain_id;
@@ -222,6 +223,13 @@ public:
 	 * @return the (maybe newly created) chunk
 	 */
 	TerrainChunk *get_create_chunk(coord::chunk position);
+
+	/**
+	 * get or create a terrain chunk for a given chunk position from a savefile
+	 *
+	 * @return the (maybe newly created) chunk
+	 */
+	TerrainChunk *get_create_chunk(Json::Value);
 
 	/**
 	 * get or create a terrain chunk for a given tile position.

@@ -60,64 +60,6 @@ void load_unit(Json::Value unit, openage::GameMain *game) {
 	}
 }
 
-TileContent load_tile_content(Json::Value tile) {
-	openage::TileContent content;
-	content.terrain_id = tile.get("terrain-id",0).asInt();
-
-	//TODO do we need this? see save_tile_content
-	//unsigned int o_size = picojson::value(tile).get("size").get<double>();
-	return content;
-}
-
-Trigger* load_trigger(Json::Value trigger) {
-	log::log(MSG(dbg) << "loading trigger");
-	Trigger *t = new Trigger();
-	t->id = trigger.get("id",0).asInt64();
-	t->isActivated = trigger.get("active",true).asBool();
-
-	// gate
-	std::string gate = trigger.get("gate","or").asString();
-	t->gate = Trigger::Gate::OR;
-	if( gate.compare("and") == 0 ) {
-		t->gate = Trigger::Gate::AND;
-	} else if ( gate.compare("xor") == 0) {
-		t->gate = Trigger::Gate::XOR;
-	}
-
-	// load actions
-	Action* a;
-	for (auto action : trigger["actions"]) {
-		std::string type = action.get("type","unknown").asString();
-		if( type.compare("add-resource") == 0) {
-			a = new ActionAddResource(action);
-		}
-		if(type.compare("unknown") != 0) {
-		  std::cout << "new action";
-			t->actions.push_back(a);
-		}
-	}
-
-	// load conditions
-	Condition* c;
-	for (auto condition : trigger["conditions"]) {
-		std::string type = condition.get("type","unknown").asString();
-		if( type.compare("min-resources") == 0) {
-			c = new ConditionMinRessources(condition);
-		} else if( type.compare("max-resources") == 0) {
-			c = new ConditionMaxRessources(condition);
-		} else if( type.compare("timer-loop") == 0) {
-			c = new ConditionTimerLoop(condition);
-		} else if( type.compare("every-tick") == 0) {
-			c = new ConditionEveryTick(condition);
-		}
-		if(type.compare("unknown") != 0) {
-		  std::cout << "new condition";
-			t->conditions.push_back(c);
-		}
-	}
-	return t;
-}
-
 void save(openage::GameMain *game, std::string fname) {
 	log::log(MSG(dbg) << "saving " + fname);
 
@@ -207,18 +149,7 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 
 	// read terrain chunks
 	for (auto chunkjson : savegame["terrain"]["chunks"]) {
-
-		// chunk position
-		coord::chunk_t ne = chunkjson.get("position-ne",0).asInt();
-		coord::chunk_t se = chunkjson.get("position-se",0).asInt();
-		openage::TerrainChunk *chunk = game->terrain->get_create_chunk(coord::chunk{ne, se});
-
-		// tiles
-		size_t p = 0;
-		for (auto tile : chunkjson["tiles"]) {
-			*chunk->get_data(p) = load_tile_content( tile );
-			p++;
-		}
+		game->terrain->get_create_chunk(chunkjson);
 	}
 
 	// load units
@@ -232,7 +163,7 @@ void load(openage::GameMain *game, std::string fname, Engine *engine) {
 	triggers->reset();
 	engine->register_tick_action(triggers);
 	for (auto trigger : savegame["triggers"]) {
-		triggers->addTrigger( load_trigger( trigger ) );
+		triggers->addTrigger( new Trigger(trigger) );
 	}
 }
 

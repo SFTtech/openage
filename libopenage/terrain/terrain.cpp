@@ -27,6 +27,11 @@ TileContent::TileContent() :
 	terrain_id{0} {
 }
 
+TileContent::TileContent(Json::Value tile) {
+	this->terrain_id = tile.get("terrain-id",0).asInt();
+}
+
+
 TileContent::~TileContent() {}
 
 Terrain::Terrain(terrain_meta *meta, bool is_infinite)
@@ -156,6 +161,22 @@ TerrainChunk *Terrain::get_create_chunk(coord::chunk position) {
 	return res;
 }
 
+TerrainChunk *Terrain::get_create_chunk(Json::Value chunk) {
+	// chunk position
+	coord::chunk_t ne = chunk.get("position-ne",0).asInt();
+	coord::chunk_t se = chunk.get("position-se",0).asInt();
+
+	// create chunk
+	auto chunkp = this->get_create_chunk(coord::chunk{ne, se});
+
+	// tiles
+	size_t p = 0;
+	for (auto tile : chunk["tiles"]) {
+		*chunkp->get_data(p) = TileContent(tile);
+		p++;
+	}
+	return chunkp;
+}
 TerrainChunk *Terrain::get_create_chunk(coord::tile position) {
 	return this->get_create_chunk(position.to_chunk());
 }

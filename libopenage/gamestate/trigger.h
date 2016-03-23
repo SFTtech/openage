@@ -19,6 +19,7 @@ namespace openage {
 	{
 		public:
 			Trigger();
+			Trigger(Json::Value);
 			~Trigger();
 
 			enum class Gate { AND, OR, XOR };

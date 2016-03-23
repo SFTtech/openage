@@ -21,6 +21,52 @@ namespace openage {
 		this->conditions.clear();
 	}
 
+	Trigger::Trigger(Json::Value trigger) {
+		log::log(MSG(dbg) << "loading trigger");
+		this->id = trigger.get("id",0).asInt64();
+		this->isActivated = trigger.get("active",true).asBool();
+
+		// gate
+		std::string gate = trigger.get("gate","or").asString();
+		this->gate = Trigger::Gate::OR;
+		if( gate.compare("and") == 0 ) {
+			this->gate = Trigger::Gate::AND;
+		} else if ( gate.compare("xor") == 0) {
+			this->gate = Trigger::Gate::XOR;
+		}
+
+		// load actions
+		Action* a;
+		for (auto action : trigger["actions"]) {
+			std::string type = action.get("type","unknown").asString();
+			if( type.compare("add-resource") == 0) {
+				a = new ActionAddResource(action);
+			}
+			if(type.compare("unknown") != 0) {
+				this->actions.push_back(a);
+			}
+		}
+
+		// load conditions
+		Condition* c;
+		for (auto condition : trigger["conditions"]) {
+			std::string type = condition.get("type","unknown").asString();
+			if( type.compare("min-resources") == 0) {
+				c = new ConditionMinRessources(condition);
+			} else if( type.compare("max-resources") == 0) {
+				c = new ConditionMaxRessources(condition);
+			} else if( type.compare("timer-loop") == 0) {
+				c = new ConditionTimerLoop(condition);
+			} else if( type.compare("every-tick") == 0) {
+				c = new ConditionEveryTick(condition);
+			}
+			if(type.compare("unknown") != 0) {
+			  std::cout << "new condition";
+				this->conditions.push_back(c);
+			}
+		}
+	}
+
 	std::string Trigger::getGateString() {
 		switch(this->gate) {
 		  case Gate::OR:
