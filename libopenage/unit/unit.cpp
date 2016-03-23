@@ -326,6 +326,11 @@ Json::Value Unit::toJson() {
 		unitj["isbuilding"] = false;
 	}
 	unitj["properties"] = properties;
+
+	// save action stacks
+	for(auto& action :this->action_stack)  {
+		 unitj["actions-primary"].append(action->toJson());
+	}
 	return unitj;
 }
 

@@ -602,6 +602,24 @@ void MoveAction::set_distance() {
 	}
 }
 
+Json::Value MoveAction::toJson() {
+	Json::Value action;
+	action["type"]      = "moveaction";
+
+	action["target-ne"] = (double) this->target.ne;
+	action["target-se"] = (double) this->target.se;
+	action["target-up"] = (double) this->target.up;
+
+	action["allow-repath"]       = this->allow_repath;
+	action["end-action"]         = this->end_action;
+	action["radius"]             = (double) this->radius;
+	action["distance-to-target"] = (double) this->distance_to_target;
+
+	action["path"] = this->path.toJson();
+
+	return action;
+}
+
 GarrisonAction::GarrisonAction(Unit *e, UnitReference build)
 	:
 	TargetAction{e, graphic_type::standing, build},
