@@ -96,6 +96,17 @@ std::vector<node_pt> Node::get_neighbors(const nodemap_t &nodes, float scale) {
 	return neighbors;
 }
 
+Json::Value Node::toJson() {
+	Json::Value node;
+	node["postition-ne"] = (double) this->position.ne;
+	node["postition-se"] = (double) this->position.se;
+	node["postition-up"] = (double) this->position.up;
+
+	node["past-cost"]      = this->past_cost;
+	node["heuristic-cost"] = this->heuristic_cost;
+
+	return node;
+}
 
 bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::phys3 &)> passable, float samples) {
 	// interpolate between points and make passablity checks
@@ -129,6 +140,14 @@ void Path::draw_path() {
 		}
 	}
 	glEnd();
+}
+
+Json::Value Path::toJson() {
+	Json::Value path;
+	for(auto waypoint : this->waypoints) {
+		path.append( waypoint.toJson() );
+	}
+	return path;
 }
 
 

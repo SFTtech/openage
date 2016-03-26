@@ -88,6 +88,11 @@ public:
 	 */
 	virtual const graphic_set &current_graphics() const;
 
+	/**
+	 * for savefile
+	 */
+	virtual Json::Value toJson() = 0;
+
 	void draw_debug();
 
 	/**
@@ -201,6 +206,7 @@ public:
 	bool allow_interupt() const override { return false; }
 	bool allow_control() const override { return false; }
 	std::string name() const override { return "decay"; }
+	Json::Value toJson() override { return Json::Value("DecayAction"); }
 
 private:
 	float end_frame;
@@ -221,6 +227,7 @@ public:
 	bool allow_interupt() const override { return false; }
 	bool allow_control() const override { return false; }
 	std::string name() const override { return "dead"; }
+	Json::Value toJson() override { return Json::Value("DeadAction"); }
 
 private:
 	float end_frame;
@@ -242,6 +249,7 @@ public:
 	bool allow_interupt() const override { return true; }
 	bool allow_control() const override { return false; }
 	std::string name() const override { return "foundation"; }
+	Json::Value toJson() override { return Json::Value("FoundationAction"); }
 
 private:
 	bool add_destruct_effect, cancel;
@@ -262,6 +270,7 @@ public:
 	bool allow_interupt() const override { return false; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "idle"; }
+	Json::Value toJson() override { return Json::Value("IdleAction"); }
 
 private:
 	// look for auto task actions
@@ -284,6 +293,12 @@ public:
 	 * moves a unit to within a distance to another unit
 	 */
 	MoveAction(Unit *e, UnitReference tar, coord::phys_t within_range);
+	/*
+	 * load from savefile
+	 */
+
+	MoveAction(Unit *e,Json::Value action);
+
 	virtual ~MoveAction();
 
 	void update(unsigned int) override;
@@ -292,6 +307,10 @@ public:
 	bool allow_interupt() const override { return true; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "move"; }
+	/**
+	 * for save file
+	 */
+	Json::Value toJson() override;
 
 	coord::phys3 next_waypoint() const;
 
@@ -331,6 +350,7 @@ public:
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "garrison"; }
+	Json::Value toJson() override { return Json::Value("GarrisonAction"); }
 
 private:
 	bool complete;
@@ -350,6 +370,7 @@ public:
 	bool allow_interupt() const override { return true; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "ungarrison"; }
+	Json::Value toJson() override { return Json::Value("UngarrisonAction"); }
 
 private:
 	coord::phys3 position;
@@ -370,6 +391,7 @@ public:
 	bool allow_interupt() const override { return false; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "train"; }
+	Json::Value toJson() override { return Json::Value("TrainAction"); }
 
 private:
 	UnitType *trained;
@@ -389,6 +411,7 @@ public:
 	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	std::string name() const override { return "build"; }
 	const graphic_set &current_graphics() const override;
+	Json::Value toJson() override { return Json::Value("BuildAction"); }
 
 private:
 	float complete, build_rate;
@@ -406,6 +429,7 @@ public:
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "repair"; }
+	Json::Value toJson() override { return Json::Value("RepairAction"); }
 
 private:
 	bool complete;
@@ -424,6 +448,7 @@ public:
 	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "gather"; }
 	const graphic_set &current_graphics() const override;
+	Json::Value toJson() override { return Json::Value("GatherAction"); }
 
 private:
 	bool complete, target_resource;
@@ -444,6 +469,7 @@ public:
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override;
 	std::string name() const override { return "attack"; }
+	Json::Value toJson() override { return Json::Value("AttackAction"); }
 
 private:
 	float strike_percent, rate_of_fire;
@@ -470,6 +496,7 @@ public:
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	std::string name() const override { return "convert"; }
+	Json::Value toJson() override { return Json::Value("ConvertAction"); }
 
 private:
 	float complete;
@@ -490,6 +517,7 @@ public:
 	bool allow_interupt() const override { return false; }
 	bool allow_control() const override { return false; }
 	std::string name() const override { return "projectile"; }
+	Json::Value toJson() override { return Json::Value("ProjectileAction"); }
 
 private:
 	coord::phys_t grav;

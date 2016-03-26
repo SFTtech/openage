@@ -3,6 +3,7 @@
 #pragma once
 
 #include <memory>
+#include <json/json.h>
 #include <unordered_map>
 #include <vector>
 
@@ -231,6 +232,11 @@ public:
 	 * Returns the unit's name as the LogSource name.
 	 */
 	std::string logsource_name() override;
+
+	/**
+	 * for savefile
+	 */
+	Json::Value toJson();
 
 private:
 	/**

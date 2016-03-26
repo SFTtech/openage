@@ -431,6 +431,23 @@ MoveAction::MoveAction(Unit *e, UnitReference tar, coord::phys_t within_range)
 	this->initialise();
 }
 
+MoveAction::MoveAction(Unit *e,Json::Value action)
+	:
+	UnitAction{e, graphic_type::walking},
+	unit_target{},
+	target(coord::phys3{	action.get("target-ne",0).asInt64(),
+				action.get("target-se",0).asInt64(),
+				action.get("target-up",0).asInt64()
+
+	}),
+	radius{action.get("radius",0).asInt64()},
+	allow_repath{action.get("allow-repath",false).asBool()},
+	end_action{action.get("end-action",false).asBool()} {
+	  std::cout << "MoveAction" << std::endl;
+	this->initialise();
+}
+
+
 void MoveAction::initialise() {
 	// switch workers to the carrying graphic
 	if (this->entity->has_attribute(attr_type::gatherer)) {
@@ -600,6 +617,27 @@ void MoveAction::set_distance() {
 		coord::phys3_delta move_dir = this->target - this->entity->location->pos.draw;
 		this->distance_to_target = static_cast<coord::phys_t>(std::hypot(move_dir.ne, move_dir.se));
 	}
+}
+
+Json::Value MoveAction::toJson() {
+	Json::Value action;
+	action["type"]      = "move-action";
+
+	action["target-ne"] = (double) this->target.ne;
+	action["target-se"] = (double) this->target.se;
+	action["target-up"] = (double) this->target.up;
+
+	action["allow-repath"]       = this->allow_repath;
+	action["end-action"]         = this->end_action;
+	action["radius"]             = (double) this->radius;
+	action["distance-to-target"] = (double) this->distance_to_target;
+
+	action["frame"]		= this->frame;
+	action["frame-rate"]    = this->frame_rate;
+
+	action["path"] = this->path.toJson();
+
+	return action;
 }
 
 GarrisonAction::GarrisonAction(Unit *e, UnitReference build)

@@ -4,6 +4,7 @@
 
 #include <functional>
 #include <memory>
+#include <json/json.h>
 #include <unordered_map>
 #include <vector>
 
@@ -168,6 +169,11 @@ public:
 	 * Priority queue node that contains this path node.
 	 */
 	heap_t::node_t* heap_node;
+
+	/*
+	 * for savefile
+	 */
+	Json::Value toJson();
 };
 
 
@@ -181,6 +187,7 @@ public:
 	Path(const std::vector<Node> &nodes);
 
 	void draw_path();
+	Json::Value toJson();
 
 	/**
 	 * These are the waypoints to navigate in order.

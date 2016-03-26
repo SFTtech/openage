@@ -3,6 +3,7 @@
 #pragma once
 
 #include <string>
+#include "../engine.h"
 
 namespace openage {
 
@@ -12,7 +13,7 @@ class Terrain;
 namespace gameio {
 
 const std::string save_label = "openage-save-file";
-const std::string save_version = "v0.1";
+const std::string save_version = "v0.2";
 
 /**
  * a game save function that sometimes works
@@ -22,6 +23,6 @@ void save(openage::GameMain *, std::string fname);
 /**
  * a game load function that sometimes works
  */
-void load(openage::GameMain *, std::string fname);
+void load(openage::GameMain *, std::string fname, Engine *);
 
 }} // openage::gameio

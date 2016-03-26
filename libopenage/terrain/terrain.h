@@ -52,7 +52,9 @@ struct coord_chunk_hash {
 class TileContent {
 public:
 	TileContent();
+	TileContent(Json::Value);
 	~TileContent();
+	Json::Value toJson();
 	terrain_t terrain_id;
 	std::vector<TerrainObject *> obj;
 };
@@ -165,7 +167,7 @@ struct terrain_meta {
 };
 
 /**
- * the terrain class is the main top-management interface
+ * the terrai is the main top-management interface
  * for dealing with cost-benefit analysis to maximize company profits.
  *
  * actually this is just the entrypoint and container for the terrain chunks.
@@ -221,6 +223,13 @@ public:
 	 * @return the (maybe newly created) chunk
 	 */
 	TerrainChunk *get_create_chunk(coord::chunk position);
+
+	/**
+	 * get or create a terrain chunk for a given chunk position from a savefile
+	 *
+	 * @return the (maybe newly created) chunk
+	 */
+	TerrainChunk *get_create_chunk(Json::Value);
 
 	/**
 	 * get or create a terrain chunk for a given tile position.
@@ -385,6 +394,10 @@ public:
 	                     struct tile_draw_data *tile_data,
 	                     struct influence_group *influences);
 
+	/**
+	 * for savefile
+	 */
+	Json::Value toJson();
 private:
 
 	/**
