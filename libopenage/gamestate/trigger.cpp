@@ -61,7 +61,6 @@ namespace openage {
 				c = new ConditionEveryTick(condition);
 			}
 			if(type.compare("unknown") != 0) {
-			  std::cout << "new condition";
 				this->conditions.push_back(c);
 			}
 		}
@@ -79,7 +78,7 @@ namespace openage {
 			return "xor";
 			break;
 		}
-		return "unkown";
+		return "unknown";
 	}
 
 	void Trigger::update(uint32_t gametime, uint32_t update) {

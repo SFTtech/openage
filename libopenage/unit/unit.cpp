@@ -329,7 +329,12 @@ Json::Value Unit::toJson() {
 
 	// save action stacks
 	for(auto& action :this->action_stack)  {
-		 unitj["actions-primary"].append(action->toJson());
+		Json::Value actionj = action->toJson();
+		/* do not save idle and dead action, they will be automaticly create at unit creation */
+		if( !( (actionj.isString() and actionj.asString().compare("IdleAction")) or
+		       (actionj.isString() and actionj.asString().compare("DeadAction")) ) ) {
+			unitj["actions-primary"].append(actionj);
+		}
 	}
 	return unitj;
 }

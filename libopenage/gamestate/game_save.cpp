@@ -10,6 +10,7 @@
 
 #include "../engine.h"
 #include "../log/log.h"
+#include "../unit/action.h"
 #include "../unit/producer.h"
 #include "../unit/unit.h"
 #include "../unit/unit_type.h"
@@ -49,6 +50,14 @@ void load_unit(Json::Value unit, openage::GameMain *game) {
 	// place unit on screen
 	UnitType &saved_type = *game->get_player(player_no)->get_type(pr_id);
 	auto ref = game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
+
+	//load actions
+	for( auto action : unit["actions-primary"]) {
+		std::string type = action.get("type","unknown").asString();
+		if( type.compare("move-action") == 0) {
+			ref.get()->push_action( std::make_unique<MoveAction>( ref.get(),action ));
+		}
+	}
 
 	// construct building
 	bool has_building_attr = unit.get("isbuilding",false).asBool();
