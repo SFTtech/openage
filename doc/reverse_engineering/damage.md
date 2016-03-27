@@ -25,20 +25,20 @@ When some unit attacks another, all those attack classes are used which the targ
 For example: **Halberdier vs Marmeluke**
 
 Halberdier has attack classes and values:
-class 4 (Melee): 6
-class 5 (War Elefants): 28
-class 8 (Cavalry): 32
-class 16 (Ships, Camels, Saboteurs): 16
-class 21 (Buildings): 1
-class 29 (Eagle Warrior): 1
+* class 4 (Melee): 6
+* class 5 (War Elefants): 28
+* class 8 (Cavalry): 32
+* class 16 (Ships, Camels, Saboteurs): 16
+* class 21 (Buildings): 1
+* class 29 (Eagle Warrior): 1
 
 Mameluke has armor classes and values:
-class 3 (Ranged Attack): 0
-class 4 (Melee): 1
-class 8 (Cavalry): 11
-class 15 (Archers): 0
-class 16 (Ships, Camels, Saboteurs): 0
-class 19 (Special Units): 0
+* class 3 (Ranged Attack): 0
+* class 4 (Melee): 1
+* class 8 (Cavalry): 11
+* class 15 (Archers): 0
+* class 16 (Ships, Camels, Saboteurs): 0
+* class 19 (Special Units): 0
 
 
 In this example, the classes 4, 8 and 16 are used.
