@@ -4,3 +4,7 @@ add_sources(libopenage
 	input_context.cpp
 	input_manager.cpp
 )
+
+pxdgen(
+	input_manager.h
+)

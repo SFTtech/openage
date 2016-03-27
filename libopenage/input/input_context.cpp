@@ -55,18 +55,16 @@ InputContext::InputContext()
 std::vector<std::string> InputContext::active_binds() const {
 	Engine &engine = Engine::get();
 	InputManager &input_manager = engine.get_input_manager();
+	ActionManager &action_manager = engine.get_action_manager();
 
 	std::vector<std::string> result;
 
 	for (auto &action : this->by_type) {
-		std::string action_type_str{
-			action.first.info,
-			action.first.info + strlen(action.first.info)
-		};
+		std::string action_type_str = action_manager.get_name(action.first);
 
 		std::string keyboard_key;
 		for (auto &key : input_manager.keys) {
-			if (key.second.key == action.first.key) {
+			if (key.second == action.first) {
 				keyboard_key = event_as_string(key.first);
 				break;
 			}

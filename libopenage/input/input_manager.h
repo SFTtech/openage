@@ -2,8 +2,10 @@
 
 #pragma once
 
+// pxd: from libcpp cimport bool
 #include <functional>
-#include <map>
+// pxd: from libcpp.string cimport string
+#include <string>
 #include <unordered_map>
 #include <SDL2/SDL.h>
 
@@ -22,15 +24,77 @@ namespace input {
 
 using binding_map_t = std::unordered_multimap<Event, action_t, event_hash>;
 
-
 /**
  * The input manager manages all input layers (hud, game, ...)
  * and triggers the registered actions depending on the active layer.
+ *
+ * pxd:
+ *
+ * cppclass InputManager:
+ *     bool set_bind(char* bind_char, string action) except +
+ *     string get_bind(string action) except +
  */
 class InputManager : public openage::InputHandler {
 
 public:
 	InputManager();
+
+	/**
+	 * Initialization until not hardcoded
+	 */
+	void initialize();
+
+	/**
+	 * Return the string representation of the bind assignated to an action.
+	 */
+	std::string get_bind(const std::string &action);
+
+	/**
+	 * Set the given action to be triggered by the given bind (key/mouse
+	 * /wheel). Remove previous assignation. Do nothing if either they
+	 * given bind or action is invalid/unknow.
+	 */
+	bool set_bind(const char *bind_char, const std::string action);
+
+	/**
+	 * Convert a string to an event throw 0 if the string is not a valid event.
+	 */
+	Event text_to_event(const char *event_char);
+
+	/**
+	 * Convert a string to a key event throw 0 if the string is not a valid key event.
+	 */
+	Event text_to_key_event(const std::string &key_str, const int mod);
+
+	/**
+	 * Convert a string to a mouse event throw 0 if the string is not a valid mouse event.
+	 */
+	Event text_to_mouse_event(const std::string &button, const int mod);
+
+	/**
+	 * Convert a string to a wheel event throw 0 if the string is not a valid wheel event.
+	 */
+	Event text_to_wheel_event(const std::string &dir, const int mod);
+
+	/**
+	 * Return the string representation of the key event.
+	 */
+	std::string key_bind_to_string(const Event &ev);
+
+	/**
+	 * Return the string representation of the mouse event.
+	 */
+	std::string mouse_bind_to_string(const Event &ev);
+
+	/**
+	 * Return the key representation of the event.
+	 */
+	std::string wheel_bind_to_string(const Event &ev);
+
+	/**
+	 * Return the value of the sdl key modifiers
+	 */
+	int parse_mod(const std::string &mod) const;
 
 	/**
 	 * returns the global keybind context.
@@ -150,8 +214,25 @@ private:
 	 */
 	coord::window mouse_position;
 	coord::window_delta mouse_motion;
-
 	friend InputContext;
+
+	std::unordered_map<std::string, int> string_to_mod = {
+		{"LCtrl", KMOD_LCTRL},
+		{"LShift", KMOD_LSHIFT},
+		{"RCtrl", KMOD_RCTRL},
+		{"RShift", KMOD_RSHIFT},
+		{"LAlt", KMOD_LALT},
+		{"RAlt", KMOD_RALT},
+		{"LGui", KMOD_LGUI},
+		{"RGUI", KMOD_RGUI},
+		{"Ctrl", KMOD_CTRL},
+		{"Shift", KMOD_SHIFT},
+		{"Alt", KMOD_ALT},
+		{"Gui", KMOD_GUI},
+		{"AltGr", KMOD_MODE},
+		{"Caps", KMOD_CAPS},
+		{"NumLck", KMOD_NUM}
+	};
 };
 
 }} // openage::input

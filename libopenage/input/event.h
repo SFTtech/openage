@@ -149,8 +149,8 @@ using event_set_t = std::unordered_set<Event, event_hash>;
 modset_t sdl_mod(SDL_Keymod mod);
 Event sdl_key(SDL_Keycode code, SDL_Keymod mod=KMOD_NONE);
 Event utf8(const std::string &text);
-Event sdl_mouse(int button);
-Event sdl_wheel(int direction);
+Event sdl_mouse(int button, SDL_Keymod mod=KMOD_NONE);
+Event sdl_wheel(int direction, SDL_Keymod mod=KMOD_NONE);
 
 
 }} // openage::input

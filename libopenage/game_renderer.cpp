@@ -174,11 +174,12 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	// Renderer keybinds
 	// TODO: a renderer settings struct
 	// would allow these to be put somewher better
+	input::ActionManager &action = Engine::get().get_action_manager();
 	auto &global_input_context = engine->get_input_manager().get_global_context();
-	global_input_context.bind(input::actions::TOGGLE_BLENDING, [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_BLENDING"), [this](const input::action_arg_t &) {
 		this->settings.terrain_blending.value = !this->settings.terrain_blending.value;
 	});
-	global_input_context.bind(input::actions::TOGGLE_UNIT_DEBUG, [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_UNIT_DEBUG"), [this](const input::action_arg_t &) {
 		this->settings.draw_debug.value = !this->settings.draw_debug.value;
 
 		// TODO remove this hack, use render settings instead

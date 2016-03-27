@@ -49,6 +49,7 @@ void Engine::create(util::Dir *data_dir, const char *windowtitle) {
 	if (Engine::instance == nullptr) {
 		// reset the pointer to the new engine
 		Engine::instance = new Engine(data_dir, windowtitle);
+		Engine::instance->get_input_manager().initialize(); // until non hardcoded keybind
 	} else {
 		throw Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
 	}
@@ -183,19 +184,20 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 
 	// initialize engine related global keybinds
 	auto &global_input_context = this->get_input_manager().get_global_context();
-	global_input_context.bind(input::actions::STOP_GAME, [this](const input::action_arg_t &) {
+	input::ActionManager &action = this->get_action_manager();
+	global_input_context.bind(action.get("STOP_GAME"), [this](const input::action_arg_t &) {
 		this->stop();
 	});
-	global_input_context.bind(input::actions::TOGGLE_HUD, [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_HUD"), [this](const input::action_arg_t &) {
 		this->drawing_huds.value = !this->drawing_huds.value;
 	});
-	global_input_context.bind(input::actions::SCREENSHOT, [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("SCREENSHOT"), [this](const input::action_arg_t &) {
 		this->get_screenshot_manager().save_screenshot();
 	});
-	global_input_context.bind(input::actions::TOGGLE_DEBUG_OVERLAY, [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_DEBUG_OVERLAY"), [this](const input::action_arg_t &) {
 		this->drawing_debug_overlay.value = !this->drawing_debug_overlay.value;
 	});
-	global_input_context.bind(input::actions::TOGGLE_PROFILER, [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_PROFILER"), [this](const input::action_arg_t &) {
 		if (this->external_profiler.currently_profiling) {
 			this->external_profiler.stop();
 			this->external_profiler.show_results();
@@ -220,14 +222,14 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 
 	};
 
-	bind_player_switch(input::actions::SWITCH_TO_PLAYER_1, 1);
-	bind_player_switch(input::actions::SWITCH_TO_PLAYER_2, 2);
-	bind_player_switch(input::actions::SWITCH_TO_PLAYER_3, 3);
-	bind_player_switch(input::actions::SWITCH_TO_PLAYER_4, 4);
-	bind_player_switch(input::actions::SWITCH_TO_PLAYER_5, 5);
-	bind_player_switch(input::actions::SWITCH_TO_PLAYER_6, 6);
-	bind_player_switch(input::actions::SWITCH_TO_PLAYER_7, 7);
-	bind_player_switch(input::actions::SWITCH_TO_PLAYER_8, 8);
+	bind_player_switch(action.get("SWITCH_TO_PLAYER_1"), 1);
+	bind_player_switch(action.get("SWITCH_TO_PLAYER_2"), 2);
+	bind_player_switch(action.get("SWITCH_TO_PLAYER_3"), 3);
+	bind_player_switch(action.get("SWITCH_TO_PLAYER_4"), 4);
+	bind_player_switch(action.get("SWITCH_TO_PLAYER_5"), 5);
+	bind_player_switch(action.get("SWITCH_TO_PLAYER_6"), 6);
+	bind_player_switch(action.get("SWITCH_TO_PLAYER_7"), 7);
+	bind_player_switch(action.get("SWITCH_TO_PLAYER_8"), 8);
 
 	this->text_renderer = std::make_unique<renderer::TextRenderer>();
 }
@@ -500,6 +502,10 @@ audio::AudioManager &Engine::get_audio_manager() {
 
 ScreenshotManager &Engine::get_screenshot_manager() {
 	return this->screenshot_manager;
+}
+
+input::ActionManager &Engine::get_action_manager() {
+	return this->action_manager;
 }
 
 input::InputManager &Engine::get_input_manager() {

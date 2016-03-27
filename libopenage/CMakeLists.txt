@@ -22,6 +22,7 @@ add_sources(libopenage
 
 pxdgen(
 	main.h
+	engine.h
 )
 
 

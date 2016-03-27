@@ -69,7 +69,7 @@ private:
 	/**
 	 * map specific hints
 	 */
-	std::unordered_map<action_t, action_func_t, action_hash> by_type;
+	std::unordered_map<action_t, action_func_t> by_type;
 
 	/**
 	 * map specific overriding events
