@@ -161,4 +161,6 @@ if(NOT APPLE)
 	)
 endif()
 
-install(TARGETS libopenage DESTINATION lib LIBRARY DESTINATION lib)
+include(GNUInstallDirs)
+
+install(TARGETS libopenage DESTINATION ${CMAKE_INSTALL_LIBDIR} LIBRARY)
