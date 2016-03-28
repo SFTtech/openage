@@ -11,6 +11,16 @@ namespace input {
 bool ActionManager::create(const std::string type) {
 	if (this->actions.find(type) == this->actions.end()) {
 		this->actions.insert(std::make_pair(type, this->actions.size()));
+
+		// create the accessor of the action binding
+		auto get = [type, this]() {
+			return this->engine->get_input_manager().get_bind(type);
+		};
+		auto set = [type, this](const std::string &value) {
+			this->engine->get_input_manager().set_bind(value.c_str(), type);
+		};
+		// and the corresponding cvar
+		this->engine->get_cvar_manager().create(type, std::make_pair(get,set));
 		return true;
 	}
 	return false;
@@ -37,7 +47,7 @@ std::string ActionManager::get_name(const action_t action) {
 	return "UNDEFINED";
 }
 
-ActionManager::ActionManager() {
+ActionManager::ActionManager(Engine *e): engine(e) {
 	for (auto &type : this->default_action) {
 		this->create(type);
 	}

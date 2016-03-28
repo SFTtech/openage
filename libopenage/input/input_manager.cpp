@@ -15,74 +15,26 @@ InputManager::InputManager()
 	: relative_mode{false} {
 }
 
-void InputManager::initialize() {
-	// TODO not hardcoded anymore
-	this->set_bind("`", "TOGGLE_CONSOLE");
-	this->set_bind("Return", "START_GAME");
-	this->set_bind("Escape", "STOP_GAME");
-	this->set_bind("F1", "TOGGLE_HUD");
-	this->set_bind("F2", "SCREENSHOT");
-	this->set_bind("F3", "TOGGLE_DEBUG_OVERLAY");
-	this->set_bind("F4", "TOGGLE_DEBUG_GRID");
-	this->set_bind("F5", "QUICK_SAVE");
-	this->set_bind("F9", "QUICK_LOAD");
-	this->set_bind("Space", "TOGGLE_BLENDING");
-	this->set_bind("F12", "TOGGLE_PROFILER");
-	this->set_bind("m", "TOGGLE_CONSTRUCT_MODE");
-	this->set_bind("p", "TOGGLE_UNIT_DEBUG");
-	this->set_bind("t", "TRAIN_OBJECT");
-	this->set_bind("y", "ENABLE_BUILDING_PLACEMENT");
-	this->set_bind("Ctrl z", "DISABLE_SET_ABILITY");
-	this->set_bind("Ctrl x", "SET_ABILITY_MOVE");
-	this->set_bind("Ctrl c", "SET_ABILITY_GATHER");
-	this->set_bind("g", "SET_ABILITY_GARRISON");
-	this->set_bind("v", "SPAWN_VILLAGER");
-	this->set_bind("Delete", "KILL_UNIT");
-	this->set_bind("q", "BUILDING_1");
-	this->set_bind("w", "BUILDING_2");
-	this->set_bind("e", "BUILDING_3");
-	this->set_bind("r", "BUILDING_4");
-	this->set_bind("Ctrl q", "BUILDING_5");
-	this->set_bind("Ctrl w", "BUILDING_6");
-	this->set_bind("Ctrl e", "BUILDING_7");
-	this->set_bind("Ctrl r", "BUILDING_8");
-	this->set_bind("z", "BUILDING_TOWN_CENTER");
-	this->set_bind("1", "SWITCH_TO_PLAYER_1");
-	this->set_bind("2", "SWITCH_TO_PLAYER_2");
-	this->set_bind("3", "SWITCH_TO_PLAYER_3");
-	this->set_bind("4", "SWITCH_TO_PLAYER_4");
-	this->set_bind("5", "SWITCH_TO_PLAYER_5");
-	this->set_bind("6", "SWITCH_TO_PLAYER_6");
-	this->set_bind("7", "SWITCH_TO_PLAYER_7");
-	this->set_bind("8", "SWITCH_TO_PLAYER_8");
-	this->set_bind("Up", "UP_ARROW");
-	this->set_bind("Down", "DOWN_ARROW");
-	this->set_bind("Left", "LEFT_ARROW");
-	this->set_bind("Right", "RIGHT_ARROW");
-	this->set_bind("MOUSE 1", "PAINT_TERRAIN");
-	this->set_bind("WHEEL 1", "FORWARD");
-	this->set_bind("WHEEL -1", "BACK");
-	this->set_bind("MOUSE 1", "SELECT");
-	this->set_bind("Shift MOUSE 1", "INCREASE_SELECTION");
-	this->set_bind("MOUSE 1", "BUILD");
-	this->set_bind("Shift MOUSE 1", "KEEP_BUILDING");
-	this->set_bind("MOUSE 3", "ORDER_SELECT");
-}
-
 std::string InputManager::get_bind(const std::string &action_str) {
 	ActionManager &action_manager = Engine::get().get_action_manager();
 
-	for (auto &it : this->keys) {
-		if (action_manager.is(action_str, it.second)) {
-			switch (it.first.cc.eclass) {
-			case event_class::MOUSE_BUTTON :
-				return this->mouse_bind_to_string(it.first);
-			case event_class::MOUSE_WHEEL :
-				return this->wheel_bind_to_string(it.first);
-			default:
-				return this->key_bind_to_string(it.first);
-			}
-		}
+	action_t action = action_manager.get(action_str);
+	if (action_manager.is("UNDEFINED",action)) {
+		return "";
+	}
+
+	auto it = this->keys.find(action);
+	if (it == this->keys.end()) {
+		return " ";
+	}
+
+	switch (it->second.cc.eclass) {
+		case event_class::MOUSE_BUTTON :
+			return this->mouse_bind_to_string(it->second);
+		case event_class::MOUSE_WHEEL :
+			return this->wheel_bind_to_string(it->second);
+		default:
+			return this->key_bind_to_string(it->second);
 	}
 	return "";
 }
@@ -97,12 +49,12 @@ bool InputManager::set_bind(const char *bind_char, const std::string action_str)
 		}
 
 		Event ev = this->text_to_event(bind_char);
-		for(auto &it : this->keys) {
-			if (it.second == action) {
-				this->keys.erase(it.first);
-			}
+
+		auto it = this->keys.find(action);
+		if (it != this->keys.end()) {
+			this->keys.erase(it);
 		}
-		this->keys.emplace(ev, action);
+		this->keys.emplace(std::make_pair(action,ev));
 
 		return true;
 	}
@@ -268,12 +220,10 @@ bool InputManager::trigger(const Event &e) {
 	// arg passed to receivers
 	action_arg_t arg{e, this->mouse_position, this->mouse_motion, {}};
 
-	// Check whether key combination is bound to an action
-	auto range = keys.equal_range(e);
-	if (range.first != keys.end()) {
-		std::for_each(range.first, range.second, [&arg](binding_map_t::value_type &v) {
-			arg.hints.emplace_back(v.second);
-		});
+	for (auto &it : this->keys) {
+		if (e == it.second) {
+			arg.hints.emplace_back(it.first);
+		}
 	}
 
 	// Check context list on top of the stack (most recent bound first)
