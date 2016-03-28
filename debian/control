@@ -10,6 +10,7 @@ Homepage: <insert the upstream URL, if relevant>
 
 Package: openage
 Architecture: any
+Multi-Arch: same
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
