@@ -253,7 +253,7 @@ If you forget to do that, `openage.pyinterface.setup.setup` will raise a fatal e
 ``` cpp
 #include "foo.h"
 
-std::cout << openage::bar(5, "test") << std::endl;
+std::cout << openage::bar.call(5, "test") << std::endl;
 ```
 
 The __only__ way of accessing Python code from C++ should be via the `Func` or `PyIfFunc` function wrappers, as those
