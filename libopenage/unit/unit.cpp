@@ -252,7 +252,7 @@ bool Unit::has_attribute(attr_type type) const {
 	return (this->attribute_map.count(type) > 0);
 }
 
-bool Unit::queue_cmd(const Command &cmd) {
+std::shared_ptr<UnitAbility> Unit::queue_cmd(const Command &cmd) {
 	std::lock_guard<std::mutex> lock(this->command_queue_lock);
 
 	// following the specified ability priority
@@ -262,10 +262,10 @@ bool Unit::queue_cmd(const Command &cmd) {
 		if (pair != this->ability_available.end() &&
 		    cmd.ability()[static_cast<int>(pair->first)] && pair->second->can_invoke(*this, cmd)) {
 			command_queue.push(std::make_pair(pair->second, cmd));
-			return true;
+			return pair->second;
 		}
 	}
-	return false;
+	return nullptr;
 }
 
 void Unit::delete_unit() {

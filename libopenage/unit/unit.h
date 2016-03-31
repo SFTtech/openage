@@ -184,14 +184,12 @@ public:
 	}
 
 	/**
-	 * applies the command to this unit
+	 * queues a command to be applied to this unit on the next update
 	 *
-	 * a direct command discards all interruptible tasks and sets a new target
-	 * for this entity to complete, and play action sound if available
-	 *
-	 * @return true if an action was created
+	 * @return the ability which will apply the command if an action was created
+	 * otherwise nullptr is returned when no ability can handle the command
 	 */
-	bool queue_cmd(const Command &cmd);
+	std::shared_ptr<UnitAbility> queue_cmd(const Command &cmd);
 
 	/**
 	 * removes all gather actions without calling their on_complete actions
@@ -202,6 +200,7 @@ public:
 	/**
 	 * removes all actions above and including the first interuptable action
 	 * this will stop any of the units current moving or attacking actions
+	 * a direct command from the user will invoke this function
 	 */
 	void stop_actions();
 
