@@ -115,6 +115,10 @@ bool Unit::update() {
 				return e->completed();
 			});
 	}
+
+	// apply new queued commands
+	this->apply_all_cmds();
+
 	return true;
 }
 
@@ -129,6 +133,28 @@ void Unit::update_secondary(int64_t time_elapsed) {
 		});
 	this->action_secondary.erase(position_it, std::end(this->action_secondary));
 }
+
+
+void Unit::apply_all_cmds() {
+	std::lock_guard<std::mutex> lock(this->command_queue_lock);
+	while (!this->command_queue.empty()) {
+		auto &action = this->command_queue.front();
+		this->apply_cmd(action.first, action.second);
+		this->command_queue.pop();
+	}
+}
+
+
+void Unit::apply_cmd(std::shared_ptr<UnitAbility> ability, const Command &cmd) {
+	bool is_direct = cmd.has_flag(command_flag::direct);
+	if (is_direct) {
+
+		// drop other actions if a new action is found
+		this->stop_actions();
+	}
+	ability->invoke(*this, cmd, is_direct);
+}
+
 
 void Unit::draw() {
 
@@ -226,7 +252,8 @@ bool Unit::has_attribute(attr_type type) const {
 	return (this->attribute_map.count(type) > 0);
 }
 
-bool Unit::invoke(const Command &cmd, bool direct_command) {
+bool Unit::queue_cmd(const Command &cmd) {
+	std::lock_guard<std::mutex> lock(this->command_queue_lock);
 
 	// following the specified ability priority
 	// find suitable ability for this target if available
@@ -234,15 +261,7 @@ bool Unit::invoke(const Command &cmd, bool direct_command) {
 		auto pair = this->ability_available.find(ability);
 		if (pair != this->ability_available.end() &&
 		    cmd.ability()[static_cast<int>(pair->first)] && pair->second->can_invoke(*this, cmd)) {
-			if (direct_command) {
-
-				// drop other actions if a new action is found
-				if (this->has_attribute(attr_type::gatherer)) {
-					this->stop_gather();
-				}
-				this->stop_actions();
-			}
-			pair->second->invoke(*this, cmd, direct_command);
+			command_queue.push(std::make_pair(pair->second, cmd));
 			return true;
 		}
 	}
@@ -261,9 +280,13 @@ void Unit::stop_gather() {
 }
 
 void Unit::stop_actions() {
-	/*
-	 * discard all interruptible tasks
-	 */
+
+	// work around for gatherers continuing to work after retasking
+	if (this->has_attribute(attr_type::gatherer)) {
+		this->stop_gather();
+	}
+
+	// discard all interruptible tasks
 	this->erase_after(
 		[](std::unique_ptr<UnitAction> &e) {
 			return e->allow_interupt();

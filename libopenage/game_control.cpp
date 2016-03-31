@@ -165,6 +165,7 @@ ActionMode::ActionMode()
 		auto player = engine.player_focus();
 		auto type = player->get_type(this->rng.probability(0.5)? 83 : 293);
 		Command cmd(*player, type);
+		cmd.add_flag(command_flag::direct);
 		this->selection.all_invoke(cmd);
 	});
 	this->bind(action.get("ENABLE_BUILDING_PLACEMENT"), [this](const input::action_arg_t &) {
@@ -263,6 +264,7 @@ ActionMode::ActionMode()
 		auto mousepos_phys3 = mousepos_camgame.to_phys3();
 
 		auto cmd = this->get_action(mousepos_phys3);
+		cmd.add_flag(command_flag::direct);
 		this->selection.all_invoke(cmd);
 		this->use_set_ability = false;
 	});
@@ -333,6 +335,7 @@ bool ActionMode::place_selection(coord::phys3 point) {
 		if (new_building.is_valid()) {
 			Command cmd(*engine.player_focus(), new_building.get());
 			cmd.set_ability(ability_type::build);
+			cmd.add_flag(command_flag::direct);
 			this->selection.all_invoke(cmd);
 			return true;
 		}

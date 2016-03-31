@@ -15,6 +15,7 @@ namespace openage {
  * additional flags which may affect some abilities
  */
 enum class command_flag {
+	direct, // the user directly issued this command
 	use_range, // move command account for units range
 	attack_res // allow attack on a resource object
 };

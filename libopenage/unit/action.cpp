@@ -107,7 +107,7 @@ void UnitAction::move_to(Unit &target, bool use_range) {
 	if (use_range) {
 		cmd.add_flag(command_flag::use_range);
 	}
-	this->entity->invoke(cmd);
+	this->entity->queue_cmd(cmd);
 }
 
 TargetAction::TargetAction(Unit *u, graphic_type gt, UnitReference r, coord::phys_t rad)
@@ -193,7 +193,7 @@ void TargetAction::on_completion() {
 		this->entity->log(MSG(dbg) << "auto retasking");
 		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
 		Command cmd(pl_attr.player, &new_target->unit);
-		this->entity->invoke(cmd);
+		this->entity->queue_cmd(cmd);
 	}
 }
 
@@ -372,7 +372,7 @@ void IdleAction::update(unsigned int time) {
 
 			// only allow abilities in the set of auto ability types
 			to_object.set_ability_set(auto_abilities);
-			if (this->entity->invoke(to_object)) {
+			if (this->entity->queue_cmd(to_object)) {
 				break;
 			}
 		}
@@ -646,7 +646,7 @@ void UngarrisonAction::update(unsigned int) {
 					auto &player = this->entity->get_attribute<attr_type::owner>().player;
 					Command cmd(player, this->position);
 					cmd.set_ability(ability_type::move);
-					unit_ptr->invoke(cmd);
+					unit_ptr->queue_cmd(cmd);
 					return true;
 				}
 			}
@@ -689,7 +689,7 @@ void TrainAction::update(unsigned int time) {
 				auto &build_attr = this->entity->get_attribute<attr_type::building>();
 				Command cmd(player, build_attr.gather_point);
 				cmd.set_ability(ability_type::move);
-				uref.get()->invoke(cmd);
+				uref.get()->queue_cmd(cmd);
 			}
 			this->complete = true;
 		}
@@ -837,7 +837,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 				Command cmd(pl_attr.player, targeted_resource);
 				cmd.set_ability(ability_type::attack);
 				cmd.add_flag(command_flag::attack_res);
-				this->entity->invoke(cmd);
+				this->entity->queue_cmd(cmd);
 				return;
 			}
 		}

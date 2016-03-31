@@ -247,7 +247,7 @@ void UnitSelection::all_invoke(Command &cmd) {
 		if (u.second.is_valid() && u.second.get()->is_own_unit()) {
 
 			// allow unit to find best use of the command
-			u.second.get()->invoke(cmd, true);
+			u.second.get()->queue_cmd(cmd);
 		}
 	}
 }
