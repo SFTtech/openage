@@ -3,8 +3,10 @@
 #pragma once
 
 #include <memory>
+#include <mutex>
 #include <unordered_map>
 #include <vector>
+#include <queue>
 
 #include "../log/logsource.h"
 #include "../coord/phys3.h"
@@ -182,14 +184,12 @@ public:
 	}
 
 	/**
-	 * applies the command to this unit
+	 * queues a command to be applied to this unit on the next update
 	 *
-	 * a direct command discards all interruptible tasks and sets a new target
-	 * for this entity to complete, and play action sound if available
-	 *
-	 * @return true if an action was created
+	 * @return the ability which will apply the command if an action was created
+	 * otherwise nullptr is returned when no ability can handle the command
 	 */
-	bool invoke(const Command &cmd, bool direct_command=false);
+	std::shared_ptr<UnitAbility> queue_cmd(const Command &cmd);
 
 	/**
 	 * removes all gather actions without calling their on_complete actions
@@ -200,6 +200,7 @@ public:
 	/**
 	 * removes all actions above and including the first interuptable action
 	 * this will stop any of the units current moving or attacking actions
+	 * a direct command from the user will invoke this function
 	 */
 	void stop_actions();
 
@@ -239,21 +240,36 @@ private:
 	 */
 	std::unordered_map<ability_type, std::shared_ptr<UnitAbility>> ability_available;
 
+
 	/**
 	 * action stack -- top action determines graphic to be drawn
 	 */
 	std::vector<std::unique_ptr<UnitAction>> action_stack;
+
 
 	/**
 	 * seconadry actions are always updated
 	 */
 	std::vector<std::unique_ptr<UnitAction>> action_secondary;
 
+
+	/**
+	 * queue commands to be applied on the next update
+	 */
+	std::queue<std::pair<std::shared_ptr<UnitAbility>, const Command>> command_queue;
+
+	/**
+	 * mutex controlling updates to the command queue
+	 */
+	std::mutex command_queue_lock;
+
+
 	/**
 	 * Unit attributes include color, hitpoints, speed, objects garrisoned etc
 	 * contains 0 or 1 values for each type
 	 */
 	attr_map_t attribute_map;
+
 
 	/**
 	 * pop any destructable actions on the next update cycle
@@ -265,6 +281,17 @@ private:
 	 * the container that updates this unit
 	 */
 	UnitContainer &container;
+
+	/**
+	 * applies new commands as part of the units update process
+	 */
+	void apply_all_cmds();
+
+	/**
+	 * applies one command using a chosen ability
+	 * locks the command queue mutex while operating
+	 */
+	void apply_cmd(std::shared_ptr<UnitAbility> ability, const Command &cmd);
 
 	/**
 	 * update all secondary actions

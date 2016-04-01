@@ -428,9 +428,8 @@ public:
 private:
 	bool complete, target_resource;
 	UnitReference target;
-	game_resource resource_type;
 	gamedata::unit_classes resource_class;
-	UnitReference nearest_dropsite();
+	UnitReference nearest_dropsite(game_resource res_type);
 };
 
 /**

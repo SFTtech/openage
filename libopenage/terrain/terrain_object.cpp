@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 #include "terrain_object.h"
 
@@ -77,8 +77,8 @@ bool TerrainObject::place(object_state init_state) {
 	// which intersect with the new placement
 	// if non-floating objects are on the foundation
 	// then this placement will fail
-	std::vector<TerrainObject *> to_remove;
 	for (coord::tile temp_pos : tile_list(this->pos)) {
+		std::vector<TerrainObject *> to_remove;
 		TerrainChunk *chunk = this->get_terrain()->get_chunk(temp_pos);
 
 		if (chunk == nullptr) {
@@ -103,11 +103,11 @@ bool TerrainObject::place(object_state init_state) {
 				}
 			}
 		}
-	}
 
-	// all obstructing objects get deleted
-	for (auto remove_obj : to_remove) {
-		remove_obj->unit.location = nullptr;
+		// all obstructing objects get deleted
+		for (auto remove_obj : to_remove) {
+			remove_obj->unit.location = nullptr;
+		}
 	}
 
 	// set new state

@@ -107,7 +107,7 @@ void UnitAction::move_to(Unit &target, bool use_range) {
 	if (use_range) {
 		cmd.add_flag(command_flag::use_range);
 	}
-	this->entity->invoke(cmd);
+	this->entity->queue_cmd(cmd);
 }
 
 TargetAction::TargetAction(Unit *u, graphic_type gt, UnitReference r, coord::phys_t rad)
@@ -193,7 +193,7 @@ void TargetAction::on_completion() {
 		this->entity->log(MSG(dbg) << "auto retasking");
 		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
 		Command cmd(pl_attr.player, &new_target->unit);
-		this->entity->invoke(cmd);
+		this->entity->queue_cmd(cmd);
 	}
 }
 
@@ -372,7 +372,7 @@ void IdleAction::update(unsigned int time) {
 
 			// only allow abilities in the set of auto ability types
 			to_object.set_ability_set(auto_abilities);
-			if (this->entity->invoke(to_object)) {
+			if (this->entity->queue_cmd(to_object)) {
 				break;
 			}
 		}
@@ -646,7 +646,7 @@ void UngarrisonAction::update(unsigned int) {
 					auto &player = this->entity->get_attribute<attr_type::owner>().player;
 					Command cmd(player, this->position);
 					cmd.set_ability(ability_type::move);
-					unit_ptr->invoke(cmd);
+					unit_ptr->queue_cmd(cmd);
 					return true;
 				}
 			}
@@ -689,7 +689,7 @@ void TrainAction::update(unsigned int time) {
 				auto &build_attr = this->entity->get_attribute<attr_type::building>();
 				Command cmd(player, build_attr.gather_point);
 				cmd.set_ability(ability_type::move);
-				uref.get()->invoke(cmd);
+				uref.get()->queue_cmd(cmd);
 			}
 			this->complete = true;
 		}
@@ -792,25 +792,25 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	target{tar} {
 
 	Unit *target = this->target.get();
-	if (target->has_attribute(attr_type::resource)) {
-		auto &resource_attr = target->get_attribute<attr_type::resource>();
-		if (this->resource_type != resource_attr.resource_type) {
-			this->entity->get_attribute<attr_type::gatherer>().amount = 0;
-		}
-		this->resource_type = resource_attr.resource_type;
-	} else {
-		throw std::invalid_argument("Unit reference has no resource attribute");
-	}
 	this->resource_class = target->unit_type->unit_class;
-
-
 	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
 
-	// check graphics are available
+	// handle unit type changes based on resource class
 	if (gatherer_attr.graphics.count(this->resource_class) > 0) {
 		auto *new_type = gatherer_attr.graphics.at(this->resource_class);
 		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
 		new_type->initialise(this->entity, pl_attr.player);
+	}
+
+	// set the type of gatherer
+	if (target->has_attribute(attr_type::resource)) {
+		auto &resource_attr = target->get_attribute<attr_type::resource>();
+		if (gatherer_attr.current_type != resource_attr.resource_type) {
+			this->entity->get_attribute<attr_type::gatherer>().amount = 0;
+		}
+		gatherer_attr.current_type = resource_attr.resource_type;
+	} else {
+		throw std::invalid_argument("Unit reference has no resource attribute");
 	}
 }
 
@@ -837,7 +837,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 				Command cmd(pl_attr.player, targeted_resource);
 				cmd.set_ability(ability_type::attack);
 				cmd.add_flag(command_flag::attack_res);
-				this->entity->invoke(cmd);
+				this->entity->queue_cmd(cmd);
 				return;
 			}
 		}
@@ -847,7 +847,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 			// move to dropsite location
 			this->target_resource = false;
-			this->set_target(this->nearest_dropsite());
+			this->set_target(this->nearest_dropsite(gatherer_attr.current_type));
 		}
 		else {
 
@@ -857,7 +857,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 				// when the resource runs out
 				if (gatherer_attr.amount > 0.0f) {
 					this->target_resource = false;
-					this->set_target(this->nearest_dropsite());
+					this->set_target(this->nearest_dropsite(gatherer_attr.current_type));
 				}
 				else {
 					this->complete = true;
@@ -898,7 +898,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 	this->frame += time * this->frame_rate / 3.0f;
 }
 
-UnitReference GatherAction::nearest_dropsite() {
+UnitReference GatherAction::nearest_dropsite(game_resource res_type) {
 
 	// find nearest dropsite from the targeted resource
 	auto ds = find_near(*this->target.get()->location,
@@ -912,7 +912,7 @@ UnitReference GatherAction::nearest_dropsite() {
 			       obj.unit.has_attribute(attr_type::owner) &&
 			       obj.unit.get_attribute<attr_type::owner>().player.owns(*this->entity) &&
 			       obj.unit.has_attribute(attr_type::dropsite) &&
-			       obj.unit.get_attribute<attr_type::dropsite>().accepting_resource(this->resource_type);
+			       obj.unit.get_attribute<attr_type::dropsite>().accepting_resource(res_type);
 	});
 
 	if (ds) {
