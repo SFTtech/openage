@@ -194,7 +194,7 @@ def acquire_conversion_source_dir():
             while True:
                 user_selection = input("> ")
                 if user_selection.isdecimal() and \
-                     int(user_selection) < len(proposals):
+                   int(user_selection) < len(proposals):
                     sourcedir = proposals[int(user_selection)]
                 else:
                     sourcedir = user_selection
@@ -234,13 +234,16 @@ def _get_source_dir_proposals():
         yield "$WINEPREFIX/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
-    #TODO: a switch to never call wine binaries (which might accidentally modify a wineprefix)
-    #TODO: a possibility to call different wine binaries (e.g. wine-devel from wine upstream debian repos)
+    # TODO: a switch to never call wine binaries
+    # (which might accidentally modify a wineprefix)
+
+    # TODO: a possibility to call different wine binaries
+    # (e.g. wine-devel from wine upstream debian repos)
     try:
         # get wine registry key of the age installation
         tmp_reg_file = 'aoe_temp.reg'
         if not subprocess.call(('wine', 'regedit', '/E', tmp_reg_file,
-                                REGISTRY_KEY)) and Path(tmp_reg_file).is_dir():
+                                REGISTRY_KEY)) and Path(tmp_reg_file).is_file():
             # strip the REGEDIT4 header, so it becomes a valid INI
             lines = open(tmp_reg_file, 'r').readlines()
             del lines[0:2]
