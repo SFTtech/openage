@@ -1,11 +1,11 @@
 # Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 """ Entry point for all of the asset conversion. """
+
 import os
 # importing readline enables the raw_input calls to have history etc.
 import readline  # pylint: disable=unused-import
 import subprocess
-from subprocess import Popen, PIPE
 from configparser import ConfigParser
 
 from .game_versions import GameVersion, get_game_versions
@@ -19,14 +19,14 @@ from ..util.fslike.wrapper import (
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.strings import format_progress
 
-_STANDARD_PATH_IN_32BIT_WINEPREFIX =\
+STANDARD_PATH_IN_32BIT_WINEPREFIX =\
     "drive_c/Program Files/Microsoft Games/Age of Empires II/"
-_STANDARD_PATH_IN_64BIT_WINEPREFIX =\
+STANDARD_PATH_IN_64BIT_WINEPREFIX =\
     "drive_c/Program Files (x86)/Microsoft Games/Age of Empires II/"
-_REGISTRY_KEY = \
+REGISTRY_KEY = \
     "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
-_REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
-_REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
+REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
+REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
 
 
 class DirectoryCreator(FSLikeObjWrapper):
@@ -207,49 +207,45 @@ def acquire_conversion_source_dir():
 
     return CaseIgnoringDirectory(sourcedir).root
 
+
 def _wine_to_real_path(path):
     """
     Turn a Wine file path (C:\\xyz) into a local filesystem path (~/.wine/xyz)
     """
-    winepath = Popen(('winepath', path), stdout=PIPE)
-    (real_path, err) = winepath.communicate()
-    if winepath.returncode != 0:
-        raise Exception('Could not convert Wine path into real path')
-    return real_path.strip().decode()
+    return subprocess.check_output(('winepath', path)).strip().decode()
 
-def unescape_winreg(value):
+
+def unescape_winereg(value):
     """Remove quotes and escapes from a Wine registry value"""
     return value.strip('"').replace(r'\\\\', '\\')
+
 
 def _get_source_dir_proposals():
     """Yield a list of directory names where an installation might be found"""
     if "WINEPREFIX" in os.environ:
-        yield "$WINEPREFIX/" + _STANDARD_PATH_IN_32BIT_WINEPREFIX
-        yield "$WINEPREFIX/" + _STANDARD_PATH_IN_64BIT_WINEPREFIX
-    yield "~/.wine/" + _STANDARD_PATH_IN_32BIT_WINEPREFIX
-    yield "~/.wine/" + _STANDARD_PATH_IN_64BIT_WINEPREFIX
+        yield "$WINEPREFIX/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
+        yield "$WINEPREFIX/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
+    yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
+    yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
     try:
         # get wine registry key of the age installation
         tmp_reg_file = 'aoe_temp.reg'
-        if not subprocess.call(['wine', 'regedit', '/E', tmp_reg_file,
-                        _REGISTRY_KEY]) and os.path.exists(tmp_reg_file):
+        if not subprocess.call(('wine', 'regedit', '/E', tmp_reg_file,
+                                REGISTRY_KEY)) and os.path.exists(tmp_reg_file):
             # strip the REGEDIT4 header, so it becomes a valid INI
             lines = open(tmp_reg_file, 'r').readlines()
-            tmp_reg_file_fix = open(tmp_reg_file, 'w')
-            for line in lines[2:]:
-                tmp_reg_file_fix.write(line)
-            tmp_reg_file_fix.close()
+            del lines[0:2]
 
             reg_parser = ConfigParser()
-            reg_parser.read(tmp_reg_file)
-            for suffix in _REGISTRY_SUFFIX_AOK, _REGISTRY_SUFFIX_TC:
-                reg_key = _REGISTRY_KEY + suffix
+            reg_parser.read_string(''.join(lines))
+            for suffix in REGISTRY_SUFFIX_AOK, REGISTRY_SUFFIX_TC:
+                reg_key = REGISTRY_KEY + suffix
                 if reg_key in reg_parser:
                     if '"InstallationDirectory"' in reg_parser[reg_key]:
-                        yield _wine_to_real_path(unescape_winreg(
+                        yield _wine_to_real_path(unescape_winereg(
                             reg_parser[reg_key]['"InstallationDirectory"']))
                     if '"EXE Path"' in reg_parser[reg_key]:
-                        yield _wine_to_real_path(unescape_winreg(
+                        yield _wine_to_real_path(unescape_winereg(
                             reg_parser[reg_key]['"EXE Path"']))
             os.remove(tmp_reg_file)
     except OSError as e:
