@@ -7,6 +7,7 @@ import os
 import readline  # pylint: disable=unused-import
 import subprocess
 from configparser import ConfigParser
+from pathlib import Path
 
 from .game_versions import GameVersion, get_game_versions
 from . import changelog
@@ -182,7 +183,7 @@ def acquire_conversion_source_dir():
     else:
         # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
         proposals = set(proposal for proposal in _get_source_dir_proposals()
-                        if os.path.exists(_expand_relative_path(proposal)))
+                        if Path(_expand_relative_path(proposal)).is_dir())
         print("Select an Age of Kings installation directory. "
               "Insert the index of one of the proposals, or any path:")
         proposals = sorted(proposals)
@@ -190,11 +191,18 @@ def acquire_conversion_source_dir():
             print("({}) {}".format(index, proposal))
 
         try:
-            user_selection = input("> ")
-            if user_selection.isdecimal():
-                sourcedir = proposals[int(user_selection)]
-            else:
-                sourcedir = user_selection
+            while True:
+                user_selection = input("> ")
+                if user_selection.isdecimal() and \
+                     int(user_selection) < len(proposals):
+                    sourcedir = proposals[int(user_selection)]
+                else:
+                    sourcedir = user_selection
+                sourcedir = _expand_relative_path(sourcedir)
+                if Path(sourcedir).is_dir():
+                    break
+                else:
+                    warn("No valid existing directory: {}".format(sourcedir))
         except KeyboardInterrupt:
             print("Interrupted, aborting")
             exit(0)
@@ -202,7 +210,6 @@ def acquire_conversion_source_dir():
             print("EOF, aborting")
             exit(0)
 
-    sourcedir = _expand_relative_path(sourcedir)
     print("converting from " + sourcedir)
 
     return CaseIgnoringDirectory(sourcedir).root
@@ -227,11 +234,13 @@ def _get_source_dir_proposals():
         yield "$WINEPREFIX/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
+    #TODO: a switch to never call wine binaries (which might accidentally modify a wineprefix)
+    #TODO: a possibility to call different wine binaries (e.g. wine-devel from wine upstream debian repos)
     try:
         # get wine registry key of the age installation
         tmp_reg_file = 'aoe_temp.reg'
         if not subprocess.call(('wine', 'regedit', '/E', tmp_reg_file,
-                                REGISTRY_KEY)) and os.path.exists(tmp_reg_file):
+                                REGISTRY_KEY)) and Path(tmp_reg_file).is_dir():
             # strip the REGEDIT4 header, so it becomes a valid INI
             lines = open(tmp_reg_file, 'r').readlines()
             del lines[0:2]
@@ -248,8 +257,8 @@ def _get_source_dir_proposals():
                         yield _wine_to_real_path(unescape_winereg(
                             reg_parser[reg_key]['"EXE Path"']))
             os.remove(tmp_reg_file)
-    except OSError as e:
-        dbg("wine registry extraction failed: " + str(e))
+    except OSError as error:
+        dbg("wine registry extraction failed: " + str(error))
 
 
 def conversion_required(asset_dir, args):
