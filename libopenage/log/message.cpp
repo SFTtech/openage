@@ -5,7 +5,7 @@
 #include <mutex>
 #include <unordered_set>
 
-#include "../crossplatform/timing.h"
+#include "../util/timing.h"
 #include "../util/compiler.h"
 #include "../util/thread_id.h"
 #include "../util/strings.h"

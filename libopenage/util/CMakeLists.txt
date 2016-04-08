@@ -23,6 +23,7 @@ add_sources(libopenage
 	strings.cpp
 	thread_id.cpp
 	timer.cpp
+	timing.cpp
 	unicode.cpp
 	vector.cpp
 	vector_test.cpp
