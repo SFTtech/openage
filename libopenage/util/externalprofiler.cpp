@@ -11,7 +11,7 @@
 #endif
 
 #include "subprocess.h"
-#include "../crossplatform/os.h"
+#include "os.h"
 #include "../log/log.h"
 
 
