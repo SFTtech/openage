@@ -17,7 +17,7 @@
 
 #include <unistd.h>
 
-#include "../crossplatform/signal.h"
+#include "../util/signal.h"
 #include "../util/init.h"
 #include "../util/language.h"
 
