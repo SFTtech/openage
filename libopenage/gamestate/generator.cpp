@@ -1,6 +1,6 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
-#include "../crossplatform/math_constants.h"
+#include "../util/math_constants.h"
 #include "../unit/unit.h"
 #include "../engine.h"
 #include "game_main.h"

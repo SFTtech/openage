@@ -5,7 +5,7 @@
 
 #include "../coord/phys3.h"
 #include "../coord/window.h"
-#include "../crossplatform/math_constants.h"
+#include "../util/math_constants.h"
 #include "../gamestate/game_spec.h"
 #include "../texture.h"
 #include "unit_texture.h"
