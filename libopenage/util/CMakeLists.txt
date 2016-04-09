@@ -21,6 +21,7 @@ add_sources(libopenage
 	profiler.cpp
 	stringformatter.cpp
 	strings.cpp
+	subprocess.cpp
 	thread_id.cpp
 	timer.cpp
 	timing.cpp

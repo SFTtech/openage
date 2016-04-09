@@ -15,7 +15,7 @@
 #endif
 
 #include "../log/log.h"
-#include "subprocess.h"
+#include "../util/subprocess.h"
 
 namespace openage {
 namespace os {

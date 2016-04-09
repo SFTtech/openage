@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include "externalprofiler.h"
 
@@ -10,7 +10,7 @@
 #include <gperftools/profiler.h>
 #endif
 
-#include "../crossplatform/subprocess.h"
+#include "subprocess.h"
 #include "../crossplatform/os.h"
 #include "../log/log.h"
 
