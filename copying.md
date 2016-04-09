@@ -76,6 +76,7 @@ _the openage authors_ are:
 | Martin Castillo             | castilma                    | castilma@uni-bremen.de                |
 | Volodymyr Samokhatko        | ChipmunkV                   | velorums@gmail.com                    |
 | Guillaume Desquesnes        | elnabo                      | g.desquesnes@gmail.com                |
+| Johan Klokkhammer Helsing   | johanhelsing                | johanhelsing@gmail.com                |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
