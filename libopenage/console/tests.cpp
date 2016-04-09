@@ -4,7 +4,7 @@
 #include <string>
 
 #include <unistd.h>
-#include "../crossplatform/pty.h"
+#include "../util/pty.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
