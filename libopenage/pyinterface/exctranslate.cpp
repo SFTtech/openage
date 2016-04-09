@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include "../crossplatform/timing.h"
+#include "../util/timing.h"
 #include "../error/error.h"
 #include "../util/compiler.h"
 #include "../util/thread_id.h"

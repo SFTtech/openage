@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include "draw.h"
 
@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 #include <epoxy/gl.h>
-#include "../crossplatform/timing.h"
+#include "../util/timing.h"
 
 #include <unistd.h>
 

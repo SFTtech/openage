@@ -30,7 +30,6 @@ pxdgen(
 add_subdirectory("audio")
 add_subdirectory("console")
 add_subdirectory("coord")
-add_subdirectory("crossplatform")
 add_subdirectory("datastructure")
 add_subdirectory("error")
 add_subdirectory("gamestate")
