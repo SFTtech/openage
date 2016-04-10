@@ -21,6 +21,7 @@
 #include "util/fps.h"
 #include "util/opengl.h"
 #include "util/strings.h"
+#include "util/timer.h"
 
 #include "renderer/text.h"
 #include "renderer/font/font.h"
@@ -323,10 +324,14 @@ void Engine::stop() {
 
 void Engine::loop() {
 	SDL_Event event;
+	util::Timer cap_timer;
+	// TODO: Make this configurable and/or adapt to the monitor refresh rate
+	const int64_t NS_PER_FRAME = 1000000000 / 70; // More than 60 to not interfere with VSync
 
 	while (this->running) {
 		this->profiler.start_frame_measure();
 		this->fps_counter.frame();
+		cap_timer.reset(false);
 
 		this->job_manager->execute_callbacks();
 
@@ -452,6 +457,12 @@ void Engine::loop() {
 		SDL_GL_SwapWindow(window);
 
 		this->profiler.end_measure("idle");
+
+		int64_t ns_for_frame = cap_timer.getval();
+		if (ns_for_frame < NS_PER_FRAME) {
+			SDL_Delay((NS_PER_FRAME - ns_for_frame) / 1e6);
+		}
+
 		this->profiler.end_frame_measure();
 	}
 }
