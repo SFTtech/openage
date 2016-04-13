@@ -456,12 +456,12 @@ void Engine::loop() {
 		// swap the drawing buffers to actually show the frame
 		SDL_GL_SwapWindow(window);
 
-		this->profiler.end_measure("idle");
-
 		int64_t ns_for_frame = cap_timer.getval();
 		if (ns_for_frame < NS_PER_FRAME) {
 			SDL_Delay((NS_PER_FRAME - ns_for_frame) / 1e6);
 		}
+
+		this->profiler.end_measure("idle");
 
 		this->profiler.end_frame_measure();
 	}
