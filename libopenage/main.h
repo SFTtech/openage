@@ -4,6 +4,8 @@
 
 // pxd: from libcpp.string cimport string
 #include <string>
+// pxd: from libc.stdint cimport int32_t
+#include <cstdint>
 
 namespace openage {
 
@@ -17,9 +19,11 @@ namespace openage {
  *
  * cppclass main_arguments:
  *     string data_directory
+ *     int32_t fps_limit
  */
 struct main_arguments {
 	std::string data_directory;
+	std::int32_t fps_limit;
 };
 
 

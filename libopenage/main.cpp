@@ -15,14 +15,14 @@ namespace openage {
 
 
 int run_game(const main_arguments &args) {
-	log::log(MSG(info) << "launching engine with data directory '" << args.data_directory << "'");
+	log::log(MSG(info) << "launching engine with data directory '" << args.data_directory << "' and fps limit " << args.fps_limit);
 
 	util::Timer timer;
 	timer.start();
 
 	util::Dir data_dir{args.data_directory.c_str()};
 
-	Engine::create(&data_dir, "openage");
+	Engine::create(&data_dir, args.fps_limit, "openage");
 	Engine &engine = Engine::get();
 
 	// initialize terminal colors

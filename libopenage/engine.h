@@ -6,6 +6,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include <cstdint>
+
 #include <SDL2/SDL.h>
 
 #include "log/log.h"
@@ -86,7 +88,7 @@ public:
 	/**
 	 * singleton constructor, use this to create the engine instance.
 	 */
-	static void create(util::Dir *data_dir, const char *windowtitle);
+	static void create(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle);
 
 	/**
 	 * singleton destructor, use when the program is shutting down.
@@ -104,7 +106,7 @@ private:
 	 * engine initialization method.
 	 * opens a window and initializes the OpenGL context.
 	 */
-	Engine(util::Dir *data_dir, const char *windowtitle);
+	Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle);
 
 	/**
 	 * engine copy constructor.
@@ -302,6 +304,12 @@ private:
 	 * the current data directory for the engine.
 	 */
 	util::Dir *data_dir;
+
+	/**
+	 * how many nanoseconds are in a frame (1e9 / fps_limit).
+	 * 0 if there is no fps limit.
+	 */
+	uint64_t ns_per_frame;
 
 	/**
 	 * input event processor objects.

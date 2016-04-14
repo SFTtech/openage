@@ -2,6 +2,7 @@
 
 #include "engine.h"
 
+#include <cstdint>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -21,6 +22,7 @@
 #include "util/fps.h"
 #include "util/opengl.h"
 #include "util/strings.h"
+#include "util/timer.h"
 
 #include "renderer/text.h"
 #include "renderer/font/font.h"
@@ -44,11 +46,11 @@ coord_data* Engine::get_coord_data() {
 // engine singleton instance allocation
 Engine *Engine::instance = nullptr;
 
-void Engine::create(util::Dir *data_dir, const char *windowtitle) {
+void Engine::create(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle) {
 	// only create the singleton instance if it was not created before..
 	if (Engine::instance == nullptr) {
 		// reset the pointer to the new engine
-		Engine::instance = new Engine(data_dir, windowtitle);
+		Engine::instance = new Engine(data_dir, fps_limit, windowtitle);
 		Engine::instance->get_input_manager().initialize(); // until non hardcoded keybind
 	} else {
 		throw Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
@@ -69,7 +71,7 @@ Engine &Engine::get() {
 }
 
 
-Engine::Engine(util::Dir *data_dir, const char *windowtitle)
+Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	:
 	OptionNode{"Engine"},
 	running{false},
@@ -79,6 +81,13 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	current_player{this, "current_player", 1},
 	data_dir{data_dir},
 	audio_manager{} {
+
+
+	if (fps_limit > 0) {
+		this->ns_per_frame = 1e9 / fps_limit;
+	} else {
+		this->ns_per_frame = 0;
+	}
 
 	this->font_manager = std::make_unique<renderer::FontManager>();
 	for (uint32_t size : {12, 20}) {
@@ -323,10 +332,12 @@ void Engine::stop() {
 
 void Engine::loop() {
 	SDL_Event event;
+	util::Timer cap_timer;
 
 	while (this->running) {
 		this->profiler.start_frame_measure();
 		this->fps_counter.frame();
+		cap_timer.reset(false);
 
 		this->job_manager->execute_callbacks();
 
@@ -451,7 +462,15 @@ void Engine::loop() {
 		// swap the drawing buffers to actually show the frame
 		SDL_GL_SwapWindow(window);
 
+		if (this->ns_per_frame != 0) {
+			uint64_t ns_for_current_frame = cap_timer.getval();
+			if (ns_for_current_frame < this->ns_per_frame) {
+				SDL_Delay((this->ns_per_frame - ns_for_current_frame) / 1e6);
+			}
+		}
+
 		this->profiler.end_measure("idle");
+
 		this->profiler.end_frame_measure();
 	}
 }
