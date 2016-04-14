@@ -2,6 +2,7 @@
 
 #include "engine.h"
 
+#include <cstdint>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -45,11 +46,11 @@ coord_data* Engine::get_coord_data() {
 // engine singleton instance allocation
 Engine *Engine::instance = nullptr;
 
-void Engine::create(util::Dir *data_dir, const char *windowtitle) {
+void Engine::create(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle) {
 	// only create the singleton instance if it was not created before..
 	if (Engine::instance == nullptr) {
 		// reset the pointer to the new engine
-		Engine::instance = new Engine(data_dir, windowtitle);
+		Engine::instance = new Engine(data_dir, fps_limit, windowtitle);
 		Engine::instance->get_input_manager().initialize(); // until non hardcoded keybind
 	} else {
 		throw Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
@@ -70,7 +71,7 @@ Engine &Engine::get() {
 }
 
 
-Engine::Engine(util::Dir *data_dir, const char *windowtitle)
+Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	:
 	OptionNode{"Engine"},
 	running{false},
@@ -80,6 +81,13 @@ Engine::Engine(util::Dir *data_dir, const char *windowtitle)
 	current_player{this, "current_player", 1},
 	data_dir{data_dir},
 	audio_manager{} {
+
+
+	if (fps_limit > 0) {
+		this->ns_per_frame = 1e9 / fps_limit;
+	} else {
+		this->ns_per_frame = 0;
+	}
 
 	this->font_manager = std::make_unique<renderer::FontManager>();
 	for (uint32_t size : {12, 20}) {
@@ -325,8 +333,6 @@ void Engine::stop() {
 void Engine::loop() {
 	SDL_Event event;
 	util::Timer cap_timer;
-	// TODO: Make this configurable and/or adapt to the monitor refresh rate
-	const int64_t NS_PER_FRAME = 1000000000 / 70; // More than 60 to not interfere with VSync
 
 	while (this->running) {
 		this->profiler.start_frame_measure();
@@ -456,9 +462,11 @@ void Engine::loop() {
 		// swap the drawing buffers to actually show the frame
 		SDL_GL_SwapWindow(window);
 
-		int64_t ns_for_frame = cap_timer.getval();
-		if (ns_for_frame < NS_PER_FRAME) {
-			SDL_Delay((NS_PER_FRAME - ns_for_frame) / 1e6);
+		if (this->ns_per_frame != 0) {
+			uint64_t ns_for_current_frame = cap_timer.getval();
+			if (ns_for_current_frame < this->ns_per_frame) {
+				SDL_Delay((this->ns_per_frame - ns_for_current_frame) / 1e6);
+			}
 		}
 
 		this->profiler.end_measure("idle");

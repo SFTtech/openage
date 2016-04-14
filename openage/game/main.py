@@ -11,6 +11,10 @@ def init_subparser(cli):
     """ Initializes the parser for game-specific args. """
     cli.set_defaults(entrypoint=main)
 
+    cli.add_argument(
+        "--fps", type=int,
+        help="upper limit for fps. this limit is imposed on top of vsync")
+
 
 def main(args, error):
     """
