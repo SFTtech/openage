@@ -1,9 +1,14 @@
 # Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 """ Entry point for all of the asset conversion. """
+
 import os
 # importing readline enables the raw_input calls to have history etc.
 import readline  # pylint: disable=unused-import
+import subprocess
+from configparser import ConfigParser
+from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 from .game_versions import GameVersion, get_game_versions
 from . import changelog
@@ -16,10 +21,14 @@ from ..util.fslike.wrapper import (
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.strings import format_progress
 
-_STANDARD_PATH_IN_32BIT_WINEPREFIX =\
+STANDARD_PATH_IN_32BIT_WINEPREFIX =\
     "drive_c/Program Files/Microsoft Games/Age of Empires II/"
-_STANDARD_PATH_IN_64BIT_WINEPREFIX =\
+STANDARD_PATH_IN_64BIT_WINEPREFIX =\
     "drive_c/Program Files (x86)/Microsoft Games/Age of Empires II/"
+REGISTRY_KEY = \
+    "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
+REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
+REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
 
 
 class DirectoryCreator(FSLikeObjWrapper):
@@ -174,19 +183,27 @@ def acquire_conversion_source_dir():
         print("found environment variable AGE2DIR")
     else:
         # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
-        proposals = [proposal for proposal in _get_source_dir_proposals()
-                     if os.path.exists(_expand_relative_path(proposal))]
+        proposals = set(proposal for proposal in _get_source_dir_proposals()
+                        if Path(_expand_relative_path(proposal)).is_dir())
         print("Select an Age of Kings installation directory. "
               "Insert the index of one of the proposals, or any path:")
+        proposals = sorted(proposals)
         for index, proposal in enumerate(proposals):
             print("({}) {}".format(index, proposal))
 
         try:
-            user_selection = input("> ")
-            if user_selection.isdecimal():
-                sourcedir = proposals[int(user_selection)]
-            else:
-                sourcedir = user_selection
+            while True:
+                user_selection = input("> ")
+                if user_selection.isdecimal() and \
+                   int(user_selection) < len(proposals):
+                    sourcedir = proposals[int(user_selection)]
+                else:
+                    sourcedir = user_selection
+                sourcedir = _expand_relative_path(sourcedir)
+                if Path(sourcedir).is_dir():
+                    break
+                else:
+                    warn("No valid existing directory: {}".format(sourcedir))
         except KeyboardInterrupt:
             print("Interrupted, aborting")
             exit(0)
@@ -194,20 +211,57 @@ def acquire_conversion_source_dir():
             print("EOF, aborting")
             exit(0)
 
-    sourcedir = _expand_relative_path(sourcedir)
     print("converting from " + sourcedir)
 
     return CaseIgnoringDirectory(sourcedir).root
 
 
+def _wine_to_real_path(path):
+    """
+    Turn a Wine file path (C:\\xyz) into a local filesystem path (~/.wine/xyz)
+    """
+    return subprocess.check_output(('winepath', path)).strip().decode()
+
+
+def unescape_winereg(value):
+    """Remove quotes and escapes from a Wine registry value"""
+    return value.strip('"').replace(r'\\\\', '\\')
+
+
 def _get_source_dir_proposals():
     """Yield a list of directory names where an installation might be found"""
     if "WINEPREFIX" in os.environ:
-        yield "$WINEPREFIX/" + _STANDARD_PATH_IN_32BIT_WINEPREFIX
-        yield "$WINEPREFIX/" + _STANDARD_PATH_IN_64BIT_WINEPREFIX
-    yield "~/.wine/" + _STANDARD_PATH_IN_32BIT_WINEPREFIX
-    yield "~/.wine/" + _STANDARD_PATH_IN_64BIT_WINEPREFIX
-    # TODO: wine reg query "HKLM\Software\Microsoft\Microsoft Games\Age of Empires\2.0"
+        yield "$WINEPREFIX/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
+        yield "$WINEPREFIX/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
+    yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
+    yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
+    # TODO: a switch to never call wine binaries
+    # (which might accidentally modify a wineprefix)
+
+    # TODO: a possibility to call different wine binaries
+    # (e.g. wine-devel from wine upstream debian repos)
+    try:
+        # get wine registry key of the age installation
+        with NamedTemporaryFile(mode='r') as reg_file:
+            if not subprocess.call(('wine', 'regedit', '/E', reg_file.name,
+                                    REGISTRY_KEY)):
+                # strip the REGEDIT4 header, so it becomes a valid INI
+                lines = reg_file.readlines()
+                del lines[0:2]
+
+                reg_parser = ConfigParser()
+                reg_parser.read_string(''.join(lines))
+                for suffix in REGISTRY_SUFFIX_AOK, REGISTRY_SUFFIX_TC:
+                    reg_key = REGISTRY_KEY + suffix
+                    if reg_key in reg_parser:
+                        if '"InstallationDirectory"' in reg_parser[reg_key]:
+                            yield _wine_to_real_path(unescape_winereg(
+                                reg_parser[reg_key]['"InstallationDirectory"']))
+                        if '"EXE Path"' in reg_parser[reg_key]:
+                            yield _wine_to_real_path(unescape_winereg(
+                                reg_parser[reg_key]['"EXE Path"']))
+    except OSError as error:
+        dbg("wine registry extraction failed: " + str(error))
 
 
 def conversion_required(asset_dir, args):
