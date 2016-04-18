@@ -8,6 +8,7 @@ import readline  # pylint: disable=unused-import
 import subprocess
 from configparser import ConfigParser
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 from .game_versions import GameVersion, get_game_versions
 from . import changelog
@@ -241,25 +242,24 @@ def _get_source_dir_proposals():
     # (e.g. wine-devel from wine upstream debian repos)
     try:
         # get wine registry key of the age installation
-        tmp_reg_file = 'aoe_temp.reg'
-        if not subprocess.call(('wine', 'regedit', '/E', tmp_reg_file,
-                                REGISTRY_KEY)) and Path(tmp_reg_file).is_file():
-            # strip the REGEDIT4 header, so it becomes a valid INI
-            lines = open(tmp_reg_file, 'r').readlines()
-            del lines[0:2]
+        with NamedTemporaryFile(mode='r') as reg_file:
+            if not subprocess.call(('wine', 'regedit', '/E', reg_file.name,
+                                    REGISTRY_KEY)):
+                # strip the REGEDIT4 header, so it becomes a valid INI
+                lines = reg_file.readlines()
+                del lines[0:2]
 
-            reg_parser = ConfigParser()
-            reg_parser.read_string(''.join(lines))
-            for suffix in REGISTRY_SUFFIX_AOK, REGISTRY_SUFFIX_TC:
-                reg_key = REGISTRY_KEY + suffix
-                if reg_key in reg_parser:
-                    if '"InstallationDirectory"' in reg_parser[reg_key]:
-                        yield _wine_to_real_path(unescape_winereg(
-                            reg_parser[reg_key]['"InstallationDirectory"']))
-                    if '"EXE Path"' in reg_parser[reg_key]:
-                        yield _wine_to_real_path(unescape_winereg(
-                            reg_parser[reg_key]['"EXE Path"']))
-            os.remove(tmp_reg_file)
+                reg_parser = ConfigParser()
+                reg_parser.read_string(''.join(lines))
+                for suffix in REGISTRY_SUFFIX_AOK, REGISTRY_SUFFIX_TC:
+                    reg_key = REGISTRY_KEY + suffix
+                    if reg_key in reg_parser:
+                        if '"InstallationDirectory"' in reg_parser[reg_key]:
+                            yield _wine_to_real_path(unescape_winereg(
+                                reg_parser[reg_key]['"InstallationDirectory"']))
+                        if '"EXE Path"' in reg_parser[reg_key]:
+                            yield _wine_to_real_path(unescape_winereg(
+                                reg_parser[reg_key]['"EXE Path"']))
     except OSError as error:
         dbg("wine registry extraction failed: " + str(error))
 
