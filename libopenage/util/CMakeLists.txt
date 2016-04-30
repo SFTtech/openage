@@ -18,6 +18,7 @@ add_sources(libopenage
 	matrix_test.cpp
 	misc.cpp
 	opengl.cpp
+	os.cpp
 	profiler.cpp
 	stringformatter.cpp
 	strings.cpp
