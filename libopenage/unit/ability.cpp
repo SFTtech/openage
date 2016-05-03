@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "../terrain/terrain_object.h"
+#include "../gamestate/player.h"
 #include "ability.h"
 #include "action.h"
 #include "command.h"

@@ -14,6 +14,7 @@
 #include "../handlers.h"
 #include "ability.h"
 #include "attribute.h"
+#include "command.h"
 #include "unit_container.h"
 
 namespace openage {

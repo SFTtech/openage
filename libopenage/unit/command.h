@@ -6,8 +6,6 @@
 
 #include "../coord/phys3.h"
 #include "ability.h"
-#include "producer.h"
-#include "unit.h"
 
 namespace openage {
 
@@ -42,6 +40,8 @@ struct hash<openage::command_flag> {
 namespace openage {
 
 class Player;
+class Unit;
+class UnitType;
 
 /*
  * Game command from the ui
