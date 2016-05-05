@@ -623,8 +623,29 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 			if (!tc) {
 				return false;
 			}
+
+			// check if it's in "unbuildable terrain" blacklist
+			// TODO: match this with valid enum
+			if (tc->terrain_id == 1 || // water
+				tc->terrain_id == 4 || // shallows
+				tc->terrain_id == 14 || // deep water
+				tc->terrain_id == 15 || // medium water
+				tc->terrain_id == 18 // ice
+					) return false;
+
 			for (auto tobj : tc->obj) {
+				// check if there's a generic collision (e.g. with trees)
 				if (tobj->check_collisions()) return false;
+
+				// handle building colliqsions as a special case
+				if (tobj->unit.unit_type->unit_class == gamedata::unit_classes::BUILDING) {
+
+					// all conflicts with placed buildings should block foundation placement
+					if (tobj->is_placed()) return false;
+
+					// conflicts with your own foundations should block placement
+					if (tobj->is_floating() && tobj->unit.is_own_unit()) return false;
+				}
 			}
 		}
 		return true;
