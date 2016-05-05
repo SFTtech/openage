@@ -37,7 +37,7 @@ Dependency list:
      R    dejavu font
     CR    freetype2
     CR    fontconfig
-    CR    harfbuzz
+    CR    harfbuzz >= 1.0.0
     CR    sdl2
     CR    sdl2_image
     CR    opusfile
