@@ -78,7 +78,7 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
-find_package(HarfBuzz REQUIRED)
+find_package(HarfBuzz 1.0.0 REQUIRED)
 
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)

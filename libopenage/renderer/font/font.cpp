@@ -118,7 +118,7 @@ void Font::initialize(FT_Library ft_library) {
 	}
 
 	// TODO Replace this trickery with hb_ft_font_create_referenced for harfbuzz version > 1.0
-	FT_Reference_Face(ft_face);
+	hb_ft_font_create_referenced(ft_face);
 	this->hb_font = hb_ft_font_create(ft_face, (hb_destroy_func_t) FT_Done_Face);
 }
 
