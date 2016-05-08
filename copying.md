@@ -80,6 +80,7 @@ _the openage authors_ are:
 | Jasper v. Blanckenburg      | jazzpi                      | jasper@mezzo.de                       |
 | Alexej Disterhoft           | nobbs                       | disterhoft@uni-mainz.de               |
 | Sebastian Brodehl           | sbrodehl                    | sbrodehl@students.uni-mainz.de        |
+| Charles Offenbacher         | coffenbacher                | charles.offenbacher@gmail.com         |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
