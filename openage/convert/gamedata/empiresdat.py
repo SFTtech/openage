@@ -1,8 +1,9 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
 import pickle
+from zlib import decompress
 
 from . import civ
 from . import graphic
@@ -44,7 +45,7 @@ class EmpiresDat(Exportable):
     data_format = (
         (READ, "versionstr", "char[8]"),
 
-        # terain header data
+        # terrain header data
         (READ, "terrain_restriction_count", "uint16_t"),
         (READ, "terrain_count", "uint16_t"),   # number of "used" terrains
         (READ, "terrain_restriction_offset0", "int32_t[terrain_restriction_count]"),
@@ -198,6 +199,12 @@ class EmpiresDat(Exportable):
         )),
     )
 
+    @classmethod
+    def get_hash(cls):
+        """ return the unique hash for the data format tree """
+
+        return cls.format_hash().hexdigest()
+
 
 class EmpiresDatWrapper(Exportable):
     """
@@ -247,7 +254,6 @@ def load_gamespec(fileobj, cachefile_name=None, load_cache=False):
             pass
 
     # read the file ourselves
-    from zlib import decompress
 
     dbg("reading dat file")
     compressed_data = fileobj.read()

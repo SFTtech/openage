@@ -10,14 +10,13 @@ from configparser import ConfigParser
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
-from .game_versions import GameVersion, get_game_versions
 from . import changelog
+from .game_versions import GameVersion, get_game_versions
 
 from ..log import warn, info, dbg
-from ..util.fslike.wrapper import (
-    Wrapper as FSLikeObjWrapper,
-    Synchronizer as FSLikeObjSynchronizer
-)
+from ..util.files import which
+from ..util.fslike.wrapper import (Wrapper as FSLikeObjWrapper,
+                                   Synchronizer as FSLikeObjSynchronizer)
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.strings import format_progress
 
@@ -101,6 +100,10 @@ def convert_assets(assets, args, srcdir=None):
     This method prepares srcdir and targetdir to allow a pleasant, unified
     conversion experience, then passes them to .driver.convert().
     """
+
+    # import here so codegen.py doesn't depend on it.
+    from .driver import convert
+
     # acquire conversion source directory
     if srcdir is None:
         srcdir = acquire_conversion_source_dir()
@@ -112,6 +115,7 @@ def convert_assets(assets, args, srcdir=None):
     versions = "; ".join(str(version) for version in args.game_versions)
     if not any(version.openage_supported for version in args.game_versions):
         warn("None supported of the Game version(s) {}".format(versions))
+        warn("You need \x1b[34mAge of Empires 2: The Conquerors\x1b[m")
         return False
     info("Game version(s) detected: {}".format(versions))
 
@@ -134,7 +138,6 @@ def convert_assets(assets, args, srcdir=None):
 
     args.flag = flag
 
-    from .driver import convert
     converted_count = 0
     total_count = None
     for current_item in convert(args):
@@ -163,10 +166,89 @@ def convert_assets(assets, args, srcdir=None):
     return True
 
 
-def _expand_relative_path(path):
+def expand_relative_path(path):
     """Expand relative path to an absolute one, including abbreviations like
     ~ and environment variables"""
     return os.path.realpath(os.path.expandvars(os.path.expanduser(path)))
+
+
+def wanna_use_wine():
+    """
+    Ask the user if wine should be used.
+    """
+    print("Should we call wine to determine an AOE installation? "
+          "[Y/n]")
+    while True:
+        user_selection = input("> ")
+        if user_selection.lower() in {"yes", "y", ""}:
+            return True
+        elif user_selection.lower() in {"no", "n"}:
+            return False
+        else:
+            print("Don't know what you want. Use wine? [Y/n]")
+
+
+def set_custom_wineprefix():
+    """
+    Allow the customization of the WINEPREFIX environment variable.
+    """
+
+    print("The WINEPREFIX is a separate 'container' for windows "
+          "software installations.")
+
+    current_wineprefix = os.environ.get("WINEPREFIX")
+    if current_wineprefix:
+        print("Currently: WINEPREFIX='%s'" % current_wineprefix)
+
+    print("Enter a custom value or leave empty to keep it as-is:")
+    while True:
+        new_wineprefix = expand_relative_path(input("WINEPREFIX="))
+
+        if not new_wineprefix:
+            break
+
+        # test if it probably is a wineprefix
+        if (Path(new_wineprefix) / "drive_c").is_dir():
+            break
+        else:
+            print("This does not appear to be a valid WINEPREFIX.")
+            print("Enter a valid one, or leave it empty to skip.")
+
+    # store the updated env variable for the wine subprocess
+    if new_wineprefix:
+        os.environ["WINEPREFIX"] = new_wineprefix
+
+
+def query_source_dir(proposals):
+    """
+    Query interactively for a conversion source directory.
+    Lists proposals and allows selection if some were found.
+    """
+
+    if proposals:
+        print("\nPlease select an Age of Kings installation directory.")
+        print("Insert the index of one of the proposals, or any path:")
+
+        proposals = sorted(proposals)
+        for index, proposal in enumerate(proposals):
+            print("({}) {}".format(index, proposal))
+
+    else:
+        print("Could not find any installation directory "
+              "automatically.")
+        print("Please enter an AOE2 install path manually.")
+
+    while True:
+        user_selection = input("> ")
+        if user_selection.isdecimal() and int(user_selection) < len(proposals):
+            sourcedir = proposals[int(user_selection)]
+        else:
+            sourcedir = user_selection
+        sourcedir = expand_relative_path(sourcedir)
+        if Path(sourcedir).is_dir():
+            return sourcedir
+        else:
+            warn("No valid existing directory: {}".format(sourcedir))
 
 
 def acquire_conversion_source_dir():
@@ -176,47 +258,41 @@ def acquire_conversion_source_dir():
     Returns a file system-like object that holds all the required files.
     """
     # ask for the conversion source
-    print("media conversion is required.")
+    print("\x1b[33mmedia conversion is required.\x1b[m")
 
     if 'AGE2DIR' in os.environ:
         sourcedir = os.environ['AGE2DIR']
-        print("found environment variable AGE2DIR")
-    else:
-        # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
-        proposals = set(proposal for proposal in _get_source_dir_proposals()
-                        if Path(_expand_relative_path(proposal)).is_dir())
-        print("Select an Age of Kings installation directory. "
-              "Insert the index of one of the proposals, or any path:")
-        proposals = sorted(proposals)
-        for index, proposal in enumerate(proposals):
-            print("({}) {}".format(index, proposal))
+        print("found environment variable 'AGE2DIR'")
 
+    else:
         try:
-            while True:
-                user_selection = input("> ")
-                if user_selection.isdecimal() and \
-                   int(user_selection) < len(proposals):
-                    sourcedir = proposals[int(user_selection)]
-                else:
-                    sourcedir = user_selection
-                sourcedir = _expand_relative_path(sourcedir)
-                if Path(sourcedir).is_dir():
-                    break
-                else:
-                    warn("No valid existing directory: {}".format(sourcedir))
+            # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
+            #       probably best if directly integrated into the main GUI.
+
+            call_wine = wanna_use_wine()
+
+            if call_wine:
+                set_custom_wineprefix()
+
+            proposals = set(proposal for proposal in
+                            source_dir_proposals(call_wine)
+                            if Path(expand_relative_path(proposal)).is_dir())
+
+            sourcedir = query_source_dir(proposals)
+
         except KeyboardInterrupt:
-            print("Interrupted, aborting")
+            print("\nInterrupted, aborting")
             exit(0)
         except EOFError:
-            print("EOF, aborting")
+            print("\nEOF, aborting")
             exit(0)
 
-    print("converting from " + sourcedir)
+    print("converting from '%s'" % sourcedir)
 
     return CaseIgnoringDirectory(sourcedir).root
 
 
-def _wine_to_real_path(path):
+def wine_to_real_path(path):
     """
     Turn a Wine file path (C:\\xyz) into a local filesystem path (~/.wine/xyz)
     """
@@ -228,19 +304,22 @@ def unescape_winereg(value):
     return value.strip('"').replace(r'\\\\', '\\')
 
 
-def _get_source_dir_proposals():
+def source_dir_proposals(call_wine):
     """Yield a list of directory names where an installation might be found"""
     if "WINEPREFIX" in os.environ:
         yield "$WINEPREFIX/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
         yield "$WINEPREFIX/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
-    # TODO: a switch to never call wine binaries
-    # (which might accidentally modify a wineprefix)
 
     # TODO: a possibility to call different wine binaries
     # (e.g. wine-devel from wine upstream debian repos)
+    if not call_wine or not which("wine"):
+        # no wine is found in PATH
+        return
+
     try:
+        info("using the wine registry to query an installation location...")
         # get wine registry key of the age installation
         with NamedTemporaryFile(mode='r') as reg_file:
             if not subprocess.call(('wine', 'regedit', '/E', reg_file.name,
@@ -255,11 +334,12 @@ def _get_source_dir_proposals():
                     reg_key = REGISTRY_KEY + suffix
                     if reg_key in reg_parser:
                         if '"InstallationDirectory"' in reg_parser[reg_key]:
-                            yield _wine_to_real_path(unescape_winereg(
+                            yield wine_to_real_path(unescape_winereg(
                                 reg_parser[reg_key]['"InstallationDirectory"']))
                         if '"EXE Path"' in reg_parser[reg_key]:
-                            yield _wine_to_real_path(unescape_winereg(
+                            yield wine_to_real_path(unescape_winereg(
                                 reg_parser[reg_key]['"EXE Path"']))
+
     except OSError as error:
         dbg("wine registry extraction failed: " + str(error))
 
@@ -270,32 +350,51 @@ def conversion_required(asset_dir, args):
 
     Sets options in args according to what sorts of conversion are required.
     """
+
+    version_path = asset_dir['converted',
+                             changelog.ASSET_VERSION_FILENAME]
+
+    spec_path = asset_dir['converted',
+                          changelog.GAMESPEC_VERSION_FILENAME]
+
+    # determine the version of assets
     try:
-        version_path = asset_dir['converted', changelog.ASSET_VERSION_FILENAME]
         with version_path.open() as fileobj:
             asset_version = fileobj.read().strip()
+
+        try:
+            asset_version = int(asset_version)
+        except ValueError:
+            info("Converted asset version has improper format; "
+                 "expected integer number")
+            asset_version = -1
+
     except FileNotFoundError:
         # assets have not been converted yet
         info("No converted assets have been found")
-        return True
+        asset_version = -1
+
+    # determine the version of the gamespec format
+    try:
+        with spec_path.open() as fileobj:
+            spec_version = fileobj.read().strip()
+
+    except FileNotFoundError:
+        info("Game specification version file not found.")
+        spec_version = "lol"
 
     # TODO: datapack parsing
-
-    try:
-        asset_version = int(asset_version)
-    except ValueError:
-        info("Converted assets have improper format; expected integer version")
-        return True
-
-    changes = changelog.changes(asset_version)
+    changes = changelog.changes(asset_version, spec_version)
 
     if not changes:
         dbg("Converted assets are up to date")
         return False
 
     else:
-        info("Converted assets outdated: Version " + str(asset_version))
-        info("Reconverting " + ", ".join(sorted(changes)))
+        if asset_version >= 0:
+            info("Converted assets outdated: Version %d" % asset_version)
+
+        info("Converting " + ", ".join(sorted(changes)))
         for component in changelog.COMPONENTS:
             if component not in changes:
                 # don't reconvert this component:

@@ -1,7 +1,8 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,abstract-method
 
+import types
 from enum import Enum
 
 from .content_snippet import ContentSnippet, SectionType
@@ -74,6 +75,14 @@ class DataMember:
 
         return ["%s %s;" % (self.get_effective_type(), member_name)]
 
+    def format_hash(self, hasher):
+        """
+        hash these member's settings.
+
+        used to determine data format changes.
+        """
+        raise NotImplementedError("return the hasher updated with member settings")
+
     def __repr__(self):
         raise NotImplementedError("return short description of the member type %s" % (type(self)))
 
@@ -109,6 +118,9 @@ class GroupMember(DataMember):
                 destination = "fill",
             )
         ]
+
+    def format_hash(self, hasher):
+        return self.cls.format_hash(hasher)
 
     def __repr__(self):
         return "GroupMember<%s>" % repr(self.cls)
@@ -205,6 +217,16 @@ class DynLengthMember(DataMember):
         else:
             raise Exception("unknown length definition supplied: %s" % target)
 
+    def format_hash(self, hasher):
+        if isinstance(self.length, types.LambdaType):
+            # update hash with the lambda code
+            # pylint: disable=no-member
+            hasher.update(self.length.__code__.co_code)
+        else:
+            hasher.update(str(self.length).encode())
+
+        return hasher
+
 
 class RefMember(DataMember):
     """
@@ -219,6 +241,17 @@ class RefMember(DataMember):
         # xrefs not supported yet.
         # would allow reusing a struct definition that lies in another file
         self.resolved  = False
+
+    def format_hash(self, hasher):
+        # the file_name is irrelevant for the format hash
+        # engine-internal relevance only.
+
+        # type name is none for subdata members, hash is determined
+        # by recursing into the subdata member itself.
+        if self.type_name:
+            hasher.update(self.type_name.encode())
+
+        return hasher
 
 
 class NumberMember(DataMember):
@@ -268,6 +301,11 @@ class NumberMember(DataMember):
 
     def get_effective_type(self):
         return self.number_type
+
+    def format_hash(self, hasher):
+        hasher.update(self.number_type.encode())
+
+        return hasher
 
     def __repr__(self):
         return self.number_type
@@ -423,6 +461,14 @@ class EnumMember(RefMember):
             return [snippet]
         else:
             return list()
+
+    def format_hash(self, hasher):
+        hasher = super().format_hash(hasher)
+
+        for v in sorted(self.values):
+            hasher.update(v.encode())
+
+        return hasher
 
     def __repr__(self):
         return "enum %s" % self.type_name
@@ -670,6 +716,15 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
         else:
             return list()
+
+    def format_hash(self, hasher):
+        hasher = RefMember.format_hash(self, hasher)
+        hasher = DynLengthMember.format_hash(self, hasher)
+
+        for _, subtype_class in sorted(self.class_lookup.items()):
+            hasher = subtype_class.format_hash(hasher)
+
+        return hasher
 
     def __repr__(self):
         return "MultisubtypeMember<%s:len=%s>" % (self.type_name, self.length)

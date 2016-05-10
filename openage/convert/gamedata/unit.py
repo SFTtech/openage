@@ -60,27 +60,29 @@ class UnitCommand(Exportable):
                 135: "KIDNAP_UNIT",
                 136: "DEPOSIT_UNIT",
                 149: "SHEAR",
+                150: "REGENERATION",
+                151: "FEITORIA",
                 768: "UNKNOWN_768",
                 1024: "UNKNOWN_1024",
             },
         )),
         (READ_EXPORT, "class_id", "int16_t"),
         (READ_EXPORT, "unit_id", "int16_t"),
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ_EXPORT, "terrain_id", "int16_t"),
         (READ_EXPORT, "resource_in", "int16_t"),            # carry resource
         (READ_EXPORT, "resource_productivity", "int16_t"),  # resource that multiplies the amount you can gather
         (READ_EXPORT, "resource_out", "int16_t"),           # drop resource
         (READ_EXPORT, "resource", "int16_t"),
-        (READ_EXPORT, "work_rate_multiplier", "float"),
+        (READ_EXPORT, "quantity", "float"),
         (READ_EXPORT, "execution_radius", "float"),
         (READ_EXPORT, "extra_range", "float"),
         (READ_UNKNOWN, None, "int8_t"),
-        (READ_UNKNOWN, None, "float"),
+        (READ, "scaring_radius", "float"),                  # e.g. deer
         (READ, "selection_enabled", "int8_t"),              # 1=allows to select a target, type defined in `selection_type`
         (READ_UNKNOWN, None, "int8_t"),
+        (READ, "plunder_source", "int16_t"),
         (READ_UNKNOWN, None, "int16_t"),
-        (READ_UNKNOWN, None, "int16_t"),
-        (READ_EXPORT, "targets_allowed", EnumLookupMember(
+        (READ_EXPORT, "targets_allowed", EnumLookupMember(  # aka "selection_mode"
             raw_type    = "int8_t",      # what can be selected as a target for the unit command?
             type_name   = "selection_type",
             lookup_dict = {
@@ -94,7 +96,7 @@ class UnitCommand(Exportable):
                 7: "ANY_7",
             },
         )),
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "right_click_mode", "int8_t"),
         (READ_UNKNOWN, None, "int8_t"),
         (READ_EXPORT, "tool_graphic_id", "int16_t"),               # walking with tool but no resource
         (READ_EXPORT, "proceed_graphic_id", "int16_t"),            # proceeding resource gathering or attack
@@ -149,16 +151,16 @@ class DamageGraphic(Exportable):
     data_format = (
         (READ_EXPORT, "graphic_id", "int16_t"),
         (READ_EXPORT, "damage_percent", "int8_t"),
+        (READ, "apply_mode_old", "int8_t"),    # gets overwritten in aoe memory by the real apply_mode:
         (READ_EXPORT, "apply_mode", EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "damage_draw_type",
             lookup_dict = {
-                0: "ADD_FLAMES_0",
-                1: "ADD_FLAMES_1",
-                2: "REPLACE",
+                0: "TOP",      # adds graphics on top (e.g. flames)
+                1: "RANDOM",   # adds graphics on top randomly
+                2: "REPLACE",  # replace original graphics (e.g. damaged walls)
             },
         )),
-        (READ_UNKNOWN, None, "int8_t"),
     )
 
 
@@ -515,9 +517,9 @@ class UnitObject(Exportable):
         (READ_EXPORT, "hit_points", "int16_t"),          # unit health. -1=insta-die
         (READ, "line_of_sight", "float"),
         (READ, "garrison_capacity", "int8_t"),           # number of units that can garrison in there
-        (READ_EXPORT, "radius_size0", "float"),          # size of the unit
-        (READ_EXPORT, "radius_size1", "float"),
-        (READ_EXPORT, "hp_bar_height0", "float"),               # vertical hp bar distance from ground
+        (READ_EXPORT, "radius_x", "float"),              # size of the unit
+        (READ_EXPORT, "radius_y", "float"),
+        (READ_EXPORT, "radius_z", "float"),
         (READ_EXPORT, "sound_creation0", "int16_t"),
         (READ_EXPORT, "sound_creation1", "int16_t"),
         (READ_EXPORT, "dead_unit_id", "int16_t"),               # unit id to become on death
@@ -527,12 +529,12 @@ class UnitObject(Exportable):
         (READ, "hidden_in_editor", "int8_t"),
         (READ_UNKNOWN, None, "int16_t"),
         (READ, "enabled", "int16_t"),                    # 0=unlocked by research, 1=insta-available
-        (READ, "placement_bypass_terrain0", "int16_t"),  # terrain id that's needed somewhere on the foundation (e.g. dock water)
-        (READ, "placement_bypass_terrain1", "int16_t"),  # second slot for ^
+        (READ, "placement_side_terrain0", "int16_t"),    # terrain id that's needed somewhere on the foundation (e.g. dock water)
+        (READ, "placement_side_terrain1", "int16_t"),    # second slot for ^
         (READ, "placement_terrain0", "int16_t"),         # terrain needed for placement (e.g. dock: water)
         (READ, "placement_terrain1", "int16_t"),         # alternative terrain needed for placement (e.g. dock: shallows)
-        (READ, "editor_radius0", "float"),
-        (READ, "editor_radius1", "float"),
+        (READ, "clearance_size_x", "float"),             # minimum space required to allow placement in editor
+        (READ, "clearance_size_y", "float"),
         (READ_EXPORT, "building_mode", EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "building_modes",
@@ -581,7 +583,7 @@ class UnitObject(Exportable):
         (READ_EXPORT, "fly_mode", "int8_t"),
         (READ_EXPORT, "resource_capacity", "int16_t"),
         (READ_EXPORT, "resource_decay", "float"),                 # when animals rot, their resources decay
-        (READ_EXPORT, "blast_armor_level", EnumLookupMember(  # Receive blast damage from units that have lower or same blast_attack_level.
+        (READ_EXPORT, "blast_defense_level", EnumLookupMember(  # Receive blast damage from units that have lower or same blast_attack_level.
             raw_type    = "int8_t",
             type_name   = "blast_types",
             lookup_dict = {
@@ -591,9 +593,9 @@ class UnitObject(Exportable):
                 3: "UNIT_3",    # boar, farm, fishingship, villager, tradecart, sheep, turkey, archers, junk, ships, monk, siege
             }
         )),
-        (READ, "trigger_type", "int8_t"),  # associated scenario trigger type:
-                                           # 0:Projectile/Dead/Resource 1:Boar 2:Building
-                                           # 3:Civilian 4:Military 5:Other
+        (READ, "sub_type", "int8_t"),  # associated scenario trigger type:
+                                       # 0:Projectile/Dead/Resource 1:Boar 2:Building
+                                       # 3:Civilian 4:Military 5:Other
         (READ_EXPORT, "interaction_mode", EnumLookupMember(
             raw_type    = "int8_t",  # what can be done with this unit?
             type_name   = "interaction_modes",
@@ -613,9 +615,9 @@ class UnitObject(Exportable):
                 0: "NO_DOT_0",
                 1: "SQUARE_DOT",   # turns white when selected
                 2: "DIAMOND_DOT",  # dito
-                3: "DIAMOND_DOT_KEEPCOLOR",
-                4: "LARGEDOT_0",   # observable by all players, no attack-blinking
-                5: "LARGEDOT_1",
+                3: "DIAMOND_DOT_KEEPCOLOR",  # doesn't turn white when selected
+                4: "LARGEDOT",   # observable by all players, no attacked-blinking
+                5: "NO_DOT_5",
                 6: "NO_DOT_6",
                 7: "NO_DOT_7",
                 8: "NO_DOT_8",
@@ -649,7 +651,7 @@ class UnitObject(Exportable):
         (READ_UNKNOWN, None, "int8_t"),
         (READ, "unselectable", "uint8_t"),
         (READ_UNKNOWN, None, "int8_t"),
-        (READ, "selection_mode", "int8_t"),
+        (READ_UNKNOWN, None, "int8_t"),
         (READ_UNKNOWN, None, "int8_t"),
 
         # bit 0 == 1 && val != 7: mask shown behind buildings,
@@ -671,7 +673,7 @@ class UnitObject(Exportable):
         # bit 7: invisible unit
         (READ, "attribute", "uint8_t"),
         (READ, "civilisation", "int8_t"),
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ, "attribute_piece", "int16_t"),   # leftover from attribute+civ variable
         (READ_EXPORT, "selection_effect", EnumLookupMember(
             raw_type = "int8_t",     # things that happen when the unit was selected
             type_name = "selection_effects",
@@ -689,9 +691,9 @@ class UnitObject(Exportable):
             },
         )),
         (READ, "editor_selection_color", "uint8_t"),  # 0: default, -16: fish trap, farm, 52: deadfarm, OLD-*, 116: flare, whale, dolphin -123: fish
-        (READ, "selection_radius0", "float"),
-        (READ, "selection_radius1", "float"),
-        (READ_EXPORT, "hp_bar_height1", "float"),           # vertical hp bar distance from ground
+        (READ_EXPORT, "selection_shape_x", "float"),
+        (READ_EXPORT, "selection_shape_y", "float"),
+        (READ_EXPORT, "selection_shape_z", "float"),
         (READ_EXPORT, "resource_storage", SubdataMember(
             ref_type=ResourceStorage,
             length=3,
@@ -703,8 +705,20 @@ class UnitObject(Exportable):
         )),
         (READ_EXPORT, "sound_selection", "int16_t"),
         (READ_EXPORT, "sound_dying", "int16_t"),
-        (READ_EXPORT, "attack_mode", "int8_t"),     # 0: no attack, 1: attack by following, 2: run when attacked, 3:?, 4: attack
-        (READ, "is_edible_meat", "int8_t"),         # 1: yup, you may eat it
+        (READ_EXPORT, "attack_mode", EnumLookupMember(  # maybe obsolete, as it's copied when converting the unit
+            raw_type = "int8_t",     # things that happen when the unit was selected
+            type_name = "attack_modes",
+            lookup_dict = {
+                0: "NO",         # no attack
+                1: "FOLLOWING",  # by following
+                2: "RUN",        # run when attacked
+                3: "UNKNOWN3",
+                4: "ATTACK",
+            },
+        )),
+
+
+        (READ_UNKNOWN, None, "int8_t"),         # maybe: 1: yup, you may eat/gather it.
         (READ_EXPORT, "name", "char[name_length]"),
         (READ_EXPORT, "id1", "int16_t"),
         (READ_EXPORT, "id2", "int16_t"),
@@ -786,12 +800,17 @@ class UnitBird(UnitDeadOrFish):
 
     data_format = (
         (READ_EXPORT, None, IncludeMembers(cls=UnitDeadOrFish)),
-        (READ, "sheep_conversion", "int16_t"),     # 0=can be converted by unit command 107 (you found sheep!!1)
+        # callback unit action id when found.
+        # monument and sheep: 107 = enemy convert.
+        # all auto-convertible units: 0, most other units: -1
+        (READ, "discovered_action_id", "int16_t"),
         (READ, "search_radius", "float"),
         (READ_EXPORT, "work_rate", "float"),
         (READ_EXPORT, "drop_site0", "int16_t"),           # unit id where gathered resources shall be delivered to
         (READ_EXPORT, "drop_site1", "int16_t"),           # alternative unit id
-        (READ_EXPORT, "villager_mode", "int8_t"),  # unit can switch villager type (holza? gathara!) 1=male, 2=female
+        (READ_EXPORT, "task_swap_group_id", "int8_t"),    # if a task is not found in the current unit, other units with the same group id are tried.
+                                                          # 1: male villager; 2: female villager; 3+: free slots
+                                                          # basically this creates a "swap group id" where you can place different-graphic units together.
         (READ_EXPORT, "move_sound", "int16_t"),
         (READ_EXPORT, "stop_sound", "int16_t"),
         (READ, "animal_mode", "int8_t"),
@@ -828,8 +847,8 @@ class UnitMovable(UnitBird):
             },
         )),
         (READ_EXPORT, "max_range", "float"),
-        (READ, "blast_radius", "float"),
-        (READ, "reload_time0", "float"),
+        (READ, "blast_width", "float"),
+        (READ, "reload_time", "float"),
         (READ_EXPORT, "projectile_unit_id", "int16_t"),
         (READ, "accuracy_percent", "int16_t"),       # probablity of attack hit
         (READ, "tower_mode", "int8_t"),
@@ -847,13 +866,13 @@ class UnitMovable(UnitBird):
                 3: "TARGET_ONLY",
             },
         )),
-        (READ, "min_range", "float"),
-        (READ, "garrison_recovery_rate", "float"),  # accuracy_error_radius?
+        (READ, "min_range", "float"),                 # minimum range that this projectile requests for display
+        (READ, "accuracy_dispersion", "float"),
         (READ_EXPORT, "attack_graphic", "int16_t"),
         (READ, "melee_armor_displayed", "int16_t"),
         (READ, "attack_displayed", "int16_t"),
         (READ, "range_displayed", "float"),
-        (READ, "reload_time1", "float"),
+        (READ, "reload_time_displayed", "float"),
     )
 
     def __init__(self):
@@ -871,10 +890,10 @@ class UnitProjectile(UnitMovable):
 
     data_format = (
         (READ_EXPORT, None, IncludeMembers(cls=UnitMovable)),
-        (READ, "stretch_mode", "int8_t"),         # 1 = projectile falls vertically to the bottom of the map
-        (READ, "compensation_mode", "int8_t"),
+        (READ, "stretch_mode", "int8_t"),         # 0 = default; 1 = projectile falls vertically to the bottom of the map; 3 = teleporting projectiles
+        (READ, "smart_mode", "int8_t"),           # "better aiming". tech attribute 19 changes this: 0 = shoot at current pos; 1 = shoot at predicted pos
         (READ, "drop_animation_mode", "int8_t"),  # 1 = disappear on hit
-        (READ, "penetration_mode", "int8_t"),     # 1 = pass through hit object
+        (READ, "penetration_mode", "int8_t"),     # 1 = pass through hit object; 0 = stop projectile on hit; (only for graphics, not pass-through damage)
         (READ_UNKNOWN, None, "int8_t"),
         (READ_EXPORT, "projectile_arc", "float"),
     )
@@ -919,17 +938,40 @@ class UnitLiving(UnitMovable):
         (READ, "creation_button_id", "int8_t"),
         (READ_UNKNOWN, None, "float"),
         (READ_UNKNOWN, None, "float"),
-        (READ, "missile_graphic_delay", "int8_t"),           # delay before the projectile is fired.
+        (READ_EXPORT, "creatable_type", EnumLookupMember(
+            raw_type    = "int8_t",
+            type_name   = "creatable_types",
+            lookup_dict = {
+                0: "NONHUMAN",  # building, animal, ship
+                1: "VILLAGER",  # villager, king
+                2: "MELEE",     # soldier, siege, predator, trader
+                3: "MOUNTED",   # camel rider
+                4: "RELIC",
+                5: "RANGED_PROJECTILE",  # archer
+                6: "RANGED_MAGIC",       # monk
+                21: "TRANSPORT_SHIP",
+            },
+        )),
         (READ, "hero_mode", "int8_t"),                       # if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
         (READ_EXPORT, "garrison_graphic", "int32_t"),        # graphic to display when units are garrisoned
-        (READ, "attack_missile_count", "float"),             # projectile count when nothing garrisoned, including both normal and duplicated projectiles
-        (READ, "attack_missile_max_count", "int8_t"),        # total missiles when fully garrisoned
-        (READ, "attack_missile_duplication_spawning_width", "float"),
-        (READ, "attack_missile_duplication_spawning_length", "float"),
-        (READ, "attack_missile_duplication_spawning_randomness", "float"),  # placement randomness, 0=from single spot, 1=random, 1<less random
-        (READ, "attack_missile_duplication_unit_id", "int32_t"),
-        (READ, "attack_missile_duplication_graphic_id", "int32_t"),
-        (READ, "dynamic_image_update", "int8_t"),     # determines adjacent unit graphics, if 1: building can adapt graphics by adjacent buildings
+        (READ, "attack_projectile_count", "float"),             # projectile count when nothing garrisoned, including both normal and duplicated projectiles
+        (READ, "attack_projectile_max_count", "int8_t"),        # total projectiles when fully garrisoned
+        (READ, "attack_projectile_spawning_area_width", "float"),
+        (READ, "attack_projectile_spawning_area_length", "float"),
+        (READ, "attack_projectile_spawning_area_randomness", "float"),  # placement randomness, 0=from single spot, 1=random, 1<less random
+        (READ, "attack_projectile_secondary_unit_id", "int32_t"),   # uses its own attack values
+        (READ, "special_graphic_id", "int32_t"),  # used just before unit reaches its target enemy, configuration:
+        (READ, "special_activation", "int8_t"),   # determines adjacent unit graphics, if 1: building can adapt graphics by adjacent buildings
+                                                  # 0: default: only works when facing the hit angle.
+                                                  # 1: block: activates special graphic when receiving damage and not pursuing the attacker.
+                                                  #           while idle, blocking decreases damage taken by 1/3.
+                                                  #           also: a wall changes the graphics (when not-an-end piece) because of this.
+                                                  # 2: counter charge: activates special graphic when idle and enemy is near.
+                                                  #                    while idle, attacks back once on first received hit.
+                                                  #                    enemy must be unit type 70 and have less than 0.2 max range.
+                                                  # 3: charge: activates special graphic when closer than two tiles to the target.
+                                                  #            deals 2X damage on 1st hit
+
         (READ, "pierce_armor_displayed", "int16_t"),  # unit stats display of pierce armor
     )
 
