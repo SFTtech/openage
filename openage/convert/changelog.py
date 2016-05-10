@@ -59,7 +59,7 @@ def changes(asset_version, spec_version):
 
     if "metadata" not in changed_components:
         if EmpiresDat.get_hash() != spec_version:
-            changed_components |= {"metadata"}
+            changed_components.add("metadata")
 
     return changed_components
 

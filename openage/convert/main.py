@@ -226,7 +226,7 @@ def query_source_dir(proposals):
     """
 
     if proposals:
-        print("Please select an Age of Kings installation directory.")
+        print("\nPlease select an Age of Kings installation directory.")
         print("Insert the index of one of the proposals, or any path:")
 
         proposals = sorted(proposals)
@@ -351,33 +351,39 @@ def conversion_required(asset_dir, args):
     Sets options in args according to what sorts of conversion are required.
     """
 
+    version_path = asset_dir['converted',
+                             changelog.ASSET_VERSION_FILENAME]
+
+    spec_path = asset_dir['converted',
+                          changelog.GAMESPEC_VERSION_FILENAME]
+
+    # determine the version of assets
     try:
-        version_path = asset_dir['converted',
-                                 changelog.ASSET_VERSION_FILENAME]
-
-        spec_path = asset_dir['converted',
-                              changelog.GAMESPEC_VERSION_FILENAME]
-
         with version_path.open() as fileobj:
             asset_version = fileobj.read().strip()
 
-        with spec_path.open() as fileobj:
-            spec_version = fileobj.read().strip()
-
-        asset_version = int(asset_version)
+        try:
+            asset_version = int(asset_version)
+        except ValueError:
+            info("Converted asset version has improper format; "
+                 "expected integer number")
+            asset_version = -1
 
     except FileNotFoundError:
         # assets have not been converted yet
         info("No converted assets have been found")
-        return True
+        asset_version = -1
 
-    except ValueError:
-        info("Converted assets have improper format; "
-             "expected integer version")
-        return True
+    # determine the version of the gamespec format
+    try:
+        with spec_path.open() as fileobj:
+            spec_version = fileobj.read().strip()
+
+    except FileNotFoundError:
+        info("Game specification version file not found.")
+        spec_version = "lol"
 
     # TODO: datapack parsing
-
     changes = changelog.changes(asset_version, spec_version)
 
     if not changes:
@@ -385,14 +391,15 @@ def conversion_required(asset_dir, args):
         return False
 
     else:
-        info("Converted assets outdated: Version " + str(asset_version))
-        info("Reconverting " + ", ".join(sorted(changes)))
+        if asset_version >= 0:
+            info("Converted assets outdated: Version %d" % asset_version)
+
+        info("Converting " + ", ".join(sorted(changes)))
         for component in changelog.COMPONENTS:
             if component not in changes:
                 # don't reconvert this component:
                 setattr(args, "no_{}".format(component), True)
 
-        # TODO
         if "metadata" in changes:
             args.no_pickle_cache = True
 
