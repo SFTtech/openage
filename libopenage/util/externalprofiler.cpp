@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include "../config.h"
+#include "config.h"
 
 #if WITH_GPERFTOOLS_PROFILER
 #include <gperftools/profiler.h>

@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#include "../config.h"
+#include "config.h"
 
 namespace openage {
 namespace error {

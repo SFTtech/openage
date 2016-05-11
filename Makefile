@@ -75,7 +75,7 @@ cleanbuilddirs: cleaninsourcebuild cleancodegen
 	@echo cleaning build directories
 	rm -rf .bin
 	@echo cleaning cmake-time generated code
-	rm -f openage/config.py libopenage/config.h libopenage/config.cpp
+	rm -f openage/config.py
 
 .PHONY: mrproper
 mrproper: cleanbuilddirs

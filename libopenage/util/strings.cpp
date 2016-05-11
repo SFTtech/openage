@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 #include "strings.h"
 
@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-#include "../config.h"
+#include "config.h"
 #include "compiler.h"
 
 namespace openage {

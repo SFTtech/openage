@@ -32,7 +32,8 @@ add_sources(libopenage
 	options.cpp
 	screenshot.cpp
 	texture.cpp
-	config.cpp
+
+	"${CMAKE_CURRENT_BINARY_DIR}/config.cpp"
 )
 
 pxdgen(
@@ -141,8 +142,9 @@ endif()
 
 get_config_option_string()
 
-configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
-configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
+configure_file(config.h.in config.h)
+configure_file(config.cpp.in config.cpp)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 # directories for header inclusion
 include_directories(
@@ -202,4 +204,5 @@ add_custom_target(pxdgen
 )
 
 set(PYEXT_LINK_LIBRARY libopenage PARENT_SCOPE)
+set(PYEXT_INCLUDE_DIRS ${PYEXT_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR} PARENT_SCOPE)
 set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -include \"${CMAKE_CURRENT_SOURCE_DIR}/pyinterface/hacks.h\"" PARENT_SCOPE)
