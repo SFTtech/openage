@@ -1,12 +1,17 @@
-add_cython_modules(
-	exctranslate.pyx
-	exctranslate_tests.pyx
-	pyobject.pyx
-	setup_checker.pyx
+add_cython_module(exctranslate
+	SOURCES exctranslate.pyx
 )
 
-add_pxds(
-	typedefs.pxd
+add_cython_module(exctranslate_tests
+	SOURCES exctranslate_tests.pyx
+)
+
+add_cython_module(pyobject
+	SOURCES pyobject.pyx
+)
+
+add_cython_module(setup_checker
+	SOURCES setup_checker.pyx
 )
 
 add_py_modules(

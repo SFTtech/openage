@@ -1,5 +1,5 @@
-add_cython_modules(
-	main_cpp.pyx
+add_cython_module(main_cpp
+	SOURCES main_cpp.pyx
 )
 
 add_py_modules(

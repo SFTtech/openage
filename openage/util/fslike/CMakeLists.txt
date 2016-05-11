@@ -9,6 +9,6 @@ add_py_modules(
 )
 
 
-add_cython_modules(
-	cpp.pyx
+add_cython_module(cpp
+	SOURCES cpp.pyx
 )

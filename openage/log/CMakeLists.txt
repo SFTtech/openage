@@ -1,5 +1,5 @@
-add_cython_modules(
-	log_cpp.pyx
+add_cython_module(log_cpp
+	SOURCES log_cpp.pyx
 )
 
 add_py_modules(

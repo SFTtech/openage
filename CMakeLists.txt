@@ -70,13 +70,13 @@ include(CheckCompilerFeatures)
 include(HandlePythonOptions)
 include(CheckRuntimeDependencies)
 include(DetectProjectVersion)
+include(AddCythonModule)
 
 # include build configuration modules
 include(CTest)
 
 include(util)
 include(cpp)
-include(python)
 include(codegen)
 include(version)
 include(doxygen)
@@ -89,14 +89,14 @@ include(doxygen)
 doxygen_configure(libopenage/ openage/)
 
 add_subdirectory(assets/)
-add_subdirectory(libopenage/)
-set(PYEXT_LINK_LIBRARY libopenage)
-set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -include \"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")
-add_cython_modules(EMBED NOINSTALL run.py)
-add_subdirectory(openage/)
 add_subdirectory(dist/)
+add_subdirectory(libopenage/)
+add_subdirectory(openage/)
 
-python_finalize()
+add_cython_module(run
+	EMBED NOINSTALL
+	SOURCES run.py
+)
 
 message("")
 

@@ -1,6 +1,10 @@
-add_cython_modules(
-	lzxd.pyx
-	STANDALONE cabchecksum.pyx
+add_cython_module(lzxd
+	SOURCES lzxd.pyx
+)
+
+add_cython_module(cabchecksum
+	STANDALONE
+	SOURCES cabchecksum.pyx
 )
 
 add_py_modules(
