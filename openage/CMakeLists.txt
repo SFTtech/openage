@@ -25,7 +25,11 @@ endfunction()
 
 # create python config file
 get_config_option_string()
-configure_file(config.py.in "${CMAKE_CURRENT_SOURCE_DIR}/config.py")
+configure_file(config_generated.py.in config_generated.py)
+file(GENERATE
+	OUTPUT "${CMAKE_BINARY_DIR}/$<CONFIG>/openage/config_generated.py"
+	INPUT "${CMAKE_CURRENT_BINARY_DIR}/config_generated.py"
+)
 
 set_source_files_properties(devmode.py PROPERTIES NOINSTALL TRUE)
 
@@ -34,6 +38,7 @@ add_py_modules(
 	__main__.py
 	assets.py
 	config.py
+	"${CMAKE_CURRENT_BINARY_DIR}/config_generated.py"
 	devmode.py
 )
 
