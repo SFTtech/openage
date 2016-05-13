@@ -1,0 +1,23 @@
+[build]
+build-base = @PYLIBRARY_BUILD_DIR@
+build-lib = @PYLIBRARY_BUILD_LIB_DIR@
+
+[build_pxd]
+build-dir = @CMAKE_BINARY_DIR@
+file-list = @PXDGEN_SOURCE_FILES@
+
+[build_ext]
+include-dirs = @PYEXT_INCLUDE_DIRS@
+rpath = @CMAKE_BINARY_DIR@/libopenage
+cc = @CMAKE_C_COMPILER@
+cxx = @CMAKE_CXX_COMPILER@
+linker = @CMAKE_LINKER@
+ar = @CMAKE_AR@
+cflags = @PYEXT_CXXFLAGS@
+
+[bdist]
+bdist-base = @PYLIBRARY_BUILD_DIR@
+dist-dir = @PYLIBRARY_BUILD_DIR@
+
+[egg_info]
+egg-base = @PYLIBRARY_BUILD_DIR@

@@ -88,14 +88,31 @@ include(doxygen)
 doxygen_configure(libopenage/ openage/)
 
 add_subdirectory(assets/)
-add_subdirectory(libopenage/)
-set(PYEXT_LINK_LIBRARY libopenage)
-set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -include \"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")
-add_cython_modules(EMBED NOINSTALL run.py)
-add_subdirectory(openage/)
 add_subdirectory(dist/)
+add_subdirectory(libopenage/)
 
-python_finalize()
+get_config_option_string()
+configure_file("${CMAKE_SOURCE_DIR}/openage/config.py.in" "${CMAKE_SOURCE_DIR}/openage/config.py")
+
+set(PYLIBRARY_BUILD_DIR "${CMAKE_BINARY_DIR}/pylibrary")
+set(PYLIBRARY_BUILD_LIB_DIR "${PYLIBRARY_BUILD_DIR}/lib")
+set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -include \"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")
+get_property(PXDGEN_SOURCE_FILES GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
+configure_file("${BUILDSYSTEM_DIR}/templates/setup.cfg.in" "${CMAKE_BINARY_DIR}/setup.cfg" @ONLY)
+
+add_custom_target(pylibrary ALL
+	COMMAND ${PYTHON} setup.py --quiet --cfg-file="${CMAKE_BINARY_DIR}/setup.cfg" build
+	WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+)
+add_dependencies(pylibrary libopenage)
+
+install(CODE
+	"execute_process(
+		COMMAND ${PYTHON} setup.py --cfg-file=${CMAKE_BINARY_DIR}/setup.cfg install
+		WORKING_DIRECTORY \"${CMAKE_SOURCE_DIR}\"
+	)"
+	COMPONENT "pylibrary"
+)
 
 message("")
 
@@ -110,7 +127,6 @@ message("${PROJECT_NAME} ${PROJECT_VERSION}
  build type flags | ${${BUILD_TYPE_CXX_FLAGS}}
         build dir | ${CMAKE_BINARY_DIR}
    install prefix | ${CMAKE_INSTALL_PREFIX}
-py install prefix | ${CMAKE_PY_INSTALL_PREFIX}
 ")
 
 # don't print 'Built target ...' messages

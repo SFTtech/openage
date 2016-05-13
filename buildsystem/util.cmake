@@ -23,20 +23,3 @@ function(pretty_print_target type targetname targetproperties)
 	string(STRIP "${pretty_message}" pretty_message)
 	message("\t${pretty_message}")
 endfunction()
-
-
-function(write_on_change filename content)
-	# write the content to filename if it is different than
-	# what's already in that file (if exists)
-	# if the file doesn't exist, create it.
-
-	unset(current_content)
-
-	if(EXISTS ${filename})
-		file(READ ${filename} current_content)
-	endif()
-
-	if(NOT current_content STREQUAL content)
-		file(WRITE "${filename}" "${content}")
-	endif()
-endfunction()

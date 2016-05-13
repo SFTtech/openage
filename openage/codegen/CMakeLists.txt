@@ -1,8 +1,0 @@
-add_py_modules(
-	__init__.py
-	codegen.py
-	cpp_testlist.py
-	gamespec_structs.py
-	listing.py
-	main.py
-)

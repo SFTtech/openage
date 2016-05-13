@@ -2,6 +2,8 @@
 
 BUILDDIR = bin
 
+PYLIBRARY_DIR = $(BUILDDIR)/pylibrary/lib
+
 MAKEARGS += $(if $(VERBOSE),,--no-print-directory)
 
 .PHONY: default
@@ -19,14 +21,14 @@ install: $(BUILDDIR)
 
 .PHONY: run
 run: build
-	./run game
+	$(PYLIBRARY_DIR)/run game
 
 .PHONY: test
 test: tests checkfast
 
 .PHONY: tests
 tests: build
-	./run test -a
+	$(PYLIBRARY_DIR)/run test -a
 
 .PHONY: build
 build: $(BUILDDIR)
@@ -39,22 +41,6 @@ libopenage: $(BUILDDIR)
 .PHONY: codegen
 codegen: $(BUILDDIR)
 	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) codegen
-
-.PHONY: pxdgen
-pxdgen: $(BUILDDIR)
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) pxdgen
-
-.PHONY: compilepy
-compilepy: $(BUILDDIR)
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) compilepy
-
-.PHONY: inplacemodules
-inplacemodules:
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) inplacemodules
-
-.PHONY: cythonize
-cythonize: $(BUILDDIR)
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cythonize
 
 .PHONY: doc
 doc: $(BUILDDIR)
@@ -70,18 +56,8 @@ cleancodegen: $(BUILDDIR)
 	@# removes all sourcefiles created by codegen
 	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleancodegen
 
-.PHONY: cleanpxdgen
-cleanpxdgen: $(BUILDDIR)
-	@# removes all generated .pxd files
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleanpxdgen
-
-.PHONY: cleancython
-cleancython: $(BUILDDIR)
-	@# removes all .cpp files created by Cython
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cleancython
-
 .PHONY: clean
-clean: $(BUILDDIR) cleancodegen cleanpxdgen cleancython cleanelf
+clean: $(BUILDDIR) cleancodegen cleanelf
 	@# removes object files, binaries, py modules, generated code
 
 .PHONY: cleaninsourcebuild
@@ -96,18 +72,18 @@ cleaninsourcebuild:
 
 .PHONY: cleanbuilddirs
 cleanbuilddirs: cleaninsourcebuild
-	@if test -d bin; then $(MAKE) $(MAKEARGS) -C bin clean cleancython cleanpxdgen cleancodegen || true; fi
+	@if test -d bin; then $(MAKE) $(MAKEARGS) -C bin clean cleanpxdgen cleancodegen || true; fi
 	@echo cleaning symlinks to build directories
 	rm -f bin
 	@echo cleaning build directories
 	rm -rf .bin
 	@echo cleaning cmake-time generated code
-	rm -f Doxyfile py/openage/config.py libopenage/config.h libopenage/config.cpp
+	rm -f openage/config.py libopenage/config.h libopenage/config.cpp
 
 .PHONY: mrproper
 mrproper: cleanbuilddirs
 	@echo cleaning converted assets
-	rm -rf userassets
+	rm -rf assets/converted
 
 .PHONY: mrproperer
 mrproperer: mrproper
@@ -143,17 +119,11 @@ help: $(BUILDDIR)/Makefile
 	@echo ""
 	@echo "build              -> build entire project"
 	@echo "libopenage         -> build libopenage"
-	@echo "pxdgen             -> generate .pxd files"
-	@echo "cythonize          -> compile .pyx files to .cpp"
-	@echo "compilepy          -> compile .py files to .pyc"
-	@echo "inplacemodules     -> create in-place modules"
 	@echo "codegen            -> generate cpp sources"
 	@echo "doc                -> create documentation files"
 	@echo ""
 	@echo "cleanelf           -> remove C++ ELF files"
 	@echo "cleancodegen       -> undo 'make codegen'"
-	@echo "cleancython        -> undo 'make cythonize inplacemodules'"
-	@echo "cleanpxdgen        -> undo 'make pxdgen'"
 	@echo "clean              -> undo 'make' (all of the above)"
 	@echo "cleanbuilddirs     -> undo 'make' and './configure'"
 	@echo "cleaninsourcebuild -> undo in-source build accidents"

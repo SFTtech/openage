@@ -34,8 +34,13 @@ class PXDGenerator:
         the output filename is the same, but with .pxd instead of .h.
     """
 
-    def __init__(self, filename):
+    def __init__(self, filename, build_dir=None):
         self.filename = filename
+
+        build_dir = build_dir or CWD
+        filename_relpath = os.path.relpath(filename, CWD)
+        pxdfile_relpath = os.path.splitext(filename_relpath)[0] + '.pxd'
+        self.pxdfile = os.path.join(build_dir, pxdfile_relpath)
 
         self.warnings = []
 
@@ -319,36 +324,34 @@ class PXDGenerator:
 
         on parsing failure, raises ParserError.
         """
-        pxdfile = os.path.splitext(self.filename)[0] + '.pxd'
 
         # create empty __init__.py in all parent directories.
         # CMake requires this; else it won't find the .pxd files.
-        dirname = os.path.abspath(os.path.dirname(self.filename))
+        dirname = os.path.abspath(os.path.dirname(self.pxdfile))
         while dirname.startswith(CWD + os.path.sep):
             initfile = os.path.join(dirname, "__init__.py")
             if not os.path.isfile(initfile):
-                print("generating " + initfile)
                 with open(initfile, "w"):
                     pass
 
             # parent dir
             dirname = os.path.dirname(dirname)
 
-        if not ignore_timestamps and os.path.exists(pxdfile):
+        if not ignore_timestamps and os.path.exists(self.pxdfile):
             # skip the file if the timestamp is up to date
-            if os.path.getmtime(self.filename) <= os.path.getmtime(pxdfile):
+            if os.path.getmtime(self.filename) <= os.path.getmtime(self.pxdfile):
                 return
 
         result = "\n".join(self.get_pxd_lines())
 
-        if os.path.exists(pxdfile):
-            with open(pxdfile) as outfile:
+        if os.path.exists(self.pxdfile):
+            with open(self.pxdfile) as outfile:
                 if outfile.read() == result:
                     # don't write the file if the content is up to date
                     return
 
-        with open(pxdfile, 'w') as outfile:
-            print("generating " + os.path.relpath(pxdfile, CWD))
+        with open(self.pxdfile, 'w') as outfile:
+            print("generating " + os.path.relpath(self.pxdfile, CWD))
             outfile.write(result)
 
         if print_warnings and self.warnings:

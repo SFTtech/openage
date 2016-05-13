@@ -8,7 +8,6 @@ find_package(Cython 0.23 REQUIRED)
 find_package(Numpy REQUIRED)
 
 py_get_config_var(OPT PYEXT_CXXFLAGS)
-py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)
 
 # fix the CXXFLAGS
 set(PYEXT_CXXFLAGS " ${PYEXT_CXXFLAGS} ") # padding required for the replacements below
@@ -28,9 +27,7 @@ endif()
 
 set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unused-function")
 set(PYEXT_LIBRARY "${PYTHON_LIBRARY}")
-set(PYEXT_INCLUDE_DIRS "${PYTHON_INCLUDE_DIR};${NUMPY_INCLUDE_DIR}")
-
-if(NOT CMAKE_PY_INSTALL_PREFIX)
-	py_exec("import site; print(site.getsitepackages()[0])" PREFIX)
-	set(CMAKE_PY_INSTALL_PREFIX "${PREFIX}")
+set(PYEXT_INCLUDE_DIRS "${NUMPY_INCLUDE_DIR}:${CMAKE_BINARY_DIR}")
+if(APPLE AND CMAKE_OSX_SYSROOT)
+	set(PYEXT_INCLUDE_DIRS "${CMAKE_OSX_SYSROOT}/usr/include:${PYEXT_INCLUDE_DIRS}")
 endif()
