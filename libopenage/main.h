@@ -18,10 +18,12 @@ namespace openage {
  * pxd:
  *
  * cppclass main_arguments:
+ *     string version
  *     string data_directory
  *     int32_t fps_limit
  */
 struct main_arguments {
+	std::string version;
 	std::string data_directory;
 	std::int32_t fps_limit;
 };

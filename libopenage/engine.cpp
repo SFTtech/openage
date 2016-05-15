@@ -48,11 +48,11 @@ coord_data* Engine::get_coord_data() {
 // engine singleton instance allocation
 Engine *Engine::instance = nullptr;
 
-void Engine::create(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle) {
+void Engine::create(const char *version, util::Dir *data_dir, int32_t fps_limit, const char *windowtitle) {
 	// only create the singleton instance if it was not created before..
 	if (Engine::instance == nullptr) {
 		// reset the pointer to the new engine
-		Engine::instance = new Engine(data_dir, fps_limit, windowtitle);
+		Engine::instance = new Engine(version, data_dir, fps_limit, windowtitle);
 	} else {
 		throw Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
 	}
@@ -72,13 +72,14 @@ Engine &Engine::get() {
 }
 
 
-Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
+Engine::Engine(const char *version, util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	:
 	OptionNode{"Engine"},
 	running{false},
 	drawing_debug_overlay{this, "drawing_debug_overlay", true},
 	drawing_huds{this, "drawing_huds", true},
 	engine_coord_data{this->get_coord_data()},
+	version{version},
 	data_dir{data_dir},
 	singletons_info{this, data_dir->basedir},
 	cvar_manager {},
@@ -306,7 +307,7 @@ bool Engine::draw_debug_overlay() {
 	// Draw version string in the lower left corner
 	this->render_text(
 		{5, 35}, 20,
-		"openage %s", config::version
+		"openage %s", this->version
 	);
 	this->render_text(
 		{5, 15}, 12,

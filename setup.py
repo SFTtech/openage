@@ -27,16 +27,11 @@ executables = [
     OpenageExtension('run', sources=['run.py'])
 ]
 
-def get_version():
-    with open('openage_version', 'r') as fp:
-        version = fp.read().strip()
-        if version.startswith('v'):
-            version = version[1:]
-        return version
+version = __import__('openage').__version__
 
 setup(
     name='openage',
-    version=get_version(),
+    version=version,
     maintainer='openage authors',
     maintainer_email='openageauthors@sft.mx',
     url='http://openage.sft.mx/',

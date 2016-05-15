@@ -68,7 +68,6 @@ include(HandleCXXOptions)
 include(CheckCompilerFeatures)
 include(HandlePythonOptions)
 include(CheckRuntimeDependencies)
-include(DetectProjectVersion)
 
 # include build configuration modules
 include(CTest)

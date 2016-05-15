@@ -39,5 +39,6 @@ def main(args, error):
             return 1
 
     # jump into the main method
+    from .. import __version__ as version
     from .main_cpp import run_game
-    return run_game(args, assets)
+    return run_game(args, assets, version)

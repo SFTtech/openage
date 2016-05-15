@@ -74,7 +74,6 @@ void save(openage::GameMain *game, std::string fname) {
 	// metadata
 	file << save_label << std::endl;
 	file << save_version << std::endl;
-	file << config::version << std::endl;
 
 	// how many chunks
 	std::vector<coord::chunk> used = game->terrain->used_chunks();
@@ -119,8 +118,6 @@ void load(openage::GameMain *game, std::string fname) {
 	if (version != save_version) {
 		log::log(MSG(warn) << "savefile has different version");
 	}
-	std::string build;
-	file >> build;
 
 	// read terrain chunks
 	unsigned int num_chunks;
