@@ -11,6 +11,7 @@ add_py_modules(
 	struct.py
 	system.py
 	threading.py
+	version.py
 )
 
 add_subdirectory(filelike)

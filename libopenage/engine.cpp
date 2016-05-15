@@ -46,7 +46,8 @@ coord_data coord_global_tmp_TODO;
 Engine::Engine(const util::Path &root_dir,
                int32_t fps_limit,
                bool gl_debug,
-               const char *windowtitle)
+               const char *windowtitle,
+               const char *version)
 	:
 	OptionNode{"Engine"},
 	running{false},
@@ -61,6 +62,7 @@ Engine::Engine(const util::Path &root_dir,
 	input_manager{&this->action_manager},
 	profiler{this},
 	coord{coord_global_tmp_TODO},
+	version{version},
 	gui_link{} {
 
 
@@ -292,7 +294,7 @@ bool Engine::draw_debug_overlay() {
 	// Draw version string in the lower left corner
 	this->render_text(
 		{5, 35}, 20,
-		"openage %s", config::version
+		"openage %s", this->version
 	);
 	this->render_text(
 		{5, 15}, 12,
