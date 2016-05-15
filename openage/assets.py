@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """
 Code for locating the game assets.
@@ -12,7 +12,7 @@ from .util.fslike.directory import Directory
 from .util.fslike.union import Union
 from .util.fslike.wrapper import WriteBlocker
 
-from . import config
+from .config import DEVMODE, get_build_config
 
 
 def get_user_data_dir(application="openage"):
@@ -35,13 +35,15 @@ def get_assets(args):
     if args.asset_dir:
         return Directory(args.asset_dir).root
 
-    if config.DEVMODE:
-        return Directory(os.path.join(config.BUILD_SRC_DIR, "assets")).root
+    build_config = get_build_config()
+
+    if DEVMODE:
+        return Directory(os.path.join(build_config.build_src_dir, "assets")).root
 
     # overlay the global dir and the user dir.
     result = Union().root
 
-    result.mount(WriteBlocker(Directory(config.GLOBAL_ASSET_DIR)).root)
+    result.mount(WriteBlocker(Directory(build_config.global_asset_dir)).root)
     result.mount(Directory(os.path.join(get_user_data_dir())).root / "assets")
 
     return result

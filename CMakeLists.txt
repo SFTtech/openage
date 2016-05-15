@@ -90,9 +90,6 @@ add_subdirectory(assets/)
 add_subdirectory(dist/)
 add_subdirectory(libopenage/)
 
-get_config_option_string()
-configure_file("${CMAKE_SOURCE_DIR}/openage/config.py.in" "${CMAKE_SOURCE_DIR}/openage/config.py")
-
 set(PYLIBRARY_BUILD_DIR "${CMAKE_BINARY_DIR}/pylibrary")
 set(PYLIBRARY_BUILD_LIB_DIR "${PYLIBRARY_BUILD_DIR}/lib")
 set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -include \"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")

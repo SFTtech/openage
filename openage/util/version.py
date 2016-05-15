@@ -6,6 +6,8 @@ Provides utility functions to get proper version information.
 
 import subprocess
 
+from .. import config
+
 
 def get_version(version=None):
     """
@@ -51,7 +53,11 @@ def get_long_version(version=None):
     version = get_version(version)
 
     try:
-        from .. import config
+        from ..build import get_build_configuration
+    except ImportError:
+        longversion = version
+    else:
+        build_config = get_build_configuration()
         longversion = (
             "openage {version}{devmode}\n"
             "{config_options}\n"
@@ -60,12 +66,10 @@ def get_long_version(version=None):
         ).format(
             version=version,
             devmode=(" [devmode]" if config.DEVMODE else ""),
-            config_options=config.CONFIG_OPTIONS,
-            compiler=config.COMPILER,
-            compilerflags=config.COMPILERFLAGS,
-            cython=config.CYTHONVERSION
+            config_options=build_config.config_options,
+            compiler=build_config.compiler,
+            compilerflags=build_config.compiler_flags,
+            cython=build_config.cython_version
         )
-    except ImportError:
-        longversion = version
 
     return longversion

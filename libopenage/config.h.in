@@ -19,4 +19,8 @@ extern const char *const config_option_string;
 
 constexpr const char *buildsystem_sourcefile_dir = "${CMAKE_SOURCE_DIR}/";
 
+constexpr const char *compiler = "${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}";
+constexpr const char *compiler_flags = "${CMAKE_CXX_FLAGS}";
+constexpr const char *cython_version = "${CYTHON_VERSION}";
+
 }} // openage::config

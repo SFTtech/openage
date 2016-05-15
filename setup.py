@@ -8,6 +8,7 @@ class OpenageExtension(Extension):
 
 
 extensions = [
+    OpenageExtension('openage.build', sources=['openage/build.pyx']),
     Extension('openage.cabextract.cabchecksum', sources=['openage/cabextract/cabchecksum.pyx']),
     OpenageExtension('openage.cabextract.lzxd', sources=['openage/cabextract/lzxd.pyx']),
     OpenageExtension('openage.cvar.cvar', sources=['openage/cvar/cvar.pyx']),

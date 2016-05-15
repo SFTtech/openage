@@ -11,6 +11,7 @@ declare_binary(libopenage)
 
 add_sources(libopenage
 	assetmanager.cpp
+	build.cpp
 	engine.cpp
 	game_control.cpp
 	game_renderer.cpp
@@ -26,6 +27,7 @@ add_sources(libopenage
 )
 
 pxdgen(
+	build.h
 	main.h
 	engine.h
 )
