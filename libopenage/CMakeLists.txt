@@ -21,7 +21,8 @@ add_sources(libopenage
 	options.cpp
 	screenshot.cpp
 	texture.cpp
-	config.cpp
+
+	"${CMAKE_CURRENT_BINARY_DIR}/config.cpp"
 )
 
 pxdgen(
@@ -136,8 +137,12 @@ endif()
 
 get_config_option_string()
 
-configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
-configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
+configure_file(config.h.in config.h)
+configure_file(config.cpp.in config.cpp)
+
+# config.h file is generated in the binary directory. In order for the compiler to locate this header file, the
+# binary directory should be added to the list of include directories.
+include_directories(${CMAKE_BINARY_DIR})
 
 # directories for header inclusion
 include_directories(

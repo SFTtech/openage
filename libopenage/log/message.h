@@ -7,7 +7,8 @@
 // pxd: from libcpp.string cimport string
 #include <string>
 
-#include "../config.h"
+#include <libopenage/config.h>
+
 #include "../util/constexpr.h"
 #include "../util/stringformatter.h"
 

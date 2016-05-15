@@ -2,7 +2,7 @@
 
 #include "thread_id.h"
 
-#include "../config.h"
+#include <libopenage/config.h>
 
 #if HAVE_THREAD_LOCAL_STORAGE
 #include <atomic>

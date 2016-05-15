@@ -10,9 +10,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include <libopenage/config.h>
+
 #include "error/error.h"
 #include "log/log.h"
-#include "config.h"
 #include "gui_basic.h"
 #include "texture.h"
 

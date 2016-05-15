@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "config.h"
+#include <libopenage/config.h>
 
 #include <unordered_map>
 #include <string>
