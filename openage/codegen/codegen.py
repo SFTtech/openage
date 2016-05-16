@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """
 Utility and driver module for C++ code generation.
@@ -161,28 +161,6 @@ def codegen(projectdir, mode):
     return generated, depends
 
 
-def depend_module_blacklist():
-    """
-    Yields all modules whose source files shall explicitly not appear in the
-    dependency list, even if they have been imported.
-    """
-    # openage.config is created only after the first run of cmake,
-    # thus, the depends list will change at the second run of codegen,
-    # re-triggering cmake.
-    try:
-        import openage.config
-        yield openage.config
-    except ImportError:
-        pass
-
-    # devmode is imported by config, so the same reason as above applies.
-    try:
-        import openage.devmode
-        yield openage.devmode
-    except ImportError:
-        pass
-
-
 def get_codegen_depends(outputwrapper):
     """
     Yields all codegen dependencies.
@@ -196,13 +174,8 @@ def get_codegen_depends(outputwrapper):
     for parts in outputwrapper.get_reads():
         yield outputwrapper.obj.fsobj.resolve(parts).decode()
 
-    module_blacklist = set(depend_module_blacklist())
-
     # add all source files that have been loaded as depends
     for module in modules.values():
-        if module in module_blacklist:
-            continue
-
         try:
             filename = module.__file__
         except AttributeError:

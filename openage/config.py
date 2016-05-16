@@ -4,14 +4,11 @@
 Project configuration
 """
 
-import importlib
+from os.path import normpath
+from site import getsitepackages
 
 
-try:
-    importlib.import_module("openage.devmode")
-    DEVMODE = True
-except ImportError:
-    DEVMODE = False
+DEVMODE = not any([normpath(__file__).startswith(normpath(path)) for path in getsitepackages()])
 
 
 def get_build_config():
