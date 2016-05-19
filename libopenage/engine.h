@@ -17,11 +17,14 @@
 #include "coord/vec2f.h"
 #include "coord/phys3.h"
 #include "coord/window.h"
+// pxd: from libopenage.cvar cimport CVarManager
+#include "cvar/cvar.h"
 #include "handlers.h"
 #include "options.h"
 #include "job/job_manager.h"
 // pxd: from libopenage.input.input_manager cimport InputManager
 #include "input/input_manager.h"
+#include "input/action.h"
 #include "util/externalprofiler.h"
 #include "util/dir.h"
 #include "util/fps.h"
@@ -65,6 +68,7 @@ struct coord_data {
  * cppclass Engine:
  *
  *     InputManager get_input_manager() except +
+ *     CVarManager get_cvar_manager() except +
  *     @staticmethod
  *     Engine &get() except +
  */
@@ -231,6 +235,11 @@ public:
 	input::ActionManager &get_action_manager();
 
 	/**
+	* return this engine's cvar manager.
+	*/
+	cvar::CVarManager &get_cvar_manager();
+
+	/**
 	* return this engine's keybind manager.
 	*/
 	input::InputManager &get_input_manager();
@@ -355,6 +364,16 @@ private:
 	ScreenshotManager screenshot_manager;
 
 	/**
+	 * the engine's cvar manager.
+	 */
+	cvar::CVarManager cvar_manager;
+
+	/**
+	 * the engine's action manager.
+	 */
+	input::ActionManager action_manager;
+
+	/**
 	 * the engine's audio manager.
 	 */
 	audio::AudioManager audio_manager;
@@ -363,11 +382,6 @@ private:
 	 * the engine's job manager, for asynchronous background task queuing.
 	 */
 	job::JobManager *job_manager;
-
-	/**
-	 * the engine's action manager.
-	 */
-	input::ActionManager action_manager;
 
 	/**
 	 * the engine's keybind manager.

@@ -64,8 +64,8 @@ std::vector<std::string> InputContext::active_binds() const {
 
 		std::string keyboard_key;
 		for (auto &key : input_manager.keys) {
-			if (key.second == action.first) {
-				keyboard_key = event_as_string(key.first);
+			if (key.first == action.first) {
+				keyboard_key = event_as_string(key.second);
 				break;
 			}
 		}

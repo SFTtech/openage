@@ -22,7 +22,7 @@ namespace openage {
  */
 namespace input {
 
-using binding_map_t = std::unordered_multimap<Event, action_t, event_hash>;
+using binding_map_t = std::unordered_map<action_t, Event>;
 
 /**
  * The input manager manages all input layers (hud, game, ...)
@@ -38,11 +38,6 @@ class InputManager : public openage::InputHandler {
 
 public:
 	InputManager();
-
-	/**
-	 * Initialization until not hardcoded
-	 */
-	void initialize();
 
 	/**
 	 * Return the string representation of the bind assignated to an action.

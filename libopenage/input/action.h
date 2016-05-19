@@ -9,6 +9,9 @@
 #include "event.h"
 
 namespace openage {
+
+class Engine;
+
 namespace input {
 
 using action_t = unsigned int;
@@ -21,7 +24,7 @@ using action_map_t = std::unordered_map<std::string, action_t>;
  */
 class ActionManager {
 public:
-	ActionManager();
+	ActionManager(Engine *engine);
 	bool create(const std::string type);
 	action_t get(const std::string &type);
 	std::string get_name(const action_t action);
@@ -87,6 +90,7 @@ private :
 	};
 
 	action_map_t actions;
+	Engine *engine;
 };
 
 // TODO: use action_hint_t = std::pair<action_t, int>

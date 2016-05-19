@@ -24,6 +24,7 @@ int run_game(const main_arguments &args) {
 
 	Engine::create(&data_dir, args.fps_limit, "openage");
 	Engine &engine = Engine::get();
+	engine.get_cvar_manager().load_main_config();
 
 	// initialize terminal colors
 	std::vector<gamedata::palette_color> termcolors;
