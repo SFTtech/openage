@@ -2,7 +2,7 @@
 
 #include "stackanalyzer.h"
 
-#include "../config.h"
+#include "config.h"
 #include "../log/log.h"
 #include "../util/compiler.h"
 #include "../util/init.h"

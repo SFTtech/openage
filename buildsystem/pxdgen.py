@@ -312,43 +312,29 @@ class PXDGenerator:
 
         return annotation
 
-    def generate(self, ignore_timestamps=False, print_warnings=True):
+    def generate(self, pxdfile, print_warnings=True):
         """
         reads the input file and writes the output file.
         the output file is updated only if its content will change.
 
         on parsing failure, raises ParserError.
         """
-        pxdfile = os.path.splitext(self.filename)[0] + '.pxd'
 
         # create empty __init__.py in all parent directories.
         # CMake requires this; else it won't find the .pxd files.
-        dirname = os.path.abspath(os.path.dirname(self.filename))
+        dirname = os.path.abspath(os.path.dirname(pxdfile))
         while dirname.startswith(CWD + os.path.sep):
             initfile = os.path.join(dirname, "__init__.py")
             if not os.path.isfile(initfile):
-                print("generating " + initfile)
                 with open(initfile, "w"):
                     pass
 
             # parent dir
             dirname = os.path.dirname(dirname)
 
-        if not ignore_timestamps and os.path.exists(pxdfile):
-            # skip the file if the timestamp is up to date
-            if os.path.getmtime(self.filename) <= os.path.getmtime(pxdfile):
-                return
-
         result = "\n".join(self.get_pxd_lines())
 
-        if os.path.exists(pxdfile):
-            with open(pxdfile) as outfile:
-                if outfile.read() == result:
-                    # don't write the file if the content is up to date
-                    return
-
         with open(pxdfile, 'w') as outfile:
-            print("generating " + os.path.relpath(pxdfile, CWD))
             outfile.write(result)
 
         if print_warnings and self.warnings:
@@ -366,25 +352,10 @@ def parse_args():
     import argparse
 
     cli = argparse.ArgumentParser()
-    cli.add_argument('files', nargs='*', metavar='HEADERFILE',
-                     help="input files (usually cpp .h files).")
-    cli.add_argument('--file-list',
-                     help="semicolon-separated list of input files.")
-    cli.add_argument('--ignore-timestamps', action='store_false',
-                     help="force generating even if the output file is already"
-                          "up to date")
+    cli.add_argument("input", help=("input file (usually cpp .h files)."))
+    cli.add_argument("output", help=("The output is stored in this file."))
 
-    args = cli.parse_args()
-
-    if args.file_list:
-        file_list = open(args.file_list).read().strip().split(';')
-    else:
-        file_list = []
-
-    from itertools import chain
-    args.all_files = chain(args.files, file_list)
-
-    return args
+    return cli.parse_args()
 
 
 def main():
@@ -392,16 +363,12 @@ def main():
     args = parse_args()
     cppdir = CWD + "/libopenage"
 
-    for filename in args.all_files:
-        filename = os.path.abspath(filename)
-        if not filename.startswith(cppdir):
-            print("pxdgen source file is not in " + cppdir + ": " + filename)
-            exit(1)
+    filename = os.path.abspath(args.input)
+    if not filename.startswith(cppdir):
+        print("pxdgen source file is not in " + cppdir + ": " + filename)
+        exit(1)
 
-        PXDGenerator(filename).generate(
-            ignore_timestamps=args.ignore_timestamps,
-            print_warnings=True)
-
+    PXDGenerator(filename).generate(args.output, print_warnings=True)
 
 if __name__ == '__main__':
     main()

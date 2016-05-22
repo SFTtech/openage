@@ -1,0 +1,29 @@
+# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+
+# We will force compile the openage python package and install the __pycache__ dirs
+
+set(PYTHON_SOURCE_BASE_DIR "@CMAKE_SOURCE_DIR@")
+set(PYTHON_INTERPRETER "@PYTHON@")
+set(PY_INSTALL_PREFIX "@CMAKE_PY_INSTALL_PREFIX@")
+
+file(GLOB_RECURSE INIT_PY_FILES "${PYTHON_SOURCE_BASE_DIR}/openage/*__init__.py")
+foreach(INIT_PY_FILE ${INIT_PY_FILES})
+	get_filename_component(PY_PACKAGE_DIR "${INIT_PY_FILE}" DIRECTORY)
+	set(PY_CACHE_DIR "${PY_PACKAGE_DIR}/__pycache__")
+	list(APPEND PY_CACHE_DIRS "${PY_CACHE_DIR}")
+	file(REMOVE_RECURSE "${PY_CACHE_DIR}")
+endforeach()
+
+execute_process(
+	COMMAND "${PYTHON_INTERPRETER}" -m compileall openage -f -x "devmode.py"
+	WORKING_DIRECTORY "${PYTHON_SOURCE_BASE_DIR}"
+	OUTPUT_QUIET
+)
+
+foreach(PY_CACHE_DIR ${PY_CACHE_DIRS})
+	file(RELATIVE_PATH PY_CACHE_DIR_RELATIVE_PATH "${PYTHON_SOURCE_BASE_DIR}" "${PY_CACHE_DIR}")
+	file(
+		INSTALL "${PY_CACHE_DIR}/"
+		DESTINATION "${PY_INSTALL_PREFIX}/${PY_CACHE_DIR_RELATIVE_PATH}"
+	)
+endforeach()

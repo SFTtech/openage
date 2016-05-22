@@ -2,6 +2,21 @@
 # for the resulting binary
 
 
+# filled by pxdgen.
+set_property(GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
+
+function(pxdgen)
+	# add a C++ header file as pxdgen source file
+	foreach(HEADER_SOURCE ${ARGN})
+		if(NOT "${HEADER_SOURCE}" MATCHES ".*\\.h$")
+			message(FATAL_ERROR "pxdgen accepts only .h files. You provided: ${HEADER_SOURCE}")
+		endif()
+
+		get_filename_component(HEADER_SOURCE "${HEADER_SOURCE}" ABSOLUTE)
+		set_property(GLOBAL APPEND PROPERTY SFT_PXDGEN_SOURCES "${HEADER_SOURCE}")
+	endforeach()
+endfunction()
+
 # add new sources here, dependencies for linking and including
 # are specified below the source file list.
 
@@ -17,7 +32,8 @@ add_sources(libopenage
 	options.cpp
 	screenshot.cpp
 	texture.cpp
-	config.cpp
+
+	"${CMAKE_CURRENT_BINARY_DIR}/config.cpp"
 )
 
 pxdgen(
@@ -127,8 +143,9 @@ endif()
 
 get_config_option_string()
 
-configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
-configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
+configure_file(config.h.in config.h)
+configure_file(config.cpp.in config.cpp)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 # directories for header inclusion
 include_directories(
@@ -163,3 +180,30 @@ if(NOT APPLE)
 endif()
 
 install(TARGETS libopenage DESTINATION lib LIBRARY DESTINATION lib)
+
+# add custom commands to generate pxd files from registered header files
+get_property(PXDGEN_SOURCES GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
+foreach(PXDGEN_SOURCE ${PXDGEN_SOURCES})
+	file(RELATIVE_PATH PXDGEN_SOURCE_RELATIVE_PATH "${CMAKE_SOURCE_DIR}" "${PXDGEN_SOURCE}")
+	string(REGEX REPLACE "\\.h$" ".pxd" GENERATED_PXD_FILE "${PXDGEN_SOURCE_RELATIVE_PATH}")
+	set(GENERATED_PXD_FILE "${CMAKE_BINARY_DIR}/${GENERATED_PXD_FILE}")
+
+	add_custom_command(OUTPUT "${GENERATED_PXD_FILE}"
+		COMMAND "${PYTHON}" -m buildsystem.pxdgen "${PXDGEN_SOURCE}" "${GENERATED_PXD_FILE}"
+		DEPENDS "${PXDGEN_SOURCE}"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+		COMMENT "Generating pxd file for ${PXDGEN_SOURCE_RELATIVE_PATH}"
+	)
+	list(APPEND GENERATED_PXD_FILES "${GENERATED_PXD_FILE}")
+endforeach()
+set_source_files_properties(${GENERATED_PXD_FILES} PROPERTIES GENERATED ON)
+
+# This target is a dependency for the .cpp files generated from add_cython_module and
+# therefore ensuring that all pxd files are generated before the cythonize magic happens.
+add_custom_target(pxdgen
+	DEPENDS ${GENERATED_PXD_FILES}
+)
+
+set(PYEXT_LINK_LIBRARY libopenage PARENT_SCOPE)
+set(PYEXT_INCLUDE_DIRS ${PYEXT_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR} PARENT_SCOPE)
+set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -include \"${CMAKE_CURRENT_SOURCE_DIR}/pyinterface/hacks.h\"" PARENT_SCOPE)

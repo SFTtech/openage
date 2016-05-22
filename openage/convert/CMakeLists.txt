@@ -19,8 +19,8 @@ add_py_modules(
 	texture.py
 )
 
-add_cython_modules(
-	slp.pyx
+add_cython_module(slp
+	SOURCES slp.pyx
 )
 
 add_subdirectory(dataformat)
