@@ -43,7 +43,7 @@ Dependency list:
     CR    opusfile
       A   opus-tools
     C     pygments
-    CR    qt5 >=5.4 (Core, Quick, QuickControls modules)
+    CR    qt5 >=5.4 (Core, Quick, QuickControls, GraphicalEffects modules)
 
       A   An installed version of any of the following (wine is your friend).
           Other versions _might_ work; setup disk support will be added soon:
@@ -56,18 +56,18 @@ Dependency list:
 ### Prerequisite steps for Ubuntu users (Ubuntu 15.04)
 
  - `sudo apt-get update`
- - `sudo apt-get install cmake libfreetype6-dev python3-dev libepoxy-dev libsdl2-dev libsdl2-image-dev libopusfile-dev libfontconfig1-dev libharfbuzz-dev opus-tools python3-pil python3-numpy python3-pygments python3-pip qtdeclarative5-dev qml-module-qtquick-controls`
+ - `sudo apt-get install cmake libfreetype6-dev python3-dev libepoxy-dev libsdl2-dev libsdl2-image-dev libopusfile-dev libfontconfig1-dev libharfbuzz-dev opus-tools python3-pil python3-numpy python3-pygments python3-pip qtdeclarative5-dev qml-module-qtquick-controls qml-module-qtgraphicaleffects`
  - `sudo pip3 install cython`
 
 
 ### Prerequisite steps for Fedora users (Fedora 20, 21)
 
-`sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow libepoxy-devel opus-tools opusfile-devel fontconfig-devel harfbuzz-devel qt5-qtdeclarative-devel qt5-qtquickcontrols`
+`sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow libepoxy-devel opus-tools opusfile-devel fontconfig-devel harfbuzz-devel qt5-qtdeclarative-devel qt5-qtquickcontrols qt5-graphicaleffects`
 
 
 ### Prerequisite steps for Fedora users (Fedora 22)
 
-`sudo dnf install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-Cython python3-devel python3-numpy python3-pillow python3-pygments libepoxy-devel opus-tools opusfile-devel fontconfig-devel harfbuzz-devel qt5-qtdeclarative-devel qt5-qtquickcontrols`
+`sudo dnf install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-Cython python3-devel python3-numpy python3-pillow python3-pygments libepoxy-devel opus-tools opusfile-devel fontconfig-devel harfbuzz-devel qt5-qtdeclarative-devel qt5-qtquickcontrols qt5-graphicaleffects`
 
 
 ### Prerequisite steps for openSUSE users (openSUSE 13.2)
@@ -78,12 +78,12 @@ if all packages can be installed.
 
 - `zypper addrepo http://download.opensuse.org/repositories/devel:languages:python3/openSUSE_13.2/devel:languages:python3.repo`
 - `zypper refresh`
-- `zypper install --no-recommends cmake doxygen fontconfig-devel harfbuzz-devel gcc49-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel libqt5-qtdeclarative-devel libqt5-qtquickcontrols`
+- `zypper install --no-recommends cmake doxygen fontconfig-devel harfbuzz-devel gcc49-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel libqt5-qtdeclarative-devel libqt5-qtquickcontrols libqt5-graphicaleffects`
 
 
 ### Prerequisite steps for openSUSE users (openSUSE Tumbleweed)
 
- - `zypper install --no-recommends cmake doxygen fontconfig-devel harfbuzz-devel gcc-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel libqt5-qtdeclarative-devel libqt5-qtquickcontrols`
+ - `zypper install --no-recommends cmake doxygen fontconfig-devel harfbuzz-devel gcc-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel libqt5-qtdeclarative-devel libqt5-qtquickcontrols libqt5-graphicaleffects`
 
 
 ### Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)
