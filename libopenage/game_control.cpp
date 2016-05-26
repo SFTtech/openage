@@ -41,13 +41,23 @@ void CreateMode::on_exit() {}
 
 void CreateMode::render() {}
 
+ActionModeSignals::ActionModeSignals(ActionMode *action_mode)
+	:
+	action_mode(action_mode) {
+}
+
+void ActionModeSignals::on_action(const std::string &action) {
+	this->action_mode->on_action(Engine::get().get_action_manager().get(action));
+}
+
 ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	:
 	OutputMode{gui_link},
 	use_set_ability{false},
 	type_focus{nullptr},
 	selecting{},
-	rng{0} {
+	rng{0},
+	gui_signals{this} {
 
 	auto &engine = Engine::get();
 
@@ -335,6 +345,12 @@ void ActionMode::render() {
 
 std::string ActionMode::name() const {
 	return "Action Mode";
+}
+
+void ActionMode::on_action(const input::action_id_t &action) {
+	using namespace input;
+	action_arg_t action_arg{Event{event_class::ANY, 0, modset_t{}}, coord::window{}, coord::window_delta{}, {action}};
+	this->execute_if_bound(action_arg);
 }
 
 void ActionMode::announce() {

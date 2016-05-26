@@ -92,6 +92,10 @@ QString ActionModeLink::get_ability() const {
 	return this->ability;
 }
 
+void ActionModeLink::act(const QString &action) {
+	emit this->action_triggered(action.toStdString());
+}
+
 void ActionModeLink::on_ability_changed(const std::string &ability) {
 	this->ability = QString::fromStdString(ability);
 	emit this->ability_changed();
@@ -100,6 +104,7 @@ void ActionModeLink::on_ability_changed(const std::string &ability) {
 void ActionModeLink::on_core_adopted() {
 	this->Inherits::on_core_adopted();
 	QObject::connect(&unwrap(this)->gui_signals, &ActionModeSignals::ability_changed, this, &ActionModeLink::on_ability_changed);
+	QObject::connect(this, &ActionModeLink::action_triggered, &unwrap(this)->gui_signals, &ActionModeSignals::on_action);
 }
 
 EditorModeLink::EditorModeLink(QObject *parent)
