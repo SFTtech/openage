@@ -122,8 +122,11 @@ public:
 
 	QString get_ability() const;
 
+	Q_INVOKABLE void act(const QString &action);
+
 signals:
 	void ability_changed();
+	void action_triggered(const std::string &ability);
 
 private slots:
 	void on_ability_changed(const std::string &ability);

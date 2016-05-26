@@ -82,13 +82,23 @@ public:
 	std::string name() const override;
 };
 
+class ActionMode;
+
 class ActionModeSignals : public QObject {
 	Q_OBJECT
 
 public:
+	explicit ActionModeSignals(ActionMode *action_mode);
+
+public slots:
+	void on_action(const std::string &action);
+
 signals:
 	void resource_changed(game_resource resource, int amount);
 	void ability_changed(const std::string &ability);
+
+private:
+	ActionMode *action_mode;
 };
 
 /**
@@ -103,6 +113,8 @@ public:
 	void on_exit() override;
 	void render() override;
 	std::string name() const override;
+
+	void on_action(const input::action_id_t &action);
 
 private:
 	/**
