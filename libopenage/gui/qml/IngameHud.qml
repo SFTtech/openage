@@ -160,6 +160,37 @@ Item {
 
 			source: hudImageSource + "." + root.leftRectSubid
 			fillMode: Image.Stretch
+
+			ActionsGrid {
+				id: actionsGrid
+
+				anchors.fill: parent
+				anchors.topMargin: parent.height * 40 / 218
+				anchors.leftMargin: parent.height * 40 / 218 + metricsUnit * 1.4
+				anchors.rightMargin: parent.height * 40 / 218 + metricsUnit * 0.5
+				anchors.bottomMargin: parent.height * 40 / 218 - metricsUnit * 1.4
+
+				columns: 5
+				rows: 3
+
+				Actions {
+					actionMode: root.actionMode
+
+					iconsSource: "image://by-filename/converted/interface/hudactions.slp.png"
+
+					/*
+					 * Fill it only when the source ListModel is done.
+					 */
+					onReady: {
+						actionsGrid.buttonActions.clear()
+						for (var i = 0; i != actions.count; ++i)
+							actionsGrid.buttonActions.append({act: actions.itemAt(i).data[0]})
+					}
+				}
+
+				buttonActions: ListModel {
+				}
+			}
 		}
 
 		ColumnLayout {
