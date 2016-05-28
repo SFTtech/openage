@@ -13,6 +13,7 @@ add_sources(libopenage
 	gui.cpp
 	gui_textured_points_shader.cpp
 	main_args_link.cpp
+	minimap.cpp
 	minimap_background.cpp
 	minimap_marker_type.cpp
 	minimap_unit_marker_points.cpp
