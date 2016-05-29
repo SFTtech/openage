@@ -17,7 +17,7 @@ struct chunk {
 
 	#include "ops/abs.h"
 
-	tile to_tile(tile_delta pos_on_chunk);
+	tile to_tile(tile_delta pos_on_chunk) const;
 };
 
 struct chunk_delta {

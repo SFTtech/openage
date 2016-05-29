@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 #define GEN_IMPL_CHUNK_CPP
 #include "chunk.h"
@@ -8,7 +8,7 @@
 namespace openage {
 namespace coord {
 
-tile chunk::to_tile(tile_delta pos_on_chunk) {
+tile chunk::to_tile(tile_delta pos_on_chunk) const {
 	tile result;
 	result.ne = (((tile_t) ne) << settings::tiles_per_chunk_bits)
 		+ pos_on_chunk.ne;
