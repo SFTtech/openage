@@ -109,13 +109,13 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 
 	// convert the float to the discrete foundation size...
 	this->foundation_size = {
-		static_cast<int>(this->unit_data.radius_size0 * 2),
-		static_cast<int>(this->unit_data.radius_size1 * 2),
+		static_cast<int>(this->unit_data.radius_x * 2),
+		static_cast<int>(this->unit_data.radius_y * 2),
 	};
 
 	// shape of the outline
 	if (this->unit_data.selection_shape > 1) {
-		this->terrain_outline = radial_outline(this->unit_data.radius_size0);
+		this->terrain_outline = radial_outline(this->unit_data.radius_x);
 	}
 	else {
 		this->terrain_outline = square_outline(this->foundation_size);
@@ -284,7 +284,7 @@ TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, 
 
 	// create new object with correct base shape
 	if (this->unit_data.selection_shape > 1) {
-		u->make_location<RadialObject>(this->unit_data.radius_size0, this->terrain_outline);
+		u->make_location<RadialObject>(this->unit_data.radius_x, this->terrain_outline);
 	}
 	else {
 		u->make_location<SquareObject>(this->foundation_size, this->terrain_outline);
@@ -529,8 +529,8 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 
 	// convert the float to the discrete foundation size...
 	this->foundation_size = {
-		static_cast<int>(this->unit_data.radius_size0 * 2),
-		static_cast<int>(this->unit_data.radius_size1 * 2),
+		static_cast<int>(this->unit_data.radius_x * 2),
+		static_cast<int>(this->unit_data.radius_y * 2),
 	};
 
 	// graphic set
@@ -769,7 +769,7 @@ ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec
 	}
 
 	// outline
-	terrain_outline = radial_outline(pd->radius_size1);
+	terrain_outline = radial_outline(pd->radius_y);
 }
 
 ProjectileProducer::~ProjectileProducer() {}
@@ -808,7 +808,7 @@ TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terra
 	/*
 	 * radial base shape without collision checking
 	 */
-	u->make_location<RadialObject>(this->unit_data.radius_size1, this->terrain_outline);
+	u->make_location<RadialObject>(this->unit_data.radius_y, this->terrain_outline);
 
 	TerrainObject *obj_ptr = u->location.get();
 	std::weak_ptr<Terrain> terrain_ptr = terrain;

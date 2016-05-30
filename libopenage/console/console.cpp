@@ -6,6 +6,7 @@
 #include "../error/error.h"
 #include "../util/strings.h"
 #include "../util/unicode.h"
+#include "../engine.h"
 
 #include "draw.h"
 
@@ -129,6 +130,23 @@ void Console::interpret(const std::string &command) {
 		Engine &e = Engine::get();
 		for (auto &line : e.list_options()) {
 			this->write(line.c_str());
+		}
+	}
+	else if (command.substr(0,3) ==  "set") {
+		std::size_t first_space = command.find(" ");
+		std::size_t second_space = command.find(" ", first_space+1);
+		if (first_space != std::string::npos && second_space != std::string::npos) {
+			std::string name = command.substr(first_space+1, second_space-first_space-1);
+			std::string value = command.substr(second_space+1, std::string::npos);
+			Engine::get().get_cvar_manager().set(name,value);
+		}
+	}
+	else if (command.substr(0,3) == "get") {
+		std::size_t first_space = command.find(" ");
+		if (first_space != std::string::npos) {
+			std::string name = command.substr(first_space+1, std::string::npos);
+			std::string value = Engine::get().get_cvar_manager().get(name);
+			this->write(value.c_str());
 		}
 	}
 }

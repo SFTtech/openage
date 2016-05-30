@@ -41,8 +41,9 @@ Our goals *include*:
 * Optionally, [improvements](/doc/ideas/) over the original game
 * AI scripting in Python, you can use [machine learning](http://scikit-learn.org/stable/)
 * Re-creating [free game assets](https://github.com/SFTtech/openage-data)
-* An easily-moddable content format: **nyan**'s yet another notation
+* An easily-moddable content format: [**nyan** yet another notation](https://github.com/SFTtech/nyan)
 * A powerful integrated Python console and interface, comparable to [blender](http://blender.org/)
+* Awesome infrastructure such as our own [Kevin CI service](https://github.com/SFTtech/kevin)
 
 But beware, for sanity reasons:
 

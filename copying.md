@@ -21,7 +21,7 @@ _the openage authors_ are:
 | Jimmy Berry                 | boombatower                 | jimmy@boombatower.com                 |
 | João Roque                  | joaoroque                   | joaoroque@gmail.com                   |
 | Julius Michaelis            | jcaesar                     | gitter@liftm.de                       |
-| Matthias Bogad              | delirium, masterofjellyfish | matthias@bogad.at                     |
+| Katharina Bogad             | delirium, masterofjellyfish | bogad@cs.tum.edu                      |
 | Oliver Fawcett-Griffiths    | ollyfg                      | olly@ollyfg.com                       |
 | Ross Murray                 | rossmurray                  | rm@egoorb.com                         |
 | Alexandre Arpin             | AlexandreArpin              | arpin.alexandre@gmail.com             |

@@ -15,7 +15,7 @@ class FrameData(Exportable):
     data_format = (
         (READ_EXPORT, "frame_count", "int16_t"),
         (READ_EXPORT, "angle_count", "int16_t"),
-        (READ_EXPORT, "shape_id", "int16_t"),
+        (READ_EXPORT, "shape_id", "int16_t"),  # frame index
     )
 
 
@@ -26,10 +26,10 @@ class TerrainPassGraphic(Exportable):
 
     data_format = (
         # when this restriction in unit a was selected, can the unit be placed on this terrain id? 0=no, -1=yes
-        (READ, "buildable", "int32_t"),
-        (READ, "graphic_id0", "int32_t"),
-        (READ, "graphic_id1", "int32_t"),
-        (READ, "replication_amount", "int32_t"),
+        (READ, "slp_id_exit_tile", "int32_t"),
+        (READ, "slp_id_enter_tile", "int32_t"),
+        (READ, "slp_id_walk_tile", "int32_t"),
+        (READ, "walk_sprite_rate", "float"),
     )
 
     def __init__(self, **args):
@@ -48,7 +48,12 @@ class TerrainRestriction(Exportable):
     data_format = (
         # index of each array == terrain id
         # when this restriction was selected, can the terrain be accessed?
-        (READ, "accessible_dmgmultiplier", "float[terrain_count]"),  # unit interaction_type activates this as damage multiplier
+        # unit interaction_type activates this as damage multiplier
+        # See unit armor terrain restriction;
+        # pass-ability: [no: == 0, yes: > 0]
+        # build-ability: [<= 0.05 can't build here, > 0.05 can build]
+        # damage: [0: damage multiplier is 1, > 0: multiplier = value]
+        (READ, "accessible_dmgmultiplier", "float[terrain_count]"),
         (READ, "pass_graphics", SubdataMember(
             ref_type=TerrainPassGraphic,
             length="terrain_count",
@@ -104,7 +109,7 @@ class Terrain(Exportable):
         (READ_EXPORT, None, IncludeMembers(cls=TerrainAnimation)),
 
         (READ_EXPORT, "elevation_graphics", SubdataMember(
-            ref_type=FrameData,
+            ref_type=FrameData,   # tile Graphics: flat, 2 x 8 elevation, 2 x 1:1; frame Count, animations, shape (frame) index
             length=19,
         )),
 
@@ -115,7 +120,7 @@ class Terrain(Exportable):
         (READ, "borders",                    "int16_t[42]"),  # probably references to the TerrainBorders, there are 42 terrains in game
         (READ, "terrain_unit_id",            "int16_t[30]"),  # place these unit id on the terrain, with prefs from fields below
         (READ, "terrain_unit_density",       "int16_t[30]"),  # how many of the above units to place
-        (READ, "terrain_unit_priority",      "int8_t[30]"),   # when placing two terrain units on the same spot, selects which prevails(=1)
+        (READ, "terrain_placement_flag",      "int8_t[30]"),  # when placing two terrain units on the same spot, selects which prevails(=1)
         (READ, "terrain_units_used_count",   "int16_t"),      # how many entries of the above lists shall we use to place units implicitly when this terrain is placed
         (READ_UNKNOWN, None,                 "uint16_t"),
     )

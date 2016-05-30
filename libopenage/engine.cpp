@@ -51,7 +51,6 @@ void Engine::create(util::Dir *data_dir, int32_t fps_limit, const char *windowti
 	if (Engine::instance == nullptr) {
 		// reset the pointer to the new engine
 		Engine::instance = new Engine(data_dir, fps_limit, windowtitle);
-		Engine::instance->get_input_manager().initialize(); // until non hardcoded keybind
 	} else {
 		throw Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
 	}
@@ -80,6 +79,8 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	engine_coord_data{this->get_coord_data()},
 	current_player{this, "current_player", 1},
 	data_dir{data_dir},
+	cvar_manager {},
+	action_manager{this},
 	audio_manager{} {
 
 
@@ -525,6 +526,10 @@ ScreenshotManager &Engine::get_screenshot_manager() {
 
 input::ActionManager &Engine::get_action_manager() {
 	return this->action_manager;
+}
+
+cvar::CVarManager &Engine::get_cvar_manager() {
+	return this->cvar_manager;
 }
 
 input::InputManager &Engine::get_input_manager() {

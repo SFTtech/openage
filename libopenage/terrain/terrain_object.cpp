@@ -3,6 +3,7 @@
 #include "terrain_object.h"
 
 #include <algorithm>
+#include <cmath>
 
 #include "../engine.h"
 #include "../error/error.h"
