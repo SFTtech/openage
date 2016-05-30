@@ -13,6 +13,7 @@
 #include "error/error.h"
 #include "log/log.h"
 #include "config.h"
+#include "gui_basic.h"
 #include "texture.h"
 
 #include "gamestate/game_main.h"
@@ -77,11 +78,12 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	drawing_debug_overlay{this, "drawing_debug_overlay", true},
 	drawing_huds{this, "drawing_huds", true},
 	engine_coord_data{this->get_coord_data()},
-	current_player{this, "current_player", 1},
 	data_dir{data_dir},
+	singletons_info{this, data_dir->basedir},
 	cvar_manager {},
 	action_manager{this},
-	audio_manager{} {
+	audio_manager{},
+	gui_link{} {
 
 
 	if (fps_limit > 0) {
@@ -101,9 +103,6 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	// execution list.
 	this->register_resize_action(this);
 
-	// register the engines input manager
-	this->register_input_action(&this->input_manager);
-
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
 	} else {
@@ -114,6 +113,7 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
 	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
@@ -179,6 +179,19 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	// qml sources will be installed to the asset dir
+	// otherwise assume that launched from the source dir
+	using namespace std::string_literals;
+	auto qml_search_paths = {this->data_dir->basedir, "libopenage/gui"s};
+
+	this->gui = std::make_unique<gui::GuiBasic>(this->window, "qml/main.qml", &this->singletons_info, qml_search_paths);
+	this->register_resize_action(this->gui.get());
+	this->register_input_action(this->gui.get());
+	this->register_drawhud_action(this->gui.get());
+
+	// register the engines input manager
+	this->register_input_action(&this->input_manager);
+
 	// initialize job manager with cpucount-2 worker threads
 	int number_of_worker_threads = SDL_GetCPUCount() - 2;
 	if (number_of_worker_threads <= 0) {
@@ -223,23 +236,6 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 		}
 		return false;
 	});
-
-	// Switching between players with the 1-8 keys
-	auto bind_player_switch = [this, &global_input_context](input::action_t action, int player) {
-		global_input_context.bind(action, [this, player](const input::action_arg_t &) {
-			this->current_player.value = player;
-		});
-
-	};
-
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_1"), 1);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_2"), 2);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_3"), 3);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_4"), 4);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_5"), 5);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_6"), 6);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_7"), 7);
-	bind_player_switch(action.get("SWITCH_TO_PLAYER_8"), 8);
 
 	this->text_renderer = std::make_unique<renderer::TextRenderer>();
 }
@@ -373,6 +369,8 @@ void Engine::loop() {
 			} // switch event
 		}
 
+		this->gui->process_events();
+
 		if (this->game) {
 			// read camera movement input keys, and move camera
 			// accordingly.
@@ -413,7 +411,7 @@ void Engine::loop() {
 		// clear the framebuffer to black
 		// in the future, we might disable it for lazy drawing
 		glClearColor(0.0, 0.0, 0.0, 0.0);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 		glPushMatrix(); {
 			// set the framebuffer up for camgame rendering
@@ -504,14 +502,6 @@ GameMain *Engine::get_game() {
 	return this->game.get();
 }
 
-Player *Engine::player_focus() const {
-	if (this->game) {
-		unsigned int number = this->game->players.size();
-		return &this->game->players[this->current_player.value % number];
-	}
-	return nullptr;
-}
-
 job::JobManager *Engine::get_job_manager() {
 	return this->job_manager;
 }
@@ -534,6 +524,10 @@ cvar::CVarManager &Engine::get_cvar_manager() {
 
 input::InputManager &Engine::get_input_manager() {
 	return this->input_manager;
+}
+
+void Engine::announce_global_binds() {
+	emit this->gui_signals.global_binds_changed(this->get_input_manager().get_global_context().active_binds());
 }
 
 renderer::TextRenderer *Engine::get_text_renderer() {
@@ -576,6 +570,14 @@ void Engine::move_phys_camera(float x, float y, float amount) {
 
 	//update camera phys position
 	this->engine_coord_data->camgame_phys += cam_delta.to_phys3();
+}
+
+void Engine::start_game(std::unique_ptr<GameMain> game) {
+	// TODO: maybe implement a proper 1-to-1 connection
+	ENSURE(game, "linking game to engine problem");
+
+	this->game = std::move(game);
+	this->game->set_parent(this);
 }
 
 } // openage

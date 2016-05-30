@@ -6,6 +6,8 @@
 #include <vector>
 #include <SDL2/SDL.h>
 
+#include <QObject>
+
 #include "player.h"
 #include "../options.h"
 #include "../terrain/terrain.h"
@@ -76,7 +78,47 @@ private:
 	std::vector<std::shared_ptr<Civilisation>> civs;
 
 	std::shared_ptr<GameSpec> spec;
+};
 
+} // openage
+
+namespace qtsdl {
+class GuiItemLink;
+} // qtsdl
+
+namespace openage {
+
+class GameMainSignals : public QObject {
+	Q_OBJECT
+
+public:
+signals:
+	void game_running(bool running);
+};
+
+class GameMainHandle {
+public:
+	explicit GameMainHandle(qtsdl::GuiItemLink *gui_link);
+
+	void set_engine(Engine *engine);
+
+	void clear();
+
+	void set_game(std::unique_ptr<GameMain> game);
+	GameMain* get_game() const;
+
+	bool is_game_running() const;
+
+	void announce_running();
+
+private:
+	GameMain *game;
+
+	Engine *engine;
+
+public:
+	GameMainSignals gui_signals;
+	qtsdl::GuiItemLink *gui_link;
 };
 
 } // openage

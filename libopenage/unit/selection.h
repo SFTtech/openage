@@ -41,33 +41,33 @@ public:
 	bool on_drawhud() override;
 	void drag_begin(coord::camgame pos);
 	void drag_update(coord::camgame pos);
-	void drag_release(Terrain *terrain, bool append=false);
+	void drag_release(const Player &player, Terrain *terrain, bool append=false);
 
 	void clear();
 
-	void toggle_unit(Unit *u, bool append=false);
-	void add_unit(Unit *u, bool append=false);
+	void toggle_unit(const Player &player, Unit *u, bool append=false);
+	void add_unit(const Player &player, Unit *u, bool append=false);
 	void remove_unit(Unit *u);
 
 	/**
 	 * kill a single unit in the selection
 	 */
-	void kill_unit();
+	void kill_unit(const Player &player);
 
 	/**
 	 * checks whether there are any builders in the selection
 	 */
-	bool contains_builders();
+	bool contains_builders(const Player &player);
 
 	/**
 	 * point unit selection
 	 */
-	void select_point(Terrain *terrain, coord::camgame p, bool append=false);
+	void select_point(const Player &player, Terrain *terrain, coord::camgame p, bool append=false);
 
 	/**
 	 * boxed unit selcetion
 	 */
-	void select_space(Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append=false);
+	void select_space(const Player &player, Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append=false);
 
 	/**
 	 * uses command on every selected unit
@@ -89,7 +89,7 @@ private:
 	 * So you can select a group of units, or a building (or multiple if append is on)
 	 * Enemy units, enemy buildings and other objects may only be selected one at a time
 	 */
-	selection_type_t get_unit_selection_type(Unit *);
+	selection_type_t get_unit_selection_type(const Player &player, Unit *);
 
 	std::unordered_map<id_t, UnitReference> units;
 	selection_type_t selection_type;

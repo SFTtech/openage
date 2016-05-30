@@ -13,7 +13,8 @@ enum class game_resource {
 	wood,
 	food,
 	gold,
-	stone
+	stone,
+	RESOURCE_TYPE_COUNT
 };
 
 } // namespace openage

@@ -104,7 +104,7 @@ public:
 	/**
 	 * checks whether the current player is the owner of this unit
 	 */
-	bool is_own_unit();
+	bool is_own_unit(const Player &player);
 
 	/**
 	 * returns the current action on top of the stack

@@ -8,6 +8,7 @@
 #include "../terrain/terrain.h"
 
 #include "action.h"
+#include "command.h"
 #include "producer.h"
 #include "selection.h"
 #include "unit.h"
@@ -92,12 +93,12 @@ void UnitSelection::drag_update(coord::camgame pos) {
 	this->end = pos;
 }
 
-void UnitSelection::drag_release(Terrain *terrain, bool append) {
+void UnitSelection::drag_release(const Player &player, Terrain *terrain, bool append) {
 	if (this->start == this->end) {
-		this->select_point(terrain, this->start, append);
+		this->select_point(player, terrain, this->start, append);
 	}
 	else {
-		this->select_space(terrain, this->start, this->end, append);
+		this->select_space(player, terrain, this->start, this->end, append);
 	}
 	this->drag_active = false;
 }
@@ -112,20 +113,20 @@ void UnitSelection::clear() {
 	this->selection_type = selection_type_t::nothing;
 }
 
-void UnitSelection::toggle_unit(Unit *u, bool append) {
+void UnitSelection::toggle_unit(const Player &player, Unit *u, bool append) {
 	if (this->units.count(u->id) == 0) {
-		this->add_unit(u, append);
+		this->add_unit(player, u, append);
 	} else {
 		this->remove_unit(u);
 	}
 }
 
-void UnitSelection::add_unit(Unit *u, bool append) {
+void UnitSelection::add_unit(const Player &player, Unit *u, bool append) {
 	// Only select resources and units with hitpoints > 0
 	if (u->has_attribute(attr_type::resource) ||
 	   (u->has_attribute(attr_type::hitpoints) && u->get_attribute<attr_type::hitpoints>().current > 0)) {
 
-		selection_type_t unit_type = get_unit_selection_type(u);
+		selection_type_t unit_type = get_unit_selection_type(player, u);
 		int unit_type_i = static_cast<int>(unit_type);
 		int selection_type_i = static_cast<int>(this->selection_type);
 
@@ -163,7 +164,7 @@ void UnitSelection::remove_unit(Unit *u) {
 	}
 }
 
-void UnitSelection::kill_unit() {
+void UnitSelection::kill_unit(const Player &player) {
 	if (this->units.empty()) {
 		return;
 	}
@@ -179,25 +180,25 @@ void UnitSelection::kill_unit() {
 		Unit *u = ref.get();
 
 		// Check color: you can only kill your own units
-		if (u->is_own_unit()) {
+		if (u->is_own_unit(player)) {
 			this->remove_unit(u);
 			u->delete_unit();
 		}
 	}
 }
 
-bool UnitSelection::contains_builders() {
+bool UnitSelection::contains_builders(const Player &player) {
 	for (auto &it : units) {
 		if (it.second.is_valid() &&
 		    it.second.get()->get_ability(ability_type::build) &&
-		    it.second.get()->is_own_unit()) {
+		    it.second.get()->is_own_unit(player)) {
 			return true;
 		}
 	}
 	return false;
 }
 
-void UnitSelection::select_point(Terrain *terrain, coord::camgame p, bool append) {
+void UnitSelection::select_point(const Player &player, Terrain *terrain, coord::camgame p, bool append) {
 	if (!append) {
 		this->clear();
 	}
@@ -210,11 +211,11 @@ void UnitSelection::select_point(Terrain *terrain, coord::camgame p, bool append
 	// find any object at selected point
 	auto obj = terrain->obj_at_point(p.to_phys3());
 	if (obj) {
-		this->toggle_unit(&obj->unit);
+		this->toggle_unit(player, &obj->unit);
 	}
 }
 
-void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append) {
+void UnitSelection::select_space(const Player &player, Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append) {
 	if (!append) {
 		this->clear();
 	}
@@ -235,7 +236,7 @@ void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::cam
 				coord::camgame pos = unit_location->pos.draw.to_camgame();
 				if ((min.x < pos.x && pos.x < max.x) &&
 				     (min.y < pos.y && pos.y < max.y)) {
-					this->add_unit(&unit_location->unit, append);
+					this->add_unit(player, &unit_location->unit, append);
 				}
 			}
 		}
@@ -244,7 +245,7 @@ void UnitSelection::select_space(Terrain *terrain, coord::camgame p1, coord::cam
 
 void UnitSelection::all_invoke(Command &cmd) {
 	for (auto u : this->units) {
-		if (u.second.is_valid() && u.second.get()->is_own_unit()) {
+		if (u.second.is_valid() && u.second.get()->is_own_unit(cmd.player)) {
 
 			// allow unit to find best use of the command
 			// TODO: queue_cmd returns ability which allows playing of sound
@@ -289,11 +290,11 @@ void UnitSelection::show_attributes(Unit *u) {
 	}
 }
 
-selection_type_t UnitSelection::get_unit_selection_type(Unit *u) {
+selection_type_t UnitSelection::get_unit_selection_type(const Player &player, Unit *u) {
 	bool is_building = u->has_attribute(attr_type::building);
 
 	// Check color
-	if (u->is_own_unit()) {
+	if (u->is_own_unit(player)) {
 		return is_building ? selection_type_t::own_buildings : selection_type_t::own_units;
 	} else {
 		return is_building ? selection_type_t::enemy_building : selection_type_t::enemy_unit;

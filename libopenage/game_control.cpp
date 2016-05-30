@@ -6,87 +6,23 @@
 
 namespace openage {
 
-CreateMode::CreateMode()
+OutputMode::OutputMode(qtsdl::GuiItemLink *gui_link)
 	:
-	selected{0},
-	setting_value{false} {
+	game_control{},
+	gui_link{gui_link} {
+}
 
-	auto &action = Engine::get().get_action_manager();
-	// action bindings
-	this->bind(action.get("START_GAME"), [this](const input::action_arg_t &) {
-		Engine &engine = Engine::get();
-		options::OptionNode *node = engine.get_child("Generator");
-		if (!node) {
-			return;
-		}
+void OutputMode::announce() {
+	emit this->gui_signals.announced(this->name(), this->active_binds());
+}
 
-		std::vector<std::string> list = node->list_variables();
-		std::vector<std::string> flist = node->list_functions();
-		unsigned int size = list.size() + flist.size();
-		unsigned int selected = util::mod<int>(this->selected, size);
+void OutputMode::set_game_control(GameControl *game_control) {
+	this->game_control = game_control;
+}
 
-		if (this->setting_value) {
-
-			// modifying a value
-			std::vector<std::string> list = node->list_variables();
-			std::string selected_name = list[selected];
-			auto &var = node->get_variable_rw(selected_name);
-
-			// try change the value
-			// deal with number parsing exceptions
-			try {
-				if (var.type == options::option_type::list_type) {
-					auto list = var.value<options::option_list>();
-					list.push_back(this->new_value);
-					var = list;
-					log::log(MSG(dbg) << selected_name << " appended with " << this->new_value);
-				}
-				else {
-					var = options::parse(var.type, this->new_value);
-					log::log(MSG(dbg) << selected_name << " set to " << this->new_value);
-				}
-			}
-			catch (const std::invalid_argument &e) {
-				log::log(MSG(dbg) << "exception setting " << selected_name << " to " << this->new_value);
-			}
-			catch (const std::out_of_range &e) {
-				log::log(MSG(dbg) << "exception setting " << selected_name << " to " << this->new_value);
-			}
-
-			this->setting_value = false;
-			this->utf8_mode = false;
-			this->new_value = "";
-		}
-		else {
-			if (selected >= list.size()) {
-				this->response_value = node->do_action(flist[selected - list.size()]).str_value();
-				log::log(MSG(dbg) << this->response_value);
-			}
-			else {
-				this->setting_value = true;
-				this->utf8_mode = true;
-				this->new_value = "";
-			}
-		}
-
-	});
-	this->bind(action.get("UP_ARROW"), [this](const input::action_arg_t &) {
-		if (!this->setting_value) {
-			this->selected -= 1;
-		}
-	});
-	this->bind(action.get("DOWN_ARROW"), [this](const input::action_arg_t &) {
-		if (!this->setting_value) {
-			this->selected += 1;
-		}
-	});
-	this->bind(input::event_class::UTF8, [this](const input::action_arg_t &arg) {
-		if (this->setting_value) {
-			this->new_value += arg.e.as_utf8();
-			return true;
-		}
-		return false;
-	});
+CreateMode::CreateMode(qtsdl::GuiItemLink *gui_link)
+	:
+	OutputMode{gui_link} {
 }
 
 bool CreateMode::available() const {
@@ -100,57 +36,11 @@ std::string CreateMode::name() const {
 
 void CreateMode::on_enter() {}
 
-void CreateMode::render() {
-	Engine &engine = Engine::get();
+void CreateMode::render() {}
 
-	// initial draw positions
-	int x = 75;
-	int y = engine.engine_coord_data->window_size.y - 65;
-
-	options::OptionNode *node = engine.get_child("Generator");
-	if (node) {
-		unsigned int i = 0;
-
-
-		// list everything
-		std::vector<std::string> list = node->list_variables();
-		std::vector<std::string> flist = node->list_functions();
-		unsigned int size = list.size() + flist.size();
-		unsigned int selected = util::mod<int>(this->selected, size);
-
-		for (auto &s : list) {
-			engine.render_text({x, y}, 20, "%s", s.c_str());
-			if (i == selected) {
-				engine.render_text({x - 35, y}, 20, ">>");
-			}
-			auto var = node->get_variable(s);
-			engine.render_text({x + 320, y}, 20, "%s", var.str_value().c_str());
-			y -= 24;
-			i++;
-		}
-		for (auto &s : flist) {
-			engine.render_text({x, y}, 20, "%s", (s + "()").c_str());
-			if (i == selected) {
-				engine.render_text({x - 35, y}, 20, ">>");
-			}
-			y -= 24;
-			i++;
-		}
-
-		if (this->setting_value) {
-			y -= 36;
-			engine.render_text({x + 45, y}, 20, "set value:");
-			engine.render_text({x + 320, y}, 20, "%s", this->new_value.c_str());
-		}
-		engine.render_text({0, 100}, 20, "%s", this->response_value.c_str());
-	}
-	else {
-		engine.render_text({0, 100}, 20, "Error: No generator");
-	}
-}
-
-ActionMode::ActionMode()
+ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	:
+	OutputMode{gui_link},
 	use_set_ability{false},
 	type_focus{nullptr},
 	rng{0} {
@@ -159,10 +49,9 @@ ActionMode::ActionMode()
 	this->bind(action.get("TRAIN_OBJECT"), [this](const input::action_arg_t &) {
 
 		// attempt to train editor selected object
-		Engine &engine = Engine::get();
 
 		// randomly select between male and female villagers
-		auto player = engine.player_focus();
+		auto player = this->game_control->get_current_player();
 		auto type = player->get_type(this->rng.probability(0.5)? 83 : 293);
 		Command cmd(*player, type);
 		cmd.add_flag(command_flag::direct);
@@ -177,18 +66,21 @@ ActionMode::ActionMode()
 	this->bind(action.get("SET_ABILITY_MOVE"), [this](const input::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::move;
+		emit this->gui_signals.ability_changed(std::to_string(this->ability));
 	});
 	this->bind(action.get("SET_ABILITY_GATHER"), [this](const input::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::gather;
+		emit this->gui_signals.ability_changed(std::to_string(this->ability));
 	});
 	this->bind(action.get("SET_ABILITY_GARRISON"), [this](const input::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::garrison;
+		emit this->gui_signals.ability_changed(std::to_string(this->ability));
 	});
 	this->bind(action.get("SPAWN_VILLAGER"), [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
-		auto player = engine.player_focus();
+		auto player = this->game_control->get_current_player();
 		if (player->type_count() > 0) {
 			UnitType &type = *player->get_type(590);
 
@@ -197,16 +89,17 @@ ActionMode::ActionMode()
 		}
 	});
 	this->bind(action.get("KILL_UNIT"), [this](const input::action_arg_t &) {
-		selection.kill_unit();
+		selection.kill_unit(*this->game_control->get_current_player());
 	});
 
 	// Villager build commands
 	// TODO place this into separate building menus instead of global hotkeys
 	auto bind_building_key = [this](input::action_t action, int building) {
 		this->bind(action, [this, building](const input::action_arg_t &) {
-			if (this->selection.contains_builders()) {
+			auto player = this->game_control->get_current_player();
+			if (this->selection.contains_builders(*player)) {
 				Engine &engine = Engine::get();
-				auto player = engine.player_focus();
+				auto player = this->game_control->get_current_player();
 				this->type_focus = player->get_type(building);
 				if (&engine.get_input_manager().get_top_context() != &this->building_context) {
 					engine.get_input_manager().register_context(&this->building_context);
@@ -247,7 +140,7 @@ ActionMode::ActionMode()
 			Engine &engine = Engine::get();
 			Terrain *terrain = engine.get_game()->terrain.get();
 			this->selection.drag_update(mousepos_camgame);
-			this->selection.drag_release(terrain, increase);
+			this->selection.drag_release(*this->game_control->get_current_player(), terrain, increase);
 		});
 	};
 
@@ -306,14 +199,14 @@ Command ActionMode::get_action(const coord::phys3 &pos) const {
 	GameMain *game = engine.get_game();
 	auto obj = game->terrain->obj_at_point(pos);
 	if (obj) {
-		Command c(*engine.player_focus(), &obj->unit, pos);
+		Command c(*this->game_control->get_current_player(), &obj->unit, pos);
 		if (this->use_set_ability) {
 			c.set_ability(ability);
 		}
 		return c;
 	}
 	else {
-		Command c(*engine.player_focus(), pos);
+		Command c(*this->game_control->get_current_player(), pos);
 		if (this->use_set_ability) {
 			c.set_ability(ability);
 		}
@@ -328,12 +221,12 @@ bool ActionMode::place_selection(coord::phys3 point) {
 		// first create foundation using the producer
 		Engine &engine = Engine::get();
 		UnitContainer *container = &engine.get_game()->placed_units;
-		UnitReference new_building = container->new_unit(*this->type_focus, *engine.player_focus(), point);
+		UnitReference new_building = container->new_unit(*this->type_focus, *this->game_control->get_current_player(), point);
 
 		// task all selected villagers to build
 		// TODO: editor placed objects are completed already
 		if (new_building.is_valid()) {
-			Command cmd(*engine.player_focus(), new_building.get());
+			Command cmd(*this->game_control->get_current_player(), new_building.get());
 			cmd.set_ability(ability_type::build);
 			cmd.add_flag(command_flag::direct);
 			this->selection.all_invoke(cmd);
@@ -346,23 +239,9 @@ bool ActionMode::place_selection(coord::phys3 point) {
 void ActionMode::render() {
 	Engine &engine = Engine::get();
 	if (engine.get_game()) {
-		Player *player = engine.player_focus();
-		// draw actions mode indicator
-		int x = 5;
-		int y = engine.engine_coord_data->window_size.y - 25;
+		Player *player = this->game_control->get_current_player();
 
-		std::string status;
-		status += "Food: " + std::to_string(static_cast<int>(player->amount(game_resource::food)));
-		status += " | Wood: " + std::to_string(static_cast<int>(player->amount(game_resource::wood)));
-		status += " | Gold: " + std::to_string(static_cast<int>(player->amount(game_resource::gold)));
-		status += " | Stone: " + std::to_string(static_cast<int>(player->amount(game_resource::stone)));
-		status += " | Actions mode";
-		status += " ([" + std::to_string(player->color) + "] " + player->name + ")";
-		if (this->use_set_ability) {
-			status += " (" + std::to_string(this->ability) + ")";
-		}
-		engine.render_text({x, y}, 20, "%s", status.c_str());
-
+		this->announce_resources();
 
 		// when a building is being placed
 		if (this->type_focus) {
@@ -383,73 +262,46 @@ std::string ActionMode::name() const {
 	return "Action Mode";
 }
 
+void ActionMode::announce() {
+	this->OutputMode::announce();
 
-EditorMode::EditorMode()
+	this->announce_resources();
+	emit this->gui_signals.ability_changed(this->use_set_ability ? std::to_string(this->ability) : "");
+}
+
+void ActionMode::announce_resources() {
+	if (Player *player = this->game_control->get_current_player()) {
+		for (auto i = static_cast<std::underlying_type<game_resource>::type>(game_resource::RESOURCE_TYPE_COUNT); i != 0; --i) {
+			auto resource_type = static_cast<game_resource>(i - 1);
+			emit this->gui_signals.resource_changed(resource_type, static_cast<int>(player->amount(resource_type)));
+		}
+	}
+}
+
+EditorModeSignals::EditorModeSignals(EditorMode *editor_mode)
 	:
-	editor_current_terrain{0},
-	editor_current_type{0},
-	editor_category{0},
-	selected_type{nullptr},
-	selected_owner{nullptr},
-	paint_terrain{true} {
+	editor_mode{editor_mode} {
+}
+
+void EditorModeSignals::on_current_player_name_changed() {
+	this->editor_mode->announce_categories();
+}
+
+EditorMode::EditorMode(qtsdl::GuiItemLink *gui_link)
+	:
+	OutputMode{gui_link},
+	editor_current_terrain{-1},
+	current_type_id{-1},
+	paint_terrain{},
+	gui_signals{this} {
 
 	auto &action = Engine::get().get_action_manager();
+
 	// bind required hotkeys
 	this->bind(action.get("ENABLE_BUILDING_PLACEMENT"), [this](const input::action_arg_t &) {
 		log::log(MSG(dbg) << "change category");
-		Engine &engine = Engine::get();
-		Player *player = engine.player_focus();
-		std::vector<std::string> cat = player->civ->get_type_categories();
-		if (this->paint_terrain) {
-
-			// switch from terrain to first unit category
-			this->paint_terrain = false;
-			this->editor_category = 0;
-		}
-		else {
-			this->editor_category += 1;
-
-			// passed last category, switch back to terrain
-			if (cat.size() <= this->editor_category) {
-				this->paint_terrain = true;
-				this->editor_category = 0;
-			}
-		}
-
-		// update category string
-		if (!cat.empty()) {
-			this->category = cat[this->editor_category];
-			std::vector<index_t> inds = player->civ->get_category(this->category);
-			if (!inds.empty()) {
-				this->editor_current_type = util::mod<ssize_t>(editor_current_type, inds.size());
-				this->selected_type = player->get_type(inds[this->editor_current_type]);
-				this->selected_owner = player;
-			}
-		}
+		emit this->gui_signals.toggle();
 	});
-
-	auto bind_change_terrain = [this](const input::action_t action, const int direction) {
-		this->bind(action, [this, direction](const input::action_arg_t) {
-			Engine &engine = Engine::get();
-			Player *player = engine.player_focus();
-			GameSpec *spec = engine.get_game()->get_spec();
-
-			// modify selected item
-			if (this->paint_terrain) {
-				editor_current_terrain = util::mod<ssize_t>(editor_current_terrain + direction, spec->get_terrain_meta()->terrain_id_count);
-			} else if (player->type_count() > 0) {
-				std::vector<index_t> inds = player->civ->get_category(this->category);
-				if (!inds.empty()) {
-					this->editor_current_type = util::mod<ssize_t>(editor_current_type + direction, inds.size());
-					this->selected_type = player->get_type(inds[this->editor_current_type]);
-					this->selected_owner = player;
-				}
-			}
-		});
-	};
-
-	bind_change_terrain(action.get("FORWARD"), 1);
-	bind_change_terrain(action.get("BACK"), -1);
 
 	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
 		Engine &engine = Engine::get();
@@ -486,38 +338,22 @@ bool EditorMode::available() const {
 
 void EditorMode::on_enter() {}
 
-void EditorMode::render() {
-
-	// Get the current game
-	Engine &engine = Engine::get();
-	GameMain *game = engine.get_game();
-
-	if (game) {
-		coord::window text_pos{12, engine.engine_coord_data->window_size.y - 24};
-
-		// draw the currently selected editor item
-		if (this->paint_terrain && game->terrain) {
-			coord::window bpreview_pos{63, 84};
-			game->terrain->texture(this->editor_current_terrain)->draw(bpreview_pos.to_camhud(), ALPHAMASKED);
-			engine.render_text(text_pos, 20, "%s", ("Terrain " + std::to_string(this->editor_current_terrain)).c_str());
-		}
-		else if (this->selected_type) {
-			// and the current active building
-			auto txt = this->selected_type->default_texture();
-			coord::window bpreview_pos {163, 154};
-			txt->sample(bpreview_pos.to_camhud(), this->selected_owner->color);
-
-			std::string selected_str = this->selected_owner->name + ": " + this->category + " - " + this->selected_type->name();
-			engine.render_text(text_pos, 20, "%s", selected_str.c_str());
-		}
-	}
-	else {
-		engine.render_text({0, 140}, 12, "Editor Mode requires a game");
-	}
-}
+void EditorMode::render() {}
 
 std::string EditorMode::name() const {
 	return "Editor mode";
+}
+
+void EditorMode::set_current_type_id(int current_type_id) {
+	this->current_type_id = current_type_id;
+}
+
+void EditorMode::set_current_terrain_id(terrain_t current_terrain_id) {
+	this->editor_current_terrain = current_terrain_id;
+}
+
+void EditorMode::set_paint_terrain(bool paint_terrain) {
+	this->paint_terrain = paint_terrain;
 }
 
 void EditorMode::paint_terrain_at(const coord::window &point) {
@@ -548,80 +384,203 @@ void EditorMode::paint_entity_at(const coord::window &point, const bool del) {
 			TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
 			obj->remove();
 		}
-	} else if (!del && this->selected_type) {
+	} else if (!del && this->current_type_id != -1) {
+		Player *player = this->game_control->get_current_player();
+		UnitType *selected_type = player->get_type(this->current_type_id);
+
 		// tile is empty so try creating a unit
 		UnitContainer *container = &engine.get_game()->placed_units;
-		container->new_unit(*this->selected_type, *this->selected_owner, mousepos_phys3);
+		container->new_unit(*selected_type, *this->game_control->get_current_player(), mousepos_phys3);
 	}
 }
 
+void EditorMode::announce_categories() {
+	if (this->game_control)
+		if (auto player = this->game_control->get_current_player())
+			emit this->gui_signals.categories_changed(player->civ->get_type_categories());
 
-GameControl::GameControl(openage::Engine *engine)
-	:
-	engine{engine},
-	active_mode_index{0} {
-
-	// add handlers
-	engine->register_drawhud_action(this);
-
-	// modes list
-	this->modes.push_back(std::make_unique<CreateMode>());
-	this->modes.push_back(std::make_unique<EditorMode>());
-	this->modes.push_back(std::make_unique<ActionMode>());
-
-	// initial active mode
-	this->active_mode = modes.front().get();
-	engine->get_input_manager().register_context(this->active_mode);
-
-	auto &action = engine->get_action_manager();
-	auto &global_input_context = engine->get_input_manager().get_global_context();
-	global_input_context.bind(action.get("TOGGLE_CONSTRUCT_MODE"), [this](const input::action_arg_t &) {
-		this->toggle_mode();
-	});
-
+	emit this->gui_signals.categories_content_changed();
 }
 
-void GameControl::toggle_mode() {
-	int next_mode = (this->active_mode_index + 1) % this->modes.size();
-	if (this->modes[next_mode]->available()) {
-		engine->get_input_manager().remove_context(this->active_mode);
+void EditorMode::announce_category_content(const std::string &category_name) {
+	if (this->game_control)
+		if (auto player = this->game_control->get_current_player()) {
+			auto inds = player->civ->get_category(category_name);
+			std::vector<std::tuple<index_t, uint16_t>> type_and_texture(inds.size());
 
-		// set the new active mode
-		this->active_mode_index = next_mode;
-		this->active_mode = this->modes[next_mode].get();
-		this->active_mode->on_enter();
+			auto it = std::begin(type_and_texture);
 
-		// update the context
-		engine->get_input_manager().register_context(this->active_mode);
+			std::for_each(std::begin(inds), std::end(inds), [player, &it] (auto index) {
+				*it++ = std::make_tuple(index, player->get_type(index)->default_texture()->id);
+			});
+
+			emit this->gui_signals.category_content_changed(category_name, type_and_texture);
+		}
+}
+
+void EditorMode::announce() {
+	OutputMode::announce();
+	announce_categories();
+}
+
+void EditorMode::set_game_control(GameControl *game_control) {
+	if (this->game_control != game_control) {
+		if (this->game_control)
+			QObject::disconnect(&this->game_control->gui_signals, &GameControlSignals::current_player_name_changed, &this->gui_signals, &EditorModeSignals::on_current_player_name_changed);
+
+		OutputMode::set_game_control(game_control);
+
+		if (this->game_control)
+			QObject::connect(&this->game_control->gui_signals, &GameControlSignals::current_player_name_changed, &this->gui_signals, &EditorModeSignals::on_current_player_name_changed);
+
+		announce_categories();
+	} else {
+		OutputMode::set_game_control(game_control);
+	}
+}
+
+GameControlSignals::GameControlSignals(GameControl *game_control)
+	:
+	game_control{game_control} {
+}
+
+void GameControlSignals::on_game_running(bool running) {
+	if (running)
+		this->game_control->announce_current_player_name();
+}
+
+GameControl::GameControl(qtsdl::GuiItemLink *gui_link)
+	:
+	engine{},
+	game{},
+	active_mode{},
+	active_mode_index{-1},
+	current_player{1},
+	gui_signals{this},
+	gui_link{gui_link} {
+}
+
+void GameControl::set_engine(Engine *engine) {
+	// TODO: decide to either go for a full Engine QML-singleton or for a regular object
+	ENSURE(!this->engine || this->engine == engine, "relinking GameControl to another engine is not supported and not caught properly");
+
+	if (!this->engine) {
+		this->engine = engine;
+
+		// add handlers
+		engine->register_drawhud_action(this);
+
+		auto &action = Engine::get().get_action_manager();
+
+		auto &global_input_context = engine->get_input_manager().get_global_context();
+		global_input_context.bind(action.get("TOGGLE_CONSTRUCT_MODE"), [this](const input::action_arg_t &) {
+			this->set_mode((this->active_mode_index + 1) % this->modes.size());
+		});
+
+		// Switching between players with the 1-8 keys
+		auto bind_player_switch = [this, &global_input_context](input::action_t action, int player_index) {
+			global_input_context.bind(action, [this, player_index](const input::action_arg_t &) {
+				if (this->current_player != player_index) {
+					this->current_player = player_index;
+					this->announce_current_player_name();
+				}
+			});
+
+		};
+
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_1"), 1);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_2"), 2);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_3"), 3);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_4"), 4);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_5"), 5);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_6"), 6);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_7"), 7);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_8"), 8);
+
+		this->engine->announce_global_binds();
+	}
+}
+
+void GameControl::set_game(GameMainHandle *game) {
+	if (this->game != game) {
+		if (this->game)
+			QObject::disconnect(&this->game->gui_signals, &GameMainSignals::game_running, &this->gui_signals, &GameControlSignals::on_game_running);
+
+		this->game = game;
+
+		if (this->game)
+			QObject::connect(&this->game->gui_signals, &GameMainSignals::game_running, &this->gui_signals, &GameControlSignals::on_game_running);
+	}
+}
+
+void GameControl::set_modes(const std::vector<OutputMode*> &modes) {
+	const int old_mode_index = this->active_mode_index;
+
+	this->set_mode(-1);
+
+	this->modes = modes;
+
+	for (auto mode : this->modes)
+		mode->set_game_control(this);
+
+	if (old_mode_index != -1 && old_mode_index < std::distance(std::begin(this->modes), std::end(this->modes)))
+		this->set_mode(old_mode_index);
+
+	emit this->gui_signals.modes_changed(this->active_mode, this->active_mode_index);
+}
+
+void GameControl::announce_mode() {
+	emit this->gui_signals.mode_changed(this->active_mode, this->active_mode_index);
+}
+
+void GameControl::announce_current_player_name() {
+	if (Player *player = this->get_current_player()) {
+		emit this->gui_signals.current_player_name_changed("[" + std::to_string(player->color) + "] " + player->name);
+		emit this->gui_signals.current_civ_index_changed(player->civ->civ_id);
 	}
 }
 
 bool GameControl::on_drawhud() {
-	Engine &engine = Engine::get();
-	int x = engine.engine_coord_data->window_size.x - 300;
-	int y = engine.engine_coord_data->window_size.y - 24;
-	engine.render_text({x, y}, 20, "%s", active_mode->name().c_str());
-
-	auto binds = this->active_mode->active_binds();
-
-	for (auto it = binds.begin() ; it != binds.end(); ++it) {
-		y -= 14;
-		engine.render_text({x, y}, 12, "%s", it->c_str());
-	}
-
-	y -= 20;
-	engine.render_text({x, y}, 20, "Global Bindings");
-
-	auto global_binds = engine.get_input_manager().get_global_context().active_binds();
-	for (auto it = global_binds.begin() ; it != global_binds.end(); ++it) {
-		y -= 14;
-		engine.render_text({x, y}, 12, "%s", it->c_str());
-	}
-
 	// render the active mode
-	this->active_mode->render();
+	if (this->active_mode)
+		this->active_mode->render();
+
 	return true;
 }
 
+Player* GameControl::get_current_player() const {
+	if (auto game = this->engine->get_game()) {
+		unsigned int number = game->players.size();
+		return &game->players[this->current_player % number];
+	}
+	return nullptr;
+}
+
+void GameControl::set_mode(int mode_index) {
+	if (mode_index != -1) {
+		if (mode_index < std::distance(std::begin(this->modes), std::end(this->modes)) &&this->modes[mode_index]->available()) {
+			engine->get_input_manager().remove_context(this->active_mode);
+
+			// set the new active mode
+			this->active_mode_index = mode_index;
+			this->active_mode = this->modes[mode_index];
+			this->active_mode->on_enter();
+
+			// update the context
+			engine->get_input_manager().register_context(this->active_mode);
+
+			emit this->gui_signals.mode_changed(this->active_mode, this->active_mode_index);
+		}
+	} else {
+		if (this->active_mode) {
+			engine->get_input_manager().remove_context(this->active_mode);
+
+			this->active_mode_index = -1;
+			this->active_mode = nullptr;
+
+			emit this->gui_signals.mode_changed(this->active_mode, this->active_mode_index);
+		}
+	}
+}
 
 } // openage

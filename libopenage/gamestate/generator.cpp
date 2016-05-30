@@ -119,96 +119,29 @@ Region Region::take_random(rng::RNG &rng, unsigned int number, double p) {
 	return this->take_tiles(rng, this->get_tile(rng), number, p);
 }
 
-Generator::Generator(Engine *engine)
+Generator::Generator(qtsdl::GuiItemLink *gui_link)
 	:
-	OptionNode{"Generator"},
-	assetmanager{engine->get_data_dir()},
-	spec{std::make_shared<GameSpec>(this->assetmanager)} {
-
-	// node settings
-	this->set_parent(engine);
-	this->add("generation_seed", 4321);
-	this->add("terrain_size", 2);
-	this->add("terrain_base_id", 0);
-	this->add("player_area", 850);
-	this->add("player_radius", 10);
-	this->add("load_filename", "/tmp/default_save.oas");
-	this->add("player_names", options::option_list{"name1", "name2"});
-
-	// Save game functions
-	options::OptionAction save_action("save_game", [this]() {
-		Engine &engine = Engine::get();
-		if (!engine.get_game()) {
-			return options::OptionValue("Error: no open game to save");
-		}
-		auto filename = this->get_variable("load_filename").value<std::string>();
-		gameio::save(engine.get_game(), filename);
-		return options::OptionValue("Game saved");
-	});
-	this->add_action(save_action);
-
-	// Load game function
-	options::OptionAction load_action("load_game", [this]() {
-		Engine &engine = Engine::get();
-		if (engine.get_game()) {
-			return options::OptionValue("Error: close existing game before loading");
-		}
-		else if (!this->spec->load_complete()) {
-			return options::OptionValue("Error: game data has not finished loading");
-		}
-		auto filename = this->get_variable("load_filename").value<std::string>();
-
-		// create an empty game
-		this->regions.clear();
-		engine.start_game(*this);
-		gameio::load(engine.get_game(), filename);
-		return options::OptionValue("Game loaded");
-	});
-	this->add_action(load_action);
-
-	// create a game using this generator
-	options::OptionAction start_action("generate_game", [this]() {
-		if (this->create()) {
-			return options::OptionValue("Game generated");
-		}
-		return options::OptionValue("Error: game data has not finished loading");
-	});
-	this->add_action(start_action);
-
-	// stop game
-	options::OptionAction end_action("end_game", [this]() {
-		Engine &engine = Engine::get();
-		engine.end_game();
-		return options::OptionValue("Game ended");
-	});
-	this->add_action(end_action);
-
-	// reload all assets
-	options::OptionAction reload_action("reload_assets", [this]() {
-		if (!this->spec->load_complete()) {
-			return options::OptionValue("Error: game data has not finished loading");
-		}
-		this->assetmanager.check_updates();
-		this->spec = std::make_shared<GameSpec>(this->assetmanager);
-		return options::OptionValue("Starting asset reload");
-	});
-	this->add_action(reload_action);
+	gui_link{gui_link}
+{
+	this->setv("generation_seed", 4321);
+	this->setv("terrain_size", 2);
+	this->setv("terrain_base_id", 0);
+	this->setv("player_area", 850);
+	this->setv("player_radius", 10);
+	this->setv("load_filename", "/tmp/default_save.oas");
+	this->setv("from_file", false);
+	this->set_csv("player_names", std::vector<std::string>{"name1", "name2"});
 }
-
 
 std::shared_ptr<GameSpec> Generator::get_spec() const {
 	return this->spec;
 }
 
 std::vector<std::string> Generator::player_names() const {
-	auto &var = this->get_variable("player_names");
-	auto &names = var.value<options::option_list>();
+	auto result = this->get_csv("player_names");
 
-	std::vector<std::string> result;
 	result.push_back("gaia");
-	for (auto &n : names) {
-		result.push_back(n.str_value());
-	}
+
 	return result;
 }
 
@@ -354,19 +287,23 @@ void Generator::add_units(GameMain &m) const {
 	}
 }
 
-bool Generator::create() {
-	if (!this->spec->load_complete()) {
-		return false;
+std::unique_ptr<GameMain> Generator::create(std::shared_ptr<GameSpec> spec) {
+	ENSURE(spec->load_complete(), "spec hasn't been checked or was invalidated");
+	this->spec = spec;
+
+	if (this->getv<bool>("from_file")) {
+		// create an empty game
+		this->regions.clear();
+
+		auto game = std::make_unique<GameMain>(*this);
+		gameio::load(game.get(), this->getv<std::string>("load_filename"));
+
+		return std::move(game);
+	} else {
+		// generation
+		this->create_regions();
+		return std::make_unique<GameMain>(*this);
 	}
-
-	// generation
-	this->create_regions();
-
-	// create main
-	Engine &e = Engine::get();
-	e.start_game(*this);
-	return true;
 }
-
 
 } // namespace openage

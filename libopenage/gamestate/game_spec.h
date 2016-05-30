@@ -3,6 +3,9 @@
 #pragma once
 
 #include <unordered_map>
+#include <memory>
+
+#include <QObject>
 
 #include "../job/job.h"
 #include "../gamedata/gamedata.gen.h"
@@ -60,6 +63,11 @@ public:
 	virtual ~GameSpec();
 
 	/**
+	 * begin the main loading job
+	 */
+	bool initialize();
+
+	/**
 	 * Check if loading has been completed,
 	 * a load percent would be nice
 	 */
@@ -79,6 +87,11 @@ public:
 	 * lookup using a texture id, this specifically avoids returning the missing placeholder texture
 	 */
 	Texture *get_texture(index_t graphic_id) const;
+
+	/**
+	 * lookup using a texture file name
+	 */
+	Texture *get_texture(std::string file_name, bool use_metafile=true) const;
 
 	/**
 	 * get unit texture by graphic id -- this is an directional texture
@@ -162,11 +175,6 @@ private:
 	std::unordered_map<index_t, Sound> available_sounds;
 
 	/**
-	 * begin the main loading job
-	 */
-	void initialize(AssetManager &am);
-
-	/**
 	 * check graphic id is valid
 	 */
 	bool valid_graphic_id(index_t) const;
@@ -194,9 +202,70 @@ private:
 	 * has game data been load yet
 	 */
 	bool gamedata_loaded;
-	openage::job::Job<bool> gamedata_load_job;
 	void on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata);
 	util::Timer load_timer;
+};
+
+} // openage
+
+namespace qtsdl {
+class GuiItemLink;
+} // qtsdl
+
+namespace openage {
+
+class GameSpecSignals;
+
+class GameSpecHandle {
+public:
+	explicit GameSpecHandle(qtsdl::GuiItemLink *gui_link);
+
+	void set_active(bool active);
+	void set_asset_manager(AssetManager *asset_manager);
+
+	bool is_ready() const;
+
+	/**
+	 * forget everything
+	 */
+	void invalidate();
+
+	/**
+	 * signal about a loaded spec if any
+	 */
+	void announce_spec();
+
+	std::shared_ptr<GameSpec> get_spec();
+
+private:
+	void start_loading_if_needed();
+	void start_load_job();
+
+	void on_loaded(job::result_function_t<bool> result);
+
+	std::shared_ptr<GameSpec> spec;
+
+	bool active;
+	AssetManager *asset_manager;
+
+public:
+	std::shared_ptr<GameSpecSignals> gui_signals;
+	qtsdl::GuiItemLink *gui_link;
+};
+
+class GameSpecSignals : public QObject {
+	Q_OBJECT
+
+public:
+signals:
+	/*
+	 * Some load job has finished.
+	 *
+	 * To be sure that the latest result is used, do the verification at the point of use.
+	 */
+	void load_job_finished();
+
+	void game_spec_loaded(std::shared_ptr<GameSpec> loaded_game_spec);
 };
 
 }

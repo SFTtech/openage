@@ -10,6 +10,8 @@
 
 #include <SDL2/SDL.h>
 
+#include <QObject>
+
 #include "log/log.h"
 #include "log/file_logsink.h"
 #include "audio/audio_manager.h"
@@ -19,6 +21,7 @@
 #include "coord/window.h"
 // pxd: from libopenage.cvar cimport CVarManager
 #include "cvar/cvar.h"
+#include "game_singletons_info.h"
 #include "handlers.h"
 #include "options.h"
 #include "job/job_manager.h"
@@ -32,6 +35,10 @@
 #include "screenshot.h"
 
 namespace openage {
+
+namespace gui {
+class GuiBasic;
+}
 
 namespace renderer {
 
@@ -48,7 +55,10 @@ class ResizeHandler;
 class Generator;
 class GameSpec;
 class GameMain;
-class Player;
+
+namespace gui {
+class GuiItemLink;
+} // openage::gui
 
 struct coord_data {
 	coord::window window_size{800, 600};
@@ -56,6 +66,14 @@ struct coord_data {
 	coord::window camgame_window{400, 300};
 	coord::window camhud_window{0, 600};
 	coord::camgame_delta tile_halfsize{48, 24};  // TODO: get from convert script
+};
+
+class EngineSignals : public QObject {
+	Q_OBJECT
+
+public:
+signals:
+	void global_binds_changed(const std::vector<std::string>& global_binds);
 };
 
 /**
@@ -159,6 +177,7 @@ public:
 	bool on_resize(coord::window new_size) override;
 
 	void start_game(const Generator &generator);
+	void start_game(std::unique_ptr<GameMain> game);
 	void end_game();
 
 	/**
@@ -210,11 +229,6 @@ public:
 	GameMain *get_game();
 
 	/**
-	 * return the current player or null if no active game
-	 */
-	Player *player_focus() const;
-
-	/**
 	 * return this engine's job manager.
 	 */
 	job::JobManager *get_job_manager();
@@ -243,6 +257,11 @@ public:
 	* return this engine's keybind manager.
 	*/
 	input::InputManager &get_input_manager();
+
+	/**
+	* send keybindings help string to gui.
+	*/
+	void announce_global_binds();
 
 	/**
 	 * return this engine's text renderer.
@@ -287,12 +306,6 @@ public:
 	 * Holds the data for the coord system.
 	 */
 	coord_data* engine_coord_data;
-
-	/**
-	 * Holds the current player color/number
-	 * is a number between 1 and 8
-	 */
-	options::Var<int> current_player;
 
 	/**
 	 * profiler used by the engine
@@ -354,6 +367,16 @@ private:
 	std::unique_ptr<GameMain> game;
 
 	/**
+	 * pass engine pointer to gui
+	 */
+	gui::GameSingletonsInfo singletons_info;
+
+	/**
+	 * the gui binding
+	 */
+	std::unique_ptr<gui::GuiBasic> gui;
+
+	/**
 	 * the frame counter measuring fps.
 	 */
 	util::FrameCounter fps_counter;
@@ -412,6 +435,10 @@ private:
 
 	std::unique_ptr<renderer::FontManager> font_manager;
 	std::unique_ptr<renderer::TextRenderer> text_renderer;
+
+public:
+	EngineSignals gui_signals;
+	gui::GuiItemLink *gui_link;
 };
 
 } // namespace openage
