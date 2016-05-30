@@ -24,6 +24,7 @@ COMPONENTS = {
     "graphics",
     "sounds",
     "metadata",
+    "interface",
 }
 
 # each line represents changes to the assets.
@@ -32,6 +33,7 @@ CHANGES = (
     {"graphics", "sounds"},
     {"sounds"},
     {"graphics"},
+    {"interface"},
 )
 
 # the current version number equals the number of changes

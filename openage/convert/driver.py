@@ -259,16 +259,19 @@ def slp_rename(filename, names_map):
 
 def convert_media(args):
     """ Converts the media part """
-    ignored_suffixes = set()
+    ignored = set()
     if args.flag("no_sounds"):
-        ignored_suffixes.add('.wav')
+        ignored.add((None, '.wav'))
     if args.flag("no_graphics"):
-        ignored_suffixes.add('.slp')
+        ignored.update([('graphics', '.slp'), ('terrain', '.slp')])
+    if args.flag("no_interface"):
+        ignored.add(('interface', '.slp'))
 
     files_to_convert = []
     for dirname in ['sounds', 'graphics', 'terrain', 'interface']:
         for filepath in args.srcdir[dirname].iterdir():
-            if filepath.suffix in ignored_suffixes:
+            if (((None, filepath.suffix) in ignored) or
+                    ((filepath.parts[0].decode(), filepath.suffix) in ignored)):
                 continue
             elif filepath.is_dir():
                 continue

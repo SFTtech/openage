@@ -439,7 +439,11 @@ def init_subparser(cli):
 
     cli.add_argument(
         "--no-graphics", action='store_true',
-        help="do not convert any graphics")
+        help="do not convert game graphics")
+
+    cli.add_argument(
+        "--no-interface", action='store_true',
+        help="do not convert interface graphics")
 
     cli.add_argument(
         "--no-pickle-cache", action='store_true',
