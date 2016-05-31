@@ -202,10 +202,12 @@ def set_custom_wineprefix():
 
     print("Enter a custom value or leave empty to keep it as-is:")
     while True:
-        new_wineprefix = expand_relative_path(input("WINEPREFIX="))
+        new_wineprefix = input("WINEPREFIX=")
 
         if not new_wineprefix:
             break
+
+        new_wineprefix = expand_relative_path(new_wineprefix)
 
         # test if it probably is a wineprefix
         if (Path(new_wineprefix) / "drive_c").is_dir():
