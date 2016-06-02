@@ -15,6 +15,13 @@
 #
 # You can manually pass an interpreter by defining PYTHON.
 
+
+# python version string to test for
+set(PYTHON_MIN_VERSION "${Python_FIND_VERSION_MAJOR}.${Python_FIND_VERSION_MINOR}")
+
+# set the python version for the cpython api test
+set(PYTHON_MIN_VERSION_HEX "0x0${Python_FIND_VERSION_MAJOR}0${Python_FIND_VERSION_MINOR}0000")
+
 function(py_exec STATEMENTS RESULTVAR)
 	# executes some python statement(s), and returns the result in RESULTVAR.
 	# aborts with a fatal error on error.
@@ -60,7 +67,7 @@ function(py_get_lib_name RESULTVAR)
 endfunction()
 
 function(find_python_interpreter_builtin)
-	find_package(PythonInterp 3.4 QUIET)
+	find_package(PythonInterp "${PYTHON_MIN_VERSION}" QUIET)
 	if(PYTHONINTERP_FOUND)
 		list(APPEND PYTHON_INTERPRETERS "${PYTHON_EXECUTABLE}")
 	endif()
@@ -118,6 +125,7 @@ list(REMOVE_DUPLICATES PYTHON_INTERPRETERS)
 
 # Retain only the proper python interpreters
 foreach(INTERPRETER ${PYTHON_INTERPRETERS})
+	# test for validity
 	set(PY_OUTPUT_TEST "rofl, lol")
 	execute_process(COMMAND
 		"${INTERPRETER}" -c "print('${PY_OUTPUT_TEST}'); exit(42)"
@@ -125,8 +133,9 @@ foreach(INTERPRETER ${PYTHON_INTERPRETERS})
 		RESULT_VARIABLE TEST_RETVAL
 	)
 	if(NOT TEST_OUTPUT STREQUAL "${PY_OUTPUT_TEST}\n" OR NOT TEST_RETVAL EQUAL 42)
+		# not a python interpreter
 		message(WARNING "Dropping invalid python interpreter '${INTERPRETER}'")
-		list(REMOVE_ITEM PYTHON_INTERPRETERS INTERPRETER)
+		list(REMOVE_ITEM PYTHON_INTERPRETERS "${INTERPRETER}")
 	endif()
 endforeach()
 
@@ -140,16 +149,20 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 	py_get_lib_name(PYTHON_LIBRARY_NAME)
 
 	# there's a static_assert that tests the Python version.
+	# that way, we verify the interpreter and the library version.
+	# (the interpreter provided us the library location)
 	try_compile(PYTHON_TEST_RESULT
 		"${CMAKE_BINARY_DIR}"
 		SOURCES "${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
 		LINK_LIBRARIES "${PYTHON_LIBRARY_NAME}"
 		CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}" "-DLINK_DIRECTORIES=${PYTHON_LIBRARY_DIR}"
+		COMPILE_DEFINITIONS "-DTARGET_VERSION=${PYTHON_MIN_VERSION_HEX}"
 		OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
 	)
 
 	if(PYTHON_TEST_RESULT)
-		message("-- Looking for suitable python3 - Success: ${PYTHON}")
+		message("-- Looking for suitable Python >=${PYTHON_MIN_VERSION} - Success: ${PYTHON}")
+
 		set(PYTHON_INTERP "${PYTHON}")
 		set(PYTHON_LIBRARY "-l${PYTHON_LIBRARY_NAME} -L${PYTHON_LIBRARY_DIR}")
 		break()

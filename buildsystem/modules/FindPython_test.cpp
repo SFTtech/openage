@@ -1,9 +1,12 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include <Python.h>
 
 int main() {
-	static_assert(PY_VERSION_HEX >= 0x03040000, PY_VERSION);
+	// set by preprocessor:
+	constexpr uint64_t min_ver = TARGET_VERSION;
+
+	static_assert(PY_VERSION_HEX >= min_ver, PY_VERSION);
 
 	Py_Initialize();
 	Py_Finalize();
