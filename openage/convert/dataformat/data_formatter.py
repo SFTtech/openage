@@ -184,5 +184,5 @@ $parsers
         # we now invoke the content generation for each generated file
         for gen_file in generate_files:
             file_name, content = gen_file.generate()
-            with projectdir[file_name].open('w') as outfile:
-                outfile.write(content)
+            with projectdir[file_name].open('wb') as outfile:
+                outfile.write(content.encode('utf-8'))
