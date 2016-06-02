@@ -14,9 +14,10 @@ Item {
 	property int civIndex
 
 	readonly property int topStripSubid: 0
-	readonly property int leftRectSubid: 1
-	readonly property int rightRectSubid: 2
-	readonly property int resBaseSubid: 3
+	readonly property int midStripSubid: 1
+	readonly property int leftRectSubid: 2
+	readonly property int rightRectSubid: 3
+	readonly property int resBaseSubid: 4
 
 	readonly property string srcPrefix: "image://by-filename/converted/interface/hud"
 	readonly property string pad: "0000"
@@ -141,19 +142,16 @@ Item {
 		}
 	}
 
-	Rectangle {
+	Item {
 		anchors.left: parent.left
 		anchors.right: parent.right
 		anchors.bottom: parent.bottom
 
 		height: metricsUnit * 1.5 * 16
 
-		color: "transparent"
-
-		border.width: 1
-		border.color: "white"
-
 		Image {
+			id: leftRect
+
 			anchors.left: parent.left
 			anchors.top: parent.top
 			anchors.bottom: parent.bottom
@@ -164,7 +162,41 @@ Item {
 			fillMode: Image.Stretch
 		}
 
+		ColumnLayout {
+			anchors.left: leftRect.right
+			anchors.right: rightRect.left
+			anchors.top: parent.top
+			anchors.bottom: parent.bottom
+
+			spacing: 0
+
+			Image {
+				id: borderStrip
+
+				Layout.fillWidth: true
+
+				sourceSize.height: metricsUnit * 1.4
+
+				source: hudImageSource + "." + root.midStripSubid
+				fillMode: Image.Tile
+			}
+
+			Rectangle {
+				Layout.fillHeight: true
+				Layout.fillWidth: true
+
+				color: "#41110d"
+
+				Paper {
+					anchors.fill: parent
+					tornBottom: false
+				}
+			}
+		}
+
 		Image {
+			id: rightRect
+
 			anchors.right: parent.right
 			anchors.top: parent.top
 			anchors.bottom: parent.bottom

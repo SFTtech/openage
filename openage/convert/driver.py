@@ -6,6 +6,7 @@ actual conversion process.
 """
 
 import os
+import re
 from subprocess import Popen, PIPE
 from tempfile import gettempdir
 
@@ -222,18 +223,55 @@ def convert_metadata(args):
             player_palette.save_visualization(outfile)
 
 
+def extract_mediafiles_names_map(files_to_convert, args):
+    """ Gets names from the *.bin files, make them lowercase """
+    if GameVersion.age2_fe in args.game_versions:
+        suffix = '.bina'
+    else:
+        suffix = '.bin'
+
+    names_map = dict()
+
+    for filepath in files_to_convert:
+        filename = b'/'.join(filepath.parts).decode()
+        if filename.endswith(suffix):
+            try:
+                for line in filepath.open():
+                    match = re.match(r"\w+_files\s+(\w+)\s+\w+\s+(\w+)", line)
+                    if match:
+                        groups = match.group(2, 1)
+                        names_map[groups[0]] = groups[1].lower()
+            except UnicodeDecodeError:
+                # assume that the file is binary and ignore it
+                continue
+
+    return names_map
+
+
+def slp_rename(filename, names_map):
+    """ Returns a human-readable name if it's in the map """
+    try:
+        dirname_basename = re.match(r"^(.*/)(\d+)\.slp$", filename).group(1, 2)
+        return dirname_basename[0] + names_map[dirname_basename[1]] + ".slp"
+    except KeyError:
+        return filename
+
+
 def convert_media(args):
     """ Converts the media part """
-    ignored_suffixes = set()
+    ignored = set()
     if args.flag("no_sounds"):
-        ignored_suffixes.add('.wav')
+        ignored.add((None, '.wav'))
     if args.flag("no_graphics"):
-        ignored_suffixes.add('.slp')
+        ignored.update([('graphics', '.slp'), ('terrain', '.slp')])
+    if args.flag("no_interface"):
+        ignored.add(('interface', '.slp'))
 
     files_to_convert = []
     for dirname in ['sounds', 'graphics', 'terrain', 'interface']:
         for filepath in args.srcdir[dirname].iterdir():
-            if filepath.suffix in ignored_suffixes:
+            if (((None, filepath.suffix) in ignored) or
+                    ((filepath.parts[0].decode(), filepath.suffix) in ignored)):
                 continue
             elif filepath.is_dir():
                 continue
@@ -247,20 +285,23 @@ def convert_media(args):
 
     info("converting media")
 
+    named_mediafiles_map = extract_mediafiles_names_map(files_to_convert, args)
+
     jobs = getattr(args, "jobs", None)
     with SLPConverterPool(args.palette, jobs) as slp_converter:
         args.slp_converter = slp_converter
 
         from ..util.threading import concurrent_chain
         yield from concurrent_chain(
-            (convert_mediafile(fpath, args) for fpath in files_to_convert),
-            jobs)
+            (convert_mediafile(fpath,
+                               named_mediafiles_map,
+                               args) for fpath in files_to_convert), jobs)
 
     # clean args
     del args.slp_converter
 
 
-def convert_mediafile(filepath, args):
+def convert_mediafile(filepath, names_map, args):
     """
     Converts a single media file, according to the supplied arguments.
     Designed to be run in a thread via concurrent_chain.
@@ -293,7 +334,9 @@ def convert_mediafile(filepath, args):
                 entry["cy"] = TILE_HALFSIZE["y"]
 
         # save atlas to targetdir
-        texture.save(args.targetdir, interface_rename(filename), ("csv",))
+        texture.save(args.targetdir,
+                     interface_rename(slp_rename(filename, names_map)),
+                     ("csv",))
 
     elif filename.endswith('.wav'):
         # convert the WAV file to an opus file
