@@ -18,7 +18,6 @@ public:
 	explicit GuiTexture(const SizedTextureHandle &texture_handle);
 	virtual ~GuiTexture();
 
-private:
 	virtual void bind() override;
 	virtual bool hasAlphaChannel() const override;
 	virtual bool hasMipmaps() const override;
@@ -28,6 +27,7 @@ private:
 	virtual int textureId() const override;
 	virtual QSize textureSize() const override;
 
+private:
 	const SizedTextureHandle texture_handle;
 	mutable std::unique_ptr<QSGTexture> standalone;
 };
