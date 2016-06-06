@@ -16,10 +16,21 @@ namespace gui {
 GuiTexture::GuiTexture(const SizedTextureHandle &texture_handle)
 	:
 	QSGTexture{},
-	texture_handle(texture_handle) {
+	texture_handle{texture_handle},
+	owning{} {
 }
 
+GuiTexture::GuiTexture(std::unique_ptr<openage::Texture> &&texture, const QSize &size, int subid)
+	:
+	QSGTexture{},
+	texture_handle{SizedTextureHandle{TextureHandle{texture.release(), subid}, size}},
+	owning{true} {
+}
+
+
 GuiTexture::~GuiTexture() {
+	if (owning)
+		delete texture_handle.texture;
 }
 
 void GuiTexture::bind() {

@@ -16,6 +16,7 @@ class GuiTexture : public QSGTexture {
 
 public:
 	explicit GuiTexture(const SizedTextureHandle &texture_handle);
+	GuiTexture(std::unique_ptr<openage::Texture> &&texture, const QSize &size, int subid=0);
 	virtual ~GuiTexture();
 
 	virtual void bind() override;
@@ -30,6 +31,7 @@ public:
 private:
 	const SizedTextureHandle texture_handle;
 	mutable std::unique_ptr<QSGTexture> standalone;
+	const bool owning;
 };
 
 }} // namespace openage::gui
