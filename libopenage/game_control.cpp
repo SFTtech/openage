@@ -564,13 +564,18 @@ Player* GameControl::get_current_player() const {
 
 void GameControl::set_mode(int mode_index) {
 	if (mode_index != -1) {
-		if (mode_index < std::distance(std::begin(this->modes), std::end(this->modes)) &&this->modes[mode_index]->available()) {
+		if (mode_index < std::distance(std::begin(this->modes), std::end(this->modes))
+		    && this->modes[mode_index]->available()
+		    && this->active_mode_index != mode_index) {
+
 			engine->get_input_manager().remove_context(this->active_mode);
 
-			// set the new active mode
+			// exit from the old mode
 			if (this->active_mode) {
 				this->active_mode->on_exit();
 			}
+
+			// set the new active mode
 			this->active_mode_index = mode_index;
 			this->active_mode = this->modes[mode_index];
 			this->active_mode->on_enter();
