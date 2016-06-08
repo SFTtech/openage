@@ -46,7 +46,7 @@ void UnitTexture::sample(const coord::camhud &draw_pos, unsigned color) const {
 	// draw delta list first
 	for (auto &d : this->deltas) {
 		coord::camhud_delta dlt = coord::camhud_delta{d.second.x, d.second.y};
-		d.first->sample(draw_pos + dlt);
+		d.first->sample(draw_pos + dlt, color);
 	}
 
 	// draw texture
