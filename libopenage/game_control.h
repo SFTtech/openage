@@ -48,6 +48,7 @@ public:
 	 * used when switching modes
 	 */
 	virtual void on_enter() = 0;
+	virtual void on_exit() = 0;
 	virtual void render() = 0;
 
 	/**
@@ -76,6 +77,7 @@ public:
 
 	bool available() const override;
 	void on_enter() override;
+	void on_exit() override;
 	void render() override;
 	std::string name() const override;
 };
@@ -98,6 +100,7 @@ public:
 
 	bool available() const override;
 	void on_enter() override;
+	void on_exit() override;
 	void render() override;
 	std::string name() const override;
 
@@ -176,6 +179,7 @@ public:
 
 	bool available() const override;
 	void on_enter() override;
+	void on_exit() override;
 	void render() override;
 	std::string name() const override;
 

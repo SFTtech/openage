@@ -36,6 +36,8 @@ std::string CreateMode::name() const {
 
 void CreateMode::on_enter() {}
 
+void CreateMode::on_exit() {}
+
 void CreateMode::render() {}
 
 ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
@@ -190,7 +192,9 @@ bool ActionMode::available() const {
 	}
 }
 
-void ActionMode::on_enter() {
+void ActionMode::on_enter() {}
+
+void ActionMode::on_exit() {
 	this->selection.clear();
 }
 
@@ -337,6 +341,8 @@ bool EditorMode::available() const {
 }
 
 void EditorMode::on_enter() {}
+
+void EditorMode::on_exit() {}
 
 void EditorMode::render() {}
 
@@ -558,8 +564,16 @@ Player* GameControl::get_current_player() const {
 
 void GameControl::set_mode(int mode_index) {
 	if (mode_index != -1) {
-		if (mode_index < std::distance(std::begin(this->modes), std::end(this->modes)) &&this->modes[mode_index]->available()) {
+		if (mode_index < std::distance(std::begin(this->modes), std::end(this->modes))
+		    && this->modes[mode_index]->available()
+		    && this->active_mode_index != mode_index) {
+
 			engine->get_input_manager().remove_context(this->active_mode);
+
+			// exit from the old mode
+			if (this->active_mode) {
+				this->active_mode->on_exit();
+			}
 
 			// set the new active mode
 			this->active_mode_index = mode_index;
