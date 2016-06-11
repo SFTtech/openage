@@ -40,7 +40,7 @@ class Perlin {
 	value_t comp_max = static_cast<value_t>(sqrt(static_cast<double>(INT64_MAX) / N));
 
 	value_t interpolate(value_t x, value_t y, double pos) const {
-		double factor = (3 * std::pow(pos, 2)) - (2 * std::pow(pos, 3));
+		double factor = (3 * pos * pos) - (2 * std::pow(pos, 3));
 		return (value_t)((1 - factor) * x + factor * y);
 	}
 
@@ -72,6 +72,7 @@ class Perlin {
 
 	value_t magic_dot_product(const cvec_t &node, const cvec_t &point) {
 		vvec_t diff = node - point;
+		diff *= this->comp_max / this -> granularity;
 		return diff.dot_product(this->get_gradient(node));
 	}
 
