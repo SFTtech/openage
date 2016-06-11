@@ -44,7 +44,8 @@ public:
 	/**
 	 * Vector comparison
 	 */
-	typename std::enable_if<std::is_integral<data_type, typename bool>>::type
+	template<typename T=bool>
+	typename std::enable_if<std::is_integral<data_type>::value, T>::type
 	/* bool */ operator ==(this_type &other) {
 		for (size_t i = 0; i < N; i++) {
 			if ((*this)[i] != other[i]) {

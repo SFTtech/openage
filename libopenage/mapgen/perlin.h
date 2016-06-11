@@ -15,6 +15,9 @@
 // pxd: from libopenage.util.vector cimport Vector2, Vector3, Vector4
 #include "../util/vector.h"
 
+// pxd: from libc.stdint cimport int64_t
+
+
 namespace openage {
 namespace perlin {
 
@@ -25,14 +28,10 @@ template<size_t N>
 using coord_vec = util::Vector<N, coord_t>;
 template<size_t N>
 using value_vec = util::Vector<N, value_t>;
+// pxd: int64_t value_max
+constexpr int64_t value_max = INT64_MAX;
 
 /**
- * pxd:
- *
- * cppclass Perlin[N]:
- *     Perlin(size_t seed, size_t granularity) except +
- *
- *     int64_t noise_value(Vector[N, int64_t])
  */
 template<size_t N>
 class Perlin {
@@ -44,7 +43,7 @@ class Perlin {
 	std::unordered_map<cvec_t, vvec_t> gradient_cache;
 	// Maximum possible gradient vector component value without risking
 	// overflows during dot_product calculations.
-	value_t comp_max = static_cast<value_t>(sqrt(static_cast<double>(INT64_MAX) / N));
+	value_t comp_max = static_cast<value_t>(sqrt(static_cast<double>(value_max) / N));
 
 	value_t interpolate(value_t x, value_t y, double pos) const {
 		double factor = (3 * pos * pos) - (2 * std::pow(pos, 3));

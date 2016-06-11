@@ -16,7 +16,7 @@ private:
 	std::function<double()> random;
 
 protected:
-	virtual void generate();
+	virtual void generate() override;
 
 public:
 	BoxMuller(std::function<double()> random);

@@ -42,6 +42,8 @@ def demos_py():
            "translates a C++ exception and its causes to python")
     yield ("openage.log.tests.demo",
            "demonstrates the translation of Python log messages")
+    yield ("openage.mapgen.perlin.demo",
+           "renders some perlin noise as image")
 
 
 def tests_cpp():
