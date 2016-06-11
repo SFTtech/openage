@@ -37,6 +37,7 @@ pxdgen(
 	enum.h
 	enum_test.h
 	fslikeobject.h
+	vector.h
 )
 
 add_subdirectory(compress)

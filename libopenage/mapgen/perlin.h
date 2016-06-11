@@ -12,6 +12,7 @@
 #include "../rng/box_muller.h"
 #include "../rng/rng.h"
 #include "../util/hash.h"
+// pxd: from libopenage.util.vector cimport Vector2, Vector3, Vector4
 #include "../util/vector.h"
 
 namespace openage {
@@ -26,6 +27,12 @@ template<size_t N>
 using value_vec = util::Vector<N, value_t>;
 
 /**
+ * pxd:
+ *
+ * cppclass Perlin[N]:
+ *     Perlin(size_t seed, size_t granularity) except +
+ *
+ *     int64_t noise_value(Vector[N, int64_t])
  */
 template<size_t N>
 class Perlin {
@@ -110,6 +117,7 @@ class Perlin {
 	}
 
 public:
+
 	Perlin(seed_t seed, size_t granularity)
 		:
 		seed{seed},
@@ -125,5 +133,50 @@ public:
 	}
 
 };
+
+
+/**
+ * Alias for 2 dimensions.
+ *
+ * pxd:
+ *
+ * cppclass Perlin2:
+ *
+ *     Perlin2(size_t seed, size_t granularity) except +
+ *
+ *     int64_t noise_value(Vector2 point) except +
+ *
+ */
+using Perlin2 = Perlin<2>;
+
+/**
+ * Alias for 3 dimensions.
+ *
+ * pxd:
+ *
+ * cppclass Perlin3:
+ *
+ *     Perlin3(size_t seed, size_t granularity) except +
+ *
+ *     int64_t noise_value(Vector3 point) except +
+ *
+ */
+using Perlin3 = Perlin<3>;
+
+/**
+ * Alias for 4 dimensions.
+ *
+ * pxd:
+ *
+ * cppclass Perlin4:
+ *
+ *     Perlin4(size_t seed, size_t granularity) except +
+ *
+ *     int64_t noise_value(Vector4 point) except +
+ *
+ */
+using Perlin4 = Perlin<4>;
+
+
 
 }} // openage::perlin

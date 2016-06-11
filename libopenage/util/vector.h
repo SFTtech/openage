@@ -195,8 +195,46 @@ std::ostream &operator <<(std::ostream &o, const Vector<N, data_type> &v) {
 }
 
 
+/**
+ * Alias for 2 dimensions.
+ *
+ * pxd:
+ *
+ * cppclass Vector2[DT]:
+ *
+ *     Vector2(DT x, DT y) except +
+ *
+ *     DT& operator[] (size_t index) except +
+ *
+ */
 using Vector2 = Vector<2>;
+
+/**
+ * Alias for 3 dimensions.
+ *
+ * pxd:
+ *
+ * cppclass Vector3[DT]:
+ *
+ *     Vector3(DT x, DT y) except +
+ *
+ *     DT& operator[] (size_t index) except +
+ *
+ */
 using Vector3 = Vector<3>;
+
+/**
+ * Alias for 4 dimensions.
+ *
+ * pxd:
+ *
+ * cppclass Vector4[DT]:
+ *
+ *     Vector4(DT x, DT y) except +
+ *
+ *     DT& operator[] (size_t index) except +
+ *
+ */
 using Vector4 = Vector<4>;
 
 }} // openage::util
