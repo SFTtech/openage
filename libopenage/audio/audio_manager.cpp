@@ -11,7 +11,7 @@
 #include "../error/error.h"
 
 #include "resource.h"
-
+#include "hash_functions.h"
 
 namespace openage {
 namespace audio {

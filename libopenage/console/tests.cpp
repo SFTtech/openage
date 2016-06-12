@@ -5,6 +5,7 @@
 
 #include <unistd.h>
 #include "../util/pty.h"
+#include "../util/fds.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -13,6 +14,7 @@
 #include "../log/log.h"
 #include "../error/error.h"
 
+#include "console.h"
 #include "buf.h"
 #include "draw.h"
 

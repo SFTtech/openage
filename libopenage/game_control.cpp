@@ -2,6 +2,7 @@
 
 #include "gamestate/game_spec.h"
 #include "util/strings.h"
+#include "terrain/terrain_chunk.h"
 #include "game_control.h"
 
 namespace openage {

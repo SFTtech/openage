@@ -5,6 +5,7 @@
 #include "action.h"
 #include "unit.h"
 #include "unit_type.h"
+#include "unit_container.h"
 
 namespace openage {
 

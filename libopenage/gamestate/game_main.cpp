@@ -2,6 +2,7 @@
 
 #include "../unit/unit_type.h"
 #include "../engine.h"
+#include "../terrain/terrain.h"
 #include "game_main.h"
 #include "game_spec.h"
 #include "generator.h"

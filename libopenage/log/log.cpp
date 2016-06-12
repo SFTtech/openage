@@ -4,6 +4,7 @@
 
 #include "named_logsource.h"
 #include "stdout_logsink.h"
+#include "message.h"
 
 namespace openage {
 namespace log {

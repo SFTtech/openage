@@ -4,7 +4,6 @@
 
 #include <memory>
 #include <string>
-#include <tuple>
 
 #include "category.h"
 #include "format.h"

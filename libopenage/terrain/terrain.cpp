@@ -10,7 +10,6 @@
 #include "../error/error.h"
 #include "../engine.h"
 #include "../game_renderer.h"
-#include "../texture.h"
 #include "../coord/camgame.h"
 #include "../coord/chunk.h"
 #include "../coord/tile.h"
@@ -20,6 +19,7 @@
 #include "../util/strings.h"
 
 #include "terrain_chunk.h"
+#include "terrain_object.h"
 
 namespace openage {
 

@@ -5,6 +5,7 @@
 #include <tuple>
 
 #include "audio_manager.h"
+#include "resource.h"
 
 namespace openage {
 namespace audio {

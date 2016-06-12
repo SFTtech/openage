@@ -12,6 +12,7 @@
 
 #include "coord/window.h"
 #include "log/log.h"
+#include "log/message.h"
 #include <ctime>
 
 namespace openage {

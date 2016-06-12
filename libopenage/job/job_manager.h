@@ -16,10 +16,11 @@
 #include "job_state.h"
 #include "job_state_base.h"
 #include "types.h"
-#include "worker.h"
 
 namespace openage {
 namespace job {
+
+class Worker;
 
 /**
  * A job manager can be used to execute functions within separate worker

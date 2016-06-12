@@ -11,7 +11,6 @@
 
 #include "category.h"
 #include "hash_functions.h"
-#include "resource.h"
 #include "sound.h"
 #include "../util/dir.h"
 

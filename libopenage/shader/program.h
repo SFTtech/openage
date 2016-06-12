@@ -4,10 +4,10 @@
 
 #include <epoxy/gl.h>
 
-#include "shader.h"
-
 namespace openage {
 namespace shader {
+
+class Shader;
 
 class Program {
 public:

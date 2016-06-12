@@ -4,6 +4,7 @@
 
 #include "../util/thread_id.h"
 #include "../log/log.h"
+#include "worker.h"
 
 namespace openage {
 namespace job {

@@ -3,12 +3,9 @@
 #pragma once
 
 // TODO remove some of those
-#include <cstdarg>
 #include <cstdlib>
 #include <functional>
-#include <string>
 #include <vector>
-#include <memory>
 #include <iomanip>
 
 

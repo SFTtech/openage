@@ -8,18 +8,21 @@
 
 #include <epoxy/gl.h>
 #include "../util/timing.h"
+#include "../util/fds.h"
 
 #include <unistd.h>
 
 #include "console.h"
+#include "buf.h"
 #include "../renderer/text.h"
+#include "../engine.h"
 
 namespace openage {
 namespace console {
 namespace draw {
 
 void to_opengl(Console *console) {
-	coord::camhud topleft = {
+    coord::camhud topleft = {
 		console->bottomleft.x,
 		// TODO This should probably just be console->topright.y
 		console->bottomleft.y + console->charsize.y * console->buf.dims.y

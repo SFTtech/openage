@@ -9,8 +9,6 @@
 #include <unordered_map>
 #include <vector>
 
-#include "terrain_chunk.h"
-#include "terrain_object.h"
 #include "../assetmanager.h"
 #include "../texture.h"
 #include "../coord/camgame.h"
@@ -22,6 +20,7 @@ namespace openage {
 
 class Engine;
 class TerrainChunk;
+class TerrainObject;
 class RenderOptions;
 
 /**

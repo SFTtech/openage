@@ -9,7 +9,6 @@
 
 #include "../coord/phys3.h"
 #include "attribute.h"
-#include "unit_container.h"
 
 namespace openage {
 

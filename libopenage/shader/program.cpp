@@ -13,6 +13,8 @@
 #include "../util/file.h"
 #include "../util/strings.h"
 
+#include "shader.h"
+
 namespace openage {
 namespace shader {
 

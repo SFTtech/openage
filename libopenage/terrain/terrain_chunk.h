@@ -5,8 +5,6 @@
 #include <stddef.h>
 #include <vector>
 
-#include "terrain.h"
-#include "terrain_object.h"
 #include "../coord/camgame.h"
 #include "../coord/tile.h"
 #include "../texture.h"

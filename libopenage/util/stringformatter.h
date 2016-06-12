@@ -4,6 +4,7 @@
 
 #include <atomic>
 #include <type_traits>
+#include <memory>
 
 #include "../util/compiler.h"
 

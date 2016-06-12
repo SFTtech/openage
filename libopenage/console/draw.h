@@ -2,14 +2,16 @@
 
 #pragma once
 
-#include "buf.h"
-
-#include "console.h"
-#include "../coord/camhud.h"
-#include "../util/fds.h"
-
 namespace openage {
+namespace util {
+class FD;
+} // openage::util
+
+
 namespace console {
+
+class Console;
+class Buf;
 
 namespace draw {
 

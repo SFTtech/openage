@@ -5,12 +5,9 @@
 #include <memory>
 #include <stddef.h>
 
-#include "terrain.h"
-#include "terrain_chunk.h"
 #include "../pathfinding/path.h"
 #include "../coord/tile.h"
 #include "../coord/phys3.h"
-#include "../texture.h"
 
 namespace openage {
 

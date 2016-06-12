@@ -5,7 +5,6 @@
 #include <unordered_set>
 
 #include "../coord/tile.h"
-#include "../rng/rng.h"
 #include "../assetmanager.h"
 #include "../options.h"
 #include "../gui/guisys/public/gui_property_map.h"
@@ -20,6 +19,10 @@ class GameSpec;
 class Terrain;
 class GameMain;
 class Engine;
+
+namespace rng {
+class RNG;
+} // openage::rng
 
 /**
  * the type to store a set of tiles

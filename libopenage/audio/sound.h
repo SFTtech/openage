@@ -5,7 +5,6 @@
 #include <memory>
 
 #include "category.h"
-#include "resource.h"
 
 namespace openage {
 namespace audio {
@@ -13,6 +12,7 @@ namespace audio {
 
 // forward declaration of AudioManager
 class AudioManager;
+class Resource;
 
 
 /**
