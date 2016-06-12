@@ -11,8 +11,10 @@ function(python_init)
 	set_property(GLOBAL PROPERTY SFT_CYTHON_MODULES)
 	set_property(GLOBAL PROPERTY SFT_CYTHON_MODULES_EMBED)
 
-	# filled by pxdgen and add_pxd. for use as depends list for cythonize.py.
+	# list of pxd files added manually
+	# filled by add_pxd only. for use as depends list for cythonize.py.
 	set_property(GLOBAL PROPERTY SFT_PXD_FILES)
+
 	# filled by pxdgen. for use as output list for the pxdgen target.
 	set_property(GLOBAL PROPERTY SFT_GENERATED_PXD_FILES)
 
@@ -162,7 +164,6 @@ function(pxdgen)
 		set_source_files_properties("${PXDNAME}" PROPERTIES GENERATED ON)
 
 		set_property(GLOBAL APPEND PROPERTY SFT_PXDGEN_SOURCES "${source}")
-		set_property(GLOBAL APPEND PROPERTY SFT_PXD_FILES "${PXDNAME}")
 		set_property(GLOBAL APPEND PROPERTY SFT_GENERATED_PXD_FILES "${PXDNAME}")
 	endforeach()
 endfunction()
@@ -218,10 +219,9 @@ function(python_finalize)
 	# pxdgen (.h -> .pxd)
 
 	get_property(pxdgen_sources GLOBAL PROPERTY SFT_PXDGEN_SOURCES)
-	get_property(generated_pxd_list GLOBAL PROPERTY SFT_GENERATED_PXD_FILES)
 	write_on_change("${CMAKE_BINARY_DIR}/py/pxdgen_sources" "${pxdgen_sources}")
 	set(PXDGEN_TIMEFILE "${CMAKE_BINARY_DIR}/py/pxdgen_timefile")
-	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}" ${generated_pxd_list}
+	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}"
 		COMMAND "${PYTHON}" -m buildsystem.pxdgen
 		--file-list "${CMAKE_BINARY_DIR}/py/pxdgen_sources"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${PXDGEN_TIMEFILE}"
@@ -239,7 +239,8 @@ function(python_finalize)
 	get_property(cython_modules_embed GLOBAL PROPERTY SFT_CYTHON_MODULES_EMBED)
 	write_on_change("${CMAKE_BINARY_DIR}/py/cython_modules_embed" "${cython_modules_embed}")
 	get_property(pxd_list GLOBAL PROPERTY SFT_PXD_FILES)
-	write_on_change("${CMAKE_BINARY_DIR}/py/pxd_list" "${pxd_list}")
+	get_property(generated_pxd_list GLOBAL PROPERTY SFT_GENERATED_PXD_FILES)
+	write_on_change("${CMAKE_BINARY_DIR}/py/pxd_list" "${pxd_list};${generated_pxd_list}")
 	set(CYTHONIZE_TIMEFILE "${CMAKE_BINARY_DIR}/py/cythonize_timefile")
 	add_custom_command(OUTPUT "${CYTHONIZE_TIMEFILE}"
 		COMMAND "${PYTHON}" -m buildsystem.cythonize
