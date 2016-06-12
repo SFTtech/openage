@@ -72,14 +72,16 @@ class Perlin {
 			return it->second;
 		}
 		vvec_t res = this->calculate_gradient(node);
-		this->gradient_cache[node] = res;
+		this->gradient_cache.insert({node, res});
 		return res;
 	}
 
 	value_t magic_dot_product(const cvec_t &node, const cvec_t &point) {
 		vvec_t diff = node - point;
-		diff *= this->comp_max / this -> granularity;
-		return diff.dot_product(this->get_gradient(node));
+		// diff *= this->comp_max / this -> granularity;
+		auto foo = diff.dot_product(this->get_gradient(node));
+		std::cout << foo << std::endl;
+		return foo;
 	}
 
 	value_t multidim_inter(const size_t dim,
@@ -143,7 +145,7 @@ public:
  *
  *     Perlin2(size_t seed, size_t granularity) except +
  *
- *     int64_t noise_value(Vector2 point) except +
+ *     int64_t noise_value(Vector2[int64_t] point) except +
  *
  */
 using Perlin2 = Perlin<2>;
@@ -157,7 +159,7 @@ using Perlin2 = Perlin<2>;
  *
  *     Perlin3(size_t seed, size_t granularity) except +
  *
- *     int64_t noise_value(Vector3 point) except +
+ *     int64_t noise_value(Vector3[int64_t] point) except +
  *
  */
 using Perlin3 = Perlin<3>;
@@ -171,7 +173,7 @@ using Perlin3 = Perlin<3>;
  *
  *     Perlin4(size_t seed, size_t granularity) except +
  *
- *     int64_t noise_value(Vector4 point) except +
+ *     int64_t noise_value(Vector4[int64_t] point) except +
  *
  */
 using Perlin4 = Perlin<4>;

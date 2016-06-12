@@ -92,7 +92,7 @@ void matrix() {
 		const Matrix3 a(2, 0, 0,
 		                0, 2, 0,
 		                0, 0, 2);
-		const Vector3 v(1, 2, 3);
+		const Vector3<float> v(1, 2, 3);
 		auto u = (a * v).to_vector();
 		TESTEQUALS_FLOAT(u[0], 2, 1e-7);
 		TESTEQUALS_FLOAT(u[1], 4, 1e-7);

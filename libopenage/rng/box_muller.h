@@ -6,7 +6,7 @@
 #include <cmath>
 
 #include "../util/generator.h"
-#include "../crossplatform/math_constants.h"
+#include "../util/math_constants.h"
 
 namespace openage {
 namespace rng {
