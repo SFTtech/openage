@@ -370,7 +370,7 @@ def parse_args():
                      help="input files (usually cpp .h files).")
     cli.add_argument('--file-list',
                      help="semicolon-separated list of input files.")
-    cli.add_argument('--ignore-timestamps', action='store_false',
+    cli.add_argument('--ignore-timestamps', action='store_true',
                      help="force generating even if the output file is already"
                           "up to date")
 
