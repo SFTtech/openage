@@ -19,9 +19,9 @@
 namespace openage {
 
 class Engine;
+class RenderOptions;
 class TerrainChunk;
 class TerrainObject;
-class RenderOptions;
 
 /**
  * type that for terrain ids.

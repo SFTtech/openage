@@ -7,11 +7,10 @@ namespace util {
 class FD;
 } // openage::util
 
-
 namespace console {
 
-class Console;
 class Buf;
+class Console;
 
 namespace draw {
 

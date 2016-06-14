@@ -10,8 +10,8 @@
 #include "../util/dir.h"
 #include "../error/error.h"
 
-#include "resource.h"
 #include "hash_functions.h"
+#include "resource.h"
 
 namespace openage {
 namespace audio {

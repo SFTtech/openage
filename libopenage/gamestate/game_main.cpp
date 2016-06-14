@@ -1,8 +1,8 @@
 // Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-#include "../unit/unit_type.h"
 #include "../engine.h"
 #include "../terrain/terrain.h"
+#include "../unit/unit_type.h"
 #include "game_main.h"
 #include "game_spec.h"
 #include "generator.h"

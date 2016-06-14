@@ -4,8 +4,8 @@
 #include <string>
 
 #include <unistd.h>
-#include "../util/pty.h"
 #include "../util/fds.h"
+#include "../util/pty.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -14,8 +14,8 @@
 #include "../log/log.h"
 #include "../error/error.h"
 
-#include "console.h"
 #include "buf.h"
+#include "console.h"
 #include "draw.h"
 
 namespace openage {
