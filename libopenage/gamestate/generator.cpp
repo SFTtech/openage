@@ -3,6 +3,8 @@
 #include "../util/math_constants.h"
 #include "../unit/unit.h"
 #include "../engine.h"
+#include "../rng/rng.h"
+#include "../terrain/terrain_chunk.h"
 #include "game_main.h"
 #include "game_save.h"
 #include "game_spec.h"

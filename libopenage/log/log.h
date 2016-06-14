@@ -4,11 +4,11 @@
 
 // pxd: from libopenage.log.level cimport level
 #include "level.h"
-#include "message.h"
 
 namespace openage {
 namespace log {
 
+class message;
 
 /**
  * Convenience method that makes use of the 'general' LogSource.

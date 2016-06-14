@@ -3,10 +3,8 @@
 #pragma once
 
 #include <string>
-#include <tuple>
 
 #include "format.h"
-#include "loader_policy.h"
 #include "resource.h"
 #include "types.h"
 

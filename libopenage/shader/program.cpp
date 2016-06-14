@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 #include "program.h"
 
@@ -12,6 +12,8 @@
 #include "../util/compiler.h"
 #include "../util/file.h"
 #include "../util/strings.h"
+
+#include "shader.h"
 
 namespace openage {
 namespace shader {

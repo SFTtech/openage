@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 #include "terrain_chunk.h"
 
@@ -14,6 +14,7 @@
 #include "../coord/camgame.h"
 #include "../util/misc.h"
 
+#include "terrain.h"
 #include "terrain_object.h"
 
 namespace openage {

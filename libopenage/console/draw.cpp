@@ -7,11 +7,14 @@
 #include <stdlib.h>
 
 #include <epoxy/gl.h>
+#include "../util/fds.h"
 #include "../util/timing.h"
 
 #include <unistd.h>
 
+#include "buf.h"
 #include "console.h"
+#include "../engine.h"
 #include "../renderer/text.h"
 
 namespace openage {

@@ -8,15 +8,13 @@
 #include <vector>
 
 #include "coord/tile.h"
-#include "engine.h"
 #include "handlers.h"
 #include "options.h"
 
-#include "gamestate/game_main.h"
-#include "gamestate/player.h"
-
 namespace openage {
 
+class Engine;
+class GameMain;
 
 /**
  * Options for the renderer.

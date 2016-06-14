@@ -2,6 +2,7 @@
 
 #include "log.h"
 
+#include "message.h"
 #include "named_logsource.h"
 #include "stdout_logsink.h"
 

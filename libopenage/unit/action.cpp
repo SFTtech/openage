@@ -10,7 +10,6 @@
 #include "action.h"
 #include "command.h"
 #include "producer.h"
-#include "unit.h"
 #include "unit_texture.h"
 
 namespace openage {

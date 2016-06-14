@@ -8,13 +8,14 @@
 #include "buf.h"
 #include "../handlers.h"
 #include "../coord/camhud.h"
-#include "../engine.h"
 #include "../input/input_manager.h"
 #include "../util/color.h"
 #include "../renderer/font/font.h"
 #include "../gamedata/color.gen.h"
 
 namespace openage {
+
+class Engine;
 
 /**
  * In-game console subsystem. Featuring a full terminal emulator.

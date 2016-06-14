@@ -10,12 +10,12 @@
 
 #include "player.h"
 #include "../options.h"
-#include "../terrain/terrain.h"
 #include "../unit/unit_container.h"
 
 namespace openage {
 
 class Generator;
+class Terrain;
 
 /**
  * Contains information for a single game

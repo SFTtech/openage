@@ -13,6 +13,7 @@
 #include "subprocess.h"
 #include "os.h"
 #include "../log/log.h"
+#include "../log/message.h"
 
 
 namespace openage {

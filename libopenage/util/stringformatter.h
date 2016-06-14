@@ -3,6 +3,7 @@
 #pragma once
 
 #include <atomic>
+#include <memory>
 #include <type_traits>
 
 #include "../util/compiler.h"

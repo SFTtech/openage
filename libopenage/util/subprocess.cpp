@@ -17,6 +17,7 @@
 #endif
 
 #include "../log/log.h"
+#include "../log/message.h"
 #include "strings.h"
 
 namespace openage {

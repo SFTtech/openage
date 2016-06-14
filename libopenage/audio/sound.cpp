@@ -1,10 +1,11 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include "sound.h"
 
 #include <tuple>
 
 #include "audio_manager.h"
+#include "resource.h"
 
 namespace openage {
 namespace audio {

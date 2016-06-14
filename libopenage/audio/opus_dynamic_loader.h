@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include <mutex>
 #include <string>
 
 #include "dynamic_loader.h"

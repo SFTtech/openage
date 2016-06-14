@@ -9,7 +9,6 @@
 
 #include "action.h"
 #include "event.h"
-#include "../handlers.h"
 
 namespace openage {
 namespace input {
