@@ -20,10 +20,8 @@ std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 	SDL_SysWMinfo wm_info;
 	SDL_VERSION(&wm_info.version);
 	if (SDL_GetWindowWMInfo(window, &wm_info)) {
-#ifndef NDEBUG
-		Display *display = wm_info.info.x11.display;
-		assert(display);
-#endif
+		assert(wm_info.info.x11.display);
+
 		current_context = glXGetCurrentContext();
 		assert(current_context);
 	}
