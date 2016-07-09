@@ -371,6 +371,8 @@ void Engine::loop() {
 			} // switch event
 		}
 
+		this->get_input_manager().get_top_context().play_step();
+
 		this->gui->process_events();
 
 		if (this->game) {

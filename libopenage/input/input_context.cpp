@@ -2,6 +2,7 @@
 
 #include <sstream>
 #include "input_context.h"
+#include "input_context_recorder_player.h"
 #include "../engine.h"
 
 namespace openage {
@@ -50,7 +51,9 @@ std::string event_as_string(const Event& event) {
 
 InputContext::InputContext()
 	:
-	utf8_mode{false} {}
+	utf8_mode{false},
+	recorder{},
+	player{} {}
 
 std::vector<std::string> InputContext::active_binds() const {
 	Engine &engine = Engine::get();
@@ -90,6 +93,9 @@ void InputContext::bind(event_class ec, const action_check_t act) {
 
 bool InputContext::execute_if_bound(const action_arg_t &arg) {
 
+	if (this->recorder)
+		this->recorder->save_action(arg, Engine::get().get_action_manager());
+
 	// arg type hints are highest priority
 	for (auto &h : arg.hints) {
 		auto action = this->by_type.find(h);
@@ -116,6 +122,27 @@ bool InputContext::execute_if_bound(const action_arg_t &arg) {
 	}
 
 	return false;
+}
+
+InputContextRecorder* InputContext::get_recorder() const {
+	return this->recorder;
+}
+
+void InputContext::set_recorder(InputContextRecorder *recorder) {
+	this->recorder = recorder;
+}
+
+InputContextPlayer* InputContext::get_player() const {
+	return this->player;
+}
+
+void InputContext::set_player(InputContextPlayer *player) {
+	this->player = player;
+}
+
+void InputContext::play_step() {
+	if (this->player)
+		this->player->perform(*this, Engine::get().get_action_manager());
 }
 
 

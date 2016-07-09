@@ -13,6 +13,9 @@
 namespace openage {
 namespace input {
 
+class InputContextRecorder;
+class InputContextPlayer;
+
 /**
  * An input context contains all keybindings and actions
  * active in e.g. the HUD only.
@@ -55,6 +58,17 @@ public:
 	 */
 	bool execute_if_bound(const action_arg_t &e);
 
+	InputContextRecorder* get_recorder() const;
+	void set_recorder(InputContextRecorder *recorder);
+
+	InputContextPlayer* get_player() const;
+	void set_player(InputContextPlayer *player);
+
+	/**
+	 * play events from a player up to the current time point
+	 * first call establishes the point of reference
+	 */
+	void play_step();
 
 	/**
 	 * Affects which keyboard events are received:
@@ -80,6 +94,9 @@ private:
 	 * event_class as key, to ensure all events can be mapped
 	 */
 	std::unordered_map<event_class, action_check_t, event_class_hash> by_class;
+
+	InputContextRecorder *recorder;
+	InputContextPlayer *player;
 
 };
 
