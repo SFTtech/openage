@@ -8,6 +8,7 @@ add_sources(libopenage
 	game_saver.cpp
 	game_spec_link.cpp
 	generator_link.cpp
+	input_context_recorder_player_link.cpp
 	main_args_link.cpp
 	resources_list_model.cpp
 )
