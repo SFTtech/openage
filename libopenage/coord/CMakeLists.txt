@@ -4,6 +4,7 @@ add_sources(libopenage
 	chunk.cpp
 	phys2.cpp
 	phys3.cpp
+	phys3_serialization.cpp
 	term.cpp
 	tests.cpp
 	tile.cpp
