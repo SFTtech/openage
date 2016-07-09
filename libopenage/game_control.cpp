@@ -609,4 +609,8 @@ void GameControl::set_mode(int mode_index) {
 	}
 }
 
+int GameControl::get_mode() const {
+	return this->active_mode_index;
+}
+
 } // openage
