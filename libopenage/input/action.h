@@ -4,6 +4,7 @@
 
 #include <unordered_map>
 #include <vector>
+#include <functional>
 
 #include "../coord/window.h"
 #include "event.h"
@@ -26,8 +27,8 @@ class ActionManager {
 public:
 	ActionManager(Engine *engine);
 	bool create(const std::string type);
-	action_t get(const std::string &type);
-	std::string get_name(const action_t action);
+	action_t get(const std::string &type) const;
+	std::string get_name(const action_t action) const;
 	bool is(const std::string &type, const action_t action);
 
 private :

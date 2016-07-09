@@ -26,7 +26,7 @@ bool ActionManager::create(const std::string type) {
 	return false;
 }
 
-action_t ActionManager::get(const std::string &type) {
+action_t ActionManager::get(const std::string &type) const {
 	auto it = this->actions.find(type);
 	if (it != this->actions.end()) {
 		return it->second;
@@ -38,7 +38,7 @@ bool ActionManager::is(const std::string &type, const action_t action) {
 	return get(type) == action;
 }
 
-std::string ActionManager::get_name(const action_t action) {
+std::string ActionManager::get_name(const action_t action) const {
 	for (auto &it : this->actions) {
 		if (it.second == action) {
 			return it.first;
