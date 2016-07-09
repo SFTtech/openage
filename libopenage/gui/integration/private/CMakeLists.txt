@@ -12,4 +12,5 @@ add_sources(libopenage
 	gui_texture.cpp
 	gui_texture_factory.cpp
 	gui_texture_handle.cpp
+	gui_texture_from_img_data.cpp
 )
