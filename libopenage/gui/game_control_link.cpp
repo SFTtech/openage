@@ -9,6 +9,7 @@
 #include "../engine.h"
 #include "engine_link.h"
 #include "game_main_link.h"
+#include "input_context_recorder_player_link.h"
 
 namespace openage {
 namespace gui {
@@ -25,7 +26,9 @@ OutputModeLink::OutputModeLink(QObject *parent)
 	:
 	GuiItemQObject{parent},
 	QQmlParserStatus{},
-	GuiItemInterface<OutputModeLink>{} {
+	GuiItemInterface<OutputModeLink>{},
+	recorder{},
+	player{} {
 }
 
 OutputModeLink::~OutputModeLink() {
@@ -37,6 +40,28 @@ QString OutputModeLink::get_name() const {
 
 QStringList OutputModeLink::get_binds() const {
 	return this->binds;
+}
+
+InputContextRecorderLink* OutputModeLink::get_recorder() const {
+	return this->recorder;
+}
+
+void OutputModeLink::set_recorder(InputContextRecorderLink *recorder) {
+	static auto f = [] (OutputMode *_this, input::InputContextRecorder *recorder) {
+		_this->set_recorder(recorder);
+	};
+	this->s(f, this->recorder, recorder);
+}
+
+InputContextPlayerLink* OutputModeLink::get_player() const {
+	return this->player;
+}
+
+void OutputModeLink::set_player(InputContextPlayerLink *player) {
+	static auto f = [] (OutputMode *_this, input::InputContextPlayer *player) {
+		_this->set_player(player);
+	};
+	this->s(f, this->player, player);
 }
 
 void OutputModeLink::on_announced(const std::string &name, const std::vector<std::string>& binds) {
@@ -64,10 +89,12 @@ void OutputModeLink::on_core_adopted() {
 }
 
 void OutputModeLink::componentComplete() {
-	static auto f = [] (OutputMode *_this) {
+	static auto f = [] (OutputMode *_this, input::InputContextRecorder *recorder, input::InputContextPlayer *player) {
+		_this->set_recorder(recorder);
+		_this->set_player(player);
 		_this->announce();
 	};
-	this->i(f);
+	this->i(f, this->recorder, this->player);
 }
 
 CreateModeLink::CreateModeLink(QObject *parent)

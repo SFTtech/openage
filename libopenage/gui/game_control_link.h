@@ -32,12 +32,17 @@ struct Unwrap<openage::gui::OutputModeLink> {
 namespace openage {
 namespace gui {
 
+class InputContextRecorderLink;
+class InputContextPlayerLink;
+
 class OutputModeLink : public qtsdl::GuiItemQObject, public QQmlParserStatus, public qtsdl::GuiItemInterface<OutputModeLink> {
 	Q_OBJECT
 
 	Q_INTERFACES(QQmlParserStatus)
 	Q_PROPERTY(QString name READ get_name NOTIFY name_changed)
 	Q_PROPERTY(QStringList binds READ get_binds NOTIFY binds_changed)
+	Q_PROPERTY(openage::gui::InputContextRecorderLink* recorder READ get_recorder WRITE set_recorder)
+	Q_PROPERTY(openage::gui::InputContextPlayerLink* player READ get_player WRITE set_player)
 
 public:
 	OutputModeLink(QObject *parent=nullptr);
@@ -45,6 +50,12 @@ public:
 
 	QString get_name() const;
 	QStringList get_binds() const;
+
+	InputContextRecorderLink* get_recorder() const;
+	void set_recorder(InputContextRecorderLink *recorder);
+
+	InputContextPlayerLink* get_player() const;
+	void set_player(InputContextPlayerLink *player);
 
 signals:
 	void name_changed();
@@ -61,6 +72,8 @@ protected:
 private:
 	QString name;
 	QStringList binds;
+	InputContextRecorderLink *recorder;
+	InputContextPlayerLink *player;
 };
 
 class CreateModeLink;
