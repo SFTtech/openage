@@ -1,5 +1,6 @@
 add_sources(libopenage
 	action.cpp
+	action_serialization
 	event.cpp
 	input_context.cpp
 	input_manager.cpp
