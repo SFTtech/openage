@@ -103,7 +103,23 @@ Item {
 
 		ActionMode {
 			id: actionModeObj
+
+			recorder: inputRecorderObj
+			player: inputPlayerObj
+
 			LR.tag: "actionMode"
+		}
+
+		InputContextRecorder {
+			id: inputRecorderObj
+			fileName: "out.txt"
+			LR.tag: "inputRecorder"
+		}
+
+		InputContextPlayer {
+			id: inputPlayerObj
+			fileName: "in.txt"
+			LR.tag: "inputPlayer"
 		}
 
 		EditorMode {
