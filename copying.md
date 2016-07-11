@@ -82,6 +82,7 @@ _the openage authors_ are:
 | Sebastian Brodehl           | sbrodehl                    | sbrodehl@students.uni-mainz.de        |
 | Gaith Hallak                | ghallak                     | gaithhallak@gmail.com                 |
 | Pierre Hallot               | Hallot                      | hallotpierre@gmail.com                |
+| Vicken Simonian             | vsimon                      | vsimon@gmail.com                      |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
