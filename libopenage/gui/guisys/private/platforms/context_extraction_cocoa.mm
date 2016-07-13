@@ -9,8 +9,7 @@
 #include "SDL_syswm.h"
 #import <AppKit/NSWindow.h>
 
-namespace openage {
-namespace gui {
+namespace qtsdl {
 
 std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 	assert(window);
@@ -33,4 +32,4 @@ std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 	return std::make_tuple(QVariant::fromValue<QCocoaNativeContext>(QCocoaNativeContext(current_context)), reinterpret_cast<WId>(view));
 }
 
-}} // namespace openage::gui
+} // namespace qtsdl
