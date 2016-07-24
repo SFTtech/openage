@@ -39,7 +39,7 @@ std::string InputManager::get_bind(const std::string &action_str) {
 	return "";
 }
 
-bool InputManager::set_bind(const char *bind_char, const std::string action_str) {
+bool InputManager::set_bind(const std::string &bind_str, const std::string action_str) {
 	try {
 		ActionManager &action_manager = Engine::get().get_action_manager();
 
@@ -48,7 +48,7 @@ bool InputManager::set_bind(const char *bind_char, const std::string action_str)
 			return false;
 		}
 
-		Event ev = this->text_to_event(bind_char);
+		Event ev = this->text_to_event(bind_str);
 
 		auto it = this->keys.find(action);
 		if (it != this->keys.end()) {
@@ -63,8 +63,7 @@ bool InputManager::set_bind(const char *bind_char, const std::string action_str)
 	}
 }
 
-Event InputManager::text_to_event(const char *event_char) {
-	std::string event_str = std::string(event_char);
+Event InputManager::text_to_event(const std::string &event_str) {
 	int mod = 0;
 	std::size_t start = 0;
 	std::size_t end;

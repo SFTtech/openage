@@ -49,12 +49,12 @@ public:
 	 * /wheel). Remove previous assignation. Do nothing if either they
 	 * given bind or action is invalid/unknow.
 	 */
-	bool set_bind(const char *bind_char, const std::string action);
+	bool set_bind(const std::string &bind_str, const std::string action);
 
 	/**
 	 * Convert a string to an event throw 0 if the string is not a valid event.
 	 */
-	Event text_to_event(const char *event_char);
+	Event text_to_event(const std::string &event_str);
 
 	/**
 	 * Convert a string to a key event throw 0 if the string is not a valid key event.
