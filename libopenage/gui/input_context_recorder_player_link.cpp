@@ -29,8 +29,18 @@ void InputContextRecorderPlayerLink::set_file_name(const QString &file_name) {
 	this->s(f, this->file_name, file_name);
 }
 
+void InputContextRecorderPlayerLink::classBegin() {
+}
+
 void InputContextRecorderPlayerLink::on_core_adopted() {
 	this->file_name = QString::fromStdString(unwrap(this)->get_file_name());
+}
+
+void InputContextRecorderPlayerLink::componentComplete() {
+	static auto f = [] (input::InputContextRecorderPlayer *_this) {
+		_this->announce();
+	};
+	this->i(f);
 }
 
 InputContextRecorderLink::InputContextRecorderLink(QObject *parent)
@@ -43,6 +53,23 @@ InputContextPlayerLink::InputContextPlayerLink(QObject *parent)
 	:
 	Inherits{parent} {
 	Q_UNUSED(registration_player);
+}
+
+QPoint InputContextPlayerLink::get_mouse() const {
+	return this->mouse;
+}
+
+void InputContextPlayerLink::on_mouse_changed(const coord::window &mouse) {
+	QPoint new_mouse{mouse.x, mouse.y};
+	if (this->mouse != new_mouse) {
+		this->mouse = new_mouse;
+		emit this->mouse_changed(this->mouse);
+	}
+}
+
+void InputContextPlayerLink::on_core_adopted() {
+	this->Inherits::on_core_adopted();
+	QObject::connect(&unwrap(this)->gui_signals, &input::InputContextPlayerSignals::mouse_changed, this, &InputContextPlayerLink::on_mouse_changed);
 }
 
 }} // namespace openage::gui

@@ -2,6 +2,9 @@
 
 #pragma once
 
+#include <QQmlParserStatus>
+#include <QPoint>
+
 #include "guisys/link/gui_item.h"
 
 #include "../input/input_context_recorder_player.h"
@@ -49,9 +52,10 @@ struct Unwrap<openage::gui::InputContextPlayerLink> {
 namespace openage {
 namespace gui {
 
-class InputContextRecorderPlayerLink : public qtsdl::GuiItemQObject, public qtsdl::GuiItemInterface<InputContextRecorderPlayerLink> {
+class InputContextRecorderPlayerLink : public qtsdl::GuiItemQObject, public QQmlParserStatus, public qtsdl::GuiItemInterface<InputContextRecorderPlayerLink> {
 	Q_OBJECT
 
+	Q_INTERFACES(QQmlParserStatus)
 	Q_PROPERTY(QString fileName READ get_file_name WRITE set_file_name)
 
 public:
@@ -60,10 +64,11 @@ public:
 	QString get_file_name() const;
 	void set_file_name(const QString &file_name);
 
-private:
-	virtual void on_core_adopted() override;
-
 protected:
+	virtual void classBegin() override;
+	virtual void on_core_adopted() override;
+	virtual void componentComplete() override;
+
 	QString file_name;
 };
 
@@ -75,8 +80,25 @@ public:
 
 class InputContextPlayerLink : public qtsdl::Inherits<InputContextRecorderPlayerLink, InputContextPlayerLink> {
 	Q_OBJECT
+
+	Q_PROPERTY(QPoint mouse READ get_mouse NOTIFY mouse_changed)
+
 public:
 	explicit InputContextPlayerLink(QObject *parent=nullptr);
+
+	QPoint get_mouse() const;
+
+signals:
+	void mouse_changed(const QPoint &mouse);
+
+private slots:
+	void on_mouse_changed(const coord::window &mouse);
+
+protected:
+	virtual void on_core_adopted() override;
+
+private:
+	QPoint mouse;
 };
 
 }} // namespace openage::gui
