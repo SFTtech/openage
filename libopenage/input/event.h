@@ -27,6 +27,8 @@ enum class event_class {
 	UTF8,           // events with utf8 encoded data
 	MOUSE,
 	MOUSE_BUTTON,
+	MOUSE_BUTTON_UP,
+	MOUSE_BUTTON_DOWN,
 	MOUSE_WHEEL,
 	MOUSE_MOTION
 };
@@ -150,6 +152,7 @@ modset_t sdl_mod(SDL_Keymod mod);
 Event sdl_key(SDL_Keycode code, SDL_Keymod mod=KMOD_NONE);
 Event utf8(const std::string &text);
 Event sdl_mouse(int button, SDL_Keymod mod=KMOD_NONE);
+Event sdl_mouse_up_down(int button, bool up, SDL_Keymod mod=KMOD_NONE);
 Event sdl_wheel(int direction, SDL_Keymod mod=KMOD_NONE);
 
 

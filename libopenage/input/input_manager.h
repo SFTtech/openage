@@ -6,7 +6,6 @@
 #include <functional>
 // pxd: from libcpp.string cimport string
 #include <string>
-#include <unordered_map>
 #include <SDL2/SDL.h>
 
 #include "../handlers.h"
@@ -49,27 +48,7 @@ public:
 	 * /wheel). Remove previous assignation. Do nothing if either they
 	 * given bind or action is invalid/unknow.
 	 */
-	bool set_bind(const char *bind_char, const std::string action);
-
-	/**
-	 * Convert a string to an event throw 0 if the string is not a valid event.
-	 */
-	Event text_to_event(const char *event_char);
-
-	/**
-	 * Convert a string to a key event throw 0 if the string is not a valid key event.
-	 */
-	Event text_to_key_event(const std::string &key_str, const int mod);
-
-	/**
-	 * Convert a string to a mouse event throw 0 if the string is not a valid mouse event.
-	 */
-	Event text_to_mouse_event(const std::string &button, const int mod);
-
-	/**
-	 * Convert a string to a wheel event throw 0 if the string is not a valid wheel event.
-	 */
-	Event text_to_wheel_event(const std::string &dir, const int mod);
+	bool set_bind(const std::string &bind_str, const std::string action);
 
 	/**
 	 * Return the string representation of the key event.
@@ -85,11 +64,6 @@ public:
 	 * Return the key representation of the event.
 	 */
 	std::string wheel_bind_to_string(const Event &ev);
-
-	/**
-	 * Return the value of the sdl key modifiers
-	 */
-	int parse_mod(const std::string &mod) const;
 
 	/**
 	 * returns the global keybind context.
@@ -210,24 +184,6 @@ private:
 	coord::window mouse_position;
 	coord::window_delta mouse_motion;
 	friend InputContext;
-
-	std::unordered_map<std::string, int> string_to_mod = {
-		{"LCtrl", KMOD_LCTRL},
-		{"LShift", KMOD_LSHIFT},
-		{"RCtrl", KMOD_RCTRL},
-		{"RShift", KMOD_RSHIFT},
-		{"LAlt", KMOD_LALT},
-		{"RAlt", KMOD_RALT},
-		{"LGui", KMOD_LGUI},
-		{"RGUI", KMOD_RGUI},
-		{"Ctrl", KMOD_CTRL},
-		{"Shift", KMOD_SHIFT},
-		{"Alt", KMOD_ALT},
-		{"Gui", KMOD_GUI},
-		{"AltGr", KMOD_MODE},
-		{"Caps", KMOD_CAPS},
-		{"NumLck", KMOD_NUM}
-	};
 };
 
 }} // openage::input

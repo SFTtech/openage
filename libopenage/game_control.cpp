@@ -46,6 +46,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	OutputMode{gui_link},
 	use_set_ability{false},
 	type_focus{nullptr},
+	selecting{},
 	rng{0} {
 
 	auto &action = Engine::get().get_action_manager();
@@ -165,16 +166,23 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		this->use_set_ability = false;
 	});
 
-	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
-		Engine &engine = Engine::get();
+	this->bind(action.get("BEGIN_SELECTION"), [this](const input::action_arg_t&) {
+		this->selecting = true;
+	});
 
+	this->bind(action.get("END_SELECTION"), [this](const input::action_arg_t&) {
+		this->selecting = false;
+	});
+
+	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
 		auto mousepos_camgame = arg.mouse.to_camgame();
 		this->mousepos_phys3 = mousepos_camgame.to_phys3();
 		this->mousepos_tile = this->mousepos_phys3.to_tile3().to_tile();
 
 		// drag selection box
 		if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_MOTION, 0) &&
-			engine.get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 1) && !this->type_focus) {
+			this->selecting && !this->type_focus) {
+
 			this->selection.drag_update(mousepos_camgame);
 			return true;
 		}
@@ -197,6 +205,7 @@ void ActionMode::on_enter() {}
 
 void ActionMode::on_exit() {
 	this->selection.clear();
+	this->selecting = false;
 }
 
 Command ActionMode::get_action(const coord::phys3 &pos) const {

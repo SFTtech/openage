@@ -141,6 +141,7 @@ private:
 	UnitType *type_focus;
 	coord::phys3 mousepos_phys3;
 	coord::tile mousepos_tile;
+	bool selecting;
 
 	// used for random type creation
 	rng::RNG rng;

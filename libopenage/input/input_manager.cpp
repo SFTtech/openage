@@ -2,11 +2,11 @@
 
 #include <algorithm>
 #include <array>
-#include <stdexcept>
 
 #include "../log/log.h"
 #include "../engine.h"
 #include "input_manager.h"
+#include "text_to_event.h"
 
 namespace openage {
 namespace input {
@@ -39,7 +39,7 @@ std::string InputManager::get_bind(const std::string &action_str) {
 	return "";
 }
 
-bool InputManager::set_bind(const char *bind_char, const std::string action_str) {
+bool InputManager::set_bind(const std::string &bind_str, const std::string action_str) {
 	try {
 		ActionManager &action_manager = Engine::get().get_action_manager();
 
@@ -48,7 +48,7 @@ bool InputManager::set_bind(const char *bind_char, const std::string action_str)
 			return false;
 		}
 
-		Event ev = this->text_to_event(bind_char);
+		Event ev = text_to_event(bind_str);
 
 		auto it = this->keys.find(action);
 		if (it != this->keys.end()) {
@@ -61,75 +61,6 @@ bool InputManager::set_bind(const char *bind_char, const std::string action_str)
 	catch (int error) {
 		return false;
 	}
-}
-
-Event InputManager::text_to_event(const char *event_char) {
-	std::string event_str = std::string(event_char);
-	int mod = 0;
-	std::size_t start = 0;
-	std::size_t end;
-	while (true) {
-		end = event_str.find(" ", start+1);
-		if (end == std::string::npos) {
-			break;
-		}
-		std::string substring = event_str.substr(start,end-start);
-		int sub_mod = this->parse_mod(substring);
-		if (sub_mod > 0) {
-			mod |= sub_mod;
-		}
-		else if (substring != " ") {
-			break;
-		}
-		start = end+1;
-	}
-
-	std::string event_main = event_str.substr(start,std::string::npos);
-	std::string event_type = event_main.substr(0,5);
-	if (event_type == "MOUSE") {
-		return this->text_to_mouse_event(event_main, mod);
-	}
-	else if (event_type == "WHEEL") {
-		return this->text_to_wheel_event(event_main, mod);
-	}
-	else {
-		return this->text_to_key_event(event_main, mod);
-	}
-}
-
-Event InputManager::text_to_key_event(const std::string &key_str, const int mod) {
-	SDL_Keycode key_code = SDL_GetKeyFromName(key_str.c_str());
-	if (key_code == SDLK_UNKNOWN) {
-		throw 0;
-	}
-	return sdl_key(key_code, static_cast<SDL_Keymod>(mod));
-}
-
-Event InputManager::text_to_mouse_event(const std::string &event_str, const int mod) {
-	try {
-		std::size_t last_space = event_str.rfind(" ");
-		std::string button = event_str.substr(last_space+1, std::string::npos);
-		return sdl_mouse(std::stoi(button), static_cast<SDL_Keymod>(mod));
-	}
-	catch (const std::out_of_range &oor) {
-		throw 0;
-	}
-	catch (const std::invalid_argument &ia) {
-		throw 0;
-	}
-}
-
-Event InputManager::text_to_wheel_event(const std::string &event_str, const int mod) {
-	std::size_t last_space = event_str.rfind(" ");
-	std::string direction = event_str.substr(last_space+1, std::string::npos);
-
-	if (direction == "1" || direction == "UP") {
-		return sdl_wheel(1,static_cast<SDL_Keymod>(mod));
-	}
-	else if (direction == "-1" || direction == "DOWN") {
-		return sdl_wheel(-1,static_cast<SDL_Keymod>(mod));
-	}
-	throw 0;
 }
 
 std::string InputManager::key_bind_to_string(const Event &ev) {
@@ -162,14 +93,6 @@ std::string InputManager::wheel_bind_to_string(const Event &ev) {
 	default:
 		return "";
 	}
-}
-
-int InputManager::parse_mod(const std::string &mod) const {
-	auto it = this->string_to_mod.find(mod);
-	if (it == this->string_to_mod.end()) {
-		return KMOD_NONE;
-	}
-	return it->second;
 }
 
 InputContext &InputManager::get_global_context() {
@@ -340,6 +263,7 @@ bool InputManager::on_input(SDL_Event *e) {
 
 	case SDL_MOUSEBUTTONUP: {
 		this->set_relative(false);
+		this->trigger(sdl_mouse_up_down(e->button.button, true, SDL_GetModState()));
 		Event ev = sdl_mouse(e->button.button, SDL_GetModState());
 		this->set_state(ev, false);
 		break;
@@ -351,6 +275,7 @@ bool InputManager::on_input(SDL_Event *e) {
 		if (e->button.button == 2) {
 			this->set_relative(true);
 		}
+		this->trigger(sdl_mouse_up_down(e->button.button, false, SDL_GetModState()));
 		Event ev = sdl_mouse(e->button.button, SDL_GetModState());
 		this->set_state(ev, true);
 		break;
