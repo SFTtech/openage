@@ -131,7 +131,7 @@ private:
 	bool place_selection(coord::phys3 point);
 
 	// currently selected units
-	UnitSelection selection;
+	UnitSelection *selection;
 
 	// restrict command abilities
 	bool use_set_ability;

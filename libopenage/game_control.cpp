@@ -49,7 +49,11 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	selecting{},
 	rng{0} {
 
-	auto &action = Engine::get().get_action_manager();
+	auto &engine = Engine::get();
+
+	this->selection = engine.get_unit_selection();
+
+	auto &action = engine.get_action_manager();
 	this->bind(action.get("TRAIN_OBJECT"), [this](const input::action_arg_t &) {
 
 		// attempt to train editor selected object
@@ -59,7 +63,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		auto type = player->get_type(this->rng.probability(0.5)? 83 : 293);
 		Command cmd(*player, type);
 		cmd.add_flag(command_flag::direct);
-		this->selection.all_invoke(cmd);
+		this->selection->all_invoke(cmd);
 	});
 	this->bind(action.get("ENABLE_BUILDING_PLACEMENT"), [this](const input::action_arg_t &) {
 		// this->building_placement = true;
@@ -93,7 +97,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		}
 	});
 	this->bind(action.get("KILL_UNIT"), [this](const input::action_arg_t &) {
-		selection.kill_unit(*this->game_control->get_current_player());
+		selection->kill_unit(*this->game_control->get_current_player());
 	});
 
 	// Villager build commands
@@ -101,7 +105,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	auto bind_building_key = [this](input::action_t action, int building) {
 		this->bind(action, [this, building](const input::action_arg_t &) {
 			auto player = this->game_control->get_current_player();
-			if (this->selection.contains_builders(*player)) {
+			if (this->selection->contains_builders(*player)) {
 				Engine &engine = Engine::get();
 				auto player = this->game_control->get_current_player();
 				this->type_focus = player->get_type(building);
@@ -143,8 +147,8 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 			auto mousepos_camgame = arg.mouse.to_camgame();
 			Engine &engine = Engine::get();
 			Terrain *terrain = engine.get_game()->terrain.get();
-			this->selection.drag_update(mousepos_camgame);
-			this->selection.drag_release(*this->game_control->get_current_player(), terrain, increase);
+			this->selection->drag_update(mousepos_camgame);
+			this->selection->drag_release(*this->game_control->get_current_player(), terrain, increase);
 		});
 	};
 
@@ -162,7 +166,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 
 		auto cmd = this->get_action(mousepos_phys3);
 		cmd.add_flag(command_flag::direct);
-		this->selection.all_invoke(cmd);
+		this->selection->all_invoke(cmd);
 		this->use_set_ability = false;
 	});
 
@@ -182,8 +186,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		// drag selection box
 		if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_MOTION, 0) &&
 			this->selecting && !this->type_focus) {
-
-			this->selection.drag_update(mousepos_camgame);
+			this->selection->drag_update(mousepos_camgame);
 			return true;
 		}
 		return false;
@@ -204,7 +207,6 @@ bool ActionMode::available() const {
 void ActionMode::on_enter() {}
 
 void ActionMode::on_exit() {
-	this->selection.clear();
 	this->selecting = false;
 }
 
@@ -243,7 +245,7 @@ bool ActionMode::place_selection(coord::phys3 point) {
 			Command cmd(*this->game_control->get_current_player(), new_building.get());
 			cmd.set_ability(ability_type::build);
 			cmd.add_flag(command_flag::direct);
-			this->selection.all_invoke(cmd);
+			this->selection->all_invoke(cmd);
 			return true;
 		}
 	}
@@ -269,7 +271,7 @@ void ActionMode::render() {
 		engine.render_text({0, 140}, 12, "Action Mode requires a game");
 	}
 
-	this->selection.on_drawhud();
+	this->selection->on_drawhud();
 }
 
 std::string ActionMode::name() const {

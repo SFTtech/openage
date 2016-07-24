@@ -32,6 +32,7 @@
 #include "util/dir.h"
 #include "util/fps.h"
 #include "util/profiler.h"
+#include "unit/selection.h"
 #include "screenshot.h"
 
 namespace openage {
@@ -259,6 +260,11 @@ public:
 	input::InputManager &get_input_manager();
 
 	/**
+	* return this engine's unit selection.
+	*/
+	UnitSelection *get_unit_selection();
+
+	/**
 	* send keybindings help string to gui.
 	*/
 	void announce_global_binds();
@@ -410,6 +416,11 @@ private:
 	 * the engine's keybind manager.
 	 */
 	input::InputManager input_manager;
+
+	/**
+	* the engine's unit selection.
+	*/
+	std::unique_ptr<UnitSelection> unit_selection;
 
 	/**
 	 * the text fonts to be used for (can you believe it?) texts.
