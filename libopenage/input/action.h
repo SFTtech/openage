@@ -76,6 +76,8 @@ private :
 		"RIGHT_ARROW",
 		"SELECT",
 		"DESELECT",
+		"BEGIN_SELECTION",
+		"END_SELECTION",
 		"FORWARD",
 		"BACK",
 		"PAINT_TERRAIN",
