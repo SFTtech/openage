@@ -238,6 +238,7 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 	});
 
 	this->text_renderer = std::make_unique<renderer::TextRenderer>();
+	this->unit_selection = std::make_unique<UnitSelection>();
 }
 
 Engine::~Engine() {
@@ -289,6 +290,7 @@ void Engine::start_game(const Generator &generator) {
 
 void Engine::end_game() {
 	this->game = nullptr;
+	this->unit_selection->clear();
 }
 
 bool Engine::draw_debug_overlay() {
@@ -524,6 +526,10 @@ cvar::CVarManager &Engine::get_cvar_manager() {
 
 input::InputManager &Engine::get_input_manager() {
 	return this->input_manager;
+}
+
+UnitSelection *Engine::get_unit_selection() {
+	return this->unit_selection.get();
 }
 
 void Engine::announce_global_binds() {
