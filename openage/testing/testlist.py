@@ -66,6 +66,7 @@ def tests_cpp():
     yield "openage::util::tests::init"
     yield "openage::util::tests::matrix"
     yield "openage::util::tests::vector"
+    yield "openage::input::tests::parse_event_string", "keybinds parsing"
 
 
 def demos_cpp():
