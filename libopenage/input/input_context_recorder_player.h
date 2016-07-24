@@ -6,6 +6,8 @@
 #include <memory>
 #include <chrono>
 
+#include <QObject>
+
 #include "action.h"
 #include "action_serialization.h"
 
@@ -28,6 +30,8 @@ public:
 
 	std::string get_file_name() const;
 	void set_file_name(const std::string &file_name);
+
+	virtual void announce();
 
 protected:
 	std::string file_name;
@@ -52,13 +56,28 @@ private:
 	bool started;
 };
 
+class InputContextPlayerSignals : public QObject {
+	Q_OBJECT
+
+public:
+signals:
+	void mouse_changed(const coord::window &mouse);
+};
+
 class InputContextPlayer : public InputContextRecorderPlayer {
 public:
 	explicit InputContextPlayer(qtsdl::GuiItemLink *gui_link);
 
 	void perform(InputContext &context, const ActionManager &action_manager);
 
+	/**
+	 * after the gui reload sends to it the properties that are needed there
+	 */
+	virtual void announce() override;
+
 private:
+	void store_mouse_pos(const action_arg_t &arg);
+
 	/**
 	 * Moment when the playback has started.
 	 */
@@ -69,6 +88,11 @@ private:
 	deserialized_action_arg_t next_action;
 
 	bool ended;
+
+	coord::window mouse;
+
+public:
+	InputContextPlayerSignals gui_signals;
 };
 
 }} // openage::input

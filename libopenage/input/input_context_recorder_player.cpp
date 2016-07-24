@@ -35,6 +35,9 @@ void InputContextRecorderPlayer::set_file_name(const std::string &file_name) {
 	}
 }
 
+void InputContextRecorderPlayer::announce() {
+}
+
 InputContextRecorder::InputContextRecorder(qtsdl::GuiItemLink *gui_link)
 	:
 	InputContextRecorderPlayer{gui_link, true},
@@ -85,14 +88,28 @@ void InputContextPlayer::perform(InputContext &context, const ActionManager &act
 		while (!this->ended) {
 			if (this->next_action_time < current) {
 				std::cerr << "performing " << std::forward_as_tuple(to_action(this->next_action), action_manager) << "\n";
-				context.execute_if_bound(to_action(this->next_action));
-			}
-			else
+				auto action = to_action(this->next_action);
+				this->store_mouse_pos(action);
+				context.execute_if_bound(action);
+			} else {
 				break;
+			}
 
 			std::tie(this->next_action_time, this->next_action, this->ended) = read_action(*this->stream, action_manager);
 			std::cerr << "got1 " << std::forward_as_tuple(to_action(this->next_action), action_manager) << "\n";
 		}
+	}
+}
+
+void InputContextPlayer::announce() {
+	this->InputContextRecorderPlayer::announce();
+	emit this->gui_signals.mouse_changed(this->mouse);
+}
+
+void InputContextPlayer::store_mouse_pos(const action_arg_t &arg) {
+	if (arg.e.cc.eclass == input::event_class::MOUSE_MOTION && !(this->mouse == arg.mouse)) {
+		this->mouse = arg.mouse;
+		emit this->gui_signals.mouse_changed(this->mouse);
 	}
 }
 
