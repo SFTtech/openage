@@ -38,6 +38,10 @@ Event to_event(const std::string &event_type, const std::string &param, const in
 	try {
 		if (event_type == "MOUSE")
 			return sdl_mouse(std::stoi(param), static_cast<SDL_Keymod>(mod));
+		else if (event_type == "MOUSE_UP")
+			return sdl_mouse_up_down(std::stoi(param), true, static_cast<SDL_Keymod>(mod));
+		else if (event_type == "MOUSE_DOWN")
+			return sdl_mouse_up_down(std::stoi(param), false, static_cast<SDL_Keymod>(mod));
 	} catch (std::logic_error&) {
 		throw Error(MSG(err) << "could not parse mouse button '" << param << "'!");
 	}
@@ -109,10 +113,12 @@ void parse_event_string() {
 	text_to_event("Return") == Event{event_class::NONPRINT, SDL_GetKeyFromName("Return"), modset_t{}} || TESTFAIL;
 	text_to_event("Ctrl p") == Event{event_class::ALPHA, SDL_GetKeyFromName("p"), sdl_mod(static_cast<SDL_Keymod>(KMOD_CTRL))} || TESTFAIL;
 	text_to_event("Shift MOUSE 1") == Event{event_class::MOUSE_BUTTON, 1, sdl_mod(static_cast<SDL_Keymod>(KMOD_SHIFT))} || TESTFAIL;
+	text_to_event("MOUSE_UP 1") == Event{event_class::MOUSE_BUTTON_UP, 1, modset_t{}} || TESTFAIL;
 	text_to_event("WHEEL -1") == Event{event_class::MOUSE_WHEEL, -1, modset_t{}} || TESTFAIL;
 	TESTTHROWS(text_to_event(""));
 	TESTTHROWS(text_to_event("WHEEL"));
 	TESTTHROWS(text_to_event("MOUSE"));
+	TESTTHROWS(text_to_event("MOUSE_DOWN"));
 	TESTTHROWS(text_to_event("Blurb MOUSE 1"));
 	TESTTHROWS(text_to_event("Shift MICKEY_MOUSE 1"));
 	TESTTHROWS(text_to_event("WHEEL TEAR_OFF"));

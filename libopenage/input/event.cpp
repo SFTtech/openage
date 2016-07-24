@@ -157,6 +157,9 @@ Event sdl_mouse(int button, SDL_Keymod mod) {
 	return Event(event_class::MOUSE_BUTTON, button, sdl_mod(mod));
 }
 
+Event sdl_mouse_up_down(int button, bool up, SDL_Keymod mod) {
+	return Event(up ? event_class::MOUSE_BUTTON_UP : event_class::MOUSE_BUTTON_DOWN, button, sdl_mod(mod));
+}
 
 Event sdl_wheel(int direction, SDL_Keymod mod) {
 	return Event(event_class::MOUSE_WHEEL, direction, sdl_mod(mod));

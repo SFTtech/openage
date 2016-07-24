@@ -263,6 +263,7 @@ bool InputManager::on_input(SDL_Event *e) {
 
 	case SDL_MOUSEBUTTONUP: {
 		this->set_relative(false);
+		this->trigger(sdl_mouse_up_down(e->button.button, true, SDL_GetModState()));
 		Event ev = sdl_mouse(e->button.button, SDL_GetModState());
 		this->set_state(ev, false);
 		break;
@@ -274,6 +275,7 @@ bool InputManager::on_input(SDL_Event *e) {
 		if (e->button.button == 2) {
 			this->set_relative(true);
 		}
+		this->trigger(sdl_mouse_up_down(e->button.button, false, SDL_GetModState()));
 		Event ev = sdl_mouse(e->button.button, SDL_GetModState());
 		this->set_state(ev, true);
 		break;
