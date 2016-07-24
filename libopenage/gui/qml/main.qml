@@ -24,6 +24,16 @@ Item {
 		property int unit: fontMetrics.averageCharacterWidth * scale
 	}
 
+	Image {
+		x: inputPlayerObj.mouse.x
+		y: inputPlayerObj.mouse.y
+
+		width: metrics.unit * 3
+		height: metrics.unit * 3
+
+		source: "image://by-filename/textures/arrow.png.0"
+	}
+
 	GameSpec {
 		id: specObj
 
