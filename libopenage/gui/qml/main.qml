@@ -36,7 +36,20 @@ Item {
 
 		assetManager: amObj
 
+		onStateChanged: {
+			if (state == GameSpec.Ready)
+				gameCreator.activate()
+		}
+
 		LR.tag: "spec"
+	}
+
+	GameCreator {
+		id: gameCreator
+
+		game: gameObj
+		gameSpec: specObj
+		generatorParameters: genParamsObj
 	}
 
 	AssetManager {
@@ -55,6 +68,11 @@ Item {
 		 */
 
 		engine: Engine
+
+		onStateChanged: {
+			if (state == GameMain.Running)
+				gameControlObj.modeIndex = 2
+		}
 
 		LR.tag: "game"
 	}
