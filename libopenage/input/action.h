@@ -89,7 +89,9 @@ private :
 		"BUILD",
 		"KEEP_BUILDING",
 		"INCREASE_SELECTION",
-		"ORDER_SELECT"
+		"ORDER_SELECT",
+		"BEGIN_MOVE_CAMERA",
+		"END_MOVE_CAMERA",
 	};
 
 	action_map_t actions;
