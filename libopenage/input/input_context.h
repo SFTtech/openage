@@ -93,7 +93,7 @@ private:
 	 * event to action map
 	 * event_class as key, to ensure all events can be mapped
 	 */
-	std::unordered_map<event_class, action_check_t, event_class_hash> by_class;
+	std::unordered_multimap<event_class, action_check_t, event_class_hash> by_class;
 
 	InputContextRecorder *recorder;
 	InputContextPlayer *player;
