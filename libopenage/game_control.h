@@ -48,7 +48,7 @@ public:
 	 * used when switching modes
 	 */
 	virtual void on_enter() = 0;
-	virtual void on_exit() = 0;
+	virtual void on_exit();
 	virtual void render() = 0;
 
 	/**
@@ -62,6 +62,12 @@ public:
 
 protected:
 	GameControl *game_control;
+
+private:
+	/**
+	 * camera is being moved
+	 */
+	bool moving_camera;
 
 public:
 	OutputModeSignals gui_signals;

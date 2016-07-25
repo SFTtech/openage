@@ -228,14 +228,6 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 			this->external_profiler.start();
 		}
 	});
-	global_input_context.bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
-		if (arg.e.cc.has_class(input::event_class::MOUSE_MOTION) &&
-			this->get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 2)) {
-			this->move_phys_camera(arg.motion.x, arg.motion.y);
-			return true;
-		}
-		return false;
-	});
 
 	this->text_renderer = std::make_unique<renderer::TextRenderer>();
 	this->unit_selection = std::make_unique<UnitSelection>();

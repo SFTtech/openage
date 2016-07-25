@@ -10,11 +10,34 @@ namespace openage {
 OutputMode::OutputMode(qtsdl::GuiItemLink *gui_link)
 	:
 	game_control{},
+	moving_camera{},
 	gui_link{gui_link} {
+
+	auto &action = Engine::get().get_action_manager();
+
+	this->bind(action.get("BEGIN_MOVE_CAMERA"), [this](const input::action_arg_t&) {
+		this->moving_camera = true;
+	});
+
+	this->bind(action.get("END_MOVE_CAMERA"), [this](const input::action_arg_t&) {
+		this->moving_camera = false;
+	});
+
+	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
+		if (arg.e.cc.has_class(input::event_class::MOUSE_MOTION) && this->moving_camera) {
+			Engine::get().move_phys_camera(arg.motion.x, arg.motion.y);
+			return true;
+		}
+		return false;
+	});
 }
 
 void OutputMode::announce() {
 	emit this->gui_signals.announced(this->name(), this->active_binds());
+}
+
+void OutputMode::on_exit() {
+	this->moving_camera = false;
 }
 
 void OutputMode::set_game_control(GameControl *game_control) {
@@ -37,7 +60,9 @@ std::string CreateMode::name() const {
 
 void CreateMode::on_enter() {}
 
-void CreateMode::on_exit() {}
+void CreateMode::on_exit() {
+	this->OutputMode::on_exit();
+}
 
 void CreateMode::render() {}
 
@@ -208,6 +233,7 @@ void ActionMode::on_enter() {}
 
 void ActionMode::on_exit() {
 	this->selecting = false;
+	this->OutputMode::on_exit();
 }
 
 Command ActionMode::get_action(const coord::phys3 &pos) const {
@@ -354,7 +380,9 @@ bool EditorMode::available() const {
 
 void EditorMode::on_enter() {}
 
-void EditorMode::on_exit() {}
+void EditorMode::on_exit() {
+	this->OutputMode::on_exit();
+}
 
 void EditorMode::render() {}
 
