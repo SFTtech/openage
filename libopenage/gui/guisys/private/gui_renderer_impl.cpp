@@ -109,6 +109,7 @@ GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 	QObject::connect(this, &GuiRendererImpl::resized, this->window.get(), &EventHandlingQuickWindow::on_resized);
 	this->window->setClearBeforeRendering(false);
 
+    // TODO: Find a way to fix QCocoaGLContext expecting QCocoaWindow, not QWindow (issue #593)
 	if (!this->ctx->makeCurrent(this->render_control->renderWindow(nullptr))) {
 		assert(false);
 		return;
