@@ -4,6 +4,8 @@
 
 #include <memory>
 
+#include <GL/gl.h>
+
 struct SDL_Window;
 
 namespace qtsdl {
@@ -19,7 +21,7 @@ public:
 	explicit GuiRenderer(SDL_Window *window);
 	~GuiRenderer();
 
-	void render();
+	GLuint render();
 	void resize(int w, int h);
 
 private:

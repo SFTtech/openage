@@ -16,8 +16,8 @@ GuiRenderer::GuiRenderer(SDL_Window *window)
 GuiRenderer::~GuiRenderer() {
 }
 
-void GuiRenderer::render() {
-	this->impl->render();
+GLuint GuiRenderer::render() {
+	return this->impl->render();
 }
 
 void GuiRenderer::resize(int w, int h) {

@@ -5,12 +5,13 @@
 #include <cassert>
 
 #include <QOpenGLContext>
+#include <QOpenGLFramebufferObject>
+#include <QQuickRenderControl>
 #include <QQuickItem>
 #include <QCoreApplication>
 #include <QThread>
 
 #include "../public/gui_renderer.h"
-#include "gui_render_control.h"
 #include "platforms/context_extraction.h"
 
 namespace qtsdl {
@@ -75,6 +76,7 @@ void EventHandlingQuickWindow::on_resized(const QSize &size) {
 GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 	:
 	QObject{},
+	need_fbo_resize{true},
 	need_sync{},
 	need_render{},
 	gui_locked{},
@@ -87,35 +89,40 @@ GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 
 	std::tie(handle, id) = extract_native_context(window);
 
-	QWindow *w = QWindow::fromWinId(id);
-
 	this->ctx = std::make_unique<QOpenGLContext>();
 	this->ctx->setNativeHandle(handle);
 	this->ctx->create();
-	assert(ctx->isValid());
+	assert(this->ctx->isValid());
 
-	this->render_control = std::make_unique<RenderControl>(w);
-
-	QObject::connect(&*this->render_control, &QQuickRenderControl::renderRequested, [&] () {
-		this->need_render = true;
-	});
-
-	QObject::connect(&*this->render_control, &QQuickRenderControl::sceneChanged, this, &GuiRendererImpl::on_scene_changed);
-
+	QWindow *w = QWindow::fromWinId(id);
 	w->setSurfaceType(QSurface::OpenGLSurface);
 
-	this->window = std::make_unique<EventHandlingQuickWindow>(&*this->render_control);
-	this->window->moveToThread(QCoreApplication::instance()->thread());
-	QObject::connect(this, &GuiRendererImpl::resized, this->window.get(), &EventHandlingQuickWindow::on_resized);
-	this->window->setClearBeforeRendering(false);
-
-    // TODO: Find a way to fix QCocoaGLContext expecting QCocoaWindow, not QWindow (issue #593)
-	if (!this->ctx->makeCurrent(this->render_control->renderWindow(nullptr))) {
+	if (!this->ctx->makeCurrent(w)) {
 		assert(false);
 		return;
 	}
 
-	this->render_control->initialize(&*ctx);
+	QObject::connect(&this->render_control, &QQuickRenderControl::renderRequested, [&] () {
+		this->need_render = true;
+	});
+
+	QObject::connect(&this->render_control, &QQuickRenderControl::sceneChanged, this, &GuiRendererImpl::on_scene_changed);
+
+	this->window = std::make_unique<EventHandlingQuickWindow>(&this->render_control);
+	this->window->moveToThread(QCoreApplication::instance()->thread());
+	QObject::connect(this, &GuiRendererImpl::resized, this->window.get(), &EventHandlingQuickWindow::on_resized);
+	this->window->setClearBeforeRendering(true);
+	this->window->setColor(QColor{0, 0, 0, 0});
+
+	QObject::connect(&*this->window, &QQuickWindow::sceneGraphInitialized, this, [this] {
+		std::tie(this->new_fbo_width, this->new_fbo_height) = std::make_tuple(this->window->width(), this->window->height());
+		this->need_fbo_resize = true;
+	});
+
+	QObject::connect(&*this->window, &QQuickWindow::widthChanged, [this] { this->new_fbo_width = this->window->width(); this->need_fbo_resize = true; });
+	QObject::connect(&*this->window, &QQuickWindow::heightChanged, [this] { this->new_fbo_height = this->window->height(); this->need_fbo_resize = true; });
+
+	this->render_control.initialize(&*this->ctx);
 
 	assert(this->ctx->isValid());
 }
@@ -123,7 +130,19 @@ GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 void GuiRendererImpl::on_scene_changed() {
 	this->need_sync = true;
 	this->need_render = true;
-	this->render_control->polishItems();
+	this->render_control.polishItems();
+}
+
+void GuiRendererImpl::reinit_fbo_if_needed() {
+	assert(QThread::currentThread() == this->ctx->thread());
+
+	if (this->need_fbo_resize) {
+		this->fbo = std::make_unique<QOpenGLFramebufferObject>(QSize(this->new_fbo_width, this->new_fbo_height), QOpenGLFramebufferObject::CombinedDepthStencil);
+		this->window->setRenderTarget(&*this->fbo);
+		this->need_fbo_resize = false;
+	}
+
+	assert(this->fbo);
 }
 
 GuiRendererImpl::~GuiRendererImpl() {
@@ -133,51 +152,8 @@ GuiRendererImpl* GuiRendererImpl::impl(GuiRenderer *renderer) {
 	return renderer->impl.get();
 }
 
-namespace {
-/**
- * Resolves known conflicts between game renderer and QtQuick renderer.
- */
-class StatePreserver {
-public:
-	StatePreserver()
-		:
-		blending_was_on{},
-		blend_src{},
-		blend_dst{} {
-
-		glGetBooleanv(GL_BLEND, &this->blending_was_on);
-
-		if (this->blending_was_on != GL_FALSE) {
-			glGetIntegerv(GL_BLEND_SRC_ALPHA, &this->blend_src);
-			glGetIntegerv(GL_BLEND_DST_ALPHA, &this->blend_dst);
-		}
-	}
-
-	~StatePreserver() {
-		if (this->blending_was_on != GL_FALSE) {
-			glEnable(GL_BLEND);
-			glBlendFunc(this->blend_src, this->blend_dst);
-		} else {
-			glDisable(GL_BLEND);
-		}
-	}
-
-private:
-	GLboolean blending_was_on;
-	GLint blend_src;
-	GLint blend_dst;
-};
-
-}
-
-void GuiRendererImpl::render() {
-	StatePreserver preserve_state;
-
-	// TODO: maybe unnecessary
-	if (!this->ctx->makeCurrent(this->render_control->renderWindow(nullptr))) {
-		assert(false);
-		return;
-	}
+GLuint GuiRendererImpl::render() {
+	this->reinit_fbo_if_needed();
 
 	// QQuickRenderControl::sync() must be called from the render thread while the gui thread is stopped.
 	if (this->need_sync) {
@@ -191,7 +167,7 @@ void GuiRendererImpl::render() {
 				this->gui_locked_cond.wait(lck, [this] {return this->gui_locked;});
 				this->renderer_waiting_on_cond = false;
 
-				this->render_control->sync();
+				this->render_control.sync();
 
 				this->need_sync = false;
 				this->gui_locked = false;
@@ -200,20 +176,21 @@ void GuiRendererImpl::render() {
 				this->gui_locked_cond.notify_one();
 			}
 		} else {
-			this->render_control->sync();
+			this->render_control.sync();
 		}
 	}
 
-	// TODO: redirect into FBO and render only if renderRequested
-	this->render_control->render();
+	this->render_control.render();
 
 	this->window->resetOpenGLState();
+
+	return this->fbo->texture();
 }
 
 void GuiRendererImpl::make_sure_render_thread_unlocked() {
 	assert(QThread::currentThread() == QCoreApplication::instance()->thread());
 
-	if (this->need_sync && QThread::currentThread() != this->render_control->thread()) {
+	if (this->need_sync && QThread::currentThread() != this->render_control.thread()) {
 		std::unique_lock<std::mutex> lck{this->gui_guard};
 
 		if (this->renderer_waiting_on_cond) {
@@ -226,7 +203,7 @@ void GuiRendererImpl::make_sure_render_thread_unlocked() {
 bool GuiRendererImpl::make_sure_render_thread_wont_sync() {
 	assert(QThread::currentThread() == QCoreApplication::instance()->thread());
 
-	if (this->need_sync && QThread::currentThread() != this->render_control->thread()) {
+	if (this->need_sync && QThread::currentThread() != this->render_control.thread()) {
 		std::unique_lock<std::mutex> lck{this->gui_guard};
 
 		if (this->renderer_waiting_on_cond) {
