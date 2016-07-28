@@ -1,6 +1,5 @@
-cmake_minimum_required(VERSION 3.0.0)
-# required for finding Python 3.4.
-# (determined via git tag --contains)
+cmake_minimum_required(VERSION 3.1.0)
+# required for CMAKE_CXX_STANDARD
 
 # main build configuration file
 
