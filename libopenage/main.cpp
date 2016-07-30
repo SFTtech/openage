@@ -22,7 +22,7 @@ int run_game(const main_arguments &args) {
 
 	util::Dir data_dir{args.data_directory.c_str()};
 
-	Engine::create(&data_dir, args.fps_limit, "openage");
+	Engine::create(&data_dir, args.fps_limit, args.gl_debug, "openage");
 	Engine &engine = Engine::get();
 	engine.get_cvar_manager().load_main_config();
 

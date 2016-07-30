@@ -15,6 +15,10 @@ def init_subparser(cli):
         "--fps", type=int,
         help="upper limit for fps. this limit is imposed on top of vsync")
 
+    cli.add_argument(
+        "--gl-debug", action='store_true',
+        help="throw exceptions directly from the OpenGL calls")
+
 
 def main(args, error):
     """

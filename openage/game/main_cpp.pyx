@@ -18,6 +18,8 @@ def run_game(args, assets):
     else:
         args_cpp.fps_limit = 0
 
+    args_cpp.gl_debug = args.gl_debug
+
     cdef int result
 
     with nogil:
