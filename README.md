@@ -110,6 +110,13 @@ All documentation is also in this repo:
 - Have a look at the [doc directory](/doc/). This folder tends to outdate when code changes.
 
 
+OS X Version
+------------
+
+Building openage on OS X worked in the past, and might or might not work right now.
+Setting up continuous integration for this platform has some complications. Running a hackintosh VM seems to be not so legal, while buying dedicated hardware for it seems to be not so cheap. If you know of a legal and cost-free way of doing so or want to sponsor a semi-recent Mac Mini, please open a ticket in our issue tracker. Until then, PRs untested on OS X will make their way into the master branch und occasional breakage will occur.
+
+
 Windows Version
 ---------------
 
