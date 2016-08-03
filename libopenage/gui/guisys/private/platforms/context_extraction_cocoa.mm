@@ -7,14 +7,14 @@
 #include <QtPlatformHeaders/QCocoaNativeContext>
 
 #include "SDL_syswm.h"
-#import <AppKit/NSWindow.h>
+#import <AppKit/AppKit.h>
 
 namespace qtsdl {
 
 std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 	assert(window);
 
-	NSOpenGLContext *current_context = [NSGraphicsContext currentContext];
+	NSOpenGLContext *current_context = [NSOpenGLContext currentContext];
 	assert(current_context);
 
 	NSView *view = nullptr;
