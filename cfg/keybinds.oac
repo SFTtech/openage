@@ -2,7 +2,7 @@
 
 set TOGGLE_CONSOLE `
 set START_GAME Return
-set STOP_GAME Escape
+set STOP_GAME Shift Escape
 set TOGGLE_HUD F1
 set SCREENSHOT F2
 set TOGGLE_DEBUG_OVERLAY F3
