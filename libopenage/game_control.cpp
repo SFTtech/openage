@@ -100,16 +100,27 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		selection->kill_unit(*this->game_control->get_current_player());
 	});
 
+	this->bind(action.get("BUILD_MENU"), [this](const input::action_arg_t &) {
+		Engine &engine = Engine::get();
+		engine.get_input_manager().register_context(&this->build_menu_context);
+	});
+
+	this->build_menu_context.bind(action.get("CANCEL"), [this](const input::action_arg_t &) {
+		Engine &engine = Engine::get();
+		engine.get_input_manager().remove_context(&this->build_menu_context);
+	});
+
 	// Villager build commands
 	// TODO place this into separate building menus instead of global hotkeys
 	auto bind_building_key = [this](input::action_t action, int building) {
-		this->bind(action, [this, building](const input::action_arg_t &) {
+		this->build_menu_context.bind(action, [this, building](const input::action_arg_t &) {
 			auto player = this->game_control->get_current_player();
 			if (this->selection->contains_builders(*player)) {
 				Engine &engine = Engine::get();
 				auto player = this->game_control->get_current_player();
 				this->type_focus = player->get_type(building);
 				if (&engine.get_input_manager().get_top_context() != &this->building_context) {
+					engine.get_input_manager().remove_context(&this->build_menu_context);
 					engine.get_input_manager().register_context(&this->building_context);
 				}
 			}
@@ -124,6 +135,12 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	bind_building_key(action.get("BUILDING_7"), 101); // stable
 	bind_building_key(action.get("BUILDING_8"), 49); // siege workshop
 	bind_building_key(action.get("BUILDING_TOWN_CENTER"), 109); // Town center
+
+	this->building_context.bind(action.get("CANCEL"), [this](const input::action_arg_t &) {
+		Engine &engine = Engine::get();
+		engine.get_input_manager().remove_context(&this->building_context);
+		this->type_focus = nullptr;
+	});
 
 	auto bind_build = [this](input::action_t action, const bool increase) {
 		this->building_context.bind(action, [this, increase](const input::action_arg_t &arg) {

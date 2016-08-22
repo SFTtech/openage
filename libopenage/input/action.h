@@ -57,6 +57,8 @@ private :
 		"TOGGLE_CONSOLE",
 		"SPAWN_VILLAGER",
 		"KILL_UNIT",
+		"BUILD_MENU",
+		"CANCEL",
 		"BUILDING_1",
 		"BUILDING_2",
 		"BUILDING_3",

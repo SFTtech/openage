@@ -123,6 +123,14 @@ private:
 	 */
 	Command get_action(const coord::phys3 &pos) const;
 
+	/**
+	 * used after opening the build menu
+	 */
+	InputContext build_menu_context;
+
+	/**
+	 * used when selecting the building placement
+	 */
 	InputContext building_context;
 
 	/**
