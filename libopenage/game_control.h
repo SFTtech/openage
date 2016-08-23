@@ -129,6 +129,11 @@ private:
 	InputContext build_menu_context;
 
 	/**
+	 * used after opening the military build menu
+	 */
+	InputContext build_menu_mil_context;
+
+	/**
 	 * used when selecting the building placement
 	 */
 	InputContext building_context;

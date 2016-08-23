@@ -105,6 +105,12 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		engine.get_input_manager().register_context(&this->build_menu_context);
 	});
 
+	this->bind(action.get("BUILD_MENU_MIL"), [this](const input::action_arg_t &) {
+		log::log(MSG(info) << "Opening military build menu");
+		Engine &engine = Engine::get();
+		engine.get_input_manager().register_context(&this->build_menu_mil_context);
+	});
+
 	this->build_menu_context.bind(action.get("CANCEL"), [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
 		engine.get_input_manager().remove_context(&this->build_menu_context);
@@ -126,15 +132,51 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 			}
 		});
 	};
-	bind_building_key(action.get("BUILDING_1"), 70); // House
-	bind_building_key(action.get("BUILDING_2"), 68); // Mill
-	bind_building_key(action.get("BUILDING_3"), 584); // Mining camp
-	bind_building_key(action.get("BUILDING_4"), 562); // Lumber camp
-	bind_building_key(action.get("BUILDING_5"), 12); // barracks
-	bind_building_key(action.get("BUILDING_6"), 87); // archery range
-	bind_building_key(action.get("BUILDING_7"), 101); // stable
-	bind_building_key(action.get("BUILDING_8"), 49); // siege workshop
-	bind_building_key(action.get("BUILDING_TOWN_CENTER"), 109); // Town center
+	auto bind_building_key_mil = [this](input::action_t action, int building) {
+		this->build_menu_mil_context.bind(action, [this, building](const input::action_arg_t &) {
+			auto player = this->game_control->get_current_player();
+			if (this->selection->contains_builders(*player)) {
+				Engine &engine = Engine::get();
+				auto player = this->game_control->get_current_player();
+				this->type_focus = player->get_type(building);
+				if (&engine.get_input_manager().get_top_context() != &this->building_context) {
+					engine.get_input_manager().remove_context(&this->build_menu_mil_context);
+					engine.get_input_manager().register_context(&this->building_context);
+				}
+			}
+		});
+	};
+	bind_building_key(action.get("BUILDING_HOUS"), 70); // House
+	bind_building_key(action.get("BUILDING_MILL"), 68); // Mill
+	bind_building_key(action.get("BUILDING_MINE"), 584); // Mining Camp
+	bind_building_key(action.get("BUILDING_SMIL"), 562); // Lumber Camp
+	// TODO: Doesn't work:
+	bind_building_key(action.get("BUILDING_DOCK"), 45); // Dock
+	// TODO: Doesn't work:
+	bind_building_key(action.get("BUILDING_FARM"), 50); // Farm
+	bind_building_key(action.get("BUILDING_BLAC"), 103); // Blacksmith
+	bind_building_key(action.get("BUILDING_MRKT"), 84); // Market
+	bind_building_key(action.get("BUILDING_CRCH"), 104); // Monastery
+	bind_building_key(action.get("BUILDING_UNIV"), 209); // University
+	bind_building_key(action.get("BUILDING_RTWC"), 109); // Town Center
+	bind_building_key(action.get("BUILDING_WNDR"), 276); // Wonder
+
+	bind_building_key_mil(action.get("BUILDING_BRKS"), 12); // Barracks
+	bind_building_key_mil(action.get("BUILDING_ARRG"), 87); // Archery Range
+	bind_building_key_mil(action.get("BUILDING_STBL"), 101); // Stable
+	bind_building_key_mil(action.get("BUILDING_SIWS"), 49); // Siege Workshop
+	bind_building_key_mil(action.get("BUILDING_WCTWX"), 598); // Outpost
+	// TODO for palisade and stone wall: Drag walls, automatically adjust orientation
+	// TODO: This just cycles through all palisade textures
+	bind_building_key_mil(action.get("BUILDING_WALL"), 72); // Palisade Wall
+	// TODO: Fortified wall has a different ID
+	bind_building_key_mil(action.get("BUILDING_WALL2"), 117); // Stone Wall
+	// TODO: Upgraded versions have different IDs
+	bind_building_key_mil(action.get("BUILDING_WCTW"), 79); // Watch Tower
+	bind_building_key_mil(action.get("BUILDING_WCTW4"), 236); // Bombard Tower
+	// TODO: Gate placement - 659 is horizontal closed
+	bind_building_key_mil(action.get("BUILDING_GTCA2"), 659); // Gate
+	bind_building_key_mil(action.get("BUILDING_CSTL"), 82); // Castle
 
 	this->building_context.bind(action.get("CANCEL"), [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
