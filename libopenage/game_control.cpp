@@ -161,7 +161,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	bind_building_key(action.get("BUILDING_MINE"), 584); // Mining Camp
 	bind_building_key(action.get("BUILDING_SMIL"), 562); // Lumber Camp
 	// TODO: Doesn't work:
-	bind_building_key(action.get("BUILDING_DOCK"), 45); // Dock
+	bind_building_key(action.get("BUILDING_DOCK"), 47); // Dock
 	// TODO: Doesn't work:
 	bind_building_key(action.get("BUILDING_FARM"), 50); // Farm
 	bind_building_key(action.get("BUILDING_BLAC"), 103); // Blacksmith
