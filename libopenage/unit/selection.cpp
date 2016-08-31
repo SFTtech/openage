@@ -164,6 +164,10 @@ void UnitSelection::remove_unit(Unit *u) {
 	}
 }
 
+selection_type_t UnitSelection::get_selection_type() {
+	return this->selection_type;
+}
+
 void UnitSelection::kill_unit(const Player &player) {
 	if (this->units.empty()) {
 		return;
@@ -191,6 +195,17 @@ bool UnitSelection::contains_builders(const Player &player) {
 	for (auto &it : units) {
 		if (it.second.is_valid() &&
 		    it.second.get()->get_ability(ability_type::build) &&
+		    it.second.get()->is_own_unit(player)) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool UnitSelection::contains_military(const Player &player) {
+	for (auto &it : units) {
+		if (it.second.is_valid() &&
+		    !it.second.get()->get_ability(ability_type::build) &&
 		    it.second.get()->is_own_unit(player)) {
 			return true;
 		}

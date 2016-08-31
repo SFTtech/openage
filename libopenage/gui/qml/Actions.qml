@@ -36,21 +36,15 @@ Item {
 	Repeater {
 		id: actions
 
-		model: ListModel {
-			Component.onCompleted: {
-				append({ico: 6,  icoChk: -1, grp: noGrp,     name: "SET_ABILITY_PATROL"})
-				append({ico: 7,  icoChk: -1, grp: noGrp,     name: "SET_ABILITY_GUARD"})
-				append({ico: 8,  icoChk: -1, grp: noGrp,     name: "SET_ABILITY_FOLLOW"})
-				append({ico: 59, icoChk: -1, grp: noGrp,     name: "KILL_UNIT"})
-				append({ico: 2,  icoChk: -1, grp: noGrp,     name: "SET_ABILITY_GARRISON"})
+		model: ActionsListModel {
+			action_mode: root.actionMode
 
-				append({ico: 9,  icoChk: 53, grp: stanceGrp, name: "AGGRESSIVE_STANCE"})
-				append({ico: 10, icoChk: 52, grp: stanceGrp, name: "DEFENSIVE_STANCE"})
-				append({ico: 11, icoChk: 51, grp: stanceGrp, name: "HOLD_STANCE"})
-				append({ico: 50, icoChk: 54, grp: stanceGrp, name: "PASSIVE_STANCE"})
-				append({ico: 3,  icoChk: -1, grp: noGrp,     name: "STOP"})
-
+			function readyRoot() {
 				root.ready(actions)
+			}
+
+			Component.onCompleted: {
+				set_initial_buttons()
 			}
 		}
 
@@ -62,7 +56,7 @@ Item {
 
 				property url iconCheckedSource: icoChk != -1 ? root.iconsSource + "." + icoChk : ""
 				checkable: icoChk != -1
-				exclusiveGroup: icoChk != -1 ? grp : null
+				exclusiveGroup: icoChk == -1 ? null : (grpID == 1) ? stanceGrp : noGrp
 			}
 		}
 	}

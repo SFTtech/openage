@@ -218,6 +218,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 			Terrain *terrain = engine.get_game()->terrain.get();
 			this->selection->drag_update(mousepos_camgame);
 			this->selection->drag_release(*this->game_control->get_current_player(), terrain, increase);
+			this->announce_buttons_type();
 		});
 	};
 
@@ -366,6 +367,24 @@ void ActionMode::announce_resources() {
 			auto resource_type = static_cast<game_resource>(i - 1);
 			emit this->gui_signals.resource_changed(resource_type, static_cast<int>(player->amount(resource_type)));
 		}
+	}
+}
+
+void ActionMode::announce_buttons_type() {
+	ActionButtonsType buttons_type;
+	if (this->selection->get_selection_type() != selection_type_t::own_units) {
+		buttons_type = ActionButtonsType::None;
+	} else {
+		if (this->selection->contains_military(*this->game_control->get_current_player())) {
+			buttons_type = ActionButtonsType::MilitaryUnits;
+		} else {
+			buttons_type = ActionButtonsType::CivilianUnits;
+		}
+	}
+
+	if (buttons_type != this->buttons_type) {
+		this->buttons_type = buttons_type;
+		emit this->gui_signals.buttons_type_changed(buttons_type);
 	}
 }
 
