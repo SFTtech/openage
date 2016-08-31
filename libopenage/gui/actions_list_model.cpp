@@ -1,4 +1,4 @@
-// Copyright 2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2016 the openage authors. See copying.md for legal info.
 
 #include "actions_list_model.h"
 
@@ -36,6 +36,7 @@ void ActionsListModel::set_active_buttons(const ActionButtonsType &active_button
 	switch (active_buttons) {
 	case ActionButtonsType::MilitaryUnits:
 		this->clear_buttons();
+		// TODO: set iconsSource property of Actions (this->parent()->parent()), then we can use 50730.slp.png for unit icons in build menu
 		this->beginInsertRows(QModelIndex(), 0, 9);
 		this->add_button(6,  -1, static_cast<int>(GroupIDs::NoGroup),     "SET_ABILITY_PATROL");
 		this->add_button(7,  -1, static_cast<int>(GroupIDs::NoGroup),     "SET_ABILITY_GUARD");
