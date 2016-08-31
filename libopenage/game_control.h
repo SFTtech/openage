@@ -82,6 +82,12 @@ public:
 	std::string name() const override;
 };
 
+enum class ActionButtonsType {
+	MilitaryUnits,
+	CivilianUnits,
+	None
+};
+
 class ActionMode;
 
 class ActionModeSignals : public QObject {
@@ -96,6 +102,7 @@ public slots:
 signals:
 	void resource_changed(game_resource resource, int amount);
 	void ability_changed(const std::string &ability);
+	void buttons_type_changed(const ActionButtonsType type);
 
 private:
 	ActionMode *action_mode;
@@ -126,6 +133,11 @@ private:
 	 * sends to gui the amounts of resources
 	 */
 	void announce_resources();
+
+	/**
+	 * sends to gui the buttons it should use for the action buttons (if changed)
+	 */
+	void announce_buttons_type();
 
 	/**
 	 * decides which type of right mouse click command to issue based on position
@@ -167,6 +179,8 @@ private:
 	coord::phys3 mousepos_phys3;
 	coord::tile mousepos_tile;
 	bool selecting;
+
+	ActionButtonsType buttons_type;
 
 	// used for random type creation
 	rng::RNG rng;

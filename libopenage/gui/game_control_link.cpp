@@ -101,10 +101,24 @@ void ActionModeLink::on_ability_changed(const std::string &ability) {
 	emit this->ability_changed();
 }
 
+void ActionModeLink::on_buttons_type_changed(const ActionButtonsType buttons_type) {
+	emit this->buttons_type_changed(buttons_type);
+}
+
 void ActionModeLink::on_core_adopted() {
 	this->Inherits::on_core_adopted();
-	QObject::connect(&unwrap(this)->gui_signals, &ActionModeSignals::ability_changed, this, &ActionModeLink::on_ability_changed);
-	QObject::connect(this, &ActionModeLink::action_triggered, &unwrap(this)->gui_signals, &ActionModeSignals::on_action);
+	QObject::connect(&unwrap(this)->gui_signals,
+	                 &ActionModeSignals::ability_changed,
+	                 this,
+	                 &ActionModeLink::on_ability_changed);
+	QObject::connect(&unwrap(this)->gui_signals,
+	                 &ActionModeSignals::buttons_type_changed,
+	                 this,
+	                 &ActionModeLink::on_buttons_type_changed);
+	QObject::connect(this,
+	                 &ActionModeLink::action_triggered,
+	                 &unwrap(this)->gui_signals,
+	                 &ActionModeSignals::on_action);
 }
 
 EditorModeLink::EditorModeLink(QObject *parent)
