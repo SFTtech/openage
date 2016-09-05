@@ -137,6 +137,12 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		this->announce_buttons_type();
 	});
 
+	this->build_menu_mil_context.bind(action.get("CANCEL"), [this](const input::action_arg_t &) {
+		Engine &engine = Engine::get();
+		engine.get_input_manager().remove_context(&this->build_menu_mil_context);
+		this->announce_buttons_type();
+	});
+
 	// Villager build commands
 	// TODO place this into separate building menus instead of global hotkeys
 	auto bind_building_key = [this](input::action_t action, int building) {
