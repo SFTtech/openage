@@ -63,12 +63,17 @@ private:
 	/**
 	 * Shortcut to creating a QMap for a button
 	 */
-	void add_button(int ico, int ico_chk, int grp_id, const char* name);
+	void add_button(int ico, int ico_chk, int grp_id, const char *name);
 
 	/**
 	 * Emit the ready signal of the parent's parent (the Actions QML object)
 	 */
 	void emit_actions_ready();
+
+	/**
+	 * Sets the QML iconsSource property of the parent's parent (should be Actions)
+	 */
+	void set_icons_source(const char *source);
 
 	ActionButtonsType active_buttons;
 	ActionModeLink *action_mode;

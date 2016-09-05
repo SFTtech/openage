@@ -46,8 +46,16 @@ ActionModeSignals::ActionModeSignals(ActionMode *action_mode)
 	action_mode(action_mode) {
 }
 
-void ActionModeSignals::on_action(const std::string &action) {
-	this->action_mode->on_action(Engine::get().get_action_manager().get(action));
+void ActionModeSignals::on_action(const std::string &action_name) {
+	Engine &engine = Engine::get();
+	input::action_t action = engine.get_action_manager().get(action_name);
+	input::InputContext *top_ctxt = &engine.get_input_manager().get_top_context();
+	if (top_ctxt == this->action_mode || top_ctxt == &this->action_mode->building_context ||
+	    top_ctxt == &this->action_mode->build_menu_context || top_ctxt == &this->action_mode->build_menu_mil_context) {
+		using namespace input;
+		action_arg_t action_arg{Event{event_class::ANY, 0, modset_t{}}, coord::window{}, coord::window_delta{}, {action}};
+		top_ctxt->execute_if_bound(action_arg);
+	}
 }
 
 ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
@@ -113,17 +121,20 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	this->bind(action.get("BUILD_MENU"), [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
 		engine.get_input_manager().register_context(&this->build_menu_context);
+		this->announce_buttons_type();
 	});
 
 	this->bind(action.get("BUILD_MENU_MIL"), [this](const input::action_arg_t &) {
 		log::log(MSG(info) << "Opening military build menu");
 		Engine &engine = Engine::get();
 		engine.get_input_manager().register_context(&this->build_menu_mil_context);
+		this->announce_buttons_type();
 	});
 
 	this->build_menu_context.bind(action.get("CANCEL"), [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
 		engine.get_input_manager().remove_context(&this->build_menu_context);
+		this->announce_buttons_type();
 	});
 
 	// Villager build commands
@@ -138,6 +149,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 				if (&engine.get_input_manager().get_top_context() != &this->building_context) {
 					engine.get_input_manager().remove_context(&this->build_menu_context);
 					engine.get_input_manager().register_context(&this->building_context);
+					this->announce_buttons_type();
 				}
 			}
 		});
@@ -152,6 +164,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 				if (&engine.get_input_manager().get_top_context() != &this->building_context) {
 					engine.get_input_manager().remove_context(&this->build_menu_mil_context);
 					engine.get_input_manager().register_context(&this->building_context);
+					this->announce_buttons_type();
 				}
 			}
 		});
@@ -191,6 +204,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	this->building_context.bind(action.get("CANCEL"), [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
 		engine.get_input_manager().remove_context(&this->building_context);
+		this->announce_buttons_type();
 		this->type_focus = nullptr;
 	});
 
@@ -204,6 +218,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 			if (!increase) {
 				this->type_focus = nullptr;
 				Engine::get().get_input_manager().remove_context(&this->building_context);
+				this->announce_buttons_type();
 			}
 		});
 	};
@@ -230,6 +245,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 			// right click can cancel building placement
 			this->type_focus = nullptr;
 			Engine::get().get_input_manager().remove_context(&this->building_context);
+			this->announce_buttons_type();
 		}
 		auto mousepos_camgame = arg.mouse.to_camgame();
 		auto mousepos_phys3 = mousepos_camgame.to_phys3();
@@ -348,12 +364,6 @@ std::string ActionMode::name() const {
 	return "Action Mode";
 }
 
-void ActionMode::on_action(const input::action_id_t &action) {
-	using namespace input;
-	action_arg_t action_arg{Event{event_class::ANY, 0, modset_t{}}, coord::window{}, coord::window_delta{}, {action}};
-	this->execute_if_bound(action_arg);
-}
-
 void ActionMode::announce() {
 	this->OutputMode::announce();
 
@@ -372,14 +382,18 @@ void ActionMode::announce_resources() {
 
 void ActionMode::announce_buttons_type() {
 	ActionButtonsType buttons_type;
-	if (this->selection->get_selection_type() != selection_type_t::own_units) {
+	InputContext *top_ctxt = &Engine::get().get_input_manager().get_top_context();
+	if (top_ctxt == &this->build_menu_context) {
+		buttons_type = ActionButtonsType::BuildMenu;
+	} else if (top_ctxt == &this->build_menu_mil_context) {
+		buttons_type = ActionButtonsType::MilBuildMenu;
+	} else if (top_ctxt == &this->building_context ||
+	           this->selection->get_selection_type() != selection_type_t::own_units) {
 		buttons_type = ActionButtonsType::None;
+	} else if (this->selection->contains_military(*this->game_control->get_current_player())) {
+		buttons_type = ActionButtonsType::MilitaryUnits;
 	} else {
-		if (this->selection->contains_military(*this->game_control->get_current_player())) {
-			buttons_type = ActionButtonsType::MilitaryUnits;
-		} else {
-			buttons_type = ActionButtonsType::CivilianUnits;
-		}
+		buttons_type = ActionButtonsType::CivilianUnits;
 	}
 
 	if (buttons_type != this->buttons_type) {

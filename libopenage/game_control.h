@@ -83,9 +83,11 @@ public:
 };
 
 enum class ActionButtonsType {
+	None,
 	MilitaryUnits,
 	CivilianUnits,
-	None
+	BuildMenu,
+	MilBuildMenu
 };
 
 class ActionMode;
@@ -97,7 +99,7 @@ public:
 	explicit ActionModeSignals(ActionMode *action_mode);
 
 public slots:
-	void on_action(const std::string &action);
+	void on_action(const std::string &action_name);
 
 signals:
 	void resource_changed(game_resource resource, int amount);
@@ -121,9 +123,8 @@ public:
 	void render() override;
 	std::string name() const override;
 
-	void on_action(const input::action_id_t &action);
-
 private:
+	friend ActionModeSignals;
 	/**
 	 * sends to gui the properties that it needs
 	 */

@@ -34,9 +34,14 @@ void ActionsListModel::set_active_buttons(const ActionButtonsType &active_button
 	this->active_buttons = active_buttons;
 
 	switch (active_buttons) {
+	case ActionButtonsType::None:
+		this->clear_buttons();
+		this->emit_actions_ready();
+		break;
+
 	case ActionButtonsType::MilitaryUnits:
 		this->clear_buttons();
-		// TODO: set iconsSource property of Actions (this->parent()->parent()), then we can use 50730.slp.png for unit icons in build menu
+		this->set_icons_source("image://by-filename/converted/interface/hudactions.slp.png");
 		this->beginInsertRows(QModelIndex(), 0, 9);
 		this->add_button(6,  -1, static_cast<int>(GroupIDs::NoGroup),     "SET_ABILITY_PATROL");
 		this->add_button(7,  -1, static_cast<int>(GroupIDs::NoGroup),     "SET_ABILITY_GUARD");
@@ -55,6 +60,7 @@ void ActionsListModel::set_active_buttons(const ActionButtonsType &active_button
 
 	case ActionButtonsType::CivilianUnits:
 		this->clear_buttons();
+		this->set_icons_source("image://by-filename/converted/interface/hudactions.slp.png");
 		this->beginInsertRows(QModelIndex(), 0, 9);
 		this->add_button(30, -1, static_cast<int>(GroupIDs::NoGroup), "BUILD_MENU");
 		this->add_button(31, -1, static_cast<int>(GroupIDs::NoGroup), "BUILD_MENU_MIL");
@@ -71,8 +77,43 @@ void ActionsListModel::set_active_buttons(const ActionButtonsType &active_button
 		this->emit_actions_ready();
 		break;
 
-	case ActionButtonsType::None:
+	case ActionButtonsType::BuildMenu:
+		log::log(MSG(info) << "Setting up build menu");
 		this->clear_buttons();
+		this->set_icons_source("image://by-filename/converted/interface/50705.slp.png");
+		this->beginInsertRows(QModelIndex(), 0, 11);
+		this->add_button(34, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_HOUS");
+		this->add_button(20, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_MILL");
+		this->add_button(39, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_MINE");
+		this->add_button(40, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_SMIL");
+		this->add_button(13, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_DOCK");
+		this->add_button(35, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_FARM");
+		this->add_button(4,  -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_BLAC");
+		this->add_button(16, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_MRKT");
+		this->add_button(10, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_CRCH");
+		this->add_button(32, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_UNIV");
+		this->add_button(28, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_RTWC");
+		this->add_button(37, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_WNDR");
+		this->endInsertRows();
+		this->emit_actions_ready();
+		break;
+
+	case ActionButtonsType::MilBuildMenu:
+		this->clear_buttons();
+		this->set_icons_source("image://by-filename/converted/interface/50705.slp.png");
+		this->beginInsertRows(QModelIndex(), 0, 10);
+		this->add_button(2,  -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_BRKS");
+		this->add_button(0,  -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_ARRG");
+		this->add_button(23, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_STBL");
+		this->add_button(22, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_SIWS");
+		this->add_button(38, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_WCTWX");
+		this->add_button(30, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_WALL");
+		this->add_button(29, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_WALL2");
+		this->add_button(25, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_WCTW");
+		this->add_button(42, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_WCTW4");
+		this->add_button(36, -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_GTCA2");
+		this->add_button(7,  -1, static_cast<int>(GroupIDs::NoGroup), "BUILDING_CSTL");
+		this->endInsertRows();
 		this->emit_actions_ready();
 		break;
 
@@ -138,7 +179,7 @@ void ActionsListModel::clear_buttons() {
 	this->endRemoveRows();
 }
 
-void ActionsListModel::add_button(int ico, int ico_chk, int grp_id, const char* name) {
+void ActionsListModel::add_button(int ico, int ico_chk, int grp_id, const char *name) {
 	QMap<int, QVariant> map;
 	map[static_cast<int>(ActionsRoles::IconRole)] = QVariant(ico);
 	map[static_cast<int>(ActionsRoles::IconCheckedRole)] = QVariant(ico_chk);
@@ -151,6 +192,10 @@ void ActionsListModel::emit_actions_ready() {
 	QVariant returned_value;
 	QVariant parent_id = QQmlProperty::read(this->parent(), "id");
 	QMetaObject::invokeMethod(this, "readyRoot", Q_RETURN_ARG(QVariant, returned_value));
+}
+
+void ActionsListModel::set_icons_source(const char *source) {
+	this->parent()->parent()->setProperty("iconsSource", QVariant(source));
 }
 
 }} // namespace openage::gui
