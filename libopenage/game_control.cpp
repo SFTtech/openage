@@ -119,13 +119,14 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	});
 
 	this->bind(action.get("BUILD_MENU"), [this](const input::action_arg_t &) {
+		log::log(MSG(dbg) << "Opening build menu");
 		Engine &engine = Engine::get();
 		engine.get_input_manager().register_context(&this->build_menu_context);
 		this->announce_buttons_type();
 	});
 
 	this->bind(action.get("BUILD_MENU_MIL"), [this](const input::action_arg_t &) {
-		log::log(MSG(info) << "Opening military build menu");
+		log::log(MSG(dbg) << "Opening military build menu");
 		Engine &engine = Engine::get();
 		engine.get_input_manager().register_context(&this->build_menu_mil_context);
 		this->announce_buttons_type();
