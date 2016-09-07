@@ -78,7 +78,6 @@ void ActionsListModel::set_active_buttons(const ActionButtonsType &active_button
 		break;
 
 	case ActionButtonsType::BuildMenu:
-		log::log(MSG(info) << "Setting up build menu");
 		this->clear_buttons();
 		this->set_icons_source("image://by-filename/converted/interface/50705.slp.png");
 		this->beginInsertRows(QModelIndex(), 0, 11);
