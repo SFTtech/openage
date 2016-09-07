@@ -300,6 +300,17 @@ bool ActionMode::available() const {
 void ActionMode::on_enter() {}
 
 void ActionMode::on_exit() {
+	// Since on_exit is called after removing the active mode, if the top context isn't the global one then it must
+	// be either a build menu or the building context
+	auto *input_manager = &Engine::get().get_input_manager();
+	InputContext *top_ctxt = &input_manager->get_top_context();
+	if (top_ctxt != &input_manager->get_global_context()) {
+		if (top_ctxt == &this->building_context) {
+			this->type_focus = nullptr;
+		}
+		input_manager->remove_context(top_ctxt);
+		this->announce_buttons_type();
+	}
 	this->selecting = false;
 }
 
