@@ -240,6 +240,12 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 			Terrain *terrain = engine.get_game()->terrain.get();
 			this->selection->drag_update(mousepos_camgame);
 			this->selection->drag_release(*this->game_control->get_current_player(), terrain, increase);
+			InputContext *top_ctxt = &engine.get_input_manager().get_top_context();
+			if ((this->selection->get_selection_type() != selection_type_t::own_units ||
+			    this->selection->contains_military(*this->game_control->get_current_player())) &&
+			    (top_ctxt == &this->build_menu_context || top_ctxt == &this->build_menu_mil_context)) {
+				engine.get_input_manager().remove_context(top_ctxt);
+			}
 			this->announce_buttons_type();
 		});
 	};
