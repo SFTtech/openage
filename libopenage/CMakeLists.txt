@@ -172,7 +172,7 @@ target_link_libraries(libopenage
 		Qt5::Quick
 )
 
-if(NOT APPLE)
+if(NOT APPLE AND NOT WIN32)
 	target_link_libraries(libopenage
 		PUBLIC
 			rt
