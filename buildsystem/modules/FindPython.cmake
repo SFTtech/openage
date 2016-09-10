@@ -148,6 +148,10 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 	py_get_config_var(LIBDIR PYTHON_LIBRARY_DIR)
 	py_get_lib_name(PYTHON_LIBRARY_NAME)
 
+	set(PYTHON_INCLUDE_DIR "$ENV{HOME}/.wine/drive_c/Python34/")
+	set(PYTHON_LIBRARY_DIR "$ENV{HOME}/.wine/drive_c/Python34/")
+	set(PYTHON_LIBRARY_NAME "python34")
+
 	# there's a static_assert that tests the Python version.
 	# that way, we verify the interpreter and the library version.
 	# (the interpreter provided us the library location)
@@ -156,7 +160,7 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 		SOURCES "${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
 		LINK_LIBRARIES "${PYTHON_LIBRARY_NAME}"
 		CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}" "-DLINK_DIRECTORIES=${PYTHON_LIBRARY_DIR}"
-		COMPILE_DEFINITIONS "-DTARGET_VERSION=${PYTHON_MIN_VERSION_HEX}"
+		COMPILE_DEFINITIONS "-DTARGET_VERSION=${PYTHON_MIN_VERSION_HEX} -I${PYTHON_INCLUDE_DIR} -I${PYTHON_INCLUDE_DIR}/include"
 		OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
 	)
 

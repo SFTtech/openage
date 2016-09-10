@@ -117,7 +117,7 @@ function(add_cython_modules)
 
 			set_target_properties("${TARGETNAME}" PROPERTIES
 				COMPILE_FLAGS "${PYEXT_CXXFLAGS}"
-				INCLUDE_DIRECTORIES "${PYEXT_INCLUDE_DIRS}"
+#				INCLUDE_DIRECTORIES "${PYEXT_INCLUDE_DIRS}"
 				OUTPUT_NAME "${OUTPUTNAME}"
 			)
 
@@ -139,6 +139,10 @@ function(add_cython_modules)
 			set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULE_TARGETS "${TARGETNAME}")
 
 			pretty_print_target("cython module" "${PRETTY_MODULE_NAME}" "${PRETTY_MODULE_PROPERTIES}")
+
+			target_include_directories("${TARGETNAME}" PUBLIC ${PYTHON_INCLUDE_DIR} ${PYTHON_INCLUDE_DIR}/include ${PYTHON_INCLUDE_DIR}/Lib/site-packages/numpy/core/include)
+			link_directories(${PYTHON_LIBRARY_DIR})
+			target_link_libraries("${TARGETNAME}" ${PYTHON_LIBRARY_NAME})
 
 			# Reset the flags before processing the next cython module
 			set(EMBED_NEXT FALSE)
