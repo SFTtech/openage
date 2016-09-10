@@ -171,7 +171,7 @@ void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> c
 #else // WITHOUT_BACKTRACE
 
 // use GNU's <execinfo.h>
-#include <execinfo.h>
+//#include <execinfo.h>
 
 namespace openage {
 namespace error {
@@ -181,7 +181,7 @@ void StackAnalyzer::analyze() {
 	// unfortunately, backtrace won't tell us how big our buffer
 	// needs to be, so we have no choice but to try until it
 	// reports success.
-	std::vector<void *> buffer{16};
+	/*std::vector<void *> buffer{16};
 	while (true) {
 		int elements = backtrace(buffer.data(), buffer.size());
 		if (elements < (ssize_t) buffer.size()) {
@@ -193,12 +193,12 @@ void StackAnalyzer::analyze() {
 
 	for (void *element : buffer) {
 		this->stack_addrs.push_back(element);
-	}
+	}*/
 }
 
 
 void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> cb, bool reversed) const {
-	backtrace_symbol symbol;
+	/*backtrace_symbol symbol;
 	symbol.filename = "";
 	symbol.lineno = 0;
 
@@ -218,7 +218,7 @@ void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> c
 
 			cb(&symbol);
 		}
-	}
+	}*/
 }
 
 

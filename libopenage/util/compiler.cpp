@@ -33,7 +33,7 @@ std::string addr_to_string(const void *addr) {
 
 
 std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_addrs) {
-	Dl_info addr_info;
+	/*Dl_info addr_info;
 
 	if (dladdr(addr, &addr_info) == 0) {
 		// dladdr has... failed.
@@ -53,18 +53,18 @@ std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_
 			                     demangle(addr_info.dli_sname).c_str(),
 			                     symbol_offset);
 		}
-	}
+	}*/
 }
 
 
 bool is_symbol(const void *addr) {
-	Dl_info addr_info;
+	/*Dl_info addr_info;
 
 	if (dladdr(addr, &addr_info) == 0) {
 		return false;
 	}
 
-	return (addr_info.dli_saddr == addr);
+	return (addr_info.dli_saddr == addr);*/
 }
 
 
