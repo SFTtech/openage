@@ -172,6 +172,13 @@ target_link_libraries(libopenage
 		Qt5::Quick
 )
 
+if(WIN32)
+	target_link_libraries(libopenage
+		PUBLIC
+			SDL2main
+	)
+endif(WIN32)
+
 if(NOT APPLE AND NOT WIN32)
 	target_link_libraries(libopenage
 		PUBLIC
