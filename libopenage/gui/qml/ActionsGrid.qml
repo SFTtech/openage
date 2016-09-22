@@ -36,6 +36,7 @@ Grid {
 
 		delegate: Loader {
 			sourceComponent: gridElement
+			active: typeof act !== "undefined"
 			onLoaded: {
 				item.iconSource = Qt.binding(function() { return act.iconSource })
 				item.action = act

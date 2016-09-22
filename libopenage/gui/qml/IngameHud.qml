@@ -174,22 +174,14 @@ Item {
 				rows: 3
 
 				Actions {
+					id: actions
+
 					actionMode: root.actionMode
 
 					iconsSource: "image://by-filename/converted/interface/hudactions.slp.png"
-
-					/*
-					 * Fill it only when the source ListModel is done.
-					 */
-					onReady: {
-						actionsGrid.buttonActions.clear()
-						for (var i = 0; i != actions.count; ++i)
-							actionsGrid.buttonActions.append({act: actions.itemAt(i).data[0]})
-					}
 				}
 
-				buttonActions: ListModel {
-				}
+				buttonActions: actions.actionObjects
 			}
 		}
 
