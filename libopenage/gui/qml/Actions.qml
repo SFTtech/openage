@@ -19,9 +19,10 @@ Item {
 	property url iconsSource
 
 	/*
-	 * Signal that actions are filled in.
+	 * Use "act" properties of these objects to access the Action.
+	 * Action has additional "iconCheckedSource" property.
 	 */
-	signal ready(Repeater actions)
+	property alias actionObjects: actionObjectList.children
 
 	visible: false
 
@@ -33,30 +34,24 @@ Item {
 		id: noGrp
 	}
 
-	Repeater {
-		id: actions
+	Item {
+		id: actionObjectList
 
-		model: ActionsListModel {
-			action_mode: root.actionMode
-
-			function readyRoot() {
-				root.ready(actions)
+		Repeater {
+			model: ActionsListModel {
+				action_mode: root.actionMode
 			}
 
-			Component.onCompleted: {
-				set_initial_buttons()
-			}
-		}
+			delegate: Item {
+				property QtObject act: Action {
+					onTriggered: root.actionMode.act(name)
 
-		delegate: Item {
-			Action {
-				onTriggered: root.actionMode.act(name)
+					iconSource: ico != -1 ? root.iconsSource + "." + ico : ""
 
-				iconSource: ico != -1 ? root.iconsSource + "." + ico : ""
-
-				property url iconCheckedSource: icoChk != -1 ? root.iconsSource + "." + icoChk : ""
-				checkable: icoChk != -1
-				exclusiveGroup: icoChk == -1 ? null : (grpID == 1) ? stanceGrp : noGrp
+					property url iconCheckedSource: icoChk != -1 ? root.iconsSource + "." + icoChk : ""
+					checkable: icoChk != -1
+					exclusiveGroup: icoChk == -1 ? null : (grpID == 1) ? stanceGrp : noGrp
+				}
 			}
 		}
 	}
