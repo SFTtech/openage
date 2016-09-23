@@ -138,6 +138,19 @@ void ActionsListModel::set_action_mode(ActionModeLink *action_mode) {
 	}
 }
 
+QUrl ActionsListModel::get_icons_source() const {
+	return QUrl(this->icons_source);
+}
+
+void ActionsListModel::set_icons_source(QUrl icons_source) {
+	this->icons_source = icons_source;
+}
+
+void ActionsListModel::set_icons_source(std::string icons_source) {
+	this->icons_source = QUrl(icons_source.c_str());
+	emit this->icons_source_changed(this->icons_source);
+}
+
 Q_INVOKABLE void ActionsListModel::set_initial_buttons() {
 	this->set_active_buttons(ActionButtonsType::None);
 }
@@ -180,10 +193,6 @@ void ActionsListModel::add_button(int ico, int ico_chk, int grp_id, const char *
 	map[static_cast<int>(ActionsRoles::GroupIDRole)] = QVariant(grp_id);
 	map[static_cast<int>(ActionsRoles::NameRole)] = QVariant(name);
 	this->buttons.push_back(map);
-}
-
-void ActionsListModel::set_icons_source(const char *source) {
-	this->parent()->parent()->setProperty("iconsSource", QVariant(source));
 }
 
 }} // namespace openage::gui
