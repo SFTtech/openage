@@ -14,11 +14,6 @@ Item {
 	property ActionMode actionMode
 
 	/*
-	 * Atlas with the icons.
-	 */
-	property url iconsSource
-
-	/*
 	 * Use "act" properties of these objects to access the Action.
 	 * Action has additional "iconCheckedSource" property.
 	 */
@@ -39,6 +34,7 @@ Item {
 
 		Repeater {
 			model: ActionsListModel {
+				id: actionObjectListModel
 				action_mode: root.actionMode
 			}
 
@@ -46,9 +42,9 @@ Item {
 				property QtObject act: Action {
 					onTriggered: root.actionMode.act(name)
 
-					iconSource: ico != -1 ? root.iconsSource + "." + ico : ""
+					iconSource: ico != -1 ? actionObjectListModel.iconsSource + "." + ico : ""
 
-					property url iconCheckedSource: icoChk != -1 ? root.iconsSource + "." + icoChk : ""
+					property url iconCheckedSource: icoChk != -1 ? actionObjectListModel.iconsSource + "." + icoChk : ""
 					checkable: icoChk != -1
 					exclusiveGroup: icoChk == -1 ? null : (grpID == 1) ? stanceGrp : noGrp
 				}

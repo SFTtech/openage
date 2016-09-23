@@ -177,8 +177,6 @@ Item {
 					id: actions
 
 					actionMode: root.actionMode
-
-					iconsSource: "image://by-filename/converted/interface/hudactions.slp.png"
 				}
 
 				buttonActions: actions.actionObjects
