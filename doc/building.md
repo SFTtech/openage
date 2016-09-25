@@ -110,6 +110,8 @@ if all packages can be installed.
 
 ### Prerequisite steps for Arch Linux users
 
+> NOTE: [aur](https://aur.archlinux.org/packages/openage-git/) exists, to install via **yaourt** run `yaourt -S openage-git`.
+
 This command should provide required packages for Arch Linux installation:
 
 `sudo pacman -S --needed python python-pillow python-numpy python-pygments cython libepoxy ttf-dejavu freetype2 fontconfig harfbuzz cmake sdl2 sdl2_image opusfile opus-tools python-pylint qt5-declarative qt5-quickcontrols`
