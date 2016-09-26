@@ -111,7 +111,7 @@ public:
 	/**
 	 * singleton constructor, use this to create the engine instance.
 	 */
-	static void create(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle);
+	static void create(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle);
 
 	/**
 	 * singleton destructor, use when the program is shutting down.
@@ -129,7 +129,7 @@ private:
 	 * engine initialization method.
 	 * opens a window and initializes the OpenGL context.
 	 */
-	Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle);
+	Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle);
 
 	/**
 	 * engine copy constructor.

@@ -2,6 +2,7 @@ add_sources(libopenage
 	backtrace.cpp
 	demo.cpp
 	error.cpp
+	gl_debug.cpp
 	handlers.cpp
 	stackanalyzer.cpp
 )

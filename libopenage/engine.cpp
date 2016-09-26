@@ -11,6 +11,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "error/error.h"
+#include "error/gl_debug.h"
 #include "log/log.h"
 #include "config.h"
 #include "gui_basic.h"
@@ -47,11 +48,11 @@ coord_data* Engine::get_coord_data() {
 // engine singleton instance allocation
 Engine *Engine::instance = nullptr;
 
-void Engine::create(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle) {
+void Engine::create(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle) {
 	// only create the singleton instance if it was not created before..
 	if (Engine::instance == nullptr) {
 		// reset the pointer to the new engine
-		Engine::instance = new Engine(data_dir, fps_limit, windowtitle);
+		Engine::instance = new Engine(data_dir, fps_limit, gl_debug, windowtitle);
 	} else {
 		throw Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
 	}
@@ -71,7 +72,7 @@ Engine &Engine::get() {
 }
 
 
-Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
+Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle)
 	:
 	OptionNode{"Engine"},
 	running{false},
@@ -137,7 +138,10 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, const char *windowtitle)
 		throw Error(MSG(err) << "Failed to init PNG support: " << IMG_GetError());
 	}
 
-	this->glcontext = SDL_GL_CreateContext(this->window);
+	if (gl_debug)
+		this->glcontext = error::create_debug_context(this->window);
+	else
+		this->glcontext = SDL_GL_CreateContext(this->window);
 
 	if (this->glcontext == nullptr) {
 		throw Error(MSG(err) << "Failed creating OpenGL context: " << SDL_GetError());

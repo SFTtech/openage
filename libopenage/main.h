@@ -2,6 +2,7 @@
 
 #pragma once
 
+// pxd: from libcpp cimport bool
 // pxd: from libcpp.string cimport string
 #include <string>
 // pxd: from libc.stdint cimport int32_t
@@ -20,10 +21,12 @@ namespace openage {
  * cppclass main_arguments:
  *     string data_directory
  *     int32_t fps_limit
+ *     bool gl_debug
  */
 struct main_arguments {
 	std::string data_directory;
 	std::int32_t fps_limit;
+	bool gl_debug;
 };
 
 
