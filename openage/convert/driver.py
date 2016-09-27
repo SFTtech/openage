@@ -95,7 +95,7 @@ def get_string_resources(args):
 
     elif srcdir["language.dll"].is_file():
         from .pefile import PEFile
-        for name in ["language.dll", "language_x1.dll", "language_x1_p1.dll"]:
+        for name in ["language.dll", "language_x1.dll"]:
             pefile = PEFile(srcdir[name].open('rb'))
             stringres.fill_from(pefile.resources().strings)
             count += 1
@@ -126,9 +126,9 @@ def get_blendomatic_data(srcdir):
 def get_gamespec(srcdir, dont_pickle):
     """ reads empires.dat and fixes it """
 
-    cache_file = os.path.join(gettempdir(), "empires2_x1_p1.dat.pickle")
+    cache_file = os.path.join(gettempdir(), "empires2_x1.dat.pickle")
 
-    with srcdir["data/empires2_x1_p1.dat"].open('rb') as empiresdat_file:
+    with srcdir["data/empires2_x1.dat"].open('rb') as empiresdat_file:
         gamespec = load_gamespec(empiresdat_file, cache_file, not dont_pickle)
 
     # modify the read contents of datfile
