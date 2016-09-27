@@ -473,7 +473,7 @@ GameControl::GameControl(qtsdl::GuiItemLink *gui_link)
 	game{},
 	active_mode{},
 	active_mode_index{-1},
-	current_player{1},
+	current_player{},
 	gui_signals{this},
 	gui_link{gui_link} {
 }
@@ -496,24 +496,26 @@ void GameControl::set_engine(Engine *engine) {
 		});
 
 		// Switching between players with the 1-8 keys
-		auto bind_player_switch = [this, &global_input_context](input::action_t action, int player_index) {
+		auto bind_player_switch = [this, &global_input_context](input::action_t action, size_t player_index) {
 			global_input_context.bind(action, [this, player_index](const input::action_arg_t &) {
-				if (this->current_player != player_index) {
-					this->current_player = player_index;
-					this->announce_current_player_name();
-				}
+				if (this->current_player != player_index)
+					if (auto game = this->engine->get_game())
+						if (player_index < game->players.size()) {
+							this->current_player = player_index;
+							this->announce_current_player_name();
+						}
 			});
 
 		};
 
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_1"), 1);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_2"), 2);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_3"), 3);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_4"), 4);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_5"), 5);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_6"), 6);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_7"), 7);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_8"), 8);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_1"), 0);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_2"), 1);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_3"), 2);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_4"), 3);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_5"), 4);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_6"), 5);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_7"), 6);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_8"), 7);
 
 		this->engine->announce_global_binds();
 	}
