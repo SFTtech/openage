@@ -3,6 +3,7 @@
 #pragma once
 
 #include <memory>
+#include <functional>
 #include <atomic>
 #include <mutex>
 #include <condition_variable>
@@ -10,15 +11,17 @@
 #include <QtGlobal>
 #include <QObject>
 #include <QQuickWindow>
+#include <QQuickRenderControl>
+#include <QOffscreenSurface>
 
 struct SDL_Window;
 
 QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
+QT_FORWARD_DECLARE_CLASS(QOpenGLFramebufferObject)
 
 namespace qtsdl {
 
 class GuiRenderer;
-class RenderControl;
 
 class EventHandlingQuickWindow : public QQuickWindow {
 	Q_OBJECT
@@ -48,7 +51,10 @@ public:
 
 	static GuiRendererImpl* impl(GuiRenderer *renderer);
 
-	void render();
+	/**
+	 * @return texture ID where GUI was rendered
+	 */
+	GLuint render();
 
 	void resize(const QSize &size);
 
@@ -99,9 +105,34 @@ private slots:
 	void on_scene_changed();
 
 private:
+	/**
+	 * If size changes, then create a new FBO for GUI rendering
+	 */
+	void reinit_fbo_if_needed();
+
+	/**
+	 * GL context of the game
+	 */
 	std::unique_ptr<QOpenGLContext> ctx;
+
+	/**
+	 * Contains scene graph of the GUI
+	 */
 	std::unique_ptr<EventHandlingQuickWindow> window;
-	std::unique_ptr<RenderControl> render_control;
+
+	/**
+	 * Object for sending render command to Qt
+	 */
+	QQuickRenderControl render_control;
+
+	/**
+	 * FBO where the GUI is rendered
+	 */
+	std::unique_ptr<QOpenGLFramebufferObject> fbo;
+
+	std::atomic<int> new_fbo_width;
+	std::atomic<int> new_fbo_height;
+	std::atomic<bool> need_fbo_resize;
 
 	std::atomic<bool> need_sync;
 	std::atomic<bool> need_render;

@@ -378,11 +378,6 @@ private:
 	gui::GameSingletonsInfo singletons_info;
 
 	/**
-	 * the gui binding
-	 */
-	std::unique_ptr<gui::GuiBasic> gui;
-
-	/**
 	 * the frame counter measuring fps.
 	 */
 	util::FrameCounter fps_counter;
@@ -438,6 +433,11 @@ private:
 	 * but it would allow having multiple ones.
 	 */
 	SDL_GLContext glcontext;
+
+	/**
+	 * the gui binding
+	 */
+	std::unique_ptr<gui::GuiBasic> gui;
 
 	/*
 	 * the engines profiler
