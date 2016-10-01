@@ -109,8 +109,13 @@ endif()
 # From cmake's built-in finder
 find_python_interpreter_builtin()
 
+execute_process(COMMAND "/usr/bin/env python3 -c \"print(__import__('sys').executable)\""
+	OUTPUT_VARIABLE SYSTEM_PYTHON_FROM_ENV)
+
 # From known python locations
 find_python_interpreters(
+	#execute /usr/bin/env python
+	${SYSTEM_PYTHON_FROM_ENV}
 	# general POSIX / GNU paths
 	"/usr/bin/python*"
 	"/usr/local/bin/python*"
