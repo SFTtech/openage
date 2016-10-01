@@ -85,6 +85,7 @@ _the openage authors_ are:
 | Vicken Simonian             | vsimon                      | vsimon@gmail.com                      |
 | Kevin Peters                | kev946                      | klee946@gmail.com                     |
 | Andreas Schulz              | Longhanks                   | andi.schulz@me.com                    |
+| Shaleen Jain                | Shalzz                      | shaleen.jain95@gmail.com              |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
