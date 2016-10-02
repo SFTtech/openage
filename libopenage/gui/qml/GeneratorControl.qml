@@ -7,7 +7,7 @@ import QtQuick.Layouts 1.1
 import yay.sfttech.openage 1.0
 
 Item {
-	id: root
+        id: root
 
 	property GeneratorParameters generatorParameters
 	property GameSpec gameSpec
@@ -72,6 +72,17 @@ Item {
 				text: "reload_assets"
 				onClicked: gameSpec.invalidate()
 			}
+
+            ButtonFlat {
+                Layout.fillWidth: true
+
+                text: "quit_game"
+                onClicked: {
+                    game.clear()
+                    gameCreator.clearErrors()
+                    Qt.quit()
+                }
+            }
 		}
 
 		Text {
