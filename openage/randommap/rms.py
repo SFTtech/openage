@@ -10,6 +10,10 @@ import sys
 import time
 
 # this should be called from the game
+# @params
+# players: list of player teams, [0,1,1]
+#           player 1 and 3 are in team 0
+#           player 2 is in team 1
 def generate(filename,players,gametype,mapscale,seed):
     
     # rng seed
@@ -55,5 +59,5 @@ def generate(filename,players,gametype,mapscale,seed):
     
 if __name__ == "__main__":
     
-    generate("arabia_new.rms",[0,0],"conquest",3,42)
+    generate("maps/arabia_new.rms",[0,0,0],"conquest",3,42)
     
