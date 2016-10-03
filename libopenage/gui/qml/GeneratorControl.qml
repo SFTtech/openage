@@ -72,6 +72,17 @@ Item {
 				text: "reload_assets"
 				onClicked: gameSpec.invalidate()
 			}
+
+			ButtonFlat {
+				Layout.fillWidth: true
+
+				text: "quit_game"
+				onClicked: { 
+					game.clear()
+					gameCreator.clearErrors()
+					Qt.quit()
+				}
+			}
 		}
 
 		Text {

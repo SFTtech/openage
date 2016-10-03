@@ -29,7 +29,7 @@ GuiEngineImpl::GuiEngineImpl(GuiRenderer *renderer, const std::vector<GuiImagePr
 	this->attach_to(GuiRendererImpl::impl(renderer));
 
 	QObject::connect(this, &GuiEngineImpl::rootDirsPathsChanged, &this->watcher, &RecursiveDirectoryWatcher::rootDirsPathsChanged);
-	QObject::connect(&this->watcher, &RecursiveDirectoryWatcher::changeDetected, this, &GuiEngineImpl::onReload);
+	QObject::connect(&this->watcher, &RecursiveDirectoryWatcher::changeDetected, this, &GuiEngineImpl::onReload);	
 }
 
 GuiEngineImpl::~GuiEngineImpl() {
