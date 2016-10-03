@@ -86,6 +86,7 @@ _the openage authors_ are:
 | Kevin Peters                | kev946                      | klee946@gmail.com                     |
 | Andreas Schulz              | Longhanks                   | andi.schulz@me.com                    |
 | Shaleen Jain                | Shalzz                      | shaleen.jain95@gmail.com              |
+| Johannes Walcher            | tomatower                   | johannes.walcher@stusta.de            |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
