@@ -74,6 +74,14 @@ function(find_python_interpreter_builtin)
 	set(PYTHON_INTERPRETERS "${PYTHON_INTERPRETERS}" PARENT_SCOPE)
 endfunction()
 
+function(find_python_interpreters_env)
+	#execute /usr/bin/env python
+	execute_process(COMMAND /usr/bin/env python3 -c "print(__import__('sys').executable, end='')"
+		OUTPUT_VARIABLE SYSTEM_PYTHON_FROM_ENV
+		RESULT_VARIABLE SYSTEM_PYTHON_RESULT)
+	set(PYTHON_INTERPRETERS ${PYTHON_INTERPRETERS} "${SYSTEM_PYTHON_FROM_ENV}" PARENT_SCOPE)
+endfunction()
+
 function(find_python_interpreters)
 	if(${ARGC} LESS 1)
 		message(WARNING "find_python_interpreters requires atleast one pattern")
@@ -106,16 +114,14 @@ if(PYTHON)
 	list(APPEND PYTHON_INTERPRETERS "${PYTHON}")
 endif()
 
+# From /usr/bin/env's
+find_python_interpreters_env()
+
 # From cmake's built-in finder
 find_python_interpreter_builtin()
 
-execute_process(COMMAND "/usr/bin/env python3 -c \"print(__import__('sys').executable)\""
-	OUTPUT_VARIABLE SYSTEM_PYTHON_FROM_ENV)
-
 # From known python locations
 find_python_interpreters(
-	#execute /usr/bin/env python
-	${SYSTEM_PYTHON_FROM_ENV}
 	# general POSIX / GNU paths
 	"/usr/bin/python*"
 	"/usr/local/bin/python*"
@@ -132,6 +138,7 @@ list(REMOVE_DUPLICATES PYTHON_INTERPRETERS)
 foreach(INTERPRETER ${PYTHON_INTERPRETERS})
 	# test for validity
 	set(PY_OUTPUT_TEST "rofl, lol")
+	message ("Testing ${INTERPRETER}")
 	execute_process(COMMAND
 		"${INTERPRETER}" -c "print('${PY_OUTPUT_TEST}'); exit(42)"
 		OUTPUT_VARIABLE TEST_OUTPUT
