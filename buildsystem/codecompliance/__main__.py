@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """
 Entry point for the code compliance checker.
@@ -52,6 +52,9 @@ def process_args(args, error):
 
     Calls error (with a string argument) in case of errors.
     """
+    # this method is very flat; artificially nesting it would be bullshit.
+    # pylint: disable=too-many-branches
+
     if args.fast or args.all:
         # enable "fast" tests
         args.headerguards = True
@@ -94,6 +97,12 @@ def process_args(args, error):
             importlib.import_module('pep8')
         except ImportError:
             error("pep8 python module required for style checking")
+
+    if args.pylint:
+        try:
+            importlib.import_module('pylint')
+        except ImportError:
+            error("pylint python module required for linting")
 
 
 def main(args):

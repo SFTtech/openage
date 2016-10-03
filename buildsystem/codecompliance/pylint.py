@@ -4,7 +4,7 @@
 Checks the Python modules with pylint.
 """
 
-from subprocess import call
+from pylint import lint
 
 from .util import findfiles
 from .pystyle import filter_file_list
@@ -19,7 +19,7 @@ def find_pyx_modules(dirnames):
 def find_issues(check_files, dirnames):
     """ Invokes the external utility. """
 
-    invocation = ['pylint', '--rcfile=etc/pylintrc', '--reports=n']
+    invocation = ['--rcfile=etc/pylintrc', '--reports=n']
 
     ignored_modules = list(find_pyx_modules(dirnames))
     ignored_modules.append('numpy')
@@ -31,11 +31,15 @@ def find_issues(check_files, dirnames):
     else:
         invocation.extend(filter_file_list(check_files, dirnames))
 
-    if call(invocation) != 0:
-        if check_files is None:
-            msg = "python code is noncompliant"
-        else:
-            msg = ("false positives may result from not checking the entire "
-                   "codebase")
+    try:
+        lint.Run(invocation)
+    except SystemExit as exc:
+        errorcode = exc.args[0]
+        if errorcode != 0:
+            if check_files is None:
+                msg = "python code is noncompliant: %d" % errorcode
+            else:
+                msg = ("false positives may result from not checking the "
+                       "entire codebase")
 
-        yield "linting issue", msg
+            yield "linting issue", msg
