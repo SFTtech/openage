@@ -7,7 +7,7 @@ There are various supported kinds of tests:
  - py tests
  - py doctests
 
-All tests are run automatically by Travis, via `python3 -m openage.testing -a`.
+All tests are run automatically by Travis, via `./run test -a`.
 
 You are encouraged to write tests for all your contributions, as well as other components that currently lack testing.
 
