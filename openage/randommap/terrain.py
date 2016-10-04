@@ -5,7 +5,7 @@ terrain = {
 "WATER"         : 1,
 "BEACH"         : 2,
 "SHALLOW"       : 4,
-"FOREST"        : 9,
+"FORREST"       : 9,
 "DIRT"          : 12,
 "DEEP_WATER"    : 15,
 "ROAD"          : 16,

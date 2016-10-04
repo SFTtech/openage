@@ -89,10 +89,10 @@ def loadConfiguration(config):
             "width"                   : int(config[section].get("width",1)),
             "substitute": {
                 o.terrain["GRASS"]         : o.terrain[ config[section].get("subtitute_GRASS",      "ROAD") ],
-                o.terrain["WATER"]         : o.terrain[ config[section].get("subtitute_WATER",      "ROAD") ],
+                o.terrain["WATER"]         : o.terrain[ config[section].get("subtitute_WATER",      "SHALLOW") ],
                 o.terrain["BEACH"]         : o.terrain[ config[section].get("subtitute_BEACH",      "ROAD") ],
                 o.terrain["SHALLOW"]       : o.terrain[ config[section].get("subtitute_SHALLOW",    "SHALLOW") ],
-                o.terrain["FOREST"]        : o.terrain[ config[section].get("subtitute_FOREST",     "ROAD") ],
+                o.terrain["FOREST"]        : o.terrain[ config[section].get("subtitute_FORREST",    "ROAD") ],
                 o.terrain["DIRT"]          : o.terrain[ config[section].get("subtitute_DIRT",       "ROAD") ],
                 o.terrain["DEEP_WATER"]    : o.terrain[ config[section].get("subtitute_DEEP_WATER", "SHALLOW") ],
                 o.terrain["ROAD"]          : o.terrain[ config[section].get("subtitute_ROAD",       "ROAD") ],
@@ -104,7 +104,7 @@ def loadConfiguration(config):
                 o.terrain["WATER"]         : config[section].get("cost_WATER",      1) ,
                 o.terrain["BEACH"]         : config[section].get("cost_BEACH",      1)  ,
                 o.terrain["SHALLOW"]       : config[section].get("cost_SHALLOW",    1)  ,
-                o.terrain["FOREST"]        : config[section].get("cost_FOREST",     1)  ,
+                o.terrain["FOREST"]        : config[section].get("cost_FORREST",    1)  ,
                 o.terrain["DIRT"]          : config[section].get("cost_DIRT",       1)  ,
                 o.terrain["DEEP_WATER"]    : config[section].get("cost_DEEP_WATER", 20) ,
                 o.terrain["ROAD"]          : config[section].get("cost_ROAD",       1)  ,
@@ -128,7 +128,7 @@ def loadConfiguration(config):
             "min_distance"          : int( config[section].get("min_distance", 0) ),
             "max_distance"          : int( config[section].get("max_distance", 6) ),
             "obj_for_every_player"  : config[section].getboolean("obj_for_every_player", False),
-            "placement"             : config[section].get("placement","circle"),
+            "placement"             : config[section].get("placement","random"),
         })
         c["OBJECT"][-1]["type"]["building_completion"] = float( config[section].get("building_completion", 1.0) )
     return c
