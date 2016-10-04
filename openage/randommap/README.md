@@ -17,6 +17,7 @@ field2=value2
 
 ### METADATA
 this is only used for displaying ingame, it has no influence over map generation
+
 | field     | type            | info                |
 | --------- | --------------- | ------------------- |
 | author    | string          | openage-developers  |
