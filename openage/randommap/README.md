@@ -17,7 +17,6 @@ field2=value2
 
 ### METADATA
 this is only used for displaying ingame, it has no influence over map generation
-
 | field     | type            | info                |
 | --------- | --------------- | ------------------- |
 | author    | string          | openage-developers  |
@@ -58,15 +57,16 @@ circle: will create islands in a circle in the border constraints
 | border_sw                 | float           | 0       | 0<=border<=1 distance from sw border                        | x                 | x                 |
 
 ## OBJECT_XXX
-| field     | type            | default     | info                                | fill: true | fill: false |
-| --------- | --------------- | ----------- | ----------------------------------- | ---------- | ----------- |
-| type      | object-label    | VILLAGER    |                                     | x          | x           |
-| islands   | list of strings | all_players |                                     | x          | x           |
-| fill      | boolean         | false       |                                     | x          | x           |
-| chance    | float           | 0.3         | chance of object placement per tile | x          | -           |
-| placement | enum            | random      |                                     | -          | x           |
-| number    | int             | 1           |                                     | -          | x           |
-| groups    | int             | 1           |                                     | -          | x           |
+| field                | type            | default     | info                                     | fill: true | fill: false |
+| -------------------- | --------------- | ----------- | ---------------------------------------- | ---------- | ----------- |
+| type                 | object-label    | VILLAGER    |                                          | x          | x           |
+| islands              | list of strings | all_players |                                          | x          | x           |
+| fill                 | boolean         | false       |                                          | x          | x           |
+| chance               | float           | 0.3         | chance of object placement per tile      | x          | -           |
+| placement            | enum            | random      |                                          | -          | x           |
+| number               | int             | 1           |                                          | -          | x           |
+| groups               | int             | 1           |                                          | -          | x           |
+| obj_for_every_player | boolean         | false       | objects will be created for every player | -          | x           |
 
 ## CONNECTION_XXX
 
