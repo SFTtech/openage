@@ -1,5 +1,8 @@
-Overview
---------
+# Test system
+
+## openage computer-enriched testing automation
+
+### Tests
 
 There are various supported kinds of tests:
 
@@ -7,9 +10,20 @@ There are various supported kinds of tests:
  - py tests
  - py doctests
 
-All tests are run automatically by Travis, via `python3 -m openage.testing -a`.
+Tests run without user interaction to check for errors automatically.
+
+All tests are run automatically by [Kevin](https://github.com/SFTtech/kevin/) for pullrequests.
+
+
+You can invoke them with `./run test -a` or `make test`
+
+Have a look at `./run test --help` for further options.
+
 
 You are encouraged to write tests for all your contributions, as well as other components that currently lack testing.
+
+
+### Demos
 
 In addition to testing, openage supports _demos_:
 
@@ -23,8 +37,10 @@ All tests must be registered in `openage/testing/testlist.py` (else the game won
 
 Also see `python3 -m openage.testing --help`.
 
-C++ tests
----------
+
+## Adding new tests
+
+### C++ tests
 
 C++ tests are simple `void()` functions somewhere in the `openage` namespace.
 
@@ -55,8 +71,8 @@ void test_prime() {
 }
 ```
 
-Python tests
-------------
+
+### Python tests
 
 Python tests are simple argument-less functions somewhere in the `openage` package.
 
@@ -85,10 +101,10 @@ def test_prime():
         result(is_prime(-1337))
 ```
 
-Python doctests
----------------
 
-[Doctests](https://docs.python.org/3.4/library/doctest.html) are an integrated feature of Python.
+### Python doctests
+
+[Doctests](https://docs.python.org/3/library/doctest.html) are an integrated feature of Python.
 
 They defined in function and module docstrings, are extremely lightweight and also serve as documentation.
 
@@ -109,15 +125,14 @@ def is_prime(p):
     return not any(p % x == 0 for x in range(2, p))
 ```
 
-C++ demos
----------
+### C++ demos
 
 Technically, those are very much like `C++` tests. In fact, the only difference to tests is the section in `openage/testing/testlist.py` where they are declared.
 
 C++ demos don't support `argv`; if you want that, make it a Python demo in a `.pyx` file and do the argparsing in Python; the Python demo function can then easily call any C++ function using the Python interface.
 
-Python demos
-------------
+
+### Python demos
 
 Similar to Python tests, but have one argument, `argv`. Pass arguments in the invocation:
 
@@ -136,3 +151,21 @@ def prime_demo(argv):
         if is_prime(p):
             print(p)
 ```
+
+
+## Why?
+
+### Demos
+
+Demos should be used to implement and develop new features.
+You can directly call your code without having to launch up the whole engine.
+
+Use demos while developing new things or improvements.
+
+
+### Tests
+
+All tests are run for each pull requests, so we can detect your change broke something.
+Please try to write tests for everything you do.
+
+This is our only way of automated regression detection.
