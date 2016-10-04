@@ -145,7 +145,6 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	});
 
 	// Villager build commands
-	// TODO place this into separate building menus instead of global hotkeys
 	auto bind_building_key = [this](input::action_t action, int building) {
 		this->build_menu_context.bind(action, [this, building](const input::action_arg_t &) {
 			auto player = this->game_control->get_current_player();
@@ -180,9 +179,8 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	bind_building_key(action.get("BUILDING_MILL"), 68); // Mill
 	bind_building_key(action.get("BUILDING_MINE"), 584); // Mining Camp
 	bind_building_key(action.get("BUILDING_SMIL"), 562); // Lumber Camp
-	// TODO: Doesn't work:
 	bind_building_key(action.get("BUILDING_DOCK"), 47); // Dock
-	// TODO: Doesn't work:
+	// TODO: Doesn't show until it is placed
 	bind_building_key(action.get("BUILDING_FARM"), 50); // Farm
 	bind_building_key(action.get("BUILDING_BLAC"), 103); // Blacksmith
 	bind_building_key(action.get("BUILDING_MRKT"), 84); // Market
