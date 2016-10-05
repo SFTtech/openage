@@ -108,9 +108,6 @@ class Tile:
             for y in range(self.y,self.y+object.y_size):
                 object.tiles.append(self.map.get(x,y))
                 self.map.get(x,y).object = object
-                if self.x != x:
-                    print(x)
-                    print(y)
         
     def deleteObject(self):
         self.object = None

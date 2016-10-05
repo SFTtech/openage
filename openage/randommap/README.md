@@ -75,27 +75,32 @@ circle: will create islands in a circle in the border constraints
 
 single: creates a single connection between 2 islands
 
+cross:  creates connections between all islands in islands
+
 cost: cost of a tile for a* algorithm, higher costs will be avoided
 
-| field                | type            | default     |
-| -------------------- | --------------- | ----------- |
-| type                 | enum            | single      |
-| width                | int             | 1           |
-| islands              | list of strings | all_players |
-| subtitute_GRASS      | TERRAIN-TYPE    | ROAD        |
-| subtitute_WATER      | TERRAIN-TYPE    | SHALLOW     |
-| subtitute_SHALLOW    | TERRAIN-TYPE    | SHALLOW     |
-| subtitute_FORREST    | TERRAIN-TYPE    | ROAD        |
-| subtitute_DIRT       | TERRAIN-TYPE    | ROAD        |
-| subtitute_DEEP_WATER | TERRAIN-TYPE    | SHALLOW     |
-| subtitute_ROAD       | TERRAIN-TYPE    | ROAD        |
-| cost_GRASS           | int             | 1           |
-| cost_WATER           | int             | 1           | 
-| cost_SHALLOW         | int             | 1           |
-| cost_FOREST          | int             | 1           |
-| cost_DIRT            | int             | 1           |
-| cost_DEEP_WATER      | int             | 20          |
-| cost_ROAD            | int             | 1           |
+predefined islands labels: all_players
+
+
+| field                | type            | default     | type: single | type: cross |
+| -------------------- | --------------- | ----------- | ------------ | ----------- |
+| type                 | enum            | single      | x            | x           |
+| width                | int             | 1           | x            | x           |
+| islands              | list of strings | all_players | x            | x           |
+| subtitute_GRASS      | TERRAIN-TYPE    | ROAD        | x            | x           |
+| subtitute_WATER      | TERRAIN-TYPE    | SHALLOW     | x            | x           |
+| subtitute_SHALLOW    | TERRAIN-TYPE    | SHALLOW     | x            | x           |
+| subtitute_FORREST    | TERRAIN-TYPE    | ROAD        | x            | x           |
+| subtitute_DIRT       | TERRAIN-TYPE    | ROAD        | x            | x           |
+| subtitute_DEEP_WATER | TERRAIN-TYPE    | SHALLOW     | x            | x           |
+| subtitute_ROAD       | TERRAIN-TYPE    | ROAD        | x            | x           |
+| cost_GRASS           | int             | 1           | x            | x           |
+| cost_WATER           | int             | 1           | x            | x           |
+| cost_SHALLOW         | int             | 1           | x            | x           |
+| cost_FOREST          | int             | 1           | x            | x           |
+| cost_DIRT            | int             | 1           | x            | x           |
+| cost_DEEP_WATER      | int             | 20          | x            | x           |
+| cost_ROAD            | int             | 1           | x            | x           |
                 
 ## list of object labels
 ### supported terrain and default values:

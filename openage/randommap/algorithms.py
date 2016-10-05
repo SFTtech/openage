@@ -326,39 +326,63 @@ def addObjects(config,map):
                     for island in obj["islands"]:
                         island = map.getLandByName(island)
                         addObjectToIsland(obj.copy(),map,island)
-                        
+
+def createSingleConnection(conn,m,island_0,island_1):
+    # calculate single tile costs
+    for x in range(m.x):
+        for y in range(m.y):
+            if m.get(x,y).object == None:
+                m.get(x,y).single_c = conn["cost"][m.get(x,y).terrain]
+            else:
+                m.get(x,y).single_c = sys.maxsize
+            m.get(x,y).c         = m.get(x,y).single_c
+    # calculate
+    for x in range(m.x):
+        for y in range(m.y):
+            m.get(x,y).calcCost(conn["width"])
+            
+    start = m.get(island_0.x,island_0.y)
+    end   = m.get(island_1.x,island_1.y)
+    path = astern(start,end,m)
+    
+    for tile in path:
+        print(tile)
+        for i in range(conn["width"]):
+            m.get(tile.x+i,tile.y).terrain = conn["substitute"][m.get(tile.x+i,tile.y).terrain]
+            m.get(tile.x+i,tile.y).deleteObject()
+            m.get(tile.x,tile.y+i).terrain = conn["substitute"][m.get(tile.x,tile.y+i).terrain]
+            m.get(tile.x,tile.y+i).deleteObject()
+
 def createConnection(config,m):
     # every connection
     for conn in config["CONNECTION"]:
+        
+        # expand islands (predefined labels)
+        if "all_players" in conn["islands"]:
+            conn["islands"] = list(filter(lambda x: x != "all_players" , conn["islands"]))
+            for player in range(1,config["GAME_SETUP"]["players"]+1):
+                conn["islands"].append("_player_" + str(player) )
+                
         # substitute predefined labels
         if conn["type"] == "single":
             island_0 = m.getLandByName(conn["islands"][0])
             island_1 = m.getLandByName(conn["islands"][1])
+            createSingleConnection(conn,m,island_0,island_1)
             
-            # calculate single tile costs
-            for x in range(m.x):
-                for y in range(m.y):
-                    if m.get(x,y).object == None:
-                        m.get(x,y).single_c = conn["cost"][m.get(x,y).terrain]
-                    else:
-                        m.get(x,y).single_c = sys.maxsize
-                    m.get(x,y).c         = m.get(x,y).single_c
-            # calculate
-            for x in range(m.x):
-                for y in range(m.y):
-                    m.get(x,y).calcCost(conn["width"])
-                    
-            start = m.get(island_0.x,island_0.y)
-            end   = m.get(island_1.x,island_1.y)
-            path = astern(start,end,m)
-            for tile in path:
-                for i in range(conn["width"]):
-                    m.get(tile.x+i,tile.y).terrain = conn["substitute"][m.get(tile.x+i,tile.y).terrain]
-                    m.get(tile.x+i,tile.y).deleteObject()
-                    m.get(tile.x,tile.y+i).terrain = conn["substitute"][m.get(tile.x,tile.y+i).terrain]
-                    m.get(tile.x,tile.y+i).deleteObject()
+        if conn["type"] == "cross":
+            # make connection for all possible combinations
+            for i in range(len(conn["islands"])-1):
+                for j in range(i+1,len(conn["islands"])):
+                    island_0 = m.getLandByName(conn["islands"][i])
+                    island_1 = m.getLandByName(conn["islands"][j])
+                    createSingleConnection(conn,m,island_0,island_1)
+
                         
 def astern(startNode,endNode,map,debug=False):
+    # removed predecessor, it may have been used in an other path
+    startNode.predecessor = None
+    endNode.predecessor = None
+    
     openlist   = [startNode]
     closedlist = []
     path       = []
@@ -370,6 +394,7 @@ def astern(startNode,endNode,map,debug=False):
         currentNode = openlist.pop(0)
             
         if currentNode.x == endNode.x and currentNode.y == endNode.y:
+            print(currentNode.predecessor)
             # found route
             while currentNode.predecessor != None:
                 yield currentNode
@@ -380,11 +405,14 @@ def astern(startNode,endNode,map,debug=False):
 
         # find successors
         for successor in currentNode.getNeighbours():
+            
             if successor in closedlist:
                 continue
+                               
             tentative_g = currentNode.g + successor.c
             if successor in openlist and tentative_g >= successor.g :
                 continue
+                
             successor.predecessor = currentNode
             successor.g = tentative_g
             
