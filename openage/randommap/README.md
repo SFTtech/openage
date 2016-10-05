@@ -111,9 +111,10 @@ cost: cost of a tile for a* algorithm, higher costs will be avoided
 | WATER       | SHALLOW        | 1    |
     
 ### supported objects:
-| object   | size |
-| -------- | ---- |
-| VILLAGER | 1x1  |
+| object     | size |
+| ---------- | ---- |
+| TOWNCENTER | 4x4  |
+| VILLAGER   | 1x1  |
 
 ### supported gaia objects:
 - TREE1
