@@ -23,10 +23,17 @@ class Map:
             for x in range(0,self.x):
                 tile = self.get(x,y)
                 if tile.object == None:
-                    if tile.island == 0:
+                    if tile.island == 0 and tile.terrain == self.terrain:
                         print("_",end="")
                     else:
-                        print( "{:1}".format(tile.island), end="" )
+                        if tile.terrain == o.terrain["GRASS"]:
+                            print( "G", end="" )
+                        elif tile.terrain == o.terrain["SHALLOW"]:
+                            print( "S", end="" )
+                        elif tile.terrain == o.terrain["ROAD"]:
+                            print( "R", end="" )
+                        else:
+                            print( "{:1}".format(tile.island), end="" )
                 else:
                     if tile.object.id == o.objects["TREE1"]["id"]:
                         print( "{:1}".format('T'), end="" )
@@ -34,6 +41,8 @@ class Map:
                         print( "{:1}".format('G'), end="" )
                     elif tile.object.id == o.objects["STONE"]["id"]:
                         print( "{:1}".format('S'), end="" )
+                    elif tile.object.id == o.objects["VILLAGER"]["id"]:
+                        print( "{:1}".format('V'), end="" )
                     else:
                         print( "{:1}".format('o'), end="" )
             print()
@@ -102,7 +111,7 @@ class Tile:
         # euklid distance without squareroot
         return (self.x - other.x) ** 2 + (self.y - other.y) ** 2
     
-    # returns the cost of all tiles around
+    # returns the cost of tiles in x and y axis
     def calcCost(self,width):
         for i in range(width):
             if self.x+i < self.map.x:

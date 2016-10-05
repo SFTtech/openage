@@ -92,7 +92,7 @@ def loadConfiguration(config):
                 o.terrain["WATER"]         : o.terrain[ config[section].get("subtitute_WATER",      "SHALLOW") ],
                 o.terrain["BEACH"]         : o.terrain[ config[section].get("subtitute_BEACH",      "ROAD") ],
                 o.terrain["SHALLOW"]       : o.terrain[ config[section].get("subtitute_SHALLOW",    "SHALLOW") ],
-                o.terrain["FOREST"]        : o.terrain[ config[section].get("subtitute_FORREST",    "ROAD") ],
+                o.terrain["FORREST"]       : o.terrain[ config[section].get("subtitute_FORREST",    "ROAD") ],
                 o.terrain["DIRT"]          : o.terrain[ config[section].get("subtitute_DIRT",       "ROAD") ],
                 o.terrain["DEEP_WATER"]    : o.terrain[ config[section].get("subtitute_DEEP_WATER", "SHALLOW") ],
                 o.terrain["ROAD"]          : o.terrain[ config[section].get("subtitute_ROAD",       "ROAD") ],
@@ -104,7 +104,7 @@ def loadConfiguration(config):
                 o.terrain["WATER"]         : config[section].get("cost_WATER",      1) ,
                 o.terrain["BEACH"]         : config[section].get("cost_BEACH",      1)  ,
                 o.terrain["SHALLOW"]       : config[section].get("cost_SHALLOW",    1)  ,
-                o.terrain["FOREST"]        : config[section].get("cost_FORREST",    1)  ,
+                o.terrain["FORREST"]       : config[section].get("cost_FORREST",    1)  ,
                 o.terrain["DIRT"]          : config[section].get("cost_DIRT",       1)  ,
                 o.terrain["DEEP_WATER"]    : config[section].get("cost_DEEP_WATER", 20) ,
                 o.terrain["ROAD"]          : config[section].get("cost_ROAD",       1)  ,
@@ -120,6 +120,7 @@ def loadConfiguration(config):
         
         c["OBJECT"].append({
             "type"                  : o.objects[ config[section].get("type", "VILLAGER") ],
+            "player_id"             : int( config[section].get("player_id",0) ),
             "number"                : int( config[section].get("number", 1) ),
             "groups"                : int( config[section].get("groups", 1) ),
             "fill"                  : config[section].getboolean("fill",False),
@@ -245,7 +246,10 @@ def printMap(filename,map):
             if obj.object != None:
                 obj = obj.object
                 data += "{}\n".format(obj.id)
-                data += "{}\n".format(obj.player_id)
+                if obj.gaia == True:
+                    data += "0\n"
+                else:
+                    data += "{}\n".format(obj.player_id)
                 data += "{} {}\n".format(obj.x,obj.y)
                 data += "{0:d}\n".format(obj.is_building)
                 if obj.is_building == True:
@@ -277,19 +281,18 @@ def addObjectToIslandRandom(config,map,island):
     while(config["number"] > 0 and len(tiles) > 0):
        
         tile = tiles.pop(random.randrange(0,len(tiles)))
-        
         object = classes.Object(
                 id=config["type"]["id"],
                 x=tile.x,
                 y=tile.y,
                 tiles=[tile],
-                player_id = 0,
+                player_id = config["player_id"],
                 gaia=config["type"]["gaia"],
             )
             
         if not tile.isObjectPlaceable(object):
             continue
-        
+
         tile.placeObject(object)
         
         for t in list(tile.getNeighbours()):
@@ -312,6 +315,7 @@ def addObjects(config,map):
                 # look if for every player
                 if obj["obj_for_every_player"] == True:
                     for island in map.getPlayerLands():
+                        obj["player_id"] = island.player
                         addObjectToIsland(obj.copy(),map,island)
                 else:
                     # place object random on islands
@@ -330,10 +334,10 @@ def createConnection(config,m):
             # calculate single tile costs
             for x in range(m.x):
                 for y in range(m.y):
-                    if m.get(x,y).object != None:
+                    if m.get(x,y).object == None:
                         m.get(x,y).single_c = conn["cost"][m.get(x,y).terrain]
                     else:
-                        m.get(x,y).single_c = 10000
+                        m.get(x,y).single_c = sys.maxsize
                     m.get(x,y).c         = m.get(x,y).single_c
             # calculate
             for x in range(m.x):
@@ -364,7 +368,6 @@ def astern(startNode,endNode,map,debug=False):
         if currentNode.x == endNode.x and currentNode.y == endNode.y:
             # found route
             while currentNode.predecessor != None:
-                print(currentNode.predecessor)
                 yield currentNode
                 currentNode = currentNode.predecessor
             yield(startNode)

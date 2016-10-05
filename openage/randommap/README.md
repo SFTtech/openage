@@ -17,6 +17,7 @@ field2=value2
 
 ### METADATA
 this is only used for displaying ingame, it has no influence over map generation
+
 | field     | type            | info                |
 | --------- | --------------- | ------------------- |
 | author    | string          | openage-developers  |
@@ -27,11 +28,12 @@ this is only used for displaying ingame, it has no influence over map generation
 | gametypes | list of strings | deathmatch,conquest |
 
 ### MAP_SETUP
+
 | field        | type         | default | info                                        |
 | ------------ | ------------ | ------- | ------------------------------------------- |
-| base_terrain | TERRAIN-TYPE | GRASS   |                                            |
+| base_terrain | TERRAIN-TYPE | GRASS   |                                             |
 | base_x       | int          | 7       | x base size + number of players = x mapsize |
-| base_y       | int          | 7       |y base size + number of players = y mapsize |
+| base_y       | int          | 7       | y base size + number of players = y mapsize |
 
 ### LAND_XXX
 every LAND_XXX must be a unique string, if constraints like border can not be statisfied with the placement type the behavior is undefined
@@ -57,6 +59,7 @@ circle: will create islands in a circle in the border constraints
 | border_sw                 | float           | 0       | 0<=border<=1 distance from sw border                        | x                 | x                 |
 
 ## OBJECT_XXX
+
 | field                | type            | default     | info                                     | fill: true | fill: false |
 | -------------------- | --------------- | ----------- | ---------------------------------------- | ---------- | ----------- |
 | type                 | object-label    | VILLAGER    |                                          | x          | x           |
