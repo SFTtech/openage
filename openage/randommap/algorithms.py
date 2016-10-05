@@ -346,7 +346,6 @@ def createSingleConnection(conn,m,island_0,island_1):
     path = astern(start,end,m)
     
     for tile in path:
-        print(tile)
         for i in range(conn["width"]):
             m.get(tile.x+i,tile.y).terrain = conn["substitute"][m.get(tile.x+i,tile.y).terrain]
             m.get(tile.x+i,tile.y).deleteObject()
@@ -362,6 +361,8 @@ def createConnection(config,m):
             conn["islands"] = list(filter(lambda x: x != "all_players" , conn["islands"]))
             for player in range(1,config["GAME_SETUP"]["players"]+1):
                 conn["islands"].append("_player_" + str(player) )
+                
+        # todo: make islands-labels unique
                 
         # substitute predefined labels
         if conn["type"] == "single":
@@ -394,7 +395,6 @@ def astern(startNode,endNode,map,debug=False):
         currentNode = openlist.pop(0)
             
         if currentNode.x == endNode.x and currentNode.y == endNode.y:
-            print(currentNode.predecessor)
             # found route
             while currentNode.predecessor != None:
                 yield currentNode
