@@ -236,14 +236,16 @@ def printMap(filename,map):
     for x in range(map.x):
         for y in range(map.y):
             obj = map.get(x,y)
-            if obj.object != None:
+            # x == obj...x is needed because some objects are larger than 1x1
+            # so we dont count double
+            if obj.object != None and x == obj.object.x and y == obj.object.y:
                 obj_count +=1
     data += "{}\n".format(obj_count)
         
     for x in range(map.x):
         for y in range(map.y):
             obj = map.get(x,y)
-            if obj.object != None:
+            if obj.object != None and x == obj.object.x and y == obj.object.y:
                 obj = obj.object
                 data += "{}\n".format(obj.id)
                 if obj.gaia == True:
@@ -285,6 +287,8 @@ def addObjectToIslandRandom(config,map,island):
                 id=config["type"]["id"],
                 x=tile.x,
                 y=tile.y,
+                x_size=config["type"]["x"],
+                y_size=config["type"]["y"],
                 tiles=[tile],
                 player_id = config["player_id"],
                 gaia=config["type"]["gaia"],

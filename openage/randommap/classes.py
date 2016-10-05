@@ -43,6 +43,8 @@ class Map:
                         print( "{:1}".format('S'), end="" )
                     elif tile.object.id == o.objects["VILLAGER"]["id"]:
                         print( "{:1}".format('V'), end="" )
+                    elif tile.object.id == o.objects["TOWNCENTER"]["id"]:
+                        print( "{:1}".format('T'), end="" )
                     else:
                         print( "{:1}".format('o'), end="" )
             print()
@@ -101,8 +103,14 @@ class Tile:
         return True
         
     def placeObject(self,object):
-        #print("placing {} {} {} {} {}".format(self.x,self.y,object,object.x,object.y))
-        self.object = object
+        object.tiles = []
+        for x in range(self.x,self.x+object.x_size):
+            for y in range(self.y,self.y+object.y_size):
+                object.tiles.append(self.map.get(x,y))
+                self.map.get(x,y).object = object
+                if self.x != x:
+                    print(x)
+                    print(y)
         
     def deleteObject(self):
         self.object = None
