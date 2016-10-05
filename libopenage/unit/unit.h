@@ -214,6 +214,13 @@ public:
 	void delete_unit();
 
 	/**
+	 * builds the nearest building (if it is in range)
+	 *
+	 * returns true if there is a building in range, false otherwise
+	 */
+	bool build_next();
+
+	/**
 	 * get a reference which can check against the container
 	 * to ensure this object still exists
 	 */

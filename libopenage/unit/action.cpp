@@ -793,6 +793,7 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 		if (this->complete >= 1.0f) {
 			this->complete = build.completed = 1.0f;
 			target_location->place(build.completion_state);
+			this->entity->build_next();
 		}
 	}
 	else {
