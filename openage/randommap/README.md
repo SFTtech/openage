@@ -79,6 +79,8 @@ cross:  creates connections between all islands in islands
 
 cost: cost of a tile for a* algorithm, higher costs will be avoided
 
+cost_OBJECT: OBJECT is one of the objects below
+
 predefined islands labels: all_players
 
 
@@ -101,6 +103,7 @@ predefined islands labels: all_players
 | cost_DIRT            | int             | 1           | x            | x           |
 | cost_DEEP_WATER      | int             | 20          | x            | x           |
 | cost_ROAD            | int             | 1           | x            | x           |
+| cost_OBJECT          | int             | 50          | x            | x           |
                 
 ## list of object labels
 ### supported terrain and default values:
