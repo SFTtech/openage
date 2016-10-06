@@ -374,7 +374,8 @@ def createConnection(config, m):
             for player in range(1, config["GAME_SETUP"]["players"] + 1):
                 conn["islands"].append("_player_" + str(player))
 
-        # todo: make islands-labels unique
+        # make islands-labels unique
+        conn["islands"] = list(set(conn["islands"]))
 
         # substitute predefined labels
         if conn["type"] == "single":
