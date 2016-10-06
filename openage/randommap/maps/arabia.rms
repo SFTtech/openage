@@ -3,10 +3,10 @@
 # added from ingame menu
 [GAME_SETUP]
 type=standard
-players=5
+players=7
 # size in tiles
-x=8
-y=8
+x=1
+y=1
 
 # for ingame display
 [METADATA]
@@ -18,17 +18,27 @@ teams=2
 gametypes=deathmatch,conquest
 
 [MAP_SETUP]
-base_terrain=DIRT
+base_terrain=WATER
+base_x=6
+base_y=6
 
 [LAND_1]
-island_type=circle
-island_radius=15
 player_lands=true
 terrain=DIRT
+space_to_other_islands=4
+tiles=1004
 placement=circle
 placement_radius=0.6
 placement_radius_variance=0.2
 placement_angle_variance=0.3
+
+[LAND_2]
+terrain=GRASS
+border_ne=0.4
+border_nw=0.4
+border_se=0.4
+border_sw=0.4
+labels=test
 
 [OBJECT_1]
 type=GOLD
@@ -36,6 +46,11 @@ placement=random
 islands=baseland
 number=4
 groups=8
+
+[OBJECT_T]
+type=TREE1
+fill=true
+islands=test
 
 [OBJECT_2]
 type=STONE
@@ -48,8 +63,15 @@ groups=8
 type=TREE1
 placement=random
 islands=baseland
-number=75
-groups=50
+number=70
+groups=10
+
+[OBJECT_3_T]
+type=TREE1
+placement=random
+islands=baseland
+number=3
+groups=20
 
 [OBJECT_NEAR_GOLD]
 type=GOLD
@@ -80,9 +102,14 @@ max_distance=3
 
 [OBJECT_VILLAGER]
 type=VILLAGER
-placement=circle
+placement=random
 obj_for_every_player=true
 number=3
 groups=1
 min_distance=3
 max_distance=4
+
+[CONNECTION_1]
+type=cross
+width=3
+islands=all_players

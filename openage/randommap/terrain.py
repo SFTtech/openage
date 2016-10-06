@@ -39,14 +39,17 @@ gaias = {
 for unit in units:
     units[unit]["is_building"] = False
     units[unit]["gaia"] = False
+    units[unit]["cost"] = 100000
 
 for building in buildings:
     buildings[building]["is_building"] = True
     buildings[building]["gaia"] = False
+    buildings[building]["cost"] = 100000
 
 for gaia in gaias:
     gaias[gaia]["is_building"] = False
     gaias[gaia]["gaia"] = True
+    gaias[gaia]["cost"] = 50
 
 objects = {}
 objects.update(units)

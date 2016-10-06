@@ -111,8 +111,12 @@ def loadConfiguration(config):
                 o.terrain["ROAD"]:        config[section].get("cost_ROAD",        1),
                 o.terrain["ROAD_RUINED"]: config[section].get("cost_ROAD_RUINED", 1),
                 o.terrain["ICE"]:         config[section].get("cost_ICE",         1),
-            }
+            },
+            "object_cost" : {},
         })
+        # get object costs if available
+        for object in o.objects:
+            c["CONNECTION"][-1]["object_cost"][o.objects[object]["id"]] = int(config[section].get("cost_" + object,o.objects[object]["cost"]))
 
     # objects
     for section in config.sections():
@@ -342,10 +346,12 @@ def createSingleConnection(conn, m, island_0, island_1):
     # calculate single tile costs
     for x in range(m.x):
         for y in range(m.y):
+            # cost if only terrain
             if m.get(x, y).object is None:
                 m.get(x, y).single_c = conn["cost"][m.get(x, y).terrain]
+            # cost of object
             else:
-                m.get(x, y).single_c = sys.maxsize
+                m.get(x, y).single_c = conn["object_cost"][m.get(x, y).object.id]
             m.get(x, y).c         = m.get(x, y).single_c
     # calculate
     for x in range(m.x):

@@ -21,30 +21,21 @@ gametypes=deathmatch,conquest
 base_terrain=GRASS
 
 [LAND_1]
-island_type=circle
+island_type=random
 island_radius=15
 player_lands=true
-terrain=GRASS
+terrain=DIRT
 placement=circle
 placement_radius=0.6
 placement_radius_variance=0.2
-placement_angle_variance=0.3
+placement_angle_variance=0.0
+tiles=1000
 
 [CONNECTION_1]
-type=single
-islands=PLAYER_1,PLAYER_2
-
-[CONNECTION_2]
-type=single
-islands=PLAYER_2,PLAYER_3
-
-[CONNECTION_3]
-type=single
-islands=PLAYER_3,PLAYER_4
-
-[CONNECTION_4]
-type=single
-islands=PLAYER_4,PLAYER_1
+type=cross
+islands=all_players
+width=2
+cost_TREE1=10
 
 [OBJECT_1]
 type=TOWNCENTER
@@ -95,4 +86,4 @@ obj_for_every_player=true
 type=TREE1
 fill=true
 islands=baseland
-chance=0.5
+chance=0.9
