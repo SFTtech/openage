@@ -112,11 +112,11 @@ def loadConfiguration(config):
                 o.terrain["ROAD_RUINED"]: config[section].get("cost_ROAD_RUINED", 1),
                 o.terrain["ICE"]:         config[section].get("cost_ICE",         1),
             },
-            "object_cost" : {},
+            "object_cost": {},
         })
         # get object costs if available
         for object in o.objects:
-            c["CONNECTION"][-1]["object_cost"][o.objects[object]["id"]] = int(config[section].get("cost_" + object,o.objects[object]["cost"]))
+            c["CONNECTION"][-1]["object_cost"][o.objects[object]["id"]] = int(config[section].get("cost_" + object, o.objects[object]["cost"]))
 
     # objects
     for section in config.sections():
