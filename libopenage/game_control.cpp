@@ -52,8 +52,8 @@ void ActionModeSignals::on_action(const std::string &action_name) {
 	input::InputContext *top_ctxt = &engine.get_input_manager().get_top_context();
 	if (top_ctxt == this->action_mode || top_ctxt == &this->action_mode->building_context ||
 	    top_ctxt == &this->action_mode->build_menu_context || top_ctxt == &this->action_mode->build_menu_mil_context) {
-		using namespace input;
-		action_arg_t action_arg{Event{event_class::ANY, 0, modset_t{}}, coord::window{}, coord::window_delta{}, {action}};
+		input::action_arg_t action_arg{input::Event{input::event_class::ANY, 0, input::modset_t{}},
+		                               coord::window{}, coord::window_delta{}, {action}};
 		top_ctxt->execute_if_bound(action_arg);
 	}
 }
