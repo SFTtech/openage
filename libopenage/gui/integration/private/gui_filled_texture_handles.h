@@ -49,7 +49,7 @@ public:
 	GuiFilledTextureHandleUser(const std::shared_ptr<GuiFilledTextureHandles> &texture_handles, const QString &id, const QSize &requested_size, SizedTextureHandle *filled_handle);
 	~GuiFilledTextureHandleUser();
 
-	GuiFilledTextureHandleUser(GuiFilledTextureHandleUser&&) = default;
+	GuiFilledTextureHandleUser(GuiFilledTextureHandleUser&&) noexcept = default;
 
 private:
 	GuiFilledTextureHandleUser(const GuiFilledTextureHandleUser&) = delete;
