@@ -90,9 +90,11 @@ def loadConfiguration(config):
         if not section.startswith("CONNECTION"):
             continue
         c["CONNECTION"].append({
-            "islands": list(map(str.strip, config[section].get("islands", "all_players").split(","))),
-            "type":    config[section].get("type", "single"),
-            "width":   int(config[section].get("width", 1)),
+            "islands":           list(map(str.strip, config[section].get("islands", "all_players").split(","))),
+            "type":              config[section].get("type", "single"),
+            "width":             int(config[section].get("width", 1)),
+            "pave_start_island": config[section].getboolean("pave_start_island", False),
+            "end_start_island":  config[section].getboolean("pave_end_island", False),
             "substitute": {
                 o.terrain["GRASS"]:       o.terrain[config[section].get("subtitute_GRASS",       "ROAD")],
                 o.terrain["WATER"]:       o.terrain[config[section].get("subtitute_WATER",       "SHALLOW")],
@@ -381,10 +383,16 @@ def createSingleConnection(conn, m, island_0, island_1):
 
     for tile in path:
         for i in range(conn["width"]):
-            m.get(tile.x + i, tile.y).terrain = conn["substitute"][m.get(tile.x + i, tile.y).terrain]
-            m.get(tile.x + i, tile.y).deleteObject()
-            m.get(tile.x, tile.y + i).terrain = conn["substitute"][m.get(tile.x, tile.y + i).terrain]
             m.get(tile.x, tile.y + i).deleteObject()
+            m.get(tile.x + i, tile.y).deleteObject()
+            if conn["pave_start_island"] is False and tile in island_0.tiles:
+                # skip paving
+                continue
+            if conn["end_start_island"] is False and tile in island_1.tiles:
+                # skip paving
+                continue
+            m.get(tile.x + i, tile.y).terrain = conn["substitute"][m.get(tile.x + i, tile.y).terrain]
+            m.get(tile.x, tile.y + i).terrain = conn["substitute"][m.get(tile.x, tile.y + i).terrain]
 
 
 def createConnection(config, m):

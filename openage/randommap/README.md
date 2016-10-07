@@ -94,6 +94,8 @@ predefined islands labels: all_players
 | type                 | enum            | single      | x            | x           |
 | width                | int             | 1           | x            | x           |
 | islands              | list of strings | all_players | x            | x           |
+| pave_start_island    | boolean         | false       | x            | x           |
+| pave_end_island      | boolean         | false       | x            | x           |
 | subtitute_GRASS      | TERRAIN-TYPE    | ROAD        | x            | x           |
 | subtitute_WATER      | TERRAIN-TYPE    | SHALLOW     | x            | x           |
 | subtitute_SHALLOW    | TERRAIN-TYPE    | SHALLOW     | x            | x           |
