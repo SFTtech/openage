@@ -60,6 +60,27 @@ islands=baseland
 number=10
 groups=40
 
+[OBJECT_3_T5]
+type=TREE1
+placement=random
+islands=baseland
+number=5
+groups=100
+
+[OBJECT_3_T4]
+type=TREE1
+placement=random
+islands=baseland
+number=5
+groups=100
+
+[OBJECT_3_T3]
+type=TREE1
+placement=random
+islands=baseland
+number=5
+groups=100
+
 [OBJECT_NEAR_GOLD]
 type=GOLD
 placement=random
