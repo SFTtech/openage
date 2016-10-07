@@ -21,6 +21,7 @@ player_lands=true
 terrain=DIRT
 space_to_other_islands=4
 tiles=1004
+tiles_scaling=None
 placement=circle
 placement_radius=0.8
 placement_radius_variance=0.2

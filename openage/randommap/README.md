@@ -50,6 +50,7 @@ circle: will create islands in a circle in the border constraints
 | terrain                   | TERRAIN-TYPE    | GRASS   |                                                             | x                 | x                 |
 | space_to_other_islands    | int             | 0       | minimum distance in tiles to other all other islands        | x                 | x                 |
 | tiles                     | int             | maxint  | ~size in tiles                                              | x                 | x                 |
+| tiles_scaling             | enum            | sqrt    | one of: None,sqrt,linear                                    | x                 | x                 |
 | placement                 | enum            | random  | one of circle,random                                        | x                 | x                 |
 | placement_radius          | float           | 0.5     | 0<radius<1 relative radius of min(x,y)                      | -                 | x                 |
 | placement_radius_variance | float           | 0.3     | radius +- variance, if 0, players will be placed in uniform | -                 | x                 |

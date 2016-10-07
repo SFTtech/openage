@@ -48,16 +48,16 @@ def loadConfiguration(config):
     c["MAP_SETUP"]["base_terrain"] = o.terrain[config["MAP_SETUP"].get("base_terrain", "GRASS")]
     c["MAP_SETUP"]["base_x"]       = int(config["MAP_SETUP"].get("base_x", 7))
     c["MAP_SETUP"]["base_y"]       = int(config["MAP_SETUP"].get("base_y", 7))
-    c["MAP_SETUP"]["x_scaling"]    = config["MAP_SETUP"].get("x_scaling","sqrt")
-    c["MAP_SETUP"]["y_scaling"]    = config["MAP_SETUP"].get("y_scaling","sqrt")
+    c["MAP_SETUP"]["x_scaling"]    = config["MAP_SETUP"].get("x_scaling", "sqrt")
+    c["MAP_SETUP"]["y_scaling"]    = config["MAP_SETUP"].get("y_scaling", "sqrt")
 
     # game setup
     c["GAME_SETUP"]["gametype"] = config["GAME_SETUP"]["gametype"]
     c["GAME_SETUP"]["teams"]    = int(config["GAME_SETUP"].get("teams",    2))
     c["GAME_SETUP"]["players"]  = int(config["GAME_SETUP"].get("players",  2))
     c["GAME_SETUP"]["mapscale"] = int(config["GAME_SETUP"].get("mapscale", 2))
-    c["GAME_SETUP"]["x"]        = int(scaling(c["MAP_SETUP"],"x",c["MAP_SETUP"]["base_x"],c["GAME_SETUP"]["mapscale"]))
-    c["GAME_SETUP"]["y"]        = int(scaling(c["MAP_SETUP"],"y",c["MAP_SETUP"]["base_y"],c["GAME_SETUP"]["mapscale"]))
+    c["GAME_SETUP"]["x"]        = int(scaling(c["MAP_SETUP"], "x", c["MAP_SETUP"]["base_x"], c["GAME_SETUP"]["mapscale"]))
+    c["GAME_SETUP"]["y"]        = int(scaling(c["MAP_SETUP"], "y", c["MAP_SETUP"]["base_y"], c["GAME_SETUP"]["mapscale"]))
 
     # lands
     for section in config.sections():
@@ -70,6 +70,7 @@ def loadConfiguration(config):
             "island_tiles":               int(config[section].get("island_tiles", 100)),
             "space_to_other_islands":     int(config[section].get("space_to_other_islands", 0)),
             "tiles":                      int(config[section].get("tiles", sys.maxsize)),
+            "tiles_scaling":              config[section].get("tiles_scaling", "sqrt"),
             "border_se":                  float(config[section].get("border_se", 0)),
             "border_sw":                  float(config[section].get("border_sw", 0)),
             "border_ne":                  float(config[section].get("border_ne", 0)),
@@ -82,6 +83,7 @@ def loadConfiguration(config):
             "player_lands":               config[section].getboolean("player_lands", False),
             "labels":                     list(filter(lambda x: not x == '', config[section].get("labels", "").split(",")))
         })
+        c["LAND"][-1]["tiles"] = int(scaling(c["LAND"][-1], "tiles", c["LAND"][-1]["tiles"], c["GAME_SETUP"]["mapscale"]))
 
     # connections
     for section in config.sections():
@@ -142,12 +144,12 @@ def loadConfiguration(config):
             "placement":            config[section].get("placement", "random"),
         })
         c["OBJECT"][-1]["type"]["building_completion"] = float(config[section].get("building_completion", 1.0))
-        c["OBJECT"][-1]["number"] = int(scaling(c["OBJECT"][-1],"number",c["OBJECT"][-1]["number"],c["GAME_SETUP"]["mapscale"]))
-        c["OBJECT"][-1]["groups"] = int(scaling(c["OBJECT"][-1],"groups",c["OBJECT"][-1]["groups"],c["GAME_SETUP"]["mapscale"]))
+        c["OBJECT"][-1]["number"] = int(scaling(c["OBJECT"][-1], "number", c["OBJECT"][-1]["number"], c["GAME_SETUP"]["mapscale"]))
+        c["OBJECT"][-1]["groups"] = int(scaling(c["OBJECT"][-1], "groups", c["OBJECT"][-1]["groups"], c["GAME_SETUP"]["mapscale"]))
     return c
 
 
-def scaling(config, prefix, base_number,scaling):
+def scaling(config, prefix, base_number, scaling):
     if config[prefix + "_scaling"] == "sqrt":
         return base_number * math.sqrt(scaling)
     if config[prefix + "_scaling"] == "linear":
