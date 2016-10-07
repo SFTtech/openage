@@ -15,22 +15,24 @@ import time
 # players: list of player teams, [0,1,1]
 #           player 1 and 3 are in team 0
 #           player 2 is in team 1
+# mapscale: for how many player should we create the map? it is independent from
+#           the actual player count(play with 8 players on a 4 player map)
 def generate(filename, players, gametype, mapscale, seed):
 
     # rng seed
     random.seed(seed)
 
-    # load config
+    # load config from file
     config = configparser.ConfigParser()
     config.read(filename, "utf8")
-    config = algo.loadConfiguration(config)
 
     # add parameter from ingame
-    config["GAME_SETUP"]["players"]  = len(players)
-    config["GAME_SETUP"]["x"]        = config["MAP_SETUP"]["base_x"] + mapscale
-    config["GAME_SETUP"]["y"]        = config["MAP_SETUP"]["base_y"] + mapscale
-    config["GAME_SETUP"]["mapscale"] = mapscale
-    config["GAME_SETUP"]["gametype"] = gametype
+    config["GAME_SETUP"] = {"players":  len(players),
+                            "mapscale": mapscale,
+                            "gametype": gametype}
+
+    # add default values and scaling
+    config = algo.loadConfiguration(config)
 
     # make teams
     # TODO

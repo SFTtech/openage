@@ -1,13 +1,5 @@
 # Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
-# added from ingame menu
-[GAME_SETUP]
-type=standard
-players=7
-# size in tiles
-x=1
-y=1
-
 # for ingame display
 [METADATA]
 author=timohaas
@@ -21,6 +13,8 @@ gametypes=deathmatch,conquest
 base_terrain=DIRT
 base_x=6
 base_y=6
+x_scaling=sqrt
+y_scaling=sqrt
 
 [LAND_1]
 player_lands=true

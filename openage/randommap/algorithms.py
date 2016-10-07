@@ -44,17 +44,20 @@ def floodfill(m, islands, constraints, debug=False):
 def loadConfiguration(config):
     c = {"GAME_SETUP": {}, "MAP_SETUP": {}, "LAND": [], "OBJECT": [], "CONNECTION": []}
 
-    # game setup
-    c["GAME_SETUP"]["type"]    = config["GAME_SETUP"]["type"]
-    c["GAME_SETUP"]["x"]       = int(config["GAME_SETUP"].get("x", 32))
-    c["GAME_SETUP"]["y"]       = int(config["GAME_SETUP"].get("y", 32))
-    c["GAME_SETUP"]["teams"]   = int(config["GAME_SETUP"].get("teams",   2))
-    c["GAME_SETUP"]["players"] = int(config["GAME_SETUP"].get("players", 2))
-
     # map setup
     c["MAP_SETUP"]["base_terrain"] = o.terrain[config["MAP_SETUP"].get("base_terrain", "GRASS")]
     c["MAP_SETUP"]["base_x"]       = int(config["MAP_SETUP"].get("base_x", 7))
     c["MAP_SETUP"]["base_y"]       = int(config["MAP_SETUP"].get("base_y", 7))
+    c["MAP_SETUP"]["x_scaling"]    = config["MAP_SETUP"].get("x_scaling","sqrt")
+    c["MAP_SETUP"]["y_scaling"]    = config["MAP_SETUP"].get("y_scaling","sqrt")
+
+    # game setup
+    c["GAME_SETUP"]["gametype"] = config["GAME_SETUP"]["gametype"]
+    c["GAME_SETUP"]["teams"]    = int(config["GAME_SETUP"].get("teams",    2))
+    c["GAME_SETUP"]["players"]  = int(config["GAME_SETUP"].get("players",  2))
+    c["GAME_SETUP"]["mapscale"] = int(config["GAME_SETUP"].get("mapscale", 2))
+    c["GAME_SETUP"]["x"]        = int(scaling(c["MAP_SETUP"],"x",c["MAP_SETUP"]["base_x"],c["GAME_SETUP"]["mapscale"]))
+    c["GAME_SETUP"]["y"]        = int(scaling(c["MAP_SETUP"],"y",c["MAP_SETUP"]["base_y"],c["GAME_SETUP"]["mapscale"]))
 
     # lands
     for section in config.sections():
@@ -138,6 +141,14 @@ def loadConfiguration(config):
         })
         c["OBJECT"][-1]["type"]["building_completion"] = float(config[section].get("building_completion", 1.0))
     return c
+
+
+def scaling(config, prefix, base_number,scaling):
+    if config[prefix + "_scaling"] == "sqrt":
+        return base_number * math.sqrt(scaling)
+    if config[prefix + "_scaling"] == "linear":
+        return base_number + scaling
+    return base_number
 
 
 def createConstraints(fullconfig, config, map, island):

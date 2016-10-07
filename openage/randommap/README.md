@@ -34,6 +34,8 @@ this is only used for displaying ingame, it has no influence over map generation
 | base_terrain | TERRAIN-TYPE | GRASS   |                                             |
 | base_x       | int          | 7       | x base size + number of players = x mapsize |
 | base_y       | int          | 7       | y base size + number of players = y mapsize |
+| x_scaling    | enum         | sqrt    | one of: None,sqrt,linear, how does x scale with mapscale, sqrt: x_base * sqrt(mapscale), linear: x_base + mapscale |
+| y_scaling    | enum         | sqrt    | look @ x_scaling                            |
 
 ### LAND_XXX
 every LAND_XXX must be a unique string, if constraints like border can not be statisfied with the placement type the behavior is undefined
