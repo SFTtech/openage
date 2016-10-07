@@ -130,7 +130,9 @@ def loadConfiguration(config):
             "type":                 o.objects[config[section].get("type", "VILLAGER")],
             "player_id":            int(config[section].get("player_id", 0)),
             "number":               int(config[section].get("number", 1)),
+            "number_scaling":       config[section].get("number_scaling", "sqrt"),
             "groups":               int(config[section].get("groups", 1)),
+            "groups_scaling":       config[section].get("groups_scaling", "sqrt"),
             "fill":                 config[section].getboolean("fill", False),
             "chance":               float(config[section].get("chance", 0.3)),
             "islands":              list(map(str.strip, config[section].get("islands", "all_players").split(","))),
@@ -140,6 +142,8 @@ def loadConfiguration(config):
             "placement":            config[section].get("placement", "random"),
         })
         c["OBJECT"][-1]["type"]["building_completion"] = float(config[section].get("building_completion", 1.0))
+        c["OBJECT"][-1]["number"] = int(scaling(c["OBJECT"][-1],"number",c["OBJECT"][-1]["number"],c["GAME_SETUP"]["mapscale"]))
+        c["OBJECT"][-1]["groups"] = int(scaling(c["OBJECT"][-1],"groups",c["OBJECT"][-1]["groups"],c["GAME_SETUP"]["mapscale"]))
     return c
 
 

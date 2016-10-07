@@ -31,6 +31,7 @@ type=GOLD
 placement=random
 islands=baseland
 number=4
+groups_scaling=None
 groups=8
 
 [OBJECT_2]
@@ -38,48 +39,51 @@ type=STONE
 placement=random
 islands=baseland
 number=4
+number_scaling=None
 groups=8
 
 [OBJECT_3]
 type=TREE1
 placement=random
 islands=baseland
-number=70
-groups=20
+number=35
+groups=10
 
 [OBJECT_3_T]
 type=TREE1
 placement=random
 islands=baseland
-number=10
-groups=40
+number=5
+groups=20
 
 [OBJECT_3_T5]
 type=TREE1
 placement=random
 islands=baseland
 number=5
-groups=100
+groups=40
 
 [OBJECT_3_T4]
 type=TREE1
 placement=random
 islands=baseland
 number=5
-groups=100
+groups=40
 
 [OBJECT_3_T3]
 type=TREE1
 placement=random
 islands=baseland
 number=5
-groups=100
+groups=40
 
 [OBJECT_NEAR_GOLD]
 type=GOLD
 placement=random
 obj_for_every_player=true
 number=2
+number_scaling=None
+groups_scaling=None
 groups=1
 min_distance=5
 max_distance=8
@@ -89,6 +93,8 @@ type=FORAGE
 placement=random
 obj_for_every_player=true
 number=8
+number_scaling=None
+groups_scaling=None
 groups=1
 min_distance=5
 max_distance=8
@@ -98,6 +104,8 @@ type=TREE1
 placement=random
 obj_for_every_player=true
 number=40
+number_scaling=None
+groups_scaling=None
 groups=2
 min_distance=5
 max_distance=8
@@ -107,6 +115,8 @@ type=TOWNCENTER
 placement=random
 obj_for_every_player=true
 number=1
+number_scaling=None
+groups_scaling=None
 groups=1
 min_distance=1
 max_distance=3
@@ -116,6 +126,8 @@ type=VILLAGER
 placement=random
 obj_for_every_player=true
 number=3
+number_scaling=None
+groups_scaling=None
 groups=1
 min_distance=3
 max_distance=4

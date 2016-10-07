@@ -70,7 +70,9 @@ circle: will create islands in a circle in the border constraints
 | chance               | float           | 0.3         | chance of object placement per tile      | x          | -           |
 | placement            | enum            | random      |                                          | -          | x           |
 | number               | int             | 1           |                                          | -          | x           |
+| number_scaling       | enum            | sqrt        | one of: None,linear,sqrt                 | -          | x           |
 | groups               | int             | 1           |                                          | -          | x           |
+| groups_scaling       | enum            | sqrt        | look @ number_scaling                    | -          | x           |
 | obj_for_every_player | boolean         | false       | objects will be created for every player | -          | x           |
 
 ## CONNECTION_XXX
