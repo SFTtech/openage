@@ -18,7 +18,7 @@ teams=2
 gametypes=deathmatch,conquest
 
 [MAP_SETUP]
-base_terrain=WATER
+base_terrain=DIRT
 base_x=6
 base_y=6
 
@@ -28,17 +28,9 @@ terrain=DIRT
 space_to_other_islands=4
 tiles=1004
 placement=circle
-placement_radius=0.6
+placement_radius=0.8
 placement_radius_variance=0.2
 placement_angle_variance=0.3
-
-[LAND_2]
-terrain=GRASS
-border_ne=0.4
-border_nw=0.4
-border_se=0.4
-border_sw=0.4
-labels=test
 
 [OBJECT_1]
 type=GOLD
@@ -46,11 +38,6 @@ placement=random
 islands=baseland
 number=4
 groups=8
-
-[OBJECT_T]
-type=TREE1
-fill=true
-islands=test
 
 [OBJECT_2]
 type=STONE
@@ -64,18 +51,18 @@ type=TREE1
 placement=random
 islands=baseland
 number=70
-groups=10
+groups=20
 
 [OBJECT_3_T]
 type=TREE1
 placement=random
 islands=baseland
-number=3
-groups=20
+number=10
+groups=40
 
 [OBJECT_NEAR_GOLD]
 type=GOLD
-placement=circle
+placement=random
 obj_for_every_player=true
 number=2
 groups=1
@@ -84,16 +71,25 @@ max_distance=8
 
 [OBJECT_FORAGE]
 type=FORAGE
-placement=circle
+placement=random
 obj_for_every_player=true
 number=8
 groups=1
 min_distance=5
 max_distance=8
 
+[OBJECT_WOOD]
+type=TREE1
+placement=random
+obj_for_every_player=true
+number=40
+groups=2
+min_distance=5
+max_distance=8
+
 [OBJECT_TOWNCENTER]
 type=TOWNCENTER
-placement=circle
+placement=random
 obj_for_every_player=true
 number=1
 groups=1
@@ -108,8 +104,3 @@ number=3
 groups=1
 min_distance=3
 max_distance=4
-
-[CONNECTION_1]
-type=cross
-width=3
-islands=all_players
