@@ -33,7 +33,7 @@ PyObjectRef::PyObjectRef(const PyObjectRef &other)
 }
 
 
-PyObjectRef::PyObjectRef(PyObjectRef &&other)
+PyObjectRef::PyObjectRef(PyObjectRef &&other) noexcept
 	:
 	ref{other.ref} {
 
@@ -54,7 +54,7 @@ PyObjectRef &PyObjectRef::operator =(const PyObjectRef &other) {
 }
 
 
-PyObjectRef &PyObjectRef::operator =(PyObjectRef &&other) {
+PyObjectRef &PyObjectRef::operator =(PyObjectRef &&other) noexcept {
 	if (this->ref != nullptr) {
 		py_xdecref.call(this->ref);
 	}

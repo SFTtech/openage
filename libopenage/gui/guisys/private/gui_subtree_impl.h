@@ -30,8 +30,8 @@ public:
 	explicit GuiEngineImplConnection(GuiSubtreeImpl *subtree, GuiEngineImpl *engine, const QString &source);
 	~GuiEngineImplConnection();
 
-	GuiEngineImplConnection(GuiEngineImplConnection &&cnx);
-	GuiEngineImplConnection& operator=(GuiEngineImplConnection &&cnx);
+	GuiEngineImplConnection(GuiEngineImplConnection &&cnx) noexcept;
+	GuiEngineImplConnection& operator=(GuiEngineImplConnection &&cnx) noexcept;
 
 	operator bool() const;
 

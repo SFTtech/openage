@@ -195,7 +195,7 @@ void GuiEngineImplConnection::disconnect() {
 	}
 }
 
-GuiEngineImplConnection::GuiEngineImplConnection(GuiEngineImplConnection &&cnx)
+GuiEngineImplConnection::GuiEngineImplConnection(GuiEngineImplConnection &&cnx) noexcept
 	:
 	subtree{cnx.subtree},
 	engine{cnx.engine} {
@@ -204,7 +204,7 @@ GuiEngineImplConnection::GuiEngineImplConnection(GuiEngineImplConnection &&cnx)
 	cnx.engine = nullptr;
 }
 
-GuiEngineImplConnection& GuiEngineImplConnection::operator=(GuiEngineImplConnection &&cnx) {
+GuiEngineImplConnection& GuiEngineImplConnection::operator=(GuiEngineImplConnection &&cnx) noexcept {
 	this->disconnect();
 
 	this->subtree = cnx.subtree;
