@@ -309,7 +309,7 @@ private:
 	OutputMode *active_mode;
 	int active_mode_index;
 
-	int current_player;
+	size_t current_player;
 
 public:
 	GameControlSignals gui_signals;
