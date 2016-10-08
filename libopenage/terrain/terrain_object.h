@@ -85,7 +85,7 @@ class TerrainObject : public std::enable_shared_from_this<TerrainObject> {
 public:
 	TerrainObject(Unit &u);
 	TerrainObject(const TerrainObject &) = delete;	// disable copy constructor
-	TerrainObject(TerrainObject &&) = delete;		// disable move constructor
+	TerrainObject(TerrainObject &&) = delete;	// disable move constructor
 	virtual ~TerrainObject();
 
 	/**
