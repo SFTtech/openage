@@ -149,7 +149,7 @@ private:
 	/**
 	 * engine move operator.
 	 */
-	Engine &operator=(Engine &&other);
+	Engine &operator=(Engine &&other) = delete;
 
 	// log sinks
 	std::unique_ptr<log::FileSink> logsink_file;

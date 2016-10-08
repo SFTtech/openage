@@ -45,7 +45,7 @@ class Union(FSLikeObject):
         while idx >= 0 and priority >= self.mounts[idx][2]:
             idx -= 1
 
-        self.mounts.insert(idx, (mountpoint, pathobj, priority))
+        self.mounts.insert(idx + 1, (mountpoint, pathobj, priority))
 
         # 'create' parent directories as needed.
         dirstructure = self.dirstructure
