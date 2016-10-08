@@ -122,11 +122,16 @@ public:
 
 	QString get_ability() const;
 
+	Q_INVOKABLE void act(const QString &action);
+
 signals:
 	void ability_changed();
+	void action_triggered(const std::string &ability);
+	void buttons_type_changed(const ActionButtonsType buttons_type);
 
 private slots:
 	void on_ability_changed(const std::string &ability);
+	void on_buttons_type_changed(const ActionButtonsType buttons_type);
 
 private:
 	virtual void on_core_adopted() override;

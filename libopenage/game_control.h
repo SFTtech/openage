@@ -82,13 +82,32 @@ public:
 	std::string name() const override;
 };
 
+enum class ActionButtonsType {
+	None,
+	MilitaryUnits,
+	CivilianUnits,
+	BuildMenu,
+	MilBuildMenu
+};
+
+class ActionMode;
+
 class ActionModeSignals : public QObject {
 	Q_OBJECT
 
 public:
+	explicit ActionModeSignals(ActionMode *action_mode);
+
+public slots:
+	void on_action(const std::string &action_name);
+
 signals:
 	void resource_changed(game_resource resource, int amount);
 	void ability_changed(const std::string &ability);
+	void buttons_type_changed(const ActionButtonsType type);
+
+private:
+	ActionMode *action_mode;
 };
 
 /**
@@ -105,6 +124,7 @@ public:
 	std::string name() const override;
 
 private:
+	friend ActionModeSignals;
 	/**
 	 * sends to gui the properties that it needs
 	 */
@@ -116,6 +136,11 @@ private:
 	void announce_resources();
 
 	/**
+	 * sends to gui the buttons it should use for the action buttons (if changed)
+	 */
+	void announce_buttons_type();
+
+	/**
 	 * decides which type of right mouse click command to issue based on position
 	 *
 	 * if a unit is at the position the command should target the unit,
@@ -123,6 +148,19 @@ private:
 	 */
 	Command get_action(const coord::phys3 &pos) const;
 
+	/**
+	 * used after opening the build menu
+	 */
+	InputContext build_menu_context;
+
+	/**
+	 * used after opening the military build menu
+	 */
+	InputContext build_menu_mil_context;
+
+	/**
+	 * used when selecting the building placement
+	 */
 	InputContext building_context;
 
 	/**
@@ -142,6 +180,8 @@ private:
 	coord::phys3 mousepos_phys3;
 	coord::tile mousepos_tile;
 	bool selecting;
+
+	ActionButtonsType buttons_type;
 
 	// used for random type creation
 	rng::RNG rng;

@@ -2,7 +2,7 @@
 
 """ Renaming interface assets and splitting into direvtories """
 
-from .interfacehardcoded import ingame_hud_background_index
+from .interfacehardcoded import ingame_hud_background_index, interface_asset_rename
 
 
 def interface_rename(filename):
@@ -12,4 +12,4 @@ def interface_rename(filename):
     try:
         return "interface/hud" + str(ingame_hud_background_index(filename)).zfill(4) + ".slp"
     except ValueError:
-        return filename
+        return interface_asset_rename(filename)

@@ -25,6 +25,10 @@ INTERFACE_INGAME_HUD_BACKGROUNDS = [
     51160,
 ]
 
+INTERFACE_ASSETS = {
+    '50721': 'hudactions'
+}
+
 TOP_STRIP_PATTERN_CORNERS = (400, 0, 464, 32)
 TOP_STRIP_PATTERN_SEARCH_AREA_CORNERS = (400, 0, 1024, 32)
 
@@ -59,3 +63,14 @@ def is_ingame_hud_background(filename):
         return True
     except ValueError:
         return False
+
+
+def interface_asset_rename(filename):
+    """
+    Returns a human-readable name if it's in the map.
+    """
+    try:
+        dirname_basename = re.match(r"^(.*/)(\d+)\.slp$", filename).group(1, 2)
+        return dirname_basename[0] + INTERFACE_ASSETS[dirname_basename[1]] + ".slp"
+    except (KeyError, AttributeError):
+        return filename

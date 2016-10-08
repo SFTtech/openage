@@ -49,6 +49,8 @@ public:
 	void add_unit(const Player &player, Unit *u, bool append=false);
 	void remove_unit(Unit *u);
 
+	selection_type_t get_selection_type();
+
 	/**
 	 * kill a single unit in the selection
 	 */
@@ -58,6 +60,11 @@ public:
 	 * checks whether there are any builders in the selection
 	 */
 	bool contains_builders(const Player &player);
+
+	/**
+	 * checks whether there are any military units (i.e. non-builders) in the selection
+	 */
+	bool contains_military(const Player &player);
 
 	/**
 	 * point unit selection
