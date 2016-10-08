@@ -44,10 +44,10 @@ KNOWN_SUBTEX_CORNER_COORDS = [
 
 def ingame_hud_background_index(filename):
     """
-    Index + 1 in the hardcoded list of the known ingame hud backgrounds to match the civ.
+    Index in the hardcoded list of the known ingame hud backgrounds to match the civ.
     """
     basename = re.sub(r"^interface/(\d+)\.slp$", r'\1', filename)
-    return INTERFACE_INGAME_HUD_BACKGROUNDS.index(int(basename)) + 1
+    return INTERFACE_INGAME_HUD_BACKGROUNDS.index(int(basename))
 
 
 def is_ingame_hud_background(filename):
