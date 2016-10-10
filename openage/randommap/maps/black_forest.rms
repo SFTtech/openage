@@ -12,7 +12,7 @@ y=8
 [METADATA]
 author=timohaas
 version=0.1
-name=islands
+name=Black Forest
 players=2-8
 teams=2
 gametypes=deathmatch,conquest
