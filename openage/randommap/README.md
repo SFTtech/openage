@@ -51,6 +51,7 @@ circle: will create islands in a circle in the border constraints
 | space_to_other_islands    | int             | 0       | minimum distance in tiles to other all other islands        | x                 | x                 |
 | tiles                     | int             | maxint  | ~size in tiles                                              | x                 | x                 |
 | tiles_scaling             | enum            | sqrt    | one of: None,sqrt,linear                                    | x                 | x                 |
+| basesize                  | int             | 0       | creates minimun a basesize x basesize island                | x                 | x                 |
 | placement                 | enum            | random  | one of circle,random                                        | x                 | x                 |
 | placement_radius          | float           | 0.5     | 0<radius<1 relative radius of min(x,y)                      | -                 | x                 |
 | placement_radius_variance | float           | 0.3     | radius +- variance, if 0, players will be placed in uniform | -                 | x                 |
@@ -63,18 +64,18 @@ circle: will create islands in a circle in the border constraints
 
 ## OBJECT_XXX
 
-| field                | type            | default     | info                                     | fill: true | fill: false |
-| -------------------- | --------------- | ----------- | ---------------------------------------- | ---------- | ----------- |
-| type                 | object-label    | VILLAGER    |                                          | x          | x           |
-| islands              | list of strings | all_players |                                          | x          | x           |
-| fill                 | boolean         | false       |                                          | x          | x           |
-| chance               | float           | 0.3         | chance of object placement per tile      | x          | -           |
-| placement            | enum            | random      |                                          | -          | x           |
-| number               | int             | 1           |                                          | -          | x           |
-| number_scaling       | enum            | sqrt        | one of: None,linear,sqrt                 | -          | x           |
-| groups               | int             | 1           |                                          | -          | x           |
-| groups_scaling       | enum            | sqrt        | look @ number_scaling                    | -          | x           |
-| obj_for_every_player | boolean         | false       | objects will be created for every player | -          | x           |
+| field                | type            | default     | info                                       | fill: true | fill: false |
+| -------------------- | --------------- | ----------- | ------------------------------------------ | ---------- | ----------- |
+| type                 | object-label    | VILLAGER    |                                            | x          | x           |
+| islands              | list of strings | all_players |                                            | x          | x           |
+| fill                 | boolean         | false       | the island will be filled with the object  | x          | x           |
+| chance               | float           | 0.3         | chance of object placement per tile        | x          | -           |
+| placement            | enum            | random      |                                            | -          | x           |
+| number               | int             | 1           |                                            | -          | x           |
+| number_scaling       | enum            | sqrt        | one of: None,linear,sqrt                   | -          | x           |
+| groups               | int             | 1           |                                            | -          | x           |
+| groups_scaling       | enum            | sqrt        | look @ number_scaling                      | -          | x           |
+| obj_for_every_player | boolean         | false       | objects will be created for every player   | -          | x           |
 
 ## CONNECTION_XXX
 
