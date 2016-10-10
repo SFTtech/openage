@@ -3,6 +3,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 #include "gui/integration/public/gui_application_with_logger.h"
 #include "gui/guisys/public/gui_engine.h"
@@ -15,6 +16,11 @@
 #include <vector>
 
 #include "gui/integration/public/gui_game_spec_image_provider.h"
+
+namespace openage {
+namespace shader {
+class Program;
+}} // namespace openage::shader
 
 namespace qtsdl {
 class GuiSingletonItemsInfo;
@@ -37,6 +43,10 @@ private:
 	virtual bool on_resize(coord::window new_size) override;
 	virtual bool on_input(SDL_Event *event) override;
 	virtual bool on_drawhud() override;
+
+	std::unique_ptr<shader::Program> textured_screen_quad_shader;
+	GLint tex_loc;
+	GLuint screen_quad_vbo;
 
 	GuiApplicationWithLogger application;
 	qtsdl::GuiEventQueue render_updater;

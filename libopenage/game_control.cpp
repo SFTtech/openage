@@ -41,13 +41,31 @@ void CreateMode::on_exit() {}
 
 void CreateMode::render() {}
 
+ActionModeSignals::ActionModeSignals(ActionMode *action_mode)
+	:
+	action_mode(action_mode) {
+}
+
+void ActionModeSignals::on_action(const std::string &action_name) {
+	Engine &engine = Engine::get();
+	input::action_t action = engine.get_action_manager().get(action_name);
+	input::InputContext *top_ctxt = &engine.get_input_manager().get_top_context();
+	if (top_ctxt == this->action_mode || top_ctxt == &this->action_mode->building_context ||
+	    top_ctxt == &this->action_mode->build_menu_context || top_ctxt == &this->action_mode->build_menu_mil_context) {
+		input::action_arg_t action_arg{input::Event{input::event_class::ANY, 0, input::modset_t{}},
+		                               coord::window{}, coord::window_delta{}, {action}};
+		top_ctxt->execute_if_bound(action_arg);
+	}
+}
+
 ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	:
 	OutputMode{gui_link},
 	use_set_ability{false},
 	type_focus{nullptr},
 	selecting{},
-	rng{0} {
+	rng{0},
+	gui_signals{this} {
 
 	auto &engine = Engine::get();
 
@@ -100,30 +118,86 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		selection->kill_unit(*this->game_control->get_current_player());
 	});
 
+	this->bind(action.get("BUILD_MENU"), [this](const input::action_arg_t &) {
+		log::log(MSG(dbg) << "Opening build menu");
+		Engine &engine = Engine::get();
+		engine.get_input_manager().register_context(&this->build_menu_context);
+		this->announce_buttons_type();
+	});
+
+	this->bind(action.get("BUILD_MENU_MIL"), [this](const input::action_arg_t &) {
+		log::log(MSG(dbg) << "Opening military build menu");
+		Engine &engine = Engine::get();
+		engine.get_input_manager().register_context(&this->build_menu_mil_context);
+		this->announce_buttons_type();
+	});
+
+	this->build_menu_context.bind(action.get("CANCEL"), [this](const input::action_arg_t &) {
+		Engine &engine = Engine::get();
+		engine.get_input_manager().remove_context(&this->build_menu_context);
+		this->announce_buttons_type();
+	});
+
+	this->build_menu_mil_context.bind(action.get("CANCEL"), [this](const input::action_arg_t &) {
+		Engine &engine = Engine::get();
+		engine.get_input_manager().remove_context(&this->build_menu_mil_context);
+		this->announce_buttons_type();
+	});
+
 	// Villager build commands
-	// TODO place this into separate building menus instead of global hotkeys
-	auto bind_building_key = [this](input::action_t action, int building) {
-		this->bind(action, [this, building](const input::action_arg_t &) {
+	auto bind_building_key = [this](input::action_t action, int building, input::InputContext *ctxt) {
+		ctxt->bind(action, [this, building, ctxt](const input::action_arg_t &) {
 			auto player = this->game_control->get_current_player();
 			if (this->selection->contains_builders(*player)) {
 				Engine &engine = Engine::get();
 				auto player = this->game_control->get_current_player();
 				this->type_focus = player->get_type(building);
 				if (&engine.get_input_manager().get_top_context() != &this->building_context) {
+					engine.get_input_manager().remove_context(ctxt);
 					engine.get_input_manager().register_context(&this->building_context);
+					this->announce_buttons_type();
 				}
 			}
 		});
 	};
-	bind_building_key(action.get("BUILDING_1"), 70); // House
-	bind_building_key(action.get("BUILDING_2"), 68); // Mill
-	bind_building_key(action.get("BUILDING_3"), 584); // Mining camp
-	bind_building_key(action.get("BUILDING_4"), 562); // Lumber camp
-	bind_building_key(action.get("BUILDING_5"), 12); // barracks
-	bind_building_key(action.get("BUILDING_6"), 87); // archery range
-	bind_building_key(action.get("BUILDING_7"), 101); // stable
-	bind_building_key(action.get("BUILDING_8"), 49); // siege workshop
-	bind_building_key(action.get("BUILDING_TOWN_CENTER"), 109); // Town center
+
+	bind_building_key(action.get("BUILDING_HOUS"),  70,  &this->build_menu_context); // House
+	bind_building_key(action.get("BUILDING_MILL"),  68,  &this->build_menu_context); // Mill
+	bind_building_key(action.get("BUILDING_MINE"),  584, &this->build_menu_context); // Mining Camp
+	bind_building_key(action.get("BUILDING_SMIL"),  562, &this->build_menu_context); // Lumber Camp
+	bind_building_key(action.get("BUILDING_DOCK"),  47,  &this->build_menu_context); // Dock
+	// TODO: Doesn't show until it is placed
+	bind_building_key(action.get("BUILDING_FARM"),  50,  &this->build_menu_context); // Farm
+	bind_building_key(action.get("BUILDING_BLAC"),  103, &this->build_menu_context); // Blacksmith
+	bind_building_key(action.get("BUILDING_MRKT"),  84,  &this->build_menu_context); // Market
+	bind_building_key(action.get("BUILDING_CRCH"),  104, &this->build_menu_context); // Monastery
+	bind_building_key(action.get("BUILDING_UNIV"),  209, &this->build_menu_context); // University
+	bind_building_key(action.get("BUILDING_RTWC"),  109, &this->build_menu_context); // Town Center
+	bind_building_key(action.get("BUILDING_WNDR"),  276, &this->build_menu_context); // Wonder
+
+	bind_building_key(action.get("BUILDING_BRKS"),  12,  &this->build_menu_mil_context); // Barracks
+	bind_building_key(action.get("BUILDING_ARRG"),  87,  &this->build_menu_mil_context); // Archery Range
+	bind_building_key(action.get("BUILDING_STBL"),  101, &this->build_menu_mil_context); // Stable
+	bind_building_key(action.get("BUILDING_SIWS"),  49,  &this->build_menu_mil_context); // Siege Workshop
+	bind_building_key(action.get("BUILDING_WCTWX"), 598, &this->build_menu_mil_context); // Outpost
+	// TODO for palisade and stone wall: Drag walls, automatically adjust orientation
+	// TODO: This just cycles through all palisade textures
+	bind_building_key(action.get("BUILDING_WALL"),  72,  &this->build_menu_mil_context); // Palisade Wall
+	// TODO: Fortified wall has a different ID
+	bind_building_key(action.get("BUILDING_WALL2"), 117, &this->build_menu_mil_context); // Stone Wall
+	// TODO: Upgraded versions have different IDs
+	bind_building_key(action.get("BUILDING_WCTW"),  79,  &this->build_menu_mil_context); // Watch Tower
+	bind_building_key(action.get("BUILDING_WCTW4"), 236, &this->build_menu_mil_context); // Bombard Tower
+	// TODO: Gate placement - 659 is horizontal closed
+	bind_building_key(action.get("BUILDING_GTCA2"), 659, &this->build_menu_mil_context); // Gate
+	bind_building_key(action.get("BUILDING_CSTL"),  82,  &this->build_menu_mil_context); // Castle
+
+	this->building_context.bind(action.get("CANCEL"), [this](const input::action_arg_t &) {
+		Engine &engine = Engine::get();
+		engine.get_input_manager().remove_context(&this->building_context);
+		this->announce_buttons_type();
+		this->type_focus = nullptr;
+	});
 
 	auto bind_build = [this](input::action_t action, const bool increase) {
 		this->building_context.bind(action, [this, increase](const input::action_arg_t &arg) {
@@ -135,6 +209,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 			if (!increase) {
 				this->type_focus = nullptr;
 				Engine::get().get_input_manager().remove_context(&this->building_context);
+				this->announce_buttons_type();
 			}
 		});
 	};
@@ -149,6 +224,13 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 			Terrain *terrain = engine.get_game()->terrain.get();
 			this->selection->drag_update(mousepos_camgame);
 			this->selection->drag_release(*this->game_control->get_current_player(), terrain, increase);
+			InputContext *top_ctxt = &engine.get_input_manager().get_top_context();
+			if ((this->selection->get_selection_type() != selection_type_t::own_units ||
+			    this->selection->contains_military(*this->game_control->get_current_player())) &&
+			    (top_ctxt == &this->build_menu_context || top_ctxt == &this->build_menu_mil_context)) {
+				engine.get_input_manager().remove_context(top_ctxt);
+			}
+			this->announce_buttons_type();
 		});
 	};
 
@@ -160,6 +242,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 			// right click can cancel building placement
 			this->type_focus = nullptr;
 			Engine::get().get_input_manager().remove_context(&this->building_context);
+			this->announce_buttons_type();
 		}
 		auto mousepos_camgame = arg.mouse.to_camgame();
 		auto mousepos_phys3 = mousepos_camgame.to_phys3();
@@ -207,6 +290,17 @@ bool ActionMode::available() const {
 void ActionMode::on_enter() {}
 
 void ActionMode::on_exit() {
+	// Since on_exit is called after removing the active mode, if the top context isn't the global one then it must
+	// be either a build menu or the building context
+	auto *input_manager = &Engine::get().get_input_manager();
+	InputContext *top_ctxt = &input_manager->get_top_context();
+	if (top_ctxt != &input_manager->get_global_context()) {
+		if (top_ctxt == &this->building_context) {
+			this->type_focus = nullptr;
+		}
+		input_manager->remove_context(top_ctxt);
+		this->announce_buttons_type();
+	}
 	this->selecting = false;
 }
 
@@ -291,6 +385,28 @@ void ActionMode::announce_resources() {
 			auto resource_type = static_cast<game_resource>(i - 1);
 			emit this->gui_signals.resource_changed(resource_type, static_cast<int>(player->amount(resource_type)));
 		}
+	}
+}
+
+void ActionMode::announce_buttons_type() {
+	ActionButtonsType buttons_type;
+	InputContext *top_ctxt = &Engine::get().get_input_manager().get_top_context();
+	if (top_ctxt == &this->build_menu_context) {
+		buttons_type = ActionButtonsType::BuildMenu;
+	} else if (top_ctxt == &this->build_menu_mil_context) {
+		buttons_type = ActionButtonsType::MilBuildMenu;
+	} else if (top_ctxt == &this->building_context ||
+	           this->selection->get_selection_type() != selection_type_t::own_units) {
+		buttons_type = ActionButtonsType::None;
+	} else if (this->selection->contains_military(*this->game_control->get_current_player())) {
+		buttons_type = ActionButtonsType::MilitaryUnits;
+	} else {
+		buttons_type = ActionButtonsType::CivilianUnits;
+	}
+
+	if (buttons_type != this->buttons_type) {
+		this->buttons_type = buttons_type;
+		emit this->gui_signals.buttons_type_changed(buttons_type);
 	}
 }
 
@@ -496,24 +612,26 @@ void GameControl::set_engine(Engine *engine) {
 		});
 
 		// Switching between players with the 1-8 keys
-		auto bind_player_switch = [this, &global_input_context](input::action_t action, int player_index) {
+		auto bind_player_switch = [this, &global_input_context](input::action_t action, size_t player_index) {
 			global_input_context.bind(action, [this, player_index](const input::action_arg_t &) {
-				if (this->current_player != player_index) {
-					this->current_player = player_index;
-					this->announce_current_player_name();
-				}
+				if (this->current_player != player_index)
+					if (auto game = this->engine->get_game())
+						if (player_index < game->players.size()) {
+							this->current_player = player_index;
+							this->announce_current_player_name();
+						}
 			});
 
 		};
 
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_1"), 1);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_2"), 2);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_3"), 3);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_4"), 4);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_5"), 5);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_6"), 6);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_7"), 7);
-		bind_player_switch(action.get("SWITCH_TO_PLAYER_8"), 8);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_1"), 0);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_2"), 1);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_3"), 2);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_4"), 3);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_5"), 4);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_6"), 5);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_7"), 6);
+		bind_player_switch(action.get("SWITCH_TO_PLAYER_8"), 7);
 
 		this->engine->announce_global_binds();
 	}

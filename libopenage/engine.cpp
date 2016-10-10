@@ -248,6 +248,8 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 Engine::~Engine() {
 	this->profiler.unregister_all();
 
+	this->gui.reset();
+
 	delete this->job_manager;
 	SDL_GL_DeleteContext(glcontext);
 	SDL_DestroyWindow(window);

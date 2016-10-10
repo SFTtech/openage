@@ -54,7 +54,7 @@ public:
 	/**
 	 * Move-constructs from an other PyObjectRef.
 	 */
-	PyObjectRef(PyObjectRef &&other);
+	PyObjectRef(PyObjectRef &&other) noexcept;
 
 	/**
 	 * Assigns from an other PyObjectRef
@@ -66,7 +66,7 @@ public:
 	 * Move-assigns from an other PyObject
 	 * (calls Py_XDECREF on the old value).
 	 */
-	PyObjectRef &operator =(PyObjectRef &&other);
+	PyObjectRef &operator =(PyObjectRef &&other) noexcept;
 
 	/**
 	 * Destroys the object, calls Py_XDECREF.

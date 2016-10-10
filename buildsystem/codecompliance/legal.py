@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """
 Checks the legal headers of all files.
@@ -46,6 +46,7 @@ EXTENSIONS_REQUIRING_LEGAL_HEADERS = {
     '.h', '.cpp', '.py', '.pyx', 'pxi', ".cmake",
     '.h.in', '.cpp.in', '.py.in',
     '.h.template', '.cpp.template', '.py.template',
+    '.qml'
 }
 
 
