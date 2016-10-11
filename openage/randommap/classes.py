@@ -76,6 +76,12 @@ class Map:
         for island in self.islands:
             if name in island.labels:
                 return island
+
+    def getLandByPlayerId(self,playerid):
+        for island in self.islands:
+            if island.player == playerid:
+                return island
+
         return None
 
 
@@ -85,7 +91,7 @@ class Players:
         team_count = len(list(set(players)))
         self.teams = [[] for i in range(team_count)]
         for i in range(self.players):
-            self.teams[players[i]].append(i)
+            self.teams[players[i]].append(i+1)
 
 
 class Tile:

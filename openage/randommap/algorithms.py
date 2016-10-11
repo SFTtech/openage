@@ -7,6 +7,7 @@ import random
 import pprint
 import terrain as o
 import sys
+import itertools
 
 
 def floodfill(m, islands, constraints, debug=False):
@@ -204,8 +205,7 @@ def createIslands(config, m):
                 # get a copy, so we dont mess up the team to player assigment
                 teams = m.players.teams.copy()
                 random.shuffle(teams)
-                players = [(val + 1) for sublist in teams for val in sublist]
-                print(players)
+                players = [val for sublist in teams for val in sublist]
 
             for player in range(len(players)):
                 # all player will be put in a circle
@@ -228,7 +228,6 @@ def createIslands(config, m):
                 tile         = m.get(x, y)
                 tile.island  = 0
                 tile.terrain = landconfig["terrain"]
-                print(players[player])
                 islands.append(classes.Island(island_id,
                                               m,
                                               x,
@@ -412,6 +411,27 @@ def createSingleConnection(conn, m, island_0, island_1):
             m.get(tile.x, tile.y + i).terrain = conn["substitute"][m.get(tile.x, tile.y + i).terrain]
 
 
+def createMultipleIslandConnection(conn,m,islands):
+    # travelling salesman problem: shortest path between islands
+    # complexity: N!
+    path = range(len(islands))
+    cost = sys.maxsize
+    for permutation in itertools.permutations(range(len(islands))):
+        c = 0
+        newpath = permutation
+        for i in range(1,len(permutation)):
+            island_0 = islands[permutation[i-1]]
+            island_1 = islands[permutation[i]]
+            tile_0 = m.get(island_0.x, island_0.y)
+            tile_1 = m.get(island_1.y, island_1.y)
+            c += tile_0.distance(tile_1)
+        if c <= cost:
+            path = newpath
+
+    # found path, create connection between islands
+    for i in range(1,len(path)):
+        createSingleConnection(conn, m, islands[i - 1], islands[i])
+
 def createConnection(config, m):
     # every connection
     for conn in config["CONNECTION"]:
@@ -438,6 +458,11 @@ def createConnection(config, m):
                     island_0 = m.getLandByName(conn["islands"][i])
                     island_1 = m.getLandByName(conn["islands"][j])
                     createSingleConnection(conn, m, island_0, island_1)
+
+        if conn["type"] == "team":
+            for team in m.players.teams:
+                islands = list(map(lambda playerid: m.getLandByPlayerId(playerid),team))
+                createMultipleIslandConnection(conn,m,islands)
 
 
 def astern(startNode, endNode, map, debug=False):
