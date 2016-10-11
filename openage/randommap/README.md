@@ -44,23 +44,22 @@ random: will create an island startpoint between the border constraints
 
 circle: will create islands in a circle in the border constraints
 
-| field                     | type            | default | info                                                        | placement: random | placement: circle |
-| ------------------------- | --------------- | ------- | ----------------------------------------------------------- | ----------------- | ----------------- |
-| player_lands              | boolean         | false   | makes island for all players                                | -                 | x                 |
-| terrain                   | TERRAIN-TYPE    | GRASS   |                                                             | x                 | x                 |
-| space_to_other_islands    | int             | 0       | minimum distance in tiles to other all other islands        | x                 | x                 |
-| tiles                     | int             | maxint  | ~size in tiles                                              | x                 | x                 |
-| tiles_scaling             | enum            | sqrt    | one of: None,sqrt,linear                                    | x                 | x                 |
-| basesize                  | int             | 0       | creates minimun a basesize x basesize island                | x                 | x                 |
-| placement                 | enum            | random  | one of circle,random                                        | x                 | x                 |
-| placement_radius          | float           | 0.5     | 0<radius<1 relative radius of min(x,y)                      | -                 | x                 |
-| placement_radius_variance | float           | 0.3     | radius +- variance, if 0, players will be placed in uniform | -                 | x                 |
-| placement_angle_variance  | float           | 0.3     | 0<variance<1, if 0, players will be placed in uniform       | -                 | x                 |
-| labels                    | list of strings | [ ]     | creates automatic labels for player_lands: _player_1        | x                 | x                 |
-| border_ne                 | float           | 0       | 0<=border<=1 distance from ne border                        | x                 | x                 |
-| border_nw                 | float           | 0       | 0<=border<=1 distance from nw border                        | x                 | x                 |
-| border_se                 | float           | 0       | 0<=border<=1 distance from se border                        | x                 | x                 |
-| border_sw                 | float           | 0       | 0<=border<=1 distance from sw border                        | x                 | x                 |
+| field                     | type            | default | info                                                        | placement: random | placement: (team_)circle |
+| ------------------------- | --------------- | ------- | ----------------------------------------------------------- | ----------------- | -----------------        |
+| player_lands              | boolean         | false   | makes island for all players                                | -                 | x                        |
+| terrain                   | TERRAIN-TYPE    | GRASS   |                                                             | x                 | x                        |
+| space_to_other_islands    | int             | 0       | minimum distance in tiles to other all other islands        | x                 | x                        |
+| tiles                     | int             | maxint  | ~size in tiles                                              | x                 | x                        |
+| tiles_scaling             | enum            | sqrt    | one of: None,sqrt,linear                                    | x                 | x                        |
+| placement                 | enum            | random  | one of circle,team_cicle,random                             | x                 | x                        |
+| placement_radius          | float           | 0.5     | 0<radius<1 relative radius of min(x,y)                      | -                 | x                        |
+| placement_radius_variance | float           | 0.3     | radius +- variance, if 0, players will be placed in uniform | -                 | x                        |
+| placement_angle_variance  | float           | 0.3     | 0<variance<1, if 0, players will be placed in uniform       | -                 | x                        |
+| labels                    | list of strings | [ ]     | creates automatic labels for player_lands: _player_1        | x                 | x                        |
+| border_ne                 | float           | 0       | 0<=border<=1 distance from ne border                        | x                 | x                        |
+| border_nw                 | float           | 0       | 0<=border<=1 distance from nw border                        | x                 | x                        |
+| border_se                 | float           | 0       | 0<=border<=1 distance from se border                        | x                 | x                        |
+| border_sw                 | float           | 0       | 0<=border<=1 distance from sw border                        | x                 | x                        |
 
 ## OBJECT_XXX
 
