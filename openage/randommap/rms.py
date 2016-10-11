@@ -35,10 +35,10 @@ def generate(filename, players, gametype, mapscale, seed):
     config = algo.loadConfiguration(config)
 
     # make teams
-    # TODO
+    players = classes.Players(players)
 
     # create map and tiles
-    map = classes.Map(config["GAME_SETUP"]["x"], config["GAME_SETUP"]["y"], terrain=config["MAP_SETUP"]["base_terrain"])
+    map = classes.Map(config["GAME_SETUP"]["x"], config["GAME_SETUP"]["y"], terrain=config["MAP_SETUP"]["base_terrain"], players=players)
 
     # generate islands startpoints and constraints
     (islands, constraints) = algo.createIslands(config, map)
@@ -62,4 +62,4 @@ def generate(filename, players, gametype, mapscale, seed):
 
 if __name__ == "__main__":
 
-    generate("maps/black_forest.rms", [0, 0, 0, 0, 0, 0], "conquest", 6, 42)
+    generate("maps/islands.rms", [0, 1, 0, 1, 0, 0], "conquest", 6, 42)

@@ -6,9 +6,10 @@ import terrain as o
 
 
 class Map:
-    def __init__(self, x, y, terrain=0):
+    def __init__(self, x, y, terrain=0, players=None):
         self.x       = x * 16
         self.y       = y * 16
+        self.players = players
         self.terrain = terrain
         self.islands = []
         self.data    = [[Tile(xx, yy, self, island=0, terrain=self.terrain) for yy in range(self.y)] for xx in range(self.x)]
@@ -76,6 +77,15 @@ class Map:
             if name in island.labels:
                 return island
         return None
+
+
+class Players:
+    def __init__(self, players):
+        self.players = len(players)
+        team_count = len(list(set(players)))
+        self.teams = [[] for i in range(team_count)]
+        for i in range(self.players):
+            self.teams[players[i]].append(i)
 
 
 class Tile:

@@ -190,20 +190,35 @@ def createIslands(config, m):
         offset_miny = int(landconfig["border_nw"] * m.y)
         offset_maxy = int((1 - landconfig["border_se"]) * m.y) - 1
 
+        # create multiple islands
         if landconfig["player_lands"] is True:
-            for player in range(1, config["GAME_SETUP"]["players"] + 1):
+            # random circle
+            players = list(range(1, m.players.players + 1))
+            random.shuffle(players)
+
+            # random team_circle
+            if landconfig["placement"] == "team_circle":
+                # shuffle player in team
+                for team in m.players.teams:
+                    random.shuffle(team)
+                # get a copy, so we dont mess up the team to player assigment
+                teams = m.players.teams.copy()
+                random.shuffle(teams)
+                players = [(val + 1) for sublist in teams for val in sublist]
+                print(players)
+
+            for player in range(len(players)):
                 # all player will be put in a circle
-                if landconfig["placement"] == "circle":
-                    r = min(config["GAME_SETUP"]["x"], config["GAME_SETUP"]["y"])
-                    r = r * 16 / 2
-                    maxplayers = config["GAME_SETUP"]["players"]
+                if landconfig["placement"] == "circle" or landconfig["placement"] == "team_circle":
+                    r = min(m.x, m.y) / 2
+                    maxplayers = m.players.players
                     radius = landconfig["placement_radius"]
                     radius += 2 * landconfig["placement_radius_variance"] * random.random() - landconfig["placement_radius_variance"]
                     radius = max(0.1, radius)
                     radius = min(0.9, radius)
 
                     anglex = player / maxplayers + (random.random() * landconfig["placement_angle_variance"] / maxplayers)
-                    angley = player / maxplayers
+                    angley = player / maxplayers + (random.random() * landconfig["placement_angle_variance"] / maxplayers)
 
                     x = int(r + radius * r * math.sin(2 * math.pi * anglex))
                     y = int(r + radius * r * math.cos(2 * math.pi * angley))
@@ -213,17 +228,19 @@ def createIslands(config, m):
                 tile         = m.get(x, y)
                 tile.island  = 0
                 tile.terrain = landconfig["terrain"]
+                print(players[player])
                 islands.append(classes.Island(island_id,
                                               m,
                                               x,
                                               y,
                                               terrain = landconfig["terrain"],
-                                              labels=["_player_" + str(player)] + landconfig["labels"],
+                                              labels=["_player_" + str(players[player])] + landconfig["labels"],
                                               tiles=[tile],
-                                              player=player))
+                                              player=players[player]))
 
                 constraints += createConstraints(config, landconfig, m, islands[-1])
                 island_id   += 1
+        # create a single island
         else:
             x = random.randrange(offset_minx, offset_maxx)
             y = random.randrange(offset_miny, offset_maxy)
