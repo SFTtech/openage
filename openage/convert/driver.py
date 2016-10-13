@@ -124,7 +124,7 @@ def get_blendomatic_data(srcdir):
 
 
 def get_gamespec(srcdir, dont_pickle):
-    """ reads empires.dat """
+    """ reads empires.dat and fixes it """
 
     cache_file = os.path.join(gettempdir(), "empires2_x1_p1.dat.pickle")
 

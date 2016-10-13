@@ -53,7 +53,7 @@ class DataMember:
 
     def get_empty_value(self):
         """
-        when this data field is not filled, use the retured value instead.
+        when this data field is not filled, use the returned value instead.
         """
         return 0
 
