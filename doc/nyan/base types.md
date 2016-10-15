@@ -51,13 +51,6 @@ Resource():
 	name : text
 	icon : file
 
-#do these 4 really belong in the engine?
-Gold(Resource)
-Food
-...
-...
-
-
 Building():
 	name : text
 
