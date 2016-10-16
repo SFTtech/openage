@@ -46,6 +46,9 @@ def generate(filename, players, gametype, mapscale, seed):
     # radom floodfill (island expansion)
     algo.floodfill(map, islands, constraints)
 
+    # make basesize
+    algo.makeBasesize(map)
+
     # do automatic deep water
     algo.deep_water(map, config)
 

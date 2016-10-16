@@ -153,13 +153,14 @@ class Tile:
 
 
 class Island:
-    def __init__(self, id, map, x, y, terrain, labels=[], tiles=[], player=0):
+    def __init__(self, id, map, x, y, terrain, labels=[], tiles=[], player=0, basesize=0):
         self.id = id
         self.player = player
         self.labels = labels
         self.terrain = terrain
         self.map = map
         self.tiles = tiles
+        self.basesize = basesize
         # startpoint for expansion
         self.x = x
         self.y = y

@@ -1,0 +1,15 @@
+[MAP_SETUP]
+base_terrain=WATER
+base_x = 4
+base_y = 4
+
+[LAND_PLAYER]
+player_lands=true
+placement=team_circle
+tiles=100
+space_to_other_islands=5
+basesize=5
+
+[CONNECTION_a]
+type=team
+width=3

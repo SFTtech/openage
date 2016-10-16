@@ -41,6 +41,15 @@ def floodfill(m, islands, constraints, debug=False):
             queues[i].extend(tile.getNeighbours())
 
 
+def makeBasesize(map):
+    for island in map.islands:
+        for x in range(-island.basesize,island.basesize):
+            for y in range(-island.basesize,island.basesize):
+                if island.x + x < 0 or island.y + y < 0 or island.x +x >= map.x or island.x + y >= map.y:
+                    continue
+                map.get(island.x + x, island.y + y).terrain = map.get(island.x, island.y).terrain
+
+
 def deep_water(map, config):
     if config["MAP_SETUP"]["deep_water"] is False:
         return
@@ -102,6 +111,7 @@ def loadConfiguration(config):
             "space_to_other_islands":     int(config[section].get("space_to_other_islands", 0)),
             "tiles":                      int(config[section].get("tiles", sys.maxsize)),
             "tiles_scaling":              config[section].get("tiles_scaling", "sqrt"),
+            "basesize":                   int(config[section].get("basesize", 0)),
             "border_se":                  float(config[section].get("border_se", 0)),
             "border_sw":                  float(config[section].get("border_sw", 0)),
             "border_ne":                  float(config[section].get("border_ne", 0)),
@@ -265,7 +275,8 @@ def createIslands(config, m):
                                               terrain = landconfig["terrain"],
                                               labels=["_player_" + str(players[player])] + landconfig["labels"],
                                               tiles=[tile],
-                                              player=players[player]))
+                                              player=players[player],
+                                              basesize=landconfig["basesize"]))
 
                 constraints += createConstraints(config, landconfig, m, islands[-1])
                 island_id   += 1
@@ -282,7 +293,8 @@ def createIslands(config, m):
                                           y,
                                           terrain=landconfig["terrain"],
                                           labels=landconfig["labels"],
-                                          tiles=[tile]))
+                                          tiles=[tile],
+                                          basesize=landconfig["basesize"]))
             constraints += createConstraints(config, landconfig, m, islands[-1])
             island_id += 1
 
