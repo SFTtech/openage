@@ -51,10 +51,10 @@ team_circle: will create islands in a circle and teammates are next to each othe
 
 
 | field                     | type            | default | info                                                               | placement: random | placement: (team_)circle |
-| ------------------------- | --------------- | ------- | -----------------------------------------------------       ------ | ----------------- | -----------------        |
+| ------------------------- | --------------- | ------- | ------------------------------------------------------------------ | ----------------- | ------------------------ |
 | player_lands              | boolean         | false   | makes island for all players                                       | -                 | x                        |
 | terrain                   | TERRAIN-TYPE    | GRASS   |                                                                    | x                 | x                        |
-| basesize                  | int             | 0       | minimum size of baseland, island core must be basesize from border | x                 | y                        |
+| basesize                  | int             | 0       | minimum size of baseland, island core must be basesize from border | x                 | x                        |
 | space_to_other_islands    | int             | 0       | minimum distance in tiles to other all other islands               | x                 | x                        |
 | tiles                     | int             | maxint  | ~size in tiles                                                     | x                 | x                        |
 | tiles_scaling             | enum            | sqrt    | one of: None,sqrt,linear                                           | x                 | x                        |
