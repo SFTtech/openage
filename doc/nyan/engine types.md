@@ -1,5 +1,5 @@
-Base types
-==========
+Engine types
+============
 
 These types are defined by the openage engine. Every nyan object in the game
 eventually inherits from one or more of these types.
