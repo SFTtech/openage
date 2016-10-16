@@ -43,9 +43,9 @@ def floodfill(m, islands, constraints, debug=False):
 
 def makeBasesize(map):
     for island in map.islands:
-        for x in range(-island.basesize,island.basesize):
-            for y in range(-island.basesize,island.basesize):
-                if island.x + x < 0 or island.y + y < 0 or island.x +x >= map.x or island.x + y >= map.y:
+        for x in range(-island.basesize, island.basesize):
+            for y in range(-island.basesize, island.basesize):
+                if island.x + x < 0 or island.y + y < 0 or island.x + x >= map.x or island.x + y >= map.y:
                     continue
                 map.get(island.x + x, island.y + y).terrain = map.get(island.x, island.y).terrain
 
