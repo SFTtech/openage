@@ -61,7 +61,7 @@ ResourceSpot():
 
 	resource : Resource
 	amount : int # initial amount
-	droprate : float # in units per second.
+	decay : float # in units per second.
 
 
 Building(Unit): # WIP: make another parent Object for Building?
