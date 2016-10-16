@@ -15,6 +15,8 @@ class Map:
         self.data    = [[Tile(xx, yy, self, island=0, terrain=self.terrain) for yy in range(self.y)] for xx in range(self.x)]
 
     def get(self, x, y):
+        if x >= self.x or y >= self.y or x < 0 or y <0:
+            return None
         return self.data[x][y]
 
     def set(self, x, y, value):

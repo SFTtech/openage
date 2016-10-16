@@ -41,16 +41,46 @@ def floodfill(m, islands, constraints, debug=False):
             queues[i].extend(tile.getNeighbours())
 
 
+def deep_water(map, config):
+    if config["MAP_SETUP"]["deep_water"] == False:
+        return
+
+    for x in range(map.x):
+        for y in range(map.y):
+            tile = map.get(x,y)
+            if tile.terrain != o.terrain["WATER"]:
+                continue
+            radius = config["MAP_SETUP"]["deep_water_distane"]
+            isDeepWater = True
+            for delta_x in range(-radius,radius):
+                for delta_y in range(-radius,radius):
+                    # in circle?
+                    if delta_x **2 + delta_y **2 <= radius ** 2:
+                        continue
+                    # on the map?
+                    if x + delta_x < 0 or y + delta_y < 0 or y + delta_y >= map.y or x + delta_x >= map.x:
+                        continue
+                    tile = map.get(x + delta_x, y + delta_y)
+                    # is surrounded by water or deep water?
+                    if tile.terrain == o.terrain["DEEP_WATER"] or tile.terrain == o.terrain["WATER"]:
+                        continue
+                    isDeepWater = False
+            if isDeepWater == True:
+                map.get(x,y).terrain = o.terrain["DEEP_WATER"]
+
+
 # adds default paramenters
 def loadConfiguration(config):
     c = {"GAME_SETUP": {}, "MAP_SETUP": {}, "LAND": [], "OBJECT": [], "CONNECTION": []}
 
     # map setup
-    c["MAP_SETUP"]["base_terrain"] = o.terrain[config["MAP_SETUP"].get("base_terrain", "GRASS")]
-    c["MAP_SETUP"]["base_x"]       = int(config["MAP_SETUP"].get("base_x", 7))
-    c["MAP_SETUP"]["base_y"]       = int(config["MAP_SETUP"].get("base_y", 7))
-    c["MAP_SETUP"]["x_scaling"]    = config["MAP_SETUP"].get("x_scaling", "sqrt")
-    c["MAP_SETUP"]["y_scaling"]    = config["MAP_SETUP"].get("y_scaling", "sqrt")
+    c["MAP_SETUP"]["base_terrain"]        = o.terrain[config["MAP_SETUP"].get("base_terrain", "GRASS")]
+    c["MAP_SETUP"]["base_x"]              = int(config["MAP_SETUP"].get("base_x", 7))
+    c["MAP_SETUP"]["base_y"]              = int(config["MAP_SETUP"].get("base_y", 7))
+    c["MAP_SETUP"]["x_scaling"]           = config["MAP_SETUP"].get("x_scaling", "sqrt")
+    c["MAP_SETUP"]["y_scaling"]           = config["MAP_SETUP"].get("y_scaling", "sqrt")
+    c["MAP_SETUP"]["deep_water"]          = config["MAP_SETUP"].getboolean("deep_water",True)
+    c["MAP_SETUP"]["deep_water_distane"]  = int(config["MAP_SETUP"].get("deep_water_distance",10))
 
     # game setup
     c["GAME_SETUP"]["gametype"] = config["GAME_SETUP"]["gametype"]

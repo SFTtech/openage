@@ -46,6 +46,9 @@ def generate(filename, players, gametype, mapscale, seed):
     # radom floodfill (island expansion)
     algo.floodfill(map, islands, constraints)
 
+    # do automatic deep water
+    algo.deep_water(map, config)
+
     # all tiles which are not assigned to an island is a baseland
     algo.createBaseIsland(map)
 

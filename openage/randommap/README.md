@@ -29,13 +29,15 @@ this is only used for displaying ingame, it has no influence over map generation
 
 ### MAP_SETUP
 
-| field        | type         | default | info                                        |
-| ------------ | ------------ | ------- | ------------------------------------------- |
-| base_terrain | TERRAIN-TYPE | GRASS   |                                             |
-| base_x       | int          | 7       | x base size + number of players = x mapsize |
-| base_y       | int          | 7       | y base size + number of players = y mapsize |
-| x_scaling    | enum         | sqrt    | one of: None,sqrt,linear, how does x scale with mapscale, sqrt: x_base * sqrt(mapscale), linear: x_base + mapscale |
-| y_scaling    | enum         | sqrt    | look @ x_scaling                            |
+| field               | type         | default | info                                        |
+| ------------        | ------------ | ------- | ------------------------------------------- |
+| base_terrain        | TERRAIN-TYPE | GRASS   |                                             |
+| base_x              | int          | 7       | x base size + number of players = x mapsize |
+| base_y              | int          | 7       | y base size + number of players = y mapsize |
+| x_scaling           | enum         | sqrt    | one of: None,sqrt,linear, how does x scale with mapscale, sqrt: x_base * sqrt(mapscale), linear: x_base + mapscale |
+| y_scaling           | enum         | sqrt    | look @ x_scaling                            |
+| deep_water          | boolean      | true    | automatic deep water creation               |
+| deep_water_distance | int          | 10      | distance to island for deep water           |
 
 ### LAND_XXX
 every LAND_XXX must be a unique string, if constraints like border can not be statisfied with the placement type the behavior is undefined
@@ -44,6 +46,10 @@ random: will create an island startpoint between the border constraints
 
 circle: will create islands in a circle in the border constraints
 
+team_circle: will create islands in a circle and teammates are next to each other and in the border constraints
+
+
+
 | field                     | type            | default | info                                                        | placement: random | placement: (team_)circle |
 | ------------------------- | --------------- | ------- | ----------------------------------------------------------- | ----------------- | -----------------        |
 | player_lands              | boolean         | false   | makes island for all players                                | -                 | x                        |
@@ -51,7 +57,7 @@ circle: will create islands in a circle in the border constraints
 | space_to_other_islands    | int             | 0       | minimum distance in tiles to other all other islands        | x                 | x                        |
 | tiles                     | int             | maxint  | ~size in tiles                                              | x                 | x                        |
 | tiles_scaling             | enum            | sqrt    | one of: None,sqrt,linear                                    | x                 | x                        |
-| placement                 | enum            | random  | one of circle,team_cicle,random                             | x                 | x                        |
+| placement                 | enum            | random  | one of circle,team_circle,random,                           | x                 | x                        |
 | placement_radius          | float           | 0.5     | 0<radius<1 relative radius of min(x,y)                      | -                 | x                        |
 | placement_radius_variance | float           | 0.3     | radius +- variance, if 0, players will be placed in uniform | -                 | x                        |
 | placement_angle_variance  | float           | 0.3     | 0<variance<1, if 0, players will be placed in uniform       | -                 | x                        |
