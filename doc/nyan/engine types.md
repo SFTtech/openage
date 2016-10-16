@@ -46,23 +46,50 @@ HUDElement():
 Tech(Update, HUDElement):
 
 
+Unit(): # WIP
+	# Everything that has a location ingame.
+
+	hp : float
 
 Resource():
 	name : text
 	icon : file
 
-Building():
+ResourceSpot():
+	# Anything with 'resource' in GatherAbility.allowedResource can gather this.
+	# WIP: since this has a location ingame, make this inherit from Unit? or make e.g. Goldmine(Unit, ResourceSpot)?
+
+	resource : Resource
+	amount : int # initial amount
+	droprate : float # in units per second.
+
+
+Building(Unit): # WIP: make another parent Object for Building?
 	name : text
+
+
+Animation(): # or Sprite() ?
+	# Everything that needs to be animated inherits from this class.
+
+	image : file # one picture that contains all frames or, if a directory,
+                 # contains all frames. # WIP5: naming scheme?
+
+#	metainfo : file # WIP6: how to read `animation'? describes, where in the big picture `animation' which frames are; whether to potentially mirror them.
+	                # possibilities: 1. $renameMe is a regular file: description of `animation' (syntax?)
+	                # 2. replace `renameMe' by more fields that describe `animation' (ugly imo, but maybe the best way)
+	                # 3. remove `renameMe':
+	                #    if $animation is a directory: look for '$animation/animate.nfo'
+	                #    else: look for "$(basename $animation png)nfo"
 
 Ability(): # WIP
 	# Every unit (WIP: or even buildings, see 'CarryAbility',castles... ), that can do something, has an 'Ability'.
 	# WIP: what members belong here?
 
-HUDAbility(Ability): # WIP
-	# Creates a button on the left of the HUD. For Trebuchet packing and unpacking, unit patrol, formations.
-	name : text
-	description : text
-MoveAbility(Ability):
+HUDAbility(Ability, HUDElement): # WIP
+	# Creates a button on the left of the HUD. For Trebuchet packing and
+	# unpacking, unloading units or relics. Maybe even unit patrol andformations.
+
+MoveAbility(Ability, Animation):
 	# You want to move? Use this class.
 
 	speed : float
@@ -75,9 +102,8 @@ CooldownAbility(Ability):
 	# after recharge_time in seconds.
 	recharge_time : float
 
-GatherAbility(Ability): # WIP
+GatherAbility(Ability, Animation): # WIP
 	# Gathering resources requires this Ability
-	# WIP1: do we need a member for the current amount and type of resource here? or is that only inside the engine?
 
 	allowedResource : set(Resource) # Allowed ressources?
 	maxAmount : int # maximum amount  that can be carried
@@ -90,28 +116,26 @@ GatherAbility(Ability): # WIP
 
 	# WIP3: if WIP2 is not possible: implement an 'Ability' that allows to gather only one resource.
 	# A worker would then need 4 gather abilities added to it's 'abilities' set.
-	# And this would allow to reference
-
-	# WIP4: how do we reference Animations?
-#	animation : file # one picture that contains all frames or, if a directory,
-	                # contains all frames. # WIP5: naming scheme?
-#	renameMe : file # WIP6: how to read `animation'? describes, where in the big picture `animation' which frames are; whether to potentially mirror them.
-	                # possibilities: 1. $renameMe is a regular file: description of `animation' (syntax?)
-	                # 2. replace `renameMe' by more fields that describe `animation' (ugly imo, but maybe the best way)
-	                # 3. remove `renameMe':
-	                #    if $animation is a directory: look for '$animation/animate.nfo'
-	                #    else: look for "$(basename $animation png)nfo"
 
 CarryAbility(Ability): # WIP: find a better name?
-	# Used by priests for relicts.
-	# WIP1: how should this look like? keep it general? can maybe be used by buildings to let units find shelter in them? or by mods for adding new relict-like objects
-	# WIP2: can maybe merged with a modified GatherAbility?
+	# Used by priests for relics and transport ship (both indirectly [animation needed]) and by castles etc. for many types of units.
+	# WIP1: how should this look like? keep it general?
+	# WIP3: HUDElement for releasing every contained unit and setting a meeting point needed. (But not for priests. -> Check for MovableUnit in allowedUnits?
+	#       or use the alternative below for everything but relics.)
 
-#	goodMemberName : Portable # what can be collected? make a 'Portable' class and let relict inherit that? could then be also used by resources?
-#	maxAmount
+	allowedUnits : set(UnitTypes) # what can be collected?
+	maxUnits : int
+	maxUnitsize : int # maximum size of each unit. If we want this, every movable unit should have a size member declared by a base class.
+	tooDamagedRate : float # percentage of health at which no units can be contained any longer.
 
-	animation : file # what does a priest look like when he's carrying it?
-	                 # WIP: see GatherAbility.animation and nyan question 4 (further down).
+# Alternative:
+Shelter(Ability):
+	# A 'Unit' which might hold other units. Used by Castle, Towncenter, TransporterShip, but not priest.
+
+	allowedUnits : set(UnitTypes) # what can be collected?
+	maxUnits : int
+	maxUnitsize : int # maximum size of each unit. If we want this, every movable unit should have a size member declared by a base class.
+	collapsingRate : float # percentage of health at which no units can be contained any longer.
 
 AttackAbility(Ability):
 	# Every attack shall inherit from this.
@@ -122,13 +146,26 @@ AttackAbility(Ability):
 	damage : float # rename to baseDamage ?
 
 
-Unit(): # WIP
-	# Everything you can see in the game # (WIP: but not assets, which is basically everything you see. Maybe better:)
-	# Everything that has some 'Ability' inherits from this.
+HealingAbility(Ability): #WIP
+	# Workers can repair buildings, ships and siege weapons. Buildings heal contained Units, Priests can heal moving units (including siege weapons?)
+	# WIP: priests and workers need an animation for this, buildings not.
+	# Should we write that as an attack with negative
 
-	ability : set(Ability)
+	range : float
+	rate : float
+	damage/reversedamage
 
+ResourceGenerator():
+	# creates constantly resource. Used by relicts.
 
+	resource : Resource
+	rate : float
+
+# Proposal
+UnitTypes(): # Bad name, rename.
+	# This class is used to group several ingame objects. This can be used for
+	# research (e.g. boost all Infantry by +2 speed), AttackAbility (what
+	# can (not) be attacked, CarryAbility and maybe more.
 
 #and probably more. if you know what's missing, add it.
 
@@ -136,22 +173,13 @@ Unit(): # WIP
 
 Open nyan implementation questions:
 
-1. How do we say in Nyan, that a Towncenter attack depends on how many people are inside the building?
-2. What about the building 'Ability' to carry units? will this lead to recursive references?
-3. How do we reference hooks from Nyan/create new hooks in mods?
-
-  -> If the {Towncenter,Castle} has certain damage, contained units need to leave.
-  
-  -> A relict in a Church leads to increasing gold.
 4. How do we add new animations?
 
   -> How would a mod add a new relict-like object that can be carried (the animation)? can we describe composition of frames? How is it done by the original game?
-  
-  -> We need a unified way/member-name to add a new animation to an 'Ability'
-  
+
+  -> We need a unified way/member-name to add a new animation to an 'Ability' -> let the ability inherit from 'Animation'
+
   -> animations are stored in one big picture (or allow one file per frame?). How do we tell where in the picture is which frame? How can you tell to mirror a frame?
 5. Of what type are the ingame objects, that don't move and give ressources? goldmine, fish, dead deer? How are deer and dead deer connected?
 
 Mod questions:
-
-1. Adding new units/buildungs: There are only blue units in the original assets. How does the engine now, what part of a frame needs new color?
