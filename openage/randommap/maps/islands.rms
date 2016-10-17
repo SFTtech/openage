@@ -10,6 +10,13 @@ tiles=100
 space_to_other_islands=5
 basesize=5
 
+[LAND]
+polygon=true
+tiles=1000
+polygon_points=0.0,0.0,0.1,0.0,0.05,0.1
+border_ne=0.8
+border_se=0.8
+
 [CONNECTION_a]
 type=team
 width=3

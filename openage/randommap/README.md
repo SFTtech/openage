@@ -67,6 +67,8 @@ team_circle: will create islands in a circle and teammates are next to each othe
 | border_nw                 | float           | 0       | 0<=border<=1 distance from nw border                               | x                 | x                        |
 | border_se                 | float           | 0       | 0<=border<=1 distance from se border                               | x                 | x                        |
 | border_sw                 | float           | 0       | 0<=border<=1 distance from sw border                               | x                 | x                        |
+| polygon                   | boolean         | false   | polygon constraints                                                | x                 | -                        |
+| polygon_points            | list of float   | []      | list of ne,nw values triangle =0.1,0.3,0.3,0.3,0.2,0.5               | x                 | -                        |
 
 ## OBJECT_XXX
 

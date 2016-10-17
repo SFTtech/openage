@@ -1,5 +1,7 @@
 # Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
+from shapely.geometry import Point
+from shapely.geometry.polygon import Polygon as ShapelyPolygon
 
 class Dummy:
     # will be called bevor tile is added to island
@@ -100,6 +102,19 @@ class BoundingBox:
         if tile.x >= self.x_min and tile.x <= self.x_max and tile.y >= self.y_min and tile.y <= self.y_max:
             return True
         return False
+
+    def wasAdded(self, wasAdded):
+        pass
+
+class Polygon:
+    def __init__(self, points, island):
+        self.polygon = ShapelyPolygon(points)
+        self.island = island
+
+    def check(self, tile, island):
+        if island != self.island:
+            return True
+        return self.polygon.contains(Point((tile.x,tile.y)))
 
     def wasAdded(self, wasAdded):
         pass

@@ -122,7 +122,9 @@ def loadConfiguration(config):
             "placement_radius_variance":  float(config[section].get("placement_radius_variance", 0.3)),
             "placement_angle_variance":   float(config[section].get("placement_angle_variance", 0.3)),
             "player_lands":               config[section].getboolean("player_lands", False),
-            "labels":                     list(filter(lambda x: not x == '', config[section].get("labels", "").split(",")))
+            "labels":                     list(filter(lambda x: not x == '', config[section].get("labels", "").split(","))),
+            "polygon":                    config[section].getboolean("polygon", False),
+            "polygon_points":             config[section].get("polygon_points", "").split(","),
         })
         c["LAND"][-1]["tiles"] = int(scaling(c["LAND"][-1], "tiles", c["LAND"][-1]["tiles"], c["GAME_SETUP"]["mapscale"]))
 
@@ -207,6 +209,13 @@ def createConstraints(fullconfig, config, map, island):
     ]
     if config["space_to_other_islands"] > 0:
         constraints.append(c.SpaceToAllIslands(map, island.id, config["space_to_other_islands"]))
+
+    if config["polygon"] is True:
+        points = config["polygon_points"]
+        polygonPoints = []
+        for i in range(0,len(points),2):
+            polygonPoints.append( (int( float(points[i]) * map.x),int( float(points[i+1]) * map.y)) )
+        constraints.append(c.Polygon(polygonPoints, island.id))
     return constraints
 
 
@@ -296,6 +305,17 @@ def createIslands(config, m):
                                           tiles=[tile],
                                           basesize=landconfig["basesize"]))
             constraints += createConstraints(config, landconfig, m, islands[-1])
+            # TODO
+            # its terrible, maybe runs forever
+            # we need an starttile which doesnt violates any constraint
+            while( False in [x.check(tile, island_id) for x in constraints] ):
+                x = random.randrange(offset_minx, offset_maxx)
+                y = random.randrange(offset_miny, offset_maxy)
+                tile = m.get(x,y)
+                sys.exit(1)
+            islands[-1].x = x
+            islands[-1].y = y
+            islands[-1].tile = m.get(x,y)
             island_id += 1
 
     m.islands.extend(islands)
