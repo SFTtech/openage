@@ -1013,9 +1013,8 @@ HealAction::HealAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::heal, tar, get_attack_range(e)},
 	heal_percent{0.0f},
-	rate_of_heal{0.004f} { 
+	rate_of_heal{0.004f} {
 
-	
 }
 
 HealAction::~HealAction() {}
@@ -1040,7 +1039,7 @@ bool HealAction::completed_in_range(Unit *target_ptr) const {
 
 void HealAction::heal(Unit &target) {
 	auto &heal = this->entity->get_attribute<attr_type::heal>();
-	
+
 	// TODO move to seperate function heal_object (like damage_object)?
 	// heal object
 	if (target.has_attribute(attr_type::hitpoints)) {
@@ -1052,7 +1051,7 @@ void HealAction::heal(Unit &target) {
 			hp.current = hp.max;
 		}
 	}
-	
+
 }
 
 

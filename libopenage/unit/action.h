@@ -113,7 +113,7 @@ public:
 	 * otherwise returns same as adjacent_range()
 	 */
 	static coord::phys_t get_attack_range(Unit *u);
-	
+
 	/**
 	 * looks at heal attribute on the unit
 	 * otherwise returns same as adjacent_range()
