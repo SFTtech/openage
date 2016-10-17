@@ -207,7 +207,7 @@ public:
 		AttributeContainer{attr_type::heal},
 		range{r},
 		init_height{h},
-		life{l}
+		life{l} {}
 
 	bool shared() const override {
 		return false;
@@ -216,7 +216,7 @@ public:
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::heal>>(*this);
 	}
-	
+
 	coord::phys_t range;
 	coord::phys_t init_height; // TODO remove?
 	unsigned int life;
