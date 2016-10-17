@@ -202,12 +202,13 @@ public:
 
 template<> class Attribute<attr_type::heal>: public AttributeContainer {
 public:
-	Attribute(coord::phys_t r, coord::phys_t h, unsigned int l)
+	Attribute(coord::phys_t r, coord::phys_t h, unsigned int l, float ra)
 		:
 		AttributeContainer{attr_type::heal},
 		range{r},
 		init_height{h},
-		life{l} {}
+		life{l},
+		rate{ra} {}
 
 	bool shared() const override {
 		return false;
@@ -220,6 +221,7 @@ public:
 	coord::phys_t range;
 	coord::phys_t init_height; // TODO remove?
 	unsigned int life;
+	float rate;
 };
 
 
