@@ -29,6 +29,15 @@ coord::phys_t UnitAction::get_attack_range(Unit *u) {
 	return range;
 }
 
+coord::phys_t UnitAction::get_heal_range(Unit *u) {
+	coord::phys_t range = adjacent_range(u);
+	if (u->has_attribute(attr_type::heal)) {
+		auto &heal = u->get_attribute<attr_type::heal>();
+		range += heal.range;
+	}
+	return range;
+}
+
 UnitAction::UnitAction(Unit *u, graphic_type initial_gt)
 	:
 	entity{u},
@@ -997,6 +1006,53 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 	else {
 		this->entity->log(MSG(dbg) << "projectile launch failed");
 	}
+}
+
+
+HealAction::HealAction(Unit *e, UnitReference tar)
+	:
+	TargetAction{e, graphic_type::heal, tar, get_attack_range(e)},
+	heal_percent{0.0f},
+	rate_of_heal{0.004f} { 
+
+	
+}
+
+HealAction::~HealAction() {}
+
+void HealAction::update_in_range(unsigned int time, Unit *target_ptr) {
+	if (this->heal_percent > 0.0) {
+		this->heal_percent -= this->rate_of_heal * time;
+	}
+	else {
+		this->heal_percent += 1.0f;
+		this->heal(*target_ptr);
+	}
+
+	// inc frame
+	this->frame += time * this->current_graphics().at(graphic)->frame_count * this->rate_of_heal;
+}
+
+bool HealAction::completed_in_range(Unit *target_ptr) const {
+	auto &h_attr = target_ptr->get_attribute<attr_type::hitpoints>();
+	return h_attr.current >= h_attr.max; // is unit at full hitpoints?
+}
+
+void HealAction::heal(Unit &target) {
+	auto &heal = this->entity->get_attribute<attr_type::heal>();
+	
+	// TODO move to seperate function heal_object (like damage_object)?
+	// heal object
+	if (target.has_attribute(attr_type::hitpoints)) {
+		auto &hp = target.get_attribute<attr_type::hitpoints>();
+		if ((hp.current + heal.life) < hp.max) {
+			hp.current += heal.life;
+		}
+		else {
+			hp.current = hp.max;
+		}
+	}
+	
 }
 
 
