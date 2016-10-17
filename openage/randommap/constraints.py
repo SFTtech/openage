@@ -3,6 +3,7 @@
 from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon as ShapelyPolygon
 
+
 class Dummy:
     # will be called bevor tile is added to island
     # only if all checks are true, tile will be added
@@ -106,6 +107,7 @@ class BoundingBox:
     def wasAdded(self, wasAdded):
         pass
 
+
 class Polygon:
     def __init__(self, points, island):
         self.polygon = ShapelyPolygon(points)
@@ -114,7 +116,7 @@ class Polygon:
     def check(self, tile, island):
         if island != self.island:
             return True
-        return self.polygon.contains(Point((tile.x,tile.y)))
+        return self.polygon.contains(Point((tile.x, tile.y)))
 
     def wasAdded(self, wasAdded):
         pass

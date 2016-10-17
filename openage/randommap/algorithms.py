@@ -213,8 +213,8 @@ def createConstraints(fullconfig, config, map, island):
     if config["polygon"] is True:
         points = config["polygon_points"]
         polygonPoints = []
-        for i in range(0,len(points),2):
-            polygonPoints.append( (int( float(points[i]) * map.x),int( float(points[i+1]) * map.y)) )
+        for i in range(0, len(points), 2):
+            polygonPoints.append((int(float(points[i]) * map.x), int(float(points[i + 1]) * map.y)))
         constraints.append(c.Polygon(polygonPoints, island.id))
     return constraints
 
@@ -308,14 +308,14 @@ def createIslands(config, m):
             # TODO
             # its terrible, maybe runs forever
             # we need an starttile which doesnt violates any constraint
-            while( False in [x.check(tile, island_id) for x in constraints] ):
+            while(False in [x.check(tile, island_id) for x in constraints]):
                 x = random.randrange(offset_minx, offset_maxx)
                 y = random.randrange(offset_miny, offset_maxy)
-                tile = m.get(x,y)
+                tile = m.get(x, y)
                 sys.exit(1)
             islands[-1].x = x
             islands[-1].y = y
-            islands[-1].tile = m.get(x,y)
+            islands[-1].tile = m.get(x, y)
             island_id += 1
 
     m.islands.extend(islands)
