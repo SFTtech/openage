@@ -1012,16 +1012,17 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 HealAction::HealAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::heal, tar, get_attack_range(e)},
-	heal_percent{0.0f},
-	rate_of_heal{0.004f} {
+	heal_percent{0.0f} {
 
 }
 
 HealAction::~HealAction() {}
 
 void HealAction::update_in_range(unsigned int time, Unit *target_ptr) {
+	auto &heal = this->entity->get_attribute<attr_type::heal>();
+
 	if (this->heal_percent > 0.0) {
-		this->heal_percent -= this->rate_of_heal * time;
+		this->heal_percent -= heal.rate * time;
 	}
 	else {
 		this->heal_percent += 1.0f;
@@ -1029,7 +1030,7 @@ void HealAction::update_in_range(unsigned int time, Unit *target_ptr) {
 	}
 
 	// inc frame
-	this->frame += time * this->current_graphics().at(graphic)->frame_count * this->rate_of_heal;
+	this->frame += time * this->current_graphics().at(graphic)->frame_count * heal.rate;
 }
 
 bool HealAction::completed_in_range(Unit *target_ptr) const {

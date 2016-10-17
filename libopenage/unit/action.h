@@ -477,7 +477,7 @@ public:
 	std::string name() const override { return "heal"; }
 
 private:
-	float heal_percent, rate_of_heal;
+	float heal_percent;
 
 	/**
 	 * use heal action
