@@ -211,11 +211,12 @@ def createConstraints(fullconfig, config, map, island):
         constraints.append(c.SpaceToAllIslands(map, island.id, config["space_to_other_islands"]))
 
     if config["polygon"] is True:
-        points = config["polygon_points"]
-        polygonPoints = []
+        points = config["polygon_points"].copy()
         for i in range(0, len(points), 2):
-            polygonPoints.append((int(float(points[i]) * map.x), int(float(points[i + 1]) * map.y)))
-        constraints.append(c.Polygon(polygonPoints, island.id))
+            # scale relative points to mapsize
+            points[i]     = int(float(points[i]) * map.x)
+            points[i + 1] = int(float(points[i + 1]) * map.y)
+        constraints.append(c.Polygon(points, island.id))
     return constraints
 
 
@@ -296,26 +297,38 @@ def createIslands(config, m):
             tile         = m.get(x, y)
             tile.island  = 0
             tile.terrain = landconfig["terrain"]
-            islands.append(classes.Island(island_id,
-                                          m,
-                                          x,
-                                          y,
-                                          terrain=landconfig["terrain"],
-                                          labels=landconfig["labels"],
-                                          tiles=[tile],
-                                          basesize=landconfig["basesize"]))
-            constraints += createConstraints(config, landconfig, m, islands[-1])
+            island = classes.Island(island_id,
+                                    m,
+                                    x,
+                                    y,
+                                    terrain=landconfig["terrain"],
+                                    labels=landconfig["labels"],
+                                    tiles=[tile],
+                                    basesize=landconfig["basesize"])
+            islands.append(island)
+            constraints_len = len(constraints)
+            constraints += createConstraints(config, landconfig, m, island)
+
             # TODO
             # its terrible, maybe runs forever
             # we need an starttile which doesnt violates any constraint
             while(False in [x.check(tile, island_id) for x in constraints]):
                 x = random.randrange(offset_minx, offset_maxx)
                 y = random.randrange(offset_miny, offset_maxy)
+                # set old tile to default
+                tile.island = 0
+                tile.terrain = m.terrain
+                # new start tile
                 tile = m.get(x, y)
-                sys.exit(1)
-            islands[-1].x = x
-            islands[-1].y = y
-            islands[-1].tile = m.get(x, y)
+                tile.island  = 0
+                tile.terrain = landconfig["terrain"]
+                island.x = x
+                island.y = y
+                island.tiles = [tile]
+                # remove old constraints based on old x,y
+                constraints = constraints[0:constraints_len]
+                constraints += createConstraints(config, landconfig, m, island)
+
             island_id += 1
 
     m.islands.extend(islands)
