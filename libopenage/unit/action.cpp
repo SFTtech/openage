@@ -99,7 +99,7 @@ void UnitAction::face_towards(const coord::phys3 pos) {
 void UnitAction::damage_object(Unit &target, unsigned dmg) {
 	if (target.has_attribute(attr_type::hitpoints)) {
 		auto &hp = target.get_attribute<attr_type::hitpoints>();
-		if ((hp.current - dmg) > 0) {
+		if (hp.current > dmg) {
 		    hp.current -= dmg;
 		}
 		else {
@@ -408,7 +408,7 @@ void IdleAction::on_completion() {}
 bool IdleAction::completed() const {
 	if (this->entity->has_attribute(attr_type::hitpoints)) {
 		auto &hp = this->entity->get_attribute<attr_type::hitpoints>();
-		return hp.current <= 0.0f;
+		return hp.current == 0;
 	}
 	else if (this->entity->has_attribute(attr_type::resource)) {
 		auto &res_attr = this->entity->get_attribute<attr_type::resource>();

@@ -151,7 +151,7 @@ public:
 	Attribute(unsigned int i)
 		:
 		AttributeContainer{attr_type::hitpoints},
-		current{static_cast<int>(i)},
+		current{i},
 		max{i} {}
 
 	bool shared() const override {
@@ -162,7 +162,7 @@ public:
 		return std::make_shared<Attribute<attr_type::hitpoints>>(*this);
 	}
 
-	int current; // can become negative
+	unsigned int current;
 	unsigned int max;
 	float hp_bar_height;
 };
