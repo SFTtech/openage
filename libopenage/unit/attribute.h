@@ -42,6 +42,7 @@ enum class graphic_type {
 	walking,
 	carrying,
 	attack,
+	heal,
 	work
 };
 
@@ -59,6 +60,7 @@ enum class attr_type {
 	owner,
 	hitpoints,
 	attack,
+	heal,
 	speed,
 	direction,
 	projectile,
@@ -149,7 +151,7 @@ public:
 	Attribute(unsigned int i)
 		:
 		AttributeContainer{attr_type::hitpoints},
-		current{static_cast<int>(i)},
+		current{i},
 		max{i} {}
 
 	bool shared() const override {
@@ -160,7 +162,7 @@ public:
 		return std::make_shared<Attribute<attr_type::hitpoints>>(*this);
 	}
 
-	int current; // can become negative
+	unsigned int current;
 	unsigned int max;
 	float hp_bar_height;
 };
@@ -197,6 +199,31 @@ public:
 	// used to change graphics back to normal for villagers
 	UnitType *attack_type;
 };
+
+template<> class Attribute<attr_type::heal>: public AttributeContainer {
+public:
+	Attribute(coord::phys_t r, coord::phys_t h, unsigned int l, float ra)
+		:
+		AttributeContainer{attr_type::heal},
+		range{r},
+		init_height{h},
+		life{l},
+		rate{ra} {}
+
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::heal>>(*this);
+	}
+
+	coord::phys_t range;
+	coord::phys_t init_height; // TODO remove?
+	unsigned int life;
+	float rate;
+};
+
 
 template<> class Attribute<attr_type::speed>: public AttributeContainer {
 public:

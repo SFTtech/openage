@@ -114,6 +114,12 @@ public:
 	 */
 	static coord::phys_t get_attack_range(Unit *u);
 
+	/**
+	 * looks at heal attribute on the unit
+	 * otherwise returns same as adjacent_range()
+	 */
+	static coord::phys_t get_heal_range(Unit *u);
+
 protected:
 	/**
 	 * the entity being updated
@@ -456,6 +462,27 @@ private:
 	 * add a projectile game object which moves towards the target
 	 */
 	void fire_projectile(const Attribute<attr_type::attack> &att, const coord::phys3 &target);
+};
+
+/**
+ * heals another unit
+ */
+class HealAction: public TargetAction {
+public:
+	HealAction(Unit *e, UnitReference tar);
+	virtual ~HealAction();
+
+	void update_in_range(unsigned int time, Unit *target_unit) override;
+	bool completed_in_range(Unit *) const override;
+	std::string name() const override { return "heal"; }
+
+private:
+	float heal_percent;
+
+	/**
+	 * use heal action
+	 */
+	void heal(Unit &target);
 };
 
 /**

@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include "opengl.h"
 
@@ -65,7 +65,8 @@ void gl_check_error() {
 		}
 		throw Error(MSG(err) <<
 			"OpenGL error state after running draw method: " << glerrorstate << "\n"
-			"\t" << errormsg);
+			"\t" << errormsg << "\n"
+			<< "Run the game with --gl-debug to get more information: './run game --gl-debug'.");
 	}
 }
 
