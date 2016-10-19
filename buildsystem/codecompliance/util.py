@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """
 Some utilities.
@@ -6,6 +6,8 @@ Some utilities.
 
 import os
 
+
+SHEBANG = "#!/.*\n(#?\n)?"
 
 FILECACHE = {}
 BADUTF8FILES = set()
