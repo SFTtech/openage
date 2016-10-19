@@ -1,6 +1,7 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 import QtQuick 2.4
+import QtGraphicalEffects 1.0
 
 Item {
 	id: root
@@ -42,85 +43,47 @@ Item {
 		width: (parent.width + .5) * root.scaling
 		height: (parent.height + .5) * root.scaling
 
-		Item {
+		/**
+		 * Tears the edges.
+		 * TODO: use QtGraphicalEffects.OpacityMask from Qt 5.7.
+		 */
+		OpacityMask57 {
+			id: tornPaper
+
 			anchors.fill: parent
 
-			/*
-			 * Hack, so the child has 'visible' and 'layer.enabled'.
-			 */
-			clip: true
+			source: Blend {
+				width: tornPaper.width
+				height: tornPaper.height
 
-			Item {
-				id: texturedPaper
+				source: Image {
+					width: tornPaper.width
+					height: tornPaper.height
 
-				/*
-				 * Hack, so that this item has 'visible' and 'layer.enabled'.
-				 */
-				width: parent.width
-				height: parent.height
-				x: parent.width
-
-				layer.enabled: true
-
-				Image {
-					anchors.fill: parent
 					source: root.paperTextureSource
 					fillMode: Image.Tile
+				}
 
-					/*
-					 * Use an ellipse to darken parts that are far from the center.
-					 */
-					layer.enabled: true
-					layer.wrapMode: ShaderEffectSource.Repeat
-					layer.samplerName: "paperSource"
-					layer.effect: ShaderEffect {
-						fragmentShader: "
-							uniform lowp sampler2D paperSource;
-							varying highp vec2 qt_TexCoord0;
+				/**
+				 * Darken near the edges.
+				 */
+				foregroundSource: RadialGradient {
+					width: tornPaper.width
+					height: tornPaper.height
 
-							const float exposure = .5;
-							const float times = 3.;
+					verticalOffset: height / 4
 
-							vec3 burntMidtones(vec3 src, float exposure, float times) {
-								float factor = 1. + exposure * (.33);
-								return pow(src.rgb, vec3(factor * times));
-							}
-
-							void main() {
-								vec4 bkg = texture2D(paperSource, qt_TexCoord0);
-								vec3 burnt = burntMidtones(bkg.rgb, exposure, times);
-
-								float burnGradient = pow(pow((qt_TexCoord0.x - .5), 2.) + pow((qt_TexCoord0.y - 1.), 2.), 1.) * .9;
-
-								gl_FragColor = vec4(mix(bkg.rgb, burnt, vec3(burnGradient)), 1.);
-							}
-						"
+					gradient: Gradient {
+						GradientStop { position: 0.0; color: "#FFFFFFFF" }
+						GradientStop { position: 0.5; color: "#FF999999" }
 					}
 				}
+
+				mode: "colorBurn"
 			}
-		}
 
-		/*
-		 * Inverse QtGraphicalEffects.OpacityMask.
-		 */
-		Item {
-			anchors.fill: parent
-
-			layer.enabled: true
-
-			layer.effect: ShaderEffect {
-				property variant source: texturedPaper
-				property variant mask: rectWithTornOffEdges
-
-				fragmentShader: "
-					uniform sampler2D source;
-					uniform sampler2D mask;
-					varying highp vec2 qt_TexCoord0;
-					void main() {
-						gl_FragColor = texture2D(source, qt_TexCoord0) * (1. - texture2D(mask, qt_TexCoord0).a);
-					}
-				"
-			}
+			maskSource: rectWithTornOffEdges
+			invert: true
 		}
 
 		/*
