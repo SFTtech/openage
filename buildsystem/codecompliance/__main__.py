@@ -31,6 +31,9 @@ def parse_args():
                            "(a selected subset of) pep8."))
     cli.add_argument("--pylint", action="store_true",
                      help=("run pylint on the python code"))
+    cli.add_argument("--filemodes", action="store_true",
+                     help=("check whether files in the repo have the "
+                           "correct access bits (-> 0644) "))
     cli.add_argument("--authors", action="store_true",
                      help=("check whether all git authors are in copying.md. "
                            "repo must be a git repository."))
@@ -61,6 +64,7 @@ def process_args(args, error):
         args.legal = True
         args.authors = True
         args.textfiles = True
+        args.filemodes = True
 
     if args.all:
         # enable tests that take a bit longer
@@ -70,7 +74,7 @@ def process_args(args, error):
         args.test_git_change_years = True
 
     if not any((args.headerguards, args.legal, args.authors, args.pystyle,
-                args.test_git_change_years, args.pylint)):
+                args.test_git_change_years, args.pylint, args.filemodes)):
         error("no checks were specified")
 
     has_git = bool(shutil.which('git'))
@@ -108,6 +112,9 @@ def process_args(args, error):
 def main(args):
     """
     Takes an argument namespace as returned by parse_args.
+
+    Calls find_all_issues(main args, list of files to consider)
+
     Returns True if no issues were found.
     """
     if args.only_changed_files:
@@ -116,13 +123,13 @@ def main(args):
                       gitref]
 
         proc = Popen(invocation, stdout=PIPE)
-        check_files = proc.communicate()[0]
+        file_list = proc.communicate()[0]
 
         if proc.returncode != 0:
             print("could not determine list of recently-changed files")
             return False
 
-        check_files = check_files.decode('ascii').strip().split('\n')
+        check_files = set(file_list.decode('ascii').strip().split('\n'))
     else:
         check_files = None
 
@@ -141,6 +148,9 @@ def find_all_issues(args, check_files=None):
 
     If check_files is not None, all other files are ignored during the
     more resource-intense checks.
+    That is, check_files is the set of files to verify.
+
+    Yields tuples of (title, text) that are displayed as warnings.
     """
     if args.headerguards:
         from .headerguards import find_issues
@@ -172,6 +182,11 @@ def find_all_issues(args, check_files=None):
         yield from find_issues(check_files,
                                ('openage', 'buildsystem', 'libopenage'),
                                args.test_git_change_years)
+
+    if args.filemodes:
+        from .modes import find_issues
+        yield from find_issues(check_files, ('openage', 'buildsystem',
+                                             'libopenage'))
 
 
 if __name__ == '__main__':

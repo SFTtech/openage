@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """
 Checks whether all authors are properly listed in copying.md.
@@ -57,7 +57,8 @@ def find_issues():
 
     prints all discrepancies, and returns False if one is detected.
     """
-    relevant_exts = ('.cpp', '.h', '.py', '.pyi', '.pyx', '.cmake')
+    relevant_exts = ('.cpp', '.h', '.py', '.pyi', '.pyx', '.cmake',
+                     '.qml')
 
     copying_md_emails = set(get_author_emails_copying_md())
     git_shortlog_emails = set(get_author_emails_git_shortlog(relevant_exts))
