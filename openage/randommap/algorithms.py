@@ -231,7 +231,7 @@ def createBaseIsland(map):
     map.islands.append(island)
 
 
-def createDeepPocketPlayers(config,landconfig, m, islands, constraints, island_id):
+def createDeepPocketPlayers(config, landconfig, m, islands, constraints, island_id):
     offset_minx = int(landconfig["border_sw"] * m.x)
     offset_maxx = int((1 - landconfig["border_ne"]) * m.x) - 1
     offset_miny = int(landconfig["border_nw"] * m.y)
@@ -249,10 +249,10 @@ def createDeepPocketPlayers(config,landconfig, m, islands, constraints, island_i
             outer = int(round(len(team) / 2 - 0.9))
             inner = len(team) - outer
             inner_players += inner
-            layout.append({"inner" : team[0:inner], "outer" : team[inner:]},)
+            layout.append({"inner": team[0:inner], "outer": team[inner:]},)
         else:
             inner_players = len(team)
-            layout.append({"inner" : team,"outer" : 0})
+            layout.append({"inner": team, "outer": 0})
 
     r = min(m.x, m.y) / 2
     player_count  = 1
@@ -281,18 +281,17 @@ def createDeepPocketPlayers(config,landconfig, m, islands, constraints, island_i
             tile.island  = 0
             tile.terrain = landconfig["terrain"]
             islands.append(classes.Island(island_id,
-                                        m,
-                                        x,
-                                        y,
-                                        terrain = landconfig["terrain"],
-                                        labels=["_player_" + str(player)] + landconfig["labels"],
-                                        tiles=[tile],
-                                        player=player,
-                                        basesize=landconfig["basesize"]))
+                                          m,
+                                          x,
+                                          y,
+                                          terrain = landconfig["terrain"],
+                                          labels=["_player_" + str(player)] + landconfig["labels"],
+                                          tiles=[tile],
+                                          player=player,
+                                          basesize=landconfig["basesize"]))
 
             constraints += createConstraints(config, landconfig, m, islands[-1])
             island_id   += 1
-            print("{} {}".format(x,y))
 
         # make outer ring
         i = 0
@@ -313,19 +312,20 @@ def createDeepPocketPlayers(config,landconfig, m, islands, constraints, island_i
             tile.island  = 0
             tile.terrain = landconfig["terrain"]
             islands.append(classes.Island(island_id,
-                                        m,
-                                        x,
-                                        y,
-                                        terrain = landconfig["terrain"],
-                                        labels=["_player_" + str(player)] + landconfig["labels"],
-                                        tiles=[tile],
-                                        player=player,
-                                        basesize=landconfig["basesize"]))
+                           m,
+                           x,
+                           y,
+                           terrain = landconfig["terrain"],
+                           labels=["_player_" + str(player)] + landconfig["labels"],
+                           tiles=[tile],
+                           player=player,
+                           basesize=landconfig["basesize"]))
 
             constraints += createConstraints(config, landconfig, m, islands[-1])
             island_id   += 1
     pprint.pprint(layout)
     return island_id
+
 
 def createIslands(config, m):
     # get all islands with constraints
@@ -367,10 +367,10 @@ def createIslands(config, m):
                         radius += 2 * landconfig["placement_radius_variance"] * random.random() - landconfig["placement_radius_variance"]
                         radius = max(0.1, radius)
                         radius = min(0.9, radius)
-    
+
                         anglex = player / maxplayers + (random.random() * landconfig["placement_angle_variance"] / maxplayers)
                         angley = player / maxplayers + (random.random() * landconfig["placement_angle_variance"] / maxplayers)
-    
+
                         x = int(r + radius * r * math.sin(2 * math.pi * anglex))
                         y = int(r + radius * r * math.cos(2 * math.pi * angley))
                     else:
@@ -380,15 +380,15 @@ def createIslands(config, m):
                     tile.island  = 0
                     tile.terrain = landconfig["terrain"]
                     islands.append(classes.Island(island_id,
-                                                m,
-                                                x,
-                                                y,
-                                                terrain = landconfig["terrain"],
-                                                labels=["_player_" + str(players[player])] + landconfig["labels"],
-                                                tiles=[tile],
-                                                player=players[player],
-                                                basesize=landconfig["basesize"]))
-    
+                                   m,
+                                   x,
+                                   y,
+                                   terrain = landconfig["terrain"],
+                                   labels=["_player_" + str(players[player])] + landconfig["labels"],
+                                   tiles=[tile],
+                                   player=players[player],
+                                   basesize=landconfig["basesize"]))
+
                     constraints += createConstraints(config, landconfig, m, islands[-1])
                     island_id   += 1
         # create a single island
