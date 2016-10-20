@@ -609,6 +609,13 @@ def createMultipleIslandConnection(conn, m, islands):
         createSingleConnection(conn, m, islands[i - 1], islands[i])
 
 
+def manyToOne(conn, m):
+    to = m.getLandByName(conn["islands"].pop(-1))
+    for island in conn["islands"]:
+        island = m.getLandByName(island)
+        createSingleConnection(conn, m, island, to)
+
+
 def createConnection(config, m):
     # every connection
     for conn in config["CONNECTION"]:
@@ -635,6 +642,9 @@ def createConnection(config, m):
                     island_0 = m.getLandByName(conn["islands"][i])
                     island_1 = m.getLandByName(conn["islands"][j])
                     createSingleConnection(conn, m, island_0, island_1)
+
+        if conn["type"] == "many_to_one":
+            manyToOne(conn, m)
 
         if conn["type"] == "team":
             for team in m.players.teams:

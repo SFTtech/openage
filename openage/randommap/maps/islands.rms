@@ -19,6 +19,7 @@ polygon=true
 tiles=10000
 polygon_points=0.0,0.0, 1.0,0.0, 1.0,0.3, 0.5,0.1, 0.0,0.3
 space_to_other_islands=5
+labels=rand
 
 [CONNECTION_a]
 type=team
@@ -26,3 +27,7 @@ width=3
 cost_WATER=100
 cost_DEEP_WATER=1000
 cost_SHALLOW=90
+
+[CONNECTION_b]
+type=many_to_one
+islands=_player_1,_player_5,rand

@@ -97,6 +97,8 @@ cross:  creates connections between all islands in islands
 
 team: connects all islands of a team
 
+many_to_one: list of islands which will be connected to the last one
+
 cost: cost of a tile for a* algorithm, higher costs will be avoided
 
 cost_OBJECT: OBJECT is one of the objects below
@@ -104,29 +106,29 @@ cost_OBJECT: OBJECT is one of the objects below
 predefined islands labels: all_players
 
 
-| field                | type            | default           | type: single | type: cross | type: team |
-| -------------------- | --------------- | -----------       | ------------ | ----------- |------------|
-| type                 | enum            | single,team,cross | x            | x           | x          |
-| width                | int             | 1                 | x            | x           | x          |
-| islands              | list of strings | all_players       | x            | x           | -          |
-| pave_start_island    | boolean         | false             | x            | x           | x          |
-| pave_end_island      | boolean         | false             | x            | x           | x          |
-| subtitute_GRASS      | TERRAIN-TYPE    | ROAD              | x            | x           | x          |
-| subtitute_WATER      | TERRAIN-TYPE    | SHALLOW           | x            | x           | x          |
-| subtitute_SHALLOW    | TERRAIN-TYPE    | SHALLOW           | x            | x           | x          |
-| subtitute_FORREST    | TERRAIN-TYPE    | ROAD              | x            | x           | x          |
-| subtitute_DIRT       | TERRAIN-TYPE    | ROAD              | x            | x           | x          |
-| subtitute_DEEP_WATER | TERRAIN-TYPE    | SHALLOW           | x            | x           | x          |
-| subtitute_ROAD       | TERRAIN-TYPE    | ROAD              | x            | x           | x          |
-| cost_GRASS           | int             | 1                 | x            | x           | x          |
-| cost_WATER           | int             | 1                 | x            | x           | x          |
-| cost_SHALLOW         | int             | 1                 | x            | x           | x          |
-| cost_FOREST          | int             | 1                 | x            | x           | x          |
-| cost_DIRT            | int             | 1                 | x            | x           | x          |
-| cost_DEEP_WATER      | int             | 20                | x            | x           | x          |
-| cost_ROAD            | int             | 1                 | x            | x           | x          |
-| cost_OBJECT          | int             | 50                | x            | x           | x          |
-                
+| field                | type            | default                          | type: single | type: cross,many_to_one | type: team |
+| -------------------- | --------------- | -------------------------------- | ------------ | ----------------------- | ---------- |
+| type                 | enum            | single,team,cross,many_to_one    | x            | x                       | x          |
+| width                | int             | 1                                | x            | x                       | x          |
+| islands              | list of strings | all_players                      | x            | x                       | -          |
+| pave_start_island    | boolean         | false                            | x            | x                       | x          |
+| pave_end_island      | boolean         | false                            | x            | x                       | x          |
+| subtitute_GRASS      | TERRAIN-TYPE    | ROAD                             | x            | x                       | x          |
+| subtitute_WATER      | TERRAIN-TYPE    | SHALLOW                          | x            | x                       | x          |
+| subtitute_SHALLOW    | TERRAIN-TYPE    | SHALLOW                          | x            | x                       | x          |
+| subtitute_FORREST    | TERRAIN-TYPE    | ROAD                             | x            | x                       | x          |
+| subtitute_DIRT       | TERRAIN-TYPE    | ROAD                             | x            | x                       | x          |
+| subtitute_DEEP_WATER | TERRAIN-TYPE    | SHALLOW                          | x            | x                       | x          |
+| subtitute_ROAD       | TERRAIN-TYPE    | ROAD                             | x            | x                       | x          |
+| cost_GRASS           | int             | 1                                | x            | x                       | x          |
+| cost_WATER           | int             | 1                                | x            | x                       | x          |
+| cost_SHALLOW         | int             | 1                                | x            | x                       | x          |
+| cost_FOREST          | int             | 1                                | x            | x                       | x          |
+| cost_DIRT            | int             | 1                                | x            | x                       | x          |
+| cost_DEEP_WATER      | int             | 20                               | x            | x                       | x          |
+| cost_ROAD            | int             | 1                                | x            | x                       | x          |
+| cost_OBJECT          | int             | 50                               | x            | x                       | x          |
+
 ## list of object labels
 ### supported terrain and default values:
 
