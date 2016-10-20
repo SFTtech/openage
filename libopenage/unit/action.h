@@ -94,7 +94,8 @@ public:
 	 * common functions for actions
 	 */
 	void face_towards(const coord::phys3 pos);
-	void damage_object(Unit &target, unsigned dmg);
+	void damage_object(Unit &target, unsigned dmg); // TODO remove (keep for testing)
+	void damage_object(Unit &target);
 	void move_to(Unit &target, bool use_range=true);
 
 	/**

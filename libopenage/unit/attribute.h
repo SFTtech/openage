@@ -59,6 +59,7 @@ using graphic_set = std::map<graphic_type, std::shared_ptr<UnitTexture>>;
 enum class attr_type {
 	owner,
 	hitpoints,
+	armor,
 	attack,
 	heal,
 	speed,
@@ -114,6 +115,7 @@ public:
 
 using attr_map_t = std::map<attr_type, std::shared_ptr<AttributeContainer>>;
 
+using typeamount_set = std::map<int, unsigned int>;
 
 /**
  * return attribute from a container
@@ -167,9 +169,39 @@ public:
 	float hp_bar_height;
 };
 
+template<> class Attribute<attr_type::armor>: public AttributeContainer {
+public:
+	Attribute(typeamount_set a)
+		:
+		AttributeContainer{attr_type::armor},
+		armor{a} {}
+
+	bool shared() const override {
+		return true;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::armor>>(*this);
+	}
+	
+	typeamount_set armor;
+};
+
 template<> class Attribute<attr_type::attack>: public AttributeContainer {
 public:
+	// TODO remove (keep for testing)
 	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d, UnitType *reset_type)
+		:
+		AttributeContainer{attr_type::attack},
+		ptype{type},
+		range{r},
+		init_height{h},
+		stance{attack_stance::do_nothing},
+		attack_type{reset_type} {
+		damage[4] = d;
+	}
+
+	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_set d, UnitType *reset_type)
 		:
 		AttributeContainer{attr_type::attack},
 		ptype{type},
@@ -193,7 +225,7 @@ public:
 	UnitType *ptype; // projectile type
 	coord::phys_t range;
 	coord::phys_t init_height;
-	unsigned int damage;
+	typeamount_set damage;
 	attack_stance stance;
 
 	// used to change graphics back to normal for villagers
@@ -211,7 +243,7 @@ public:
 		rate{ra} {}
 
 	bool shared() const override {
-		return false;
+		return true;
 	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
@@ -324,7 +356,7 @@ public:
 		resource_types{types} {}
 
 	bool shared() const override {
-		return false;
+		return true;
 	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
