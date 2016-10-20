@@ -68,4 +68,4 @@ def generate(filename, players, gametype, mapscale, seed):
 
 if __name__ == "__main__":
 
-    generate("maps/islands.rms", [0, 1, 0, 1, 0, 0], "conquest", 6, 42)
+    generate("maps/islands.rms", [0, 0, 1, 1, 0,0 ,1,1,0], "conquest", 6, 42)

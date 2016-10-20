@@ -48,27 +48,31 @@ circle: will create islands in a circle in the border constraints
 
 team_circle: will create islands in a circle and teammates are next to each other and in the border constraints
 
+deep_pocket: teams will be placed in circle, if a team > 2, ~team/2 will be placed in a second circle
 
 
-| field                     | type            | default | info                                                               | placement: random | placement: (team_)circle |
-| ------------------------- | --------------- | ------- | ------------------------------------------------------------------ | ----------------- | ------------------------ |
-| player_lands              | boolean         | false   | makes island for all players                                       | -                 | x                        |
-| terrain                   | TERRAIN-TYPE    | GRASS   |                                                                    | x                 | x                        |
-| basesize                  | int             | 0       | minimum size of baseland, island core must be basesize from border | x                 | x                        |
-| space_to_other_islands    | int             | 0       | minimum distance in tiles to other all other islands               | x                 | x                        |
-| tiles                     | int             | maxint  | ~size in tiles                                                     | x                 | x                        |
-| tiles_scaling             | enum            | sqrt    | one of: None,sqrt,linear                                           | x                 | x                        |
-| placement                 | enum            | random  | one of circle,team_circle,random,                                  | x                 | x                        |
-| placement_radius          | float           | 0.5     | 0<radius<1 relative radius of min(x,y)                             | -                 | x                        |
-| placement_radius_variance | float           | 0.3     | radius +- variance, if 0, players will be placed in uniform        | -                 | x                        |
-| placement_angle_variance  | float           | 0.3     | 0<variance<1, if 0, players will be placed in uniform              | -                 | x                        |
-| labels                    | list of strings | [ ]     | creates automatic labels for player_lands: _player_1               | x                 | x                        |
-| border_ne                 | float           | 0       | 0<=border<=1 distance from ne border                               | x                 | x                        |
-| border_nw                 | float           | 0       | 0<=border<=1 distance from nw border                               | x                 | x                        |
-| border_se                 | float           | 0       | 0<=border<=1 distance from se border                               | x                 | x                        |
-| border_sw                 | float           | 0       | 0<=border<=1 distance from sw border                               | x                 | x                        |
-| polygon                   | boolean         | false   | polygon constraints                                                | x                 | -                        |
-| polygon_points            | list of float   | []      | list of ne,nw values triangle =0.1,0.3,0.3,0.3,0.2,0.5               | x                 | -                        |
+
+| field                            | type            | default | info                                                               | placement: random | placement: (team_)circle,deep_pocket |
+| -------------------------------- | --------------- | ------- | ------------------------------------------------------------------ | ----------------- | ------------------------------------ |
+| player_lands                     | boolean         | false   | makes island for all players                                       | -                 | x                                    |
+| terrain                          | TERRAIN-TYPE    | GRASS   |                                                                    | x                 | x                                    |
+| basesize                         | int             | 0       | minimum size of baseland, island core must be basesize from border | x                 | x                                    |
+| space_to_other_islands           | int             | 0       | minimum distance in tiles to other all other islands               | x                 | x                                    |
+| tiles                            | int             | maxint  | ~size in tiles                                                     | x                 | x                                    |
+| tiles_scaling                    | enum            | sqrt    | one of: None,sqrt,linear                                           | x                 | x                                    |
+| placement                        | enum            | random  | one of circle,team_circle,random,deep_pocket                       | x                 | x                                    |
+| placement_radius                 | float           | 0.5     | 0<radius<1 relative radius of min(x,y)                             | -                 | x                                    |
+| placement_radius_variance        | float           | 0.3     | radius +- variance, if 0, players will be placed in uniform        | -                 | x                                    |
+| placement_outer_radius           | float           | 0.7     | 0<radius<1 relative radius of min(x,y) used by deep_pocket         | -                 | x                                    |
+| placement_outer_radius_variance  | float           | 0.3     | radius +- variance, if 0, players will be placed in uniform        | -                 | x                                    |
+| placement_angle_variance         | float           | 0.3     | 0<variance<1, if 0, players will be placed in uniform              | -                 | x                                    |
+| labels                           | list of strings | [ ]     | creates automatic labels for player_lands: _player_1               | x                 | x                                    |
+| border_ne                        | float           | 0       | 0<=border<=1 distance from ne border                               | x                 | x                                    |
+| border_nw                        | float           | 0       | 0<=border<=1 distance from nw border                               | x                 | x                                    |
+| border_se                        | float           | 0       | 0<=border<=1 distance from se border                               | x                 | x                                    |
+| border_sw                        | float           | 0       | 0<=border<=1 distance from sw border                               | x                 | x                                    |
+| polygon                          | boolean         | false   | polygon constraints                                                | x                 | -                                    |
+| polygon_points                   | list of float   | []      | list of ne,nw values triangle =0.1,0.3, 0.3,0.3, 0.2,0.5           | x                 | -                                    |
 
 ## OBJECT_XXX
 

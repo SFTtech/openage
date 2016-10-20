@@ -113,7 +113,6 @@ class Polygon:
         self.polygon = list(map(int, points))
         self.polygon.append(self.polygon[0])
         self.polygon.append(self.polygon[1])
-        print(self.polygon)
         self.island = island
 
     def pointInPolygon(self, p_x, p_y):

@@ -5,10 +5,14 @@ base_y = 4
 
 [LAND_PLAYER]
 player_lands=true
-placement=team_circle
-tiles=100
+placement=deep_pocket
+tiles=20
 space_to_other_islands=5
 basesize=5
+placement_radius=0.3
+placement_radius_variance=0
+placement_outer_radius=0.8
+placement_outer_radius_variance=0
 
 [LAND]
 polygon=true
@@ -19,3 +23,6 @@ space_to_other_islands=5
 [CONNECTION_a]
 type=team
 width=3
+cost_WATER=100
+cost_DEEP_WATER=1000
+cost_SHALLOW=90

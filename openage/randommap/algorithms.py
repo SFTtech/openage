@@ -121,6 +121,8 @@ def loadConfiguration(config):
             "placement_radius":           float(config[section].get("placement_radius", 0.5)),
             "placement_radius_variance":  float(config[section].get("placement_radius_variance", 0.3)),
             "placement_angle_variance":   float(config[section].get("placement_angle_variance", 0.3)),
+            "placement_outer_radius":           float(config[section].get("placement_outer_radius", 0.5)),
+            "placement_outer_radius_variance":  float(config[section].get("placement_outer_radius_variance", 0.3)),
             "player_lands":               config[section].getboolean("player_lands", False),
             "labels":                     list(filter(lambda x: not x == '', config[section].get("labels", "").split(","))),
             "polygon":                    config[section].getboolean("polygon", False),
@@ -151,16 +153,16 @@ def loadConfiguration(config):
                 o.terrain["ICE"]:         o.terrain[config[section].get("subtitute_ICE",         "ROAD")],
             },
             "cost": {
-                o.terrain["GRASS"]:       config[section].get("cost_GRASS",       1),
-                o.terrain["WATER"]:       config[section].get("cost_WATER",       1),
-                o.terrain["BEACH"]:       config[section].get("cost_BEACH",       1),
-                o.terrain["SHALLOW"]:     config[section].get("cost_SHALLOW",     1),
-                o.terrain["FORREST"]:     config[section].get("cost_FORREST",     1),
-                o.terrain["DIRT"]:        config[section].get("cost_DIRT",        1),
-                o.terrain["DEEP_WATER"]:  config[section].get("cost_DEEP_WATER", 20),
-                o.terrain["ROAD"]:        config[section].get("cost_ROAD",        1),
-                o.terrain["ROAD_RUINED"]: config[section].get("cost_ROAD_RUINED", 1),
-                o.terrain["ICE"]:         config[section].get("cost_ICE",         1),
+                o.terrain["GRASS"]:       int(config[section].get("cost_GRASS",       1)),
+                o.terrain["WATER"]:       int(config[section].get("cost_WATER",       1)),
+                o.terrain["BEACH"]:       int(config[section].get("cost_BEACH",       1)),
+                o.terrain["SHALLOW"]:     int(config[section].get("cost_SHALLOW",     1)),
+                o.terrain["FORREST"]:     int(config[section].get("cost_FORREST",     1)),
+                o.terrain["DIRT"]:        int(config[section].get("cost_DIRT",        1)),
+                o.terrain["DEEP_WATER"]:  int(config[section].get("cost_DEEP_WATER", 20)),
+                o.terrain["ROAD"]:        int(config[section].get("cost_ROAD",        1)),
+                o.terrain["ROAD_RUINED"]: int(config[section].get("cost_ROAD_RUINED", 1)),
+                o.terrain["ICE"]:         int(config[section].get("cost_ICE",         1)),
             },
             "object_cost": {},
         })
@@ -229,6 +231,102 @@ def createBaseIsland(map):
     map.islands.append(island)
 
 
+def createDeepPocketPlayers(config,landconfig, m, islands, constraints, island_id):
+    offset_minx = int(landconfig["border_sw"] * m.x)
+    offset_maxx = int((1 - landconfig["border_ne"]) * m.x) - 1
+    offset_miny = int(landconfig["border_nw"] * m.y)
+    offset_maxy = int((1 - landconfig["border_se"]) * m.y) - 1
+
+    teams = m.players.teams.copy()
+    random.shuffle(teams)
+    players = [val for sublist in teams for val in sublist]
+    # how many players per team in the inner(outer) circle
+    layout = []
+    inner_players = 0
+    for team in teams:
+        random.shuffle(team)
+        if len(team) > 2:
+            outer = int(round(len(team) / 2 - 0.9))
+            inner = len(team) - outer
+            inner_players += inner
+            layout.append({"inner" : team[0:inner], "outer" : team[inner:]},)
+        else:
+            inner_players = len(team)
+            layout.append({"inner" : team,"outer" : 0})
+
+    r = min(m.x, m.y) / 2
+    player_count  = 1
+    player_offset = 1
+
+    for team in layout:
+        # maker inner ring
+        player_offset = player_count
+        angles_x = []
+        angles_y = []
+        for player in team["inner"]:
+            radius = landconfig["placement_radius"]
+            radius += 2 * landconfig["placement_radius_variance"] * random.random() - landconfig["placement_radius_variance"]
+            radius = max(0.1, radius)
+            radius = min(0.9, radius)
+
+            anglex = player_count / inner_players + (random.random() * landconfig["placement_angle_variance"] / inner_players)
+            angles_x.append(anglex)
+            angley = player_count / inner_players + (random.random() * landconfig["placement_angle_variance"] / inner_players)
+            angles_y.append(angley)
+            player_count += 1
+
+            x = int(r + radius * r * math.sin(2 * math.pi * anglex))
+            y = int(r + radius * r * math.cos(2 * math.pi * angley))
+            tile         = m.get(x, y)
+            tile.island  = 0
+            tile.terrain = landconfig["terrain"]
+            islands.append(classes.Island(island_id,
+                                        m,
+                                        x,
+                                        y,
+                                        terrain = landconfig["terrain"],
+                                        labels=["_player_" + str(player)] + landconfig["labels"],
+                                        tiles=[tile],
+                                        player=player,
+                                        basesize=landconfig["basesize"]))
+
+            constraints += createConstraints(config, landconfig, m, islands[-1])
+            island_id   += 1
+            print("{} {}".format(x,y))
+
+        # make outer ring
+        i = 0
+        for player in team["outer"]:
+            p_count = player_offset + i
+            i += 1
+            radius = landconfig["placement_outer_radius"]
+            radius += 2 * landconfig["placement_outer_radius_variance"] * random.random() - landconfig["placement_outer_radius_variance"]
+            radius = max(0.1, radius)
+            radius = min(0.9, radius)
+
+            anglex = (angles_x[i - 1] + angles_x[i]) / 2
+            angley = (angles_y[i - 1] + angles_y[i]) / 2
+
+            x = int(r + radius * r * math.sin(2 * math.pi * anglex))
+            y = int(r + radius * r * math.cos(2 * math.pi * angley))
+            tile         = m.get(x, y)
+            tile.island  = 0
+            tile.terrain = landconfig["terrain"]
+            islands.append(classes.Island(island_id,
+                                        m,
+                                        x,
+                                        y,
+                                        terrain = landconfig["terrain"],
+                                        labels=["_player_" + str(player)] + landconfig["labels"],
+                                        tiles=[tile],
+                                        player=player,
+                                        basesize=landconfig["basesize"]))
+
+            constraints += createConstraints(config, landconfig, m, islands[-1])
+            island_id   += 1
+    pprint.pprint(layout)
+    return island_id
+
 def createIslands(config, m):
     # get all islands with constraints
     islands = []
@@ -247,8 +345,11 @@ def createIslands(config, m):
             players = list(range(1, m.players.players + 1))
             random.shuffle(players)
 
+            if landconfig["placement"] == "deep_pocket":
+                island_id = createDeepPocketPlayers(config, landconfig, m, islands, constraints, island_id)
+
             # random team_circle
-            if landconfig["placement"] == "team_circle":
+            elif landconfig["placement"] == "team_circle":
                 # shuffle player in team
                 for team in m.players.teams:
                     random.shuffle(team)
@@ -257,39 +358,39 @@ def createIslands(config, m):
                 random.shuffle(teams)
                 players = [val for sublist in teams for val in sublist]
 
-            for player in range(len(players)):
-                # all player will be put in a circle
-                if landconfig["placement"] == "circle" or landconfig["placement"] == "team_circle":
-                    r = min(m.x, m.y) / 2
-                    maxplayers = m.players.players
-                    radius = landconfig["placement_radius"]
-                    radius += 2 * landconfig["placement_radius_variance"] * random.random() - landconfig["placement_radius_variance"]
-                    radius = max(0.1, radius)
-                    radius = min(0.9, radius)
-
-                    anglex = player / maxplayers + (random.random() * landconfig["placement_angle_variance"] / maxplayers)
-                    angley = player / maxplayers + (random.random() * landconfig["placement_angle_variance"] / maxplayers)
-
-                    x = int(r + radius * r * math.sin(2 * math.pi * anglex))
-                    y = int(r + radius * r * math.cos(2 * math.pi * angley))
-                else:
-                    x = random.randrange(1, m.x - 1)
-                    y = random.randrange(1, m.y - 1)
-                tile         = m.get(x, y)
-                tile.island  = 0
-                tile.terrain = landconfig["terrain"]
-                islands.append(classes.Island(island_id,
-                                              m,
-                                              x,
-                                              y,
-                                              terrain = landconfig["terrain"],
-                                              labels=["_player_" + str(players[player])] + landconfig["labels"],
-                                              tiles=[tile],
-                                              player=players[player],
-                                              basesize=landconfig["basesize"]))
-
-                constraints += createConstraints(config, landconfig, m, islands[-1])
-                island_id   += 1
+                for player in range(len(players)):
+                    # all player will be put in a circle
+                    if landconfig["placement"] == "circle" or landconfig["placement"] == "team_circle":
+                        r = min(m.x, m.y) / 2
+                        maxplayers = m.players.players
+                        radius = landconfig["placement_radius"]
+                        radius += 2 * landconfig["placement_radius_variance"] * random.random() - landconfig["placement_radius_variance"]
+                        radius = max(0.1, radius)
+                        radius = min(0.9, radius)
+    
+                        anglex = player / maxplayers + (random.random() * landconfig["placement_angle_variance"] / maxplayers)
+                        angley = player / maxplayers + (random.random() * landconfig["placement_angle_variance"] / maxplayers)
+    
+                        x = int(r + radius * r * math.sin(2 * math.pi * anglex))
+                        y = int(r + radius * r * math.cos(2 * math.pi * angley))
+                    else:
+                        x = random.randrange(1, m.x - 1)
+                        y = random.randrange(1, m.y - 1)
+                    tile         = m.get(x, y)
+                    tile.island  = 0
+                    tile.terrain = landconfig["terrain"]
+                    islands.append(classes.Island(island_id,
+                                                m,
+                                                x,
+                                                y,
+                                                terrain = landconfig["terrain"],
+                                                labels=["_player_" + str(players[player])] + landconfig["labels"],
+                                                tiles=[tile],
+                                                player=players[player],
+                                                basesize=landconfig["basesize"]))
+    
+                    constraints += createConstraints(config, landconfig, m, islands[-1])
+                    island_id   += 1
         # create a single island
         else:
             x = random.randrange(offset_minx, offset_maxx)
