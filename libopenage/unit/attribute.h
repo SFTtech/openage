@@ -183,7 +183,7 @@ public:
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::armor>>(*this);
 	}
-	
+
 	typeamount_set armor;
 };
 
@@ -228,6 +228,7 @@ public:
 	typeamount_set damage;
 	attack_stance stance;
 
+	// TODO move elsewhere in order to become shared attribute
 	// used to change graphics back to normal for villagers
 	UnitType *attack_type;
 };
@@ -265,7 +266,7 @@ public:
 		unit_speed{sp} {}
 
 	bool shared() const override {
-		return false;
+		return true;
 	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
