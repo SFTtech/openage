@@ -87,8 +87,14 @@ find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
 
 set(QT_VERSION_REQ "5.4")
-find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
-find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
+if(APPLE)
+	# tell CMake to look in the default homebrew installation for Qt5
+	find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED PATHS "/usr/local/Cellar/qt5/*")
+	find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED PATHS "/usr/local/Cellar/qt5/*")
+else()
+	find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
+	find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
+endif()
 
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
