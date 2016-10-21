@@ -1,0 +1,1039 @@
+# reversed engineered structures
+# for the age2_x1.exe version 00.09.26.0809
+
+
+RGE_Command
+RGE_Task_list
+
+
+
+\Game (8240)
+	0       VOID    Name
+	4       CALL    005E4DA0
+	8       CALL
+	12      CALL
+	24      CALL
+	28      CALL    005E4720 (GetSetupStatus)
+	32      VOID    hCampaign
+	36      CALL    GetLanguageStringByID
+	40      VOID    Settings
+	44      VOID    HWND (WindowHandle)
+	48      DWORD   WindowStatus
+	56      DWORD
+	72      DWORD   RoomTime
+	76      DWORD
+	80      DWORD   ???
+	88      CALL    ???
+	92      CALL    ???
+	96      CALL    ???
+	100     DWORD   SetupStatus
+	104     FPN4    SetupTimer
+	108     VOID    DirectDraw
+	256     CALL    return world
+	440     VOID
+	476     VOID    Queries
+	1060    VOID    World
+	5092    DWORD   Unknown1
+	5096    DWORD   Unknown2
+	5108    9*BYTE  Player_Cultures
+	5320    VOID    RMS_FileName
+	4253    VOID
+	4780    VOID    PlayerConfigs
+
+\DirectDraw (1208)
+	44      FLT4    ???
+
+\Game\Settings ()
+	1040    DWORD
+	1646    DWORD
+	2196    DWORD   FullScreenEnabled
+	2204    DWORD   DirectDrawEnabled
+	2208    DWORD   SystemMemoryEnabled
+	2276    DWORD   ScreenWidth
+	2280    DWORD   ScreenHeight
+	3396    VOID    DirectoryName
+	3657    VOID    CampaignFileName
+
+\PlayerConfigs (28)
+
+\Game\World[]
+	12      VOID    Rendering
+	16      DWORD   ???
+	20
+	24      DWORD   ???
+	32      DWORD   Spawns_Identity
+	36      FLT4    ???
+	40      BYTE    ???
+	41      BYTE    ???
+	42      BYTE
+	44      DWORD   Sounds_IncrementID
+	48      DWORD   Graphics_IncrementID
+	52      VOID    Terrains
+	56      DWORD   Sounds_Count
+	60      VOID    Sounds_Array
+	64      DWORD   Graphics_Count
+	68      VOID    Graphics_Array
+	72      DWORD   PlayersCount
+	76      VOID    PlayersArray
+	76      CALL    0040AA80
+	80      CALL    0040AAF0
+	80      DWORD   Profiles_Count?
+	84      VOID    Profiles_Array
+	88      VOID    Modification
+	92      WORD    Boundaries_Count
+	94      WORD    Boundaries_Usage
+	96      VOID    Boundaries_Array
+	100     VOID
+	104     VOID    9668 bytes unknown
+	108     VOID    Library
+	112     CALL    ???
+	112     VOID
+	116     DWORD   ???
+	120     CALL    ??? Terrain
+	120     DWORD   Colors_Count
+	124     VOID    Colors_Array
+	128     VOID    Spawns_Identity
+	132     CALL
+	136
+	140     BYTE    ???
+
+	144     VOID
+	148     WORD    CurrentPlayerID
+	152     FLT4    MapViewX
+	156     FLT4    MapViewY
+	160     FLT4    ???
+	164     DWORD   Sounds_Unknown (sound_dvr)
+	168     FLT4    ???
+
+	180     CALL    ? destructor
+
+	192     CALL    ?
+	196     DWORD   CampaignIndex
+	200     DWORD   CampaignPlayerIndex
+	204     DWORD   CampaignScenarioIndex
+	208
+	212     9*DWORD ???
+	248     VOID
+	252     VOID
+	256     VOID
+	260     VOID
+	264     VOID
+	268     VOID
+	272     VOID
+	276     CALL    0040A9B0
+
+	284     DWORD
+
+	396     VOID    Objects_Array
+	400     DWORD   Objects_Count
+	404     DWORD   Difficulty
+	408     DWORD   LockTeams
+	412     VOID
+
+	436     DWORD   ???
+
+	464     DWORD
+
+	472     VOID    ???
+	476     DWORD   ???
+	480     DWORD   ???
+	484
+	488     FLT4    UnknownTime timeGetTime()
+	492     FLT4    timeGetTime()
+	496     DWORD   Researches_Count
+	500     VOID    Researches_Array
+	504     VOID
+			0       DWORD   [off_64923C]
+			14      WORD    Counter
+			15      VOID
+			68      BYTE
+	508     VOID    ???
+	512     DWORD
+	516     DWORD
+	520     DWORD
+	524     BYTE
+	528     DWORD
+	532     BYTE
+	533     BYTE
+	534     BYTE
+	536     DWORD
+	540     DWORD
+	544     DWORD
+	548     DWORD
+	552     DWORD
+	556     DWORD
+	560     DWORD
+	564     DWORD
+	568     DWORD
+	572     DWORD
+	576     DWORD
+	580     DWORD
+	584     DWORD
+	588     DWORD
+	592     DWORD
+	596     DWORD
+	600     DWORD
+	604     DWORD
+	608     DWORD
+	612     DWORD
+	616     DWORD
+
+	648     BYTE
+	649     BYTE
+	650     BYTE
+	651     BYTE
+	652     DWORD   [0x1010101]
+	656     DWORD   [0x1010101]
+	660     DWORD   [1]
+	664     BYTE    ???
+	668     FLT4 ??? [0x45ABE000]
+	672     VOID    Criteria
+	676     VOID    TechTree
+
+	6088    VOID    Sound_Result
+
+\UnitUnknown ()
+	248     DWORD   TaskID
+	308     BYTE    Gathering
+
+\Spawns ()
+	0       DWORD
+	4       VOID    Spawns_Array
+	8       DWORD   Spawns_Count
+
+\Spawns\Spawn ()
+	0       DWORD   Instance
+	4       DWORD   Identity
+	8       VOID    \Unit
+	12      VOID    \Player
+	16      VOID    \Sprite
+	20      VOID
+	24      VOID
+	28      VOID
+	32      VOID    Garrison
+	36      VOID
+	40      WORD    Unknown4
+	42      WORD    Unknown5
+	44      WORD    Unknown6
+	46      WORD    Unknown7
+	48      FLOAT   HitPoints
+	52      BYTE    Unknown9
+	53      BYTE    Frame
+	54      BYTE    SelectionEffect
+	55      BYTE    Discarded1 (some offset)
+	56      FLOAT   PositionX
+	60      FLOAT   PositionY
+	64      FLOAT   PositionZ
+	68      FLOAT   AttributeCapacity
+	72      BYTE    Status
+	73      BYTE    Hittable
+	74      BYTE    Dopple
+	75      BYTE    Unknown3
+	76      WORD    AttributeIdentity
+	78      BYTE    Type
+	79      BYTE    Unknown8
+	80      DWORD
+	84      DWORD
+	88      DWORD
+	92      VOID    Unknown1_Array
+	96      DWORD   Unknown1_Count
+	100     DWORD   Unknown1_Usage
+	100     CALL    Set_Status?
+	104     BYTE
+	108     VOID
+	112     BYTE     [-1,&4]
+
+	117     BYTE
+	116     BYTE    [0,1,2,3]
+	118     BYTE    Unknown10
+	?
+	120     DWORD   [-1]
+	124     BYTE
+	128     DWORD
+	132     FLOAT   (deprecated)
+	136     VOID    SpawnSelection
+	140     DWORD   Unknown1Count2
+
+	156     VOID
+	160     DWORD
+	164     DWORD
+	168     DWORD
+
+	188     FLOAT
+	196     FLOAT
+	192     FLOAT
+	196
+
+	228     CALL
+	232
+
+	240     CALL
+	244     CALL
+	248
+
+	264     VOID
+	268     BYTE
+	270     WORD
+
+	328     VOID    SalvageAttributes
+
+	338     WORD
+	340     WORD    SalvageDecay
+	344     DWORD
+	348     FLOAT
+	352     VOID
+	356
+
+	377     BYTE
+	378     BYTE    TypeFormatted
+	380     FLOAT   MissileAmount1
+	384     VOID
+	388
+	392     BYTE
+
+	404     DWORD
+	408     DWORD
+	412     VOID
+	416
+
+	568     CALL
+
+\Spawns\Spawn\Delta_1 ()
+	0       DWORD   Instance
+	4       VOID    Sprite
+	8       BYTE    Type
+	12      DWORD   DirectionX
+	16      DWORD   DirectionY
+	20      WORD    FrameMirror
+	22      BYTE    Mode
+
+COMMANDS_TYPES
+	0       ?BYTE
+	1       VOID    \Sounds
+
+\Actions\Action (76)
+	0       WORD    Enabled
+	2       WORD    Identity
+	4       BYTE    Unknown1
+	6       WORD    Type
+	8       WORD    Class
+	10      WORD    Object
+	12      BYTE    SelectorEnabler
+	13      BYTE    Unknown7
+	14      WORD    Terrain
+	16      WORD    SelectorMode
+	17      BYTE    RightClickMode
+	18      BYTE    Unknown12
+	20      WORD    AttributeCarried
+	22      WORD    AttributeProduction
+	24      WORD    AttributeDropped
+	26      WORD    AttributeGeneric
+	28      FPN4    AttributeMultiplier
+	32      FPN4    RangeAlert
+	36      FPN4    RangeExtra
+	40      BYTE    Unknown4
+	44      FPN4    Unknown5
+	48      WORD    Plunder
+	50      WORD    Unknown9
+	52      VOID    Graphic1
+	56      VOID    Graphic2
+	60      VOID    Graphic3
+	64      VOID    Graphic4
+	68      VOID    SoundExecute
+	72      VOID    SoundDeposit
+
+\Unit_Static (200)
+	0
+	4       BYTE    Type
+	8       VOID    \Sounds
+	12      WORD    LanguageName
+	14      WORD    LanguageCreation
+	16      WORD    Identity1
+	18      WORD    Identity2
+	20      WORD    Identity3
+	22      WORD    Class
+	24      VOID    GraphicStanding1
+	28      VOID    GraphicStanding2
+	32      VOID    GraphicDying1
+	36      VOID    GraphicDying2
+	40      BYTE    Revival
+	42      WORD    HitPoints
+	44      FPN4    LineOfSight
+	48      BYTE    GarrisonCapacity
+	50      WORD    Speed
+	52      FPN4    RadiusX
+	56      FPN4    RadiusY
+	60      FPN4    RadiusZ
+	64      VOID    SoundSelection
+	68      VOID    TrainSound1
+	72      VOID    SoundDying
+	76      DWORD   TrainSound2
+	80      WORD    ObjectDead
+	82      BYTE    EditorLayer
+	83      BYTE    Hovering
+	84      WORD    Icon
+	86      BYTE    EditorHidden
+	88      WORD    Unknown1
+	90      BYTE    Enabled
+	91      BYTE    Disabled
+	92      WORD    PlacementTerrainBypassX
+	94      WORD    PlacementTerrainBypassY
+	96      WORD    PlacementTerrainStaticX
+	98      WORD    PlacementTerrainStaticY
+	100     FPN4    EditorRadiusX
+	104     FPN4    EditorRadiusY
+	108     BYTE    BuildingMode
+	109     BYTE    FogOfWar
+	110     WORD    Boundary
+	112     BYTE    Flying
+	113
+	114     3*WORD  CostsAttributes
+	120     3*FLOAT CostsQuantities
+	132     WORD    ResourceCapacity
+	136     FPN4    ResourceDecay
+	140     FLOAT   Unknown3
+	144     3*BYTE  Costs
+	147     BYTE    BlastType
+	148     BYTE    Unknown2
+	149     BYTE    Interaction
+	150     BYTE    MinimapMode
+	151     BYTE    CommandAttribute
+	152     BYTE    MinimapColor
+	153     BYTE    AttackMode
+	154     BYTE    NewUnknown
+	155     BYTE    Damages_Count
+	156     VOID    Damages_Array
+	160     BYTE    SelectionMask
+	161     BYTE    SelectionType
+	162     BYTE    SelectionShape
+	163     ?
+	164     DWORD   Attribute
+	168     DWORD   LanguageHelp
+	172     DWORD   LanguageHotkeyText
+	176     DWORD   LanguageHotkey
+	180     BYTE    SelectionDisabled
+	181     BYTE    SelectionUnknown6
+	182     BYTE    SelectionUnknown7 [0,1,2]
+	183     BYTE    SelectionUnknown8
+	184     BYTE    SelectionEffect
+	185     BYTE    SelectionColor
+	188     FPN4    SelectionRadiusX
+	192     FPN4    SelectionRadiusY
+	196     FPN4    SelectionRadiusZ
+
+\Unit_Tree (200)
+
+\Unit_Animated (204)
+	200     FLOAT   Speed
+
+\Unit_Moving (252)
+	204     VOID    SpriteWalking
+	208     VOID    SpriteRunning
+	212     FLOAT   RotationRate
+	216     BYTE    Unknown11
+	?
+	218     WORD    TrackingUnit
+	220     BYTE    TrackingMode
+	224     FLOAT   TrackingDensity
+	228     BYTE    Unknown12
+	229     ?
+	231
+	232     FLOAT   RotationAngle1
+	236     FLOAT   RotationAngle2
+	240     FLOAT   RotationAngle3
+	244     FLOAT   RotationAngle4
+	248     FLOAT   RotationAngle5
+
+\Unit_Action (288)
+	252     VOID    Actions
+	256     WORD    SheepConversion
+	260     FLOAT   SearchRadius
+	264     FLOAT   WorkRate
+	268     WORD    DropSite1
+	270     WORD    DropSite2
+	272     BYTE    TaskSwapGroupID
+	276     VOID    SoundMove
+	280     VOID    SoundStop
+	284     BYTE    AnimalMode
+
+\Unit_Combat (368)
+	288     VOID    SpriteAttack
+	292     WORD    ArmorDefault
+	294     WORD    Armors_Count
+	296     VOID    Armors_Array
+	300     WORD    Attacks_Count
+	304     VOID    Attacks_Array
+	308     WORD    Boundary
+	312     FLOAT   RangeMax
+	316     FLOAT   BlastRadius
+	320     BYTE    BlastLevel
+	324     FLOAT   Reload
+	328     WORD    ObjectProjectile
+	330     WORD    Accuracy
+	332     BYTE    TowerMode
+	334     WORD    Delay
+	336     FLOAT   DisplacementX
+	340     FLOAT   DisplacementY
+	344     FLOAT   DisplacementZ
+	348     FLOAT   RangeMin
+	352     WORD    DisplayedArmor
+	354     WORD    DisplayedAttack
+	356     FLOAT   DisplayedRange
+	360     FLOAT   DisplayedReload
+	364     FLOAT   GarrisonRecovery
+
+\Unit_Missile (380)
+	368     BYTE    Stretch
+	369     BYTE    Smart
+	370     BYTE    DropAnimation
+	371     BYTE    Penetration
+	372     BYTE    Unknown24
+	376     FLOAT   ProjectileArc
+
+\Unit_Combat (444)
+	368     6*3     Costs
+	386     WORD    Timer
+	388     WORD    Location
+	390     BYTE    Button
+	392     WORD    DisplayedPierce
+	396     FLOAT   Unknown26
+	-------------------------
+	400     FLOAT   Unknown27
+	404     BYTE    MissileGraphicDelay
+	408     FLOAT   MissileAmounts
+	412     BYTE    MissileMaximum
+	416     FLOAT   MissileSpawning1
+	420     FLOAT   MissileSpawning2
+	424     FLOAT   MissileSpawning3
+	428     DWORD   MissileUnit
+	432     DWORD   MissileGraphic
+	436     BYTE    Unknown29
+	437     BYTE    HeroMode
+	440     VOID    SpriteGarrison
+
+\Unit_Building (576)
+	444     VOID    SoundConstruction
+	448     VOID    SpriteConstruction
+	452     VOID    SpriteSnow
+	456     BYTE    Adjacent
+	458     WORD    IconDisabler
+	460     BYTE    Disappears
+	462     WORD    StackUnit
+	464     WORD    Terrain
+	466     WORD    Resource
+	468     WORD    Research
+	470     BYTE    Unknown33
+
+	512     WORD    ObjectHead
+	514     WORD    ObjectTransform
+	516     VOID    SoundUnknown
+	520     BYTE    GarrisonType
+	524     FLOAT   GarrisonHealing
+	528     FLOAT   Unknown35
+	532     WORD    Unknown36
+	534     VOID    LootStorages
+	538     WORD
+
+	543     BYTE    Unknown
+
+\Sprite (120)
+	0       0x0D    FileName
+	15
+	16      DWORD   Resource
+	20      BYTE    Status
+	24      VOID    Color_Pointer
+	28      VOID    Resource_Pointer
+	32      VOID
+	36      VOID
+	40      BYTE    Unknown2
+	41      BYTE    Layer
+	42      WORD    Color
+	44      BYTE    Replay
+	46      WORD    Coordinate1
+	48      WORD    Coordinate2
+	50      WORD    Coordinate3
+	52      WORD    Coordinate4
+	54      WORD    Deltas_Count
+	56      VOID    Deltas_Array
+	60      DWORD   DeltasSound
+	64      BYTE    AttackSoundsUsed
+
+	68      VOID    Angles_Array
+	72      0x15    Name
+	94      WORD    Frames
+	96      WORD    Angles
+	100     RN32    Speed
+	104     RN32    Rate
+	108     RN32    Delay
+	112     BYTE    Sequence
+	113     ?
+	114     WORD    Identity
+	116     BYTE    Mirroring
+	117     BYTE    Unknown3
+	118     ?
+	119     ?
+
+\Sprite\Delta [16]
+	0       WORD    Graphic
+	2       WORD    Unknown1
+	4       VOID    Pointer
+	8       WORD    DirectionX
+	10      WORD    DirectionY
+	12      WORD    Angle
+	14      WORD    Unknown2
+
+\DRS (276) dword_6B59E4
+	0       ?
+	2       VOID    DRS_File
+
+	16      STR     FileName
+
+\DRS\File ()
+	0               Copyright
+	40      4       Signature
+	44      12      Name
+	56              Length
+	72              Tables
+
+\ResImage (36)
+	0       VOID    Resource1
+	4       VOID    BitmapInfoHeader
+	8       VOID    BitmapColorsQuad
+	12      VOID    Resource2
+	16      DWORD   Version
+	20      DWORD   SizeX
+	24      DWORD   SizeY
+	28      WORD    Orientation
+
+\ResShape (28)
+	0       BT32    FileFlag
+	4       DWORD   FileSize
+	12      VOID    FileData
+
+\Profiles
+	0       CALL    0040AB50
+	4
+
+\Profile (48)
+	0       DWORD   off_642E2C
+	4       20      Title
+	20      CALL    Writer?
+	24      DWORD   Objects_Count
+	28      VOID    Objects_Array
+	32      WORD    Attributes_Count
+	36      VOID    Attributes_Array
+	40      BYTE    Theme
+	41      BYTE    ???
+	42      WORD    TechTree
+	44      WORD    TeamBonus
+	46      ???
+
+\SeededMaps (44)
+	0
+
+\Researches (12)
+	0       VOID Array
+	4       DWORD Count
+	8       DWORD PlayerID
+
+\Research (68)
+	0
+	2       VOID    Requirements
+	16      WORD    Requisites
+	18      WORD    Profile
+	20      WORD    FullTechMode
+	22      3*WORD  Attribute
+	28      3*WORD  Quantity
+	34      3*BYTE  Deducted
+	38      WORD    Timer
+	40      WORD    Modifier
+	42      WORD    Type
+	44      WORD    Icon
+	46      BYTE    Button
+	48      WORD    Location
+	50      WORD    LanguageName
+	52      WORD    LanguageDescription
+	56      DWORD   LanguageHelp
+	60      DWORD   LanguageName2
+	64      DWORD   LanguageSlot
+
+\Modificator (12)
+	0       DWORD   Instance
+	4       VOID    Modifiers_Array
+	8       DWORD   Modifiers_Count
+
+\Modifiers\Modifier (44)
+	0       ???
+	1       ???     ???
+	2       31      Title
+	36      WORD    Controls_Count
+	40      VOID    Controls_Array
+
+\Modifier\Controls\Control (12)
+	0       WORD    Type
+	2       WORD    Argument1
+	4       WORD    Argument2
+	6       WORD    Argument3
+	8       FPN4    Operand
+
+\Lineages\Lineage (16)
+	0       WORD
+	4       VOID
+
+\Technologies (16)
+	0       VOID    Array
+	4       DWORD   Count
+	8       VOID    Researches
+	12      VOID    Player
+
+\Technologies\Technology ()
+
+
+\TechTree (44)
+	0       DWORD   Group_Ages_Count
+	4       VOID    Group_Ages_Array
+	8       DWORD   Group_Builds_Count
+	12      VOID    Group_Builds_Array
+	16      DWORD   Group_Units_Count
+	20      VOID    Group_Units_Array
+	24      DWORD   Group_Techs_Count
+	28      VOID    Group_Techs_Array
+	32      DWORD   Identity
+	36      DWORD   Culture
+	40      DWORD   Linear
+
+\TechTree\Group_Age (144)
+	0       DWORD   Identity
+	4       DWORD   Status
+	8       DWORD   Linear
+	12      DWORD   Buildings_Count
+	16      VOID    Buildings_Array
+	20      DWORD   Units_Count
+	24      VOID    Units_Array
+	28      DWORD   Researches_Count
+	32      VOID    Researches_Array
+	36      84      Items
+	120     BYTE    Slots
+	121             Unknown3
+	131             Unknown4
+	141             Unknown5
+
+\TechTree\Group_Build (136)
+	0       DWORD   Identity
+	4       DWORD   ResearchEnabler
+	8       DWORD   Status
+	12      DWORD   Linear
+	16      DWORD   Builds_Count
+	20      VOID    Builds_Array
+	24      DWORD   Units_Count
+	28      VOID    Units_Array
+	32      DWORD   Techs_Count
+	36      VOID    Techs_Array
+	40      84      Items
+	124     DWORD   Horizon
+	125     BYTE*5  DominionsTotal
+	130     BYTE*5  DominionsFirst
+	135     BYTE    DominionsUnknown
+
+\TechTree\Group_Unit (124)
+	0       DWORD   Identity
+	4       DWORD   ResearchEnabler
+	8       DWORD   Status
+	12      DWORD   Linear
+	16      DWORD   Origin
+	20      DWORD   ResearchRequired
+	24      DWORD   Units_Count
+	28      VOID    Units_Array
+	32      84      Items
+	116     DWORD   Column
+	120     DWORD   Horizon
+
+\TechTree\Group_Tech (132)
+	0       DWORD   Identity
+	4       DWORD   Status
+	8       DWORD   Linear
+	12      DWORD   Origin
+	16      DWORD   Builds_Count
+	20      VOID    Builds_Array
+	24      DWORD   Units_Count
+	28      VOID    Units_Array
+	32      DWORD   Techs_Count
+	36      VOID    Techs_Array
+	40      84      Items
+	124     DWORD   Column
+	128     DWORD   Horizon
+
+\Database\Objects (12)
+	0       DWORD   Instance
+	4       VOID    Array
+	8       DWORD   Count
+
+\TerrainTile (0x0020)
+	0x00    WORD    ???
+	0x02    WORD    ???
+	0x04    BYTE    [0-16]
+	0x05    BYTE    Texture [0]
+	0x06    BYTE    Elevation [1]
+	0x07    BYTE    ??? [0] DWORD
+	0x08    BYTE    ??? [-1]
+	0x09    BYTE    ??? [0]
+	0x0A    BYTE    ??? [0]
+	0x0B    (BIT1)  ???
+	0x0C    BYTE    ??? [0]
+	0x0D    BYTE    ??? [0]
+	0x0E    BYTE    ??? [-1]
+	0x0F    BYTE    ??? [0]
+	0x10    DWORD   ??? [0]
+	0x14    DWORD   ??? [0]
+	0x18    ???
+	0x1C    ???
+
+\Renderer ()
+	0       DWORD   Instance
+	4       VOID    Tiles_Data_1
+	8       DWORD   Size_X
+	12      DWORD   Size_Y
+	16      DWORD   Size_X_Multiply
+	20      DWORD   Size_Y_Multiply
+
+	0x0024  (SFLT)  ??? [0x40400000]
+	0x0038  VOID    PlayersData
+
+	140     (42*436=18312) Terrains
+	18452   (16*1440=23040) Borders
+	22296
+	41492   VOID    Tiles_Data_2
+	41496   FLT4    MapMinX
+	41500   FLT4    MapMinY
+	41504   FLT4    MapMaxX
+	41508   FLT4    MapMaxY
+	41512   FLT4    MapMaxXPlus1
+	41516   FLT4    MapMaxYPlus1
+	41520   WORD    Terrains_Count
+	41522   WORD    Borders_Count
+	41524   WORD    MaxTerrains
+	41526   WORD    TileSizeX
+	41528   WORD    TileSizeY
+	41530   WORD    TileHalfSizeY
+	41532   WORD    TileHalfSizeX
+	41534   WORD    TileSizeZ (ElevationHeight)
+	41536   WORD    CurrentX
+	41538   WORD    CurrentY
+	41540   WORD    Block0X
+	41542   WORD    Block1X
+	41544   WORD    Block0Y
+	41546   WORD    Block1Y
+	41548   VOID    SearchMapX
+	41552   VOID    SearchMapY
+	41556   BYTE    AnyFrameChange
+	41557   BYTE    Map_Visible_Flag
+	41558   BYTE    Fog_Flag
+	41559   BYTE    UMV_Data_List_Used
+	41560   DWORD   UMV_Data_List_Size
+	41564   VOID    UMV_Data_GUID
+	41568   VOID    UMV_Data_Points
+	41572   VOID    OB_Manager
+	41576   VOID    ???
+	41580   VOID    RandomMaps
+	41584   VOID    GameWorld
+	41588   VOID    MapZones (Players array)
+	41592   VOID    InifiedVisMap
+	41596   VOID    UnitManager
+	41600   VOID    MapCopyData
+	41604   DWORD   OL_SystemActive [0,1]
+	41608   VOID    OL_ZoneNum
+	41612   DWORD   OL_MaxListSize [2]
+	41616   DWORD   OL_HeapSize [4]
+	41620   DWORD   OL_Pool [12]
+	41624   DWORD    [250]
+	41628   DWORD    [x/8]
+	41632   DWORD    [x/32]
+	41636   DWORD    [32]
+	41640   DWORD    [16]
+	41644   VOID
+
+	41916   VOID    Plugins (Blendomatic, ect... other DAT)
+	41920   DWORD    [400]
+	41924
+	41928   DWORD    [0,1]
+	41932   DWORD   Iterator
+	41936   17*VOID ElevationsData1
+	42004   17*VOID ElevationsData2
+	42072   17*VOID ElevationsData3
+	42140   17*VOID ElevationsData4
+
+	42208
+
+	42228   DWORD
+	42232   DWORD
+	42236   DWORD
+	42240   DWORD
+	42244
+	42248   256*40  PatternMasks
+
+\Renderer\Plugins ()
+	900     10*VOID ViewICM (inverse color maps, 1 for RGB, 9 for HSV brightness)
+	940     17*VOID STemplet (elevations shape)
+	1008    17*VOID FilterMaps (texture mapping bilinear filter, uses an ICM as reference)
+	1076    17*VOID LoqMaps
+	1144    18*VOID LightMaps
+	1216    40*VOID PatternMasks
+	1508    31*VOID Blendomatic (blending modes)
+
+\RandomMaps (22304)
+
+\RandomMaps_ScriptController (288412)
+	259428  VOID
+	259436  DWORD   CurrentType
+	259440  DWORD   CurrentComment
+	259444  DWORD   CurrentBracket
+	259448  100*4   ArrayConditionStatus
+	259848  BYTE    CurrentCondition
+
+	285856  BYTE    CurrentRandom
+	285860          ArrayRandomsStart
+
+	253024  DWORD   MinNumberOfCliffs
+	253028  DWORD   MaxNumberOfCliffs
+	253032  DWORD   MinLengthOfCliff
+	253036  DWORD   MaxLengthOfCliff
+	253040  DWORD   CliffCurliness
+	253048  DWORD   MinDistanceCliffs
+	253044  DWORD   MinTerrainDistance
+
+	259420  BYTE    CurrentGenStatElevation
+	259421  BYTE    CurrentGenStatConnect
+	259422  BYTE    CurrentGenStatTerrain
+	259423  BYTE    CurrentGenStatObjects
+	259424  BYTE    CurrentGenStatCliff
+	259425  BYTE    CurrentGenStatLand
+
+	286260          ArrayRandomsStatus
+
+	287172  DWORD   ElevationGeneratorDefaultTerrain
+	287176  DWORD   ElevationGeneratorReplaceTerrain
+
+	287580  DWORD   ConnectionGeneratorReplaceTerrain
+	287980  DWORD   GlobalRandomStart
+	288396
+
+\Player
+	132     ?
+
+\Condition
+	0       BYTE    Type
+	1               ObjectConstant
+	2               ObjectSource
+	8       DWORD   PlayerID
+
+\Sounds\Sound (16)
+	0       WORD    Status
+	2       WORD    Items_Count
+	4       VOID    Items_Array
+	8       DWORD   Timer
+	12      DWORD   Identity
+
+\Sounds\Sound\Items\Item (40)
+	0       0x0D    FileName
+	16      DWORD   ResourceID
+	20      WORD    Percent
+	22      WORD    CultureID
+	24      WORD    PlayerID
+	28      VOID    ResourceStruct
+	32      BYTE    Status [2]
+	36      DWORD   Timer
+
+\SoundResourceStruct (32)
+	0       DWORD
+	4       BYTE
+	5       BYTE
+
+	8       DWORD   ResourceID
+	12      ?
+	16      ?
+	20      ?
+	24      BYTE
+	28      VOID
+
+\Coloration (56)
+	0       ?
+
+\Terrain [436]
+	0       WORD    enabled??? (-1)
+	2       CNST    Title
+	15      CNST    FileName
+	28      DWORD   Resource
+	32      DWORD
+	36      VOID    Color_COL
+	40      DWORD
+	44      DWORD
+	48      BYTE    Color1
+	49      BYTE    Color2
+	50      BYTE    Color3
+	51      BYTE
+	52      BYTE
+	53      BYTE    Passable
+	54      BYTE    Impassable
+	55      BYTE    Animate
+	56      WORD    SpriteFrames
+	58      WORD    Pause
+	60      FLT4    Rate
+	64      FLT4    Delay
+	68      WORD
+	70      WORD
+	72      DWORD
+	76      BYTE
+	77      BYTE
+	140     ?
+
+	172     DWORD
+	180     DWORD   ???
+	188     BYTE
+	189     BYTE
+	190     BYTE
+	192     WORD
+	194     WORD    DimensionX
+	196     WORD    DimensionY
+	198     CNST    Placements
+	217     BYTE
+	332     WORD
+
+\Borders\Border ()
+	0
+
+\RandomMaps\Words
+	26      DWORD   Arg2
+	29      STR     Arg1 (Name)
+	100     BYTE    Zero
+	108     BYTE    Arg3
+	109     BYTE    Arg4
+	110     BYTE    Arg5
+	111     BYTE    Arg6
+
+\Behavior\Script ()
+	1012    VOID    CurrentName
+	1016    DWORD   CurrentLine
+	1020    VOID    Corruption
+
+# This structure is deprecated.
+# It was once used for debug purposes.
+Behavior\Script\Corruption (396)
+	0       BYTE    Flag
+	260     DWORD
+	264     BYTE
+	392     DWORD   Code
+
+\Mission (20)
+	0       VOID    Instance
+	4
+	8       VOID    Conditions_Array
+	12      WORD    Conditions_Count
+	14      WORD    Available
+	16      FLOAT   Timeline
+
+\Campaign ()
+	?
+
+\Victory ()
+	32      DWORD   Unknown2
+	36      DWORD   Unknown3
