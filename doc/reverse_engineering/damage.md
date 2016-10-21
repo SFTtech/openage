@@ -20,7 +20,7 @@ ram             | castle   | 2             | 0              | 88              | 
 
 Each unit has a list of attack and armor classes.
 
-When some unit attacks another, all those attack classes are used which the target hast the matching armor classes for.
+When some unit attacks another, only the classes that exist in both units are used.
 
 For example: **Halberdier vs Marmeluke**
 
@@ -64,4 +64,4 @@ So in the example we have:
 
 
 All units (except trees, gregarious animals, hunting wolves and some units from beta versions)
-have a default value for each armor class that they don't have of **1000**.
+have a default value of **1000** for each armor class that they don't have.
