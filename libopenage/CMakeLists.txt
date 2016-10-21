@@ -145,6 +145,11 @@ get_config_option_string()
 configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
 
+# default homebrew/cellar Qt5 installation
+if(APPLE)
+	find_path(QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders "/usr/local/Cellar/qt5/*/include")
+endif()
+
 # directories for header inclusion
 include_directories(
 	${OPENGL_INCLUDE_DIR}
@@ -154,6 +159,7 @@ include_directories(
 	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
 	${HarfBuzz_INCLUDE_DIRS}
+	${QTPLATFORM_INCLUDE_DIRS}
 )
 
 # link the executable to those libraries
