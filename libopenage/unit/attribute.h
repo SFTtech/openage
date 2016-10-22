@@ -115,7 +115,11 @@ public:
 
 using attr_map_t = std::map<attr_type, std::shared_ptr<AttributeContainer>>;
 
-using typeamount_set = std::map<int, unsigned int>;
+/**
+ * An unordered_map with a int key used as a type id
+ * and a unsigned int value used as the amount
+ */
+using typeamount_map = std::unordered_map<int, unsigned int>;
 
 /**
  * return attribute from a container
@@ -171,7 +175,7 @@ public:
 
 template<> class Attribute<attr_type::armor>: public AttributeContainer {
 public:
-	Attribute(typeamount_set a)
+	Attribute(typeamount_map a)
 		:
 		AttributeContainer{attr_type::armor},
 		armor{a} {}
@@ -184,7 +188,7 @@ public:
 		return std::make_shared<Attribute<attr_type::armor>>(*this);
 	}
 
-	typeamount_set armor;
+	typeamount_map armor;
 };
 
 template<> class Attribute<attr_type::attack>: public AttributeContainer {
@@ -198,10 +202,10 @@ public:
 		init_height{h},
 		stance{attack_stance::do_nothing},
 		attack_type{reset_type} {
-		damage[4] = d;
+		damage[4] = d; // 4 = gamedata::hit_class::UNITS_MELEE (not exported at the moment)
 	}
 
-	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_set d, UnitType *reset_type)
+	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d, UnitType *reset_type)
 		:
 		AttributeContainer{attr_type::attack},
 		ptype{type},
@@ -225,7 +229,7 @@ public:
 	UnitType *ptype; // projectile type
 	coord::phys_t range;
 	coord::phys_t init_height;
-	typeamount_set damage;
+	typeamount_map damage;
 	attack_stance stance;
 
 	// TODO move elsewhere in order to become shared attribute
