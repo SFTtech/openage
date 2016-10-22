@@ -194,16 +194,10 @@ public:
 template<> class Attribute<attr_type::attack>: public AttributeContainer {
 public:
 	// TODO remove (keep for testing)
+	// 4 = gamedata::hit_class::UNITS_MELEE (not exported at the moment)
 	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d, UnitType *reset_type)
 		:
-		AttributeContainer{attr_type::attack},
-		ptype{type},
-		range{r},
-		init_height{h},
-		stance{attack_stance::do_nothing},
-		attack_type{reset_type} {
-		damage[4] = d; // 4 = gamedata::hit_class::UNITS_MELEE (not exported at the moment)
-	}
+		Attribute{type, r, h, {{4, d}}, reset_type} {}
 
 	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d, UnitType *reset_type)
 		:
