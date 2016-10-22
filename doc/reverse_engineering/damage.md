@@ -20,7 +20,7 @@ ram             | castle   | 2             | 0              | 88              | 
 
 Each unit has a list of attack and armor classes.
 
-When some unit attacks another, only the classes that exist in both units are used.
+When some unit attacks another, each attacker's attack classes is used only if the target has the matching armor class.
 
 For example: **Halberdier vs Marmeluke**
 
