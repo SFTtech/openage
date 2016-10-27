@@ -96,6 +96,7 @@ void UnitAction::face_towards(const coord::phys3 pos) {
 	}
 }
 
+// TODO remove (keep for testing)
 void UnitAction::damage_object(Unit &target, unsigned dmg) {
 	if (target.has_attribute(attr_type::hitpoints)) {
 		auto &hp = target.get_attribute<attr_type::hitpoints>();
@@ -104,6 +105,42 @@ void UnitAction::damage_object(Unit &target, unsigned dmg) {
 		}
 		else {
 		    hp.current = 0;
+		}
+	}
+}
+
+void UnitAction::damage_object(Unit &target) {
+	if (target.has_attribute(attr_type::hitpoints)) {
+		auto &hp = target.get_attribute<attr_type::hitpoints>();
+
+		if (target.has_attribute(attr_type::armor) && this->entity->has_attribute(attr_type::attack)) {
+			auto &armor = target.get_attribute<attr_type::armor>().armor;
+			auto &damage = this->entity->get_attribute<attr_type::attack>().damage;
+
+			unsigned int actual_damage = 0;
+			for (const auto &pair : armor) {
+				auto search = damage.find(pair.first);
+				if (search != damage.end()) {
+					if (pair.second < search->second) {
+						actual_damage += search->second - pair.second;
+					}
+				}
+			}
+			// TODO add elevation modifier here
+			if (actual_damage < 1) {
+				actual_damage = 1;
+			}
+
+			if (hp.current > actual_damage) {
+				hp.current -= actual_damage;
+			}
+			else {
+				hp.current = 0;
+			}
+		}
+		else {
+			// TODO remove (keep for testing)
+			damage_object(target, 1);
 		}
 	}
 }
@@ -980,7 +1017,7 @@ void AttackAction::attack(Unit &target) {
 		this->fire_projectile(attack, target.location->pos.draw);
 	}
 	else {
-		this->damage_object(target, 1);
+		this->damage_object(target);
 	}
 }
 
