@@ -12,6 +12,7 @@
 namespace openage {
 
 class Unit;
+class Team;
 
 class Player {
 public:
@@ -37,6 +38,12 @@ public:
 	 * visible name of this player
 	 */
 	const std::string name;
+
+	/**
+	 * the team of this player
+	 * nullptr if member of no team
+	 */
+	Team *team;
 
 	/**
 	 * checks if two players are the same

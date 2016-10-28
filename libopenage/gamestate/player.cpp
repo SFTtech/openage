@@ -3,6 +3,7 @@
 #include "../unit/unit.h"
 #include "../unit/unit_type.h"
 #include "player.h"
+#include "team.h"
 
 namespace openage {
 
@@ -11,7 +12,8 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	player_number{number},
 	color{number},
 	civ{civ},
-	name{name} {
+	name{name},
+	team{nullptr} {
 }
 
 bool Player::operator ==(const Player &other) const {
@@ -20,14 +22,21 @@ bool Player::operator ==(const Player &other) const {
 
 bool Player::is_enemy(const Player &other) const {
 
-	// everyone else is enemy
-	return player_number != other.player_number;
+	return !this->is_ally(other);
 }
 
 bool Player::is_ally(const Player &other) const {
 
+	if (this->player_number == other.player_number) {
+		return true; // same player
+	}
+
+	if (this->team && this->team->is_member(other)) {
+		return true; // same team
+	}
+
 	// everyone else is enemy
-	return player_number == other.player_number;
+	return false;
 }
 
 bool Player::owns(Unit &unit) const {

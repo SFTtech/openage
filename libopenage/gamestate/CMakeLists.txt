@@ -5,4 +5,5 @@ add_sources(libopenage
 	game_spec.cpp
 	generator.cpp
 	player.cpp
+	team.cpp
 )
