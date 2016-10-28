@@ -793,7 +793,6 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 		if (this->complete >= 1.0f) {
 			this->complete = build.completed = 1.0f;
 			target_location->place(build.completion_state);
-			this->entity->build_next();
 		}
 	}
 	else {
@@ -802,6 +801,31 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 
 	// inc frame
 	this->frame += time * this->frame_rate / 2.5f;
+}
+
+void BuildAction::on_completion() {
+	if (this->get_target().get()->get_attribute<attr_type::building>().completed < 1.0f) {
+		// The BuildAction was just aborted and we shouldn't look for new buildings
+		return;
+	}
+	this->entity->log(MSG(dbg) << "Done building, searching for new building");
+	auto valid = [this](const TerrainObject &obj) {
+		if (!obj.unit.has_attribute(attr_type::building) ||
+		    obj.unit.get_attribute<attr_type::building>().completed >= 1.0f) {
+			return false;
+		}
+		this->entity->log(MSG(dbg) << "Found unit " << obj.unit.logsource_name());
+		return true;
+	};
+
+	TerrainObject *new_target = find_in_radius(*this->entity->location, valid, 9.0f);
+	if (new_target != nullptr) {
+		this->entity->log(MSG(dbg) << "Found new building, queueing command");
+		Command cmd(this->entity->get_attribute<attr_type::owner>().player, &new_target->unit);
+		this->entity->queue_cmd(cmd);
+	} else {
+		this->entity->log(MSG(dbg) << "Didn't find new building");
+	}
 }
 
 const graphic_set &BuildAction::current_graphics() const {

@@ -290,40 +290,6 @@ void Unit::stop_actions() {
 		});
 }
 
-bool Unit::build_next() {
-	this->log(MSG(dbg) << "Building next building...");
-
-	std::vector<Unit *> units = this->get_container()->all_units();
-	Unit *closest = nullptr;
-	coord::phys_t closest_distance = std::numeric_limits<coord::phys_t>::max();
-
-	for (Unit *unit : units) {
-		if (!unit->has_attribute(attr_type::building)) {
-			continue;
-		}
-		auto &build = unit->get_attribute<attr_type::building>();
-		if (build.completed == 1.0f) {
-			continue;
-		}
-		// TODO: Check range and building size and actually test this
-		coord::phys_t distance = unit->location->from_edge(this->location->pos.draw);
-		if (distance < closest_distance) {
-			closest = unit;
-			closest_distance = distance;
-		}
-	}
-
-	if (closest == nullptr) {
-		return false;
-	}
-
-	closest->log(MSG(info) << "Closest unfinished building with distance " << closest_distance);
-	Command cmd(this->get_attribute<attr_type::owner>().player, closest);
-	this->queue_cmd(cmd);
-
-	return true;
-}
-
 UnitReference Unit::get_ref() {
 	return UnitReference(&container, id, this);
 }
