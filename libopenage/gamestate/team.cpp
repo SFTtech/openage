@@ -19,7 +19,7 @@ Team::Team(unsigned int id, std::string name, Player *leader)
 	name{name} {
 
 	if (leader) {
-		this->members[leader] = member_type::leader;
+		this->add_member(*leader, member_type::leader);
 	}
 }
 
