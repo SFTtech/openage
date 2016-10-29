@@ -14,6 +14,9 @@
 namespace openage {
 namespace console {
 
+class NewBuf;
+
+
 /**
  * the length of the escape sequence buffer, and thus the maximum length
  * of any escape sequence that will be successfully processed.
@@ -115,8 +118,215 @@ struct buf_line {
 constexpr buf_line BUF_LINE_DEFAULT {LINE_EMPTY};
 
 class Buf {
+	friend class NewBuf;
+
 public:
-	//following this line are all terminal buffer related variables
+	Buf(coord::term dims, coord::term_t scrollback_lines, coord::term_t min_width,
+	    buf_char default_char_fmt = {0x20, 254, 0, 0});
+	~Buf();
+
+	/*
+	 * we don't want this object to be copyable
+	 */
+	Buf& operator=(const Buf &) = delete;
+	Buf(const Buf &) = delete;
+
+
+	/**
+	 * resets the buffer to its constructor defaults
+	 */
+	void reset();
+
+	/**
+	 * write a byte string to the buffer
+	 *
+	 * the string is assumed to be UTF-8 encoded.
+	 *
+	 * if len >= 0, it describes the length of the string.
+	 * otherwise, the string is assumed to be null-terminated.
+	 */
+	void write(const char *c, ssize_t len = -1);
+
+	/**
+	 * write a single byte to the buffer.
+	 *
+	 * assumed to be UTF-8 encoded.
+	 */
+	void write(char c);
+
+	/**
+	 * Pop the last char of the current line
+	 *
+	 * Will correctly handle UTF-8 chars and wrapped lines.
+	 */
+	void pop_last_char();
+
+	/**
+	 * resizes the screen buffer
+	 */
+	void resize(coord::term new_dims);
+
+	/**
+	 * scrolls up or down by the given number of lines
+	 *
+	 * lines
+	 *   amount of lines to scroll up - may be negative
+	 *   if the upper or lower limit is reached, this is capped.
+	 */
+	void scroll(coord::term_t lines);
+
+	// the following members could/should be private, but we don't believe in withholding
+	// crucial information from the public. besides, sooner or later some whistleblower
+	// would release the pointers anyway.
+	// also, I don't believe in friends.
+
+	/**
+	 * utf-8 state-machine that reads input bytes
+	 * and outputs unicode codepoints
+	 */
+	util::utf8_decoder streamdecoder;
+
+	/**
+	 * processes one unicode codepoint
+	 * internally called by write(char) after feeding the
+	 * char into streamdecoder
+	 */
+	void process_codepoint(int cp);
+
+	/**
+	 * prints one unicode codepoint
+	 * interally called by process_codepoint(int cp) after sorting out escape sequences, and by some escape sequences such as CSI @
+	 */
+	void print_codepoint(int cp);
+
+	/**
+	 * aborts the current escape sequence
+	 * (e.g. because it contained an illegal
+	 * character, or is not implemented)
+	 */
+	void escape_sequence_aborted();
+
+	/**
+	 * called when a escape sequence has been
+	 * successfully processed, clears the
+	 * sequence. either this or abort_escape_sequence
+	 * is called for each escape sequence.
+	 */
+	void escape_sequence_processed();
+
+	/**
+	 * processes the CSI escape sequence currently stored in
+	 * escape_sequence.
+	 * invalid sequences are ignored.
+	 */
+	void process_csi_escape_sequence();
+
+	/**
+	 * processes a single-codepoint escape sequence.
+	 * invalid codepoints are ignored.
+	 */
+	void process_escaped_cp(int cp);
+
+	/**
+	 * processes a text escape sequence
+	 * that is one of OSC, DCS, APC or PM
+	 */
+	void process_text_escape_sequence();
+
+	/**
+	 * sets graphics rendition parameters; called by
+	 * process_escape_sequence
+	 *
+	 * params:
+	 *   numerical params list from escape sequence
+	 */
+	void process_sgr_code(const std::vector<int> &params);
+
+	/**
+	 * advances the buffer by the specified number of lines.
+	 *
+	 * the top lines are moved to the scrollback buffer.
+	 * the top lines of the scrollback buffer are discarded.
+	 * the bottom lines of the buffer are empty after this.
+	 * the cursor position is not changed by this.
+	 *
+	 * linecount:
+	 *   the number of lines to advance the buffer;
+	 *   defaults to one.
+	 *   may be > buffer height.
+	 */
+	void advance(unsigned linecount = 1);
+
+	/**
+	 * clears the screen character and line buffers.
+	 * lines are cleared iff all of their characters are cleared.
+	 *
+	 * if start >= end, nothing happens.
+	 *
+	 * inputs are not sanitized.
+	 *
+	 * start
+	 *   screen buffer coordinates of first character to be deleted
+	 *   negative values of y indicate scrollback buffer
+	 *   -scrollback_lines <= y < dims.y
+	 *   0 <= x < dims.x
+	 * end
+	 *   screen buffer coordinates of first character not to be deleted
+	 *   negative values of y indicate scrollback buffer
+	 *   -scrollback_lines <= y < dims.y
+	 *   0 <= x < dims.x
+	 *   {x, y} = {0, dims.y} is allowed.
+	 * clear_end
+	 *   if true, end is incremented by 1. this affects all constraints.
+	 */
+	void clear(coord::term start, coord::term end, bool clear_end = false);
+
+	/**
+	 * clears a range of the data buffer.
+	 * end is the first character that is not cleared.
+	 * end and start both must be valid pointers within data.
+	 */
+	void chrdata_clear(buf_char *start, buf_char *end);
+
+	/**
+	 * clears a range of the linedata buffer.
+	 * end is the first line that is not cleared.
+	 * end and start both must be valid pointers within data.
+	 */
+	void linedata_clear(buf_line *start, buf_line *end);
+
+	/**
+	 * returns a valid pointer to the character info for the character
+	 * designated by pos
+	 *
+	 * pos
+	 *   screen buffer coordinates
+	 *   negative values of y indicate scrollback buffer
+	 *   -scrollback_lines <= pos.y <= dims.y
+	 *   0 <= pos.x < dims.x
+	 *   if y == dims.y, the return ptr is not guaranteed to be valid.
+	 */
+	buf_char *chrdataptr(coord::term pos);
+
+	/**
+	 * returns a valid pointer to the line info for the line designated
+	 * by lineno
+	 *
+	 * lineno
+	 *   number of line in screen buffer
+	 *   negative numbers indicate scrollback buffer
+	 *   -scrollback_lines <= lineno <= dims.y
+	 *   if lineno == dims.y, the return ptr is not guaranteed to be valid.
+	 */
+	buf_line *linedataptr(coord::term_t lineno);
+
+	/**
+	 * Return the dimensions of the visible console area.
+	 */
+	const coord::term &get_dims() const;
+
+public:
+	// following this line are all terminal buffer related variables
 
 	/**
 	 * the complete (2-dimensional) terminal output buffer content
@@ -305,205 +515,6 @@ public:
 	 * must be >= 0 and <= scrollback_possible.
 	 */
 	coord::term_t scrollback_pos;
-
-	/**
-	 * resets the buffer to its constructor defaults
-	 */
-	void reset();
-
-	/**
-	 * write a byte string to the buffer
-	 *
-	 * the string is assumed to be UTF-8 encoded.
-	 *
-	 * if len >= 0, it describes the length of the string.
-	 * otherwise, the string is assumed to be null-terminated.
-	 */
-	void write(const char *c, ssize_t len = -1);
-
-	/**
-	 * write a single byte to the buffer.
-	 *
-	 * assumed to be UTF-8 encoded.
-	 */
-	void write(char c);
-
-	/**
-	 * Pop the last char of the current line
-	 *
-	 * Will correctly handle UTF-8 chars and wrapped lines.
-	 */
-	void pop_last_char();
-
-
-	Buf(coord::term dims, coord::term_t scrollback_lines, coord::term_t min_width,
-	 buf_char default_char_fmt = {0x20, 254, 0, 0});
-	~Buf();
-
-	/*
-	 * we don't want this object to be copyable
-	 */
-	Buf& operator=(const Buf &) = delete;
-	Buf(const Buf &) = delete;
-
-	/**
-	 * resizes the screen buffer
-	 */
-	void resize(coord::term new_dims);
-
-	/**
-	 * scrolls up or down by the given number of lines
-	 *
-	 * lines
-	 *   amount of lines to scroll up - may be negative
-	 *   if the upper or lower limit is reached, this is capped.
-	 */
-	void scroll(coord::term_t lines);
-
-	//the following members could/should be private, but we don't believe in withholding
-	//crucial information from the public. besides, sooner or later some whistleblower
-	//would release the pointers anyway.
-	//also, I don't believe in friends.
-
-	/**
-	 * utf-8 state-machine that reads input bytes
-	 * and outputs unicode codepoints
-	 */
-	util::utf8_decoder streamdecoder;
-
-	/**
-	 * processes one unicode codepoint
-	 * internally called by write(char) after feeding the
-	 * char into streamdecoder
-	 */
-	void process_codepoint(int cp);
-
-	/**
-	 * prints one unicode codepoint
-	 * interally called by process_codepoint(int cp) after sorting out escape sequences, and by some escape sequences such as CSI @
-	 */
-	void print_codepoint(int cp);
-
-	/**
-	 * aborts the current escape sequence
-	 * (e.g. because it contained an illegal
-	 * character, or is not implemented)
-	 */
-	void escape_sequence_aborted();
-
-	/**
-	 * called when a escape sequence has been
-	 * successfully processed, clears the
-	 * sequence. either this or abort_escape_sequence
-	 * is called for each escape sequence.
-	 */
-	void escape_sequence_processed();
-
-	/**
-	 * processes the CSI escape sequence currently stored in
-	 * escape_sequence.
-	 * invalid sequences are ignored.
-	 */
-	void process_csi_escape_sequence();
-
-	/**
-	 * processes a single-codepoint escape sequence.
-	 * invalid codepoints are ignored.
-	 */
-	void process_escaped_cp(int cp);
-
-	/**
-	 * processes a text escape sequence
-	 * that is one of OSC, DCS, APC or PM
-	 */
-	void process_text_escape_sequence();
-
-	/**
-	 * sets graphics rendition parameters; called by
-	 * process_escape_sequence
-	 *
-	 * params:
-	 *   numerical params list from escape sequence
-	 */
-	void process_sgr_code(const std::vector<int> &params);
-
-	/**
-	 * advances the buffer by the specified number of lines.
-	 *
-	 * the top lines are moved to the scrollback buffer.
-	 * the top lines of the scrollback buffer are discarded.
-	 * the bottom lines of the buffer are empty after this.
-	 * the cursor position is not changed by this.
-	 *
-	 * linecount:
-	 *   the number of lines to advance the buffer;
-	 *   defaults to one.
-	 *   may be > buffer height.
-	 */
-	void advance(unsigned linecount = 1);
-
-	/**
-	 * clears the screen character and line buffers.
-	 * lines are cleared iff all of their characters are cleared.
-	 *
-	 * if start >= end, nothing happens.
-	 *
-	 * inputs are not sanitized.
-	 *
-	 * start
-	 *   screen buffer coordinates of first character to be deleted
-	 *   negative values of y indicate scrollback buffer
-	 *   -scrollback_lines <= y < dims.y
-	 *   0 <= x < dims.x
-	 * end
-	 *   screen buffer coordinates of first character not to be deleted
-	 *   negative values of y indicate scrollback buffer
-	 *   -scrollback_lines <= y < dims.y
-	 *   0 <= x < dims.x
-	 *   {x, y} = {0, dims.y} is allowed.
-	 * clear_end
-	 *   if true, end is incremented by 1. this affects all constraints.
-	 */
-	void clear(coord::term start, coord::term end, bool clear_end = false);
-
-	/**
-	 * clears a range of the data buffer.
-	 * end is the first character that is not cleared.
-	 * end and start both must be valid pointers within data.
-	 */
-	void chrdata_clear(buf_char *start, buf_char *end);
-
-	/**
-	 * clears a range of the linedata buffer.
-	 * end is the first line that is not cleared.
-	 * end and start both must be valid pointers within data.
-	 */
-	void linedata_clear(buf_line *start, buf_line *end);
-
-	/**
-	 * returns a valid pointer to the character info for the character
-	 * designated by pos
-	 *
-	 * pos
-	 *   screen buffer coordinates
-	 *   negative values of y indicate scrollback buffer
-	 *   -scrollback_lines <= pos.y <= dims.y
-	 *   0 <= pos.x < dims.x
-	 *   if y == dims.y, the return ptr is not guaranteed to be valid.
-	 */
-	buf_char *chrdataptr(coord::term pos);
-
-	/**
-	 * returns a valid pointer to the line info for the line designated
-	 * by lineno
-	 *
-	 * lineno
-	 *   number of line in screen buffer
-	 *   negative numbers indicate scrollback buffer
-	 *   -scrollback_lines <= lineno <= dims.y
-	 *   if lineno == dims.y, the return ptr is not guaranteed to be valid.
-	 */
-	buf_line *linedataptr(coord::term_t lineno);
 };
 
 }} // openage::console

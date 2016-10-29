@@ -1153,4 +1153,9 @@ buf_line *Buf::linedataptr(term_t lineno) {
 	return result;
 }
 
+const coord::term &Buf::get_dims() const {
+	return this->dims;
+}
+
+
 }} // openage::console

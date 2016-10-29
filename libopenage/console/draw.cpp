@@ -21,7 +21,7 @@ namespace openage {
 namespace console {
 namespace draw {
 
-void to_opengl(Console *console) {
+void to_opengl(Engine *engine, Console *console) {
 	coord::camhud topleft = {
 		console->bottomleft.x,
 		// TODO This should probably just be console->topright.y
@@ -30,8 +30,7 @@ void to_opengl(Console *console) {
 	coord::camhud chartopleft;
 	coord::pixel_t ascender = static_cast<coord::pixel_t>(console->font.get_ascender());
 
-	Engine &engine = Engine::get();
-	renderer::TextRenderer *text_renderer = engine.get_text_renderer();
+	renderer::TextRenderer *text_renderer = engine->get_text_renderer();
 	text_renderer->set_font(&console->font);
 
 	int64_t monotime = timing::get_monotonic_time();
