@@ -5,7 +5,6 @@
 #include "../log/log.h"
 #include "../util/file.h"
 #include "../engine.h"
-#include "../console/console.h"
 #include "../testing/testing.h"
 
 #include "phys2.h"
@@ -549,24 +548,6 @@ void camhud_0() {
 
 	results_w = c.to_window();
 	(results_w == expected_w) or TESTFAIL;
-
-	// Test camhud to term
-
-	// TODO The expected results for this was created by just seeing
-	// What the results acually were. Need to investigate the bottomleft
-	// and top right of console as a toptight that is the camhud type
-	// is negative in its y and thus would be off the screen
-
-	console::Console con;
-
-	window size{80*con.charsize.x, 25*con.charsize.y};
-	con.on_resize(size);
-
-	term expected_t{1, -54};
-	c = {12, 6};
-
-	term results_t = c.to_term(&con);
-	(results_t == expected_t) or TESTFAIL;
 }
 
 /**
@@ -586,17 +567,8 @@ void camhud_delta_0() {
 	(results_wd == expected_wd) or TESTFAIL;
 }
 
-/**
- * This function tests the methods of term
- */
-void term_0() {
-	console::Console con;
-	camhud expected_c{40, 340};
-	term t{5, 5};
+// TODO test the terminal coordinates
 
-	camhud results_c = t.to_camhud(&con);
-	(results_c == expected_c) or TESTFAIL;
-}
 
 /**
  * Top level function for coord testing.
@@ -615,7 +587,6 @@ void coord() {
 	camgame_delta_0();
 	camhud_0();
 	camhud_delta_0();
-	term_0();
 }
 
 }}} // openage::coord::tests

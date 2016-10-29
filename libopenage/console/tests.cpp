@@ -23,9 +23,13 @@ namespace console {
 namespace tests {
 
 
+// TODO: move to util
 int max(int a, int b) {
 	return (a > b) ? a : b;
 }
+
+
+// TODO: test for console coordinates and resizing
 
 
 void render() {
