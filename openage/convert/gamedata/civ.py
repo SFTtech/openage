@@ -1,4 +1,4 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -11,7 +11,7 @@ from ..dataformat.member_access import READ, READ_EXPORT
 class Civ(Exportable):
     name_struct = "civilisation"
     name_struct_file = name_struct
-    struct_description = "describes one a civilisation."
+    struct_description = "describes a civilisation."
 
     data_format = (
         (READ, "enabled", "int8_t"),
