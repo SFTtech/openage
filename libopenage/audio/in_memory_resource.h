@@ -20,12 +20,13 @@ private:
 	pcm_data_t buffer;
 
 public:
-	InMemoryResource(
-		category_t category, int id,
-		const std::string &path,
-		format_t format=format_t::OPUS
-	);
+	InMemoryResource(AudioManager *manager,
+	                 category_t category, int id, const std::string &path,
+	                 format_t format=format_t::OPUS);
 	virtual ~InMemoryResource() = default;
+
+	void use() override;
+	void stop_using() override;
 
 	audio_chunk_t get_data(size_t position, size_t data_length) override;
 };

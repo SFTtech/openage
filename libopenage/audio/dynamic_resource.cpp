@@ -2,7 +2,10 @@
 
 #include "dynamic_resource.h"
 
+
+#include "audio_manager.h"
 #include "../engine.h"
+#include "../job/job_manager.h"
 #include "../log/log.h"
 
 namespace openage {
@@ -13,10 +16,11 @@ chunk_info_t::chunk_info_t(chunk_info_t::state_t state,
 	:
 	state{state},
 	actual_size{0},
-	buffer{new int16_t[buffer_size]} {
-}
+	buffer{std::make_unique<int16_t[]>(buffer_size)} {}
 
-DynamicResource::DynamicResource(category_t category,
+
+DynamicResource::DynamicResource(AudioManager *manager,
+                                 category_t category,
                                  int id,
                                  const std::string &path,
                                  format_t format,
@@ -24,14 +28,13 @@ DynamicResource::DynamicResource(category_t category,
                                  size_t chunk_size,
                                  size_t max_chunks)
 	:
-	Resource{category, id},
+	Resource{manager, category, id},
 	path{path},
 	format{format},
 	preload_threshold{preload_threshold},
 	chunk_size{chunk_size},
 	max_chunks{max_chunks},
-	use_count{0} {
-}
+	use_count{0} {}
 
 void DynamicResource::use() {
 	log::log(MSG(info) << "DYNRES: now in use");
@@ -50,9 +53,8 @@ void DynamicResource::use() {
 			);
 		}
 
-		// get loading job group
-		Engine &e = Engine::get();
-		this->loading_job_group = e.get_job_manager()->create_job_group();
+		// create loading job group
+		this->loading_job_group = this->manager->get_job_manager()->create_job_group();
 	}
 }
 
