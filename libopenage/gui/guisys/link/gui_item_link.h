@@ -83,4 +83,39 @@ typename Unwrap<T>::Type* unwrap_if_can(T *t) {
 	return unwrap(t);
 }
 
+/**
+ * Checking that callable can be called with given argument types.
+ */
+struct can_call_test {
+	template<typename F, typename ... Args>
+	static decltype(std::declval<F>()(std::declval<Args>()...), std::true_type()) f(int);
+
+	template<typename F, typename ... Args>
+	static std::false_type f(...);
+};
+
+/**
+ * Evaluates to true if callable can be called with given argument types.
+ *
+ * @tparam F callable
+ * @tparam A arguments to test against the callable
+ */
+template<typename F, typename ... Args>
+struct can_call : decltype(can_call_test::f<F, Args...>(0)) {
+};
+
+/**
+ * To print our own error message that warns about possible cause of the argument mismatch.
+ *
+ * Unwrapping uses type trait "Unwrap" that is defined in the header with corresponding type.
+ * If the header is not included, then compiler considers it as a basic type and tries to pass it wrapped to a function that expects an unwrapped type.
+ *
+ * @tparam F callable
+ * @tparam A arguments to test against the callable
+ */
+template<typename F, typename ... Args>
+constexpr void static_assert_about_unwrapping() {
+	static_assert(can_call<F, Args...>{}, "One of possible causes: if you're passing SomethingLink*, then don't forget to #include \"something_link.h\".");
+}
+
 } // namespace qtsdl
