@@ -63,7 +63,8 @@ public:
 	virtual ~GameSpec();
 
 	/**
-	 * begin the main loading job
+	 * perform the main loading job.
+	 * this loads all the data into the storage.
 	 */
 	bool initialize();
 
@@ -216,17 +217,33 @@ namespace openage {
 
 class GameSpecSignals;
 
+/**
+ * Game specification instanciated in QML.
+ * Linked to the "GameSpec" QML type.
+ */
 class GameSpecHandle {
 public:
 	explicit GameSpecHandle(qtsdl::GuiItemLink *gui_link);
 
+	/**
+	 * Control whether this specification can be loaded (=true)
+	 * or will not be loaded (=false).
+	 */
 	void set_active(bool active);
+
+	/**
+	 * invoked from qml when the asset_manager member is set.
+	 */
 	void set_asset_manager(AssetManager *asset_manager);
 
+	/**
+	 * Return if the specification was fully loaded.
+	 */
 	bool is_ready() const;
 
 	/**
-	 * forget everything
+	 * forget everything about the specification and
+	 * reload it with `start_loading_if_needed`.
 	 */
 	void invalidate();
 
@@ -235,17 +252,37 @@ public:
 	 */
 	void announce_spec();
 
+	/**
+	 * Return the contained game specification.
+	 */
 	std::shared_ptr<GameSpec> get_spec();
 
 private:
+	/**
+	 * load the game specification if not already present.
+	 */
 	void start_loading_if_needed();
+
+	/**
+	 * Actually dispatch the loading job to the job manager.
+	 */
 	void start_load_job();
 
+	/**
+	 * called from the job manager when the loading job finished.
+	 */
 	void on_loaded(job::result_function_t<bool> result);
 
+	/**
+	 * The real game specification.
+	 */
 	std::shared_ptr<GameSpec> spec;
 
+	/**
+	 * enables the loading of the game specification.
+	 */
 	bool active;
+
 	AssetManager *asset_manager;
 
 public:
