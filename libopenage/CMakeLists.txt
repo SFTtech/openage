@@ -6,6 +6,9 @@
 # are specified below the source file list.
 
 set(CMAKE_AUTOMOC ON)
+if(APPLE)
+        list(APPEND CMAKE_PREFIX_PATH /usr/local/opt/qt5)
+endif()
 
 declare_binary(libopenage)
 
@@ -139,6 +142,10 @@ get_config_option_string()
 configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
 
+if(APPLE)
+	find_path(QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders "/usr/local/opt/qt5/include")
+endif()
+
 # directories for header inclusion
 include_directories(
 	${OPENGL_INCLUDE_DIR}
@@ -148,6 +155,7 @@ include_directories(
 	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
 	${HarfBuzz_INCLUDE_DIRS}
+        ${QTPLATFORM_INCLUDE_DIRS}
 )
 
 # link the executable to those libraries
