@@ -89,6 +89,7 @@ _the openage authors_ are:
 | Johannes Walcher            | tomatower                   | johannes.walcher@stusta.de            |
 | Akritas Akritidis           | MaanooAk                    | akritasak@gmail.com                   |
 | Edgard Mota                 | edgardmota                  | edgardmota@gmail.com                  |
+| Boris Dušek                 | dusek                       | me@dusek.me                           |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
