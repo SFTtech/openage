@@ -49,7 +49,7 @@ bool UnitSelection::on_drawhud() {
 				float percent = static_cast<float>(hp.current) / static_cast<float>(hp.max);
 				int mid = percent * 28.0f - 14.0f;
 
-				coord::phys3 &pos_phys3 = unit_ptr->location->pos.draw;
+				const coord::phys3 &pos_phys3 = unit_ptr->location->pos.draw;
 				coord::camhud pos = pos_phys3.to_camgame().to_window().to_camhud();
 				glColor3f(0.0, 1.0, 0.0);
 				glBegin(GL_LINES); {

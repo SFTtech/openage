@@ -507,8 +507,8 @@ void MoveAction::update(unsigned int time) {
 			this->end_action = true;
 			return;
 		}
-		coord::phys3 &target_pos = target_object->pos.draw;
-		coord::phys3 &unit_pos = this->entity->location->pos.draw;
+		const coord::phys3 &target_pos = target_object->pos.draw;
+		const coord::phys3 &unit_pos = this->entity->location->pos.draw;
 
 		// repath if target changes tiles by a threshold
 		// this repathing is more frequent when the unit is
@@ -638,7 +638,7 @@ void MoveAction::set_path() {
 void MoveAction::set_distance() {
 	if (this->unit_target.is_valid()) {
 		auto &target_object = this->unit_target.get()->location;
-		coord::phys3 &unit_pos = this->entity->location->pos.draw;
+		const coord::phys3 &unit_pos = this->entity->location->pos.draw;
 		this->distance_to_target = target_object->from_edge(unit_pos);
 	}
 	else {
