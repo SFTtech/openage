@@ -10,6 +10,7 @@
 #include "../unit/producer.h"
 #include "../unit/unit.h"
 #include "../unit/unit_type.h"
+#include "../unit/attribute_watcher.h"
 #include "game_main.h"
 #include "game_save.h"
 #include "game_spec.h"
@@ -18,19 +19,21 @@ namespace openage {
 namespace gameio {
 
 void save_unit(std::ofstream &file, Unit *unit) {
+	// TODO: store pointer to the printer as a member, make bindable
+	AttributeWatcher printer;
 	file << unit->unit_type->id() << std::endl;
-	file << unit->get_attribute<attr_type::owner>().player.player_number << std::endl;
+	file << unit->get_attribute<attr_type::owner>(printer).player.player_number << std::endl;
 	coord::tile pos = unit->location->pos.start;
 	file << pos.ne << " " << pos.se << std::endl;
 
 	bool has_building_attr = unit->has_attribute(attr_type::building);
 	file << has_building_attr << std::endl;
 	if (has_building_attr) {
-		file << unit->get_attribute<attr_type::building>().completed << std::endl;
+		file << unit->get_attribute<attr_type::building>(printer).completed << std::endl;
 	}
 }
 
-void load_unit(std::ifstream &file, openage::GameMain *game) {
+void load_unit(std::ifstream &file, openage::GameMain *game, AttributeWatcher &watcher) {
 	int pr_id;
 	int player_no;
 	coord::phys_t ne, se;
@@ -40,7 +43,7 @@ void load_unit(std::ifstream &file, openage::GameMain *game) {
 	file >> se;
 
 	UnitType &saved_type = *game->get_player(player_no)->get_type(pr_id);
-	auto ref = game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
+	auto ref = game->placed_units.new_unit(watcher, saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
 
 	bool has_building_attr;
 	file >> has_building_attr;
@@ -48,7 +51,7 @@ void load_unit(std::ifstream &file, openage::GameMain *game) {
 		float completed;
 		file >> completed;
 		if (completed >= 1.0f && ref.is_valid()) {
-			complete_building(*ref.get());
+			complete_building(watcher, *ref.get());
 		}
 	}
 }
@@ -140,8 +143,10 @@ void load(openage::GameMain *game, std::string fname) {
 	game->placed_units.reset();
 	unsigned int num_units;
 	file >> num_units;
+	// TODO: pass pointer to the printer, make bindable
+	AttributeWatcher printer;
 	for (unsigned int u = 0; u < num_units; ++u) {
-		load_unit( file, game );
+		load_unit(file, game, printer);
 	}
 }
 

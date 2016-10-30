@@ -4,6 +4,8 @@
 #include "../terrain/terrain.h"
 #include "../unit/unit_type.h"
 #include "game_main.h"
+
+#include "../unit/attribute_watcher.h"
 #include "game_spec.h"
 #include "generator.h"
 
@@ -29,7 +31,9 @@ GameMain::GameMain(const Generator &generator)
 
 	// initialise units
 	this->placed_units.set_terrain(this->terrain);
-	generator.add_units(*this);
+	// TODO: store pointer to the printer as a member, make bindable
+	AttributeWatcher printer;
+	generator.add_units(*this, printer);
 }
 
 GameMain::~GameMain() {
@@ -49,7 +53,9 @@ GameSpec *GameMain::get_spec() {
 }
 
 void GameMain::update() {
-	this->placed_units.update_all();
+	// TODO: store pointer to the printer as a member, make bindable
+	AttributeWatcher printer;
+	this->placed_units.update_all(printer);
 }
 
 Civilisation *GameMain::add_civ(int civ_id) {

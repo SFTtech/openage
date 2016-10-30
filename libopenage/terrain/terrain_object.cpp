@@ -467,9 +467,9 @@ tile_range building_center(coord::phys3 west, coord::tile_delta size) {
 	return result;
 }
 
-bool complete_building(Unit &u) {
+bool complete_building(AttributeWatcher &watcher, Unit &u) {
 	if (u.has_attribute(attr_type::building)) {
-		auto &build = u.get_attribute<attr_type::building>();
+		auto &build = u.get_attribute<attr_type::building>(watcher);
 		build.completed = 1.0f;
 
 		// set ground under a completed building

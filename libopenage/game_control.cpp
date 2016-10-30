@@ -4,6 +4,7 @@
 #include "util/strings.h"
 #include "terrain/terrain_chunk.h"
 #include "game_control.h"
+#include "unit/attribute_watcher.h"
 
 namespace openage {
 
@@ -111,8 +112,10 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		if (player->type_count() > 0) {
 			UnitType &type = *player->get_type(590);
 
+			// TODO: store pointer to the printer as a member, make bindable
+			AttributeWatcher printer;
 			// TODO tile position
-			engine.get_game()->placed_units.new_unit(type, *player, this->mousepos_phys3);
+			engine.get_game()->placed_units.new_unit(printer, type, *player, this->mousepos_phys3);
 		}
 	});
 	this->bind(action.get("KILL_UNIT"), [this](const input::action_arg_t &) {
@@ -332,7 +335,9 @@ bool ActionMode::place_selection(coord::phys3 point) {
 		// first create foundation using the producer
 		Engine &engine = Engine::get();
 		UnitContainer *container = &engine.get_game()->placed_units;
-		UnitReference new_building = container->new_unit(*this->type_focus, *this->game_control->get_current_player(), point);
+		// TODO: store pointer to the printer as a member, make bindable
+		AttributeWatcher printer;
+		UnitReference new_building = container->new_unit(printer, *this->type_focus, *this->game_control->get_current_player(), point);
 
 		// task all selected villagers to build
 		// TODO: editor placed objects are completed already
@@ -526,7 +531,9 @@ void EditorMode::paint_entity_at(const coord::window &point, const bool del) {
 
 		// tile is empty so try creating a unit
 		UnitContainer *container = &engine.get_game()->placed_units;
-		container->new_unit(*selected_type, *this->game_control->get_current_player(), mousepos_phys3);
+		// TODO: store pointer to the printer as a member, make bindable
+		AttributeWatcher printer;
+		container->new_unit(printer, *selected_type, *this->game_control->get_current_player(), mousepos_phys3);
 	}
 }
 

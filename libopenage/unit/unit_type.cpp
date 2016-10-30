@@ -102,7 +102,7 @@ std::string NyanType::name() const {
 	return "Nyan";
 }
 
-void NyanType::initialise(Unit *unit, Player &) {
+void NyanType::initialise(AttributeWatcher &, Unit *unit, Player &) {
 	// reset any existing attributes and type
 	unit->reset();
 

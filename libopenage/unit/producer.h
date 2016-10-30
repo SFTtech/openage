@@ -40,7 +40,7 @@ public:
 	int id() const override;
 	int parent_id() const override;
 	std::string name() const override;
-	void initialise(Unit *, Player &) override;
+	void initialise(AttributeWatcher &, Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
@@ -71,7 +71,7 @@ public:
 	MovableProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_movable *);
 	virtual ~MovableProducer();
 
-	void initialise(Unit *, Player &) override;
+	void initialise(AttributeWatcher &, Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
@@ -94,7 +94,7 @@ public:
 	LivingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_living *);
 	virtual ~LivingProducer();
 
-	void initialise(Unit *, Player &) override;
+	void initialise(AttributeWatcher &, Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
@@ -114,7 +114,7 @@ public:
 	int id() const override;
 	int parent_id() const override;
 	std::string name() const override;
-	void initialise(Unit *, Player &) override;
+	void initialise(AttributeWatcher &, Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
@@ -156,7 +156,7 @@ public:
 	int id() const override;
 	int parent_id() const override;
 	std::string name() const override;
-	void initialise(Unit *, Player &) override;
+	void initialise(AttributeWatcher &, Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:

@@ -11,6 +11,7 @@
 #include "../terrain/terrain_object.h"
 #include "../gamestate/resource.h"
 #include "unit_container.h"
+#include "attribute_watcher.h"
 
 namespace std {
 
@@ -124,8 +125,15 @@ using typeamount_map = std::unordered_map<int, unsigned int>;
 /**
  * return attribute from a container
  */
-template<attr_type T> Attribute<T> get_attr(attr_map_t &map) {
-	return *reinterpret_cast<Attribute<T> *>(map[T]);
+template<attr_type T> Attribute<T>& get_attr_ref(attr_map_t &map) {
+	return *reinterpret_cast<Attribute<T> *>(map[T].get());
+}
+
+/**
+ * return attribute as constant from a container
+ */
+template<attr_type T> const Attribute<T>& get_attr_ref(const attr_map_t &map) {
+	return *reinterpret_cast<const Attribute<T> *>(map.at(T).get());
 }
 
 // -----------------------------
@@ -154,11 +162,13 @@ public:
 
 template<> class Attribute<attr_type::hitpoints>: public AttributeContainer {
 public:
-	Attribute(unsigned int i)
+	Attribute(AttributeWatcher &watcher, id_t id, unsigned int i)
 		:
 		AttributeContainer{attr_type::hitpoints},
 		current{i},
-		max{i} {}
+		max{i} {
+			watcher.apply(id, i, "hitpoints");
+		}
 
 	bool shared() const override {
 		return false;
@@ -362,7 +372,7 @@ public:
 		return std::make_shared<Attribute<attr_type::dropsite>>(*this);
 	}
 
-	bool accepting_resource(game_resource res) {
+	bool accepting_resource(game_resource res) const {
 		if (std::find(resource_types.begin(), resource_types.end(), res) != resource_types.end()) {
 			return true;
 		} else {

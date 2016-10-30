@@ -89,17 +89,17 @@ void UnitAction::draw_debug() {
 	}
 }
 
-void UnitAction::face_towards(const coord::phys3 pos) {
+void UnitAction::face_towards(AttributeWatcher &watcher, const coord::phys3 pos) {
 	if (this->entity->has_attribute(attr_type::direction)) {
-		auto &d_attr = this->entity->get_attribute<attr_type::direction>();
+		auto &d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
 		d_attr.unit_dir = pos - this->entity->location->pos.draw;
 	}
 }
 
 // TODO remove (keep for testing)
-void UnitAction::damage_object(Unit &target, unsigned dmg) {
+void UnitAction::damage_object(AttributeWatcher &watcher, Unit &target, unsigned dmg) {
 	if (target.has_attribute(attr_type::hitpoints)) {
-		auto &hp = target.get_attribute<attr_type::hitpoints>();
+		auto hp = target.get_attribute<attr_type::hitpoints>(watcher);
 		if (hp.current > dmg) {
 		    hp.current -= dmg;
 		}
@@ -109,13 +109,13 @@ void UnitAction::damage_object(Unit &target, unsigned dmg) {
 	}
 }
 
-void UnitAction::damage_object(Unit &target) {
+void UnitAction::damage_object(AttributeWatcher &watcher, Unit &target) {
 	if (target.has_attribute(attr_type::hitpoints)) {
-		auto &hp = target.get_attribute<attr_type::hitpoints>();
+		auto hp = target.get_attribute<attr_type::hitpoints>(watcher);
 
 		if (target.has_attribute(attr_type::armor) && this->entity->has_attribute(attr_type::attack)) {
-			auto &armor = target.get_attribute<attr_type::armor>().armor;
-			auto &damage = this->entity->get_attribute<attr_type::attack>().damage;
+			const auto &armor = target.get_attribute<attr_type::armor>().armor;
+			const auto &damage = this->entity->get_attribute<attr_type::attack>().damage;
 
 			unsigned int actual_damage = 0;
 			for (const auto &pair : armor) {
@@ -140,13 +140,13 @@ void UnitAction::damage_object(Unit &target) {
 		}
 		else {
 			// TODO remove (keep for testing)
-			damage_object(target, 1);
+			damage_object(watcher, target, 1);
 		}
 	}
 }
 
-void UnitAction::move_to(Unit &target, bool use_range) {
-	auto &player = this->entity->get_attribute<attr_type::owner>().player;
+void UnitAction::move_to(AttributeWatcher &watcher, Unit &target, bool use_range) {
+	auto &player = this->entity->get_attribute<attr_type::owner>(watcher).player;
 	Command cmd(player, &target);
 	cmd.set_ability(ability_type::move);
 	if (use_range) {
@@ -179,7 +179,7 @@ TargetAction::TargetAction(Unit *u, graphic_type gt, UnitReference r)
 	TargetAction(u, gt, r, adjacent_range(u)) {
 }
 
-void TargetAction::update(unsigned int time) {
+void TargetAction::update(AttributeWatcher &watcher, unsigned int time) {
 	auto target_ptr = update_distance();
 	if (!target_ptr) {
 		return; // target has become invalid
@@ -190,21 +190,21 @@ void TargetAction::update(unsigned int time) {
 	// derived from TargetAction
 
 	// set direction unit should face
-	this->face_towards(target_ptr->location->pos.draw);
+	this->face_towards(watcher, target_ptr->location->pos.draw);
 
 	// move to within the set radius
 	if (this->dist_to_target <= this->radius) {
 
 		// the derived class controls what to
 		// do when in range of the target
-		this->update_in_range(time, target_ptr);
+		this->update_in_range(watcher, time, target_ptr);
 		this->repath_attempts = 10;
 	}
 	else if (this->repath_attempts) {
 
 		// out of range so try move towards
 		// if this unit has a move ability
-		this->move_to(*target_ptr);
+		this->move_to(watcher, *target_ptr);
 		this->repath_attempts -= 1;
 	}
 	else {
@@ -294,7 +294,7 @@ DecayAction::DecayAction(Unit *e)
 	}
 }
 
-void DecayAction::update(unsigned int time) {
+void DecayAction::update(AttributeWatcher&, unsigned int time) {
 	this->frame += time * this->frame_rate / 10000.0f;
 }
 
@@ -316,9 +316,9 @@ DeadAction::DeadAction(Unit *e, std::function<void()> on_complete)
 	}
 }
 
-void DeadAction::update(unsigned int time) {
+void DeadAction::update(AttributeWatcher &watcher, unsigned int time) {
 	if (this->entity->has_attribute(attr_type::hitpoints)) {
-		auto &h_attr = this->entity->get_attribute<attr_type::hitpoints>();
+		auto h_attr = this->entity->get_attribute<attr_type::hitpoints>(watcher);
 		h_attr.current = 0;
 	}
 
@@ -353,7 +353,7 @@ FoundationAction::FoundationAction(Unit *e, bool add_destruction)
 	cancel{false} {
 }
 
-void FoundationAction::update(unsigned int) {
+void FoundationAction::update(AttributeWatcher&, unsigned int) {
 	if (!this->entity->location) {
 		this->cancel = true;
 	}
@@ -390,7 +390,7 @@ IdleAction::IdleAction(Unit *e)
 	this->auto_abilities = UnitAbility::set_from_list({ability_type::attack, ability_type::heal});
 }
 
-void IdleAction::update(unsigned int time) {
+void IdleAction::update(AttributeWatcher&, unsigned int time) {
 
 	// auto task searching
 	if (this->entity->location &&
@@ -497,7 +497,7 @@ void MoveAction::initialise() {
 
 MoveAction::~MoveAction() {}
 
-void MoveAction::update(unsigned int time) {
+void MoveAction::update(AttributeWatcher &watcher, unsigned int time) {
 	if (this->unit_target.is_valid()) {
 		// a unit is targeted, which may move
 		auto &target_object = this->unit_target.get()->location;
@@ -533,12 +533,12 @@ void MoveAction::update(unsigned int time) {
 	}
 
 	// find distance to move in this update
-	auto &sp_attr = this->entity->get_attribute<attr_type::speed>();
+	auto &sp_attr = this->entity->get_attribute<attr_type::speed>(watcher);
 	coord::phys_t distance_to_move = sp_attr.unit_speed * time;
 
 	// current position and direction
 	coord::phys3 new_position = this->entity->location->pos.draw;
-	auto &d_attr = this->entity->get_attribute<attr_type::direction>();
+	auto &d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
 	coord::phys3_delta new_direction = d_attr.unit_dir;
 
 	while (distance_to_move > 0) {
@@ -653,8 +653,8 @@ GarrisonAction::GarrisonAction(Unit *e, UnitReference build)
 	complete{false} {
 }
 
-void GarrisonAction::update_in_range(unsigned int, Unit *target_unit) {
-	auto &garrison_attr = target_unit->get_attribute<attr_type::garrison>();
+void GarrisonAction::update_in_range(AttributeWatcher &watcher, unsigned int, Unit *target_unit) {
+	auto &garrison_attr = target_unit->get_attribute<attr_type::garrison>(watcher);
 	garrison_attr.content.push_back(this->entity->get_ref());
 
 	if (this->entity->location) {
@@ -671,14 +671,14 @@ UngarrisonAction::UngarrisonAction(Unit *e, const coord::phys3 &pos)
 	complete{false} {
 }
 
-void UngarrisonAction::update(unsigned int) {
-	auto &garrison_attr = this->entity->get_attribute<attr_type::garrison>();
+void UngarrisonAction::update(AttributeWatcher &watcher, unsigned int) {
+	auto &garrison_attr = this->entity->get_attribute<attr_type::garrison>(watcher);
 
 	// try unload all objects currently garrisoned
 	auto position_it = std::remove_if(
 		std::begin(garrison_attr.content),
 		std::end(garrison_attr.content),
-		[this](UnitReference &u) {
+		[this, &watcher](UnitReference &u) {
 			if (u.is_valid()) {
 
 				// ptr to unit being ungarrisoned
@@ -688,7 +688,7 @@ void UngarrisonAction::update(unsigned int) {
 				if (unit_ptr->unit_type->place_beside(unit_ptr, this->entity->location.get())) {
 
 					// task unit to move to position
-					auto &player = this->entity->get_attribute<attr_type::owner>().player;
+					auto &player = this->entity->get_attribute<attr_type::owner>(watcher).player;
 					Command cmd(player, this->position);
 					cmd.set_ability(ability_type::move);
 					unit_ptr->queue_cmd(cmd);
@@ -715,15 +715,15 @@ TrainAction::TrainAction(Unit *e, UnitType *pp)
 	train_percent{.0f} {
 }
 
-void TrainAction::update(unsigned int time) {
+void TrainAction::update(AttributeWatcher &watcher, unsigned int time) {
 
 	// place unit when ready
 	if (this->train_percent > 1.0f) {
 
 		// create using the producer
 		UnitContainer *container = this->entity->get_container();
-		auto &player = this->entity->get_attribute<attr_type::owner>().player;
-		auto uref = container->new_unit(*this->trained, player, this->entity->location.get());
+		auto &player = this->entity->get_attribute<attr_type::owner>(watcher).player;
+		auto uref = container->new_unit(watcher, *this->trained, player, this->entity->location.get());
 
 		// make sure unit got placed
 		// try again next update if cannot place
@@ -731,7 +731,7 @@ void TrainAction::update(unsigned int time) {
 			if (this->entity->has_attribute(attr_type::building)) {
 
 				// use a move command to the gather point
-				auto &build_attr = this->entity->get_attribute<attr_type::building>();
+				auto &build_attr = this->entity->get_attribute<attr_type::building>(watcher);
 				Command cmd(player, build_attr.gather_point);
 				cmd.set_ability(ability_type::move);
 				uref.get()->queue_cmd(cmd);
@@ -746,25 +746,25 @@ void TrainAction::update(unsigned int time) {
 
 void TrainAction::on_completion() {}
 
-BuildAction::BuildAction(Unit *e, UnitReference foundation)
+BuildAction::BuildAction(Unit *e, UnitReference foundation, AttributeWatcher &watcher)
 	:
 	TargetAction{e, graphic_type::work, foundation},
 	complete{.0f},
 	build_rate{.0001f} {
 
 	// update the units type
-	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>(watcher);
 	auto building_class = gamedata::unit_classes::BUILDING;
 	if (gatherer_attr.graphics.count(building_class) > 0) {
 		auto *new_type = gatherer_attr.graphics.at(building_class);
-		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		new_type->initialise(this->entity, pl_attr.player);
+		auto &pl_attr = this->entity->get_attribute<attr_type::owner>(watcher);
+		new_type->initialise(watcher, this->entity, pl_attr.player);
 	}
 }
 
-void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
+void BuildAction::update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_unit) {
 	if (target_unit->has_attribute(attr_type::building)) {
-		auto &build = target_unit->get_attribute<attr_type::building>();
+		auto &build = target_unit->get_attribute<attr_type::building>(watcher);
 
 		// upgrade floating outlines
 		auto target_location = target_unit->location.get();
@@ -808,14 +808,14 @@ const graphic_set &BuildAction::current_graphics() const {
 
 		// the gatherer attributes attached to the unit
 		// are used to modify the graphic
-		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+		const auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
 
 		if (this->get_target().is_valid() &&
 		    this->get_target().get()->has_attribute(attr_type::building)) {
 
 			// set builder graphics if available
 			if (gatherer_attr.graphics.count(gamedata::unit_classes::BUILDING) > 0) {
-				return gatherer_attr.graphics[gamedata::unit_classes::BUILDING]->graphics;
+				return gatherer_attr.graphics.at(gamedata::unit_classes::BUILDING)->graphics;
 			}
 		}
 	}
@@ -828,9 +828,9 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 	complete{false} {
 }
 
-void RepairAction::update_in_range(unsigned int, Unit *) {}
+void RepairAction::update_in_range(AttributeWatcher &, unsigned int, Unit *) {}
 
-GatherAction::GatherAction(Unit *e, UnitReference tar)
+GatherAction::GatherAction(Unit *e, UnitReference tar, AttributeWatcher &watcher)
 	:
 	TargetAction{e, graphic_type::work, tar},
 	complete{false},
@@ -839,20 +839,20 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 
 	Unit *target = this->target.get();
 	this->resource_class = target->unit_type->unit_class;
-	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>(watcher);
 
 	// handle unit type changes based on resource class
 	if (gatherer_attr.graphics.count(this->resource_class) > 0) {
 		auto *new_type = gatherer_attr.graphics.at(this->resource_class);
-		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		new_type->initialise(this->entity, pl_attr.player);
+		auto &pl_attr = this->entity->get_attribute<attr_type::owner>(watcher);
+		new_type->initialise(watcher, this->entity, pl_attr.player);
 	}
 
 	// set the type of gatherer
 	if (target->has_attribute(attr_type::resource)) {
-		auto &resource_attr = target->get_attribute<attr_type::resource>();
+		auto &resource_attr = target->get_attribute<attr_type::resource>(watcher);
 		if (gatherer_attr.current_type != resource_attr.resource_type) {
-			this->entity->get_attribute<attr_type::gatherer>().amount = 0;
+			this->entity->get_attribute<attr_type::gatherer>(watcher).amount = 0;
 		}
 		gatherer_attr.current_type = resource_attr.resource_type;
 	} else {
@@ -862,8 +862,8 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 
 GatherAction::~GatherAction() {}
 
-void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
-	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+void GatherAction::update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *targeted_resource) {
+	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>(watcher);
 	if (this->target_resource) {
 
 		// the targets attributes
@@ -897,7 +897,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 		}
 		else {
 
-			auto &resource_attr = targeted_resource->get_attribute<attr_type::resource>();
+			auto &resource_attr = targeted_resource->get_attribute<attr_type::resource>(watcher);
 			if (resource_attr.amount <= 0.0f) {
 
 				// when the resource runs out
@@ -921,7 +921,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 		// dropsite has been reached
 		// add value to player stockpile
-		Player &player = this->entity->get_attribute<attr_type::owner>().player;
+		Player &player = this->entity->get_attribute<attr_type::owner>(watcher).player;
 		player.receive(gatherer_attr.current_type, gatherer_attr.amount);
 		gatherer_attr.amount = 0.0f;
 
@@ -974,7 +974,7 @@ const graphic_set &GatherAction::current_graphics() const {
 	return this->entity->unit_type->graphics;
 }
 
-AttackAction::AttackAction(Unit *e, UnitReference tar)
+AttackAction::AttackAction(AttributeWatcher &watcher, Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::attack, tar, get_attack_range(e)},
 	strike_percent{0.0f},
@@ -985,19 +985,19 @@ AttackAction::AttackAction(Unit *e, UnitReference tar)
 	    !tar.get()->has_attribute(attr_type::resource)) {
 		auto &att_attr = this->entity->get_attribute<attr_type::attack>();
 		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		att_attr.attack_type->initialise(this->entity, pl_attr.player);
+		att_attr.attack_type->initialise(watcher, this->entity, pl_attr.player);
 	}
 }
 
 AttackAction::~AttackAction() {}
 
-void AttackAction::update_in_range(unsigned int time, Unit *target_ptr) {
+void AttackAction::update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_ptr) {
 	if (this->strike_percent > 0.0) {
 		this->strike_percent -= this->rate_of_fire * time;
 	}
 	else {
 		this->strike_percent += 1.0f;
-		this->attack(*target_ptr);
+		this->attack(watcher, *target_ptr);
 	}
 
 	// inc frame
@@ -1009,19 +1009,19 @@ bool AttackAction::completed_in_range(Unit *target_ptr) const {
 	return h_attr.current < 1; // is unit still alive?
 }
 
-void AttackAction::attack(Unit &target) {
-	auto &attack = this->entity->get_attribute<attr_type::attack>();
+void AttackAction::attack(AttributeWatcher &watcher, Unit &target) {
+	const auto &attack = this->entity->get_attribute<attr_type::attack>();
 	if (attack.ptype) {
 
 		// add projectile to the game
-		this->fire_projectile(attack, target.location->pos.draw);
+		this->fire_projectile(watcher, attack, target.location->pos.draw);
 	}
 	else {
-		this->damage_object(target);
+		this->damage_object(watcher, target);
 	}
 }
 
-void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, const coord::phys3 &target) {
+void AttackAction::fire_projectile(AttributeWatcher &watcher, const Attribute<attr_type::attack> &att, const coord::phys3 &target) {
 
 	// container terrain and initial position
 	UnitContainer *container = this->entity->get_container();
@@ -1029,16 +1029,16 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 	current_pos.up = att.init_height;
 
 	// create using the producer
-	auto player = this->entity->get_attribute<attr_type::owner>().player;
-	auto projectile_ref = container->new_unit(*att.ptype, player, current_pos);
+	auto player = this->entity->get_attribute<attr_type::owner>(watcher).player;
+	auto projectile_ref = container->new_unit(watcher, *att.ptype, player, current_pos);
 
 	// send towards target using a projectile ability (creates projectile motion action)
 	if (projectile_ref.is_valid()) {
 		auto projectile = projectile_ref.get();
-		auto &projectile_attr = projectile->get_attribute<attr_type::projectile>();
+		auto &projectile_attr = projectile->get_attribute<attr_type::projectile>(watcher);
 		projectile_attr.launcher = this->entity->get_ref();
 		projectile_attr.launched = true;
-		projectile->push_action(std::make_unique<ProjectileAction>(projectile, target), true);
+		projectile->push_action(std::make_unique<ProjectileAction>(watcher, projectile, target), true);
 	}
 	else {
 		this->entity->log(MSG(dbg) << "projectile launch failed");
@@ -1055,15 +1055,15 @@ HealAction::HealAction(Unit *e, UnitReference tar)
 
 HealAction::~HealAction() {}
 
-void HealAction::update_in_range(unsigned int time, Unit *target_ptr) {
-	auto &heal = this->entity->get_attribute<attr_type::heal>();
+void HealAction::update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_ptr) {
+	auto heal = this->entity->get_attribute<attr_type::heal>(watcher);
 
 	if (this->heal_percent > 0.0) {
 		this->heal_percent -= heal.rate * time;
 	}
 	else {
 		this->heal_percent += 1.0f;
-		this->heal(*target_ptr);
+		this->heal(watcher, *target_ptr);
 	}
 
 	// inc frame
@@ -1075,13 +1075,13 @@ bool HealAction::completed_in_range(Unit *target_ptr) const {
 	return h_attr.current >= h_attr.max; // is unit at full hitpoints?
 }
 
-void HealAction::heal(Unit &target) {
+void HealAction::heal(AttributeWatcher &watcher, Unit &target) {
 	auto &heal = this->entity->get_attribute<attr_type::heal>();
 
 	// TODO move to seperate function heal_object (like damage_object)?
 	// heal object
 	if (target.has_attribute(attr_type::hitpoints)) {
-		auto &hp = target.get_attribute<attr_type::hitpoints>();
+		auto hp = target.get_attribute<attr_type::hitpoints>(watcher);
 		if ((hp.current + heal.life) < hp.max) {
 			hp.current += heal.life;
 		}
@@ -1099,9 +1099,9 @@ ConvertAction::ConvertAction(Unit *e, UnitReference tar)
 	complete{.0f} {
 }
 
-void ConvertAction::update_in_range(unsigned int, Unit *) {}
+void ConvertAction::update_in_range(AttributeWatcher &, unsigned int, Unit *) {}
 
-ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
+ProjectileAction::ProjectileAction(AttributeWatcher &watcher, Unit *e, coord::phys3 target)
 	:
 	UnitAction{e, graphic_type::standing},
 	has_hit{false} {
@@ -1111,7 +1111,7 @@ ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
 	coord::phys_t projectile_speed = sp_attr.unit_speed;
 
 	// arc of projectile
-	auto &pr_attr = this->entity->get_attribute<attr_type::projectile>();
+	const auto &pr_attr = this->entity->get_attribute<attr_type::projectile>();
 	float projectile_arc = pr_attr.projectile_arc;
 
 	// distance and time to target
@@ -1131,7 +1131,7 @@ ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
 	this->grav = 0.01f * (exp(pow(projectile_arc, 0.5f)) - 1) * projectile_speed;
 
 	// inital launch direction
-	auto &d_attr = this->entity->get_attribute<attr_type::direction>();
+	auto &d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
 	d_attr.unit_dir = (projectile_speed * d) / distance_to_target;
 
 	// account for initial height
@@ -1141,8 +1141,8 @@ ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
 
 ProjectileAction::~ProjectileAction() {}
 
-void ProjectileAction::update(unsigned int time) {
-	auto &d_attr = this->entity->get_attribute<attr_type::direction>();
+void ProjectileAction::update(AttributeWatcher &watcher, unsigned int time) {
+	auto &d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
 
 	// apply gravity
 	d_attr.unit_dir.up -= this->grav * time;
@@ -1157,7 +1157,7 @@ void ProjectileAction::update(unsigned int time) {
 			for (auto obj_location : tc->obj) {
 				if (this->entity->location.get() != obj_location &&
 				    obj_location->check_collisions()) {
-					this->damage_object(obj_location->unit, 1);
+					this->damage_object(watcher, obj_location->unit, 1);
 					break;
 				}
 			}

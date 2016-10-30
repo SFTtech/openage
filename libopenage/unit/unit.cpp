@@ -73,7 +73,7 @@ UnitAction *Unit::before(const UnitAction *action) const {
 	return nullptr;
 }
 
-bool Unit::update() {
+bool Unit::update(AttributeWatcher &watcher) {
 
 	// if unit is not on the map then do nothing
 	if (!this->location) {
@@ -96,12 +96,12 @@ bool Unit::update() {
 		// TODO: change the entire unit action timing to a higher resolution like
 		// nsecs or usecs.
 		auto time_elapsed = engine.lastframe_duration_nsec() / 1e6;
-		this->top()->update(time_elapsed);
+		this->top()->update(watcher, time_elapsed);
 
 		// the top primary action specifies whether
 		// secondary actions are updated
 		if (this->top()->allow_control()) {
-			this->update_secondary(time_elapsed);
+			this->update_secondary(watcher, time_elapsed);
 		}
 
 		// check completion of all primary actions,
@@ -113,42 +113,42 @@ bool Unit::update() {
 	}
 
 	// apply new queued commands
-	this->apply_all_cmds();
+	this->apply_all_cmds(watcher);
 
 	return true;
 }
 
-void Unit::update_secondary(int64_t time_elapsed) {
+void Unit::update_secondary(AttributeWatcher &watcher, int64_t time_elapsed) {
 	// update secondary actions and remove when completed
 	auto position_it = std::remove_if(
 		std::begin(this->action_secondary),
 		std::end(this->action_secondary),
-		[time_elapsed](std::unique_ptr<UnitAction> &action) {
-			action->update(time_elapsed);
+		[&watcher, time_elapsed](std::unique_ptr<UnitAction> &action) {
+			action->update(watcher, time_elapsed);
 			return action->completed();
 		});
 	this->action_secondary.erase(position_it, std::end(this->action_secondary));
 }
 
 
-void Unit::apply_all_cmds() {
+void Unit::apply_all_cmds(AttributeWatcher &watcher) {
 	std::lock_guard<std::mutex> lock(this->command_queue_lock);
 	while (!this->command_queue.empty()) {
 		auto &action = this->command_queue.front();
-		this->apply_cmd(action.first, action.second);
+		this->apply_cmd(watcher, action.first, action.second);
 		this->command_queue.pop();
 	}
 }
 
 
-void Unit::apply_cmd(std::shared_ptr<UnitAbility> ability, const Command &cmd) {
+void Unit::apply_cmd(AttributeWatcher &watcher, std::shared_ptr<UnitAbility> ability, const Command &cmd) {
 	bool is_direct = cmd.has_flag(command_flag::direct);
 	if (is_direct) {
 
 		// drop other actions if a new action is found
 		this->stop_actions();
 	}
-	ability->invoke(*this, cmd, is_direct);
+	ability->invoke(watcher, *this, cmd, is_direct);
 }
 
 

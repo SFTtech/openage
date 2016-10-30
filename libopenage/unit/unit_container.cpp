@@ -91,7 +91,8 @@ UnitReference UnitContainer::new_unit() {
 	return this->live_units[id]->get_ref();
 }
 
-UnitReference UnitContainer::new_unit(UnitType &type,
+UnitReference UnitContainer::new_unit(AttributeWatcher &watcher,
+                                      UnitType &type,
                                       Player &owner,
                                       coord::phys3 position) {
 	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
@@ -100,7 +101,7 @@ UnitReference UnitContainer::new_unit(UnitType &type,
 	auto terrain_shared = this->get_terrain();
 	auto placed = type.place(newobj.get(), terrain_shared, position);
 	if (placed) {
-		type.initialise(newobj.get(), owner);
+		type.initialise(watcher, newobj.get(), owner);
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
 		return this->live_units[id]->get_ref();
@@ -108,7 +109,8 @@ UnitReference UnitContainer::new_unit(UnitType &type,
 	return UnitReference(); // is not valid
 }
 
-UnitReference UnitContainer::new_unit(UnitType &type,
+UnitReference UnitContainer::new_unit(AttributeWatcher &watcher,
+                                      UnitType &type,
                                       Player &owner,
                                       TerrainObject *other) {
 	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
@@ -116,7 +118,7 @@ UnitReference UnitContainer::new_unit(UnitType &type,
 	// try placing unit
 	TerrainObject *placed = type.place_beside(newobj.get(), other);
 	if (placed) {
-		type.initialise(newobj.get(), owner);
+		type.initialise(watcher, newobj.get(), owner);
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
 		return this->live_units[id]->get_ref();
@@ -129,11 +131,11 @@ bool dispatch_command(id_t, const Command &) {
 	return true;
 }
 
-bool UnitContainer::update_all() {
+bool UnitContainer::update_all(AttributeWatcher &watcher) {
 	// update everything and find objects with no actions
 	std::vector<id_t> to_remove;
 	for (auto &obj : this->live_units) {
-		obj.second->update();
+		obj.second->update(watcher);
 		if ( !obj.second->has_action() ) {
 			to_remove.push_back(obj.first);
 		}

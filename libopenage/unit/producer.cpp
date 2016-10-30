@@ -171,7 +171,7 @@ std::string ObjectProducer::name() const {
 	return this->unit_data.name;
 }
 
-void ObjectProducer::initialise(Unit *unit, Player &player) {
+void ObjectProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &player) {
 	ENSURE(this->owner == player, "unit init from a UnitType of a wrong player which breaks tech levels");
 
 	// log attributes
@@ -190,7 +190,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 
 	// hitpoints if available
 	if (this->unit_data.hit_points > 0) {
-		unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(this->unit_data.hit_points));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(watcher, unit->id, this->unit_data.hit_points));
 	}
 
 	// collectable resources
@@ -226,12 +226,12 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 			unit->push_action(
 				std::make_unique<DeadAction>(
 					unit,
-					[this, unit, &player]() {
+					[this, unit, &player, &watcher]() {
 
 						// modify unit to have  dead type
 						UnitType *t = player.get_type(this->dead_unit_id);
 						if (t) {
-							t->initialise(unit, player);
+							t->initialise(watcher, unit, player);
 						}
 					}
 				),
@@ -356,12 +356,12 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 
 MovableProducer::~MovableProducer() {}
 
-void MovableProducer::initialise(Unit *unit, Player &player) {
+void MovableProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &player) {
 
 	/*
 	 * call base function
 	 */
-	ObjectProducer::initialise(unit, player);
+	ObjectProducer::initialise(watcher, unit, player);
 
 	/*
 	 * basic attributes
@@ -406,19 +406,19 @@ LivingProducer::LivingProducer(const Player &owner, const GameSpec &spec, const 
 
 LivingProducer::~LivingProducer() {}
 
-void LivingProducer::initialise(Unit *unit, Player &player) {
+void LivingProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &player) {
 
 	/*
 	 * call base function
 	 */
-	MovableProducer::initialise(unit, player);
+	MovableProducer::initialise(watcher,unit, player);
 
 	// add worker attributes
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::gatherer>>());
 
 		// add graphic ids for resource actions
-		auto &gather_attr = unit->get_attribute<attr_type::gatherer>();
+		auto &gather_attr = unit->get_attribute<attr_type::gatherer>(watcher);
 		gather_attr.current_type = game_resource::wood;
 		gather_attr.capacity = 10.0f;
 		gather_attr.gather_rate = 0.002f;
@@ -453,7 +453,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::gatherer>>());
 
 		// add fishing abilites
-		auto &gather_attr = unit->get_attribute<attr_type::gatherer>();
+		auto &gather_attr = unit->get_attribute<attr_type::gatherer>(watcher);
 		gather_attr.current_type = game_resource::food;
 		gather_attr.capacity = 15.0f;
 		gather_attr.gather_rate = 0.002f;
@@ -530,7 +530,7 @@ std::string BuildingProducer::name() const {
 	return this->unit_data.name;
 }
 
-void BuildingProducer::initialise(Unit *unit, Player &player) {
+void BuildingProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &player) {
 	ENSURE(this->owner == player, "unit init from a UnitType of a wrong player which breaks tech levels");
 
 	// log type
@@ -554,7 +554,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 
 	// garrison and hp for all buildings
 	unit->add_attribute(std::make_shared<Attribute<attr_type::garrison>>());
-	unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(this->unit_data.hit_points));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(watcher, unit->id, this->unit_data.hit_points));
 
 	bool has_destruct_graphic = this->destroyed != nullptr;
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
@@ -741,7 +741,7 @@ std::string ProjectileProducer::name() const {
 	return this->unit_data.name;
 }
 
-void ProjectileProducer::initialise(Unit *unit, Player &player) {
+void ProjectileProducer::initialise(AttributeWatcher &, Unit *unit, Player &player) {
 	ENSURE(this->owner == player, "unit init from a UnitType of a wrong player which breaks tech levels");
 
 	// initialize graphic set

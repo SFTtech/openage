@@ -19,6 +19,7 @@ class GameSpec;
 class Terrain;
 class GameMain;
 class Engine;
+class AttributeWatcher;
 
 namespace rng {
 class RNG;
@@ -156,7 +157,7 @@ public:
 	/**
 	 * places all initial objects
 	 */
-	void add_units(GameMain &m) const;
+	void add_units(GameMain &m, AttributeWatcher &watcher) const;
 
 	std::unique_ptr<GameMain> create(std::shared_ptr<GameSpec> spec);
 

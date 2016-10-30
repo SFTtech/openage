@@ -17,6 +17,7 @@ class TerrainObject;
 class Unit;
 class UnitContainer;
 class UnitType;
+class AttributeWatcher;
 
 using id_t = unsigned long int;
 
@@ -100,13 +101,13 @@ public:
 	/**
 	 * adds a new unit to the container and initialises using a unit type
 	 */
-	UnitReference new_unit(UnitType &type, Player &owner, coord::phys3 position);
+	UnitReference new_unit(AttributeWatcher &watcher, UnitType &type, Player &owner, coord::phys3 position);
 
 	/**
 	 * adds a new unit to the container and initialises using a unit type
 	 * places outside an existing object using the player of that object
 	 */
-	UnitReference new_unit(UnitType &type, Player &owner, TerrainObject *other);
+	UnitReference new_unit(AttributeWatcher &watcher, UnitType &type, Player &owner, TerrainObject *other);
 
 	/**
 	 * give a command to a unit -- unit creation and deletion should be done as commands
@@ -116,8 +117,9 @@ public:
 	/**
 	 * update dispatched by the game engine
 	 * this will update all game objects
+	 * while spying on their attributes
 	 */
-	bool update_all();
+	bool update_all(AttributeWatcher &watcher);
 
 	/**
 	 * gets a list of all units in the container

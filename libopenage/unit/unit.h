@@ -14,6 +14,7 @@
 #include "../handlers.h"
 #include "ability.h"
 #include "attribute.h"
+#include "attribute_spy.h"
 #include "command.h"
 #include "unit_container.h"
 
@@ -120,7 +121,7 @@ public:
 	/**
 	 * update this object using the action currently on top of the stack
 	 */
-	bool update();
+	bool update(AttributeWatcher &watcher);
 
 	/**
 	 * draws this action by taking the graphic type of the top action
@@ -177,11 +178,19 @@ public:
 	bool has_attribute(attr_type type) const;
 
 	/**
-	 * returns attribute based on templated value
+	 * returns attribute based on templated value while spying on it
 	 */
 	template<attr_type T>
-	Attribute<T> &get_attribute() {
-		return *reinterpret_cast<Attribute<T> *>(attribute_map[T].get());
+	typename AttributeSpy<T>::type get_attribute(AttributeWatcher &watcher) {
+		return get_attr<T>(watcher, this->id, this->attribute_map);
+	}
+
+	/**
+	 * returns attribute as constant based on templated value
+	 */
+	template<attr_type T>
+	const Attribute<T>& get_attribute() const {
+		return get_attr<T>(this->attribute_map);
 	}
 
 	/**
@@ -286,18 +295,18 @@ private:
 	/**
 	 * applies new commands as part of the units update process
 	 */
-	void apply_all_cmds();
+	void apply_all_cmds(AttributeWatcher &watcher);
 
 	/**
 	 * applies one command using a chosen ability
 	 * locks the command queue mutex while operating
 	 */
-	void apply_cmd(std::shared_ptr<UnitAbility> ability, const Command &cmd);
+	void apply_cmd(AttributeWatcher &watcher, std::shared_ptr<UnitAbility> ability, const Command &cmd);
 
 	/**
 	 * update all secondary actions
 	 */
-	void update_secondary(int64_t time_elapsed);
+	void update_secondary(AttributeWatcher &watcher, int64_t time_elapsed);
 
 	/**
 	 * erase from action specified by func to the end of the stack

@@ -15,6 +15,7 @@ class Terrain;
 class TerrainChunk;
 class Texture;
 class Unit;
+class AttributeWatcher;
 
 /**
  * only placed will enable collision checks
@@ -55,7 +56,7 @@ tile_range building_center(coord::phys3 west, coord::tile_delta size);
 /**
  * sets a building to a fully completed state
  */
-bool complete_building(Unit &);
+bool complete_building(AttributeWatcher &watcher, Unit &);
 
 /**
  * half a tile

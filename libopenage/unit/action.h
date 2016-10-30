@@ -44,7 +44,7 @@ public:
 	 * each action has its own update functionality which gets called when this
 	 * is the active action
 	 */
-	virtual void update(unsigned int) = 0;
+	virtual void update(AttributeWatcher &watcher, unsigned int) = 0;
 
 	/**
 	 * action to perform when popped from a units action stack
@@ -93,10 +93,10 @@ public:
 	/**
 	 * common functions for actions
 	 */
-	void face_towards(const coord::phys3 pos);
-	void damage_object(Unit &target, unsigned dmg); // TODO remove (keep for testing)
-	void damage_object(Unit &target);
-	void move_to(Unit &target, bool use_range=true);
+	void face_towards(AttributeWatcher &watcher, const coord::phys3 pos);
+	void damage_object(AttributeWatcher &watcher, Unit &target, unsigned dmg); // TODO remove (keep for testing)
+	void damage_object(AttributeWatcher &watcher, Unit &target);
+	void move_to(AttributeWatcher &watcher, Unit &target, bool use_range=true);
 
 	/**
 	 * produce debug info such as visualising paths
@@ -161,7 +161,7 @@ public:
 	TargetAction(Unit *e, graphic_type gt, UnitReference r);
 	virtual ~TargetAction() {}
 
-	void update(unsigned int) override;
+	void update(AttributeWatcher &watcher, unsigned int) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
@@ -171,7 +171,7 @@ public:
 	/**
 	 * Control units action when in range of the target
 	 */
-	virtual void update_in_range(unsigned int, Unit *) = 0;
+	virtual void update_in_range(AttributeWatcher &watcher, unsigned int, Unit *) = 0;
 	virtual bool completed_in_range(Unit *) const = 0;
 
 	coord::phys_t distance_to_target();
@@ -202,7 +202,7 @@ public:
 	DecayAction(Unit *e);
 	virtual ~DecayAction() {}
 
-	void update(unsigned int) override;
+	void update(AttributeWatcher &watcher, unsigned int) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
@@ -222,7 +222,7 @@ public:
 	DeadAction(Unit *e, std::function<void()> on_complete=[]() {});
 	virtual ~DeadAction() {}
 
-	void update(unsigned int) override;
+	void update(AttributeWatcher &watcher, unsigned int) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
@@ -243,7 +243,7 @@ public:
 	FoundationAction(Unit *e, bool add_destuction=false);
 	virtual ~FoundationAction() {}
 
-	void update(unsigned int) override;
+	void update(AttributeWatcher &watcher, unsigned int) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
@@ -263,7 +263,7 @@ public:
 	IdleAction(Unit *e);
 	virtual ~IdleAction() {}
 
-	void update(unsigned int) override;
+	void update(AttributeWatcher &watcher, unsigned int) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
@@ -293,7 +293,7 @@ public:
 	MoveAction(Unit *e, UnitReference tar, coord::phys_t within_range);
 	virtual ~MoveAction();
 
-	void update(unsigned int) override;
+	void update(AttributeWatcher &watcher, unsigned int) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
@@ -335,7 +335,7 @@ public:
 	GarrisonAction(Unit *e, UnitReference build);
 	virtual ~GarrisonAction() {}
 
-	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "garrison"; }
 
@@ -351,7 +351,7 @@ public:
 	UngarrisonAction(Unit *e, const coord::phys3 &pos);
 	virtual ~UngarrisonAction() {}
 
-	void update(unsigned int) override;
+	void update(AttributeWatcher &watcher, unsigned int) override;
 	void on_completion() override;
 	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return true; }
@@ -371,7 +371,7 @@ public:
 	TrainAction(Unit *e, UnitType *pp);
 	virtual ~TrainAction() {}
 
-	void update(unsigned int) override;
+	void update(AttributeWatcher &watcher, unsigned int) override;
 	void on_completion() override;
 	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return false; }
@@ -389,10 +389,10 @@ private:
  */
 class BuildAction: public TargetAction {
 public:
-	BuildAction(Unit *e, UnitReference foundation);
+	BuildAction(Unit *e, UnitReference foundation, AttributeWatcher &watcher);
 	virtual ~BuildAction() {}
 
-	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	std::string name() const override { return "build"; }
 	const graphic_set &current_graphics() const override;
@@ -410,7 +410,7 @@ public:
 	RepairAction(Unit *e, UnitReference tar);
 	virtual ~RepairAction() {}
 
-	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "repair"; }
 
@@ -424,10 +424,10 @@ private:
  */
 class GatherAction: public TargetAction {
 public:
-	GatherAction(Unit *e, UnitReference tar);
+	GatherAction(Unit *e, UnitReference tar, AttributeWatcher &watcher);
 	virtual ~GatherAction();
 
-	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "gather"; }
 	const graphic_set &current_graphics() const override;
@@ -444,10 +444,10 @@ private:
  */
 class AttackAction: public TargetAction {
 public:
-	AttackAction(Unit *e, UnitReference tar);
+	AttackAction(AttributeWatcher &watcher, Unit *e, UnitReference tar);
 	virtual ~AttackAction();
 
-	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override;
 	std::string name() const override { return "attack"; }
 
@@ -457,12 +457,12 @@ private:
 	/**
 	 * use attack action
 	 */
-	void attack(Unit &target);
+	void attack(AttributeWatcher &watcher, Unit &target);
 
 	/**
 	 * add a projectile game object which moves towards the target
 	 */
-	void fire_projectile(const Attribute<attr_type::attack> &att, const coord::phys3 &target);
+	void fire_projectile(AttributeWatcher &watcher, const Attribute<attr_type::attack> &att, const coord::phys3 &target);
 };
 
 /**
@@ -473,7 +473,7 @@ public:
 	HealAction(Unit *e, UnitReference tar);
 	virtual ~HealAction();
 
-	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override;
 	std::string name() const override { return "heal"; }
 
@@ -483,7 +483,7 @@ private:
 	/**
 	 * use heal action
 	 */
-	void heal(Unit &target);
+	void heal(AttributeWatcher &watcher, Unit &target);
 };
 
 /**
@@ -494,7 +494,7 @@ public:
 	ConvertAction(Unit *e, UnitReference tar);
 	virtual ~ConvertAction() {}
 
-	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	std::string name() const override { return "convert"; }
 
@@ -508,10 +508,10 @@ private:
  */
 class ProjectileAction: public UnitAction {
 public:
-	ProjectileAction(Unit *e, coord::phys3 target);
+	ProjectileAction(AttributeWatcher &watcher, Unit *e, coord::phys3 target);
 	virtual ~ProjectileAction();
 
-	void update(unsigned int) override;
+	void update(AttributeWatcher &watcher, unsigned int) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }

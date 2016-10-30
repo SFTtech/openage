@@ -84,7 +84,7 @@ public:
 	 *
 	 * TODO: make const
 	 */
-	virtual void initialise(Unit *, Player &) = 0;
+	virtual void initialise(AttributeWatcher &, Unit *, Player &) = 0;
 
 	/**
 	 * set unit in place -- return if placement was successful
@@ -178,7 +178,7 @@ public:
 	int id() const override;
 	int parent_id() const override;
 	std::string name() const override;
-	void initialise(Unit *, Player &) override;
+	void initialise(AttributeWatcher &, Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 };
