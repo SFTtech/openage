@@ -4,9 +4,8 @@ Engine types
 These types are defined by the openage engine. Every nyan object in the game
 eventually inherits from one or more of these types.
 
-Normally you'd store one or more *NyanObject*s in a *.nyan file, but as these
-are defined in the engine and are here only for humans (like me, *beep blop*),
-they are stored here for an overview.
+Normally, you'd store one or more *NyanObject*s in a `.nyan` file, but these
+are defined in the engine, so they're here only for an overview for us human beings (like me, *beep blop*).
 
 Currently, this is a **proposal**.
 This file does not perfectly (if at all) represent the already defined types in
@@ -50,6 +49,10 @@ Unit(): # WIP
 	# Everything that has a location ingame.
 
 	hp : float
+	idleLook : animation
+	death : Unit # What is the dead form of this Unit?
+	# Proposal:
+#	dying : animation
 
 Resource():
 	name : text
@@ -65,6 +68,7 @@ ResourceSpot():
 
 
 Building(Unit): # WIP: make another parent Object for Building?
+	# WIP2: Some buildings consist of a static frame and an animation on top. How do we reference that?
 	name : text
 
 
@@ -75,9 +79,9 @@ Animation(): # or Sprite() ?
                  # contains all frames. # WIP5: naming scheme?
 
 #	metainfo : file # WIP6: how to read `animation'? describes, where in the big picture `animation' which frames are; whether to potentially mirror them.
-	                # possibilities: 1. $renameMe is a regular file: description of `animation' (syntax?)
-	                # 2. replace `renameMe' by more fields that describe `animation' (ugly imo, but maybe the best way)
-	                # 3. remove `renameMe':
+	                # possibilities: 1. `metainfo' is a regular file: description of `animation' (syntax?)
+	                # 2. replace `metainfo' by more fields that describe `animation' (ugly imo, but maybe the best way)
+	                # 3. remove `metainfo':
 	                #    if $animation is a directory: look for '$animation/animate.nfo'
 	                #    else: look for "$(basename $animation png)nfo"
 
