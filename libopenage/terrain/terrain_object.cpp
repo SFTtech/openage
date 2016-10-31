@@ -17,6 +17,7 @@
 #include "terrain.h"
 #include "terrain_chunk.h"
 #include "terrain_outline.h"
+#include "tile_range_serialization.h"
 
 namespace openage {
 
@@ -116,7 +117,7 @@ bool TerrainObject::place(object_state init_state) {
 	return true;
 }
 
-bool TerrainObject::place(std::shared_ptr<Terrain> t, coord::phys3 &position, object_state init_state) {
+bool TerrainObject::place(AttributeWatcher &watcher, std::shared_ptr<Terrain> t, coord::phys3 &position, object_state init_state) {
 	if (this->state != object_state::removed) {
 		throw Error(MSG(err) << "This object has already been placed.");
 	}
@@ -130,14 +131,14 @@ bool TerrainObject::place(std::shared_ptr<Terrain> t, coord::phys3 &position, ob
 	}
 
 	// place on terrain
-	this->place_unchecked(t, position);
+	this->place_unchecked(watcher, t, position);
 
 	// set state
 	this->state = init_state;
 	return true;
 }
 
-bool TerrainObject::move(coord::phys3 &position) {
+bool TerrainObject::move(AttributeWatcher &watcher, coord::phys3 &position) {
 	if (this->state == object_state::removed) {
 		return false;
 	}
@@ -147,7 +148,7 @@ bool TerrainObject::move(coord::phys3 &position) {
 	bool can_move = this->passable(position);
 	if (can_move) {
 		this->remove();
-		this->place_unchecked(this->get_terrain(), position);
+		this->place_unchecked(watcher, this->get_terrain(), position);
 		this->state = old_state;
 	}
 	return can_move;
@@ -257,9 +258,10 @@ bool TerrainObject::operator <(const TerrainObject &other) {
 	return true;
 }
 
-void TerrainObject::place_unchecked(std::shared_ptr<Terrain> t, coord::phys3 &position) {
+void TerrainObject::place_unchecked(AttributeWatcher &watcher, std::shared_ptr<Terrain> t, coord::phys3 &position) {
 	// storing the position:
 	this->pos = get_range(position);
+	watcher.apply(this->unit.id, this->pos, "pos");
 	this->terrain = t;
 	this->occupied_chunk_count = 0;
 

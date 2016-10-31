@@ -147,17 +147,18 @@ public:
 	/**
 	 * binds the TerrainObject to a certain TerrainChunk.
 	 *
+	 * @param watcher: observes position change
 	 * @param terrain: the terrain where the object will be placed onto.
 	 * @param pos: (tile) position of the (nw,sw) corner
 	 * @param init_state should be floating, placed or placed_no_collision
 	 * @returns true when the object was placed, false when it did not fit at pos.
 	 */
-	bool place(std::shared_ptr<Terrain> t, coord::phys3 &pos, object_state init_state);
+	bool place(AttributeWatcher &watcher, std::shared_ptr<Terrain> t, coord::phys3 &pos, object_state init_state);
 
 	/**
 	 * moves the object -- returns false if object cannot be moved here
 	 */
-	bool move(coord::phys3 &pos);
+	bool move(AttributeWatcher &watcher, coord::phys3 &pos);
 
 	/**
 	 * remove this TerrainObject from the terrain chunks.
@@ -276,7 +277,7 @@ protected:
 	 * otherwise the place function should be used
 	 * this does not modify the units placement state
 	 */
-	void place_unchecked(std::shared_ptr<Terrain> t, coord::phys3 &position);
+	void place_unchecked(AttributeWatcher &watcher, std::shared_ptr<Terrain> t, coord::phys3 &position);
 };
 
 /**

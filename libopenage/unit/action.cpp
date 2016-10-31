@@ -575,7 +575,7 @@ void MoveAction::update(AttributeWatcher &watcher, unsigned int time) {
 	}
 
 	// check move collisions
-	bool move_completed = this->entity->location->move(new_position);
+	bool move_completed = this->entity->location->move(watcher, new_position);
 	if (move_completed) {
 		d_attr.unit_dir = new_direction;
 		this->set_distance();
@@ -685,7 +685,7 @@ void UngarrisonAction::update(AttributeWatcher &watcher, unsigned int) {
 				Unit *unit_ptr = u.get();
 
 				// make sure it was placed outside
-				if (unit_ptr->unit_type->place_beside(unit_ptr, this->entity->location.get())) {
+				if (unit_ptr->unit_type->place_beside(watcher, unit_ptr, this->entity->location.get())) {
 
 					// task unit to move to position
 					auto &player = this->entity->get_attribute<attr_type::owner>(watcher).player;
@@ -1148,7 +1148,7 @@ void ProjectileAction::update(AttributeWatcher &watcher, unsigned int time) {
 	d_attr.unit_dir.up -= this->grav * time;
 
 	coord::phys3 new_position = this->entity->location->pos.draw + d_attr.unit_dir * time;
-	if (!this->entity->location->move(new_position)) {
+	if (!this->entity->location->move(watcher, new_position)) {
 
 		// find object which was hit
 		auto terrain = this->entity->location->get_terrain();

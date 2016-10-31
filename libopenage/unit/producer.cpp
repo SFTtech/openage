@@ -251,7 +251,7 @@ void ObjectProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &p
 	}
 }
 
-TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *ObjectProducer::place(AttributeWatcher &watcher, Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// create new object with correct base shape
 	if (this->unit_data.selection_shape > 1) {
@@ -308,7 +308,7 @@ TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, 
 
 	// try to place the obj, it knows best whether it will fit.
 	auto state = this->decay? object_state::placed_no_collision : object_state::placed;
-	if (u->location->place(terrain, init_pos, state)) {
+	if (u->location->place(watcher, terrain, init_pos, state)) {
 		if (this->on_create) {
 			this->on_create->play();
 		}
@@ -391,8 +391,8 @@ void MovableProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &
 	}
 }
 
-TerrainObject *MovableProducer::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
-	return ObjectProducer::place(unit, terrain, init_pos);
+TerrainObject *MovableProducer::place(AttributeWatcher &watcher, Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+	return ObjectProducer::place(watcher, unit, terrain, init_pos);
 }
 
 LivingProducer::LivingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_living *ud)
@@ -463,8 +463,8 @@ void LivingProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &p
 	}
 }
 
-TerrainObject *LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
-	return MovableProducer::place(unit, terrain, init_pos);
+TerrainObject *LivingProducer::place(AttributeWatcher &watcher, Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+	return MovableProducer::place(watcher, unit, terrain, init_pos);
 }
 
 BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_building *ud)
@@ -602,7 +602,7 @@ std::vector<game_resource> BuildingProducer::get_accepted_resources() {
 	return std::vector<game_resource>();
 }
 
-TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *BuildingProducer::place(AttributeWatcher &watcher, Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// buildings have a square base
 	u->make_location<SquareObject>(this->foundation_size, this->terrain_outline);
@@ -641,7 +641,7 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 
 	// try to place the obj, it knows best whether it will fit.
 	auto state = object_state::floating;
-	if (!u->location->place(terrain, init_pos, state)) {
+	if (!u->location->place(watcher, terrain, init_pos, state)) {
 		return nullptr;
 	}
 
@@ -654,7 +654,7 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 			coord::phys3 a_pos = u->location->pos.draw;
 			a_pos.ne += annex.misplaced0 * coord::settings::phys_per_tile;
 			a_pos.se += annex.misplaced1 * coord::settings::phys_per_tile;
-			this->make_annex(*u, terrain, annex.unit_id, a_pos, i == 0);
+			this->make_annex(watcher, *u, terrain, annex.unit_id, a_pos, i == 0);
 		}
 	}
 
@@ -665,7 +665,7 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 	return u->location.get();
 }
 
-TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
+TerrainObject *BuildingProducer::make_annex(AttributeWatcher &watcher, Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
 
 	// for use in lambda drawing functions
 	auto annex_type = this->owner.get_type(annex_id);
@@ -685,7 +685,7 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	// create and place on terrain
 	TerrainObject *annex_loc = u.location->make_annex<SquareObject>(annex_foundation);
 	object_state state = c? object_state::placed : object_state::placed_no_collision;
-	annex_loc->place(t, start_tile, state);
+	annex_loc->place(watcher, t, start_tile, state);
 
 	// create special drawing functions for annexes,
 	annex_loc->draw = [annex_loc, annex_type, &u, c]() {
@@ -759,7 +759,7 @@ void ProjectileProducer::initialise(AttributeWatcher &, Unit *unit, Player &play
 	}
 }
 
-TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *ProjectileProducer::place(AttributeWatcher &watcher, Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	/*
 	 * radial base shape without collision checking
 	 */
@@ -811,7 +811,7 @@ TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terra
 	};
 
 	// try to place the obj, it knows best whether it will fit.
-	if (u->location->place(terrain, init_pos, object_state::placed_no_collision)) {
+	if (u->location->place(watcher, terrain, init_pos, object_state::placed_no_collision)) {
 		return u->location.get();
 	}
 	return nullptr;

@@ -41,7 +41,7 @@ UnitTexture *UnitType::default_texture() {
 	return this->graphics[graphic_type::standing].get();
 }
 
-TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const {
+TerrainObject *UnitType::place_beside(AttributeWatcher &watcher, Unit *u, TerrainObject const *other) const {
 	if (!u || !other) {
 		return nullptr;
 	}
@@ -60,7 +60,7 @@ TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const
 			continue;
 		}
 
-		auto placed = this->place(u, terrain, temp_pos.to_phys2().to_phys3());
+		auto placed = this->place(watcher, u, terrain, temp_pos.to_phys2().to_phys3());
 		if (placed) {
 			return placed;
 		}
@@ -122,7 +122,7 @@ void NyanType::initialise(AttributeWatcher &, Unit *unit, Player &) {
 	unit->push_action(std::make_unique<IdleAction>(unit), true);
 }
 
-TerrainObject *NyanType::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *NyanType::place(AttributeWatcher &watcher, Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	// the parsed nyan data gives the rules for terrain placement
 	// which includes valid terrains, base radius and shape
 
@@ -134,7 +134,7 @@ TerrainObject *NyanType::place(Unit *unit, std::shared_ptr<Terrain> terrain, coo
 	};
 
 	// try to place the obj, it knows best whether it will fit.
-	if (unit->location->place(terrain, init_pos, object_state::placed)) {
+	if (unit->location->place(watcher, terrain, init_pos, object_state::placed)) {
 		return unit->location.get();
 	}
 

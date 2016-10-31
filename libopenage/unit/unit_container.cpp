@@ -99,7 +99,7 @@ UnitReference UnitContainer::new_unit(AttributeWatcher &watcher,
 
 	// try placing unit at this location
 	auto terrain_shared = this->get_terrain();
-	auto placed = type.place(newobj.get(), terrain_shared, position);
+	auto placed = type.place(watcher, newobj.get(), terrain_shared, position);
 	if (placed) {
 		type.initialise(watcher, newobj.get(), owner);
 		auto id = newobj->id;
@@ -116,7 +116,7 @@ UnitReference UnitContainer::new_unit(AttributeWatcher &watcher,
 	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
 
 	// try placing unit
-	TerrainObject *placed = type.place_beside(newobj.get(), other);
+	TerrainObject *placed = type.place_beside(watcher, newobj.get(), other);
 	if (placed) {
 		type.initialise(watcher, newobj.get(), owner);
 		auto id = newobj->id;

@@ -41,7 +41,7 @@ public:
 	int parent_id() const override;
 	std::string name() const override;
 	void initialise(AttributeWatcher &, Unit *, Player &) override;
-	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(AttributeWatcher &watcher, Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
 	const GameSpec &dataspec;
@@ -72,7 +72,7 @@ public:
 	virtual ~MovableProducer();
 
 	void initialise(AttributeWatcher &, Unit *, Player &) override;
-	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(AttributeWatcher &watcher, Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
 	const gamedata::unit_movable unit_data;
@@ -95,7 +95,7 @@ public:
 	virtual ~LivingProducer();
 
 	void initialise(AttributeWatcher &, Unit *, Player &) override;
-	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(AttributeWatcher &watcher, Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
 	const gamedata::unit_living unit_data;
@@ -115,7 +115,7 @@ public:
 	int parent_id() const override;
 	std::string name() const override;
 	void initialise(AttributeWatcher &, Unit *, Player &) override;
-	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(AttributeWatcher &watcher, Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
 	const GameSpec &dataspec;
@@ -141,7 +141,7 @@ private:
 	 */
 	bool enable_collisions;
 
-	TerrainObject *make_annex(Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const;
+	TerrainObject *make_annex(AttributeWatcher &watcher, Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const;
 };
 
 /**
@@ -157,7 +157,7 @@ public:
 	int parent_id() const override;
 	std::string name() const override;
 	void initialise(AttributeWatcher &, Unit *, Player &) override;
-	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	TerrainObject *place(AttributeWatcher &watcher, Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
 	const gamedata::unit_projectile unit_data;
