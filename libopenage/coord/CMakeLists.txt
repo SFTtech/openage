@@ -2,10 +2,12 @@ add_sources(libopenage
 	camgame.cpp
 	camhud.cpp
 	chunk.cpp
+	coord_xy.cpp
+	coord_test.cpp
 	phys2.cpp
 	phys3.cpp
 	term.cpp
-	tests.cpp
+	tests_old.cpp
 	tile.cpp
 	tile3.cpp
 	vec2.cpp
