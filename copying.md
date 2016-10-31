@@ -88,6 +88,7 @@ _the openage authors_ are:
 | Shaleen Jain                | Shalzz                      | shaleen.jain95@gmail.com              |
 | Johannes Walcher            | tomatower                   | johannes.walcher@stusta.de            |
 | Akritas Akritidis           | MaanooAk                    | akritasak@gmail.com                   |
+| Edgard Mota                 | edgardmota                  | edgardmota@gmail.com                  |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
