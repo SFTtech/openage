@@ -571,7 +571,7 @@ void camhud_delta_0() {
 /**
  * Top level function for coord testing.
  */
-void coord() {
+void old_coord() {
 	phys2_0();
 	phys2_delta_0();
 	tile_0();
