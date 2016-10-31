@@ -52,76 +52,17 @@ Dependency list:
      - Age of Empires II: Forgotten Empires
      - Age of Empires II HD
 
+### Specific Prerequisite steps per Platform
 
-### Prerequisite steps for Ubuntu users (Ubuntu 15.04)
+There are some prerequisite steps that need to be performed so *openage* can be built successfully. Those steps vary from platform to platform, and are described bellow for some of the most common ones:
 
- - `sudo apt-get update`
- - `sudo apt-get install cmake libfreetype6-dev python3-dev libepoxy-dev libsdl2-dev libsdl2-image-dev libopusfile-dev libfontconfig1-dev libharfbuzz-dev opus-tools python3-pil python3-numpy python3-pygments python3-pip qtdeclarative5-dev qml-module-qtquick-controls`
- - `sudo pip3 install cython`
-
-
-### Prerequisite steps for Fedora users (Fedora 20, 21)
-
-`sudo yum install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-devel python3-numpy python3-pillow libepoxy-devel opus-tools opusfile-devel fontconfig-devel harfbuzz-devel qt5-qtdeclarative-devel qt5-qtquickcontrols`
-
-
-### Prerequisite steps for Fedora users (Fedora 22)
-
-`sudo dnf install cmake gcc-c++ clang SDL2-devel SDL2_image-devel python3-Cython python3-devel python3-numpy python3-pillow python3-pygments libepoxy-devel opus-tools opusfile-devel fontconfig-devel harfbuzz-devel qt5-qtdeclarative-devel qt5-qtquickcontrols`
-
-
-### Prerequisite steps for openSUSE users (openSUSE 13.2)
-
-If you already have python3 or one of packman/games repositories then no
-need to run the first two lines. If unsure then just run last line and see
-if all packages can be installed.
-
-- `zypper addrepo http://download.opensuse.org/repositories/devel:languages:python3/openSUSE_13.2/devel:languages:python3.repo`
-- `zypper refresh`
-- `zypper install --no-recommends cmake doxygen fontconfig-devel harfbuzz-devel gcc49-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel libqt5-qtdeclarative-devel libqt5-qtquickcontrols`
-
-
-### Prerequisite steps for openSUSE users (openSUSE Tumbleweed)
-
- - `zypper install --no-recommends cmake doxygen fontconfig-devel harfbuzz-devel gcc-c++ graphviz libSDL2-devel libSDL2_image-devel libfreetype6 libepoxy-devel libogg-devel libopus-devel opusfile-devel pkgconfig python3-Cython python3-Pillow python3-Pygments python3-devel libqt5-qtdeclarative-devel libqt5-qtquickcontrols`
-
-
-### Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)
-
- - Install [Homebrew](http://brew.sh). Other package managers and building from source might also work, but aren't supported as of now. If you figure out fixes for those other options, you're welcome to open pullrequests, as long as the Homebrew build doesn't break.
- - `brew update`
- - `brew install caskroom/cask/brew-cask`
- - `brew tap caskroom/fonts`
- - `brew tap homebrew/versions`
- - `brew tap homebrew/python`
- - `brew update` (yes, again)
- - `brew cask install font-dejavu-sans`
- - `brew install python3 libepoxy freetype fontconfig harfbuzz cmake sdl2 sdl2_image opus opus-tools opusfile`
- - `brew install numpy --with-python3`
- - `brew install pillow --with-python3`
- - `brew install qt5`
- - Choose and Install a compatible compiler:
-  - For clang 3.5: `brew install llvm35`
-  - For gcc 4.9: `brew install gcc49`
- - Permanently add `/usr/local/bin` to your `$PATH` environment variable
- - Permanently add `/usr/local/lib/pkgconfig` and `/usr/local/lib` to your `$PKG_CONFIG_PATH` environment variable
- - Then run `pip3.5 install pygments cython`
-
-
-### Prerequisite steps for Arch Linux users
-
-> NOTE: [aur](https://aur.archlinux.org/packages/openage-git/) exists, to install via **yaourt** run `yaourt -S openage-git`.
-
-This command should provide required packages for Arch Linux installation:
-
-`sudo pacman -S --needed python python-pillow python-numpy python-pygments cython libepoxy ttf-dejavu freetype2 fontconfig harfbuzz cmake sdl2 sdl2_image opusfile opus-tools python-pylint qt5-declarative qt5-quickcontrols`
-
-If you don't have a compiler installed, you can select between these commands to install it:
- - `sudo pacman -S --needed gcc`
- - `sudo pacman -S --needed clang`
-
-You can install both compilers and select the one to be used by `./configure`.
-
+- [Ubuntu (>= 15.04)](build_instructions/ubuntu_15.04.md)
+- [Fedora 20, 21](build_instructions/fedora_20_21.md)
+- [Fedora 22](build_instructions/fedora_22.md)
+- [openSUSE 13.2](build_instructions/opensuse_13.2.md)
+- [openSUSE Tumbleweed](build_instructions/opensuse_tumbleweed.md)
+- [Mac OS X 10.10 Yosemite](build_instructions/os_x_10.10_yosemite.md)
+- [Arch Linux](build_instructions/arch_linux.md)
 
 ## Build procedure
 
@@ -131,8 +72,8 @@ You can install both compilers and select the one to be used by `./configure`.
  - make sure you have everything from the [dependency list](#dependencies)
  - For *nix: `./configure --compiler=clang` will prepare building
   - You could also use `./configure --mode=release --compiler=gcc` here
- - For Mac OS X: use instead:  `./configure --cpp-compiler=clang++-3.5`
-  -  Or: `./configure --mode=release --cpp-compiler=g++-4.9`
+ - For Mac OS X: use instead:  `./configure --compiler=clang`
+  -  Or: `./configure --mode=release --compiler=gcc`
  - `make` does code generation, builds all Cython modules, and libopenage.
  - `make run`, `./run`, `./run.py` or `python3 -m openage` runs the game.
     try `./run --help` and `./run game --help`.
@@ -143,8 +84,8 @@ You can install both compilers and select the one to be used by `./configure`.
 
  - On *nix: `./configure --mode=release --compiler=gcc --prefix=/usr`
   - You could also use `./configure --mode=release --compiler=clang --prefix=/usr`
- - On Mac OS X, use instead: `./configure --mode=release --cpp-compiler=g++-4.9 --prefix=/usr`
-  - Or: `./configure --mode=release --cpp-compiler=clang++-3.5 --prefix=/usr`
+ - On Mac OS X, use instead: `./configure --mode=release --compiler=gcc --prefix=/usr`
+  - Or: `./configure --mode=release --compiler=clang --prefix=/usr`
  - `make` to compile the project
  - `make install` will install the binary to /usr/bin/openage, python
    packages to `/usr/lib/python...`, static assets to `/usr/share`
