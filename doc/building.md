@@ -54,15 +54,15 @@ Dependency list:
 
 ### Specific Prerequisite steps per Platform
 
-There are some prerequisite steps that need to be performed so *openage* can be succesfully build. Those steps vary from platform to platform, and are described bellow for some of the most common ones:
+There are some prerequisite steps that need to be performed so *openage* can be built successfully. Those steps vary from platform to platform, and are described bellow for some of the most common ones:
 
-- [Prerequisite steps for Ubuntu users (Ubuntu 15.04)](build_instructions/ubuntu_15.04.md);
-- [Prerequisite steps for Fedora users (Fedora 20, 21)](build_instructions/fedora_20_21.md);
-- [Prerequisite steps for Fedora users (Fedora 22)](build_instructions/fedora_22.md);
-- [Prerequisite steps for openSUSE users (openSUSE 13.2)](build_instructions/opensuse_13.2.md);
-- [Prerequisite steps for openSUSE users (openSUSE Tumbleweed)](build_instructions/opensuse_tumbleweed.md);
-- [Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)](build_instructions/os_x_10.10_yosemite.md);
-- [Prerequisite steps for Arch Linux users](build_instructions/arch_linux.md).
+- [Ubuntu (>= 15.04)](build_instructions/ubuntu_15.04.md)
+- [Fedora 20, 21](build_instructions/fedora_20_21.md)
+- [Fedora 22](build_instructions/fedora_22.md)
+- [openSUSE 13.2](build_instructions/opensuse_13.2.md)
+- [openSUSE Tumbleweed](build_instructions/opensuse_tumbleweed.md)
+- [Mac OS X 10.10 Yosemite](build_instructions/os_x_10.10_yosemite.md)
+- [Arch Linux](build_instructions/arch_linux.md)
 
 ## Build procedure
 
