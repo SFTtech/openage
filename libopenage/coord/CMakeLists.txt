@@ -8,6 +8,7 @@ add_sources(libopenage
 	term.cpp
 	tests.cpp
 	tile.cpp
+	tile_serialization.cpp
 	tile3.cpp
 	vec2.cpp
 	vec2f.cpp
