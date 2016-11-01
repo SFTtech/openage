@@ -2,7 +2,6 @@ add_sources(libopenage
 	camgame.cpp
 	camhud.cpp
 	chunk.cpp
-	coord_xy.cpp
 	coord_test.cpp
 	phys2.cpp
 	phys3.cpp
