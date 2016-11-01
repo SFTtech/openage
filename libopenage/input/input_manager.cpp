@@ -8,15 +8,18 @@
 #include "input_manager.h"
 #include "text_to_event.h"
 
+
 namespace openage {
 namespace input {
 
-InputManager::InputManager()
-	: relative_mode{false} {
-}
+InputManager::InputManager(Engine *engine)
+	:
+	engine{engine},
+	relative_mode{false} {}
+
 
 std::string InputManager::get_bind(const std::string &action_str) {
-	ActionManager &action_manager = Engine::get().get_action_manager();
+	ActionManager &action_manager = this->engine->get_action_manager();
 
 	action_t action = action_manager.get(action_str);
 	if (action_manager.is("UNDEFINED",action)) {
@@ -41,7 +44,7 @@ std::string InputManager::get_bind(const std::string &action_str) {
 
 bool InputManager::set_bind(const std::string &bind_str, const std::string action_str) {
 	try {
-		ActionManager &action_manager = Engine::get().get_action_manager();
+		ActionManager &action_manager = this->engine->get_action_manager();
 
 		action_t action = action_manager.get(action_str);
 		if (action_manager.is("UNDEFINED",action)) {
@@ -109,6 +112,8 @@ InputContext &InputManager::get_top_context() {
 void InputManager::register_context(InputContext *context) {
 	// Create a context list if none exist
 	this->contexts.push_back(context);
+
+	context->register_to(this);
 }
 
 
@@ -120,6 +125,7 @@ void InputManager::remove_context(InputContext *context) {
 	for (auto it = this->contexts.begin(); it != this->contexts.end(); ++it) {
 		if ((*it) == context) {
 			this->contexts.erase(it);
+			context->unregister();
 			return;
 		}
 	}
@@ -304,6 +310,11 @@ bool InputManager::on_input(SDL_Event *e) {
 	} // switch (e->type)
 
 	return true;
+}
+
+
+Engine *InputManager::get_engine() const {
+	return this->engine;
 }
 
 

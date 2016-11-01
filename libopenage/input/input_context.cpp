@@ -52,23 +52,36 @@ InputContext::InputContext()
 	:
 	utf8_mode{false} {}
 
+
 std::vector<std::string> InputContext::active_binds() const {
-	Engine &engine = Engine::get();
-	InputManager &input_manager = engine.get_input_manager();
-	ActionManager &action_manager = engine.get_action_manager();
+	// TODO: this function doesn't belong here.
+	//       go give it a new home in another file.
 
 	std::vector<std::string> result;
 
-	for (auto &action : this->by_type) {
-		std::string action_type_str = action_manager.get_name(action.first);
+	if (this->input_manager == nullptr) {
+		return result;
+	}
 
+	// this is only possible if the action is registered,
+	// then this->input_manager != nullptr.
+	ActionManager &action_manager = this->input_manager->get_engine()->get_action_manager();
+
+	for (auto &action : this->by_type) {
 		std::string keyboard_key;
-		for (auto &key : input_manager.keys) {
+
+		for (auto &key : this->input_manager->keys) {
+			// TODO: this is the wrong check.
+			//       the input manager should have a function
+			//       which returns a list of binds when feeding
+			//       in the InputContext.
 			if (key.first == action.first) {
 				keyboard_key = event_as_string(key.second);
 				break;
 			}
 		}
+
+		std::string action_type_str = action_manager.get_name(action.first);
 
 		result.push_back(keyboard_key + " : " + action_type_str);
 	}
@@ -117,6 +130,17 @@ bool InputContext::execute_if_bound(const action_arg_t &arg) {
 
 	return false;
 }
+
+
+void InputContext::register_to(InputManager *manager) {
+	this->input_manager = manager;
+}
+
+
+void InputContext::unregister() {
+	this->input_manager = nullptr;
+}
+
 
 
 }} // openage::input

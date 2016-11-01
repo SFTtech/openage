@@ -13,7 +13,11 @@
 #include "event.h"
 #include "input_context.h"
 
+
 namespace openage {
+
+class Engine;
+
 
 /**
  * The openage input layer.
@@ -22,6 +26,7 @@ namespace openage {
 namespace input {
 
 using binding_map_t = std::unordered_map<action_t, Event>;
+
 
 /**
  * The input manager manages all input layers (hud, game, ...)
@@ -36,7 +41,7 @@ using binding_map_t = std::unordered_map<action_t, Event>;
 class InputManager : public openage::InputHandler {
 
 public:
-	InputManager();
+	InputManager(Engine *engine);
 
 	/**
 	 * Return the string representation of the bind assignated to an action.
@@ -80,12 +85,21 @@ public:
 	InputContext &get_top_context();
 
 	/**
-	 * register a hotkey context.
+	 * register a hotkey context by pushing it onto the stack.
+	 *
+	 * this adds the given pointer to the `contexts` list.
+	 * that way the context lays on "top".
+	 *
+	 * if other contexts are registered afterwards,
+	 * it wanders down the stack, i.e. looses priority.
 	 */
 	void register_context(InputContext *context);
 
 	/**
-	 * removes any matching registered context.
+	 * removes any matching registered context from the stack.
+	 *
+	 * the removal is done by finding the given pointer
+	 * in the `contexts` lists, then deleting it in there.
 	 */
 	void remove_context(InputContext *context);
 
@@ -151,11 +165,33 @@ public:
 	 */
 	bool on_input(SDL_Event *e) override;
 
+	/**
+	 * Return the engine where this input manager is bound to.
+	 */
+	Engine *get_engine() const;
+
 private:
 	modset_t get_mod() const;
 
+	/**
+	 * Engine where this input manager belongs to.
+	 */
+	Engine *engine;
+
+	/**
+	 * The global context. Used as fallback.
+	 */
 	InputContext global_hotkeys;
+
+	/**
+	 * maps actions to events.
+	 */
 	binding_map_t keys;
+
+	/**
+	 * Stack of active input contexts.
+	 * The most recent entry is pushed on top of the stack.
+	 */
 	std::vector<InputContext *> contexts;
 
 	/**
@@ -179,10 +215,15 @@ private:
 	bool relative_mode;
 
 	/**
-	 * mouse position and postion delta
+	 * mouse position in the window
 	 */
 	coord::window mouse_position;
+
+	/**
+	 * mouse position relative to the last frame position.
+	 */
 	coord::window_delta mouse_motion;
+
 	friend InputContext;
 };
 
