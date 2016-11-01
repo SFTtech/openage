@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """
 Utility and driver module for C++ code generation.
@@ -156,7 +156,7 @@ def codegen(projectdir, mode):
             exit(1)
 
     generated = {os.path.abspath(path).decode() for path in generated}
-    depends = {os.path.abspath(path) for path in get_codegen_depends(wrapper)}
+    depends = set(get_codegen_depends(wrapper, projectdir))
 
     return generated, depends
 
@@ -183,7 +183,7 @@ def depend_module_blacklist():
         pass
 
 
-def get_codegen_depends(outputwrapper):
+def get_codegen_depends(outputwrapper, projectdir):
     """
     Yields all codegen dependencies.
 
@@ -194,9 +194,11 @@ def get_codegen_depends(outputwrapper):
     """
     # add all files that have been read as depends
     for parts in outputwrapper.get_reads():
-        yield outputwrapper.obj.fsobj.resolve(parts).decode()
+        yield os.path.abspath(outputwrapper.obj.fsobj.resolve(parts).decode())
 
     module_blacklist = set(depend_module_blacklist())
+
+    project_abspath = os.path.abspath(projectdir.fsobj.path)
 
     # add all source files that have been loaded as depends
     for module in modules.values():
@@ -204,7 +206,7 @@ def get_codegen_depends(outputwrapper):
             continue
 
         try:
-            filename = module.__file__
+            filename = os.path.abspath(module.__file__)
         except AttributeError:
             # built-in modules don't have __file__, we don't want those as
             # depends.
@@ -214,8 +216,12 @@ def get_codegen_depends(outputwrapper):
             continue
 
         if not filename.endswith('.py'):
-            print("codegeneration depends on non-.py module " + filename)
-            exit(1)
+            if filename.encode().startswith(project_abspath):
+                # this is an openage extension module.
+                # its availability is not guaranteed during the build process;
+                # its use is thus forbidden.
+                print("codegeneration depends on non-.py module " + filename)
+                exit(1)
 
         yield filename
 
@@ -232,7 +238,7 @@ def get_header_lines():
 
     yield ""
     yield "Warning: this file was auto-generated; manual changes are futile."
-    yield "For details, see buildsystem/codegen.cmake and py/openage/codegen."
+    yield "For details, see buildsystem/codegen.cmake and openage/codegen."
     yield ""
 
 

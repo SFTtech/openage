@@ -1,6 +1,6 @@
 // Copyright 2016-2016 the openage authors. See copying.md for legal info.
 
-#include "coord_xy.h"
+{{ "#" }}include "coord_{{ formatted_members("{}", join_with="") }}.gen.h"
 
 #include <cstdio>
 
