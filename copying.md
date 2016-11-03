@@ -93,6 +93,7 @@ _the openage authors_ are:
 | Michael Droogleever         | droogmic                    | droogmic@gmail.com                    |
 | Christoph Heine             | heinezen                    | heinezen@hotmail.de                   |
 | Marco Savellli              | Piruzzolo                   | svlmrc@gmail.com                      |
+| Yvan Burrie                 | yvan-burrie                 | yvan.burrie@hotmail.com               |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
