@@ -3,6 +3,7 @@
 .#*
 *~
 .*.swp
+/CMakeLists.txt.user
 
 # ELF files
 *.o

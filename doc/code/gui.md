@@ -1,5 +1,9 @@
 # QtQuick-based Graphical User Interface
 
+## Using Qt Creator Integrated Development Environment (IDE)
+
+See [Developing openage in IDE](ide.md).
+
 ## Writing presentation-level code
 
 It's being developed in QML language.
