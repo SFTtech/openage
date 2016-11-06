@@ -51,6 +51,9 @@ def main(argv=None):
 
     subparsers = cli.add_subparsers(dest="subcommand")
 
+    # enable reimports for "init_subparser"
+    # pylint: disable=reimported
+
     from .game.main import init_subparser
     game_cli = subparsers.add_parser(
         "game",

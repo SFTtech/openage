@@ -23,6 +23,7 @@ Dependencies are needed for:
 * C = compiling
 * R = running
 * A = asset conversion
+* S = sanity checks (make checkall)
 
 Dependency list:
 
@@ -42,7 +43,9 @@ Dependency list:
     CR    sdl2_image
     CR    opusfile
       A   opus-tools
+       S  pycodestyle (or pep8 (deprecated))
     C     pygments
+       S  pylint
     CR    qt5 >=5.4 (Core, Quick, QuickControls modules)
 
       A   An installed version of any of the following (wine is your friend).
@@ -52,9 +55,12 @@ Dependency list:
      - Age of Empires II: Forgotten Empires
      - Age of Empires II HD
 
-### Specific Prerequisite steps per Platform
 
-There are some prerequisite steps that need to be performed so *openage* can be built successfully. Those steps vary from platform to platform, and are described bellow for some of the most common ones:
+### Dependency installation
+
+There are some prerequisite steps that need to be performed so *openage* can be
+built successfully. Those steps vary from platform to platform, and are
+described below for some of the most common ones:
 
 - [Ubuntu (>= 15.04)](build_instructions/ubuntu_15.04.md)
 - [Fedora 20, 21](build_instructions/fedora_20_21.md)
@@ -63,6 +69,7 @@ There are some prerequisite steps that need to be performed so *openage* can be 
 - [openSUSE Tumbleweed](build_instructions/opensuse_tumbleweed.md)
 - [Mac OS X 10.10 Yosemite](build_instructions/os_x_10.10_yosemite.md)
 - [Arch Linux](build_instructions/arch_linux.md)
+
 
 ## Build procedure
 

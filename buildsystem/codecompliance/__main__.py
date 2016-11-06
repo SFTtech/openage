@@ -97,15 +97,14 @@ def process_args(args, error):
             error("--test-git-change-years requires git")
 
     if args.pystyle:
-        try:
-            importlib.import_module('pep8')
-        except ImportError:
-            error("pep8 python module required for style checking")
+        if not importlib.util.find_spec('pep8') and \
+           not importlib.util.find_spec('pycodestyle'):
+
+            error("pep8 or pycodestyle python module "
+                  "required for style checking")
 
     if args.pylint:
-        try:
-            importlib.import_module('pylint')
-        except ImportError:
+        if not importlib.util.find_spec('pylint'):
             error("pylint python module required for linting")
 
 

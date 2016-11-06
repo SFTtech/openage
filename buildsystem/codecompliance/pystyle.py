@@ -1,10 +1,14 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 """
 Checks PEP8 compliance, with some exceptions.
 """
 
-from pep8 import StyleGuide
+try:
+    from pep8 import StyleGuide
+except ImportError:
+    from pycodestyle import StyleGuide
+
 
 # these errors will be ignored by pep8
 IGNORE_ERRORS = (
