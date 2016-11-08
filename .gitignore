@@ -45,3 +45,4 @@ Makefile
 callgrind.out.*
 perf.data*
 .gdb_history
+.ycm_extra_conf.py
