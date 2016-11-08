@@ -441,7 +441,7 @@ private:
 	 */
 	std::unique_ptr<gui::GuiBasic> gui;
 
-	/*
+	/**
 	 * The renderer. Accepts all tasks to be drawn on screen.
 	 */
 	std::unique_ptr<renderer::Renderer> renderer;

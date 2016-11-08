@@ -2,12 +2,17 @@
 
 #include "assetmanager.h"
 
+#ifdef WITH_INOTIFY
+#include <sys/inotify.h>
+#endif
+
 #include "error/error.h"
 #include "log/log.h"
 #include "texture.h"
 #include "util/compiler.h"
 #include "util/file.h"
 #include "watch/watch.h"
+
 
 namespace openage {
 

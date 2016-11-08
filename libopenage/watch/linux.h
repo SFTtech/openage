@@ -11,6 +11,9 @@
 
 #include "watch.h"
 
+// GCC stdlib defines linux as 1. Why would anybody use lowercase macros?
+#undef linux
+
 
 namespace openage {
 namespace watch {

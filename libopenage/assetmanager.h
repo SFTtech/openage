@@ -8,6 +8,8 @@
 
 #include "util/dir.h"
 #include "watch/watch.h"
+#include "config.h"
+
 
 namespace qtsdl {
 class GuiItemLink;
