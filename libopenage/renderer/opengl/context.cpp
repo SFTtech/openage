@@ -1,9 +1,12 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 #include "../../config.h"
 #if WITH_OPENGL
 
 #include "context.h"
+
+#include <utility>
+#include <array>
 
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
@@ -20,10 +23,6 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-// TODO: get max available gl version
-constexpr int opengl_version_major = 3;
-constexpr int opengl_version_minor = 3;
-
 Context::Context()
 	:
 	renderer::Context{context_type::opengl} {}
@@ -34,13 +33,65 @@ uint32_t Context::get_window_flags() const {
 	return SDL_WINDOW_OPENGL;
 }
 
+// first element is the min supported version
+// last element is the max supported version
+constexpr std::array<std::pair<int, int>, 6> gl_versions = {{{3,3}, {4,0}, {4,1}, {4,2}, {4,3}, {4,4}}};
+
 void Context::prepare() {
+	// set initially to maximum supported version so that if the for loop doesn't fail the max one is used
+	int opengl_version_major = gl_versions[gl_versions.size() - 1].first;
+	int opengl_version_minor = gl_versions[gl_versions.size() - 1].second;
+
+	SDL_Window *test_window = SDL_CreateWindow("test", 0, 0, 2, 2, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN);
+	if (test_window == nullptr) {
+		throw Error(MSG(err) << "Failed creating window for OpenGL context testing. SDL Error: " << SDL_GetError());
+	}
+	SDL_GLContext test_context;
+
+	// check each version for availability
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, opengl_version_major);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, opengl_version_minor);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+
+	for (size_t i_ver = 0; i_ver < gl_versions.size(); ++i_ver) {
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, gl_versions[i_ver].first);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, gl_versions[i_ver].second);
+		test_context = SDL_GL_CreateContext(test_window);
+
+		if (test_context == nullptr) {
+			if (i_ver == 0) {
+				throw Error(MSG(err) << "OpenGL version " << gl_versions[0].first << "." << gl_versions[0].second << " is not available. It is the minimal required version.");
+			}
+			else {
+				opengl_version_major = gl_versions[i_ver - 1].first;
+				opengl_version_minor = gl_versions[i_ver - 1].second;
+				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, opengl_version_major);
+				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, opengl_version_minor);
+				break;
+			}
+		}
+
+		SDL_GL_DeleteContext(test_context);
+	}
+
+	test_context = SDL_GL_CreateContext(test_window);
+	if (test_context == nullptr) {
+		throw Error(MSG(err) << "Failed to create OpenGL context which previously succeeded. This should not happen! SDL Error: " << SDL_GetError());
+	}
+
+	auto &cap = this->capability;
+
+	cap.type = this->type;
+	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &cap.max_texture_size);
+	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &cap.max_texture_slots);
+	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &cap.max_vertex_attributes);
+
+	glGetIntegerv(GL_MAJOR_VERSION, &cap.major_version);
+	glGetIntegerv(GL_MINOR_VERSION, &cap.minor_version);
+
+	SDL_GL_DeleteContext(test_context);
+	SDL_DestroyWindow(test_window);
 }
 
 void Context::create(SDL_Window *window) {
@@ -51,19 +102,21 @@ void Context::create(SDL_Window *window) {
 	}
 
 	// check the OpenGL version, for shaders n stuff
-	int epoxy_glv =  opengl_version_major * 10 + opengl_version_minor;
+	// TODO: this doesn't look necessary. libepoxy supports up to 4.4, which is the maximum supported version in gl_versions
+	// and if GL 3.3 is not available than the context above will fail anyway and it won't get to this point
+	int epoxy_glv =  this->capability.major_version * 10 + this->capability.minor_version;
 	if (not epoxy_is_desktop_gl() or epoxy_gl_version() < epoxy_glv) {
 		throw Error(MSG(err) << "OpenGL "
-		                     << opengl_version_major << "." << opengl_version_minor
+		                     << this->capability.major_version << "." << this->capability.minor_version
 		                     << " not available");
 	}
 
-	log::log(MSG(info) << "Using OpenGL " << opengl_version_major << "." << opengl_version_minor);
+	log::log(MSG(info) << "Using OpenGL " << this->capability.major_version << "." << this->capability.minor_version);
 }
 
 void Context::setup() {
 	// TODO: context capability checking
-	context_capability caps = this->get_capabilities();
+	auto &caps = this->capability;
 
 	// to quote the standard doc: 'The value gives a rough estimate of the
 	// largest texture that the GL can handle'
@@ -102,18 +155,7 @@ void Context::setup() {
 
 
 context_capability Context::get_capabilities() {
-	context_capability ret;
-
-	ret.type = this->type;
-
-	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &ret.max_texture_size);
-	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &ret.max_texture_slots);
-	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &ret.max_vertex_attributes);
-
-	glGetIntegerv(GL_MAJOR_VERSION, &ret.major_version);
-	glGetIntegerv(GL_MINOR_VERSION, &ret.minor_version);
-
-	return ret;
+	return this->capability;
 }
 
 
