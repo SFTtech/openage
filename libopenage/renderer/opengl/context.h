@@ -1,4 +1,4 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
 #ifndef OPENAGE_RENDERER_OPENGL_CONTEXT_H_
 #define OPENAGE_RENDERER_OPENGL_CONTEXT_H_
@@ -104,6 +104,11 @@ protected:
 	 * SDL opengl context state.
 	 */
 	SDL_GLContext glcontext;
+
+    /**
+     * The capability of this context.
+     */
+    context_capability capability;
 };
 
 }}} // namespace openage::renderer
