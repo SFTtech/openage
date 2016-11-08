@@ -90,4 +90,8 @@ std::shared_ptr<Context> Window::get_context() {
 	return this->context;
 }
 
+SDL_Window* Window::get_raw_window() const {
+	return this->window;
+}
+
 }} // namespace openage::renderer

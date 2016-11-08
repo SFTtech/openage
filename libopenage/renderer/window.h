@@ -48,6 +48,15 @@ public:
 	 */
 	std::shared_ptr<Context> get_context();
 
+	// TODO: this shouldn't be exposed.
+	// It is only necessary because GuiBasic requires a raw SDL_Window handle, since the QtQuick
+	// gui needs the native context of our SDL window to work, so it (the QtQuick gui) is inherently
+	// coupled to our window. This probably means that the gui should be integrated either _into_
+	// this Window class or _together_ with it in a conceptual unit that manages the GL context.
+	/**
+	 * Return the raw SDL window handle.
+	 */
+	SDL_Window* get_raw_window() const;
 
 private:
 	coord::window size;

@@ -122,7 +122,7 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 	using namespace std::string_literals;
 	auto qml_search_paths = {this->data_dir->basedir, "libopenage/gui"s};
 
-	this->gui = std::make_unique<gui::GuiBasic>(this->window, "qml/main.qml", &this->singletons_info, qml_search_paths);
+	this->gui = std::make_unique<gui::GuiBasic>(this->window->get_raw_window(), "qml/main.qml", &this->singletons_info, qml_search_paths);
 	this->register_resize_action(this->gui.get());
 	this->register_input_action(this->gui.get());
 	this->register_drawhud_action(this->gui.get());
