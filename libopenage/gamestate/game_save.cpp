@@ -19,21 +19,19 @@ namespace openage {
 namespace gameio {
 
 void save_unit(std::ofstream &file, Unit *unit) {
-	// TODO: store pointer to the printer as a member, make bindable
-	AttributeWatcher printer;
 	file << unit->unit_type->id() << std::endl;
-	file << unit->get_attribute<attr_type::owner>(printer).player.player_number << std::endl;
+	file << unit->get_attribute<attr_type::owner>().player.player_number << std::endl;
 	coord::tile pos = unit->location->pos.start;
 	file << pos.ne << " " << pos.se << std::endl;
 
 	bool has_building_attr = unit->has_attribute(attr_type::building);
 	file << has_building_attr << std::endl;
 	if (has_building_attr) {
-		file << unit->get_attribute<attr_type::building>(printer).completed << std::endl;
+		file << unit->get_attribute<attr_type::building>().completed << std::endl;
 	}
 }
 
-void load_unit(std::ifstream &file, openage::GameMain *game, AttributeWatcher &watcher) {
+void load_unit(std::ifstream &file, openage::GameMain *game, curve::CurveRecord &watcher) {
 	int pr_id;
 	int player_no;
 	coord::phys_t ne, se;
@@ -143,10 +141,10 @@ void load(openage::GameMain *game, std::string fname) {
 	game->placed_units.reset();
 	unsigned int num_units;
 	file >> num_units;
-	// TODO: pass pointer to the printer, make bindable
-	AttributeWatcher printer;
+
+	curve::CurveRecord watcher{nullptr};
 	for (unsigned int u = 0; u < num_units; ++u) {
-		load_unit(file, game, printer);
+		load_unit(file, game, watcher);
 	}
 }
 

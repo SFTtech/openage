@@ -11,7 +11,7 @@
 #include "../terrain/terrain_object.h"
 #include "../gamestate/resource.h"
 #include "unit_container.h"
-#include "attribute_watcher.h"
+#include "../curve/curve_record_replay.h"
 
 namespace std {
 
@@ -70,7 +70,8 @@ enum class attr_type {
 	dropsite,
 	resource,
 	gatherer,
-	garrison
+	garrison,
+	position
 };
 
 enum class attack_stance {
@@ -162,12 +163,12 @@ public:
 
 template<> class Attribute<attr_type::hitpoints>: public AttributeContainer {
 public:
-	Attribute(AttributeWatcher &watcher, id_t id, unsigned int i)
+	Attribute(curve::CurveRecord &watcher, id_t id, unsigned int i)
 		:
 		AttributeContainer{attr_type::hitpoints},
 		current{i},
 		max{i} {
-			watcher.apply(id, i, "hitpoints");
+			watcher.write_out(id, i, "hitpoints");
 		}
 
 	bool shared() const override {

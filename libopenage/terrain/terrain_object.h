@@ -9,13 +9,18 @@
 #include "../coord/tile.h"
 #include "../coord/phys3.h"
 
+#include "tile_range.h"
+
 namespace openage {
 
 class Terrain;
 class TerrainChunk;
 class Texture;
 class Unit;
-class AttributeWatcher;
+
+namespace curve {
+class CurveRecord;
+} // namespace curve
 
 /**
  * only placed will enable collision checks
@@ -25,18 +30,6 @@ enum class object_state {
 	floating,
 	placed,
 	placed_no_collision
-};
-
-/**
- * A rectangle or square of tiles which is the minimim
- * space to fit the units foundation or radius
- * the end tile will have ne and se values greater or equal to
- * the start tile
- */
-struct tile_range {
-	coord::tile start;
-	coord::tile end;	// start <= end
-	coord::phys3 draw;	// gets used as center point of radial objects
 };
 
 /**
@@ -56,7 +49,7 @@ tile_range building_center(coord::phys3 west, coord::tile_delta size);
 /**
  * sets a building to a fully completed state
  */
-bool complete_building(AttributeWatcher &watcher, Unit &);
+bool complete_building(curve::CurveRecord &watcher, Unit &);
 
 /**
  * half a tile
@@ -153,12 +146,12 @@ public:
 	 * @param init_state should be floating, placed or placed_no_collision
 	 * @returns true when the object was placed, false when it did not fit at pos.
 	 */
-	bool place(AttributeWatcher &watcher, std::shared_ptr<Terrain> t, coord::phys3 &pos, object_state init_state);
+	bool place(curve::CurveRecord &watcher, std::shared_ptr<Terrain> t, coord::phys3 &pos, object_state init_state);
 
 	/**
 	 * moves the object -- returns false if object cannot be moved here
 	 */
-	bool move(AttributeWatcher &watcher, coord::phys3 &pos);
+	bool move(curve::CurveRecord &watcher, coord::phys3 &pos);
 
 	/**
 	 * remove this TerrainObject from the terrain chunks.
@@ -277,7 +270,7 @@ protected:
 	 * otherwise the place function should be used
 	 * this does not modify the units placement state
 	 */
-	void place_unchecked(AttributeWatcher &watcher, std::shared_ptr<Terrain> t, coord::phys3 &position);
+	void place_unchecked(curve::CurveRecord &watcher, std::shared_ptr<Terrain> t, coord::phys3 &position);
 };
 
 /**

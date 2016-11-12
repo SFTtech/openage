@@ -121,7 +121,7 @@ public:
 	/**
 	 * update this object using the action currently on top of the stack
 	 */
-	bool update(AttributeWatcher &watcher);
+	bool update(curve::CurveRecord &watcher);
 
 	/**
 	 * draws this action by taking the graphic type of the top action
@@ -181,7 +181,7 @@ public:
 	 * returns attribute based on templated value while spying on it
 	 */
 	template<attr_type T>
-	typename AttributeSpy<T>::type get_attribute(AttributeWatcher &watcher) {
+	typename AttributeSpy<T>::type get_attribute(curve::CurveRecord &watcher) {
 		return get_attr<T>(watcher, this->id, this->attribute_map);
 	}
 
@@ -191,6 +191,14 @@ public:
 	template<attr_type T>
 	const Attribute<T>& get_attribute() const {
 		return get_attr<T>(this->attribute_map);
+	}
+
+	/**
+	 * returns mutable attribute based on templated value
+	 */
+	template<attr_type T>
+	Attribute<T>& get_attribute_unwatched() {
+		return get_attr_ref<T>(this->attribute_map);
 	}
 
 	/**
@@ -295,18 +303,18 @@ private:
 	/**
 	 * applies new commands as part of the units update process
 	 */
-	void apply_all_cmds(AttributeWatcher &watcher);
+	void apply_all_cmds(curve::CurveRecord &watcher);
 
 	/**
 	 * applies one command using a chosen ability
 	 * locks the command queue mutex while operating
 	 */
-	void apply_cmd(AttributeWatcher &watcher, std::shared_ptr<UnitAbility> ability, const Command &cmd);
+	void apply_cmd(curve::CurveRecord &watcher, std::shared_ptr<UnitAbility> ability, const Command &cmd);
 
 	/**
 	 * update all secondary actions
 	 */
-	void update_secondary(AttributeWatcher &watcher, int64_t time_elapsed);
+	void update_secondary(curve::CurveRecord &watcher, int64_t time_elapsed);
 
 	/**
 	 * erase from action specified by func to the end of the stack

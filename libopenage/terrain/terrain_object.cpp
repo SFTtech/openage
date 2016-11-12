@@ -117,7 +117,7 @@ bool TerrainObject::place(object_state init_state) {
 	return true;
 }
 
-bool TerrainObject::place(AttributeWatcher &watcher, std::shared_ptr<Terrain> t, coord::phys3 &position, object_state init_state) {
+bool TerrainObject::place(curve::CurveRecord &watcher, std::shared_ptr<Terrain> t, coord::phys3 &position, object_state init_state) {
 	if (this->state != object_state::removed) {
 		throw Error(MSG(err) << "This object has already been placed.");
 	}
@@ -138,7 +138,7 @@ bool TerrainObject::place(AttributeWatcher &watcher, std::shared_ptr<Terrain> t,
 	return true;
 }
 
-bool TerrainObject::move(AttributeWatcher &watcher, coord::phys3 &position) {
+bool TerrainObject::move(curve::CurveRecord &watcher, coord::phys3 &position) {
 	if (this->state == object_state::removed) {
 		return false;
 	}
@@ -258,10 +258,10 @@ bool TerrainObject::operator <(const TerrainObject &other) {
 	return true;
 }
 
-void TerrainObject::place_unchecked(AttributeWatcher &watcher, std::shared_ptr<Terrain> t, coord::phys3 &position) {
+void TerrainObject::place_unchecked(curve::CurveRecord &watcher, std::shared_ptr<Terrain> t, coord::phys3 &position) {
 	// storing the position:
 	this->pos = get_range(position);
-	watcher.apply(this->unit.id, this->pos, "pos");
+	watcher.write_out(this->unit.id, this->pos, "pos");
 	this->terrain = t;
 	this->occupied_chunk_count = 0;
 
@@ -469,7 +469,7 @@ tile_range building_center(coord::phys3 west, coord::tile_delta size) {
 	return result;
 }
 
-bool complete_building(AttributeWatcher &watcher, Unit &u) {
+bool complete_building(curve::CurveRecord &watcher, Unit &u) {
 	if (u.has_attribute(attr_type::building)) {
 		auto &build = u.get_attribute<attr_type::building>(watcher);
 		build.completed = 1.0f;

@@ -19,7 +19,10 @@ class Unit;
 class UnitAction;
 class UnitTexture;
 class UnitType;
-class AttributeWatcher;
+
+namespace curve {
+class CurveRecord;
+} // namespace curve
 
 /**
  * roughly the same as command_ability in game data
@@ -96,7 +99,7 @@ public:
 	/**
 	 * applies command to a given unit
 	 */
-	virtual void invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) = 0;
+	virtual void invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) = 0;
 
 	/**
  	 * some common functions
@@ -128,7 +131,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
 	const Sound *sound;
@@ -147,7 +150,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 };
 
 
@@ -164,7 +167,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
 	const Sound *sound;
@@ -183,7 +186,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
 	const Sound *sound;
@@ -202,7 +205,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
 	const Sound *sound;
@@ -221,7 +224,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
 	const Sound *sound;
@@ -240,7 +243,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
 	const Sound *sound;
@@ -259,7 +262,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound=false) override;
 
 private:
 	const Sound *sound;

@@ -69,7 +69,7 @@ bool MoveAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	return false;
 }
 
-void MoveAbility::invoke(AttributeWatcher&, Unit &to_modify, const Command &cmd, bool play_sound) {
+void MoveAbility::invoke(curve::CurveRecord&, Unit &to_modify, const Command &cmd, bool play_sound) {
 	to_modify.log(MSG(dbg) << "invoke move action");
 	if (play_sound && this->sound) {
 		this->sound->play();
@@ -101,7 +101,7 @@ bool SetPointAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	       to_modify.has_attribute(attr_type::building);
 }
 
-void SetPointAbility::invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool) {
+void SetPointAbility::invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool) {
 	auto &build_attr = to_modify.get_attribute<attr_type::building>(watcher);
 	build_attr.gather_point = cmd.position();
 }
@@ -130,7 +130,7 @@ bool GarrisonAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	       is_ally(to_modify, target);
 }
 
-void GarrisonAbility::invoke(AttributeWatcher&, Unit &to_modify, const Command &cmd, bool play_sound) {
+void GarrisonAbility::invoke(curve::CurveRecord&, Unit &to_modify, const Command &cmd, bool play_sound) {
 	to_modify.log(MSG(dbg) << "invoke garrison action");
 	if (play_sound && this->sound) {
 		this->sound->play();
@@ -151,7 +151,7 @@ bool UngarrisonAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	return false;
 }
 
-void UngarrisonAbility::invoke(AttributeWatcher&, Unit &to_modify, const Command &cmd, bool play_sound) {
+void UngarrisonAbility::invoke(curve::CurveRecord&, Unit &to_modify, const Command &cmd, bool play_sound) {
 	to_modify.log(MSG(dbg) << "invoke ungarrison action");
 	if (play_sound && this->sound) {
 		this->sound->play();
@@ -174,7 +174,7 @@ bool TrainAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	return false;
 }
 
-void TrainAbility::invoke(AttributeWatcher&, Unit &to_modify, const Command &cmd, bool play_sound) {
+void TrainAbility::invoke(curve::CurveRecord&, Unit &to_modify, const Command &cmd, bool play_sound) {
 	to_modify.log(MSG(dbg) << "invoke train action");
 	if (play_sound && this->sound) {
 		this->sound->play();
@@ -198,7 +198,7 @@ bool BuildAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	return false;
 }
 
-void BuildAbility::invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound) {
+void BuildAbility::invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound) {
 	to_modify.log(MSG(dbg) << "invoke build action");
 	if (play_sound && this->sound) {
 		this->sound->play();
@@ -225,7 +225,7 @@ bool GatherAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	return false;
 }
 
-void GatherAbility::invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound) {
+void GatherAbility::invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound) {
 	to_modify.log(MSG(dbg) << "invoke gather action");
 	if (play_sound && this->sound) {
 		this->sound->play();
@@ -260,7 +260,7 @@ bool AttackAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	return false;
 }
 
-void AttackAbility::invoke(AttributeWatcher &watcher, Unit &to_modify, const Command &cmd, bool play_sound) {
+void AttackAbility::invoke(curve::CurveRecord &watcher, Unit &to_modify, const Command &cmd, bool play_sound) {
 	to_modify.log(MSG(dbg) << "invoke attack action");
 	if (play_sound && this->sound) {
 		this->sound->play();

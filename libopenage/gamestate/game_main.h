@@ -17,6 +17,10 @@ namespace openage {
 class Generator;
 class Terrain;
 
+namespace curve {
+class CurveRecordReplay;
+} // namespace curve
+
 /**
  * Contains information for a single game
  * This information must be synced across network clients
@@ -49,6 +53,11 @@ public:
 	 */
 	void update();
 
+	curve::CurveRecordReplay* get_record_replay() const;
+	void set_record_replay(curve::CurveRecordReplay *record_replay);
+
+	curve::CurveRecord* get_record() const;
+
 	/**
 	 * map information
 	 */
@@ -78,6 +87,8 @@ private:
 	std::vector<std::shared_ptr<Civilisation>> civs;
 
 	std::shared_ptr<GameSpec> spec;
+
+	curve::CurveRecordReplay *record_replay;
 };
 
 } // openage
@@ -101,6 +112,9 @@ public:
 	explicit GameMainHandle(qtsdl::GuiItemLink *gui_link);
 
 	void set_engine(Engine *engine);
+
+	curve::CurveRecordReplay* get_record_replay() const;
+	void set_record_replay(curve::CurveRecordReplay *record_replay);
 
 	void clear();
 

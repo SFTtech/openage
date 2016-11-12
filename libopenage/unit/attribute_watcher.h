@@ -6,12 +6,10 @@
 
 namespace openage {
 
-class AttributeWatcher {
-public:
-	template<typename T>
-	void apply(id_t id, T value, const char *name) {
-		std::cout << id << " " << name << " " << value << "\n";
-	}
-};
+inline std::string parse_attr_name(std::istream &stream) {
+	std::string name;
+	stream >> name;
+	return name;
+}
 
 } // namespace openage

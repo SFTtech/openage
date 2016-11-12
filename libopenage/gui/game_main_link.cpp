@@ -6,6 +6,7 @@
 
 #include "../engine.h"
 #include "engine_link.h"
+#include "curve_record_replay_link.h"
 
 namespace openage {
 namespace gui {
@@ -55,6 +56,18 @@ void GameMainLink::set_engine(EngineLink *engine) {
 		_this->set_engine(engine);
 	};
 	this->s(f, this->engine, engine);
+}
+
+CurveRecordReplayLink* GameMainLink::get_record_replay() const {
+	return this->record_replay;
+}
+
+void GameMainLink::set_record_replay(CurveRecordReplayLink *record_replay) {
+	static auto f = [] (GameMainHandle *_this, curve::CurveRecordReplay *record_replay) {
+		if (auto game = _this->get_game())
+			game->set_record_replay(record_replay);
+	};
+	this->s(f, this->record_replay, record_replay);
 }
 
 void GameMainLink::clear() {

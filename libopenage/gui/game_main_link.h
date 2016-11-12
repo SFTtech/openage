@@ -13,6 +13,7 @@ namespace gui {
 
 class EngineLink;
 class GameMainLink;
+class CurveRecordReplayLink;
 
 }} // namespace openage::gui
 
@@ -39,6 +40,7 @@ class GameMainLink : public qtsdl::GuiItemQObject, public QQmlParserStatus, publ
 	Q_ENUMS(State)
 	Q_PROPERTY(State state READ get_state NOTIFY state_changed)
 	Q_PROPERTY(openage::gui::EngineLink* engine READ get_engine WRITE set_engine)
+	Q_PROPERTY(openage::gui::CurveRecordReplayLink* recordReplay READ get_record_replay WRITE set_record_replay)
 
 public:
 	explicit GameMainLink(QObject *parent=nullptr);
@@ -52,6 +54,9 @@ public:
 
 	EngineLink* get_engine() const;
 	void set_engine(EngineLink *engine);
+
+	CurveRecordReplayLink* get_record_replay() const;
+	void set_record_replay(CurveRecordReplayLink *record_replay);
 
 	Q_INVOKABLE	void clear();
 
@@ -69,6 +74,7 @@ private:
 	State state;
 	bool active;
 	EngineLink *engine;
+	CurveRecordReplayLink *record_replay;
 };
 
 }} // namespace openage::gui

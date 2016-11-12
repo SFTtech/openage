@@ -2,6 +2,7 @@ add_sources(libopenage
 	assetmanager_link.cpp
 	actions_list_model.cpp
 	category_contents_list_model.cpp
+	curve_record_replay_link.cpp
 	engine_link.cpp
 	game_control_link.cpp
 	game_creator.cpp

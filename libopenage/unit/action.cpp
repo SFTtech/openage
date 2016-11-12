@@ -89,7 +89,7 @@ void UnitAction::draw_debug() {
 	}
 }
 
-void UnitAction::face_towards(AttributeWatcher &watcher, const coord::phys3 pos) {
+void UnitAction::face_towards(curve::CurveRecord &watcher, const coord::phys3 pos) {
 	if (this->entity->has_attribute(attr_type::direction)) {
 		auto &d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
 		d_attr.unit_dir = pos - this->entity->location->pos.draw;
@@ -97,7 +97,7 @@ void UnitAction::face_towards(AttributeWatcher &watcher, const coord::phys3 pos)
 }
 
 // TODO remove (keep for testing)
-void UnitAction::damage_object(AttributeWatcher &watcher, Unit &target, unsigned dmg) {
+void UnitAction::damage_object(curve::CurveRecord &watcher, Unit &target, unsigned dmg) {
 	if (target.has_attribute(attr_type::hitpoints)) {
 		auto hp = target.get_attribute<attr_type::hitpoints>(watcher);
 		if (hp.current > dmg) {
@@ -109,7 +109,7 @@ void UnitAction::damage_object(AttributeWatcher &watcher, Unit &target, unsigned
 	}
 }
 
-void UnitAction::damage_object(AttributeWatcher &watcher, Unit &target) {
+void UnitAction::damage_object(curve::CurveRecord &watcher, Unit &target) {
 	if (target.has_attribute(attr_type::hitpoints)) {
 		auto hp = target.get_attribute<attr_type::hitpoints>(watcher);
 
@@ -145,7 +145,7 @@ void UnitAction::damage_object(AttributeWatcher &watcher, Unit &target) {
 	}
 }
 
-void UnitAction::move_to(AttributeWatcher &watcher, Unit &target, bool use_range) {
+void UnitAction::move_to(curve::CurveRecord &watcher, Unit &target, bool use_range) {
 	auto &player = this->entity->get_attribute<attr_type::owner>(watcher).player;
 	Command cmd(player, &target);
 	cmd.set_ability(ability_type::move);
@@ -179,7 +179,7 @@ TargetAction::TargetAction(Unit *u, graphic_type gt, UnitReference r)
 	TargetAction(u, gt, r, adjacent_range(u)) {
 }
 
-void TargetAction::update(AttributeWatcher &watcher, unsigned int time) {
+void TargetAction::update(curve::CurveRecord &watcher, unsigned int time) {
 	auto target_ptr = update_distance();
 	if (!target_ptr) {
 		return; // target has become invalid
@@ -294,7 +294,7 @@ DecayAction::DecayAction(Unit *e)
 	}
 }
 
-void DecayAction::update(AttributeWatcher&, unsigned int time) {
+void DecayAction::update(curve::CurveRecord&, unsigned int time) {
 	this->frame += time * this->frame_rate / 10000.0f;
 }
 
@@ -316,7 +316,7 @@ DeadAction::DeadAction(Unit *e, std::function<void()> on_complete)
 	}
 }
 
-void DeadAction::update(AttributeWatcher &watcher, unsigned int time) {
+void DeadAction::update(curve::CurveRecord &watcher, unsigned int time) {
 	if (this->entity->has_attribute(attr_type::hitpoints)) {
 		auto h_attr = this->entity->get_attribute<attr_type::hitpoints>(watcher);
 		h_attr.current = 0;
@@ -353,7 +353,7 @@ FoundationAction::FoundationAction(Unit *e, bool add_destruction)
 	cancel{false} {
 }
 
-void FoundationAction::update(AttributeWatcher&, unsigned int) {
+void FoundationAction::update(curve::CurveRecord&, unsigned int) {
 	if (!this->entity->location) {
 		this->cancel = true;
 	}
@@ -390,7 +390,7 @@ IdleAction::IdleAction(Unit *e)
 	this->auto_abilities = UnitAbility::set_from_list({ability_type::attack, ability_type::heal});
 }
 
-void IdleAction::update(AttributeWatcher&, unsigned int time) {
+void IdleAction::update(curve::CurveRecord&, unsigned int time) {
 
 	// auto task searching
 	if (this->entity->location &&
@@ -497,7 +497,7 @@ void MoveAction::initialise() {
 
 MoveAction::~MoveAction() {}
 
-void MoveAction::update(AttributeWatcher &watcher, unsigned int time) {
+void MoveAction::update(curve::CurveRecord &watcher, unsigned int time) {
 	if (this->unit_target.is_valid()) {
 		// a unit is targeted, which may move
 		auto &target_object = this->unit_target.get()->location;
@@ -653,7 +653,7 @@ GarrisonAction::GarrisonAction(Unit *e, UnitReference build)
 	complete{false} {
 }
 
-void GarrisonAction::update_in_range(AttributeWatcher &watcher, unsigned int, Unit *target_unit) {
+void GarrisonAction::update_in_range(curve::CurveRecord &watcher, unsigned int, Unit *target_unit) {
 	auto &garrison_attr = target_unit->get_attribute<attr_type::garrison>(watcher);
 	garrison_attr.content.push_back(this->entity->get_ref());
 
@@ -671,7 +671,7 @@ UngarrisonAction::UngarrisonAction(Unit *e, const coord::phys3 &pos)
 	complete{false} {
 }
 
-void UngarrisonAction::update(AttributeWatcher &watcher, unsigned int) {
+void UngarrisonAction::update(curve::CurveRecord &watcher, unsigned int) {
 	auto &garrison_attr = this->entity->get_attribute<attr_type::garrison>(watcher);
 
 	// try unload all objects currently garrisoned
@@ -715,7 +715,7 @@ TrainAction::TrainAction(Unit *e, UnitType *pp)
 	train_percent{.0f} {
 }
 
-void TrainAction::update(AttributeWatcher &watcher, unsigned int time) {
+void TrainAction::update(curve::CurveRecord &watcher, unsigned int time) {
 
 	// place unit when ready
 	if (this->train_percent > 1.0f) {
@@ -746,7 +746,7 @@ void TrainAction::update(AttributeWatcher &watcher, unsigned int time) {
 
 void TrainAction::on_completion() {}
 
-BuildAction::BuildAction(Unit *e, UnitReference foundation, AttributeWatcher &watcher)
+BuildAction::BuildAction(Unit *e, UnitReference foundation, curve::CurveRecord &watcher)
 	:
 	TargetAction{e, graphic_type::work, foundation},
 	complete{.0f},
@@ -762,7 +762,7 @@ BuildAction::BuildAction(Unit *e, UnitReference foundation, AttributeWatcher &wa
 	}
 }
 
-void BuildAction::update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_unit) {
+void BuildAction::update_in_range(curve::CurveRecord &watcher, unsigned int time, Unit *target_unit) {
 	if (target_unit->has_attribute(attr_type::building)) {
 		auto &build = target_unit->get_attribute<attr_type::building>(watcher);
 
@@ -828,9 +828,9 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 	complete{false} {
 }
 
-void RepairAction::update_in_range(AttributeWatcher &, unsigned int, Unit *) {}
+void RepairAction::update_in_range(curve::CurveRecord &, unsigned int, Unit *) {}
 
-GatherAction::GatherAction(Unit *e, UnitReference tar, AttributeWatcher &watcher)
+GatherAction::GatherAction(Unit *e, UnitReference tar, curve::CurveRecord &watcher)
 	:
 	TargetAction{e, graphic_type::work, tar},
 	complete{false},
@@ -862,7 +862,7 @@ GatherAction::GatherAction(Unit *e, UnitReference tar, AttributeWatcher &watcher
 
 GatherAction::~GatherAction() {}
 
-void GatherAction::update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *targeted_resource) {
+void GatherAction::update_in_range(curve::CurveRecord &watcher, unsigned int time, Unit *targeted_resource) {
 	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>(watcher);
 	if (this->target_resource) {
 
@@ -974,7 +974,7 @@ const graphic_set &GatherAction::current_graphics() const {
 	return this->entity->unit_type->graphics;
 }
 
-AttackAction::AttackAction(AttributeWatcher &watcher, Unit *e, UnitReference tar)
+AttackAction::AttackAction(curve::CurveRecord &watcher, Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::attack, tar, get_attack_range(e)},
 	strike_percent{0.0f},
@@ -991,7 +991,7 @@ AttackAction::AttackAction(AttributeWatcher &watcher, Unit *e, UnitReference tar
 
 AttackAction::~AttackAction() {}
 
-void AttackAction::update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_ptr) {
+void AttackAction::update_in_range(curve::CurveRecord &watcher, unsigned int time, Unit *target_ptr) {
 	if (this->strike_percent > 0.0) {
 		this->strike_percent -= this->rate_of_fire * time;
 	}
@@ -1009,7 +1009,7 @@ bool AttackAction::completed_in_range(Unit *target_ptr) const {
 	return h_attr.current < 1; // is unit still alive?
 }
 
-void AttackAction::attack(AttributeWatcher &watcher, Unit &target) {
+void AttackAction::attack(curve::CurveRecord &watcher, Unit &target) {
 	const auto &attack = this->entity->get_attribute<attr_type::attack>();
 	if (attack.ptype) {
 
@@ -1021,7 +1021,7 @@ void AttackAction::attack(AttributeWatcher &watcher, Unit &target) {
 	}
 }
 
-void AttackAction::fire_projectile(AttributeWatcher &watcher, const Attribute<attr_type::attack> &att, const coord::phys3 &target) {
+void AttackAction::fire_projectile(curve::CurveRecord &watcher, const Attribute<attr_type::attack> &att, const coord::phys3 &target) {
 
 	// container terrain and initial position
 	UnitContainer *container = this->entity->get_container();
@@ -1055,7 +1055,7 @@ HealAction::HealAction(Unit *e, UnitReference tar)
 
 HealAction::~HealAction() {}
 
-void HealAction::update_in_range(AttributeWatcher &watcher, unsigned int time, Unit *target_ptr) {
+void HealAction::update_in_range(curve::CurveRecord &watcher, unsigned int time, Unit *target_ptr) {
 	auto heal = this->entity->get_attribute<attr_type::heal>(watcher);
 
 	if (this->heal_percent > 0.0) {
@@ -1075,7 +1075,7 @@ bool HealAction::completed_in_range(Unit *target_ptr) const {
 	return h_attr.current >= h_attr.max; // is unit at full hitpoints?
 }
 
-void HealAction::heal(AttributeWatcher &watcher, Unit &target) {
+void HealAction::heal(curve::CurveRecord &watcher, Unit &target) {
 	auto &heal = this->entity->get_attribute<attr_type::heal>();
 
 	// TODO move to seperate function heal_object (like damage_object)?
@@ -1099,9 +1099,9 @@ ConvertAction::ConvertAction(Unit *e, UnitReference tar)
 	complete{.0f} {
 }
 
-void ConvertAction::update_in_range(AttributeWatcher &, unsigned int, Unit *) {}
+void ConvertAction::update_in_range(curve::CurveRecord &, unsigned int, Unit *) {}
 
-ProjectileAction::ProjectileAction(AttributeWatcher &watcher, Unit *e, coord::phys3 target)
+ProjectileAction::ProjectileAction(curve::CurveRecord &watcher, Unit *e, coord::phys3 target)
 	:
 	UnitAction{e, graphic_type::standing},
 	has_hit{false} {
@@ -1141,7 +1141,7 @@ ProjectileAction::ProjectileAction(AttributeWatcher &watcher, Unit *e, coord::ph
 
 ProjectileAction::~ProjectileAction() {}
 
-void ProjectileAction::update(AttributeWatcher &watcher, unsigned int time) {
+void ProjectileAction::update(curve::CurveRecord &watcher, unsigned int time) {
 	auto &d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
 
 	// apply gravity

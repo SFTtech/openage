@@ -242,7 +242,7 @@ std::shared_ptr<Terrain> Generator::terrain() const {
 	return terrain;
 }
 
-void Generator::add_units(GameMain &m, AttributeWatcher &watcher) const {
+void Generator::add_units(GameMain &m, curve::CurveRecord &watcher) const {
 	for (auto &r : this->regions) {
 
 		// Regions filled with resource objects

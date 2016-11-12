@@ -5,6 +5,7 @@
 #include "../unit/unit_type.h"
 #include "game_main.h"
 
+#include "../curve/curve_record_replay.h"
 #include "../unit/attribute_watcher.h"
 #include "game_spec.h"
 #include "generator.h"
@@ -15,7 +16,8 @@ GameMain::GameMain(const Generator &generator)
 	:
 	OptionNode{"GameMain"},
 	terrain{generator.terrain()},
-	spec{generator.get_spec()} {
+	spec{generator.get_spec()},
+	record_replay{} {
 
 	// players
 	unsigned int i = 0;
@@ -31,9 +33,9 @@ GameMain::GameMain(const Generator &generator)
 
 	// initialise units
 	this->placed_units.set_terrain(this->terrain);
-	// TODO: store pointer to the printer as a member, make bindable
-	AttributeWatcher printer;
-	generator.add_units(*this, printer);
+
+	curve::CurveRecord watcher{nullptr};
+	generator.add_units(*this, watcher);
 }
 
 GameMain::~GameMain() {
@@ -53,9 +55,25 @@ GameSpec *GameMain::get_spec() {
 }
 
 void GameMain::update() {
-	// TODO: store pointer to the printer as a member, make bindable
-	AttributeWatcher printer;
-	this->placed_units.update_all(printer);
+	if (this->record_replay) {
+		this->record_replay->perform(this->placed_units);
+	} else {
+		// TODO: store pointer to the printer as a member, make bindable
+		curve::CurveRecord watcher{nullptr};
+		this->placed_units.update_all(watcher);
+	}
+}
+
+curve::CurveRecordReplay* GameMain::get_record_replay() const {
+	return this->record_replay;
+}
+
+curve::CurveRecord* GameMain::get_record() const {
+	return this->record_replay ? this->record_replay->get_record() : nullptr;
+}
+
+void GameMain::set_record_replay(curve::CurveRecordReplay *record_replay) {
+	this->record_replay = record_replay;
 }
 
 Civilisation *GameMain::add_civ(int civ_id) {
@@ -75,6 +93,15 @@ void GameMainHandle::set_engine(Engine *engine) {
 	// TODO: decide to either go for a full Engine QML-singleton or for a regular object
 	ENSURE(!this->engine || this->engine == engine, "relinking GameMain to another engine is not supported and not caught properly");
 	this->engine = engine;
+}
+
+curve::CurveRecordReplay* GameMainHandle::get_record_replay() const {
+	return this->game ? this->game->get_record_replay() : nullptr;
+}
+
+void GameMainHandle::set_record_replay(curve::CurveRecordReplay *record_replay) {
+	if (this->game)
+		this->game->set_record_replay(record_replay);
 }
 
 void GameMainHandle::clear() {

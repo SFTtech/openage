@@ -73,7 +73,7 @@ UnitAction *Unit::before(const UnitAction *action) const {
 	return nullptr;
 }
 
-bool Unit::update(AttributeWatcher &watcher) {
+bool Unit::update(curve::CurveRecord &watcher) {
 
 	// if unit is not on the map then do nothing
 	if (!this->location) {
@@ -118,7 +118,7 @@ bool Unit::update(AttributeWatcher &watcher) {
 	return true;
 }
 
-void Unit::update_secondary(AttributeWatcher &watcher, int64_t time_elapsed) {
+void Unit::update_secondary(curve::CurveRecord &watcher, int64_t time_elapsed) {
 	// update secondary actions and remove when completed
 	auto position_it = std::remove_if(
 		std::begin(this->action_secondary),
@@ -131,7 +131,7 @@ void Unit::update_secondary(AttributeWatcher &watcher, int64_t time_elapsed) {
 }
 
 
-void Unit::apply_all_cmds(AttributeWatcher &watcher) {
+void Unit::apply_all_cmds(curve::CurveRecord &watcher) {
 	std::lock_guard<std::mutex> lock(this->command_queue_lock);
 	while (!this->command_queue.empty()) {
 		auto &action = this->command_queue.front();
@@ -141,7 +141,7 @@ void Unit::apply_all_cmds(AttributeWatcher &watcher) {
 }
 
 
-void Unit::apply_cmd(AttributeWatcher &watcher, std::shared_ptr<UnitAbility> ability, const Command &cmd) {
+void Unit::apply_cmd(curve::CurveRecord &watcher, std::shared_ptr<UnitAbility> ability, const Command &cmd) {
 	bool is_direct = cmd.has_flag(command_flag::direct);
 	if (is_direct) {
 

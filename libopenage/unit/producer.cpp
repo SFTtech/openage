@@ -171,7 +171,7 @@ std::string ObjectProducer::name() const {
 	return this->unit_data.name;
 }
 
-void ObjectProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &player) {
+void ObjectProducer::initialise(curve::CurveRecord &watcher, Unit *unit, Player &player) {
 	ENSURE(this->owner == player, "unit init from a UnitType of a wrong player which breaks tech levels");
 
 	// log attributes
@@ -251,7 +251,7 @@ void ObjectProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &p
 	}
 }
 
-TerrainObject *ObjectProducer::place(AttributeWatcher &watcher, Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *ObjectProducer::place(curve::CurveRecord &watcher, Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// create new object with correct base shape
 	if (this->unit_data.selection_shape > 1) {
@@ -356,7 +356,7 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 
 MovableProducer::~MovableProducer() {}
 
-void MovableProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &player) {
+void MovableProducer::initialise(curve::CurveRecord &watcher, Unit *unit, Player &player) {
 
 	/*
 	 * call base function
@@ -391,7 +391,7 @@ void MovableProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &
 	}
 }
 
-TerrainObject *MovableProducer::place(AttributeWatcher &watcher, Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *MovableProducer::place(curve::CurveRecord &watcher, Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	return ObjectProducer::place(watcher, unit, terrain, init_pos);
 }
 
@@ -406,7 +406,7 @@ LivingProducer::LivingProducer(const Player &owner, const GameSpec &spec, const 
 
 LivingProducer::~LivingProducer() {}
 
-void LivingProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &player) {
+void LivingProducer::initialise(curve::CurveRecord &watcher, Unit *unit, Player &player) {
 
 	/*
 	 * call base function
@@ -463,7 +463,7 @@ void LivingProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &p
 	}
 }
 
-TerrainObject *LivingProducer::place(AttributeWatcher &watcher, Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *LivingProducer::place(curve::CurveRecord &watcher, Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	return MovableProducer::place(watcher, unit, terrain, init_pos);
 }
 
@@ -530,7 +530,7 @@ std::string BuildingProducer::name() const {
 	return this->unit_data.name;
 }
 
-void BuildingProducer::initialise(AttributeWatcher &watcher, Unit *unit, Player &player) {
+void BuildingProducer::initialise(curve::CurveRecord &watcher, Unit *unit, Player &player) {
 	ENSURE(this->owner == player, "unit init from a UnitType of a wrong player which breaks tech levels");
 
 	// log type
@@ -602,7 +602,7 @@ std::vector<game_resource> BuildingProducer::get_accepted_resources() {
 	return std::vector<game_resource>();
 }
 
-TerrainObject *BuildingProducer::place(AttributeWatcher &watcher, Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *BuildingProducer::place(curve::CurveRecord &watcher, Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// buildings have a square base
 	u->make_location<SquareObject>(this->foundation_size, this->terrain_outline);
@@ -665,7 +665,7 @@ TerrainObject *BuildingProducer::place(AttributeWatcher &watcher, Unit *u, std::
 	return u->location.get();
 }
 
-TerrainObject *BuildingProducer::make_annex(AttributeWatcher &watcher, Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
+TerrainObject *BuildingProducer::make_annex(curve::CurveRecord &watcher, Unit &u, std::shared_ptr<Terrain> t, int annex_id, coord::phys3 annex_pos, bool c) const {
 
 	// for use in lambda drawing functions
 	auto annex_type = this->owner.get_type(annex_id);
@@ -741,7 +741,7 @@ std::string ProjectileProducer::name() const {
 	return this->unit_data.name;
 }
 
-void ProjectileProducer::initialise(AttributeWatcher &, Unit *unit, Player &player) {
+void ProjectileProducer::initialise(curve::CurveRecord &, Unit *unit, Player &player) {
 	ENSURE(this->owner == player, "unit init from a UnitType of a wrong player which breaks tech levels");
 
 	// initialize graphic set
@@ -759,7 +759,7 @@ void ProjectileProducer::initialise(AttributeWatcher &, Unit *unit, Player &play
 	}
 }
 
-TerrainObject *ProjectileProducer::place(AttributeWatcher &watcher, Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *ProjectileProducer::place(curve::CurveRecord &watcher, Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	/*
 	 * radial base shape without collision checking
 	 */

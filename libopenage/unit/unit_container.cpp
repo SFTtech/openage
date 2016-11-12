@@ -91,7 +91,7 @@ UnitReference UnitContainer::new_unit() {
 	return this->live_units[id]->get_ref();
 }
 
-UnitReference UnitContainer::new_unit(AttributeWatcher &watcher,
+UnitReference UnitContainer::new_unit(curve::CurveRecord &watcher,
                                       UnitType &type,
                                       Player &owner,
                                       coord::phys3 position) {
@@ -109,7 +109,7 @@ UnitReference UnitContainer::new_unit(AttributeWatcher &watcher,
 	return UnitReference(); // is not valid
 }
 
-UnitReference UnitContainer::new_unit(AttributeWatcher &watcher,
+UnitReference UnitContainer::new_unit(curve::CurveRecord &watcher,
                                       UnitType &type,
                                       Player &owner,
                                       TerrainObject *other) {
@@ -131,7 +131,7 @@ bool dispatch_command(id_t, const Command &) {
 	return true;
 }
 
-bool UnitContainer::update_all(AttributeWatcher &watcher) {
+bool UnitContainer::update_all(curve::CurveRecord &watcher) {
 	// update everything and find objects with no actions
 	std::vector<id_t> to_remove;
 	for (auto &obj : this->live_units) {

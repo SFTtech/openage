@@ -41,7 +41,7 @@ UnitTexture *UnitType::default_texture() {
 	return this->graphics[graphic_type::standing].get();
 }
 
-TerrainObject *UnitType::place_beside(AttributeWatcher &watcher, Unit *u, TerrainObject const *other) const {
+TerrainObject *UnitType::place_beside(curve::CurveRecord &watcher, Unit *u, TerrainObject const *other) const {
 	if (!u || !other) {
 		return nullptr;
 	}
@@ -102,7 +102,7 @@ std::string NyanType::name() const {
 	return "Nyan";
 }
 
-void NyanType::initialise(AttributeWatcher &, Unit *unit, Player &) {
+void NyanType::initialise(curve::CurveRecord &, Unit *unit, Player &) {
 	// reset any existing attributes and type
 	unit->reset();
 
@@ -122,7 +122,7 @@ void NyanType::initialise(AttributeWatcher &, Unit *unit, Player &) {
 	unit->push_action(std::make_unique<IdleAction>(unit), true);
 }
 
-TerrainObject *NyanType::place(AttributeWatcher &watcher, Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
+TerrainObject *NyanType::place(curve::CurveRecord &watcher, Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 	// the parsed nyan data gives the rules for terrain placement
 	// which includes valid terrains, base radius and shape
 

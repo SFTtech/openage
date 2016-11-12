@@ -112,10 +112,9 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		if (player->type_count() > 0) {
 			UnitType &type = *player->get_type(590);
 
-			// TODO: store pointer to the printer as a member, make bindable
-			AttributeWatcher printer;
 			// TODO tile position
-			engine.get_game()->placed_units.new_unit(printer, type, *player, this->mousepos_phys3);
+			if (curve::CurveRecord *record = engine.get_game()->get_record())
+				engine.get_game()->placed_units.new_unit(*record, type, *player, this->mousepos_phys3);
 		}
 	});
 	this->bind(action.get("KILL_UNIT"), [this](const input::action_arg_t &) {
@@ -335,18 +334,19 @@ bool ActionMode::place_selection(coord::phys3 point) {
 		// first create foundation using the producer
 		Engine &engine = Engine::get();
 		UnitContainer *container = &engine.get_game()->placed_units;
-		// TODO: store pointer to the printer as a member, make bindable
-		AttributeWatcher printer;
-		UnitReference new_building = container->new_unit(printer, *this->type_focus, *this->game_control->get_current_player(), point);
 
-		// task all selected villagers to build
-		// TODO: editor placed objects are completed already
-		if (new_building.is_valid()) {
-			Command cmd(*this->game_control->get_current_player(), new_building.get());
-			cmd.set_ability(ability_type::build);
-			cmd.add_flag(command_flag::direct);
-			this->selection->all_invoke(cmd);
-			return true;
+		if (curve::CurveRecord *record = engine.get_game()->get_record()) {
+			UnitReference new_building = container->new_unit(*record, *this->type_focus, *this->game_control->get_current_player(), point);
+
+			// task all selected villagers to build
+			// TODO: editor placed objects are completed already
+			if (new_building.is_valid()) {
+				Command cmd(*this->game_control->get_current_player(), new_building.get());
+				cmd.set_ability(ability_type::build);
+				cmd.add_flag(command_flag::direct);
+				this->selection->all_invoke(cmd);
+				return true;
+			}
 		}
 	}
 	return false;
@@ -531,9 +531,9 @@ void EditorMode::paint_entity_at(const coord::window &point, const bool del) {
 
 		// tile is empty so try creating a unit
 		UnitContainer *container = &engine.get_game()->placed_units;
-		// TODO: store pointer to the printer as a member, make bindable
-		AttributeWatcher printer;
-		container->new_unit(printer, *selected_type, *this->game_control->get_current_player(), mousepos_phys3);
+
+		if (curve::CurveRecord *record = engine.get_game()->get_record())
+			container->new_unit(*record, *selected_type, *this->game_control->get_current_player(), mousepos_phys3);
 	}
 }
 

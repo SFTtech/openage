@@ -84,7 +84,7 @@ public:
 	 *
 	 * TODO: make const
 	 */
-	virtual void initialise(AttributeWatcher &, Unit *, Player &) = 0;
+	virtual void initialise(curve::CurveRecord &, Unit *, Player &) = 0;
 
 	/**
 	 * set unit in place -- return if placement was successful
@@ -93,7 +93,7 @@ public:
 	 * when a unit is ungarrsioned from a building or object
 	 * TODO: make const
 	 */
-	virtual TerrainObject *place(AttributeWatcher &watcher, Unit *, std::shared_ptr<Terrain>, coord::phys3) const = 0;
+	virtual TerrainObject *place(curve::CurveRecord &watcher, Unit *, std::shared_ptr<Terrain>, coord::phys3) const = 0;
 
 	/**
 	 * compare if two types are the same
@@ -109,7 +109,7 @@ public:
 	/**
 	 * similiar to place but places adjacent to an existing object
 	 */
-	TerrainObject *place_beside(AttributeWatcher &watcher, Unit *, TerrainObject const *) const;
+	TerrainObject *place_beside(curve::CurveRecord &watcher, Unit *, TerrainObject const *) const;
 
 	/**
 	 * copy attributes of this unit type to a new unit instance
@@ -178,8 +178,8 @@ public:
 	int id() const override;
 	int parent_id() const override;
 	std::string name() const override;
-	void initialise(AttributeWatcher &, Unit *, Player &) override;
-	TerrainObject *place(AttributeWatcher &watcher, Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
+	void initialise(curve::CurveRecord &, Unit *, Player &) override;
+	TerrainObject *place(curve::CurveRecord &watcher, Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 };
 
