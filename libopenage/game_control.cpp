@@ -19,6 +19,7 @@ void OutputMode::announce() {
 
 void OutputMode::set_game_control(GameControl *game_control) {
 	this->game_control = game_control;
+	this->announce();
 }
 
 CreateMode::CreateMode(qtsdl::GuiItemLink *gui_link)
@@ -380,12 +381,13 @@ void ActionMode::announce() {
 }
 
 void ActionMode::announce_resources() {
-	if (Player *player = this->game_control->get_current_player()) {
-		for (auto i = static_cast<std::underlying_type<game_resource>::type>(game_resource::RESOURCE_TYPE_COUNT); i != 0; --i) {
-			auto resource_type = static_cast<game_resource>(i - 1);
-			emit this->gui_signals.resource_changed(resource_type, static_cast<int>(player->amount(resource_type)));
+	if (this->game_control)
+		if (Player *player = this->game_control->get_current_player()) {
+			for (auto i = static_cast<std::underlying_type<game_resource>::type>(game_resource::RESOURCE_TYPE_COUNT); i != 0; --i) {
+				auto resource_type = static_cast<game_resource>(i - 1);
+				emit this->gui_signals.resource_changed(resource_type, static_cast<int>(player->amount(resource_type)));
+			}
 		}
-	}
 }
 
 void ActionMode::announce_buttons_type() {
@@ -659,10 +661,10 @@ void GameControl::set_modes(const std::vector<OutputMode*> &modes) {
 	for (auto mode : this->modes)
 		mode->set_game_control(this);
 
-	if (old_mode_index != -1 && old_mode_index < std::distance(std::begin(this->modes), std::end(this->modes)))
-		this->set_mode(old_mode_index);
-
 	emit this->gui_signals.modes_changed(this->active_mode, this->active_mode_index);
+
+	if (old_mode_index != -1 && old_mode_index < std::distance(std::begin(this->modes), std::end(this->modes)))
+		this->set_mode(old_mode_index, true);
 }
 
 void GameControl::announce_mode() {
@@ -692,17 +694,22 @@ Player* GameControl::get_current_player() const {
 	return nullptr;
 }
 
-void GameControl::set_mode(int mode_index) {
+void GameControl::set_mode(int mode_index, bool signal_if_unchanged) {
+	bool need_to_signal = signal_if_unchanged;
+
 	if (mode_index != -1) {
 		if (mode_index < std::distance(std::begin(this->modes), std::end(this->modes))
 		    && this->modes[mode_index]->available()
 		    && this->active_mode_index != mode_index) {
 
-			engine->get_input_manager().remove_context(this->active_mode);
-
-			// exit from the old mode
+			ENSURE(!this->active_mode == (this->active_mode_index == -1), "inconsistency between the active mode index and pointer");
 			if (this->active_mode) {
-				this->active_mode->on_exit();
+				engine->get_input_manager().remove_context(this->active_mode);
+
+				// exit from the old mode
+				if (this->active_mode) {
+					this->active_mode->on_exit();
+				}
 			}
 
 			// set the new active mode
@@ -713,7 +720,7 @@ void GameControl::set_mode(int mode_index) {
 			// update the context
 			engine->get_input_manager().register_context(this->active_mode);
 
-			emit this->gui_signals.mode_changed(this->active_mode, this->active_mode_index);
+			need_to_signal = true;
 		}
 	} else {
 		if (this->active_mode) {
@@ -722,9 +729,12 @@ void GameControl::set_mode(int mode_index) {
 			this->active_mode_index = -1;
 			this->active_mode = nullptr;
 
-			emit this->gui_signals.mode_changed(this->active_mode, this->active_mode_index);
+			need_to_signal = true;
 		}
 	}
+
+	if (need_to_signal)
+		emit this->gui_signals.mode_changed(this->active_mode, this->active_mode_index);
 }
 
 } // openage
