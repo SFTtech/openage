@@ -124,6 +124,17 @@ Item {
 			LR.tag: "editorMode"
 		}
 
+		CreateGameWhenReady {
+			enabled: createWhenReady.checked
+
+			game: gameObj
+			gameSpec: specObj
+			generatorParameters: genParamsObj
+			gameControl: gameControlObj
+
+			gameControlTargetModeIndex: gameControlObj.modes.indexOf(actionModeObj)
+		}
+
 		states: [
 			State {
 				id: creationMode
@@ -140,6 +151,11 @@ Item {
 						generatorParameters: genParamsObj
 						gameSpec: specObj
 						game: gameObj
+					},
+					CheckBoxFlat {
+						id: createWhenReady
+						text: "create_when_ready"
+						visible: specObj.state == GameSpec.Loading
 					}
 				]
 
