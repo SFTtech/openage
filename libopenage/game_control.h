@@ -291,7 +291,7 @@ public:
 
 	void set_modes(const std::vector<OutputMode*> &modes);
 
-	void set_mode(int mode);
+	void set_mode(int mode, bool signal_if_unchanged=false);
 	void announce_mode();
 	void announce_current_player_name();
 

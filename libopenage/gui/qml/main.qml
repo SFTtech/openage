@@ -65,7 +65,13 @@ Item {
 		engine: Engine
 		game: gameObj
 
-		modes: [createModeObj, editorModeObj, actionModeObj]
+		/**
+		 * must be run after the engine is attached
+		 */
+		Component.onCompleted: {
+			modes = [createModeObj, editorModeObj, actionModeObj]
+			modeIndex = 0
+		}
 
 		LR.tag: "gamecontrol"
 	}

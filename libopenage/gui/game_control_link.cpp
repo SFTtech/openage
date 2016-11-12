@@ -198,7 +198,7 @@ GameControlLink::GameControlLink(QObject *parent)
 	GuiItem{this},
 	mode{},
 	effective_mode_index{-1},
-	mode_index{},
+	mode_index{-1},
 	engine{},
 	game{},
 	current_civ_index{} {
@@ -241,7 +241,7 @@ int GameControlLink::get_mode_index() const {
 
 void GameControlLink::set_mode_index(int mode) {
 	static auto f = [] (GameControl *_this, int mode) {
-		_this->set_mode(mode);
+		_this->set_mode(mode, true);
 	};
 
 	this->sf(f, this->mode_index, mode);
@@ -312,6 +312,7 @@ void GameControlLink::on_modes_changed(OutputMode *mode, int mode_index) {
 	this->i(f, this->mode_index);
 
 	this->on_mode_changed(mode, mode_index);
+	emit this->modes_changed();
 }
 
 void GameControlLink::on_current_player_name_changed(const std::string &current_player_name) {
