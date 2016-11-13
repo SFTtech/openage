@@ -394,7 +394,9 @@ def conversion_required(asset_dir, args):
 
     else:
         if asset_version >= 0:
-            info("Converted assets outdated: Version %d" % asset_version)
+            info("Found converted assets with version %d, "
+                 "but need version %d" % (asset_version,
+                                          changelog.ASSET_VERSION))
 
         info("Converting " + ", ".join(sorted(changes)))
         for component in changelog.COMPONENTS:
