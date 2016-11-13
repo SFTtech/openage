@@ -5,6 +5,13 @@
 #include <cstdint>
 
 namespace openage {
+
+/**
+ * Type to store time in nanoseconds.
+ */
+using time_nsec_t = uint64_t;
+
+
 namespace timing {
 
 /**
@@ -13,11 +20,11 @@ namespace timing {
  *
  * not influenced by system time changes.
  */
-int64_t get_monotonic_time();
+time_nsec_t get_monotonic_time();
 
 /**
  * returns the number of nanoseconds since the UNIX epoch.
  */
-int64_t get_real_time();
+time_nsec_t get_real_time();
 
 }} // namespace openage::timing

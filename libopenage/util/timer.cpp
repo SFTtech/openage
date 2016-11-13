@@ -2,62 +2,64 @@
 
 #include "timer.h"
 
-#include "../util/timing.h"
+#include "timing.h"
 
 namespace openage {
 namespace util {
 
 Timer::Timer(bool stopped) {
-	reset(stopped);
+	this->reset(stopped);
 }
 
 void Timer::reset(bool stopped) {
 	this->stopped = stopped;
-	if(stopped) {
-		stoppedat = 0;
+	if (this->stopped) {
+		this->stoppedat = 0;
 	} else {
-		starttime = timing::get_monotonic_time();
+		this->starttime = timing::get_monotonic_time();
 	}
 }
 
 void Timer::stop() {
-	if(!stopped) {
-		stopped = true;
-		stoppedat = timing::get_monotonic_time() - starttime;
+	if (not stopped) {
+		this->stopped = true;
+		this->stoppedat = timing::get_monotonic_time() - this->starttime;
 	}
 }
 
 void Timer::start() {
-	if(stopped) {
-		stopped = false;
-		starttime = timing::get_monotonic_time() - stoppedat;
+	if (not this->stopped) {
+		this->stopped = false;
+		this->starttime = timing::get_monotonic_time() - this->stoppedat;
 	}
 }
 
-int64_t Timer::getval() const {
-	if(stopped) {
-		return stoppedat;
+time_nsec_t Timer::getval() const {
+	if (this->stopped) {
+		return this->stoppedat;
 	} else {
-		return timing::get_monotonic_time() - starttime;
+		return timing::get_monotonic_time() - this->starttime;
 	}
 }
 
-int64_t Timer::getandresetval() {
-	int64_t result;
-	if(stopped) {
-		result = stoppedat;
-		stoppedat = 0;
-	} else {
-		int64_t now = timing::get_monotonic_time();
-		result = now - starttime;
-		starttime = now;
+time_nsec_t Timer::getandresetval() {
+	time_nsec_t result;
+
+	if (this->stopped) {
+		result    = this->stoppedat;
+		this->stoppedat = 0;
+	}
+	else {
+		time_nsec_t now = timing::get_monotonic_time();
+		result = now - this->starttime;
+		this->starttime = now;
 	}
 
 	return result;
 }
 
 bool Timer::isstopped() const {
-	return stopped;
+	return this->stopped;
 }
 
-}} // openage::util
+}}  // openage::util
