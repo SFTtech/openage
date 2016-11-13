@@ -27,6 +27,7 @@ void apply_to_attr<attr_type::position>(std::istream &stream, id_t id, UnitConta
 }
 
 const std::tuple<const char*, AttributeSetter> parse_funcs[] = {
+	ApplyToAttr<attr_type::direction>::named_setter,
 	ApplyToAttr<attr_type::hitpoints>::named_setter,
 	ApplyToAttr<attr_type::position>::named_setter,
 };

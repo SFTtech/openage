@@ -2,6 +2,11 @@
 
 #pragma once
 
+#include <functional>
+#include <utility>
+
+#include "../coord/phys3.h"
+#include "../coord/phys3_serialization.h"
 #include "../terrain/tile_range.h"
 #include "../terrain/tile_range_serialization.h"
 #include "attribute.h"
@@ -14,12 +19,16 @@ class Spied {
 public:
 	using type = T;
 
-	Spied(curve::CurveRecord &watcher, id_t id, T &value, const char *name)
+	Spied(T &value, std::function<void(T)> write_out)
 		:
-		watcher{watcher},
-		id{id},
 		value(value),
-		name{name} {
+		write_out{write_out} {
+	}
+
+	Spied(T &value, curve::CurveRecord &watcher, id_t id, const char *name)
+		:
+		value(value),
+		write_out{[&watcher, id, &name](T value) { watcher.write_out(id, value, name); }} {
 	}
 
 	operator T() const {
@@ -27,7 +36,8 @@ public:
 	}
 
 	Spied<T>& operator=(T value) {
-		this->watcher.write_out(this->id, value, this->name);
+		this->value = value;
+		this->write_out(value);
 		return *this;
 	}
 
@@ -57,11 +67,49 @@ public:
 	}
 
 private:
+	T &value;
+	std::function<void(T)> write_out;
+};
+
+template<>
+class Spied<coord::phys3_delta> {
+public:
+	Spied(coord::phys3_delta &value, curve::CurveRecord &watcher, id_t id, const char *name)
+		:
+		ne{value.ne, [&value, &watcher, id, name](coord::phys_t v) { watcher.write_out(id, coord::phys3_delta{v, value.se, value.up}, name); }},
+		se{value.se, [&value, &watcher, id, name](coord::phys_t v) { watcher.write_out(id, coord::phys3_delta{value.ne, v, value.up}, name); }},
+		up{value.up, [&value, &watcher, id, name](coord::phys_t v) { watcher.write_out(id, coord::phys3_delta{value.ne, value.se, v}, name); }},
+		watcher{watcher},
+		id{id},
+		name{name} {
+	}
+
+	Spied<coord::phys3_delta>& operator=(coord::phys3_delta value) {
+		this->ne = value.ne;
+		this->se = value.se;
+		this->up = value.up;
+		return *this;
+	}
+
+	operator coord::phys3_delta() const {
+		return coord::phys3_delta{this->ne, this->se, this->up};
+	}
+
+	Spied<coord::phys_t> ne;
+	Spied<coord::phys_t> se;
+	Spied<coord::phys_t> up;
+
+private:
 	curve::CurveRecord &watcher;
 	id_t id;
-	T &value;
 	const char *name;
 };
+
+template<typename T>
+auto operator*(const Spied<coord::phys3_delta>& op1, T op2) -> decltype(std::declval<coord::phys3_delta>() * op2)
+{
+	return op1 * op2;
+}
 
 template<attr_type T>
 class AttributeSpy {
@@ -91,7 +139,7 @@ public:
 
 	AttributeSpy(curve::CurveRecord &watcher, id_t id, Attribute<attr_type::hitpoints> &attr)
 		:
-		current{watcher, id, val_ref(attr), AttributeSpy::name},
+		current{val_ref(attr), watcher, id, AttributeSpy::name},
 		max{attr.max},
 		hp_bar_height{attr.hp_bar_height} {
 	}
@@ -99,6 +147,30 @@ public:
 	Spied<value_type> current;
 	unsigned int &max;
 	float &hp_bar_height;
+};
+
+template<>
+class AttributeSpy<attr_type::direction> {
+public:
+	static constexpr const char *name = "dir";
+	using type = AttributeSpy;
+	using value_type = coord::phys3_delta;
+
+	static value_type& val_ref(Attribute<attr_type::direction> &attr) {
+		static_assert(std::is_same<value_type, decltype(attr.unit_dir)>::value, "spied type mismatch");
+		return attr.unit_dir;
+	}
+
+	static AttributeSpy create(curve::CurveRecord &watcher, id_t id, Attribute<attr_type::direction> &attr) {
+		return AttributeSpy{watcher, id, attr};
+	}
+
+	AttributeSpy(curve::CurveRecord &watcher, id_t id, Attribute<attr_type::direction> &attr)
+		:
+		unit_dir{val_ref(attr), watcher, id, AttributeSpy::name} {
+	}
+
+	Spied<value_type> unit_dir;
 };
 
 template<>

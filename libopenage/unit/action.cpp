@@ -91,7 +91,7 @@ void UnitAction::draw_debug() {
 
 void UnitAction::face_towards(curve::CurveRecord &watcher, const coord::phys3 pos) {
 	if (this->entity->has_attribute(attr_type::direction)) {
-		auto &d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
+		auto d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
 		d_attr.unit_dir = pos - this->entity->location->pos.draw;
 	}
 }
@@ -538,8 +538,8 @@ void MoveAction::update(curve::CurveRecord &watcher, unsigned int time) {
 
 	// current position and direction
 	coord::phys3 new_position = this->entity->location->pos.draw;
-	auto &d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
-	coord::phys3_delta new_direction = d_attr.unit_dir;
+	auto d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
+	coord::phys3_delta new_direction = coord::phys3_delta{(coord::phys_t)d_attr.unit_dir.ne, (coord::phys_t)d_attr.unit_dir.se, (coord::phys_t)d_attr.unit_dir.up};
 
 	while (distance_to_move > 0) {
 		if (this->path.waypoints.empty()) {
@@ -1131,7 +1131,7 @@ ProjectileAction::ProjectileAction(curve::CurveRecord &watcher, Unit *e, coord::
 	this->grav = 0.01f * (exp(pow(projectile_arc, 0.5f)) - 1) * projectile_speed;
 
 	// inital launch direction
-	auto &d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
+	auto d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
 	d_attr.unit_dir = (projectile_speed * d) / distance_to_target;
 
 	// account for initial height
@@ -1142,7 +1142,7 @@ ProjectileAction::ProjectileAction(curve::CurveRecord &watcher, Unit *e, coord::
 ProjectileAction::~ProjectileAction() {}
 
 void ProjectileAction::update(curve::CurveRecord &watcher, unsigned int time) {
-	auto &d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
+	auto d_attr = this->entity->get_attribute<attr_type::direction>(watcher);
 
 	// apply gravity
 	d_attr.unit_dir.up -= this->grav * time;
