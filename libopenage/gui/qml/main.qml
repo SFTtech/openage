@@ -65,7 +65,13 @@ Item {
 		engine: Engine
 		game: gameObj
 
-		modes: [createModeObj, editorModeObj, actionModeObj]
+		/**
+		 * must be run after the engine is attached
+		 */
+		Component.onCompleted: {
+			modes = [createModeObj, editorModeObj, actionModeObj]
+			modeIndex = 0
+		}
 
 		LR.tag: "gamecontrol"
 	}
@@ -118,6 +124,17 @@ Item {
 			LR.tag: "editorMode"
 		}
 
+		CreateGameWhenReady {
+			enabled: createWhenReady.checked
+
+			game: gameObj
+			gameSpec: specObj
+			generatorParameters: genParamsObj
+			gameControl: gameControlObj
+
+			gameControlTargetModeIndex: gameControlObj.modes.indexOf(actionModeObj)
+		}
+
 		states: [
 			State {
 				id: creationMode
@@ -134,6 +151,11 @@ Item {
 						generatorParameters: genParamsObj
 						gameSpec: specObj
 						game: gameObj
+					},
+					CheckBoxFlat {
+						id: createWhenReady
+						text: "create_when_ready"
+						visible: specObj.state == GameSpec.Loading
 					}
 				]
 
