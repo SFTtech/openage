@@ -32,7 +32,7 @@ OpusDynamicLoader::OpusDynamicLoader(const std::string &path)
 	}
 
 	length = static_cast<size_t>(pcm_length) * 2;
-	log::log(MSG(info) << "Create dynamic opus loader: length=" << length << ", channels=" << channels);
+	log::log(DBG << "Create dynamic opus loader: length=" << length << ", channels=" << channels);
 }
 
 size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,

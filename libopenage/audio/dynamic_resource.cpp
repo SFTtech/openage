@@ -37,8 +37,8 @@ DynamicResource::DynamicResource(AudioManager *manager,
 	use_count{0} {}
 
 void DynamicResource::use() {
-	log::log(MSG(info) << "DYNRES: now in use");
-	log::log(MSG(info) << "CS=" << chunk_size << ", MX=" << max_chunks);
+	log::log(DBG << "DYNRES: now in use");
+	log::log(DBG << "CS=" << chunk_size << ", MX=" << max_chunks);
 
 	// if the resource is new in use
 	if ((this->use_count++) == 0) {
@@ -59,7 +59,7 @@ void DynamicResource::use() {
 }
 
 void DynamicResource::stop_using() {
-	log::log(MSG(info) << "DYNRES: no longer in use");
+	log::log(DBG << "DYNRES: no longer in use");
 
 	// if the resource is not used anymore
 	if ((--this->use_count) == 0) {
