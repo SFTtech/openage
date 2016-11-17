@@ -400,6 +400,7 @@ public:
 
 private:
 	float complete, build_rate;
+	static constexpr float search_tile_distance = 9.0f;
 
 };
 

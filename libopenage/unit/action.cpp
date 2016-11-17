@@ -818,7 +818,7 @@ void BuildAction::on_completion() {
 		return true;
 	};
 
-	TerrainObject *new_target = find_in_radius(*this->entity->location, valid, 9.0f);
+	TerrainObject *new_target = find_in_radius(*this->entity->location, valid, BuildAction::search_tile_distance);
 	if (new_target != nullptr) {
 		this->entity->log(MSG(dbg) << "Found new building, queueing command");
 		Command cmd(this->entity->get_attribute<attr_type::owner>().player, &new_target->unit);
