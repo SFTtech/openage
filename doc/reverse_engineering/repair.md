@@ -21,3 +21,9 @@ For each hp repaired, resources equal to the half of corresponding build cost ar
 ## Exceptions
 
 * Town center repair costs no stone.
+
+## Math
+
+```
+750 hp/min = 750/60000 hp/msec = 0.0125 hp/msec => 80 msec/hp
+```

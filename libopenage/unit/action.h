@@ -418,7 +418,11 @@ public:
 
 private:
 	bool complete;
-
+	
+	float time;
+	float time_left;
+	int cost; // TODO create and use game_resource_boundle
+	
 };
 
 /**
