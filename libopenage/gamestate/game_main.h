@@ -9,6 +9,7 @@
 #include <QObject>
 
 #include "player.h"
+#include "team.h"
 #include "../options.h"
 #include "../unit/unit_container.h"
 
@@ -40,6 +41,16 @@ public:
 	Player *get_player(unsigned int player_id);
 
 	/**
+	 * the number of teams
+	 */
+	unsigned int team_count() const;
+
+	/**
+	 * team by id
+	 */
+	Team *get_team(unsigned int team_id);
+
+	/**
 	 * the spec in this games settings
 	 */
 	GameSpec *get_spec();
@@ -59,6 +70,11 @@ public:
 	 * no objects should be added of removed once populated
 	 */
 	std::vector<Player> players;
+
+	/**
+	 * all teams in the game
+	 */
+	std::vector<Team> teams;
 
 	/**
 	 * all the objects that have been placed.

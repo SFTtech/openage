@@ -44,6 +44,14 @@ Player *GameMain::get_player(unsigned int player_id) {
 	return &this->players.at(player_id);
 }
 
+unsigned int GameMain::team_count() const {
+	return this->teams.size();
+}
+
+Team *GameMain::get_team(unsigned int team_id) {
+	return &this->teams.at(team_id);
+}
+
 GameSpec *GameMain::get_spec() {
 	return this->spec.get();
 }
