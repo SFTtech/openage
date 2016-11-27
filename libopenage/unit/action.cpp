@@ -101,10 +101,10 @@ void UnitAction::damage_object(Unit &target, unsigned dmg) {
 	if (target.has_attribute(attr_type::hitpoints)) {
 		auto &hp = target.get_attribute<attr_type::hitpoints>();
 		if (hp.current > dmg) {
-						hp.current -= dmg;
+			hp.current -= dmg;
 		}
 		else {
-						hp.current = 0;
+			hp.current = 0;
 		}
 	}
 }
@@ -229,8 +229,8 @@ void TargetAction::on_completion() {
 		new_target = find_near(*this->entity->location,
 			[this](const TerrainObject &obj) {
 				return obj.unit.unit_type->id() == this->target_type_id &&
-											obj.unit.has_attribute(attr_type::resource) &&
-											obj.unit.get_attribute<attr_type::resource>().amount > 0.0f;
+				       obj.unit.has_attribute(attr_type::resource) &&
+				       obj.unit.get_attribute<attr_type::resource>().amount > 0.0f;
 			});
 	}
 
@@ -244,8 +244,8 @@ void TargetAction::on_completion() {
 
 bool TargetAction::completed() const {
 	if (this->end_action ||
-					!this->target.is_valid() ||
-					!this->target.get()->location) {
+	    !this->target.is_valid() ||
+	    !this->target.get()->location) {
 		return true;
 	}
 	return this->completed_in_range(this->target.get());
@@ -375,8 +375,8 @@ void FoundationAction::on_completion() {
 
 bool FoundationAction::completed() const {
 	return this->cancel ||
-								(this->entity->has_attribute(attr_type::building) &&
-								(this->entity->get_attribute<attr_type::building>().completed >= 1.0f));
+	       (this->entity->has_attribute(attr_type::building) &&
+	       (this->entity->get_attribute<attr_type::building>().completed >= 1.0f));
 }
 
 IdleAction::IdleAction(Unit *e)
@@ -602,8 +602,8 @@ bool MoveAction::completed() const {
 
 	// no more waypoints to a static location
 	if (this->end_action ||
-					(!this->unit_target.is_valid() &&
-					this->path.waypoints.empty())) {
+	    (!this->unit_target.is_valid() &&
+	    this->path.waypoints.empty())) {
 		return true;
 	}
 
@@ -836,7 +836,7 @@ const graphic_set &BuildAction::current_graphics() const {
 		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
 
 		if (this->get_target().is_valid() &&
-						this->get_target().get()->has_attribute(attr_type::building)) {
+		    this->get_target().get()->has_attribute(attr_type::building)) {
 
 			// set builder graphics if available
 			if (gatherer_attr.graphics.count(gamedata::unit_classes::BUILDING) > 0) {
@@ -872,7 +872,7 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 
 void RepairAction::update_in_range(unsigned int time, Unit *target_unit) {
 
-	auto &hp = target_ptr->get_attribute<attr_type::hitpoints>();
+	auto &hp = target_unit->get_attribute<attr_type::hitpoints>();
 	auto &owner = this->entity->get_attribute<attr_type::owner>();
 
 	if (hp.current >= hp.max) {
@@ -949,7 +949,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 		// attack objects which have hitpoints (trees, hunt, sheep)
 		if (this->entity->has_attribute(attr_type::owner) &&
-						targeted_resource->has_attribute(attr_type::hitpoints)) {
+		    targeted_resource->has_attribute(attr_type::hitpoints)) {
 			auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
 			auto &hp_attr = targeted_resource->get_attribute<attr_type::hitpoints>();
 
@@ -1002,7 +1002,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 		// make sure the resource stil exists
 		if (this->target.is_valid() &&
-						this->target.get()->get_attribute<attr_type::resource>().amount > 0.0f) {
+		    this->target.get()->get_attribute<attr_type::resource>().amount > 0.0f) {
 
 			// return to resouce collection
 			this->target_resource = true;
@@ -1030,10 +1030,10 @@ UnitReference GatherAction::nearest_dropsite(game_resource res_type) {
 			}
 
 			return obj.unit.get_attribute<attr_type::building>().completed >= 1.0f &&
-										obj.unit.has_attribute(attr_type::owner) &&
-										obj.unit.get_attribute<attr_type::owner>().player.owns(*this->entity) &&
-										obj.unit.has_attribute(attr_type::dropsite) &&
-										obj.unit.get_attribute<attr_type::dropsite>().accepting_resource(res_type);
+			       obj.unit.has_attribute(attr_type::owner) &&
+			       obj.unit.get_attribute<attr_type::owner>().player.owns(*this->entity) &&
+			       obj.unit.has_attribute(attr_type::dropsite) &&
+			       obj.unit.get_attribute<attr_type::dropsite>().accepting_resource(res_type);
 	});
 
 	if (ds) {
@@ -1057,7 +1057,7 @@ AttackAction::AttackAction(Unit *e, UnitReference tar)
 
 	// switch graphic type for villagers not collecting resources
 	if (this->entity->has_attribute(attr_type::gatherer) &&
-					!tar.get()->has_attribute(attr_type::resource)) {
+	    !tar.get()->has_attribute(attr_type::resource)) {
 		auto &att_attr = this->entity->get_attribute<attr_type::attack>();
 		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
 		att_attr.attack_type->initialise(this->entity, pl_attr.player);
@@ -1231,7 +1231,7 @@ void ProjectileAction::update(unsigned int time) {
 		if (tc && !tc->obj.empty()) {
 			for (auto obj_location : tc->obj) {
 				if (this->entity->location.get() != obj_location &&
-								obj_location->check_collisions()) {
+				    obj_location->check_collisions()) {
 					this->damage_object(obj_location->unit, 1);
 					break;
 				}

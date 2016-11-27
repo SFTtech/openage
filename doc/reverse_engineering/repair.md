@@ -1,14 +1,14 @@
-### Repair
+# Repair
 
 Buildings, siege weapons and ships can be repaired by villagers.
 
 ## Speed
 
-Buildings are repaired at the base repairing speed of *750 hp/min* which is not affected by the total hp of the building/unit.
+Buildings are repaired at the base repairing speed of **750 hp/min** which is not affected by the total hp of the building/unit.
 
-Siege weapons and ships are repaired at *25%* of the base speed (188 hp/min).
+Siege weapons and ships are repaired at **25%** of the base speed (188 hp/min).
 
-After the first villager, each villager repairs at *50%* of the base speed (375 hp/min for building and 188 hp/min for siege weapons and ships).
+After the first villager, each villager repairs at **50%** of the base speed (375 hp/min for building and 188 hp/min for siege weapons and ships).
 
 ## Cost
 

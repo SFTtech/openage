@@ -405,7 +405,8 @@ private:
 };
 
 /**
- * repairs an object
+ * repairs a unit
+ * TODO: implement cost, at the moment all repairs cost 1 wood
  */
 class RepairAction: public TargetAction {
 public:
@@ -418,11 +419,12 @@ public:
 
 private:
 	bool complete;
-	
+
 	float time;
 	float time_left;
-	int cost; // TODO create and use game_resource_boundle
-	
+	// TODO create and use game_resource_boundle
+	int cost; // calculate and store the cost in the constructor
+
 };
 
 /**
