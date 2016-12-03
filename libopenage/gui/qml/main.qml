@@ -50,13 +50,34 @@ Item {
 	GameMain {
 		id: gameObj
 
+		property bool recording: true
+
 		/**
 		 * States: Null, Running
 		 */
+		 onStateChanged:
+			if (state == GameMain.Running)
+				recordReplay = recording ? recordObj : replayObj
 
 		engine: Engine
 
 		LR.tag: "game"
+	}
+
+	CurveRecord {
+		id: recordObj
+
+		fileName: gameObj.recording ? "replay.txt" : ""
+
+		LR.tag: "record"
+	}
+
+	CurveReplay {
+		id: replayObj
+
+		fileName: gameObj.recording ? "" : "replay.txt"
+
+		LR.tag: "replay"
 	}
 
 	GameControl {
