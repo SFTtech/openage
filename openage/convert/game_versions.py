@@ -38,6 +38,14 @@ class GameVersion(enum.Enum):
         True,
         {'AoK HD.exe', 'resources/_common/dat/empires2_x1_p1.dat'},
     )
+    # HD Edition v4.8 or african kingdoms?
+    # TODO Check if the x2 dat file exists in older HD versions, and name the
+    # game version accordingly.
+    age2_ak = (
+        "African Kingdoms",
+        True,
+        {'AoK HD.exe', 'resources/_common/dat/empires2_x2_p1.dat'},
+    )
 
     def __init__(self, description, openage_supported, required_files=None):
         self.description = description
