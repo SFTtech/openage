@@ -230,7 +230,7 @@ class EmpiresDatWrapper(Exportable):
     )
 
 
-def load_gamespec(fileobj, cachefile_name=None, load_cache=False):
+def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False):
     """
     Helper method that loads the contents of a 'empires.dat' gzipped gamespec
     file.
