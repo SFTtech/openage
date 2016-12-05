@@ -866,7 +866,14 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 			this->time *= 4;
 		}
 
-		this->cost = 1; // TODO change to 0.5f * (target cost) / (target max hp)
+		// cost formula: 0.5 * (target cost) / (target max hp)
+		auto &hp = target->get_attribute<attr_type::hitpoints>();
+
+		// TODO get the target unit's cost
+		//this->cost += get target cost;
+		this->cost[game_resource::wood] = 100; // temp
+
+		this->cost *= 0.5 / hp.max;
 	}
 }
 
@@ -892,7 +899,7 @@ void RepairAction::update_in_range(unsigned int time, Unit *target_unit) {
 	}
 
 	if (this->time_left <= 0 && !this->complete) {
-		if (owner.player.deduct(game_resource::wood, this->cost)) { // TODO create and use game_resource_boundle
+		if (owner.player.deduct(this->cost)) {
 			this->time_left += this->time;
 		}
 		else {

@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "../pathfinding/path.h"
+#include "../gamestate/resource.h"
 #include "attribute.h"
 #include "unit.h"
 #include "unit_container.h"
@@ -406,7 +407,6 @@ private:
 
 /**
  * repairs a unit
- * TODO: implement cost, at the moment all repairs cost 1 wood
  */
 class RepairAction: public TargetAction {
 public:
@@ -422,8 +422,8 @@ private:
 
 	float time;
 	float time_left;
-	// TODO create and use game_resource_boundle
-	int cost; // calculate and store the cost in the constructor
+
+	ResourceBundle cost; // calculate and store the cost in the constructor
 
 };
 
