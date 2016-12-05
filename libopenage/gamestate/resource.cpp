@@ -4,12 +4,12 @@
 
 namespace openage {
 
-ResourceBoundle::ResourceBoundle()
+ResourceBundle::ResourceBundle()
 	:
 	value{0} {
 }
 
-bool ResourceBoundle::operator> (const ResourceBoundle& other) const {
+bool ResourceBundle::operator> (const ResourceBundle& other) const {
 	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
 		if (!(this->get(i) > other.get(i))) {
 			return false;
@@ -18,7 +18,7 @@ bool ResourceBoundle::operator> (const ResourceBoundle& other) const {
 	return true;
 }
 
-bool ResourceBoundle::operator>= (const ResourceBoundle& other) const {
+bool ResourceBundle::operator>= (const ResourceBundle& other) const {
 	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
 		if (!(this->get(i) >= other.get(i))) {
 			return false;
@@ -27,32 +27,32 @@ bool ResourceBoundle::operator>= (const ResourceBoundle& other) const {
 	return true;
 }
 
-ResourceBoundle& ResourceBoundle::operator+= (const ResourceBoundle& other) {
+ResourceBundle& ResourceBundle::operator+= (const ResourceBundle& other) {
 	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
 		(*this)[i] += other.get(i);
 	}
 	return *this;
 }
 
-ResourceBoundle& ResourceBoundle::operator-= (const ResourceBoundle& other) {
+ResourceBundle& ResourceBundle::operator-= (const ResourceBundle& other) {
 	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
 		(*this)[i] -= other.get(i);
 	}
 	return *this;
 }
 
-ResourceBoundle& ResourceBoundle::operator*= (float a) {
+ResourceBundle& ResourceBundle::operator*= (double a) {
 	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
 		(*this)[i] *= a;
 	}
 	return *this;
 }
 
-bool ResourceBoundle::has(const ResourceBoundle& amount) const {
+bool ResourceBundle::has(const ResourceBundle& amount) const {
 	return *this >= amount;
 }
 
-bool ResourceBoundle::deduct(const ResourceBoundle& amount) {
+bool ResourceBundle::deduct(const ResourceBundle& amount) {
 	if(*this >= amount) {
 		*this -= amount;
 		return true;

@@ -18,33 +18,35 @@ enum class game_resource {
 };
 
 /**
- *
+ * a set of amounts of game resources
  */
-class ResourceBoundle {
+class ResourceBundle {
 public:
 
-	ResourceBoundle();
+	ResourceBundle();
 
-	float& operator[] (game_resource res) { return value[(int) res]; }
-	float& operator[] (int index) { return value[index]; }
+	bool operator> (const ResourceBundle& other) const;
+	bool operator>= (const ResourceBundle& other) const;
 
-	float get(game_resource res) const { return value[(int) res]; }
-	float get(int index) const { return value[index]; }
+	ResourceBundle& operator+= (const ResourceBundle& other);
+	ResourceBundle& operator-= (const ResourceBundle& other);
 
-	bool operator> (const ResourceBoundle& other) const;
-	bool operator>= (const ResourceBoundle& other) const;
+	ResourceBundle& operator*= (double a);
 
-	ResourceBoundle& operator+= (const ResourceBoundle& other);
-	ResourceBoundle& operator-= (const ResourceBoundle& other);
+	bool has(const ResourceBundle& amount) const;
 
-	ResourceBoundle& operator*= (float a);
+	bool deduct(const ResourceBundle& amount);
 
-	bool has(const ResourceBoundle& amount) const;
+	double& operator[] (game_resource res) { return value[(int) res]; }
+	double& operator[] (int index) { return value[index]; }
 
-	bool deduct(const ResourceBoundle& amount);
+	// Getters
+
+	double get(game_resource res) const { return value[(int) res]; }
+	double get(int index) const { return value[index]; }
 
 private:
-	float value[(int) game_resource::RESOURCE_TYPE_COUNT];
+	double value[(int) game_resource::RESOURCE_TYPE_COUNT];
 };
 
 } // namespace openage
