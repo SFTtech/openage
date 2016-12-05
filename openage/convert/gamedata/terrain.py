@@ -117,7 +117,11 @@ class Terrain(Exportable):
         (READ_EXPORT, "terrain_dimension0",  "int16_t"),
         (READ_EXPORT, "terrain_dimension1",  "int16_t"),
 
-        (READ, "borders",                    "int16_t[42]"),  # probably references to the TerrainBorders, there are 42 terrains in game
+        (READ, "borders", SubdataMember(
+            # probably references to the TerrainBorders, there are 42 terrains in game
+            ref_type="int16_t",
+            length=42, # TODO: use 100 here for GameVersion.age2_ak
+        )),
         (READ, "terrain_unit_id",            "int16_t[30]"),  # place these unit id on the terrain, with prefs from fields below
         (READ, "terrain_unit_density",       "int16_t[30]"),  # how many of the above units to place
         (READ, "terrain_placement_flag",      "int8_t[30]"),  # when placing two terrain units on the same spot, selects which prevails(=1)

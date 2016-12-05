@@ -93,8 +93,9 @@ class EmpiresDat(Exportable):
         (READ_UNKNOWN, None, "int16_t"),
         (READ_EXPORT,  "terrains", SubdataMember(
             ref_type=terrain.Terrain,
-            length=42,      # 42 terrains are stored, but less are used.
-                            # TODO: maybe this number is defined somewhere.
+            length=42, # 42 terrains are stored, but less are used.
+                       # TODO: maybe this number is defined somewhere.
+                       # TODO: use 100 here for GameVersion.age2_ak.
         )),
         (READ,         "terrain_border", SubdataMember(
             ref_type=terrain.TerrainBorder,
