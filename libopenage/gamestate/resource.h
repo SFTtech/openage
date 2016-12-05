@@ -17,6 +17,9 @@ enum class game_resource {
 	RESOURCE_TYPE_COUNT
 };
 
+/**
+ *
+ */
 class ResourceBoundle {
 public:
 
@@ -28,50 +31,17 @@ public:
 	float get(game_resource res) const { return value[(int) res]; }
 	float get(int index) const { return value[index]; }
 
-	bool operator> (const ResourceBoundle& other) const {
-		for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
-			if (!(this->get(i) > other.get(i))) {
-				return false;
-			}
-		}
-		return true;
-	}
-	bool operator>= (const ResourceBoundle& other) const {
-		for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
-			if (!(this->get(i) >= other.get(i))) {
-				return false;
-			}
-		}
-		return true;
-	}
+	bool operator> (const ResourceBoundle& other) const;
+	bool operator>= (const ResourceBoundle& other) const;
 
-	ResourceBoundle& operator+= (const ResourceBoundle& other) {
-		for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
-			(*this)[i] += other.get(i);
-		}
-		return *this;
-	}
-	ResourceBoundle& operator-= (const ResourceBoundle& other) {
-		for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
-			(*this)[i] -= other.get(i);
-		}
-		return *this;
-	}
-	
-	ResourceBoundle& operator*= (float a) {
-		for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
-			(*this)[i] *= a;
-		}
-		return *this;
-	}
-	
-	bool deduct(const ResourceBoundle& amount) {
-		if(*this >= amount) {
-			*this -= amount;
-			return true;
-		}
-		return false;
-	}
+	ResourceBoundle& operator+= (const ResourceBoundle& other);
+	ResourceBoundle& operator-= (const ResourceBoundle& other);
+
+	ResourceBoundle& operator*= (float a);
+
+	bool has(const ResourceBoundle& amount) const;
+
+	bool deduct(const ResourceBoundle& amount);
 
 private:
 	float value[(int) game_resource::RESOURCE_TYPE_COUNT];
