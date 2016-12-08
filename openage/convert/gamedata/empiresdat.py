@@ -267,7 +267,7 @@ def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False)
 
     spam("length of decompressed data: %d" % len(file_data))
 
-    gamespec = EmpiresDatWrapper()
+    gamespec = EmpiresDatWrapper(game_versions=game_versions)
     gamespec.read(file_data, 0)
 
     if cachefile_name:

@@ -216,7 +216,7 @@ class Exportable:
                     # use its read method to store data to itself,
                     # then save the result as a reference named `var_name`
                     # TODO: constructor argument passing may be required here.
-                    grouped_data = var_type.cls()
+                    grouped_data = var_type.cls(game_versions=self.game_versions)
                     offset = grouped_data.read(raw, offset)
 
                     setattr(self, var_name, grouped_data)
@@ -290,7 +290,7 @@ class Exportable:
                                             new_data_class.__name__))
 
                     # create instance of submember class
-                    new_data = new_data_class(**varargs)
+                    new_data = new_data_class(game_versions=self.game_versions, **varargs)
 
                     # recursive call, read the subdata.
                     offset = new_data.read(raw, offset, new_data_class)

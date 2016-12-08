@@ -768,8 +768,8 @@ class UnitDoppelganger(UnitFlag):
         (READ_EXPORT, None, IncludeMembers(cls=UnitFlag)),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitDeadOrFish(UnitDoppelganger):
@@ -885,8 +885,8 @@ class UnitMovable(UnitBird):
         (READ, "reload_time_displayed", "float"),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitProjectile(UnitMovable):
@@ -908,8 +908,8 @@ class UnitProjectile(UnitMovable):
         (READ_EXPORT, "projectile_arc", "float"),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitLiving(UnitMovable):
@@ -985,8 +985,8 @@ class UnitLiving(UnitMovable):
         (READ, "pierce_armor_displayed", "int16_t"),  # unit stats display of pierce armor
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitBuilding(UnitLiving):
@@ -1034,8 +1034,8 @@ class UnitBuilding(UnitLiving):
         (READ_UNKNOWN, None, "int8_t[6]"),  # might be related to building annexes?
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitTree(UnitObject):

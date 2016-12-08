@@ -129,8 +129,8 @@ class Terrain(Exportable):
         (READ_UNKNOWN, None,                 "uint16_t"),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class TerrainBorder(Exportable):
