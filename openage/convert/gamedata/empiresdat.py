@@ -15,6 +15,7 @@ from . import tech
 from . import terrain
 from . import unit
 
+from ..game_versions import GameVersion
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import SubdataMember
 from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
@@ -93,9 +94,9 @@ class EmpiresDat(Exportable):
         (READ_UNKNOWN, None, "int16_t"),
         (READ_EXPORT,  "terrains", SubdataMember(
             ref_type=terrain.Terrain,
-            length=42, # 42 terrains are stored, but less are used.
-                       # TODO: maybe this number is defined somewhere.
-                       # TODO: use 100 here for GameVersion.age2_ak.
+            # 42 terrains are stored (100 in African Kingdoms), but less are used.
+            # TODO: maybe this number is defined somewhere.
+            length=(lambda self: 100 if GameVersion.age2_ak in self.game_versions else 42),
         )),
         (READ,         "terrain_border", SubdataMember(
             ref_type=terrain.TerrainBorder,

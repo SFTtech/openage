@@ -2,8 +2,9 @@
 
 # TODO pylint: disable=C,R
 
+from ..game_versions import GameVersion
 from ..dataformat.exportable import Exportable
-from ..dataformat.members import SubdataMember, IncludeMembers
+from ..dataformat.members import ArrayMember, SubdataMember, IncludeMembers
 from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
 
 
@@ -117,10 +118,10 @@ class Terrain(Exportable):
         (READ_EXPORT, "terrain_dimension0",  "int16_t"),
         (READ_EXPORT, "terrain_dimension1",  "int16_t"),
 
-        (READ, "borders", SubdataMember(
-            # probably references to the TerrainBorders, there are 42 terrains in game
-            ref_type="int16_t",
-            length=42, # TODO: use 100 here for GameVersion.age2_ak
+        # probably references to the TerrainBorders, there are 42 terrains in game
+        (READ, "borders", ArrayMember(
+            "int16_t",
+            (lambda o: 100 if GameVersion.age2_ak in o.game_versions else 42)
         )),
         (READ, "terrain_unit_id",            "int16_t[30]"),  # place these unit id on the terrain, with prefs from fields below
         (READ, "terrain_unit_density",       "int16_t[30]"),  # how many of the above units to place
