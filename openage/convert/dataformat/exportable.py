@@ -38,6 +38,9 @@ class Exportable:
     # struct format specification
     data_format = tuple()
 
+    # detected game versions
+    game_versions = list()
+
     def __init__(self, **args):
         # store passed arguments as members
         self.__dict__.update(args)

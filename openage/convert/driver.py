@@ -126,7 +126,8 @@ def get_blendomatic_data(srcdir):
 def get_gamespec(srcdir, game_versions, dont_pickle):
     """ reads empires.dat and fixes it """
 
-    filename = "empires2_x2_p1.dat" if GameVersion.age2_ak in game_versions else "empires2_x1_p1.dat"
+    filename = ("empires2_x2_p1.dat" if GameVersion.age2_ak in game_versions else
+                "empires2_x1_p1.dat")
 
     cache_file = os.path.join(gettempdir(), "{}.pickle".format(filename))
 
