@@ -1,9 +1,10 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
+from ..game_versions import GameVersion
 from ..dataformat.exportable import Exportable
-from ..dataformat.members import SubdataMember, IncludeMembers
+from ..dataformat.members import ArrayMember, SubdataMember, IncludeMembers
 from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
 
 
@@ -117,7 +118,11 @@ class Terrain(Exportable):
         (READ_EXPORT, "terrain_dimension0",  "int16_t"),
         (READ_EXPORT, "terrain_dimension1",  "int16_t"),
 
-        (READ, "borders",                    "int16_t[42]"),  # probably references to the TerrainBorders, there are 42 terrains in game
+        # probably references to the TerrainBorders, there are 42 terrains in game
+        (READ, "borders", ArrayMember(
+            "int16_t",
+            (lambda o: 100 if GameVersion.age2_ak in o.game_versions else 42)
+        )),
         (READ, "terrain_unit_id",            "int16_t[30]"),  # place these unit id on the terrain, with prefs from fields below
         (READ, "terrain_unit_density",       "int16_t[30]"),  # how many of the above units to place
         (READ, "terrain_placement_flag",      "int8_t[30]"),  # when placing two terrain units on the same spot, selects which prevails(=1)
@@ -125,8 +130,8 @@ class Terrain(Exportable):
         (READ_UNKNOWN, None,                 "uint16_t"),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class TerrainBorder(Exportable):

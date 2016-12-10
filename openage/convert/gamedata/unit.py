@@ -33,6 +33,7 @@ class UnitCommand(Exportable):
                 11: "SCARE_HUNT",  # triggers flee
                 12: "UNLOAD",    # transport, garrison
                 13: "GUARD",
+                14: "UNKNOWN_14",
                 20: "ESCAPE",    # sure?
                 21: "MAKE_FARM",
                 101: "BUILD",
@@ -175,6 +176,7 @@ class HitType(Exportable):
             type_name   = "hit_class",
             lookup_dict = {
                 -1: "NONE",
+                0: "UNKNOWN_0",
                 1: "INFANTRY",
                 2: "SHIP_TURTLE",
                 3: "UNITS_PIERCE",
@@ -183,6 +185,7 @@ class HitType(Exportable):
                 8: "CAVALRY",
                 11: "BUILDINGS_NO_PORT",
                 13: "STONE_DEFENSES",
+                14: "UNKNOWN_14",
                 15: "ARCHERS",
                 16: "SHIPS_CAMELS_SABOTEURS",
                 17: "RAMS",
@@ -191,12 +194,14 @@ class HitType(Exportable):
                 20: "SIEGE_WEAPONS",
                 21: "BUILDINGS",
                 22: "WALLS_GATES",
+                23: "UNKNOWN_23",
                 24: "BOAR",
                 25: "MONKS",
                 26: "CASTLE",
                 27: "SPEARMEN",
                 28: "CAVALRY_ARCHER",
                 29: "EAGLE_WARRIOR",
+                30: "UNKNOWN_30",
             },
         )),
         (READ, "amount", "int16_t"),
@@ -452,6 +457,7 @@ class UnitObject(Exportable):
             raw_type    = "int16_t",
             type_name   = "unit_classes",
             lookup_dict = {
+                -1: "UNKNOWN_FFFF",
                 0: "ARCHER",
                 1: "ARTIFACT",
                 2: "TRADE_BOAT",
@@ -468,6 +474,7 @@ class UnitObject(Exportable):
                 13: "SIEGE_WEAPON",
                 14: "TERRAIN",
                 15: "TREES",
+                16: "UNKNOWN_16",
                 18: "PRIEST",
                 19: "TRADE_CART",
                 20: "TRANSPORT_BOAT",
@@ -557,6 +564,7 @@ class UnitObject(Exportable):
             raw_type    = "int16_t",      # determines on what type of ground the unit can be placed/walk
             type_name   = "ground_type",  # is actually the id of the terrain_restriction entry!
             lookup_dict = {
+                -0x01: "UNKNOWN_FFFF",
                 0x00: "ANY",
                 0x01: "SHORELINE",
                 0x02: "WATER",
@@ -641,6 +649,7 @@ class UnitObject(Exportable):
                 9: "FISHING_SHIP",          # fishing ship
                 10: "MILITARY_BUILDING",    # military building (build page 2)
                 11: "SHIELDED_BUILDING",    # shield building (build page 3)
+                12: "UNKNOWN_12",
             },
         )),
         (READ_UNKNOWN, None, "float"),
@@ -759,8 +768,8 @@ class UnitDoppelganger(UnitFlag):
         (READ_EXPORT, None, IncludeMembers(cls=UnitFlag)),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitDeadOrFish(UnitDoppelganger):
@@ -864,6 +873,7 @@ class UnitMovable(UnitBird):
                 1: "TREES",
                 2: "NEARBY_UNITS",
                 3: "TARGET_ONLY",
+                6: "UNKNOWN_6",
             },
         )),
         (READ, "min_range", "float"),                 # minimum range that this projectile requests for display
@@ -875,8 +885,8 @@ class UnitMovable(UnitBird):
         (READ, "reload_time_displayed", "float"),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitProjectile(UnitMovable):
@@ -898,8 +908,8 @@ class UnitProjectile(UnitMovable):
         (READ_EXPORT, "projectile_arc", "float"),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitLiving(UnitMovable):
@@ -975,8 +985,8 @@ class UnitLiving(UnitMovable):
         (READ, "pierce_armor_displayed", "int16_t"),  # unit stats display of pierce armor
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitBuilding(UnitLiving):
@@ -1024,8 +1034,8 @@ class UnitBuilding(UnitLiving):
         (READ_UNKNOWN, None, "int8_t[6]"),  # might be related to building annexes?
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class UnitTree(UnitObject):

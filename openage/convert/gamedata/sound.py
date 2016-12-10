@@ -20,8 +20,8 @@ class SoundItem(Exportable):
         (READ,        "player_id",    "int16_t"),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)
 
 
 class Sound(Exportable):
@@ -41,5 +41,5 @@ class Sound(Exportable):
         )),
     )
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **args):
+        super().__init__(**args)

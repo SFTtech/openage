@@ -123,13 +123,16 @@ def get_blendomatic_data(srcdir):
         return Blendomatic(blendomatic_dat)
 
 
-def get_gamespec(srcdir, dont_pickle):
+def get_gamespec(srcdir, game_versions, dont_pickle):
     """ reads empires.dat and fixes it """
 
-    cache_file = os.path.join(gettempdir(), "empires2_x1_p1.dat.pickle")
+    filename = ("empires2_x2_p1.dat" if GameVersion.age2_ak in game_versions else
+                "empires2_x1_p1.dat")
 
-    with srcdir["data/empires2_x1_p1.dat"].open('rb') as empiresdat_file:
-        gamespec = load_gamespec(empiresdat_file, cache_file, not dont_pickle)
+    cache_file = os.path.join(gettempdir(), "{}.pickle".format(filename))
+
+    with srcdir["data", filename].open('rb') as empiresdat_file:
+        gamespec = load_gamespec(empiresdat_file, game_versions, cache_file, not dont_pickle)
 
     # modify the read contents of datfile
     from .fix_data import fix_data
@@ -189,7 +192,7 @@ def convert_metadata(args):
         return
 
     yield "empires.dat"
-    gamespec = get_gamespec(args.srcdir, args.flag("no_pickle_cache"))
+    gamespec = get_gamespec(args.srcdir, args.game_versions, args.flag("no_pickle_cache"))
     data_dump = gamespec.dump("gamedata")
     data_formatter.add_data(data_dump[0], prefix="gamedata/")
 
