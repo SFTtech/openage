@@ -412,6 +412,28 @@ void ActionMode::announce_buttons_type() {
 	}
 }
 
+void ActionMode::announce_buttons_type() {
+	ActionButtonsType buttons_type;
+	InputContext *top_ctxt = &Engine::get().get_input_manager().get_top_context();
+	if (top_ctxt == &this->build_menu_context) {
+		buttons_type = ActionButtonsType::BuildMenu;
+	} else if (top_ctxt == &this->build_menu_mil_context) {
+		buttons_type = ActionButtonsType::MilBuildMenu;
+	} else if (top_ctxt == &this->building_context ||
+	           this->selection->get_selection_type() != selection_type_t::own_units) {
+		buttons_type = ActionButtonsType::None;
+	} else if (this->selection->contains_military(*this->game_control->get_current_player())) {
+		buttons_type = ActionButtonsType::MilitaryUnits;
+	} else {
+		buttons_type = ActionButtonsType::CivilianUnits;
+	}
+
+	if (buttons_type != this->buttons_type) {
+		this->buttons_type = buttons_type;
+		emit this->gui_signals.buttons_type_changed(buttons_type);
+	}
+}
+
 EditorModeSignals::EditorModeSignals(EditorMode *editor_mode)
 	:
 	editor_mode{editor_mode} {
