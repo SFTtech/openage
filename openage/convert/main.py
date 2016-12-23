@@ -393,7 +393,7 @@ def conversion_required(asset_dir, args):
         return False
 
     else:
-        if asset_version >= 0:
+        if asset_version >= 0 and asset_version != changelog.ASSET_VERSION:
             info("Found converted assets with version %d, "
                  "but need version %d" % (asset_version,
                                           changelog.ASSET_VERSION))
