@@ -16,6 +16,11 @@ bool UnitAbility::has_hitpoints(Unit &target) {
 	       target.get_attribute<attr_type::hitpoints>().current > 0;
 }
 
+bool UnitAbility::is_damaged(Unit &target) {
+	return target.has_attribute(attr_type::hitpoints) &&
+	       target.get_attribute<attr_type::hitpoints>().current < target.get_attribute<attr_type::hitpoints>().max;
+}
+
 bool UnitAbility::has_resource(Unit &target) {
 	return target.has_attribute(attr_type::resource) &&
 	       target.get_attribute<attr_type::resource>().amount > 0;
@@ -268,6 +273,34 @@ void AttackAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound)
 
 	Unit *target = cmd.unit();
 	to_modify.push_action(std::make_unique<AttackAction>(&to_modify, target->get_ref()));
+}
+
+RepairAbility::RepairAbility(const Sound *s)
+	:
+	sound{s} {
+}
+
+bool RepairAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	if (cmd.has_unit()) {
+		Unit &target = *cmd.unit();
+		return &to_modify != &target &&
+		       to_modify.location &&
+		       target.location &&
+		       target.location->is_placed() &&
+		       is_damaged(target) &&
+		       is_ally(to_modify, target);
+	}
+	return false;
+}
+
+void RepairAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
+	to_modify.log(MSG(dbg) << "invoke repair action");
+	if (play_sound && this->sound) {
+		this->sound->play();
+	}
+
+	Unit *target = cmd.unit();
+	to_modify.push_action(std::make_unique<RepairAction>(&to_modify, target->get_ref()));
 }
 
 ability_set UnitAbility::set_from_list(const std::vector<ability_type> &items) {

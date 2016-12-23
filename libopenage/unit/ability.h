@@ -101,7 +101,8 @@ public:
  	 * some common functions
 	 */
 	bool has_hitpoints(Unit &target);
-	bool has_resource(Unit &target);
+	bool has_hitpoints(Unit &target);
+	bool is_damaged(Unit &target);
 	bool is_same_player(Unit &to_modify, Unit &target);
 	bool is_ally(Unit &to_modify, Unit &target);
 	bool is_enemy(Unit &to_modify, Unit &target);
@@ -254,6 +255,25 @@ public:
 
 	ability_type type() override {
 		return ability_type::attack;
+	}
+
+	bool can_invoke(Unit &to_modify, const Command &cmd) override;
+
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+
+private:
+	const Sound *sound;
+};
+
+/*
+ * initiates a repair action when given a valid target
+ */
+class RepairAbility: public UnitAbility {
+public:
+	RepairAbility(const Sound *s=nullptr);
+
+	ability_type type() override {
+		return ability_type::repair;
 	}
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
