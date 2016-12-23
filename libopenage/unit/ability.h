@@ -101,8 +101,8 @@ public:
  	 * some common functions
 	 */
 	bool has_hitpoints(Unit &target);
-	bool has_hitpoints(Unit &target);
 	bool is_damaged(Unit &target);
+	bool has_resource(Unit &target);
 	bool is_same_player(Unit &to_modify, Unit &target);
 	bool is_ally(Unit &to_modify, Unit &target);
 	bool is_enemy(Unit &to_modify, Unit &target);
@@ -274,6 +274,84 @@ public:
 
 	ability_type type() override {
 		return ability_type::repair;
+	}
+
+	bool can_invoke(Unit &to_modify, const Command &cmd) override;
+
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+
+private:
+	const Sound *sound;
+};
+
+/*
+ * initiates a heal action when given a valid target
+ */
+class HealAbility: public UnitAbility {
+public:
+	HealAbility(const Sound *s=nullptr);
+
+	ability_type type() override {
+		return ability_type::heal;
+	}
+
+	bool can_invoke(Unit &to_modify, const Command &cmd) override;
+
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+
+private:
+	const Sound *sound;
+};
+
+/*
+ * initiates a research
+ * TODO implement
+ */
+class ResearchAbility: public UnitAbility {
+public:
+	ResearchAbility(const Sound *s=nullptr);
+
+	ability_type type() override {
+		return ability_type::research;
+	}
+
+	bool can_invoke(Unit &to_modify, const Command &cmd) override;
+
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+
+private:
+	const Sound *sound;
+};
+
+/*
+ * initiates a patrol action when given a valid target
+ * TODO implement
+ */
+class PatrolAbility: public UnitAbility {
+public:
+	PatrolAbility(const Sound *s=nullptr);
+
+	ability_type type() override {
+		return ability_type::patrol;
+	}
+
+	bool can_invoke(Unit &to_modify, const Command &cmd) override;
+
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+
+private:
+	const Sound *sound;
+};
+
+/*
+ * initiates a convert action when given a valid target
+ */
+class ConvertAbility: public UnitAbility {
+public:
+	ConvertAbility(const Sound *s=nullptr);
+
+	ability_type type() override {
+		return ability_type::convert;
 	}
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;

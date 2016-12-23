@@ -150,8 +150,8 @@ UngarrisonAbility::UngarrisonAbility(const Sound *s)
 
 bool UngarrisonAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	if (to_modify.has_attribute(attr_type::garrison)) {
-		auto &garison_attr = to_modify.get_attribute<attr_type::garrison>();
-		return cmd.has_position() && !garison_attr.content.empty();
+		auto &garrison_attr = to_modify.get_attribute<attr_type::garrison>();
+		return cmd.has_position() && !garrison_attr.content.empty();
 	}
 	return false;
 }
@@ -301,6 +301,97 @@ void RepairAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound)
 
 	Unit *target = cmd.unit();
 	to_modify.push_action(std::make_unique<RepairAction>(&to_modify, target->get_ref()));
+}
+
+HealAbility::HealAbility(const Sound *s)
+	:
+	sound{s} {
+}
+
+bool HealAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	if (cmd.has_unit()) {
+		Unit &target = *cmd.unit();
+		return &to_modify != &target &&
+		       to_modify.location &&
+		       target.location &&
+		       target.location->is_placed() &&
+		       is_damaged(target) &&
+		       is_ally(to_modify, target);
+	}
+	return false;
+}
+
+void HealAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
+	to_modify.log(MSG(dbg) << "invoke repair action");
+	if (play_sound && this->sound) {
+		this->sound->play();
+	}
+
+	Unit *target = cmd.unit();
+	to_modify.push_action(std::make_unique<HealAction>(&to_modify, target->get_ref()));
+}
+
+ResearchAbility::ResearchAbility(const Sound *s)
+	:
+	sound{s} {
+}
+
+bool ResearchAbility::can_invoke(Unit &/*to_modify*/, const Command &/*cmd*/) {
+	// TODO implement
+	return false;
+}
+
+void ResearchAbility::invoke(Unit &to_modify, const Command &/*cmd*/, bool play_sound) {
+	to_modify.log(MSG(dbg) << "not implemented");
+	if (play_sound && this->sound) {
+		this->sound->play();
+	}
+	// TODO implement
+}
+
+PatrolAbility::PatrolAbility(const Sound *s)
+	:
+	sound{s} {
+}
+
+bool PatrolAbility::can_invoke(Unit &/*to_modify*/, const Command &/*cmd*/) {
+	// TODO implement
+	return false;
+}
+
+void PatrolAbility::invoke(Unit &to_modify, const Command &/*cmd*/, bool play_sound) {
+	to_modify.log(MSG(dbg) << "not implemented");
+	if (play_sound && this->sound) {
+		this->sound->play();
+	}
+	// TODO implement
+}
+
+ConvertAbility::ConvertAbility(const Sound *s)
+	:
+	sound{s} {
+}
+
+bool ConvertAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	if (cmd.has_unit()) {
+		Unit &target = *cmd.unit();
+		return &to_modify != &target &&
+		       to_modify.location &&
+		       target.location &&
+		       target.location->is_placed() &&
+		       is_enemy(to_modify, target);
+	}
+	return false;
+}
+
+void ConvertAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
+	to_modify.log(MSG(dbg) << "invoke repair action");
+	if (play_sound && this->sound) {
+		this->sound->play();
+	}
+
+	Unit *target = cmd.unit();
+	to_modify.push_action(std::make_unique<ConvertAction>(&to_modify, target->get_ref()));
 }
 
 ability_set UnitAbility::set_from_list(const std::vector<ability_type> &items) {
