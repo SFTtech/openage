@@ -9,7 +9,7 @@ openage are still up to date.
 
 from .gamedata.empiresdat import EmpiresDat
 
-from ..log import warn
+from ..log import info, warn
 from ..testing.testing import TestError
 
 
@@ -62,6 +62,7 @@ def changes(asset_version, spec_version):
 
     if "metadata" not in changed_components:
         if EmpiresDat.get_hash() != spec_version:
+            info("game metadata hash changed, need to reconvert it")
             changed_components.add("metadata")
 
     return changed_components
