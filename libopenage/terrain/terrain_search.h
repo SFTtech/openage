@@ -16,8 +16,11 @@ class Terrain;
 class TerrainObject;
 
 TerrainObject *find_near(const TerrainObject &start,
-                                         std::function<bool(const TerrainObject &)> found,
-                                         unsigned int search_limit=500);
+                         std::function<bool(const TerrainObject &)> found,
+                         unsigned int search_limit=500);
+TerrainObject *find_in_radius(const TerrainObject &start,
+                              std::function<bool(const TerrainObject &)> found,
+                              float radius);
 
 constexpr coord::tile_delta const neigh_tile[] = {
 	{0,  1},

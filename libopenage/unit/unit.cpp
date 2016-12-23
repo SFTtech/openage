@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <limits>
 
 #include "../terrain/terrain.h"
 #include "../engine.h"

@@ -394,11 +394,13 @@ public:
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
+	void on_completion() override;
 	std::string name() const override { return "build"; }
 	const graphic_set &current_graphics() const override;
 
 private:
 	float complete, build_rate;
+	static constexpr float search_tile_distance = 9.0f;
 
 };
 
