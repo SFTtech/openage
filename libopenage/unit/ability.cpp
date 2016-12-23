@@ -385,7 +385,7 @@ bool ConvertAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 }
 
 void ConvertAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
-	to_modify.log(MSG(dbg) << "invoke repair action");
+	to_modify.log(MSG(dbg) << "invoke convert action");
 	if (play_sound && this->sound) {
 		this->sound->play();
 	}

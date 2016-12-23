@@ -423,7 +423,10 @@ private:
 	float time;
 	float time_left;
 
-	ResourceBundle cost; // calculate and store the cost in the constructor
+	/**
+	 * stores the cost of the repair for 1hp
+	 */
+	ResourceBundle cost;
 
 };
 
