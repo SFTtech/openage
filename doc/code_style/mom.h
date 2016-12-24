@@ -6,18 +6,25 @@
 // ---------------------------
 //
 // Please also have a look at `mom.cpp`!
+//
 // To make the code look nice and be readable:
-//  * Sort things alphabetically.
+//  * Sort things alphabetically
 //  * Align things beautifully!
 //  * If you write documentation correctly, then:
 //    * It's parsable by Doxygen!
 //    * -> Cool generated docs!
-//  * Look at the following example code.
-//  * Look at the "mom.cpp" file for a implementation example.
 //  * Comment guideline: Use punctuation!
+
+
+// Includes are sorted alphabetically,
+// local includes first, then system inclusions:
+#include "../magic/unicorn.h"
+#include "rofl.h"
+#include "stuff.h"
 
 #include <cstddef>
 #include <cstdint>
+// Reason of this order: you'll detect missing system includes.
 
 
 // Try to keep the code < 120 chars in width (no hard limit...).
@@ -28,7 +35,7 @@
 constexpr int DEFAULT_MOM_MASS = 9001;
 
 
-// Doxygen will then generate nice shiny documentation files.
+// Doxygen will generate nice shiny documentation files.
 // Exported (API) documentation of all source code is in the header files:
 
 /**
@@ -38,6 +45,10 @@ constexpr int DEFAULT_MOM_MASS = 9001;
 namespace parents {
 namespace mom {
 // <- The namespace does not increase the indentation level!
+
+// In header files, forward declare as many classes as possible!
+class Stuff;
+class Thing;
 
 
 /**
@@ -73,6 +84,9 @@ public:
 	bool tick();
 
 protected:
+	/** Let your mom buy something */
+	void buy(const Thing& item);
+
 	// To have doxygen parse one-liners, write the following:
 	int64_t mass; //!< Your mom's mass (solar masses).
 
@@ -89,8 +103,27 @@ protected:
 	 */
 	int stupidity;
 
-	static int64_t sum_mom_masses; //!< Sum of all mom's masses in the world.
+	/** Sum of all mom's masses in the world. */
+	static int64_t sum_mom_masses;
 };
 
 
-}} // namespace parents::mom
+// Enum class names are lowercase_with_underscore
+// if they somehow describe a type, use name_t.
+
+enum class awesome_enumeration {
+	LOW,
+	MID,
+	HIGH,  // <- note the last , there!
+};
+
+
+/**
+ * Type aliases are done with "using".
+ * They can get proper documentation, too!
+ */
+using wtf_t = std::unordered_map<std::string,
+                                 std::unique_ptr<Stuff>>;
+
+}} // parents::mom
+// ^ in C++17 this will only be a single }
