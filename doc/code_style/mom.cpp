@@ -1,62 +1,68 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2016 the openage authors. See copying.md for legal info.
 
-// The associated header file comes first!
-#include "mom.h"
-
-// C++ standard includes next.
-#include <iostream>
-
-// C includes next (use <cmath>, not <math.h>).
-#include <cmath>
-#include <cstdio>
-
-// Libraries next.
-#include <SDL/SDL.h>
-
-// Headers from different openage folders.
-#include "../valve.h"
-#include "log/log.h"
-
-// Lastly, headers from the same folder.
-#include "half_life.h"
 
 // [SFT]tech coding guidelines
 // ---------------------------
 //
 // See `mom.h` for a header example.
+//
+// This is our attempt to creating a good-looking C++ style.
+//
+// For enhanced beauty: Use your brain!
+//   * Alphabetic sorting
+//   * Sensible documentation
+//   * Lovely indentation and alignment
+
+
+// The associated header file comes first!
+#include "mom.h"
+
+// Local includes next, sorted alphabetically
+#include "../valve.h"
+#include "half_life.h"
+#include "log/log.h"
+
+// System includes follow, sorted alphabetically
+#include <iostream>
+#include <cmath>
+#include <cstdio>
+#include <SDL/SDL.h>
+// The reason of this include order is:
+// If local headers are missing system includes, you'll notice it.
 
 
 // Indentation:
-//    ========> see doc/code_style/tabs_n_spaces.md <=========
-// Tabs for indentation. Fully flexible, everyone can choose their own width.
-// Use spaces for ascii-arts or code alignments after tabs (everywhere where
-// flexible tab width could cause breakage). Examples below.
 //
-// => this ensures custom tab-widths AND correct indentation levels.
-
-
-
-// Structs: Used to pack variables, nothing else!
-// Need member functions/constructor? Use a class!
+// Mix tabs and spaces in a sensible way:
+//   - Tabs for logical indentation
+//   - Spaces for alignments after that
 //
-// Struct names: lower_case_with_underscores.
+//    ==> see doc/code_style/tabs_n_spaces.md
+//
+// => this ensures custom tab-widths AND consistent lineup levels.
+
+
+// struct:
+//   use it to pack variables
+// class:
+//   use it for the object orientation stuff
+//
+// Name of struct: lower_case_with_underscores.
+// Name of class: CamelCaseAsYouKnowIt
 
 
 /**
- * Struct documentation.
- * Incredibly good example for writing docs.
+ * Example struct documentation.
+ * Followed by an incredibly good example for writing docs.
+ * Will be parsed by Doxygen.
  */
 struct another_stupid_type {
-	rofl_t blergh;         //!< variables and functions in lowercase
+	rofl_t blergh_gnampf;  //!< variables and functions in lowercase
 	                       //   with _ as word separator.
 	epictype42_t løl;      //!< no question, we use UTF-8 encoding.
 	ub0rtype røfëlkøptør;  //!< proper documentation is Doxygen parsable.
 };
 
-
-// Classes: complex containers.
-//
-// Class names: CamelCase
 
 
 /**
@@ -65,25 +71,13 @@ struct another_stupid_type {
 class HalfLife3 : public ValveGame {
 // vvv The access modifier is at the same indent level as the class definition:
 public:
-	// I hope you already read the tabs_n_spaces.md file,
-	// as now follows a practical application for it:
-
-	// Example for using tabs for indentation and spaces for alignment.
-	// The argument list is too long, therefore wrap it.
-	// => Tabs are used to reach level of `void release_...`,
-	//    spaces indent the alignment of each argument!
-	//
-	// Variable name alignment is optional.
 	void release_game(const ValveTeam &team,
 	                  uint128_t        passed_time,
-	                  Engine          *game_engine,
+	                  const Engine    *game_engine,
 	                  Internet        *community,
 	                  bool             keep_secret=true) {
 
-		// ^ this empty line is mandatory due to the broken line and
-		// indentation change.
-		// In general, if in doubt, insert a newline.
-		// They make things more readable (TM).
+		// ^ insert a empty line here to make it more readable.
 
 		// http://www.abstrusegoose.com/440
 		auto gaben = team.get_human("gaben");
@@ -101,8 +95,9 @@ public:
 
 			team.get_product("steam")->release(this);
 			community->go_crazy();
-			world::infrastructure.collapse();
-		} else {
+			World::infrastructure.collapse();
+		}
+		else {
 			gaben->motivate(team);
 
 			// When the argument list gets too long, align with spaces:
@@ -110,11 +105,12 @@ public:
 			               "we think you're kind of wasting your time, "
 			               "but it's your time to waste.");
 
-			// You may also start one line later and then indent with a tab.
+			// You may also start one line later
+			// and then indent with a tab:
 			team.relocate(
 				game_engine->get_team()->get_current_hq_location(),
 				gaben.get_table_location()
-			)
+			);
 
 			community->criticize(passed_time);
 			team.continue_selling_hats();
@@ -122,7 +118,10 @@ public:
 	}
 
 private:
+	/** links to the story of the game */
 	Story *story;
+
+	/** time in seconds estimated left until release */
 	uint128_t estimated_release_time;
 };
 
@@ -139,8 +138,6 @@ namespace parents {
 namespace mom {
 // <- A namespace does not increase the indentation level!
 
-
-// ^ At the top level, use two newlines between statements.
 YourMom::YourMom(int her_mass)
 	:
 	mass{her_mass},
@@ -160,6 +157,7 @@ YourMom::YourMom(int her_mass)
 YourMom::~YourMom() {}
 
 
+// <^ At the top level, use two newlines between statements.
 void YourMom::print_mass() {
 	// write todos like this:
 	// TODO: mass could require uint128_t soon, adapt format string!
@@ -167,6 +165,7 @@ void YourMom::print_mass() {
 }
 
 
+// Note the space:  v
 bool YourMom::tick() {
 	// Note the spaces!
 	//|                | |  |
@@ -209,19 +208,18 @@ bool YourMom::tick() {
 
 	case 8: {
 		// ^ when defining new variables for a specific case,
-		// | braces are required by C++ because it is "special". Use them like this.
+		// | braces are required by C++ because it is "special".
+		// | Use them like this.
 
 		Apple::iPhone shiny_thing;
-		shiny_thing.get_bought_by(this);
+		this->buy(shiny_thing);
 		this->stupidity += 2;
-		break;
+		return false;
 	}
 
 	case 42:
 		ContentMafia::try_recruit_lobbyist(this);
-		// If you don't want to break, write a comment like this:
-
-		// Fall through.
+		// fall through
 	default:
 		this->stupidity += 1;
 		break;
@@ -230,8 +228,16 @@ bool YourMom::tick() {
 	return true;
 }
 
+
+// Unused parameters are commented out:
+void YourMom::buy(const Thing & /*item*/) {
+	// TODO: implement
+}
+
 }} // parents::mom
-// ^ When closing namespaces, close all in the same line and write a comment like this.
+// ^ When closing namespaces,
+//   close all in the same line and write a comment like this.
+//   In C++17 this will only be a single }
 
 
 int main(int argc, char **argv) {
