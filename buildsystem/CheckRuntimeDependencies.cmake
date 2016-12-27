@@ -5,7 +5,7 @@
 #
 # grep -RE '^ *(import |from [^.])' | cut -d: -f2- | \
 #     sed 's/^ *//g' | sort -u | grep -v openage
-set(REQUIRED_PYTHON_MODULES "PIL.Image" "PIL.ImageDraw" "numpy" "pygments")
+set(REQUIRED_PYTHON_MODULES "PIL.Image" "PIL.ImageDraw" "numpy" "pygments" "jinja2")
 
 # command-line tools
 set(REQUIRED_UTILITIES "opusenc")

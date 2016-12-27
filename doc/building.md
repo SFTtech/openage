@@ -39,6 +39,7 @@ Dependency list:
     CR    freetype2
     CR    fontconfig
     CR    harfbuzz >= 1.0.0
+    C     jinja2
     CR    sdl2
     CR    sdl2_image
     CR    opusfile
