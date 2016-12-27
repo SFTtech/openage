@@ -22,14 +22,12 @@ namespace util {
  * or amount >= bitwidth - 1 for signed integers.
  */
 template<unsigned int amount, typename T>
-constexpr static T safe_shiftleft(T value) {
-	if (amount >= sizeof(T) * CHAR_BIT) {
-		return 0;
-	} else {
-		return static_cast<T>(
-			static_cast<typename std::make_unsigned<T>::type>(value) << amount
-		);
-	}
+constexpr static
+typename std::enable_if<(amount + (std::is_signed<T>::value ? 1 : 0) < sizeof(T) * CHAR_BIT), T>::type
+safe_shiftleft(T value) {
+	return static_cast<T>(
+		static_cast<typename std::make_unsigned<T>::type>(value) << amount
+	);
 }
 
 
@@ -39,12 +37,37 @@ constexpr static T safe_shiftleft(T value) {
  * right-shift is usually undefined if amount >= bit size.
  */
 template<unsigned int amount, typename T>
-constexpr static T safe_shiftright(T value) {
-	if (amount >= sizeof(T) * CHAR_BIT) {
-		return value < 0 ? -1 : 0;
-	} else {
-		return value >> amount;
-	}
+constexpr static
+typename std::enable_if<(amount >= sizeof(T) * CHAR_BIT), T>::type
+safe_shiftright(T value) {
+	return value < 0 ? -1 : 0;
+}
+
+template<unsigned int amount, typename T>
+constexpr static
+typename std::enable_if<(amount < sizeof(T) * CHAR_BIT), T>::type
+safe_shiftright(T value) {
+	return value >> amount;
+}
+
+
+/**
+ * Helper function that performs either a safe shift-right (amount > 0),
+ * or a safe shift-left (amount < 0).
+ */
+template<int amount, typename T>
+constexpr static
+typename std::enable_if<(amount < 0), T>::type
+safe_shift(T value) {
+	return safe_shiftright<-amount>(value);
+}
+
+
+template<int amount, typename T>
+constexpr static
+typename std::enable_if<(amount >= 0), T>::type
+safe_shift(T value) {
+	return safe_shiftleft<amount>(value);
 }
 
 
@@ -81,6 +104,7 @@ private:
 		static_cast<double>(fractional_bits) * 0.30103 + 1
 	);
 
+	using this_type = FixedPoint<int_type, fractional_bits>;
 	using unsigned_int_type = typename std::make_unsigned<int_type>::type;
 	using same_type_but_unsigned = FixedPoint<FixedPoint::unsigned_int_type, fractional_bits>;
 
@@ -143,15 +167,9 @@ public:
 	 */
 	template<typename other_int_type, unsigned int other_fractional_bits>
 	static constexpr FixedPoint from_fixedpoint(const FixedPoint<other_int_type, other_fractional_bits> &other) {
-		if (fractional_bits > other_fractional_bits) {
-			return FixedPoint::from_raw_value(
-				safe_shiftleft<fractional_bits - other_fractional_bits, int_type>(other.get_raw_value())
-			);
-		} else {
-			return FixedPoint::from_raw_value(
-				safe_shiftright<other_fractional_bits - fractional_bits, int_type>(other.get_raw_value())
-			);
-		}
+		return FixedPoint::from_raw_value(
+			safe_shift<fractional_bits - other_fractional_bits, int_type>(other.get_raw_value())
+		);
 	}
 
 	/**
@@ -264,13 +282,13 @@ public:
 		return *this;
 	}
 
-	// operator - is declared as a friend because enable_if can't be used
-	// for member methods. thanks obama.
-	template<typename I, unsigned F>
-	friend constexpr
-	typename std::enable_if<std::is_signed<I>::value, FixedPoint<I, F>>::type
-	operator -(const FixedPoint<I, F> &fp) {
-		return FixedPoint<I, F>::from_raw_value(-fp.raw_value);
+	// the inner_int_type template is required for enable_if.
+	template <typename inner_int_type=int_type>
+	constexpr
+	typename std::enable_if<std::is_signed<inner_int_type>::value, FixedPoint::this_type>::type
+	operator -() const {
+		static_assert(std::is_same<inner_int_type, int_type>::value, "inner_int_type must == int_type");
+		return FixedPoint::this_type::from_raw_value(-this->raw_value);
 	}
 
 	// Basic operators
