@@ -7,8 +7,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../coord/decl.h"
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "../coord/tile.h"
 #include "../datastructure/pairing_heap.h"
 #include "../util/misc.h"

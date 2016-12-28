@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../coord/window.h"
+#include "../coord/pixel.h"
 #include "event.h"
 
 namespace openage {

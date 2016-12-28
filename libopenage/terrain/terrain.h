@@ -11,7 +11,7 @@
 
 #include "../assetmanager.h"
 #include "../texture.h"
-#include "../coord/camgame.h"
+#include "../coord/pixel.h"
 #include "../coord/chunk.h"
 #include "../util/dir.h"
 #include "../util/misc.h"

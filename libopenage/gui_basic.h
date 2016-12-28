@@ -40,7 +40,7 @@ public:
 	void process_events();
 
 private:
-	virtual bool on_resize(coord::window new_size) override;
+	virtual bool on_resize(coord::window_delta new_size) override;
 	virtual bool on_input(SDL_Event *event) override;
 	virtual bool on_drawhud() override;
 

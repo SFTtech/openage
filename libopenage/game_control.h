@@ -6,7 +6,7 @@
 
 #include <QObject>
 
-#include "coord/camgame.h"
+#include "coord/pixel.h"
 #include "input/input_context.h"
 #include "rng/rng.h"
 #include "gamestate/game_main.h"

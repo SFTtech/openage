@@ -15,10 +15,8 @@
 #include "log/log.h"
 #include "log/file_logsink.h"
 #include "audio/audio_manager.h"
-#include "coord/camgame.h"
-#include "coord/vec2f.h"
-#include "coord/phys3.h"
-#include "coord/window.h"
+#include "coord/phys.h"
+#include "coord/pixel.h"
 // pxd: from libopenage.cvar cimport CVarManager
 #include "cvar/cvar.h"
 #include "game_singletons_info.h"
@@ -66,9 +64,9 @@ class GuiItemLink;
  * Default settings for the coordinate system.
  */
 struct coord_data {
-	coord::window window_size{800, 600};
-	coord::phys3 camgame_phys{10 * coord::settings::phys_per_tile,
-		                      10 * coord::settings::phys_per_tile, 0};
+	coord::window_delta window_size{800, 600};
+	coord::phys3 camgame_phys{10 * coord::phys_per_tile,
+	                          10 * coord::phys_per_tile, 0};
 	coord::window camgame_window{400, 300};
 	coord::window camhud_window{0, 600};
 	coord::camgame_delta tile_halfsize{48, 24};  // TODO: get from convert script
@@ -158,7 +156,7 @@ public:
 	 * window resize handler function.
 	 * recalculates opengl settings like viewport and projection matrices.
 	 */
-	bool on_resize(coord::window new_size) override;
+	bool on_resize(coord::window_delta new_size) override;
 
 	/**
 	 * Start a game with the given game generator.
@@ -434,7 +432,7 @@ private:
 	 */
 	std::unique_ptr<gui::GuiBasic> gui;
 
-	/*
+	/**
 	 * the engines profiler
 	 */
 	util::Profiler profiler;

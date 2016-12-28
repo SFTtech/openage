@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <sstream>
 
-#include "coord/vec2f.h"
+#include "console/console.h"
 #include "engine.h"
 #include "gamedata/color.gen.h"
 #include "gamestate/game_main.h"

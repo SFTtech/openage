@@ -3,7 +3,6 @@
 #include <cmath>
 
 #include "../coord/tile.h"
-#include "../coord/tile3.h"
 #include "../engine.h"
 #include "../terrain/terrain.h"
 

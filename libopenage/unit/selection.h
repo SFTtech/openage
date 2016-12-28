@@ -4,7 +4,7 @@
 
 #include <vector>
 
-#include "../coord/camgame.h"
+#include "../coord/pixel.h"
 #include "../handlers.h"
 #include "ability.h"
 #include "unit_container.h"

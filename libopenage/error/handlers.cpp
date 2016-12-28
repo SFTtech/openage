@@ -44,7 +44,7 @@ util::OnInit install_handlers([]() {
 	old_sigsegv_handler = signal(SIGSEGV, sigsegv_handler);
 	old_terminate_handler = std::set_terminate(terminate_handler);
 	exit_ok = true;
-	atexit(exit_handler);
+	std::atexit(exit_handler);
 });
 
 
