@@ -15,10 +15,8 @@
 #include "log/log.h"
 #include "log/file_logsink.h"
 #include "audio/audio_manager.h"
-#include "coord/camgame.h"
-#include "coord/vec2f.h"
-#include "coord/phys3.h"
-#include "coord/window.h"
+#include "coord/phys.h"
+#include "coord/pixel.h"
 // pxd: from libopenage.cvar cimport CVarManager
 #include "cvar/cvar.h"
 #include "game_singletons_info.h"
@@ -62,8 +60,8 @@ class GuiItemLink;
 } // openage::gui
 
 struct coord_data {
-	coord::window window_size{800, 600};
-	coord::phys3 camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0};
+	coord::window_delta window_size{800, 600};
+	coord::phys3 camgame_phys{10 * coord::phys_per_tile, 10 * coord::phys_per_tile, 0};
 	coord::window camgame_window{400, 300};
 	coord::window camhud_window{0, 600};
 	coord::camgame_delta tile_halfsize{48, 24};  // TODO: get from convert script
@@ -175,7 +173,7 @@ public:
 	 * window resize handler function.
 	 * recalculates opengl settings like viewport and projection matrices.
 	 */
-	bool on_resize(coord::window new_size) override;
+	bool on_resize(coord::window_delta new_size) override;
 
 	void start_game(const Generator &generator);
 	void start_game(std::unique_ptr<GameMain> game);
@@ -265,6 +263,11 @@ public:
 	UnitSelection *get_unit_selection();
 
 	/**
+	 * return a non-owning raw pointer to this engine's coord manager.
+	 */
+	coord::CoordManager *get_coord_manager();
+
+	/**
 	* send keybindings help string to gui.
 	*/
 	void announce_global_binds();
@@ -307,11 +310,6 @@ public:
 	* this allows to disable drawing of every registered hud.
 	*/
 	options::Var<bool> drawing_huds;
-
-	/**
-	 * Holds the data for the coord system.
-	 */
-	coord_data* engine_coord_data;
 
 	/**
 	 * profiler used by the engine
@@ -439,7 +437,7 @@ private:
 	 */
 	std::unique_ptr<gui::GuiBasic> gui;
 
-	/*
+	/**
 	 * the engines profiler
 	 */
 	util::Profiler profiler;
@@ -447,6 +445,11 @@ private:
 	std::unique_ptr<renderer::FontManager> font_manager;
 	std::unique_ptr<renderer::TextRenderer> text_renderer;
 
+	/**
+	 * the engine's coordinate manager;
+	 * handles conversion between coordinate systems.
+	 */
+	coord::CoordManager coord_manager;
 public:
 	EngineSignals gui_signals;
 	gui::GuiItemLink *gui_link;

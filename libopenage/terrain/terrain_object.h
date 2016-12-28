@@ -7,7 +7,7 @@
 
 #include "../pathfinding/path.h"
 #include "../coord/tile.h"
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 
 namespace openage {
 

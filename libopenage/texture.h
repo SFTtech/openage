@@ -7,10 +7,8 @@
 #include <memory>
 
 #include "gamedata/texture.gen.h"
-#include "coord/camgame.h"
-#include "coord/camhud.h"
+#include "coord/pixel.h"
 #include "coord/tile.h"
-#include "coord/tile3.h"
 #include "shader/program.h"
 #include "shader/shader.h"
 #include "util/file.h"

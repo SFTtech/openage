@@ -16,7 +16,7 @@ namespace util {
 
 
 /**
- * Helper function that performs a left shift wihtout causing undefined
+ * Helper function that performs a left shift without causing undefined
  * behavior.
  * regular left-shift is undefined if amount >= bitwidth,
  * or amount >= bitwidth - 1 for signed integers.
@@ -117,6 +117,8 @@ private:
 					std::numeric_limits<FixedPoint::unsigned_int_type>::max()
 		)));
 	}
+
+	friend std::hash<openage::util::FixedPoint<int_type, fractional_bits>>;
 
 public:
 	// obligatory copy constructor / assignment operator.
@@ -347,7 +349,7 @@ constexpr operator *(const FixedPoint<I, F> lhs, const N &rhs) {
 template<typename I, unsigned F, typename N>
 typename std::enable_if<std::is_arithmetic<N>::value, FixedPoint<I, F>>::type
 constexpr operator /(const FixedPoint<I, F> lhs, const N &rhs) {
-	return FixedPoint<I, F>::from_raw_value(lhs.get_raw_value() / rhs);
+	return FixedPoint<I, F>::from_raw_value(div(lhs.get_raw_value(), rhs));
 }
 
 

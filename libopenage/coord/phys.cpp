@@ -1,6 +1,6 @@
 // Copyright 2016-2016 the openage authors. See copying.md for legal info.
 
-#include "term.h"
+#include "phys.h"
 
 namespace openage {
 namespace coord {

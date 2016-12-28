@@ -6,7 +6,7 @@
 #include <ctime>
 
 #include <SDL2/SDL.h>
-#include "coord/window.h"
+#include "coord/pixel.h"
 
 namespace openage {
 
@@ -19,7 +19,7 @@ public:
 	void save_screenshot();
 
 	/** size of the game window, in coord_sdl */
-	coord::window window_size;
+	coord::window_delta window_size;
 
 
 private:

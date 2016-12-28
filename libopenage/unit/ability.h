@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "../gamestate/resource.h"
 
 namespace openage {

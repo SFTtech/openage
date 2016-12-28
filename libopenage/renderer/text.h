@@ -6,7 +6,7 @@
 #include <string>
 #include <epoxy/gl.h>
 
-#include "../coord/window.h"
+#include "../coord/pixel.h"
 #include "../shader/program.h"
 #include "color.h"
 #include "font/glyph_atlas.h"

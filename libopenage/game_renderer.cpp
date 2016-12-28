@@ -8,7 +8,6 @@
 #include <sstream>
 
 #include "console/console.h"
-#include "coord/vec2f.h"
 #include "engine.h"
 #include "gamestate/game_main.h"
 #include "gamestate/game_spec.h"
