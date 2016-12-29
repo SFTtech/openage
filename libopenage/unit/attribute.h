@@ -107,8 +107,7 @@ public:
 	virtual bool shared() const = 0;
 
 	/**
-	 * produces an copy of the attribute for non-shared attributes
-	 * shared attributes will return themselves
+	 * Produces an copy of the attribute.
 	 */
 	virtual std::shared_ptr<AttributeContainer> copy() const = 0;
 };
@@ -122,19 +121,19 @@ using attr_map_t = std::map<attr_type, std::shared_ptr<AttributeContainer>>;
  *
  * TODO replace attr_map_t
  */
-class Attributes{
+class Attributes {
 public:
 	Attributes() {}
 
 	/**
 	 * Add an attribute or replace any attribute of the same type.
 	 */
-	bool add(std::shared_ptr<AttributeContainer> attr);
+	void add(std::shared_ptr<AttributeContainer> attr);
 
 	/**
 	 * Add copies of all the attributes from the given Attributes.
 	 */
-	bool addCopies(Attributes & attrs);
+	void addCopies(Attributes & attrs);
 
 	/**
 	 * Remove an attribute based on the type.
