@@ -416,50 +416,50 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 
 	// add worker attributes
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
-		unit->add_attribute(std::make_shared<Attribute<attr_type::gatherer>>());
+		unit->add_attribute(std::make_shared<Attribute<attr_type::worker>>());
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>());
 
 		// add graphic ids for resource actions
-		auto &gather_attr = unit->get_attribute<attr_type::gatherer>();
-		gather_attr.current_type = game_resource::wood;
-		gather_attr.capacity = 10.0f;
-		gather_attr.gather_rate = 0.002f;
+		auto &worker_attr = unit->get_attribute<attr_type::worker>();
+		worker_attr.capacity = 10.0f;
+		worker_attr.gather_rate = 0.002f;
 
 		// currently not sure where the game data keeps these values
 		// todo PREY_ANIMAL SEA_FISH
 		if (this->parent_id() == 83) {
 
 			// male graphics
-			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->owner.get_type(156); // builder 118
-			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(120); // forager
-			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->owner.get_type(592); // sheperd
-			gather_attr.graphics[gamedata::unit_classes::TREES] = this->owner.get_type(123); // woodcutter
-			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(579); // gold miner
-			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(124); // stone miner
+			worker_attr.graphics[gamedata::unit_classes::BUILDING] = this->owner.get_type(156); // builder 118
+			worker_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(120); // forager
+			worker_attr.graphics[gamedata::unit_classes::SHEEP] = this->owner.get_type(592); // sheperd
+			worker_attr.graphics[gamedata::unit_classes::TREES] = this->owner.get_type(123); // woodcutter
+			worker_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(579); // gold miner
+			worker_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(124); // stone miner
 
 		}
 		else {
 
 			// female graphics
-			gather_attr.graphics[gamedata::unit_classes::BUILDING] = this->owner.get_type(222); // builder 212
-			gather_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(354); // forager
-			gather_attr.graphics[gamedata::unit_classes::SHEEP] = this->owner.get_type(590); // sheperd
-			gather_attr.graphics[gamedata::unit_classes::TREES] = this->owner.get_type(218); // woodcutter
-			gather_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(581); // gold miner
-			gather_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(220); // stone miner
+			worker_attr.graphics[gamedata::unit_classes::BUILDING] = this->owner.get_type(222); // builder 212
+			worker_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(354); // forager
+			worker_attr.graphics[gamedata::unit_classes::SHEEP] = this->owner.get_type(590); // sheperd
+			worker_attr.graphics[gamedata::unit_classes::TREES] = this->owner.get_type(218); // woodcutter
+			worker_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(581); // gold miner
+			worker_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(220); // stone miner
 		}
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 		unit->give_ability(std::make_shared<BuildAbility>(this->on_attack));
 		unit->give_ability(std::make_shared<RepairAbility>(this->on_attack));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::FISHING_BOAT) {
-		unit->add_attribute(std::make_shared<Attribute<attr_type::gatherer>>());
+		unit->add_attribute(std::make_shared<Attribute<attr_type::worker>>());
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>());
 
 		// add fishing abilites
-		auto &gather_attr = unit->get_attribute<attr_type::gatherer>();
-		gather_attr.current_type = game_resource::food;
-		gather_attr.capacity = 15.0f;
-		gather_attr.gather_rate = 0.002f;
-		gather_attr.graphics[gamedata::unit_classes::SEA_FISH] = this;
+		auto &worker_attr = unit->get_attribute<attr_type::worker>();
+		worker_attr.capacity = 15.0f;
+		worker_attr.gather_rate = 0.002f;
+		worker_attr.graphics[gamedata::unit_classes::SEA_FISH] = this;
 
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 	}

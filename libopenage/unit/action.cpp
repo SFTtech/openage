@@ -425,9 +425,9 @@ void IdleAction::update(unsigned int time) {
 
 	// unit carrying ressources take the carrying sprite when idle
 	// we're not updating frames because the carying sprite is walking
-	if (entity->has_attribute(attr_type::gatherer)) {
-		auto gatherer_attrib = entity->get_attribute<attr_type::gatherer>();
-		if (gatherer_attrib.amount > 0) {
+	if (entity->has_attribute(attr_type::worker)) {
+		auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
+		if (worker_resource.amount > 0) {
 			this->graphic = graphic_type::carrying;
 		} else {
 			this->graphic = graphic_type::standing;
@@ -478,9 +478,9 @@ MoveAction::MoveAction(Unit *e, UnitReference tar, coord::phys_t within_range)
 
 void MoveAction::initialise() {
 	// switch workers to the carrying graphic
-	if (this->entity->has_attribute(attr_type::gatherer)) {
-		auto &gather_attr = this->entity->get_attribute<attr_type::gatherer>();
-		if (gather_attr.amount > 0) {
+	if (this->entity->has_attribute(attr_type::worker)) {
+		auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
+		if (worker_resource.amount > 0) {
 			this->graphic = graphic_type::carrying;
 		}
 	}
@@ -753,10 +753,10 @@ BuildAction::BuildAction(Unit *e, UnitReference foundation)
 	build_rate{.0001f} {
 
 	// update the units type
-	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+	auto &worker = this->entity->get_attribute<attr_type::worker>();
 	auto building_class = gamedata::unit_classes::BUILDING;
-	if (gatherer_attr.graphics.count(building_class) > 0) {
-		auto *new_type = gatherer_attr.graphics.at(building_class);
+	if (worker.graphics.count(building_class) > 0) {
+		auto *new_type = worker.graphics.at(building_class);
 		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
 		new_type->initialise(this->entity, pl_attr.player);
 	}
@@ -829,18 +829,18 @@ void BuildAction::on_completion() {
 }
 
 const graphic_set &BuildAction::current_graphics() const {
-	if (this->entity->has_attribute(attr_type::gatherer)) {
+	if (this->entity->has_attribute(attr_type::worker)) {
 
-		// the gatherer attributes attached to the unit
+		// the worker attributes attached to the unit
 		// are used to modify the graphic
-		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+		auto &worker = this->entity->get_attribute<attr_type::worker>();
 
 		if (this->get_target().is_valid() &&
 		    this->get_target().get()->has_attribute(attr_type::building)) {
 
 			// set builder graphics if available
-			if (gatherer_attr.graphics.count(gamedata::unit_classes::BUILDING) > 0) {
-				return gatherer_attr.graphics[gamedata::unit_classes::BUILDING]->graphics;
+			if (worker.graphics.count(gamedata::unit_classes::BUILDING) > 0) {
+				return worker.graphics[gamedata::unit_classes::BUILDING]->graphics;
 			}
 		}
 	}
@@ -921,11 +921,12 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 
 	Unit *target = this->target.get();
 	this->resource_class = target->unit_type->unit_class;
-	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+	auto &worker = this->entity->get_attribute<attr_type::worker>();
+	auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
 
 	// handle unit type changes based on resource class
-	if (gatherer_attr.graphics.count(this->resource_class) > 0) {
-		auto *new_type = gatherer_attr.graphics.at(this->resource_class);
+	if (worker.graphics.count(this->resource_class) > 0) {
+		auto *new_type = worker.graphics.at(this->resource_class);
 		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
 		new_type->initialise(this->entity, pl_attr.player);
 	}
@@ -933,10 +934,10 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	// set the type of gatherer
 	if (target->has_attribute(attr_type::resource)) {
 		auto &resource_attr = target->get_attribute<attr_type::resource>();
-		if (gatherer_attr.current_type != resource_attr.resource_type) {
-			this->entity->get_attribute<attr_type::gatherer>().amount = 0;
+		if (worker_resource.resource_type != resource_attr.resource_type) {
+			worker_resource.amount = 0;
 		}
-		gatherer_attr.current_type = resource_attr.resource_type;
+		worker_resource.resource_type = resource_attr.resource_type;
 	} else {
 		throw std::invalid_argument("Unit reference has no resource attribute");
 	}
@@ -945,7 +946,8 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 GatherAction::~GatherAction() {}
 
 void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
-	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+	auto &worker = this->entity->get_attribute<attr_type::worker>();
+	auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
 	if (this->target_resource) {
 
 		// the targets attributes
@@ -971,11 +973,11 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 		}
 
 		// need to return to dropsite
-		if (gatherer_attr.amount > gatherer_attr.capacity) {
+		if (worker_resource.amount > worker.capacity) {
 
 			// move to dropsite location
 			this->target_resource = false;
-			this->set_target(this->nearest_dropsite(gatherer_attr.current_type));
+			this->set_target(this->nearest_dropsite(worker_resource.resource_type));
 		}
 		else {
 
@@ -983,9 +985,9 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 			if (resource_attr.amount <= 0.0f) {
 
 				// when the resource runs out
-				if (gatherer_attr.amount > 0.0f) {
+				if (worker_resource.amount > 0.0f) {
 					this->target_resource = false;
-					this->set_target(this->nearest_dropsite(gatherer_attr.current_type));
+					this->set_target(this->nearest_dropsite(worker_resource.resource_type));
 				}
 				else {
 					this->complete = true;
@@ -994,8 +996,9 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 			else {
 
 				// transfer using gather rate
-				gatherer_attr.amount += gatherer_attr.gather_rate * time;
-				resource_attr.amount -= gatherer_attr.gather_rate * time;
+				double amount = worker.gather_rate * time;
+				worker_resource.amount += amount;
+				resource_attr.amount -= amount;
 			}
 		}
 	}
@@ -1004,8 +1007,8 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 		// dropsite has been reached
 		// add value to player stockpile
 		Player &player = this->entity->get_attribute<attr_type::owner>().player;
-		player.receive(gatherer_attr.current_type, gatherer_attr.amount);
-		gatherer_attr.amount = 0.0f;
+		player.receive(worker_resource.resource_type, worker_resource.amount);
+		worker_resource.amount = 0.0f;
 
 		// make sure the resource stil exists
 		if (this->target.is_valid() &&
@@ -1063,7 +1066,7 @@ AttackAction::AttackAction(Unit *e, UnitReference tar)
 	rate_of_fire{0.002f} {
 
 	// switch graphic type for villagers not collecting resources
-	if (this->entity->has_attribute(attr_type::gatherer) &&
+	if (this->entity->has_attribute(attr_type::worker) &&
 	    !tar.get()->has_attribute(attr_type::resource)) {
 		auto &att_attr = this->entity->get_attribute<attr_type::attack>();
 		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();

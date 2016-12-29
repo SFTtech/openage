@@ -69,7 +69,7 @@ enum class attr_type {
 	building,
 	dropsite,
 	resource,
-	gatherer,
+	worker,
 	garrison
 };
 
@@ -434,6 +434,10 @@ public:
  */
 template<> class Attribute<attr_type::resource>: public UnsharedAttributeContainer {
 public:
+	Attribute()
+		:
+		Attribute{game_resource::food, 0} {}
+
 	Attribute(game_resource type, double init_amount)
 		:
 		UnsharedAttributeContainer{attr_type::resource},
@@ -451,21 +455,18 @@ public:
 class UnitTexture;
 
 /**
- * TODO: rename to worker
+ * The worker's capacity and gather rates.
  */
-template<> class Attribute<attr_type::gatherer>: public UnsharedAttributeContainer {
+template<> class Attribute<attr_type::worker>: public UnsharedAttributeContainer {
 public:
 	Attribute()
 		:
-		UnsharedAttributeContainer{attr_type::gatherer},
-		amount{.0} {}
+		UnsharedAttributeContainer{attr_type::worker} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
-		return std::make_shared<Attribute<attr_type::gatherer>>(*this);
+		return std::make_shared<Attribute<attr_type::worker>>(*this);
 	}
 
-	game_resource current_type;
-	double amount;
 	double capacity;
 	double gather_rate;
 

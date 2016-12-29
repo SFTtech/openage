@@ -224,7 +224,7 @@ bool GatherAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 		Unit &target = *cmd.unit();
 		return &to_modify != &target &&
 		       to_modify.location &&
-		       to_modify.has_attribute(attr_type::gatherer) &&
+		       to_modify.has_attribute(attr_type::worker) &&
 		       has_resource(target);
 	}
 	return false;

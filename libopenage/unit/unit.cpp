@@ -283,8 +283,8 @@ void Unit::stop_gather() {
 
 void Unit::stop_actions() {
 
-	// work around for gatherers continuing to work after retasking
-	if (this->has_attribute(attr_type::gatherer)) {
+	// work around for workers continuing to work after retasking
+	if (this->has_attribute(attr_type::worker)) {
 		this->stop_gather();
 	}
 
