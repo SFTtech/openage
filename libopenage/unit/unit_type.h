@@ -119,7 +119,7 @@ public:
 	/**
 	 * upgrades one attribute of this unit type
 	 */
-	void upgrade(const AttributeContainer &attr);
+	void upgrade(const std::shared_ptr<AttributeContainer> &attr);
 
 	/**
 	 * returns type matching parent_id()
@@ -145,7 +145,7 @@ public:
 	/**
 	 * default attributes which get copied to new units
 	 */
-	attr_map_t default_attributes;
+	Attributes default_attributes;
 
 	/**
 	 * The set of graphics used for this type

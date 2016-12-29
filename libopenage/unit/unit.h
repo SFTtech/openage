@@ -174,6 +174,12 @@ public:
 	void add_attribute(std::shared_ptr<AttributeContainer> attr);
 
 	/**
+	 * give a new attributes this this unit
+	 * this is used to add the default attributes
+	 */
+	void add_attributes(const Attributes &attr);
+
+	/**
 	 * returns whether attribute is available
 	 */
 	bool has_attribute(attr_type type) const;
@@ -183,7 +189,9 @@ public:
 	 */
 	template<attr_type T>
 	Attribute<T> &get_attribute() {
-		return *reinterpret_cast<Attribute<T> *>(attribute_map[T].get());
+		return *reinterpret_cast<Attribute<T> *>(attributes.get(T).get());
+		// TODO change to (templates errors)
+		//return attributes.get<T>();
 	}
 
 	/**
@@ -266,7 +274,7 @@ private:
 	 * Unit attributes include color, hitpoints, speed, objects garrisoned etc
 	 * contains 0 or 1 values for each type
 	 */
-	attr_map_t attribute_map;
+	Attributes attributes;
 
 
 	/**

@@ -69,14 +69,11 @@ TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const
 }
 
 void UnitType::copy_attributes(Unit *unit) const {
-	// TODO be replaced by Attributes::addCopies
-	for (auto &attr : this->default_attributes) {
-		unit->add_attribute(attr.second->copy());
-	}
+	unit->add_attributes(this->default_attributes);
 }
 
-void UnitType::upgrade(const AttributeContainer &attr) {
-	*this->default_attributes[attr.type] = attr;
+void UnitType::upgrade(const std::shared_ptr<AttributeContainer> &attr) {
+	this->default_attributes.add(attr);
 }
 
 UnitType *UnitType::parent_type() const {

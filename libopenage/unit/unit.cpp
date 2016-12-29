@@ -243,11 +243,15 @@ void Unit::secondary_action(std::unique_ptr<UnitAction> action) {
 }
 
 void Unit::add_attribute(std::shared_ptr<AttributeContainer> attr) {
-	this->attribute_map.emplace(attr_map_t::value_type(attr->type, attr));
+	this->attributes.add(attr);
+}
+
+void Unit::add_attributes(const Attributes &attr) {
+	this->attributes.addCopies(attr);
 }
 
 bool Unit::has_attribute(attr_type type) const {
-	return (this->attribute_map.count(type) > 0);
+	return this->attributes.has(type);
 }
 
 std::shared_ptr<UnitAbility> Unit::queue_cmd(const Command &cmd) {
