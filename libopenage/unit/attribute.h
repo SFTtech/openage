@@ -128,22 +128,56 @@ template<attr_type T> Attribute<T> get_attr(attr_map_t &map) {
 	return *reinterpret_cast<Attribute<T> *>(map[T]);
 }
 
+/**
+ * Wraps a templated shared attribute
+ *
+ * Shared attributes are common across all units of
+ * one type
+ */
+class SharedAttributeContainer: public AttributeContainer {
+public:
+
+	SharedAttributeContainer(attr_type t)
+		:
+		AttributeContainer{t} {}
+
+	bool shared() const override {
+		return true;
+	}
+
+};
+
+/**
+ * Wraps a templated unshared attribute
+ *
+ * Shared attributes are copied for each unit of
+ * one type
+ */
+class UnsharedAttributeContainer: public AttributeContainer {
+public:
+
+	UnsharedAttributeContainer(attr_type t)
+		:
+		AttributeContainer{t} {}
+
+	bool shared() const override {
+		return false;
+	}
+
+};
+
 // -----------------------------
 // attribute definitions go here
 // -----------------------------
 
 class Player;
 
-template<> class Attribute<attr_type::owner>: public AttributeContainer {
+template<> class Attribute<attr_type::owner>: public SharedAttributeContainer {
 public:
 	Attribute(Player &p)
 		:
-		AttributeContainer{attr_type::owner},
+		SharedAttributeContainer{attr_type::owner},
 		player(p) {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::owner>>(*this);
@@ -152,17 +186,13 @@ public:
 	Player &player;
 };
 
-template<> class Attribute<attr_type::hitpoints>: public AttributeContainer {
+template<> class Attribute<attr_type::hitpoints>: public UnsharedAttributeContainer {
 public:
 	Attribute(unsigned int i)
 		:
-		AttributeContainer{attr_type::hitpoints},
+		UnsharedAttributeContainer{attr_type::hitpoints},
 		current{i},
 		max{i} {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::hitpoints>>(*this);
@@ -173,16 +203,12 @@ public:
 	float hp_bar_height;
 };
 
-template<> class Attribute<attr_type::armor>: public AttributeContainer {
+template<> class Attribute<attr_type::armor>: public SharedAttributeContainer {
 public:
 	Attribute(typeamount_map a)
 		:
-		AttributeContainer{attr_type::armor},
+		SharedAttributeContainer{attr_type::armor},
 		armor{a} {}
-
-	bool shared() const override {
-		return true;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::armor>>(*this);
@@ -191,7 +217,7 @@ public:
 	typeamount_map armor;
 };
 
-template<> class Attribute<attr_type::attack>: public AttributeContainer {
+template<> class Attribute<attr_type::attack>: public UnsharedAttributeContainer {
 public:
 	// TODO remove (keep for testing)
 	// 4 = gamedata::hit_class::UNITS_MELEE (not exported at the moment)
@@ -201,17 +227,13 @@ public:
 
 	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d, UnitType *reset_type)
 		:
-		AttributeContainer{attr_type::attack},
+		UnsharedAttributeContainer{attr_type::attack},
 		ptype{type},
 		range{r},
 		init_height{h},
 		damage{d},
 		stance{attack_stance::do_nothing},
 		attack_type{reset_type} {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::attack>>(*this);
@@ -231,19 +253,15 @@ public:
 	UnitType *attack_type;
 };
 
-template<> class Attribute<attr_type::heal>: public AttributeContainer {
+template<> class Attribute<attr_type::heal>: public SharedAttributeContainer {
 public:
 	Attribute(coord::phys_t r, coord::phys_t h, unsigned int l, float ra)
 		:
-		AttributeContainer{attr_type::heal},
+		SharedAttributeContainer{attr_type::heal},
 		range{r},
 		init_height{h},
 		life{l},
 		rate{ra} {}
-
-	bool shared() const override {
-		return true;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::heal>>(*this);
@@ -255,17 +273,12 @@ public:
 	float rate;
 };
 
-
-template<> class Attribute<attr_type::speed>: public AttributeContainer {
+template<> class Attribute<attr_type::speed>: public SharedAttributeContainer {
 public:
 	Attribute(coord::phys_t sp)
 		:
-		AttributeContainer{attr_type::speed},
+		SharedAttributeContainer{attr_type::speed},
 		unit_speed{sp} {}
-
-	bool shared() const override {
-		return true;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::speed>>(*this);
@@ -274,16 +287,12 @@ public:
 	coord::phys_t unit_speed; // possibly use a pointer to account for tech upgrades
 };
 
-template<> class Attribute<attr_type::direction>: public AttributeContainer {
+template<> class Attribute<attr_type::direction>: public UnsharedAttributeContainer {
 public:
 	Attribute(coord::phys3_delta dir)
 		:
-		AttributeContainer{attr_type::direction},
+		UnsharedAttributeContainer{attr_type::direction},
 		unit_dir(dir) {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::direction>>(*this);
@@ -292,17 +301,13 @@ public:
 	coord::phys3_delta unit_dir;
 };
 
-template<> class Attribute<attr_type::projectile>: public AttributeContainer {
+template<> class Attribute<attr_type::projectile>: public UnsharedAttributeContainer {
 public:
 	Attribute(float arc)
 		:
-		AttributeContainer{attr_type::projectile},
+		UnsharedAttributeContainer{attr_type::projectile},
 		projectile_arc{arc},
 		launched{false} {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::projectile>>(*this);
@@ -313,11 +318,11 @@ public:
 	bool launched;
 };
 
-template<> class Attribute<attr_type::building>: public AttributeContainer {
+template<> class Attribute<attr_type::building>: public UnsharedAttributeContainer {
 public:
 	Attribute()
 		:
-		AttributeContainer{attr_type::building},
+		UnsharedAttributeContainer{attr_type::building},
 		completed{.0f},
 		is_dropsite{true},
 		foundation_terrain{0} {}
@@ -346,17 +351,13 @@ public:
 	coord::phys3 gather_point;
 };
 
-template<> class Attribute<attr_type::dropsite>: public AttributeContainer {
+template<> class Attribute<attr_type::dropsite>: public SharedAttributeContainer {
 public:
 
 	Attribute(std::vector<game_resource> types)
 		:
-		AttributeContainer{attr_type::dropsite},
+		SharedAttributeContainer{attr_type::dropsite},
 		resource_types{types} {}
-
-	bool shared() const override {
-		return true;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::dropsite>>(*this);
@@ -377,17 +378,13 @@ private:
 /**
  * resource capacity of an object, trees, mines, villagers etc.
  */
-template<> class Attribute<attr_type::resource>: public AttributeContainer {
+template<> class Attribute<attr_type::resource>: public UnsharedAttributeContainer {
 public:
 	Attribute(game_resource type, float init_amount)
 		:
-		AttributeContainer{attr_type::resource},
+		UnsharedAttributeContainer{attr_type::resource},
 		resource_type{type},
 		amount{init_amount} {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::resource>>(*this);
@@ -402,16 +399,12 @@ class UnitTexture;
 /**
  * TODO: rename to worker
  */
-template<> class Attribute<attr_type::gatherer>: public AttributeContainer {
+template<> class Attribute<attr_type::gatherer>: public UnsharedAttributeContainer {
 public:
 	Attribute()
 		:
-		AttributeContainer{attr_type::gatherer},
+		UnsharedAttributeContainer{attr_type::gatherer},
 		amount{.0f} {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::gatherer>>(*this);
@@ -426,15 +419,11 @@ public:
 	std::unordered_map<gamedata::unit_classes, UnitType *> graphics;
 };
 
-template<> class Attribute<attr_type::garrison>: public AttributeContainer {
+template<> class Attribute<attr_type::garrison>: public UnsharedAttributeContainer {
 public:
 	Attribute()
 		:
-		AttributeContainer{attr_type::garrison} {}
-
-	bool shared() const override {
-		return false;
-	}
+		UnsharedAttributeContainer{attr_type::garrison} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::garrison>>(*this);
