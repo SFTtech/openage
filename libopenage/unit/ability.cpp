@@ -12,8 +12,8 @@
 namespace openage {
 
 bool UnitAbility::has_hitpoints(Unit &target) {
-	return target.has_attribute(attr_type::hitpoints) &&
-	       target.get_attribute<attr_type::hitpoints>().current > 0;
+	return target.has_attribute(attr_type::damaged) &&
+	       target.get_attribute<attr_type::damaged>().hp > 0;
 }
 
 bool UnitAbility::is_damaged(Unit &target) {

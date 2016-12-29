@@ -98,20 +98,20 @@ void UnitAction::face_towards(const coord::phys3 pos) {
 
 // TODO remove (keep for testing)
 void UnitAction::damage_object(Unit &target, unsigned dmg) {
-	if (target.has_attribute(attr_type::hitpoints)) {
-		auto &hp = target.get_attribute<attr_type::hitpoints>();
-		if (hp.current > dmg) {
-			hp.current -= dmg;
+	if (target.has_attribute(attr_type::damaged)) {
+		auto &dm = target.get_attribute<attr_type::damaged>();
+		if (dm.hp > dmg) {
+			dm.hp -= dmg;
 		}
 		else {
-			hp.current = 0;
+			dm.hp = 0;
 		}
 	}
 }
 
 void UnitAction::damage_object(Unit &target) {
-	if (target.has_attribute(attr_type::hitpoints)) {
-		auto &hp = target.get_attribute<attr_type::hitpoints>();
+	if (target.has_attribute(attr_type::damaged)) {
+		auto &dm = target.get_attribute<attr_type::damaged>();
 
 		if (target.has_attribute(attr_type::armor) && this->entity->has_attribute(attr_type::attack)) {
 			auto &armor = target.get_attribute<attr_type::armor>().armor;
@@ -131,11 +131,11 @@ void UnitAction::damage_object(Unit &target) {
 				actual_damage = 1;
 			}
 
-			if (hp.current > actual_damage) {
-				hp.current -= actual_damage;
+			if (dm.hp > actual_damage) {
+				dm.hp -= actual_damage;
 			}
 			else {
-				hp.current = 0;
+				dm.hp = 0;
 			}
 		}
 		else {
@@ -317,9 +317,9 @@ DeadAction::DeadAction(Unit *e, std::function<void()> on_complete)
 }
 
 void DeadAction::update(unsigned int time) {
-	if (this->entity->has_attribute(attr_type::hitpoints)) {
-		auto &h_attr = this->entity->get_attribute<attr_type::hitpoints>();
-		h_attr.current = 0;
+	if (this->entity->has_attribute(attr_type::damaged)) {
+		auto &dm = this->entity->get_attribute<attr_type::damaged>();
+		dm.hp = 0;
 	}
 
 	// inc frame but do not pass the end frame
@@ -443,9 +443,9 @@ void IdleAction::update(unsigned int time) {
 void IdleAction::on_completion() {}
 
 bool IdleAction::completed() const {
-	if (this->entity->has_attribute(attr_type::hitpoints)) {
-		auto &hp = this->entity->get_attribute<attr_type::hitpoints>();
-		return hp.current == 0;
+	if (this->entity->has_attribute(attr_type::damaged)) {
+		auto &dm = this->entity->get_attribute<attr_type::damaged>();
+		return dm.hp == 0;
 	}
 	else if (this->entity->has_attribute(attr_type::resource)) {
 		auto &res_attr = this->entity->get_attribute<attr_type::resource>();
@@ -956,13 +956,13 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 		// attack objects which have hitpoints (trees, hunt, sheep)
 		if (this->entity->has_attribute(attr_type::owner) &&
-		    targeted_resource->has_attribute(attr_type::hitpoints)) {
-			auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-			auto &hp_attr = targeted_resource->get_attribute<attr_type::hitpoints>();
+		    targeted_resource->has_attribute(attr_type::damaged)) {
+			auto &pl = this->entity->get_attribute<attr_type::owner>();
+			auto &dm = targeted_resource->get_attribute<attr_type::damaged>();
 
 			// only attack if hitpoints remain
-			if (hp_attr.current > 0) {
-				Command cmd(pl_attr.player, targeted_resource);
+			if (dm.hp > 0) {
+				Command cmd(pl.player, targeted_resource);
 				cmd.set_ability(ability_type::attack);
 				cmd.add_flag(command_flag::attack_res);
 				this->entity->queue_cmd(cmd);
@@ -1087,8 +1087,8 @@ void AttackAction::update_in_range(unsigned int time, Unit *target_ptr) {
 }
 
 bool AttackAction::completed_in_range(Unit *target_ptr) const {
-	auto &h_attr = target_ptr->get_attribute<attr_type::hitpoints>();
-	return h_attr.current < 1; // is unit still alive?
+	auto &dm = target_ptr->get_attribute<attr_type::damaged>();
+	return dm.hp < 1; // is unit still alive?
 }
 
 void AttackAction::attack(Unit &target) {
@@ -1153,8 +1153,9 @@ void HealAction::update_in_range(unsigned int time, Unit *target_ptr) {
 }
 
 bool HealAction::completed_in_range(Unit *target_ptr) const {
-	auto &h_attr = target_ptr->get_attribute<attr_type::hitpoints>();
-	return h_attr.current >= h_attr.max; // is unit at full hitpoints?
+	auto &hp = target_ptr->get_attribute<attr_type::hitpoints>();
+	auto &dm = target_ptr->get_attribute<attr_type::damaged>();
+	return dm.hp >= hp.hp; // is unit at full hitpoints?
 }
 
 void HealAction::heal(Unit &target) {
@@ -1162,13 +1163,14 @@ void HealAction::heal(Unit &target) {
 
 	// TODO move to seperate function heal_object (like damage_object)?
 	// heal object
-	if (target.has_attribute(attr_type::hitpoints)) {
+	if (target.has_attribute(attr_type::hitpoints) && target.has_attribute(attr_type::damaged)) {
 		auto &hp = target.get_attribute<attr_type::hitpoints>();
-		if ((hp.current + heal.life) < hp.max) {
-			hp.current += heal.life;
+		auto &dm = target.get_attribute<attr_type::damaged>();
+		if ((dm.hp + heal.life) < hp.hp) {
+			dm.hp += heal.life;
 		}
 		else {
-			hp.current = hp.max;
+			dm.hp = hp.hp;
 		}
 	}
 

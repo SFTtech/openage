@@ -191,6 +191,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	// hitpoints if available
 	if (this->unit_data.hit_points > 0) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(this->unit_data.hit_points));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::damaged>>(this->unit_data.hit_points));
 	}
 
 	// collectable resources
@@ -555,6 +556,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	// garrison and hp for all buildings
 	unit->add_attribute(std::make_shared<Attribute<attr_type::garrison>>());
 	unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(this->unit_data.hit_points));
+	unit->add_attribute(std::make_shared<Attribute<attr_type::damaged>>(this->unit_data.hit_points));
 
 	bool has_destruct_graphic = this->destroyed != nullptr;
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);

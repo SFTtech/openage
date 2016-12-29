@@ -58,6 +58,7 @@ using graphic_set = std::map<graphic_type, std::shared_ptr<UnitTexture>>;
  */
 enum class attr_type {
 	owner,
+	damaged,
 	hitpoints,
 	armor,
 	attack,
@@ -220,21 +221,47 @@ public:
 	Player &player;
 };
 
+/**
+ * The max hitpoints and health bar information.
+ * TODO change bar information stucture
+ */
 template<> class Attribute<attr_type::hitpoints>: public UnsharedAttributeContainer {
 public:
 	Attribute(unsigned int i)
 		:
 		UnsharedAttributeContainer{attr_type::hitpoints},
-		current{i},
-		max{i} {}
+		hp{i} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::hitpoints>>(*this);
 	}
 
-	unsigned int current;
-	unsigned int max;
+	/**
+	 * The max hitpoints
+	 */
+	unsigned int hp;
 	float hp_bar_height;
+};
+
+/**
+ * The current hitpoints.
+ * TODO add last damage taken timestamp
+ */
+template<> class Attribute<attr_type::damaged>: public UnsharedAttributeContainer {
+public:
+	Attribute(unsigned int i)
+		:
+		UnsharedAttributeContainer{attr_type::damaged},
+		hp{i} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::damaged>>(*this);
+	}
+
+	/**
+	 * The current hitpoint
+	 */
+	unsigned int hp;
 };
 
 template<> class Attribute<attr_type::armor>: public SharedAttributeContainer {
