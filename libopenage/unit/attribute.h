@@ -225,11 +225,11 @@ public:
  * The max hitpoints and health bar information.
  * TODO change bar information stucture
  */
-template<> class Attribute<attr_type::hitpoints>: public UnsharedAttributeContainer {
+template<> class Attribute<attr_type::hitpoints>: public SharedAttributeContainer {
 public:
 	Attribute(unsigned int i)
 		:
-		UnsharedAttributeContainer{attr_type::hitpoints},
+		SharedAttributeContainer{attr_type::hitpoints},
 		hp{i} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
@@ -385,33 +385,31 @@ public:
 		:
 		UnsharedAttributeContainer{attr_type::building},
 		completed{.0f},
-		is_dropsite{true},
 		foundation_terrain{0} {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::building>>(*this);
 	}
 
 	float completed;
-	bool is_dropsite;
 	int foundation_terrain;
 
 	// set the TerrainObject to this state
 	// once building has been completed
 	object_state completion_state;
 
-	// TODO: use unit class, fish and forage have different dropsites
-	game_resource resource_type;
-
 	// TODO: list allowed trainable producers
 	UnitType *pp;
+
+	/**
+	 * The go to point after a unit is created.
+	 */
 	coord::phys3 gather_point;
 };
 
+/**
+ * The resources that are accepted.
+ */
 template<> class Attribute<attr_type::dropsite>: public SharedAttributeContainer {
 public:
 
@@ -425,14 +423,9 @@ public:
 	}
 
 	bool accepting_resource(game_resource res) {
-		if (std::find(resource_types.begin(), resource_types.end(), res) != resource_types.end()) {
-			return true;
-		} else {
-			return false;
-		}
+		return std::find(resource_types.begin(), resource_types.end(), res) != resource_types.end();
 	}
 
-private:
 	std::vector<game_resource> resource_types;
 };
 
@@ -441,7 +434,7 @@ private:
  */
 template<> class Attribute<attr_type::resource>: public UnsharedAttributeContainer {
 public:
-	Attribute(game_resource type, float init_amount)
+	Attribute(game_resource type, double init_amount)
 		:
 		UnsharedAttributeContainer{attr_type::resource},
 		resource_type{type},
@@ -452,7 +445,7 @@ public:
 	}
 
 	game_resource resource_type;
-	float amount;
+	double amount;
 };
 
 class UnitTexture;
@@ -465,21 +458,25 @@ public:
 	Attribute()
 		:
 		UnsharedAttributeContainer{attr_type::gatherer},
-		amount{.0f} {}
+		amount{.0} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::gatherer>>(*this);
 	}
 
 	game_resource current_type;
-	float amount;
-	float capacity;
-	float gather_rate;
+	double amount;
+	double capacity;
+	double gather_rate;
 
 	// texture sets available for each resource
 	std::unordered_map<gamedata::unit_classes, UnitType *> graphics;
 };
 
+/**
+ * Units put inside a building.
+ * TODO add capacity per type of unit
+ */
 template<> class Attribute<attr_type::garrison>: public UnsharedAttributeContainer {
 public:
 	Attribute()
