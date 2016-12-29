@@ -69,6 +69,7 @@ TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const
 }
 
 void UnitType::copy_attributes(Unit *unit) const {
+	// TODO be replaced by Attributes::addCopies
 	for (auto &attr : this->default_attributes) {
 		unit->add_attribute(attr.second->copy());
 	}

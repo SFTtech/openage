@@ -113,7 +113,54 @@ public:
 	virtual std::shared_ptr<AttributeContainer> copy() const = 0;
 };
 
+// TODO be replaced by Attributes
 using attr_map_t = std::map<attr_type, std::shared_ptr<AttributeContainer>>;
+
+/**
+ * Contains a group of attributes.
+ * Can contain only one attribute of each type.
+ *
+ * TODO replace attr_map_t
+ */
+class Attributes{
+public:
+	Attributes() {}
+
+	/**
+	 * Add an attribute or replace any attribute of the same type.
+	 */
+	bool add(std::shared_ptr<AttributeContainer> attr);
+
+	/**
+	 * Add copies of all the attributes from the given Attributes.
+	 */
+	bool addCopies(Attributes & attrs);
+
+	/**
+	 * Remove an attribute based on the type.
+	 */
+	bool remove(attr_type type);
+
+	/**
+	 * Check if the attribute of the given type exists.
+	 */
+	bool has(attr_type type) const;
+
+	/**
+	 * Get the attribute based on the type.
+	 */
+	std::shared_ptr<AttributeContainer> get(attr_type type) const;
+
+	/**
+	 * Get the attribute
+	 */
+	template<attr_type T>
+	Attribute<T> get() const;
+
+private:
+
+	std::map<attr_type, std::shared_ptr<AttributeContainer>> attrs;
+};
 
 /**
  * An unordered_map with a int key used as a type id
@@ -123,6 +170,7 @@ using typeamount_map = std::unordered_map<int, unsigned int>;
 
 /**
  * return attribute from a container
+ * TODO be replaced by Attributes::get
  */
 template<attr_type T> Attribute<T> get_attr(attr_map_t &map) {
 	return *reinterpret_cast<Attribute<T> *>(map[T]);
