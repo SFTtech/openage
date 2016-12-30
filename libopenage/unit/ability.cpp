@@ -322,7 +322,7 @@ bool HealAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 }
 
 void HealAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
-	to_modify.log(MSG(dbg) << "invoke repair action");
+	to_modify.log(MSG(dbg) << "invoke heal action");
 	if (play_sound && this->sound) {
 		this->sound->play();
 	}

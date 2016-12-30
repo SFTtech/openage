@@ -14,6 +14,11 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	civ{civ},
 	name{name},
 	team{nullptr} {
+	// starting resources
+	this->resources[game_resource::food] = 1000;
+	this->resources[game_resource::wood] = 1000;
+	this->resources[game_resource::stone] = 1000;
+	this->resources[game_resource::gold] = 1000;
 }
 
 bool Player::operator ==(const Player &other) const {

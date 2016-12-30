@@ -909,7 +909,7 @@ void RepairAction::update_in_range(unsigned int time, Unit *target_unit) {
 	}
 
 	// inc frame
-	this->frame += time * this->current_graphics().at(graphic)->frame_count;
+	this->frame += time * this->frame_rate / 2.5f;
 }
 
 GatherAction::GatherAction(Unit *e, UnitReference tar)
