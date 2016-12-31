@@ -14,24 +14,22 @@
 
 // pxd: from libopenage.error.backtrace cimport Backtrace
 namespace openage {
-namespace error {
-// forward-declaration to avoid the header include.
-class Backtrace;
-}}
 
-namespace openage {
 namespace pyinterface {
 // forward-declaration for use in the 'friend' declaration below.
 class PyException;
-}}
-
-
-namespace openage {
-namespace error {
+}
 
 /**
- * Openage base exception type; the constructor usage is analogous to
- * log::log().
+ * Contains the exception handling and backtracing subsystem.
+ */
+namespace error {
+
+class Backtrace;
+
+/**
+ * openage base exception type.
+ * the constructor usage is analogous to log::log().
  *
  * pxd:
  *
@@ -174,4 +172,4 @@ inline std::string no_ensuring_message()
 
 using error::Error;
 
-} // openage::error
+} // openage

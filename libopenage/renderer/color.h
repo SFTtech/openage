@@ -8,24 +8,25 @@ namespace openage {
 namespace renderer {
 
 class Color {
+	using color_channel_t = uint8_t;
+
 public:
 	Color();
+	Color(color_channel_t r, color_channel_t g, color_channel_t b, color_channel_t a);
 
-	Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+	Color(const Color &other) = default;
+	Color(Color &&other) = default;
+	Color &operator =(const Color &other) = default;
+	Color &operator =(Color &&other) = default;
 
-	Color(const Color &other);
+	bool operator ==(const Color &other) const;
 
-	Color &operator=(const Color &other);
+	bool operator !=(const Color &other) const;
 
-	bool operator==(const Color &other) const;
-
-	bool operator!=(const Color &other) const;
-
-	uint8_t r;
-	uint8_t g;
-	uint8_t b;
-	uint8_t a;
-
+	color_channel_t r;
+	color_channel_t g;
+	color_channel_t b;
+	color_channel_t a;
 };
 
 }} // openage::renderer

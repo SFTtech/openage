@@ -5,10 +5,7 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
-
 #include <cstdint>
-
-#include <SDL2/SDL.h>
 
 #include <QObject>
 
@@ -23,43 +20,53 @@
 #include "cvar/cvar.h"
 #include "game_singletons_info.h"
 #include "handlers.h"
-#include "options.h"
-#include "job/job_manager.h"
+#include "input/action.h"
 // pxd: from libopenage.input.input_manager cimport InputManager
 #include "input/input_manager.h"
-#include "input/action.h"
-#include "util/externalprofiler.h"
+#include "job/job_manager.h"
+#include "options.h"
+#include "renderer/text.h"
+#include "renderer/window.h"
+#include "screenshot.h"
 #include "util/dir.h"
+#include "util/externalprofiler.h"
 #include "util/fps.h"
 #include "util/profiler.h"
 #include "unit/selection.h"
 #include "screenshot.h"
 
+
 namespace openage {
 
 namespace gui {
 class GuiBasic;
-}
+class GuiItemLink;
+} // openage::gui
 
 namespace renderer {
-
 class Font;
 class FontManager;
 class TextRenderer;
-
+class Renderer;
+class Window;
 } // openage::renderer
+
+namespace job {
+class JobManager;
+} // openage::job
 
 class DrawHandler;
 class TickHandler;
 class ResizeHandler;
 
-class Generator;
-class GameSpec;
+class Font;
 class GameMain;
 
-namespace gui {
-class GuiItemLink;
-} // openage::gui
+class GameSpec;
+class Generator;
+class Player;
+class ScreenshotManager;
+
 
 struct coord_data {
 	coord::window window_size{800, 600};
@@ -242,7 +249,7 @@ public:
 	/**
 	* return this engine's screenshot manager.
 	*/
-	ScreenshotManager &get_screenshot_manager();
+	ScreenshotManager *get_screenshot_manager();
 
 	/**
 	* return this engine's action manager.
@@ -385,7 +392,7 @@ private:
 	/**
 	* the engine's screenshot manager.
 	*/
-	ScreenshotManager screenshot_manager;
+	std::unique_ptr<ScreenshotManager> screenshot_manager;
 
 	/**
 	 * the engine's cvar manager.
@@ -405,7 +412,7 @@ private:
 	/**
 	 * the engine's job manager, for asynchronous background task queuing.
 	 */
-	job::JobManager *job_manager;
+	std::unique_ptr<job::JobManager> job_manager;
 
 	/**
 	 * the engine's keybind manager.
@@ -424,32 +431,40 @@ private:
 	std::unordered_map<int, renderer::Font *> fonts;
 
 	/**
-	 * SDL window where everything is displayed within.
+	 * The render window. Everything is drawn in here.
+	 * Also contains the context.
 	 */
-	SDL_Window *window;
-
-	/**
-	 * SDL OpenGL context, we'll only have one,
-	 * but it would allow having multiple ones.
-	 */
-	SDL_GLContext glcontext;
+	std::unique_ptr<renderer::Window> window;
 
 	/**
 	 * the gui binding
 	 */
 	std::unique_ptr<gui::GuiBasic> gui;
 
-	/*
-	 * the engines profiler
+	/**
+	 * The renderer. Accepts all tasks to be drawn on screen.
 	 */
-	util::Profiler profiler;
+	std::unique_ptr<renderer::Renderer> renderer;
 
+	/**
+	 * The font manager to provide different sized and styled fonts.
+	 */
 	std::unique_ptr<renderer::FontManager> font_manager;
+
+	/**
+	 * The engine's text renderer. To be integrated into the main renderer.
+	 */
 	std::unique_ptr<renderer::TextRenderer> text_renderer;
 
 public:
 	EngineSignals gui_signals;
+
 	gui::GuiItemLink *gui_link;
+
+	/**
+	 * the engines profiler
+	 */
+	util::Profiler profiler;
 };
 
 } // namespace openage

@@ -69,6 +69,8 @@ def features(args, parser):
     options = {
         "backtrace": "if_available",
         "inotify": "if_available",
+        "opengl": "if_available",
+        "vulkan": "if_available",
         "gperftools-tcmalloc": False,
         "gperftools-profiler": "if_available",
     }

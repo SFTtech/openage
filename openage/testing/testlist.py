@@ -42,6 +42,8 @@ def demos_py():
            "translates a C++ exception and its causes to python")
     yield ("openage.log.tests.demo",
            "demonstrates the translation of Python log messages")
+    yield ("openage.renderer.tests.renderer_demo",
+           "showcases the new renderer")
 
 
 def tests_cpp():
@@ -52,6 +54,7 @@ def tests_cpp():
     """
 
     yield "openage::coord::tests::coord"
+    yield "openage::datastructure::tests::constexpr_map"
     yield "openage::datastructure::tests::doubly_linked_list"
     yield "openage::datastructure::tests::pairing_heap"
     yield "openage::job::tests::test_job_manager"
@@ -65,8 +68,10 @@ def tests_cpp():
     yield "openage::util::tests::enum_"
     yield "openage::util::tests::init"
     yield "openage::util::tests::matrix"
+    yield "openage::util::tests::quaternion"
     yield "openage::util::tests::vector"
     yield "openage::input::tests::parse_event_string", "keybinds parsing"
+    yield "openage::watch::tests::run"
 
 
 def demos_cpp():
