@@ -63,6 +63,7 @@ def tests_cpp():
     yield "openage::rng::tests::run"
     yield "openage::util::tests::constinit_vector"
     yield "openage::util::tests::enum_"
+    yield "openage::util::tests::fixed_point"
     yield "openage::util::tests::init"
     yield "openage::util::tests::matrix"
     yield "openage::util::tests::vector"

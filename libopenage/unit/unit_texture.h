@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <vector>
 
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "../gamedata/graphic.gen.h"
 
 namespace openage {

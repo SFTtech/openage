@@ -4,7 +4,7 @@
 
 #include <unordered_set>
 
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "ability.h"
 
 namespace openage {

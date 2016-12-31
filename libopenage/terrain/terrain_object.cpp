@@ -9,8 +9,7 @@
 #include "../error/error.h"
 #include "../texture.h"
 #include "../coord/tile.h"
-#include "../coord/tile3.h"
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "../coord/camgame.h"
 #include "../unit/unit.h"
 

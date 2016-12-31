@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "attribute.h"
 
 namespace openage {

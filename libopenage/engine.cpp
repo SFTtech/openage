@@ -257,7 +257,7 @@ Engine::~Engine() {
 	SDL_Quit();
 }
 
-bool Engine::on_resize(coord::window new_size) {
+bool Engine::on_resize(coord::window_delta new_size) {
 	log::log(MSG(dbg) << "engine window resize to " << new_size.x << "x" << new_size.y);
 
 	// update engine window size
@@ -267,7 +267,7 @@ bool Engine::on_resize(coord::window new_size) {
 	this->screenshot_manager.window_size = new_size;
 
 	// update camgame window position, set it to center.
-	this->engine_coord_data->camgame_window = this->engine_coord_data->window_size / 2;
+	this->engine_coord_data->camgame_window = coord::window{0, 0} + (this->engine_coord_data->window_size / 2);
 
 	// update camhud window position
 	this->engine_coord_data->camhud_window = {0, (coord::pixel_t) this->engine_coord_data->window_size.y};
@@ -357,7 +357,7 @@ void Engine::loop() {
 
 			case SDL_WINDOWEVENT: {
 				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-					coord::window new_size{event.window.data1, event.window.data2};
+					coord::window_delta new_size{event.window.data1, event.window.data2};
 
 					// call additional handlers for the resize event
 					for (auto &handler : on_resize_handler) {
@@ -569,18 +569,13 @@ void Engine::render_text(coord::window position, size_t size, const char *format
 }
 
 void Engine::move_phys_camera(float x, float y, float amount) {
-	// move the cam
-	coord::vec2f cam_movement {x, y};
-
-	// this factor controls the scroll speed
-	cam_movement *= amount;
-
 	// calculate camera position delta from velocity and frame duration
-	coord::camgame_delta cam_delta;
-	cam_delta.x = cam_movement.x;
-	cam_delta.y = - cam_movement.y;
+	coord::camgame_delta cam_delta{
+		static_cast<coord::pixel_t>(+x * amount),
+		static_cast<coord::pixel_t>(-y * amount)
+	};
 
-	//update camera phys position
+	// update camera phys position
 	this->engine_coord_data->camgame_phys += cam_delta.to_phys3();
 }
 

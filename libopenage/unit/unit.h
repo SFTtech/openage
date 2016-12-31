@@ -9,7 +9,7 @@
 #include <queue>
 
 #include "../log/logsource.h"
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "../terrain/terrain_object.h"
 #include "../handlers.h"
 #include "ability.h"

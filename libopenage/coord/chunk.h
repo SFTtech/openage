@@ -1,41 +1,38 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2016 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "decl.h"
-
-#define MEMBERS ne, se
-#define SCALAR_TYPE chunk_t
-#define ABSOLUTE_TYPE chunk
-#define RELATIVE_TYPE chunk_delta
+#include "coord_nese.gen.h"
+#include "coord_neseup.gen.h"
 
 namespace openage {
 namespace coord {
 
-struct chunk {
-	chunk_t ne, se;
+using chunk_t = int32_t;
 
-	#include "ops/abs.h"
 
-	tile to_tile(tile_delta pos_on_chunk);
+struct chunk_delta;
+struct chunk;
+struct chunk3_delta;
+struct chunk3;
+
+
+struct chunk_delta : CoordNeSeRelative<chunk_t, chunk, chunk_delta> {
+	using CoordNeSeRelative<chunk_t, chunk, chunk_delta>::CoordNeSeRelative;
 };
 
-struct chunk_delta {
-	chunk_t ne, se;
-
-	#include "ops/rel.h"
+struct chunk : CoordNeSeAbsolute<chunk_t, chunk, chunk_delta> {
+	using CoordNeSeAbsolute<chunk_t, chunk, chunk_delta>::CoordNeSeAbsolute;
 };
 
-#include "ops/free.h"
+struct chunk3_delta : CoordNeSeUpRelative<chunk_t, chunk3, chunk3_delta> {
+	using CoordNeSeUpRelative<chunk_t, chunk3, chunk3_delta>::CoordNeSeUpRelative;
+};
 
-#ifdef GEN_IMPL_CHUNK_CPP
-#include "ops/impl.h"
-#endif //GEN_IMPL_CHUNK_CPP
+struct chunk3 : CoordNeSeUpAbsolute<chunk_t, chunk3, chunk3_delta> {
+	using CoordNeSeUpAbsolute<chunk_t, chunk3, chunk3_delta>::CoordNeSeUpAbsolute;
+};
+
 
 } // namespace coord
 } // namespace openage
-
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE

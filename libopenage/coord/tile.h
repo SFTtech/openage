@@ -1,62 +1,52 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2016 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <functional>
-
-#include "decl.h"
-#include "phys2.h"
 #include "../util/misc.h"
-
-#define MEMBERS ne, se
-#define SCALAR_TYPE tile_t
-#define ABSOLUTE_TYPE tile
-#define RELATIVE_TYPE tile_delta
+#include "coord_nese.gen.h"
+#include "coord_neseup.gen.h"
 
 namespace openage {
 namespace coord {
 
-struct tile {
-	tile_t ne, se;
+using tile_t = int64_t;
 
-	#include "ops/abs.h"
 
-	tile3 to_tile3(tile_t up = 0) const;
-	phys2 to_phys2(phys2_delta frac = {settings::phys_per_tile / 2, settings::phys_per_tile / 2}) const;
-	chunk to_chunk() const;
-	tile_delta get_pos_on_chunk() const;
+struct tile_delta;
+struct tile;
+struct tile3_delta;
+struct tile3;
+
+
+struct tile_delta : CoordNeSeRelative<tile_t, tile, tile_delta> {
+	using CoordNeSeRelative<tile_t, tile, tile_delta>::CoordNeSeRelative;
 };
 
-struct tile_delta {
-	tile_t ne, se;
-
-	#include "ops/rel.h"
-
-	tile3_delta to_tile3(tile_t up = 0) const;
-	tile to_tile();
+struct tile : CoordNeSeAbsolute<tile_t, tile, tile_delta> {
+	using CoordNeSeAbsolute<tile_t, tile, tile_delta>::CoordNeSeAbsolute;
 };
 
-#include "ops/free.h"
+struct tile3_delta : CoordNeSeUpRelative<tile_t, tile3, tile3_delta> {
+	using CoordNeSeUpRelative<tile_t, tile3, tile3_delta>::CoordNeSeUpRelative;
+};
 
-#ifdef GEN_IMPL_TILE_CPP
-#include "ops/impl.h"
-#endif
+struct tile3 : CoordNeSeUpAbsolute<tile_t, tile3, tile3_delta> {
+	using CoordNeSeUpAbsolute<tile_t, tile3, tile3_delta>::CoordNeSeUpAbsolute;
+};
+
 
 } // namespace coord
 } // namespace openage
 
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE
-
 namespace std {
+
 template<>
 struct hash<openage::coord::tile> {
-	size_t operator ()(const openage::coord::tile& pos) const {
+	size_t operator ()(const openage::coord::tile &pos) const {
 		size_t nehash = hash<openage::coord::tile_t>{}(pos.ne);
 		size_t sehash = hash<openage::coord::tile_t>{}(pos.se);
 		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
 	}
 };
+
 } // namespace std
