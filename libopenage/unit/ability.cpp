@@ -17,8 +17,8 @@ bool UnitAbility::has_hitpoints(Unit &target) {
 }
 
 bool UnitAbility::is_damaged(Unit &target) {
-	return target.has_attribute(attr_type::hitpoints) &&
-	       target.get_attribute<attr_type::hitpoints>().current < target.get_attribute<attr_type::hitpoints>().max;
+	return target.has_attribute(attr_type::damaged) && target.has_attribute(attr_type::hitpoints) &&
+	       target.get_attribute<attr_type::damaged>().hp < target.get_attribute<attr_type::hitpoints>().hp;
 }
 
 bool UnitAbility::has_resource(Unit &target) {

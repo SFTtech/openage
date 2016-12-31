@@ -873,16 +873,17 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 		//this->cost += get target cost;
 		this->cost[game_resource::wood] = 100; // temp
 
-		this->cost *= 0.5 / hp.max;
+		this->cost *= 0.5 / hp.hp;
 	}
 }
 
 void RepairAction::update_in_range(unsigned int time, Unit *target_unit) {
 
 	auto &hp = target_unit->get_attribute<attr_type::hitpoints>();
+	auto &dm = target_unit->get_attribute<attr_type::damaged>();
 	auto &owner = this->entity->get_attribute<attr_type::owner>();
 
-	if (hp.current >= hp.max) {
+	if (dm.hp >= hp.hp) {
 		// repaired by something else
 		this->complete = true;
 	}
@@ -890,9 +891,9 @@ void RepairAction::update_in_range(unsigned int time, Unit *target_unit) {
 		this->time_left -= time;
 
 		if (this->time_left <= 0) {
-			hp.current += 1;
+			dm.hp += 1;
 
-			if (hp.current >= hp.max) {
+			if (dm.hp >= hp.hp) {
 				this->complete = true;
 			}
 		}
