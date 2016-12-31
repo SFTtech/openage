@@ -273,9 +273,9 @@ PyObjectRef none();
 } // py
 
 
-// installed by openage.pyinterface.pyobject.setup().
+// installed by openage.cppinterface.pyobject.setup().
 // now follow the various Python callbacks that implement all of the above,
-// and need to be installed by openage.pyinterface.pyobject.setup().
+// and need to be installed by openage.cppinterface.pyobject.setup().
 
 // for use by the reference-counting constructors
 

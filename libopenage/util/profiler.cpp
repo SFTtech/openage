@@ -11,6 +11,11 @@
 namespace openage {
 namespace util {
 
+Profiler::Profiler(Engine *engine)
+	:
+	engine{engine} {}
+
+
 Profiler::~Profiler() {
 	this->unregister_all();
 }
@@ -168,7 +173,7 @@ void Profiler::draw_legend() {
 		coord::window position = coord::window();
 		position.x = box_x + PROFILER_COM_BOX_WIDTH + 2;
 		position.y = box_y + 2;
-		Engine::get().render_text(position, 12, "%s", com.second.display_name.c_str());
+		this->engine->render_text(position, 12, "%s", com.second.display_name.c_str());
 
 		offset += PROFILER_COM_BOX_HEIGHT + 2;
 	}
@@ -189,8 +194,7 @@ void Profiler::append_to_history(std::string com, double percentage) {
 }
 
 bool Profiler::engine_in_debug_mode() {
-	Engine &engine = Engine::get();
-	if (engine.drawing_debug_overlay.value) {
+	if (this->engine->drawing_debug_overlay.value) {
 		return true;
 	} else {
 		return false;

@@ -18,6 +18,10 @@ constexpr int PROFILER_COM_BOX_WIDTH = 30;
 constexpr int PROFILER_COM_BOX_HEIGHT = 15;
 
 namespace openage {
+
+class Engine;
+
+
 namespace util {
 
 struct color {
@@ -34,7 +38,7 @@ struct component_time_data {
 
 class Profiler {
 public:
-	Profiler() = default;
+	Profiler(Engine *engine);
 	~Profiler();
 
 	/**
@@ -107,17 +111,19 @@ public:
 	void end_frame_measure();
 
 private:
-	std::chrono::high_resolution_clock::time_point frame_start;
-	std::chrono::high_resolution_clock::duration frame_duration;
-	std::unordered_map<std::string, component_time_data> components;
-	int insert_pos = 0;
-
 	void draw_canvas();
 	void draw_legend();
 	void draw_component_performance(std::string com);
 	double duration_to_percentage(std::chrono::high_resolution_clock::duration duration);
 	void append_to_history(std::string com, double percentage);
 	bool engine_in_debug_mode();
+
+	std::chrono::high_resolution_clock::time_point frame_start;
+	std::chrono::high_resolution_clock::duration frame_duration;
+	std::unordered_map<std::string, component_time_data> components;
+	int insert_pos = 0;
+
+	Engine *engine;
 };
 
 }} // openage::util

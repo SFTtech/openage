@@ -14,6 +14,7 @@
 #include "../public/gui_renderer.h"
 #include "platforms/context_extraction.h"
 
+
 namespace qtsdl {
 
 namespace {
@@ -89,11 +90,13 @@ GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 
 	std::tie(handle, id) = extract_native_context(window);
 
+	// pass the SDL opengl context so qt can use it
 	this->ctx = std::make_unique<QOpenGLContext>();
 	this->ctx->setNativeHandle(handle);
 	this->ctx->create();
 	assert(this->ctx->isValid());
 
+	// reuse the sdl window
 	QWindow *w = QWindow::fromWinId(id);
 	w->setSurfaceType(QSurface::OpenGLSurface);
 
@@ -146,6 +149,13 @@ void GuiRendererImpl::reinit_fbo_if_needed() {
 }
 
 GuiRendererImpl::~GuiRendererImpl() {
+	// TODO: MAYBE:
+	//       the this->ctx member frees the
+	//       gl context even though that's SDL's job.
+	//
+	// the qt doc says that a native context isn't destroyed!
+	// but somehow it is lost or destroyed!
+	// https://doc.qt.io/qt-5/qopenglcontext.html#setNativeHandle
 }
 
 GuiRendererImpl* GuiRendererImpl::impl(GuiRenderer *renderer) {

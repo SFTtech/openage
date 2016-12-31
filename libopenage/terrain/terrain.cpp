@@ -296,10 +296,11 @@ void Terrain::draw(Engine *engine, RenderOptions *settings) {
 	coord::window wtl, wtr, wbl, wbr;
 
 	// query the window coordinates from the engine first
-	wtl = coord::window{                    0,                     0};
-	wtr = coord::window{engine->engine_coord_data->window_size.x,                     0};
-	wbl = coord::window{                    0, engine->engine_coord_data->window_size.y};
-	wbr = coord::window{engine->engine_coord_data->window_size.x, engine->engine_coord_data->window_size.y};
+	wtl = coord::window{0, 0};
+	wtr = coord::window{engine->get_coord_data()->window_size.x, 0};
+	wbl = coord::window{0, engine->get_coord_data()->window_size.y};
+	wbr = coord::window{engine->get_coord_data()->window_size.x,
+	                    engine->get_coord_data()->window_size.y};
 
 	// then convert them to tile coordinates.
 	tl = wtl.to_camgame().to_phys3(0).to_phys2().to_tile();

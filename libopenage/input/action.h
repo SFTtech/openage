@@ -12,11 +12,25 @@ namespace openage {
 
 class Engine;
 
+namespace cvar {
+class CVarManager;
+} // cvar
+
 namespace input {
 
+class InputManager;
+
+/**
+ * Used to identify actions.
+ */
 using action_t = unsigned int;
 
+
+/**
+ * Mapping type from action name to action id.
+ */
 using action_map_t = std::unordered_map<std::string, action_t>;
+
 
 /**
  * The action manager manages all the actions allow creation, access
@@ -24,7 +38,8 @@ using action_map_t = std::unordered_map<std::string, action_t>;
  */
 class ActionManager {
 public:
-	ActionManager(Engine *engine);
+	ActionManager(InputManager *input_manager,
+	              cvar::CVarManager *cvar_manager);
 	bool create(const std::string type);
 	action_t get(const std::string &type);
 	std::string get_name(const action_t action);
@@ -114,8 +129,11 @@ private :
 	};
 
 	action_map_t actions;
-	Engine *engine;
+
+	InputManager *input_manager;
+	cvar::CVarManager *cvar_manager;
 };
+
 
 // TODO: use action_hint_t = std::pair<action_t, int>
 // for example a building command
@@ -140,14 +158,16 @@ struct action_arg_t {
 	std::vector<action_id_t> hints;
 };
 
+
 /**
- * complete the effect of an action
+ * Performs the effect of an action.
  */
 using action_func_t = std::function<void(const action_arg_t &)>;
 
+
 /**
- * for receivers of sets of events a bool is returned
- * to indicate if the event was used
+ * For receivers of sets of events a bool is returned
+ * to indicate if the event was used.
  */
 using action_check_t = std::function<bool(const action_arg_t &)>;
 

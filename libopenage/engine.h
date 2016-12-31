@@ -61,14 +61,25 @@ namespace gui {
 class GuiItemLink;
 } // openage::gui
 
+
+/**
+ * Default settings for the coordinate system.
+ */
 struct coord_data {
 	coord::window window_size{800, 600};
-	coord::phys3 camgame_phys{10 * coord::settings::phys_per_tile, 10 * coord::settings::phys_per_tile, 0};
+	coord::phys3 camgame_phys{10 * coord::settings::phys_per_tile,
+		                      10 * coord::settings::phys_per_tile, 0};
 	coord::window camgame_window{400, 300};
 	coord::window camhud_window{0, 600};
 	coord::camgame_delta tile_halfsize{48, 24};  // TODO: get from convert script
 };
 
+extern coord_data coord_global_tmp_TODO;
+
+
+/**
+ * Qt signals for the engine.
+ */
 class EngineSignals : public QObject {
 	Q_OBJECT
 
@@ -76,6 +87,7 @@ public:
 signals:
 	void global_binds_changed(const std::vector<std::string>& global_binds);
 };
+
 
 /**
  * main engine container.
@@ -88,43 +100,11 @@ signals:
  *
  *     InputManager get_input_manager() except +
  *     CVarManager get_cvar_manager() except +
- *     @staticmethod
- *     Engine &get() except +
  */
 class Engine : public ResizeHandler, public options::OptionNode {
 	friend class GameMain;
-private:
-	/**
-	 * global engine singleton instance.
-	 *
-	 * TODO: use unique_ptr again, but that segfaults in freetype
-	 *       because of a wrong deinit-order.
-	 */
-	static Engine *instance;
 
 public:
-	/**
-	 * Returns a pointer to the engines coordinate data.
-	 */
-	static coord_data* get_coord_data();
-
-	/**
-	 * singleton constructor, use this to create the engine instance.
-	 */
-	static void create(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle);
-
-	/**
-	 * singleton destructor, use when the program is shutting down.
-	 */
-	static void destroy();
-
-	/**
-	 * singleton instance fetcher.
-	 * @returns the pointer to the global engine instance.
-	 */
-	static Engine &get();
-
-private:
 	/**
 	 * engine initialization method.
 	 * opens a window and initializes the OpenGL context.
@@ -151,15 +131,18 @@ private:
 	 */
 	Engine &operator=(Engine &&other) = delete;
 
-	// log sinks
-	std::unique_ptr<log::FileSink> logsink_file;
-
 public:
 	/**
 	 * engine destructor, cleans up memory etc.
 	 * deletes opengl context, the SDL window, and engine variables.
 	 */
 	virtual ~Engine();
+
+	/*
+	 * epic hack that will be replaced once the coordinate system is non-global
+	 * TODO: mic_e: remove it. ASDF
+	 */
+	static coord_data *get_coord_data() { return &coord_global_tmp_TODO; }
 
 	/**
 	 * starts the engine loop.
@@ -177,8 +160,19 @@ public:
 	 */
 	bool on_resize(coord::window new_size) override;
 
+	/**
+	 * Start a game with the given game generator.
+	 */
 	void start_game(const Generator &generator);
-	void start_game(std::unique_ptr<GameMain> game);
+
+	/**
+	 * Start a game with the given initialized game.
+	 */
+	void start_game(std::unique_ptr<GameMain> &&game);
+
+	/**
+	 * Stop the running game.
+	 */
 	void end_game();
 
 	/**
@@ -245,28 +239,28 @@ public:
 	ScreenshotManager &get_screenshot_manager();
 
 	/**
-	* return this engine's action manager.
-	*/
+	 * return this engine's action manager.
+	 */
 	input::ActionManager &get_action_manager();
 
 	/**
-	* return this engine's cvar manager.
-	*/
+	 * return this engine's cvar manager.
+	 */
 	cvar::CVarManager &get_cvar_manager();
 
 	/**
-	* return this engine's keybind manager.
-	*/
+	 * return this engine's keybind manager.
+	 */
 	input::InputManager &get_input_manager();
 
 	/**
-	* return this engine's unit selection.
-	*/
+	 * return this engine's unit selection.
+	 */
 	UnitSelection *get_unit_selection();
 
 	/**
-	* send keybindings help string to gui.
-	*/
+	 * send keybindings help string to gui.
+	 */
 	void announce_global_binds();
 
 	/**
@@ -280,7 +274,7 @@ public:
 	 *
 	 * use that for fps-independent input actions.
 	 */
-	int64_t lastframe_duration_nsec();
+	time_nsec_t lastframe_duration_nsec() const;
 
 	/**
 	 * render text with the at a position with specified font size
@@ -290,7 +284,7 @@ public:
 	/**
 	 * move the phys3 camera incorporated in the engine
 	 */
-	void move_phys_camera(float x, float y, float amount = 1.0);
+	void move_phys_camera(float x, float y, float amount=1.0);
 
 	/**
 	 * current engine state variable.
@@ -307,11 +301,6 @@ public:
 	* this allows to disable drawing of every registered hud.
 	*/
 	options::Var<bool> drawing_huds;
-
-	/**
-	 * Holds the data for the coord system.
-	 */
-	coord_data* engine_coord_data;
 
 	/**
 	 * profiler used by the engine
@@ -337,7 +326,7 @@ private:
 	 * how many nanoseconds are in a frame (1e9 / fps_limit).
 	 * 0 if there is no fps limit.
 	 */
-	uint64_t ns_per_frame;
+	time_nsec_t ns_per_frame;
 
 	/**
 	 * input event processor objects.
@@ -373,7 +362,15 @@ private:
 	std::unique_ptr<GameMain> game;
 
 	/**
-	 * pass engine pointer to gui
+	 * the engine's job manager, for asynchronous background task queuing.
+	 */
+	job::JobManager job_manager;
+
+	/**
+	 * This stores information to be accessible from the QML engine.
+	 * This is used so one can access this Engine via qml,
+	 * done by just storing `this` in the SingletonsInfo and
+	 * attaching it to the QMLEngine.
 	 */
 	gui::GameSingletonsInfo singletons_info;
 
@@ -403,18 +400,13 @@ private:
 	audio::AudioManager audio_manager;
 
 	/**
-	 * the engine's job manager, for asynchronous background task queuing.
-	 */
-	job::JobManager *job_manager;
-
-	/**
 	 * the engine's keybind manager.
 	 */
 	input::InputManager input_manager;
 
 	/**
-	* the engine's unit selection.
-	*/
+	 * the engine's unit selection.
+	 */
 	std::unique_ptr<UnitSelection> unit_selection;
 
 	/**
@@ -431,6 +423,9 @@ private:
 	/**
 	 * SDL OpenGL context, we'll only have one,
 	 * but it would allow having multiple ones.
+	 *
+	 * This is actually a void * but sdl2 thought it was a good idea to
+	 * name it like a differently.
 	 */
 	SDL_GLContext glcontext;
 
@@ -444,11 +439,37 @@ private:
 	 */
 	util::Profiler profiler;
 
+	/**
+	 * ttf font loading manager
+	 */
 	std::unique_ptr<renderer::FontManager> font_manager;
+
+	/**
+	 * 2d text renderer
+	 */
 	std::unique_ptr<renderer::TextRenderer> text_renderer;
 
+	/**
+	 * Holds the data for the coord system.
+	 * TODO: currently references the global coordinate struct
+	 * TODO: mic_e replace it ASDF
+	 */
+	coord_data &coord;
+
+	/**
+	 * Logsink to store messages to the filesystem.
+	 */
+	std::unique_ptr<log::FileSink> logsink_file;
+
 public:
+	/**
+	 * Signal emitting capability for the engine.
+	 */
 	EngineSignals gui_signals;
+
+	/**
+	 * Link to the Qt GUI.
+	 */
 	gui::GuiItemLink *gui_link;
 };
 

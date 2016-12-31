@@ -12,6 +12,7 @@
 #include "../coord/phys3.h"
 #include "../terrain/terrain_object.h"
 #include "../handlers.h"
+#include "../util/timing.h"
 #include "ability.h"
 #include "attribute.h"
 #include "command.h"
@@ -32,7 +33,7 @@ class UnitAction;
  */
 class Unit : public log::LogSource {
 public:
-	Unit(UnitContainer &c, id_t id);
+	Unit(UnitContainer *c, id_t id);
 
 	/**
 	 * unit cleanup will delete terrain object
@@ -120,7 +121,7 @@ public:
 	/**
 	 * update this object using the action currently on top of the stack
 	 */
-	bool update();
+	bool update(time_nsec_t lastframe_duration);
 
 	/**
 	 * draws this action by taking the graphic type of the top action
@@ -225,11 +226,6 @@ public:
 	UnitContainer *get_container() const;
 
 	/**
-	 *
-	 */
-	std::vector<UnitAction *> current_actions() const;
-
-	/**
 	 * Returns the unit's name as the LogSource name.
 	 */
 	std::string logsource_name() override;
@@ -281,7 +277,7 @@ private:
 	/**
 	 * the container that updates this unit
 	 */
-	UnitContainer &container;
+	UnitContainer *container;
 
 	/**
 	 * applies new commands as part of the units update process

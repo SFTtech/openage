@@ -16,8 +16,6 @@
 
 namespace openage {
 
-class Engine;
-
 
 /**
  * The openage input layer.
@@ -25,6 +23,9 @@ class Engine;
  */
 namespace input {
 
+/**
+ * maps actions to events.
+ */
 using binding_map_t = std::unordered_map<action_t, Event>;
 
 
@@ -38,10 +39,10 @@ using binding_map_t = std::unordered_map<action_t, Event>;
  *     bool set_bind(char* bind_char, string action) except +
  *     string get_bind(string action) except +
  */
-class InputManager : public openage::InputHandler {
+class InputManager : public InputHandler {
 
 public:
-	InputManager(Engine *engine);
+	InputManager(ActionManager *action_manager);
 
 	/**
 	 * Return the string representation of the bind assignated to an action.
@@ -93,7 +94,7 @@ public:
 	 * if other contexts are registered afterwards,
 	 * it wanders down the stack, i.e. looses priority.
 	 */
-	void register_context(InputContext *context);
+	void push_context(InputContext *context);
 
 	/**
 	 * removes any matching registered context from the stack.
@@ -166,25 +167,31 @@ public:
 	bool on_input(SDL_Event *e) override;
 
 	/**
-	 * Return the engine where this input manager is bound to.
+	 * Return a string representation of active key bindings
+	 * from the given context.
 	 */
-	Engine *get_engine() const;
+	std::vector<std::string> active_binds(const std::unordered_map<action_t, action_func_t> &ctx_actions) const;
+
+	/**
+	 * Get the action manager attached to this input manager.
+	 */
+	ActionManager *get_action_manager() const;
 
 private:
 	modset_t get_mod() const;
 
 	/**
-	 * Engine where this input manager belongs to.
+	 * The action manager to used for keybind action lookups.
 	 */
-	Engine *engine;
+	ActionManager *action_manager;
 
 	/**
 	 * The global context. Used as fallback.
 	 */
-	InputContext global_hotkeys;
+	InputContext global_context;
 
 	/**
-	 * maps actions to events.
+	 * Maps actions to events.
 	 */
 	binding_map_t keys;
 

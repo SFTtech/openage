@@ -108,7 +108,9 @@ private:
  */
 class BuildingProducer: public UnitType {
 public:
-	BuildingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_building *ud);
+	BuildingProducer(const Player &owner,
+	                 const GameSpec &spec,
+	                 const gamedata::unit_building *ud);
 	virtual ~BuildingProducer();
 
 	int id() const override;
@@ -118,7 +120,6 @@ public:
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
-	const GameSpec &dataspec;
 	const gamedata::unit_building unit_data;
 
 	/**

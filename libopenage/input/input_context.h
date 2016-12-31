@@ -27,7 +27,15 @@ class InputManager;
 class InputContext {
 
 public:
+	/**
+	 * Create an unbound input manager.
+	 */
 	InputContext();
+
+	/**
+	 *
+	 */
+	InputContext(InputManager *manager);
 
 	/**
 	 * a list of all keys of this context
@@ -88,7 +96,7 @@ private:
 	InputManager *input_manager;
 
 	/**
-	 * map specific hints
+	 * Maps an action id to a event execution function.
 	 */
 	std::unordered_map<action_t, action_func_t> by_type;
 

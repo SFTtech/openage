@@ -39,7 +39,7 @@ public:
  */
 class GameRenderer : DrawHandler {
 public:
-	GameRenderer(openage::Engine *e);
+	GameRenderer(Engine *e);
 	~GameRenderer();
 
 	bool on_draw() override;
@@ -64,7 +64,7 @@ public:
 	RenderOptions settings;
 
 private:
-	openage::Engine *engine;
+	Engine *engine;
 
 };
 

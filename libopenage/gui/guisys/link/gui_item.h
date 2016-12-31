@@ -276,7 +276,15 @@ private:
 			qFatal("Error in QML code: GuiLiveReloader was asked to use same tag '%s' for multiple objects.", qUtf8Printable(tag));
 		} else {
 			if (typeid(decltype(*origin->holder)) != typeid(*holder)) {
-				qFatal("Error in QML code: GuiLiveReloader was asked to restore '%s' into different type '%s' using tag '%s'.", qUtf8Printable(tidier_name(typeid(decltype(*origin->holder)).name())), qUtf8Printable(tidier_name(typeid(*holder).name())), qUtf8Printable(tag));
+				qFatal(
+					"Error in QML code: GuiLiveReloader was asked "
+					"to restore '%s' into different type '%s' "
+					"using tag '%s'.",
+					qUtf8Printable(
+						tidier_name(typeid(decltype(*origin->holder)).name())),
+					qUtf8Printable(tidier_name(typeid(*holder).name())),
+					qUtf8Printable(tag)
+				);
 			} else {
 				origin->holder = checked_static_cast<decltype(origin->holder)>(holder);
 				origin->holder->adopt_shell(origin);

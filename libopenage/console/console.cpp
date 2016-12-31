@@ -63,8 +63,6 @@ void Console::register_to_engine() {
 	this->engine->register_drawhud_action(this);
 	this->engine->register_resize_action(this);
 
-	// TODO bind any needed input to InputContext
-
 	// Bind the console toggle key globally
 	auto &action = this->engine->get_action_manager();
 	auto &global = this->engine->get_input_manager().get_global_context();
@@ -72,6 +70,9 @@ void Console::register_to_engine() {
 	global.bind(action.get("TOGGLE_CONSOLE"), [this](const input::action_arg_t &) {
 		this->set_visible(!this->visible);
 	});
+
+
+	// TODO: bind any needed input to InputContext
 
 	// toggle console will take highest priority
 	this->input_context.bind(action.get("TOGGLE_CONSOLE"), [this](const input::action_arg_t &) {
@@ -108,7 +109,7 @@ void Console::register_to_engine() {
 
 void Console::set_visible(bool make_visible) {
 	if (make_visible) {
-		this->engine->get_input_manager().register_context(&this->input_context);
+		this->engine->get_input_manager().push_context(&this->input_context);
 		this->visible = true;
 	}
 	else {

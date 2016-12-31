@@ -23,6 +23,9 @@ namespace renderer {
 class TextRenderer {
 
 public:
+	/**
+	 * Requires a working OpenGL context to create buffer objects.
+	 */
 	TextRenderer();
 
 	virtual ~TextRenderer();

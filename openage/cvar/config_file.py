@@ -4,17 +4,27 @@
 Load and save the configuration : file <-> console var system
 """
 
+from ..log import info
 
-def load_config_file(path, set_cvar, loaded=None):
+
+def load_config_file(path, set_cvar, loaded_files=None):
     """
     Load a config file, with possible subfile, into the cvar system.
+
+    set_cvar is a function that accepts (key, value) to actually
+    add the data.
     """
-    if not loaded:
-        loaded = {}
-    if not path.is_file() or path in loaded:
+
+    if not loaded_files:
+        loaded_files = set()
+
+    if not path.is_file() or path in loaded_files:
         return
 
-    loaded[path] = True
+    info("loading config file %s..." % path)
+
+    loaded_files.add(path)
+
     with path.open() as config:
         for line in config:
             lstrip = line.lstrip()
@@ -26,7 +36,8 @@ def load_config_file(path, set_cvar, loaded=None):
 
             if split[0] == "set" and len(split) >= 3:
                 set_cvar(split[1], " ".join(split[2:]))
+
             elif split[0] == "load" and len(split) >= 2:
                 for sub_path in split[1:]:
                     new_path = path.parent / sub_path
-                    load_config_file(new_path, set_cvar, loaded)
+                    load_config_file(new_path, set_cvar, loaded_files)

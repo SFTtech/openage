@@ -47,8 +47,7 @@ Unit *UnitReference::get() const {
 
 UnitContainer::UnitContainer()
 	:
-	next_new_id{1} {
-}
+	next_new_id{1} {}
 
 
 UnitContainer::~UnitContainer() {
@@ -86,15 +85,21 @@ UnitReference UnitContainer::get_unit(id_t id) {
 }
 
 UnitReference UnitContainer::new_unit() {
-	auto id = next_new_id++;
-	this->live_units.emplace(id, std::make_unique<Unit>(*this, id));
+	auto id = next_new_id;
+	next_new_id += 1;
+
+	this->live_units.emplace(id, std::make_unique<Unit>(this, id));
 	return this->live_units[id]->get_ref();
 }
 
 UnitReference UnitContainer::new_unit(UnitType &type,
                                       Player &owner,
                                       coord::phys3 position) {
-	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
+
+	auto new_id = next_new_id;
+	next_new_id += 1;
+
+	auto newobj = std::make_unique<Unit>(this, new_id);
 
 	// try placing unit at this location
 	auto terrain_shared = this->get_terrain();
@@ -111,7 +116,10 @@ UnitReference UnitContainer::new_unit(UnitType &type,
 UnitReference UnitContainer::new_unit(UnitType &type,
                                       Player &owner,
                                       TerrainObject *other) {
-	auto newobj = std::make_unique<Unit>(*this, next_new_id++);
+	auto new_id = next_new_id;
+	next_new_id += 1;
+
+	auto newobj = std::make_unique<Unit>(this, new_id);
 
 	// try placing unit
 	TerrainObject *placed = type.place_beside(newobj.get(), other);
@@ -129,12 +137,14 @@ bool dispatch_command(id_t, const Command &) {
 	return true;
 }
 
-bool UnitContainer::update_all() {
+bool UnitContainer::update_all(time_nsec_t lastframe_duration) {
 	// update everything and find objects with no actions
 	std::vector<id_t> to_remove;
+
 	for (auto &obj : this->live_units) {
-		obj.second->update();
-		if ( !obj.second->has_action() ) {
+		obj.second->update(lastframe_duration);
+
+		if (not obj.second->has_action()) {
 			to_remove.push_back(obj.first);
 		}
 	}

@@ -31,45 +31,19 @@
 #include "renderer/font/font_manager.h"
 
 /**
- * stores all things that have to do with the game.
+ * Main openage namespace to store all things that make the have to do with the game.
  *
- * this includes textures, objects, terrain, etc.
- * movement and transformation stuff, and actually everything that
- * makes the game work lies in here...
+ * Game entity management, graphics drawing, gui stuff, input handling etc.
+ * So basically everything that makes the game work lies in here...
  */
 namespace openage {
 
-static coord_data base_coord_data{};
 
-coord_data* Engine::get_coord_data() {
-	return &base_coord_data;
-}
-
-// engine singleton instance allocation
-Engine *Engine::instance = nullptr;
-
-void Engine::create(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle) {
-	// only create the singleton instance if it was not created before..
-	if (Engine::instance == nullptr) {
-		// reset the pointer to the new engine
-		Engine::instance = new Engine(data_dir, fps_limit, gl_debug, windowtitle);
-	} else {
-		throw Error{MSG(err) << "You tried to create another singleton engine instance!!111"};
-	}
-}
-
-void Engine::destroy() {
-	if (Engine::instance == nullptr) {
-		throw Error{MSG(err) << "You tried to destroy a nonexistant engine."};
-	}
-	else {
-		delete Engine::instance;
-	}
-}
-
-Engine &Engine::get() {
-	return *Engine::instance;
-}
+/*
+ * temporary global coord struct as used by the coord subsystem
+ * TODO: remove and deglobalize!
+ */
+coord_data coord_global_tmp_TODO;
 
 
 Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle)
@@ -78,13 +52,18 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 	running{false},
 	drawing_debug_overlay{this, "drawing_debug_overlay", true},
 	drawing_huds{this, "drawing_huds", true},
-	engine_coord_data{this->get_coord_data()},
 	data_dir{data_dir},
+	job_manager{SDL_GetCPUCount()},
 	singletons_info{this, data_dir->basedir},
-	cvar_manager {},
-	action_manager{this},
-	audio_manager{},
+	cvar_manager{},
+	action_manager{&this->input_manager, &this->cvar_manager},
+	audio_manager{&this->job_manager},
+	input_manager{&this->action_manager},
+	profiler{this},
+	coord{coord_global_tmp_TODO},
 	gui_link{} {
+
+	using namespace std::string_literals;
 
 
 	if (fps_limit > 0) {
@@ -98,6 +77,8 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 		fonts[size] = this->font_manager->get_font("DejaVu Serif", "Book", size);
 	}
 
+	// temporary log to the filesystem.
+	// some housekeeping should be implemented as this file is only ever appended to
 	this->logsink_file = std::make_unique<log::FileSink>("/tmp/openage-log", true);
 
 	// enqueue the engine's own input handler to the
@@ -122,8 +103,8 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 		windowtitle,
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
-		this->engine_coord_data->window_size.x,
-		this->engine_coord_data->window_size.y,
+		this->coord.window_size.x,
+		this->coord.window_size.y,
 		window_flags
 	);
 
@@ -183,25 +164,28 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	//// -- initialize the gui
 	// qml sources will be installed to the asset dir
 	// otherwise assume that launched from the source dir
-	using namespace std::string_literals;
-	auto qml_search_paths = {this->data_dir->basedir, "libopenage/gui"s};
+	auto qml_search_paths = {
+		this->data_dir->basedir,
+		"libopenage/gui"s
+	};
 
-	this->gui = std::make_unique<gui::GuiBasic>(this->window, "qml/main.qml", &this->singletons_info, qml_search_paths);
+	this->gui = std::make_unique<gui::GuiBasic>(
+		this->window,
+		"qml/main.qml",
+		&this->singletons_info,
+		qml_search_paths
+	);
+
 	this->register_resize_action(this->gui.get());
 	this->register_input_action(this->gui.get());
 	this->register_drawhud_action(this->gui.get());
+	//// -- gui initialization
 
 	// register the engines input manager
 	this->register_input_action(&this->input_manager);
-
-	// initialize job manager with cpucount-2 worker threads
-	int number_of_worker_threads = SDL_GetCPUCount() - 2;
-	if (number_of_worker_threads <= 0) {
-		number_of_worker_threads = 1;
-	}
-	this->job_manager = new job::JobManager{number_of_worker_threads};
 
 	// initialize audio
 	auto devices = audio::AudioManager::get_devices();
@@ -211,6 +195,7 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 
 	// initialize engine related global keybinds
 	auto &global_input_context = this->get_input_manager().get_global_context();
+
 	input::ActionManager &action = this->get_action_manager();
 	global_input_context.bind(action.get("STOP_GAME"), [this](const input::action_arg_t &) {
 		this->stop();
@@ -242,45 +227,55 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 	});
 
 	this->text_renderer = std::make_unique<renderer::TextRenderer>();
-	this->unit_selection = std::make_unique<UnitSelection>();
+	this->unit_selection = std::make_unique<UnitSelection>(this);
 }
+
 
 Engine::~Engine() {
 	this->profiler.unregister_all();
 
-	this->gui.reset();
+	log::log(MSG(info) << "freeing GUI...");
 
-	delete this->job_manager;
-	SDL_GL_DeleteContext(glcontext);
-	SDL_DestroyWindow(window);
+	// deallocate the gui system
+	// this looses the opengl context in the qtsdl::GuiRenderer
+	// deallocation (of the QtOpenGLContext).
+	// so no gl* functions can be called any more.
+	this->gui.reset(nullptr);
+
+	log::log(MSG(info) << "GUI was reset");
+
+	SDL_GL_DeleteContext(this->glcontext);
+	SDL_DestroyWindow(this->window);
 	IMG_Quit();
 	SDL_Quit();
 }
 
+
 bool Engine::on_resize(coord::window new_size) {
-	log::log(MSG(dbg) << "engine window resize to " << new_size.x << "x" << new_size.y);
+	log::log(MSG(dbg) << "engine window resize to "
+	         << new_size.x << "x" << new_size.y);
 
 	// update engine window size
-	this->engine_coord_data->window_size = new_size;
+	this->coord.window_size = new_size;
 
 	// tell the screenshot manager about the new size
 	this->screenshot_manager.window_size = new_size;
 
 	// update camgame window position, set it to center.
-	this->engine_coord_data->camgame_window = this->engine_coord_data->window_size / 2;
+	this->coord.camgame_window = this->coord.window_size / 2;
 
 	// update camhud window position
-	this->engine_coord_data->camhud_window = {0, (coord::pixel_t) this->engine_coord_data->window_size.y};
+	this->coord.camhud_window = {0, (coord::pixel_t) this->coord.window_size.y};
 
 	// reset previous projection matrix
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
 	// update OpenGL viewport: the renderin area
-	glViewport(0, 0, this->engine_coord_data->window_size.x, this->engine_coord_data->window_size.y);
+	glViewport(0, 0, this->coord.window_size.x, this->coord.window_size.y);
 
 	// set orthographic projection: left, right, bottom, top, near_val, far_val
-	glOrtho(0, this->engine_coord_data->window_size.x, 0, this->engine_coord_data->window_size.y, 9001, -1);
+	glOrtho(0, this->coord.window_size.x, 0, this->coord.window_size.y, 9001, -1);
 
 	// reset the modelview matrix
 	glMatrixMode(GL_MODELVIEW);
@@ -289,22 +284,12 @@ bool Engine::on_resize(coord::window new_size) {
 	return true;
 }
 
-void Engine::start_game(const Generator &generator) {
-	this->game = std::make_unique<GameMain>(generator);
-	this->game->set_parent(this);
-}
-
-void Engine::end_game() {
-	this->game = nullptr;
-	this->unit_selection->clear();
-}
-
 bool Engine::draw_debug_overlay() {
 	util::col {255, 255, 255, 255}.use();
 
 	// Draw FPS counter in the lower right corner
 	this->render_text(
-		{this->engine_coord_data->window_size.x - 100, 15}, 20,
+		{this->coord.window_size.x - 100, 15}, 20,
 		"%.1f fps", this->fps_counter.fps
 	);
 
@@ -324,14 +309,14 @@ bool Engine::draw_debug_overlay() {
 }
 
 void Engine::run() {
-	this->job_manager->start();
+	this->job_manager.start();
 	this->running = true;
 	this->loop();
 	this->running = false;
 }
 
 void Engine::stop() {
-	this->job_manager->stop();
+	this->job_manager.stop();
 	this->running = false;
 }
 
@@ -344,7 +329,7 @@ void Engine::loop() {
 		this->fps_counter.frame();
 		cap_timer.reset(false);
 
-		this->job_manager->execute_callbacks();
+		this->job_manager.execute_callbacks();
 
 		this->profiler.start_measure("events", {1.0, 0.0, 0.0});
 		// top level input handling
@@ -377,6 +362,7 @@ void Engine::loop() {
 			} // switch event
 		}
 
+		// here, call to Qt and process all the gui events.
 		this->gui->process_events();
 
 		if (this->game) {
@@ -401,10 +387,14 @@ void Engine::loop() {
 			if (input.is_down(SDLK_UP)) {
 				mov_y = -cam_movement_speed_keyboard;
 			}
-			this->move_phys_camera(mov_x, mov_y, (float) this->lastframe_duration_nsec() / 1e6);
+
+			// perform camera movement
+			this->move_phys_camera(
+				mov_x, mov_y,
+				static_cast<float>(this->lastframe_duration_nsec()) / 1e6);
 
 			// update the currently running game
-			this->game->update();
+			this->game->update(this->lastframe_duration_nsec());
 		}
 		this->profiler.end_measure("events");
 
@@ -416,6 +406,7 @@ void Engine::loop() {
 		}
 
 		this->profiler.start_measure("rendering", {0.0, 1.0, 0.0});
+
 		// clear the framebuffer to black
 		// in the future, we might disable it for lazy drawing
 		glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -423,7 +414,7 @@ void Engine::loop() {
 
 		glPushMatrix(); {
 			// set the framebuffer up for camgame rendering
-			glTranslatef(engine_coord_data->camgame_window.x, engine_coord_data->camgame_window.y, 0);
+			glTranslatef(coord.camgame_window.x, coord.camgame_window.y, 0);
 
 			// invoke all game drawing handlers
 			for (auto &action : this->on_drawgame) {
@@ -511,7 +502,7 @@ GameMain *Engine::get_game() {
 }
 
 job::JobManager *Engine::get_job_manager() {
-	return this->job_manager;
+	return &this->job_manager;
 }
 
 audio::AudioManager &Engine::get_audio_manager() {
@@ -539,14 +530,17 @@ UnitSelection *Engine::get_unit_selection() {
 }
 
 void Engine::announce_global_binds() {
-	emit this->gui_signals.global_binds_changed(this->get_input_manager().get_global_context().active_binds());
+
+	emit this->gui_signals.global_binds_changed(
+		this->get_input_manager().get_global_context().active_binds()
+	);
 }
 
 renderer::TextRenderer *Engine::get_text_renderer() {
 	return this->text_renderer.get();
 }
 
-int64_t Engine::lastframe_duration_nsec() {
+time_nsec_t Engine::lastframe_duration_nsec() const {
 	return this->fps_counter.nsec_lastframe;
 }
 
@@ -581,15 +575,26 @@ void Engine::move_phys_camera(float x, float y, float amount) {
 	cam_delta.y = - cam_movement.y;
 
 	//update camera phys position
-	this->engine_coord_data->camgame_phys += cam_delta.to_phys3();
+	this->coord.camgame_phys += cam_delta.to_phys3();
 }
 
-void Engine::start_game(std::unique_ptr<GameMain> game) {
+void Engine::start_game(std::unique_ptr<GameMain> &&game) {
 	// TODO: maybe implement a proper 1-to-1 connection
 	ENSURE(game, "linking game to engine problem");
 
 	this->game = std::move(game);
 	this->game->set_parent(this);
 }
+
+void Engine::start_game(const Generator &generator) {
+	this->game = std::make_unique<GameMain>(generator);
+	this->game->set_parent(this);
+}
+
+void Engine::end_game() {
+	this->game = nullptr;
+	this->unit_selection->clear();
+}
+
 
 } // openage

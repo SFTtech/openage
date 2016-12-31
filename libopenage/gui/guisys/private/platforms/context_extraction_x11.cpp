@@ -5,9 +5,8 @@
 #include "context_extraction.h"
 
 #include <QtPlatformHeaders/QGLXNativeContext>
-
-#include "SDL2/SDL_syswm.h"
-#include "GL/glx.h"
+#include <SDL2/SDL_syswm.h>
+#include <GL/glx.h>
 
 // DO NOT INCLUDE ANYTHING HERE, X11 HEADERS BREAK STUFF
 
@@ -19,6 +18,7 @@ std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 	GLXContext current_context;
 	SDL_SysWMinfo wm_info;
 	SDL_VERSION(&wm_info.version);
+
 	if (SDL_GetWindowWMInfo(window, &wm_info)) {
 		assert(wm_info.info.x11.display);
 
@@ -26,7 +26,13 @@ std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 		assert(current_context);
 	}
 
-	return std::make_tuple(QVariant::fromValue<QGLXNativeContext>(QGLXNativeContext(current_context, wm_info.info.x11.display, wm_info.info.x11.window)), wm_info.info.x11.window);
+	return std::make_tuple(
+		QVariant::fromValue<QGLXNativeContext>(
+			QGLXNativeContext(current_context,
+			                  wm_info.info.x11.display,
+			                  wm_info.info.x11.window)),
+		wm_info.info.x11.window
+	);
 }
 
 } // namespace qtsdl

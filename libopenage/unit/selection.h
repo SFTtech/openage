@@ -11,6 +11,7 @@
 
 namespace openage {
 
+class Engine;
 class Terrain;
 
 std::vector<coord::tile> tiles_in_range(coord::camgame p1, coord::camgame p2);
@@ -36,7 +37,7 @@ enum class selection_type_t {
  */
 class UnitSelection: public HudHandler {
 public:
-	UnitSelection();
+	UnitSelection(Engine *engine);
 
 	bool on_drawhud() override;
 	void drag_begin(coord::camgame pos);
@@ -104,6 +105,11 @@ private:
 	bool drag_active;
 	coord::camgame start, end;
 	int font_size;
+
+	/**
+	 * Engine where this selection is attached to.
+	 */
+	Engine *engine;
 };
 
 } // namespace openage

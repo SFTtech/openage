@@ -4,7 +4,7 @@
 #include <array>
 
 #include "../log/log.h"
-#include "../engine.h"
+#include "action.h"
 #include "input_manager.h"
 #include "text_to_event.h"
 
@@ -12,17 +12,60 @@
 namespace openage {
 namespace input {
 
-InputManager::InputManager(Engine *engine)
+InputManager::InputManager(ActionManager *action_manager)
 	:
-	engine{engine},
-	relative_mode{false} {}
+	action_manager{action_manager},
+	global_context{this},
+	relative_mode{false} {
+
+	this->global_context.register_to(this);
+}
+
+
+namespace {
+
+std::string mod_set_string(modset_t mod) {
+	if (not mod.empty()) {
+		for (auto &it : mod) {
+			switch (it) {
+			case modifier::ALT:
+				return "ALT + ";
+				break;
+			case modifier::CTRL:
+				return "CTRL + ";
+				break;
+			case modifier::SHIFT:
+				return "SHIFT + ";
+				break;
+			}
+		}
+	}
+
+	return "";
+}
+
+std::string event_as_string(const Event& event) {
+	if (not event.as_utf8().empty()) {
+		return mod_set_string(event.mod) + event.as_utf8();
+	}
+	else {
+		if (event.cc.eclass == event_class::MOUSE_WHEEL) {
+			if (event.cc.code == -1) {
+				return mod_set_string(event.mod) + "Wheel down";
+			} else {
+				return mod_set_string(event.mod) + "Wheel up";
+			}
+		}
+		return mod_set_string(event.mod) + SDL_GetKeyName(event.cc.code);
+	}
+}
+
+} // anonymous ns
 
 
 std::string InputManager::get_bind(const std::string &action_str) {
-	ActionManager &action_manager = this->engine->get_action_manager();
-
-	action_t action = action_manager.get(action_str);
-	if (action_manager.is("UNDEFINED",action)) {
+	action_t action = this->action_manager->get(action_str);
+	if (this->action_manager->is("UNDEFINED", action)) {
 		return "";
 	}
 
@@ -44,10 +87,8 @@ std::string InputManager::get_bind(const std::string &action_str) {
 
 bool InputManager::set_bind(const std::string &bind_str, const std::string action_str) {
 	try {
-		ActionManager &action_manager = this->engine->get_action_manager();
-
-		action_t action = action_manager.get(action_str);
-		if (action_manager.is("UNDEFINED",action)) {
+		action_t action = this->action_manager->get(action_str);
+		if (this->action_manager->is("UNDEFINED", action)) {
 			return false;
 		}
 
@@ -57,7 +98,7 @@ bool InputManager::set_bind(const std::string &bind_str, const std::string actio
 		if (it != this->keys.end()) {
 			this->keys.erase(it);
 		}
-		this->keys.emplace(std::make_pair(action,ev));
+		this->keys.emplace(std::make_pair(action, ev));
 
 		return true;
 	}
@@ -99,18 +140,20 @@ std::string InputManager::wheel_bind_to_string(const Event &ev) {
 }
 
 InputContext &InputManager::get_global_context() {
-	return this->global_hotkeys;
+	return this->global_context;
 }
 
 InputContext &InputManager::get_top_context() {
+	// return the global input context
+	// if no override is pushed
 	if (this->contexts.empty()) {
-		return this->global_hotkeys;
+		return this->global_context;
 	}
 	return *this->contexts.back();
 }
 
-void InputManager::register_context(InputContext *context) {
-	// Create a context list if none exist
+void InputManager::push_context(InputContext *context) {
+	// push the context to the top
 	this->contexts.push_back(context);
 
 	context->register_to(this);
@@ -136,7 +179,8 @@ bool InputManager::ignored(const Event &e) {
 	// filter duplicate utf8 events
 	// these are ignored unless the top mode enables
 	// utf8 mode, in which case regular char codes are ignored
-	return ((e.cc.has_class(event_class::CHAR) || e.cc.has_class(event_class::UTF8)) &&
+	return ((e.cc.has_class(event_class::CHAR) ||
+	         e.cc.has_class(event_class::UTF8)) &&
 	        this->get_top_context().utf8_mode != e.cc.has_class(event_class::UTF8));
 }
 
@@ -163,7 +207,7 @@ bool InputManager::trigger(const Event &e) {
 	}
 
 	// If no local keybinds were bound, check the global keybinds
-	return this->global_hotkeys.execute_if_bound(arg);
+	return this->global_context.execute_if_bound(arg);
 }
 
 
@@ -313,8 +357,35 @@ bool InputManager::on_input(SDL_Event *e) {
 }
 
 
-Engine *InputManager::get_engine() const {
-	return this->engine;
+std::vector<std::string> InputManager::active_binds(const std::unordered_map<action_t, action_func_t> &ctx_actions) const {
+
+	std::vector<std::string> result;
+
+	// TODO: this only checks the by_type mappings, the others are missing!
+	for (auto &action : ctx_actions) {
+		std::string keyboard_key;
+
+		for (auto &key : this->keys) {
+			if (key.first == action.first) {
+				keyboard_key = event_as_string(key.second);
+				break;
+			}
+		}
+
+		// this is only possible if the action is registered,
+		// then this->input_manager != nullptr.
+		// TODO: try to purge the action manager access here.
+		std::string action_type_str = this->get_action_manager()->get_name(action.first);
+
+		result.push_back(keyboard_key + " : " + action_type_str);
+	}
+
+	return result;
+}
+
+
+ActionManager *InputManager::get_action_manager() const {
+	return this->action_manager;
 }
 
 

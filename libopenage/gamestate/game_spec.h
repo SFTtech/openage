@@ -2,29 +2,31 @@
 
 #pragma once
 
-#include <unordered_map>
-#include <memory>
-
-#include <QObject>
-
 #include "../job/job.h"
 #include "../gamedata/gamedata.gen.h"
 #include "../gamedata/graphic.gen.h"
 #include "../terrain/terrain.h"
 #include "../unit/unit_texture.h"
-#include "../util/timer.h"
+
+#include <unordered_map>
+#include <memory>
+#include <QObject>
+
 
 namespace openage {
 
 class AssetManager;
+class GameSpec;
 class UnitType;
 class UnitTypeMeta;
 class Player;
+
 
 /**
  * the key type mapped to data objects
  */
 using index_t = int;
+
 
 /**
  * could use unique ptr
@@ -32,16 +34,25 @@ using index_t = int;
 using unit_type_list = std::vector<std::shared_ptr<UnitType>>;
 using unit_meta_list = std::vector<std::shared_ptr<UnitTypeMeta>>;
 
+
 /**
  * simple sound object
  * TODO: move to assetmanager
  */
 class Sound {
 public:
+	Sound(GameSpec *spec, std::vector<int> &&sound_items)
+		:
+		sound_items{sound_items},
+		game_spec{spec} {}
+
 	void play() const;
 
 	std::vector<int> sound_items;
+
+	GameSpec *game_spec;
 };
+
 
 /**
  * GameSpec gives a collection of all game elements
@@ -59,7 +70,7 @@ public:
  */
 class GameSpec {
 public:
-	GameSpec(AssetManager &am);
+	GameSpec(AssetManager *am);
 	virtual ~GameSpec();
 
 	/**
@@ -126,6 +137,12 @@ public:
 	 * makes initial unit types for a particular civ id
 	 */
 	void create_unit_types(unit_meta_list &objects, int civ_id) const;
+
+	/**
+	 * Return the asset manager used for loading resources
+	 * of this game specification.
+	 */
+	AssetManager *get_asset_manager() const;
 
 private:
 	AssetManager *assetmanager;
@@ -204,7 +221,6 @@ private:
 	 */
 	bool gamedata_loaded;
 	void on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata);
-	util::Timer load_timer;
 };
 
 } // openage
@@ -220,6 +236,8 @@ class GameSpecSignals;
 /**
  * Game specification instanciated in QML.
  * Linked to the "GameSpec" QML type.
+ *
+ * Wraps the "GameSpec" C++ class from above.
  */
 class GameSpecHandle {
 public:

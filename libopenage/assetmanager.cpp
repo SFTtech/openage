@@ -47,6 +47,17 @@ void AssetManager::set_data_dir_string(const std::string& data_dir) {
 	}
 }
 
+
+void AssetManager::set_engine(Engine *engine) {
+	this->engine = engine;
+}
+
+
+Engine *AssetManager::get_engine() const {
+	return this->engine;
+}
+
+
 bool AssetManager::can_load(const std::string &name) const {
 	return util::file_size(this->root.join(name)) > 0;
 }

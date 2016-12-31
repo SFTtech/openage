@@ -55,7 +55,8 @@ void RecursiveDirectoryWatcherWorker::restartWatching() {
 
 void RecursiveDirectoryWatcherWorker::restart_watching(const QStringList &entries_to_watch) {
 	this->watcher.reset();
-	this->watcher = std::move(std::make_unique<QFileSystemWatcher>());
+	this->watcher = std::make_unique<QFileSystemWatcher>();
+
 	QObject::connect(&*this->watcher, &QFileSystemWatcher::directoryChanged, this, &RecursiveDirectoryWatcherWorker::onEntryChanged);
 
 	if (entries_to_watch.empty())

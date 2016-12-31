@@ -4,7 +4,12 @@
 
 #include <QtQml>
 
+#include "engine_link.h"
+
 namespace openage {
+
+class Engine;
+
 namespace gui {
 
 namespace {
@@ -31,5 +36,18 @@ void AssetManagerLink::set_data_dir(const QString &data_dir) {
 	};
 	this->s(f, this->data_dir, data_dir);
 }
+
+
+EngineLink *AssetManagerLink::get_engine() const {
+	return this->engine;
+}
+
+void AssetManagerLink::set_engine(EngineLink *engine_link) {
+	static auto f = [] (AssetManager *_this, Engine *engine) {
+		_this->set_engine(engine);
+	};
+	this->s(f, this->engine, engine_link);
+}
+
 
 }} // namespace openage::gui

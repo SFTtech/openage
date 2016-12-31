@@ -5,8 +5,6 @@
 #include <unordered_set>
 
 #include "../coord/tile.h"
-#include "../assetmanager.h"
-#include "../options.h"
 #include "../gui/guisys/public/gui_property_map.h"
 
 namespace qtsdl {
@@ -18,7 +16,6 @@ namespace openage {
 class GameSpec;
 class Terrain;
 class GameMain;
-class Engine;
 
 namespace rng {
 class RNG;
@@ -121,7 +118,6 @@ private:
 	 * tiles in this region
 	 */
 	tileset_t tiles;
-
 };
 
 
@@ -158,15 +154,22 @@ public:
 	 */
 	void add_units(GameMain &m) const;
 
+	/**
+	 * Create a game from a specification.
+	 */
 	std::unique_ptr<GameMain> create(std::shared_ptr<GameSpec> spec);
 
 private:
 	void create_regions();
 
-	// data version used to create a game
+	/**
+	 * data version used to create a game
+	 */
 	std::shared_ptr<GameSpec> spec;
 
-	// the generated data
+	/**
+	 * the generated data
+	 */
 	std::vector<Region> regions;
 
 public:

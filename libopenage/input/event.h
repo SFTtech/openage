@@ -68,7 +68,7 @@ enum class modifier {
 
 
 struct modifier_hash {
-	int operator()(const modifier &s) const;
+	int operator ()(const modifier &s) const;
 };
 
 
@@ -101,12 +101,14 @@ bool operator ==(ClassCode a, ClassCode b);
 
 
 struct class_code_hash {
-	int operator()(const ClassCode &k) const;
+	int operator ()(const ClassCode &k) const;
 };
 
 
 /**
- * event with a mod
+ * Input event, as triggered by some input device like
+ * mouse, kezb, joystick, tablet, microwave or dildo.
+ * Some modifier keys may also be pressed during the event.
  */
 class Event {
 public:

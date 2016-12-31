@@ -13,7 +13,6 @@
 #include "unit/command.h"
 #include "unit/selection.h"
 #include "unit/unit_type.h"
-#include "engine.h"
 #include "handlers.h"
 
 namespace qtsdl {
@@ -22,33 +21,56 @@ class GuiItemLink;
 
 namespace openage {
 
+class ActionMode;
+class EditorMode;
+class Engine;
 class GameControl;
 
+
+/**
+ * Signals for a gui mode.
+ */
 class OutputModeSignals : public QObject {
 	Q_OBJECT
 
 public:
 signals:
-	void announced(const std::string &name, const std::vector<std::string>& binds);
+	/**
+	 * Signal is triggered to anounce a new output mode.
+	 * name: name of the gui mode.
+	 * binds: list of strings that describe keybindings.
+	 */
+	void announced(const std::string &name,
+	               const std::vector<std::string>& binds);
 };
 
+
 /**
- * a target for input handling and gui rendering
+ * A target for input handling and gui rendering.
+ * This allows to switch to different display UIs.
  */
 class OutputMode : public input::InputContext {
 public:
 	explicit OutputMode(qtsdl::GuiItemLink *gui_link);
 
 	/**
-	 * is this mode able to be used
+	 * Is this mode able to be used?
 	 */
 	virtual bool available() const = 0;
 
 	/**
-	 * used when switching modes
+	 * Called when switching to this mode.
 	 */
 	virtual void on_enter() = 0;
+
+	/**
+	 * Called when the mode is left.
+	 */
 	virtual void on_exit() = 0;
+
+	/**
+	 * Display this mode.
+	 */
 	virtual void render() = 0;
 
 	/**
@@ -56,20 +78,37 @@ public:
 	 */
 	virtual std::string name() const = 0;
 
+	/**
+	 * Emit the "announced" signal with (name, InputContext::active_binds).
+	 */
 	virtual void announce();
 
+	/**
+	 * Called when the GameControl is set in QML.
+	 */
 	virtual void set_game_control(GameControl *game_control);
+
+	/**
+	 * Called after GameControl has been set by QML from `set_game_control`.
+	 */
+	virtual void on_game_control_set() = 0;
 
 protected:
 	GameControl *game_control;
 
 public:
+	/**
+	 * Signals to be triggered when the mode canges.
+	 */
 	OutputModeSignals gui_signals;
+
 	qtsdl::GuiItemLink *gui_link;
 };
 
+
 /**
- * game creation menu
+ * This is mainly the game editor.
+ * Shows menus to choose units to build.
  */
 class CreateMode : public OutputMode {
 public:
@@ -80,6 +119,7 @@ public:
 	void on_exit() override;
 	void render() override;
 	std::string name() const override;
+	void on_game_control_set() override;
 };
 
 enum class ActionButtonsType {
@@ -90,7 +130,6 @@ enum class ActionButtonsType {
 	MilBuildMenu
 };
 
-class ActionMode;
 
 class ActionModeSignals : public QObject {
 	Q_OBJECT
@@ -110,8 +149,12 @@ private:
 	ActionMode *action_mode;
 };
 
+
 /**
- * Control units and issue commands
+ * This is the main game UI.
+ *
+ * Used to control units, issue commands, basically this is where you
+ * sink your time in when playing.
  */
 class ActionMode : public OutputMode {
 public:
@@ -122,6 +165,7 @@ public:
 	void on_exit() override;
 	void render() override;
 	std::string name() const override;
+	void on_game_control_set() override;
 
 private:
 	friend ActionModeSignals;
@@ -136,17 +180,24 @@ private:
 	void announce_resources();
 
 	/**
-	 * sends to gui the buttons it should use for the action buttons (if changed)
+	 * sends to gui the buttons it should use for the action buttons
+	 * (if changed)
 	 */
 	void announce_buttons_type();
 
 	/**
-	 * decides which type of right mouse click command to issue based on position
+	 * decides which type of right mouse click command
+	 * to issue based on position.
 	 *
 	 * if a unit is at the position the command should target the unit,
 	 * otherwise target ground position
 	 */
 	Command get_action(const coord::phys3 &pos) const;
+
+	/**
+	 * Register the keybindings.
+	 */
+	void create_binds();
 
 	/**
 	 * used after opening the build menu
@@ -190,7 +241,6 @@ public:
 	ActionModeSignals gui_signals;
 };
 
-class EditorMode;
 
 class EditorModeSignals : public QObject {
 	Q_OBJECT
@@ -212,7 +262,7 @@ private:
 };
 
 /**
- * editor mode provides an interface for map editing
+ * UI mode to provide an interface for map editing.
  */
 class EditorMode : public OutputMode {
 public:
@@ -223,6 +273,7 @@ public:
 	void on_exit() override;
 	void render() override;
 	std::string name() const override;
+	void on_game_control_set() override;
 
 	void set_current_type_id(int current_type_id);
 	void set_current_terrain_id(openage::terrain_t current_terrain_id);
@@ -239,20 +290,25 @@ private:
 
 	void paint_terrain_at(const coord::window &point);
 	void paint_entity_at(const coord::window &point, const bool del);
-	// currently selected terrain id
-	openage::terrain_t editor_current_terrain;
+
+	/**
+	 * currently selected terrain id
+	 */
+	terrain_t editor_current_terrain;
 	int current_type_id;
 	std::string category;
 
-	// true = terrain painting, false = unit placement
+	/**
+	 * mouse click mode:
+	 * true = terrain painting,
+	 * false = unit placement
+	 */
 	bool paint_terrain;
 
 public:
 	EditorModeSignals gui_signals;
-
 };
 
-class GameControl;
 
 class GameControlSignals : public QObject {
 	Q_OBJECT
@@ -274,6 +330,7 @@ private:
 	GameControl *game_control;
 };
 
+
 /**
  * connects the gui system with the game engine
  * switches between contexts such as editor mode and
@@ -281,8 +338,7 @@ private:
  *
  * hud rendering and input handling is redirected to the active mode
  */
-class GameControl :
-		public openage::HudHandler {
+class GameControl : public openage::HudHandler {
 public:
 	explicit GameControl(qtsdl::GuiItemLink *gui_link);
 
@@ -297,7 +353,8 @@ public:
 
 	bool on_drawhud() override;
 
-	Player* get_current_player() const;
+	Player *get_current_player() const;
+	Engine *get_engine() const;
 
 private:
 	Engine *engine;

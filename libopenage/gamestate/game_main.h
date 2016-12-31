@@ -12,11 +12,15 @@
 #include "team.h"
 #include "../options.h"
 #include "../unit/unit_container.h"
+#include "../util/timing.h"
+
 
 namespace openage {
 
+class Engine;
 class Generator;
 class Terrain;
+
 
 /**
  * Contains information for a single game
@@ -58,7 +62,7 @@ public:
 	/**
 	 * updates the game by one frame
 	 */
-	void update();
+	void update(time_nsec_t lastframe_duration);
 
 	/**
 	 * map information
@@ -112,24 +116,52 @@ signals:
 	void game_running(bool running);
 };
 
+
+/**
+ * Class linked to the QML object "GameMain" via GameMainLink.
+ * Gets instanciated from QML.
+ */
 class GameMainHandle {
 public:
 	explicit GameMainHandle(qtsdl::GuiItemLink *gui_link);
 
 	void set_engine(Engine *engine);
 
+	/**
+	 * End the game and delete the game handle.
+	 */
 	void clear();
 
-	void set_game(std::unique_ptr<GameMain> game);
+	/**
+	 * Pass the given game to the engine and start it.
+	 */
+	void set_game(std::unique_ptr<GameMain> &&game);
+
+	/**
+	 * Return the game.
+	 */
 	GameMain* get_game() const;
 
+	/**
+	 * Test if there is a game running.
+	 */
 	bool is_game_running() const;
 
+	/**
+	 * Emit a qt signal to notify for changes in a running game.
+	 */
 	void announce_running();
 
 private:
+	/**
+	 * The game state as currently owned by the engine,
+	 * just remembered here to access it quickly.
+	 */
 	GameMain *game;
 
+	/**
+	 * The engine the main game handle is attached to.
+	 */
 	Engine *engine;
 
 public:
