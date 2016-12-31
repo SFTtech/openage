@@ -68,6 +68,11 @@ find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2
 include(FindPkgConfig)
 include(FindPackageHandleStandardArgs)
 
+# provide apple qt5 location
+if(APPLE)
+	list(APPEND CMAKE_PREFIX_PATH /usr/local/opt/qt5)
+endif()
+
 # windows does not have libm
 if(NOT WIN32)
 	find_library(MATH_LIB m)
@@ -139,6 +144,10 @@ get_config_option_string()
 configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
 
+if(APPLE)
+	find_path(QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders "/usr/local/opt/qt5/include")
+endif()
+
 # directories for header inclusion
 include_directories(
 	${OPENGL_INCLUDE_DIR}
@@ -148,6 +157,7 @@ include_directories(
 	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
 	${HarfBuzz_INCLUDE_DIRS}
+        ${QTPLATFORM_INCLUDE_DIRS}
 )
 
 # link the executable to those libraries
