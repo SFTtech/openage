@@ -22,7 +22,7 @@ bool UnitAbility::is_damaged(Unit &target) {
 }
 
 bool UnitAbility::has_resource(Unit &target) {
-	return target.has_attribute(attr_type::resource) &&
+	return target.has_attribute(attr_type::resource) && !target.has_attribute(attr_type::worker) &&
 	       target.get_attribute<attr_type::resource>().amount > 0;
 }
 

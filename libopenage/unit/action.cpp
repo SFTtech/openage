@@ -229,8 +229,9 @@ void TargetAction::on_completion() {
 		new_target = find_near(*this->entity->location,
 			[this](const TerrainObject &obj) {
 				return obj.unit.unit_type->id() == this->target_type_id &&
+				       !obj.unit.has_attribute(attr_type::worker) &&
 				       obj.unit.has_attribute(attr_type::resource) &&
-				       obj.unit.get_attribute<attr_type::resource>().amount > 0.0f;
+				       obj.unit.get_attribute<attr_type::resource>().amount > 0.0;
 			});
 	}
 
@@ -338,8 +339,8 @@ void DeadAction::on_completion() {
 
 bool DeadAction::completed() const {
 
-	// check resource, trees/huntables with resource are not removed
-	if (this->entity->has_attribute(attr_type::resource)) {
+	// check resource, trees/huntables with resource are not removed but not workers
+	if (this->entity->has_attribute(attr_type::resource) && !this->entity->has_attribute(attr_type::worker)) {
 		auto &res_attr = this->entity->get_attribute<attr_type::resource>();
 		return res_attr.amount <= 0; // cannot complete when resource remains
 	}
@@ -449,7 +450,7 @@ bool IdleAction::completed() const {
 	}
 	else if (this->entity->has_attribute(attr_type::resource)) {
 		auto &res_attr = this->entity->get_attribute<attr_type::resource>();
-		return res_attr.amount <= 0.0f;
+		return res_attr.amount <= 0.0;
 	}
 	return false;
 }
@@ -983,10 +984,10 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 		else {
 
 			auto &resource_attr = targeted_resource->get_attribute<attr_type::resource>();
-			if (resource_attr.amount <= 0.0f) {
+			if (resource_attr.amount <= 0.0) {
 
 				// when the resource runs out
-				if (worker_resource.amount > 0.0f) {
+				if (worker_resource.amount > 0.0) {
 					this->target_resource = false;
 					this->set_target(this->nearest_dropsite(worker_resource.resource_type));
 				}
@@ -1009,11 +1010,11 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 		// add value to player stockpile
 		Player &player = this->entity->get_attribute<attr_type::owner>().player;
 		player.receive(worker_resource.resource_type, worker_resource.amount);
-		worker_resource.amount = 0.0f;
+		worker_resource.amount = 0.0;
 
 		// make sure the resource stil exists
 		if (this->target.is_valid() &&
-		    this->target.get()->get_attribute<attr_type::resource>().amount > 0.0f) {
+		    this->target.get()->get_attribute<attr_type::resource>().amount > 0.0) {
 
 			// return to resouce collection
 			this->target_resource = true;
@@ -1068,7 +1069,7 @@ AttackAction::AttackAction(Unit *e, UnitReference tar)
 
 	// switch graphic type for villagers not collecting resources
 	if (this->entity->has_attribute(attr_type::worker) &&
-	    !tar.get()->has_attribute(attr_type::resource)) {
+	    (!tar.get()->has_attribute(attr_type::resource) || tar.get()->has_attribute(attr_type::worker))) {
 		auto &att_attr = this->entity->get_attribute<attr_type::attack>();
 		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
 		att_attr.attack_type->initialise(this->entity, pl_attr.player);

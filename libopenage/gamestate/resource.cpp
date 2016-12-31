@@ -70,3 +70,22 @@ bool ResourceBundle::deduct(const ResourceBundle& amount) {
 }
 
 } // openage
+
+namespace std {
+
+string to_string(const openage::game_resource &res) {
+	switch (res) {
+	case openage::game_resource::wood:
+		return "wood";
+	case openage::game_resource::food:
+		return "food";
+	case openage::game_resource::gold:
+		return "gold";
+	case openage::game_resource::stone:
+		return "stone";
+	default:
+		return "unknown";
+	}
+}
+
+} // namespace std

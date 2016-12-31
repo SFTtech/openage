@@ -284,12 +284,12 @@ void UnitSelection::show_attributes(Unit *u) {
 	}
 	if (u->has_attribute(attr_type::hitpoints) && u->has_attribute(attr_type::damaged)) {
 		auto &hp = u->get_attribute<attr_type::hitpoints>();
-		auto &dm = u->get_attribute<attr_type::hitpoints>();
+		auto &dm = u->get_attribute<attr_type::damaged>();
 		lines.push_back("hitpoints: "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
 	}
 	if (u->has_attribute(attr_type::resource)) {
 		auto &res_attr = u->get_attribute<attr_type::resource>();
-		lines.push_back("resource: "+std::to_string(res_attr.amount));
+		lines.push_back("resource: "+std::to_string(res_attr.amount)+" "+std::to_string(res_attr.resource_type));
 	}
 	if (u->has_attribute(attr_type::building)) {
 		auto &build_attr = u->get_attribute<attr_type::building>();

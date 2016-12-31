@@ -59,6 +59,8 @@ private:
 
 namespace std {
 
+std::string to_string(const openage::game_resource &res);
+
 /**
  * hasher for game resource
  */
