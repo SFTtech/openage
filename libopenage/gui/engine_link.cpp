@@ -87,8 +87,6 @@ void EngineLink::on_global_binds_changed(const std::vector<std::string>& global_
 		}
 	);
 
-	std::cout << "================= update global binds" << std::endl;
-
 	if (this->global_binds != new_global_binds) {
 		this->global_binds = new_global_binds;
 		emit this->global_binds_changed();

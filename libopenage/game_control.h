@@ -38,10 +38,14 @@ signals:
 	/**
 	 * Signal is triggered to anounce a new output mode.
 	 * name: name of the gui mode.
+	 */
+	void announced(const std::string &name);
+
+	/**
+	 * Signal is triggered when the bindings of the mode change.
 	 * binds: list of strings that describe keybindings.
 	 */
-	void announced(const std::string &name,
-	               const std::vector<std::string>& binds);
+	void binds_changed(const std::vector<std::string>& binds);
 };
 
 

@@ -530,7 +530,6 @@ UnitSelection *Engine::get_unit_selection() {
 }
 
 void Engine::announce_global_binds() {
-
 	emit this->gui_signals.global_binds_changed(
 		this->get_input_manager().get_global_context().active_binds()
 	);

@@ -39,16 +39,27 @@ QStringList OutputModeLink::get_binds() const {
 	return this->binds;
 }
 
-void OutputModeLink::on_announced(const std::string &name, const std::vector<std::string>& binds) {
+void OutputModeLink::on_announced(const std::string &name) {
 	auto new_name = QString::fromStdString(name);
 
 	if (this->name != new_name) {
 		this->name = new_name;
 		emit this->name_changed();
 	}
+}
+
+void OutputModeLink::on_binds_changed(
+	const std::vector<std::string>& binds) {
 
 	QStringList new_binds;
-	std::transform(std::begin(binds), std::end(binds), std::back_inserter(new_binds), [] (const std::string &s) {return QString::fromStdString(s);});
+	std::transform(
+		std::begin(binds),
+		std::end(binds),
+		std::back_inserter(new_binds),
+		[] (const std::string &s) {
+			return QString::fromStdString(s);
+		}
+	);
 
 	if (this->binds != new_binds) {
 		this->binds = new_binds;
@@ -60,7 +71,15 @@ void OutputModeLink::classBegin() {
 }
 
 void OutputModeLink::on_core_adopted() {
-	QObject::connect(&unwrap(this)->gui_signals, &OutputModeSignals::announced, this, &OutputModeLink::on_announced);
+	QObject::connect(&unwrap(this)->gui_signals,
+	                 &OutputModeSignals::announced,
+	                 this,
+	                 &OutputModeLink::on_announced);
+
+	QObject::connect(&unwrap(this)->gui_signals,
+	                 &OutputModeSignals::binds_changed,
+	                 this,
+	                 &OutputModeLink::on_binds_changed);
 }
 
 void OutputModeLink::componentComplete() {

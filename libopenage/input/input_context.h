@@ -28,12 +28,12 @@ class InputContext {
 
 public:
 	/**
-	 * Create an unbound input manager.
+	 * Create an unbound input context.
 	 */
 	InputContext();
 
 	/**
-	 *
+	 * Create a bound context, assigned to its manager.
 	 */
 	InputContext(InputManager *manager);
 
@@ -42,6 +42,7 @@ public:
 	 * which are bound currently in the active context.
 	 *
 	 * TODO: move this method to the input manager.
+	 *       as InputManager::active_binds(const InputContext &) const;
 	 */
 	std::vector<std::string> active_binds() const;
 
