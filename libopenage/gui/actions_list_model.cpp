@@ -62,7 +62,7 @@ void ActionsListModel::set_active_buttons(const ActionButtonsType &active_button
 		this->beginResetModel();
 		this->add_button(30, -1, static_cast<int>(GroupIDs::NoGroup), "BUILD_MENU");
 		this->add_button(31, -1, static_cast<int>(GroupIDs::NoGroup), "BUILD_MENU_MIL");
-		this->add_button(28, -1, static_cast<int>(GroupIDs::NoGroup), "REPAIR");
+		this->add_button(28, -1, static_cast<int>(GroupIDs::NoGroup), "SET_ABILITY_REPAIR");
 		this->add_button(59, -1, static_cast<int>(GroupIDs::NoGroup), "KILL_UNIT");
 		this->add_button(2,  -1, static_cast<int>(GroupIDs::NoGroup), "SET_ABILITY_GARRISON");
 

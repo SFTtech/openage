@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "../pathfinding/path.h"
+#include "../gamestate/resource.h"
 #include "attribute.h"
 #include "unit.h"
 #include "unit_container.h"
@@ -405,7 +406,7 @@ private:
 };
 
 /**
- * repairs an object
+ * repairs a unit
  */
 class RepairAction: public TargetAction {
 public:
@@ -418,6 +419,14 @@ public:
 
 private:
 	bool complete;
+
+	float time;
+	float time_left;
+
+	/**
+	 * stores the cost of the repair for 1hp
+	 */
+	ResourceBundle cost;
 
 };
 

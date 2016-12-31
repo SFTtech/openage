@@ -105,6 +105,11 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 		this->ability = ability_type::garrison;
 		emit this->gui_signals.ability_changed(std::to_string(this->ability));
 	});
+	this->bind(action.get("SET_ABILITY_REPAIR"), [this](const input::action_arg_t &) {
+		this->use_set_ability = true;
+		this->ability = ability_type::repair;
+		emit this->gui_signals.ability_changed(std::to_string(this->ability));
+	});
 	this->bind(action.get("SPAWN_VILLAGER"), [this](const input::action_arg_t &) {
 		Engine &engine = Engine::get();
 		auto player = this->game_control->get_current_player();

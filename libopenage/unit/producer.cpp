@@ -448,6 +448,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 		}
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 		unit->give_ability(std::make_shared<BuildAbility>(this->on_attack));
+		unit->give_ability(std::make_shared<RepairAbility>(this->on_attack));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::FISHING_BOAT) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::gatherer>>());

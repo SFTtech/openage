@@ -17,6 +17,38 @@ enum class game_resource {
 	RESOURCE_TYPE_COUNT
 };
 
+/**
+ * a set of amounts of game resources
+ */
+class ResourceBundle {
+public:
+
+	ResourceBundle();
+
+	bool operator> (const ResourceBundle& other) const;
+	bool operator>= (const ResourceBundle& other) const;
+
+	ResourceBundle& operator+= (const ResourceBundle& other);
+	ResourceBundle& operator-= (const ResourceBundle& other);
+
+	ResourceBundle& operator*= (double a);
+
+	bool has(const ResourceBundle& amount) const;
+
+	bool deduct(const ResourceBundle& amount);
+
+	double& operator[] (game_resource res) { return value[(int) res]; }
+	double& operator[] (int index) { return value[index]; }
+
+	// Getters
+
+	double get(game_resource res) const { return value[(int) res]; }
+	double get(int index) const { return value[index]; }
+
+private:
+	double value[(int) game_resource::RESOURCE_TYPE_COUNT];
+};
+
 } // namespace openage
 
 namespace std {

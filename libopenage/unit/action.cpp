@@ -101,10 +101,10 @@ void UnitAction::damage_object(Unit &target, unsigned dmg) {
 	if (target.has_attribute(attr_type::hitpoints)) {
 		auto &hp = target.get_attribute<attr_type::hitpoints>();
 		if (hp.current > dmg) {
-		    hp.current -= dmg;
+			hp.current -= dmg;
 		}
 		else {
-		    hp.current = 0;
+			hp.current = 0;
 		}
 	}
 }
@@ -850,10 +850,67 @@ const graphic_set &BuildAction::current_graphics() const {
 RepairAction::RepairAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::work, tar},
-	complete{false} {
+	complete{false},
+	time{80},
+	time_left{0} {
+
+	if (!tar.is_valid()) {
+		// the target no longer exists
+		complete = true;
+	}
+	else {
+
+		Unit *target = tar.get();
+
+		if (!target->has_attribute(attr_type::building)) {
+			this->time *= 4;
+		}
+
+		// cost formula: 0.5 * (target cost) / (target max hp)
+		auto &hp = target->get_attribute<attr_type::hitpoints>();
+
+		// TODO get the target unit's cost
+		//this->cost += get target cost;
+		this->cost[game_resource::wood] = 100; // temp
+
+		this->cost *= 0.5 / hp.max;
+	}
 }
 
-void RepairAction::update_in_range(unsigned int, Unit *) {}
+void RepairAction::update_in_range(unsigned int time, Unit *target_unit) {
+
+	auto &hp = target_unit->get_attribute<attr_type::hitpoints>();
+	auto &owner = this->entity->get_attribute<attr_type::owner>();
+
+	if (hp.current >= hp.max) {
+		// repaired by something else
+		this->complete = true;
+	}
+	else if (this->time_left > 0) {
+		this->time_left -= time;
+
+		if (this->time_left <= 0) {
+			hp.current += 1;
+
+			if (hp.current >= hp.max) {
+				this->complete = true;
+			}
+		}
+	}
+
+	if (this->time_left <= 0 && !this->complete) {
+		if (owner.player.deduct(this->cost)) {
+			this->time_left += this->time;
+		}
+		else {
+			// no resources to continue
+			this->complete = true;
+		}
+	}
+
+	// inc frame
+	this->frame += time * this->frame_rate / 2.5f;
+}
 
 GatherAction::GatherAction(Unit *e, UnitReference tar)
 	:

@@ -142,7 +142,8 @@ std::shared_ptr<GameSpec> Generator::get_spec() const {
 std::vector<std::string> Generator::player_names() const {
 	auto result = this->get_csv("player_names");
 
-	result.push_back("gaia");
+	// gaia is player 0
+	result.insert(result.begin(), "gaia");
 
 	return result;
 }

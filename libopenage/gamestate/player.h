@@ -68,12 +68,13 @@ public:
 	/**
 	 * add to stockpile
 	 */
+	void receive(const ResourceBundle& amount);
 	void receive(const game_resource resource, double amount);
 
 	/**
 	 * remove from stockpile if available
-	 * TODO parameter uses set of resources
 	 */
+	bool deduct(const ResourceBundle& amount);
 	bool deduct(const game_resource resource, double amount);
 
 	/**
@@ -107,7 +108,7 @@ private:
 	/**
 	 * resources this player currently has
 	 */
-	std::unordered_map<game_resource, double> resources;
+	ResourceBundle resources;
 
 	/**
 	 * unit types which can be produced by this player.

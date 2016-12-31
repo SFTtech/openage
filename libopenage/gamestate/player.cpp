@@ -14,6 +14,11 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	civ{civ},
 	name{name},
 	team{nullptr} {
+	// starting resources
+	this->resources[game_resource::food] = 1000;
+	this->resources[game_resource::wood] = 1000;
+	this->resources[game_resource::stone] = 1000;
+	this->resources[game_resource::gold] = 1000;
 }
 
 bool Player::operator ==(const Player &other) const {
@@ -46,22 +51,20 @@ bool Player::owns(Unit &unit) const {
 	return false;
 }
 
+void Player::receive(const ResourceBundle& amount) {
+	this->resources += amount;
+}
+
 void Player::receive(const game_resource resource, double amount) {
-	auto r = this->resources.find(resource);
-	if (r == this->resources.end()) {
-		this->resources[resource] = amount;
-	}
-	else {
-		this->resources[resource] += amount;
-	}
+	this->resources[resource] += amount;
+}
+
+bool Player::deduct(const ResourceBundle& amount) {
+	return this->resources.deduct(amount);
 }
 
 bool Player::deduct(const game_resource resource, double amount) {
-	auto r = this->resources.find(resource);
-	if (r == this->resources.end()) {
-		return false;
-	}
-	else if (this->resources[resource] >= amount) {
+	if (this->resources[resource] >= amount) {
 		this->resources[resource] -= amount;
 		return true;
 	}
@@ -69,13 +72,7 @@ bool Player::deduct(const game_resource resource, double amount) {
 }
 
 double Player::amount(const game_resource resource) const {
-	auto r = this->resources.find(resource);
-	if (r == this->resources.end()) {
-		return 0.0;
-	}
-	else {
-		return this->resources.at(resource);
-	}
+	return this->resources.get(resource);
 }
 
 size_t Player::type_count() {

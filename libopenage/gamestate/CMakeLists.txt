@@ -6,4 +6,5 @@ add_sources(libopenage
 	generator.cpp
 	player.cpp
 	team.cpp
+	resource.cpp
 )
