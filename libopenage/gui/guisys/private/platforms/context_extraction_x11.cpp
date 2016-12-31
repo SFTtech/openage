@@ -7,7 +7,13 @@
 #include <QtPlatformHeaders/QGLXNativeContext>
 
 #include "SDL2/SDL_syswm.h"
+// It can't hurt to have this here even though OSX doesn't use X11 by default,
+// you can use it with XQuartz
+#ifndef __APPLE__
 #include "GL/glx.h"
+#else
+#include "OpenGL/glx.h"
+#endif
 
 // DO NOT INCLUDE ANYTHING HERE, X11 HEADERS BREAK STUFF
 

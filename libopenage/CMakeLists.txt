@@ -87,8 +87,14 @@ find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
 
 set(QT_VERSION_REQ "5.4")
-find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
-find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
+if(APPLE)
+	# tell CMake to look in the default homebrew installation for Qt5
+	find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED PATHS "/usr/local/Cellar/qt5/*")
+	find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED PATHS "/usr/local/Cellar/qt5/*")
+else()
+	find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
+	find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
+endif()
 
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
@@ -139,6 +145,11 @@ get_config_option_string()
 configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
 
+# default homebrew/cellar Qt5 installation
+if(APPLE)
+	find_path(QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders "/usr/local/Cellar/qt5/*/include")
+endif()
+
 # directories for header inclusion
 include_directories(
 	${OPENGL_INCLUDE_DIR}
@@ -148,6 +159,7 @@ include_directories(
 	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
 	${HarfBuzz_INCLUDE_DIRS}
+	${QTPLATFORM_INCLUDE_DIRS}
 )
 
 # link the executable to those libraries
