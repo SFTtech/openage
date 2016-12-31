@@ -307,6 +307,8 @@ public:
 	coord::phys_t range;
 	coord::phys_t init_height;
 	typeamount_map damage;
+
+	// TODO move elsewhere in order to become shared attribute
 	attack_stance stance;
 
 	// TODO move elsewhere in order to become shared attribute
@@ -314,13 +316,15 @@ public:
 	UnitType *attack_type;
 };
 
+/**
+ * Healing capabilities.
+ */
 template<> class Attribute<attr_type::heal>: public SharedAttributeContainer {
 public:
-	Attribute(coord::phys_t r, coord::phys_t h, unsigned int l, float ra)
+	Attribute(coord::phys_t r, unsigned int l, float ra)
 		:
 		SharedAttributeContainer{attr_type::heal},
 		range{r},
-		init_height{h},
 		life{l},
 		rate{ra} {}
 
@@ -328,9 +332,19 @@ public:
 		return std::make_shared<Attribute<attr_type::heal>>(*this);
 	}
 
+	/**
+	 * The max range of the healing.
+	 */
 	coord::phys_t range;
-	coord::phys_t init_height; // TODO remove?
+
+	/**
+	 * Life healed in each cycle
+	 */
 	unsigned int life;
+
+	/**
+	 * The rate of each heal cycle
+	 */
 	float rate;
 };
 
@@ -345,7 +359,9 @@ public:
 		return std::make_shared<Attribute<attr_type::speed>>(*this);
 	}
 
-	coord::phys_t unit_speed; // possibly use a pointer to account for tech upgrades
+	// TODO possibly use a pointer to account for tech upgrades
+	// TODO rename to default or normal
+	coord::phys_t unit_speed;
 };
 
 template<> class Attribute<attr_type::direction>: public UnsharedAttributeContainer {
@@ -408,7 +424,7 @@ public:
 };
 
 /**
- * The resources that are accepted.
+ * The resources that are accepted to be dropped.
  */
 template<> class Attribute<attr_type::dropsite>: public SharedAttributeContainer {
 public:
@@ -430,7 +446,7 @@ public:
 };
 
 /**
- * resource capacity of an object, trees, mines, villagers etc.
+ * Resource capacity of a trees, mines, animal, worker etc.
  */
 template<> class Attribute<attr_type::resource>: public UnsharedAttributeContainer {
 public:
@@ -467,10 +483,19 @@ public:
 		return std::make_shared<Attribute<attr_type::worker>>(*this);
 	}
 
+	/**
+	 * The max number of resources that can be carried.
+	 */
 	double capacity;
-	double gather_rate;
+
+	/**
+	 * The gather rate for each resource.
+	 * The ResourceBundle class is used but instead of amounts it stores gather rates.
+	 */
+	ResourceBundle gather_rate;
 
 	// texture sets available for each resource
+	// TODO move elsewhere
 	std::unordered_map<gamedata::unit_classes, UnitType *> graphics;
 };
 
@@ -488,6 +513,9 @@ public:
 		return std::make_shared<Attribute<attr_type::garrison>>(*this);
 	}
 
+	/**
+	 * The units that are garrisoned.
+	 */
 	std::vector<UnitReference> content;
 };
 

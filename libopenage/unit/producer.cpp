@@ -421,8 +421,11 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 
 		// add graphic ids for resource actions
 		auto &worker_attr = unit->get_attribute<attr_type::worker>();
-		worker_attr.capacity = 10.0f;
-		worker_attr.gather_rate = 0.002f;
+		worker_attr.capacity = 10.0;
+		worker_attr.gather_rate[game_resource::wood] = 0.002;
+		worker_attr.gather_rate[game_resource::food] = 0.002;
+		worker_attr.gather_rate[game_resource::gold] = 0.002;
+		worker_attr.gather_rate[game_resource::stone] = 0.002;
 
 		// currently not sure where the game data keeps these values
 		// todo PREY_ANIMAL SEA_FISH
@@ -457,8 +460,8 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 
 		// add fishing abilites
 		auto &worker_attr = unit->get_attribute<attr_type::worker>();
-		worker_attr.capacity = 15.0f;
-		worker_attr.gather_rate = 0.002f;
+		worker_attr.capacity = 15.0;
+		worker_attr.gather_rate[game_resource::food] = 0.002;
 		worker_attr.graphics[gamedata::unit_classes::SEA_FISH] = this;
 
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));

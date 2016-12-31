@@ -924,7 +924,6 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	Unit *target = this->target.get();
 	this->resource_class = target->unit_type->unit_class;
 	auto &worker = this->entity->get_attribute<attr_type::worker>();
-	auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
 
 	// handle unit type changes based on resource class
 	if (worker.graphics.count(this->resource_class) > 0) {
@@ -934,6 +933,7 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 	}
 
 	// set the type of gatherer
+	auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
 	if (target->has_attribute(attr_type::resource)) {
 		auto &resource_attr = target->get_attribute<attr_type::resource>();
 		if (worker_resource.resource_type != resource_attr.resource_type) {
@@ -998,7 +998,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 			else {
 
 				// transfer using gather rate
-				double amount = worker.gather_rate * time;
+				double amount = worker.gather_rate[worker_resource.resource_type] * time;
 				worker_resource.amount += amount;
 				resource_attr.amount -= amount;
 			}
