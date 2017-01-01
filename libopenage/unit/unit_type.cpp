@@ -29,6 +29,11 @@ UnitType::UnitType(const Player &owner)
 	owner{owner} {
 }
 
+void UnitType::reinitialise(Unit *unit, Player &player) {
+	// TODO implement it
+	this->initialise(unit, player);
+}
+
 bool UnitType::operator==(const UnitType &other) const {
 	return this->type_abilities == other.type_abilities;
 }
@@ -101,7 +106,7 @@ std::string NyanType::name() const {
 }
 
 void NyanType::initialise(Unit *unit, Player &) {
-	// reset any existing attributes and type
+	// removes all actions and abilities
 	unit->reset();
 
 	// initialise unit

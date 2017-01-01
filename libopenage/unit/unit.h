@@ -174,10 +174,17 @@ public:
 	void add_attribute(std::shared_ptr<AttributeContainer> attr);
 
 	/**
-	 * give a new attributes this this unit
-	 * this is used to add the default attributes
+	 * Give new attributes to this unit.
+	 * This is used to add the default attributes
 	 */
 	void add_attributes(const Attributes &attr);
+
+	/**
+	 * Give new attributes to this unit.
+	 * If shared is false, shared attributes are ignored.
+	 * If unshared is false, unshared attributes are ignored.
+	 */
+	void add_attributes(const Attributes &attr, bool shared, bool unshared);
 
 	/**
 	 * returns whether attribute is available

@@ -754,12 +754,8 @@ BuildAction::BuildAction(Unit *e, UnitReference foundation)
 	build_rate{.0001f} {
 
 	// update the units type
-	auto &worker = this->entity->get_attribute<attr_type::worker>();
-	auto building_class = gamedata::unit_classes::BUILDING;
-	if (worker.graphics.count(building_class) > 0) {
-		auto *new_type = worker.graphics.at(building_class);
-		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		new_type->initialise(this->entity, pl_attr.player);
+	if (this->entity->has_attribute(attr_type::multitype)) {
+		this->entity->get_attribute<attr_type::multitype>().switchType(gamedata::unit_classes::BUILDING, this->entity);
 	}
 }
 
@@ -827,25 +823,6 @@ void BuildAction::on_completion() {
 	} else {
 		this->entity->log(MSG(dbg) << "Didn't find new building");
 	}
-}
-
-const graphic_set &BuildAction::current_graphics() const {
-	if (this->entity->has_attribute(attr_type::worker)) {
-
-		// the worker attributes attached to the unit
-		// are used to modify the graphic
-		auto &worker = this->entity->get_attribute<attr_type::worker>();
-
-		if (this->get_target().is_valid() &&
-		    this->get_target().get()->has_attribute(attr_type::building)) {
-
-			// set builder graphics if available
-			if (worker.graphics.count(gamedata::unit_classes::BUILDING) > 0) {
-				return worker.graphics[gamedata::unit_classes::BUILDING]->graphics;
-			}
-		}
-	}
-	return this->entity->unit_type->graphics;
 }
 
 RepairAction::RepairAction(Unit *e, UnitReference tar)
@@ -923,13 +900,10 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 
 	Unit *target = this->target.get();
 	this->resource_class = target->unit_type->unit_class;
-	auto &worker = this->entity->get_attribute<attr_type::worker>();
 
 	// handle unit type changes based on resource class
-	if (worker.graphics.count(this->resource_class) > 0) {
-		auto *new_type = worker.graphics.at(this->resource_class);
-		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		new_type->initialise(this->entity, pl_attr.player);
+	if (this->entity->has_attribute(attr_type::multitype)) {
+		this->entity->get_attribute<attr_type::multitype>().switchType(this->resource_class, this->entity);
 	}
 
 	// set the type of gatherer
@@ -1057,22 +1031,19 @@ UnitReference GatherAction::nearest_dropsite(game_resource res_type) {
 	}
 }
 
-const graphic_set &GatherAction::current_graphics() const {
-	return this->entity->unit_type->graphics;
-}
-
 AttackAction::AttackAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::attack, tar, get_attack_range(e)},
 	strike_percent{0.0f},
 	rate_of_fire{0.002f} {
 
-	// switch graphic type for villagers not collecting resources
+	// check if attacking a non resource unit
 	if (this->entity->has_attribute(attr_type::worker) &&
 	    (!tar.get()->has_attribute(attr_type::resource) || tar.get()->has_attribute(attr_type::worker))) {
-		auto &att_attr = this->entity->get_attribute<attr_type::attack>();
-		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		att_attr.attack_type->initialise(this->entity, pl_attr.player);
+		// switch to default villager graphics
+		if (this->entity->has_attribute(attr_type::multitype)) {
+			this->entity->get_attribute<attr_type::multitype>().switchType(gamedata::unit_classes::CIVILIAN, this->entity);
+		}
 	}
 }
 

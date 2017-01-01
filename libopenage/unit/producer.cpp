@@ -380,15 +380,14 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 
 	// projectile of melee attacks
 	UnitType *proj_type = this->owner.get_type(this->projectile);
-	UnitType *reset_type = this->parent_type();
 	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
 
 		// calculate requirements for ranged attacks
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
-		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 48000, 1, reset_type));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 48000, 1));
 	}
 	else {
-		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(nullptr, 0, 0, 1, reset_type));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(nullptr, 0, 0, 1));
 	}
 }
 
@@ -418,6 +417,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::worker>>());
 		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>());
+		unit->add_attribute(std::make_shared<Attribute<attr_type::multitype>>());
 
 		// add graphic ids for resource actions
 		auto &worker_attr = unit->get_attribute<attr_type::worker>();
@@ -427,28 +427,31 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 		worker_attr.gather_rate[game_resource::gold] = 0.002;
 		worker_attr.gather_rate[game_resource::stone] = 0.002;
 
+		auto &multitype_attr = unit->get_attribute<attr_type::multitype>();
 		// currently not sure where the game data keeps these values
 		// todo PREY_ANIMAL SEA_FISH
 		if (this->parent_id() == 83) {
 
 			// male graphics
-			worker_attr.graphics[gamedata::unit_classes::BUILDING] = this->owner.get_type(156); // builder 118
-			worker_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(120); // forager
-			worker_attr.graphics[gamedata::unit_classes::SHEEP] = this->owner.get_type(592); // sheperd
-			worker_attr.graphics[gamedata::unit_classes::TREES] = this->owner.get_type(123); // woodcutter
-			worker_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(579); // gold miner
-			worker_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(124); // stone miner
+			multitype_attr.types[gamedata::unit_classes::CIVILIAN] = this->parent_type(); // get default villager
+			multitype_attr.types[gamedata::unit_classes::BUILDING] = this->owner.get_type(156); // builder 118
+			multitype_attr.types[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(120); // forager
+			multitype_attr.types[gamedata::unit_classes::SHEEP] = this->owner.get_type(592); // sheperd
+			multitype_attr.types[gamedata::unit_classes::TREES] = this->owner.get_type(123); // woodcutter
+			multitype_attr.types[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(579); // gold miner
+			multitype_attr.types[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(124); // stone miner
 
 		}
 		else {
 
 			// female graphics
-			worker_attr.graphics[gamedata::unit_classes::BUILDING] = this->owner.get_type(222); // builder 212
-			worker_attr.graphics[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(354); // forager
-			worker_attr.graphics[gamedata::unit_classes::SHEEP] = this->owner.get_type(590); // sheperd
-			worker_attr.graphics[gamedata::unit_classes::TREES] = this->owner.get_type(218); // woodcutter
-			worker_attr.graphics[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(581); // gold miner
-			worker_attr.graphics[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(220); // stone miner
+			multitype_attr.types[gamedata::unit_classes::CIVILIAN] = this->parent_type(); // get default villager
+			multitype_attr.types[gamedata::unit_classes::BUILDING] = this->owner.get_type(222); // builder 212
+			multitype_attr.types[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(354); // forager
+			multitype_attr.types[gamedata::unit_classes::SHEEP] = this->owner.get_type(590); // sheperd
+			multitype_attr.types[gamedata::unit_classes::TREES] = this->owner.get_type(218); // woodcutter
+			multitype_attr.types[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(581); // gold miner
+			multitype_attr.types[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(220); // stone miner
 		}
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 		unit->give_ability(std::make_shared<BuildAbility>(this->on_attack));
@@ -462,7 +465,6 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 		auto &worker_attr = unit->get_attribute<attr_type::worker>();
 		worker_attr.capacity = 15.0;
 		worker_attr.gather_rate[game_resource::food] = 0.002;
-		worker_attr.graphics[gamedata::unit_classes::SEA_FISH] = this;
 
 		unit->give_ability(std::make_shared<GatherAbility>(this->on_attack));
 	}
@@ -567,7 +569,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	UnitType *proj_type = this->owner.get_type(this->projectile);
 	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
-		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1, this));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1));
 		unit->give_ability(std::make_shared<AttackAbility>());
 	}
 

@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
@@ -248,6 +248,10 @@ void Unit::add_attribute(std::shared_ptr<AttributeContainer> attr) {
 
 void Unit::add_attributes(const Attributes &attr) {
 	this->attributes.addCopies(attr);
+}
+
+void Unit::add_attributes(const Attributes &attr, bool shared, bool unshared) {
+	this->attributes.addCopies(attr, shared, unshared);
 }
 
 bool Unit::has_attribute(attr_type type) const {

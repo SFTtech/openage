@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -70,6 +70,7 @@ enum class attr_type {
 	dropsite,
 	resource,
 	worker,
+	multitype,
 	garrison
 };
 
@@ -130,6 +131,13 @@ public:
 	 * Add copies of all the attributes from the given Attributes.
 	 */
 	void addCopies(const Attributes &attrs);
+
+	/**
+	 * Add copies of all the attributes from the given Attributes.
+	 * If shared is false, shared attributes are ignored.
+	 * If unshared is false, unshared attributes are ignored.
+	 */
+	void addCopies(const Attributes &attrs, bool shared, bool unshared);
 
 	/**
 	 * Remove an attribute based on the type.
@@ -282,19 +290,18 @@ template<> class Attribute<attr_type::attack>: public UnsharedAttributeContainer
 public:
 	// TODO remove (keep for testing)
 	// 4 = gamedata::hit_class::UNITS_MELEE (not exported at the moment)
-	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d, UnitType *reset_type)
+	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d)
 		:
-		Attribute{type, r, h, {{4, d}}, reset_type} {}
+		Attribute{type, r, h, {{4, d}}} {}
 
-	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d, UnitType *reset_type)
+	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d)
 		:
 		UnsharedAttributeContainer{attr_type::attack},
 		ptype{type},
 		range{r},
 		init_height{h},
 		damage{d},
-		stance{attack_stance::do_nothing},
-		attack_type{reset_type} {}
+		stance{attack_stance::do_nothing} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::attack>>(*this);
@@ -310,10 +317,6 @@ public:
 
 	// TODO move elsewhere in order to become shared attribute
 	attack_stance stance;
-
-	// TODO move elsewhere in order to become shared attribute
-	// used to change graphics back to normal for villagers
-	UnitType *attack_type;
 };
 
 /**
@@ -468,16 +471,14 @@ public:
 	double amount;
 };
 
-class UnitTexture;
-
 /**
  * The worker's capacity and gather rates.
  */
-template<> class Attribute<attr_type::worker>: public UnsharedAttributeContainer {
+template<> class Attribute<attr_type::worker>: public SharedAttributeContainer {
 public:
 	Attribute()
 		:
-		UnsharedAttributeContainer{attr_type::worker} {}
+		SharedAttributeContainer{attr_type::worker} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::worker>>(*this);
@@ -493,10 +494,33 @@ public:
 	 * The ResourceBundle class is used but instead of amounts it stores gather rates.
 	 */
 	ResourceBundle gather_rate;
+};
 
-	// texture sets available for each resource
-	// TODO move elsewhere
-	std::unordered_map<gamedata::unit_classes, UnitType *> graphics;
+class Unit;
+
+/**
+ * Stores the collection of unit types based on a unit class.
+ * It is used mostly for units with multiple graphics (villagers, trebuchets).
+ */
+template<> class Attribute<attr_type::multitype>: public SharedAttributeContainer {
+public:
+	Attribute()
+		:
+		SharedAttributeContainer{attr_type::multitype} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::multitype>>(*this);
+	}
+
+	/**
+	 * Switch the type of a unit based on a given unit class
+	 */
+	void switchType(const gamedata::unit_classes cls, Unit *unit) const;
+
+	/**
+	 * The collection of unit class to unit type pairs
+	 */
+	std::unordered_map<gamedata::unit_classes, UnitType *> types;
 };
 
 /**

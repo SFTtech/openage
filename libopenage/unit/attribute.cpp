@@ -1,6 +1,8 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #include "attribute.h"
+#include "unit.h"
+#include "unit_type.h"
 
 namespace openage {
 
@@ -8,15 +10,21 @@ void Attributes::add(const std::shared_ptr<AttributeContainer> attr) {
 	this->attrs[attr->type] = attr;
 }
 
-void Attributes::addCopies(const Attributes & other) {
-	for (const auto &i : other.attrs) {
-		const auto &attr = *i.second.get();
+void Attributes::addCopies(const Attributes &other) {
+	this->addCopies(other, true, true);
+}
+
+void Attributes::addCopies(const Attributes &other, bool shared, bool unshared) {
+	for (auto &i : other.attrs) {
+		auto &attr = *i.second.get();
 
 		if (attr.shared()) {
-			// pass self
-			this->add(i.second);
+			if (shared) {
+				// pass self
+				this->add(i.second);
+			}
 		}
-		else {
+		else if(unshared) {
 			// create copy
 			this->add(attr.copy());
 		}
@@ -38,6 +46,14 @@ std::shared_ptr<AttributeContainer> Attributes::get(const attr_type type) const 
 template<attr_type T>
 Attribute<T> &Attributes::get() const {
 	return *reinterpret_cast<Attribute<T> *>(this->attrs.at(T).get());
+}
+
+void Attribute<attr_type::multitype>::switchType(const gamedata::unit_classes cls, Unit *unit) const {
+	auto search = this->types.find(cls);
+	if (search != this->types.end()) {
+		auto &player = unit->get_attribute<attr_type::owner>();
+		search->second->reinitialise(unit, player.player);
+	}
 }
 
 } /* namespace openage */
