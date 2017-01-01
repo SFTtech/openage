@@ -246,6 +246,12 @@ public:
 	 */
 	std::string logsource_name() override;
 
+	/**
+	 * Unit attributes include color, hitpoints, speed, objects garrisoned etc
+	 * contains 0 or 1 values for each type
+	 */
+	Attributes attributes;
+
 private:
 	/**
 	 * ability available -- actions that this entity
@@ -275,13 +281,6 @@ private:
 	 * mutex controlling updates to the command queue
 	 */
 	std::mutex command_queue_lock;
-
-
-	/**
-	 * Unit attributes include color, hitpoints, speed, objects garrisoned etc
-	 * contains 0 or 1 values for each type
-	 */
-	Attributes attributes;
 
 
 	/**

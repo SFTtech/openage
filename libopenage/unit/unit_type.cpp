@@ -30,8 +30,15 @@ UnitType::UnitType(const Player &owner)
 }
 
 void UnitType::reinitialise(Unit *unit, Player &player) {
-	// TODO implement it
+	// In case reinitialise is not implemented separately
+
+	Attributes tmp;
+	// copy only unshared
+	tmp.addCopies(unit->attributes, false, true);
+	// initialise the new unit
 	this->initialise(unit, player);
+	// replace new unshared attributes with the old
+	unit->attributes.addCopies(tmp);
 }
 
 bool UnitType::operator==(const UnitType &other) const {
