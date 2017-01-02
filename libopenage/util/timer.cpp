@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include "timer.h"
 
