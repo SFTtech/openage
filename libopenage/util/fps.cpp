@@ -19,8 +19,6 @@ FrameCounter::FrameCounter()
 	frame_timer{false} {
 }
 
-FrameCounter::~FrameCounter() {}
-
 
 void FrameCounter::frame() {
 	this->nsec_lastframe = this->frame_timer.getandresetval();

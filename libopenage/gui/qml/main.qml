@@ -44,6 +44,8 @@ Item {
 
 		dataDir: MainArgs.dataDir
 
+		engine: Engine
+
 		LR.tag: "am"
 	}
 

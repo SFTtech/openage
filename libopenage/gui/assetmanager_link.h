@@ -9,6 +9,7 @@
 namespace openage {
 namespace gui {
 class AssetManagerLink;
+class EngineLink;
 }} // namespace openage::gui
 
 namespace qtsdl {
@@ -31,6 +32,7 @@ class AssetManagerLink : public qtsdl::GuiItemQObject, public qtsdl::GuiItem<Ass
 	Q_OBJECT
 
 	Q_PROPERTY(QString dataDir READ get_data_dir WRITE set_data_dir)
+	Q_PROPERTY(openage::gui::EngineLink *engine READ get_engine WRITE set_engine)
 
 public:
 	explicit AssetManagerLink(QObject *parent=nullptr);
@@ -39,8 +41,12 @@ public:
 	QString get_data_dir() const;
 	void set_data_dir(const QString &data_dir);
 
+	EngineLink *get_engine() const;
+	void set_engine(EngineLink *engine);
+
 private:
 	QString data_dir;
+	EngineLink *engine;
 };
 
 }} // namespace openage::gui

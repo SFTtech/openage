@@ -471,7 +471,6 @@ TerrainObject *LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrai
 BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_building *ud)
 	:
 	UnitType(owner),
-	dataspec(spec),
 	unit_data{*ud},
 	texture{spec.get_unit_texture(ud->graphic_standing0)},
 	destroyed{spec.get_unit_texture(ud->graphic_dying0)},

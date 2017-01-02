@@ -109,8 +109,6 @@ void Texture::load() {
 		strncpy(meta_filename, filename.c_str(), m_len - 5);
 		strncpy(meta_filename + m_len - 5, "docx", 5);
 
-		log::log(MSG(info) << "Loading meta file: " << meta_filename);
-
 		// get subtexture information by meta file exported by script
 		util::read_csv_file(meta_filename, this->subtextures);
 

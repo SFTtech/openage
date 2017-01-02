@@ -8,6 +8,20 @@
 #include "../util/init.h"
 
 
+
+namespace openage {
+namespace error {
+
+/**
+ * Skip this many stack frames,
+ * this drops the stackanalyzer function call itself.
+ */
+constexpr int skip_frames = 1;
+
+}} // openage::error
+
+
+
 #if WITH_BACKTRACE
 
 // use modern <backtrace.h>
@@ -15,6 +29,7 @@
 
 namespace openage {
 namespace error {
+
 
 // those functions are for internal usage only.
 namespace {
@@ -128,7 +143,7 @@ void backtrace_pcinfo_error_callback(void *data, const char *msg, int errorno) {
 void StackAnalyzer::analyze() {
 	backtrace_simple(
 		bt_state,
-		1,                              // skip this many stack frames
+		skip_frames,                       // skip this many stack frames
 		backtrace_simple_callback,
 		backtrace_error_callback,
 		reinterpret_cast<void *>(this)
@@ -181,7 +196,7 @@ void StackAnalyzer::analyze() {
 	// unfortunately, backtrace won't tell us how big our buffer
 	// needs to be, so we have no choice but to try until it
 	// reports success.
-	std::vector<void *> buffer{16};
+	std::vector<void *> buffer{32};
 	while (true) {
 		int elements = backtrace(buffer.data(), buffer.size());
 		if (elements < (ssize_t) buffer.size()) {
@@ -193,6 +208,10 @@ void StackAnalyzer::analyze() {
 
 	for (void *element : buffer) {
 		this->stack_addrs.push_back(element);
+	}
+
+	for (int i = 0; i < skip_frames; i++) {
+		this->stack_addrs.pop_back();
 	}
 }
 

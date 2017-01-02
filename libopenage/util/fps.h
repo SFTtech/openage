@@ -10,7 +10,7 @@ namespace util {
 class FrameCounter {
 public:
 	FrameCounter();
-	~FrameCounter();
+	~FrameCounter() = default;
 
 	/** to be called each time a frame has been completed */
 	void frame();
@@ -19,10 +19,10 @@ public:
 	float fps;
 
 	/** contains the number of completed frames */
-	unsigned count;
+	uint64_t count;
 
 	/** nanoseconds used for the last frame */
-	int64_t nsec_lastframe;
+	time_nsec_t nsec_lastframe;
 
 private:
 	float frame_count_weighted;

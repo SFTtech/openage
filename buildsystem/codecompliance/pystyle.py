@@ -5,9 +5,9 @@ Checks PEP8 compliance, with some exceptions.
 """
 
 try:
-    from pep8 import StyleGuide
-except ImportError:
     from pycodestyle import StyleGuide
+except ImportError:
+    from pep8 import StyleGuide
 
 
 # these errors will be ignored by pep8

@@ -13,6 +13,7 @@ GameMain::GameMain(const Generator &generator)
 	:
 	OptionNode{"GameMain"},
 	terrain{generator.terrain()},
+	placed_units{},
 	spec{generator.get_spec()} {
 
 	// players
@@ -56,8 +57,8 @@ GameSpec *GameMain::get_spec() {
 	return this->spec.get();
 }
 
-void GameMain::update() {
-	this->placed_units.update_all();
+void GameMain::update(time_nsec_t lastframe_duration) {
+	this->placed_units.update_all(lastframe_duration);
 }
 
 Civilisation *GameMain::add_civ(int civ_id) {
@@ -74,7 +75,6 @@ GameMainHandle::GameMainHandle(qtsdl::GuiItemLink *gui_link)
 }
 
 void GameMainHandle::set_engine(Engine *engine) {
-	// TODO: decide to either go for a full Engine QML-singleton or for a regular object
 	ENSURE(!this->engine || this->engine == engine, "relinking GameMain to another engine is not supported and not caught properly");
 	this->engine = engine;
 }
@@ -87,21 +87,26 @@ void GameMainHandle::clear() {
 	}
 }
 
-void GameMainHandle::set_game(std::unique_ptr<GameMain> game) {
+void GameMainHandle::set_game(std::unique_ptr<GameMain> &&game) {
 	if (this->engine) {
 		ENSURE(game, "linking game to engine problem");
+
+		// remember the pointer
 		this->game = game.get();
+
+		// then pass on the game to the engine
 		this->engine->start_game(std::move(game));
+
 		announce_running();
 	}
 }
 
-GameMain* GameMainHandle::get_game() const {
+GameMain *GameMainHandle::get_game() const {
 	return this->game;
 }
 
 bool GameMainHandle::is_game_running() const {
-	return this->game;
+	return this->game != nullptr;
 }
 
 void GameMainHandle::announce_running() {

@@ -15,11 +15,12 @@
 
 namespace openage {
 
-UnitSelection::UnitSelection()
+UnitSelection::UnitSelection(Engine *engine)
 	:
 	selection_type{selection_type_t::nothing},
 	drag_active{false},
-	font_size{12} {
+	font_size{12},
+	engine{engine} {
 }
 
 bool UnitSelection::on_drawhud() {
@@ -296,12 +297,11 @@ void UnitSelection::show_attributes(Unit *u) {
 	}
 
 	// render text
-	Engine &engine = Engine::get();
 	int vpos = 160;
-	engine.render_text({0, vpos}, 20, "%s", u->unit_type->name().c_str());
+	this->engine->render_text({0, vpos}, 20, "%s", u->unit_type->name().c_str());
 	for (auto &s : lines) {
 		vpos -= this->font_size;
-		engine.render_text({0, vpos}, this->font_size, "%s", s.c_str());
+		engine->render_text({0, vpos}, this->font_size, "%s", s.c_str());
 	}
 }
 

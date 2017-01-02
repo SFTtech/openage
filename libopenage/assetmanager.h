@@ -16,6 +16,7 @@ class GuiItemLink;
 
 namespace openage {
 
+class Engine;
 class Texture;
 
 /**
@@ -30,6 +31,17 @@ public:
 
 	std::string get_data_dir_string() const;
 	void set_data_dir_string(const std::string& data_dir);
+
+	/**
+	 * Set the game engine of this asset manager.
+	 * Called from QML.
+	 */
+	void set_engine(Engine *engine);
+
+	/**
+	 * Return the engine responsible for this asset manager.
+	 */
+	Engine *get_engine() const;
 
 	/**
 	 * Test whether a requested asset filename can be loaded.
@@ -65,6 +77,11 @@ protected:
 
 private:
 	void clear();
+
+	/**
+	 * The engine this asset manager is attached to.
+	 */
+	Engine *engine;
 
 	/**
 	 * The root directory for the available assets.

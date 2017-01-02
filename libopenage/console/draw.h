@@ -3,6 +3,9 @@
 #pragma once
 
 namespace openage {
+
+class Engine;
+
 namespace util {
 class FD;
 } // openage::util
@@ -17,7 +20,7 @@ namespace draw {
 /**
  * experimental and totally inefficient opengl draw of a terminal buffer.
  */
-void to_opengl(Console *console);
+void to_opengl(Engine *engine, Console *console);
 
 /**
  * very early and inefficient printing of the console to a pty.

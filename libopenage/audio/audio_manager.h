@@ -17,35 +17,27 @@
 #include "../gamedata/sound_file.gen.h"
 
 namespace openage {
+
+class Engine;
+
+namespace job {
+class JobManager;
+}
+
+
 namespace audio {
 
-/*
- * This class provides audio functionality.
+/**
+ * This class provides audio functionality for openage.
  */
 class AudioManager {
-private:
-	// the used audio device's name
-	std::string device_name;
-
-	// the audio output format
-	SDL_AudioSpec device_spec;
-	// the used audio device's id
-	SDL_AudioDeviceID device_id;
-
-	std::unique_ptr<int32_t[]> mix_buffer;
-
-	std::unordered_map<std::tuple<category_t,int>,std::shared_ptr<Resource>>
-			resources;
-
-	std::unordered_map<category_t,std::vector<std::shared_ptr<SoundImpl>>>
-			playing_sounds;
-
 public:
-	AudioManager();
+	AudioManager(job::JobManager *job_manager);
 
-	// pass empty device name to indicate, that the default device should be
-	// used
-	AudioManager(const std::string &device_name);
+	/**
+	 * Pass empty device name to indicate, that the default device should be used
+	 */
+	AudioManager(job::JobManager *job_manager, const std::string &device_name);
 
 	~AudioManager();
 
@@ -77,6 +69,11 @@ public:
 	 */
 	SDL_AudioSpec get_device_spec() const;
 
+	/**
+	 * Return the game engine the audio manager is attached to.
+	 */
+	job::JobManager *get_job_manager() const;
+
 private:
 	void add_sound(std::shared_ptr<SoundImpl> sound);
 	void remove_sound(std::shared_ptr<SoundImpl> sound);
@@ -85,8 +82,33 @@ private:
 	// add and remove sound method's
 	friend class Sound;
 
-// static functions
+	/**
+	 * The job manager used in this audio manager for job queuing.
+	 */
+	job::JobManager *job_manager;
 
+	/**
+	 * the used audio device's name
+	 */
+	std::string device_name;
+
+	/**
+	 * the audio output format
+	 */
+	SDL_AudioSpec device_spec;
+
+	/**
+	 * the used audio device's id
+	 */
+	SDL_AudioDeviceID device_id;
+
+	std::unique_ptr<int32_t[]> mix_buffer;
+
+	std::unordered_map<std::tuple<category_t,int>,std::shared_ptr<Resource>> resources;
+
+	std::unordered_map<category_t,std::vector<std::shared_ptr<SoundImpl>>> playing_sounds;
+
+// static functions
 public:
 	/**
 	 * Returns a vector of all available device names.
@@ -102,7 +124,6 @@ public:
 	 * Returns the name of the currently used driver.
 	 */
 	static std::string get_current_driver();
-
 };
 
 }

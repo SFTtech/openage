@@ -7,9 +7,9 @@
 #include <unistd.h>
 #include <sstream>
 
-#include "console/console.h"
 #include "coord/vec2f.h"
 #include "engine.h"
+#include "gamedata/color.gen.h"
 #include "gamestate/game_main.h"
 #include "gamestate/game_spec.h"
 #include "input/input_manager.h"
@@ -23,7 +23,6 @@
 #include "util/timer.h"
 #include "util/externalprofiler.h"
 #include "renderer/text.h"
-
 #include "game_renderer.h"
 
 namespace openage {
@@ -36,9 +35,8 @@ RenderOptions::RenderOptions()
 	terrain_blending{this, "terrain_blending", true} {
 }
 
-GameRenderer::GameRenderer(openage::Engine *e)
+GameRenderer::GameRenderer(Engine *e)
 	:
-
 	engine{e} {
 
 	// set options structure
@@ -151,7 +149,6 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	glUniform1i(alphamask_shader::mask_texture, 1);
 	alphamask_shader::program->stopusing();
 
-
 	// Create program for texture based font rendering
 	texturefont_shader::program = new shader::Program(texturefont_vert, texturefont_frag);
 	texturefont_shader::program->link();
@@ -161,6 +158,7 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	texturefont_shader::program->use();
 	glUniform1i(texturefont_shader::texture, 0);
 	texturefont_shader::program->stopusing();
+
 
 	// after linking, the shaders are no longer necessary
 	delete plaintexture_vert;
@@ -174,7 +172,7 @@ GameRenderer::GameRenderer(openage::Engine *e)
 	// Renderer keybinds
 	// TODO: a renderer settings struct
 	// would allow these to be put somewher better
-	input::ActionManager &action = Engine::get().get_action_manager();
+	input::ActionManager &action = this->engine->get_action_manager();
 	auto &global_input_context = engine->get_input_manager().get_global_context();
 	global_input_context.bind(action.get("TOGGLE_BLENDING"), [this](const input::action_arg_t &) {
 		this->settings.terrain_blending.value = !this->settings.terrain_blending.value;
@@ -200,18 +198,16 @@ GameRenderer::~GameRenderer() {
 }
 
 bool GameRenderer::on_draw() {
-	Engine &engine = Engine::get();
-
 	// draw terrain
-	GameMain *game = engine.get_game();
-	if (game) {
+	GameMain *game = this->engine->get_game();
 
+	if (game) {
 		// draw gaben, our great and holy protector, bringer of the half-life 3.
 		gaben->draw(coord::camgame{0, 0});
 
 		// TODO move render code out of terrain
 		if (game->terrain) {
-			game->terrain->draw(&engine, &this->settings);
+			game->terrain->draw(this->engine, &this->settings);
 		}
 
 		if (this->settings.draw_grid.value) {
@@ -222,15 +218,13 @@ bool GameRenderer::on_draw() {
 }
 
 void GameRenderer::draw_debug_grid() {
-	Engine &e = Engine::get();
-
 	coord::camgame camera = coord::tile{0, 0}.to_tile3().to_phys3().to_camgame();
 
-	int cam_offset_x = util::mod(camera.x, e.engine_coord_data->tile_halfsize.x * 2);
-	int cam_offset_y = util::mod(camera.y, e.engine_coord_data->tile_halfsize.y * 2);
+	int cam_offset_x = util::mod(camera.x, this->engine->get_coord_data()->tile_halfsize.x * 2);
+	int cam_offset_y = util::mod(camera.y, this->engine->get_coord_data()->tile_halfsize.y * 2);
 
-	int line_half_width = e.engine_coord_data->window_size.x / 2;
-	int line_half_height = e.engine_coord_data->window_size.y / 2;
+	int line_half_width = this->engine->get_coord_data()->window_size.x / 2;
+	int line_half_height = this->engine->get_coord_data()->window_size.y / 2;
 
 	// rounding so we get 2:1 proportion needed for the isometric perspective
 
@@ -247,10 +241,10 @@ void GameRenderer::draw_debug_grid() {
 	}
 
 	// quantity of lines to draw to each side from the center
-	int k = line_half_width / (e.engine_coord_data->tile_halfsize.x);
+	int k = line_half_width / (this->engine->get_coord_data()->tile_halfsize.x);
 
-	int tilesize_x = e.engine_coord_data->tile_halfsize.x * 2;
-	int common_x   = cam_offset_x + e.engine_coord_data->tile_halfsize.x;
+	int tilesize_x = this->engine->get_coord_data()->tile_halfsize.x * 2;
+	int common_x   = cam_offset_x + this->engine->get_coord_data()->tile_halfsize.x;
 	int x0         = common_x     - line_half_width;
 	int x1         = common_x     + line_half_width;
 	int y0         = cam_offset_y - line_half_height;
@@ -269,7 +263,6 @@ void GameRenderer::draw_debug_grid() {
 		}
 
 	} glEnd();
-
 }
 
 GameMain *GameRenderer::game() const {

@@ -22,8 +22,9 @@ namespace console {
  * log console, command console
  */
 
-Console::Console()
+Console::Console(Engine *engine)
 	:
+	engine{engine},
 	bottomleft{0, 0},
 	topright{1, 1},
 	charsize{1, 1},
@@ -40,8 +41,8 @@ Console::Console()
 	log::log(MSG(dbg) << "Console font character size: " << charsize.x << "x" << charsize.y);
 
 	// Adjust the corners of the console based on the default buffer size and char size
-	topright.x = charsize.x * buf.dims.x;
-	topright.y = charsize.y * buf.dims.y;
+	topright.x = charsize.x * this->buf.get_dims().x;
+	topright.y = charsize.y * this->buf.get_dims().y;
 }
 
 Console::~Console () {}
@@ -56,24 +57,25 @@ void Console::load_colors(std::vector<gamedata::palette_color> &colortable) {
 	}
 }
 
-void Console::register_to_engine(Engine *engine) {
-	engine->register_input_action(this);
-	engine->register_tick_action(this);
-	engine->register_drawhud_action(this);
-	engine->register_resize_action(this);
-
-	// TODO bind any needed input to InputContext
+void Console::register_to_engine() {
+	this->engine->register_input_action(this);
+	this->engine->register_tick_action(this);
+	this->engine->register_drawhud_action(this);
+	this->engine->register_resize_action(this);
 
 	// Bind the console toggle key globally
-	auto &action = engine->get().get_action_manager();
-	auto &input = engine->get_input_manager();
-	auto &global = input.get_global_context();
-	global.bind(action.get("TOGGLE_CONSOLE"), [this, &input](const input::action_arg_t &) {
+	auto &action = this->engine->get_action_manager();
+	auto &global = this->engine->get_input_manager().get_global_context();
+
+	global.bind(action.get("TOGGLE_CONSOLE"), [this](const input::action_arg_t &) {
 		this->set_visible(!this->visible);
 	});
 
+
+	// TODO: bind any needed input to InputContext
+
 	// toggle console will take highest priority
-	this->input_context.bind(action.get("TOGGLE_CONSOLE"), [this, &input](const input::action_arg_t &) {
+	this->input_context.bind(action.get("TOGGLE_CONSOLE"), [this](const input::action_arg_t &) {
 		this->set_visible(false);
 	});
 	this->input_context.bind(input::event_class::UTF8, [this](const input::action_arg_t &arg) {
@@ -93,26 +95,25 @@ void Console::register_to_engine(Engine *engine) {
 				return true;
 
 			case 13: // interpret command
-	 			this->buf.write('\n');
-	 			this->interpret(this->command);
-	 			this->command = "";
-	 			return true;
+				this->buf.write('\n');
+				this->interpret(this->command);
+				this->command = "";
+				return true;
 
 			default:
 				return false;
- 		}
+		}
 	});
 	this->input_context.utf8_mode = true;
 }
 
 void Console::set_visible(bool make_visible) {
-	Engine &e = Engine::get();
 	if (make_visible) {
-		e.get_input_manager().register_context(&this->input_context);
+		this->engine->get_input_manager().push_context(&this->input_context);
 		this->visible = true;
 	}
 	else {
-		e.get_input_manager().remove_context(&this->input_context);
+		this->engine->get_input_manager().remove_context(&this->input_context);
 		this->visible = false;
 	}
 }
@@ -127,8 +128,7 @@ void Console::interpret(const std::string &command) {
 		this->set_visible(false);
 	}
 	else if (command == "list") {
-		Engine &e = Engine::get();
-		for (auto &line : e.list_options()) {
+		for (auto &line : this->engine->list_options()) {
 			this->write(line.c_str());
 		}
 	}
@@ -138,14 +138,14 @@ void Console::interpret(const std::string &command) {
 		if (first_space != std::string::npos && second_space != std::string::npos) {
 			std::string name = command.substr(first_space+1, second_space-first_space-1);
 			std::string value = command.substr(second_space+1, std::string::npos);
-			Engine::get().get_cvar_manager().set(name,value);
+			this->engine->get_cvar_manager().set(name,value);
 		}
 	}
 	else if (command.substr(0,3) == "get") {
 		std::size_t first_space = command.find(" ");
 		if (first_space != std::string::npos) {
 			std::string name = command.substr(first_space+1, std::string::npos);
-			std::string value = Engine::get().get_cvar_manager().get(name);
+			std::string value = this->engine->get_cvar_manager().get(name);
 			this->write(value.c_str());
 		}
 	}
@@ -166,7 +166,7 @@ bool Console::on_drawhud() {
 		return true;
 	}
 
-	draw::to_opengl(this);
+	draw::to_opengl(this->engine, this);
 
 	return true;
 }
@@ -190,8 +190,8 @@ bool Console::on_input(SDL_Event *e) {
 }
 
 bool Console::on_resize(coord::window new_size) {
-	coord::pixel_t w = this->buf.dims.x * this->charsize.x;
-	coord::pixel_t h = this->buf.dims.y * this->charsize.y;
+	coord::pixel_t w = this->buf.get_dims().x * this->charsize.x;
+	coord::pixel_t h = this->buf.get_dims().y * this->charsize.y;
 
 	this->bottomleft = {(new_size.x - w) / 2, (new_size.y - h) / 2};
 	this->topright = {this->bottomleft.x + w, this->bottomleft.y - h};

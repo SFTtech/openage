@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include "resource.h"
 
@@ -12,11 +12,11 @@ namespace openage {
 namespace audio {
 
 
-Resource::Resource(category_t category, int id)
-		:
-		category{category},
-		id{id} {
-}
+Resource::Resource(AudioManager *manager, category_t category, int id)
+	:
+	manager{manager},
+	category{category},
+	id{id} {}
 
 
 category_t Resource::get_category() const {
@@ -29,21 +29,16 @@ int Resource::get_id() const {
 }
 
 
-void Resource::use() {}
-
-
-void Resource::stop_using() {}
-
-
-std::shared_ptr<Resource> Resource::create_resource(category_t category, int id,
+std::shared_ptr<Resource> Resource::create_resource(AudioManager *manager,
+                                                    category_t category, int id,
                                                     const std::string &path,
                                                     format_t format,
                                                     loader_policy_t loader_policy) {
 	switch (loader_policy) {
 	case loader_policy_t::IN_MEMORY:
-		return std::make_shared<InMemoryResource>(category, id, path, format);
+		return std::make_shared<InMemoryResource>(manager, category, id, path, format);
 	case loader_policy_t::DYNAMIC:
-		return std::make_shared<DynamicResource>(category, id, path, format);
+		return std::make_shared<DynamicResource>(manager, category, id, path, format);
 	default:
 		throw Error{MSG(err) << "Unsupported loader policy: " << loader_policy};
 	}

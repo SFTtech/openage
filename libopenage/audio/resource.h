@@ -13,6 +13,9 @@
 namespace openage {
 namespace audio {
 
+class AudioManager;
+
+
 /**
  * A Resource contains 16 bit signed integer pcm data, that can be played by
  * sounds. Each Resource has an unique id within it's category. The category
@@ -20,19 +23,8 @@ namespace audio {
  * The id is a unique integer value.
  */
 class Resource {
-private:
-	/**
-	 * The resource's category.
-	 */
-	category_t category;
-
-	/**
-	 * The resource's id.
-	 */
-	int id;
-
 public:
-	Resource(category_t category, int id);
+	Resource(AudioManager *manager, category_t category, int id);
 	virtual ~Resource() = default;
 
 	Resource(const Resource&) = delete;
@@ -48,13 +40,13 @@ public:
 	 * Tells the resource, that it will be used by a sound object, so it can
 	 * preload some pcm samples.
 	 */
-	virtual void use();
+	virtual void use() = 0;
 
 	/**
 	 * Tells the resource, that one sound object does not use this resource any
 	 * longer.
 	 */
-	virtual void stop_using();
+	virtual void stop_using() = 0;
 
 	/**
 	 * Returns a pointer to the sample buffer at the given position and the
@@ -68,10 +60,31 @@ public:
 	 */
 	virtual audio_chunk_t get_data(size_t position, size_t data_length) = 0;
 
-	static std::shared_ptr<Resource> create_resource(category_t category, int id,
+	/**
+	 * create an audio resource, this produces a DynamicResource or a InMemoryResource
+	 */
+	static std::shared_ptr<Resource> create_resource(AudioManager *manager,
+	                                                 category_t category, int id,
 	                                                 const std::string &path,
 	                                                 format_t format,
 	                                                 loader_policy_t loader_policy);
+
+protected:
+	/**
+	 * Audiomanager in charge of this resource.
+	 */
+	AudioManager *manager;
+
+private:
+	/**
+	 * The resource's category.
+	 */
+	category_t category;
+
+	/**
+	 * The resource's id.
+	 */
+	int id;
 };
 
 }

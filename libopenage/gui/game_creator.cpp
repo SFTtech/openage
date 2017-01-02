@@ -36,23 +36,36 @@ QString GameCreator::get_error_string() const {
 }
 
 void GameCreator::activate() {
-	static auto f = [] (GameMainHandle *game, GameSpecHandle *game_spec, Generator *generator, std::shared_ptr<GameCreatorSignals> callback) {
-		emit callback->error_message([&] {
-			if (game->is_game_running()) {
-				return "close existing game before loading";
-			} else if (!game_spec->is_ready()) {
-				return "game data has not finished loading";
-			} else if (auto game_main = generator->create(game_spec->get_spec())) {
+	static auto f = [] (GameMainHandle *game,
+	                    GameSpecHandle *game_spec,
+	                    Generator *generator,
+	                    std::shared_ptr<GameCreatorSignals> callback) {
+
+		QString error_msg;
+
+		if (game->is_game_running()) {
+			error_msg = "close existing game before loading";
+		}
+		else if (not game_spec->is_ready()) {
+			error_msg = "game data has not finished loading";
+		}
+		else {
+			auto game_main = generator->create(game_spec->get_spec());
+
+			if (game_main) {
 				game->set_game(std::move(game_main));
-				return "";
-			} else {
-				return "unknown error";
 			}
-		}());
+			else {
+				error_msg = "unknown error";
+			}
+		}
+
+		emit callback->error_message(error_msg);
 	};
 
 	if (this->game && this->game_spec && this->generator_parameters) {
 		std::shared_ptr<GameCreatorSignals> callback = std::make_shared<GameCreatorSignals>();
+
 		QObject::connect(callback.get(), &GameCreatorSignals::error_message, this, &GameCreator::on_processed);
 
 		this->game->i(f, this->game_spec, this->generator_parameters, callback);

@@ -20,6 +20,9 @@
 namespace openage {
 namespace audio {
 
+/**
+ * information storage about a piece of raw audio data.
+ */
 struct chunk_info_t {
 	enum class state_t {
 		/** The chunk is currently unused. */
@@ -45,6 +48,11 @@ struct chunk_info_t {
 	~chunk_info_t() = default;
 };
 
+
+/**
+ * information about the loading position of
+ * an audio piece in the whole track.
+ */
 struct loading_info_t {
 	/** The chunk into which audio data should be loaded. */
 	std::shared_ptr<chunk_info_t> chunk_info;
@@ -56,7 +64,31 @@ struct loading_info_t {
 	size_t resource_chunk_offset;
 };
 
+
+/**
+ * Audio data that is loaded dynamically when used.
+ */
 class DynamicResource : public Resource {
+public:
+	DynamicResource(AudioManager *manager,
+	                category_t category, int id, const std::string &path,
+	                format_t format=format_t::OPUS,
+	                int preload_threshold=DEFAULT_PRELOAD_THRESHOLD,
+	                size_t chunk_size=DEFAULT_CHUNK_SIZE,
+	                size_t max_chunks=DEFAULT_MAX_CHUNKS);
+	virtual ~DynamicResource() = default;
+
+	void use() override;
+	void stop_using() override;
+
+	audio_chunk_t get_data(size_t position, size_t data_length) override;
+
+private:
+	void start_preloading(size_t resource_chunk_index);
+
+	void start_loading(std::shared_ptr<chunk_info_t> chunk_info,
+	                   size_t resource_chunk_offset);
+
 public:
 	/**
 	 * The number of chunks that have to be loaded, before a sound actually
@@ -93,32 +125,13 @@ private:
 	std::unique_ptr<DynamicLoader> loader;
 
 	/** Queue of audio chunks, that should be used next for loading audio data. */
-	openage::datastructure::ConcurrentQueue<std::shared_ptr<chunk_info_t>> chunk_infos;
+	datastructure::ConcurrentQueue<std::shared_ptr<chunk_info_t>> chunk_infos;
 
 	/** Resource chunk index to chunk mapping. */
 	std::unordered_map<size_t,std::shared_ptr<chunk_info_t>> chunk_mapping;
 
 	/** The background loading job group. */
-	openage::job::JobGroup loading_job_group;
-
-public:
-	DynamicResource(category_t category, int id, const std::string &path,
-	                format_t format=format_t::OPUS,
-	                int preload_threshold=DEFAULT_PRELOAD_THRESHOLD,
-	                size_t chunk_size=DEFAULT_CHUNK_SIZE,
-	                size_t max_chunks=DEFAULT_MAX_CHUNKS);
-	virtual ~DynamicResource() = default;
-
-	void use() override;
-	void stop_using() override;
-
-	audio_chunk_t get_data(size_t position, size_t data_length) override;
-
-private:
-	void start_preloading(size_t resource_chunk_index);
-
-	void start_loading(std::shared_ptr<chunk_info_t> chunk_info,
-	                   size_t resource_chunk_offset);
+	job::JobGroup loading_job_group;
 };
 
 }

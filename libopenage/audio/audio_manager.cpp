@@ -16,15 +16,18 @@
 namespace openage {
 namespace audio {
 
+/**
+ * Call back that is invoked once SDL needs the next chunk of data.
+ */
 void global_audio_callback(void *userdata, uint8_t *stream, int len);
 
-AudioManager::AudioManager()
+AudioManager::AudioManager(job::JobManager *job_manager)
 	:
-	AudioManager{""} {
-}
+	AudioManager{job_manager, ""} {}
 
-AudioManager::AudioManager(const std::string &device_name)
+AudioManager::AudioManager(job::JobManager *job_manager, const std::string &device_name)
 	:
+	job_manager{job_manager},
 	device_name{device_name} {
 
 	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
@@ -93,7 +96,7 @@ void AudioManager::load_resources(const util::Dir &asset_dir,
 		auto loader_policy = from_loader_policy(sound_file.loader_policy);
 
 		auto key = std::make_tuple(category, id);
-		auto resource = Resource::create_resource(category, id, path, format, loader_policy);
+		auto resource = Resource::create_resource(this, category, id, path, format, loader_policy);
 
 		// TODO check resource already existing
 		resources.insert({key, resource});
@@ -187,6 +190,10 @@ SDL_AudioSpec AudioManager::get_device_spec() const {
 	return device_spec;
 }
 
+job::JobManager *AudioManager::get_job_manager() const {
+	return this->job_manager;
+}
+
 std::vector<std::string> AudioManager::get_devices() {
 	std::vector<std::string> device_list;
 	auto num_devices = SDL_GetNumAudioDevices(0);
@@ -219,5 +226,4 @@ void global_audio_callback(void *userdata, uint8_t *stream, int len) {
 	audio_manager->audio_callback(reinterpret_cast<int16_t*>(stream), len / 2);
 }
 
-}
-}
+}} // openage::audio

@@ -13,6 +13,9 @@
 namespace openage {
 namespace input {
 
+class InputManager;
+
+
 /**
  * An input context contains all keybindings and actions
  * active in e.g. the HUD only.
@@ -24,10 +27,22 @@ namespace input {
 class InputContext {
 
 public:
+	/**
+	 * Create an unbound input context.
+	 */
 	InputContext();
 
 	/**
-	 * a list of all keys which are bound in the current context
+	 * Create a bound context, assigned to its manager.
+	 */
+	InputContext(InputManager *manager);
+
+	/**
+	 * a list of all keys of this context
+	 * which are bound currently in the active context.
+	 *
+	 * TODO: move this method to the input manager.
+	 *       as InputManager::active_binds(const InputContext &) const;
 	 */
 	std::vector<std::string> active_binds() const;
 
@@ -55,6 +70,17 @@ public:
 	 */
 	bool execute_if_bound(const action_arg_t &e);
 
+	/**
+	 * Called by the InputManager where this context
+	 * shall be registered to.
+	 */
+	void register_to(InputManager *manager);
+
+	/**
+	 * Remove the registration to an input manager.
+	 */
+	void unregister();
+
 
 	/**
 	 * Affects which keyboard events are received:
@@ -66,7 +92,12 @@ public:
 private:
 
 	/**
-	 * map specific hints
+	 * Input manager this context is bound to.
+	 */
+	InputManager *input_manager;
+
+	/**
+	 * Maps an action id to a event execution function.
 	 */
 	std::unordered_map<action_t, action_func_t> by_type;
 

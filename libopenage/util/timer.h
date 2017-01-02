@@ -2,7 +2,10 @@
 
 #pragma once
 
-#include <stdint.h>
+#include <cstdint>
+
+#include "timing.h"
+
 
 namespace openage {
 namespace util {
@@ -16,24 +19,24 @@ class Timer {
 		/**
 		 * while paused, stores the current timer value
 		 */
-		int64_t stoppedat;
+		time_nsec_t stoppedat;
 
 		/**
 		 * while running, stores the time the timer is counting from
 		 */
-		int64_t starttime;
+		time_nsec_t starttime;
 	};
 
 public:
 	/**
 	 * creates the timer, in either stopped or running state.
 	 */
-	Timer(bool stopped = true);
+	Timer(bool stopped=true);
 
 	/**
 	 * resets the timer, in either stopped or running state.
 	 */
-	void reset(bool stopped = true);
+	void reset(bool stopped=true);
 
 	/**
 	 * stops/pauses the timer.
@@ -48,13 +51,13 @@ public:
 	/**
 	 * reads the current timer value, in nanoseconds.
 	 */
-	int64_t getval() const;
+	time_nsec_t getval() const;
 
 	/**
 	 * reads the current timer value, in nanoseconds,
 	 * and resets the timer to zero (preserving started/stopped state).
 	 */
-	int64_t getandresetval();
+	time_nsec_t getandresetval();
 
 	/**
 	 * returns whether the timer is currently running.

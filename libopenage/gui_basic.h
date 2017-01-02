@@ -44,7 +44,6 @@ private:
 	virtual bool on_input(SDL_Event *event) override;
 	virtual bool on_drawhud() override;
 
-	std::unique_ptr<shader::Program> textured_screen_quad_shader;
 	GLint tex_loc;
 	GLuint screen_quad_vbo;
 
@@ -58,6 +57,11 @@ private:
 	qtsdl::GuiEngine engine;
 	qtsdl::GuiSubtree subtree;
 	qtsdl::GuiInput input;
+
+	// needs to be deallocated before the GuiRenderer
+	// it accesses opengl api functions which require a
+	// current context:
+	std::unique_ptr<shader::Program> textured_screen_quad_shader;
 };
 
 }} // namespace openage::gui

@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include "buf.h"
 
@@ -141,12 +141,12 @@ public:
 		b->chrdata_size = this->chrdata_size;
 		b->chrdata_end = this->chrdata_end;
 
-		//TODO set the following members of b:
-		//screen_chrdata, screen_linedata
-		//cursorpos, saved_cursorpos,
-		//scrollback_possible, scrollback_pos
-		//TODO call b->clear() with correct
-		//screen buffer part as arguments
+		// TODO set the following members of b:
+		// screen_chrdata, screen_linedata
+		// cursorpos, saved_cursorpos,
+		// scrollback_possible, scrollback_pos
+		// TODO call b->clear() with correct
+		// screen buffer part as arguments
 	}
 
 	void move_ptrs_to_next_line() {
@@ -217,7 +217,7 @@ void Buf::resize(term new_dims) {
 		new_dims.y = 1;
 	}
 
-	//allocate new buffers
+	// allocate new buffers
 	size_t new_linedata_size = new_dims.y + this->scrollback_lines;
 	buf_line *new_linedata = new buf_line[new_linedata_size];
 	buf_line *new_linedata_end = new_linedata + new_linedata_size;
@@ -225,50 +225,50 @@ void Buf::resize(term new_dims) {
 	buf_char *new_chrdata = new buf_char[new_chrdata_size];
 	buf_char *new_chrdata_end = new_chrdata + new_chrdata_size;
 
-	//working positions in new buffers: start at beginning of buffer
+	// working positions in new buffers: start at beginning of buffer
 	buf_line *new_linedata_pos = new_linedata;
 	buf_char *new_chrdata_pos = new_chrdata;
-	//working positions in old buffers: start with oldest line of
-	//scrollback buffer
-	buf_line *old_linedata_scrollbackstart = linedataptr(-scrollback_lines);
-	buf_char *old_chrdata_scrollbackstart = chrdataptr({0, (term_t) -scrollback_lines});
+	// working positions in old buffers: start with oldest line of
+	// scrollback buffer
+	buf_line *old_linedata_scrollbackstart = this->linedataptr(-scrollback_lines);
+	buf_char *old_chrdata_scrollbackstart = this->chrdataptr({0, (term_t) -scrollback_lines});
 	buf_line *old_linedata_pos = old_linedata_scrollbackstart;
 	buf_char *old_chrdata_pos = old_chrdata_scrollbackstart;
 
-	//copy line by line, considering the value stored in
-	//old_linedata_pos->auto_wrapped.
-	//start with the first line of the scrollback buffer, and stop with the
-	//last line of the screen buffer.
-	//do not copy empty characters, unless they are followed by filled
-	//characters in the same line, or a continued wrapped line.
-	//store in term_t variables the locations in the new buffer of
-	//  the first/last line of the old scrollback buffer
-	//  the first/last line of the old screen buffer
-	//these variables need to take into account events where upmost
-	//lines of a buffer are overwritten by new lines.
-	//commented out for now //TODO
+	// copy line by line, considering the value stored in
+	// old_linedata_pos->auto_wrapped.
+	// start with the first line of the scrollback buffer, and stop with the
+	// last line of the screen buffer.
+	// do not copy empty characters, unless they are followed by filled
+	// characters in the same line, or a continued wrapped line.
+	// store in term_t variables the locations in the new buffer of
+	//   the first/last line of the old scrollback buffer
+	//   the first/last line of the old screen buffer
+	// these variables need to take into account events where upmost
+	// lines of a buffer are overwritten by new lines.
+	// commented out for now //TODO
 
-	//term_t scrollback_buf_start;
-	//term_t scrollback_buf_end;
-	//term_t screen_buf_start;
-	//term_t screen_buf_end;
+	// term_t scrollback_buf_start;
+	// term_t scrollback_buf_end;
+	// term_t screen_buf_start;
+	// term_t screen_buf_end;
 
-	//count the number of empty chars that we've found in this line,
-	//and we may or may not still have to copy.
+	// count the number of empty chars that we've found in this line,
+	// and we may or may not still have to copy.
 	size_t empty_chars = 0;
 	while(old_linedata_pos != old_linedata_scrollbackstart) {
-		//should never be >, always ==
-		//also, both checks should always yield identical results
-		//(TODO do an ASSERT to assure this?)
+		// should never be >, always ==
+		// also, both checks should always yield identical results
+		// (TODO do an ASSERT to assure this?)
 		if (old_linedata_pos >= this->linedata_end) {
 			old_linedata_pos = this->linedata;
 		}
 		if (old_chrdata_pos >= this->chrdata_end) {
 			old_chrdata_pos = this->chrdata;
 		}
-		//should never be >, always ==
-		//also, both checks should always yield identical results
-		//(TODO do an ASSERT to assure this?)
+		// should never be >, always ==
+		// also, both checks should always yield identical results
+		// (TODO do an ASSERT to assure this?)
 		if (new_linedata_pos >= new_linedata_end) {
 			new_linedata_pos = new_linedata;
 		}
@@ -281,22 +281,22 @@ void Buf::resize(term new_dims) {
 				empty_chars++;
 			} else {
 				while (empty_chars > 0) {
-					//TODO write the empty chars
+					// TODO write the empty chars
 				}
-				//TODO write the char
+				// TODO write the char
 			}
 
 			old_chrdata_pos++;
 		}
 	}
 
-	//TODO
-	//depending on the variables defined in the previous section,
-	//decide which line is the first line of the screen buffer
-	//int new_chrbuf, and which parts of new_chrbuf must be cleared.
+	// TODO
+	// depending on the variables defined in the previous section,
+	// decide which line is the first line of the screen buffer
+	// int new_chrbuf, and which parts of new_chrbuf must be cleared.
 
-	//TODO
-	//copy
+	// TODO
+	// copy
 
 	this->dims = new_dims;
 }
@@ -316,7 +316,7 @@ void Buf::write(const char *c, ssize_t len) {
 
 void Buf::scroll(term_t lines) {
 	if (lines < 0) {
-		//scroll down
+		// scroll down
 		lines = -lines;
 
 		if ((term_t) this->scrollback_pos < lines) {
@@ -325,7 +325,7 @@ void Buf::scroll(term_t lines) {
 			this->scrollback_pos -= lines;
 		}
 	} else {
-		//scroll up
+		// scroll up
 		this->scrollback_pos += lines;
 		if (this->scrollback_pos > this->scrollback_possible) {
 			this->scrollback_pos = this->scrollback_possible;
@@ -334,7 +334,7 @@ void Buf::scroll(term_t lines) {
 }
 
 void Buf::advance(unsigned linecount) {
-	//sanitize linecount
+	// sanitize linecount
 	if (linecount == 0) {
 		return;
 	}
@@ -342,14 +342,14 @@ void Buf::advance(unsigned linecount) {
 		linecount = this->dims.y + this->scrollback_lines;
 	}
 
-	//update scrollback_possible
+	// update scrollback_possible
 	this->scrollback_possible += linecount;
 	if (this->scrollback_possible > (term_t) this->scrollback_lines) {
 		this->scrollback_possible = this->scrollback_lines;
 	}
 
-	//update scrollback position, to remain at the currently scrolled-to
-	//position
+	// update scrollback position, to remain at the currently scrolled-to
+	// position
 	if (this->scrollback_pos > 0) {
 		this->scrollback_pos += linecount;
 		if (this->scrollback_pos > this->scrollback_possible) {
@@ -358,16 +358,16 @@ void Buf::advance(unsigned linecount) {
 		}
 	}
 
-	//clear the new lines. that's scrollback_buffer[0:linecount]
+	// clear the new lines. that's scrollback_buffer[0:linecount]
 	this->clear({0, (term_t) -this->scrollback_lines}, {0, (term_t) ((term_t) linecount - (term_t) this->scrollback_lines)});
 
-	//move the screen buffer by updating the screen_chrdata pointer
+	// move the screen buffer by updating the screen_chrdata pointer
 	this->screen_chrdata += linecount * this->dims.x;
 	if (this->screen_chrdata >= this->chrdata_end) {
 		this->screen_chrdata -= this->chrdata_size;
 	}
 
-	//also update the screen_linedata pointer
+	// also update the screen_linedata pointer
 	this->screen_linedata += linecount;
 	if (this->screen_linedata >= this->linedata_end) {
 		this->screen_linedata -= this->linedata_size;
@@ -376,7 +376,7 @@ void Buf::advance(unsigned linecount) {
 
 void Buf::write(char c) {
 	if (!this->streamdecoder.feed(c)) {
-		//an error has been detected in the input stream
+		// an error has been detected in the input stream
 		this->process_codepoint(0xFFFD);
 	};
 
@@ -409,8 +409,8 @@ void Buf::pop_last_char() {
 }
 
 void Buf::process_codepoint(int cp) {
-	//if the terminal is currently in escaped state, tread the codepoint as
-	//part of the current escape sequence.
+	// if the terminal is currently in escaped state, tread the codepoint as
+	// part of the current escape sequence.
 	if (this->escaped) {
 		this->escape_sequence.push_back(cp);
 
@@ -421,32 +421,33 @@ void Buf::process_codepoint(int cp) {
 			previous = this->escape_sequence[len - 2];
 		}
 
-		//the first char of the escape sequence determines
-		//its length, terminators and allowed characters.
+		// the first char of the escape sequence determines
+		// its length, terminators and allowed characters.
 		switch (first) {
-		case '[': //CSI
+		case '[':
+			// CSI
 			if (len == 1 or (cp >= 0x20 and cp < 0x40)) {
-				//regular, allowed char
+				// regular, allowed char
 			} else if (cp >= 0x40 and cp < 0x7f) {
-				//terminator
+				// terminator
 				this->process_csi_escape_sequence();
 			} else {
-				//illegal char, abortabortabort
+				// illegal char, abortabortabort
 				this->escape_sequence_aborted();
 			}
 			break;
-		case ']': //OSC
-		case 'P': //DCS
-		case '_': //APC
-		case '^': //PM
-			//terminated by ESC \ or BEL
+		case ']':  // OSC
+		case 'P':  // DCS
+		case '_':  // APC
+		case '^':  // PM
+			// terminated by ESC \ or BEL
 			if ((previous == 0x1b and cp == '\\') or cp == 0x07) {
 				this->process_text_escape_sequence();
 			}
 			break;
-		case '(': //non-utf8-related stuff
-		case ')': //character-set selection etc...
-		case '*': //these are all 2-char sequences
+		case '(':  // non-utf8-related stuff
+		case ')':  // character-set selection etc...
+		case '*':  // these are all 2-char sequences
 		case '+':
 		case '-':
 		case '/':
@@ -454,43 +455,43 @@ void Buf::process_codepoint(int cp) {
 		case '%':
 		case '#':
 		case ' ':
-			//not implemented
+			// not implemented
 			if (len == 2) {
 				this->escape_sequence_aborted();
 			}
 			break;
-		default: //no known multi-cp sequence, treat as single escaped cp
+		default: // no known multi-cp sequence, treat as single escaped cp
 			this->process_escaped_cp(first);
 			break;
 		}
 	} else {
-		//we're not currently escaped, so the char is printed...
-		//at least if it's a printable character.
+		// we're not currently escaped, so the char is printed...
+		// at least if it's a printable character.
 		this->print_codepoint(cp);
 	}
 }
 
 void Buf::print_codepoint(int cp) {
 	switch (cp) {
-	//control characters
-	case 0x00: //NUL: ignore
-	case 0x01: //SOH: ignore
-	case 0x02: //STX: ignore
-	case 0x03: //ETX: ignore
-	case 0x04: //EOT: ignore
-	case 0x05: //ENQ: ignore (empty response)
-	case 0x06: //ACK: ignore
+	// control characters
+	case 0x00: // NUL: ignore
+	case 0x01: // SOH: ignore
+	case 0x02: // STX: ignore
+	case 0x03: // ETX: ignore
+	case 0x04: // EOT: ignore
+	case 0x05: // ENQ: ignore (empty response)
+	case 0x06: // ACK: ignore
 		break;
-	case 0x07: //BEL: set bell flag
+	case 0x07: // BEL: set bell flag
 		this->bell = true;
 		break;
 	case 0x08: // BS: backspace
-		//move cursor 1 left.
-		//if cursor pos is 0, move to end of previous line
-		//if already at (0,0), move to (0,0)
+		// move cursor 1 left.
+		// if cursor pos is 0, move to end of previous line
+		// if already at (0,0), move to (0,0)
 		if (this->cursor_special_lastcol && (this->cursorpos.x == this->dims.x - 1)) {
-			//if we are in the special last-column state, only unset that flag,
-			//but don't move the cursor.
+			// if we are in the special last-column state, only unset that flag,
+			// but don't move the cursor.
 			this->cursor_special_lastcol = false;
 		} else {
 			this->cursorpos.x -= 1;
@@ -504,11 +505,11 @@ void Buf::print_codepoint(int cp) {
 		}
 		break;
 	case 0x09: // HT: horizontal tab
-		//move cursor to next multiple of 8
-		//at least move by 1, at most by 8
-		//if next multiple of 8 is greater than terminal width,
-		//move to end of this line
-		//never move to next line
+		// move cursor to next multiple of 8
+		// at least move by 1, at most by 8
+		// if next multiple of 8 is greater than terminal width,
+		// move to end of this line
+		// never move to next line
 		this->cursorpos.x = ((this->cursorpos.x + 8) / 8) * 8;
 		if (this->cursorpos.x >= this->dims.x) {
 			this->cursorpos.x = this->dims.x - 1;
@@ -533,32 +534,32 @@ void Buf::print_codepoint(int cp) {
 		break;
 	case 0x0e: // SO: ignore
 	case 0x0f: // SI: ignore
-	case 0x10: //DLE: ignore
-	case 0x11: //DC1: ignore
-	case 0x12: //DC2: ignore
-	case 0x13: //DC3: ignore
-	case 0x14: //DC4: ignore
-	case 0x15: //NAK: ignore
-	case 0x16: //SYN: ignore
-	case 0x17: //ETB: ignore
-	case 0x18: //CAN: ignore
+	case 0x10: // DLE: ignore
+	case 0x11: // DC1: ignore
+	case 0x12: // DC2: ignore
+	case 0x13: // DC3: ignore
+	case 0x14: // DC4: ignore
+	case 0x15: // NAK: ignore
+	case 0x16: // SYN: ignore
+	case 0x17: // ETB: ignore
+	case 0x18: // CAN: ignore
 	case 0x19: // EM: ignore
-	case 0x1a: //SUB: ignore
+	case 0x1a: // SUB: ignore
 		break;
-	case 0x1b: //ESC: escape sequence start
+	case 0x1b: // ESC: escape sequence start
 		this->escaped = true;
 		break;
 	case 0x1c: // FS: ignore
 	case 0x1d: // GS: ignore
 	case 0x1e: // RS: ignore
 	case 0x1f: // US: ignore
-	case 0x7f: //DEL: ignore
+	case 0x7f: // DEL: ignore
 		break;
-	default:   //regular, printable character
+	default:   // regular, printable character
 		if (this->cursor_special_lastcol && (this->cursorpos.x == this->dims.x - 1)) {
 			this->cursor_special_lastcol = false;
-			//store the fact that this line was auto-wrapped
-			//and will continue in the next line
+			// store the fact that this line was auto-wrapped
+			// and will continue in the next line
 			this->linedataptr(this->cursorpos.y)->type = LINE_WRAPPED;
 			this->cursorpos.x = 0;
 			if (this->cursorpos.y == this->dims.y - 1) {
@@ -568,18 +569,18 @@ void Buf::print_codepoint(int cp) {
 			}
 		}
 
-		//set char at current cursor pos
+		// set char at current cursor pos
 		buf_char *ptr = this->chrdataptr(this->cursorpos);
 		*ptr = this->current_char_fmt;
 		ptr->cp = cp;
 		buf_line *lineptr = this->linedataptr(this->cursorpos.y);
 
-		//store the fact that this line has been written to
+		// store the fact that this line has been written to
 		if (lineptr->type == LINE_EMPTY) {
 			lineptr->type = LINE_REGULAR;
 		}
 
-		//advance cursor to the right
+		// advance cursor to the right
 		this->cursorpos.x++;
 		if (this->cursorpos.x == this->dims.x) {
 			this->cursorpos.x -= 1;
@@ -672,32 +673,32 @@ void Buf::process_csi_escape_sequence() {
 			currentparam = 10 * currentparam + (cp - '0');
 		} else if (cp == ';') {
 			if (!in_param) {
-				//this ';' did not have a number before it
-				//(ommited)
+				// this ';' did not have a number before it
+				// (ommited)
 				currentparam = -1;
 			}
 
 			params.push_back(currentparam);
 			in_param = false;
 		} else {
-			//unexpected character, we want a nice
-			//semicolon-separated list of decimal numbers.
-			//abortabortabort
+			// unexpected character, we want a nice
+			// semicolon-separated list of decimal numbers.
+			// abortabortabort
 			this->escape_sequence_aborted();
 			return;
 		}
 	}
 
 	if (in_param) {
-		//there's no semicolon at the end, finish the param
+		// there's no semicolon at the end, finish the param
 		params.push_back(currentparam);
 	} else {
-		//there's a semicolon at the end, or we had no params
-		//at all. add param with default value.
+		// there's a semicolon at the end, or we had no params
+		// at all. add param with default value.
 		params.push_back(-1);
 	}
 
-	//default values
+	// default values
 	int defaultval;
 	unsigned minparamcount;
 	switch (type) {
@@ -723,7 +724,7 @@ void Buf::process_csi_escape_sequence() {
 		break;
 	}
 
-	//apply default value requirements
+	// apply default value requirements
 	while (params.size() < minparamcount) {
 		params.push_back(-1);
 	}
@@ -733,54 +734,54 @@ void Buf::process_csi_escape_sequence() {
 		}
 	}
 
-	//execute the escape sequence
+	// execute the escape sequence
 	switch (type) {
-	case '@': //ICH: insert n blank characters
+	case '@': // ICH: insert n blank characters
 		for(int i = 0; i < params[0]; i++) {
 			this->print_codepoint(0x20);
 		}
 		break;
-	case 'A': //CUU: move cursor up
+	case 'A': // CUU: move cursor up
 		this->cursorpos.y -= params[0];
 		if (this->cursorpos.y < 0) {
 			this->cursorpos.y = 0;
 		}
 		break;
-	case 'e': //VPR: vertical position relative
+	case 'e': // VPR: vertical position relative
 		//fall through
-	case 'B': //CUD: move cursor down
+	case 'B': // CUD: move cursor down
 		this->cursorpos.y += params[0];
 		if (this->cursorpos.y >= this->dims.y) {
 			this->cursorpos.y = this->dims.y - 1;
 		}
 		break;
-	case 'C': //CUF: move cursor to the right
+	case 'C': // CUF: move cursor to the right
 		this->cursorpos.x += params[0];
 		if (this->cursorpos.x >= this->dims.x) {
 			this->cursorpos.x = this->dims.x - 1;
 		}
 		break;
-	case 'D': //CUB: move cursor to the left
+	case 'D': // CUB: move cursor to the left
 		this->cursorpos.x -= params[0];
 		if (this->cursorpos.x < 0) {
 			this->cursorpos.x = 0;
 		}
 		break;
-	case 'E': //CNL: move cursor down and to beginning of line
+	case 'E': // CNL: move cursor down and to beginning of line
 		this->cursorpos.x = 0;
 		this->cursorpos.y += params[0];
 		if (this->cursorpos.y >= this->dims.y) {
 			this->cursorpos.y = this->dims.y - 1;
 		}
 		break;
-	case 'F': //CPL: move cursor up and to beginning of line
+	case 'F': // CPL: move cursor up and to beginning of line
 		this->cursorpos.x = 0;
 		this->cursorpos.y -= params[0];
 		if (this->cursorpos.y < 0) {
 			this->cursorpos.y = 0;
 		}
 		break;
-	case 'G': //CHA: set cursorpos.x
+	case 'G': // CHA: set cursorpos.x
 		this->cursorpos.x = params[0] - 1;
 		if (this->cursorpos.x < 0) {
 			this->cursorpos.x = 0;
@@ -789,9 +790,9 @@ void Buf::process_csi_escape_sequence() {
 			this->cursorpos.x = this->dims.x - 1;
 		}
 		break;
-	case 'f': //HVP: set cursorpos
+	case 'f': // HVP: set cursorpos
 		//fall through
-	case 'H': //CUP: set cursorpos
+	case 'H': // CUP: set cursorpos
 		this->cursorpos.y = params[0] - 1;
 		this->cursorpos.x = params[1] - 1;
 		if (this->cursorpos.x < 0) {
@@ -818,80 +819,80 @@ void Buf::process_csi_escape_sequence() {
 		break;
 	case 'J': // ED: erase display
 		switch (params[0]) {
-		case 0: //clear screen buffer from cursor to end
+		case 0: // clear screen buffer from cursor to end
 			this->clear(this->cursorpos, {0, this->dims.y});
 			break;
-		case 1: //clear screen buffer from beginning to cursor
+		case 1: // clear screen buffer from beginning to cursor
 			this->clear({0, 0}, this->cursorpos, true);
 			break;
-		case 2: //clear screen buffer
+		case 2: // clear screen buffer
 			this->clear({0, 0}, {0, this->dims.y});
 			break;
-		default://unknown/unimplemented parameter
+		default: // unknown/unimplemented parameter
 			break;
 		}
 		break;
 	case 'K': // EL: erase line
 		switch (params[0]) {
-		case 0: //clear current line from cursor to end
+		case 0: // clear current line from cursor to end
 			this->clear(this->cursorpos, {0, (term_t) (this->cursorpos.y + 1)});
 			break;
-		case 1: //clear current line from beginning to cursor
+		case 1: // clear current line from beginning to cursor
 			this->clear({0, this->cursorpos.y}, this->cursorpos, true);
 			break;
-		case 2: //clear current line
+		case 2: // clear current line
 			this->clear({0, this->cursorpos.y}, {0, (term_t) (this->cursorpos.y + 1)});
 			break;
-		default://unknown/unimplemented parameter
+		default: // unknown/unimplemented parameter
 			break;
 		}
 		break;
-	case 'm': //SGR: set graphics rendition
+	case 'm': // SGR: set graphics rendition
 		this->process_sgr_code(params);
 		break;
-	case 's': //SCP: save cursor position
+	case 's': // SCP: save cursor position
 		this->saved_cursorpos = this->cursorpos;
 		break;
-	case 'u': //RCP: restore cursor position
+	case 'u': // RCP: restore cursor position
 		this->cursorpos = this->saved_cursorpos;
 		break;
-	case 'l': //set mode
+	case 'l': // set mode
 		if (starts_with_questionmark) {
 			switch(params[0]) {
-			case 25: //cursor invisible
+			case 25: // cursor invisible
 				this->cursor_visible = false;
 				break;
-			case 1049: //switch to alternate screen
-				//TBI
-				//idea: use last dims.y lines of scrollback
-				//buffer to save regular screen data
+			case 1049: // switch to alternate screen
+				// TBI
+				// idea: use last dims.y lines of scrollback
+				// buffer to save regular screen data
 				break;
-			default: //unknown/unimplemented parameter
+			default: // unknown/unimplemented parameter
 				break;
 			}
 		} else {
 			switch(params[0]) {
-			default: //unknown/unimplemented parameter
+			default: // unknown/unimplemented parameter
 				break;
 			}
 			break;
 		}
 		break;
-	case 'h': //reset mode
+	case 'h': // reset mode
 		if (starts_with_questionmark) {
 			switch(params[0]) {
-			case 25: //cursor visible
+			case 25: // cursor visible
 				this->cursor_visible = true;
 				break;
-			case 1049: //restore regular screen
-				//TBI
+			case 1049: // restore regular screen
+				// TBI
 				break;
-			default: //unknown/unimplemented parameter
+			default: // unknown/unimplemented parameter
 				break;
 			}
 		} else {
 			switch(params[0]) {
-			default: //unknown/unimplemented parameter
+			default: // unknown/unimplemented parameter
 				break;
 			}
 			break;
@@ -899,10 +900,10 @@ void Buf::process_csi_escape_sequence() {
 		break;
 	case 'S': // SU
 	case 'T': // SD
-	case 'n': //DSR
-		//not implemented; fall through.
+	case 'n': // DSR
+		// not implemented; fall through.
 	default:
-		//not implemented (or nonexisting)
+		// not implemented (or nonexisting)
 		this->escape_sequence_aborted();
 		return;
 	}
@@ -913,72 +914,72 @@ void Buf::process_sgr_code(const std::vector<int> &params) {
 	for(size_t i = 0; i < params.size(); i++) {
 		int p = params[i];
 		switch (p) {
-		case 0: //reset
+		case 0: // reset
 			this->current_char_fmt = this->default_char_fmt;
 			break;
-		case 1: //bold
+		case 1: // bold
 			this->current_char_fmt.flags |= CHR_BOLD;
 			this->current_char_fmt.flags &= ~CHR_FAINT;
 			break;
-		case 2: //faint
+		case 2: // faint
 			this->current_char_fmt.flags |= CHR_FAINT;
 			this->current_char_fmt.flags &= ~CHR_BOLD;
 			break;
-		case 3: //italic
+		case 3: // italic
 			this->current_char_fmt.flags |= CHR_ITALIC;
 			this->current_char_fmt.flags &= ~CHR_FRAKTUR;
 			break;
-		case 4: //underline
+		case 4: // underline
 			this->current_char_fmt.flags |= CHR_UNDERLINED;
 			break;
-		case 5: //blink slowly
+		case 5: // blink slowly
 			this->current_char_fmt.flags |= CHR_BLINKING;
 			this->current_char_fmt.flags &= ~CHR_BLINKINGFAST;
 			break;
-		case 6: //blink fast
+		case 6: // blink fast
 			this->current_char_fmt.flags |= CHR_BLINKINGFAST;
 			this->current_char_fmt.flags &= ~CHR_BLINKING;
 			break;
-		case 7: //negative
+		case 7: // negative
 			this->current_char_fmt.flags |= CHR_NEGATIVE;
 			break;
-		case 8: //invisible
+		case 8: // invisible
 			this->current_char_fmt.flags |= CHR_INVISIBLE;
 			break;
-		case 9: //struck out
+		case 9: // struck out
 			this->current_char_fmt.flags |= CHR_STRUCKOUT;
 			break;
-		//cases 10-19: font selectors. not implemented.
-		case 20: //fraktur
+		// cases 10-19: font selectors. not implemented.
+		case 20: // fraktur
 			this->current_char_fmt.flags |= CHR_FRAKTUR;
 			this->current_char_fmt.flags &= ~CHR_ITALIC;
 			break;
-		case 21: //bold off
+		case 21: // bold off
 			this->current_char_fmt.flags &= ~CHR_BOLD;
 			break;
-		case 22: //bold and faint off
+		case 22: // bold and faint off
 			this->current_char_fmt.flags &= ~CHR_BOLD;
 			this->current_char_fmt.flags &= ~CHR_FAINT;
 			break;
-		case 23: //italic and fraktur off
+		case 23: // italic and fraktur off
 			this->current_char_fmt.flags &= ~CHR_ITALIC;
 			this->current_char_fmt.flags &= ~CHR_FRAKTUR;
 			break;
-		case 24: //underline off
+		case 24: // underline off
 			this->current_char_fmt.flags &= ~CHR_UNDERLINED;
 			break;
-		case 25: //blinking and blinkingfast off
+		case 25: // blinking and blinkingfast off
 			this->current_char_fmt.flags &= ~CHR_BLINKING;
 			this->current_char_fmt.flags &= ~CHR_BLINKINGFAST;
 			break;
-		//case 26: not yet standardized
-		case 27: //negative off
+		// case 26: not yet standardized
+		case 27: // negative off
 			this->current_char_fmt.flags &= ~CHR_NEGATIVE;
 			break;
-		case 28: //invisible off
+		case 28: // invisible off
 			this->current_char_fmt.flags &= ~CHR_INVISIBLE;
 			break;
-		case 29: //struck out off
+		case 29: // struck out off
 			this->current_char_fmt.flags &= ~CHR_STRUCKOUT;
 			break;
 		case 30:
@@ -988,18 +989,18 @@ void Buf::process_sgr_code(const std::vector<int> &params) {
 		case 34:
 		case 35:
 		case 36:
-		case 37: //foreground color (8 colors)
+		case 37: // foreground color (8 colors)
 			this->current_char_fmt.fgcol = (p - 30);
 			break;
-		case 38: //foreground color (256 colors)
+		case 38: // foreground color (256 colors)
 			i += 2;
 			if (i >= params.size() || params[i] < 0 || params[i] >= 256) {
-				//invalid 256-color SGR code.
+				// invalid 256-color SGR code.
 				return;
 			}
 			this->current_char_fmt.fgcol = params[i];
 			break;
-		case 39: //reset foreground color
+		case 39: // reset foreground color
 			this->current_char_fmt.fgcol = this->default_char_fmt.fgcol;
 			break;
 		case 40:
@@ -1009,67 +1010,67 @@ void Buf::process_sgr_code(const std::vector<int> &params) {
 		case 44:
 		case 45:
 		case 46:
-		case 47: //background color (8 colors)
+		case 47: // background color (8 colors)
 			this->current_char_fmt.bgcol = (p - 40);
 			break;
-		case 48: //background color (256 colors)
+		case 48: // background color (256 colors)
 			i += 2;
 			if (i >= params.size() || params[i] < 0 || params[i] >= 256) {
-				//invalid 256-color SGR code.
-				//abortabortabort
+				// invalid 256-color SGR code.
+				// abortabortabort
 				return;
 			}
 			this->current_char_fmt.bgcol = params[i];
 			break;
-		case 49: //reset background color
+		case 49: // reset background color
 			this->current_char_fmt.bgcol = this->default_char_fmt.bgcol;
 			break;
-		//case 50: not yet standardized
-		case 51: //framed
+		// case 50: not yet standardized
+		case 51: // framed
 			this->current_char_fmt.flags |= CHR_FRAMED;
 			this->current_char_fmt.flags &= ~CHR_ENCIRCLED;
 			break;
-		case 52: //encircled
+		case 52: // encircled
 			this->current_char_fmt.flags |= CHR_ENCIRCLED;
 			this->current_char_fmt.flags &= ~CHR_FRAMED;
 			break;
-		case 53: //overlined
+		case 53: // overlined
 			this->current_char_fmt.flags |= CHR_OVERLINED;
 			break;
-		case 54: //framed and encircled off
+		case 54: // framed and encircled off
 			this->current_char_fmt.flags &= ~CHR_FRAMED;
 			this->current_char_fmt.flags &= ~CHR_ENCIRCLED;
 			break;
-		case 55: //overlined off
+		case 55: // overlined off
 			this->current_char_fmt.flags &= ~CHR_OVERLINED;
 			break;
-		//cases 56-59: not yet standardized
-		case 60: //right side line
+		// cases 56-59: not yet standardized
+		case 60: // right side line
 			this->current_char_fmt.flags |= CHR_RIGHTLINED;
 			break;
-		//case 61: double right side line. not implemented.
-		case 62: //left side line
+		// case 61: double right side line. not implemented.
+		case 62: // left side line
 			this->current_char_fmt.flags |= CHR_LEFTLINED;
 			break;
-		//case 63: double left side line. not implemented.
-		case 64: //stress ideogram
+		// case 63: double left side line. not implemented.
+		case 64: // stress ideogram (whatever that is)
 			this->current_char_fmt.flags |= CHR_STRESS_IDEOGRAM;
 			break;
-		case 65: //disables effects 60-64
+		case 65: // disables effects 60-64
 			this->current_char_fmt.flags &= ~CHR_RIGHTLINED;
 			this->current_char_fmt.flags &= ~CHR_LEFTLINED;
 			break;
-		//cases above 65 are not standardized.
+		// cases above 65 are not standardized.
 		default:
-			//not implemented or not defined.
-			//abortabortabort
+			// not implemented or not defined.
+			// abortabortabort
 			return;
 		}
 	}
 }
 
 void Buf::clear(term start, term end, bool clear_end) {
-	//apply clear_end
+	// apply clear_end
 	if (clear_end) {
 		end.x++;
 		if (end.x > this->dims.x) {
@@ -1082,11 +1083,11 @@ void Buf::clear(term start, term end, bool clear_end) {
 		return;
 	}
 
-	//clear char info
+	// clear char info
 	chrdata_clear(chrdataptr(start), chrdataptr(end));
 
-	//calculate lines to clear
-	//a line is cleared iff all of its characters are cleared
+	// calculate lines to clear
+	// a line is cleared iff all of its characters are cleared
 	term_t line_start = start.y;
 	if (start.x > 0) {
 		line_start++;
@@ -1097,7 +1098,7 @@ void Buf::clear(term start, term end, bool clear_end) {
 		return;
 	}
 
-	//clear line info
+	// clear line info
 	linedata_clear(linedataptr(line_start), linedataptr(line_end));
 }
 
@@ -1151,5 +1152,10 @@ buf_line *Buf::linedataptr(term_t lineno) {
 	}
 	return result;
 }
+
+const coord::term &Buf::get_dims() const {
+	return this->dims;
+}
+
 
 }} // openage::console

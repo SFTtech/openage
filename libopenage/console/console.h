@@ -25,24 +25,8 @@ namespace console {
 class Console : InputHandler, TickHandler, HudHandler, ResizeHandler {
 
 public:
-	Console();
+	Console(Engine *engine);
 	~Console();
-
-	coord::camhud bottomleft;
-	coord::camhud topright;
-	coord::camhud charsize;
-
-	std::vector<util::col> termcolors;
-
-	bool visible;
-
-	Buf buf;
-	renderer::Font font;
-
-	input::InputContext input_context;
-
-	// the command state
-	std::string command;
 
 	/**
 	 * load the consoles color table
@@ -53,7 +37,7 @@ public:
 	 * register this console to the engine.
 	 * this leads to the drawing calls, and input handling.
 	 */
-	void register_to_engine(Engine *engine);
+	void register_to_engine();
 
 	void set_visible(bool make_visible);
 
@@ -71,6 +55,26 @@ public:
 	bool on_tick() override;
 	bool on_input(SDL_Event *event) override;
 	bool on_resize(coord::window new_size) override;
+
+protected:
+	Engine *engine;
+
+public:
+	coord::camhud bottomleft;
+	coord::camhud topright;
+	coord::camhud charsize;
+
+	std::vector<util::col> termcolors;
+
+	bool visible;
+
+	Buf buf;
+	renderer::Font font;
+
+	input::InputContext input_context;
+
+	// the command state
+	std::string command;
 };
 
 }} // openage::console

@@ -51,7 +51,8 @@ signals:
 	void binds_changed();
 
 private slots:
-	void on_announced(const std::string &name, const std::vector<std::string>& binds);
+	void on_announced(const std::string &name);
+	void on_binds_changed(const std::vector<std::string>& binds);
 
 protected:
 	virtual void classBegin() override;

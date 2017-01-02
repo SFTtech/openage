@@ -1,13 +1,14 @@
 // Copyright 2015-2016 the openage authors. See copying.md for legal info.
 
+#include "../assetmanager.h"
+#include "../engine.h"
 #include "../gamedata/blending_mode.gen.h"
 #include "../gamedata/string_resource.gen.h"
 #include "../gamedata/terrain.gen.h"
+#include "../rng/global_rng.h"
 #include "../unit/producer.h"
 #include "../util/strings.h"
-#include "../rng/global_rng.h"
-#include "../assetmanager.h"
-#include "../engine.h"
+#include "../util/timer.h"
 #include "civilisation.h"
 #include "game_spec.h"
 
@@ -15,9 +16,9 @@
 
 namespace openage {
 
-GameSpec::GameSpec(AssetManager &am)
+GameSpec::GameSpec(AssetManager *am)
 	:
-	assetmanager{&am},
+	assetmanager{am},
 	data_path{"converted/gamedata"},
 	graphics_path{"converted/graphics"},
 	terrain_path{"converted/terrain"},
@@ -29,17 +30,24 @@ GameSpec::GameSpec(AssetManager &am)
 GameSpec::~GameSpec() {}
 
 bool GameSpec::initialize() {
-	this->load_timer.start();
+	util::Timer load_timer;
+	load_timer.start();
 
 	this->load_terrain(*this->assetmanager);
 
 	util::Dir gamedata_dir = this->assetmanager->get_data_dir()->append(this->data_path);
 
-	log::log(MSG(info) << "loading game specification files... stand by, will be faster soon...");
+	log::log(MSG(info)
+	         << "loading game specification files... "
+	         << "will be faster once we use nyan, so please help!");
+
 	this->gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
+
 	this->on_gamedata_loaded(this->gamedata);
 	this->gamedata_loaded = true;
-	log::log(MSG(info).fmt("Loading time  [data]: %5.3f s", load_timer.getval() / 1e9));
+
+	log::log(MSG(info).fmt("Loading time  [data]: %5.3f s",
+	                       load_timer.getval() / 1e9));
 	return true;
 }
 
@@ -158,6 +166,12 @@ void GameSpec::create_unit_types(unit_meta_list &objects, int civ_id) const {
 	}
 }
 
+
+AssetManager *GameSpec::get_asset_manager() const {
+	return this->assetmanager;
+}
+
+
 void GameSpec::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 	util::Dir *data_dir = this->assetmanager->get_data_dir();
 	util::Dir sound_dir = data_dir->append(this->sound_path);
@@ -185,9 +199,14 @@ void GameSpec::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 
 	// playable sound files for the audio manager
 	std::vector<gamedata::sound_file> sound_files;
+
+	// all sounds defined in the game specification
 	for (gamedata::sound &sound : gamedata[0].sounds.data) {
 		std::vector<int> sound_items;
 
+		// each sound may have multiple variation,
+		// processed in this loop
+		// these are the single sound files.
 		for (gamedata::sound_item &item : sound.sound_items.data) {
 			std::string snd_file_location = get_sound_file_location(item.resource_id);
 			if (snd_file_location.empty()) {
@@ -208,13 +227,23 @@ void GameSpec::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 			};
 			sound_files.push_back(f);
 		}
+
+
 		// create test sound objects that can be played later
-		this->available_sounds[sound.id] = Sound{sound_items};
+		this->available_sounds.insert({
+			sound.id,
+			Sound{
+				this,
+				std::move(sound_items)
+			}
+		});
 	}
 
+	// TODO: move out the loading of the sound.
+	//       this class only provides the names and locations
+
 	// load the requested sounds.
-	Engine &engine = Engine::get();
-	audio::AudioManager &am = engine.get_audio_manager();
+	audio::AudioManager &am = this->assetmanager->get_engine()->get_audio_manager();
 	am.load_resources(sound_dir, sound_files);
 
 	// this final step occurs after loading media
@@ -367,11 +396,14 @@ void Sound::play() const {
 	if (this->sound_items.size() <= 0) {
 		return;
 	}
-	audio::AudioManager &am = Engine::get().get_audio_manager();
 
 	int rand = rng::random_range(0, this->sound_items.size());
 	int sndid = this->sound_items.at(rand);
+
 	try {
+		// TODO: buhuuuu gnargghh this has to be moved to the asset loading subsystem hnnnng
+		audio::AudioManager &am = this->game_spec->get_asset_manager()->get_engine()->get_audio_manager();
+
 		audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();
 	}
 	catch(Error &e) {
@@ -425,8 +457,11 @@ std::shared_ptr<GameSpec> GameSpecHandle::get_spec() {
 
 void GameSpecHandle::start_loading_if_needed() {
 	if (this->active && this->asset_manager && !this->spec) {
-		this->spec = std::make_shared<GameSpec>(*this->asset_manager);
 
+		// create the game specification
+		this->spec = std::make_shared<GameSpec>(this->asset_manager);
+
+		// the load the data
 		this->start_load_job();
 	}
 }
@@ -438,15 +473,22 @@ void GameSpecHandle::start_load_job() {
 	auto spec_and_job = std::make_tuple(this->spec, this->gui_signals, job::Job<bool>{});
 	auto spec_and_job_ptr = std::make_shared<decltype(spec_and_job)>(spec_and_job);
 
-	auto load_job = [spec_and_job_ptr] {
+	// lambda to be executed to actually load the data files.
+	auto perform_load = [spec_and_job_ptr] {
 		return std::get<std::shared_ptr<GameSpec>>(*spec_and_job_ptr)->initialize();
 	};
 
-	Engine &engine = Engine::get();
-	std::get<job::Job<bool>>(*spec_and_job_ptr) = engine.get_job_manager()->enqueue<bool>(load_job, [gui_signals_ptr = this->gui_signals.get()] (job::result_function_t<bool> result) {
-		if (result())
+	auto load_finished = [gui_signals_ptr = this->gui_signals.get()] (job::result_function_t<bool> result) {
+		if (result()) {
+			// send the signal that the load job was finished
 			emit gui_signals_ptr->load_job_finished();
-	});
+		}
+	};
+
+	job::JobManager *job_mgr = this->asset_manager->get_engine()->get_job_manager();
+	std::get<job::Job<bool>>(*spec_and_job_ptr) = job_mgr->enqueue<bool>(
+		perform_load, load_finished
+	);
 }
 
 }

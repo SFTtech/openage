@@ -7,6 +7,8 @@
 
 #include "../coord/tile.h"
 #include "../handlers.h"
+#include "../util/timing.h"
+
 
 namespace openage {
 
@@ -18,7 +20,12 @@ class Unit;
 class UnitContainer;
 class UnitType;
 
+
+/**
+ * Type used to identify each single unit in the game.
+ */
 using id_t = unsigned long int;
+
 
 /**
  * immutable reference data
@@ -58,7 +65,6 @@ private:
 	 * will just copy the shared pointer
 	 */
 	std::shared_ptr<reference_data> data;
-
 };
 
 /**
@@ -114,10 +120,10 @@ public:
 	bool dispatch_command(id_t to_id, const Command &cmd);
 
 	/**
-	 * update dispatched by the game engine
-	 * this will update all game objects
+	 * update dispatched by the game engine on each physics tick.
+	 * this will update all game objects.
 	 */
-	bool update_all();
+	bool update_all(time_nsec_t lastframe_duration);
 
 	/**
 	 * gets a list of all units in the container
@@ -136,7 +142,6 @@ private:
 	 * Terrain for initialising new units
 	 */
 	std::weak_ptr<Terrain> terrain;
-
 };
 
 } // namespace openage

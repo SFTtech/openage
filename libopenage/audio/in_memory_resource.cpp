@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2016 the openage authors. See copying.md for legal info.
 
 #include "in_memory_resource.h"
 
@@ -7,16 +7,24 @@
 namespace openage {
 namespace audio {
 
-InMemoryResource::InMemoryResource(category_t category,
+InMemoryResource::InMemoryResource(AudioManager *manager,
+                                   category_t category,
                                    int id,
                                    const std::string &path,
                                    format_t format)
 	:
-	Resource{category, id} {
+	Resource{manager, category, id} {
 
 	auto loader = InMemoryLoader::create(path, format);
 	buffer = loader->get_resource();
 }
+
+
+void InMemoryResource::use() {}
+
+
+void InMemoryResource::stop_using() {}
+
 
 audio_chunk_t InMemoryResource::get_data(size_t position,
                                          size_t data_length) {

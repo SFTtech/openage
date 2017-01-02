@@ -34,7 +34,13 @@ namespace gui {
 class EngineLink : public qtsdl::GuiSingletonItem {
 	Q_OBJECT
 
-	Q_PROPERTY(QStringList globalBinds READ get_global_binds NOTIFY global_binds_changed)
+	/**
+	 * The text list of global key bindings.
+	 * displayed so one can see what keys are active.
+	 */
+	Q_PROPERTY(QStringList globalBinds
+	           READ get_global_binds
+	           NOTIFY global_binds_changed)
 
 public:
 	explicit EngineLink(QObject *parent, Engine *engine);

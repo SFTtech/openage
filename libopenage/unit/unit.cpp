@@ -16,7 +16,7 @@
 
 namespace openage {
 
-Unit::Unit(UnitContainer &c, id_t id)
+Unit::Unit(UnitContainer *c, id_t id)
 	:
 	id{id},
 	unit_type{nullptr},
@@ -74,7 +74,7 @@ UnitAction *Unit::before(const UnitAction *action) const {
 	return nullptr;
 }
 
-bool Unit::update() {
+bool Unit::update(time_nsec_t lastframe_duration) {
 
 	// if unit is not on the map then do nothing
 	if (!this->location) {
@@ -92,11 +92,12 @@ bool Unit::update() {
 	 * the active action is on top
 	 */
 	if (this->has_action()) {
-		Engine &engine = Engine::get();
+		// TODO: change the entire unit action timing
+		//       to a higher resolution like nsecs or usecs.
 
-		// TODO: change the entire unit action timing to a higher resolution like
-		// nsecs or usecs.
-		auto time_elapsed = engine.lastframe_duration_nsec() / 1e6;
+		// time as float, in milliseconds.
+		auto time_elapsed = lastframe_duration / 1e6;
+
 		this->top()->update(time_elapsed);
 
 		// the top primary action specifies whether
@@ -291,16 +292,11 @@ void Unit::stop_actions() {
 }
 
 UnitReference Unit::get_ref() {
-	return UnitReference(&container, id, this);
+	return UnitReference(this->container, id, this);
 }
 
 UnitContainer *Unit::get_container() const {
-	return &container;
-}
-
-std::vector<UnitAction *> Unit::current_actions() const {
-	std::vector<UnitAction *> result;
-	return result;
+	return this->container;
 }
 
 std::string Unit::logsource_name() {

@@ -33,35 +33,48 @@ QString GameSaver::get_error_string() const {
 	return this->error_string;
 }
 
+// called when the save-game button is pressed:
 void GameSaver::activate() {
-	static auto f = [] (GameMainHandle *game, Generator *generator, std::shared_ptr<GameSaverSignals> callback) {
-		emit callback->error_message([&] {
-			if (!game->is_game_running()) {
-				return "no open game to save";
-			} else {
-				auto filename = generator->getv<std::string>("load_filename");
-				gameio::save(game->get_game(), filename);
-				return "";
-			}
-		}());
+	static auto f = [] (GameMainHandle *game,
+	                    Generator *generator,
+	                    std::shared_ptr<GameSaverSignals> callback) {
+
+		QString error_msg;
+
+		if (!game->is_game_running()) {
+			error_msg = "no open game to save";
+		} else {
+			auto filename = generator->getv<std::string>("load_filename");
+			gameio::save(game->get_game(), filename);
+		}
+
+		emit callback->error_message(error_msg);
 	};
 
 	if (this->game && this->generator_parameters) {
 		std::shared_ptr<GameSaverSignals> callback = std::make_shared<GameSaverSignals>();
-		QObject::connect(callback.get(), &GameSaverSignals::error_message, this, &GameSaver::on_processed);
+		QObject::connect(callback.get(),
+		                 &GameSaverSignals::error_message,
+		                 this,
+		                 &GameSaver::on_processed);
 
 		this->game->i(f, this->generator_parameters, callback);
-	} else {
-		this->on_processed([this] {
-			if (!this->game)
-				return "provide 'game' before saving";
-			if (!this->generator_parameters)
-				return "provide 'generatorParameters' before saving";
-			else
-				ENSURE(false, "unhandled case for refusal to create a game");
+	}
+	else {
+		QString error_msg = "unknown error";
 
-			return "unknown error";
-		}());
+		if (!this->game) {
+			error_msg = "provide 'game' before saving";
+		}
+
+		if (!this->generator_parameters) {
+			error_msg = "provide 'generatorParameters' before saving";
+		}
+		else {
+			ENSURE(false, "unhandled case for refusal to create a game");
+		}
+
+		this->on_processed(error_msg);
 	}
 }
 
