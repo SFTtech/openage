@@ -33,14 +33,13 @@ bool GameSpec::initialize() {
 	util::Timer load_timer;
 	load_timer.start();
 
+	util::load_csv_file_cache(*this->assetmanager->get_data_dir());
+
 	this->load_terrain(*this->assetmanager);
 
 	util::Dir gamedata_dir = this->assetmanager->get_data_dir()->append(this->data_path);
 
-	log::log(MSG(info)
-	         << "loading game specification files... "
-	         << "will be faster once we use nyan, so please help!");
-
+	log::log(MSG(info) << "Loading game specification files... (will take a while only the first time)");
 	this->gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
 
 	this->on_gamedata_loaded(this->gamedata);

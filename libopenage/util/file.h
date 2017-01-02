@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,6 +7,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 #include "../error/error.h"
 
@@ -29,6 +30,11 @@ ssize_t read_whole_file(char **result, const std::string &filename);
  */
 std::vector<std::string> file_get_lines(const std::string &file_name);
 
+extern std::unordered_map<std::string, std::vector<std::string>> csv_file_cache_map;
+
+void load_csv_file_cache(Dir basedir);
+void add_to_csv_file_cache(const std::string &fname);
+void deactivate_csv_file_cache();
 
 /**
  * read a single csv file.
@@ -38,41 +44,72 @@ template<typename lineformat>
 void read_csv_file(const std::string &fname, std::vector<lineformat> &out) {
 	size_t line_count = 0;
 	lineformat current_line_data;
-	std::string line;
 	std::vector<char> strbuf;
 
-	std::ifstream csvfile{fname};
-
-	while (std::getline(csvfile, line)) {
-		line_count += 1;
-
-		// ignore comments and empty lines
-		if (line.empty() || line[0] == '#') {
-			continue;
-		}
-
-		// create writable copy, for tokenisation
-		if (unlikely(strbuf.size() <= line.size())) {
-			strbuf.resize(line.size() + 1);
-		}
-		memcpy(strbuf.data(), line.c_str(), line.size() + 1);
-
-		// use the line copy to fill the current line struct.
-		int error_column = current_line_data.fill(strbuf.data());
-		if (error_column != -1) {
-			throw Error(MSG(err) <<
-				"Failed to read CSV file: " <<
-				fname << ":" << line_count << ":" << error_column << ": "
-				"error parsing " << line);
-		}
-
-		out.push_back(current_line_data);
+	if (!csv_file_cache_map.count(fname)) {
+		add_to_csv_file_cache(fname);
 	}
 
-	if (unlikely(!line_count)) {
-		throw Error(MSG(err) <<
-			"Failed to read CSV file " << fname << ": " <<
-			"Empty or missing.");
+	if (csv_file_cache_map.count(fname)) {
+		std::vector<std::string> lines = csv_file_cache_map.at(fname);
+
+		for (auto &line : lines) {
+			line_count += 1;
+
+			// create writable copy, for tokenisation
+			if (unlikely(strbuf.size() <= line.size())) {
+				strbuf.resize(line.size() + 1);
+			}
+			memcpy(strbuf.data(), line.c_str(), line.size() + 1);
+
+			// use the line copy to fill the current line struct.
+			int error_column = current_line_data.fill(strbuf.data());
+			if (error_column != -1) {
+				throw Error(MSG(err) <<
+					"Failed to read CSV file: " <<
+					fname << ":" << line_count << ":" << error_column << ": "
+					"error parsing " << line);
+			}
+
+			out.push_back(current_line_data);
+		}
+	}
+	else {
+		std::string line;
+
+		std::ifstream csvfile{fname};
+
+		while (std::getline(csvfile, line)) {
+			line_count += 1;
+
+			// ignore comments and empty lines
+			if (line.empty() || line[0] == '#') {
+				continue;
+			}
+
+			// create writable copy, for tokenisation
+			if (unlikely(strbuf.size() <= line.size())) {
+				strbuf.resize(line.size() + 1);
+			}
+			memcpy(strbuf.data(), line.c_str(), line.size() + 1);
+
+			// use the line copy to fill the current line struct.
+			int error_column = current_line_data.fill(strbuf.data());
+			if (error_column != -1) {
+				throw Error(MSG(err) <<
+					"Failed to read CSV file: " <<
+					fname << ":" << line_count << ":" << error_column << ": "
+					"error parsing " << line);
+			}
+
+			out.push_back(current_line_data);
+		}
+
+		if (unlikely(!line_count)) {
+			throw Error(MSG(err) <<
+				"Failed to read CSV file " << fname << ": " <<
+				"Empty or missing.");
+		}
 	}
 }
 
@@ -125,6 +162,5 @@ struct subdata {
 		return this->data[idx];
 	}
 };
-
 
 }} // openage::util

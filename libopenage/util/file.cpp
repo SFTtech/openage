@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include "file.h"
 
@@ -92,5 +92,56 @@ std::vector<std::string> file_get_lines(const std::string &file_name) {
 	return result;
 }
 
+std::unordered_map<std::string, std::vector<std::string>> csv_file_cache_map;
+std::string csv_file_cache_map_path;
+bool csv_file_cache_active = false;
+
+void load_csv_file_cache(Dir basedir) {
+	csv_file_cache_map_path = basedir.join("cache.docx");
+	csv_file_cache_active = true;
+
+	log::log(MSG(info) << "Loading csv file cache");
+	if (file_size(csv_file_cache_map_path) == -1) {
+		log::log(MSG(info) << "Cannot find csv file cache at " << csv_file_cache_map_path);
+		return;
+	}
+
+	std::vector<std::string> lines = file_get_lines(csv_file_cache_map_path);
+	log::log(MSG(info) << "Loaded lines from csv file cache: " << lines.size());
+
+	std::string current_file = "";
+	for (auto& line : lines) {
+		if (line[0] == '#' && line[1] == '#' && line[2] == ' ') {
+			current_file = line.erase(0, 3);
+			csv_file_cache_map.emplace(current_file, std::vector<std::string>());
+		}
+		else {
+			csv_file_cache_map.at(current_file).push_back(line);
+		}
+	}
+	log::log(MSG(info) << "Loaded files from csv file cache: " << csv_file_cache_map.size());
+}
+
+void add_to_csv_file_cache(const std::string &fname) {
+	if (!csv_file_cache_active) {
+		return;
+	}
+	// add file to cache file and also load it
+	std::ofstream cachefile{csv_file_cache_map_path, std::ios_base::app};
+	cachefile << "## " << fname << "\n";
+	csv_file_cache_map.emplace(fname, std::vector<std::string>());
+	std::vector<std::string> lines = file_get_lines(fname);
+	for (auto& line : lines) {
+		if (line.empty() || line[0] == '#') {
+			continue;
+		}
+		cachefile << line << "\n";
+		csv_file_cache_map.at(fname).push_back(line);
+	}
+}
+
+void deactivate_csv_file_cache() {
+	csv_file_cache_active = false;
+}
 
 }} // openage::util
