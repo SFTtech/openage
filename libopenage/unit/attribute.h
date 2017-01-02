@@ -130,14 +130,14 @@ public:
 	/**
 	 * Add copies of all the attributes from the given Attributes.
 	 */
-	void addCopies(const Attributes &attrs);
+	void add_copies(const Attributes &attrs);
 
 	/**
 	 * Add copies of all the attributes from the given Attributes.
 	 * If shared is false, shared attributes are ignored.
 	 * If unshared is false, unshared attributes are ignored.
 	 */
-	void addCopies(const Attributes &attrs, bool shared, bool unshared);
+	void add_copies(const Attributes &attrs, bool shared, bool unshared);
 
 	/**
 	 * Remove an attribute based on the type.
@@ -187,7 +187,6 @@ public:
 	bool shared() const override {
 		return true;
 	}
-
 };
 
 /**
@@ -206,7 +205,6 @@ public:
 	bool shared() const override {
 		return false;
 	}
-
 };
 
 // -----------------------------
@@ -441,9 +439,7 @@ public:
 		return std::make_shared<Attribute<attr_type::dropsite>>(*this);
 	}
 
-	bool accepting_resource(game_resource res) {
-		return std::find(resource_types.begin(), resource_types.end(), res) != resource_types.end();
-	}
+	bool accepting_resource(game_resource res) const;
 
 	std::vector<game_resource> resource_types;
 };

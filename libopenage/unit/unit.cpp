@@ -247,11 +247,11 @@ void Unit::add_attribute(std::shared_ptr<AttributeContainer> attr) {
 }
 
 void Unit::add_attributes(const Attributes &attr) {
-	this->attributes.addCopies(attr);
+	this->attributes.add_copies(attr);
 }
 
 void Unit::add_attributes(const Attributes &attr, bool shared, bool unshared) {
-	this->attributes.addCopies(attr, shared, unshared);
+	this->attributes.add_copies(attr, shared, unshared);
 }
 
 bool Unit::has_attribute(attr_type type) const {

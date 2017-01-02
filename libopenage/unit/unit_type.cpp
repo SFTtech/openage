@@ -34,11 +34,11 @@ void UnitType::reinitialise(Unit *unit, Player &player) {
 
 	Attributes tmp;
 	// copy only unshared
-	tmp.addCopies(unit->attributes, false, true);
+	tmp.add_copies(unit->attributes, false, true);
 	// initialise the new unit
 	this->initialise(unit, player);
 	// replace new unshared attributes with the old
-	unit->attributes.addCopies(tmp);
+	unit->attributes.add_copies(tmp);
 }
 
 bool UnitType::operator==(const UnitType &other) const {

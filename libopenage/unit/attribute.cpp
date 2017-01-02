@@ -10,11 +10,11 @@ void Attributes::add(const std::shared_ptr<AttributeContainer> attr) {
 	this->attrs[attr->type] = attr;
 }
 
-void Attributes::addCopies(const Attributes &other) {
-	this->addCopies(other, true, true);
+void Attributes::add_copies(const Attributes &other) {
+	this->add_copies(other, true, true);
 }
 
-void Attributes::addCopies(const Attributes &other, bool shared, bool unshared) {
+void Attributes::add_copies(const Attributes &other, bool shared, bool unshared) {
 	for (auto &i : other.attrs) {
 		auto &attr = *i.second.get();
 
@@ -46,6 +46,10 @@ std::shared_ptr<AttributeContainer> Attributes::get(const attr_type type) const 
 template<attr_type T>
 Attribute<T> &Attributes::get() const {
 	return *reinterpret_cast<Attribute<T> *>(this->attrs.at(T).get());
+}
+
+bool Attribute<attr_type::dropsite>::accepting_resource(game_resource res) const {
+	return std::find(resource_types.begin(), resource_types.end(), res) != resource_types.end();
 }
 
 void Attribute<attr_type::multitype>::switchType(const gamedata::unit_classes cls, Unit *unit) const {

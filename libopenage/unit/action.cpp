@@ -807,7 +807,8 @@ void BuildAction::on_completion() {
 	}
 	this->entity->log(MSG(dbg) << "Done building, searching for new building");
 	auto valid = [this](const TerrainObject &obj) {
-		if (!obj.unit.has_attribute(attr_type::building) ||
+		if (!this->entity->get_attribute<attr_type::owner>().player.owns(obj.unit) ||
+		    !obj.unit.has_attribute(attr_type::building) ||
 		    obj.unit.get_attribute<attr_type::building>().completed >= 1.0f) {
 			return false;
 		}
@@ -982,7 +983,7 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 		// dropsite has been reached
 		// add value to player stockpile
-		Player &player = this->entity->get_attribute<attr_type::owner>().player;
+		auto &player = this->entity->get_attribute<attr_type::owner>().player;
 		player.receive(worker_resource.resource_type, worker_resource.amount);
 		worker_resource.amount = 0.0;
 
@@ -1087,7 +1088,7 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 	current_pos.up = att.init_height;
 
 	// create using the producer
-	auto player = this->entity->get_attribute<attr_type::owner>().player;
+	auto &player = this->entity->get_attribute<attr_type::owner>().player;
 	auto projectile_ref = container->new_unit(*att.ptype, player, current_pos);
 
 	// send towards target using a projectile ability (creates projectile motion action)
