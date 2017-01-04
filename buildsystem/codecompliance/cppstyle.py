@@ -6,7 +6,7 @@ Checks some general whitespace rules and the encoding for text files.
 
 import re
 
-from .util import find_all_files, readfile, has_ext, issue_str, issue_str_line, BADUTF8FILES
+from .util import findfiles, readfile, has_ext, issue_str, issue_str_line, BADUTF8FILES
 
 
 MISSING_SPACES_RE = re.compile((
@@ -43,10 +43,6 @@ def filter_file_list(check_files, dirnames):
             # TODO all this for now, until someone fixes the codegen.
             continue
 
-        if filename.startswith('openage/'  ) and filename.endswith('.cpp'):
-            # allow issues for Cython-generated files.
-            continue
-
         if any(filename.startswith(dirname) for dirname in dirnames):
             yield filename
 
@@ -60,7 +56,7 @@ def find_issues(check_files, dirnames):
     if check_files is not None:
         filenames = filter_file_list(check_files, dirnames)
     else:
-        filenames = filter_file_list(find_all_files(dirnames), dirnames)
+        filenames = filter_file_list(findfiles(dirnames), dirnames)
 
     for filename in filenames:
         data = readfile(filename)

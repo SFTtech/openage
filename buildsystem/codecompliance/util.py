@@ -49,29 +49,11 @@ def readfile(filename):
     return FILECACHE[filename]
 
 
-def find_all_files(paths):
-    """
-    yields all files in paths.
-
-    hidden dirs and files are ignored.
-    """
-    for path in paths:
-        for filename in os.listdir(path):
-            if filename.startswith('.'):
-                continue
-
-            filename = os.path.join(path, filename)
-
-            if os.path.isdir(filename):
-                yield from find_all_files((filename,))
-                continue
-
-            yield filename
-
-
-def findfiles(paths, exts):
+def findfiles(paths, exts=None):
     """
     yields all files in paths with names ending in an ext from exts.
+
+    If exts is None, all extensions are accepted.
 
     hidden dirs and files are ignored.
     """
@@ -86,15 +68,25 @@ def findfiles(paths, exts):
                 yield from findfiles((filename,), exts)
                 continue
 
-            if has_ext(filename, exts):
+            if exts is None or has_ext(filename, exts):
                 yield filename
 
 
 def issue_str(title, filename):
+    """
+    Creates a formated (title, text) desciption of an issue.
+
+    TODO use this function and issue_str_line for all issues, so the format
+    can be easily changed (exta text, colors, etc)
+    """
     return (title, filename)
 
 
 def issue_str_line(title, filename, line, line_number, index):
+    """
+    Creates a formated (title, text) desciption of an issue with information
+    about the location in the file.
+    """
     return (title, (
         filename + ":" + str(line_number) + "\n" +
         "\tLine: " + line.replace('\t', ' ') +

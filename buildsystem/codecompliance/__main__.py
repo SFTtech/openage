@@ -171,7 +171,7 @@ def find_all_issues(args, check_files=None):
 
     if args.cppstyle:
         from .cppstyle import find_issues
-        yield from find_issues(check_files, ('openage', 'libopenage'))
+        yield from find_issues(check_files, ('libopenage',))
 
     if args.pylint:
         from .pylint import find_issues
