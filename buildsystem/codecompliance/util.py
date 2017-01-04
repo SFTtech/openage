@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 """
 Some utilities.
@@ -49,6 +49,26 @@ def readfile(filename):
     return FILECACHE[filename]
 
 
+def find_all_files(paths):
+    """
+    yields all files in paths.
+
+    hidden dirs and files are ignored.
+    """
+    for path in paths:
+        for filename in os.listdir(path):
+            if filename.startswith('.'):
+                continue
+
+            filename = os.path.join(path, filename)
+
+            if os.path.isdir(filename):
+                yield from find_all_files((filename,))
+                continue
+
+            yield filename
+
+
 def findfiles(paths, exts):
     """
     yields all files in paths with names ending in an ext from exts.
@@ -68,3 +88,14 @@ def findfiles(paths, exts):
 
             if has_ext(filename, exts):
                 yield filename
+
+
+def issue_str(title, filename):
+    return (title, filename)
+
+
+def issue_str_line(title, filename, line, line_number, index):
+    return (title, (
+        filename + ":" + str(line_number) + "\n" +
+        "\tLine: " + line.replace('\t', ' ') +
+        "\t      " + (' ' * index) + "\x1b[32;1m^\x1b[m"))

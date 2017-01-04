@@ -26,6 +26,8 @@ def parse_args():
                      help="check text files for whitespace issues")
     cli.add_argument("--headerguards", action="store_true",
                      help="check all header guards")
+    cli.add_argument("--cppstyle", action="store_true",
+                     help=("check the cpp code style"))
     cli.add_argument("--pystyle", action="store_true",
                      help=("check whether the python code complies with "
                            "(a selected subset of) pep8."))
@@ -64,6 +66,7 @@ def process_args(args, error):
         args.legal = True
         args.authors = True
         args.textfiles = True
+        args.cppstyle = True
         args.filemodes = True
 
     if args.all:
@@ -73,7 +76,7 @@ def process_args(args, error):
         args.pylint = True
         args.test_git_change_years = True
 
-    if not any((args.headerguards, args.legal, args.authors, args.pystyle,
+    if not any((args.headerguards, args.legal, args.authors, args.pystyle, args.cppstyle,
                 args.test_git_change_years, args.pylint, args.filemodes)):
         error("no checks were specified")
 
@@ -165,6 +168,10 @@ def find_all_issues(args, check_files=None):
     if args.pystyle:
         from .pystyle import find_issues
         yield from find_issues(check_files, ('openage', 'buildsystem'))
+
+    if args.cppstyle:
+        from .cppstyle import find_issues
+        yield from find_issues(check_files, ('openage', 'libopenage'))
 
     if args.pylint:
         from .pylint import find_issues
