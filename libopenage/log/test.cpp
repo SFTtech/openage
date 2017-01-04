@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include <iostream>
 #include <iomanip>
@@ -45,11 +45,11 @@ void demo() {
 	logger.log(MSG(err) << 1337 << "asdf...");
 	logger.log(MSG(crit) << util::sformat("asdf %s %d", "test", 1337));
 
-	std::thread t0([&](){
+	std::thread t0([&]() {
 		logger.log(MSG(info) << "this msg comes from a thread");
 	});
 
-	std::thread t1([&](){
+	std::thread t1([&]() {
 		logger.log(MSG(dbg) << "this one, too!");
 	});
 

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "gui_image_provider_impl.h"
 
@@ -18,7 +18,7 @@ GuiImageProviderImpl::~GuiImageProviderImpl() {
 
 std::unique_ptr<GuiImageProviderImpl> GuiImageProviderImpl::take_ownership(GuiImageProvider *image_provider) {
 	std::unique_ptr<GuiImageProviderImpl> ptr{image_provider->impl.release()};
-	image_provider->impl = decltype(image_provider->impl){ptr.get(), [] (GuiImageProviderImpl*) {}};
+	image_provider->impl = decltype(image_provider->impl) {ptr.get(), [] (GuiImageProviderImpl*) {}};
 	return ptr;
 }
 

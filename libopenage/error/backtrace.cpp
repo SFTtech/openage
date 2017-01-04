@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "backtrace.h"
 
@@ -50,7 +50,7 @@ std::ostream &operator <<(std::ostream &os, const Backtrace &bt) {
 	// imitate the looks of a Python traceback.
 	os << "Traceback (most recent call last):" << std::endl;
 
-	bt.get_symbols([&os](const backtrace_symbol *symbol){
+	bt.get_symbols([&os](const backtrace_symbol *symbol) {
 		os << *symbol << std::endl;
 	}, true);
 

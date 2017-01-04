@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "gui_live_reloader.h"
 
@@ -60,7 +60,7 @@ void GuiLiveReloader::init_persistent_items(const QList<GuiLiveReloaderAttachedP
 		auto obj = ap->get_attachee();
 		auto tag = ap->get_tag_for_init();
 
-		if (tag.isEmpty()){
+		if (tag.isEmpty()) {
 			qFatal("Error in QML code: an item with underlying type of '%s' has no 'LR.tag' property.", dynamic_cast<QObject*>(obj)->metaObject()->className());
 		} else {
 			auto found_it = this->preservable.find(tag);

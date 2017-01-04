@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "pyexception.h"
 
@@ -16,7 +16,7 @@ void PyExceptionBacktrace::get_symbols(std::function<void (const error::backtrac
 		// to flip it.
 
 		std::vector<error::backtrace_symbol> symbols;
-		pyexception_bt_get_symbols.call(this->ref, [&symbols](const error::backtrace_symbol *symbol){
+		pyexception_bt_get_symbols.call(this->ref, [&symbols](const error::backtrace_symbol *symbol) {
 			symbols.emplace_back(*symbol);
 		});
 
