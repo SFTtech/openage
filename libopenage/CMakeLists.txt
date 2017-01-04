@@ -6,6 +6,9 @@
 # are specified below the source file list.
 
 set(CMAKE_AUTOMOC ON)
+if(APPLE)
+        list(APPEND CMAKE_PREFIX_PATH /usr/local/opt/qt5)
+endif()
 
 declare_binary(libopenage)
 
