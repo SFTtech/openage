@@ -190,7 +190,7 @@ bool YourMom::tick() {
 		} else { // Both styles are allowed: '} else {' and '} \n else {'
 			// your mom eats a bit.
 			this->mass += 1;
-			// ^ We're not using var++, except in for(..)
+			// ^ We're not using var++, except in for (..)
 
 			if ((this->mass % 5) == 0) {
 				this->number_of_moons += 1;

@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 """
 Entry point for the code compliance checker.
@@ -132,12 +132,15 @@ def main(args):
     else:
         check_files = None
 
-    issues_found = False
+    issues_count = 0
     for title, text in find_all_issues(args, check_files):
-        issues_found = True
+        issues_count += 1
         print("\x1b[33;1mWARNING\x1b[m {}: {}".format(title, text))
 
-    return not issues_found
+    if issues_count > 0:
+        print("A total of \x1b[33;1m{} issues\x1b[m were found.".format(issues_count))
+
+    return issues_count == 0
 
 
 def find_all_issues(args, check_files=None):
