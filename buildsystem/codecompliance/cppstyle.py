@@ -1,12 +1,12 @@
 # Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
-Checks some general whitespace rules and the encoding for text files.
+Checks some code style rules for cpp files.
 """
 
 import re
 
-from .util import findfiles, readfile, has_ext, issue_str, issue_str_line, BADUTF8FILES
+from .util import findfiles, readfile, issue_str_line
 
 
 MISSING_SPACES_RE = re.compile((
@@ -47,7 +47,6 @@ def filter_file_list(check_files, dirnames):
             yield filename
 
 
-
 def find_issues(check_files, dirnames):
     """
     Finds all issues in the given directories (filtered by check_files).
@@ -62,8 +61,7 @@ def find_issues(check_files, dirnames):
         data = readfile(filename)
         analyse_each_line = False
 
-        if (MISSING_SPACES_RE.search(data) or
-            EXTRA_SPACES_RE.search(data)):
+        if MISSING_SPACES_RE.search(data) or EXTRA_SPACES_RE.search(data):
             analyse_each_line = True
 
         # if there are possible issues perform a per line analysis
@@ -79,10 +77,12 @@ def find_issues_with_lines(filename):
 
     for num, line in enumerate(data.splitlines(True), start=1):
 
-        match = MISSING_SPACES_RE.search(line);
+        match = MISSING_SPACES_RE.search(line)
         if match:
-            yield issue_str_line("Missing space", filename, line, num, match.start(1) + match.start(2))
+            yield issue_str_line("Missing space",
+                                 filename, line, num, match.start(1) + match.start(2))
 
-        match = EXTRA_SPACES_RE.search(line);
+        match = EXTRA_SPACES_RE.search(line)
         if match:
-            yield issue_str_line("Extra space", filename, line, num, match.start(1))
+            yield issue_str_line("Extra space",
+                                 filename, line, num, match.start(1))

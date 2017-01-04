@@ -26,7 +26,7 @@ def find_issues(dirnames, exts):
             # TODO all this for now, until someone fixes the codegen.
             continue
 
-        if filename.startswith('openage/'  ) and filename.endswith('.cpp'):
+        if filename.startswith('openage/') and filename.endswith('.cpp'):
             # allow issues for Cython-generated files.
             continue
 
@@ -62,6 +62,6 @@ def find_issues_with_lines(filename):
 
     for num, line in enumerate(data.splitlines(True), start=1):
 
-        match = TRAIL_WHITESPACE_RE.search(line);
+        match = TRAIL_WHITESPACE_RE.search(line)
         if match:
             yield issue_str_line("Trailing whitespace", filename, line, num, match.start(1))
