@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "opus_in_memory_loader.h"
 
@@ -54,7 +54,7 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 				length-position, nullptr);
 		if (samples_read < 0) {
 			throw Error{MSG(err) << "Failed to read from opus file: errorcode=" << samples_read};
-		} else if(samples_read == 0) {
+		} else if (samples_read == 0) {
 			break;
 		}
 

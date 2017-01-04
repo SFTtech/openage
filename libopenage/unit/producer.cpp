@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include <initializer_list>
 
@@ -581,8 +581,8 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 std::vector<game_resource> BuildingProducer::get_accepted_resources() {
 	//TODO use a more general approach instead of hard coded ids
 
-	auto id_in = [=](std::initializer_list<int> ids){
-		return std::any_of(ids.begin(), ids.end(), [=](int n){ return n == this->id(); });
+	auto id_in = [=](std::initializer_list<int> ids) {
+		return std::any_of(ids.begin(), ids.end(), [=](int n) { return n == this->id(); });
 	};
 
 	if (this->id() == 109) { //Town center

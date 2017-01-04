@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "rng.h"
 
@@ -249,7 +249,7 @@ static uint64_t try_random_device() {
 	// std::random_device constructor may throw if it isn't available
 	try {
 		std::random_device rnd;
-		if (rnd.entropy() > 0){
+		if (rnd.entropy() > 0) {
 			rand1 = rnd() + (uint64_t(rnd()) << 32);
 		}
 	}
