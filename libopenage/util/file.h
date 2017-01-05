@@ -33,7 +33,7 @@ std::vector<std::string> file_get_lines(const std::string &file_name);
 using csv_file_map_t = std::unordered_map<std::string, std::vector<std::string>>;
 
 /**
- *
+ * Load a multi csv file into a csv_file_map_t
  */
 csv_file_map_t *load_multi_csv_file(Dir basedir, const std::string &fname);
 
@@ -45,13 +45,18 @@ extern csv_file_map_t *csv_file_map;
  * call the destination struct .fill() method for actually storing line data
  */
 template<typename lineformat>
-void read_csv_file(const std::string &fname, std::vector<lineformat> &out) {
+void read_csv_file(const std::string &fname, std::vector<lineformat> &out, csv_file_map_t *file_map = nullptr) {
 	size_t line_count = 0;
 	lineformat current_line_data;
 	std::vector<char> strbuf;
 
-	if (csv_file_map && csv_file_map->count(fname)) {
-		std::vector<std::string> lines = csv_file_map->at(fname);
+	// TODO chnage the auto gen files in order to remove this
+	if (!file_map) {
+		file_map = csv_file_map;
+	}
+
+	if (file_map && file_map->count(fname)) {
+		std::vector<std::string> lines = file_map->at(fname);
 
 		for (auto &line : lines) {
 			line_count += 1;
@@ -113,28 +118,17 @@ void read_csv_file(const std::string &fname, std::vector<lineformat> &out) {
 	}
 }
 
-/**
- * reads data files recursively.
- * should be called from the .recurse() method of the struct.
- */
-template<class lineformat>
-std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname, csv_file_map_t *file_map) {
-
-	csv_file_map = file_map;
-
-	return recurse_data_files<lineformat>(basedir, fname);
-}
 
 /**
  * reads data files recursively.
  * should be called from the .recurse() method of the struct.
  */
 template<class lineformat>
-std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname) {
+std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname, csv_file_map_t *file_map = nullptr) {
 	std::vector<lineformat> result;
 	std::string merged_filename = basedir.join(fname);
 
-	read_csv_file<lineformat>(merged_filename, result);
+	read_csv_file<lineformat>(merged_filename, result, file_map);
 
 	//the new basedir is the old basedir
 	// + the directory part of the current relative file name

@@ -105,7 +105,7 @@ csv_file_map_t *load_multi_csv_file(Dir basedir, const std::string &fname) {
 	std::string current_file = "";
 	for (auto& line : lines) {
 		if (line[0] == '#' && line[1] == '#' && line[2] == ' ') {
-			current_file = basedir.join(line.erase(0, 3));
+			current_file = basedir.join(line.erase(0, 3)) + ".docx";
 			map->emplace(current_file, std::vector<std::string>());
 		}
 		else {

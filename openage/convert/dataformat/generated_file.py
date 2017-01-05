@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -25,6 +25,7 @@ class GeneratedFile:
     default_preferences = {
         "folder":         "",
         "file_suffix":    "",
+        "process":        True,
         "content_prefix": Template(""),
         "content_suffix": Template(""),
     }
@@ -35,6 +36,7 @@ class GeneratedFile:
         "csv": {
             "folder":      "",
             "file_suffix": ".docx",
+            "process":     False,
         },
         "struct": {
             "file_suffix": ".gen.h",
@@ -143,6 +145,12 @@ namespace ${namespace} {
         # apply preference overrides
         prefs = self.default_preferences.copy()
         prefs.update(self.output_preferences[self.format_])
+
+        # if there is no need for sorting and resolving dependencies, just return the snippets
+        # as they have been added
+        if not prefs["process"]:
+            file_data = "\n".join(snippet.get_data() for snippet in self.snippets)
+            return prefs["folder"] + '/' + self.file_name + prefs["file_suffix"], file_data
 
         snippets_header = {s for s in self.snippets if s.section == SectionType.section_header}
         snippets_body   = self.snippets - snippets_header
