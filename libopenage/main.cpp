@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
@@ -34,7 +34,7 @@ int run_game(const main_arguments &args) {
 	auto &cvar_manager = engine.get_cvar_manager();
 	cvar_manager.load_main_config();
 
-	util::load_csv_files(data_dir);
+	util::load_csv_files(data_dir.join("converted/meta.docx"));
 
 	// initialize terminal colors
 	std::vector<gamedata::palette_color> termcolors;

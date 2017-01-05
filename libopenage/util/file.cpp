@@ -94,8 +94,7 @@ std::vector<std::string> file_get_lines(const std::string &file_name) {
 
 std::unordered_map<std::string, std::vector<std::string>> csv_file_map;
 
-void load_csv_files(Dir basedir) {
-	std::string path = basedir.join("converted/meta.docx");
+void load_csv_files(std::string path) {
 
 	log::log(MSG(info) << "Loading csv files");
 	if (file_size(path) == -1) {

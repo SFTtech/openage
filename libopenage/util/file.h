@@ -32,7 +32,7 @@ std::vector<std::string> file_get_lines(const std::string &file_name);
 
 extern std::unordered_map<std::string, std::vector<std::string>> csv_file_map;
 
-void load_csv_files(Dir basedir);
+void load_csv_files(std::string path);
 
 /**
  * read a single csv file.

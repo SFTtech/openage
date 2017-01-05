@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -184,10 +184,10 @@ $parsers
         # we now invoke the content generation for each generated file
         for gen_file in generate_files:
             file_name, content = gen_file.generate()
-            if file_name.endswith('.docx'):
-                with open('assets/converted/meta.docx', 'ab') as file:
-                    file.write(('## ' + file_name + '\n').encode('utf-8'))
-                    file.write(content.encode('utf-8'))
+            if gen_file.format_ in {"csv"}:
+                with open('assets/converted/meta.docx', 'ab') as outfile:
+                    outfile.write(('## ' + file_name + '\n').encode('utf-8'))
+                    outfile.write(content.encode('utf-8'))
             else:
                 with projectdir[file_name].open('wb') as outfile:
                     outfile.write(content.encode('utf-8'))
