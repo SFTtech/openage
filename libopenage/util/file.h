@@ -30,11 +30,9 @@ ssize_t read_whole_file(char **result, const std::string &filename);
  */
 std::vector<std::string> file_get_lines(const std::string &file_name);
 
-extern std::unordered_map<std::string, std::vector<std::string>> csv_file_cache_map;
+extern std::unordered_map<std::string, std::vector<std::string>> csv_file_map;
 
-void load_csv_file_cache(Dir basedir);
-void add_to_csv_file_cache(const std::string &fname);
-void deactivate_csv_file_cache();
+void load_csv_files(Dir basedir);
 
 /**
  * read a single csv file.
@@ -46,12 +44,8 @@ void read_csv_file(const std::string &fname, std::vector<lineformat> &out) {
 	lineformat current_line_data;
 	std::vector<char> strbuf;
 
-	if (!csv_file_cache_map.count(fname)) {
-		add_to_csv_file_cache(fname);
-	}
-
-	if (csv_file_cache_map.count(fname)) {
-		std::vector<std::string> lines = csv_file_cache_map.at(fname);
+	if (csv_file_map.count(fname)) {
+		std::vector<std::string> lines = csv_file_map.at(fname);
 
 		for (auto &line : lines) {
 			line_count += 1;

@@ -92,56 +92,33 @@ std::vector<std::string> file_get_lines(const std::string &file_name) {
 	return result;
 }
 
-std::unordered_map<std::string, std::vector<std::string>> csv_file_cache_map;
-std::string csv_file_cache_map_path;
-bool csv_file_cache_active = false;
+std::unordered_map<std::string, std::vector<std::string>> csv_file_map;
 
-void load_csv_file_cache(Dir basedir) {
-	csv_file_cache_map_path = basedir.join("cache.docx");
-	csv_file_cache_active = true;
+void load_csv_files(Dir basedir) {
+	std::string path = basedir.join("converted/meta.docx");
 
-	log::log(MSG(info) << "Loading csv file cache");
-	if (file_size(csv_file_cache_map_path) == -1) {
-		log::log(MSG(info) << "Cannot find csv file cache at " << csv_file_cache_map_path);
+	log::log(MSG(info) << "Loading csv files");
+	if (file_size(path) == -1) {
+		log::log(MSG(info) << "Cannot find csv file at " << path);
 		return;
 	}
 
-	std::vector<std::string> lines = file_get_lines(csv_file_cache_map_path);
-	log::log(MSG(info) << "Loaded lines from csv file cache: " << lines.size());
+	std::vector<std::string> lines = file_get_lines(path);
 
 	std::string current_file = "";
 	for (auto& line : lines) {
 		if (line[0] == '#' && line[1] == '#' && line[2] == ' ') {
-			current_file = line.erase(0, 3);
-			csv_file_cache_map.emplace(current_file, std::vector<std::string>());
+			current_file = "./assets/converted" + line.erase(0, 3);
+			csv_file_map.emplace(current_file, std::vector<std::string>());
 		}
 		else {
-			csv_file_cache_map.at(current_file).push_back(line);
+			if (line.empty() || line[0] == '#') {
+				continue;
+			}
+			csv_file_map.at(current_file).push_back(line);
 		}
 	}
-	log::log(MSG(info) << "Loaded files from csv file cache: " << csv_file_cache_map.size());
-}
-
-void add_to_csv_file_cache(const std::string &fname) {
-	if (!csv_file_cache_active) {
-		return;
-	}
-	// add file to cache file and also load it
-	std::ofstream cachefile{csv_file_cache_map_path, std::ios_base::app};
-	cachefile << "## " << fname << "\n";
-	csv_file_cache_map.emplace(fname, std::vector<std::string>());
-	std::vector<std::string> lines = file_get_lines(fname);
-	for (auto& line : lines) {
-		if (line.empty() || line[0] == '#') {
-			continue;
-		}
-		cachefile << line << "\n";
-		csv_file_cache_map.at(fname).push_back(line);
-	}
-}
-
-void deactivate_csv_file_cache() {
-	csv_file_cache_active = false;
+	log::log(MSG(info) << "Loaded csv files: " << csv_file_map.size());
 }
 
 }} // openage::util
