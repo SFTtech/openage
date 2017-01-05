@@ -6,8 +6,8 @@
 #include <cstring>
 #include <fstream>
 #include <string>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 #include "../error/error.h"
 
@@ -30,9 +30,15 @@ ssize_t read_whole_file(char **result, const std::string &filename);
  */
 std::vector<std::string> file_get_lines(const std::string &file_name);
 
-extern std::unordered_map<std::string, std::vector<std::string>> csv_file_map;
+using csv_file_map_t = std::unordered_map<std::string, std::vector<std::string>>;
 
-void load_csv_files(std::string path);
+/**
+ *
+ */
+csv_file_map_t *load_multi_csv_file(Dir basedir, const std::string &fname);
+
+// TODO chnage the auto gen files in order to remove this
+extern csv_file_map_t *csv_file_map;
 
 /**
  * read a single csv file.
@@ -44,8 +50,8 @@ void read_csv_file(const std::string &fname, std::vector<lineformat> &out) {
 	lineformat current_line_data;
 	std::vector<char> strbuf;
 
-	if (csv_file_map.count(fname)) {
-		std::vector<std::string> lines = csv_file_map.at(fname);
+	if (csv_file_map && csv_file_map->count(fname)) {
+		std::vector<std::string> lines = csv_file_map->at(fname);
 
 		for (auto &line : lines) {
 			line_count += 1;
@@ -105,6 +111,18 @@ void read_csv_file(const std::string &fname, std::vector<lineformat> &out) {
 				"Empty or missing.");
 		}
 	}
+}
+
+/**
+ * reads data files recursively.
+ * should be called from the .recurse() method of the struct.
+ */
+template<class lineformat>
+std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname, csv_file_map_t *file_map) {
+
+	csv_file_map = file_map;
+
+	return recurse_data_files<lineformat>(basedir, fname);
 }
 
 /**

@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -38,13 +38,19 @@ class DataDefinition(StructDefinition):
             csv_column_types.append(repr(c_type))
 
         # the resulting csv content
-        # begin with the csv information comment header
-        txt = [
+        txt = []
+
+        # create the file meta comment for sigle file packed csv files
+        if self.single_output:
+            txt.extend(["## ", self.name_data_file, "\n"])
+
+        # create the csv information comment header
+        txt.extend([
             "# struct ", self.name_struct, "\n",
             commentify_lines("# ", self.struct_description),
             "# ", genfile.DELIMITER.join(csv_column_types), "\n",
             "# ", genfile.DELIMITER.join(self.members.keys()), "\n",
-        ]
+        ])
 
         from .multisubtype_base import MultisubtypeBaseFile
 
@@ -91,10 +97,13 @@ class DataDefinition(StructDefinition):
             # create one csv line, separated by DELIMITER (probably a ,)
             txt.extend((genfile.DELIMITER.join(row_entries), "\n"))
 
-        if self.prefix:
-            snippet_file_name = self.prefix + self.name_data_file
+        if self.single_output:
+            snippet_file_name = self.single_output
         else:
             snippet_file_name = self.name_data_file
+
+        if self.prefix:
+            snippet_file_name = self.prefix + snippet_file_name
 
         return [ContentSnippet(
             "".join(txt),

@@ -92,32 +92,31 @@ std::vector<std::string> file_get_lines(const std::string &file_name) {
 	return result;
 }
 
-std::unordered_map<std::string, std::vector<std::string>> csv_file_map;
+csv_file_map_t *csv_file_map = nullptr;
 
-void load_csv_files(std::string path) {
+csv_file_map_t *load_multi_csv_file(Dir basedir, const std::string &fname) {
+	std::string path = basedir.join(fname);
 
-	log::log(MSG(info) << "Loading csv files");
-	if (file_size(path) == -1) {
-		log::log(MSG(info) << "Cannot find csv file at " << path);
-		return;
-	}
-
+	log::log(MSG(info) << "Loading multi csv file: " << fname);
 	std::vector<std::string> lines = file_get_lines(path);
+
+	csv_file_map_t *map = new csv_file_map_t();
 
 	std::string current_file = "";
 	for (auto& line : lines) {
 		if (line[0] == '#' && line[1] == '#' && line[2] == ' ') {
-			current_file = "./assets/converted" + line.erase(0, 3);
-			csv_file_map.emplace(current_file, std::vector<std::string>());
+			current_file = basedir.join(line.erase(0, 3));
+			map->emplace(current_file, std::vector<std::string>());
 		}
 		else {
 			if (line.empty() || line[0] == '#') {
 				continue;
 			}
-			csv_file_map.at(current_file).push_back(line);
+			map->at(current_file).push_back(line);
 		}
 	}
-	log::log(MSG(info) << "Loaded csv files: " << csv_file_map.size());
+	log::log(MSG(info) << "Loaded csv files: " << map->size());
+	return map;
 }
 
 }} // openage::util

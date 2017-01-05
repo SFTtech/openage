@@ -34,8 +34,6 @@ int run_game(const main_arguments &args) {
 	auto &cvar_manager = engine.get_cvar_manager();
 	cvar_manager.load_main_config();
 
-	util::load_csv_files(data_dir.join("converted/meta.docx"));
-
 	// initialize terminal colors
 	std::vector<gamedata::palette_color> termcolors;
 	util::read_csv_file(data_dir.join("converted/termcolors.docx"), termcolors);

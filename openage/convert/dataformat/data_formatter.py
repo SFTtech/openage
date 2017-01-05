@@ -80,7 +80,7 @@ $parsers
         # collection of all type definitions
         self.typedefs = dict()
 
-    def add_data(self, data_set_pile, prefix=None):
+    def add_data(self, data_set_pile, prefix=None, single_output=None):
         """
         add a given StructDefinition to the storage, so it can be exported later.
 
@@ -97,6 +97,9 @@ $parsers
             # (missing: struct, structimpl)
             if prefix:
                 data_set.prefix = prefix
+
+            if single_output:
+                data_set.single_output = single_output
 
             # collect column type specifications
             for member_name, member_type in data_set.members.items():
@@ -184,10 +187,5 @@ $parsers
         # we now invoke the content generation for each generated file
         for gen_file in generate_files:
             file_name, content = gen_file.generate()
-            if gen_file.format_ in {"csv"}:
-                with open('assets/converted/meta.docx', 'ab') as outfile:
-                    outfile.write(('## ' + file_name + '\n').encode('utf-8'))
-                    outfile.write(content.encode('utf-8'))
-            else:
-                with projectdir[file_name].open('wb') as outfile:
-                    outfile.write(content.encode('utf-8'))
+            with projectdir[file_name].open('wb') as outfile:
+                outfile.write(content.encode('utf-8'))

@@ -38,7 +38,9 @@ bool GameSpec::initialize() {
 	util::Dir gamedata_dir = this->assetmanager->get_data_dir()->append(this->data_path);
 
 	log::log(MSG(info) << "Loading game specification files...");
-	this->gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx");
+	util::csv_file_map_t *tmp = load_multi_csv_file(gamedata_dir, "gamedata.docx");
+	this->gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx", tmp);
+	delete tmp;
 
 	this->on_gamedata_loaded(this->gamedata);
 	this->gamedata_loaded = true;

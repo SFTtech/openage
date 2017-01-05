@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -35,6 +35,7 @@ class StructDefinition:
         self.name_struct        = target.name_struct         # !< name of generated C struct
         self.struct_description = target.struct_description  # !< comment placed above generated C struct
         self.prefix             = None
+        self.single_output      = None
         self.target             = target                     # !< target Exportable class that defines the data format
 
         # create ordered dict of member type objects from structure definition
