@@ -13,6 +13,7 @@ Openage currently depends on the original game assets, so you need a copy of the
     {
       "AppID"  "221380"
       "Universe" "1"
+      "installdir" "Age2HD"
       "StateFlags" "1026"
     }
 ```
