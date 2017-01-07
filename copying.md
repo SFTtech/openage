@@ -90,6 +90,7 @@ _the openage authors_ are:
 | Akritas Akritidis           | MaanooAk                    | akritasak@gmail.com                   |
 | Edgard Mota                 | edgardmota                  | edgardmota@gmail.com                  |
 | Boris Dušek                 | dusek                       | me@dusek.me                           |
+| Michael Droogleever         | droogmic                    | droogmic@gmail.com                    |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
