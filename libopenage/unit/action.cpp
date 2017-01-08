@@ -145,6 +145,42 @@ void UnitAction::damage_object(Unit &target) {
 	}
 }
 
+void UnitAction::damage_object(Unit &target) {
+	if (target.has_attribute(attr_type::hitpoints)) {
+		auto &hp = target.get_attribute<attr_type::hitpoints>();
+
+		if (target.has_attribute(attr_type::armor) && this->entity->has_attribute(attr_type::attack)) {
+			auto &armor = target.get_attribute<attr_type::armor>().armor;
+			auto &damage = this->entity->get_attribute<attr_type::attack>().damage;
+
+			unsigned int actual_damage = 0;
+			for (const auto &pair : armor) {
+				auto search = damage.find(pair.first);
+				if (search != damage.end()) {
+					if (pair.second < search->second) {
+						actual_damage += search->second - pair.second;
+					}
+				}
+			}
+			// TODO add elevation modifier here
+			if (actual_damage < 1) {
+				actual_damage = 1;
+			}
+
+			if (hp.current > actual_damage) {
+				hp.current -= actual_damage;
+			}
+			else {
+				hp.current = 0;
+			}
+		}
+		else {
+			// TODO remove (keep for testing)
+			damage_object(target, 1);
+		}
+	}
+}
+
 void UnitAction::move_to(Unit &target, bool use_range) {
 	auto &player = this->entity->get_attribute<attr_type::owner>().player;
 	Command cmd(player, &target);
