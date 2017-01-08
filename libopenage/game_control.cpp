@@ -691,7 +691,7 @@ GameControl::GameControl(qtsdl::GuiItemLink *gui_link)
 	game{nullptr},
 	active_mode{nullptr},
 	active_mode_index{-1},
-	current_player{1},
+	current_player{},
 	gui_signals{this},
 	gui_link{gui_link} {
 }
