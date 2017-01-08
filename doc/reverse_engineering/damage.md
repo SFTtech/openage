@@ -65,3 +65,13 @@ So in the example we have:
 
 All units (except trees, gregarious animals, hunting wolves and some units from beta versions)
 have a default value of **1000** for each armor class that they don't have.
+
+## Damage by Projectiles
+
+The damage of a shot in AoE2 is most likely calculated after it has hit the target. This leads to weird behaviour when units die including:
+
+* Losing enviromental bonusses such as uphill or cliff bonus damage (+25 %)
+* Dealing no damage, e.g. trebuchets
+* Dealing only 1 damage, e.g. if japanese trebuchets are packed before they hit their target
+
+It also has other consequences: Technologies will affect projectlies that were in the air when research finished.
