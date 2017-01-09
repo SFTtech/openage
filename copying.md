@@ -91,6 +91,7 @@ _the openage authors_ are:
 | Edgard Mota                 | edgardmota                  | edgardmota@gmail.com                  |
 | Boris Dušek                 | dusek                       | me@dusek.me                           |
 | Michael Droogleever         | droogmic                    | droogmic@gmail.com                    |
+| Christoph Heine             | heinezen                    | heinezen@hotmail.de                   |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
