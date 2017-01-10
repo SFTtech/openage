@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,6 +7,7 @@
 #include "../gamedata/graphic.gen.h"
 #include "../terrain/terrain.h"
 #include "../unit/unit_texture.h"
+#include "../util/file.h"
 
 #include <unordered_map>
 #include <memory>
@@ -214,7 +215,7 @@ private:
 	/**
 	 * fill in the terrain_data attribute of this
 	 */
-	void load_terrain(AssetManager &am);
+	void load_terrain(AssetManager &am, util::csv_file_map_t *file_map);
 
 	/**
 	 * has game data been load yet

@@ -38,7 +38,7 @@ bool GameSpec::initialize() {
 	util::csv_file_map_t *meta_file_map = load_multi_csv_file(gamedata_dir, "gamedata.docx");
 	util::csv_file_map = meta_file_map;
 
-	this->load_terrain(*this->assetmanager);
+	this->load_terrain(*this->assetmanager, meta_file_map);
 
 	log::log(MSG(info) << "Loading game specification files...");
 	this->gamedata = util::recurse_data_files<gamedata::empiresdat>(gamedata_dir, "gamedata-empiresdat.docx", meta_file_map);
@@ -307,7 +307,7 @@ void GameSpec::load_projectile(const gamedata::unit_projectile &proj, unit_meta_
 	}
 }
 
-void GameSpec::load_terrain(AssetManager &am) {
+void GameSpec::load_terrain(AssetManager &am, util::csv_file_map_t *file_map) {
 
 	// Terrain data files
 	util::Dir *data_dir = am.get_data_dir();
@@ -315,7 +315,7 @@ void GameSpec::load_terrain(AssetManager &am) {
 	std::vector<gamedata::string_resource> string_resources;
 	util::read_csv_file(asset_dir.join("string_resources.docx"), string_resources);
 	std::vector<gamedata::terrain_type> terrain_meta;
-	util::read_csv_file(asset_dir.join("gamedata/gamedata-empiresdat/0000-terrains.docx"), terrain_meta);
+	util::read_csv_file(asset_dir.join("gamedata/gamedata-empiresdat/0000-terrains.docx"), terrain_meta, file_map);
 	std::vector<gamedata::blending_mode> blending_meta;
 	util::read_csv_file(asset_dir.join("blending_modes.docx"), blending_meta);
 

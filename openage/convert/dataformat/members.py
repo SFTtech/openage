@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,abstract-method
 
@@ -615,7 +615,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 destination = "fill",
             ),
             EntryParser(
-                ["this->%s.recurse(basedir);" % (member)],
+                ["this->%s.recurse(basedir, file_map);" % (member)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "recurse",
@@ -671,7 +671,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
             # function to recursively read the referenced files
             txt.extend((
-                "int %s::recurse(openage::util::Dir basedir) {\n" % (self.type_name),
+                "int %s::recurse(openage::util::Dir basedir, openage::util::csv_file_map_t *file_map) {\n" % (self.type_name),
                 "\tthis->index_file.read(basedir); //read ref-file entries\n",
                 "\tint subtype_count = this->index_file.data.size();\n"
                 "\tif (subtype_count != %s) {\n" % len(self.class_lookup),
@@ -768,7 +768,7 @@ class SubdataMember(MultisubtypeMember):
                 destination = "fill",
             ),
             EntryParser(
-                ["this->%s.read(basedir);" % (member)],
+                ["this->%s.read(basedir, file_map);" % (member)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "recurse",

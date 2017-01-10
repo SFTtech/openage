@@ -52,6 +52,7 @@ void read_csv_file(const std::string &fname, std::vector<lineformat> &out, csv_f
 
 	// TODO chnage the auto gen files in order to remove this
 	if (!file_map) {
+		log::log(MSG(info) << "Loading without passing the map: " << fname);
 		file_map = csv_file_map;
 	}
 
@@ -137,7 +138,7 @@ std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname
 	size_t line_count = 0;
 	for (auto &entry : result) {
 		line_count += 1;
-		if (not entry.recurse(new_basedir)) {
+		if (not entry.recurse(new_basedir, file_map)) {
 			throw Error(MSG(err) <<
 				"Failed to read follow-up files for " <<
 				merged_filename << ":" << line_count);
@@ -159,8 +160,8 @@ struct subdata {
 	std::string filename;
 	std::vector<cls> data;
 
-	bool read(Dir basedir) {
-		this->data = recurse_data_files<cls>(basedir, this->filename);
+	bool read(Dir basedir, csv_file_map_t *file_map = nullptr) {
+		this->data = recurse_data_files<cls>(basedir, this->filename, file_map);
 		return true;
 	}
 
