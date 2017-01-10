@@ -191,6 +191,10 @@ def convert_metadata(args):
     if args.flag("no_metadata"):
         return
 
+    gamedata_path = args.targetdir.joinpath('gamedata')
+    if gamedata_path.exists():
+        gamedata_path.removerecursive()
+
     yield "empires.dat"
     gamespec = get_gamespec(args.srcdir, args.game_versions, args.flag("no_pickle_cache"))
     data_dump = gamespec.dump("gamedata")

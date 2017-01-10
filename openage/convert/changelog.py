@@ -35,7 +35,7 @@ CHANGES = (
     {"graphics"},
     {"interface"},
     {"interface"},
-    {"gamedata", "metadata"},
+    {"metadata"},
 )
 
 # the current version number equals the number of changes
