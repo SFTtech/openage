@@ -34,8 +34,8 @@ class StructDefinition:
         self.name_struct_file   = target.name_struct_file    # !< name of file where generated struct will be placed
         self.name_struct        = target.name_struct         # !< name of generated C struct
         self.struct_description = target.struct_description  # !< comment placed above generated C struct
-        self.prefix             = None
-        self.single_output      = None
+        self.prefix             = None                       # !< if not None, a prefix will be added to the final path
+        self.single_output      = None                       # !< if not None, will be packed with other files into a single one
         self.target             = target                     # !< target Exportable class that defines the data format
 
         # create ordered dict of member type objects from structure definition
