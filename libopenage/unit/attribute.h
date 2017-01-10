@@ -62,6 +62,7 @@ enum class attr_type {
 	hitpoints,
 	armor,
 	attack,
+	formation,
 	heal,
 	speed,
 	direction,
@@ -80,6 +81,14 @@ enum class attack_stance {
 	stand_ground,
 	do_nothing
 };
+
+enum class attack_formation {
+	line,
+	staggered,
+	box,
+	flank
+};
+
 
 /**
  * this type gets specialized for each attribute
@@ -284,7 +293,7 @@ public:
 	typeamount_map armor;
 };
 
-template<> class Attribute<attr_type::attack>: public UnsharedAttributeContainer {
+template<> class Attribute<attr_type::attack>: public SharedAttributeContainer {
 public:
 	// TODO remove (keep for testing)
 	// 4 = gamedata::hit_class::UNITS_MELEE (not exported at the moment)
@@ -294,12 +303,11 @@ public:
 
 	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d)
 		:
-		UnsharedAttributeContainer{attr_type::attack},
+		SharedAttributeContainer{attr_type::attack},
 		ptype{type},
 		range{r},
 		init_height{h},
-		damage{d},
-		stance{attack_stance::do_nothing} {}
+		damage{d} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::attack>>(*this);
@@ -312,9 +320,27 @@ public:
 	coord::phys_t range;
 	coord::phys_t init_height;
 	typeamount_map damage;
+};
 
-	// TODO move elsewhere in order to become shared attribute
+template<> class Attribute<attr_type::formation>: public UnsharedAttributeContainer {
+public:
+
+	Attribute()
+		:
+		Attribute{attack_stance::do_nothing} {}
+
+	Attribute(attack_stance stance)
+		:
+		UnsharedAttributeContainer{attr_type::formation},
+		stance{stance},
+		formation{attack_formation::line} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::formation>>(*this);
+	}
+
 	attack_stance stance;
+	attack_formation formation;
 };
 
 /**

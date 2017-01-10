@@ -24,7 +24,7 @@ void Attributes::add_copies(const Attributes &other, bool shared, bool unshared)
 				this->add(i.second);
 			}
 		}
-		else if(unshared) {
+		else if (unshared) {
 			// create copy
 			this->add(attr.copy());
 		}

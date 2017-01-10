@@ -389,6 +389,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	else {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(nullptr, 0, 0, 1));
 	}
+	unit->add_attribute(std::make_shared<Attribute<attr_type::formation>>());
 }
 
 TerrainObject *MovableProducer::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
@@ -570,6 +571,8 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1));
+		// formation is used only for the attack_stance
+		unit->add_attribute(std::make_shared<Attribute<attr_type::formation>>(attack_stance::aggresive));
 		unit->give_ability(std::make_shared<AttackAbility>());
 	}
 

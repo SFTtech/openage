@@ -397,7 +397,8 @@ void IdleAction::update(unsigned int time) {
 	if (this->entity->location &&
 	    this->entity->has_attribute(attr_type::owner) &&
 	    this->entity->has_attribute(attr_type::attack) &&
-	    this->entity->get_attribute<attr_type::attack>().stance != attack_stance::do_nothing) {
+	    this->entity->has_attribute(attr_type::formation) &&
+	    this->entity->get_attribute<attr_type::formation>().stance != attack_stance::do_nothing) {
 
 		// restart search from new tile when moved
 		auto terrain = this->entity->location->get_terrain();
