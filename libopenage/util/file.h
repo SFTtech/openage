@@ -37,9 +37,6 @@ using csv_file_map_t = std::unordered_map<std::string, std::vector<std::string>>
  */
 csv_file_map_t *load_multi_csv_file(Dir basedir, const std::string &fname);
 
-// TODO chnage the auto gen files in order to remove this
-extern csv_file_map_t *csv_file_map;
-
 /**
  * read a single csv file.
  * call the destination struct .fill() method for actually storing line data
@@ -49,12 +46,6 @@ void read_csv_file(const std::string &fname, std::vector<lineformat> &out, csv_f
 	size_t line_count = 0;
 	lineformat current_line_data;
 	std::vector<char> strbuf;
-
-	// TODO chnage the auto gen files in order to remove this
-	if (!file_map) {
-		log::log(MSG(info) << "Loading without passing the map: " << fname);
-		file_map = csv_file_map;
-	}
 
 	if (file_map && file_map->count(fname)) {
 		std::vector<std::string> lines = file_map->at(fname);

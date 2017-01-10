@@ -672,7 +672,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             # function to recursively read the referenced files
             txt.extend((
                 "int %s::recurse(openage::util::Dir basedir, openage::util::csv_file_map_t *file_map) {\n" % (self.type_name),
-                "\tthis->index_file.read(basedir); //read ref-file entries\n",
+                "\tthis->index_file.read(basedir, file_map); //read ref-file entries\n",
                 "\tint subtype_count = this->index_file.data.size();\n"
                 "\tif (subtype_count != %s) {\n" % len(self.class_lookup),
                 "\t\tthrow openage::error::Error(MSG(err) << \"multisubtype index file entry count mismatched! \" << subtype_count << \" != %d\");\n" % (len(self.class_lookup)),
@@ -697,7 +697,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                     "\t\tthrow openage::error::Error(MSG(err) << \"multisubtype index file contains no entry for %s!\");\n" % (entry_name),
                     "\t}\n",
                     "\tthis->%s.filename = this->index_file.data[idx].filename;\n" % (entry_name),
-                    "\tthis->%s.read(new_basedir);\n" % (entry_name),
+                    "\tthis->%s.read(new_basedir, file_map);\n" % (entry_name),
                     "\tidx = -1;\n\n"
                 ))
             txt.append("\treturn -1;\n}\n")

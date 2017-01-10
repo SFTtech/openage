@@ -36,7 +36,6 @@ bool GameSpec::initialize() {
 	util::Dir gamedata_dir = this->assetmanager->get_data_dir()->append(this->data_path);
 
 	util::csv_file_map_t *meta_file_map = load_multi_csv_file(gamedata_dir, "gamedata.docx");
-	util::csv_file_map = meta_file_map;
 
 	this->load_terrain(*this->assetmanager, meta_file_map);
 
