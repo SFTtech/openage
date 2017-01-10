@@ -31,7 +31,7 @@ template<> struct hash<gamedata::unit_classes> {
 namespace openage {
 
 /**
- * types of action graphics
+ * Types of action graphics
  */
 enum class graphic_type {
 	construct,
@@ -49,12 +49,12 @@ enum class graphic_type {
 class UnitTexture;
 
 /**
- * collection of graphics attached to each unit
+ * Collection of graphics attached to each unit.
  */
 using graphic_set = std::map<graphic_type, std::shared_ptr<UnitTexture>>;
 
 /**
- * list of attribute types
+ * List of unit's attribute types.
  */
 enum class attr_type {
 	owner,
@@ -75,6 +75,10 @@ enum class attr_type {
 	garrison
 };
 
+/**
+ * List of unit's attack stance.
+ * Can be used for buildings also.
+ */
 enum class attack_stance {
 	aggresive,
 	devensive,
@@ -82,6 +86,10 @@ enum class attack_stance {
 	do_nothing
 };
 
+/**
+ * List of unit's formation.
+ * Effect applys on a group of units.
+ */
 enum class attack_formation {
 	line,
 	staggered,
@@ -96,7 +104,7 @@ enum class attack_formation {
 template<attr_type T> class Attribute;
 
 /**
- * wraps a templated attribute
+ * Wraps a templated attribute
  */
 class AttributeContainer {
 public:
@@ -293,6 +301,10 @@ public:
 	typeamount_map armor;
 };
 
+/**
+ * TODO implement min range
+ * TODO can a unit have multiple attacks such as villagers hunting map target classes onto attacks
+ */
 template<> class Attribute<attr_type::attack>: public SharedAttributeContainer {
 public:
 	// TODO remove (keep for testing)
@@ -313,15 +325,28 @@ public:
 		return std::make_shared<Attribute<attr_type::attack>>(*this);
 	}
 
-	// TODO: can a unit have multiple attacks such as villagers hunting
-	// map target classes onto attacks
+	/**
+	 * The projectile's unit type
+	 */
+	UnitType *ptype;
 
-	UnitType *ptype; // projectile type
+	/**
+	 * The max range of the attack
+	 */
 	coord::phys_t range;
+
+	/**
+	 * The height from which the projectile starts
+	 */
 	coord::phys_t init_height;
+
 	typeamount_map damage;
 };
 
+/**
+ * The attack stance and formation
+ * TODO store patrol and follow command information
+ */
 template<> class Attribute<attr_type::formation>: public UnsharedAttributeContainer {
 public:
 
@@ -386,7 +411,6 @@ public:
 		return std::make_shared<Attribute<attr_type::speed>>(*this);
 	}
 
-	// TODO possibly use a pointer to account for tech upgrades
 	// TODO rename to default or normal
 	coord::phys_t unit_speed;
 };
@@ -422,6 +446,9 @@ public:
 	bool launched;
 };
 
+/**
+ * TODO revisit after unit training is improved
+ */
 template<> class Attribute<attr_type::building>: public UnsharedAttributeContainer {
 public:
 	Attribute()
@@ -455,7 +482,6 @@ public:
  */
 template<> class Attribute<attr_type::dropsite>: public SharedAttributeContainer {
 public:
-
 	Attribute(std::vector<game_resource> types)
 		:
 		SharedAttributeContainer{attr_type::dropsite},
@@ -472,6 +498,7 @@ public:
 
 /**
  * Resource capacity of a trees, mines, animal, worker etc.
+ * TODO add a way to define slower and faster resource gathering time needed
  */
 template<> class Attribute<attr_type::resource>: public UnsharedAttributeContainer {
 public:
