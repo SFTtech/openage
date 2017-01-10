@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include "timer.h"
 
@@ -28,7 +28,7 @@ void Timer::stop() {
 }
 
 void Timer::start() {
-	if (not this->stopped) {
+	if (this->stopped) {
 		this->stopped = false;
 		this->starttime = timing::get_monotonic_time() - this->stoppedat;
 	}
@@ -46,7 +46,7 @@ time_nsec_t Timer::getandresetval() {
 	time_nsec_t result;
 
 	if (this->stopped) {
-		result    = this->stoppedat;
+		result = this->stoppedat;
 		this->stoppedat = 0;
 	}
 	else {

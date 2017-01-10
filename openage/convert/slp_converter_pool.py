@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Multiprocessing-based SLP-to-texture converter service.
@@ -91,7 +91,9 @@ class SLPConverterPool:
             return Texture(SLP(slpdata), self.palette, custom_cutter)
 
         if free_memory() < 2**30:
+            # TODO print the warn only once
             warn("Low on memory; disabling parallel SLP conversion")
+
             # acquire job_mutex in order to block any concurrent activity until
             # this job is done.
             with self.job_mutex:

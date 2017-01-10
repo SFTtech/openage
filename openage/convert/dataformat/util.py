@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C
 
@@ -106,7 +106,7 @@ def determine_header(for_type):
         "int":             set(),
         "read_csv_file":   {util_file_h},
         "subdata":         {util_file_h},
-        "engine_dir":      {util_dir_h},
+        "engine_dir":      {util_dir_h, util_file_h},
         "engine_error":    {error_error_h},
         "engine_log":      {log_h},
     }

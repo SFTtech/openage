@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -58,13 +58,13 @@ $parsers
             func_name = "recurse",
             templates = {
                 0: entry_parser.ParserTemplate(
-                    signature    = "int %srecurse(openage::util::Dir /*basedir*/)",
+                    signature    = "int %srecurse(openage::util::Dir /*basedir*/, openage::util::csv_file_map_t */*file_map*/)",
                     headers      = util.determine_header("engine_dir"),
                     impl_headers = set(),
                     template     = "$signature {\n\treturn -1;\n}\n"
                 ),
                 None: entry_parser.ParserTemplate(
-                    signature = "int %srecurse(openage::util::Dir basedir)",
+                    signature = "int %srecurse(openage::util::Dir basedir, openage::util::csv_file_map_t *file_map)",
                     headers   = util.determine_header("engine_dir"),
                     impl_headers = set(),
                     template  = "$signature {\n$parsers\n\n\treturn -1;\n}\n"
@@ -80,7 +80,7 @@ $parsers
         # collection of all type definitions
         self.typedefs = dict()
 
-    def add_data(self, data_set_pile, prefix=None):
+    def add_data(self, data_set_pile, prefix=None, single_output=None):
         """
         add a given StructDefinition to the storage, so it can be exported later.
 
@@ -97,6 +97,9 @@ $parsers
             # (missing: struct, structimpl)
             if prefix:
                 data_set.prefix = prefix
+
+            if single_output:
+                data_set.single_output = single_output
 
             # collect column type specifications
             for member_name, member_type in data_set.members.items():

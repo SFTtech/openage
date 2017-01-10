@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 # pylint: disable=R0912
 """
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
@@ -191,10 +191,14 @@ def convert_metadata(args):
     if args.flag("no_metadata"):
         return
 
+    gamedata_path = args.targetdir.joinpath('gamedata')
+    if gamedata_path.exists():
+        gamedata_path.removerecursive()
+
     yield "empires.dat"
     gamespec = get_gamespec(args.srcdir, args.game_versions, args.flag("no_pickle_cache"))
     data_dump = gamespec.dump("gamedata")
-    data_formatter.add_data(data_dump[0], prefix="gamedata/")
+    data_formatter.add_data(data_dump[0], prefix="gamedata/", single_output="gamedata")
 
     yield "blendomatic.dat"
     blend_data = get_blendomatic_data(args.srcdir)
