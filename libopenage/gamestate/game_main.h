@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,6 +8,7 @@
 
 #include <QObject>
 
+#include "market.h"
 #include "player.h"
 #include "team.h"
 #include "../options.h"
@@ -79,6 +80,11 @@ public:
 	 * all teams in the game
 	 */
 	std::vector<Team> teams;
+
+	/**
+	 * The global market (the global market prices).
+	 */
+	Market market;
 
 	/**
 	 * all the objects that have been placed.
