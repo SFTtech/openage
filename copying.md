@@ -92,6 +92,7 @@ _the openage authors_ are:
 | Boris Dušek                 | dusek                       | me@dusek.me                           |
 | Michael Droogleever         | droogmic                    | droogmic@gmail.com                    |
 | Christoph Heine             | heinezen                    | heinezen@hotmail.de                   |
+| Marco Savelli               | Piruzzolo                   | svlmrc@gmail.com                      |
 
 If you're a first-time commiter, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
