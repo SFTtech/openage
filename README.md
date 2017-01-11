@@ -151,7 +151,7 @@ Guidelines:
 * Absolutely never ever participate in this [boring community](https://www.reddit.com/r/openage/).
 * Don't note the irony, you idiot.
 
-To prevent accidential violation of one of those guidelines, you should *never*
+To prevent accidental violation of one of those guidelines, you should *never*
 
 * [learn git](http://git-scm.com/book/en/Git-Basics)
 * [fork the repo](https://help.github.com/articles/fork-a-repo)
