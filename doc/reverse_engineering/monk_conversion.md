@@ -23,7 +23,7 @@ As a general rule, these stats carry over from a conversion:
 
 Buildings are also frozen in tech level when converted. Besides that, they function just as normal as other buildings of the player and produce "normal" (not frozen in tech level) units.
 
-Team bonusses are sometimes transferred over if they affect the stats of the building. For example, the faster building time from a Goth barrack is carried over but the cheaper infantry bonus is not. The higher population limit of Inca houses also seems to be a stat and stays if the house is converted.
+Team bonuses are sometimes transferred over if they affect the stats of the building. For example, the faster building time from a Goth barrack is carried over but the cheaper infantry bonus is not. The higher population limit of Inca houses also seems to be a stat and stays if the house is converted.
 
 Units inside a building are not converted and will ungarrison. The same is true for rams. Transport ships are a little bit complicated, since they do convert but the units inside don't. The player can choose to delete the transport ship, destroying all units inside or unload them at a shore so that the original owner regains control of them.
 
