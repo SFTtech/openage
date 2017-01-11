@@ -5,6 +5,7 @@
 
 
 sanity_check:
+	date -Iseconds
 	make checkall
 
 configure:
