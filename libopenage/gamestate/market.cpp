@@ -12,6 +12,8 @@ Market::Market() {
 	this->base_prices[game_resource::stone] = 130;
 }
 
+// Price calculation is documented at doc/reverse_engineering/market.md#prices
+
 bool Market::sell(Player &player, const game_resource res) {
 	double mult = this->getMultiplier(player, false);
 

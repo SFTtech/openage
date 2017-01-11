@@ -15,6 +15,8 @@ constexpr double MARKET_TRANSACTION_AMOUNT = 100.0;
 
 /**
  * The global market prices.
+ *
+ * Price calculation is documented at doc/reverse_engineering/market.md#prices
  */
 class Market {
 public:
