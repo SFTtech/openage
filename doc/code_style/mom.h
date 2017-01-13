@@ -17,14 +17,13 @@
 
 
 // Includes are sorted alphabetically,
-// local includes first, then system inclusions:
+// global includes first, then system inclusions:
+#include <cstddef>
+#include <cstdint>
+
 #include "../magic/unicorn.h"
 #include "rofl.h"
 #include "stuff.h"
-
-#include <cstddef>
-#include <cstdint>
-// Reason of this order: you'll detect missing system includes.
 
 
 // Try to keep the code < 120 chars in width (no hard limit...).
