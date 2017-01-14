@@ -16,13 +16,6 @@ namespace renderer {
 
 class Context;
 
-/**
- * Texture format, used for setting pixel data size.
- */
-enum class texture_format {
-	rgb,
-	rgba,
-};
 
 
 /**
@@ -93,85 +86,5 @@ protected:
 	size_t w, h;
 };
 
-
-/**
- * Data for textures. Just used for transmitting the data to the GPU.
- */
-class TextureData {
-protected:
-	TextureData() = default;
-
-public:
-	/**
-	 * Create a texture from a rgba8 array.
-	 * It will have w * h * 4byte storage.
-	 * Each pixel has one byte for its r g b and alpha values,
-	 * resulting in 32 bit per pixel.
-	 *
-	 * Copies the data to this texture.
-	 */
-	TextureData(int width, int height, char *data);
-
-	/**
-	 * Create a texture from an rgba8 array by moving the data.
-	 * Each pixel consists of 4 chars, for r g b and alpha.
-	 */
-	TextureData(int width, int height, std::unique_ptr<uint8_t[]> data);
-
-	virtual ~TextureData() = default;
-
-	/**
-	 * The data format of the texture.
-	 */
-	texture_format format;
-
-	/**
-	 * Width and height of this texture.
-	 */
-	int w, h;
-
-	/**
-	 * Raw texture pixel data.
-	 * r g b a values, each 8 bit.
-	 */
-	std::unique_ptr<uint8_t[]> data;
-
-	/**
-	 * The atlas texture positions.
-	 */
-	std::vector<gamedata::subtexture> subtextures;
-};
-
-
-/**
- * Create a texture from an image file.
- *
- * Uses SDL Image internally.
- */
-class FileTextureData : public TextureData {
-public:
-	/**
-	 * Create a texture from a existing image file.
-	 *
-	 * For supported image file types, see the SDL_Image initialization in
-	 * the engine.
-	 */
-	FileTextureData(const std::string &filename, bool use_metafile=false);
-	~FileTextureData() = default;
-
-protected:
-	/**
-	 * Use the meta information file providing info about
-	 * texture atlas positions.
-	 */
-	bool use_metafile;
-
-	/**
-	 * File system path name of
-	 */
-	std::string filename;
-};
-
-}} // openage::renderer
 
 #endif
