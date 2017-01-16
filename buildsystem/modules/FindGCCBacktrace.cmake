@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 # This module defines:
 #
@@ -18,8 +18,8 @@ find_library(GCCBacktrace_LIBRARY
 )
 
 include(CheckCXXSourceCompiles)
-list(APPEND CMAKE_REQUIRED_INCLUDES GCCBacktrace_INCLUDE_DIR)
-list(APPEND CMAKE_REQUIRED_LIBRARIES GCCBacktrace_LIBRARY)
+list(APPEND CMAKE_REQUIRED_INCLUDES ${GCCBacktrace_INCLUDE_DIR})
+list(APPEND CMAKE_REQUIRED_LIBRARIES ${GCCBacktrace_LIBRARY})
 set(CMAKE_REQUIRED_QUIET TRUE)
 CHECK_CXX_SOURCE_COMPILES("
 #include <iostream>
@@ -52,6 +52,6 @@ include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(
 	GCCBacktrace
 	FOUND_VAR GCCBacktrace_FOUND
-	REQUIRED_VARS GCCBacktrace_LIBRARY GCCBacktrace_INCLUDE_DIR)
+	REQUIRED_VARS GCCBacktrace_LIBRARIES GCCBacktrace_INCLUDE_DIRS)
 
-mark_as_advanced(GCCBacktrace_LIBRARY GCCBacktrace_INCLUDE_DIR)
+mark_as_advanced(GCCBacktrace_LIBRARIES GCCBacktrace_INCLUDE_DIRS)

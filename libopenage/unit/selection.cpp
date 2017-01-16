@@ -1,17 +1,19 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+
+#include "selection.h"
 
 #include <cmath>
 
 #include "../coord/tile.h"
 #include "../coord/tile3.h"
 #include "../engine.h"
+#include "../log/log.h"
 #include "../terrain/terrain.h"
-
 #include "action.h"
 #include "command.h"
 #include "producer.h"
-#include "selection.h"
 #include "unit.h"
+
 
 namespace openage {
 
