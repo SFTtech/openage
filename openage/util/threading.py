@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Threading utilities.
@@ -71,7 +71,7 @@ class ClosableQueue(Queue):
         Any subsequent calls to put() or raise_if_closed()
         will raise RuntimeError(reason).
         """
-        with self.mutex:
+        with self.mutex:  # pylint: disable=not-context-manager
             self.closed = True
             self.close_reason = reason
 
@@ -80,7 +80,7 @@ class ClosableQueue(Queue):
         Raises RuntimeError(reason) if the queue has been closed.
         Returns None elsewise.
         """
-        with self.mutex:
+        with self.mutex:  # pylint: disable=not-context-manager
             if self.closed:
                 raise RuntimeError(self.close_reason)
 

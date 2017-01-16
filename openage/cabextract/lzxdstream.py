@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Wraps the LZXDecompressor in a file-like, read-only stream object.
@@ -83,8 +83,8 @@ class LZXDStream(ReadOnlyFileLikeObject):
         # size is unknown in advance
         return -1
 
-    def seek(self, pos, whence=os.SEEK_SET):
-        del pos, whence  # unused
+    def seek(self, offset, whence=os.SEEK_SET):
+        del offset, whence  # unused
         raise UnsupportedOperation("Cannot seek in LZXDStream.")
 
     def seekable(self):

@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """ Entry point for all of the asset conversion. """
 
@@ -210,7 +210,7 @@ def set_custom_wineprefix():
         new_wineprefix = expand_relative_path(new_wineprefix)
 
         # test if it probably is a wineprefix
-        if (Path(new_wineprefix) / "drive_c").is_dir():
+        if (Path(new_wineprefix) / "drive_c").is_dir():  # pylint: disable=no-member
             break
         else:
             print("This does not appear to be a valid WINEPREFIX.")

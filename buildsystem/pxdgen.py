@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Auto-generates PXD files from annotated C++ headers.
@@ -131,7 +131,7 @@ class PXDGenerator:
         Handles any comment, with its format characters removed,
         extracting the pxd annotation
         """
-        annotations = re.findall('pxd:\\s(.*?)(:pxd|$)', val, re.DOTALL)
+        annotations = re.findall('pxd:\\s(.*?)(:pxd|$)', val, re.DOTALL)  # pylint: disable=no-member
         annotations = [annotation[0] for annotation in annotations]
 
         if not annotations:

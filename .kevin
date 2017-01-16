@@ -5,7 +5,8 @@
 
 
 sanity_check:
-	make checkall
+	# skip in debian
+	apt --version > /dev/null || make checkall
 
 configure:
 	./configure --mode=debug

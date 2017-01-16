@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Various OS utilities
@@ -28,12 +28,12 @@ def free_memory():
                 return 1024 * int(match.group(1))
         return INF
 
-    elif platform == "darwin":
+    if platform == "darwin":
         # TODO
         return INF
-    elif platform == "win32":
+    if platform == "win32":
         # TODO
         return INF
-    else:
-        # unknown platform
-        return INF
+
+    # unknown platform
+    return INF

@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Compiles python modules with cpython to pyc/pyo files.
@@ -60,6 +60,7 @@ def main():
             print("FAILED to compile '%s':" % exc.file)
             print(exc.msg)
             exit(1)
+
 
 if __name__ == '__main__':
     main()
