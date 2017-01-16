@@ -1,5 +1,7 @@
 # Repair
 
+[Source](https://www.youtube.com/watch?v=YyBFtDrrpg4)
+
 Buildings, siege weapons and ships can be repaired by villagers.
 
 ## Speed
@@ -20,7 +22,7 @@ For each hp repaired, resources equal to the half of corresponding build cost ar
 
 ## Exceptions
 
-* Town center repair costs no stone.
+* Town center repair costs **twice** as much wood and not half. It also costs no stone except in Dark Age. [Source](https://youtu.be/7cpbi4V41ig?t=4m3s)
 
 ## Math
 
