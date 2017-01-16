@@ -3,16 +3,16 @@
 #include "main.h"
 
 #include "console/console.h"
-#include "gamedata/color.gen.h"
-#include "util/file.h"
-
 #include "engine.h"
 #include "game_control.h"
 #include "game_renderer.h"
+#include "gamedata/color.gen.h"
 #include "gamestate/generator.h"
-
-#include "shader/shader.h"
+#include "log/log.h"
 #include "shader/program.h"
+#include "shader/shader.h"
+#include "util/file.h"
+
 
 namespace openage {
 

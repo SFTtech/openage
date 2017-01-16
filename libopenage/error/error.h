@@ -9,7 +9,6 @@
 #include <string>
 
 // pxd: from libopenage.log.message cimport message
-#include "../log/log.h"
 #include "../log/message.h"
 
 // pxd: from libopenage.error.backtrace cimport Backtrace

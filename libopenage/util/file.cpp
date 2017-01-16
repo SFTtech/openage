@@ -10,6 +10,8 @@
 #include <string.h>
 
 #include "../error/error.h"
+#include "../log/log.h"
+
 
 namespace openage {
 namespace util {

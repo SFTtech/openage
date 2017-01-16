@@ -1,10 +1,11 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "font_manager.h"
 
-#include "font.h"
-
 #include <fontconfig/fontconfig.h>
+
+#include "../../log/log.h"
+#include "font.h"
 
 namespace openage {
 namespace renderer {

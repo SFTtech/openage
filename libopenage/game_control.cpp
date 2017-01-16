@@ -1,11 +1,14 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+
+#include "game_control.h"
 
 #include "engine.h"
 #include "error/error.h"
 #include "gamestate/game_spec.h"
-#include "util/strings.h"
+#include "log/log.h"
 #include "terrain/terrain_chunk.h"
-#include "game_control.h"
+#include "util/strings.h"
+
 
 namespace openage {
 

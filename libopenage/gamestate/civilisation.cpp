@@ -1,7 +1,10 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-#include "../unit/unit_type.h"
 #include "civilisation.h"
+
+#include "../log/log.h"
+#include "../unit/unit_type.h"
+
 
 namespace openage {
 

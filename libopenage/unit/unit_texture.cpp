@@ -1,14 +1,17 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+
+#include "unit_texture.h"
 
 #include <cmath>
 #include <iostream>
 
 #include "../coord/phys3.h"
 #include "../coord/window.h"
-#include "../util/math_constants.h"
 #include "../gamestate/game_spec.h"
+#include "../log/log.h"
 #include "../texture.h"
-#include "unit_texture.h"
+#include "../util/math_constants.h"
+
 
 namespace openage {
 
