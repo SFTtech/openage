@@ -1,4 +1,4 @@
-# Copyright 2013-2016 the openage authors. See copying.md for legal info.
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -33,9 +33,6 @@ class TerrainPassGraphic(Exportable):
         (READ, "walk_sprite_rate", "float"),
     )
 
-    def __init__(self, **args):
-        super().__init__(**args)
-
 
 class TerrainRestriction(Exportable):
     """
@@ -60,9 +57,6 @@ class TerrainRestriction(Exportable):
             length="terrain_count",
         )),
     )
-
-    def __init__(self, **args):
-        super().__init__(**args)
 
 
 class TerrainAnimation(Exportable):
@@ -129,9 +123,6 @@ class Terrain(Exportable):
         (READ, "terrain_units_used_count",   "int16_t"),      # how many entries of the above lists shall we use to place units implicitly when this terrain is placed
         (READ_UNKNOWN, None,                 "uint16_t"),
     )
-
-    def __init__(self, **args):
-        super().__init__(**args)
 
 
 class TerrainBorder(Exportable):

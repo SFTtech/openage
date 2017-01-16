@@ -1,4 +1,4 @@
-# Copyright 2013-2016 the openage authors. See copying.md for legal info.
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -20,9 +20,6 @@ class SoundItem(Exportable):
         (READ,        "player_id",    "int16_t"),
     )
 
-    def __init__(self, **args):
-        super().__init__(**args)
-
 
 class Sound(Exportable):
     name_struct        = "sound"
@@ -40,6 +37,3 @@ class Sound(Exportable):
             length="item_count",
         )),
     )
-
-    def __init__(self, **args):
-        super().__init__(**args)

@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Provides Path, which is analogous to pathlib.Path,
@@ -205,8 +205,8 @@ class Path:
         pos = name.rfind('.')
         if pos <= 0:
             return name
-        else:
-            return name[:pos]
+
+        return name[:pos]
 
     def joinpath(self, subpath):
         """ Returns path for the given subpath. """

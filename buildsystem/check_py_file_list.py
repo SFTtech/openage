@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Tests whether the files listed via add_py_module are consistent with the
@@ -44,8 +44,8 @@ def main():
 
     if success:
         return 0
-    else:
-        return 1
+
+    return 1
 
 
 if __name__ == '__main__':

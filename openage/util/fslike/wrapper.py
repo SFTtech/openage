@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Provides
@@ -34,9 +34,9 @@ class Wrapper(FSLikeObject):
     def __repr__(self):
         if self.contextguard == DummyGuard:
             return "{}({})".format(type(self).__name__, repr(self.obj))
-        else:
-            return "{}({}, {})".format(
-                type(self).__name__, repr(self.obj), repr(self.contextguard))
+
+        return "{}({}, {})".format(
+            type(self).__name__, repr(self.obj), repr(self.contextguard))
 
     def open_r(self, parts):
         with self.contextguard:
@@ -44,8 +44,8 @@ class Wrapper(FSLikeObject):
 
         if self.contextguard == DummyGuard:
             return fileobj
-        else:
-            return GuardedFile(fileobj, self.contextguard)
+
+        return GuardedFile(fileobj, self.contextguard)
 
     def open_w(self, parts):
         with self.contextguard:
@@ -53,8 +53,8 @@ class Wrapper(FSLikeObject):
 
         if self.contextguard == DummyGuard:
             return fileobj
-        else:
-            return GuardedFile(fileobj, self.contextguard)
+
+        return GuardedFile(fileobj, self.contextguard)
 
     def list(self, parts):
         with self.contextguard:
@@ -129,7 +129,7 @@ class Synchronizer(Wrapper):
         super().__init__(obj, self.lock)
 
     def __repr__(self):
-        with self.lock:
+        with self.lock:  # pylint: disable=not-context-manager
             return "Synchronizer({})".format(repr(self.obj))
 
 

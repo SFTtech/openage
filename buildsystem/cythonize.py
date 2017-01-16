@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Runs Cython on all modules that were listed via add_cython_module.
@@ -18,8 +18,8 @@ def read_list_from_file(filename):
     data = data.split(';')
     if data == ['']:
         return []
-    else:
-        return data
+
+    return data
 
 
 def remove_if_exists(filename):

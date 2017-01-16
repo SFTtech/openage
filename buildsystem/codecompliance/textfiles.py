@@ -36,7 +36,7 @@ def find_issues(dirnames, exts):
         if data.endswith('\n\n'):
             yield "Trailing newline", filename
 
-        if len(data) > 0 and not data.endswith('\n'):
+        if data and not data.endswith('\n'):
             yield "File does not end in '\\n'", filename
 
         if has_ext(filename, ('.py', '.pyx', '.pxd')):

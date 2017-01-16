@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 """
 Misc string helper functions; this includes encoding, decoding,
 manipulation, ...
@@ -67,8 +67,8 @@ def colorize(string, colorcode):
     """
     if colorcode:
         return '\x1b[' + colorcode + 'm' + str(string) + '\x1b[m'
-    else:
-        return str(string)
+
+    return str(string)
 
 
 def lstrip_once(string, substr):

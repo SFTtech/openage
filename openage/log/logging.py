@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Python logging.
@@ -18,31 +18,27 @@ from ..util.math import clamp
 @unique
 class Level(Enum):
     """
-    Log levels, corresponding to those defined in cpp/log/level.h.
+    Log levels with color codes, corresponding to those defined in cpp/log/level.h.
     """
+
+    def __init__(self, numeric, colorcode=""):
+        self.numeric = numeric
+        self.colorcode = colorcode
+
     MIN = -3
     spam = -2
     dbg = -1
     info = 0
-    warn = 1
-    err = 2
-    crit = 3
+    warn = (1, "33")
+    err = (2, "31;1")
+    crit = (3, "31;1;47")
     MAX = 4
 
 
 def level_colorcode(lvl):
     """ returns the same color codes as in libopenage/log/level.cpp. """
-    if lvl in [Level.spam, Level.dbg, Level.info]:
-        return ""
-    elif lvl == Level.warn:
-        return "33"
-    elif lvl == Level.err:
-        return "31;1"
-    elif lvl == Level.crit:
-        return "31;1;47"
-    else:
-        # unknown
-        return "5"
+
+    return lvl.colorcode
 
 
 Level.current = Level.MIN
@@ -64,7 +60,7 @@ def log(lvl, msg, stackframes=1):
 
     if cpp_lvl is None:
         # the C++ interface is uninitialized.
-        with LOCK:
+        with LOCK:  # pylint: disable=not-context-manager
             if lvl.value >= Level.current.value:
                 print("\x1b[" + level_colorcode(lvl) + "m" +
                       lvl.name.upper().rjust(4) + "\x1b[m " +
@@ -89,7 +85,7 @@ def set_loglevel(lvl):
     if lvl not in Level:
         raise Exception("set_level expects a Level object argument.")
 
-    with LOCK:
+    with LOCK:  # pylint: disable=not-context-manager
         previous = Level.current
         Level.current = lvl
 
@@ -106,7 +102,7 @@ def get_loglevel():
     """
     Returns the global loglevel, as stored in Python.
     """
-    with LOCK:
+    with LOCK:  # pylint: disable=not-context-manager
         return Level.current
 
 

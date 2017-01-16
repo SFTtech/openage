@@ -96,19 +96,19 @@ class SLPConverterPool:
 
             # acquire job_mutex in order to block any concurrent activity until
             # this job is done.
-            with self.job_mutex:
+            with self.job_mutex:  # pylint: disable=not-context-manager
                 return Texture(SLP(slpdata), self.palette, custom_cutter)
 
         inqueue, outqueue = self.idle.get()
 
-        with self.job_mutex:
+        with self.job_mutex:  # pylint: disable=not-context-manager
             inqueue.put((slpdata, custom_cutter))
 
         # TODO not sure why this synchronization is needed.
         #      (But it is. otherwise, there are non-deterministic crashes when
         #       depickling some of Texture's numpy internals, especially with
         #       high job counts.).
-        with self.job_mutex:
+        with self.job_mutex:  # pylint: disable=not-context-manager
             result = outqueue.get()
 
         self.idle.put((inqueue, outqueue))

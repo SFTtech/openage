@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Provides CABFile, an extractor for the MSCAB format.
@@ -336,7 +336,6 @@ class CABFile(FileCollection):
                     window_bits=window_bits,
                     reset_interval=0)
 
-                # pylint: disable=redefined-variable-type
                 folder.plain_stream = StreamSeekBuffer(unseekable_plain_stream)
 
             else:

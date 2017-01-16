@@ -136,9 +136,6 @@ class IncludeMembers(GroupMember):
     common members that have to be read first.
     """
 
-    def __init__(self, cls):
-        super().__init__(cls)
-
     def get_parsers(self, idx, member):
         raise Exception("this should never be called!")
 
@@ -345,9 +342,6 @@ class ContinueReadMember(NumberMember):
     """
 
     Result = ContinueReadMemberResult
-
-    def __init__(self, raw_type):
-        super().__init__(raw_type)
 
     def entry_hook(self, data):
         if data == 0:

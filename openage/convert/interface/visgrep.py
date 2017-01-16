@@ -1,4 +1,4 @@
-# Copyright 2016-2016 the openage authors. See copying.md for legal info.
+# Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 """ Python version of the visgrep utility """
 
@@ -55,8 +55,8 @@ def img_pixel_get(img, point):
     """
     if point.x < img.size[0] and point.y < img.size[1]:
         return Pixel(*img.getpixel(point))
-    else:
-        return Pixel(0, 0, 0, 0)
+
+    return Pixel(0, 0, 0, 0)
 
 
 def img_subimage_find(master, find, start_from, tolerance, find_next):
@@ -389,6 +389,7 @@ def main():
             exit_status = 0
 
     exit(exit_status)
+
 
 if __name__ == "__main__":
     main()

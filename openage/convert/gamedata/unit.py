@@ -1,4 +1,4 @@
-# Copyright 2013-2016 the openage authors. See copying.md for legal info.
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-lines
 
@@ -435,9 +435,6 @@ class BuildingAnnex(Exportable):
         (READ_EXPORT, "misplaced1", "float"),
     )
 
-    def __init__(self, **args):
-        super().__init__(**args)
-
 
 class UnitObject(Exportable):
     """
@@ -733,9 +730,6 @@ class UnitObject(Exportable):
         (READ_EXPORT, "id2", "int16_t"),
     )
 
-    def __init__(self, **args):
-        super().__init__(**args)
-
 
 class UnitFlag(UnitObject):
     """
@@ -751,9 +745,6 @@ class UnitFlag(UnitObject):
         (READ_EXPORT, "speed", "float"),
     )
 
-    def __init__(self, **args):
-        super().__init__(**args)
-
 
 class UnitDoppelganger(UnitFlag):
     """
@@ -767,9 +758,6 @@ class UnitDoppelganger(UnitFlag):
     data_format = (
         (READ_EXPORT, None, IncludeMembers(cls=UnitFlag)),
     )
-
-    def __init__(self, **args):
-        super().__init__(**args)
 
 
 class UnitDeadOrFish(UnitDoppelganger):
@@ -793,9 +781,6 @@ class UnitDeadOrFish(UnitDoppelganger):
         (READ_UNKNOWN, None, "int8_t"),
         (READ, "rotation_angles", "float[5]"),
     )
-
-    def __init__(self, **args):
-        super().__init__(**args)
 
 
 class UnitBird(UnitDeadOrFish):
@@ -824,9 +809,6 @@ class UnitBird(UnitDeadOrFish):
         (READ_EXPORT, "stop_sound", "int16_t"),
         (READ, "animal_mode", "int8_t"),
     )
-
-    def __init__(self, **args):
-        super().__init__(**args)
 
 
 class UnitMovable(UnitBird):
@@ -885,9 +867,6 @@ class UnitMovable(UnitBird):
         (READ, "reload_time_displayed", "float"),
     )
 
-    def __init__(self, **args):
-        super().__init__(**args)
-
 
 class UnitProjectile(UnitMovable):
     """
@@ -907,9 +886,6 @@ class UnitProjectile(UnitMovable):
         (READ_UNKNOWN, None, "int8_t"),
         (READ_EXPORT, "projectile_arc", "float"),
     )
-
-    def __init__(self, **args):
-        super().__init__(**args)
 
 
 class UnitLiving(UnitMovable):
@@ -985,9 +961,6 @@ class UnitLiving(UnitMovable):
         (READ, "pierce_armor_displayed", "int16_t"),  # unit stats display of pierce armor
     )
 
-    def __init__(self, **args):
-        super().__init__(**args)
-
 
 class UnitBuilding(UnitLiving):
     """
@@ -1034,9 +1007,6 @@ class UnitBuilding(UnitLiving):
         (READ_UNKNOWN, None, "int8_t[6]"),  # might be related to building annexes?
     )
 
-    def __init__(self, **args):
-        super().__init__(**args)
-
 
 class UnitTree(UnitObject):
     """
@@ -1050,9 +1020,6 @@ class UnitTree(UnitObject):
     data_format = (
         (READ_EXPORT, None, IncludeMembers(cls=UnitObject)),
     )
-
-    def __init__(self, **args):
-        super().__init__(**args)
 
 
 unit_type_lookup = {
