@@ -1,12 +1,13 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "exctranslate_tests.h"
 
 #include <vector>
 
+#include "../log/log.h"
 #include "../testing/testing.h"
-
 #include "pyexception.h"
+
 
 namespace openage {
 namespace pyinterface {

@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,15 +8,16 @@
 #include <vector>
 #include <queue>
 
-#include "../log/logsource.h"
 #include "../coord/phys3.h"
-#include "../terrain/terrain_object.h"
 #include "../handlers.h"
+#include "../log/logsource.h"
+#include "../terrain/terrain_object.h"
 #include "../util/timing.h"
 #include "ability.h"
 #include "attribute.h"
 #include "command.h"
 #include "unit_container.h"
+
 
 namespace openage {
 

@@ -1,10 +1,11 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #include "actions_list_model.h"
 
-#include <QtQml>
-
+#include "../log/log.h"
 #include "game_control_link.h"
+
+#include <QtQml>
 
 namespace openage {
 namespace gui {

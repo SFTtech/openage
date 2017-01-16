@@ -157,7 +157,7 @@ include_directories(
 	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
 	${HarfBuzz_INCLUDE_DIRS}
-        ${QTPLATFORM_INCLUDE_DIRS}
+	${QTPLATFORM_INCLUDE_DIRS}
 )
 
 # link the executable to those libraries

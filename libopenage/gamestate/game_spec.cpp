@@ -1,18 +1,21 @@
 // Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
+#include "game_spec.h"
+
+#include <tuple>
+
 #include "../assetmanager.h"
 #include "../engine.h"
 #include "../gamedata/blending_mode.gen.h"
 #include "../gamedata/string_resource.gen.h"
 #include "../gamedata/terrain.gen.h"
+#include "../log/log.h"
 #include "../rng/global_rng.h"
 #include "../unit/producer.h"
 #include "../util/strings.h"
 #include "../util/timer.h"
 #include "civilisation.h"
-#include "game_spec.h"
 
-#include <tuple>
 
 namespace openage {
 

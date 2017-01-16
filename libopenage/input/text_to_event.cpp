@@ -1,14 +1,15 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #include "text_to_event.h"
 
 #include <regex>
 #include <stdexcept>
-
 #include <SDL2/SDL.h>
 
 #include "../error/error.h"
+#include "../log/log.h"
 #include "../testing/testing.h"
+
 
 namespace openage {
 namespace input {
