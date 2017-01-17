@@ -8,11 +8,10 @@ Note the [troubleshooting](#troubleshooting) and [FAQ](#faq) sections.
 ## Buildsystem Design
 
 *openage* consists of a pure C++ library, `libopenage`, and the `openage` python package.
-There's a special python package, `openage.codegen`, which generates parts of the C++ binary code.
 
-We use `CMake` for all our building needs. The `configure` is a an optional wrapper that will
-create a build directory, `bin`, and invoke cmake with the appropriate flags to build inside that directory.
-Likewise, the root `Makefile` provides some convenience options that may otherwise be accessed directly in the CMake build folder.
+We use `CMake` for all our building needs.
+We wrap `CMake` with an optional `configure` wrapper script.
+You can build the project like a regular `CMake` project.
 
 For more build system internals, see [doc/buildsystem.md](/doc/buildsystem.md).
 

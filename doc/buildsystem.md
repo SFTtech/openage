@@ -1,8 +1,37 @@
+Concept
+=======
+
+Our buildsystem is based on `cmake`.
+We use a bunch of custom cmake modules and python scripts
+to detect libraries and generate code.
+
+The entry point of the build system is `/CMakeLists.txt`.
+From there, all buildsystem code of `buildsystem/` is then used.
+
+There is a `/configure` script that wraps the cmake invocation for convenience.
+
+The `/Makefile` is another wrapper to invoke the build and tests
+compiler-independently.
+
+
+Components
+==========
+
+The buildsystem is pretty sophisticated because *openage* consists C++
+code, generated C++ code, generated Cython code and Python code. All C++
+parts are packed in `libopenage`, the Python stuff is in the `openage`
+python package. We generate code with the `openage.codegen` Python
+package.
+
+
+Procedure
+=========
+
 Steps in building openage:
 
- - generate `py/openage/config.py` and `libopenage/config.{h, cpp}`, which contain install prefix and version info
- - run `openage.codegen` (python module) to generate C++ source files (recipe: `codegen`)
- - generate `.pxd` cython extension declaration files from annotated `.h` files (recipe: `pxdgen`)
+ - generate `openage/config.py` and `libopenage/config.{h, cpp}` from their `*.in` template files, which contain install prefix and version info
+ - run `openage.codegen` (Python module) to generate C++ source files (recipe: `codegen`)
+ - generate `.pxd` Cython extension declaration files from annotated `.h` files (recipe: `pxdgen`)
  - build and link `libopenage.so` (recipe: `openage`)
  - build Cython extension modules (generate cpp files and compile them, via `buildsystem.cythonize`) (recipe: `cython`); those link against libopenage.
 
@@ -15,13 +44,12 @@ Additional recipes:
  - various cleaning recipes: `cleanelf`, `cleancodegen`, `cleancython`, `cleaninsourcebuild`, `cleanpxdgen`, `cleanbuilddirs`, `mrproper`, `mrproperer`
  - various compliance checkers: `checkfast`, `checkall`, ...
 
-At its core, the buildsystem uses `cmake`; the root `CMakeLists.txt` includes modules from the `buildsystem` directory; see in-code documentation for details on individual functions.
 
 Phases
 ======
 
-CMake-time ("./configure")
---------------------------
+CMake-time: `./configure`
+------------------------
 
 cmake reads and interprets all cmake modules and `CMakeLists.txt` files, populating the build directory with Makefiles and generating `config.py`, `config.h` and `config.cpp`. In addition, the codegen script is invoked to determine the list of files it will generate, and the list of (python) files it depends on.
 
@@ -29,24 +57,36 @@ The `./configure` cmake-wrapper script may be used to achieve a pleasant build e
 
 For each compiler invocation (gcc -Og, clang -O3, etc...), `./configure` creates its own build directory. This allows you to quickly switch compilers and flags (e.g. via `./configure -c clang -O2`) without having to re-build all object files when switching back.
 
-Build time ("make")
--------------------
 
-`GNU make` is used to interpret the cmake-generated Makefiles at build time. It will detect changes in the relevant `cmake` source files, and re-trigger a cmake execution if necessary (just your standard CMake features; pretty cool stuff).
+Build time: `make`
+------------------
+
+`cmake` supports many backends: Project files for various IDEs and more.
+
+By default, `GNU make` is used to interpret the cmake-generated Makefiles at build time. It will detect changes in the relevant `cmake` source files, and re-trigger a cmake execution if necessary (just your standard CMake features; pretty cool stuff).
 
 The recipes `codegen`, `libopenage`, `pxdgen`, `cythonize`, `compilepy` and `inplacemodules` are then run as needed.
 
 The `Makefile` in the project root directory may be used to invoke `GNU make` in the build directory (`make -C bin/` would be the manual way of doing this).
 
-Install time ("make install")
------------------------------
 
-At install time, the linked openage binary, python modules, Cython extension modules and game assets are installed to the prefix that was set at cmake time (default: `/usr/local`), or, if the `DESTDIR` variable is present, to `$DESTDIR/$INSTALLPREFIX`. Note: The (P|C)ython modules have their separate installation prefix, dictated by the Python environemnt, and manually settable via the `--py-prefix` option to `./configure`.
+Install time `make install`
+--------------------------
 
-Some more `CMake` magic: the `-rpath` is automagically removed from the installed binaries (if you don't know what that is: Lucky you. CMake makes sure you don't need to).
+At install time, the openage library, python modules, Cython extension
+modules and game assets are installed to the prefix that was set at cmake
+time (default: `/usr/local`), or, if the `DESTDIR` variable is present,
+to `$DESTDIR/$INSTALLPREFIX`. Note: The Python/Cython modules have their
+separate installation prefix, dictated by the Python environemnt, and
+manually settable via the `--py-prefix` option to `./configure`.
 
-Core modules
-============
+Some more `CMake` magic: the `-rpath` is automagically removed from the
+installed binaries (if you don't know what that is: Lucky you. CMake
+makes sure you don't need to).
+
+
+Core buildsystem modules
+========================
 
 cpp
 ---
