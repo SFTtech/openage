@@ -15,7 +15,7 @@ Market::Market() {
 // Price calculation is documented at doc/reverse_engineering/market.md#prices
 
 bool Market::sell(Player &player, const game_resource res) {
-	double mult = this->getMultiplier(player, false);
+	double mult = this->get_multiplier(player, false);
 
 	if (player.deduct(res, MARKET_TRANSACTION_AMOUNT)) {
 		// if deduct was successful
@@ -33,7 +33,7 @@ bool Market::sell(Player &player, const game_resource res) {
 }
 
 bool Market::buy(Player &player, const game_resource res) {
-	double mult = this->getMultiplier(player, true);
+	double mult = this->get_multiplier(player, true);
 
 	// calc the gold needed to buy MARKET_TRANSACTION_AMOUNT of res
 	double price = this->base_prices.get(res) * mult;
@@ -50,23 +50,23 @@ bool Market::buy(Player &player, const game_resource res) {
 	return false;
 }
 
-std::shared_ptr<ResourceBundle> Market::getBuyPrices(const Player &player) const {
-	return this->getPrices(player, true);
+ResourceBundle Market::get_buy_prices(const Player &player) const {
+	return this->get_prices(player, true);
 }
 
-std::shared_ptr<ResourceBundle> Market::getSellPrices(const Player &player) const {
-	return this->getPrices(player, false);
+ResourceBundle Market::get_sell_prices(const Player &player) const {
+	return this->get_prices(player, false);
 }
 
-std::shared_ptr<ResourceBundle> Market::getPrices(const Player &player, const bool is_buy) const {
-	double mult = this->getMultiplier(player, is_buy);
+ResourceBundle Market::get_prices(const Player &player, const bool is_buy) const {
+	double mult = this->get_multiplier(player, is_buy);
 
-	auto rb = std::make_shared<ResourceBundle>(this->base_prices);
-	*rb.get() *= mult;
+	auto rb = ResourceBundle(this->base_prices);
+	rb *= mult;
 	return rb;
 }
 
-double Market::getMultiplier(const Player &/*player*/, const bool is_buy) const {
+double Market::get_multiplier(const Player &/*player*/, const bool is_buy) const {
 	double base = 0.3;
 	// TODO chnage multiplier based on civ bonuses and player researched techs
 	double mult = base;

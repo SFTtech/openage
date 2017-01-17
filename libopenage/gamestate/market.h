@@ -37,24 +37,24 @@ public:
 	/**
 	 * Get the selling prices for a given player.
 	 */
-	std::shared_ptr<ResourceBundle> getBuyPrices(const Player &player) const;
+	ResourceBundle get_buy_prices(const Player &player) const;
 
 	/**
 	 * Get the buying prices for a given player.
 	 */
-	std::shared_ptr<ResourceBundle> getSellPrices(const Player &player) const;
+	ResourceBundle get_sell_prices(const Player &player) const;
 
 protected:
 
 	/**
 	 * The getBuyPrices and getSellPrices are redirected here.
 	 */
-	std::shared_ptr<ResourceBundle> getPrices(const Player &player, const bool is_buy) const;
+	ResourceBundle get_prices(const Player &player, const bool is_buy) const;
 
 	/**
 	 * Get the multiplier for the base prices
 	 */
-	double getMultiplier(const Player &player, const bool is_buy) const;
+	double get_multiplier(const Player &player, const bool is_buy) const;
 
 private:
 
