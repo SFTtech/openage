@@ -17,7 +17,7 @@ All the alarms only trigger if you are attacked and not if you kill enemy units 
 
 ## Battles
 
-There is only one alarm played per "battle". Battles start when the player is attacked, i.e. when the alarm sound plays. Their size is always 20x20 tiles with the center being at the place where the players' units where attacked first (i.e. a 10 tile radius). Units fighting in this area can not trigger more alarms until they either leave the battle field (they would have to move outside of the 20x20 area) or the battle is over (see **Cooldown**).
+There is only one alarm played per "battle". Battles start when the player is attacked, i.e. when the alarm sound plays. Their size is always 20x20 tiles with the center being at the place where the players' units were attacked first (i.e. a 10 tile radius). Units fighting in this area can not trigger more alarms until they either leave the battle field (they would have to move outside of the 20x20 area) or the battle is over (see **Cooldown**).
 
 Multiple battles can happen simultaineously. For example, units that start to fight outside of the 10 tile radius will create a new battle field and thus a seperate alarm sound will be played.
 

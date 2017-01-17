@@ -14,7 +14,7 @@ Looking at the first entry from **Weird AoE2 Quirks** it can be assumed that the
 
 When builders finish a gathering site, they will automatically switch roles depending on the type of resources that the gathering site accepts and will start working on the nearest resource pile. For example, builders constructing a lumberyard will become lumberjacks and start to chop down nearby trees. If a gathering site accepts multiple resources, e.g. town centers, villagers will be assigned to the resource they are closest to and switch to a corresponding role.
 
-### Automatic Drop-off (for builders)
+### Automatic Drop-off after building a gathering site
 
 Builders will automatically drop off **any** resource they are carrying to the player's stockpile after they constructed a gathering site. The type of gathering site does not matter. For example, builders will drop off all food they are holding at a mining camp as soon as they finish the building. The same happens when they build a farm.
 
