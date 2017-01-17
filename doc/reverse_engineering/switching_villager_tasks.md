@@ -10,9 +10,15 @@ AoE 2 : HD Edition further removed some instances where a player would lose reso
 
 Looking at the first entry from **Weird AoE2 Quirks** it can be assumed that the HD Edition probably uses a dirty workaround to prevent the player from losing resources. The food is most likely put into the newly assigned sheep/boar/deer and then immediatly "collected" again.
 
-## Automatic Drop-off
+## Automatic task-switching for builders
 
-In addition to the manual method, workers will automatically drop off **any** resource they are carrying to the player's stockpile, if they constructed a gathering site. The type of gathering site does not matter. For example, villagers will drop off food at a mining camp, if they helped finishing the building. The same happens when they build a farm.
+When builders finish a gathering site, they will automatically switch roles depending on the type of resources that the gathering site accepts and will start working on the nearest resource pile. For example, builders constructing a lumberyard will become lumberjacks and start to chop down nearby trees. If a gathering site accepts multiple resources, e.g. town centers, villagers will be assigned to the resource they are closest to and switch to a corresponding role.
+
+### Automatic Drop-off (for builders)
+
+Builders will automatically drop off **any** resource they are carrying to the player's stockpile after they constructed a gathering site. The type of gathering site does not matter. For example, builders will drop off all food they are holding at a mining camp as soon as they finish the building. The same happens when they build a farm.
+
+Note: This only happens if the builder was actively working on the construction site at the time it was finished. It can be assumed that this is part of the automatic task-switching algorithm.
 
 ## Weird AoE2 Quirks
 
