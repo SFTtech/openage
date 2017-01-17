@@ -212,7 +212,7 @@ void GameSpec::on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata) {
 		for (gamedata::sound_item &item : sound.sound_items.data) {
 			std::string snd_file_location = get_sound_file_location(item.resource_id);
 			if (snd_file_location.empty()) {
-				log::log(MSG(warn) <<
+				log::log(SPAM <<
 					"   No sound file found for resource_id " <<
 					item.resource_id << ", ignoring...");
 				continue;

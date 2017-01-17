@@ -7,20 +7,21 @@
 #include "../../log/log.h"
 #include "font.h"
 
+
 namespace openage {
 namespace renderer {
 
 std::string FontManager::get_font_filename(const char *family, const char *style) {
 	// Initialize fontconfig
 	if (!FcInit()) {
-		throw Error{MSG(err) << "Failed to initialize fontconfig."};
+		throw Error{ERR << "Failed to initialize fontconfig."};
 	}
 
 	FcPattern *font_pattern = FcPatternBuild(nullptr, FC_FAMILY, FcTypeString, family, nullptr);
 	FcPatternBuild(font_pattern, FC_STYLE, FcTypeString, style, nullptr);
 
 	FcChar8 *query_string = FcNameUnparse(font_pattern);
-	log::log(MSG(info) << "Font queried: " << query_string);
+	log::log(DBG << "Font queried: " << query_string);
 	free(query_string);
 
 	// tell fontconfig to find the best match
@@ -30,12 +31,12 @@ std::string FontManager::get_font_filename(const char *family, const char *style
 	// get attibute FC_FILE (= filename) of best-matched font
 	FcChar8 *font_filename_tmp;
 	if (FcPatternGetString(font_match, FC_FILE, 0, &font_filename_tmp) != FcResultMatch) {
-		throw Error(MSG(err) << "Fontconfig could not provide font " << family << " " << style);
+		throw Error(ERR << "Fontconfig could not provide font " << family << " " << style);
 	}
 
 	std::string font_filename{reinterpret_cast<char *>(font_filename_tmp)};
 
-	log::log(MSG(info) << "Font file: " << font_filename);
+	log::log(DBG << "Font file: " << font_filename);
 
 	// deinitialize fontconfig.
 	FcPatternDestroy(font_match);

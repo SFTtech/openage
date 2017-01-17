@@ -1,10 +1,11 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "job_manager.h"
 
-#include "../util/thread_id.h"
 #include "../log/log.h"
+#include "../util/thread_id.h"
 #include "worker.h"
+
 
 namespace openage {
 namespace job {
@@ -34,7 +35,7 @@ void JobManager::start() {
 		for (auto &worker : this->workers) {
 			worker->start();
 		}
-		log::log(MSG(info) << "Started JobManager with " << this->number_of_workers << " worker threads");
+		log::log(DBG << "Started JobManager with " << this->number_of_workers << " worker threads");
 	}
 }
 
@@ -50,7 +51,7 @@ void JobManager::stop() {
 			worker->join();
 		}
 
-		log::log(MSG(info) << "Stopped JobManager with " << this->number_of_workers << " worker threads");
+		log::log(DBG << "Stopped JobManager with " << this->number_of_workers << " worker threads");
 	}
 }
 
