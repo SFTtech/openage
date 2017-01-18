@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -31,18 +31,24 @@ public:
 	ResourceBundle& operator+= (const ResourceBundle& other);
 	ResourceBundle& operator-= (const ResourceBundle& other);
 
-	ResourceBundle& operator*= (double a);
+	ResourceBundle& operator*= (const double a);
+
+	/**
+	 * Round each value to the nearest integer.
+	 * Returns itself.
+	 */
+	ResourceBundle& round();
 
 	bool has(const ResourceBundle& amount) const;
 
 	bool deduct(const ResourceBundle& amount);
 
-	double& operator[] (game_resource res) { return value[(int) res]; }
-	double& operator[] (int index) { return value[index]; }
+	double& operator[] (const game_resource res) { return value[(int) res]; }
+	double& operator[] (const int index) { return value[index]; }
 
 	// Getters
 
-	double get(game_resource res) const { return value[(int) res]; }
+	double get(const game_resource res) const { return value[(int) res]; }
 	double get(int index) const { return value[index]; }
 
 private:

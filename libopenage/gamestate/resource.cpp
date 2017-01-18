@@ -1,4 +1,6 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+
+#include <cmath>
 
 #include "resource.h"
 
@@ -41,9 +43,16 @@ ResourceBundle& ResourceBundle::operator-= (const ResourceBundle& other) {
 	return *this;
 }
 
-ResourceBundle& ResourceBundle::operator*= (double a) {
+ResourceBundle& ResourceBundle::operator*= (const double a) {
 	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
 		(*this)[i] *= a;
+	}
+	return *this;
+}
+
+ResourceBundle& ResourceBundle::round() {
+	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
+		(*this)[i] = std::round(this->get(i));
 	}
 	return *this;
 }
