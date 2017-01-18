@@ -4,6 +4,7 @@ add_sources(libopenage
 	game_save.cpp
 	game_spec.cpp
 	generator.cpp
+	market.cpp
 	player.cpp
 	team.cpp
 	resource.cpp
