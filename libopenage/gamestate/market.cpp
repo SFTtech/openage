@@ -15,13 +15,13 @@ Market::Market() {
 // Price calculation is documented at doc/reverse_engineering/market.md#prices
 
 bool Market::sell(Player &player, const game_resource res) {
-	double mult = this->get_multiplier(player, false);
-
+	// deduct the standard MARKET_TRANSACTION_AMOUNT of the selling res
 	if (player.deduct(res, MARKET_TRANSACTION_AMOUNT)) {
 		// if deduct was successful
 		// calc the gold received from selling MARKET_TRANSACTION_AMOUNT of res
-		double amount = this->base_prices.get(res) * mult;
+		double amount = this->get_sell_prices(player).get(res);
 		player.receive(game_resource::gold, amount);
+
 		// decrease the price
 		this->base_prices[res] -= MARKET_PRICE_D;
 		if (this->base_prices.get(res) < MARKET_PRICE_MIN) {
@@ -33,13 +33,12 @@ bool Market::sell(Player &player, const game_resource res) {
 }
 
 bool Market::buy(Player &player, const game_resource res) {
-	double mult = this->get_multiplier(player, true);
-
 	// calc the gold needed to buy MARKET_TRANSACTION_AMOUNT of res
-	double price = this->base_prices.get(res) * mult;
+	double price = this->get_buy_prices(player).get(res);
 	if (player.deduct(game_resource::gold, price)) {
 		// if deduct was successful
 		player.receive(res, MARKET_TRANSACTION_AMOUNT);
+
 		// increase the price
 		this->base_prices[res] += MARKET_PRICE_D;
 		if (this->base_prices.get(res) > MARKET_PRICE_MAX) {
@@ -63,6 +62,7 @@ ResourceBundle Market::get_prices(const Player &player, const bool is_buy) const
 
 	auto rb = ResourceBundle(this->base_prices);
 	rb *= mult;
+	rb.round(); // round to nearest integer
 	return rb;
 }
 

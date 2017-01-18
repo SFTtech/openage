@@ -33,6 +33,12 @@ public:
 
 	ResourceBundle& operator*= (const double a);
 
+	/**
+	 * Round each value to the nearest integer.
+	 * Returns itself.
+	 */
+	ResourceBundle& round();
+
 	bool has(const ResourceBundle& amount) const;
 
 	bool deduct(const ResourceBundle& amount);
