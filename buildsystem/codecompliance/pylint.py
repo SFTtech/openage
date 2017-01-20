@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Checks the Python modules with pylint.
@@ -20,6 +20,13 @@ def find_issues(check_files, dirnames):
     """ Invokes the external utility. """
 
     invocation = ['--rcfile=etc/pylintrc', '--reports=n']
+
+    # pylint crashes with multiprocessing when cython modules are present
+    if any(findfiles(dirnames, [".so"])):
+        print("Cython modules found, using single process linting.")
+    else:
+        from multiprocessing import cpu_count
+        invocation.append("--jobs={:d}".format(cpu_count()))
 
     ignored_modules = list(find_pyx_modules(dirnames))
     ignored_modules.append('numpy')

@@ -77,7 +77,7 @@ def process_args(args, error):
         args.test_git_change_years = True
 
     if not any((args.headerguards, args.legal, args.authors, args.pystyle, args.cppstyle,
-                args.test_git_change_years, args.pylint, args.filemodes)):
+                args.test_git_change_years, args.pylint, args.filemodes, args.textfiles)):
         error("no checks were specified")
 
     has_git = bool(shutil.which('git'))
