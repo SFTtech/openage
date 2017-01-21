@@ -25,7 +25,7 @@ Accuracy depends on the distance to the intended target. The following figure sh
 ...21 Tiles..o....................X...  81.77 % accuracy
 ......................................
 ```
-If the target is standing 2 or less tiles away, arrows always seem to hit. For targets at range 3 or more, the archer's accuray detriorates. The deterioration slows down with every tile between archer and target and seems to approach a *minimum accuracy* (in this case: 80 %).
+If the target is standing 2 or less tiles away, arrows always seem to hit. For targets at range 3 or more, the archer's accuracy deteriorates. The deterioration slows down with every tile between archer and target and seems to approach a *minimum accuracy* (in this case: 80 %).
 
 ### Inaccuracy
 
@@ -45,7 +45,7 @@ Because the margin is very low for most of the units a projectile can still hit 
 
 100 % accuracy in the game's sense must not be confused with hitting the target 100 % of the time.
 
-Before researching Ballistics, units fire at the current positions of a target. If the target moves and is fast enough, it will not be hit by the projectile. This has the effect that even though the game determines a shot to be accurate, it doeesn't mean the target has to be hit.
+Before researching Ballistics, units fire at the current positions of a target. If the target moves and is fast enough, it will not be hit by the projectile. This has the effect that even though the game determines a shot to be accurate, it doesn't mean the target has to be hit.
 
 After the player researched Ballistics, units tend to fire at the position where the target is supposed to be when the arrow lands. The targeted unit can still dodge the shot if it moves into another direction after the archer fires.
 Ballistics does affect bombard towers but not other gunpowder or siege units.
@@ -76,7 +76,7 @@ When a ranged unit dies but the projectile is still in the air, modifiers for da
 * When a trebuchet is packed before it has hit its target, the damage of the projectile will change to 1. If the trebuchet is destroyed before the projectile hits, it does no damage.
 * If a scorpion is destroyed, the bolt can suddenly destroy trees on its path.
 * The bonus for standing on a cliff or hill (+25 % damage) is removed after the units dies and all arrows that are still in the air will do normal damage.
-* Portugese caravels fire in random directions, if attacking a melee unit at range 0. This seems to be a bug related to calculations concerning the *accuracy error radius*.
+* Portuguese caravels fire in random directions, if attacking a melee unit at range 0. This seems to be a bug related to calculations concerning the *accuracy error radius*.
 
 [Source](https://www.youtube.com/watch?v=O6fD4AC5sFQ)
 

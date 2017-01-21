@@ -36,7 +36,7 @@ Ahem, nope, this is the real roadmap:
 - [ ] 15: **dedicated server** (!), map user actions to physics frame ids and sync them
 - [ ] 16: basic multiplayer support
        * there will (most probably) be bugs, loads of them.
-       * at this point, with a proper starting map (one villager per player on grasland),
+       * at this point, with a proper starting map (one villager per player on grassland),
          battles can be fought.
 
 things to be done sometime:
