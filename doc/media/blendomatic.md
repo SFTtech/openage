@@ -314,20 +314,20 @@ partially-missing top tile, and the underlying base tile is possible.
 ```cpp
 struct {
 	struct {
-		unsigned int nr_blending_modes;              //normally 9
-		unsigned int nr_tiles;                       //normally 31
+		unsigned int nr_blending_modes;              // normally 9
+		unsigned int nr_tiles;                       // normally 31
 	} blendomatic_header;
 
 	struct {
-		unsigned int  tile_size;                     //normally 2353
+		unsigned int  tile_size;                     // normally 2353
 		unsigned char tile_flags[nr_tiles];
 
 		struct {
-			uint8_t alpha_bitmask[tile_size / 8];    //with tile_size pixels, use the data bitwise.
-		} tile_bitmasks[32];                         //why 32? maybe nr_tiles + 1?
+			uint8_t alpha_bitmask[tile_size / 8];    // with tile_size pixels, use the data bitwise.
+		} tile_bitmasks[32];                         // why 32? maybe nr_tiles + 1?
 
 		struct {
-			uint8_t alpha_bytemap[tile_size];        //7-bit alpha value pixels
+			uint8_t alpha_bytemap[tile_size];        // 7-bit alpha value pixels
 		} tile_bytemasks[nr_tiles];
 	} blending_modes[nr_blending_modes]
 } blendomatic.dat;
