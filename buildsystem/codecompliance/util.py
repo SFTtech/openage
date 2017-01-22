@@ -82,12 +82,23 @@ def issue_str(title, filename):
     return (title, filename)
 
 
-def issue_str_line(title, filename, line, line_number, index):
+def issue_str_line(title, filename, line, line_number, highlight):
     """
     Creates a formated (title, text) desciption of an issue with information
     about the location in the file.
+    line:        line content
+    line_number: line id in the file
+    highlight:   a tuple of (start, end), where
+        start:   match start in the line
+        end:     match end in the line
     """
+
+    start, end = highlight
+    line = line.replace("\n", "").replace("\t", " ")
+
     return (title, (
-        filename + ":" + str(line_number) + "\n" +
-        "\tLine: " + line.replace('\t', ' ') +
-        "\t      " + (' ' * index) + "\x1b[32;1m^\x1b[m"))
+        filename + "\n"
+        "\tline: " + str(line_number) + "\n"   # line number
+        "\tat:   '" + line + "'\n"             # line content
+        "\t      " + (' ' * start) +           # mark position with ^
+        "\x1b[32;1m^" + ("~" * (end - start)) + "\x1b[m"))

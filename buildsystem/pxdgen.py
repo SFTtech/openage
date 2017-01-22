@@ -131,7 +131,7 @@ class PXDGenerator:
         Handles any comment, with its format characters removed,
         extracting the pxd annotation
         """
-        annotations = re.findall('pxd:\\s(.*?)(:pxd|$)', val, re.DOTALL)  # pylint: disable=no-member
+        annotations = re.findall('pxd:\\s(.*?)(:pxd|$)', val, re.DOTALL)
         annotations = [annotation[0] for annotation in annotations]
 
         if not annotations:

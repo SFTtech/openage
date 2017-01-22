@@ -76,8 +76,9 @@ def process_args(args, error):
         args.pylint = True
         args.test_git_change_years = True
 
-    if not any((args.headerguards, args.legal, args.authors, args.pystyle, args.cppstyle,
-                args.test_git_change_years, args.pylint, args.filemodes, args.textfiles)):
+    if not any((args.headerguards, args.legal, args.authors, args.pystyle,
+                args.cppstyle, args.test_git_change_years, args.pylint,
+                args.filemodes, args.textfiles)):
         error("no checks were specified")
 
     has_git = bool(shutil.which('git'))
@@ -141,7 +142,11 @@ def main(args):
         print("\x1b[33;1mWARNING\x1b[m {}: {}".format(title, text))
 
     if issues_count > 0:
-        print("A total of \x1b[33;1m{} issues\x1b[m were found.".format(issues_count))
+        print("==> \x1b[33;1m{num} issue{plural}\x1b[m "
+              "{werewas} found."
+              "".format(num=issues_count,
+                        plural="s" if issues_count > 1 else "",
+                        werewas="were" if issues_count > 1 else "was"))
 
     return issues_count == 0
 
