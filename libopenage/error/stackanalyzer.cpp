@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "stackanalyzer.h"
 
@@ -154,7 +154,7 @@ void StackAnalyzer::analyze() {
 void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> cb, bool reversed) const {
 	info_cb_data_t info_cb_data;
 
-	for(void *pc : this->stack_addrs) {
+	for (void *pc : this->stack_addrs) {
 		info_cb_data.pc = reinterpret_cast<uintptr_t>(pc);
 
 		// note: a call to backtrace_pcinfo may, in semi-rare cases, push back

@@ -102,7 +102,8 @@ class PXDGenerator:
             the comment text, as string, including the '/*' and '*/'
         """
         try:
-            val = re.match('^/\\*(.*)\\*/$', val, re.DOTALL).group(1)
+            # pylint: disable=no-member
+            val = re.match(r"^/\*(.*)\*/$", val, re.DOTALL).group(1)
         except AttributeError as ex:
             raise self.parser_error("invalid multi-line comment") from ex
 
@@ -115,7 +116,7 @@ class PXDGenerator:
         comment_lines = []
         for idx, line in enumerate(lines):
             try:
-                line = re.match('^ \\*( (.*))?$', line).group(2) or ""
+                line = re.match(r'^ \*( (.*))?$', line).group(2) or ""
             except AttributeError as ex:
                 raise self.parser_error("invalid multi-line comment line",
                                         idx + self.lineno) from ex
@@ -131,7 +132,9 @@ class PXDGenerator:
         Handles any comment, with its format characters removed,
         extracting the pxd annotation
         """
-        annotations = re.findall('pxd:\\s(.*?)(:pxd|$)', val, re.DOTALL)  # pylint: disable=no-member
+
+        annotations = re.findall(r"pxd:\s(.*?)(:pxd|$)",
+                                 val, re.DOTALL)   # pylint: disable=no-member
         annotations = [annotation[0] for annotation in annotations]
 
         if not annotations:

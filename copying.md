@@ -1,5 +1,5 @@
 Any file in this project that doesn't state otherwise, and isn't listed as an
-exception below, is Copyright 2013-2016 The openage authors, and licensed
+exception below, is Copyright 2013-2017 The openage authors, and licensed
 under the terms of the GNU General Public License Version 3, or
 (at your option) any later version ("GPL3+").
 A copy of the license can be found in [legal/GPLV3](/legal/GPLv3).
@@ -92,8 +92,10 @@ _the openage authors_ are:
 | Boris Dušek                 | dusek                       | me@dusek.me                           |
 | Michael Droogleever         | droogmic                    | droogmic@gmail.com                    |
 | Christoph Heine             | heinezen                    | heinezen@hotmail.de                   |
+| Marco Savellli              | Piruzzolo                   | svlmrc@gmail.com                      |
+| Yvan Burrie                 | yvan-burrie                 | yvan.burrie@hotmail.com               |
 
-If you're a first-time commiter, add yourself to the above list. This is not
+If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
 
 For some authors, the full names and/or e-mail addresses are unknown. They have
@@ -125,7 +127,7 @@ In addition to this file, to prevent legal caveats, every source file *must*
 include a header.
 
 **openage-native** source files, that is, files that were created by
-_the openage authors_, require the following one-line header, preferrably in
+_the openage authors_, require the following one-line header, preferably in
 the first line, as a comment:
 
     Copyright 20XX-20YY the openage authors. See copying.md for legal info.
@@ -173,12 +175,16 @@ cmake modules ([3-clause BSD license](/legal/BSD-3-clause))
  - `buildsystem/modules/FindGPerfTools.cmake` (taken from [VAST](https://github.com/mavam/vast))
  - `buildsystem/modules/FindOpusfile.cmake` (taken from [Unvanquished](https://github.com/Unvanquished/Unvanquished))
 
+
+#### Disclaimer
+
 Notes about this file:
 
-I (mic_e) am not a lawyer. This is an open-source project, we're doing this for
+I (`mic_e`) am not a lawyer. This is a free software project, we're doing this for
 fun. People convinced me that this legal shit must be done, so I did it, even
 though I'd rather have spent the time on useful parts of the project.
 If you see any legal issues, feel free to contact me.
+
 I, personally, despise in-sourcefile legal text blocks. They're a pest,
 and unlike many others, I don't simply accept them because
 "that is what everybody does". Thus, I worked out the minimal 1-line text above,

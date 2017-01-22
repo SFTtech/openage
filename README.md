@@ -3,18 +3,19 @@
 
 **openage**: a volunteer project to create a free engine clone of *Age of Empires II*,
 primarily aimed at POSIX platforms such as **GNU/Linux**,
-comparable in its goals to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/), [OpenTTD](http://openttd.org/) and [OpenRCT2](http://openrct.net/)
+comparable in its goals to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/), [OpenTTD](https://openttd.org/) and [OpenRCT2](https://openrct2.org/)
 
 openage uses the original game assets (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
 To play, you require *an original AoE II : TC installation or [AoE II: HD](http://store.steampowered.com/app/221380/)*
 ([Wine](https://www.winehq.org/) is your friend; in the near future, setup discs will be supported).
 
-[![Bountysource](https://www.bountysource.com/badge/team?team_id=6026&style=bounties_received)](https://www.bountysource.com/teams/sfttech/issues?utm_source=SFTtech&utm_medium=shield&utm_campaign=bounties_received)
-[![tip for next commit](http://prime4commit.com/projects/143.svg)](http://prime4commit.com/projects/143)
 [![github stars](https://img.shields.io/github/stars/SFTtech/openage.svg)](https://github.com/SFTtech/openage/stargazers)
-[![#sfttech on Freenode](http://img.shields.io/Freenode/%23sfttech.png)](https://webchat.freenode.net/?channels=sfttech)
+[![#sfttech on Freenode](https://img.shields.io/Freenode/%23sfttech.png)](https://webchat.freenode.net/?channels=sfttech)
+[![#sfttech on matrix.org](https://img.shields.io/badge/matrix-%23sfttech-blue.svg)](https://riot.im/app/#/room/#sfttech:matrix.org)
+[![quality badge](https://img.shields.io/badge/cuteness-overload-orange.svg)](http://www.emergencykitten.com/)
 
-[<img src="https://www.redditstatic.com/about/assets/reddit-logo.png" alt="reddit" height="50"> /r/openage forum](https://www.reddit.com/r/openage/)
+
+[<img src="https://www.redditstatic.com/about/assets/reddit-logo.png" alt="reddit" height="45"> /r/openage forum](https://www.reddit.com/r/openage/)
 
 
 The foundation of **openage**:
@@ -23,6 +24,7 @@ Technology     | Component
 ---------------|----------
 **C++14**      | Engine core
 **Python3**    | Scripting, media conversion, in-game console, code generation
+**Qt5**        | Graphical user interface
 **Cython**     | Glue code
 **CMake**      | Build system
 **OpenGL2.1**  | Rendering, shaders
@@ -42,7 +44,7 @@ Our goals *include*:
 * AI scripting in Python, you can use [machine learning](http://scikit-learn.org/stable/)
 * Re-creating [free game assets](https://github.com/SFTtech/openage-data)
 * An easily-moddable content format: [**nyan** yet another notation](https://github.com/SFTtech/nyan)
-* A powerful integrated Python console and interface, comparable to [blender](http://blender.org/)
+* An integrated Python console and API, comparable to [blender](http://blender.org/)
 * Awesome infrastructure such as our own [Kevin CI service](https://github.com/SFTtech/kevin)
 
 But beware, for sanity reasons:
@@ -59,9 +61,6 @@ Current State of the Project
  - What features are currently implemented?
    - See [doc/status.md](/doc/status.md).
 
- - What can I do once I start the game?
-   - See [docs/usage.md](/doc/usage.md).
-
  - What's the plan?
    - See [doc/milestones.md](/doc/milestones.md). We also have a [list of crazy xor good ideas](/doc/ideas).
 
@@ -73,7 +72,9 @@ Dependencies, Building and Running
    - See [doc/building.md](/doc/building.md).
 
  - I compiled everything. Now how do I run it?
-   - Execute `./run`, you will be prompted by [the convert script](/doc/media_convert.md) to convert the original game assets to the (a lot saner and more moddable) openage format. The game starts when this is done..
+   - Execute `./run`.
+   * [The convert script](/doc/media_convert.md) will transform original assets into openage formats, which are a lot saner and more moddable.
+   - Use your brain and react to the things you'll see.
 
  - Waaaaaah! It
    - segfaults
@@ -87,10 +88,6 @@ To turn them off, use `./run --dont-segfault --no-errors --dont-eat-dog`.
 
 If this still does not help, try the [contact section](#contact)
 or the [bug tracker](https://github.com/SFTtech/openage/issues).
-
-ATM, openage is mostly designed to be built and run inside the development folder via `make run`, `./run`, `./run.py` or `python3 -m openage` (those all are equivalent), but `make install` might actually work!
-
-To run the globally installed version: `python3 -m openage`.
 
 
 Development Process
@@ -113,7 +110,9 @@ All documentation is also in this repo:
 OS X Version
 ------------
 
-Building openage on OS X worked in the past, and might or might not work right now.
+Running openage on OS X worked in the past,
+and might or might not work right now.
+
 Setting up continuous integration for this platform has some complications. Running a hackintosh VM seems to be not so legal, while buying dedicated hardware for it seems to be not so cheap. If you know of a legal and cost-free way of doing so or want to sponsor a semi-recent Mac Mini, please open a ticket in our issue tracker. Until then, PRs untested on OS X will make their way into the master branch und occasional breakage will occur.
 
 
@@ -123,12 +122,9 @@ Windows Version
 None of us uses Windows, so a port has low priority.
 
 However, we're using cross-platform libraries wherever possible,
-so a port should be pretty easy to accomplish.
-We'll eventually look into porting using `mingw64`/`msys2`.
+so a port should be "pretty easy" to accomplish.
 
 If you want to beat us to it, go for it!
-
-We'd prefer as few preprocessor switches as possible, keep those centralized.
 
 
 Contributing
@@ -151,7 +147,7 @@ Guidelines:
 * Absolutely never ever participate in this [boring community](https://www.reddit.com/r/openage/).
 * Don't note the irony, you idiot.
 
-To prevent accidential violation of one of those guidelines, you should *never*
+To prevent accidental violation of one of those guidelines, you should *never*
 
 * [learn git](http://git-scm.com/book/en/Git-Basics)
 * [fork the repo](https://help.github.com/articles/fork-a-repo)
@@ -168,6 +164,7 @@ Contact
 -------
 
 Most of the developers hang around on our **IRC** channel (`#sfttech` on `freenode.net`).
+Alternatively, you can join `#sfttech:matrix.org`, which is bridged to the IRC channel.
 Do not hesitate to ping us, we might not see your message otherwise.
 
 For all technical discussion (ideas, problems, ...), use the [issue tracker](https://github.com/SFTtech/openage/issues)!

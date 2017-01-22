@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -283,7 +283,7 @@ private:
 		if (this->peek_bits(nbits)) {
 			auto errmsg = MSG(err);
 			errmsg << "attempted to discard " << nbits << " non-null bits: ";
-			for(unsigned ctr = 1; ctr <= nbits; ctr++) {
+			for (unsigned ctr = 1; ctr <= nbits; ctr++) {
 				errmsg << (this->peek_bits(ctr) & 1);
 			}
 			throw Error(errmsg);

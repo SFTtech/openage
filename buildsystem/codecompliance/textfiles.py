@@ -10,7 +10,7 @@ from .util import findfiles, readfile, has_ext, issue_str_line, BADUTF8FILES
 
 TRAIL_WHITESPACE_RE = re.compile((
     # trailing whitespace
-    "( |\\t)\\n"
+    r"( |\t)+\n"
 ))
 
 
@@ -64,4 +64,5 @@ def find_issues_with_lines(filename):
 
         match = TRAIL_WHITESPACE_RE.search(line)
         if match:
-            yield issue_str_line("Trailing whitespace", filename, line, num, match.start(1))
+            yield issue_str_line("Trailing whitespace", filename, line, num,
+                                 (match.start(1), match.end(1)))

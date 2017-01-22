@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include <vector>
 #include <string>
@@ -155,7 +155,7 @@ void interactive() {
 					loop = false;
 					break;
 				default:
-					for(int i = 0; i < retval; i++) {
+					for (int i = 0; i < retval; i++) {
 						buf.write(rdbuf[i]);
 					}
 				}

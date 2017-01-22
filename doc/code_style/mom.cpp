@@ -17,18 +17,19 @@
 // The associated header file comes first!
 #include "mom.h"
 
-// Local includes next, sorted alphabetically
-#include "../valve.h"
-#include "half_life.h"
-#include "log/log.h"
-
 // System includes follow, sorted alphabetically
 #include <iostream>
 #include <cmath>
 #include <cstdio>
 #include <SDL/SDL.h>
-// The reason of this include order is:
-// If local headers are missing system includes, you'll notice it.
+
+// Local includes next, sorted alphabetically
+#include "../valve.h"
+#include "half_life.h"
+#include "log/log.h"
+
+// Include errors are detected by having one associated cpp
+// file for each header in the project.
 
 
 // Indentation:
@@ -47,8 +48,9 @@
 // class:
 //   use it for the object orientation stuff
 //
-// Name of struct: lower_case_with_underscores.
+// Name of struct: lower_case_with_underscores
 // Name of class: CamelCaseAsYouKnowIt
+// Member methods: lower_case_names
 
 
 /**

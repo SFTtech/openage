@@ -26,7 +26,7 @@ For example: **Halberdier vs Marmeluke**
 
 Halberdier has attack classes and values:
 * class 4 (Melee): 6
-* class 5 (War Elefants): 28
+* class 5 (War Elephants): 28
 * class 8 (Cavalry): 32
 * class 16 (Ships, Camels, Saboteurs): 16
 * class 21 (Buildings): 1
@@ -70,8 +70,8 @@ have a default value of **1000** for each armor class that they don't have.
 
 The damage of a shot in AoE2 is most likely calculated after it has hit the target. This leads to weird behaviour when units die including:
 
-* Losing enviromental bonusses such as uphill or cliff bonus damage (+25 %)
+* Losing environmental bonuses such as uphill or cliff bonus damage (+25 %)
 * Dealing no damage, e.g. trebuchets
 * Dealing only 1 damage, e.g. if japanese trebuchets are packed before they hit their target
 
-It also has other consequences: Technologies will affect projectlies that were in the air when research finished.
+It also has other consequences: Technologies will affect projectiles that were in the air when research finished.

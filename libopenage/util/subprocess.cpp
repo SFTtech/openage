@@ -158,7 +158,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 		char *write_buf = (char *) &child_errno;
 		ssize_t remaining = sizeof(child_errno);
 
-		while(remaining > 0) {
+		while (remaining > 0) {
 			ssize_t written = write(pipefd[1], write_buf, remaining);
 
 			if (written <= 0) {

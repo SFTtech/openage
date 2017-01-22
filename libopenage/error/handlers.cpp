@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 /*
  * This file holds handlers for std::terminate and SIGSEGV.
@@ -62,7 +62,7 @@ util::OnDeInit restore_handlers([]() {
 
 	std::cout << "\n\x1b[31;1mFATAL: terminate has been called\x1b[m" << std::endl;
 
-	if(std::exception_ptr e_ptr = std::current_exception()) {
+	if (std::exception_ptr e_ptr = std::current_exception()) {
 		std::cout << "\n\x1b[33muncaught exception\x1b[m\n" << std::endl;
 
 		try {

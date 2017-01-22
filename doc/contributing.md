@@ -1,24 +1,43 @@
 Contributing to openage
 =======================
 
-"Can I even help?"
-------------------
+**"Can I even help?"**
 
 You can't do anything wrong. Except not doing anything.
 
 There is no wrongdoing, just wrong restraint.
 
 
-"Help - I want to contribute something, but I don't know what?"
----------------------------------------------------------------
+What can I do?
+--------------
+
+**"Help - I want to contribute something, but I don't know what?"**
 
 You're in luck. There's various sources for tasks:
 
- - have a look at the [issue tracker](https://github.com/sfttech/openage/issues), especially at the issues labeled [easy](https://github.com/SFTtech/openage/labels/easy) or [just do it](https://github.com/SFTtech/openage/labels/just%20do%20it)
- - use [your favourite code searching tool](https://github.com/ggreer/the_silver_searcher) to find `TODO` messages (there's quite a bunch of them)
- - [tasks.md](/doc/tasks.md)
- - [milestones.md](/doc/milestones.md) (more ambitious, obviously...)
- - ask on IRC
+ - Have a look at the [issue tracker](https://github.com/sfttech/openage/issues), expecially issues with labels:
+   - [easy](https://github.com/SFTtech/openage/labels/easy)!
+   - [just do it](https://github.com/SFTtech/openage/labels/just%20do%20it)!
+ - Use [your favorite code searching tool](https://github.com/ggreer/the_silver_searcher) to find `TODO` messages!
+ - The issue tracker [milestones](https://github.com/SFTtech/openage/milestones)!
+ - [milestones.md](/doc/milestones.md) (more ambitious, obviously...)!
+ - [Ask us](/README.md#contact)!
+
+
+What's the concept?
+-------------------
+
+We basically do whatever we think is good to do.
+
+The [openage architecture](/doc/architecture.md) is the foundation.
+For our development concept, see the [development guide](/doc/development.md).
+
+If you need some inspiration [what to work on, see above](#what-can-i-do).
+
+
+
+**Please at least skip over this whole file if you want to contribute some code to *openage***!
+
 
 
 tl;dr
@@ -26,14 +45,14 @@ tl;dr
 
 - Have a [GitHub](https://github.com) account
 - Click the [fork button](https://github.com/SFTtech/openage)
-- `git clone git@github.com:YourUsername/openage.git`
+- `git clone git@github.com:YourAccount/openage.git`
 - `cd openage`
 - `git remote add upstream https://github.com/SFTtech/openage.git`
 - `git checkout -b tentacle-monster-fix`
 - Edit file, adhere to [coding style](/doc/code_style)!
 - Add yourself to `copying.md`
-- `git add libopenage/tentacle_monster.cpp`
-- `git commit -m "engine: fixed vomiting speed of tentacle monster"`
+- `git add libopenage/unit/tentacle_monster.cpp`
+- `git commit -m "engine: fixed vomiting animation of tentacle monster"`
 - `make checkall`
 - `make test`
 - `git push origin tentacle-monster-fix`
@@ -48,32 +67,31 @@ Read on below if you need more detailed instructions and quality hints.
 Workflow
 --------
 
-Please at least skip over this whole file if you want to contribute some code to **openage**.
+We use the git fork/commit/pull request model.
 
-We use Github's fork/commit/pull request model.
+Note: The following is for *larger features*.
+For tiny stuff like typo fixes, just create your PR and be done with it.
+
 
 - [Fork the repo and add the needed remotes](https://help.github.com/articles/fork-a-repo/).
   - the `upstream` remote is **SFTtech/openage**
-  - the `origin` remote is **YourMom/openage**
-- Create a branch for your feature (*feature branch*: `git checkout -b feature-name`).
-  - This should only contain commits for `feature-name`, e.g. changes relevant for branch `fix-mom-mass`.
-  - You can always switch to master and do `git pull upstream master` and rebase (see below) to update your local copy.
-- Discuss your ideas and your work
-  - On the IRC channel (ask for opinions or at least announce it)
-  - This prevents those "duplicate work" situations where two people didn't know of each other's ongoing work.
-    "Release early and often!" also applies to pull requests!
-- Once your branch has some visible work, create "[WIP]" pull request
-  - Prefix your pull request's name with "[WIP] ").
-  - Make sure you are in the `copying.md` file.
-  - Entire dev community can see that there's something going on here.
-  - People will be able to look at your code (e.g. to see whether that would break the stuff they are doing),
-    and you'll get free checks from the build bot.
-- Finally, once your work is done and you think it's ready to be merged,
-  rename your pull request to remove the "[WIP]" (and announce that fact on the IRC, or it may go unnoticed).
+  - the `origin` remote is **YourAccount/openage**
+- Create a branch for your feature ("*feature branch*": `git checkout -b feature-name`).
+  - This should only contain commits for `feature-name`,
+    e.g. all changes relevant for branch `really-secure-drm`.
+  - You can always update to upstream state by [rebasing](#rebasing).
+- Discuss your ideas and your work:
+  - On the [group chats](/README.md#contact)
+  - That way, "bad ideas" can be "resolved" beforehand and "better ideas" are found
+
+- "Release early and often!" also applies to pull requests!
+  - Once your branch has some visible work, create `[WIP]` pull request
+  - Make sure you are in the `copying.md` file
+  - People will be able to look at your code and give feedback
+  - You'll get free checks from the build bot
+- Once your work is done, remove the `[WIP]` so it can be merged
 - Do the changes that are requested by the reviewers.
 - Aaaaaand you're done.
-
-Note: All of this is for larger features. For tiny stuff like typo fixes, just create your PR and be done with it.
 
 
 What makes a good Pull Request good?
@@ -87,23 +105,27 @@ Before making a pull request, it's good to review these things:
 - If this is your first contribution, add yourself to the authors list in [copying.md](/copying.md).
 - Commit messages should be meaningful, they should say in a sentence (or very little text) what
   changes it has without requiring to read the entire diff. [tpope knows this very well!](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-- If you based your work on a heavily outdated master or you have lots of "clutter" in your history, see the section about rebasing below.
+- You should [rebase](#rebasing) your work to avoid "clutter" in your commits and use the latest upstream code.
 
-We have a buildbot (currently `kevin-ci`) that runs all sorts of checks.
+We have a buildbot (currently [`kevin-ci`](https://github.com/SFTtech/kevin)) that runs all sorts of checks.
 It can be a bit fascist at times, so don't be shocked if it rejects your code, and go fix it instead.
 
-After checking those up, your development is done and you want to show your work
-(even if it has useless commits and such) you are ready to make the pull request.
 
-The pull request will trigger many of the contributors to look at your code
-and maybe pointing out some things that you might haven't noticed,
-so there will be an iterative process where we tell you to fix stuff until everybody is happy.
+The pull request will present your code to the community, which may point out
+some things that you might haven't noticed. You should fix stuff until everybody
+is happy.
 
 
-Rebasing - What the hell is it, and (why) do I need it?
--------------------------------------------------------
+Rebasing
+--------
 
-**rebasing** is 'moving' your commits to a different base commit. There's two main applications:
+**What the hell is it, and (why) do I need it?**
+
+**Rebasing** is 'moving' your commits to a different parent commit.
+
+In other words: *Cut off* your branch from its tree, and *attach it* somewhere else.
+
+There's two main applications:
 
 - If you based your work on a older master (so old that stuff can't be automatically merged),
   you can rebase to move your commits to the current [upstream](https://help.github.com/articles/fork-a-repo/) master:
@@ -125,49 +147,68 @@ git rebase -m upstream/master
 - If you want to fix an older commit of yours, or merge several commits into a single one (**squash** them), rebase interactively.
   We ***don't*** want to have a commit history like this:
 
- - `foo`
- - `initial try of bar`
- - `oops it didnt work`
- - `yeahhh now it does`
- - `oops missing parenthesis`
- - `fix whitespace issues`
- - `oops there was a typo in the docs for foo`
- - and so on...
+  - `add stuff`
+  - `fix typo in stuff`
+  - `fix compilation`
+  - `change stuff a bit`
+  - and so on...
 
- `git log` shows your commit history, to make some changes, you do an **interactive rebase**:
 
- `git rebase -i -m upstream/master` lets you rewrite the history of all your commits down to your fetched upstream master branch.
- `rebase -i` will open an interactive editor where you can choose actions for each individual commit:
+### `rebase` in practice
 
- - re-order commits
- - drop commits by deleting their line
- - squash your commits
- - mark a commit as fixup (like a silent squash, very useful)
- - reword a commit message
- - stop rebasing at a commit to edit (`--amend`) it manually
+`git log --graph --oneline` shows your commit history as graph.
+To make some changes in that graph, you do an **interactive rebase**:
 
- There's also `git commit --amend` which is a "mini-rebase" that modifies just the last commit with your changes.
- This just skips the creation of a new commit and instead melds the changes into the last one you made.
+```
+git rebase -i -m upstream/master
+```
 
- If you want to update a single commit in the range `[upstream/master, current HEAD]` which is not the last commit:
+With this command, your new "base" is `upstream/master` and you can
+then change any of your branch's commits.
 
- - `edit stuff you wanna change in some previous commit`
- - `git add changed_stuff`
- - `git commit --fixup $hash_of_commit_to_be_fixed`
- - `git rebase --autosquash -i -m upstream/master`
+`-i` will open an interactive editor where you can choose actions for each individual commit:
 
-- After you have rebased stuff (["rewritten history"](https://www.youtube.com/watch?v=9lXuZHkOoH8)) that had already been pushed,
-  git will not accept your pushes because they're not simple fast-forwards:
- - The commit contents have changed as you updated the commit, therefore the commit hash changed, too.
- - Other people who also work on that same branch will have their history broken (because they "use" the old hashes).
- - But this is your pull request, so you're the only one working on it.
- - If you change history for some branch others depend on, they'll hate you forever, because their branch base is now gone.
- - Use **push -f** to place your re-written history on a pull request branch.
+- re-order commits
+- drop commits by deleting their line
+- squash/fixup ("meld") your commits
+- reword a commit message
+- stop rebasing at a commit to edit (`--amend`) it manually
 
-- **push force** is the standard way of overwriting your development work with the fixed and mergeable version of your contribution
- - you can use any of:
+Just follow the messages on screen.
+
+
+### Changing commits with `amend` and `fixup`
+
+There's also `git commit --amend` which is a "mini-rebase" that modifies just the last commit with your current changes by `git add`.
+It just skips the creation of a new commit and instead melds the changes into the last one you made.
+
+If you want to update a single commit in the range `[upstream/master, current HEAD]` which is not the last commit:
+
+- `edit stuff you wanna change in some previous commit`
+- `git add changed_stuff`
+- `git commit --fixup $hash_of_commit_to_be_fixed`
+- `git rebase --autosquash -i -m upstream/master`
+
+
+### Pushing changes
+
+After you have rebased stuff (["rewritten history"](https://www.youtube.com/watch?v=9lXuZHkOoH8)) that had already been pushed,
+git will not accept your pushes because they're not simple fast-forwards:
+
+- The commit contents and the parent commit have changed as you updated the commit, therefore the commit hash changed, too.
+  - If somebody used those commits, they will keep a copy
+    and have a hard time updating to your updated version (because they "use" the old hashes).
+  - Update your pull request branch with your re-written history!
+
+- **force push** is the standard way of overwriting your development work with the fixed and mergeable version of your contribution!
+  - Why? You changed the commits, so you want the old ones to be deleted!
+
+  You can use any of:
   - `git push origin +nobody-likes-you`
   - `git push origin -f you-are-fat`
   - `git push origin --force and-you-are-adopted`
 
-Some extra tutorials on `rebase`: [Atlasian's Git Tutorial](https://www.atlassian.com/git/tutorials/rewriting-history/), the [Pro Git book](http://git-scm.com/book), `man git-rebase`.
+Some extra tutorials on `git rebase`:
+ * [Atlassian's Git Tutorial](https://www.atlassian.com/git/tutorials/rewriting-history/)
+ * [Pro Git book](http://git-scm.com/book)
+ * `man git-rebase`

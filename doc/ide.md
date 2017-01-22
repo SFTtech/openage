@@ -8,17 +8,22 @@ Install Qt Creator from the repository of your distribution or with an installer
 
 To launch QtCreator in English on Linux:
 
-	$ LANGUAGE=C qtcreator
+```
+$ LANGUAGE=C qtcreator
+```
 
 ### Opening and configuring the project
 
-Open the root `CMakeLists.txt` with the QtCreator, select the Qt installation that you want to target and click **Configure Project"".
+Open the root `CMakeLists.txt` with the QtCreator,
+select the Qt installation that you want to target and click **Configure Project**.
 
 Watch the **General Messages** log window for CMake errors.
+
 
 ### Enabling parallel build
 
 Go to **Projects** -> **openage** -> **Build & Run** -> **Build** -> **Build Steps** -> **Build** -> **Details**, and add `-j4` to the **Tool arguments**.
+
 
 ### Run & Debug
 

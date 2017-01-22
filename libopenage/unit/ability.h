@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -98,7 +98,7 @@ public:
 	virtual void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) = 0;
 
 	/**
- 	 * some common functions
+	 * some common functions
 	 */
 	bool has_hitpoints(Unit &target);
 	bool is_damaged(Unit &target);
@@ -108,8 +108,8 @@ public:
 	bool is_enemy(Unit &to_modify, Unit &target);
 
 	/**
- 	 * set bits corresponding to abilities, useful for initialising an ability_set
- 	 * using a brace enclosed list
+	 * set bits corresponding to abilities, useful for initialising an ability_set
+	 * using a brace enclosed list
 	 */
 	static ability_set set_from_list(const std::vector<ability_type> &items);
 

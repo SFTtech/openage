@@ -22,27 +22,26 @@ Ahem, nope, this is the real roadmap:
 - [x] 4: render units on the map (with animations)
 - [x] 5: mouse selection and basic commands ("go here, delete")
 - [x] 6: path finding and collision
-- [ ] 7: hud (lower control panel), could for example display unit name.
+- [x] 7: hud (lower control panel), could for example display unit name.
       hud for buildings supports unit creation
 - [ ] 8: civ research state tracker, support for research in building hud
-- [ ] 9: villager building menu for creation of buildings
-- [ ] 10: realistic building creation (amount of work needed, building process)
-- [ ] 11: resource system (and upper hud bar, creating units/building consumes resources)
-- [ ] 12: resource gathering by villagers
-- [ ] 13: health points, ballistics, attacking.
+- [x] 9: villager building menu for creation of buildings
+- [x] 10: realistic building creation (amount of work needed, building process)
+- [x] 11: resource system (and upper hud bar, creating units/building consumes resources)
+- [x] 12: resource gathering by villagers
+- [x] 13: health points, ballistics, attacking.
        units can be switched to different colors by short keys
 - [ ] 14: terrain altitudes (plus effects on ballistics),
        working singleplayer without AI is done here. multiplayer stuff is the main focus now
 - [ ] 15: **dedicated server** (!), map user actions to physics frame ids and sync them
 - [ ] 16: basic multiplayer support
        * there will (most probably) be bugs, loads of them.
-       * at this point, with a proper starting map (one villager per player on grasland),
+       * at this point, with a proper starting map (one villager per player on grassland),
          battles can be fought.
 
 things to be done sometime:
 
 * game recording, playback
-* some rudimentary launch menu
 * lobby + lobby server
 * implement AI Python API (use GlaDOS?)
 * messaging and taunts (important!)
