@@ -12,7 +12,7 @@ configure:
 	./configure --mode=debug
 
 build: configure
-	CLICOLOR_FORCE=1 make -j4 build
+	CLICOLOR_FORCE=1 make -j$(nproc) build
 
 test: build
 	make tests
