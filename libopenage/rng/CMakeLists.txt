@@ -1,5 +1,6 @@
 add_sources(libopenage
-	rng.cpp
+	box_muller.cpp
 	global_rng.cpp
+	rng.cpp
 	rng_tests.cpp
 )

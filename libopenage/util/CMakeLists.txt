@@ -11,6 +11,7 @@ add_sources(libopenage
 	fds.cpp
 	fps.cpp
 	fslikeobject.cpp
+	generator_test.cpp
 	hash.cpp
 	init.cpp
 	language.cpp
@@ -36,6 +37,7 @@ pxdgen(
 	enum.h
 	enum_test.h
 	fslikeobject.h
+	vector.h
 )
 
 add_subdirectory(compress)

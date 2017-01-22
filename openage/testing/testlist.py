@@ -42,6 +42,8 @@ def demos_py():
            "translates a C++ exception and its causes to python")
     yield ("openage.log.tests.demo",
            "demonstrates the translation of Python log messages")
+    yield ("openage.mapgen.perlin.demo",
+           "renders some perlin noise as image")
 
 
 def tests_cpp():
@@ -56,6 +58,7 @@ def tests_cpp():
     yield "openage::datastructure::tests::pairing_heap"
     yield "openage::job::tests::test_job_manager"
     yield "openage::path::tests::path_node", "pathfinding"
+    yield "openage::perlin::tests::perlin"
     yield "openage::pyinterface::tests::pyobject"
     yield "openage::pyinterface::tests::err_py_to_cpp"
     yield "openage::renderer::tests::font"
@@ -63,6 +66,7 @@ def tests_cpp():
     yield "openage::rng::tests::run"
     yield "openage::util::tests::constinit_vector"
     yield "openage::util::tests::enum_"
+    yield "openage::util::tests::generator"
     yield "openage::util::tests::init"
     yield "openage::util::tests::matrix"
     yield "openage::util::tests::vector"
