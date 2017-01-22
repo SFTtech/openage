@@ -15,7 +15,7 @@ There is no wrongdoing, just wrong restraint.
 You're in luck. There's various sources for tasks:
 
  - have a look at the [issue tracker](https://github.com/sfttech/openage/issues), especially at the issues labeled [easy](https://github.com/SFTtech/openage/labels/easy) or [just do it](https://github.com/SFTtech/openage/labels/just%20do%20it)
- - use [your favourite code searching tool](https://github.com/ggreer/the_silver_searcher) to find `TODO` messages (there's quite a bunch of them)
+ - use [your favorite code searching tool](https://github.com/ggreer/the_silver_searcher) to find `TODO` messages (there's quite a bunch of them)
  - [tasks.md](/doc/tasks.md)
  - [milestones.md](/doc/milestones.md) (more ambitious, obviously...)
  - ask on IRC
@@ -170,4 +170,4 @@ git rebase -m upstream/master
   - `git push origin -f you-are-fat`
   - `git push origin --force and-you-are-adopted`
 
-Some extra tutorials on `rebase`: [Atlasian's Git Tutorial](https://www.atlassian.com/git/tutorials/rewriting-history/), the [Pro Git book](http://git-scm.com/book), `man git-rebase`.
+Some extra tutorials on `rebase`: [Atlassian's Git Tutorial](https://www.atlassian.com/git/tutorials/rewriting-history/), the [Pro Git book](http://git-scm.com/book), `man git-rebase`.

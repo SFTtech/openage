@@ -10,7 +10,7 @@ why do we need that?
 
 Placing these tiles beside each other works fine, if you use only one terrain (e.g. grass).
 
-If two different terrains are next to each other, they need to be blended. Water and land will be blended to water and shore, etcetc.
+If two different terrains are next to each other, they need to be blended. Water and land will be blended to water and shore, etc etc.
 
 This procedure allows merging any terrain type with any other.
 

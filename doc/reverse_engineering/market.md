@@ -62,7 +62,7 @@ Trade Carts will not seek an alternative market to trade with. As soon as the ma
 
 ### Your market is destroyed
 
-If you only had one market, trade carts will stop and immediatly lose all carried gold.
+If you only had one market, trade carts will stop and immediately lose all carried gold.
 
 If you happen to have more than one market, trade carts will choose the market which is closest *from their current position* as their new trade destination.
 

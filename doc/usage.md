@@ -24,7 +24,7 @@ This document describes what you can do so far once you start the game.
 
 ## Actions mode
 
-- Press `m` to switch from *Contruct mode* to *Actions mode*
+- Press `m` to switch from *Construct mode* to *Actions mode*
 - You can now select units and buildings
 - Right click on the map as usual to move units
 - Select a single unit to show the properties in the lower left corner of the

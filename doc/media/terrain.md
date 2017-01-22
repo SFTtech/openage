@@ -40,7 +40,7 @@ id | filename   | priority | tilecount | description
 26 | 015031.slp |      120 | 100 tiles | grass ancient building fundaments
 
 
-One terrain tile is a paralellogram with equal side lengths, and the same angles in edges on opposing sides. (This is also known as a rhombus.)
+One terrain tile is a parallelogram with equal side lengths, and the same angles in edges on opposing sides. (This is also known as a rhombus.)
 
 Tile image height = 97px
 Tile image width  = 49px

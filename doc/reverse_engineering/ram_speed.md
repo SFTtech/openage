@@ -15,14 +15,14 @@ The ungarrisoned ram has a *base speed* which is shown below.
     Battering/Capped Ram  0.5 tiles/s
     Siege Ram             0.6 tiles/s
 
-Every garrisoned infatry increases the speed of the ram by 0.05 tiles/s regardless of the speed of the unit. Foot archers, skrimishers and hand cannoneers **do not** increase the speed of the ram.
+Every garrisoned infantry increases the speed of the ram by 0.05 tiles/s regardless of the speed of the unit. Foot archers, skirmishers and hand cannoneers **do not** increase the speed of the ram.
 
 | Ram Type         |0 Units|1 Unit|2 Units|3 Units|4 Units|5 Units|6 Units|
 | -----------------|:-----:|:----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 | Battering/Capped | 0.5   | 0.55 | 0.6   | 0.65  | 0.7   | X     | X     |
 | Siege            | 0.6   | 0.65 | 0.7   | 0.75  | 0.8   | 0.85  | 0.9   |
 
-Modifiers on the speed of siege unts are only applied to the *base speed* of the ram and not to the speed contributed by garrisoned units.
+Modifiers on the speed of siege units are only applied to the *base speed* of the ram and not to the speed contributed by garrisoned units.
 
 ### Math
 

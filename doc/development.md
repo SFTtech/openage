@@ -45,15 +45,15 @@ Code philosophy
 
  - If upstream code (other parts of openage, other libraries, or even the compilers) doesn't work or is missing some feature, _report / fix it_.
  - Do things properly, not quickly. It takes research, time and maybe even upstream fixes, but it's worth it.
- - If you absolutely _must_ use a dirty hack (e.g. because you're waiting for upstream to fix it), write a TO-DO message with an explaination.
- - Regularily review old code to find rusty parts. Remove them, rewrite them, refactor them or at least update the comments.
+ - If you absolutely _must_ use a dirty hack (e.g. because you're waiting for upstream to fix it), write a TO-DO message with an explanation.
+ - Regularly review old code to find rusty parts. Remove them, rewrite them, refactor them or at least update the comments.
  - The project is in development. Don't be shy about adding, removing and changing interfaces, but tell other people if you break their WIP stuff.
 
 Dev setup
 ---------
 
 We're all on Linux (with Intel/NVidia GPUs), and nobody uses any IDEs (unless you count `emacs`). If you want to use an IDE, first of all reconsider: Neither C++ nor Python are IDE-centric languages (unlike Java or C#) and may not profit from an IDE.
-If you managed to get the build system and everything working with your favourite IDE, please contribute instructions to the docs.
+If you managed to get the build system and everything working with your favorite IDE, please contribute instructions to the docs.
 
 [0] actually we don't; we're students.
 [1] also known as a LAN party. You're invited.
