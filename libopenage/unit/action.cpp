@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
@@ -84,7 +84,7 @@ const graphic_set &UnitAction::current_graphics() const {
 
 void UnitAction::draw_debug() {
 	// draw debug content if available
-	if(show_debug && this->debug_draw_action) {
+	if (show_debug && this->debug_draw_action) {
 		this->debug_draw_action();
 	}
 }

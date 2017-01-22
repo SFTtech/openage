@@ -62,7 +62,7 @@ bool ResourceBundle::has(const ResourceBundle& amount) const {
 }
 
 bool ResourceBundle::deduct(const ResourceBundle& amount) {
-	if(*this >= amount) {
+	if (*this >= amount) {
 		*this -= amount;
 		return true;
 	}

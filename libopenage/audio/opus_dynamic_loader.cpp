@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "opus_dynamic_loader.h"
 
@@ -82,7 +82,7 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 
 	// convert to stereo
 	if (channels == 1) {
-		for(int i = read_count-1; i >= 0; i--) {
+		for (int i = read_count-1; i >= 0; i--) {
 			auto value = chunk_buffer[i];
 			chunk_buffer[i*2+1] = value;
 			chunk_buffer[i*2] = value;

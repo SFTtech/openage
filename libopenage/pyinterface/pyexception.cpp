@@ -20,7 +20,7 @@ void PyExceptionBacktrace::get_symbols(std::function<void (const error::backtrac
 			symbols.emplace_back(*symbol);
 		});
 
-		for(size_t idx = symbols.size(); idx-- > 0;) {
+		for (size_t idx = symbols.size(); idx-- > 0;) {
 			cb(&symbols[idx]);
 		}
 	}

@@ -63,7 +63,7 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 
 	// convert from mono to stereo
 	if (op_channels == 1) {
-		for(int i = pcm_length-1; i >= 0; i--) {
+		for (int i = pcm_length-1; i >= 0; i--) {
 			auto value = buffer[i];
 			buffer[i*2+1] = value;
 			buffer[i*2] = value;

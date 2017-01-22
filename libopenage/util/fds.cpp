@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "fds.h"
 
@@ -71,7 +71,7 @@ int FD::putcp(int cp) {
 int FD::printf(const char *format, ...) {
 	const unsigned buf_size = 16;
 	char *buf = (char*) malloc(sizeof(char) * buf_size);
-	if(!buf) {
+	if (!buf) {
 		return -1;
 	}
 
@@ -86,7 +86,7 @@ int FD::printf(const char *format, ...) {
 	if (len >= buf_size) {
 		char *oldbuf = buf;
 		buf = (char*) realloc(oldbuf, sizeof(char) * (len + 1));
-		if(!buf) {
+		if (!buf) {
 			free(oldbuf);
 			return -1;
 		}

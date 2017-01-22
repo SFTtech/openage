@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include "unicode.h"
 
@@ -74,7 +74,7 @@ size_t utf8_decode(const unsigned char *s, size_t len, int32_t *outbuf) {
 	wchar_t w;
 	size_t result = 0;
 
-	while(len > 0) {
+	while (len > 0) {
 		if (s[0] < 0x80) {
 			// 1-byte (ASCII) character
 			w = *s;

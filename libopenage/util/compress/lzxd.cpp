@@ -1,7 +1,7 @@
 // This file was adapted from cabextract/libmspack <http://www.cabextract.org.uk/>,
 // Copyright 2003-2013 the cabextract contributors.
 // It's licensed under the terms of the GNU Library General Public License version 2.
-// Modifications Copyright 2014-2015 the openage authors.
+// Modifications Copyright 2014-2017 the openage authors.
 // See copying.md for further legal info.
 
 /*
@@ -299,7 +299,7 @@ bool HuffmanTable<maxsymbols_p, tablebits_p, allow_empty>::try_make_decode_table
 				continue;
 			}
 			leaf = pos;
-			if((pos += bit_mask) > table_mask) {
+			if ((pos += bit_mask) > table_mask) {
 				return false; // table overrun
 			}
 
@@ -878,7 +878,7 @@ void LZXDStream::postprocess_intel_e8(unsigned char *buf, int frame_size) {
 
 	// search the block for occurances of '0xe8'
 	// the last 10 bytes of the frame are not e8-handled, because reasons.
-	for(int pos = 0; pos < frame_size - 10; pos++) {
+	for (int pos = 0; pos < frame_size - 10; pos++) {
 		bool is_e8 = (buf[pos] == 0xe8);
 
 		if (!is_e8) {

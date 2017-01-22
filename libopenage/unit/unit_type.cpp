@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "../gamestate/player.h"
 #include "../terrain/terrain_object.h"
@@ -10,7 +10,7 @@
 namespace openage {
 
 UnitTypeMeta::UnitTypeMeta(const std::string &name, int id, init_func f)
- 	:
+	:
 	init{f},
 	type_name{name},
 	type_id{id} {

@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "buf.h"
 
@@ -256,7 +256,7 @@ void Buf::resize(term new_dims) {
 	// count the number of empty chars that we've found in this line,
 	// and we may or may not still have to copy.
 	size_t empty_chars = 0;
-	while(old_linedata_pos != old_linedata_scrollbackstart) {
+	while (old_linedata_pos != old_linedata_scrollbackstart) {
 		// should never be >, always ==
 		// also, both checks should always yield identical results
 		// (TODO do an ASSERT to assure this?)
@@ -276,7 +276,7 @@ void Buf::resize(term new_dims) {
 			new_chrdata_pos = new_chrdata;
 		}
 
-		for(term_t x = 0; x < old_dims.x; x++) {
+		for (term_t x = 0; x < old_dims.x; x++) {
 			if (*old_chrdata_pos == this->default_char_fmt) {
 				empty_chars++;
 			} else {
@@ -303,12 +303,12 @@ void Buf::resize(term new_dims) {
 
 void Buf::write(const char *c, ssize_t len) {
 	if (len >= 0) {
-		for(; len > 0; len--) {
+		for (; len > 0; len--) {
 			this->write(*c);
 			c++;
 		}
 	} else {
-		for(; *c; c++) {
+		for (; *c; c++) {
 			this->write(*c);
 		}
 	}
@@ -380,7 +380,7 @@ void Buf::write(char c) {
 		this->process_codepoint(0xFFFD);
 	};
 
-	if(this->streamdecoder.remaining == 0 && this->streamdecoder.out >= 0) {
+	if (this->streamdecoder.remaining == 0 && this->streamdecoder.out >= 0) {
 		this->process_codepoint(streamdecoder.out);
 	}
 }
@@ -638,7 +638,7 @@ void Buf::process_text_escape_sequence() {
 					maxidx = len - 2;
 				}
 				this->title.clear();
-				for(int i = 3; i < maxidx; i++) {
+				for (int i = 3; i < maxidx; i++) {
 					this->title.push_back(this->escape_sequence[i]);
 				}
 				this->escape_sequence_processed();
@@ -660,7 +660,7 @@ void Buf::process_csi_escape_sequence() {
 	bool in_param = false;
 	int currentparam;
 
-	for(size_t pos = 1; pos < len - 1; pos++) {
+	for (size_t pos = 1; pos < len - 1; pos++) {
 		int cp = this->escape_sequence[pos];
 		if (cp == '?' && pos == 1) {
 			starts_with_questionmark = true;
@@ -737,7 +737,7 @@ void Buf::process_csi_escape_sequence() {
 	// execute the escape sequence
 	switch (type) {
 	case '@': // ICH: insert n blank characters
-		for(int i = 0; i < params[0]; i++) {
+		for (int i = 0; i < params[0]; i++) {
 			this->print_codepoint(0x20);
 		}
 		break;
@@ -911,7 +911,7 @@ void Buf::process_csi_escape_sequence() {
 }
 
 void Buf::process_sgr_code(const std::vector<int> &params) {
-	for(size_t i = 0; i < params.size(); i++) {
+	for (size_t i = 0; i < params.size(); i++) {
 		int p = params[i];
 		switch (p) {
 		case 0: // reset
@@ -1104,14 +1104,14 @@ void Buf::clear(term start, term end, bool clear_end) {
 
 void Buf::chrdata_clear(buf_char *start, buf_char *end) {
 	if (start < end) {
-		for(; start < end; start++) {
+		for (; start < end; start++) {
 			*start = this->current_char_fmt;
 		}
 	} else {
-		for(buf_char *c = start; c < this->chrdata_end; c++) {
+		for (buf_char *c = start; c < this->chrdata_end; c++) {
 			*c = this->current_char_fmt;
 		}
-		for(buf_char *c = this->chrdata; c < end; c++) {
+		for (buf_char *c = this->chrdata; c < end; c++) {
 			*c = this->current_char_fmt;
 		}
 	}
@@ -1119,14 +1119,14 @@ void Buf::chrdata_clear(buf_char *start, buf_char *end) {
 
 void Buf::linedata_clear(buf_line *start, buf_line *end) {
 	if (start < end) {
-		for(; start < end; start++) {
+		for (; start < end; start++) {
 			*start = BUF_LINE_DEFAULT;
 		}
 	} else {
-		for(buf_line *l = start; l < this->linedata_end; l++) {
+		for (buf_line *l = start; l < this->linedata_end; l++) {
 			*l = BUF_LINE_DEFAULT;
 		}
-		for(buf_line *l = this->linedata; l < end; l++) {
+		for (buf_line *l = this->linedata; l < end; l++) {
 			*l = BUF_LINE_DEFAULT;
 		}
 	}
