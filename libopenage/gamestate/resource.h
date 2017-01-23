@@ -41,6 +41,10 @@ public:
 
 	bool has(const ResourceBundle& amount) const;
 
+	/**
+	 * If amount can't be deducted return false, else deduct the given amount
+	 * and return true.
+	 */
 	bool deduct(const ResourceBundle& amount);
 
 	double& operator[] (const game_resource res) { return value[(int) res]; }
@@ -49,7 +53,7 @@ public:
 	// Getters
 
 	double get(const game_resource res) const { return value[(int) res]; }
-	double get(int index) const { return value[index]; }
+	double get(const int index) const { return value[index]; }
 
 private:
 	double value[(int) game_resource::RESOURCE_TYPE_COUNT];

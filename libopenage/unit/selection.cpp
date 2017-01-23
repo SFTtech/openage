@@ -312,7 +312,8 @@ void UnitSelection::show_attributes(Unit *u) {
 selection_type_t UnitSelection::get_unit_selection_type(const Player &player, Unit *u) {
 	bool is_building = u->has_attribute(attr_type::building);
 
-	// Check color
+	// Check owner
+	// TODO implement allied units
 	if (u->is_own_unit(player)) {
 		return is_building ? selection_type_t::own_buildings : selection_type_t::own_units;
 	} else {
