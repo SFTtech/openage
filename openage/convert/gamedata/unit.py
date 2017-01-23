@@ -7,42 +7,45 @@ from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
 from ..dataformat.members import EnumLookupMember, ContinueReadMember, IncludeMembers, SubdataMember
 
 
-class UnitCommand(Exportable):
+class UnitCommand(Exportable): # also known as "Task" according to ES debug code, this structure is the master for spawn-unit actions.
     name_struct        = "unit_command"
     name_struct_file   = "unit"
     struct_description = "a command a single unit may receive by script or human."
 
     data_format = (
-        (READ, "command_used", "int16_t"),                  # always 1
-        (READ_EXPORT, "id", "int16_t"),                     # command id
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "command_used", "int16_t"),                  # Type (0 = Generic, 1 = Tribe)
+        (READ_EXPORT, "id", "int16_t"),                     # Identity
+        (READ_UNKNOWN, None, "int8_t"),                     # IsDefault
         (READ_EXPORT, "type", EnumLookupMember(
             raw_type    = "int16_t",
             type_name   = "command_ability",
             lookup_dict = {
+                # the Action-Types found under RGE namespace:
                 0: "UNUSED",
                 1: "MOVE_TO",
                 2: "FOLLOW",
-                3: "GARRISON",
+                3: "GARRISON", # also known as "Enter"
                 4: "EXPLORE",
-                5: "GATHER",   # gather, rebuild
-                6: "NATURAL_WONDERS_CHEAT",
-                7: "ATTACK",
-                8: "SHOOT",
-                10: "FLY",
-                11: "SCARE_HUNT",  # triggers flee
-                12: "UNLOAD",    # transport, garrison
+                5: "GATHER",
+                6: "NATURAL_WONDERS_CHEAT", # also known as "Graze"
+                7: "ATTACK", # also known as "Combat", this is converted to action-type 9 when once instanciated
+                8: "SHOOT", # also known as "Missile"
+                9: "ATTACK_2", # originally known as "Attack"
+                10: "FLY", # also known as "Bird"
+                11: "SCARE_HUNT",  # also known as "Predator"
+                12: "UNLOAD",    # known as "Transport"
                 13: "GUARD",
-                14: "UNKNOWN_14",
-                20: "ESCAPE",    # sure?
-                21: "MAKE_FARM",
+                14: "UNKNOWN_14", # known as "TransportOverWall"
+                20: "ESCAPE",    # known as "RunAway"
+                21: "MAKE_FARM", # known as "Make"
+                # the Action-Types found under TRIBE namespace:
                 101: "BUILD",
                 102: "MAKE_OBJECT",
                 103: "MAKE_TECH",
                 104: "CONVERT",
                 105: "HEAL",
                 106: "REPAIR",
-                107: "CONVERT_AUTO",  # can get auto-converted
+                107: "CONVERT_AUTO",  # "Artifact": can get auto-converted
                 108: "DISCOVERY",
                 109: "SHOOTING_RANGE_RETREAT",
                 110: "HUNT",
@@ -70,20 +73,20 @@ class UnitCommand(Exportable):
         (READ_EXPORT, "class_id", "int16_t"),
         (READ_EXPORT, "unit_id", "int16_t"),
         (READ_EXPORT, "terrain_id", "int16_t"),
-        (READ_EXPORT, "resource_in", "int16_t"),            # carry resource
-        (READ_EXPORT, "resource_productivity", "int16_t"),  # resource that multiplies the amount you can gather
-        (READ_EXPORT, "resource_out", "int16_t"),           # drop resource
-        (READ_EXPORT, "resource", "int16_t"),
-        (READ_EXPORT, "quantity", "float"),
-        (READ_EXPORT, "execution_radius", "float"),
-        (READ_EXPORT, "extra_range", "float"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ, "scaring_radius", "float"),                  # e.g. deer
-        (READ, "selection_enabled", "int8_t"),              # 1=allows to select a target, type defined in `selection_type`
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ, "plunder_source", "int16_t"),
-        (READ_UNKNOWN, None, "int16_t"),
-        (READ_EXPORT, "targets_allowed", EnumLookupMember(  # aka "selection_mode"
+        (READ_EXPORT, "resource_in", "int16_t"),            # AttributeId1: carry resource
+        (READ_EXPORT, "resource_productivity", "int16_t"),  # AttributeId2: resource that multiplies the amount you can gather
+        (READ_EXPORT, "resource_out", "int16_t"),           # AttributeId3:drop resource
+        (READ_EXPORT, "resource", "int16_t"),               # AttributeId4:
+        (READ_EXPORT, "quantity", "float"),                 # WorkValue1: quantity
+        (READ_EXPORT, "execution_radius", "float"),         # WorkValue2:
+        (READ_EXPORT, "extra_range", "float"),              # WorkRange:
+        (READ_UNKNOWN, None, "int8_t"),                     # SearchMode:
+        (READ, "scaring_radius", "float"),                  # SearchTime:
+        (READ, "selection_enabled", "int8_t"),              # CombatLevel: type defined in `selection_type`
+        (READ_UNKNOWN, None, "int8_t"),                     # CombatMode:
+        (READ, "plunder_source", "int16_t"),                # WorkMode1:
+        (READ_UNKNOWN, None, "int16_t"),                    # WorkMode2:
+        (READ_EXPORT, "targets_allowed", EnumLookupMember(  # OwnerType:
             raw_type    = "int8_t",      # what can be selected as a target for the unit command?
             type_name   = "selection_type",
             lookup_dict = {
@@ -97,14 +100,14 @@ class UnitCommand(Exportable):
                 7: "ANY_7",
             },
         )),
-        (READ, "right_click_mode", "int8_t"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ_EXPORT, "tool_graphic_id", "int16_t"),               # walking with tool but no resource
-        (READ_EXPORT, "proceed_graphic_id", "int16_t"),            # proceeding resource gathering or attack
-        (READ_EXPORT, "action_graphic_id", "int16_t"),             # actual execution or transformation graphic
-        (READ_EXPORT, "carrying_graphic_id", "int16_t"),           # display resources in hands
-        (READ_EXPORT, "execution_sound_id", "int16_t"),            # sound to play when execution starts
-        (READ_EXPORT, "resource_deposit_sound_id", "int16_t"),     # sound to play on resource drop
+        (READ, "right_click_mode", "int8_t"),                      # HoldingMode:
+        (READ_UNKNOWN, None, "int8_t"),                            # StateBuild:
+        (READ_EXPORT, "tool_graphic_id", "int16_t"),               # MoveSpriteId: walking with tool but no resource
+        (READ_EXPORT, "proceed_graphic_id", "int16_t"),            # WorkSpriteId1: proceeding resource gathering or attack
+        (READ_EXPORT, "action_graphic_id", "int16_t"),             # WorkSpriteId2: actual execution or transformation graphic
+        (READ_EXPORT, "carrying_graphic_id", "int16_t"),           # CarrySpriteId: display resources in hands
+        (READ_EXPORT, "execution_sound_id", "int16_t"),            # WorkSoundId1: sound to play when execution starts
+        (READ_EXPORT, "resource_deposit_sound_id", "int16_t"),     # WorkSoundId2: sound to play on resource drop
     )
 
 
@@ -454,7 +457,7 @@ class UnitObject(Exportable):
             raw_type    = "int16_t",
             type_name   = "unit_classes",
             lookup_dict = {
-                -1: "UNKNOWN_FFFF",
+                -1: "UNKNOWN_FFFF", # None
                 0: "ARCHER",
                 1: "ARTIFACT",
                 2: "TRADE_BOAT",
@@ -531,7 +534,7 @@ class UnitObject(Exportable):
         (READ, "air_mode", "int8_t"),                    # 1=no footprints
         (READ, "icon_id", "int16_t"),                    # frame id of the icon slp (57029) to place on the creation button
         (READ, "hidden_in_editor", "int8_t"),
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ_UNKNOWN, None, "int16_t"),                 # PortraintIconId
         (READ, "enabled", "int16_t"),                    # 0=unlocked by research, 1=insta-available
         (READ, "placement_side_terrain0", "int16_t"),    # terrain id that's needed somewhere on the foundation (e.g. dock water)
         (READ, "placement_side_terrain1", "int16_t"),    # second slot for ^
@@ -585,10 +588,10 @@ class UnitObject(Exportable):
                 0x15: "WATER_SHALLOW",
             },
         )),
-        (READ_EXPORT, "fly_mode", "int8_t"),
+        (READ_EXPORT, "fly_mode", "int8_t"),    # MovementType
         (READ_EXPORT, "resource_capacity", "int16_t"),
         (READ_EXPORT, "resource_decay", "float"),                 # when animals rot, their resources decay
-        (READ_EXPORT, "blast_defense_level", EnumLookupMember(  # Receive blast damage from units that have lower or same blast_attack_level.
+        (READ_EXPORT, "blast_defense_level", EnumLookupMember(  # BlasLevelDefense: Receive blast damage from units that have lower or same blast_attack_level.
             raw_type    = "int8_t",
             type_name   = "blast_types",
             lookup_dict = {
@@ -598,7 +601,7 @@ class UnitObject(Exportable):
                 3: "UNIT_3",    # boar, farm, fishingship, villager, tradecart, sheep, turkey, archers, junk, ships, monk, siege
             }
         )),
-        (READ, "sub_type", "int8_t"),  # associated scenario trigger type:
+        (READ, "sub_type", "int8_t"),  # CombatLevel:
                                        # 0:Projectile/Dead/Resource 1:Boar 2:Building
                                        # 3:Civilian 4:Military 5:Other
         (READ_EXPORT, "interaction_mode", EnumLookupMember(
@@ -613,7 +616,7 @@ class UnitObject(Exportable):
                 5: "SELECT_MOVE",
             },
         )),
-        (READ_EXPORT, "minimap_mode", EnumLookupMember(
+        (READ_EXPORT, "minimap_mode", EnumLookupMember( # MapDrawLevel:
             raw_type    = "int8_t",        # how does the unit show up on the minimap
             type_name   = "minimap_modes",
             lookup_dict = {
@@ -630,13 +633,13 @@ class UnitObject(Exportable):
                 10: "NO_DOT_10",
             },
         )),
-        (READ_EXPORT, "command_attribute", EnumLookupMember(
+        (READ_EXPORT, "command_attribute", EnumLookupMember(    # UnitLevel:
             raw_type    = "int8_t",         # selects the available ui command buttons for the unit
             type_name   = "command_attributes",
             lookup_dict = {
                 0: "LIVING",                # commands: delete, garrison, stop, attributes: hit points
                 1: "ANIMAL",                # animal
-                2: "NONMILITARY_BULIDING",  # nonmilitary building (build page 1)
+                2: "NONMILITARY_BULIDING",  # civilian building (build page 1)
                 3: "VILLAGER",              # villager
                 4: "MILITARY_UNIT",         # military unit
                 5: "TRADING_UNIT",          # trading unit
@@ -649,7 +652,7 @@ class UnitObject(Exportable):
                 12: "UNKNOWN_12",
             },
         )),
-        (READ_UNKNOWN, None, "float"),
+        (READ_UNKNOWN, None, "float"),      # AttackReaction
         (READ_EXPORT, "minimap_color", "int8_t"),        # palette color id for the minimap
         (READ_EXPORT, "language_dll_help", "uint16_t"),  # help text for this unit, stored in the translation dll.
         (READ, "hot_keys", "int16_t[4]"),                # language dll dependent (kezb lazouts!)
@@ -731,7 +734,7 @@ class UnitObject(Exportable):
     )
 
 
-class UnitFlag(UnitObject):
+class UnitFlag(UnitObject): # Animated Master Object
     """
     type_id >= 20
     """
@@ -760,7 +763,7 @@ class UnitDoppelganger(UnitFlag):
     )
 
 
-class UnitDeadOrFish(UnitDoppelganger):
+class UnitDeadOrFish(UnitDoppelganger): # Moving Master Object
     """
     type_id >= 30
     """
@@ -773,17 +776,17 @@ class UnitDeadOrFish(UnitDoppelganger):
         (READ_EXPORT, None, IncludeMembers(cls=UnitDoppelganger)),
         (READ_EXPORT, "walking_graphics0", "int16_t"),
         (READ_EXPORT, "walking_graphics1", "int16_t"),
-        (READ, "rotation_speed", "float"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ, "tracking_unit_id", "int16_t"),          # unit id what for the ground traces are for
-        (READ, "tracking_unit_used", "uint8_t"),        # -1: no tracking present, 2: projectiles with tracking unit
-        (READ, "tracking_unit_density", "float"),       # 0: no tracking, 0.5: trade cart, 0.12: some projectiles, 0.4: other projectiles
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "rotation_speed", "float"),              # TurnSpeed
+        (READ_UNKNOWN, None, "int8_t"),                 # SizeClass
+        (READ, "tracking_unit_id", "int16_t"),          # TrailUnitId: unit id what for the ground traces are for
+        (READ, "tracking_unit_used", "uint8_t"),        # TrailOptions: -1: no tracking present, 2: projectiles with tracking unit
+        (READ, "tracking_unit_density", "float"),       # TrailSpacing: 0: no tracking, 0.5: trade cart, 0.12: some projectiles, 0.4: other projectiles
+        (READ_UNKNOWN, None, "int8_t"),                 # MoveAlgorithm
         (READ, "rotation_angles", "float[5]"),
     )
 
 
-class UnitBird(UnitDeadOrFish):
+class UnitBird(UnitDeadOrFish): # Action Master Object
     """
     type_id >= 40
     """
@@ -797,21 +800,21 @@ class UnitBird(UnitDeadOrFish):
         # callback unit action id when found.
         # monument and sheep: 107 = enemy convert.
         # all auto-convertible units: 0, most other units: -1
-        (READ, "discovered_action_id", "int16_t"),
+        (READ, "discovered_action_id", "int16_t"),        # DefaultTaskId
         (READ, "search_radius", "float"),
         (READ_EXPORT, "work_rate", "float"),
         (READ_EXPORT, "drop_site0", "int16_t"),           # unit id where gathered resources shall be delivered to
         (READ_EXPORT, "drop_site1", "int16_t"),           # alternative unit id
-        (READ_EXPORT, "task_swap_group_id", "int8_t"),    # if a task is not found in the current unit, other units with the same group id are tried.
+        (READ_EXPORT, "task_swap_group_id", "int8_t"),    # TaskByGroup: if a task is not found in the current unit, other units with the same group id are tried.
                                                           # 1: male villager; 2: female villager; 3+: free slots
                                                           # basically this creates a "swap group id" where you can place different-graphic units together.
-        (READ_EXPORT, "move_sound", "int16_t"),
+        (READ_EXPORT, "move_sound", "int16_t"),           # CommandSoundId: sound played when a command is instanciated
         (READ_EXPORT, "stop_sound", "int16_t"),
-        (READ, "animal_mode", "int8_t"),
+        (READ, "animal_mode", "int8_t"),                  # RunPattern: 
     )
 
 
-class UnitMovable(UnitBird):
+class UnitMovable(UnitBird): # Projectile Master Object
     """
     type_id >= 60
     """
@@ -827,7 +830,7 @@ class UnitMovable(UnitBird):
         (READ, "attacks", SubdataMember(ref_type=HitType, length="attack_count")),
         (READ, "armor_count", "uint16_t"),
         (READ, "armors", SubdataMember(ref_type=HitType, length="armor_count")),
-        (READ_EXPORT, "interaction_type", EnumLookupMember(  # the damage received by this unit is multiplied by
+        (READ_EXPORT, "interaction_type", EnumLookupMember(  # BoundaryId: the damage received by this unit is multiplied by
             raw_type    = "int16_t",                         # the accessible values on the specified terrain restriction
             type_name   = "interaction_types",
             lookup_dict = {
@@ -837,17 +840,17 @@ class UnitMovable(UnitBird):
                 10: "WALL",
             },
         )),
-        (READ_EXPORT, "max_range", "float"),
-        (READ, "blast_width", "float"),
-        (READ, "reload_time", "float"),
-        (READ_EXPORT, "projectile_unit_id", "int16_t"),
-        (READ, "accuracy_percent", "int16_t"),       # probablity of attack hit
-        (READ, "tower_mode", "int8_t"),
-        (READ, "delay", "int16_t"),                  # delay in frames before projectile is shot
-        (READ, "graphics_displacement_lr", "float"),
-        (READ, "graphics_displacement_distance", "float"),
-        (READ, "graphics_displacement_height", "float"),
-        (READ_EXPORT, "blast_attack_level", EnumLookupMember(  # Blasts damage units that have higher or same blast_armor_level
+        (READ_EXPORT, "max_range", "float"),                # WeaponRangeMax
+        (READ, "blast_width", "float"),                     # BlasRange
+        (READ, "reload_time", "float"),                     # AttackSpeed
+        (READ_EXPORT, "projectile_unit_id", "int16_t"),     # MissileUnit
+        (READ, "accuracy_percent", "int16_t"),              # BaseHitChance: probablity of attack hit
+        (READ, "tower_mode", "int8_t"),                     # BreakOffCombat
+        (READ, "delay", "int16_t"),                         # FireMissileAtFrame: the frame at which the missile is fired
+        (READ, "graphics_displacement_lr", "float"),        # WeaponOffsetX
+        (READ, "graphics_displacement_distance", "float"),  # WeaponOffsetY
+        (READ, "graphics_displacement_height", "float"),    # WeaponOffsetZ
+        (READ_EXPORT, "blast_attack_level", EnumLookupMember( # BlasLevelOffence: Blasts damage units that have higher or same blast_armor_level
             raw_type    = "int8_t",
             type_name   = "range_damage_type",
             lookup_dict = {
@@ -858,9 +861,9 @@ class UnitMovable(UnitBird):
                 6: "UNKNOWN_6",
             },
         )),
-        (READ, "min_range", "float"),                 # minimum range that this projectile requests for display
+        (READ, "min_range", "float"),                       # WeaponRangeMin: minimum range that this projectile requests for display
         (READ, "accuracy_dispersion", "float"),
-        (READ_EXPORT, "attack_graphic", "int16_t"),
+        (READ_EXPORT, "attack_graphic", "int16_t"),         # FightSpriteId
         (READ, "melee_armor_displayed", "int16_t"),
         (READ, "attack_displayed", "int16_t"),
         (READ, "range_displayed", "float"),
@@ -868,7 +871,7 @@ class UnitMovable(UnitBird):
     )
 
 
-class UnitProjectile(UnitMovable):
+class UnitProjectile(UnitMovable): # Missile Master Object
     """
     type_id == 60
     """
@@ -979,11 +982,11 @@ class UnitBuilding(UnitLiving):
         (READ, "icon_disabler", "int16_t"),
         (READ, "disappears_when_built", "int8_t"),
         (READ_EXPORT, "stack_unit_id", "int16_t"),    # second building to place directly on top
-        (READ_EXPORT, "terrain_id", "int16_t"),       # change underlying terrain to this id when building completed
-        (READ, "resource_id", "int16_t"),
+        (READ_EXPORT, "terrain_id", "int16_t"),       # FoundationTerrainId: change underlying terrain to this id when building completed
+        (READ, "resource_id", "int16_t"),             # OverlayId: deprecated terrain-like structures knowns as "Overlays" from alpha AOE used for roads
         (READ, "research_id", "int16_t"),             # research_id to be enabled when building creation
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ_EXPORT, "building_annex", SubdataMember(ref_type=BuildingAnnex, length=4)),
+        (READ_UNKNOWN, None, "int8_t"),               # AnnexMode
+        (READ_EXPORT, "building_annex", SubdataMember(ref_type=BuildingAnnex, length=4)), # Annexes
         (READ, "head_unit_id", "int16_t"),            # building at which an annex building is attached to
         (READ, "transform_unit_id", "int16_t"),       # destination unit id when unit shall transform (e.g. unpack)
         (READ_UNKNOWN, None, "int16_t"),              # unit_id for something unknown
@@ -1002,9 +1005,9 @@ class UnitBuilding(UnitLiving):
             },
         )),
         (READ, "garrison_heal_rate", "float"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int16_t"),
-        (READ_UNKNOWN, None, "int8_t[6]"),  # might be related to building annexes?
+        (READ_UNKNOWN, None, "float"), # (unknown garrison value)
+        (READ_UNKNOWN, None, "int16_t"), # SalvageUnitId: the ID of the unit used for salvages
+        (READ_UNKNOWN, None, "int8_t[6]"),  # SalvageAttributes: the list of attributes for salvages
     )
 
 
