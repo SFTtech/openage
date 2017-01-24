@@ -1,9 +1,10 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "in_memory_loader.h"
 
+#include "error.h"
 #include "opus_in_memory_loader.h"
-#include "../error/error.h"
+
 
 namespace openage {
 namespace audio {
@@ -22,13 +23,13 @@ std::unique_ptr<InMemoryLoader> InMemoryLoader::create(const std::string &path,
 	// switch format and return an appropriate loader
 	switch (format) {
 	case format_t::OPUS:
-		loader.reset(new OpusInMemoryLoader{path});
+		loader = std::make_unique<OpusInMemoryLoader>(path);
 		break;
 	default:
-		throw Error{MSG(err) << "Not supported for format: " << format};
+		throw audio::Error{MSG(err) << "Not supported for format: " << format};
 	}
 
 	return loader;
 }
 
-}} // namespace openage::audio
+}} // openage::audio

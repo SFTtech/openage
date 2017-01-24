@@ -5,6 +5,7 @@
 #include <tuple>
 
 #include "../assetmanager.h"
+#include "../audio/error.h"
 #include "../engine.h"
 #include "../gamedata/blending_mode.gen.h"
 #include "../gamedata/string_resource.gen.h"
@@ -406,9 +407,13 @@ void Sound::play() const {
 		// TODO: buhuuuu gnargghh this has to be moved to the asset loading subsystem hnnnng
 		audio::AudioManager &am = this->game_spec->get_asset_manager()->get_engine()->get_audio_manager();
 
+		if (not am.is_available()) {
+			return;
+		}
+
 		audio::Sound{am.get_sound(audio::category_t::GAME, sndid)}.play();
 	}
-	catch(Error &e) {
+	catch(audio::Error &e) {
 		log::log(MSG(warn) << "cannot play: " << e);
 	}
 }

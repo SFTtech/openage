@@ -6,8 +6,8 @@
 
 #include <opusfile.h>
 
+#include "error.h"
 #include "../log/log.h"
-#include "../error/error.h"
 
 namespace openage {
 namespace audio {
@@ -28,11 +28,10 @@ OpusDynamicLoader::OpusDynamicLoader(const std::string &path)
 
 	int64_t pcm_length = op_pcm_total(source.get(), -1);
 	if (pcm_length < 0) {
-		throw Error{MSG(err) << "Could not seek in " << path << ": " << pcm_length};
+		throw audio::Error{MSG(err) << "Could not seek in " << path << ": " << pcm_length};
 	}
 
 	length = static_cast<size_t>(pcm_length) * 2;
-	log::log(DBG << "Create dynamic opus loader: length=" << length << ", channels=" << channels);
 }
 
 size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
@@ -50,7 +49,7 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 
 	int op_ret = op_pcm_seek(source.get(), pcm_offset);
 	if (op_ret < 0) {
-		throw Error{MSG(err) << "Could not seek in " << path << ": " << op_ret};
+		throw audio::Error{MSG(err) << "Could not seek in " << path << ": " << op_ret};
 	}
 
 	// read a chunk from the requested offset
@@ -68,7 +67,8 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 
 		// an error occurred
 		if (samples_read < 0) {
-			throw Error{MSG(err) << "Could not read from " << path << ": " << samples_read};
+			throw audio::Error{MSG(err) << "Could not read from "
+			                            << path << ": " << samples_read};
 		}
 		// end of the resource
 		else if (samples_read == 0) {
@@ -89,7 +89,6 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 		}
 	}
 
-	log::log(MSG(spam) << "DYNLOAD: file=" << read_count << ", all=" << read_count * 2 / channels);
 	return (read_count * 2) / channels;
 }
 
@@ -97,9 +96,9 @@ opus_file_t OpusDynamicLoader::open_opus_file() {
 	int op_err;
 	opus_file_t op_file{op_open_file(path.c_str(), &op_err), opus_deleter};
 	if (op_err != 0) {
-		throw Error{MSG(err) << "Could not open: " << path.c_str()};
+		throw audio::Error{MSG(err) << "Could not open: " << path.c_str()};
 	}
 	return op_file;
 }
 
-}} // namespace openage::audio
+}} // openage::audio

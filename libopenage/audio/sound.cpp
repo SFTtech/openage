@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "sound.h"
 
@@ -95,7 +95,7 @@ void Sound::stop() {
 
 
 bool Sound::is_playing() const {
-	return sound_impl->playing;
+	return this->audio_manager->is_available() and sound_impl->playing;
 }
 
 
@@ -157,5 +157,4 @@ bool SoundImpl::mix_audio(int32_t *stream, int length) {
 	return false;
 }
 
-
-}} // namespace openage::audio
+}} // openage::audio

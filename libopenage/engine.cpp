@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include "engine.h"
 
@@ -187,11 +187,6 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 	// register the engines input manager
 	this->register_input_action(&this->input_manager);
 
-	// initialize audio
-	auto devices = audio::AudioManager::get_devices();
-	if (devices.empty()) {
-		throw Error{MSG(err) << "No audio devices found"};
-	}
 
 	// initialize engine related global keybinds
 	auto &global_input_context = this->get_input_manager().get_global_context();
