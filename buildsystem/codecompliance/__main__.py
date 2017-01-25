@@ -188,7 +188,7 @@ def find_all_issues(args, check_files=None):
             ('openage', 'libopenage', 'buildsystem', 'doc', 'legal'),
             ('.pxd', '.pyx', '.pxi', '.py',
              '.h', '.cpp', '.template',
-             '', '.txt', '.conf',
+             '', '.txt', '.md', '.conf',
              '.cmake', '.in', '.yml', '.supp', '.desktop'))
 
     if args.legal:

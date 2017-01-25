@@ -4,8 +4,8 @@ How to use the original game assets?
 Openage currently depends on the original game assets, so you need a copy of the *original AoE II or AoE II: HD*. You have a few options.
 
 * You may use [Wine](https://www.winehq.org/) to run Steam for Windows.
-* You can trick Steam for Linux/Mac into downloading the Windows game assets [with a game manifest file](https://gist.github.com/paulirish/758f262379092ff2910a). 
-  1. Save the below code to **`appmanifest_221380.acf`** 
+* You can trick Steam for Linux/Mac into downloading the Windows game assets [with a game manifest file](https://gist.github.com/paulirish/758f262379092ff2910a).
+  1. Save the below code to **`appmanifest_221380.acf`**
   2. Place the file in your steamapps folder, typically found in `~/.steam/steam/SteamApps` or `~/Library/Application Support/Steam/steamapps`
 
 ```json

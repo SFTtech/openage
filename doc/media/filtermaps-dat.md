@@ -31,4 +31,3 @@ struct filter_maps {
 	}
 }[17];
 ```
-

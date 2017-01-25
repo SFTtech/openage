@@ -94,6 +94,7 @@ def issue_str_line(title, filename, line, line_number, highlight):
     """
 
     start, end = highlight
+    start += 1
     line = line.replace("\n", "").replace("\t", " ")
 
     return (title, (
