@@ -5,14 +5,14 @@ phys2/phys3
 -----------
 
 Physics coordinates
-orthonormal 2D/3D (NE, SE)/(NE, SE, UP), in tu/teu  
+orthonormal 2D/3D (NE, SE)/(NE, SE, UP), in tu/teu
 fixed-point integer with a 16-bit fractional part.
 
 origin is in the west corner of tile (0, 0) (at sea level),
 and the west corner of chunk (0, 0)
 positive in NE, SE, UP directions
 
-A unit at (0.5, 0.5) stands at the center of tile (0, 0).  
+A unit at (0.5, 0.5) stands at the center of tile (0, 0).
 A unit at (8, 8) stands at the center of chunk (0, 0)
 
  * NE: north-east, in tu (terrain length unit)

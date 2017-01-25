@@ -145,7 +145,7 @@ Setters of the properties that may receive constant values must be implemented u
 
 ### Passing data to the GUI
 
-Create a class with needed signals, `EditorModeSignals` for example: 
+Create a class with needed signals, `EditorModeSignals` for example:
 ```cpp
 class EditorModeSignals : public QObject {
 	Q_OBJECT

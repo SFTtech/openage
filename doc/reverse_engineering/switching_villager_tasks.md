@@ -22,4 +22,4 @@ Note: This only happens if the builder was actively working on the construction 
 
 ## Weird AoE2 Quirks
 
-* If the cheat `aegis` (villagers gather instantly from a resource) is used in a game and the role of a villager changes from "hunter" to "shepard", he will dump all of the resources he is carrying "into" the sheep.  
+* If the cheat `aegis` (villagers gather instantly from a resource) is used in a game and the role of a villager changes from "hunter" to "shepard", he will dump all of the resources he is carrying "into" the sheep.

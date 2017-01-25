@@ -60,7 +60,7 @@ Python format: `Struct("< I I I I i i i i")`
     * 0x10 - "default game palette"
     * 0x00 - "global color palette"
 * `hotspot_x` & `hotspot_y` tell the engine where the centre of the unit is.
-  
+
 One image of size `width`*`height` has `height` rows, of course.
 
 #### SLP Frame row edge

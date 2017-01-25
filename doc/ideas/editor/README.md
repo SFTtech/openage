@@ -15,5 +15,3 @@
 * If the editor produces invalid files, fix the engine. No exceptions.
 * Remember general attitude: bugs are features, and bugreports are for losers ONLY.
 * In case it isn't completely evident: if you've missed the irony, you should go and repair your laugh box.
-
-
