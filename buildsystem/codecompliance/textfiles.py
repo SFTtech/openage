@@ -30,11 +30,11 @@ def find_issues(dirnames, exts):
             # allow issues for Cython-generated files.
             continue
 
-        if '\r' in data:
+        if '\r\n' in data:
             yield "Windows EOL format", filename
 
         if data.endswith('\n\n'):
-            yield "Trailing newline", filename
+            yield "Trailing newline at file end", filename
 
         if data and not data.endswith('\n'):
             yield "File does not end in '\\n'", filename
