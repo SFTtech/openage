@@ -31,6 +31,6 @@ set(PYEXT_LIBRARY "${PYTHON_LIBRARY}")
 set(PYEXT_INCLUDE_DIRS "${PYTHON_INCLUDE_DIR};${NUMPY_INCLUDE_DIR}")
 
 if(NOT CMAKE_PY_INSTALL_PREFIX)
-	py_exec("import site; print(site.getsitepackages()[0])" PREFIX)
+	py_exec("import site, os; print(os.path.normpath(site.getsitepackages()[0]))" PREFIX)
 	set(CMAKE_PY_INSTALL_PREFIX "${PREFIX}")
 endif()
