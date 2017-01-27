@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "in_memory_resource.h"
 
@@ -42,5 +42,4 @@ audio_chunk_t InMemoryResource::get_data(size_t position,
 	}
 }
 
-}
-}
+}} // openage::audio

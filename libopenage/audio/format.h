@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -22,4 +22,4 @@ std::ostream &operator <<(std::ostream &os, format_t val);
 format_t from_format(const gamedata::audio_format_t format);
 
 
-}} // namespace openage::audio
+}} // openage::audio

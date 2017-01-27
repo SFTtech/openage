@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -32,27 +32,27 @@ namespace audio {
  */
 class AudioManager {
 public:
-	AudioManager(job::JobManager *job_manager);
-
 	/**
-	 * Pass empty device name to indicate, that the default device should be used
+	 * Initializes the audio manager with the given device name.
+	 * If the name is empty, the default device is used.
 	 */
-	AudioManager(job::JobManager *job_manager, const std::string &device_name);
+	AudioManager(job::JobManager *job_manager,
+	             const std::string &device_name="");
 
 	~AudioManager();
 
-	// delete copy and move constructors and operators
-	AudioManager(const AudioManager&) = delete;
-	AudioManager(AudioManager&&) = delete;
+	AudioManager(const AudioManager &) = delete;
+	AudioManager(AudioManager &&)      = delete;
 
-	AudioManager &operator=(const AudioManager&) = delete;
-	AudioManager &operator=(AudioManager&&) = delete;
+	AudioManager &operator=(const AudioManager &) = delete;
+	AudioManager &operator=(AudioManager &&) = delete;
 
 	/**
 	 * Loads all audio resources, that are specified in the sound_files vector.
 	 * @param sound_files a list of all sound resources
 	 */
-	void load_resources(const util::Dir &asset_dir, const std::vector<gamedata::sound_file> &sound_files);
+	void load_resources(const util::Dir &asset_dir,
+	                    const std::vector<gamedata::sound_file> &sound_files);
 
 	/**
 	 * Returns a sound object with the given category and the given id. If no
@@ -74,6 +74,12 @@ public:
 	 */
 	job::JobManager *get_job_manager() const;
 
+	/**
+	 * If this audio manager is available.
+	 * It's not available if
+	 */
+	bool is_available() const;
+
 private:
 	void add_sound(std::shared_ptr<SoundImpl> sound);
 	void remove_sound(std::shared_ptr<SoundImpl> sound);
@@ -81,6 +87,12 @@ private:
 	// Sound is the AudioManager's friend, so that only sounds can access the
 	// add and remove sound method's
 	friend class Sound;
+
+	/**
+	 * If no audio device was found, this audio manager
+	 * will be unavailable.
+	 */
+	bool available;
 
 	/**
 	 * The job manager used in this audio manager for job queuing.
@@ -102,6 +114,9 @@ private:
 	 */
 	SDL_AudioDeviceID device_id;
 
+	/**
+	 * Buffer used for mixing audio to one stream.
+	 */
 	std::unique_ptr<int32_t[]> mix_buffer;
 
 	std::unordered_map<std::tuple<category_t,int>,std::shared_ptr<Resource>> resources;

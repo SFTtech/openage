@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "dynamic_resource.h"
 
@@ -37,9 +37,6 @@ DynamicResource::DynamicResource(AudioManager *manager,
 	use_count{0} {}
 
 void DynamicResource::use() {
-	log::log(DBG << "DYNRES: now in use");
-	log::log(DBG << "CS=" << chunk_size << ", MX=" << max_chunks);
-
 	// if the resource is new in use
 	if ((this->use_count++) == 0) {
 		// create loader
@@ -59,8 +56,6 @@ void DynamicResource::use() {
 }
 
 void DynamicResource::stop_using() {
-	log::log(DBG << "DYNRES: no longer in use");
-
 	// if the resource is not used anymore
 	if ((--this->use_count) == 0) {
 		// clear the chunk_mapping

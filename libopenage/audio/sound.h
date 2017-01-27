@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -23,21 +23,27 @@ class Resource;
  */
 class SoundImpl {
 public:
+	SoundImpl(std::shared_ptr<Resource> resource, int32_t volume=128);
+	~SoundImpl();
+
 	/**
 	 * The shared audio resource, which provides the pcm data to play.
 	 */
 	std::shared_ptr<Resource> resource;
+
 	/**
 	 * Whether this sound currently actively uses it's shared audio resource.
 	 */
 	bool in_use;
 
 	/**
-	 * The sounds volume.
+	 * The sound's volume.
 	 */
+
 	int32_t volume;
+
 	/**
-	 * The sounds playing offset.
+	 * The sound's playing offset.
 	 */
 	uint32_t offset;
 
@@ -45,18 +51,17 @@ public:
 	 * Whether this sound is currently playing.
 	 */
 	bool playing;
+
 	/**
 	 * Whether this sound is currently looping.
 	 */
 	bool looping;
 
-	SoundImpl(std::shared_ptr<Resource> resource, int32_t volume=128);
-	~SoundImpl();
-
 	/**
 	 * Returns this sound's category.
 	 */
 	category_t get_category() const;
+
 	/**
 	 * Returns this sound's id.
 	 */
@@ -79,22 +84,17 @@ public:
  * AudioManager.
  */
 class Sound {
+	friend class AudioManager;
+
 private:
-	/**
-	 * The audio manager that manages this sound.
-	 */
-	AudioManager *audio_manager;
-	/**
-	 * The internal sound implementation. This is where the internal state, e.g.
-	 * current playing offset, volume, etc., is stored.
-	 */
-	std::shared_ptr<SoundImpl> sound_impl;
+	Sound(AudioManager *audio_manager, std::shared_ptr<SoundImpl> sound_impl);
 
 public:
 	/**
 	 * Returns this sound's category.
 	 */
 	category_t get_category() const;
+
 	/**
 	 * Returns this sound's id.
 	 */
@@ -107,6 +107,7 @@ public:
 	 * @param volume the new volume
 	 */
 	void set_volume(int32_t volume);
+
 	/**
 	 * Returns this sound's volume.
 	 */
@@ -118,6 +119,7 @@ public:
 	 * @param looping true, if this sound should be looping, otherwise false
 	 */
 	void set_looping(bool looping);
+
 	/**
 	 * Returns whether this sound is looping.
 	 */
@@ -127,14 +129,17 @@ public:
 	 * Resets the sound to it's beginning and starts playing it.
 	 */
 	void play();
+
 	/**
 	 * Pauses the sound at it's current playing offset.
 	 */
 	void pause();
+
 	/**
 	 * Resumes the sound at it's current playing offset.
 	 */
 	void resume();
+
 	/**
 	 * Resets the sound to it's beginning and stops playing it.
 	 */
@@ -146,9 +151,16 @@ public:
 	bool is_playing() const;
 
 private:
-	Sound(AudioManager *audio_manager, std::shared_ptr<SoundImpl> sound_impl);
+	/**
+	 * The audio manager that manages this sound.
+	 */
+	AudioManager *audio_manager;
 
-	friend class AudioManager;
+	/**
+	 * The internal sound implementation. This is where the internal state, e.g.
+	 * current playing offset, volume, etc., is stored.
+	 */
+	std::shared_ptr<SoundImpl> sound_impl;
 };
 
 

@@ -17,6 +17,7 @@ __pycache__
 
 # workflow
 *.orig
+/TODO.org
 
 # build system
 /bin
@@ -45,3 +46,10 @@ Makefile
 callgrind.out.*
 perf.data*
 .gdb_history
+
+# code search
+/.agignore
+/.globalrc
+/GPATH
+/GRTAGS
+/GTAGS

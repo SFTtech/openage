@@ -3,6 +3,7 @@ add_sources(libopenage
 	category.cpp
 	dynamic_loader.cpp
 	dynamic_resource.cpp
+	error.cpp
 	format.cpp
 	in_memory_loader.cpp
 	in_memory_resource.cpp

@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "audio_manager.h"
 
@@ -6,58 +6,61 @@
 #include <SDL2/SDL.h>
 #include <sstream>
 
-#include "../log/log.h"
-#include "../util/dir.h"
-#include "../error/error.h"
-
+#include "error.h"
 #include "hash_functions.h"
 #include "resource.h"
+#include "../log/log.h"
+#include "../util/dir.h"
+
 
 namespace openage {
 namespace audio {
 
-/**
- * Call back that is invoked once SDL needs the next chunk of data.
- */
-void global_audio_callback(void *userdata, uint8_t *stream, int len);
 
-AudioManager::AudioManager(job::JobManager *job_manager)
+AudioManager::AudioManager(job::JobManager *job_manager,
+                           const std::string &device_name)
 	:
-	AudioManager{job_manager, ""} {}
-
-AudioManager::AudioManager(job::JobManager *job_manager, const std::string &device_name)
-	:
+	available{false},
 	job_manager{job_manager},
 	device_name{device_name} {
 
 	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
-		throw Error(MSG(err) << "SDL audio initialization failed: " << SDL_GetError());
+		log::log(MSG(err)
+		         << "SDL audio initialization failed: "
+		         << SDL_GetError());
+		return;
 	} else {
 		log::log(MSG(info) << "SDL audio subsystems initialized");
 	}
 
-	//set desired audio output format
+	// set desired audio output format
 	SDL_AudioSpec desired_spec;
 	SDL_zero(desired_spec);
 	desired_spec.freq = 48000;
 	desired_spec.format = AUDIO_S16LSB;
 	desired_spec.channels = 2;
 	desired_spec.samples = 4096;
-	desired_spec.callback = global_audio_callback;
 	desired_spec.userdata = this;
+
+	// call back that is invoked once SDL needs the next chunk of data
+	desired_spec.callback = [] (void *userdata, uint8_t *stream, int len) {
+		AudioManager *audio_manager = static_cast<AudioManager*>(userdata);
+		audio_manager->audio_callback(reinterpret_cast<int16_t*>(stream), len / 2);
+	};
 
 	// convert device name to valid parameter for sdl call
 	// if the device name is empty, use a nullptr in order to indicate that the
 	// default device should be used
 	const char *c_device_name = device_name.empty() ?
-			nullptr : device_name.c_str();
+	                            nullptr : device_name.c_str();
 	// open audio playback device
 	device_id = SDL_OpenAudioDevice(c_device_name, 0, &desired_spec,
-			&device_spec, 0);
+	                                &device_spec, 0);
 
 	// no device could be opened
 	if (device_id == 0) {
-		throw Error{MSG(err) << "Error opening audio device: " << SDL_GetError()};
+		log::log(MSG(err) << "Error opening audio device: " << SDL_GetError());
+		return;
 	}
 
 	// initialize playing sounds vectors
@@ -67,18 +70,23 @@ AudioManager::AudioManager(job::JobManager *job_manager, const std::string &devi
 	playing_sounds.insert({category_t::MUSIC, sound_vector{}});
 	playing_sounds.insert({category_t::TAUNT, sound_vector{}});
 
-	mix_buffer.reset(new int32_t[4 * device_spec.samples *
-			device_spec.channels]);
+	// create buffer for mixing
+	this->mix_buffer = std::make_unique<int32_t[]>(
+		4 * device_spec.samples * device_spec.channels
+	);
 
 	log::log(MSG(info) <<
-		"Using audio device: " << (device_name.empty() ? "default" : device_name) << " ["
-		"freq=" << device_spec.freq << ", "
-		"format=" << device_spec.format << ", "
-		"channels=" << device_spec.channels << ", "
-		"samples=" << device_spec.samples <<
-		"]");
+	         "Using audio device: "
+	         << (device_name.empty() ? "default" : device_name)
+	         << " [freq=" << device_spec.freq
+	         << ", format=" << device_spec.format
+	         << ", channels=" << device_spec.channels
+	         << ", samples=" << device_spec.samples
+	         << "]");
 
 	SDL_PauseAudioDevice(device_id, 0);
+
+	this->available = true;
 }
 
 AudioManager::~AudioManager() {
@@ -87,6 +95,10 @@ AudioManager::~AudioManager() {
 
 void AudioManager::load_resources(const util::Dir &asset_dir,
                                   const std::vector<gamedata::sound_file> &sound_files) {
+	if (not this->available) {
+		return;
+	}
+
 	for (auto &sound_file : sound_files) {
 		auto category = from_category(sound_file.category);
 		auto id = sound_file.sound_id;
@@ -104,12 +116,19 @@ void AudioManager::load_resources(const util::Dir &asset_dir,
 }
 
 Sound AudioManager::get_sound(category_t category, int id) {
+	if (not this->available) {
+		throw error::Error{MSG(err) << "audio manager not available, "
+		                            << "but sound was requested!"};
+	}
+
 	auto resource = resources.find(std::make_tuple(category, id));
 	if (resource == std::end(resources)) {
-		throw Error{MSG(err) <<
+		throw audio::Error{
+			MSG(err) <<
 			"Sound resource does not exist: "
 			"category=" << category << ", " <<
-			"id=" << id};
+			"id=" << id
+		};
 	}
 
 	auto sound_impl = std::make_shared<SoundImpl>(resource->second);
@@ -194,6 +213,11 @@ job::JobManager *AudioManager::get_job_manager() const {
 	return this->job_manager;
 }
 
+bool AudioManager::is_available() const {
+	return this->available;
+}
+
+
 std::vector<std::string> AudioManager::get_devices() {
 	std::vector<std::string> device_list;
 	auto num_devices = SDL_GetNumAudioDevices(0);
@@ -219,11 +243,6 @@ std::string AudioManager::get_current_driver() {
 	} else {
 		return c_driver;
 	}
-}
-
-void global_audio_callback(void *userdata, uint8_t *stream, int len) {
-	AudioManager *audio_manager = static_cast<AudioManager*>(userdata);
-	audio_manager->audio_callback(reinterpret_cast<int16_t*>(stream), len / 2);
 }
 
 }} // openage::audio
