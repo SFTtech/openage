@@ -185,10 +185,8 @@ target_link_libraries(libopenage
 if(NOT APPLE)
 	target_link_libraries(libopenage
 		PUBLIC
-			rt
+		rt
 	)
 endif()
-
-include(GNUInstallDirs)
 
 install(TARGETS libopenage DESTINATION ${CMAKE_INSTALL_LIBDIR} LIBRARY)

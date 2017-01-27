@@ -31,6 +31,9 @@ def main():
             if filename.endswith('.py'):
                 actual.add(os.path.join(dirname, filename))
 
+    # the only non-buildsystem python file which is outside of openage/
+    actual.add(os.path.abspath("run.py"))
+
     success = True
     for filename in sorted(actual - listed):
         success = False

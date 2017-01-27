@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
@@ -24,8 +24,17 @@ function(python_init)
 	# filled with the relative source dirs of the above py files.
 	set_property(GLOBAL PROPERTY SFT_PY_FILES_RELSRCDIRS)
 
-	# filled with all .py filenames that should not be installed
+	# filled with all .py filenames that should not be installed.
 	set_property(GLOBAL PROPERTY SFT_PY_FILES_NOINSTALL)
+
+	# filled with all .py filenames that are installed to the elf binary directory.
+	set_property(GLOBAL PROPERTY SFT_PY_FILES_BININSTALL)
+
+	# filled with replacement names that are used for installing each entry in SFT_PY_FILES
+	# special value __nope is used if no replacement should be done.
+	# thank you cmake for not providing a dict
+	# where i could just look the original name up to get the replacement name.
+	set_property(GLOBAL PROPERTY SFT_PY_FILES_INSTALLNAMES)
 
 	# filled with all cython module target names; used for in-place creation.
 	set_property(GLOBAL PROPERTY SFT_CYTHON_MODULE_TARGETS)
@@ -187,29 +196,94 @@ endfunction()
 
 function(add_py_modules)
 	# add a .py file for installing
+	#
+	# add_py_module (
+	#    somefile.py
+	#    NOINSTALL otherfile.py          # do not install this file
+	#    BININSTALL wtf.py               # install to $PREFIX/bin/wtf.py
+	#    BININSTALL lol.py AS rofl       # install lol.py to $PREFIX/bin/rofl
+	# )
+	#
+	# because cmake is such a nice language,
+	# the handling of the above is quite painful.
 
-	file(RELATIVE_PATH REL_CURRENT_SOURCE_DIR ${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+	file(RELATIVE_PATH REL_CURRENT_SOURCE_DIR "${CMAKE_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}")
 
 	set(NOINSTALL_NEXT FALSE)
+	set(BININSTALL_NEXT FALSE)
+	set(AS_NEXT FALSE)
+	set(IN_BININSTALL FALSE)
 	foreach(source ${ARGN})
+		# keyword parsing so the next arg knows
+		# what the previous keyword was.
 		if(source STREQUAL "NOINSTALL")
 			set(NOINSTALL_NEXT TRUE)
+		elseif(source STREQUAL "BININSTALL")
+			set(BININSTALL_NEXT TRUE)
+		elseif(source STREQUAL "AS")
+			set(AS_NEXT TRUE)
 		else()
-			if(NOT ${source} MATCHES ".*\\.py$")
+			if(NOT ${source} MATCHES ".*\\.py$" AND NOT AS_NEXT)
 				message(FATAL_ERROR "non-Python file given to add_py_modules: ${source}")
 			endif()
 
-			if(NOT IS_ABSOLUTE ${source})
+			if(IN_BININSTALL AND NOT AS_NEXT)
+				# if after the source file for /bin installation no AS
+				# follows, normal source listings follow.
+				set(IN_BININSTALL FALSE)
+			endif()
+
+			if(NOT IS_ABSOLUTE "${source}" AND NOT AS_NEXT)
+				# make the source absolute, except when source is the "AS $replacementname"
 				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 			endif()
 
-			if(NOINSTALL_NEXT)
+			if(NOINSTALL_NEXT OR BININSTALL_NEXT)
+				# if source should not be installed or be installed to bin/
+				# it is excluded from the big python installation list
 				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_NOINSTALL "${source}")
 				set(NOINSTALL_NEXT FALSE)
 			endif()
 
-			set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES "${source}")
-			set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_RELSRCDIRS "${REL_CURRENT_SOURCE_DIR}")
+			if(BININSTALL_NEXT)
+				# if the file is to be installed to bin/
+				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_BININSTALL "${source}")
+				set(BININSTALL_NEXT FALSE)
+				set(IN_BININSTALL TRUE)
+			endif()
+
+			if(AS_NEXT)
+				# the replacement name must be after the BININSTALL definition
+				if(NOT IN_BININSTALL)
+					message(FATAL_ERROR "you used AS without BININSTALL!")
+				endif()
+
+				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_INSTALLNAMES "${source}")
+			else()
+				# in all cases except the "AS $newname",
+				# add the python file to the to-compile list.
+
+				if("${REL_CURRENT_SOURCE_DIR}" STREQUAL "")
+					set(REL_CURRENT_SOURCE_DIR "./")
+				endif()
+
+				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES "${source}")
+				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_RELSRCDIRS "${REL_CURRENT_SOURCE_DIR}")
+			endif()
+
+			if(NOT IN_BININSTALL)
+				# don't replaceme the install name if we're in the "AS $name"
+				# or no AS followed the BININSTALL
+
+				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_INSTALLNAMES "__nope")
+			endif()
+
+			if(AS_NEXT)
+				# reset the alias and bin-install flags
+				# so they count only for one (the current) source file.
+				set(AS_NEXT FALSE)
+				set(IN_BININSTALL FALSE)
+			endif()
 		endif()
 	endforeach()
 endfunction()
@@ -264,11 +338,11 @@ function(python_finalize)
 
 	# py compile (.py -> .pyc)
 
-	set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_RELSRCDIRS "lol test")
-
 	get_property(py_files GLOBAL PROPERTY SFT_PY_FILES)
 	get_property(py_files_srcdirs GLOBAL PROPERTY SFT_PY_FILES_RELSRCDIRS)
 	get_property(py_files_noinstall GLOBAL PROPERTY SFT_PY_FILES_NOINSTALL)
+	get_property(py_files_bininstall GLOBAL PROPERTY SFT_PY_FILES_BININSTALL)
+	get_property(py_install_names GLOBAL PROPERTY SFT_PY_FILES_INSTALLNAMES)
 
 	write_on_change("${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
 	set(COMPILEPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
@@ -285,9 +359,6 @@ function(python_finalize)
 	add_custom_target(compilepy ALL DEPENDS "${COMPILEPY_TIMEFILE}")
 
 	# determine the compiled file name for all source files
-	# avoid doing this call for each file, instead, batch-process.
-	# BUT: i'm unsure when exactly this is called again
-	#      (if a new file was added to the py_files?)
 	py_exec("from importlib import util; print(';'.join(util.cache_from_source(f) for f in open('${CMAKE_BINARY_DIR}/py/py_files').read().split(';')))" py_compiled_files)
 
 	list(LENGTH py_files py_files_count)
@@ -297,10 +368,12 @@ function(python_finalize)
 		list(GET py_files ${idx} pyfile)
 		list(GET py_compiled_files ${idx} pycfile)
 		list(GET py_files_srcdirs ${idx} pyrelsrcdir)
+		list(GET py_install_names ${idx} pyinstallname)
 
-		# install if it's not in that list.
 		list(FIND py_files_noinstall "${pyfile}" do_install)
-		if(do_install)
+		list(FIND py_files_bininstall "${pyfile}" do_bininstall)
+
+		if(do_install LESS 0)
 			install(
 				FILES "${pyfile}"
 				DESTINATION  "${CMAKE_PY_INSTALL_PREFIX}/${pyrelsrcdir}"
@@ -309,6 +382,22 @@ function(python_finalize)
 				FILES "${pycfile}"
 				DESTINATION "${CMAKE_PY_INSTALL_PREFIX}/${pyrelsrcdir}/__pycache__"
 			)
+		elseif(do_bininstall GREATER -1)
+			# install the python file to the elf binary dir
+
+			if("${pyinstallname}" STREQUAL "__nope")
+				install(
+					FILES "${pyfile}"
+					DESTINATION "bin"
+				)
+			else()
+				# optionally, rename the file:
+				install(
+					FILES "${pyfile}"
+					RENAME "${pyinstallname}"
+					DESTINATION "bin"
+				)
+			endif()
 		endif()
 	endforeach()
 
@@ -370,7 +459,7 @@ function(python_finalize)
 
 	execute_process(
 		COMMAND "${PYTHON}" -m buildsystem.check_py_file_list
-		${CMAKE_BINARY_DIR}/py/py_files
+		"${CMAKE_BINARY_DIR}/py/py_files"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		RESULT_VARIABLE res
 	)
