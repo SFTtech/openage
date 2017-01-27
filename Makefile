@@ -32,6 +32,10 @@ tests: build
 build: $(BUILDDIR)
 	@$(MAKE) $(MAKEARGS) -C $(BUILDDIR)
 
+.PHONY: ninja
+ninja: $(BUILDDIR)
+	@ninja -C $(BUILDDIR)
+
 .PHONY: libopenage
 libopenage: $(BUILDDIR)
 	@$(MAKE) $(MAKEARGS) -C $(BUILDDIR) libopenage

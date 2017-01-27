@@ -238,6 +238,9 @@ def invoke_cmake(args, bindir, defines, options):
 
         invocation.append('-DCMAKE_%s=%s' % (key.upper(), shlex.quote(val)))
 
+    if args.ninja:
+        invocation.extend(['-G', 'Ninja'])
+
     cxx_options = dict()
     cxx_options["CXX_OPTIMIZATION_LEVEL"] = args.optimize
     cxx_options["CXX_SANITIZE_MODE"] = args.sanitize
@@ -359,6 +362,8 @@ def parse_args():
                      help="path to the cmake binary")
     cli.add_argument("--raw-cmake-args", nargs=argparse.REMAINDER, default=[],
                      help="all following args are passed directly to cmake")
+    cli.add_argument("--ninja", action="store_true",
+                     help="use ninja instead of GNU make")
 
     args = cli.parse_args()
 
