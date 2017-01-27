@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Behold: The central entry point for all of openage.
@@ -31,7 +31,10 @@ class PrintVersion(argparse.Action):
 
 def main(argv=None):
     """ Top-level argparsing; invokes subparser for all submodules. """
-    cli = argparse.ArgumentParser("openage")
+    cli = argparse.ArgumentParser(
+        "openage",
+        description=("free age of empires II engine clone")
+    )
 
     cli.add_argument("--version", "-V", nargs=0, action=PrintVersion,
                      help="print version info and exit")
