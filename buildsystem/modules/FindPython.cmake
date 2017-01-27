@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 # Find Python
 # ~~~~~~~~~~~
@@ -109,11 +109,6 @@ endfunction()
 # in the hope that one of them will have associated libs and headers.
 set(PYTHON_INTERPRETERS)
 
-# user-specified or from previous run
-if(PYTHON)
-	list(APPEND PYTHON_INTERPRETERS "${PYTHON}")
-endif()
-
 # From /usr/bin/env's
 find_python_interpreters_env()
 
@@ -131,14 +126,29 @@ find_python_interpreters(
 	"/System/Library/Frameworks/Python.framework/Versions/*/bin/python*"
 )
 
+# user-specified or from previous run, appended last
+# so it has highest priority.
+if(PYTHON)
+	list(APPEND PYTHON_INTERPRETERS "${PYTHON}")
+endif()
+
 # After resolving symlinks, the list of interpreters contains duplicates
 list(REMOVE_DUPLICATES PYTHON_INTERPRETERS)
 
+message ("-> Finding Python interpreter:")
+
 # Retain only the proper python interpreters
 foreach(INTERPRETER ${PYTHON_INTERPRETERS})
-	# test for validity
+
+	# python* matches pythontex.py, which we never ever want.
+	if(INTERPRETER MATCHES "pythontex.py")
+		list(REMOVE_ITEM PYTHON_INTERPRETERS "${INTERPRETER}")
+		continue()
+	endif()
+
+	# test for validity of the interpreter
 	set(PY_OUTPUT_TEST "rofl, lol")
-	message ("Testing ${INTERPRETER}")
+	message ("   testing ${INTERPRETER}")
 	execute_process(COMMAND
 		"${INTERPRETER}" -c "print('${PY_OUTPUT_TEST}'); exit(42)"
 		OUTPUT_VARIABLE TEST_OUTPUT
