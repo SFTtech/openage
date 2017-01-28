@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 FSLikeObjects that represent actual file system paths:
@@ -8,26 +8,33 @@ FSLikeObjects that represent actual file system paths:
 """
 
 import os
+import pathlib
 
 from .abstract import FSLikeObject
-
-
-PATHSEP = os.path.sep.encode()
 
 
 class Directory(FSLikeObject):
     """
     Provides an actual file system directory's contents as-they-are.
+
+    Initialized from some real path that is mounted already by your system.
     """
-    def __init__(self, path, create_if_missing=False):
+
+    def __init__(self, path_, create_if_missing=False):
+        if isinstance(path_, pathlib.Path):
+            path = str(path_)
+        elif isinstance(path_, str):
+            path = path_.encode()
+        elif isinstance(path_, bytes):
+            path = path_
+        else:
+            raise Exception("incompatible type for path: %s" % type(path_))
+
         if not os.path.isdir(path):
             if create_if_missing:
                 os.makedirs(path)
             else:
                 raise FileNotFoundError(path)
-
-        if isinstance(path, str):
-            path = path.encode()
 
         self.path = path
 

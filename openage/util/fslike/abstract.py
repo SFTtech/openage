@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Provides filesystem-like interfaces:
@@ -22,6 +22,8 @@ class FSLikeObject(ABC):
     """
     To be implemented by any filesystem-like objects that wish to provide
     their contents via Path-like and file-like objects.
+
+    Normally, you use the Path provided by self.root for example!
 
     The abstract member methods take a list or tuple of path component
     bytes objects, e.g.: [b'etc', b'passwd'].

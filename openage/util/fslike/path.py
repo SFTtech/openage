@@ -222,6 +222,10 @@ class Path:
         """ Like joinpath. """
         return self.joinpath(subpath)
 
+    def __truediv__(self, subpath):
+        """ Like joinpath. """
+        return self.joinpath(subpath)
+
     def with_name(self, name):
         """ Returns path for differing name (same parent). """
         return self.parent.joinpath(name)
