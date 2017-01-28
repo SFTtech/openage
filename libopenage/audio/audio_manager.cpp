@@ -80,7 +80,7 @@ AudioManager::AudioManager(job::JobManager *job_manager,
 	         << (device_name.empty() ? "default" : device_name)
 	         << " [freq=" << device_spec.freq
 	         << ", format=" << device_spec.format
-	         << ", channels=" << device_spec.channels
+	         << ", channels=" << static_cast<uint16_t>(device_spec.channels)
 	         << ", samples=" << device_spec.samples
 	         << "]");
 
