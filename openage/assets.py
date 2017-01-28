@@ -1,9 +1,7 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 """
 Code for locating the game assets.
-
-All access to game assets should happen through objects obtained from get().
 """
 
 import os
@@ -13,36 +11,38 @@ from .util.fslike.union import Union
 from .util.fslike.wrapper import WriteBlocker
 
 from . import config
+from . import default_dirs
 
 
-def get_user_data_dir(application="openage"):
-    """
-    Returns the user-specific data directory for an application,
-    e.g. for Linux: ~/.openage
-    """
-    # TODO cross-platform stuff
-    # TODO use one of those fancy freedesktop.org folders on GNU/Linux.
-    return os.path.join(os.environ['HOME'], "." + application)
-
-
-def get_assets(args):
+def get_asset_path(args):
     """
     Returns a Path object for the game assets.
 
     args are the arguments, as provided by the CLI's ArgumentParser.
     """
 
-    if args.asset_dir:
-        return Directory(args.asset_dir).root
-
+    # if we're in devmode, use only the build source asset folder
     if config.DEVMODE:
         return Directory(os.path.join(config.BUILD_SRC_DIR, "assets")).root
 
+    # else, mount the possible locations in an union:
     # overlay the global dir and the user dir.
     result = Union().root
 
+    # use the cmake-determined folder for storing assets
     result.mount(WriteBlocker(Directory(config.GLOBAL_ASSET_DIR)).root)
-    result.mount(Directory(os.path.join(get_user_data_dir())).root / "assets")
+
+    # user-data directory as provided by environment variables
+    # and platform standards
+    result.mount(
+        Directory(
+            default_dirs.get_dir("data_home") / "openage"
+        ).root / "assets"
+    )
+
+    # the program argument overrides it all
+    if args.asset_dir:
+        result.mount(Directory(args.asset_dir).root)
 
     return result
 
@@ -53,8 +53,9 @@ def test():
     """
     from .testing.testing import assert_value
     import argparse
+
     fakecli = argparse.ArgumentParser()
     fakecli.add_argument("--asset-dir", default=None)
     args = fakecli.parse_args([])
 
-    assert_value(get_assets(args)['missing.png'].filesize, 580)
+    assert_value(get_asset_path(args)['missing.png'].filesize, 580)

@@ -49,8 +49,8 @@ def main(argv=None):
 
     # shared data-directory argument for most subcommands
     datadir_cli = argparse.ArgumentParser(add_help=False)
-    datadir_cli.add_argument("--asset-dir", default='./assets',
-                             help="Use this as the asset directory.")
+    datadir_cli.add_argument("--asset-dir",
+                             help="Use this as an additional asset directory.")
 
     subparsers = cli.add_subparsers(dest="subcommand")
 
@@ -92,7 +92,7 @@ def main(argv=None):
     # process the shared args
     set_loglevel(verbosity_to_level(args.verbose - args.quiet))
 
-    if "asset_dir" in args:
+    if "asset_dir" in args and args.asset_dir:
         if not os.path.exists(args.asset_dir):
             cli.error("directory does not exist: " + args.asset_dir)
 
@@ -102,7 +102,6 @@ def main(argv=None):
 
 if __name__ == '__main__':
     # openage is complicated and multithreaded; better not use fork.
-    # TODO fix pending pylint 1.5: pylint: disable=no-member
     multiprocessing.set_start_method('spawn')
 
     exit(main())

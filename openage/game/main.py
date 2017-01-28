@@ -1,7 +1,7 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
-Holds openage's main main method, used for launching the game.
+Holds the game entry point for openage.
 """
 
 from ..log import err
@@ -27,21 +27,24 @@ def main(args, error):
     """
     del error  # unused
 
-    # initialize libopenage
-    from ..cppinterface.setup import setup
-    setup()
+    # we have to import stuff inside the function
+    # as it depends on generated/compiled code
+    from .main_cpp import run_game
+    from ..assets import get_asset_path
+    from ..convert.main import conversion_required, convert_assets
+    from ..cppinterface.setup import setup as cpp_interface_setup
 
-    # load assets
-    from ..assets import get_assets
-    assets = get_assets(args)
+    # initialize libopenage
+    cpp_interface_setup()
+
+    # set up asset load paths
+    assets = get_asset_path(args)
 
     # ensure that the assets have been converted
-    from ..convert.main import conversion_required, convert_assets
     if conversion_required(assets, args):
         if not convert_assets(assets, args):
             err("game asset conversion failed")
             return 1
 
-    # jump into the main method
-    from .main_cpp import run_game
+    # start the game!
     return run_game(args, assets)

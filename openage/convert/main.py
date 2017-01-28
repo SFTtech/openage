@@ -121,7 +121,7 @@ def convert_assets(assets, args, srcdir=None):
 
     srcdir = mount_drs_archives(srcdir, args.game_versions)
 
-    converted_path = assets.joinpath("converted")
+    converted_path = assets / "converted"
     converted_path.mkdirs()
     targetdir = DirectoryCreator(converted_path).root
 
@@ -353,11 +353,8 @@ def conversion_required(asset_dir, args):
     Sets options in args according to what sorts of conversion are required.
     """
 
-    version_path = asset_dir['converted',
-                             changelog.ASSET_VERSION_FILENAME]
-
-    spec_path = asset_dir['converted',
-                          changelog.GAMESPEC_VERSION_FILENAME]
+    version_path = asset_dir / 'converted' / changelog.ASSET_VERSION_FILENAME
+    spec_path = asset_dir / 'converted' / changelog.GAMESPEC_VERSION_FILENAME
 
     # determine the version of assets
     try:
