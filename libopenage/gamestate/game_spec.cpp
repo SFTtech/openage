@@ -122,6 +122,10 @@ std::shared_ptr<UnitTexture> GameSpec::get_unit_texture(index_t unit_id) const {
 	return this->unit_textures.at(unit_id);
 }
 
+std::vector<gamedata::palette_color> GameSpec::get_palette(const std::string &name) const {
+	return this->assetmanager->get_palette(name);
+}
+
 const Sound *GameSpec::get_sound(index_t sound_id) const {
 	if (this->available_sounds.count(sound_id) == 0) {
 		if (sound_id > 0) {

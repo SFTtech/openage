@@ -7,8 +7,10 @@
 #include <unordered_map>
 #include <string>
 #include <memory>
+#include <vector>
 
 #include "util/path.h"
+#include "gamedata/color.gen.h"
 
 
 namespace qtsdl {
@@ -62,6 +64,14 @@ public:
 	                     bool null_if_missing=false);
 
 	/**
+	 * Query the palette for a given filename.
+	 *
+	 * @param name: the asset file name relative to the asset root.
+	 * @returns color array.
+	 */
+	std::vector<gamedata::palette_color> get_palette(const std::string &name);
+
+	/**
 	 * Ask the kernel whether there were updates to watched files.
 	 */
 	void check_updates();
@@ -101,6 +111,11 @@ private:
 	 * Map from texture filename to texture instance ptr.
 	 */
 	std::unordered_map<std::string, std::shared_ptr<Texture>> textures;
+
+	/**
+	 * Map from palette filename to the loaded color array.
+	 */
+	std::unordered_map<std::string, std::vector<gamedata::palette_color>> palettes;
 
 #if WITH_INOTIFY
 	/**

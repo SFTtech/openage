@@ -113,6 +113,14 @@ public:
 	std::shared_ptr<UnitTexture> get_unit_texture(index_t graphic_id) const;
 
 	/**
+	 * get a palette by filename
+	 *
+	 * @param name: the asset file name relative to the asset root.
+	 * @returns color array.
+	 */
+	std::vector<gamedata::palette_color> get_palette(const std::string &name) const;
+
+	/**
 	 * get sound by sound id
 	 */
 	const Sound *get_sound(index_t sound_id) const;
