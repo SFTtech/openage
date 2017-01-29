@@ -350,17 +350,26 @@ void GameSpec::load_terrain(const gamedata::empiresdat &gamedata) {
 	);
 
 	// result attributes
-	this->terrain_data.terrain_id_count         = terrain_meta.size();
-	this->terrain_data.blendmode_count          = blending_meta.size();
+	this->terrain_data.terrain_id_count               = terrain_meta.size();
+	this->terrain_data.blendmode_count                = blending_meta.size();
 	this->terrain_data.textures.resize(terrain_data.terrain_id_count);
 	this->terrain_data.blending_masks.reserve(terrain_data.blendmode_count);
-	this->terrain_data.terrain_id_priority_map  = std::make_unique<int[]>(
+	this->terrain_data.terrain_id_priority_map        = std::make_unique<int[]>(
 		this->terrain_data.terrain_id_count
 	);
-	this->terrain_data.terrain_id_blendmode_map = std::make_unique<int[]>(
+	this->terrain_data.terrain_id_blendmode_map       = std::make_unique<int[]>(
 		this->terrain_data.terrain_id_count
 	);
-	this->terrain_data.influences_buf           = std::make_unique<struct influence[]>(
+    this->terrain_data.terrain_id_map_color_hi_map    = std::make_unique<uint8_t[]>(
+		this->terrain_data.terrain_id_count
+	);
+    this->terrain_data.terrain_id_map_color_med_map   = std::make_unique<uint8_t[]>(
+		this->terrain_data.terrain_id_count
+	);
+    this->terrain_data.terrain_id_map_color_low_map   = std::make_unique<uint8_t[]>(
+		this->terrain_data.terrain_id_count
+	);
+	this->terrain_data.influences_buf                 = std::make_unique<struct influence[]>(
 		this->terrain_data.terrain_id_count
 	);
 
@@ -379,6 +388,9 @@ void GameSpec::load_terrain(const gamedata::empiresdat &gamedata) {
 		// TODO: terrain double-define check?
 		terrain_data.terrain_id_priority_map[terrain_id]  = line->blend_priority;
 		terrain_data.terrain_id_blendmode_map[terrain_id] = line->blend_mode;
+		terrain_data.terrain_id_map_color_hi_map[terrain_id] = line->map_color_hi;
+		terrain_data.terrain_id_map_color_med_map[terrain_id] = line->map_color_med;
+		terrain_data.terrain_id_map_color_low_map[terrain_id] = line->map_color_low;
 
 		// TODO: remove hardcoding and rely on nyan data
 		auto terraintex_filename = util::sformat("converted/terrain/%d.slp.png",
