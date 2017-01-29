@@ -38,6 +38,7 @@ CHANGES = (
     {"metadata"},
     {"metadata"},
     {"graphics"},
+    {"metadata"},
 )
 
 # the current version number equals the number of changes
