@@ -1,6 +1,7 @@
-# Copyright 2016-2016 the openage authors. See copying.md for legal info.
+# Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
-import platform
+from os.path import expanduser, expandvars
+from pathlib import Path
 
 from libcpp.string cimport string
 
@@ -10,9 +11,7 @@ from libopenage.cvar.cvar cimport (
     find_main_config_file as find_main_config_file_cpp)
 
 from .config_file import load_config_file as load_config_py
-
-from os.path import expanduser, expandvars
-from pathlib import Path
+from .. import default_dirs
 
 
 cdef void load_config_file(string path,
@@ -35,22 +34,13 @@ cdef string find_main_config_file() except * with gil:
     """
 
     cfg_file = "keybinds.oac"
-    system = platform.system()
 
-    if system == "Windows":
-        # TODO: verify that windows users really store data there
-        #       and not just in C:\openage\
-        home_expandable = "%APPDATA%"
-        global_expandable = "%ALLUSERSPROFILE%"
-    else:
-        home_expandable = "~/.config"
-        global_expandable = "/etc"
-
-    home_cfg = Path(expanduser(home_expandable))/cfg_file
+    home_cfg = default_dirs.get_dir("config_home")/"openage"/cfg_file
     if home_cfg.is_file():
         return str(home_cfg.resolve()).encode("UTF-8")
 
-    global_cfg = Path(expandvars(global_expandable))/cfg_file
+    # TODO: config_dirs can be multiple paths!
+    global_cfg = default_dirs.get_dir("config_dirs")/"openage"/cfg_file
     if global_cfg.is_file():
         return str(global_cfg.resolve()).encode("UTF-8")
 

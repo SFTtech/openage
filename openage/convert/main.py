@@ -117,6 +117,7 @@ def convert_assets(assets, args, srcdir=None):
         warn("None supported of the Game version(s) {}".format(versions))
         warn("You need \x1b[34mAge of Empires 2: The Conquerors\x1b[m")
         return False
+
     info("Game version(s) detected: {}".format(versions))
 
     srcdir = mount_drs_archives(srcdir, args.game_versions)
@@ -176,8 +177,7 @@ def wanna_use_wine():
     """
     Ask the user if wine should be used.
     """
-    print("Should we call wine to determine an AOE installation? "
-          "[Y/n]")
+    print("  Should we call wine to determine an AOE installation? [Y/n]")
     while True:
         user_selection = input("> ")
         if user_selection.lower() in {"yes", "y", ""}:
@@ -185,7 +185,8 @@ def wanna_use_wine():
         elif user_selection.lower() in {"no", "n"}:
             return False
         else:
-            print("Don't know what you want. Use wine? [Y/n]")
+            # TODO: text-adventure here
+            print("  Don't know what you want. Use wine? [Y/n]")
 
 
 def set_custom_wineprefix():
@@ -259,9 +260,6 @@ def acquire_conversion_source_dir():
 
     Returns a file system-like object that holds all the required files.
     """
-    # ask for the conversion source
-    print("\x1b[33mmedia conversion is required.\x1b[m")
-
     if 'AGE2DIR' in os.environ:
         sourcedir = os.environ['AGE2DIR']
         print("found environment variable 'AGE2DIR'")
@@ -395,7 +393,16 @@ def conversion_required(asset_dir, args):
                  "but need version %d" % (asset_version,
                                           changelog.ASSET_VERSION))
 
-        info("Converting " + ", ".join(sorted(changes)))
+        info("Converting {}".format(", ".join(sorted(changes))))
+
+        target_path = asset_dir["here"].open("?w")
+        if not target_path:
+            raise OSError("could not locate a writable asset path")
+
+        info("Will save to '{}'".format(
+            target_path[".."]
+        ))
+
         for component in changelog.COMPONENTS:
             if component not in changes:
                 # don't reconvert this component:

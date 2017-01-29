@@ -32,10 +32,24 @@ class FSLikeObject(ABC):
     the object is read-only, the given method is not implemented, ...),
     they may and shall raise an appropriate instance of IOError.
     """
+
     @property
     def root(self):
-        """ Returns a path-like object for the root of this file system. """
+        """
+        Returns a path-like object for the root of this file system.
+
+        This is the main interface that is used normally.
+        """
         return Path(self, [])
+
+    def pretty(self, parts):
+        """
+        pretty-format a path in this filesystem like object.
+        """
+        return "[%s]:%s" % (
+            str(self),
+            b"/".join(parts).decode(errors='replace')
+        )
 
     @abstractmethod
     def open_r(self, parts):
@@ -46,6 +60,20 @@ class FSLikeObject(ABC):
     def open_w(self, parts):
         """ Shall return a BufferedWriter for the given file ("mode 'wb'"). """
         pass
+
+    def resolve_r(self, parts):
+        """
+        Returns a Path which equals the one that would be used by open_r.
+        Returns None if the file does not exist.
+        """
+        return Path(self, parts) if self.is_file(parts) else None
+
+    def resolve_w(self, parts):
+        """
+        Returns a Path which equals the one that would be used by open_w.
+        Returns None if the file does not exist or is not writable.
+        """
+        return Path(self, parts) if self.writable(parts) else None
 
     @abstractmethod
     def list(self, parts):

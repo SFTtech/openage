@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Provides Filecollection, a utility class for combining multiple file-like
@@ -15,10 +15,13 @@ from .path import Path
 class FileCollection(FSLikeObject):
     """
     FSLikeObject that holds several individual files.
+
+    Uses lambdas to access files somewhere else on the fly.
     """
     def __init__(self):
         super().__init__()
 
+        # stores lambdas to access the files
         # {name: open_r, open_w, size, mtime}, {name: subdir}
         self.rootentries = OrderedDict(), OrderedDict()
 

@@ -22,7 +22,7 @@ class Directory(FSLikeObject):
 
     def __init__(self, path_, create_if_missing=False):
         if isinstance(path_, pathlib.Path):
-            path = str(path_)
+            path = bytes(path_)
         elif isinstance(path_, str):
             path = path_.encode()
         elif isinstance(path_, bytes):
@@ -40,6 +40,11 @@ class Directory(FSLikeObject):
 
     def __repr__(self):
         return "Directory({})".format(self.path.decode(errors='replace'))
+
+    def pretty(self, parts):
+        return os.path.normpath(
+            os.path.join(self.path, *parts)
+        ).decode(errors='replace')
 
     def resolve(self, parts):
         """ resolves parts to an actual path name. """

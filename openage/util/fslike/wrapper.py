@@ -15,6 +15,7 @@ from ..context import DummyGuard
 from ..filelike import FileLikeObject
 
 from .abstract import FSLikeObject, ReadOnlyFSLikeObject
+from .path import Path
 
 
 class Wrapper(FSLikeObject):
@@ -25,6 +26,9 @@ class Wrapper(FSLikeObject):
     Pass a context guard to protect calls.
     """
     def __init__(self, obj, contextguard=None):
+        if not isinstance(obj, Path):
+            raise TypeError("Path expected as obj, got '%s'" % type(obj))
+
         self.obj = obj
         if contextguard is None:
             self.contextguard = DummyGuard()
@@ -55,6 +59,12 @@ class Wrapper(FSLikeObject):
             return fileobj
 
         return GuardedFile(fileobj, self.contextguard)
+
+    def resolve_r(self, parts):
+        return Path(self.obj, parts) if self.is_file(parts) else None
+
+    def resolve_w(self, parts):
+        return Path(self.obj, parts) if self.writable(parts) else None
 
     def list(self, parts):
         with self.contextguard:

@@ -62,11 +62,12 @@ class Path:
         self.parts = tuple(result)
 
     def __str__(self):
-        return "[%s]:%s" % (
-            str(self.fsobj),
-            b"/".join(self.parts).decode(errors='replace'))
+        return self.fsobj.pretty(self.parts)
 
     def __repr__(self):
+        if not self.parts:
+            return repr(self.fsobj) + ".root"
+
         return "Path({}, {})".format(repr(self.fsobj), repr(self.parts))
 
     def exists(self):
@@ -108,6 +109,15 @@ class Path:
             return self.fsobj.open_w(self.parts)
         elif mode == "w":
             return TextIOWrapper(self.fsobj.open_w(self.parts))
+
+        # The following modes don't actually open a file for read/write,
+        # but instead return the path that is actually used.
+        # This is used to determine the real path for dirs that are mounted
+        # funnily (e.g. with Union).
+        elif mode == "?r":
+            return self.fsobj.resolve_r(self.parts)
+        elif mode == "?w":
+            return self.fsobj.resolve_w(self.parts)
         else:
             raise UnsupportedOperation("unsupported open mode: " + mode)
 

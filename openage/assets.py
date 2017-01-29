@@ -5,6 +5,7 @@ Code for locating the game assets.
 """
 
 import os
+from pathlib import Path
 
 from .util.fslike.directory import Directory
 from .util.fslike.union import Union
@@ -29,14 +30,19 @@ def get_asset_path(args):
     # overlay the global dir and the user dir.
     result = Union().root
 
-    # use the cmake-determined folder for storing assets
-    result.mount(WriteBlocker(Directory(config.GLOBAL_ASSET_DIR)).root)
+    # the cmake-determined folder for storing assets
+    global_data = Path(config.GLOBAL_ASSET_DIR)
+    if global_data.is_dir():
+        result.mount(WriteBlocker(Directory(global_data).root).root)
 
     # user-data directory as provided by environment variables
     # and platform standards
+    # we always create this!
+    home_data = default_dirs.get_dir("data_home") / "openage"
     result.mount(
         Directory(
-            default_dirs.get_dir("data_home") / "openage"
+            home_data,
+            create_if_missing=True
         ).root / "assets"
     )
 

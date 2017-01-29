@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Provides Union, a utility class for combining multiple FSLikeObjects to a
@@ -23,11 +23,19 @@ class Union(FSLikeObject):
     def __init__(self):
         super().__init__()
 
-        # [mountpoint, pathobj, priority], sorted by priority.
+        # (mountpoint, pathobj, priority), sorted by priority.
         self.mounts = []
 
         # mountpoints and their parent directories, {name: {...}}.
+        # these are the virtual empty folders where mounts can be done
         self.dirstructure = {}
+
+    def __str__(self):
+        return "Union({})".format(
+            ", ".join(["%s @ %s" % (repr(pnt[1]),
+                                    repr(pnt[0]))
+                       for pnt in self.mounts])
+        )
 
     @property
     def root(self):
@@ -76,6 +84,18 @@ class Union(FSLikeObject):
 
         raise UnsupportedOperation(
             "not writable: " + b'/'.join(parts).decode(errors='replace'))
+
+    def resolve_r(self, parts):
+        for path in self.candidate_paths(parts):
+            if path.is_file():
+                return path.open("?r")
+        return None
+
+    def resolve_w(self, parts):
+        for path in self.candidate_paths(parts):
+            if path.writable():
+                return path.open("?w")
+        return None
 
     def list(self, parts):
         duplicates = set()
