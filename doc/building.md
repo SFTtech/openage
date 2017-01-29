@@ -45,7 +45,7 @@ Dependency list:
        S  pycodestyle (or pep8 (deprecated))
     C     pygments
        S  pylint
-    CR    qt5 >=5.4 (Core, Quick, QuickControls modules)
+    CR    qt5 >=5.5 (Core, Quick, QuickControls modules)
 
       A   An installed version of any of the following (wine is your friend).
           Other versions _might_ work; setup disk support will be added soon:

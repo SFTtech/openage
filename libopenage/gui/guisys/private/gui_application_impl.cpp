@@ -1,9 +1,12 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "gui_application_impl.h"
 
 #include <locale>
 #include <cassert>
+
+#include <QtGlobal>
+#include <QtDebug>
 
 namespace qtsdl {
 
@@ -41,6 +44,8 @@ GuiApplicationImpl::GuiApplicationImpl()
 {
 	// Set locale back to POSIX for the decimal point parsing (see qcoreapplication.html#locale-settings).
 	std::locale::global(std::locale().combine<std::numpunct<char>>(std::locale::classic()));
+
+	qInfo() << "Compiled with Qt" << QT_VERSION_STR << "and run with Qt" << qVersion();
 }
 
 } // namespace qtsdl
