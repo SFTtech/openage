@@ -227,6 +227,9 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	// colour
 	unit->add_attribute(std::make_shared<Attribute<attr_type::owner>>(player));
 
+	// minimap icon
+	unit->add_attribute(std::make_shared<Attribute<attr_type::map_draw_level>>(this->unit_data.map_draw_level, this->unit_data.minimap_color));
+
 	// hitpoints if available
 	if (this->unit_data.hit_points > 0) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(this->unit_data.hit_points));
@@ -595,6 +598,9 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 
 	auto player_attr = std::make_shared<Attribute<attr_type::owner>>(player);
 	unit->add_attribute(player_attr);
+
+	// minimap icon
+	unit->add_attribute(std::make_shared<Attribute<attr_type::map_draw_level>>(this->unit_data.map_draw_level, this->unit_data.minimap_color));
 
 	// building specific attribute
 	auto build_attr = std::make_shared<Attribute<attr_type::building>>(
