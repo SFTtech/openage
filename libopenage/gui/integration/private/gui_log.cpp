@@ -15,6 +15,9 @@ void gui_log(QtMsgType type, const QMessageLogContext &context, const QString &m
 			case QtDebugMsg:
 			return log::lvl::dbg;
 			break;
+			case QtInfoMsg:
+			return log::lvl::info;
+			break;
 			case QtWarningMsg:
 			return log::lvl::warn;
 			break;
