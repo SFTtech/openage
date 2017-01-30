@@ -91,7 +91,7 @@ find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
 
-set(QT_VERSION_REQ "5.4")
+set(QT_VERSION_REQ "5.5")
 find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
 find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
 
