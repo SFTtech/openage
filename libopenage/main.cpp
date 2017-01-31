@@ -18,15 +18,22 @@ namespace openage {
 
 
 int run_game(const main_arguments &args) {
-	log::log(MSG(info) << "launching engine with data directory '"
-	                   << args.data_directory
-	                   << "' and fps limit "
-	                   << args.fps_limit);
+	log::log(MSG(info)
+	         << "launching engine with "
+	         << *args.asset_path
+	         << " and fps limit "
+	         << args.fps_limit);
 
 	util::Timer timer;
 	timer.start();
 
-	util::Dir data_dir{args.data_directory.c_str()};
+
+	log::log(INFO << "is_file: " << args.asset_path->is_file()
+	         << " is_dir: " << args.asset_path->is_dir());
+
+	return 0;
+
+	util::Dir data_dir{"./assets"};
 
 	Engine engine{&data_dir, args.fps_limit, args.gl_debug, "openage"};
 

@@ -14,6 +14,9 @@ from .config_file import load_config_file as load_config_py
 from .. import default_dirs
 
 
+# TODO: turn this into a config and user profile system.
+
+
 cdef void load_config_file(string path,
                            CVarManager *manager) except * with gil:
     """
@@ -35,6 +38,8 @@ cdef string find_main_config_file() except * with gil:
 
     cfg_file = "keybinds.oac"
 
+    # TODO: create the config file there if the default one is modified
+    #       this is probably a job for the profile creation though.
     home_cfg = default_dirs.get_dir("config_home")/"openage"/cfg_file
     if home_cfg.is_file():
         return str(home_cfg.resolve()).encode("UTF-8")
