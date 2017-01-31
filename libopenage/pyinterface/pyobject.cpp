@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "pyobject.h"
 
@@ -12,7 +12,7 @@ namespace openage {
 namespace pyinterface {
 
 
-PyObjectRef::PyObjectRef()
+PyObjectRef::PyObjectRef() noexcept
 	:
 	ref{nullptr} {}
 
@@ -54,7 +54,7 @@ PyObjectRef &PyObjectRef::operator =(const PyObjectRef &other) {
 }
 
 
-PyObjectRef &PyObjectRef::operator =(PyObjectRef &&other) noexcept {
+PyObjectRef &PyObjectRef::operator =(PyObjectRef &&other) {
 	if (this->ref != nullptr) {
 		py_xdecref.call(this->ref);
 	}

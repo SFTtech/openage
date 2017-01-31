@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -25,6 +25,7 @@ namespace pyinterface {
  *
  * cppclass PyObjectRef:
  *     PyObjectRef() noexcept
+ *     PyObjectRef(void *ref) except +
  *
  *     void *get_ref() noexcept
  *     void set_ref(void *ref) except +
@@ -39,7 +40,7 @@ public:
 	/**
 	 * Initializes reference with nullptr.
 	 */
-	PyObjectRef();
+	PyObjectRef() noexcept;
 
 	/**
 	 * Wraps a raw PyObject * pointer (calls Py_INCREF).
@@ -66,7 +67,7 @@ public:
 	 * Move-assigns from an other PyObject
 	 * (calls Py_XDECREF on the old value).
 	 */
-	PyObjectRef &operator =(PyObjectRef &&other) noexcept;
+	PyObjectRef &operator =(PyObjectRef &&other);
 
 	/**
 	 * Destroys the object, calls Py_XDECREF.
@@ -193,6 +194,9 @@ public:
 private:
 	/**
 	 * Internal PyObject * for obj.
+	 *
+	 * Stored as void* so we don't need to include Python.h manually.
+	 * This is Cython's job.
 	 */
 	void *ref;
 
