@@ -17,7 +17,7 @@ PyObjectRef::PyObjectRef() noexcept
 	ref{nullptr} {}
 
 
-PyObjectRef::PyObjectRef(void *ref)
+PyObjectRef::PyObjectRef(PyObject *ref)
 	:
 	ref{ref} {
 
@@ -75,7 +75,7 @@ PyObjectRef::~PyObjectRef() {
 }
 
 
-void PyObjectRef::set_ref(void *ref) {
+void PyObjectRef::set_ref(PyObject *ref) {
 	if (unlikely(this->ref != nullptr)) {
 		py_xdecref.call(this->ref);
 	}
@@ -85,7 +85,7 @@ void PyObjectRef::set_ref(void *ref) {
 }
 
 
-void PyObjectRef::set_ref_without_incrementing(void *ref) {
+void PyObjectRef::set_ref_without_incrementing(PyObject *ref) {
 	if (unlikely(this->ref != nullptr)) {
 		py_xdecref.call(this->ref);
 	}
@@ -402,29 +402,29 @@ void pyobject_demo() {
 } // tests
 
 
-PyIfFunc<void, void *> py_xincref;
-PyIfFunc<void, void *> py_xdecref;
+PyIfFunc<void, PyObject *> py_xincref;
+PyIfFunc<void, PyObject *> py_xdecref;
 
 
-PyIfFunc<std::string, void *> py_str;
-PyIfFunc<std::string, void *> py_repr;
-PyIfFunc<int, void *> py_len;
-PyIfFunc<bool, void *> py_callable;
-PyIfFunc<void, PyObjectRef *, void *> py_call;
-PyIfFunc<bool, void *, std::string> py_hasattr;
-PyIfFunc<void, PyObjectRef *, void *, std::string> py_getattr;
-PyIfFunc<void, void *, std::string, void *> py_setattr;
-PyIfFunc<bool, void *, void *> py_isinstance;
-PyIfFunc<bool, void *> py_to_bool;
-PyIfFunc<void, void *, Func<void, std::string>> py_dir;
-PyIfFunc<bool, void *, void *> py_equals;
-PyIfFunc<void, void *, std::string> py_exec;
-PyIfFunc<void, void *, PyObjectRef *, std::string> py_eval;
-PyIfFunc<void, void *, PyObjectRef *, void *> py_get;
-PyIfFunc<bool, void *, void *> py_in;
-PyIfFunc<void, void *, PyObjectRef *> py_type;
-PyIfFunc<std::string, void *> py_modulename;
-PyIfFunc<std::string, void *> py_classname;
+PyIfFunc<std::string, PyObject *> py_str;
+PyIfFunc<std::string, PyObject *> py_repr;
+PyIfFunc<int, PyObject *> py_len;
+PyIfFunc<bool, PyObject *> py_callable;
+PyIfFunc<void, PyObjectRef *, PyObject *> py_call;
+PyIfFunc<bool, PyObject *, std::string> py_hasattr;
+PyIfFunc<void, PyObjectRef *, PyObject *, std::string> py_getattr;
+PyIfFunc<void, PyObject *, std::string, PyObject *> py_setattr;
+PyIfFunc<bool, PyObject *, PyObject *> py_isinstance;
+PyIfFunc<bool, PyObject *> py_to_bool;
+PyIfFunc<void, PyObject *, Func<void, std::string>> py_dir;
+PyIfFunc<bool, PyObject *, PyObject *> py_equals;
+PyIfFunc<void, PyObject *, std::string> py_exec;
+PyIfFunc<void, PyObject *, PyObjectRef *, std::string> py_eval;
+PyIfFunc<void, PyObject *, PyObjectRef *, PyObject *> py_get;
+PyIfFunc<bool, PyObject *, PyObject *> py_in;
+PyIfFunc<void, PyObject *, PyObjectRef *> py_type;
+PyIfFunc<std::string, PyObject *> py_modulename;
+PyIfFunc<std::string, PyObject *> py_classname;
 
 
 PyIfFunc<void, PyObjectRef *, std::string> py_builtin;

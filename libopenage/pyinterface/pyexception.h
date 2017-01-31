@@ -15,7 +15,7 @@
 
 // pxd: from libopenage.pyinterface.functional cimport PyIfFunc2, Func1
 #include "functional.h"
-// pxd: from libopenage.pyinterface.pyobject cimport PyObjectRef
+// pxd: from libopenage.pyinterface.pyobject cimport PyObjectRef, PyObjectPtr
 #include "pyobject.h"
 
 
@@ -33,7 +33,7 @@ public:
 	/**
 	 * ref is a raw reference to the associated PyObject.
 	 */
-	PyExceptionBacktrace(void *ref) : ref{ref} {}
+	PyExceptionBacktrace(PyObject *ref) : ref{ref} {}
 
 	/**
 	 * Accesses the associated Python exception object to translate the traceback as needed.
@@ -41,7 +41,7 @@ public:
 	void get_symbols(std::function<void (const error::backtrace_symbol *)> cb, bool reversed) const override;
 
 private:
-	void *ref;
+	PyObject *ref;
 };
 
 
@@ -79,8 +79,8 @@ public:
 };
 
 
-// pxd: PyIfFunc2[void, void *, Func1[void, backtrace_symbol_constptr]] pyexception_bt_get_symbols
-extern PyIfFunc<void, void *, Func<void, const error::backtrace_symbol *>> pyexception_bt_get_symbols;
+// pxd: PyIfFunc2[void, PyObjectPtr, Func1[void, backtrace_symbol_constptr]] pyexception_bt_get_symbols
+extern PyIfFunc<void, PyObject *, Func<void, const error::backtrace_symbol *>> pyexception_bt_get_symbols;
 
 
 }} // openage::pyinterface

@@ -11,6 +11,16 @@
 // pxd: from libopenage.pyinterface.functional cimport Func1
 #include "functional.h"
 
+
+// we want to avoid the Python.h import,
+// we only need the prototype anyway.
+#ifndef Py_OBJECT_H
+// pxd: from cpython.ref cimport PyObject
+extern "C" {
+	typedef struct _object PyObject;
+}
+#endif
+
 namespace openage {
 namespace pyinterface {
 
@@ -25,15 +35,16 @@ namespace pyinterface {
  *
  * cppclass PyObjectRef:
  *     PyObjectRef() noexcept
- *     PyObjectRef(void *ref) except +
+ *     PyObjectRef(PyObject *ref) except +
  *
- *     void *get_ref() noexcept
- *     void set_ref(void *ref) except +
- *     void set_ref_without_incrementing(void *ref) except +
+ *     PyObject *get_ref() noexcept
+ *     void set_ref(PyObject *ref) except +
+ *     void set_ref_without_incrementing(PyObject *ref) except +
  *     void clear_ref_without_decrementing() noexcept
  *
  *
  * ctypedef PyObjectRef *PyObjectRefPtr
+ * ctypedef PyObject    *PyObjectPtr
  */
 class PyObjectRef {
 public:
@@ -45,7 +56,7 @@ public:
 	/**
 	 * Wraps a raw PyObject * pointer (calls Py_INCREF).
 	 */
-	explicit PyObjectRef(void *ref);
+	PyObjectRef(PyObject *ref);
 
 	/**
 	 * Clones a PyObjectRef (calls Py_INCREF).
@@ -146,13 +157,13 @@ public:
 	bool equals(const PyObjectRef &other) const;
 
 	/**
-	* eval(expression, obj)
-	*/
+	 * eval(expression, obj)
+	 */
 	PyObjectRef eval(const std::string &expression) const;
 
 	/**
-	* exec(statement, obj)
-	*/
+	 * exec(statement, obj)
+	 */
 	void exec(const std::string &statement) const;
 
 	/**
@@ -198,24 +209,24 @@ private:
 	 * Stored as void* so we don't need to include Python.h manually.
 	 * This is Cython's job.
 	 */
-	void *ref;
+	PyObject *ref;
 
 
 public:
-	void *get_ref() const noexcept {
+	PyObject *get_ref() const noexcept {
 		return this->ref;
 	}
 
 	/**
 	 * Like operator =(const PyObjectRef &other).
 	 */
-	void set_ref(void *ref);
+	void set_ref(PyObject *ref);
 
 	/**
 	 * Like set_ref, but does _NOT_ call PY_XINCREF.
 	 * Only use in special cases, if you know exactly what you're doing.
 	 */
-	void set_ref_without_incrementing(void *ref);
+	void set_ref_without_incrementing(PyObject *ref);
 
 	/**
 	 * Clears the internal reference, but does _NOT_ call PY_XDECREF.
@@ -263,7 +274,7 @@ PyObjectRef integer(int value);
 
 
 /**
- * {}
+ * dict()
  */
 PyObjectRef dict();
 
@@ -283,51 +294,51 @@ PyObjectRef none();
 
 // for use by the reference-counting constructors
 
-// pxd: PyIfFunc1[void, void *] py_xincref
-extern PyIfFunc<void, void *> py_xincref;
-// pxd: PyIfFunc1[void, void *] py_xdecref
-extern PyIfFunc<void, void *> py_xdecref;
+// pxd: PyIfFunc1[void, PyObjectPtr] py_xincref
+extern PyIfFunc<void, PyObject *> py_xincref;
+// pxd: PyIfFunc1[void, PyObjectPtr] py_xdecref
+extern PyIfFunc<void, PyObject *> py_xdecref;
 
 // for all of those member functions
 
-// pxd: PyIfFunc1[string, void *] py_str
-extern PyIfFunc<std::string, void *> py_str;
-// pxd: PyIfFunc1[string, void *] py_repr
-extern PyIfFunc<std::string, void *> py_repr;
-// pxd: PyIfFunc1[int, void *] py_len
-extern PyIfFunc<int, void *> py_len;
-// pxd: PyIfFunc1[cppbool, void *] py_callable
-extern PyIfFunc<bool, void *> py_callable;
-// pxd: PyIfFunc2[void, PyObjectRefPtr, void *] py_call
-extern PyIfFunc<void, PyObjectRef *, void *> py_call;
-// pxd: PyIfFunc2[cppbool, void *, string] py_hasattr
-extern PyIfFunc<bool, void *, std::string> py_hasattr;
-// pxd: PyIfFunc3[void, PyObjectRefPtr, void *, string] py_getattr
-extern PyIfFunc<void, PyObjectRef *, void *, std::string> py_getattr;
-// pxd: PyIfFunc3[void, void *, string, void *] py_setattr
-extern PyIfFunc<void, void *, std::string, void *> py_setattr;
-// pxd: PyIfFunc2[cppbool, void *, void *] py_isinstance
-extern PyIfFunc<bool, void *, void *> py_isinstance;
-// pxd: PyIfFunc1[cppbool, void *] py_to_bool
-extern PyIfFunc<bool, void *> py_to_bool;
-// pxd: PyIfFunc2[void, void *, Func1[void, string]] py_dir
-extern PyIfFunc<void, void *, Func<void, std::string>> py_dir;
-// pxd: PyIfFunc2[cppbool, void *, void *] py_equals
-extern PyIfFunc<bool, void *, void *> py_equals;
-// pxd: PyIfFunc2[void, void *, string] py_exec
-extern PyIfFunc<void, void *, std::string> py_exec;
-// pxd: PyIfFunc3[void, void *, PyObjectRefPtr, string] py_eval
-extern PyIfFunc<void, void *, PyObjectRef *, std::string> py_eval;
-// pxd: PyIfFunc3[void, void *, PyObjectRefPtr, void *] py_get
-extern PyIfFunc<void, void *, PyObjectRef *, void *> py_get;
-// pxd: PyIfFunc2[cppbool, void *, void *] py_in
-extern PyIfFunc<bool, void *, void *> py_in;
-// pxd: PyIfFunc2[void, void *, PyObjectRefPtr] py_type
-extern PyIfFunc<void, void *, PyObjectRef *> py_type;
-// pxd: PyIfFunc1[string, void *] py_modulename
-extern PyIfFunc<std::string, void *> py_modulename;
-// pxd: PyIfFunc1[string, void *] py_classname
-extern PyIfFunc<std::string, void *> py_classname;
+// pxd: PyIfFunc1[string, PyObjectPtr] py_str
+extern PyIfFunc<std::string, PyObject *> py_str;
+// pxd: PyIfFunc1[string, PyObjectPtr] py_repr
+extern PyIfFunc<std::string, PyObject *> py_repr;
+// pxd: PyIfFunc1[int, PyObjectPtr] py_len
+extern PyIfFunc<int, PyObject *> py_len;
+// pxd: PyIfFunc1[cppbool, PyObjectPtr] py_callable
+extern PyIfFunc<bool, PyObject *> py_callable;
+// pxd: PyIfFunc2[void, PyObjectRefPtr, PyObjectPtr] py_call
+extern PyIfFunc<void, PyObjectRef *, PyObject *> py_call;
+// pxd: PyIfFunc2[cppbool, PyObjectPtr, string] py_hasattr
+extern PyIfFunc<bool, PyObject *, std::string> py_hasattr;
+// pxd: PyIfFunc3[void, PyObjectRefPtr, PyObjectPtr, string] py_getattr
+extern PyIfFunc<void, PyObjectRef *, PyObject *, std::string> py_getattr;
+// pxd: PyIfFunc3[void, PyObjectPtr, string, PyObjectPtr] py_setattr
+extern PyIfFunc<void, PyObject *, std::string, PyObject *> py_setattr;
+// pxd: PyIfFunc2[cppbool, PyObjectPtr, PyObjectPtr] py_isinstance
+extern PyIfFunc<bool, PyObject *, PyObject *> py_isinstance;
+// pxd: PyIfFunc1[cppbool, PyObjectPtr] py_to_bool
+extern PyIfFunc<bool, PyObject *> py_to_bool;
+// pxd: PyIfFunc2[void, PyObjectPtr, Func1[void, string]] py_dir
+extern PyIfFunc<void, PyObject *, Func<void, std::string>> py_dir;
+// pxd: PyIfFunc2[cppbool, PyObjectPtr, PyObjectPtr] py_equals
+extern PyIfFunc<bool, PyObject *, PyObject *> py_equals;
+// pxd: PyIfFunc2[void, PyObjectPtr, string] py_exec
+extern PyIfFunc<void, PyObject *, std::string> py_exec;
+// pxd: PyIfFunc3[void, PyObjectPtr, PyObjectRefPtr, string] py_eval
+extern PyIfFunc<void, PyObject *, PyObjectRef *, std::string> py_eval;
+// pxd: PyIfFunc3[void, PyObjectPtr, PyObjectRefPtr, PyObjectPtr] py_get
+extern PyIfFunc<void, PyObject *, PyObjectRef *, PyObject *> py_get;
+// pxd: PyIfFunc2[cppbool, PyObjectPtr, PyObjectPtr] py_in
+extern PyIfFunc<bool, PyObject *, PyObject *> py_in;
+// pxd: PyIfFunc2[void, PyObjectPtr, PyObjectRefPtr] py_type
+extern PyIfFunc<void, PyObject *, PyObjectRef *> py_type;
+// pxd: PyIfFunc1[string, PyObjectPtr] py_modulename
+extern PyIfFunc<std::string, PyObject *> py_modulename;
+// pxd: PyIfFunc1[string, PyObjectPtr] py_classname
+extern PyIfFunc<std::string, PyObject *> py_classname;
 
 
 // pxd: PyIfFunc2[void, PyObjectRefPtr, string] py_builtin

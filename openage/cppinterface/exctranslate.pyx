@@ -232,7 +232,7 @@ cdef void describe_exception(PyException *pyex) except * with gil:
     Py_XDECREF(exc_type_ptr)
     Py_XDECREF(exc_traceback_ptr)
     # hand the value raw pointer to pyex.py_obj.
-    pyex.py_obj.set_ref_without_incrementing(<void *> exc_value_ptr)
+    pyex.py_obj.set_ref_without_incrementing(exc_value_ptr)
 
     # set exc.msg
     if hasattr(exc, "cpp_msg_obj"):
@@ -277,10 +277,10 @@ cdef void describe_exception(PyException *pyex) except * with gil:
 
 
 cdef void pyexception_bt_get_symbols_impl(
-        void *py_obj,
+        PyObject *py_obj,
         Func1[void, const backtrace_symbol *] callback) except * with gil:
 
-    cdef object py_exc = <object> <PyObject *> py_obj
+    cdef object py_exc = <object> py_obj
     cdef object frame = getattr(py_exc, "__traceback__", None)
 
     cdef backtrace_symbol symbol
