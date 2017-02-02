@@ -33,6 +33,9 @@ def find_issues(dirnames, exts):
         if '\r\n' in data:
             yield "Windows EOL format", filename
 
+        if any(asdf in data for asdf in ("ASDF", "asdf")) and not filename.endswith(__file__):
+            yield "asdf found indicating an immediate TODO", filename
+
         if data.endswith('\n\n'):
             yield "Trailing newline at file end", filename
 
