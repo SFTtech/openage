@@ -43,6 +43,8 @@ namespace pyinterface {
  *     void clear_ref_without_decrementing() noexcept
  *
  *
+ * ctypedef PyObjectRef PyObj;
+ *
  * ctypedef PyObjectRef *PyObjectRefPtr
  * ctypedef PyObject    *PyObjectPtr
  */
@@ -205,15 +207,23 @@ public:
 private:
 	/**
 	 * Internal PyObject * for obj.
-	 *
-	 * Stored as void* so we don't need to include Python.h manually.
-	 * This is Cython's job.
 	 */
 	PyObject *ref;
 
 
 public:
+	/**
+	 * Provide the internal PyObject *.
+	 */
 	PyObject *get_ref() const noexcept {
+		return this->ref;
+	}
+
+	/**
+	 * Implicit conversion to PyObject *.
+	 * Mainly for convenience to avoid all the get_ref() calls.
+	 */
+	PyObject *operator ()() const noexcept {
 		return this->ref;
 	}
 
@@ -238,57 +248,12 @@ public:
 };
 
 
+/**
+ * Stream operator for printing PyObjects
+ */
 std::ostream &operator <<(std::ostream &os, const PyObjectRef &ref);
 
 
-namespace py {
-
-/**
- * getattr(importlib.import_module("builtins"), name)
- */
-PyObjectRef builtin(const std::string &name);
-
-
-/**
- * importlib.import_module(name)
- */
-PyObjectRef import(const std::string &name);
-
-
-/**
- * str(value);
- */
-PyObjectRef str(const std::string &value);
-
-
-/**
- * bytes(value)
- */
-PyObjectRef bytes(const char *value);
-
-
-/**
- * int(value)
- */
-PyObjectRef integer(int value);
-
-
-/**
- * dict()
- */
-PyObjectRef dict();
-
-
-/**
- * None
- */
-PyObjectRef none();
-
-
-} // py
-
-
-// installed by openage.cppinterface.pyobject.setup().
 // now follow the various Python callbacks that implement all of the above,
 // and need to be installed by openage.cppinterface.pyobject.setup().
 
@@ -356,5 +321,60 @@ extern PyIfFunc<void, PyObjectRef *> py_createdict;
 // pxd: PyIfFunc1[void, PyObjectRefPtr] py_getnone
 extern PyIfFunc<void, PyObjectRef *> py_getnone;
 
+} // pyinterface
 
-}} // openage::pyinterface
+
+/**
+ * Contenience functions and types for the python interface.
+ */
+namespace py {
+
+/**
+ * Python object reference.
+ */
+using Obj = pyinterface::PyObjectRef;
+
+
+/**
+ * getattr(importlib.import_module("builtins"), name)
+ */
+Obj builtin(const std::string &name);
+
+
+/**
+ * importlib.import_module(name)
+ */
+Obj import(const std::string &name);
+
+
+/**
+ * str(value);
+ */
+Obj str(const std::string &value);
+
+
+/**
+ * bytes(value)
+ */
+Obj bytes(const char *value);
+
+
+/**
+ * int(value)
+ */
+Obj integer(int value);
+
+
+/**
+ * dict()
+ */
+Obj dict();
+
+
+/**
+ * None
+ */
+Obj none();
+
+} // py
+} // openage

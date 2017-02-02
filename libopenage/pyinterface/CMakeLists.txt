@@ -5,6 +5,7 @@ add_sources(libopenage
 	hacks.cpp
 	pyexception.cpp
 	pyobject.cpp
+	pyobject_tests.cpp
 	setup.cpp
 )
 
