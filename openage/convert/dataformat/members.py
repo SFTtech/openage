@@ -704,7 +704,9 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 reprtxt="multisubtype %s container fill function" % self.type_name,
             )
             snippet.typerefs |= self.get_contained_types() | {self.type_name, MultisubtypeBaseFile.name_struct}
-            snippet.includes |= determine_headers(("engine_dir", "engine_error"))
+            snippet.includes |= determine_headers(
+                ("engine_dir", "engine_error", "csv_map")
+            )
 
             return [snippet]
 

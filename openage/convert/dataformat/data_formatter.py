@@ -59,13 +59,13 @@ $parsers
             templates = {
                 0: entry_parser.ParserTemplate(
                     signature    = "int %srecurse(openage::util::Dir /*basedir*/, openage::util::csv_file_map_t */*file_map*/)",
-                    headers      = util.determine_header("engine_dir"),
+                    headers      = util.determine_headers(("engine_dir", "csv_map")),
                     impl_headers = set(),
                     template     = "$signature {\n\treturn -1;\n}\n"
                 ),
                 None: entry_parser.ParserTemplate(
                     signature = "int %srecurse(openage::util::Dir basedir, openage::util::csv_file_map_t *file_map)",
-                    headers   = util.determine_header("engine_dir"),
+                    headers   = util.determine_headers(("engine_dir", "csv_map")),
                     impl_headers = set(),
                     template  = "$signature {\n$parsers\n\n\treturn -1;\n}\n"
                 ),

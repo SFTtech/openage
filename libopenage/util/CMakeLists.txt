@@ -2,6 +2,7 @@ add_sources(libopenage
 	color.cpp
 	compiler.cpp
 	constinit_vector.cpp
+	csv.cpp
 	dir.cpp
 	enum.cpp
 	enum_test.cpp
