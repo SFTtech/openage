@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "shader/shader.h"
 #include "shader/program.h"
@@ -26,15 +26,17 @@ GuiBasic::GuiBasic(SDL_Window *window, const std::string &source, qtsdl::GuiSing
 
 	const char *shader_header_code = "#version 120\n";
 
-	char *texture_vert_code;
-	util::read_whole_file(&texture_vert_code, static_cast<GameSingletonsInfo*>(singleton_items_info)->data_dir + "/shaders/identity.vert.glsl");
-	auto plaintexture_vert = std::make_unique<shader::Shader>(GL_VERTEX_SHADER, std::initializer_list<const char *>{ shader_header_code, texture_vert_code });
-	delete[] texture_vert_code;
+	std::string texture_vert_code = util::read_whole_file(static_cast<GameSingletonsInfo*>(singleton_items_info)->data_dir + "/shaders/identity.vert.glsl");
+	auto plaintexture_vert = std::make_unique<shader::Shader>(
+		GL_VERTEX_SHADER,
+		std::initializer_list<const char *>{ shader_header_code, texture_vert_code.c_str() }
+	);
 
-	char *texture_frag_code;
-	util::read_whole_file(&texture_frag_code, static_cast<GameSingletonsInfo*>(singleton_items_info)->data_dir + "/shaders/maptexture.frag.glsl");
-	auto plaintexture_frag = std::make_unique<shader::Shader>(GL_FRAGMENT_SHADER, std::initializer_list<const char *>{ shader_header_code, texture_frag_code });
-	delete[] texture_frag_code;
+	std::string texture_frag_code = util::read_whole_file(static_cast<GameSingletonsInfo*>(singleton_items_info)->data_dir + "/shaders/maptexture.frag.glsl");
+	auto plaintexture_frag = std::make_unique<shader::Shader>(
+		GL_FRAGMENT_SHADER,
+		std::initializer_list<const char *>{ shader_header_code, texture_frag_code.c_str() }
+	);
 
 	this->textured_screen_quad_shader = std::make_unique<shader::Program>(&*plaintexture_vert, &*plaintexture_frag);
 	this->textured_screen_quad_shader->link();

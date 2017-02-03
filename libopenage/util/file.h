@@ -17,11 +17,24 @@
 namespace openage {
 namespace util {
 
+
+/**
+ * Return the size in bytes of a given file name.
+ */
 ssize_t file_size(const std::string &filename);
+
+
+/**
+ * Return the size in bytes of a filename relative to a directory.
+ */
 ssize_t file_size(Dir basedir, const std::string &fname);
 
-ssize_t read_whole_file(char **result, const char *filename);
-ssize_t read_whole_file(char **result, const std::string &filename);
+
+/**
+ * Read the contents of a given filename.
+ */
+std::string read_whole_file(const std::string &filename);
+
 
 /**
  * get the lines of a file.
