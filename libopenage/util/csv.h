@@ -28,7 +28,7 @@ using csv_file_map_t = std::unordered_map<std::string, std::vector<std::string>>
 /**
  * Load a multi csv file into a csv_file_map_t
  */
-csv_file_map_t *load_multi_csv_file(Dir basedir, const std::string &fname);
+csv_file_map_t load_multi_csv_file(Dir basedir, const std::string &fname);
 
 
 /**
@@ -36,11 +36,12 @@ csv_file_map_t *load_multi_csv_file(Dir basedir, const std::string &fname);
  * call the destination struct .fill() method for actually storing line data
  */
 template<typename lineformat>
-void read_csv_file(const std::string &fname, std::vector<lineformat> &out, csv_file_map_t *file_map = nullptr) {
+void read_csv_file(const std::string &fname, std::vector<lineformat> &out, csv_file_map_t *file_map=nullptr) {
 	size_t line_count = 0;
 	lineformat current_line_data;
 	std::vector<char> strbuf;
 
+	// instead of reading from the file, use the file_map as buffer.
 	if (file_map && file_map->count(fname)) {
 		std::vector<std::string> lines = file_map->at(fname);
 
@@ -110,7 +111,7 @@ void read_csv_file(const std::string &fname, std::vector<lineformat> &out, csv_f
  * should be called from the .recurse() method of the struct.
  */
 template<class lineformat>
-std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname, csv_file_map_t *file_map = nullptr) {
+std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname, csv_file_map_t *file_map=nullptr) {
 	std::vector<lineformat> result;
 	std::string merged_filename = basedir.join(fname);
 
@@ -145,7 +146,7 @@ struct subdata {
 	std::string filename;
 	std::vector<cls> data;
 
-	bool read(Dir basedir, csv_file_map_t *file_map = nullptr) {
+	bool read(Dir basedir, csv_file_map_t *file_map=nullptr) {
 		this->data = recurse_data_files<cls>(basedir, this->filename, file_map);
 		return true;
 	}
