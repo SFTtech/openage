@@ -1,4 +1,4 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 """
 Code for reading Genie .DRS archives.
@@ -11,7 +11,7 @@ from ..log import spam, dbg
 from ..util.strings import decode_until_null
 from ..util.struct import NamedStruct
 from ..util.fslike.filecollection import FileCollection
-from ..util.filelike import StreamFragment
+from ..util.filelike.stream import StreamFragment
 
 # version of the drs files, hardcoded for now
 FILE_VERSION = 57

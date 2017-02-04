@@ -21,6 +21,7 @@ add_sources(libopenage
 	misc_test.cpp
 	opengl.cpp
 	os.cpp
+	path.cpp
 	profiler.cpp
 	quaternion.cpp
 	quaternion_test.cpp
@@ -39,7 +40,10 @@ pxdgen(
 	compiler.h
 	enum.h
 	enum_test.h
+	file.h
+	path.h
 )
 
 add_subdirectory(compress)
+add_subdirectory(filelike)
 add_subdirectory(fslike)

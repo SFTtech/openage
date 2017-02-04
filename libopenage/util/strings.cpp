@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include "strings.h"
 
@@ -225,6 +225,13 @@ bool string_matches_pattern(const char *str, const char *pattern) {
 		str += 1;
 		pattern += 1;
 	}
+}
+
+
+std::vector<std::string> split(const std::string &txt, char delimiter) {
+	std::vector<std::string> items;
+	split(txt, delimiter, std::back_inserter(items));
+	return items;
 }
 
 

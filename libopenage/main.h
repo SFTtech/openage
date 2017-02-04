@@ -10,8 +10,8 @@
 // pxd: from libcpp.memory cimport unique_ptr
 #include <memory>
 
-// pxd: from libopenage.util.fslike.path cimport Path
-#include "util/fslike/path.h"
+// pxd: from libopenage.util.path cimport Path
+#include "util/path.h"
 
 
 namespace openage {

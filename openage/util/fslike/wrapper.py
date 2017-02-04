@@ -12,7 +12,7 @@ import os
 from threading import Lock
 
 from ..context import DummyGuard
-from ..filelike import FileLikeObject
+from ..filelike.abstract import FileLikeObject
 
 from .abstract import FSLikeObject, ReadOnlyFSLikeObject
 from .path import Path

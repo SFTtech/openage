@@ -1,11 +1,9 @@
 add_sources(libopenage
-	abstract.cpp
-	file.cpp
-	path.cpp
+	fslike.cpp
+	fslike_stdlib.cpp
+	fslike_python.cpp
 )
 
 pxdgen(
-	abstract.h
-	file.h
-	path.h
+	fslike_python.h
 )

@@ -46,5 +46,5 @@ def main(args, error):
             err("game asset conversion failed")
             return 1
 
-    # start the game!
+    # start the game, continue in main_cpp.pyx!
     return run_game(args, assets)

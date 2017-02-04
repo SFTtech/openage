@@ -2,15 +2,23 @@
 
 #pragma once
 
-#include <string.h>
 #include <limits.h>
 #include <cmath>
+#include <cstring>
+#include <string>
 
 #include "../error/error.h"
 
 
 namespace openage {
 namespace util {
+
+/**
+ * global empty string, sometimes needed
+ * as return value in some `std::string &function()` return values.
+ */
+extern std::string empty_string;
+
 
 /**
  * modulo operation that guarantees to return positive values.

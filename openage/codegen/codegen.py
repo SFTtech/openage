@@ -12,7 +12,7 @@ from io import UnsupportedOperation
 from itertools import chain
 
 from ..util.fslike.wrapper import Wrapper
-from ..util.filelike import FIFO
+from ..util.filelike.fifo import FIFO
 from ..log import err
 
 from .listing import generate_all

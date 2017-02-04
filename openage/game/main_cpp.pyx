@@ -6,7 +6,7 @@ from libcpp.string cimport string
 from libcpp.vector cimport vector
 
 from libopenage.main cimport main_arguments, run_game as run_game_cpp
-from libopenage.util.fslike.path cimport Path as Path_cpp
+from libopenage.util.path cimport Path as Path_cpp
 from libopenage.pyinterface.pyobject cimport PyObjectRef
 
 

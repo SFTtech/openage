@@ -1,11 +1,13 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <cstdarg>
 #include <functional>
-#include <vector>
 #include <iomanip>
+#include <sstream>
+#include <string>
+#include <vector>
 
 
 namespace openage {
@@ -117,5 +119,27 @@ void string_tokenize_base(char *str, char delim, std::function<void(char *)> cal
  */
 bool string_matches_pattern(const char *str, const char *pattern);
 
+
+/**
+ * Split a string at a delimiter, push the result back in an iterator.
+ * Why doesn't the fucking standard library have std::string::split(delimiter)?
+ */
+template<typename ret_t>
+void split(const std::string &txt, char delimiter, ret_t result) {
+	std::stringstream splitter;
+	splitter.str(txt);
+	std::string part;
+
+	while (std::getline(splitter, part, delimiter)) {
+		*result = part;
+		result++;
+	}
+}
+
+
+/**
+ * Split a string at a delimiter into a vector.
+ */
+std::vector<std::string> split(const std::string &txt, char delim);
 
 }} // openage::util
