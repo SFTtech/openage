@@ -248,6 +248,10 @@ public:
 };
 
 
+/** convenience alias */
+using PyObj = PyObjectRef;
+
+
 /**
  * Stream operator for printing PyObjects
  */
