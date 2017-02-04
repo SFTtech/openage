@@ -6,8 +6,9 @@ Auto-generates PXD files from annotated C++ headers.
 Invoked via cmake during the regular build process.
 """
 
-import re
+import argparse
 import os
+import re
 
 from pygments.token import Token
 from pygments.lexers import get_lexer_for_filename
@@ -325,7 +326,7 @@ class PXDGenerator:
         pxdfile = os.path.splitext(self.filename)[0] + '.pxd'
 
         # create empty __init__.py in all parent directories.
-        # CMake requires this; else it won't find the .pxd files.
+        # Cython requires this; else it won't find the .pxd files.
         dirname = os.path.abspath(os.path.dirname(self.filename))
         while dirname.startswith(CWD + os.path.sep):
             initfile = os.path.join(dirname, "__init__.py")
@@ -340,7 +341,7 @@ class PXDGenerator:
         if not ignore_timestamps and os.path.exists(pxdfile):
             # skip the file if the timestamp is up to date
             if os.path.getmtime(self.filename) <= os.path.getmtime(pxdfile):
-                return
+                return False
 
         result = "\n".join(self.get_pxd_lines())
 
@@ -348,7 +349,7 @@ class PXDGenerator:
             with open(pxdfile) as outfile:
                 if outfile.read() == result:
                     # don't write the file if the content is up to date
-                    return
+                    return False
 
         with open(pxdfile, 'w') as outfile:
             print("generating " + os.path.relpath(pxdfile, CWD))
@@ -359,6 +360,8 @@ class PXDGenerator:
             for warning in self.warnings:
                 print(warning)
 
+        return True
+
 
 def parse_args():
     """
@@ -366,9 +369,8 @@ def parse_args():
 
     designed to allow both manual and automatic (via CMake) usage.
     """
-    import argparse
-
     cli = argparse.ArgumentParser()
+
     cli.add_argument('files', nargs='*', metavar='HEADERFILE',
                      help="input files (usually cpp .h files).")
     cli.add_argument('--file-list',
@@ -376,6 +378,8 @@ def parse_args():
     cli.add_argument('--ignore-timestamps', action='store_true',
                      help="force generating even if the output file is already"
                           "up to date")
+    cli.add_argument('-v', '--verbose', action="store_true",
+                     help="increase logging verbosity")
 
     args = cli.parse_args()
 
@@ -385,7 +389,7 @@ def parse_args():
         file_list = []
 
     from itertools import chain
-    args.all_files = chain(args.files, file_list)
+    args.all_files = list(chain(args.files, file_list))
 
     return args
 
@@ -395,15 +399,31 @@ def main():
     args = parse_args()
     cppdir = CWD + "/libopenage"
 
+    if args.verbose:
+        hdr_count = len(args.all_files)
+        plural = "s" if hdr_count > 1 else ""
+
+        print("extracting pxd information "
+              "from {} header{}...".format(hdr_count, plural))
+
     for filename in args.all_files:
         filename = os.path.abspath(filename)
         if not filename.startswith(cppdir):
             print("pxdgen source file is not in " + cppdir + ": " + filename)
             exit(1)
 
-        PXDGenerator(filename).generate(
+        if args.verbose:
+            print("creating .pxd for '{}':".format(filename))
+
+        generator = PXDGenerator(filename)
+
+        result = generator.generate(
             ignore_timestamps=args.ignore_timestamps,
-            print_warnings=True)
+            print_warnings=True
+        )
+
+        if args.verbose and not result:
+            print("nothing done.")
 
 
 if __name__ == '__main__':
