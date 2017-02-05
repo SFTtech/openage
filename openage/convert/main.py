@@ -474,8 +474,8 @@ def main(args, error):
         srcdir = None
 
     # conversion target
-    from ..assets import get_assets
-    assets = get_assets(args)
+    from ..assets import get_asset_path
+    assets = get_asset_path(args)
 
     if args.force or conversion_required(assets, args):
         if not convert_assets(assets, args, srcdir):

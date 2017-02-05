@@ -73,6 +73,11 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
+#
+# The import-error and no-name-in-module messages are disabled because
+# if cython modules are not yet build, they can't be imported.
+#
+# TODO: enable cyclic-import, once those issues have been fixed.
 disable=locally-disabled, cyclic-import, file-ignored, import-error, no-name-in-module
 
 # Enable the message, report, category or checker with the given id(s). You can
@@ -80,9 +85,6 @@ disable=locally-disabled, cyclic-import, file-ignored, import-error, no-name-in-
 # multiple time. See also the "--disable" option for examples.
 enable=
 
-# TODO: enable cyclic-import, once those issues have been fixed.
-# TODO: enable import-error, no-name-in-module for pylint versions >= 1.5
-#       https://bitbucket.org/logilab/pylint/issue/223
 
 
 [MISCELLANEOUS]
