@@ -15,6 +15,7 @@
 #include "../util/timing.h"
 #include "ability.h"
 #include "attribute.h"
+#include "attributes.h"
 #include "command.h"
 #include "unit_container.h"
 

@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "../coord/phys3.h"
-#include "attribute.h"
+#include "attributes.h"
 
 namespace openage {
 
