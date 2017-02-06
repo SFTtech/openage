@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
@@ -243,11 +243,19 @@ void Unit::secondary_action(std::unique_ptr<UnitAction> action) {
 }
 
 void Unit::add_attribute(std::shared_ptr<AttributeContainer> attr) {
-	this->attribute_map.emplace(attr_map_t::value_type(attr->type, attr));
+	this->attributes.add(attr);
+}
+
+void Unit::add_attributes(const Attributes &attr) {
+	this->attributes.add_copies(attr);
+}
+
+void Unit::add_attributes(const Attributes &attr, bool shared, bool unshared) {
+	this->attributes.add_copies(attr, shared, unshared);
 }
 
 bool Unit::has_attribute(attr_type type) const {
-	return (this->attribute_map.count(type) > 0);
+	return this->attributes.has(type);
 }
 
 std::shared_ptr<UnitAbility> Unit::queue_cmd(const Command &cmd) {
@@ -279,8 +287,8 @@ void Unit::stop_gather() {
 
 void Unit::stop_actions() {
 
-	// work around for gatherers continuing to work after retasking
-	if (this->has_attribute(attr_type::gatherer)) {
+	// work around for workers continuing to work after retasking
+	if (this->has_attribute(attr_type::worker)) {
 		this->stop_gather();
 	}
 

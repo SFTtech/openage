@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -31,7 +31,7 @@ template<> struct hash<gamedata::unit_classes> {
 namespace openage {
 
 /**
- * types of action graphics
+ * Types of action graphics
  */
 enum class graphic_type {
 	construct,
@@ -49,18 +49,20 @@ enum class graphic_type {
 class UnitTexture;
 
 /**
- * collection of graphics attached to each unit
+ * Collection of graphics attached to each unit.
  */
 using graphic_set = std::map<graphic_type, std::shared_ptr<UnitTexture>>;
 
 /**
- * list of attribute types
+ * List of unit's attribute types.
  */
 enum class attr_type {
 	owner,
+	damaged,
 	hitpoints,
 	armor,
 	attack,
+	formation,
 	heal,
 	speed,
 	direction,
@@ -68,10 +70,15 @@ enum class attr_type {
 	building,
 	dropsite,
 	resource,
-	gatherer,
+	worker,
+	multitype,
 	garrison
 };
 
+/**
+ * List of unit's attack stance.
+ * Can be used for buildings also.
+ */
 enum class attack_stance {
 	aggresive,
 	devensive,
@@ -80,12 +87,24 @@ enum class attack_stance {
 };
 
 /**
+ * List of unit's formation.
+ * Effect applys on a group of units.
+ */
+enum class attack_formation {
+	line,
+	staggered,
+	box,
+	flank
+};
+
+
+/**
  * this type gets specialized for each attribute
  */
 template<attr_type T> class Attribute;
 
 /**
- * wraps a templated attribute
+ * Wraps a templated attribute
  */
 class AttributeContainer {
 public:
@@ -107,13 +126,10 @@ public:
 	virtual bool shared() const = 0;
 
 	/**
-	 * produces an copy of the attribute for non-shared attributes
-	 * shared attributes will return themselves
+	 * Produces an copy of the attribute.
 	 */
 	virtual std::shared_ptr<AttributeContainer> copy() const = 0;
 };
-
-using attr_map_t = std::map<attr_type, std::shared_ptr<AttributeContainer>>;
 
 /**
  * An unordered_map with a int key used as a type id
@@ -122,11 +138,40 @@ using attr_map_t = std::map<attr_type, std::shared_ptr<AttributeContainer>>;
 using typeamount_map = std::unordered_map<int, unsigned int>;
 
 /**
- * return attribute from a container
+ * Wraps a templated shared attribute
+ *
+ * Shared attributes are common across all units of
+ * one type
  */
-template<attr_type T> Attribute<T> get_attr(attr_map_t &map) {
-	return *reinterpret_cast<Attribute<T> *>(map[T]);
-}
+class SharedAttributeContainer: public AttributeContainer {
+public:
+
+	SharedAttributeContainer(attr_type t)
+		:
+		AttributeContainer{t} {}
+
+	bool shared() const override {
+		return true;
+	}
+};
+
+/**
+ * Wraps a templated unshared attribute
+ *
+ * Shared attributes are copied for each unit of
+ * one type
+ */
+class UnsharedAttributeContainer: public AttributeContainer {
+public:
+
+	UnsharedAttributeContainer(attr_type t)
+		:
+		AttributeContainer{t} {}
+
+	bool shared() const override {
+		return false;
+	}
+};
 
 // -----------------------------
 // attribute definitions go here
@@ -134,16 +179,12 @@ template<attr_type T> Attribute<T> get_attr(attr_map_t &map) {
 
 class Player;
 
-template<> class Attribute<attr_type::owner>: public AttributeContainer {
+template<> class Attribute<attr_type::owner>: public SharedAttributeContainer {
 public:
 	Attribute(Player &p)
 		:
-		AttributeContainer{attr_type::owner},
+		SharedAttributeContainer{attr_type::owner},
 		player(p) {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::owner>>(*this);
@@ -152,37 +193,55 @@ public:
 	Player &player;
 };
 
-template<> class Attribute<attr_type::hitpoints>: public AttributeContainer {
+/**
+ * The max hitpoints and health bar information.
+ * TODO change bar information stucture
+ */
+template<> class Attribute<attr_type::hitpoints>: public SharedAttributeContainer {
 public:
 	Attribute(unsigned int i)
 		:
-		AttributeContainer{attr_type::hitpoints},
-		current{i},
-		max{i} {}
-
-	bool shared() const override {
-		return false;
-	}
+		SharedAttributeContainer{attr_type::hitpoints},
+		hp{i} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::hitpoints>>(*this);
 	}
 
-	unsigned int current;
-	unsigned int max;
+	/**
+	 * The max hitpoints
+	 */
+	unsigned int hp;
 	float hp_bar_height;
 };
 
-template<> class Attribute<attr_type::armor>: public AttributeContainer {
+/**
+ * The current hitpoints.
+ * TODO add last damage taken timestamp
+ */
+template<> class Attribute<attr_type::damaged>: public UnsharedAttributeContainer {
+public:
+	Attribute(unsigned int i)
+		:
+		UnsharedAttributeContainer{attr_type::damaged},
+		hp{i} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::damaged>>(*this);
+	}
+
+	/**
+	 * The current hitpoint
+	 */
+	unsigned int hp;
+};
+
+template<> class Attribute<attr_type::armor>: public SharedAttributeContainer {
 public:
 	Attribute(typeamount_map a)
 		:
-		AttributeContainer{attr_type::armor},
+		SharedAttributeContainer{attr_type::armor},
 		armor{a} {}
-
-	bool shared() const override {
-		return true;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::armor>>(*this);
@@ -191,99 +250,126 @@ public:
 	typeamount_map armor;
 };
 
-template<> class Attribute<attr_type::attack>: public AttributeContainer {
+/**
+ * TODO implement min range
+ * TODO can a unit have multiple attacks such as villagers hunting map target classes onto attacks
+ */
+template<> class Attribute<attr_type::attack>: public SharedAttributeContainer {
 public:
 	// TODO remove (keep for testing)
 	// 4 = gamedata::hit_class::UNITS_MELEE (not exported at the moment)
-	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d, UnitType *reset_type)
+	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d)
 		:
-		Attribute{type, r, h, {{4, d}}, reset_type} {}
+		Attribute{type, r, h, {{4, d}}} {}
 
-	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d, UnitType *reset_type)
+	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d)
 		:
-		AttributeContainer{attr_type::attack},
+		SharedAttributeContainer{attr_type::attack},
 		ptype{type},
 		range{r},
 		init_height{h},
-		damage{d},
-		stance{attack_stance::do_nothing},
-		attack_type{reset_type} {}
-
-	bool shared() const override {
-		return false;
-	}
+		damage{d} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::attack>>(*this);
 	}
 
-	// TODO: can a unit have multiple attacks such as villagers hunting
-	// map target classes onto attacks
+	/**
+	 * The projectile's unit type
+	 */
+	UnitType *ptype;
 
-	UnitType *ptype; // projectile type
+	/**
+	 * The max range of the attack
+	 */
 	coord::phys_t range;
-	coord::phys_t init_height;
-	typeamount_map damage;
-	attack_stance stance;
 
-	// TODO move elsewhere in order to become shared attribute
-	// used to change graphics back to normal for villagers
-	UnitType *attack_type;
+	/**
+	 * The height from which the projectile starts
+	 */
+	coord::phys_t init_height;
+
+	typeamount_map damage;
 };
 
-template<> class Attribute<attr_type::heal>: public AttributeContainer {
+/**
+ * The attack stance and formation
+ * TODO store patrol and follow command information
+ */
+template<> class Attribute<attr_type::formation>: public UnsharedAttributeContainer {
 public:
-	Attribute(coord::phys_t r, coord::phys_t h, unsigned int l, float ra)
+
+	Attribute()
 		:
-		AttributeContainer{attr_type::heal},
+		Attribute{attack_stance::do_nothing} {}
+
+	Attribute(attack_stance stance)
+		:
+		UnsharedAttributeContainer{attr_type::formation},
+		stance{stance},
+		formation{attack_formation::line} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::formation>>(*this);
+	}
+
+	attack_stance stance;
+	attack_formation formation;
+};
+
+/**
+ * Healing capabilities.
+ */
+template<> class Attribute<attr_type::heal>: public SharedAttributeContainer {
+public:
+	Attribute(coord::phys_t r, unsigned int l, float ra)
+		:
+		SharedAttributeContainer{attr_type::heal},
 		range{r},
-		init_height{h},
 		life{l},
 		rate{ra} {}
-
-	bool shared() const override {
-		return true;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::heal>>(*this);
 	}
 
+	/**
+	 * The max range of the healing.
+	 */
 	coord::phys_t range;
-	coord::phys_t init_height; // TODO remove?
+
+	/**
+	 * Life healed in each cycle
+	 */
 	unsigned int life;
+
+	/**
+	 * The rate of each heal cycle
+	 */
 	float rate;
 };
 
-
-template<> class Attribute<attr_type::speed>: public AttributeContainer {
+template<> class Attribute<attr_type::speed>: public SharedAttributeContainer {
 public:
 	Attribute(coord::phys_t sp)
 		:
-		AttributeContainer{attr_type::speed},
+		SharedAttributeContainer{attr_type::speed},
 		unit_speed{sp} {}
-
-	bool shared() const override {
-		return true;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::speed>>(*this);
 	}
 
-	coord::phys_t unit_speed; // possibly use a pointer to account for tech upgrades
+	// TODO rename to default or normal
+	coord::phys_t unit_speed;
 };
 
-template<> class Attribute<attr_type::direction>: public AttributeContainer {
+template<> class Attribute<attr_type::direction>: public UnsharedAttributeContainer {
 public:
 	Attribute(coord::phys3_delta dir)
 		:
-		AttributeContainer{attr_type::direction},
+		UnsharedAttributeContainer{attr_type::direction},
 		unit_dir(dir) {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::direction>>(*this);
@@ -292,17 +378,13 @@ public:
 	coord::phys3_delta unit_dir;
 };
 
-template<> class Attribute<attr_type::projectile>: public AttributeContainer {
+template<> class Attribute<attr_type::projectile>: public UnsharedAttributeContainer {
 public:
 	Attribute(float arc)
 		:
-		AttributeContainer{attr_type::projectile},
+		UnsharedAttributeContainer{attr_type::projectile},
 		projectile_arc{arc},
 		launched{false} {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::projectile>>(*this);
@@ -313,133 +395,149 @@ public:
 	bool launched;
 };
 
-template<> class Attribute<attr_type::building>: public AttributeContainer {
+/**
+ * TODO revisit after unit training is improved
+ */
+template<> class Attribute<attr_type::building>: public UnsharedAttributeContainer {
 public:
 	Attribute()
 		:
-		AttributeContainer{attr_type::building},
+		UnsharedAttributeContainer{attr_type::building},
 		completed{.0f},
-		is_dropsite{true},
 		foundation_terrain{0} {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::building>>(*this);
 	}
 
 	float completed;
-	bool is_dropsite;
 	int foundation_terrain;
 
 	// set the TerrainObject to this state
 	// once building has been completed
 	object_state completion_state;
 
-	// TODO: use unit class, fish and forage have different dropsites
-	game_resource resource_type;
-
 	// TODO: list allowed trainable producers
 	UnitType *pp;
+
+	/**
+	 * The go to point after a unit is created.
+	 */
 	coord::phys3 gather_point;
 };
 
-template<> class Attribute<attr_type::dropsite>: public AttributeContainer {
+/**
+ * The resources that are accepted to be dropped.
+ */
+template<> class Attribute<attr_type::dropsite>: public SharedAttributeContainer {
 public:
-
 	Attribute(std::vector<game_resource> types)
 		:
-		AttributeContainer{attr_type::dropsite},
+		SharedAttributeContainer{attr_type::dropsite},
 		resource_types{types} {}
-
-	bool shared() const override {
-		return true;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::dropsite>>(*this);
 	}
 
-	bool accepting_resource(game_resource res) {
-		if (std::find(resource_types.begin(), resource_types.end(), res) != resource_types.end()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	bool accepting_resource(game_resource res) const;
 
-private:
 	std::vector<game_resource> resource_types;
 };
 
 /**
- * resource capacity of an object, trees, mines, villagers etc.
+ * Resource capacity of a trees, mines, animal, worker etc.
+ * TODO add a way to define slower and faster resource gathering time needed
  */
-template<> class Attribute<attr_type::resource>: public AttributeContainer {
+template<> class Attribute<attr_type::resource>: public UnsharedAttributeContainer {
 public:
-	Attribute(game_resource type, float init_amount)
+	Attribute()
 		:
-		AttributeContainer{attr_type::resource},
+		Attribute{game_resource::food, 0} {}
+
+	Attribute(game_resource type, double init_amount)
+		:
+		UnsharedAttributeContainer{attr_type::resource},
 		resource_type{type},
 		amount{init_amount} {}
-
-	bool shared() const override {
-		return false;
-	}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::resource>>(*this);
 	}
 
 	game_resource resource_type;
-	float amount;
+	double amount;
 };
-
-class UnitTexture;
 
 /**
- * TODO: rename to worker
+ * The worker's capacity and gather rates.
  */
-template<> class Attribute<attr_type::gatherer>: public AttributeContainer {
+template<> class Attribute<attr_type::worker>: public SharedAttributeContainer {
 public:
 	Attribute()
 		:
-		AttributeContainer{attr_type::gatherer},
-		amount{.0f} {}
-
-	bool shared() const override {
-		return false;
-	}
+		SharedAttributeContainer{attr_type::worker} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
-		return std::make_shared<Attribute<attr_type::gatherer>>(*this);
+		return std::make_shared<Attribute<attr_type::worker>>(*this);
 	}
 
-	game_resource current_type;
-	float amount;
-	float capacity;
-	float gather_rate;
+	/**
+	 * The max number of resources that can be carried.
+	 */
+	double capacity;
 
-	// texture sets available for each resource
-	std::unordered_map<gamedata::unit_classes, UnitType *> graphics;
+	/**
+	 * The gather rate for each resource.
+	 * The ResourceBundle class is used but instead of amounts it stores gather rates.
+	 */
+	ResourceBundle gather_rate;
 };
 
-template<> class Attribute<attr_type::garrison>: public AttributeContainer {
+class Unit;
+
+/**
+ * Stores the collection of unit types based on a unit class.
+ * It is used mostly for units with multiple graphics (villagers, trebuchets).
+ */
+template<> class Attribute<attr_type::multitype>: public SharedAttributeContainer {
 public:
 	Attribute()
 		:
-		AttributeContainer{attr_type::garrison} {}
+		SharedAttributeContainer{attr_type::multitype} {}
 
-	bool shared() const override {
-		return false;
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::multitype>>(*this);
 	}
+
+	/**
+	 * Switch the type of a unit based on a given unit class
+	 */
+	void switchType(const gamedata::unit_classes cls, Unit *unit) const;
+
+	/**
+	 * The collection of unit class to unit type pairs
+	 */
+	std::unordered_map<gamedata::unit_classes, UnitType *> types;
+};
+
+/**
+ * Units put inside a building.
+ * TODO add capacity per type of unit
+ */
+template<> class Attribute<attr_type::garrison>: public UnsharedAttributeContainer {
+public:
+	Attribute()
+		:
+		UnsharedAttributeContainer{attr_type::garrison} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::garrison>>(*this);
 	}
 
+	/**
+	 * The units that are garrisoned.
+	 */
 	std::vector<UnitReference> content;
 };
 

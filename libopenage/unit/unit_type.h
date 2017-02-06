@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "../coord/phys3.h"
-#include "attribute.h"
+#include "attributes.h"
 
 namespace openage {
 
@@ -87,6 +87,16 @@ public:
 	virtual void initialise(Unit *, Player &) = 0;
 
 	/**
+	 * Initialize units shared attributes only to this type spec
+	 *
+	 * This can be called using existing units to modify type if the type
+	 * Ensure that the unit has been placed before seting the units type
+	 *
+	 * TODO define if pure vitrual or not / should be in nyan?
+	 */
+	virtual void reinitialise(Unit *, Player &);
+
+	/**
 	 * set unit in place -- return if placement was successful
 	 *
 	 * This should be used when initially creating a unit or
@@ -119,7 +129,7 @@ public:
 	/**
 	 * upgrades one attribute of this unit type
 	 */
-	void upgrade(const AttributeContainer &attr);
+	void upgrade(const std::shared_ptr<AttributeContainer> &attr);
 
 	/**
 	 * returns type matching parent_id()
@@ -145,7 +155,7 @@ public:
 	/**
 	 * default attributes which get copied to new units
 	 */
-	attr_map_t default_attributes;
+	Attributes default_attributes;
 
 	/**
 	 * The set of graphics used for this type

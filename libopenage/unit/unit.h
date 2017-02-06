@@ -15,6 +15,7 @@
 #include "../util/timing.h"
 #include "ability.h"
 #include "attribute.h"
+#include "attributes.h"
 #include "command.h"
 #include "unit_container.h"
 
@@ -174,6 +175,19 @@ public:
 	void add_attribute(std::shared_ptr<AttributeContainer> attr);
 
 	/**
+	 * Give new attributes to this unit.
+	 * This is used to add the default attributes
+	 */
+	void add_attributes(const Attributes &attr);
+
+	/**
+	 * Give new attributes to this unit.
+	 * If shared is false, shared attributes are ignored.
+	 * If unshared is false, unshared attributes are ignored.
+	 */
+	void add_attributes(const Attributes &attr, bool shared, bool unshared);
+
+	/**
 	 * returns whether attribute is available
 	 */
 	bool has_attribute(attr_type type) const;
@@ -183,7 +197,9 @@ public:
 	 */
 	template<attr_type T>
 	Attribute<T> &get_attribute() {
-		return *reinterpret_cast<Attribute<T> *>(attribute_map[T].get());
+		return *reinterpret_cast<Attribute<T> *>(attributes.get(T).get());
+		// TODO change to (templates errors)
+		//return attributes.get<T>();
 	}
 
 	/**
@@ -231,6 +247,12 @@ public:
 	 */
 	std::string logsource_name() override;
 
+	/**
+	 * Unit attributes include color, hitpoints, speed, objects garrisoned etc
+	 * contains 0 or 1 values for each type
+	 */
+	Attributes attributes;
+
 private:
 	/**
 	 * ability available -- actions that this entity
@@ -260,13 +282,6 @@ private:
 	 * mutex controlling updates to the command queue
 	 */
 	std::mutex command_queue_lock;
-
-
-	/**
-	 * Unit attributes include color, hitpoints, speed, objects garrisoned etc
-	 * contains 0 or 1 values for each type
-	 */
-	attr_map_t attribute_map;
 
 
 	/**

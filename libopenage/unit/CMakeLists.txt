@@ -1,6 +1,8 @@
 add_sources(libopenage
 	ability.cpp
 	action.cpp
+	attribute.cpp
+	attributes.cpp
 	command.cpp
 	producer.cpp
 	selection.cpp

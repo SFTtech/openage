@@ -12,17 +12,17 @@
 namespace openage {
 
 bool UnitAbility::has_hitpoints(Unit &target) {
-	return target.has_attribute(attr_type::hitpoints) &&
-	       target.get_attribute<attr_type::hitpoints>().current > 0;
+	return target.has_attribute(attr_type::damaged) &&
+	       target.get_attribute<attr_type::damaged>().hp > 0;
 }
 
 bool UnitAbility::is_damaged(Unit &target) {
-	return target.has_attribute(attr_type::hitpoints) &&
-	       target.get_attribute<attr_type::hitpoints>().current < target.get_attribute<attr_type::hitpoints>().max;
+	return target.has_attribute(attr_type::damaged) && target.has_attribute(attr_type::hitpoints) &&
+	       target.get_attribute<attr_type::damaged>().hp < target.get_attribute<attr_type::hitpoints>().hp;
 }
 
 bool UnitAbility::has_resource(Unit &target) {
-	return target.has_attribute(attr_type::resource) &&
+	return target.has_attribute(attr_type::resource) && !target.has_attribute(attr_type::worker) &&
 	       target.get_attribute<attr_type::resource>().amount > 0;
 }
 
@@ -224,7 +224,7 @@ bool GatherAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 		Unit &target = *cmd.unit();
 		return &to_modify != &target &&
 		       to_modify.location &&
-		       to_modify.has_attribute(attr_type::gatherer) &&
+		       to_modify.has_attribute(attr_type::worker) &&
 		       has_resource(target);
 	}
 	return false;

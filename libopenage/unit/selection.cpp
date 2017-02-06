@@ -47,9 +47,10 @@ bool UnitSelection::on_drawhud() {
 	for (auto u : this->units) {
 		if (u.second.is_valid()) {
 			Unit *unit_ptr = u.second.get();
-			if (unit_ptr->location && unit_ptr->has_attribute(attr_type::hitpoints)) {
+			if (unit_ptr->location && unit_ptr->has_attribute(attr_type::hitpoints) && unit_ptr->has_attribute(attr_type::damaged)) {
 				auto &hp = unit_ptr->get_attribute<attr_type::hitpoints>();
-				float percent = static_cast<float>(hp.current) / static_cast<float>(hp.max);
+				auto &dm = unit_ptr->get_attribute<attr_type::damaged>();
+				float percent = static_cast<float>(dm.hp) / static_cast<float>(hp.hp);
 				int mid = percent * 28.0f - 14.0f;
 
 				coord::phys3 &pos_phys3 = unit_ptr->location->pos.draw;
@@ -127,7 +128,7 @@ void UnitSelection::toggle_unit(const Player &player, Unit *u, bool append) {
 void UnitSelection::add_unit(const Player &player, Unit *u, bool append) {
 	// Only select resources and units with hitpoints > 0
 	if (u->has_attribute(attr_type::resource) ||
-	   (u->has_attribute(attr_type::hitpoints) && u->get_attribute<attr_type::hitpoints>().current > 0)) {
+	   (u->has_attribute(attr_type::damaged) && u->get_attribute<attr_type::damaged>().hp > 0)) {
 
 		selection_type_t unit_type = get_unit_selection_type(player, u);
 		int unit_type_i = static_cast<int>(unit_type);
@@ -281,13 +282,14 @@ void UnitSelection::show_attributes(Unit *u) {
 		auto &own_attr = u->get_attribute<attr_type::owner>();
 		lines.push_back(own_attr.player.name);
 	}
-	if (u->has_attribute(attr_type::hitpoints)) {
-		auto &hp_attr = u->get_attribute<attr_type::hitpoints>();
-		lines.push_back("hitpoints: "+std::to_string(hp_attr.current)+"/"+std::to_string(hp_attr.max));
+	if (u->has_attribute(attr_type::hitpoints) && u->has_attribute(attr_type::damaged)) {
+		auto &hp = u->get_attribute<attr_type::hitpoints>();
+		auto &dm = u->get_attribute<attr_type::damaged>();
+		lines.push_back("hitpoints: "+std::to_string(dm.hp)+"/"+std::to_string(hp.hp));
 	}
 	if (u->has_attribute(attr_type::resource)) {
 		auto &res_attr = u->get_attribute<attr_type::resource>();
-		lines.push_back("resource: "+std::to_string(res_attr.amount));
+		lines.push_back("resource: "+std::to_string(res_attr.amount)+" "+std::to_string(res_attr.resource_type));
 	}
 	if (u->has_attribute(attr_type::building)) {
 		auto &build_attr = u->get_attribute<attr_type::building>();
@@ -310,7 +312,8 @@ void UnitSelection::show_attributes(Unit *u) {
 selection_type_t UnitSelection::get_unit_selection_type(const Player &player, Unit *u) {
 	bool is_building = u->has_attribute(attr_type::building);
 
-	// Check color
+	// Check owner
+	// TODO implement allied units
 	if (u->is_own_unit(player)) {
 		return is_building ? selection_type_t::own_buildings : selection_type_t::own_units;
 	} else {

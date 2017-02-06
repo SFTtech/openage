@@ -98,20 +98,20 @@ void UnitAction::face_towards(const coord::phys3 pos) {
 
 // TODO remove (keep for testing)
 void UnitAction::damage_object(Unit &target, unsigned dmg) {
-	if (target.has_attribute(attr_type::hitpoints)) {
-		auto &hp = target.get_attribute<attr_type::hitpoints>();
-		if (hp.current > dmg) {
-			hp.current -= dmg;
+	if (target.has_attribute(attr_type::damaged)) {
+		auto &dm = target.get_attribute<attr_type::damaged>();
+		if (dm.hp > dmg) {
+			dm.hp -= dmg;
 		}
 		else {
-			hp.current = 0;
+			dm.hp = 0;
 		}
 	}
 }
 
 void UnitAction::damage_object(Unit &target) {
-	if (target.has_attribute(attr_type::hitpoints)) {
-		auto &hp = target.get_attribute<attr_type::hitpoints>();
+	if (target.has_attribute(attr_type::damaged)) {
+		auto &dm = target.get_attribute<attr_type::damaged>();
 
 		if (target.has_attribute(attr_type::armor) && this->entity->has_attribute(attr_type::attack)) {
 			auto &armor = target.get_attribute<attr_type::armor>().armor;
@@ -131,11 +131,11 @@ void UnitAction::damage_object(Unit &target) {
 				actual_damage = 1;
 			}
 
-			if (hp.current > actual_damage) {
-				hp.current -= actual_damage;
+			if (dm.hp > actual_damage) {
+				dm.hp -= actual_damage;
 			}
 			else {
-				hp.current = 0;
+				dm.hp = 0;
 			}
 		}
 		else {
@@ -229,8 +229,9 @@ void TargetAction::on_completion() {
 		new_target = find_near(*this->entity->location,
 			[this](const TerrainObject &obj) {
 				return obj.unit.unit_type->id() == this->target_type_id &&
+				       !obj.unit.has_attribute(attr_type::worker) &&
 				       obj.unit.has_attribute(attr_type::resource) &&
-				       obj.unit.get_attribute<attr_type::resource>().amount > 0.0f;
+				       obj.unit.get_attribute<attr_type::resource>().amount > 0.0;
 			});
 	}
 
@@ -317,9 +318,9 @@ DeadAction::DeadAction(Unit *e, std::function<void()> on_complete)
 }
 
 void DeadAction::update(unsigned int time) {
-	if (this->entity->has_attribute(attr_type::hitpoints)) {
-		auto &h_attr = this->entity->get_attribute<attr_type::hitpoints>();
-		h_attr.current = 0;
+	if (this->entity->has_attribute(attr_type::damaged)) {
+		auto &dm = this->entity->get_attribute<attr_type::damaged>();
+		dm.hp = 0;
 	}
 
 	// inc frame but do not pass the end frame
@@ -338,8 +339,8 @@ void DeadAction::on_completion() {
 
 bool DeadAction::completed() const {
 
-	// check resource, trees/huntables with resource are not removed
-	if (this->entity->has_attribute(attr_type::resource)) {
+	// check resource, trees/huntables with resource are not removed but not workers
+	if (this->entity->has_attribute(attr_type::resource) && !this->entity->has_attribute(attr_type::worker)) {
 		auto &res_attr = this->entity->get_attribute<attr_type::resource>();
 		return res_attr.amount <= 0; // cannot complete when resource remains
 	}
@@ -396,7 +397,8 @@ void IdleAction::update(unsigned int time) {
 	if (this->entity->location &&
 	    this->entity->has_attribute(attr_type::owner) &&
 	    this->entity->has_attribute(attr_type::attack) &&
-	    this->entity->get_attribute<attr_type::attack>().stance != attack_stance::do_nothing) {
+	    this->entity->has_attribute(attr_type::formation) &&
+	    this->entity->get_attribute<attr_type::formation>().stance != attack_stance::do_nothing) {
 
 		// restart search from new tile when moved
 		auto terrain = this->entity->location->get_terrain();
@@ -425,9 +427,9 @@ void IdleAction::update(unsigned int time) {
 
 	// unit carrying ressources take the carrying sprite when idle
 	// we're not updating frames because the carying sprite is walking
-	if (entity->has_attribute(attr_type::gatherer)) {
-		auto gatherer_attrib = entity->get_attribute<attr_type::gatherer>();
-		if (gatherer_attrib.amount > 0) {
+	if (entity->has_attribute(attr_type::worker)) {
+		auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
+		if (worker_resource.amount > 0) {
 			this->graphic = graphic_type::carrying;
 		} else {
 			this->graphic = graphic_type::standing;
@@ -443,13 +445,13 @@ void IdleAction::update(unsigned int time) {
 void IdleAction::on_completion() {}
 
 bool IdleAction::completed() const {
-	if (this->entity->has_attribute(attr_type::hitpoints)) {
-		auto &hp = this->entity->get_attribute<attr_type::hitpoints>();
-		return hp.current == 0;
+	if (this->entity->has_attribute(attr_type::damaged)) {
+		auto &dm = this->entity->get_attribute<attr_type::damaged>();
+		return dm.hp == 0;
 	}
 	else if (this->entity->has_attribute(attr_type::resource)) {
 		auto &res_attr = this->entity->get_attribute<attr_type::resource>();
-		return res_attr.amount <= 0.0f;
+		return res_attr.amount <= 0.0;
 	}
 	return false;
 }
@@ -478,9 +480,9 @@ MoveAction::MoveAction(Unit *e, UnitReference tar, coord::phys_t within_range)
 
 void MoveAction::initialise() {
 	// switch workers to the carrying graphic
-	if (this->entity->has_attribute(attr_type::gatherer)) {
-		auto &gather_attr = this->entity->get_attribute<attr_type::gatherer>();
-		if (gather_attr.amount > 0) {
+	if (this->entity->has_attribute(attr_type::worker)) {
+		auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
+		if (worker_resource.amount > 0) {
 			this->graphic = graphic_type::carrying;
 		}
 	}
@@ -753,12 +755,8 @@ BuildAction::BuildAction(Unit *e, UnitReference foundation)
 	build_rate{.0001f} {
 
 	// update the units type
-	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
-	auto building_class = gamedata::unit_classes::BUILDING;
-	if (gatherer_attr.graphics.count(building_class) > 0) {
-		auto *new_type = gatherer_attr.graphics.at(building_class);
-		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		new_type->initialise(this->entity, pl_attr.player);
+	if (this->entity->has_attribute(attr_type::multitype)) {
+		this->entity->get_attribute<attr_type::multitype>().switchType(gamedata::unit_classes::BUILDING, this->entity);
 	}
 }
 
@@ -810,7 +808,8 @@ void BuildAction::on_completion() {
 	}
 	this->entity->log(MSG(dbg) << "Done building, searching for new building");
 	auto valid = [this](const TerrainObject &obj) {
-		if (!obj.unit.has_attribute(attr_type::building) ||
+		if (!this->entity->get_attribute<attr_type::owner>().player.owns(obj.unit) ||
+		    !obj.unit.has_attribute(attr_type::building) ||
 		    obj.unit.get_attribute<attr_type::building>().completed >= 1.0f) {
 			return false;
 		}
@@ -826,25 +825,6 @@ void BuildAction::on_completion() {
 	} else {
 		this->entity->log(MSG(dbg) << "Didn't find new building");
 	}
-}
-
-const graphic_set &BuildAction::current_graphics() const {
-	if (this->entity->has_attribute(attr_type::gatherer)) {
-
-		// the gatherer attributes attached to the unit
-		// are used to modify the graphic
-		auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
-
-		if (this->get_target().is_valid() &&
-		    this->get_target().get()->has_attribute(attr_type::building)) {
-
-			// set builder graphics if available
-			if (gatherer_attr.graphics.count(gamedata::unit_classes::BUILDING) > 0) {
-				return gatherer_attr.graphics[gamedata::unit_classes::BUILDING]->graphics;
-			}
-		}
-	}
-	return this->entity->unit_type->graphics;
 }
 
 RepairAction::RepairAction(Unit *e, UnitReference tar)
@@ -873,16 +853,17 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 		//this->cost += get target cost;
 		this->cost[game_resource::wood] = 100; // temp
 
-		this->cost *= 0.5 / hp.max;
+		this->cost *= 0.5 / hp.hp;
 	}
 }
 
 void RepairAction::update_in_range(unsigned int time, Unit *target_unit) {
 
 	auto &hp = target_unit->get_attribute<attr_type::hitpoints>();
+	auto &dm = target_unit->get_attribute<attr_type::damaged>();
 	auto &owner = this->entity->get_attribute<attr_type::owner>();
 
-	if (hp.current >= hp.max) {
+	if (dm.hp >= hp.hp) {
 		// repaired by something else
 		this->complete = true;
 	}
@@ -890,9 +871,9 @@ void RepairAction::update_in_range(unsigned int time, Unit *target_unit) {
 		this->time_left -= time;
 
 		if (this->time_left <= 0) {
-			hp.current += 1;
+			dm.hp += 1;
 
-			if (hp.current >= hp.max) {
+			if (dm.hp >= hp.hp) {
 				this->complete = true;
 			}
 		}
@@ -921,22 +902,20 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 
 	Unit *target = this->target.get();
 	this->resource_class = target->unit_type->unit_class;
-	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
 
 	// handle unit type changes based on resource class
-	if (gatherer_attr.graphics.count(this->resource_class) > 0) {
-		auto *new_type = gatherer_attr.graphics.at(this->resource_class);
-		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		new_type->initialise(this->entity, pl_attr.player);
+	if (this->entity->has_attribute(attr_type::multitype)) {
+		this->entity->get_attribute<attr_type::multitype>().switchType(this->resource_class, this->entity);
 	}
 
 	// set the type of gatherer
+	auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
 	if (target->has_attribute(attr_type::resource)) {
 		auto &resource_attr = target->get_attribute<attr_type::resource>();
-		if (gatherer_attr.current_type != resource_attr.resource_type) {
-			this->entity->get_attribute<attr_type::gatherer>().amount = 0;
+		if (worker_resource.resource_type != resource_attr.resource_type) {
+			worker_resource.amount = 0;
 		}
-		gatherer_attr.current_type = resource_attr.resource_type;
+		worker_resource.resource_type = resource_attr.resource_type;
 	} else {
 		throw std::invalid_argument("Unit reference has no resource attribute");
 	}
@@ -945,7 +924,8 @@ GatherAction::GatherAction(Unit *e, UnitReference tar)
 GatherAction::~GatherAction() {}
 
 void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
-	auto &gatherer_attr = this->entity->get_attribute<attr_type::gatherer>();
+	auto &worker = this->entity->get_attribute<attr_type::worker>();
+	auto &worker_resource = this->entity->get_attribute<attr_type::resource>();
 	if (this->target_resource) {
 
 		// the targets attributes
@@ -956,13 +936,13 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 		// attack objects which have hitpoints (trees, hunt, sheep)
 		if (this->entity->has_attribute(attr_type::owner) &&
-		    targeted_resource->has_attribute(attr_type::hitpoints)) {
-			auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-			auto &hp_attr = targeted_resource->get_attribute<attr_type::hitpoints>();
+		    targeted_resource->has_attribute(attr_type::damaged)) {
+			auto &pl = this->entity->get_attribute<attr_type::owner>();
+			auto &dm = targeted_resource->get_attribute<attr_type::damaged>();
 
 			// only attack if hitpoints remain
-			if (hp_attr.current > 0) {
-				Command cmd(pl_attr.player, targeted_resource);
+			if (dm.hp > 0) {
+				Command cmd(pl.player, targeted_resource);
 				cmd.set_ability(ability_type::attack);
 				cmd.add_flag(command_flag::attack_res);
 				this->entity->queue_cmd(cmd);
@@ -971,21 +951,21 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 		}
 
 		// need to return to dropsite
-		if (gatherer_attr.amount > gatherer_attr.capacity) {
+		if (worker_resource.amount > worker.capacity) {
 
 			// move to dropsite location
 			this->target_resource = false;
-			this->set_target(this->nearest_dropsite(gatherer_attr.current_type));
+			this->set_target(this->nearest_dropsite(worker_resource.resource_type));
 		}
 		else {
 
 			auto &resource_attr = targeted_resource->get_attribute<attr_type::resource>();
-			if (resource_attr.amount <= 0.0f) {
+			if (resource_attr.amount <= 0.0) {
 
 				// when the resource runs out
-				if (gatherer_attr.amount > 0.0f) {
+				if (worker_resource.amount > 0.0) {
 					this->target_resource = false;
-					this->set_target(this->nearest_dropsite(gatherer_attr.current_type));
+					this->set_target(this->nearest_dropsite(worker_resource.resource_type));
 				}
 				else {
 					this->complete = true;
@@ -994,8 +974,9 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 			else {
 
 				// transfer using gather rate
-				gatherer_attr.amount += gatherer_attr.gather_rate * time;
-				resource_attr.amount -= gatherer_attr.gather_rate * time;
+				double amount = worker.gather_rate[worker_resource.resource_type] * time;
+				worker_resource.amount += amount;
+				resource_attr.amount -= amount;
 			}
 		}
 	}
@@ -1003,13 +984,13 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 		// dropsite has been reached
 		// add value to player stockpile
-		Player &player = this->entity->get_attribute<attr_type::owner>().player;
-		player.receive(gatherer_attr.current_type, gatherer_attr.amount);
-		gatherer_attr.amount = 0.0f;
+		auto &player = this->entity->get_attribute<attr_type::owner>().player;
+		player.receive(worker_resource.resource_type, worker_resource.amount);
+		worker_resource.amount = 0.0;
 
 		// make sure the resource stil exists
 		if (this->target.is_valid() &&
-		    this->target.get()->get_attribute<attr_type::resource>().amount > 0.0f) {
+		    this->target.get()->get_attribute<attr_type::resource>().amount > 0.0) {
 
 			// return to resouce collection
 			this->target_resource = true;
@@ -1052,22 +1033,19 @@ UnitReference GatherAction::nearest_dropsite(game_resource res_type) {
 	}
 }
 
-const graphic_set &GatherAction::current_graphics() const {
-	return this->entity->unit_type->graphics;
-}
-
 AttackAction::AttackAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::attack, tar, get_attack_range(e)},
 	strike_percent{0.0f},
 	rate_of_fire{0.002f} {
 
-	// switch graphic type for villagers not collecting resources
-	if (this->entity->has_attribute(attr_type::gatherer) &&
-	    !tar.get()->has_attribute(attr_type::resource)) {
-		auto &att_attr = this->entity->get_attribute<attr_type::attack>();
-		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		att_attr.attack_type->initialise(this->entity, pl_attr.player);
+	// check if attacking a non resource unit
+	if (this->entity->has_attribute(attr_type::worker) &&
+	    (!tar.get()->has_attribute(attr_type::resource) || tar.get()->has_attribute(attr_type::worker))) {
+		// switch to default villager graphics
+		if (this->entity->has_attribute(attr_type::multitype)) {
+			this->entity->get_attribute<attr_type::multitype>().switchType(gamedata::unit_classes::CIVILIAN, this->entity);
+		}
 	}
 }
 
@@ -1087,8 +1065,8 @@ void AttackAction::update_in_range(unsigned int time, Unit *target_ptr) {
 }
 
 bool AttackAction::completed_in_range(Unit *target_ptr) const {
-	auto &h_attr = target_ptr->get_attribute<attr_type::hitpoints>();
-	return h_attr.current < 1; // is unit still alive?
+	auto &dm = target_ptr->get_attribute<attr_type::damaged>();
+	return dm.hp < 1; // is unit still alive?
 }
 
 void AttackAction::attack(Unit &target) {
@@ -1111,7 +1089,7 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 	current_pos.up = att.init_height;
 
 	// create using the producer
-	auto player = this->entity->get_attribute<attr_type::owner>().player;
+	auto &player = this->entity->get_attribute<attr_type::owner>().player;
 	auto projectile_ref = container->new_unit(*att.ptype, player, current_pos);
 
 	// send towards target using a projectile ability (creates projectile motion action)
@@ -1153,8 +1131,9 @@ void HealAction::update_in_range(unsigned int time, Unit *target_ptr) {
 }
 
 bool HealAction::completed_in_range(Unit *target_ptr) const {
-	auto &h_attr = target_ptr->get_attribute<attr_type::hitpoints>();
-	return h_attr.current >= h_attr.max; // is unit at full hitpoints?
+	auto &hp = target_ptr->get_attribute<attr_type::hitpoints>();
+	auto &dm = target_ptr->get_attribute<attr_type::damaged>();
+	return dm.hp >= hp.hp; // is unit at full hitpoints?
 }
 
 void HealAction::heal(Unit &target) {
@@ -1162,13 +1141,14 @@ void HealAction::heal(Unit &target) {
 
 	// TODO move to seperate function heal_object (like damage_object)?
 	// heal object
-	if (target.has_attribute(attr_type::hitpoints)) {
+	if (target.has_attribute(attr_type::hitpoints) && target.has_attribute(attr_type::damaged)) {
 		auto &hp = target.get_attribute<attr_type::hitpoints>();
-		if ((hp.current + heal.life) < hp.max) {
-			hp.current += heal.life;
+		auto &dm = target.get_attribute<attr_type::damaged>();
+		if ((dm.hp + heal.life) < hp.hp) {
+			dm.hp += heal.life;
 		}
 		else {
-			hp.current = hp.max;
+			dm.hp = hp.hp;
 		}
 	}
 

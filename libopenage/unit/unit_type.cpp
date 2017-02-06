@@ -29,6 +29,18 @@ UnitType::UnitType(const Player &owner)
 	owner{owner} {
 }
 
+void UnitType::reinitialise(Unit *unit, Player &player) {
+	// In case reinitialise is not implemented separately
+
+	Attributes tmp;
+	// copy only unshared
+	tmp.add_copies(unit->attributes, false, true);
+	// initialise the new unit
+	this->initialise(unit, player);
+	// replace new unshared attributes with the old
+	unit->attributes.add_copies(tmp);
+}
+
 bool UnitType::operator==(const UnitType &other) const {
 	return this->type_abilities == other.type_abilities;
 }
@@ -69,13 +81,11 @@ TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const
 }
 
 void UnitType::copy_attributes(Unit *unit) const {
-	for (auto &attr : this->default_attributes) {
-		unit->add_attribute(attr.second->copy());
-	}
+	unit->add_attributes(this->default_attributes);
 }
 
-void UnitType::upgrade(const AttributeContainer &attr) {
-	*this->default_attributes[attr.type] = attr;
+void UnitType::upgrade(const std::shared_ptr<AttributeContainer> &attr) {
+	this->default_attributes.add(attr);
 }
 
 UnitType *UnitType::parent_type() const {
@@ -103,7 +113,7 @@ std::string NyanType::name() const {
 }
 
 void NyanType::initialise(Unit *unit, Player &) {
-	// reset any existing attributes and type
+	// removes all actions and abilities
 	unit->reset();
 
 	// initialise unit
