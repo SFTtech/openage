@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,5 +19,4 @@ constexpr double INV2_SQRT_PI = 1.12837916709551257390;  //!< 2/sqrt(pi)
 constexpr double SQRT_2       = 1.41421356237309504880;  //!< sqrt(2)
 constexpr double INV_SQRT_2   = 0.707106781186547524401; //!< 1/sqrt(2)
 
-} // namespace math
-} // namespace openage
+}} // openage::math
