@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """ Lists of all possible tests; enter your tests here. """
 
@@ -66,6 +66,7 @@ def tests_cpp():
     yield "openage::util::tests::enum_"
     yield "openage::util::tests::init"
     yield "openage::util::tests::matrix"
+    yield "openage::util::tests::quaternion"
     yield "openage::util::tests::vector"
     yield "openage::input::tests::parse_event_string", "keybinds parsing"
 
