@@ -8,13 +8,19 @@
 #include <vector>
 
 #include "../path.h"
+#include "../file.h"
 
 
 namespace openage {
 namespace util {
 
 
-class File;
+/**
+ * Contains the filesystem-like object abstraction for C++.
+ * With that, filesystem access can be dispatched for
+ * transparent archive access, union mounts and more.
+ */
+namespace fslike {
 
 
 /**
@@ -33,8 +39,8 @@ public:
 	virtual bool writable(const Path::parts_t &parts) = 0;
 	virtual Path::parts_t list(const Path::parts_t &parts) = 0;
 	virtual bool mkdirs(const Path::parts_t &parts) = 0;
-	virtual std::shared_ptr<File> open_r(const Path::parts_t &parts) = 0;
-	virtual std::shared_ptr<File> open_w(const Path::parts_t &parts) = 0;
+	virtual File open_r(const Path::parts_t &parts) = 0;
+	virtual File open_w(const Path::parts_t &parts) = 0;
 	virtual bool rename(const Path::parts_t &parts,
 	                    const Path::parts_t &target_parts) = 0;
 	virtual bool rmdir(const Path::parts_t &parts) = 0;
@@ -47,4 +53,4 @@ public:
 	virtual std::ostream &repr(std::ostream &) = 0;
 };
 
-}} // openage::util
+}}} // openage::util::fslike

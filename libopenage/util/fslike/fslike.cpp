@@ -7,6 +7,7 @@
 
 namespace openage {
 namespace util {
+namespace fslike {
 
 FSLike::FSLike() {}
 
@@ -15,4 +16,4 @@ Path FSLike::root() {
 }
 
 
-}} // openage::util
+}}} // openage::util::fslike

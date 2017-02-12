@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "dir.h"
-#include "../error/error.h"
+#include "filelike/filelike.h"
 // pxd: from libopenage.pyinterface.pyobject cimport PyObj
 #include "../pyinterface/pyobject.h"
 
@@ -18,7 +18,6 @@
 namespace openage {
 namespace util {
 
-class FileLike;
 class Path;
 
 
@@ -57,14 +56,36 @@ std::vector<std::string> file_get_lines(const std::string &file_name);
  * pxd:
  *
  * cppclass File:
+ *     File() noexcept
+ *     File(const string &path, int mode) except +
  *     File(PyObj) except +
  */
 class File {
 public:
+	using seek_t = filelike::FileLike::seek_t;
+	using mode_t = filelike::FileLike::mode_t;
+
+	/**
+	 * Empty constructor, pls don't use.
+	 * It only exists because Cython needs it.
+	 */
+	File();
+
+	/**
+	 * Open a filesystem path, int version.
+	 * this is just the integer value of the mode_t, because Cython...
+	 */
+	File(const std::string &path, int mode);
+
 	/**
 	 * Open a filesystem path.
 	 */
-	File(const std::string &path);
+	File(const std::string &path, mode_t mode=mode_t::R);
+
+	/**
+	 * Create a file from an already created filelike.
+	 */
+	File(std::shared_ptr<filelike::FileLike> filelike);
 
 	/**
 	 * Wraps a python filelike object that is already open.
@@ -77,9 +98,20 @@ public:
 	virtual ~File() = default;
 
 	std::string read(ssize_t max=-1);
+	bool readable();
+	void write(const std::string &data);
+	bool writable();
+	void seek(ssize_t offset, seek_t how=seek_t::SET);
+	bool seekable();
+	size_t tell();
+	void close();
+	void flush();
+	ssize_t size();
 
-private:
-	std::shared_ptr<FileLike> filelike;
+protected:
+	std::shared_ptr<filelike::FileLike> filelike;
+
+	friend std::ostream &operator <<(std::ostream &stream, const File &file);
 };
 
 }} // openage::util

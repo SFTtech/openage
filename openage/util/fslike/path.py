@@ -129,6 +129,13 @@ class Path:
         """ open with mode='wb' """
         return self.fsobj.open_w(self.parts)
 
+    def get_native_path(self):
+        """
+        return the native path (usable by your kernel) of this path,
+        or None if the path is not natively usable.
+        """
+        return self.fsobj.get_native_path(self.parts)
+
     def rename(self, targetpath):
         """ renames to targetpath """
         if self.fsobj != targetpath.fsobj:

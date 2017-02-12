@@ -4,8 +4,10 @@
 
 namespace openage {
 namespace util {
+namespace filelike {
+
 
 FileLike::FileLike() {}
 
 
-}} // openage::util
+}}} // openage::util::filelike

@@ -3,8 +3,8 @@
 #include "path.h"
 
 #include "error.h"
-#include "fslike/fslike_python.h"
-#include "fslike/fslike_stdlib.h"
+#include "fslike/directory.h"
+#include "fslike/python.h"
 
 #include "misc.h"
 #include "strings.h"
@@ -12,6 +12,8 @@
 
 namespace openage {
 namespace util {
+
+Path::Path() {}
 
 
 Path::Path(py::Obj fsobj,
@@ -34,19 +36,20 @@ Path::Path(py::Obj fsobj,
 		}
 	}
 
-	// TODO: depending on the filesystemlike object,
-	//       select a backend.
-	// py_fs_is_native_path(pyobj)...
-	if (true) {
-		this->fsobj = std::make_shared<FSLikePython>(fsobj);
-	} else {
-		std::string basepath = "TODO get from fsobj";
-		this->fsobj = std::make_shared<FSLikeNative>(basepath);
+	py::Obj result = fslike::pyx_fs_get_native_path.call(fsobj.get_ref(), parts);
+
+	if (result.is(py::None)) {
+		// we can't create a c++-variant of the path,
+		// so just wrap the python path.
+		this->fsobj = std::make_shared<fslike::Python>(fsobj);
+	}
+	else {
+		this->fsobj = std::make_shared<fslike::Directory>(result.bytes());
 	}
 }
 
 
-Path::Path(const std::shared_ptr<FSLike> &fsobj,
+Path::Path(const std::shared_ptr<fslike::FSLike> &fsobj,
            const std::vector<std::string> &parts)
 	:
 	fsobj{fsobj},
@@ -88,7 +91,7 @@ bool Path::mkdirs() {
 	return this->fsobj->mkdirs(this->parts);
 }
 
-std::shared_ptr<File> Path::open(const std::string &mode) {
+File Path::open(const std::string &mode) {
 	if (mode == "r") {
 		return this->open_r();
 	}
@@ -100,11 +103,11 @@ std::shared_ptr<File> Path::open(const std::string &mode) {
 	}
 }
 
-std::shared_ptr<File> Path::open_r() {
+File Path::open_r() {
 	return this->fsobj->open_r(this->parts);
 }
 
-std::shared_ptr<File> Path::open_w() {
+File Path::open_w() {
 	return this->fsobj->open_w(this->parts);
 }
 

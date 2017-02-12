@@ -56,6 +56,9 @@ class Directory(FSLikeObject):
     def open_w(self, parts):
         return open(self.resolve(parts), 'wb')
 
+    def get_native_path(self, parts):
+        return self.resolve(parts)
+
     def list(self, parts):
         # TODO migrate to scandir, once we're on py 3.5.
         yield from os.listdir(self.resolve(parts))

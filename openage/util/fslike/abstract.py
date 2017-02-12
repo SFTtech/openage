@@ -64,6 +64,9 @@ class FSLikeObject(ABC):
     def resolve_r(self, parts):
         """
         Returns a Path which equals the one that would be used by open_r.
+        The fslike parts in between may be skipped, so that just the resulting
+        path is returned.
+
         Returns None if the file does not exist.
         """
         return Path(self, parts) if self.is_file(parts) else None
@@ -71,9 +74,19 @@ class FSLikeObject(ABC):
     def resolve_w(self, parts):
         """
         Returns a Path which equals the one that would be used by open_w.
+        Parts in between may be skipped, just the resulting path is returned.
+
         Returns None if the file does not exist or is not writable.
         """
         return Path(self, parts) if self.writable(parts) else None
+
+    def get_native_path(self, parts):  # pylint: disable=no-self-use,unused-argument
+        """
+        Return the path bytestring that represents a location usable
+        by your kernel.
+        If the path can't be represented natively, return None.
+        """
+        return None
 
     @abstractmethod
     def list(self, parts):

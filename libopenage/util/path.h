@@ -12,6 +12,7 @@
 // pxd: from libopenage.pyinterface.pyobject cimport PyObj
 #include "../pyinterface/pyobject.h"
 
+
 /*
  * C++ wrappers for openage.util.fslikeobject
  */
@@ -19,9 +20,11 @@
 namespace openage {
 namespace util {
 
-
 class File;
+
+namespace fslike {
 class FSLike;
+}
 
 
 /**
@@ -31,6 +34,7 @@ class FSLike;
  * pxd:
  *
  * cppclass Path:
+ *     Path() noexcept
  *     Path(PyObj, const vector[string]&) except +
  *
  */
@@ -50,6 +54,13 @@ public:
 	using parts_t = std::vector<part_t>;
 
 	/**
+	 * Nullary constructor, pls don't use.
+	 * It only exists because Cython can't RAII.
+	 * It should be just friend of cython.
+	 */
+	Path();
+
+	/**
 	 * Construct a path object from a python fslike
 	 * object. This is called from Cython.
 	 *
@@ -61,7 +72,7 @@ public:
 	/**
 	 * Construct a path from a fslike pointer.
 	 */
-	Path(const std::shared_ptr<FSLike> &fslike,
+	Path(const std::shared_ptr<fslike::FSLike> &fslike,
 	     const parts_t &parts={});
 
 	virtual ~Path() = default;
@@ -75,9 +86,10 @@ public:
 	std::vector<part_t> list();
 	std::vector<Path> iterdir();
 	bool mkdirs();
-	std::shared_ptr<File> open(const std::string &mode="r");
-	std::shared_ptr<File> open_r();
-	std::shared_ptr<File> open_w();
+	File open(const std::string &mode="r");
+	File open_r();
+	File open_w();
+
 	bool rename(const Path &target_path);
 	bool rmdir();
 	bool touch();
@@ -88,8 +100,8 @@ public:
 	uint64_t get_filesize();
 
 	// TODO: watching of path with inotify or similar
-	// int watch();
-	// void poll_fs_watches();
+	// int watch(std::function<> callback);
+	// void poll_fs_watches(); // call triggered callbacks
 
 	Path get_parent();
 	const std::string &get_name();
@@ -107,11 +119,12 @@ public:
 	Path with_suffix(const part_t &suffix);
 
 protected:
-	std::shared_ptr<FSLike> fsobj;
+	std::shared_ptr<fslike::FSLike> fsobj;
 
 	parts_t parts;
 
 	friend std::ostream &operator <<(std::ostream &stream, const Path &path);
 };
+
 
 }} // openage::util

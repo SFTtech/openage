@@ -127,8 +127,8 @@ class FileLikeObject(ABC):
         """
         Helper function for use by implementations of seek().
 
-        Calculates the new cursor position from offset, whence,
-        and self.tell().
+        Calculates the new cursor position relative to file start
+        from offset, whence and self.tell().
 
         If size is given, it works for whence=os.SEEK_END;
         otherwise, UnsupportedOperation is raised.
