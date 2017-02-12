@@ -43,7 +43,7 @@ namespace pyinterface {
  *     void clear_ref_without_decrementing() noexcept
  *
  *
- * ctypedef PyObjectRef PyObj;
+ * ctypedef PyObjectRef PyObj
  *
  * ctypedef PyObjectRef *PyObjectRefPtr
  * ctypedef PyObject    *PyObjectPtr
@@ -99,6 +99,11 @@ public:
 	 * repr(obj)
 	 */
 	std::string repr() const;
+
+	/**
+	 * bytes(obj)
+	 */
+	std::string bytes() const;
 
 	/**
 	 * len(obj)
@@ -274,6 +279,8 @@ extern PyIfFunc<void, PyObject *> py_xdecref;
 extern PyIfFunc<std::string, PyObject *> py_str;
 // pxd: PyIfFunc1[string, PyObjectPtr] py_repr
 extern PyIfFunc<std::string, PyObject *> py_repr;
+// pxd: PyIfFunc1[string, PyObjectPtr] py_bytes
+extern PyIfFunc<std::string, PyObject *> py_bytes;
 // pxd: PyIfFunc1[int, PyObjectPtr] py_len
 extern PyIfFunc<int, PyObject *> py_len;
 // pxd: PyIfFunc1[cppbool, PyObjectPtr] py_callable
@@ -322,8 +329,6 @@ extern PyIfFunc<void, PyObjectRef *, const char *> py_createbytes;
 extern PyIfFunc<void, PyObjectRef *, int> py_createint;
 // pxd: PyIfFunc1[void, PyObjectRefPtr] py_createdict
 extern PyIfFunc<void, PyObjectRef *> py_createdict;
-// pxd: PyIfFunc1[void, PyObjectRefPtr] py_getnone
-extern PyIfFunc<void, PyObjectRef *> py_getnone;
 
 } // pyinterface
 
@@ -376,9 +381,27 @@ Obj dict();
 
 
 /**
- * None
+ * The None python object.
+ *
+ * pxd: PyObjectRef None
  */
-Obj none();
+extern Obj None;
+
+
+/**
+ * The True python object.
+ *
+ * pxd: PyObjectRef True
+ */
+extern Obj True;
+
+
+/**
+ * The False python object.
+ *
+ * pxd: PyObjectRef False
+ */
+extern Obj False;
 
 } // py
 } // openage

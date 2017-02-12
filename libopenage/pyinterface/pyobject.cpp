@@ -99,6 +99,11 @@ std::string PyObjectRef::repr() const {
 }
 
 
+std::string PyObjectRef::bytes() const {
+	return py_bytes.call(this->ref);
+}
+
+
 int PyObjectRef::len() const {
 	return py_len.call(this->ref);
 }
@@ -227,6 +232,7 @@ PyIfFunc<void, PyObject *> py_xdecref;
 
 PyIfFunc<std::string, PyObject *> py_str;
 PyIfFunc<std::string, PyObject *> py_repr;
+PyIfFunc<std::string, PyObject *> py_bytes;
 PyIfFunc<int, PyObject *> py_len;
 PyIfFunc<bool, PyObject *> py_callable;
 PyIfFunc<void, PyObjectRef *, PyObject *> py_call;
@@ -251,7 +257,6 @@ PyIfFunc<void, PyObjectRef *, std::string> py_createstr;
 PyIfFunc<void, PyObjectRef *, const char *> py_createbytes;
 PyIfFunc<void, PyObjectRef *, int> py_createint;
 PyIfFunc<void, PyObjectRef *> py_createdict;
-PyIfFunc<void, PyObjectRef *> py_getnone;
 
 } // pyinterface
 
@@ -296,11 +301,9 @@ Obj integer(int value) {
 }
 
 
-Obj none() {
-	Obj result;
-	py_getnone.call(&result);
-	return result;
-}
+Obj None;
+Obj True;
+Obj False;
 
 
 Obj dict() {

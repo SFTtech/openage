@@ -18,11 +18,19 @@ void pyobject() {
 	TESTEQUALS(py::bytes("foo").repr(), "b'foo'");
 	TESTEQUALS(py::integer(1337).repr(), "1337");
 
-	py::Obj none;
-	TESTNOEXCEPT(none = py::none());
-	TESTEQUALS(none.repr(), "None");
-	TESTEQUALS(py::builtin("None").equals(none), true);
-	TESTEQUALS(py::builtin("None").is(none), true);
+	TESTEQUALS(py::None.repr(), "None");
+	TESTEQUALS(py::builtin("None").equals(py::None), true);
+	TESTEQUALS(py::builtin("None").is(py::None), true);
+
+	TESTEQUALS(py::True.repr(), "True");
+	TESTEQUALS(py::builtin("True").equals(py::True), true);
+	TESTEQUALS(py::builtin("True").is(py::True), true);
+	TESTEQUALS(py::True.to_bool(), true);
+
+	TESTEQUALS(py::False.repr(), "False");
+	TESTEQUALS(py::builtin("False").equals(py::False), true);
+	TESTEQUALS(py::builtin("False").is(py::False), true);
+	TESTEQUALS(py::False.to_bool(), false);
 
 	py::Obj dict;
 	TESTNOEXCEPT(dict = py::dict());
@@ -50,6 +58,8 @@ void pyobject() {
 		"        return 'A'\n"
 		"    def __repr__(self):\n"
 		"        return 'A()'\n"
+		"    def __bytes__(self):\n"
+		"        return b'bytes-A()'\n"
 	));
 
 	// test what happens when a goes out of scope
@@ -58,6 +68,7 @@ void pyobject() {
 		TESTNOEXCEPT(a = dict.eval("A()"));
 		TESTEQUALS(a.repr(), "A()");
 		TESTEQUALS(a.str(), "A");
+		TESTEQUALS(a.bytes(), "bytes-A()");
 		TESTNOEXCEPT(a.setattr("foo", deque));
 		TESTEQUALS(a.getattr("foo").is(deque), true);
 		TESTEQUALS(a.hasattr("foo"), true);
@@ -80,9 +91,6 @@ void pyobject() {
 	TESTEQUALS(x.callable(), false);
 	TESTEQUALS(pop.callable(), true);
 	TESTEQUALS(pop.call().repr(), "1");
-
-	TESTEQUALS(py::builtin("True").to_bool(), true);
-	TESTEQUALS(py::builtin("False").to_bool(), false);
 	TESTEQUALS(x.to_bool(), false);
 	TESTEQUALS(dict.to_bool(), true);
 

@@ -15,6 +15,7 @@ from libopenage.pyinterface.pyobject cimport (
 
     py_str,
     py_repr,
+    py_bytes,
     py_len,
     py_callable,
     py_call,
@@ -39,10 +40,14 @@ from libopenage.pyinterface.pyobject cimport (
     py_createbytes,
     py_createint,
     py_createdict,
-    py_getnone
+
+    None as none_obj,
+    True as true_obj,
+    False as false_obj,
 )
 
 
+import atexit
 import builtins
 import importlib
 
@@ -61,6 +66,10 @@ cdef string str_impl(PyObject *ptr) except * with gil:
 
 cdef string repr_impl(PyObject *ptr) except * with gil:
     return repr(<object> ptr).encode()
+
+
+cdef string bytes_impl(PyObject *ptr) except * with gil:
+    return bytes(<object> ptr)
 
 
 cdef int len_impl(PyObject *ptr) except * with gil:
@@ -170,17 +179,13 @@ cdef void createdict_impl(PyObjectRef *result_ref) except * with gil:
     result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void getnone_impl(PyObjectRef *result_ref) except * with gil:
-    cdef object result_obj = None
-    result_ref.set_ref(<PyObject *> result_obj)
-
-
 def setup():
     py_xincref.bind_noexcept0(xincref)
     py_xdecref.bind_noexcept0(xdecref)
 
     py_str.bind0(str_impl)
     py_repr.bind0(repr_impl)
+    py_bytes.bind0(bytes_impl)
     py_len.bind0(len_impl)
     py_callable.bind0(callable_impl)
     py_call.bind0(call_impl)
@@ -205,4 +210,18 @@ def setup():
     py_createbytes.bind0(createbytes_impl)
     py_createint.bind0(createint_impl)
     py_createdict.bind0(createdict_impl)
-    py_getnone.bind0(getnone_impl)
+
+    none_obj.set_ref(<PyObject *><object>None)
+    true_obj.set_ref(<PyObject *><object>True)
+    false_obj.set_ref(<PyObject *><object>False)
+
+    # we need a teardown function as the none_obj etc are global in C++
+    # and would call pyx_decref when the libopenage is unloaded.
+    # but then the python interpreter is already shut down,
+    # so we need to set the objects to nullptr when python shuts down.
+    def teardown():
+        none_obj.set_ref(<PyObject*> 0)
+        true_obj.set_ref(<PyObject*> 0)
+        false_obj.set_ref(<PyObject*> 0)
+
+    atexit.register(teardown)
