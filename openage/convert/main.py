@@ -15,8 +15,8 @@ from .game_versions import GameVersion, get_game_versions
 
 from ..log import warn, info, dbg
 from ..util.files import which
-from ..util.fslike.wrapper import (Wrapper as FSLikeObjWrapper,
-                                   Synchronizer as FSLikeObjSynchronizer)
+from ..util.fslike.wrapper import (DirectoryCreator,
+                                   Synchronizer as AccessSynchronizer)
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.strings import format_progress
 
@@ -28,20 +28,6 @@ REGISTRY_KEY = \
     "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
 REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
 REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
-
-
-class DirectoryCreator(FSLikeObjWrapper):
-    """
-    Wrapper around a filesystem-like object that automatically creates
-    directories when attempting to create a file.
-    """
-
-    def open_w(self, parts):
-        self.mkdirs(parts[:-1])
-        return super().open_w(parts)
-
-    def __repr__(self):
-        return "DirectoryCreator({})".format(self.obj)
 
 
 def mount_drs_archives(srcdir, game_versions=None):
@@ -127,8 +113,8 @@ def convert_assets(assets, args, srcdir=None):
     targetdir = DirectoryCreator(converted_path).root
 
     # make srcdir and targetdir safe for threaded conversion
-    args.srcdir = FSLikeObjSynchronizer(srcdir).root
-    args.targetdir = FSLikeObjSynchronizer(targetdir).root
+    args.srcdir = AccessSynchronizer(srcdir).root
+    args.targetdir = AccessSynchronizer(targetdir).root
 
     def flag(name):
         """
@@ -378,7 +364,7 @@ def conversion_required(asset_dir, args):
 
     except FileNotFoundError:
         info("Game specification version file not found.")
-        spec_version = "lol"
+        spec_version = None
 
     # TODO: datapack parsing
     changes = changelog.changes(asset_version, spec_version)

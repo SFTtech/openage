@@ -5,7 +5,10 @@ Provides
 
  - Wrapper, a utility class for implementing wrappers around FSLikeObject.
  - WriteBlocker, a wrapper that blocks all writing.
- - Synchronizer, which adds thread-safety to a FSLikeObject.
+ - Synchronizer, which adds thread-safety to a FSLikeObject
+                 by wrapping a threading.Lock.
+ - DirectoryCreator, a wrapper that transparently creates nonexisting
+                     directories.
 """
 
 import os
@@ -139,6 +142,7 @@ class Synchronizer(Wrapper):
         super().__init__(obj, self.lock)
 
     def __repr__(self):
+        # TODO: remove override once pylint is fixed.
         with self.lock:  # pylint: disable=not-context-manager
             return "Synchronizer({})".format(repr(self.obj))
 
@@ -197,3 +201,17 @@ class GuardedFile(FileLikeObject):
         with self.guard:
             return "GuardedFile({}, {})".format(
                 repr(self.obj), repr(self.guard))
+
+
+class DirectoryCreator(Wrapper):
+    """
+    Wrapper around a filesystem-like object that automatically creates
+    directories when attempting to create a file.
+    """
+
+    def open_w(self, parts):
+        self.mkdirs(parts[:-1])
+        return super().open_w(parts)
+
+    def __repr__(self):
+        return "DirectoryCreator({})".format(self.obj)
