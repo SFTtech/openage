@@ -4,6 +4,8 @@
 
 #include <sstream>
 
+#include "../../error/error.h"
+
 
 namespace openage {
 namespace util {
@@ -26,6 +28,8 @@ Native::Native(const std::string &path, mode_t mode)
 	case mode_t::RW:
 		open_mode = std::ios_base::in | std::ios_base::out;
 		break;
+	default:
+		throw Error{ERR << "unknown open mode"};
 	}
 
 	this->file.open(this->path, open_mode);
@@ -92,6 +96,8 @@ void Native::seek(ssize_t offset, seek_t how) {
 	case seek_t::END:
 		where = std::ios::end;
 		break;
+	default:
+		throw Error{ERR << "invalid seek mode"};
 	}
 
 	this->file.seekg(offset, where);
