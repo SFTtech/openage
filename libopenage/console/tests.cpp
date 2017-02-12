@@ -40,7 +40,7 @@ void render() {
 	buf.write("\x1b[1mbold stuff, lol.\x1b[m\n\n");
 	buf.write("\x1b[5;31;1mred bold blinking stuff, lol, ... also, this text seems to be quite long, maybe even wider than the terminal width. i wonder what could \x1b[7mhappen.\x1b[m\n\n");
 	for (int i = 0; i < 18; i++) {
-		buf.write("asdf\n");
+		buf.write("rofl\n");
 	}
 	buf.scroll(100);
 	util::FD outfd;

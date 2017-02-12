@@ -42,8 +42,8 @@ void demo() {
 	TestLogSource logger;
 	TestLogSink sink{std::cout};
 
-	logger.log(MSG(err) << 1337 << "asdf...");
-	logger.log(MSG(crit) << util::sformat("asdf %s %d", "test", 1337));
+	logger.log(MSG(err) << 1337 << "lol...");
+	logger.log(MSG(crit) << util::sformat("wtf %s %d", "test", 1337));
 
 	std::thread t0([&]() {
 		logger.log(MSG(info) << "this msg comes from a thread");
