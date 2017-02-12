@@ -4,6 +4,7 @@ add_py_modules(
 	directory.py
 	filecollection.py
 	path.py
+	test.py
 	union.py
 	wrapper.py
 )

@@ -243,6 +243,10 @@ class Path:
         """ Like joinpath. """
         return self.joinpath(subpath)
 
+    def __eq__(self, other):
+        """ comparison by fslike and parts """
+        return (self.fsobj == other.fsobj) and (self.parts == other.parts)
+
     def with_name(self, name):
         """ Returns path for differing name (same parent). """
         return self.parent.joinpath(name)

@@ -20,6 +20,10 @@ class Union(FSLikeObject):
     priority are preferred.
     In case of equal priorities, later mounts are preferred.
     """
+
+    # we can hardly reduce the method amount...
+    # pylint: disable=too-many-public-methods
+
     def __init__(self):
         super().__init__()
 
@@ -48,6 +52,11 @@ class Union(FSLikeObject):
 
         Mounts pathobj at mountpoint, with the given priority.
         """
+
+        if not isinstance(pathobj, Path):
+            raise Exception("only a fslike.Path can be mounted, "
+                            "not {}".format(type(pathobj)))
+
         # search for the right place to insert the mount.
         idx = len(self.mounts) - 1
         while idx >= 0 and priority >= self.mounts[idx][2]:
@@ -59,6 +68,28 @@ class Union(FSLikeObject):
         dirstructure = self.dirstructure
         for subdir in mountpoint:
             dirstructure = dirstructure.setdefault(subdir, {})
+
+    def remove_mount(self, search_mountpoint, source_pathobj=None):
+        """
+        Remove a mount from the union by searching for the source
+        that provides the given mountpoint.
+        Additionally, can check if the source equals the given pathobj.
+        """
+
+        unmount = []
+
+        for idx, (mountpoint, pathobj, _) in enumerate(self.mounts):
+            if mountpoint == search_mountpoint[:len(mountpoint)]:
+                if not source_pathobj or source_pathobj == pathobj:
+                    unmount.append(idx)
+
+        if unmount:
+            # reverse the order so that the indices never shift.
+            for idx in reversed(sorted(unmount)):
+                del self.mounts[idx]
+
+        else:
+            raise ValueError("could not find mounted source")
 
     def candidate_paths(self, parts):
         """
@@ -247,3 +278,13 @@ class UnionPath(Path):
         Mounts pathobj here. All parent directories are 'created', if needed.
         """
         return self.fsobj.add_mount(pathobj, self.parts, priority)
+
+    def unmount(self, pathobj=None):
+        """
+        Unmount a path from the union described by this path.
+        This is like "unmounting /home", no matter what the source was.
+        If you provide `pathobj`, that source is checked, additionally.
+
+        It will error if that path was not mounted.
+        """
+        self.fsobj.remove_mount(self.parts, pathobj)
