@@ -1,11 +1,12 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "testing.h"
 
 // pxd: from libcpp.string cimport string
-// pxd: from libcpp.vector cimport vector
+#include <string>
+
+#include "testing.h"
 
 
 namespace openage {

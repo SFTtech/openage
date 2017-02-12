@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Generates code for C++ testing, mostly the table to look up symbols from test
@@ -45,7 +45,7 @@ class Namespace:
             yield "namespace %s {\n" % namespacename
             for line in namespace.gen_prototypes():
                 yield line
-            yield "} // namespace %s\n" % namespacename
+            yield "} // %s\n\n" % namespacename
 
     def get_functionnames(self):
         """
@@ -69,7 +69,8 @@ def generate_testlist(projectdir):
     root_namespace = Namespace()
 
     from ..testing.list_processor import tests_and_demos_cpp
-    for testname, _, _ in tests_and_demos_cpp():
+
+    for testname, _, _, _ in tests_and_demos_cpp():
         root_namespace.add_functionname(testname.split('::'))
 
     func_prototypes = list(root_namespace.gen_prototypes())
