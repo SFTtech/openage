@@ -302,10 +302,16 @@ class PXDGenerator:
         hacks.
         """
         annotation = annotation.rstrip()
+        if annotation.endswith(';'):
+            self.warnings.append(
+                "cython declaration ends in ';', "
+                "what have you done?")
+
         if annotation.endswith(')'):
             self.warnings.append(
-                "line ends with ')'; mark the function as 'except +' or "
+                "mark the function as 'except +' or "
                 "'noexcept':\n" + annotation)
+
         elif annotation.endswith('noexcept'):
             annotation = annotation[:-8].rstrip()
 
