@@ -58,6 +58,7 @@ using graphic_set = std::map<graphic_type, std::shared_ptr<UnitTexture>>;
  */
 enum class attr_type {
 	owner,
+	population,
 	damaged,
 	hitpoints,
 	armor,
@@ -213,6 +214,26 @@ public:
 	 */
 	unsigned int hp;
 	float hp_bar_height;
+};
+
+/**
+ * The population capacity or the population requirement.
+ */
+template<> class Attribute<attr_type::population>: public SharedAttributeContainer {
+public:
+	Attribute(int population)
+		:
+		SharedAttributeContainer{attr_type::population},
+		population{population} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::population>>(*this);
+	}
+
+	/**
+	 * The population value, positive value describes requirement and negative capacity
+	 */
+	int population;
 };
 
 /**
