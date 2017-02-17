@@ -16,7 +16,9 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	color{number},
 	civ{civ},
 	name{name},
-	team{nullptr} {
+	team{nullptr},
+	population{0},
+	population_cap{0} {
 	// starting resources
 	this->resources[game_resource::food] = 1000;
 	this->resources[game_resource::wood] = 1000;
@@ -111,5 +113,42 @@ void Player::initialise_unit_types() {
 	}
 }
 
+int Player::get_population() const {
+	return population;
+}
+
+int Player::get_population_cap() const {
+	return population_cap;
+}
+
+void Player::active_unit_added(Unit *unit) {
+	// TODO handle here building dependencies
+	// TODO handle here on create unit triggers
+	// population
+	if (unit->has_attribute(attr_type::population)) {
+		auto popul = unit->get_attribute<attr_type::population>().population;
+		if (popul < 0) {
+			population_cap += -popul;
+		}
+		else if (popul > 0) {
+			population += popul;
+		}
+	}
+}
+
+void Player::active_unit_removed(Unit *unit) {
+	// TODO handle here building dependencies
+	// TODO handle here on death unit triggers
+	// population
+	if (unit->has_attribute(attr_type::population)) {
+		auto popul = unit->get_attribute<attr_type::population>().population;
+		if (popul < 0) {
+			population_cap -= -popul;
+		}
+		else if (popul > 0) {
+			population -= popul;
+		}
+	}
+}
 
 } // openage

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -103,12 +103,30 @@ public:
 	 */
 	void initialise_unit_types();
 
+	int get_population() const;
+
+	int get_population_cap() const;
+
+	/**
+	 * Called when a unit is created and active
+	 */
+	void active_unit_added(Unit *unit);
+
+	/**
+	 * Called when a unit is destroyed
+	 */
+	void active_unit_removed(Unit *unit);
+
 private:
 
 	/**
 	 * resources this player currently has
 	 */
 	ResourceBundle resources;
+
+	int population;
+
+	int population_cap;
 
 	/**
 	 * unit types which can be produced by this player.
