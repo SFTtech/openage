@@ -6,6 +6,7 @@
 #include <unordered_map>
 
 #include "civilisation.h"
+#include "population_tracker.h"
 #include "resource.h"
 
 
@@ -103,9 +104,10 @@ public:
 	 */
 	void initialise_unit_types();
 
-	int get_population() const;
-
-	int get_population_cap() const;
+	/**
+	 * Keeps track of the population information.
+	 */
+	PopulationTracker population;
 
 	/**
 	 * Called when a unit is created and active
@@ -123,10 +125,6 @@ private:
 	 * resources this player currently has
 	 */
 	ResourceBundle resources;
-
-	int population;
-
-	int population_cap;
 
 	/**
 	 * unit types which can be produced by this player.

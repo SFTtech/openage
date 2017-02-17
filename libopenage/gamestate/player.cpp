@@ -17,9 +17,10 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	civ{civ},
 	name{name},
 	team{nullptr},
-	population{0},
-	population_cap{0} {
+	// TODO change, get population cap max from game options
+	population{0, 200} {
 	// starting resources
+	// TODO change, get starting resources from game options
 	this->resources[game_resource::food] = 1000;
 	this->resources[game_resource::wood] = 1000;
 	this->resources[game_resource::stone] = 1000;
@@ -128,10 +129,10 @@ void Player::active_unit_added(Unit *unit) {
 	if (unit->has_attribute(attr_type::population)) {
 		auto popul = unit->get_attribute<attr_type::population>().population;
 		if (popul < 0) {
-			population_cap += -popul;
+			population.add_capacity(-popul);
 		}
 		else if (popul > 0) {
-			population += popul;
+			population.add_population(popul);
 		}
 	}
 }
@@ -143,10 +144,10 @@ void Player::active_unit_removed(Unit *unit) {
 	if (unit->has_attribute(attr_type::population)) {
 		auto popul = unit->get_attribute<attr_type::population>().population;
 		if (popul < 0) {
-			population_cap -= -popul;
+			population.add_capacity(popul);
 		}
 		else if (popul > 0) {
-			population -= popul;
+			population.add_population(-popul);
 		}
 	}
 }
