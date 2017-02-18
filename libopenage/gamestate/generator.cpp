@@ -289,8 +289,8 @@ void Generator::add_units(GameMain &m) const {
 			m.placed_units.new_unit(*mvtype, p, tile.to_tile3().to_phys3());
 			tile.se += 1;
 			m.placed_units.new_unit(*fvtype, p, tile.to_tile3().to_phys3());
-			tile.se += 2;
-			m.placed_units.new_unit(*sctype, p, tile.to_tile3().to_phys3());
+			//tile.se += 2;
+			//m.placed_units.new_unit(*sctype, p, tile.to_tile3().to_phys3());
 		}
 	}
 }

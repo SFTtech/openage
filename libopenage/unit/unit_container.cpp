@@ -155,6 +155,7 @@ bool UnitContainer::update_all(time_nsec_t lastframe_duration) {
 
 	// cleanup and removal of objects
 	for (auto &obj : to_remove) {
+
 		// unique pointer triggers cleanup
 		this->live_units.erase(obj);
 	}

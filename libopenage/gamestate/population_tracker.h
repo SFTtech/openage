@@ -33,10 +33,19 @@ public:
 
 	int get_capacity() const;
 
+	/**
+	 * Returns the available population capacity for new units.
+	 */
 	int get_space() const;
 
+	/**
+	 * Returns the population capacity over the max limit.
+	 */
 	int get_capacity_overflow() const;
 
+	/**
+	 * Check if the population capacity has reached the max limit.
+	 */
 	bool is_capacity_maxed() const;
 
 private:

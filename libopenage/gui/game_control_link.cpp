@@ -115,6 +115,10 @@ QString ActionModeLink::get_population() const {
 	return this->population;
 }
 
+bool ActionModeLink::get_population_warn() const {
+	return this->population_warn;
+}
+
 void ActionModeLink::act(const QString &action) {
 	emit this->action_triggered(action.toStdString());
 }
@@ -128,8 +132,9 @@ void ActionModeLink::on_buttons_type_changed(const ActionButtonsType buttons_typ
 	emit this->buttons_type_changed(buttons_type);
 }
 
-void ActionModeLink::on_population_changed(int population, int population_cap) {
+void ActionModeLink::on_population_changed(int population, int population_cap, bool warn) {
 	this->population = QString::number(population) + "/" + QString::number(population_cap);
+	this->population_warn = warn;
 	emit this->population_changed();
 }
 

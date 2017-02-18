@@ -117,6 +117,7 @@ class ActionModeLink : public qtsdl::Inherits<OutputModeLink, ActionModeLink> {
 
 	Q_PROPERTY(QString ability READ get_ability NOTIFY ability_changed)
 	Q_PROPERTY(QString population READ get_population NOTIFY population_changed)
+	Q_PROPERTY(bool population_warn READ get_population_warn NOTIFY population_changed)
 
 public:
 	ActionModeLink(QObject *parent=nullptr);
@@ -124,6 +125,7 @@ public:
 
 	QString get_ability() const;
 	QString get_population() const;
+	bool get_population_warn() const;
 
 	Q_INVOKABLE void act(const QString &action);
 
@@ -136,13 +138,14 @@ signals:
 private slots:
 	void on_ability_changed(const std::string &ability);
 	void on_buttons_type_changed(const ActionButtonsType buttons_type);
-	void on_population_changed(int population, int population_cap);
+	void on_population_changed(int population, int population_cap, bool warn);
 
 private:
 	virtual void on_core_adopted() override;
 
 	QString ability;
 	QString population;
+	bool population_warn;
 };
 
 class EditorModeLink;
