@@ -51,25 +51,25 @@ public:
 };
 
 /**
- * A element of the double-linked list tubebase
+ >* A element of the double-linked list tubebase
  */
 template <typename _T>
 class tubeelement {
-friend class tubebase<_T>;
+	friend class tubebase<_T>;
 public:
 	tubeelement *next = nullptr;
 	tubeelement *prev = nullptr;
 private:
 	// These folks are for tubebase only!
-	tubeelement(const tube_time_t &time) :
-		time(time)
-	{}
+	tubeelement(const tube_time_t &time)
+		:
+		time(time) {}
 
 	// Contruct it from time and value
 	tubeelement(const tube_time_t &time, const _T &value) :
 		time(time),
 		value(value)
-	{}
+		{}
 
 public:
 	const tube_time_t time = 0;
@@ -106,7 +106,7 @@ tubeelement<_T> *tubebase<_T>::last(const tube_time_t &time, tubeelement<_T> *hi
 		return e;
 	}
 
-	if (begin->time > time){
+	if (begin->time > time) {
 		// This will never happen due to the begin->time == -Inf magic!
 		assert(false);
 		return nullptr;
@@ -127,7 +127,7 @@ tubeelement<_T> *tubebase<_T>::last(const tube_time_t &time, tubeelement<_T> *hi
 		while (e->prev != nullptr && time < e->time) {
 			e = e->prev;
 		}
-		// e is now one of two options: 
+		// e is now one of two options:
 		// 1. e == begin: The time was before every element in the queue
 		// 2. e != begin: There was an element with `e->time` > `time`
 	}
@@ -196,7 +196,7 @@ void tubebase<_T>::erase_after(tubeelement<_T> *last_valid) {
 	}
 }
 
-/** 
+/**
  * Delete the element from the list and call delete on it.
  */
 template <typename _T>
@@ -215,7 +215,7 @@ void tubebase<_T>::erase(tubeelement<_T> *e) {
 	if (e->prev != nullptr) {
 		e->prev->next = e->next;
 	}
-	
+
 	delete e; // TODO Memory management magic!
 }
 

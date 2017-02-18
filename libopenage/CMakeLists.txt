@@ -103,6 +103,9 @@ find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
 
+set(CURSES_NEED_NCURSES TRUE)
+find_package(Curses REQUIRED)
+
 set(QT_VERSION_REQ "5.5")
 find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
 find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
@@ -191,6 +194,7 @@ target_link_libraries(libopenage
 		${RT_LIB}
 		${OGG_LIB}
 		${EXECINFO_LIB}
+		${CURSES_LIBRARIES}
 	# TODO: change to PUBLIC (or, alternatively, remove all keywords
 	# of this type) when qt cmake scripts change declarations of the
 	# IMPORTED libraries to GLOBAL.

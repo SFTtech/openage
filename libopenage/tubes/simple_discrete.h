@@ -32,4 +32,3 @@ _T SimpleDiscrete<_T>::get(const tube_time_t &time) const {
 }
 
 }} // openage::tube
-

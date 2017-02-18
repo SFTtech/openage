@@ -109,6 +109,8 @@ def demos_cpp():
            "translates a Python exception to C++")
     yield ("openage::pyinterface::tests::pyobject_demo",
            "a tiny interactive interpreter using PyObjectRef")
+    yield ("openage::tubepong::demo",
+           "a pong game implemented in curves")
 
 
 def benchmark_cpp():

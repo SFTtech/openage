@@ -1,10 +1,12 @@
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+
 #pragma once
 
 
 #include "../simple_continuous.h"
 #include "../simple_discrete.h"
 #include "../object.h"
-#include "vertex.h"
+#include "../../util/vector.h"
 
 namespace openage {
 namespace tubepong {
@@ -41,8 +43,8 @@ public:
 
 class PongBall : public tube::TubeObject {
 public:
-	tube::SimpleDiscrete<util::vertex<2, float>> speed;
-	tube::SimpleContinuous<util::vertex<2, float>> position;
+	tube::SimpleDiscrete<util::Vector<2>> speed;
+	tube::SimpleContinuous<util::Vector<2>> position;
 };
 
 class PongState {
@@ -52,7 +54,7 @@ public:
 
 	PongBall ball;
 
-	util::vertex<2, float> resolution;
+	util::Vector<2> resolution;
 };
 
 }} // openage::tubepong

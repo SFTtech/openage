@@ -30,6 +30,7 @@ Dependency list:
     CRA   python >=3.4
     C     cython >=0.25
     C     cmake >=3.1.0
+    CR    ncurses
       A   numpy
       A   python imaging library (PIL) -> pillow
     CR    opengl >=2.1
