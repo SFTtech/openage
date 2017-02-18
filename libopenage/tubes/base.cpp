@@ -6,4 +6,3 @@ namespace openage {
 namespace tube {
 
 }} // openage::tube
-

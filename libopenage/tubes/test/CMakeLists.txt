@@ -8,4 +8,3 @@ add_sources(libopenage
 	test_tube_types.cpp
 	test_serialization.cpp
 )
-

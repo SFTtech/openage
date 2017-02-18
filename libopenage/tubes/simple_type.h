@@ -15,7 +15,7 @@ protected:
 	mutable tube_time_t now;
 
 public:
-	SimpleType(); 
+	SimpleType();
 
 	// Reader mode
 	virtual void set_now(const tube_time_t &t) const;
@@ -78,4 +78,3 @@ bool SimpleType<_T>::needs_update(const tube_time_t &at) {
 }
 
 }} // openage::tube
-

@@ -1,3 +1,5 @@
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+
 #pragma once
 
 #include <vector>
@@ -14,7 +16,7 @@ public:
 	Gui();
 	std::vector<event> &getInputs(const PongPlayer &player);
 	void draw(PongState &state, const tube::tube_time_t &now);
-	void draw_ball(util::vertex<2, float> ball, int idx);
+	void draw_ball(util::Vector<2> ball, int idx);
 
 private:
 	std::vector<event> input_cache;
