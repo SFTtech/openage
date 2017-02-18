@@ -23,6 +23,7 @@ namespace openage {
 
 class ActionMode;
 class EditorMode;
+class SettingsMode;
 class Engine;
 class GameControl;
 
@@ -312,6 +313,49 @@ private:
 
 public:
 	EditorModeSignals gui_signals;
+};
+
+
+class SettingsModeSignals : public QObject {
+	Q_OBJECT
+
+public:
+	explicit SettingsModeSignals(SettingsMode *settings_mode);
+
+signals:
+	void current_group_index_changed(int current_group_index);
+
+private:
+	SettingsMode *settings_mode;
+};
+
+/**
+ * UI mode to provide an interface for settings editing.
+ */
+class SettingsMode : public OutputMode {
+public:
+	explicit SettingsMode(qtsdl::GuiItemLink *gui_link);
+
+	bool available() const override;
+	void on_enter() override;
+	void on_exit() override;
+	void render() override;
+	std::string name() const override;
+	void on_game_control_set() override;
+
+	void set_current_group_index(int current_group_index);
+
+private:
+	virtual void announce() override;
+	virtual void set_game_control(GameControl *game_control) override;
+
+	/**
+	 * currently selected settings tab
+	 */
+	int current_group_index;
+
+public:
+	SettingsModeSignals gui_signals;
 };
 
 

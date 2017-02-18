@@ -680,6 +680,53 @@ void EditorMode::set_game_control(GameControl *game_control) {
 	}
 }
 
+SettingsModeSignals::SettingsModeSignals(SettingsMode *settings_mode)
+	:
+	settings_mode{settings_mode} {
+}
+
+SettingsMode::SettingsMode(qtsdl::GuiItemLink *gui_link)
+	:
+	OutputMode{gui_link},
+	current_group_index{},
+	gui_signals{this} {}
+
+void SettingsMode::set_current_group_index(int current_group_index) {
+	this->current_group_index = current_group_index;
+}
+
+void SettingsMode::on_game_control_set() {
+	this->announce();
+}
+
+bool SettingsMode::available() const {
+	if (this->game_control == nullptr) {
+		log::log(MSG(warn) << "game_control not yet linked to SettingsMode");
+		return false;
+	}
+
+	return true;
+}
+
+void SettingsMode::on_enter() {}
+
+void SettingsMode::on_exit() {}
+
+void SettingsMode::render() {}
+
+std::string SettingsMode::name() const {
+	return "Settings mode";
+}
+
+void SettingsMode::announce() {
+	OutputMode::announce();
+	emit this->gui_signals.current_group_index_changed(this->current_group_index);
+}
+
+void SettingsMode::set_game_control(GameControl *game_control) {
+	OutputMode::set_game_control(game_control);
+}
+
 GameControlSignals::GameControlSignals(GameControl *game_control)
 	:
 	game_control{game_control} {
