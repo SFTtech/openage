@@ -381,6 +381,7 @@ public:
 
 private:
 	UnitType *trained;
+	bool started;
 	bool complete;
 	float train_percent;
 };

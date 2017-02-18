@@ -719,36 +719,53 @@ TrainAction::TrainAction(Unit *e, UnitType *pp)
 	:
 	UnitAction{e, graphic_type::standing},
 	trained{pp},
+	started{false},
 	complete{false},
 	train_percent{.0f} {
 }
 
 void TrainAction::update(unsigned int time) {
 
-	// place unit when ready
-	if (this->train_percent > 1.0f) {
-
-		// create using the producer
-		UnitContainer *container = this->entity->get_container();
-		auto &player = this->entity->get_attribute<attr_type::owner>().player;
-		auto uref = container->new_unit(*this->trained, player, this->entity->location.get());
-
-		// make sure unit got placed
-		// try again next update if cannot place
-		if (uref.is_valid()) {
-			if (this->entity->has_attribute(attr_type::building)) {
-
-				// use a move command to the gather point
-				auto &build_attr = this->entity->get_attribute<attr_type::building>();
-				Command cmd(player, build_attr.gather_point);
-				cmd.set_ability(ability_type::move);
-				uref.get()->queue_cmd(cmd);
-			}
-			this->complete = true;
+	if (!this->started) {
+		// check if there is enough population capacity
+		if (!this->trained->default_attributes.has(attr_type::population)) {
+			this->started = true;
+		}
+		else {
+			auto &player = this->entity->get_attribute<attr_type::owner>().player;
+			auto &population = this->trained->default_attributes.get<attr_type::population>().population;
+			bool can_start = population <= 0 || population <= player.population.get_space();
+			// TODO trigger not enough population capacity message
+			this->started = can_start;
 		}
 	}
-	else {
-		this->train_percent += 0.001 * time;
+
+	if (this->started) {
+		// place unit when ready
+		if (this->train_percent >= 1.0f) {
+
+			// create using the producer
+			UnitContainer *container = this->entity->get_container();
+			auto &player = this->entity->get_attribute<attr_type::owner>().player;
+			auto uref = container->new_unit(*this->trained, player, this->entity->location.get());
+
+			// make sure unit got placed
+			// try again next update if cannot place
+			if (uref.is_valid()) {
+				if (this->entity->has_attribute(attr_type::building)) {
+
+					// use a move command to the gather point
+					auto &build_attr = this->entity->get_attribute<attr_type::building>();
+					Command cmd(player, build_attr.gather_point);
+					cmd.set_ability(ability_type::move);
+					uref.get()->queue_cmd(cmd);
+				}
+				this->complete = true;
+			}
+		}
+		else {
+			this->train_percent += 0.001 * time;
+		}
 	}
 }
 

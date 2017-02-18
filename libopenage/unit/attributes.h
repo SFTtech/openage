@@ -52,7 +52,9 @@ public:
 	 * Get the attribute
 	 */
 	template<attr_type T>
-	Attribute<T> &get() const;
+	Attribute<T> &get() const {
+		return *reinterpret_cast<Attribute<T> *>(this->attrs.at(T).get());
+	}
 
 private:
 

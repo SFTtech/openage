@@ -267,7 +267,8 @@ void Generator::add_units(GameMain &m) const {
 			auto tctype = p.get_type(109); // town center
 			auto mvtype = p.get_type(83);  // male villager
 			auto fvtype = p.get_type(293); // female villager
-			if (!tctype || !mvtype || !fvtype) {
+			auto sctype = p.get_type(448); // scout cavarly
+			if (!tctype || !mvtype || !fvtype || !sctype) {
 				break;
 			}
 
@@ -288,6 +289,8 @@ void Generator::add_units(GameMain &m) const {
 			m.placed_units.new_unit(*mvtype, p, tile.to_tile3().to_phys3());
 			tile.se += 1;
 			m.placed_units.new_unit(*fvtype, p, tile.to_tile3().to_phys3());
+			tile.se += 2;
+			m.placed_units.new_unit(*sctype, p, tile.to_tile3().to_phys3());
 		}
 	}
 }
