@@ -21,10 +21,11 @@ const int registration = qmlRegisterSingletonType<EngineLink>("yay.sfttech.opena
 }
 
 
-EngineLink::EngineLink(QObject *parent, Engine *engine)
+EngineLink::EngineLink(QObject *parent, Engine *engine, qtsdl::QmlEngineWithSingletonItemsInfo *engine_with_singleton_items_info)
 	:
 	GuiSingletonItem{parent},
 	core{engine},
+	global_font{engine_with_singleton_items_info, engine->get_cvar_manager()},
 	cvar_manager{engine->get_cvar_manager()} {
 	Q_UNUSED(registration);
 
@@ -66,7 +67,7 @@ QObject* EngineLink::provider(QQmlEngine *engine, QJSEngine*) {
 	// owned by the QML engine
 	// this handle contains the pointer to the openage engine,
 	// obtained through the qmlengine
-	return new EngineLink{nullptr, info->engine};
+	return new EngineLink{nullptr, info->engine, engine_with_singleton_items_info};
 }
 
 QStringList EngineLink::get_global_binds() const {

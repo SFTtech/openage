@@ -13,6 +13,7 @@ add_sources(libopenage
 	generator_link.cpp
 	gui.cpp
 	gui_cvar_list_model.cpp
+	gui_global_font.cpp
 	main_args_link.cpp
 	registrations.cpp
 	resources_list_model.cpp

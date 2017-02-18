@@ -8,6 +8,7 @@
 #include "guisys/link/gui_singleton_item.h"
 
 #include "cvar_manager_link.h"
+#include "gui_global_font.h"
 
 QT_FORWARD_DECLARE_CLASS(QQmlEngine)
 QT_FORWARD_DECLARE_CLASS(QJSEngine)
@@ -21,6 +22,8 @@ class EngineLink;
 } // openage
 
 namespace qtsdl {
+class QmlEngineWithSingletonItemsInfo;
+
 template<>
 struct Wrap<openage::Engine> {
 	using Type = openage::gui::EngineLink;
@@ -50,7 +53,7 @@ class EngineLink : public qtsdl::GuiSingletonItem {
 	Q_PROPERTY(openage::gui::CVarManagerLink* cvarManager READ get_cvar_manager CONSTANT)
 
 public:
-	explicit EngineLink(QObject *parent, Engine *engine);
+	explicit EngineLink(QObject *parent, Engine *engine, qtsdl::QmlEngineWithSingletonItemsInfo *engine_with_singleton_items_info);
 	virtual ~EngineLink();
 
 	static QObject* provider(QQmlEngine*, QJSEngine*);
@@ -74,6 +77,7 @@ private:
 	Engine *core;
 
 	QStringList global_binds;
+	GuiGlobalFont global_font;
 	CVarManagerLink cvar_manager;
 };
 
