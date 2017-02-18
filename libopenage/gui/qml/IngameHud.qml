@@ -109,7 +109,7 @@ Item {
 					sourceComponent: resourceIndicator
 
 					onLoaded: {
-						item.amount = root.actionMode.population
+						item.amount = Qt.binding(function() { return root.actionMode.population })
 						item.iconIndex = 4
 					}
 				}

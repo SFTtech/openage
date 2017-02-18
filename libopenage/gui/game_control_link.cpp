@@ -130,7 +130,6 @@ void ActionModeLink::on_buttons_type_changed(const ActionButtonsType buttons_typ
 
 void ActionModeLink::on_population_changed(int population, int population_cap) {
 	this->population = QString::number(population) + "/" + QString::number(population_cap);
-	log::log(MSG(warn) << "we are here " << this->population.toUtf8().constData());
 	emit this->population_changed();
 }
 

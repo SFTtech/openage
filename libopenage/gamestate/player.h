@@ -110,12 +110,13 @@ public:
 	PopulationTracker population;
 
 	/**
-	 * Called when a unit is created and active
+	 * Called when a unit is created and active.
+	 * (Active means not a construction site)
 	 */
 	void active_unit_added(Unit *unit);
 
 	/**
-	 * Called when a unit is destroyed
+	 * Called when a unit is destroyed.
 	 */
 	void active_unit_removed(Unit *unit);
 

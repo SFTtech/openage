@@ -334,6 +334,9 @@ void DeadAction::update(unsigned int time) {
 }
 
 void DeadAction::on_completion() {
+	auto &owner = this->entity->get_attribute<attr_type::owner>().player;
+	owner.active_unit_removed(this->entity); // TODO move before the start of dead action
+
 	this->on_complete_func();
 }
 
@@ -366,6 +369,9 @@ void FoundationAction::on_completion() {
 	if (this->cancel) {
 		return;
 	}
+
+	auto &owner = this->entity->get_attribute<attr_type::owner>().player;
+	owner.active_unit_added(this->entity);
 
 	// add destruction effect when available
 	if (this->add_destruct_effect) {

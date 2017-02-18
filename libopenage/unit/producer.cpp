@@ -414,7 +414,10 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 	 */
 	MovableProducer::initialise(unit, player);
 
-	unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(1));
+	// population of 1 for all movable units
+	if (this->unit_data.unit_class != gamedata::unit_classes::SHEEP) {
+		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(1));
+	}
 
 	// add worker attributes
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
