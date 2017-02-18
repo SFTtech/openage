@@ -1,4 +1,4 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #include "resources_list_model.h"
 
@@ -39,13 +39,15 @@ ActionModeLink* ResourcesListModel::get_action_mode() const {
 
 void ResourcesListModel::set_action_mode(ActionModeLink *action_mode) {
 	if (this->action_mode != action_mode) {
-		if (this->action_mode)
+		if (this->action_mode) {
 			QObject::disconnect(&unwrap(this->action_mode)->gui_signals, &ActionModeSignals::resource_changed, this, &ResourcesListModel::on_resource_changed);
+		}
 
 		this->action_mode = action_mode;
 
-		if (this->action_mode)
+		if (this->action_mode) {
 			QObject::connect(&unwrap(this->action_mode)->gui_signals, &ActionModeSignals::resource_changed, this, &ResourcesListModel::on_resource_changed);
+		}
 	}
 }
 

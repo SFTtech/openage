@@ -455,6 +455,7 @@ void ActionMode::announce() {
 		this->use_set_ability ? std::to_string(this->ability) : "");
 }
 
+// TODO rename
 void ActionMode::announce_resources() {
 	if (this->game_control) {
 		if (Player *player = this->game_control->get_current_player()) {
@@ -466,6 +467,7 @@ void ActionMode::announce_resources() {
 					static_cast<int>(player->amount(resource_type))
 				);
 			}
+			emit this->gui_signals.population_changed(player->population.get_population(), player->population.get_capacity());
 		}
 	}
 }

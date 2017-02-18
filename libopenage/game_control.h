@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -146,6 +146,7 @@ public slots:
 
 signals:
 	void resource_changed(game_resource resource, int amount);
+	void population_changed(int population, int population_cap);
 	void ability_changed(const std::string &ability);
 	void buttons_type_changed(const ActionButtonsType type);
 

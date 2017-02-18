@@ -114,14 +114,6 @@ void Player::initialise_unit_types() {
 	}
 }
 
-int Player::get_population() const {
-	return population;
-}
-
-int Player::get_population_cap() const {
-	return population_cap;
-}
-
 void Player::active_unit_added(Unit *unit) {
 	// TODO handle here building dependencies
 	// TODO handle here on create unit triggers
