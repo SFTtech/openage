@@ -211,6 +211,50 @@ private:
 	QStringList categories;
 };
 
+class SettingsModeLink;
+
+}} // namespace openage::gui
+
+namespace qtsdl {
+template<>
+struct Wrap<openage::SettingsMode> {
+	using Type = openage::gui::SettingsModeLink;
+};
+
+template<>
+struct Unwrap<openage::gui::SettingsModeLink> {
+	using Type = openage::SettingsMode;
+};
+
+} // namespace qtsdl
+
+namespace openage {
+namespace gui {
+
+class SettingsModeLink : public qtsdl::Inherits<OutputModeLink, SettingsModeLink> {
+	Q_OBJECT
+
+	Q_PROPERTY(int currentGroupIndex READ get_current_group_index WRITE set_current_group_index NOTIFY current_group_index_changed)
+
+public:
+	SettingsModeLink(QObject *parent=nullptr);
+	virtual ~SettingsModeLink();
+
+	int get_current_group_index() const;
+	void set_current_group_index(int current_type_id);
+
+signals:
+	void current_group_index_changed();
+
+private slots:
+	void on_current_group_index_changed(int current_group_index);
+
+private:
+	virtual void on_core_adopted() override;
+
+	int current_group_index;
+};
+
 class EngineLink;
 class GameMainLink;
 class GameControlLink;

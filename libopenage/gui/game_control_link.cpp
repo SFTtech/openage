@@ -18,6 +18,7 @@ const int registration_mode = qmlRegisterUncreatableType<OutputModeLink>("yay.sf
 const int registration_create = qmlRegisterType<CreateModeLink>("yay.sfttech.openage", 1, 0, "CreateMode");
 const int registration_action = qmlRegisterType<ActionModeLink>("yay.sfttech.openage", 1, 0, "ActionMode");
 const int registration_editor = qmlRegisterType<EditorModeLink>("yay.sfttech.openage", 1, 0, "EditorMode");
+const int registration_settings = qmlRegisterType<SettingsModeLink>("yay.sfttech.openage", 1, 0, "SettingsMode");
 const int registration = qmlRegisterType<GameControlLink>("yay.sfttech.openage", 1, 0, "GameControl");
 }
 
@@ -226,6 +227,39 @@ void EditorModeLink::on_core_adopted() {
 	QObject::connect(&unwrap(this)->gui_signals, &EditorModeSignals::categories_changed, this, &EditorModeLink::on_categories_changed);
 	QObject::connect(&unwrap(this)->gui_signals, &EditorModeSignals::categories_content_changed, this, &EditorModeLink::categories_content_changed);
 	QObject::connect(&unwrap(this)->gui_signals, &EditorModeSignals::category_content_changed, this, &EditorModeLink::category_content_changed);
+}
+
+SettingsModeLink::SettingsModeLink(QObject *parent)
+	:
+	Inherits{parent},
+	current_group_index{} {
+	Q_UNUSED(registration_settings);
+}
+
+SettingsModeLink::~SettingsModeLink() {
+}
+
+int SettingsModeLink::get_current_group_index() const {
+	return this->current_group_index;
+}
+
+void SettingsModeLink::set_current_group_index(int current_group_index) {
+	static auto f = [](SettingsMode* _this, int current_group_index) {
+		_this->set_current_group_index(current_group_index);
+	};
+	this->s(f, this->current_group_index, current_group_index);
+}
+
+void SettingsModeLink::on_current_group_index_changed(int current_group_index) {
+	if (this->current_group_index != current_group_index) {
+		this->current_group_index = current_group_index;
+		emit this->current_group_index_changed();
+	}
+}
+
+void SettingsModeLink::on_core_adopted() {
+	this->Inherits::on_core_adopted();
+	QObject::connect(&unwrap(this)->gui_signals, &SettingsModeSignals::current_group_index_changed, this, &SettingsModeLink::on_current_group_index_changed);
 }
 
 GameControlLink::GameControlLink(QObject *parent)
