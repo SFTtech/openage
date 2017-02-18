@@ -30,6 +30,11 @@ GuiEngineImpl::GuiEngineImpl(GuiRenderer *renderer,
 	assert(!this->engine.incubationController());
 	this->attach_to(GuiRendererImpl::impl(renderer));
 
+	QObject::connect(&this->engine,
+	                 &QmlEngineWithSingletonItemsInfo::reload_gui_manually,
+	                 this,
+	                 &GuiEngineImpl::onReload);
+
 	QObject::connect(this,
 	                 &GuiEngineImpl::rootDirsPathsChanged,
 	                 &this->watcher,

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -32,6 +32,9 @@ public:
 
 	GuiSingletonItemsInfo* get_singleton_items_info() const;
 	std::vector<GuiImageProviderImpl*> get_image_providers() const;
+
+signals:
+	void reload_gui_manually();
 
 private:
 	std::vector<GuiImageProviderImpl*> image_providers;
