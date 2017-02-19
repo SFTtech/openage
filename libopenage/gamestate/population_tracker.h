@@ -12,7 +12,15 @@ public:
 
 	PopulationTracker(int capacity_static, int capacity_max);
 
-	void add_population(int i);
+	/**
+	 * Add to the population demand
+	 */
+	void demand_population(int i);
+
+	/**
+	 * Remove from the population demand
+	 */
+	void free_population(int i);
 
 	/**
 	 * Changes the capacity given by civ bonuses
@@ -20,16 +28,21 @@ public:
 	void add_capacity_static(int i);
 
 	/**
-	 * Changes the capacity given by units
+	 * Add to the capacity given by units
 	 */
 	void add_capacity(int i);
+
+	/**
+	 * Remove from the capacity given by units
+	 */
+	void remove_capacity(int i);
 
 	/**
 	 * Changes the max capacity given by civ bonuses
 	 */
 	void add_capacity_max(int i);
 
-	int get_population() const;
+	int get_demand() const;
 
 	int get_capacity() const;
 
@@ -56,15 +69,36 @@ private:
 	 */
 	void update_capacity();
 
-	int population;
+	/**
+	 * The population demand
+	 */
+	int demand;
 
+	/**
+	 * The population capacity given by civ bonuses
+	 */
 	int capacity_static;
+
+	/**
+	 * The population capacity given by units
+	 */
 	int capacity_real;
+
+	/**
+	 * The max population capacity
+	 */
 	int capacity_max;
 
 	// generated values
 
+	/**
+	 * All the population capacity without the limitation
+	 */
 	int capacity_total;
+
+	/**
+	 * All the population capacity with the limitation
+	 */
 	int capacity;
 
 };

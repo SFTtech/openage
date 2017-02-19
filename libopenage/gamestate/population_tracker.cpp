@@ -5,15 +5,20 @@
 namespace openage {
 
 PopulationTracker::PopulationTracker(int capacity_static, int capacity_max) {
-	this->population = 0;
+	this->demand = 0;
 	this->capacity_static = capacity_static;
 	this->capacity_real = 0;
 	this->capacity_max = capacity_max;
 	this->update_capacity();
 }
 
-void PopulationTracker::add_population(int i) {
-	this->population += i;
+void PopulationTracker::demand_population(int i) {
+	this->demand += i;
+	// TODO triger gui update
+}
+
+void PopulationTracker::free_population(int i) {
+	this->demand -= i;
 	// TODO triger gui update
 }
 
@@ -24,6 +29,11 @@ void PopulationTracker::add_capacity_static(int i) {
 
 void PopulationTracker::add_capacity(int i) {
 	this->capacity_real += i;
+	this->update_capacity();
+}
+
+void PopulationTracker::remove_capacity(int i) {
+	this->capacity_real -= i;
 	this->update_capacity();
 }
 
@@ -43,8 +53,8 @@ void PopulationTracker::update_capacity() {
 	// TODO triger gui update
 }
 
-int PopulationTracker::get_population() const {
-	return this->population;
+int PopulationTracker::get_demand() const {
+	return this->demand;
 }
 
 int PopulationTracker::get_capacity() const {
@@ -52,7 +62,7 @@ int PopulationTracker::get_capacity() const {
 }
 
 int PopulationTracker::get_space() const {
-	return this->capacity - this->population;
+	return this->capacity - this->demand;
 }
 
 int PopulationTracker::get_capacity_overflow() const {

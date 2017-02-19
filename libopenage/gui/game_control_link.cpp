@@ -132,8 +132,8 @@ void ActionModeLink::on_buttons_type_changed(const ActionButtonsType buttons_typ
 	emit this->buttons_type_changed(buttons_type);
 }
 
-void ActionModeLink::on_population_changed(int population, int population_cap, bool warn) {
-	this->population = QString::number(population) + "/" + QString::number(population_cap);
+void ActionModeLink::on_population_changed(int demand, int capacity, bool warn) {
+	this->population = QString::number(demand) + "/" + QString::number(capacity);
 	this->population_warn = warn;
 	emit this->population_changed();
 }

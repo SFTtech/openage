@@ -138,7 +138,7 @@ signals:
 private slots:
 	void on_ability_changed(const std::string &ability);
 	void on_buttons_type_changed(const ActionButtonsType buttons_type);
-	void on_population_changed(int population, int population_cap, bool warn);
+	void on_population_changed(int demand, int capacity, bool warn);
 
 private:
 	virtual void on_core_adopted() override;

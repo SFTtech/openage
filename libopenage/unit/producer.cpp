@@ -416,7 +416,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 
 	// population of 1 for all movable units
 	if (this->unit_data.unit_class != gamedata::unit_classes::SHEEP) {
-		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(1));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(1, 0));
 	}
 
 	// add worker attributes
@@ -571,10 +571,10 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 
 	// population
 	if (this->id() == 109 || this->id() == 70) { // Town center, House
-		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(-5));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(0, 5));
 	}
 	else if (this->id() == 82) { // Castle
-		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(-20));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(0, 20));
 	}
 
 	bool has_destruct_graphic = this->destroyed != nullptr;

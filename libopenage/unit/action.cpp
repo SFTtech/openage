@@ -733,8 +733,8 @@ void TrainAction::update(unsigned int time) {
 		}
 		else {
 			auto &player = this->entity->get_attribute<attr_type::owner>().player;
-			auto &population = this->trained->default_attributes.get<attr_type::population>().population;
-			bool can_start = population <= 0 || population <= player.population.get_space();
+			auto &population_demand = this->trained->default_attributes.get<attr_type::population>().demand;
+			bool can_start = population_demand == 0 || population_demand <= player.population.get_space();
 			// TODO trigger not enough population capacity message
 			this->started = can_start;
 		}

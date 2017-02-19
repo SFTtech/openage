@@ -125,12 +125,12 @@ void Player::active_unit_added(Unit *unit) {
 
 	// population
 	if (unit->has_attribute(attr_type::population)) {
-		auto popul = unit->get_attribute<attr_type::population>().population;
-		if (popul < 0) {
-			population.add_capacity(-popul);
+		auto popul = unit->get_attribute<attr_type::population>();
+		if (popul.demand > 0) {
+			population.demand_population(popul.demand);
 		}
-		else if (popul > 0) {
-			population.add_population(popul);
+		if (popul.capacity > 0) {
+			population.add_capacity(popul.capacity);
 		}
 	}
 }
@@ -146,12 +146,12 @@ void Player::active_unit_removed(Unit *unit) {
 
 	// population
 	if (unit->has_attribute(attr_type::population)) {
-		auto popul = unit->get_attribute<attr_type::population>().population;
-		if (popul < 0) {
-			population.add_capacity(popul);
+		auto popul = unit->get_attribute<attr_type::population>();
+		if (popul.demand > 0) {
+			population.free_population(popul.demand);
 		}
-		else if (popul > 0) {
-			population.add_population(-popul);
+		if (popul.capacity > 0) {
+			population.remove_capacity(popul.capacity);
 		}
 	}
 }

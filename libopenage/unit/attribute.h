@@ -217,23 +217,22 @@ public:
 };
 
 /**
- * The population capacity or the population requirement.
+ * The population capacity and the population demand.
  */
 template<> class Attribute<attr_type::population>: public SharedAttributeContainer {
 public:
-	Attribute(int population)
+	Attribute(int demand, int capacity)
 		:
 		SharedAttributeContainer{attr_type::population},
-		population{population} {}
+		demand{demand},
+		capacity{capacity} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::population>>(*this);
 	}
 
-	/**
-	 * The population value, positive value describes requirement and negative capacity
-	 */
-	int population;
+	int demand;
+	int capacity;
 };
 
 /**

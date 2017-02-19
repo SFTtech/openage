@@ -146,7 +146,7 @@ public slots:
 
 signals:
 	void resource_changed(game_resource resource, int amount);
-	void population_changed(int population, int population_cap, bool warn);
+	void population_changed(int demand, int capacity, bool warn);
 	void ability_changed(const std::string &ability);
 	void buttons_type_changed(const ActionButtonsType type);
 
