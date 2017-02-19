@@ -825,7 +825,7 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 }
 
 void BuildAction::on_completion() {
-	if (this->get_target().get()->get_attribute<attr_type::building>().completed < 1.0f) {
+	if (this->get_target().is_valid() && this->get_target().get()->get_attribute<attr_type::building>().completed < 1.0f) {
 		// The BuildAction was just aborted and we shouldn't look for new buildings
 		return;
 	}
