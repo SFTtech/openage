@@ -7,6 +7,7 @@
 #include <QtQml>
 
 #include "../engine.h"
+#include "../cvar/cvar.h"
 #include "engine_link.h"
 #include "game_main_link.h"
 
@@ -232,7 +233,8 @@ void EditorModeLink::on_core_adopted() {
 SettingsModeLink::SettingsModeLink(QObject *parent)
 	:
 	Inherits{parent},
-	current_group_index{} {
+	current_group_index{},
+	cvar_manager{} {
 	Q_UNUSED(registration_settings);
 }
 
@@ -250,6 +252,10 @@ void SettingsModeLink::set_current_group_index(int current_group_index) {
 	this->s(f, this->current_group_index, current_group_index);
 }
 
+CVarManagerLink* SettingsModeLink::get_cvar_manager() const {
+	return this->cvar_manager;
+}
+
 void SettingsModeLink::on_current_group_index_changed(int current_group_index) {
 	if (this->current_group_index != current_group_index) {
 		this->current_group_index = current_group_index;
@@ -257,9 +263,19 @@ void SettingsModeLink::on_current_group_index_changed(int current_group_index) {
 	}
 }
 
+void SettingsModeLink::on_cvar_manager_changed(cvar::CVarManager *cvar_manager) {
+	auto new_cvar_manager = qtsdl::wrap(cvar_manager);
+
+	if (this->cvar_manager != new_cvar_manager) {
+		this->cvar_manager = new_cvar_manager;
+		emit this->cvar_manager_changed();
+	}
+}
+
 void SettingsModeLink::on_core_adopted() {
 	this->Inherits::on_core_adopted();
 	QObject::connect(&unwrap(this)->gui_signals, &SettingsModeSignals::current_group_index_changed, this, &SettingsModeLink::on_current_group_index_changed);
+	QObject::connect(&unwrap(this)->gui_signals, &SettingsModeSignals::cvar_manager_changed, this, &SettingsModeLink::on_cvar_manager_changed);
 }
 
 GameControlLink::GameControlLink(QObject *parent)

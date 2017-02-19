@@ -212,6 +212,7 @@ private:
 };
 
 class SettingsModeLink;
+class CVarManagerLink;
 
 }} // namespace openage::gui
 
@@ -235,6 +236,7 @@ class SettingsModeLink : public qtsdl::Inherits<OutputModeLink, SettingsModeLink
 	Q_OBJECT
 
 	Q_PROPERTY(int currentGroupIndex READ get_current_group_index WRITE set_current_group_index NOTIFY current_group_index_changed)
+	Q_PROPERTY(openage::gui::CVarManagerLink* cvarManager READ get_cvar_manager NOTIFY cvar_manager_changed)
 
 public:
 	SettingsModeLink(QObject *parent=nullptr);
@@ -243,16 +245,21 @@ public:
 	int get_current_group_index() const;
 	void set_current_group_index(int current_type_id);
 
+	CVarManagerLink* get_cvar_manager() const;
+
 signals:
 	void current_group_index_changed();
+	void cvar_manager_changed();
 
 private slots:
 	void on_current_group_index_changed(int current_group_index);
+	void on_cvar_manager_changed(cvar::CVarManager *cvar_manager);
 
 private:
 	virtual void on_core_adopted() override;
 
 	int current_group_index;
+	CVarManagerLink *cvar_manager;
 };
 
 class EngineLink;

@@ -721,6 +721,16 @@ std::string SettingsMode::name() const {
 void SettingsMode::announce() {
 	OutputMode::announce();
 	emit this->gui_signals.current_group_index_changed(this->current_group_index);
+
+	auto cvar_manager = [this]() -> cvar::CVarManager* {
+		if (this->game_control)
+			if (Engine *engine = this->game_control->get_engine())
+				return &engine->get_cvar_manager();
+
+		return nullptr;
+	}();
+
+	emit this->gui_signals.cvar_manager_changed(cvar_manager);
 }
 
 void SettingsMode::set_game_control(GameControl *game_control) {

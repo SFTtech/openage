@@ -27,6 +27,10 @@ class SettingsMode;
 class Engine;
 class GameControl;
 
+namespace cvar {
+class CVarManager;
+} // namespace cvar
+
 
 /**
  * Signals for a gui mode.
@@ -324,6 +328,7 @@ public:
 
 signals:
 	void current_group_index_changed(int current_group_index);
+	void cvar_manager_changed(cvar::CVarManager *cvar_manager);
 
 private:
 	SettingsMode *settings_mode;
