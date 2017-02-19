@@ -14,7 +14,8 @@ namespace cvar {
 CVarManager::CVarManager(const util::Path &path)
 	:
 	path{path},
-	config_loading{} {
+	config_loading{},
+	gui_link{} {
 }
 
 

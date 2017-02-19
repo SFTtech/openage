@@ -17,6 +17,10 @@
 #include "../util/path.h"
 
 
+namespace qtsdl {
+class GuiItemLink;
+} // qtsdl
+
 namespace openage {
 namespace cvar {
 
@@ -124,6 +128,12 @@ private:
 	 * It is set up in openage/cvar/location.py and openage/game/main.py
 	 */
 	util::Path path;
+
+public:
+	/**
+	 * Link to the Qt GUI.
+	 */
+	qtsdl::GuiItemLink *gui_link;
 };
 
 
