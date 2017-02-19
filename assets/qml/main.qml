@@ -128,7 +128,7 @@ Item {
 			LR.tag: "editorMode"
 		}
 
-		SettingsMode {
+		OA.SettingsMode {
 			id: settingsModeObj
 			LR.tag: "settingsMode"
 		}

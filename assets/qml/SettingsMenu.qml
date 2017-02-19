@@ -5,14 +5,12 @@ import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.3
 import QtQuick.Layouts 1.1
 
-import yay.sfttech.font 1.0
-
-import yay.sfttech.openage 1.0
+import yay.sfttech.openage 1.0 as OA
 
 Rectangle {
 	id: root
 
-	property SettingsMode settingsMode
+	property var settingsMode
 
 	color: "white"
 
@@ -41,22 +39,52 @@ Rectangle {
 				anchors.margins: 3 * metricsUnit
 
 				GridLayout {
+					Repeater {
+						model: root.settingsMode.cvarManager
 
-					Text {
-						Layout.row: 0
-						Layout.column: 0
+						Component {
+							id: fontSizeLabelComponent
 
-						text: "Font size:"
+							Text {
+								property var model
+
+								Layout.row: model.index
+								Layout.column: 0
+
+								text: model.display
+							}
+						}
+
+						delegate: Loader {
+							sourceComponent: display == "FONT_SIZE" ? fontSizeLabelComponent : undefined
+							onLoaded: item.model = Qt.binding(function() { return model })
+						}
 					}
 
-					SpinBox {
-						Layout.row: 0
-						Layout.column: 1
+					Repeater {
+						model: root.settingsMode.cvarManager
 
-						activeFocusOnPress: false
-						minimumValue: 1
-						value: GlobalFont.font.pointSize
-						onValueChanged: GlobalFont.font.pointSize = value
+						Component {
+							id: fontSizeComponent
+
+							SpinBox {
+								property var model
+
+								Layout.row: model.index
+								Layout.column: 1
+
+								activeFocusOnPress: false
+								minimumValue: 1
+
+								onValueChanged: if (model) model.edit = value
+								onModelChanged: if (model) value = model.edit
+							}
+						}
+
+						delegate: Loader {
+							sourceComponent: display == "FONT_SIZE" ? fontSizeComponent : undefined
+							onLoaded: item.model = Qt.binding(function() { return model })
+						}
 					}
 				}
 			}
