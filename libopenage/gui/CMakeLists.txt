@@ -2,6 +2,7 @@ add_sources(libopenage
 	assetmanager_link.cpp
 	actions_list_model.cpp
 	category_contents_list_model.cpp
+	cvar_manager_link.cpp
 	engine_info.cpp
 	engine_link.cpp
 	game_control_link.cpp
