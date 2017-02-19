@@ -37,7 +37,7 @@ struct PersistentCoreHolderBase {
 
 	/**
 	 * Establish link from the core to the shell.
-	 * Core must have a public 'gui::GuiItemLink *gui_link` member.
+	 * Core must have a public 'qtsdl::GuiItemLink *gui_link` member.
 	 */
 	virtual void adopt_shell(GuiItemLink *link) = 0;
 };
@@ -312,7 +312,7 @@ private:
  * Their cores are adopted by new shells identified by the 'LR.tag' in QML code.
  *
  * For each descendant the specializations of Wrap and Unwrap must be provided.
- * Corresponding cores must have public 'gui::GuiItemLink *gui_link` members.
+ * Corresponding cores must have public 'qtsdl::GuiItemLink *gui_link` members.
  *
  * @tparam T type of the concrete shell class (pass the descendant class)
  */
