@@ -22,7 +22,7 @@ public:
 		:
 		GuiItem<T>{item_base} {
 
-		item_base->on_core_adopted_func = std::bind(&GuiItemListModel::on_core_adopted, this);
+		GuiItemAccessorForListModel::set_on_core_adopted_func(item_base, std::bind(&GuiItemListModel::on_core_adopted, this));
 	}
 
 private:
@@ -36,7 +36,7 @@ private:
 		auto _this = checked_static_cast<T*>(this);
 
 		QObject::connect(_this, &GuiListModel::changed_from_gui, [_this] (const QByteArray &name, const QVariant &value) {
-			emit _this->game_logic_caller.in_game_logic_thread_blocking([&] {
+			GuiItemAccessorForListModel::call_in_game_logic_thread_blocking(_this, [&] {
 				unwrap(_this)->impl->setProperty(name, value);
 			});
 		});

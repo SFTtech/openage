@@ -78,8 +78,7 @@ private:
 	template<typename>
 	friend class GuiItemCoreInstantiator;
 
-	template<typename>
-	friend class GuiItemListModel;
+	friend class GuiItemAccessorForListModel;
 
 	/**
 	 * Creates and returns a core object inside a holder.
@@ -119,6 +118,17 @@ protected:
 	std::function<std::unique_ptr<PersistentCoreHolderBase>()> instantiate_core_func;
 	std::function<void(PersistentCoreHolderBase*, const QString&)> do_adopt_core_func;
 	std::function<void()> on_core_adopted_func;
+};
+
+class GuiItemAccessorForListModel {
+public:
+	static void set_on_core_adopted_func(GuiItemBase *item_base, const std::function<void()> &on_core_adopted) {
+		item_base->on_core_adopted_func = on_core_adopted;
+	}
+
+	static void call_in_game_logic_thread_blocking(GuiItemBase *item_base, const std::function<void()> &f) {
+		emit item_base->game_logic_caller.in_game_logic_thread_blocking(f);
+	}
 };
 
 template<typename T>
