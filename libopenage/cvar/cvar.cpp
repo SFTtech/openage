@@ -2,6 +2,8 @@
 
 #include "cvar.h"
 
+#include <tuple>
+
 #include "../log/log.h"
 
 
@@ -10,7 +12,9 @@ namespace cvar {
 
 CVarManager::CVarManager(const util::Path &path)
 	:
-	path{path} {}
+	path{path},
+	config_loading{} {
+}
 
 
 bool CVarManager::create(const std::string &name,
@@ -25,6 +29,8 @@ bool CVarManager::create(const std::string &name,
 
 
 std::string CVarManager::get(const std::string &name) const {
+	std::lock_guard<std::mutex> lock(this->store_mutex);
+
 	auto it = this->store.find(name);
 	if (it != this->store.end()) {
 		return it->second.first();
@@ -34,15 +40,31 @@ std::string CVarManager::get(const std::string &name) const {
 
 
 void CVarManager::set(const std::string &name, const std::string &value) const {
-	auto it = store.find(name);
-	if (it != store.end()) {
-		it->second.second(value);
+	set_func setter;
+
+	{
+		std::lock_guard<std::mutex> lock(this->store_mutex);
+
+		auto it = store.find(name);
+		if (it != store.end()) {
+			setter = it->second.second;
+		}
+	}
+
+	if (setter) {
+		setter(value);
+
+		if (!this->config_loading) {
+			pyx_config_file_set_option.call(this->path["keybinds.oac"], name, value);
+		}
 	}
 }
 
 
 void CVarManager::load_config(const util::Path &path) {
+	this->config_loading = true;
 	pyx_load_config_file.call(this, path);
+	this->config_loading = false;
 }
 
 
@@ -52,5 +74,6 @@ void CVarManager::load_all() {
 }
 
 pyinterface::PyIfFunc<void, CVarManager *, const util::Path &> pyx_load_config_file;
+pyinterface::PyIfFunc<void, const util::Path &, std::string, std::string> pyx_config_file_set_option;
 
 }} // openage::cvar

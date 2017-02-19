@@ -8,8 +8,10 @@
 #include <string>
 #include <unordered_map>
 #include <utility>
+#include <vector>
+#include <mutex>
 
-// pxd: from libopenage.pyinterface.functional cimport PyIfFunc0, PyIfFunc2
+// pxd: from libopenage.pyinterface.functional cimport PyIfFunc0, PyIfFunc2, PyIfFunc3
 #include "../pyinterface/functional.h"
 // pxd: from libopenage.util.path cimport Path
 #include "../util/path.h"
@@ -55,11 +57,13 @@ public:
 	/**
 	 * Gets the value of a config entry.
 	 * Internally calls the stored get function.
+	 * MT safe.
 	 */
 	std::string get(const std::string &name) const;
 
 	/**
 	 * Sets the config entry value.
+	 * MT safe.
 	 */
 	void set(const std::string &name, const std::string &value) const;
 
@@ -82,6 +86,12 @@ private:
 	 * That way the system is universal.
 	 */
 	std::unordered_map<std::string, std::pair<get_func, set_func>> store;
+	mutable std::mutex store_mutex;
+
+	/**
+	 * Avoid saving caused by loading.
+	 */
+	bool config_loading;
 
 	/**
 	 * Magic path that stores config files.
@@ -101,5 +111,15 @@ private:
  * PyIfFunc2[void, CVarManagerPtr, const Path&] pyx_load_config_file
  */
 extern pyinterface::PyIfFunc<void, CVarManager *, const util::Path &> pyx_load_config_file;
+
+
+/**
+ * Python function to set a value in a configuration file.
+ * The file name is passed into it.
+ *
+ * pxd:
+ * PyIfFunc3[void, const Path&, string, string] pyx_config_file_set_option
+ */
+extern pyinterface::PyIfFunc<void, const util::Path &, std::string, std::string> pyx_config_file_set_option;
 
 }} // openage::cvar
