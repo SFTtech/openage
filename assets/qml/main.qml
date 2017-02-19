@@ -71,8 +71,10 @@ Item {
 		 * must be run after the engine is attached
 		 */
 		Component.onCompleted: {
-			modes = [createModeObj, editorModeObj, actionModeObj]
-			modeIndex = 0
+			modes = [createModeObj, settingsModeObj, editorModeObj, actionModeObj]
+
+			if (modeIndex == -1)
+				modeIndex = 0
 		}
 
 		LR.tag: "gamecontrol"
@@ -124,6 +126,11 @@ Item {
 			onToggle: typePicker.toggle()
 
 			LR.tag: "editorMode"
+		}
+
+		SettingsMode {
+			id: settingsModeObj
+			LR.tag: "settingsMode"
 		}
 
 		CreateGameWhenReady {
@@ -216,6 +223,22 @@ Item {
 
 				PropertyChanges {
 					target: controls; children: actionMode.content
+				}
+			},
+			State {
+				id: settingsMode
+				name: settingsModeObj.name
+
+				property list<Item> content: [
+					SettingsMenu {
+						anchors.fill: root
+
+						settingsMode: settingsModeObj
+					}
+				]
+
+				PropertyChanges {
+					target: controls; children: settingsMode.content
 				}
 			}
 		]

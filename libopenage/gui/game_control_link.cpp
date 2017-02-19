@@ -254,6 +254,9 @@ void GameControlLink::on_core_adopted() {
 	QObject::connect(&unwrap(this)->gui_signals, &GameControlSignals::modes_changed, this, &GameControlLink::on_modes_changed);
 	QObject::connect(&unwrap(this)->gui_signals, &GameControlSignals::current_player_name_changed, this, &GameControlLink::on_current_player_name_changed);
 	QObject::connect(&unwrap(this)->gui_signals, &GameControlSignals::current_civ_index_changed, this, &GameControlLink::on_current_civ_index_changed);
+
+	if (unwrap(this)->get_mode() != -1)
+		this->mode_index = unwrap(this)->get_mode();
 }
 
 void GameControlLink::componentComplete() {
