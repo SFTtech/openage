@@ -7,6 +7,8 @@
 #include "../util/path.h"
 #include "guisys/link/gui_singleton_item.h"
 
+#include "cvar_manager_link.h"
+
 QT_FORWARD_DECLARE_CLASS(QQmlEngine)
 QT_FORWARD_DECLARE_CLASS(QJSEngine)
 
@@ -45,6 +47,8 @@ class EngineLink : public qtsdl::GuiSingletonItem {
 	           READ get_global_binds
 	           NOTIFY global_binds_changed)
 
+	Q_PROPERTY(openage::gui::CVarManagerLink* cvarManager READ get_cvar_manager CONSTANT)
+
 public:
 	explicit EngineLink(QObject *parent, Engine *engine);
 	virtual ~EngineLink();
@@ -58,6 +62,8 @@ public:
 
 	QStringList get_global_binds() const;
 
+	CVarManagerLink* get_cvar_manager();
+
 signals:
 	void global_binds_changed();
 
@@ -68,6 +74,7 @@ private:
 	Engine *core;
 
 	QStringList global_binds;
+	CVarManagerLink cvar_manager;
 };
 
 }} // openage::gui

@@ -24,7 +24,8 @@ const int registration = qmlRegisterSingletonType<EngineLink>("yay.sfttech.opena
 EngineLink::EngineLink(QObject *parent, Engine *engine)
 	:
 	GuiSingletonItem{parent},
-	core{engine} {
+	core{engine},
+	cvar_manager{engine->get_cvar_manager()} {
 	Q_UNUSED(registration);
 
 	ENSURE(!unwrap(this)->gui_link, "Sharing singletons between QML engines is not supported for now.");
@@ -70,6 +71,10 @@ QObject* EngineLink::provider(QQmlEngine *engine, QJSEngine*) {
 
 QStringList EngineLink::get_global_binds() const {
 	return this->global_binds;
+}
+
+CVarManagerLink* EngineLink::get_cvar_manager() {
+	return &this->cvar_manager;
 }
 
 void EngineLink::on_global_binds_changed(const std::vector<std::string>& global_binds) {
