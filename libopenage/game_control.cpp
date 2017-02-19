@@ -890,6 +890,10 @@ void GameControl::set_mode(int mode_index, bool signal_if_unchanged) {
 	}
 }
 
+int GameControl::get_mode() const {
+	return this->active_mode_index;
+}
+
 Engine *GameControl::get_engine() const {
 	if (this->engine == nullptr) {
 		throw Error{MSG(err) << "game control doesn't have a valid engine pointer yet"};
