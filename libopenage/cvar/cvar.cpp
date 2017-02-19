@@ -39,6 +39,20 @@ std::string CVarManager::get(const std::string &name) const {
 }
 
 
+std::vector<std::string> CVarManager::get_names() const {
+	std::vector<std::string> result;
+	result.reserve(this->store.size());
+
+	std::lock_guard<std::mutex> lock(this->store_mutex);
+
+	for (const auto &opt : this->store) {
+		result.emplace_back(std::get<const std::string>(opt));
+	}
+
+	return result;
+}
+
+
 void CVarManager::set(const std::string &name, const std::string &value) const {
 	set_func setter;
 

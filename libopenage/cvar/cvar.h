@@ -62,6 +62,12 @@ public:
 	std::string get(const std::string &name) const;
 
 	/**
+	 * Gets all names of config entries.
+	 * MT safe.
+	 */
+	std::vector<std::string> get_names() const;
+
+	/**
 	 * Sets the config entry value.
 	 * MT safe.
 	 */
