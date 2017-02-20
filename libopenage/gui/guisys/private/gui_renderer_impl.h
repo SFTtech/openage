@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,6 +13,7 @@
 #include <QQuickWindow>
 #include <QQuickRenderControl>
 #include <QOffscreenSurface>
+#include <QPointer>
 
 struct SDL_Window;
 
@@ -36,7 +37,7 @@ public slots:
 
 private:
 	// TODO: to remove when the proper focus for the foreign (that obtained from QWindow::fromWinId()) windows is implemented (Qt 5.6).
-	QQuickItem *focused_item;
+	QPointer<QQuickItem> focused_item;
 };
 
 /**
