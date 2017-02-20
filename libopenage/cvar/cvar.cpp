@@ -17,11 +17,27 @@ CVarManager::CVarManager(const util::Path &path)
 }
 
 
+CVarManager::~CVarManager() {
+	for (const auto &orphan : this->orphaned)
+		log::log(MSG(warn) << "leftover unused cvar: '" << orphan.first << "'");
+}
+
+
 bool CVarManager::create(const std::string &name,
                          const std::pair<get_func, set_func> &accessors) {
 	auto it = this->store.find(name);
 	if (it == this->store.end()) {
 		this->store[name] = accessors;
+
+		auto orphan_it = std::find_if(std::begin(this->orphaned), std::begin(this->orphaned), [&name](const std::pair<std::string, std::string> &orphan) { return name == orphan.first; });
+
+		if (orphan_it != std::end(this->orphaned)) {
+			const auto orphan_value = orphan_it->second;
+			this->orphaned.erase(orphan_it);
+
+			std::get<set_func>(accessors)(orphan_value);
+		}
+
 		return true;
 	}
 	return false;
@@ -53,7 +69,7 @@ std::vector<std::string> CVarManager::get_names() const {
 }
 
 
-void CVarManager::set(const std::string &name, const std::string &value) const {
+void CVarManager::set(const std::string &name, const std::string &value) {
 	set_func setter;
 
 	{
@@ -70,6 +86,14 @@ void CVarManager::set(const std::string &name, const std::string &value) const {
 
 		if (!this->config_loading) {
 			pyx_config_file_set_option.call(this->path["keybinds.oac"], name, value);
+		}
+	} else {
+		auto orphan_it = std::find_if(std::begin(this->orphaned), std::begin(this->orphaned), [&name](const std::pair<std::string, std::string> &orphan) { return name == orphan.first; });
+
+		if (orphan_it != std::end(this->orphaned)) {
+			orphan_it->second = value;
+		} else {
+			this->orphaned.emplace_back(name, value);
 		}
 	}
 }

@@ -45,6 +45,7 @@ class CVarManager {
 
 public:
 	CVarManager(const util::Path &path);
+	~CVarManager();
 
 	/**
 	 * Creates a configuration entry
@@ -71,7 +72,7 @@ public:
 	 * Sets the config entry value.
 	 * MT safe.
 	 */
-	void set(const std::string &name, const std::string &value) const;
+	void set(const std::string &name, const std::string &value);
 
 	/**
 	 * Performs the loading of a configuration file
@@ -93,6 +94,11 @@ private:
 	 */
 	std::unordered_map<std::string, std::pair<get_func, set_func>> store;
 	mutable std::mutex store_mutex;
+
+	/**
+	 * Options that are set but not yet created.
+	 */
+	std::vector<std::pair<std::string, std::string>> orphaned;
 
 	/**
 	 * Avoid saving caused by loading.
