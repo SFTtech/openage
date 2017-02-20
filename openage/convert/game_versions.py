@@ -16,21 +16,25 @@ class GameVersion(enum.Enum):
         "Age of Empires 2: The Age of Kings",
         False,
         {'empires2.exe', 'data/empires2.dat'},
+        {'resources/_common/dat/empires2_x1_p1.dat'},
     )
     age2_tc = (
         "Age of Empires 2: The Conquerors",
         True,
         {'age2_x1/age2_x1.exe', 'data/empires2_x1.dat'},
+        {'resources/_common/dat/empires2_x1_p1.dat'},
     )
     age2_tc_10c = (
         "Age of Empires 2: The Conquerors, Patch 1.0c",
         True,
         {'age2_x1/age2_x1.exe', 'data/empires2_x1_p1.dat'},
+        {'resources/_common/dat/empires2_x1_p1.dat'},
     )
     age2_hd_3x = (
         "Age of Empires 2: HD Edition (Version 3.x)",
         True,
-        {'AoK HD.exe', 'data/empires2_x1_p1.dat'}
+        {'AoK HD.exe', 'data/empires2_x1_p1.dat'},
+        {'resources/_common/dat/empires2_x1_p1.dat'},
     )
     # HD edition version 4.0
     age2_fe = (
@@ -46,10 +50,11 @@ class GameVersion(enum.Enum):
          'resources/_packages/african-kingdoms/config.json'},
     )
 
-    def __init__(self, description, openage_supported, required_files=None):
+    def __init__(self, description, openage_supported, required_files=None, forbidden_files=None):
         self.description = description
         self.openage_supported = openage_supported
         self.required_files = required_files or frozenset()
+        self.forbidden_files = forbidden_files or frozenset()
 
     def __str__(self):
         return self.description
@@ -61,6 +66,14 @@ def get_game_versions(srcdir):
     GameVersion values.
     """
     for version in GameVersion:
-        if all(srcdir.joinpath(path).is_file()
-               for path in version.required_files):
-            yield version
+        # Check required files.
+        if not all(srcdir.joinpath(path).is_file()
+                   for path in version.required_files):
+            continue
+
+        # Check forbidden files.
+        if any(srcdir.joinpath(path).is_file()
+               for path in version.forbidden_files):
+            continue
+
+        yield version
