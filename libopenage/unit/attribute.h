@@ -17,10 +17,12 @@ namespace std {
 /**
  * hasher for unit classes enum type
  */
-template<> struct hash<gamedata::unit_classes> {
-	typedef underlying_type<gamedata::unit_classes>::type underlying_type;
+template<> struct hash<openage::gamedata::unit_classes> {
+	typedef underlying_type<openage::gamedata::unit_classes>::type underlying_type;
+
 	typedef hash<underlying_type>::result_type result_type;
-	result_type operator()(const gamedata::unit_classes &arg) const {
+
+	result_type operator()(const openage::gamedata::unit_classes &arg) const {
 		hash<underlying_type> hasher;
 		return hasher(static_cast<underlying_type>(arg));
 	}
