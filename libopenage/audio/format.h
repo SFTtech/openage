@@ -2,11 +2,11 @@
 
 #pragma once
 
-#include "../gamedata/sound_file.gen.h"
+#include <ostream>
+
 
 namespace openage {
 namespace audio {
-
 
 enum class format_t {
 	OPUS,
@@ -16,10 +16,7 @@ enum class format_t {
 };
 
 const char *format_t_to_str(format_t val);
+
 std::ostream &operator <<(std::ostream &os, format_t val);
-
-
-format_t from_format(const gamedata::audio_format_t format);
-
 
 }} // openage::audio

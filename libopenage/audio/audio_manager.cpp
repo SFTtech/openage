@@ -10,11 +10,39 @@
 #include "hash_functions.h"
 #include "resource.h"
 #include "../log/log.h"
-#include "../util/dir.h"
+#include "../util/misc.h"
 
 
 namespace openage {
 namespace audio {
+
+
+
+
+/**
+ * Wrapper class for the sdl audio device locking so
+ * the device doesn't deadlock because of funny exceptions.
+ */
+class SDLDeviceLock {
+public:
+	SDLDeviceLock(const SDL_AudioDeviceID &id)
+		:
+		dev_id{id} {
+		SDL_LockAudioDevice(this->dev_id);
+	}
+
+	~SDLDeviceLock() {
+		SDL_UnlockAudioDevice(this->dev_id);
+	}
+
+	SDLDeviceLock(SDLDeviceLock &&) = delete;
+	SDLDeviceLock(const SDLDeviceLock &) = delete;
+	SDLDeviceLock& operator =(SDLDeviceLock &&) = delete;
+	SDLDeviceLock& operator =(const SDLDeviceLock &) = delete;
+
+private:
+	SDL_AudioDeviceID dev_id;
+};
 
 
 AudioManager::AudioManager(job::JobManager *job_manager,
@@ -93,25 +121,20 @@ AudioManager::~AudioManager() {
 	SDL_CloseAudioDevice(device_id);
 }
 
-void AudioManager::load_resources(const util::Dir &asset_dir,
-                                  const std::vector<gamedata::sound_file> &sound_files) {
+void AudioManager::load_resources(const std::vector<resource_def> &sound_files) {
 	if (not this->available) {
 		return;
 	}
 
 	for (auto &sound_file : sound_files) {
-		auto category = from_category(sound_file.category);
-		auto id = sound_file.sound_id;
+		auto key = std::make_tuple(sound_file.category, sound_file.id);
 
-		std::string path = asset_dir.join(sound_file.path);
-		auto format = from_format(sound_file.format);
-		auto loader_policy = from_loader_policy(sound_file.loader_policy);
+		if (this->resources.find(key) != std::end(this->resources)) {
+			log::log(WARN << "overwriting loaded sound #" << sound_file.id);
+		}
 
-		auto key = std::make_tuple(category, id);
-		auto resource = Resource::create_resource(this, category, id, path, format, loader_policy);
-
-		// TODO check resource already existing
-		resources.insert({key, resource});
+		auto resource = Resource::create_resource(this, sound_file);
+		this->resources.insert({key, resource});
 	}
 }
 
@@ -135,17 +158,6 @@ Sound AudioManager::get_sound(category_t category, int id) {
 	return Sound{this, sound_impl};
 }
 
-void remove_from_vector(std::vector<std::shared_ptr<SoundImpl>> &v, size_t i) {
-	// current sound is the last in the list, so just remove it
-	if (i == v.size()-1) {
-		v.pop_back();
-	// current sound is in the middle of the list, so it will be
-	// exchanged with the last sound and the removed
-	} else {
-		v[i] = v.back();
-		v.pop_back();
-	}
-}
 
 void AudioManager::audio_callback(int16_t *stream, int length) {
 	std::memset(mix_buffer.get(), 0, length*4);
@@ -157,10 +169,10 @@ void AudioManager::audio_callback(int16_t *stream, int length) {
 		for (size_t i = 0; i < playing_list.size(); i++) {
 			auto &sound = playing_list[i];
 			auto sound_finished = sound->mix_audio(mix_buffer.get(), length);
-			// if the sound is finished, it should be removed from the playing
-			// list
+			// if the sound is finished,
+			// it should be removed from the playing list
 			if (sound_finished) {
-				remove_from_vector(playing_list, i);
+				util::vector_remove_swap_end(playing_list, i);
 				i--;
 			}
 		}
@@ -179,34 +191,30 @@ void AudioManager::audio_callback(int16_t *stream, int length) {
 }
 
 void AudioManager::add_sound(std::shared_ptr<SoundImpl> sound) {
-	SDL_LockAudioDevice(device_id);
+	SDLDeviceLock lock{this->device_id};
 
 	auto category = sound->get_category();
 	auto &playing_list = playing_sounds.find(category)->second;
 	// TODO probably check if sound already exists in playing list
 	playing_list.push_back(sound);
-
-	SDL_UnlockAudioDevice(device_id);
 }
 
 void AudioManager::remove_sound(std::shared_ptr<SoundImpl> sound) {
-	SDL_LockAudioDevice(device_id);
+	SDLDeviceLock lock{this->device_id};
 
 	auto category = sound->get_category();
 	auto &playing_list = playing_sounds.find(category)->second;
 
 	for (size_t i = 0; i < playing_list.size(); i++) {
 		if (playing_list[i] == sound) {
-			remove_from_vector(playing_list, i);
+			util::vector_remove_swap_end(playing_list, i);
 			break;
 		}
 	}
-
-	SDL_UnlockAudioDevice(device_id);
 }
 
 SDL_AudioSpec AudioManager::get_device_spec() const {
-	return device_spec;
+	return this->device_spec;
 }
 
 job::JobManager *AudioManager::get_job_manager() const {

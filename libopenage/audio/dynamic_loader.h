@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,6 +7,8 @@
 
 #include "format.h"
 #include "types.h"
+#include "../util/path.h"
+
 
 namespace openage {
 namespace audio {
@@ -21,21 +23,22 @@ protected:
 	/**
 	 * the resource's location in the filesystem
 	 */
-	std::string path;
+	util::Path path;
 
 public:
 	/**
 	 * Initializes a new DynamicLoader.
 	 * @param path the resource's location in the filesystem
 	 */
-	DynamicLoader(const std::string &path);
+	DynamicLoader(const util::Path &path);
 	virtual ~DynamicLoader() = default;
 
 	/**
 	 * Loads a chunk of stereo pcm data from the resource. The chunk of data
 	 * begins at the given offset from the beginning of the resource. The actual
-	 * read number of int16_t values is returned. TODO Returns zero if the end
-	 * of resource is reached.
+	 * read number of int16_t values is returned.
+	 * TODO: Returns zero if the end of resource is reached.
+	 *
 	 * @param chunk_buffer the buffer to save the chunk into
 	 * @param offset the offset from the resource's beginning
 	 * @param chunk_size the number of int16_t values that fit in one chunk
@@ -48,9 +51,8 @@ public:
 	 * @param path the resource's location in the filesystem
 	 * @param format the resource's audio format
 	 */
-	static std::unique_ptr<DynamicLoader> create(const std::string &path,
+	static std::unique_ptr<DynamicLoader> create(const util::Path &path,
 	                                             format_t format);
 };
 
-}
-}
+}} // openage::audio

@@ -3,12 +3,17 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
+#include "opus_loading.h"
 #include "dynamic_loader.h"
 #include "types.h"
+#include "../util/path.h"
+
 
 namespace openage {
 namespace audio {
+
 
 /**
  * A OpusDynamicLoader load's opus encoded data.
@@ -27,19 +32,12 @@ public:
 	 * Creates a new OpusDynamicLoader.
 	 * @param path the resource's location in the filesystem
 	 */
-	OpusDynamicLoader(const std::string &path);
+	OpusDynamicLoader(const util::Path &path);
 	virtual ~OpusDynamicLoader() = default;
 
-	size_t load_chunk(int16_t *chunk_buffer, size_t offset,
+	size_t load_chunk(int16_t *chunk_buffer,
+	                  size_t offset,
 	                  size_t chunk_size) override;
-
-private:
-	/**
-	 * Opens a opus file. Its location is specified by the path stored in the
-	 * DynamicLoader.
-	 */
-	opus_file_t open_opus_file();
 };
 
-}
-}
+}} // openage::audio

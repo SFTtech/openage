@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "resource.h"
 
@@ -30,17 +30,25 @@ int Resource::get_id() const {
 
 
 std::shared_ptr<Resource> Resource::create_resource(AudioManager *manager,
-                                                    category_t category, int id,
-                                                    const std::string &path,
-                                                    format_t format,
-                                                    loader_policy_t loader_policy) {
-	switch (loader_policy) {
+                                                    const resource_def &def) {
+
+	if (unlikely(not def.location.is_file())) {
+		throw Error{ERR << "sound file does not exist: " << def.location};
+	}
+
+	switch (def.loader_policy) {
 	case loader_policy_t::IN_MEMORY:
-		return std::make_shared<InMemoryResource>(manager, category, id, path, format);
+		return std::make_shared<InMemoryResource>(
+			manager, def.category, def.id, def.location, def.format
+		);
+
 	case loader_policy_t::DYNAMIC:
-		return std::make_shared<DynamicResource>(manager, category, id, path, format);
+		return std::make_shared<DynamicResource>(
+			manager, def.category, def.id, def.location, def.format
+		);
+
 	default:
-		throw Error{MSG(err) << "Unsupported loader policy: " << loader_policy};
+		throw Error{ERR << "Unsupported loader policy: " << def.loader_policy};
 	}
 }
 

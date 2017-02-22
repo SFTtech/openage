@@ -16,6 +16,7 @@
 #include "../datastructure/concurrent_queue.h"
 #include "../job/job.h"
 #include "../job/job_group.h"
+#include "../util/path.h"
 
 namespace openage {
 namespace audio {

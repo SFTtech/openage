@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,9 +6,9 @@
 #include <string>
 
 #include "category.h"
-#include "format.h"
-#include "loader_policy.h"
+#include "resource_def.h"
 #include "types.h"
+
 
 namespace openage {
 namespace audio {
@@ -64,10 +64,7 @@ public:
 	 * create an audio resource, this produces a DynamicResource or a InMemoryResource
 	 */
 	static std::shared_ptr<Resource> create_resource(AudioManager *manager,
-	                                                 category_t category, int id,
-	                                                 const std::string &path,
-	                                                 format_t format,
-	                                                 loader_policy_t loader_policy);
+	                                                 const resource_def &def);
 
 protected:
 	/**

@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,6 +6,8 @@
 
 #include "in_memory_loader.h"
 #include "types.h"
+#include "../util/path.h"
+
 
 namespace openage {
 namespace audio {
@@ -20,11 +22,10 @@ public:
 	 * Creates a new OpusInMemoryLoader.
 	 * @param path the resource's location in the filesystem
 	 */
-	OpusInMemoryLoader(const std::string &path);
+	OpusInMemoryLoader(const util::Path &path);
 	virtual ~OpusInMemoryLoader() = default;
 
 	pcm_data_t get_resource() override;
 };
 
-}
-}
+}} // openage::audio

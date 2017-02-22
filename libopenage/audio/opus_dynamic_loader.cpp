@@ -2,8 +2,6 @@
 
 #include "opus_dynamic_loader.h"
 
-#include <thread>
-
 #include <opusfile.h>
 
 #include "error.h"
@@ -12,30 +10,30 @@
 namespace openage {
 namespace audio {
 
-// custom deleter for OggOpusFile unique pointers
-static auto opus_deleter = [](OggOpusFile *op_file) {
-	if (op_file != nullptr) {
-		op_free(op_file);
-	}
-};
 
-OpusDynamicLoader::OpusDynamicLoader(const std::string &path)
+OpusDynamicLoader::OpusDynamicLoader(const util::Path &path)
 	:
 	DynamicLoader{path},
-	source{this->open_opus_file()} {
+	source{open_opus_file(path)} {
+
 	// read channels from the opus file
 	channels = op_channel_count(source.get(), -1);
 
 	int64_t pcm_length = op_pcm_total(source.get(), -1);
 	if (pcm_length < 0) {
-		throw audio::Error{MSG(err) << "Could not seek in " << path << ": " << pcm_length};
+		throw audio::Error{
+			ERR << "Could not seek in "
+			    << path << ": " << pcm_length};
 	}
 
 	length = static_cast<size_t>(pcm_length) * 2;
 }
 
-size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
+
+size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer,
+                                     size_t offset,
                                      size_t chunk_size) {
+
 	// if the requested offset is greater than the resource's length, there is
 	// no chunk left to load
 	if (offset > this->length) {
@@ -49,7 +47,9 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 
 	int op_ret = op_pcm_seek(source.get(), pcm_offset);
 	if (op_ret < 0) {
-		throw audio::Error{MSG(err) << "Could not seek in " << path << ": " << op_ret};
+		throw audio::Error{
+			ERR << "Could not seek in " << this->path << ": " << op_ret
+		};
 	}
 
 	// read a chunk from the requested offset
@@ -58,6 +58,7 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 	// if the opus file is a stereo source, we read chunk_size directly
 	int read_num_values = chunk_size / 2 * channels;
 	int read_count = 0;
+
 	// loop as long as there are samples left to read
 	while (read_count <= read_num_values) {
 		int samples_read = op_read(
@@ -67,8 +68,10 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 
 		// an error occurred
 		if (samples_read < 0) {
-			throw audio::Error{MSG(err) << "Could not read from "
-			                            << path << ": " << samples_read};
+			throw audio::Error{
+				ERR << "Could not read from "
+				    << this->path << ": " << samples_read
+			};
 		}
 		// end of the resource
 		else if (samples_read == 0) {
@@ -90,15 +93,6 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer, size_t offset,
 	}
 
 	return (read_count * 2) / channels;
-}
-
-opus_file_t OpusDynamicLoader::open_opus_file() {
-	int op_err;
-	opus_file_t op_file{op_open_file(path.c_str(), &op_err), opus_deleter};
-	if (op_err != 0) {
-		throw audio::Error{MSG(err) << "Could not open: " << path.c_str()};
-	}
-	return op_file;
 }
 
 }} // openage::audio

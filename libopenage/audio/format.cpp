@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "format.h"
 
@@ -6,18 +6,6 @@
 
 namespace openage {
 namespace audio {
-
-
-format_t from_format(const gamedata::audio_format_t format) {
-	switch (format) {
-	case gamedata::audio_format_t::OPUS:
-		return format_t::OPUS;
-	case gamedata::audio_format_t::WAV:
-		return format_t::WAV;
-	default:
-		throw Error{MSG(err) << "Unknown audio format: " << static_cast<int>(format)};
-	}
-}
 
 
 const char *format_t_to_str(format_t val) {
