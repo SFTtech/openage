@@ -23,7 +23,7 @@ def get_asset_path(args):
     """
 
     # if we're in devmode, use only the build source asset folder
-    if config.DEVMODE:
+    if not args.asset_dir and config.DEVMODE:
         return Directory(os.path.join(config.BUILD_SRC_DIR, "assets")).root
 
     # else, mount the possible locations in an union:
