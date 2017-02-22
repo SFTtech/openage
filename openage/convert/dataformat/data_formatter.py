@@ -24,50 +24,87 @@ class DataFormatter:
         "fill": entry_parser.ParserMemberFunction(
             func_name = "fill",
             templates = {
+                # used as dummy when there is no field to parse
                 0: entry_parser.ParserTemplate(
-                    signature    = "int %sfill(char * /*by_line*/)",
-                    headers      = set(),
+                    signature    = "int {}fill(const std::string & /*line*/)",
+                    headers      = {"std::string"},
                     impl_headers = set(),
-                    template     = "$signature {\n\treturn -1;\n}"
+                    template     = (
+                        "$signature {\n"
+                        "    return -1;\n"
+                        "}\n"
+                    )
                 ),
+                # used to parse at least one member field of the struct
                 None: entry_parser.ParserTemplate(
-                    signature    = "int %sfill(char *by_line)",
-                    headers      = set(),
-                    impl_headers = util.determine_headers(
-                        ("strtok_custom", "engine_error")
+                    signature    = "int {}fill(const std::string &line)",
+                    headers      = util.determine_headers(
+                        ("std::string",)
                     ),
-                    template     = """$signature {
-\tchar *buf[$member_count];
-\tint count = openage::util::string_tokenize_to_buf(by_line, '$delimiter', buf, $member_count);
-
-\tif (count != $member_count) {
-\t\tthrow openage::error::Error(MSG(err) <<
-\t\t\t"Tokenizing $struct_name led to " << count << " columns ("
-\t\t\t"expected " << $member_count << ")!");
-\t}
-
-$parsers
-
-\treturn -1;
-}
-""",
-                ),
+                    impl_headers = util.determine_headers(
+                        ("strtok_custom", "engine_error", "std::vector")
+                    ),
+                    template     = (
+                        "$signature {\n"
+                        "    std::vector<std::string> buf = openage::util::split_escape(\n"
+                        "        line, '$delimiter', $member_count\n"
+                        "    );\n"
+                        "\n"
+                        "    if (buf.size() != $member_count) {\n"
+                        "        throw openage::error::Error(\n"
+                        "            ERR\n"
+                        '            << "Tokenizing $struct_name led to "\n'
+                        '            << buf.size()\n'
+                        '            << " columns (expected "\n'
+                        '            << $member_count\n'
+                        '            << ")!"\n'
+                        "        );\n"
+                        "    }\n"
+                        "\n"
+                        "$parsers\n"
+                        "\n"
+                        "    return -1;\n"
+                        "}\n"
+                    ),
+                )
             }
         ),
         "recurse": entry_parser.ParserMemberFunction(
             func_name = "recurse",
             templates = {
+                # used when this struct requires no further recursion
                 0: entry_parser.ParserTemplate(
-                    signature    = "int %srecurse(openage::util::Dir /*basedir*/, openage::util::csv_file_map_t */*file_map*/)",
-                    headers      = util.determine_headers(("engine_dir", "csv_map")),
+                    signature    = (
+                        "bool {}recurse(const openage::util::CSVCollection & /*storage*/, "
+                        "const std::string & /*basedir*/)"
+                    ),
+                    headers      = util.determine_headers(
+                        ("std::string", "csv_collection")
+                    ),
                     impl_headers = set(),
-                    template     = "$signature {\n\treturn -1;\n}\n"
+                    template     = (
+                        "$signature {\n"
+                        "    return true;\n"
+                        "}\n"
+                    )
                 ),
+                # used when we have to recurse deeper
                 None: entry_parser.ParserTemplate(
-                    signature = "int %srecurse(openage::util::Dir basedir, openage::util::csv_file_map_t *file_map)",
-                    headers   = util.determine_headers(("engine_dir", "csv_map")),
+                    signature = (
+                        "bool {}recurse(const openage::util::CSVCollection &storage, "
+                        "const std::string &basedir)"
+                    ),
+                    headers   = util.determine_headers(
+                        ("std::string", "csv_collection")
+                    ),
                     impl_headers = set(),
-                    template  = "$signature {\n$parsers\n\n\treturn -1;\n}\n"
+                    template  = (
+                        "$signature {\n"
+                        "$parsers\n"
+                        "\n"
+                        "    return true;\n"
+                        "}\n"
+                    )
                 ),
             }
         ),

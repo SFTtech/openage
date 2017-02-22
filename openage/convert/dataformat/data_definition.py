@@ -1,6 +1,8 @@
 # Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
-# TODO pylint: disable=C,R
+"""
+Output format specification for data to write.
+"""
 
 import os.path
 
@@ -13,7 +15,9 @@ from .struct_definition import StructDefinition
 
 class DataDefinition(StructDefinition):
     """
-    data structure definition by given object including data.
+    Contains a data definition, which is a list of dicts
+    [{member_name: value}, ...]
+    this can then be formatted to an arbitrary output file.
     """
 
     def __init__(self, target, data, name_data_file):
@@ -42,11 +46,11 @@ class DataDefinition(StructDefinition):
 
         # create the file meta comment for sigle file packed csv files
         if self.single_output:
-            txt.extend(["## ", self.name_data_file, "\n"])
+            txt.append("### %s.docx\n" % (self.name_data_file))
 
         # create the csv information comment header
         txt.extend([
-            "# struct ", self.name_struct, "\n",
+            "# struct %s\n" % self.name_struct,
             commentify_lines("# ", self.struct_description),
             "# ", genfile.DELIMITER.join(csv_column_types), "\n",
             "# ", genfile.DELIMITER.join(self.members.keys()), "\n",

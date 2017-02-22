@@ -31,26 +31,45 @@ class StructDefinition:
         """
         create a struct definition from an Exportable
         """
-        self.name_struct_file   = target.name_struct_file    # !< name of file where generated struct will be placed
-        self.name_struct        = target.name_struct         # !< name of generated C struct
-        self.struct_description = target.struct_description  # !< comment placed above generated C struct
-        self.prefix             = None                       # !< if not None, a prefix will be added to the final path
-        self.single_output      = None                       # !< if not None, will be packed with other files into a single one
-        self.target             = target                     # !< target Exportable class that defines the data format
+
+        # name of file where generated struct will be placed
+        self.name_struct_file   = target.name_struct_file
+
+        # name of generated C struct
+        self.name_struct        = target.name_struct
+
+        # comment placed above generated C struct
+        self.struct_description = target.struct_description
+
+        # if not None, a prefix will be added to the final path
+        self.prefix             = None
+
+        # if not None, will be packed with other files into a single one
+        self.single_output      = None
+
+        # target Exportable class that defines the data format
+        self.target             = target
 
         # create ordered dict of member type objects from structure definition
         self.members = OrderedDict()
         self.inherited_members = list()
         self.parent_classes = list()
 
-        target_members = target.get_data_format(allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT), flatten_includes=True)
+        target_members = target.get_data_format(
+            allowed_modes=(True, READ_EXPORT, NOREAD_EXPORT),
+            flatten_includes=True
+        )
+
         for is_parent, _, member_name, member_type in target_members:
 
             if isinstance(member_type, IncludeMembers):
-                raise Exception("something went very wrong, inheritance should be flattened at this point.")
+                raise Exception("something went very wrong, "
+                                "inheritance should be flattened at this point.")
 
             if not isinstance(member_name, str):
-                raise Exception("member name has to be a string, currently: %s<%s>" % (str(member_name), type(member_name)))
+                raise Exception("member name has to be a string, "
+                                "currently: %s<%s>" % (str(member_name),
+                                                       type(member_name)))
 
             # create member type class according to the defined member type
             if isinstance(member_type, str):
@@ -61,10 +80,14 @@ class StructDefinition:
 
                     if array_type == "char":
                         member = CharArrayMember(array_length)
+
                     elif array_type in NumberMember.type_scan_lookup:
-                        # member = ArrayMember(ref_type=NumberMember, length=array_length, ref_type_params=[array_type])
+                        # member = ArrayMember(ref_type=NumberMember,
+                        #                      length=array_length,
+                        #                      ref_type_params=[array_type])
                         # BIG BIG TODO
-                        raise Exception("TODO: implement exporting arrays!")
+                        raise NotImplementedError("implement exporting arrays!")
+
                     else:
                         raise Exception("member %s has unknown array type %s" % (member_name, member_type))
 
@@ -80,7 +103,8 @@ class StructDefinition:
                 raise Exception("unknown member type specification!")
 
             if member is None:
-                raise Exception("member %s of struct %s is None" % (member_name, self.name_struct))
+                raise Exception("member %s of struct %s is None" % (member_name,
+                                                                    self.name_struct))
 
             self.members[member_name] = member
 
@@ -119,8 +143,13 @@ class StructDefinition:
         it represents the struct definition in C-code.
         """
 
-        parents = [parent_class.get_effective_type() for parent_class in self.parent_classes]
-        snippet = StructSnippet(self.name_struct_file, self.name_struct, self.struct_description, parents)
+        parents = [parent_class.get_effective_type()
+                   for parent_class in self.parent_classes]
+
+        snippet = StructSnippet(self.name_struct_file,
+                                self.name_struct,
+                                self.struct_description,
+                                parents)
 
         snippet.typedefs.add(self.name_struct)
 

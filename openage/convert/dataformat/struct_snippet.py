@@ -1,6 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
-
-# TODO pylint: disable=C,R
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 from string import Template
 
