@@ -1,15 +1,12 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
+#include <SDL2/SDL.h>
 #include <unordered_map>
 #include <vector>
-
-#include <cstdint>
-
-#include <SDL2/SDL.h>
-
 #include <QObject>
 
 #include "log/log.h"
@@ -21,16 +18,16 @@
 #include "coord/window.h"
 // pxd: from libopenage.cvar cimport CVarManager
 #include "cvar/cvar.h"
-#include "game_singletons_info.h"
+#include "gui/engine_info.h"
 #include "handlers.h"
-#include "options.h"
 #include "job/job_manager.h"
 // pxd: from libopenage.input.input_manager cimport InputManager
 #include "input/input_manager.h"
 #include "input/action.h"
+#include "options.h"
 #include "util/externalprofiler.h"
-#include "util/dir.h"
 #include "util/fps.h"
+#include "util/path.h"
 #include "util/profiler.h"
 #include "unit/selection.h"
 #include "screenshot.h"
@@ -38,7 +35,7 @@
 namespace openage {
 
 namespace gui {
-class GuiBasic;
+class GUI;
 }
 
 namespace renderer {
@@ -98,8 +95,8 @@ signals:
  *
  * cppclass Engine:
  *
- *     InputManager get_input_manager() except +
- *     CVarManager get_cvar_manager() except +
+ *     InputManager &get_input_manager() except +
+ *     CVarManager &get_cvar_manager() except +
  */
 class Engine : public ResizeHandler, public options::OptionNode {
 	friend class GameMain;
@@ -109,7 +106,10 @@ public:
 	 * engine initialization method.
 	 * opens a window and initializes the OpenGL context.
 	 */
-	Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle);
+	Engine(const util::Path &root_dir,
+	       int32_t fps_limit,
+	       bool gl_debug,
+	       const char *windowtitle);
 
 	/**
 	 * engine copy constructor.
@@ -215,7 +215,7 @@ public:
 	/**
 	 * return the data directory where the engine was started from.
 	 */
-	util::Dir *get_data_dir();
+	const util::Path &get_root_dir();
 
 	/**
 	 * return currently running game or null if a game is not
@@ -318,9 +318,13 @@ private:
 	void loop();
 
 	/**
-	 * the current data directory for the engine.
+	 * The engine root directory.
+	 * Uses the openage fslike path abstraction that can mount paths into one.
+	 *
+	 * This means that this path does simulataneously lead to global assets,
+	 * home-folder-assets, settings, and basically the whole filesystem access.
 	 */
-	util::Dir *data_dir;
+	util::Path root_dir;
 
 	/**
 	 * how many nanoseconds are in a frame (1e9 / fps_limit).
@@ -368,11 +372,11 @@ private:
 
 	/**
 	 * This stores information to be accessible from the QML engine.
-	 * This is used so one can access this Engine via qml,
-	 * done by just storing `this` in the SingletonsInfo and
-	 * attaching it to the QMLEngine.
+	 *
+	 * Information in there (such as a pointer to the this engine)
+	 * is then usable from within qml files, after some additional magic.
 	 */
-	gui::GameSingletonsInfo singletons_info;
+	gui::EngineQMLInfo qml_info;
 
 	/**
 	 * the frame counter measuring fps.
@@ -380,8 +384,8 @@ private:
 	util::FrameCounter fps_counter;
 
 	/**
-	* the engine's screenshot manager.
-	*/
+	 * the engine's screenshot manager.
+	 */
 	ScreenshotManager screenshot_manager;
 
 	/**
@@ -432,7 +436,7 @@ private:
 	/**
 	 * the gui binding
 	 */
-	std::unique_ptr<gui::GuiBasic> gui;
+	std::unique_ptr<gui::GUI> gui;
 
 	/*
 	 * the engines profiler

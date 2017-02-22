@@ -1,8 +1,10 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <QObject>
+
+#include "../util/path.h"
 
 QT_FORWARD_DECLARE_CLASS(QQmlEngine)
 QT_FORWARD_DECLARE_CLASS(QJSEngine)
@@ -10,21 +12,25 @@ QT_FORWARD_DECLARE_CLASS(QJSEngine)
 namespace openage {
 namespace gui {
 
+/**
+ * Used to make arguments of the game available in QML.
+ */
 class MainArgsLink : public QObject {
 	Q_OBJECT
 
-	Q_PROPERTY(QString dataDir READ get_data_dir CONSTANT)
+	Q_PROPERTY(openage::util::Path assetDir MEMBER asset_dir CONSTANT)
 
 public:
-	explicit MainArgsLink(QObject *parent, const QString &data_dir);
-	virtual ~MainArgsLink();
+	explicit MainArgsLink(QObject *parent, const util::Path &asset_dir);
+	virtual ~MainArgsLink() = default;
 
-	QString get_data_dir() const;
-
+	/**
+	 * Generates the MainArgsLink object which is then used within QML.
+	 */
 	static QObject* provider(QQmlEngine*, QJSEngine*);
 
 private:
-	const QString data_dir;
+	util::Path asset_dir;
 };
 
 }} // namespace openage::gui

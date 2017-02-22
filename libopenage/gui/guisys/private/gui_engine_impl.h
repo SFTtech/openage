@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -22,7 +22,9 @@ class GuiEngineImpl : public QObject {
 	Q_OBJECT
 
 public:
-	explicit GuiEngineImpl(GuiRenderer *renderer, const std::vector<GuiImageProvider*> &image_providers=std::vector<GuiImageProvider*>(), GuiSingletonItemsInfo *singleton_items_info=nullptr);
+	explicit GuiEngineImpl(GuiRenderer *renderer,
+	                       const std::vector<GuiImageProvider*> &image_providers=std::vector<GuiImageProvider*>(),
+	                       GuiSingletonItemsInfo *singleton_items_info=nullptr);
 	virtual ~GuiEngineImpl();
 
 	static GuiEngineImpl* impl(GuiEngine *engine);

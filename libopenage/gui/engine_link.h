@@ -1,9 +1,10 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <QStringList>
 
+#include "../util/path.h"
 #include "guisys/link/gui_singleton_item.h"
 
 QT_FORWARD_DECLARE_CLASS(QQmlEngine)
@@ -11,9 +12,11 @@ QT_FORWARD_DECLARE_CLASS(QJSEngine)
 
 namespace openage {
 class Engine;
+
 namespace gui {
 class EngineLink;
-}} // namespace openage::gui
+} // gui
+} // openage
 
 namespace qtsdl {
 template<>
@@ -26,7 +29,7 @@ struct Unwrap<openage::gui::EngineLink> {
 	using Type = openage::Engine;
 };
 
-} // namespace qtsdl
+} // qtsdl
 
 namespace openage {
 namespace gui {
@@ -67,4 +70,4 @@ private:
 	QStringList global_binds;
 };
 
-}} // namespace openage::gui
+}} // openage::gui

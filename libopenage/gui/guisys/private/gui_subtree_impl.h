@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,13 +27,15 @@ class GuiSubtreeImpl;
 class GuiEngineImplConnection {
 public:
 	GuiEngineImplConnection();
-	explicit GuiEngineImplConnection(GuiSubtreeImpl *subtree, GuiEngineImpl *engine, const QString &source);
+	explicit GuiEngineImplConnection(GuiSubtreeImpl *subtree,
+	                                 GuiEngineImpl *engine,
+	                                 const QString &root_dir);
 	~GuiEngineImplConnection();
 
 	GuiEngineImplConnection(GuiEngineImplConnection &&cnx) noexcept;
 	GuiEngineImplConnection& operator=(GuiEngineImplConnection &&cnx) noexcept;
 
-	operator bool() const;
+	bool has_subtree() const;
 
 	QQmlContext* rootContext() const;
 	QQmlEngine* get_qml_engine() const;
@@ -49,11 +51,16 @@ private:
 	QString root_dir;
 };
 
+
 class GuiSubtreeImpl : public QObject {
 	Q_OBJECT
 
 public:
-	explicit GuiSubtreeImpl(GuiRenderer *renderer, GuiEventQueue *game_logic_updater, GuiEngine *engine, const QString &source, const std::vector<std::string> &search_paths=std::vector<std::string>{});
+	explicit GuiSubtreeImpl(GuiRenderer *renderer,
+	                        GuiEventQueue *game_logic_updater,
+	                        GuiEngine *engine,
+	                        const QString &source,
+	                        const QString &rootdir);
 	virtual ~GuiSubtreeImpl();
 
 public slots:

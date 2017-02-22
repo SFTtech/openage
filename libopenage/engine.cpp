@@ -10,25 +10,22 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "config.h"
 #include "error/error.h"
 #include "error/gl_debug.h"
-#include "log/log.h"
-#include "config.h"
-#include "gui_basic.h"
-#include "texture.h"
-
 #include "gamestate/game_main.h"
 #include "gamestate/generator.h"
-
+#include "gui/gui.h"
+#include "log/log.h"
+#include "renderer/font/font.h"
+#include "renderer/font/font_manager.h"
+#include "renderer/text.h"
+#include "texture.h"
 #include "util/color.h"
 #include "util/fps.h"
 #include "util/opengl.h"
 #include "util/strings.h"
 #include "util/timer.h"
-
-#include "renderer/text.h"
-#include "renderer/font/font.h"
-#include "renderer/font/font_manager.h"
 
 /**
  * Main openage namespace to store all things that make the have to do with the game.
@@ -46,15 +43,18 @@ namespace openage {
 coord_data coord_global_tmp_TODO;
 
 
-Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle)
+Engine::Engine(const util::Path &root_dir,
+               int32_t fps_limit,
+               bool gl_debug,
+               const char *windowtitle)
 	:
 	OptionNode{"Engine"},
 	running{false},
 	drawing_debug_overlay{this, "drawing_debug_overlay", true},
 	drawing_huds{this, "drawing_huds", true},
-	data_dir{data_dir},
+	root_dir{root_dir},
 	job_manager{SDL_GetCPUCount()},
-	singletons_info{this, data_dir->basedir},
+	qml_info{this, root_dir["assets"]},
 	cvar_manager{},
 	action_manager{&this->input_manager, &this->cvar_manager},
 	audio_manager{&this->job_manager},
@@ -62,8 +62,6 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 	profiler{this},
 	coord{coord_global_tmp_TODO},
 	gui_link{} {
-
-	using namespace std::string_literals;
 
 
 	if (fps_limit > 0) {
@@ -165,24 +163,31 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	//// -- initialize the gui
-	// qml sources will be installed to the asset dir
-	// otherwise assume that launched from the source dir
-	auto qml_search_paths = {
-		this->data_dir->basedir,
-		"libopenage/gui"s
-	};
+	util::Path qml_root = this->root_dir / "assets" / "qml";
+	if (not qml_root.is_dir()) {
+		throw Error{ERR << "could not find qml root folder " << qml_root};
+	}
 
-	this->gui = std::make_unique<gui::GuiBasic>(
-		this->window,
-		"qml/main.qml",
-		&this->singletons_info,
-		qml_search_paths
+	util::Path qml_root_file = qml_root / "main.qml";
+	if (not qml_root_file.is_file()) {
+		throw Error{ERR << "could not find main.qml file " << qml_root_file};
+	}
+
+	// TODO: in order to support qml-mods, the fslike and filelike
+	//       library has to be integrated into qt. For now,
+	//       figure out the absolute paths here and pass them in.
+
+	std::string qml_root_str = qml_root.resolve_native_path();
+	std::string qml_root_file_str = qml_root_file.resolve_native_path();
+
+	this->gui = std::make_unique<gui::GUI>(
+		this->window,                // sdl window for the gui
+		qml_root_file_str,           // entry qml file, absolute path.
+		qml_root_str,                // directory to watch for qml file changes
+		&this->qml_info              // qml data: Engine *, the data directory, ...
 	);
-
-	this->register_resize_action(this->gui.get());
-	this->register_input_action(this->gui.get());
-	this->register_drawhud_action(this->gui.get());
 	//// -- gui initialization
+
 
 	// register the engines input manager
 	this->register_input_action(&this->input_manager);
@@ -488,8 +493,8 @@ void Engine::register_resize_action(ResizeHandler *handler) {
 	this->on_resize_handler.push_back(handler);
 }
 
-util::Dir *Engine::get_data_dir() {
-	return this->data_dir;
+const util::Path &Engine::get_root_dir() {
+	return this->root_dir;
 }
 
 GameMain *Engine::get_game() {
