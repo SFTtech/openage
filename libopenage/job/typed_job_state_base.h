@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,7 +20,7 @@ namespace job {
  * states.
  *
  * @param T the result type of this job state. This type must have a default
- *		constructor and support move semantics.
+ *          constructor and support move semantics.
  */
 template<class T>
 class TypedJobStateBase : public JobStateBase {
@@ -75,6 +75,10 @@ public:
 		return false;
 	}
 
+	/**
+	 * Called when the job was finished.
+	 * This is the result notification for the place where the job was constructed.
+	 */
 	void execute_callback() override {
 		ENSURE(this->finished.load(), "trying to report a result of an unfinished job");
 		if (this->callback) {
@@ -101,5 +105,4 @@ protected:
 	virtual T execute_and_get(should_abort_t should_abort) = 0;
 };
 
-}
-}
+}} // openage::job

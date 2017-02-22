@@ -57,16 +57,23 @@ void JobManager::stop() {
 
 
 void JobManager::execute_callbacks() {
+	// run callbacks for finished jobs on this thread id.
 	size_t id = util::get_current_thread_id();
 
 	std::unique_lock<std::mutex> lock{this->finished_jobs_mutex};
 	auto it = this->finished_jobs.find(id);
+
 	if (it != std::end(this->finished_jobs)) {
+		// move the  the finished job list here so we can disable the lock
 		std::vector<std::shared_ptr<JobStateBase>> jobs;
 		std::swap(jobs, it->second);
+
+		// clear the worker's old finished job list
 		it->second.clear();
 		lock.unlock();
+
 		for (auto &job : jobs) {
+			// the job may throw an exception here
 			job->execute_callback();
 		}
 	}
