@@ -104,7 +104,7 @@ public:
 	/**
 	 * lookup using a texture file name
 	 */
-	Texture *get_texture(std::string file_name, bool use_metafile=true) const;
+	Texture *get_texture(const std::string &file_name, bool use_metafile=true) const;
 
 	/**
 	 * get unit texture by graphic id -- this is an directional texture
@@ -146,19 +146,54 @@ public:
 	AssetManager *get_asset_manager() const;
 
 private:
+	/**
+	 * check graphic id is valid
+	 */
+	bool valid_graphic_id(index_t) const;
+
+	/**
+	 * create unit abilities from game data
+	 */
+	void create_abilities(const gamedata::empiresdat &gamedata);
+
+	/**
+	 * loads required assets to construct a buildings.
+	 * adds to the type list if the object can be created safely.
+	 */
+	void load_building(const gamedata::unit_building &, unit_meta_list &) const;
+
+	/**
+	 * loads assets for living things.
+	 */
+	void load_living(const gamedata::unit_living &, unit_meta_list &) const;
+
+	/**
+	 * load assets for other game objects (not building and living).
+	 */
+	void load_object(const gamedata::unit_object &, unit_meta_list &) const;
+
+	/**
+	 * load projectile assets.
+	 */
+	void load_projectile(const gamedata::unit_projectile &, unit_meta_list &) const;
+
+	/**
+	 * fill in the terrain_data attribute of this
+	 */
+	void load_terrain(const gamedata::empiresdat &gamedata);
+
+	/**
+	 * Invoked when the gamedata has been loaded.
+	 */
+	void on_gamedata_loaded(const gamedata::empiresdat &gamedata);
+
+	/**
+	 * Asset management entity that is responsible for textures, sounds, etc.
+	 */
 	AssetManager *assetmanager;
 
 	/**
-	 * the used file paths
-	 */
-	std::string data_path;
-	std::string graphics_path;
-	std::string terrain_path;
-	std::string blend_path;
-	std::string sound_path;
-
-	/**
-	 * complete gamedata
+	 * The full original gamedata tree.
 	 */
 	std::vector<gamedata::empiresdat> gamedata;
 
@@ -182,7 +217,6 @@ private:
 	 */
 	std::unordered_map<index_t, std::vector<const gamedata::unit_command *>> commands;
 
-
 	/**
 	 * graphic ids -> unit texture for that id
 	 */
@@ -194,34 +228,9 @@ private:
 	std::unordered_map<index_t, Sound> available_sounds;
 
 	/**
-	 * check graphic id is valid
-	 */
-	bool valid_graphic_id(index_t) const;
-
-	/**
-	 * create unit abilities from game data
-	 */
-	void create_abilities(const std::vector<gamedata::empiresdat> &gamedata);
-
-	/**
-	 * loads required assets to construct a unit type
-	 * adds to the type list if the object can be created safely
-	 */
-	void load_building(const gamedata::unit_building &, unit_meta_list &) const;
-	void load_living(const gamedata::unit_living &, unit_meta_list &) const;
-	void load_object(const gamedata::unit_object &, unit_meta_list &) const;
-	void load_projectile(const gamedata::unit_projectile &, unit_meta_list &) const;
-
-	/**
-	 * fill in the terrain_data attribute of this
-	 */
-	void load_terrain(AssetManager &am, util::csv_file_map_t *file_map);
-
-	/**
 	 * has game data been load yet
 	 */
 	bool gamedata_loaded;
-	void on_gamedata_loaded(std::vector<gamedata::empiresdat> &gamedata);
 };
 
 } // openage
