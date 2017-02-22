@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,7 +8,8 @@
 #include <string>
 #include <memory>
 
-#include "util/dir.h"
+#include "util/path.h"
+
 
 namespace qtsdl {
 class GuiItemLink;
@@ -27,10 +28,15 @@ class AssetManager final {
 public:
 	explicit AssetManager(qtsdl::GuiItemLink *gui_link);
 
-	util::Dir *get_data_dir();
+	/**
+	 * Return the path where assets are found in.
+	 */
+	const util::Path &get_asset_dir();
 
-	std::string get_data_dir_string() const;
-	void set_data_dir_string(const std::string& data_dir);
+	/**
+	 * Set the asset search path.
+	 */
+	void set_asset_dir(const util::Path& asset_dir);
 
 	/**
 	 * Set the game engine of this asset manager.
@@ -44,20 +50,16 @@ public:
 	Engine *get_engine() const;
 
 	/**
-	 * Test whether a requested asset filename can be loaded.
-	 *
-	 * @param name: asset filename.
-	 * @returns this filename can be loaded.
-	 */
-	bool can_load(const std::string &name) const;
-
-	/**
 	 * Query the Texture for a given filename.
 	 *
 	 * @param name: the asset file name relative to the asset root.
+	 * @param use_metafile: load subtexture information from meta file
+	 * @param null_if_missing: instead of providing the "missing texture",
+	 *                         return nullptr.
 	 * @returns the queried texture handle.
 	 */
-	Texture *get_texture(const std::string &name, bool use_metafile=true);
+	Texture *get_texture(const std::string &name, bool use_metafile=true,
+	                     bool null_if_missing=false);
 
 	/**
 	 * Ask the kernel whether there were updates to watched files.
@@ -68,7 +70,9 @@ protected:
 	/**
 	 * Create an internal texture handle.
 	 */
-	std::shared_ptr<Texture> load_texture(const std::string &name, bool use_metafile=true);
+	std::shared_ptr<Texture> load_texture(const std::string &name,
+	                                      bool use_metafile=true,
+	                                      bool null_if_missing=false);
 
 	/**
 	 * Retrieves the texture for missing textures.
@@ -86,7 +90,7 @@ private:
 	/**
 	 * The root directory for the available assets.
 	 */
-	util::Dir root;
+	util::Path asset_path;
 
 	/**
 	 * The replacement texture for missing textures.
