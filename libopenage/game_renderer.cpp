@@ -45,14 +45,15 @@ GameRenderer::GameRenderer(Engine *e)
 	// engine callbacks
 	this->engine->register_draw_action(this);
 
-	util::Dir *data_dir = engine->get_data_dir();
-	util::Dir asset_dir = data_dir->append("converted");
+	// fetch asset loading dir
+	util::Path asset_dir = engine->get_root_dir()["assets"];
 
 	// load textures and stuff
-	gaben = new Texture{data_dir->join("gaben.png")};
+	gaben = new Texture{asset_dir["gaben.png"]};
 
-	std::vector<gamedata::palette_color> player_color_lines;
-	util::read_csv_file(asset_dir.join("player_palette.docx"), player_color_lines);
+	std::vector<gamedata::palette_color> player_color_lines = util::read_csv_file<gamedata::palette_color>(
+		asset_dir["converted/player_palette.docx"]
+	);
 
 	std::unique_ptr<GLfloat[]> playercolors = std::make_unique<GLfloat[]>(player_color_lines.size() * 4);
 	for (size_t i = 0; i < player_color_lines.size(); i++) {
@@ -66,21 +67,20 @@ GameRenderer::GameRenderer(Engine *e)
 	// shader initialisation
 	// read shader source codes and create shader objects for wrapping them.
 	const char *shader_header_code = "#version 120\n";
-	std::string equals_epsilon_code = util::read_whole_file(data_dir->join("shaders/equalsEpsilon.glsl"));
-
-	std::string texture_vert_code = util::read_whole_file(data_dir->join("shaders/maptexture.vert.glsl"));
+	std::string equals_epsilon_code = asset_dir["shaders/equalsEpsilon.glsl"].open().read();
+	std::string texture_vert_code = asset_dir["shaders/maptexture.vert.glsl"].open().read();
 	auto plaintexture_vert = std::make_unique<shader::Shader>(
 		GL_VERTEX_SHADER,
 		std::initializer_list<const char *>{shader_header_code, texture_vert_code.c_str()}
 	);
 
-	std::string texture_frag_code = util::read_whole_file(data_dir->join("shaders/maptexture.frag.glsl"));
+	std::string texture_frag_code = asset_dir["shaders/maptexture.frag.glsl"].open().read();
 	auto plaintexture_frag = std::make_unique<shader::Shader>(
 		GL_FRAGMENT_SHADER,
 		std::initializer_list<const char *>{shader_header_code, texture_frag_code.c_str()}
 	);
 
-	std::string teamcolor_frag_code = util::read_whole_file(data_dir->join("shaders/teamcolors.frag.glsl"));
+	std::string teamcolor_frag_code = asset_dir["shaders/teamcolors.frag.glsl"].open().read();
 	std::stringstream ss;
 	ss << player_color_lines.size();
 	auto teamcolor_frag = std::make_unique<shader::Shader>(
@@ -93,25 +93,25 @@ GameRenderer::GameRenderer(Engine *e)
 		}
 	);
 
-	std::string alphamask_vert_code = util::read_whole_file(data_dir->join("shaders/alphamask.vert.glsl"));
+	std::string alphamask_vert_code = asset_dir["shaders/alphamask.vert.glsl"].open().read();
 	auto alphamask_vert = std::make_unique<shader::Shader>(
 		GL_VERTEX_SHADER,
 		std::initializer_list<const char *>{shader_header_code, alphamask_vert_code.c_str()}
 	);
 
-	std::string alphamask_frag_code = util::read_whole_file(data_dir->join("shaders/alphamask.frag.glsl"));
+	std::string alphamask_frag_code = asset_dir["shaders/alphamask.frag.glsl"].open().read();
 	auto alphamask_frag = std::make_unique<shader::Shader>(
 		GL_FRAGMENT_SHADER,
 		std::initializer_list<const char *>{shader_header_code, alphamask_frag_code.c_str()}
 	);
 
-	std::string texturefont_vert_code = util::read_whole_file(data_dir->join("shaders/texturefont.vert.glsl"));
+	std::string texturefont_vert_code = asset_dir["shaders/texturefont.vert.glsl"].open().read();
 	auto texturefont_vert = std::make_unique<shader::Shader>(
 		GL_VERTEX_SHADER,
 		std::initializer_list<const char *>{shader_header_code, texturefont_vert_code.c_str()}
 	);
 
-	std::string texturefont_frag_code = util::read_whole_file(data_dir->join("shaders/texturefont.frag.glsl"));
+	std::string texturefont_frag_code = asset_dir["shaders/texturefont.frag.glsl"].open().read();
 	auto texturefont_frag = std::make_unique<shader::Shader>(
 		GL_FRAGMENT_SHADER,
 		std::initializer_list<const char *>{shader_header_code, texturefont_frag_code.c_str()}
