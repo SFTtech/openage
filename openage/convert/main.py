@@ -162,7 +162,15 @@ def expand_relative_path(path):
 def wanna_use_wine():
     """
     Ask the user if wine should be used.
+    Wine is not used if user has no wine installed.
     """
+
+    # TODO: a possibility to call different wine binaries
+    # (e.g. wine-devel from wine upstream debian repos)
+
+    if not which("wine"):
+        return False
+
     print("  Should we call wine to determine an AOE installation? [Y/n]")
     while True:
         user_selection = input("> ")
@@ -298,10 +306,8 @@ def source_dir_proposals(call_wine):
     yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
 
-    # TODO: a possibility to call different wine binaries
-    # (e.g. wine-devel from wine upstream debian repos)
-    if not call_wine or not which("wine"):
-        # no wine is found in PATH
+    if not call_wine:
+        # user wants wine not to be called
         return
 
     try:
