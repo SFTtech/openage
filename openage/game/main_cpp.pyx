@@ -7,14 +7,14 @@ from libcpp.vector cimport vector
 
 from libopenage.main cimport main_arguments, run_game as run_game_cpp
 from libopenage.util.path cimport Path as Path_cpp
-from libopenage.pyinterface.pyobject cimport PyObjectRef
+from libopenage.pyinterface.pyobject cimport PyObj
 
 
 cdef extern from "Python.h":
     void PyEval_InitThreads()
 
 
-def run_game(args, assets):
+def run_game(args, root_path):
     """
     Lauches the game after arguments were translated.
     """
@@ -22,14 +22,9 @@ def run_game(args, assets):
     # argument translation
     cdef main_arguments args_cpp
 
-    # assets is a util.fslike.Path object from python
-    # we unwrap the filesystem-like pyobject and the path parts
-    cdef vector[string] parts = assets.parts
-
-    cdef PyObjectRef ref = PyObjectRef(<PyObject*>assets.fsobj)
-
-    # and create a matching cpp object
-    args_cpp.asset_path = make_unique[Path_cpp](ref, parts)
+    # root_path is a util.fslike.Path object from python
+    args_cpp.root_path = Path_cpp(PyObj(<PyObject*>root_path.fsobj),
+                                  root_path.parts)
 
     # frame limiting
     if args.fps is not None:
