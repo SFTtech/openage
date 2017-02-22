@@ -79,15 +79,16 @@ util::OnDeInit restore_handlers([]() {
 		}
 	}
 
-	std::cout << "\n\x1b[33mcurrent stack\x1b[m\n" << std::endl;
+	std::cout << "\n\x1b[33mcurrent stack:\x1b[m\n" << std::endl;
 
 	StackAnalyzer backtrace;
 	backtrace.analyze();
 	std::cout << backtrace << std::endl;
 
-	// call the original handler, to enable debugger functionality,
-	// and maybe print some additional useful info that we forgot about.
-	std::cout << "\x1b[33mstandard terminate handler\x1b[m\n" << std::endl;
+	// die again to enable debugger functionality.
+	// that maybe print some additional useful info that we forgot about.
+	// TODO: we maybe want to prevent that for end-users.
+	std::cout << "\x1b[33mhanding over to the system...\x1b[m\n" << std::endl;
 	std::terminate();
 }
 

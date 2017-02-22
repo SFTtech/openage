@@ -13,10 +13,16 @@ namespace openage {
 namespace error {
 
 /**
+ * Skip this many frames at the beginning of the trace.
+ * Can trim away various libc calls.
+ */
+constexpr uint64_t skip_entry_frames = 1;
+
+/**
  * Skip this many stack frames,
  * this drops the stackanalyzer function call itself.
  */
-constexpr int skip_frames = 1;
+constexpr uint64_t base_skip_frames = 1;
 
 }} // openage::error
 
@@ -130,7 +136,8 @@ void backtrace_pcinfo_error_callback(void *data, const char *msg, int errorno) {
 			info_cb_data->pc,
 			backtrace_syminfo_callback,
 			backtrace_error_callback,
-			info_cb_data);
+			info_cb_data
+		);
 	} else {
 		// invoke the general error callback, which prints the message.
 		backtrace_error_callback(nullptr, msg, errorno);
@@ -143,7 +150,7 @@ void backtrace_pcinfo_error_callback(void *data, const char *msg, int errorno) {
 void StackAnalyzer::analyze() {
 	backtrace_simple(
 		bt_state,
-		skip_frames,                       // skip this many stack frames
+		base_skip_frames,   // skip some frames at "most recent call"
 		backtrace_simple_callback,
 		backtrace_error_callback,
 		reinterpret_cast<void *>(this)
@@ -196,33 +203,49 @@ void StackAnalyzer::analyze() {
 	// unfortunately, backtrace won't tell us how big our buffer
 	// needs to be, so we have no choice but to try until it
 	// reports success.
-	std::vector<void *> buffer{32};
+	std::vector<void *> buffer{64};
+
 	while (true) {
 		int elements = backtrace(buffer.data(), buffer.size());
+
+		// the buffer was large enough, so stop resizing.
 		if (elements < (ssize_t) buffer.size()) {
 			buffer.resize(elements);
 			break;
 		}
-		buffer.resize(buffer.size() * 2);
+		else {
+			buffer.resize(buffer.size() * 2);
+		}
 	}
 
+	// now store the result, cut off at the front and back.
+
+	size_t idx = 0;
 	for (void *element : buffer) {
-		this->stack_addrs.push_back(element);
+		// start storing after skipping skip the first few frames
+		// so that e.g. this function does not show up in the trace.
+		// (most-recent-call)
+		if (idx >= base_skip_frames) {
+			this->stack_addrs.push_back(element);
+		}
+		idx += 1;
 	}
 
-	for (int i = 0; i < skip_frames; i++) {
+	// remove some libc-garbage-frames (least-recent-call)
+	for (uint64_t i = 0; i < skip_entry_frames; i++) {
 		this->stack_addrs.pop_back();
 	}
 }
 
 
-void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> cb, bool reversed) const {
+void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> cb,
+                                bool reversed) const {
 	backtrace_symbol symbol;
 	symbol.filename = "";
 	symbol.lineno = 0;
 
 	if (reversed) {
-		for (size_t idx = this->stack_addrs.size(); idx-- > 0;) {
+		for (size_t idx = this->stack_addrs.size(); idx > 0; idx--) {
 			void *pc = this->stack_addrs[idx];
 
 			symbol.functionname = util::symbol_name(pc, false, true);
@@ -230,7 +253,8 @@ void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> c
 
 			cb(&symbol);
 		}
-	} else {
+	}
+	else {
 		for (void *pc : this->stack_addrs) {
 			symbol.functionname = util::symbol_name(pc, false, true);
 			symbol.pc = pc;
