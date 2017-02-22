@@ -42,7 +42,7 @@ Item {
 	OA.AssetManager {
 		id: amObj
 
-		dataDir: OA.MainArgs.dataDir
+		assetDir: OA.MainArgs.assetDir
 
 		engine: OA.Engine
 
