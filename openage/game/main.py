@@ -33,18 +33,24 @@ def main(args, error):
     from ..assets import get_asset_path
     from ..convert.main import conversion_required, convert_assets
     from ..cppinterface.setup import setup as cpp_interface_setup
+    from ..util.fslike.union import Union
 
     # initialize libopenage
     cpp_interface_setup()
 
-    # set up asset load paths
-    assets = get_asset_path(args)
+    # create virtual file system for data paths
+    root = Union().root
+
+    # mount the assets folder union at "assets/"
+    root["assets"].mount(get_asset_path(args))
+
+    # TODO: mount configuration and cvar files
 
     # ensure that the assets have been converted
-    if conversion_required(assets, args):
-        if not convert_assets(assets, args):
+    if conversion_required(root["assets"], args):
+        if not convert_assets(root["assets"], args):
             err("game asset conversion failed")
             return 1
 
     # start the game, continue in main_cpp.pyx!
-    return run_game(args, assets)
+    return run_game(args, root)
