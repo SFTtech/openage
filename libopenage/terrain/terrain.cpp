@@ -1,7 +1,8 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include "terrain.h"
 
+#include <cmath>
 #include <memory>
 #include <set>
 #include <unordered_map>
@@ -14,7 +15,6 @@
 #include "../coord/chunk.h"
 #include "../coord/tile.h"
 #include "../coord/tile3.h"
-#include "../util/dir.h"
 #include "../util/misc.h"
 #include "../util/strings.h"
 
@@ -438,11 +438,16 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position, bool ble
 
 	this->validate_terrain(base_tile_data.terrain_id);
 
+	Texture *tex = this->texture(base_tile_data.terrain_id);
+
 	base_tile_data.state         = tile_state::existing;
 	base_tile_data.pos           = position;
 	base_tile_data.priority      = this->priority(base_tile_data.terrain_id);
-	base_tile_data.tex           = this->texture(base_tile_data.terrain_id);
-	base_tile_data.subtexture_id = this->get_subtexture_id(position, base_tile_data.tex->atlas_dimensions);
+	base_tile_data.tex           = tex;
+	base_tile_data.subtexture_id = this->get_subtexture_id(
+		position,
+		std::sqrt(tex->get_subtexture_count())
+	);
 	base_tile_data.blend_mode    = -1;
 	base_tile_data.mask_tex      = nullptr;
 	base_tile_data.mask_id       = -1;
@@ -464,7 +469,8 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position, bool ble
 		// strip and order influences, get the final influence data structure
 		struct influence_group influence_group = this->calculate_influences(
 			&base_tile_data, neigh_data,
-			this->meta->influences_buf.get());
+			this->meta->influences_buf.get()
+		);
 
 		// create the draw_masks from the calculated influences
 		this->calculate_masks(position, &tile, &influence_group);
@@ -476,6 +482,7 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position, bool ble
 void Terrain::get_neighbors(coord::tile basepos,
                             neighbor_tile *neigh_data,
                             influence *influences_by_terrain_id) {
+
 	// walk over all given neighbor tiles and store them to the influence list,
 	// group them by terrain id.
 
@@ -707,7 +714,10 @@ void Terrain::calculate_masks(coord::tile position,
 			overlay->blend_mode = blend_mode;
 			overlay->terrain_id = neighbor_terrain_id;
 			overlay->tex        = this->texture(neighbor_terrain_id);
-			overlay->subtexture_id = this->get_subtexture_id(position, overlay->tex->atlas_dimensions);
+			overlay->subtexture_id = this->get_subtexture_id(
+				position,
+				std::sqrt(overlay->tex->get_subtexture_count())
+			);
 			overlay->mask_tex   = this->blending_mask(blend_mode);
 			overlay->state      = tile_state::existing;
 
@@ -736,7 +746,10 @@ void Terrain::calculate_masks(coord::tile position,
 					overlay->blend_mode = blend_mode;
 					overlay->terrain_id = neighbor_terrain_id;
 					overlay->tex        = this->texture(neighbor_terrain_id);
-					overlay->subtexture_id = this->get_subtexture_id(position, overlay->tex->atlas_dimensions);
+					overlay->subtexture_id = this->get_subtexture_id(
+						position,
+						std::sqrt(overlay->tex->get_subtexture_count())
+					);
 					overlay->mask_tex   = this->blending_mask(blend_mode);
 					overlay->state      = tile_state::existing;
 
