@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "../config.h"
+#include "../error/error.h"
 #include "compiler.h"
 
 namespace openage {
@@ -87,103 +88,6 @@ size_t rstrip(char *s) {
 }
 
 
-void string_tokenize_base(char *str, char delim, std::function<void(char *)> callback) {
-	callback(str);
-
-	char *r = str;
-	//the output buf is the input buf. w <= r is guaranteed.
-	//(r - w) will increment each time an escape sequence is read.
-	char *w = str;
-
-	while (true) {
-		if (*r == '\0') {
-			//we have read the end of the input string
-			//append '\0' to output string
-			*(w++) = '\0';
-
-			break;
-		}
-		if (*r == delim) {
-			//we have read a deliminiter
-			//write a '\0', and store the pointer to
-			//the next token (the char after the '\0')
-
-			*(w++) = '\0';
-
-			callback(w);
-
-			r++;
-
-			continue;
-		}
-		if (*r == '\\') {
-			//an escaped char: increment the read pointer to point
-			//at the escape code.
-			r++;
-
-			//analyze the escape code
-			switch (*r) {
-			case '\0':
-				//string ended in the middle of an escape code
-				//error
-				return;
-				break;
-			case 'n':
-				//a newline
-				*r = '\n';
-				break;
-			default:
-				//the escape code already represents the literal
-				//character (e.g.: '\\', '\,').
-				break;
-			}
-
-			//'fall through' to the default action
-		}
-
-		//copy current char to output buf
-		*(w++) = *(r++);
-	}
-}
-
-
-size_t string_tokenize_to_buf(char *str, char delim, char **buf, size_t bufsize) {
-	size_t count = 0;
-
-	//my first lambda!
-	std::function<void(char *)> callback = [&buf, bufsize, &count] (char *arg) -> void {
-		if (count < bufsize) {
-			buf[count] = arg;
-		}
-		count++;
-	};
-
-	string_tokenize_base(str, delim, callback);
-
-	return count;
-}
-
-
-size_t string_tokenize_dynamic(char *str, char delim, char ***result) {
-	std::vector<char *> resultvector;
-
-	//my second lambda! (actually not so exciting anymore now.)
-	std::function<void(char *)> callback = [&resultvector] (char *arg) -> void {
-		resultvector.push_back(arg);
-	};
-
-	string_tokenize_base(str, delim, callback);
-
-	*result = new char *[resultvector.size() + 1];
-	for (size_t i = 0; i < resultvector.size(); i++) {
-		(*result)[i] = resultvector[i];
-	}
-	(*result)[resultvector.size()] = nullptr;
-
-	return resultvector.size();
-}
-
-
 bool string_matches_pattern(const char *str, const char *pattern) {
 	while (true) {
 		if (*pattern == '*') {
@@ -230,9 +134,80 @@ bool string_matches_pattern(const char *str, const char *pattern) {
 
 std::vector<std::string> split(const std::string &txt, char delimiter) {
 	std::vector<std::string> items;
+	// use the back inserter iterator and the templated split function.
 	split(txt, delimiter, std::back_inserter(items));
 	return items;
 }
 
+
+std::vector<std::string> split_escape(const std::string &txt, char delim, size_t size_hint) {
+
+	// output vector
+	std::vector<std::string> items;
+	if (likely(size_hint)) {
+		items.reserve(size_hint);
+	}
+
+#if HAVE_THREAD_LOCAL_STORAGE
+	static thread_local std::vector<char> buf;
+#else
+	std::vector<char> buf;
+	buf.reserve(256);
+#endif
+
+	// string reading pointer
+	const char *r = txt.c_str();
+
+	// copy characters to buf, and a buf is emitted as a token
+	// when the delimiter or end is reached.
+	while (true) {
+
+		// end of input string
+		if (*r == '\0') {
+			items.push_back(std::string{std::begin(buf), std::end(buf)});
+			buf.clear();
+			break;
+		}
+
+		// delimiter found
+		if (*r == delim) {
+			items.push_back(std::string{std::begin(buf), std::end(buf)});
+			buf.clear();
+
+			r++;
+
+			continue;
+		}
+
+		if (*r == '\\') {
+			// an escaped char: increment the read pointer to point
+			// at the escape code.
+			r++;
+
+			// analyze the escape code
+			switch (*r) {
+			case '\0':
+				// string ended in the middle of an escape code
+				// error!
+				throw Error{ERR << "string ends after escape"};
+
+			case 'n':
+				// a newline
+				buf.push_back('\n');
+				continue;
+
+			default:
+				// the escape code already represents the literal
+				// character (e.g.: "\\" = '\', "\," = ',').
+				break;
+			}
+		}
+
+		buf.push_back(*r);
+		r++;
+	}
+
+	return items;
+}
 
 }} // openage::util
