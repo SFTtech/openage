@@ -3,7 +3,7 @@
 """ Entry point for all of the asset conversion. """
 
 import os
-# importing readline enables the raw_input calls to have history etc.
+# importing readline enables the input() calls to have history etc.
 import readline  # pylint: disable=unused-import
 import subprocess
 from configparser import ConfigParser
@@ -381,7 +381,7 @@ def conversion_required(asset_dir, args):
 
         info("Converting {}".format(", ".join(sorted(changes))))
 
-        target_path = asset_dir["here"].open("?w")
+        target_path = asset_dir["here"].resolve("w")
         if not target_path:
             raise OSError("could not locate a writable asset path")
 

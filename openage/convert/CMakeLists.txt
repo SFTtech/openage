@@ -6,7 +6,6 @@ add_py_modules(
 	colortable.py
 	driver.py
 	drs.py
-	filelist.py
 	fix_data.py
 	game_versions.py
 	hdlanguagefile.py

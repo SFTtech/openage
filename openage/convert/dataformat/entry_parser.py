@@ -1,5 +1,11 @@
 # Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
+"""
+Creates templates for parsing contents of the exported
+data files.
+"""
+
+
 from string import Template
 
 from .content_snippet import ContentSnippet, SectionType
@@ -9,10 +15,14 @@ class EntryParser:
     """
     An entry parser for reading a single column value from a data file.
     """
+
+    # what, shall i just make up some more?
+    # pylint: disable=too-few-public-methods
+
     def __init__(self, lines, headers, typerefs, destination="fill"):
-        self.lines       = lines
-        self.headers     = headers
-        self.typerefs    = typerefs
+        self.lines = lines
+        self.headers = headers
+        self.typerefs = typerefs
         self.destination = destination
 
     def get_code(self, indentlevel=1):
@@ -29,16 +39,16 @@ class ParserTemplate:
     """
     def __init__(self, signature, template, impl_headers, headers):
         # function signature, containing %s as possible namespace prefix
-        self.signature    = signature
+        self.signature = signature
 
         # template text where insertions will be made
-        self.template     = template
+        self.template = template
 
         # headers for the c file
         self.impl_headers = impl_headers
 
         # headers for the header file
-        self.headers      = headers
+        self.headers = headers
 
     def get_signature(self, class_name):
         """
@@ -88,7 +98,7 @@ class ParserMemberFunction:
         Return a content snippet for this parser function.
         This is then placed into the generated file.
         """
-        data["parsers"]    = "\n".join(parser.get_code(1) for parser in parser_list)
+        data["parsers"] = "\n".join(parser.get_code(1) for parser in parser_list)
         data["class_name"] = class_name
 
         # lookup function for length of parser list.

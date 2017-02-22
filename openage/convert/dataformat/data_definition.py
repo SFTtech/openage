@@ -56,8 +56,6 @@ class DataDefinition(StructDefinition):
             "# ", genfile.DELIMITER.join(self.members.keys()), "\n",
         ])
 
-        from .multisubtype_base import MultisubtypeBaseFile
-
         # create csv data lines:
         for idx, data_line in enumerate(self.data):
             row_entries = list()
@@ -67,11 +65,12 @@ class DataDefinition(StructDefinition):
                 make_relpath = False
 
                 # check if enum data value is valid
-                if isinstance(member_type, EnumMember):
-                    if not member_type.validate_value(entry):
-                        raise Exception("data entry %d '%s'"
-                                        " not a valid %s value" %
-                                        (idx, entry, repr(member_type)))
+                if isinstance(member_type, EnumMember) and\
+                   not member_type.validate_value(entry):
+
+                    raise Exception("data entry %d '%s'"
+                                    " not a valid %s value" %
+                                    (idx, entry, repr(member_type)))
 
                 # insert filename to read this field
                 if isinstance(member_type, MultisubtypeMember):
@@ -79,6 +78,7 @@ class DataDefinition(StructDefinition):
                     entry += GeneratedFile.output_preferences["csv"]["file_suffix"]
                     make_relpath = True
 
+                from .multisubtype_base import MultisubtypeBaseFile
                 if self.target == MultisubtypeBaseFile:
                     # if the struct definition target is the multisubtype
                     # base file, it already created the filename entry.

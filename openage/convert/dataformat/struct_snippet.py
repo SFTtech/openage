@@ -1,5 +1,11 @@
 # Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
+"""
+Provides code snippet templates for the generation
+of structs.
+"""
+
+
 from string import Template
 
 from .content_snippet import ContentSnippet, SectionType
@@ -11,6 +17,7 @@ class StructSnippet(ContentSnippet):
 
     it can generate all struct members and inheritance annotations.
     """
+    # pylint: disable=too-many-instance-attributes
 
     struct_base = Template("""${comment}struct ${struct_name}${inheritance} {
 $members
@@ -18,7 +25,10 @@ $members
 """)
 
     def __init__(self, file_name, struct_name, comment=None, parents=None):
-        super().__init__(None, file_name, SectionType.section_body, orderby=struct_name)
+        super().__init__(None, file_name,
+                         SectionType.section_body,
+                         orderby=struct_name)
+
         self.data_ready = False
 
         self.struct_name = struct_name
@@ -33,6 +43,10 @@ $members
         self.members = None
 
     def set_comment(self, comment):
+        """
+        Add a comment to the struct definition.
+        """
+
         if comment:
             self.comment = "".join((
                 "/**\n * ",
@@ -43,16 +57,26 @@ $members
             self.comment = ""
 
     def set_parents(self, parent_types):
-        if parent_types and len(parent_types) > 0:
+        """
+        Add inheritance partents to the struct definition.
+        """
+
+        if parent_types:
             self.typerefs |= set(parent_types)
             self.inheritance = " : %s" % (", ".join(parent_types))
         else:
             self.inheritance = ""
 
     def add_member(self, member):
+        """
+        Add a data member to the struct definition.
+        """
         self.member_list.append(member)
 
     def add_members(self, members):
+        """
+        Add multiple data members to the struct definition.
+        """
         self.member_list.extend(members)
 
     def generate_content(self):
@@ -83,20 +107,20 @@ $members
 
         return (
             self.struct_name == other.struct_name and
-            self.file_name   == other.file_name and
-            self.data        == other.data and
+            self.file_name == other.file_name and
+            self.data == other.data and
             self.member_list == other.member_list and
-            self.section     == other.section and
-            self.typedefs    == other.typedefs and
-            self.typerefs    == other.typerefs
+            self.section == other.section and
+            self.typedefs == other.typedefs and
+            self.typerefs == other.typerefs
         )
 
     def __str__(self):
         if self.data_ready:
             return super().__str__()
-        else:
-            import pprint
-            return "".join((
-                repr(self), " => members = \n",
-                pprint.pformat(self.member_list),
-            ))
+
+        import pprint
+        return "".join((
+            repr(self), " => members = \n",
+            pprint.pformat(self.member_list),
+        ))

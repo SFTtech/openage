@@ -1,5 +1,4 @@
 # Copyright 2015-2017 the openage authors. See copying.md for legal info.
-# pylint: disable=R0912
 """
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
@@ -20,14 +19,17 @@ from .dataformat.data_formatter import DataFormatter
 from .gamedata.empiresdat import load_gamespec, EmpiresDat
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
-from .slp_converter_pool import SLPConverterPool
+from .hdlanguagefile import (read_age2_fe_stringresources,
+                             read_age2_hd_3x_stringresources)
 from .interface.interfacecutter import InterfaceCutter
 from .interface.interfacerename import interface_rename
+from .slp_converter_pool import SLPConverterPool
+from .stringresource import StringResource
 
 
 def get_string_resources(args):
     """ reads the (language) string resources """
-    from .stringresource import StringResource
+
     stringres = StringResource()
 
     srcdir = args.srcdir
@@ -36,62 +38,10 @@ def get_string_resources(args):
     # AoK:TC uses .DLL PE files for its string resources,
     # HD uses plaintext files
     if GameVersion.age2_fe in args.game_versions:
-        from .hdlanguagefile import read_hd_language_file
+        count += read_age2_fe_stringresources(stringres, srcdir["resources"])
 
-        for lang in srcdir["resources"].list():
-            try:
-                if lang == b'_common':
-                    continue
-                langfilename = ["resources", lang.decode(),
-                                "strings", "key-value",
-                                "key-value-strings-utf8.txt"]
-
-                with srcdir[langfilename].open('rb') as langfile:
-                    stringres.fill_from(read_hd_language_file(langfile, lang))
-
-                count += 1
-            except FileNotFoundError:
-                # that's fine, there are no language files for every language.
-                pass
     elif GameVersion.age2_hd_3x in args.game_versions:
-        from .hdlanguagefile import read_hd_language_file
-
-        # HD Edition 3.x and below store language .txt files
-        # in the Bin/ folder.
-        # Specific language strings are in Bin/$LANG/*.txt.
-        for lang in srcdir["bin"].list():
-            dirname = ["bin", lang.decode()]
-
-            # There are some .txt files immediately in bin/, but they don't
-            # seem to contain anything useful. (Everything is overridden by
-            # files in Bin/$LANG/.)
-            if not srcdir[dirname].is_dir():
-                continue
-
-            # Sometimes we can have language DLLs in Bin/$LANG/
-            # e.g. HD Edition 2.0
-            # We do _not_ want to treat these as text files
-            # so first check explicitly
-
-            if srcdir["bin", lang.decode(), "language.dll"].is_file():
-                from .pefile import PEFile
-                for name in ["language.dll",
-                             "language_x1.dll",
-                             "language_x1_p1.dll"]:
-                    pefile = PEFile(
-                        srcdir["bin", lang.decode(), name].open('rb'))
-                    stringres.fill_from(pefile.resources().strings)
-                    count += 1
-
-            else:
-                for basename in srcdir[dirname].list():
-                    langfilename = ["bin", lang.decode(), basename]
-                    with srcdir[langfilename].open('rb') as langfile:
-                        # No utf-8 :(
-                        stringres.fill_from(
-                            read_hd_language_file(
-                                langfile, lang, enc='iso-8859-1'))
-                    count += 1
+        count += read_age2_hd_3x_stringresources(stringres, srcdir)
 
     elif srcdir["language.dll"].is_file():
         from .pefile import PEFile
