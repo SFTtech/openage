@@ -10,6 +10,10 @@ from libopenage.util.path cimport Path as Path_cpp
 from libopenage.pyinterface.pyobject cimport PyObjectRef
 
 
+cdef extern from "Python.h":
+    void PyEval_InitThreads()
+
+
 def run_game(args, assets):
     """
     Lauches the game after arguments were translated.
@@ -36,6 +40,8 @@ def run_game(args, assets):
     # opengl debugging
     args_cpp.gl_debug = args.gl_debug
 
+    # create the gil, because now starts the multithread part!
+    PyEval_InitThreads()
 
     # run the game!
     cdef int result
