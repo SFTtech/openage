@@ -14,8 +14,6 @@ add_sources(libopenage
 	engine.cpp
 	game_control.cpp
 	game_renderer.cpp
-	game_singletons_info.cpp
-	gui_basic.cpp
 	handlers.cpp
 	main.cpp
 	options.cpp

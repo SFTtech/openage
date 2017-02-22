@@ -1,41 +1,44 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <string>
 #include <memory>
+#include <string>
 
-#include "gui/integration/public/gui_application_with_logger.h"
-#include "gui/guisys/public/gui_engine.h"
-#include "gui/guisys/public/gui_event_queue.h"
-#include "gui/guisys/public/gui_input.h"
-#include "gui/guisys/public/gui_renderer.h"
-#include "gui/guisys/public/gui_subtree.h"
-#include "handlers.h"
+#include "integration/public/gui_application_with_logger.h"
+#include "integration/public/gui_game_spec_image_provider.h"
+#include "guisys/public/gui_engine.h"
+#include "guisys/public/gui_event_queue.h"
+#include "guisys/public/gui_input.h"
+#include "guisys/public/gui_renderer.h"
+#include "guisys/public/gui_subtree.h"
+#include "../handlers.h"
 
-#include <vector>
 
-#include "gui/integration/public/gui_game_spec_image_provider.h"
+namespace qtsdl {
+class GuiSingletonItemsInfo;
+} // qtsdl
 
 namespace openage {
 namespace shader {
 class Program;
-}} // namespace openage::shader
+} // shader
 
-namespace qtsdl {
-class GuiSingletonItemsInfo;
-} // namespace qtsdl
-
-namespace openage {
 namespace gui {
 
+class EngineQMLInfo;
+
+
 /**
- * Smallest gui configuration.
+ * Main entry point for the openage Qt-based user interface.
  */
-class GuiBasic : public InputHandler, public ResizeHandler, public HudHandler {
+class GUI : public InputHandler, public ResizeHandler, public HudHandler {
 public:
-	explicit GuiBasic(SDL_Window *window, const std::string &source, qtsdl::GuiSingletonItemsInfo *singleton_items_info=nullptr, const std::vector<std::string> &search_paths=std::vector<std::string>{});
-	virtual ~GuiBasic();
+	explicit GUI(SDL_Window *window,
+	             const std::string &source,
+	             const std::string &rootdir,
+	             EngineQMLInfo *info=nullptr);
+	virtual ~GUI();
 
 	void process_events();
 
