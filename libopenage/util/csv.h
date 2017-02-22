@@ -10,25 +10,168 @@
 #include <vector>
 
 #include "../error/error.h"
-
 #include "compiler.h"
-#include "dir.h"
+#include "fslike/native.h"
+#include "path.h"
+
 
 namespace openage {
 namespace util {
 
 
 /**
- * Type for storing csv data:
- * {filename: [line, ...]}.
+ * Collection of multiple csv files.
+ * Read from a packed csv that contains all the data.
+ *
+ * Then, data can be read recursively.
  */
-using csv_file_map_t = std::unordered_map<std::string, std::vector<std::string>>;
+class CSVCollection {
+public:
+
+	/**
+	 * Type for storing csv data:
+	 * {filename: [line, ...]}.
+	 */
+	using csv_file_map_t = std::unordered_map<std::string, std::vector<std::string>>;
+
+	/**
+	 * Initialize the collection by reading the given file.
+	 * This file must contain the data that this collection is made up of.
+	 */
+	explicit CSVCollection(const Path &entryfile);
+	virtual ~CSVCollection() = default;
+
+
+	/**
+	 * This function is the entry point to load the whole file tree recursively.
+	 *
+	 * Should be called again from the .recurse() method of the struct.
+	 *
+	 * The internal flow is as follows:
+	 * * read entries of the given files
+	 *   (call to the generated field parsers (the fill function))
+	 * * then, recurse into referenced subdata entries
+	 *   (this implementation is generated)
+	 * * from there, reach this function again to read each subdata entry.
+	 *
+	 */
+	template<class lineformat>
+	std::vector<lineformat> read(const std::string &filename) const {
+
+		// first read the content from the data
+		auto result = this->get_data<lineformat>(filename);
+
+		std::string dir = dirname(filename);
+
+		size_t line_count = 0;
+
+		// then recurse into each subdata entry.
+		for (auto &entry : result) {
+			line_count += 1;
+
+			if (not entry.recurse(*this, dir)) {
+				throw Error{
+					MSG(err)
+					<< "Failed to read follow-up files for "
+					<< filename << ":" << line_count
+				};
+			}
+		}
+
+		return result;
+	}
+
+
+	/**
+	 * Parse the data from one file in the map.
+	 */
+	template<typename lineformat>
+	std::vector<lineformat> get_data(const std::string &filename) const {
+
+		size_t line_count = 0;
+
+		std::vector<lineformat> ret;
+
+		// locate the data in the collection
+		auto it = this->data.find(filename);
+
+		if (it != std::end(this->data)) {
+			const std::vector<std::string> &lines = it->second;
+
+			for (auto &line : lines) {
+				line_count += 1;
+				lineformat current_line_data;
+
+				// use the line copy to fill the current line struct.
+				int error_column = current_line_data.fill(line);
+				if (error_column != -1) {
+					throw Error{
+						ERR
+						<< "Failed to read CSV file: "
+						<< filename << ":" << line_count << ":" << error_column
+						<< ": error parsing " << line
+					};
+				}
+
+				ret.push_back(current_line_data);
+			}
+		}
+		else {
+			throw Error{
+				ERR << "File was not found in csv cache: '"
+				    << filename << "'"
+			};
+		}
+
+		return ret;
+	}
+
+protected:
+	csv_file_map_t data;
+};
 
 
 /**
- * Load a multi csv file into a csv_file_map_t
+ * Referenced file tree structure.
+ *
+ * Used for storing information for subtype members
+ * that need to be recursed.
  */
-csv_file_map_t load_multi_csv_file(Dir basedir, const std::string &fname);
+template<class lineformat>
+struct csv_subdata {
+	/**
+	 * File where to read subdata from.
+	 * This name is relative to the file that defined the subdata!
+	 */
+	std::string filename;
+
+	/**
+	 * Data that was read from the file with this->filename.
+	 */
+	std::vector<lineformat> data;
+
+	/**
+	 * Read the data of the lineformat from the collection.
+	 * Can descend recursively into dependencies.
+	 */
+	bool read(const CSVCollection &collection, const std::string &basedir) {
+		std::string next_file = basedir;
+		if (basedir.size() > 0) {
+			next_file += fslike::PATHSEP;
+		}
+		next_file += this->filename;
+
+		this->data = collection.read<lineformat>(next_file);
+		return true;
+	}
+
+	/**
+	 * Convenience operator to access data
+	 */
+	const lineformat &operator [](size_t idx) const {
+		return this->data[idx];
+	}
+};
 
 
 /**
@@ -36,125 +179,38 @@ csv_file_map_t load_multi_csv_file(Dir basedir, const std::string &fname);
  * call the destination struct .fill() method for actually storing line data
  */
 template<typename lineformat>
-void read_csv_file(const std::string &fname, std::vector<lineformat> &out, csv_file_map_t *file_map=nullptr) {
+std::vector<lineformat> read_csv_file(const Path &path) {
+
+	File csv = path.open();
+
+	std::vector<lineformat> ret;
 	size_t line_count = 0;
-	lineformat current_line_data;
-	std::vector<char> strbuf;
 
-	// instead of reading from the file, use the file_map as buffer.
-	if (file_map && file_map->count(fname)) {
-		std::vector<std::string> lines = file_map->at(fname);
-
-		for (auto &line : lines) {
-			line_count += 1;
-
-			// create writable copy, for tokenisation
-			if (unlikely(strbuf.size() <= line.size())) {
-				strbuf.resize(line.size() + 1);
-			}
-			memcpy(strbuf.data(), line.c_str(), line.size() + 1);
-
-			// use the line copy to fill the current line struct.
-			int error_column = current_line_data.fill(strbuf.data());
-			if (error_column != -1) {
-				throw Error(MSG(err) <<
-					"Failed to read CSV file: " <<
-					fname << ":" << line_count << ":" << error_column << ": "
-					"error parsing " << line);
-			}
-
-			out.push_back(current_line_data);
-		}
-	}
-	else {
-		std::string line;
-
-		std::ifstream csvfile{fname};
-
-		while (std::getline(csvfile, line)) {
-			line_count += 1;
-
-			// ignore comments and empty lines
-			if (line.empty() || line[0] == '#') {
-				continue;
-			}
-
-			// create writable copy, for tokenisation
-			if (unlikely(strbuf.size() <= line.size())) {
-				strbuf.resize(line.size() + 1);
-			}
-			memcpy(strbuf.data(), line.c_str(), line.size() + 1);
-
-			// use the line copy to fill the current line struct.
-			int error_column = current_line_data.fill(strbuf.data());
-			if (error_column != -1) {
-				throw Error(MSG(err) <<
-					"Failed to read CSV file: " <<
-					fname << ":" << line_count << ":" << error_column << ": "
-					"error parsing " << line);
-			}
-
-			out.push_back(current_line_data);
-		}
-
-		if (unlikely(!line_count)) {
-			throw Error(MSG(err) <<
-				"Failed to read CSV file " << fname << ": " <<
-				"Empty or missing.");
-		}
-	}
-}
-
-
-/**
- * reads data files recursively.
- * should be called from the .recurse() method of the struct.
- */
-template<class lineformat>
-std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname, csv_file_map_t *file_map=nullptr) {
-	std::vector<lineformat> result;
-	std::string merged_filename = basedir.join(fname);
-
-	read_csv_file<lineformat>(merged_filename, result, file_map);
-
-	//the new basedir is the old basedir
-	// + the directory part of the current relative file name
-	Dir new_basedir = basedir.append(dirname(fname));
-
-	size_t line_count = 0;
-	for (auto &entry : result) {
+	for (auto &line : csv.get_lines()) {
 		line_count += 1;
-		if (not entry.recurse(new_basedir, file_map)) {
-			throw Error(MSG(err) <<
-				"Failed to read follow-up files for " <<
-				merged_filename << ":" << line_count);
+
+		// ignore comments and empty lines
+		if (line.empty() || line[0] == '#') {
+			continue;
 		}
+
+		lineformat current_line_data;
+
+		// use the line copy to fill the current line struct.
+		int error_column = current_line_data.fill(line);
+		if (error_column != -1) {
+			throw Error{
+				ERR
+				<< "Failed to read CSV file: "
+				<< csv << ":" << line_count << ":" << error_column
+				<< ": error parsing " << line
+			};
+		}
+
+		ret.push_back(current_line_data);
 	}
 
-	return result;
+	return ret;
 }
-
-
-/**
- * referenced file tree structure.
- *
- * used to store the filename and resulting data of a file down
- * the gamedata tree.
- */
-template<class cls>
-struct subdata {
-	std::string filename;
-	std::vector<cls> data;
-
-	bool read(Dir basedir, csv_file_map_t *file_map=nullptr) {
-		this->data = recurse_data_files<cls>(basedir, this->filename, file_map);
-		return true;
-	}
-
-	cls operator [](size_t idx) const {
-		return this->data[idx];
-	}
-};
-
 
 }} // openage::util

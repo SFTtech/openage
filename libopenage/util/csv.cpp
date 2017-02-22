@@ -2,6 +2,8 @@
 
 #include "csv.h"
 
+#include <cstring>
+
 #include "file.h"
 #include "../error/error.h"
 #include "../log/log.h"
@@ -11,34 +13,57 @@ namespace openage {
 namespace util {
 
 
-csv_file_map_t load_multi_csv_file(Dir basedir, const std::string &fname) {
-	std::string path = basedir.join(fname);
+CSVCollection::CSVCollection(const Path &entryfile_path) {
 
-	log::log(MSG(info) << "Loading multi csv file: " << fname);
-	std::vector<std::string> lines = file_get_lines(path);
+	auto file = entryfile_path.open();
+	log::log(DBG << "Loading csv collection: " << file);
 
-	csv_file_map_t map;
+	// The file format is defined in:
+	// openage/convert/dataformat/data_definition.py
+	// example:
+	//
+	// ### some/folder/and/filename.docx
+	// # irrelevant
+	// # comments
+	// data,stuff,moar,bla
 
+	// store the currently read file name
 	std::string current_file;
 
-	for (auto& line : lines) {
-		if (line[0] == '#' && line[1] == '#' && line[2] == ' ') {
-			// start a new file in the map
-			current_file = basedir.join(line.erase(0, 3)) + ".docx";
-			map.emplace(current_file, std::vector<std::string>{});
+	for (auto &line : file.get_lines()) {
+		// a new file starts:
+		if (line[0] == '#' and
+		    line[1] == '#' and
+		    line[2] == '#' and
+		    line[3] == ' ') {
+
+			// remove the "### "
+			current_file = (line.erase(0, 4));
+
+			// create a vector to put lines in
+			this->data.emplace(current_file, std::vector<std::string>{});
 		}
 		else {
-			if (line.empty() || line[0] == '#') {
+			if (line.empty() or line[0] == '#') {
 				continue;
 			}
-			// add line to the current file linelist
-			map.at(current_file).push_back(line);
+
+			if (likely(current_file.size() > 0)) {
+				// add line to the current file linelist
+				this->data.at(current_file).push_back(line);
+			}
+			else {
+				throw Error{
+					ERR << "csv collection content encountered "
+					    << "without known target in " << entryfile_path
+					    << ", linedata: " << line
+				};
+			}
 		}
 	}
 
-	log::log(MSG(info) << "Loaded multi-csv file: "
-	         << map.size() << " sub-files");
-	return map;
+	log::log(INFO << "Loaded multi-csv file: "
+	         << this->data.size() << " sub-files");
 }
 
 }} // openage::util
