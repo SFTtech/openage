@@ -16,4 +16,24 @@ Path FSLike::root() {
 }
 
 
+std::pair<bool, Path> FSLike::resolve_r(const Path::parts_t &parts) {
+	if (this->is_file(parts) or this->is_dir(parts)) {
+		return std::make_pair(true, Path{this->shared_from_this(), parts});
+	}
+	else {
+		return std::make_pair(false, Path{});
+	}
+}
+
+
+std::pair<bool, Path> FSLike::resolve_w(const Path::parts_t &parts) {
+	if (this->writable(parts)) {
+		return std::make_pair(true, Path{this->shared_from_this(), parts});
+	}
+	else {
+		return std::make_pair(false, Path{});
+	}
+}
+
+
 }}} // openage::util::fslike

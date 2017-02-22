@@ -41,11 +41,6 @@ class Directory(FSLikeObject):
     def __repr__(self):
         return "Directory({})".format(self.path.decode(errors='replace'))
 
-    def pretty(self, parts):
-        return os.path.normpath(
-            os.path.join(self.path, *parts)
-        ).decode(errors='replace')
-
     def resolve(self, parts):
         """ resolves parts to an actual path name. """
         return os.path.join(self.path, *parts)

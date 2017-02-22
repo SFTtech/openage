@@ -32,6 +32,7 @@ public:
 	bool mkdirs(const Path::parts_t &parts) override;
 	File open_r(const Path::parts_t &parts) override;
 	File open_w(const Path::parts_t &parts) override;
+	std::string get_native_path(const Path::parts_t &parts) override;
 	bool rename(const Path::parts_t &parts,
 	            const Path::parts_t &target_parts) override;
 	bool rmdir(const Path::parts_t &parts) override;

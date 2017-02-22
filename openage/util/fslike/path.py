@@ -109,15 +109,6 @@ class Path:
             return self.fsobj.open_w(self.parts)
         elif mode == "w":
             return TextIOWrapper(self.fsobj.open_w(self.parts))
-
-        # The following modes don't actually open a file for read/write,
-        # but instead return the path that is actually used.
-        # This is used to determine the real path for dirs that are mounted
-        # funnily (e.g. with Union).
-        elif mode == "?r":
-            return self.fsobj.resolve_r(self.parts)
-        elif mode == "?w":
-            return self.fsobj.resolve_w(self.parts)
         else:
             raise UnsupportedOperation("unsupported open mode: " + mode)
 
@@ -129,12 +120,41 @@ class Path:
         """ open with mode='wb' """
         return self.fsobj.open_w(self.parts)
 
+    def resolve(self, mode="r"):
+        """
+        The following modes don't actually open a path,
+        but instead return the path that can be used natively by your kernel.
+        This is used to determine the real path for dirs that are mounted
+        funnily (e.g. with Union).
+        """
+        if mode == "r":
+            return self.resolve_r()
+        elif mode == "w":
+            return self.resolve_w()
+        else:
+            raise UnsupportedOperation("unsupported resolve mode: " + mode)
+
+    def resolve_r(self):
+        """ resolve with mode='r' """
+        return self.fsobj.resolve_r(self.parts)
+
+    def resolve_w(self):
+        """ resolve with mode='w' """
+        return self.fsobj.resolve_w(self.parts)
+
     def get_native_path(self):
         """
         return the native path (usable by your kernel) of this path,
         or None if the path is not natively usable.
         """
         return self.fsobj.get_native_path(self.parts)
+
+    def __fspath__(self):
+        """
+        Interface to Python path-like interface
+        https://docs.python.org/3/library/os.html#os.PathLike
+        """
+        return self.get_native_path()
 
     def rename(self, targetpath):
         """ renames to targetpath """

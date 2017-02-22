@@ -63,20 +63,20 @@ class FSLikeObject(ABC):
 
     def resolve_r(self, parts):
         """
-        Returns a Path which equals the one that would be used by open_r.
+        Returns a Path which equals the one that can be used by native system calls.
         The fslike parts in between may be skipped, so that just the resulting
         path is returned.
 
-        Returns None if the file does not exist.
+        Returns None if the path does not exist.
         """
-        return Path(self, parts) if self.is_file(parts) else None
+        return Path(self, parts) if (self.is_file(parts) or self.is_dir(parts)) else None
 
     def resolve_w(self, parts):
         """
         Returns a Path which equals the one that would be used by open_w.
         Parts in between may be skipped, just the resulting path is returned.
 
-        Returns None if the file does not exist or is not writable.
+        Returns None if the path does not exist or is not writable.
         """
         return Path(self, parts) if self.writable(parts) else None
 

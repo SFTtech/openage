@@ -10,8 +10,11 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include "./native.h"
 #include "../file.h"
 #include "../filelike/native.h"
+#include "../misc.h"
+#include "../path.h"
 
 
 namespace openage {
@@ -32,7 +35,7 @@ Directory::Directory(const std::string &basepath, bool create_if_missing)
 std::string Directory::resolve(const Path::parts_t &parts) const {
 	std::string ret = this->basepath;
 	for (auto &part : parts) {
-		ret += "/" + part;
+		ret += PATHSEP + part;
 	}
 	return ret;
 }
@@ -120,12 +123,14 @@ std::vector<Path::part_t> Directory::list(const Path::parts_t &parts) {
 
 bool Directory::mkdirs(const Path::parts_t &parts) {
 
-	// TODO: also split up basepath!
+	Path::parts_t all_parts = util::split(this->basepath, PATHSEP);
 
-	std::string dirpath = this->basepath;
+	vector_extend(all_parts, parts);
 
-	for (auto &part : parts) {
-		dirpath += "/" + part;
+	std::string dirpath;
+
+	for (auto &part : all_parts) {
+		dirpath += PATHSEP + part;
 
 		struct stat buf;
 
@@ -160,6 +165,11 @@ File Directory::open_w(const Path::parts_t &parts) {
 		std::make_shared<filelike::Native>(this->resolve(parts),
 		                                   filelike::Native::mode_t::W)
 	};
+}
+
+
+std::string Directory::get_native_path(const Path::parts_t &parts) {
+	return this->resolve(parts);
 }
 
 

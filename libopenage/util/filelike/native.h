@@ -20,6 +20,7 @@ namespace filelike {
 class Native : public FileLike {
 public:
 	Native(const std::string &path, mode_t mode=mode_t::R);
+	virtual ~Native();
 
 	std::string read(ssize_t max) override;
 

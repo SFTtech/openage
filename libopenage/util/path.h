@@ -2,25 +2,24 @@
 
 #pragma once
 
+/*
+ * C++ wrappers for openage.util.fslikeobject
+ */
+
 
 // pxd: from libcpp.string cimport string
 #include <string>
 // pxd: from libcpp.vector cimport vector
 #include <vector>
 
-
 // pxd: from libopenage.pyinterface.pyobject cimport PyObj
 #include "../pyinterface/pyobject.h"
+#include "file.h"
+#include "fslike/native.h"
 
-
-/*
- * C++ wrappers for openage.util.fslikeobject
- */
 
 namespace openage {
 namespace util {
-
-class File;
 
 namespace fslike {
 class FSLike;
@@ -79,16 +78,44 @@ public:
 
 public:
 
-	bool exists();
-	bool is_file();
-	bool is_dir();
-	bool writable();
+	bool exists() const;
+	bool is_file() const;
+	bool is_dir() const;
+	bool writable() const;
 	std::vector<part_t> list();
 	std::vector<Path> iterdir();
 	bool mkdirs();
-	File open(const std::string &mode="r");
-	File open_r();
-	File open_w();
+	File open(const std::string &mode="r") const;
+	File open_r() const;
+	File open_w() const;
+
+	/**
+	 * fetch the minimal path that is actually used for opening
+	 * TODO: use std::optional
+	 */
+	std::pair<bool, Path> resolve(const std::string &mode="r") const;
+
+	std::pair<bool, Path> resolve_r() const;
+	std::pair<bool, Path> resolve_w() const;
+
+	/**
+	 * Return the native path
+	 * (something like /your/folder/with/file)
+	 * for this path.
+	 * returns emptystring ("") if there is no native path.
+	 */
+	std::string get_native_path() const;
+
+	/**
+	 * Resolve the native path by flattening all underlying
+	 * filesystem objects (like unions).
+	 * Returns the /native/path/on/disk.
+	 * Throws up if there is no native path.
+	 */
+	std::string resolve_native_path(const std::string &mode="r") const;
+
+	std::string resolve_native_path_r() const;
+	std::string resolve_native_path_w() const;
 
 	bool rename(const Path &target_path);
 	bool rmdir();
@@ -96,27 +123,35 @@ public:
 	bool unlink();
 	void removerecursive();
 
-	int get_mtime();
-	uint64_t get_filesize();
+	int get_mtime() const;
+	uint64_t get_filesize() const;
 
 	// TODO: watching of path with inotify or similar
+	//       this should get a Watcher*, which manages the multiple events
+	//       otherwise, each file would require an inotify fd.
+	//       => see the AssetManager and move functionality from there.
 	// int watch(std::function<> callback);
 	// void poll_fs_watches(); // call triggered callbacks
 
-	Path get_parent();
-	const std::string &get_name();
-	std::string get_suffix();
-	std::vector<std::string> get_suffixes();
-	std::string get_stem();
+	Path get_parent() const;
+	const std::string &get_name() const;
+	std::string get_suffix() const;
+	std::vector<std::string> get_suffixes() const;
+	std::string get_stem() const;
 
-	Path joinpath(const parts_t &subpaths);
-	Path joinpath(const part_t &subpath);
-	Path operator [](const parts_t &subpaths);
-	Path operator [](const part_t &subpath);
-	Path operator /(const part_t &subpath);
+	Path joinpath(const parts_t &subpaths) const;
+	Path joinpath(const part_t &subpath) const;
+	Path operator [](const parts_t &subpaths) const;
+	Path operator [](const part_t &subpath) const;
+	Path operator /(const part_t &subpath) const;
 
-	Path with_name(const part_t &name);
-	Path with_suffix(const part_t &suffix);
+	Path with_name(const part_t &name) const;
+	Path with_suffix(const part_t &suffix) const;
+
+	bool operator ==(const Path &other) const;
+	bool operator !=(const Path &other) const;
+
+	fslike::FSLike *get_fsobj() const;
 
 protected:
 	std::shared_ptr<fslike::FSLike> fsobj;
@@ -125,6 +160,19 @@ protected:
 
 	friend std::ostream &operator <<(std::ostream &stream, const Path &path);
 };
+
+
+// helper functions, needed for some parts of convert/
+
+/**
+ * get the filename (last part) of a given path
+ */
+std::string filename(const std::string &fullpath);
+
+/**
+ * return the head (dirname) part of a path.
+ */
+std::string dirname(const std::string &fullpath);
 
 
 }} // openage::util

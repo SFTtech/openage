@@ -36,6 +36,11 @@ Native::Native(const std::string &path, mode_t mode)
 }
 
 
+Native::~Native() {
+	this->close();
+}
+
+
 std::string Native::read(ssize_t max) {
 	// read whole file:
 	if (max < 0) {

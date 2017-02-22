@@ -24,6 +24,8 @@ from libopenage.util.fslike.python cimport (
     pyx_fs_mkdirs,
     pyx_fs_open_r,
     pyx_fs_open_w,
+    pyx_fs_resolve_r,
+    pyx_fs_resolve_w,
     pyx_fs_get_native_path,
     pyx_fs_rename,
     pyx_fs_rmdir,
@@ -31,9 +33,11 @@ from libopenage.util.fslike.python cimport (
     pyx_fs_unlink,
     pyx_fs_get_mtime,
     pyx_fs_get_filesize,
+    pyx_fs_is_fslike_directory,
 )
+from libopenage.util.path cimport Path as Path_cpp
 from libopenage.pyinterface.pyobject cimport PyObj
-
+from .directory import Directory
 
 
 cdef bool fs_is_file(PyObject *fslike,
@@ -99,6 +103,22 @@ cdef File_cpp fs_open_w(PyObject *fslike, const vector[string]& parts) except * 
         return File_cpp(ref)
 
 
+cdef Path_cpp fs_resolve_r(PyObject *fslike, const vector[string]& parts) except * with gil:
+    path = (<object> fslike).resolve_r(parts)
+    if path is not None:
+        return Path_cpp(PyObj(<PyObject*>path.fsobj), path.parts)
+    else:
+        return Path_cpp()
+
+
+cdef Path_cpp fs_resolve_w(PyObject *fslike, const vector[string]& parts) except * with gil:
+    path = (<object> fslike).resolve_w(parts)
+    if path is not None:
+        return Path_cpp(PyObj(<PyObject*>path.fsobj), path.parts)
+    else:
+        return Path_cpp()
+
+
 cdef PyObj fs_get_native_path(PyObject *fslike,
                               const vector[string]& parts) except * with gil:
 
@@ -133,6 +153,10 @@ cdef uint64_t fs_get_filesize(PyObject *fslike, const vector[string]& parts) exc
     return (<object> fslike).filesize(parts)
 
 
+cdef bool fs_is_fslike_directory(PyObject *fslike) except * with gil:
+    return isinstance(<object> fslike, Directory)
+
+
 def setup():
     pyx_fs_is_file.bind0(fs_is_file)
     pyx_fs_is_dir.bind0(fs_is_dir)
@@ -141,6 +165,8 @@ def setup():
     pyx_fs_mkdirs.bind0(fs_mkdirs)
     pyx_fs_open_r.bind0(fs_open_r)
     pyx_fs_open_w.bind0(fs_open_w)
+    pyx_fs_resolve_r.bind0(fs_resolve_r)
+    pyx_fs_resolve_w.bind0(fs_resolve_w)
     pyx_fs_get_native_path.bind0(fs_get_native_path)
     pyx_fs_rename.bind0(fs_rename)
     pyx_fs_rmdir.bind0(fs_rmdir)
@@ -148,3 +174,4 @@ def setup():
     pyx_fs_unlink.bind0(fs_unlink)
     pyx_fs_get_mtime.bind0(fs_get_mtime)
     pyx_fs_get_filesize.bind0(fs_get_filesize)
+    pyx_fs_is_fslike_directory.bind0(fs_is_fslike_directory)

@@ -6,6 +6,7 @@
 #include <cmath>
 #include <cstring>
 #include <string>
+#include <vector>
 
 #include "../error/error.h"
 
@@ -23,7 +24,7 @@ extern std::string empty_string;
 /**
  * modulo operation that guarantees to return positive values.
  */
-template<typename T>
+template <typename T>
 T mod(T x, T m) {
 	T r = x % m;
 
@@ -37,7 +38,7 @@ T mod(T x, T m) {
 /**
  * compiletime defined modulo function.
  */
-template<typename T, unsigned int modulo>
+template <typename T, unsigned int modulo>
 T mod(T x) {
 	T r = x % modulo;
 
@@ -52,7 +53,7 @@ T mod(T x) {
 /**
  * compiletime defined rotate left function
  */
-template<typename T, int amount>
+template <typename T, int amount>
 T rol(T x) {
 	static_assert(sizeof(T)*CHAR_BIT > amount && amount > 0, "invalid rotation amount");
 	return (x << amount) | (x >> (sizeof(T)*CHAR_BIT - amount));
@@ -63,7 +64,7 @@ T rol(T x) {
  * implements the 'correct' version of the division operator,
  * which always rounds to -inf
  */
-template<typename T>
+template <typename T>
 inline T div(T x, T m) {
 	return (x - mod<T>(x, m)) / m;
 }
@@ -74,7 +75,7 @@ inline T div(T x, T m) {
  * use for stdlib structures like std::set.
  * the template parameter has to be a pointer type.
  */
-template<typename T>
+template <typename T>
 struct less {
 	bool operator ()(const T x, const T y) const {
 		return *x < *y;
@@ -100,7 +101,7 @@ static constexpr size_t uint64_s = 8;
  * @return Input data as a 64 bit number.
  */
 inline uint64_t
-array8_to_uint64(const uint8_t *start, size_t count, bool big_endian = true) {
+array8_to_uint64(const uint8_t *start, size_t count, bool big_endian=true) {
 	if (count > uint64_s) {
 		throw Error(MSG(err) << "Tried to copy more than " << uint64_s << " bytes");
 	}
@@ -131,7 +132,7 @@ array8_to_uint64(const uint8_t *start, size_t count, bool big_endian = true) {
  * @return Input data as a 8 bit number array.
  */
 inline std::vector<uint8_t>
-uint64_to_array8(const uint64_t value, bool big_endian = true) {
+uint64_to_array8(const uint64_t value, bool big_endian=true) {
 	std::vector<uint8_t> result(uint64_s, 0);
 
 	for (size_t i = 0; i < uint64_s; i++) {
@@ -170,7 +171,7 @@ inline constexpr size_t array64_size(size_t count) {
  * @return Input data as a 64 bit number vector.
  */
 inline std::vector<uint64_t>
-array8_to_array64(const uint8_t *start, size_t count, bool big_endian = true) {
+array8_to_array64(const uint8_t *start, size_t count, bool big_endian=true) {
 	size_t size{array64_size(count)};
 	std::vector<uint64_t> result(size, 0);
 
@@ -200,7 +201,7 @@ array8_to_array64(const uint8_t *start, size_t count, bool big_endian = true) {
  * @return Input data as a 8 bit number vector.
  */
 inline std::vector<uint8_t>
-array64_to_array8(const uint64_t *start, size_t count, bool big_endian = true) {
+array64_to_array8(const uint64_t *start, size_t count, bool big_endian=true) {
 	std::vector<uint8_t> result;
 	result.reserve(count * uint64_s);
 
@@ -210,6 +211,54 @@ array64_to_array8(const uint64_t *start, size_t count, bool big_endian = true) {
 	}
 
 	return result;
+}
+
+
+/**
+ * Extend a vector with elements, without destroying source one.
+ */
+template <typename T>
+void vector_extend(std::vector<T> &vec, const std::vector<T> &ext) {
+	vec.reserve(vec.size() + ext.size());
+	vec.insert(std::end(vec), std::begin(ext), std::end(ext));
+}
+
+
+/*
+ * Extend a vector with elements with move semantics.
+ */
+template <typename T>
+void vector_extend(std::vector<T> &vec, std::vector<T> &&ext) {
+	if (vec.empty()) {
+		vec = std::move(ext);
+	}
+	else {
+		vec.reserve(vec.size() + ext.size());
+		std::move(std::begin(ext), std::end(ext), std::back_inserter(vec));
+		ext.clear();
+	}
+}
+
+
+/**
+ * Remove the given element index in the vector.
+ * May swap with the end element for efficient removing.
+ *
+ * If the element is not in the vector, do nothing.
+ */
+template <typename T>
+void vector_remove_swap_end(std::vector<T> &vec, size_t idx) {
+	// is at the end
+	if (idx == vec.size() - 1) {
+		vec.pop_back();
+	}
+	// is in the middle
+	else if (idx < vec.size()) {
+		std::swap(vec[idx], vec.back());
+		vec.pop_back();
+	} else {
+		return;
+	}
 }
 
 

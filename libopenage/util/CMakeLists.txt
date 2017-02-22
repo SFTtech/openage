@@ -3,7 +3,6 @@ add_sources(libopenage
 	compiler.cpp
 	constinit_vector.cpp
 	csv.cpp
-	dir.cpp
 	enum.cpp
 	enum_test.cpp
 	externalprofiler.cpp

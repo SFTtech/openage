@@ -12,12 +12,13 @@
 // pxd: from libcpp.vector cimport vector
 #include <vector>
 
-// pxd: from libopenage.pyinterface.functional cimport PyIfFunc2, PyIfFunc3
+// pxd: from libopenage.pyinterface.functional cimport PyIfFunc1, PyIfFunc2, PyIfFunc3
 #include "../../pyinterface/functional.h"
 // pxd: from libopenage.pyinterface.pyobject cimport PyObjectPtr, PyObjectRef
 #include "../../pyinterface/pyobject.h"
 
 #include "fslike.h"
+// pxd: from libopenage.util.path cimport Path
 #include "../path.h"
 // pxd: from libopenage.util.file cimport File
 #include "../file.h"
@@ -43,7 +44,9 @@ public:
 	bool mkdirs(const Path::parts_t &parts) override;
 	File open_r(const Path::parts_t &parts) override;
 	File open_w(const Path::parts_t &parts) override;
-	virtual std::string get_native_path(const Path::parts_t &parts);
+	std::pair<bool, Path> resolve_r(const Path::parts_t &parts) override;
+	std::pair<bool, Path> resolve_w(const Path::parts_t &parts) override;
+	std::string get_native_path(const Path::parts_t &parts) override;
 	bool rename(const Path::parts_t &parts,
 	            const Path::parts_t &target_parts) override;
 	bool rmdir(const Path::parts_t &parts) override;
@@ -81,6 +84,12 @@ extern pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> 
 // pxd: PyIfFunc2[File, PyObjectPtr, const vector[string]] pyx_fs_open_w
 extern pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_w;
 
+// pxd: PyIfFunc2[Path, PyObjectPtr, const vector[string]] pyx_fs_resolve_r
+extern pyinterface::PyIfFunc<Path, PyObject *, const std::vector<std::string>&> pyx_fs_resolve_r;
+
+// pxd: PyIfFunc2[Path, PyObjectPtr, const vector[string]] pyx_fs_resolve_w
+extern pyinterface::PyIfFunc<Path, PyObject *, const std::vector<std::string>&> pyx_fs_resolve_w;
+
 // pxd: PyIfFunc2[PyObjectRef, PyObjectPtr, const vector[string]] pyx_fs_get_native_path
 extern pyinterface::PyIfFunc<py::Obj, PyObject *, const std::vector<std::string>&> pyx_fs_get_native_path;
 
@@ -101,6 +110,10 @@ extern pyinterface::PyIfFunc<int, PyObject *, const std::vector<std::string>&> p
 
 // pxd: PyIfFunc2[uint64_t, PyObjectPtr, const vector[string]] pyx_fs_get_filesize
 extern pyinterface::PyIfFunc<uint64_t, PyObject *, const std::vector<std::string>&> pyx_fs_get_filesize;
+
+
+// pxd: PyIfFunc1[bool, PyObjectPtr] pyx_fs_is_fslike_directory
+extern pyinterface::PyIfFunc<bool, PyObject *> pyx_fs_is_fslike_directory;
 
 
 }}} // openage::util::fslike

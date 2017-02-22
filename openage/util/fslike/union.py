@@ -62,7 +62,7 @@ class Union(FSLikeObject):
         while idx >= 0 and priority >= self.mounts[idx][2]:
             idx -= 1
 
-        self.mounts.insert(idx + 1, (mountpoint, pathobj, priority))
+        self.mounts.insert(idx + 1, (tuple(mountpoint), pathobj, priority))
 
         # 'create' parent directories as needed.
         dirstructure = self.dirstructure
@@ -79,7 +79,8 @@ class Union(FSLikeObject):
         unmount = []
 
         for idx, (mountpoint, pathobj, _) in enumerate(self.mounts):
-            if mountpoint == search_mountpoint[:len(mountpoint)]:
+            # cut the search so prefixes can be matched.
+            if mountpoint == tuple(search_mountpoint[:len(mountpoint)]):
                 if not source_pathobj or source_pathobj == pathobj:
                     unmount.append(idx)
 
@@ -98,8 +99,10 @@ class Union(FSLikeObject):
         Yields path objects from all mounts that match parts, in the order of
         their priorities.
         """
+
         for mountpoint, pathobj, _ in self.mounts:
-            if mountpoint == parts[:len(mountpoint)]:
+            cut_parts = tuple(parts[:len(mountpoint)])
+            if mountpoint == cut_parts:
                 yield pathobj.joinpath(parts[len(mountpoint):])
 
     def open_r(self, parts):
@@ -118,27 +121,33 @@ class Union(FSLikeObject):
 
     def resolve_r(self, parts):
         for path in self.candidate_paths(parts):
-            if path.is_file():
-                return path.open("?r")
+            if path.is_file() or path.is_dir():
+                return path.resolve_r()
         return None
 
     def resolve_w(self, parts):
         for path in self.candidate_paths(parts):
             if path.writable():
-                return path.open("?w")
+                return path.resolve_w()
         return None
 
     def list(self, parts):
         duplicates = set()
 
+        dir_exists = False
+
         dirstructure = self.dirstructure
         try:
+            # "cd" into the virtual dirstructure
             for subdir in parts:
                 dirstructure = dirstructure[subdir]
 
             dir_exists = True
+
+            # yield the virtual folders in this folder
             yield from dirstructure
             duplicates.update(dirstructure)
+
         except KeyError:
             dir_exists = False
 

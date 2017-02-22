@@ -5,7 +5,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include <vector>
+#include <utility>
 
 #include "../path.h"
 #include "../file.h"
@@ -41,6 +41,9 @@ public:
 	virtual bool mkdirs(const Path::parts_t &parts) = 0;
 	virtual File open_r(const Path::parts_t &parts) = 0;
 	virtual File open_w(const Path::parts_t &parts) = 0;
+	virtual std::pair<bool, Path> resolve_r(const Path::parts_t &parts);
+	virtual std::pair<bool, Path> resolve_w(const Path::parts_t &parts);
+	virtual std::string get_native_path(const Path::parts_t &parts) = 0;
 	virtual bool rename(const Path::parts_t &parts,
 	                    const Path::parts_t &target_parts) = 0;
 	virtual bool rmdir(const Path::parts_t &parts) = 0;
