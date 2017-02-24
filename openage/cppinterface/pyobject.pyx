@@ -1,7 +1,9 @@
 # Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-from libcpp.string cimport string
+from libc.stdint cimport int64_t
 from libcpp cimport bool as cppbool
+from libcpp.string cimport string
+from libcpp.vector cimport vector
 
 from cpython.ref cimport Py_XINCREF, Py_XDECREF, PyObject
 
@@ -18,12 +20,14 @@ from libopenage.pyinterface.pyobject cimport (
     py_bytes,
     py_len,
     py_callable,
-    py_call,
+    py_call0,
+    py_calln,
     py_hasattr,
     py_getattr,
     py_setattr,
     py_isinstance,
     py_to_bool,
+    py_to_int,
     py_dir,
     py_equals,
     py_eval,
@@ -40,6 +44,7 @@ from libopenage.pyinterface.pyobject cimport (
     py_createbytes,
     py_createint,
     py_createdict,
+    py_createlist,
 
     None as none_obj,
     True as true_obj,
@@ -80,8 +85,20 @@ cdef cppbool callable_impl(PyObject *ptr) except * with gil:
     return callable(<object> ptr)
 
 
-cdef void call_impl(PyObjectRef *result_ref, PyObject *ptr) except * with gil:
-    cdef object result_obj = (<object> ptr)()
+cdef void call0_impl(PyObjectRef *result_ref, PyObject *func) except * with gil:
+    cdef object result_obj = (<object> func)()
+    result_ref.set_ref(<PyObject *> result_obj)
+
+
+cdef void calln_impl(PyObjectRef *result_ref, PyObject *func,
+                     vector[PyObject *]& args) except * with gil:
+
+    arg_list = list()
+
+    for arg in args:
+        arg_list.append(<object> arg)
+
+    cdef object result_obj = (<object> func)(*arg_list)
     result_ref.set_ref(<PyObject *> result_obj)
 
 
@@ -107,6 +124,12 @@ cdef cppbool isinstance_impl(PyObject *ptr, PyObject *typeptr) except * with gil
 
 cdef cppbool to_bool_impl(PyObject *ptr) except * with gil:
     return bool(<object> ptr)
+
+
+cdef int64_t to_int_impl(PyObject *ptr) except * with gil:
+    # TODO: probably we should check for overflows here
+    #       the python int can be much larger than the int64_t
+    return int(<object> ptr)
 
 
 cdef void dir_impl(PyObject *ptr, Func1[void, string] callback) except * with gil:
@@ -149,22 +172,24 @@ cdef string classname_impl(PyObject *ptr) except * with gil:
     return type(<object> ptr).__name__.encode()
 
 
-cdef void builtin_impl(PyObjectRef *result_ref, string name) except * with gil:
-    cdef object result_obj = getattr(builtins, name.decode())
+## convenience functions for python object creation:
+
+cdef void builtin_impl(PyObjectRef *result_ref, const string &name) except * with gil:
+    cdef object result_obj = getattr(builtins, (<string> name).decode())
     result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void import_impl(PyObjectRef *result_ref, string name) except * with gil:
-    cdef object result_obj = importlib.import_module(name.decode())
+cdef void import_impl(PyObjectRef *result_ref, const string &name) except * with gil:
+    cdef object result_obj = importlib.import_module((<string> name).decode())
     result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void createstr_impl(PyObjectRef *result_ref, string value) except * with gil:
-    cdef object result_obj = value.decode()
+cdef void createstr_impl(PyObjectRef *result_ref, const string &value) except * with gil:
+    cdef object result_obj = (<string> value).decode()
     result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void createbytes_impl(PyObjectRef *result_ref, const char *value) except * with gil:
+cdef void createbytes_impl(PyObjectRef *result_ref, const string &value) except * with gil:
     cdef object result_obj = bytes(value)
     result_ref.set_ref(<PyObject *> result_obj)
 
@@ -179,6 +204,11 @@ cdef void createdict_impl(PyObjectRef *result_ref) except * with gil:
     result_ref.set_ref(<PyObject *> result_obj)
 
 
+cdef void createlist_impl(PyObjectRef *result_ref) except * with gil:
+    cdef object result_obj = list()
+    result_ref.set_ref(<PyObject *> result_obj)
+
+
 def setup():
     py_xincref.bind_noexcept0(xincref)
     py_xdecref.bind_noexcept0(xdecref)
@@ -188,12 +218,14 @@ def setup():
     py_bytes.bind0(bytes_impl)
     py_len.bind0(len_impl)
     py_callable.bind0(callable_impl)
-    py_call.bind0(call_impl)
+    py_call0.bind0(call0_impl)
+    py_calln.bind0(calln_impl)
     py_hasattr.bind0(hasattr_impl)
     py_getattr.bind0(getattr_impl)
     py_setattr.bind0(setattr_impl)
     py_isinstance.bind0(isinstance_impl)
     py_to_bool.bind0(to_bool_impl)
+    py_to_int.bind0(to_int_impl)
     py_dir.bind0(dir_impl)
     py_equals.bind0(equals_impl)
     py_eval.bind0(eval_impl)
@@ -210,6 +242,7 @@ def setup():
     py_createbytes.bind0(createbytes_impl)
     py_createint.bind0(createint_impl)
     py_createdict.bind0(createdict_impl)
+    py_createlist.bind0(createlist_impl)
 
     none_obj.set_ref(<PyObject *><object>None)
     true_obj.set_ref(<PyObject *><object>True)

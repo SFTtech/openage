@@ -116,7 +116,14 @@ bool PyObjectRef::callable() const {
 
 PyObjectRef PyObjectRef::call() const {
 	PyObjectRef result;
-	py_call.call(&result, this->ref);
+	py_call0.call(&result, this->ref);
+	return result;
+}
+
+
+PyObjectRef PyObjectRef::call(std::vector<PyObject *> &args) const {
+	PyObjectRef result;
+	py_calln.call(&result, this->ref, args);
 	return result;
 }
 
@@ -140,6 +147,11 @@ void PyObjectRef::setattr(const std::string &name, const PyObjectRef &attr) cons
 
 bool PyObjectRef::to_bool() const {
 	return py_to_bool.call(this->ref);
+}
+
+
+int64_t PyObjectRef::to_int() const {
+	return py_to_int.call(this->ref);
 }
 
 
@@ -235,12 +247,14 @@ PyIfFunc<std::string, PyObject *> py_repr;
 PyIfFunc<std::string, PyObject *> py_bytes;
 PyIfFunc<int, PyObject *> py_len;
 PyIfFunc<bool, PyObject *> py_callable;
-PyIfFunc<void, PyObjectRef *, PyObject *> py_call;
+PyIfFunc<void, PyObjectRef *, PyObject *> py_call0;
+PyIfFunc<void, PyObjectRef *, PyObject *, std::vector<PyObject *>&> py_calln;
 PyIfFunc<bool, PyObject *, std::string> py_hasattr;
 PyIfFunc<void, PyObjectRef *, PyObject *, std::string> py_getattr;
 PyIfFunc<void, PyObject *, std::string, PyObject *> py_setattr;
 PyIfFunc<bool, PyObject *, PyObject *> py_isinstance;
 PyIfFunc<bool, PyObject *> py_to_bool;
+PyIfFunc<int64_t, PyObject *> py_to_int;
 PyIfFunc<void, PyObject *, Func<void, std::string>> py_dir;
 PyIfFunc<bool, PyObject *, PyObject *> py_equals;
 PyIfFunc<void, PyObject *, std::string> py_exec;
@@ -251,18 +265,18 @@ PyIfFunc<void, PyObject *, PyObjectRef *> py_type;
 PyIfFunc<std::string, PyObject *> py_modulename;
 PyIfFunc<std::string, PyObject *> py_classname;
 
-PyIfFunc<void, PyObjectRef *, std::string> py_builtin;
-PyIfFunc<void, PyObjectRef *, std::string> py_import;
-PyIfFunc<void, PyObjectRef *, std::string> py_createstr;
-PyIfFunc<void, PyObjectRef *, const char *> py_createbytes;
+PyIfFunc<void, PyObjectRef *, const std::string&> py_builtin;
+PyIfFunc<void, PyObjectRef *, const std::string&> py_import;
+PyIfFunc<void, PyObjectRef *, const std::string&> py_createstr;
+PyIfFunc<void, PyObjectRef *, const std::string&> py_createbytes;
 PyIfFunc<void, PyObjectRef *, int> py_createint;
 PyIfFunc<void, PyObjectRef *> py_createdict;
+PyIfFunc<void, PyObjectRef *> py_createlist;
 
 } // pyinterface
 
 
 namespace py {
-
 using namespace pyinterface;
 
 
@@ -287,7 +301,7 @@ Obj str(const std::string &value) {
 }
 
 
-Obj bytes(const char *value) {
+Obj bytes(const std::string &value) {
 	Obj result;
 	py_createbytes.call(&result, value);
 	return result;
@@ -301,17 +315,24 @@ Obj integer(int value) {
 }
 
 
-Obj None;
-Obj True;
-Obj False;
-
-
 Obj dict() {
 	Obj result;
 	py_createdict.call(&result);
 	return result;
 }
 
-} // py
 
+Obj list() {
+	Obj result;
+	py_createlist.call(&result);
+	return result;
+}
+
+
+Obj None;
+Obj True;
+Obj False;
+
+
+} // py
 } // openage

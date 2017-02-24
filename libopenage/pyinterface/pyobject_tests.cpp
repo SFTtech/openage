@@ -75,6 +75,7 @@ void pyobject() {
 		TESTEQUALS(a.hasattr("bar"), false);
 	}
 
+	// the __del__ added a '1'
 	py::Obj x;
 	TESTNOEXCEPT(x = dict.get("x"));
 	TESTEQUALS(x.repr(), "[1]");
@@ -106,6 +107,26 @@ void pyobject() {
 	TESTEQUALS(dict.type().is(py::builtin("dict")), true);
 	TESTEQUALS(dict.modulename(), "builtins");
 	TESTEQUALS(dict.classname(), "dict");
+
+	// btw, if I invoke a nonexisting member function on a (a.asdf(b))
+	// the python heap will corrupt in printing the "has no member" backtrace
+	TESTNOEXCEPT(dict.exec(
+		"def mul(x, y):\n"
+		"    return x * y\n"
+		"\n"
+		"def strformat(a, b):\n"
+		"    return a.format(b)\n"
+	));
+
+	TESTEQUALS(
+		dict.get("mul").call(13, 37).to_int(),
+		13 * 37
+	);
+
+	TESTEQUALS(
+		dict.get("strformat").call(py::str("stuff: {}"), 1337).str(),
+		py::str("stuff: {}").getattr("format").call(1337).str()
+	);
 }
 
 
