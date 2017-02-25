@@ -1,9 +1,9 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 import QtQuick 2.4
 import QtQuick.Controls 1.1
 
-import yay.sfttech.openage 1.0
+import yay.sfttech.openage 1.0 as OA
 
 Item {
 	id: root
@@ -11,7 +11,7 @@ Item {
 	/*
 	 * Calls 'actionMode.act(name)' to execute actions.
 	 */
-	property ActionMode actionMode
+	property var actionMode
 
 	/*
 	 * Use "act" properties of these objects to access the Action.
@@ -33,7 +33,7 @@ Item {
 		id: actionObjectList
 
 		Repeater {
-			model: ActionsListModel {
+			model: OA.ActionsListModel {
 				id: actionObjectListModel
 				action_mode: root.actionMode
 			}

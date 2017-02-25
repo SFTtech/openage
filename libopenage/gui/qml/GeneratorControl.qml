@@ -1,17 +1,17 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 import QtQuick 2.4
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 
-import yay.sfttech.openage 1.0
+import yay.sfttech.openage 1.0 as OA
 
 Item {
 	id: root
 
-	property GeneratorParameters generatorParameters
-	property GameSpec gameSpec
-	property GameMain game
+	property var generatorParameters
+	property var gameSpec
+	property var game
 
 	implicitWidth: elements.width
 	implicitHeight: elements.height
@@ -24,7 +24,7 @@ Item {
 		ColumnLayout {
 			id: genActions
 
-			GameSaver {
+			OA.GameSaver {
 				id: gameSaver
 
 				game: root.game
@@ -38,7 +38,7 @@ Item {
 				onClicked: gameSaver.activate()
 			}
 
-			GameCreator {
+			OA.GameCreator {
 				id: gameCreator
 
 				game: root.game
@@ -84,11 +84,11 @@ Item {
 					"Error: " + errorString
 				else
 					switch (root.game.state) {
-						case GameMain.Null:
+						case OA.GameMain.Null:
 							"Not running"
 							break
 
-						case GameMain.Running:
+						case OA.GameMain.Running:
 							"Running"
 							break
 
