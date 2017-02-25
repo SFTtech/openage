@@ -5,6 +5,7 @@
 #include <tuple>
 
 #include "../log/log.h"
+#include "../error/error.h"
 
 
 namespace openage {
@@ -84,6 +85,8 @@ void CVarManager::set(const std::string &name, const std::string &value) {
 	if (setter) {
 		setter(value);
 
+		std::for_each(std::begin(this->callbacks), std::end(this->callbacks), std::bind(&CVarChangedCallback::operator(), std::placeholders::_1, name));
+
 		if (!this->config_loading) {
 			pyx_config_file_set_option.call(this->path["keybinds.oac"], name, value);
 		}
@@ -96,6 +99,74 @@ void CVarManager::set(const std::string &name, const std::string &value) {
 			this->orphaned.emplace_back(name, value);
 		}
 	}
+}
+
+
+void CVarManager::add_callback(CVarChangedCallback &callback) {
+	this->callbacks.push_back(&callback);
+}
+
+
+void CVarManager::replace_callback(CVarChangedCallback &former, CVarChangedCallback &current) {
+	auto found_it = std::find(std::begin(this->callbacks), std::end(this->callbacks), &former);
+	ENSURE(found_it != std::end(this->callbacks), "Inconsistency in CVarManager callbacks.");
+
+	*found_it = &current;
+}
+
+
+void CVarManager::remove_callback(CVarChangedCallback &callback) {
+	this->callbacks.erase(std::remove(std::begin(this->callbacks), std::end(this->callbacks), &callback), std::end(this->callbacks));
+}
+
+
+CVarChangedCallback::CVarChangedCallback()
+	:
+	cvar_manager{} {
+}
+
+
+CVarChangedCallback::CVarChangedCallback(CVarManager &cvar_manager, Handler handler)
+	:
+	cvar_manager{&cvar_manager},
+	handler{handler} {
+
+	this->cvar_manager->add_callback(*this);
+}
+
+
+CVarChangedCallback::~CVarChangedCallback() {
+	if (this->cvar_manager)
+		this->cvar_manager->remove_callback(*this);
+}
+
+
+CVarChangedCallback::CVarChangedCallback(CVarChangedCallback &&o)
+	:
+	cvar_manager{std::move(o.cvar_manager)},
+	handler{std::move(o.handler)} {
+
+	o.cvar_manager = nullptr;
+	this->cvar_manager->replace_callback(o, *this);
+}
+
+
+CVarChangedCallback& CVarChangedCallback::operator=(CVarChangedCallback &&o) {
+	this->cvar_manager = std::move(o.cvar_manager);
+	this->handler = std::move(o.handler);
+	o.cvar_manager = nullptr;
+	this->cvar_manager->replace_callback(o, *this);
+	return *this;
+}
+
+
+void CVarChangedCallback::operator()(const std::string &name) const {
+	this->handler(name);
+}
+
+
+CVarManager* CVarChangedCallback::manager() const {
+	return this->cvar_manager;
 }
 
 

@@ -20,6 +20,8 @@
 namespace openage {
 namespace cvar {
 
+class CVarChangedCallback;
+
 /** function type used to get a configuration value */
 using get_func = std::function<std::string()>;
 
@@ -86,6 +88,12 @@ public:
 	void load_all();
 
 private:
+	friend class CVarChangedCallback;
+
+	void add_callback(CVarChangedCallback &callback);
+	void replace_callback(CVarChangedCallback &former, CVarChangedCallback &current);
+	void remove_callback(CVarChangedCallback &callback);
+
 	/**
 	 * Store the key-value pair of config options.
 	 * The clue is to store the "what does the config do",
@@ -101,6 +109,11 @@ private:
 	std::vector<std::pair<std::string, std::string>> orphaned;
 
 	/**
+	 * Callbacks to call when any option is being set.
+	 */
+	std::vector<CVarChangedCallback*> callbacks;
+
+	/**
 	 * Avoid saving caused by loading.
 	 */
 	bool config_loading;
@@ -111,6 +124,45 @@ private:
 	 * It is set up in openage/cvar/location.py and openage/game/main.py
 	 */
 	util::Path path;
+};
+
+
+/**
+ * Callback installer.
+ *
+ * Installs a callback on CVarManager to track changes in options.
+ */
+class CVarChangedCallback {
+public:
+	using Handler = std::function<void(const std::string&)>;
+
+	explicit CVarChangedCallback();
+
+	/**
+	 * @param cvar_manager
+	 * @param handler
+	 */
+	explicit CVarChangedCallback(CVarManager &cvar_manager, Handler handler);
+	~CVarChangedCallback();
+
+	CVarChangedCallback(CVarChangedCallback &&o);
+	CVarChangedCallback& operator=(CVarChangedCallback &&o);
+
+	/**
+	 * @return nullptr if not attached to a manager
+	 */
+	CVarManager* manager() const;
+
+private:
+	CVarChangedCallback(const CVarChangedCallback&) = delete;
+	CVarChangedCallback& operator=(const CVarChangedCallback&) = delete;
+
+	friend class CVarManager;
+
+	void operator()(const std::string &name) const;
+
+	CVarManager *cvar_manager;
+	Handler handler;
 };
 
 
