@@ -11,10 +11,12 @@
 namespace openage {
 namespace cvar {
 
-CVarManager::CVarManager(const util::Path &path)
+CVarManager::CVarManager(const util::Path &path, job::JobManager *job_manager)
 	:
 	path{path},
 	config_loading{},
+	writeback{std::make_shared<writeback_task>()},
+	job_manager{job_manager},
 	gui_link{} {
 }
 
@@ -89,7 +91,26 @@ void CVarManager::set(const std::string &name, const std::string &value) {
 		std::for_each(std::begin(this->callbacks), std::end(this->callbacks), std::bind(&CVarChangedCallback::operator(), std::placeholders::_1, name));
 
 		if (!this->config_loading) {
-			pyx_config_file_set_option.call(this->path["keybinds.oac"], name, value);
+			std::lock_guard<std::mutex> lock(this->writeback->elements_mutex);
+
+			this->writeback->elements.emplace_back(name, value);
+
+			if (this->writeback->elements.size() == 1) {
+				auto writeback_shared = this->writeback;
+
+				const auto config_file = this->path["keybinds.oac"];
+
+				this->job_manager->enqueue<int>([writeback_shared, config_file] {
+					std::lock_guard<std::mutex> lock(writeback_shared->elements_mutex);
+
+					for (auto &name_value : writeback_shared->elements)
+						pyx_config_file_set_option.call(config_file, std::get<0>(name_value), std::get<1>(name_value));
+
+					writeback_shared->elements.clear();
+
+					return 0;
+				});
+			}
 		}
 	} else {
 		auto orphan_it = std::find_if(std::begin(this->orphaned), std::begin(this->orphaned), [&name](const std::pair<std::string, std::string> &orphan) { return name == orphan.first; });

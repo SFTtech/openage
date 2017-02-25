@@ -10,12 +10,15 @@
 #include <utility>
 #include <vector>
 #include <mutex>
+#include <memory>
 
 // pxd: from libopenage.pyinterface.functional cimport PyIfFunc0, PyIfFunc2, PyIfFunc3
 #include "../pyinterface/functional.h"
 // pxd: from libopenage.util.path cimport Path
 #include "../util/path.h"
 
+
+#include "../job/job_manager.h"
 
 namespace qtsdl {
 class GuiItemLink;
@@ -50,7 +53,7 @@ using set_func = std::function<void(std::string)>;
 class CVarManager {
 
 public:
-	CVarManager(const util::Path &path);
+	CVarManager(const util::Path &path, job::JobManager *job_manager);
 	~CVarManager();
 
 	/**
@@ -121,6 +124,18 @@ private:
 	 * Avoid saving caused by loading.
 	 */
 	bool config_loading;
+
+	struct writeback_task {
+		/**
+		 * Options that are ready to be saved.
+		 */
+		std::vector<std::pair<std::string, std::string>> elements;
+		std::mutex elements_mutex;
+	};
+
+	std::shared_ptr<writeback_task> writeback;
+
+	job::JobManager *job_manager;
 
 	/**
 	 * Magic path that stores config files.
