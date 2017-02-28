@@ -1,17 +1,17 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 import QtQuick 2.4
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 
-import yay.sfttech.openage 1.0
+import yay.sfttech.openage 1.0 as OA
 
 Item {
 	id: root
 
 	// input
-	property EditorMode editorMode
-	property GameSpec gameSpec
+	property var editorMode
+	property var gameSpec
 	property int iconHeight
 
 	function toggle() {
@@ -55,7 +55,7 @@ Item {
 				id: categoryPicker
 			}
 
-			Category {
+			OA.Category {
 				id: categoryToUse
 				name: categoryPicker.current && categoryPicker.current.text != "terrain" ? categoryPicker.current.text : ""
 				editorMode: root.editorMode

@@ -1,25 +1,26 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 import QtQuick 2.4
-import yay.sfttech.openage 1.0
 
-GameCreator {
+import yay.sfttech.openage 1.0 as OA
+
+OA.GameCreator {
 	id: root
 
 	property bool enabled: false
-	property GameControl gameControl
+	property var gameControl
 	property int gameControlTargetModeIndex
 
-	property int specState: gameSpec ? gameSpec.state : GameSpec.Null
-	property int gameState: game ? game.state : GameMain.Null
+	property int specState: gameSpec ? gameSpec.state : OA.GameSpec.Null
+	property int gameState: game ? game.state : OA.GameMain.Null
 
 	onSpecStateChanged: {
-		if (enabled && specState == GameSpec.Ready)
+		if (enabled && specState == OA.GameSpec.Ready)
 			activate()
 	}
 
 	onGameStateChanged: {
-		if (enabled && gameState == GameMain.Running)
+		if (enabled && gameState == OA.GameMain.Running)
 			if (gameControl.modeIndex != -1)
 				gameControl.modeIndex = gameControlTargetModeIndex
 			else

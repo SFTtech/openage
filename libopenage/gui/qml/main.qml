@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 import QtQuick 2.4
 import QtQuick.Controls 1.1
@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.3
 
 import yay.sfttech.livereload 1.0
-import yay.sfttech.openage 1.0
+import yay.sfttech.openage 1.0 as OA
 
 Item {
 	id: root
@@ -24,7 +24,7 @@ Item {
 		property int unit: fontMetrics.averageCharacterWidth * scale
 	}
 
-	GameSpec {
+	OA.GameSpec {
 		id: specObj
 
 		/**
@@ -39,32 +39,32 @@ Item {
 		LR.tag: "spec"
 	}
 
-	AssetManager {
+	OA.AssetManager {
 		id: amObj
 
-		dataDir: MainArgs.dataDir
+		dataDir: OA.MainArgs.dataDir
 
-		engine: Engine
+		engine: OA.Engine
 
 		LR.tag: "am"
 	}
 
-	GameMain {
+	OA.GameMain {
 		id: gameObj
 
 		/**
 		 * States: Null, Running
 		 */
 
-		engine: Engine
+		engine: OA.Engine
 
 		LR.tag: "game"
 	}
 
-	GameControl {
+	OA.GameControl {
 		id: gameControlObj
 
-		engine: Engine
+		engine: OA.Engine
 		game: gameObj
 
 		/**
@@ -78,7 +78,7 @@ Item {
 		LR.tag: "gamecontrol"
 	}
 
-	GeneratorParameters {
+	OA.GeneratorParameters {
 		id: genParamsObj
 
 		LR.tag: "gen"
@@ -104,17 +104,17 @@ Item {
 			}
 		}
 
-		CreateMode {
+		OA.CreateMode {
 			id: createModeObj
 			LR.tag: "createMode"
 		}
 
-		ActionMode {
+		OA.ActionMode {
 			id: actionModeObj
 			LR.tag: "actionMode"
 		}
 
-		EditorMode {
+		OA.EditorMode {
 			id: editorModeObj
 
 			currentTypeId: typePicker.current
@@ -157,7 +157,7 @@ Item {
 					CheckBoxFlat {
 						id: createWhenReady
 						text: "create_when_ready"
-						visible: specObj.state == GameSpec.Loading
+						visible: specObj.state == OA.GameSpec.Loading
 					}
 				]
 
@@ -238,8 +238,8 @@ Item {
 	}
 
 	Component.onCompleted: {
-		ImageProviderByFilename.gameSpec = specObj
-		ImageProviderById.gameSpec = specObj
-		ImageProviderByTerrainId.gameSpec = specObj
+		OA.ImageProviderByFilename.gameSpec = specObj
+		OA.ImageProviderById.gameSpec = specObj
+		OA.ImageProviderByTerrainId.gameSpec = specObj
 	}
 }
