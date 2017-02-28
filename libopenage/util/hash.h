@@ -1,8 +1,9 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <cstdlib>
+#include <array>
 
 namespace openage {
 namespace util {
@@ -12,5 +13,57 @@ namespace util {
  * hash value from several variables.
  */
 size_t hash_combine(size_t hash1, size_t hash2);
+
+
+/** \class Siphash
+ * Contains a Siphash implementration.
+ *
+ * https://131002.net/siphash/
+ */
+class Siphash {
+public:
+	/**
+	 * Creates a hash generator.
+	 * @param key Key to use with this hasher.
+	 */
+	Siphash(std::array<uint8_t, 16> key);
+
+
+	/**
+	 * Set the key for subsequent hashes.
+	 * @param k Key to use with this hasher.
+	 * @return Reference to itself, for method chaining.
+	 */
+	Siphash& set_key(std::array<uint8_t, 16> key);
+
+
+	/**
+	 * Hashes the input data as uint8_t array and returns the result.
+	 * @param data Start of the input data.
+	 * @param len_data Number of bytes to read.
+	 * @return Hash.
+	 */
+	uint64_t digest(const uint8_t *data, size_t len_data);
+
+
+	/**
+	 * Hashes a single uint64_t number and returns the result.
+	 *
+	 * The 64-bit word is interpreted as big-endian.
+	 * e.g. 0x0123456789abcdef -> {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef}
+	 *
+	 * @param value uint64_t to hash.
+	 * @return Hash.
+	 */
+	uint64_t digest(const uint64_t);
+
+
+private:
+	/**
+	 * The key to use for hashing. As two 64-bit little-endian words.
+	 */
+	uint64_t key[2];
+};
+
 
 }} // openage::util

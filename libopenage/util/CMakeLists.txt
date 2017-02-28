@@ -12,11 +12,13 @@ add_sources(libopenage
 	fps.cpp
 	fslikeobject.cpp
 	hash.cpp
+	hash_test.cpp
 	init.cpp
 	language.cpp
 	matrix.cpp
 	matrix_test.cpp
 	misc.cpp
+	misc_test.cpp
 	opengl.cpp
 	os.cpp
 	profiler.cpp
