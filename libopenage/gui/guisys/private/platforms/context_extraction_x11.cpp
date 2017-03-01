@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include <cassert>
 
@@ -24,15 +24,36 @@ std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 
 		current_context = glXGetCurrentContext();
 		assert(current_context);
+
+		return std::make_tuple(
+			QVariant::fromValue<QGLXNativeContext>(
+				QGLXNativeContext(current_context,
+				                  wm_info.info.x11.display,
+				                  wm_info.info.x11.window)),
+			wm_info.info.x11.window
+		);
 	}
 
-	return std::make_tuple(
-		QVariant::fromValue<QGLXNativeContext>(
-			QGLXNativeContext(current_context,
-			                  wm_info.info.x11.display,
-			                  wm_info.info.x11.window)),
-		wm_info.info.x11.window
-	);
+	return std::tuple<QVariant, WId>{};
+}
+
+std::tuple<QVariant, std::function<void()>> extract_native_context_and_switchback_func(SDL_Window *window) {
+	assert(window);
+
+	GLXContext current_context;
+	SDL_SysWMinfo wm_info;
+	SDL_VERSION(&wm_info.version);
+
+	if (SDL_GetWindowWMInfo(window, &wm_info)) {
+		assert(wm_info.info.x11.display);
+
+		current_context = glXGetCurrentContext();
+		assert(current_context);
+
+		return std::make_tuple(QVariant::fromValue<QGLXNativeContext>(QGLXNativeContext(current_context, wm_info.info.x11.display, wm_info.info.x11.window)), std::bind(SDL_GL_MakeCurrent, window, SDL_GL_GetCurrentContext()));
+	}
+
+	return std::tuple<QVariant, std::function<void()>>{};
 }
 
 } // namespace qtsdl
