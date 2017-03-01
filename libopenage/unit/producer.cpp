@@ -414,6 +414,11 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 	 */
 	MovableProducer::initialise(unit, player);
 
+	// population of 1 for all movable units
+	if (this->unit_data.unit_class != gamedata::unit_classes::SHEEP) {
+		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(1, 0));
+	}
+
 	// add worker attributes
 	if (this->unit_data.unit_class == gamedata::unit_classes::CIVILIAN) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::worker>>());
@@ -563,6 +568,14 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	unit->add_attribute(std::make_shared<Attribute<attr_type::garrison>>());
 	unit->add_attribute(std::make_shared<Attribute<attr_type::hitpoints>>(this->unit_data.hit_points));
 	unit->add_attribute(std::make_shared<Attribute<attr_type::damaged>>(this->unit_data.hit_points));
+
+	// population
+	if (this->id() == 109 || this->id() == 70) { // Town center, House
+		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(0, 5));
+	}
+	else if (this->id() == 82) { // Castle
+		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(0, 20));
+	}
 
 	bool has_destruct_graphic = this->destroyed != nullptr;
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);

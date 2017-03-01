@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "game_control_link.h"
 
@@ -111,6 +111,14 @@ QString ActionModeLink::get_ability() const {
 	return this->ability;
 }
 
+QString ActionModeLink::get_population() const {
+	return this->population;
+}
+
+bool ActionModeLink::get_population_warn() const {
+	return this->population_warn;
+}
+
 void ActionModeLink::act(const QString &action) {
 	emit this->action_triggered(action.toStdString());
 }
@@ -124,12 +132,22 @@ void ActionModeLink::on_buttons_type_changed(const ActionButtonsType buttons_typ
 	emit this->buttons_type_changed(buttons_type);
 }
 
+void ActionModeLink::on_population_changed(int demand, int capacity, bool warn) {
+	this->population = QString::number(demand) + "/" + QString::number(capacity);
+	this->population_warn = warn;
+	emit this->population_changed();
+}
+
 void ActionModeLink::on_core_adopted() {
 	this->Inherits::on_core_adopted();
 	QObject::connect(&unwrap(this)->gui_signals,
 	                 &ActionModeSignals::ability_changed,
 	                 this,
 	                 &ActionModeLink::on_ability_changed);
+	QObject::connect(&unwrap(this)->gui_signals,
+	                 &ActionModeSignals::population_changed,
+	                 this,
+	                 &ActionModeLink::on_population_changed);
 	QObject::connect(&unwrap(this)->gui_signals,
 	                 &ActionModeSignals::buttons_type_changed,
 	                 this,

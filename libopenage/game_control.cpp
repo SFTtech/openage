@@ -466,6 +466,8 @@ void ActionMode::announce_resources() {
 					static_cast<int>(player->amount(resource_type))
 				);
 			}
+			emit this->gui_signals.population_changed(player->population.get_demand(), player->population.get_capacity(),
+				player->population.get_space() <= 0 && !player->population.is_capacity_maxed());
 		}
 	}
 }

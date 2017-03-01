@@ -334,6 +334,9 @@ void DeadAction::update(unsigned int time) {
 }
 
 void DeadAction::on_completion() {
+	auto &owner = this->entity->get_attribute<attr_type::owner>().player;
+	owner.active_unit_removed(this->entity); // TODO move before the start of dead action
+
 	this->on_complete_func();
 }
 
@@ -366,6 +369,9 @@ void FoundationAction::on_completion() {
 	if (this->cancel) {
 		return;
 	}
+
+	auto &owner = this->entity->get_attribute<attr_type::owner>().player;
+	owner.active_unit_added(this->entity);
 
 	// add destruction effect when available
 	if (this->add_destruct_effect) {
@@ -713,36 +719,53 @@ TrainAction::TrainAction(Unit *e, UnitType *pp)
 	:
 	UnitAction{e, graphic_type::standing},
 	trained{pp},
+	started{false},
 	complete{false},
 	train_percent{.0f} {
 }
 
 void TrainAction::update(unsigned int time) {
 
-	// place unit when ready
-	if (this->train_percent > 1.0f) {
-
-		// create using the producer
-		UnitContainer *container = this->entity->get_container();
-		auto &player = this->entity->get_attribute<attr_type::owner>().player;
-		auto uref = container->new_unit(*this->trained, player, this->entity->location.get());
-
-		// make sure unit got placed
-		// try again next update if cannot place
-		if (uref.is_valid()) {
-			if (this->entity->has_attribute(attr_type::building)) {
-
-				// use a move command to the gather point
-				auto &build_attr = this->entity->get_attribute<attr_type::building>();
-				Command cmd(player, build_attr.gather_point);
-				cmd.set_ability(ability_type::move);
-				uref.get()->queue_cmd(cmd);
-			}
-			this->complete = true;
+	if (!this->started) {
+		// check if there is enough population capacity
+		if (!this->trained->default_attributes.has(attr_type::population)) {
+			this->started = true;
+		}
+		else {
+			auto &player = this->entity->get_attribute<attr_type::owner>().player;
+			auto &population_demand = this->trained->default_attributes.get<attr_type::population>().demand;
+			bool can_start = population_demand == 0 || population_demand <= player.population.get_space();
+			// TODO trigger not enough population capacity message
+			this->started = can_start;
 		}
 	}
-	else {
-		this->train_percent += 0.001 * time;
+
+	if (this->started) {
+		// place unit when ready
+		if (this->train_percent >= 1.0f) {
+
+			// create using the producer
+			UnitContainer *container = this->entity->get_container();
+			auto &player = this->entity->get_attribute<attr_type::owner>().player;
+			auto uref = container->new_unit(*this->trained, player, this->entity->location.get());
+
+			// make sure unit got placed
+			// try again next update if cannot place
+			if (uref.is_valid()) {
+				if (this->entity->has_attribute(attr_type::building)) {
+
+					// use a move command to the gather point
+					auto &build_attr = this->entity->get_attribute<attr_type::building>();
+					Command cmd(player, build_attr.gather_point);
+					cmd.set_ability(ability_type::move);
+					uref.get()->queue_cmd(cmd);
+				}
+				this->complete = true;
+			}
+		}
+		else {
+			this->train_percent += 0.001 * time;
+		}
 	}
 }
 
@@ -802,7 +825,7 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 }
 
 void BuildAction::on_completion() {
-	if (this->get_target().get()->get_attribute<attr_type::building>().completed < 1.0f) {
+	if (this->get_target().is_valid() && this->get_target().get()->get_attribute<attr_type::building>().completed < 1.0f) {
 		// The BuildAction was just aborted and we shouldn't look for new buildings
 		return;
 	}

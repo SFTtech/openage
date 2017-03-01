@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,6 +6,7 @@
 #include <unordered_map>
 
 #include "civilisation.h"
+#include "population_tracker.h"
 #include "resource.h"
 
 
@@ -102,6 +103,22 @@ public:
 	 * initialise with the base tech level
 	 */
 	void initialise_unit_types();
+
+	/**
+	 * Keeps track of the population information.
+	 */
+	PopulationTracker population;
+
+	/**
+	 * Called when a unit is created and active.
+	 * (Active means not a construction site)
+	 */
+	void active_unit_added(Unit *unit);
+
+	/**
+	 * Called when a unit is destroyed.
+	 */
+	void active_unit_removed(Unit *unit);
 
 private:
 

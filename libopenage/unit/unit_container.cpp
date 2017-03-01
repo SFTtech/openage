@@ -108,6 +108,7 @@ UnitReference UnitContainer::new_unit(UnitType &type,
 	auto placed = type.place(newobj.get(), terrain_shared, position);
 	if (placed) {
 		type.initialise(newobj.get(), owner);
+		owner.active_unit_added(newobj.get()); // TODO change, move elsewhere
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
 		return this->live_units[id]->get_ref();
@@ -127,6 +128,7 @@ UnitReference UnitContainer::new_unit(UnitType &type,
 	TerrainObject *placed = type.place_beside(newobj.get(), other);
 	if (placed) {
 		type.initialise(newobj.get(), owner);
+		owner.active_unit_added(newobj.get()); // TODO change, move elsewhere
 		auto id = newobj->id;
 		this->live_units.emplace(id, std::move(newobj));
 		return this->live_units[id]->get_ref();

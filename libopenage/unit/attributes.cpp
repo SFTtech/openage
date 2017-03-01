@@ -41,9 +41,4 @@ std::shared_ptr<AttributeContainer> Attributes::get(const attr_type type) const 
 	return this->attrs.at(type);
 }
 
-template<attr_type T>
-Attribute<T> &Attributes::get() const {
-	return *reinterpret_cast<Attribute<T> *>(this->attrs.at(T).get());
-}
-
 } // namespace openage

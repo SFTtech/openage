@@ -58,6 +58,7 @@ Item {
 					Rectangle {
 						property string amount
 						property int iconIndex
+						property bool warning
 
 						width: metricsUnit * 1.5 * 6.5
 						height: metricsUnit * 1.5 * 1.7
@@ -87,6 +88,22 @@ Item {
 								color: "white"
 							}
 						}
+
+						Rectangle {
+							anchors.fill: parent
+							anchors.rightMargin: metricsUnit * 0.3
+							anchors.bottomMargin: metricsUnit * 0.3
+
+							visible: warning
+
+							color: "#80FFC100"
+
+							SequentialAnimation on opacity {
+								loops: Animation.Infinite
+								PropertyAnimation { from: 0; to: 1; duration: 250 }
+								PropertyAnimation { from: 1; to: 0; duration: 250 }
+							}
+						}
 					}
 				}
 
@@ -109,8 +126,9 @@ Item {
 					sourceComponent: resourceIndicator
 
 					onLoaded: {
-						item.amount = "13/42"
+						item.amount = Qt.binding(function() { return root.actionMode.population })
 						item.iconIndex = 4
+						item.warning = Qt.binding(function() { return root.actionMode.population_warn })
 					}
 				}
 			}

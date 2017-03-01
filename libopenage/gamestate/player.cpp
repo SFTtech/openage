@@ -16,8 +16,11 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	color{number},
 	civ{civ},
 	name{name},
-	team{nullptr} {
+	team{nullptr},
+	// TODO change, get population cap max from game options
+	population{0, 200} {
 	// starting resources
+	// TODO change, get starting resources from game options
 	this->resources[game_resource::food] = 1000;
 	this->resources[game_resource::wood] = 1000;
 	this->resources[game_resource::stone] = 1000;
@@ -111,5 +114,46 @@ void Player::initialise_unit_types() {
 	}
 }
 
+void Player::active_unit_added(Unit *unit) {
+	// check if unit is actually active
+	if (unit->has_attribute(attr_type::building) && unit->get_attribute<attr_type::building>().completed < 1.0f) {
+		return;
+	}
+
+	// TODO handle here building dependencies
+	// TODO handle here on create unit triggers
+
+	// population
+	if (unit->has_attribute(attr_type::population)) {
+		auto popul = unit->get_attribute<attr_type::population>();
+		if (popul.demand > 0) {
+			population.demand_population(popul.demand);
+		}
+		if (popul.capacity > 0) {
+			population.add_capacity(popul.capacity);
+		}
+	}
+}
+
+void Player::active_unit_removed(Unit *unit) {
+	// check if unit is actually active
+	if (unit->has_attribute(attr_type::building) && unit->get_attribute<attr_type::building>().completed < 1.0f) {
+		return;
+	}
+
+	// TODO handle here building dependencies
+	// TODO handle here on death unit triggers
+
+	// population
+	if (unit->has_attribute(attr_type::population)) {
+		auto popul = unit->get_attribute<attr_type::population>();
+		if (popul.demand > 0) {
+			population.free_population(popul.demand);
+		}
+		if (popul.capacity > 0) {
+			population.remove_capacity(popul.capacity);
+		}
+	}
+}
 
 } // openage
