@@ -28,6 +28,7 @@ list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_input_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_renderer_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_subtree_impl.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/private/opengl_debug_logger.cpp
 )
 
 list(APPEND QT_SDL_SOURCES
