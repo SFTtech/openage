@@ -1,9 +1,8 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <memory>
-#include <functional>
 #include <atomic>
 #include <mutex>
 #include <condition_variable>
@@ -14,9 +13,10 @@
 #include <QQuickRenderControl>
 #include <QOffscreenSurface>
 
+#include "gui_rendering_setup_routines.h"
+
 struct SDL_Window;
 
-QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
 QT_FORWARD_DECLARE_CLASS(QOpenGLFramebufferObject)
 
 namespace qtsdl {
@@ -111,9 +111,10 @@ private:
 	void reinit_fbo_if_needed();
 
 	/**
-	 * GL context of the game
+	 * Contains rendering context
+	 * Use GuiRenderingCtxActivator to enable it
 	 */
-	std::unique_ptr<QOpenGLContext> ctx;
+	GuiRenderingSetupRoutines gui_rendering_setup_routines;
 
 	/**
 	 * Contains scene graph of the GUI
