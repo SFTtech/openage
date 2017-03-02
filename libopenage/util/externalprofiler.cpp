@@ -43,9 +43,9 @@ void ExternalProfiler::start() {
 	log::log(MSG(info) << "Starting profiler; writing data to " << this->profiling_filename);
 
 	this->currently_profiling = true;
-	#if WITH_GPERFTOOLS_PROFILER
+#if WITH_GPERFTOOLS_PROFILER
 	ProfilerStart(this->profiling_filename);
-	#endif
+#endif
 }
 
 
@@ -61,9 +61,9 @@ void ExternalProfiler::stop() {
 	}
 
 	this->currently_profiling = false;
-	#if WITH_GPERFTOOLS_PROFILER
+#if WITH_GPERFTOOLS_PROFILER
 	ProfilerStop();
-	#endif
+#endif
 
 	log::log(MSG(info) << "Profiler stopped; data written to " << this->profiling_filename);
 }
@@ -79,15 +79,16 @@ void ExternalProfiler::show_results() {
 		log::log(MSG(warn) << "Profiler is currently running; trying to show results anyway");
 	}
 
-	#if WITH_GPERFTOOLS_PROFILER
+#if WITH_GPERFTOOLS_PROFILER
 	std::string pprof_path = subprocess::which("google-pprof");
-	// fallback
+
+	// fallback to pprof
 	if (pprof_path.size() == 0) {
 		pprof_path = subprocess::which("pprof");
 	}
 
 	if (pprof_path.size() == 0) {
-		log::log(MSG(err) << "Can not process profiling results: google-pprof is missing");
+		log::log(ERR << "Can not process profiling results: google-pprof or pprof not found in PATH");
 		return;
 	}
 
@@ -116,7 +117,7 @@ void ExternalProfiler::show_results() {
 			this->profiling_pdf_filename << ": " << retval);
 		return;
 	}
-	#endif
+#endif
 }
 
 } // namespace util

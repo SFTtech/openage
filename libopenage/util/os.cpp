@@ -21,11 +21,10 @@ namespace openage {
 namespace os {
 
 std::string read_symlink(const char *path) {
-	#ifdef _WIN32
+#ifdef _WIN32
 	// TODO not yet implemented
-	// static_assert(false, "os::read_symlink is not yet implemented for WIN32");
-	return std::string();
-	#else
+	return "";
+#else
 	size_t bufsize = 1024;
 
 	while (true) {
@@ -47,16 +46,16 @@ std::string read_symlink(const char *path) {
 
 		return std::string{buf.get()};
 	}
-	#endif
+#endif
 }
 
 std::string self_exec_filename() {
 	// nice overview of crossplatform methods:
 	// http://stackoverflow.com/questions/5919996
 
-	#ifdef __linux
+#ifdef __linux
 	return read_symlink("/proc/self/exe");
-	#elif __APPLE__
+#elif __APPLE__
 	uint32_t bufsize = 1024;
 
 	while (true) {
@@ -68,38 +67,36 @@ std::string self_exec_filename() {
 
 		return std::string{buf.get()};
 	}
-	#elif _WIN32
+#elif _WIN32
 	// TODO not yet implemented
-	// static_assert(false, "subprocess::self_filename is not yet implemented for WIN32");
 	return std::string("openage.exe"); // FIXME: wild guess though
-	#else
+#else
 	static_assert(false, "subprocess::self_filename is not yet implemented for... whatever platform you're using right now.");
-	#endif
+#endif
 }
 
 int execute_file(const char *path, bool background) {
-	#ifdef _WIN32
+#ifdef _WIN32
 	// TODO some sort of shell-open, not yet implemented
-	// static_assert(false, "subprocess::execute_file is not yet implemented for WIN32");
 	return -1; // failure
-	#else
+#else
 		std::string runner = "";
-		#ifdef __APPLE__
+#ifdef __APPLE__
 			runner = subprocess::which("open");
-		#else
+#else
 			runner = subprocess::which("xdg-open");
 			// fallback
 			if (runner.size() == 0) {
 				runner = subprocess::which("gnome-open");
 			}
-		#endif
+#endif
 		if (runner.size() == 0) {
 			log::log(MSG(err) << "could not locate file-opener");
 			return -1;
 		}
 
 		return subprocess::call({runner.c_str(), path, nullptr}, not background);
-	#endif
+#endif
 }
 
 } // namespace os

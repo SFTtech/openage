@@ -30,11 +30,11 @@ std::string sformat(const char *fmt, ...) {
 
 
 size_t vsformat(const char *fmt, va_list ap, std::string &output) {
-	#if HAVE_THREAD_LOCAL_STORAGE
+#if HAVE_THREAD_LOCAL_STORAGE
 	static thread_local std::vector<char> buf(64);
-	#else
+#else
 	std::vector<char> buf(64);
-	#endif
+#endif
 
 	va_list aq;
 	va_copy(aq, ap);
@@ -61,10 +61,11 @@ size_t vsformat(const char *fmt, va_list ap, std::string &output) {
 }
 
 
-void copy_string(const char *s, std::vector<char> target) {
+std::unique_ptr<char[]> copy_string(const char *s) {
 	size_t sz = strlen(s) + 1;
-	target.resize(sz);
-	memcpy(target.data(), s, sz);
+	auto ret = std::make_unique<char[]>(sz);
+	memcpy(ret.get(), s, sz);
+	return ret;
 }
 
 

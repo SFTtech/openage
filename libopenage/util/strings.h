@@ -5,6 +5,7 @@
 #include <cstdarg>
 #include <functional>
 #include <iomanip>
+#include <memory>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -69,10 +70,9 @@ size_t vsformat(const char *fmt, va_list ap, std::string &output);
 
 
 /**
- * Copies the given string to the vector target.
- * Target is resized to exactly hold the data (including the NULL byte).
+ * Copies the given string to the returned unique_ptr, including 0 byte.
  */
-void copy_string(const char *s, std::vector<char> target);
+std::unique_ptr<char[]> copy_string(const char *s);
 
 
 /**

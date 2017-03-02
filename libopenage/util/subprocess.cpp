@@ -23,32 +23,38 @@ namespace openage {
 namespace subprocess {
 
 bool is_executable(const char *filename) {
-	#ifdef _WIN32
+#ifdef _WIN32
 	// TODO not yet implemented
-	// static_assert(false, "subprocess::is_executable is not yet implemented for WIN32");
 	return false;
-	#else
+#else
 	struct stat sb;
 	return (stat(filename, &sb) == 0
 	        and S_ISREG(sb.st_mode)
 	        and sb.st_mode & 0111);
-	#endif
+#endif
 }
 
 std::string which(const char *name) {
-	#ifdef _WIN32
+#ifdef _WIN32
 	// TODO not yet implemented
-	// static_assert(false, "subprocess::which is not yet implemented for WIN32");
-	return std::string(name);
-	#else
-	std::vector<char> path;
-	util::copy_string(getenv("PATH"), path);
+	return name;
+#else
 
+	// when it's an absolute name
 	if (is_executable(name)) {
 		return name;
 	}
 
-	for (char *dir = strtok(path.data(), ":"); dir; dir = strtok(NULL, ":")) {
+	char *env_path = getenv("PATH");
+
+	if (env_path == nullptr) {
+		log::log(WARN << "no PATH environment variable found!");
+		return "";
+	}
+
+	std::unique_ptr<char[]> path = util::copy_string(env_path);
+
+	for (char *dir = strtok(path.get(), ":"); dir; dir = strtok(nullptr, ":")) {
 		std::string filename;
 		filename.append(dir);
 		filename.push_back('/');
@@ -60,15 +66,14 @@ std::string which(const char *name) {
 	}
 
 	return "";
-	#endif
+#endif
 }
 
 int call(const std::vector<const char *> &argv, bool wait, const char *redirect_stdout_to) {
-	#ifdef _WIN32
+#ifdef _WIN32
 	// TODO not yet implemented
-	// static_assert(false, "subprocess::call is not yet implemented for WIN32");
 	return -1; // nope
-	#else
+#else
 
 	// used by child to communicate execve() to its parent.
 	// on success, the child auto-closes the pipe; the parent reads 0 bytes.
