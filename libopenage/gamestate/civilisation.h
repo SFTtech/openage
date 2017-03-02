@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -46,7 +46,7 @@ public:
 	/**
 	 * gamedata for a building
 	 */
-	const gamedata::unit_building *get_building_data(index_t unit_id) const;
+	const gamedata::building_unit *get_building_data(index_t unit_id) const;
 
 	/**
 	 * initialise the unit meta data
@@ -78,7 +78,7 @@ private:
 	/**
 	 * used for annex creation
 	 */
-	std::unordered_map<index_t, const gamedata::unit_building *> buildings;
+	std::unordered_map<index_t, const gamedata::building_unit *> buildings;
 
 };
 

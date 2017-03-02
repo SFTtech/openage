@@ -158,8 +158,8 @@ void GameSpec::create_unit_types(unit_meta_list &objects, int civ_id) const {
 	}
 
 	// create projectile types first
-	for (auto &obj : this->gamedata[0].civs.data[civ_id].units.projectile.data) {
-		this->load_projectile(obj, objects);
+	for (auto &obj : this->gamedata[0].civs.data[civ_id].units.missile.data) {
+		this->load_missile(obj, objects);
 	}
 
 	// create object unit types
@@ -168,7 +168,7 @@ void GameSpec::create_unit_types(unit_meta_list &objects, int civ_id) const {
 	}
 
 	// create dead unit types
-	for (auto &unit : this->gamedata[0].civs.data[civ_id].units.dead_or_fish.data) {
+	for (auto &unit : this->gamedata[0].civs.data[civ_id].units.moving.data) {
 		this->load_object(unit, objects);
 	}
 
@@ -280,7 +280,7 @@ bool GameSpec::valid_graphic_id(index_t graphic_id) const {
 	return true;
 }
 
-void GameSpec::load_building(const gamedata::unit_building &building, unit_meta_list &list) const {
+void GameSpec::load_building(const gamedata::building_unit &building, unit_meta_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(building.graphic_standing0)) {
@@ -291,7 +291,7 @@ void GameSpec::load_building(const gamedata::unit_building &building, unit_meta_
 	}
 }
 
-void GameSpec::load_living(const gamedata::unit_living &unit, unit_meta_list &list) const {
+void GameSpec::load_living(const gamedata::living_unit &unit, unit_meta_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(unit.graphic_dying0) &&
@@ -315,7 +315,7 @@ void GameSpec::load_object(const gamedata::unit_object &object, unit_meta_list &
 	}
 }
 
-void GameSpec::load_projectile(const gamedata::unit_projectile &proj, unit_meta_list &list) const {
+void GameSpec::load_missile(const gamedata::missile_unit &proj, unit_meta_list &list) const {
 
 	// check graphics
 	if (this->valid_graphic_id(proj.graphic_standing0)) {

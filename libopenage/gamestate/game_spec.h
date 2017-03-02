@@ -160,12 +160,12 @@ private:
 	 * loads required assets to construct a buildings.
 	 * adds to the type list if the object can be created safely.
 	 */
-	void load_building(const gamedata::unit_building &, unit_meta_list &) const;
+	void load_building(const gamedata::building_unit &, unit_meta_list &) const;
 
 	/**
 	 * loads assets for living things.
 	 */
-	void load_living(const gamedata::unit_living &, unit_meta_list &) const;
+	void load_living(const gamedata::living_unit &, unit_meta_list &) const;
 
 	/**
 	 * load assets for other game objects (not building and living).
@@ -173,9 +173,9 @@ private:
 	void load_object(const gamedata::unit_object &, unit_meta_list &) const;
 
 	/**
-	 * load projectile assets.
+	 * load missile assets.
 	 */
-	void load_projectile(const gamedata::unit_projectile &, unit_meta_list &) const;
+	void load_missile(const gamedata::missile_unit &, unit_meta_list &) const;
 
 	/**
 	 * fill in the terrain_data attribute of this

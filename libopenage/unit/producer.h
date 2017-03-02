@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -60,7 +60,6 @@ protected:
 	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> default_tex;
 	int dead_unit_id;
-
 };
 
 /**
@@ -68,14 +67,14 @@ protected:
  */
 class MovableProducer: public ObjectProducer {
 public:
-	MovableProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_movable *);
+	MovableProducer(const Player &owner, const GameSpec &spec, const gamedata::projectile_unit *);
 	virtual ~MovableProducer();
 
 	void initialise(Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 protected:
-	const gamedata::unit_movable unit_data;
+	const gamedata::projectile_unit unit_data;
 	UnitTexture *moving;
 	UnitTexture *attacking;
 	const Sound *on_move;
@@ -91,14 +90,14 @@ protected:
  */
 class LivingProducer: public MovableProducer {
 public:
-	LivingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_living *);
+	LivingProducer(const Player &owner, const GameSpec &spec, const gamedata::living_unit *);
 	virtual ~LivingProducer();
 
 	void initialise(Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
-	const gamedata::unit_living unit_data;
+	const gamedata::living_unit unit_data;
 };
 
 /**
@@ -110,7 +109,7 @@ class BuildingProducer: public UnitType {
 public:
 	BuildingProducer(const Player &owner,
 	                 const GameSpec &spec,
-	                 const gamedata::unit_building *ud);
+	                 const gamedata::building_unit *ud);
 	virtual ~BuildingProducer();
 
 	int id() const override;
@@ -120,7 +119,7 @@ public:
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
-	const gamedata::unit_building unit_data;
+	const gamedata::building_unit unit_data;
 
 	/**
 	 * Sound id played when object is created or destroyed.
@@ -151,7 +150,7 @@ private:
  */
 class ProjectileProducer: public UnitType {
 public:
-	ProjectileProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_projectile *);
+	ProjectileProducer(const Player &owner, const GameSpec &spec, const gamedata::missile_unit *);
 	virtual ~ProjectileProducer();
 
 	int id() const override;
@@ -161,7 +160,7 @@ public:
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
 
 private:
-	const gamedata::unit_projectile unit_data;
+	const gamedata::missile_unit unit_data;
 	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> tex;
 	std::shared_ptr<UnitTexture> sh; // shadow texture
