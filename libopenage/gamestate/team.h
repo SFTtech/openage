@@ -1,9 +1,12 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <string>
 #include <unordered_map>
+
+#include "score.h"
+
 
 namespace openage {
 
@@ -50,6 +53,11 @@ public:
 	void remove_member(Player &player);
 
 	member_type get_member_type(Player &player);
+
+	/**
+	 * TODO asdf
+	 */
+	Score score;
 
 private:
 

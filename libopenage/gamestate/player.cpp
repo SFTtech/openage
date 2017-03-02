@@ -127,11 +127,18 @@ void Player::active_unit_added(Unit *unit) {
 	if (unit->has_attribute(attr_type::population)) {
 		auto popul = unit->get_attribute<attr_type::population>();
 		if (popul.demand > 0) {
-			population.demand_population(popul.demand);
+			this->population.demand_population(popul.demand);
 		}
 		if (popul.capacity > 0) {
-			population.add_capacity(popul.capacity);
+			this->population.add_capacity(popul.capacity);
 		}
+	}
+
+	// score
+	if (unit->id == 82 || unit->id == 276) { // Castle, Wonder
+		this->score.add_score(score_category::society, 10 * 0.2); // TODO get cost
+	} else {
+		this->score.add_score(score_category::economy, 10 * 0.2); // TODO get cost
 	}
 }
 
@@ -148,11 +155,16 @@ void Player::active_unit_removed(Unit *unit) {
 	if (unit->has_attribute(attr_type::population)) {
 		auto popul = unit->get_attribute<attr_type::population>();
 		if (popul.demand > 0) {
-			population.free_population(popul.demand);
+			this->population.free_population(popul.demand);
 		}
 		if (popul.capacity > 0) {
-			population.remove_capacity(popul.capacity);
+			this->population.remove_capacity(popul.capacity);
 		}
+	}
+
+	// score
+	if (!(unit->id == 82 || unit->id == 276)) { // Castle, Wonder
+		this->score.remove_score(score_category::economy, 10 * 0.2); // TODO get cost
 	}
 }
 

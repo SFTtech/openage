@@ -8,6 +8,7 @@
 #include "civilisation.h"
 #include "population_tracker.h"
 #include "resource.h"
+#include "score.h"
 
 
 namespace openage {
@@ -108,6 +109,11 @@ public:
 	 * Keeps track of the population information.
 	 */
 	PopulationTracker population;
+
+	/**
+	 * TODO asdf
+	 */
+	Score score;
 
 	/**
 	 * Called when a unit is created and active.

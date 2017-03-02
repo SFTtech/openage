@@ -55,6 +55,11 @@ public:
 	double get(const game_resource res) const { return value[(int) res]; }
 	double get(const int index) const { return value[index]; }
 
+	/**
+	 * Returns the sum of all the resources.
+	 */
+	double sum() const;
+
 private:
 	double value[(int) game_resource::RESOURCE_TYPE_COUNT];
 };

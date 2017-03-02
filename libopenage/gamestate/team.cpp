@@ -1,7 +1,8 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #include "team.h"
 #include "player.h"
+
 
 namespace openage {
 

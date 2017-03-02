@@ -70,6 +70,14 @@ bool ResourceBundle::deduct(const ResourceBundle& amount) {
 	return false;
 }
 
+double ResourceBundle::sum() const {
+	double sum = 0;
+	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
+		sum += this->get(i);
+	}
+	return sum;
+}
+
 } // openage
 
 namespace std {
