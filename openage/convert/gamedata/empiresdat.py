@@ -1,4 +1,4 @@
-# Copyright 2013-2016 the openage authors. See copying.md for legal info.
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -96,7 +96,9 @@ class EmpiresDat(Exportable):
             ref_type=terrain.Terrain,
             # 42 terrains are stored (100 in African Kingdoms), but less are used.
             # TODO: maybe this number is defined somewhere.
-            length=(lambda self: 100 if GameVersion.age2_ak in self.game_versions else 42),
+            length=(lambda self:
+                    100 if GameVersion.age2_hd_ak in self.game_versions
+                    else 42),
         )),
         (READ,         "terrain_border", SubdataMember(
             ref_type=terrain.TerrainBorder,

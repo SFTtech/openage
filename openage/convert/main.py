@@ -32,8 +32,8 @@ REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
 
 def mount_drs_archives(srcdir, game_versions=None):
     """
-    Returns a Union path where srcdir is mounted at /, and all the DRS files
-    are mounted in subfolders.
+    Returns a Union path where srcdir is mounted at /,
+    and all the DRS files are mounted in subfolders.
     """
     from ..util.fslike.union import Union
     from .drs import DRS
@@ -41,34 +41,78 @@ def mount_drs_archives(srcdir, game_versions=None):
     result = Union().root
     result.mount(srcdir)
 
-    def mount_drs(filename, target, ignore_nonexistant=False):
-        """ Mounts the DRS file from srcdir's filename at result's target. """
-        drspath = srcdir.joinpath(filename)
-        if ignore_nonexistant and not drspath.is_file():
-            return
-
-        result.joinpath(target).mount(DRS(drspath.open('rb')).root)
-
-    if GameVersion.age2_fe in game_versions:
+    # hd edition mounting
+    if GameVersion.age2_hd_fe in game_versions:
         result['graphics'].mount(srcdir['resources/_common/drs/graphics'])
         result['interface'].mount(srcdir['resources/_common/drs/interface'])
         result['sounds'].mount(srcdir['resources/_common/drs/sounds'])
         result['gamedata'].mount(srcdir['resources/_common/drs/gamedata'])
+        if GameVersion.age2_hd_ak in game_versions:
+            result['gamedata'].mount(srcdir['resources/_common/drs/gamedata_x1'])
+        if GameVersion.age2_hd_rajas in game_versions:
+            result['gamedata'].mount(srcdir['resources/_common/drs/gamedata_x2'])
         result['terrain'].mount(srcdir['resources/_common/drs/terrain'])
-        result['data'].mount(srcdir['/resources/_common/dat'])
+        result['data'].mount(srcdir['resources/_common/dat'])
+
+        return result
+
+    def mount_drs(filename, target):
+        """
+        Mounts the DRS file from srcdir's filename at result's target.
+        """
+
+        drspath = srcdir[filename]
+        result[target].mount(DRS(drspath.open('rb')).root)
+
+    # non-hd file mounting
+    mount_drs("data/graphics.drs", "graphics")
+    mount_drs("data/interfac.drs", "interface")
+    mount_drs("data/sounds.drs", "sounds")
+    mount_drs("data/sounds_x1.drs", "sounds")
+    mount_drs("data/terrain.drs", "terrain")
+
+    if GameVersion.age2_hd_3x not in game_versions:
+        mount_drs("data/gamedata.drs", "gamedata")
+
+    if GameVersion.age2_tc_fe in game_versions:
+        mount_drs("games/forgotten empires/data/gamedata_x1.drs",
+                  "gamedata")
+        mount_drs("games/forgotten empires/data/gamedata_x1_p1.drs",
+                  "gamedata")
     else:
-        mount_drs("data/graphics.drs", "graphics")
-        mount_drs("data/interfac.drs", "interface")
-        mount_drs("data/sounds.drs", "sounds")
-        mount_drs("data/sounds_x1.drs", "sounds")
-        mount_drs("data/terrain.drs", "terrain")
-        if GameVersion.age2_hd_3x not in game_versions:
-            mount_drs("data/gamedata.drs", "gamedata")
         mount_drs("data/gamedata_x1.drs", "gamedata")
         mount_drs("data/gamedata_x1_p1.drs", "gamedata")
-        # TODO mount gamedata_x2.drs and _x2_p1 if they exist?
 
     return result
+
+
+def mount_input(srcdir=None):
+    """
+    Mount the input folders for conversion.
+    """
+
+    # acquire conversion source directory
+    if srcdir is None:
+        srcdir = acquire_conversion_source_dir()
+
+    game_versions = set(get_game_versions(srcdir))
+    if not game_versions:
+        warn("Game version(s) could not be detected in {}".format(srcdir))
+
+    if not any(version.openage_supported for version in game_versions):
+        warn("No supported game version found:")
+        for version in game_versions:
+            warn(" * {}".format(version))
+        warn("You need \x1b[34mAge of Empires 2: The Conquerors\x1b[m")
+        return (False, set())
+
+    info("Game version(s) detected:")
+    for version in game_versions:
+        info(" * {}".format(version))
+
+    output = mount_drs_archives(srcdir, game_versions)
+
+    return (output, game_versions)
 
 
 def convert_assets(assets, args, srcdir=None):
@@ -87,33 +131,20 @@ def convert_assets(assets, args, srcdir=None):
     conversion experience, then passes them to .driver.convert().
     """
 
-    # import here so codegen.py doesn't depend on it.
-    from .driver import convert
+    data_dir, game_versions = mount_input(srcdir)
 
-    # acquire conversion source directory
-    if srcdir is None:
-        srcdir = acquire_conversion_source_dir()
-
-    args.game_versions = set(get_game_versions(srcdir))
-    if not args.game_versions:
-        warn("Game version(s) could not be detected in {}".format(srcdir))
-
-    versions = "; ".join(str(version) for version in args.game_versions)
-    if not any(version.openage_supported for version in args.game_versions):
-        warn("None supported of the Game version(s) {}".format(versions))
-        warn("You need \x1b[34mAge of Empires 2: The Conquerors\x1b[m")
+    if not data_dir:
         return False
 
-    info("Game version(s) detected: {}".format(versions))
-
-    srcdir = mount_drs_archives(srcdir, args.game_versions)
+    # make versions available easily
+    args.game_versions = game_versions
 
     converted_path = assets / "converted"
     converted_path.mkdirs()
     targetdir = DirectoryCreator(converted_path).root
 
     # make srcdir and targetdir safe for threaded conversion
-    args.srcdir = AccessSynchronizer(srcdir).root
+    args.srcdir = AccessSynchronizer(data_dir).root
     args.targetdir = AccessSynchronizer(targetdir).root
 
     def flag(name):
@@ -124,6 +155,9 @@ def convert_assets(assets, args, srcdir=None):
         return getattr(args, name, False)
 
     args.flag = flag
+
+    # import here so codegen.py doesn't depend on it.
+    from .driver import convert
 
     converted_count = 0
     total_count = None
@@ -406,6 +440,26 @@ def conversion_required(asset_dir, args):
         return True
 
 
+def interactive_viewer(srcdir=None):
+    """
+    launch an interactive view for browsing the original
+    archives.
+    """
+
+    info("launching interactive data browser...")
+
+    data, _ = mount_input(srcdir)
+
+    info("use `pprint` for beautiful output!")
+    info("you can access stuff by the `data` variable!")
+    info()
+    info("e.g. start listing content with `pprint(list(data.list()))`")
+
+    import code
+    from pprint import pprint
+    code.interact(local=locals())
+
+
 def init_subparser(cli):
     """ Initializes the parser for convert-specific args. """
     cli.set_defaults(entrypoint=main)
@@ -450,6 +504,10 @@ def init_subparser(cli):
     cli.add_argument(
         "--jobs", "-j", type=int, default=None)
 
+    cli.add_argument(
+        "--interactive", "-i", action='store_true',
+        help="browse the files interactively")
+
 
 def main(args, error):
     """ CLI entry point """
@@ -464,6 +522,10 @@ def main(args, error):
         srcdir = CaseIgnoringDirectory(args.source_dir).root
     else:
         srcdir = None
+
+    if args.interactive:
+        interactive_viewer(srcdir)
+        return 0
 
     # conversion target
     from ..assets import get_asset_path

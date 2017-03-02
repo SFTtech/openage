@@ -9,7 +9,7 @@ from .pefile import PEFile
 from ..log import dbg
 
 
-def read_age2_fe_stringresources(stringres, path):
+def read_age2_hd_fe_stringresources(stringres, path):
     """
     Fill the string resources from text specifications found
     in the given path.

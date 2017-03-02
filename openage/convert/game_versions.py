@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """Detect the version of the original game"""
 
@@ -19,7 +19,7 @@ class GameVersion(enum.Enum):
     )
     age2_tc = (
         "Age of Empires 2: The Conquerors",
-        True,
+        False,
         {'age2_x1/age2_x1.exe', 'data/empires2_x1.dat'},
     )
     age2_tc_10c = (
@@ -27,23 +27,36 @@ class GameVersion(enum.Enum):
         True,
         {'age2_x1/age2_x1.exe', 'data/empires2_x1_p1.dat'},
     )
+    age2_tc_fe = (
+        "Age of Empires 2: Forgotten Empires",
+        True,
+        {'age2_x1/age2_x2.exe',
+         'games/forgotten empires/data/empires2_x1_p1.dat'},
+    )
     age2_hd_3x = (
         "Age of Empires 2: HD Edition (Version 3.x)",
         True,
         {'AoK HD.exe', 'data/empires2_x1_p1.dat'}
     )
     # HD edition version 4.0
-    age2_fe = (
-        "Forgotten Empires",
+    age2_hd_fe = (
+        "AOE2 HD Forgotten Empires",
         True,
         {'AoK HD.exe', 'resources/_common/dat/empires2_x1_p1.dat'},
     )
     # HD Edition v4.7+ with African Kingdoms. Maybe 4.6 as well.
-    age2_ak = (
-        "African Kingdoms",
+    age2_hd_ak = (
+        "AOE2 HD African Kingdoms",
         True,
         {'AoK HD.exe', 'resources/_common/dat/empires2_x2_p1.dat',
          'resources/_packages/african-kingdoms/config.json'},
+    )
+    # HD Edition v5.1+ with Rise of Rajas
+    age2_hd_rajas = (
+        "AOE2 HD Rise of Rajas (Version 5.x)",
+        False,
+        {'AoK HD.exe', 'resources/_common/dat/empires2_x2_p1.dat',
+         'resources/_packages/rise-of-the-rajas/config.json'},
     )
 
     def __init__(self, description, openage_supported, required_files=None):

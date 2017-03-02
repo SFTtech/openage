@@ -19,7 +19,7 @@ from .dataformat.data_formatter import DataFormatter
 from .gamedata.empiresdat import load_gamespec, EmpiresDat
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
-from .hdlanguagefile import (read_age2_fe_stringresources,
+from .hdlanguagefile import (read_age2_hd_fe_stringresources,
                              read_age2_hd_3x_stringresources)
 from .interface.interfacecutter import InterfaceCutter
 from .interface.interfacerename import interface_rename
@@ -37,8 +37,8 @@ def get_string_resources(args):
 
     # AoK:TC uses .DLL PE files for its string resources,
     # HD uses plaintext files
-    if GameVersion.age2_fe in args.game_versions:
-        count += read_age2_fe_stringresources(stringres, srcdir["resources"])
+    if GameVersion.age2_hd_fe in args.game_versions:
+        count += read_age2_hd_fe_stringresources(stringres, srcdir["resources"])
 
     elif GameVersion.age2_hd_3x in args.game_versions:
         count += read_age2_hd_3x_stringresources(stringres, srcdir)
@@ -69,20 +69,24 @@ def get_blendomatic_data(srcdir):
     except FileNotFoundError:
         blendomatic_dat = srcdir["data/blendomatic.dat"].open('rb')
 
-    with blendomatic_dat:
-        return Blendomatic(blendomatic_dat)
+    return Blendomatic(blendomatic_dat)
 
 
 def get_gamespec(srcdir, game_versions, dont_pickle):
     """ reads empires.dat and fixes it """
 
-    filename = ("empires2_x2_p1.dat" if GameVersion.age2_ak in game_versions else
-                "empires2_x1_p1.dat")
+    if GameVersion.age2_hd_ak in game_versions:
+        filename = "empires2_x2_p1.dat"
+    else:
+        filename = "empires2_x1_p1.dat"
 
     cache_file = os.path.join(gettempdir(), "{}.pickle".format(filename))
 
     with srcdir["data", filename].open('rb') as empiresdat_file:
-        gamespec = load_gamespec(empiresdat_file, game_versions, cache_file, not dont_pickle)
+        gamespec = load_gamespec(empiresdat_file,
+                                 game_versions,
+                                 cache_file,
+                                 not dont_pickle)
 
     # modify the read contents of datfile
     from .fix_data import fix_data
@@ -129,7 +133,7 @@ def convert_metadata(args):
     yield "palette"
 
     # `.bin` files are renamed `.bina` in HD version 4
-    if GameVersion.age2_fe in args.game_versions:
+    if GameVersion.age2_hd_fe in args.game_versions:
         palette_path = "interface/50500.bina"
     else:
         palette_path = "interface/50500.bin"
@@ -182,7 +186,7 @@ def convert_metadata(args):
 
 def extract_mediafiles_names_map(files_to_convert, args):
     """ Gets names from the *.bin files, make them lowercase """
-    if GameVersion.age2_fe in args.game_versions:
+    if GameVersion.age2_hd_fe in args.game_versions:
         suffix = '.bina'
     else:
         suffix = '.bin'
@@ -216,6 +220,9 @@ def slp_rename(filename, names_map):
 
 def convert_media(args):
     """ Converts the media part """
+
+    # set of (drsname, suffix) to ignore
+    # if drsname is None, it matches to any naoe
     ignored = set()
     if args.flag("no_sounds"):
         ignored.add((None, '.wav'))
@@ -227,8 +234,10 @@ def convert_media(args):
     files_to_convert = []
     for dirname in ['sounds', 'graphics', 'terrain', 'interface']:
         for filepath in args.srcdir[dirname].iterdir():
-            if (((None, filepath.suffix) in ignored) or
-                    ((filepath.parts[0].decode(), filepath.suffix) in ignored)):
+            if (None, filepath.suffix) in ignored:
+                continue
+            elif (filepath.parts[0].decode(), filepath.suffix) in ignored:
+                # TODO:    ^^ parts[0] is most likely wrong.
                 continue
             elif filepath.is_dir():
                 continue
