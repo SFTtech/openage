@@ -122,9 +122,8 @@ class Path:
 
     def resolve(self, mode="r"):
         """
-        The following modes don't actually open a path,
-        but instead return the path that can be used natively by your kernel.
-        This is used to determine the real path for dirs that are mounted
+        This method minimizes a path and returns another path.
+        This is used to flatten the path for dirs that are mounted
         funnily (e.g. with Union).
         """
         if mode == "r":

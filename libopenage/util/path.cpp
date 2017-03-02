@@ -341,6 +341,11 @@ fslike::FSLike *Path::get_fsobj() const {
 }
 
 
+const Path::parts_t &Path::get_parts() const {
+	return this->parts;
+}
+
+
 std::ostream &operator <<(std::ostream &stream, const Path &path) {
 	stream << "Path(";
 	path.fsobj->repr(stream);

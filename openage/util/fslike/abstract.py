@@ -63,9 +63,9 @@ class FSLikeObject(ABC):
 
     def resolve_r(self, parts):
         """
-        Returns a Path which equals the one that can be used by native system calls.
-        The fslike parts in between may be skipped, so that just the resulting
-        path is returned.
+        Returns a new, flattened, Path if the target exists.
+        The fslike parts in between may be skipped,
+        so that just the resulting path is returned.
 
         Returns None if the path does not exist.
         """
@@ -73,8 +73,7 @@ class FSLikeObject(ABC):
 
     def resolve_w(self, parts):
         """
-        Returns a Path which equals the one that would be used by open_w.
-        Parts in between may be skipped, just the resulting path is returned.
+        Returns a new flattened path. This skips funny mounts in between.
 
         Returns None if the path does not exist or is not writable.
         """
@@ -86,6 +85,7 @@ class FSLikeObject(ABC):
         by your kernel.
         If the path can't be represented natively, return None.
         """
+        # By default, return None. It's overridden by subclasses.
         return None
 
     @abstractmethod

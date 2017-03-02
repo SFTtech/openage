@@ -90,6 +90,16 @@ uint64_t Python::get_filesize(const Path::parts_t &parts) {
 }
 
 
+bool Python::is_python_native() const noexcept {
+	return true;
+}
+
+
+py::Obj &Python::get_py_fsobj() const {
+	return *this->fsobj.get();
+}
+
+
 std::ostream &Python::repr(std::ostream &stream) {
 	stream << this->fsobj->str();
 	return stream;

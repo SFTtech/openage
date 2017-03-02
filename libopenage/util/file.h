@@ -2,17 +2,18 @@
 
 #pragma once
 
+// pxd: from libcpp.memory cimport shared_ptr
+#include <memory>
 // pxd: from libcpp.string cimport string
 #include <string>
 #include <vector>
 
+// pxd: from libopenage.util.filelike.filelike cimport FileLike
 #include "filelike/filelike.h"
 // pxd: from libopenage.pyinterface.pyobject cimport PyObj
 #include "../pyinterface/pyobject.h"
 
-
 // pxd: from libopenage.util.path cimport Path
-
 
 namespace openage {
 namespace util {
@@ -32,6 +33,8 @@ class Path;
  *     File() noexcept
  *     File(const string &path, int mode) except +
  *     File(PyObj) except +
+ *
+ *     shared_ptr[FileLike] get_fileobj() except +
  */
 class File {
 public:
@@ -81,6 +84,8 @@ public:
 	void flush();
 	ssize_t size();
 	std::vector<std::string> get_lines();
+
+	std::shared_ptr<filelike::FileLike> get_fileobj() const;
 
 protected:
 	std::shared_ptr<filelike::FileLike> filelike;

@@ -13,10 +13,13 @@ from libcpp cimport bool
 from libcpp.cast cimport static_cast
 from libcpp.memory cimport shared_ptr
 from libcpp.string cimport string
+from libcpp.utility cimport pair
 from libcpp.vector cimport vector
 
 from libopenage.util.file cimport File as File_cpp
+from libopenage.util.fslike.fslike cimport FSLike
 from libopenage.util.fslike.python cimport (
+    Python as FSLikePython,
     pyx_fs_is_file,
     pyx_fs_is_dir,
     pyx_fs_writable,
@@ -38,6 +41,181 @@ from libopenage.util.fslike.python cimport (
 from libopenage.util.path cimport Path as Path_cpp
 from libopenage.pyinterface.pyobject cimport PyObj
 from .directory import Directory
+from .abstract import FSLikeObject
+from ..fslike.path import Path as Path_py
+
+
+cdef class FSLikeCPPWrapper:
+    """
+    Wraps a c++ fslike object in python.
+    This relays the call to the c++ object.
+
+    This fslike object is wrapped again by a pure python class,
+    which can then inherit from the FSLikeObject.
+    """
+
+    # pointer to the cpp fslike object
+    cdef shared_ptr[FSLike] fsobj
+
+    @staticmethod
+    cdef wrap(shared_ptr[FSLike] c_fsobj):
+        wrp = FSLikeCPPWrapper()
+        wrp.fsobj = c_fsobj
+        return wrp
+
+    def open_r(self, parts):
+        cdef File_cpp file = self.fsobj.get().open_r(parts)
+        return None
+
+    def open_w(self, parts):
+        cdef File_cpp file = self.fsobj.get().open_w(parts)
+        return None
+
+    def resolve_r(self, parts):
+        cdef pair[bool, Path] result = self.fsobj.get().resolve_r(parts)
+
+        if not result.first:
+            return None
+        else:
+            return cpppath_to_pypath(result.second)
+
+    def resolve_w(self, parts):
+        cdef pair[bool, Path] result = self.fsobj.get().resolve_w(parts)
+
+        if not result.first:
+            return None
+        else:
+            return cpppath_to_pypath(result.second)
+
+    def get_native_path(self, parts):
+        cdef string native_path = self.fsobj.get().get_native_path(parts)
+        txt = bytes(native_path)
+
+        if txt:
+            return txt
+        else:
+            return None
+
+    def list(self, parts):
+        cdef Path.parts_t result = self.fsobj.get().list(parts)
+
+        for entry in result:
+            yield from str(entry)
+
+    def filesize(self, parts):
+        return self.fsobj.get().get_filesize(parts)
+
+    def mtime(self, parts):
+        return self.fsobj.get().get_mtime(parts)
+
+    def mkdirs(self, parts):
+        return self.fsobj.get().mkdirs(parts)
+
+    def rmdir(self, parts):
+        return self.fsobj.get().rmdir(parts)
+
+    def unlink(self, parts):
+        return self.fsobj.get().unlink(parts)
+
+    def touch(self, parts):
+        self.fsobj.get().touch(parts)
+
+    def rename(self, srcparts, tgtparts):
+        self.fsobj.get().rename(srcparts, tgtparts)
+
+    def is_file(self, parts):
+        return self.fsobj.get().is_file(parts)
+
+    def is_dir(self, parts):
+        return self.fsobj.get().is_dir(parts)
+
+    def writable(self, parts):
+        return self.fsobj.get().writable(parts)
+
+
+class FSLikeCPP(FSLikeObject):
+    """
+    Pure python cpp fslike wrapper.
+    Wrapps the above translation class again so
+    we can inherit from FSLikeObject.
+    """
+
+    def __init__(self, cpp_wrapper):
+        self.fsobj = cpp_wrapper
+
+    def open_r(self, parts):
+        return self.fsobj.open_r(parts)
+
+    def open_w(self, parts):
+        return self.fsobj.open_w(parts)
+
+    def resolve_r(self, parts):
+        return self.fsobj.resolve_r(parts)
+
+    def resolve_w(self, parts):
+        return self.fsobj.resolve_w(parts)
+
+    def get_native_path(self, parts):
+        return self.fsobj.get_native_path()
+
+    def list(self, parts):
+        yield from self.fsobj.list(parts)
+
+    def filesize(self, parts):
+        return self.fsobj.get_filesize(parts)
+
+    def mtime(self, parts):
+        return self.fsobj.get_mtime(parts)
+
+    def mkdirs(self, parts):
+        return self.fsobj.mkdirs(parts)
+
+    def rmdir(self, parts):
+        return self.fsobj.rmdir(parts)
+
+    def unlink(self, parts):
+        return self.fsobj.unlink(parts)
+
+    def touch(self, parts):
+        self.fsobj.touch(parts)
+
+    def rename(self, srcparts, tgtparts):
+        self.fsobj.rename(srcparts, tgtparts)
+
+    def is_file(self, parts):
+        return self.fsobj.is_file(parts)
+
+    def is_dir(self, parts):
+        return self.fsobj.is_dir(parts)
+
+    def writable(self, parts):
+        return self.fsobj.is_writable(parts)
+
+
+cdef cpppath_to_pypath(const Path_cpp &path):
+    cdef FSLike *fsobj = path.get_fsobj();
+    cdef FSLikePython *py_fslike
+
+    # we could also use typeid() here, but dat mangling..
+
+    # if the fslike is from python anyway, we can bypass the
+    # language barrier (hue hue hue)
+    if fsobj.is_python_native():
+        # extract the python fslike object and transfer it
+        # to the python path
+        py_fslike = <FSLikePython *> fsobj
+        return Path_py(<object>py_fslike.get_py_fsobj().get_ref(),
+                       path.get_parts())
+
+    else:
+        # wrap cpp fslike to relay calls
+        # then pack it into the python path
+        return Path_py(
+            FSLikeCPP(
+                FSLikeCPPWrapper.wrap(fsobj.shared_from_this()),
+                path.get_parts()
+            )
+        )
 
 
 cdef bool fs_is_file(PyObject *fslike,

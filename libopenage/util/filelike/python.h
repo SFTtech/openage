@@ -13,7 +13,7 @@
 
 // pxd: from libopenage.pyinterface.functional cimport PyIfFunc1, PyIfFunc2, PyIfFunc3
 #include "../../pyinterface/functional.h"
-// pxd: from libopenage.pyinterface.pyobject cimport PyObjectPtr
+// pxd: from libopenage.pyinterface.pyobject cimport PyObjectPtr, PyObj
 #include "../../pyinterface/pyobject.h"
 
 
@@ -23,6 +23,10 @@ namespace filelike {
 
 /**
  * File-like class that wraps a python open() file-like object.
+ *
+ * pxd:
+ * cppclass Python:
+ *     PyObj &get_py_fileobj() except +
  */
 class Python : public FileLike {
 public:
@@ -42,6 +46,9 @@ public:
 	void close() override;
 	void flush() override;
 	ssize_t get_size() override;
+
+	bool is_python_native() const noexcept override;
+	py::Obj &get_py_fileobj() const;
 
 	std::ostream &repr(std::ostream &) override;
 

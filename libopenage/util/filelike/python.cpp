@@ -67,6 +67,11 @@ ssize_t Python::get_size() {
 }
 
 
+bool Python::is_python_native() const noexcept {
+	return true;
+}
+
+
 std::ostream &Python::repr(std::ostream &stream) {
 	stream << this->fileobj->repr();
 	return stream;

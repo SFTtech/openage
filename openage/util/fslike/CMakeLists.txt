@@ -9,6 +9,9 @@ add_py_modules(
 	wrapper.py
 )
 
+add_pxds(
+	cpp.pxd
+)
 
 add_cython_modules(
 	cpp.pyx

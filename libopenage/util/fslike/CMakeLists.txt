@@ -6,5 +6,6 @@ add_sources(libopenage
 )
 
 pxdgen(
+	fslike.h
 	python.h
 )

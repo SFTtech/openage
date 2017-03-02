@@ -110,6 +110,11 @@ std::vector<std::string> File::get_lines() {
 }
 
 
+std::shared_ptr<filelike::FileLike> File::get_fileobj() const {
+	return this->filelike;
+}
+
+
 std::ostream &operator <<(std::ostream &stream, const File &file) {
 	stream << "File(";
 	file.filelike->repr(stream);

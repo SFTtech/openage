@@ -17,6 +17,7 @@
 #include "file.h"
 #include "fslike/native.h"
 
+// pxd: from libopenage.util.fslike.fslike cimport FSLike
 
 namespace openage {
 namespace util {
@@ -27,15 +28,20 @@ class FSLike;
 
 
 /**
- * Analogous to util.fslike.path.Path.
- * For use as constructor argument by RFile and WFile.
+ * C++ pendant to the python util.fslike.path.Path
+ *
+ * Contains a filesystem-like object and path-parts.
  *
  * pxd:
- *
  * cppclass Path:
+ *     ctypedef string part_t
+ *     ctypedef vector[string] parts_t
+ *
  *     Path() noexcept
  *     Path(PyObj, const vector[string]&) except +
  *
+ *     FSLike *get_fsobj() except +
+ *     const vector[string] &get_parts() except +
  */
 class Path {
 public:
@@ -152,6 +158,7 @@ public:
 	bool operator !=(const Path &other) const;
 
 	fslike::FSLike *get_fsobj() const;
+	const parts_t &get_parts() const;
 
 protected:
 	std::shared_ptr<fslike::FSLike> fsobj;

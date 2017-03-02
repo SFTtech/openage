@@ -14,9 +14,10 @@
 
 // pxd: from libopenage.pyinterface.functional cimport PyIfFunc1, PyIfFunc2, PyIfFunc3
 #include "../../pyinterface/functional.h"
-// pxd: from libopenage.pyinterface.pyobject cimport PyObjectPtr, PyObjectRef
+// pxd: from libopenage.pyinterface.pyobject cimport PyObj, PyObjectPtr, PyObjectRef
 #include "../../pyinterface/pyobject.h"
 
+// pxd: from libopenage.util.fslike.fslike cimport FSLike
 #include "fslike.h"
 // pxd: from libopenage.util.path cimport Path
 #include "../path.h"
@@ -32,6 +33,10 @@ namespace fslike {
 /**
  * Filesystem-like object that wraps a filesystem-like object from Python.
  * Calls are relayed via Cython, which performs the data conversion.
+ *
+ * pxd:
+ * cppclass Python(FSLike):
+ *     PyObj &get_py_fsobj() except +
  */
 class Python : public FSLike {
 public:
@@ -55,6 +60,9 @@ public:
 
 	int get_mtime(const Path::parts_t &parts) override;
 	uint64_t get_filesize(const Path::parts_t &parts) override;
+
+	bool is_python_native() const noexcept override;
+	py::Obj &get_py_fsobj() const;
 
 	std::ostream &repr(std::ostream &) override;
 

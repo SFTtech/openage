@@ -2,7 +2,10 @@
 
 #pragma once
 
+// pxd: from libcpp cimport bool
+
 #include <iostream>
+// pxd: from libcpp.string cimport string
 #include <string>
 
 
@@ -13,6 +16,26 @@ namespace filelike {
 /**
  * File-like class that has the standard operations like
  * read, seek, write etc.
+ *
+ * pxd:
+ * ctypedef enum seek_t "openage::util::filelike::FileLike::seek_t":
+ *     seek_t_SET "openage::util::filelike::FileLike::seek_t::SET" = 0
+ *     seek_t_CUR "openage::util::filelike::FileLike::seek_t::CUR" = 1
+ *     seek_t_END "openage::util::filelike::FileLike::seek_t::END" = 2
+ *
+ * cppclass FileLike:
+ *     string read(ssize_t max) except +
+ *     bool readable() except +
+ *     void write(const string &data) except +
+ *     bool writable() except +
+ *     void seek(ssize_t offset, seek_t how) except +
+ *     bool seekable() except +
+ *     size_t tell() except +
+ *     void close() except +
+ *     void flush() except +
+ *     ssize_t get_size() except +
+ *
+ *     bool is_python_native() noexcept
  */
 class FileLike {
 public:
@@ -57,6 +80,8 @@ public:
 	virtual void close() = 0;
 	virtual void flush() = 0;
 	virtual ssize_t get_size() = 0;
+
+	virtual bool is_python_native() const noexcept;
 
 	/** string representation of the filelike */
 	virtual std::ostream &repr(std::ostream &) = 0;
