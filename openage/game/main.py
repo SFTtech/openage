@@ -4,7 +4,7 @@
 Holds the game entry point for openage.
 """
 
-from ..log import err
+from ..log import err, info
 
 
 def init_subparser(cli):
@@ -30,6 +30,7 @@ def main(args, error):
     # we have to import stuff inside the function
     # as it depends on generated/compiled code
     from .main_cpp import run_game
+    from .. import config
     from ..assets import get_asset_path
     from ..convert.main import conversion_required, convert_assets
     from ..cppinterface.setup import setup as cpp_interface_setup
@@ -38,6 +39,12 @@ def main(args, error):
 
     # initialize libopenage
     cpp_interface_setup()
+
+    info("launching openage {}".format(config.VERSION))
+    info("compiled by {}".format(config.COMPILER))
+
+    if config.DEVMODE:
+        info("running in DEVMODE")
 
     # create virtual file system for data paths
     root = Union().root
