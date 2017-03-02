@@ -90,10 +90,12 @@ Disclaimer: Use your distribution package of `openage` instead!
 Your distro package maintainers do all the nasty work for you,
 and will provide you with updates!
 
- - Set build mode: `./configure --mode=release --compiler=clang --prefix=/usr`
+ - Set build mode: `./configure --mode=release --compiler=clang --prefix=/usr/local`
  - `make`
- - `make install` install the game to `/usr`
- - `python3 -m openage` launch!
+ - `make install` install the game to `/usr/local`
+   - beware, this will add *untracked* files to your drive
+   - please use your distribution package instead!
+ - launch `openage`, it's in `/usr/local/bin/openage`
 
 
 ### For packagers
@@ -110,6 +112,7 @@ and will provide you with updates!
 - I wanna see compiler invocations
   - `make VERBOSE=1`
 - My `SDL2_Image`/`PythonInterp`/whatever is installed somewhere, but `cmake` can't find it!
+  - Run `ccmake` or `cmake-gui` in the build directory to see and change config variables.
   - You can manually tell `cmake` where to look. Try something along the lines of
     `./configure --raw-cmake-args -DSDL2IMAGE_INCLUDE_DIRS=/whereever/sdl2_image/include/`
 
