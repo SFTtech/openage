@@ -52,7 +52,6 @@ class SLPConverterPool:
         self.processes = []
 
         for _ in range(jobs):
-            # TODO fix pending pylint 1.5: pylint: disable=no-member
             inqueue = multiprocessing.Queue()
             outqueue = multiprocessing.Queue()
 

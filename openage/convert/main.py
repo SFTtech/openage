@@ -17,7 +17,7 @@ from ..log import warn, info, dbg
 from ..util.files import which
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
-from ..util.fslike.directory import CaseIgnoringDirectory
+from ..util.fslike.directory import CaseIgnoringDirectory, Directory
 from ..util.strings import format_progress
 
 STANDARD_PATH_IN_32BIT_WINEPREFIX =\
@@ -448,16 +448,54 @@ def interactive_viewer(srcdir=None):
 
     info("launching interactive data browser...")
 
-    data, _ = mount_input(srcdir)
+    # the variable is actually used, in the interactive prompt.
+    # pylint: disable=unused-variable
+    data, game_versions = mount_input(srcdir)
 
-    info("use `pprint` for beautiful output!")
-    info("you can access stuff by the `data` variable!")
-    info()
-    info("e.g. start listing content with `pprint(list(data.list()))`")
+    def save(path, target):
+        """
+        save a path to a custom target
+        """
+        with path.open("rb") as infile:
+            with open(target, "rb") as outfile:
+                outfile.write(infile.read())
+
+    def save_slp(path, target, palette=None):
+        """
+        save a slp as png.
+        """
+        from .texture import Texture
+        from .slp import SLP
+        from .driver import get_palette
+
+        if not palette:
+            palette = get_palette(data, game_versions)
+
+        with path.open("rb") as slpfile:
+            tex = Texture(SLP(slpfile.read()), palette)
+
+            out_path, filename = os.path.split(target)
+            tex.save(Directory(out_path).root, filename)
 
     import code
     from pprint import pprint
-    code.interact(local=locals())
+
+    import rlcompleter
+
+    completer = rlcompleter.Completer(locals())
+    readline.parse_and_bind("tab: complete")
+    readline.parse_and_bind("set show-all-if-ambiguous on")
+    readline.set_completer(completer.complete)
+
+    code.interact(
+        banner=("\nuse `pprint` for beautiful output!\n"
+                "you can access stuff by the `data` variable!\n"
+                "`data` is an openage.util.fslike.path.Path!\n"
+                "* list contents:      `pprint(list(data['graphics'].list()))`\n"
+                "* dump data:          `save(data['file/path'], '/tmp/outputfile')`.\n"
+                "* save a slp as png:  `save_slp(data['dir/123.slp'], '/tmp/pic.png')`.\n"),
+        local=locals()
+    )
 
 
 def init_subparser(cli):

@@ -268,7 +268,7 @@ class Blendomatic(Exportable):
         """
 
         for idx, texture in enumerate(self.get_textures()):
-            name = "mode%02d" % idx
+            name = "mode%02d.png" % idx
             dbg("saving blending mode %02d texture -> %s" % (idx, name))
             texture.save(fslikeobj, path + '/' + name, save_format)
 

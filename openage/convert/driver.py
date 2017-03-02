@@ -123,6 +123,20 @@ def convert(args):
     info("asset conversion complete; asset version: " + str(ASSET_VERSION))
 
 
+def get_palette(srcdir, game_versions, offset=0):
+    """
+    Read and create the color palette
+    """
+
+    # `.bin` files are renamed `.bina` in HD version 4
+    if GameVersion.age2_hd_fe in game_versions:
+        palette_path = "interface/{}.bina".format(50500 + offset)
+    else:
+        palette_path = "interface/{}.bin".format(50500 + offset)
+
+    return ColorTable(srcdir[palette_path].open("rb").read())
+
+
 def convert_metadata(args):
     """ Converts the metadata part """
     if not args.flag("no_metadata"):
@@ -131,14 +145,8 @@ def convert_metadata(args):
 
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
+    palette = get_palette(args.srcdir, args.game_versions)
 
-    # `.bin` files are renamed `.bina` in HD version 4
-    if GameVersion.age2_hd_fe in args.game_versions:
-        palette_path = "interface/50500.bina"
-    else:
-        palette_path = "interface/50500.bin"
-
-    palette = ColorTable(args.srcdir[palette_path].open("rb").read())
     # store for use by convert_media
     args.palette = palette
 
@@ -290,7 +298,7 @@ def convert_mediafile(filepath, names_map, args):
         else:
             cutter = None
 
-        # do the CPU-intense part in a subprocess
+        # do the CPU-intense part a worker process
         texture = args.slp_converter.convert(indata, cutter)
 
         # the hotspots of terrain textures must be fixed
@@ -299,9 +307,10 @@ def convert_mediafile(filepath, names_map, args):
                 entry["cx"] = TILE_HALFSIZE["x"]
                 entry["cy"] = TILE_HALFSIZE["y"]
 
+        tex_filename = interface_rename(slp_rename(filename, names_map))
         # save atlas to targetdir
         texture.save(args.targetdir,
-                     interface_rename(slp_rename(filename, names_map)),
+                     tex_filename + ".png",
                      ("csv",))
 
     elif filename.endswith('.wav'):

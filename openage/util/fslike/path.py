@@ -35,11 +35,15 @@ class Path:
         if isinstance(parts, str):
             parts = parts.encode()
 
-        if isinstance(parts, bytes):
+        if isinstance(parts, (bytes, bytearray)):
             parts = parts.split(b'/')
 
         if parts is None:
             parts = []
+
+        if not isinstance(parts, (list, tuple)):
+            raise ValueError("path parts must be str, bytes, list or tuple, "
+                             "but not: %s" % type(parts))
 
         result = []
         for part in parts:

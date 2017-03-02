@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 """ Routines for texture generation etc """
 
@@ -144,7 +144,7 @@ class Texture(exportable.Exportable):
             raise ValueError("util.fslike Path expected as targetdir")
 
         # generate PNG file
-        with targetdir[filename + ".png"].open("wb") as imagefile:
+        with targetdir[filename].open("wb") as imagefile:
             self.image_data.get_pil_image().save(imagefile, 'png')
 
         if meta_formats:
