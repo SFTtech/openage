@@ -234,15 +234,11 @@ Engine::Engine(const util::Path &root_dir,
 Engine::~Engine() {
 	this->profiler.unregister_all();
 
-	log::log(MSG(info) << "freeing GUI...");
-
 	// deallocate the gui system
 	// this looses the opengl context in the qtsdl::GuiRenderer
 	// deallocation (of the QtOpenGLContext).
 	// so no gl* functions can be called any more.
 	this->gui.reset(nullptr);
-
-	log::log(MSG(info) << "GUI was reset");
 
 	SDL_GL_DeleteContext(this->glcontext);
 	SDL_DestroyWindow(this->window);

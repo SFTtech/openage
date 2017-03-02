@@ -61,6 +61,8 @@ int run_game(const main_arguments &args) {
 		engine.run();
 	}
 
+	log::log(INFO << "cya!");
+
 	return 0;
 }
 

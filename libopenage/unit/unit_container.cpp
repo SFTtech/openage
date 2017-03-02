@@ -52,9 +52,8 @@ UnitContainer::UnitContainer()
 	next_new_id{1} {}
 
 
-UnitContainer::~UnitContainer() {
-	log::log(MSG(warn) << "Cleanup container");
-}
+UnitContainer::~UnitContainer() {}
+
 
 void UnitContainer::reset() {
 	this->live_units.clear();

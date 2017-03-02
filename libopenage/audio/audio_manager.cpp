@@ -130,7 +130,8 @@ void AudioManager::load_resources(const std::vector<resource_def> &sound_files) 
 		auto key = std::make_tuple(sound_file.category, sound_file.id);
 
 		if (this->resources.find(key) != std::end(this->resources)) {
-			log::log(WARN << "overwriting loaded sound #" << sound_file.id);
+			// sound is already loaded
+			continue;
 		}
 
 		auto resource = Resource::create_resource(this, sound_file);
