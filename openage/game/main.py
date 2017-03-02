@@ -33,6 +33,7 @@ def main(args, error):
     from ..assets import get_asset_path
     from ..convert.main import conversion_required, convert_assets
     from ..cppinterface.setup import setup as cpp_interface_setup
+    from ..cvar.location import get_config_path
     from ..util.fslike.union import Union
 
     # initialize libopenage
@@ -44,7 +45,8 @@ def main(args, error):
     # mount the assets folder union at "assets/"
     root["assets"].mount(get_asset_path(args))
 
-    # TODO: mount configuration and cvar files
+    # mount the config folder at "cfg/"
+    root["cfg"].mount(get_config_path(args))
 
     # ensure that the assets have been converted
     if conversion_required(root["assets"], args):

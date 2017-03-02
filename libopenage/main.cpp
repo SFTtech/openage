@@ -34,8 +34,7 @@ int run_game(const main_arguments &args) {
 	Engine engine{args.root_path, args.fps_limit, args.gl_debug, "openage"};
 
 	// read and apply the configuration files
-	auto &cvar_manager = engine.get_cvar_manager();
-	cvar_manager.load_main_config();
+	engine.get_cvar_manager().load_all();
 
 	// initialize terminal colors
 	std::vector<gamedata::palette_color> termcolors = util::read_csv_file<gamedata::palette_color>(

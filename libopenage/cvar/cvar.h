@@ -1,4 +1,4 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,6 +11,9 @@
 
 // pxd: from libopenage.pyinterface.functional cimport PyIfFunc0, PyIfFunc2
 #include "../pyinterface/functional.h"
+// pxd: from libopenage.util.path cimport Path
+#include "../util/path.h"
+
 
 namespace openage {
 namespace cvar {
@@ -32,7 +35,6 @@ using set_func = std::function<void(std::string)>;
  * pxd:
  *
  * cppclass CVarManager:
- *
  *     string get(string name) except +
  *     void set(string name, string value) except +
  *     void load_config(string path) except +
@@ -40,6 +42,8 @@ using set_func = std::function<void(std::string)>;
 class CVarManager {
 
 public:
+	CVarManager(const util::Path &path);
+
 	/**
 	 * Creates a configuration entry
 	 * @returns if the entry name was successful.
@@ -60,20 +64,15 @@ public:
 	void set(const std::string &name, const std::string &value) const;
 
 	/**
-	 * Returns the path to the main config file.
-	 */
-	std::string find_main_config() const;
-
-	/**
 	 * Performs the loading of a configuration file
 	 * via the Python implementation.
 	 */
-	void load_config(const std::string &path);
+	void load_config(const util::Path &path);
 
 	/**
-	 * Perform the load of the main configuration file.
+	 * Perform the load of the default config files.
 	 */
-	void load_main_config();
+	void load_all();
 
 private:
 	/**
@@ -83,24 +82,24 @@ private:
 	 * That way the system is universal.
 	 */
 	std::unordered_map<std::string, std::pair<get_func, set_func>> store;
+
+	/**
+	 * Magic path that stores config files.
+	 * Auto-redirects to the default and write paths in the home folder.
+	 * It is set up in openage/cvar/location.py and openage/game/main.py
+	 */
+	util::Path path;
 };
-
-
-/**
- * Python function to locate the main openage configuration file.
- * Provides the file name.
- *
- * pxd: PyIfFunc0[string] find_main_config_file
- */
-extern pyinterface::PyIfFunc<std::string> find_main_config_file;
 
 
 /**
  * Python function to load a configuration file.
  * The config manager is passed into it.
  *
- * pxd: PyIfFunc2[void, string, CVarManager*] load_config_file
+ * pxd:
+ * ctypedef CVarManager * CVarManagerPtr
+ * PyIfFunc2[void, CVarManagerPtr, const Path&] pyx_load_config_file
  */
-extern pyinterface::PyIfFunc<void, std::string, CVarManager*> load_config_file;
+extern pyinterface::PyIfFunc<void, CVarManager *, const util::Path &> pyx_load_config_file;
 
 }} // openage::cvar

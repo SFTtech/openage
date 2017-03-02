@@ -98,6 +98,7 @@ doxygen_configure(libopenage/ openage/)
 
 # static content
 set(INSTALLED_GLOBAL_ASSET_DIR "${CMAKE_INSTALL_PREFIX}/share/openage")
+set(INSTALLED_GLOBAL_CONFIG_DIR "/etc/openage")
 add_subdirectory(assets/)
 add_subdirectory(dist/)
 
