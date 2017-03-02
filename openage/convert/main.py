@@ -11,7 +11,7 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 
 from . import changelog
-from .game_versions import GameVersion, get_game_versions
+from .game_versions import GameVersion, get_game_versions, Support
 
 from ..log import warn, info, dbg
 from ..util.files import which
@@ -99,11 +99,35 @@ def mount_input(srcdir=None):
     if not game_versions:
         warn("Game version(s) could not be detected in {}".format(srcdir))
 
-    if not any(version.openage_supported for version in game_versions):
+    # true if no supported version was found
+    no_support = False
+
+    break_vers = []
+    for ver in game_versions:
+        if ver.support == Support.breaks:
+            break_vers.append(ver)
+
+    # a breaking version is installed
+    if break_vers:
+        warn("You have installed incompatible game version(s):")
+        for ver in break_vers:
+            warn(" * \x1b[31;1m{}\x1b[m".format(ver))
+        no_support = True
+
+    # no supported version was found
+    if not any(version.support == Support.yes for version in game_versions):
         warn("No supported game version found:")
-        for version in game_versions:
+        for version in GameVersion:
             warn(" * {}".format(version))
-        warn("You need \x1b[34mAge of Empires 2: The Conquerors\x1b[m")
+        no_support = True
+
+    # inform about supported versions
+    if no_support:
+        warn("You need at least one of:")
+        for ver in GameVersion:
+            if ver.support == Support.yes:
+                warn(" * \x1b[34m{}\x1b[m".format(ver))
+
         return (False, set())
 
     info("Game version(s) detected:")
@@ -440,7 +464,7 @@ def conversion_required(asset_dir, args):
         return True
 
 
-def interactive_viewer(srcdir=None):
+def interactive_browser(srcdir=None):
     """
     launch an interactive view for browsing the original
     archives.
@@ -451,6 +475,10 @@ def interactive_viewer(srcdir=None):
     # the variable is actually used, in the interactive prompt.
     # pylint: disable=unused-variable
     data, game_versions = mount_input(srcdir)
+
+    if not data:
+        warn("cannot launch browser as no valid input assets were found.")
+        return
 
     def save(path, target):
         """
@@ -562,7 +590,7 @@ def main(args, error):
         srcdir = None
 
     if args.interactive:
-        interactive_viewer(srcdir)
+        interactive_browser(srcdir)
         return 0
 
     # conversion target
