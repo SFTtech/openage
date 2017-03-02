@@ -154,7 +154,8 @@ private:
 	template <typename T>
 	PyObjectRef call_collect(std::vector<PyObject *> &args, T arg) const {
 
-		args.push_back(to_pyobj<T>{}(arg).get_ref());
+		PyObjectRef py_arg = to_pyobj<T>{}(arg);
+		args.push_back(py_arg.get_ref());
 		return this->call(args);
 	}
 
@@ -167,7 +168,8 @@ private:
 	template <typename T, typename ...Args>
 	PyObjectRef call_collect(std::vector<PyObject *> &args, T arg, Args... moreargs) const {
 
-		args.push_back(to_pyobj<T>{}(arg).get_ref());
+		PyObjectRef py_arg = to_pyobj<T>{}(arg);
+		args.push_back(py_arg.get_ref());
 		return this->call_collect<Args...>(args, moreargs...);
 	}
 
