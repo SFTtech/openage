@@ -3,12 +3,14 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
+import QtGraphicalEffects 1.0
 
 import yay.sfttech.openage 1.0 as OA
 
 Item {
 	id: root
 
+	property var game
 	property var actionMode
 	property string playerName
 	property int civIndex
@@ -244,6 +246,17 @@ Item {
 
 			source: hudImageSource + "." + root.rightRectSubid
 			fillMode: Image.Stretch
+
+			DefaultMinimap {
+				anchors.fill: parent
+
+				anchors.topMargin: metricsUnit * 1.2
+				anchors.bottomMargin: metricsUnit * 1
+				anchors.leftMargin: metricsUnit * 1.9
+				anchors.rightMargin: metricsUnit * 2
+
+				game: gameObj
+			}
 		}
 	}
 
