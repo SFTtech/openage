@@ -75,7 +75,8 @@ enum class attr_type {
 	worker,
 	storage,
 	multitype,
-	garrison
+	garrison,
+	map_draw_level
 };
 
 /**
@@ -645,6 +646,26 @@ public:
 	 * The units that are garrisoned.
 	 */
 	std::vector<UnitReference> content;
+};
+
+template<> class Attribute<attr_type::map_draw_level>: public AttributeContainer {
+public:
+	Attribute(gamedata::minimap_modes map_draw_level, int8_t minimap_color)
+		:
+		AttributeContainer{attr_type::map_draw_level},
+		map_draw_level{map_draw_level},
+		minimap_color{minimap_color} {}
+
+	bool shared() const override {
+		return true;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::map_draw_level>>(*this);
+	}
+
+	gamedata::minimap_modes map_draw_level;
+	int8_t minimap_color;
 };
 
 } // namespace openage
