@@ -1,10 +1,9 @@
-# Copyright 2016-2016 the openage authors. See copying.md for legal info.
+# Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 """ Additional hardcoded information about user interface assets """
 
-import re
 
-INTERFACE_INGAME_HUD_BACKGROUNDS = [
+INGAME_HUD_BACKGROUNDS = [
     51141,
     51142,
     51143,
@@ -25,7 +24,9 @@ INTERFACE_INGAME_HUD_BACKGROUNDS = [
     51160,
 ]
 
-INTERFACE_ASSETS = {
+INGAME_HUD_BACKGROUNDS_SET = set(INGAME_HUD_BACKGROUNDS)
+
+ASSETS = {
     '50721': 'hudactions'
 }
 
@@ -46,31 +47,15 @@ KNOWN_SUBTEX_CORNER_COORDS = [
 ]
 
 
-def ingame_hud_background_index(filename):
+def ingame_hud_background_index(idx):
     """
     Index in the hardcoded list of the known ingame hud backgrounds to match the civ.
     """
-    basename = re.sub(r"^interface/(\d+)\.slp$", r'\1', filename)
-    return INTERFACE_INGAME_HUD_BACKGROUNDS.index(int(basename))
+    return INGAME_HUD_BACKGROUNDS.index(int(idx))
 
 
-def is_ingame_hud_background(filename):
+def is_ingame_hud_background(idx):
     """
     True if in the hardcoded list of the known ingame hud backgrounds.
     """
-    try:
-        ingame_hud_background_index(filename)
-        return True
-    except ValueError:
-        return False
-
-
-def interface_asset_rename(filename):
-    """
-    Returns a human-readable name if it's in the map.
-    """
-    try:
-        dirname_basename = re.match(r"^(.*/)(\d+)\.slp$", filename).group(1, 2)
-        return dirname_basename[0] + INTERFACE_ASSETS[dirname_basename[1]] + ".slp"
-    except (KeyError, AttributeError):
-        return filename
+    return int(idx) in INGAME_HUD_BACKGROUNDS_SET

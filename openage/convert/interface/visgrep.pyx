@@ -232,8 +232,7 @@ def visgrep_cli(geom_params, metric_params, img_params):
     results = []
     find_next = False
 
-    img = img_params.img.crop((0,
-                               0,
+    img = img_params.img.crop((0, 0,
                                geom_params.src.width or img_params.img.size[0],
                                geom_params.src.height or img_params.img.size[1]))
 

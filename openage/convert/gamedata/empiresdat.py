@@ -252,8 +252,12 @@ def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False)
                     gamespec = pickle.load(cachefile)
                     info("using cached gamespec: " + cachefile_name)
                     return gamespec
-                except Exception as exc:
-                    warn("could not use cached gamespec:\n" + str(exc))
+                except Exception:
+                    warn("could not use cached gamespec:")
+                    import traceback
+                    traceback.print_exc()
+                    warn("we will just skip the cache, no worries.")
+
         except FileNotFoundError:
             pass
 
