@@ -574,6 +574,10 @@ def init_subparser(cli):
         "--interactive", "-i", action='store_true',
         help="browse the files interactively")
 
+    cli.add_argument(
+        "--id", type=int, default=None,
+        help="only convert files with this id (used for debugging..)")
+
 
 def main(args, error):
     """ CLI entry point """

@@ -1,11 +1,21 @@
 # Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
-""" Python version of the visgrep utility """
+# If you wanna boost speed even further:
+# cython: profile=False
+
+
+""" Cython version of the visgrep utility """
 
 import argparse
+cimport cython
+import itertools
 import logging
+import numpy
+cimport numpy
+
 from collections import namedtuple
 from PIL import Image
+
 
 TOOL_DESCRIPTION = """Python translation of the visgrep v1.09
 visual grep, greps for images in another image
@@ -42,94 +52,155 @@ Exit status is 0 for successful match, 1 for no match, and 2 for error.
 
 See the examples page for use cases for different flags"""
 
-# pylint: disable=no-member
+
+ctypedef numpy.uint8_t pixel_t
+
+cdef struct pixel:
+    pixel_t r
+    pixel_t g
+    pixel_t b
+    pixel_t a
+
+
 Point = namedtuple('Point', ['x', 'y'])
 Size = namedtuple('Size', ['width', 'height'])
-Pixel = namedtuple('Pixel', ['r', 'g', 'b', 'a'])
 FoundResult = namedtuple('FoundResult', ['badness', 'point'])
 
+GeomParams = namedtuple('GeomParams', ['off', 'src', 'sub', 'start', 'pattern_off', 'pattern'])
+GeomParams.__new__.__defaults__ = (Point(0, 0),
+                                   Size(None, None),
+                                   Size(1, 1),
+                                   Point(0, 0),
+                                   None,
+                                   None)
 
-def img_pixel_get(img, point):
+MetricParams = namedtuple('MetricParams', ['tolerance'])
+ImgParams = namedtuple('ImgParams', ['img', 'detect', 'match', 'scan_all'])
+
+
+cdef numpy.ndarray img_to_array(img):
+    """
+    Convert a PIL image to a numpy array.
+    """
+
+    if not isinstance(img, Image.Image):
+        raise ValueError("PIL image required, not '%s'" % type(img))
+
+    return numpy.array(img)
+
+
+cpdef numpy.ndarray crop_array(array, corners):
+    """
+    crop a numpy array by the absolute corner coordinates:
+
+    (x0, y0, x1, y1) = (left, upper, right, lower)
+
+    Those corners are all INCLUSIVE.
+
+    Array must have shape (h, w, 4), i.e. an RGBA image.
+    """
+
+    x0, y0, x1, y1 = corners
+    return array[y0:y1, x0:x1]
+
+
+@cython.boundscheck(False)
+@cython.wraparound(False)
+cdef inline pixel img_pixel_get(numpy.ndarray[pixel_t, ndim=3] img,
+                                Py_ssize_t x, Py_ssize_t y):
     """
     Get pixel color or zero if outside bounds.
+    Totally speed boosted.
     """
-    if point.x < img.size[0] and point.y < img.size[1]:
-        return Pixel(*img.getpixel(point))
 
-    return Pixel(0, 0, 0, 0)
+    if x < img.shape[1] and y < img.shape[0]:
+        return pixel(img[y, x, 0],
+                     img[y, x, 1],
+                     img[y, x, 2],
+                     img[y, x, 3])
+
+    return pixel(0, 0, 0, 0)
 
 
-def img_subimage_find(master, find, start_from, tolerance, find_next):
+@cython.boundscheck(False)
+@cython.wraparound(False)
+cdef img_subimage_find(numpy.ndarray[pixel_t, ndim=3] master,
+                       numpy.ndarray[pixel_t, ndim=3] find,
+                       start_from, float tolerance, find_next):
     """
-    Fuzzily find a part of an image that matches the patern.
+    Fuzzily find a part of an image that matches the pattern.
     """
-    x_end = master.size[0] - find.size[0]
-    y_end = master.size[1] - find.size[1]
+
+    cdef Py_ssize_t x_end = master.shape[1] - find.shape[1]
+    cdef Py_ssize_t y_end = master.shape[0] - find.shape[0]
 
     if find_next:
         start_from = Point(start_from.x + 1, start_from.y)
 
-    logging.debug("Starting from %d", start_from)
-    logging.debug("End %d,%d", x_end, y_end)
-
+    cdef Py_ssize_t ymax = start_from.y
+    cdef Py_ssize_t xmax = start_from.x
+    cdef Py_ssize_t y_it
+    cdef Py_ssize_t x_it
+    cdef float badness
     # Loop the whole freakin image looking for this sub image, but not past edges
-    for y_it in range(start_from.y, y_end + 1):
-        logging.debug("Begin subimg find loop for y %d of %d", y_it, y_end)
-        for x_it in range(start_from.x, x_end + 1):
-            point = Point(x_it, y_it)
-            logging.debug("Begin subimg find loop for x: %d,%d", point.x, point.y)
-            badness = img_subimage_cmp(master, find, point, tolerance)
+    for y_it in range(ymax, y_end + 1):
+        for x_it in range(xmax, x_end + 1):
+            badness = img_subimage_cmp(master, find, x_it, y_it, tolerance)
             if badness <= tolerance:
-                logging.debug("Found subimage at %d,%d", point.x, point.y)
-                return FoundResult(badness, point)
+                return FoundResult(badness, Point(x_it, y_it))
 
     # No match
     return FoundResult(-1, Point(-1, -1))
 
 
-def img_pixel_cmp(pix, other_pix):
+#@cython.profile(False)
+cdef inline float img_pixel_cmp(const pixel &pix, const pixel &other_pix):
     """
     o is the compare from pixel, assumed to be from a pattern. It's transparency
     is the transparency used to modify the tolerance value
       return( memcmp( &p, &o, sizeof( PIXEL ) ) );
     make tolerance mean something
     """
-    difference = abs(pix.r - other_pix.r) + abs(pix.g - other_pix.g) + abs(pix.b - other_pix.b)
-    transparentness = other_pix.a
-    difference = difference * (transparentness / 255)
-    logging.debug("Difference: %d", difference)
-    return difference
+    cdef int difference = abs(pix.r - other_pix.r) + abs(pix.g - other_pix.g) + abs(pix.b - other_pix.b)
+    cdef int transparentness = other_pix.a
+    return difference * (transparentness / 255)
 
 
-def img_subimage_cmp(master, subimage, where, tolerance):
+@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.nonecheck(False)
+cdef float img_subimage_cmp(numpy.ndarray[pixel_t, ndim=3] master,
+                            numpy.ndarray[pixel_t, ndim=3] subimage,
+                            Py_ssize_t where_x,
+                            Py_ssize_t where_y,
+                            float tolerance):
     """
     Returns 0 if subimage is inside master at where, like *cmp usually does for other stuff
     otherwise returns an integer of how different the match is, for each color component
     value off.  tolerance is how high to go before bailing.  set lower to avoid processing
     lots of extra pixels, it will just ret when tolerance is met
     """
-    mpt = Point(0, 0)
 
-    logging.debug("Comparing subimage where=%d,%d", where.x, where.y)
+    logging.debug("Comparing subimage where=%d,%d", where_x, where_y)
 
     # Check if subimage even fits in masterimage at POINT
-    if ((where.x + subimage.size[0]) > master.size[0] or
-            (where.y + subimage.size[1]) > master.size[1]):
+    if ((where_x + subimage.shape[1]) > master.shape[1] or
+        (where_y + subimage.shape[0]) > master.shape[0]):
         # Superbad
         logging.debug("Subimage would not fit here")
         return 1000
 
-    badness = 0
-    for sptx in range(subimage.size[0]):
-        for spty in range(subimage.size[1]):
-            # Map U/V to X/Y
-            mpt = Point(sptx + where.x, spty + where.y)
+    cdef float badness = 0
 
-            logging.debug("Pixel cmp @ main: %d,%d, subimage: %d,%d", mpt.x, mpt.y, sptx, spty)
+    cdef Py_ssize_t sptx
+    cdef Py_ssize_t spty
 
+    for sptx in range(subimage.shape[1]):
+        for spty in range(subimage.shape[0]):
+            # Map U/V to X/Y.
             # Grab pels and see if they match
-            mpx = img_pixel_get(master, mpt)
-            spx = img_pixel_get(subimage, Point(sptx, spty))
+            mpx = img_pixel_get(master, sptx + where_x, spty + where_y)
+            spx = img_pixel_get(subimage, sptx, spty)
 
             badness += abs(img_pixel_cmp(mpx, spx))
 
@@ -143,7 +214,7 @@ def img_subimage_cmp(master, subimage, where, tolerance):
     return badness
 
 
-def do_output(show_badness, badness, point, idx):
+cdef do_output(show_badness, badness, point, idx):
     """
     Print match coordinates and score.
     """
@@ -153,22 +224,22 @@ def do_output(show_badness, badness, point, idx):
         print("%d,%d %d" % (point.x, point.y, idx))
 
 
-def advance_point(point, img, start_x):
+cdef advance_point(point, img, start_x):
     """
     Move across the image.
     """
-    next_point = Point(point.x + 1, point.y)
+    next_point = point(point.x + 1, point.y)
 
-    if next_point.x > img.size[0]:
-        next_point = Point(start_x, next_point.y + 1)
-        if next_point.y > img.size[1]:
+    if next_point.x > img.shape[1]:
+        next_point = point(start_x, next_point.y + 1)
+        if next_point.y > img.shape[0]:
             # done, bail
-            next_point = Point(-1, -1)
+            next_point = point(-1, -1)
 
     return next_point
 
 
-def img_match_any(img, patterns, off, tolerance, pt_match):
+cdef img_match_any(img, patterns, off, tolerance, pt_match):
     """
     Move across the image.
     """
@@ -179,11 +250,12 @@ def img_match_any(img, patterns, off, tolerance, pt_match):
 
     for cnt, pattern in enumerate(patterns):
         if gotmatch is None:
-            logging.info(" Testing for %d  ", cnt)
+            logging.info(" Testing for pattern %d", cnt)
             logging.info(" %d,%d ", tmp_pt_x, tmp_pt_y)
             badness = img_subimage_cmp(img,
                                        pattern,
-                                       Point(tmp_pt_x, tmp_pt_y),
+                                       tmp_pt_x,
+                                       tmp_pt_y,
                                        tolerance)
 
             if badness <= tolerance:
@@ -199,42 +271,43 @@ def img_match_any(img, patterns, off, tolerance, pt_match):
     return gotmatch
 
 
-GeomParams = namedtuple('GeomParams', ['off', 'src', 'sub', 'start', 'pattern_off', 'pattern'])
-GeomParams.__new__.__defaults__ = (Point(0, 0),
-                                   Size(None, None),
-                                   Size(1, 1),
-                                   Point(0, 0),
-                                   None,
-                                   None)
-
-MetricParams = namedtuple('MetricParams', ['tolerance'])
-ImgParams = namedtuple('ImgParams', ['img', 'detect', 'match', 'scan_all'])
-
-
-def visgrep(image, pattern, tolerance, height=None):
+cpdef visgrep(image, pattern, tolerance, height=None):
     """
     Return points where pattern is found in the image.
+
+    image and pattern are numpy arrays of RGBA images.
     """
+
+    if not (isinstance(image, numpy.ndarray) and
+            isinstance(pattern, numpy.ndarray)):
+        raise ValueError("image and pattern must be a numpy array")
+
     geom_params = GeomParams(src=Size(None, height))
     metric_params = MetricParams(tolerance)
 
-    pattern_rgba = pattern.convert('RGBA')
-    img_params = ImgParams(image.convert('RGBA'), pattern_rgba, [pattern_rgba], False)
+    img_params = ImgParams(image, pattern, [pattern], False)
 
-    return [r[0] for r in visgrep_cli(geom_params, metric_params, img_params)]
+    ret = list()
+    for find in visgrep_cli(geom_params, metric_params, img_params):
+        ret.append(find[0])
+
+    return ret
 
 
-def visgrep_cli(geom_params, metric_params, img_params):
+cdef visgrep_cli(geom_params, metric_params, img_params):
     """
-    Perform search.
+    Perform search, return list of results.
     """
+
     pt_match = FoundResult(0, Point(0, 0))
     results = []
     find_next = False
 
-    img = img_params.img.crop((0, 0,
-                               geom_params.src.width or img_params.img.size[0],
-                               geom_params.src.height or img_params.img.size[1]))
+    # we'll search in this image.
+    img = crop_array(img_params.img,
+                     (0, 0,
+                      geom_params.src.width or img_params.img.shape[1],
+                      geom_params.src.height or img_params.img.shape[0]))
 
     if geom_params.pattern_off is not None:
         patterns_crop = (geom_params.pattern_off.x,
@@ -242,8 +315,10 @@ def visgrep_cli(geom_params, metric_params, img_params):
                          geom_params.pattern.width + geom_params.pattern_off.x,
                          geom_params.pattern.height + geom_params.pattern_off.y)
 
-        find = img_params.detect.crop(patterns_crop)
-        matches = [im.crop(patterns_crop) for im in img_params.match]
+        find = crop_array(img_params.detect, patterns_crop)
+
+        matches = [crop_array(match, patterns_crop)
+                   for match in img_params.match]
     else:
         find = img_params.detect
         matches = img_params.match
@@ -255,13 +330,12 @@ def visgrep_cli(geom_params, metric_params, img_params):
         if img_params.scan_all:
             # fake match here
             if find_next:
+                next_point = advance_point(pt_match.point, img, geom_params.start.x)
+
                 # increment counters
-                pt_match = FoundResult(pt_match.badness,
-                                       advance_point(pt_match.point, img, geom_params.start.x))
+                pt_match = FoundResult(pt_match.badness, next_point)
         else:
-            pt_match = img_subimage_find(img,
-                                         find,
-                                         pt_match.point,
+            pt_match = img_subimage_find(img, find, pt_match.point,
                                          metric_params.tolerance,
                                          find_next)
 
@@ -271,14 +345,14 @@ def visgrep_cli(geom_params, metric_params, img_params):
         if pt_match.point.x != -1:
             logging.info("  Found match at %d,%d", pt_match.point.x, pt_match.point.y)
 
-            if len(img_params.match) == 1 and img_params.match[0] == img_params.detect:
-                # Detection pettern is the single match pattern
+            if len(img_params.match) == 1 and\
+               numpy.array_equal(img_params.match[0], img_params.detect):
+                # Detection pattern is the single match pattern
                 results.append((pt_match, 0))
                 continue
 
             # Try and identify what thing it is
             gotmatch = None
-            import itertools
             for tmp_off_x, tmp_off_y in itertools.product(range(geom_params.sub.width),
                                                           range(geom_params.sub.height)):
                 gotmatch = img_match_any(img,
@@ -359,19 +433,18 @@ def main():
     if any(pattern_crop_params) and not all(pattern_crop_params):
         parser.error('-u, -v, -M, -N must be given together')
 
+    image = img_to_array(Image.open(args.image).convert('RGBA'))
+    find = img_to_array(Image.open(args.detect).convert('RGBA'))
+    match = [img_to_array(Image.open(fname).convert('RGBA'))
+             for fname in args.match]
+
     geom_params = GeomParams(Point(args.off_x, args.off_y),
                              Size(args.src_width, args.src_height),
                              Size(args.sub_width, args.sub_height),
                              Point(args.start_x, args.start_y),
                              Point(args.off_u, args.off_v),
                              Size(args.pattern_width, args.pattern_height))
-
     metric_params = MetricParams(args.tolerance)
-
-    image = Image.open(args.image).convert('RGBA')
-    find = Image.open(args.detect).convert('RGBA')
-    match = [Image.open(fname).convert('RGBA') for fname in args.match]
-
     img_params = ImgParams(image, find, match, args.scan_all)
 
     results = visgrep_cli(geom_params, metric_params, img_params)

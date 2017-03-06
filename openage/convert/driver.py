@@ -267,6 +267,11 @@ def convert_media(args):
                         skip_file = True
                         break
 
+            # skip unwanted ids ("just debugging things(tm)")
+            if getattr(args, "id", None) and\
+               int(filepath.stem) != args.id:
+                skip_file = True
+
             if skip_file or filepath.is_dir():
                 continue
 

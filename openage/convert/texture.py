@@ -5,6 +5,10 @@
 # TODO pylint: disable=C,R
 
 import os
+import numpy
+
+from PIL import Image
+
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .blendomatic import BlendingMode
 from .dataformat import (exportable, data_definition,
@@ -43,17 +47,15 @@ class TextureImage:
 
     def __init__(self, picture_data, hotspot=None):
 
-        from PIL import Image
-        import numpy
         if isinstance(picture_data, Image.Image):
-            picture_data = numpy.array(
-                picture_data.getdata(),
-                numpy.uint8
-            ).reshape(
-                picture_data.size[1],
-                picture_data.size[0],
-                4
-            )
+            if picture_data.mode != 'RGBA':
+                picture_data = picture_data.convert('RGBA')
+
+            picture_data = numpy.array(picture_data)
+
+        if not isinstance(picture_data, numpy.ndarray):
+            raise ValueError("Texture image must be created from PIL Image "
+                             "or numpy array, not '%s'" % type(picture_data))
 
         self.width = picture_data.shape[1]
         self.height = picture_data.shape[0]
@@ -69,8 +71,10 @@ class TextureImage:
         self.data = picture_data
 
     def get_pil_image(self):
-        from PIL import Image
         return Image.fromarray(self.data)
+
+    def get_data(self):
+        return self.data
 
 
 class Texture(exportable.Exportable):
@@ -196,8 +200,6 @@ def merge_frames(frames):
 
     returns = TextureImage, (width, height), [drawn_frames_meta]
     """
-
-    import numpy
 
     if len(frames) == 0:
         raise Exception("cannot create texture with empty input frame list")
