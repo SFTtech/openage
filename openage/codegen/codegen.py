@@ -214,8 +214,13 @@ def get_codegen_depends(outputwrapper):
             continue
 
         if not filename.endswith('.py'):
-            print("codegeneration depends on non-.py module " + filename)
-            exit(1)
+            # This usually means that some .so file is imported as module.
+            # This is not a problem as long as it's not "our" .so file.
+            # => just handle non-openage non-.py files normally
+
+            if 'openage' in module.__name__:
+                print("codegeneration depends on non-.py module " + filename)
+                exit(1)
 
         yield filename
 
