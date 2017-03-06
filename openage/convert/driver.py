@@ -259,13 +259,10 @@ def convert_media(args):
 
             # check if the path should be ignored
             for folders, ext in ignored:
-                if ext == filepath.suffix:
-                    if not folders:
-                        skip_file = True
-                        break
-                    elif dirname in folders:
-                        skip_file = True
-                        break
+                if ext == filepath.suffix and\
+                   (not folders or dirname in folders):
+                    skip_file = True
+                    break
 
             # skip unwanted ids ("just debugging things(tm)")
             if getattr(args, "id", None) and\
@@ -314,6 +311,88 @@ def convert_media(args):
         )
 
 
+def change_dir(path_parts, dirname):
+    """
+    If requested, rename the containing directory
+    This assumes the path ends with dirname/filename.ext,
+    so that dirname can be replaced.
+    This is used for placing e.g. interface/lol.wav in sounds/lol.wav
+    """
+
+    # this assumes the directory name is the second last part
+    # if we decide for other directory hierarchies,
+    # this assumption will be wrong!
+    if dirname:
+        new_parts = list(path_parts)
+        new_parts[-2] = dirname.encode()
+        return new_parts
+
+    return path_parts
+
+
+def convert_slp(filepath, dirname, names_map, converter_pool, args):
+    """
+    Convert a slp image and save it to the target dir.
+    This also writes the accompanying metadata file.
+    """
+
+    with filepath.open_r() as infile:
+        indata = infile.read()
+
+    # some user interface textures must be cut using hardcoded values
+    if filepath.parent.name == 'interface':
+        # the stem is the file id
+        cutter = InterfaceCutter(int(filepath.stem))
+    else:
+        cutter = None
+
+    # do the CPU-intense part a worker process
+    texture = converter_pool.convert(indata, cutter)
+
+    # the hotspots of terrain textures must be fixed
+    if filepath.parent.name == 'terrain':
+        for entry in texture.image_metadata:
+            entry["cx"] = TILE_HALFSIZE["x"]
+            entry["cy"] = TILE_HALFSIZE["y"]
+
+    # replace .slp by .png and rename the file
+    # by some lookups (that map id -> human readable)
+    tex_filepath = hud_rename(slp_rename(
+        filepath,
+        names_map
+    )).with_suffix(".slp.png")
+
+    # pretty hacky: use the source path-parts as output filename,
+    # additionally change the output dir name if requested
+    out_filename = b'/'.join(change_dir(tex_filepath.parts, dirname)).decode()
+
+    # save atlas to targetdir
+    texture.save(args.targetdir, out_filename, ("csv",))
+
+
+def convert_wav(filepath, dirname, args):
+    """
+    Convert a wav audio file to an opus file
+    """
+
+    with filepath.open_r() as infile:
+        indata = infile.read()
+
+    # TODO use libav or something to avoid this utility dependency
+    invocation = ('opusenc', '--quiet', '-', '-')
+    opusenc = Popen(invocation, stdin=PIPE, stdout=PIPE)
+    outdata = opusenc.communicate(input=indata)[0]
+    if opusenc.returncode != 0:
+        raise Exception("opusenc failed")
+
+    # rename the directory
+    out_parts = change_dir(filepath.parts, dirname)
+
+    # save the converted sound data
+    with args.targetdir[out_parts].with_suffix('.opus').open_w() as outfile:
+        outfile.write(outdata)
+
+
 def convert_mediafile(filepath, dirname, names_map, converter_pool, args):
     """
     Converts a single media file, according to the supplied arguments.
@@ -323,78 +402,19 @@ def convert_mediafile(filepath, dirname, names_map, converter_pool, args):
 
     Args shall contain srcdir, targetdir.
     """
+
     # progress message
     filename = b'/'.join(filepath.parts).decode()
     yield filename
 
-    def change_dir(path_parts):
-        """
-        Ff requested, rename the containing directory
-        This assumes the path ends with dirname/filename.ext,
-        so that dirname can be replaced.
-        This is used for placing e.g. interface/lol.wav in sounds/lol.wav
-        """
-
-        # this assumes the directory name is the second last part
-        # if we decide for other directory hierarchies,
-        # this assumption will be wrong!
-        if dirname:
-            new_parts = list(tex_filepath.parts)
-            new_parts[-2] = dirname.encode()
-            return new_parts
-
-        return path_parts
-
-    with filepath.open_r() as infile:
-        indata = infile.read()
-
     if filepath.suffix == '.slp':
-        # some user interface textures must be cut using hardcoded values
-        if filepath.parent.name == 'interface':
-            # the stem is the file id
-            cutter = InterfaceCutter(int(filepath.stem))
-        else:
-            cutter = None
+        convert_slp(filepath, dirname, names_map, converter_pool, args)
 
-        # do the CPU-intense part a worker process
-        texture = converter_pool.convert(indata, cutter)
-
-        # the hotspots of terrain textures must be fixed
-        if filepath.parent.name == 'terrain':
-            for entry in texture.image_metadata:
-                entry["cx"] = TILE_HALFSIZE["x"]
-                entry["cy"] = TILE_HALFSIZE["y"]
-
-        # replace .slp by .png and rename the file
-        # by some lookups (that map id -> human readable)
-        tex_filepath = hud_rename(slp_rename(
-            filepath.with_suffix(".png"),
-            names_map
-        ))
-
-        # pretty hacky: use the source path-parts as output filename
-        out_filename = b'/'.join(change_dir(tex_filepath.parts)).decode()
-
-        # save atlas to targetdir
-        texture.save(args.targetdir, out_filename, ("csv",))
-
-    elif filepath.suffix ==  '.wav':
-        # convert the WAV file to an opus file
-        # TODO use libav or something to avoid this utility dependency
-        invocation = ('opusenc', '--quiet', '-', '-')
-        opusenc = Popen(invocation, stdin=PIPE, stdout=PIPE)
-        outdata = opusenc.communicate(input=indata)[0]
-        if opusenc.returncode != 0:
-            raise Exception("opusenc failed")
-
-        # rename the directory
-        out_filename = change_dir(filepath.parts)
-
-        # save the converted sound data
-        with args.targetdir[out_filename].with_suffix('.opus').open_w() as outfile:
-            outfile.write(outdata)
+    elif filepath.suffix == '.wav':
+        convert_wav(filepath, dirname, args)
 
     else:
         # simply copy the file over.
-        with args.targetdir[filename].open_w() as outfile:
-            outfile.write(indata)
+        with filepath.open_r() as infile:
+            with args.targetdir[filename].open_w() as outfile:
+                outfile.write(infile.read())
