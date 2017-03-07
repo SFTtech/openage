@@ -144,7 +144,7 @@ class Texture(exportable.Exportable):
         #        cythonize parts of SLP.py
         subtex = TextureImage(
             frame.get_picture_data(palette, self.player_id),
-            hotspot=frame.info.hotspot
+            hotspot=frame.get_hotspot()
         )
 
         if custom_cutter:
