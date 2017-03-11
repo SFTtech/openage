@@ -199,10 +199,14 @@ void GameSpec::on_gamedata_loaded(const gamedata::empiresdat &gamedata) {
 		this->slp_to_graphic[graphic.slp_id] = graphic.id;
 	}
 
+	log::log(INFO << "Loading textures...");
+
 	// create complete set of unit textures
 	for (auto &g : this->graphics) {
 		this->unit_textures.insert({g.first, std::make_shared<UnitTexture>(*this, g.second)});
 	}
+
+	log::log(INFO << "Loading sounds...");
 
 	// playable sound files for the audio manager
 	std::vector<audio::resource_def> load_sound_files;
@@ -225,11 +229,6 @@ void GameSpec::on_gamedata_loaded(const gamedata::empiresdat &gamedata) {
 			util::Path snd_path = sound_dir[snd_filename];
 
 			if (not snd_path.is_file()) {
-				log::log(
-					WARN <<
-					"   No sound file found for resource_id "
-					<< item.resource_id
-					<< ", ignoring...");
 				continue;
 			}
 
