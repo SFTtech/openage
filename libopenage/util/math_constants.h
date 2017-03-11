@@ -16,6 +16,7 @@ constexpr double PI_4         = 0.785398163397448309616; //!< pi/4
 constexpr double INV_PI       = 0.318309886183790671538; //!< 1/pi
 constexpr double INV2_PI      = 0.636619772367581343076; //!< 2/pi
 constexpr double INV2_SQRT_PI = 1.12837916709551257390;  //!< 2/sqrt(pi)
+constexpr double TAU          = 6.28318530717958647693;  //!< 2*pi
 constexpr double SQRT_2       = 1.41421356237309504880;  //!< sqrt(2)
 constexpr double INV_SQRT_2   = 0.707106781186547524401; //!< 1/sqrt(2)
 
