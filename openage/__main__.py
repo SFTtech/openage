@@ -47,10 +47,13 @@ def main(argv=None):
     global_cli.add_argument("--quiet", "-q", action='count', default=0,
                             help="decrease verbosity")
 
-    # shared data-directory argument for most subcommands
-    datadir_cli = argparse.ArgumentParser(add_help=False)
-    datadir_cli.add_argument("--asset-dir",
-                             help="Use this as an additional asset directory.")
+    # shared directory arguments for most subcommands
+    cfg_cli = argparse.ArgumentParser(add_help=False)
+
+    cfg_cli.add_argument("--asset-dir",
+                         help="Use this as an additional asset directory.")
+    cfg_cli.add_argument("--cfg-dir",
+                         help="Use this as an additional config directory.")
 
     subparsers = cli.add_subparsers(dest="subcommand")
 
@@ -60,23 +63,23 @@ def main(argv=None):
     from .game.main import init_subparser
     game_cli = subparsers.add_parser(
         "game",
-        parents=[global_cli, datadir_cli])
+        parents=[global_cli, cfg_cli])
     init_subparser(game_cli)
 
     from .testing.main import init_subparser
     init_subparser(subparsers.add_parser(
         "test",
-        parents=[global_cli, datadir_cli]))
+        parents=[global_cli, cfg_cli]))
 
     from .convert.main import init_subparser
     init_subparser(subparsers.add_parser(
         "convert",
-        parents=[global_cli, datadir_cli]))
+        parents=[global_cli, cfg_cli]))
 
     from .convert.singlefile import init_subparser
     init_subparser(subparsers.add_parser(
         "convert-file",
-        parents=[global_cli, datadir_cli]))
+        parents=[global_cli, cfg_cli]))
 
     from .codegen.main import init_subparser
     init_subparser(subparsers.add_parser(

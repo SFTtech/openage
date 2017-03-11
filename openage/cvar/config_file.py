@@ -18,9 +18,14 @@ def load_config_file(path, set_cvar_func, loaded_files=None):
     if not loaded_files:
         loaded_files = set()
 
+    if not path.is_file():
+        info("config file %s not found." % path)
+        return
+
+    # file is already loaded?
     # the repr(path) is pretty hacky but does its job.
     # better solution would be to implement __hash__
-    if not path.is_file() or repr(path) in loaded_files:
+    if repr(path) in loaded_files:
         return
 
     info("loading config file %s..." % path)

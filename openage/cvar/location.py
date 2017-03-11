@@ -17,7 +17,6 @@ def get_config_path(args):
     """
     Locates the main configuration file by name in some searchpaths.
     """
-    del args  # unused
 
     # if we're in devmode, use only the build source config folder
     if config.DEVMODE:
@@ -42,5 +41,9 @@ def get_config_path(args):
             create_if_missing=True
         ).root
     )
+
+    # the optional command line argument overrides it all
+    if args.cfg_dir:
+        result.mount(Directory(args.cfg_dir).root)
 
     return result
