@@ -177,6 +177,8 @@ void DynamicResource::load_chunk_async(std::shared_ptr<chunk_info_t> chunk_info,
 	// the `chunk_info` will stay out of the `decay_queue`
 	// until it was loaded. So it's possible the queue runs dry.
 
+	ENSURE(this->loader, "tried to load chunk without audio loader!");
+
 	auto loading_function = [this,chunk_info,resource_chunk_offset]() -> int {
 		int16_t *buffer = chunk_info->buffer.get();
 		size_t loaded = this->loader->load_chunk(buffer, resource_chunk_offset, this->chunk_size);

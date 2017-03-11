@@ -14,10 +14,21 @@ namespace openage {
 namespace audio {
 
 /**
- * opus_file_t is a OggOpusFile pointer that is stored inside a unique_ptr and
- * uses a custom deleter.
+ * opusfile handle storage.
  */
-using opus_file_t = std::unique_ptr<OggOpusFile, std::function<void(OggOpusFile*)>>;
+struct opus_file_t {
+	/**
+	 * The opusfile handle, with a custom deleter that frees
+	 * the opusfile memory.
+	 */
+	std::unique_ptr<OggOpusFile, std::function<void(OggOpusFile*)>> handle;
+
+	/**
+	 * File used to supply the data.
+	 * This is unused if the file is a real file.
+	 */
+	std::unique_ptr<util::File> file;
+};
 
 
 /**

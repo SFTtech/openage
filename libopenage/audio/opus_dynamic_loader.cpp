@@ -17,9 +17,9 @@ OpusDynamicLoader::OpusDynamicLoader(const util::Path &path)
 	source{open_opus_file(path)} {
 
 	// read channels from the opus file
-	channels = op_channel_count(source.get(), -1);
+	channels = op_channel_count(this->source.handle.get(), -1);
 
-	int64_t pcm_length = op_pcm_total(source.get(), -1);
+	int64_t pcm_length = op_pcm_total(this->source.handle.get(), -1);
 	if (pcm_length < 0) {
 		throw audio::Error{
 			ERR << "Could not seek in "
@@ -45,7 +45,7 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer,
 	// by 2 is necessary
 	int64_t pcm_offset = static_cast<int64_t>(offset / 2);
 
-	int op_ret = op_pcm_seek(source.get(), pcm_offset);
+	int op_ret = op_pcm_seek(this->source.handle.get(), pcm_offset);
 	if (op_ret < 0) {
 		throw audio::Error{
 			ERR << "Could not seek in " << this->path << ": " << op_ret
@@ -62,8 +62,10 @@ size_t OpusDynamicLoader::load_chunk(int16_t *chunk_buffer,
 	// loop as long as there are samples left to read
 	while (read_count <= read_num_values) {
 		int samples_read = op_read(
-			source.get(), chunk_buffer + read_count,
-			read_num_values - read_count, nullptr
+			this->source.handle.get(),
+			chunk_buffer + read_count,
+			read_num_values - read_count,
+			nullptr
 		);
 
 		// an error occurred

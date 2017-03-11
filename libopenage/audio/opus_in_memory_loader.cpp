@@ -23,8 +23,8 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	// open the opus file
 	opus_file_t op_file = open_opus_file(this->path);
 
-	auto op_channels = op_channel_count(op_file.get(), -1);
-	auto pcm_length = op_pcm_total(op_file.get(), -1);
+	auto op_channels = op_channel_count(op_file.handle.get(), -1);
+	auto pcm_length = op_pcm_total(op_file.handle.get(), -1);
 	// the stream is not seekable
 	if (pcm_length < 0) {
 		throw audio::Error{ERR << "Opus file is not seekable"};
@@ -40,7 +40,7 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	int position = 0;
 	while (true) {
 		int samples_read = op_read(
-			op_file.get(),
+			op_file.handle.get(),
 			&buffer.front() + position,
 			length-position, nullptr
 		);

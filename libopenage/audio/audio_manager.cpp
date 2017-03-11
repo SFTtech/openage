@@ -164,7 +164,7 @@ void AudioManager::audio_callback(int16_t *stream, int length) {
 	std::memset(mix_buffer.get(), 0, length*4);
 
 	// iterate over all categories
-	for (auto &entry : playing_sounds) {
+	for (auto &entry : this->playing_sounds) {
 		auto &playing_list = entry.second;
 		// iterate over all sounds in one category
 		for (size_t i = 0; i < playing_list.size(); i++) {
@@ -195,7 +195,7 @@ void AudioManager::add_sound(std::shared_ptr<SoundImpl> sound) {
 	SDLDeviceLock lock{this->device_id};
 
 	auto category = sound->get_category();
-	auto &playing_list = playing_sounds.find(category)->second;
+	auto &playing_list = this->playing_sounds.find(category)->second;
 	// TODO probably check if sound already exists in playing list
 	playing_list.push_back(sound);
 }
@@ -204,7 +204,7 @@ void AudioManager::remove_sound(std::shared_ptr<SoundImpl> sound) {
 	SDLDeviceLock lock{this->device_id};
 
 	auto category = sound->get_category();
-	auto &playing_list = playing_sounds.find(category)->second;
+	auto &playing_list = this->playing_sounds.find(category)->second;
 
 	for (size_t i = 0; i < playing_list.size(); i++) {
 		if (playing_list[i] == sound) {
