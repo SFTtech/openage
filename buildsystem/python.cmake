@@ -272,7 +272,7 @@ function(add_py_modules)
 			endif()
 
 			if(NOT IN_BININSTALL)
-				# don't replaceme the install name if we're in the "AS $name"
+				# don't replace the install name if we're in the "AS $name"
 				# or no AS followed the BININSTALL
 
 				set_property(GLOBAL APPEND PROPERTY SFT_PY_FILES_INSTALLNAMES "__nope")
@@ -387,13 +387,13 @@ function(python_finalize)
 
 			if("${pyinstallname}" STREQUAL "__nope")
 				install(
-					FILES "${pyfile}"
+					PROGRAMS "${pyfile}"
 					DESTINATION "bin"
 				)
 			else()
 				# optionally, rename the file:
 				install(
-					FILES "${pyfile}"
+					PROGRAMS "${pyfile}"
 					RENAME "${pyinstallname}"
 					DESTINATION "bin"
 				)
