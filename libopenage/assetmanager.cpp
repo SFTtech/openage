@@ -37,21 +37,9 @@ const util::Path &AssetManager::get_asset_dir() {
 }
 
 
-void AssetManager::set_asset_dir(const util::Path& new_asset_path) {
-	// try to simplify the asset path
-	auto path_r = new_asset_path.resolve_r();
-	util::Path path_tmp;
-
-	if (path_r.first) {
-		path_tmp = path_r.second;
-	}
-	else {
-		// else, take the unsimplified one.
-		path_tmp = new_asset_path;
-	}
-
-	if (this->asset_path != path_tmp) {
-		this->asset_path = path_tmp;
+void AssetManager::set_asset_dir(const util::Path& new_path) {
+	if (this->asset_path != new_path) {
+		this->asset_path = new_path;
 		this->clear();
 	}
 }
