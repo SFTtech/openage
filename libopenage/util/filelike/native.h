@@ -23,6 +23,7 @@ public:
 	virtual ~Native();
 
 	std::string read(ssize_t max) override;
+	size_t read_to(void *buf, ssize_t max) override;
 
 	bool readable() override;
 

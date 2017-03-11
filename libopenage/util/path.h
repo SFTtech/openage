@@ -109,6 +109,10 @@ public:
 	 * (something like /your/folder/with/file)
 	 * for this path.
 	 * returns emptystring ("") if there is no native path.
+	 *
+	 * This does _not_ minimize/flatten (= "resolve") the path!
+	 *
+	 * You probably want to use `resolve_native_path` instead.
 	 */
 	std::string get_native_path() const;
 
@@ -117,6 +121,8 @@ public:
 	 * filesystem objects (like unions).
 	 * Returns the /native/path/on/disk.
 	 * Throws up if there is no native path.
+	 *
+	 * This basically is the same as resolve_*().get_native_path().
 	 */
 	std::string resolve_native_path(const std::string &mode="r") const;
 

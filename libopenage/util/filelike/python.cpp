@@ -19,6 +19,11 @@ std::string Python::read(ssize_t max) {
 }
 
 
+size_t Python::read_to(void *buf, ssize_t max) {
+	return pyx_file_read_to.call(this->fileobj->get_ref(), buf, max);
+}
+
+
 bool Python::readable() {
 	return pyx_file_readable.call(this->fileobj->get_ref());
 }
@@ -79,6 +84,7 @@ std::ostream &Python::repr(std::ostream &stream) {
 
 
 pyinterface::PyIfFunc<std::string, PyObject *, ssize_t> pyx_file_read;
+pyinterface::PyIfFunc<size_t, PyObject *, void *, ssize_t> pyx_file_read_to;
 pyinterface::PyIfFunc<bool, PyObject *> pyx_file_readable;
 pyinterface::PyIfFunc<void, PyObject *, const std::string &> pyx_file_write;
 pyinterface::PyIfFunc<bool, PyObject *> pyx_file_writable;

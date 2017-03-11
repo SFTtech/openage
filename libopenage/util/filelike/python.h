@@ -33,6 +33,7 @@ public:
 	Python(py::Obj fileobj);
 
 	std::string read(ssize_t max) override;
+	size_t read_to(void *buf, ssize_t max) override;
 
 	bool readable() override;
 
@@ -62,6 +63,9 @@ protected:
 
 // pxd: PyIfFunc2[string, PyObjectPtr, ssize_t] pyx_file_read
 extern pyinterface::PyIfFunc<std::string, PyObject *, ssize_t> pyx_file_read;
+
+// pxd: PyIfFunc3[size_t, PyObjectPtr, void *, ssize_t] pyx_file_read_to
+extern pyinterface::PyIfFunc<size_t, PyObject *, void *, ssize_t> pyx_file_read_to;
 
 // pxd: PyIfFunc1[bool, PyObjectPtr] pyx_file_readable
 extern pyinterface::PyIfFunc<bool, PyObject *> pyx_file_readable;

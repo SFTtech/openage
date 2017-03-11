@@ -25,7 +25,7 @@ def test_path(root_path, root_dir):
     assert_value(deeper.parent, root_path["let's go"])
     deeper.mkdirs()
     assert_value(deeper.is_dir(), True)
-    assert_value(deeper.get_native_path().decode(),
+    assert_value(deeper.resolve_native_path().decode(),
                  os.path.join(root_dir, "let's go", "deeper"))
 
     insert = deeper["insertion.stuff.test"]

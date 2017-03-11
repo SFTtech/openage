@@ -73,7 +73,21 @@ public:
 
 	virtual ~File() = default;
 
+	/**
+	 * Read data from the file and return a string.
+	 * If max is negative, return the full remaining file.
+	 */
 	std::string read(ssize_t max=-1);
+
+	/**
+	 * Read data from the file into a buffer,
+	 * which has to be large enough to fit max bytes.
+	 * If max is negative, read the full remaining file,
+	 * so buf has to be as big as the remaining file size.
+	 *
+	 * Returns the number of bytes that were read.
+	 */
+	size_t read_to(void *buf, ssize_t max=-1);
 	bool readable();
 	void write(const std::string &data);
 	bool writable();

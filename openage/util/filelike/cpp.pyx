@@ -8,6 +8,7 @@ filelike python objects.
 import os
 
 from cpython.ref cimport PyObject
+from libc.string cimport memcpy
 from libcpp cimport bool
 from libcpp.memory cimport shared_ptr
 from libcpp.string cimport string
@@ -23,6 +24,7 @@ from libopenage.util.filelike.filelike cimport (
 from libopenage.util.filelike.python cimport (
     Python as FileLikePython,
     pyx_file_read,
+    pyx_file_read_to,
     pyx_file_readable,
     pyx_file_write,
     pyx_file_writable,
@@ -157,6 +159,13 @@ cdef string file_read(PyObject *filelike, ssize_t max) except * with gil:
     return (<object> filelike).read(max)
 
 
+cdef size_t file_read_to(PyObject *filelike, void *buf, ssize_t max) except * with gil:
+    cdef bytes data = (<object> filelike).read(max)
+    cdef size_t count = len(data)
+    memcpy(buf, <const char *>data, count)
+    return count
+
+
 cdef bool file_readable(PyObject *filelike) except * with gil:
     return (<object> filelike).readable()
 
@@ -196,6 +205,7 @@ cdef ssize_t file_size(PyObject *filelike) except * with gil:
 
 def setup():
     pyx_file_read.bind0(file_read)
+    pyx_file_read_to.bind0(file_read_to)
     pyx_file_readable.bind0(file_readable)
     pyx_file_write.bind0(file_write)
     pyx_file_writable.bind0(file_writable)

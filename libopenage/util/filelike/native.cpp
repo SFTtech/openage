@@ -33,12 +33,14 @@ Native::Native(const std::string &path, mode_t mode)
 	}
 
 	this->file.open(this->path, open_mode);
+
+	if (not this->file.is_open()) {
+		throw Error{ERR << "file not found: " << path};
+	}
 }
 
 
-Native::~Native() {
-	this->close();
-}
+Native::~Native() {}
 
 
 std::string Native::read(ssize_t max) {
@@ -68,6 +70,12 @@ std::string Native::read(ssize_t max) {
 		this->file.read(&ret[0], max);
 		return ret;
 	}
+}
+
+
+size_t Native::read_to(void *buf, ssize_t max) {
+	this->file.readsome(reinterpret_cast<std::fstream::char_type *>(buf), max);
+	return this->file.gcount();
 }
 
 

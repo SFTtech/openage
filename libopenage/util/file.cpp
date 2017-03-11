@@ -49,6 +49,11 @@ std::string File::read(ssize_t max) {
 }
 
 
+size_t File::read_to(void *buf, ssize_t max) {
+	return this->filelike->read_to(buf, max);
+}
+
+
 bool File::readable() {
 	return this->filelike->readable();
 }

@@ -67,6 +67,7 @@ public:
 	virtual ~FileLike() = default;
 
 	virtual std::string read(ssize_t max=-1) = 0;
+	virtual size_t read_to(void *buf, ssize_t max=-1) = 0;
 
 	virtual bool readable() = 0;
 

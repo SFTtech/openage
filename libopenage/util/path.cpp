@@ -180,7 +180,7 @@ std::string Path::resolve_native_path_r() const {
 		return resolved_path.second.get_native_path();
 	}
 	else {
-		throw Error{ERR << "no native path available for: " << *this};
+		throw Error{ERR << "failed to locate readable path: " << *this};
 	}
 }
 
@@ -192,7 +192,7 @@ std::string Path::resolve_native_path_w() const {
 		return resolved_path.second.get_native_path();
 	}
 	else {
-		throw Error{ERR << "no native path available for: " << *this};
+		throw Error{ERR << "failed to locate writable path: " << *this};
 	}
 }
 
