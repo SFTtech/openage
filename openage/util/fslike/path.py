@@ -152,6 +152,42 @@ class Path:
         """
         return self.fsobj.get_native_path(self.parts)
 
+    def resolve_native_path(self, mode="r"):
+        """
+        Minimize the path and possibly return a native one.
+        Returns None if there was no native path.
+
+        Basically does self.resolve_*().get_native_path()
+        """
+        if mode == "r":
+            return self.resolve_native_path_r()
+        elif mode == "w":
+            return self.resolve_native_path_w()
+        else:
+            raise UnsupportedOperation("unsupported resolve mode: " + mode)
+
+    def resolve_native_path_r(self):
+        """
+        Resolve the path for read access and possibly return
+        a native equivalent.
+        If no native path was found, return None.
+        """
+        resolved_path = self.resolve_r()
+        if resolved_path:
+            return resolved_path.get_native_path()
+        return None
+
+    def resolve_native_path_w(self):
+        """
+        Resolve the path for write access and try to return
+        a native equivalent.
+        If no native path could be determined, return None.
+        """
+        resolved_path = self.resolve_w()
+        if resolved_path:
+            return resolved_path.get_native_path()
+        return None
+
     def __fspath__(self):
         """
         Interface to Python path-like interface
