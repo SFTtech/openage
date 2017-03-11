@@ -17,6 +17,8 @@ constexpr double INV_PI       = 0.318309886183790671538; //!< 1/pi
 constexpr double INV2_PI      = 0.636619772367581343076; //!< 2/pi
 constexpr double INV2_SQRT_PI = 1.12837916709551257390;  //!< 2/sqrt(pi)
 constexpr double TAU          = 6.28318530717958647693;  //!< 2*pi
+constexpr double DEGSPERRAD   = 0.017453292519943295769; //!< tau/360
+constexpr double RADSPERDEG   = 57.29577951308232087679; //!< 360/tau
 constexpr double SQRT_2       = 1.41421356237309504880;  //!< sqrt(2)
 constexpr double INV_SQRT_2   = 0.707106781186547524401; //!< 1/sqrt(2)
 
