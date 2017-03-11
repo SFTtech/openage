@@ -4,6 +4,8 @@
 
 #include <string>
 #include <unordered_map>
+#include <vector>
+
 
 #include "score.h"
 
@@ -54,10 +56,13 @@ public:
 
 	member_type get_member_type(Player &player);
 
+	// TODO find a better way to get all the players
+	std::vector<const Player*> get_players() const;
+
 	/**
 	 * TODO asdf
 	 */
-	Score score;
+	ScoreTeam score;
 
 private:
 

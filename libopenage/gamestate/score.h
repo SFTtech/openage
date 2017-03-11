@@ -9,6 +9,8 @@
 
 namespace openage {
 
+class Team;
+
 /**
  * TODO asdf
  */
@@ -33,25 +35,48 @@ public:
 	Score();
 
 	void add_score(const score_category cat, double value);
+	void add_score(const score_category cat, int value);
 
 	void remove_score(const score_category cat, double value);
+	void remove_score(const score_category cat, int value);
 
 	// Getters
 
-	double getScore(const score_category cat) const { return score[(int) cat]; }
-	double getScore(const int index) const { return score[index]; }
+	int getScore(const score_category cat) const { return score[(int) cat]; }
+	int getScore(const int index) const { return score[index]; }
 
-	double getScoreTotal() const { return score_total; }
+	int getScoreTotal() const { return score_total; }
 
-private:
+protected:
 
-	void update_score();
+	virtual void update_score();
 
-	double score[(int) score_category::SCORE_CATEGORY_COUNT];
+	int score[(int) score_category::SCORE_CATEGORY_COUNT];
 
 	// generated values
 
-	double score_total;
+	int score_total;
+
+private:
+
+};
+
+
+/**
+ * TODO asdf
+ */
+class ScoreTeam : public Score {
+public:
+
+	ScoreTeam(Team *team);
+
+protected:
+
+	virtual void update_score() override;
+
+private:
+
+	Team *team;
 };
 
 } // namespace openage
@@ -62,6 +87,7 @@ std::string to_string(const openage::score_category &cat);
 
 /**
  * hasher for score_category
+ * TODO decide if needed, not used at the moment
  */
 template<> struct hash<openage::score_category> {
 	typedef underlying_type<openage::score_category>::type underlying_type;
