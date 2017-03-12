@@ -59,6 +59,21 @@ def getenv_bool(varname):
     return bool(value)
 
 
+# available optional features
+# this defines the default activation for those:
+# if_available: enable if it was found
+# True:         enable feature
+# False:        disable feature
+# This 3-state activation allows distros to control the features definitively
+# but independent compilations may still have autodetection.
+OPTIONS = {
+    "backtrace": "if_available",
+    "inotify": "if_available",
+    "gperftools-tcmalloc": False,
+    "gperftools-profiler": "if_available",
+}
+
+
 def features(args, parser):
     """
     Enable or disable optional features.
@@ -66,19 +81,15 @@ def features(args, parser):
     the defaults below will be used.
     """
 
-    options = {
-        "backtrace": "if_available",
-        "inotify": "if_available",
-        "gperftools-tcmalloc": False,
-        "gperftools-profiler": "if_available",
-    }
 
     def sanitize_option_name(option):
         """ Check if the given feature exists """
-        if option not in options:
+        if option not in OPTIONS:
             parser.error("unknown feature: '{}'.\n"
                          "available features:\n   {}".format(
-                             option, '\n   '.join(options)))
+                             option, '\n   '.join(OPTIONS)))
+
+    options = OPTIONS.copy()
 
     if args.with_:
         for arg in args.with_:
@@ -343,9 +354,15 @@ def parse_args():
                      default=getenv("CXX"),
                      help="c++ compiler executable, default=$ENV[CXX]")
     cli.add_argument("--with", action='append', dest='with_', metavar='OPTION',
-                     help="enable optional functionality")
+                     help="enable optional functionality. "
+                          "for a list of available features, "
+                          "use --list-options")
     cli.add_argument("--without", action='append', metavar='OPTION',
-                     help="disable optional functionality")
+                     help="disable optional functionality. "
+                          "for a list of available features, "
+                          "use --list-options")
+    cli.add_argument("--list-options", action="store_true",
+                     help="list available optional feature switches")
     cli.add_argument("--flags", "-f",
                      default=getenv("CXXFLAGS", "CCFLAGS", "CFLAGS"),
                      help="compiler flags")
@@ -369,6 +386,15 @@ def parse_args():
 
     if args.sanitize == 'none' and args.sanitize_fatal:
         cli.error('--sanitize-fatal only valid with --sanitize')
+
+    if args.list_options:
+        header = "{} | Default state".format("Optional features:".ljust(25))
+        print("{}\n{}".format(header, "-" * len(header)))
+        for option, state in sorted(OPTIONS.items()):
+            state_str = (state if not isinstance(state, bool)
+                         else ("on" if state else "off"))
+            print("{} | {}".format(option.ljust(25), state_str))
+        exit(0)
 
     return args, cli
 
