@@ -249,7 +249,7 @@ cdef File_cpp fs_open_r(PyObject *fslike, const vector[string]& parts) except * 
 
     cdef PyObj ref
 
-    native_path = open_path.get_native_path()
+    native_path = open_path._get_native_path()
     if native_path is not None:
         # open it in c++, 0=read
         return File_cpp(native_path, 0)
@@ -270,7 +270,7 @@ cdef File_cpp fs_open_w(PyObject *fslike, const vector[string]& parts) except * 
 
     cdef PyObj ref
 
-    native_path = open_path.get_native_path()
+    native_path = open_path._get_native_path()
     if native_path is not None:
         # open it in c++, 1=write
         return File_cpp(native_path, 1)

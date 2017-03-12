@@ -131,30 +131,6 @@ File Path::open_w() const {
 }
 
 
-// TODO: std::optional
-std::pair<bool, Path> Path::resolve(const std::string &mode) const {
-	if (mode == "r") {
-		return this->resolve_r();
-	}
-	else if (mode == "w") {
-		return this->resolve_w();
-	}
-	else {
-		throw Error{ERR << "unsupported open mode: " << mode};
-	}
-}
-
-
-std::pair<bool, Path> Path::resolve_r() const {
-	return this->fsobj->resolve_r(this->parts);
-}
-
-
-std::pair<bool, Path> Path::resolve_w() const {
-	return this->fsobj->resolve_w(this->parts);
-}
-
-
 std::string Path::get_native_path() const {
 	return this->fsobj->get_native_path(this->parts);
 }
@@ -174,7 +150,7 @@ std::string Path::resolve_native_path(const std::string &mode) const {
 
 
 std::string Path::resolve_native_path_r() const {
-	auto resolved_path = this->resolve_r();
+	auto resolved_path = this->fsobj->resolve_r(this->parts);
 
 	if (resolved_path.first) {
 		return resolved_path.second.get_native_path();
@@ -186,7 +162,7 @@ std::string Path::resolve_native_path_r() const {
 
 
 std::string Path::resolve_native_path_w() const {
-	auto resolved_path = this->resolve_w();
+	auto resolved_path = this->fsobj->resolve_w(this->parts);
 
 	if (resolved_path.first) {
 		return resolved_path.second.get_native_path();

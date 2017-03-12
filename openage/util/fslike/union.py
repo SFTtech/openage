@@ -122,13 +122,15 @@ class Union(FSLikeObject):
     def resolve_r(self, parts):
         for path in self.candidate_paths(parts):
             if path.is_file() or path.is_dir():
-                return path.resolve_r()
+                # pylint: disable=protected-access
+                return path._resolve_r()
         return None
 
     def resolve_w(self, parts):
         for path in self.candidate_paths(parts):
             if path.writable():
-                return path.resolve_w()
+                # pylint: disable=protected-access
+                return path._resolve_w()
         return None
 
     def list(self, parts):

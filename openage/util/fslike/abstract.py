@@ -33,6 +33,9 @@ class FSLikeObject(ABC):
     they may and shall raise an appropriate instance of IOError.
     """
 
+    # sorry pylint, we need those methods.
+    # pylint: disable=too-many-public-methods
+
     @property
     def root(self):
         """
@@ -61,6 +64,10 @@ class FSLikeObject(ABC):
         """ Shall return a BufferedWriter for the given file ("mode 'wb'"). """
         pass
 
+    def exists(self, parts):
+        """ Test if the parts are a file or a directory """
+        return self.is_file(parts) or self.is_dir(parts)
+
     def resolve_r(self, parts):
         """
         Returns a new, flattened, Path if the target exists.
@@ -69,7 +76,7 @@ class FSLikeObject(ABC):
 
         Returns None if the path does not exist.
         """
-        return Path(self, parts) if (self.is_file(parts) or self.is_dir(parts)) else None
+        return Path(self, parts) if self.exists(parts) else None
 
     def resolve_w(self, parts):
         """

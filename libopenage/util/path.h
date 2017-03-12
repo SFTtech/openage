@@ -96,27 +96,6 @@ public:
 	File open_w() const;
 
 	/**
-	 * fetch the minimal path that is actually used for opening
-	 * TODO: use std::optional
-	 */
-	std::pair<bool, Path> resolve(const std::string &mode="r") const;
-
-	std::pair<bool, Path> resolve_r() const;
-	std::pair<bool, Path> resolve_w() const;
-
-	/**
-	 * Return the native path
-	 * (something like /your/folder/with/file)
-	 * for this path.
-	 * returns emptystring ("") if there is no native path.
-	 *
-	 * This does _not_ minimize/flatten (= "resolve") the path!
-	 *
-	 * You probably want to use `resolve_native_path` instead.
-	 */
-	std::string get_native_path() const;
-
-	/**
 	 * Resolve the native path by flattening all underlying
 	 * filesystem objects (like unions).
 	 * Returns the /native/path/on/disk.
@@ -165,6 +144,20 @@ public:
 
 	fslike::FSLike *get_fsobj() const;
 	const parts_t &get_parts() const;
+
+private:
+	/**
+	 * Return the native path
+	 * (something like /your/folder/with/file)
+	 * for this path.
+	 * returns emptystring ("") if there is no native path.
+	 *
+	 * This does _not_ minimize/flatten (= "resolve") the path!
+	 *
+	 * You probably want to use `resolve_native_path` instead.
+	 */
+	std::string get_native_path() const;
+
 
 protected:
 	std::shared_ptr<fslike::FSLike> fsobj;

@@ -76,7 +76,7 @@ class Path:
 
     def exists(self):
         """ True if path exists """
-        return self.is_dir() or self.is_file()
+        return self.fsobj.exists(self.parts)
 
     def is_dir(self):
         """ True if path points to dir (or symlink to one) """
@@ -124,40 +124,33 @@ class Path:
         """ open with mode='wb' """
         return self.fsobj.open_w(self.parts)
 
-    def resolve(self, mode="r"):
-        """
-        This method minimizes a path and returns another path.
-        This is used to flatten the path for dirs that are mounted
-        funnily (e.g. with Union).
-        """
-        if mode == "r":
-            return self.resolve_r()
-        elif mode == "w":
-            return self.resolve_w()
-        else:
-            raise UnsupportedOperation("unsupported resolve mode: " + mode)
-
-    def resolve_r(self):
-        """ resolve with mode='r' """
-        return self.fsobj.resolve_r(self.parts)
-
-    def resolve_w(self):
-        """ resolve with mode='w' """
-        return self.fsobj.resolve_w(self.parts)
-
-    def get_native_path(self):
+    def _get_native_path(self):
         """
         return the native path (usable by your kernel) of this path,
         or None if the path is not natively usable.
+
+        Don't use this method directly, use the resolve methods below.
         """
         return self.fsobj.get_native_path(self.parts)
+
+    def _resolve_r(self):
+        """
+        Flatten the path recursively for read access.
+        Used to cancel out some wrappers in between.
+        """
+        return self.fsobj.resolve_r(self.parts)
+
+    def _resolve_w(self):
+        """
+        Flatten the path recursively for write access.
+        Used to cancel out some wrappers in between.
+        """
+        return self.fsobj.resolve_w(self.parts)
 
     def resolve_native_path(self, mode="r"):
         """
         Minimize the path and possibly return a native one.
         Returns None if there was no native path.
-
-        Basically does self.resolve_*().get_native_path()
         """
         if mode == "r":
             return self.resolve_native_path_r()
@@ -172,9 +165,10 @@ class Path:
         a native equivalent.
         If no native path was found, return None.
         """
-        resolved_path = self.resolve_r()
+        resolved_path = self._resolve_r()
         if resolved_path:
-            return resolved_path.get_native_path()
+            # pylint: disable=protected-access
+            return resolved_path._get_native_path()
         return None
 
     def resolve_native_path_w(self):
@@ -183,17 +177,11 @@ class Path:
         a native equivalent.
         If no native path could be determined, return None.
         """
-        resolved_path = self.resolve_w()
+        resolved_path = self._resolve_w()
         if resolved_path:
-            return resolved_path.get_native_path()
+            # pylint: disable=protected-access
+            return resolved_path._get_native_path()
         return None
-
-    def __fspath__(self):
-        """
-        Interface to Python path-like interface
-        https://docs.python.org/3/library/os.html#os.PathLike
-        """
-        return self.get_native_path()
 
     def rename(self, targetpath):
         """ renames to targetpath """
