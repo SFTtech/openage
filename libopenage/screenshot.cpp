@@ -50,7 +50,7 @@ std::string ScreenshotManager::gen_next_filename() {
 void ScreenshotManager::save_screenshot() {
     this->job_manager->enqueue<bool>([this] () {
         std::string filename = this->gen_next_filename();
-        this->renderer->screenshot(filename);
+//        this->renderer->screenshot(filename);
         return true;
     });
 }

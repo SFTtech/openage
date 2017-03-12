@@ -1,59 +1,38 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
-
-#include "../../config.h"
-#if WITH_OPENGL
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "context.h"
 
-#include <utility>
-#include <array>
-
 #include <epoxy/gl.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 
-#include "buffer.h"
-#include "program.h"
-#include "texture.h"
-#include "vertex_state.h"
 #include "../../log/log.h"
 #include "../../error/error.h"
+
 
 namespace openage {
 namespace renderer {
 namespace opengl {
 
-Context::Context()
-	:
-	renderer::Context{context_type::opengl} {}
+/// The first element is the lowest version we need, last is highest version we support.
+static constexpr std::array<std::pair<int, int>, 1> gl_versions = {{ { 3, 3 } }}; // for now we don't need any higher versions
 
-Context::~Context() {}
-
-uint32_t Context::get_window_flags() const {
-	return SDL_WINDOW_OPENGL;
-}
-
-// first element is the min supported version
-// last element is the max supported version
-constexpr std::array<std::pair<int, int>, 6> gl_versions = {{{3,3}, {4,0}, {4,1}, {4,2}, {4,3}, {4,4}}};
-
-void Context::prepare() {
-	// set initially to maximum supported version so that if the for loop doesn't fail the max one is used
-	int opengl_version_major = gl_versions[gl_versions.size() - 1].first;
-	int opengl_version_minor = gl_versions[gl_versions.size() - 1].second;
+/// Finds out the supported graphics functions and OpenGL version of the device.
+static gl_context_capabilities find_capabilities() {
+	// This is really hacky. We try to create a context starting with
+	// the lowest GL version and retry until one version is not supported and fails.
+	// There is no other way to do this. (https://gamedev.stackexchange.com/a/28457)
 
 	SDL_Window *test_window = SDL_CreateWindow("test", 0, 0, 2, 2, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN);
 	if (test_window == nullptr) {
 		throw Error(MSG(err) << "Failed creating window for OpenGL context testing. SDL Error: " << SDL_GetError());
 	}
-	SDL_GLContext test_context;
 
-	// check each version for availability
+	// Check each version for availability
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
+	SDL_GLContext test_context;
 	for (size_t i_ver = 0; i_ver < gl_versions.size(); ++i_ver) {
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, gl_versions[i_ver].first);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, gl_versions[i_ver].second);
@@ -61,13 +40,13 @@ void Context::prepare() {
 
 		if (test_context == nullptr) {
 			if (i_ver == 0) {
-				throw Error(MSG(err) << "OpenGL version " << gl_versions[0].first << "." << gl_versions[0].second << " is not available. It is the minimal required version.");
+				throw Error(MSG(err) << "OpenGL version "
+				                     << gl_versions[0].first << "." << gl_versions[0].second
+				                     << " is not available. It is the minimal required version.");
 			}
 			else {
-				opengl_version_major = gl_versions[i_ver - 1].first;
-				opengl_version_minor = gl_versions[i_ver - 1].second;
-				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, opengl_version_major);
-				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, opengl_version_minor);
+				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, gl_versions[i_ver - 1].first);
+				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, gl_versions[i_ver - 1].second);
 				break;
 			}
 		}
@@ -79,62 +58,150 @@ void Context::prepare() {
 	if (test_context == nullptr) {
 		throw Error(MSG(err) << "Failed to create OpenGL context which previously succeeded. This should not happen! SDL Error: " << SDL_GetError());
 	}
+	SDL_GL_MakeCurrent(test_window, test_context);
 
-	auto &cap = this->capability;
+	gl_context_capabilities caps;
 
-	cap.type = this->type;
-	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &cap.max_texture_size);
-	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &cap.max_texture_slots);
-	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &cap.max_vertex_attributes);
+	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &caps.max_texture_size);
+	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &caps.max_texture_slots);
+	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &caps.max_vertex_attributes);
 
-	glGetIntegerv(GL_MAJOR_VERSION, &cap.major_version);
-	glGetIntegerv(GL_MINOR_VERSION, &cap.minor_version);
+	glGetIntegerv(GL_MAJOR_VERSION, &caps.major_version);
+	glGetIntegerv(GL_MINOR_VERSION, &caps.minor_version);
 
 	SDL_GL_DeleteContext(test_context);
 	SDL_DestroyWindow(test_window);
+
+	return caps;
 }
 
-void Context::create(SDL_Window *window) {
-	this->glcontext = SDL_GL_CreateContext(window);
+GlContext::GlContext(SDL_Window *window) {
+	this->capabilities = find_capabilities();
+	auto const &capabilities = this->capabilities;
 
-	if (this->glcontext == nullptr) {
-		throw Error(MSG(err) << "Failed creating OpenGL context: " << SDL_GetError());
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, capabilities.major_version);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, capabilities.minor_version);
+
+	this->gl_context = SDL_GL_CreateContext(window);
+
+	if (this->gl_context == nullptr) {
+		throw Error(MSG(err) << "OpenGL context creation failed. SDL error: " << SDL_GetError());
 	}
 
-	// check the OpenGL version, for shaders n stuff
-	// TODO: this doesn't look necessary. libepoxy supports up to 4.4, which is the maximum supported version in gl_versions
-	// and if GL 3.3 is not available than the context above will fail anyway and it won't get to this point
-	int epoxy_glv =  this->capability.major_version * 10 + this->capability.minor_version;
-	if (not epoxy_is_desktop_gl() or epoxy_gl_version() < epoxy_glv) {
-		throw Error(MSG(err) << "OpenGL "
-		                     << this->capability.major_version << "." << this->capability.minor_version
-		                     << " not available");
+	// We still have to verify that our version of libepoxy supports this version of OpenGL.
+	int epoxy_glv = capabilities.major_version * 10 + capabilities.minor_version;
+	if (!epoxy_is_desktop_gl() || epoxy_gl_version() < epoxy_glv) {
+		throw Error(MSG(err) << "The used version of libepoxy does not support OpenGL version "
+		                     << capabilities.major_version << "." << capabilities.minor_version);
 	}
 
-	log::log(MSG(info) << "Using OpenGL " << this->capability.major_version << "." << this->capability.minor_version);
-}
+	log::log(MSG(info) << "Created OpenGL context version " << capabilities.major_version << "." << capabilities.minor_version);
 
-void Context::setup() {
-	// TODO: context capability checking
-	auto &caps = this->capability;
-
-	// to quote the standard doc: 'The value gives a rough estimate of the
+	// To quote the standard doc: 'The value gives a rough estimate of the
 	// largest texture that the GL can handle'
 	// -> wat?  anyways, we need at least 1024x1024.
 	log::log(MSG(dbg) << "Maximum supported texture size: "
-	         << caps.max_texture_size);
-	if (caps.max_texture_size < 1024) {
-		throw Error(MSG(err) << "Maximum supported texture size too small: "
-		            << caps.max_texture_size);
+	                  << capabilities.max_texture_size);
+	if (capabilities.max_texture_size < 1024) {
+		throw Error(MSG(err) << "Maximum supported texture size is too small: "
+		                     << capabilities.max_texture_size);
 	}
 
 	log::log(MSG(dbg) << "Maximum supported texture units: "
-	         << caps.max_texture_slots);
-	if (caps.max_texture_slots < 2) {
-		throw Error(MSG(err) << "Your GPU has not enough texture units: "
-		            << caps.max_texture_slots);
+	                  << capabilities.max_texture_slots);
+	if (capabilities.max_texture_slots < 2) {
+		throw Error(MSG(err) << "Your GPU doesn't have enough texture units: "
+		                     << capabilities.max_texture_slots);
 	}
+}
 
+GlContext::~GlContext() {
+	if (this->gl_context != nullptr) {
+		SDL_GL_DeleteContext(this->gl_context);
+	}
+}
+
+GlContext::GlContext(GlContext &&other)
+	: gl_context(other.gl_context)
+	, capabilities(other.capabilities) {
+	other.gl_context = nullptr;
+}
+
+GlContext& GlContext::operator=(GlContext &&other) {
+	this->gl_context = other.gl_context;
+	this->capabilities = other.capabilities;
+	other.gl_context = nullptr;
+
+	return *this;
+}
+
+SDL_GLContext GlContext::get_raw_context() const {
+	return this->gl_context;
+}
+
+gl_context_capabilities GlContext::get_capabilities() const {
+	return this->capabilities;
+}
+
+void GlContext::check_error() {
+	GLenum error_state = glGetError();
+	if (error_state != GL_NO_ERROR) {
+		const char *msg = [=] {
+			// generate error message
+			switch (error_state) {
+			case GL_INVALID_ENUM:
+				// An unacceptable value is specified for an enumerated argument.
+				// The offending command is ignored
+				// and has no other side effect than to set the error flag.
+				return "invalid enum passed to opengl call";
+			case GL_INVALID_VALUE:
+				// A numeric argument is out of range.
+				// The offending command is ignored
+				// and has no other side effect than to set the error flag.
+				return "invalid value passed to opengl call";
+			case GL_INVALID_OPERATION:
+				// The specified operation is not allowed in the current state.
+				// The offending command is ignored
+				// and has no other side effect than to set the error flag.
+				return "invalid operation performed during some state";
+			case GL_INVALID_FRAMEBUFFER_OPERATION:
+				// The framebuffer object is not complete. The offending command
+				// is ignored and has no other side effect than to set the error flag.
+				return "invalid framebuffer operation";
+			case GL_OUT_OF_MEMORY:
+				// There is not enough memory left to execute the command.
+				// The state of the GL is undefined,
+				// except for the state of the error flags,
+				// after this error is recorded.
+				return "out of memory, wtf?";
+			case GL_STACK_UNDERFLOW:
+				// An attempt has been made to perform an operation that would
+				// cause an internal stack to underflow.
+				return "stack underflow";
+			case GL_STACK_OVERFLOW:
+				// An attempt has been made to perform an operation that would
+				// cause an internal stack to overflow.
+				return "stack overflow";
+			default:
+				// unknown error state
+				return "unknown error";
+			}
+		}();
+
+		throw Error(
+			MSG(err) << "An OpenGL error has occured.\n\t"
+			<< "(" << error_state << "): " << msg
+		);
+	}
+}
+
+/*
+void Context::setup() {
+	auto &caps = this->capabilities;
 
 	// vsync on
 	// TODO: maybe move somewhere else or to the window.
@@ -153,18 +220,7 @@ void Context::setup() {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
-
-context_capability Context::get_capabilities() {
-	return this->capability;
-}
-
-
-void Context::destroy() {
-	SDL_GL_DeleteContext(this->glcontext);
-}
-
-
-void Context::set_feature(context_feature feature, bool on) {
+void GlContext::set_feature(context_feature feature, bool on) {
 	// what feature to change? this is the argument to glEnable and glDisable.
 	GLenum what;
 
@@ -234,100 +290,6 @@ void Context::screenshot(const std::string &filename) {
 	IMG_SavePNG(screen, filename.c_str());
 	SDL_FreeSurface(screen);
 }
+*/
 
-
-void Context::check_error() {
-	int glerrorstate = 0;
-
-	glerrorstate = glGetError();
-	if (glerrorstate != GL_NO_ERROR) {
-
-		const char *errormsg;
-
-		//generate error message
-		switch (glerrorstate) {
-		case GL_INVALID_ENUM:
-			// An unacceptable value is specified for an enumerated argument.
-			// The offending command is ignored
-			// and has no other side effect than to set the error flag.
-			errormsg = "invalid enum passed to opengl call";
-			break;
-		case GL_INVALID_VALUE:
-			// A numeric argument is out of range.
-			// The offending command is ignored
-			// and has no other side effect than to set the error flag.
-			errormsg = "invalid value passed to opengl call";
-			break;
-		case GL_INVALID_OPERATION:
-			// The specified operation is not allowed in the current state.
-			// The offending command is ignored
-			// and has no other side effect than to set the error flag.
-			errormsg = "invalid operation performed during some state";
-			break;
-		case GL_INVALID_FRAMEBUFFER_OPERATION:
-			// The framebuffer object is not complete. The offending command
-			// is ignored and has no other side effect than to set the error flag.
-			errormsg = "invalid framebuffer operation";
-			break;
-		case GL_OUT_OF_MEMORY:
-			// There is not enough memory left to execute the command.
-			// The state of the GL is undefined,
-			// except for the state of the error flags,
-			// after this error is recorded.
-			errormsg = "out of memory, wtf?";
-			break;
-		case GL_STACK_UNDERFLOW:
-			// An attempt has been made to perform an operation that would
-			// cause an internal stack to underflow.
-			errormsg = "stack underflow";
-			break;
-		case GL_STACK_OVERFLOW:
-			// An attempt has been made to perform an operation that would
-			// cause an internal stack to overflow.
-			errormsg = "stack overflow";
-			break;
-		default:
-			// unknown error state
-			errormsg = "unknown error";
-		}
-		throw Error(
-			MSG(err) <<
-			"OpenGL error state id: " << glerrorstate
-			<< "\n\t" << errormsg
-		);
-	}
-}
-
-
-std::unique_ptr<renderer::Texture> Context::register_texture(const TextureData &data) {
-	std::unique_ptr<renderer::Texture> txt = std::make_unique<opengl::Texture>(this, data);
-	return txt;
-}
-
-std::unique_ptr<renderer::Program> Context::register_program(const ProgramSource &data) {
-	std::unique_ptr<renderer::Program> prg = std::make_unique<opengl::Program>(this, data);
-	return prg;
-}
-
-std::unique_ptr<renderer::Buffer> Context::create_buffer(size_t size) {
-	std::unique_ptr<renderer::Buffer> buf = std::make_unique<opengl::Buffer>(this, size);
-	return buf;
-}
-
-std::unique_ptr<renderer::VertexState> Context::create_vertex_state() {
-	std::unique_ptr<renderer::VertexState> vstate = std::make_unique<opengl::VertexState>(this);
-	return vstate;
-}
-
-
-
-void Context::resize_canvas(const coord::window &new_size) {
-	log::log(MSG(dbg) << "opengl viewport resize to " << new_size.x << "x" << new_size.y);
-
-	glViewport(0, 0, new_size.x, new_size.y);
-}
-
-
-}}} // namespace openage::renderer::opengl
-
-#endif // if WITH_OPENGL
+}}} // openage::renderer::opengl

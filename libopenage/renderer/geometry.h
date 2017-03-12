@@ -1,7 +1,6 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_GEOMETRY_H_
-#define OPENAGE_RENDERER_GEOMETRY_H_
+#pragma once
 
 #include "vertex_buffer.h"
 #include "vertex_state.h"
@@ -9,29 +8,21 @@
 namespace openage {
 namespace renderer {
 
-class Context;
-class Material;
+enum class geometry_t {
+	quad,
+	mesh,
+};
 
-/**
- * Drawable geometry, stores all triangles vertices.
- */
 class Geometry {
-public:
-	Geometry(mesh_t vertices={});
-	virtual ~Geometry() = default;
+	/// The default constructor makes a quad.
+	Geometry() : type(geometry_t::quad) {}
 
-	/**
-	 * Return the associated vertex list.
-	 */
-	const mesh_t &get_mesh();
+	// Geometry(mesh..)
 
-protected:
-	/**
-	 * Triangle vertex storage.
-	 */
-	mesh_t vertices;
+	geometry_t get_type() const { return this->type; }
+
+private:
+	geometry_t type;
 };
 
 }} // openage::renderer
-
-#endif

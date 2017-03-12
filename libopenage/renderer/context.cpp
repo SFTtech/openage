@@ -53,6 +53,7 @@ std::unique_ptr<Context> Context::generate(context_type t) {
 		if (not WITH_VULKAN) {
 			throw Error{MSG(err) << "Vulkan support not enabled!"};
 		}
+		// NB: vulkan does not actually have contexts
 #if WITH_VULKAN
 		log::log(MSG(dbg) << "Using Vulkan context...");
 		return std::make_unique<vulkan::Context>();

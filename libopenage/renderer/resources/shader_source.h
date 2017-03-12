@@ -3,19 +3,16 @@
 #pragma once
 
 #include <string>
-#include <vector>
 #include <experimental/string_view>
 
 
-/** @file
- * gpu program creation classes reside in here.
- */
 namespace openage {
 namespace renderer {
 namespace resources {
 
 /// Available shader types present in modern graphics pipelines.
-enum class shader_type {
+/// Also contains information about the source language.
+enum class shader_source_t {
 	glsl_vertex,
 	glsl_geometry,
 	glsl_tesselation_control,
@@ -23,31 +20,29 @@ enum class shader_type {
 	glsl_fragment,
 };
 
-/// Shader source code storage.
+std::experimental::string_view shader_source_type_to_str(shader_source_t);
+
 class ShaderSource {
 public:
 	/// Obtain shader source code from a file.
-	ShaderSource from_file(shader_type, std::experimental::string_view path);
+	static ShaderSource from_file(shader_source_t, std::experimental::string_view path);
 
 	/// Obtain shader source code from a string.
-	ShaderSource from_string(shader_type, std::experimental::string_view code);
+	static ShaderSource from_string(shader_source_t, std::string &&code);
 
-	/// @returns the shader source code
-	const char* get_source() const;
+	/// @returns a view of the shader source code
+	std::experimental::string_view source() const;
 
-	/// @returns the shader type
-	shader_type get_type() const;
-
-private:
-	ShaderSource(shader_type type, std::string &&code);
+	shader_source_t type() const;
 
 private:
-	/// The type of the source code.
-	shader_type type;
+	ShaderSource(shader_source_t type, std::string &&code);
 
-	/// Stores the shader source code.
+private:
+	shader_source_t _type;
+
+	/// The shader source code.
 	std::string code;
 };
 
 }}} // openage::renderer::resources
-

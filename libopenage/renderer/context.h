@@ -31,29 +31,6 @@ enum class context_type {
 	opengl,
 };
 
-/**
- * Context features that can be enabled or disabled.
- * Used in Context::set_feature
- */
-enum class context_feature {
-	blending,        //!< Alpha blending
-	depth_test,      //!< z-buffering for fragment depth tests
-};
-
-
-/**
- * Stores information about context capabilities and limitations.
- */
-struct context_capability {
-	int max_vertex_attributes;
-	int max_texture_slots;
-	int max_texture_size;
-
-	int major_version;
-	int minor_version;
-
-	context_type type;
-};
 
 
 /**

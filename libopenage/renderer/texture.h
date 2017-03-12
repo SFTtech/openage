@@ -1,7 +1,6 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_TEXTURE_H_
-#define OPENAGE_RENDERER_TEXTURE_H_
+#pragma once
 
 #include <SDL2/SDL_image.h>
 
@@ -11,12 +10,9 @@
 
 #include "../gamedata/texture.gen.h"
 
+
 namespace openage {
 namespace renderer {
-
-class Context;
-
-
 
 /**
  * A texture for rendering graphically in 3d space.
@@ -67,12 +63,8 @@ public:
 	/**
 	 * Bind the texture to the given texture unit slot id.
 	 */
-	virtual void bind_to(int slot) const = 0;
+//	virtual void bind_to(int slot) const = 0;
 
-	/**
-	 * The associated graphics context.
-	 */
-	Context *context;
 
 protected:
 	/**
@@ -86,5 +78,4 @@ protected:
 	size_t w, h;
 };
 
-
-#endif
+}}

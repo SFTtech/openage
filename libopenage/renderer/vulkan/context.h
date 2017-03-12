@@ -1,40 +1,18 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_VULKAN_CONTEXT_H_
-#define OPENAGE_RENDERER_VULKAN_CONTEXT_H_
-
-#include <SDL2/SDL.h>
-
-#include "../context.h"
-#include "../../config.h"
+#pragma once
 
 
 namespace openage {
 namespace renderer {
-
-/**
- * Vulkan specific renderer code.
- * Is selected if the requested backend is Vulkan.
- */
 namespace vulkan {
 
 /**
- * Vulkan render context.
- *
- * No API has been published yet, but it's likely to be very similar
- * to OpenGL and Mantle.
+ * A Vulkan graphics device, usually a GPU.
  */
-class Context : public renderer::Context {
+class VkDevice {
 public:
-	SDL_VulkanContext vkcontext;
-
-	virtual void prepare() = 0;
-	virtual uint32_t get_window_flags() = 0;
-	virtual void create(SDL_Window *window) = 0;
-	virtual void setup() = 0;
-	virtual void destroy() = 0;
+	VkDevice() {}
 };
 
-}} // namespace openage::renderer
-
-#endif
+}}} // namespace openage::renderer::vulkan

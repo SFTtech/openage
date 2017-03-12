@@ -34,6 +34,7 @@ public:
 		dynamic_copy,
 	};
 
+  std::shared_ptr<int> wow;
 	Buffer(Context *ctx, size_t size=0);
 	virtual ~Buffer() = default;
 

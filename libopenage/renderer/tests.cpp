@@ -6,125 +6,127 @@
 #include <unordered_map>
 
 #include "../log/log.h"
-#include "opengl/shader.h"
-#include "opengl/program.h"
-#include "vertex_state.h"
+#include "../error/error.h"
+#include "resources/shader_source.h"
+#include "opengl/renderer.h"
+#include "opengl/renderable.h"
 #include "window.h"
-#include "renderer.h"
-#include "shader.h"
-#include "shaders/simpletexture.h"
-#include "texture.h"
+
 
 namespace openage {
 namespace renderer {
 namespace tests {
 
 /**
- * render demo function collection.
- */
+* render demo function collection.
+*/
 struct render_demo {
-	std::function<void(Window *)> setup;
-	std::function<void()> frame;
-	std::function<void(const coord::window &)> resize;
+std::function<void(Window *)> setup;
+std::function<void()> frame;
+std::function<void(const coord::window &)> resize;
 };
 
 
 void render_test(Window &window, const render_demo *actions) {
-	SDL_Event event;
+SDL_Event event;
 
-	actions->setup(&window);
+actions->setup(&window);
 
-	bool running = true;
-	while (running) {
-		while (SDL_PollEvent(&event)) {
-			switch (event.type) {
-			case SDL_WINDOWEVENT:
-				switch (event.window.event) {
-				case SDL_WINDOWEVENT_RESIZED: {
-					coord::window new_size{event.window.data1, event.window.data2};
-					log::log(
-						MSG(info) << "new window size: "
-						<< new_size.x << " x " << new_size.y
-					);
-					window.set_size(new_size);
-					actions->resize(new_size);
-					break;
-				}}
-				break;
-
-			case SDL_QUIT:
-				running = false;
-				break;
-
-			case SDL_KEYUP: {
-				SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(&event)->keysym.sym;
-				switch (sym) {
-				case SDLK_ESCAPE:
-					running = false;
-					break;
-				default:
-					break;
-				}
+bool running = true;
+while (running) {
+	while (SDL_PollEvent(&event)) {
+		switch (event.type) {
+		case SDL_WINDOWEVENT:
+			switch (event.window.event) {
+			case SDL_WINDOWEVENT_RESIZED: {
+				coord::window new_size{event.window.data1, event.window.data2};
+				log::log(
+					MSG(info) << "new window size: "
+					<< new_size.x << " x " << new_size.y
+				);
+				window.set_size(new_size);
+				actions->resize(new_size);
 				break;
 			}}
-		}
+			break;
 
-		actions->frame();
+		case SDL_QUIT:
+			running = false;
+			break;
 
-		window.swap();
+		case SDL_KEYUP: {
+			SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(&event)->keysym.sym;
+			switch (sym) {
+			case SDLK_ESCAPE:
+				running = false;
+				break;
+			default:
+				break;
+			}
+			break;
+		}}
 	}
+
+	actions->frame();
+
+	window.swap();
+}
 }
 
 void renderer_demo_0() {
-	Window window{"openage renderer testing"};
-	Renderer renderer{window.get_context()};
+	Window window { "openage renderer testing" };
+	window.make_context_current();
+	auto renderer = opengl::GlRenderer::create(window.get_context());
 
-	ShaderSourceCode vshader_src(
-		shader_type::vertex,
+	auto vshader_src = resources::ShaderSource::from_string(
+		resources::shader_source_t::glsl_vertex,
 		"#version 330\n"
-		"layout(location = 0) in vec4 position;"
-		"smooth out vec4 fragpos;"
+		"smooth out vec2 pos;"
 		"void main() {"
-		"fragpos = position;"
-		"gl_Position = position;"
+		"  gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;"
+		"  gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;"
+		"  gl_Position.z = 1.0;"
+		"  gl_Position.w = 1.0;"
+		"  gl_Position.xy *= 0.8;"
+		"  pos = (vec2(gl_Position) + 1.0) / 2.0;"
 		"}"
 	);
 
-	ShaderSourceCode fshader_src(
-		shader_type::fragment,
+	auto fshader_src = resources::ShaderSource::from_string(
+		resources::shader_source_t::glsl_fragment,
 		"#version 330\n"
-		"out vec4 color;\n"
-		"smooth in vec4 fragpos;"
+		"smooth in vec2 pos;"
+		"out vec4 color;"
 		"void main() {"
-		"color = vec4(1.0f, fragpos.y, fragpos.x, 1.0f);"
+		"  color = vec4(1.0f, pos.y, pos.x, 1.0f);"
 		"}"
 	);
 
-	ProgramSource simplequad_src({&vshader_src, &fshader_src});
+	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
 
-	std::unique_ptr<Program> simplequad = renderer.add_program(simplequad_src);
-
-	simplequad->dump_attributes();
-
-	float val = 0.9f;
-	const float vpos[] = {
-		-val, -val, .0f, 1.0f,
-		val, -val, .0f, 1.0f,
-		-val, val, .0f, 1.0f,
-
-		val, -val, .0f, 1.0f,
-		-val, val, .0f, 1.0f,
-		val, val, .0f, 1.0f,
+	unif_in = shader->new_uniform_input();
+	Renderable gaben {
+		unif_in.get(),
+		// geometry constructor
+		true,
+		true,
+		true,
+		true,
 	};
 
-	GLuint vpos_buf, posattr_id = 0;
+	RenderPass pass {
+		{ gaben },
+		0.0f,
+		8,
+		renderer->get_framebuffer_target(),
+	};
 
-	GLuint vao;
+	renderer->execute_pass(pass);
 
 	render_demo test0{
 		// init
 		[&](Window */*window*/) {
-			glEnable(GL_BLEND);
+			/*glEnable(GL_BLEND);
 
 			glGenBuffers(1, &vpos_buf);
 			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
@@ -133,14 +135,13 @@ void renderer_demo_0() {
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			glGenVertexArrays(1, &vao);
-			glBindVertexArray(vao); // stores all the vertex attrib state.
+			glBindVertexArray(vao); // stores all the vertex attrib state.*/
 		},
 		// frame
 		[&]() {
-			glClearColor(0.0, 0.0, 0.2, 1.0);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-			simplequad->use();
+			renderer->render(pass);
+			window.swap();
+			/*simplequad->use();
 
 			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
 			glEnableVertexAttribArray(posattr_id);
@@ -149,11 +150,12 @@ void renderer_demo_0() {
 
 			glDisableVertexAttribArray(posattr_id);
 
-			renderer.check_error();
+			renderer.check_error();*/
 		},
 		// resize
 		[&](const coord::window &new_size) {
-			renderer.on_resize(new_size);
+			// handle in renderer..
+			glViewport(0, 0, new_size.x, new_size.y);
 		}
 	};
 
@@ -161,9 +163,14 @@ void renderer_demo_0() {
 }
 
 
-void renderer_demo_1() {
+	/*void renderer_demo_1() {
 	Window window{"openage renderer testing"};
 	Renderer renderer{window.get_context()};
+	// instead do
+	// Renderer renderer(&window);
+	// also do
+	// GuiRenderer gui(&window) using qtquick
+	// probably use shared_ptr for window so as to guarantee lifetimes
 
 	ShaderSourceCode vshader_src(
 		shader_type::vertex,
@@ -202,7 +209,7 @@ void renderer_demo_1() {
 
 	render_demo test1{
 		// init
-		[&](Window */*window*/) {
+		[&](Window * /*window*//*) {
 			log::log(MSG(dbg) << "preparing test");
 
 			tex_pipeline.tex.set(gaben.get());
@@ -261,8 +268,7 @@ void renderer_demo_1() {
 	};
 
 	render_test(window, &test1);
-}
-
+}*/
 
 void renderer_demo(int demo_id) {
 	switch (demo_id) {
@@ -270,15 +276,10 @@ void renderer_demo(int demo_id) {
 		renderer_demo_0();
 		break;
 
-	case 1:
-		renderer_demo_1();
-		break;
-
 	default:
 		log::log(MSG(err) << "unknown renderer demo " << demo_id << " requested.");
 		break;
 	}
 }
-
 
 }}} // namespace openage::renderer::tests

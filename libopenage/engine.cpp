@@ -431,7 +431,7 @@ void Engine::loop() {
 		}
 		glPopMatrix();
 
-		this->renderer->check_error();
+		//	this->renderer->check_error();
 
 		glPushMatrix(); {
 			// the hud coordinate system is automatically established
@@ -455,7 +455,7 @@ void Engine::loop() {
 		}
 		glPopMatrix();
 
-		this->renderer->check_error();
+		//this->renderer->check_error();
 
 		this->profiler.end_measure("rendering");
 

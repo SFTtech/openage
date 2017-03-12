@@ -1,18 +1,21 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_WINDOW_H_
-#define OPENAGE_RENDERER_WINDOW_H_
-
-#include "context.h"
+#pragma once
 
 #include <memory>
+#include <functional>
+#include <utility>
+#include <experimental/optional>
+
 #include <SDL2/SDL.h>
 
+#include "opengl/context_provider.h"
+#include "opengl/context.h"
 #include "../coord/window.h"
+
 
 namespace openage {
 namespace renderer {
-
 
 class Window {
 public:
@@ -33,20 +36,20 @@ public:
 	coord::window get_size();
 
 	/**
-	 * Resize the drawing window.
+	 * Resize the window's client area.
+	 * @param[in] update determines what?
 	 */
-	void set_size(const coord::window &new_size, bool update=false);
+	void set_size(const coord::window &new_size);
 
 	/**
 	 * Swaps the back and front framebuffers.
-	 * Used to actually display the newly rendered frame.
+	 * Used to actually display the newly rendered frame on the screen.
 	 */
 	void swap();
 
-	/**
-	 * Return the context created for this window.
-	 */
-	std::shared_ptr<Context> get_context();
+	/// Make this context the current rendering context of the window thread.
+	/// Only use this and most other GL functions on the window thread.
+	void make_context_current();
 
 	// TODO: this shouldn't be exposed.
 	// It is only necessary because GuiBasic requires a raw SDL_Window handle, since the QtQuick
@@ -58,13 +61,16 @@ public:
 	 */
 	SDL_Window* get_raw_window() const;
 
+	/**
+	 * Return a reference to this window's GL context.
+	 */
+	opengl::GlContext* get_context();
+
 private:
 	coord::window size;
 	SDL_Window *window;
 
-	std::shared_ptr<Context> context;
+	std::experimental::optional<opengl::GlContext> context;
 };
 
 }} // namespace openage::renderer
-
-#endif
