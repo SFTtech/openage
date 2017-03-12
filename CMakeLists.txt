@@ -82,12 +82,12 @@ include(DetectProjectVersion)
 include(CTest)
 
 # initialize language support
-include(util)
-include(cpp)
-include(python)
 include(codegen)
-include(version)
+include(cpp)
 include(doxygen)
+include(options)
+include(python)
+include(util)
 
 
 # now that all modules and settings are loaded,

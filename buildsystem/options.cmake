@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # logs whether the option NAME is enabled
 # sets WITH_${VARNAME} to HAVE
