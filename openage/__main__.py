@@ -12,6 +12,7 @@ import argparse
 import multiprocessing
 import os
 
+from . import config
 from .log.logging import set_loglevel, verbosity_to_level, ENV_VERBOSITY
 
 
@@ -46,6 +47,10 @@ def main(argv=None):
                             help="increase verbosity")
     global_cli.add_argument("--quiet", "-q", action='count', default=0,
                             help="decrease verbosity")
+    global_cli.add_argument("--devmode", action="store_true",
+                            help="force-enable development mode")
+    global_cli.add_argument("--no-devmode", action="store_true",
+                            help="force-disable devlopment mode")
 
     # shared directory arguments for most subcommands
     cfg_cli = argparse.ArgumentParser(add_help=False)
@@ -94,6 +99,14 @@ def main(argv=None):
 
     # process the shared args
     set_loglevel(verbosity_to_level(args.verbose - args.quiet))
+
+    if args.no_devmode and args.devmode:
+        cli.error("can't force enable and disable devmode at the same time")
+
+    if args.no_devmode:
+        config.DEVMODE = False
+    if args.devmode:
+        config.DEVMODE = True
 
     if "asset_dir" in args and args.asset_dir:
         if not os.path.exists(args.asset_dir):
