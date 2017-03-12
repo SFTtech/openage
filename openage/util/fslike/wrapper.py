@@ -64,10 +64,10 @@ class Wrapper(FSLikeObject):
         return GuardedFile(fileobj, self.contextguard)
 
     def resolve_r(self, parts):
-        return Path(self.obj, parts) if self.is_file(parts) else None
+        return self.obj.joinpath(parts) if self.exists(parts) else None
 
     def resolve_w(self, parts):
-        return Path(self.obj, parts) if self.writable(parts) else None
+        return self.obj.joinpath(parts) if self.writable(parts) else None
 
     def list(self, parts):
         with self.contextguard:
