@@ -39,7 +39,7 @@ class Wrapper(FSLikeObject):
             self.contextguard = contextguard
 
     def __repr__(self):
-        if self.contextguard == DummyGuard:
+        if isinstance(self.contextguard, DummyGuard):
             return "{}({})".format(type(self).__name__, repr(self.obj))
 
         return "{}({}, {})".format(
@@ -49,7 +49,7 @@ class Wrapper(FSLikeObject):
         with self.contextguard:
             fileobj = self.obj.joinpath(parts).open_r()
 
-        if self.contextguard == DummyGuard:
+        if isinstance(self.contextguard, DummyGuard):
             return fileobj
 
         return GuardedFile(fileobj, self.contextguard)
@@ -58,7 +58,7 @@ class Wrapper(FSLikeObject):
         with self.contextguard:
             fileobj = self.obj.joinpath(parts).open_w()
 
-        if self.contextguard == DummyGuard:
+        if isinstance(self.contextguard, DummyGuard):
             return fileobj
 
         return GuardedFile(fileobj, self.contextguard)
