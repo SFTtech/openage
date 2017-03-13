@@ -12,7 +12,6 @@ import argparse
 import multiprocessing
 import os
 
-from . import config
 from .log.logging import set_loglevel, verbosity_to_level, ENV_VERBOSITY
 
 
@@ -103,10 +102,16 @@ def main(argv=None):
     if args.no_devmode and args.devmode:
         cli.error("can't force enable and disable devmode at the same time")
 
-    if args.no_devmode:
-        config.DEVMODE = False
-    if args.devmode:
-        config.DEVMODE = True
+    try:
+        from . import config
+
+        if args.no_devmode:
+            config.DEVMODE = False
+        if args.devmode:
+            config.DEVMODE = True
+    except ImportError:
+        if args.no_devmode or args.devmode:
+            print("code was not yet generated, ignoring devmode activation request")
 
     if "asset_dir" in args and args.asset_dir:
         if not os.path.exists(args.asset_dir):
