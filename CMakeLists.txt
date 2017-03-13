@@ -85,7 +85,7 @@ include(doxygen)
 # apply those to the project:
 
 # create documentation
-doxygen_configure(libopenage/ openage/)
+doxygen_configure(libopenage/ openage/ doc/ README.md)
 
 add_subdirectory(assets/)
 add_subdirectory(libopenage/)
