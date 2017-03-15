@@ -157,7 +157,7 @@ public:
 	 * Create a quaternion from a rotation in degree around a given axis.
 	 */
 	static this_type from_deg(T deg, Vector3 axis) {
-		return this_type::from_rad((deg * math::PI) / 180.0, axis);
+		return this_type::from_rad(deg * math::DEGSPERRAD, axis);
 	}
 
 	/**
@@ -273,7 +273,7 @@ public:
 	 * with given precision in degree.
 	 */
 	bool equals_deg(const this_type &other, T deg_eps=default_eps) const {
-		return this->equals_rad(other, (deg_eps * 180.0) / math::PI);
+		return this->equals_rad(other, deg_eps * math::RADSPERDEG);
 	}
 
 	/**
