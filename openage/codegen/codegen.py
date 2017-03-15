@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 """
 Utility and driver module for C++ code generation.
@@ -232,7 +232,7 @@ def get_header_lines():
 
     yield ""
     yield "Warning: this file was auto-generated; manual changes are futile."
-    yield "For details, see buildsystem/codegen.cmake and py/openage/codegen."
+    yield "For details, see buildsystem/codegen.cmake and openage/codegen."
     yield ""
 
 
