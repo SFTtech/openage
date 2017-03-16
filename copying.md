@@ -94,6 +94,7 @@ _the openage authors_ are:
 | Christoph Heine             | heinezen                    | heinezen@hotmail.de                   |
 | Marco Savelli               | Piruzzolo                   | svlmrc@gmail.com                      |
 | Yvan Burrie                 | yvan-burrie                 | yvan.burrie@hotmail.com               |
+| Brendan Jones               | Btjones711                  | btjones711@gmail.com                  |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
