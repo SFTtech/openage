@@ -68,6 +68,8 @@ def tests_cpp():
     yield "openage::util::tests::matrix"
     yield "openage::util::tests::quaternion"
     yield "openage::util::tests::vector"
+    yield "openage::util::tests::siphash"
+    yield "openage::util::tests::array_conversion"
     yield "openage::input::tests::parse_event_string", "keybinds parsing"
 
 

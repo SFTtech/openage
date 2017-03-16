@@ -4,9 +4,10 @@
 
 #include <random>
 #include <sstream>
-#include <string.h>
+#include <array>
 
 #include "../util/timing.h"
+#include "../util/hash.h"
 #include "../error/error.h"
 
 
@@ -20,6 +21,13 @@ namespace openage {
  * RNG, so don't use it as one. If you do, I'll tell my mom.
  */
 namespace rng {
+
+
+// Key for seed hashing, just some hardcoded key
+static const std::array<uint8_t, 16> seed_key{
+	0xba, 0xda, 0x55, 0x00, 0x5e, 0xed, 0x00, 0x00,
+	0xab, 0xcd, 0xef, 0x12, 0x34, 0x56, 0x78, 0x90
+};
 
 
 RNG::RNG(uint64_t v1) {
@@ -47,84 +55,20 @@ void RNG::seed(uint64_t val) {
 }
 
 
-/**
- * murmurhash3 bit avalancher - output is uniformly distributed
- * and changing one bit of input results in ~1/2 of output bits changed
- * This function is a good way of mixing up an input,
- * or mixing together two results with hash64(val1 ^ val2)
- *
- * https://en.wikipedia.org/wiki/MurmurHash
- */
-static uint64_t hash64(uint64_t val) {
-	// The two magic numbers have been determined heuristically.
-	// They avalanche all bits in val to within 0.25% bias.
-
-	val ^= val >> 33;
-	val *= 0xff51afd7ed558ccd;
-	val ^= val >> 33;
-	val *= 0xc4ceb9fe1a85ec53;
-	return val ^ (val >> 33);
-}
-
-
-/*
- * reinterpret_casts 8 chars from a buffer as a uint64_t.
- */
-static inline uint64_t from_cptr(const char *data) {
-	uint64_t result;
-	memcpy(reinterpret_cast<char *>(&result), data, sizeof(result));
-	return result;
-}
-
-
-/*
- * hashes an initial seed into the base state
- */
-static void init_hash(uint64_t *state, uint64_t seed) {
-	// Mix the initial seed into data for each state value
-	state[0] = hash64(seed);
-	state[1] = hash64(seed ^ state[0]);
-}
-
-
-/*
- * For each 8-byte block after the initial seed,
- * mix it with state[0] and set state[0] equal to the result.
- * Then, set state[1] to the mixture of state[1] and state[0]
- * This lets each bit from the input play a role in the output
- * w/o requiring that the size be a multiple of 8 or having extra
- * code for the non multiple-of-8 sections
- */
-static void hash_bytes(uint64_t *state, const char *data, size_t count) {
-	for (size_t i = 1; i <= count; i++) {
-		state[0] = hash64(state[0] ^ from_cptr(data+i));
-		state[1] = hash64(state[0] ^ state[1]);
-	}
-}
-
-
 void RNG::seed(const void *dat, size_t count) {
 	if (count == 0) {
 		throw Error(MSG(err) << "0 bytes supplied as seed data");
 	}
 
-	constexpr uint64_t default_seed = 0x0123456789abcdef;
-	constexpr size_t uint64_s = sizeof(uint64_t);
-	const char *data = static_cast<const char *>(dat);
+	const uint8_t *data = static_cast<const uint8_t *>(dat);
 
-	if (count > uint64_s) {
-		init_hash(state, from_cptr(data));
-		hash_bytes(state, data, count - uint64_s);
-	}
-	else {
-		uint64_t init_seed = 0;
-		memcpy(&init_seed, data, count);
-		init_hash(state, init_seed);
-	}
+	openage::util::Siphash siphash(seed_key);
 
-	if (!(state[0] || state[1])) {
-		state[0] = default_seed;
-	}
+	state[0] = siphash.digest(data, count);
+	// Previously, for state[1] we hashed (data ^ state[0])
+	// As `data` now has variable length I can't do that, I think that just
+	// hashing `state[0]` is enough
+	state[1] = siphash.digest(state[0]);
 
 	// This helps prevent low-zero states caused by a bad seed
 	this->discard(discard_on_seed);
