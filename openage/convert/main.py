@@ -445,13 +445,13 @@ def conversion_required(asset_dir, args):
 
         info("Converting {}".format(", ".join(sorted(changes))))
 
-        target_path = asset_dir["here"].resolve("w")
+        # try to resolve resolve the output path
+        target_path = asset_dir.resolve_native_path_w()
         if not target_path:
-            raise OSError("could not locate a writable asset path")
+            raise OSError("could not resolve a writable asset path "
+                          "in {}".format(asset_dir))
 
-        info("Will save to '{}'".format(
-            target_path[".."]
-        ))
+        info("Will save to '{}'".format(target_path))
 
         for component in changelog.COMPONENTS:
             if component not in changes:
