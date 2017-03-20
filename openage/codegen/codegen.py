@@ -119,7 +119,11 @@ def codegen(projectdir, mode):
     generated = set()
 
     for parts, data in wrapper.get_writes():
+        # TODO: this assumes projectdir is a fslike.Directory!
         generated.add(projectdir.fsobj.resolve(parts))
+
+        # now, actually perform the generation.
+        # first, assemble the path for the current file
         wpath = projectdir[parts]
 
         try:
@@ -144,9 +148,11 @@ def codegen(projectdir, mode):
             with wpath.open('wb') as outfile:
                 print(b'/'.join(parts).decode(errors='replace'))
                 outfile.write(data)
+
         elif mode == CodegenMode.dryrun:
             # no-op
             pass
+
         elif mode == CodegenMode.clean:
             if wpath.is_file():
                 print(b'/'.join(parts).decode(errors='replace'))
@@ -194,6 +200,8 @@ def get_codegen_depends(outputwrapper):
     """
     # add all files that have been read as depends
     for parts in outputwrapper.get_reads():
+        # TODO: this assumes that the wrap.obj.fsobj is a fslike.Directory
+        # this just resolves paths to the output directory
         yield outputwrapper.obj.fsobj.resolve(parts).decode()
 
     module_blacklist = set(depend_module_blacklist())
