@@ -30,6 +30,7 @@ GuiEngineImpl::GuiEngineImpl(GuiRenderer *renderer, const std::vector<GuiImagePr
 
 	QObject::connect(this, &GuiEngineImpl::rootDirsPathsChanged, &this->watcher, &RecursiveDirectoryWatcher::rootDirsPathsChanged);
 	QObject::connect(&this->watcher, &RecursiveDirectoryWatcher::changeDetected, this, &GuiEngineImpl::onReload);
+    QObject::connect(this->renderer, SIGNAL(quit()), QCoreApplication::instance(), SLOT(quit())); // TODO: get the correct sender
 }
 
 GuiEngineImpl::~GuiEngineImpl() {
