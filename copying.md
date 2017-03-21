@@ -95,6 +95,7 @@ _the openage authors_ are:
 | Marco Savelli               | Piruzzolo                   | svlmrc@gmail.com                      |
 | Yvan Burrie                 | yvan-burrie                 | yvan.burrie@hotmail.com               |
 | Martin Bernardi             | martinber                   | martinbernardi@openmailbox.org        |
+| Erik Griese                 | citron0xa9                  | erik.griese@yahoo.de                  |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
