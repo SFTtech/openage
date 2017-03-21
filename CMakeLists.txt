@@ -94,7 +94,7 @@ include(util)
 # apply those to the project:
 
 # create documentation
-doxygen_configure(libopenage/ openage/)
+doxygen_configure(libopenage/ openage/ doc/ README.md)
 
 # static content
 set(INSTALLED_GLOBAL_ASSET_DIR "${CMAKE_INSTALL_PREFIX}/share/openage")
