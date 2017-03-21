@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,6 +8,8 @@
 
 #include "format.h"
 #include "types.h"
+#include "../util/path.h"
+
 
 namespace openage {
 namespace audio {
@@ -21,14 +23,14 @@ protected:
 	/*
 	 * The resource's location in the filesystem.
 	 */
-	std::string path;
+	util::Path path;
 
 public:
 	/**
 	 * Initializes a new InMemoryLoader.
 	 * @param path the resource's location in the filesystem
 	 */
-	InMemoryLoader(const std::string &path);
+	InMemoryLoader(const util::Path &path);
 	virtual ~InMemoryLoader() = default;
 
 	/**
@@ -41,9 +43,8 @@ public:
 	 * @param path the resource's location in the filesystem
 	 * @param format the resource's audio format
 	 */
-	static std::unique_ptr<InMemoryLoader> create(const std::string &path,
+	static std::unique_ptr<InMemoryLoader> create(const util::Path &path,
 	                                              format_t format);
 };
 
-}
-}
+}} // openage::audio

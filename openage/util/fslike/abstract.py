@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Provides filesystem-like interfaces:
@@ -23,6 +23,8 @@ class FSLikeObject(ABC):
     To be implemented by any filesystem-like objects that wish to provide
     their contents via Path-like and file-like objects.
 
+    Normally, you use the Path provided by self.root for example!
+
     The abstract member methods take a list or tuple of path component
     bytes objects, e.g.: [b'etc', b'passwd'].
 
@@ -30,10 +32,27 @@ class FSLikeObject(ABC):
     the object is read-only, the given method is not implemented, ...),
     they may and shall raise an appropriate instance of IOError.
     """
+
+    # sorry pylint, we need those methods.
+    # pylint: disable=too-many-public-methods
+
     @property
     def root(self):
-        """ Returns a path-like object for the root of this file system. """
+        """
+        Returns a path-like object for the root of this file system.
+
+        This is the main interface that is used normally.
+        """
         return Path(self, [])
+
+    def pretty(self, parts):
+        """
+        pretty-format a path in this filesystem like object.
+        """
+        return "[%s]:%s" % (
+            str(self),
+            b"/".join(parts).decode(errors='replace')
+        )
 
     @abstractmethod
     def open_r(self, parts):
@@ -44,6 +63,37 @@ class FSLikeObject(ABC):
     def open_w(self, parts):
         """ Shall return a BufferedWriter for the given file ("mode 'wb'"). """
         pass
+
+    def exists(self, parts):
+        """ Test if the parts are a file or a directory """
+        return self.is_file(parts) or self.is_dir(parts)
+
+    def resolve_r(self, parts):
+        """
+        Returns a new, flattened, Path if the target exists.
+        The fslike parts in between may be skipped,
+        so that just the resulting path is returned.
+
+        Returns None if the path does not exist.
+        """
+        return Path(self, parts) if self.exists(parts) else None
+
+    def resolve_w(self, parts):
+        """
+        Returns a new flattened path. This skips funny mounts in between.
+
+        Returns None if the path does not exist or is not writable.
+        """
+        return Path(self, parts) if self.writable(parts) else None
+
+    def get_native_path(self, parts):  # pylint: disable=no-self-use,unused-argument
+        """
+        Return the path bytestring that represents a location usable
+        by your kernel.
+        If the path can't be represented natively, return None.
+        """
+        # By default, return None. It's overridden by subclasses.
+        return None
 
     @abstractmethod
     def list(self, parts):

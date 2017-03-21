@@ -2,43 +2,32 @@
 
 #include "opus_in_memory_loader.h"
 
+#include <opusfile.h>
 #include <string>
 
-#include <opusfile.h>
-
 #include "error.h"
+#include "opus_loading.h"
 #include "../log/log.h"
 
 
 namespace openage {
 namespace audio {
 
-OpusInMemoryLoader::OpusInMemoryLoader(const std::string &path)
+OpusInMemoryLoader::OpusInMemoryLoader(const util::Path &path)
 	:
-	InMemoryLoader{path} {
-}
+	InMemoryLoader{path} {}
 
-// custom deleter for OggOpusFile unique pointers
-static auto opus_deleter = [](OggOpusFile *op_file) {
-	if (op_file != nullptr) {
-		op_free(op_file);
-	}
-};
 
 pcm_data_t OpusInMemoryLoader::get_resource() {
-	int op_err;
+
 	// open the opus file
-	opus_file_t op_file{op_open_file(path.c_str(), &op_err), opus_deleter};
+	opus_file_t op_file = open_opus_file(this->path);
 
-	if (op_err != 0) {
-		throw audio::Error{MSG(err) << "Could not open: " << path};
-	}
-
-	auto op_channels = op_channel_count(op_file.get(), -1);
-	auto pcm_length = op_pcm_total(op_file.get(), -1);
+	auto op_channels = op_channel_count(op_file.handle.get(), -1);
+	auto pcm_length = op_pcm_total(op_file.handle.get(), -1);
 	// the stream is not seekable
 	if (pcm_length < 0) {
-		throw audio::Error{MSG(err) << "Opus file is not seekable"};
+		throw audio::Error{ERR << "Opus file is not seekable"};
 	}
 
 	// calculate pcm buffer size depending on the number of channels
@@ -50,11 +39,18 @@ pcm_data_t OpusInMemoryLoader::get_resource() {
 	// read data from opus file
 	int position = 0;
 	while (true) {
-		int samples_read = op_read(op_file.get(), &buffer.front()+position,
-				length-position, nullptr);
+		int samples_read = op_read(
+			op_file.handle.get(),
+			&buffer.front() + position,
+			length-position, nullptr
+		);
+
 		if (samples_read < 0) {
-			throw audio::Error{MSG(err) << "Failed to read from opus file: errorcode=" << samples_read};
-		} else if (samples_read == 0) {
+			throw audio::Error{
+				ERR << "Failed to read from opus file: errorcode=" << samples_read
+			};
+		}
+		else if (samples_read == 0) {
 			break;
 		}
 

@@ -1,5 +1,4 @@
 # Copyright 2015-2017 the openage authors. See copying.md for legal info.
-# pylint: disable=R0912
 """
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
@@ -20,14 +19,17 @@ from .dataformat.data_formatter import DataFormatter
 from .gamedata.empiresdat import load_gamespec, EmpiresDat
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
+from .hdlanguagefile import (read_age2_hd_fe_stringresources,
+                             read_age2_hd_3x_stringresources)
+from .interface.cutter import InterfaceCutter
+from .interface.rename import hud_rename
 from .slp_converter_pool import SLPConverterPool
-from .interface.interfacecutter import InterfaceCutter
-from .interface.interfacerename import interface_rename
+from .stringresource import StringResource
 
 
 def get_string_resources(args):
     """ reads the (language) string resources """
-    from .stringresource import StringResource
+
     stringres = StringResource()
 
     srcdir = args.srcdir
@@ -35,63 +37,11 @@ def get_string_resources(args):
 
     # AoK:TC uses .DLL PE files for its string resources,
     # HD uses plaintext files
-    if GameVersion.age2_fe in args.game_versions:
-        from .hdlanguagefile import read_hd_language_file
+    if GameVersion.age2_hd_fe in args.game_versions:
+        count += read_age2_hd_fe_stringresources(stringres, srcdir["resources"])
 
-        for lang in srcdir["resources"].list():
-            try:
-                if lang == b'_common':
-                    continue
-                langfilename = ["resources", lang.decode(),
-                                "strings", "key-value",
-                                "key-value-strings-utf8.txt"]
-
-                with srcdir[langfilename].open('rb') as langfile:
-                    stringres.fill_from(read_hd_language_file(langfile, lang))
-
-                count += 1
-            except FileNotFoundError:
-                # that's fine, there are no language files for every language.
-                pass
     elif GameVersion.age2_hd_3x in args.game_versions:
-        from .hdlanguagefile import read_hd_language_file
-
-        # HD Edition 3.x and below store language .txt files
-        # in the Bin/ folder.
-        # Specific language strings are in Bin/$LANG/*.txt.
-        for lang in srcdir["bin"].list():
-            dirname = ["bin", lang.decode()]
-
-            # There are some .txt files immediately in bin/, but they don't
-            # seem to contain anything useful. (Everything is overridden by
-            # files in Bin/$LANG/.)
-            if not srcdir[dirname].is_dir():
-                continue
-
-            # Sometimes we can have language DLLs in Bin/$LANG/
-            # e.g. HD Edition 2.0
-            # We do _not_ want to treat these as text files
-            # so first check explicitly
-
-            if srcdir["bin", lang.decode(), "language.dll"].is_file():
-                from .pefile import PEFile
-                for name in ["language.dll",
-                             "language_x1.dll",
-                             "language_x1_p1.dll"]:
-                    pefile = PEFile(
-                        srcdir["bin", lang.decode(), name].open('rb'))
-                    stringres.fill_from(pefile.resources().strings)
-                    count += 1
-
-            else:
-                for basename in srcdir[dirname].list():
-                    langfilename = ["bin", lang.decode(), basename]
-                    with srcdir[langfilename].open('rb') as langfile:
-                        # No utf-8 :(
-                        stringres.fill_from(
-                            read_hd_language_file(
-                                langfile, lang, enc='iso-8859-1'))
-                    count += 1
+        count += read_age2_hd_3x_stringresources(stringres, srcdir)
 
     elif srcdir["language.dll"].is_file():
         from .pefile import PEFile
@@ -119,20 +69,24 @@ def get_blendomatic_data(srcdir):
     except FileNotFoundError:
         blendomatic_dat = srcdir["data/blendomatic.dat"].open('rb')
 
-    with blendomatic_dat:
-        return Blendomatic(blendomatic_dat)
+    return Blendomatic(blendomatic_dat)
 
 
 def get_gamespec(srcdir, game_versions, dont_pickle):
     """ reads empires.dat and fixes it """
 
-    filename = ("empires2_x2_p1.dat" if GameVersion.age2_ak in game_versions else
-                "empires2_x1_p1.dat")
+    if GameVersion.age2_hd_ak in game_versions:
+        filename = "empires2_x2_p1.dat"
+    else:
+        filename = "empires2_x1_p1.dat"
 
     cache_file = os.path.join(gettempdir(), "{}.pickle".format(filename))
 
     with srcdir["data", filename].open('rb') as empiresdat_file:
-        gamespec = load_gamespec(empiresdat_file, game_versions, cache_file, not dont_pickle)
+        gamespec = load_gamespec(empiresdat_file,
+                                 game_versions,
+                                 cache_file,
+                                 not dont_pickle)
 
     # modify the read contents of datfile
     from .fix_data import fix_data
@@ -169,6 +123,20 @@ def convert(args):
     info("asset conversion complete; asset version: " + str(ASSET_VERSION))
 
 
+def get_palette(srcdir, game_versions, offset=0):
+    """
+    Read and create the color palette
+    """
+
+    # `.bin` files are renamed `.bina` in HD version 4
+    if GameVersion.age2_hd_fe in game_versions:
+        palette_path = "interface/{}.bina".format(50500 + offset)
+    else:
+        palette_path = "interface/{}.bin".format(50500 + offset)
+
+    return ColorTable(srcdir[palette_path].open("rb").read())
+
+
 def convert_metadata(args):
     """ Converts the metadata part """
     if not args.flag("no_metadata"):
@@ -177,14 +145,8 @@ def convert_metadata(args):
 
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
+    palette = get_palette(args.srcdir, args.game_versions)
 
-    # `.bin` files are renamed `.bina` in HD version 4
-    if GameVersion.age2_fe in args.game_versions:
-        palette_path = "interface/50500.bina"
-    else:
-        palette_path = "interface/50500.bin"
-
-    palette = ColorTable(args.srcdir[palette_path].open("rb").read())
     # store for use by convert_media
     args.palette = palette
 
@@ -217,7 +179,7 @@ def convert_metadata(args):
     stringres = get_string_resources(args)
     data_formatter.add_data(stringres.dump("string_resources"))
 
-    yield "writing gamespec csv files"
+    yield "game specification files"
     data_formatter.export(args.targetdir, ("csv",))
 
     if args.flag('gen_extra_files'):
@@ -230,21 +192,29 @@ def convert_metadata(args):
             player_palette.save_visualization(outfile)
 
 
-def extract_mediafiles_names_map(files_to_convert, args):
-    """ Gets names from the *.bin files, make them lowercase """
-    if GameVersion.age2_fe in args.game_versions:
+def extract_mediafiles_names_map(srcdir, game_versions):
+    """
+    Some *.bin files contain name assignments.
+    They're in the form of e.g.:
+    "background1_files     camdlg1  none  53171  -1"
+
+    We use this mapping to rename the file.
+    """
+
+    matcher = re.compile(r"\w+_files\s+(\w+)\s+\w+\s+(\w+)")
+
+    if GameVersion.age2_hd_fe in game_versions:
         suffix = '.bina'
     else:
         suffix = '.bin'
 
     names_map = dict()
 
-    for filepath in files_to_convert:
-        filename = b'/'.join(filepath.parts).decode()
-        if filename.endswith(suffix):
+    for filepath in srcdir["interface"].iterdir():
+        if filepath.suffix == suffix:
             try:
                 for line in filepath.open():
-                    match = re.match(r"\w+_files\s+(\w+)\s+\w+\s+(\w+)", line)
+                    match = matcher.search(line)
                     if match:
                         groups = match.group(2, 1)
                         names_map[groups[0]] = groups[1].lower()
@@ -255,35 +225,64 @@ def extract_mediafiles_names_map(files_to_convert, args):
     return names_map
 
 
-def slp_rename(filename, names_map):
+def slp_rename(filepath, names_map):
     """ Returns a human-readable name if it's in the map """
     try:
-        dirname_basename = re.match(r"^(.*/)(\d+)\.slp$", filename).group(1, 2)
-        return dirname_basename[0] + names_map[dirname_basename[1]] + ".slp"
+        # look up the slp id (= file stem) in the rename map
+        return filepath.parent[
+            names_map[filepath.stem] + filepath.suffix
+        ]
+
     except KeyError:
-        return filename
+        return filepath
 
 
 def convert_media(args):
     """ Converts the media part """
+
+    # set of (drsname, suffix) to ignore
+    # if drsname is None, it matches to any naoe
     ignored = set()
     if args.flag("no_sounds"):
         ignored.add((None, '.wav'))
     if args.flag("no_graphics"):
-        ignored.update([('graphics', '.slp'), ('terrain', '.slp')])
+        ignored.add((frozenset({'graphics', 'terrain', 'gamedata'}), '.slp'))
     if args.flag("no_interface"):
-        ignored.add(('interface', '.slp'))
+        ignored.add((frozenset({'interface'}), '.slp'))
 
     files_to_convert = []
-    for dirname in ['sounds', 'graphics', 'terrain', 'interface']:
+    for dirname in ['sounds', 'graphics', 'terrain',
+                    'interface', 'gamedata']:
+
         for filepath in args.srcdir[dirname].iterdir():
-            if (((None, filepath.suffix) in ignored) or
-                    ((filepath.parts[0].decode(), filepath.suffix) in ignored)):
-                continue
-            elif filepath.is_dir():
+            skip_file = False
+
+            # check if the path should be ignored
+            for folders, ext in ignored:
+                if ext == filepath.suffix and\
+                   (not folders or dirname in folders):
+                    skip_file = True
+                    break
+
+            # skip unwanted ids ("just debugging things(tm)")
+            if getattr(args, "id", None) and\
+               int(filepath.stem) != args.id:
+                skip_file = True
+
+            if skip_file or filepath.is_dir():
                 continue
 
-            files_to_convert.append(filepath)
+            # by default, keep the "dirname" the same.
+            # we may want to rename though.
+            output_dir = None
+
+            # do the dir "renaming"
+            if dirname == "gamedata" and filepath.suffix == ".slp":
+                output_dir = "graphics"
+            elif dirname == "gamedata" and filepath.suffix == ".wav":
+                output_dir = "sounds"
+
+            files_to_convert.append((filepath, output_dir))
 
     yield len(files_to_convert)
 
@@ -292,72 +291,130 @@ def convert_media(args):
 
     info("converting media")
 
-    named_mediafiles_map = extract_mediafiles_names_map(files_to_convert, args)
+    # there is id->name mapping information in some bin files
+    named_mediafiles_map = extract_mediafiles_names_map(args.srcdir,
+                                                        args.game_versions)
 
     jobs = getattr(args, "jobs", None)
-    with SLPConverterPool(args.palette, jobs) as slp_converter:
-        args.slp_converter = slp_converter
+    with SLPConverterPool(args.palette, jobs) as pool:
 
         from ..util.threading import concurrent_chain
         yield from concurrent_chain(
-            (convert_mediafile(fpath,
-                               named_mediafiles_map,
-                               args) for fpath in files_to_convert), jobs)
+            (convert_mediafile(
+                fpath,
+                dirname,
+                named_mediafiles_map,
+                pool,
+                args
+            ) for (fpath, dirname) in files_to_convert),
+            jobs
+        )
 
-    # clean args
-    del args.slp_converter
+
+def change_dir(path_parts, dirname):
+    """
+    If requested, rename the containing directory
+    This assumes the path ends with dirname/filename.ext,
+    so that dirname can be replaced.
+    This is used for placing e.g. interface/lol.wav in sounds/lol.wav
+    """
+
+    # this assumes the directory name is the second last part
+    # if we decide for other directory hierarchies,
+    # this assumption will be wrong!
+    if dirname:
+        new_parts = list(path_parts)
+        new_parts[-2] = dirname.encode()
+        return new_parts
+
+    return path_parts
 
 
-def convert_mediafile(filepath, names_map, args):
+def convert_slp(filepath, dirname, names_map, converter_pool, args):
+    """
+    Convert a slp image and save it to the target dir.
+    This also writes the accompanying metadata file.
+    """
+
+    with filepath.open_r() as infile:
+        indata = infile.read()
+
+    # some user interface textures must be cut using hardcoded values
+    if filepath.parent.name == 'interface':
+        # the stem is the file id
+        cutter = InterfaceCutter(int(filepath.stem))
+    else:
+        cutter = None
+
+    # do the CPU-intense part a worker process
+    texture = converter_pool.convert(indata, cutter)
+
+    # the hotspots of terrain textures must be fixed
+    if filepath.parent.name == 'terrain':
+        for entry in texture.image_metadata:
+            entry["cx"] = TILE_HALFSIZE["x"]
+            entry["cy"] = TILE_HALFSIZE["y"]
+
+    # replace .slp by .png and rename the file
+    # by some lookups (that map id -> human readable)
+    tex_filepath = hud_rename(slp_rename(
+        filepath,
+        names_map
+    )).with_suffix(".slp.png")
+
+    # pretty hacky: use the source path-parts as output filename,
+    # additionally change the output dir name if requested
+    out_filename = b'/'.join(change_dir(tex_filepath.parts, dirname)).decode()
+
+    # save atlas to targetdir
+    texture.save(args.targetdir, out_filename, ("csv",))
+
+
+def convert_wav(filepath, dirname, args):
+    """
+    Convert a wav audio file to an opus file
+    """
+
+    with filepath.open_r() as infile:
+        indata = infile.read()
+
+    # TODO use libav or something to avoid this utility dependency
+    invocation = ('opusenc', '--quiet', '-', '-')
+    opusenc = Popen(invocation, stdin=PIPE, stdout=PIPE)
+    outdata = opusenc.communicate(input=indata)[0]
+    if opusenc.returncode != 0:
+        raise Exception("opusenc failed")
+
+    # rename the directory
+    out_parts = change_dir(filepath.parts, dirname)
+
+    # save the converted sound data
+    with args.targetdir[out_parts].with_suffix('.opus').open_w() as outfile:
+        outfile.write(outdata)
+
+
+def convert_mediafile(filepath, dirname, names_map, converter_pool, args):
     """
     Converts a single media file, according to the supplied arguments.
     Designed to be run in a thread via concurrent_chain.
 
     May write multiple output files (e.g. in the case of textures: csv, png).
 
-    Args shall contain srcdir, targetdir, and slp_converter.
+    Args shall contain srcdir, targetdir.
     """
+
     # progress message
     filename = b'/'.join(filepath.parts).decode()
     yield filename
 
-    with filepath.open_r() as infile:
-        indata = infile.read()
+    if filepath.suffix == '.slp':
+        convert_slp(filepath, dirname, names_map, converter_pool, args)
 
-    if filename.endswith('.slp'):
-        # some user interface textures must be cut using hardcoded values
-        if filename.startswith('interface/'):
-            cutter = InterfaceCutter(filename)
-        else:
-            cutter = None
-
-        # do the CPU-intense part in a subprocess
-        texture = args.slp_converter.convert(indata, cutter)
-
-        # the hotspots of terrain textures must be fixed
-        if filename.startswith('terrain/'):
-            for entry in texture.image_metadata:
-                entry["cx"] = TILE_HALFSIZE["x"]
-                entry["cy"] = TILE_HALFSIZE["y"]
-
-        # save atlas to targetdir
-        texture.save(args.targetdir,
-                     interface_rename(slp_rename(filename, names_map)),
-                     ("csv",))
-
-    elif filename.endswith('.wav'):
-        # convert the WAV file to an opus file
-        # TODO use libav or something to avoid this utility dependency
-        invocation = ('opusenc', '--quiet', '-', '-')
-        opusenc = Popen(invocation, stdin=PIPE, stdout=PIPE)
-        outdata = opusenc.communicate(input=indata)[0]
-        if opusenc.returncode != 0:
-            raise Exception("opusenc failed")
-
-        with args.targetdir[filename].with_suffix('.opus').open_w() as outfile:
-            outfile.write(outdata)
+    elif filepath.suffix == '.wav':
+        convert_wav(filepath, dirname, args)
 
     else:
         # simply copy the file over.
-        with args.targetdir[filename].open_w() as outfile:
-            outfile.write(indata)
+        with filepath.open_r() as infile:
+            with args.targetdir[filename].open_w() as outfile:
+                outfile.write(infile.read())

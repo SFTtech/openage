@@ -2,9 +2,11 @@
 
 #pragma once
 
-#include <string.h>
 #include <limits.h>
 #include <cmath>
+#include <cstring>
+#include <string>
+#include <vector>
 
 #include "../error/error.h"
 
@@ -13,9 +15,17 @@ namespace openage {
 namespace util {
 
 /**
+ * global empty string, sometimes needed
+ * as return value in some `std::string &function()` return values.
+ */
+extern std::string empty_string;
+
+
+/**
  * modulo operation that guarantees to return positive values.
  */
-template<typename T>
+template <typename T>
+constexpr
 T mod(T x, T m) {
 	T r = x % m;
 
@@ -29,7 +39,8 @@ T mod(T x, T m) {
 /**
  * compiletime defined modulo function.
  */
-template<typename T, unsigned int modulo>
+template <typename T, unsigned int modulo>
+constexpr
 T mod(T x) {
 	T r = x % modulo;
 
@@ -44,7 +55,8 @@ T mod(T x) {
 /**
  * compiletime defined rotate left function
  */
-template<typename T, int amount>
+template <typename T, int amount>
+constexpr
 T rol(T x) {
 	static_assert(sizeof(T)*CHAR_BIT > amount && amount > 0, "invalid rotation amount");
 	return (x << amount) | (x >> (sizeof(T)*CHAR_BIT - amount));
@@ -55,7 +67,8 @@ T rol(T x) {
  * implements the 'correct' version of the division operator,
  * which always rounds to -inf
  */
-template<typename T>
+template <typename T>
+constexpr
 inline T div(T x, T m) {
 	return (x - mod<T>(x, m)) / m;
 }
@@ -66,7 +79,7 @@ inline T div(T x, T m) {
  * use for stdlib structures like std::set.
  * the template parameter has to be a pointer type.
  */
-template<typename T>
+template <typename T>
 struct less {
 	bool operator ()(const T x, const T y) const {
 		return *x < *y;
@@ -79,8 +92,8 @@ static constexpr size_t uint64_s = 8;
 
 
 /**
- * Convert a C-style array of uint8_t to a uint64_t. Uses big-endianness as
- * default.
+ * Convert a C-style array of uint8_t to a uint64_t.
+ * Uses little-endianness as default.
  * Fills the remaining bytes with zeroes.
  *
  * e.g (big-endian): {0x01, 0x23, 0x45, 0x67} -> 0x0123456700000000
@@ -92,17 +105,20 @@ static constexpr size_t uint64_s = 8;
  * @return Input data as a 64 bit number.
  */
 inline uint64_t
-array8_to_uint64(const uint8_t *start, size_t count, bool big_endian = true) {
+array8_to_uint64(const uint8_t *start, size_t count, bool big_endian=false) {
 	if (count > uint64_s) {
 		throw Error(MSG(err) << "Tried to copy more than " << uint64_s << " bytes");
 	}
 
 	uint64_t result{0};
-	for (size_t i = 0; i < count; i++) {
-		if (big_endian) {
+
+	if (big_endian) {
+		for (size_t i = 0; i < count; i++) {
 			result |= static_cast<uint64_t>(*(start + i)) << (7 - i) * 8;
 		}
-		else {
+	}
+	else {
+		for (size_t i = 0; i < count; i++) {
 			result |= static_cast<uint64_t>(*(start + i)) << i * 8;
 		}
 	}
@@ -111,7 +127,7 @@ array8_to_uint64(const uint8_t *start, size_t count, bool big_endian = true) {
 
 
 /**
- * Convert a uint64_t to an array of uint8_t. Uses big-endianness as default.
+ * Convert a uint64_t to an array of uint8_t. Uses little-endianness as default.
  *
  * e.g (big-endian):
  *     0x0123456789abcdef -> {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef}
@@ -123,15 +139,17 @@ array8_to_uint64(const uint8_t *start, size_t count, bool big_endian = true) {
  * @return Input data as a 8 bit number array.
  */
 inline std::vector<uint8_t>
-uint64_to_array8(const uint64_t value, bool big_endian = true) {
+uint64_to_array8(const uint64_t value, bool big_endian=false) {
 	std::vector<uint8_t> result(uint64_s, 0);
 
-	for (size_t i = 0; i < uint64_s; i++) {
-		if (big_endian) {
-			result.at(i) = (value >> ((7 - i) * 8)) & 0xff;
+	if (big_endian) {
+		for (size_t i = 0; i < uint64_s; i++) {
+			result[i] = (value >> ((7 - i) * 8)) & 0xff;
 		}
-		else {
-			result.at(i) = (value >> (i * 8)) & 0xff;
+	}
+	else {
+		for (size_t i = 0; i < uint64_s; i++) {
+			result[i] = (value >> (i * 8)) & 0xff;
 		}
 	}
 	return result;
@@ -139,18 +157,22 @@ uint64_to_array8(const uint64_t value, bool big_endian = true) {
 
 
 /**
- * Get return array size for array8_to_array64()
+ * Get the number of uint64-elements
+ * that result from converting a count-sized uint8_t array.
+ *
+ * Used to determine the size for array8_to_array64()
  *
  * @return ceil(count/8)
  */
 inline constexpr size_t array64_size(size_t count) {
-	return std::ceil(static_cast<double>(count) / static_cast<double>(uint64_s));
+	size_t partial = mod<size_t, uint64_s>(count);
+	return ((count - partial) / uint64_s) + (partial ? 1 : 0);
 }
 
 
 /**
  * Convert a C-style array of uint8_t to a std::vector of uint64_t.
- * Uses big-endianness as default.
+ * Uses little-endianness as default.
  * Fills the remaining bytes of the last uint64_t with zeroes.
  *
  * e.g (big-endian): {0x01, 0x23, 0x45, 0x67} -> 0x0123456700000000
@@ -162,16 +184,18 @@ inline constexpr size_t array64_size(size_t count) {
  * @return Input data as a 64 bit number vector.
  */
 inline std::vector<uint64_t>
-array8_to_array64(const uint8_t *start, size_t count, bool big_endian = true) {
+array8_to_array64(const uint8_t *start, size_t count, bool big_endian=false) {
 	size_t size{array64_size(count)};
 	std::vector<uint64_t> result(size, 0);
 
 	size_t rem_bytes;
 	for (size_t i = 0; i < size; i++) {
 		rem_bytes = count - i * uint64_s;
-		result.at(i) = array8_to_uint64(start + (i * uint64_s),
-		                                std::min(rem_bytes, uint64_s),
-		                                big_endian);
+		result[i] = array8_to_uint64(
+			start + (i * uint64_s),
+			std::min(rem_bytes, uint64_s),
+			big_endian
+		);
 	}
 	return result;
 }
@@ -179,7 +203,7 @@ array8_to_array64(const uint8_t *start, size_t count, bool big_endian = true) {
 
 /**
  * Convert a C-style array of uint64_t to a std::vector of uint8_t.
- * Uses big-endianness ad default.
+ * Uses little-endianness as default.
  *
  * e.g (big-endian):
  *     0x0123456789abcdef -> {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef}
@@ -192,7 +216,7 @@ array8_to_array64(const uint8_t *start, size_t count, bool big_endian = true) {
  * @return Input data as a 8 bit number vector.
  */
 inline std::vector<uint8_t>
-array64_to_array8(const uint64_t *start, size_t count, bool big_endian = true) {
+array64_to_array8(const uint64_t *start, size_t count, bool big_endian=false) {
 	std::vector<uint8_t> result;
 	result.reserve(count * uint64_s);
 
@@ -202,6 +226,54 @@ array64_to_array8(const uint64_t *start, size_t count, bool big_endian = true) {
 	}
 
 	return result;
+}
+
+
+/**
+ * Extend a vector with elements, without destroying source one.
+ */
+template <typename T>
+void vector_extend(std::vector<T> &vec, const std::vector<T> &ext) {
+	vec.reserve(vec.size() + ext.size());
+	vec.insert(std::end(vec), std::begin(ext), std::end(ext));
+}
+
+
+/*
+ * Extend a vector with elements with move semantics.
+ */
+template <typename T>
+void vector_extend(std::vector<T> &vec, std::vector<T> &&ext) {
+	if (vec.empty()) {
+		vec = std::move(ext);
+	}
+	else {
+		vec.reserve(vec.size() + ext.size());
+		std::move(std::begin(ext), std::end(ext), std::back_inserter(vec));
+		ext.clear();
+	}
+}
+
+
+/**
+ * Remove the given element index in the vector.
+ * May swap with the end element for efficient removing.
+ *
+ * If the element is not in the vector, do nothing.
+ */
+template <typename T>
+void vector_remove_swap_end(std::vector<T> &vec, size_t idx) {
+	// is at the end
+	if (idx == vec.size() - 1) {
+		vec.pop_back();
+	}
+	// is in the middle
+	else if (idx < vec.size()) {
+		std::swap(vec[idx], vec.back());
+		vec.pop_back();
+	} else {
+		return;
+	}
 }
 
 

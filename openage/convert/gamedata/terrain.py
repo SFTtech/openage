@@ -115,7 +115,7 @@ class Terrain(Exportable):
         # probably references to the TerrainBorders, there are 42 terrains in game
         (READ, "borders", ArrayMember(
             "int16_t",
-            (lambda o: 100 if GameVersion.age2_ak in o.game_versions else 42)
+            (lambda o: 100 if GameVersion.age2_hd_ak in o.game_versions else 42)
         )),
         (READ, "terrain_unit_id",            "int16_t[30]"),  # place these unit id on the terrain, with prefs from fields below
         (READ, "terrain_unit_density",       "int16_t[30]"),  # how many of the above units to place

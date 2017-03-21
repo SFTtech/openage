@@ -132,13 +132,14 @@ int SoundImpl::get_id() const {
 bool SoundImpl::mix_audio(int32_t *stream, int length) {
 	size_t stream_index = 0;
 	while (length > 0) {
+		// fetch the raw audio from the underlying resource
 		auto chunk = resource->get_data(offset, length);
 
 		if (chunk.length == 0) {
-			if (looping) {
+			if (this->looping) {
 				offset = 0;
 			} else {
-				playing = false;
+				this->playing = false;
 				return true;
 			}
 		} else if (chunk.data == nullptr) {
@@ -146,10 +147,10 @@ bool SoundImpl::mix_audio(int32_t *stream, int length) {
 		}
 
 		for (size_t i = 0; i < chunk.length; i++) {
-			stream[i+stream_index] += volume * chunk.data[i];
+			stream[i+stream_index] += this->volume * chunk.data[i];
 		}
 
-		offset += chunk.length;
+		this->offset += chunk.length;
 		length -= chunk.length;
 		stream_index += chunk.length;
 	}

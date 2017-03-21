@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "loader_policy.h"
 
@@ -21,18 +21,5 @@ std::ostream &operator <<(std::ostream &os, const loader_policy_t val) {
 	os << loader_policy_t_to_str(val);
 	return os;
 }
-
-
-loader_policy_t from_loader_policy(const gamedata::audio_loader_policy_t loader_policy) {
-	switch (loader_policy) {
-	case gamedata::audio_loader_policy_t::IN_MEMORY:
-		return loader_policy_t::IN_MEMORY;
-	case gamedata::audio_loader_policy_t::DYNAMIC:
-		return loader_policy_t::DYNAMIC;
-	default:
-		throw Error{MSG(err) << "Unknown loader policy: " << static_cast<int>(loader_policy)};
-	}
-}
-
 
 }} // openage::audio

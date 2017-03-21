@@ -35,7 +35,7 @@ std::vector<std::string> Civilisation::get_type_categories() const {
 }
 
 
-const gamedata::unit_building *Civilisation::get_building_data(index_t unit_id) const {
+const gamedata::building_unit *Civilisation::get_building_data(index_t unit_id) const {
 	if (this->buildings.count(unit_id) == 0) {
 		log::log(MSG(info) << "  -> ignoring unit_id: " << unit_id);
 		return nullptr;

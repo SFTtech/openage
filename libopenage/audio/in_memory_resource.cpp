@@ -10,7 +10,7 @@ namespace audio {
 InMemoryResource::InMemoryResource(AudioManager *manager,
                                    category_t category,
                                    int id,
-                                   const std::string &path,
+                                   const util::Path &path,
                                    format_t format)
 	:
 	Resource{manager, category, id} {

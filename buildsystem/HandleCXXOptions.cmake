@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 # sets CXXFLAGS and compiler for the project
 
@@ -116,7 +116,7 @@ elseif(${CXX_OPTIMIZATION_LEVEL} STREQUAL "g")
 	if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
 		set_cxx_optimize_flags("-Og")
 	else()
-		set_cxx_optimize_flags("-O1")
+		set_cxx_optimize_flags("-O0")
 	endif()
 elseif(${CXX_OPTIMIZATION_LEVEL} STREQUAL "max")
 	set_cxx_optimize_flags("-O3 -march=native")

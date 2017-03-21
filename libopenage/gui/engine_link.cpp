@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "engine_link.h"
 
@@ -7,7 +7,6 @@
 #include "../error/error.h"
 
 #include "../engine.h"
-#include "../game_singletons_info.h"
 
 #include "guisys/link/qml_engine_with_singleton_items_info.h"
 #include "guisys/link/qtsdl_checked_static_cast.h"
@@ -58,7 +57,7 @@ QObject* EngineLink::provider(QQmlEngine *engine, QJSEngine*) {
 	qtsdl::QmlEngineWithSingletonItemsInfo *engine_with_singleton_items_info = qtsdl::checked_static_cast<qtsdl::QmlEngineWithSingletonItemsInfo*>(engine);
 
 	// get the singleton container out of the custom qml engine
-	auto info = static_cast<GameSingletonsInfo*>(
+	auto info = static_cast<gui::EngineQMLInfo*>(
 		engine_with_singleton_items_info->get_singleton_items_info()
 	);
 	ENSURE(info, "qml-globals were lost or not passed to the gui subsystem");

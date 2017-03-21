@@ -1,9 +1,13 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 """ Routines for texture generation etc """
 
 # TODO pylint: disable=C,R
 
+import os
+import numpy
+
+from PIL import Image
 
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .blendomatic import BlendingMode
@@ -43,10 +47,15 @@ class TextureImage:
 
     def __init__(self, picture_data, hotspot=None):
 
-        from PIL import Image
-        import numpy
         if isinstance(picture_data, Image.Image):
-            picture_data = numpy.array(picture_data.getdata(), numpy.uint8).reshape(picture_data.size[1], picture_data.size[0], 4)
+            if picture_data.mode != 'RGBA':
+                picture_data = picture_data.convert('RGBA')
+
+            picture_data = numpy.array(picture_data)
+
+        if not isinstance(picture_data, numpy.ndarray):
+            raise ValueError("Texture image must be created from PIL Image "
+                             "or numpy array, not '%s'" % type(picture_data))
 
         self.width = picture_data.shape[1]
         self.height = picture_data.shape[0]
@@ -62,8 +71,10 @@ class TextureImage:
         self.data = picture_data
 
     def get_pil_image(self):
-        from PIL import Image
         return Image.fromarray(self.data)
+
+    def get_data(self):
+        return self.data
 
 
 class Texture(exportable.Exportable):
@@ -103,7 +114,9 @@ class Texture(exportable.Exportable):
             frames = []
 
             for frame in input_data.frames:
-                for subtex in self.__slp_to_subtextures(frame, palette, custom_cutter):
+                for subtex in self._slp_to_subtextures(frame,
+                                                       palette,
+                                                       custom_cutter):
                     frames.append(subtex)
 
         elif isinstance(input_data, BlendingMode):
@@ -121,7 +134,7 @@ class Texture(exportable.Exportable):
         self.image_data, (self.width, self.height), self.image_metadata\
             = merge_frames(frames)
 
-    def __slp_to_subtextures(self, frame, palette=None, custom_cutter=None):
+    def _slp_to_subtextures(self, frame, palette=None, custom_cutter=None):
         """
         convert slp to subtexture or subtextures, use a palette.
         """
@@ -129,28 +142,44 @@ class Texture(exportable.Exportable):
         # (at least a 10x improvement, 50x would be better).
         # ideas: remove PIL and use libpng via CPPInterface,
         #        cythonize parts of SLP.py
-        subtex = TextureImage(frame.get_picture_data(palette, self.player_id), hotspot=frame.info.hotspot)
+        subtex = TextureImage(
+            frame.get_picture_data(palette, self.player_id),
+            hotspot=frame.get_hotspot()
+        )
 
         if custom_cutter:
-            return custom_cutter(subtex)
+            # this may cut the texture into some parts
+            return custom_cutter.cut(subtex)
         else:
             return [subtex]
 
     def save(self, targetdir, filename, meta_formats=None):
         """
-        save the texture png and csv to the given path in obj.
+        Store the image data into the target directory path,
+        with given filename="dir/out.png"
+        If metaformats are requested, export e.g. as "dir/out.docx".
         """
         if not isinstance(targetdir, Path):
             raise ValueError("util.fslike Path expected as targetdir")
+        if not isinstance(filename, str):
+            raise ValueError("str expected as filename, not %s" % type(filename))
+
+        basename, ext = os.path.splitext(filename)
+
+        if ext != ".png":
+            raise ValueError("Texture must be saved as name.png. got: %s" % filename)
+
+        # without the dot
+        ext = ext[1:]
 
         # generate PNG file
-        with targetdir[filename + ".png"].open("wb") as imagefile:
-            self.image_data.get_pil_image().save(imagefile, 'png')
+        with targetdir[filename].open("wb") as imagefile:
+            self.image_data.get_pil_image().save(imagefile, ext)
 
         if meta_formats:
             # generate formatted texture metadata
             formatter = data_formatter.DataFormatter()
-            formatter.add_data(self.dump(filename))
+            formatter.add_data(self.dump(basename))
             formatter.export(targetdir, meta_formats)
 
     def dump(self, filename):
@@ -171,8 +200,6 @@ def merge_frames(frames):
 
     returns = TextureImage, (width, height), [drawn_frames_meta]
     """
-
-    import numpy
 
     if len(frames) == 0:
         raise Exception("cannot create texture with empty input frame list")

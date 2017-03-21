@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include "cvar.h"
 
@@ -7,6 +7,11 @@
 
 namespace openage {
 namespace cvar {
+
+CVarManager::CVarManager(const util::Path &path)
+	:
+	path{path} {}
+
 
 bool CVarManager::create(const std::string &name,
                          const std::pair<get_func, set_func> &accessors) {
@@ -36,24 +41,16 @@ void CVarManager::set(const std::string &name, const std::string &value) const {
 }
 
 
-std::string CVarManager::find_main_config() const {
-	return find_main_config_file.call();
+void CVarManager::load_config(const util::Path &path) {
+	pyx_load_config_file.call(this, path);
 }
 
 
-void CVarManager::load_config(const std::string &path) {
-	load_config_file.call(path, this);
-}
-
-
-void CVarManager::load_main_config() {
-	auto filename = this->find_main_config();
+void CVarManager::load_all() {
 	log::log(INFO << "loading configuration files...");
-	this->load_config(filename);
+	this->load_config(this->path["keybinds.oac"]);
 }
 
-
-pyinterface::PyIfFunc<std::string> find_main_config_file;
-pyinterface::PyIfFunc<void, std::string, CVarManager*> load_config_file;
+pyinterface::PyIfFunc<void, CVarManager *, const util::Path &> pyx_load_config_file;
 
 }} // openage::cvar

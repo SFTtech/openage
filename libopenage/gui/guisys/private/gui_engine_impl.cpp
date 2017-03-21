@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "gui_engine_impl.h"
 
@@ -14,7 +14,9 @@
 
 namespace qtsdl {
 
-GuiEngineImpl::GuiEngineImpl(GuiRenderer *renderer, const std::vector<GuiImageProvider*> &image_providers, GuiSingletonItemsInfo *singleton_items_info)
+GuiEngineImpl::GuiEngineImpl(GuiRenderer *renderer,
+                             const std::vector<GuiImageProvider*> &image_providers,
+                             GuiSingletonItemsInfo *singleton_items_info)
 	:
 	QObject{},
 	renderer{},
@@ -28,8 +30,15 @@ GuiEngineImpl::GuiEngineImpl(GuiRenderer *renderer, const std::vector<GuiImagePr
 	assert(!this->engine.incubationController());
 	this->attach_to(GuiRendererImpl::impl(renderer));
 
-	QObject::connect(this, &GuiEngineImpl::rootDirsPathsChanged, &this->watcher, &RecursiveDirectoryWatcher::rootDirsPathsChanged);
-	QObject::connect(&this->watcher, &RecursiveDirectoryWatcher::changeDetected, this, &GuiEngineImpl::onReload);
+	QObject::connect(this,
+	                 &GuiEngineImpl::rootDirsPathsChanged,
+	                 &this->watcher,
+	                 &RecursiveDirectoryWatcher::rootDirsPathsChanged);
+
+	QObject::connect(&this->watcher,
+	                 &RecursiveDirectoryWatcher::changeDetected,
+	                 this,
+	                 &GuiEngineImpl::onReload);
 }
 
 GuiEngineImpl::~GuiEngineImpl() {

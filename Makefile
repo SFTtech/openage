@@ -32,6 +32,10 @@ tests: build
 build: $(BUILDDIR)
 	@$(MAKE) $(MAKEARGS) -C $(BUILDDIR)
 
+.PHONY: ninja
+ninja: $(BUILDDIR)
+	@ninja -C $(BUILDDIR)
+
 .PHONY: libopenage
 libopenage: $(BUILDDIR)
 	@$(MAKE) $(MAKEARGS) -C $(BUILDDIR) libopenage
@@ -133,6 +137,10 @@ checkchanged:
 checkuncommited:
 	python3 -m buildsystem.codecompliance --all --only-changed-files=HEAD
 
+.PHONY: checkpy
+checkpy:
+	python3 -m buildsystem.codecompliance --pystyle --pylint
+
 .PHONY: help
 help: $(BUILDDIR)/Makefile
 	@echo "openage Makefile"
@@ -167,6 +175,7 @@ help: $(BUILDDIR)/Makefile
 	@echo "checkfast          -> fast checks only"
 	@echo "checkchanged       -> full check for all files changed since origin/master"
 	@echo "checkuncommited    -> full check for all currently uncommited files"
+	@echo "checkpy            -> check python compliance"
 	@echo ""
 	@echo "test               -> tests + checkfast. this is what you should use for regular devbuilds"
 	@echo ""

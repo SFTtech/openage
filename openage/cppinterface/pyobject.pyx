@@ -1,7 +1,9 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-from libcpp.string cimport string
+from libc.stdint cimport int64_t
 from libcpp cimport bool as cppbool
+from libcpp.string cimport string
+from libcpp.vector cimport vector
 
 from cpython.ref cimport Py_XINCREF, Py_XDECREF, PyObject
 
@@ -15,14 +17,17 @@ from libopenage.pyinterface.pyobject cimport (
 
     py_str,
     py_repr,
+    py_bytes,
     py_len,
     py_callable,
-    py_call,
+    py_call0,
+    py_calln,
     py_hasattr,
     py_getattr,
     py_setattr,
     py_isinstance,
     py_to_bool,
+    py_to_int,
     py_dir,
     py_equals,
     py_eval,
@@ -39,140 +44,169 @@ from libopenage.pyinterface.pyobject cimport (
     py_createbytes,
     py_createint,
     py_createdict,
-    py_getnone
+    py_createlist,
+
+    None as none_obj,
+    True as true_obj,
+    False as false_obj,
 )
 
 
+import atexit
 import builtins
 import importlib
 
 
-cdef void xincref(void *ptr) with gil:
-    Py_XINCREF(<PyObject *> ptr)
+cdef void xincref(PyObject *ptr) with gil:
+    Py_XINCREF(ptr)
 
 
-cdef void xdecref(void *ptr) with gil:
-    Py_XDECREF(<PyObject *> ptr)
+cdef void xdecref(PyObject *ptr) with gil:
+    Py_XDECREF(ptr)
 
 
-cdef string str_impl(void *ptr) except * with gil:
-    return str(<object> <PyObject *> ptr).encode()
+cdef string str_impl(PyObject *ptr) except * with gil:
+    return str(<object> ptr).encode()
 
 
-cdef string repr_impl(void *ptr) except * with gil:
-    return repr(<object> <PyObject *> ptr).encode()
+cdef string repr_impl(PyObject *ptr) except * with gil:
+    return repr(<object> ptr).encode()
 
 
-cdef int len_impl(void *ptr) except * with gil:
-    return len(<object> <PyObject *> ptr)
+cdef string bytes_impl(PyObject *ptr) except * with gil:
+    return bytes(<object> ptr)
 
 
-cdef cppbool callable_impl(void *ptr) except * with gil:
-    return callable(<object> <PyObject *> ptr)
+cdef int len_impl(PyObject *ptr) except * with gil:
+    return len(<object> ptr)
 
 
-cdef void call_impl(PyObjectRef *result_ref, void *ptr) except * with gil:
-    cdef object result_obj = (<object> <PyObject *> ptr)()
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+cdef cppbool callable_impl(PyObject *ptr) except * with gil:
+    return callable(<object> ptr)
 
 
-cdef cppbool hasattr_impl(void *ptr, string name) except * with gil:
-    return hasattr(<object> <PyObject *> ptr, name.decode())
+cdef void call0_impl(PyObjectRef *result_ref, PyObject *func) except * with gil:
+    cdef object result_obj = (<object> func)()
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void getattr_impl(PyObjectRef *result_ref, void *ptr, string name) except * with gil:
-    cdef object result_obj = getattr(<object> <PyObject *> ptr, name.decode())
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+cdef void calln_impl(PyObjectRef *result_ref, PyObject *func,
+                     vector[PyObject *]& args) except * with gil:
+
+    arg_list = list()
+
+    for arg in args:
+        arg_list.append(<object> arg)
+
+    cdef object result_obj = (<object> func)(*arg_list)
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void setattr_impl(void *ptr, string name, void *attr) except * with gil:
+cdef cppbool hasattr_impl(PyObject *ptr, string name) except * with gil:
+    return hasattr(<object> ptr, name.decode())
+
+
+cdef void getattr_impl(PyObjectRef *result_ref, PyObject *ptr, string name) except * with gil:
+    cdef object result_obj = getattr(<object> ptr, name.decode())
+    result_ref.set_ref(<PyObject *> result_obj)
+
+
+cdef void setattr_impl(PyObject *ptr, string name, PyObject *attr) except * with gil:
     setattr(
-        <object> <PyObject *> ptr,
+        <object> ptr,
         name.decode(),
-        <object> <PyObject *> attr)
+        <object> attr)
 
 
-cdef cppbool isinstance_impl(void *ptr, void *typeptr) except * with gil:
-    return isinstance(<object> <PyObject *> ptr, <object> <PyObject *> typeptr)
+cdef cppbool isinstance_impl(PyObject *ptr, PyObject *typeptr) except * with gil:
+    return isinstance(<object> ptr, <object> typeptr)
 
 
-cdef cppbool to_bool_impl(void *ptr) except * with gil:
-    return bool(<object> <PyObject *> ptr)
+cdef cppbool to_bool_impl(PyObject *ptr) except * with gil:
+    return bool(<object> ptr)
 
 
-cdef void dir_impl(void *ptr, Func1[void, string] callback) except * with gil:
-    for name in dir(<object> <PyObject *> ptr):
+cdef int64_t to_int_impl(PyObject *ptr) except * with gil:
+    # TODO: probably we should check for overflows here
+    #       the python int can be much larger than the int64_t
+    return int(<object> ptr)
+
+
+cdef void dir_impl(PyObject *ptr, Func1[void, string] callback) except * with gil:
+    for name in dir(<object> ptr):
         callback.call(name.encode())
 
 
-cdef cppbool equals_impl(void *ptr, void *other) except * with gil:
-    return (<object> <PyObject *> ptr) == (<object> <PyObject *> other)
+cdef cppbool equals_impl(PyObject *ptr, PyObject *other) except * with gil:
+    return (<object> ptr) == (<object> other)
 
 
-cdef void exec_impl(void *context, string statement) except * with gil:
-    exec(statement.decode(), <object> <PyObject *> context)
+cdef void exec_impl(PyObject *context, string statement) except * with gil:
+    exec(statement.decode(), <object> context)
 
 
-cdef void eval_impl(void *context, PyObjectRef *result_ref, string expr) except * with gil:
-    cdef object result_obj = eval(expr.decode(), <object> <PyObject *> context)
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+cdef void eval_impl(PyObject *context, PyObjectRef *result_ref, string expr) except * with gil:
+    cdef object result_obj = eval(expr.decode(), <object> context)
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void get_impl(void *ptr, PyObjectRef *result_ref, void *key) except * with gil:
-    cdef object result_obj = (<object> <PyObject *> ptr)[<object> <PyObject *> key]
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+cdef void get_impl(PyObject *ptr, PyObjectRef *result_ref, PyObject *key) except * with gil:
+    cdef object result_obj = (<object> <PyObject *> ptr)[<object> key]
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef cppbool in_impl(void *ptr, void *container) except * with gil:
-    return (<object> <PyObject *> ptr) in (<object> <PyObject *> container)
+cdef cppbool in_impl(PyObject *ptr, PyObject *container) except * with gil:
+    return (<object> ptr) in (<object> container)
 
 
-cdef void type_impl(void *ptr, PyObjectRef *result_ref) except * with gil:
+cdef void type_impl(PyObject *ptr, PyObjectRef *result_ref) except * with gil:
     cdef object result_obj = type(<object> <PyObject *> ptr)
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef string modulename_impl(void *ptr) except * with gil:
-    return type(<object> <PyObject *> ptr).__module__.encode()
+cdef string modulename_impl(PyObject *ptr) except * with gil:
+    return type(<object> ptr).__module__.encode()
 
 
-cdef string classname_impl(void *ptr) except * with gil:
-    return type(<object> <PyObject *> ptr).__name__.encode()
+cdef string classname_impl(PyObject *ptr) except * with gil:
+    return type(<object> ptr).__name__.encode()
 
 
-cdef void builtin_impl(PyObjectRef *result_ref, string name) except * with gil:
-    cdef object result_obj = getattr(builtins, name.decode())
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+## convenience functions for python object creation:
+
+cdef void builtin_impl(PyObjectRef *result_ref, const string &name) except * with gil:
+    cdef object result_obj = getattr(builtins, (<string> name).decode())
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void import_impl(PyObjectRef *result_ref, string name) except * with gil:
-    cdef object result_obj = importlib.import_module(name.decode())
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+cdef void import_impl(PyObjectRef *result_ref, const string &name) except * with gil:
+    cdef object result_obj = importlib.import_module((<string> name).decode())
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void createstr_impl(PyObjectRef *result_ref, string value) except * with gil:
-    cdef object result_obj = value.decode()
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+cdef void createstr_impl(PyObjectRef *result_ref, const string &value) except * with gil:
+    cdef object result_obj = (<string> value).decode()
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void createbytes_impl(PyObjectRef *result_ref, const char *value) except * with gil:
+cdef void createbytes_impl(PyObjectRef *result_ref, const string &value) except * with gil:
     cdef object result_obj = bytes(value)
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
 cdef void createint_impl(PyObjectRef *result_ref, int value) except * with gil:
     cdef object result_obj = value
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
 cdef void createdict_impl(PyObjectRef *result_ref) except * with gil:
     cdef object result_obj = dict()
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
-cdef void getnone_impl(PyObjectRef *result_ref) except * with gil:
-    cdef object result_obj = None
-    result_ref.set_ref(<void *> <PyObject *> result_obj)
+cdef void createlist_impl(PyObjectRef *result_ref) except * with gil:
+    cdef object result_obj = list()
+    result_ref.set_ref(<PyObject *> result_obj)
 
 
 def setup():
@@ -181,14 +215,17 @@ def setup():
 
     py_str.bind0(str_impl)
     py_repr.bind0(repr_impl)
+    py_bytes.bind0(bytes_impl)
     py_len.bind0(len_impl)
     py_callable.bind0(callable_impl)
-    py_call.bind0(call_impl)
+    py_call0.bind0(call0_impl)
+    py_calln.bind0(calln_impl)
     py_hasattr.bind0(hasattr_impl)
     py_getattr.bind0(getattr_impl)
     py_setattr.bind0(setattr_impl)
     py_isinstance.bind0(isinstance_impl)
     py_to_bool.bind0(to_bool_impl)
+    py_to_int.bind0(to_int_impl)
     py_dir.bind0(dir_impl)
     py_equals.bind0(equals_impl)
     py_eval.bind0(eval_impl)
@@ -205,4 +242,19 @@ def setup():
     py_createbytes.bind0(createbytes_impl)
     py_createint.bind0(createint_impl)
     py_createdict.bind0(createdict_impl)
-    py_getnone.bind0(getnone_impl)
+    py_createlist.bind0(createlist_impl)
+
+    none_obj.set_ref(<PyObject *><object>None)
+    true_obj.set_ref(<PyObject *><object>True)
+    false_obj.set_ref(<PyObject *><object>False)
+
+    # we need a teardown function as the none_obj etc are global in C++
+    # and would call pyx_decref when the libopenage is unloaded.
+    # but then the python interpreter is already shut down,
+    # so we need to set the objects to nullptr when python shuts down.
+    def teardown():
+        none_obj.set_ref(<PyObject*> 0)
+        true_obj.set_ref(<PyObject*> 0)
+        false_obj.set_ref(<PyObject*> 0)
+
+    atexit.register(teardown)

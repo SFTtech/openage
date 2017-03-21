@@ -15,11 +15,11 @@ class GeneratedFile:
     it's filled by many ContentSnippets before its contents are generated.
     """
 
-    namespace = "gamedata"
+    namespaces = ("openage", "gamedata")
 
     @classmethod
     def namespacify(cls, var_type):
-        return "%s::%s" % (cls.namespace, var_type)
+        return "%s::%s" % ("::".join(cls.namespaces), var_type)
 
     # default preferences for output modes
     default_preferences = {
@@ -38,28 +38,36 @@ class GeneratedFile:
             "file_suffix": ".docx",
             "process":     False,
         },
+        # main file structure for generated headers
         "struct": {
             "file_suffix": ".gen.h",
-            "content_prefix": Template("""#pragma once
-
-${headers}
-
-namespace ${namespace} {
-
-"""),
-            "content_suffix": Template("""
-} // namespace ${namespace}
-"""),
+            "content_prefix": Template(
+                "#pragma once\n"
+                "\n"
+                "${headers}\n"
+                "\n\n"
+                "${opennamespaces}\n"
+                "\n"
+            ),
+            "content_suffix": Template(
+                "\n"
+                "${closenamespaces}\n"
+            ),
         },
+        # file structure for generated c++ implementation files
         "structimpl": {
             "file_suffix":    ".gen.cpp",
-            "content_prefix": Template("""
-${headers}
-
-namespace ${namespace} {
-
-"""),
-            "content_suffix": Template("} // namespace ${namespace}\n"),
+            "content_prefix": Template(
+                "\n"
+                "${headers}\n"
+                "\n"
+                "${opennamespaces}\n"
+                "\n"
+            ),
+            "content_suffix": Template(
+                "\n"
+                "${closenamespaces}\n"
+            ),
         }
     }
 
@@ -73,10 +81,12 @@ namespace ${namespace} {
 
     def add_snippet(self, snippet, inherit_typedefs=True):
         if not isinstance(snippet, ContentSnippet):
-            raise Exception("only ContentSnippets can be added to generated files, tried %s" % type(snippet))
+            raise Exception("only ContentSnippets can be added to generated files, "
+                            "tried %s" % type(snippet))
 
         if not snippet.file_name == self.file_name and not snippet.file_name:
-            raise Exception("only snippets with the same target file_name can be put into the same generated file.")
+            raise Exception("only snippets with the same target file_name "
+                            "can be put into the same generated file.")
 
         if snippet not in (self.snippets):
             self.snippets.add(snippet)
@@ -211,12 +221,17 @@ namespace ${namespace} {
         header_data = "".join(header.get_data() for header in snippets_header_sorted)
         file_data   = "\n".join(snippet.get_data() for snippet in snippets_body_sorted)
 
-        namespace    = self.namespace
-        header_guard = "".join((namespace.upper(), "_", self.file_name.replace("/", "_").upper()))
-
         # fill file header and footer with the generated file_name
-        content_prefix = prefs["content_prefix"].substitute(header_guard=header_guard, namespace=namespace, headers=header_data)
-        content_suffix = prefs["content_suffix"].substitute(header_guard=header_guard, namespace=namespace)
+        content_prefix = prefs["content_prefix"].substitute(
+            headers=header_data,
+            opennamespaces="\n".join(["namespace %s {" % spc
+                                      for spc in self.namespaces]),
+        )
+
+        content_suffix = prefs["content_suffix"].substitute(
+            closenamespaces="\n".join(["} // %s" % spc
+                                       for spc in reversed(self.namespaces)]),
+        )
 
         # this is the final file content
         file_data = "".join((content_prefix, file_data, content_suffix))

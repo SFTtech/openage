@@ -14,8 +14,6 @@ add_sources(libopenage
 	engine.cpp
 	game_control.cpp
 	game_renderer.cpp
-	game_singletons_info.cpp
-	gui_basic.cpp
 	handlers.cpp
 	main.cpp
 	options.cpp
@@ -185,10 +183,8 @@ target_link_libraries(libopenage
 if(NOT APPLE)
 	target_link_libraries(libopenage
 		PUBLIC
-			rt
+		rt
 	)
 endif()
-
-include(GNUInstallDirs)
 
 install(TARGETS libopenage DESTINATION ${CMAKE_INSTALL_LIBDIR} LIBRARY)

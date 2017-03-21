@@ -8,41 +8,48 @@ from ..dataformat.members import EnumLookupMember, ContinueReadMember, IncludeMe
 
 
 class UnitCommand(Exportable):
+    """
+    also known as "Task" according to ES debug code,
+    this structure is the master for spawn-unit actions.
+    """
     name_struct        = "unit_command"
     name_struct_file   = "unit"
     struct_description = "a command a single unit may receive by script or human."
 
     data_format = (
-        (READ, "command_used", "int16_t"),                  # always 1
-        (READ_EXPORT, "id", "int16_t"),                     # command id
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "command_used", "int16_t"),                  # Type (0 = Generic, 1 = Tribe)
+        (READ_EXPORT, "id", "int16_t"),                     # Identity
+        (READ_UNKNOWN, None, "int8_t"),                     # IsDefault
         (READ_EXPORT, "type", EnumLookupMember(
             raw_type    = "int16_t",
             type_name   = "command_ability",
             lookup_dict = {
+                # the Action-Types found under RGE namespace:
                 0: "UNUSED",
                 1: "MOVE_TO",
                 2: "FOLLOW",
-                3: "GARRISON",
+                3: "GARRISON",  # also known as "Enter"
                 4: "EXPLORE",
-                5: "GATHER",   # gather, rebuild
-                6: "NATURAL_WONDERS_CHEAT",
-                7: "ATTACK",
-                8: "SHOOT",
-                10: "FLY",
-                11: "SCARE_HUNT",  # triggers flee
-                12: "UNLOAD",    # transport, garrison
+                5: "GATHER",
+                6: "NATURAL_WONDERS_CHEAT",  # also known as "Graze"
+                7: "COMBAT",       # this is converted to action-type 9 when once instanciated
+                8: "MISSILE",      # for projectiles
+                9: "ATTACK",
+                10: "BIRD",        # flying.
+                11: "PREDATOR",    # scares other animals when hunting
+                12: "TRANSPORT",
                 13: "GUARD",
-                14: "UNKNOWN_14",
-                20: "ESCAPE",    # sure?
-                21: "MAKE_FARM",
+                14: "TRANSPORT_OVER_WALL",
+                20: "RUN_AWAY",
+                21: "MAKE",
+                # Action-Types found under TRIBE namespace:
                 101: "BUILD",
                 102: "MAKE_OBJECT",
                 103: "MAKE_TECH",
                 104: "CONVERT",
                 105: "HEAL",
                 106: "REPAIR",
-                107: "CONVERT_AUTO",  # can get auto-converted
+                107: "CONVERT_AUTO",  # "Artifact": can get auto-converted
                 108: "DISCOVERY",
                 109: "SHOOTING_RANGE_RETREAT",
                 110: "HUNT",
@@ -70,21 +77,22 @@ class UnitCommand(Exportable):
         (READ_EXPORT, "class_id", "int16_t"),
         (READ_EXPORT, "unit_id", "int16_t"),
         (READ_EXPORT, "terrain_id", "int16_t"),
-        (READ_EXPORT, "resource_in", "int16_t"),            # carry resource
-        (READ_EXPORT, "resource_productivity", "int16_t"),  # resource that multiplies the amount you can gather
-        (READ_EXPORT, "resource_out", "int16_t"),           # drop resource
-        (READ_EXPORT, "resource", "int16_t"),
-        (READ_EXPORT, "quantity", "float"),
-        (READ_EXPORT, "execution_radius", "float"),
-        (READ_EXPORT, "extra_range", "float"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ, "scaring_radius", "float"),                  # e.g. deer
-        (READ, "selection_enabled", "int8_t"),              # 1=allows to select a target, type defined in `selection_type`
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ, "plunder_source", "int16_t"),
-        (READ_UNKNOWN, None, "int16_t"),
-        (READ_EXPORT, "targets_allowed", EnumLookupMember(  # aka "selection_mode"
-            raw_type    = "int8_t",      # what can be selected as a target for the unit command?
+        (READ_EXPORT, "attribute_id1", "int16_t"),          # carry resource
+        (READ_EXPORT, "attribute_id2", "int16_t"),          # resource that multiplies the amount you can gather
+        (READ_EXPORT, "attribute_id3", "int16_t"),          # drop resource
+        (READ_EXPORT, "attribute_id4", "int16_t"),
+        (READ_EXPORT, "work_value1", "float"),              # quantity
+        (READ_EXPORT, "work_value2", "float"),              # execution radius?
+        (READ_EXPORT, "work_range", "float"),
+        (READ, "search_mode", "int8_t"),
+        (READ, "search_time", "float"),
+        (READ, "combat_level", "int8_t"),                   # type defined in `selection_type`
+        (READ, "combat_mode", "int8_t"),
+        (READ, "work_mode1", "int16_t"),
+        (READ, "work_mode2", "int16_t"),
+        (READ_EXPORT, "owner_type", EnumLookupMember(
+            # what can be selected as a target for the unit command?
+            raw_type    = "int8_t",
             type_name   = "selection_type",
             lookup_dict = {
                 0: "ANY_0",               # select anything
@@ -97,14 +105,14 @@ class UnitCommand(Exportable):
                 7: "ANY_7",
             },
         )),
-        (READ, "right_click_mode", "int8_t"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ_EXPORT, "tool_graphic_id", "int16_t"),               # walking with tool but no resource
-        (READ_EXPORT, "proceed_graphic_id", "int16_t"),            # proceeding resource gathering or attack
-        (READ_EXPORT, "action_graphic_id", "int16_t"),             # actual execution or transformation graphic
-        (READ_EXPORT, "carrying_graphic_id", "int16_t"),           # display resources in hands
-        (READ_EXPORT, "execution_sound_id", "int16_t"),            # sound to play when execution starts
-        (READ_EXPORT, "resource_deposit_sound_id", "int16_t"),     # sound to play on resource drop
+        (READ, "holding_mode", "int8_t"),              # TODO: what does it do? right click?
+        (READ, "state_build", "int8_t"),
+        (READ_EXPORT, "move_sprite_id", "int16_t"),    # walking with tool but no resource
+        (READ_EXPORT, "work_sprite_id1", "int16_t"),   # proceeding resource gathering or attack
+        (READ_EXPORT, "work_sprite_id2", "int16_t"),   # actual execution or transformation graphic
+        (READ_EXPORT, "carry_sprite_id", "int16_t"),   # display resources in hands
+        (READ_EXPORT, "work_sound_id1", "int16_t"),    # sound to play when execution starts
+        (READ_EXPORT, "work_sound_id2", "int16_t"),    # sound to play on resource drop
     )
 
 
@@ -454,7 +462,7 @@ class UnitObject(Exportable):
             raw_type    = "int16_t",
             type_name   = "unit_classes",
             lookup_dict = {
-                -1: "UNKNOWN_FFFF",
+                -1: "NONE",
                 0: "ARCHER",
                 1: "ARTIFACT",
                 2: "TRADE_BOAT",
@@ -531,7 +539,7 @@ class UnitObject(Exportable):
         (READ, "air_mode", "int8_t"),                    # 1=no footprints
         (READ, "icon_id", "int16_t"),                    # frame id of the icon slp (57029) to place on the creation button
         (READ, "hidden_in_editor", "int8_t"),
-        (READ_UNKNOWN, None, "int16_t"),
+        (READ, "portrait_icon_id", "int16_t"),
         (READ, "enabled", "int16_t"),                    # 0=unlocked by research, 1=insta-available
         (READ, "placement_side_terrain0", "int16_t"),    # terrain id that's needed somewhere on the foundation (e.g. dock water)
         (READ, "placement_side_terrain1", "int16_t"),    # second slot for ^
@@ -561,7 +569,7 @@ class UnitObject(Exportable):
             raw_type    = "int16_t",      # determines on what type of ground the unit can be placed/walk
             type_name   = "ground_type",  # is actually the id of the terrain_restriction entry!
             lookup_dict = {
-                -0x01: "UNKNOWN_FFFF",
+                -0x01: "NONE",
                 0x00: "ANY",
                 0x01: "SHORELINE",
                 0x02: "WATER",
@@ -585,10 +593,11 @@ class UnitObject(Exportable):
                 0x15: "WATER_SHALLOW",
             },
         )),
-        (READ_EXPORT, "fly_mode", "int8_t"),
+        (READ_EXPORT, "movement_type", "int8_t"),    # flying, etc. TODO: lookup dict
         (READ_EXPORT, "resource_capacity", "int16_t"),
         (READ_EXPORT, "resource_decay", "float"),                 # when animals rot, their resources decay
-        (READ_EXPORT, "blast_defense_level", EnumLookupMember(  # Receive blast damage from units that have lower or same blast_attack_level.
+        (READ_EXPORT, "blast_defense_level", EnumLookupMember(
+            # receive blast damage from units that have lower or same blast_attack_level.
             raw_type    = "int8_t",
             type_name   = "blast_types",
             lookup_dict = {
@@ -598,11 +607,21 @@ class UnitObject(Exportable):
                 3: "UNIT_3",    # boar, farm, fishingship, villager, tradecart, sheep, turkey, archers, junk, ships, monk, siege
             }
         )),
-        (READ, "sub_type", "int8_t"),  # associated scenario trigger type:
-                                       # 0:Projectile/Dead/Resource 1:Boar 2:Building
-                                       # 3:Civilian 4:Military 5:Other
+        (READ_EXPORT, "combat_level", EnumLookupMember(
+            raw_type = "int8_t",
+            type_name = "combat_levels",
+            lookup_dict = {
+                0: "PROJECTILE_DEAD_RESOURCE",
+                1: "BOAR",
+                2: "BUILDING",
+                3: "CIVILIAN",
+                4: "MILITARY",
+                5: "OTHER",
+            }
+        )),
         (READ_EXPORT, "interaction_mode", EnumLookupMember(
-            raw_type    = "int8_t",  # what can be done with this unit?
+            # what can be done with this unit?
+            raw_type    = "int8_t",
             type_name   = "interaction_modes",
             lookup_dict = {
                 0: "NOTHING_0",
@@ -613,8 +632,9 @@ class UnitObject(Exportable):
                 5: "SELECT_MOVE",
             },
         )),
-        (READ_EXPORT, "minimap_mode", EnumLookupMember(
-            raw_type    = "int8_t",        # how does the unit show up on the minimap
+        (READ_EXPORT, "map_draw_level", EnumLookupMember(
+            # how does the unit show up on the minimap?
+            raw_type    = "int8_t",
             type_name   = "minimap_modes",
             lookup_dict = {
                 0: "NO_DOT_0",
@@ -630,13 +650,14 @@ class UnitObject(Exportable):
                 10: "NO_DOT_10",
             },
         )),
-        (READ_EXPORT, "command_attribute", EnumLookupMember(
-            raw_type    = "int8_t",         # selects the available ui command buttons for the unit
+        (READ_EXPORT, "unit_level", EnumLookupMember(
+            # selects the available ui command buttons for the unit
+            raw_type    = "int8_t",
             type_name   = "command_attributes",
             lookup_dict = {
                 0: "LIVING",                # commands: delete, garrison, stop, attributes: hit points
                 1: "ANIMAL",                # animal
-                2: "NONMILITARY_BULIDING",  # nonmilitary building (build page 1)
+                2: "NONMILITARY_BULIDING",  # civilian building (build page 1)
                 3: "VILLAGER",              # villager
                 4: "MILITARY_UNIT",         # military unit
                 5: "TRADING_UNIT",          # trading unit
@@ -649,7 +670,7 @@ class UnitObject(Exportable):
                 12: "UNKNOWN_12",
             },
         )),
-        (READ_UNKNOWN, None, "float"),
+        (READ, "attack_reaction", "float"),
         (READ_EXPORT, "minimap_color", "int8_t"),        # palette color id for the minimap
         (READ_EXPORT, "language_dll_help", "uint16_t"),  # help text for this unit, stored in the translation dll.
         (READ, "hot_keys", "int16_t[4]"),                # language dll dependent (kezb lazouts!)
@@ -681,7 +702,8 @@ class UnitObject(Exportable):
         (READ, "civilisation", "int8_t"),
         (READ, "attribute_piece", "int16_t"),   # leftover from attribute+civ variable
         (READ_EXPORT, "selection_effect", EnumLookupMember(
-            raw_type = "int8_t",     # things that happen when the unit was selected
+            # things that happen when the unit was selected
+            raw_type = "int8_t",
             type_name = "selection_effects",
             lookup_dict = {
                 0: "NONE",
@@ -731,12 +753,13 @@ class UnitObject(Exportable):
     )
 
 
-class UnitFlag(UnitObject):
+class AnimatedUnit(UnitObject):
     """
     type_id >= 20
+    Animated master object
     """
 
-    name_struct        = "unit_flag"
+    name_struct        = "animated_unit"
     name_struct_file   = "unit"
     struct_description = "adds speed property to units."
 
@@ -746,90 +769,95 @@ class UnitFlag(UnitObject):
     )
 
 
-class UnitDoppelganger(UnitFlag):
+class DoppelgangerUnit(AnimatedUnit):
     """
     type_id >= 25
     """
 
-    name_struct        = "unit_doppelganger"
+    name_struct        = "doppelganger_unit"
     name_struct_file   = "unit"
-    struct_description = "weird doppelganger unit thats actually the same as a flag unit."
+    struct_description = "weird doppelganger unit thats actually the same as an animated unit."
 
     data_format = (
-        (READ_EXPORT, None, IncludeMembers(cls=UnitFlag)),
+        (READ_EXPORT, None, IncludeMembers(cls=AnimatedUnit)),
     )
 
 
-class UnitDeadOrFish(UnitDoppelganger):
+class MovingUnit(DoppelgangerUnit):
     """
     type_id >= 30
+    Moving master object
     """
 
-    name_struct        = "unit_dead_or_fish"
+    name_struct        = "moving_unit"
     name_struct_file   = "unit"
     struct_description = "adds walking graphics, rotations and tracking properties to units."
 
     data_format = (
-        (READ_EXPORT, None, IncludeMembers(cls=UnitDoppelganger)),
+        (READ_EXPORT, None, IncludeMembers(cls=DoppelgangerUnit)),
         (READ_EXPORT, "walking_graphics0", "int16_t"),
         (READ_EXPORT, "walking_graphics1", "int16_t"),
-        (READ, "rotation_speed", "float"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ, "tracking_unit_id", "int16_t"),          # unit id what for the ground traces are for
-        (READ, "tracking_unit_used", "uint8_t"),        # -1: no tracking present, 2: projectiles with tracking unit
-        (READ, "tracking_unit_density", "float"),       # 0: no tracking, 0.5: trade cart, 0.12: some projectiles, 0.4: other projectiles
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "turn_speed", "float"),
+        (READ, "size_class", "int8_t"),
+        (READ, "trail_unit_id", "int16_t"),             # unit id for the ground traces
+        (READ, "trail_opsions", "uint8_t"),             # ground traces: -1: no tracking present, 2: projectiles with tracking unit
+        (READ, "trail_spacing", "float"),               # ground trace spacing: 0: no tracking, 0.5: trade cart, 0.12: some projectiles, 0.4: other projectiles
+        (READ, "move_algorithm", "int8_t"),
         (READ, "rotation_angles", "float[5]"),
     )
 
 
-class UnitBird(UnitDeadOrFish):
+class ActionUnit(MovingUnit):
     """
     type_id >= 40
+    Action master object
     """
 
-    name_struct        = "unit_bird"
+    name_struct        = "action_unit"
     name_struct_file   = "unit"
     struct_description = "adds search radius and work properties, as well as movement sounds."
 
     data_format = (
-        (READ_EXPORT, None, IncludeMembers(cls=UnitDeadOrFish)),
+        (READ_EXPORT, None, IncludeMembers(cls=MovingUnit)),
         # callback unit action id when found.
         # monument and sheep: 107 = enemy convert.
         # all auto-convertible units: 0, most other units: -1
-        (READ, "discovered_action_id", "int16_t"),
+        (READ, "default_task_id", "int16_t"),             # e.g. when sheep are discovered
         (READ, "search_radius", "float"),
         (READ_EXPORT, "work_rate", "float"),
         (READ_EXPORT, "drop_site0", "int16_t"),           # unit id where gathered resources shall be delivered to
         (READ_EXPORT, "drop_site1", "int16_t"),           # alternative unit id
-        (READ_EXPORT, "task_swap_group_id", "int8_t"),    # if a task is not found in the current unit, other units with the same group id are tried.
+        (READ_EXPORT, "task_by_group", "int8_t"),         # if a task is not found in the current unit, other units with the same group id are tried.
                                                           # 1: male villager; 2: female villager; 3+: free slots
                                                           # basically this creates a "swap group id" where you can place different-graphic units together.
-        (READ_EXPORT, "move_sound", "int16_t"),
-        (READ_EXPORT, "stop_sound", "int16_t"),
-        (READ, "animal_mode", "int8_t"),
+        (READ_EXPORT, "command_sound_id", "int16_t"),     # sound played when a command is instanciated
+        (READ_EXPORT, "stop_sound_id", "int16_t"),        # sound when the command is done (e.g. unit stops at target position)
+        (READ, "run_pattern", "int8_t"),                  # how animals run around randomly
     )
 
 
-class UnitMovable(UnitBird):
+class ProjectileUnit(ActionUnit):
     """
     type_id >= 60
+    Projectile master object
     """
 
-    name_struct        = "unit_movable"
+    name_struct        = "projectile_unit"
     name_struct_file   = "unit"
     struct_description = "adds attack and armor properties to units."
 
     data_format = (
-        (READ_EXPORT, None, IncludeMembers(cls=UnitBird)),
+        (READ_EXPORT, None, IncludeMembers(cls=ActionUnit)),
         (READ, "default_armor", "int16_t"),
         (READ, "attack_count", "uint16_t"),
         (READ, "attacks", SubdataMember(ref_type=HitType, length="attack_count")),
         (READ, "armor_count", "uint16_t"),
         (READ, "armors", SubdataMember(ref_type=HitType, length="armor_count")),
-        (READ_EXPORT, "interaction_type", EnumLookupMember(  # the damage received by this unit is multiplied by
-            raw_type    = "int16_t",                         # the accessible values on the specified terrain restriction
-            type_name   = "interaction_types",
+        (READ_EXPORT, "boundary_id", EnumLookupMember(
+            # the damage received by this unit is multiplied by
+            # the accessible values on the specified terrain restriction
+            raw_type    = "int16_t",
+            type_name   = "boundary_ids",
             lookup_dict = {
                 -1: "NONE",
                 4: "BUILDING",
@@ -837,17 +865,16 @@ class UnitMovable(UnitBird):
                 10: "WALL",
             },
         )),
-        (READ_EXPORT, "max_range", "float"),
-        (READ, "blast_width", "float"),
-        (READ, "reload_time", "float"),
-        (READ_EXPORT, "projectile_unit_id", "int16_t"),
-        (READ, "accuracy_percent", "int16_t"),       # probablity of attack hit
-        (READ, "tower_mode", "int8_t"),
-        (READ, "delay", "int16_t"),                  # delay in frames before projectile is shot
-        (READ, "graphics_displacement_lr", "float"),
-        (READ, "graphics_displacement_distance", "float"),
-        (READ, "graphics_displacement_height", "float"),
-        (READ_EXPORT, "blast_attack_level", EnumLookupMember(  # Blasts damage units that have higher or same blast_armor_level
+        (READ_EXPORT, "weapon_range_max", "float"),
+        (READ, "blast_range", "float"),
+        (READ, "attack_speed", "float"),                    # = "reload time"
+        (READ_EXPORT, "missile_unit_id", "int16_t"),        # which projectile to use?
+        (READ, "base_hit_chance", "int16_t"),               # probablity of attack hit in percent
+        (READ, "break_off_combat", "int8_t"),               # = tower mode?
+        (READ, "fire_missile_at_frame", "int16_t"),         # the frame number at which the missile is fired, = delay
+        (READ, "weapon_offset", "float[3]"),                # graphics displacement in x, y and z
+        (READ_EXPORT, "blast_level_offence", EnumLookupMember(
+            # blasts damage units that have higher or same blast_defense_level
             raw_type    = "int8_t",
             type_name   = "range_damage_type",
             lookup_dict = {
@@ -858,9 +885,9 @@ class UnitMovable(UnitBird):
                 6: "UNKNOWN_6",
             },
         )),
-        (READ, "min_range", "float"),                 # minimum range that this projectile requests for display
+        (READ, "weapon_range_min", "float"),                # minimum range that this projectile requests for display
         (READ, "accuracy_dispersion", "float"),
-        (READ_EXPORT, "attack_graphic", "int16_t"),
+        (READ_EXPORT, "fight_sprite_id", "int16_t"),
         (READ, "melee_armor_displayed", "int16_t"),
         (READ, "attack_displayed", "int16_t"),
         (READ, "range_displayed", "float"),
@@ -868,17 +895,18 @@ class UnitMovable(UnitBird):
     )
 
 
-class UnitProjectile(UnitMovable):
+class MissileUnit(ProjectileUnit):
     """
     type_id == 60
+    Missile master object
     """
 
-    name_struct        = "unit_projectile"
+    name_struct        = "missile_unit"
     name_struct_file   = "unit"
-    struct_description = "adds projectile specific unit properties."
+    struct_description = "adds missile specific unit properties."
 
     data_format = (
-        (READ_EXPORT, None, IncludeMembers(cls=UnitMovable)),
+        (READ_EXPORT, None, IncludeMembers(cls=ProjectileUnit)),
         (READ, "stretch_mode", "int8_t"),         # 0 = default; 1 = projectile falls vertically to the bottom of the map; 3 = teleporting projectiles
         (READ, "smart_mode", "int8_t"),           # "better aiming". tech attribute 19 changes this: 0 = shoot at current pos; 1 = shoot at predicted pos
         (READ, "drop_animation_mode", "int8_t"),  # 1 = disappear on hit
@@ -888,17 +916,17 @@ class UnitProjectile(UnitMovable):
     )
 
 
-class UnitLiving(UnitMovable):
+class LivingUnit(ProjectileUnit):
     """
     type_id >= 70
     """
 
-    name_struct        = "unit_living"
+    name_struct        = "living_unit"
     name_struct_file   = "unit"
     struct_description = "adds creation location and garrison unit properties."
 
     data_format = (
-        (READ_EXPORT, None, IncludeMembers(cls=UnitMovable)),
+        (READ_EXPORT, None, IncludeMembers(cls=ProjectileUnit)),
         (READ_EXPORT, "resource_cost", SubdataMember(ref_type=ResourceCost, length=3)),
         (READ_EXPORT, "creation_time", "int16_t"),         # in seconds
         (READ_EXPORT, "creation_location_id", "int16_t"),  # e.g. 118 = villager
@@ -962,27 +990,27 @@ class UnitLiving(UnitMovable):
     )
 
 
-class UnitBuilding(UnitLiving):
+class BuildingUnit(LivingUnit):
     """
     type_id >= 80
     """
 
-    name_struct        = "unit_building"
+    name_struct        = "building_unit"
     name_struct_file   = "unit"
     struct_description = "construction graphics and garrison building properties for units."
 
     data_format = (
-        (READ_EXPORT, None, IncludeMembers(cls=UnitLiving)),
+        (READ_EXPORT, None, IncludeMembers(cls=LivingUnit)),
         (READ_EXPORT, "construction_graphic_id", "int16_t"),
         (READ, "snow_graphic_id", "int16_t"),
         (READ, "adjacent_mode", "int8_t"),            # 1=adjacent units may change the graphics
         (READ, "icon_disabler", "int16_t"),
         (READ, "disappears_when_built", "int8_t"),
         (READ_EXPORT, "stack_unit_id", "int16_t"),    # second building to place directly on top
-        (READ_EXPORT, "terrain_id", "int16_t"),       # change underlying terrain to this id when building completed
-        (READ, "resource_id", "int16_t"),
+        (READ_EXPORT, "foundation_terrain_id", "int16_t"),  # change underlying terrain to this id when building completed
+        (READ, "overlay_id", "int16_t"),              # deprecated terrain-like structures knowns as "Overlays" from alpha AOE used for roads
         (READ, "research_id", "int16_t"),             # research_id to be enabled when building creation
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "annex_mode", "int8_t"),
         (READ_EXPORT, "building_annex", SubdataMember(ref_type=BuildingAnnex, length=4)),
         (READ, "head_unit_id", "int16_t"),            # building at which an annex building is attached to
         (READ, "transform_unit_id", "int16_t"),       # destination unit id when unit shall transform (e.g. unpack)
@@ -1002,18 +1030,18 @@ class UnitBuilding(UnitLiving):
             },
         )),
         (READ, "garrison_heal_rate", "float"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int16_t"),
-        (READ_UNKNOWN, None, "int8_t[6]"),  # might be related to building annexes?
+        (READ_UNKNOWN, None, "float"),      # (unknown garrison value)
+        (READ, "salvage_unit_id", "int16_t"),       # id of the unit used for salvages
+        (READ, "salvage_attributes", "int8_t[6]"),  # list of attributes for salvages
     )
 
 
-class UnitTree(UnitObject):
+class TreeUnit(UnitObject):
     """
-    type_id = 90
+    type_id == 90
     """
 
-    name_struct        = "unit_tree"
+    name_struct        = "tree_unit"
     name_struct_file   = "unit"
     struct_description = "just a tree unit."
 
@@ -1022,26 +1050,30 @@ class UnitTree(UnitObject):
     )
 
 
+# unit type id => human readable name
+# used as member name in the resulting struct
 unit_type_lookup = {
     10: "object",
-    20: "flag",
+    20: "animated",
     25: "doppelganger",
-    30: "dead_or_fish",
-    40: "bird",
-    60: "projectile",
+    30: "moving",
+    40: "action",
+    60: "missile",
     70: "living",
     80: "building",
     90: "tree",
 }
 
+
+# name => attribute class
 unit_type_class_lookup = {
-    "object":       UnitObject,
-    "flag":         UnitFlag,
-    "doppelganger": UnitDoppelganger,
-    "dead_or_fish": UnitDeadOrFish,
-    "bird":         UnitBird,
-    "projectile":   UnitProjectile,
-    "living":       UnitLiving,
-    "building":     UnitBuilding,
-    "tree":         UnitTree,
+    "object":         UnitObject,
+    "animated":       AnimatedUnit,
+    "doppelganger":   DoppelgangerUnit,
+    "moving":         MovingUnit,
+    "action":         ActionUnit,
+    "missile":        MissileUnit,
+    "living":         LivingUnit,
+    "building":       BuildingUnit,
+    "tree":           TreeUnit,
 }

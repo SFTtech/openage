@@ -7,7 +7,7 @@ Wraps the LZXDecompressor in a file-like, read-only stream object.
 import os
 from io import UnsupportedOperation
 
-from ..util.filelike import ReadOnlyFileLikeObject
+from ..util.filelike.readonly import ReadOnlyFileLikeObject
 from ..util.bytequeue import ByteQueue
 from ..util.math import INF
 

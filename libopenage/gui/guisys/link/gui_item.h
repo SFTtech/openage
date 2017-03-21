@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,6 +20,13 @@
 #include "gui_item_link.h"
 
 namespace qtsdl {
+
+
+/**
+ * Cleans a text from unneeded content like "qtsdl".
+ */
+QString name_tidier(const char *name);
+
 
 /**
  * Helper to hide the type of the core.
@@ -55,13 +62,6 @@ struct PersistentCoreHolder : public PersistentCoreHolderBase {
 	std::unique_ptr<T> core;
 };
 
-namespace {
-QString tidier_name(const char *name) {
-	QString cleaner_name = QString::fromLatin1(name);
-	cleaner_name.remove(QRegularExpression("qtsdl|PersistentCoreHolder"));
-	return cleaner_name;
-}
-}
 
 class GuiItemBase : public DeferredInitialConstantPropertyValues {
 public:
@@ -280,9 +280,8 @@ private:
 					"Error in QML code: GuiLiveReloader was asked "
 					"to restore '%s' into different type '%s' "
 					"using tag '%s'.",
-					qUtf8Printable(
-						tidier_name(typeid(decltype(*origin->holder)).name())),
-					qUtf8Printable(tidier_name(typeid(*holder).name())),
+					qUtf8Printable(name_tidier(typeid(decltype(*origin->holder)).name())),
+					qUtf8Printable(name_tidier(typeid(*holder).name())),
 					qUtf8Printable(tag)
 				);
 			} else {

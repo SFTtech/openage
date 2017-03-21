@@ -43,7 +43,7 @@ std::string PyException::type_name() const {
 }
 
 
-PyIfFunc<void, void *, Func<void, const error::backtrace_symbol *>> pyexception_bt_get_symbols;
+PyIfFunc<void, PyObject *, Func<void, const error::backtrace_symbol *>> pyexception_bt_get_symbols;
 
 
 }} // openage::pyinterface

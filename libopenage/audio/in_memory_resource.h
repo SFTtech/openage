@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,6 +7,8 @@
 #include "format.h"
 #include "resource.h"
 #include "types.h"
+#include "../util/path.h"
+
 
 namespace openage {
 namespace audio {
@@ -21,7 +23,9 @@ private:
 
 public:
 	InMemoryResource(AudioManager *manager,
-	                 category_t category, int id, const std::string &path,
+	                 category_t category,
+	                 int id,
+	                 const util::Path &path,
 	                 format_t format=format_t::OPUS);
 	virtual ~InMemoryResource() = default;
 

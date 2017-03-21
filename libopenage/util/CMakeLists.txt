@@ -2,7 +2,7 @@ add_sources(libopenage
 	color.cpp
 	compiler.cpp
 	constinit_vector.cpp
-	dir.cpp
+	csv.cpp
 	enum.cpp
 	enum_test.cpp
 	externalprofiler.cpp
@@ -10,7 +10,6 @@ add_sources(libopenage
 	file.cpp
 	fds.cpp
 	fps.cpp
-	fslikeobject.cpp
 	hash.cpp
 	hash_test.cpp
 	init.cpp
@@ -21,6 +20,7 @@ add_sources(libopenage
 	misc_test.cpp
 	opengl.cpp
 	os.cpp
+	path.cpp
 	profiler.cpp
 	quaternion.cpp
 	quaternion_test.cpp
@@ -39,7 +39,10 @@ pxdgen(
 	compiler.h
 	enum.h
 	enum_test.h
-	fslikeobject.h
+	file.h
+	path.h
 )
 
 add_subdirectory(compress)
+add_subdirectory(filelike)
+add_subdirectory(fslike)

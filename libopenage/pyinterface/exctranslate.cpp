@@ -1,8 +1,12 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "exctranslate.h"
 
+#include <new>
+#include <typeinfo>
+#include <stdexcept>
 #include <string>
+#include <ios>
 
 #include "../util/timing.h"
 #include "../error/error.h"
@@ -37,9 +41,15 @@ void set_exc_translation_funcs(
 }
 
 
+/*
+ * This function is the cython exception handler!
+ */
 void translate_exc_cpp_to_py() {
-
 	try {
+		// when we reach this, cython caught an error.
+		// and we're now in the handler.
+
+		// to continue, first rethrow the exception so we can analyze it:
 		throw;
 
 	} catch (PyException &exc) {
@@ -51,6 +61,7 @@ void translate_exc_cpp_to_py() {
 				false, false);
 		}
 
+		// handle the python object directly by PyErr_SetObject
 		raise_cpp_pyexception(&exc);
 
 	} catch (Error &exc) {
@@ -62,13 +73,34 @@ void translate_exc_cpp_to_py() {
 				false, false);
 		}
 
+		// translate the exception to python
+		// = insert it in pythons backtrace
 		raise_cpp_error(&exc);
+	}
+	// we also need to catch std::exception so that rethrown causes are handled
+	// properly. otherwise they just crash everything. not good.
+	catch (const std::exception &exc) {
+		// the std::exception doesn't contain a stack trace...
+		// as we're at a special place we must not generate the current
+		// stack trace either. and we _must not_ store the causing
+		// exception, as the whole point of this code is to get rid
+		// of std::exceptions.
+		Error error{
+			ERR << "std::exception: "
+			    << util::demangle(typeid(exc).name())
+			    << ": "
+			    << exc.what(),
+			false,
+			false
+		};
+
+		raise_cpp_error(&error);
 	}
 
 	/*
-	 * all other, non-openage::Error exceptions are unexpected;
-	 * they don't contain any useful stack trace information, so the
-	 * safest course of action is not to catch them.
+	 * all other exceptions are more than unexpected;
+	 * they don't contain any useful stack trace information,
+	 * so the safest course of action is not to catch them.
 	 * That way, terminate() is called, where we can analyze the stack
 	 * trace and debug the issue in gdb.
 	 */
@@ -106,7 +138,9 @@ void init_exc_message(log::message *msg, const std::string &filename, unsigned i
 	try {
 		msg->init_with_metadata_copy(filename, functionname);
 	} catch (...) {
-		// we cannot afford to raise an exception from this function; this is part of the exception translation code.
+		// we cannot afford to raise an exception from this function;
+		// this is part of the exception translation code.
+		std::cout << "[WTF] failed so init exception message!" << std::endl;
 	}
 
 	msg->lvl = log::lvl::err;

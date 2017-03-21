@@ -12,7 +12,8 @@ from collections import OrderedDict
 from calendar import timegm
 
 from ..log import dbg
-from ..util.filelike import PosSavingReadOnlyFileLikeObject, StreamFragment
+from ..util.filelike.readonly import PosSavingReadOnlyFileLikeObject
+from ..util.filelike.stream import StreamFragment
 from ..util.files import read_guaranteed, read_nullterminated_string
 from ..util.fslike.filecollection import FileCollection
 from ..util.math import INF
@@ -329,7 +330,7 @@ class CABFile(FileCollection):
                 folder.comp_name = "LZX (window_bits = %d)" % window_bits
 
                 from .lzxdstream import LZXDStream
-                from ..util.filelike import StreamSeekBuffer
+                from ..util.filelike.stream import StreamSeekBuffer
 
                 unseekable_plain_stream = LZXDStream(
                     compressed_data_stream,

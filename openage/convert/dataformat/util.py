@@ -73,6 +73,9 @@ def determine_header(for_type):
 
     from .header_snippet import HeaderSnippet
 
+    # yes, i know. but we can hardly do better.
+    # pylint: disable=too-many-locals
+
     cstdinth              = HeaderSnippet("stdint.h", is_global=True)
     stringh               = HeaderSnippet("string",   is_global=True)
     cstringh              = HeaderSnippet("cstring",  is_global=True)
@@ -80,8 +83,8 @@ def determine_header(for_type):
     vectorh               = HeaderSnippet("vector",   is_global=True)
     cstddefh              = HeaderSnippet("stddef.h", is_global=True)
     util_strings_h        = HeaderSnippet("../util/strings.h", is_global=False)
-    util_file_h           = HeaderSnippet("../util/file.h", is_global=False)
-    util_dir_h            = HeaderSnippet("../util/dir.h", is_global=False)
+    util_csv_h            = HeaderSnippet("../util/csv.h", is_global=False)
+    util_path_h           = HeaderSnippet("../util/path.h", is_global=False)
     error_error_h         = HeaderSnippet("../error/error.h", is_global=False)
     log_h                 = HeaderSnippet("../log.h", is_global=False)
 
@@ -104,22 +107,26 @@ def determine_header(for_type):
         "size_t":          {cstddefh},
         "float":           set(),
         "int":             set(),
-        "read_csv_file":   {util_file_h},
-        "subdata":         {util_file_h},
-        "engine_dir":      {util_dir_h, util_file_h},
+        "csv_collection":  {util_csv_h},
+        "read_csv_file":   {util_csv_h},
+        "csv_subdata":     {util_csv_h},
         "engine_error":    {error_error_h},
         "engine_log":      {log_h},
+        "util::Path":      {util_path_h},
     }
 
     if for_type in type_map:
         ret |= type_map[for_type]
     else:
-        raise Exception("could not determine header for %s" % for_type)
+        raise Exception("could not determine header for {}".format(for_type))
 
     return ret
 
 
 def determine_headers(for_types):
+    if not any(isinstance(for_types, type) for type in (list, tuple, set)):
+        for_types = {for_types}
+
     ret = set()
     for t in for_types:
         ret |= determine_header(t)

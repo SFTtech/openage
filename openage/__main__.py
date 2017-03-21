@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Behold: The central entry point for all of openage.
@@ -31,7 +31,10 @@ class PrintVersion(argparse.Action):
 
 def main(argv=None):
     """ Top-level argparsing; invokes subparser for all submodules. """
-    cli = argparse.ArgumentParser("openage")
+    cli = argparse.ArgumentParser(
+        "openage",
+        description=("free age of empires II engine clone")
+    )
 
     cli.add_argument("--version", "-V", nargs=0, action=PrintVersion,
                      help="print version info and exit")
@@ -43,11 +46,18 @@ def main(argv=None):
                             help="increase verbosity")
     global_cli.add_argument("--quiet", "-q", action='count', default=0,
                             help="decrease verbosity")
+    global_cli.add_argument("--devmode", action="store_true",
+                            help="force-enable development mode")
+    global_cli.add_argument("--no-devmode", action="store_true",
+                            help="force-disable devlopment mode")
 
-    # shared data-directory argument for most subcommands
-    datadir_cli = argparse.ArgumentParser(add_help=False)
-    datadir_cli.add_argument("--asset-dir", default='./assets',
-                             help="Use this as the asset directory.")
+    # shared directory arguments for most subcommands
+    cfg_cli = argparse.ArgumentParser(add_help=False)
+
+    cfg_cli.add_argument("--asset-dir",
+                         help="Use this as an additional asset directory.")
+    cfg_cli.add_argument("--cfg-dir",
+                         help="Use this as an additional config directory.")
 
     subparsers = cli.add_subparsers(dest="subcommand")
 
@@ -57,23 +67,23 @@ def main(argv=None):
     from .game.main import init_subparser
     game_cli = subparsers.add_parser(
         "game",
-        parents=[global_cli, datadir_cli])
+        parents=[global_cli, cfg_cli])
     init_subparser(game_cli)
 
     from .testing.main import init_subparser
     init_subparser(subparsers.add_parser(
         "test",
-        parents=[global_cli, datadir_cli]))
+        parents=[global_cli, cfg_cli]))
 
     from .convert.main import init_subparser
     init_subparser(subparsers.add_parser(
         "convert",
-        parents=[global_cli, datadir_cli]))
+        parents=[global_cli, cfg_cli]))
 
     from .convert.singlefile import init_subparser
     init_subparser(subparsers.add_parser(
         "convert-file",
-        parents=[global_cli, datadir_cli]))
+        parents=[global_cli, cfg_cli]))
 
     from .codegen.main import init_subparser
     init_subparser(subparsers.add_parser(
@@ -89,7 +99,21 @@ def main(argv=None):
     # process the shared args
     set_loglevel(verbosity_to_level(args.verbose - args.quiet))
 
-    if "asset_dir" in args:
+    if args.no_devmode and args.devmode:
+        cli.error("can't force enable and disable devmode at the same time")
+
+    try:
+        from . import config
+
+        if args.no_devmode:
+            config.DEVMODE = False
+        if args.devmode:
+            config.DEVMODE = True
+    except ImportError:
+        if args.no_devmode or args.devmode:
+            print("code was not yet generated, ignoring devmode activation request")
+
+    if "asset_dir" in args and args.asset_dir:
         if not os.path.exists(args.asset_dir):
             cli.error("directory does not exist: " + args.asset_dir)
 
@@ -99,7 +123,6 @@ def main(argv=None):
 
 if __name__ == '__main__':
     # openage is complicated and multithreaded; better not use fork.
-    # TODO fix pending pylint 1.5: pylint: disable=no-member
     multiprocessing.set_start_method('spawn')
 
     exit(main())

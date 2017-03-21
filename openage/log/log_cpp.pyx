@@ -1,8 +1,10 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Translates Python log messages to C++ log messages.
 """
+
+from libcpp.memory cimport unique_ptr
 
 from libopenage.log.message cimport message
 from libopenage.log.level cimport (
@@ -20,8 +22,6 @@ from libopenage.log.level cimport (
 
 from libopenage.log.named_logsource cimport NamedLogSource
 from libopenage.log.log cimport set_level as cpp_set_level
-
-from ..cppinterface.typedefs cimport unique_ptr
 
 from inspect import getframeinfo
 

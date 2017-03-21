@@ -1,18 +1,35 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 // pxd: from libcpp cimport bool as cppbool
 
+// pxd: from libc.stdint cimport int64_t
+#include <cstdint>
 // pxd: from libcpp.string cimport string
 #include <string>
+// pxd: from libcpp.vector cimport vector
+#include <vector>
+
+// pxd: from libopenage.pyinterface.defs cimport PyObject
+#include "defs.h"
 
 // pxd: from libopenage.pyinterface.functional cimport PyIfFunc1, PyIfFunc2, PyIfFunc3
 // pxd: from libopenage.pyinterface.functional cimport Func1
 #include "functional.h"
 
+
 namespace openage {
 namespace pyinterface {
+
+
+/**
+ * Primary class template for PyObjectRef conversions.
+ */
+template <typename T>
+struct to_pyobj;
+
+// the specializations follow somewhere below.
 
 
 /**
@@ -25,26 +42,30 @@ namespace pyinterface {
  *
  * cppclass PyObjectRef:
  *     PyObjectRef() noexcept
+ *     PyObjectRef(PyObject *ref) except +
  *
- *     void *get_ref() noexcept
- *     void set_ref(void *ref) except +
- *     void set_ref_without_incrementing(void *ref) except +
+ *     PyObject *get_ref() noexcept
+ *     void set_ref(PyObject *ref) except +
+ *     void set_ref_without_incrementing(PyObject *ref) except +
  *     void clear_ref_without_decrementing() noexcept
  *
  *
+ * ctypedef PyObjectRef PyObj
+ *
  * ctypedef PyObjectRef *PyObjectRefPtr
+ * ctypedef PyObject    *PyObjectPtr
  */
 class PyObjectRef {
 public:
 	/**
 	 * Initializes reference with nullptr.
 	 */
-	PyObjectRef();
+	PyObjectRef() noexcept;
 
 	/**
 	 * Wraps a raw PyObject * pointer (calls Py_INCREF).
 	 */
-	explicit PyObjectRef(void *ref);
+	PyObjectRef(PyObject *ref);
 
 	/**
 	 * Clones a PyObjectRef (calls Py_INCREF).
@@ -66,7 +87,7 @@ public:
 	 * Move-assigns from an other PyObject
 	 * (calls Py_XDECREF on the old value).
 	 */
-	PyObjectRef &operator =(PyObjectRef &&other) noexcept;
+	PyObjectRef &operator =(PyObjectRef &&other);
 
 	/**
 	 * Destroys the object, calls Py_XDECREF.
@@ -87,6 +108,11 @@ public:
 	std::string repr() const;
 
 	/**
+	 * bytes(obj)
+	 */
+	std::string bytes() const;
+
+	/**
 	 * len(obj)
 	 */
 	int len() const;
@@ -103,6 +129,51 @@ public:
 	 */
 	PyObjectRef call() const;
 
+	/**
+	 * obj(args)
+	 */
+	PyObjectRef call(std::vector<PyObject *> &args) const;
+
+	/**
+	 * obj(args...)
+	 */
+	template <typename ...Args>
+	PyObjectRef call(Args... args) const {
+		// this vector collects the function call arguments
+		std::vector<PyObject *> arg_objs;
+
+		return this->call_collect<Args...>(arg_objs, args...);
+	}
+
+private:
+	/**
+	 * obj(arg0)
+	 *
+	 * This is the recursion end. It performs the function call.
+	 */
+	template <typename T>
+	PyObjectRef call_collect(std::vector<PyObject *> &args, T arg) const {
+
+		PyObjectRef py_arg = to_pyobj<T>{}(arg);
+		args.push_back(py_arg.get_ref());
+		return this->call(args);
+	}
+
+	/**
+	 * obj(arg0, ...)
+	 *
+	 * This is the recursion step.
+	 * It converts earch argument to a pyobject * recursively.
+	 */
+	template <typename T, typename ...Args>
+	PyObjectRef call_collect(std::vector<PyObject *> &args, T arg, Args... moreargs) const {
+
+		PyObjectRef py_arg = to_pyobj<T>{}(arg);
+		args.push_back(py_arg.get_ref());
+		return this->call_collect<Args...>(args, moreargs...);
+	}
+
+public:
 	/**
 	 * getattr(obj, name)
 	 */
@@ -129,6 +200,11 @@ public:
 	bool to_bool() const;
 
 	/**
+	 * int(obj)
+	 */
+	int64_t to_int() const;
+
+	/**
 	 * for elem in dir(obj):
 	 *     callback(elem)
 	 */
@@ -145,13 +221,13 @@ public:
 	bool equals(const PyObjectRef &other) const;
 
 	/**
-	* eval(expression, obj)
-	*/
+	 * eval(expression, obj)
+	 */
 	PyObjectRef eval(const std::string &expression) const;
 
 	/**
-	* exec(statement, obj)
-	*/
+	 * exec(statement, obj)
+	 */
 	void exec(const std::string &statement) const;
 
 	/**
@@ -194,24 +270,35 @@ private:
 	/**
 	 * Internal PyObject * for obj.
 	 */
-	void *ref;
+	PyObject *ref;
 
 
 public:
-	void *get_ref() const noexcept {
+	/**
+	 * Provide the internal PyObject *.
+	 */
+	PyObject *get_ref() const noexcept {
+		return this->ref;
+	}
+
+	/**
+	 * Implicit conversion to PyObject *.
+	 * Mainly for convenience to avoid all the get_ref() calls.
+	 */
+	PyObject *operator ()() const noexcept {
 		return this->ref;
 	}
 
 	/**
 	 * Like operator =(const PyObjectRef &other).
 	 */
-	void set_ref(void *ref);
+	void set_ref(PyObject *ref);
 
 	/**
 	 * Like set_ref, but does _NOT_ call PY_XINCREF.
 	 * Only use in special cases, if you know exactly what you're doing.
 	 */
-	void set_ref_without_incrementing(void *ref);
+	void set_ref_without_incrementing(PyObject *ref);
 
 	/**
 	 * Clears the internal reference, but does _NOT_ call PY_XDECREF.
@@ -223,123 +310,228 @@ public:
 };
 
 
+/**
+ * convenience alias
+ */
+using PyObj = PyObjectRef;
+
+
+/**
+ * Stream operator for printing PyObjects
+ */
 std::ostream &operator <<(std::ostream &os, const PyObjectRef &ref);
 
 
-namespace py {
-
-/**
- * getattr(importlib.import_module("builtins"), name)
- */
-PyObjectRef builtin(const std::string &name);
-
-
-/**
- * importlib.import_module(name)
- */
-PyObjectRef import(const std::string &name);
-
-
-/**
- * str(value);
- */
-PyObjectRef str(const std::string &value);
-
-
-/**
- * bytes(value)
- */
-PyObjectRef bytes(const char *value);
-
-
-/**
- * int(value)
- */
-PyObjectRef integer(int value);
-
-
-/**
- * {}
- */
-PyObjectRef dict();
-
-
-/**
- * None
- */
-PyObjectRef none();
-
-
-} // py
-
-
-// installed by openage.cppinterface.pyobject.setup().
 // now follow the various Python callbacks that implement all of the above,
 // and need to be installed by openage.cppinterface.pyobject.setup().
 
 // for use by the reference-counting constructors
 
-// pxd: PyIfFunc1[void, void *] py_xincref
-extern PyIfFunc<void, void *> py_xincref;
-// pxd: PyIfFunc1[void, void *] py_xdecref
-extern PyIfFunc<void, void *> py_xdecref;
+// pxd: PyIfFunc1[void, PyObjectPtr] py_xincref
+extern PyIfFunc<void, PyObject *> py_xincref;
+// pxd: PyIfFunc1[void, PyObjectPtr] py_xdecref
+extern PyIfFunc<void, PyObject *> py_xdecref;
 
 // for all of those member functions
 
-// pxd: PyIfFunc1[string, void *] py_str
-extern PyIfFunc<std::string, void *> py_str;
-// pxd: PyIfFunc1[string, void *] py_repr
-extern PyIfFunc<std::string, void *> py_repr;
-// pxd: PyIfFunc1[int, void *] py_len
-extern PyIfFunc<int, void *> py_len;
-// pxd: PyIfFunc1[cppbool, void *] py_callable
-extern PyIfFunc<bool, void *> py_callable;
-// pxd: PyIfFunc2[void, PyObjectRefPtr, void *] py_call
-extern PyIfFunc<void, PyObjectRef *, void *> py_call;
-// pxd: PyIfFunc2[cppbool, void *, string] py_hasattr
-extern PyIfFunc<bool, void *, std::string> py_hasattr;
-// pxd: PyIfFunc3[void, PyObjectRefPtr, void *, string] py_getattr
-extern PyIfFunc<void, PyObjectRef *, void *, std::string> py_getattr;
-// pxd: PyIfFunc3[void, void *, string, void *] py_setattr
-extern PyIfFunc<void, void *, std::string, void *> py_setattr;
-// pxd: PyIfFunc2[cppbool, void *, void *] py_isinstance
-extern PyIfFunc<bool, void *, void *> py_isinstance;
-// pxd: PyIfFunc1[cppbool, void *] py_to_bool
-extern PyIfFunc<bool, void *> py_to_bool;
-// pxd: PyIfFunc2[void, void *, Func1[void, string]] py_dir
-extern PyIfFunc<void, void *, Func<void, std::string>> py_dir;
-// pxd: PyIfFunc2[cppbool, void *, void *] py_equals
-extern PyIfFunc<bool, void *, void *> py_equals;
-// pxd: PyIfFunc2[void, void *, string] py_exec
-extern PyIfFunc<void, void *, std::string> py_exec;
-// pxd: PyIfFunc3[void, void *, PyObjectRefPtr, string] py_eval
-extern PyIfFunc<void, void *, PyObjectRef *, std::string> py_eval;
-// pxd: PyIfFunc3[void, void *, PyObjectRefPtr, void *] py_get
-extern PyIfFunc<void, void *, PyObjectRef *, void *> py_get;
-// pxd: PyIfFunc2[cppbool, void *, void *] py_in
-extern PyIfFunc<bool, void *, void *> py_in;
-// pxd: PyIfFunc2[void, void *, PyObjectRefPtr] py_type
-extern PyIfFunc<void, void *, PyObjectRef *> py_type;
-// pxd: PyIfFunc1[string, void *] py_modulename
-extern PyIfFunc<std::string, void *> py_modulename;
-// pxd: PyIfFunc1[string, void *] py_classname
-extern PyIfFunc<std::string, void *> py_classname;
+// pxd: PyIfFunc1[string, PyObjectPtr] py_str
+extern PyIfFunc<std::string, PyObject *> py_str;
+// pxd: PyIfFunc1[string, PyObjectPtr] py_repr
+extern PyIfFunc<std::string, PyObject *> py_repr;
+// pxd: PyIfFunc1[string, PyObjectPtr] py_bytes
+extern PyIfFunc<std::string, PyObject *> py_bytes;
+// pxd: PyIfFunc1[int, PyObjectPtr] py_len
+extern PyIfFunc<int, PyObject *> py_len;
+// pxd: PyIfFunc1[cppbool, PyObjectPtr] py_callable
+extern PyIfFunc<bool, PyObject *> py_callable;
+// pxd: PyIfFunc2[void, PyObjectRefPtr, PyObjectPtr] py_call0
+extern PyIfFunc<void, PyObjectRef *, PyObject *> py_call0;
+// pxd: PyIfFunc3[void, PyObjectRefPtr, PyObjectPtr, vector[PyObjectPtr]] py_calln
+extern PyIfFunc<void, PyObjectRef *, PyObject *, std::vector<PyObject *>&> py_calln;
+// pxd: PyIfFunc2[cppbool, PyObjectPtr, string] py_hasattr
+extern PyIfFunc<bool, PyObject *, std::string> py_hasattr;
+// pxd: PyIfFunc3[void, PyObjectRefPtr, PyObjectPtr, string] py_getattr
+extern PyIfFunc<void, PyObjectRef *, PyObject *, std::string> py_getattr;
+// pxd: PyIfFunc3[void, PyObjectPtr, string, PyObjectPtr] py_setattr
+extern PyIfFunc<void, PyObject *, std::string, PyObject *> py_setattr;
+// pxd: PyIfFunc2[cppbool, PyObjectPtr, PyObjectPtr] py_isinstance
+extern PyIfFunc<bool, PyObject *, PyObject *> py_isinstance;
+// pxd: PyIfFunc1[cppbool, PyObjectPtr] py_to_bool
+extern PyIfFunc<bool, PyObject *> py_to_bool;
+// pxd: PyIfFunc1[int64_t, PyObjectPtr] py_to_int
+extern PyIfFunc<int64_t, PyObject *> py_to_int;
+// pxd: PyIfFunc2[void, PyObjectPtr, Func1[void, string]] py_dir
+extern PyIfFunc<void, PyObject *, Func<void, std::string>> py_dir;
+// pxd: PyIfFunc2[cppbool, PyObjectPtr, PyObjectPtr] py_equals
+extern PyIfFunc<bool, PyObject *, PyObject *> py_equals;
+// pxd: PyIfFunc2[void, PyObjectPtr, string] py_exec
+extern PyIfFunc<void, PyObject *, std::string> py_exec;
+// pxd: PyIfFunc3[void, PyObjectPtr, PyObjectRefPtr, string] py_eval
+extern PyIfFunc<void, PyObject *, PyObjectRef *, std::string> py_eval;
+// pxd: PyIfFunc3[void, PyObjectPtr, PyObjectRefPtr, PyObjectPtr] py_get
+extern PyIfFunc<void, PyObject *, PyObjectRef *, PyObject *> py_get;
+// pxd: PyIfFunc2[cppbool, PyObjectPtr, PyObjectPtr] py_in
+extern PyIfFunc<bool, PyObject *, PyObject *> py_in;
+// pxd: PyIfFunc2[void, PyObjectPtr, PyObjectRefPtr] py_type
+extern PyIfFunc<void, PyObject *, PyObjectRef *> py_type;
+// pxd: PyIfFunc1[string, PyObjectPtr] py_modulename
+extern PyIfFunc<std::string, PyObject *> py_modulename;
+// pxd: PyIfFunc1[string, PyObjectPtr] py_classname
+extern PyIfFunc<std::string, PyObject *> py_classname;
 
-
-// pxd: PyIfFunc2[void, PyObjectRefPtr, string] py_builtin
-extern PyIfFunc<void, PyObjectRef *, std::string> py_builtin;
-// pxd: PyIfFunc2[void, PyObjectRefPtr, string] py_import
-extern PyIfFunc<void, PyObjectRef *, std::string> py_import;
-// pxd: PyIfFunc2[void, PyObjectRefPtr, string] py_createstr
-extern PyIfFunc<void, PyObjectRef *, std::string> py_createstr;
-// pxd: PyIfFunc2[void, PyObjectRefPtr, const char *] py_createbytes
-extern PyIfFunc<void, PyObjectRef *, const char *> py_createbytes;
+// pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_builtin
+extern PyIfFunc<void, PyObjectRef *, const std::string&> py_builtin;
+// pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_import
+extern PyIfFunc<void, PyObjectRef *, const std::string&> py_import;
+// pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_createstr
+extern PyIfFunc<void, PyObjectRef *, const std::string&> py_createstr;
+// pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_createbytes
+extern PyIfFunc<void, PyObjectRef *, const std::string&> py_createbytes;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, int] py_createint
 extern PyIfFunc<void, PyObjectRef *, int> py_createint;
 // pxd: PyIfFunc1[void, PyObjectRefPtr] py_createdict
 extern PyIfFunc<void, PyObjectRef *> py_createdict;
-// pxd: PyIfFunc1[void, PyObjectRefPtr] py_getnone
-extern PyIfFunc<void, PyObjectRef *> py_getnone;
+// pxd: PyIfFunc1[void, PyObjectRefPtr] py_createlist
+extern PyIfFunc<void, PyObjectRef *> py_createlist;
+
+} // pyinterface
 
 
-}} // openage::pyinterface
+/**
+ * Contenience functions and types for the python interface.
+ */
+namespace py {
+
+/**
+ * Python object reference.
+ */
+using Obj = pyinterface::PyObjectRef;
+
+
+/**
+ * getattr(importlib.import_module("builtins"), name)
+ */
+Obj builtin(const std::string &name);
+
+
+/**
+ * importlib.import_module(name)
+ */
+Obj import(const std::string &name);
+
+
+/**
+ * str(value);
+ */
+Obj str(const std::string &value);
+
+
+/**
+ * bytes(value)
+ */
+Obj bytes(const std::string &value);
+
+
+/**
+ * int(value)
+ */
+Obj integer(int value);
+
+
+/**
+ * dict()
+ */
+Obj dict();
+
+
+/**
+ * list()
+ */
+Obj list();
+
+
+/**
+ * The None python object.
+ *
+ * pxd: PyObjectRef None
+ */
+extern Obj None;
+
+
+/**
+ * The True python object.
+ *
+ * pxd: PyObjectRef True
+ */
+extern Obj True;
+
+
+/**
+ * The False python object.
+ *
+ * pxd: PyObjectRef False
+ */
+extern Obj False;
+
+} // py
+
+
+namespace pyinterface {
+
+/**
+ * Base template for object conversions.
+ * It's separate from the primary class template so it can skip its body.
+ */
+template <typename T>
+struct __py_conversion_base {
+	using argument_type = T;
+	using result_type = PyObjectRef;
+};
+
+
+/**
+ * Passthrough for PyObjectRef.
+ */
+template <>
+struct to_pyobj<PyObjectRef> : __py_conversion_base<PyObjectRef> {
+	result_type operator ()(PyObjectRef &obj) const {
+		return obj;
+	}
+};
+
+
+/**
+ * Integer conversion.
+ */
+template <>
+struct to_pyobj<int> : __py_conversion_base<int> {
+	result_type operator ()(int number) const {
+		return py::integer(number);
+	}
+};
+
+
+/**
+ * Bytes conversion.
+ */
+template <>
+struct to_pyobj<const char *> : __py_conversion_base<const char *> {
+	result_type operator ()(const char *data) const {
+		return py::bytes(data);
+	}
+};
+
+
+/**
+ * String conversion.
+ */
+template <>
+struct to_pyobj<std::string> : __py_conversion_base<std::string> {
+	result_type operator ()(const std::string &txt) const {
+		return py::bytes(txt);
+	}
+};
+
+
+} // pyinterface
+} // openage

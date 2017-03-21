@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,9 +13,14 @@
 #include "coord/tile3.h"
 #include "shader/program.h"
 #include "shader/shader.h"
-#include "util/file.h"
+#include "util/path.h"
+
 
 namespace openage {
+
+namespace util {
+class Path;
+}
 
 namespace texture_shader {
 extern shader::Program *program;
@@ -66,12 +71,6 @@ public:
 	int h;
 
 	/**
-	 * terrain atlas dimensions (floor(sqrt(subtexture count)))
-	 * relevant for determining terrain subtexture ids
-	 */
-	size_t atlas_dimensions;
-
-	/**
 	 * Create a texture from a rgba8 array.
 	 * It will have w * h * 32bit storage.
 	 */
@@ -81,7 +80,7 @@ public:
 	 * Create a texture from a existing image file.
 	 * For supported image file types, see the SDL_Image initialization in the engine.
 	 */
-	Texture(const std::string &filename, bool use_metafile=false);
+	Texture(const util::Path &filename, bool use_metafile=false);
 	~Texture();
 
 	void draw(coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
@@ -95,14 +94,14 @@ public:
 	void reload();
 
 	/**
-	 * Get the subtexture coordinates by its idea.
+	 * Get the subtexture coordinates by its id.
 	 */
-	const gamedata::subtexture *get_subtexture(int subid) const;
+	const gamedata::subtexture *get_subtexture(uint64_t subid) const;
 
 	/**
 	 * @return the number of available subtextures
 	 */
-	int get_subtexture_count() const;
+	size_t get_subtexture_count() const;
 
 	/**
 	 * Fetch the size of the given subtexture.
@@ -110,7 +109,7 @@ public:
 	 * @param w: the subtexture width
 	 * @param h: the subtexture height
 	 */
-	void get_subtexture_size(int subid, int *w, int *h) const;
+	void get_subtexture_size(uint64_t subid, int *w, int *h) const;
 
 	/**
 	 * get atlas subtexture coordinates.
@@ -119,7 +118,7 @@ public:
 	 * these pick the requested area out of the big texture.
 	 * returned as floats in range 0.0 to 1.0
 	 */
-	void get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) const;
+	void get_subtexture_coordinates(uint64_t subid, float *txl, float *txr, float *txt, float *txb) const;
 	void get_subtexture_coordinates(const gamedata::subtexture *subtex, float *txl, float *txr, float *txt, float *txb) const;
 
 	/**
@@ -132,7 +131,7 @@ public:
 	/**
 	 * activates the influence of a given alpha mask to this texture.
 	 */
-	void activate_alphamask(Texture *mask, int subid);
+	void activate_alphamask(Texture *mask, uint64_t subid);
 
 	/**
 	 * disable a previously activated alpha mask.
@@ -149,14 +148,14 @@ private:
 	std::vector<gamedata::subtexture> subtextures;
 	bool use_metafile;
 
-	std::string filename;
+	util::Path filename;
 
 	void load();
 
 	/**
-	 * the gl loading which must occur on the main thread
+	 * The texture loadin must occur on the thread that manages the gl context.
 	 */
-	void main_thread_load() const;
+	void load_in_glthread() const;
 	GLuint make_gl_texture(int iformat, int oformat, int w, int h, void *) const;
 	void unload();
 

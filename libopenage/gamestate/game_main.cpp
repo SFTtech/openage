@@ -36,9 +36,7 @@ GameMain::GameMain(const Generator &generator)
 	generator.add_units(*this);
 }
 
-GameMain::~GameMain() {
-	log::log(MSG(info) << "Cleanup gamemain");
-}
+GameMain::~GameMain() {}
 
 unsigned int GameMain::player_count() const {
 	return this->players.size();

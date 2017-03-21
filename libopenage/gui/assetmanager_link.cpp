@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "assetmanager_link.h"
 
@@ -26,21 +26,24 @@ AssetManagerLink::AssetManagerLink(QObject *parent)
 AssetManagerLink::~AssetManagerLink() {
 }
 
-QString AssetManagerLink::get_data_dir() const {
-	return this->data_dir;
+
+const util::Path &AssetManagerLink::get_asset_dir() const {
+	return this->asset_dir;
 }
 
-void AssetManagerLink::set_data_dir(const QString &data_dir) {
-	static auto f = [] (AssetManager *_this, const QString &data_dir) {
-		_this->set_data_dir_string(data_dir.toStdString());
+
+void AssetManagerLink::set_asset_dir(const util::Path &asset_dir) {
+	static auto f = [] (AssetManager *_this, const util::Path &dir) {
+		_this->set_asset_dir(dir);
 	};
-	this->s(f, this->data_dir, data_dir);
+	this->s(f, this->asset_dir, asset_dir);
 }
 
 
 EngineLink *AssetManagerLink::get_engine() const {
 	return this->engine;
 }
+
 
 void AssetManagerLink::set_engine(EngineLink *engine_link) {
 	static auto f = [] (AssetManager *_this, Engine *engine) {

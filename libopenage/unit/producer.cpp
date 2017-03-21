@@ -115,8 +115,8 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	for (auto cmd : cmds) {
 
 		// same attack / work graphic
-		if (cmd->action_graphic_id == -1 && cmd->proceed_graphic_id > 0) {
-			auto task = spec.get_unit_texture(cmd->proceed_graphic_id);
+		if (cmd->work_sprite_id2 == -1 && cmd->work_sprite_id1 > 0) {
+			auto task = spec.get_unit_texture(cmd->work_sprite_id1);
 			if (task) {
 				this->graphics[graphic_type::work] = task;
 				this->graphics[graphic_type::attack] = task;
@@ -124,9 +124,9 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 		}
 
 		// seperate work and attack graphics
-		if (cmd->action_graphic_id > 0 && cmd->proceed_graphic_id > 0 ) {
-			auto attack = spec.get_unit_texture(cmd->proceed_graphic_id);
-			auto work = spec.get_unit_texture(cmd->action_graphic_id);
+		if (cmd->work_sprite_id2 > 0 && cmd->work_sprite_id1 > 0 ) {
+			auto attack = spec.get_unit_texture(cmd->work_sprite_id1);
+			auto work = spec.get_unit_texture(cmd->work_sprite_id2);
 			if (attack) {
 				this->graphics[graphic_type::attack] = attack;
 			}
@@ -136,12 +136,9 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 		}
 
 		// villager carrying resources graphics
-		if (cmd->carrying_graphic_id > 0) {
-			auto carry = spec.get_unit_texture(cmd->carrying_graphic_id);
+		if (cmd->carry_sprite_id > 0) {
+			auto carry = spec.get_unit_texture(cmd->carry_sprite_id);
 			this->graphics[graphic_type::carrying] = carry;
-			if (carry) {
-
-			}
 		}
 	}
 }
@@ -321,13 +318,13 @@ TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, 
 	return nullptr;
 }
 
-MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_movable *um)
+MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, const gamedata::projectile_unit *um)
 	:
 	ObjectProducer(owner, spec, um),
 	unit_data(*um),
-	on_move{spec.get_sound(this->unit_data.move_sound)},
-	on_attack{spec.get_sound(this->unit_data.move_sound)},
-	projectile{this->unit_data.projectile_unit_id} {
+	on_move{spec.get_sound(this->unit_data.command_sound_id)},
+	on_attack{spec.get_sound(this->unit_data.command_sound_id)},
+	projectile{this->unit_data.missile_unit_id} {
 
 	// extra graphics if available
 	// villagers have invalid attack and walk graphics
@@ -345,7 +342,7 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 		this->graphics[graphic_type::carrying] = walk;
 	}
 
-	auto attack = spec.get_unit_texture(this->unit_data.attack_graphic);
+	auto attack = spec.get_unit_texture(this->unit_data.fight_sprite_id);
 	if (attack && attack->is_valid()) {
 		this->graphics[graphic_type::attack] = attack;
 	}
@@ -380,10 +377,10 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 
 	// projectile of melee attacks
 	UnitType *proj_type = this->owner.get_type(this->projectile);
-	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
+	if (this->unit_data.missile_unit_id > 0 && proj_type) {
 
 		// calculate requirements for ranged attacks
-		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
+		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.weapon_range_max;
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 48000, 1));
 	}
 	else {
@@ -396,7 +393,7 @@ TerrainObject *MovableProducer::place(Unit *unit, std::shared_ptr<Terrain> terra
 	return ObjectProducer::place(unit, terrain, init_pos);
 }
 
-LivingProducer::LivingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_living *ud)
+LivingProducer::LivingProducer(const Player &owner, const GameSpec &spec, const gamedata::living_unit *ud)
 	:
 	MovableProducer(owner, spec, ud),
 	unit_data(*ud) {
@@ -480,7 +477,7 @@ TerrainObject *LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrai
 	return MovableProducer::place(unit, terrain, init_pos);
 }
 
-BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_building *ud)
+BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, const gamedata::building_unit *ud)
 	:
 	UnitType(owner),
 	unit_data{*ud},
@@ -488,8 +485,8 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	destroyed{spec.get_unit_texture(ud->graphic_dying0)},
 	trainable1{83}, // 83 = m villager
 	trainable2{293}, // 293 = f villager
-	projectile{this->unit_data.projectile_unit_id},
-	foundation_terrain{ud->terrain_id},
+	projectile{this->unit_data.missile_unit_id},
+	foundation_terrain{ud->foundation_terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
 
 	// copy the class type
@@ -581,8 +578,8 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
 
 	UnitType *proj_type = this->owner.get_type(this->projectile);
-	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
-		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
+	if (this->unit_data.missile_unit_id > 0 && proj_type) {
+		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.weapon_range_max;
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1));
 		// formation is used only for the attack_stance
 		unit->add_attribute(std::make_shared<Attribute<attr_type::formation>>(attack_stance::aggresive));
@@ -608,18 +605,26 @@ std::vector<game_resource> BuildingProducer::get_accepted_resources() {
 		return std::any_of(ids.begin(), ids.end(), [=](int n) { return n == this->id(); });
 	};
 
-	if (this->id() == 109) { //Town center
-		return std::vector<game_resource>{game_resource::wood,
+	if (this->id() == 109) { // Town center
+		return std::vector<game_resource>{
+			game_resource::wood,
 			game_resource::food,
 			game_resource::gold,
-			game_resource::stone};
-	} else if (id_in({584, 585, 586, 587})) { //Mine
-		return std::vector<game_resource>{game_resource::gold,
-			game_resource::stone};
-	} else if (id_in({68, 129, 130, 131})) { //Mill
-		return std::vector<game_resource>{game_resource::food};
-	} else if (id_in({562, 563, 564, 565})) { //Lumberjack camp
-		return std::vector<game_resource>{game_resource::wood};
+			game_resource::stone
+		};
+	} else if (id_in({584, 585, 586, 587})) { // Mine
+		return std::vector<game_resource>{
+			game_resource::gold,
+			game_resource::stone
+		};
+	} else if (id_in({68, 129, 130, 131})) { // Mill
+		return std::vector<game_resource>{
+			game_resource::food
+		};
+	} else if (id_in({562, 563, 564, 565})) { // Lumberjack camp
+		return std::vector<game_resource>{
+			game_resource::wood
+		};
 	}
 
 	return std::vector<game_resource>();
@@ -728,7 +733,7 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	return annex_loc;
 }
 
-ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_projectile *pd)
+ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec, const gamedata::missile_unit *pd)
 	:
 	UnitType(owner),
 	unit_data{*pd},

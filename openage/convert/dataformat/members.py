@@ -275,6 +275,7 @@ class NumberMember(DataMember):
         if number_def not in self.type_scan_lookup:
             raise Exception("created number column from unknown type %s" % number_def)
 
+        # type used for the output struct
         self.number_type = number_def
         self.raw_type    = number_def
 
@@ -283,7 +284,8 @@ class NumberMember(DataMember):
 
         return [
             EntryParser(
-                ["if (sscanf(buf[%d], \"%%%s\", &this->%s) != 1) { return %d; }" % (idx, scan_symbol, member, idx)],
+                ["if (sscanf(buf[%d].c_str(), \"%%%s\", &this->%s) != 1) "
+                 "{ return %d; }" % (idx, scan_symbol, member, idx)],
                 headers     = determine_header("sscanf"),
                 typerefs    = set(),
                 destination = "fill",
@@ -354,20 +356,21 @@ class ContinueReadMember(NumberMember):
 
     def get_parsers(self, idx, member):
         entry_parser_txt = (
-            "//remember if the following members are undefined",
-            "if (0 == strcmp(buf[%d], \"%s\")) {" % (idx, self.Result.ABORT.value),
-            "\tthis->%s = 0;" % (member),
-            "} else if (0 == strcmp(buf[%d], \"%s\")) {" % (idx, self.Result.CONTINUE.value),
-            "\tthis->%s = 1;" % (member),
+            "// remember if the following members are undefined",
+            'if (buf[%d] == "%s") {' % (idx, self.Result.ABORT.value),
+            "    this->%s = 0;" % (member),
+            '} else if (buf[%d] == "%s") {' % (idx, self.Result.CONTINUE.value),
+            "    this->%s = 1;" % (member),
             "} else {",
-            "\tthrow openage::error::Error(MSG(err) << \"unexpected value '\" << buf[%d] << \"' for %s\");" % (idx, self.__class__.__name__),
+            ('    throw openage::error::Error(ERR << "unexpected value \'"'
+             '<< buf[%d] << "\' for %s");' % (idx, self.__class__.__name__)),
             "}",
         )
 
         return [
             EntryParser(
                 entry_parser_txt,
-                headers     = determine_headers(("strcmp", "engine_error")),
+                headers     = determine_headers(("engine_error",)),
                 typerefs    = set(),
                 destination = "fill",
             )
@@ -390,22 +393,29 @@ class EnumMember(RefMember):
         enum_parser.append("// parse enum %s" % (self.type_name))
         for enum_value in self.values:
             enum_parser.extend([
-                "%sif (0 == strcmp(buf[%d], \"%s\")) {" % (enum_parse_else, idx, enum_value),
-                "\tthis->%s = %s::%s;"                  % (member, self.type_name, enum_value),
+                '%sif (buf[%d] == "%s") {' % (enum_parse_else, idx, enum_value),
+                "    this->%s = %s::%s;" % (member, self.type_name, enum_value),
                 "}",
             ])
             enum_parse_else = "else "
 
-        enum_parser.extend([
-            "else {",
-            "\tthrow openage::error::Error(MSG(err) << \"unknown enum value '\" << buf[%d] << \"' encountered. valid are: %s\\n---\\nIf this is an inconsistency due to updates in the media converter, try re-converting the media\\n---\");" % (idx, ",".join(self.values)),
-            "}",
-        ])
+        enum_parser.append(
+            "else {{\n"
+            "    throw openage::error::Error(\n"
+            "        MSG(err)\n"
+            '        << "unknown enum value \'" << buf[{idx}]\n'
+            '        << "\' encountered. valid are: "\n'
+            '           "{valids}\\n---\\n"\n'
+            '           "If this is an inconsistency due to updates in the "\n'
+            '           "media converter, try re-converting the assets\\n---\"\n'
+            '    );'
+            "}}".format(idx=idx, valids=",".join(self.values)),
+        )
 
         return [
             EntryParser(
                 enum_parser,
-                headers     = determine_headers(("strcmp", "engine_error")),
+                headers     = determine_headers(("engine_error")),
                 typerefs    = set(),
                 destination = "fill",
             )
@@ -438,8 +448,8 @@ class EnumMember(RefMember):
 
             # create enum definition
             txt.extend([
-                "enum class %s {\n\t" % self.type_name,
-                ",\n\t".join(self.values),
+                "enum class %s {\n    " % self.type_name,
+                ",\n    ".join(self.values),
                 "\n};\n\n",
             ])
 
@@ -510,13 +520,15 @@ class CharArrayMember(DynLengthMember):
         headers = set()
 
         if self.is_dynamic_length():
+            # copy to std::string
             lines = ["this->%s = buf[%d];" % (member, idx)]
+
         else:
+            # copy to char[n]
             data_length = self.get_length()
             lines = [
-                "strncpy(this->%s, buf[%d], %d); this->%s[%d] = '\\0';" % (
-                    member, idx, data_length, member, data_length - 1
-                )
+                "strncpy(this->%s, buf[%d].c_str(), %d);" % (member, idx, data_length),
+                "this->%s[%d] = '\\0';" % (member, data_length - 1),
             ]
             headers |= determine_header("strncpy")
 
@@ -566,25 +578,43 @@ class MultisubtypeMember(RefMember, DynLengthMember):
     multiple other data sets.
     """
 
-    def __init__(self, type_name, subtype_definition, class_lookup, length, passed_args=None, ref_to=None, offset_to=None, file_name=None, ref_type_params=None):
+    def __init__(self, type_name, subtype_definition, class_lookup, length,
+                 passed_args=None, ref_to=None,
+                 offset_to=None, file_name=None,
+                 ref_type_params=None):
+
         RefMember.__init__(self, type_name, file_name)
         DynLengthMember.__init__(self, length)
 
-        self.subtype_definition = subtype_definition  # to determine the subtype for each entry, read this value to do the class_lookup
-        self.class_lookup       = class_lookup        # dict to look up type_name => exportable class
-        self.passed_args        = passed_args         # list of member names whose values will be passed to the new class
-        self.ref_to             = ref_to              # add this member name's value to the filename
-        self.offset_to          = offset_to           # link to member name which is a list of binary file offsets
-        self.ref_type_params    = ref_type_params     # dict to specify type_name => constructor arguments
+        # to determine the subtype for each entry,
+        # read this value to do the class_lookup
+        self.subtype_definition = subtype_definition
 
-        # no xrefs supported yet..
+        # dict to look up type_name => exportable class
+        self.class_lookup       = class_lookup
+
+        # list of member names whose values will be passed to the new class
+        self.passed_args        = passed_args
+
+        # add this member name's value to the filename
+        self.ref_to             = ref_to
+
+        # link to member name which is a list of binary file offsets
+        self.offset_to          = offset_to
+
+        # dict to specify type_name => constructor arguments
+        self.ref_type_params    = ref_type_params
+
+        # no xrefs supported yet.. just set to true as if they were resolved.
         self.resolved          = True
 
     def get_headers(self, output_target):
         if "struct" == output_target:
             return determine_header("std::vector")
+
         elif "structimpl" == output_target:
             return determine_header("read_csv_file")
+
         else:
             return set()
 
@@ -602,19 +632,22 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
     def get_parsers(self, idx, member):
         return [
+            # first, the parser to just read the index file name
             EntryParser(
-                ["this->%s.index_file.filename = buf[%d];" % (member, idx)],
+                ["this->%s.subdata_meta.filename = buf[%d];" % (member, idx)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "fill",
             ),
+            # then the parser that uses the index file to recurse over
+            # the "real" data entries.
+            # the above parsed filename is searched in this basedir.
             EntryParser(
-                ["this->%s.recurse(basedir, file_map);" % (member)],
+                ["this->%s.recurse(storage, basedir);" % (member)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "recurse",
             )
-
         ]
 
     def get_typerefs(self):
@@ -630,25 +663,34 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         snippet_file_name = self.file_name or file_name
 
         if format_ == "struct":
+            # all the struct info is packed in one text snippet.
             snippet = StructSnippet(snippet_file_name, self.type_name)
 
+            # for each subdata type, add a container struct,
+            # which basically stores the list of entries of that subdata.
             for (entry_name, entry_type) in sorted(self.class_lookup.items()):
                 entry_type = entry_type.get_effective_type()
+
                 snippet.add_member(
-                    "struct openage::util::subdata<%s> %s;" % (
+                    "struct openage::util::csv_subdata<%s> %s;" % (
                         GeneratedFile.namespacify(entry_type), entry_name
                     )
                 )
                 snippet.typerefs |= {entry_type}
 
-            snippet.includes |= determine_header("subdata")
+            snippet.includes |= determine_header("csv_subdata")
             snippet.typerefs |= {MultisubtypeBaseFile.name_struct}
-            snippet.add_member("struct openage::util::subdata<%s> index_file;\n" % (MultisubtypeBaseFile.name_struct))
 
+            # metainformation about locations and types of subdata to recurse
+            # basically maps subdata type to a filename where this subdata is stored
+            snippet.add_member("struct openage::util::csv_subdata<%s> subdata_meta;\n" % (
+                MultisubtypeBaseFile.name_struct))
+
+            # add member methods to the struct
             from .data_formatter import DataFormatter
             snippet.add_members((
-                "%s;" % m.get_signature()
-                for _, m in sorted(DataFormatter.member_methods.items())
+                "%s;" % member.get_signature()
+                for _, member in sorted(DataFormatter.member_methods.items())
             ))
 
             return [snippet]
@@ -657,44 +699,77 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             # TODO: generalize this member function generation...
 
             txt = list()
-            txt.extend((
-                "int %s::fill(char * /*line*/) {\n" % (self.type_name),
-                "\treturn -1;\n",
-                "}\n",
-            ))
+
+            # function to fill up the struct contents, does nothing here.
+            txt.append(
+                "int {type_name}::fill(const std::string & /*line*/) {{\n"
+                "    return -1;\n"
+                "}}\n".format(type_name = self.type_name)
+            )
 
             # function to recursively read the referenced files
-            txt.extend((
-                "int %s::recurse(openage::util::Dir basedir, openage::util::csv_file_map_t *file_map) {\n" % (self.type_name),
-                "\tthis->index_file.read(basedir, file_map); //read ref-file entries\n",
-                "\tint subtype_count = this->index_file.data.size();\n"
-                "\tif (subtype_count != %s) {\n" % len(self.class_lookup),
-                "\t\tthrow openage::error::Error(MSG(err) << \"multisubtype index file entry count mismatched! \" << subtype_count << \" != %d\");\n" % (len(self.class_lookup)),
-                "\t}\n\n",
-                "\topenage::util::Dir new_basedir = basedir.append(openage::util::dirname(this->index_file.filename));\n",
-                "\tint idx = -1, idxtry;\n\n",
-                "\t//yes, the following code can be heavily optimized and converted to member methods..\n",
-            ))
+            # this reads the metainformation for the subtypes to be read.
+            #
+            # this is invoked in util/csv.h:
+            # CSVCollection::read
+            txt.append(
+                "bool {type_name}::recurse(const openage::util::CSVCollection &storage,\n"
+                "{type_leng}               const std::string &basedir) {{\n"
+                "\n"
+                "    // the .filename was set by the previous entry parser already\n"
+                "    // so now read the index-file entries\n"
+                "    this->subdata_meta.read(storage, basedir);\n"
+                "\n"
+                "    int subtype_count = this->subdata_meta.data.size();\n"
+                "    if (subtype_count != {subtype_count}) {{\n"
+                "        throw openage::error::Error(\n"
+                '            ERR << "multisubtype index file entry count mismatched!"\n'
+                '            << subtype_count << " != {subtype_count}"\n'
+                "        );\n"
+                "    }}\n"
+                "\n"
+                "    // the recursed data files are relative to the subdata_meta filename\n"
+                "    std::string metadata_dir = basedir + openage::util::fslike::PATHSEP + openage::util::dirname(this->subdata_meta.filename);\n"
+                "    int idx;\n"
+                "    int idxtry;\n"
+                "\n".format(type_name=self.type_name,
+                            type_leng=" " * len(self.type_name),
+                            subtype_count=len(self.class_lookup))
+            )
 
             for (entry_name, entry_type) in sorted(self.class_lookup.items()):
-                # get the index_file data index of the current entry first
-                txt.extend((
-                    "\tidxtry = 0;\n",
-                    "\tfor (auto &file_reference : this->index_file.data) {\n",
-                    "\t\tif (file_reference.subtype == \"%s\") {\n" % (entry_name),
-                    "\t\t\t\tidx = idxtry;\n",
-                    "\t\t\tbreak;\n",
-                    "\t\t}\n",
-                    "\t\tidxtry += 1;\n",
-                    "\t}\n",
-                    "\tif (idx == -1) {\n",
-                    "\t\tthrow openage::error::Error(MSG(err) << \"multisubtype index file contains no entry for %s!\");\n" % (entry_name),
-                    "\t}\n",
-                    "\tthis->%s.filename = this->index_file.data[idx].filename;\n" % (entry_name),
-                    "\tthis->%s.read(new_basedir, file_map);\n" % (entry_name),
-                    "\tidx = -1;\n\n"
-                ))
-            txt.append("\treturn -1;\n}\n")
+                # for each type in a multisubtype member:
+                # * try to find the type name index in the metadatafile
+                # * fetch the filename for that type from the metadata (by the index)
+                # * fill that subdata type with information
+                txt.append(
+                    "    // read subtype '{entry_name}'\n"
+                    "    idx = -1;\n"
+                    "    idxtry = 0;\n"
+                    "    // find the index of the subdata in the metadata\n"
+                    "    for (auto &file_reference : this->subdata_meta.data) {{\n"
+                    '        if (file_reference.subtype == "{entry_name}") {{\n'
+                    "            idx = idxtry;\n"
+                    "            break;\n"
+                    "        }}\n"
+                    "        idxtry += 1;\n"
+                    "    }}\n"
+                    "    if (idx == -1) {{\n"
+                    "        throw openage::error::Error(\n"
+                    '            ERR << "multisubtype index file contains no entry for {entry_name}!"\n'
+                    "        );\n"
+                    "    }}\n"
+                    "\n"
+                    "    // the filename is relative to the metadata file!\n"
+                    "    this->{entry_name}.filename = this->subdata_meta.data[idx].filename;\n"
+                    "    this->{entry_name}.read(storage, metadata_dir);\n"
+                    "\n".format(entry_name=entry_name)
+                )
+
+            txt.append(
+                "    return true;\n"
+                "}\n"
+            )
 
             snippet = ContentSnippet(
                 "".join(txt),
@@ -703,8 +778,11 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 orderby=self.type_name,
                 reprtxt="multisubtype %s container fill function" % self.type_name,
             )
-            snippet.typerefs |= self.get_contained_types() | {self.type_name, MultisubtypeBaseFile.name_struct}
-            snippet.includes |= determine_headers(("engine_dir", "engine_error"))
+            snippet.typerefs |= (self.get_contained_types() |
+                                 {self.type_name, MultisubtypeBaseFile.name_struct})
+            snippet.includes |= determine_headers(
+                ("util::Path", "engine_error", "csv_collection", "std::string")
+            )
 
             return [snippet]
 
@@ -726,10 +804,12 @@ class MultisubtypeMember(RefMember, DynLengthMember):
 
 class SubdataMember(MultisubtypeMember):
     """
-    struct member/data column that references to one another data set.
+    Struct member/data column that references to just one another data set.
+    It's a special case of the multisubtypemember with one subtype.
     """
 
-    def __init__(self, ref_type, length, offset_to=None, ref_to=None, ref_type_params=None, passed_args=None):
+    def __init__(self, ref_type, length, offset_to=None,
+                 ref_to=None, ref_type_params=None, passed_args=None):
         super().__init__(
             type_name          = None,
             subtype_definition = None,
@@ -743,7 +823,7 @@ class SubdataMember(MultisubtypeMember):
 
     def get_headers(self, output_target):
         if "struct" == output_target:
-            return determine_header("subdata")
+            return determine_header("csv_subdata")
         else:
             return set()
 
@@ -751,18 +831,21 @@ class SubdataMember(MultisubtypeMember):
         return GeneratedFile.namespacify(tuple(self.get_contained_types())[0])
 
     def get_effective_type(self):
-        return "openage::util::subdata<%s>" % (self.get_subtype())
+        return "openage::util::csv_subdata<%s>" % (self.get_subtype())
 
     def get_parsers(self, idx, member):
         return [
+            # to read subdata, first fetch the filename to read
             EntryParser(
                 ["this->%s.filename = buf[%d];" % (member, idx)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "fill",
             ),
+            # then read the subdata content from the storage,
+            # searching for the filename relative to basedir.
             EntryParser(
-                ["this->%s.read(basedir, file_map);" % (member)],
+                ["this->%s.read(storage, basedir);" % (member)],
                 headers     = set(),
                 typerefs    = set(),
                 destination = "recurse",

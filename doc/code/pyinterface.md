@@ -1,13 +1,17 @@
-Openage C++ <-> Python interface
+openage C++ <-> Python interface
 ================================
 
-Openage consists of python modules, which contain the program entry point,
+openage consists of python modules, which contain the program entry point,
 and the library `libopenage.so`, which contains all C++ code.
 
 Cython is used for glue code.
 
+
 Cython crash course
 -------------------
+
+
+### Python with types
 
 Cython modules are written in `.pyx` files, and roughly equivalent to .py files.
 In addition to regular Python syntax, `.pyx` files allow you to define typed
@@ -30,23 +34,29 @@ def foo():
     return square(r.size())
 ```
 
+More language information [is in the official documentation](https://cython.readthedocs.io/en/latest/src/userguide/language_basics.html).
+
 `.pyx` files are translated to `.cpp` by Cython ("cythonized") as part of the
 openage build process; syntax errors are shown in this step.
 
 Each `.cpp` file is then compiled to a Python extension module, which may be
 used from everywhere.
 
-    - `def` functions and `cdef class` classes can be used from Python.
-    - `cdef` functions are suitable for storage in a `C` function pointer.
+- `def` functions and `cdef class` classes can be used from Python
+- `cdef` functions can't be used directly
+  - suitable for storage in a `C` function pointer
+  - callable from `def` functions in the `.pyx` file
 
 ```
 $ cython --cplus -3 test.pyx
-$ g++ -shared -fPIC -I/usr/include/python3.4m test.cpp -o test.so
+$ g++ -shared -fPIC $(python3-config --includes) test.cpp -o test.so
 $ python3
 >>> import test
 >>> test.foo()
 900
 ```
+
+### Interface definitions
 
 Cython can use any regular C++ function or type; for that purpose, they
 need to be declared in `.pxd` files (which are analogous to C++ `.h` files):
@@ -62,10 +72,14 @@ To use this function declared in `foo.pxd`,
 from foo cimport atoi as c_atoi
 
 def atoi(s):
+    # invokes the c implementation according to the
+    # interface defined in a .pxd file
     return c_atoi(s)
 ```
 
-Openage has a helper, `pxdgen`, which auto-generates `.pxd` files for `.h`
+### pxd generation
+
+`openage` has a helper, `pxdgen`, which auto-generates `.pxd` files for `.h`
 files in the `libopenage/` subdirectory, from `pxd:` annotations in these files, as part
 of the build system.
 
@@ -78,13 +92,13 @@ To `cimport` a class Foo that was pxd-annotated in `util/foo.h`, type
 from libopenage.util.foo cimport Foo
 ```
 
-Cython [ships `.pxd` files](https://github.com/cython/cython/tree/master/Cython/Includes) for most C, C++ and CPython functions:
+Cython [ships lots of `.pxd` files](https://github.com/cython/cython/tree/master/Cython/Includes) for most C, C++ and CPython functions:
 
 ``` cython
 from libc.math cimport sin
 from libcpp.vector cimport vector
 
-cdef vector[float] vector_sin(vector[float] args):
+cdef vector[float] vector_sin(vector[float]& args):
     return [sin(arg) for arg in args]
 
 print(vector_sin(range(10)))
@@ -110,7 +124,7 @@ int foo(int arg0, std::string arg1) {
         return 5;
 }
 
-} // openage
+}
 ```
 
 `libopenage/example.h`
@@ -130,13 +144,14 @@ namespace openage {
  */
 int foo(int arg0, std::string arg1);
 
-} // openage
+}
 ```
 
 _Always_ pxd-declare your functions as `except +` ("may potentially rise a C++ exception"), unless the C++ function is marked `noexcept` itself.
 If a function that is not declared `except +` throws anyways, the entire CPython interpreter is likely to be shredded.
+(Sidenote: the `except +` annotation enables openage-specific exception translation. To see how this is used, look in the `exctranslate_tests.pyx/cpp`)
 
-`cmake` must be informed about the `pxd`-annotated header file:
+To enable `pxdgen`, `cmake` must be informed about the `pxd`-annotated header file:
 
 `libopenage/CMakeLists.txt`
 
@@ -169,12 +184,96 @@ Calling Python functions from C++
 ---------------------------------
 
 The interface works one-way: Cython can access `libopenage`, but not the other way round.
-Thus, `libopenage` must provide `PyIfFunc` function pointers that are filled by Cython
-during initialization.
+Thus, `libopenage` must find its way back to Python:
 
-Any `cdef` functions may be stored in C++ function pointers; the `openage::pyinterface::PyIfFunc`
-type has been created for this purpose; it allows binding arguments and makes sure that the pointer
-is properly initialized (instead of invoking undefined behavior if called before initialization).
+* By `pyinterface::PyIfFunc` function pointers that are filled by Cython during initialization.
+* By `py::PyObj` objects that hold a Python object. It may be callable.
+
+
+### Calling directly to C++
+
+Any Python object can be stored in a `PyObj` (`from libopenage.pyinterface.pyobject`),
+which C++ can use to do calls to Python callables.
+
+This works in the way that you create C++ objects in Cython and then
+[call a C++ function](#calling-c-functions-from-python) where you pass it.
+
+
+``` c++
+// pxd: from libcpp.string cimport string
+#include <string>
+
+// pxd: from libopenage.pyinterface.pyobject cimport PyObj
+#include "libopenage/pyinterface/pyobject.h"
+
+
+/**
+ * pxd:
+ *
+ * cppclass demo_struct:
+ *     PyObj obj
+ *     string text
+ */
+struct demo_struct {
+    py::PyObj obj;
+    std::string text;
+};
+
+/**
+ * pxd: int cpp_function(lol_struct arg, int another_arg) except +
+ */
+void cpp_function(lol_struct &arg, int another_arg) {
+    // native data can directly be used
+    std::cout << "native_arg: " << arg.text << std::endl;
+
+    // call the python
+    // with automatic argument conversion!
+    std::cout << "python call: "
+        << arg.obj->getattr("py_func").call("some binary", another_arg).str()
+        << std::endl;
+}
+```
+
+``` cython
+from libopenage.pyinterface.pyobject cimport PyObj
+from libopenage.main cimport demo_struct, cpp_function
+
+class TestClass:
+    def __init__(self):
+        self.some_member = "rofl"
+
+    def py_func(self, arg0, arg1):
+        return "test: 0={} 1={} 2={}".format(self.some_member, arg0, arg1)
+
+def entry():
+    # create the object and deliver it to c++
+    test_obj = TestClass()
+
+    # python object wrapping for c++
+    cdef PyObj pyobj_wrapped = PyObj(<PyObject*> some_object)
+
+    # create a c++ object
+    cdef demo_struct cppobj
+    cppobj.obj = pyobj_wrapped
+    cppobj.text = "behold the automatic type conversion!"
+
+    # call to c++
+    cpp_function(cpp_obj, 1337)
+```
+
+This means that Python calls to C++ with `cpp_function`,
+then C++ calls back to Python to the `py_function`.
+
+C++ can access a `PyObj` in many more ways, perform casts, etc.
+
+
+### Registering Python functions in C++
+
+To access call Python functions some time later, they can be remembered in C++:
+
+Any `cdef` functions can be stored in C++ function pointers.
+The `openage::pyinterface::PyIfFunc` type has been created for this purpose;
+it allows *binding arguments* and makes sure that the pointer is properly initialized.
 
 We will call this pure-Python function from C++:
 
@@ -184,7 +283,6 @@ We will call this pure-Python function from C++:
 def bar(arg0, arg1):
     """
     This function involves rainbows and unicorns.
-
     arg0 shall be an integer, and arg1 a string.
     """
     return 6.283185307179586
@@ -263,8 +361,13 @@ guarantee that exceptions are properly translated, among other things.
 Real-life examples
 ------------------
 
-For code that wraps a C++ class for Python, see `openage/cabextract/lzxd.pyx` and `libopenage/util/lzxd.h`.
-For code that wraps a Python class for C++, see `openage/util/fslike_cpp.pyx` and `libopenage/util/fslikeobject.h`.
+* For code that wraps a C++ class for Python, see:
+  * `openage/cabextract/lzxd.pyx`
+  * `libopenage/util/lzxd.h`
+* For code that wraps a Python class for C++, see:
+  * `libopenage/util/fslike/path.h`
+  * `openage/util/fslike/cpp.pyx`
+* Search for `.pyx` files in the repo
 
 
 Notes on the GIL
@@ -272,10 +375,13 @@ Notes on the GIL
 
 The GIL must be acquired for any Python functionality (even as simple as `PyErr_Occurred`).
 
-However, GIL-safety is guaranteed by the combination of Cython, the pyinterface code, and the fact that libopenage doesn't link against Python itself / include any Python headers.
+However, GIL-safety is guaranteed by the combination of Cython, the pyinterface code,
+and the fact that `libopenage` doesn't link against Python itself / include any Python headers.
 
 Any code in `libopenage` can safely be run without the GIL.
 
-Only functions that are marked `with gil` can be bound to `PyIfFunc` or `Func` objects; this ensures that the GIL is always re-acquired when jumping into Cython code.
+Only functions that are marked `with gil` can be bound to `PyIfFunc` or `Func` objects;
+this ensures that the GIL is always re-acquired when jumping into Cython code.
 
-__Never__ use raw function pointers in the interface; always use the `PyIfFunc` or `Func` objects; otherwise, you'll lose all safety guarantees.
+__Never__ use raw function pointers in the interface;
+always use the `PyIfFunc` or `Func` objects; otherwise, you'll lose all safety guarantees.

@@ -1,4 +1,15 @@
-# valgrind suppression file that should suppress all python-specific issues.
+#
+# This is a valgrind suppression file that should be used
+# when running Python with valgrind.
+#
+#  Here's an example of running valgrind:
+#
+#	cd python/dist/src
+#	valgrind --tool=memcheck --suppressions=Misc/valgrind-python.supp \
+#		python3 -m openage test -a
+#
+# python can be compiled with --with-valgrind to enhance the experience
+# Python 3.6 supports PYTHONMALLOC=malloc environment var to force malloc()
 
 # all tool names: Addrcheck,Memcheck,cachegrind,helgrind,massif
 {
@@ -68,7 +79,7 @@
    Handle PyMalloc confusing valgrind (possibly leaked)
    Memcheck:Leak
    fun:realloc
-   fun:PyObject_GC_Resize
+   fun:_PyObject_GC_Resize
    fun:COMMENT_THIS_LINE_TO_DISABLE_LEAK_WARNING
 }
 
@@ -76,7 +87,7 @@
    Handle PyMalloc confusing valgrind (possibly leaked)
    Memcheck:Leak
    fun:malloc
-   fun:PyObject_GC_New
+   fun:_PyObject_GC_New
    fun:COMMENT_THIS_LINE_TO_DISABLE_LEAK_WARNING
 }
 
@@ -84,7 +95,7 @@
    Handle PyMalloc confusing valgrind (possibly leaked)
    Memcheck:Leak
    fun:malloc
-   fun:PyObject_GC_NewVar
+   fun:_PyObject_GC_NewVar
    fun:COMMENT_THIS_LINE_TO_DISABLE_LEAK_WARNING
 }
 

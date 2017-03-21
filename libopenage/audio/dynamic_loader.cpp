@@ -9,21 +9,24 @@ namespace openage {
 namespace audio {
 
 
-DynamicLoader::DynamicLoader(const std::string &path)
+DynamicLoader::DynamicLoader(const util::Path &path)
 	:
 	path{path} {}
 
 
-std::unique_ptr<DynamicLoader> DynamicLoader::create(const std::string &path,
+std::unique_ptr<DynamicLoader> DynamicLoader::create(const util::Path &path,
                                                      format_t format) {
 	std::unique_ptr<DynamicLoader> loader;
+
 	switch (format) {
 	case format_t::OPUS:
 		loader = std::make_unique<OpusDynamicLoader>(path);
 		break;
+
 	default:
-		throw audio::Error{MSG(err) <<
-			"No dynamic audio loader for format supported: " << format};
+		throw audio::Error{
+			ERR << "No dynamic audio loader for format supported: " << format
+		};
 	}
 	return loader;
 }

@@ -8,6 +8,7 @@
 // pxd: from libcpp.string cimport string
 #include <string>
 
+#include "../util/compiler.h"
 // pxd: from libopenage.log.message cimport message
 #include "../log/message.h"
 
@@ -143,7 +144,8 @@ inline std::string no_ensuring_message()
 	return std::string{};
 }
 
-#define ENSURE(...) do if (!OPENAGE_ENS_FIRST(__VA_ARGS__)) throw ::openage::error::Error(MSG(err) OPENAGE_ENS_REST(__VA_ARGS__)); while (0)
+// ENSURE(condition, errormessage << variable << etcetc)
+#define ENSURE(...) do if (unlikely(not OPENAGE_ENS_FIRST(__VA_ARGS__))) throw ::openage::error::Error(MSG(err) OPENAGE_ENS_REST(__VA_ARGS__)); while (0)
 
 /*
  *  expands to the first argument

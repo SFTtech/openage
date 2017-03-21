@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,24 +8,25 @@
 // pxd: from libc.stdint cimport int32_t
 #include <cstdint>
 
-namespace openage {
+// pxd: from libopenage.util.path cimport Path
+#include "util/path.h"
 
+
+namespace openage {
 
 /**
  * Used for passing arguments to run_game.
  *
- * TODO remove lots of these.
- *
  * pxd:
  *
  * cppclass main_arguments:
- *     string data_directory
+ *     Path root_path
  *     int32_t fps_limit
  *     bool gl_debug
  */
 struct main_arguments {
-	std::string data_directory;
-	std::int32_t fps_limit;
+	util::Path root_path;
+	int32_t fps_limit;
 	bool gl_debug;
 };
 
@@ -33,7 +34,7 @@ struct main_arguments {
 /**
  * runs the game.
  *
- * pxd: int run_game(main_arguments args) except +
+ * pxd: int run_game(const main_arguments &args) except +
  */
 int run_game(const main_arguments &args);
 

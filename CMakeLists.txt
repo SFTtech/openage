@@ -1,3 +1,5 @@
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+
 cmake_minimum_required(VERSION 3.1.0)
 # required for CMAKE_CXX_STANDARD
 
@@ -60,9 +62,15 @@ if(NOT DEFINED WANT_GPERFTOOLS_TCMALLOC)
 	set(WANT_GPERFTOOLS_TCMALLOC false)
 endif()
 
+# option processing is now done.
+
+
+# add search paths to helper modules
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
 set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
 
+# load helper modules
+include(GNUInstallDirs)
 include(CheckInSourceBuild)
 include(HandleCXXOptions)
 include(CheckCompilerFeatures)
@@ -73,12 +81,13 @@ include(DetectProjectVersion)
 # include build configuration modules
 include(CTest)
 
-include(util)
-include(cpp)
-include(python)
+# initialize language support
 include(codegen)
-include(version)
+include(cpp)
 include(doxygen)
+include(options)
+include(python)
+include(util)
 
 
 # now that all modules and settings are loaded,
@@ -87,13 +96,22 @@ include(doxygen)
 # create documentation
 doxygen_configure(libopenage/ openage/)
 
+# static content
+set(INSTALLED_GLOBAL_ASSET_DIR "${CMAKE_INSTALL_PREFIX}/share/openage")
+set(INSTALLED_GLOBAL_CONFIG_DIR "/etc/openage")
 add_subdirectory(assets/)
+add_subdirectory(dist/)
+add_subdirectory(cfg/)
+
+# C++ content
 add_subdirectory(libopenage/)
+
+# Python content (uses the C++ library)
 set(PYEXT_LINK_LIBRARY libopenage)
 set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -include \"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")
 add_cython_modules(EMBED NOINSTALL run.py)
+add_py_modules(BININSTALL run.py AS openage)
 add_subdirectory(openage/)
-add_subdirectory(dist/)
 
 python_finalize()
 

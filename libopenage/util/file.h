@@ -2,163 +2,109 @@
 
 #pragma once
 
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
+// pxd: from libcpp.memory cimport shared_ptr
+#include <memory>
+// pxd: from libcpp.string cimport string
 #include <string>
-#include <unordered_map>
 #include <vector>
 
-#include "../error/error.h"
+// pxd: from libopenage.util.filelike.filelike cimport FileLike
+#include "filelike/filelike.h"
+// pxd: from libopenage.pyinterface.pyobject cimport PyObj
+#include "../pyinterface/pyobject.h"
 
-#include "compiler.h"
-#include "dir.h"
+// pxd: from libopenage.util.path cimport Path
 
 namespace openage {
 namespace util {
 
-ssize_t file_size(const std::string &filename);
-ssize_t file_size(Dir basedir, const std::string &fname);
+class Path;
 
-ssize_t read_whole_file(char **result, const char *filename);
-ssize_t read_whole_file(char **result, const std::string &filename);
 
 /**
- * get the lines of a file.
+ * Generic File implementation, used in our filesystem-like and file-like
+ * abtraction system. Can be created from Python :)
  *
- * returns vector of strings, each entry is one line in the file.
- */
-std::vector<std::string> file_get_lines(const std::string &file_name);
-
-using csv_file_map_t = std::unordered_map<std::string, std::vector<std::string>>;
-
-/**
- * Load a multi csv file into a csv_file_map_t
- */
-csv_file_map_t *load_multi_csv_file(Dir basedir, const std::string &fname);
-
-/**
- * read a single csv file.
- * call the destination struct .fill() method for actually storing line data
- */
-template<typename lineformat>
-void read_csv_file(const std::string &fname, std::vector<lineformat> &out, csv_file_map_t *file_map = nullptr) {
-	size_t line_count = 0;
-	lineformat current_line_data;
-	std::vector<char> strbuf;
-
-	if (file_map && file_map->count(fname)) {
-		std::vector<std::string> lines = file_map->at(fname);
-
-		for (auto &line : lines) {
-			line_count += 1;
-
-			// create writable copy, for tokenisation
-			if (unlikely(strbuf.size() <= line.size())) {
-				strbuf.resize(line.size() + 1);
-			}
-			memcpy(strbuf.data(), line.c_str(), line.size() + 1);
-
-			// use the line copy to fill the current line struct.
-			int error_column = current_line_data.fill(strbuf.data());
-			if (error_column != -1) {
-				throw Error(MSG(err) <<
-					"Failed to read CSV file: " <<
-					fname << ":" << line_count << ":" << error_column << ": "
-					"error parsing " << line);
-			}
-
-			out.push_back(current_line_data);
-		}
-	}
-	else {
-		std::string line;
-
-		std::ifstream csvfile{fname};
-
-		while (std::getline(csvfile, line)) {
-			line_count += 1;
-
-			// ignore comments and empty lines
-			if (line.empty() || line[0] == '#') {
-				continue;
-			}
-
-			// create writable copy, for tokenisation
-			if (unlikely(strbuf.size() <= line.size())) {
-				strbuf.resize(line.size() + 1);
-			}
-			memcpy(strbuf.data(), line.c_str(), line.size() + 1);
-
-			// use the line copy to fill the current line struct.
-			int error_column = current_line_data.fill(strbuf.data());
-			if (error_column != -1) {
-				throw Error(MSG(err) <<
-					"Failed to read CSV file: " <<
-					fname << ":" << line_count << ":" << error_column << ": "
-					"error parsing " << line);
-			}
-
-			out.push_back(current_line_data);
-		}
-
-		if (unlikely(!line_count)) {
-			throw Error(MSG(err) <<
-				"Failed to read CSV file " << fname << ": " <<
-				"Empty or missing.");
-		}
-	}
-}
-
-
-/**
- * reads data files recursively.
- * should be called from the .recurse() method of the struct.
- */
-template<class lineformat>
-std::vector<lineformat> recurse_data_files(Dir basedir, const std::string &fname, csv_file_map_t *file_map = nullptr) {
-	std::vector<lineformat> result;
-	std::string merged_filename = basedir.join(fname);
-
-	read_csv_file<lineformat>(merged_filename, result, file_map);
-
-	//the new basedir is the old basedir
-	// + the directory part of the current relative file name
-	Dir new_basedir = basedir.append(dirname(fname));
-
-	size_t line_count = 0;
-	for (auto &entry : result) {
-		line_count += 1;
-		if (not entry.recurse(new_basedir, file_map)) {
-			throw Error(MSG(err) <<
-				"Failed to read follow-up files for " <<
-				merged_filename << ":" << line_count);
-		}
-	}
-
-	return result;
-}
-
-
-/**
- * referenced file tree structure.
+ * TODO: maybe inherit from std::iostream so we can use it the c++-way
  *
- * used to store the filename and resulting data of a file down
- * the gamedata tree.
+ * pxd:
+ *
+ * cppclass File:
+ *     File() noexcept
+ *     File(const string &path, int mode) except +
+ *     File(PyObj) except +
+ *
+ *     shared_ptr[FileLike] get_fileobj() except +
  */
-template<class cls>
-struct subdata {
-	std::string filename;
-	std::vector<cls> data;
+class File {
+public:
+	using seek_t = filelike::FileLike::seek_t;
+	using mode_t = filelike::FileLike::mode_t;
 
-	bool read(Dir basedir, csv_file_map_t *file_map = nullptr) {
-		this->data = recurse_data_files<cls>(basedir, this->filename, file_map);
-		return true;
-	}
+	/**
+	 * Empty constructor, pls don't use.
+	 * It only exists because Cython needs it.
+	 */
+	File();
 
-	cls operator [](size_t idx) const {
-		return this->data[idx];
-	}
+	/**
+	 * Open a filesystem path, int version.
+	 * this is just the integer value of the mode_t, because Cython...
+	 */
+	File(const std::string &path, int mode);
+
+	/**
+	 * Open a filesystem path.
+	 */
+	File(const std::string &path, mode_t mode=mode_t::R);
+
+	/**
+	 * Create a file from an already created filelike.
+	 */
+	File(std::shared_ptr<filelike::FileLike> filelike);
+
+	/**
+	 * Wraps a python filelike object that is already open.
+	 * This is called from Cython.
+	 *
+	 * You will probably never call that manually.
+	 */
+	File(py::Obj filelike);
+
+	virtual ~File() = default;
+
+	/**
+	 * Read data from the file and return a string.
+	 * If max is negative, return the full remaining file.
+	 */
+	std::string read(ssize_t max=-1);
+
+	/**
+	 * Read data from the file into a buffer,
+	 * which has to be large enough to fit max bytes.
+	 * If max is negative, read the full remaining file,
+	 * so buf has to be as big as the remaining file size.
+	 *
+	 * Returns the number of bytes that were read.
+	 */
+	size_t read_to(void *buf, ssize_t max=-1);
+	bool readable();
+	void write(const std::string &data);
+	bool writable();
+	void seek(ssize_t offset, seek_t how=seek_t::SET);
+	bool seekable();
+	size_t tell();
+	void close();
+	void flush();
+	ssize_t size();
+	std::vector<std::string> get_lines();
+
+	std::shared_ptr<filelike::FileLike> get_fileobj() const;
+
+protected:
+	std::shared_ptr<filelike::FileLike> filelike;
+
+	friend std::ostream &operator <<(std::ostream &stream, const File &file);
 };
 
 }} // openage::util

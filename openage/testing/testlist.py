@@ -15,7 +15,8 @@ def doctest_modules():
 
 def tests_py():
     """
-    Yields tuples of (name, description) for all Python test methods.
+    Yields tuples of (name, description, condition_function)
+    for all Python test methods.
 
     If no description is required, just the name may be yielded.
     """
@@ -23,13 +24,16 @@ def tests_py():
     yield ("openage.testing.doctest.test",
            "doctest on all modules from DOCTEST_MODULES")
     yield "openage.assets.test"
-    yield "openage.cabextract.test.test"
+    yield ("openage.cabextract.test.test", "test CAB archive extraction",
+           lambda env: env["has_assets"])
     yield "openage.convert.changelog.test"
     yield "openage.cppinterface.exctranslate_tests.cpp_to_py"
     yield ("openage.cppinterface.exctranslate_tests.cpp_to_py_bounce",
            "translates the exception back and forth a few times")
     yield ("openage.testing.misc_cpp.enum",
            "tests the interface for C++'s util::Enum class")
+    yield ("openage.util.fslike.test.test",
+           "test the filesystem abstraction subsystem")
     yield "openage.util.threading.test_concurrent_chain"
 
 
@@ -46,7 +50,8 @@ def demos_py():
 
 def tests_cpp():
     """
-    Yields tuples of (name, description) for all C++ test methods.
+    Yields tuples of (name, description, condition_function)
+    for all C++ test methods.
 
     If no description is required, just the name may be yielded.
     """

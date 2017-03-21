@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,6 +20,24 @@
  */
 #define likely(x)    __builtin_expect(!!(x), 1)
 #define unlikely(x)  __builtin_expect(!!(x), 0)
+
+
+/**
+ * Software breakpoint if you're too lazy
+ * to add it in gdb but instead wanna add it into the code directly.
+ */
+#define BREAKPOINT asm("int $3;")
+
+
+/**
+ * As C++ is such a shit language, we found this awesome
+ * way to display a type of some variable as a warning.
+ *
+ * Other hacks like wrong assignments work as well, but crash
+ * the compilation by error.
+ */
+#define TYPEINFO(var) printf("%d", var)
+
 
 namespace openage {
 namespace util {

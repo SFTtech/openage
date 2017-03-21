@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,7 +13,6 @@
 #include "../texture.h"
 #include "../coord/camgame.h"
 #include "../coord/chunk.h"
-#include "../util/dir.h"
 #include "../util/misc.h"
 
 namespace openage {
@@ -25,6 +24,8 @@ class TerrainObject;
 
 /**
  * type that for terrain ids.
+ * it's signed so that -1 can indicate a missing tile.
+ * TODO: get rid of the signedness.
  */
 using terrain_t = int;
 

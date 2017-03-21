@@ -1,16 +1,21 @@
-# Copyright 2013-2016 the openage authors. See copying.md for legal info.
-
-# TODO pylint: disable=C,R
-# TODO some major performance optimizations (including profiling).
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+#
+# cython: profile=False
 
 from struct import Struct, unpack_from
 
 from enum import Enum
 
+cimport cython
 import numpy
 cimport numpy
 
+from libc.stdint cimport uint8_t
+from libcpp cimport bool
+from libcpp.vector cimport vector
+
 from ..log import spam, dbg
+
 
 # SLP files have little endian byte order
 endianness = "< "
@@ -22,76 +27,41 @@ class SpecialColorValue(Enum):
     player_color = "P"
     black_color = "#"
 
-
-class SpecialColor:
-    """
-    special color class to preserve the player number variable.
-
-    also used for storing unit outline colors.
-    """
-
-    def __init__(self, special_id, base_color=2):
-        """
-        base_color: value for the base player color used for outlines.
-        2 is lighter and suits better for outline display.
-        try to experiment with [0, 7]..
-        """
-
-        self.special_id = special_id
-        self.base_color = base_color
-
-    def get_pcolor_for_player(self, player):
-        """
-        determine the player color palette index for a given player.
-
-        the base color of this pixel is stored,
-        the remaining degree of freedom is passed as function argument.
-        """
-
-        if self.special_id in (2, SpecialColorValue.black_color):
-            # this ensures palette[16 -16] will be taken
-            return -16
-
-        elif self.special_id in (1, SpecialColorValue.player_color):
-            # return final color for outline or player
-            return 16 * player + self.base_color
-
-        else:
-            raise Exception("unknown special color")
-
-    def get_pcolor(self):
-        """
-        look up the special color purpose.
-
-        returns (base_color, is_outline_pixel)
-        """
-        if self.special_id in (2, SpecialColorValue.black_color):
-            # black outline pixel, we will probably never encounter this.
-            #  -16 ensures palette[16+(-16)=0] will be used.
-            return (-16, True)
-
-        elif self.special_id == 1:
-            # this is an player-colored outline pixel
-            return (self.base_color, True)
-
-        elif self.special_id == SpecialColorValue.player_color:
-            # this is a playercolor pixel base color
-            return (self.base_color, False)
-
-        else:
-            raise Exception("unknown special color")
-
-    def __hash__(self):
-        return hash((self.special_id, self.base_color))
-
-    def __eq__(self, other):
-        return (
-            self.special_id == other.special_id and
-            self.base_color == other.base_color
-        )
+    def __str__(self):
+        return self.value
 
     def __repr__(self):
-        return "S%s%d" % (self.special_id, self.base_color)
+        return self.value
+
+
+# command ids may have encoded the pixel length.
+# this is used when unpacked.
+cdef struct cmd_pack:
+    uint8_t count
+    Py_ssize_t dpos
+
+
+cdef struct boundary_def:
+    Py_ssize_t left
+    Py_ssize_t right
+    bool full_row
+
+
+# SLP pixels can be very special.
+cdef enum pixel_type:
+    color_standard       # standard pixel
+    color_shadow         # shadow pixel
+    color_transparent    # transparent pixel
+    color_player         # non-outline player color pixel
+    color_black          # black outline pixel
+    color_special_1      # player color outline pixel
+    color_special_2      # black outline pixel
+
+
+# One SLP pixel.
+cdef struct pixel:
+    pixel_type type
+    uint8_t value
 
 
 class SLP:
@@ -184,7 +154,7 @@ class FrameInfo:
         return "".join(ret)
 
 
-class SLPFrame:
+cdef class SLPFrame:
     """
     one image inside the SLP. you can imagine it as a frame of a video.
     """
@@ -200,20 +170,38 @@ class SLPFrame:
     # }
     slp_command_offset = Struct(endianness + "I")
 
+    # frame information
+    cdef object info
+
+    # for each row:
+    # contains (left, right, full_row) number of boundary pixels
+    cdef vector[boundary_def] boundaries
+
+    # stores the file offset for the first drawing command
+    cdef vector[int] cmd_offsets
+
+    # palette index matrix representing the final image
+    cdef vector[vector[pixel]] pcolor
+
+    # memory pointer
+    cdef const uint8_t *data_raw
+
     def __init__(self, frame_info, data):
         self.info = frame_info
 
-        # for each row:
-        # contains (left, right) number of boundary pixels
-        self.boundaries = []
-        # stores the file offset for the first drawing command
-        self.cmd_offsets = []
+        if not (isinstance(data, bytes) or isinstance(data, bytearray)):
+            raise ValueError("Frame data must be some bytes object")
 
-        # palette index matrix representing the final image
-        self.pcolor = list()
+        # convert the bytes obj to char*
+        self.data_raw = data
+
+        cdef size_t i
+        cdef int cmd_offset
+
+        cdef size_t row_count = self.info.size[1]
 
         # process bondary table
-        for i in range(self.info.size[1]):
+        for i in range(row_count):
             outline_entry_position = (self.info.outline_table_offset + i *
                                       SLPFrame.slp_frame_row_edge.size)
 
@@ -223,62 +211,60 @@ class SLPFrame:
 
             # is this row completely transparent?
             if left == 0x8000 or right == 0x8000:
-                # TODO: -1 or like should be enough
-                self.boundaries.append(SpecialColorValue.transparent)
+                self.boundaries.push_back(boundary_def(0, 0, True))
             else:
-                self.boundaries.append((left, right))
-
-        spam("boundary values: %s" % self.boundaries)
+                self.boundaries.push_back(boundary_def(left, right, False))
 
         # process cmd table
-        for i in range(self.info.size[1]):
+        for i in range(row_count):
             cmd_table_position = (self.info.qdl_table_offset + i *
                                   SLPFrame.slp_command_offset.size)
-            cmd_offset, = SLPFrame.slp_command_offset.unpack_from(
+            cmd_offset = SLPFrame.slp_command_offset.unpack_from(
                 data, cmd_table_position
-            )
-            self.cmd_offsets.append(cmd_offset)
+            )[0]
+            self.cmd_offsets.push_back(cmd_offset)
 
-        spam("cmd_offsets:     %s" % self.cmd_offsets)
+        for i in range(row_count):
+            self.pcolor.push_back(self.create_palette_color_row(i))
 
-        for i in range(self.info.size[1]):
-            self.pcolor.append(self.create_palette_color_row(data, i))
-
-    def create_palette_color_row(self, data, rowid):
+    cdef vector[pixel] create_palette_color_row(self, Py_ssize_t rowid) except +:
         """
         create palette indices (colors) for the given rowid.
         """
 
+        cdef vector[pixel] row_data
+        cdef Py_ssize_t i
+
         first_cmd_offset = self.cmd_offsets[rowid]
-        bounds = self.boundaries[rowid]
-        pixel_count = self.info.size[0]
+        cdef boundary_def bounds = self.boundaries[rowid]
+        cdef size_t pixel_count = self.info.size[0]
+
+        # preallocate memory
+        row_data.reserve(pixel_count)
 
         # row is completely transparent
-        if bounds == SpecialColorValue.transparent:
-            return [bounds] * pixel_count
+        if bounds.full_row:
+            for _ in range(pixel_count):
+                row_data.push_back(pixel(color_transparent, 0))
 
-        left_boundary, right_boundary = bounds
-        missing_pixels = pixel_count - left_boundary - right_boundary
+            return row_data
 
         # start drawing the left transparent space
-        pcolor_row_beginning = [SpecialColorValue.transparent] * left_boundary
+        for i in range(bounds.left):
+            row_data.push_back(pixel(color_transparent, 0))
 
         # process the drawing commands for this row.
-        pcolor_row_content = self.process_drawing_cmds(data, rowid,
-                                                       first_cmd_offset,
-                                                       missing_pixels)
+        self.process_drawing_cmds(row_data, rowid,
+                                  first_cmd_offset,
+                                  pixel_count - bounds.right)
 
         # finish by filling up the right transparent space
-        pcolor_row_trailing = [SpecialColorValue.transparent] * right_boundary
-
-        # this is the resulting row data
-        row_data = sum((pcolor_row_beginning,
-                        pcolor_row_content,
-                        pcolor_row_trailing), [])
+        for i in range(bounds.right):
+            row_data.push_back(pixel(color_transparent, 0))
 
         # verify size of generated row
-        if len(row_data) != pixel_count:
-            got = len(row_data)
+        if row_data.size() != pixel_count:
+            got = row_data.size()
             summary = "%d/%d -> row %d, offset %d / %#x" % (
                 got, pixel_count, rowid, first_cmd_offset, first_cmd_offset)
             txt = "got %%s pixels than expected: %s, missing: %d" % (
@@ -288,30 +274,41 @@ class SLPFrame:
 
         return row_data
 
-    def process_drawing_cmds(self, data, rowid,
-                             first_cmd_offset, missing_pixels):
+    cdef process_drawing_cmds(self, vector[pixel] &row_data,
+                              Py_ssize_t rowid,
+                              Py_ssize_t first_cmd_offset,
+                              size_t expected_size):
         """
         create palette indices (colors) for the drawing commands
         found for this row in the SLP frame.
         """
 
         # position in the data blob, we start at the first command of this row
-        dpos = first_cmd_offset
-
-        # this array gets filled with palette indices by the cmds
-        pcolor_list = []
+        cdef Py_ssize_t dpos = first_cmd_offset
 
         # is the end of the current row reached?
-        eor = False
+        cdef bool eor = False
+
+        cdef uint8_t cmd
+        cdef uint8_t nextbyte
+        cdef uint8_t lower_nibble
+        cdef uint8_t higher_nibble
+        cdef uint8_t lower_bits
+        cdef cmd_pack cpack
+        cdef int pixel_count
 
         # work through commands till end of row.
         while not eor:
-            if len(pcolor_list) > missing_pixels:
-                raise Exception("Only %d pixels should be drawn in row %d!" % (
-                    missing_pixels, rowid))
+            if row_data.size() > expected_size:
+                raise Exception(
+                    "Only %d pixels should be drawn in row %d, "
+                    "but we have %d already!" % (
+                        expected_size, rowid, row_data.size()
+                    )
+                )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(data, dpos)
+            cmd = self.get_byte_at(dpos)
 
             lower_nibble = 0x0f & cmd
             higher_nibble = 0xf0 & cmd
@@ -331,29 +328,31 @@ class SLPFrame:
                 pixel_count = cmd >> 2
                 for _ in range(pixel_count):
                     dpos += 1
-                    color = self.get_byte_at(data, dpos)
-                    pcolor_list.append(color)
+                    color = self.get_byte_at(dpos)
+                    row_data.push_back(pixel(color_standard, color))
 
             elif lower_bits == 0b00000001:
                 # skip command
                 # draw 'count' transparent pixels
                 # count = cmd >> 2; if count == 0: count = nextbyte
 
-                pixel_count, dpos = self.cmd_or_next(cmd, 2, data, dpos)
-                pcolor_list += [SpecialColorValue.transparent] * pixel_count
+                cpack = self.cmd_or_next(cmd, 2, dpos)
+                dpos = cpack.dpos
+                for _ in range(cpack.count):
+                    row_data.push_back(pixel(color_transparent, 0))
 
             elif lower_nibble == 0x02:
                 # big_color_list command
                 # draw (higher_nibble << 4 + nextbyte) following palette colors
 
                 dpos += 1
-                nextbyte = self.get_byte_at(data, dpos)
+                nextbyte = self.get_byte_at(dpos)
                 pixel_count = (higher_nibble << 4) + nextbyte
 
                 for _ in range(pixel_count):
                     dpos += 1
-                    color = self.get_byte_at(data, dpos)
-                    pcolor_list.append(color)
+                    color = self.get_byte_at(dpos)
+                    row_data.push_back(pixel(color_standard, color))
 
             elif lower_nibble == 0x03:
                 # big_skip command
@@ -361,66 +360,68 @@ class SLPFrame:
                 # transparent pixels
 
                 dpos += 1
-                nextbyte = self.get_byte_at(data, dpos)
+                nextbyte = self.get_byte_at(dpos)
                 pixel_count = (higher_nibble << 4) + nextbyte
 
-                pcolor_list += [SpecialColorValue.transparent] * pixel_count
+                for _ in range(pixel_count):
+                    row_data.push_back(pixel(color_transparent, 0))
 
             elif lower_nibble == 0x06:
                 # player_color_list command
                 # we have to draw the player color for cmd>>4 times,
                 # or if that is 0, as often as the next byte says.
 
-                pixel_count, dpos = self.cmd_or_next(cmd, 4, data, dpos)
-                for _ in range(pixel_count):
+                cpack = self.cmd_or_next(cmd, 4, dpos)
+                dpos = cpack.dpos
+                for _ in range(cpack.count):
                     dpos += 1
-                    color = self.get_byte_at(data, dpos)
+                    color = self.get_byte_at(dpos)
 
                     # the SpecialColor class preserves the calculation with
                     # player * 16 + color, this is the palette offset
                     # for tinted player colors.
-                    entry = SpecialColor(
-                        special_id=SpecialColorValue.player_color,
-                        base_color=color)
-
-                    pcolor_list.append(entry)
+                    row_data.push_back(pixel(color_player, color))
 
             elif lower_nibble == 0x07:
                 # fill command
                 # draw 'count' pixels with color of next byte
 
-                pixel_count, dpos = self.cmd_or_next(cmd, 4, data, dpos)
+                cpack = self.cmd_or_next(cmd, 4, dpos)
+                dpos = cpack.dpos
 
                 dpos += 1
-                color = self.get_byte_at(data, dpos)
+                color = self.get_byte_at(dpos)
 
-                pcolor_list += [color] * pixel_count
+                for _ in range(cpack.count):
+                    row_data.push_back(pixel(color_standard, color))
 
             elif lower_nibble == 0x0A:
                 # fill player color command
                 # draw the player color for 'count' times
 
-                pixel_count, dpos = self.cmd_or_next(cmd, 4, data, dpos)
+                cpack = self.cmd_or_next(cmd, 4, dpos)
+                dpos = cpack.dpos
 
                 dpos += 1
-                color = self.get_byte_at(data, dpos)
+                color = self.get_byte_at(dpos)
 
                 # TODO: verify this. might be incorrect.
                 # color = ((color & 0b11001100) | 0b00110011)
 
                 # SpecialColor class preserves the calculation of
                 # player*16 + color
-                entry = SpecialColor(special_id=SpecialColorValue.player_color,
-                                     base_color=color)
-                pcolor_list += [entry] * pixel_count
+                for _ in range(cpack.count):
+                    row_data.push_back(pixel(color_player, color))
 
             elif lower_nibble == 0x0B:
                 # shadow command
                 # draw a transparent shadow pixel for 'count' times
 
-                pixel_count, dpos = self.cmd_or_next(cmd, 4, data, dpos)
+                cpack = self.cmd_or_next(cmd, 4, dpos)
+                dpos = cpack.dpos
 
-                pcolor_list += [SpecialColorValue.shadow] * pixel_count
+                for _ in range(cpack.count):
+                    row_data.push_back(pixel(color_shadow, 0))
 
             elif lower_nibble == 0x0E:
                 # "extended" commands. higher nibble specifies the instruction.
@@ -453,117 +454,154 @@ class SLPFrame:
                     # outline_1 command
                     # the next pixel shall be drawn as special color 1,
                     # if it is obstructed later in rendering
-                    pcolor_list.append(SpecialColor(1))
+                    row_data.push_back(pixel(color_special_1, 0))
 
                 elif higher_nibble == 0x60:
                     # outline_2 command
                     # same as above, but special color 2
-                    pcolor_list.append(SpecialColor(2))
+                    row_data.push_back(pixel(color_special_2, 0))
 
                 elif higher_nibble == 0x50:
                     # outline_span_1 command
                     # same as above, but span special color 1 nextbyte times.
 
                     dpos += 1
-                    pixel_count = self.get_byte_at(data, dpos)
+                    pixel_count = self.get_byte_at(dpos)
 
-                    pcolor_list += [SpecialColor(1)] * pixel_count
+                    for _ in range(pixel_count):
+                        row_data.push_back(pixel(color_special_1, 0))
 
                 elif higher_nibble == 0x70:
                     # outline_span_2 command
                     # same as above, using special color 2
 
                     dpos += 1
-                    pixel_count = self.get_byte_at(data, dpos)
+                    pixel_count = self.get_byte_at(dpos)
 
-                    pcolor_list += [SpecialColor(2)] * pixel_count
+                    for _ in range(pixel_count):
+                        row_data.push_back(pixel(color_special_2, 0))
 
             else:
                 raise Exception(
                     "unknown slp drawing command: " +
-                    "%#x in row %d" % (cmd, rowid) + " " +
-                    "stored in this row so far: %s" % pcolor_list)
+                    "%#x in row %d" % (cmd, rowid))
 
             dpos += 1
 
         # end of row reached, return the created pixel array.
-        return pcolor_list
+        return
 
-    def get_byte_at(self, data, offset):
-        return unpack_from("B", data, offset)[0]
+    cdef inline uint8_t get_byte_at(self, Py_ssize_t offset):
+        """
+        Fetch a byte from the slp.
+        """
+        return self.data_raw[offset]
 
-    def cmd_or_next(self, cmd, n, data, pos):
+    cdef inline cmd_pack cmd_or_next(self, uint8_t cmd,
+                                     uint8_t n, Py_ssize_t pos):
         """
         to save memory, the draw amount may be encoded into
         the drawing command itself in the upper n bits.
         """
 
-        packed_in_cmd = cmd >> n
+        cdef uint8_t packed_in_cmd = cmd >> n
 
         if packed_in_cmd != 0:
-            return packed_in_cmd, pos
+            return cmd_pack(packed_in_cmd, pos)
 
         else:
             pos += 1
-            return self.get_byte_at(data, pos), pos
-
-    def draw_pcolor_to_row(self, rowid, color_list, count=1):
-        if not isinstance(color_list, list):
-            color_list = [color_list] * count
-
-        self.pcolor[rowid] += color_list
+            return cmd_pack(self.get_byte_at(pos), pos)
 
     def get_picture_data(self, palette, player_number=0):
+        """
+        Convert the palette index matrix to a colored image.
+        """
         return determine_rgba_matrix(self.pcolor, palette, player_number)
+
+    def get_hotspot(self):
+        """
+        Return the frame's hotspot (the "center" of the image)
+        """
+        return self.info.hotspot
 
     def __repr__(self):
         return repr(self.info)
 
 
-
-def determine_rgba_matrix(image_matrix, palette, player_number=0):
+@cython.boundscheck(False)
+@cython.wraparound(False)
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
+                                         palette, int player_number=0):
     """
     converts a palette index image matrix to an rgba matrix.
     """
-    cdef int height = len(image_matrix)
-    cdef int width = len(image_matrix[0])
+    cdef size_t height = image_matrix.size()
+    cdef size_t width = image_matrix[0].size()
 
     cdef numpy.ndarray[numpy.uint8_t, ndim=3] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     # micro optimization to avoid call to ColorTable.__getitem__()
-    palette = palette.palette
+    cdef list lookup = palette.palette
+
+    cdef uint8_t r
+    cdef uint8_t g
+    cdef uint8_t b
+    cdef uint8_t a
+
+    cdef vector[pixel] current_row
+    cdef pixel px
+    cdef pixel_type px_type
+    cdef int px_val
+
+    cdef size_t x
+    cdef size_t y
 
     for y in range(height):
-        for x in range(width):
-            pixel = image_matrix[y][x]
 
-            if isinstance(pixel, int):
+        current_row = image_matrix[y]
+
+        for x in range(width):
+            px = current_row[x]
+            px_type = px.type
+            px_val = px.value
+
+            if px_type == color_standard:
                 # simply look up the color index in the table
-                r, g, b = palette[pixel]
+                r, g, b = lookup[px_val]
                 alpha = 255
 
-            elif isinstance(pixel, SpecialColor):
-                base_pcolor, is_outline = pixel.get_pcolor()
-                if is_outline:
+            elif px_type == color_transparent:
+                r, g, b, alpha = 0, 0, 0, 0
+
+            elif px_type == color_shadow:
+                r, g, b, alpha = 0, 0, 0, 100
+
+            else:
+                if px_type == color_player:
+                    # mark this pixel as player color
+                    alpha = 254
+
+                elif px_type == color_special_2 or\
+                     px_type == color_black:
+                    # mark this pixel as outline
+                    alpha = 253
+
+                    # black outline pixel, we will probably never encounter this.
+                    #  -16 ensures palette[16+(-16)=0] will be used.
+                    px_val = -16
+
+                elif px_type == color_special_1:
                     alpha = 253  # mark this pixel as outline
+
                 else:
-                    alpha = 254  # mark this pixel as player color
+                    raise ValueError("unknown pixel type: %d" % px_type)
 
                 # get rgb base color from the color table
                 # store it the preview player color
                 # in the table: [16*player, 16*player+7]
-                r, g, b = palette[base_pcolor + (16 * player_number)]
-
-            elif pixel is SpecialColorValue.transparent:
-                r, g, b, alpha = 0, 0, 0, 0
-
-            elif pixel is SpecialColorValue.shadow:
-                r, g, b, alpha = 0, 0, 0, 100
-
-            else:
-                raise Exception("Unknown color: %s (%s)" % (
-                    pixel, type(pixel)))
+                r, g, b = lookup[px_val + (16 * player_number)]
 
             # array_data[y, x] = (r, g, b, alpha)
             array_data[y, x, 0] = r

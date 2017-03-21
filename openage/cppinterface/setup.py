@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Contains the function that initializes the C++ interface.
@@ -37,6 +37,9 @@ def setup():
 
     from .pyobject import setup as pyobject_setup
     pyobject_setup()
+
+    from ..util.filelike.cpp import setup as filelike_setup
+    filelike_setup()
 
     from ..util.fslike.cpp import setup as fslike_setup
     fslike_setup()

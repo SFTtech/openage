@@ -3,7 +3,7 @@
 """ Entry point for all of the asset conversion. """
 
 import os
-# importing readline enables the raw_input calls to have history etc.
+# importing readline enables the input() calls to have history etc.
 import readline  # pylint: disable=unused-import
 import subprocess
 from configparser import ConfigParser
@@ -11,13 +11,13 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 
 from . import changelog
-from .game_versions import GameVersion, get_game_versions
+from .game_versions import GameVersion, get_game_versions, Support
 
 from ..log import warn, info, dbg
 from ..util.files import which
-from ..util.fslike.wrapper import (Wrapper as FSLikeObjWrapper,
-                                   Synchronizer as FSLikeObjSynchronizer)
-from ..util.fslike.directory import CaseIgnoringDirectory
+from ..util.fslike.wrapper import (DirectoryCreator,
+                                   Synchronizer as AccessSynchronizer)
+from ..util.fslike.directory import CaseIgnoringDirectory, Directory
 from ..util.strings import format_progress
 
 STANDARD_PATH_IN_32BIT_WINEPREFIX =\
@@ -30,24 +30,10 @@ REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
 REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
 
 
-class DirectoryCreator(FSLikeObjWrapper):
-    """
-    Wrapper around a filesystem-like object that automatically creates
-    directories when attempting to create a file.
-    """
-
-    def open_w(self, parts):
-        self.mkdirs(parts[:-1])
-        return super().open_w(parts)
-
-    def __repr__(self):
-        return "DirectoryCreator({})".format(self.obj)
-
-
 def mount_drs_archives(srcdir, game_versions=None):
     """
-    Returns a Union path where srcdir is mounted at /, and all the DRS files
-    are mounted in subfolders.
+    Returns a Union path where srcdir is mounted at /,
+    and all the DRS files are mounted in subfolders.
     """
     from ..util.fslike.union import Union
     from .drs import DRS
@@ -55,34 +41,102 @@ def mount_drs_archives(srcdir, game_versions=None):
     result = Union().root
     result.mount(srcdir)
 
-    def mount_drs(filename, target, ignore_nonexistant=False):
-        """ Mounts the DRS file from srcdir's filename at result's target. """
-        drspath = srcdir.joinpath(filename)
-        if ignore_nonexistant and not drspath.is_file():
-            return
-
-        result.joinpath(target).mount(DRS(drspath.open('rb')).root)
-
-    if GameVersion.age2_fe in game_versions:
+    # hd edition mounting
+    if GameVersion.age2_hd_fe in game_versions:
         result['graphics'].mount(srcdir['resources/_common/drs/graphics'])
         result['interface'].mount(srcdir['resources/_common/drs/interface'])
         result['sounds'].mount(srcdir['resources/_common/drs/sounds'])
         result['gamedata'].mount(srcdir['resources/_common/drs/gamedata'])
+        if GameVersion.age2_hd_ak in game_versions:
+            result['gamedata'].mount(srcdir['resources/_common/drs/gamedata_x1'])
+        if GameVersion.age2_hd_rajas in game_versions:
+            result['gamedata'].mount(srcdir['resources/_common/drs/gamedata_x2'])
         result['terrain'].mount(srcdir['resources/_common/drs/terrain'])
-        result['data'].mount(srcdir['/resources/_common/dat'])
+        result['data'].mount(srcdir['resources/_common/dat'])
+
+        return result
+
+    def mount_drs(filename, target):
+        """
+        Mounts the DRS file from srcdir's filename at result's target.
+        """
+
+        drspath = srcdir[filename]
+        result[target].mount(DRS(drspath.open('rb')).root)
+
+    # non-hd file mounting
+    mount_drs("data/graphics.drs", "graphics")
+    mount_drs("data/interfac.drs", "interface")
+    mount_drs("data/sounds.drs", "sounds")
+    mount_drs("data/sounds_x1.drs", "sounds")
+    mount_drs("data/terrain.drs", "terrain")
+
+    if GameVersion.age2_hd_3x not in game_versions:
+        mount_drs("data/gamedata.drs", "gamedata")
+
+    if GameVersion.age2_tc_fe in game_versions:
+        mount_drs("games/forgotten empires/data/gamedata_x1.drs",
+                  "gamedata")
+        mount_drs("games/forgotten empires/data/gamedata_x1_p1.drs",
+                  "gamedata")
     else:
-        mount_drs("data/graphics.drs", "graphics")
-        mount_drs("data/interfac.drs", "interface")
-        mount_drs("data/sounds.drs", "sounds")
-        mount_drs("data/sounds_x1.drs", "sounds")
-        mount_drs("data/terrain.drs", "terrain")
-        if GameVersion.age2_hd_3x not in game_versions:
-            mount_drs("data/gamedata.drs", "gamedata")
         mount_drs("data/gamedata_x1.drs", "gamedata")
         mount_drs("data/gamedata_x1_p1.drs", "gamedata")
-        # TODO mount gamedata_x2.drs and _x2_p1 if they exist?
 
     return result
+
+
+def mount_input(srcdir=None):
+    """
+    Mount the input folders for conversion.
+    """
+
+    # acquire conversion source directory
+    if srcdir is None:
+        srcdir = acquire_conversion_source_dir()
+
+    game_versions = set(get_game_versions(srcdir))
+    if not game_versions:
+        warn("Game version(s) could not be detected in {}".format(srcdir))
+
+    # true if no supported version was found
+    no_support = False
+
+    break_vers = []
+    for ver in game_versions:
+        if ver.support == Support.breaks:
+            break_vers.append(ver)
+
+    # a breaking version is installed
+    if break_vers:
+        warn("You have installed incompatible game version(s):")
+        for ver in break_vers:
+            warn(" * \x1b[31;1m{}\x1b[m".format(ver))
+        no_support = True
+
+    # no supported version was found
+    if not any(version.support == Support.yes for version in game_versions):
+        warn("No supported game version found:")
+        for version in GameVersion:
+            warn(" * {}".format(version))
+        no_support = True
+
+    # inform about supported versions
+    if no_support:
+        warn("You need at least one of:")
+        for ver in GameVersion:
+            if ver.support == Support.yes:
+                warn(" * \x1b[34m{}\x1b[m".format(ver))
+
+        return (False, set())
+
+    info("Game version(s) detected:")
+    for version in game_versions:
+        info(" * {}".format(version))
+
+    output = mount_drs_archives(srcdir, game_versions)
+
+    return (output, game_versions)
 
 
 def convert_assets(assets, args, srcdir=None):
@@ -101,33 +155,21 @@ def convert_assets(assets, args, srcdir=None):
     conversion experience, then passes them to .driver.convert().
     """
 
-    # import here so codegen.py doesn't depend on it.
-    from .driver import convert
+    data_dir, game_versions = mount_input(srcdir)
 
-    # acquire conversion source directory
-    if srcdir is None:
-        srcdir = acquire_conversion_source_dir()
-
-    args.game_versions = set(get_game_versions(srcdir))
-    if not args.game_versions:
-        warn("Game version(s) could not be detected in {}".format(srcdir))
-
-    versions = "; ".join(str(version) for version in args.game_versions)
-    if not any(version.openage_supported for version in args.game_versions):
-        warn("None supported of the Game version(s) {}".format(versions))
-        warn("You need \x1b[34mAge of Empires 2: The Conquerors\x1b[m")
+    if not data_dir:
         return False
-    info("Game version(s) detected: {}".format(versions))
 
-    srcdir = mount_drs_archives(srcdir, args.game_versions)
+    # make versions available easily
+    args.game_versions = game_versions
 
-    converted_path = assets.joinpath("converted")
+    converted_path = assets / "converted"
     converted_path.mkdirs()
     targetdir = DirectoryCreator(converted_path).root
 
     # make srcdir and targetdir safe for threaded conversion
-    args.srcdir = FSLikeObjSynchronizer(srcdir).root
-    args.targetdir = FSLikeObjSynchronizer(targetdir).root
+    args.srcdir = AccessSynchronizer(data_dir).root
+    args.targetdir = AccessSynchronizer(targetdir).root
 
     def flag(name):
         """
@@ -137,6 +179,9 @@ def convert_assets(assets, args, srcdir=None):
         return getattr(args, name, False)
 
     args.flag = flag
+
+    # import here so codegen.py doesn't depend on it.
+    from .driver import convert
 
     converted_count = 0
     total_count = None
@@ -175,9 +220,16 @@ def expand_relative_path(path):
 def wanna_use_wine():
     """
     Ask the user if wine should be used.
+    Wine is not used if user has no wine installed.
     """
-    print("Should we call wine to determine an AOE installation? "
-          "[Y/n]")
+
+    # TODO: a possibility to call different wine binaries
+    # (e.g. wine-devel from wine upstream debian repos)
+
+    if not which("wine"):
+        return False
+
+    print("  Should we call wine to determine an AOE installation? [Y/n]")
     while True:
         user_selection = input("> ")
         if user_selection.lower() in {"yes", "y", ""}:
@@ -185,7 +237,8 @@ def wanna_use_wine():
         elif user_selection.lower() in {"no", "n"}:
             return False
         else:
-            print("Don't know what you want. Use wine? [Y/n]")
+            # TODO: text-adventure here
+            print("  Don't know what you want. Use wine? [Y/n]")
 
 
 def set_custom_wineprefix():
@@ -259,9 +312,6 @@ def acquire_conversion_source_dir():
 
     Returns a file system-like object that holds all the required files.
     """
-    # ask for the conversion source
-    print("\x1b[33mmedia conversion is required.\x1b[m")
-
     if 'AGE2DIR' in os.environ:
         sourcedir = os.environ['AGE2DIR']
         print("found environment variable 'AGE2DIR'")
@@ -314,10 +364,8 @@ def source_dir_proposals(call_wine):
     yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
 
-    # TODO: a possibility to call different wine binaries
-    # (e.g. wine-devel from wine upstream debian repos)
-    if not call_wine or not which("wine"):
-        # no wine is found in PATH
+    if not call_wine:
+        # user wants wine not to be called
         return
 
     try:
@@ -353,11 +401,8 @@ def conversion_required(asset_dir, args):
     Sets options in args according to what sorts of conversion are required.
     """
 
-    version_path = asset_dir['converted',
-                             changelog.ASSET_VERSION_FILENAME]
-
-    spec_path = asset_dir['converted',
-                          changelog.GAMESPEC_VERSION_FILENAME]
+    version_path = asset_dir / 'converted' / changelog.ASSET_VERSION_FILENAME
+    spec_path = asset_dir / 'converted' / changelog.GAMESPEC_VERSION_FILENAME
 
     # determine the version of assets
     try:
@@ -383,7 +428,7 @@ def conversion_required(asset_dir, args):
 
     except FileNotFoundError:
         info("Game specification version file not found.")
-        spec_version = "lol"
+        spec_version = None
 
     # TODO: datapack parsing
     changes = changelog.changes(asset_version, spec_version)
@@ -398,7 +443,16 @@ def conversion_required(asset_dir, args):
                  "but need version %d" % (asset_version,
                                           changelog.ASSET_VERSION))
 
-        info("Converting " + ", ".join(sorted(changes)))
+        info("Converting {}".format(", ".join(sorted(changes))))
+
+        # try to resolve resolve the output path
+        target_path = asset_dir.resolve_native_path_w()
+        if not target_path:
+            raise OSError("could not resolve a writable asset path "
+                          "in {}".format(asset_dir))
+
+        info("Will save to '{}'".format(target_path))
+
         for component in changelog.COMPONENTS:
             if component not in changes:
                 # don't reconvert this component:
@@ -408,6 +462,68 @@ def conversion_required(asset_dir, args):
             args.no_pickle_cache = True
 
         return True
+
+
+def interactive_browser(srcdir=None):
+    """
+    launch an interactive view for browsing the original
+    archives.
+    """
+
+    info("launching interactive data browser...")
+
+    # the variable is actually used, in the interactive prompt.
+    # pylint: disable=unused-variable
+    data, game_versions = mount_input(srcdir)
+
+    if not data:
+        warn("cannot launch browser as no valid input assets were found.")
+        return
+
+    def save(path, target):
+        """
+        save a path to a custom target
+        """
+        with path.open("rb") as infile:
+            with open(target, "rb") as outfile:
+                outfile.write(infile.read())
+
+    def save_slp(path, target, palette=None):
+        """
+        save a slp as png.
+        """
+        from .texture import Texture
+        from .slp import SLP
+        from .driver import get_palette
+
+        if not palette:
+            palette = get_palette(data, game_versions)
+
+        with path.open("rb") as slpfile:
+            tex = Texture(SLP(slpfile.read()), palette)
+
+            out_path, filename = os.path.split(target)
+            tex.save(Directory(out_path).root, filename)
+
+    import code
+    from pprint import pprint
+
+    import rlcompleter
+
+    completer = rlcompleter.Completer(locals())
+    readline.parse_and_bind("tab: complete")
+    readline.parse_and_bind("set show-all-if-ambiguous on")
+    readline.set_completer(completer.complete)
+
+    code.interact(
+        banner=("\nuse `pprint` for beautiful output!\n"
+                "you can access stuff by the `data` variable!\n"
+                "`data` is an openage.util.fslike.path.Path!\n"
+                "* list contents:      `pprint(list(data['graphics'].list()))`\n"
+                "* dump data:          `save(data['file/path'], '/tmp/outputfile')`.\n"
+                "* save a slp as png:  `save_slp(data['dir/123.slp'], '/tmp/pic.png')`.\n"),
+        local=locals()
+    )
 
 
 def init_subparser(cli):
@@ -454,6 +570,14 @@ def init_subparser(cli):
     cli.add_argument(
         "--jobs", "-j", type=int, default=None)
 
+    cli.add_argument(
+        "--interactive", "-i", action='store_true',
+        help="browse the files interactively")
+
+    cli.add_argument(
+        "--id", type=int, default=None,
+        help="only convert files with this id (used for debugging..)")
+
 
 def main(args, error):
     """ CLI entry point """
@@ -469,9 +593,13 @@ def main(args, error):
     else:
         srcdir = None
 
+    if args.interactive:
+        interactive_browser(srcdir)
+        return 0
+
     # conversion target
-    from ..assets import get_assets
-    assets = get_assets(args)
+    from ..assets import get_asset_path
+    assets = get_asset_path(args)
 
     if args.force or conversion_required(assets, args):
         if not convert_assets(assets, args, srcdir):

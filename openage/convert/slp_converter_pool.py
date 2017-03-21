@@ -12,11 +12,12 @@ Multiprocessing-based SLP-to-texture converter service.
 
 import multiprocessing
 import os
-from queue import Queue
+import queue
+
 from threading import Lock
 
 from ..log.logging import get_loglevel
-from ..log import warn
+from ..log import warn, err
 from ..util.system import free_memory
 
 from .slp import SLP
@@ -43,16 +44,18 @@ class SLPConverterPool:
         # those queues accept slpdata (bytes) objects, and provide
         # Texture objects in return.
         # Note that this is a queue.Queue, not a multiprocessing.Queue.
-        self.idle = Queue()
+        self.idle = queue.Queue()
 
+        # guards new job submission so we can "throttle" it.
         self.job_mutex = Lock()
 
         # Holds tuples of (process, queue) for all processes.
         # Needed for proper termination in close().
         self.processes = []
 
+        # spawn worker processes,
+        # each has a queue where data is pushed to the process.
         for _ in range(jobs):
-            # TODO fix pending pylint 1.5: pylint: disable=no-member
             inqueue = multiprocessing.Queue()
             outqueue = multiprocessing.Queue()
 
@@ -99,21 +102,20 @@ class SLPConverterPool:
             with self.job_mutex:  # pylint: disable=not-context-manager
                 return Texture(SLP(slpdata), self.palette, custom_cutter)
 
+        # get the data queue for an idle worker process
         inqueue, outqueue = self.idle.get()
 
+        # restrict new job submission by free memory (see above)
         with self.job_mutex:  # pylint: disable=not-context-manager
             inqueue.put((slpdata, custom_cutter))
 
-        # TODO not sure why this synchronization is needed.
-        #      (But it is. otherwise, there are non-deterministic crashes when
-        #       depickling some of Texture's numpy internals, especially with
-        #       high job counts.).
-        with self.job_mutex:  # pylint: disable=not-context-manager
-            result = outqueue.get()
+        result = outqueue.get()
 
+        # the process is idle again.
         self.idle.put((inqueue, outqueue))
 
         if isinstance(result, BaseException):
+            err("exception in worker process: %s" % result)
             raise result
         else:
             return result
@@ -156,4 +158,7 @@ def converter_process(inqueue, outqueue):
             texture = Texture(SLP(slpdata), palette, custom_cutter)
             outqueue.put(texture)
         except BaseException as exc:
+            import traceback
+            traceback.print_exc()
+
             outqueue.put(exc)

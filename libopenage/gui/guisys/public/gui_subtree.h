@@ -1,10 +1,10 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <vector>
-#include <string>
 #include <memory>
+#include <string>
+
 
 namespace qtsdl {
 
@@ -13,12 +13,20 @@ class GuiEventQueue;
 class GuiEngine;
 class GuiSubtreeImpl;
 
+
 /**
  * A root item that loads its code from source url.
+ *
+ * rootdir is the qml file root folder which is watched for changes.
  */
 class GuiSubtree {
 public:
-	explicit GuiSubtree(GuiRenderer *renderer, GuiEventQueue *game_logic_updater, GuiEngine *engine, const std::string &source, const std::vector<std::string> &search_paths=std::vector<std::string>{});
+	explicit GuiSubtree(GuiRenderer *renderer,
+	                    GuiEventQueue *game_logic_updater,
+	                    GuiEngine *engine,
+	                    const std::string &source,
+	                    const std::string &rootdir);
+
 	~GuiSubtree();
 
 private:

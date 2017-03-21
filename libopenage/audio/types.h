@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,11 +6,17 @@
 #include <memory>
 #include <vector>
 
-#include <opus/opusfile.h>
 
 namespace openage {
 namespace audio {
 
+/**
+ * A piece of raw audio data.
+ *
+ * special values:
+ *   (nullptr, *) no data in the chunk
+ *   (*, 0) end of stream
+ */
 struct audio_chunk_t {
 	const int16_t *data;
 	size_t length;
@@ -28,11 +34,4 @@ using pcm_data_t = std::vector<int16_t>;
  */
 using pcm_chunk_t = std::vector<int16_t>;
 
-/**
- * opus_file_t is a OggOpusFile pointer that is stored inside a unique_ptr and
- * uses a custom deleter.
- */
-using opus_file_t = std::unique_ptr<OggOpusFile, std::function<void(OggOpusFile*)>>;
-
-}
-}
+}} // openage::audio

@@ -3,7 +3,6 @@ add_py_modules(
 	bytequeue.py
 	context.py
 	decorators.py
-	filelike.py
 	files.py
 	fsprinting.py
 	iterators.py
@@ -14,6 +13,5 @@ add_py_modules(
 	threading.py
 )
 
-add_subdirectory(
-	fslike
-)
+add_subdirectory(filelike)
+add_subdirectory(fslike)

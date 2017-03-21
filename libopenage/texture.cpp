@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include "texture.h"
 
@@ -10,7 +10,8 @@
 
 #include "log/log.h"
 #include "error/error.h"
-#include "util/file.h"
+#include "util/csv.h"
+
 
 namespace openage {
 
@@ -48,7 +49,7 @@ Texture::Texture(int width, int height, std::unique_ptr<uint32_t[]> data)
 	this->subtextures.push_back({0, 0, this->w, this->h, this->w/2, this->h/2});
 }
 
-Texture::Texture(const std::string &filename, bool use_metafile)
+Texture::Texture(const util::Path &filename, bool use_metafile)
 	:
 	use_metafile{use_metafile},
 	filename{filename} {
@@ -58,15 +59,25 @@ Texture::Texture(const std::string &filename, bool use_metafile)
 }
 
 void Texture::load() {
+	// TODO: use libpng directly.
 	SDL_Surface *surface;
-	surface = IMG_Load(this->filename.c_str());
+
+	// TODO: this will break if there is no native path.
+	//       but then we need to load the image
+	//       from the buffer provided by this->filename.open_r().read().
+
+	std::string native_path = this->filename.resolve_native_path();
+	surface = IMG_Load(native_path.c_str());
 
 	if (!surface) {
-		throw Error(MSG(err) <<
-			"Could not load texture from " <<
-			filename << ": " << IMG_GetError());
+		throw Error(
+			MSG(err) <<
+			"SDL_Image could not load texture from "
+			<< this->filename << " (= " << native_path << "): "
+			<< IMG_GetError()
+		);
 	} else {
-		log::log(MSG(dbg) << "Texture has been loaded from " << filename);
+		log::log(MSG(dbg) << "Texture has been loaded from " << native_path);
 	}
 
 	this->buffer = std::make_unique<gl_texture_buffer>();
@@ -83,41 +94,33 @@ void Texture::load() {
 		break;
 	default:
 		throw Error(MSG(err) <<
-			"Unknown texture bit depth for " << filename << ": " <<
+			"Unknown texture bit depth for " << this->filename << ": " <<
 			surface->format->BytesPerPixel << " bytes per pixel");
 
 		break;
 	}
+
 	this->w = surface->w;
 	this->h = surface->h;
 
 	// temporary buffer for pixel data
 	this->buffer->transferred = false;
 	this->buffer->data = std::make_unique<uint32_t[]>(this->w * this->h);
-	memcpy(
+	std::memcpy(
 		this->buffer->data.get(),
 		surface->pixels,
-		this->w * this->h *
-		surface->format->BytesPerPixel
+		this->w * this->h * surface->format->BytesPerPixel
 	);
 	SDL_FreeSurface(surface);
 
 	if (use_metafile) {
-		// change the suffix to .docx (lol)
-		size_t m_len = filename.length() + 2;
-		char *meta_filename = new char[m_len];
-		strncpy(meta_filename, filename.c_str(), m_len - 5);
-		strncpy(meta_filename + m_len - 5, "docx", 5);
-
-		// get subtexture information by meta file exported by script
-		util::read_csv_file(meta_filename, this->subtextures);
-
-		// TODO: use information from empires.dat for that, also use x and y sizes:
-		this->atlas_dimensions = sqrt(this->subtextures.size());
-		delete[] meta_filename;
+		// get subtexture information from the exported metainfo file
+		this->subtextures = util::read_csv_file<gamedata::subtexture>(
+			filename.with_suffix(".docx")
+		);
 	}
 	else {
-		// we don't have a texture description file.
+		// we don't have a subtexture description file.
 		// use the whole image as one texture then.
 		gamedata::subtexture s{0, 0, this->w, this->h, this->w/2, this->h/2};
 
@@ -138,15 +141,15 @@ GLuint Texture::make_gl_texture(int iformat, int oformat, int w, int h, void *da
 		oformat, GL_UNSIGNED_BYTE, data
 	);
 
-	// later drawing settings
+	// settings for later drawing
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	return textureid;
 }
 
-void Texture::main_thread_load() const {
-	if (!this->buffer->transferred) {
+void Texture::load_in_glthread() const {
+	if (not this->buffer->transferred) {
 		this->buffer->id = this->make_gl_texture(
 			this->buffer->texture_format_in,
 			this->buffer->texture_format_out,
@@ -205,7 +208,9 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
                    unsigned int mode, bool mirrored,
                    int subid, unsigned player,
                    Texture *alpha_texture, int alpha_subid) const {
-	this->main_thread_load();
+
+	this->load_in_glthread();
+
 	glColor4f(1, 1, 1, 1);
 
 	bool use_playercolors = false;
@@ -350,26 +355,30 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
 }
 
 
-const gamedata::subtexture *Texture::get_subtexture(int subid) const {
-	if (subid >= 0 && (static_cast<size_t>(subid) < this->subtextures.size())) {
+const gamedata::subtexture *Texture::get_subtexture(uint64_t subid) const {
+	if (subid < this->subtextures.size()) {
 		return &this->subtextures[subid];
 	}
 	else {
-		throw Error(MSG(err) <<
-			"Unknown subtexture requested for texture " <<
-			this->filename << ": " << subid);
+		throw Error{
+			ERR << "Unknown subtexture requested for texture "
+			    << this->filename << ": " << subid
+		};
 	}
 }
 
 
-void Texture::get_subtexture_coordinates(int subid, float *txl, float *txr, float *txt, float *txb) const {
+void Texture::get_subtexture_coordinates(uint64_t subid,
+                                         float *txl, float *txr,
+                                         float *txt, float *txb) const {
 	const gamedata::subtexture *tx = this->get_subtexture(subid);
 	this->get_subtexture_coordinates(tx, txl, txr, txt, txb);
 }
 
 
 void Texture::get_subtexture_coordinates(const gamedata::subtexture *tx,
-                                         float *txl, float *txr, float *txt, float *txb) const {
+                                         float *txl, float *txr,
+                                         float *txt, float *txb) const {
 	*txl = ((float)tx->x)           /this->w;
 	*txr = ((float)(tx->x + tx->w)) /this->w;
 	*txt = ((float)tx->y)           /this->h;
@@ -377,12 +386,12 @@ void Texture::get_subtexture_coordinates(const gamedata::subtexture *tx,
 }
 
 
-int Texture::get_subtexture_count() const {
+size_t Texture::get_subtexture_count() const {
 	return this->subtextures.size();
 }
 
 
-void Texture::get_subtexture_size(int subid, int *w, int *h) const {
+void Texture::get_subtexture_size(uint64_t subid, int *w, int *h) const {
 	const gamedata::subtexture *subtex = this->get_subtexture(subid);
 	*w = subtex->w;
 	*h = subtex->h;
@@ -390,7 +399,7 @@ void Texture::get_subtexture_size(int subid, int *w, int *h) const {
 
 
 GLuint Texture::get_texture_id() const {
-	this->main_thread_load();
+	this->load_in_glthread();
 	return this->buffer->id;
 }
 

@@ -9,6 +9,7 @@ add_py_modules(
 	__main__.py
 	assets.py
 	config.py
+	default_dirs.py
 	NOINSTALL devmode.py
 )
 

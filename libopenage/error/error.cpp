@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include "error.h"
 
@@ -19,7 +19,7 @@ Error::Error(const log::message &msg, bool generate_backtrace, bool store_cause)
 	msg(msg) {
 
 	if (generate_backtrace) {
-		std::shared_ptr<StackAnalyzer> backtrace = std::make_shared<StackAnalyzer>();
+		auto backtrace = std::make_shared<StackAnalyzer>();
 		backtrace->analyze();
 		this->backtrace = backtrace;
 	}
@@ -88,6 +88,8 @@ std::ostream &operator <<(std::ostream &os, const Error &e) {
 		os << cause << std::endl;
 	} catch (std::exception &cause) {
 		os << util::demangle(typeid(cause).name()) << ": " << cause.what() << std::endl;
+	} catch (...) {
+		os << "unknown non std::exception cause!" << std::endl;
 	}
 
 	if (had_a_cause) {

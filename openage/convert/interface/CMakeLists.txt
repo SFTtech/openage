@@ -1,7 +1,10 @@
 add_py_modules(
 	__init__.py
-	interfacecutter.py
-	interfacehardcoded.py
-	interfacerename.py
-	visgrep.py
+	cutter.py
+	hardcoded.py
+	rename.py
+)
+
+add_cython_modules(
+	visgrep.pyx
 )

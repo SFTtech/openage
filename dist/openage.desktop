@@ -2,9 +2,8 @@
 [Desktop Entry]
 Name=openage
 Comment=Free engine clone of Age of Empires II
-Exec=openage %u
-Path=.openage
+Exec=openage %U
 Terminal=true
 Type=Application
 Icon=openage
-Categories=Game;StrategyGame;
+Categories=Game;StrategyGame;Amusement

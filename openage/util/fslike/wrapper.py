@@ -5,16 +5,20 @@ Provides
 
  - Wrapper, a utility class for implementing wrappers around FSLikeObject.
  - WriteBlocker, a wrapper that blocks all writing.
- - Synchronizer, which adds thread-safety to a FSLikeObject.
+ - Synchronizer, which adds thread-safety to a FSLikeObject
+                 by wrapping a threading.Lock.
+ - DirectoryCreator, a wrapper that transparently creates nonexisting
+                     directories.
 """
 
 import os
 from threading import Lock
 
 from ..context import DummyGuard
-from ..filelike import FileLikeObject
+from ..filelike.abstract import FileLikeObject
 
 from .abstract import FSLikeObject, ReadOnlyFSLikeObject
+from .path import Path
 
 
 class Wrapper(FSLikeObject):
@@ -25,6 +29,9 @@ class Wrapper(FSLikeObject):
     Pass a context guard to protect calls.
     """
     def __init__(self, obj, contextguard=None):
+        if not isinstance(obj, Path):
+            raise TypeError("Path expected as obj, got '%s'" % type(obj))
+
         self.obj = obj
         if contextguard is None:
             self.contextguard = DummyGuard()
@@ -32,7 +39,7 @@ class Wrapper(FSLikeObject):
             self.contextguard = contextguard
 
     def __repr__(self):
-        if self.contextguard == DummyGuard:
+        if isinstance(self.contextguard, DummyGuard):
             return "{}({})".format(type(self).__name__, repr(self.obj))
 
         return "{}({}, {})".format(
@@ -42,7 +49,7 @@ class Wrapper(FSLikeObject):
         with self.contextguard:
             fileobj = self.obj.joinpath(parts).open_r()
 
-        if self.contextguard == DummyGuard:
+        if isinstance(self.contextguard, DummyGuard):
             return fileobj
 
         return GuardedFile(fileobj, self.contextguard)
@@ -51,10 +58,16 @@ class Wrapper(FSLikeObject):
         with self.contextguard:
             fileobj = self.obj.joinpath(parts).open_w()
 
-        if self.contextguard == DummyGuard:
+        if isinstance(self.contextguard, DummyGuard):
             return fileobj
 
         return GuardedFile(fileobj, self.contextguard)
+
+    def resolve_r(self, parts):
+        return self.obj.joinpath(parts) if self.exists(parts) else None
+
+    def resolve_w(self, parts):
+        return self.obj.joinpath(parts) if self.writable(parts) else None
 
     def list(self, parts):
         with self.contextguard:
@@ -129,6 +142,7 @@ class Synchronizer(Wrapper):
         super().__init__(obj, self.lock)
 
     def __repr__(self):
+        # TODO: remove override once pylint is fixed.
         with self.lock:  # pylint: disable=not-context-manager
             return "Synchronizer({})".format(repr(self.obj))
 
@@ -187,3 +201,17 @@ class GuardedFile(FileLikeObject):
         with self.guard:
             return "GuardedFile({}, {})".format(
                 repr(self.obj), repr(self.guard))
+
+
+class DirectoryCreator(Wrapper):
+    """
+    Wrapper around a filesystem-like object that automatically creates
+    directories when attempting to create a file.
+    """
+
+    def open_w(self, parts):
+        self.mkdirs(parts[:-1])
+        return super().open_w(parts)
+
+    def __repr__(self):
+        return "DirectoryCreator({})".format(self.obj)

@@ -35,11 +35,15 @@ class Path:
         if isinstance(parts, str):
             parts = parts.encode()
 
-        if isinstance(parts, bytes):
+        if isinstance(parts, (bytes, bytearray)):
             parts = parts.split(b'/')
 
         if parts is None:
             parts = []
+
+        if not isinstance(parts, (list, tuple)):
+            raise ValueError("path parts must be str, bytes, list or tuple, "
+                             "but not: %s" % type(parts))
 
         result = []
         for part in parts:
@@ -62,16 +66,17 @@ class Path:
         self.parts = tuple(result)
 
     def __str__(self):
-        return "[%s]:%s" % (
-            str(self.fsobj),
-            b"/".join(self.parts).decode(errors='replace'))
+        return self.fsobj.pretty(self.parts)
 
     def __repr__(self):
+        if not self.parts:
+            return repr(self.fsobj) + ".root"
+
         return "Path({}, {})".format(repr(self.fsobj), repr(self.parts))
 
     def exists(self):
         """ True if path exists """
-        return self.is_dir() or self.is_file()
+        return self.fsobj.exists(self.parts)
 
     def is_dir(self):
         """ True if path points to dir (or symlink to one) """
@@ -118,6 +123,65 @@ class Path:
     def open_w(self):
         """ open with mode='wb' """
         return self.fsobj.open_w(self.parts)
+
+    def _get_native_path(self):
+        """
+        return the native path (usable by your kernel) of this path,
+        or None if the path is not natively usable.
+
+        Don't use this method directly, use the resolve methods below.
+        """
+        return self.fsobj.get_native_path(self.parts)
+
+    def _resolve_r(self):
+        """
+        Flatten the path recursively for read access.
+        Used to cancel out some wrappers in between.
+        """
+        return self.fsobj.resolve_r(self.parts)
+
+    def _resolve_w(self):
+        """
+        Flatten the path recursively for write access.
+        Used to cancel out some wrappers in between.
+        """
+        return self.fsobj.resolve_w(self.parts)
+
+    def resolve_native_path(self, mode="r"):
+        """
+        Minimize the path and possibly return a native one.
+        Returns None if there was no native path.
+        """
+        if mode == "r":
+            return self.resolve_native_path_r()
+        elif mode == "w":
+            return self.resolve_native_path_w()
+        else:
+            raise UnsupportedOperation("unsupported resolve mode: " + mode)
+
+    def resolve_native_path_r(self):
+        """
+        Resolve the path for read access and possibly return
+        a native equivalent.
+        If no native path was found, return None.
+        """
+        resolved_path = self._resolve_r()
+        if resolved_path:
+            # pylint: disable=protected-access
+            return resolved_path._get_native_path()
+        return None
+
+    def resolve_native_path_w(self):
+        """
+        Resolve the path for write access and try to return
+        a native equivalent.
+        If no native path could be determined, return None.
+        """
+        resolved_path = self._resolve_w()
+        if resolved_path:
+            # pylint: disable=protected-access
+            return resolved_path._get_native_path()
+        return None
 
     def rename(self, targetpath):
         """ renames to targetpath """
@@ -221,6 +285,14 @@ class Path:
     def __getitem__(self, subpath):
         """ Like joinpath. """
         return self.joinpath(subpath)
+
+    def __truediv__(self, subpath):
+        """ Like joinpath. """
+        return self.joinpath(subpath)
+
+    def __eq__(self, other):
+        """ comparison by fslike and parts """
+        return (self.fsobj == other.fsobj) and (self.parts == other.parts)
 
     def with_name(self, name):
         """ Returns path for differing name (same parent). """

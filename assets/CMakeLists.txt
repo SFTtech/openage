@@ -1,11 +1,20 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
-set(GLOBAL_ASSET_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-set(INSTALLED_GLOBAL_ASSET_DIR "${CMAKE_INSTALL_PREFIX}/share/openage")
+add_subdirectory(logo/)
+add_subdirectory(shaders/)
+add_subdirectory(textures/)
 
-install(DIRECTORY "${GLOBAL_ASSET_DIR}/"
+
+install(FILES
+	"${CMAKE_CURRENT_SOURCE_DIR}/missing.png"
+	"${CMAKE_CURRENT_SOURCE_DIR}/gaben.png"
 	DESTINATION "${INSTALLED_GLOBAL_ASSET_DIR}"
-	PATTERN .gitignore EXCLUDE)
+)
 
-set(GLOBAL_ASSET_DIR "${GLOBAL_ASSET_DIR}" PARENT_SCOPE)
-set(INSTALLED_GLOBAL_ASSET_DIR "${INSTALLED_GLOBAL_ASSET_DIR}" PARENT_SCOPE)
+install(DIRECTORY "qml"
+	DESTINATION "${INSTALLED_GLOBAL_ASSET_DIR}"
+)
+
+# To show QML files in the QtCreator.
+file(GLOB QML_SRC "qml/*.qml")
+add_custom_target(qtcreator-show-qml SOURCES ${QML_SRC})

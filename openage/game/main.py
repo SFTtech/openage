@@ -1,10 +1,10 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
-Holds openage's main main method, used for launching the game.
+Holds the game entry point for openage.
 """
 
-from ..log import err
+from ..log import err, info
 
 
 def init_subparser(cli):
@@ -27,21 +27,39 @@ def main(args, error):
     """
     del error  # unused
 
-    # initialize libopenage
-    from ..cppinterface.setup import setup
-    setup()
+    # we have to import stuff inside the function
+    # as it depends on generated/compiled code
+    from .main_cpp import run_game
+    from .. import config
+    from ..assets import get_asset_path
+    from ..convert.main import conversion_required, convert_assets
+    from ..cppinterface.setup import setup as cpp_interface_setup
+    from ..cvar.location import get_config_path
+    from ..util.fslike.union import Union
 
-    # load assets
-    from ..assets import get_assets
-    assets = get_assets(args)
+    # initialize libopenage
+    cpp_interface_setup()
+
+    info("launching openage {}".format(config.VERSION))
+    info("compiled by {}".format(config.COMPILER))
+
+    if config.DEVMODE:
+        info("running in DEVMODE")
+
+    # create virtual file system for data paths
+    root = Union().root
+
+    # mount the assets folder union at "assets/"
+    root["assets"].mount(get_asset_path(args))
+
+    # mount the config folder at "cfg/"
+    root["cfg"].mount(get_config_path(args))
 
     # ensure that the assets have been converted
-    from ..convert.main import conversion_required, convert_assets
-    if conversion_required(assets, args):
-        if not convert_assets(assets, args):
+    if conversion_required(root["assets"], args):
+        if not convert_assets(root["assets"], args):
             err("game asset conversion failed")
             return 1
 
-    # jump into the main method
-    from .main_cpp import run_game
-    return run_game(args, assets)
+    # start the game, continue in main_cpp.pyx!
+    return run_game(args, root)

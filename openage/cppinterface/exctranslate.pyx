@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Provides the raise_py_exception and describe_py_exception callbacks for
@@ -75,25 +75,25 @@ cdef void PyTraceback_Add(const char *functionname, const char *filename, int li
     # encoding is implemented in pure Python.
     PyErr_Fetch(&exc_type, &exc_value, &exc_tb)
 
-    cdef PyCodeObject *code = PyCode_NewEmpty(filename, functionname, lineno);
+    cdef PyCodeObject *code = PyCode_NewEmpty(filename, functionname, lineno)
     if code == NULL:
-        PyErr_Restore(exc_type, exc_value, exc_tb);
+        PyErr_Restore(exc_type, exc_value, exc_tb)
         return
 
     globals_ = dict()
-    cdef PyFrameObject *frame = PyFrame_New(PyThreadState_Get(), code, <PyObject *> globals_, NULL);
+    cdef PyFrameObject *frame = PyFrame_New(PyThreadState_Get(), code, <PyObject *> globals_, NULL)
     if frame == NULL:
         Py_XDECREF(<PyObject *> code)
-        PyErr_Restore(exc_type, exc_value, exc_tb);
+        PyErr_Restore(exc_type, exc_value, exc_tb)
         return
 
-    frame.f_lineno = lineno;
+    frame.f_lineno = lineno
 
-    PyErr_Restore(exc_type, exc_value, exc_tb);
-    PyTraceBack_Here(frame);
+    PyErr_Restore(exc_type, exc_value, exc_tb)
+    PyTraceBack_Here(frame)
 
-    Py_XDECREF(<PyObject *> code);
-    Py_XDECREF(<PyObject *> frame);
+    Py_XDECREF(<PyObject *> code)
+    Py_XDECREF(<PyObject *> frame)
 
 
 cdef class CPPMessageObject:
@@ -135,7 +135,9 @@ cdef void raise_cpp_error_common(Error *cpp_error_obj, object obj_to_raise):
      - recursively translates a potential cause exception,
      - sets the object as the active Python exception.
     """
+
     cdef CPPMessageObject msg
+
     if not hasattr(obj_to_raise, "cpp_msg_obj"):
         msg = CPPMessageObject()
         msg.val = cpp_error_obj.msg
@@ -150,7 +152,11 @@ cdef void raise_cpp_error_common(Error *cpp_error_obj, object obj_to_raise):
         # This method will throw an Exception object, and the except clause will
         # be entered.
         # If the cause exception has a cause itself, further recursion occurs.
+        #
+        # If the cause was a std::exception, it is "converted" to a openage error
+        # in order to prevent crashing everything.
         cpp_error_obj.rethrow_cause()
+
     except Exception as cause_exc:
         obj_to_raise.__cause__ = cause_exc
 
@@ -221,7 +227,7 @@ cdef void describe_exception(PyException *pyex) except * with gil:
     PyErr_NormalizeException(&exc_type_ptr, &exc_value_ptr, &exc_traceback_ptr)
     if exc_traceback_ptr != NULL:
         traceback = <object> exc_traceback_ptr
-        PyException_SetTraceback(exc_value_ptr, exc_traceback_ptr);
+        PyException_SetTraceback(exc_value_ptr, exc_traceback_ptr)
     else:
         traceback = None
 
@@ -232,7 +238,7 @@ cdef void describe_exception(PyException *pyex) except * with gil:
     Py_XDECREF(exc_type_ptr)
     Py_XDECREF(exc_traceback_ptr)
     # hand the value raw pointer to pyex.py_obj.
-    pyex.py_obj.set_ref_without_incrementing(<void *> exc_value_ptr)
+    pyex.py_obj.set_ref_without_incrementing(exc_value_ptr)
 
     # set exc.msg
     if hasattr(exc, "cpp_msg_obj"):
@@ -277,10 +283,10 @@ cdef void describe_exception(PyException *pyex) except * with gil:
 
 
 cdef void pyexception_bt_get_symbols_impl(
-        void *py_obj,
+        PyObject *py_obj,
         Func1[void, const backtrace_symbol *] callback) except * with gil:
 
-    cdef object py_exc = <object> <PyObject *> py_obj
+    cdef object py_exc = <object> py_obj
     cdef object frame = getattr(py_exc, "__traceback__", None)
 
     cdef backtrace_symbol symbol

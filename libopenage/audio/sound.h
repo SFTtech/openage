@@ -70,8 +70,11 @@ public:
 	/*
 	 * Mix this sound with the given pcm stream and return whether it has
 	 * finished or not.
+	 *
 	 * @param stream the stream to mix with
 	 * @param length the number of values that should mixed
+	 *
+	 * @returns if the sound was finished and should no longer be played.
 	 */
 	bool mix_audio(int32_t *stream, int length);
 };

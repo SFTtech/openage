@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Provides Union, a utility class for combining multiple FSLikeObjects to a
@@ -20,14 +20,26 @@ class Union(FSLikeObject):
     priority are preferred.
     In case of equal priorities, later mounts are preferred.
     """
+
+    # we can hardly reduce the method amount...
+    # pylint: disable=too-many-public-methods
+
     def __init__(self):
         super().__init__()
 
-        # [mountpoint, pathobj, priority], sorted by priority.
+        # (mountpoint, pathobj, priority), sorted by priority.
         self.mounts = []
 
         # mountpoints and their parent directories, {name: {...}}.
+        # these are the virtual empty folders where mounts can be done
         self.dirstructure = {}
+
+    def __str__(self):
+        return "Union({})".format(
+            ", ".join(["%s @ %s" % (repr(pnt[1]),
+                                    repr(pnt[0]))
+                       for pnt in self.mounts])
+        )
 
     @property
     def root(self):
@@ -40,17 +52,45 @@ class Union(FSLikeObject):
 
         Mounts pathobj at mountpoint, with the given priority.
         """
+
+        if not isinstance(pathobj, Path):
+            raise Exception("only a fslike.Path can be mounted, "
+                            "not {}".format(type(pathobj)))
+
         # search for the right place to insert the mount.
         idx = len(self.mounts) - 1
         while idx >= 0 and priority >= self.mounts[idx][2]:
             idx -= 1
 
-        self.mounts.insert(idx + 1, (mountpoint, pathobj, priority))
+        self.mounts.insert(idx + 1, (tuple(mountpoint), pathobj, priority))
 
         # 'create' parent directories as needed.
         dirstructure = self.dirstructure
         for subdir in mountpoint:
             dirstructure = dirstructure.setdefault(subdir, {})
+
+    def remove_mount(self, search_mountpoint, source_pathobj=None):
+        """
+        Remove a mount from the union by searching for the source
+        that provides the given mountpoint.
+        Additionally, can check if the source equals the given pathobj.
+        """
+
+        unmount = []
+
+        for idx, (mountpoint, pathobj, _) in enumerate(self.mounts):
+            # cut the search so prefixes can be matched.
+            if mountpoint == tuple(search_mountpoint[:len(mountpoint)]):
+                if not source_pathobj or source_pathobj == pathobj:
+                    unmount.append(idx)
+
+        if unmount:
+            # reverse the order so that the indices never shift.
+            for idx in reversed(sorted(unmount)):
+                del self.mounts[idx]
+
+        else:
+            raise ValueError("could not find mounted source")
 
     def candidate_paths(self, parts):
         """
@@ -59,8 +99,10 @@ class Union(FSLikeObject):
         Yields path objects from all mounts that match parts, in the order of
         their priorities.
         """
+
         for mountpoint, pathobj, _ in self.mounts:
-            if mountpoint == parts[:len(mountpoint)]:
+            cut_parts = tuple(parts[:len(mountpoint)])
+            if mountpoint == cut_parts:
                 yield pathobj.joinpath(parts[len(mountpoint):])
 
     def open_r(self, parts):
@@ -77,17 +119,37 @@ class Union(FSLikeObject):
         raise UnsupportedOperation(
             "not writable: " + b'/'.join(parts).decode(errors='replace'))
 
+    def resolve_r(self, parts):
+        for path in self.candidate_paths(parts):
+            if path.is_file() or path.is_dir():
+                # pylint: disable=protected-access
+                return path._resolve_r()
+        return None
+
+    def resolve_w(self, parts):
+        for path in self.candidate_paths(parts):
+            if path.writable():
+                # pylint: disable=protected-access
+                return path._resolve_w()
+        return None
+
     def list(self, parts):
         duplicates = set()
 
+        dir_exists = False
+
         dirstructure = self.dirstructure
         try:
+            # "cd" into the virtual dirstructure
             for subdir in parts:
                 dirstructure = dirstructure[subdir]
 
             dir_exists = True
+
+            # yield the virtual folders in this folder
             yield from dirstructure
             duplicates.update(dirstructure)
+
         except KeyError:
             dir_exists = False
 
@@ -227,3 +289,13 @@ class UnionPath(Path):
         Mounts pathobj here. All parent directories are 'created', if needed.
         """
         return self.fsobj.add_mount(pathobj, self.parts, priority)
+
+    def unmount(self, pathobj=None):
+        """
+        Unmount a path from the union described by this path.
+        This is like "unmounting /home", no matter what the source was.
+        If you provide `pathobj`, that source is checked, additionally.
+
+        It will error if that path was not mounted.
+        """
+        self.fsobj.remove_mount(self.parts, pathobj)

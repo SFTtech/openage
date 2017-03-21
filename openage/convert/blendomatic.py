@@ -1,34 +1,48 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
-# TODO pylint: disable=C,R
+"""
+Conversion for the terrain blending masks.
+Those originate from blendomatic.dat.
+
+For more information, see doc/media/blendomatic.md
+"""
 
 from math import sqrt
 from struct import Struct, unpack_from
 
-from ..log import spam, dbg, info
+from ..log import dbg
 
 from .dataformat.exportable import Exportable
 from .dataformat.data_definition import DataDefinition
 from .dataformat.struct_definition import StructDefinition
 
-endianness = "< "
-
 
 class BlendingTile:
-    def __init__(self, data, width, height):
-        self.data = data
+    """
+    One blending mask tile.
+    The blendomatic stores many of those.
+    """
+
+    # pylint: disable=too-few-public-methods
+
+    def __init__(self, row_data, width, height):
+        self.row_data = row_data
         self.width = width
         self.height = height
 
     def get_picture_data(self):
+        """
+        Return a numpy array of image data for a blending tile.
+        """
+
         import numpy
 
         tile_rows = list()
 
-        for _, picture_row in enumerate(self.data):
+        for picture_row in self.row_data:
             tile_row_data = list()
 
-            for _, alpha_data in enumerate(picture_row):
+            for alpha_data in picture_row:
 
                 if alpha_data == -1:
                     # draw full transparency
@@ -51,6 +65,14 @@ class BlendingTile:
 
 
 class BlendingMode:
+    """
+    One blending mode, which contains tiles that make up
+    for all the influence directions possible.
+    One mode is for example "ice" or "grass", i.e. the transition shape.
+    """
+
+    # pylint: disable=too-few-public-methods
+
     def __init__(self, idx, data_file, tile_count, header):
         """
         initialize one blending mode,
@@ -69,7 +91,7 @@ class BlendingMode:
         dbg("blending mode %d tiles have %d pixels" % (idx, self.pxcount))
 
         # as we draw in isometric tile format, this is the row count
-        row_count = int(sqrt(self.pxcount)) + 1  # should be 49
+        self.row_count = int(sqrt(self.pxcount)) + 1  # should be 49
 
         # alpha_masks_raw is an array of bytes that will draw 32 images,
         # which are bit masks.
@@ -84,44 +106,35 @@ class BlendingMode:
         # each of these images gets 2353 bit as data.
         # TODO: why 32 images? isn't that depending on tile_count?
 
-        bitmask_buf_size = self.pxcount * 4
-        spam("reading 1bit masks -> %d bytes" % (bitmask_buf_size))
-        alpha_masks_buf = data_file.read(bitmask_buf_size)
-        alpha_masks_raw = unpack_from("%dB" % (bitmask_buf_size),
-                                      alpha_masks_buf)
+        alpha_masks_raw = unpack_from("%dB" % (self.pxcount * 4),
+                                      data_file.read(self.pxcount * 4))
 
         # list of alpha-mask tiles
         self.alphamasks = list()
 
-        spam("reading %d 8-bit tile masks = %d bytes" %
-             (tile_count, self.pxcount * tile_count))
-
         # draw mask tiles for this blending mode
         for _ in range(tile_count):
-            tile_buf = data_file.read(self.pxcount)
-            pixels = unpack_from("%dB" % self.pxcount, tile_buf)
-            self.alphamasks.append(self.get_tile_from_data(row_count, pixels))
+            pixels = unpack_from("%dB" % self.pxcount,
+                                 data_file.read(self.pxcount))
+            self.alphamasks.append(self.get_tile_from_data(pixels))
 
         bitvalues = list()
         for i in alpha_masks_raw:
             for b_id in range(7, -1, -1):
                 # bitmask from 0b00000001 to 0b10000000
                 bit_mask = 2 ** b_id
-                bit = i & bit_mask
-                bitvalues.append(bit)
+                bitvalues.append(i & bit_mask)
 
         # list of bit-mask tiles
         self.bitmasks = list()
 
         # TODO: is 32 really hardcoded?
         for i in range(32):
-            data_begin = i * self.pxcount
-            data_end = (i + 1) * self.pxcount
-            pixels = bitvalues[data_begin:data_end]
+            pixels = bitvalues[i * self.pxcount:(i + 1) * self.pxcount]
 
-            self.bitmasks.append(self.get_tile_from_data(row_count, pixels))
+            self.bitmasks.append(self.get_tile_from_data(pixels))
 
-    def get_tile_from_data(self, row_count, data):
+    def get_tile_from_data(self, data):
         """
         get the data pixels, interprete them in isometric tile format
 
@@ -135,22 +148,23 @@ class BlendingMode:
         the space indicated by . is added by the function.
         """
 
-        half_row_count = row_count // 2
+        half_row_count = self.row_count // 2
         tile_size = len(data)
 
         read_so_far = 0
         max_width = 0
         tilerows = list()
 
-        for y in range(row_count):
-            if y < half_row_count:
+        for y_pos in range(self.row_count):
+            if y_pos < half_row_count:
                 # upper half of the tile
                 # row i+1 has 4 more pixels than row i
                 # another +1 for the middle one
-                read_values = 1 + (4 * y)
+                read_values = 1 + (4 * y_pos)
             else:
                 # lower half of tile
-                read_values = ((row_count * 2) - 1) - (4 * (y - half_row_count))
+                read_values = (((self.row_count * 2) - 1) -
+                               (4 * (y_pos - half_row_count)))
 
             if read_values > (tile_size - read_so_far):
                 raise Exception("reading more bytes than tile has left")
@@ -161,7 +175,7 @@ class BlendingMode:
             pixels = list(data[read_so_far:(read_so_far + read_values)])
 
             # how many empty pixels on the left before the real data begins
-            space_count = row_count - 1 - (read_values // 2)
+            space_count = self.row_count - 1 - (read_values // 2)
 
             # insert padding to the left and right (-1 for fully transparent)
             padding = ([-1] * space_count)
@@ -176,10 +190,15 @@ class BlendingMode:
         if read_so_far != tile_size:
             raise Exception("got leftover bytes: %d" % (tile_size - read_so_far))
 
-        return BlendingTile(tilerows, max_width, row_count)
+        return BlendingTile(tilerows, max_width, self.row_count)
 
 
 class Blendomatic(Exportable):
+    """
+    Represents the blendomatic.dat file.
+    In it are multiple blending modes,
+    which then contain multiple tiles.
+    """
 
     name_struct = "blending_mode"
     name_struct_file = "blending_mode"
@@ -194,7 +213,7 @@ class Blendomatic(Exportable):
     #   unsigned int nr_blending_modes;
     #   unsigned int nr_tiles;
     # };
-    blendomatic_header = Struct(endianness + "I I")
+    blendomatic_header = Struct("< I I")
 
     def __init__(self, fileobj):
         super().__init__()
@@ -207,7 +226,7 @@ class Blendomatic(Exportable):
         dbg("%d blending modes, each %d tiles" %
             (blending_mode_count, tile_count))
 
-        blending_mode = Struct(endianness + "I %dB" % (tile_count))
+        blending_mode = Struct("< I %dB" % (tile_count))
 
         self.blending_modes = list()
 
@@ -244,12 +263,16 @@ class Blendomatic(Exportable):
         return [StructDefinition(cls)]
 
     def save(self, fslikeobj, path, save_format):
+        """
+        Save the blending mask textures to disk.
+        """
+
         for idx, texture in enumerate(self.get_textures()):
-            name = "mode%02d" % idx
+            name = "mode%02d.png" % idx
             dbg("saving blending mode %02d texture -> %s" % (idx, name))
             texture.save(fslikeobj, path + '/' + name, save_format)
 
-        info("blending masks successfully exported")
+        dbg("blending masks successfully exported")
 
     def __str__(self):
         return str(self.blending_modes)

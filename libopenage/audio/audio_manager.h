@@ -12,9 +12,8 @@
 #include "category.h"
 #include "hash_functions.h"
 #include "sound.h"
-#include "../util/dir.h"
+#include "resource_def.h"
 
-#include "../gamedata/sound_file.gen.h"
 
 namespace openage {
 
@@ -51,8 +50,7 @@ public:
 	 * Loads all audio resources, that are specified in the sound_files vector.
 	 * @param sound_files a list of all sound resources
 	 */
-	void load_resources(const util::Dir &asset_dir,
-	                    const std::vector<gamedata::sound_file> &sound_files);
+	void load_resources(const std::vector<resource_def> &sound_files);
 
 	/**
 	 * Returns a sound object with the given category and the given id. If no
@@ -62,6 +60,9 @@ public:
 	 */
 	Sound get_sound(category_t category, int id);
 
+	/**
+	 * Called from the audio system once to request new data.
+	 */
 	void audio_callback(int16_t *stream, int length);
 
 	/**
@@ -141,5 +142,4 @@ public:
 	static std::string get_current_driver();
 };
 
-}
-}
+}} // openage::audio

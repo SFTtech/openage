@@ -1,10 +1,12 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 /*
  * This hack replaces Cython's default 'except +' exception translator
  * with the one defined here.
+ *
+ * This is _the_ entry point for the translation magic!
  */
 #define __Pyx_CppExn2PyErr ::openage::pyinterface::translate_exc_cpp_to_py
 

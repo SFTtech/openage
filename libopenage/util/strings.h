@@ -1,11 +1,14 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <cstdarg>
 #include <functional>
-#include <vector>
 #include <iomanip>
+#include <memory>
+#include <sstream>
+#include <string>
+#include <vector>
 
 
 namespace openage {
@@ -67,10 +70,9 @@ size_t vsformat(const char *fmt, va_list ap, std::string &output);
 
 
 /**
- * Copies the given string to the vector target.
- * Target is resized to exactly hold the data (including the NULL byte).
+ * Copies the given string to the returned unique_ptr, including 0 byte.
  */
-void copy_string(const char *s, std::vector<char> target);
+std::unique_ptr<char[]> copy_string(const char *s);
 
 
 /**
@@ -80,42 +82,46 @@ size_t rstrip(char *s);
 
 
 /**
- * tokenizes str by splitting it up to substrings at the deliminiters.
- * this is done by replacing the deliminiters by '\0' in the original string.
- * '\n' is evaluated correctly; all other '\x' escape sequences are evaluated
- * to literal x, including the deliminiter.
- *
- * the number of tokens is returned, but only bufsize tokens are written to buf.
- */
-size_t string_tokenize_to_buf(char *str, char delim, char **buf, size_t bufsize);
-
-
-/**
- * behaviour is as with string_tokenize_to_buf, but the result buffer is
- * dynamically allocated to match the token count.
- * you need to manually free it using delete[].
- *
- * returns the number of tokens read.
- * result[retval] == nullptr.
- */
-size_t string_tokenize_dynamic(char *str, char delim, char ***result);
-
-
-/**
- * base tokenizer method, which is used internally by string_tokenize_to_buf
- * and string_tokenize_dynamic.
- * calls callback each time a new token was found. note that at the point where
- * callback is called, the token content itself is not yet processed.
- */
-void string_tokenize_base(char *str, char delim, std::function<void(char *)> callback);
-
-
-/**
  * returns true if str matches the basic globbing pattern
  * in the pattern, '*' matches any number of characters, while all other
  * characters are interpreted as literal.
  */
 bool string_matches_pattern(const char *str, const char *pattern);
 
+
+/**
+ * Split a string at a delimiter, push the result back in an iterator.
+ * Why doesn't the fucking standard library have std::string::split(delimiter)?
+ */
+template<typename ret_t>
+void split(const std::string &txt, char delimiter, ret_t result) {
+	std::stringstream splitter;
+	splitter.str(txt);
+	std::string part;
+
+	while (std::getline(splitter, part, delimiter)) {
+		*result = part;
+		result++;
+	}
+}
+
+
+/**
+ * Split a string at a delimiter into a vector.
+ * Internally, uses the above iterator splitter.
+ */
+std::vector<std::string> split(const std::string &txt, char delim);
+
+
+/**
+ * Split a string at a delimiter into a vector.
+ * size_hint is to give a predicted size of the vector already.
+ *
+ * tokenizes txt by splitting it up to substrings at the deliminiters.
+ * "\n" is evaluated to '\n'; all other '\X' escape sequences are evaluated
+ * to literal X, including the deliminiter.
+ */
+std::vector<std::string> split_escape(const std::string &txt,
+                                      char delim, size_t size_hint=0);
 
 }} // openage::util

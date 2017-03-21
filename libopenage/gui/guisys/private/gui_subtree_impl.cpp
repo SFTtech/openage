@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "gui_subtree_impl.h"
 
@@ -20,41 +20,51 @@
 
 namespace qtsdl {
 
-namespace {
-QString find_sourcefile(const QString &source, const std::vector<std::string> &search_paths) {
-	if (!QDir::isAbsolutePath(source))
-		for (auto& path : search_paths) {
-			QDir dir{QString::fromStdString(path)};
 
-			if (dir.exists(source))
-				return dir.filePath(source);
-		}
-
-	return source;
-}
-
-}
-
-GuiSubtreeImpl::GuiSubtreeImpl(GuiRenderer *renderer, GuiEventQueue *game_logic_updater, GuiEngine *engine, const QString &source, const std::vector<std::string> &search_paths)
+GuiSubtreeImpl::GuiSubtreeImpl(GuiRenderer *renderer,
+                               GuiEventQueue *game_logic_updater,
+                               GuiEngine *engine,
+                               const QString &source,
+                               const QString &rootdir)
 	:
 	QObject{},
 	renderer{},
 	engine{},
 	root{} {
 
-	auto resolved_source = find_sourcefile(source, search_paths);
+	QObject::connect(
+		&this->game_logic_callback,
+		&GuiCallback::process_blocking,
+		this,
+		&GuiSubtreeImpl::on_process_game_logic_callback_blocking,
+		Qt::DirectConnection
+	);
 
-	QObject::connect(&this->game_logic_callback, &GuiCallback::process_blocking, this, &GuiSubtreeImpl::on_process_game_logic_callback_blocking, Qt::DirectConnection);
-	QObject::connect(this, &GuiSubtreeImpl::process_game_logic_callback_blocking, &this->game_logic_callback, &GuiCallback::process, QCoreApplication::instance()->thread() != QThread::currentThread() ? Qt::BlockingQueuedConnection : Qt::DirectConnection);
+	QObject::connect(
+		this,
+		&GuiSubtreeImpl::process_game_logic_callback_blocking,
+		&this->game_logic_callback,
+		&GuiCallback::process,
+		(QCoreApplication::instance()->thread() != QThread::currentThread()
+		 ? Qt::BlockingQueuedConnection
+		 : Qt::DirectConnection)
+	);
 
 	this->moveToThread(QCoreApplication::instance()->thread());
 	this->attach_to(GuiEventQueueImpl::impl(game_logic_updater));
 	this->attach_to(GuiRendererImpl::impl(renderer));
-	this->attach_to(GuiEngineImpl::impl(engine), resolved_source);
+	this->attach_to(GuiEngineImpl::impl(engine), rootdir);
 
+	// Should now be initialized by the engine-attaching
 	assert(this->root_component);
-	// Need to queue the loading because some underlying game logic elements require the loop to be running (maybe some things that are created after the gui).
-	QMetaObject::invokeMethod(this->root_component.get(), "loadUrl", Qt::QueuedConnection, Q_ARG(QUrl, resolved_source));
+
+	// Need to queue the loading because some underlying game logic elements
+	// require the loop to be running (maybe some things that are created after
+	// the gui).
+	// TODO maybe it's better to use QUrl::fromLocalFile
+	QMetaObject::invokeMethod(this->root_component.get(),
+	                          "loadUrl", Qt::QueuedConnection,
+	                          Q_ARG(QUrl, source));
 }
 
 GuiSubtreeImpl::~GuiSubtreeImpl() {
@@ -63,10 +73,17 @@ GuiSubtreeImpl::~GuiSubtreeImpl() {
 void GuiSubtreeImpl::onEngineReloaded() {
 	const QUrl source = this->root_component->url();
 
-	destroy_root();
+	this->destroy_root();
 
 	this->root_component = std::make_unique<QQmlComponent>(this->engine.get_qml_engine());
-	QObject::connect(&*this->root_component, &QQmlComponent::statusChanged, this, &GuiSubtreeImpl::component_status_changed);
+
+	QObject::connect(
+		this->root_component.get(),
+		&QQmlComponent::statusChanged,
+		this,
+		&GuiSubtreeImpl::component_status_changed
+	);
+
 	this->root_component->loadUrl(source);
 }
 
@@ -82,19 +99,32 @@ void GuiSubtreeImpl::attach_to(GuiRendererImpl *renderer) {
 
 	this->renderer = renderer;
 
-	QObject::connect(this->renderer, &GuiRendererImpl::resized, this, &GuiSubtreeImpl::on_resized);
+	QObject::connect(
+		this->renderer,
+		&GuiRendererImpl::resized,
+		this,
+		&GuiSubtreeImpl::on_resized
+	);
 	this->reparent_root();
 }
 
-void GuiSubtreeImpl::attach_to(GuiEngineImpl *engine, const QString &source) {
-	if (this->engine) {
-		destroy_root();
+void GuiSubtreeImpl::attach_to(GuiEngineImpl *engine_impl, const QString &root_dir) {
+	if (this->engine.has_subtree()) {
+		this->destroy_root();
 		this->engine = GuiEngineImplConnection{};
 	}
 
-	this->root_component = std::make_unique<QQmlComponent>(engine->get_qml_engine());
-	QObject::connect(&*this->root_component, &QQmlComponent::statusChanged, this, &GuiSubtreeImpl::component_status_changed);
-	this->engine = GuiEngineImplConnection(this, engine, source);
+	this->root_component = std::make_unique<QQmlComponent>(engine_impl->get_qml_engine());
+
+	QObject::connect(
+		this->root_component.get(),
+		&QQmlComponent::statusChanged,
+		this,
+		&GuiSubtreeImpl::component_status_changed
+	);
+
+	// operator = &&
+	this->engine = GuiEngineImplConnection{this, engine_impl, root_dir};
 
 	this->root_component->moveToThread(QCoreApplication::instance()->thread());
 }
@@ -162,23 +192,26 @@ GuiEngineImplConnection::GuiEngineImplConnection()
 	engine{} {
 }
 
-GuiEngineImplConnection::GuiEngineImplConnection(GuiSubtreeImpl *subtree, GuiEngineImpl *engine, const QString &source)
+GuiEngineImplConnection::GuiEngineImplConnection(GuiSubtreeImpl *subtree,
+                                                 GuiEngineImpl *engine,
+                                                 const QString &root_dir)
 	:
-	subtree(subtree),
-	engine(engine) {
+	subtree{subtree},
+	engine{engine},
+	root_dir{root_dir} {
 
 	assert(this->subtree);
 	assert(this->engine);
 
-	QObject::connect(this->engine, &GuiEngineImpl::reload, this->subtree, &GuiSubtreeImpl::onEngineReloaded);
+	QObject::connect(
+		this->engine,
+		&GuiEngineImpl::reload,
+		this->subtree,
+		&GuiSubtreeImpl::onEngineReloaded
+	);
 
-	QString dir = QFileInfo(source).absolutePath();
-
-	if (dir.isEmpty()) {
-		qWarning() << "Can't determine the root dir of the QML file.";
-	} else {
-		this->engine->add_root_dir_path(this->root_dir = dir);
-	}
+	// add the directory so it can be watched for changes.
+	this->engine->add_root_dir_path(this->root_dir);
 }
 
 GuiEngineImplConnection::~GuiEngineImplConnection() {
@@ -186,12 +219,19 @@ GuiEngineImplConnection::~GuiEngineImplConnection() {
 }
 
 void GuiEngineImplConnection::disconnect() {
-	if (*this) {
+	if (this->has_subtree()) {
 		assert(this->engine);
-		QObject::disconnect(this->engine, &GuiEngineImpl::reload, this->subtree, &GuiSubtreeImpl::onEngineReloaded);
 
-		if (!this->root_dir.isEmpty())
+		QObject::disconnect(
+			this->engine,
+			&GuiEngineImpl::reload,
+			this->subtree,
+			&GuiSubtreeImpl::onEngineReloaded
+		);
+
+		if (not this->root_dir.isEmpty()) {
 			this->engine->remove_root_dir_path(this->root_dir);
+		}
 	}
 }
 
@@ -216,8 +256,8 @@ GuiEngineImplConnection& GuiEngineImplConnection::operator=(GuiEngineImplConnect
 	return *this;
 }
 
-GuiEngineImplConnection::operator bool() const {
-	return this->subtree;
+bool GuiEngineImplConnection::has_subtree() const {
+	return this->subtree != nullptr;
 }
 
 QQmlContext* GuiEngineImplConnection::rootContext() const {

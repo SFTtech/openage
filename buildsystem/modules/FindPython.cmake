@@ -1,8 +1,12 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 # Find Python
 # ~~~~~~~~~~~
 # Find the Python interpreter, and related info.
+#
+# You can manually pass an interpreter by defining PYTHON:
+# it's used as a manual override,
+# and no further search is performed.
 #
 # This file defines the following variables:
 #
@@ -13,7 +17,6 @@
 #
 # Also defines py_exec and py_get_config_var.
 #
-# You can manually pass an interpreter by defining PYTHON.
 
 
 # python version string to test for
@@ -75,10 +78,12 @@ function(find_python_interpreter_builtin)
 endfunction()
 
 function(find_python_interpreters_env)
-	#execute /usr/bin/env python
-	execute_process(COMMAND /usr/bin/env python3 -c "print(__import__('sys').executable, end='')"
+	# execute `/usr/bin/env python`
+	execute_process(
+		COMMAND /usr/bin/env python3 -c "print(__import__('sys').executable, end='')"
 		OUTPUT_VARIABLE SYSTEM_PYTHON_FROM_ENV
-		RESULT_VARIABLE SYSTEM_PYTHON_RESULT)
+		RESULT_VARIABLE SYSTEM_PYTHON_RESULT
+	)
 	set(PYTHON_INTERPRETERS ${PYTHON_INTERPRETERS} "${SYSTEM_PYTHON_FROM_ENV}" PARENT_SCOPE)
 endfunction()
 
@@ -89,15 +94,15 @@ function(find_python_interpreters)
 	endif()
 
 	foreach(PATTERN ${ARGN})
-		file(GLOB _INTERPRETERS "${PATTERN}")
-		foreach(_TMP_INTERPRETER ${_INTERPRETERS})
+		file(GLOB interpreter_glob "${PATTERN}")
+		foreach(interpreter ${interpreter_glob})
 			# resolve symlinks and get the full path of the interpreter
-			get_filename_component(_INTERPRETER ${_TMP_INTERPRETER} REALPATH)
+			get_filename_component(interpreter "${interpreter}" REALPATH)
 
 			# the above globbing patterns might have caught some files
 			# like /usr/bin/python-config; skip those.
-			if(${_INTERPRETER} MATCHES ".*-dbg$" OR NOT ${_INTERPRETER} MATCHES "^.*/[^/]*-[^/]*$")
-				list(APPEND PYTHON_INTERPRETERS ${_INTERPRETER})
+			if("${interpreter}" MATCHES ".*-dbg$" OR NOT "${interpreter}" MATCHES "^.*/[^/]*-[^/]*$")
+				list(APPEND PYTHON_INTERPRETERS "${interpreter}")
 			endif()
 		endforeach()
 	endforeach()
@@ -109,51 +114,61 @@ endfunction()
 # in the hope that one of them will have associated libs and headers.
 set(PYTHON_INTERPRETERS)
 
-# user-specified or from previous run
+# user-specified or from previous run, add it first
+# so it has highest priority.
 if(PYTHON)
 	list(APPEND PYTHON_INTERPRETERS "${PYTHON}")
+else()
+	# From /usr/bin/env's
+	find_python_interpreters_env()
+
+	# From known python locations
+	find_python_interpreters(
+		# general POSIX / GNU paths
+		"/usr/bin/python*"
+		"/usr/local/bin/python*"
+		# OSX-specific paths
+		"/usr/local/Frameworks/Python.framework/Versions/*/bin/python*"
+		"~/Library/Frameworks/Python.framework/Versions/*/bin/python*"
+		"/System/Library/Frameworks/Python.framework/Versions/*/bin/python*"
+	)
+
+	if(NOT PYTHON_INTERPRETERS)
+		# use cmake's built-in finder
+		find_python_interpreter_builtin()
+	endif()
 endif()
-
-# From /usr/bin/env's
-find_python_interpreters_env()
-
-# From cmake's built-in finder
-find_python_interpreter_builtin()
-
-# From known python locations
-find_python_interpreters(
-	# general POSIX / GNU paths
-	"/usr/bin/python*"
-	"/usr/local/bin/python*"
-	# OSX-specific paths
-	"/usr/local/Frameworks/Python.framework/Versions/*/bin/python*"
-	"~/Library/Frameworks/Python.framework/Versions/*/bin/python*"
-	"/System/Library/Frameworks/Python.framework/Versions/*/bin/python*"
-)
 
 # After resolving symlinks, the list of interpreters contains duplicates
 list(REMOVE_DUPLICATES PYTHON_INTERPRETERS)
 
 # Retain only the proper python interpreters
 foreach(INTERPRETER ${PYTHON_INTERPRETERS})
-	# test for validity
+
+	# python* matches pythontex.py, which we never ever want.
+	if(INTERPRETER MATCHES "pythontex.py")
+		list(REMOVE_ITEM PYTHON_INTERPRETERS "${INTERPRETER}")
+		continue()
+	endif()
+
+	# test for validity of the interpreter
 	set(PY_OUTPUT_TEST "rofl, lol")
-	message ("Testing ${INTERPRETER}")
+
 	execute_process(COMMAND
 		"${INTERPRETER}" -c "print('${PY_OUTPUT_TEST}'); exit(42)"
 		OUTPUT_VARIABLE TEST_OUTPUT
 		RESULT_VARIABLE TEST_RETVAL
 	)
+
 	if(NOT TEST_OUTPUT STREQUAL "${PY_OUTPUT_TEST}\n" OR NOT TEST_RETVAL EQUAL 42)
 		# not a python interpreter
-		message(WARNING "Dropping invalid python interpreter '${INTERPRETER}'")
+		message("-- Dropping invalid python interpreter '${INTERPRETER}'")
 		list(REMOVE_ITEM PYTHON_INTERPRETERS "${INTERPRETER}")
 	endif()
 endforeach()
 
 # test all the found interpreters; break on success.
 foreach(PYTHON ${PYTHON_INTERPRETERS})
-	# TODO: sort interpreters by version
 
 	# ask the interpreter for the essential extension-building flags
 	py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
@@ -173,7 +188,7 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 	)
 
 	if(PYTHON_TEST_RESULT)
-		message("-- Looking for suitable Python >=${PYTHON_MIN_VERSION} - Success: ${PYTHON}")
+		message("-- Using python interpreter: ${PYTHON}")
 
 		set(PYTHON_INTERP "${PYTHON}")
 		set(PYTHON_LIBRARY "-l${PYTHON_LIBRARY_NAME} -L${PYTHON_LIBRARY_DIR}")
@@ -183,19 +198,34 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 	endif()
 endforeach()
 
-if(PYTHON_INTERP)
-	set(PYTHON "${PYTHON_INTERP}")
-else()
-	message("Python interpreter candidates:")
-	message("${PYTHON_TEST_ERRORS}")
+if(NOT PYTHON_INTERP)
+	if(PYTHON_TEST_ERRORS)
+		message("Python interpreter candidates:")
+		message("${PYTHON_TEST_ERRORS}")
+	endif()
 	message("No suitable Python interpreter found.")
 	message("We need an interpreter that is shipped with libpython and header files.")
 	message("Specify your own with -DPYTHON=/path/to/executable\n\n\n")
-	set(PYTHON "")
+	set(PYTHON_INTERP "")
 	set(PYTHON_INCLUDE_DIR "")
 	set(PYTHON_LIBRARY "")
+
+	unset(PYTHON CACHE)
+	unset(PYTHON_LIBRARY CACHE)
+	unset(PYTHON_INCLUDE_DIR CACHE)
 endif()
 
+if(NOT PYTHON)
+	# if python was not set before, force-set it now.
+	set(LOL_FORCE "FORCE")
+endif()
+
+set(PYTHON "${PYTHON_INTERP}" CACHE FILEPATH "Location of the Python interpreter" ${LOL_FORCE})
+set(PYTHON_LIBRARY "${PYTHON_LIBRARY}" CACHE STRING "Linker invocation for the Python library" ${LOL_FORCE})
+set(PYTHON_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}" CACHE PATH "Location of the Python include dir" ${LOL_FORCE})
+
+
+unset(LOL_FORCE)
 unset(PYTHON_TEST_RESULT)
 unset(PYTHON_TEST_OUTPUT)
 unset(PYTHON_INTERP)

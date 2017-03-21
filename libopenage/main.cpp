@@ -16,27 +16,30 @@
 
 namespace openage {
 
-
+/*
+ * This function is called from Cython, see main_cpp.pyx.
+ *
+ * This is the main entry point to the C++ part.
+ */
 int run_game(const main_arguments &args) {
-	log::log(MSG(info) << "launching engine with data directory '"
-	                   << args.data_directory
-	                   << "' and fps limit "
-	                   << args.fps_limit);
+	log::log(MSG(info)
+	         << "launching engine with "
+	         << args.root_path
+	         << " and fps limit "
+	         << args.fps_limit);
 
 	util::Timer timer;
 	timer.start();
 
-	util::Dir data_dir{args.data_directory.c_str()};
-
-	Engine engine{&data_dir, args.fps_limit, args.gl_debug, "openage"};
+	Engine engine{args.root_path, args.fps_limit, args.gl_debug, "openage"};
 
 	// read and apply the configuration files
-	auto &cvar_manager = engine.get_cvar_manager();
-	cvar_manager.load_main_config();
+	engine.get_cvar_manager().load_all();
 
 	// initialize terminal colors
-	std::vector<gamedata::palette_color> termcolors;
-	util::read_csv_file(data_dir.join("converted/termcolors.docx"), termcolors);
+	std::vector<gamedata::palette_color> termcolors = util::read_csv_file<gamedata::palette_color>(
+		args.root_path["assets/converted/termcolors.docx"]
+	);
 
 	// TODO: move inside the engine
 	// TODO: support multiple consoles
@@ -58,8 +61,9 @@ int run_game(const main_arguments &args) {
 		engine.run();
 	}
 
+	log::log(INFO << "cya!");
+
 	return 0;
 }
-
 
 } // openage
