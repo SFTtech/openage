@@ -55,22 +55,25 @@ void array_conversion() {
 			0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
 			0xf0, 0xf1, 0xf2, 0xf3, 0xf4, 0xf5, 0x00, 0x00
 		};
+		static const std::vector<uint64_t> test_array64_big{
+			0x0123456789abcdef, 0xf0f1f2f3f4f50000
+		};
+
 		static const std::vector<uint8_t> test_array8_little{
 			0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
 			0xf7, 0xf6, 0xf5, 0xf4, 0xf3, 0xf2, 0x00, 0x00
 		};
-		static const std::vector<uint64_t> test_array64_big{
-			0x0123456789abcdef, 0xf0f1f2f3f4f50000
-		};
 		static const std::vector<uint64_t> test_array64_little{
-			0x0123456789abcdef, 0xf7f6f5f4f3f20000
+			0xefcdab8967452301, 0x0000f2f3f4f5f6f7
 		};
+
 		// Big-endian conversions
-		array8_to_array64(test_array8_big.data(), 14) == test_array64_big or TESTFAIL;
-		array64_to_array8(test_array64_big.data(), 2) == test_array8_big or TESTFAIL;
+		array8_to_array64(test_array8_big.data(), 14, true) == test_array64_big or TESTFAIL;
+		array64_to_array8(test_array64_big.data(), 2, true) == test_array8_big or TESTFAIL;
+
 		// Little-endian conversions
-		array8_to_array64(test_array8_little.data(), 14) == test_array64_little or TESTFAIL;
-		array64_to_array8(test_array64_little.data(), 2) == test_array8_little or TESTFAIL;
+		array8_to_array64(test_array8_little.data(), 14, false) == test_array64_little or TESTFAIL;
+		array64_to_array8(test_array64_little.data(), 2, false) == test_array8_little or TESTFAIL;
 	}
 }
 
