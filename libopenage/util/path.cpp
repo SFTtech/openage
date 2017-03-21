@@ -3,12 +3,12 @@
 #include "path.h"
 
 #include "compiler.h"
-#include "error.h"
 #include "fslike/directory.h"
 #include "fslike/native.h"
 #include "fslike/python.h"
 #include "misc.h"
 #include "strings.h"
+#include "../error/error.h"
 
 
 namespace openage {
