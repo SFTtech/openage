@@ -25,6 +25,7 @@ extern std::string empty_string;
  * modulo operation that guarantees to return positive values.
  */
 template <typename T>
+constexpr
 T mod(T x, T m) {
 	T r = x % m;
 
@@ -39,6 +40,7 @@ T mod(T x, T m) {
  * compiletime defined modulo function.
  */
 template <typename T, unsigned int modulo>
+constexpr
 T mod(T x) {
 	T r = x % modulo;
 
@@ -54,6 +56,7 @@ T mod(T x) {
  * compiletime defined rotate left function
  */
 template <typename T, int amount>
+constexpr
 T rol(T x) {
 	static_assert(sizeof(T)*CHAR_BIT > amount && amount > 0, "invalid rotation amount");
 	return (x << amount) | (x >> (sizeof(T)*CHAR_BIT - amount));
@@ -65,6 +68,7 @@ T rol(T x) {
  * which always rounds to -inf
  */
 template <typename T>
+constexpr
 inline T div(T x, T m) {
 	return (x - mod<T>(x, m)) / m;
 }
