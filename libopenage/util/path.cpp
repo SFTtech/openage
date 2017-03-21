@@ -213,7 +213,7 @@ int Path::get_mtime() const {
 	return this->fsobj->get_mtime(this->parts);
 }
 
-size_t Path::get_filesize() const {
+uint64_t Path::get_filesize() const {
 	return this->fsobj->get_filesize(this->parts);
 }
 
