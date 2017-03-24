@@ -305,10 +305,15 @@ bool Engine::draw_debug_overlay() {
 }
 
 void Engine::run() {
-	this->job_manager.start();
-	this->running = true;
-	this->loop();
-	this->running = false;
+	try {
+		this->job_manager.start();
+		this->running = true;
+		this->loop();
+		this->running = false;
+	} catch (...) {
+		this->job_manager.stop();
+		throw;
+	}
 }
 
 void Engine::stop() {
