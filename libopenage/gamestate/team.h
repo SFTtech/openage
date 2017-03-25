@@ -56,11 +56,13 @@ public:
 
 	member_type get_member_type(Player &player);
 
-	// TODO find a better way to get all the players
+	/**
+	 * TODO find a better way to get all the players
+	 */
 	std::vector<const Player*> get_players() const;
 
 	/**
-	 * TODO asdf
+	 * The score of the team, based on the team's players score.
 	 */
 	ScoreTeam score;
 

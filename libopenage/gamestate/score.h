@@ -9,10 +9,11 @@
 
 namespace openage {
 
+class Player;
 class Team;
 
 /**
- * TODO asdf
+ * The categories of sub-scores that sum to a player's score.
  */
 enum class score_category {
 	/** 20% of units killed cost */
@@ -27,7 +28,7 @@ enum class score_category {
 };
 
 /**
- * TODO asdf
+ * Keeps track of a score and all the sub-scores
  */
 class Score {
 public:
@@ -40,6 +41,16 @@ public:
 	void remove_score(const score_category cat, double value);
 	void remove_score(const score_category cat, int value);
 
+	void update_map_explored(double progress);
+
+	void update_resources(const ResourceBundle & resources);
+
+	/**
+	 * Calculates the total score from the sub-scores.
+	 * TODO update gui here
+	 */
+	virtual void update_score();
+
 	// Getters
 
 	int getScore(const score_category cat) const { return score[(int) cat]; }
@@ -49,9 +60,10 @@ public:
 
 protected:
 
-	virtual void update_score();
-
 	int score[(int) score_category::SCORE_CATEGORY_COUNT];
+
+	int score_exploration;
+	int score_resources;
 
 	// generated values
 
@@ -63,16 +75,34 @@ private:
 
 
 /**
- * TODO asdf
+ * The score of a player
+ */
+class ScorePlayer : public Score {
+public:
+
+	ScorePlayer(Player *player);
+
+	virtual void update_score() override;
+
+protected:
+
+private:
+
+	Player *player;
+};
+
+
+/**
+ * The score of a team
  */
 class ScoreTeam : public Score {
 public:
 
 	ScoreTeam(Team *team);
 
-protected:
-
 	virtual void update_score() override;
+
+protected:
 
 private:
 

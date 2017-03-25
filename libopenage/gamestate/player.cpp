@@ -17,8 +17,8 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	civ{civ},
 	name{name},
 	team{nullptr},
-	// TODO change, get population cap max from game options
-	population{0, 200} {
+	population{0, 200}, // TODO change, get population cap max from game options
+	score{this} {
 	// starting resources
 	// TODO change, get starting resources from game options
 	this->resources[game_resource::food] = 1000;
@@ -135,10 +135,11 @@ void Player::active_unit_added(Unit *unit) {
 	}
 
 	// score
-	if (unit->id == 82 || unit->id == 276) { // Castle, Wonder
-		this->score.add_score(score_category::society, 10 * 0.2); // TODO get cost
-	} else {
-		this->score.add_score(score_category::economy, 10 * 0.2); // TODO get cost
+	// TODO improve selectors
+	if (unit->unit_type->id() == 82 || unit->unit_type->id() == 276) { // Castle, Wonder
+		this->score.add_score(score_category::society, 100 * 0.2); // TODO get cost instead of 100
+	} else if (unit->has_attribute(attr_type::building) || unit->has_attribute(attr_type::population)) { // building, living
+		this->score.add_score(score_category::economy, 10 * 0.2); // TODO get cost instead of 10
 	}
 }
 
@@ -163,9 +164,17 @@ void Player::active_unit_removed(Unit *unit) {
 	}
 
 	// score
-	if (!(unit->id == 82 || unit->id == 276)) { // Castle, Wonder
-		this->score.remove_score(score_category::economy, 10 * 0.2); // TODO get cost
+	// TODO improve selectors
+	if (unit->unit_type->id() == 82 || unit->unit_type->id() == 276) { // Castle, Wonder
+		// nothing
+	} else if (unit->has_attribute(attr_type::building) || unit->has_attribute(attr_type::population)) { // building, living
+		this->score.remove_score(score_category::economy, 10 * 0.2); // TODO get cost instead of 10
 	}
+}
+
+void Player::killed_unit(const Unit & /*unit*/) {
+	// score
+	this->score.add_score(score_category::military, 10 * 0.2); // TODO get cost instead of 10
 }
 
 } // openage

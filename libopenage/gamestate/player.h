@@ -111,9 +111,9 @@ public:
 	PopulationTracker population;
 
 	/**
-	 * TODO asdf
+	 * The score of the player.
 	 */
-	Score score;
+	ScorePlayer score;
 
 	/**
 	 * Called when a unit is created and active.
@@ -125,6 +125,11 @@ public:
 	 * Called when a unit is destroyed.
 	 */
 	void active_unit_removed(Unit *unit);
+
+	/**
+	 * Called when a unit is killed by this player.
+	 */
+	void killed_unit(const Unit & unit);
 
 private:
 
