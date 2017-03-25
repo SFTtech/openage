@@ -95,8 +95,12 @@ public:
 	 * common functions for actions
 	 */
 	void face_towards(const coord::phys3 pos);
-	void damage_object(Unit &target, unsigned dmg); // TODO remove (keep for testing)
-	void damage_object(Unit &target);
+
+	/**
+	 * Damage a unit, returns true if the unit was killed in the process
+	 */
+	bool damage_unit(Unit &target);
+
 	void move_to(Unit &target, bool use_range=true);
 
 	/**

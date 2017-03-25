@@ -775,6 +775,9 @@ void ProjectileProducer::initialise(Unit *unit, Player &player) {
 	// initialize graphic set
 	unit->unit_type = this;
 
+	auto player_attr = std::make_shared<Attribute<attr_type::owner>>(player);
+	unit->add_attribute(player_attr);
+
 	// projectile speed
 	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;
 	unit->add_attribute(std::make_shared<Attribute<attr_type::speed>>(sp));
