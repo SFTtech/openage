@@ -158,6 +158,11 @@ public:
 	Attributes default_attributes;
 
 	/**
+	 * The cost of the unit.
+	 */
+	ResourceBundle cost;
+
+	/**
 	 * The set of graphics used for this type
 	 */
 	graphic_set graphics;

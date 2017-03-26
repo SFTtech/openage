@@ -41,8 +41,14 @@ public:
 	void remove_score(const score_category cat, double value);
 	void remove_score(const score_category cat, int value);
 
+	/**
+	 * Updates map exploration precentance based sub-scores
+	 */
 	void update_map_explored(double progress);
 
+	/**
+	 * Updates resource based sub-scores
+	 */
 	void update_resources(const ResourceBundle & resources);
 
 	/**
@@ -62,15 +68,17 @@ protected:
 
 	int score[(int) score_category::SCORE_CATEGORY_COUNT];
 
-	int score_exploration;
-	int score_resources;
-
 	// generated values
 
 	int score_total;
 
 private:
 
+	/** Used by update_map_explored. */
+	int score_exploration;
+
+	/** Used by update_resources. */
+	int score_resources;
 };
 
 

@@ -888,10 +888,8 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 		// cost formula: 0.5 * (target cost) / (target max hp)
 		auto &hp = target->get_attribute<attr_type::hitpoints>();
 
-		// TODO get the target unit's cost
-		//this->cost += get target cost;
-		this->cost[game_resource::wood] = 100; // temp
-
+		// get the target unit's cost
+		this->cost += target->unit_type->cost;
 		this->cost *= 0.5 / hp.hp;
 	}
 }

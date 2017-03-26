@@ -141,6 +141,10 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 			this->graphics[graphic_type::carrying] = carry;
 		}
 	}
+
+	// TODO get cost, temp fixed cost of 50 food
+	this->cost[game_resource::food] = 50;
+
 }
 
 ObjectProducer::~ObjectProducer() {}
@@ -523,6 +527,10 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	}
 
 	this->terrain_outline = square_outline(this->foundation_size);
+
+	// TODO get cost, temp fixed cost of 100 wood
+	this->cost[game_resource::food] = 0;
+	this->cost[game_resource::wood] = 100;
 }
 
 BuildingProducer::~BuildingProducer() {}

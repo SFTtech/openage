@@ -139,6 +139,11 @@ private:
 	ResourceBundle resources;
 
 	/**
+	 * Called when the resources amounts change.
+	 */
+	void on_resources_change();
+
+	/**
 	 * unit types which can be produced by this player.
 	 */
 	unit_type_list available_objects;

@@ -25,6 +25,7 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	this->resources[game_resource::wood] = 1000;
 	this->resources[game_resource::stone] = 1000;
 	this->resources[game_resource::gold] = 1000;
+	this->on_resources_change();
 }
 
 bool Player::operator ==(const Player &other) const {
@@ -59,19 +60,26 @@ bool Player::owns(Unit &unit) const {
 
 void Player::receive(const ResourceBundle& amount) {
 	this->resources += amount;
+	this->on_resources_change();
 }
 
 void Player::receive(const game_resource resource, double amount) {
 	this->resources[resource] += amount;
+	this->on_resources_change();
 }
 
 bool Player::deduct(const ResourceBundle& amount) {
-	return this->resources.deduct(amount);
+	if (this->resources.deduct(amount)) {
+		this->on_resources_change();
+		return true;
+	}
+	return false;
 }
 
 bool Player::deduct(const game_resource resource, double amount) {
 	if (this->resources[resource] >= amount) {
 		this->resources[resource] -= amount;
+		this->on_resources_change();
 		return true;
 	}
 	return false;
@@ -137,9 +145,9 @@ void Player::active_unit_added(Unit *unit) {
 	// score
 	// TODO improve selectors
 	if (unit->unit_type->id() == 82 || unit->unit_type->id() == 276) { // Castle, Wonder
-		this->score.add_score(score_category::society, 100 * 0.2); // TODO get cost instead of 100
+		this->score.add_score(score_category::society, unit->unit_type->cost.sum() * 0.2);
 	} else if (unit->has_attribute(attr_type::building) || unit->has_attribute(attr_type::population)) { // building, living
-		this->score.add_score(score_category::economy, 10 * 0.2); // TODO get cost instead of 10
+		this->score.add_score(score_category::economy, unit->unit_type->cost.sum() * 0.2);
 	}
 }
 
@@ -168,13 +176,20 @@ void Player::active_unit_removed(Unit *unit) {
 	if (unit->unit_type->id() == 82 || unit->unit_type->id() == 276) { // Castle, Wonder
 		// nothing
 	} else if (unit->has_attribute(attr_type::building) || unit->has_attribute(attr_type::population)) { // building, living
-		this->score.remove_score(score_category::economy, 10 * 0.2); // TODO get cost instead of 10
+		this->score.remove_score(score_category::economy, unit->unit_type->cost.sum() * 0.2);
 	}
 }
 
-void Player::killed_unit(const Unit & /*unit*/) {
+void Player::killed_unit(const Unit & unit) {
 	// score
-	this->score.add_score(score_category::military, 10 * 0.2); // TODO get cost instead of 10
+	this->score.add_score(score_category::military, unit.unit_type->cost.sum() * 0.2);
+}
+
+void Player::on_resources_change() {
+	// score
+	this->score.update_resources(this->resources);
+
+	// TODO check for resource based win conditions
 }
 
 } // openage

@@ -63,8 +63,9 @@ ScorePlayer::ScorePlayer(Player *player)
 void ScorePlayer::update_score() {
 	Score::update_score();
 	// update team score
+	// TODO fix player->team should be nullptr
 	if (player->team) {
-		// TODO fix, it's causing a crash
+		// TODO rework team update
 		//player->team->score.update_score();
 	}
 }
