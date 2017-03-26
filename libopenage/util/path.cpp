@@ -3,12 +3,12 @@
 #include "path.h"
 
 #include "compiler.h"
-#include "error.h"
 #include "fslike/directory.h"
 #include "fslike/native.h"
 #include "fslike/python.h"
 #include "misc.h"
 #include "strings.h"
+#include "../error/error.h"
 
 
 namespace openage {
@@ -213,7 +213,7 @@ int Path::get_mtime() const {
 	return this->fsobj->get_mtime(this->parts);
 }
 
-size_t Path::get_filesize() const {
+uint64_t Path::get_filesize() const {
 	return this->fsobj->get_filesize(this->parts);
 }
 
