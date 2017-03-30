@@ -12,10 +12,10 @@ namespace openage {
 namespace util {
 namespace tests {
 
-static const std::array<uint8_t, 16> test_key{
+static const std::array<uint8_t, 16> test_key {{
 	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
 	0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
-};
+}};
 
 
 void siphash() {
@@ -32,7 +32,7 @@ void siphash() {
 	 *    - 0x00010203
 	 *    - ...
 	 */
-	static const std::array<uint64_t, 64> expected_hashes{
+	static const std::array<uint64_t, 64> expected_hashes {{
 		0x726fdb47dd0e0e31,0x74f839c593dc67fd,0x0d6c8009d9a94f5a,0x85676696d7fb7e2d,
 		0xcf2794e0277187b7,0x18765564cd99a68d,0xcbc9466e58fee3ce,0xab0200f58b01d137,
 		0x93f5f5799a932462,0x9e0082df0ba9e4b0,0x7a5dbbc594ddb9f3,0xf4b32f46226bada7,
@@ -49,7 +49,7 @@ void siphash() {
 		0x0a8787bf8ecb74b2,0x81b3e73d20b49b6f,0x7fa8220ba3b2ecea,0x245731c13ca42499,
 		0xb78dbfaf3a8d83bd,0xea1ad565322a1a0b,0x60e61c23a3795013,0x6606d7e446282b93,
 		0x6ca4ecb15c5f91e1,0x9f626da15c9625f3,0xe51b38608ef25f57,0x958a324ceb064572
-	};
+	}};
 
 	std::array<uint8_t, 64> data;
 	openage::util::Siphash siphash(test_key);
