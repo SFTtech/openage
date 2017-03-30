@@ -24,10 +24,10 @@ namespace rng {
 
 
 // Key for seed hashing, just some hardcoded key
-static const std::array<uint8_t, 16> seed_key{
+static const std::array<uint8_t, 16> seed_key {{
 	0xba, 0xda, 0x55, 0x00, 0x5e, 0xed, 0x00, 0x00,
 	0xab, 0xcd, 0xef, 0x12, 0x34, 0x56, 0x78, 0x90
-};
+}};
 
 
 RNG::RNG(uint64_t v1) {
