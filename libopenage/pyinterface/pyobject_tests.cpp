@@ -108,7 +108,7 @@ void pyobject() {
 	TESTEQUALS(dict.modulename(), "builtins");
 	TESTEQUALS(dict.classname(), "dict");
 
-	// btw, if I invoke a nonexisting member function on a (a.asdf(b))
+	// btw, if I invoke a nonexisting member function on a (a.foob(b))
 	// the python heap will corrupt in printing the "has no member" backtrace
 	TESTNOEXCEPT(dict.exec(
 		"def mul(x, y):\n"

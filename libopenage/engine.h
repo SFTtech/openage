@@ -140,7 +140,7 @@ public:
 
 	/*
 	 * epic hack that will be replaced once the coordinate system is non-global
-	 * TODO: mic_e: remove it. ASDF
+	 * TODO: mic_e: remove it.
 	 */
 	static coord_data *get_coord_data() { return &coord_global_tmp_TODO; }
 
@@ -456,7 +456,7 @@ private:
 	/**
 	 * Holds the data for the coord system.
 	 * TODO: currently references the global coordinate struct
-	 * TODO: mic_e replace it ASDF
+	 * TODO: mic_e replace it
 	 */
 	coord_data &coord;
 
