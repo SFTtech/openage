@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
@@ -7,7 +7,6 @@
 #include "../testing/testing.h"
 
 #include "constexpr_map.h"
-#include "doubly_linked_list.h"
 #include "pairing_heap.h"
 
 
@@ -120,45 +119,6 @@ void pairing_heap() {
 	pairing_heap_3();
 }
 
-
-// exported test
-void doubly_linked_list() {
-	datastructure::DoublyLinkedList<int> list;
-
-	list.empty() or TESTFAIL;
-
-	list.push_front(0);
-	list.push_front(1);
-	list.push_front(2);
-
-	list.push_back(3);
-	list.push_front(4);
-	list.push_back(5);
-
-	// 421035
-
-	(list.size() == 6) or TESTFAIL;
-	(list.pop_back() == 5) or TESTFAIL;
-	(list.pop_front() == 4) or TESTFAIL;
-
-	// 2103
-	(list.size() == 4) or TESTFAIL;
-
-	list.push_back(6);
-	list.push_front(7);
-	list.push_back(8);
-
-	// 7210368
-	(8 == list.pop_back()) or TESTFAIL;
-	(6 == list.pop_back()) or TESTFAIL;
-	(3 == list.pop_back()) or TESTFAIL;
-	(7 == list.pop_front()) or TESTFAIL;
-	(2 == list.pop_front()) or TESTFAIL;
-	(0 == list.pop_back()) or TESTFAIL;
-	(1 == list.pop_back()) or TESTFAIL;
-
-	(list.size() == 0) or TESTFAIL;
-}
 
 // exported test
 void constexpr_map() {
