@@ -13,6 +13,11 @@ TRAIL_WHITESPACE_RE = re.compile((
     r"( |\t)+\n"
 ))
 
+IMMEDIATE_TODO_RE = re.compile(
+    "as" + "df",
+    re.IGNORECASE  # pylint: disable=no-member
+)
+
 
 def find_issues(dirnames, exts):
     """
@@ -43,7 +48,7 @@ def find_issues(dirnames, exts):
             if '\t' in data:
                 yield "File contains tabs", filename
 
-        if TRAIL_WHITESPACE_RE.search(data):
+        if TRAIL_WHITESPACE_RE.search(data) or IMMEDIATE_TODO_RE.search(data):
             analyse_each_line = True
 
         # if there are possible issues perform a in deepth analysis
@@ -66,3 +71,10 @@ def find_issues_with_lines(filename):
         if match:
             yield issue_str_line("Trailing whitespace", filename, line, num,
                                  (match.start(1), match.end(1)))
+
+        match = IMMEDIATE_TODO_RE.search(line)
+        if match:
+            yield issue_str_line("Found 'as"
+                                 "df', indicating an immediate TODO",
+                                 filename, line, num,
+                                 (match.start(), match.end()))
