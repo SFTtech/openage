@@ -6,96 +6,97 @@ A copy of the license can be found in [legal/GPLV3](/legal/GPLv3).
 
 _the openage authors_ are:
 
-| Full name                   | aliases                     | E-Mail                                |
-|-----------------------------|-----------------------------|---------------------------------------|
-| Jonas Jelten                | TheJJ                       | jj@sft.mx                             |
-| Michael Enßlin              | mic_e                       | michael@ensslin.cc                    |
-| Andre Kupka                 | freakout                    | kupka@in.tum.de                       |
-| Frank Schmidt               | gellardo                    | rubiccuber@googlemail.com             |
-| Markus Otto                 | zuntrax                     | otto@fs.tum.de                        |
-| Sascha Vincent Kurowski     | svkurowski                  | svkurowski@gmail.com                  |
-| James Mintram               | JimmyJazz                   | jamesmintram@gmail.com                |
-| Martin McGrath              | MartinMcGrath               | mcgrath.martin@gmail.com              |
-| René Kooi                   | goto-bus-stop               | rene@kooi.me                          |
-| Markus Elfring              | elfring                     | elfring@users.sourceforge.net         |
-| Jimmy Berry                 | boombatower                 | jimmy@boombatower.com                 |
-| João Roque                  | joaoroque                   | joaoroque@gmail.com                   |
-| Julius Michaelis            | jcaesar                     | gitter@liftm.de                       |
-| Katharina Bogad             | delirium, masterofjellyfish | bogad@cs.tum.edu                      |
-| Oliver Fawcett-Griffiths    | ollyfg                      | olly@ollyfg.com                       |
-| Ross Murray                 | rossmurray                  | rm@egoorb.com                         |
-| Alexandre Arpin             | AlexandreArpin              | arpin.alexandre@gmail.com             |
-| Henry Snoek                 | snoek09                     | snoek09@gmail.com                     |
-| Gabriel Scherer             | gasche                      | gasche.dylc@gmail.com                 |
-| Austin Eyler                | awestin1                    | awestin1@gmail.com                    |
-| Francisco Demartino         | franciscod                  | demartino.francisco@gmail.com         |
-| Peter Piwowarski            | oldlaptop                   | oldlaptop654@aol.com                  |
-| Charles Pigott              | LordAro                     | charlespigott@googlemail.com          |
-| Andrew Eikum                | ColdPie1                    | coldpies@gmail.com                    |
-| Michael Sebastiyan          | BugExplorer                 | sebastiyan.michael@outlook.com        |
-| Adam Miartus                | miartad                     | adam.miartus@gmail.com                |
-| Benoît Legat                | blegat                      | benoit.legat@gmail.com                |
-| James Hagborg               | blucoat                     | jameshagborg@gmail.com                |
-| Prashanth Jonnala           | jprashanth                  | prashanth.neo@gmail.com               |
-| Jonathan Remnant            | Jon0                        | jono4728@gmail.com                    |
-| Sam Schetterer              | schets                      | samschet@gmail.com                    |
-| Georg Kilzer                | leper                       | leper@wildfiregames.com               |
-| Florian Erler               | ethon                       | ethon@ethon.cc                        |
-| Michał Janiszewski          | janisozaur                  | janisozaur+openage@gmail.com          |
-| Lautaro Nahuel De León      | lndl                        | laudleon@gmail.com                    |
-| Robin Kreis                 | rkreis                      | r.kreis@uni-bremen.de                 |
-| Shion Ryuu                  | shion                       | shionryuu@outlook.com                 |
-| Jonas Borchelt              | riotjones                   | jonasbr-github@bellatrix.uberspace.de |
-| Jon Gelderloos              | jgelderloos                 | jgelderloos@gmail.com                 |
-| Emmanuel Gil Peyrot         | Link Mauve                  | linkmauve@linkmauve.fr                |
-| Danilo Bargen               | dbrgn                       | mail@dbrgn.ch                         |
-| Niklas Fiekas               | niklasf                     | niklas.fiekas@backscattering.de       |
-| Charles Gould               | charlesrgould               | charles.r.gould@gmail.com             |
-| Wilco Kusee                 | detrumi                     | wilcokusee@gmail.com                  |
-| Sreejith R                  | sreejithr                   | sreejith.r44@gmail.com                |
-| Jens Feodor Nielsen         | jfeo                        | xws747@alumni.ku.dk                   |
-| Franz-Niclas Muschter       | fm                          | fm@stusta.net                         |
-| Valentin Gagarin            | frickler01                  | valentin@fricklerhandwerk.de          |
-| Emmanouil Kampitakis        | madonius                    | emmanouil@kampitakis.de               |
-| Thomas Oltmann              | tomolt                      | thomas.oltmann.hhg@gmail.com          |
-| Miguel Kasparick            | miguellissimo               | miguellissimo@gmail.com               |
-| Darren Strash               | darrenstrash                | darren.strash@gmail.com               |
-| Kyle Robbertze              | paddatrapper                | paddatrapper@gmail.com                |
-| Jonathan Biegert            | azrdev                      | azrdev@qrdn.de                        |
-| Hadrien Mary                | hadim                       | hadrien.mary@gmail.com                |
-| Sachin Kelkar               | s4chin                      | sachinkel19@gmail.com                 |
-| Camillo Dell'mour           | spjoe                       | cdellmour@gmail.com                   |
-| Timothee Behety             | tim2000                     | tim.behety@gmail.com                  |
-| Vyacheslav Davydov          | tombouctou                  | vissi@vissi.su                        |
-| Lyle Nel                    | lyle-nel                    | pt20100938@gmail.com                  |
-| Michael Kilby               | kilbyjmichael               | kilbyjmichael@gmail.com               |
-| Michal Kováč                | mirelon                     | miso@github.ksp.sk                    |
-| Patrik Stutz                | VanCoding                   | patrik.stutz@gmail.com                |
-| James McMurray              | jamesmcm                    | jamesmcm03@gmail.com                  |
-| Łukasz Raszka               | lukky513                    | lukky513@gmail.com                    |
-| Martin Castillo             | castilma                    | castilma@uni-bremen.de                |
-| Volodymyr Samokhatko        | ChipmunkV                   | velorums@gmail.com                    |
-| Guillaume Desquesnes        | elnabo                      | g.desquesnes@gmail.com                |
-| Johan Klokkhammer Helsing   | johanhelsing                | johanhelsing@gmail.com                |
-| Jasper v. Blanckenburg      | jazzpi                      | jasper@mezzo.de                       |
-| Alexej Disterhoft           | nobbs                       | disterhoft@uni-mainz.de               |
-| Sebastian Brodehl           | sbrodehl                    | sbrodehl@students.uni-mainz.de        |
-| Gaith Hallak                | ghallak                     | gaithhallak@gmail.com                 |
-| Pierre Hallot               | Hallot                      | hallotpierre@gmail.com                |
-| Vicken Simonian             | vsimon                      | vsimon@gmail.com                      |
-| Kevin Peters                | kev946                      | klee946@gmail.com                     |
-| Andreas Schulz              | Longhanks                   | andi.schulz@me.com                    |
-| Shaleen Jain                | Shalzz                      | shaleen.jain95@gmail.com              |
-| Johannes Walcher            | tomatower                   | johannes.walcher@stusta.de            |
-| Akritas Akritidis           | MaanooAk                    | akritasak@gmail.com                   |
-| Edgard Mota                 | edgardmota                  | edgardmota@gmail.com                  |
-| Boris Dušek                 | dusek                       | me@dusek.me                           |
-| Michael Droogleever         | droogmic                    | droogmic@gmail.com                    |
-| Christoph Heine             | heinezen                    | heinezen@hotmail.de                   |
-| Marco Savelli               | Piruzzolo                   | svlmrc@gmail.com                      |
-| Yvan Burrie                 | yvan-burrie                 | yvan.burrie@hotmail.com               |
-| Martin Bernardi             | martinber                   | martinbernardi@openmailbox.org        |
-| Erik Griese                 | citron0xa9                  | erik.griese@yahoo.de                  |
+| Full name                   | aliases                     | E-Mail                                            |
+|-----------------------------|-----------------------------|---------------------------------------------------|
+| Jonas Jelten                | TheJJ                       | jj à sft dawt mx                                  |
+| Michael Enßlin              | mic_e                       | michael à ensslin dawt cc                         |
+| Andre Kupka                 | freakout                    | kupka à in dawt tum dawt de                       |
+| Frank Schmidt               | gellardo                    | rubiccuber à googlemail dawt com                  |
+| Markus Otto                 | zuntrax                     | otto à fs dawt tum dawt de                        |
+| Sascha Vincent Kurowski     | svkurowski                  | svkurowski à gmail dawt com                       |
+| James Mintram               | JimmyJazz                   | jamesmintram à gmail dawt com                     |
+| Martin McGrath              | MartinMcGrath               | mcgrath dawt martin à gmail dawt com              |
+| René Kooi                   | goto-bus-stop               | rene à kooi dawt me                               |
+| Markus Elfring              | elfring                     | elfring à users dawt sourceforge dawt net         |
+| Jimmy Berry                 | boombatower                 | jimmy à boombatower dawt com                      |
+| João Roque                  | joaoroque                   | joaoroque à gmail dawt com                        |
+| Julius Michaelis            | jcaesar                     | gitter à liftm dawt de                            |
+| Katharina Bogad             | delirium, masterofjellyfish | bogad à cs dawt tum dawt edu                      |
+| Oliver Fawcett-Griffiths    | ollyfg                      | olly à ollyfg dawt com                            |
+| Ross Murray                 | rossmurray                  | rm à egoorb dawt com                              |
+| Alexandre Arpin             | AlexandreArpin              | arpin dawt alexandre à gmail dawt com             |
+| Henry Snoek                 | snoek09                     | snoek09 à gmail dawt com                          |
+| Gabriel Scherer             | gasche                      | gasche dawt dylc à gmail dawt com                 |
+| Austin Eyler                | awestin1                    | awestin1 à gmail dawt com                         |
+| Francisco Demartino         | franciscod                  | demartino dawt francisco à gmail dawt com         |
+| Peter Piwowarski            | oldlaptop                   | oldlaptop654 à aol dawt com                       |
+| Charles Pigott              | LordAro                     | charlespigott à googlemail dawt com               |
+| Andrew Eikum                | ColdPie1                    | coldpies à gmail dawt com                         |
+| Michael Sebastiyan          | BugExplorer                 | sebastiyan dawt michael à outlook dawt com        |
+| Adam Miartus                | miartad                     | adam dawt miartus à gmail dawt com                |
+| Benoît Legat                | blegat                      | benoit dawt legat à gmail dawt com                |
+| James Hagborg               | blucoat                     | jameshagborg à gmail dawt com                     |
+| Prashanth Jonnala           | jprashanth                  | prashanth dawt neo à gmail dawt com               |
+| Jonathan Remnant            | Jon0                        | jono4728 à gmail dawt com                         |
+| Sam Schetterer              | schets                      | samschet à gmail dawt com                         |
+| Georg Kilzer                | leper                       | leper à wildfiregames dawt com                    |
+| Florian Erler               | ethon                       | ethon à ethon dawt cc                             |
+| Michał Janiszewski          | janisozaur                  | janisozaur+openage à gmail dawt com               |
+| Lautaro Nahuel De León      | lndl                        | laudleon à gmail dawt com                         |
+| Robin Kreis                 | rkreis                      | r dawt kreis à uni-bremen dawt de                 |
+| Shion Ryuu                  | shion                       | shionryuu à outlook dawt com                      |
+| Jonas Borchelt              | riotjones                   | jonasbr-github à bellatrix dawt uberspace dawt de |
+| Jon Gelderloos              | jgelderloos                 | jgelderloos à gmail dawt com                      |
+| Emmanuel Gil Peyrot         | Link Mauve                  | linkmauve à linkmauve dawt fr                     |
+| Danilo Bargen               | dbrgn                       | mail à dbrgn dawt ch                              |
+| Niklas Fiekas               | niklasf                     | niklas dawt fiekas à backscattering dawt de       |
+| Charles Gould               | charlesrgould               | charles dawt r dawt gould à gmail dawt com        |
+| Wilco Kusee                 | detrumi                     | wilcokusee à gmail dawt com                       |
+| Sreejith R                  | sreejithr                   | sreejith dawt r44 à gmail dawt com                |
+| Jens Feodor Nielsen         | jfeo                        | xws747 à alumni dawt ku dawt dk                   |
+| Franz-Niclas Muschter       | fm                          | fm à stusta dawt net                              |
+| Valentin Gagarin            | frickler01                  | valentin à fricklerhandwerk dawt de               |
+| Emmanouil Kampitakis        | madonius                    | emmanouil à kampitakis dawt de                    |
+| Thomas Oltmann              | tomolt                      | thomas dawt oltmann dawt hhg à gmail dawt com     |
+| Miguel Kasparick            | miguellissimo               | miguellissimo à gmail dawt com                    |
+| Darren Strash               | darrenstrash                | darren dawt strash à gmail dawt com               |
+| Kyle Robbertze              | paddatrapper                | paddatrapper à gmail dawt com                     |
+| Jonathan Biegert            | azrdev                      | azrdev à qrdn dawt de                             |
+| Hadrien Mary                | hadim                       | hadrien dawt mary à gmail dawt com                |
+| Sachin Kelkar               | s4chin                      | sachinkel19 à gmail dawt com                      |
+| Camillo Dell'mour           | spjoe                       | cdellmour à gmail dawt com                        |
+| Timothee Behety             | tim2000                     | tim dawt behety à gmail dawt com                  |
+| Vyacheslav Davydov          | tombouctou                  | vissi à vissi dawt su                             |
+| Lyle Nel                    | lyle-nel                    | pt20100938 à gmail dawt com                       |
+| Michael Kilby               | kilbyjmichael               | kilbyjmichael à gmail dawt com                    |
+| Michal Kováč                | mirelon                     | miso à github dawt ksp dawt sk                    |
+| Patrik Stutz                | VanCoding                   | patrik dawt stutz à gmail dawt com                |
+| James McMurray              | jamesmcm                    | jamesmcm03 à gmail dawt com                       |
+| Łukasz Raszka               | lukky513                    | lukky513 à gmail dawt com                         |
+| Martin Castillo             | castilma                    | castilma à uni-bremen dawt de                     |
+| Volodymyr Samokhatko        | ChipmunkV                   | velorums à gmail dawt com                         |
+| Guillaume Desquesnes        | elnabo                      | g dawt desquesnes à gmail dawt com                |
+| Johan Klokkhammer Helsing   | johanhelsing                | johanhelsing à gmail dawt com                     |
+| Jasper v. Blanckenburg      | jazzpi                      | jasper à mezzo dawt de                            |
+| Alexej Disterhoft           | nobbs                       | disterhoft à uni-mainz dawt de                    |
+| Sebastian Brodehl           | sbrodehl                    | sbrodehl à students dawt uni-mainz dawt de        |
+| Gaith Hallak                | ghallak                     | gaithhallak à gmail dawt com                      |
+| Pierre Hallot               | Hallot                      | hallotpierre à gmail dawt com                     |
+| Vicken Simonian             | vsimon                      | vsimon à gmail dawt com                           |
+| Kevin Peters                | kev946                      | klee946 à gmail dawt com                          |
+| Andreas Schulz              | Longhanks                   | andi dawt schulz à me dawt com                    |
+| Shaleen Jain                | Shalzz                      | shaleen dawt jain95 à gmail dawt com              |
+| Johannes Walcher            | tomatower                   | johannes dawt walcher à stusta dawt de            |
+| Akritas Akritidis           | MaanooAk                    | akritasak à gmail dawt com                        |
+| Edgard Mota                 | edgardmota                  | edgardmota à gmail dawt com                       |
+| Boris Dušek                 | dusek                       | me à dusek dawt me                                |
+| Michael Droogleever         | droogmic                    | droogmic à gmail dawt com                         |
+| Christoph Heine             | heinezen                    | heinezen à hotmail dawt de                        |
+| Marco Savelli               | Piruzzolo                   | svlmrc à gmail dawt com                           |
+| Yvan Burrie                 | yvan-burrie                 | yvan dawt burrie à hotmail dawt com               |
+| Martin Bernardi             | martinber                   | martinbernardi à openmailbox dawt org             |
+| Erik Griese                 | citron0xa9                  | erik dawt griese à yahoo dawt de                  |
+| Alex Birch                  | Birch-san                   | vengeance dawt m dawt x+openage à gmail dawt com  |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

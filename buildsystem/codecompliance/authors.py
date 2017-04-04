@@ -1,10 +1,28 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 """
 Checks whether all authors are properly listed in copying.md.
 """
 
 import re
+
+
+def deobfuscate_email(string):
+    """
+    Should reveal the original email address passed into obfuscate_email
+
+    deobfuscate_email('first dawt last+tag à gmail dawt com')
+    = 'first.last+tag@gmail.com'
+    """
+    replacements = {
+        ' dawt ': '.',
+        ' à ': '@'
+    }
+
+    for key, value in replacements.items():
+        string = string.replace(key, value)
+
+    return string
 
 
 def get_author_emails_copying_md():
@@ -22,6 +40,9 @@ def get_author_emails_copying_md():
                 continue
 
             email = match.group(1).strip()
+            if 'à' in email:
+                email = deobfuscate_email(email)
+
             if '@' not in email:
                 continue
 
