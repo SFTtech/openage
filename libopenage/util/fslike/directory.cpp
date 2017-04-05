@@ -10,6 +10,11 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#ifdef __APPLE__
+#include <time.h>
+#include <sys/time.h>
+#endif
+
 #include "./native.h"
 #include "../file.h"
 #include "../filelike/native.h"
@@ -203,7 +208,20 @@ bool Directory::touch(const Path::parts_t &parts) {
 	close(fd);
 
 	// update the timestamp
-	return utimensat(AT_FDCWD, path.c_str(), nullptr, 0) == 0;
+#ifdef __APPLE__
+	struct timespec ts[2];
+	clock_gettime(CLOCK_REALTIME, ts);
+	struct timeval tv[2];
+	tv[0].tv_sec = ts[0].tv_sec;
+	tv[0].tv_usec = ts[0].tv_nsec*1000;
+	tv[1].tv_sec = ts[1].tv_sec;
+	tv[1].tv_usec = ts[1].tv_nsec*1000;
+	int result = utimes(path.c_str(), tv);
+#else
+	int result = utimensat(AT_FDCWD, path.c_str(), nullptr, 0) == 0;
+#endif
+
+	return result;
 }
 
 
@@ -217,7 +235,11 @@ int Directory::get_mtime(const Path::parts_t &parts) {
 
 	// return the mtime
 	if (std::get<1>(stat_result) == 0) {
+#ifdef __APPLE__
+		return std::get<0>(stat_result).st_mtimespec.tv_sec;
+#else
 		return std::get<0>(stat_result).st_mtim.tv_sec;
+#endif
 	}
 
 	throw Error{ERR << "can't get mtime"};
