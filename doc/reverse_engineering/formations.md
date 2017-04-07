@@ -18,7 +18,7 @@ When talking about formations, one has to differentiate between
 
 Players can select any units they own and add them to their selection. Therefore, a selection can consist of varying unit types and allows mixing of buildings, military units, villagers and others. Not all of these units are capable of forming a formation. Buildings are excluded from formations because they can't move and so are unpacked trebuchets. Villagers, trade carts and fishing ships will not be part of any formation. If they are moved, they don't abide Pottinger's rules and will move to the target at their normal speed while each of them takes their own path. Hence, when villagers are part of a selection of military units, the military units will form a formation and then move to the target while the villagers will independently move there.
 
-A formation consists of 4 subformations. Which unit type belongs to which subformation is hardcoded nto the game. A quick overview is shown below. The `^`-symbol shows the front of the formation.
+A formation consists of 4 subformations. Which unit type belongs to which subformation is hardcoded into the game. A quick overview is shown below. The `^`-symbol shows the front of the formation.
 
 ```
 ...................
@@ -30,7 +30,7 @@ A formation consists of 4 subformations. Which unit type belongs to which subfor
 ...................
 ```
 
-Every military unit in the game is sorted into one of these subformations depending on their `GroupID` (in some cases their `LineID`). Bear in mind, that the descriptions next to the subformations in the above figure are not fully accurate. For example, *cavalry archers* are part of the "Ranged"-subformation instead of the "Cavalry"-subformation. The figure below shows to which subformation a `GroupID` belongs.
+Every military unit in the game is sorted into one of these subformations depending on their `GroupID` (in some cases their `LineID`). Bear in mind, that the descriptions next to the subformations in the above figure are not fully accurate. For example, *cavalry archers* are part of the "Ranged"-subformation instead of the "Cavalry"-subformation. To avoid confusion specific subformations will from now on be referenced by their index (e.g. `subformation[1]` equals "Cavalry"-subformation) The figure below shows to which subformation a `GroupID` belongs.
 
 ```
 ...................
@@ -47,16 +47,29 @@ As you can see, the only exception to sorting by `GroupID` is the saboteur. Ship
 
 Formations have a formation type which determines how the units are generally ordered (see **Formation Types**). The subformations inherit their formation type from the parent formation.
 
+### Ship Formations
+
+Ships use the same formation system and are sorted into a subformation by similar rules. Instead of using `GroupID`, `LineID` determines which subformation is chosen (probably because all battle ships have the same `GroupID`). The figure below shows the subformations to which each class of ships is passed.
+
+```
+WARNING: These are LineIDs not GroupIDs
+...................
+...^^^^^^^.........
+1..Cavalry......... -294
+2..Infantry (melee) -293
+3..Ranged.......... -283, -284, -292
+4..Support......... -285
+...................
+5..Else............ Admiral Yun Shi (UnitID: 844)
+```
+
+Because the same formation system is used for land and sea units it is possible to mix them inside a formation. This behavior can be seen when one selects ships and land units and then sends them in shallow water.
+
 ## Subformations
 
 #### Individual Subformation
 
 * Row Count
-
-#### Influence of Other Subformations
-
-* Row Count
-* Width of other formations
 
 ### Mixing Unit Types
 
@@ -68,6 +81,11 @@ Formations have a formation type which determines how the units are generally or
 
 * is determined by the widest Unit
 * applied to all units inside subformations
+
+#### Influence of Other Subformations
+
+* Row Count
+* Width of other formations
 
 ## Formation Types
 
@@ -110,26 +128,6 @@ Formations have a formation type which determines how the units are generally or
 
 * is chosen if the move order is placed more than 10 tiles away.
 * is like line formation turned 90 degrees
-
-## Ship Formations
-
-### Structure
-
-```
-WARNING: These are LineIDs not GroupIDs
-...................
-...^^^^^^^.........
-1..Cavalry......... -294
-2..Infantry (melee) -293
-3..Ranged.......... -283, -284, -292
-4..Support......... -285
-...................
-5..Else............ Admiral Yun Shi (UnitID: 844)
-```
-
-### Mixing Sea and Land Units
-
-* is possible (can only be seen in shallow water)
 
 ## Algorithmic solutions
 
