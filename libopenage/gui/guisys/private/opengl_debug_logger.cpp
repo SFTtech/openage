@@ -5,6 +5,14 @@
 #include <QOpenGLContext>
 #include <QOpenGLFunctions_4_4_Core>
 
+#ifdef __APPLE__
+// from https://www.khronos.org/registry/OpenGL/api/GL/glext.h
+#define GL_DEBUG_CALLBACK_FUNCTION        0x8244
+#define GL_DEBUG_OUTPUT_SYNCHRONOUS       0x8242
+#define GL_DEBUG_TYPE_ERROR               0x824C
+#define GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR  0x824E
+#endif
+
 namespace qtsdl {
 
 gl_debug_parameters get_current_opengl_debug_parameters(const QOpenGLContext &current_source_context)  {
