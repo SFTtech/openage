@@ -8,6 +8,7 @@
 #include <time.h>
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 #include "config.h"
 #include "error/error.h"
@@ -22,9 +23,9 @@
 #include "texture.h"
 #include "util/color.h"
 #include "util/fps.h"
+#include "util/opengl.h"
 #include "util/strings.h"
 #include "util/timer.h"
-
 
 /**
  * Main openage namespace to store all things that make the have to do with the game.
@@ -160,7 +161,7 @@ Engine::Engine(const util::Path &root_dir,
 	// what gets drawn last is displayed on top.
 	glDisable(GL_DEPTH_TEST);
 
-	this->window = std::make_unique<renderer::Window>(windowtitle);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	//// -- initialize the gui
 	util::Path qml_root = this->root_dir / "assets" / "qml";
@@ -204,7 +205,7 @@ Engine::Engine(const util::Path &root_dir,
 		this->drawing_huds.value = !this->drawing_huds.value;
 	});
 	global_input_context.bind(action.get("SCREENSHOT"), [this](const input::action_arg_t &) {
-        this->get_screenshot_manager()->save_screenshot(this->get_coord_data()->window_size);
+		this->get_screenshot_manager().save_screenshot();
 	});
 	global_input_context.bind(action.get("TOGGLE_DEBUG_OVERLAY"), [this](const input::action_arg_t &) {
 		this->drawing_debug_overlay.value = !this->drawing_debug_overlay.value;
@@ -253,6 +254,9 @@ bool Engine::on_resize(coord::window new_size) {
 
 	// update engine window size
 	this->coord.window_size = new_size;
+
+	// tell the screenshot manager about the new size
+	this->screenshot_manager.window_size = new_size;
 
 	// update camgame window position, set it to center.
 	this->coord.camgame_window = this->coord.window_size / 2;
@@ -431,7 +435,7 @@ void Engine::loop() {
 		}
 		glPopMatrix();
 
-		//	this->renderer->check_error();
+		util::gl_check_error();
 
 		glPushMatrix(); {
 			// the hud coordinate system is automatically established
@@ -440,6 +444,7 @@ void Engine::loop() {
 
 			if (this->drawing_debug_overlay.value) {
 				this->draw_debug_overlay();
+
 			}
 
 			if (this->drawing_huds.value) {
@@ -455,7 +460,7 @@ void Engine::loop() {
 		}
 		glPopMatrix();
 
-		//this->renderer->check_error();
+		util::gl_check_error();
 
 		this->profiler.end_measure("rendering");
 
@@ -463,7 +468,7 @@ void Engine::loop() {
 
 		// the rendering is done
 		// swap the drawing buffers to actually show the frame
-		this->window->swap();
+		SDL_GL_SwapWindow(window);
 
 		if (this->ns_per_frame != 0) {
 			uint64_t ns_for_current_frame = cap_timer.getval();
@@ -472,7 +477,6 @@ void Engine::loop() {
 			}
 		}
 
-		// vsync wait time is over.
 		this->profiler.end_measure("idle");
 
 		this->profiler.end_frame_measure();
@@ -515,8 +519,8 @@ audio::AudioManager &Engine::get_audio_manager() {
 	return this->audio_manager;
 }
 
-ScreenshotManager *Engine::get_screenshot_manager() {
-	return this->screenshot_manager.get();
+ScreenshotManager &Engine::get_screenshot_manager() {
+	return this->screenshot_manager;
 }
 
 input::ActionManager &Engine::get_action_manager() {

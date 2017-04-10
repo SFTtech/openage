@@ -9,6 +9,8 @@
 
 namespace openage {
 
+class Engine;
+
 /**
  * superclass for all possible drawing operations in the game.
  */

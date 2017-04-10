@@ -33,7 +33,6 @@
 #include "util/strings.h"
 #include "screenshot.h"
 
-
 namespace openage {
 
 namespace gui {
@@ -41,29 +40,24 @@ class GUI;
 }
 
 namespace renderer {
+
 class Font;
 class FontManager;
 class TextRenderer;
-class Renderer;
-class Window;
-} // openage::renderer
 
-namespace job {
-class JobManager;
-} // openage::job
+} // openage::renderer
 
 class DrawHandler;
 class TickHandler;
 class ResizeHandler;
 
-class Font;
+class Generator;
+class GameSpec;
 class GameMain;
 
-class GameSpec;
-class Generator;
-class Player;
-class ScreenshotManager;
-
+namespace gui {
+class GuiItemLink;
+} // openage::gui
 
 
 /**
@@ -243,7 +237,7 @@ public:
 	/**
 	* return this engine's screenshot manager.
 	*/
-	ScreenshotManager *get_screenshot_manager();
+	ScreenshotManager &get_screenshot_manager();
 
 	/**
 	 * return this engine's action manager.
@@ -438,7 +432,7 @@ private:
 	 * This is actually a void * but sdl2 thought it was a good idea to
 	 * name it like a differently.
 	 */
-	std::unique_ptr<renderer::Window> window;
+	SDL_GLContext glcontext;
 
 	/**
 	 * the gui binding
@@ -446,9 +440,9 @@ private:
 	std::unique_ptr<gui::GUI> gui;
 
 	/*
-	 * The renderer. Accepts all tasks to be drawn on screen.
+	 * the engines profiler
 	 */
-	std::unique_ptr<renderer::Renderer> renderer;
+	util::Profiler profiler;
 
 	/**
 	 * ttf font loading manager
@@ -482,11 +476,6 @@ public:
 	 * Link to the Qt GUI.
 	 */
 	gui::GuiItemLink *gui_link;
-
-	/**
-	 * the engines profiler
-	 */
-	util::Profiler profiler;
 };
 
 } // namespace openage
