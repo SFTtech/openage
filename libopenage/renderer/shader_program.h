@@ -10,12 +10,12 @@
 namespace openage {
 namespace renderer {
 
-class UniformInput {};
+class UniformInput;
 class Texture;
 
 class ShaderProgram {
 private:
-	void update_uniform_input(UniformInput *input) {}
+	void update_uniform_input(UniformInput*) {}
 
 	void update_uniform_input(UniformInput *input, const char *unif, int32_t val) {
 		this->set_i32(input, unif, val);
@@ -68,9 +68,8 @@ public:
 
 	void new_geometry(/*geometry_t*/) {}
 
-private:
+protected:
 	virtual std::unique_ptr<UniformInput> new_unif_in() = 0;
-	virtual bool has_unif(const char*) = 0;
 	virtual void set_i32(UniformInput*, const char*, int32_t) = 0;
 	virtual void set_u32(UniformInput*, const char*, uint32_t) = 0;
 	virtual void set_f32(UniformInput*, const char*, float) = 0;

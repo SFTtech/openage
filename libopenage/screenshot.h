@@ -9,9 +9,6 @@
 #include "coord/window.h"
 
 namespace openage {
-namespace renderer {
-class Renderer;
-}
 
 namespace job {
 class JobManager;
@@ -22,38 +19,32 @@ public:
 	/**
 	 * Initializes the screenshot manager with the given job manager.
 	 */
-    ScreenshotManager(job::JobManager* job_mgr, renderer::Renderer *renderer);
+	ScreenshotManager(job::JobManager* job_mgr);
 
 	~ScreenshotManager();
 
-    /**
-     * To be called to save a screenshot.
-     */
-    void save_screenshot();
+	/** To be called to save a screenshot. */
+	void save_screenshot(coord::window size);
+
+	/** To be called by the job manager. Returns true on success, false otherwise. */
+	bool encode_png(std::shared_ptr<uint8_t> pxdata,
+	                coord::window size);
+
 
 private:
-	/**
-	 * To be called to get the next screenshot filename into the array.
-	 */
+
+	/** to be called to get the next screenshot filename into the array */
 	std::string gen_next_filename();
 
-	/**
-	 * Contains the number to be in the next screenshot filename.
-	 */
+	/** contains the number to be in the next screenshot filename */
 	unsigned count;
 
-	/**
-	 * Contains the last time when a screenshot was taken.
-	 */
+	/** contains the last time when a screenshot was taken */
 	std::time_t last_time;
 
 	/** the job manager this screenshot manager uses */
 	job::JobManager *job_manager;
 
-	/**
-	 * The renderer where to take screenshots from.
-	 */
-	class renderer::Renderer *renderer;
 };
 
 } // openage

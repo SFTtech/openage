@@ -1,37 +1,34 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_OPENGL_TEXTURE_H_
-#define OPENAGE_RENDERER_OPENGL_TEXTURE_H_
+#pragma once
 
 #include <epoxy/gl.h>
 
 #include "../texture.h"
 
+
 namespace openage {
 namespace renderer {
+
+namespace resources {
+class TextureData;
+}
+
 namespace opengl {
 
 /**
- * An OpenGL texture.
+ * A handle to an OpenGL texture.
  */
-class Texture : public renderer::Texture {
+class GlTexture : public Texture {
 public:
-	Texture(renderer::Context *context, const TextureData &data);
-	~Texture();
+	GlTexture(const resources::TextureData&);
+	~GlTexture();
 
-	/**
-	 * Bind this texture to the given slot id.
-	 */
-	void bind_to(int slot) const override;
-
-protected:
+private:
 	/**
 	 * OpenGL handle id.
 	 */
 	GLuint id;
 };
 
-
 }}} // openage::renderer::opengl
-
-#endif

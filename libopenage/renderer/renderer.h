@@ -18,16 +18,24 @@ namespace resources {
 // In terms of the graphics pipeline, there is no difference between APIs. The difference can be contained internally.
 // ShaderProgram is API-independent.
 class ShaderProgram;
-class UniformInput {};
 class Geometry;
 class Texture;
 
+class UniformInput {
+protected:
+	UniformInput() {}
 
-class RenderTarget {
 public:
-	virtual ~RenderTarget();
+	virtual ~UniformInput() {}
 };
 
+class RenderTarget {
+protected:
+	RenderTarget() {}
+
+public:
+	virtual ~RenderTarget() {}
+};
 
 
 // each renderable shoud be UniformInput, Geometry, State
@@ -36,6 +44,7 @@ public:
 // instancing for same shader & mesh
 struct Renderable {
 	UniformInput const *unif_in;
+	// can be nullptr to only set uniforms but do not perform draw call
 	Geometry const *geometry;
 	bool alpha_blending;
 	bool depth_test;

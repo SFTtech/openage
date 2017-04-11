@@ -1,1 +1,2 @@
 -std=c++14
+-Wno-pragma-once-outside-header

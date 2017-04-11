@@ -1,5 +1,6 @@
 add_sources(libopenage
   tests.cpp
+  texture.cpp
 	window.cpp
   text.cpp
   color.cpp

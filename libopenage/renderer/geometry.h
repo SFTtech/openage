@@ -14,6 +14,7 @@ enum class geometry_t {
 };
 
 class Geometry {
+public:
 	/// The default constructor makes a quad.
 	Geometry() : type(geometry_t::quad) {}
 

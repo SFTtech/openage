@@ -9,7 +9,6 @@
 
 #include <SDL2/SDL.h>
 
-#include "opengl/context_provider.h"
 #include "opengl/context.h"
 #include "../coord/window.h"
 

@@ -7,7 +7,6 @@
 #include <SDL2/SDL.h>
 
 #include "context.h"
-#include "context_provider.h"
 #include "../renderer.h"
 #include "shader_program.h"
 

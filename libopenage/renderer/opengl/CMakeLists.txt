@@ -1,6 +1,6 @@
 add_sources(libopenage
-	context.cpp
-	renderable.cpp
+  context.cpp
   renderer.cpp
   shader_program.cpp
+  texture.cpp
 )

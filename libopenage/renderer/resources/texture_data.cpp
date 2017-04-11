@@ -7,15 +7,51 @@
 
 #include "../../log/log.h"
 #include "../../error/error.h"
-#include "../../util/file.h"
+#include "../../util/csv.h"
 
 
 namespace openage {
 namespace renderer {
 namespace resources {
 
-TextureData TextureData::load_from_file(std::experimental::string_view filename, bool use_metafile) {
-	SDL_Surface *surface = IMG_Load(filename.data());
+pixel_format TextureInfo::get_format() const {
+	return this->format;
+}
+
+std::pair<int32_t, int32_t> TextureInfo::get_size() const {
+	return std::make_pair(this->w, this->h);
+}
+
+size_t TextureInfo::get_subtexture_count() const {
+	return this->subtextures.size();
+}
+
+const gamedata::subtexture& TextureInfo::get_subtexture(size_t subid) const {
+	if (subid < this->subtextures.size()) {
+		return this->subtextures[subid];
+	}
+	else {
+		throw Error(MSG(err) << "Unknown subtexture requested: " << subid);
+	}
+}
+
+std::tuple<float, float, float, float> TextureInfo::get_subtexture_coordinates(size_t subid) const {
+	auto tx = this->get_subtexture(subid);
+	return std::make_tuple(
+		((float)tx.x)           / this->w,
+		((float)(tx.x + tx.w)) / this->w,
+		((float)tx.y)           / this->h,
+		((float)(tx.y + tx.h)) / this->h
+	);
+}
+
+std::pair<int, int> TextureInfo::get_subtexture_size(size_t subid) const {
+	auto subtex = this->get_subtexture(subid);
+	return std::make_pair(subtex.w, subtex.h);
+}
+
+TextureData::TextureData(const char *filename, bool use_metafile) {
+	SDL_Surface *surface = IMG_Load(filename);
 
 	if (!surface) {
 		throw Error(MSG(err) <<
@@ -31,29 +67,28 @@ TextureData TextureData::load_from_file(std::experimental::string_view filename,
 		throw Error(MSG(err) << "Texture " << filename << " is not in RGB or RGBA format.");
 	}
 
-	pixel_format format;
+	auto& info = this->info;
 	if (fmt.Amask == 0) {
 		if (fmt.BytesPerPixel != 3) {
 			throw Error(MSG(err) << "Texture " << filename << " is in an unsupported RGB format.");
 		}
 
-		format = pixel_format::rgb8;
+		info.format = pixel_format::rgb8;
 	}
 	else {
-		format = pixel_format::rgba8;
+		info.format = pixel_format::rgba8;
 	}
 
-	auto w = surface->w;
-	auto h = surface->h;
+	info.w = surface->w;
+	info.h = surface->h;
 
 	size_t data_size = surface->format->BytesPerPixel * surface->w * surface->h;
 
 	// copy pixel data from surface
-	std::vector<uint8_t> data(data_size);
-	memcpy(data.data(), surface->pixels, data_size);
+	this->data = std::vector<uint8_t>(data_size);
+	memcpy(this->data.data(), surface->pixels, data_size);
 	SDL_FreeSurface(surface);
 
-	std::vector<gamedata::subtexture> subtextures;
 	if (use_metafile) {
 		// change the suffix to .docx (lol)
 		std::string meta_filename(filename);
@@ -72,46 +107,27 @@ TextureData TextureData::load_from_file(std::experimental::string_view filename,
 		log::log(MSG(info) << "Loading meta file: " << meta_filename);
 
 		// get subtexture information by meta file exported by script
-		util::read_csv_file<gamedata::subtexture>(meta_filename, subtextures);
+		// TODO wot
+		//util::File file(meta_filename);
+		//info.subtextures = util::read_csv_file<gamedata::subtexture>(file);
 	}
 	else {
 		// we don't have a texture description file.
 		// use the whole image as one texture then.
-		gamedata::subtexture s{0, 0, w, h, w/2, h/2};
+		gamedata::subtexture s{0, 0, info.w, info.h, info.w/2, info.h/2};
 
-		subtextures.push_back(s);
+		info.subtextures.push_back(s);
 	}
-
-	return TextureData(w, h, format, std::move(data), std::move(subtextures));
 }
 
-TextureData::TextureData(uint32_t width, uint32_t height, pixel_format fmt, uint8_t *data, std::vector<gamedata::subtexture> &&subs)
-	: format{fmt}
-	, w{width}
-	, h{height}
-	, subtextures(std::move(subs))
-{
-		size_t data_size = this->w * this->h;
-		switch (format) {
-		case pixel_format::rgb8:
-			data_size *= 3;
-			break;
-		case pixel_format::rgba8:
-			data_size *= 4;
-			break;
-		default:
-			throw Error(MSG(err) << "Unknown pixel format.");
-		}
-
-		this->data = std::vector<uint8_t>(data_size);
-		memcpy(this->data.data(), data, data_size);
+const TextureInfo& TextureData::get_info() const {
+	return this->info;
 }
 
-TextureData::TextureData(uint32_t width, uint32_t height, pixel_format fmt, std::vector<uint8_t> &&data, std::vector<gamedata::subtexture> &&subs)
-	: format{fmt}
-	, w{width}
-	, h{height}
-	, data(std::move(data))
-	, subtextures(std::move(subs)) {}
+const uint8_t *TextureData::get_data() const {
+	return this->data.data();
+}
 
 }}}
+
+

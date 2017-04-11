@@ -14,7 +14,6 @@
 #include "../../util/compiler.h"
 #include "../../util/file.h"
 #include "../../util/strings.h"
-#include "renderable.h"
 
 
 namespace openage {
@@ -63,26 +62,33 @@ static gl_uniform_t glsl_str_to_type(std::experimental::string_view str) {
 		throw Error(MSG(err) << "Unsupported GLSL uniform type " << str);
 }
 
-void parse_glsl(std::unordered_map<std::string, gl_uniform_t> &uniforms, std::experimental::string_view code) {
+void parse_glsl(std::map<std::string, GlUniform> &uniforms, const char *code) {
 	// this will match all uniform declarations
 	std::regex unif_r("uniform\\s+\\w+\\s+\\w+(?=\\s*;)");
 	std::regex const word_r("\\w+");
 
-	std::smatch results;
-	std::string s(code.data());
-	if (regex_search(s, results, unif_r)) {
-		for (std::string result : results) {
+	std::cmatch results;
+	if (regex_search(code, results, unif_r)) {
+		for (auto result : results) {
+			std::string sresult(result);
+
 			// remove "uniform"
-			result = result.substr(7);
+			sresult = sresult.substr(7);
 
 			std::smatch words;
-			regex_search(result, words, word_r);
+			regex_search(sresult, words, word_r);
 
 			// first word is the type
 			gl_uniform_t type = glsl_str_to_type(words.str(0));
 
 			// second word is the uniform name
-			uniforms.emplace(words.str(1), type);
+			uniforms.insert(std::pair<std::string, GlUniform>(
+				                words.str(1),
+				                GlUniform {
+					                type,
+					                0,
+				                }
+			                ));
 		}
 	}
 }
@@ -115,7 +121,7 @@ static GLuint compile_shader(const resources::ShaderSource& src) {
 	}
 
 	// load shader source
-	const char* data = src.source().data();
+	const char* data = src.source();
 	glShaderSource(id, 1, &data, 0);
 
 	// compile shader source
@@ -178,10 +184,9 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 		throw Error(MSG(err) << "Unable to create OpenGL shader program. WTF?!");
 	}
 
-	std::unordered_map<std::string, gl_uniform_t> uniforms;
 	std::vector<GLuint> shaders;
 	for (auto src : srcs) {
-		parse_glsl(uniforms, src.source());
+		parse_glsl(this->uniforms, src.source());
 		shaders.push_back(compile_shader(src));
 	}
 
@@ -202,26 +207,14 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 	}
 
 	// find the location of every uniform in the shader program
-	for (auto pair : uniforms) {
+	for (auto& pair : this->uniforms) {
 		GLint loc = glGetUniformLocation(this->id, pair.first.data());
 
 		if (unlikely(loc == -1)) {
 			throw Error(MSG(err) << "Could not determine location of OpenGL shader uniform that was found before. WTF?!");
 		}
 
-		GlUniform unif {
-			pair.second,
-			loc
-		};
-
-		this->uniforms.emplace(pair.first, unif);
-	}
-
-	// The uniform values are ordered in the byte buffer by however std::map orders their names
-	size_t offset = 0;
-	for (auto &pair : this->uniforms) {
-		pair.second.offset = offset;
-		offset += uniform_size(pair.second.type);
+		pair.second.location = loc;
 	}
 
 	log::log(MSG(info) << "Created OpenGL shader program");
@@ -251,13 +244,12 @@ void GlShaderProgram::use() const {
 	glUseProgram(this->id);
 }
 
-void GlShaderProgram::execute_with(Renderable const& obj) {
-	assert(obj.unif_in->program == this);
+void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry *geom) {
+	assert(unif_in->program == this);
 
+	this->use();
 
-	auto const& unif_in = *static_cast<GlUniformInput const*>(obj.unif_in);
-	uint8_t const* data = unif_in.update_data.data();
-
+	uint8_t const* data = unif_in->update_data.data();
 	for (auto pair : unif_in->update_offs) {
 		uint8_t const* ptr = data + pair.second;
 		auto loc = this->uniforms[pair.first].location;
@@ -292,7 +284,7 @@ void GlShaderProgram::execute_with(Renderable const& obj) {
 		}
 	}
 
-	// TODO read obj.geometry and obj.blend + family
+	// TODO read geom and obj.blend + family
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
@@ -302,59 +294,60 @@ std::unique_ptr<UniformInput> GlShaderProgram::new_unif_in() {
 	return std::unique_ptr<UniformInput>(in);
 }
 
-bool GlShaderProgram::has_unif(const char* name) {
+bool GlShaderProgram::has_uniform(const char* name) {
 	return this->uniforms.count(name) == 1;
 }
 
 void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* val) {
+	GlUniformInput *unif_in = static_cast<GlUniformInput*>(in);
 	// will throw if uniform doesn't exist, that's ok
 	// TODO rethrow with nicer message?
 	auto const& unif_data = this->uniforms.at(unif);
 
 	size_t size = uniform_size(unif_data.type);
 
-	if (in->update_offs.count(unif) == 1) {
+	if (unif_in->update_offs.count(unif) == 1) {
 		// already wrote to this uniform since last upload
-		size_t off = update_offs[unif];
-		memcpy(in->update_data.data() + off, val, size);
+		size_t off = unif_in->update_offs[unif];
+		memcpy(unif_in->update_data.data() + off, val, size);
 	}
 	else {
-		size_t prev_size = in->update_data.size();
-		in->update_data.resize(prev_size + size);
-		memcpy(in->update_data.data() + prev_size, val, size);
-		in->update_offs.emplace(unif, prev_size);
+		size_t prev_size = unif_in->update_data.size();
+		unif_in->update_data.resize(prev_size + size);
+		memcpy(unif_in->update_data.data() + prev_size, val, size);
+		unif_in->update_offs.emplace(unif, prev_size);
 	}
 }
 
-void GlShaderProgram::set_i32(UnifomInput *in, const char *unif, int32_t val) {
+void GlShaderProgram::set_i32(UniformInput *in, const char *unif, int32_t val) {
 	this->set_unif(in, unif, &val);
 }
 
-void GlShaderProgram::set_u32(UnifomInput *in, const char *unif, uint32_t val) {
+void GlShaderProgram::set_u32(UniformInput *in, const char *unif, uint32_t val) {
 	this->set_unif(in, unif, &val);
 }
 
-void GlShaderProgram::set_f32(UnifomInput *in, const char *unif, float val) {
+void GlShaderProgram::set_f32(UniformInput *in, const char *unif, float val) {
 	this->set_unif(in, unif, &val);
 }
 
-void GlShaderProgram::set_f64(UnifomInput *in, const char *unif, double val) {
+void GlShaderProgram::set_f64(UniformInput *in, const char *unif, double val) {
 	this->set_unif(in, unif, &val);
 }
 
-void GlShaderProgram::set_v2f32(UnifomInput *in, const char *unif, Eigen::Vector2f const& val) {
+void GlShaderProgram::set_v2f32(UniformInput *in, const char *unif, Eigen::Vector2f const& val) {
 	this->set_unif(in, unif, &val);
 }
 
-void GlShaderProgram::set_v3f32(UnifomInput *in, const char *unif, Eigen::Vector3f const& val) {
+void GlShaderProgram::set_v3f32(UniformInput *in, const char *unif, Eigen::Vector3f const& val) {
 	this->set_unif(in, unif, &val);
 }
 
-void GlShaderProgram::set_v4f32(UnifomInput *in, const char *unif, Eigen::Vector4f const& val) {
+void GlShaderProgram::set_v4f32(UniformInput *in, const char *unif, Eigen::Vector4f const& val) {
 	this->set_unif(in, unif, &val);
 }
 
-void GlShaderProgram::set_tex(UnifomInput *in, const char *unif, Texture const* val) {
+void GlShaderProgram::set_tex(UniformInput *in, const char *unif, Texture const* val) {
 	// TODO special handling needed here
 	throw "unimplemented";
 }

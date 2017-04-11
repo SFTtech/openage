@@ -2,8 +2,10 @@
 
 #include "renderer.h"
 
-#include "renderable.h"
 #include "../../error/error.h"
+#include "texture.h"
+#include "shader_program.h"
+#include "uniform_input.h"
 
 
 namespace openage {
@@ -16,34 +18,28 @@ GlRenderer::GlRenderer(GlContext *ctx)
 	log::log(MSG(info) << "Created OpenGL renderer");
 }
 
-std::unique_ptr<Texture> add_texture(resources::TextureData const&) {
-
+std::unique_ptr<Texture> GlRenderer::add_texture(const resources::TextureData& data) {
+	return std::make_unique<GlTexture>(data);
 }
 
-std::unique_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const& srcs) {
+std::unique_ptr<ShaderProgram> GlRenderer::add_shader(std::vector<resources::ShaderSource> const& srcs) {
 	return std::make_unique<GlShaderProgram>(srcs);
 }
 
-std::unique_ptr<RenderTarget> create_texture_target(Texture const*) {
-
+std::unique_ptr<RenderTarget> GlRenderer::create_texture_target(Texture const* tex) {
+	return std::unique_ptr<RenderTarget>();
+	//return std::make_unique<GlTextureTarget>(tex);
 }
 
-RenderTarget const* get_framebuffer_target() {
+RenderTarget const* GlRenderer::get_framebuffer_target() {
 	return this->framebuffer.get();
 }
 
-void render(RenderPass const& pass) {
+void GlRenderer::render(RenderPass const& pass) {
 	for (auto obj : pass.renderables) {
-		this->shaders[0].execute_with(*dynamic_cast<GlRenderable*>(obj.get()));
+		auto in = dynamic_cast<GlUniformInput const*>(obj.unif_in);
+		in->program->execute_with(in, obj.geometry);
 	}
-}
-
-
-Renderer::ShaderId GlRenderer::add_shader(const std::vector<resources::ShaderSource>& srcs) {
-}
-
-bool GlRenderer::remove_shader(Renderer::ShaderId id) {
-
 }
 
 }}}

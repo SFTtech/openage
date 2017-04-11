@@ -10,13 +10,12 @@
 #include "../resources/shader_source.h"
 #include "../../util/vector.h"
 #include "../renderer.h"
+#include "uniform_input.h"
 
 
 namespace openage {
 namespace renderer {
 namespace opengl {
-
-class GlRenderable;
 
 /// GLSL uniform types.
 enum class gl_uniform_t {
@@ -40,8 +39,6 @@ struct GlUniform {
 
 class GlShaderProgram : public ShaderProgram {
 public:
-	using str = std::experimental::string_view;
-
 	/// Tries to create a shader program from the given sources.
 	/// Throws an exception on compile/link errors.
 	explicit GlShaderProgram(const std::vector<resources::ShaderSource>&);
@@ -57,11 +54,13 @@ public:
 	void use() const;
 
 	/// Renders the specified renderable using this shader program.
-	void execute_with(const UniformInput*);
+	void execute_with(const GlUniformInput*, const Geometry*);
 
+	bool has_uniform(const char*) override;
+
+protected:
 	void set_unif(UniformInput*, const char*, void const*);
 	std::unique_ptr<UniformInput> new_unif_in() override;
-	bool has_unif(const char*) override;
 	void set_i32(UniformInput*, const char*, int32_t) override;
 	void set_u32(UniformInput*, const char*, uint32_t) override;
 	void set_f32(UniformInput*, const char*, float) override;

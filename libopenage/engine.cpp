@@ -205,7 +205,7 @@ Engine::Engine(const util::Path &root_dir,
 		this->drawing_huds.value = !this->drawing_huds.value;
 	});
 	global_input_context.bind(action.get("SCREENSHOT"), [this](const input::action_arg_t &) {
-		this->get_screenshot_manager().save_screenshot();
+		this->get_screenshot_manager().save_screenshot(this->get_coord_data()->window_size);
 	});
 	global_input_context.bind(action.get("TOGGLE_DEBUG_OVERLAY"), [this](const input::action_arg_t &) {
 		this->drawing_debug_overlay.value = !this->drawing_debug_overlay.value;
@@ -254,9 +254,6 @@ bool Engine::on_resize(coord::window new_size) {
 
 	// update engine window size
 	this->coord.window_size = new_size;
-
-	// tell the screenshot manager about the new size
-	this->screenshot_manager.window_size = new_size;
 
 	// update camgame window position, set it to center.
 	this->coord.camgame_window = this->coord.window_size / 2;

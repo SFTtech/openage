@@ -3,7 +3,6 @@
 #pragma once
 
 #include <string>
-#include <experimental/string_view>
 
 
 namespace openage {
@@ -20,18 +19,18 @@ enum class shader_source_t {
 	glsl_fragment,
 };
 
-std::experimental::string_view shader_source_type_to_str(shader_source_t);
+const char *shader_source_type_to_str(shader_source_t);
 
 class ShaderSource {
 public:
 	/// Obtain shader source code from a file.
-	static ShaderSource from_file(shader_source_t, std::experimental::string_view path);
+	static ShaderSource from_file(shader_source_t, const char *path);
 
 	/// Obtain shader source code from a string.
 	static ShaderSource from_string(shader_source_t, std::string &&code);
 
 	/// @returns a view of the shader source code
-	std::experimental::string_view source() const;
+	const char *source() const;
 
 	shader_source_t type() const;
 

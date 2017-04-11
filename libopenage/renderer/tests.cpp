@@ -6,10 +6,10 @@
 #include <unordered_map>
 
 #include "../log/log.h"
+#include "geometry.h"
 #include "../error/error.h"
 #include "resources/shader_source.h"
 #include "opengl/renderer.h"
-#include "opengl/renderable.h"
 #include "window.h"
 
 
@@ -44,7 +44,7 @@ while (running) {
 					MSG(info) << "new window size: "
 					<< new_size.x << " x " << new_size.y
 				);
-				window.set_size(new_size);
+				//window.set_size(new_size);
 				actions->resize(new_size);
 				break;
 			}}
@@ -76,7 +76,7 @@ while (running) {
 void renderer_demo_0() {
 	Window window { "openage renderer testing" };
 	window.make_context_current();
-	auto renderer = opengl::GlRenderer::create(window.get_context());
+	auto renderer = std::make_unique<opengl::GlRenderer>(window.get_context());
 
 	auto vshader_src = resources::ShaderSource::from_string(
 		resources::shader_source_t::glsl_vertex,
@@ -104,10 +104,11 @@ void renderer_demo_0() {
 
 	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
 
-	unif_in = shader->new_uniform_input();
+	auto unif_in = shader->new_uniform_input();
+	Geometry quad;
 	Renderable gaben {
 		unif_in.get(),
-		// geometry constructor
+		&quad,
 		true,
 		true,
 		true,
@@ -121,26 +122,28 @@ void renderer_demo_0() {
 		renderer->get_framebuffer_target(),
 	};
 
-	renderer->execute_pass(pass);
-
 	render_demo test0{
 		// init
 		[&](Window */*window*/) {
-			/*glEnable(GL_BLEND);
+			glEnable(GL_BLEND);
+			glEnable(GL_DEPTH_TEST);
+			glDepthFunc(GL_LEQUAL);
 
+			GLuint vpos_buf;
 			glGenBuffers(1, &vpos_buf);
 			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
-			// save vertex attributes to GPU:
-			glBufferData(GL_ARRAY_BUFFER, sizeof(vpos), vpos, GL_STATIC_DRAW);
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
+			GLuint vao;
 			glGenVertexArrays(1, &vao);
 			glBindVertexArray(vao); // stores all the vertex attrib state.*/
 		},
 		// frame
 		[&]() {
+			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			renderer->render(pass);
 			window.swap();
+			window.get_context()->check_error();
 			/*simplequad->use();
 
 			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);

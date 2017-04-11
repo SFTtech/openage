@@ -5,7 +5,6 @@
 #include <vector>
 #include <cstdint>
 #include <string>
-#include <experimental/string_view>
 
 #include "../../gamedata/texture.gen.h"
 
@@ -14,7 +13,7 @@ namespace openage {
 namespace renderer {
 namespace resources {
 
-/// How the pixels are represented in the texture.
+/// How the pixels are represented in a texture.
 enum class pixel_format {
 	/// 24 bits per pixel, no alpha channel
 	rgb8,
@@ -22,7 +21,62 @@ enum class pixel_format {
 	rgba8,
 };
 
-/// A resource containing texture data.
+/**
+ * Information for texture processing.
+ * The class supports subtextures, so that one big texture ("texture atlas")
+ * can contain several smaller images. These are the ones actually to be
+ * rendered.
+ */
+class TextureInfo {
+	friend class TextureData;
+public:
+	pixel_format get_format() const;
+
+	/**
+	 * Return the dimensions of the whole texture bitmap
+	 * @returns tuple(width, height)
+	 */
+	std::pair<int32_t, int32_t> get_size() const;
+
+	/**
+	 * @return the number of available subtextures
+	 */
+	size_t get_subtexture_count() const;
+
+	/**
+	 * Get the subtexture coordinates by its idea.
+	 */
+	const gamedata::subtexture& get_subtexture(size_t subid) const;
+
+	/**
+	 * Fetch the size of the given subtexture.
+	 * @param subid: index of the requested subtexture
+	 */
+	std::pair<int32_t, int32_t> get_subtexture_size(size_t subid) const;
+
+	/**
+	 * get atlas subtexture coordinates.
+	 *
+	 * @returns left, right, top and bottom bounds as coordinates these pick
+	 * the requested area out of the big texture. returned as floats in
+	 * range 0.0 to 1.0, relative to the whole surface size.
+	 */
+	std::tuple<float, float, float, float> get_subtexture_coordinates(size_t subid) const;
+
+protected:
+	/// The pixel format of this texture.
+	pixel_format format;
+
+	/// Width and height of this texture.
+	int32_t w, h;
+
+	/**
+	 * Some textures are merged together into texture atlases, large images which contain
+	 * more than one individual texture. These are their positions in the atlas.
+	 */
+	std::vector<gamedata::subtexture> subtextures;
+};
+
 class TextureData {
 public:
 	/**
@@ -33,33 +87,16 @@ public:
 	 * Uses SDL Image internally. For supported image file types,
 	 * see the SDL_Image initialization in the engine.
 	 */
-	static TextureData load_from_file(std::experimental::string_view filename, bool use_metafile=false);
+	TextureData(const char *filename, bool use_metafile = false);
+
+	const TextureInfo& get_info() const;
+
+	const uint8_t *get_data() const;
 
 private:
-	/// Doesn't make sense to initialize texture data with nothing.
-	TextureData() = delete;
-
-	/// Create a texture by copying the data from a C-style buffer.
-	TextureData(uint32_t width, uint32_t height, pixel_format, uint8_t *data, std::vector<gamedata::subtexture>&&);
-
-	/// Create a texture by moving the data.
-	TextureData(uint32_t width, uint32_t height, pixel_format, std::vector<uint8_t> &&data, std::vector<gamedata::subtexture>&&);
-
-private:
-	/// The pixel format of this texture.
-	pixel_format format;
-
-	/// Width and height of this texture.
-	uint32_t w, h;
-
-	/// Raw texture pixel data.
+	TextureInfo info;
 	std::vector<uint8_t> data;
 
-	/**
-	 * Some textures are merged together into texture atlases, large images which contain
-	 * more than one individual texture. These are their positions in the atlas.
-	 */
-	std::vector<gamedata::subtexture> subtextures;
 };
 
 }}} // namespace openage::renderer::resources
