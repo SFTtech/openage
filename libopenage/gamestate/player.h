@@ -131,6 +131,18 @@ public:
 	 */
 	void killed_unit(const Unit & unit);
 
+	// Getters
+
+	/**
+	 * Get the number of units the player has for each unit type id.
+	 */
+	int get_units_have(int type_id) const;
+
+	/**
+	 * Get the number of units the player ever had for each unit type id.
+	 */
+	int get_units_had(int type_id) const;
+
 private:
 
 	/**
@@ -145,14 +157,28 @@ private:
 
 	/**
 	 * unit types which can be produced by this player.
+	 * TODO revisit, can be simplified?
 	 */
 	unit_type_list available_objects;
 
 	/**
 	 * available objects mapped using type id
 	 * unit ids -> unit type for that id
+	 * TODO revisit, can be simplified?
 	 */
 	std::unordered_map<index_t, UnitType *> available_ids;
+
+	/**
+	 * The number of units the player has for each unit type id.
+	 * Used for unit dependencies (eg. Town Center) and event triggers.
+	 */
+	std::unordered_map<int, int> units_have;
+
+	/**
+	 * The number of units the player ever had for each unit type id.
+	 * Used for unit dependencies (eg. Farm).
+	 */
+	std::unordered_map<int, int> units_had;
 
 };
 

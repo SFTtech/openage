@@ -12,9 +12,9 @@ namespace openage {
 Score::Score()
 	:
 	score{0},
+	score_total{0},
 	score_exploration{0},
-	score_resources{0},
-	score_total{0} {
+	score_resources{0} {
 }
 
 void Score::add_score(const score_category cat, double value) {

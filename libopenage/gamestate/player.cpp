@@ -128,8 +128,9 @@ void Player::active_unit_added(Unit *unit) {
 		return;
 	}
 
+	this->units_have[unit->unit_type->id()] += 1;
+	this->units_had[unit->unit_type->id()] += 1;
 	// TODO handle here building dependencies
-	// TODO handle here on create unit triggers
 
 	// population
 	if (unit->has_attribute(attr_type::population)) {
@@ -149,6 +150,9 @@ void Player::active_unit_added(Unit *unit) {
 	} else if (unit->has_attribute(attr_type::building) || unit->has_attribute(attr_type::population)) { // building, living
 		this->score.add_score(score_category::economy, unit->unit_type->cost.sum() * 0.2);
 	}
+
+	// TODO handle here on create unit triggers
+	// TODO check for unit based win conditions
 }
 
 void Player::active_unit_removed(Unit *unit) {
@@ -157,8 +161,8 @@ void Player::active_unit_removed(Unit *unit) {
 		return;
 	}
 
+	this->units_have[unit->unit_type->id()] -= 1;
 	// TODO handle here building dependencies
-	// TODO handle here on death unit triggers
 
 	// population
 	if (unit->has_attribute(attr_type::population)) {
@@ -178,6 +182,9 @@ void Player::active_unit_removed(Unit *unit) {
 	} else if (unit->has_attribute(attr_type::building) || unit->has_attribute(attr_type::population)) { // building, living
 		this->score.remove_score(score_category::economy, unit->unit_type->cost.sum() * 0.2);
 	}
+
+	// TODO handle here on death unit triggers
+	// TODO check for unit based win conditions
 }
 
 void Player::killed_unit(const Unit & unit) {
@@ -190,6 +197,20 @@ void Player::on_resources_change() {
 	this->score.update_resources(this->resources);
 
 	// TODO check for resource based win conditions
+}
+
+int Player::get_units_have(int type_id) const {
+	if (this->units_have.count(type_id)) {
+		return this->units_have.at(type_id);
+	}
+	return 0;
+}
+
+int Player::get_units_had(int type_id) const {
+	if (this->units_had.count(type_id)) {
+		return this->units_had.at(type_id);
+	}
+	return 0;
 }
 
 } // openage
