@@ -11,6 +11,7 @@
 #include "../../util/vector.h"
 #include "../renderer.h"
 #include "uniform_input.h"
+#include "context.h"
 
 
 namespace openage {
@@ -26,7 +27,7 @@ enum class gl_uniform_t {
 	V2F32,
 	V3F32,
 	V4F32,
-	TEX2D,
+	SAMPLER2D,
 };
 
 /// @returns the size in bytes of a GLSL uniform type
@@ -41,7 +42,7 @@ class GlShaderProgram : public ShaderProgram {
 public:
 	/// Tries to create a shader program from the given sources.
 	/// Throws an exception on compile/link errors.
-	explicit GlShaderProgram(const std::vector<resources::ShaderSource>&);
+	explicit GlShaderProgram(const std::vector<resources::ShaderSource>&, const gl_context_capabilities&);
 	~GlShaderProgram();
 
 	GlShaderProgram(const GlShaderProgram&) = delete;
@@ -79,6 +80,9 @@ private:
 
 	/// The GL shader program ID
 	GLuint id;
+
+	std::unordered_map<std::string, GLuint> texunits_per_unifs;
+	std::unordered_map<GLuint, GLuint> textures_per_texunits;
 };
 
 }}} // openage::renderer::opengl

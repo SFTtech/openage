@@ -24,11 +24,12 @@ public:
 	GlTexture(const resources::TextureData&);
 	~GlTexture();
 
+	/// Returns the OpenGL handle to this texture.
+	GLuint get_handle() const;
+
 private:
-	/**
-	 * OpenGL handle id.
-	 */
-	GLuint id;
+	/// The OpenGL handle to this texture.
+	GLuint handle;
 };
 
 }}} // openage::renderer::opengl

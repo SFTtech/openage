@@ -14,6 +14,7 @@
 #include "../../util/compiler.h"
 #include "../../util/file.h"
 #include "../../util/strings.h"
+#include "texture.h"
 
 
 namespace openage {
@@ -23,21 +24,21 @@ namespace opengl {
 size_t uniform_size(gl_uniform_t type) {
 	switch (type) {
 	case gl_uniform_t::I32:
-		return 4;
+		return sizeof(GLint);
 	case gl_uniform_t::U32:
-		return 4;
+		return sizeof(GLuint);
 	case gl_uniform_t::F32:
-		return 4;
+		return sizeof(float);
 	case gl_uniform_t::F64:
-		return 8;
+		return sizeof(double);
 	case gl_uniform_t::V2F32:
-		return 8;
+		return 2 * sizeof(float);
 	case gl_uniform_t::V3F32:
-		return 12;
+		return 3 * sizeof(float);
 	case gl_uniform_t::V4F32:
-		return 16;
-	case gl_uniform_t::TEX2D:
-		return 4;
+		return 4 * sizeof(float);
+	case gl_uniform_t::SAMPLER2D:
+		return sizeof(GLint);
 	}
 }
 
@@ -57,7 +58,7 @@ static gl_uniform_t glsl_str_to_type(std::experimental::string_view str) {
 	else if (str == "vec4")
 		return gl_uniform_t::V4F32;
 	else if (str == "sampler2D")
-		return gl_uniform_t::TEX2D;
+		return gl_uniform_t::SAMPLER2D;
 	else
 		throw Error(MSG(err) << "Unsupported GLSL uniform type " << str);
 }
@@ -114,14 +115,14 @@ static GLuint src_type_to_gl(resources::shader_source_t type) {
 
 static GLuint compile_shader(const resources::ShaderSource& src) {
 	// allocate shader in opengl
-	GLuint id = glCreateShader(src_type_to_gl(src.type()));
+	GLuint id = glCreateShader(src_type_to_gl(src.get_type()));
 
 	if (unlikely(id == 0)) {
 		throw Error{MSG(err) << "Unable to create OpenGL shader. WTF?!", true};
 	}
 
 	// load shader source
-	const char* data = src.source();
+	const char* data = src.get_source();
 	glShaderSource(id, 1, &data, 0);
 
 	// compile shader source
@@ -169,7 +170,7 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 			case GL_COMPILE_STATUS:
 				return "compilation";
 			default:
-				return "[insert_task_here]";
+				return "unknown shader creation task";
 			}
 		}();
 
@@ -177,7 +178,7 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 	}
 }
 
-GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &srcs) {
+GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &srcs, const gl_context_capabilities &caps) {
 	this->id = glCreateProgram();
 
 	if (unlikely(this->id == 0)) {
@@ -186,7 +187,7 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 
 	std::vector<GLuint> shaders;
 	for (auto src : srcs) {
-		parse_glsl(this->uniforms, src.source());
+		parse_glsl(this->uniforms, src.get_source());
 		shaders.push_back(compile_shader(src));
 	}
 
@@ -211,7 +212,19 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 		GLint loc = glGetUniformLocation(this->id, pair.first.data());
 
 		if (unlikely(loc == -1)) {
-			throw Error(MSG(err) << "Could not determine location of OpenGL shader uniform that was found before. WTF?!");
+			throw Error(MSG(err)
+			            << "Could not determine the location of OpenGL shader uniform that was found before. WTF?!");
+		}
+
+		GLuint tex_unit = 0;
+		if (pair.second.type == gl_uniform_t::SAMPLER2D) {
+			if (tex_unit >= caps.max_texture_slots) {
+				throw Error(MSG(err)
+				            << "Tried to create shader that uses more texture sampler uniforms"
+				            << "than there are texture unit slots available.");
+			}
+			this->texunits_per_unifs.insert(std::make_pair(pair.first, tex_unit));
+			tex_unit += 1;
 		}
 
 		pair.second.location = loc;
@@ -255,10 +268,10 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry
 		auto loc = this->uniforms[pair.first].location;
 		switch (this->uniforms[pair.first].type) {
 		case gl_uniform_t::I32:
-			glUniform1i(loc, *(int32_t*)ptr);
+			glUniform1i(loc, *(GLint*)ptr);
 			break;
 		case gl_uniform_t::U32:
-			glUniform1ui(loc, *(uint32_t*)ptr);
+			glUniform1ui(loc, *(GLuint*)ptr);
 			break;
 		case gl_uniform_t::F32:
 			glUniform1f(loc, *(float*)ptr);
@@ -276,8 +289,12 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry
 		case gl_uniform_t::V4F32:
 			glUniform4fv(loc, 1, (float*)ptr);
 			break;
-		case gl_uniform_t::TEX2D:
-			glUniform1i(loc, *(int32_t*)ptr);
+		case gl_uniform_t::SAMPLER2D:
+			// We do nothing here and bind texture to their units in use() instead.
+			// That is because the above uniform values persist in the shader state,
+			// but the texture unit bindings are global to the context. Each time
+			// the shader switches, it is possible that some other shader overwrote
+			// these, and so we have to set them more often than just on use().
 			break;
 		default:
 			throw Error(MSG(err) << "Tried to upload unknown uniform type to GL shader.");
@@ -348,8 +365,9 @@ void GlShaderProgram::set_v4f32(UniformInput *in, const char *unif, Eigen::Vecto
 }
 
 void GlShaderProgram::set_tex(UniformInput *in, const char *unif, Texture const* val) {
-	// TODO special handling needed here
-	throw "unimplemented";
+	auto const& tex = *static_cast<const GlTexture*>(val);
+	GLuint handle = tex.get_handle();
+	this->set_unif(in, unif, &handle);
 }
 
 }}} // openage::renderer::opengl

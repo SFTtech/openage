@@ -57,9 +57,9 @@ struct Renderable {
 // this time, inputs are shader invocations (with gl state vars such as blending for each invocation)
 struct RenderPass {
 	std::vector<Renderable> renderables;
+	RenderTarget const *target;
 	float default_depth;
 	uint8_t msaa_level;
-	RenderTarget const *target;
 };
 
 class Renderer {

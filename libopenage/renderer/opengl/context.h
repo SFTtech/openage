@@ -4,6 +4,8 @@
 
 #include <SDL2/SDL.h>
 
+#include "texture.h"
+
 
 namespace openage {
 namespace renderer {
@@ -11,9 +13,9 @@ namespace opengl {
 
 /// Stores information about context capabilities and limitations.
 struct gl_context_capabilities {
-	int max_vertex_attributes;
-	int max_texture_slots;
-	int max_texture_size;
+	size_t max_vertex_attributes;
+	size_t max_texture_slots;
+	size_t max_texture_size;
 
 	int major_version;
 	int minor_version;
@@ -35,6 +37,8 @@ public:
 
 	SDL_GLContext get_raw_context() const;
 	gl_context_capabilities get_capabilities() const;
+
+	void set_vsync(bool on);
 
 	/// Checks whether the current GL context on this thread reported any errors
 	/// and throws an exception if it did.

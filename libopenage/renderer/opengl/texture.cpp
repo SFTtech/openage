@@ -15,8 +15,8 @@ namespace opengl {
 GlTexture::GlTexture(const resources::TextureData& data)
 	: Texture(data.get_info()) {
 	// generate opengl texture handle
-	glGenTextures(1, &this->id);
-	glBindTexture(GL_TEXTURE_2D, id);
+	glGenTextures(1, &this->handle);
+	glBindTexture(GL_TEXTURE_2D, this->handle);
 
 	GLint input_format;
 	GLenum output_format;
@@ -52,7 +52,11 @@ GlTexture::GlTexture(const resources::TextureData& data)
 }
 
 GlTexture::~GlTexture() {
-	glDeleteTextures(1, &this->id);
+	glDeleteTextures(1, &this->handle);
+}
+
+GLuint GlTexture::get_handle() const {
+	return this->handle;
 }
 
 }}} // openage::renderer::opengl

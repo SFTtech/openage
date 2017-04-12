@@ -7,6 +7,7 @@
 #include <string>
 
 #include "../../gamedata/texture.gen.h"
+#include "../../util/path.h"
 
 
 namespace openage {
@@ -87,7 +88,7 @@ public:
 	 * Uses SDL Image internally. For supported image file types,
 	 * see the SDL_Image initialization in the engine.
 	 */
-	TextureData(const char *filename, bool use_metafile = false);
+	TextureData(const util::Path &path, bool use_metafile = false);
 
 	const TextureInfo& get_info() const;
 

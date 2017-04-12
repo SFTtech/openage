@@ -117,9 +117,9 @@ void renderer_demo_0() {
 
 	RenderPass pass {
 		{ gaben },
+		renderer->get_framebuffer_target(),
 		0.0f,
 		8,
-		renderer->get_framebuffer_target(),
 	};
 
 	render_demo test0{
@@ -128,6 +128,8 @@ void renderer_demo_0() {
 			glEnable(GL_BLEND);
 			glEnable(GL_DEPTH_TEST);
 			glDepthFunc(GL_LEQUAL);
+			// what is this
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 			GLuint vpos_buf;
 			glGenBuffers(1, &vpos_buf);

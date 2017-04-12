@@ -11,38 +11,37 @@ namespace resources {
 const char *shader_source_type_to_str(shader_source_t type) {
 	switch (type) {
 	case shader_source_t::glsl_vertex:
-		return "vertex shader";
+		return "GLSL vertex shader";
 	case shader_source_t::glsl_geometry:
-		return "geometry shader";
+		return "GLSL geometry shader";
 	case shader_source_t::glsl_tesselation_control:
-		return "tesselation control shader";
+		return "GLSL tesselation control shader";
 	case shader_source_t::glsl_tesselation_evaluation:
-		return "tesselation evaluation shader";
+		return "GLSL tesselation evaluation shader";
 	case shader_source_t::glsl_fragment:
-		return "fragment shader";
+		return "GLSL fragment shader";
 	default:
-		return "unknown shader type";
+		return "unknown GLSL shader type";
 	}
 }
 
 ShaderSource::ShaderSource(shader_source_t type, std::string &&code)
-	: _type(type)
-	, code(std::move(code)) {}
+	: type(type)
+	, code(code) {}
 
-ShaderSource ShaderSource::from_file(shader_source_t type, const char *path) {
-	util::File file(path);
-	return ShaderSource(type, file.read());
+ShaderSource ShaderSource::from_file(shader_source_t type, const util::Path &path) {
+	return ShaderSource(type, path.open().read());
 }
 
 ShaderSource ShaderSource::from_string(shader_source_t type, std::string &&code) {
 	return ShaderSource(type, std::move(code));
 }
 
-shader_source_t ShaderSource::type() const {
-	return this->_type;
+shader_source_t ShaderSource::get_type() const {
+	return this->type;
 }
 
-const char *ShaderSource::source() const {
+const char *ShaderSource::get_source() const {
 	return this->code.data();
 }
 

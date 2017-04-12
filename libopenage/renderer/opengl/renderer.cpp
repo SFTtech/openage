@@ -23,7 +23,7 @@ std::unique_ptr<Texture> GlRenderer::add_texture(const resources::TextureData& d
 }
 
 std::unique_ptr<ShaderProgram> GlRenderer::add_shader(std::vector<resources::ShaderSource> const& srcs) {
-	return std::make_unique<GlShaderProgram>(srcs);
+	return std::make_unique<GlShaderProgram>(srcs, this->gl_context->get_capabilities());
 }
 
 std::unique_ptr<RenderTarget> GlRenderer::create_texture_target(Texture const* tex) {

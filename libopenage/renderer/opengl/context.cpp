@@ -62,9 +62,15 @@ static gl_context_capabilities find_capabilities() {
 
 	gl_context_capabilities caps;
 
-	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &caps.max_texture_size);
-	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &caps.max_texture_slots);
-	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &caps.max_vertex_attributes);
+	GLint temp;
+	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &temp);
+	caps.max_texture_size = temp;
+	// TOOD maybe GL_MAX_TEXTURE_IMAGE_UNITS or maybe GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS
+	// lol opengl
+	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &temp);
+	caps.max_texture_slots = temp;
+	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &temp);
+	caps.max_vertex_attributes = temp;
 
 	glGetIntegerv(GL_MAJOR_VERSION, &caps.major_version);
 	glGetIntegerv(GL_MINOR_VERSION, &caps.minor_version);
@@ -199,52 +205,20 @@ void GlContext::check_error() {
 	}
 }
 
-/*
-void Context::setup() {
-	auto &caps = this->capabilities;
-
-	// vsync on
-	// TODO: maybe move somewhere else or to the window.
-	SDL_GL_SetSwapInterval(1);
-
-	// TODO: move to somewhere else, not all contexts may want those:
-
-	// enable alpha blending
-	this->set_feature(context_feature::blending, true);
-
-	// order of drawing relevant for depth
-	// what gets drawn last is displayed on top.
-	this->set_feature(context_feature::depth_test, false);
-
-	// TODO: generalize like set_feature.
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-}
-
-void GlContext::set_feature(context_feature feature, bool on) {
-	// what feature to change? this is the argument to glEnable and glDisable.
-	GLenum what;
-
-	switch (feature) {
-	case context_feature::blending:
-		what = GL_BLEND;
-		break;
-
-	case context_feature::depth_test:
-		what = GL_DEPTH_TEST;
-		break;
-
-	default:
-		throw Error(MSG(err) << "unknown opengl context feature to set");
-	}
-
+void GlContext::set_vsync(bool on) {
 	if (on) {
-		glEnable(what);
-	} else {
-		glDisable(what);
+		// try to use swap control tearing (adaptive vsync)
+		if (SDL_GL_SetSwapInterval(-1) == -1) {
+			// otherwise fall back to standard vsync
+			SDL_GL_SetSwapInterval(1);
+		}
+	}
+	else {
+		SDL_GL_SetSwapInterval(0);
 	}
 }
 
-
+/*
 void Context::screenshot(const std::string &filename) {
 	log::log(MSG(info) << "Saving screenshot to " << filename);
 
