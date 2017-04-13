@@ -97,6 +97,7 @@ _the openage authors_ are:
 | Martin Bernardi             | martinber                   | martinbernardi à openmailbox dawt org             |
 | Erik Griese                 | citron0xa9                  | erik dawt griese à yahoo dawt de                  |
 | Alex Birch                  | Birch-san                   | vengeance dawt m dawt x+openage à gmail dawt com  |
+| Timo Haas                   | timohaas                    | haastimo à gmx dawt de                            |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
