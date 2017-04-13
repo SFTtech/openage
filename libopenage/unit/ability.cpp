@@ -379,7 +379,10 @@ bool ConvertAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 		       to_modify.location &&
 		       target.location &&
 		       target.location->is_placed() &&
-		       is_enemy(to_modify, target);
+		       to_modify.has_attribute(attr_type::attack) &&
+		       has_hitpoints(target) &&
+		       (is_enemy(to_modify, target) || target_is_resource) &&
+		       (cmd.has_flag(command_flag::attack_res) == target_is_resource);
 	}
 	return false;
 }
