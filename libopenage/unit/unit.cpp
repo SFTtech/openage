@@ -254,6 +254,10 @@ void Unit::add_attributes(const Attributes &attr, bool shared, bool unshared) {
 	this->attributes.add_copies(attr, shared, unshared);
 }
 
+void Unit::remove_attribute(const attr_type type) {
+	this->attributes.remove(type);
+}
+
 bool Unit::has_attribute(attr_type type) const {
 	return this->attributes.has(type);
 }

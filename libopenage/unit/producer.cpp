@@ -474,6 +474,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 	else if (this->unit_data.unit_class == gamedata::unit_classes::PRIEST) {
 		unit->give_ability(std::make_shared<ConvertAbility>(this->on_attack));
 	}
+	unit->add_attribute(std::make_shared<Attribute<attr_type::convertable>>(5));
 }
 
 TerrainObject *LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {

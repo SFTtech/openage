@@ -64,6 +64,7 @@ enum class attr_type {
 	damaged,
 	hitpoints,
 	armor,
+	convertable,
 	attack,
 	formation,
 	heal,
@@ -216,6 +217,26 @@ public:
 	 */
 	unsigned int hp;
 	float hp_bar_height;
+};
+
+template<> class Attribute<attr_type::convertable>: public SharedAttributeContainer {
+public:
+	Attribute(unsigned int i)
+		:
+		SharedAttributeContainer{attr_type::convertable},
+		current{static_cast<int>(i)},
+		max{i} {}
+
+	bool shared() const override {
+		return false;
+	}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::convertable>>(*this);
+	}
+
+	int current; // can become negative
+	unsigned int max;
 };
 
 /**

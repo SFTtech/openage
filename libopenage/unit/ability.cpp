@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include <memory>
 
@@ -19,6 +19,11 @@ bool UnitAbility::has_hitpoints(Unit &target) {
 bool UnitAbility::is_damaged(Unit &target) {
 	return target.has_attribute(attr_type::damaged) && target.has_attribute(attr_type::hitpoints) &&
 	       target.get_attribute<attr_type::damaged>().hp < target.get_attribute<attr_type::hitpoints>().hp;
+}
+
+bool UnitAbility::is_convertable(Unit &target) {
+	return target.has_attribute(attr_type::convertable) &&
+	       target.get_attribute<attr_type::convertable>().current > 0;
 }
 
 bool UnitAbility::has_resource(Unit &target) {
@@ -375,12 +380,13 @@ ConvertAbility::ConvertAbility(const Sound *s)
 bool ConvertAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 	if (cmd.has_unit()) {
 		Unit &target = *cmd.unit();
+		bool target_is_resource = has_resource(target);
 		return &to_modify != &target &&
 		       to_modify.location &&
 		       target.location &&
 		       target.location->is_placed() &&
-		       to_modify.has_attribute(attr_type::attack) &&
-		       has_hitpoints(target) &&
+		       to_modify.has_attribute(attr_type::convertable) &&
+		       is_convertable(target) &&
 		       (is_enemy(to_modify, target) || target_is_resource) &&
 		       (cmd.has_flag(command_flag::attack_res) == target_is_resource);
 	}

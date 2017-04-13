@@ -175,6 +175,12 @@ public:
 	void add_attribute(std::shared_ptr<AttributeContainer> attr);
 
 	/**
+	 * delete a given attribute this this unit
+	 * this is used to delete/change things like color, hitpoints and speed
+	 */
+	void remove_attribute(const attr_type type);
+
+	/**
 	 * Give new attributes to this unit.
 	 * This is used to add the default attributes
 	 */

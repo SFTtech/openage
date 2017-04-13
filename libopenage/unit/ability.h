@@ -101,6 +101,7 @@ public:
 	 * some common functions
 	 */
 	bool has_hitpoints(Unit &target);
+	bool is_convertable(Unit &target);
 	bool is_damaged(Unit &target);
 	bool has_resource(Unit &target);
 	bool is_same_player(Unit &to_modify, Unit &target);

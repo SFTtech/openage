@@ -505,7 +505,7 @@ public:
 	virtual ~ConvertAction() {}
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
-	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
+	bool completed_in_range(Unit *) const override;
 	std::string name() const override { return "convert"; }
 
 private:
