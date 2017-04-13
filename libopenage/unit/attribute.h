@@ -224,8 +224,7 @@ public:
 	Attribute(unsigned int i)
 		:
 		SharedAttributeContainer{attr_type::convertable},
-		current{static_cast<int>(i)},
-		max{i} {}
+		current{static_cast<int>(i)} {}
 
 	bool shared() const override {
 		return false;
@@ -236,7 +235,6 @@ public:
 	}
 
 	int current; // can become negative
-	unsigned int max;
 };
 
 /**

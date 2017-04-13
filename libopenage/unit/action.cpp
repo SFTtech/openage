@@ -1184,7 +1184,7 @@ void HealAction::heal(Unit &target) {
 
 ConvertAction::ConvertAction(Unit *e, UnitReference tar)
 	:
-	TargetAction{e, graphic_type::attack, tar},
+	TargetAction{e, graphic_type::attack, tar, get_attack_range(e)},
 	complete{.0f},
 	rate_of_conversion{0.002f} {
 }
@@ -1199,9 +1199,8 @@ void ConvertAction::update_in_range(unsigned int time, Unit *target_ptr) {
 	else {
 		this->complete += 1.0f;
 
-		auto &cp = target_ptr->get_attribute<attr_type::convertable>();
-		cp.current -= 1;
-		log::log(MSG(info) << "convert");
+		auto &con = target_ptr->get_attribute<attr_type::convertable>();
+		con.current -= 1;
 	}
 	// inc frame
 	this->frame += time * this->current_graphics().at(graphic)->frame_count * this->rate_of_conversion;
@@ -1210,11 +1209,13 @@ void ConvertAction::update_in_range(unsigned int time, Unit *target_ptr) {
 bool ConvertAction::completed_in_range(Unit *target_ptr) const {
 	auto &c_attr = target_ptr->get_attribute<attr_type::convertable>();
 	if (c_attr.current < 1) {
-		log::log(MSG(info) << "convert completed");
 		target_ptr->remove_attribute(attr_type::owner);
 		target_ptr->add_attribute(std::make_shared<Attribute<attr_type::owner>>(this->entity->get_attribute<attr_type::owner>().player));
+		auto &con = target_ptr->get_attribute<attr_type::convertable>();
+		con.current = 5;
+		return true;
 	}
-	return c_attr.current < 1; // is unit still alive?
+	return false; // is unit still alive?
 }
 
 ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
