@@ -118,22 +118,19 @@ void renderer_demo_0() {
 	RenderPass pass {
 		{ gaben },
 		renderer->get_framebuffer_target(),
-		0.0f,
-		8,
 	};
 
 	render_demo test0{
 		// init
 		[&](Window */*window*/) {
-			glEnable(GL_BLEND);
-			glEnable(GL_DEPTH_TEST);
 			glDepthFunc(GL_LEQUAL);
+			glDepthRange(0.0, 1.0);
 			// what is this
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-			GLuint vpos_buf;
-			glGenBuffers(1, &vpos_buf);
-			glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
+			//GLuint vpos_buf;
+			//glGenBuffers(1, &vpos_buf);
+			//glBindBuffer(GL_ARRAY_BUFFER, vpos_buf);
 
 			GLuint vao;
 			glGenVertexArrays(1, &vao);
@@ -141,8 +138,6 @@ void renderer_demo_0() {
 		},
 		// frame
 		[&]() {
-			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			renderer->render(pass);
 			window.swap();
 			window.get_context()->check_error();

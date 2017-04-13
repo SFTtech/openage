@@ -9,6 +9,7 @@
 #include "context.h"
 #include "../renderer.h"
 #include "shader_program.h"
+#include "render_target.h"
 
 
 namespace openage {
@@ -23,7 +24,7 @@ public:
 
 	std::unique_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const&) override;
 
-	std::unique_ptr<RenderTarget> create_texture_target(Texture const*) override;
+	std::unique_ptr<RenderTarget> create_texture_target(std::vector<Texture*>) override;
 	RenderTarget const* get_framebuffer_target() override;
 
 	void render(RenderPass const&) override;
@@ -34,7 +35,7 @@ private:
 
 	std::vector<GlShaderProgram> shaders;
 
-	std::unique_ptr<RenderTarget> framebuffer;
+	GlRenderTarget framebuffer;
 };
 
 }}} // openage::renderer::opengl

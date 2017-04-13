@@ -39,6 +39,8 @@ size_t uniform_size(gl_uniform_t type) {
 		return 4 * sizeof(float);
 	case gl_uniform_t::SAMPLER2D:
 		return sizeof(GLint);
+	default:
+		throw Error(MSG(err) << "Tried to find size of unknown GL uniform type.");
 	}
 }
 
@@ -255,6 +257,16 @@ GlShaderProgram& GlShaderProgram::operator=(GlShaderProgram&& other) {
 
 void GlShaderProgram::use() const {
 	glUseProgram(this->id);
+
+	for (auto const &pair : this->textures_per_texunits) {
+		// We have to bind the texture to their texture units here because
+		// the texture unit bindings are global to the context. Each time
+		// the shader switches, it is possible that some other shader overwrote
+		// these, and since we want the uniform values to persist across execute_with
+		// calls, we have to set them more often than just on execute_with.
+		glActiveTexture(GL_TEXTURE0 + pair.first);
+		glBindTexture(GL_TEXTURE_2D, pair.second);
+	}
 }
 
 void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry *geom) {
@@ -263,39 +275,40 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry
 	this->use();
 
 	uint8_t const* data = unif_in->update_data.data();
-	for (auto pair : unif_in->update_offs) {
+	for (auto const &pair : unif_in->update_offs) {
 		uint8_t const* ptr = data + pair.second;
 		auto loc = this->uniforms[pair.first].location;
 		switch (this->uniforms[pair.first].type) {
 		case gl_uniform_t::I32:
-			glUniform1i(loc, *(GLint*)ptr);
+			glUniform1i(loc, *reinterpret_cast<const GLint*>(ptr));
 			break;
 		case gl_uniform_t::U32:
-			glUniform1ui(loc, *(GLuint*)ptr);
+			glUniform1ui(loc, *reinterpret_cast<const GLuint*>(ptr));
 			break;
 		case gl_uniform_t::F32:
-			glUniform1f(loc, *(float*)ptr);
+			glUniform1f(loc, *reinterpret_cast<const float*>(ptr));
 			break;
 		case gl_uniform_t::F64:
 			// TODO requires an extension
-			glUniform1d(loc, *(double*)ptr);
+			glUniform1d(loc, *reinterpret_cast<const double*>(ptr));
 			break;
 		case gl_uniform_t::V2F32:
-			glUniform2fv(loc, 1, (float*)ptr);
+			glUniform2fv(loc, 1, reinterpret_cast<const float*>(ptr));
 			break;
 		case gl_uniform_t::V3F32:
-			glUniform3fv(loc, 1, (float*)ptr);
+			glUniform3fv(loc, 1, reinterpret_cast<const float*>(ptr));
 			break;
 		case gl_uniform_t::V4F32:
-			glUniform4fv(loc, 1, (float*)ptr);
+			glUniform4fv(loc, 1, reinterpret_cast<const float*>(ptr));
 			break;
-		case gl_uniform_t::SAMPLER2D:
-			// We do nothing here and bind texture to their units in use() instead.
-			// That is because the above uniform values persist in the shader state,
-			// but the texture unit bindings are global to the context. Each time
-			// the shader switches, it is possible that some other shader overwrote
-			// these, and so we have to set them more often than just on use().
+		case gl_uniform_t::SAMPLER2D: {
+			GLuint tex_unit = this->texunits_per_unifs[pair.first];
+			GLuint tex = *reinterpret_cast<const GLuint*>(ptr);
+			glActiveTexture(GL_TEXTURE0 + tex_unit);
+			glBindTexture(GL_TEXTURE_2D, tex);
+			this->textures_per_texunits[tex_unit] = tex;
 			break;
+		}
 		default:
 			throw Error(MSG(err) << "Tried to upload unknown uniform type to GL shader.");
 		}

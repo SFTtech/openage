@@ -14,6 +14,7 @@ namespace opengl {
 
 GlRenderer::GlRenderer(GlContext *ctx)
 	: gl_context(ctx)
+	, framebuffer()
 {
 	log::log(MSG(info) << "Created OpenGL renderer");
 }
@@ -26,17 +27,37 @@ std::unique_ptr<ShaderProgram> GlRenderer::add_shader(std::vector<resources::Sha
 	return std::make_unique<GlShaderProgram>(srcs, this->gl_context->get_capabilities());
 }
 
-std::unique_ptr<RenderTarget> GlRenderer::create_texture_target(Texture const* tex) {
-	return std::unique_ptr<RenderTarget>();
-	//return std::make_unique<GlTextureTarget>(tex);
+std::unique_ptr<RenderTarget> GlRenderer::create_texture_target(std::vector<Texture*> textures) {
+	std::vector<const GlTexture*> gl_textures;
+	for (auto tex : textures) {
+		gl_textures.push_back(static_cast<const GlTexture*>(tex));
+	}
+
+	return std::make_unique<GlRenderTarget>(gl_textures);
 }
 
 RenderTarget const* GlRenderer::get_framebuffer_target() {
-	return this->framebuffer.get();
+	return &this->framebuffer;
 }
 
 void GlRenderer::render(RenderPass const& pass) {
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	auto gl_target = dynamic_cast<const GlRenderTarget*>(pass.target);
+	gl_target->bind_write();
+
 	for (auto obj : pass.renderables) {
+		if (obj.alpha_blending)
+			glEnable(GL_BLEND);
+		else
+			glDisable(GL_BLEND);
+
+			if (obj.depth_test)
+				glEnable(GL_DEPTH_TEST);
+			else
+				glDisable(GL_DEPTH_TEST);
+
 		auto in = dynamic_cast<GlUniformInput const*>(obj.unif_in);
 		in->program->execute_with(in, obj.geometry);
 	}

@@ -28,6 +28,8 @@ public:
 
 	const resources::TextureInfo& get_info() const;
 
+	virtual resources::TextureData into_data() const = 0;
+
 protected:
 	resources::TextureInfo info;
 };

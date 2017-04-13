@@ -21,11 +21,17 @@ namespace opengl {
  */
 class GlTexture : public Texture {
 public:
-	GlTexture(const resources::TextureData&);
+	/// Constructs a texture and fills it with the given data.
+	explicit GlTexture(const resources::TextureData&);
+
+	/// Constructs an empty texture with the given parameters.
+	GlTexture(size_t width, size_t height, resources::pixel_format);
 	~GlTexture();
 
 	/// Returns the OpenGL handle to this texture.
 	GLuint get_handle() const;
+
+	resources::TextureData into_data() const override;
 
 private:
 	/// The OpenGL handle to this texture.

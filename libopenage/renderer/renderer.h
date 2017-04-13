@@ -58,8 +58,6 @@ struct Renderable {
 struct RenderPass {
 	std::vector<Renderable> renderables;
 	RenderTarget const *target;
-	float default_depth;
-	uint8_t msaa_level;
 };
 
 class Renderer {
@@ -73,7 +71,7 @@ public:
 
 	virtual std::unique_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const&) = 0;
 
-	virtual std::unique_ptr<RenderTarget> create_texture_target(Texture const*) = 0;
+	virtual std::unique_ptr<RenderTarget> create_texture_target(std::vector<Texture*>) = 0;
 	virtual RenderTarget const* get_framebuffer_target() = 0;
 
 	virtual void render(RenderPass const&) = 0;
