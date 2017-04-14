@@ -1,0 +1,154 @@
+// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+
+#include "../../testing/testing.h"
+#include "../unordered_map.h"
+#include "../tube.h"
+#include "../tube_continuous.h"
+#include "../tube_discrete.h"
+
+#include <map>
+
+namespace openage {
+namespace tube {
+namespace tests {
+
+struct map_test_element {
+	volatile int value;
+	tube_time_t birth, death;
+
+	map_test_element(int v, tube_time_t b, tube_time_t d) :
+		value(v),
+		birth(b),
+		death(d) {}
+
+	tube_time_t existent_from () const {
+		return this->birth;
+	}
+	tube_time_t existent_until () const {
+		return this->death;
+	}
+
+	bool operator != (int rhs) {
+		return this->value != rhs;
+	}
+
+};
+
+std::ostream &operator << (std::ostream &o, const map_test_element &e) {
+	o << e.value;
+	return o;
+}
+
+template <typename key_t, typename val_t>
+void dump(const std::map<key_t, val_t> &map) {
+	for (auto i : map) {
+		std::cout << i.first << ": " << i.second << std::endl;
+	}
+}
+
+void test_map() {
+	UnorderedMap<int, map_test_element> map;
+	map.insert(0, map_test_element(0, 0, 10));
+	map.insert(5, map_test_element(1, 5, 10));
+	map.insert(200, map_test_element(2, 100, 200));
+
+	// Basic tests test lookup in the middle of the range.
+	{
+		auto t = map.at(2, 0); //At timestamp 2 element 0
+		TESTEQUALS(t.first, true);
+		TESTEQUALS(t.second.value(), 0);
+		t = map.at(20, 5);
+		TESTEQUALS(t.first, false);
+	}
+	{
+		auto t = map.at(7, 5);
+		TESTEQUALS(t.first, true);
+		TESTEQUALS(t.second.value(), 1);
+		t = map.at(20, 5);
+		TESTEQUALS(t.first, false);
+		t = map.at(2, 5);
+		TESTEQUALS(t.first, false);
+	}
+	{
+		auto t = map.at(150, 200);
+		TESTEQUALS(t.first, true);
+		TESTEQUALS(t.second.value(), 2);
+		t = map.at(500, 200);
+		TESTEQUALS(t.first, false);
+		t = map.at(5, 200);
+		TESTEQUALS(t.first, false);
+	}
+	// test 2.0: test at the boundaries
+	{
+		auto t = map.at(0, 0);
+		TESTEQUALS(t.first, true);
+		TESTEQUALS(t.second.value(), 0);
+		t = map.at(10, 0);
+		TESTEQUALS(t.first, false);
+	}
+	{
+		auto t = map.at(5, 5);
+		TESTEQUALS(t.first, true);
+		TESTEQUALS(t.second.value(), 1);
+		t = map.at(10, 5);
+		TESTEQUALS(t.first, false);
+	}
+	{
+		auto t = map.at(100, 200);
+		TESTEQUALS(t.first, true);
+		TESTEQUALS(t.second.value(), 2);
+		t = map.at(200, 200);
+		TESTEQUALS(t.first, false);
+	}
+	// Test 3.0 Iterations
+	{
+		// Iteration tests
+		std::map<volatile int, int> reference;
+		reference[0] = 0;
+		reference[5] = 1;
+		reference[200] = 2;
+		for (auto it = map.begin(0); it != map.end(); ++it) { // Get all
+			auto ri = reference.find(it.key());
+			if (ri != reference.end()) {
+				reference.erase(ri);
+			}
+		}
+		TESTEQUALS(reference.empty(), true);
+
+		reference[5] = 5;
+		for (auto it = map.begin(1); it != map.end(90); ++it) {
+			auto ri = reference.find(it.key());
+			if (ri != reference.end()) {
+				reference.erase(ri);
+			}
+		}
+		TESTEQUALS(reference.empty(), true);
+
+		reference[5] = 5;
+		for (auto it = map.between(1,90); it != map.end(); ++it) {
+			auto ri = reference.find(it.key());
+			if (ri != reference.end()) {
+				reference.erase(ri);
+			}
+		}
+		TESTEQUALS(reference.empty(), true);
+	}
+}
+
+void test_list() {
+
+}
+
+void test_queue() {
+
+}
+
+
+void container() {
+	test_map();
+	test_list();
+	test_queue();
+}
+
+
+}}} // openage::tube::tests

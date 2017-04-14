@@ -67,17 +67,17 @@ Gui::Gui() {
 
 	attron(COLOR_PAIR(COLOR_DEBUG));
 	mvprintw(
-		4, 5, "          oooooooooo                                          ");
+	    4, 5, "          oooooooooo                                          ");
 	mvprintw(
-		5, 5, "          888    888  ooooooo    ooooooo    oooooooo8         ");
+	    5, 5, "          888    888  ooooooo    ooooooo    oooooooo8         ");
 	mvprintw(
-		6, 5, "          888oooo88 888     888 888   888  888    88o         ");
+	    6, 5, "          888oooo88 888     888 888   888  888    88o         ");
 	mvprintw(
-		7, 5, "          888       888     888 888   888   888oo888o         ");
+	    7, 5, "          888       888     888 888   888   888oo888o         ");
 	mvprintw(
-		8, 5, "         o888o        88ooo88  o888o o888o     88 888         ");
+	    8, 5, "         o888o        88ooo88  o888o o888o     88 888         ");
 	mvprintw(
-		9, 5, "                                            888ooo888         ");
+	    9, 5, "                                            888ooo888         ");
 	attroff(COLOR_PAIR(COLOR_DEBUG));
 
 	getch();

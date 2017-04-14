@@ -1,6 +1,6 @@
 // Copyright 2017-2017 the openage authors. See copying.md for legal info.
 
-#include "event.h"
+#include "tube_queue.h"
 
 namespace openage {
 namespace tube {

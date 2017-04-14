@@ -90,8 +90,15 @@ def process_args(args, error):
         if (test, 'test') not in test_list:
             # If the test was not found explicit in the testlist, try to find
             # all prefixed tests and run them instead.
-            matched = [elem[0] for elem in test_list
-                       if elem[0].startswith(test) and elem[1] == "test"]
+            matched = False
+            for candidate_name, candidate_type in test_list:
+                if candidate_name.startswith(test) and candidate_type == "test":
+                    matched = True
+                    args.test.append(candidate_name)
+            if not matched:
+                error("no such test: " + test)
+        if matched:
+            args.test.remove(test)
 
             if matched:
                 args.test.extend(matched)
