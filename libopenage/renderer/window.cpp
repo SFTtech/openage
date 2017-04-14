@@ -14,6 +14,7 @@
 namespace openage {
 namespace renderer {
 
+/// A static SDL singleton manager. Used to lazily initialize SDL.
 class SDL {
 public:
 	static void make_available() {
@@ -61,7 +62,9 @@ Window::Window(const char *title)
 	SDL::make_available();
 
 	// Even with Vulkan rendering, we still need GL for QtQuick.
-	// We need HIGHDPI for eventual support of GUI scaling. (but it requires newer SDL2?)
+	// TODO Qt might support Vulkan natively in the future
+	// We need HIGHDPI for eventual support of GUI scaling.
+	// TODO HIGHDPI fails (requires newer SDL2?)
 	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED; //| SDL_WINDOW_HIGHDPI;
 	this->window = SDL_CreateWindow(
 		title,
@@ -83,17 +86,29 @@ Window::Window(const char *title)
 	// TODO catch window events such as resizes
 }
 
+Window::Window(Window &&other)
+	: window(other.window)
+	, context(std::move(other.context)) {
+	other.window = nullptr;
+}
+
+Window &Window::operator=(Window &&other) {
+	if (this->window != nullptr) {
+		SDL_DestroyWindow(this->window);
+		log::log(MSG(info) << "Destroyed SDL window");
+	}
+
+	this->window = other.window;
+	this->context = std::move(other.context);
+	other.window = nullptr;
+	return *this;
+}
+
 Window::~Window() {
-	SDL_DestroyWindow(this->window);
-	log::log(MSG(info) << "Destroyed SDL window");
-}
-
-void Window::swap() {
-	SDL_GL_SwapWindow(this->window);
-}
-
-void Window::make_context_current() {
-	SDL_GL_MakeCurrent(this->window, this->context->get_raw_context());
+	if (this->window != nullptr) {
+		SDL_DestroyWindow(this->window);
+		log::log(MSG(info) << "Destroyed SDL window");
+	}
 }
 
 coord::window Window::get_size() {
@@ -107,12 +122,20 @@ void Window::set_size(const coord::window &new_size) {
 	}
 }
 
-opengl::GlContext* Window::get_context() {
-	return &this->context.value();
+void Window::swap() {
+	SDL_GL_SwapWindow(this->window);
 }
 
-SDL_Window* Window::get_raw_window() const {
+void Window::make_context_current() {
+	SDL_GL_MakeCurrent(this->window, this->context->get_raw_context());
+}
+
+SDL_Window *Window::get_raw_window() const {
 	return this->window;
+}
+
+opengl::GlContext *Window::get_context() {
+	return &this->context.value();
 }
 
 }} //openage::renderer

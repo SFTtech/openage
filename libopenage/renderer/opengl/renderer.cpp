@@ -2,6 +2,7 @@
 
 #include "renderer.h"
 
+#include "../../log/log.h"
 #include "../../error/error.h"
 #include "texture.h"
 #include "shader_program.h"
@@ -14,7 +15,7 @@ namespace opengl {
 
 GlRenderer::GlRenderer(GlContext *ctx)
 	: gl_context(ctx)
-	, framebuffer()
+	, display()
 {
 	log::log(MSG(info) << "Created OpenGL renderer");
 }
@@ -36,8 +37,8 @@ std::unique_ptr<RenderTarget> GlRenderer::create_texture_target(std::vector<Text
 	return std::make_unique<GlRenderTarget>(gl_textures);
 }
 
-RenderTarget const* GlRenderer::get_framebuffer_target() {
-	return &this->framebuffer;
+RenderTarget const* GlRenderer::get_display_target() {
+	return &this->display;
 }
 
 void GlRenderer::render(RenderPass const& pass) {
@@ -48,15 +49,19 @@ void GlRenderer::render(RenderPass const& pass) {
 	gl_target->bind_write();
 
 	for (auto obj : pass.renderables) {
-		if (obj.alpha_blending)
+		if (obj.alpha_blending) {
 			glEnable(GL_BLEND);
-		else
+		}
+		else {
 			glDisable(GL_BLEND);
+		}
 
-			if (obj.depth_test)
-				glEnable(GL_DEPTH_TEST);
-			else
-				glDisable(GL_DEPTH_TEST);
+		if (obj.depth_test) {
+			glEnable(GL_DEPTH_TEST);
+		}
+		else {
+			glDisable(GL_DEPTH_TEST);
+		}
 
 		auto in = dynamic_cast<GlUniformInput const*>(obj.unif_in);
 		in->program->execute_with(in, obj.geometry);

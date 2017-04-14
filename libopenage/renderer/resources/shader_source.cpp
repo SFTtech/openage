@@ -29,13 +29,9 @@ ShaderSource::ShaderSource(shader_source_t type, std::string &&code)
 	: type(type)
 	, code(code) {}
 
-ShaderSource ShaderSource::from_file(shader_source_t type, const util::Path &path) {
-	return ShaderSource(type, path.open().read());
-}
-
-ShaderSource ShaderSource::from_string(shader_source_t type, std::string &&code) {
-	return ShaderSource(type, std::move(code));
-}
+ShaderSource::ShaderSource(shader_source_t type, const util::Path &path)
+	: type(type)
+	, code(path.open().read()) {}
 
 shader_source_t ShaderSource::get_type() const {
 	return this->type;

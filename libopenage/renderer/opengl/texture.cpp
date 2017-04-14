@@ -29,8 +29,8 @@ GlTexture::GlTexture(const resources::TextureData& data)
 	: Texture(data.get_info())
 {
 	// generate opengl texture handle
-	glGenTextures(1, &this->handle);
-	glBindTexture(GL_TEXTURE_2D, this->handle);
+	glGenTextures(1, &*this->handle);
+	glBindTexture(GL_TEXTURE_2D, *this->handle);
 
 	// select pixel format
 	auto fmt_in_out = gl_format(this->info.get_format());
@@ -56,8 +56,8 @@ GlTexture::GlTexture(size_t width, size_t height, resources::pixel_format fmt)
 	                                 std::vector<gamedata::subtexture>()))
 {
 	// generate opengl texture handle
-	glGenTextures(1, &this->handle);
-	glBindTexture(GL_TEXTURE_2D, this->handle);
+	glGenTextures(1, &*this->handle);
+	glBindTexture(GL_TEXTURE_2D, *this->handle);
 
 	auto fmt_in_out = gl_format(fmt);
 
@@ -72,12 +72,34 @@ GlTexture::GlTexture(size_t width, size_t height, resources::pixel_format fmt)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
+GlTexture::GlTexture(GlTexture &&other)
+	: Texture(std::move(other.info))
+	, handle(std::move(other.handle)) {
+	// make the other handle empty
+	other.handle = std::experimental::optional<GLuint>();
+}
+
+GlTexture &GlTexture::operator =(GlTexture &&other) {
+	if (this->handle) {
+		glDeleteTextures(1, &*this->handle);
+	}
+
+	this->info = std::move(other.info);
+	this->handle = std::move(other.handle);
+	// make the other handle empty
+	other.handle = std::experimental::optional<GLuint>();
+
+	return *this;
+}
+
 GlTexture::~GlTexture() {
-	glDeleteTextures(1, &this->handle);
+	if (this->handle) {
+		glDeleteTextures(1, &*this->handle);
+	}
 }
 
 GLuint GlTexture::get_handle() const {
-	return this->handle;
+	return *this->handle;
 }
 
 inline static size_t pixel_size(resources::pixel_format fmt) {

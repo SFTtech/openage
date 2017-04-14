@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include <experimental/optional>
+
 #include "../renderer.h"
 #include "texture.h"
 #include "../../error/error.h"
@@ -11,52 +13,46 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
+/// The type of OpenGL render target
 enum class gl_render_target_t {
-	window,
-	texture,
-	// TODO MRT
+	/// The actual window. This is visible to the user after swapping front and back buffers
+	display,
+	/// A bunch of textures
+	textures,
+	// TODO renderbuffers mixed with textures
 };
 
 class GlRenderTarget : public RenderTarget {
 public:
-	/// Construct a render target that renders into the framebuffer (the screen).
-	GlRenderTarget()
-		: type(gl_render_target_t::window)
-		, handle(0) {}
+	/// Construct a render target pointed at the default framebuffer - the window.
+	GlRenderTarget();
+	~GlRenderTarget();
 
-	// TODO the validity of this object is contingent
-	// on its texture existing. use shared_ptr?
-	GlRenderTarget(std::vector<const GlTexture*> textures) {
-		glGenFramebuffers(1, &this->handle);
-		glBindFramebuffer(GL_FRAMEBUFFER, this->handle);
+	/// Construct a render target pointing at the given textures.
+	/// Texture are attached to points specific to their pixel format,
+	/// e.g. a depth texture will be set as the depth target.
+	GlRenderTarget(std::vector<const GlTexture*> textures);
 
-		for (size_t i = 0; i < textures.size(); i++) {
-			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i, GL_TEXTURE_2D, textures[i]->get_handle(), 0);
-		}
+	/// Cannot copy a framebuffer.
+	GlRenderTarget(const GlRenderTarget&) = delete;
+	GlRenderTarget &operator =(const GlRenderTarget&) = delete;
 
-		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-			throw Error(MSG(err) << "Could not create OpenGL framebuffer.");
-		}
-	}
+	/// Can move the object.
+	GlRenderTarget(GlRenderTarget&&);
+	GlRenderTarget &operator =(GlRenderTarget&&);
 
-	~GlRenderTarget() {
-		if (type == gl_render_target_t::texture) {
-			glDeleteFramebuffers(1, &this->handle);
-		}
-	}
+	/// Bind this framebuffer to GL_READ_FRAMEBUFFER.
+	void bind_read() const;
 
-	void bind_read() const {
-		glBindFramebuffer(GL_READ_FRAMEBUFFER, this->handle);
-	}
-
-	void bind_write() const {
-		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->handle);
-	}
+	/// Bind this framebuffer to GL_DRAW_FRAMEBUFFER.
+	void bind_write() const;
 
 private:
+	/// The type.
 	gl_render_target_t type;
 
-	GLuint handle;
+	/// The handle to the underlying OpenGL object.
+	std::experimental::optional<GLuint> handle;
 };
 
 }}}

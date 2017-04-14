@@ -242,12 +242,6 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 	log::log(MSG(info) << "Created OpenGL shader program");
 }
 
-GlShaderProgram::~GlShaderProgram() {
-	if (this->id != 0) {
-		glDeleteProgram(this->id);
-	}
-}
-
 GlShaderProgram::GlShaderProgram(GlShaderProgram &&other)
 	: uniforms(std::move(other.uniforms))
 	, id(other.id) {
@@ -255,11 +249,21 @@ GlShaderProgram::GlShaderProgram(GlShaderProgram &&other)
 }
 
 GlShaderProgram& GlShaderProgram::operator=(GlShaderProgram&& other) {
+	if (this->id != 0) {
+		glDeleteProgram(this->id);
+	}
+
 	this->uniforms = std::move(other.uniforms);
 	this->id = other.id;
 	other.id = 0;
 
 	return *this;
+}
+
+GlShaderProgram::~GlShaderProgram() {
+	if (this->id != 0) {
+		glDeleteProgram(this->id);
+	}
 }
 
 void GlShaderProgram::use() const {

@@ -3,8 +3,6 @@
 #pragma once
 
 #include <memory>
-#include <functional>
-#include <utility>
 #include <experimental/optional>
 
 #include <SDL2/SDL.h>
@@ -18,36 +16,31 @@ namespace renderer {
 
 class Window {
 public:
-	Window(const Window &other) = delete;
-	Window(Window &&other) = delete;
-	Window &operator =(const Window &other) = delete;
-	Window &operator =(Window &&other) = delete;
-
-	/**
-	 * Create a shiny window with the given title.
-	 */
+	/// Create a shiny window with the given title.
 	Window(const char *title);
 	~Window();
 
-	/**
-	 * @returns the window dimensions
-	 */
+	/// A window cannot be copied.
+	Window(const Window &other) = delete;
+	Window &operator =(const Window &other) = delete;
+
+	/// But it can be moved.
+	Window(Window &&other);
+	Window &operator =(Window &&other);
+
+	/// Returns the dimensions of this window.
 	coord::window get_size();
 
-	/**
-	 * Resize the window's client area.
-	 * @param[in] update determines what?
-	 */
+	/// Force the window to the given size. It's generally not a good idea to use this,
+	/// as it makes the window jump around wierdly.
 	void set_size(const coord::window &new_size);
 
-	/**
-	 * Swaps the back and front framebuffers.
-	 * Used to actually display the newly rendered frame on the screen.
-	 */
+	/// Swap the front and back framebuffers. This has to be after drawing every frame to actually
+	/// display it.
 	void swap();
 
-	/// Make this context the current rendering context of the window thread.
-	/// Only use this and most other GL functions on the window thread.
+	/// Make this window's context the current rendering context of the current thread.
+	/// Only use this and most other GL functions on a dedicated window thread.
 	void make_context_current();
 
 	// TODO: this shouldn't be exposed.
@@ -55,20 +48,20 @@ public:
 	// gui needs the native context of our SDL window to work, so it (the QtQuick gui) is inherently
 	// coupled to our window. This probably means that the gui should be integrated either _into_
 	// this Window class or _together_ with it in a conceptual unit that manages the GL context.
-	/**
-	 * Return the raw SDL window handle.
-	 */
-	SDL_Window* get_raw_window() const;
+	/// Returns the raw SDL window handle.
+	SDL_Window *get_raw_window() const;
 
-	/**
-	 * Return a reference to this window's GL context.
-	 */
-	opengl::GlContext* get_context();
+	/// Return a pointer to this window's GL context.
+	opengl::GlContext *get_context();
 
 private:
+	/// The current size of the framebuffer.
 	coord::window size;
+	/// The SDL struct representing this window.
 	SDL_Window *window;
 
+	/// This window's OpenGL context. It's optional because it can't be constructed immediately,
+	/// but after the constructor runs it's guaranteed to be available.
 	std::experimental::optional<opengl::GlContext> context;
 };
 

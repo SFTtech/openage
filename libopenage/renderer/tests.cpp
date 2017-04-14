@@ -78,7 +78,7 @@ void renderer_demo_0() {
 	window.make_context_current();
 	auto renderer = std::make_unique<opengl::GlRenderer>(window.get_context());
 
-	auto vshader_src = resources::ShaderSource::from_string(
+	auto vshader_src = resources::ShaderSource(
 		resources::shader_source_t::glsl_vertex,
 		R"s(
 #version 330
@@ -98,7 +98,7 @@ void main() {
 }
 )s");
 
-	auto fshader_src = resources::ShaderSource::from_string(
+	auto fshader_src = resources::ShaderSource(
 		resources::shader_source_t::glsl_fragment,
 		R"s(
 #version 330
@@ -132,15 +132,11 @@ void main() {
 		&quad,
 		true,
 		true,
-		true,
-		true,
 	};
 
 	Renderable obj2{
 		unif_in2.get(),
 		&quad,
-		true,
-		true,
 		true,
 		true,
 	};
@@ -150,13 +146,11 @@ void main() {
 		&quad,
 		true,
 		true,
-		true,
-		true,
 	};
 
 	RenderPass pass {
 		{ obj1, obj2, obj3 },
-		renderer->get_framebuffer_target(),
+		renderer->get_display_target(),
 	};
 
 	render_demo test0{

@@ -6,12 +6,14 @@
 
 #include "../../util/path.h"
 
+
 namespace openage {
 namespace renderer {
 namespace resources {
 
 /// Available shader types present in modern graphics pipelines.
-/// Also contains information about the source language.
+/// Contains information about the source language and the shader
+/// stage that it describes.
 enum class shader_source_t {
 	glsl_vertex,
 	glsl_geometry,
@@ -20,25 +22,26 @@ enum class shader_source_t {
 	glsl_fragment,
 };
 
+/// Returns a readable description of the given shader source type.
 const char *shader_source_type_to_str(shader_source_t);
 
+/// Stores source code for a part of a shader program.
 class ShaderSource {
 public:
 	/// Obtain shader source code from a file.
-	static ShaderSource from_file(shader_source_t, const util::Path &path);
+	ShaderSource(shader_source_t, const util::Path &path);
 
 	/// Obtain shader source code from a string.
-	static ShaderSource from_string(shader_source_t, std::string &&code);
+	ShaderSource(shader_source_t, std::string &&code);
 
-	/// @returns a view of the shader source code
+	/// Returns a view of the shader source code
 	const char *get_source() const;
 
+	/// Returns the type of this shader source.
 	shader_source_t get_type() const;
 
 private:
-	ShaderSource(shader_source_t type, std::string &&code);
-
-private:
+	/// The type of the source.
 	shader_source_t type;
 
 	/// The shader source code.

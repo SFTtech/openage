@@ -25,7 +25,7 @@ public:
 	std::unique_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const&) override;
 
 	std::unique_ptr<RenderTarget> create_texture_target(std::vector<Texture*>) override;
-	RenderTarget const* get_framebuffer_target() override;
+	RenderTarget const* get_display_target() override;
 
 	void render(RenderPass const&) override;
 
@@ -35,7 +35,7 @@ private:
 
 	std::vector<GlShaderProgram> shaders;
 
-	GlRenderTarget framebuffer;
+	GlRenderTarget display;
 };
 
 }}} // openage::renderer::opengl

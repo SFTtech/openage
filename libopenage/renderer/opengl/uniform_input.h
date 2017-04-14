@@ -14,14 +14,15 @@ namespace opengl {
 
 class GlShaderProgram;
 
+/// Describes OpenGL-specific uniform valuations.
 struct GlUniformInput : public UniformInput {
+	/// The program that this was created for.
 	GlShaderProgram* program;
-	// store uniforms updates lazily
-	// execute_with reads, uploads, and clears
-	// std::unordered_map<std::string, UniformValueUpdate> updates;
-	// enable partial valuations - only some uniforms
 
-	/// Map from uniform names to their locations in the update buffer.
+	/// We store uniform updates lazily. They are only actually uploaded to GPU
+	/// when a draw call is made. Update_offs maps the uniform names to where their
+	/// value is in update_data in terms of a byte-wise offset. This is only a partial
+	/// valuation, so not all uniforms have to be present here.
 	std::unordered_map<std::string, size_t> update_offs;
 
 	/// Buffer containing untyped uniform update data.

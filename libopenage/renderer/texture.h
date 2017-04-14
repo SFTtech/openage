@@ -2,35 +2,30 @@
 
 #pragma once
 
-#include <SDL2/SDL_image.h>
-
-#include <memory>
-#include <tuple>
-#include <vector>
-
-#include "../gamedata/texture.gen.h"
 #include "resources/texture_data.h"
 
 
 namespace openage {
 namespace renderer {
 
-/**
- * A handle to texture data that has been uploaded to the GPU.
- * Obtained by registering some texture data to the renderer.
- */
+/// An abstract base for a handle to a texture buffer allocated in graphics hardware.
+/// Can be obtained by passing texture data to the renderer.
 class Texture {
-protected:
-	Texture(resources::TextureInfo);
-
 public:
 	virtual ~Texture();
 
+	/// Returns the texture information.
 	const resources::TextureInfo& get_info() const;
 
+	/// Copies this texture's data from graphics hardware into a CPU-accessible
+	/// TextureData buffer.
 	virtual resources::TextureData into_data() const = 0;
 
 protected:
+	/// Constructs the base with the given information.
+	Texture(resources::TextureInfo);
+
+	/// Information about the size, format, etc. of this texture.
 	resources::TextureInfo info;
 };
 

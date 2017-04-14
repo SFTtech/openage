@@ -3,6 +3,7 @@
 #pragma once
 
 #include <epoxy/gl.h>
+#include <experimental/optional>
 
 #include "../texture.h"
 
@@ -28,6 +29,14 @@ public:
 	GlTexture(size_t width, size_t height, resources::pixel_format);
 	~GlTexture();
 
+	// TODO support copying in the future
+	GlTexture(const GlTexture&) = delete;
+	GlTexture &operator =(const GlTexture&) = delete;
+
+	/// Moving is supported.
+	GlTexture(GlTexture&&);
+	GlTexture &operator =(GlTexture&&);
+
 	/// Returns the OpenGL handle to this texture.
 	GLuint get_handle() const;
 
@@ -35,7 +44,7 @@ public:
 
 private:
 	/// The OpenGL handle to this texture.
-	GLuint handle;
+	std::experimental::optional<GLuint> handle;
 };
 
 }}} // openage::renderer::opengl
