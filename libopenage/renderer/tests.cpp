@@ -80,34 +80,73 @@ void renderer_demo_0() {
 
 	auto vshader_src = resources::ShaderSource::from_string(
 		resources::shader_source_t::glsl_vertex,
-		"#version 330\n"
-		"smooth out vec2 pos;"
-		"void main() {"
-		"  gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;"
-		"  gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;"
-		"  gl_Position.z = 1.0;"
-		"  gl_Position.w = 1.0;"
-		"  gl_Position.xy *= 0.8;"
-		"  pos = (vec2(gl_Position) + 1.0) / 2.0;"
-		"}"
-	);
+		R"s(
+#version 330
+uniform vec4 bounds;
+
+void main() {
+	gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;
+	gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;
+	gl_Position.z = 1.0;
+	gl_Position.w = 1.0;
+
+	gl_Position.x *= bounds[2] - bounds[0];
+	gl_Position.y *= bounds[3] - bounds[1];
+
+	gl_Position.x += (bounds[0] + bounds[2]) / 2.0;
+	gl_Position.y += (bounds[1] + bounds[3]) / 2.0;
+}
+)s");
 
 	auto fshader_src = resources::ShaderSource::from_string(
 		resources::shader_source_t::glsl_fragment,
-		"#version 330\n"
-		"smooth in vec2 pos;"
-		"out vec4 color;"
-		"void main() {"
-		"  color = vec4(1.0f, pos.y, pos.x, 1.0f);"
-		"}"
+		R"s(
+#version 330
+uniform vec4 color;
+out vec4 col;
+
+void main() {
+	col = color;
+}
+)s");
+
+	std::vector<resources::ShaderSource> srcs = {vshader_src, fshader_src};
+	auto shader = renderer->add_shader(srcs);
+
+	auto unif_in1 = shader->new_uniform_input(
+		"bounds", Eigen::Vector4f(-0.6f, -0.6f, -0.4f, -0.4f),
+		"color", Eigen::Vector4f(1.0f, 0.0f, 0.0f, 1.0f)
+	);
+	auto unif_in2 = shader->new_uniform_input(
+		"bounds", Eigen::Vector4f(0.0f, 0.3f, 0.3f, 0.5f),
+		"color", Eigen::Vector4f(0.0f, 1.0f, 0.0f, 1.0f)
+	);
+	auto unif_in3 = shader->new_uniform_input(
+		"bounds", Eigen::Vector4f(0.5f, -0.7f, 0.6f, -0.3f),
+		"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 1.0f)
 	);
 
-	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
-
-	auto unif_in = shader->new_uniform_input();
 	Geometry quad;
-	Renderable gaben {
-		unif_in.get(),
+	Renderable obj1 {
+		unif_in1.get(),
+		&quad,
+		true,
+		true,
+		true,
+		true,
+	};
+
+	Renderable obj2{
+		unif_in2.get(),
+		&quad,
+		true,
+		true,
+		true,
+		true,
+	};
+
+	Renderable obj3 {
+		unif_in3.get(),
 		&quad,
 		true,
 		true,
@@ -116,7 +155,7 @@ void renderer_demo_0() {
 	};
 
 	RenderPass pass {
-		{ gaben },
+		{ obj1, obj2, obj3 },
 		renderer->get_framebuffer_target(),
 	};
 

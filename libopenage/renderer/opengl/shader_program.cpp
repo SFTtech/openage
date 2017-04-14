@@ -67,32 +67,39 @@ static gl_uniform_t glsl_str_to_type(std::experimental::string_view str) {
 
 void parse_glsl(std::map<std::string, GlUniform> &uniforms, const char *code) {
 	// this will match all uniform declarations
-	std::regex unif_r("uniform\\s+\\w+\\s+\\w+(?=\\s*;)");
+	std::regex const unif_r("uniform\\s+\\w+\\s+\\w+(?=\\s*;)");
 	std::regex const word_r("\\w+");
 
-	std::cmatch results;
-	if (regex_search(code, results, unif_r)) {
-		for (auto result : results) {
-			std::string sresult(result);
+	const char *end = code;
+	while (*end != '\0') {
+		end += 1;
+	}
 
-			// remove "uniform"
-			sresult = sresult.substr(7);
+	auto unif_iter = std::cregex_iterator(code, end, unif_r);
+	auto unif_iter_end = std::cregex_iterator();
+	for (; unif_iter != unif_iter_end; unif_iter++) {
+		std::string unif = (*unif_iter).str();
 
-			std::smatch words;
-			regex_search(sresult, words, word_r);
+		// remove "uniform"
+		unif = unif.substr(7);
 
-			// first word is the type
-			gl_uniform_t type = glsl_str_to_type(words.str(0));
+		auto word_iter = std::sregex_iterator(unif.begin(), unif.end(), word_r);
 
-			// second word is the uniform name
-			uniforms.insert(std::pair<std::string, GlUniform>(
-				                words.str(1),
-				                GlUniform {
-					                type,
-					                0,
-				                }
-			                ));
-		}
+		// first word is the type
+		gl_uniform_t type = glsl_str_to_type((*word_iter).str());
+
+		// second word is the uniform name
+		word_iter++;
+
+		// second word is the uniform name
+		uniforms.insert(std::pair<std::string, GlUniform>(
+			                (*word_iter).str(),
+			                GlUniform {
+				                type,
+				                0,
+				            }
+		                ));
+
 	}
 }
 
