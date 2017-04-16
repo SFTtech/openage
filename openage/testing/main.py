@@ -49,6 +49,7 @@ def init_subparser(cli):
     cli.add_argument("test", nargs='*', help="run this test")
 
 
+# pylint: disable=too-many-branches
 def process_args(args, error):
     """ Processes the given args, detecting errors. """
     if not (args.run_all_tests or args.demo or args.test or args.benchmark):

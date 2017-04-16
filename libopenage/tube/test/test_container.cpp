@@ -5,8 +5,10 @@
 #include "../tube.h"
 #include "../tube_continuous.h"
 #include "../tube_discrete.h"
+#include "../tube_queue.h"
 
 #include <map>
+#include <set>
 
 namespace openage {
 namespace tube {
@@ -140,6 +142,62 @@ void test_list() {
 }
 
 void test_queue() {
+	Queue<int> q;
+	q.insert(0, 1);
+	q.insert(2, 2);
+	q.insert(4, 3);
+	q.insert(10, 4);
+	q.dump();
+	TESTEQUALS(*q.begin(0), 1);
+	TESTEQUALS(*q.begin(1), 1);
+	TESTEQUALS(*q.begin(2), 2);
+	TESTEQUALS(*q.begin(3), 2);
+	TESTEQUALS(*q.begin(4), 3);
+	TESTEQUALS(*q.begin(5), 3);
+	TESTEQUALS(*q.begin(10), 4);
+	TESTEQUALS(*q.begin(12), 4);
+	TESTEQUALS(*q.begin(100000), 4);
+
+	{
+		std::set<int> reference = {1,2,3};
+		for (auto it = q.between(0,6); it != q.end(); ++it) {
+			auto ri = reference.find(it.value());
+			if (ri != reference.end()) {
+				reference.erase(ri);
+			}
+		}
+		TESTEQUALS(reference.empty(), true);
+	}
+	{
+		std::set<int> reference = {2,3,4};
+		for (auto it = q.between(1,40); it != q.end(); ++it) {
+			auto ri = reference.find(it.value());
+			if (ri != reference.end()) {
+				reference.erase(ri);
+			}
+		}
+		TESTEQUALS(reference.empty(), true);
+	}
+	{
+		std::set<int> reference = {};
+		for (auto it = q.between(30,40); it != q.end(); ++it) {
+			auto ri = reference.find(it.value());
+			if (ri != reference.end()) {
+				reference.erase(ri);
+			}
+		}
+		TESTEQUALS(reference.empty(), true);
+	}
+	{
+		std::set<int> reference = {1,2,3,4};
+		for (auto it = q.between(0,40); it != q.end(); ++it) {
+			auto ri = reference.find(it.value());
+			if (ri != reference.end()) {
+				reference.erase(ri);
+			}
+		}
+		TESTEQUALS(reference.empty(), true);
+	}
 
 }
 

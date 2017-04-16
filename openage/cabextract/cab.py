@@ -336,9 +336,7 @@ class CABFile(FileCollection):
                     compressed_data_stream,
                     window_bits=window_bits,
                     reset_interval=0)
-
-                folder.plain_stream = StreamSeekBuffer(unseekable_plain_stream)
-
+                folder.plain_stream = StreamSeekBuffer(unseekable_plain_stream)   # pylint: disable=redefined-variable-type,locally-enabled
             else:
                 raise Exception("Unknown compression type %d"
                                 % compression_type)
