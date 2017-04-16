@@ -22,4 +22,24 @@ tube_time_t existent_until (const _T &t) {
 	return t.existent_until();
 }
 
+template <typename val_t>
+class TubeIterator {
+public:
+	virtual val_t &value() = 0;
+};
+
+template<typename _T>
+bool valid(const _T &, const tube_time_t &at);
+
+template <class _T>
+using _valid_function_t = bool (*)(const _T&, const tube_time_t &);
+
+template<typename _T>
+bool valid(const _T &t,
+           const tube_time_t& time) {
+	return existent_from(t) <= time && existent_until(t) > time;
+}
+
+
+
 }} // openage::tube

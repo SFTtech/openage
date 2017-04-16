@@ -10,18 +10,6 @@
 namespace openage {
 namespace tube {
 
-template <typename val_t>
-class TubeIterator {
-public:
-	virtual val_t &value() = 0;
-};
-
-template<typename _T>
-bool valid(const _T &, const tube_time_t &at);
-
-template <class _T>
-using _valid_function_t = bool (*)(const _T&, const tube_time_t &);
-
 template <class key_t,
           class val_t,
           class container_t,
@@ -38,7 +26,6 @@ protected:
 
 	tube_time_t from;
 	tube_time_t to;
-	tube_time_t now;
 
 public:
 	TubeMapFilterIterator(const iterator_t &base,
@@ -49,14 +36,12 @@ public:
 		container_end{container_end},
 		from{from},
 		to{to} {}
-		now{from} {}
 
 	TubeMapFilterIterator(const TubeMapFilterIterator &rhs) :
 		base{rhs.base},
 		container_end{rhs.container_end},
 		from{rhs.from},
-		to{rhs.to},
-		now{rhs.now} {}
+		to{rhs.to} {}
 
 	TubeMapFilterIterator &operator =(const TubeMapFilterIterator &rhs) {
 		this->base = rhs.base;
@@ -110,12 +95,5 @@ public:
 		return this->base->first;
 	}
 };
-
-template<typename _T>
-bool valid(const _T &t,
-           const tube_time_t& time) {
-	return existent_from(t) <= time && existent_until(t) > time;
-}
-
 
 }} // openage::tube

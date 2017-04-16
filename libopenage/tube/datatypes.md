@@ -44,7 +44,6 @@ Set Container
 ----------------
 
 The set container stores items, just as a normal array would. It keeps track of the existence of the items, but does not guarentee any particular ordering (similar to std::unordered_set).
-=======
 This Container is useful for any non-indexed data structures, for example projectiles.
 
 Queue Container
@@ -56,4 +55,3 @@ This container is useful for example for action queues and buildung queues.
 
 TUBE FILES
 ============
-
