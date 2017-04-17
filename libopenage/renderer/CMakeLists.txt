@@ -1,9 +1,10 @@
 add_sources(libopenage
   tests.cpp
   texture.cpp
-	window.cpp
+  window.cpp
   text.cpp
   color.cpp
+  renderable.cpp
 )
 
 pxdgen(

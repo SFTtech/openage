@@ -14,7 +14,7 @@ class UniformInput;
 class Texture;
 
 class ShaderProgram {
-private:
+public:
 	// Template dispatches for uniform variable setting.
 	void update_uniform_input(UniformInput*) {}
 
@@ -44,6 +44,10 @@ private:
 
 	void update_uniform_input(UniformInput *input, const char *unif, Eigen::Vector4f const &val) {
 		this->set_v4f32(input, unif, val);
+	}
+	
+	void update_uniform_input(UniformInput *input, const char *unif, Texture const *val) {
+		this->set_tex(input, unif, val);
 	}
 
 	template<typename T>

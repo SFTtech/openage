@@ -4,6 +4,7 @@
 #include <epoxy/gl.h>
 #include <functional>
 #include <unordered_map>
+#include <memory>
 
 #include "../log/log.h"
 #include "geometry.h"
@@ -11,6 +12,7 @@
 #include "resources/shader_source.h"
 #include "opengl/renderer.h"
 #include "window.h"
+#include "renderable.h"
 
 
 namespace openage {
@@ -24,8 +26,8 @@ struct render_demo {
 std::function<void(Window *)> setup;
 std::function<void()> frame;
 std::function<void(const coord::window &)> resize;
+std::function<void(const uint16_t, const uint16_t)> click;
 };
-
 
 void render_test(Window &window, const render_demo *actions) {
 SDL_Event event;
@@ -64,12 +66,16 @@ while (running) {
 				break;
 			}
 			break;
+		}
+		case SDL_MOUSEBUTTONDOWN: {
+			actions->click(event.button.x, event.button.y);
+			break;
 		}}
 	}
 
 	actions->frame();
 
-	window.swap();
+    //window.swap();
 }
 }
 
@@ -98,32 +104,86 @@ void main() {
 }
 )s");
 
+	auto vshader_display_src = resources::ShaderSource(
+		resources::shader_source_t::glsl_vertex,
+		R"s(
+#version 330
+
+out vec2 v_uv;
+
+void main() {
+	gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;
+	gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;
+	gl_Position.z = 1.0;
+	gl_Position.w = 1.0;
+
+	v_uv = gl_Position.xy * 0.5 + 0.5;
+}
+)s");
+
 	auto fshader_src = resources::ShaderSource(
 		resources::shader_source_t::glsl_fragment,
 		R"s(
 #version 330
+
 uniform vec4 color;
-out vec4 col;
+uniform uint u_id;
+uniform uint writes_id;
+
+layout(location=0) out vec4 col;
+layout(location=1) out uint id;
 
 void main() {
 	col = color;
+	if (bool(writes_id)) {
+		id = u_id + 1u;
+	} else {
+		//not writing anything does produce undefined values
+		id = 0u;
+	}
+}
+)s");	
+	
+	auto fshader_display_src = resources::ShaderSource(
+		resources::shader_source_t::glsl_fragment,
+		R"s(
+#version 330
+uniform sampler2D color_texture;
+
+in vec2 v_uv;
+out vec4 col;
+
+void main() {
+	vec3 col2 = texture(color_texture, v_uv).xyz;
+	col = vec4(col2, 1.0);
 }
 )s");
 
+
 	std::vector<resources::ShaderSource> srcs = {vshader_src, fshader_src};
+	std::vector<resources::ShaderSource> srcs_display = {vshader_display_src, fshader_display_src};
 	auto shader = renderer->add_shader(srcs);
+	log::log(INFO << "Before dispaly shader");
+	auto shader_display = renderer->add_shader(srcs_display);
 
 	auto unif_in1 = shader->new_uniform_input(
-		"bounds", Eigen::Vector4f(-0.6f, -0.6f, -0.4f, -0.4f),
-		"color", Eigen::Vector4f(1.0f, 0.0f, 0.0f, 1.0f)
+		"bounds", Eigen::Vector4f(-1.0f, -1.0f, -0.8f, -0.8f),
+		"color", Eigen::Vector4f(1.0f, 0.0f, 0.0f, 1.0f),
+		"u_id", 1u,
+		"writes_id", 1u 
+
 	);
 	auto unif_in2 = shader->new_uniform_input(
 		"bounds", Eigen::Vector4f(0.0f, 0.3f, 0.3f, 0.5f),
-		"color", Eigen::Vector4f(0.0f, 1.0f, 0.0f, 1.0f)
+		"color", Eigen::Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
+		"u_id", 2u,
+		"writes_id", 1u
 	);
 	auto unif_in3 = shader->new_uniform_input(
 		"bounds", Eigen::Vector4f(0.5f, -0.7f, 0.6f, -0.3f),
-		"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 1.0f)
+		"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
+		"u_id", 3u,
+		"writes_id", 1u
 	);
 
 	Geometry quad;
@@ -134,6 +194,11 @@ void main() {
 		true,
 	};
 
+	obj1.on_click_callback = [](){
+		log::log(INFO << "Object 1 clicked");
+	};
+	shader->update_uniform_input(unif_in1.get(), "u_id", static_cast<uint32_t>(obj1.id));
+
 	Renderable obj2{
 		unif_in2.get(),
 		&quad,
@@ -141,17 +206,54 @@ void main() {
 		true,
 	};
 
+	obj2.on_click_callback = [](){
+		log::log(INFO << "Object 2 clicked");
+	};
+	shader->update_uniform_input(unif_in2.get(), "u_id", static_cast<uint32_t>(obj2.id));
+
 	Renderable obj3 {
 		unif_in3.get(),
 		&quad,
 		true,
 		true,
+		false
+	};
+
+	obj3.on_click_callback = [](){
+		log::log(INFO << "Object 3 clicked");
+	};
+	shader->update_uniform_input(unif_in3.get(), "u_id", static_cast<uint32_t>(obj3.id), "writes_id", obj3.writes_id ? 1u : 0u);
+
+	std::unique_ptr<opengl::GlTexture> color_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(window.get_size().x, window.get_size().y, resources::pixel_format::rgb8) );
+	std::unique_ptr<opengl::GlTexture> id_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(window.get_size().x, window.get_size().y, resources::pixel_format::r16ui) );
+	opengl::GlTexture* color_texture_ptr = color_texture.get();
+	opengl::GlTexture* id_texture_ptr = id_texture.get();
+	std::vector<const opengl::GlTexture*> fbo_textures;
+	fbo_textures.push_back(color_texture_ptr);
+	fbo_textures.push_back(id_texture_ptr);
+
+	auto fbo = std::unique_ptr<opengl::GlRenderTarget>(new opengl::GlRenderTarget(fbo_textures));
+
+	auto color_texture_uniform = shader_display->new_uniform_input("color_texture", static_cast<Texture const*>(color_texture.get()));
+	Renderable display_obj {
+		color_texture_uniform.get(),
+		&quad,
+		false,
+		false,
 	};
 
 	RenderPass pass {
 		{ obj1, obj2, obj3 },
+		fbo.get()
+	};
+
+	RenderPass display_pass {
+		{ display_obj } ,
 		renderer->get_display_target(),
 	};
+
+	resources::TextureData id_texture_data = id_texture->into_data();
+	bool texture_data_valid = false;
 
 	render_demo test0{
 		// init
@@ -171,7 +273,9 @@ void main() {
 		},
 		// frame
 		[&]() {
+			texture_data_valid = false;
 			renderer->render(pass);
+			renderer->render(display_pass);
 			window.swap();
 			window.get_context()->check_error();
 			/*simplequad->use();
@@ -189,6 +293,36 @@ void main() {
 		[&](const coord::window &new_size) {
 			// handle in renderer..
 			glViewport(0, 0, new_size.x, new_size.y);
+			//resize fbo
+			color_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(new_size.x, new_size.y, resources::pixel_format::rgb8) );
+			id_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(new_size.x, new_size.y, resources::pixel_format::r16ui) );
+			std::vector<const opengl::GlTexture*> fbo_textures_new;
+			fbo_textures_new.push_back(color_texture.get());
+			fbo_textures_new.push_back(id_texture.get());
+
+			fbo = std::unique_ptr<opengl::GlRenderTarget>(new opengl::GlRenderTarget(fbo_textures_new));
+			shader_display->update_uniform_input(color_texture_uniform.get(), "color_texture", static_cast<Texture const*>(color_texture.get()));
+			pass.target = fbo.get();
+		},
+		//click
+		[&](const uint16_t x, const uint16_t y) {
+			log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
+			if (!texture_data_valid) {
+				id_texture_data = id_texture->into_data();
+				texture_data_valid = true;
+			}
+			auto texture_dimensions = id_texture->get_info().get_size();
+			auto position = (texture_dimensions.second-y)*texture_dimensions.first + x;
+			position *= 2; //2 byte per pixel
+			auto id = *reinterpret_cast<const uint16_t*>(id_texture_data.get_data()+position);
+			log::log(INFO << "Id-texture-value at location: " << id);
+			if (id == 0) {
+				//no renderable at given location
+				log::log(INFO << "Clicked at non existent object");
+				return;
+			}
+			id--; //real id is id-1
+			Renderable::get(id)->on_click_callback();
 		}
 	};
 

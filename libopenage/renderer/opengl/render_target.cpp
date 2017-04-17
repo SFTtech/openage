@@ -16,11 +16,17 @@ GlRenderTarget::GlRenderTarget()
 GlRenderTarget::GlRenderTarget(std::vector<const GlTexture*> textures) {
 	glGenFramebuffers(1, &*this->handle);
 	glBindFramebuffer(GL_FRAMEBUFFER, *this->handle);
+		
+	std::vector<GLenum> drawBuffers;
 
 	for (size_t i = 0; i < textures.size(); i++) {
 		// TODO figure out attachment points from pixel formats
-		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i, GL_TEXTURE_2D, textures[i]->get_handle(), 0);
+		auto attachmentPoint = GL_COLOR_ATTACHMENT0 + i;
+		glFramebufferTexture2D(GL_FRAMEBUFFER, attachmentPoint, GL_TEXTURE_2D, textures[i]->get_handle(), 0);
+		drawBuffers.push_back(attachmentPoint);
 	}
+
+	glDrawBuffers(drawBuffers.size(), drawBuffers.data());
 
 	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
 		throw Error(MSG(err) << "Could not create OpenGL framebuffer.");

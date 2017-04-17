@@ -4,6 +4,7 @@
 
 #include "../../log/log.h"
 #include "../../error/error.h"
+#include "../renderable.h"
 #include "texture.h"
 #include "shader_program.h"
 #include "uniform_input.h"
@@ -42,11 +43,11 @@ RenderTarget const* GlRenderer::get_display_target() {
 }
 
 void GlRenderer::render(RenderPass const& pass) {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	auto gl_target = dynamic_cast<const GlRenderTarget*>(pass.target);
 	gl_target->bind_write();
+
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for (auto obj : pass.renderables) {
 		if (obj.alpha_blending) {

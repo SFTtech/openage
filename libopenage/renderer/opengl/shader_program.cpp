@@ -317,6 +317,8 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry
 			GLuint tex = *reinterpret_cast<const GLuint*>(ptr);
 			glActiveTexture(GL_TEXTURE0 + tex_unit);
 			glBindTexture(GL_TEXTURE_2D, tex);
+			//TODO: maybe call this at an more appropiate position
+			glUniform1i(loc, tex_unit);
 			this->textures_per_texunits[tex_unit] = tex;
 			break;
 		}

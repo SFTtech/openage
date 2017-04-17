@@ -19,7 +19,7 @@ public:
 
 	/// Copies this texture's data from graphics hardware into a CPU-accessible
 	/// TextureData buffer.
-	virtual resources::TextureData into_data() const = 0;
+	virtual resources::TextureData into_data() = 0;
 
 protected:
 	/// Constructs the base with the given information.

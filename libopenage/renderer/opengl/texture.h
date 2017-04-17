@@ -40,11 +40,19 @@ public:
 	/// Returns the OpenGL handle to this texture.
 	GLuint get_handle() const;
 
-	resources::TextureData into_data() const override;
+	resources::TextureData into_data() override;
 
 private:
 	/// The OpenGL handle to this texture.
 	std::experimental::optional<GLuint> handle;
+
+	/// The current pack alignment. See glPixelStorei
+	static GLint PACK_ALIGNMENT;
+	/// The current unpack alignment. See glPixelStorei
+	static GLint UNPACK_ALIGNMENT;
+
+	void adjust_unpack_alignment(const GLint alignment);
+	void adjust_pack_alignment(const GLint alignment);
 };
 
 }}} // openage::renderer::opengl
