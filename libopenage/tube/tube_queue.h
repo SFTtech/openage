@@ -38,11 +38,17 @@ public:
 	TubeQueueFilterIterator<_T, Queue<_T>> begin(
 		const tube_time_t &t = -std::numeric_limits<tube_time_t>::infinity())
 	{
-		return TubeQueueFilterIterator<_T, Queue<_T>>(
-		    container.begin(),
-		    container.end(),
-		    t,
-		    std::numeric_limits<tube_time_t>::infinity());
+		for (auto it = this->container.begin(); it != this->container.end(); ++it) {
+			if (it->time() >= t) {
+				return TubeQueueFilterIterator<_T, Queue<_T>>(
+					it,
+					container.end(),
+					t,
+					std::numeric_limits<tube_time_t>::infinity());
+			}
+		}
+
+		return this->end(t);
 	}
 
 	TubeQueueFilterIterator<_T, Queue<_T>> end(

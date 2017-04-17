@@ -147,16 +147,16 @@ void test_queue() {
 	q.insert(2, 2);
 	q.insert(4, 3);
 	q.insert(10, 4);
-	q.dump();
+	q.insert(100001, 5);
 	TESTEQUALS(*q.begin(0), 1);
-	TESTEQUALS(*q.begin(1), 1);
+	TESTEQUALS(*q.begin(1), 2);
 	TESTEQUALS(*q.begin(2), 2);
-	TESTEQUALS(*q.begin(3), 2);
+	TESTEQUALS(*q.begin(3), 3);
 	TESTEQUALS(*q.begin(4), 3);
-	TESTEQUALS(*q.begin(5), 3);
+	TESTEQUALS(*q.begin(5), 4);
 	TESTEQUALS(*q.begin(10), 4);
-	TESTEQUALS(*q.begin(12), 4);
-	TESTEQUALS(*q.begin(100000), 4);
+	TESTEQUALS(*q.begin(12), 5);
+	TESTEQUALS(*q.begin(100000), 5);
 
 	{
 		std::set<int> reference = {1,2,3};
