@@ -17,39 +17,75 @@ namespace tube {
 /**
  * A timely ordered list with several management functions
  *
- * This class manages different time-based management functions for the double-
- * linked list approach that lies underneath. It contains a double-linked list
- * to be accessed via a non-accurate timing functionality, this means, that for
- * getting a value, not the exact timestamp has to be known, it will always return
- * the one closest, less or equal to the requested one.
+ * This class manages different time-based management functions for list
+ * approach that lies underneath. It contains list to be accessed via a
+ * non-accurate timing functionality, this means, that for getting a value, not
+ * the exact timestamp has to be known, it will always return the one closest,
+ * less or equal to the requested one.
  **/
 template <typename _T>
 class KeyframeContainer {
 public:
 	/**
-     * A element of the double-linked list KeyframeContainer
+     * A element of the tubecontainer. This is especially used to keep track of
+     * the value-timing.
 	 */
 	class Keyframe {
 	public:
+		/**
+		 * New default object at time -INF.
+		 */
+		Keyframe() {}
+
+		/**
+		 * New, default-constructed element at the given time
+		 */
 		Keyframe(const tube_time_t &time) :
-			time(time) {}
+			time{time} {}
 
-		// Contruct it from time and value
+		/**
+		 * New element fron time and value
+		 */
 		Keyframe(const tube_time_t &time, const _T &value) :
-			time(time),
-			value(value) {}
+			time{time},
+			value{value} {}
 
-		const tube_time_t time = 0;
+		const tube_time_t time = std::numeric_limits<tube_time_t>::infinity();
 		_T value = _T();
 	};
 
+	/**
+	 * The underlaying container type.
+	 *
+	 * The most important property of this container is the iterator validity on
+	 * insert and remove.
+	 */
 	typedef std::list<Keyframe> tubecontainer;
+
+	/**
+	 * The iterator type to access elements in the container
+	 */
 	typedef typename tubecontainer::const_iterator KeyframeIterator;
+
+	/** default c'tor **/
 	KeyframeContainer();
 	~KeyframeContainer();
 
-	// Get the last element with e->time <= time
-	KeyframeIterator last(const tube_time_t &time, const KeyframeIterator & hint) const;
+	/**
+	 * Get the last element with e->time <= time, given a hint where to
+	 * start the search.
+	 */
+	KeyframeIterator last(const tube_time_t &time,
+	                      const KeyframeIterator & hint) const;
+
+	/**
+	 * Get the last element with e->time <= time, without a hint where to start
+	 * searching.
+	 *
+	 * The usage of this method is discouraged - except if there is absolutely
+	 * no chance for you to have a hint (or the container is known to be nearly
+	 * empty)
+	 */
 	KeyframeIterator last(const tube_time_t &time) const {
 		return this->last(time, this->container.begin());
 	}
@@ -57,17 +93,18 @@ public:
 	/**
 	 * Insert a new element without a hint.
 	 *
-	 * This function is recommended for use, whenever possible, keep a hint to insert
-	 * the data.
+	 * This function is not recommended for use, whenever possible, keep a hint
+	 * to insert the data.
 	 */
 	KeyframeIterator insert(const Keyframe &value) {
 		return this->insert(value, this->container.begin());
 	}
 
 	/**
-	 * Insert a new element. The hint shall give an approximate location, where the
-	 * inserter will start to look for a insertion point. If a good hint is given, the
-	 * runtime of this function will not be affected by the current history size.
+	 * Insert a new element. The hint shall give an approximate location, where
+	 * the inserter will start to look for a insertion point. If a good hint is
+	 * given, the runtime of this function will not be affected by the current
+	 * history size.
 	 */
 	KeyframeIterator insert(const Keyframe &value, const KeyframeIterator &hint);
 
@@ -79,6 +116,7 @@ public:
 	KeyframeIterator insert(const tube_time_t &time, const _T&value) {
 		return this->insert(Keyframe(time, value), this->container.begin());
 	}
+
 	/**
 	 * Create and insert a new element. The hint gives an approximate location.
 	 */
@@ -96,20 +134,32 @@ public:
 	 */
 	KeyframeIterator erase(KeyframeIterator );
 
+	/**
+	 * Obtain an iterator to the first value with the smallest timestamp.
+	 */
 	KeyframeIterator begin() const {
 		return container.begin();
 	}
 
+	/**
+	 * Obtain an iterator to the position after the last value.
+	 */
 	KeyframeIterator end() const {
 		return container.end();
 	}
 
+	/**
+	 * Debugging method to be used from gcc to understand bugs better.
+	 */
 	void __attribute__ ((noinline)) dump() {
 		for (auto e : container) {
 			std::cout << "Element: time: " << e.time << " v: " << e.value << std::endl;
 		}
 	}
 private:
+	/**
+	 * The data store.
+	 */
 	tubecontainer container;
 };
 
@@ -123,6 +173,7 @@ KeyframeContainer<_T>::KeyframeContainer() {
 
 template<typename _T>
 KeyframeContainer<_T>::~KeyframeContainer() {
+	// We rely on std::list to destroy all elements.
 }
 
 /**

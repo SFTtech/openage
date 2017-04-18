@@ -47,9 +47,6 @@ public:
 	void kill(const tube_time_t &, const key_t &);
 	void kill(const tube_time_t &, const TubeMapFilterIterator<val_t, val_t, UnorderedMap> &);
 
-	bool is_alive(const tube_time_t &, const key_t &);
-	bool is_alive(const tube_time_t &, const TubeMapFilterIterator<val_t, val_t, UnorderedMap> &);
-
 	void clean(const tube_time_t &); // remove all dead elements before that point in time
 
 	void __attribute__((noinline)) dump() {
@@ -115,7 +112,7 @@ UnorderedMap<key_t, val_t>::between(const tube_time_t &from, const tube_time_t &
 		from,
 		to);
 
-	if (!it.valid(from)) {
+	if (!it.valid()) {
 		++it;
 	}
 	return it;
@@ -188,22 +185,6 @@ template<typename key_t, typename val_t>
 void UnorderedMap<key_t, val_t>::kill(const tube_time_t &time,
                                       const TubeMapFilterIterator<val_t, val_t, UnorderedMap> &it) {
 	it->second.dead = time;
-}
-
-template<typename key_t, typename val_t>
-bool UnorderedMap<key_t, val_t>::is_alive(const tube_time_t &time,
-                                          const key_t &key) {
-	auto it = this->container.find(key);
-	if (it != this->container.end()) {
-		return valid_f(it->second.value, time);
-	}
-}
-
-template<typename key_t, typename val_t>
-bool UnorderedMap<key_t, val_t>::is_alive(const tube_time_t &time,
-                                          const TubeMapFilterIterator<val_t, val_t,
-                                          UnorderedMap> &it) {
-	return valid_f(it->second.value, time);
 }
 
 template<typename key_t, typename val_t>
