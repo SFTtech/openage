@@ -4,7 +4,7 @@
 
 # the Python version number requirement is in modules/FindPython_test.cpp
 find_package(Python 3.4 REQUIRED)
-find_package(Cython 0.23 REQUIRED)
+find_package(Cython 0.25 REQUIRED)
 find_package(Numpy REQUIRED)
 
 py_get_config_var(OPT PYEXT_CXXFLAGS)
