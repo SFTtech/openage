@@ -131,15 +131,16 @@ uniform uint u_id;
 uniform uint writes_id;
 
 layout(location=0) out vec4 col;
-layout(location=1) out uint id;
+layout(location=1) out vec4 id;
 
 void main() {
 	col = color;
-	if (bool(writes_id)) {
-		id = u_id + 1u;
+	uint id_write = u_id + 1u; // 0 is for no object
+	vec3 id_vector = vec3(float(id_write >> 8) / 255.0, float(id_write & 255u) / 255.0, 0.0);
+	if (bool(writes_id) && (color.a > 0.0)) {
+		id = vec4(id_vector, 1.0);
 	} else {
-		//not writing anything does produce undefined values
-		id = 0u;
+		id = vec4(id_vector, 0.0);
 	}
 }
 )s");	
@@ -154,8 +155,7 @@ in vec2 v_uv;
 out vec4 col;
 
 void main() {
-	vec3 col2 = texture(color_texture, v_uv).xyz;
-	col = vec4(col2, 1.0);
+	col = texture(color_texture, v_uv);
 }
 )s");
 
@@ -181,7 +181,7 @@ void main() {
 	);
 	auto unif_in3 = shader->new_uniform_input(
 		"bounds", Eigen::Vector4f(0.5f, -0.7f, 0.6f, -0.3f),
-		"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
+		"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 0.5f),
 		"u_id", 3u,
 		"writes_id", 1u
 	);
@@ -224,8 +224,8 @@ void main() {
 	};
 	shader->update_uniform_input(unif_in3.get(), "u_id", static_cast<uint32_t>(obj3.id), "writes_id", obj3.writes_id ? 1u : 0u);
 
-	std::unique_ptr<opengl::GlTexture> color_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(window.get_size().x, window.get_size().y, resources::pixel_format::rgb8) );
-	std::unique_ptr<opengl::GlTexture> id_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(window.get_size().x, window.get_size().y, resources::pixel_format::r16ui) );
+	std::unique_ptr<opengl::GlTexture> color_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(window.get_size().x, window.get_size().y, resources::pixel_format::rgba8) );
+	std::unique_ptr<opengl::GlTexture> id_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(window.get_size().x, window.get_size().y, resources::pixel_format::rgba8) );
 	opengl::GlTexture* color_texture_ptr = color_texture.get();
 	opengl::GlTexture* id_texture_ptr = id_texture.get();
 	std::vector<const opengl::GlTexture*> fbo_textures;
@@ -294,8 +294,8 @@ void main() {
 			// handle in renderer..
 			glViewport(0, 0, new_size.x, new_size.y);
 			//resize fbo
-			color_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(new_size.x, new_size.y, resources::pixel_format::rgb8) );
-			id_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(new_size.x, new_size.y, resources::pixel_format::r16ui) );
+			color_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(new_size.x, new_size.y, resources::pixel_format::rgba8) );
+			id_texture = std::unique_ptr<opengl::GlTexture>( new opengl::GlTexture(new_size.x, new_size.y, resources::pixel_format::rgba8) );
 			std::vector<const opengl::GlTexture*> fbo_textures_new;
 			fbo_textures_new.push_back(color_texture.get());
 			fbo_textures_new.push_back(id_texture.get());
@@ -313,8 +313,9 @@ void main() {
 			}
 			auto texture_dimensions = id_texture->get_info().get_size();
 			auto position = (texture_dimensions.second-y)*texture_dimensions.first + x;
-			position *= 2; //2 byte per pixel
-			auto id = *reinterpret_cast<const uint16_t*>(id_texture_data.get_data()+position);
+			position *= 4; //4 byte per pixel
+			auto id_vector_ptr = reinterpret_cast<const uint8_t*>(id_texture_data.get_data()+position);
+			uint16_t id = *id_vector_ptr << 8 | *(++id_vector_ptr);
 			log::log(INFO << "Id-texture-value at location: " << id);
 			if (id == 0) {
 				//no renderable at given location

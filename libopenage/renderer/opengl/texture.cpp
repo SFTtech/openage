@@ -23,6 +23,8 @@ inline static std::tuple<GLint, GLenum, GLenum> gl_format(resources::pixel_forma
 		return std::make_tuple(GL_RGB8, GL_RGB, GL_UNSIGNED_BYTE);
 	case resources::pixel_format::rgba8:
 		return std::make_tuple(GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE);
+	case resources::pixel_format::rgba8ui:
+		return std::make_tuple(GL_RGBA8UI, GL_RGBA_INTEGER, GL_UNSIGNED_BYTE);
 	default:
 		throw Error(MSG(err) << "invalid texture format passed to OpenGL.");
 	}
@@ -35,6 +37,8 @@ static GLint alignment_requirement(resources::pixel_format fmt) {
 	case resources::pixel_format::rgb8:
 		return 1;
 	case resources::pixel_format::rgba8:
+		return 4;
+	case resources::pixel_format::rgba8ui:
 		return 4;
 	default:
 		throw Error(MSG(err) << "invalid texture format passed to OpenGL.");
@@ -131,6 +135,8 @@ inline static size_t pixel_size(resources::pixel_format fmt) {
 	case resources::pixel_format::rgb8:
 		return 3;
 	case resources::pixel_format::rgba8:
+		return 4;
+	case resources::pixel_format::rgba8ui:
 		return 4;
 	default:
 		throw Error(MSG(err) << "Tried to find size of unknown pixel format.");

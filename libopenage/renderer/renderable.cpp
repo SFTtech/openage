@@ -36,6 +36,8 @@ Renderable& Renderable::operator=(const Renderable& renderable)
 	this->writes_id = renderable.writes_id;
 	this->on_click_callback = renderable.on_click_callback;
 	this->on_area_selected_callback = renderable.on_area_selected_callback;
+
+	return *this;
 }
 
 Renderable::~Renderable()

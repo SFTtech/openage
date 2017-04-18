@@ -19,6 +19,8 @@ enum class pixel_format {
 	rgb8,
 	/// 32 bits per pixel
 	rgba8,
+	/// 32 bits per pixel stored as unsigned integer
+	rgba8ui,
 	/// 24 bits per pixel, depth texture
 	depth24,
 };
