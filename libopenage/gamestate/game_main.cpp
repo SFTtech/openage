@@ -4,6 +4,7 @@
 
 #include "../engine.h"
 #include "../log/log.h"
+#include "../scripting/script_singleton.h"
 #include "../terrain/terrain.h"
 #include "../unit/unit_type.h"
 #include "game_spec.h"
@@ -34,9 +35,21 @@ GameMain::GameMain(const Generator &generator)
 	// initialise units
 	this->placed_units.set_terrain(this->terrain);
 	generator.add_units(*this);
+    
+    // initialise scripts
+    // must be the last one to initialise of game, because scripts can access
+    // and modify gamestate from there
+    // its expermintal/proof of concept so we use singleton
+    ScriptSingleton::instance().addScript(new Script("libopenage/scripting/openage.lua", this));
+    this->gametime=0;
 }
 
-GameMain::~GameMain() {}
+GameMain::~GameMain() {
+    for(auto script : ScriptSingleton::instance().scripts) {
+        delete script;
+    }
+    ScriptSingleton::instance().scripts.clear();
+}
 
 unsigned int GameMain::player_count() const {
 	return this->players.size();
@@ -60,6 +73,12 @@ GameSpec *GameMain::get_spec() {
 
 void GameMain::update(time_nsec_t lastframe_duration) {
 	this->placed_units.update_all(lastframe_duration);
+
+    // update lua scripts
+    this->gametime += lastframe_duration;
+    for(auto script : ScriptSingleton::instance().scripts) {
+        script->update(lastframe_duration, this->gametime);
+    }
 }
 
 Civilisation *GameMain::add_civ(int civ_id) {

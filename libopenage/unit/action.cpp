@@ -5,6 +5,7 @@
 
 #include "../pathfinding/a_star.h"
 #include "../pathfinding/heuristics.h"
+#include "../scripting/script_singleton.h"
 #include "../terrain/terrain.h"
 #include "../terrain/terrain_search.h"
 #include "action.h"
@@ -818,6 +819,9 @@ void BuildAction::update_in_range(unsigned int time, Unit *target_unit) {
 		if (this->complete >= 1.0f) {
 			this->complete = build.completed = 1.0f;
 			target_location->place(build.completion_state);
+            for(auto &script : ScriptSingleton::instance().scripts) {
+                script->onBuildingFinished(target_unit, target_unit->id, target_unit->unit_type->name());
+            }
 		}
 	}
 	else {

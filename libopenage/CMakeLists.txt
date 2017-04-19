@@ -44,6 +44,7 @@ add_subdirectory("pathfinding")
 add_subdirectory("pyinterface")
 add_subdirectory("renderer")
 add_subdirectory("rng")
+add_subdirectory("scripting")
 add_subdirectory("shader")
 add_subdirectory("terrain")
 add_subdirectory("testing")
@@ -146,6 +147,8 @@ if(APPLE)
 	find_path(QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders "/usr/local/opt/qt5/include")
 endif()
 
+find_package(Lua51 REQUIRED) 
+
 # directories for header inclusion
 include_directories(
 	${OPENGL_INCLUDE_DIR}
@@ -156,6 +159,7 @@ include_directories(
 	${SDL2IMAGE_INCLUDE_DIRS}
 	${HarfBuzz_INCLUDE_DIRS}
 	${QTPLATFORM_INCLUDE_DIRS}
+	${LUA_INCLUDE_DIR}
 )
 
 # link the executable to those libraries
@@ -172,6 +176,7 @@ target_link_libraries(libopenage
 		${SDL2_LIBRARY}
 		${UTIL_LIB}
 		${HarfBuzz_LIBRARIES}
+		${LUA_LIBRARIES}
 	# TODO: change to PUBLIC (or, alternatively, remove all keywords
 	# of this type) when qt cmake scripts change declarations of the
 	# IMPORTED libraries to GLOBAL.

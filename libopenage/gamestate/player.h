@@ -8,11 +8,13 @@
 #include "civilisation.h"
 #include "population_tracker.h"
 #include "resource.h"
+#include "../scripting/script_singleton.h"
 
 
 namespace openage {
 
 class Unit;
+class Script;
 class Team;
 
 class Player {
@@ -119,6 +121,11 @@ public:
 	 * Called when a unit is destroyed.
 	 */
 	void active_unit_removed(Unit *unit);
+    
+    /**
+     * script hooks callbacks
+     */
+    std::vector<Script*> script_hooks;
 
 private:
 
