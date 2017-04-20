@@ -26,28 +26,41 @@ class UnorderedMap {
 public:
 	// Using does not work with templates
 	typedef typename std::unordered_map<key_t, map_element>::iterator iterator;
+
 // TODO return an std::optional here.
-	std::pair<bool, TubeMapFilterIterator<key_t, val_t, UnorderedMap>> operator()(const tube_time_t&, const key_t &);
+	std::pair<bool, TubeMapFilterIterator<key_t, val_t, UnorderedMap>>
+	operator()(const tube_time_t&, const key_t &);
+
 // TODO return an std::optional here.
-	std::pair<bool, TubeMapFilterIterator<key_t, val_t, UnorderedMap>> at(const tube_time_t &, const key_t &);
+	std::pair<bool, TubeMapFilterIterator<key_t, val_t, UnorderedMap>>
+	at(const tube_time_t &, const key_t &);
 
-	TubeMapFilterIterator<key_t, val_t, UnorderedMap> begin(const tube_time_t &e = std::numeric_limits<tube_time_t>::infinity());
-	TubeMapFilterIterator<key_t, val_t, UnorderedMap> end(const tube_time_t &e = std::numeric_limits<tube_time_t>::infinity());
+	TubeMapFilterIterator<key_t, val_t, UnorderedMap>
+	begin(const tube_time_t &e = std::numeric_limits<tube_time_t>::infinity());
+
+	TubeMapFilterIterator<key_t, val_t, UnorderedMap>
+	end(const tube_time_t &e = std::numeric_limits<tube_time_t>::infinity());
 
 
-	TubeMapFilterIterator<key_t, val_t, UnorderedMap> insert(const key_t &, const val_t &);
-	TubeMapFilterIterator<key_t, val_t, UnorderedMap> insert(const tube_time_t &birth, const key_t &, const val_t &);
-	TubeMapFilterIterator<key_t, val_t, UnorderedMap> insert(const tube_time_t &birth, const tube_time_t &death, const key_t &key, const val_t &value);
+	TubeMapFilterIterator<key_t, val_t, UnorderedMap>
+	insert(const tube_time_t &birth, const key_t &, const val_t &);
 
-	TubeMapFilterIterator<key_t, val_t, UnorderedMap> between(const tube_time_t &start, const tube_time_t &to);
+	TubeMapFilterIterator<key_t, val_t, UnorderedMap>
+	insert(const tube_time_t &birth, const tube_time_t &death, const key_t &key, const val_t &value);
+
+	TubeMapFilterIterator<key_t, val_t, UnorderedMap>
+	between(const tube_time_t &start, const tube_time_t &to);
 
 	void birth(const tube_time_t &, const key_t &);
-	void birth(const tube_time_t &, const TubeMapFilterIterator<val_t, val_t, UnorderedMap> &);
+	void birth(const tube_time_t &,
+	           const TubeMapFilterIterator<val_t, val_t, UnorderedMap> &);
 
 	void kill(const tube_time_t &, const key_t &);
-	void kill(const tube_time_t &, const TubeMapFilterIterator<val_t, val_t, UnorderedMap> &);
+	void kill(const tube_time_t &,
+	          const TubeMapFilterIterator<val_t, val_t, UnorderedMap> &);
 
-	void clean(const tube_time_t &); // remove all dead elements before that point in time
+	// remove all dead elements before that point in time
+	void clean(const tube_time_t &);
 
 	void __attribute__((noinline)) dump() {
 		for (auto i : container) {
@@ -116,17 +129,6 @@ UnorderedMap<key_t, val_t>::between(const tube_time_t &from, const tube_time_t &
 		++it;
 	}
 	return it;
-}
-
-template<typename key_t, typename val_t>
-TubeMapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
-UnorderedMap<key_t, val_t>::insert(const key_t &key,
-                                   const val_t &value) {
-	return this->insert(
-		existent_from(value),
-		existent_until(value),
-		key,
-		value);
 }
 
 template<typename key_t, typename val_t>

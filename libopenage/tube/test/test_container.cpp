@@ -1,11 +1,11 @@
 // Copyright 2017-2017 the openage authors. See copying.md for legal info.
 
 #include "../../testing/testing.h"
-#include "../unordered_map.h"
 #include "../tube.h"
 #include "../tube_continuous.h"
 #include "../tube_discrete.h"
 #include "../tube_queue.h"
+#include "../tube_map.h"
 
 #include <map>
 #include <set>
@@ -16,19 +16,9 @@ namespace tests {
 
 struct map_test_element {
 	volatile int value;
-	tube_time_t birth, death;
 
-	map_test_element(int v, tube_time_t b, tube_time_t d) :
-		value(v),
-		birth(b),
-		death(d) {}
-
-	tube_time_t existent_from () const {
-		return this->birth;
-	}
-	tube_time_t existent_until () const {
-		return this->death;
-	}
+	map_test_element(int v) :
+		value(v) {}
 
 	bool operator != (int rhs) {
 		return this->value != rhs;
@@ -49,10 +39,10 @@ void dump(const std::map<key_t, val_t> &map) {
 }
 
 void test_map() {
-	UnorderedMap<int, map_test_element> map;
-	map.insert(0, map_test_element(0, 0, 10));
-	map.insert(5, map_test_element(1, 5, 10));
-	map.insert(200, map_test_element(2, 100, 200));
+	UnorderedMap<int, int> map;
+	map.insert(0, 10, 0, 0);
+	map.insert(5, 10, 5, 1);
+	map.insert(100, 200, 200, 2);
 
 	// Basic tests test lookup in the middle of the range.
 	{
