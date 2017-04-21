@@ -21,6 +21,7 @@ public:
 	GlRenderer(GlContext*);
 
 	std::unique_ptr<Texture> add_texture(resources::TextureData const&) override;
+	std::unique_ptr<Texture> add_texture(resources::TextureInfo const&) override;
 
 	std::unique_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const&) override;
 

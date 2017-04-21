@@ -16,7 +16,7 @@ GlRenderTarget::GlRenderTarget()
 GlRenderTarget::GlRenderTarget(std::vector<const GlTexture*> textures) {
 	glGenFramebuffers(1, &*this->handle);
 	glBindFramebuffer(GL_FRAMEBUFFER, *this->handle);
-		
+
 	std::vector<GLenum> drawBuffers;
 
 	for (size_t i = 0; i < textures.size(); i++) {

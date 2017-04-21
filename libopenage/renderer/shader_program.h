@@ -45,17 +45,19 @@ public:
 	void update_uniform_input(UniformInput *input, const char *unif, Eigen::Vector4f const &val) {
 		this->set_v4f32(input, unif, val);
 	}
-	
+
 	void update_uniform_input(UniformInput *input, const char *unif, Texture const *val) {
 		this->set_tex(input, unif, val);
 	}
 
+	void update_uniform_input(UniformInput *input, const char *unif, Texture *val) {
+		this->set_tex(input, unif, val);
+	}
 	template<typename T>
-	void update_uniform_input(UniformInput*, const char*, T) {
-		throw Error(MSG(err) << "Unknown type..");
+	void update_uniform_input(UniformInput*, const char *unif, T) {
+		throw Error(MSG(err) << "Tried to set uniform " << unif << " using unknown type.");
 	}
 
-public:
 	/// Returns whether the shader program contains a uniform variable with the given name.
 	virtual bool has_uniform(const char *unif) = 0;
 

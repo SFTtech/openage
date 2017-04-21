@@ -4,7 +4,6 @@
 
 #include "../../log/log.h"
 #include "../../error/error.h"
-#include "../renderable.h"
 #include "texture.h"
 #include "shader_program.h"
 #include "uniform_input.h"
@@ -23,6 +22,10 @@ GlRenderer::GlRenderer(GlContext *ctx)
 
 std::unique_ptr<Texture> GlRenderer::add_texture(const resources::TextureData& data) {
 	return std::make_unique<GlTexture>(data);
+}
+
+std::unique_ptr<Texture> GlRenderer::add_texture(const resources::TextureInfo& info) {
+	return std::make_unique<GlTexture>(info);
 }
 
 std::unique_ptr<ShaderProgram> GlRenderer::add_shader(std::vector<resources::ShaderSource> const& srcs) {

@@ -36,6 +36,23 @@ public:
 	/// Returns a pointer to the raw texture data.
 	const uint8_t *get_data() const;
 
+	/// Reads the pixel at the given position and casts it to the given type.
+	/// The texture is _not_ read as if it consisted of pixels of the given type,
+	/// but rather according to its original pixel format.
+	template<typename T>
+	T read_pixel(size_t x, size_t y) const {
+		const uint8_t *data = this->data.data();
+		auto dims = this->info.get_size();
+		size_t off = (dims.second - y) * this->info.get_row_size();
+		off += x * pixel_size(this->info.get_format());
+
+		if ((off + sizeof(T)) > this->info.get_data_size()) {
+			throw Error(MSG(err) << "Pixel position (" << x << ", " << y << ") is outside texture.");
+		}
+
+		return *reinterpret_cast<const T*>(data + off);
+	}
+
 	/// Stores this texture data in the given file in the PNG format.
 	void store(const util::Path& file) const;
 

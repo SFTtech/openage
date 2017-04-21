@@ -14,7 +14,6 @@ namespace openage {
 namespace renderer {
 namespace resources {
 
-
 TextureData::TextureData(const util::Path &path, bool use_metafile) {
 	std::string native_path = path.resolve_native_path();
 	SDL_Surface *surface = IMG_Load(native_path.c_str());
@@ -72,7 +71,7 @@ TextureData::TextureData(const util::Path &path, bool use_metafile) {
 		subtextures.push_back(s);
 	}
 
-	this->info = TextureInfo(w, h, format, std::move(subtextures));
+	this->info = TextureInfo(w, h, format, 1, std::move(subtextures));
 }
 
 TextureData::TextureData(TextureInfo &&info, std::vector<uint8_t> &&data)
@@ -90,6 +89,8 @@ const uint8_t *TextureData::get_data() const {
 void TextureData::store(const util::Path& file) const {
 	log::log(MSG(info) << "Saving texture data to " << file);
 
+	// TODO support row_alignment in copying below
+	throw "unimplemented";
 	if (this->info.get_format() != pixel_format::rgba8) {
 		throw "unimplemented";
 	}
@@ -133,5 +134,3 @@ void TextureData::store(const util::Path& file) const {
 }
 
 }}}
-
-

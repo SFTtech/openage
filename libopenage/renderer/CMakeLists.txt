@@ -4,7 +4,6 @@ add_sources(libopenage
   window.cpp
   text.cpp
   color.cpp
-  renderable.cpp
 )
 
 pxdgen(
