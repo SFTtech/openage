@@ -146,7 +146,7 @@ list(REMOVE_DUPLICATES PYTHON_INTERPRETERS)
 foreach(INTERPRETER ${PYTHON_INTERPRETERS})
 
 	# python* matches pythontex.py, which we never ever want.
-	if(INTERPRETER MATCHES "pythontex.py")
+	if(INTERPRETER MATCHES "pythontex\[0-9]?\.py")
 		list(REMOVE_ITEM PYTHON_INTERPRETERS "${INTERPRETER}")
 		continue()
 	endif()
