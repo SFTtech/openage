@@ -5,14 +5,14 @@
 
 
 sanity_check:
-	# skip in debian
-	apt --version > /dev/null || make checkall
+	- skip              (? if job == "debian" ?)
+	make checkall
 
 configure:
 	./configure --mode=debug
 
 build: configure
-	CLICOLOR_FORCE=1 make -j$(nproc) build
+	make -j$(nproc) build
 
 test: build
 	make tests
