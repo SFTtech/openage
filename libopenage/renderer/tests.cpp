@@ -94,20 +94,16 @@ void main() {
 
 uniform vec4 color;
 uniform uint u_id;
-uniform uint writes_id;
 
 layout(location=0) out vec4 col;
-layout(location=1) out vec4 id;
+layout(location=1) out uint id;
 
 void main() {
-	col = color;
-	uint id_write = u_id + 1u; // 0 is for no object
-	vec3 id_vector = vec3(float(id_write >> 8) / 255.0, float(id_write & 255u) / 255.0, 0.0);
-	if (bool(writes_id) && (color.a > 0.0)) {
-		id = vec4(id_vector, 1.0);
-	} else {
-		id = vec4(id_vector, 0.0);
+	if (color.a == 0.0) {
+		discard;
 	}
+	col = color;
+	id = u_id + 1u;
 }
 )s");
 
@@ -149,22 +145,19 @@ void main() {
 	auto unif_in1 = shader->new_uniform_input(
 		"bounds", Eigen::Vector4f(-1.0f, -1.0f, -0.8f, -0.8f),
 		"color", Eigen::Vector4f(1.0f, 0.0f, 0.0f, 1.0f),
-		"u_id", 1u,
-		"writes_id", 1u
+		"u_id", 1u
 	);
 
 	auto unif_in2 = shader->new_uniform_input(
 		"bounds", Eigen::Vector4f(0.0f, 0.3f, 0.3f, 0.5f),
 		"color", Eigen::Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
-		"u_id", 2u,
-		"writes_id", 1u
+		"u_id", 2u
 	);
 
 	auto unif_in3 = shader->new_uniform_input(
 		"bounds", Eigen::Vector4f(0.5f, -0.7f, 0.6f, -0.3f),
 		"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 0.5f),
-		"u_id", 3u,
-		"writes_id", 1u
+		"u_id", 3u
 	);
 
 	Geometry quad;
@@ -191,7 +184,7 @@ void main() {
 
 	auto size = window.get_size();
 	auto color_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8));
-	auto id_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8));
+	auto id_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8ui));
 	auto fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get() } );
 
 	auto color_texture_uniform = shader_display->new_uniform_input("color_texture", color_texture.get());
@@ -243,7 +236,7 @@ void main() {
 
 			// resize fbo
 			color_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::rgba8));
-			id_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::rgba8));
+			id_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::rgba8ui));
 			fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get() } );
 
 			shader_display->update_uniform_input(color_texture_uniform.get(), "color_texture", color_texture.get());
@@ -256,9 +249,7 @@ void main() {
 				id_texture_data = id_texture->into_data();
 				texture_data_valid = true;
 			}
-			auto pixel_value = id_texture_data.read_pixel<uint32_t>(x, y);
-			uint8_t *pixel_components = reinterpret_cast<uint8_t*>(&pixel_value);
-			uint16_t id = (pixel_components[0] << 8) | pixel_components[1];
+			auto id = id_texture_data.read_pixel<uint32_t>(x, y);
 			log::log(INFO << "Id-texture-value at location: " << id);
 			if (id == 0) {
 				//no renderable at given location
