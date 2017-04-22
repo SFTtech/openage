@@ -256,9 +256,9 @@ void main() {
 				id_texture_data = id_texture->into_data();
 				texture_data_valid = true;
 			}
-			auto id = id_texture_data.read_pixel<uint32_t>(x, y);
-			id &= 0x0000ff00;
-			id >>= 8;
+			auto pixel_value = id_texture_data.read_pixel<uint32_t>(x, y);
+			uint8_t *pixel_components = reinterpret_cast<uint8_t*>(&pixel_value);
+			uint16_t id = (pixel_components[0] << 8) | pixel_components[1];
 			log::log(INFO << "Id-texture-value at location: " << id);
 			if (id == 0) {
 				//no renderable at given location

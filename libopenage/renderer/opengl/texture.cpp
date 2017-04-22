@@ -66,6 +66,9 @@ GlTexture::GlTexture(const resources::TextureInfo &info)
 	auto fmt_in_out = gl_format(this->info.get_format());
 
 	auto dims = this->info.get_size();
+
+	glPixelStorei(GL_UNPACK_ALIGNMENT, this->info.get_row_alignment());
+
 	glTexImage2D(
 		GL_TEXTURE_2D, 0,
 		std::get<0>(fmt_in_out), dims.first, dims.second, 0,
