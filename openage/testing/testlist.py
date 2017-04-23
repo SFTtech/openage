@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2017 the openage authors. See copying.md for legal info.
 
 """ Lists of all possible tests; enter your tests here. """
 
@@ -48,6 +48,17 @@ def demos_py():
            "demonstrates the translation of Python log messages")
 
 
+def benchmark_py():
+    """
+    Yields tuples of (name, description) for python benchmark
+    methods.
+    """
+
+    # TODO Add a real benchmark here, and remove this one
+    yield ("openage.testing.benchmark.benchmark_test_function",
+           "Benchmark yourself")
+
+
 def tests_cpp():
     """
     Yields tuples of (name, description, condition_function)
@@ -94,3 +105,13 @@ def demos_cpp():
            "translates a Python exception to C++")
     yield ("openage::pyinterface::tests::pyobject_demo",
            "a tiny interactive interpreter using PyObjectRef")
+
+
+def benchmark_cpp():
+    """
+    Yields tuples of (name, description) for C++ benchmark
+    methods.
+    """
+
+    # TODO Add a real benchmark here!
+    yield ("openage::test::benchmark", "Test the benchmark")
