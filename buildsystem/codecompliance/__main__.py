@@ -16,7 +16,7 @@ def parse_args():
 
     cli = argparse.ArgumentParser()
     cli.add_argument("--fast", action="store_true",
-                     help="do all checks that can be preformed quickly")
+                     help="do all checks that can be performed quickly")
     cli.add_argument("--all", action="store_true",
                      help="do all checks, even the really slow ones")
     cli.add_argument("--only-changed-files", metavar='GITREF',

@@ -94,7 +94,7 @@ Development Process
 -------------------
 
 What does openage development look like in practice?
- - extensive [syncronization](#contact)!
+ - extensive [synchronization](#contact)!
  - [doc/development.md](/doc/development.md).
 
 Can I help?
