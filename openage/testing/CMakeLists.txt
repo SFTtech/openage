@@ -10,4 +10,5 @@ add_py_modules(
 	main.py
 	testing.py
 	testlist.py
+	benchmark.py
 )

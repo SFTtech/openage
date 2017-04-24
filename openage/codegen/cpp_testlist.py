@@ -68,9 +68,9 @@ def generate_testlist(projectdir):
     """
     root_namespace = Namespace()
 
-    from ..testing.list_processor import tests_and_demos_cpp
+    from ..testing.list_processor import list_targets_cpp
 
-    for testname, _, _, _ in tests_and_demos_cpp():
+    for testname, _, _, _ in list_targets_cpp():
         root_namespace.add_functionname(testname.split('::'))
 
     func_prototypes = list(root_namespace.gen_prototypes())
