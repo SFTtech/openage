@@ -241,14 +241,8 @@ def convert_media(args):
     """ Converts the media part """
 
     # set of (drsname, suffix) to ignore
-    # if drsname is None, it matches to any naoe
-    ignored = set()
-    if args.flag("no_sounds"):
-        ignored.add((None, '.wav'))
-    if args.flag("no_graphics"):
-        ignored.add((frozenset({'graphics', 'terrain', 'gamedata'}), '.slp'))
-    if args.flag("no_interface"):
-        ignored.add((frozenset({'interface'}), '.slp'))
+    # if dirname is None, it matches to any name
+    ignored = get_filter(args)
 
     files_to_convert = []
     for dirname in ['sounds', 'graphics', 'terrain',
@@ -279,7 +273,7 @@ def convert_media(args):
             # do the dir "renaming"
             if dirname == "gamedata" and filepath.suffix == ".slp":
                 output_dir = "graphics"
-            elif dirname == "gamedata" and filepath.suffix == ".wav":
+            elif dirname in {"gamedata", "interface"} and filepath.suffix == ".wav":
                 output_dir = "sounds"
 
             files_to_convert.append((filepath, output_dir))
@@ -309,6 +303,27 @@ def convert_media(args):
             ) for (fpath, dirname) in files_to_convert),
             jobs
         )
+
+
+def get_filter(args):
+    """
+    Return a set containing tuples (DIRNAMES, SUFFIX), where DIRNAMES
+    is a set of strings. Files in directory D with D in DIRNAMES and with
+    suffix SUFFIX shall not be converted.
+    If DIRNAMES is None, it matches all directories.
+    """
+    ignored = set()
+    if args.flag("no_sounds"):
+        ignored.add((None, '.wav'))
+    if args.flag("no_graphics"):
+        ignored.add((frozenset({'graphics', 'terrain', 'gamedata'}), '.slp'))
+    if args.flag("no_interface"):
+        ignored.add((frozenset({'interface'}), '.slp'))
+        ignored.add((frozenset({'interface'}), '.bin'))
+    if args.flag("no_scripts"):
+        ignored.add((frozenset({'gamedata'}), '.bin'))
+
+    return ignored
 
 
 def change_dir(path_parts, dirname):
