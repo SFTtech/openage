@@ -352,6 +352,7 @@ void Engine::loop() {
 						}
 					}
 				}
+				break;
 			}
 
 			default:
