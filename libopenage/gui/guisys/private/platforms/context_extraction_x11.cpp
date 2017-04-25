@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include <cassert>
 
@@ -15,7 +15,7 @@ namespace qtsdl {
 std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 	assert(window);
 
-	GLXContext current_context;
+	GLXContext current_context = nullptr;
 	SDL_SysWMinfo wm_info;
 	SDL_VERSION(&wm_info.version);
 
