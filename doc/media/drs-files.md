@@ -99,10 +99,11 @@ DRS files that come with the base AoK game.
 
 ### gamedata.drs
 
-Contains random map scripts (RMS), as well as AI scripts.
+Contains random map scripts (RMS), as well as AI scripts and some graphic files.
 Random Map scripts describe how the builtin maps should be generated.
 AI scripts tell the computer what to do, such as build units, gather resources,
 and generally make it "smart". These are all `bin` files.
+The graphic files (`slp`) are described below.
 
 ### graphics.drs
 

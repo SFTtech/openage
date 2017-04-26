@@ -564,6 +564,10 @@ def init_subparser(cli):
         help="do not convert interface graphics")
 
     cli.add_argument(
+        "--no-scripts", action='store_true',
+        help="do not convert scripts (AI and Random Maps)")
+
+    cli.add_argument(
         "--no-pickle-cache", action='store_true',
         help="don't use a pickle file to skip the dat file reading.")
 
