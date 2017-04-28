@@ -1,7 +1,6 @@
 
 add_sources(libopenage
 	keyframe_container.cpp
-	#tube_container_iterator.cpp
 	tube_event.cpp
 	tube_queue.cpp
 	tube_object.cpp

@@ -13,63 +13,61 @@ const float extrapolating_time = 100.0f;
 const int init_recursion_limit = 50;
 
 void Physics::processInput(PongState &state, PongPlayer &player, std::vector<event> &events, const tube::tube_time_t &now) {
-		for (auto evnt : events) {
-			//Process only if the future has changed
-			if (player.state.get(now).state != evnt.state) {
-				player.state.set_drop(now, evnt);
+	for (auto evnt : events) {
+		//Process only if the future has changed
+		if (player.state.get(now).state != evnt.state) {
+			player.state.set_drop(now, evnt);
 
-				switch(evnt.state) {
-				case event::UP:
-				case event::DOWN: {
-					if (evnt.state == event::UP) {
-						player.speed.set_drop(now, -2);
-					} else if (evnt.state == event::DOWN) {
-						player.speed.set_drop(now, 2);
-					}
-					player.speed.set_drop(now + extrapolating_time, 0);
-
-					float new_pos = player.position.get(now) +
-								(player.speed.get(now+extrapolating_time) - player.speed.get(now) / 2 + player.speed.get(now));
-					if (new_pos < 0)
-						new_pos = 0;
-					if (new_pos > state.resolution[1])
-						new_pos = state.resolution[1];
-
-					player.position.set_drop(now+extrapolating_time, new_pos);
-					evnt.state = event::IDLE;
-					player.state.set_drop(now + extrapolating_time, evnt);
-					break;
+			switch(evnt.state) {
+			case event::UP:
+			case event::DOWN: {
+				if (evnt.state == event::UP) {
+					player.speed.set_drop(now, -2);
+				} else if (evnt.state == event::DOWN) {
+					player.speed.set_drop(now, 2);
 				}
-				case event::IDLE:
-						player.position.set_drop(now+extrapolating_time,
-							player.position.get(now));
-					break;
-				case event::START:
-					if (player.state.get(now).state == event::LOST) {
-						state.ball.position.set_drop(now, state.resolution * 0.5);
-					}
-					update_ball(state, now, init_recursion_limit);
-					break;
-				default:
-					break;
+				player.speed.set_drop(now + extrapolating_time, 0);
+
+				float new_pos = player.position.get(now) +
+							(player.speed.get(now+extrapolating_time) - player.speed.get(now) / 2 + player.speed.get(now));
+				if (new_pos < 0)
+					new_pos = 0;
+				if (new_pos > state.resolution[1])
+					new_pos = state.resolution[1];
+
+				player.position.set_drop(now+extrapolating_time, new_pos);
+				evnt.state = event::IDLE;
+				player.state.set_drop(now + extrapolating_time, evnt);
+				break;
+			}
+			case event::IDLE:
+					player.position.set_drop(now+extrapolating_time,
+						player.position.get(now));
+				break;
+			case event::START:
+				if (player.state.get(now).state == event::LOST) {
+					state.ball.position.set_drop(now, state.resolution * 0.5);
 				}
+				update_ball(state, now, init_recursion_limit);
+				break;
+			default:
+				break;
 			}
 		}
 	}
+}
 
-	void Physics::update(PongState &state, const tube::tube_time_t &now) {
-
-
-		auto pos = state.ball.position.get(now);
-		//Handle panel p1
-		if (pos[0] <= 1
-				&& pos[1] > state.p1.position.get(now) - state.p1.size.get(now) / 2
-				&& pos[1] < state.p1.position.get(now) + state.p1.size.get(now) / 2
-				&& state.ball.speed.get(now)[0] < 0) {
-			//Ball hit the paddel in this frame
-			auto s = state.ball.speed.get(now);
-			s[0] *= -1.0;
-			state.ball.speed.set_drop(now, s);
+void Physics::update(PongState &state, const tube::tube_time_t &now) {
+	auto pos = state.ball.position.get(now);
+	//Handle panel p1
+	if (pos[0] <= 1
+			&& pos[1] > state.p1.position.get(now) - state.p1.size.get(now) / 2
+			&& pos[1] < state.p1.position.get(now) + state.p1.size.get(now) / 2
+			&& state.ball.speed.get(now)[0] < 0) {
+		//Ball hit the paddel in this frame
+		auto s = state.ball.speed.get(now);
+		s[0] *= -1.0;
+		state.ball.speed.set_drop(now, s);
 		state.ball.position.set_drop(now, pos); // this line can handle the future!
 
 		update_ball(state, now, init_recursion_limit);
