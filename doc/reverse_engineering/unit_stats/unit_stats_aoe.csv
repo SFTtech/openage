@@ -1,0 +1,41 @@
+Icon,Name,Age,HP,Att.,Att. Type,Reload Time,M. Arm,P. Arm,LOS,R,Acc.,Speed,Tr. Time,Food,Wood,Stone,Gold,Special
+,Villager,I,25,3,M,?,?,?,?,0,?,M,?,50,0,0,0,
+,Priest,III,25,0,?,?,?,?,?,10,?,S,?,0,0,0,125,
+,Clubman,I,40,3,M,?,?,?,?,0,?,M,?,50,0,0,0,
+,Axeman,II,50,5,M,?,?,?,?,0,?,M,?,50,0,0,0,
+,Short Swordsman,III,60,7,M,?,?,?,?,0,?,M,?,35,0,0,15,
+,Broad Swordsman,III,70,9,M,?,?,?,?,0,?,M,?,35,0,0,15,
+,Long Swordsman,IV,80,11,M,?,?,?,?,0,?,M,?,35,0,0,15,
+,Legion,IV,160,13,M,?,?,?,?,0,?,M,?,35,0,0,15,
+,Hoplite,III,120,17,M,?,?,?,?,0,?,S,?,60,0,0,40,
+,Phalanx,IV,120,20,M,?,?,?,?,0,?,S,?,60,0,0,40,
+,Centurion,IV,160,30,M,?,?,?,?,0,?,S,?,60,0,0,40,
+,Bowman,II,35,3,P,?,?,?,?,5,?,M,?,40,20,0,0,
+,Improved Bowman,III,40,4,P,?,?,?,?,6,?,M,?,40,0,0,20,
+,Composite Bowman,III,45,5,P,?,?,?,?,7,?,M,?,40,0,0,20,
+,Chariot Archer,III,70,4,P,?,?,?,?,7,?,F,?,40,0,0,70,High resistance to conversion; triple attack vs. Priest.
+,Elephant Archer,IV,600,5,P,?,?,?,?,7,?,S,?,180,0,0,60,
+,Horse Archer,IV,60,7,P,?,?,?,?,7,?,F,?,50,0,0,70,"+2 armor vs. missile weapons*, Ballista, Helepolis"
+,Heavy Horse Archer,IV,90,8,P,?,?,?,?,7,?,F,?,50,0,0,70,"+2 armor vs. missile weapons*, Ballista, Helepolis"
+,Scout,II,60,3,M,?,?,?,?,0,?,F,?,100,0,0,0,
+,Chariot,III,100,7,M,?,?,?,?,0,?,F,?,40,60,0,0,High resistance to conversion; double attack vs. Priest.
+,Cavalry,III,150,8,M,?,?,?,?,0,?,F,?,70,80,0,0,+5 attack vs. infantry.
+,Heavy Cavalry,IV,150,10,M,?,?,?,?,0,?,F,?,70,80,0,0,"+5 attack vs. infantry; +1 armor vs. missile weapons*, Ballista, Helepolis."
+,Cataphract,IV,180,12,M,?,?,?,?,0,?,F,?,70,80,0,0,"+5 attack vs. infantry; +1 armor vs. missile weapons*, Ballista, Helepolis."
+,War Elephant,IV,600,15,M,?,?,?,?,0,?,S,?,170,0,0,40,Trample damage to adjacent units; attack strength not upgradable.
+,Stone Thrower,III,75,50,M,?,?,?,?,10,?,S,?,0,180,0,80,Fire rate once/5 sec; small damage area; minimum range 2.
+,Catapult,IV,75,60,M,?,?,?,?,12,?,S,?,0,180,0,80,Fire rate once/5 sec; medium damage area; minimum range 2.
+,Heavy Catapult,IV,150,60,M,?,?,?,?,13,?,S,?,0,180,0,80,Fire rate once/5 sec; large damage area; minimum range 2.
+,Ballista,IV,55,40,M,?,?,?,?,9,?,S,?,0,100,0,80,Fire rate once/3 sec; minimum range 3.
+,Helepolis,IV,55,40,M,?,?,?,?,10,?,S,?,0,100,0,80,Fire rate once/1.5 sec; minimum range 3.
+,Fishing Boat,I,45,0,,?,?,?,?,0,?,M,?,0,50,0,0,
+,Fishing Ship,III,75,0,,?,?,?,?,0,?,F,?,0,50,0,0,
+,Trade Boat,I,200,0,,?,?,?,?,0,?,F,?,0,100,0,0,
+,Merchant Ship,III,250,0,,?,?,?,?,0,?,F,?,0,100,0,0,
+,Light Transport,II,150,0,,?,?,?,?,0,?,M,?,0,150,0,0,
+,Heavy Transport,IV,200,0,,?,?,?,?,0,?,F,?,0,150,0,0,
+,Scout Ship,II,120,5,P,?,?,?,?,5,?,F,?,0,135,0,0,
+,War Galley,III,160,8,P,?,?,?,?,6,?,F,?,0,135,0,0,
+,Trireme,IV,200,12,P,?,?,?,?,7,?,F,?,0,135,0,0,Fire rate once/2 sec.
+,Catapult Trireme,IV,120,35,P,?,?,?,?,9,?,F,?,0,135,0,75,Fire rate once/5 sec; small damage area.
+,Juggernaught,IV,200,35,P,?,?,?,?,10,?,F,?,0,135,0,75,Fire rate once/5 sec; medium damage area.
