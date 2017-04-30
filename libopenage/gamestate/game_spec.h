@@ -101,6 +101,7 @@ public:
 	 */
 	Texture *get_texture(index_t graphic_id) const;
 
+
 	/**
 	 * lookup using a texture file name
 	 */
@@ -146,6 +147,7 @@ public:
 	AssetManager *get_asset_manager() const;
 
 private:
+	std::string get_texture_name(index_t graphic_id) const;
 	/**
 	 * check graphic id is valid
 	 */

@@ -49,25 +49,24 @@ Texture::Texture(int width, int height, std::unique_ptr<uint32_t[]> data)
 	this->subtextures.push_back({0, 0, this->w, this->h, this->w/2, this->h/2});
 }
 
-Texture::Texture(const util::Path &filename, bool use_metafile)
-	:
-	use_metafile{use_metafile},
-	filename{filename} {
-
+Texture::Texture(const util::Path &filename,
+                 bool use_metafile,
+                 SDL_Surface *surface)
+    : use_metafile{use_metafile}, filename{filename} {
 	// load the texture upon creation
-	this->load();
+	this->load(surface);
 }
 
-void Texture::load() {
+
+void Texture::load(SDL_Surface* surface) {
 	// TODO: use libpng directly.
-	SDL_Surface *surface;
 
 	// TODO: this will break if there is no native path.
 	//       but then we need to load the image
 	//       from the buffer provided by this->filename.open_r().read().
 
 	std::string native_path = this->filename.resolve_native_path();
-	surface = IMG_Load(native_path.c_str());
+	surface = (surface == nullptr ? IMG_Load(native_path.c_str()) : surface);
 
 	if (!surface) {
 		throw Error(
@@ -79,7 +78,6 @@ void Texture::load() {
 	} else {
 		log::log(MSG(dbg) << "Texture has been loaded from " << native_path);
 	}
-
 	this->buffer = std::make_unique<gl_texture_buffer>();
 
 	// glTexImage2D format determination
@@ -132,6 +130,7 @@ void Texture::load() {
 
 		this->subtextures.push_back(s);
 	}
+
 }
 
 GLuint Texture::make_gl_texture(int iformat, int oformat, int w, int h, void *data) const {
@@ -177,7 +176,7 @@ void Texture::unload() {
 
 void Texture::reload() {
 	this->unload();
-	this->load();
+	this->load(nullptr);
 }
 
 

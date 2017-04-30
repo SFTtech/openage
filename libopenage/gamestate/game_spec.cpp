@@ -88,23 +88,30 @@ index_t GameSpec::get_slp_graphic(index_t slp) {
 	return this->slp_to_graphic[slp];
 }
 
-Texture *GameSpec::get_texture(index_t graphic_id) const {
+std::string GameSpec::get_texture_name(index_t graphic_id) const {
 	if (graphic_id <= 0 || this->graphics.count(graphic_id) == 0) {
 		log::log(MSG(dbg) << "  -> ignoring graphics_id: " << graphic_id);
-		return nullptr;
+		return "";
 	}
 
 	auto g = this->graphics.at(graphic_id);
 	int slp_id = g->slp_id;
 	if (slp_id <= 0) {
 		log::log(MSG(dbg) << "  -> ignoring negative slp_id: " << slp_id);
-		return nullptr;
+		return "";
 	}
 
 	log::log(MSG(dbg) << "   slp id/name: " << slp_id << " " << g->name0);
-	std::string tex_fname = util::sformat("converted/graphics/%d.slp.png", slp_id);
+	std::string tex_fname =
+	    util::sformat("converted/graphics/%d.slp.png", slp_id);
 
-	return this->get_texture(tex_fname, true);
+	return tex_fname;
+}
+
+Texture *GameSpec::get_texture(index_t graphic_id) const {
+	std::string tex_fname = get_texture_name(graphic_id);
+
+	return (tex_fname.empty() ? nullptr : this->get_texture(tex_fname, true));
 }
 
 Texture *GameSpec::get_texture(const std::string &file_name, bool use_metafile) const {
@@ -200,6 +207,14 @@ void GameSpec::on_gamedata_loaded(const gamedata::empiresdat &gamedata) {
 	}
 
 	log::log(INFO << "Loading textures...");
+
+	std::vector<std::string> textureNames;
+	for (const auto &g : graphics) {
+		std::string texName = get_texture_name(g.second->id);
+	  textureNames.push_back(std::move(texName));
+	}
+
+	this->assetmanager->load_textures(textureNames, true, true);
 
 	// create complete set of unit textures
 	for (auto &g : this->graphics) {

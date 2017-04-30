@@ -10,7 +10,7 @@
 
 #include "util/path.h"
 
-
+class SDL_Surface;
 namespace qtsdl {
 class GuiItemLink;
 } // namespace qtsdl
@@ -58,13 +58,19 @@ public:
 	 *                         return nullptr.
 	 * @returns the queried texture handle.
 	 */
-	Texture *get_texture(const std::string &name, bool use_metafile=true,
-	                     bool null_if_missing=false);
+	Texture *get_texture(const std::string &name,
+	                     bool use_metafile = true,
+	                     bool null_if_missing = false,
+	                     SDL_Surface *surface = nullptr);
 
 	/**
 	 * Ask the kernel whether there were updates to watched files.
 	 */
 	void check_updates();
+
+	void load_textures(const std::vector<std::string> &names,
+	                   bool use_metafile = true,
+	                   bool null_if_missing = false);
 
 protected:
 	/**
@@ -72,7 +78,8 @@ protected:
 	 */
 	std::shared_ptr<Texture> load_texture(const std::string &name,
 	                                      bool use_metafile=true,
-	                                      bool null_if_missing=false);
+	                                      bool null_if_missing=false,
+					      SDL_Surface *surface=nullptr);
 
 	/**
 	 * Retrieves the texture for missing textures.

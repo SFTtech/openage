@@ -2,6 +2,9 @@
 
 #include "assetmanager.h"
 
+#include <map>
+#include <SDL2/SDL_image.h>
+
 #if WITH_INOTIFY
 #include <sys/inotify.h>
 #include <unistd.h>
@@ -14,6 +17,7 @@
 #include "log/log.h"
 
 #include "texture.h"
+#include "datastructure/task_queue.h"
 
 namespace openage {
 
@@ -54,11 +58,10 @@ Engine *AssetManager::get_engine() const {
 	return this->engine;
 }
 
-
 std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
                                                     bool use_metafile,
-                                                    bool null_if_missing) {
-
+                                                    bool null_if_missing,
+                                                    SDL_Surface *surface) {
 	// the texture to be associated with the given filename
 	std::shared_ptr<Texture> tex;
 
@@ -79,7 +82,7 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
 	}
 	else {
 		// create the texture!
-		tex = std::make_shared<Texture>(tex_path, use_metafile);
+		tex = std::make_shared<Texture>(tex_path, use_metafile, surface);
 
 #if WITH_INOTIFY
 		std::string native_path = tex_path.resolve_native_path();
@@ -107,15 +110,47 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
 	return tex;
 }
 
+void AssetManager::load_textures(const std::vector<std::string> &names,
+                                 bool use_metafile,
+                                 bool null_if_missing) {
+	using datastructure::TaskQueue;
 
-Texture *AssetManager::get_texture(const std::string &name, bool use_metafile,
-                                   bool null_if_missing) {
+	std::vector<std::string> validNames;
+	std::map<std::string, SDL_Surface *> path_to_surface;
+	{
+		TaskQueue<std::string> myQueue(
+		    path_to_surface, [](const std::string &name) {
+			    return std::make_pair(name, IMG_Load(name.c_str()));
+			  });
+
+		for (const auto &fname : names) {
+			const util::Path tex_path = this->asset_path[fname];
+			if (tex_path.is_file()) {
+				std::string native_path = tex_path.resolve_native_path();
+				myQueue.addToQueue(std::move(native_path));
+				validNames.push_back(fname);
+			}
+		}
+	}
+
+	for (const auto &fname : validNames) {
+		const util::Path tex_path = this->asset_path[fname];
+		const std::string native_path = tex_path.resolve_native_path();
+		SDL_Surface *surface = path_to_surface[native_path];
+		get_texture(fname, use_metafile, null_if_missing, surface);
+	}
+}
+
+Texture *AssetManager::get_texture(const std::string &name,
+                                   bool use_metafile,
+                                   bool null_if_missing,
+                                   SDL_Surface *surface) {
 	// check whether the requested texture was loaded already
 	auto tex_it = this->textures.find(name);
 
 	// the texture was not loaded yet:
 	if (tex_it == this->textures.end()) {
-		auto tex = this->load_texture(name, use_metafile, null_if_missing);
+		auto tex = this->load_texture(name, use_metafile, null_if_missing,surface);
 
 		if (tex.get() != nullptr) {
 			// insert the texture into the map

@@ -16,6 +16,7 @@
 #include "util/path.h"
 
 
+class SDL_Surface;
 namespace openage {
 
 namespace util {
@@ -65,7 +66,9 @@ struct gl_texture_buffer {
  * The class supports subtextures, so that one big texture can contain
  * several small images. These are the ones actually to be rendered.
  */
+
 class Texture {
+
 public:
 	int w;
 	int h;
@@ -80,7 +83,9 @@ public:
 	 * Create a texture from a existing image file.
 	 * For supported image file types, see the SDL_Image initialization in the engine.
 	 */
-	Texture(const util::Path &filename, bool use_metafile=false);
+	Texture(const util::Path &filename,
+	        bool use_metafile = false,
+	        SDL_Surface *surface = nullptr);
 	~Texture();
 
 	void draw(coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
@@ -150,7 +155,7 @@ private:
 
 	util::Path filename;
 
-	void load();
+	void load(SDL_Surface *surface);
 
 	/**
 	 * The texture loadin must occur on the thread that manages the gl context.
