@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "gui_renderer_impl.h"
 
@@ -12,7 +12,6 @@
 #include <QThread>
 
 #include "../public/gui_renderer.h"
-#include "platforms/context_extraction.h"
 
 
 namespace qtsdl {
@@ -77,6 +76,7 @@ void EventHandlingQuickWindow::on_resized(const QSize &size) {
 GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 	:
 	QObject{},
+	gui_rendering_setup_routines{window},
 	need_fbo_resize{true},
 	need_sync{},
 	need_render{},
@@ -84,26 +84,6 @@ GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 	renderer_waiting_on_cond{} {
 
 	this->moveToThread(QCoreApplication::instance()->thread());
-
-	QVariant handle;
-	WId id;
-
-	std::tie(handle, id) = extract_native_context(window);
-
-	// pass the SDL opengl context so qt can use it
-	this->ctx = std::make_unique<QOpenGLContext>();
-	this->ctx->setNativeHandle(handle);
-	this->ctx->create();
-	assert(this->ctx->isValid());
-
-	// reuse the sdl window
-	QWindow *w = QWindow::fromWinId(id);
-	w->setSurfaceType(QSurface::OpenGLSurface);
-
-	if (!this->ctx->makeCurrent(w)) {
-		assert(false);
-		return;
-	}
 
 	QObject::connect(&this->render_control, &QQuickRenderControl::renderRequested, [&] () {
 		this->need_render = true;
@@ -125,9 +105,9 @@ GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 	QObject::connect(&*this->window, &QQuickWindow::widthChanged, [this] { this->new_fbo_width = this->window->width(); this->need_fbo_resize = true; });
 	QObject::connect(&*this->window, &QQuickWindow::heightChanged, [this] { this->new_fbo_height = this->window->height(); this->need_fbo_resize = true; });
 
-	this->render_control.initialize(&*this->ctx);
+	GuiRenderingCtxActivator activate_render(this->gui_rendering_setup_routines);
 
-	assert(this->ctx->isValid());
+	this->render_control.initialize(this->gui_rendering_setup_routines.get_ctx());
 }
 
 void GuiRendererImpl::on_scene_changed() {
@@ -137,7 +117,7 @@ void GuiRendererImpl::on_scene_changed() {
 }
 
 void GuiRendererImpl::reinit_fbo_if_needed() {
-	assert(QThread::currentThread() == this->ctx->thread());
+	assert(QThread::currentThread() == this->gui_rendering_setup_routines.get_ctx()->thread());
 
 	if (this->need_fbo_resize) {
 		this->fbo = std::make_unique<QOpenGLFramebufferObject>(QSize(this->new_fbo_width, this->new_fbo_height), QOpenGLFramebufferObject::CombinedDepthStencil);
@@ -163,6 +143,8 @@ GuiRendererImpl* GuiRendererImpl::impl(GuiRenderer *renderer) {
 }
 
 GLuint GuiRendererImpl::render() {
+	GuiRenderingCtxActivator activate_render(this->gui_rendering_setup_routines);
+
 	this->reinit_fbo_if_needed();
 
 	// QQuickRenderControl::sync() must be called from the render thread while the gui thread is stopped.
