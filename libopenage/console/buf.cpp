@@ -617,6 +617,7 @@ void Buf::process_escaped_cp(int cp) {
 	switch (cp) {
 	case 'c': //RIS (full reset)
 		this->reset();
+		break;
 	default:
 		//unimplemented or invalid codepoint
 		this->escape_sequence_aborted();
