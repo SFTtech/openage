@@ -12,9 +12,10 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-VertexState::VertexState(renderer::Context *ctx)
-	:
-	renderer::VertexState{ctx} {
+VertexState::VertexState(/*renderer::Context *ctx*/)
+	//:
+	//renderer::VertexState{ctx} {
+{
 
 	glGenVertexArrays(1, &this->id);
 }
@@ -39,7 +40,7 @@ void VertexState::attach_buffer(VertexBuffer &buf) {
 		glVertexAttribPointer(
 			section.attr_id,
 			section.dimension,
-			type, GL_FALSE, 0,
+			type, GL_FALSE, section.stride,
 			reinterpret_cast<void *>(section.offset)
 		);
 

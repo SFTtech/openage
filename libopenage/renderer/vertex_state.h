@@ -24,7 +24,7 @@ class VertexBuffer;
  */
 class VertexState {
 public:
-	VertexState(Context *ctx);
+	VertexState(/*Context *ctx*/);
 
 	const VertexState &operator =(VertexState &&other) = delete;
 	const VertexState &operator =(const VertexState &other) = delete;
@@ -58,7 +58,7 @@ protected:
 	/**
 	 * Associated rendering context
 	 */
-	Context *const context;
+	//Context *const context;
 
 	/**
 	 * This vertex state has data for attributes with

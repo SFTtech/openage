@@ -5,9 +5,9 @@
 namespace openage {
 namespace renderer {
 
-Buffer::Buffer(Context *ctx, size_t size)
+Buffer::Buffer(/*Context *ctx,*/ size_t size)
 	:
-	context{ctx},
+	//context{ctx},
 	allocd{size},
 	on_gpu{false} {
 

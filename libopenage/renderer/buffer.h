@@ -35,7 +35,7 @@ public:
 	};
 
   std::shared_ptr<int> wow;
-	Buffer(Context *ctx, size_t size=0);
+	Buffer(/*Context *ctx,*/ size_t size=0);
 	virtual ~Buffer() = default;
 
 	Buffer(const Buffer &other) = delete;
@@ -76,7 +76,7 @@ public:
 	/**
 	 * The associated graphics context.
 	 */
-	Context *const context;
+	//Context *const context;
 
 protected:
 	/**

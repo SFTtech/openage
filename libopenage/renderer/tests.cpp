@@ -5,9 +5,10 @@
 #include <functional>
 #include <unordered_map>
 #include <memory>
+#include <eigen3/Eigen/Dense>
 
 #include "../log/log.h"
-#include "geometry.h"
+#include "opengl/geometry.h"
 #include "../error/error.h"
 #include "resources/shader_source.h"
 #include "opengl/renderer.h"
@@ -71,19 +72,12 @@ void renderer_demo_0() {
 		resources::shader_source_t::glsl_vertex,
 		R"s(
 #version 330
-uniform vec4 bounds;
+layout(location=0) in vec2 in_position;
+
+uniform mat4 mvp;
 
 void main() {
-	gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;
-	gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;
-	gl_Position.z = 1.0;
-	gl_Position.w = 1.0;
-
-	gl_Position.x *= bounds[2] - bounds[0];
-	gl_Position.y *= bounds[3] - bounds[1];
-
-	gl_Position.x += (bounds[0] + bounds[2]) / 2.0;
-	gl_Position.y += (bounds[1] + bounds[3]) / 2.0;
+	gl_Position = mvp * vec4(in_position, 0.0, 1.0);
 }
 )s");
 
@@ -112,15 +106,14 @@ void main() {
 		R"s(
 #version 330
 
+layout(location=0) in vec2 in_position;
+layout(location=1) in vec2 in_texcoord;
 out vec2 v_uv;
 
 void main() {
-	gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;
-	gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;
-	gl_Position.z = 1.0;
-	gl_Position.w = 1.0;
+	gl_Position = vec4(in_position, 0.0, 1.0);
 
-	v_uv = gl_Position.xy * 0.5 + 0.5;
+	v_uv = in_texcoord;
 }
 )s");
 
@@ -136,31 +129,48 @@ out vec4 col;
 
 void main() {
 	col = texture(color_texture, v_uv);
+	//col = vec4(v_uv, 0.0, 1.0);
 }
 )s");
 
 	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
 	auto shader_display = renderer->add_shader( { vshader_display_src, fshader_display_src } );
 
+	auto transform1 = Eigen::Affine3f::Identity();
+	transform1.prescale(Eigen::Vector3f(0.4f, 0.2f, 1.0f));
+	transform1.prerotate(Eigen::AngleAxisf(30.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitX()));
+	transform1.pretranslate(Eigen::Vector3f(-0.4f, -0.6f, 0.0f));
+
 	auto unif_in1 = shader->new_uniform_input(
-		"bounds", Eigen::Vector4f(-1.0f, -1.0f, -0.8f, -0.8f),
+		"mvp", transform1.matrix(),
 		"color", Eigen::Vector4f(1.0f, 0.0f, 0.0f, 1.0f),
 		"u_id", 1u
 	);
 
+	auto transform2 = Eigen::Affine3f::Identity();
+	transform2.prescale(Eigen::Vector3f(0.3f, 0.1f, 1.0f));
+	transform2.prerotate(Eigen::AngleAxisf(50.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitZ()));
+
+	auto transform3 = transform2;
+
+	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.0f));
+
 	auto unif_in2 = shader->new_uniform_input(
-		"bounds", Eigen::Vector4f(0.0f, 0.3f, 0.3f, 0.5f),
+		"mvp", transform2.matrix(),
 		"color", Eigen::Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
 		"u_id", 2u
 	);
 
+	transform3.prerotate(Eigen::AngleAxisf(90.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitZ()));
+	transform3.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.2f));
+
 	auto unif_in3 = shader->new_uniform_input(
-		"bounds", Eigen::Vector4f(0.5f, -0.7f, 0.6f, -0.3f),
+		"mvp", transform3.matrix(),
 		"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 0.5f),
 		"u_id", 3u
 	);
 
-	Geometry quad;
+	opengl::GlGeometry quad(geometry_t::quad);
 	Renderable obj1 {
 		unif_in1.get(),
 		&quad,

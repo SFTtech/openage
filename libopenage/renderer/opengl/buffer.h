@@ -17,7 +17,7 @@ namespace opengl {
  */
 class Buffer : public renderer::Buffer {
 public:
-	Buffer(renderer::Context *ctx, size_t size=0);
+	Buffer(/*renderer::Context *ctx,*/ size_t size=0);
 	virtual ~Buffer();
 
 	Buffer(const Buffer &other) = delete;

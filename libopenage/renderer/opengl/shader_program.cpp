@@ -15,6 +15,7 @@
 #include "../../util/file.h"
 #include "../../util/strings.h"
 #include "texture.h"
+#include "geometry.h"
 
 
 namespace openage {
@@ -37,6 +38,8 @@ size_t uniform_size(gl_uniform_t type) {
 		return 3 * sizeof(float);
 	case gl_uniform_t::V4F32:
 		return 4 * sizeof(float);
+	case gl_uniform_t::M4F32:
+		return 16 * sizeof(float);
 	case gl_uniform_t::SAMPLER2D:
 		return sizeof(GLint);
 	default:
@@ -61,6 +64,8 @@ static gl_uniform_t glsl_str_to_type(std::experimental::string_view str) {
 		return gl_uniform_t::V4F32;
 	else if (str == "sampler2D")
 		return gl_uniform_t::SAMPLER2D;
+	else if (str == "mat4")
+		return gl_uniform_t::M4F32;
 	else
 		throw Error(MSG(err) << "Unsupported GLSL uniform type " << str);
 }
@@ -220,9 +225,12 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 	for (auto& pair : this->uniforms) {
 		GLint loc = glGetUniformLocation(this->id, pair.first.data());
 
-		if (unlikely(loc == -1)) {
-			throw Error(MSG(err)
-			            << "Could not determine the location of OpenGL shader uniform that was found before. WTF?!");
+		pair.second.location = loc;
+
+		if (loc == -1) {
+			log::log(MSG(info)
+			            << "Could not determine the location of OpenGL shader uniform that was found before. Probably optimized away.");
+			continue;
 		}
 
 		GLuint tex_unit = 0;
@@ -236,7 +244,6 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 			tex_unit += 1;
 		}
 
-		pair.second.location = loc;
 	}
 
 	log::log(MSG(info) << "Created OpenGL shader program");
@@ -289,6 +296,9 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry
 	for (auto const &pair : unif_in->update_offs) {
 		uint8_t const* ptr = data + pair.second;
 		auto loc = this->uniforms[pair.first].location;
+		if(loc == -1) {
+			continue;
+		}
 		switch (this->uniforms[pair.first].type) {
 		case gl_uniform_t::I32:
 			glUniform1i(loc, *reinterpret_cast<const GLint*>(ptr));
@@ -312,6 +322,9 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry
 		case gl_uniform_t::V4F32:
 			glUniform4fv(loc, 1, reinterpret_cast<const float*>(ptr));
 			break;
+		case gl_uniform_t::M4F32:
+			glUniformMatrix4fv(loc, 1, false, reinterpret_cast<const float*>(ptr));
+			break;
 		case gl_uniform_t::SAMPLER2D: {
 			GLuint tex_unit = this->texunits_per_unifs[pair.first];
 			GLuint tex = *reinterpret_cast<const GLuint*>(ptr);
@@ -327,8 +340,11 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry
 		}
 	}
 
-	// TODO read geom and obj.blend + family
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	if (geom != nullptr) {
+		// TODO read geom and obj.blend + family
+		//glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		geom->draw();
+	}
 }
 
 std::unique_ptr<UniformInput> GlShaderProgram::new_unif_in() {
@@ -388,6 +404,10 @@ void GlShaderProgram::set_v3f32(UniformInput *in, const char *unif, Eigen::Vecto
 
 void GlShaderProgram::set_v4f32(UniformInput *in, const char *unif, Eigen::Vector4f const& val) {
 	this->set_unif(in, unif, &val);
+}
+
+void GlShaderProgram::set_m4f32(UniformInput *in, const char *unif, Eigen::Matrix4f const& val) {
+	this->set_unif(in, unif, val.data());
 }
 
 void GlShaderProgram::set_tex(UniformInput *in, const char *unif, Texture const* val) {

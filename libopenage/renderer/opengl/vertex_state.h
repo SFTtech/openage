@@ -18,7 +18,7 @@ namespace opengl {
  */
 class VertexState : public renderer::VertexState {
 public:
-	VertexState(renderer::Context *ctx);
+	VertexState(/*renderer::Context *ctx*/);
 	virtual ~VertexState();
 
 	/**

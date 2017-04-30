@@ -26,6 +26,7 @@ enum class gl_uniform_t {
 	V2F32,
 	V3F32,
 	V4F32,
+	M4F32,
 	SAMPLER2D,
 };
 
@@ -73,6 +74,7 @@ protected:
 	void set_v2f32(UniformInput*, const char*, Eigen::Vector2f const&) override;
 	void set_v3f32(UniformInput*, const char*, Eigen::Vector3f const&) override;
 	void set_v4f32(UniformInput*, const char*, Eigen::Vector4f const&) override;
+	void set_m4f32(UniformInput*, const char*, Eigen::Matrix4f const&) override;
 	void set_tex(UniformInput*, const char*, Texture const*) override;
 
 private:

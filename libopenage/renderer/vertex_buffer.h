@@ -58,9 +58,13 @@ public:
 		vertex_attribute_type type;  //!< attribute data type
 		size_t dimension;            //!< attribute dimension
 		size_t offset;               //!< start offset in the buffer
+		size_t stride;               //!< byte offset between consecutive attributes, 0 means tightly packed
 	};
 
-	VertexBuffer(Context *ctx,
+	//VertexBuffer(Context *ctx,
+	//             Buffer::usage usage=Buffer::usage::static_draw);
+
+	VertexBuffer(Buffer *bufferPtr,
 	             Buffer::usage usage=Buffer::usage::static_draw);
 
 	VertexBuffer(VertexBuffer &&other);

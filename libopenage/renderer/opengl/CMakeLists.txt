@@ -4,4 +4,7 @@ add_sources(libopenage
   renderer.cpp
   shader_program.cpp
   texture.cpp
+  vertex_state.cpp
+  buffer.cpp
+  geometry.cpp
 )

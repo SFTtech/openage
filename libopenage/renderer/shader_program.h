@@ -53,6 +53,9 @@ public:
 	void update_uniform_input(UniformInput *input, const char *unif, Texture *val) {
 		this->set_tex(input, unif, val);
 	}
+	void update_uniform_input(UniformInput *input, const char *unif, Eigen::Matrix4f const &val) {
+		this->set_m4f32(input, unif, val);
+	}
 	template<typename T>
 	void update_uniform_input(UniformInput*, const char *unif, T) {
 		throw Error(MSG(err) << "Tried to set uniform " << unif << " using unknown type.");
@@ -93,6 +96,7 @@ protected:
 	virtual void set_v2f32(UniformInput*, const char*, Eigen::Vector2f const&) = 0;
 	virtual void set_v3f32(UniformInput*, const char*, Eigen::Vector3f const&) = 0;
 	virtual void set_v4f32(UniformInput*, const char*, Eigen::Vector4f const&) = 0;
+	virtual void set_m4f32(UniformInput*, const char*, Eigen::Matrix4f const&) = 0;
 	virtual void set_tex(UniformInput*, const char*, Texture const*) = 0;
 };
 

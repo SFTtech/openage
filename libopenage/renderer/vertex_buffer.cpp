@@ -2,16 +2,21 @@
 
 #include "vertex_buffer.h"
 
-#include "context.h"
-
 namespace openage {
 namespace renderer {
 
-VertexBuffer::VertexBuffer(Context *ctx, Buffer::usage usage)
+/*VertexBuffer::VertexBuffer(Context *ctx, Buffer::usage usage)
 	:
 	usage{usage} {
 
 	this->buffer = ctx->create_buffer();
+}
+*/
+VertexBuffer::VertexBuffer(Buffer *bufferPtr, Buffer::usage usage)
+	:
+	usage{usage} {
+
+	this->buffer = std::unique_ptr<Buffer>(bufferPtr);
 }
 
 VertexBuffer::VertexBuffer(VertexBuffer &&other)

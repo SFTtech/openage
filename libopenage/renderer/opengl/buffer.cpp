@@ -13,9 +13,9 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-Buffer::Buffer(renderer::Context *ctx, size_t size)
+Buffer::Buffer(/*renderer::Context *ctx,*/ size_t size)
 	:
-	renderer::Buffer{ctx, size} {
+	renderer::Buffer{/*ctx,*/ size} {
 
 	glGenBuffers(1, &this->id);
 }

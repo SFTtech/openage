@@ -5,8 +5,11 @@
 namespace openage {
 namespace renderer {
 
-VertexState::VertexState(Context *ctx)
-	:
-	context{ctx} {}
+VertexState::VertexState(/*Context *ctx*/)
+	//:
+	//context{ctx}
+{
+
+}
 
 }} // openage::renderer
