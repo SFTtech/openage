@@ -153,7 +153,7 @@ void main() {
 
 	auto transform3 = transform2;
 
-	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.0f));
+	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.3f));
 
 	auto unif_in2 = shader->new_uniform_input(
 		"mvp", transform2.matrix(),
@@ -162,11 +162,11 @@ void main() {
 	);
 
 	transform3.prerotate(Eigen::AngleAxisf(90.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitZ()));
-	transform3.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.2f));
+	transform3.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.5f));
 
 	auto unif_in3 = shader->new_uniform_input(
 		"mvp", transform3.matrix(),
-		"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 0.5f),
+		"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
 		"u_id", 3u
 	);
 
@@ -195,7 +195,8 @@ void main() {
 	auto size = window.get_size();
 	auto color_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8));
 	auto id_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8ui));
-	auto fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get() } );
+	auto depth_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::depth24));
+	auto fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
 
 	auto color_texture_uniform = shader_display->new_uniform_input("color_texture", color_texture.get());
 	Renderable display_obj {
@@ -247,7 +248,8 @@ void main() {
 			// resize fbo
 			color_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::rgba8));
 			id_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::rgba8ui));
-			fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get() } );
+			depth_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::depth24));
+			fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
 
 			shader_display->update_uniform_input(color_texture_uniform.get(), "color_texture", color_texture.get());
 			pass.target = fbo.get();

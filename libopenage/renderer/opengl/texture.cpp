@@ -25,6 +25,8 @@ inline static std::tuple<GLint, GLenum, GLenum> gl_format(resources::pixel_forma
 		return std::make_tuple(GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE);
 	case resources::pixel_format::rgba8ui:
 		return std::make_tuple(GL_RGBA8UI, GL_RGBA_INTEGER, GL_UNSIGNED_BYTE);
+	case resources::pixel_format::depth24:
+		return std::make_tuple(GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE);
 	default:
 		throw Error(MSG(err) << "invalid texture format passed to OpenGL.");
 	}

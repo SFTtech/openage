@@ -19,11 +19,16 @@ GlRenderTarget::GlRenderTarget(std::vector<const GlTexture*> textures) {
 
 	std::vector<GLenum> drawBuffers;
 
+	size_t colorTextureCount = 0;
 	for (size_t i = 0; i < textures.size(); i++) {
 		// TODO figure out attachment points from pixel formats
-		auto attachmentPoint = GL_COLOR_ATTACHMENT0 + i;
-		glFramebufferTexture2D(GL_FRAMEBUFFER, attachmentPoint, GL_TEXTURE_2D, textures[i]->get_handle(), 0);
-		drawBuffers.push_back(attachmentPoint);
+		if (textures[i]->get_info().get_format() == resources::pixel_format::depth24) {
+			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, textures[i]->get_handle(), 0);
+		} else {
+			auto attachmentPoint = GL_COLOR_ATTACHMENT0 + colorTextureCount++;
+			glFramebufferTexture2D(GL_FRAMEBUFFER, attachmentPoint, GL_TEXTURE_2D, textures[i]->get_handle(), 0);
+			drawBuffers.push_back(attachmentPoint);
+		}
 	}
 
 	glDrawBuffers(drawBuffers.size(), drawBuffers.data());

@@ -19,6 +19,8 @@ size_t pixel_size(pixel_format fmt) {
 		return 4;
 	case pixel_format::rgba8ui:
 		return 4;
+	default:
+		throw Error(MSG(err) << "Unknown pixel format");
 	}
 }
 
