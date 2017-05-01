@@ -14,19 +14,24 @@ py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)
 set(PYEXT_CXXFLAGS " ${PYEXT_CXXFLAGS} ") # padding required for the replacements below
 # C++ doesn't have the -Wstrict-prototypes warning
 string(REGEX REPLACE " -Wstrict-prototypes " " " PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}")
+# nope, we're not building with -Wall because I don't like numpy api warnings...
+string(REGEX REPLACE " -Wall " " " PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}")
 # thanks, but I'd like to choose my debug mode myself.
 string(REPLACE " -g " " " PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}")
+
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+	# suppress #warning about deprecated numpy api
+	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-cpp")
+endif()
+
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+	# suppress #warning about deprecated numpy api
+	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-#warnings")
+endif()
 
 # add our own regular C++ flags
 set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} ${CMAKE_CXX_FLAGS}")
 
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-	# some things clang complains about
-	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-extended-offsetof")
-	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unneeded-internal-declaration")
-endif()
-
-set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unused-function")
 set(PYEXT_LIBRARY "${PYTHON_LIBRARY}")
 set(PYEXT_INCLUDE_DIRS "${PYTHON_INCLUDE_DIR};${NUMPY_INCLUDE_DIR}")
 
