@@ -10,7 +10,7 @@ namespace qtsdl {
 class GuiRenderer;
 class GuiImageProvider;
 class GuiEngineImpl;
-struct GuiSingletonItemsInfo;
+class GuiSingletonItemsInfo;
 
 /**
  * Represents one QML execution environment.

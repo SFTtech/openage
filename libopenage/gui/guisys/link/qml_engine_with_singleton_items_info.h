@@ -10,7 +10,7 @@
 
 namespace qtsdl {
 
-struct GuiSingletonItemsInfo;
+class GuiSingletonItemsInfo;
 
 /**
  * The Qml Engine used by openage.
