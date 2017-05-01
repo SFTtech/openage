@@ -483,8 +483,6 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	unit_data{*ud},
 	texture{spec.get_unit_texture(ud->graphic_standing0)},
 	destroyed{spec.get_unit_texture(ud->graphic_dying0)},
-	trainable1{83}, // 83 = m villager
-	trainable2{293}, // 293 = f villager
 	projectile{this->unit_data.missile_unit_id},
 	foundation_terrain{ud->foundation_terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
@@ -556,7 +554,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	// building specific attribute
 	auto build_attr = std::make_shared<Attribute<attr_type::building>>();
 	build_attr->foundation_terrain = this->foundation_terrain;
-	build_attr->pp = this->owner.get_type(trainable2);
+	build_attr->pp = this->owner.get_type(293); // fem_villager, male is 83
 	build_attr->gather_point = unit->location->pos.draw;
 	build_attr->completion_state = this->enable_collisions? object_state::placed : object_state::placed_no_collision;
 	unit->add_attribute(build_attr);

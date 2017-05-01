@@ -129,8 +129,6 @@ private:
 	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> texture;
 	std::shared_ptr<UnitTexture> destroyed;
-	int trainable1;
-	int trainable2;
 	int projectile;
 	int foundation_terrain;
 	std::vector<game_resource> get_accepted_resources();

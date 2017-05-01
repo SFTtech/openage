@@ -16,7 +16,7 @@ class GuiRenderer;
 class GuiRendererImpl;
 class GuiImageProvider;
 class GuiEngine;
-struct GuiSingletonItemsInfo;
+class GuiSingletonItemsInfo;
 
 class GuiEngineImpl : public QObject {
 	Q_OBJECT

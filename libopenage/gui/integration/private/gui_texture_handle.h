@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -10,12 +10,14 @@ class Texture;
 
 namespace gui {
 
-struct TextureHandle {
+class TextureHandle {
+public:
 	openage::Texture *texture;
 	int subid;
 };
 
-struct SizedTextureHandle : TextureHandle {
+class SizedTextureHandle : public TextureHandle {
+public:
 	SizedTextureHandle();
 	SizedTextureHandle(const TextureHandle &handle, const QSize &size);
 	QSize size;
