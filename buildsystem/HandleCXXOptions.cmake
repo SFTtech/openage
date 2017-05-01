@@ -71,6 +71,8 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 	require_cxx_version("clang" 3.4)
 
+	set_compiler_flags("EXTRA" "-Wno-gnu-statement-expression")
+
 	if(APPLE)
 		set_compiler_flags("CXX" "-stdlib=libc++")
 	endif()
