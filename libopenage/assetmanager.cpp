@@ -19,6 +19,8 @@
 #include "texture.h"
 #include "datastructure/task_queue.h"
 
+#include "job/job_manager.h"
+
 namespace openage {
 
 AssetManager::AssetManager(qtsdl::GuiItemLink *gui_link)
@@ -113,24 +115,47 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
 void AssetManager::load_textures(const std::vector<std::string> &names,
                                  bool use_metafile,
                                  bool null_if_missing) {
-	using datastructure::TaskQueue;
+	using namespace job;
+	using ret_pair_t = std::pair<std::string, SDL_Surface *>;
+	class JobFunc {
+		std::string name;
+
+	 public:
+		JobFunc(const std::string &name) : name(name) {}
+		ret_pair_t operator()() const {
+			return std::make_pair(name, IMG_Load(name.c_str()));
+		}
+	};
+	JobManager jobManager(4);
+	jobManager.start();
+
+	std::atomic<int> executed_callbacks{0};
+
+	std::map<std::string, SDL_Surface *> path_to_surface;
+	std::mutex path_to_surface_lock;
+	auto job_callback =
+	    [&path_to_surface, &executed_callbacks,
+	     &path_to_surface_lock](result_function_t<ret_pair_t> get_result) {
+		    ret_pair_t job_result = get_result();
+		    {
+			    std::lock_guard<std::mutex> lock(path_to_surface_lock);
+			    path_to_surface.insert(job_result);
+		    }
+		    ++executed_callbacks;
+		  };
 
 	std::vector<std::string> validNames;
-	std::map<std::string, SDL_Surface *> path_to_surface;
-	{
-		TaskQueue<std::string> myQueue(
-		    path_to_surface, [](const std::string &name) {
-			    return std::make_pair(name, IMG_Load(name.c_str()));
-			  });
-
-		for (const auto &fname : names) {
-			const util::Path tex_path = this->asset_path[fname];
-			if (tex_path.is_file()) {
-				std::string native_path = tex_path.resolve_native_path();
-				myQueue.addToQueue(std::move(native_path));
-				validNames.push_back(fname);
-			}
+	for (const auto &fname : names) {
+		const util::Path tex_path = this->asset_path[fname];
+		if (tex_path.is_file()) {
+			std::string native_path = tex_path.resolve_native_path();
+			jobManager.enqueue<ret_pair_t>(JobFunc(native_path), job_callback);
+			validNames.push_back(fname);
 		}
+	}
+
+	while (executed_callbacks < validNames.size()) {
+		jobManager.execute_callbacks();
 	}
 
 	for (const auto &fname : validNames) {
