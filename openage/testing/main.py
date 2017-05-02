@@ -61,8 +61,8 @@ def process_args(args, error):
         error("can't run individual test or demo or benchmark when running "
               "all tests")
 
-    if bool(args.test) ^ bool(args.demo) ^ bool(args.benchmark):
-        error("can only run one of demo, benchmarks tests")
+    if bool(args.test) + bool(args.demo) + bool(args.benchmark) > 1:
+        error("can only run one of demo, benchmarks or tests")
 
     # link python and c++ so it hopefully works when testing
     from openage.cppinterface.setup import setup
