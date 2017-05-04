@@ -64,7 +64,6 @@ set(EXTRA_FLAGS "${EXTRA_FLAGS} -Wall -Wextra -pedantic")
 # check for compiler versions
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	require_cxx_version("gcc" 4.9)
-	test_compiler_flag_apply("CXX" "-std=c++14" GCC_SUPPORTS_CPP14 FALSE)
 	set_compiler_greater_flags("CXX" 4.9 "-fdiagnostics-color=auto")
 	set_compiler_greater_flags("EXTRA" 5.0 "-Wsuggest-override")
 
@@ -75,13 +74,6 @@ elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 
 	if(APPLE)
 		set_compiler_flags("CXX" "-stdlib=libc++")
-	endif()
-
-	test_compiler_flag_apply("CXX" "-std=c++14" CXX_SUPPORTS_CXX14 FALSE)
-	test_compiler_flag_apply("CXX" "-std=c++1y" CXX_SUPPORTS_CXX1Y CXX_SUPPORTS_CXX14)
-
-	if(NOT (CXX_SUPPORTS_CXX14 OR CXX_SUPPORTS_CXX1Y))
-		message(FATAL_ERROR "compiler doesn't support c++14!")
 	endif()
 
 else() #"Intel", "MSVC", etc..
