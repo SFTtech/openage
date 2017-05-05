@@ -22,13 +22,13 @@ GameMain::GameMain(const Generator &generator)
 	// players
 	unsigned int i = 0;
 	for (auto &name : generator.player_names()) {
-		this->players.emplace_back(this->add_civ(i), i, name);
+		this->players.push_back(new Player(this->add_civ(i), i, name));
 		i++;
 	}
 
 	// initialise types only after all players are added
 	for (auto &p : this->players) {
-		p.initialise_unit_types();
+		p->initialise_unit_types();
 	}
 
 	// initialise units
@@ -36,14 +36,18 @@ GameMain::GameMain(const Generator &generator)
 	generator.add_units(*this);
 }
 
-GameMain::~GameMain() {}
+GameMain::~GameMain() {
+	for (auto &p : this->players) {
+		delete p;
+	}
+}
 
 unsigned int GameMain::player_count() const {
 	return this->players.size();
 }
 
 Player *GameMain::get_player(unsigned int player_id) {
-	return &this->players.at(player_id);
+	return this->players.at(player_id);
 }
 
 unsigned int GameMain::team_count() const {

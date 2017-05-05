@@ -71,12 +71,6 @@ public:
 	std::shared_ptr<Terrain> terrain;
 
 	/**
-	 * all players in the game
-	 * no objects should be added of removed once populated
-	 */
-	std::vector<Player> players;
-
-	/**
 	 * all teams in the game
 	 */
 	std::vector<Team> teams;
@@ -92,6 +86,12 @@ public:
 	UnitContainer placed_units;
 
 private:
+
+	/**
+	 * all players in the game
+	 * no objects should be added of removed once populated
+	 */
+	std::vector<Player*> players;
 
 	/**
 	 * creates a random civ, owned and managed by this game

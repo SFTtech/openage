@@ -63,10 +63,8 @@ ScorePlayer::ScorePlayer(Player *player)
 void ScorePlayer::update_score() {
 	Score::update_score();
 	// update team score
-	// TODO fix player->team should be nullptr
-	if (player->team) {
-		// TODO rework team update
-		//player->team->score.update_score();
+	if (this->player->team) {
+		this->player->team->score.update_score();
 	}
 }
 
@@ -81,7 +79,7 @@ void ScoreTeam::update_score() {
 	for (int i=0; i<(int) score_category::SCORE_CATEGORY_COUNT; i++) {
 		this->score[i] = 0;
 	}
-	for (auto player : team->get_players()) {
+	for (auto player : this->team->get_players()) {
 		for (int i=0; i<(int) score_category::SCORE_CATEGORY_COUNT; i++) {
 			this->score[i] += player->score.getScore(i);
 		}
