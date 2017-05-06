@@ -50,7 +50,9 @@ std::tuple<QVariant, std::function<void()>> extract_native_context_and_switchbac
 		current_context = glXGetCurrentContext();
 		assert(current_context);
 
-		return std::make_tuple(QVariant::fromValue<QGLXNativeContext>(QGLXNativeContext(current_context, wm_info.info.x11.display, wm_info.info.x11.window)), std::bind(SDL_GL_MakeCurrent, window, SDL_GL_GetCurrentContext()));
+		return std::make_tuple(QVariant::fromValue<QGLXNativeContext>(QGLXNativeContext(current_context, wm_info.info.x11.display, wm_info.info.x11.window)), [wm_info, current_context] {
+			glXMakeCurrent(wm_info.info.x11.display, wm_info.info.x11.window, current_context);
+		});
 	}
 
 	return std::tuple<QVariant, std::function<void()>>{};

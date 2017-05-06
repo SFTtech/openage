@@ -21,7 +21,22 @@ std::tuple<QVariant, std::function<void()>> extract_native_context_and_switchbac
 	NSOpenGLContext *current_context = [NSOpenGLContext currentContext];
 	assert(current_context);
 
-	return std::make_tuple(QVariant::fromValue<QCocoaNativeContext>(QCocoaNativeContext(current_context)), std::bind(SDL_GL_MakeCurrent, window, SDL_GL_GetCurrentContext()));
+	NSView *view = nullptr;
+
+	SDL_SysWMinfo wm_info;
+	SDL_VERSION(&wm_info.version);
+
+	if (SDL_GetWindowWMInfo(window, &wm_info)) {
+		NSWindow *ns_window = wm_info.info.cocoa.window;
+		view = [ns_window contentView];
+		assert(view);
+	
+		return std::make_tuple(QVariant::fromValue<QCocoaNativeContext>(QCocoaNativeContext(current_context)), [current_context] {
+			[current_context makeCurrentContext];
+		});
+	}
+
+	return std::tuple<QVariant, std::function<void()>>{};
 }
 
 } // namespace qtsdl
