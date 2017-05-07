@@ -21,24 +21,25 @@ class Level(Enum):
     Log levels with color codes, corresponding to those defined in cpp/log/level.h.
     """
 
-    def __init__(self, numeric, colorcode=""):
-        self.numeric = numeric
-        self.colorcode = colorcode
-
     MIN = -3
     spam = -2
     dbg = -1
     info = 0
-    warn = (1, "33")
-    err = (2, "31;1")
-    crit = (3, "31;1;47")
+    warn = 1
+    err = 2
+    crit = 3
     MAX = 4
 
 
 def level_colorcode(lvl):
     """ returns the same color codes as in libopenage/log/level.cpp. """
 
-    return lvl.colorcode
+    colorcodes = {
+        1: "33",
+        2: "31;1",
+        3: "31;1;47",
+    }
+    return colorcodes.get(lvl, "")
 
 
 Level.current = Level.MIN
@@ -117,10 +118,7 @@ def env_verbosity():
     """
     Tries to retrieve verbosity from the VERBOSITY environment variable.
     """
-    try:
-        val = environ['VERBOSE']
-    except KeyError:
-        return 0
+    val = environ.get('VERBOSE', '0')
 
     if val.lower() in {'y', 'yes', 'true'}:
         return 1
