@@ -119,13 +119,37 @@ Which unit type is sorted in first depends on the order in which the player sele
 
 #### Distance Between Units
 
-* is determined by the widest Unit
-* applied to all units inside subformations
+How far units in a subformation stay apart is determined by the width of the widest units and the length of the longest unit. All units inside the subformation will follow this rule, regardless of their own height or length. As an example, one can select a few archers and a scorpion. Scorpions are one of the widest units in `subformation[3]` and will therefore determine the distance between all of the units. Furthermore, one will notice that all rows of the subformation are affected and not solely the line the scorpion is in.
 
-### Influence of Other Subformations
+### Influence of other Subformations
 
-* Row Count
-* Width of other formations
+So far we have only examined the grouping of individual subformation but left out the behavior of the parent formation. The parent formation knows about the variables of each subformation, e.g. `row_count` and `distance_between_units`. We will now see, how the parent formation can influence the `row_count` of other subformations.
+
+Let's view two subformations, one with swordsman and one with rams, independently.
+
+```
+.............
+...SSSSSSS...
+...SSSSSSS...
+.............
+```
+```
+............
+...RRRRRR...
+............
+```
+
+We would expect that the grouping of units inside the parent formation looks exactly the same, with the two subformation just joined together. However, this is not the case. Instead, the parent formation will look like this:
+
+```
+....................
+...SSSSSSSSSSSSSS...
+.......RRRRRR.......
+....................
+
+```
+
+The reason for the change of the `row_count` for `subformation[2]` is the width of `subformation[4]`. Rams are about two times as wide as swordsman, hence the subformation they are in will also be much wider than `subformation[2]` if it is selected individually. To deal with the different in width, the number of units per row of `subformation[2]` is extended. In general one can say that the widest subformation in the parent formation influences the `row_count` of all other subformations.
 
 ## Formation Types
 
