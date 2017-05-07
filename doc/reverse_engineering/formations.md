@@ -155,19 +155,15 @@ The reason for the change of the `row_count` for `subformation[2]` is the width 
 
 ### Line Formation
 
-* units form lines (see Row Count)
-* standard formation
-* weaker units behind
+This is the standard formation whenever the player makes a selection. Units form lines (see all examples in **Subformations**) and are arranged with the weaker subformations in the back and the stronger ones in the front.
 
 ### Staggered Formation
 
-* like line formation but doubles the space between units
+Behaves like the Line Formation except that the space between units is doubled for every subformation.
 
 ### Boxed Formation
 
-* units form a box
-* weakest units in the center
-* subformations:
+Units form the outline of a square. The weaker units are in the center while stronger units are placed on the outside. When representing a subformation with its corresponding number, it will look like this:
 
 ```
 ...............
@@ -181,17 +177,19 @@ The reason for the change of the `row_count` for `subformation[2]` is the width 
 .........
 ```
 
-* ordering of units inside subformation is random
+In comparison to the other formation types, the ordering of units with the boxed formation type in the subformations seems to be random and does not follow any specific rule. It is assumed that the units are grouped anew every time a movement order is placed.
+
+This formation type is also rarely used in competitive games and presumably disfavored by players.
 
 ### Flanked Formation
 
-* leaves one big vertical gap between the line formation rows
-* otherwise behaves like line formation
+This type of formation leaves a big vertical gap between the rows of a line formation and effectively splits it in half. Otherwise it behaves exactly like a Line Formation regarding ordering of units.
 
-### Walking formation
+Flanked formations play a crucial part in competitive play, when countering the attack of onagers against dense infantry.
 
-* is chosen if the move order is placed more than 10 tiles away.
-* is like line formation turned 90 degrees
+### Marching formation
+
+The marching formation cannot be select by the player but is used by the game when a movement order is placed more than 10 tiles away from the current location of the player's selection. It behaves like a Line Formation that is turned around by 90 degrees. Because this formation type is much narrower than all other types, units can fit through small gaps in tree lines and walls.
 
 ## Algorithmic solutions
 
