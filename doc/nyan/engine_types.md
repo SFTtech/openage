@@ -51,8 +51,6 @@ Unit(): # WIP
 	hp : float
 	idleLook : animation
 	death : Unit # What is the dead form of this Unit?
-	# Proposal:
-#	dying : animation
 
 Resource():
 	name : text
@@ -75,15 +73,7 @@ Building(Unit): # WIP: make another parent Object for Building?
 Animation(): # or Sprite() ?
 	# Everything that needs to be animated inherits from this class.
 
-	image : file # one picture that contains all frames or, if a directory,
-                 # contains all frames. # WIP5: naming scheme?
-
-#	metainfo : file # WIP6: how to read `animation'? describes, where in the big picture `animation' which frames are; whether to potentially mirror them.
-	                # possibilities: 1. `metainfo' is a regular file: description of `animation' (syntax?)
-	                # 2. replace `metainfo' by more fields that describe `animation' (ugly imo, but maybe the best way)
-	                # 3. remove `metainfo':
-	                #    if $animation is a directory: look for '$animation/animate.nfo'
-	                #    else: look for "$(basename $animation png)nfo"
+	image : file # one picture that contains all frames.
 
 Ability(): # WIP
 	# Every unit (WIP: or even buildings, see 'CarryAbility',castles... ), that can do something, has an 'Ability'.
