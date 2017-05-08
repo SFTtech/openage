@@ -1,9 +1,10 @@
 # Part I: Blender Setup and Rendering
 
-* Content: Basic Blender Aoe2 Setup Tutorial
-* Requirements: Some knowledge of Blender and Photoshop
-* Estimated Time: Short
+*Disclaimer: Thanks to Jan dc on the AoK.heaven forums who lets us use this tutorial series. If you want to ask him questions about the guide or simply admre his work, visit [this](http://aok.heavengames.com/cgi-bin/forums/display.cgi?action=st&fn=9&tn=44487&st=recent&f=9,44487,0,10) thread.*
 
+* **Content**: Basic Blender Aoe2 Setup Tutorial
+* **Requirements**: Some knowledge of Blender and Photoshop
+* **Estimated Time**: Short
 
 ## Expectations
 
