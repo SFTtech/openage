@@ -13,7 +13,7 @@ ResourceBundle::ResourceBundle()
 }
 
 bool ResourceBundle::operator> (const ResourceBundle& other) const {
-	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
+	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
 		if (!(this->get(i) > other.get(i))) {
 			return false;
 		}
@@ -22,7 +22,7 @@ bool ResourceBundle::operator> (const ResourceBundle& other) const {
 }
 
 bool ResourceBundle::operator>= (const ResourceBundle& other) const {
-	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
+	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
 		if (!(this->get(i) >= other.get(i))) {
 			return false;
 		}
@@ -31,28 +31,28 @@ bool ResourceBundle::operator>= (const ResourceBundle& other) const {
 }
 
 ResourceBundle& ResourceBundle::operator+= (const ResourceBundle& other) {
-	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
+	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
 		(*this)[i] += other.get(i);
 	}
 	return *this;
 }
 
 ResourceBundle& ResourceBundle::operator-= (const ResourceBundle& other) {
-	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
+	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
 		(*this)[i] -= other.get(i);
 	}
 	return *this;
 }
 
 ResourceBundle& ResourceBundle::operator*= (const double a) {
-	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
+	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
 		(*this)[i] *= a;
 	}
 	return *this;
 }
 
 ResourceBundle& ResourceBundle::round() {
-	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
+	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
 		(*this)[i] = std::round(this->get(i));
 	}
 	return *this;
@@ -72,7 +72,7 @@ bool ResourceBundle::deduct(const ResourceBundle& amount) {
 
 double ResourceBundle::sum() const {
 	double sum = 0;
-	for (int i=0; i<(int) game_resource::RESOURCE_TYPE_COUNT; i++) {
+	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
 		sum += this->get(i);
 	}
 	return sum;

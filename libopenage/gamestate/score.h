@@ -15,7 +15,7 @@ class Team;
 /**
  * The categories of sub-scores that sum to a player's score.
  */
-enum class score_category {
+enum class score_category : int {
 	/** 20% of units killed cost */
 	military,
 	/** 20% of alive units cost and 10% of resources */
@@ -59,14 +59,14 @@ public:
 
 	// Getters
 
-	int getScore(const score_category cat) const { return score[(int) cat]; }
+	int getScore(const score_category cat) const { return score[static_cast<int>(cat)]; }
 	int getScore(const int index) const { return score[index]; }
 
 	int getScoreTotal() const { return score_total; }
 
 protected:
 
-	int score[(int) score_category::SCORE_CATEGORY_COUNT];
+	int score[static_cast<int>(score_category::SCORE_CATEGORY_COUNT)];
 
 	// generated values
 

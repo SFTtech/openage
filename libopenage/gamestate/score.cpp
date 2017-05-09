@@ -22,7 +22,7 @@ void Score::add_score(const score_category cat, double value) {
 }
 
 void Score::add_score(const score_category cat, int value) {
-	this->score[(int) cat] += value;
+	this->score[static_cast<int>(cat)] += value;
 	this->update_score();
 }
 
@@ -31,7 +31,7 @@ void Score::remove_score(const score_category cat, double value) {
 }
 
 void Score::remove_score(const score_category cat, int value) {
-	this->score[(int) cat] -= value;
+	this->score[static_cast<int>(cat)] -= value;
 	this->update_score();
 }
 
@@ -49,7 +49,7 @@ void Score::update_resources(const ResourceBundle & resources) {
 
 void Score::update_score() {
 	this->score_total = 0;
-	for (int i=0; i<(int) score_category::SCORE_CATEGORY_COUNT; i++) {
+	for (int i = 0; i < static_cast<int>(score_category::SCORE_CATEGORY_COUNT); i++) {
 		this->score_total += this->getScore(i);
 	}
 }
@@ -76,11 +76,11 @@ ScoreTeam::ScoreTeam(Team *team)
 
 void ScoreTeam::update_score() {
 	// scores are the corresponding sums of players score
-	for (int i=0; i<(int) score_category::SCORE_CATEGORY_COUNT; i++) {
+	for (int i = 0; i < static_cast<int>(score_category::SCORE_CATEGORY_COUNT); i++) {
 		this->score[i] = 0;
 	}
 	for (auto player : this->team->get_players()) {
-		for (int i=0; i<(int) score_category::SCORE_CATEGORY_COUNT; i++) {
+		for (int i = 0; i < static_cast<int>(score_category::SCORE_CATEGORY_COUNT); i++) {
 			this->score[i] += player->score.getScore(i);
 		}
 	}
