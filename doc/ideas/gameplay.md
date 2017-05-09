@@ -176,6 +176,10 @@ Resources
 Stone cost for all buildings, rebalance stone amount per pile.
 Maybe new deep stone mines for later ages.
 
+Conversion
+-------------------
+
+ - Monk automatically try to convert each enemy unit in his area.
 
 For the lulz
 ------------
