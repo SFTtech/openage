@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,7 +15,6 @@
 
 
 namespace openage {
-
 
 /**
  * The openage input layer.
@@ -42,6 +41,7 @@ using binding_map_t = std::unordered_map<action_t, Event>;
 class InputManager : public InputHandler {
 
 public:
+
 	InputManager(ActionManager *action_manager);
 
 	/**
@@ -136,6 +136,25 @@ public:
 	 * enable relative mouse mode
 	 */
 	void set_relative(bool mode);
+
+	/**
+	 * Edges enum for use with is_mouse_at_edge
+	 */
+	enum class Edge {
+	    LEFT,
+	    RIGHT,
+	    UP,
+	    DOWN
+	};
+
+	/**
+	 * Query whether cursor is at edgo of screen
+	 *
+	 * edge variable is enum Edges
+	 *
+	 * @return true when the mouse is at the queried screen edge, false else.
+	 */
+	bool is_mouse_at_edge(Edge edge, int window_size);
 
 	/**
 	 * Query stored pressing stat for a key.
