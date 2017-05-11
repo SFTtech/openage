@@ -59,7 +59,7 @@ public:
 	void use() const;
 
 	/// Does what the description of Renderable specifies - updates the uniform values
-	/// and draws the Geometry of it's not nullptr.
+	/// and draws the Geometry if it's not nullptr.
 	void execute_with(const GlUniformInput*, const Geometry*);
 
 	bool has_uniform(const char*) override;

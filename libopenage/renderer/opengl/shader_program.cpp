@@ -221,29 +221,37 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 		glDeleteShader(shdr);
 	}
 
+	// uniforms that are present in the source but not in the program, because they were optimized out by OpenGL
+	std::vector<std::string> optimized_away;
+	GLuint tex_unit = 0;
+
 	// find the location of every uniform in the shader program
 	for (auto& pair : this->uniforms) {
 		GLint loc = glGetUniformLocation(this->id, pair.first.data());
 
-		pair.second.location = loc;
-
 		if (loc == -1) {
-			log::log(MSG(info)
-			            << "Could not determine the location of OpenGL shader uniform that was found before. Probably optimized away.");
+			log::log(MSG(warn)
+			         << "OpenGL shader uniform " << pair.first << " was present in the source, but isn't present in the program. Probably optimized away.");
+			optimized_away.push_back(pair.first);
 			continue;
 		}
 
-		GLuint tex_unit = 0;
+		pair.second.location = loc;
+
 		if (pair.second.type == gl_uniform_t::SAMPLER2D) {
 			if (tex_unit >= caps.max_texture_slots) {
 				throw Error(MSG(err)
-				            << "Tried to create shader that uses more texture sampler uniforms"
+				            << "Tried to create shader that uses more texture sampler uniforms "
 				            << "than there are texture unit slots available.");
 			}
 			this->texunits_per_unifs.insert(std::make_pair(pair.first, tex_unit));
 			tex_unit += 1;
 		}
+	}
 
+	// we only want valid uniforms to be present in the map
+	for (auto& unif : optimized_away) {
+		this->uniforms.erase(unif);
 	}
 
 	log::log(MSG(info) << "Created OpenGL shader program");
@@ -296,9 +304,7 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry
 	for (auto const &pair : unif_in->update_offs) {
 		uint8_t const* ptr = data + pair.second;
 		auto loc = this->uniforms[pair.first].location;
-		if(loc == -1) {
-			continue;
-		}
+
 		switch (this->uniforms[pair.first].type) {
 		case gl_uniform_t::I32:
 			glUniform1i(loc, *reinterpret_cast<const GLint*>(ptr));
