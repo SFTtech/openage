@@ -26,7 +26,10 @@ enum class gl_uniform_t {
 	V2F32,
 	V3F32,
 	V4F32,
+	M3F32,
 	M4F32,
+	V2I32,
+	V3I32,
 	SAMPLER2D,
 };
 

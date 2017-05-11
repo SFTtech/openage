@@ -38,8 +38,14 @@ size_t uniform_size(gl_uniform_t type) {
 		return 3 * sizeof(float);
 	case gl_uniform_t::V4F32:
 		return 4 * sizeof(float);
+	case gl_uniform_t::M3F32:
+		return 9 * sizeof(float);
 	case gl_uniform_t::M4F32:
 		return 16 * sizeof(float);
+	case gl_uniform_t::V2I32:
+		return 2 * sizeof(GLint);
+	case gl_uniform_t::V3I32:
+		return 3 * sizeof(GLint);
 	case gl_uniform_t::SAMPLER2D:
 		return sizeof(GLint);
 	default:
@@ -62,10 +68,16 @@ static gl_uniform_t glsl_str_to_type(std::experimental::string_view str) {
 		return gl_uniform_t::V3F32;
 	else if (str == "vec4")
 		return gl_uniform_t::V4F32;
-	else if (str == "sampler2D")
-		return gl_uniform_t::SAMPLER2D;
+	else if (str == "mat3")
+		return gl_uniform_t::M3F32;
 	else if (str == "mat4")
 		return gl_uniform_t::M4F32;
+	else if (str == "ivec2")
+		return gl_uniform_t::V2I32;
+	else if (str == "ivec3")
+		return gl_uniform_t::V3I32;
+	else if (str == "sampler2D")
+		return gl_uniform_t::SAMPLER2D;
 	else
 		throw Error(MSG(err) << "Unsupported GLSL uniform type " << str);
 }
@@ -328,8 +340,17 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry
 		case gl_uniform_t::V4F32:
 			glUniform4fv(loc, 1, reinterpret_cast<const float*>(ptr));
 			break;
+		case gl_uniform_t::M3F32:
+			glUniformMatrix3fv(loc, 1, false, reinterpret_cast<const float*>(ptr));
+			break;
 		case gl_uniform_t::M4F32:
 			glUniformMatrix4fv(loc, 1, false, reinterpret_cast<const float*>(ptr));
+			break;
+		case gl_uniform_t::V2I32:
+			glUniform2iv(loc, 1, reinterpret_cast<const GLint*>(ptr));
+			break;
+		case gl_uniform_t::V3I32:
+			glUniform3iv(loc, 1, reinterpret_cast<const GLint*>(ptr));
 			break;
 		case gl_uniform_t::SAMPLER2D: {
 			GLuint tex_unit = this->texunits_per_unifs[pair.first];
