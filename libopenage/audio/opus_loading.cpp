@@ -64,12 +64,9 @@ opus_file_t open_opus_file(const util::Path &path) {
 	opus_file_t op_file;
 	int op_err = 0;
 
-	//asm("int $3");
-
 	// check if the file can be opened directly
 	auto native_path = path.resolve_native_path();
-	if (false && native_path.size() > 0) {
-
+	if (native_path.size() > 0) {
 		op_file.handle = {
 			op_open_file(native_path.c_str(), &op_err),
 			opus_deleter
