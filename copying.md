@@ -98,7 +98,7 @@ _the openage authors_ are:
 | Erik Griese                 | citron0xa9                  | erik dawt griese à yahoo dawt de                  |
 | Alex Birch                  | Birch-san                   | vengeance dawt m dawt x+openage à gmail dawt com  |
 | Michal Jarzabek             | stiopa                      | stiopa à gmail dawt com                           |
-| Christopher Wilson          | cdw33                       | cdw33 à zips dawt uakron dawt com                           |
+| Christopher Wilson          | cdw33                       | cdw33 à zips dawt uakron dawt edu                           |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
