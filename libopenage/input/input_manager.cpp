@@ -264,16 +264,16 @@ bool InputManager::is_mouse_at_edge(Edge edge, int window_size ){
 	//how mant pixels in from edge to consider "edge"
 	int edge_offset = 0;
 
-	if (edge == Edge::LEFT && x<=edge_offset){
+	if (edge == Edge::LEFT && x<=edge_offset) {
 		return true;
 	}
-	if (edge == Edge::RIGHT && x>=window_size-edge_offset-1){
+	if (edge == Edge::RIGHT && x>=window_size-edge_offset-1) {
 		return true;
 	}
-	if (edge == Edge::UP && y<=edge_offset){
+	if (edge == Edge::UP && y<=edge_offset) {
 		return true;
 	}
-	if (edge == Edge::DOWN && y>=window_size-edge_offset-1){
+	if (edge == Edge::DOWN && y>=window_size-edge_offset-1) {
 		return true;
 	}
 
