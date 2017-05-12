@@ -20,6 +20,9 @@ public:
 	}
 
 	virtual bool needs_update(const tube_time_t &at);
+
+	virtual std::pair<tube_time_t, const _T &> frame(const tube_time_t &) const;
+	virtual std::pair<tube_time_t, const _T &> next_frame(const tube_time_t &) const;
 public:
 	// Inserter mode
 	virtual void set_drop(const tube_time_t &at, const _T &value);
@@ -40,6 +43,19 @@ void ValueContainer<_T>::set_drop(const tube_time_t &at, const _T &value) {
 template <typename _T>
 void ValueContainer<_T>::set_insert(const tube_time_t &at, const _T &value) {
 	this->container.insert(at, value, this->last_element);
+}
+
+template <typename _T>
+std::pair<tube_time_t, const _T&> ValueContainer<_T>::frame(const tube_time_t &time) const {
+	auto e = this->container.last(time, this->container.end());
+	return std::make_pair(e->time, e->value);
+}
+
+template <typename _T>
+std::pair<tube_time_t, const _T&> ValueContainer<_T>::next_frame(const tube_time_t &time) const {
+	auto e = this->container.last(time, this->container.end());
+	e ++;
+	return std::make_pair(e->time, e->value);
 }
 
 template <typename _T>

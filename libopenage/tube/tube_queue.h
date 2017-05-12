@@ -75,7 +75,7 @@ public:
 		return it;
 	}
 
-	TubeQueueFilterIterator<_T, Queue<_T>> erase(const TubeQueueFilterIterator<_T, Queue<_T>> &t) {
+	TubeQueueFilterIterator<_T, Queue<_T>> erase(const TubeIterator<_T, Queue<_T>> &t) {
 		auto it = container.erase(t.base);
 		auto ct = TubeQueueFilterIterator<_T, Queue<_T>>(
 		    it,
