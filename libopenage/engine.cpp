@@ -378,19 +378,19 @@ void Engine::loop() {
 			input::InputManager &input = this->get_input_manager();
 
 			if (input.is_down(SDLK_LEFT) ||
-				input.is_mouse_at_edge(input.EDGE_LEFT, coord.window_size.x)) {
+				input.is_mouse_at_edge(input.Edge::LEFT, coord.window_size.x)) {
 				mov_x = -cam_movement_speed_keyboard;
 			}
 			if (input.is_down(SDLK_RIGHT) ||
-				input.is_mouse_at_edge(input.EDGE_RIGHT, coord.window_size.x)) {
+				input.is_mouse_at_edge(input.Edge::RIGHT, coord.window_size.x)) {
 				mov_x = cam_movement_speed_keyboard;
 			}
 			if (input.is_down(SDLK_DOWN) ||
-				input.is_mouse_at_edge(input.EDGE_DOWN, coord.window_size.y)) {
+				input.is_mouse_at_edge(input.Edge::DOWN, coord.window_size.y)) {
 				mov_y = cam_movement_speed_keyboard;
 			}
 			if (input.is_down(SDLK_UP) ||
-				input.is_mouse_at_edge(input.EDGE_UP, coord.window_size.y)) {
+				input.is_mouse_at_edge(input.Edge::UP, coord.window_size.y)) {
 				mov_y = -cam_movement_speed_keyboard;
 			}
 

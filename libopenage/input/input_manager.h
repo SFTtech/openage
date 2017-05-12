@@ -140,11 +140,11 @@ public:
 	/**
 	 * Edges enum for use with is_mouse_at_edge
 	 */
-	enum Edges {
-		EDGE_LEFT,
-		EDGE_RIGHT,
-		EDGE_UP,
-		EDGE_DOWN
+	enum class Edge {
+	    LEFT,
+	    RIGHT,
+	    UP,
+	    DOWN
 	};
 
 	/**
@@ -154,7 +154,7 @@ public:
 	 *
 	 * @return true when the mouse is at the queried screen edge, false else.
 	 */
-	bool is_mouse_at_edge(Edges edge, int window_size);
+	bool is_mouse_at_edge(Edge edge, int window_size);
 
 	/**
 	 * Query stored pressing stat for a key.

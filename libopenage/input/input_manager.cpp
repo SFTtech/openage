@@ -257,23 +257,23 @@ void InputManager::set_relative(bool mode) {
 	}
 }
 
-bool InputManager::is_mouse_at_edge(Edges edge, int window_size){
+bool InputManager::is_mouse_at_edge(Edge edge, int window_size){
 	int x, y;
 	SDL_GetMouseState(&x, &y);
 
 	//how mant pixels in from edge to consider "edge"
 	int edge_offset = 0;
 
-	if(edge == EDGE_LEFT && x<=edge_offset){
+	if(edge == Edge::LEFT && x<=edge_offset){
 		return true;
 	}
-	if(edge == EDGE_RIGHT && x>=window_size-edge_offset-1){
+	if(edge == Edge::RIGHT && x>=window_size-edge_offset-1){
 		return true;
 	}
-	if(edge == EDGE_UP && y<=edge_offset){
+	if(edge == Edge::UP && y<=edge_offset){
 		return true;
 	}
-	if(edge == EDGE_DOWN && y>=window_size-edge_offset-1){
+	if(edge == Edge::DOWN && y>=window_size-edge_offset-1){
 		return true;
 	}
 
