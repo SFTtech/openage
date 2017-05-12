@@ -20,7 +20,7 @@ namespace opengl {
 /**
  * A handle to an OpenGL texture.
  */
-class GlTexture : public Texture {
+class GlTexture final : public Texture {
 public:
 	/// Constructs a texture and fills it with the given data.
 	explicit GlTexture(const resources::TextureData&);

@@ -7,6 +7,7 @@
 #include "texture.h"
 #include "shader_program.h"
 #include "uniform_input.h"
+#include "geometry.h"
 
 
 namespace openage {
@@ -68,7 +69,8 @@ void GlRenderer::render(RenderPass const& pass) {
 		}
 
 		auto in = dynamic_cast<GlUniformInput const*>(obj.unif_in);
-		in->program->execute_with(in, obj.geometry);
+		auto geom = dynamic_cast<GlGeometry const*>(obj.geometry);
+		in->program->execute_with(in, geom);
 	}
 }
 

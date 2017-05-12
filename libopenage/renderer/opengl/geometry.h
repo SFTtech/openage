@@ -10,13 +10,15 @@ namespace renderer {
 namespace opengl {
 
 /// The OpenGL class representing geometry to be passed to a draw call.
-class GlGeometry : public Geometry {
+class GlGeometry final : public Geometry {
 public:
 	/// The default constructor makes a quad.
-	GlGeometry(const geometry_t &geometry_type);
-	virtual ~GlGeometry();
+	GlGeometry();
+	virtual ~GlGeometry() = default;
 
-	virtual void draw() const override;
+	/// Executes a draw command for the geometry on the currently active context.
+	/// Assumes bound and valid shader program and all other necessary state.
+	void draw() const;
 };
 
 }}} // openage::renderer::opengl

@@ -16,7 +16,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-class GlRenderer : public Renderer {
+class GlRenderer final : public Renderer {
 public:
 	GlRenderer(GlContext*);
 

@@ -307,7 +307,7 @@ void GlShaderProgram::use() const {
 	}
 }
 
-void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry *geom) {
+void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeometry *geom) {
 	assert(unif_in->program == this);
 
 	this->use();
@@ -368,8 +368,7 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const Geometry
 	}
 
 	if (geom != nullptr) {
-		// TODO read geom and obj.blend + family
-		//glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		// TODO read obj.blend + family
 		geom->draw();
 	}
 }

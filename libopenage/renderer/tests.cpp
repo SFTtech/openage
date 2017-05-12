@@ -72,12 +72,16 @@ void renderer_demo_0() {
 		resources::shader_source_t::glsl_vertex,
 		R"s(
 #version 330
-layout(location=0) in vec2 in_position;
 
 uniform mat4 mvp;
 
 void main() {
-	gl_Position = mvp * vec4(in_position, 0.0, 1.0);
+	gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;
+	gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;
+	gl_Position.z = 0.0;
+	gl_Position.w = 1.0;
+
+	gl_Position = mvp * gl_Position;
 }
 )s");
 
@@ -106,14 +110,15 @@ void main() {
 		R"s(
 #version 330
 
-layout(location=0) in vec2 in_position;
-layout(location=1) in vec2 in_texcoord;
 out vec2 v_uv;
 
 void main() {
-	gl_Position = vec4(in_position, 0.0, 1.0);
+	gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;
+	gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;
+	gl_Position.z = 0.0;
+	gl_Position.w = 1.0;
 
-	v_uv = in_texcoord;
+	v_uv = gl_Position.xy * 0.5 + 0.5;
 }
 )s");
 
@@ -122,6 +127,7 @@ void main() {
 		resources::shader_source_t::glsl_fragment,
 		R"s(
 #version 330
+
 uniform sampler2D color_texture;
 
 in vec2 v_uv;
@@ -129,7 +135,6 @@ out vec4 col;
 
 void main() {
 	col = texture(color_texture, v_uv);
-	//col = vec4(v_uv, 0.0, 1.0);
 }
 )s");
 
@@ -170,7 +175,7 @@ void main() {
 		"u_id", 3u
 	);
 
-	opengl::GlGeometry quad(geometry_t::quad);
+	opengl::GlGeometry quad;
 	Renderable obj1 {
 		unif_in1.get(),
 		&quad,

@@ -2,54 +2,33 @@
 
 #pragma once
 
-#include <array>
-#include <memory>
-#include <eigen3/Eigen/Core>
 
 namespace openage {
 namespace renderer {
 
-class VertexState;
-class VertexBuffer;
-
 /// The type of geometry.
 enum class geometry_t {
-	quad,
+	/// This passes 4 vertices with undefined positions to the shader.
+	/// The shader has to set the positions itself (e.g. using gl_VertexID in OpenGL).
+	bufferless_quad,
+	/// This passes valid geometry defined by a mesh to the shader.
 	mesh,
 };
 
 /// A class representing geometry to be passed to a draw call.
-// TODO this class
 class Geometry {
 public:
-	struct Vertex {
-		Eigen::Vector2f position;
-		Eigen::Vector2f texture_coordinates;
-	};
-
-
-	/// The default constructor makes a quad.
-	Geometry(VertexState* vaoPtr, VertexBuffer *vboPtr, const geometry_t &geometry_type);
-	virtual ~Geometry();
-
-	// TODO maybe use inheritance instead of enum?
-	// Geometry(mesh..)
+	virtual ~Geometry() = default;
 
 	/// Returns the type of this geometry.
-	geometry_t get_type() const { return this->type; }
-
-	virtual void draw() const = 0;
+	geometry_t get_type() const;
 
 protected:
-	std::unique_ptr<VertexState> vertex_state;
-	std::unique_ptr<VertexBuffer> vertex_buffer;
+	/// The default constructor makes a quad.
+	explicit Geometry(geometry_t type);
 
 private:
-	static const std::array<Vertex, 4> quad_geometry;
-
 	geometry_t type;
-
-	void setup_quad();
 };
 
 }} // openage::renderer

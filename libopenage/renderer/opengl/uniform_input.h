@@ -15,7 +15,7 @@ namespace opengl {
 class GlShaderProgram;
 
 /// Describes OpenGL-specific uniform valuations.
-struct GlUniformInput : public UniformInput {
+struct GlUniformInput final : public UniformInput {
 	/// The program that this was created for.
 	GlShaderProgram* program;
 

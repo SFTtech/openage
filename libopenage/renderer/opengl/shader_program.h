@@ -11,6 +11,7 @@
 #include "../renderer.h"
 #include "uniform_input.h"
 #include "context.h"
+#include "geometry.h"
 
 
 namespace openage {
@@ -43,7 +44,7 @@ struct GlUniform {
 };
 
 /// A handle to an OpenGL shader program
-class GlShaderProgram : public ShaderProgram {
+class GlShaderProgram final : public ShaderProgram {
 public:
 	/// Tries to create a shader program from the given sources.
 	/// Throws an exception on compile/link errors.
@@ -63,7 +64,7 @@ public:
 
 	/// Does what the description of Renderable specifies - updates the uniform values
 	/// and draws the Geometry if it's not nullptr.
-	void execute_with(const GlUniformInput*, const Geometry*);
+	void execute_with(const GlUniformInput*, const GlGeometry*);
 
 	bool has_uniform(const char*) override;
 

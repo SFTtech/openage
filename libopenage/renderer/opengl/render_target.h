@@ -22,7 +22,7 @@ enum class gl_render_target_t {
 	// TODO renderbuffers mixed with textures
 };
 
-class GlRenderTarget : public RenderTarget {
+class GlRenderTarget final : public RenderTarget {
 public:
 	/// Construct a render target pointed at the default framebuffer - the window.
 	GlRenderTarget();
