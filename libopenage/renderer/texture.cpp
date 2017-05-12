@@ -3,7 +3,6 @@
 #include <cstring>
 
 #include "texture.h"
-
 #include "../error/error.h"
 
 

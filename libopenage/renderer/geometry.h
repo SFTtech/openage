@@ -24,7 +24,7 @@ public:
 	geometry_t get_type() const;
 
 protected:
-	/// The default constructor makes a quad.
+	/// Initialize the geometry to a given type.
 	explicit Geometry(geometry_t type);
 
 private:

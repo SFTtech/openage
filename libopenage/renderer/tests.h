@@ -1,7 +1,6 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_TESTS_H_
-#define OPENAGE_RENDERER_TESTS_H_
+#pragma once
 
 
 namespace openage {
@@ -12,5 +11,3 @@ namespace tests {
 void renderer_demo(int demo_id);
 
 }}} // openage::renderer::tests
-
-#endif
