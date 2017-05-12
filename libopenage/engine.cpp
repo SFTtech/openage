@@ -368,7 +368,7 @@ void Engine::loop() {
 		this->gui->process_events();
 
 		if (this->game) {
-			// read camera movement input keys and/or cursor location, 
+			// read camera movement input keys and/or cursor location,
 			// and move camera accordingly.
 
 			// camera movement speed, in pixels per millisecond
