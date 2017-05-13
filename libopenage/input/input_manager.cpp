@@ -257,6 +257,29 @@ void InputManager::set_relative(bool mode) {
 	}
 }
 
+bool InputManager::is_mouse_at_edge(Edge edge, int window_size ) {
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+
+	//how mant pixels in from edge to consider "edge"
+	//AoE II appears to be approx 10px
+	const int edge_offset = 10;
+
+	if (edge == Edge::LEFT && x<=edge_offset) {
+		return true;
+	}
+	if (edge == Edge::RIGHT && x>=window_size-edge_offset-1) {
+		return true;
+	}
+	if (edge == Edge::UP && y<=edge_offset) {
+		return true;
+	}
+	if (edge == Edge::DOWN && y>=window_size-edge_offset-1) {
+		return true;
+	}
+
+	return false;
+}
 
 bool InputManager::is_down(const ClassCode &cc) const {
 	auto it = this->states.find(cc);

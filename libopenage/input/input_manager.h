@@ -138,6 +138,25 @@ public:
 	void set_relative(bool mode);
 
 	/**
+	 * Edges enum for use with is_mouse_at_edge
+	 */
+	enum class Edge {
+	    LEFT,
+	    RIGHT,
+	    UP,
+	    DOWN
+	};
+
+	/**
+	 * Query whether cursor is at edgo of screen
+	 *
+	 * edge variable is enum Edges
+	 *
+	 * @return true when the mouse is at the queried screen edge, false else.
+	 */
+	bool is_mouse_at_edge(Edge edge, int window_size);
+
+	/**
 	 * Query stored pressing stat for a key.
 	 *
 	 * note that the function stores a unknown/new keycode
