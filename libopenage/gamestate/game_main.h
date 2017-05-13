@@ -14,14 +14,14 @@
 #include "../options.h"
 #include "../unit/unit_container.h"
 #include "../util/timing.h"
-
+#include "../scripting/script.h"
 
 namespace openage {
 
 class Engine;
 class Generator;
 class Terrain;
-
+class Script;
 
 /**
  * Contains information for a single game
@@ -90,6 +90,8 @@ public:
 	 * all the objects that have been placed.
 	 */
 	UnitContainer placed_units;
+    
+    time_nsec_t gametime;
 
 private:
 

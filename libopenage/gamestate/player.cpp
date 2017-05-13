@@ -63,6 +63,9 @@ void Player::receive(const ResourceBundle& amount) {
 
 void Player::receive(const game_resource resource, double amount) {
 	this->resources[resource] += amount;
+    for(auto script : ScriptSingleton::instance().scripts) {
+        script->onResourceChange(this->color,resource,amount,this->resources[resource]);
+    }
 }
 
 bool Player::deduct(const ResourceBundle& amount) {
@@ -72,6 +75,10 @@ bool Player::deduct(const ResourceBundle& amount) {
 bool Player::deduct(const game_resource resource, double amount) {
 	if (this->resources[resource] >= amount) {
 		this->resources[resource] -= amount;
+
+        for(auto script : ScriptSingleton::instance().scripts) {
+            script->onResourceChange(this->color,resource,(-1)*amount,this->resources[resource]);
+        }
 		return true;
 	}
 	return false;
