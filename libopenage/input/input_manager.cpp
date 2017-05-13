@@ -262,7 +262,7 @@ bool InputManager::is_mouse_at_edge(Edge edge, int window_size ) {
 	SDL_GetMouseState(&x, &y);
 
 	//how mant pixels in from edge to consider "edge"
-	int edge_offset = 0;
+	const int edge_offset = 10;
 
 	if (edge == Edge::LEFT && x<=edge_offset) {
 		return true;
