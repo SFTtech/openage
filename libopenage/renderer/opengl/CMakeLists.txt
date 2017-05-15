@@ -4,7 +4,9 @@ add_sources(libopenage
   geometry.cpp
   render_target.cpp
   renderer.cpp
+  scrapped.h
   shader_program.cpp
   texture.cpp
+  uniform_input.h
   vertex_array.cpp
 )
