@@ -86,7 +86,7 @@ MeshData::MeshData(init_quad_t) {
 	this->data = std::vector<uint8_t>(data_size);
 	std::memcpy(data.data(), reinterpret_cast<const uint8_t*>(quad_data.data()), data_size);
 
-	this->info = { { vertex_input_t::V2F32, vertex_input_t::V2F32 }, vertex_layout_t::AOS, vertex_primitive_t::TRIANGLE_STRIP };
+	this->info = VertexInputInfo { { vertex_input_t::V2F32, vertex_input_t::V2F32 }, vertex_layout_t::AOS, vertex_primitive_t::TRIANGLE_STRIP };
 }
 
 std::vector<uint8_t> const &MeshData::get_data() const {
