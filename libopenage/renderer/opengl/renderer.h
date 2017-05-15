@@ -25,6 +25,9 @@ public:
 
 	std::unique_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const&) override;
 
+	std::unique_ptr<Geometry> add_mesh_geometry(resources::MeshData const&) override;
+	std::unique_ptr<Geometry> add_bufferless_quad() override;
+
 	std::unique_ptr<RenderTarget> create_texture_target(std::vector<Texture*>) override;
 	RenderTarget const* get_display_target() override;
 

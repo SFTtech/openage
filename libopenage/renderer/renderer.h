@@ -13,6 +13,7 @@ namespace resources {
 class TextureData;
 class TextureInfo;
 class ShaderSource;
+class MeshData;
 }
 
 class ShaderProgram;
@@ -80,6 +81,14 @@ public:
 	/// Compiles the given shader source code into a shader program. A shader program is the main tool used
 	/// for graphics rendering.
 	virtual std::unique_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const&) = 0;
+
+	/// Creates a Geometry object from the given mesh data, uploading it to the GPU by creating appropriate buffer.
+	/// The vertex attributes will be passed to the shader as described in the mesh data.
+	virtual std::unique_ptr<Geometry> add_mesh_geometry(resources::MeshData const&) = 0;
+
+	/// Adds a Geometry object that passes a simple 4-vertex drawing command with no vertex attributes to the shader.
+	/// Useful for generating positions in the vertex shader.
+	virtual std::unique_ptr<Geometry> add_bufferless_quad() = 0;
 
 	/// Constructs a render target from the given textures. All subsequent drawing operations pointed at this
 	/// target will write to these textures. The textures are attached to the render target according to their

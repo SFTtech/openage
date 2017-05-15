@@ -1,54 +1,54 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_OPENGL_BUFFER_H_
-#define OPENAGE_RENDERER_OPENGL_BUFFER_H_
+#pragma once
 
-#include "../buffer.h"
+#include <experimental/optional>
 
 #include <epoxy/gl.h>
-#include <memory>
+
 
 namespace openage {
 namespace renderer {
 namespace opengl {
 
-/**
- * OpenGL data buffer.
- */
-class Buffer : public renderer::Buffer {
+/// OpenGL data buffer on the GPU.
+class GlBuffer {
 public:
-	Buffer(/*renderer::Context *ctx,*/ size_t size=0);
-	virtual ~Buffer();
+	/// Creates an empty buffer of the specified size.
+	GlBuffer(size_t size, GLenum usage = GL_STATIC_DRAW);
 
-	Buffer(const Buffer &other) = delete;
-	Buffer(Buffer &&other) = delete;
-	Buffer &operator =(const Buffer &other) = delete;
-	Buffer &operator =(Buffer &&other) = delete;
+	/// Creates a buffer of the specified size and fills it with the given data.
+	GlBuffer(const uint8_t *data, size_t size, GLenum usage = GL_STATIC_DRAW);
 
-	/**
-	 * Uploads the current state of the buffer to the GPU.
-	 */
-	void upload(bind_target target, usage usage) override;
+	~GlBuffer();
 
-	/**
-	 * Bind this buffer to the specified slot.
-	 */
-	void bind(bind_target target) const override;
+	/// Moving is supported.
+	GlBuffer &operator =(GlBuffer&&);
+	GlBuffer(GlBuffer&&);
 
-	/**
-	 * Fetch the OpenGL specific buffer slot identification.
-	 */
-	static GLenum get_target(bind_target target);
+	// TODO support copies
+	GlBuffer(const GlBuffer&) = delete;
+	GlBuffer &operator =(const GlBuffer&) = delete;
 
-	/**
-	 * Fetch the OpenGL specific buffer usage prediction id.
-	 */
-	static GLenum get_usage(usage usage);
+	/// The size in bytes of this buffer.
+	size_t get_size() const;
 
-protected:
-	GLuint id;
+	/// Uploads `size` bytes of new data starting at `offset`.
+	/// `offset + size` has to be less than or equal to `get_size()`.
+	void upload_data(const uint8_t *data, size_t offset, size_t size);
+
+	/// Bind this buffer to the specified GL target.
+	void bind(GLenum target) const;
+
+private:
+	/// The OpenGL handle to this buffer. Can be empty if the object was moved out of.
+	std::experimental::optional<GLuint> id;
+
+	/// The size in bytes of this buffer.
+	size_t size;
+
+	/// The GL usage hint for this buffer.
+	GLenum usage;
 };
 
 }}} // openage::renderer::opengl
-
-#endif

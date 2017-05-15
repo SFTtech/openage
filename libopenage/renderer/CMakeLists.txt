@@ -1,13 +1,10 @@
 add_sources(libopenage
-  tests.cpp
-  texture.cpp
-  window.cpp
-  text.cpp
   color.cpp
   geometry.cpp
-  vertex_buffer.cpp
-  buffer.cpp
-  vertex_state.cpp
+  tests.cpp
+  text.cpp
+  texture.cpp
+  window.cpp
 )
 
 pxdgen(

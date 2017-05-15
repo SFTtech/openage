@@ -5,40 +5,71 @@
 #include <cstring>
 
 #include "../../error/error.h"
+#include "../../datastructure/constexpr_map.h"
 
 
 namespace openage {
 namespace renderer {
 namespace resources {
 
+static constexpr auto vin_size = datastructure::create_const_map<vertex_input_t, size_t>(
+	std::make_pair(vertex_input_t::V2F32, 8),
+	std::make_pair(vertex_input_t::V3F32, 12),
+	std::make_pair(vertex_input_t::M3F32, 36)
+);
 
-VertexInputInfo::VertexInputInfo(std::vector<vertex_input_t> inputs, vertex_layout_t layout)
-	: inputs(inputs)
-	, layout(layout) {}
+static constexpr auto vin_count = datastructure::create_const_map<vertex_input_t, size_t>(
+	std::make_pair(vertex_input_t::V2F32, 2),
+	std::make_pair(vertex_input_t::V3F32, 3),
+	std::make_pair(vertex_input_t::M3F32, 9)
+);
 
-/// Returns the size in bytes of a given per-vertex input type.
-static size_t vert_in_size(vertex_input_t in) {
-	switch(in) {
-	case vertex_input_t::V2F32:
-		return 8;
-	case vertex_input_t::V3F32:
-		return 12;
-	default:
-		throw Error(MSG(err) << "Tried to find size of unknown vertex input type.");
-	}
+size_t vertex_input_size(vertex_input_t in) {
+	return vin_size.get(in);
 }
 
-size_t VertexInputInfo::size() const {
+size_t vertex_input_count(vertex_input_t in) {
+	return vin_count.get(in);
+}
+
+VertexInputInfo::VertexInputInfo(std::vector<vertex_input_t> inputs, vertex_layout_t layout, vertex_primitive_t primitive)
+	: inputs(inputs)
+	, layout(layout)
+	, primitive(primitive) {}
+
+VertexInputInfo::VertexInputInfo(std::vector<vertex_input_t> inputs, vertex_layout_t layout, vertex_primitive_t primitive, index_t index_type)
+	: inputs(inputs)
+	, layout(layout)
+	, primitive(primitive)
+	, index_type(index_type) {}
+
+size_t VertexInputInfo::vert_size() const {
 	size_t size = 0;
 	for (auto in : this->inputs) {
-		size += vert_in_size(in);
+		size += vertex_input_size(in);
 	}
 	return size;
 }
 
+const std::vector<vertex_input_t> &VertexInputInfo::get_inputs() const {
+	return this->inputs;
+}
+
+vertex_layout_t VertexInputInfo::get_layout() const {
+	return this->layout;
+}
+
+vertex_primitive_t VertexInputInfo::get_primitive() const {
+	return this->primitive;
+}
+
+std::experimental::optional<index_t> VertexInputInfo::get_index_type() const {
+	return this->index_type;
+}
+
 /// Vertices of a quadrilateral filling the whole screen.
 /// Format: (pos, tex_coords) = (x, y, u, v)
-static const std::array<float, 16> quad_data = { {
+static constexpr std::array<float, 16> quad_data = { {
 		-1.0f, 1.0f, 0.0f, 1.0f,
 		-1.0f, -1.0f, 0.0f, 0.0f,
 		1.0f, 1.0f, 1.0f, 1.0f,
@@ -55,7 +86,19 @@ MeshData::MeshData(init_quad_t) {
 	this->data = std::vector<uint8_t>(data_size);
 	std::memcpy(data.data(), reinterpret_cast<const uint8_t*>(quad_data.data()), data_size);
 
-	this->info = { { vertex_input_t::V2F32, vertex_input_t::V2F32 }, vertex_layout_t::AOS };
+	this->info = { { vertex_input_t::V2F32, vertex_input_t::V2F32 }, vertex_layout_t::AOS, vertex_primitive_t::TRIANGLE_STRIP };
+}
+
+std::vector<uint8_t> const &MeshData::get_data() const {
+	return this->data;
+}
+
+std::experimental::optional<std::vector<uint8_t>> const &MeshData::get_ids() const {
+	return this->ids;
+}
+
+VertexInputInfo MeshData::get_info() const {
+	return *this->info;
 }
 
 }}}

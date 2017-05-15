@@ -1,12 +1,12 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_VERTEX_BUFFER_H_
-#define OPENAGE_RENDERER_VERTEX_BUFFER_H_
+#pragma once
 
 #include <vector>
 
 #include "buffer.h"
 #include "../datastructure/constexpr_map.h"
+
 
 namespace openage {
 namespace renderer {
@@ -128,5 +128,3 @@ protected:
 };
 
 }} // openage::renderer
-
-#endif

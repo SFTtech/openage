@@ -1,7 +1,6 @@
 // Copyright 2015-2015 the openage authors. See copying.md for legal info.
 
-#ifndef OPENAGE_RENDERER_VERTEX_STATE_H_
-#define OPENAGE_RENDERER_VERTEX_STATE_H_
+#pragma once
 
 #include <memory>
 #include <unordered_set>
@@ -68,5 +67,3 @@ protected:
 };
 
 }} // openage::renderer
-
-#endif

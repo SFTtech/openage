@@ -1,86 +1,73 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
-
-#include "../../config.h"
-#if WITH_OPENGL
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "buffer.h"
 
-#include <epoxy/gl.h>
-
 #include "../../error/error.h"
+
 
 namespace openage {
 namespace renderer {
 namespace opengl {
 
-Buffer::Buffer(/*renderer::Context *ctx,*/ size_t size)
-	:
-	renderer::Buffer{/*ctx,*/ size} {
+GlBuffer::GlBuffer(size_t size, GLenum usage)
+	: size(size)
+	, usage(usage) {
+	GLuint id;
+	glGenBuffers(1, &id);
+	this->id = id;
 
-	glGenBuffers(1, &this->id);
+	this->bind(GL_ARRAY_BUFFER);
+	glBufferData(GL_ARRAY_BUFFER, size, 0, usage);
 }
 
-Buffer::~Buffer() {
-	glDeleteBuffers(1, &this->id);
+GlBuffer::GlBuffer(const uint8_t *data, size_t size, GLenum usage)
+	: size(size)
+	, usage(usage) {
+	GLuint id;
+	glGenBuffers(1, &id);
+	this->id = id;
+
+	this->bind(GL_ARRAY_BUFFER);
+	glBufferData(GL_ARRAY_BUFFER, size, data, usage);
 }
 
-void Buffer::upload(bind_target target, usage usage) {
-	GLenum gl_usage = this->get_usage(usage);
-	GLenum gl_slot = this->get_target(target);
+GlBuffer::GlBuffer(GlBuffer &&other)
+	: id(other.id)
+	, size(other.size)
+	, usage(other.usage) {
+	other.id = std::experimental::optional<GLuint>();
+}
 
-	if (not this->on_gpu) {
-		this->bind(target);
-		glBufferData(gl_slot, this->allocd, this->get(), gl_usage);
-		this->on_gpu = true;
+GlBuffer &GlBuffer::operator =(GlBuffer &&other) {
+	this->id = other.id;
+	this->size = other.size;
+	this->usage = other.usage;
+	other.id = std::experimental::optional<GLuint>();
+
+	return *this;
+}
+
+GlBuffer::~GlBuffer() {
+	if (this->id) {
+		glDeleteBuffers(1, &this->id.value());
 	}
 }
 
-void Buffer::bind(bind_target target) const {
-	GLenum gl_slot = this->get_target(target);
-	// TODO: ask the context if already bound.
-	glBindBuffer(gl_slot, this->id);
+size_t GlBuffer::get_size() const {
+	return this->size;
 }
 
-
-GLenum Buffer::get_target(bind_target target) {
-	switch (target) {
-	case bind_target::vertex_attributes:
-		return GL_ARRAY_BUFFER;
-	case bind_target::element_indices:
-		return GL_ELEMENT_ARRAY_BUFFER;
-	case bind_target::query:
-		return GL_QUERY_BUFFER;
-	default:
-		throw Error{MSG(err) << "unimplemented buffer binding target!"};
+void GlBuffer::upload_data(const uint8_t *data, size_t offset, size_t size) {
+	if (unlikely(offset + size > this->size)) {
+		throw Error(MSG(err) << "Tried to upload more data to OpenGL buffer than can fit.");
 	}
+
+	this->bind(GL_ARRAY_BUFFER);
+	glBufferSubData(GL_ARRAY_BUFFER, offset, size, data);
 }
 
-GLenum Buffer::get_usage(usage u) {
-	switch (u) {
-	case usage::static_draw:
-		return GL_STATIC_DRAW;
-	case usage::static_read:
-		return GL_STATIC_READ;
-	case usage::stream_draw:
-		return GL_STREAM_DRAW;
-	case usage::stream_read:
-		return GL_STREAM_READ;
-	case usage::stream_copy:
-		return GL_STREAM_COPY;
-	case usage::static_copy:
-		return GL_STATIC_COPY;
-	case usage::dynamic_draw:
-		return GL_DYNAMIC_DRAW;
-	case usage::dynamic_read:
-		return GL_DYNAMIC_READ;
-	case usage::dynamic_copy:
-		return GL_DYNAMIC_COPY;
-
-	default:
-		throw Error{MSG(err) << "unimplemented buffer usage prediction!"};
-	}
+void GlBuffer::bind(GLenum target) const {
+	glBindBuffer(target, *this->id);
 }
 
 }}} // openage::renderer::opengl
-
-#endif

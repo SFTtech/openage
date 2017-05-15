@@ -8,7 +8,6 @@
 #include <eigen3/Eigen/Dense>
 
 #include "../log/log.h"
-#include "opengl/geometry.h"
 #include "../error/error.h"
 #include "resources/shader_source.h"
 #include "opengl/renderer.h"
@@ -73,15 +72,20 @@ void renderer_demo_0() {
 		R"s(
 #version 330
 
+layout(location=0) in vec2 position;
+layout(location=1) in vec2 uv;
 uniform mat4 mvp;
 
 void main() {
+/*
 	gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;
 	gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;
 	gl_Position.z = 0.0;
 	gl_Position.w = 1.0;
 
 	gl_Position = mvp * gl_Position;
+*/
+gl_Position = mvp * vec4(position, 0.0, 1.0);
 }
 )s");
 
@@ -110,15 +114,22 @@ void main() {
 		R"s(
 #version 330
 
+
+layout(location=0) in vec2 position;
+layout(location=1) in vec2 uv;
 out vec2 v_uv;
 
 void main() {
+/*
 	gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;
 	gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;
 	gl_Position.z = 0.0;
 	gl_Position.w = 1.0;
 
 	v_uv = gl_Position.xy * 0.5 + 0.5;
+*/
+gl_Position = vec4(position, 0.0, 1.0);
+v_uv = uv;
 }
 )s");
 
@@ -175,24 +186,24 @@ void main() {
 		"u_id", 3u
 	);
 
-	opengl::GlGeometry quad;
+	auto quad = renderer->add_mesh_geometry( resources::MeshData { resources::init_quad_t {} } );
 	Renderable obj1 {
 		unif_in1.get(),
-		&quad,
+		quad.get(),
 		true,
 		true,
 	};
 
 	Renderable obj2{
 		unif_in2.get(),
-		&quad,
+		quad.get(),
 		true,
 		true,
 	};
 
 	Renderable obj3 {
 		unif_in3.get(),
-		&quad,
+		quad.get(),
 		true,
 		true,
 	};
@@ -206,7 +217,7 @@ void main() {
 	auto color_texture_uniform = shader_display->new_uniform_input("color_texture", color_texture.get());
 	Renderable display_obj {
 		color_texture_uniform.get(),
-		&quad,
+		quad.get(),
 		false,
 		false,
 	};
@@ -231,11 +242,6 @@ void main() {
 			glDepthRange(0.0, 1.0);
 			// what is this
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-			// TODO put in renderer
-			GLuint vao;
-			glGenVertexArrays(1, &vao);
-			glBindVertexArray(vao); // stores all the vertex attrib state.*/
 		},
 		// frame
 		[&]() {

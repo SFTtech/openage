@@ -2,7 +2,13 @@
 
 #pragma once
 
+#include <experimental/optional>
+
 #include "../geometry.h"
+#include "../resources/mesh_data.h"
+
+#include "buffer.h"
+#include "vertex_array.h"
 
 
 namespace openage {
@@ -14,11 +20,29 @@ class GlGeometry final : public Geometry {
 public:
 	/// The default constructor makes a quad.
 	GlGeometry();
+
+	/// Initialize a meshed geometry. Relatively costly, has to initialize GL buffers and copy vertex data.
+	explicit GlGeometry(resources::MeshData const&);
+
 	virtual ~GlGeometry() = default;
 
 	/// Executes a draw command for the geometry on the currently active context.
 	/// Assumes bound and valid shader program and all other necessary state.
 	void draw() const;
+
+private:
+	struct GlMesh {
+		GlBuffer vertices;
+		std::experimental::optional<GlBuffer> indices;
+		GlVertexArray vao;
+		size_t vert_count;
+		GLenum primitive;
+		std::experimental::optional<GLenum> index_type;
+	};
+
+	/// Data managing GPU memory and interpretation of mesh data.
+	/// Only present if the type is a mesh.
+	std::experimental::optional<GlMesh> mesh;
 };
 
 }}} // openage::renderer::opengl

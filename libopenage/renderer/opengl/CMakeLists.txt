@@ -1,10 +1,10 @@
 add_sources(libopenage
+  buffer.cpp
   context.cpp
+  geometry.cpp
   render_target.cpp
   renderer.cpp
   shader_program.cpp
   texture.cpp
-  vertex_state.cpp
-  buffer.cpp
-  geometry.cpp
+  vertex_array.cpp
 )

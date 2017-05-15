@@ -33,6 +33,14 @@ std::unique_ptr<ShaderProgram> GlRenderer::add_shader(std::vector<resources::Sha
 	return std::make_unique<GlShaderProgram>(srcs, this->gl_context->get_capabilities());
 }
 
+std::unique_ptr<Geometry> GlRenderer::add_mesh_geometry(resources::MeshData const& mesh) {
+	return std::make_unique<GlGeometry>(mesh);
+}
+
+std::unique_ptr<Geometry> GlRenderer::add_bufferless_quad() {
+	return std::make_unique<GlGeometry>();
+}
+
 std::unique_ptr<RenderTarget> GlRenderer::create_texture_target(std::vector<Texture*> textures) {
 	std::vector<const GlTexture*> gl_textures;
 	for (auto tex : textures) {

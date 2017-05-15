@@ -118,6 +118,7 @@ resources::TextureData GlTexture::into_data() {
 
 	glPixelStorei(GL_PACK_ALIGNMENT, this->info.get_row_alignment());
 	glBindTexture(GL_TEXTURE_2D, *this->handle);
+	// TODO use a Pixel Buffer Object instead
 	glGetTexImage(GL_TEXTURE_2D, 0, std::get<1>(fmt_in_out), std::get<2>(fmt_in_out), data.data());
 
 	return resources::TextureData(resources::TextureInfo(this->info), std::move(data));

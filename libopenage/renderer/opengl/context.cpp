@@ -163,35 +163,35 @@ void GlContext::check_error() {
 				// An unacceptable value is specified for an enumerated argument.
 				// The offending command is ignored
 				// and has no other side effect than to set the error flag.
-				return "invalid enum passed to opengl call";
+				return "GL_INVALID_ENUM";
 			case GL_INVALID_VALUE:
 				// A numeric argument is out of range.
 				// The offending command is ignored
 				// and has no other side effect than to set the error flag.
-				return "invalid value passed to opengl call";
+				return "GL_INVALID_VALUE";
 			case GL_INVALID_OPERATION:
 				// The specified operation is not allowed in the current state.
 				// The offending command is ignored
 				// and has no other side effect than to set the error flag.
-				return "invalid operation performed during some state";
+				return "GL_INVALID_OPERATION";
 			case GL_INVALID_FRAMEBUFFER_OPERATION:
 				// The framebuffer object is not complete. The offending command
 				// is ignored and has no other side effect than to set the error flag.
-				return "invalid framebuffer operation";
+				return "GL_INVALID_FRAMEBUFFER_OPERATION";
 			case GL_OUT_OF_MEMORY:
 				// There is not enough memory left to execute the command.
 				// The state of the GL is undefined,
 				// except for the state of the error flags,
 				// after this error is recorded.
-				return "out of memory, wtf?";
+				return "GL_OUT_OF_MEMORY";
 			case GL_STACK_UNDERFLOW:
 				// An attempt has been made to perform an operation that would
 				// cause an internal stack to underflow.
-				return "stack underflow";
+				return "GL_STACK_UNDERFLOW";
 			case GL_STACK_OVERFLOW:
 				// An attempt has been made to perform an operation that would
 				// cause an internal stack to overflow.
-				return "stack overflow";
+				return "GL_STACK_OVERFLOW";
 			default:
 				// unknown error state
 				return "unknown error";
