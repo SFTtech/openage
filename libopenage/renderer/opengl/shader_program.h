@@ -2,13 +2,15 @@
 
 #pragma once
 
-#include <map>
-#include <vector>
 #include <epoxy/gl.h>
+
+#include <unordered_map>
+#include <vector>
 
 #include "../shader_program.h"
 #include "../resources/shader_source.h"
 #include "../renderer.h"
+
 #include "uniform_input.h"
 #include "context.h"
 #include "geometry.h"
@@ -18,32 +20,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-/// GLSL uniform types
-enum class gl_uniform_t {
-	I32,
-	U32,
-	F32,
-	F64,
-	V2F32,
-	V3F32,
-	V4F32,
-	M3F32,
-	M4F32,
-	V2I32,
-	V3I32,
-	SAMPLER2D,
-};
-
-/// Returns the size in bytes of a GLSL uniform type
-size_t uniform_size(gl_uniform_t);
-
-/// Represents a uniform location in the shader program
-struct GlUniform {
-	gl_uniform_t type;
-	GLint location;
-};
-
-/// A handle to an OpenGL shader program
+/// A handle to an OpenGL shader program.
 class GlShaderProgram final : public ShaderProgram {
 public:
 	/// Tries to create a shader program from the given sources.
@@ -69,7 +46,6 @@ public:
 	bool has_uniform(const char*) override;
 
 protected:
-	void set_unif(UniformInput*, const char*, void const*);
 	std::unique_ptr<UniformInput> new_unif_in() override;
 	void set_i32(UniformInput*, const char*, int32_t) override;
 	void set_u32(UniformInput*, const char*, uint32_t) override;
@@ -82,8 +58,31 @@ protected:
 	void set_tex(UniformInput*, const char*, Texture const*) override;
 
 private:
-	/// A map of uniform locations from their names
-	std::map<std::string, GlUniform> uniforms;
+	void set_unif(UniformInput*, const char*, void const*, GLenum);
+
+	/// Represents a uniform location in the shader program.
+	struct GlUniform {
+		GLenum type;
+		GLint location;
+		/// For arrays, the number of elements. For scalars, 1.
+		size_t count;
+		/// The size in bytes of the whole uniform (whole array if it's one).
+		size_t size;
+	};
+
+	/// Represents a per-vertex input to the shader program.
+	struct GlVertexAttrib {
+		GLenum type;
+		GLint location;
+		// TODO what is this?
+		GLint size;
+	};
+
+	/// A map of uniform names to their descriptions.
+	std::unordered_map<std::string, GlUniform> uniforms;
+
+	/// A map of per-vertex attribute names to their descriptions.
+	std::unordered_map<std::string, GlVertexAttrib> attribs;
 
 	// TODO parse uniform buffer structure ugh
 	// std::unordered_map<std::string, ..> uniform_buffers;
@@ -92,9 +91,9 @@ private:
 	/// The GL shader program handle
 	GLuint id;
 
-	/// A map from sampler uniform names to their assigned texture units
+	/// A map from sampler uniform names to their assigned texture units.
 	std::unordered_map<std::string, GLuint> texunits_per_unifs;
-	/// A map from texture units to the texture handles that are currently bound to them
+	/// A map from texture units to the texture handles that are currently bound to them.
 	std::unordered_map<GLuint, GLuint> textures_per_texunits;
 };
 

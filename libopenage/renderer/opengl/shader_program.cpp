@@ -1,19 +1,11 @@
 // Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
-#include "../../config.h"
-
 #include "shader_program.h"
-
-#include <experimental/string_view>
-#include <regex>
-#include <istream>
-#include <functional>
 
 #include "../../error/error.h"
 #include "../../log/log.h"
-#include "../../util/compiler.h"
-#include "../../util/file.h"
-#include "../../util/strings.h"
+#include "../../datastructure/constexpr_map.h"
+
 #include "texture.h"
 #include "geometry.h"
 
@@ -22,126 +14,31 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-size_t uniform_size(gl_uniform_t type) {
-	switch (type) {
-	case gl_uniform_t::I32:
-		return sizeof(GLint);
-	case gl_uniform_t::U32:
-		return sizeof(GLuint);
-	case gl_uniform_t::F32:
-		return sizeof(float);
-	case gl_uniform_t::F64:
-		return sizeof(double);
-	case gl_uniform_t::V2F32:
-		return 2 * sizeof(float);
-	case gl_uniform_t::V3F32:
-		return 3 * sizeof(float);
-	case gl_uniform_t::V4F32:
-		return 4 * sizeof(float);
-	case gl_uniform_t::M3F32:
-		return 9 * sizeof(float);
-	case gl_uniform_t::M4F32:
-		return 16 * sizeof(float);
-	case gl_uniform_t::V2I32:
-		return 2 * sizeof(GLint);
-	case gl_uniform_t::V3I32:
-		return 3 * sizeof(GLint);
-	case gl_uniform_t::SAMPLER2D:
-		return sizeof(GLint);
-	default:
-		throw Error(MSG(err) << "Tried to find size of unknown GL uniform type.");
-	}
-}
+static constexpr auto glsl_to_gl_type = datastructure::create_const_map<const char*, GLenum>(
+	std::make_pair("int", GL_INT),
+	std::make_pair("uint", GL_UNSIGNED_INT),
+	std::make_pair("float", GL_FLOAT),
+	std::make_pair("double", GL_DOUBLE),
+	std::make_pair("vec2", GL_FLOAT_VEC2),
+	std::make_pair("vec3", GL_FLOAT_VEC3),
+	std::make_pair("mat3", GL_FLOAT_MAT3),
+	std::make_pair("mat4", GL_FLOAT_MAT4),
+	std::make_pair("ivec2", GL_INT_VEC2),
+	std::make_pair("ivec3", GL_INT_VEC3),
+	std::make_pair("sampler2D", GL_SAMPLER_2D)
+);
 
-static gl_uniform_t glsl_str_to_type(std::experimental::string_view str) {
-	if (str == "int")
-		return gl_uniform_t::I32;
-	else if (str == "uint")
-		return gl_uniform_t::U32;
-	else if (str == "float")
-		return gl_uniform_t::F32;
-	else if (str == "double")
-		return gl_uniform_t::F64;
-	else if (str == "vec2")
-		return gl_uniform_t::V2F32;
-	else if (str == "vec3")
-		return gl_uniform_t::V3F32;
-	else if (str == "vec4")
-		return gl_uniform_t::V4F32;
-	else if (str == "mat3")
-		return gl_uniform_t::M3F32;
-	else if (str == "mat4")
-		return gl_uniform_t::M4F32;
-	else if (str == "ivec2")
-		return gl_uniform_t::V2I32;
-	else if (str == "ivec3")
-		return gl_uniform_t::V3I32;
-	else if (str == "sampler2D")
-		return gl_uniform_t::SAMPLER2D;
-	else
-		throw Error(MSG(err) << "Unsupported GLSL uniform type " << str);
-}
-
-void parse_glsl(std::map<std::string, GlUniform> &uniforms, const char *code) {
-	// this will match all uniform declarations
-	std::regex const unif_r("uniform\\s+\\w+\\s+\\w+(?=\\s*;)");
-	std::regex const word_r("\\w+");
-
-	const char *end = code;
-	while (*end != '\0') {
-		end += 1;
-	}
-
-	auto unif_iter = std::cregex_iterator(code, end, unif_r);
-	auto unif_iter_end = std::cregex_iterator();
-	for (; unif_iter != unif_iter_end; unif_iter++) {
-		std::string unif = (*unif_iter).str();
-
-		// remove "uniform"
-		unif = unif.substr(7);
-
-		auto word_iter = std::sregex_iterator(unif.begin(), unif.end(), word_r);
-
-		// first word is the type
-		gl_uniform_t type = glsl_str_to_type((*word_iter).str());
-
-		// second word is the uniform name
-		word_iter++;
-
-		// second word is the uniform name
-		uniforms.insert(std::pair<std::string, GlUniform>(
-			                (*word_iter).str(),
-			                GlUniform {
-				                type,
-				                0,
-				            }
-		                ));
-
-	}
-}
-
-static GLuint src_type_to_gl(resources::shader_source_t type) {
-	using resources::shader_source_t;
-
-	switch (type) {
-	case shader_source_t::glsl_vertex:
-		return GL_VERTEX_SHADER;
-	case shader_source_t::glsl_geometry:
-		return GL_GEOMETRY_SHADER;
-	case shader_source_t::glsl_tesselation_control:
-		return GL_TESS_CONTROL_SHADER;
-	case shader_source_t::glsl_tesselation_evaluation:
-		return GL_TESS_EVALUATION_SHADER;
-	case shader_source_t::glsl_fragment:
-		return GL_FRAGMENT_SHADER;
-	default:
-		throw Error(MSG(err) << "Unsupported GLSL shader type.");
-	}
-}
+static constexpr auto gl_shdr_type = datastructure::create_const_map<resources::shader_source_t, GLenum>(
+	std::make_pair(resources::shader_source_t::glsl_vertex, GL_VERTEX_SHADER),
+	std::make_pair(resources::shader_source_t::glsl_geometry, GL_GEOMETRY_SHADER),
+	std::make_pair(resources::shader_source_t::glsl_tesselation_control, GL_TESS_CONTROL_SHADER),
+	std::make_pair(resources::shader_source_t::glsl_tesselation_evaluation, GL_TESS_EVALUATION_SHADER),
+	std::make_pair(resources::shader_source_t::glsl_fragment, GL_FRAGMENT_SHADER)
+);
 
 static GLuint compile_shader(const resources::ShaderSource& src) {
 	// allocate shader in opengl
-	GLuint id = glCreateShader(src_type_to_gl(src.get_type()));
+	GLuint id = glCreateShader(gl_shdr_type.get(src.get_type()));
 
 	if (unlikely(id == 0)) {
 		throw Error{MSG(err) << "Unable to create OpenGL shader. WTF?!", true};
@@ -204,6 +101,32 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 	}
 }
 
+static constexpr auto gl_type_size = datastructure::create_const_map<GLenum, size_t>(
+	std::make_pair(GL_FLOAT, 4),
+	std::make_pair(GL_FLOAT_VEC2, 8),
+	std::make_pair(GL_FLOAT_VEC3, 12),
+	std::make_pair(GL_FLOAT_VEC4, 16),
+	std::make_pair(GL_INT, 4),
+	std::make_pair(GL_INT_VEC2, 8),
+	std::make_pair(GL_INT_VEC3, 12),
+	std::make_pair(GL_INT_VEC4, 16),
+	std::make_pair(GL_UNSIGNED_INT, 4),
+	std::make_pair(GL_UNSIGNED_INT_VEC2, 8),
+	std::make_pair(GL_UNSIGNED_INT_VEC3, 12),
+	std::make_pair(GL_UNSIGNED_INT_VEC4, 16),
+	std::make_pair(GL_BOOL, 1),
+	std::make_pair(GL_BOOL_VEC2, 2),
+	std::make_pair(GL_BOOL_VEC3, 3),
+	std::make_pair(GL_BOOL_VEC4, 4),
+	std::make_pair(GL_FLOAT_MAT2, 16),
+	std::make_pair(GL_FLOAT_MAT3, 36),
+	std::make_pair(GL_FLOAT_MAT4, 64),
+	std::make_pair(GL_SAMPLER_1D, 4),
+	std::make_pair(GL_SAMPLER_2D, 4),
+	std::make_pair(GL_SAMPLER_3D, 4),
+	std::make_pair(GL_SAMPLER_CUBE, 4)
+);
+
 GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &srcs, const gl_context_capabilities &caps) {
 	this->id = glCreateProgram();
 
@@ -213,12 +136,9 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 
 	std::vector<GLuint> shaders;
 	for (auto src : srcs) {
-		parse_glsl(this->uniforms, src.get_source());
-		shaders.push_back(compile_shader(src));
-	}
-
-	for (GLuint shdr : shaders) {
-		glAttachShader(this->id, shdr);
+		GLuint id = compile_shader(src);
+		shaders.push_back(id);
+		glAttachShader(this->id, id);
 	}
 
 	glLinkProgram(this->id);
@@ -233,40 +153,99 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 		glDeleteShader(shdr);
 	}
 
-	// uniforms that are present in the source but not in the program, because they were optimized out by OpenGL
-	std::vector<std::string> optimized_away;
+	// query program information
+	GLint val;
+	glGetProgramiv(this->id, GL_ACTIVE_ATTRIBUTES, &val);
+	size_t attrib_count = val;
+	glGetProgramiv(this->id, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &val);
+	size_t attrib_maxlen = val;
+	glGetProgramiv(this->id, GL_ACTIVE_UNIFORMS, &val);
+	size_t unif_count = val;
+	glGetProgramiv(this->id, GL_ACTIVE_UNIFORM_MAX_LENGTH, &val);
+	size_t unif_maxlen = val;
+
+	std::vector<char> name(std::max(unif_maxlen, attrib_maxlen));
+
 	GLuint tex_unit = 0;
+	for (GLuint i_unif = 0; i_unif < unif_count; ++i_unif) {
+		GLint count;
+		GLenum type;
+		glGetActiveUniform(
+			this->id,
+			i_unif,
+			name.size(),
+			0,
+			&count,
+			&type,
+			name.data()
+		);
 
-	// find the location of every uniform in the shader program
-	for (auto& pair : this->uniforms) {
-		GLint loc = glGetUniformLocation(this->id, pair.first.data());
+		this->uniforms.insert(std::make_pair(
+			                      name.data(),
+			                      GlUniform {
+				                      type,
+				                      GLint(i_unif),
+				                      size_t(count),
+				                      size_t(count) * gl_type_size.get(type),
+				                  }
+		                      ));
 
-		if (loc == -1) {
-			log::log(MSG(warn)
-			         << "OpenGL shader uniform " << pair.first << " was present in the source, but isn't present in the program. Probably optimized away.");
-			optimized_away.push_back(pair.first);
-			continue;
+		if (count != 1) {
+			// TODO support them
+			log::log(MSG(warn) << "Found array uniform " << name.data() << " in shader. Arrays are unsupported.");
 		}
 
-		pair.second.location = loc;
-
-		if (pair.second.type == gl_uniform_t::SAMPLER2D) {
+		if (type == GL_SAMPLER_2D) {
 			if (tex_unit >= caps.max_texture_slots) {
 				throw Error(MSG(err)
 				            << "Tried to create shader that uses more texture sampler uniforms "
 				            << "than there are texture unit slots available.");
 			}
-			this->texunits_per_unifs.insert(std::make_pair(pair.first, tex_unit));
+			this->texunits_per_unifs.insert(std::make_pair(name.data(), tex_unit));
 			tex_unit += 1;
+		}
+
+		// TODO optimized away detection
+		if (0 == -1) {
+			log::log(MSG(warn)
+			         << "OpenGL shader uniform " << name.data() << " was present in the source, but isn't present in the program. Probably optimized away.");
+			continue;
 		}
 	}
 
-	// we only want valid uniforms to be present in the map
-	for (auto& unif : optimized_away) {
-		this->uniforms.erase(unif);
+	for (GLuint i_attrib = 0; i_attrib < attrib_count; ++i_attrib) {
+		GLint size;
+		GLenum type;
+		glGetActiveAttrib(
+			this->id,
+			i_attrib,
+			name.size(),
+			0,
+			&size,
+			&type,
+			name.data()
+		);
+
+		this->attribs.insert(std::make_pair(
+			                     name.data(),
+			                     GlVertexAttrib {
+				                     type,
+				                     GLint(i_attrib),
+				                     size,
+			                     }
+		                     ));
 	}
 
 	log::log(MSG(info) << "Created OpenGL shader program");
+
+	log::log(MSG(dbg) << "Uniforms: ");
+	for (auto const &pair : this->uniforms) {
+		log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": " << pair.second.type);
+	}
+	log::log(MSG(dbg) << "Vertex attributes: ");
+	for (auto const &pair : this->attribs) {
+		log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": " << pair.second.type);
+	}
 }
 
 GlShaderProgram::GlShaderProgram(GlShaderProgram &&other)
@@ -318,41 +297,41 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeomet
 		auto loc = this->uniforms[pair.first].location;
 
 		switch (this->uniforms[pair.first].type) {
-		case gl_uniform_t::I32:
+		case GL_INT:
 			glUniform1i(loc, *reinterpret_cast<const GLint*>(ptr));
 			break;
-		case gl_uniform_t::U32:
+		case GL_UNSIGNED_INT:
 			glUniform1ui(loc, *reinterpret_cast<const GLuint*>(ptr));
 			break;
-		case gl_uniform_t::F32:
+		case GL_FLOAT:
 			glUniform1f(loc, *reinterpret_cast<const float*>(ptr));
 			break;
-		case gl_uniform_t::F64:
+		case GL_DOUBLE:
 			// TODO requires an extension
 			glUniform1d(loc, *reinterpret_cast<const double*>(ptr));
 			break;
-		case gl_uniform_t::V2F32:
+		case GL_FLOAT_VEC2:
 			glUniform2fv(loc, 1, reinterpret_cast<const float*>(ptr));
 			break;
-		case gl_uniform_t::V3F32:
+		case GL_FLOAT_VEC3:
 			glUniform3fv(loc, 1, reinterpret_cast<const float*>(ptr));
 			break;
-		case gl_uniform_t::V4F32:
+		case GL_FLOAT_VEC4:
 			glUniform4fv(loc, 1, reinterpret_cast<const float*>(ptr));
 			break;
-		case gl_uniform_t::M3F32:
+		case GL_FLOAT_MAT3:
 			glUniformMatrix3fv(loc, 1, false, reinterpret_cast<const float*>(ptr));
 			break;
-		case gl_uniform_t::M4F32:
+		case GL_FLOAT_MAT4:
 			glUniformMatrix4fv(loc, 1, false, reinterpret_cast<const float*>(ptr));
 			break;
-		case gl_uniform_t::V2I32:
+		case GL_INT_VEC2:
 			glUniform2iv(loc, 1, reinterpret_cast<const GLint*>(ptr));
 			break;
-		case gl_uniform_t::V3I32:
+		case GL_INT_VEC3:
 			glUniform3iv(loc, 1, reinterpret_cast<const GLint*>(ptr));
 			break;
-		case gl_uniform_t::SAMPLER2D: {
+		case GL_SAMPLER_2D: {
 			GLuint tex_unit = this->texunits_per_unifs[pair.first];
 			GLuint tex = *reinterpret_cast<const GLuint*>(ptr);
 			glActiveTexture(GL_TEXTURE0 + tex_unit);
@@ -374,22 +353,29 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeomet
 }
 
 std::unique_ptr<UniformInput> GlShaderProgram::new_unif_in() {
-	GlUniformInput *in = new GlUniformInput;
+	auto in = std::make_unique<GlUniformInput>();
 	in->program = this;
-	return std::unique_ptr<UniformInput>(in);
+	return in;
 }
 
 bool GlShaderProgram::has_uniform(const char* name) {
 	return this->uniforms.count(name) == 1;
 }
 
-void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* val) {
+void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* val, GLenum type) {
 	GlUniformInput *unif_in = static_cast<GlUniformInput*>(in);
-	// will throw if uniform doesn't exist, that's ok
-	// TODO rethrow with nicer message?
+
+	if (this->uniforms.count(unif) == 0) {
+		throw Error(MSG(err) << "Tried to set uniform " << unif << " that does not exist in the shader program.");
+	}
+
 	auto const& unif_data = this->uniforms.at(unif);
 
-	size_t size = uniform_size(unif_data.type);
+	if (unlikely(type != unif_data.type)) {
+		throw Error(MSG(err) << "Tried to set uniform " << unif << " to a value of the wrong type.");
+	}
+
+	size_t size = gl_type_size.get(unif_data.type);
 
 	if (unif_in->update_offs.count(unif) == 1) {
 		// already wrote to this uniform since last upload
@@ -405,41 +391,42 @@ void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* v
 }
 
 void GlShaderProgram::set_i32(UniformInput *in, const char *unif, int32_t val) {
-	this->set_unif(in, unif, &val);
+	this->set_unif(in, unif, &val, GL_INT);
 }
 
 void GlShaderProgram::set_u32(UniformInput *in, const char *unif, uint32_t val) {
-	this->set_unif(in, unif, &val);
+	this->set_unif(in, unif, &val, GL_UNSIGNED_INT);
 }
 
 void GlShaderProgram::set_f32(UniformInput *in, const char *unif, float val) {
-	this->set_unif(in, unif, &val);
+	this->set_unif(in, unif, &val, GL_FLOAT);
 }
 
 void GlShaderProgram::set_f64(UniformInput *in, const char *unif, double val) {
-	this->set_unif(in, unif, &val);
+	// TODO requires extension
+	this->set_unif(in, unif, &val, GL_DOUBLE);
 }
 
 void GlShaderProgram::set_v2f32(UniformInput *in, const char *unif, Eigen::Vector2f const& val) {
-	this->set_unif(in, unif, &val);
+	this->set_unif(in, unif, &val, GL_FLOAT_VEC2);
 }
 
 void GlShaderProgram::set_v3f32(UniformInput *in, const char *unif, Eigen::Vector3f const& val) {
-	this->set_unif(in, unif, &val);
+	this->set_unif(in, unif, &val, GL_FLOAT_VEC3);
 }
 
 void GlShaderProgram::set_v4f32(UniformInput *in, const char *unif, Eigen::Vector4f const& val) {
-	this->set_unif(in, unif, &val);
+	this->set_unif(in, unif, &val, GL_FLOAT_VEC4);
 }
 
 void GlShaderProgram::set_m4f32(UniformInput *in, const char *unif, Eigen::Matrix4f const& val) {
-	this->set_unif(in, unif, val.data());
+	this->set_unif(in, unif, val.data(), GL_FLOAT_MAT4);
 }
 
 void GlShaderProgram::set_tex(UniformInput *in, const char *unif, Texture const* val) {
 	auto const& tex = *static_cast<const GlTexture*>(val);
 	GLuint handle = tex.get_handle();
-	this->set_unif(in, unif, &handle);
+	this->set_unif(in, unif, &handle, GL_SAMPLER_2D);
 }
 
 }}} // openage::renderer::opengl
