@@ -209,7 +209,7 @@ void main() {
 
 	auto size = window.get_size();
 	auto color_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8));
-	auto id_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8ui));
+	auto id_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::r32ui));
 	auto depth_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::depth24));
 	auto fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
 
@@ -257,7 +257,7 @@ void main() {
 
 			// resize fbo
 			color_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::rgba8));
-			id_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::rgba8ui));
+			id_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::r32ui));
 			depth_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::depth24));
 			fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
 

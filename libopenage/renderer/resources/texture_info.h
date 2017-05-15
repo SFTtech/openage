@@ -14,15 +14,17 @@ namespace resources {
 
 /// How the pixels are represented in a texture.
 enum class pixel_format {
-	/// 16 bits per pixel, unsigned integer
+	/// 16 bits per pixel, unsigned integer, single channel
 	r16ui,
+	/// 32 bits per pixel, unsigned integer, single channel
+	r32ui,
 	/// 24 bits per pixel, float
 	rgb8,
 	/// 24 bits per pixel, depth texture
 	depth24,
 	/// 32 bits per pixel, float, alpha channel
 	rgba8,
-	/// 32 bits per pixel, unsigned integer
+	/// 32 bits per pixel, unsigned integer, alpha channel
 	rgba8ui,
 };
 

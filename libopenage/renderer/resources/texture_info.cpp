@@ -2,26 +2,24 @@
 
 #include "texture_info.h"
 
+#include "../../datastructure/constexpr_map.h"
+
 
 namespace openage {
 namespace renderer {
 namespace resources {
 
+static constexpr auto pix_size = datastructure::create_const_map<pixel_format, size_t>(
+	std::make_pair(pixel_format::r16ui, 2),
+	std::make_pair(pixel_format::r32ui, 4),
+	std::make_pair(pixel_format::rgb8, 3),
+	std::make_pair(pixel_format::depth24, 3),
+	std::make_pair(pixel_format::rgba8, 4),
+	std::make_pair(pixel_format::rgba8ui, 4)
+);
+
 size_t pixel_size(pixel_format fmt) {
-	switch (fmt) {
-	case pixel_format::r16ui:
-		return 2;
-	case pixel_format::rgb8:
-		return 3;
-	case pixel_format::depth24:
-		return 3;
-	case pixel_format::rgba8:
-		return 4;
-	case pixel_format::rgba8ui:
-		return 4;
-	default:
-		throw Error(MSG(err) << "Unknown pixel format");
-	}
+	return pix_size.get(fmt);
 }
 
 TextureInfo::TextureInfo(size_t width, size_t height, pixel_format fmt, size_t row_alignment, std::vector<gamedata::subtexture> &&subs)

@@ -3,9 +3,12 @@
 #include "texture.h"
 
 #include <epoxy/gl.h>
+
 #include <tuple>
 
 #include "../../error/error.h"
+#include "../../datastructure/constexpr_map.h"
+
 #include "../resources/texture_data.h"
 #include "render_target.h"
 
@@ -14,23 +17,16 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-/// Returns the input and output formats for GL.
-inline static std::tuple<GLint, GLenum, GLenum> gl_format(resources::pixel_format fmt) {
-	switch (fmt) {
-	case resources::pixel_format::r16ui:
-		return std::make_tuple(GL_R16UI, GL_RED_INTEGER, GL_UNSIGNED_SHORT);
-	case resources::pixel_format::rgb8:
-		return std::make_tuple(GL_RGB8, GL_RGB, GL_UNSIGNED_BYTE);
-	case resources::pixel_format::rgba8:
-		return std::make_tuple(GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE);
-	case resources::pixel_format::rgba8ui:
-		return std::make_tuple(GL_RGBA8UI, GL_RGBA_INTEGER, GL_UNSIGNED_BYTE);
-	case resources::pixel_format::depth24:
-		return std::make_tuple(GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE);
-	default:
-		throw Error(MSG(err) << "invalid texture format passed to OpenGL.");
-	}
-}
+/// The input and output formats for GL.
+static constexpr auto gl_format = datastructure::create_const_map<resources::pixel_format, std::tuple<GLint, GLenum, GLenum>>(
+	// TODO check correctness of formats here
+	std::make_pair(resources::pixel_format::r16ui, std::make_tuple(GL_R16UI, GL_RED_INTEGER, GL_UNSIGNED_INT)),
+	std::make_pair(resources::pixel_format::r32ui, std::make_tuple(GL_R32UI, GL_RED_INTEGER, GL_UNSIGNED_INT)),
+	std::make_pair(resources::pixel_format::rgb8, std::make_tuple(GL_RGB8, GL_RGB, GL_UNSIGNED_BYTE)),
+	std::make_pair(resources::pixel_format::depth24, std::make_tuple(GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE)),
+	std::make_pair(resources::pixel_format::rgba8, std::make_tuple(GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE)),
+	std::make_pair(resources::pixel_format::rgba8ui, std::make_tuple(GL_RGBA8UI, GL_RGBA_INTEGER, GL_UNSIGNED_BYTE))
+);
 
 GlTexture::GlTexture(const resources::TextureData& data)
 	: Texture(data.get_info())
@@ -40,7 +36,7 @@ GlTexture::GlTexture(const resources::TextureData& data)
 	glBindTexture(GL_TEXTURE_2D, *this->handle);
 
 	// select pixel format
-	auto fmt_in_out = gl_format(this->info.get_format());
+	auto fmt_in_out = gl_format.get(this->info.get_format());
 
 	// store raw pixels to gpu
 	auto size = this->info.get_size();
@@ -65,7 +61,7 @@ GlTexture::GlTexture(const resources::TextureInfo &info)
 	glGenTextures(1, &*this->handle);
 	glBindTexture(GL_TEXTURE_2D, *this->handle);
 
-	auto fmt_in_out = gl_format(this->info.get_format());
+	auto fmt_in_out = gl_format.get(this->info.get_format());
 
 	auto dims = this->info.get_size();
 
@@ -113,7 +109,7 @@ GLuint GlTexture::get_handle() const {
 }
 
 resources::TextureData GlTexture::into_data() {
-	auto fmt_in_out = gl_format(this->info.get_format());
+	auto fmt_in_out = gl_format.get(this->info.get_format());
 	std::vector<uint8_t> data(this->info.get_data_size());
 
 	glPixelStorei(GL_PACK_ALIGNMENT, this->info.get_row_alignment());
