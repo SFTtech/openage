@@ -59,10 +59,10 @@ public:
 
 	// Getters
 
-	int getScore(const score_category cat) const { return score[static_cast<int>(cat)]; }
-	int getScore(const int index) const { return score[index]; }
+	int get_score(const score_category cat) const { return score[static_cast<int>(cat)]; }
+	int get_score(const int index) const { return score[index]; }
 
-	int getScoreTotal() const { return score_total; }
+	int get_score_total() const { return score_total; }
 
 protected:
 
@@ -85,10 +85,10 @@ private:
 /**
  * The score of a player
  */
-class ScorePlayer : public Score {
+class PlayerScore : public Score {
 public:
 
-	ScorePlayer(Player *player);
+	PlayerScore(Player *player);
 
 	virtual void update_score() override;
 
@@ -103,10 +103,10 @@ private:
 /**
  * The score of a team
  */
-class ScoreTeam : public Score {
+class TeamScore : public Score {
 public:
 
-	ScoreTeam(Team *team);
+	TeamScore(Team *team);
 
 	virtual void update_score() override;
 

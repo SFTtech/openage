@@ -113,7 +113,7 @@ public:
 	/**
 	 * The score of the player.
 	 */
-	ScorePlayer score;
+	PlayerScore score;
 
 	/**
 	 * Called when a unit is created and active.

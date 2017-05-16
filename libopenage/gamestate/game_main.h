@@ -91,7 +91,7 @@ private:
 	 * all players in the game
 	 * no objects should be added of removed once populated
 	 */
-	std::vector<Player*> players;
+	std::vector<std::shared_ptr<Player>> players;
 
 	/**
 	 * creates a random civ, owned and managed by this game

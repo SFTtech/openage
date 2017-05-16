@@ -64,7 +64,7 @@ public:
 	/**
 	 * The score of the team, based on the team's players score.
 	 */
-	ScoreTeam score;
+	TeamScore score;
 
 private:
 

@@ -20,9 +20,10 @@ GameMain::GameMain(const Generator &generator)
 	spec{generator.get_spec()} {
 
 	// players
+	this->players.reserve(generator.player_names().size());
 	unsigned int i = 0;
 	for (auto &name : generator.player_names()) {
-		this->players.push_back(new Player(this->add_civ(i), i, name));
+		this->players.push_back(std::make_shared<Player>(this->add_civ(i), i, name));
 		i++;
 	}
 
@@ -37,9 +38,6 @@ GameMain::GameMain(const Generator &generator)
 }
 
 GameMain::~GameMain() {
-	for (auto &p : this->players) {
-		delete p;
-	}
 }
 
 unsigned int GameMain::player_count() const {
@@ -47,7 +45,7 @@ unsigned int GameMain::player_count() const {
 }
 
 Player *GameMain::get_player(unsigned int player_id) {
-	return this->players.at(player_id);
+	return this->players.at(player_id).get();
 }
 
 unsigned int GameMain::team_count() const {

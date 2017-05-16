@@ -50,17 +50,17 @@ void Score::update_resources(const ResourceBundle & resources) {
 void Score::update_score() {
 	this->score_total = 0;
 	for (int i = 0; i < static_cast<int>(score_category::SCORE_CATEGORY_COUNT); i++) {
-		this->score_total += this->getScore(i);
+		this->score_total += this->get_score(i);
 	}
 }
 
-ScorePlayer::ScorePlayer(Player *player)
+PlayerScore::PlayerScore(Player *player)
 	:
 	Score(),
 	player{player} {
 }
 
-void ScorePlayer::update_score() {
+void PlayerScore::update_score() {
 	Score::update_score();
 	// update team score
 	if (this->player->team) {
@@ -68,20 +68,20 @@ void ScorePlayer::update_score() {
 	}
 }
 
-ScoreTeam::ScoreTeam(Team *team)
+TeamScore::TeamScore(Team *team)
 	:
 	Score(),
 	team{team} {
 }
 
-void ScoreTeam::update_score() {
+void TeamScore::update_score() {
 	// scores are the corresponding sums of players score
 	for (int i = 0; i < static_cast<int>(score_category::SCORE_CATEGORY_COUNT); i++) {
 		this->score[i] = 0;
 	}
 	for (auto player : this->team->get_players()) {
 		for (int i = 0; i < static_cast<int>(score_category::SCORE_CATEGORY_COUNT); i++) {
-			this->score[i] += player->score.getScore(i);
+			this->score[i] += player->score.get_score(i);
 		}
 	}
 	Score::update_score();
