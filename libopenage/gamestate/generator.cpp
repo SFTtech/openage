@@ -251,23 +251,23 @@ void Generator::add_units(GameMain &m) const {
 		// Regions filled with resource objects
 		// trees / mines
 		if (r.object_id) {
-			Player &p = m.players[r.owner];
-			auto otype = p.get_type(r.object_id);
+			Player* p = m.get_player(r.owner);
+			auto otype = p->get_type(r.object_id);
 			if (!otype) {
 				break;
 			}
 			for (auto &tile : r.get_tiles()) {
-				m.placed_units.new_unit(*otype, p, tile.to_tile3().to_phys3());
+				m.placed_units.new_unit(*otype, *p, tile.to_tile3().to_phys3());
 			}
 		}
 
 		// A space for starting town center and villagers
 		else if (r.owner) {
-			Player &p = m.players[r.owner];
-			auto tctype = p.get_type(109); // town center
-			auto mvtype = p.get_type(83);  // male villager
-			auto fvtype = p.get_type(293); // female villager
-			auto sctype = p.get_type(448); // scout cavarly
+			Player* p = m.get_player(r.owner);
+			auto tctype = p->get_type(109); // town center
+			auto mvtype = p->get_type(83);  // male villager
+			auto fvtype = p->get_type(293); // female villager
+			auto sctype = p->get_type(448); // scout cavarly
 			if (!tctype || !mvtype || !fvtype || !sctype) {
 				break;
 			}
@@ -277,21 +277,21 @@ void Generator::add_units(GameMain &m) const {
 			tile.se -= 1;
 
 			// Place a completed town center
-			auto ref = m.placed_units.new_unit(*tctype, p, tile.to_tile3().to_phys3());
+			auto ref = m.placed_units.new_unit(*tctype, *p, tile.to_tile3().to_phys3());
 			if (ref.is_valid()) {
 				complete_building(*ref.get());
 			}
 
 			// Place three villagers
 			tile.ne -= 1;
-			m.placed_units.new_unit(*fvtype, p, tile.to_tile3().to_phys3());
+			m.placed_units.new_unit(*fvtype, *p, tile.to_tile3().to_phys3());
 			tile.se += 1;
-			m.placed_units.new_unit(*mvtype, p, tile.to_tile3().to_phys3());
+			m.placed_units.new_unit(*mvtype, *p, tile.to_tile3().to_phys3());
 			tile.se += 1;
-			m.placed_units.new_unit(*fvtype, p, tile.to_tile3().to_phys3());
+			m.placed_units.new_unit(*fvtype, *p, tile.to_tile3().to_phys3());
 			// TODO uncomment when the scout looks better
 			//tile.se += 2;
-			//m.placed_units.new_unit(*sctype, p, tile.to_tile3().to_phys3());
+			//m.placed_units.new_unit(*sctype, *p, tile.to_tile3().to_phys3());
 		}
 	}
 }

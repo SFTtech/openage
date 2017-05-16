@@ -141,6 +141,10 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 			this->graphics[graphic_type::carrying] = carry;
 		}
 	}
+
+	// TODO get cost, temp fixed cost of 50 food
+	this->cost[game_resource::food] = 50;
+
 }
 
 ObjectProducer::~ObjectProducer() {}
@@ -521,6 +525,10 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	}
 
 	this->terrain_outline = square_outline(this->foundation_size);
+
+	// TODO get cost, temp fixed cost of 100 wood
+	this->cost[game_resource::food] = 0;
+	this->cost[game_resource::wood] = 100;
 }
 
 BuildingProducer::~BuildingProducer() {}
@@ -772,6 +780,9 @@ void ProjectileProducer::initialise(Unit *unit, Player &player) {
 
 	// initialize graphic set
 	unit->unit_type = this;
+
+	auto player_attr = std::make_shared<Attribute<attr_type::owner>>(player);
+	unit->add_attribute(player_attr);
 
 	// projectile speed
 	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;

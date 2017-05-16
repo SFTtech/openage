@@ -9,7 +9,7 @@ namespace openage {
 /**
  * probably becomes part of the nyan game spec in future
  */
-enum class game_resource {
+enum class game_resource : int {
 	wood,
 	food,
 	gold,
@@ -47,16 +47,21 @@ public:
 	 */
 	bool deduct(const ResourceBundle& amount);
 
-	double& operator[] (const game_resource res) { return value[(int) res]; }
+	double& operator[] (const game_resource res) { return value[static_cast<int>(res)]; }
 	double& operator[] (const int index) { return value[index]; }
 
 	// Getters
 
-	double get(const game_resource res) const { return value[(int) res]; }
+	double get(const game_resource res) const { return value[static_cast<int>(res)]; }
 	double get(const int index) const { return value[index]; }
 
+	/**
+	 * Returns the sum of all the resources.
+	 */
+	double sum() const;
+
 private:
-	double value[(int) game_resource::RESOURCE_TYPE_COUNT];
+	double value[static_cast<int>(game_resource::RESOURCE_TYPE_COUNT)];
 };
 
 } // namespace openage
