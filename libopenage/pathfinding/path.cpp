@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include <cmath>
 
@@ -30,7 +30,7 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 	if (prev) {
 		cost_t dx = this->position.ne - prev->position.ne;
 		cost_t dy = this->position.se - prev->position.se;
-		cost_t hyp = std::hypot(dx, dy);
+		cost_t hyp = std::sqrt(dx * dx + dy * dy);
 		this->dir_ne = dx / hyp;
 		this->dir_se = dy / hyp;
 		cost_t similarity = this->dir_ne * prev->dir_ne + this->dir_se * prev->dir_se;
@@ -61,7 +61,7 @@ bool Node::operator ==(const Node &other) const {
 cost_t Node::cost_to(const Node &other) const {
 	cost_t dx = this->position.ne - other.position.ne;
 	cost_t dy = this->position.se - other.position.se;
-	return std::hypot(dx, dy) * other.factor * this->factor;
+	return std::sqrt(dx * dx + dy * dy) * other.factor * this->factor;
 }
 
 

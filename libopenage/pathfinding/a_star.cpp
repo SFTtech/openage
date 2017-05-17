@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 /** @file
  *
@@ -31,12 +31,12 @@ Path to_point(coord::phys3 start,
               coord::phys3 end,
               std::function<bool(const coord::phys3 &)> passable) {
 	auto valid_end = [&](const coord::phys3 &point) -> bool {
-		coord::phys_t dx = point.ne - end.ne;
-		coord::phys_t dy = point.se - end.se;
-		return std::hypot(dx, dy) < path_grid_size;
+		return euclidean_squared_cost(point, end) < path_grid_size_squared;
 	};
-	auto h = [&](const coord::phys3 &point) -> cost_t { return euclidean_cost(point, end); };
-	return a_star(start, valid_end, h, passable);
+	auto heuristic = [&](const coord::phys3 &point) -> cost_t {
+		return euclidean_cost(point, end);
+	};
+	return a_star(start, valid_end, heuristic, passable);
 }
 
 
