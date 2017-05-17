@@ -40,11 +40,13 @@ struct hash<openage::command_flag> {
 namespace openage {
 
 class Player;
+class Research;
 class Unit;
 class UnitType;
 
 /*
  * Game command from the ui
+ * TODO reorganize the names of the optional variables and their getters
  */
 class Command {
 public:
@@ -70,17 +72,24 @@ public:
 	Command(const Player &, UnitType *t);
 
 	/**
+	 * select a research
+	 */
+	Command(const Player &, Research *res);
+
+	/**
 	 * place building foundation
 	 */
 	Command(const Player &, UnitType *, coord::phys3);
 
 	bool has_unit() const;
 	bool has_position() const;
-	bool has_type()const;
+	bool has_type() const;
+	bool has_research() const;
 
 	Unit *unit() const;
 	coord::phys3 position() const;
 	UnitType *type() const;
+	Research *research() const;
 
 	/**
 	 * sets invoked ability type, no other type may be used if
@@ -121,12 +130,13 @@ private:
 	/**
 	 * basic constructor, which shouldnt be used directly
 	 */
-	Command(const Player &, Unit *unit, bool haspos, UnitType *t);
+	Command(const Player &, Unit *unit, bool haspos, UnitType *t, Research *res);
 
 	bool has_pos;
 	Unit *u;
 	coord::phys3 pos;
 	UnitType *unit_type;
+	Research *res;
 
 	/**
 	 * additional options

@@ -1,43 +1,49 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "command.h"
 
 namespace openage {
 
-Command::Command(const Player &p, Unit *unit, bool haspos, UnitType *t)
+Command::Command(const Player &p, Unit *unit, bool haspos, UnitType *t, Research *res)
 	:
 	player(p),
 	has_pos{haspos},
 	u{unit},
-	unit_type{t} {
+	unit_type{t},
+	res{res} {
 	this->modifiers.set();
 }
 
 Command::Command(const Player &p, Unit *unit)
 	:
-	Command{p, unit, false, nullptr} {
+	Command{p, unit, false, nullptr, nullptr} {
 }
 
 Command::Command(const Player &p, coord::phys3 position)
 	:
-	Command{p, nullptr, true, nullptr} {
+	Command{p, nullptr, true, nullptr, nullptr} {
 	this->pos = position;
 }
 
 Command::Command(const Player &p, Unit *unit, coord::phys3 position)
 	:
-	Command{p, unit, true, nullptr} {
+	Command{p, unit, true, nullptr, nullptr} {
 	this->pos = position;
 }
 
 Command::Command(const Player &p, UnitType *t)
 	:
-	Command{p, nullptr, false, t} {
+	Command{p, nullptr, false, t, nullptr} {
+}
+
+Command::Command(const Player &p, Research *res)
+	:
+	Command{p, nullptr, false, nullptr, res} {
 }
 
 Command::Command(const Player &p, UnitType *t, coord::phys3 position)
 	:
-	Command{p, nullptr, true, t} {
+	Command{p, nullptr, true, t, nullptr} {
 	this->pos = position;
 }
 
@@ -53,6 +59,10 @@ bool Command::has_type() const {
 	return this->unit_type;
 }
 
+bool Command::has_research() const {
+	return this->res;
+}
+
 Unit *Command::unit() const {
 	return this->u;
 }
@@ -63,6 +73,10 @@ coord::phys3 Command::position() const {
 
 UnitType *Command::type() const {
 	return this->unit_type;
+}
+
+Research *Command::research() const {
+	return this->res;
 }
 
 void Command::set_ability(ability_type t) {

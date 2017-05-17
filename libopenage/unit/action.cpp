@@ -10,9 +10,34 @@
 #include "action.h"
 #include "command.h"
 #include "producer.h"
+#include "research.h"
 #include "unit_texture.h"
 
 namespace openage {
+
+IntervalTimer::IntervalTimer(unsigned int interval)
+	:
+	interval{interval},
+	time_left{interval} {
+}
+
+bool IntervalTimer::update(unsigned int time) {
+	this->time_left -= time;
+	if (this->time_left > 0) {
+		return false;
+	} else {
+		this->time_left += this->interval;
+		return true;
+	}
+}
+
+unsigned int IntervalTimer::get_time_left() const {
+	return this->time_left;
+}
+
+float IntervalTimer::get_progress() const {
+	return this->interval * 1.0f / this->time_left;
+}
 
 bool UnitAction::show_debug = false;
 
@@ -778,6 +803,29 @@ void TrainAction::update(unsigned int time) {
 }
 
 void TrainAction::on_completion() {}
+
+ResearchAction::ResearchAction(Unit *e, Research *research)
+	:
+	UnitAction{e, graphic_type::standing},
+	research{research},
+	timer{research->type->get_research_time()},
+	complete{false} {
+	this->research->started();
+}
+
+void ResearchAction::update(unsigned int time) {
+	if (timer.update(time)) {
+		this->complete = true;
+		this->research->apply();
+		this->research->completed();
+	}
+}
+
+void ResearchAction::on_completion() {
+	if (!complete) {
+		this->research->stopped();
+	}
+}
 
 BuildAction::BuildAction(Unit *e, UnitReference foundation)
 	:

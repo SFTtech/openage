@@ -80,6 +80,11 @@ public:
 	bool deduct(const game_resource resource, double amount);
 
 	/**
+	 * Check if the player has enough resources to deduct the given amount.
+	 */
+	bool can_deduct(const ResourceBundle& amount);
+
+	/**
 	 * current stockpile amount
 	 */
 	double amount(const game_resource resource) const;
@@ -131,6 +136,11 @@ public:
 	 */
 	void killed_unit(const Unit & unit);
 
+	/**
+	 * Advance to next age;
+	 */
+	void advance_age();
+
 	// Getters
 
 	/**
@@ -142,6 +152,12 @@ public:
 	 * Get the number of units the player ever had for each unit type id.
 	 */
 	int get_units_had(int type_id) const;
+
+	/**
+	 * Get the current age.
+	 * The first age has the value 1.
+	 */
+	int get_age() const { return age; }
 
 private:
 
@@ -179,6 +195,11 @@ private:
 	 * Used for unit dependencies (eg. Farm).
 	 */
 	std::unordered_map<int, int> units_had;
+
+	/**
+	 * The current age.
+	 */
+	int age;
 
 };
 

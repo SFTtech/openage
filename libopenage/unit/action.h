@@ -14,6 +14,26 @@
 namespace openage {
 
 class TerrainSearch;
+class Research;
+
+class IntervalTimer {
+public:
+
+	IntervalTimer(unsigned int interval);
+
+	bool update(unsigned int time);
+
+	unsigned int get_time_left() const;
+
+	float get_progress() const;
+
+private:
+
+	const unsigned int interval;
+
+	unsigned int time_left;
+
+};
 
 /**
  * Actions can be pushed onto any units action stack
@@ -394,6 +414,29 @@ private:
 	bool started;
 	bool complete;
 	float train_percent;
+};
+
+/**
+ * trains a new unit
+ */
+class ResearchAction: public UnitAction {
+public:
+	ResearchAction(Unit *e, Research *research);
+	virtual ~ResearchAction() {}
+
+	void update(unsigned int) override;
+	void on_completion() override;
+	bool completed() const override { return this->complete; }
+	bool allow_interupt() const override { return false; }
+	bool allow_control() const override { return true; }
+	std::string name() const override { return "train"; }
+
+private:
+	Research *research;
+
+	IntervalTimer timer;
+	bool complete;
+
 };
 
 /**
