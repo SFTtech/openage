@@ -2,8 +2,6 @@
 
 #pragma once
 
-#include <epoxy/gl.h>
-
 #include <unordered_map>
 #include <vector>
 
@@ -14,6 +12,7 @@
 #include "uniform_input.h"
 #include "context.h"
 #include "geometry.h"
+#include "simple_object.h"
 
 
 namespace openage {
@@ -21,20 +20,11 @@ namespace renderer {
 namespace opengl {
 
 /// A handle to an OpenGL shader program.
-class GlShaderProgram final : public ShaderProgram {
+class GlShaderProgram final : public ShaderProgram, public GlSimpleObject {
 public:
 	/// Tries to create a shader program from the given sources.
 	/// Throws an exception on compile/link errors.
 	explicit GlShaderProgram(const std::vector<resources::ShaderSource>&, const gl_context_capabilities&);
-	~GlShaderProgram();
-
-	/// No copying.
-	GlShaderProgram(const GlShaderProgram&) = delete;
-	GlShaderProgram& operator=(const GlShaderProgram&) = delete;
-
-	/// Moving is allowed.
-	GlShaderProgram(GlShaderProgram&&);
-	GlShaderProgram& operator=(GlShaderProgram&&);
 
 	/// Bind this program as the currently used one in the OpenGL context.
 	void use() const;
@@ -87,9 +77,6 @@ private:
 	// TODO parse uniform buffer structure ugh
 	// std::unordered_map<std::string, ..> uniform_buffers;
 	// GlVertexInputInfo;
-
-	/// The GL shader program handle
-	GLuint id;
 
 	/// A map from sampler uniform names to their assigned texture units.
 	std::unordered_map<std::string, GLuint> texunits_per_unifs;

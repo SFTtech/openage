@@ -36,11 +36,11 @@ GlGeometry::GlGeometry(const resources::MeshData &mesh)
 
 	this->mesh = GlMesh {
 		std::move(verts),
-		{},
 		GlVertexArray (verts, mesh.get_info()),
+		{},
+		{},
 		mesh.get_data().size() / mesh.get_info().vert_size(),
 		gl_prim.get(mesh.get_info().get_primitive()),
-		{}
 	};
 
 	if (mesh.get_ids()) {

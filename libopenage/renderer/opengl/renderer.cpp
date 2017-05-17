@@ -82,4 +82,4 @@ void GlRenderer::render(RenderPass const& pass) {
 	}
 }
 
-}}}
+}}} // openage::renderer::opengl

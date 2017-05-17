@@ -24,20 +24,19 @@ public:
 	/// Initialize a meshed geometry. Relatively costly, has to initialize GL buffers and copy vertex data.
 	explicit GlGeometry(resources::MeshData const&);
 
-	virtual ~GlGeometry() = default;
-
 	/// Executes a draw command for the geometry on the currently active context.
 	/// Assumes bound and valid shader program and all other necessary state.
 	void draw() const;
 
 private:
+	/// All the pieces of OpenGL state that represent a mesh.
 	struct GlMesh {
 		GlBuffer vertices;
-		std::experimental::optional<GlBuffer> indices;
 		GlVertexArray vao;
+		std::experimental::optional<GlBuffer> indices;
+		std::experimental::optional<GLenum> index_type;
 		size_t vert_count;
 		GLenum primitive;
-		std::experimental::optional<GLenum> index_type;
 	};
 
 	/// Data managing GPU memory and interpretation of mesh data.

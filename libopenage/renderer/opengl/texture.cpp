@@ -30,6 +30,7 @@ static constexpr auto gl_format = datastructure::create_const_map<resources::pix
 
 GlTexture::GlTexture(const resources::TextureData& data)
 	: Texture(data.get_info())
+	, GlSimpleObject([] (GLuint handle) { glDeleteTextures(1, &handle); } )
 {
 	// generate opengl texture handle
 	glGenTextures(1, &*this->handle);
@@ -56,7 +57,9 @@ GlTexture::GlTexture(const resources::TextureData& data)
 }
 
 GlTexture::GlTexture(const resources::TextureInfo &info)
-	: Texture(info) {
+	: Texture(info)
+	, GlSimpleObject([] (GLuint handle) { glDeleteTextures(1, &handle); } )
+{
 	// generate opengl texture handle
 	glGenTextures(1, &*this->handle);
 	glBindTexture(GL_TEXTURE_2D, *this->handle);
@@ -76,36 +79,6 @@ GlTexture::GlTexture(const resources::TextureInfo &info)
 	// TODO these are outdated, use sampler settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-}
-
-GlTexture::GlTexture(GlTexture &&other)
-	: Texture(std::move(other.info))
-	, handle(std::move(other.handle)) {
-	// make the other handle empty
-	other.handle = std::experimental::optional<GLuint>();
-}
-
-GlTexture &GlTexture::operator =(GlTexture &&other) {
-	if (this->handle) {
-		glDeleteTextures(1, &*this->handle);
-	}
-
-	this->info = std::move(other.info);
-	this->handle = std::move(other.handle);
-	// make the other handle empty
-	other.handle = std::experimental::optional<GLuint>();
-
-	return *this;
-}
-
-GlTexture::~GlTexture() {
-	if (this->handle) {
-		glDeleteTextures(1, &*this->handle);
-	}
-}
-
-GLuint GlTexture::get_handle() const {
-	return *this->handle;
 }
 
 resources::TextureData GlTexture::into_data() {

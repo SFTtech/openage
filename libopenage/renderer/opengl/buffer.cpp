@@ -10,47 +10,27 @@ namespace renderer {
 namespace opengl {
 
 GlBuffer::GlBuffer(size_t size, GLenum usage)
-	: size(size)
+	: GlSimpleObject([] (GLuint handle) { glDeleteBuffers(1, &handle); } )
+	, size(size)
 	, usage(usage) {
-	GLuint id;
-	glGenBuffers(1, &id);
-	this->id = id;
+	GLuint handle;
+	glGenBuffers(1, &handle);
+	this->handle = handle;
 
 	this->bind(GL_ARRAY_BUFFER);
 	glBufferData(GL_ARRAY_BUFFER, size, 0, usage);
 }
 
 GlBuffer::GlBuffer(const uint8_t *data, size_t size, GLenum usage)
-	: size(size)
+	: GlSimpleObject([] (GLuint handle) { glDeleteBuffers(1, &handle); } )
+	, size(size)
 	, usage(usage) {
-	GLuint id;
-	glGenBuffers(1, &id);
-	this->id = id;
+	GLuint handle;
+	glGenBuffers(1, &handle);
+	this->handle = handle;
 
 	this->bind(GL_ARRAY_BUFFER);
 	glBufferData(GL_ARRAY_BUFFER, size, data, usage);
-}
-
-GlBuffer::GlBuffer(GlBuffer &&other)
-	: id(other.id)
-	, size(other.size)
-	, usage(other.usage) {
-	other.id = std::experimental::optional<GLuint>();
-}
-
-GlBuffer &GlBuffer::operator =(GlBuffer &&other) {
-	this->id = other.id;
-	this->size = other.size;
-	this->usage = other.usage;
-	other.id = std::experimental::optional<GLuint>();
-
-	return *this;
-}
-
-GlBuffer::~GlBuffer() {
-	if (this->id) {
-		glDeleteBuffers(1, &this->id.value());
-	}
 }
 
 size_t GlBuffer::get_size() const {
@@ -67,7 +47,7 @@ void GlBuffer::upload_data(const uint8_t *data, size_t offset, size_t size) {
 }
 
 void GlBuffer::bind(GLenum target) const {
-	glBindBuffer(target, *this->id);
+	glBindBuffer(target, *this->handle);
 }
 
 }}} // openage::renderer::opengl

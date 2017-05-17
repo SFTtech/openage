@@ -2,33 +2,22 @@
 
 #pragma once
 
-#include <experimental/optional>
-
-#include <epoxy/gl.h>
+#include "simple_object.h"
 
 
 namespace openage {
 namespace renderer {
 namespace opengl {
 
-/// OpenGL data buffer on the GPU.
-class GlBuffer {
+/// Represents an OpenGL buffer of memory
+/// allocated on the GPU.
+class GlBuffer final : public GlSimpleObject {
 public:
 	/// Creates an empty buffer of the specified size.
 	GlBuffer(size_t size, GLenum usage = GL_STATIC_DRAW);
 
 	/// Creates a buffer of the specified size and fills it with the given data.
 	GlBuffer(const uint8_t *data, size_t size, GLenum usage = GL_STATIC_DRAW);
-
-	~GlBuffer();
-
-	/// Moving is supported.
-	GlBuffer &operator =(GlBuffer&&);
-	GlBuffer(GlBuffer&&);
-
-	// TODO support copies
-	GlBuffer(const GlBuffer&) = delete;
-	GlBuffer &operator =(const GlBuffer&) = delete;
 
 	/// The size in bytes of this buffer.
 	size_t get_size() const;
@@ -41,9 +30,6 @@ public:
 	void bind(GLenum target) const;
 
 private:
-	/// The OpenGL handle to this buffer. Can be empty if the object was moved out of.
-	std::experimental::optional<GLuint> id;
-
 	/// The size in bytes of this buffer.
 	size_t size;
 

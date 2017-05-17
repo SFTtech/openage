@@ -29,4 +29,4 @@ struct GlUniformInput final : public UniformInput {
 	std::vector<uint8_t> update_data;
 };
 
-}}}
+}}} // openage::renderer::opengl

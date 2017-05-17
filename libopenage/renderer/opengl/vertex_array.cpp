@@ -10,15 +10,18 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
+/// The type of a single element in a per-vertex attribute.
 static constexpr auto gl_types = datastructure::create_const_map<resources::vertex_input_t, GLenum>(
 	std::make_pair(resources::vertex_input_t::V2F32, GL_FLOAT),
 	std::make_pair(resources::vertex_input_t::V3F32, GL_FLOAT)
 );
 
-GlVertexArray::GlVertexArray(std::vector<std::pair<GlBuffer const&, resources::VertexInputInfo const&>> buffers) {
-	GLuint id;
-	glGenVertexArrays(1, &id);
-	this->id = id;
+GlVertexArray::GlVertexArray(std::vector<std::pair<GlBuffer const&, resources::VertexInputInfo const&>> buffers)
+	: GlSimpleObject([] (GLuint handle) { glDeleteVertexArrays(1, &handle); } )
+{
+	GLuint handle;
+	glGenVertexArrays(1, &handle);
+	this->handle = handle;
 
 	this->bind();
 
@@ -78,32 +81,16 @@ GlVertexArray::GlVertexArray(std::vector<std::pair<GlBuffer const&, resources::V
 GlVertexArray::GlVertexArray(GlBuffer const& buf, resources::VertexInputInfo const& info)
 	: GlVertexArray( { { buf, info } } ) {}
 
-GlVertexArray::GlVertexArray() {
-	GLuint id;
-	glGenVertexArrays(1, &id);
-	this->id = id;
-}
-
-GlVertexArray::GlVertexArray(GlVertexArray &&other)
-	: id(other.id) {
-	other.id = {};
-}
-
-GlVertexArray &GlVertexArray::operator =(GlVertexArray &&other) {
-	this->id = other.id;
-	other.id = {};
-
-	return *this;
-}
-
-GlVertexArray::~GlVertexArray() {
-	if (this->id) {
-		glDeleteVertexArrays(1, &this->id.value());
-	}
+GlVertexArray::GlVertexArray()
+	: GlSimpleObject([] (GLuint handle) { glDeleteVertexArrays(1, &handle); } )
+{
+	GLuint handle;
+	glGenVertexArrays(1, &handle);
+	this->handle = handle;
 }
 
 void GlVertexArray::bind() const {
-	glBindVertexArray(*this->id);
+	glBindVertexArray(*this->handle);
 
 	// TODO necessary?
 	/*

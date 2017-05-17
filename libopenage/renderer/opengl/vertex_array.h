@@ -2,11 +2,9 @@
 
 #pragma once
 
-#include <epoxy/gl.h>
-#include <experimental/optional>
-
 #include "../resources/mesh_data.h"
 #include "buffer.h"
+#include "simple_object.h"
 
 
 namespace openage {
@@ -15,7 +13,7 @@ namespace opengl {
 
 /// An OpenGL Vertex Array Object. It represents a mapping between a buffer
 /// that contains vertex data and a way for the context to interpret it.
-class GlVertexArray  {
+class GlVertexArray final : public GlSimpleObject {
 public:
 	/// Initializes a vertex array from the given mesh data.
 	/// The inputs are parsed as follows - each subsequent (GlBuffer, VertexInputInfo) pair is added
@@ -42,20 +40,8 @@ public:
 	/// This is useful for bufferless drawing.
 	GlVertexArray();
 
-	GlVertexArray(GlVertexArray&&);
-	GlVertexArray &operator =(GlVertexArray&&);
-
-	GlVertexArray(GlVertexArray const&) = delete;
-	GlVertexArray &operator =(GlVertexArray const&) = delete;
-
-	~GlVertexArray();
-
 	/// Make this vertex array object the current one.
 	void bind() const;
-
-protected:
-	/// OpenGL handle to this object.
-	std::experimental::optional<GLuint> id;
 };
 
 }}} // openage::renderer::opengl

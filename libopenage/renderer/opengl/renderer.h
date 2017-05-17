@@ -16,6 +16,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
+/// The OpenGL specialization of the rendering interface.
 class GlRenderer final : public Renderer {
 public:
 	GlRenderer(GlContext*);
@@ -34,7 +35,7 @@ public:
 	void render(RenderPass const&) override;
 
 private:
-	/* The GL context. */
+	/// The GL context.
 	GlContext *gl_context;
 
 	std::vector<GlShaderProgram> shaders;

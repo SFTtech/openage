@@ -7,6 +7,7 @@
 #include "../../datastructure/constexpr_map.h"
 
 #include "texture.h"
+#include "shader.h"
 #include "geometry.h"
 
 
@@ -27,51 +28,6 @@ static constexpr auto glsl_to_gl_type = datastructure::create_const_map<const ch
 	std::make_pair("ivec3", GL_INT_VEC3),
 	std::make_pair("sampler2D", GL_SAMPLER_2D)
 );
-
-static constexpr auto gl_shdr_type = datastructure::create_const_map<resources::shader_source_t, GLenum>(
-	std::make_pair(resources::shader_source_t::glsl_vertex, GL_VERTEX_SHADER),
-	std::make_pair(resources::shader_source_t::glsl_geometry, GL_GEOMETRY_SHADER),
-	std::make_pair(resources::shader_source_t::glsl_tesselation_control, GL_TESS_CONTROL_SHADER),
-	std::make_pair(resources::shader_source_t::glsl_tesselation_evaluation, GL_TESS_EVALUATION_SHADER),
-	std::make_pair(resources::shader_source_t::glsl_fragment, GL_FRAGMENT_SHADER)
-);
-
-static GLuint compile_shader(const resources::ShaderSource& src) {
-	// allocate shader in opengl
-	GLuint id = glCreateShader(gl_shdr_type.get(src.get_type()));
-
-	if (unlikely(id == 0)) {
-		throw Error{MSG(err) << "Unable to create OpenGL shader. WTF?!", true};
-	}
-
-	// load shader source
-	const char* data = src.get_source();
-	glShaderSource(id, 1, &data, 0);
-
-	// compile shader source
-	glCompileShader(id);
-
-	// check compiliation result
-	GLint status;
-	glGetShaderiv(id, GL_COMPILE_STATUS, &status);
-
-	if (status != GL_TRUE) {
-		GLint loglen;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &loglen);
-
-		std::vector<char> infolog(loglen);
-		glGetShaderInfoLog(id, loglen, 0, infolog.data());
-
-		auto errmsg = MSG(err);
-		errmsg << "Failed to compile shader:\n" << infolog.data();
-
-		glDeleteShader(id);
-
-		throw Error{errmsg, true};
-	}
-
-	return id;
-}
 
 static void check_program_status(GLuint program, GLenum what_to_check) {
 	GLint status;
@@ -127,41 +83,38 @@ static constexpr auto gl_type_size = datastructure::create_const_map<GLenum, siz
 	std::make_pair(GL_SAMPLER_CUBE, 4)
 );
 
-GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &srcs, const gl_context_capabilities &caps) {
-	this->id = glCreateProgram();
+GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &srcs, const gl_context_capabilities &caps)
+	: GlSimpleObject([] (GLuint handle) { glDeleteProgram(handle); } ) {
+	GLuint handle = glCreateProgram();
+	this->handle = handle;
 
-	if (unlikely(this->id == 0)) {
-		throw Error(MSG(err) << "Unable to create OpenGL shader program. WTF?!");
-	}
-
-	std::vector<GLuint> shaders;
+	std::vector<GlShader> shaders;
 	for (auto src : srcs) {
-		GLuint id = compile_shader(src);
-		shaders.push_back(id);
-		glAttachShader(this->id, id);
+		GlShader shader(src);
+		glAttachShader(handle, shader.get_handle());
+		shaders.push_back(std::move(shader));
 	}
 
-	glLinkProgram(this->id);
-	check_program_status(this->id, GL_LINK_STATUS);
+	glLinkProgram(handle);
+	check_program_status(handle, GL_LINK_STATUS);
 
-	glValidateProgram(this->id);
-	check_program_status(this->id, GL_VALIDATE_STATUS);
+	glValidateProgram(handle);
+	check_program_status(handle, GL_VALIDATE_STATUS);
 
 	// after linking we can delete the shaders
-	for (GLuint shdr : shaders) {
-		glDetachShader(this->id, shdr);
-		glDeleteShader(shdr);
+	for (auto const& shdr : shaders) {
+		glDetachShader(handle, shdr.get_handle());
 	}
 
 	// query program information
 	GLint val;
-	glGetProgramiv(this->id, GL_ACTIVE_ATTRIBUTES, &val);
+	glGetProgramiv(handle, GL_ACTIVE_ATTRIBUTES, &val);
 	size_t attrib_count = val;
-	glGetProgramiv(this->id, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &val);
+	glGetProgramiv(handle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &val);
 	size_t attrib_maxlen = val;
-	glGetProgramiv(this->id, GL_ACTIVE_UNIFORMS, &val);
+	glGetProgramiv(handle, GL_ACTIVE_UNIFORMS, &val);
 	size_t unif_count = val;
-	glGetProgramiv(this->id, GL_ACTIVE_UNIFORM_MAX_LENGTH, &val);
+	glGetProgramiv(handle, GL_ACTIVE_UNIFORM_MAX_LENGTH, &val);
 	size_t unif_maxlen = val;
 
 	std::vector<char> name(std::max(unif_maxlen, attrib_maxlen));
@@ -171,7 +124,7 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 		GLint count;
 		GLenum type;
 		glGetActiveUniform(
-			this->id,
+			handle,
 			i_unif,
 			name.size(),
 			0,
@@ -217,7 +170,7 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 		GLint size;
 		GLenum type;
 		glGetActiveAttrib(
-			this->id,
+			handle,
 			i_attrib,
 			name.size(),
 			0,
@@ -248,32 +201,8 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 	}
 }
 
-GlShaderProgram::GlShaderProgram(GlShaderProgram &&other)
-	: uniforms(std::move(other.uniforms))
-	, id(other.id) {
-	other.id = 0;
-}
-
-GlShaderProgram& GlShaderProgram::operator=(GlShaderProgram&& other) {
-	if (this->id != 0) {
-		glDeleteProgram(this->id);
-	}
-
-	this->uniforms = std::move(other.uniforms);
-	this->id = other.id;
-	other.id = 0;
-
-	return *this;
-}
-
-GlShaderProgram::~GlShaderProgram() {
-	if (this->id != 0) {
-		glDeleteProgram(this->id);
-	}
-}
-
 void GlShaderProgram::use() const {
-	glUseProgram(this->id);
+	glUseProgram(*this->handle);
 
 	for (auto const &pair : this->textures_per_texunits) {
 		// We have to bind the texture to their texture units here because
