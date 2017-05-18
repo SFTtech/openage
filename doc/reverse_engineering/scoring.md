@@ -5,6 +5,16 @@
 The score is based on 5 categories: military, economy, religion, technology and
 survival/wonders.
 
+In case of equality there should not be any player that gets a bonus for the
+largest number. However, the game engine does pick one player that gets the
+bonus. The player that gets the bonus is defined by a couple of factors:
+
+* If player X gets the largest number before player Y does, X gets the bonus
+  before Y does and keeps the bonus.
+* If both players get the largest number at the same gametick the player with
+  the lowest index (i.e. the game engine's internal assigned identifier) gets
+  the bonus.
+
 ### Military
 
 Task                           | Score
