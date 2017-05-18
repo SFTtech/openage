@@ -1,4 +1,4 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #include <cmath>
 
@@ -74,11 +74,11 @@ phys3_delta phys3::get_fraction() {
 phys_t distance(const phys3 &a, const phys3 &b) {
 	phys_t dx = a.ne - b.ne;
 	phys_t dy = a.se - b.se;
-	return std::hypot(dx, dy);
+	return std::sqrt(dx * dx + dy * dy);
 }
 
 phys3_delta normalize(const phys3_delta &a, const phys_t &length) {
-	phys3_delta result = (a * length) / std::hypot(a.ne, a.se);
+	phys3_delta result = (a * length) / std::sqrt(a.ne * a.ne + a.se * a.se);
 	return result;
 }
 
