@@ -79,9 +79,9 @@ def tests_cpp():
     yield "openage::renderer::tests::font"
     yield "openage::renderer::tests::font_manager"
     yield "openage::rng::tests::run"
-    yield "openage::tube::tests::container"
-    yield "openage::tube::tests::serialization"
-    yield "openage::tube::tests::tube_types"
+    yield "openage::curve::tests::container"
+    yield "openage::curve::tests::serialization"
+    yield "openage::curve::tests::curve_types"
     yield "openage::util::tests::array_conversion"
     yield "openage::util::tests::constinit_vector"
     yield "openage::util::tests::enum_"
@@ -109,7 +109,7 @@ def demos_cpp():
            "translates a Python exception to C++")
     yield ("openage::pyinterface::tests::pyobject_demo",
            "a tiny interactive interpreter using PyObjectRef")
-    yield ("openage::tubepong::demo",
+    yield ("openage::curvepong::demo",
            "a pong game implemented in curves")
 
 
