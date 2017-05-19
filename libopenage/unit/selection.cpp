@@ -353,4 +353,4 @@ std::vector<coord::tile> tiles_in_range(coord::camgame p1, coord::camgame p2) {
 	return tiles;
 }
 
-} /* namespace openage */
+} // namespace openage

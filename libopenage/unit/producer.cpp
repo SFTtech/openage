@@ -854,4 +854,4 @@ TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terra
 	return nullptr;
 }
 
-} /* namespace openage */
+} // namespace openage

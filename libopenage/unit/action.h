@@ -16,24 +16,68 @@ namespace openage {
 class TerrainSearch;
 class Research;
 
+// TODO use a type instead of unsigned int for time
+
+/**
+ * A interval triggering timer used in actions.
+ * TODO find a better name for triggers
+ */
 class IntervalTimer {
 public:
 
+	/**
+	 * Constructs a timer with a given interval
+	 */
 	IntervalTimer(unsigned int interval);
+
+	/**
+	 * Constructs a timer with a given interval which will
+	 * stop after a given number of triggers.
+	 */
+	IntervalTimer(unsigned int interval, int max_triggers);
+
+	void skip_to_trigger();
 
 	bool update(unsigned int time);
 
+	/**
+	 * Returns the time until the next trigger
+	 */
 	unsigned int get_time_left() const;
 
 	float get_progress() const;
 
+	/**
+	 * Returns true if at least one interval has passed.
+	 */
+	bool has_triggers() const;
+
+	/**
+	 * Returns true if the interval passed have reached the max.
+	 */
+	bool finished() const;
+
+	/**
+	 * Returns the number of intervals passed.
+	 */
+	int get_triggers() const { return this->triggers; }
+
+	unsigned int get_interval() const { return this->interval; }
+
+	void set_interval(unsigned int interval) { this->interval = interval; }
+
 private:
 
-	const unsigned int interval;
+	unsigned int interval;
+
+	int max_triggers;
 
 	unsigned int time_left;
 
+	int triggers;
+
 };
+
 
 /**
  * Actions can be pushed onto any units action stack
@@ -168,6 +212,7 @@ protected:
 /**
  * Base class for actions which target another unit such as
  * gather, attack, heal and convert
+ * TODO implement min range
  */
 class TargetAction: public UnitAction {
 public:
@@ -411,9 +456,10 @@ public:
 
 private:
 	UnitType *trained;
+
+	IntervalTimer timer;
 	bool started;
 	bool complete;
-	float train_percent;
 };
 
 /**
@@ -432,11 +478,11 @@ public:
 	std::string name() const override { return "train"; }
 
 private:
+
 	Research *research;
 
 	IntervalTimer timer;
 	bool complete;
-
 };
 
 /**
@@ -473,16 +519,14 @@ public:
 	std::string name() const override { return "repair"; }
 
 private:
-	bool complete;
-
-	float time;
-	float time_left;
 
 	/**
 	 * stores the cost of the repair for 1hp
 	 */
 	ResourceBundle cost;
 
+	IntervalTimer timer;
+	bool complete;
 };
 
 /**
@@ -519,7 +563,8 @@ public:
 	std::string name() const override { return "attack"; }
 
 private:
-	float strike_percent, rate_of_fire;
+
+	IntervalTimer timer;
 
 	/**
 	 * use attack action
@@ -546,7 +591,8 @@ public:
 	std::string name() const override { return "heal"; }
 
 private:
-	float heal_percent;
+
+	IntervalTimer timer;
 
 	/**
 	 * use heal action

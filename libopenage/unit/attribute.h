@@ -273,8 +273,8 @@ public:
 };
 
 /**
- * TODO implement min range
  * TODO can a unit have multiple attacks such as villagers hunting map target classes onto attacks
+ * TODO remove the first constructor and the default values after (keep for now for compatibility)
  */
 template<> class Attribute<attr_type::attack>: public SharedAttributeContainer {
 public:
@@ -284,13 +284,18 @@ public:
 		:
 		Attribute{type, r, h, {{4, d}}} {}
 
-	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d)
+	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d,
+		      coord::phys_t min_range = 0, bool friendly_fire = false,
+			  coord::phys_t area_of_effect = 0)
 		:
 		SharedAttributeContainer{attr_type::attack},
 		ptype{type},
-		range{r},
+		min_range{min_range},
+		max_range{r},
 		init_height{h},
-		damage{d} {}
+		damage{d},
+		friendly_fire{friendly_fire},
+		area_of_effect{area_of_effect} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::attack>>(*this);
@@ -302,9 +307,15 @@ public:
 	UnitType *ptype;
 
 	/**
+	 * The min range of the attack
+	 * TODO not used
+	 */
+	coord::phys_t min_range;
+
+	/**
 	 * The max range of the attack
 	 */
-	coord::phys_t range;
+	coord::phys_t max_range;
 
 	/**
 	 * The height from which the projectile starts
@@ -312,6 +323,18 @@ public:
 	coord::phys_t init_height;
 
 	typeamount_map damage;
+
+	/**
+	 * If the attack can damage allied (friendly) units.
+	 * TODO not used
+	 */
+	bool friendly_fire;
+
+	/**
+	 * The radius of the area of effect of the attack or 0 if there is no area_of_effect.
+	 * TODO not used
+	 */
+	coord::phys_t area_of_effect;
 };
 
 /**
@@ -344,7 +367,7 @@ public:
  */
 template<> class Attribute<attr_type::heal>: public SharedAttributeContainer {
 public:
-	Attribute(coord::phys_t r, unsigned int l, float ra)
+	Attribute(coord::phys_t r, unsigned int l, unsigned int ra)
 		:
 		SharedAttributeContainer{attr_type::heal},
 		range{r},
@@ -366,9 +389,9 @@ public:
 	unsigned int life;
 
 	/**
-	 * The rate of each heal cycle
+	 * The period of each heal cycle
 	 */
-	float rate;
+	unsigned int rate;
 };
 
 template<> class Attribute<attr_type::speed>: public SharedAttributeContainer {

@@ -94,7 +94,7 @@ void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 		// add the range of the unit if cmd indicator is set
 		if (cmd.has_flag(command_flag::use_range) && to_modify.has_attribute(attr_type::attack)) {
 			auto &att = to_modify.get_attribute<attr_type::attack>();
-			radius += att.range;
+			radius += att.max_range;
 		}
 		to_modify.push_action(std::make_unique<MoveAction>(&to_modify, target->get_ref(), radius));
 	}
@@ -407,7 +407,7 @@ ability_set UnitAbility::set_from_list(const std::vector<ability_type> &items) {
 	return result;
 }
 
-} /* namespace openage */
+} // namespace openage
 
 namespace std {
 
