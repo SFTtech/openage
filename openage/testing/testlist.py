@@ -107,8 +107,6 @@ def demos_cpp():
            "translates a Python exception to C++")
     yield ("openage::pyinterface::tests::pyobject_demo",
            "a tiny interactive interpreter using PyObjectRef")
-    yield ("openage::renderer::tests::renderer_demo",
-           "showcases the new renderer")
 
 
 def benchmark_cpp():

@@ -113,7 +113,7 @@ std::unique_ptr<Texture> tex = renderer->add_texture(tex_data);
 
 resources::ShaderSource vsrc = resources::ShaderSource::read_from_file("/path.vert", resources::shader_t::glsl_vertex);
 resources::ShaderSource fsrc = resources::ShaderSource::read_from_file("/path.frag", resources::shader_t::glsl_fragment);
-                                                                       
+
 std::unique_ptr<ShaderProgram> prog = renderer->add_shader( { vsrc, fsrc } );
 
 auto input = prog->new_uniform_input(
