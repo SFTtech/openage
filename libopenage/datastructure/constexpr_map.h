@@ -1,9 +1,12 @@
-// Copyright 2015-2015 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <functional>
 #include <utility>
+
+#include "../error/error.h"
+
 
 namespace openage {
 namespace datastructure {
@@ -61,21 +64,21 @@ public:
 	 * Return the number of entries in this map.
 	 */
 	constexpr int inline size() const {
-		return this->has_duplicates(), this->position();
+		return this->verify_no_duplicates(), pos;
 	}
 
 	/**
 	 * Tests if the given key is in this map.
 	 */
 	constexpr bool inline contains(const K &key) const {
-		return this->has_duplicates(), this->has_entry(key);
+		return this->verify_no_duplicates(), this->has_entry(key);
 	}
 
 	/**
 	 * Return the stored value for the given key.
 	 */
 	constexpr const inline V &get(const K &key) const {
-		return this->has_duplicates(), this->must_contain(key), this->fetch(key);
+		return this->verify_no_duplicates(), this->fetch(key);
 	}
 
 	/**
@@ -85,21 +88,19 @@ public:
 		return this->get(key);
 	}
 
-protected:
+private:
 	/**
-	 * Called at compiletime when a key was used multiple times.
+	 * Test if if the given key is stored in this element or in following elements.
 	 */
-	const V &has_duplicate_key() const {
-		// duplicate key in map!
-		return *this->null;
+	constexpr bool inline has_entry(const K &key) const {
+		return (this->value.key == key) or this->tail.has_entry(key);
 	}
 
 	/**
-	 * Called when a requested key is missing.
+	 * Test if the key of this entry is not used in following entries.
 	 */
-	constexpr bool missing_key() const {
-		// the requested key is not in the map!
-		return *this->null;
+	constexpr bool inline is_unique() const {
+		return not this->tail.has_entry(this->value.key);
 	}
 
 	/**
@@ -111,24 +112,14 @@ protected:
 	}
 
 	/**
-	 * Test if the key of this entry is not used in following entries.
+	 * Abort when the map uses the same key more than once.
 	 */
-	constexpr bool inline is_unique() const {
-		return not this->tail.has_entry(this->value.key);
-	}
-
-	/**
-	 * Returns the current entry position.
-	 */
-	constexpr int inline position() const {
-		return pos;
-	}
-
-	/**
-	 * Test if if the given key is stored in this element or in following elements.
-	 */
-	constexpr bool inline has_entry(const K &key) const {
-		return (this->value.key == key) or this->tail.has_entry(key);
+	constexpr bool inline verify_no_duplicates() const {
+		return
+		this->all_are_unique() ?
+			true
+		:
+			throw Error(MSG(err) << "There is a duplicate key in the map.");
 	}
 
 	/**
@@ -138,34 +129,11 @@ protected:
 		return
 		// if we found the key
 		(this->value.key == key) ?
-		// return the value:
-		this->value.value
+			// return the value
+			this->value.value
 		:
-		// else try the lookup on the remaining elements:
-		this->tail.fetch(key);
-	}
-
-	/**
-	 * Abort when the requested key is not in the map.
-	 */
-	constexpr bool inline must_contain(const K &key) const {
-		return
-		this->has_entry(key) ?
-			true
-		:
-			// the requested key is not in the map
-			this->missing_key();
-	}
-
-	/**
-	 * Abort when the map uses the same key more than once.
-	 */
-	constexpr bool inline has_duplicates() const {
-		return
-		this->all_are_unique() ?
-			true
-		:
-			this->has_duplicate_key();
+			// else try the lookup on the remaining elements
+			this->tail.fetch(key);
 	}
 
 	/**
@@ -177,11 +145,6 @@ protected:
 	 * The remaining map entries.
 	 */
 	const ConstMap<K, V, pos - 1> tail;
-
-	/**
-	 * Nullptr to induce compiler failures.
-	 */
-	static constexpr const V *null = nullptr;
 
 	/**
 	 * The previous entry is our friend.
@@ -206,75 +169,40 @@ public:
 	 * The size of the end element.
 	 */
 	constexpr int inline size() const {
-		return this->position();
+		return 0;
 	}
 
 	/**
-	 * The end element can't contain the key. Returns false.
+	 * The end element can't contain the key.
 	 */
-	constexpr bool inline contains(const K &key) const {
-		return this->has_entry(key);
+	constexpr bool inline contains(const K &) const {
+		return false;
 	}
 
-	/**
-	 * The end element doesn't contain a value. Aborts.
-	 */
-	constexpr const inline V &get(const K &key) const {
-		return this->fetch(key);
-	}
-
-protected:
-	/**
-	 * A key is not in the map.
-	 * This function should never be called. If it is called,
-	 * you requested a nonexisting key.
-	 */
-	constexpr const V &missing_key() const {
-		// intentional failure.
-		return *this->null;
-	}
-
+private:
 	/**
 	 * Reaching the last entry of the uniqueness check means
 	 * we had no duplicates.
 	 */
 	constexpr bool inline all_are_unique() const {
-		return this->is_unique();
-	}
-
-	/**
-	 * The end element doesn't have a key, so it's unique.
-	 */
-	constexpr bool inline is_unique() const {
 		return true;
 	}
 
 	/**
-	 * The end element is the last entry.
-	 */
-	constexpr int inline position() const {
-		return 0;
-	}
-
-	/**
-	 * The end element doesn't have an entry,
-	 * so it can't supply a requested key.
+	 * The end element doesn't have an entry.
 	 */
 	constexpr bool inline has_entry(const K &) const {
 		return false;
 	}
 
 	/**
-	 * Fetching a value from the end element aborts as it has no entry.
+	 * The end element doesn't have an entry,
+	 * so nothing can be fetched,
 	 */
 	constexpr const inline V &fetch(const K &) const {
-		return this->missing_key();
+		// if we reach here recursively, the key was not found along the way and so isn't present
+		throw Error(MSG(err) << "The key is not in the map.");
 	}
-
-	/**
-	 * Null pointer dereference helper to trigger failures.
-	 */
-	static constexpr const V *null = nullptr;
 
 	/**
 	 * The previous entry class is our friend.

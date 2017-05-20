@@ -99,6 +99,7 @@ _the openage authors_ are:
 | Alex Birch                  | Birch-san                   | vengeance dawt m dawt x+openage à gmail dawt com  |
 | Michal Jarzabek             | stiopa                      | stiopa à gmail dawt com                           |
 | Christopher Wilson          | cdw33                       | cdw33 à zips dawt uakron dawt edu                 |
+| Wojciech Nawrocki           | Vtec234                     | wjnawrocki à protonmail dawt com                  |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
