@@ -3,17 +3,18 @@
 #include "tests.h"
 
 #include <utility>
+#include <thread>
 
 #include "../testing/testing.h"
 
 #include "constexpr_map.h"
 #include "pairing_heap.h"
+#include "concurrent_double_buffer.h"
 
 
 namespace openage {
 namespace datastructure {
 namespace tests {
-
 
 void pairing_heap_0() {
 	PairingHeap<int> heap{};
@@ -41,7 +42,6 @@ void pairing_heap_0() {
 	heap.push(10);
 
 	// state: 0 4 10
-
 	(0 == heap.pop()) or TESTFAIL;
 	(4 == heap.pop()) or TESTFAIL;
 	(10 == heap.pop()) or TESTFAIL;
@@ -160,6 +160,88 @@ void constexpr_map() {
 	cmap.size() == 3 or TESTFAIL;
 	cmap.get(13) == 37 or TESTFAIL;
 	cmap.get(42) == 9001 or TESTFAIL;
+}
+
+void concurrent_double_buffer_ctr() {
+	ConcurrentDoubleBuffer<int>();
+	ConcurrentDoubleBuffer<int>(2, 3);
+
+	static bool deleted = false;
+	{
+		struct Foo {
+			~Foo() {
+				deleted = true;
+			}
+		};
+		ConcurrentDoubleBuffer<std::unique_ptr<Foo>>(std::make_unique<Foo>(), std::make_unique<Foo>());
+	}
+	deleted || TESTFAIL;
+}
+
+void concurrent_double_buffer_st() {
+	ConcurrentDoubleBuffer<int> buf;
+
+	buf.lock_back().get() = 1337;
+
+	buf.swap();
+	buf.get_front() == 1337 || TESTFAIL;
+	buf.lock_back().get() = 8;
+
+	buf.swap();
+	buf.lock_back().get() == 1337 || TESTFAIL;
+	buf.get_front() == 8 || TESTFAIL;
+}
+
+void concurrent_double_buffer_mt() {
+	ConcurrentDoubleBuffer<int> buf(1, 2);
+
+	// true if test succeeds, false otherwise
+	std::atomic<bool> succ(true);
+	std::atomic<int> sync(0);
+
+	std::thread t1([&] {
+			if (buf.get_front() != 1 || buf.lock_back().get() != 2) {
+				succ.store(false);
+			}
+
+			sync.fetch_add(1);
+			while (sync.load() != 2) {}
+
+			buf.lock_back().get() = 3;
+
+			sync.store(3);
+		} );
+
+	std::thread([&] {
+			if (buf.lock_back().get() != 2 || buf.get_front() != 1) {
+				succ.store(false);
+			}
+
+			sync.fetch_add(1);
+			while (sync.load() != 2) {}
+
+			if (buf.get_front() != 1) {
+				succ.store(false);
+			}
+
+			while (sync.load() != 3) {}
+
+			buf.swap();
+
+			if (buf.get_front() != 3 || buf.lock_back().get() != 1) {
+				succ.store(false);
+			}
+		} ).join();
+	t1.join();
+
+	succ.load() || TESTFAIL;
+}
+
+// exported test
+void concurrent_double_buffer() {
+	concurrent_double_buffer_ctr();
+	concurrent_double_buffer_st();
+	concurrent_double_buffer_mt();
 }
 
 }}} // openage::datastructure::tests
