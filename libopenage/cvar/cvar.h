@@ -37,7 +37,7 @@ using set_func = std::function<void(std::string)>;
  * cppclass CVarManager:
  *     string get(string name) except +
  *     void set(string name, string value) except +
- *     void load_config(string path) except +
+ *     void load_config(Path path) except +
  */
 class CVarManager {
 
