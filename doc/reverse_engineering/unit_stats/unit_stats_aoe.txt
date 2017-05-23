@@ -1,0 +1,3 @@
+Notes:
+This unit attributes table is copied from the original game manual of Age of Empires I for MacOS 9
+Missile weapons: Archery Range units, towers, Scout Ship, War Galley, Trireme
