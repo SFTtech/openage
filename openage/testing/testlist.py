@@ -70,6 +70,7 @@ def tests_cpp():
     yield "openage::coord::tests::coord"
     yield "openage::datastructure::tests::constexpr_map"
     yield "openage::datastructure::tests::pairing_heap"
+    yield "openage::datastructure::tests::concurrent_double_buffer"
     yield "openage::job::tests::test_job_manager"
     yield "openage::path::tests::path_node", "pathfinding"
     yield "openage::pyinterface::tests::pyobject"

@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,9 +24,7 @@ struct heap_elem {
 	}
 };
 
-} // namespace tests
-} // namespace datastructure
-} // namespace openage
+}}} // openage::datastructure::tests
 
 namespace std {
 
@@ -39,4 +37,5 @@ struct hash<openage::datastructure::tests::heap_elem> {
 		return elem.data;
 	}
 };
-} // namespace std
+
+} // std
