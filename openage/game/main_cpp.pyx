@@ -14,10 +14,10 @@ cdef extern from "Python.h":
     void PyEval_InitThreads()
 
 
-def run_game(args, root_path):
-    """
-    Lauches the game after arguments were translated.
-    """
+def run_game(args, root_path, version):
+"""
+Lauches the game after arguments were translated.
+"""
 
     # argument translation
     cdef main_arguments args_cpp
@@ -34,6 +34,9 @@ def run_game(args, root_path):
 
     # opengl debugging
     args_cpp.gl_debug = args.gl_debug
+
+    # game version info
+    args_cpp.version = version.encode()
 
     # create the gil, because now starts the multithread part!
     PyEval_InitThreads()

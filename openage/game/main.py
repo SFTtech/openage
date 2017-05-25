@@ -36,6 +36,7 @@ def main(args, error):
     from ..cppinterface.setup import setup as cpp_interface_setup
     from ..cvar.location import get_config_path
     from ..util.fslike.union import Union
+    from .. import __version__ as version
 
     # initialize libopenage
     cpp_interface_setup()
@@ -62,4 +63,4 @@ def main(args, error):
             return 1
 
     # start the game, continue in main_cpp.pyx!
-    return run_game(args, root)
+    return run_game(args, root, version)

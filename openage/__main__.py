@@ -24,8 +24,8 @@ class PrintVersion(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         del parser, namespace, values, option_string  # unused
 
-        from . import LONGVERSION
-        print(LONGVERSION)
+        from .util.version import get_long_version
+        print(get_long_version())
         exit(0)
 
 
@@ -70,6 +70,7 @@ def main(argv=None):
         parents=[global_cli, cfg_cli])
     init_subparser(game_cli)
 
+    # pylint: disable=W0404
     from .testing.main import init_subparser
     init_subparser(subparsers.add_parser(
         "test",

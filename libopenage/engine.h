@@ -109,7 +109,8 @@ public:
 	Engine(const util::Path &root_dir,
 	       int32_t fps_limit,
 	       bool gl_debug,
-	       const char *windowtitle);
+	       const char *windowtitle,
+	       const char *version);
 
 	/**
 	 * engine copy constructor.
@@ -316,6 +317,9 @@ private:
 	 * view translation, and calling the main draw_method.
 	 */
 	void loop();
+
+	/** engine version string */
+	const char *version;
 
 	/**
 	 * The engine root directory.

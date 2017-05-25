@@ -31,7 +31,13 @@ int run_game(const main_arguments &args) {
 	util::Timer timer;
 	timer.start();
 
-	Engine engine{args.root_path, args.fps_limit, args.gl_debug, "openage"};
+	Engine engine{
+		args.root_path,
+		args.fps_limit,
+		args.gl_debug,
+		"openage",
+		args.version.c_str()
+	};
 
 	// read and apply the configuration files
 	engine.get_cvar_manager().load_all();
