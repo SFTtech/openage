@@ -226,6 +226,11 @@ Engine::Engine(const util::Path &root_dir,
 		}
 		return false;
 	});
+	global_input_context.bind(action.get("TOGGLE_FILLMODE"), [this](const input::action_arg_t &) {
+		static bool isLine = false;
+		glPolygonMode(GL_FRONT_AND_BACK, isLine ? GL_FILL : GL_LINE);
+		isLine = !isLine;
+	});
 
 	this->text_renderer = std::make_unique<renderer::TextRenderer>();
 	this->unit_selection = std::make_unique<UnitSelection>(this);

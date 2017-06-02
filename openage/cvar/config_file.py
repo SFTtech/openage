@@ -34,6 +34,7 @@ def load_config_file(path, set_cvar_func, loaded_files=None):
 
     with path.open() as config:
         for line in config:
+            print("Reading config line: %s" % line)
             lstrip = line.lstrip()
             if not lstrip or lstrip.startswith("#"):
                 continue

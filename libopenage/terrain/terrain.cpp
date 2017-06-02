@@ -63,6 +63,7 @@ std::vector<coord::chunk> Terrain::used_chunks() const {
 }
 
 bool Terrain::fill(const int *data, coord::tile_delta size) {
+	log::log(MSG(dbg) << "Fill called!");
 	bool was_cut = false;
 
 	coord::tile pos = {0, 0};
