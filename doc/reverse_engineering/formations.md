@@ -5,8 +5,16 @@
 Dave Pottinger's Articles [1](http://www.gamasutra.com/view/feature/131720/coordinated_unit_movement.php) [2](http://www.gamasutra.com/view/feature/131721/implementing_coordinated_movement.php)
 
 1. Grouped units have the same speed
+
+The speed of a formation is determined by its slowest unit. This will help the formation to stay together.
+
 2. Grouped units take the same path
+
+If there is an obstruction in the units path, the group will stay together to avoid being attacked when separated.
+
 3. Grouped units arrive at the same time
+
+When a group is formed, the faster units should decrease their speed for slower units to catch up.
 
 ## Structure
 
@@ -18,7 +26,7 @@ When talking about formations, one has to differentiate between
 
 Players can select any units they own and add them to their selection. Therefore, a selection can consist of varying unit types and allows mixing of buildings, military units, villagers and others. Not all of these units are capable of forming a formation. Buildings are excluded from formations because they can't move and so are unpacked trebuchets. Villagers, trade carts and fishing ships will not be part of any formation. If they are moved, they don't abide Pottinger's rules and will move to the target at their normal speed while each of them takes their own path. Hence, when villagers are part of a selection of military units, the military units will form a formation and then move to the target while the villagers will independently move there.
 
-A formation always consists of 4 subformations (which can be empty). What unit type belongs to what subformation is hardcoded into the game. A quick overview is shown below. The `^`-symbol shows the front of the formation.
+A formation always consists of 4 subformations (which can be empty). What unit type belongs to what subformation is hard coded into the game. A quick overview is shown below. The `^`-symbol shows the front of the formation.
 
 ```
 ...................
@@ -49,7 +57,7 @@ Formations have a formation type which determines how the units are generally or
 
 ### Ship Formations
 
-Ships use the same formation system and are sorted into a subformation by similar rules. Instead of using `GroupID`, `LineID` determines which subformation is chosen (probably because all battle ships have the same `GroupID`). The figure below shows the subformations to which each class of ships is passed.
+Ships use the same formation system and are sorted into a subformation by similar rules. Instead of using `GroupID`, `LineID` determines which subformation is chosen (probably because all battle ships have the same `GroupID` 922). The figure below shows the subformations to which each class of ships is passed.
 
 ```
 WARNING: These are LineIDs not GroupIDs
@@ -115,7 +123,7 @@ The same rules apply, if more than two unit types are used. We will now have a l
 ..............
 ```
 
-Which unit type is sorted in first depends on the order in which the player selected the unit types (or how they are ordered inside the selection queue). In the first example of this section, the player selected the archers first and added the skirmishers to his selction. The second and above example would be the result of selecting longbowman first, archers second, skirmishers third and throwing axeman last.
+Which unit type is sorted in first depends on the order in which the player selected the unit types (or how they are ordered inside the selection queue). In the first example of this section, the player selected the archers first and added the skirmishers to his selection. The second and above example would be the result of selecting longbowman first, archers second, skirmishers third and throwing axeman last.
 
 #### Distance Between Units
 
@@ -149,7 +157,7 @@ We would expect that the grouping of units inside the parent formation looks exa
 
 ```
 
-The reason for the change of the `row_count` for `subformation[2]` is the width of `subformation[4]`. Rams are about two times as wide as swordsman, hence the subformation they are in will also be much wider than `subformation[2]` if it is selected individually. To deal with the different in width, the number of units per row of `subformation[2]` is extended. In general one can say that the widest subformation in the parent formation influences the `row_count` of all other subformations.
+The reason for the change of the `row_count` for `subformation[2]` is the width of `subformation[4]`. Rams are about two times as wide as swordsman, hence the subformation they are in will also be much wider than `subformation[2]` if it is selected individually. To deal with the difference in width, the number of units per row of `subformation[2]` is extended. In general one can say that the widest subformation in the parent formation influences the `row_count` of all other subformations.
 
 ## Formation Types
 
@@ -191,8 +199,91 @@ Flanked formations play a crucial part in competitive play, when countering the 
 
 The marching formation cannot be select by the player but is used by the game when a movement order is placed more than 10 tiles away from the current location of the player's selection. It behaves like a Line Formation that is turned around by 90 degrees. Because this formation type is much narrower than all other types, units can fit through small gaps in tree lines and walls.
 
+## Limits in AoE2
+
+* Units will not sorted into the formation if they are too far away (10 tiles) from an already established formation. They will behave as if they were in `subformation[5]` and therefore don't follow Pottinger's rules. While this seems strange at first, it ensures that the point where the units join the group is not to far apart from the majority of units and that the formation gets moving towards its goal faster (instead of having to decrease its speed for a slow unit that is far away).
+* Formations will split on occasions where the obstruction is small (such as a single tree or a building). This was probably implemented to avoid formations to get stuck at a single choke point, e.g. a breach in the wall, when there are other options.
+* Units within the same formation don't collide with each other when the formation is established. It is assumed that the pathfinding algorithm of AoE2 was insufficient to handle the complexity of the formation system.
+* Units do not know how far they have to travel and are following a rough path that is recalculated if they encounter an obstruction. Therefore units will sometimes transition from marching to combat formations far too early.
+
 ## Algorithmic solutions
+
+Both algorithms have a run time of `O(n)`. Therefore, implementing them shouldn't affect performance that much, even for large formations over 40 units. `player_selection` is a set of units that the player selected and that is passed to the algorithm.
 
 ### Sort units into subformations (Pseudocode)
 
-### Ordering units inside subformation (Pseudocode)
+```
+INPUT:
+- Set of units: player_selection
+- Formation type: formation_type
+```
+```
+Initilization:
+
+# subformations for military units
+subformation[1] = new subformation();
+subformation[2] = new subformation();
+subformation[3] = new subformation();
+subformation[4] = new subformation();
+
+# dummy subformation for every unit that will
+# not form formations
+subformation[5] = new subformation();
+```
+```
+Algorithm:
+
+for unit u in player_selection do
+{
+    switch(u.GROUP_ID)
+    {
+        case 912:
+        case 947: subformation[1].add(u)
+        break();
+        case 906: subformation[2].add(u)
+        break();
+        case 900:
+        case 923:
+        case 936:
+        case 944:
+        case 955: subformation[3].add(u)
+        break();
+        case 902:
+        case 913:
+        case 918:
+        case 919:
+        case 920:
+        case 935:
+        case 943:
+        case 951:
+        case 959: subformation[4].add(u)
+        break();
+        case 922:
+        switch(u.LINE_ID)
+        {
+          case -294: subformation[1].add(u)
+          break();
+          case -293: subformation[2].add(u)
+          break();
+          case -283:
+          case -284:
+          case -292: subformation[3].add(u)
+          break();
+          case -285:
+          case 706: subformation[4].add(u)
+          break();
+          default: subformation[5].add(u)
+          break();
+        }
+        default: subformation[5].add(u)
+        break();
+    }
+}
+
+subformation[1].order_units(formation_type)
+subformation[2].order_units(formation_type)
+subformation[3].order_units(formation_type)
+subformation[4].order_units(formation_type)
+subformation[5].order_units(formation_type)
+
+```
