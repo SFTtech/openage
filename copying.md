@@ -101,6 +101,7 @@ _the openage authors_ are:
 | Christopher Wilson          | cdw33                       | cdw33 à zips dawt uakron dawt edu                 |
 | Wojciech Nawrocki           | Vtec234                     | wjnawrocki à protonmail dawt com                  |
 | Folkert van Verseveld       | methos, medicijnman         | folkert dawt van dawt verseveld à gmail dawt com  |
+| Neel Patel                  | ohn0                        | silverskinx à gmail dawt com                      |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
