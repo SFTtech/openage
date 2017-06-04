@@ -3,7 +3,7 @@ class Profiler:
     profile = None
     profile_stats = None
     profile_stream = None
-    stats = ''
+    stats = None
     def __init__(self):
         self.profile = cProfile.Profile()
                                 
@@ -22,21 +22,18 @@ class Profiler:
         self.profile_stats.sort_stats(new_ordering)
         
     def report(self):
-        if(self.profile_stream == None):
-            #self.profile.print_stats()
-            return self.stats
         self.profile.print_stats()
-        self.stats = self.profile_stream.getvalue()
         self.profile_stream.close()
-        self.profile_stream = None
-        return self.stats
+        #self.profile_stream = None
     
 p = Profiler()
 with p:
     print('cupcake')
 p.profile_stats.sort_stats('cumulative')
-print(p.report())
+p.report()
 with p:
     print('zero')
-print(p.report())
-print(p.report())
+p.change_ordering("calls")
+p.report()
+p.change_ordering('cumulative')
+p.report()
