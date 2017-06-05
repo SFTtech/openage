@@ -4,9 +4,9 @@ class Profiler:
     profile_stats = None
     profile_stream = None
     stats = None
-    def __init__(self):
+    def __init__(self, oStream = None):
         self.profile = cProfile.Profile()
-                                
+        self.profile_stream = oStream                        
     def __enter__(self):
         if(self.profile_stream == None):
             self.profile_stream = io.StringIO()
@@ -22,18 +22,10 @@ class Profiler:
         self.profile_stats.sort_stats(new_ordering)
         
     def report(self):
-        self.profile.print_stats()
+        self.profile_stats.print_stats()
+        if(isinstance(self.profile_stream, io.StringIO)):
+            print(self.profile_stream.getvalue())
+            
+    def close_stream(self):
         self.profile_stream.close()
-        #self.profile_stream = None
-    
-p = Profiler()
-with p:
-    print('cupcake')
-p.profile_stats.sort_stats('cumulative')
-p.report()
-with p:
-    print('zero')
-p.change_ordering("calls")
-p.report()
-p.change_ordering('cumulative')
-p.report()
+
