@@ -2,7 +2,7 @@
 
 ## Principles of Formations in AoE2
 
-Dave Pottinger's Articles [1](http://www.gamasutra.com/view/feature/131720/coordinated_unit_movement.php) [2](http://www.gamasutra.com/view/feature/131721/implementing_coordinated_movement.php)
+Dave Pottinger's Articles: [1](http://www.gamasutra.com/view/feature/131720/coordinated_unit_movement.php) [2](http://www.gamasutra.com/view/feature/131721/implementing_coordinated_movement.php)
 
 1. Grouped units have the same speed
 
@@ -71,7 +71,7 @@ WARNING: These are LineIDs not GroupIDs
 5..Else............ Admiral Yun Shi (UnitID: 844)
 ```
 
-Because the same formation system is used for land and sea units it is possible to mix them inside a formation. This behavior can be seen when one selects ships and land units and then sends them in shallow water.
+Because the same formation system is used for land and sea units it is possible to mix them inside a formation. This behavior can be observed when one selects ships and land units and then sends them into shallow water.
 
 ## Subformations
 
@@ -79,7 +79,7 @@ Subformations are the parts of the formation where the ordering of units into li
 
 ### Individual Subformation
 
-For a start one has to look at the behavior of an individual subformation first. Let's assume we have a single subformation consisting of ranged units (`subformation[3]`).
+For a start one has to look at the behavior of an individual subformation. Let's assume we have a single subformation consisting of ranged units (`subformation[3]`).
 
 ```
 ............
@@ -111,7 +111,7 @@ If a subformation is formed with units of more than one unit type, AoE2 tries to
 ............
 ```
 
-In the above example, we have a subformation consisting of 2 archers `A` and 10 skirmishers `S`. Beginning from the top left the subformation alternates between archers and skirmishers until there are no more archers left. The skirmishers fill up the remaining space.
+In the above example, we have a subformation consisting of 2 archers `A` and 10 skirmishers `S`. Beginning from the top left the subformation alternates between archers and skirmishers until there are no more archers left. The other skirmishers fill up the remaining space.
 
 The same rules apply, if more than two unit types are used. We will now have a look at a subformation containing 5 archers `A`, 3 skirmishers `S`, 6 longbowman `L` and 1 throwing axeman `T`.
 
@@ -123,7 +123,7 @@ The same rules apply, if more than two unit types are used. We will now have a l
 ..............
 ```
 
-Which unit type is sorted in first depends on the order in which the player selected the unit types (or how they are ordered inside the selection queue). In the first example of this section, the player selected the archers first and added the skirmishers to his selection. The second and above example would be the result of selecting longbowman first, archers second, skirmishers third and throwing axeman last.
+Which unit type is sorted into the line first depends on the order in which the player selected the unit types (or how they are ordered inside the selection queue). In the first example of this section, the player selected the archers first and added the skirmishers to his selection. The second and above example would be the result of selecting longbowman first, archers second, skirmishers third and throwing axeman last.
 
 #### Distance Between Units
 
@@ -202,13 +202,13 @@ The marching formation cannot be select by the player but is used by the game wh
 ## Limits in AoE2
 
 * Units will not sorted into the formation if they are too far away (10 tiles) from an already established formation. They will behave as if they were in `subformation[5]` and therefore don't follow Pottinger's rules. While this seems strange at first, it ensures that the point where the units join the group is not to far apart from the majority of units and that the formation gets moving towards its goal faster (instead of having to decrease its speed for a slow unit that is far away).
-* Formations will split on occasions where the obstruction is small (such as a single tree or a building). This was probably implemented to avoid formations to get stuck at a single choke point, e.g. a breach in the wall, when there are other options.
-* Units within the same formation don't collide with each other when the formation is established. It is assumed that the pathfinding algorithm of AoE2 was insufficient to handle the complexity of the formation system.
+* Formations will split on occasions where the obstruction is small (such as a single tree or a building). This was probably implemented to avoid formations to get stuck at a single choke point, e.g. a breach in the wall, when there are other optional paths nearby.
+* Units within the same formation don't collide with each other when the formation is established. It is assumed that the pathfinding algorithm of AoE2 was not capable enough to handle the complexity of the formation system.
 * Units do not know how far they have to travel and are following a rough path that is recalculated if they encounter an obstruction. Therefore units will sometimes transition from marching to combat formations far too early.
 
 ## Algorithmic solutions
 
-Both algorithms have a run time of `O(n)`. Therefore, implementing them shouldn't affect performance that much, even for large formations over 40 units. `player_selection` is a set of units that the player selected and that is passed to the algorithm.
+The proposed algorithm has a run time of `O(n)`. Therefore, implementing it shouldn't affect performance that much, even for large formations over 40 units. `player_selection` is a set of units that the player selected and that is passed to the algorithm.
 
 ### Sort units into subformations (Pseudocode)
 
