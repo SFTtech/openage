@@ -182,7 +182,7 @@ Units form the outline of a square. The weaker units are in the center while str
 .1.2.3.3.3.2.1.
 .1.2.2.2.2.2.1.
 .1.1.1.1.1.1.1.
-.........
+...............
 ```
 
 In comparison to the other formation types, the ordering of units with the boxed formation type in the subformations seems to be random and does not follow any specific rule. It is assumed that the units are grouped anew every time a movement order is placed.
@@ -233,20 +233,18 @@ subformation[5] = new subformation();
 ```
 Algorithm:
 
-for unit u in player_selection do
-{
-    switch(u.GROUP_ID)
-    {
+for unit u in player_selection do {
+    switch(u.GROUP_ID) {
         case 912:
-        case 947: subformation[1].add(u)
+        case 947: subformation[1].add(u);
         break();
-        case 906: subformation[2].add(u)
+        case 906: subformation[2].add(u);
         break();
         case 900:
         case 923:
         case 936:
         case 944:
-        case 955: subformation[3].add(u)
+        case 955: subformation[3].add(u);
         break();
         case 902:
         case 913:
@@ -256,26 +254,25 @@ for unit u in player_selection do
         case 935:
         case 943:
         case 951:
-        case 959: subformation[4].add(u)
+        case 959: subformation[4].add(u);
         break();
         case 922:
-        switch(u.LINE_ID)
-        {
-          case -294: subformation[1].add(u)
-          break();
-          case -293: subformation[2].add(u)
-          break();
-          case -283:
-          case -284:
-          case -292: subformation[3].add(u)
-          break();
-          case -285:
-          case 706: subformation[4].add(u)
-          break();
-          default: subformation[5].add(u)
-          break();
+        switch(u.LINE_ID) {
+            case -294: subformation[1].add(u);
+            break();
+            case -293: subformation[2].add(u);
+            break();
+            case -283:
+            case -284:
+            case -292: subformation[3].add(u);
+            break();
+            case -285:
+            case 706: subformation[4].add(u);
+            break();
+            default: subformation[5].add(u);
+            break();
         }
-        default: subformation[5].add(u)
+        default: subformation[5].add(u);
         break();
     }
 }
@@ -286,4 +283,36 @@ subformation[3].order_units(formation_type)
 subformation[4].order_units(formation_type)
 subformation[5].order_units(formation_type)
 
+```
+### Add units into a subformation (Pseudocode)
+
+```
+INPUT:
+- A unit: unit
+```
+```
+Initilization:
+
+# Create a list of stacks. Each stack will
+# contain units of the same GroupID
+List unit_stacks = new List<Stack>();
+
+# Create a list of GroupIDs that contains
+# the IDs of units that are already in the
+# subformation
+List ids = new List();
+```
+```
+Algorithm:
+
+if ids.contains(unit.GROUP_ID) then {
+    index = ids.indexOf(units.GROUP_ID);
+    unit_stacks.get(index).push(unit);
+}
+else {
+    Stack unit_stack = new Stack();
+    unit_stack.push(unit);
+    ids.add(unit.GROUP_ID);
+    unit_stacks.add(unit_stack);
+}
 ```
