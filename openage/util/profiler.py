@@ -18,7 +18,7 @@ class Profiler:
                 #Call methods that need to be profiled.
             p.report()
     The 'with' statement can be replaced with calls to
-    p.begin_profiling() and p.end_profiling().
+    p.enable() and p.disable().
     """
 
     profile = None
