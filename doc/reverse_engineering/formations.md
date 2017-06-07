@@ -208,7 +208,7 @@ The marching formation cannot be select by the player but is used by the game wh
 
 ## Algorithmic solutions
 
-The proposed algorithm has a run time of `O(n)`. Therefore, implementing it shouldn't affect performance that much, even for large formations over 40 units. `player_selection` is a set of units that the player selected and that is passed to the algorithm.
+The proposed algorithms have a run time of `O(n)`, where `n` is the number of units. Therefore, implementing them shouldn't affect performance that much, even for large formations over 40 units. `player_selection` is a set of units that the player selected and that is passed to the algorithm.
 
 ### Sort units into subformations (Pseudocode)
 
@@ -237,15 +237,15 @@ for unit u in player_selection do {
     switch(u.GROUP_ID) {
         case 912:
         case 947: subformation[1].add(u);
-        break();
+            break();
         case 906: subformation[2].add(u);
-        break();
+            break();
         case 900:
         case 923:
         case 936:
         case 944:
         case 955: subformation[3].add(u);
-        break();
+            break();
         case 902:
         case 913:
         case 918:
@@ -255,25 +255,25 @@ for unit u in player_selection do {
         case 943:
         case 951:
         case 959: subformation[4].add(u);
-        break();
+            break();
         case 922:
         switch(u.LINE_ID) {
             case -294: subformation[1].add(u);
-            break();
+                break();
             case -293: subformation[2].add(u);
-            break();
+                break();
             case -283:
             case -284:
             case -292: subformation[3].add(u);
-            break();
+                break();
             case -285:
             case 706: subformation[4].add(u);
-            break();
+                break();
             default: subformation[5].add(u);
-            break();
+                break();
         }
         default: subformation[5].add(u);
-        break();
+            break();
     }
 }
 
@@ -301,6 +301,8 @@ List unit_stacks = new List<Stack>();
 # the IDs of units that are already in the
 # subformation
 List ids = new List();
+
+unit_count = 0;
 ```
 ```
 Algorithm:
@@ -308,11 +310,46 @@ Algorithm:
 if ids.contains(unit.GROUP_ID) then {
     index = ids.indexOf(units.GROUP_ID);
     unit_stacks.get(index).push(unit);
+    ++unit_count;
 }
 else {
     Stack unit_stack = new Stack();
     unit_stack.push(unit);
     ids.add(unit.GROUP_ID);
     unit_stacks.add(unit_stack);
+    ++unit_count;
 }
+```
+### Order units inside subformation (Pseudocode)
+
+```
+INPUT:
+- List of Stacks: unit_stacks
+- Formation type: formation_type
+```
+```
+Initilization:
+
+# Contains the units in correct order beginning from
+# the top left (see section about Mixing Units).
+List unit_line = new List();
+```
+```
+Algorithm:
+
+# Creates a single ordered line
+while !unit_stacks.isEmpty() do {
+    for Stack s in unit_stacks do {
+        unit_line.add(s.top());
+        if s.isEmpty() then {
+            unit_stacks.remove(s);
+        }
+    }
+}
+
+# Now calculate the position of each unit
+# depending on formation_type and their position
+# inside the unit_line list. This can represented
+# by a relative offset from the front of the formation,
+# which then has to be calculated to a global coordinate.
 ```
