@@ -53,5 +53,68 @@ The queue container represents a random access queue while keeping the ordering 
 It is usually used for pushing in the back and popping at the front (FIFO-Stlye) but offers random access insertion and deletion as well.
 This container is useful for example for action queues and buildung queues.
 
-TUBE FILES
-============
+TUBE SERIALIZATION
+==================
+
+Serialization condenses data into change sets:
+
+Repeat the following blob:
++-----------------------------------------------------------+
+| ID (24Bit)                                                |
+| flags (delete, del_after, time, time2, data, add) (8Bit)  | # In the first quadruple it is stored which data fields are set.
+| if (flag & time) time1                                    | # In the second quadruple the usage of the data is stored
+| if (flag & time2) time2                                   | # | time | time2 | data | UNUSED | delete | add | del_after | UNUSED |
+| if (flag & data) keyframe: size(16) | data                |
++-----------------------------------------------------------+
+
+Meaning of Flags
+----------------
+
+== DELETE ==
+
+After DELETE it is allowed to reuse the ID
+When no Time is defined, then the deletion is "now", if TIME1 is defined, then the element will be deleted at this time.
+
+== ADD ==
+
+Create a new element with the given ID. Add has to have at least TIME1 and DATA set.
+
+== DEL_AFTER ==
+
+Delete all keyframes after TIME.
+
+== TIME1 ==
+
+Set the Keyframe time or the creation time of an element
+
+== TIME2 ==
+
+Set the Destruction time of a container element
+
+== DATA ==
+
+The Keyframe data prefixed by data length
+
+
+
+Serialization of keyframes for different data types
+----------------------------------------------------
+
+Simple types: Binary Serialization of the data types, interpolation mode does not matter
+
+Containers
+For Containers DELETE_AFTER is not supported.
+
+== Map ==
+
+Store TIME2 as death time - if the element has a death time yet.
+The ID of the object is submitted at creation as its own curve.
+
+== Set ==
+
+This container is simple to store only times (birth (TIME1)  and death (TIME2) of each unit) and only update the keyframe data when neccesary
+
+== Queue ==
+
+Elements here have only one single time, so TIME2 is not used.
+They can be created with ADD and removed with DELETE.

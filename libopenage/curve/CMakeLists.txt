@@ -5,7 +5,13 @@ add_sources(libopenage
 	queue.cpp
 	continuous.cpp
 	discrete.cpp
-	curve.cpp
+	events.cpp
+	iterator.cpp
+	map.cpp
+	map_filter_iterator.cpp
+	queue.cpp
+	queue.cpp
+	queue_filter_iterator.cpp
 )
 
 add_subdirectory(test)

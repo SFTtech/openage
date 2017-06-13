@@ -31,9 +31,9 @@ public:
 	 * Construct the iterator from its boundary conditions: time and container
 	 */
 	QueueFilterIterator(const iterator_t &base,
-	                        const iterator_t &container_end,
-	                        const curve_time_t &from,
-	                        const curve_time_t &to) :
+	                    const iterator_t &container_end,
+	                    const curve_time_t &from,
+	                    const curve_time_t &to) :
 		CurveIterator<val_t, container_t>{base, container_end, from, to} {}
 
 	virtual bool valid() const override {
