@@ -7,6 +7,7 @@ Openage currently depends on the original game assets, so you need a copy of the
 * You can trick Steam for Linux/Mac into downloading the Windows game assets [with a game manifest file](https://gist.github.com/paulirish/758f262379092ff2910a).
   1. Save the below code to **`appmanifest_221380.acf`**
   2. Place the file in your steamapps folder, typically found in `~/.steam/steam/SteamApps` or `~/Library/Application Support/Steam/steamapps`
+  3. Restart Steam after placing the file
 
 ```json
     "AppState"
@@ -17,7 +18,6 @@ Openage currently depends on the original game assets, so you need a copy of the
       "StateFlags" "1026"
     }
 ```
-  3. Restart Steam
 * Alternatively, you may download the game assets using [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD).
   1. Install SteamCMD by following the instructions on [Valve's developer wiki](https://developer.valvesoftware.com/wiki/SteamCMD).
   2. Download the assets with the following command (replacing `USERNAME` and `ASSET_DIR` as appropriate):
