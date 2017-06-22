@@ -177,13 +177,19 @@ public:
 	 * Control units action when in range of the target
 	 */
 	virtual void update_in_range(unsigned int, Unit *) = 0;
+	virtual void on_completion_in_range(Unit *) = 0;
 	virtual bool completed_in_range(Unit *) const = 0;
 
 	coord::phys_t distance_to_target();
 	Unit *update_distance();
 
-	// change the target
+
 	UnitReference get_target() const;
+	int get_target_type_id() const;
+
+	/**
+	 * changes target, ending action when new target is invalid
+	 */
 	void set_target(UnitReference new_target);
 
 private:
@@ -341,6 +347,7 @@ public:
 	virtual ~GarrisonAction() {}
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void on_completion_in_range(Unit *) override {}
 	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "garrison"; }
 
@@ -399,6 +406,7 @@ public:
 	virtual ~BuildAction() {}
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void on_completion_in_range(Unit *) override {}
 	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	void on_completion() override;
 	std::string name() const override { return "build"; }
@@ -418,6 +426,7 @@ public:
 	virtual ~RepairAction() {}
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void on_completion_in_range(Unit *) override {}
 	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "repair"; }
 
@@ -443,6 +452,7 @@ public:
 	virtual ~GatherAction();
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void on_completion_in_range(Unit *) override;
 	bool completed_in_range(Unit *) const override { return this->complete; }
 	std::string name() const override { return "gather"; }
 
@@ -462,6 +472,7 @@ public:
 	virtual ~AttackAction();
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void on_completion_in_range(Unit *) override {}
 	bool completed_in_range(Unit *) const override;
 	std::string name() const override { return "attack"; }
 
@@ -488,6 +499,7 @@ public:
 	virtual ~HealAction();
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void on_completion_in_range(Unit *) override {}
 	bool completed_in_range(Unit *) const override;
 	std::string name() const override { return "heal"; }
 
@@ -509,6 +521,7 @@ public:
 	virtual ~ConvertAction() {}
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
+	void on_completion_in_range(Unit *) override {}
 	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	std::string name() const override { return "convert"; }
 

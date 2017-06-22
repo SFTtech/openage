@@ -227,32 +227,16 @@ void TargetAction::update(unsigned int time) {
 }
 
 void TargetAction::on_completion() {
-	if (!this->entity->location) {
+	// do not retask if action is forced to end
+	if (this->end_action ||
+		!this->entity->location) {
 		return;
 	}
 
-	// TODO: retask units on nearby objects
+	// retask units on nearby objects
 	// such as gathers targeting a new resource
 	// when the current target expires
-
-	// find a different target with same type
-	TerrainObject *new_target = nullptr;
-	if (this->name() == "gather") {
-		new_target = find_near(*this->entity->location,
-			[this](const TerrainObject &obj) {
-				return obj.unit.unit_type->id() == this->target_type_id &&
-				       !obj.unit.has_attribute(attr_type::worker) &&
-				       obj.unit.has_attribute(attr_type::resource) &&
-				       obj.unit.get_attribute<attr_type::resource>().amount > 0.0;
-			});
-	}
-
-	if (new_target) {
-		this->entity->log(MSG(dbg) << "auto retasking");
-		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		Command cmd(pl_attr.player, &new_target->unit);
-		this->entity->queue_cmd(cmd);
-	}
+	this->on_completion_in_range(this->target.get());
 }
 
 bool TargetAction::completed() const {
@@ -290,11 +274,19 @@ UnitReference TargetAction::get_target() const {
 	return this->target;
 }
 
-void TargetAction::set_target(UnitReference new_target) {
-	this->target = new_target;
-	this->update_distance();
+int TargetAction::get_target_type_id() const {
+	return this->target_type_id;
 }
 
+void TargetAction::set_target(UnitReference new_target) {
+	if (new_target.is_valid()) {
+		this->target = new_target;
+		this->update_distance();
+	}
+	else {
+		this->end_action = true;
+	}
+}
 
 DecayAction::DecayAction(Unit *e)
 	:
@@ -1042,6 +1034,26 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 
 	// inc frame
 	this->frame += time * this->frame_rate / 3.0f;
+}
+
+void GatherAction::on_completion_in_range(Unit *) {
+
+	// find a different target with same type
+	TerrainObject *new_target = nullptr;
+	new_target = find_near(*this->entity->location,
+		[this](const TerrainObject &obj) {
+			return obj.unit.unit_type->id() == this->get_target_type_id() &&
+				   !obj.unit.has_attribute(attr_type::worker) &&
+				   obj.unit.has_attribute(attr_type::resource) &&
+				   obj.unit.get_attribute<attr_type::resource>().amount > 0.0;
+		});
+
+	if (new_target) {
+		this->entity->log(MSG(dbg) << "auto retasking");
+		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
+		Command cmd(pl_attr.player, &new_target->unit);
+		this->entity->queue_cmd(cmd);
+	}
 }
 
 UnitReference GatherAction::nearest_dropsite(game_resource res_type) {
