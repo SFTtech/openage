@@ -81,6 +81,7 @@ bool Unit::update(time_nsec_t lastframe_duration) {
 		return true;
 	}
 
+	// unit is dead (not player controlled)
 	if (this->pop_destructables) {
 		this->erase_after(
 			[](std::unique_ptr<UnitAction> &e) {
@@ -132,7 +133,6 @@ void Unit::update_secondary(int64_t time_elapsed) {
 	this->action_secondary.erase(position_it, std::end(this->action_secondary));
 }
 
-
 void Unit::apply_all_cmds() {
 	std::lock_guard<std::mutex> lock(this->command_queue_lock);
 	while (!this->command_queue.empty()) {
@@ -142,17 +142,14 @@ void Unit::apply_all_cmds() {
 	}
 }
 
-
 void Unit::apply_cmd(std::shared_ptr<UnitAbility> ability, const Command &cmd) {
-	bool is_direct = cmd.has_flag(command_flag::direct);
+	// if the interrupt flag is set, discard ongoing actions
+	bool is_direct = cmd.has_flag(command_flag::interrupt);
 	if (is_direct) {
-
-		// drop other actions if a new action is found
 		this->stop_actions();
 	}
 	ability->invoke(*this, cmd, is_direct);
 }
-
 
 void Unit::draw() {
 

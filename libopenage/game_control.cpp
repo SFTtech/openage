@@ -114,7 +114,7 @@ void ActionMode::on_game_control_set() {
 		auto type = player->get_type(this->rng.probability(0.5)? 83 : 293);
 
 		Command cmd(*player, type);
-		cmd.add_flag(command_flag::direct);
+		cmd.add_flag(command_flag::interrupt);
 		this->selection->all_invoke(cmd);
 	});
 
@@ -307,7 +307,7 @@ void ActionMode::on_game_control_set() {
 		auto mousepos_phys3 = mousepos_camgame.to_phys3();
 
 		auto cmd = this->get_action(mousepos_phys3);
-		cmd.add_flag(command_flag::direct);
+		cmd.add_flag(command_flag::interrupt);
 		this->selection->all_invoke(cmd);
 		this->use_set_ability = false;
 	});
@@ -406,7 +406,7 @@ bool ActionMode::place_selection(coord::phys3 point) {
 		if (new_building.is_valid()) {
 			Command cmd(*this->game_control->get_current_player(), new_building.get());
 			cmd.set_ability(ability_type::build);
-			cmd.add_flag(command_flag::direct);
+			cmd.add_flag(command_flag::interrupt);
 			this->selection->all_invoke(cmd);
 			return true;
 		}
