@@ -1041,7 +1041,7 @@ void GatherAction::on_completion_in_range(int target_type) {
 	// find a different target with same type
 	TerrainObject *new_target = nullptr;
 	new_target = find_near(*this->entity->location,
-		[this, target_type](const TerrainObject &obj) {
+		[target_type](const TerrainObject &obj) {
 			return obj.unit.unit_type->id() == target_type &&
 				   !obj.unit.has_attribute(attr_type::worker) &&
 				   obj.unit.has_attribute(attr_type::resource) &&
