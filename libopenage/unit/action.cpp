@@ -236,7 +236,7 @@ void TargetAction::on_completion() {
 	// retask units on nearby objects
 	// such as gathers targeting a new resource
 	// when the current target expires
-	this->on_completion_in_range(this->target.get());
+	this->on_completion_in_range(this->target_type_id);
 }
 
 bool TargetAction::completed() const {
@@ -1036,13 +1036,13 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 	this->frame += time * this->frame_rate / 3.0f;
 }
 
-void GatherAction::on_completion_in_range(Unit *) {
+void GatherAction::on_completion_in_range(int target_type) {
 
 	// find a different target with same type
 	TerrainObject *new_target = nullptr;
 	new_target = find_near(*this->entity->location,
-		[this](const TerrainObject &obj) {
-			return obj.unit.unit_type->id() == this->get_target_type_id() &&
+		[this, target_type](const TerrainObject &obj) {
+			return obj.unit.unit_type->id() == target_type &&
 				   !obj.unit.has_attribute(attr_type::worker) &&
 				   obj.unit.has_attribute(attr_type::resource) &&
 				   obj.unit.get_attribute<attr_type::resource>().amount > 0.0;
