@@ -22,29 +22,30 @@ namespace curve {
 template <class val_t,
           class container_t>
 class QueueFilterIterator :
-		public CurveIterator<val_t, container_t>
+		public CurveIterator<val_t, container_t, typename container_t::const_iterator>
 {
 public:
-	typedef typename container_t::iterator iterator_t;
+	typedef typename container_t::const_iterator const_iterator;
 
 	/**
 	 * Construct the iterator from its boundary conditions: time and container
 	 */
-	QueueFilterIterator(const iterator_t &base,
-	                    const iterator_t &container_end,
+	QueueFilterIterator(const const_iterator &base,
+	                    const container_t *base_container,
 	                    const curve_time_t &from,
 	                    const curve_time_t &to) :
-		CurveIterator<val_t, container_t>{base, container_end, from, to} {}
+		CurveIterator<val_t, container_t>(base, base_container, from, to) {}
 
 	virtual bool valid() const override {
-		if (this->base != this->container_end) {
-			return this->base->time() >= this->from && this->base->time() < this->to;
+		if (this->container->end().base() != this->base()) {
+			return this->base()->time() >= this->from && this->base()->time() < this->to;
 		}
 		return false;
 	}
 
-	val_t &value() const override {
-		return this->base->value;
+	const val_t &value() const override {
+		const auto &a = (*this->base());
+		return a.value;
 	}
 };
 

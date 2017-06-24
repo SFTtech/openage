@@ -26,7 +26,7 @@ _T Continuous<_T>::get(const curve_time_t &time) const {
 	double offset = time - e->time;
 	// If we do not have a next (buffer underrun!!) we assign values
 	if (nxt == this->container.end()) {
-		log::log(WARN << "Continuous buffer underrun. This might be bad! Assuming constant.");
+//		log::log(WARN << "Continuous buffer underrun. This might be bad! Assuming constant.");
 	} else {
 		diff_time = nxt->time - e->time;
 	}

@@ -73,7 +73,7 @@ void curve_types() {
 	}
 
 	{
-		Continuous<int> c;
+		Continuous<float> c;
 		c.set_insert(0, 0);
 		c.set_insert(20, 20);
 
@@ -81,11 +81,12 @@ void curve_types() {
 		TESTEQUALS(c.get(1), 1);
 		TESTEQUALS(c.get(7), 7);
 
-		c.set_drop(10, 10);
+		c.set_drop(20, 10);
 		TESTEQUALS(c.get(0), 0);
-		TESTEQUALS(c.get(1), 1);
-		TESTEQUALS(c.get(7), 7);
+		TESTEQUALS(c.get(2), 1);
+		TESTEQUALS(c.get(8), 4);
 	}
+
 	//Check the discrete type
 	{
 		Discrete<int> c;
@@ -94,7 +95,7 @@ void curve_types() {
 
 		TESTEQUALS(c.get(0), 0);
 		TESTEQUALS(c.get(1), 0);
-		TESTEQUALS(c.get(11), 10);
+		TESTEQUALS(c.get(10), 10);
 
 		Discrete<std::string> complex;
 
@@ -103,7 +104,7 @@ void curve_types() {
 
 		TESTEQUALS(complex.get(0), "Test 0");
 		TESTEQUALS(complex.get(1), "Test 0");
-		TESTEQUALS(complex.get(11), "Test 10");
+		TESTEQUALS(complex.get(10), "Test 10");
 
 	}
 
@@ -117,7 +118,16 @@ void curve_types() {
 		TESTEQUALS(c.get(3), 3);
 
 		c.set_drop(2, 10);
-		TESTEQUALS(c.get(3), 10);
+		TESTEQUALS(c.get(2), 10);
+	}
+
+	// Encountered Errors
+	{
+		Continuous<int> c;
+		c.set_insert(1, 1);
+		c.set_drop(1, -5);
+
+		TESTEQUALS(c.get(1), -5);
 	}
 }
 

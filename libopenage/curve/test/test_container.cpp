@@ -39,6 +39,11 @@ void dump(const std::map<key_t, val_t> &map) {
 }
 
 void test_map() {
+	static_assert(std::is_copy_constructible<MapFilterIterator<int, int, UnorderedMap<int, int>>>::value,
+	              "UnorderedMapIterator not Copy Constructable able");
+	static_assert(std::is_copy_assignable<MapFilterIterator<int, int, UnorderedMap<int, int>>>::value,
+	              "UnorderedMapIterator not Copy Assignable");
+
 	UnorderedMap<int, int> map;
 	map.insert(0, 10, 0, 0);
 	map.insert(5, 10, 5, 1);
@@ -132,6 +137,13 @@ void test_list() {
 }
 
 void test_queue() {
+	static_assert(std::is_copy_constructible<QueueFilterIterator<int, Queue<int>>>::value,
+	              "QueueIterator not Copy Constructable able");
+	static_assert(std::is_copy_assignable<QueueFilterIterator<int, Queue<int>>>::value,
+	              "QueueIterator not Copy Assignable");
+
+
+
 	Queue<int> q;
 	q.insert(0, 1);
 	q.insert(2, 2);

@@ -189,7 +189,7 @@ typename KeyframeContainer<_T>::KeyframeIterator KeyframeContainer<_T>::last(con
 
 	if (this->container.front().time > time) {
 		// This will never happen due to the container.front->time == -Inf magic!
-		throw new Error(ERR << "rupture in spacetime detected, curve container is broken");
+		throw Error(ERR << "rupture in spacetime detected, curve container is broken");
 	}
 
 	// Search in the queue

@@ -26,38 +26,40 @@ class MapFilterIterator :
 		public CurveIterator<val_t, container_t>
 {
 public:
-	typedef typename container_t::iterator iterator_t;
+	typedef typename container_t::const_iterator iterator_t;
 
 	/**
 	 * Construct the iterator from its boundary conditions: time and container
 	 */
 	MapFilterIterator(const iterator_t &base,
-	                      const iterator_t &container_end,
-	                      const curve_time_t &from,
-	                      const curve_time_t &to) :
-		CurveIterator<val_t, container_t>(base, container_end, from, to) {}
+	                  const container_t *container,
+	                  const curve_time_t &from,
+	                  const curve_time_t &to) :
+		CurveIterator<val_t, container_t>(base, container, from, to) {}
+
+	MapFilterIterator(const MapFilterIterator &) = default;
+
+	using CurveIterator<val_t, container_t>::operator=;
 
 	virtual bool valid() const override {
-		return this->base->second.alive >= this->from &&
-		this->base->second.dead < this->to;
+		return this->base()->second.alive >= this->from
+		&& this->base()->second.dead < this->to;
 	}
 
 	/**
 	 * Get the value behind the iterator.
 	 * Nicer way of accessing it beside operator *.
 	 */
-	val_t &value() const override {
-		return this->base->second.value;
+	val_t const &value() const override {
+		return this->base()->second.value;
 	}
 
 	/**
 	 * Get the key pointed to by this iterator.
 	 */
-	const key_t &key() {
-		return this->base->first;
+	const key_t &key() const {
+		return this->base()->first;
 	}
-
-protected:
 
 };
 

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "keyframe_container.h"
+#include <cmath>
 
 namespace openage {
 namespace curve {
@@ -13,7 +14,7 @@ public:
 	ValueContainer() :
 		last_element{container.begin()} {}
 
-	virtual _T get(const curve_time_t &t) const=0;
+	virtual _T get(const curve_time_t &t) const = 0;
 
 	virtual _T operator ()(const curve_time_t &now) {
 		return get(now);
@@ -33,11 +34,21 @@ protected:
 	mutable typename KeyframeContainer<_T>::KeyframeIterator last_element;
 };
 
+
+
 template <typename _T>
 void ValueContainer<_T>::set_drop(const curve_time_t &at, const _T &value) {
-	auto hint = this->container.erase_after(this->container.last(at, this->last_element));
+	auto hint = this->container.last(at, this->last_element);
+
+	// We want to remove a possible equal timed element from the container
+	if (std::fabs(hint->time - at) < std::numeric_limits<curve_time_t>::min()) {
+		hint--;
+	}
+
+	hint = this->container.erase_after(hint);
+
 	container.insert(at, value, hint);
-	last_element = hint;
+	this->last_element = hint;
 }
 
 template <typename _T>

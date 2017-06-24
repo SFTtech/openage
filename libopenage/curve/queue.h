@@ -21,32 +21,37 @@ class Queue {
 			_time{time},
 			value{value} {}
 
-		curve_time_t time() {
+		curve_time_t time() const {
 			return _time;
 		}
 	};
 public:
 	typedef typename std::deque<queue_wrapper> container_t;
-	typedef typename container_t::iterator iterator;
+	typedef typename container_t::const_iterator const_iterator;
+	typedef typename container_t::const_iterator iterator;
+
 	// Reading Access
 	const _T &front(const curve_time_t &) const;
 
 	// Modifying access
 	QueueFilterIterator<_T, Queue<_T>> begin(
-		const curve_time_t &t = -std::numeric_limits<curve_time_t>::infinity());
+		const curve_time_t &t = -std::numeric_limits<curve_time_t>::infinity()) const;
 
 	QueueFilterIterator<_T, Queue<_T>> end(
-		const curve_time_t &t = std::numeric_limits<curve_time_t>::infinity());
+		const curve_time_t &t = std::numeric_limits<curve_time_t>::infinity()) const;
 
 	QueueFilterIterator<_T, Queue<_T>> between(
 		const curve_time_t &begin = std::numeric_limits<curve_time_t>::infinity(),
-		const curve_time_t &end = std::numeric_limits<curve_time_t>::infinity());
+		const curve_time_t &end = std::numeric_limits<curve_time_t>::infinity()) const;
 
-	QueueFilterIterator<_T, Queue<_T>> erase(
-			const CurveIterator<_T, Queue<_T>> &);
+	//QueueFilterIterator<_T, Queue<_T>>
+	void erase(const CurveIterator<_T, Queue<_T>> &);
 
-	QueueFilterIterator<_T, Queue<_T>> insert(
-			const curve_time_t &, const _T &e);
+	QueueFilterIterator<_T, Queue<_T>> insert(const curve_time_t &, const _T &e);
+
+	void clear();
+
+	void clean(const curve_time_t &);
 
 	void __attribute__((noinline)) dump() {
 		for (auto i : container) {
@@ -66,13 +71,13 @@ const _T &Queue<_T>::front(const curve_time_t &) const {
 
 
 template <typename _T>
-QueueFilterIterator<_T, Queue<_T>> Queue<_T>::begin(const curve_time_t &t)
+QueueFilterIterator<_T, Queue<_T>> Queue<_T>::begin(const curve_time_t &t) const
 {
 	for (auto it = this->container.begin(); it != this->container.end(); ++it) {
 		if (it->time() >= t) {
 			return QueueFilterIterator<_T, Queue<_T>>(
 				it,
-				container.end(),
+				this,
 				t,
 				std::numeric_limits<curve_time_t>::infinity());
 		}
@@ -83,10 +88,11 @@ QueueFilterIterator<_T, Queue<_T>> Queue<_T>::begin(const curve_time_t &t)
 
 
 template <typename _T>
-QueueFilterIterator<_T, Queue<_T>> Queue<_T>::end(const curve_time_t &t)
+QueueFilterIterator<_T, Queue<_T>> Queue<_T>::end(const curve_time_t &t) const
 {
-	return QueueFilterIterator<_T, Queue<_T>>(container.end(),
+	return QueueFilterIterator<_T, Queue<_T>>(
 		container.end(),
+		this,
 		t,
 		std::numeric_limits<curve_time_t>::infinity());
 }
@@ -95,14 +101,14 @@ QueueFilterIterator<_T, Queue<_T>> Queue<_T>::end(const curve_time_t &t)
 template <typename _T>
 QueueFilterIterator<_T, Queue<_T>> Queue<_T>::between(
 	const curve_time_t &begin,
-	const curve_time_t &end)
+	const curve_time_t &end) const
 {
 	auto it = QueueFilterIterator<_T, Queue<_T>>(
 		container.begin(),
-		container.end(),
+		this,
 		begin,
 		end);
-	if (!it.valid()) {
+	if (!container.empty() && !it.valid()) {
 		++it;
 	}
 	return it;
@@ -110,19 +116,19 @@ QueueFilterIterator<_T, Queue<_T>> Queue<_T>::between(
 
 
 template <typename _T>
-QueueFilterIterator<_T, Queue<_T>> Queue<_T>::erase(const CurveIterator<_T, Queue<_T>> &t)
+/*QueueFilterIterator<_T, Queue<_T>>*/ void Queue<_T>::erase(const CurveIterator<_T, Queue<_T>> &t)
 {
-	auto it = container.erase(t.base);
-	auto ct = QueueFilterIterator<_T, Queue<_T>>(
+	auto it = container.erase(t.base());
+	/*auto ct = QueueFilterIterator<_T, Queue<_T>>(
 		it,
-		container.end(),
-		t.from,
-		t.to);
-
-	if (!ct.valid(t.from)) {
+		this,
+		t._from(),
+		t._to());
+	if (ct.base() != container.end() && !ct.valid()) {
 		++ct;
-	}
-	return ct;
+		}*/
+
+	return;
 }
 
 
@@ -130,7 +136,8 @@ template <typename _T>
 QueueFilterIterator<_T, Queue<_T>> Queue<_T>::insert(
 		const curve_time_t &time,
         const _T &e) {
-	iterator insertion_point = this->container.end();
+
+	const_iterator insertion_point = this->container.end();
 	for (auto it = this->container.begin(); it != this->container.end(); ++it) {
 		if (time < it->time()) {
 			insertion_point = this->container
@@ -145,7 +152,7 @@ QueueFilterIterator<_T, Queue<_T>> Queue<_T>::insert(
 
 	auto ct = QueueFilterIterator<_T, Queue<_T>>(
 		insertion_point,
-		container.end(),
+		this,
 		time, std::numeric_limits<curve_time_t>::infinity());
 
 	if (!ct.valid()) {
@@ -153,5 +160,22 @@ QueueFilterIterator<_T, Queue<_T>> Queue<_T>::insert(
 	}
 	return ct;
 }
+
+
+template <typename _T>
+void Queue<_T>::clear() {
+	this->container.clear();
+}
+
+
+template <typename _T>
+void Queue<_T>::clean(const curve_time_t &time) {
+	for (auto it = this->container.begin();
+	     it != this->container.end()
+	               && it->time() < time;
+	     it = this->container.erase(it))
+	{}
+}
+
 
 }} // openage::curve

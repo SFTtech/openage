@@ -5,7 +5,7 @@
 namespace openage {
 namespace curve {
 
-typedef float curve_time_t;
+typedef double curve_time_t;
 /*
 template <class _T>
 curve_time_t time(const _T &t) {

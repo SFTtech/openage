@@ -25,22 +25,21 @@ class UnorderedMap {
 
 public:
 	// Using does not work with templates
-	typedef typename std::unordered_map<key_t, map_element>::iterator iterator;
+	typedef typename std::unordered_map<key_t, map_element>::const_iterator const_iterator;
 
-// TODO return an std::optional here.
+	// TODO return an std::optional here
 	std::pair<bool, MapFilterIterator<key_t, val_t, UnorderedMap>>
-	operator()(const curve_time_t&, const key_t &);
+	operator()(const curve_time_t&, const key_t &) const;
 
-// TODO return an std::optional here.
+	// TODO return an std::optional here.
 	std::pair<bool, MapFilterIterator<key_t, val_t, UnorderedMap>>
-	at(const curve_time_t &, const key_t &);
+	at(const curve_time_t &, const key_t &) const;
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
-	begin(const curve_time_t &e = std::numeric_limits<curve_time_t>::infinity());
+	begin(const curve_time_t &e = std::numeric_limits<curve_time_t>::infinity()) const;
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
-	end(const curve_time_t &e = std::numeric_limits<curve_time_t>::infinity());
-
+	end(const curve_time_t &e = std::numeric_limits<curve_time_t>::infinity()) const;
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
 	insert(const curve_time_t &birth, const key_t &, const val_t &);
@@ -49,7 +48,7 @@ public:
 	insert(const curve_time_t &birth, const curve_time_t &death, const key_t &key, const val_t &value);
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
-	between(const curve_time_t &start, const curve_time_t &to);
+	between(const curve_time_t &start, const curve_time_t &to) const;
 
 	void birth(const curve_time_t &, const key_t &);
 	void birth(const curve_time_t &,
@@ -72,21 +71,21 @@ public:
 template<typename key_t, typename val_t>
 std::pair<bool, MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>>
 UnorderedMap<key_t, val_t>::operator()(const curve_time_t &time,
-                                       const key_t &key) {
+                                       const key_t &key) const {
 	return this->at(time, key);
 }
 
 template<typename key_t, typename val_t>
 std::pair<bool, MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>>
 UnorderedMap<key_t, val_t>::at(const curve_time_t & time,
-                               const key_t & key) {
+                               const key_t & key) const {
 	auto e = this->container.find(key);
 	if (e != this->container.end() && e->second.alive <= time && e->second.dead >time) {
 		return std::make_pair(
 			true,
 			MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 				e,
-				this->container.end(),
+				this,
 				time,
 				std::numeric_limits<curve_time_t>::infinity()));
 	} else {
@@ -98,30 +97,30 @@ UnorderedMap<key_t, val_t>::at(const curve_time_t & time,
 
 template<typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
-UnorderedMap<key_t, val_t>::begin(const curve_time_t &time) {
+UnorderedMap<key_t, val_t>::begin(const curve_time_t &time) const {
 	return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 		this->container.begin(),
-		this->container.end(),
+		this,
 		time,
 		std::numeric_limits<curve_time_t>::infinity());
 }
 
 template<typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
-UnorderedMap<key_t, val_t>::end(const curve_time_t &time) {
+UnorderedMap<key_t, val_t>::end(const curve_time_t &time) const {
 	return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 		this->container.end(),
-		this->container.end(),
+		this,
 		-std::numeric_limits<curve_time_t>::infinity(),
 		time);
 }
 
 template<typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
-UnorderedMap<key_t, val_t>::between(const curve_time_t &from, const curve_time_t &to) {
+UnorderedMap<key_t, val_t>::between(const curve_time_t &from, const curve_time_t &to) const {
 	auto it = MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 		this->container.begin(),
-		this->container.end(),
+		this,
 		from,
 		to);
 
@@ -153,7 +152,7 @@ UnorderedMap<key_t, val_t>::insert(const curve_time_t &alive,
 	auto it = this->container.insert(std::make_pair(key, e));
 	return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 		it.first,
-		this->container.end(),
+		this,
 		alive,
 		dead);
 }

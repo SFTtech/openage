@@ -9,82 +9,92 @@ namespace curve {
 
 template <typename val_t,
           class container_t,
-          class iterator_t = typename container_t::iterator>
-class CurveIterator :
-	public std::iterator<std::forward_iterator_tag, val_t >
-{
+          class iterator_t = typename container_t::const_iterator>
+class CurveIterator {
 public:
-	virtual val_t &value() const = 0;
+	virtual const val_t &value() const = 0;
 	virtual bool valid() const = 0;
 
-	CurveIterator(const CurveIterator &rhs) :
-		base{rhs.base},
-		container_end{rhs.container_end},
-		from{rhs.from},
-		to{rhs.to} {}
+	explicit CurveIterator(const container_t *c):
+		_base{},
+		container{c},
+		from{-std::numeric_limits<curve_time_t>::infinity()},
+		to{+std::numeric_limits<curve_time_t>::infinity()} {}
 
-	CurveIterator &operator =(const CurveIterator &rhs) {
-		this->base = rhs.base;
-		this->container_end = rhs.container_end;
-		this->from = rhs.from;
-		this->to = rhs.to;
-		return *this;
-	}
+	CurveIterator (const CurveIterator &) = default;
+	CurveIterator<val_t, container_t, iterator_t> &operator= (
+		const CurveIterator<val_t, container_t, iterator_t> &) = default;
 
-	virtual val_t &operator *() const {
+	virtual const val_t &operator *() const {
 		return this->value();
 	}
 
-	virtual val_t *operator ->() const {
+	virtual const val_t *operator ->() const {
 		return &this->value();
 	}
 
 	/**
 	 * For equalness only the base iterator will be testet - not the timespans
-	 * this is defined in.
+	 * *this is defined in.
 	 */
 	virtual bool operator ==(const CurveIterator<val_t, container_t> &rhs) const {
-		return this->base == rhs.base;
+		return this->_base == rhs._base;
 	}
 
 	/**
 	 * For unequalness only the base iterator will be testet - not the timespans
-	 * this is defined in.
+	 * *this is defined in.
 	 */
 	virtual bool operator !=(const CurveIterator<val_t, container_t> &rhs) const {
-		return this->base != rhs.base;
+		return this->_base != rhs._base;
 	}
+
+//	virtual bool operator !=(const iterator_t &rhs) const {
+//		return this->base != rhs;
+//	}
 
 	/**
 	 * Advance to the next valid element.
 	 */
-	virtual CurveIterator &operator ++() {
+	virtual CurveIterator<val_t, container_t> &operator ++() {
 		do {
-			++this->base;
-		} while (this->base != this->container_end && !this->valid());
+			++(this->_base);
+		} while (this->container->end()._base != this->_base && !this->valid());
 		return *this;
 	}
 
+	const iterator_t &base() const {
+		return _base;
+	}
+
+	const curve_time_t &_from() const {
+		return from;
+	}
+
+	const curve_time_t &_to() const {
+		return to;
+	}
 protected:
-	CurveIterator (const iterator_t &base,
-	              const iterator_t &container_end,
+	CurveIterator(const iterator_t &base,
+	              const container_t *container,
 	              const curve_time_t &from,
 	              const curve_time_t &to)  :
-		base{base},
-		container_end{container_end},
+		_base{base},
+		container{container},
 		from{from},
 		to{to} {}
 
 protected:
 	/// The iterator this is currently referring to.
-	iterator_t base;
-	/// The iterator to the containers end.
-	iterator_t container_end;
+	iterator_t _base;
+	/// The base container.
+	const container_t *container;
 
 	/// The time, from where this iterator started to iterate.
 	curve_time_t from;
 	/// The time, to where this iterator will iterate.
 	curve_time_t to;
 };
+
 
 }} // openage::curve
