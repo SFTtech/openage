@@ -1,18 +1,18 @@
 // Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "screenshot.h"
-#include "util/strings.h"
 
+#include <ctime>
+#include <epoxy/gl.h>
 #include <math.h>
+#include <memory>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include <epoxy/gl.h>
-
+#include "util/strings.h"
 #include "coord/window.h"
 #include "log/log.h"
-#include <ctime>
 
 namespace openage {
 
@@ -76,12 +76,8 @@ void ScreenshotManager::save_screenshot() {
 	// we need to invert all pixel rows, but leave column order the same.
 	for (ssize_t row = 0; row < screen->h; row++) {
 		ssize_t irow = screen->h - 1 - row;
-		for (ssize_t col = 0; col < screen->w; col++) {
-			uint32_t pxl = pxdata[irow * screen->w + col];
-
-			// TODO: store the alpha channels in the screenshot, is buggy at the moment..
-			surface_pxls[row * screen->w + col] = pxl | 0xFF000000;
-		}
+		memcpy(surface_pxls + row * screen->w,
+		       pxdata.get() + irow * screen->w, 4 * screen->w);
 	}
 
 	// call sdl_image for saving the screenshot to png
