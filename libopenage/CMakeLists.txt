@@ -89,6 +89,11 @@ find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
 
+set(DLOPEN "")
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+	set(DLOPEN dl)
+endif()
+
 set(QT_VERSION_REQ "5.5")
 find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
 find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
@@ -161,7 +166,7 @@ include_directories(
 # link the executable to those libraries
 target_link_libraries(libopenage
 	PUBLIC
-		dl
+		${DLOPEN}
 		${FONTCONFIG_LIB}
 		${FREETYPE_LIBRARIES}
 		${EPOXY_LIBRARIES}
@@ -181,6 +186,13 @@ target_link_libraries(libopenage
 )
 
 if(NOT APPLE)
+	if (${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
+		target_link_libraries(libopenage
+			PUBLIC
+			execinfo
+			util
+		)
+	endif()
 	target_link_libraries(libopenage
 		PUBLIC
 		rt

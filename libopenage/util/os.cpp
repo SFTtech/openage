@@ -14,6 +14,11 @@
 #include <mach-o/dyld.h>
 #endif
 
+#ifdef __FreeBSD__
+#include <sys/types.h>
+#include <sys/sysctl.h>
+#endif
+
 #include "../log/log.h"
 #include "subprocess.h"
 
@@ -67,6 +72,25 @@ std::string self_exec_filename() {
 
 		return std::string{buf.get()};
 	}
+#elif __FreeBSD__
+	size_t bufsize = 1024;
+	int mib[4] = {
+		CTL_KERN,
+		KERN_PROC,
+		KERN_PROC_PATHNAME,
+		-1
+	};
+
+	while (true) {
+		std::unique_ptr<char[]> buf{new char[bufsize]};
+
+		if (sysctl(mib, 4, buf.get(), &bufsize, nullptr, 0) < 0) {
+			continue;
+		}
+
+		return std::string{buf.get()};
+	}
+
 #elif _WIN32
 	// TODO not yet implemented
 	return std::string("openage.exe"); // FIXME: wild guess though
