@@ -5,8 +5,12 @@
 #include <memory>
 
 #ifndef __APPLE__
+#ifdef _MSC_VER
+#define NOMINMAX
+#include <windows.h>
+#endif //_MSC_VER
 #include <GL/gl.h>
-#else
+#else // __APPLE__
 #include <OpenGL/gl.h>
 #endif
 
