@@ -50,7 +50,6 @@ Unit(): # WIP
 
 	hp : float
 	idleLook : animation
-	death : Unit # What is the dead form of this Unit?
 
 Resource():
 	name : text
@@ -66,7 +65,6 @@ ResourceSpot():
 
 
 Building(Unit): # WIP: make another parent Object for Building?
-	# WIP2: Some buildings consist of a static frame and an animation on top. How do we reference that?
 	name : text
 
 
@@ -74,6 +72,12 @@ Animation(): # or Sprite() ?
 	# Everything that needs to be animated inherits from this class.
 
 	image : file # one picture that contains all frames.
+
+AnimatedBuilding(Building, Animation):
+	# Used for buildings that consist of a static frame and an animation on top.
+
+	animation : orderedset(file)
+
 
 Ability(): # WIP
 	# Every unit (WIP: or even buildings, see 'CarryAbility',castles... ), that can do something, has an 'Ability'.
@@ -177,3 +181,11 @@ Open nyan implementation questions:
 5. Of what type are the ingame objects, that don't move and give ressources? goldmine, fish, dead deer? How are deer and dead deer connected?
 
 Mod questions:
+
+TODO:
+	thejjj wrote
+* store everything relevant for the dead deer in the living one already, aka rotting_animation and resource_decay and resource_type etcetc, this is the "bad" approach i'd say
+*  have a separate DeadDeer that inherits from (original deer, resource spot) and updates graphics etc. the original deer then references to that object as on_death_become : Unit = DeadDeer. this requires a forward declaration which will be allowed in the next revision of the nyan design.
+* use abilities to test if the deer can even die. that ability then performs the death animation, another ability performs the resource collection, another one the decay.
+
+I think the best approach is having an ability "being hunted" because it's different if a villager or a tribok killed it for the collectible food. That ability is implemented to change the unit type to DeadDeer once it is killed. The ability is included in the Deer abilities set, and also requires a forward declaration. It's the most overkill but also most extensible and awesome approach i'd say.
