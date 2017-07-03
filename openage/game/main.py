@@ -38,7 +38,7 @@ def main(args, error):
     from ..util.fslike.union import Union
 
     # initialize libopenage
-    cpp_interface_setup()
+    cpp_interface_setup(args)
 
     info("launching openage {}".format(config.VERSION))
     info("compiled by {}".format(config.COMPILER))

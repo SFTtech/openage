@@ -589,7 +589,7 @@ def main(args, error):
 
     # initialize libopenage
     from ..cppinterface.setup import setup
-    setup()
+    setup(args)
 
     # conversion source
     if args.source_dir is not None:

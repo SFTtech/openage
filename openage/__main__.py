@@ -50,6 +50,10 @@ def main(argv=None):
                             help="force-enable development mode")
     global_cli.add_argument("--no-devmode", action="store_true",
                             help="force-disable devlopment mode")
+    global_cli.add_argument("--trap-exceptions", action="store_true",
+                            help=("upon throwing an exception a debug break is "
+                                  "triggered. this will crash openage if no "
+                                  "debugger is present"))
 
     # shared directory arguments for most subcommands
     cfg_cli = argparse.ArgumentParser(add_help=False)
