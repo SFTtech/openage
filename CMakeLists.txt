@@ -62,6 +62,15 @@ if(NOT DEFINED WANT_GPERFTOOLS_TCMALLOC)
 	set(WANT_GPERFTOOLS_TCMALLOC false)
 endif()
 
+# static content filesystem locations
+if(NOT DEFINED GLOBAL_ASSET_DIR)
+	set(GLOBAL_ASSET_DIR "${CMAKE_INSTALL_PREFIX}/share/openage")
+endif()
+
+if(NOT DEFINED GLOBAL_CONFIG_DIR)
+	set(GLOBAL_CONFIG_DIR "/etc/openage")
+endif()
+
 # option processing is now done.
 
 
@@ -97,8 +106,6 @@ include(util)
 doxygen_configure(libopenage/ openage/ doc/ README.md)
 
 # static content
-set(INSTALLED_GLOBAL_ASSET_DIR "${CMAKE_INSTALL_PREFIX}/share/openage")
-set(INSTALLED_GLOBAL_CONFIG_DIR "/etc/openage")
 add_subdirectory(assets/)
 add_subdirectory(dist/)
 add_subdirectory(cfg/)

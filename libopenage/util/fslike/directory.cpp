@@ -11,7 +11,6 @@
 #include <unistd.h>
 
 #ifdef __APPLE__
-#include <time.h>
 #include <sys/time.h>
 #endif
 
@@ -209,14 +208,7 @@ bool Directory::touch(const Path::parts_t &parts) {
 
 	// update the timestamp
 #ifdef __APPLE__
-	struct timespec ts[2];
-	clock_gettime(CLOCK_REALTIME, ts);
-	struct timeval tv[2];
-	tv[0].tv_sec = ts[0].tv_sec;
-	tv[0].tv_usec = ts[0].tv_nsec*1000;
-	tv[1].tv_sec = ts[1].tv_sec;
-	tv[1].tv_usec = ts[1].tv_nsec*1000;
-	int result = utimes(path.c_str(), tv);
+	int result = utimes(path.c_str(), nullptr) == 0;
 #else
 	int result = utimensat(AT_FDCWD, path.c_str(), nullptr, 0) == 0;
 #endif

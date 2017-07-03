@@ -95,24 +95,35 @@ Which alpha mask is determined by two conditions:
       * the highest blendmode_id gets selected as mask.
       * explains the double modes: same mask needed,
         but other priority requested.
-    * assigning the correct value:
+    * determine the mask for a tile-tile transition:
 
-      tile type | stored mode | displayed mode | corrected mode
-      ----------|-------------|----------------|----------------
-      grass     | 0           | 0/1/7/8        | 1
-      farm      | 1           | 3              | 3
-      beach     | 2           | 2              | 2
-      water     | 3           | 0/1/7/8        | 0
-      shallows  | 4           | ?              | 1
-      snow road | 5           | 4/6            | 4
-      ice       | 6           | 5              | 5
-      snow      | 7           | 4/6            | 6
-      unknown   | 8           | ?              | 4
+      tile type | stored mode
+      ----------|------------
+      grass     | 0
+      farm      | 1
+      beach     | 2
+      water     | 3
+      shallows  | 4
+      snow road | 5
+      ice       | 6
+      snow      | 7
+      unknown   | 8
 
-    * the mode correction was selected from the `displayed mode`
-      and then after the priority a mode should have.
-      this seems to produce the original blending transitions.
+      The mode is then used as index into a lookup table:
+      Current tile mode selects the row, neighbor mode the column.
 
+      ``` c
+      char blend_mask_lookup[8][8] = {
+          { 2, 3, 2, 1, 1, 6, 5, 4 },
+          { 3, 3, 3, 1, 1, 6, 5, 4 },
+          { 2, 3, 2, 1, 1, 6, 1, 4 },
+          { 1, 1, 1, 0, 7, 6, 5, 4 },
+          { 1, 1, 1, 7, 7, 6, 5, 4 },
+          { 6, 6, 6, 6, 6, 6, 5, 4 },
+          { 5, 5, 1, 5, 5, 5, 5, 4 },
+          { 4, 3, 4, 4, 4, 4, 4, 4 }
+      };
+      ```
 
 
 blending directions

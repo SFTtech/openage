@@ -12,11 +12,19 @@ namespace error {
 
 constexpr const char *runtime_error_message = "polymorphic openage Error object; catch by reference!";
 
+static bool enable_break_on_create = false;
+void Error::debug_break_on_create(bool state) {
+	enable_break_on_create = state;
+}
 
 Error::Error(const log::message &msg, bool generate_backtrace, bool store_cause)
 	:
 	std::runtime_error{runtime_error_message},
 	msg(msg) {
+
+	if (unlikely(enable_break_on_create)) {
+		BREAKPOINT;
+	}
 
 	if (generate_backtrace) {
 		auto backtrace = std::make_shared<StackAnalyzer>();

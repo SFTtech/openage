@@ -9,7 +9,7 @@ from importlib import import_module
 from ..util.strings import lstrip_once
 
 
-def tests_and_demos(test_lister, demo_lister):
+def list_targets(test_lister, demo_lister, benchmark_lister):
     """
     Yields tuples of (testname, type, description, condition_function)
     for given test and demo listers.
@@ -46,22 +46,26 @@ def tests_and_demos(test_lister, demo_lister):
         name, desc = demo
         yield name, 'demo', desc, default_cond
 
+    for benchmark in benchmark_lister():
+        name, desc = benchmark
+        yield name, 'benchmark', desc, default_cond
 
-def tests_and_demos_py():
-    """ Invokes tests_and_demos() with the py-specific listers. """
-    from .testlist import tests_py, demos_py
-    for val in tests_and_demos(tests_py, demos_py):
+
+def list_targets_py():
+    """ Invokes list_targets() with the py-specific listers. """
+    from .testlist import tests_py, demos_py, benchmark_py
+    for val in list_targets(tests_py, demos_py, benchmark_py):
         yield val
 
 
-def tests_and_demos_cpp():
-    """ Invokes tests_and_demos() with the C++-specific listers. """
-    from .testlist import tests_cpp, demos_cpp
-    for val in tests_and_demos(tests_cpp, demos_cpp):
+def list_targets_cpp():
+    """ Invokes list_targets() with the C++-specific listers. """
+    from .testlist import tests_cpp, demos_cpp, benchmark_cpp
+    for val in list_targets(tests_cpp, demos_cpp, benchmark_cpp):
         yield val
 
 
-def get_all_tests_and_demos():
+def get_all_targets():
     """
     Reads the Python and C++ testspec.
 
@@ -79,7 +83,7 @@ def get_all_tests_and_demos():
 
     result = OrderedDict()
 
-    for name, type_, description, conditionfun in tests_and_demos_py():
+    for name, type_, description, conditionfun in list_targets_py():
         modulename, objectname = name.rsplit('.', maxsplit=1)
 
         try:
@@ -95,7 +99,7 @@ def get_all_tests_and_demos():
 
         result[name, type_] = conditionfun, 'py', description, func
 
-    for name, type_, description, conditionfun in tests_and_demos_cpp():
+    for name, type_, description, conditionfun in list_targets_cpp():
         if type_ == 'demo':
             def runner(args, name=name):
                 """ runs the demo func, and ensures that args is empty. """
@@ -104,10 +108,12 @@ def get_all_tests_and_demos():
                                      "You should write a Python demo that "
                                      "calls to C++ then, with arguments.")
                 run_cpp_method(name)
-        else:
+        elif type_ in ['test', 'benchmark']:
             def runner(name=name):
-                """ simply runs the demo func. """
+                """ simply runs the func. """
                 run_cpp_method(name)
+        else:
+            raise ValueError("Unknown type " + type_)
 
         try:
             name = lstrip_once(name, 'openage::')

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "game_save.h"
 
@@ -40,7 +40,7 @@ void load_unit(std::ifstream &file, openage::GameMain *game) {
 	file >> se;
 
 	UnitType &saved_type = *game->get_player(player_no)->get_type(pr_id);
-	auto ref = game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
+	auto ref = game->placed_units.new_unit(saved_type, *game->get_player(player_no), coord::tile{ne, se}.to_phys2().to_phys3());
 
 	bool has_building_attr;
 	file >> has_building_attr;

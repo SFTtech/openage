@@ -352,6 +352,7 @@ void Engine::loop() {
 						}
 					}
 				}
+				break;
 			}
 
 			default:
@@ -367,25 +368,30 @@ void Engine::loop() {
 		this->gui->process_events();
 
 		if (this->game) {
-			// read camera movement input keys, and move camera
-			// accordingly.
+			// read camera movement input keys and/or cursor location,
+			// and move camera accordingly.
 
 			// camera movement speed, in pixels per millisecond
 			// one pixel per millisecond equals 14.3 tiles/second
 			float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
 
 			input::InputManager &input = this->get_input_manager();
+			using Edge = input::InputManager::Edge;
 
-			if (input.is_down(SDLK_LEFT)) {
+			if (input.is_down(SDLK_LEFT) or
+			    input.is_mouse_at_edge(Edge::LEFT, coord.window_size.x)) {
 				mov_x = -cam_movement_speed_keyboard;
 			}
-			if (input.is_down(SDLK_RIGHT)) {
+			if (input.is_down(SDLK_RIGHT) or
+			    input.is_mouse_at_edge(Edge::RIGHT, coord.window_size.x)) {
 				mov_x = cam_movement_speed_keyboard;
 			}
-			if (input.is_down(SDLK_DOWN)) {
+			if (input.is_down(SDLK_DOWN) or
+			    input.is_mouse_at_edge(Edge::DOWN, coord.window_size.y)) {
 				mov_y = cam_movement_speed_keyboard;
 			}
-			if (input.is_down(SDLK_UP)) {
+			if (input.is_down(SDLK_UP) or
+			    input.is_mouse_at_edge(Edge::UP, coord.window_size.y)) {
 				mov_y = -cam_movement_speed_keyboard;
 			}
 

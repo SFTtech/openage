@@ -37,6 +37,9 @@ namespace {
 
 
 std::terminate_handler old_terminate_handler;
+#ifdef __FreeBSD__
+typedef sig_t sighandler_t;
+#endif
 sighandler_t old_sigsegv_handler;
 
 

@@ -500,7 +500,8 @@ void LZXDStream::init_next_block() {
 		}
 		this->htaligned.make_decode_table();
 
-		// fall through: rest of aligned header is same as verbatim
+		// Falls through.
+		// Rest of aligned header is same as verbatim
 	case LZX_BLOCKTYPE_VERBATIM:
 		// read lengths of and build main huffman decoding tree
 		this->htmain.read_lengths(0, 256);

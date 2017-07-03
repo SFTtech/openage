@@ -120,10 +120,10 @@ public:
 	}
 
 private:
-	/** links to the story of the game */
+	/** Links to the story of the game. */
 	Story *story;
 
-	/** time in seconds estimated left until release */
+	/** Time in seconds estimated left until release. */
 	uint128_t estimated_release_time;
 };
 

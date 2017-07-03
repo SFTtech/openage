@@ -8,6 +8,7 @@
 #include "civilisation.h"
 #include "population_tracker.h"
 #include "resource.h"
+#include "score.h"
 
 
 namespace openage {
@@ -110,6 +111,11 @@ public:
 	PopulationTracker population;
 
 	/**
+	 * The score of the player.
+	 */
+	PlayerScore score;
+
+	/**
 	 * Called when a unit is created and active.
 	 * (Active means not a construction site)
 	 */
@@ -120,6 +126,23 @@ public:
 	 */
 	void active_unit_removed(Unit *unit);
 
+	/**
+	 * Called when a unit is killed by this player.
+	 */
+	void killed_unit(const Unit & unit);
+
+	// Getters
+
+	/**
+	 * Get the number of units the player has for each unit type id.
+	 */
+	int get_units_have(int type_id) const;
+
+	/**
+	 * Get the number of units the player ever had for each unit type id.
+	 */
+	int get_units_had(int type_id) const;
+
 private:
 
 	/**
@@ -128,15 +151,34 @@ private:
 	ResourceBundle resources;
 
 	/**
+	 * Called when the resources amounts change.
+	 */
+	void on_resources_change();
+
+	/**
 	 * unit types which can be produced by this player.
+	 * TODO revisit, can be simplified?
 	 */
 	unit_type_list available_objects;
 
 	/**
 	 * available objects mapped using type id
 	 * unit ids -> unit type for that id
+	 * TODO revisit, can be simplified?
 	 */
 	std::unordered_map<index_t, UnitType *> available_ids;
+
+	/**
+	 * The number of units the player has for each unit type id.
+	 * Used for unit dependencies (eg. Town Center) and event triggers.
+	 */
+	std::unordered_map<int, int> units_have;
+
+	/**
+	 * The number of units the player ever had for each unit type id.
+	 * Used for unit dependencies (eg. Farm).
+	 */
+	std::unordered_map<int, int> units_had;
 
 };
 

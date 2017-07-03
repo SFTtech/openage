@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include <cassert>
 
@@ -12,6 +12,10 @@
 namespace qtsdl {
 
 std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
+	return std::tuple<QVariant, WId>{};
+}
+
+std::tuple<QVariant, std::function<void()>> extract_native_context_and_switchback_func(SDL_Window *window) {
 	assert(window);
 
 	NSOpenGLContext *current_context = [NSOpenGLContext currentContext];
@@ -25,11 +29,14 @@ std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 	if (SDL_GetWindowWMInfo(window, &wm_info)) {
 		NSWindow *ns_window = wm_info.info.cocoa.window;
 		view = [ns_window contentView];
+		assert(view);
+	
+		return std::make_tuple(QVariant::fromValue<QCocoaNativeContext>(QCocoaNativeContext(current_context)), [current_context] {
+			[current_context makeCurrentContext];
+		});
 	}
 
-	assert(view);
-
-	return std::make_tuple(QVariant::fromValue<QCocoaNativeContext>(QCocoaNativeContext(current_context)), reinterpret_cast<WId>(view));
+	return std::tuple<QVariant, std::function<void()>>{};
 }
 
 } // namespace qtsdl

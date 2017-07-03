@@ -1,7 +1,9 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #include "team.h"
 #include "player.h"
+#include "score.h"
+
 
 namespace openage {
 
@@ -16,7 +18,8 @@ Team::Team(unsigned int id, std::string name)
 Team::Team(unsigned int id, std::string name, Player *leader)
 	:
 	id{id},
-	name{name} {
+	name{name},
+	score{this} {
 
 	if (leader) {
 		this->add_member(*leader, member_type::leader);
@@ -59,6 +62,14 @@ member_type Team::get_member_type(Player &player) {
 	}
 	// return pseudo member type for completion
 	return member_type::none;
+}
+
+std::vector<const Player*> Team::get_players() const {
+	std::vector<const Player*> players;
+	for (auto& i : members) {
+		players.push_back(i.first);
+	}
+	return players;
 }
 
 } // openage

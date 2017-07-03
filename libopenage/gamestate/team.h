@@ -1,9 +1,14 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <string>
 #include <unordered_map>
+#include <vector>
+
+
+#include "score.h"
+
 
 namespace openage {
 
@@ -50,6 +55,16 @@ public:
 	void remove_member(Player &player);
 
 	member_type get_member_type(Player &player);
+
+	/**
+	 * TODO find a better way to get all the players
+	 */
+	std::vector<const Player*> get_players() const;
+
+	/**
+	 * The score of the team, based on the team's players score.
+	 */
+	TeamScore score;
 
 private:
 

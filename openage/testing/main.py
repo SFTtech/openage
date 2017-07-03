@@ -6,8 +6,9 @@ import argparse
 
 from ..util.strings import format_progress
 
+from .benchmark import benchmark
 from .testing import TestError
-from .list_processor import get_all_tests_and_demos
+from .list_processor import get_all_targets
 
 
 def print_test_list(test_list):
@@ -16,7 +17,7 @@ def print_test_list(test_list):
     """
     namelen = max(len(name) for name, _ in test_list.keys())
 
-    for current_type in ['test', 'demo']:
+    for current_type in ['test', 'demo', 'benchmark']:
         for (name, type_), (_, lang, desc, _) in test_list.items():
             if type_ == current_type:
                 print("[%s %3s] %-*s  %s" % (type_, lang, namelen, name, desc))
@@ -42,30 +43,32 @@ def init_subparser(cli):
     cli.add_argument("--demo", "-d", nargs=argparse.REMAINDER,
                      help=("run the given demo; the remaining arguments "
                            "are passed to the demo."))
+    cli.add_argument("--benchmark", "-b", nargs=argparse.REMAINDER,
+                     help=("run the given benchmark"))
     cli.add_argument("test", nargs='*', help="run this test")
 
 
 def process_args(args, error):
     """ Processes the given args, detecting errors. """
-    if not args.run_all_tests and not args.demo and not args.test:
+    if not (args.run_all_tests or args.demo or args.test or args.benchmark):
         args.list = True
 
     if args.have_assets and not args.run_all_tests:
         error("you have to run all tests, "
               "otherwise I don't care if you have assets")
 
-    if args.run_all_tests:
-        if args.test or args.demo:
-            error("can't run individual test or demo when running all tests")
+    if args.run_all_tests and (args.test or args.demo or args.benchmark):
+        error("can't run individual test or demo or benchmark when running "
+              "all tests")
 
-    if args.test and args.demo:
-        error("can't run a demo _and_ tests")
+    if bool(args.test) + bool(args.demo) + bool(args.benchmark) > 1:
+        error("can only run one of demo, benchmarks or tests")
 
     # link python and c++ so it hopefully works when testing
     from openage.cppinterface.setup import setup
-    setup()
+    setup(args)
 
-    test_list = get_all_tests_and_demos()
+    test_list = get_all_targets()
 
     # the current test environment can have influence on the tests itself.
     test_environment = {
@@ -75,18 +78,31 @@ def process_args(args, error):
     # if we wanna run all the tests, only run the ones that
     # are happy with the environment
     if args.run_all_tests:
-        for (name, test_type), (test_condition, _, _, _) in test_list.items():
-            if test_type == "test" and test_condition(test_environment):
-                args.test.append(name)
+        tests = [name for (name, test_type), (test_condition, _, _, _)
+                 in test_list.items()
+                 if test_type == "test" and test_condition(test_environment)]
+        args.test.extend(tests)
 
-    # double-check for unknown tests and demos
+    # double-check for unknown tests and demos, maybe we can match them
     for test in args.test:
+        matched = False
         if (test, 'test') not in test_list:
-            error("no such test: " + test)
+            # If the test was not found explicit in the testlist, try to find
+            # all prefixed tests and run them instead.
+            matched = [elem[0] for elem in test_list
+                       if elem[0].startswith(test) and elem[1] == "test"]
 
-    if args.demo:
-        if (args.demo[0], 'demo') not in test_list:
-            error("no such demo: " + args.demo[0])
+            if matched:
+                args.test.extend(matched)
+            else:
+                error("no such test: " + test)
+            args.test.remove(test)
+
+    if args.demo and (args.demo[0], 'demo') not in test_list:
+        error("no such demo: " + args.demo[0])
+
+    if args.benchmark and (args.benchmark[0], 'benchmark') not in test_list:
+        error("no such benchmark: " + args.benchmark[0])
 
     return test_list
 
@@ -127,5 +143,9 @@ def main(args, error):
             exit(1)
 
     if args.demo:
-        _, _, demofun = test_list[args.demo[0], 'demo']
+        _, _, _, demofun = test_list[args.demo[0], 'demo']
         exit(demofun(args.demo[1:]))
+
+    if args.benchmark:
+        _, _, _, benchmarktest = test_list[args.benchmark[0], 'benchmark']
+        benchmark(benchmarktest)

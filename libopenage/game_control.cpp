@@ -114,7 +114,7 @@ void ActionMode::on_game_control_set() {
 		auto type = player->get_type(this->rng.probability(0.5)? 83 : 293);
 
 		Command cmd(*player, type);
-		cmd.add_flag(command_flag::direct);
+		cmd.add_flag(command_flag::interrupt);
 		this->selection->all_invoke(cmd);
 	});
 
@@ -307,7 +307,7 @@ void ActionMode::on_game_control_set() {
 		auto mousepos_phys3 = mousepos_camgame.to_phys3();
 
 		auto cmd = this->get_action(mousepos_phys3);
-		cmd.add_flag(command_flag::direct);
+		cmd.add_flag(command_flag::interrupt);
 		this->selection->all_invoke(cmd);
 		this->use_set_ability = false;
 	});
@@ -406,7 +406,7 @@ bool ActionMode::place_selection(coord::phys3 point) {
 		if (new_building.is_valid()) {
 			Command cmd(*this->game_control->get_current_player(), new_building.get());
 			cmd.set_ability(ability_type::build);
-			cmd.add_flag(command_flag::direct);
+			cmd.add_flag(command_flag::interrupt);
 			this->selection->all_invoke(cmd);
 			return true;
 		}
@@ -725,7 +725,7 @@ void GameControl::set_engine(Engine *engine) {
 			global_input_context.bind(action, [this, player_index](const input::action_arg_t &) {
 				if (this->current_player != player_index)
 					if (auto game = this->engine->get_game())
-						if (player_index < game->players.size()) {
+						if (player_index < game->player_count()) {
 							this->current_player = player_index;
 							this->announce_current_player_name();
 						}
@@ -821,8 +821,8 @@ bool GameControl::on_drawhud() {
 
 Player* GameControl::get_current_player() const {
 	if (auto game = this->engine->get_game()) {
-		unsigned int number = game->players.size();
-		return &game->players[this->current_player % number];
+		unsigned int number = game->player_count();
+		return game->get_player(this->current_player % number);
 	}
 	return nullptr;
 }

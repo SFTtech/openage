@@ -1,4 +1,4 @@
 install(DIRECTORY "./"
-	DESTINATION "${INSTALLED_GLOBAL_ASSET_DIR}/textures"
+	DESTINATION "${GLOBAL_ASSET_DIR}/textures"
 	PATTERN "CMakeLists.txt" EXCLUDE
 )

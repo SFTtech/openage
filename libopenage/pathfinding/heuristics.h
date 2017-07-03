@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -29,6 +29,17 @@ cost_t chebyshev_cost(const coord::phys3 &start, const coord::phys3 &end);
  * @returns the hypotenuse length of the rectangular triangle formed.
  */
 cost_t euclidean_cost(const coord::phys3 &start, const coord::phys3 &end);
+
+/**
+ * Squared euclidean distance cost estimation.
+ * @returns the square of the hypotenuse length of the rectangular triangle formed.
+ */
+cost_t euclidean_squared_cost(const coord::phys3 &start, const coord::phys3 &end);
+
+/**
+ * Calculate euclidean distance from a already calculated squared euclidean distance
+ */
+cost_t euclidean_squared_to_euclidean_cost(const cost_t euclidean_squared_value);
 
 } // namespace path
 } // namespace openage

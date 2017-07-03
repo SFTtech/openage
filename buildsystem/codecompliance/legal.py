@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 """
 Checks the legal headers of all files.
@@ -12,10 +12,10 @@ from .util import findfiles, readfile, has_ext, SHEBANG
 
 NATIVELEGALHEADER = re.compile(
     "^"
-    # allow shebang line, followed by an optional empty line
+    # Allow shebang line, followed by an optional empty line.
     "(" + SHEBANG + ")?"
 
-    # next line must be the copyright line
+    # Next line must be the copyright line.
     "(#|//) "
     "Copyright (?P<crstart>\\d{4})-(?P<crend>\\d{4}) the openage authors\\. "
     "See copying\\.md for legal info\\.\n")
@@ -35,7 +35,7 @@ THIRDPARTYLEGALHEADER = re.compile(
     "Copyright (?P<crstart>\\d{4})-(?P<crend>\\d{4}) the openage authors\\.\n"
     "(#|//) See copying\\.md for further legal info\\.\n")
 
-# empty files (consisting of only comments) don't require a legal header
+# Empty files (consisting of only comments) don't require a legal header.
 EMPTYFILE = re.compile("^(((#|//) .*)?\n)*$")
 
 # cython-generated files
@@ -85,7 +85,7 @@ def match_legalheader(data):
 
 
 def test_headers(check_files, paths, git_change_years, third_party_files):
-    """ Tests all in-sourcefile legal headers """
+    """ Tests all in-sourcefile legal headers. """
 
     # determine all uncommited files from git.
     # those definitely need the current year in the copyright message.
@@ -130,7 +130,7 @@ def test_headers(check_files, paths, git_change_years, third_party_files):
 
 def find_issues(check_files, paths, git_change_years=False):
     """
-    tests all source files for the required legal headers.
+    Tests all source files for the required legal headers.
     """
     third_party_files = set()
 

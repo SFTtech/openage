@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # declare a new 'empty' executable file.
 # you need to use add_sources to add source files to it, and finalize_binary to finalize it.
@@ -94,7 +94,10 @@ function(finalize_binary target_name output_name type)
 				else()
 					set(link_flag "--no-undefined")
 				endif()
-				set_target_properties("${target_name}" PROPERTIES LINK_FLAGS "-Wl,${link_flag}")
+				set_target_properties("${target_name}" PROPERTIES
+					COMPILE_FLAGS "${EXTRA_FLAGS}"
+					LINK_FLAGS "-Wl,${link_flag}"
+				)
 			endif()
 		else()
 			message(FATAL_ERROR "finalize_binary flag unknown: ${flag}")

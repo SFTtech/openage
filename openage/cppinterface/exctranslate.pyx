@@ -38,7 +38,7 @@ from libopenage.pyinterface.exctranslate cimport (
 
 import importlib
 from ..testing.testing import TestError
-
+from ..log import err, info
 
 cdef extern from "Python.h":
     cdef cppclass PyCodeObject:
@@ -302,7 +302,7 @@ cdef void pyexception_bt_get_symbols_impl(
         frame = frame.tb_next
 
 
-def setup():
+def setup(args):
     """
     Installs the functions defined here in their PyFunc pointers.
     """
@@ -311,5 +311,12 @@ def setup():
         raise_cpp_pyexception,
         check_exception,
         describe_exception)
+
+
+    if args.trap_exceptions:
+        info("Throwing errors will break into an attached debugger")
+        Error.debug_break_on_create(True)
+    else:
+        Error.debug_break_on_create(False)
 
     pyexception_bt_get_symbols.bind0(pyexception_bt_get_symbols_impl)

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -10,7 +10,7 @@ namespace qtsdl {
 class GuiRenderer;
 class GuiImageProvider;
 class GuiEngineImpl;
-struct GuiSingletonItemsInfo;
+class GuiSingletonItemsInfo;
 
 /**
  * Represents one QML execution environment.

@@ -52,7 +52,7 @@ Python3 is used for non-data-crunching tasks, like scripting and modding.
 The main entry point for openage is in `__main__.py`. From there, other
 components like asset conversion and the main game are started.
 
-The other Python/Cython components like `convert`, `game` or ASDF
+The other Python/Cython components like `convert`, `game` or `testing`.
 
 
 ### assets/

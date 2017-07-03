@@ -97,6 +97,12 @@ _the openage authors_ are:
 | Martin Bernardi             | martinber                   | martinbernardi à openmailbox dawt org             |
 | Erik Griese                 | citron0xa9                  | erik dawt griese à yahoo dawt de                  |
 | Alex Birch                  | Birch-san                   | vengeance dawt m dawt x+openage à gmail dawt com  |
+| Michal Jarzabek             | stiopa                      | stiopa à gmail dawt com                           |
+| Christopher Wilson          | cdw33                       | cdw33 à zips dawt uakron dawt edu                 |
+| Wojciech Nawrocki           | Vtec234                     | wjnawrocki à protonmail dawt com                  |
+| Folkert van Verseveld       | methos, medicijnman         | folkert dawt van dawt verseveld à gmail dawt com  |
+| Neel Patel                  | ohn0                        | silverskinx à gmail dawt com                      |
+| David Carlier               | devnexen                    | devnexen à gmail dawt com                         |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

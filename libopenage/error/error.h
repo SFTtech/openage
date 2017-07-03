@@ -2,6 +2,7 @@
 
 #pragma once
 
+// pxd: from libcpp cimport bool
 #include <iostream>
 #include <memory>
 #include <stdexcept>
@@ -42,6 +43,8 @@ namespace error {
  *     const char *what() except +
  *     void rethrow_cause() except +
  *     void trim_backtrace() except +
+ *     @staticmethod
+ *     void debug_break_on_create(bool state) except +
  *
  *     Backtrace *backtrace
  */
@@ -116,6 +119,10 @@ public:
 	 */
 	const char *what() const noexcept override;
 
+	/**
+	 * Turn on debug breaks in the constructor
+	 */
+	static void debug_break_on_create(bool state);
 
 private:
 	friend pyinterface::PyException;

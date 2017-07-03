@@ -96,24 +96,18 @@ void UnitAction::face_towards(const coord::phys3 pos) {
 	}
 }
 
-// TODO remove (keep for testing)
-void UnitAction::damage_object(Unit &target, unsigned dmg) {
-	if (target.has_attribute(attr_type::damaged)) {
-		auto &dm = target.get_attribute<attr_type::damaged>();
-		if (dm.hp > dmg) {
-			dm.hp -= dmg;
-		}
-		else {
-			dm.hp = 0;
-		}
-	}
-}
+bool UnitAction::damage_unit(Unit &target) {
+	bool killed = false;
 
-void UnitAction::damage_object(Unit &target) {
 	if (target.has_attribute(attr_type::damaged)) {
 		auto &dm = target.get_attribute<attr_type::damaged>();
 
-		if (target.has_attribute(attr_type::armor) && this->entity->has_attribute(attr_type::attack)) {
+		// this is the damage calculation system
+
+		if (dm.hp == 0) {
+			// already killed, do nothing
+		}
+		else if (target.has_attribute(attr_type::armor) && this->entity->has_attribute(attr_type::attack)) {
 			auto &armor = target.get_attribute<attr_type::armor>().armor;
 			auto &damage = this->entity->get_attribute<attr_type::attack>().damage;
 
@@ -136,13 +130,31 @@ void UnitAction::damage_object(Unit &target) {
 			}
 			else {
 				dm.hp = 0;
+				killed = true;
 			}
 		}
 		else {
 			// TODO remove (keep for testing)
-			damage_object(target, 1);
+			unsigned int dmg = 1;
+			if (dm.hp > dmg) {
+				dm.hp -= dmg;
+			}
+			else {
+				dm.hp = 0;
+				killed = true;
+			}
 		}
 	}
+
+	if (killed) {
+		// if killed, give credit to a player
+		if (this->entity->has_attribute(attr_type::owner)) {
+			auto &owner = this->entity->get_attribute<attr_type::owner>().player;
+			owner.killed_unit(target);
+		}
+	}
+
+	return killed;
 }
 
 void UnitAction::move_to(Unit &target, bool use_range) {
@@ -215,32 +227,16 @@ void TargetAction::update(unsigned int time) {
 }
 
 void TargetAction::on_completion() {
-	if (!this->entity->location) {
+	// do not retask if action is forced to end
+	if (this->end_action ||
+		!this->entity->location) {
 		return;
 	}
 
-	// TODO: retask units on nearby objects
+	// retask units on nearby objects
 	// such as gathers targeting a new resource
 	// when the current target expires
-
-	// find a different target with same type
-	TerrainObject *new_target = nullptr;
-	if (this->name() == "gather") {
-		new_target = find_near(*this->entity->location,
-			[this](const TerrainObject &obj) {
-				return obj.unit.unit_type->id() == this->target_type_id &&
-				       !obj.unit.has_attribute(attr_type::worker) &&
-				       obj.unit.has_attribute(attr_type::resource) &&
-				       obj.unit.get_attribute<attr_type::resource>().amount > 0.0;
-			});
-	}
-
-	if (new_target) {
-		this->entity->log(MSG(dbg) << "auto retasking");
-		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
-		Command cmd(pl_attr.player, &new_target->unit);
-		this->entity->queue_cmd(cmd);
-	}
+	this->on_completion_in_range(this->target_type_id);
 }
 
 bool TargetAction::completed() const {
@@ -278,11 +274,19 @@ UnitReference TargetAction::get_target() const {
 	return this->target;
 }
 
-void TargetAction::set_target(UnitReference new_target) {
-	this->target = new_target;
-	this->update_distance();
+int TargetAction::get_target_type_id() const {
+	return this->target_type_id;
 }
 
+void TargetAction::set_target(UnitReference new_target) {
+	if (new_target.is_valid()) {
+		this->target = new_target;
+		this->update_distance();
+	}
+	else {
+		this->end_action = true;
+	}
+}
 
 DecayAction::DecayAction(Unit *e)
 	:
@@ -336,7 +340,7 @@ void DeadAction::update(unsigned int time) {
 void DeadAction::on_completion() {
 	if (this->entity->has_attribute(attr_type::owner)) {
 		auto &owner = this->entity->get_attribute<attr_type::owner>().player;
-		owner.active_unit_removed(this->entity); // TODO move before the start of dead action
+		owner.active_unit_removed(this->entity); // TODO move before the start of dead action?
 	}
 
 	this->on_complete_func();
@@ -876,10 +880,8 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 		// cost formula: 0.5 * (target cost) / (target max hp)
 		auto &hp = target->get_attribute<attr_type::hitpoints>();
 
-		// TODO get the target unit's cost
-		//this->cost += get target cost;
-		this->cost[game_resource::wood] = 100; // temp
-
+		// get the target unit's cost
+		this->cost += target->unit_type->cost;
 		this->cost *= 0.5 / hp.hp;
 	}
 }
@@ -1034,6 +1036,26 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 	this->frame += time * this->frame_rate / 3.0f;
 }
 
+void GatherAction::on_completion_in_range(int target_type) {
+
+	// find a different target with same type
+	TerrainObject *new_target = nullptr;
+	new_target = find_near(*this->entity->location,
+		[target_type](const TerrainObject &obj) {
+			return obj.unit.unit_type->id() == target_type &&
+				   !obj.unit.has_attribute(attr_type::worker) &&
+				   obj.unit.has_attribute(attr_type::resource) &&
+				   obj.unit.get_attribute<attr_type::resource>().amount > 0.0;
+		});
+
+	if (new_target) {
+		this->entity->log(MSG(dbg) << "auto retasking");
+		auto &pl_attr = this->entity->get_attribute<attr_type::owner>();
+		Command cmd(pl_attr.player, &new_target->unit);
+		this->entity->queue_cmd(cmd);
+	}
+}
+
 UnitReference GatherAction::nearest_dropsite(game_resource res_type) {
 
 	// find nearest dropsite from the targeted resource
@@ -1104,7 +1126,7 @@ void AttackAction::attack(Unit &target) {
 		this->fire_projectile(attack, target.location->pos.draw);
 	}
 	else {
-		this->damage_object(target);
+		this->damage_unit(target);
 	}
 }
 
@@ -1166,7 +1188,7 @@ bool HealAction::completed_in_range(Unit *target_ptr) const {
 void HealAction::heal(Unit &target) {
 	auto &heal = this->entity->get_attribute<attr_type::heal>();
 
-	// TODO move to seperate function heal_object (like damage_object)?
+	// TODO move to seperate function heal_unit (like damage_unit)?
 	// heal object
 	if (target.has_attribute(attr_type::hitpoints) && target.has_attribute(attr_type::damaged)) {
 		auto &hp = target.get_attribute<attr_type::hitpoints>();
@@ -1246,7 +1268,7 @@ void ProjectileAction::update(unsigned int time) {
 			for (auto obj_location : tc->obj) {
 				if (this->entity->location.get() != obj_location &&
 				    obj_location->check_collisions()) {
-					this->damage_object(obj_location->unit, 1);
+					this->damage_unit(obj_location->unit);
 					break;
 				}
 			}

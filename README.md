@@ -94,7 +94,7 @@ Development Process
 -------------------
 
 What does openage development look like in practice?
- - extensive [syncronization](#contact)!
+ - extensive [synchronization](#contact)!
  - [doc/development.md](/doc/development.md).
 
 Can I help?
@@ -113,7 +113,7 @@ OS X Version
 Running openage on OS X worked in the past,
 and might or might not work right now.
 
-Setting up continuous integration for this platform has some complications. Running a hackintosh VM seems to be not so legal, while buying dedicated hardware for it seems to be not so cheap. If you know of a legal and cost-free way of doing so or want to sponsor a semi-recent Mac Mini, please open a ticket in our issue tracker. Until then, PRs untested on OS X will make their way into the master branch und occasional breakage will occur.
+Setting up continuous integration for this platform has some complications. Running a hackintosh VM seems to be not so legal, while buying dedicated hardware for it seems to be not so cheap. If you know of a legal and cost-free way of doing so or want to sponsor a semi-recent Mac Mini, please open a ticket in our issue tracker. Until then, PRs untested on OS X will make their way into the master branch and occasional breakage will occur.
 
 
 Windows Version

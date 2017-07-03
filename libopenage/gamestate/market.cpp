@@ -68,7 +68,7 @@ ResourceBundle Market::get_prices(const Player &player, const bool is_buy) const
 
 double Market::get_multiplier(const Player &/*player*/, const bool is_buy) const {
 	double base = 0.3;
-	// TODO chnage multiplier based on civ bonuses and player researched techs
+	// TODO change multiplier based on civ bonuses and player researched techs
 	double mult = base;
 
 	if (is_buy) {

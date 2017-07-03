@@ -4,29 +4,24 @@
 
 # the Python version number requirement is in modules/FindPython_test.cpp
 find_package(Python 3.4 REQUIRED)
-find_package(Cython 0.23 REQUIRED)
+find_package(Cython 0.25 REQUIRED)
 find_package(Numpy REQUIRED)
 
-py_get_config_var(OPT PYEXT_CXXFLAGS)
 py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)
 
-# fix the CXXFLAGS
-set(PYEXT_CXXFLAGS " ${PYEXT_CXXFLAGS} ") # padding required for the replacements below
-# C++ doesn't have the -Wstrict-prototypes warning
-string(REGEX REPLACE " -Wstrict-prototypes " " " PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}")
-# thanks, but I'd like to choose my debug mode myself.
-string(REPLACE " -g " " " PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS}")
+# This is the only useful thing after cleaning up what python suggests
+set(PYEXT_CXXFLAGS "-fwrapv")
 
-# add our own regular C++ flags
-set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} ${CMAKE_CXX_FLAGS}")
-
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-	# some things clang complains about
-	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-extended-offsetof")
-	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unneeded-internal-declaration")
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+	# suppress #warning about deprecated numpy api
+	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-cpp")
 endif()
 
-set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-unused-function")
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+	# suppress #warning about deprecated numpy api
+	set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-#warnings")
+endif()
+
 set(PYEXT_LIBRARY "${PYTHON_LIBRARY}")
 set(PYEXT_INCLUDE_DIRS "${PYTHON_INCLUDE_DIR};${NUMPY_INCLUDE_DIR}")
 

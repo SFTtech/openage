@@ -85,12 +85,18 @@ void Texture::load() {
 	// glTexImage2D format determination
 	switch (surface->format->BytesPerPixel) {
 	case 3: // RGB 24 bit
-		this->buffer->texture_format_in  = GL_RGB8;
-		this->buffer->texture_format_out = GL_RGB;
+		this->buffer->texture_format_in = GL_RGB8;
+		this->buffer->texture_format_out
+		= surface->format->Rmask == 0x000000ff
+		? GL_RGB
+		: GL_BGR;
 		break;
 	case 4: // RGBA 32 bit
-		this->buffer->texture_format_in  = GL_RGBA8;
-		this->buffer->texture_format_out = GL_RGBA;
+		this->buffer->texture_format_in = GL_RGBA8;
+		this->buffer->texture_format_out
+		= surface->format->Rmask == 0x000000ff
+		? GL_RGBA
+		: GL_BGRA;
 		break;
 	default:
 		throw Error(MSG(err) <<

@@ -1,4 +1,4 @@
-// Copyright 2014-2015 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "heuristics.h"
 
@@ -23,7 +23,17 @@ cost_t chebyshev_cost(const coord::phys3 &start, const coord::phys3 &end) {
 cost_t euclidean_cost(const coord::phys3 &start, const coord::phys3 &end) {
 	cost_t dx = start.ne - end.ne;
 	cost_t dy = start.se - end.se;
-	return std::hypot(dx, dy);
+	return std::sqrt(dx * dx + dy * dy);
+}
+
+cost_t euclidean_squared_cost(const coord::phys3 &start, const coord::phys3 &end) {
+	cost_t dx = start.ne - end.ne;
+	cost_t dy = start.se - end.se;
+	return dx * dx + dy * dy;
+}
+
+cost_t euclidean_squared_to_euclidean_cost(const cost_t euclidean_squared_value) {
+	return std::sqrt(euclidean_squared_value);
 }
 
 } // namespace path

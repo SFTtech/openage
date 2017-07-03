@@ -141,6 +141,10 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 			this->graphics[graphic_type::carrying] = carry;
 		}
 	}
+
+	// TODO get cost, temp fixed cost of 50 food
+	this->cost[game_resource::food] = 50;
+
 }
 
 ObjectProducer::~ObjectProducer() {}
@@ -483,8 +487,6 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	unit_data{*ud},
 	texture{spec.get_unit_texture(ud->graphic_standing0)},
 	destroyed{spec.get_unit_texture(ud->graphic_dying0)},
-	trainable1{83}, // 83 = m villager
-	trainable2{293}, // 293 = f villager
 	projectile{this->unit_data.missile_unit_id},
 	foundation_terrain{ud->foundation_terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
@@ -523,6 +525,10 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	}
 
 	this->terrain_outline = square_outline(this->foundation_size);
+
+	// TODO get cost, temp fixed cost of 100 wood
+	this->cost[game_resource::food] = 0;
+	this->cost[game_resource::wood] = 100;
 }
 
 BuildingProducer::~BuildingProducer() {}
@@ -556,7 +562,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	// building specific attribute
 	auto build_attr = std::make_shared<Attribute<attr_type::building>>();
 	build_attr->foundation_terrain = this->foundation_terrain;
-	build_attr->pp = this->owner.get_type(trainable2);
+	build_attr->pp = this->owner.get_type(293); // fem_villager, male is 83
 	build_attr->gather_point = unit->location->pos.draw;
 	build_attr->completion_state = this->enable_collisions? object_state::placed : object_state::placed_no_collision;
 	unit->add_attribute(build_attr);
@@ -774,6 +780,9 @@ void ProjectileProducer::initialise(Unit *unit, Player &player) {
 
 	// initialize graphic set
 	unit->unit_type = this;
+
+	auto player_attr = std::make_shared<Attribute<attr_type::owner>>(player);
+	unit->add_attribute(player_attr);
 
 	// projectile speed
 	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;

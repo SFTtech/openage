@@ -31,7 +31,8 @@ QString name_tidier(const char *name);
 /**
  * Helper to hide the type of the core.
  */
-struct PersistentCoreHolderBase {
+class PersistentCoreHolderBase {
+public:
 	virtual ~PersistentCoreHolderBase() {
 	}
 
@@ -43,7 +44,8 @@ struct PersistentCoreHolderBase {
 };
 
 template<typename T>
-struct PersistentCoreHolder : public PersistentCoreHolderBase {
+class PersistentCoreHolder : public PersistentCoreHolderBase {
+public:
 	PersistentCoreHolder(std::unique_ptr<T> core)
 		:
 		PersistentCoreHolderBase{},
