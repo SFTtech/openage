@@ -66,7 +66,7 @@ def process_args(args, error):
 
     # link python and c++ so it hopefully works when testing
     from openage.cppinterface.setup import setup
-    setup()
+    setup(args)
 
     test_list = get_all_targets()
 

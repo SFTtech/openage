@@ -23,7 +23,7 @@ from libcpp cimport bool as cppbool
 
 from libopenage.log.level cimport level, err as lvl_err
 from libopenage.log.message cimport message
-from libopenage.error.error cimport Error
+from libopenage.error.error cimport Error, debug_break_on_error
 from libopenage.error.backtrace cimport Backtrace, backtrace_symbol
 from libopenage.pyinterface.functional cimport Func1
 from libopenage.pyinterface.pyexception cimport (
@@ -38,7 +38,7 @@ from libopenage.pyinterface.exctranslate cimport (
 
 import importlib
 from ..testing.testing import TestError
-
+from ..log import err, info
 
 cdef extern from "Python.h":
     cdef cppclass PyCodeObject:
@@ -302,7 +302,7 @@ cdef void pyexception_bt_get_symbols_impl(
         frame = frame.tb_next
 
 
-def setup():
+def setup(args):
     """
     Installs the functions defined here in their PyFunc pointers.
     """
@@ -311,5 +311,12 @@ def setup():
         raise_cpp_pyexception,
         check_exception,
         describe_exception)
+
+
+    if args.trap_exceptions:
+        info("Throwing errors will break into an attached debugger")
+        debug_break_on_error(True)
+    else:
+        debug_break_on_error(False)
 
     pyexception_bt_get_symbols.bind0(pyexception_bt_get_symbols_impl)

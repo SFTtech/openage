@@ -2,6 +2,7 @@
 
 #pragma once
 
+// pxd: from libcpp cimport bool
 #include <iostream>
 #include <memory>
 #include <stdexcept>
@@ -34,6 +35,7 @@ namespace error {
  * log::log().
  *
  * pxd:
+ * void debug_break_on_error "::openage::error::Error::debug_break_on_create"(bool state) except +
  *
  * cppclass Error:
  *     message msg
@@ -116,6 +118,10 @@ public:
 	 */
 	const char *what() const noexcept override;
 
+	/**
+	 * Turn on debug breaks in the constructor
+	 */
+	static void debug_break_on_create(bool state);
 
 private:
 	friend pyinterface::PyException;

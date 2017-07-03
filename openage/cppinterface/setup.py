@@ -12,7 +12,7 @@ from ..log.log_cpp import enable_log_translation
 
 
 @run_once
-def setup():
+def setup(args):
     """
     After a call to setup(), the C++ interface is in a usable state.
 
@@ -30,7 +30,7 @@ def setup():
 
     # this is where calls to the setup methods of all other modules belong.
     from .exctranslate import setup as exctranslate_setup
-    exctranslate_setup()
+    exctranslate_setup(args)
 
     from .exctranslate_tests import setup as exctranslate_tests_setup
     exctranslate_tests_setup()
