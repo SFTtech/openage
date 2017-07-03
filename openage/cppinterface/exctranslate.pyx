@@ -23,7 +23,7 @@ from libcpp cimport bool as cppbool
 
 from libopenage.log.level cimport level, err as lvl_err
 from libopenage.log.message cimport message
-from libopenage.error.error cimport Error, debug_break_on_error
+from libopenage.error.error cimport Error
 from libopenage.error.backtrace cimport Backtrace, backtrace_symbol
 from libopenage.pyinterface.functional cimport Func1
 from libopenage.pyinterface.pyexception cimport (
@@ -315,8 +315,8 @@ def setup(args):
 
     if args.trap_exceptions:
         info("Throwing errors will break into an attached debugger")
-        debug_break_on_error(True)
+        Error.debug_break_on_create(True)
     else:
-        debug_break_on_error(False)
+        Error.debug_break_on_create(False)
 
     pyexception_bt_get_symbols.bind0(pyexception_bt_get_symbols_impl)

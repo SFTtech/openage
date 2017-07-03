@@ -35,7 +35,6 @@ namespace error {
  * log::log().
  *
  * pxd:
- * void debug_break_on_error "::openage::error::Error::debug_break_on_create"(bool state) except +
  *
  * cppclass Error:
  *     message msg
@@ -44,6 +43,8 @@ namespace error {
  *     const char *what() except +
  *     void rethrow_cause() except +
  *     void trim_backtrace() except +
+ *     @staticmethod
+ *     void debug_break_on_create(bool state) except +
  *
  *     Backtrace *backtrace
  */
