@@ -7,9 +7,22 @@
 namespace openage {
 namespace curve {
 
+/**
+ * Does not interpolate between values. The template type does only need to
+ * implement `operator=` and copy ctor.
+ */
 template<typename _T>
 class Discrete : public ValueContainer<_T> {
+	static_assert(std::is_copy_assignable<_T>::value,
+	              "Template type is not copy assignable");
+	static_assert(std::is_copy_constructible<_T>::value,
+	              "Template type is not copy constructible");
 public:
+	using ValueContainer<_T>::ValueContainer;
+
+    /**
+     * Does not interpolate anything, just gives the raw value of the keyframe
+     */
 	_T get(const curve_time_t &) const override;
 };
 

@@ -27,7 +27,9 @@ std::vector<event> &Gui::getInputs(const PongPlayer &player) {
 		input_cache.push_back(evnt);
 		mvprintw(1, 1, "UP");
 		break;
-	case ' ': evnt.state = event::START; break;
+	case ' ':
+		evnt.state = event::START;
+		break;
 	case 27:  // esc or alt
 		endwin();
 		exit(0);
@@ -36,6 +38,7 @@ std::vector<event> &Gui::getInputs(const PongPlayer &player) {
 
 	return input_cache;
 }
+
 
 enum {
 	COLOR_PLAYER1 = 1,
@@ -49,6 +52,7 @@ enum {
 	COLOR_3 = 8,
 	COLOR_4 = 9,
 };
+
 
 Gui::Gui() {
 	initscr();
@@ -83,12 +87,13 @@ Gui::Gui() {
 	getch();
 }
 
+
 void Gui::draw(PongState &state, const curve::curve_time_t &now) {
-	erase();
 	//	clear();
 	// Print Score
 	attron(COLOR_PAIR(COLOR_DEBUG));
 	getmaxyx(stdscr, state.resolution[1], state.resolution[0]);
+	state.resolution[1] -= 1;
 	attron(COLOR_PAIR(COLOR_DEBUG));
 	mvprintw(2,
 	         state.resolution[0] / 2 - 5,
@@ -136,10 +141,12 @@ void Gui::draw(PongState &state, const curve::curve_time_t &now) {
 	}
 	attroff(COLOR_PAIR(COLOR_PLAYER2));
 
-	for (int i = 0; i < 9999; ++i) {
-		draw_ball(state.ball.position(now + i * 50), i);
+	attron(COLOR_PAIR(COLOR_1));
+	for (int i = 1; i < 9999; ++i) {
+		draw_ball(state.ball.position(now + i), 'X');
 	}
-
+	attron(COLOR_PAIR(COLOR_0));
+	draw_ball(state.ball.position(now), 'M');
 	/*attron(COLOR_PAIR(COLOR_BALL));
 	  mvprintw(state.ball.position(now)[1],
 	  state.ball.position(now)[0],
@@ -147,17 +154,12 @@ void Gui::draw(PongState &state, const curve::curve_time_t &now) {
 	*/
 	attroff(COLOR_PAIR(COLOR_BALL));
 	refresh();
+	erase();
 }
 
-void Gui::draw_ball(util::Vector<2> pos, int idx) {
-	switch (idx) {
-	case 0: attron(COLOR_PAIR(COLOR_0)); break;
-	default:
-	case 1: attron(COLOR_PAIR(COLOR_1)); break;
-	}
 
-	mvprintw((int)(pos[1]), (int)(pos[0]), "X");
+void Gui::draw_ball(util::Vector<2> pos, char chr) {
+	mvprintw((int)(pos[1]), (int)(pos[0]), "%c", chr);
 	standend();
 }
-}
-}  // openage::curvepong
+}} // openage::curvepong

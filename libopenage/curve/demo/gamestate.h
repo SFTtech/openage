@@ -20,7 +20,12 @@ struct event {
 
 class PongPlayer {
 public:
-	PongPlayer() {
+	PongPlayer(openage::curve::TriggerFactory *f) :
+		speed(f),
+		position(f),
+		lives(f),
+		state(f),
+		size(f) {
 		speed.set_drop(0, 1);
 		position.set_drop(0, 0.5);
 		lives.set_drop(0, 1);
@@ -41,12 +46,20 @@ public:
 
 class PongBall {
 public:
+	PongBall(curve::TriggerFactory *f) :
+		speed(f),
+		position(f) {}
 	curve::Discrete<util::Vector<2>> speed;
 	curve::Continuous<util::Vector<2>> position;
 };
 
 class PongState {
 public:
+	PongState(curve::TriggerFactory *f) :
+		p1(f),
+		p2(f),
+		ball(f) {}
+
 	PongPlayer p1;
 	PongPlayer p2;
 

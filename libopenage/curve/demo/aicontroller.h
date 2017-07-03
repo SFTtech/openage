@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include <vector>
-
 #include "gamestate.h"
+
+#include <vector>
 
 namespace openage {
 namespace curvepong {

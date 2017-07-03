@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include <vector>
-
 #include "gamestate.h"
+
+#include <vector>
 
 namespace openage {
 namespace curvepong {
@@ -16,7 +16,7 @@ public:
 	Gui();
 	std::vector<event> &getInputs(const PongPlayer &player);
 	void draw(PongState &state, const curve::curve_time_t &now);
-	void draw_ball(util::Vector<2> ball, int idx);
+	void draw_ball(util::Vector<2> ball, char chr);
 
 private:
 	std::vector<event> input_cache;

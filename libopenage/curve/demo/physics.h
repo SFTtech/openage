@@ -6,16 +6,24 @@
 
 #include "gamestate.h"
 #include "../curve.h"
+#include "../events.h"
 
 namespace openage {
 namespace curvepong {
 
 class Physics {
 public:
-	void processInput(PongState &, PongPlayer &, std::vector<event> &events, const curve::curve_time_t &now);
-	void update(PongState &, const curve::curve_time_t &);
+
+	void processInput(PongState &, PongPlayer &, std::vector<event> &input, curve::EventQueue *, const curve::curve_time_t &now);
 protected:
-	void update_ball(PongState &, const curve::curve_time_t &, int recursion_limit);
+
+	static void reset(PongState &, curve::EventQueue *, const curve::curve_time_t &);
+
+
+	static void ball_reflect_wall(PongState &, curve::EventQueue *, const curve::curve_time_t &);
+	static void ball_reflect_panel(PongState &, curve::EventQueue *, const curve::curve_time_t &);
+	static void predict_reflect_wall(PongState &, curve::EventQueue *, const curve::curve_time_t &);
+	static void predict_reflect_panel(PongState &, curve::EventQueue *, const curve::curve_time_t &);
 };
 
 }} // openage::curvepong

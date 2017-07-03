@@ -2,16 +2,22 @@
 
 #pragma once
 
-#include <unordered_map>
-
 #include "curve.h"
 #include "map_filter_iterator.h"
+
+#include <iostream>
+#include <unordered_map>
 
 namespace openage {
 namespace curve {
 
+/**
+ * Map that keeps track of the lifetime of the contained elements.
+ * make shure, that no key is never reused.
+ */
 template <typename key_t, typename val_t>
 class UnorderedMap {
+	/** Internal container to access all data and metadata */
 	struct map_element {
 		val_t value;
 		curve_time_t alive;
@@ -21,6 +27,7 @@ class UnorderedMap {
 			  alive(a),
 			  dead(d) {}
 	};
+	/** the magic is inside here */
 	std::unordered_map<key_t, map_element> container;
 
 public:

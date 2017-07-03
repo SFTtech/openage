@@ -5,21 +5,10 @@
 namespace openage {
 namespace curve {
 
+/**
+ * Defines the type that is used as time index.
+ * it has to implement all basic mathematically operations.
+ */
 typedef double curve_time_t;
-/*
-template <class _T>
-curve_time_t time(const _T &t) {
-	return t.time();
-}
 
-template <class _T>
-curve_time_t existent_from (const _T &t) {
-	return t.existent_from();
-}
-
-template <class _T>
-curve_time_t existent_until (const _T &t) {
-	return t.existent_until();
-}
-*/
 }} // openage::curve

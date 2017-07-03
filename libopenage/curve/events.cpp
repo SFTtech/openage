@@ -1,44 +1,31 @@
 // Copyright 2017-2017 the openage authors. See copying.md for legal info.
 
 #include "events.h"
+
 #include <ncurses.h>
+
 namespace openage {
 namespace curve {
 
 #define GUI
 
+// FIXME convert all these std::functions into our own datatype that stores all requirements.
+
+
 EventQueue::Handle EventQueue::addcallback (const curve_time_t &at,
-                                            const std::string &name,
-                                            const EventQueue::condition &precond,
+                                            const EventQueue::Eventclass &eventclass,
                                             const EventQueue::callback &trigger) {
-	return addcallback(Event(at, name, trigger, precond, ++last_event_id));
+	return addcallback(Event(at, eventclass, trigger, ++last_event_id));
 }
 
 
 EventQueue::Handle EventQueue::addcallback (const curve_time_t &at,
-                                            const std::string &name,
-                                            const EventQueue::condition_void &precond,
+                                            const EventQueue::Eventclass &eventclass,
                                             const EventQueue::callback_void &trigger) {
-	return addcallback(Event(at, name,
-	                  [trigger](EventQueue *q, const curve_time_t &) { trigger(q); },
-	                  [precond](const curve_time_t &) { return precond(); },
-	            ++last_event_id));
-}
-
-
-EventQueue::Handle EventQueue::addcallback (const curve_time_t &at,
-                                            const std::string &name,
-                                            const EventQueue::callback &trigger) {
-	return this->addcallback(at, name, &EventQueue::_true, trigger);
-}
-
-
-EventQueue::Handle EventQueue::addcallback (const curve_time_t &at,
-                                            const std::string &name,
-                                            const EventQueue::callback_void &trigger) {
-	return this->addcallback(at, name, &EventQueue::_true, [trigger](EventQueue *q, const curve_time_t &) {
-			trigger(q);
-		});
+	return addcallback(at, eventclass,
+	                   [trigger](EventQueue *q, const curve_time_t &) {
+		                   trigger(q);
+	                   });
 }
 
 
@@ -46,12 +33,26 @@ EventQueue::Handle EventQueue::addcallback (const EventQueue::Event &e) {
 
 	auto it = queue.begin();
 // Iterate to find the right insertion position
-	for(; it != queue.end() && it->time < e.time; ++it) {}
+	for (; it != queue.end() && it->time < e.time; ++it) {}
 
 	queue.insert(it, e);
 
 	// todo clear the past
 	return Handle(e.event_id);
+}
+
+
+void EventQueue::reschedule(const EventQueue::Handle &handle,
+                            const curve_time_t &new_time) {
+	auto it = resolve_handle(handle);
+	if (it != queue.end()) {
+		Event evnt = *it;
+		queue.erase(it);
+		evnt.time = new_time;
+		addcallback(evnt);
+	} else {
+		// the event was either not valid or has already been executed.
+	}
 }
 
 
@@ -74,7 +75,6 @@ void EventQueue::execute_until(const curve_time_t &time) {
 		it->event(this, tmp.time);
 		past.push_back(tmp);
 
-
 		if (this->cleared) {
 			this->cleared = false;
 			break;
@@ -82,11 +82,33 @@ void EventQueue::execute_until(const curve_time_t &time) {
 	}
 }
 
+
+void EventQueue::remove(const EventQueue::Handle &handle) {
+	for (auto it = queue.begin(); it != queue.end(); ++it) {
+		if (it->event_id == handle.event_id) {
+			it = queue.erase(it);
+			break;
+		}
+	}
+}
+
+
+std::deque<EventQueue::Event>::iterator EventQueue::resolve_handle(
+	const EventQueue::Handle &handle) {
+	for (auto it = queue.begin(); it != queue.end(); ++it) {
+		if (it->event_id == handle.event_id) {
+			return it;
+		}
+	}
+	return queue.end();
+}
+
+
 void EventQueue::print() {
 #ifndef GUI
 	std::cout << "Queue: " << std::endl;
 	for (const auto &i : queue) {
-		std::cout << i.time << ": " << i.event_id << i.event_name <<std::endl;
+		std::cout << i.time << ": " << i.event_id << i.event_eventclass <<std::endl;
 	}
 
 	std::cout << std::endl;
@@ -95,7 +117,7 @@ void EventQueue::print() {
 	mvprintw(0, 100, "Queue: Size %i ", queue.size());
 	int row = 1;
 	for (const auto &i : queue) {
-		mvprintw(row, 100, "T: %f [%i] %s", i.time, i.event_id, i.name.c_str());
+		mvprintw(row, 100, "T: %f [%i] %s", i.time, i.event_id, i.eventclass.c_str());
 		row ++;
 	}
 #endif
@@ -140,13 +162,9 @@ void EventQueue::clear(const curve_time_t &time) {
 	std::cout << "CLEAR " << time << std::endl;
 #endif
 	auto it = queue.begin();
-	for(; it != queue.end() && it->time < time; ++it) {}
-	for(; it != queue.end(); it = queue.erase(it) ) {}
+	for (; it != queue.end() && it->time < time; ++it) {}
+	for (; it != queue.end(); it = queue.erase(it) ) {}
 }
 
 
-bool EventQueue::_true(const curve_time_t &) {
-	return true;
-}
-
-}} // namespace openage::curve
+}} // eventclassspace openage::curve

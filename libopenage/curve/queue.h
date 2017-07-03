@@ -11,6 +11,11 @@
 namespace openage {
 namespace curve {
 
+/**
+ * A container that manages events on a timeline. Every event has exactly one
+ * time it will happen.
+ * This container can be used to store interactions
+ */
 template <class _T>
 class Queue {
 	struct queue_wrapper {

@@ -9,11 +9,24 @@
 namespace openage {
 namespace curve {
 
+/**
+ * Continuous Datatype.
+ * Stores a value container with continuous access.
+ * The bound template type _T has to implement `operator+(_T)` and
+ * `operator*(curve_time_t)`.
+ *
+ */
 template<typename _T>
 class Continuous : public ValueContainer<_T> {
 public:
+	using ValueContainer<_T>::ValueContainer;
+	/**
+	 * will interpolate between the keyframes linearly based on the time.
+	 */
 	_T get(const curve_time_t &) const override;
 };
+
+
 
 template <typename _T>
 _T Continuous<_T>::get(const curve_time_t &time) const {

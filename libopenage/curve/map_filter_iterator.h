@@ -2,11 +2,11 @@
 
 #pragma once
 
-#include <iterator>
-#include <limits>
-
 #include "curve.h"
 #include "iterator.h"
+
+#include <iterator>
+#include <limits>
 
 namespace openage {
 namespace curve {

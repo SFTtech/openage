@@ -13,6 +13,8 @@ namespace tests {
 
 void curve_types() {
 	// Check the base container type
+	EventQueue q;
+	TriggerFactory f{&q};
 	{
 		KeyframeContainer<int> c;
 		auto p0 = c.insert(0, 0);
@@ -63,7 +65,7 @@ void curve_types() {
 
 	// Check the Simple Continuous type
 	{
-		Continuous<float> c;
+		Continuous<float> c(&f);
 		c.set_insert(0, 0);
 		c.set_insert(10, 1);
 
@@ -73,7 +75,7 @@ void curve_types() {
 	}
 
 	{
-		Continuous<float> c;
+		Continuous<float> c(&f);
 		c.set_insert(0, 0);
 		c.set_insert(20, 20);
 
@@ -89,7 +91,7 @@ void curve_types() {
 
 	//Check the discrete type
 	{
-		Discrete<int> c;
+		Discrete<int> c(&f);
 		c.set_insert(0, 0);
 		c.set_insert(10, 10);
 
@@ -97,7 +99,7 @@ void curve_types() {
 		TESTEQUALS(c.get(1), 0);
 		TESTEQUALS(c.get(10), 10);
 
-		Discrete<std::string> complex;
+		Discrete<std::string> complex(&f);
 
 		complex.set_insert(0, "Test 0");
 		complex.set_insert(10, "Test 10");
@@ -110,7 +112,7 @@ void curve_types() {
 
 	//check set_drop
 	{
-		Discrete<int> c;
+		Discrete<int> c(&f);
 		c.set_insert(0, 0);
 		c.set_insert(1, 1);
 		c.set_insert(3, 3);
@@ -123,7 +125,7 @@ void curve_types() {
 
 	// Encountered Errors
 	{
-		Continuous<int> c;
+		Continuous<int> c(&f);
 		c.set_insert(1, 1);
 		c.set_drop(1, -5);
 
