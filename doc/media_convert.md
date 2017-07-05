@@ -1,7 +1,7 @@
 How to use the original game assets?
 ------------------------------------
 
-Openage currently depends on the original game assets, so you need a copy of the *original AoE II or AoE II: HD*. You have a few options.
+Openage currently depends on the original game assets, so you need a copy of the *original AoE II or AoE II: HD*. If you use *AoE II: HD*, make sure it is on patch level 4.3. You have a few options.
 
 * You may use [Wine](https://www.winehq.org/) to run Steam for Windows.
 * You can trick Steam for Linux/Mac into downloading the Windows game assets [with a game manifest file](https://gist.github.com/paulirish/758f262379092ff2910a).
