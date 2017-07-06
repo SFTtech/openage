@@ -86,7 +86,7 @@ All of those are features, not bugs.
 To turn them off, use `./run --dont-segfault --no-errors --dont-eat-dog`.
 
 
-If this still does not help, try the [contact section](#contact)
+If this still does not help, try our [troubleshooting guide](/doc/troubleshooting.md), the [contact section](#contact)
 or the [bug tracker](https://github.com/SFTtech/openage/issues).
 
 
