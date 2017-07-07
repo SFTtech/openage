@@ -132,6 +132,7 @@ int foo(int arg0, std::string arg1) {
 ``` cpp
 // pxd: from libcpp.string cimport string
 #include <string>
+#include "util/compiler.h"
 
 namespace openage {
 
@@ -142,7 +143,7 @@ namespace openage {
  *
  * int foo(int arg0, string arg1) except +
  */
-int foo(int arg0, std::string arg1);
+OAAPI int foo(int arg0, std::string arg1);
 
 }
 ```
@@ -214,7 +215,7 @@ This works in the way that you create C++ objects in Cython and then
  *     PyObj obj
  *     string text
  */
-struct demo_struct {
+struct OAAPI demo_struct {
     py::PyObj obj;
     std::string text;
 };
@@ -307,7 +308,7 @@ PyIfFunc<float, int, std::string> bar;
 #include "pyinterface/functional.h"
 
 // pxd: PyIfFunc2[float, int, string] bar
-extern PyIfFunc<float, int, std::string> bar;
+extern OAAPI PyIfFunc<float, int, std::string> bar;
 ```
 
 Wrap the python function in a `cdef` function, and define a method `setup()`,
@@ -385,3 +386,11 @@ this ensures that the GIL is always re-acquired when jumping into Cython code.
 
 __Never__ use raw function pointers in the interface;
 always use the `PyIfFunc` or `Func` objects; otherwise, you'll lose all safety guarantees.
+
+The `OAAPI` macro
+-----------------
+
+`OAAPI` marks the DLL entry-points which is necessary for the Windows build.
+All pxd interface functions, classes, and `extern` objects must be declared with `OAAPI` in the header file.
+See the samples above to understand the exact position of insertion for each of those.
+This can be ignored for functions defined inline in the header.
