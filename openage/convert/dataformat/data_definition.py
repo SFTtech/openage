@@ -93,7 +93,7 @@ class DataDefinition(StructDefinition):
                     entry = os.path.relpath(
                         entry,
                         os.path.dirname(self.name_data_file)
-                    )
+                    ).replace(os.path.sep, '/')  # HACK: Change to better path handling
 
                 # encode each data field, to escape newlines and commas
                 row_entries.append(encode_value(entry))
