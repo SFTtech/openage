@@ -39,7 +39,7 @@ using set_func = std::function<void(std::string)>;
  *     void set(string name, string value) except +
  *     void load_config(Path path) except +
  */
-class CVarManager {
+class OAAPI CVarManager {
 
 public:
 	CVarManager(const util::Path &path);
@@ -100,6 +100,6 @@ private:
  * ctypedef CVarManager * CVarManagerPtr
  * PyIfFunc2[void, CVarManagerPtr, const Path&] pyx_load_config_file
  */
-extern pyinterface::PyIfFunc<void, CVarManager *, const util::Path &> pyx_load_config_file;
+extern OAAPI pyinterface::PyIfFunc<void, CVarManager *, const util::Path &> pyx_load_config_file;
 
 }} // openage::cvar

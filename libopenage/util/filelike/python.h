@@ -49,7 +49,7 @@ public:
 	ssize_t get_size() override;
 
 	bool is_python_native() const noexcept override;
-	py::Obj &get_py_fileobj() const;
+	OAAPI py::Obj &get_py_fileobj() const;
 
 	std::ostream &repr(std::ostream &) override;
 
@@ -62,37 +62,37 @@ protected:
 // used to call to python
 
 // pxd: PyIfFunc2[string, PyObjectPtr, ssize_t] pyx_file_read
-extern pyinterface::PyIfFunc<std::string, PyObject *, ssize_t> pyx_file_read;
+extern OAAPI pyinterface::PyIfFunc<std::string, PyObject *, ssize_t> pyx_file_read;
 
 // pxd: PyIfFunc3[size_t, PyObjectPtr, void *, ssize_t] pyx_file_read_to
-extern pyinterface::PyIfFunc<size_t, PyObject *, void *, ssize_t> pyx_file_read_to;
+extern OAAPI pyinterface::PyIfFunc<size_t, PyObject *, void *, ssize_t> pyx_file_read_to;
 
 // pxd: PyIfFunc1[bool, PyObjectPtr] pyx_file_readable
-extern pyinterface::PyIfFunc<bool, PyObject *> pyx_file_readable;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *> pyx_file_readable;
 
 // pxd: PyIfFunc2[void, PyObjectPtr, const string&] pyx_file_write
-extern pyinterface::PyIfFunc<void, PyObject *, const std::string &> pyx_file_write;
+extern OAAPI pyinterface::PyIfFunc<void, PyObject *, const std::string &> pyx_file_write;
 
 // pxd: PyIfFunc1[bool, PyObjectPtr] pyx_file_writable
-extern pyinterface::PyIfFunc<bool, PyObject *> pyx_file_writable;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *> pyx_file_writable;
 
 // pxd: PyIfFunc3[void, PyObjectPtr, ssize_t, int] pyx_file_seek
-extern pyinterface::PyIfFunc<void, PyObject *, ssize_t, int> pyx_file_seek;
+extern OAAPI pyinterface::PyIfFunc<void, PyObject *, ssize_t, int> pyx_file_seek;
 
 // pxd: PyIfFunc1[bool, PyObjectPtr] pyx_file_seekable
-extern pyinterface::PyIfFunc<bool, PyObject *> pyx_file_seekable;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *> pyx_file_seekable;
 
 // pxd: PyIfFunc1[size_t, PyObjectPtr] pyx_file_tell
-extern pyinterface::PyIfFunc<size_t, PyObject *> pyx_file_tell;
+extern OAAPI pyinterface::PyIfFunc<size_t, PyObject *> pyx_file_tell;
 
 // pxd: PyIfFunc1[void, PyObjectPtr] pyx_file_close
-extern pyinterface::PyIfFunc<void, PyObject *> pyx_file_close;
+extern OAAPI pyinterface::PyIfFunc<void, PyObject *> pyx_file_close;
 
 // pxd: PyIfFunc1[void, PyObjectPtr] pyx_file_flush
-extern pyinterface::PyIfFunc<void, PyObject *> pyx_file_flush;
+extern OAAPI pyinterface::PyIfFunc<void, PyObject *> pyx_file_flush;
 
 // pxd: PyIfFunc1[ssize_t, PyObjectPtr] pyx_file_size
-extern pyinterface::PyIfFunc<ssize_t, PyObject *> pyx_file_size;
+extern OAAPI pyinterface::PyIfFunc<ssize_t, PyObject *> pyx_file_size;
 
 
 }}} // openage::util::filelike

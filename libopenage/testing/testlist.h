@@ -18,7 +18,7 @@ namespace testing {
  *
  * pxd: void run_method(string name) except +
  */
-void run_method(const std::string &name);
+OAAPI void run_method(const std::string &name);
 
 
 }} // openage::testing

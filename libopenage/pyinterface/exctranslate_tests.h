@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,7 +16,7 @@ namespace tests {
  *
  * pxd: void err_cpp_to_py_helper() except +
  */
-void err_cpp_to_py_helper();
+OAAPI void err_cpp_to_py_helper();
 
 
 /**
@@ -25,7 +25,7 @@ void err_cpp_to_py_helper();
  *
  * pxd: PyIfFunc0[void] err_py_to_cpp_helper
  */
-extern PyIfFunc<void> err_py_to_cpp_helper;
+extern OAAPI PyIfFunc<void> err_py_to_cpp_helper;
 
 
 /**
@@ -33,7 +33,7 @@ extern PyIfFunc<void> err_py_to_cpp_helper;
  *
  * pxd: void bounce_call(Func0[void], int) except +
  */
-void bounce_call(Func<void> func, int times);
+OAAPI void bounce_call(Func<void> func, int times);
 
 
 /**
@@ -41,7 +41,7 @@ void bounce_call(Func<void> func, int times);
  *
  * pxd: PyIfFunc2[void, Func0[void], int] bounce_call_py
  */
-extern PyIfFunc<void, Func<void>, int> bounce_call_py;
+extern OAAPI PyIfFunc<void, Func<void>, int> bounce_call_py;
 
 
 }}} // openage::pyinterface::tests

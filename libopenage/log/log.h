@@ -24,7 +24,7 @@ void log(const message &msg);
  *
  * pxd: void set_level(level lvl) except +
  */
-void set_level(level lvl);
+OAAPI void set_level(level lvl);
 
 
 }} // openage::log

@@ -1,6 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
-
-#include <unistd.h>
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "../log/log.h"
 #include "../util/file.h"

@@ -192,6 +192,26 @@ void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> c
 
 #else // WITHOUT_BACKTRACE
 
+#ifdef _MSC_VER
+#include <windows.h>
+
+namespace openage {
+namespace error {
+
+
+void StackAnalyzer::analyze() {
+	std::vector<void *> buffer{64};
+	auto count = RtlCaptureStackBackTrace(base_skip_frames, buffer.size(), buffer.data(), NULL);
+	if (count < buffer.size()) {
+		buffer.resize(count);
+	}
+	this->stack_addrs = std::move(buffer);
+}
+
+}} // openage::error
+
+#else // not _MSC_VER
+
 // use GNU's <execinfo.h>
 #include <execinfo.h>
 
@@ -237,6 +257,13 @@ void StackAnalyzer::analyze() {
 	}
 }
 
+}} // openage::error
+
+#endif // for _MSC_VER or GNU execinfo
+
+namespace openage {
+namespace error {
+
 
 void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> cb,
                                 bool reversed) const {
@@ -245,7 +272,8 @@ void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> c
 	symbol.lineno = 0;
 
 	if (reversed) {
-		for (size_t idx = this->stack_addrs.size(); idx > 0; idx--) {
+		// `for (auto pc : this->stack_addrs | <ranges-ns>::view::reverse)` after Ranges-TS
+		for (size_t idx = this->stack_addrs.size(); idx-- > 0;) {
 			void *pc = this->stack_addrs[idx];
 
 			symbol.functionname = util::symbol_name(pc, false, true);

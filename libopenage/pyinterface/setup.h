@@ -1,8 +1,10 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include <functional>
 
 #pragma once
+
+#include "../util/compiler.h"
 
 /*
  * Code for verifying that all components of the Python interface have been
@@ -51,7 +53,7 @@ void destroy_py_if_component(void *thisptr);
  *
  * pxd: void check() except +
  */
-void check();
+OAAPI void check();
 
 
 }} // openage::pyinterface

@@ -30,6 +30,7 @@
 #include "util/path.h"
 #include "util/profiler.h"
 #include "unit/selection.h"
+#include "util/strings.h"
 #include "screenshot.h"
 
 namespace openage {
@@ -279,7 +280,7 @@ public:
 	/**
 	 * render text with the at a position with specified font size
 	 */
-	void render_text(coord::window position, size_t size, const char *format, ...) __attribute__((format (printf, 4, 5)));
+	void render_text(coord::window position, size_t size, const char *format, ...) ATTRIBUTE_FORMAT(4, 5);
 
 	/**
 	 * move the phys3 camera incorporated in the engine

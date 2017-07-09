@@ -10,7 +10,10 @@ namespace openage {
 namespace gui {
 
 void gui_log(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
-	log::MessageBuilder builder{context.file, static_cast<unsigned>(context.line), context.function, [=] {
+	log::MessageBuilder builder{context.file != nullptr ? context.file : "<unknown file>",
+	                            static_cast<unsigned>(context.line),
+	                            context.function != nullptr ? context.function : "<unknown function>",
+	                            [=] {
 		switch (type) {
 			case QtDebugMsg:
 			return log::lvl::dbg;

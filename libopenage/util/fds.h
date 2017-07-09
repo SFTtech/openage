@@ -1,9 +1,8 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <stdlib.h>
-#include <unistd.h>
 
 #ifndef _WIN32
 #include <termios.h>
@@ -20,7 +19,7 @@ public:
 	/**
 	 * wraps an existing FD
 	 */
-	FD(int fd=STDOUT_FILENO);
+	FD(int fd);
 
 	/**
 	 * duplicates an existing FD, and optionally

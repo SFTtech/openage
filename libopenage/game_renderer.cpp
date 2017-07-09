@@ -4,7 +4,6 @@
 #include <SDL2/SDL.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <unistd.h>
 #include <sstream>
 
 #include "coord/vec2f.h"

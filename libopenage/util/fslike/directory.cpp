@@ -2,16 +2,32 @@
 
 #include "directory.h"
 
+// HACK: windows.h defines max and min as macros. This results in compile errors.
+#ifdef _MSC_VER
+// defining `NOMINMAX` disables the definition of those macros.
+#define NOMINMAX
+#endif
+
 #include <cstdio>
 #include <dirent.h>
 #include <fcntl.h>
 #include <iostream>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <unistd.h>
 
 #ifdef __APPLE__
 #include <sys/time.h>
+#endif
+#ifdef _MSC_VER
+#include <direct.h>
+#include <io.h>
+#include <sys/utime.h>
+// HACK: What the heck? I want the std::filesystem library!
+#define O_NOCTTY 0
+#define O_NONBLOCK 0
+#define W_OK 2
+#else // ! _MSC_VER
+#include <unistd.h>
 #endif
 
 #include "./native.h"
@@ -146,7 +162,11 @@ bool Directory::mkdirs(const Path::parts_t &parts) {
 		}
 
 		// create the folder, umask will turn it to 755.
+#ifdef _MSC_VER
+		bool dir_created = _mkdir(dirpath.c_str()) == 0;
+#else
 		bool dir_created = mkdir(dirpath.c_str(), 0777) == 0;
+#endif
 
 		if (not dir_created) {
 			return false;
@@ -209,6 +229,8 @@ bool Directory::touch(const Path::parts_t &parts) {
 	// update the timestamp
 #ifdef __APPLE__
 	int result = utimes(path.c_str(), nullptr) == 0;
+#elif defined _MSC_VER
+	int result = _utime(path.c_str(), nullptr) == 0;
 #else
 	int result = utimensat(AT_FDCWD, path.c_str(), nullptr, 0) == 0;
 #endif
@@ -229,6 +251,8 @@ int Directory::get_mtime(const Path::parts_t &parts) {
 	if (std::get<1>(stat_result) == 0) {
 #ifdef __APPLE__
 		return std::get<0>(stat_result).st_mtimespec.tv_sec;
+#elif defined _MSC_VER
+		return std::get<0>(stat_result).st_mtime;
 #else
 		return std::get<0>(stat_result).st_mtim.tv_sec;
 #endif

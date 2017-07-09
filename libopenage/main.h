@@ -36,6 +36,6 @@ struct main_arguments {
  *
  * pxd: int run_game(const main_arguments &args) except +
  */
-int run_game(const main_arguments &args);
+OAAPI int run_game(const main_arguments &args);
 
 } // openage

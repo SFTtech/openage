@@ -8,6 +8,7 @@
 // pxd: from libcpp.string cimport string
 #include <string>
 
+#include "../compiler.h"
 
 namespace openage {
 namespace util {
@@ -37,7 +38,7 @@ namespace filelike {
  *
  *     bool is_python_native() noexcept
  */
-class FileLike {
+class OAAPI FileLike {
 public:
 	/**
 	 * Seek reference point.

@@ -57,7 +57,7 @@ private:
  *     PyObjectRef py_obj
  *     void init_backtrace() except +
  */
-class PyException : public error::Error {
+class OAAPI PyException : public error::Error {
 public:
 	/**
 	 * Returns the type name of py_obj.
@@ -80,7 +80,7 @@ public:
 
 
 // pxd: PyIfFunc2[void, PyObjectPtr, Func1[void, backtrace_symbol_constptr]] pyexception_bt_get_symbols
-extern PyIfFunc<void, PyObject *, Func<void, const error::backtrace_symbol *>> pyexception_bt_get_symbols;
+extern OAAPI PyIfFunc<void, PyObject *, Func<void, const error::backtrace_symbol *>> pyexception_bt_get_symbols;
 
 
 }} // openage::pyinterface

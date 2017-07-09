@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -41,7 +41,7 @@ namespace util {
  *     cppbool operator !=(Enum[T] arg) except +
  */
 template<typename T>
-class Enum {
+class OAAPI Enum {
 public:
 	/**
 	 * Adds a new value to the enum.

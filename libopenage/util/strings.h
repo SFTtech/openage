@@ -10,6 +10,11 @@
 #include <string>
 #include <vector>
 
+#if defined(__GNUC__)
+#define ATTRIBUTE_FORMAT(i, j) __attribute__ ((format (printf, i, j)))
+#else
+#define ATTRIBUTE_FORMAT(i, j)
+#endif
 
 namespace openage {
 namespace util {
@@ -60,7 +65,7 @@ std::ostream &operator <<(std::ostream &os, FixedPoint<divisor, decimals, w> f) 
 /**
  * printf-style to-string formatting.
  */
-std::string sformat(const char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
+std::string sformat(const char *fmt, ...) ATTRIBUTE_FORMAT(1, 2);
 
 
 /**

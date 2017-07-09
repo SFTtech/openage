@@ -48,7 +48,7 @@ namespace error {
  *
  *     Backtrace *backtrace
  */
-class Error : public std::runtime_error {
+class OAAPI Error : public std::runtime_error {
 public:
 	/**
 	 * @param msg
@@ -156,26 +156,29 @@ inline std::string no_ensuring_message()
 
 /*
  *  expands to the first argument
+ * Modified for MSVC using the technique by Jeff Walden
+ * https://stackoverflow.com/a/9338429
  */
-#define OPENAGE_ENS_FIRST(...) OPENAGE_ENS_FIRST_HELPER(__VA_ARGS__, throwaway)
+#define OPENAGE_PP_GLUE(macro, args) macro args
+#define OPENAGE_ENS_FIRST(...) OPENAGE_PP_GLUE(OPENAGE_ENS_FIRST_HELPER,(__VA_ARGS__, throwaway))
 #define OPENAGE_ENS_FIRST_HELPER(first, ...) (first)
 
 /*
  * Standard alternative to GCC's ##__VA_ARGS__ trick (Richard Hansen)
  * http://stackoverflow.com/a/11172679/4742108
  *
- * If there's only one argument, expands to nothing. If there is more
- * than one argument, expands to a '<<' followed by everything but
- * the first argument. Only supports up to 2 arguments but can be
- * trivially expanded.
+ * If there's only one argument, expands to << ::openage::error::no_ensuring_message()
+ * If there is more than one argument, expands to a '<<' followed by everything but
+ * the first argument. Only supports up to 2 arguments but can be trivially expanded.
  */
-#define OPENAGE_ENS_REST(...) OPENAGE_ENS_REST_HELPER(OPENAGE_ENS_NUM(__VA_ARGS__), __VA_ARGS__)
-#define OPENAGE_ENS_REST_HELPER(qty, ...) OPENAGE_ENS_REST_HELPER2(qty, __VA_ARGS__)
-#define OPENAGE_ENS_REST_HELPER2(qty, ...) OPENAGE_ENS_REST_HELPER_##qty(__VA_ARGS__)
+#define OPENAGE_ENS_REST(...) OPENAGE_PP_GLUE(OPENAGE_ENS_REST_HELPER(OPENAGE_ENS_NUM(__VA_ARGS__)), (__VA_ARGS__))
+#define OPENAGE_ENS_REST_HELPER(qty) OPENAGE_ENS_REST_HELPER1(qty)
+#define OPENAGE_ENS_REST_HELPER1(qty) OPENAGE_ENS_REST_HELPER2(qty)
+#define OPENAGE_ENS_REST_HELPER2(qty) OPENAGE_ENS_REST_HELPER_##qty
 #define OPENAGE_ENS_REST_HELPER_ONE(first) << ::openage::error::no_ensuring_message()
 #define OPENAGE_ENS_REST_HELPER_TWOORMORE(first, ...) << __VA_ARGS__
-#define OPENAGE_ENS_NUM(...) \
-	OPENAGE_ENS_SELECT_2ND(__VA_ARGS__, TWOORMORE, ONE, throwaway)
+#define OPENAGE_ENS_NUM(...) OPENAGE_ENS_NUM_IMPL((__VA_ARGS__, TWOORMORE, ONE, throwaway))
+#define OPENAGE_ENS_NUM_IMPL(args) OPENAGE_ENS_SELECT_2ND args
 #define OPENAGE_ENS_SELECT_2ND(a1, a2, a3, ...) a3
 
 } // error
