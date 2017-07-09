@@ -14,6 +14,12 @@
 *.pyc
 *.pyo
 __pycache__
+*.pyd
+
+# MSVC files
+*.pdb
+*.dll
+*.exe
 
 # workflow
 *.orig
@@ -22,6 +28,8 @@ __pycache__
 # build system
 /bin
 /.bin
+/build
+/deps
 
 # root dir run script
 /run
