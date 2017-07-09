@@ -20,7 +20,7 @@ def main():
     args = cli.parse_args()
 
     with open(args.py_file_list) as fileobj:
-        listed = set(fileobj.read().strip().split(';'))
+        listed = set(os.path.normpath(filepath) for filepath in fileobj.read().strip().split(';'))
         if listed == {''}:
             listed = set()
 

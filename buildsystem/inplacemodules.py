@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Installs the Python extension modules that were created in the build directory
@@ -21,6 +21,9 @@ def main():
     cli.add_argument("binary_dir", help=(
         "the build directory where those files will be found."
     ))
+    cli.add_argument("configuration", help=(
+        "the build configuration like Debug or Release"
+    ))
     cli.add_argument("--clean", action="store_true", help=(
         "remove instead of creating"
     ))
@@ -38,6 +41,9 @@ def main():
     for module in modules:
         sourcefile = module
         targetfile = os.path.relpath(module, args.binary_dir)
+
+        # If `targetfile` has a configuration component, remove it.
+        targetfile = os.path.normpath(targetfile.replace(args.configuration, '.'))
 
         if os.path.exists(targetfile):
             if args.clean:

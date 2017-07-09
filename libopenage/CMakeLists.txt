@@ -74,12 +74,21 @@ endif()
 # windows does not have libm
 if(NOT WIN32)
 	find_library(MATH_LIB m)
+	find_library(UTIL_LIB util)
+endif()
+if(MSVC)
+	find_library(OGG_LIB ogg)
+else()
+	find_library(DL_LIB dl)
+endif()
+if(NOT APPLE AND NOT MSVC)
+	find_library(RT_LIB rt)
+	if (${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
+		find_library(EXECINFO_LIB execinfo)
+	endif()
 endif()
 
 find_library(FONTCONFIG_LIB fontconfig)
-if(NOT WIN32)
-	find_library(UTIL_LIB util)
-endif()
 
 find_package(Freetype REQUIRED)
 find_package(OpenGL REQUIRED)
@@ -88,11 +97,6 @@ find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
-
-set(DLOPEN "")
-if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-	set(DLOPEN dl)
-endif()
 
 set(QT_VERSION_REQ "5.5")
 find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
@@ -166,7 +170,7 @@ include_directories(
 # link the executable to those libraries
 target_link_libraries(libopenage
 	PUBLIC
-		${DLOPEN}
+		${DL_LIB}
 		${FONTCONFIG_LIB}
 		${FREETYPE_LIBRARIES}
 		${EPOXY_LIBRARIES}
@@ -177,6 +181,9 @@ target_link_libraries(libopenage
 		${SDL2_LIBRARY}
 		${UTIL_LIB}
 		${HarfBuzz_LIBRARIES}
+		${RT_LIB}
+		${OGG_LIB}
+		${EXECINFO_LIB}
 	# TODO: change to PUBLIC (or, alternatively, remove all keywords
 	# of this type) when qt cmake scripts change declarations of the
 	# IMPORTED libraries to GLOBAL.
@@ -184,19 +191,5 @@ target_link_libraries(libopenage
 		Qt5::Core
 		Qt5::Quick
 )
-
-if(NOT APPLE)
-	if (${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
-		target_link_libraries(libopenage
-			PUBLIC
-			execinfo
-			util
-		)
-	endif()
-	target_link_libraries(libopenage
-		PUBLIC
-		rt
-	)
-endif()
 
 install(TARGETS libopenage DESTINATION ${CMAKE_INSTALL_LIBDIR} LIBRARY)

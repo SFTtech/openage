@@ -29,6 +29,7 @@ function(add_sources binary_name)
 			if(NOT IS_ABSOLUTE "${source}")
 				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 			endif()
+			file(TO_CMAKE_PATH "${source}" source)
 
 			set_property(
 				GLOBAL APPEND PROPERTY
@@ -88,7 +89,7 @@ function(finalize_binary target_name output_name type)
 				message(FATAL_ERROR "finalize_binary flag 'allow_no_undefined' is only valid for libraries!")
 			endif()
 
-			if(NOT "${CMAKE_CXX_FLAGS}" MATCHES "-fsanitize")
+			if(NOT "${CMAKE_CXX_FLAGS}" MATCHES "-fsanitize" AND NOT MSVC)
 				if(APPLE)
 					set(link_flag "-undefined,error")
 				else()

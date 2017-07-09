@@ -272,7 +272,7 @@ class PXDGenerator:
                 if namespace != previous_namespace:
                     yield (
                         "cdef extern "
-                        "from \"" + self.filename + "\" "
+                        "from r\"" + self.filename + "\" "
                         "namespace \"" + namespace + "\" "
                         "nogil"
                         ":"
@@ -403,7 +403,7 @@ def parse_args():
 def main():
     """ CLI entry point """
     args = parse_args()
-    cppdir = CWD + "/libopenage"
+    cppdir = os.path.join(CWD, "libopenage")
 
     if args.verbose:
         hdr_count = len(args.all_files)
