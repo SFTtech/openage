@@ -2,6 +2,7 @@
 
 #pragma once
 
+// pxd: from libopenage.curve cimport Trigger
 #include "../trigger.h"
 #include "keyframe_container.h"
 
@@ -10,6 +11,14 @@
 namespace openage {
 namespace curve {
 
+/**
+ * pxd:
+ *
+ * cppclass ValueContainer(Trigger):
+ *      void set_drop(const curve_time_t &) except +
+ *      void set_insert(const curve_time_t &) except +
+ *
+ */
 template<typename _T>
 class ValueContainer : public Trigger {
 public:
@@ -52,7 +61,7 @@ void ValueContainer<_T>::set_drop(const curve_time_t &at, const _T &value) {
 	container.insert(at, value, hint);
 	this->last_element = hint;
 
-	this->data_changed(1, at);
+	this->data_changed(at, at);
 }
 
 

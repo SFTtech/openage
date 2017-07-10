@@ -2,9 +2,6 @@
 
 #pragma once
 
-#include "config.h"
-
-#include "../object.h"
 #include "../continuous.h"
 #include "../discrete.h"
 #include "../../util/vector.h"
@@ -21,17 +18,22 @@ struct event {
 	event() : player(0), state(IDLE) {}
 };
 
-class PongPlayer : public curve::Object {
+class PongPlayer {
 public:
 	PongPlayer(openage::curve::TriggerFactory *f) :
-		Object(f),
 		speed(f),
 		position(f),
 		lives(f),
 		state(f),
-		size(f),
-		y(0),
-		id(0) {}
+		size(f) {
+		speed.set_drop(0, 1);
+		position.set_drop(0, 0.5);
+		lives.set_drop(0, 1);
+		state.set_drop(0, event(0, event::IDLE));
+		size.set_drop(0, 0.1);
+		y = 0;
+		id = 0;
+	}
 
 	curve::Discrete<float> speed;
 	curve::Continuous<float> position;
@@ -42,20 +44,18 @@ public:
 	int id;
 };
 
-class PongBall : public curve::Object {
+class PongBall {
 public:
 	PongBall(curve::TriggerFactory *f) :
-		Object(f),
-		speed(this),
-		position(this) {}
+		speed(f),
+		position(f) {}
 	curve::Discrete<util::Vector<2>> speed;
 	curve::Continuous<util::Vector<2>> position;
 };
 
-class PongState : public curve::Object {
+class PongState {
 public:
 	PongState(curve::TriggerFactory *f) :
-		Object(f),
 		p1(f),
 		p2(f),
 		ball(f) {}

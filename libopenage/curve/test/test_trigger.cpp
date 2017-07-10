@@ -1,7 +1,5 @@
 // Copyright 2017-2017 the openage authors. See copying.md for legal info.
 
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
-
 #include "../../testing/testing.h"
 #include "../trigger.h"
 

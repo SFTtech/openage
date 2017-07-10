@@ -10,11 +10,23 @@ add_sources(libopenage
 	map.cpp
 	map_filter_iterator.cpp
 	queue.cpp
-	queue.cpp
 	queue_filter_iterator.cpp
 	trigger.cpp
 )
 
-add_subdirectory(internal)
+pxdgen(
+	continuous.h
+	curve.h
+	discrete.h
+	events.h
+	iterator.h
+	map.h
+	map_filter_iterator.h
+	queue.h
+	queue_filter_iterator.h
+	trigger.h
+)
+
+
 add_subdirectory(test)
 add_subdirectory(demo)

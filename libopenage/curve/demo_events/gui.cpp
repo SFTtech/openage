@@ -15,7 +15,7 @@ std::vector<event> &Gui::getInputs(const PongPlayer &player) {
 	evnt.state  = event::IDLE;
 	timeout(0);
 	int c = getch();
-	mvprintw(0,30, "IN: %i", c);
+	// mvprintw(0,1, "IN: %i", c);
 	switch (c) {
 	case KEY_DOWN:
 		evnt.state = event::DOWN;
@@ -33,11 +33,6 @@ std::vector<event> &Gui::getInputs(const PongPlayer &player) {
 	case 27:  // esc or alt
 		endwin();
 		exit(0);
-		break;
-	case 114: //r
-		evnt.state = event::START;
-		input_cache.push_back(evnt);
-		break;
 	default: break;
 	}
 

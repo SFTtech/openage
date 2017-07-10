@@ -15,6 +15,9 @@ namespace curve {
  * The bound template type _T has to implement `operator+(_T)` and
  * `operator*(curve_time_t)`.
  *
+ * pxd:
+ * cppclass Continuous(ValueContainer):
+ *     _T get(const curve_time_t&) except +
  */
 template<typename _T>
 class Continuous : public ValueContainer<_T> {

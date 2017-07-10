@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "config.h"
 #include "gamestate.h"
 
 #include <vector>

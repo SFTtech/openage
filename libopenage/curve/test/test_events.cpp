@@ -16,13 +16,19 @@ static void print_vector(const std::vector<std::pair<curve_time_t, int>> &t) {
 
 EventQueue createQueue(std::vector<std::pair<curve_time_t, int>> &calls) {
 	EventQueue q;
-	q.addcallback(1, "1", [&calls](EventQueue *, const curve_time_t &t) {
+	q.addcallback("1", 1, [](const curve_time_t &) {
+			return 1;
+		},
+		[&calls](EventQueue *, const curve_time_t &t) {
 			calls.push_back(std::make_pair(t, 1));
-		});
+		}, {});
 
-	q.addcallback(2, "2", [&calls](EventQueue *, const curve_time_t &t) {
+	q.addcallback("2", 2, [](const curve_time_t &) {
+			return 2;
+		},
+		[&calls](EventQueue *, const curve_time_t &t) {
 			calls.push_back(std::make_pair(t, 2));
-		});
+		}, {});
 
 	return q;
 }

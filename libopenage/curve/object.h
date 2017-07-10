@@ -2,19 +2,20 @@
 
 #pragma once
 
+#include "internal/value_container.h"
+
 namespace openage {
 namespace curve {
 
-#include "internal/value_container.h"
 
 /**
  * A Curve Object is a ordered collection of internal curves. Every sub-curve
  * needs to be registered at this parent element.
  */
-class Object : public Trigger {
+class Object : public TriggerIntermediateMaster {
 public:
 	Object(TriggerFactory *factory) :
-		Trigger(factory, parent) {};
+		TriggerIntermediateMaster(factory) {};
 
 private:
 

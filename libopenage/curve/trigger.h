@@ -2,6 +2,9 @@
 
 #pragma once
 
+// pxd: from libcpp.string cimport string
+// pxd: from libopenage.curve.events cimport EventQueue
+// pxd: from libopenage.curve.curve cimport curve_time_t
 #include "events.h"
 
 #include <vector>
@@ -14,11 +17,22 @@ namespace tests {
 void trigger();
 }
 
-class TriggerFactor;
+class TriggerFactory;
 
 /**
  * A Trigger is a entity, that where one can subscripe its change interface.
  * It will keep track of everything for change observation on top of event queue.
+ *
+ * pxd:
+ *
+ * cppclass Trigger:
+ *      ctypedef void (*change_event)(EventQueue *, const curve_time_t &)
+ *      void Trigger(TriggerFactory *) except +
+ *      void on_change_future(const string &, const Trigger.change_event &) except +
+ *      void on_pass_keyframe(const string &, const Trigger.change_event &) except +
+ *      void on_pre_horizon(const curve_time_t &, const string &, const change_event &) except +
+ *      void on_change(const curve_time_t &, const string &, const change_event &) except +
+ *      void clearevents() except +
  */
 class Trigger {
 	friend class TriggerFactory;
@@ -26,6 +40,7 @@ class Trigger {
 public:
 	typedef std::function<void(EventQueue *, const curve_time_t &)> change_event;
 
+	const std::string name;
 	Trigger(class TriggerFactory *factory);
 
 	virtual ~Trigger();
@@ -33,7 +48,7 @@ public:
 	/**
 	 * Will be triggered when anything changes - immediately.
 	 */
-	void on_change_future(const EventQueue::Eventclass &, const change_event &);
+	void on_change_future(const EventQueue::Eventclass &, const change_event & );
 
 	/**
 	 * Will be triggered whenever you pass a keyframe, that is not relevant for execution anymore
@@ -143,6 +158,10 @@ private:
 
 /**
  * The triggger Factory is stored once per gamestate and manages the Eventqueue
+ *
+ * pxd:
+ * cppclass TriggerFactory:
+ *     pass
  */
 class TriggerFactory {
 public:
@@ -154,23 +173,41 @@ public:
 	 * Remove all associated events for this trigger.
 	 * Does not invalidate the trigger!
 	 */
-	void remove(Trigger *);
+	virtual void remove(Trigger *);
 
 	/**
 	 * Queue the event in the underlying event queue.
 	 */
-	EventQueue::Handle enqueue(Trigger *, const Trigger::EventTrigger &);
-	EventQueue::Handle enqueue(Trigger *, const Trigger::EventTrigger &, const curve_time_t &time);
+	EventQueue::Handle enqueue(Trigger *,
+	                           const Trigger::EventTrigger &,
+	                           const curve_time_t &now);
+	EventQueue::Handle enqueue(Trigger *,
+	                           const Trigger::EventTrigger &,
+	                           const EventQueue::time_predictor &,
+	                           const curve_time_t &now);
 
 	/**
 	 * Remove the event and insert it again in the required position.
 	 * /FIXME: Only works for future events at the moment
 	 */
-	void reschedule(const EventQueue::Handle &, const curve_time_t &new_time);
+	void reschedule(const EventQueue::Handle &,
+	                const EventQueue::time_predictor &new_timer,
+	                const curve_time_t &now);
 
-private:
+	void reschedule(const EventQueue::Handle &,
+	                const curve_time_t &now);
+
+	void reschedule(const curve_time_t &now);
+
+	std::string generate_uuid(void const *);
 
 	EventQueue *queue;
 };
+
+class TriggerIntermediateMaster : public Trigger, public TriggerFactory {
+public:
+	TriggerIntermediateMaster(TriggerFactory *superFactory);
+};
+
 
 }} // openage::curve

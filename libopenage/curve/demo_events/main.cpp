@@ -1,6 +1,5 @@
 // Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
-#include "config.h"
 #include "aicontroller.h"
 #include "gamestate.h"
 #include "gui.h"
@@ -12,6 +11,10 @@
 
 typedef std::chrono::high_resolution_clock Clock;
 
+#define GUI
+#define REALTIME 3
+#undef HUMAN
+
 namespace openage {
 namespace curvepong {
 
@@ -20,16 +23,15 @@ int demo() {
 #ifdef GUI
 	curvepong::Gui gui;
 #endif
-bool running = true;
+	curve::EventQueue queue;
+	curve::TriggerFactory factory{&queue};
+	curvepong::Physics phys;
+	curvepong::AIInput ai;
+	bool running = true;
 	srand(time(NULL));
 	while (running) {
-		curve::EventQueue queue;
-		curve::TriggerFactory factory{&queue};
-		curve::curve_time_t now = 1;
-		curvepong::Physics phys;
-		curvepong::AIInput ai;
 		curvepong::PongState state(&factory);
-		curvepong::Physics::init(state, &queue, now);
+		curve::curve_time_t now = 1;
 
 		state.p1.lives.set_drop(now, 3);
 		state.p1.id = 0;
@@ -59,10 +61,7 @@ bool running = true;
 #ifdef HUMAN
 			phys.processInput(state, state.p1, gui.getInputs(state.p1), &queue, now);
 #else
-#ifdef GUI
 			gui.getInputs(state.p1);
-#endif
-
 			phys.processInput(
 				state, state.p1, ai.getInputs(state.p1, state.ball, now), &queue, now);
 #endif
@@ -72,28 +71,23 @@ bool running = true;
 			state.p1.y = 0;
 			state.p2.y = state.resolution[0] - 1;
 
-			queue.execute_until(now + 10000);
+			queue.execute_until(now + 100);
 //			phys.update(state, now);
 			queue.print();
 #ifdef GUI
 			gui.draw(state, now);
 #endif
-
-#if REALTIME == 0
+#if REALTIME == 1
+			usleep(4000);
 			double dt = std::chrono::duration_cast<std::chrono::milliseconds>(
-				(Clock::now() - loop_start))
-			            .count();
-			if (dt < 12000) {
-				usleep(12000 - dt);
-			}
+			                (Clock::now() - loop_start))
+			                .count();
 			now += dt;
-#elif REALTIME == 1
-			now += 1;
-			usleep(12000);
 #elif REALTIME == 2
 			now += 4;
 #else
-			#error no REALTIME plan set
+			now += 1;
+			usleep(4000);
 #endif
 			loop_start = Clock::now();
 		}

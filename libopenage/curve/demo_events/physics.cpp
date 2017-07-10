@@ -1,7 +1,6 @@
 // Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "physics.h"
-
 #include "../../error/error.h"
 
 #include <cassert>
@@ -9,69 +8,12 @@
 
 #include <ncurses.h>
 
+#define GUI
+
 namespace openage {
 namespace curvepong {
 
 const float extrapolating_time = 100.0f;
-
-void Physics::init(PongState &state, curve::EventQueue *queue, const curve::curve_time_t &now) {
-#ifndef GUI
-	std::cout << "Init" << std::endl;
-#endif
-
-	queue->schedule(
-		"physics.predictor.panel",
-		now,
-		[&state, &queue](const curve::curve_time_t &now) {
-			return predict_reflect_panel(state, queue, now);
-		},
-		[&state] (curve::EventQueue *queue, const curve::curve_time_t &now) {
-			ball_reflect_panel(state, queue, now);
-		}, {
-			&state.ball.position,
-			&state.p1.position,
-			&state.p2.position
-		});
-
-	queue->schedule(
-		"physics.predictor.wall",
-		now,
-		[&state, &queue](const curve::curve_time_t &now) {
-			return predict_reflect_wall(state, queue, now);
-		},
-		[&state] (curve::EventQueue *queue, const curve::curve_time_t &now) {
-			ball_reflect_wall(state, queue, now);
-		}, {&state.ball.position});
-
-
-/*	state.ball.speed.clearevents();
-	state.ball.speed.on_change_future(
-		"physics.change_future",
-		[&state](curve::EventQueue *queue, const curve::curve_time_t &now) {
-			predict_reflect_wall(state, queue, now);
-			predict_reflect_panel(state, queue, now);
-		});
-
-	state.p1.position.clearevents();
-	state.p1.position.on_change(
-		now,
-		"physics.reflect_panel",
-		[&state](curve::EventQueue *queue, const curve::curve_time_t &now) {
-			auto t = predict_reflect_panel(state, queue, now);
-			queue->reschedule(t);
-		});
-
-	state.p2.position.clearevents();
-	state.p2.position.on_change(
-		now,
-		"physics.reflect_panel",
-		[&state](curve::EventQueue *queue, const curve::curve_time_t &now) {
-			auto t = predict_reflect_panel(state, queue, now);
-			queue->reschedule(t);
-		});
-*/
-	reset(state, queue, now);
-}
 
 void Physics::processInput(PongState &state,
                            PongPlayer &player,
@@ -108,8 +50,8 @@ void Physics::processInput(PongState &state,
 				break;
 			}
 			case event::IDLE:
-//					player.position.set_drop(now+extrapolating_time,
-//						player.position.get(now));
+					player.position.set_drop(now+extrapolating_time,
+						player.position.get(now));
 				break;
 			case event::START:
 				reset(state, queue, now);
@@ -129,41 +71,38 @@ void Physics::processInput(PongState &state,
 
 
 void Physics::reset(PongState &state,
-                    curve::EventQueue *,//q,
+                    curve::EventQueue *q,
                     const curve::curve_time_t &now) {
-//	q->clear(now);
-	state.on_pre_horizon(
-		now, "physics.reset",
-		[&state](curve::EventQueue *queue, const curve::curve_time_t &now) {
+	q->clear(now);
+	q->addcallback(now, "COLL WALL",
+	                   [&state](curve::EventQueue *queue, const curve::curve_time_t &now) {
+		                   state.ball.position.set_drop(now, state.resolution * 0.5);
+		                   state.p1.position.set_drop(now, state.resolution[1] / 2);
+		                   state.p2.position.set_drop(now, state.resolution[1] / 2);
+		                   float dirx = (rand() % 2 * 2) - 1;
+		                   float diry = (rand() % 2 * 2) - 1;
+		                   auto init_speed =
+		                   util::Vector<2>(
+							   dirx * (0.0001 + (rand() % 100) / 1000.f),
+							   diry * (0.0001 + (rand() % 100) / 2000.f));
 
-			state.ball.position.set_drop(now-0.1, state.ball.position.get(now));
-			state.ball.position.set_drop(now, state.resolution * 0.5);
-			state.p1.position.set_drop(now, state.resolution[1] / 2);
-			state.p2.position.set_drop(now, state.resolution[1] / 2);
-			float dirx = 1;//(rand() % 2 * 2) - 1;
-			float diry = 0.1;//(rand() % 2 * 2) - 1;
-			auto init_speed =
-			util::Vector<2>(
-				dirx * (0.0001 + (rand() % 100) / 1000.f),
-				diry * (0.0001 + (rand() % 100) / 2000.f));
-
-			state.ball.speed.set_drop(now, init_speed);
-			auto pos = state.ball.position.get(now);
-			static int cnt = 0;
-			mvprintw(20, 20, "Reset. Speed %f | %f POS %f | %f [%i]",
-			         init_speed[0],
-			         init_speed[1],
-			         pos[0],
-			         pos[1],
-			         ++cnt);
-			predict_reflect_panel(state, queue, now);
-			predict_reflect_wall(state, queue, now);
-		});
+						   state.ball.speed.set_drop(now, init_speed);
+						   auto pos = state.ball.position.get(now);
+		                   static int cnt = 0;
+		                   mvprintw(20, 20, "Reset. Speed %f | %f POS %f | %f [%i]",
+		                            init_speed[0],
+		                            init_speed[1],
+		                            pos[0],
+		                            pos[1],
+		                            ++cnt);
+		                   predict_reflect_panel(state, queue, now);
+		                   predict_reflect_wall(state, queue, now);
+	                   });
 }
 
 
 void Physics::ball_reflect_wall(PongState &state,
-                                curve::EventQueue *, //queue,
+                                curve::EventQueue *queue,
                                 const curve::curve_time_t &now) {
 	auto pos = state.ball.position.get(now);
 	auto speed = state.ball.speed.get(now);
@@ -178,40 +117,40 @@ void Physics::ball_reflect_wall(PongState &state,
 	state.ball.speed.set_drop(now, speed);
 	state.ball.position.set_drop(now, pos);
 
-//	predict_reflect_wall(state, queue, now);
+	predict_reflect_wall(state, queue, now);
 }
 
 
-curve::curve_time_t Physics::predict_reflect_wall(
-	PongState &state,
-	curve::EventQueue *, //queue,
-	const curve::curve_time_t &now)
-{
+void Physics::predict_reflect_wall(PongState &state,
+                                   curve::EventQueue *queue,
+                                   const curve::curve_time_t &now) {
 	auto pos = state.ball.position.get(now);
 	auto speed = state.ball.speed.get(now);
-	if (speed[1] == 0) return std::numeric_limits<curve::curve_time_t>::max();
+
 	double ty = 0;
 	if (speed[1] > 0) {
 		ty = (state.resolution[1] - pos[1]) / speed[1];
 	} else if (speed[1] < 0) {
 		ty = pos[1] / -speed[1];
 	} else {
-//		throw Error(MSG(err) << "speed was 0");
+		throw Error(MSG(err) << "speed was 0");
 	}
 #ifdef GUI
 	mvprintw(22, 40, "WALL TY %f NOW %f, NOWTY %f ", ty, now, now + ty);
 #endif
 	if (ty > 0) {
-//		auto hit_pos = pos + speed * ty;
-//		hit_pos[1] = speed[1] > 0 ? state.resolution[1] : 0;
-//		assert(hit_pos[0] >= 0);
-//		assert(hit_pos[1] >= 0);
-//		state.ball.position.set_drop(now + ty, hit_pos);
-//		ball_reflect_wall(state, queue, now + ty);
+		auto hit_pos = pos + speed * ty;
+		hit_pos[1] = speed[1] > 0 ? state.resolution[1] : 0;
+		//assert(hit_pos[0] >= 0);
+		assert(hit_pos[1] >= 0);
+		state.ball.position.set_drop(now + ty, hit_pos);
+		queue->addcallback(now + ty, "COLL WALL",
+		    [&state](curve::EventQueue *q, const curve::curve_time_t &t) {
+				ball_reflect_wall(state, q, t);
+			});
 	} else {
-//		throw Error(MSG(err) << "lost a callback because ty was " << ty << " <= 0");
+		throw Error(MSG(err) << "lost a callback because ty was " << ty << " <= 0");
 	}
-	return now + ty;
 }
 
 
@@ -234,9 +173,8 @@ void Physics::ball_reflect_panel(PongState &state,
 	        || pos[1] > state.p1.position.get(now) + state.p1.size.get(now) / 2)) {
 		// Ball missed the paddel of player 1
 		auto l = state.p1.lives(now);
-		l--;
-		state.
-		p1.lives.set_drop(now, l);
+		l --;
+		state.p1.lives.set_drop(now, l);
 		state.ball.position.set_drop(now, pos);
 		reset(state, queue, now);
 		mvprintw(21, 18, "1");
@@ -255,18 +193,17 @@ void Physics::ball_reflect_panel(PongState &state,
 		speed[0] *= -1.0;
 		state.ball.speed.set_drop(now, speed);
 		state.ball.position.set_drop(now, pos);
-//		predict_reflect_panel(state, queue, now);
+		predict_reflect_panel(state, queue, now);
 	}
 }
 
 
-curve::curve_time_t Physics::predict_reflect_panel(PongState &state,
+void Physics::predict_reflect_panel(PongState &state,
                                     curve::EventQueue *queue,
                                     const curve::curve_time_t &now) {
 	auto pos = state.ball.position.get(now);
 	auto speed = state.ball.speed.get(now);
 //	speed[1] += (rand() % 50 - 50)/10;
-	if (speed[0] == 0) return std::numeric_limits<curve::curve_time_t>::max();
 	float ty = 0;
 	if (speed[0] > 0) {
 		ty = (state.resolution[0] - pos[0]) / speed[0];
@@ -280,15 +217,14 @@ curve::curve_time_t Physics::predict_reflect_panel(PongState &state,
 	auto hit_pos = pos + speed * ty;
 	hit_pos[0] = speed[0] > 0 ? state.resolution[0] : 0;
 	assert(hit_pos[0] >= 0);
-	//assert(hit_pos[1] >= 0); // this might validly happen
-//	state.ball.position.set_drop(now + ty, hit_pos);
-	// queue->addcallback(now + ty, "physics.reflect_panel"// ,
-	//     [&state](curve::EventQueue *q, const curve::curve_time_t &t) {
-//	ball_reflect_panel(state, queue, now + ty);
-	// 	})
-;
-	return now + ty;
+//	assert(hit_pos[1] >= 0); // this might validly happen
+	state.ball.position.set_drop(now + ty, hit_pos);
+	queue->addcallback(now + ty, "COLL PANEL",
+	    [&state](curve::EventQueue *q, const curve::curve_time_t &t) {
+			ball_reflect_panel(state, q, t);
+		});
 
+//	predict_reflect_wall(state, queue, now);
 }
 
 }} // openage::curvepong
