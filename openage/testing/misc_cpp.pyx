@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 from libcpp.string cimport string
 
@@ -11,7 +11,7 @@ from libopenage.util.enum_test cimport (
 )
 
 
-from .testing import TestError
+from .testing import TestError, assert_value
 
 
 def enum():
@@ -29,5 +29,4 @@ def enum():
     if foo == bar:
         raise TestError()
 
-    if test.name() != b"openage::util::tests::testtypes::foo":
-        raise TestError()
+    assert_value(test.name(), b"openage::util::tests::testtypes::foo")
