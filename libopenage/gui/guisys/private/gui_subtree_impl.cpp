@@ -1,8 +1,10 @@
 // Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "gui_subtree_impl.h"
+#include "gui_renderer_impl.h"
 
 #include <cassert>
+#include <ciso646>
 
 #include <QCoreApplication>
 #include <QQmlEngine>
@@ -12,7 +14,6 @@
 #include <QDir>
 #include <QDebug>
 
-#include "gui_renderer_impl.h"
 #include "gui_engine_impl.h"
 #include "../link/gui_item.h"
 #include "../public/gui_subtree.h"
@@ -61,10 +62,9 @@ GuiSubtreeImpl::GuiSubtreeImpl(GuiRenderer *renderer,
 	// Need to queue the loading because some underlying game logic elements
 	// require the loop to be running (maybe some things that are created after
 	// the gui).
-	// TODO maybe it's better to use QUrl::fromLocalFile
 	QMetaObject::invokeMethod(this->root_component.get(),
 	                          "loadUrl", Qt::QueuedConnection,
-	                          Q_ARG(QUrl, source));
+	                          Q_ARG(QUrl, QUrl::fromLocalFile(source)));
 }
 
 GuiSubtreeImpl::~GuiSubtreeImpl() {

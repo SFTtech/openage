@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -61,7 +61,7 @@ public:
 	 *
 	 * no-op if cs is nullptr.
 	 */
-	static void release(CachableOSStream *cs);
+	static OAAPI void release(CachableOSStream *cs);
 
 private:
 	/**
@@ -124,6 +124,7 @@ public:
 
 		this->stream_ptr = other.stream_ptr;
 		other.stream_ptr = nullptr;
+		return *this;
 	}
 
 	// no copy construction!
@@ -168,7 +169,7 @@ public:
 
 
 	// Printf-style formatting
-	ChildType &fmt(const char *fmt, ...) __attribute__((format(printf, 2, 3))) {
+	ChildType &fmt(const char *fmt, ...) ATTRIBUTE_FORMAT(2, 3) {
 		va_list ap;
 		va_start(ap, fmt);
 		util::vsformat(fmt, ap, *this->output);

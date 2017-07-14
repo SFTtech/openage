@@ -15,7 +15,7 @@ def read_list_from_file(filename):
     with open(filename) as fileobj:
         data = fileobj.read().strip()
 
-    data = data.split(';')
+    data = [os.path.normpath(filename) for filename in data.split(';')]
     if data == ['']:
         return []
 

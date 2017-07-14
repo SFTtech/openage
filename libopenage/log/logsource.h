@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,7 +24,7 @@ namespace log {
  *     const size_t logger_id
  *     string logsource_name() except +
  */
-class LogSource {
+class OAAPI LogSource {
 public:
 	LogSource();
 

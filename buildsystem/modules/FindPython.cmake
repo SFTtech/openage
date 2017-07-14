@@ -12,8 +12,8 @@
 #
 # PYTHON_FOUND        - True when python was found.
 # PYTHON              - The full path to the Python interpreter.
-# PYTHON_INCLUDE_DIR  - Include path for Python extensions.
-# PYTHON_LIBRARY      - Library and Linker options for Python extensions.
+# PYTHON_INCLUDE_DIRS - Include path for Python extensions.
+# PYTHON_LIBRARIES    - Library and Linker options for Python extensions.
 #
 # Also defines py_exec and py_get_config_var.
 #
@@ -52,21 +52,6 @@ function(py_get_config_var VAR RESULTVAR)
 	)
 
 	set("${RESULTVAR}" "${RESULT}" PARENT_SCOPE)
-endfunction()
-
-function(py_get_lib_name RESULTVAR)
-	# uses py_exec to compute Python's C/C++ library name, just like python-config does.
-	py_get_config_var(VERSION PYTHON_VERSION)
-	if(NOT "${PYTHON_VERSION}" VERSION_LESS "3.2")
-		py_exec(
-			"import sys; print(sys.abiflags)"
-			ABIFLAGS
-		)
-	else()
-		set(ABIFLAGS, "")
-	endif()
-
-	set("${RESULTVAR}" "python${PYTHON_VERSION}${ABIFLAGS}" PARENT_SCOPE)
 endfunction()
 
 function(find_python_interpreter_builtin)
@@ -170,10 +155,21 @@ endforeach()
 # test all the found interpreters; break on success.
 foreach(PYTHON ${PYTHON_INTERPRETERS})
 
-	# ask the interpreter for the essential extension-building flags
-	py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIR)
-	py_get_config_var(LIBDIR PYTHON_LIBRARY_DIR)
-	py_get_lib_name(PYTHON_LIBRARY_NAME)
+	# If the current python interpreter equals the one found at the very beginning with PythonInterp,
+	# we can use the PythonLibs find-module to find the matching libraries.
+	# Otherwise we ask that interpreter where its matching libraries are.
+	if (PYTHON STREQUAL PYTHON_EXECUTABLE)
+		find_package(PythonLibs REQUIRED)
+	else()
+		# ask the interpreter for the essential extension-building flags
+		py_get_config_var(INCLUDEPY PYTHON_INCLUDE_DIRS)
+		py_get_config_var(LIBDIR PYTHON_LIBRARY_DIR)
+		py_get_config_var(LIBPL PYTHON_LIBPL)
+		py_get_config_var(LDLIBRARY PYTHON_LIBRARY_NAME)
+		find_library(PYTHON_LIBRARIES ${PYTHON_LIBRARY_NAME}
+			PATHS "${PYTHON_LIBRARY_DIR}" "${PYTHON_LIBPL}"
+		)
+	endif()
 
 	# there's a static_assert that tests the Python version.
 	# that way, we verify the interpreter and the library version.
@@ -181,8 +177,8 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 	try_compile(PYTHON_TEST_RESULT
 		"${CMAKE_BINARY_DIR}"
 		SOURCES "${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
-		LINK_LIBRARIES "${PYTHON_LIBRARY_NAME}"
-		CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIR}" "-DLINK_DIRECTORIES=${PYTHON_LIBRARY_DIR}" "-DCMAKE_CXX_STANDARD=14"
+		LINK_LIBRARIES ${PYTHON_LIBRARIES}
+		CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIRS}" "-DCMAKE_CXX_STANDARD=14"
 		COMPILE_DEFINITIONS "-DTARGET_VERSION=${PYTHON_MIN_VERSION_HEX}"
 		OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
 	)
@@ -191,7 +187,6 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 		message("-- Using python interpreter: ${PYTHON}")
 
 		set(PYTHON_INTERP "${PYTHON}")
-		set(PYTHON_LIBRARY "-l${PYTHON_LIBRARY_NAME} -L${PYTHON_LIBRARY_DIR}")
 		break()
 	else()
 		set(PYTHON_TEST_ERRORS "${PYTHON_TEST_ERRORS}python candidate ${PYTHON}:\n${PYTHON_TEST_OUTPUT}\n\n")
@@ -207,12 +202,12 @@ if(NOT PYTHON_INTERP)
 	message("We need an interpreter that is shipped with libpython and header files.")
 	message("Specify your own with -DPYTHON=/path/to/executable\n\n\n")
 	set(PYTHON_INTERP "")
-	set(PYTHON_INCLUDE_DIR "")
-	set(PYTHON_LIBRARY "")
+	set(PYTHON_INCLUDE_DIRS "")
+	set(PYTHON_LIBRARIES "")
 
 	unset(PYTHON CACHE)
-	unset(PYTHON_LIBRARY CACHE)
-	unset(PYTHON_INCLUDE_DIR CACHE)
+	unset(PYTHON_LIBRARIES CACHE)
+	unset(PYTHON_INCLUDE_DIRS CACHE)
 endif()
 
 if(NOT PYTHON)
@@ -221,8 +216,8 @@ if(NOT PYTHON)
 endif()
 
 set(PYTHON "${PYTHON_INTERP}" CACHE FILEPATH "Location of the Python interpreter" ${LOL_FORCE})
-set(PYTHON_LIBRARY "${PYTHON_LIBRARY}" CACHE STRING "Linker invocation for the Python library" ${LOL_FORCE})
-set(PYTHON_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}" CACHE PATH "Location of the Python include dir" ${LOL_FORCE})
+set(PYTHON_LIBRARIES "${PYTHON_LIBRARIES}" CACHE STRING "Linker invocation for the Python library" ${LOL_FORCE})
+set(PYTHON_INCLUDE_DIRS "${PYTHON_INCLUDE_DIRS}" CACHE PATH "Location of the Python include dir" ${LOL_FORCE})
 
 
 unset(LOL_FORCE)
@@ -233,4 +228,4 @@ mark_as_advanced(PYTHON_TEST_ERRORS)
 mark_as_advanced(PYTHON_INTERPRETERS)
 
 include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(Python REQUIRED_VARS PYTHON PYTHON_INCLUDE_DIR PYTHON_LIBRARY)
+find_package_handle_standard_args(Python REQUIRED_VARS PYTHON PYTHON_INCLUDE_DIRS PYTHON_LIBRARIES)

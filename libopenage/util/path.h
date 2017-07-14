@@ -43,7 +43,7 @@ class FSLike;
  *     FSLike *get_fsobj() except +
  *     const vector[string] &get_parts() except +
  */
-class Path {
+class OAAPI Path {
 public:
 
 	/**

@@ -7,7 +7,6 @@
 #include <string>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <unistd.h>
 
 #include "path.h"
 #include "filelike/native.h"

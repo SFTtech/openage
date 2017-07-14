@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,7 +13,7 @@ constexpr int PROFILER_CANVAS_WIDTH = 250;
 constexpr int PROFILER_CANVAS_HEIGHT = 120;
 constexpr int PROFILER_CANVAS_POSITION_X = 0;
 constexpr int PROFILER_CANVAS_POSITION_Y = 300;
-constexpr float PROFILER_CANVAS_ALPHA = 0.6;
+constexpr float PROFILER_CANVAS_ALPHA = 0.6f;
 constexpr int PROFILER_COM_BOX_WIDTH = 30;
 constexpr int PROFILER_COM_BOX_HEIGHT = 15;
 

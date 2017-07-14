@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -32,7 +32,7 @@ constexpr unsigned LZX_FRAME_SIZE = 32768;
  *
  *     unsigned decompress_next_frame(unsigned char *out_buf) except +
  */
-class LZXDecompressor {
+class OAAPI LZXDecompressor {
 public:
 	/*
 	 * Initialises LZX decompression state for decoding an LZX stream.

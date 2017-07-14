@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "rng.h"
 
@@ -71,7 +71,7 @@ void freq_dist() {
 	}
 
 	// test if each bucket was selected the amount we expected.
-	for (ssize_t count : buckets) {
+	for (auto count : buckets) {
 		std::abs(mean - count) > max_diff and TESTFAIL;
 	}
 }

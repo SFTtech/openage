@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include "draw.h"
 
@@ -9,8 +9,6 @@
 #include <epoxy/gl.h>
 #include "../util/fds.h"
 #include "../util/timing.h"
-
-#include <unistd.h>
 
 #include "buf.h"
 #include "console.h"

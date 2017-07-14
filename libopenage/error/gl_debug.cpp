@@ -1,4 +1,4 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #include "gl_debug.h"
 
@@ -10,7 +10,7 @@ namespace openage {
 namespace error {
 
 namespace {
-void callback(GLenum source, GLenum, GLuint, GLenum, GLsizei, const GLchar *message, const void*) {
+void APIENTRY callback(GLenum source, GLenum, GLuint, GLenum, GLsizei, const GLchar *message, const void*) {
 	const char *source_name;
 
 	switch (source) {

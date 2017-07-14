@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,6 +13,14 @@
 
 // pxd: from libopenage.log.level cimport level
 #include "level.h"
+
+#if defined(__GNUC__)
+#define OPENAGE_FUNC_NAME __PRETTY_FUNCTION__
+#elif defined(_MSC_VER)
+#define OPENAGE_FUNC_NAME __FUNCSIG__
+#else
+#define OPENAGE_FUNC_NAME __FUNCTION__
+#endif
 
 namespace openage {
 
@@ -45,7 +53,7 @@ namespace log {
  *    void init() except +
  *    void init_with_metadata_copy(string filename, string functionname) except +
  */
-struct message {
+struct OAAPI message {
 	std::string text;
 
 	/**
@@ -107,14 +115,14 @@ std::ostream &operator <<(std::ostream &os, const message &msg);
  * Auto-converts to message; via the MSG macro, this is the preferred way of creating
  * log and exc messages.
  */
-class MessageBuilder : public util::StringFormatter<MessageBuilder> {
+class OAAPI MessageBuilder : public util::StringFormatter<MessageBuilder> {
 public:
 	/**
 	 * Don't use this constructor directly; instead use the MSG macro.
 	 *
 	 *
 	 * @param filename, lineno source file name and line number (__FILE__, __LINE__).
-	 * @param functionname       (fully qualified) function name (__PRETTY_FUNCTION__).
+	 * @param functionname       (fully qualified) function name (OPENAGE_FUNC_NAME).
 	 * @param lvl                loglevel of the message. Also required for exception messages.
 	 */
 	MessageBuilder(const char *filename, unsigned lineno, const char *functionname,
@@ -138,7 +146,7 @@ private:
 
 
 // MSG is resolved to a MessageBuilder constructor invocation;
-// it fills in information such as __FILE__, __LINE__ and __PRETTY_FUNCTION_.
+// it fills in information such as __FILE__, __LINE__ and OPENAGE_FUNC_NAME.
 //
 // Unfortunately, macros are the only way to achieve that.
 
@@ -150,7 +158,7 @@ private:
 		__FILE__, \
 		::openage::config::buildsystem_sourcefile_dir), \
 	__LINE__, \
-	__PRETTY_FUNCTION__, \
+	OPENAGE_FUNC_NAME, \
 	LVLOBJ)
 
 

@@ -20,7 +20,7 @@ namespace log {
  * cppclass NamedLogSource(LogSource):
  *     NamedLogSource(string name) except +
  */
-class NamedLogSource : public LogSource {
+class OAAPI NamedLogSource : public LogSource {
 public:
 	NamedLogSource(const std::string &name);
 

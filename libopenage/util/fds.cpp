@@ -9,7 +9,11 @@
 
 #include <fcntl.h>
 #include "pty.h"
+#ifdef _WIN32
+#include <io.h>
+#else
 #include <unistd.h>
+#endif
 
 #include "unicode.h"
 

@@ -104,7 +104,7 @@ function(add_cython_modules)
 				add_executable("${TARGETNAME}" "${CPPNAME}")
 
 				# TODO: use full ldflags and cflags provided by python${VERSION}-config
-				target_link_libraries("${TARGETNAME}" "${PYEXT_LIBRARY}")
+				target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
 			else()
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES "${source}")
 				add_library("${TARGETNAME}" MODULE "${CPPNAME}")
@@ -113,6 +113,9 @@ function(add_cython_modules)
 					PREFIX ""
 					SUFFIX "${PYEXT_SUFFIX}"
 				)
+				if(MSVC)
+					target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
+				endif()
 			endif()
 
 			if(NOINSTALL_NEXT)
@@ -410,16 +413,16 @@ function(python_finalize)
 		list(APPEND cython_module_files_expr "$<TARGET_FILE:${cython_module_target}>")
 	endforeach()
 	file(GENERATE
-		OUTPUT "${CMAKE_BINARY_DIR}/py/inplace_module_list"
+		OUTPUT "${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
 		CONTENT "${cython_module_files_expr}"
 	)
 	set(INPLACEMODULES_TIMEFILE "${CMAKE_BINARY_DIR}/py/inplacemodules_timefile")
 	add_custom_command(OUTPUT "${INPLACEMODULES_TIMEFILE}"
 		COMMAND "${PYTHON}" -m buildsystem.inplacemodules
-		"${CMAKE_BINARY_DIR}/py/inplace_module_list"
-		"${CMAKE_BINARY_DIR}"
+		"${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
+		"${CMAKE_BINARY_DIR}" "$<CONFIG>"
 		DEPENDS
-		"${CMAKE_BINARY_DIR}/py/inplace_module_list"
+		"${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
 		${cython_module_targets}
 		COMMAND "${CMAKE_COMMAND}" -E touch "${INPLACEMODULES_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
@@ -432,8 +435,8 @@ function(python_finalize)
 
 	add_custom_target(cleancython
 		COMMAND "${PYTHON}" -m buildsystem.inplacemodules --clean
-		"${CMAKE_BINARY_DIR}/py/inplace_module_list"
-		"${CMAKE_BINARY_DIR}"
+		"${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
+		"${CMAKE_BINARY_DIR}" "$<CONFIG>"
 		COMMAND "${PYTHON}" -m buildsystem.cythonize --clean
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"

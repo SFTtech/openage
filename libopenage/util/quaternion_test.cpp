@@ -62,10 +62,10 @@ void quaternion() {
 		q2conj_exp.equals(q2.conjugated()) or TESTFAIL;
 
 		Quaternion<> q2inv_exp{
-			0.0058823529411764705,
-			-0.023529411764705882,
-			-0.011764705882352941,
-			-0.047058823529411764
+			0.0058823529411764705f,
+			-0.023529411764705882f,
+			-0.011764705882352941f,
+			-0.047058823529411764f
 		};
 
 		Quaternion<> q2inv = q2.inversed();
@@ -73,7 +73,7 @@ void quaternion() {
 
 		q2.normalize();
 		Quaternion<> q2norm_exp{
-			0.10846522, 0.433860915, 0.216930457, 0.8677218312
+			0.10846522f, 0.433860915f, 0.216930457f, 0.8677218312f
 		};
 		q2norm_exp.equals(q2) or TESTFAIL;
 	}

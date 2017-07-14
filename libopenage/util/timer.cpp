@@ -2,7 +2,7 @@
 
 #include "timer.h"
 
-#include "timing.h"
+#include <ciso646>
 
 namespace openage {
 namespace util {

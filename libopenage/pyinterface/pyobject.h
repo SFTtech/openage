@@ -55,7 +55,7 @@ struct to_pyobj;
  * ctypedef PyObjectRef *PyObjectRefPtr
  * ctypedef PyObject    *PyObjectPtr
  */
-class PyObjectRef {
+class OAAPI PyObjectRef {
 public:
 	/**
 	 * Initializes reference with nullptr.
@@ -328,71 +328,71 @@ std::ostream &operator <<(std::ostream &os, const PyObjectRef &ref);
 // for use by the reference-counting constructors
 
 // pxd: PyIfFunc1[void, PyObjectPtr] py_xincref
-extern PyIfFunc<void, PyObject *> py_xincref;
+extern OAAPI PyIfFunc<void, PyObject *> py_xincref;
 // pxd: PyIfFunc1[void, PyObjectPtr] py_xdecref
-extern PyIfFunc<void, PyObject *> py_xdecref;
+extern OAAPI PyIfFunc<void, PyObject *> py_xdecref;
 
 // for all of those member functions
 
 // pxd: PyIfFunc1[string, PyObjectPtr] py_str
-extern PyIfFunc<std::string, PyObject *> py_str;
+extern OAAPI PyIfFunc<std::string, PyObject *> py_str;
 // pxd: PyIfFunc1[string, PyObjectPtr] py_repr
-extern PyIfFunc<std::string, PyObject *> py_repr;
+extern OAAPI PyIfFunc<std::string, PyObject *> py_repr;
 // pxd: PyIfFunc1[string, PyObjectPtr] py_bytes
-extern PyIfFunc<std::string, PyObject *> py_bytes;
+extern OAAPI PyIfFunc<std::string, PyObject *> py_bytes;
 // pxd: PyIfFunc1[int, PyObjectPtr] py_len
-extern PyIfFunc<int, PyObject *> py_len;
+extern OAAPI PyIfFunc<int, PyObject *> py_len;
 // pxd: PyIfFunc1[cppbool, PyObjectPtr] py_callable
-extern PyIfFunc<bool, PyObject *> py_callable;
+extern OAAPI PyIfFunc<bool, PyObject *> py_callable;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, PyObjectPtr] py_call0
-extern PyIfFunc<void, PyObjectRef *, PyObject *> py_call0;
+extern OAAPI PyIfFunc<void, PyObjectRef *, PyObject *> py_call0;
 // pxd: PyIfFunc3[void, PyObjectRefPtr, PyObjectPtr, vector[PyObjectPtr]] py_calln
-extern PyIfFunc<void, PyObjectRef *, PyObject *, std::vector<PyObject *>&> py_calln;
+extern OAAPI PyIfFunc<void, PyObjectRef *, PyObject *, std::vector<PyObject *>&> py_calln;
 // pxd: PyIfFunc2[cppbool, PyObjectPtr, string] py_hasattr
-extern PyIfFunc<bool, PyObject *, std::string> py_hasattr;
+extern OAAPI PyIfFunc<bool, PyObject *, std::string> py_hasattr;
 // pxd: PyIfFunc3[void, PyObjectRefPtr, PyObjectPtr, string] py_getattr
-extern PyIfFunc<void, PyObjectRef *, PyObject *, std::string> py_getattr;
+extern OAAPI PyIfFunc<void, PyObjectRef *, PyObject *, std::string> py_getattr;
 // pxd: PyIfFunc3[void, PyObjectPtr, string, PyObjectPtr] py_setattr
-extern PyIfFunc<void, PyObject *, std::string, PyObject *> py_setattr;
+extern OAAPI PyIfFunc<void, PyObject *, std::string, PyObject *> py_setattr;
 // pxd: PyIfFunc2[cppbool, PyObjectPtr, PyObjectPtr] py_isinstance
-extern PyIfFunc<bool, PyObject *, PyObject *> py_isinstance;
+extern OAAPI PyIfFunc<bool, PyObject *, PyObject *> py_isinstance;
 // pxd: PyIfFunc1[cppbool, PyObjectPtr] py_to_bool
-extern PyIfFunc<bool, PyObject *> py_to_bool;
+extern OAAPI PyIfFunc<bool, PyObject *> py_to_bool;
 // pxd: PyIfFunc1[int64_t, PyObjectPtr] py_to_int
-extern PyIfFunc<int64_t, PyObject *> py_to_int;
+extern OAAPI PyIfFunc<int64_t, PyObject *> py_to_int;
 // pxd: PyIfFunc2[void, PyObjectPtr, Func1[void, string]] py_dir
-extern PyIfFunc<void, PyObject *, Func<void, std::string>> py_dir;
+extern OAAPI PyIfFunc<void, PyObject *, Func<void, std::string>> py_dir;
 // pxd: PyIfFunc2[cppbool, PyObjectPtr, PyObjectPtr] py_equals
-extern PyIfFunc<bool, PyObject *, PyObject *> py_equals;
+extern OAAPI PyIfFunc<bool, PyObject *, PyObject *> py_equals;
 // pxd: PyIfFunc2[void, PyObjectPtr, string] py_exec
-extern PyIfFunc<void, PyObject *, std::string> py_exec;
+extern OAAPI PyIfFunc<void, PyObject *, std::string> py_exec;
 // pxd: PyIfFunc3[void, PyObjectPtr, PyObjectRefPtr, string] py_eval
-extern PyIfFunc<void, PyObject *, PyObjectRef *, std::string> py_eval;
+extern OAAPI PyIfFunc<void, PyObject *, PyObjectRef *, std::string> py_eval;
 // pxd: PyIfFunc3[void, PyObjectPtr, PyObjectRefPtr, PyObjectPtr] py_get
-extern PyIfFunc<void, PyObject *, PyObjectRef *, PyObject *> py_get;
+extern OAAPI PyIfFunc<void, PyObject *, PyObjectRef *, PyObject *> py_get;
 // pxd: PyIfFunc2[cppbool, PyObjectPtr, PyObjectPtr] py_in
-extern PyIfFunc<bool, PyObject *, PyObject *> py_in;
+extern OAAPI PyIfFunc<bool, PyObject *, PyObject *> py_in;
 // pxd: PyIfFunc2[void, PyObjectPtr, PyObjectRefPtr] py_type
-extern PyIfFunc<void, PyObject *, PyObjectRef *> py_type;
+extern OAAPI PyIfFunc<void, PyObject *, PyObjectRef *> py_type;
 // pxd: PyIfFunc1[string, PyObjectPtr] py_modulename
-extern PyIfFunc<std::string, PyObject *> py_modulename;
+extern OAAPI PyIfFunc<std::string, PyObject *> py_modulename;
 // pxd: PyIfFunc1[string, PyObjectPtr] py_classname
-extern PyIfFunc<std::string, PyObject *> py_classname;
+extern OAAPI PyIfFunc<std::string, PyObject *> py_classname;
 
 // pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_builtin
-extern PyIfFunc<void, PyObjectRef *, const std::string&> py_builtin;
+extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string&> py_builtin;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_import
-extern PyIfFunc<void, PyObjectRef *, const std::string&> py_import;
+extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string&> py_import;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_createstr
-extern PyIfFunc<void, PyObjectRef *, const std::string&> py_createstr;
+extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string&> py_createstr;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_createbytes
-extern PyIfFunc<void, PyObjectRef *, const std::string&> py_createbytes;
+extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string&> py_createbytes;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, int] py_createint
-extern PyIfFunc<void, PyObjectRef *, int> py_createint;
+extern OAAPI PyIfFunc<void, PyObjectRef *, int> py_createint;
 // pxd: PyIfFunc1[void, PyObjectRefPtr] py_createdict
-extern PyIfFunc<void, PyObjectRef *> py_createdict;
+extern OAAPI PyIfFunc<void, PyObjectRef *> py_createdict;
 // pxd: PyIfFunc1[void, PyObjectRefPtr] py_createlist
-extern PyIfFunc<void, PyObjectRef *> py_createlist;
+extern OAAPI PyIfFunc<void, PyObjectRef *> py_createlist;
 
 } // pyinterface
 
@@ -455,7 +455,7 @@ Obj list();
  *
  * pxd: PyObjectRef None
  */
-extern Obj None;
+extern OAAPI Obj None;
 
 
 /**
@@ -463,7 +463,7 @@ extern Obj None;
  *
  * pxd: PyObjectRef True
  */
-extern Obj True;
+extern OAAPI Obj True;
 
 
 /**
@@ -471,7 +471,7 @@ extern Obj True;
  *
  * pxd: PyObjectRef False
  */
-extern Obj False;
+extern OAAPI Obj False;
 
 } // py
 

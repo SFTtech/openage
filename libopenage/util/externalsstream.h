@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include <iostream>
 #include <string>
@@ -26,7 +26,7 @@ public:
 	}
 
 	std::streamsize xsputn(const char *s, std::streamsize count) override {
-		output->append(s, count);
+		output->append(s, static_cast<size_t>(count));
 		return count;
 	}
 };

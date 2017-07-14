@@ -63,7 +63,7 @@ namespace fslike {
  *     bool is_python_native() noexcept
  *     shared_ptr[FSLike] shared_from_this() except +
  */
-class FSLike : public std::enable_shared_from_this<FSLike> {
+class OAAPI FSLike : public std::enable_shared_from_this<FSLike> {
 public:
 	FSLike();
 

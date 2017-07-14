@@ -3,7 +3,11 @@
 #include <vector>
 #include <string>
 
+#ifdef _MSC_VER
+#define STDOUT_FILENO 1
+#else
 #include <unistd.h>
+#endif
 #include "../util/fds.h"
 #include "../util/pty.h"
 #include <stdio.h>
@@ -43,7 +47,7 @@ void render() {
 		buf.write("rofl\n");
 	}
 	buf.scroll(100);
-	util::FD outfd;
+	util::FD outfd{STDOUT_FILENO};
 	console::draw::to_terminal(&buf, &outfd, true);
 }
 

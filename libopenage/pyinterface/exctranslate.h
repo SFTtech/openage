@@ -37,7 +37,7 @@ class PyException;
  * Designed to be called by auto-generated Cython code;
  * Do not use in any other way.
  */
-void translate_exc_cpp_to_py();
+OAAPI void translate_exc_cpp_to_py();
 
 
 /**
@@ -47,7 +47,7 @@ void translate_exc_cpp_to_py();
  * Works, and is designed to be used in, situations where
  * there is no current Python exception (it's a no-op then).
  */
-void translate_exc_py_to_cpp();
+OAAPI void translate_exc_py_to_cpp();
 
 
 /**
@@ -57,7 +57,7 @@ void translate_exc_py_to_cpp();
  *
  * pxd: void init_exc_message(message *msg, string filename, unsigned int lineno, string functionname) noexcept
  */
-void init_exc_message(log::message *msg, const std::string &filename, unsigned int lineno, const std::string &functionname) noexcept;
+OAAPI void init_exc_message(log::message *msg, const std::string &filename, unsigned int lineno, const std::string &functionname) noexcept;
 
 
 /*
@@ -139,7 +139,7 @@ void init_exc_message(log::message *msg, const std::string &filename, unsigned i
  *     void (*)(PyException *) except * with gil
  * ) noexcept
  */
-void set_exc_translation_funcs(
+OAAPI void set_exc_translation_funcs(
 	void (*raise_cpp_error)(Error *),
 	void (*raise_cpp_pyexception)(PyException *),
 	bool (*check_for_py_exception)(),

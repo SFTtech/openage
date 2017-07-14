@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -53,14 +53,14 @@ namespace lvl {
 // pxd: level crit
 // pxd: level MAX
 
-extern level MIN;  // not designed for use in messages
-extern level spam;
-extern level dbg;
-extern level info;
-extern level warn;
-extern level err;
-extern level crit;
-extern level MAX;  // not designed for use in messages
+extern OAAPI level MIN;  // not designed for use in messages
+extern OAAPI level spam;
+extern OAAPI level dbg;
+extern OAAPI level info;
+extern OAAPI level warn;
+extern OAAPI level err;
+extern OAAPI level crit;
+extern OAAPI level MAX;  // not designed for use in messages
 
 } // lvl
 

@@ -36,7 +36,7 @@ class Path;
  *
  *     shared_ptr[FileLike] get_fileobj() except +
  */
-class File {
+class OAAPI File {
 public:
 	using seek_t = filelike::FileLike::seek_t;
 	using mode_t = filelike::FileLike::mode_t;

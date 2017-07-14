@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,7 +19,7 @@ namespace tests {
  * cppclass testtype_data:
  *     string stuff
  */
-struct testtype_data {
+struct OAAPI testtype_data {
 	std::string stuff;
 };
 
@@ -37,8 +37,8 @@ namespace testtypes {
 
 // pxd: testtype foo
 // pxd: testtype bar
-extern testtype foo;
-extern testtype bar;
+extern OAAPI testtype foo;
+extern OAAPI testtype bar;
 
 } // testtypes
 

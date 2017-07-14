@@ -12,6 +12,7 @@
 
 #include "lzxd.h"
 
+#include <algorithm>
 #include <cinttypes>
 #include <cerrno>
 #include <cstdarg>
@@ -21,8 +22,6 @@
 #include <cstring>
 #include <climits>
 
-#include <unistd.h>
-
 #include "../../error/error.h"
 #include "../compiler.h"
 
@@ -31,11 +30,6 @@
 namespace openage {
 namespace util {
 namespace compress {
-
-
-ssize_t min(ssize_t a, ssize_t b) {
-	return (a < b) ? a : b;
-}
 
 
 // LZX specification constants
@@ -809,7 +803,7 @@ unsigned LZXDStream::decompress_next_frame(unsigned char *output_buf) {
 			symbol_size = this->decode_symbol_from_aligned_block();
 			break;
 		case LZX_BLOCKTYPE_UNCOMPRESSED:
-			symbol_size = this->read_data_from_uncompressed_block(min(this->block_remaining, LZX_FRAME_SIZE - frame_size));
+			symbol_size = this->read_data_from_uncompressed_block(std::min(this->block_remaining, LZX_FRAME_SIZE - frame_size));
 			break;
 		default:
 			throw Error(MSG(err) << "this->blocktype neither verbatim nor aligned");

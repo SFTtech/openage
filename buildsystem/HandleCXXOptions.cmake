@@ -59,7 +59,9 @@ endmacro()
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(EXTRA_FLAGS "${EXTRA_FLAGS} -Wall -Wextra -pedantic")
+if(NOT MSVC)
+	set(EXTRA_FLAGS "${EXTRA_FLAGS} -Wall -Wextra -pedantic")
+endif()
 
 # check for compiler versions
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
