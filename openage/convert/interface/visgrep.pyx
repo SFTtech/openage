@@ -15,6 +15,7 @@ cimport numpy
 
 from collections import namedtuple
 from PIL import Image
+from sys import exit
 
 
 TOOL_DESCRIPTION = """Python translation of the visgrep v1.09

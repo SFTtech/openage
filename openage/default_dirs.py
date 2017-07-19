@@ -36,6 +36,7 @@ LINUX_DIRS = {
 
 # Windows-specific paths
 WINDOWS_DIRS = {
+    "config_home": ("APPDATA", (False, None)),
     "data_home": ("APPDATA", (False, None)),
     "config_dirs": ("ALLUSERSPROFILE", (False, None)),
     # TODO: other windows paths
@@ -58,7 +59,6 @@ def get_dir(which):
 
     elif sys.platform.startswith("win32"):
         platform_table = WINDOWS_DIRS
-        raise Exception("windows not yet supported")
 
     else:
         raise Exception("unsupported platform: '%s'" % sys.platform)
