@@ -6,7 +6,7 @@
 #include "gamestate.h"
 
 #include "../curve.h"
-#include "../events.h"
+#include "../events/eventmanager.h"
 
 #include <vector>
 
@@ -15,18 +15,19 @@ namespace curvepong {
 
 class Physics {
 public:
+	static void init(std::shared_ptr<State> &,
+	                 curve::EventManager *,
+	                 const curve::curve_time_t &);
 
-	static void init(PongState &, curve::EventQueue *, const curve::curve_time_t &);
-	void processInput(PongState &, PongPlayer &, std::vector<event> &input, curve::EventQueue *, const curve::curve_time_t &now);
-protected:
+	void processInput(std::shared_ptr<State> &,
+	                  std::shared_ptr<PongPlayer> &,
+	                  std::vector<event> &input,
+	                  curve::EventManager *,
+	                  const curve::curve_time_t &now);
 
-	static void reset(PongState &, curve::EventQueue *, const curve::curve_time_t &);
-
-
-	static void ball_reflect_wall(PongState &, curve::EventQueue *, const curve::curve_time_t &);
-	static void ball_reflect_panel(PongState &, curve::EventQueue *, const curve::curve_time_t &);
-	static curve::curve_time_t predict_reflect_wall(PongState &, curve::EventQueue *, const curve::curve_time_t &);
-	static curve::curve_time_t predict_reflect_panel(PongState &, curve::EventQueue *, const curve::curve_time_t &);
+	static void reset(const std::shared_ptr<State> &,
+	                  curve::EventManager *mgr,
+	                  const curve::curve_time_t &);
 };
 
 }} // openage::curvepong

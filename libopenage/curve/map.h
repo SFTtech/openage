@@ -43,10 +43,10 @@ public:
 	at(const curve_time_t &, const key_t &) const;
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
-	begin(const curve_time_t &e = std::numeric_limits<curve_time_t>::infinity()) const;
+	begin(const curve_time_t &e = std::numeric_limits<curve_time_t>::max()) const;
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
-	end(const curve_time_t &e = std::numeric_limits<curve_time_t>::infinity()) const;
+	end(const curve_time_t &e = std::numeric_limits<curve_time_t>::max()) const;
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
 	insert(const curve_time_t &birth, const key_t &, const val_t &);
@@ -94,7 +94,7 @@ UnorderedMap<key_t, val_t>::at(const curve_time_t & time,
 				e,
 				this,
 				time,
-				std::numeric_limits<curve_time_t>::infinity()));
+				std::numeric_limits<curve_time_t>::max()));
 	} else {
 		return std::make_pair(
 			false,
@@ -109,7 +109,7 @@ UnorderedMap<key_t, val_t>::begin(const curve_time_t &time) const {
 		this->container.begin(),
 		this,
 		time,
-		std::numeric_limits<curve_time_t>::infinity());
+		std::numeric_limits<curve_time_t>::max());
 }
 
 template<typename key_t, typename val_t>
@@ -118,7 +118,7 @@ UnorderedMap<key_t, val_t>::end(const curve_time_t &time) const {
 	return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 		this->container.end(),
 		this,
-		-std::numeric_limits<curve_time_t>::infinity(),
+		-std::numeric_limits<curve_time_t>::max(),
 		time);
 }
 
@@ -144,7 +144,7 @@ UnorderedMap<key_t, val_t>::insert(const curve_time_t &alive,
                                    const val_t &value) {
 	return this->insert(
 		alive,
-		std::numeric_limits<curve_time_t>::infinity(),
+		std::numeric_limits<curve_time_t>::max(),
 		key,
 		value);
 }

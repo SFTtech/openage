@@ -6,6 +6,9 @@
 #include "../continuous.h"
 #include "../discrete.h"
 
+#include "../events/eventmanager.h"
+
+#include "../../log/log.h"
 
 namespace openage {
 namespace curve {
@@ -13,8 +16,7 @@ namespace tests {
 
 void curve_types() {
 	// Check the base container type
-	EventQueue q;
-	TriggerFactory f{&q};
+	EventManager f;
 	{
 		KeyframeContainer<int> c;
 		auto p0 = c.insert(0, 0);
@@ -28,7 +30,7 @@ void curve_types() {
 		TESTEQUALS(c.last(10)->value, 2);
 		TESTEQUALS(c.last(47)->value, 2);
 
-		// last() with hints. Yes this can make a difference. we want to be
+		// last() with hints. Yes this can make a diference. we want to be
 		// absolutely shure!
 		// hint p1
 		TESTEQUALS(c.last(0, p0)->value, 0);
@@ -65,7 +67,7 @@ void curve_types() {
 
 	// Check the Simple Continuous type
 	{
-		Continuous<float> c(&f);
+		Continuous<float> c(&f, 0);
 		c.set_insert(0, 0);
 		c.set_insert(10, 1);
 
@@ -75,8 +77,10 @@ void curve_types() {
 	}
 
 	{
-		Continuous<float> c(&f);
+		Continuous<float> c(&f, 0);
+        log::log(DBG << "Testing Continuous float");
 		c.set_insert(0, 0);
+        log::log(DBG << "Inserting t:20, v:20");
 		c.set_insert(20, 20);
 
 		TESTEQUALS(c.get(0), 0);
@@ -84,6 +88,7 @@ void curve_types() {
 		TESTEQUALS(c.get(7), 7);
 
 		c.set_drop(20, 10);
+        log::log(DBG << "Inserting t:20, v:10. This should overwrite the old values!");
 		TESTEQUALS(c.get(0), 0);
 		TESTEQUALS(c.get(2), 1);
 		TESTEQUALS(c.get(8), 4);
@@ -91,7 +96,7 @@ void curve_types() {
 
 	//Check the discrete type
 	{
-		Discrete<int> c(&f);
+		Discrete<int> c(&f, 0);
 		c.set_insert(0, 0);
 		c.set_insert(10, 10);
 
@@ -99,7 +104,7 @@ void curve_types() {
 		TESTEQUALS(c.get(1), 0);
 		TESTEQUALS(c.get(10), 10);
 
-		Discrete<std::string> complex(&f);
+		Discrete<std::string> complex(&f, 0);
 
 		complex.set_insert(0, "Test 0");
 		complex.set_insert(10, "Test 10");
@@ -112,7 +117,7 @@ void curve_types() {
 
 	//check set_drop
 	{
-		Discrete<int> c(&f);
+		Discrete<int> c(&f, 0);
 		c.set_insert(0, 0);
 		c.set_insert(1, 1);
 		c.set_insert(3, 3);
@@ -125,7 +130,7 @@ void curve_types() {
 
 	// Encountered Errors
 	{
-		Continuous<int> c(&f);
+		Continuous<int> c(&f, 0);
 		c.set_insert(1, 1);
 		c.set_drop(1, -5);
 

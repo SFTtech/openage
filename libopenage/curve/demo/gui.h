@@ -15,8 +15,8 @@ class Gui {
 
 public:
 	Gui();
-	std::vector<event> &getInputs(const PongPlayer &player);
-	void draw(PongState &state, const curve::curve_time_t &now);
+	std::vector<event> &getInputs(const std::shared_ptr<PongPlayer> &player);
+	void draw(std::shared_ptr<State> &state, const curve::curve_time_t &now);
 	void draw_ball(util::Vector<2> ball, char chr);
 
 private:

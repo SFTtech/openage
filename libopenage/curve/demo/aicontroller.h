@@ -13,8 +13,8 @@ namespace curvepong {
 class AIInput {
 public:
 	std::vector<event> &getInputs(
-		const PongPlayer &player,
-		const PongBall &ball,
+		const std::shared_ptr<PongPlayer> &player,
+		const std::shared_ptr<PongBall> &ball,
 		const curve::curve_time_t &now);
 
 private:

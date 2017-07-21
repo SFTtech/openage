@@ -2,8 +2,8 @@
 
 #pragma once
 
-// pxd: from libopenage.curve cimport Trigger
-#include "../trigger.h"
+#include "../events/eventtarget.h"
+
 #include "keyframe_container.h"
 
 #include <cmath>
@@ -14,16 +14,19 @@ namespace curve {
 /**
  * pxd:
  *
- * cppclass ValueContainer(Trigger):
+ * cppclass ValueContainer(EventTarget):
  *      void set_drop(const curve_time_t &) except +
  *      void set_insert(const curve_time_t &) except +
  *
  */
 template<typename _T>
-class ValueContainer : public Trigger {
+class ValueContainer : public EventTarget {
 public:
-	ValueContainer(TriggerFactory *trigger) :
-		Trigger(trigger),
+	ValueContainer(EventManager *mgr,
+	               size_t id,
+	               const EventTarget::single_change_notifier &notifier = nullptr) :
+		EventTarget(mgr, notifier),
+		_id{id},
 		last_element{container.begin()} {}
 
 	virtual _T get(const curve_time_t &t) const = 0;
@@ -32,17 +35,19 @@ public:
 		return get(now);
 	}
 
-	virtual bool needs_update(const curve_time_t &at);
-
 	virtual std::pair<curve_time_t, const _T &> frame(const curve_time_t &) const;
 	virtual std::pair<curve_time_t, const _T &> next_frame(const curve_time_t &) const;
-public:
+
 	// Inserter mode
 	virtual void set_drop(const curve_time_t &at, const _T &value);
 	virtual void set_insert(const curve_time_t &at, const _T &value);
 
+	virtual size_t id() const override {
+		return _id;
+	}
 protected:
 	KeyframeContainer<_T> container;
+	const size_t _id;
 	mutable typename KeyframeContainer<_T>::KeyframeIterator last_element;
 };
 
@@ -52,7 +57,10 @@ void ValueContainer<_T>::set_drop(const curve_time_t &at, const _T &value) {
 	auto hint = this->container.last(at, this->last_element);
 
 	// We want to remove a possible equal timed element from the container
-	if (std::fabs(hint->time - at) < std::numeric_limits<curve_time_t>::min()) {
+    // to do fabs(x-y) < min is only necessary when curve_time_t is floating point!
+    //if (std::abs(hint->time - at) < std::numeric_limits<curve_time_t>::min()) {
+
+	if (hint->time == at) {
 		hint--;
 	}
 
@@ -61,14 +69,14 @@ void ValueContainer<_T>::set_drop(const curve_time_t &at, const _T &value) {
 	container.insert(at, value, hint);
 	this->last_element = hint;
 
-	this->data_changed(at, at);
+	this->on_change(at);
 }
 
 
 template <typename _T>
 void ValueContainer<_T>::set_insert(const curve_time_t &at, const _T &value) {
 	this->container.insert(at, value, this->last_element);
-	this->data_changed(1, at);
+	this->on_change(at);
 }
 
 
@@ -85,17 +93,5 @@ std::pair<curve_time_t, const _T&> ValueContainer<_T>::next_frame(const curve_ti
 	e ++;
 	return std::make_pair(e->time, e->value);
 }
-
-
-template <typename _T>
-bool ValueContainer<_T>::needs_update(const curve_time_t &at) {
-	auto e = this->container.last(at, this->container.end());
-	if (e->time > at || ++e == this->container.end() || e->time > at) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
 
 }} // openage::curve

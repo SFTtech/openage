@@ -40,14 +40,14 @@ public:
 
 	// Modifying access
 	QueueFilterIterator<_T, Queue<_T>> begin(
-		const curve_time_t &t = -std::numeric_limits<curve_time_t>::infinity()) const;
+		const curve_time_t &t = -std::numeric_limits<curve_time_t>::max()) const;
 
 	QueueFilterIterator<_T, Queue<_T>> end(
-		const curve_time_t &t = std::numeric_limits<curve_time_t>::infinity()) const;
+		const curve_time_t &t = std::numeric_limits<curve_time_t>::max()) const;
 
 	QueueFilterIterator<_T, Queue<_T>> between(
-		const curve_time_t &begin = std::numeric_limits<curve_time_t>::infinity(),
-		const curve_time_t &end = std::numeric_limits<curve_time_t>::infinity()) const;
+		const curve_time_t &begin = std::numeric_limits<curve_time_t>::max(),
+		const curve_time_t &end = std::numeric_limits<curve_time_t>::max()) const;
 
 	//QueueFilterIterator<_T, Queue<_T>>
 	void erase(const CurveIterator<_T, Queue<_T>> &);
@@ -84,7 +84,7 @@ QueueFilterIterator<_T, Queue<_T>> Queue<_T>::begin(const curve_time_t &t) const
 				it,
 				this,
 				t,
-				std::numeric_limits<curve_time_t>::infinity());
+				std::numeric_limits<curve_time_t>::max());
 		}
 	}
 
@@ -99,7 +99,7 @@ QueueFilterIterator<_T, Queue<_T>> Queue<_T>::end(const curve_time_t &t) const
 		container.end(),
 		this,
 		t,
-		std::numeric_limits<curve_time_t>::infinity());
+		std::numeric_limits<curve_time_t>::max());
 }
 
 
@@ -158,7 +158,7 @@ QueueFilterIterator<_T, Queue<_T>> Queue<_T>::insert(
 	auto ct = QueueFilterIterator<_T, Queue<_T>>(
 		insertion_point,
 		this,
-		time, std::numeric_limits<curve_time_t>::infinity());
+		time, std::numeric_limits<curve_time_t>::max());
 
 	if (!ct.valid()) {
 		++ct;

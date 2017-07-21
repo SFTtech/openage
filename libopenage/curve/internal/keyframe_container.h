@@ -50,7 +50,7 @@ public:
 			time{time},
 			value{value} {}
 
-		const curve_time_t time = std::numeric_limits<curve_time_t>::infinity();
+		const curve_time_t time = std::numeric_limits<curve_time_t>::max();
 		_T value = _T();
 	};
 
@@ -168,7 +168,7 @@ template<typename _T>
 KeyframeContainer<_T>::KeyframeContainer() {
 	//Create a default element at -Inf, that can always be dereferenced - so there will by definition never be
 	//a element that cannot be dereferenced
-	this->container.push_back(Keyframe(-std::numeric_limits<curve_time_t>::infinity(), _T()));
+	this->container.push_back(Keyframe(-std::numeric_limits<curve_time_t>::max(), _T()));
 }
 
 template<typename _T>

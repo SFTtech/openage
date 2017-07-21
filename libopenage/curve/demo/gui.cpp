@@ -8,10 +8,10 @@
 namespace openage {
 namespace curvepong {
 
-std::vector<event> &Gui::getInputs(const PongPlayer &player) {
+std::vector<event> &Gui::getInputs(const std::shared_ptr<PongPlayer> &player) {
 	input_cache.clear();
 	event evnt;
-	evnt.player = player.id;
+	evnt.player = player->id();
 	evnt.state  = event::IDLE;
 	timeout(0);
 	int c = getch();
@@ -72,89 +72,98 @@ Gui::Gui() {
 	keypad(stdscr, true);
 	noecho();
 	curs_set(0);
-	//	getmaxyx(stdscr,state.resolution[1], state.resolution[0]);
+
+	int x, y;
+	getmaxyx(stdscr, y, x);
 
 	attron(COLOR_PAIR(COLOR_DEBUG));
-	mvprintw(
-	    4, 5, "          oooooooooo                                          ");
-	mvprintw(
-	    5, 5, "          888    888  ooooooo    ooooooo    oooooooo8         ");
-	mvprintw(
-	    6, 5, "          888oooo88 888     888 888   888  888    88o         ");
-	mvprintw(
-	    7, 5, "          888       888     888 888   888   888oo888o         ");
-	mvprintw(
-	    8, 5, "         o888o        88ooo88  o888o o888o     88 888         ");
-	mvprintw(
-	    9, 5, "                                            888ooo888         ");
+
+	std::vector<const char*> buffer{
+		"oooooooooo                                   ",
+		" 888    888  ooooooo    ooooooo    oooooooo8 ",
+		" 888oooo88 888     888 888   888  888    88o ",
+		" 888       888     888 888   888   888oo888o ",
+		"o888o        88ooo88  o888o o888o     88 888 ",
+		"                                    888ooo888",
+	};
+
+	size_t colwidth = 0;
+	for (const auto &c : buffer) {
+		colwidth = std::max(colwidth, strlen(c));
+	}
+	int row = (y - buffer.size()) / 2;;
+	int col = (x - colwidth) / 2;
+	for (const auto &c : buffer) {
+		mvprintw(row++, col, c);
+	}
 	attroff(COLOR_PAIR(COLOR_DEBUG));
 
 	getch();
 }
 
 
-void Gui::draw(PongState &state, const curve::curve_time_t &now) {
+void Gui::draw(std::shared_ptr<State> &state, const curve::curve_time_t &now) {
 	//	clear();
 	// Print Score
 	attron(COLOR_PAIR(COLOR_DEBUG));
-	getmaxyx(stdscr, state.resolution[1], state.resolution[0]);
-	state.resolution[1] -= 1;
+	getmaxyx(stdscr, state->resolution[1], state->resolution[0]);
+	state->resolution[1] -= 1;
 	attron(COLOR_PAIR(COLOR_DEBUG));
 	mvprintw(2,
-	         state.resolution[0] / 2 - 5,
+	         state->resolution[0] / 2 - 5,
 	         "P1 %i | P2 %i",
-	         state.p1.lives(now),
-	         state.p2.lives(now));
+	         state->p1->lives->get(now),
+	         state->p2->lives->get(now));
 
-	mvvline(0, state.resolution[0] / 2, ACS_VLINE, state.resolution[1]);
-	mvprintw(0, 1, "NOW:  %f", now);
-	mvprintw(1, 1, "SCR:  %i | %i", state.resolution[0], state.resolution[1]);
+	mvvline(0, state->resolution[0] / 2, ACS_VLINE, state->resolution[1]);
+	mvprintw(0, 1, "NOW:  %d", now);
+	mvprintw(1, 1, "SCR:  %i | %i", state->resolution[0], state->resolution[1]);
 	mvprintw(2,
 	         1,
 	         "P1:   %f, %f, %i",
-	         state.p1.position(now),
-	         state.p1.y,
-	         state.p1.state(now).state);
+	         state->p1->position->get(now),
+	         state->p1->y,
+	         state->p1->state->get(now).state);
 	mvprintw(3,
 	         1,
 	         "P2:   %f, %f, %i",
-	         state.p2.position(now),
-	         state.p2.y,
-	         state.p2.state(now).state);
-	for (int i = 0; i < 1000; i += 100) {
-		mvprintw(4 + i / 100,
+	         state->p2->position->get(now),
+	         state->p2->y,
+	         state->p2->state->get(now).state);
+	for (int i = 0; i < 100; i += 10) {
+		mvprintw(4 + i / 10,
 		         1,
 		         "BALL in %03i: %f | %f; SPEED: %f | %f",
 		         i,
-		         state.ball.position(now + i)[0],
-		         state.ball.position(now + i)[1],
-		         state.ball.speed(now + i)[0],
-		         state.ball.speed(now + i)[1]);
+		         state->ball->position->get(now + i)[0],
+		         state->ball->position->get(now + i)[1],
+		         state->ball->speed->get(now + i)[0],
+		         state->ball->speed->get(now + i)[1]);
 	}
-	mvprintw(state.resolution[1] - 1, 1, "Press ESC twice to Exit");
+	mvprintw(state->resolution[1] - 1, 1, "Press ESC twice to Exit");
 	attroff(COLOR_PAIR(COLOR_DEBUG));
 
 	attron(COLOR_PAIR(COLOR_PLAYER1));
-	for (int i = -state.p1.size(now) / 2; i < state.p1.size(now) / 2; i++) {
-		mvprintw(state.p1.position(now) + i, state.p1.y, "|");
+	for (int i = -state->p1->size->get(now) / 2; i < state->p1->size->get(now) / 2; i++) {
+		mvprintw(state->p1->position->get(now) + i, state->p1->y, "|");
 	}
 	attroff(COLOR_PAIR(COLOR_PLAYER1));
 
 	attron(COLOR_PAIR(COLOR_PLAYER2));
-	for (int i = -state.p2.size(now) / 2; i < state.p2.size(now) / 2; i++) {
-		mvprintw(state.p2.position(now) + i, state.p2.y, "|");
+	for (int i = -state->p2->size->get(now) / 2; i < state->p2->size->get(now) / 2; i++) {
+		mvprintw(state->p2->position->get(now) + i, state->p2->y, "|");
 	}
 	attroff(COLOR_PAIR(COLOR_PLAYER2));
 
 	attron(COLOR_PAIR(COLOR_1));
 	for (int i = 1; i < 9999; ++i) {
-		draw_ball(state.ball.position(now + i), 'X');
+		draw_ball(state->ball->position->get(now + i), 'X');
 	}
 	attron(COLOR_PAIR(COLOR_0));
-	draw_ball(state.ball.position(now), 'M');
+	draw_ball(state->ball->position->get(now), 'M');
 	/*attron(COLOR_PAIR(COLOR_BALL));
-	  mvprintw(state.ball.position(now)[1],
-	  state.ball.position(now)[0],
+	  mvprintw(state->ball->position->get(now)[1],
+	  state->ball->position->get(now)[0],
 	  "o");
 	*/
 	attroff(COLOR_PAIR(COLOR_BALL));

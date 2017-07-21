@@ -32,8 +32,8 @@ public:
 	explicit CurveIterator(const container_t *c):
 		_base{},
 		container{c},
-		from{-std::numeric_limits<curve_time_t>::infinity()},
-		to{+std::numeric_limits<curve_time_t>::infinity()} {}
+		from{-std::numeric_limits<curve_time_t>::max()},
+		to{+std::numeric_limits<curve_time_t>::max()} {}
 
 	/** Default copy c'tor */
 	CurveIterator (const CurveIterator &) = default;
