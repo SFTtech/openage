@@ -26,19 +26,19 @@ To construct a message you need to know the following parameters:
 
 An attacker that is in game with other players will have no problems getting to know the player numbers. As the game is constantly synced up, he can easily get the value for Counter 2 and Game ID.
 
-Deriving the valid Sender ID of the receiving player is more difficult, depending on the time the attacker starts capturing the network traffic. The easiest way to discover all Player IDs is by capturing the 196 byte packets that are sent in the lobby. There the IDs of Players 1-8 have a fixed byte position in the data stream. The IDs can also be determined by looking at other packet types, but I will not discuss this here.
+Deriving the valid Sender ID of the receiving player is more difficult, depending on the time the attacker starts capturing the network traffic. The easiest way to discover all Player IDs is by capturing the 196 byte packets that are sent in the lobby. There the IDs of Players 1-8 have a fixed byte position in the data stream. The IDs can also be determined by looking at other packet types, but we will not discuss this here.
 
 ## Forging the packet
 
-With the above knowledge and the protocol structure in mind, we are now able to create a packet to our liking. I personally used Packet Sender for this purpose, but you can use similar tools too, for example if you also want to spoof the IP address. We will limit our efforts to the UDP part of the packet.
+With the above knowledge and the protocol structure in mind, we are now able to create a packet to our liking. We will use Packet Sender for this purpose, but you can use similar tools too, for example if you also want to spoof the IP address. We will limit our efforts to the UDP part of the packet.
 
-First of all, we grab a sample packet (e.g. the one from my previous post), since we just need to change a few values. The Sender ID and Game ID will be replaced with our spoofed values. The command byte has to be left at value `43`, otherwise the packet will not be recognized as a message. The 3 control bytes after should contain values that fit the message command, but it's not necessary to set them to a specific value. `02 7b 00` and `02 00 00` worked fine for me.
+First of all, we grab a sample packet, since we just need to change a few values. The Sender ID and Game ID will be replaced with our spoofed values. The command byte has to be left at value `43`, otherwise the packet will not be recognized as a message. The 3 control bytes after should contain values that fit the message command, but it's not necessary to set them to a specific value. `02 7b 00` and `02 00 00` worked fine for me.
 
 The value of Counter 1 is irrelevant but Counter 2 must have a greater value than the one of the latest 32 byte sync packet (command byte: `44`). If the value of Counter 2 is smaller, the message will not display. The value of Counter 2 determines when the message is displayed or more precisely: The message will be displayed as soon as the values of Counter 2 in the sync packet and of Counter 2 in the message packet are equal. With today's internet connection speeds, a sync packet is sent every 120 ms, which you can use to anticipate the time the forged message will display.
 
 The Player Number has to be set to spoofed player number. The 8 bytes of the *String of intended receivers* also must change accordingly: The value at position X should be `59` when player X is supposed to see the message.
 
-The last thing to change are the message bytes. They will have to be converted to extended ASCII and then placed at the correct location within the data stream. I also want to stress that you don't have to change the value of the message length byte to the exact length of the message, since AoC doesn't seem to check that and it has no effect when the message is displayed. I would recommend setting it to a value that AoC accepts (`00` to `41`) though because I haven't tested all possible values for that byte thoroughly. Forged messages can be longer than the maximum of 65 characters.
+The last thing to change are the message bytes. They will have to be converted to extended ASCII and then placed at the correct location within the data stream. It also has to be stressed that you don't have to change the value of the message length byte to the exact length of the message, since AoC doesn't seem to check that and it has no effect when the message is displayed. Forged messages can be longer than the maximum of 65 characters.
 
 ## Execution
 

@@ -1,6 +1,6 @@
 # Messaging Protocol
 
-AoE2's game structure has always been a little bit messy for today's standards, with units cramped into .slp files and cracks and flaws in the game engine that become more apparent with every expansion. But what about the old network protocol? Can something that works with a 28.8 modem be messy too? Well, the answer is yes but explaining every detail is kind of complicated. For that reason, I will focus on analyzing just the chat protocol because it actually is the most understandable aspect of the multiplayer network communication and I doubt anybody wants to read boring details about syncing game states and such (otherwise, let me know!). So, here we go!
+AoE2's game structure has always been a little bit messy for today's standards, with units cramped into .slp files and cracks and flaws in the game engine that become more apparent with every expansion. But what about the old network protocol? Can something that works with a 28.8 modem be messy too? Well, the answer is yes but explaining every detail is kind of complicated. For that reason, we will focus on analyzing just the chat protocol because it actually is the most understandable aspect of the multiplayer network communication.
 
 ## Test Setup
 
@@ -11,7 +11,7 @@ The test environment consisted of 4 hosts to simulate a 4-player multiplayer gam
 * Wine 1.8.7
 * Wireshark 2.2.6
 
-One game was established by using the DirectPlay feature, while all other play sessions were established over LAN. From what I've seen, this makes no difference for the communication protocol and DirectPlay is only used for the purpose of connecting players.
+One game was established by using the DirectPlay feature, while all other play sessions were established over LAN. This makes no difference for the communication protocol and DirectPlay is only used for the purpose of connecting players.
 
 ## What standard protocols are used?
 
@@ -57,7 +57,7 @@ The trend we see is that the IDs will be apart from each other by multiples of 2
 8c 46 01
 ```
 
-The next three bytes are what I would call the "Game ID" because these three bytes are persistent throughout every packet (chat, but also sync, command, etc. packets) in a game session. The value seems to be generated from the Player IDs (more players and higher values for Player IDs equal a higher value for the Game ID), although I didn't find an exact pattern.
+The next three bytes are what will be called the "Game ID" because these three bytes are persistent throughout every packet (chat, but also sync, command, etc. packets) in a game session. The value seems to be generated from the Player IDs (more players and higher values for Player IDs equal a higher value for the Game ID), although there is no obvious exact pattern.
 
 ### Receiver ID
 
@@ -65,7 +65,7 @@ The next three bytes are what I would call the "Game ID" because these three byt
 00
 ```
 
-Our next byte is the Receiver ID which is not used for chat messages and therefore holds no value. Receiver IDs play a role in sync packets to synchronize the game state between the P2P clients. Since all chat messages are broadcasted to every player, a Receiver ID is unnecessary for this use case. Wait, did I say all messages are broadcasted? Wouldn't that be problematic if you wanted to only communicate with one specific player? We will look at that in a minute.
+Our next byte is the Receiver ID which is not used for chat messages and therefore holds no value. Receiver IDs play a role in sync packets to synchronize the game state between the P2P clients. Since all chat messages are broadcasted to every player, a Receiver ID is unnecessary for this use case. Wait, did we just say all messages are broadcasted? Wouldn't that be problematic if you wanted to only communicate with one specific player? We will look at that in a minute.
 
 ### Game ID 2
 
@@ -81,7 +81,7 @@ This is the Game ID of the Receiver. Similar to the Receiver ID, the second Game
 43 02 7b 00
 ```
 
-Next up, we have 4 bytes that clarify how the data in the following bytes has to be interpreted. The first byte, `43`, indicates that the packet contains a "chat message". The purpose of the other 3 bytes is unknown to me, but they vary between very few values. Possible values for I have observed include:
+Next up, we have 4 bytes that clarify how the data in the following bytes has to be interpreted. The first byte, `43`, indicates that the packet contains a "chat message". The purpose of the other 3 bytes is unknown to me, but they vary between very few values. Possible values for them include:
 
 Byte  |Values
 ------|------
@@ -90,7 +90,7 @@ Byte  |Values
 3     |00, 7b, 8b, 90
 4     |00, 0c
 
-I assume the last 3 bytes communicate more control parameters to the game engine.
+The last 3 bytes are assumed to communicate more control parameters to the game engine.
 
 ### Counter 1 an Counter 2
 
@@ -125,9 +125,9 @@ This byte is strange, as its name already indicates. The value of it is `00` whe
 4e 59 59 4e 4e 4e 4e 4e
 ```
 
-As I mentioned before, the chat messages are broadcasted to every player, even if the message is intended for just a subset of them. The reason the messages are displayed to the correct addressees can be seen here. The 8 byte ASCII string shown above dedicates each one of its bytes to one player. If the ASCII character at position X is "Y", the message will be displayed to Player X. Vice versa, if the character at position X reads "N", Player X will not be able to see the message. He will still receive the packet though which in consequence can be captured and read in Wireshark without problems.
+As mentioned before, the chat messages are broadcasted to every player, even if the message is intended for just a subset of them. The reason the messages are displayed to the correct addressees can be seen here. The 8 byte ASCII string shown above dedicates each one of its bytes to one player. If the ASCII character at position X is "Y", the message will be displayed to Player X. Vice versa, if the character at position X reads "N", Player X will not be able to see the message. He will still receive the packet though which in consequence can be captured and read in Wireshark without problems.
 
-At first I thought the messages were broadcasted so that they could be displayed in game recordings when you switch player perspectives. As it turns out, the recordings do not contain any chat messages that were not intended for you when you played the game. Furthermore, the chat window is locked to your message history permanently, even if you switch perspectives. If someone has any idea why chat messages are broadcasted to everyone in this game, let me know.
+One could think that the messages were broadcasted so that they could be displayed in game recordings when you switch player perspectives. As it turns out, the recordings do not contain any chat messages that were not intended for you when you played the game. Furthermore, the chat window is locked to your message history permanently, even if you switch perspectives. If someone has any idea why chat messages are broadcasted to everyone in this game, let me know.
 
 ### Separator
 
@@ -135,7 +135,7 @@ At first I thought the messages were broadcasted so that they could be displayed
 32
 ```
 
-This byte marks the end of the previous String. It doesn't change when I alter the number of players, the team composition or the message length, so I assume that it is just a separator.
+This byte marks the end of the previous String. It doesn't change when we alter the number of players, the team composition or the message length, so it is assumed to be a separator.
 
 ### Empty bytes
 
@@ -143,7 +143,7 @@ This byte marks the end of the previous String. It doesn't change when I alter t
 00
 ```
 
-These bytes were always empty in my tests and could be part of the separator mentioned above.
+These bytes were always empty in the tests and could be part of the separator mentioned above.
 
 ### Message length
 
@@ -159,7 +159,7 @@ Our next byte shows the message length. The maximum value it can reach is `41` w
 00 00 00
 ```
 
-Again we have empty bytes that didn't have values other than `00` during my tests. Maybe these bytes are an extension to the "Message length"-byte and the network protocol can handle more than 65 characters but they were limited in the final release.
+Again we have empty bytes that didn't have values other than `00` during the tests. Maybe these bytes are an extension to the "Message length"-byte and the network protocol can handle more than 65 characters but they were limited in the final release.
 
 ### ASCII Message
 
@@ -183,7 +183,7 @@ The end of the ASCII String is marked by 1 byte with the value `00`.
 00 18 dc 32
 ```
 
-Last but not least the data ends with 4 bytes that have an unknown purpose but an interesting behavior. The bytes will look the same for messages of the same length, e.g. messages of length 9 will end with the above String, whether it is "abcdefghi", "?????????" or "123456789". By creating a message of length 1 and then extending following messages by one character each, I produced the following results:
+Last but not least the data ends with 4 bytes that have an unknown purpose but an interesting behavior. The bytes will look the same for messages of the same length, e.g. messages of length 9 will end with the above String, whether it is "abcdefghi", "?????????" or "123456789". By creating a message of length 1 and then extending following messages by one character each, we produce the following results:
 
 Length  | Result
 --------|-------
@@ -229,7 +229,7 @@ Length  | Result
 40      | 32 00 41 42
 41      | 00 41 42 43
 
-Interestingly enough, at maximum message length the last 3 bytes will always contain the first 3 bytes of the actual message ASCII bytes in uppercase letters ("ABC"). The last 4 bytes of data start to look like someone purposefully created a buffer overflow and appended them to the message. But why waste 4 bytes of the message for this? I'm not sure if these bytes have a deeper purpose.
+Interestingly enough, at maximum message length the last 3 bytes will always contain the first 3 bytes of the actual message ASCII bytes in uppercase letters ("ABC"). The last 4 bytes of data start to look like someone purposefully created a buffer overflow and appended them to the message. But why waste 4 bytes of the message for this?
 
 Anyway, here you can see the bits that you can reveal by adding one character at a time:
 
