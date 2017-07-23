@@ -67,12 +67,12 @@ As an example we want to send the german original first formulation of the categ
 
 2. Next up, the data bytes have to be pasted into Packet Sender. Target IP will be `192.168.160.2`, the IP address of Player 1. AoC runs on port `2350`.
 
-[Screenshot](images/aoe2-message-spoofing1.png)
+![Screenshot](images/aoe2-message-spoofing1.png)
 
 3. We will see the packet in Wireshark when it is sent. The value of Counter 2 is about 128 ticks behind the one in the latest sync packet. It will therefore take another 16 seconds to be displayed.
 
-[Screenshot](images/aoe2-message-spoofing2.png)
+![Screenshot](images/aoe2-message-spoofing2.png)
 
 4. A few seconds later and the message indeed has arrived for Player 1 and will be displayed.
 
-[Screenshot](images/aoe2-message-spoofing3.png)
+![Screenshot](images/aoe2-message-spoofing3.png)
