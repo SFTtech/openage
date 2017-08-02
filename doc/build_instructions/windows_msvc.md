@@ -21,20 +21,11 @@
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
 
-    vcpkg install libepoxy fontconfig freetype harfbuzz opus qt5 sdl2 sdl2-image
+    vcpkg install dirent libepoxy fontconfig freetype harfbuzz opus opusfile qt5 sdl2 sdl2-image
+
+ _Note:_ Building and installing `qt5` using vcpkg takes a lot of space-time. You might want to install [the prebuilt version](https://www.qt.io/download-open-source/) instead. This should be mentioned in `CMAKE_PREFIX_PATH` with the cmake command below.
 
 ### The "other missing" dependencies
- Create a `deps` directory in the `<openage directory>`.
- Create the following directories in `deps`:
-  - `include`
-  - `lib`
-
- **dirent.h**
-
- Visual Studio doesn't provide a `dirent.h`, which is why we need to use a different one.
- `FontConfig` (installed above using vcpkg) depends on `dirent.h` also, which is why there should be one downloaded and saved as `<vcpkg directory>/downloads/fontconfig-dirent.h`.
- Copy this file (and rename) to `<openage directory>/deps/include/dirent.h`.
-
  **opus-tools (for `opusenc`)**
 
   There are two options for getting opus-tools:
@@ -48,17 +39,6 @@
   Refer their AppVeyor config for the steps to build.
   You will need `opusenc.exe` from the build output directory available from the `PATH`.
 
- **opusfile**
-
-  Even though prebuilt binaries are available, you would need to build this one yourself because the required static library (`opusfile.lib`) is absent in the zip file.
-
-  The source can be fetched from [the Github page](https://github.com/xiph/opusfile).
-  Refer their AppVeyor config for the steps to build, using the `Release-NoHTTP` configuration.
-  Copy:
-   - `opusfile.lib` from the build output directory to `<openage directory>/deps/lib/`.
-   - directory `<vcpkg directory>/installed/<relevant config>/include/opus` to `<openage directory>/deps/include/`. This is needed because `opusfile.h` refers the `opus` headers as if they are in the same directory.
-   - `<opusfile directory>/include/opusfile.h` to `<openage directory>/deps/include/opus/`.
-
 ## Building openage
  Note that openage doesn't support completely out-of-source-tree builds yet.
  We will, however, use a separate `build` directory to build the binaries.
@@ -67,7 +47,7 @@
 
      mkdir build
      cd build
-     cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>/scripts/buildsystems/vcpkg.cmake -DCMAKE_PREFIX_PATH=<openage directory>/deps -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+     cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
      cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
 
 ## Running openage
