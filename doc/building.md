@@ -70,6 +70,7 @@ described below for some of the most common ones:
 - [Arch Linux](build_instructions/arch_linux.md)
 - [FreeBSD](build_instructions/freebsd.md)
 - [Gentoo](build_instructions/gentoo.md)
+- [Microsoft Windows 10](build_instructions/windows_msvc.md)
 
 
 ## Build procedure

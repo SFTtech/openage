@@ -123,12 +123,9 @@ Setting up continuous integration for this platform has some complications. Runn
 Windows Version
 ---------------
 
-None of us uses Windows, so a port has low priority.
+The Windows port of openage is under development.
 
-However, we're using cross-platform libraries wherever possible,
-so a port should be "pretty easy" to accomplish.
-
-If you want to beat us to it, go for it!
+Setting up continuous integration for this platform has problems similar to the OSX version. If you know of a legal and cost-free way of acquiring and running a Windows VM, please open a ticket in our issue tracker. Until then, PRs untested on Windows will make their way into the master branch and occasional breakage will occur.
 
 
 Contributing
