@@ -3,6 +3,10 @@ openage status
 
 This file contains the current feature set of openage.
 
+You can follow development progress on:
+* [Our blog at https://blog.openage.sft.mx](https://blog.openage.sft.mx)
+* Our [/r/openage subreddit](https://reddit.com/r/openage)
+
 
 The list must grow
 ------------------
