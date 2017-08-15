@@ -14,8 +14,12 @@ To play, you require *an original AoE II : TC installation or [AoE II: HD](http:
 [![#sfttech on matrix.org](https://img.shields.io/badge/matrix-%23sfttech-blue.svg)](https://riot.im/app/#/room/#sfttech:matrix.org)
 [![quality badge](https://img.shields.io/badge/cuteness-overload-orange.svg)](http://www.emergencykitten.com/)
 
-
-[<img src="https://www.redditstatic.com/about/assets/reddit-logo.png" alt="reddit" height="45"> /r/openage forum](https://www.reddit.com/r/openage/)
+Contact  | Where?
+---------|-
+Development Blog | [blog.openage.sft.mx](https://blog.openage.sft.mx)
+Forum | [<img src="https://www.redditstatic.com/about/assets/reddit-logo.png" alt="reddit" height="22"/> /r/openage](https://www.reddit.com/r/openage/)
+Matrix Chat | [`#sfttech:matrix.org`](https://riot.im/app/#/room/#sfttech:matrix.org)
+IRC Chat | [`irc.freenode.net #sfttech`](https://webchat.freenode.net/?channels=sfttech)
 
 
 The foundation of **openage**:
@@ -163,14 +167,19 @@ cheers, happy hecking.
 Contact
 -------
 
-Most of the developers hang around on our **IRC** channel (`#sfttech` on `freenode.net`).
-Alternatively, you can join `#sfttech:matrix.org`, which is bridged to the IRC channel.
-Do not hesitate to ping us, we might not see your message otherwise.
+
+If you have the desire to perform semi-human interaction,
+join our **Matrix** or **IRC** chatroom!
+
+* [`#sfttech:matrix.org`](https://riot.im/app/#/room/#sfttech:matrix.org)
+* [`irc.freenode.net #sfttech`](https://webchat.freenode.net/?channels=sfttech)
+
+Do not hesitate to ping and insult us, we might not see your message otherwise.
 
 For all technical discussion (ideas, problems, ...), use the [issue tracker](https://github.com/SFTtech/openage/issues)!
 It's like a mailing list.
 
-For all interactive chit-chat, use our [/r/openage subreddit](https://www.reddit.com/r/openage/)!
+For other discussions or questions, use our [/r/openage subreddit](https://www.reddit.com/r/openage/)!
 
 
 License
