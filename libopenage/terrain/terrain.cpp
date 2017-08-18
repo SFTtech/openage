@@ -797,4 +797,13 @@ std::tuple<coord::chunk, coord::chunk> Terrain::used_bounding_rect() const {
 	return std::tuple<coord::chunk, coord::chunk>{};
 }
 
+size_t Terrain::used_chunks_hash() const {
+	size_t result = 0;
+
+	for (auto &c : this->chunks)
+		result += coord_chunk_hash()(c.first);
+
+	return result;
+}
+
 } // namespace openage

@@ -411,6 +411,11 @@ public:
 	 */
 	std::tuple<coord::chunk, coord::chunk> used_bounding_rect() const;
 
+	/**
+	 * @return hash for the state of what chunks are present
+	 */
+	size_t used_chunks_hash() const;
+
 private:
 
 	/**
