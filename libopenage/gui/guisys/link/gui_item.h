@@ -11,6 +11,7 @@
 
 #include <QObject>
 #include <QMetaType>
+#include <QThread>
 #include <QRegularExpression>
 #include <QDebug>
 
@@ -186,6 +187,23 @@ public:
 			static_assert_about_unwrapping<F, decltype(unwrap(checked_static_cast<T*>(this))), decltype(unwrap_if_can(args))...>();
 			f(unwrap(checked_static_cast<T*>(this)), unwrap_if_can(args)...);
 		});
+	}
+
+	/**
+	 * Invoke a function in the logic thread (the thread of the core of this object) and wait for the completion.
+	 */
+	template<typename F>
+	void in_game_logic_thread_blocking(F f) {
+		GuiItemBase *base = checked_static_cast<GuiItemBase*>(checked_static_cast<T*>(this));
+		emit base->game_logic_caller.in_game_logic_thread_blocking(f);
+	}
+
+	/**
+	 * @return true if current thread is the game logic thread.
+	 */
+	bool current_thread_is_game_logic_thread() const {
+		const GuiItemBase *base = checked_static_cast<const GuiItemBase*>(checked_static_cast<const T*>(this));
+		return QThread::currentThread() == base->game_logic_caller.thread();
 	}
 
 protected:
