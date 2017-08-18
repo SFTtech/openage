@@ -69,6 +69,7 @@ described below for some of the most common ones:
 - [Mac OS X 10.10 Yosemite](build_instructions/os_x_10.10_yosemite.md)
 - [Arch Linux](build_instructions/arch_linux.md)
 - [FreeBSD](build_instructions/freebsd.md)
+- [Gentoo](build_instructions/gentoo.md)
 
 
 ## Build procedure
