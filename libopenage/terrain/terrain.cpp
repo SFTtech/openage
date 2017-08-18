@@ -774,4 +774,27 @@ void Terrain::calculate_masks(coord::tile position,
 	}
 }
 
+std::tuple<coord::chunk, coord::chunk> Terrain::used_bounding_rect() const {
+	if (!this->chunks.empty()) {
+		coord::chunk some_chunk = std::begin(this->chunks)->first;
+		coord::chunk min = some_chunk, max = some_chunk;
+
+		for (auto &c : this->chunks) {
+			if (c.first.ne < min.ne)
+				min.ne = c.first.ne;
+			else if (c.first.ne > max.ne)
+				max.ne = c.first.ne;
+
+			if (c.first.se < min.se)
+				min.se = c.first.se;
+			else if (c.first.se > max.se)
+				max.se = c.first.se;
+		}
+
+		return std::make_tuple(min, max + coord::chunk_delta{1, 1});
+	}
+
+	return std::tuple<coord::chunk, coord::chunk>{};
+}
+
 } // namespace openage

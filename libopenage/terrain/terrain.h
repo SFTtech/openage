@@ -404,6 +404,13 @@ public:
 	                     struct tile_draw_data *tile_data,
 	                     struct influence_group *influences);
 
+	/**
+	 * @return min/max+1 ne/se coordinates among the referenced chunks
+	 *
+	 * This doesn't mean that chunks with these specific coordinates exist.
+	 */
+	std::tuple<coord::chunk, coord::chunk> used_bounding_rect() const;
+
 private:
 
 	/**
