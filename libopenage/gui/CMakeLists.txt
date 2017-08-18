@@ -11,6 +11,7 @@ add_sources(libopenage
 	game_spec_link.cpp
 	generator_link.cpp
 	gui.cpp
+	gui_textured_points_shader.cpp
 	main_args_link.cpp
 	registrations.cpp
 	resources_list_model.cpp
