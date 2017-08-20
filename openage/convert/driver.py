@@ -123,16 +123,12 @@ def convert(args):
     info("asset conversion complete; asset version: " + str(ASSET_VERSION))
 
 
-def get_palette(srcdir, game_versions, offset=0):
+def get_palette(srcdir, offset=0):
     """
     Read and create the color palette
     """
 
-    # `.bin` files are renamed `.bina` in HD version 4
-    if GameVersion.age2_hd_fe in game_versions:
-        palette_path = "interface/{}.bina".format(50500 + offset)
-    else:
-        palette_path = "interface/{}.bin".format(50500 + offset)
+    palette_path = "interface/{}.bina".format(50500 + offset)
 
     return ColorTable(srcdir[palette_path].open("rb").read())
 
@@ -145,7 +141,7 @@ def convert_metadata(args):
 
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
-    palette = get_palette(args.srcdir, args.game_versions)
+    palette = get_palette(args.srcdir)
 
     # store for use by convert_media
     args.palette = palette
@@ -192,9 +188,9 @@ def convert_metadata(args):
             player_palette.save_visualization(outfile)
 
 
-def extract_mediafiles_names_map(srcdir, game_versions):
+def extract_mediafiles_names_map(srcdir):
     """
-    Some *.bin files contain name assignments.
+    Some *.bina files contain name assignments.
     They're in the form of e.g.:
     "background1_files     camdlg1  none  53171  -1"
 
@@ -203,15 +199,10 @@ def extract_mediafiles_names_map(srcdir, game_versions):
 
     matcher = re.compile(r"\w+_files\s+(\w+)\s+\w+\s+(\w+)")
 
-    if GameVersion.age2_hd_fe in game_versions:
-        suffix = '.bina'
-    else:
-        suffix = '.bin'
-
     names_map = dict()
 
     for filepath in srcdir["interface"].iterdir():
-        if filepath.suffix == suffix:
+        if filepath.suffix == '.bina':
             try:
                 for line in filepath.open():
                     match = matcher.search(line)
@@ -285,9 +276,8 @@ def convert_media(args):
 
     info("converting media")
 
-    # there is id->name mapping information in some bin files
-    named_mediafiles_map = extract_mediafiles_names_map(args.srcdir,
-                                                        args.game_versions)
+    # there is id->name mapping information in some bina files
+    named_mediafiles_map = extract_mediafiles_names_map(args.srcdir)
 
     jobs = getattr(args, "jobs", None)
     with SLPConverterPool(args.palette, jobs) as pool:
@@ -319,9 +309,9 @@ def get_filter(args):
         ignored.add((frozenset({'graphics', 'terrain', 'gamedata'}), '.slp'))
     if args.flag("no_interface"):
         ignored.add((frozenset({'interface'}), '.slp'))
-        ignored.add((frozenset({'interface'}), '.bin'))
+        ignored.add((frozenset({'interface'}), '.bina'))
     if args.flag("no_scripts"):
-        ignored.add((frozenset({'gamedata'}), '.bin'))
+        ignored.add((frozenset({'gamedata'}), '.bina'))
 
     return ignored
 
