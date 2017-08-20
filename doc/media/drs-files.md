@@ -39,27 +39,34 @@ Python format: `Struct("< 40s 4s 12s i i")`
 ### DRS Table info
 
 One `drs_table_info` struct is stored for each file type (Possible file
-extensions are `bin`, `slp`, `wav`).
+extensions are `bina`, `slp `, `wav `).
 
 Length  | Type   | Description            | Example
 --------|--------|------------------------|--------
-1 byte  | uint8  | Related with file type | a, 0x61
-3 bytes | string | Reversed extension     | nib (reversed 'bin')
+4 bytes | string | File extension         | 'anib', ' pls'
 4 bytes | int32  | Table offset           | 112, 0x00000070
 4 bytes | int32  | Number of files        | 71, 0x00000047
 
 ```cpp
 struct drs_table_info {
-	uint8 file_type;
-	char file_extension[3];
+	char file_extension[4];
 	int32 file_info_offset;
 	int32 num_files;
 };
 ```
-Python format: `Struct("< c 3s i i")`
+Python format: `Struct("< 4s i i")`
 
-* `file_type` is a magical byte that seems to be either `0x61` when the file extension is `bin`, or `0x20` otherwise.
-* `file_extension` is the reversed file extension, so one of `nib`, `pls`, `vaw`. (Reverse to get `bin`, `slp`, `wav`)
+* `file_extension` is reversed and padded by spaces (`0x20`) to reach 4 bytes.
+  Internally, Age of Empires does something like this when reading files
+  from a DRS archive:
+
+  ```c
+  read_drs_file('bina', 50500);
+  ```
+
+  Note how it uses a C char with multiple bytes. This is stored on disk as a
+  little-endian integer, so the 'a' byte ends up at the lowest address,
+  and the 'b' byte ends up at the highest address.
 * `file_info_offset` holds the offset where the actual table resides.
 * `num_files` contains the amount of files in the table.
 
@@ -102,7 +109,7 @@ DRS files that come with the base AoK game.
 Contains random map scripts (RMS), as well as AI scripts and some graphic files.
 Random Map scripts describe how the builtin maps should be generated.
 AI scripts tell the computer what to do, such as build units, gather resources,
-and generally make it "smart". These are all `bin` files.
+and generally make it "smart". These are all `bina` files.
 The graphic files (`slp`) are described below.
 
 ### graphics.drs
@@ -116,7 +123,7 @@ buildings, resources, animals, cliffs and shadows. These are all `slp` graphic
 Contains the main interface graphics of the game.
 All of the the borders, buttons, logos, main game screen, etc you see when
 entering the game to starting one can be found within this file as `slp`
-graphics. The drawing color palettes are also stored in this file as `bin`.
+graphics. The drawing color palettes are also stored in this file as `bina`.
 Finally there's a bunch of `wav` sounds, too.
 
 ### sounds.drs
