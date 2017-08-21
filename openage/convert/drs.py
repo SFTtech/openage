@@ -47,8 +47,7 @@ class DRSTableInfo(NamedStruct):
 
     endianness       = "<"
 
-    file_type        = "B"
-    file_extension   = "3s"    # reversed (for reasons) extension
+    file_extension   = "4s"    # reversed (for reasons) extension
     file_info_offset = "i"     # table offset
     file_count       = "i"     # number of files in table
 
@@ -92,8 +91,9 @@ class DRS(FileCollection):
             table_header = DRSTableInfo.read(fileobj)
 
             # decode and un-flip the file extension
+            # see doc/media/drs-files.md
             fileext = table_header.file_extension
-            fileext = fileext.decode('latin-1').lower()[::-1]
+            fileext = fileext.decode('latin-1').lower()[::-1].rstrip()
             table_header.file_extension = fileext
 
             dbg(str(table_header))
