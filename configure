@@ -252,6 +252,9 @@ def invoke_cmake(args, bindir, defines, options):
     if args.ninja:
         invocation.extend(['-G', 'Ninja'])
 
+    if args.ccache:
+        invocation.extend(['-DENABLE_CCACHE=ON'])
+
     cxx_options = dict()
     cxx_options["CXX_OPTIMIZATION_LEVEL"] = args.optimize
     cxx_options["CXX_SANITIZE_MODE"] = args.sanitize
@@ -381,6 +384,8 @@ def parse_args():
                      help="all following args are passed directly to cmake")
     cli.add_argument("--ninja", action="store_true",
                      help="use ninja instead of GNU make")
+    cli.add_argument("--ccache", action="store_true",
+                     help="activate using the ccache compiler cache")
 
     args = cli.parse_args()
 
