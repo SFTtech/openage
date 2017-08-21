@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "font.h"
 
@@ -207,7 +207,7 @@ std::vector<codepoint_t> Font::get_glyphs(const std::string &text) const {
 	return glyphs;
 }
 
-std::unique_ptr<unsigned char> Font::load_glyph(codepoint_t codepoint, Glyph &glyph) const {
+std::unique_ptr<unsigned char[]> Font::load_glyph(codepoint_t codepoint, Glyph &glyph) const {
 	FT_Face ft_face = hb_ft_font_get_face(this->hb_font);
 	if (unlikely(FT_Load_Glyph(ft_face, codepoint, FT_LOAD_DEFAULT | FT_LOAD_NO_HINTING | FT_LOAD_RENDER))) {
 		return nullptr;
@@ -221,11 +221,13 @@ std::unique_ptr<unsigned char> Font::load_glyph(codepoint_t codepoint, Glyph &gl
 	glyph.x_advance = static_cast<float>(ft_face->glyph->advance.x)/FREETYPE_UNIT;
 	glyph.y_advance = static_cast<float>(ft_face->glyph->advance.y)/FREETYPE_UNIT;
 
-	std::unique_ptr<unsigned char> glyph_data{new unsigned char[glyph.width * glyph.height]};
-	for (unsigned int i = 0; i < glyph.height; i++) {
-		memcpy(glyph_data.get() + (i * glyph.width),
+	auto glyph_data = std::make_unique<unsigned char[]>(glyph.width * glyph.height);
+	for (size_t i = 0; i < glyph.height; i++) {
+		memcpy(
+			&glyph_data[i * glyph.width],
 			ft_face->glyph->bitmap.buffer + (glyph.height - i - 1) * glyph.width,
-			glyph.width * sizeof(unsigned char));
+			glyph.width * sizeof(unsigned char)
+		);
 	}
 	return glyph_data;
 }

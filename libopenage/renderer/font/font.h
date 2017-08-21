@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -166,7 +166,7 @@ public:
 	 * @param glyph: The glyph's info is loaded in to this object.
 	 * @returns The glyph's bitmap data.
 	 */
-	std::unique_ptr<unsigned char> load_glyph(codepoint_t codepoint, Glyph &glyph) const;
+	std::unique_ptr<unsigned char[]> load_glyph(codepoint_t codepoint, Glyph &glyph) const;
 
 private:
 	/**

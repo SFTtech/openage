@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #include "glyph_atlas.h"
 
@@ -85,7 +85,7 @@ GlyphAtlas::Entry GlyphAtlas::get(Font *font, codepoint_t codepoint) {
 	}
 
 	Glyph glyph;
-	std::unique_ptr<unsigned char> image = font->load_glyph(codepoint, glyph);
+	std::unique_ptr<unsigned char[]> image = font->load_glyph(codepoint, glyph);
 	return this->set(key, glyph, image.get());
 }
 
