@@ -92,6 +92,7 @@ find_library(FONTCONFIG_LIB fontconfig)
 
 find_package(Freetype REQUIRED)
 find_package(OpenGL REQUIRED)
+find_package(PNG REQUIRED)
 find_package(SDL2 REQUIRED)
 find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
@@ -161,6 +162,7 @@ include_directories(
 	${FREETYPE_INCLUDE_DIRS}
 	${EPOXY_INCLUDE_DIRS}
 	${OPUS_INCLUDE_DIRS}
+	${PNG_INCLUDE_DIRS}
 	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
 	${HarfBuzz_INCLUDE_DIRS}
@@ -177,6 +179,7 @@ target_link_libraries(libopenage
 		${MATH_LIB}
 		${OPENGL_LIBRARY}
 		${OPUS_LIBRARIES}
+		${PNG_LIBRARIES}
 		${SDL2IMAGE_LIBRARIES}
 		${SDL2_LIBRARY}
 		${UTIL_LIB}
