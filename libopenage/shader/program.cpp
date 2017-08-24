@@ -108,7 +108,7 @@ void Program::use() {
 }
 
 void Program::stopusing() {
-	glUseProgram((GLuint) 0);
+	glUseProgram(static_cast<GLuint>(0));
 }
 
 GLint Program::get_uniform_id(const char *name) {
