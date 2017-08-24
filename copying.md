@@ -104,6 +104,7 @@ _the openage authors_ are:
 | Neel Patel                  | ohn0                        | silverskinx à gmail dawt com                      |
 | David Carlier               | devnexen                    | devnexen à gmail dawt com                         |
 | Tushar Maheshwari           | tusharpm                    | tushar27192 à gmail dawt com                      |
+| Piotr Szpetkowski           | piotr-szpetkowski           | piotr dawt szpetkowski à pyquest dawt space       |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
