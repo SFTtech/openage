@@ -82,12 +82,12 @@ def main(argv=None):
     from .convert.main import init_subparser
     init_subparser(subparsers.add_parser(
         "convert",
-        parents=[global_cli, cfg_cli]))
+        parents=[global_cli]))
 
     from .convert.singlefile import init_subparser
     init_subparser(subparsers.add_parser(
         "convert-file",
-        parents=[global_cli, cfg_cli]))
+        parents=[global_cli]))
 
     from .codegen.main import init_subparser
     init_subparser(subparsers.add_parser(
@@ -119,7 +119,7 @@ def main(argv=None):
 
     if "asset_dir" in args and args.asset_dir:
         if not os.path.exists(args.asset_dir):
-            cli.error("directory does not exist: " + args.asset_dir)
+            cli.error("asset directory does not exist: " + args.asset_dir)
 
     # call the entry point for the subcommand.
     return args.entrypoint(args, cli.error)

@@ -15,15 +15,20 @@ from . import config
 from . import default_dirs
 
 
-def get_asset_path(args):
+def get_asset_path(custom_asset_dir=None):
     """
     Returns a Path object for the game assets.
 
-    args are the arguments, as provided by the CLI's ArgumentParser.
+    `custom_asset_dir` can a custom asset directory, which is mounted at the
+    top of the union filesystem (i.e. has highest priority).
+
+    This function is used by the both the conversion process
+    and the game startup. The conversion uses it for its output,
+    the game as its data source(s).
     """
 
-    # if we're in devmode, use only the build source asset folder
-    if not args.asset_dir and config.DEVMODE:
+    # if we're in devmode, use only the in-repo asset folder
+    if not custom_asset_dir and config.DEVMODE:
         return Directory(os.path.join(config.BUILD_SRC_DIR, "assets")).root
 
     # else, mount the possible locations in an union:
@@ -47,8 +52,8 @@ def get_asset_path(args):
     )
 
     # the program argument overrides it all
-    if args.asset_dir:
-        result.mount(Directory(args.asset_dir).root)
+    if custom_asset_dir:
+        result.mount(Directory(custom_asset_dir).root)
 
     return result
 
@@ -64,4 +69,4 @@ def test():
     fakecli.add_argument("--asset-dir", default=None)
     args = fakecli.parse_args([])
 
-    assert_value(get_asset_path(args)['missing.png'].filesize, 580)
+    assert_value(get_asset_path(args.asset_dir)['missing.png'].filesize, 580)
