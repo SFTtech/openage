@@ -6,7 +6,7 @@ Tests for the filesystem-like abstraction.
 import os
 
 from io import UnsupportedOperation
-from tempfile import gettempdir
+from tempfile import gettempdir, NamedTemporaryFile
 
 from openage.testing.testing import assert_value, assert_raises, result
 
@@ -129,40 +129,57 @@ def test_union(root_path, root_dir):
     assert_value(len(list(target.iterdir())), 0)
 
 
+def is_filesystem_case_sensitive():
+    """
+    Utility function to verify if filesystem is case-sensitive.
+    """
+
+    with NamedTemporaryFile() as tmpf:
+        # we now have a file with a "tmp" prefixed name
+        # if it exists in upper case also, filesystem is not case-sensitive
+        return not os.path.exists(tmpf.name.upper())
+
+
 def test_case_ignoring(root_path, root_dir):
     """
-    Test opening the root path with ignored case.
-
-    create a file with known name
-    then open it with wrong-case name
-    then write it with wrong-case name
-    check if changes went to known-name file
-    create new file with CamelCase name
-    check if the CamelCase file was actually created as `camelcase`
+    Test the case ignoring directory,
+    which mimics the windows filename selection behavior.
     """
 
+    # create a file with known name
     with root_path["lemme_in"].open("wb") as fil:
         fil.write(b"pwnt")
 
     ignorecase_dir = CaseIgnoringDirectory(root_dir).root
 
+    # open it with wrong-case name
     with ignorecase_dir["LeMmE_In"].open("rb") as fil:
         assert_value(fil.read(), b"pwnt")
 
+    # then write it with wrong-case name
     with ignorecase_dir["LeMmE_In"].open("wb") as fil:
         fil.write(b"changedit")
 
+    # check if changes went to known-name file
     with root_path["lemme_in"].open("rb") as fil:
         assert_value(fil.read(), b"changedit")
 
+    # create new file with CamelCase name
     ignorecase_dir["WeirdCase"].touch()
 
+    # check if the CamelCase file was actually created as `camelcase`
     assert_value(root_path["weirdcase"].is_file(), True)
 
+    # touching the same file
     root_path["a"].touch()
     ignorecase_dir["A"].touch()
 
-    assert_value(root_path["A"].is_file(), False)
+    if is_filesystem_case_sensitive():
+        # 'A' should not exist, 'a' should have been touched.
+        assert_value(root_path["A"].is_file(), False)
+    else:
+        # The underlying fs should treat A as a.
+        assert_value(root_path["A"].is_file(), True)
 
 
 def test():
