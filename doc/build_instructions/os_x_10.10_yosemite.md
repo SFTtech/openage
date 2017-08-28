@@ -8,7 +8,7 @@
  - `brew tap homebrew/python`
  - `brew update` (yes, again)
  - `brew cask install font-dejavu-sans`
- - `brew install python3 libepoxy freetype fontconfig harfbuzz cmake sdl2 sdl2_image opus opus-tools opusfile`
+ - `brew install python3 libepoxy freetype fontconfig harfbuzz cmake sdl2 sdl2_image opus opus-tools opusfile libpng`
  - `brew install numpy --with-python3`
  - `brew install pillow --with-python3`
  - `brew install qt5`
