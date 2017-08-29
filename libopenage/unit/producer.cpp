@@ -588,7 +588,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.weapon_range_max;
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1));
 		// formation is used only for the attack_stance
-		unit->add_attribute(std::make_shared<Attribute<attr_type::formation>>(attack_stance::aggresive));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::formation>>(attack_stance::aggressive));
 		unit->give_ability(std::make_shared<AttackAbility>());
 	}
 

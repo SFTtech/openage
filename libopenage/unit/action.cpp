@@ -25,7 +25,7 @@ IntervalTimer::IntervalTimer(unsigned int interval, int max_triggers)
 	interval{interval},
 	max_triggers{max_triggers},
 	time_left{interval},
-	triggers{triggers} {
+	triggers{0} {
 }
 
 void IntervalTimer::skip_to_trigger() {
@@ -1323,7 +1323,7 @@ void ProjectileAction::update(unsigned int time) {
 	coord::phys3 new_position = this->entity->location->pos.draw + d_attr.unit_dir * time;
 	if (!this->entity->location->move(new_position)) {
 
-		// TODO implemnt friendly_fire (now friendly_fire is always on), attack_attribute.friendly_fire
+		// TODO implement friendly_fire (now friendly_fire is always on), attack_attribute.friendly_fire
 
 		// find object which was hit
 		auto terrain = this->entity->location->get_terrain();
@@ -1338,7 +1338,7 @@ void ProjectileAction::update(unsigned int time) {
 			}
 		}
 
-		// TODO implemnt area of effect, attack_attribute.area_of_effect
+		// TODO implement area of effect, attack_attribute.area_of_effect
 
 		has_hit = true;
 	}

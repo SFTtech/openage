@@ -14,21 +14,28 @@ class ResourceBundle;
 
 enum class research_category : int {
 	/**
-	 * Reseach which modify unit type data.
+	 * Research which modify unit type data.
 	 */
 	unit_upgrade,
 	/**
-	 * Reseach which modify unit type data and also progresses the next age.
+	 * Research which modify unit type data and also progresses the next age.
+	 * Separate category for simplification.
 	 */
 	age_advance,
 	/**
-	 * Reseach which modify unit type data and something else.
+	 * Research which modify unit type data and something else.
 	 * (eg. see enemy line of sight)
 	 */
 	generic,
 	RESEARCH_CATEGORY_COUNT
 };
 
+/**
+ * Describes a research for a single player
+ *
+ * The get_max_repeats (with a default value of 1) can allow for a research to be
+ * performed multiple types
+ */
 class ResearchType {
 public:
 
@@ -83,10 +90,16 @@ private:
 
 class NyanResearchType : public ResearchType {
 	// TODO POST-NYAN Implement
+
+	NyanResearchType(Player &owner);
+
 };
 
 /**
  * At most one Research must exist for each ResearchType.
+ *
+ * A research represents how many times the research type has been completed (completed count)
+ * and also how many unit are researching it now (active count).
  */
 class Research {
 public:

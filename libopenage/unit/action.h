@@ -8,13 +8,13 @@
 #include "../pathfinding/path.h"
 #include "../gamestate/resource.h"
 #include "attribute.h"
+#include "research.h"
 #include "unit.h"
 #include "unit_container.h"
 
 namespace openage {
 
 class TerrainSearch;
-class Research;
 
 // TODO use a type instead of unsigned int for time
 
@@ -109,7 +109,7 @@ public:
 	 * each action has its own update functionality which gets called when this
 	 * is the active action
 	 */
-	virtual void update(unsigned int) = 0;
+	virtual void update(unsigned int time) = 0;
 
 	/**
 	 * action to perform when popped from a units action stack
@@ -146,7 +146,7 @@ public:
 
 	/**
 	 * determines which graphic should be used for drawing this unit
-	 * finds the defualt graphic using the units type, used by most actions
+	 * finds the default graphic using the units type, used by most actions
 	 *
 	 * this virtual function is overriden for special cases such as
 	 * villager task graphics
@@ -231,7 +231,7 @@ public:
 	TargetAction(Unit *e, graphic_type gt, UnitReference r);
 	virtual ~TargetAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
@@ -277,7 +277,7 @@ public:
 	DecayAction(Unit *e);
 	virtual ~DecayAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
@@ -297,7 +297,7 @@ public:
 	DeadAction(Unit *e, std::function<void()> on_complete=[]() {});
 	virtual ~DeadAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
@@ -318,7 +318,7 @@ public:
 	FoundationAction(Unit *e, bool add_destuction=false);
 	virtual ~FoundationAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
@@ -338,7 +338,7 @@ public:
 	IdleAction(Unit *e);
 	virtual ~IdleAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
@@ -368,7 +368,7 @@ public:
 	MoveAction(Unit *e, UnitReference tar, coord::phys_t within_range);
 	virtual ~MoveAction();
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
@@ -427,7 +427,7 @@ public:
 	UngarrisonAction(Unit *e, const coord::phys3 &pos);
 	virtual ~UngarrisonAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return true; }
@@ -447,12 +447,14 @@ public:
 	TrainAction(Unit *e, UnitType *pp);
 	virtual ~TrainAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return false; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "train"; }
+
+	float get_progress() const { return this->timer.get_progress(); }
 
 private:
 	UnitType *trained;
@@ -470,12 +472,15 @@ public:
 	ResearchAction(Unit *e, Research *research);
 	virtual ~ResearchAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return false; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "train"; }
+
+	float get_progress() const { return this->timer.get_progress(); }
+	const ResearchType* get_research_type() const { return this->research->type; }
 
 private:
 
@@ -498,6 +503,8 @@ public:
 	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	void on_completion() override;
 	std::string name() const override { return "build"; }
+
+	float get_progress() const { return this->complete; }
 
 private:
 	float complete, build_rate;
@@ -626,7 +633,7 @@ public:
 	ProjectileAction(Unit *e, coord::phys3 target);
 	virtual ~ProjectileAction();
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }

@@ -39,6 +39,10 @@ bool Research::can_start() const {
 	return this->active_count + this->completed_count < this->type->get_max_repeats();
 }
 
+bool Research::is_active() const {
+	return this->active_count > 0;
+}
+
 bool Research::is_researched() const {
 	return this->completed_count == this->type->get_max_repeats();
 }
@@ -51,8 +55,8 @@ void Research::apply() {
 	if (type->category() == research_category::age_advance) {
 		type->owner.advance_age();
 
-	} else if (type->category() == research_category::age_advance) {
-		// TODO implemnt a way to handle this category
+	} else if (type->category() == research_category::generic) {
+		// TODO implement a way to handle this category
 	}
 }
 

@@ -41,7 +41,7 @@ enum class ability_type {
 };
 
 /**
- * a containter where each ability uses 1 bit
+ * a container where each ability uses 1 bit
  */
 constexpr int ability_type_size = static_cast<int>(ability_type::MAX);
 using ability_set = std::bitset<ability_type_size>;

@@ -83,8 +83,8 @@ enum class attr_type {
  * Can be used for buildings also.
  */
 enum class attack_stance {
-	aggresive,
-	devensive,
+	aggressive,
+	defensive,
 	stand_ground,
 	do_nothing
 };
@@ -285,8 +285,8 @@ public:
 		Attribute{type, r, h, {{4, d}}} {}
 
 	Attribute(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d,
-		      coord::phys_t min_range = 0, bool friendly_fire = false,
-			  coord::phys_t area_of_effect = 0)
+	          coord::phys_t min_range=0, bool friendly_fire=false,
+	          coord::phys_t area_of_effect=0)
 		:
 		SharedAttributeContainer{attr_type::attack},
 		ptype{type},
