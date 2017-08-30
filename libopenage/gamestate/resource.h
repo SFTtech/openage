@@ -18,7 +18,9 @@ enum class game_resource : int {
 };
 
 /**
- * a set of amounts of game resources
+ * A set of amounts of game resources.
+ *
+ * Can be also used to store other information about the resources
  */
 class ResourceBundle {
 public:
@@ -41,11 +43,17 @@ public:
 
 	bool has(const ResourceBundle& amount) const;
 
+	bool has(const ResourceBundle& amount1, const ResourceBundle& amount2) const;
+
 	/**
 	 * If amount can't be deducted return false, else deduct the given amount
 	 * and return true.
 	 */
 	bool deduct(const ResourceBundle& amount);
+
+	void set_all(const double amount);
+
+	void limit(const ResourceBundle& limits);
 
 	double& operator[] (const game_resource res) { return value[static_cast<int>(res)]; }
 	double& operator[] (const int index) { return value[index]; }
@@ -61,7 +69,9 @@ public:
 	double sum() const;
 
 private:
+
 	double value[static_cast<int>(game_resource::RESOURCE_TYPE_COUNT)];
+
 };
 
 } // namespace openage

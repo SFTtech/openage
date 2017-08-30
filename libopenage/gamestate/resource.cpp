@@ -63,12 +63,35 @@ bool ResourceBundle::has(const ResourceBundle& amount) const {
 	return *this >= amount;
 }
 
+bool ResourceBundle::has(const ResourceBundle& amount1, const ResourceBundle& amount2) const {
+	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+		if (!(this->get(i) >= amount1.get(i) + amount2.get(i))) {
+			return false;
+		}
+	}
+	return true;
+}
+
 bool ResourceBundle::deduct(const ResourceBundle& amount) {
 	if (this->has(amount)) {
 		*this -= amount;
 		return true;
 	}
 	return false;
+}
+
+void ResourceBundle::set_all(const double amount) {
+	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+		(*this)[i] = amount;
+	}
+}
+
+void ResourceBundle::limit(const ResourceBundle &limits) {
+	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+		if (this->get(i) > limits.get(i)) {
+			(*this)[i] = limits.get(i);
+		}
+	}
 }
 
 double ResourceBundle::sum() const {

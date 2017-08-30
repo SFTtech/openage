@@ -74,6 +74,12 @@ public:
 	void receive(const game_resource resource, double amount);
 
 	/**
+	 * Check if can add to stockpile
+	 */
+	bool can_receive(const ResourceBundle& amount) const;
+	bool can_receive(const game_resource resource, double amount) const;
+
+	/**
 	 * remove from stockpile if available
 	 */
 	bool deduct(const ResourceBundle& amount);
@@ -168,9 +174,14 @@ public:
 private:
 
 	/**
-	 * resources this player currently has
+	 * The resources this player currently has
 	 */
 	ResourceBundle resources;
+
+	/**
+	 * The resources capacities this player currently has
+	 */
+	ResourceBundle resources_capacity;
 
 	/**
 	 * Called when the resources amounts change.

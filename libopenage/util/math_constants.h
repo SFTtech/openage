@@ -26,5 +26,6 @@ constexpr double INV_SQRT_2   = 0.707106781186547524401; //!< 1/sqrt(2)
 
 constexpr unsigned int UINT_INF = std::numeric_limits<unsigned int>::max();
 constexpr int INT_INF = std::numeric_limits<int>::max();
+constexpr double DOUBLE_INF = std::numeric_limits<double>::max();
 
 }} // openage::math

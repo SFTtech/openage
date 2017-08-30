@@ -74,6 +74,7 @@ enum class attr_type {
 	dropsite,
 	resource,
 	worker,
+	storage,
 	multitype,
 	garrison
 };
@@ -537,6 +538,25 @@ public:
 	 * The ResourceBundle class is used but instead of amounts it stores gather rates.
 	 */
 	ResourceBundle gather_rate;
+};
+
+/**
+ * The worker's capacity and gather rates.
+ */
+template<> class Attribute<attr_type::storage>: public SharedAttributeContainer {
+public:
+	Attribute()
+		:
+		SharedAttributeContainer{attr_type::storage} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::storage>>(*this);
+	}
+
+	/**
+	 * The capacity for each resource.
+	 */
+	ResourceBundle capacity;
 };
 
 class Unit;

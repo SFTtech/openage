@@ -5,6 +5,7 @@
 #include "../log/log.h"
 #include "../unit/unit.h"
 #include "../unit/unit_type.h"
+#include "../util/math_constants.h"
 #include "team.h"
 
 
@@ -22,10 +23,9 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	age{1} { // TODO change, get starting age from game options
 	// starting resources
 	// TODO change, get starting resources from game options
-	this->resources[game_resource::food] = 1000;
-	this->resources[game_resource::wood] = 1000;
-	this->resources[game_resource::stone] = 1000;
-	this->resources[game_resource::gold] = 1000;
+	this->resources.set_all(1000);
+	// TODO change, get starting resources capacity from game options or nyan
+	this->resources_capacity.set_all(math::DOUBLE_INF / 2); // half to avoid overflows
 	this->on_resources_change();
 }
 
@@ -67,6 +67,14 @@ void Player::receive(const ResourceBundle& amount) {
 void Player::receive(const game_resource resource, double amount) {
 	this->resources[resource] += amount;
 	this->on_resources_change();
+}
+
+bool Player::can_receive(const ResourceBundle& amount) const {
+	return this->resources_capacity.has(this->resources, amount);
+}
+
+bool Player::can_receive(const game_resource resource, double amount) const {
+	return this->resources_capacity.get(resource) >= this->resources.get(resource) + amount;
 }
 
 bool Player::deduct(const ResourceBundle& amount) {
@@ -158,6 +166,13 @@ void Player::active_unit_added(Unit *unit) {
 		}
 	}
 
+	// resources capacity
+	if (unit->has_attribute(attr_type::storage)) {
+		auto storage = unit->get_attribute<attr_type::storage>();
+		this->resources_capacity += storage.capacity;
+		this->on_resources_change();
+	}
+
 	// score
 	// TODO improve selectors
 	if (unit->unit_type->id() == 82 || unit->unit_type->id() == 276) { // Castle, Wonder
@@ -190,6 +205,13 @@ void Player::active_unit_removed(Unit *unit) {
 		}
 	}
 
+	// resources capacity
+	if (unit->has_attribute(attr_type::storage)) {
+		auto storage = unit->get_attribute<attr_type::storage>();
+		this->resources_capacity -= storage.capacity;
+		this->on_resources_change();
+	}
+
 	// score
 	// TODO improve selectors
 	if (unit->unit_type->id() == 82 || unit->unit_type->id() == 276) { // Castle, Wonder
@@ -212,6 +234,12 @@ void Player::advance_age() {
 }
 
 void Player::on_resources_change() {
+
+	// capacity overflow
+	if (! (this->resources_capacity >= this->resources_capacity)) {
+		this->resources.limit(this->resources_capacity);
+	}
+
 	// score
 	this->score.update_resources(this->resources);
 
