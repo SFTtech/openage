@@ -8,13 +8,28 @@
 
 namespace openage {
 
+ResourceBundle Resources::create_bundle() const {
+	return ResourceBundle(*this);
+}
+
 ResourceBundle::ResourceBundle()
 	:
-	value{0} {
+	count{4},
+	value{new double[count] {0}} {
+}
+
+ResourceBundle::ResourceBundle(const Resources& resources)
+	:
+	count{static_cast<int>(resources.get_count())},
+	value{new double[count] {0}} {
+}
+
+ResourceBundle::~ResourceBundle() {
+	delete[] value;
 }
 
 bool ResourceBundle::operator> (const ResourceBundle& other) const {
-	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+	for (int i = 0; i < this->count; i++) {
 		if (!(this->get(i) > other.get(i))) {
 			return false;
 		}
@@ -23,7 +38,7 @@ bool ResourceBundle::operator> (const ResourceBundle& other) const {
 }
 
 bool ResourceBundle::operator>= (const ResourceBundle& other) const {
-	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+	for (int i = 0; i < this->count; i++) {
 		if (!(this->get(i) >= other.get(i))) {
 			return false;
 		}
@@ -32,28 +47,28 @@ bool ResourceBundle::operator>= (const ResourceBundle& other) const {
 }
 
 ResourceBundle& ResourceBundle::operator+= (const ResourceBundle& other) {
-	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+	for (int i = 0; i < this->count; i++) {
 		(*this)[i] += other.get(i);
 	}
 	return *this;
 }
 
 ResourceBundle& ResourceBundle::operator-= (const ResourceBundle& other) {
-	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+	for (int i = 0; i < this->count; i++) {
 		(*this)[i] -= other.get(i);
 	}
 	return *this;
 }
 
 ResourceBundle& ResourceBundle::operator*= (const double a) {
-	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+	for (int i = 0; i < this->count; i++) {
 		(*this)[i] *= a;
 	}
 	return *this;
 }
 
 ResourceBundle& ResourceBundle::round() {
-	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+	for (int i = 0; i < this->count; i++) {
 		(*this)[i] = std::round(this->get(i));
 	}
 	return *this;
@@ -64,7 +79,7 @@ bool ResourceBundle::has(const ResourceBundle& amount) const {
 }
 
 bool ResourceBundle::has(const ResourceBundle& amount1, const ResourceBundle& amount2) const {
-	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+	for (int i = 0; i < this->count; i++) {
 		if (!(this->get(i) >= amount1.get(i) + amount2.get(i))) {
 			return false;
 		}
@@ -81,13 +96,13 @@ bool ResourceBundle::deduct(const ResourceBundle& amount) {
 }
 
 void ResourceBundle::set_all(const double amount) {
-	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+	for (int i = 0; i < this->count; i++) {
 		(*this)[i] = amount;
 	}
 }
 
 void ResourceBundle::limit(const ResourceBundle &limits) {
-	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+	for (int i = 0; i < this->count; i++) {
 		if (this->get(i) > limits.get(i)) {
 			(*this)[i] = limits.get(i);
 		}
@@ -96,7 +111,7 @@ void ResourceBundle::limit(const ResourceBundle &limits) {
 
 double ResourceBundle::sum() const {
 	double sum = 0;
-	for (int i = 0; i < static_cast<int>(game_resource::RESOURCE_TYPE_COUNT); i++) {
+	for (int i = 0; i < this->count; i++) {
 		sum += this->get(i);
 	}
 	return sum;

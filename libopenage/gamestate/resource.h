@@ -6,16 +6,93 @@
 
 namespace openage {
 
+class ResourceBundle;
+
 /**
- * probably becomes part of the nyan game spec in future
+ * A resource
  */
-enum class game_resource : int {
-	wood,
-	food,
-	gold,
-	stone,
-	RESOURCE_TYPE_COUNT
+class Resource {
+public:
+
+	Resource();
+
+	virtual int id() const = 0;
+
+	virtual std::string name() const = 0;
+
+	// TODO add images and icons
+
 };
+
+class ResourceProducer : public Resource {
+public:
+
+	ResourceProducer(int id, std::string name)
+		:
+		_id{id},
+		_name{name} { }
+
+	int id() const override { return _id; }
+
+	std::string name() const override { return _name; }
+
+private:
+
+	int _id;
+	std::string _name;
+};
+
+/**
+ * All the resources
+ */
+class Resources {
+public:
+
+	Resources();
+
+	virtual unsigned int get_count() const = 0;
+
+	virtual const Resource& get_resource(int id) const = 0;
+
+	ResourceBundle create_bundle() const;
+
+};
+
+class ClassicResources : public Resources {
+public:
+
+	ClassicResources()
+		:
+		wood{0, "wood"},
+		food{1, "food"},
+		gold{2, "gold"},
+		stone{3, "stone"},
+		resources{{0, "wood"}, {1, "food"}, {2, "gold"}, {3, "stone"}}{
+	}
+
+	unsigned int get_count() const override { return 4; }
+
+	const Resource& get_resource(int id) const override { return this->resources[id]; };
+
+private:
+
+	const ResourceProducer wood;
+	const ResourceProducer food;
+	const ResourceProducer gold;
+	const ResourceProducer stone;
+
+	const ResourceProducer resources[4];
+};
+
+// TODO remove, here for backwards compatibility
+enum class game_resource : int {
+	wood = 0,
+	food = 1,
+	gold = 2,
+	stone = 3,
+	RESOURCE_TYPE_COUNT = 4
+};
+
 
 /**
  * A set of amounts of game resources.
@@ -25,7 +102,12 @@ enum class game_resource : int {
 class ResourceBundle {
 public:
 
+	// TODO remove, here for backwards compatibility
 	ResourceBundle();
+
+	ResourceBundle(const Resources& resources);
+
+	virtual ~ResourceBundle();
 
 	bool operator> (const ResourceBundle& other) const;
 	bool operator>= (const ResourceBundle& other) const;
@@ -56,12 +138,12 @@ public:
 	void limit(const ResourceBundle& limits);
 
 	double& operator[] (const game_resource res) { return value[static_cast<int>(res)]; }
-	double& operator[] (const int index) { return value[index]; }
+	double& operator[] (const int id) { return value[id]; }
 
 	// Getters
 
 	double get(const game_resource res) const { return value[static_cast<int>(res)]; }
-	double get(const int index) const { return value[index]; }
+	double get(const int id) const { return value[id]; }
 
 	/**
 	 * Returns the sum of all the resources.
@@ -70,7 +152,8 @@ public:
 
 private:
 
-	double value[static_cast<int>(game_resource::RESOURCE_TYPE_COUNT)];
+	int count;
+	double *value;
 
 };
 
