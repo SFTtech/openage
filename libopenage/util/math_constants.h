@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include <limits>
+
 namespace openage {
 namespace math {
 
@@ -21,5 +23,8 @@ constexpr double DEGSPERRAD   = 0.017453292519943295769; //!< tau/360
 constexpr double RADSPERDEG   = 57.29577951308232087679; //!< 360/tau
 constexpr double SQRT_2       = 1.41421356237309504880;  //!< sqrt(2)
 constexpr double INV_SQRT_2   = 0.707106781186547524401; //!< 1/sqrt(2)
+
+constexpr unsigned int UINT_INF = std::numeric_limits<unsigned int>::max();
+constexpr int INT_INF = std::numeric_limits<int>::max();
 
 }} // openage::math

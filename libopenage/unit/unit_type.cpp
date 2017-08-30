@@ -2,6 +2,7 @@
 
 #include "../gamestate/player.h"
 #include "../terrain/terrain_object.h"
+#include "../util/math_constants.h"
 #include "action.h"
 #include "unit.h"
 #include "unit_container.h"
@@ -26,7 +27,9 @@ int UnitTypeMeta::id() const {
 
 UnitType::UnitType(const Player &owner)
 	:
-	owner{owner} {
+	owner{owner},
+	have_limit{math::INT_INF},
+	had_limit{math::INT_INF} {
 }
 
 void UnitType::reinitialise(Unit *unit, Player &player) {

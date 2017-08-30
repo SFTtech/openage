@@ -82,12 +82,18 @@ public:
 	/**
 	 * Check if the player has enough resources to deduct the given amount.
 	 */
-	bool can_deduct(const ResourceBundle& amount);
+	bool can_deduct(const ResourceBundle& amount) const;
+	bool can_deduct(const game_resource resource, double amount) const;
 
 	/**
 	 * current stockpile amount
 	 */
 	double amount(const game_resource resource) const;
+
+	/**
+	 * Check if the player can make a new unit of the given type
+	 */
+	bool can_make(const UnitType &type) const;
 
 	/**
 	 * total number of unit types available

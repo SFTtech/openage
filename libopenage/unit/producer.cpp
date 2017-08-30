@@ -580,6 +580,11 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(0, 20));
 	}
 
+	// limits
+	if (this->id() == 109 || this->id() == 276) { // Town center, Wonder
+		this->have_limit = 2; // TODO change to 1, 2 is for testing
+	}
+
 	bool has_destruct_graphic = this->destroyed != nullptr;
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
 

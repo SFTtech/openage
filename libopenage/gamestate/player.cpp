@@ -86,12 +86,22 @@ bool Player::deduct(const game_resource resource, double amount) {
 	return false;
 }
 
-bool Player::can_deduct(const ResourceBundle& amount) {
-	return this->resources >= amount;
+bool Player::can_deduct(const ResourceBundle& amount) const {
+	return this->resources.has(amount);
+}
+
+bool Player::can_deduct(const game_resource resource, double amount) const {
+	return this->resources.get(resource) >= amount;
 }
 
 double Player::amount(const game_resource resource) const {
 	return this->resources.get(resource);
+}
+
+bool Player::can_make(const UnitType &type) const {
+	return this->can_deduct(type.cost) &&
+	       this->get_units_have(type.id()) < type.have_limit &&
+	       this->get_units_had(type.id()) < type.had_limit;
 }
 
 size_t Player::type_count() {
