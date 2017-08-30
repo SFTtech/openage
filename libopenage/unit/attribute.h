@@ -493,7 +493,6 @@ public:
 
 /**
  * Resource capacity of a trees, mines, animal, worker etc.
- * TODO add a way to define slower and faster resource gathering time needed
  */
 template<> class Attribute<attr_type::resource>: public UnsharedAttributeContainer {
 public:
@@ -501,18 +500,32 @@ public:
 		:
 		Attribute{game_resource::food, 0} {}
 
-	Attribute(game_resource type, double init_amount)
+	Attribute(game_resource type, double init_amount, double decay=0.0, double gather_rate=1.0)
 		:
 		UnsharedAttributeContainer{attr_type::resource},
 		resource_type{type},
-		amount{init_amount} {}
+		amount{init_amount},
+		decay{decay},
+		gather_rate{gather_rate} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::resource>>(*this);
 	}
 
 	game_resource resource_type;
+
 	double amount;
+
+	/**
+	 * The rate of decay
+	 */
+	double decay;
+
+	/**
+	 * The gather rate multiplier (1.0 is the identity)
+	 */
+	double gather_rate;
+
 };
 
 /**

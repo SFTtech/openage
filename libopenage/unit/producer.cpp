@@ -209,7 +209,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 140));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::SHEEP) {
-		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 100));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 100, 0.1));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::GOLD_MINE) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::gold, 800));

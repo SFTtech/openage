@@ -374,6 +374,14 @@ void DeadAction::update(unsigned int time) {
 		dm.hp = 0;
 	}
 
+	// decay resources
+	if (this->entity->has_attribute(attr_type::resource)) {
+		auto &resource = this->entity->get_attribute<attr_type::resource>();
+		if (resource.decay > 0) {
+			resource.amount -= resource.decay;
+		}
+	}
+
 	// inc frame but do not pass the end frame
 	// the end frame will remain if the object carries resources
 	if (this->frame < this->end_frame) {
@@ -425,7 +433,7 @@ void FoundationAction::on_completion() {
 
 	if (this->entity->has_attribute(attr_type::owner)) {
 		auto &owner = this->entity->get_attribute<attr_type::owner>().player;
-		owner.active_unit_added(this->entity);
+		owner.active_unit_added(this->entity, true);
 	}
 
 	// add destruction effect when available
@@ -1073,7 +1081,8 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 			else {
 
 				// transfer using gather rate
-				double amount = worker.gather_rate[worker_resource.resource_type] * time;
+				double amount = worker.gather_rate[worker_resource.resource_type]
+				                * resource_attr.gather_rate * time;
 				worker_resource.amount += amount;
 				resource_attr.amount -= amount;
 			}

@@ -108,8 +108,8 @@ double Player::amount(const game_resource resource) const {
 
 bool Player::can_make(const UnitType &type) const {
 	return this->can_deduct(type.cost) &&
-	       this->get_units_have(type.id()) < type.have_limit &&
-	       this->get_units_had(type.id()) < type.had_limit;
+	       this->get_units_have(type.id()) + this->get_units_pending(type.id()) < type.have_limit &&
+	       this->get_units_had(type.id()) + this->get_units_pending(type.id()) < type.had_limit;
 }
 
 size_t Player::type_count() {
@@ -145,10 +145,15 @@ void Player::initialise_unit_types() {
 	}
 }
 
-void Player::active_unit_added(Unit *unit) {
+void Player::active_unit_added(Unit *unit, bool from_pending) {
 	// check if unit is actually active
-	if (unit->has_attribute(attr_type::building) && unit->get_attribute<attr_type::building>().completed < 1.0f) {
+	if (this->is_unit_pending(unit)) {
+		this->units_pending[unit->unit_type->id()] += 1;
 		return;
+	}
+
+	if (from_pending) {
+		this->units_pending[unit->unit_type->id()] -= 1;
 	}
 
 	this->units_have[unit->unit_type->id()] += 1;
@@ -187,7 +192,8 @@ void Player::active_unit_added(Unit *unit) {
 
 void Player::active_unit_removed(Unit *unit) {
 	// check if unit is actually active
-	if (unit->has_attribute(attr_type::building) && unit->get_attribute<attr_type::building>().completed < 1.0f) {
+	if (this->is_unit_pending(unit)) {
+		this->units_pending[unit->unit_type->id()] -= 1;
 		return;
 	}
 
@@ -258,6 +264,18 @@ int Player::get_units_had(int type_id) const {
 		return this->units_had.at(type_id);
 	}
 	return 0;
+}
+
+int Player::get_units_pending(int type_id) const {
+	if (this->units_pending.count(type_id)) {
+		return this->units_pending.at(type_id);
+	}
+	return 0;
+}
+
+bool Player::is_unit_pending(Unit *unit) const {
+	// TODO check aslo if unit is training
+	return unit->has_attribute(attr_type::building) && unit->get_attribute<attr_type::building>().completed < 1.0f;
 }
 
 } // openage

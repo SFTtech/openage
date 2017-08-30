@@ -134,9 +134,11 @@ public:
 
 	/**
 	 * Called when a unit is created and active.
-	 * (Active means not a construction site)
+	 *
+	 * If the unit was pending when create (constuction site, training) the method must be
+	 * called again when the unit activates (with the from_penging param set to true)
 	 */
-	void active_unit_added(Unit *unit);
+	void active_unit_added(Unit *unit, bool from_pending=false);
 
 	/**
 	 * Called when a unit is destroyed.
@@ -166,12 +168,19 @@ public:
 	int get_units_had(int type_id) const;
 
 	/**
+	 * Get the number of units the player has being made for each unit type id.
+	 */
+	int get_units_pending(int type_id) const;
+
+	/**
 	 * Get the current age.
 	 * The first age has the value 1.
 	 */
 	int get_age() const { return age; }
 
 private:
+
+	bool is_unit_pending(Unit *unit) const;
 
 	/**
 	 * The resources this player currently has
@@ -203,7 +212,7 @@ private:
 
 	/**
 	 * The number of units the player has for each unit type id.
-	 * Used for unit dependencies (eg. Town Center) and event triggers.
+	 * Used for and event triggers.
 	 */
 	std::unordered_map<int, int> units_have;
 
@@ -214,9 +223,16 @@ private:
 	std::unordered_map<int, int> units_had;
 
 	/**
+<<<<<<< 5b6b843fcba9c084f6223431ad6ff8ad62e70828
 	 * The current age.
 	 */
 	int age;
+=======
+	 * The number of units the player has being made for each unit type id.
+	 * Used for unit limits (eg. Town Center).
+	 */
+	std::unordered_map<int, int> units_pending;
+>>>>>>> Resource decay and gather rate
 
 };
 
