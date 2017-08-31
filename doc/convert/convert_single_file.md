@@ -12,3 +12,9 @@ python3 -m openage convert-file ~/games/aoe2/aoe2/Data/graphics.drs 326.slp /tmp
 
 Have a look at `openage/convert/singlefile.py`, this is also a simple API demo
 for how to interact with the aoe files.
+
+
+
+### Interactive Shell
+
+You can also [browse the archives and data interactively](interactive.md).

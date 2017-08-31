@@ -166,8 +166,11 @@ class Texture(exportable.Exportable):
 
         basename, ext = os.path.splitext(filename)
 
+        # only allow png, although PIL could of course
+        # do other formats.
         if ext != ".png":
-            raise ValueError("Texture must be saved as name.png. got: %s" % filename)
+            raise ValueError("Filename invalid, a texture must be saved"
+                             "as 'filename.png', not '%s'" % (filename))
 
         # without the dot
         ext = ext[1:]

@@ -50,10 +50,10 @@ def main(args, error):
     root = Union().root
 
     # mount the assets folder union at "assets/"
-    root["assets"].mount(get_asset_path(args))
+    root["assets"].mount(get_asset_path(args.asset_dir))
 
     # mount the config folder at "cfg/"
-    root["cfg"].mount(get_config_path(args))
+    root["cfg"].mount(get_config_path(args.cfg_dir))
 
     # ensure that the assets have been converted
     if conversion_required(root["assets"], args):

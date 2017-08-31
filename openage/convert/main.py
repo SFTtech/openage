@@ -472,7 +472,7 @@ def interactive_browser(srcdir=None):
 
     info("launching interactive data browser...")
 
-    # the variable is actually used, in the interactive prompt.
+    # the variables are actually used, in the interactive prompt.
     # pylint: disable=unused-variable
     data, game_versions = mount_input(srcdir)
 
@@ -497,7 +497,7 @@ def interactive_browser(srcdir=None):
         from .driver import get_palette
 
         if not palette:
-            palette = get_palette(data, game_versions)
+            palette = get_palette(data)
 
         with path.open("rb") as slpfile:
             tex = Texture(SLP(slpfile.read()), palette)
@@ -518,10 +518,11 @@ def interactive_browser(srcdir=None):
     code.interact(
         banner=("\nuse `pprint` for beautiful output!\n"
                 "you can access stuff by the `data` variable!\n"
-                "`data` is an openage.util.fslike.path.Path!\n"
-                "* list contents:      `pprint(list(data['graphics'].list()))`\n"
-                "* dump data:          `save(data['file/path'], '/tmp/outputfile')`.\n"
-                "* save a slp as png:  `save_slp(data['dir/123.slp'], '/tmp/pic.png')`.\n"),
+                "`data` is an openage.util.fslike.path.Path!\n\n"
+                "* version detection:   pprint(game_versions)\n"
+                "* list contents:       pprint(list(data['graphics'].list()))\n"
+                "* dump data:           save(data['file/path'], '/tmp/outputfile')\n"
+                "* save a slp as png:   save_slp(data['dir/123.slp'], '/tmp/pic.png')\n"),
         local=locals()
     )
 
@@ -533,6 +534,10 @@ def init_subparser(cli):
     cli.add_argument(
         "--source-dir", default=None,
         help="source data directory")
+
+    cli.add_argument(
+        "--output-dir", default=None,
+        help="destination data output directory")
 
     cli.add_argument(
         "--force", action='store_true',
@@ -603,10 +608,10 @@ def main(args, error):
 
     # conversion target
     from ..assets import get_asset_path
-    assets = get_asset_path(args)
+    outdir = get_asset_path(args.output_dir)
 
-    if args.force or conversion_required(assets, args):
-        if not convert_assets(assets, args, srcdir):
+    if args.force or conversion_required(outdir, args):
+        if not convert_assets(outdir, args, srcdir):
             return 1
     else:
         print("assets are up to date; no conversion is required.")

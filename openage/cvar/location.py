@@ -13,9 +13,10 @@ from ..util.fslike.union import Union
 from ..util.fslike.wrapper import WriteBlocker
 
 
-def get_config_path(args):
+def get_config_path(custom_cfg_dir=None):
     """
     Locates the main configuration file by name in some searchpaths.
+    Optionally, mount a custom directory with highest priority.
     """
 
     # if we're in devmode, use only the build source config folder
@@ -43,7 +44,7 @@ def get_config_path(args):
     )
 
     # the optional command line argument overrides it all
-    if args.cfg_dir:
-        result.mount(Directory(args.cfg_dir).root)
+    if custom_cfg_dir:
+        result.mount(Directory(custom_cfg_dir).root)
 
     return result
