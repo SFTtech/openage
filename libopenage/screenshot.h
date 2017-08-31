@@ -1,25 +1,34 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <string>
 #include <ctime>
+#include <memory>
 
-#include <SDL2/SDL.h>
 #include "coord/window.h"
 
 namespace openage {
 
+namespace job {
+class JobManager;
+}
+
 class ScreenshotManager {
 public:
-	ScreenshotManager();
+	/**
+	 * Initializes the screenshot manager with the given job manager.
+	 */
+	ScreenshotManager(job::JobManager* job_mgr);
+
 	~ScreenshotManager();
 
-	/** to be called to save a screenshot */
-	void save_screenshot();
+	/** To be called to save a screenshot. */
+	void save_screenshot(coord::window size);
 
-	/** size of the game window, in coord_sdl */
-	coord::window window_size;
+	/** To be called by the job manager. Returns true on success, false otherwise. */
+	bool encode_png(std::shared_ptr<uint8_t> pxdata,
+	                coord::window size);
 
 
 private:
@@ -32,6 +41,9 @@ private:
 
 	/** contains the last time when a screenshot was taken */
 	std::time_t last_time;
+
+	/** the job manager this screenshot manager uses */
+	job::JobManager *job_manager;
 
 };
 

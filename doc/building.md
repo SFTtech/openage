@@ -34,6 +34,7 @@ Dependency list:
       A   python imaging library (PIL) -> pillow
     CR    opengl >=2.1
     CR    libepoxy
+    CR    libpng
      R    dejavu font
     CR    freetype2
     CR    fontconfig

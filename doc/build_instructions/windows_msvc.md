@@ -21,7 +21,7 @@
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
 
-    vcpkg install dirent libepoxy fontconfig freetype harfbuzz opus opusfile qt5 sdl2 sdl2-image
+    vcpkg install dirent libepoxy fontconfig freetype harfbuzz opus opusfile qt5 sdl2 sdl2-image libpng
 
  _Note:_ Building and installing `qt5` using vcpkg takes a lot of space-time. You might want to install [the prebuilt version](https://www.qt.io/download-open-source/) instead. This should be mentioned in `CMAKE_PREFIX_PATH` with the cmake command below.
 
