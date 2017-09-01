@@ -164,7 +164,7 @@ public:
 	void push_action(std::unique_ptr<UnitAction> action, bool force=false);
 
 	/**
-	 * adds a seconadry action which is always updated
+	 * adds a secondary action which is always updated
 	 */
 	void secondary_action(std::unique_ptr<UnitAction> action);
 
@@ -268,7 +268,7 @@ private:
 
 
 	/**
-	 * seconadry actions are always updated
+	 * secondary actions are always updated
 	 */
 	std::vector<std::unique_ptr<UnitAction>> action_secondary;
 

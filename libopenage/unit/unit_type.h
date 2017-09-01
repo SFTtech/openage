@@ -117,7 +117,7 @@ public:
 	UnitTexture *default_texture();
 
 	/**
-	 * similiar to place but places adjacent to an existing object
+	 * similar to place but places adjacent to an existing object
 	 */
 	TerrainObject *place_beside(Unit *, TerrainObject const *) const;
 

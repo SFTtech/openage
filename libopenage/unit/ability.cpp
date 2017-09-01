@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 #include <memory>
 
@@ -7,6 +7,7 @@
 #include "ability.h"
 #include "action.h"
 #include "command.h"
+#include "research.h"
 #include "unit.h"
 
 namespace openage {
@@ -93,7 +94,7 @@ void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 		// add the range of the unit if cmd indicator is set
 		if (cmd.has_flag(command_flag::use_range) && to_modify.has_attribute(attr_type::attack)) {
 			auto &att = to_modify.get_attribute<attr_type::attack>();
-			radius += att.range;
+			radius += att.max_range;
 		}
 		to_modify.push_action(std::make_unique<MoveAction>(&to_modify, target->get_ref(), radius));
 	}
@@ -185,6 +186,28 @@ void TrainAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) 
 		this->sound->play();
 	}
 	to_modify.push_action(std::make_unique<TrainAction>(&to_modify, cmd.type()));
+}
+
+ResearchAbility::ResearchAbility(const Sound *s)
+	:
+	sound{s} {
+}
+
+bool ResearchAbility::can_invoke(Unit &to_modify, const Command &cmd) {
+	if (to_modify.has_attribute(attr_type::owner) && cmd.has_research()) {
+		auto &player = to_modify.get_attribute<attr_type::owner>().player;
+		auto research = cmd.research();
+		return research->can_start() &&
+		       player.can_deduct(research->type->get_research_cost());
+	}
+	return false;
+}
+
+void ResearchAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
+	if (play_sound && this->sound) {
+		this->sound->play();
+	}
+	to_modify.push_action(std::make_unique<ResearchAction>(&to_modify, cmd.research()));
 }
 
 BuildAbility::BuildAbility(const Sound *s)
@@ -331,24 +354,6 @@ void HealAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 	to_modify.push_action(std::make_unique<HealAction>(&to_modify, target->get_ref()));
 }
 
-ResearchAbility::ResearchAbility(const Sound *s)
-	:
-	sound{s} {
-}
-
-bool ResearchAbility::can_invoke(Unit &/*to_modify*/, const Command &/*cmd*/) {
-	// TODO implement
-	return false;
-}
-
-void ResearchAbility::invoke(Unit &to_modify, const Command &/*cmd*/, bool play_sound) {
-	to_modify.log(MSG(dbg) << "not implemented");
-	if (play_sound && this->sound) {
-		this->sound->play();
-	}
-	// TODO implement
-}
-
 PatrolAbility::PatrolAbility(const Sound *s)
 	:
 	sound{s} {
@@ -402,7 +407,7 @@ ability_set UnitAbility::set_from_list(const std::vector<ability_type> &items) {
 	return result;
 }
 
-} /* namespace openage */
+} // namespace openage
 
 namespace std {
 

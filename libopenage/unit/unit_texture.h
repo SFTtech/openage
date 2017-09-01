@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -45,7 +45,7 @@ public:
 	const float        frame_rate;
 
 	/**
-	 * draw object with vertial orientation (arrows)
+	 * draw object with vertical orientation (arrows)
 	 * adding an addtion degree of orientation
 	 */
 	const bool         use_up_angles;

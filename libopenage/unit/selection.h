@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -73,7 +73,7 @@ public:
 	void select_point(const Player &player, Terrain *terrain, coord::camgame p, bool append=false);
 
 	/**
-	 * boxed unit selcetion
+	 * boxed unit selection
 	 */
 	void select_space(const Player &player, Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append=false);
 

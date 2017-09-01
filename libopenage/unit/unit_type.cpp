@@ -153,4 +153,4 @@ TerrainObject *NyanType::place(Unit *unit, std::shared_ptr<Terrain> terrain, coo
 	return nullptr;
 }
 
-} /* namespace openage */
+} // namespace openage

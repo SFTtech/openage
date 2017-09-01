@@ -41,7 +41,7 @@ enum class ability_type {
 };
 
 /**
- * a containter where each ability uses 1 bit
+ * a container where each ability uses 1 bit
  */
 constexpr int ability_type_size = static_cast<int>(ability_type::MAX);
 using ability_set = std::bitset<ability_type_size>;
@@ -209,6 +209,25 @@ private:
 };
 
 /**
+ * initiates a research
+ */
+class ResearchAbility: public UnitAbility {
+public:
+	ResearchAbility(const Sound *s=nullptr);
+
+	ability_type type() override {
+		return ability_type::research;
+	}
+
+	bool can_invoke(Unit &to_modify, const Command &cmd) override;
+
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+
+private:
+	const Sound *sound;
+};
+
+/**
  * villagers build new buildings
  */
 class BuildAbility: public UnitAbility {
@@ -293,26 +312,6 @@ public:
 
 	ability_type type() override {
 		return ability_type::heal;
-	}
-
-	bool can_invoke(Unit &to_modify, const Command &cmd) override;
-
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
-
-private:
-	const Sound *sound;
-};
-
-/**
- * initiates a research
- * TODO implement
- */
-class ResearchAbility: public UnitAbility {
-public:
-	ResearchAbility(const Sound *s=nullptr);
-
-	ability_type type() override {
-		return ability_type::research;
 	}
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;

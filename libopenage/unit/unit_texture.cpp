@@ -176,4 +176,4 @@ unsigned int dir_group(coord::phys3_delta dir, unsigned int angles) {
 }
 
 
-} /* namespace openage */
+} // namespace openage

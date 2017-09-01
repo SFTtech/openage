@@ -5,6 +5,7 @@ add_sources(libopenage
 	attributes.cpp
 	command.cpp
 	producer.cpp
+	research.cpp
 	selection.cpp
 	unit.cpp
 	unit_container.cpp

@@ -18,7 +18,8 @@ Player::Player(Civilisation *civ, unsigned int number, std::string name)
 	name{name},
 	team{nullptr},
 	population{0, 200}, // TODO change, get population cap max from game options
-	score{this} {
+	score{this},
+	age{1} { // TODO change, get starting age from game options
 	// starting resources
 	// TODO change, get starting resources from game options
 	this->resources[game_resource::food] = 1000;
@@ -83,6 +84,10 @@ bool Player::deduct(const game_resource resource, double amount) {
 		return true;
 	}
 	return false;
+}
+
+bool Player::can_deduct(const ResourceBundle& amount) {
+	return this->resources >= amount;
 }
 
 double Player::amount(const game_resource resource) const {
@@ -190,6 +195,10 @@ void Player::active_unit_removed(Unit *unit) {
 void Player::killed_unit(const Unit & unit) {
 	// score
 	this->score.add_score(score_category::military, unit.unit_type->cost.sum() * 0.2);
+}
+
+void Player::advance_age() {
+	this->age += 1;
 }
 
 void Player::on_resources_change() {

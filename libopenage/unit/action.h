@@ -8,12 +8,76 @@
 #include "../pathfinding/path.h"
 #include "../gamestate/resource.h"
 #include "attribute.h"
+#include "research.h"
 #include "unit.h"
 #include "unit_container.h"
 
 namespace openage {
 
 class TerrainSearch;
+
+// TODO use a type instead of unsigned int for time
+
+/**
+ * A interval triggering timer used in actions.
+ * TODO find a better name for triggers
+ */
+class IntervalTimer {
+public:
+
+	/**
+	 * Constructs a timer with a given interval
+	 */
+	IntervalTimer(unsigned int interval);
+
+	/**
+	 * Constructs a timer with a given interval which will
+	 * stop after a given number of triggers.
+	 */
+	IntervalTimer(unsigned int interval, int max_triggers);
+
+	void skip_to_trigger();
+
+	bool update(unsigned int time);
+
+	/**
+	 * Returns the time until the next trigger
+	 */
+	unsigned int get_time_left() const;
+
+	float get_progress() const;
+
+	/**
+	 * Returns true if at least one interval has passed.
+	 */
+	bool has_triggers() const;
+
+	/**
+	 * Returns true if the interval passed have reached the max.
+	 */
+	bool finished() const;
+
+	/**
+	 * Returns the number of intervals passed.
+	 */
+	int get_triggers() const { return this->triggers; }
+
+	unsigned int get_interval() const { return this->interval; }
+
+	void set_interval(unsigned int interval) { this->interval = interval; }
+
+private:
+
+	unsigned int interval;
+
+	int max_triggers;
+
+	unsigned int time_left;
+
+	int triggers;
+
+};
+
 
 /**
  * Actions can be pushed onto any units action stack
@@ -45,7 +109,7 @@ public:
 	 * each action has its own update functionality which gets called when this
 	 * is the active action
 	 */
-	virtual void update(unsigned int) = 0;
+	virtual void update(unsigned int time) = 0;
 
 	/**
 	 * action to perform when popped from a units action stack
@@ -82,7 +146,7 @@ public:
 
 	/**
 	 * determines which graphic should be used for drawing this unit
-	 * finds the defualt graphic using the units type, used by most actions
+	 * finds the default graphic using the units type, used by most actions
 	 *
 	 * this virtual function is overriden for special cases such as
 	 * villager task graphics
@@ -148,6 +212,7 @@ protected:
 /**
  * Base class for actions which target another unit such as
  * gather, attack, heal and convert
+ * TODO implement min range
  */
 class TargetAction: public UnitAction {
 public:
@@ -166,7 +231,7 @@ public:
 	TargetAction(Unit *e, graphic_type gt, UnitReference r);
 	virtual ~TargetAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
@@ -212,7 +277,7 @@ public:
 	DecayAction(Unit *e);
 	virtual ~DecayAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
@@ -232,7 +297,7 @@ public:
 	DeadAction(Unit *e, std::function<void()> on_complete=[]() {});
 	virtual ~DeadAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
@@ -253,7 +318,7 @@ public:
 	FoundationAction(Unit *e, bool add_destuction=false);
 	virtual ~FoundationAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
@@ -273,7 +338,7 @@ public:
 	IdleAction(Unit *e);
 	virtual ~IdleAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }
@@ -303,7 +368,7 @@ public:
 	MoveAction(Unit *e, UnitReference tar, coord::phys_t within_range);
 	virtual ~MoveAction();
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return true; }
@@ -362,7 +427,7 @@ public:
 	UngarrisonAction(Unit *e, const coord::phys3 &pos);
 	virtual ~UngarrisonAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return true; }
@@ -382,18 +447,47 @@ public:
 	TrainAction(Unit *e, UnitType *pp);
 	virtual ~TrainAction() {}
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override { return this->complete; }
 	bool allow_interupt() const override { return false; }
 	bool allow_control() const override { return true; }
 	std::string name() const override { return "train"; }
 
+	float get_progress() const { return this->timer.get_progress(); }
+
 private:
 	UnitType *trained;
+
+	IntervalTimer timer;
 	bool started;
 	bool complete;
-	float train_percent;
+};
+
+/**
+ * trains a new unit
+ */
+class ResearchAction: public UnitAction {
+public:
+	ResearchAction(Unit *e, Research *research);
+	virtual ~ResearchAction() {}
+
+	void update(unsigned int time) override;
+	void on_completion() override;
+	bool completed() const override { return this->complete; }
+	bool allow_interupt() const override { return false; }
+	bool allow_control() const override { return true; }
+	std::string name() const override { return "train"; }
+
+	float get_progress() const { return this->timer.get_progress(); }
+	const ResearchType* get_research_type() const { return this->research->type; }
+
+private:
+
+	Research *research;
+
+	IntervalTimer timer;
+	bool complete;
 };
 
 /**
@@ -409,6 +503,8 @@ public:
 	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
 	void on_completion() override;
 	std::string name() const override { return "build"; }
+
+	float get_progress() const { return this->complete; }
 
 private:
 	float complete, build_rate;
@@ -430,16 +526,14 @@ public:
 	std::string name() const override { return "repair"; }
 
 private:
-	bool complete;
-
-	float time;
-	float time_left;
 
 	/**
 	 * stores the cost of the repair for 1hp
 	 */
 	ResourceBundle cost;
 
+	IntervalTimer timer;
+	bool complete;
 };
 
 /**
@@ -476,7 +570,8 @@ public:
 	std::string name() const override { return "attack"; }
 
 private:
-	float strike_percent, rate_of_fire;
+
+	IntervalTimer timer;
 
 	/**
 	 * use attack action
@@ -503,7 +598,8 @@ public:
 	std::string name() const override { return "heal"; }
 
 private:
-	float heal_percent;
+
+	IntervalTimer timer;
 
 	/**
 	 * use heal action
@@ -537,7 +633,7 @@ public:
 	ProjectileAction(Unit *e, coord::phys3 target);
 	virtual ~ProjectileAction();
 
-	void update(unsigned int) override;
+	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
 	bool allow_interupt() const override { return false; }

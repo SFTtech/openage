@@ -10,9 +10,56 @@
 #include "action.h"
 #include "command.h"
 #include "producer.h"
+#include "research.h"
 #include "unit_texture.h"
 
 namespace openage {
+
+IntervalTimer::IntervalTimer(unsigned int interval)
+	:
+	IntervalTimer{interval, -1} {
+}
+
+IntervalTimer::IntervalTimer(unsigned int interval, int max_triggers)
+	:
+	interval{interval},
+	max_triggers{max_triggers},
+	time_left{interval},
+	triggers{0} {
+}
+
+void IntervalTimer::skip_to_trigger() {
+	this->time_left = 0;
+}
+
+bool IntervalTimer::update(unsigned int time) {
+	if (this->triggers == this->max_triggers) {
+		return false;
+	} else if (this->time_left > time) {
+		this->time_left -= time;
+		return false;
+	} else {
+		this->time_left += this->interval - time;
+		this->triggers += 1;
+		return true;
+	}
+}
+
+unsigned int IntervalTimer::get_time_left() const {
+	return this->time_left;
+}
+
+float IntervalTimer::get_progress() const {
+	return 1.0f - (this->time_left * 1.0f / this->interval);
+}
+
+bool IntervalTimer::has_triggers() const {
+	return this->triggers > 0;
+}
+
+bool IntervalTimer::finished() const {
+	return this->triggers == this->max_triggers;
+}
 
 bool UnitAction::show_debug = false;
 
@@ -24,7 +71,7 @@ coord::phys_t UnitAction::get_attack_range(Unit *u) {
 	coord::phys_t range = adjacent_range(u);
 	if (u->has_attribute(attr_type::attack)) {
 		auto &attack = u->get_attribute<attr_type::attack>();
-		range += attack.range;
+		range += attack.max_range;
 	}
 	return range;
 }
@@ -727,9 +774,10 @@ TrainAction::TrainAction(Unit *e, UnitType *pp)
 	:
 	UnitAction{e, graphic_type::standing},
 	trained{pp},
+	timer{10000, 1}, // TODO get the training time from unit type
 	started{false},
-	complete{false},
-	train_percent{.0f} {
+	complete{false} {
+	// TODO deduct resources
 }
 
 void TrainAction::update(unsigned int time) {
@@ -750,7 +798,7 @@ void TrainAction::update(unsigned int time) {
 
 	if (this->started) {
 		// place unit when ready
-		if (this->train_percent >= 1.0f) {
+		if (this->timer.finished() || this->timer.update(time)) {
 
 			// create using the producer
 			UnitContainer *container = this->entity->get_container();
@@ -771,13 +819,37 @@ void TrainAction::update(unsigned int time) {
 				this->complete = true;
 			}
 		}
-		else {
-			this->train_percent += 0.001 * time;
-		}
 	}
 }
 
-void TrainAction::on_completion() {}
+void TrainAction::on_completion() {
+	if (!this->complete) {
+		// TODO give back the resources
+	}
+}
+
+ResearchAction::ResearchAction(Unit *e, Research *research)
+	:
+	UnitAction{e, graphic_type::standing},
+	research{research},
+	timer{research->type->get_research_time(), 1},
+	complete{false} {
+	this->research->started();
+}
+
+void ResearchAction::update(unsigned int time) {
+	if (timer.update(time)) {
+		this->complete = true;
+		this->research->apply();
+		this->research->completed();
+	}
+}
+
+void ResearchAction::on_completion() {
+	if (!this->complete) {
+		this->research->stopped();
+	}
+}
 
 BuildAction::BuildAction(Unit *e, UnitReference foundation)
 	:
@@ -861,9 +933,8 @@ void BuildAction::on_completion() {
 RepairAction::RepairAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::work, tar},
-	complete{false},
-	time{80},
-	time_left{0} {
+	timer{80},
+	complete{false} {
 
 	if (!tar.is_valid()) {
 		// the target no longer exists
@@ -874,7 +945,7 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 		Unit *target = tar.get();
 
 		if (!target->has_attribute(attr_type::building)) {
-			this->time *= 4;
+			this->timer.set_interval(this->timer.get_interval() * 4);
 		}
 
 		// cost formula: 0.5 * (target cost) / (target max hp)
@@ -883,6 +954,12 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 		// get the target unit's cost
 		this->cost += target->unit_type->cost;
 		this->cost *= 0.5 / hp.hp;
+
+		auto &owner = this->entity->get_attribute<attr_type::owner>();
+		if (!owner.player.deduct(this->cost)) {
+			// no resources to start
+			this->complete = true;
+		}
 	}
 }
 
@@ -890,31 +967,24 @@ void RepairAction::update_in_range(unsigned int time, Unit *target_unit) {
 
 	auto &hp = target_unit->get_attribute<attr_type::hitpoints>();
 	auto &dm = target_unit->get_attribute<attr_type::damaged>();
-	auto &owner = this->entity->get_attribute<attr_type::owner>();
 
 	if (dm.hp >= hp.hp) {
 		// repaired by something else
 		this->complete = true;
 	}
-	else if (this->time_left > 0) {
-		this->time_left -= time;
+	else if (this->timer.update(time)) {
+		dm.hp += 1;
 
-		if (this->time_left <= 0) {
-			dm.hp += 1;
+		if (dm.hp >= hp.hp) {
+			this->complete = true;
+		}
 
-			if (dm.hp >= hp.hp) {
+		if (!this->complete) {
+			auto &owner = this->entity->get_attribute<attr_type::owner>();
+			if (!owner.player.deduct(this->cost)) {
+				// no resources to continue
 				this->complete = true;
 			}
-		}
-	}
-
-	if (this->time_left <= 0 && !this->complete) {
-		if (owner.player.deduct(this->cost)) {
-			this->time_left += this->time;
-		}
-		else {
-			// no resources to continue
-			this->complete = true;
 		}
 	}
 
@@ -1085,8 +1155,7 @@ UnitReference GatherAction::nearest_dropsite(game_resource res_type) {
 AttackAction::AttackAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::attack, tar, get_attack_range(e)},
-	strike_percent{0.0f},
-	rate_of_fire{0.002f} {
+	timer{500} { // TODO get fire rate from unit type
 
 	// check if attacking a non resource unit
 	if (this->entity->has_attribute(attr_type::worker) &&
@@ -1096,21 +1165,20 @@ AttackAction::AttackAction(Unit *e, UnitReference tar)
 			this->entity->get_attribute<attr_type::multitype>().switchType(gamedata::unit_classes::CIVILIAN, this->entity);
 		}
 	}
+
+	// TODO rivit logic, a start inside the animation should be provided
+	this->timer.skip_to_trigger();
 }
 
 AttackAction::~AttackAction() {}
 
 void AttackAction::update_in_range(unsigned int time, Unit *target_ptr) {
-	if (this->strike_percent > 0.0) {
-		this->strike_percent -= this->rate_of_fire * time;
-	}
-	else {
-		this->strike_percent += 1.0f;
+	if (this->timer.update(time)) {
 		this->attack(*target_ptr);
 	}
 
 	// inc frame
-	this->frame += time * this->current_graphics().at(graphic)->frame_count * this->rate_of_fire;
+	this->frame += time * this->current_graphics().at(graphic)->frame_count * 1.0f / this->timer.get_interval();
 }
 
 bool AttackAction::completed_in_range(Unit *target_ptr) const {
@@ -1158,25 +1226,19 @@ void AttackAction::fire_projectile(const Attribute<attr_type::attack> &att, cons
 HealAction::HealAction(Unit *e, UnitReference tar)
 	:
 	TargetAction{e, graphic_type::heal, tar, get_attack_range(e)},
-	heal_percent{0.0f} {
+	timer{this->entity->get_attribute<attr_type::heal>().rate} {
 
 }
 
 HealAction::~HealAction() {}
 
 void HealAction::update_in_range(unsigned int time, Unit *target_ptr) {
-	auto &heal = this->entity->get_attribute<attr_type::heal>();
-
-	if (this->heal_percent > 0.0) {
-		this->heal_percent -= heal.rate * time;
-	}
-	else {
-		this->heal_percent += 1.0f;
+	if (this->timer.update(time)) {
 		this->heal(*target_ptr);
 	}
 
 	// inc frame
-	this->frame += time * this->current_graphics().at(graphic)->frame_count * heal.rate;
+	this->frame += time * this->current_graphics().at(graphic)->frame_count * 1.0f / this->timer.get_interval();
 }
 
 bool HealAction::completed_in_range(Unit *target_ptr) const {
@@ -1261,6 +1323,8 @@ void ProjectileAction::update(unsigned int time) {
 	coord::phys3 new_position = this->entity->location->pos.draw + d_attr.unit_dir * time;
 	if (!this->entity->location->move(new_position)) {
 
+		// TODO implement friendly_fire (now friendly_fire is always on), attack_attribute.friendly_fire
+
 		// find object which was hit
 		auto terrain = this->entity->location->get_terrain();
 		TileContent *tc = terrain->get_data(new_position.to_tile3().to_tile());
@@ -1273,6 +1337,8 @@ void ProjectileAction::update(unsigned int time) {
 				}
 			}
 		}
+
+		// TODO implement area of effect, attack_attribute.area_of_effect
 
 		has_hit = true;
 	}
@@ -1287,4 +1353,4 @@ bool ProjectileAction::completed() const {
 	return (has_hit || this->entity->location->pos.draw.up <= 0);
 }
 
-} /* namespace openage */
+} // namespace openage
