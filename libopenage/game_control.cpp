@@ -414,7 +414,7 @@ bool ActionMode::place_selection(coord::phys3 point) {
 			// TODO: editor placed objects are completed already
 			if (new_building.is_valid()) {
 
-				player->deduct(this->type_focus->cost); // TODO change, move elsewheres
+				player->deduct(this->type_focus->cost.get(*player)); // TODO change, move elsewheres
 
 				Command cmd(*player, new_building.get());
 				cmd.set_ability(ability_type::build);

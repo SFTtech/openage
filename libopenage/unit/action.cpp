@@ -496,7 +496,9 @@ void IdleAction::update(unsigned int time) {
 
 	// generate resources
 	// TODO move elsewhere
-	if (entity->has_attribute(attr_type::resource_generator) && entity->has_attribute(attr_type::owner)) {
+	if (this->entity->has_attribute(attr_type::resource_generator) &&
+	    this->entity->has_attribute(attr_type::owner)) {
+
 		auto &player = this->entity->get_attribute<attr_type::owner>().player;
 		auto &resource_generator = this->entity->get_attribute<attr_type::resource_generator>();
 
@@ -975,9 +977,10 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 
 		// cost formula: 0.5 * (target cost) / (target max hp)
 		auto &hp = target->get_attribute<attr_type::hitpoints>();
+		auto &owner = this->entity->get_attribute<attr_type::owner>();
 
 		// get the target unit's cost
-		this->cost += target->unit_type->cost;
+		this->cost += target->unit_type->cost.get(owner.player);
 		this->cost *= 0.5 / hp.hp;
 
 		auto &owner = this->entity->get_attribute<attr_type::owner>();

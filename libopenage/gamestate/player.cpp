@@ -107,7 +107,7 @@ double Player::amount(const game_resource resource) const {
 }
 
 bool Player::can_make(const UnitType &type) const {
-	return this->can_deduct(type.cost) &&
+	return this->can_deduct(type.cost.get(*this)) &&
 	       this->get_units_have(type.id()) + this->get_units_pending(type.id()) < type.have_limit &&
 	       this->get_units_had(type.id()) + this->get_units_pending(type.id()) < type.had_limit;
 }
@@ -181,9 +181,9 @@ void Player::active_unit_added(Unit *unit, bool from_pending) {
 	// score
 	// TODO improve selectors
 	if (unit->unit_type->id() == 82 || unit->unit_type->id() == 276) { // Castle, Wonder
-		this->score.add_score(score_category::society, unit->unit_type->cost.sum() * 0.2);
+		this->score.add_score(score_category::society, unit->unit_type->cost.get(*this).sum() * 0.2);
 	} else if (unit->has_attribute(attr_type::building) || unit->has_attribute(attr_type::population)) { // building, living
-		this->score.add_score(score_category::economy, unit->unit_type->cost.sum() * 0.2);
+		this->score.add_score(score_category::economy, unit->unit_type->cost.get(*this).sum() * 0.2);
 	}
 
 	// TODO handle here on create unit triggers
@@ -223,7 +223,7 @@ void Player::active_unit_removed(Unit *unit) {
 	if (unit->unit_type->id() == 82 || unit->unit_type->id() == 276) { // Castle, Wonder
 		// nothing
 	} else if (unit->has_attribute(attr_type::building) || unit->has_attribute(attr_type::population)) { // building, living
-		this->score.remove_score(score_category::economy, unit->unit_type->cost.sum() * 0.2);
+		this->score.remove_score(score_category::economy, unit->unit_type->cost.get(*this).sum() * 0.2);
 	}
 
 	// TODO handle here on death unit triggers
@@ -232,7 +232,7 @@ void Player::active_unit_removed(Unit *unit) {
 
 void Player::killed_unit(const Unit & unit) {
 	// score
-	this->score.add_score(score_category::military, unit.unit_type->cost.sum() * 0.2);
+	this->score.add_score(score_category::military, unit.unit_type->cost.get(*this).sum() * 0.2);
 }
 
 void Player::advance_age() {
@@ -276,6 +276,14 @@ int Player::get_units_pending(int type_id) const {
 bool Player::is_unit_pending(Unit *unit) const {
 	// TODO check aslo if unit is training
 	return unit->has_attribute(attr_type::building) && unit->get_attribute<attr_type::building>().completed < 1.0f;
+}
+
+int Player::get_workforce_count() const {
+	// TODO get all units tagged as work force
+	return this->units_have.at(83) + this->units_have.at(293) + // villagers
+	       this->units_have.at(13) + // fishing ship
+	       this->units_have.at(128) + // trade cart
+	       this->units_have.at(545); // transport ship
 }
 
 } // openage
