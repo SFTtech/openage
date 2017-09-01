@@ -178,6 +178,12 @@ public:
 	 */
 	int get_age() const { return age; }
 
+	/**
+	 * The number of units considered part of the workforce.
+	 */
+	int get_workforce_count() const;
+
+
 private:
 
 	bool is_unit_pending(Unit *unit) const;

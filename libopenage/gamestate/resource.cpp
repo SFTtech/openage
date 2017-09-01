@@ -28,10 +28,14 @@ ResourceBundle::ResourceBundle(const int count)
 	value{new double[count] {0}} {
 }
 
+ResourceBundle::ResourceBundle(const ResourceBundle &resources)
+	:
+	ResourceBundle{resources.count} {
+	this->set(resources);
+}
+
 ResourceBundle ResourceBundle::clone() const {
-	ResourceBundle resources = ResourceBundle(count);
-	resources.set(*this);
-	return resources;
+	return ResourceBundle(*this);
 }
 
 ResourceBundle::~ResourceBundle() {

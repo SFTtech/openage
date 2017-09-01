@@ -104,6 +104,8 @@ public:
 
 	virtual ~ResourceBundle();
 
+	ResourceBundle(const ResourceBundle& other);
+
 	ResourceBundle clone() const;
 
 	bool operator> (const ResourceBundle& other) const;

@@ -1,5 +1,6 @@
 add_sources(libopenage
 	civilisation.cpp
+	cost.cpp
 	game_main.cpp
 	game_save.cpp
 	game_spec.cpp
