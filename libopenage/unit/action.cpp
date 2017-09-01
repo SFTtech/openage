@@ -494,6 +494,23 @@ void IdleAction::update(unsigned int time) {
 		}
 	}
 
+	// generate resources
+	// TODO move elsewhere
+	if (entity->has_attribute(attr_type::resource_generator) && entity->has_attribute(attr_type::owner)) {
+		auto &player = this->entity->get_attribute<attr_type::owner>().player;
+		auto &resource_generator = this->entity->get_attribute<attr_type::resource_generator>();
+
+		ResourceBundle resources = resource_generator.resources.clone();
+		if (resource_generator.rate == 0) {
+			resources *= time;
+		} else {
+			// TODO add in intervals and not continuously
+			resources *= time * resource_generator.rate;
+		}
+
+		player.receive(resources);
+	}
+
 	// unit carrying ressources take the carrying sprite when idle
 	// we're not updating frames because the carying sprite is walking
 	if (entity->has_attribute(attr_type::worker)) {

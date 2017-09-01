@@ -43,7 +43,9 @@ private:
 };
 
 /**
- * All the resources
+ * All the resources.
+ *
+ * The the ids of the resources must be inside [0, count).
  */
 class Resources {
 public:
@@ -63,11 +65,7 @@ public:
 
 	ClassicResources()
 		:
-		wood{0, "wood"},
-		food{1, "food"},
-		gold{2, "gold"},
-		stone{3, "stone"},
-		resources{{0, "wood"}, {1, "food"}, {2, "gold"}, {3, "stone"}}{
+		resources{{0, "wood"}, {1, "food"}, {2, "gold"}, {3, "stone"}} {
 	}
 
 	unsigned int get_count() const override { return 4; }
@@ -75,11 +73,6 @@ public:
 	const Resource& get_resource(int id) const override { return this->resources[id]; };
 
 private:
-
-	const ResourceProducer wood;
-	const ResourceProducer food;
-	const ResourceProducer gold;
-	const ResourceProducer stone;
 
 	const ResourceProducer resources[4];
 };
@@ -97,7 +90,9 @@ enum class game_resource : int {
 /**
  * A set of amounts of game resources.
  *
- * Can be also used to store other information about the resources
+ * Can be also used to store other information about the resources.
+ *
+ * TODO change amounts from doubles to integers
  */
 class ResourceBundle {
 public:
@@ -108,6 +103,8 @@ public:
 	ResourceBundle(const Resources& resources);
 
 	virtual ~ResourceBundle();
+
+	ResourceBundle clone() const;
 
 	bool operator> (const ResourceBundle& other) const;
 	bool operator>= (const ResourceBundle& other) const;
@@ -133,6 +130,8 @@ public:
 	 */
 	bool deduct(const ResourceBundle& amount);
 
+	void set(const ResourceBundle& amount);
+
 	void set_all(const double amount);
 
 	void limit(const ResourceBundle& limits);
@@ -151,6 +150,8 @@ public:
 	double sum() const;
 
 private:
+
+	ResourceBundle(const int count);
 
 	int count;
 	double *value;

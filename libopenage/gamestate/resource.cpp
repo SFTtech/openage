@@ -14,14 +14,24 @@ ResourceBundle Resources::create_bundle() const {
 
 ResourceBundle::ResourceBundle()
 	:
-	count{4},
-	value{new double[count] {0}} {
+	ResourceBundle{4} {
 }
 
 ResourceBundle::ResourceBundle(const Resources& resources)
 	:
-	count{static_cast<int>(resources.get_count())},
+	ResourceBundle{static_cast<int>(resources.get_count())} {
+}
+
+ResourceBundle::ResourceBundle(const int count)
+	:
+	count{count},
 	value{new double[count] {0}} {
+}
+
+ResourceBundle ResourceBundle::clone() const {
+	ResourceBundle resources = ResourceBundle(count);
+	resources.set(*this);
+	return resources;
 }
 
 ResourceBundle::~ResourceBundle() {
@@ -93,6 +103,12 @@ bool ResourceBundle::deduct(const ResourceBundle& amount) {
 		return true;
 	}
 	return false;
+}
+
+void ResourceBundle::set(const ResourceBundle &amount) {
+	for (int i = 0; i < this->count; i++) {
+		(*this)[i] = amount.get(i);
+	}
 }
 
 void ResourceBundle::set_all(const double amount) {
