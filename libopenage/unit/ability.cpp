@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "../terrain/terrain_object.h"
+#include "../gamestate/cost.h"
 #include "../gamestate/player.h"
 #include "ability.h"
 #include "action.h"
@@ -198,7 +199,7 @@ bool ResearchAbility::can_invoke(Unit &to_modify, const Command &cmd) {
 		auto &player = to_modify.get_attribute<attr_type::owner>().player;
 		auto research = cmd.research();
 		return research->can_start() &&
-		       player.can_deduct(research->type->get_research_cost());
+		       player.can_deduct(research->type->get_research_cost().get(player));
 	}
 	return false;
 }

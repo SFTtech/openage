@@ -228,17 +228,16 @@ private:
 	 */
 	std::unordered_map<int, int> units_had;
 
-	/**
-<<<<<<< 5b6b843fcba9c084f6223431ad6ff8ad62e70828
-	 * The current age.
-	 */
-	int age;
-=======
+	/*
 	 * The number of units the player has being made for each unit type id.
 	 * Used for unit limits (eg. Town Center).
 	 */
 	std::unordered_map<int, int> units_pending;
->>>>>>> Resource decay and gather rate
+
+	/**
+	 * The current age.
+	 */
+	int age;
 
 };
 

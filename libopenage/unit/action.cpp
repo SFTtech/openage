@@ -983,7 +983,6 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 		this->cost += target->unit_type->cost.get(owner.player);
 		this->cost *= 0.5 / hp.hp;
 
-		auto &owner = this->entity->get_attribute<attr_type::owner>();
 		if (!owner.player.deduct(this->cost)) {
 			// no resources to start
 			this->complete = true;
