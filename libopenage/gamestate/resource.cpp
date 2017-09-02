@@ -42,9 +42,34 @@ ResourceBundle::~ResourceBundle() {
 	delete[] value;
 }
 
+void ResourceBundle::expand(const ResourceBundle& other) {
+	this->expand(other.count);
+}
+
+void ResourceBundle::expand(const int count) {
+	if (this->count == count) {
+		return;
+	}
+	// create new array with old values
+	double *new_value = new double[count];
+	for (int i = 0; i < this->count; i++) {
+		new_value[i] = this->value[i];
+	}
+	// replace the private variables
+	this->count = count;
+	delete[] value;
+	this->value = new_value;
+}
+
 bool ResourceBundle::operator> (const ResourceBundle& other) const {
 	for (int i = 0; i < this->count; i++) {
 		if (!(this->get(i) > other.get(i))) {
+			return false;
+		}
+	}
+	// check also resources that are not in both bundles
+	for (int i = this->count; i < other.count; i++) {
+		if (other.get(i) > 0) {
 			return false;
 		}
 	}
@@ -57,10 +82,17 @@ bool ResourceBundle::operator>= (const ResourceBundle& other) const {
 			return false;
 		}
 	}
+	// check also resources that are not in both bundles
+	for (int i = this->count; i < other.count; i++) {
+		if (other.get(i) > 0) {
+			return false;
+		}
+	}
 	return true;
 }
 
 ResourceBundle& ResourceBundle::operator+= (const ResourceBundle& other) {
+	this->expand(other);
 	for (int i = 0; i < this->count; i++) {
 		(*this)[i] += other.get(i);
 	}
@@ -68,6 +100,7 @@ ResourceBundle& ResourceBundle::operator+= (const ResourceBundle& other) {
 }
 
 ResourceBundle& ResourceBundle::operator-= (const ResourceBundle& other) {
+	this->expand(other);
 	for (int i = 0; i < this->count; i++) {
 		(*this)[i] -= other.get(i);
 	}
@@ -98,6 +131,17 @@ bool ResourceBundle::has(const ResourceBundle& amount1, const ResourceBundle& am
 			return false;
 		}
 	}
+	// check also resources that are not in both bundles
+	for (int i = this->count; i < amount1.count; i++) {
+		if (amount1.get(i) > 0) {
+			return false;
+		}
+	}
+	for (int i = this->count; i < amount2.count; i++) {
+		if (amount2.get(i) > 0) {
+			return false;
+		}
+	}
 	return true;
 }
 
@@ -110,6 +154,7 @@ bool ResourceBundle::deduct(const ResourceBundle& amount) {
 }
 
 void ResourceBundle::set(const ResourceBundle &amount) {
+	this->expand(amount);
 	for (int i = 0; i < this->count; i++) {
 		(*this)[i] = amount.get(i);
 	}
@@ -122,7 +167,7 @@ void ResourceBundle::set_all(const double amount) {
 }
 
 void ResourceBundle::limit(const ResourceBundle &limits) {
-	for (int i = 0; i < this->count; i++) {
+	for (int i = 0; i < this->min_count(limits); i++) {
 		if (this->get(i) > limits.get(i)) {
 			(*this)[i] = limits.get(i);
 		}
@@ -135,6 +180,10 @@ double ResourceBundle::sum() const {
 		sum += this->get(i);
 	}
 	return sum;
+}
+
+int ResourceBundle::min_count(const ResourceBundle &other) {
+	return this->count <= other.count ? this->count : other.count;
 }
 
 } // openage

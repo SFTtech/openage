@@ -46,6 +46,9 @@ private:
  * All the resources.
  *
  * The the ids of the resources must be inside [0, count).
+ *
+ * The static variables wood, food, gold, stone are the ids of the representing resource.
+ * Any extension of Resources must use this ids as they are an engine dependency (at the moment).
  */
 class Resources {
 public:
@@ -58,6 +61,12 @@ public:
 
 	ResourceBundle create_bundle() const;
 
+	// TODO remove when the engine is fully decupled from the data
+	static const int wood = 0;
+	static const int food = 1;
+	static const int gold = 2;
+	static const int stone = 3;
+
 };
 
 class ClassicResources : public Resources {
@@ -65,7 +74,10 @@ public:
 
 	ClassicResources()
 		:
-		resources{{0, "wood"}, {1, "food"}, {2, "gold"}, {3, "stone"}} {
+		resources{{Resources::wood, "wood"},
+		          {Resources::food, "food"},
+		          {Resources::gold, "gold"},
+		          {Resources::stone, "stone"}} {
 	}
 
 	unsigned int get_count() const override { return 4; }
@@ -151,12 +163,27 @@ public:
 	 */
 	double sum() const;
 
+	/**
+	 * The number of resources
+	 */
+	int get_count() const { return count; };
+
 private:
 
 	ResourceBundle(const int count);
 
+	void expand(const ResourceBundle& other);
+
+	void expand(const int count);
+
+	/**
+	 * The number of resources
+	 */
 	int count;
+
 	double *value;
+
+	int min_count(const ResourceBundle& other);
 
 };
 
