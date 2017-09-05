@@ -5,9 +5,8 @@
 # add new sources here, dependencies for linking and including
 # are specified below the source file list.
 
-set(CMAKE_AUTOMOC ON)
-
 declare_binary(libopenage)
+
 
 add_sources(libopenage
 	assetmanager.cpp
@@ -57,7 +56,11 @@ add_sources(libopenage GENERATED ${CODEGEN_TARGET_TUS})
 
 # after this point, no further sources can be added to the executable
 finalize_binary(libopenage openage library allow_no_undefined)
-set_target_properties(libopenage PROPERTIES VERSION 0)
+set_target_properties(libopenage PROPERTIES
+	VERSION 0
+	AUTOMOC ON
+	AUTOGEN_TARGET_DEPENDS "codegen"
+)
 
 # library dependency specification
 

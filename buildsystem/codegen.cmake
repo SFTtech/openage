@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 function(codegen_run)
 	# this function must be called once all required assets have been created, but before the executable is finalized.
@@ -6,7 +6,7 @@ function(codegen_run)
 	# make sure this function gets called only once
 	get_property(codegen_run GLOBAL PROPERTY SFT_CODEGEN_HAS_BEEN_RUN)
 	if(codegen_run)
-		message(FATAL_ERROR codegen has already been run)
+		message(FATAL_ERROR "codegen has already been run")
 	endif()
 	set_property(GLOBAL PROPERTY SFT_CODEGEN_HAS_BEEN_RUN 1)
 
