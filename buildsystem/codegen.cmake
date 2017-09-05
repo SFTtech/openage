@@ -29,10 +29,16 @@ function(codegen_run)
 	FILE(READ "${CMAKE_BINARY_DIR}/codegen_depends" CODEGEN_DEPENDS)
 	STRING(REGEX REPLACE "\n" ";" CODEGEN_TARGET_FILES ${CODEGEN_TARGET_FILES})
 	STRING(REGEX REPLACE "\n" ";" CODEGEN_DEPENDS ${CODEGEN_DEPENDS})
+
+	# as the codegen creates all files at once,
+	# let the buildsystem only depend on this single dummy file.
+	# otherwise the codegen invocation would be done for each generated source.
 	set(CODEGEN_TIMEFILE "${CMAKE_BINARY_DIR}/codegen_timefile")
 
+	list(APPEND CODEGEN_TARGET_FILES ${CODEGEN_TIMEFILE})
+
 	add_custom_command(
-		OUTPUT "${CODEGEN_TIMEFILE}"
+		OUTPUT ${CODEGEN_TARGET_FILES}
 		COMMAND ${CODEGEN_INVOCATION} --mode=codegen "--touch-file-on-cache-change=${CMAKE_CURRENT_LIST_FILE}" --force-rerun-on-generated-list-change
 		COMMAND "${CMAKE_COMMAND}" -E touch "${CODEGEN_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
