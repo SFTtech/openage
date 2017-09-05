@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 """
 Testing code for exctranslate.pyx.
@@ -74,19 +74,21 @@ def cpp_to_py(int bounce_count = 0):
     else:
         raise TestError("Expected a CPPException, but method returned.")
 
+    is_openage_error = lambda value: b"openage::error::Error" in value
+
     # now let's see about the detailed contents of excobj.
     assert_value(excobj.args[0], "foo")
-    assert_value(excobj.typename, b"openage::error::Error")
+    assert_value(excobj.typename, None, is_openage_error)
 
     cause = getattr(excobj, "__cause__", None)
 
-    assert_value(type(cause), TestError)
+    assert_value(type(cause), None, lambda value: value in {CPPException, TestError})
 
     causeofcause = getattr(cause, "__cause__", None)
 
     assert_value(type(causeofcause), CPPException)
     assert_value(causeofcause.args[0], "rofl")
-    assert_value(causeofcause.typename, b"openage::error::Error")
+    assert_value(causeofcause.typename, None, is_openage_error)
 
     assert_value(getattr(causeofcause, "__cause__", None), None)
 
