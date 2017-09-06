@@ -2,21 +2,6 @@
 
 AoE2's game structure has always been a little bit messy for today's standards, with units cramped into .slp files and cracks and flaws in the game engine that become more apparent with every expansion. But what about the old network protocol? Can something that works with a 28.8 modem be messy too? Well, the answer is yes but explaining every detail is kind of complicated. For that reason, we will focus on analyzing just the chat protocol because it actually is the most understandable aspect of the multiplayer network communication.
 
-## Test Setup
-
-The test environment consisted of 4 hosts to simulate a 4-player multiplayer game. Each host was equipped with:
-
-* Ubuntu 17.04
-* Age of Empires 2: The Conquerors 1.0c
-* Wine 1.8.7
-* Wireshark 2.2.6
-
-One game was established by using the DirectPlay feature, while all other play sessions were established over LAN. This makes no difference for the communication protocol and DirectPlay is only used for the purpose of connecting players.
-
-## What standard protocols are used?
-
-The game utilizes TCP to let a player connect to a play session and UDP for all game configuration and in-game communications. This is not surprising, since UDP leads to lightweight packets and therefore fast communication. Other protocols used are of course IPv4 and Ethernet. We will focus on the interesting part of the packets: The UDP data field.
-
 ## Structure and length
 
 The chat message data field in AoC has a minimum length of 43 bytes (for 1 character) and a maximum length of 107 bytes (65 characters). These 65 bytes difference is used for the message text. Characters are encoded in extended ASCII, so they support most of the American and European alphabets. The other (mandatory) 42 bytes form the header that is interpreted by the network engine of the game.
