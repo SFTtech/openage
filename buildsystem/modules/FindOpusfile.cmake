@@ -1,7 +1,7 @@
 # This file was taken from Unvanquished,
 # Copyright 2000-2009 Kitware, Inc., Insight Software Consortium
 # It's licensed under the terms of the 3-clause OpenBSD license.
-# Modifications Copyright 2014-2015 the openage authors.
+# Modifications Copyright 2014-2017 the openage authors.
 # See copying.md for further legal info.
 
 # - Find opus library
@@ -12,8 +12,15 @@
 #  OPUS_FOUND          - True if opus is found.
 
 # find the opusfile header, defines our api.
-find_path(OPUS_INCLUDE_DIR
+find_path(OPUSFILE_INCLUDE_DIR
 	NAMES opus/opusfile.h
+	DOC "Opusfile include directory"
+)
+mark_as_advanced(OPUSFILE_INCLUDE_DIR)
+
+# find the opus header
+find_path(OPUS_INCLUDE_DIR
+	NAMES opus/opus.h
 	DOC "Opus include directory"
 )
 mark_as_advanced(OPUS_INCLUDE_DIR)
@@ -33,11 +40,11 @@ find_library(OPUS_LIBRARY
 mark_as_advanced(OPUS_LIBRARY)
 
 
-# handle the QUIETLY and REQUIRED arguments and set OPUSFILE_FOUND to TRUE if
+# handle the QUIETLY and REQUIRED arguments and set OPUS_FOUND to TRUE if
 # all listed variables are TRUE
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Opus DEFAULT_MSG OPUSFILE_LIBRARY OPUS_LIBRARY OPUS_INCLUDE_DIR)
 
 # export the variables
 set(OPUS_LIBRARIES "${OPUSFILE_LIBRARY}" "${OPUS_LIBRARY}")
-set(OPUS_INCLUDE_DIRS "${OPUS_INCLUDE_DIR}" "${OPUS_INCLUDE_DIR}/opus")
+set(OPUS_INCLUDE_DIRS "${OPUSFILE_INCLUDE_DIR}" "${OPUS_INCLUDE_DIR}" "${OPUS_INCLUDE_DIR}/opus")
