@@ -294,7 +294,7 @@ bool GlShaderProgram::has_uniform(const char* name) {
 void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* val, GLenum type) {
 	GlUniformInput *unif_in = static_cast<GlUniformInput*>(in);
 
-	if (this->uniforms.count(unif) == 0) {
+	if (unlikely(this->uniforms.count(unif) == 0)) {
 		throw Error(MSG(err) << "Tried to set uniform " << unif << " that does not exist in the shader program.");
 	}
 
@@ -310,8 +310,8 @@ void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* v
 		// already wrote to this uniform since last upload
 		size_t off = unif_in->update_offs[unif];
 		memcpy(unif_in->update_data.data() + off, val, size);
-	}
-	else {
+	} else {
+		// first time writing to this uniform since last upload
 		size_t prev_size = unif_in->update_data.size();
 		unif_in->update_data.resize(prev_size + size);
 		memcpy(unif_in->update_data.data() + prev_size, val, size);

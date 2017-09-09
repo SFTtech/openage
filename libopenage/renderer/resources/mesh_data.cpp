@@ -67,29 +67,38 @@ std::experimental::optional<index_t> VertexInputInfo::get_index_type() const {
 	return this->index_type;
 }
 
+MeshData::MeshData(const util::Path &/*path*/) {
+	// asdf
+	throw "unimplemented lol";
+}
+
 /// Vertices of a quadrilateral filling the whole screen.
 /// Format: (pos, tex_coords) = (x, y, u, v)
-static constexpr std::array<float, 16> quad_data = { {
+static constexpr const std::array<float, 16> quad_data = { {
 		-1.0f, 1.0f, 0.0f, 1.0f,
 		-1.0f, -1.0f, 0.0f, 0.0f,
 		1.0f, 1.0f, 1.0f, 1.0f,
 		1.0f, -1.0f, 1.0f, 0.0f
 } };
 
-MeshData::MeshData(const util::Path &/*path*/) {
-	// asdf
-	throw "unimplemented lol";
-}
-
 MeshData::MeshData(init_quad_t) {
-	auto data_size = quad_data.size() * sizeof(decltype(quad_data)::value_type);
+	auto const data_size = quad_data.size() * sizeof(decltype(quad_data)::value_type);
 	this->data = std::vector<uint8_t>(data_size);
 	std::memcpy(data.data(), reinterpret_cast<const uint8_t*>(quad_data.data()), data_size);
 
 	this->info = VertexInputInfo { { vertex_input_t::V2F32, vertex_input_t::V2F32 }, vertex_layout_t::AOS, vertex_primitive_t::TRIANGLE_STRIP };
 }
 
-std::vector<uint8_t> const &MeshData::get_data() const {
+MeshData::MeshData(std::vector<uint8_t>&& verts, VertexInputInfo info)
+	: data(std::move(verts))
+	, info(info) {}
+
+MeshData::MeshData(std::vector<uint8_t> &&verts, std::vector<uint8_t> &&ids, VertexInputInfo info)
+	: data(std::move(verts))
+	, ids(std::move(ids))
+	, info(info) {}
+
+std::vector<uint8_t> const& MeshData::get_data() const {
 	return this->data;
 }
 

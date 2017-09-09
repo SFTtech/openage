@@ -28,6 +28,8 @@ public:
 	/// Assumes bound and valid shader program and all other necessary state.
 	void draw() const;
 
+	void update_verts_offset(std::vector<uint8_t> const&, size_t) override;
+
 private:
 	/// All the pieces of OpenGL state that represent a mesh.
 	struct GlMesh {

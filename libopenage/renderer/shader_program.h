@@ -55,9 +55,11 @@ public:
 	void update_uniform_input(UniformInput *input, const char *unif, Texture *val) {
 		this->set_tex(input, unif, val);
 	}
+
 	void update_uniform_input(UniformInput *input, const char *unif, Eigen::Matrix4f const &val) {
 		this->set_m4f32(input, unif, val);
 	}
+
 	template<typename T>
 	void update_uniform_input(UniformInput*, const char *unif, T) {
 		throw Error(MSG(err) << "Tried to set uniform " << unif << " using unknown type.");

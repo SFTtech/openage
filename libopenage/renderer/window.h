@@ -2,8 +2,10 @@
 
 #pragma once
 
+#include <functional>
 #include <memory>
 #include <experimental/optional>
+#include <vector>
 
 #include <SDL2/SDL.h>
 
@@ -16,6 +18,11 @@ namespace renderer {
 
 class Window {
 public:
+	using key_cb_t = std::function<void(SDL_KeyboardEvent const&)>;
+	using mouse_button_cb_t = std::function<void(SDL_MouseButtonEvent const&)>;
+	using mouse_wheel_cb_t = std::function<void(SDL_MouseWheelEvent const&)>;
+	using resize_cb_t = std::function<void()>;
+
 	/// Create a shiny window with the given title.
 	Window(const char *title);
 	~Window();
@@ -28,16 +35,19 @@ public:
 	Window(Window &&other);
 	Window &operator =(Window &&other);
 
-	/// Returns the dimensions of this window.
-	coord::window get_size();
-
 	/// Force the window to the given size. It's generally not a good idea to use this,
 	/// as it makes the window jump around wierdly.
 	void set_size(const coord::window &new_size);
 
-	/// Swap the front and back framebuffers. This has to be after drawing every frame to actually
-	/// display it.
-	void swap();
+	/// Returns the dimensions of this window.
+	coord::window get_size() const;
+
+	/// Returns true if this window should be closed.
+	bool should_close() const;
+
+	/// Polls for window events, calls callbacks for these events, swaps front and back framebuffers
+	/// to present graphics onto screen. This has to be called at the end of every graphics frame.
+	void update();
 
 	/// Make this window's context the current rendering context of the current thread.
 	/// Only use this and most other GL functions on a dedicated window thread.
@@ -54,11 +64,24 @@ public:
 	/// Return a pointer to this window's GL context.
 	opengl::GlContext *get_context();
 
-private:
+	void add_key_callback(key_cb_t);
+	void add_mouse_button_callback(mouse_button_cb_t);
+	void add_mouse_wheel_callback(mouse_wheel_cb_t);
+	void add_resize_callback(resize_cb_t);
+
+// TODO should be private
+protected:
+	bool _should_close = false;
+
 	/// The current size of the framebuffer.
 	coord::window size;
 	/// The SDL struct representing this window.
 	SDL_Window *window;
+
+	std::vector<key_cb_t> on_key;
+	std::vector<mouse_button_cb_t> on_mouse_button;
+	std::vector<mouse_wheel_cb_t> on_mouse_wheel;
+	std::vector<resize_cb_t> on_resize;
 
 	/// This window's OpenGL context. It's optional because it can't be constructed immediately,
 	/// but after the constructor runs it's guaranteed to be available.

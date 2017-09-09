@@ -38,8 +38,6 @@ private:
 	/// The GL context.
 	GlContext *gl_context;
 
-	std::vector<GlShaderProgram> shaders;
-
 	GlRenderTarget display;
 };
 

@@ -8,37 +8,27 @@
 namespace openage {
 namespace renderer {
 namespace resources {
-const char *shader_source_type_to_str(shader_source_t type) {
-	switch (type) {
-	case shader_source_t::glsl_vertex:
-		return "GLSL vertex shader";
-	case shader_source_t::glsl_geometry:
-		return "GLSL geometry shader";
-	case shader_source_t::glsl_tesselation_control:
-		return "GLSL tesselation control shader";
-	case shader_source_t::glsl_tesselation_evaluation:
-		return "GLSL tesselation evaluation shader";
-	case shader_source_t::glsl_fragment:
-		return "GLSL fragment shader";
-	default:
-		return "unknown GLSL shader type";
-	}
-}
 
-ShaderSource::ShaderSource(shader_source_t type, std::string &&code)
-	: type(type)
-	, code(code) {}
+ShaderSource::ShaderSource(shader_lang_t lang, shader_stage_t stage, std::string &&code)
+	: lang(lang)
+	, stage(stage)
+	, code(std::move(code)) {}
 
-ShaderSource::ShaderSource(shader_source_t type, const util::Path &path)
-	: type(type)
+ShaderSource::ShaderSource(shader_lang_t lang, shader_stage_t stage, const util::Path& path)
+	: lang(lang)
+	, stage(stage)
 	, code(path.open().read()) {}
 
-shader_source_t ShaderSource::get_type() const {
-	return this->type;
+std::string const& ShaderSource::get_source() const {
+	return this->code;
 }
 
-const char *ShaderSource::get_source() const {
-	return this->code.data();
+shader_lang_t ShaderSource::get_lang() const {
+	return this->lang;
+}
+
+shader_stage_t ShaderSource::get_stage() const {
+	return this->stage;
 }
 
 }}} // openage::renderer::resources

@@ -104,6 +104,12 @@ public:
 	// TODO the empty struct is ugly
 	explicit MeshData(init_quad_t);
 
+	/// Initializes the mesh data to a custom unindexed vertex vector described by the given info.
+	MeshData(std::vector<uint8_t> &&verts, VertexInputInfo);
+
+	/// Initializes the mesh data to a custom indexed vertex vector described by the given info.
+	MeshData(std::vector<uint8_t> &&verts, std::vector<uint8_t> &&ids, VertexInputInfo);
+
 	/// Returns the raw vertex data.
 	std::vector<uint8_t> const &get_data() const;
 

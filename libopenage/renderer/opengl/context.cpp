@@ -65,7 +65,7 @@ static gl_context_capabilities find_capabilities() {
 	GLint temp;
 	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &temp);
 	caps.max_texture_size = temp;
-	// TOOD maybe GL_MAX_TEXTURE_IMAGE_UNITS or maybe GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS
+	// TODO maybe GL_MAX_TEXTURE_IMAGE_UNITS or maybe GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS
 	// lol opengl
 	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &temp);
 	caps.max_texture_slots = temp;

@@ -13,4 +13,8 @@ geometry_t Geometry::get_type() const {
 	return this->type;
 }
 
+void Geometry::update_verts(const std::vector<uint8_t>& verts) {
+	this->update_verts_offset(verts, 0);
+}
+
 }} //openage::renderer

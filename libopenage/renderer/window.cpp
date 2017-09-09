@@ -37,6 +37,8 @@ public:
 		SDL_GetVersion(&version);
 
 		log::log(MSG(info) << "Initialized SDL " << uint32_t(version.major) << "." << uint32_t(version.minor) << "." << uint32_t(version.patch));
+
+		inited = true;
 	}
 
 	~SDL() {
@@ -65,7 +67,7 @@ Window::Window(const char *title)
 	// TODO Qt might support Vulkan natively in the future
 	// We need HIGHDPI for eventual support of GUI scaling.
 	// TODO HIGHDPI fails (requires newer SDL2?)
-	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED; //| SDL_WINDOW_HIGHDPI;
+	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED | SDL_WINDOW_VULKAN;
 	this->window = SDL_CreateWindow(
 		title,
 		SDL_WINDOWPOS_CENTERED,
@@ -111,7 +113,7 @@ Window::~Window() {
 	}
 }
 
-coord::window Window::get_size() {
+coord::window Window::get_size() const {
 	return this->size;
 }
 
@@ -122,7 +124,37 @@ void Window::set_size(const coord::window &new_size) {
 	}
 }
 
-void Window::swap() {
+void Window::update() {
+	SDL_Event event;
+
+	while (SDL_PollEvent(&event)) {
+		if (event.type == SDL_WINDOWEVENT) {
+			if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+				coord::window new_size { event.window.data1, event.window.data2 };
+				log::log(MSG(dbg) << "Window resized to: " << new_size.x << " x " << new_size.y);
+				this->size = new_size;
+				for (auto& cb : this->on_resize) {
+					cb();
+				}
+			}
+		} else if (event.type == SDL_QUIT) {
+			this->_should_close = true;
+			// TODO call on_destroy
+		} else if (event.type == SDL_KEYUP) {
+			auto const ev = *reinterpret_cast<SDL_KeyboardEvent const*>(&event);
+			for (auto& cb : this->on_key) {
+				cb(ev);
+			}
+			// TODO handle keydown
+		} else if (event.type == SDL_MOUSEBUTTONUP) {
+			auto const ev = *reinterpret_cast<SDL_MouseButtonEvent const*>(&event);
+			for (auto& cb : this->on_mouse_button) {
+				cb(ev);
+			}
+			// TODO handle mousedown
+		}
+	}
+
 	SDL_GL_SwapWindow(this->window);
 }
 
@@ -136,6 +168,26 @@ SDL_Window *Window::get_raw_window() const {
 
 opengl::GlContext *Window::get_context() {
 	return &this->context.value();
+}
+
+bool Window::should_close() const {
+	return this->_should_close;
+}
+
+void Window::add_mouse_button_callback(mouse_button_cb_t cb) {
+	this->on_mouse_button.push_back(cb);
+}
+
+void Window::add_mouse_wheel_callback(mouse_wheel_cb_t cb) {
+	this->on_mouse_wheel.push_back(cb);
+}
+
+void Window::add_key_callback(key_cb_t cb) {
+	this->on_key.push_back(cb);
+}
+
+void Window::add_resize_callback(resize_cb_t cb) {
+	this->on_resize.push_back(cb);
 }
 
 }} //openage::renderer

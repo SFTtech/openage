@@ -50,6 +50,19 @@ GlGeometry::GlGeometry(const resources::MeshData &mesh)
 	}
 }
 
+void GlGeometry::update_verts_offset(std::vector<uint8_t> const &verts, size_t offset) {
+	if (this->get_type() != geometry_t::mesh) {
+		throw Error(MSG(err) << "Cannot update vertex data for non-mesh GlGeometry.");
+	}
+
+	if (verts.size() != this->mesh->vertices.get_size()) {
+		throw Error(MSG(err) << "Size mismatch between old and new vertex data for GlGeometry.");
+	}
+
+	// TODO support offset updating
+	this->mesh->vertices.upload_data(verts.data(), offset, verts.size());
+}
+
 void GlGeometry::draw() const {
 	if (this->get_type() == geometry_t::bufferless_quad) {
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);

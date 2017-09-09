@@ -11,6 +11,8 @@
 #include "../error/error.h"
 #include "resources/shader_source.h"
 #include "opengl/renderer.h"
+#include "vulkan/windowvk.h"
+#include "vulkan/renderer.h"
 #include "window.h"
 
 
@@ -18,57 +20,15 @@ namespace openage {
 namespace renderer {
 namespace tests {
 
-/**
- * render demo function collection.
- */
-struct render_demo {
-	std::function<void(Window *)> setup;
-	std::function<void()> frame;
-	std::function<void(const coord::window &)> resize;
-	std::function<void(const uint16_t, const uint16_t)> click;
-};
-
-void render_test(Window &window, const render_demo *actions) {
-	SDL_Event event;
-
-	actions->setup(&window);
-
-	bool running = true;
-	while (running) {
-		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
-				coord::window new_size{event.window.data1, event.window.data2};
-				log::log(
-					MSG(info) << "new window size: "
-					<< new_size.x << " x " << new_size.y
-				);
-				actions->resize(new_size);
-			}
-			else if (event.type == SDL_QUIT) {
-				running = false;
-			}
-			else if (event.type == SDL_KEYUP) {
-				SDL_Keycode sym = reinterpret_cast<SDL_KeyboardEvent *>(&event)->keysym.sym;
-				if (sym == SDLK_ESCAPE) {
-					running = false;
-				}
-			}
-			else if (event.type == SDL_MOUSEBUTTONDOWN) {
-				actions->click(event.button.x, event.button.y);
-			}
-		}
-
-		actions->frame();
-	}
-}
-
 void renderer_demo_0() {
-	Window window { "openage renderer testing" };
+	Window window { "openage renderer test" };
 	window.make_context_current();
+
 	auto renderer = std::make_unique<opengl::GlRenderer>(window.get_context());
 
 	auto vshader_src = resources::ShaderSource(
-		resources::shader_source_t::glsl_vertex,
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::vertex,
 		R"s(
 #version 330
 
@@ -89,7 +49,8 @@ gl_Position = mvp * vec4(position, 0.0, 1.0);
 )s");
 
 	auto fshader_src = resources::ShaderSource(
-		resources::shader_source_t::glsl_fragment,
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::fragment,
 		R"s(
 #version 330
 
@@ -109,7 +70,8 @@ void main() {
 )s");
 
 	auto vshader_display_src = resources::ShaderSource(
-		resources::shader_source_t::glsl_vertex,
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::vertex,
 		R"s(
 #version 330
 
@@ -134,7 +96,8 @@ v_uv = uv;
 
 
 	auto fshader_display_src = resources::ShaderSource(
-		resources::shader_source_t::glsl_fragment,
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::fragment,
 		R"s(
 #version 330
 
@@ -234,38 +197,15 @@ void main() {
 	resources::TextureData id_texture_data = id_texture->into_data();
 	bool texture_data_valid = false;
 
-	render_demo test0{
-		// init
-		[&](Window */*window*/) {
-			glDepthFunc(GL_LEQUAL);
-			glDepthRange(0.0, 1.0);
-			// what is this
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		},
-		// frame
-		[&]() {
-			texture_data_valid = false;
-			renderer->render(pass);
-			renderer->render(display_pass);
-			window.swap();
-			window.get_context()->check_error();
-		},
-		// resize
-		[&](const coord::window &new_size) {
-			// handle in renderer..
-			glViewport(0, 0, new_size.x, new_size.y);
+	glDepthFunc(GL_LEQUAL);
+	glDepthRange(0.0, 1.0);
+	// what is this
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-			// resize fbo
-			color_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::rgba8));
-			id_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::r32ui));
-			depth_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::depth24));
-			fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
+	window.add_mouse_button_callback([&] (SDL_MouseButtonEvent const& ev) {
+			auto x = ev.x;
+			auto y = ev.y;
 
-			shader_display->update_uniform_input(color_texture_uniform.get(), "color_texture", color_texture.get());
-			pass.target = fbo.get();
-		},
-		//click
-		[&](const uint16_t x, const uint16_t y) {
 			log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
 			if (!texture_data_valid) {
 				id_texture_data = id_texture->into_data();
@@ -280,10 +220,31 @@ void main() {
 			}
 			id--; //real id is id-1
 			log::log(INFO << "Object number " << id << " clicked.");
-		}
-	};
+		} );
 
-	render_test(window, &test0);
+	window.add_resize_callback([&] {
+			auto new_size = window.get_size();
+
+			texture_data_valid = false;
+			// handle in renderer..
+			glViewport(0, 0, new_size.x, new_size.y);
+
+			// resize fbo
+			color_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::rgba8));
+			id_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::r32ui));
+			depth_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::depth24));
+			fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
+
+			shader_display->update_uniform_input(color_texture_uniform.get(), "color_texture", color_texture.get());
+			pass.target = fbo.get();
+		} );
+
+	while (!window.should_close()) {
+		renderer->render(pass);
+		renderer->render(display_pass);
+		window.update();
+		window.get_context()->check_error();
+	}
 }
 
 void renderer_demo(int demo_id) {
