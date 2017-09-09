@@ -32,6 +32,9 @@ Native::Native(const std::string &path, mode_t mode)
 		throw Error{ERR << "unknown open mode"};
 	}
 
+	// Open in binary mode to avoid stupid behaviour on Windows
+	open_mode |= std::ios_base::binary;
+
 	this->file.open(this->path, open_mode);
 
 	if (not this->file.is_open()) {
