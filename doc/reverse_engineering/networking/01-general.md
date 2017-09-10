@@ -36,6 +36,7 @@ Command | Purpose
 0x44    | Sync
 0x4d    | Sync
 0x51    | De-Sync
+0x52    | Readying (Lobby)
 0x53    | Sync
 0x5a    | Lobby
 
@@ -46,6 +47,7 @@ Action | Purpose
 0x00   | Several Actions (Attacking, Resource gathering, Boarding Transport Ship)
 0x0b   | Resign
 0x01   | Stop
+0x02   | Move (AI) ?
 0x03   | Move
 0x10   | Set waypoint
 0x12   | Stance
@@ -54,10 +56,12 @@ Action | Purpose
 0x15   | Patrol
 0x17   | Formation
 0x18   | Save
+0x1b   | Save & Exit
+0x1f   | ??? (AI)
 0x64   | Train unit (AI)
 0x65   | Research
 0x66   | Build
-0x67   | Diplomacy/Cheats
+0x67   | Diplomacy/Cheats/Change Speed
 0x69   | Build wall
 0x6a   | Delete
 0x6b   | Attack ground
@@ -65,7 +69,7 @@ Action | Purpose
 0x6f   | Unboard/Ungarrison
 0x72   | Toggle gate
 0x73   | Flare
-0x75   | Garrison
+0x75   | Garrison/Stop building unit
 0x77   | Train unit (Human)
 0x78   | Rally point
 0x7a   | Sell
@@ -76,13 +80,23 @@ Action | Purpose
 
 When the game is recorded, the UDP data stream of a `0x3e` packet (without the header) is also written straight into the .mgx files with few changes. Viewing the recording will therefore simulate the exact actions that were done by the players. For more information on this check the **Further Reading** section below.
 
+Much of the actions where already figured out by Stefan Kolb as part of his [.mgx Specification](https://github.com/stefan-kolb/aoc-mgx-format). This analysis will use his document style ([Example](https://github.com/stefan-kolb/aoc-mgx-format/blob/master/spec/body/actions/03-move.md)) as a template.
+
+## Coordinate system
+
+In this document, we will assume that AoC uses a carthesian coordinate system with the left corner as an origin point. Keep in mind, that AoC uses a **Quadrant 4** representation for its coordinates, which means that the y-axis is represented by the edge in the bottom left and the x-axis by the top left edge.
+
 ## Further Reading
 
 To get a better understanding of the networking design and the underlying principles, it might be beneficial to read these sources.
 
 [1] Dave Pottering, *1500 Archers on a 28.8: Network Programming in Age of Empires and Beyond*, 2001
 https://www.gamasutra.com/view/feature/131503/1500_archers_on_a_288_network_.php?page=1
+
 [2] Matthew Pritchard, *How to Hurt the Hackers: The Scoop on Internet Cheating and How You Can Combat It*, 2000
 https://www.gamasutra.com/view/feature/3149/how_to_hurt_the_hackers_the_scoop_.php
-[3] Stefan Kolb, *Age of Empires 2: The Conquerors — Savegame File Format Specification*
+
+[3] Stefan Kolb, *Age of Empires 2: The Conquerors — Savegame File Format Specification*,
 https://github.com/stefan-kolb/aoc-mgx-format
+
+[4] Renée Kooi, *RecAnalyst*, https://github.com/goto-bus-stop/recanalyst
