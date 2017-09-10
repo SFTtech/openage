@@ -58,7 +58,7 @@ Action | Purpose
 0x18   | Save -- TODO
 0x1b   | Save & Exit -- TODO
 0x1f   | Attack move (AI) -- TODO
-0x64   | Train unit (AI) -- TODO
+0x64   | Train unit (AI)
 0x65   | Research -- TODO
 0x66   | Build -- TODO
 0x67   | Diplomacy/Cheats/Change Speed -- TODO
@@ -71,8 +71,8 @@ Action | Purpose
 0x72   | Toggle gate -- TODO
 0x73   | Flare -- TODO
 0x75   | Garrison/Stop building unit
-0x77   | Train unit (Human) -- TODO
-0x78   | Rally point -- TODO
+0x77   | Train unit (Human)
+0x78   | Rally point
 0x7a   | Sell -- TODO
 0x7b   | Buy -- TODO
 0x7e   | Drop relic

@@ -95,7 +95,7 @@ The value is always `0xFFFFFFFF`.
 
 Used for setting rally points.  
 
-## Definition
+### Definition
 
 ```ruby
 def RallyPoint
@@ -112,7 +112,7 @@ def RallyPoint
 end
 ```
 
-## Description
+### Description
 
 *:action_identifier*  
 Always has the value `0x78`.
@@ -138,7 +138,7 @@ The y-coordinate of the rally point.
 *:selected_ids*  
 The IDs of the buildings for which the rally point will be set.
 
-## Examples
+### Examples
 
 Set rally point in the open.
 
