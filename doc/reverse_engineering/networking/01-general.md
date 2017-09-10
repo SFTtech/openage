@@ -66,6 +66,7 @@ Action | Purpose
 0x6a   | Delete
 0x6b   | Attack ground
 0x6c   | Tribute
+0x6e   | Repair
 0x6f   | Unboard/Ungarrison
 0x72   | Toggle gate
 0x73   | Flare

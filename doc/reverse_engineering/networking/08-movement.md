@@ -35,7 +35,7 @@ Stop a bunch of (moving) units.
 
 >`01` &mdash; action_identifier  
 >`03` &mdash; selection_count  
->`99 06 00 00` &mdash; selected_id   
+>`99 06 00 00` &mdash; selected_id  
 >`98 06 00 00` &mdash; selected_id  
 >`97 06 00 00` &mdash; selected_id  
 
@@ -45,7 +45,7 @@ Stop a technology research from the building queue.
 
 >`01` &mdash; action_identifier  
 >`01` &mdash; selection_count  
->`5b 07 00 00` &mdash; building_id   
+>`5b 07 00 00` &mdash; building_id
 
 ## Move action
 
@@ -101,9 +101,9 @@ Movement command with *:selected_ids* present.
 `03 02 00 00 ff ff ff ff 02 00 00 00 00 40 22 43 ab aa 51 43 62 1a 00 00 5e 1a 00 00`
 
 >`03` &mdash; action_identifier  
->`02` &mdash; player id  
+>`02` &mdash; player_id  
 >`00 00` &mdash; zero  
->`ff ff ff ff` &mdash; const    
+>`ff ff ff ff` &mdash; const  
 >`02 00 00 00` &mdash; selection_count  
 >`00 40 22 43` &mdash; x_coord  
 >`ab aa 51 43` &mdash; y_coord  
@@ -117,7 +117,7 @@ Consecutive movement command.
 >`03` &mdash; action_identifier  
 >`02` &mdash; player id  
 >`00 00` &mdash; zero  
->`ff ff ff ff` &mdash; const    
+>`ff ff ff ff` &mdash; const  
 >`ff 00 00 00` &mdash; selection_count  
 >`00 78 27 43` &mdash; x_coord  
 >`55 cd 39 43` &mdash; y_coord
@@ -170,7 +170,7 @@ Set a waypoint.
 >`10` &mdash; action_identifier  
 >`01` &mdash; waypoint_count  
 >`01 `&mdash; selection_count  
->`34` &mdash; x_coord   
+>`34` &mdash; x_coord  
 >`16` &mdash; y_coord  
 >`a0 06 00 00` &mdash; selected_id
 
@@ -181,8 +181,8 @@ Set consecutive waypoints.
 >`10` &mdash; action_identifier  
 >`01` &mdash; waypoint_count  
 >`ff `&mdash; selection_count  
->`31` &mdash; x_coord   
->`17` &mdash; y_coord  
+>`31` &mdash; x_coord  
+>`17` &mdash; y_coord
 
 ## Delete action
 
@@ -239,7 +239,7 @@ def AttackGround
 	float :x_coord
 	float :y_coord
 	array :selected_ids,
-		:type => int32,		
+		:type => int32,
 		:length => :selection_count
 end
 ```
@@ -292,8 +292,8 @@ class Ungarrison
   int8 :ungarrison_type
   byte24 :zero2
   int32 :release_id
-	array :selected_ids,
-		:type => int32,		
+  array :selected_ids,
+		:type => int32,
 		:length => :selection_count
 end
 ```
@@ -342,21 +342,21 @@ Unloading a transport ship.
 `6f 01 00 00 00 c0 c7 41 55 4d 3f 43 00 00 00 00 ff ff ff ff 4c 1a 00 00`
 
 >`6f` &mdash; action_identifier  
->`01` &mdash; selection_count   
+>`01` &mdash; selection_count  
 >`00 00` &mdash; zero  
 >`00 c0 c7 41` &mdash; x_coord  
 >`55 4d 3f 43` &mdash; y_coord  
 >`00` &mdash; ungarrison_type  
 >`00 00 00` &mdash; zero2  
 >`ff ff ff ff` &mdash; release_id  
->`4c 1a 00 00` &mdash; selected_id       
+>`4c 1a 00 00` &mdash; selected_id
 
 Ungarrisoning all units from a building.
 
 `6f 01 00 00 00 00 80 bf 00 00 80 bf 00 00 00 00 ff ff ff ff 4b 17 00 00`
 
 >`6F` &mdash; action_identifier  
->`01` &mdash; selection_count   
+>`01` &mdash; selection_count  
 >`00 00` &mdash; zero  
 >`00 00 80 bf` &mdash; x_coord  
 >`00 00 80 bf` &mdash; y_coord  
@@ -370,7 +370,7 @@ Ungarrisoning with `CTRL + SHIFT`.
 `6f 01 00 00 00 00 80 bf 00 00 80 bf 06 00 00 00 5a 1a 00 00 4b 17 00 00`
 
 >`6F` &mdash; action_identifier  
->`01` &mdash; selection_count   
+>`01` &mdash; selection_count  
 >`00 00` &mdash; zero  
 >`00 00 80 bf` &mdash; x_coord  
 >`00 00 80 bf` &mdash; y_coord  
@@ -387,18 +387,18 @@ Used for garrisoning units into buildings as well as packing and unpacking of tr
 
 ```ruby
 def Garrison
-  int8 :action_identifier  
+  int8 :action_identifier
   int8 :selection_count
   int16 :zero
   int32 :building_id
-  int8 :garrison_type  
-  byte24 :zero  
-  float :x_coord  
-  float :y_coord  
-  int32 :const  
-	array :selected_ids,  
-		:type => int32,		
-		:length => :selection_count  
+  int8 :garrison_type
+  byte24 :zero
+  float :x_coord
+  float :y_coord
+  int32 :const
+  array :selected_ids,
+		:type => int32,
+		:length => :selection_count
 end
 ```
 
@@ -446,7 +446,7 @@ Packing a trebuchet.
 `75 01 00 00 ff ff ff ff 01 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff 65 1a 00 00`
 
 >`75` &mdash; action_identifier  
->`01` &mdash; selection_count   
+>`01` &mdash; selection_count  
 >`00 00` &mdash; zero  
 >`ff ff ff ff` &mdash; building_id  
 >`01` &mdash; garrison_type  
@@ -461,7 +461,7 @@ Unpacking a trebuchet.
 `75 01 00 00 ff ff ff ff 02 00 00 00 00 00 80 bf 00 00 80 bf ff ff ff ff 65 1a 00 00`
 
 >`75` &mdash; action_identifier  
->`01` &mdash; selection_count   
+>`01` &mdash; selection_count  
 >`00 00` &mdash; zero  
 >`ff ff ff ff` &mdash; building_id  
 >`02` &mdash; garrison_type  
@@ -476,7 +476,7 @@ Garrisoning units into a building.
 `75 02 00 00 46 17 00 00 05 00 00 00 00 00 80 bf 00 00 80 bf ff ff ff ff 6f 1a 00 00 6d 1a 00 00`
 
 >`75` &mdash; action_identifier  
->`02` &mdash; selection_count   
+>`02` &mdash; selection_count  
 >`00 00` &mdash; zero  
 >`46 17 00 00` &mdash; building_id  
 >`05` &mdash; garrison_type  
@@ -495,8 +495,8 @@ Dropping a relic on the ground.
 
 ```ruby
 def DropRelic
-  int8 :action_identifier  
-  byte24 :zero  
+  int8 :action_identifier
+  byte24 :zero
   int32 :monk_id
 end
 ```
@@ -510,12 +510,12 @@ Always has the value `0x7e`.
 The 3 bytes following *:action_identifier* are unused.
 
 *:monk_id*  
-The ID of the monk who will drop the relic
+The ID of the monk who will drop the relic.
 
 ### Examples
 
 `7e 00 00 00 17 1b 00 00`
 
 >`7e` &mdash; action_identifier  
->`00 00 00` &mdash; zero   
+>`00 00 00` &mdash; zero  
 >`17 1b 00 00` &mdash; monk_id
