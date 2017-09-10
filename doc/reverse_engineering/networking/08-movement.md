@@ -60,8 +60,8 @@ def Move
 	int16 :zero
 	int32 :const
 	int32 :selection_count
-	double :x_coordinate
-	double :y_coordinate
+	float :x_coord
+	float :y_coord
 	array :selected_ids,
 		:length => :selection_count,
  		:only_if => :selection_count < 0xFF

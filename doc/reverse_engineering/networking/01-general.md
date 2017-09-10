@@ -45,39 +45,39 @@ All packets with command `0x3e` have a second "command byte" after the header th
 Action | Purpose
 -------|------------
 0x00   | Several Actions (Attacking, Resource gathering, Boarding Transport Ship)
-0x0b   | Resign
+0x0b   | Resign -- TODO
 0x01   | Stop
-0x02   | Move (AI) ?
+0x02   | Move (AI) ? -- TODO
 0x03   | Move
 0x10   | Set waypoint
-0x12   | Stance
-0x13   | Guard
-0x14   | Follow
-0x15   | Patrol
-0x17   | Formation
-0x18   | Save
-0x1b   | Save & Exit
-0x1f   | ??? (AI)
-0x64   | Train unit (AI)
-0x65   | Research
-0x66   | Build
-0x67   | Diplomacy/Cheats/Change Speed
-0x69   | Build wall
+0x12   | Stance -- TODO
+0x13   | Guard -- TODO
+0x14   | Follow -- TODO
+0x15   | Patrol -- TODO
+0x17   | Formation -- TODO
+0x18   | Save -- TODO
+0x1b   | Save & Exit -- TODO
+0x1f   | ??? (AI) -- TODO
+0x64   | Train unit (AI) -- TODO
+0x65   | Research -- TODO
+0x66   | Build -- TODO
+0x67   | Diplomacy/Cheats/Change Speed -- TODO
+0x69   | Build wall -- TODO
 0x6a   | Delete
 0x6b   | Attack ground
-0x6c   | Tribute
-0x6e   | Repair
+0x6c   | Tribute -- TODO
+0x6e   | Repair -- TODO
 0x6f   | Unboard/Ungarrison
-0x72   | Toggle gate
-0x73   | Flare
+0x72   | Toggle gate -- TODO
+0x73   | Flare -- TODO
 0x75   | Garrison/Stop building unit
-0x77   | Train unit (Human)
-0x78   | Rally point
-0x7a   | Sell
-0x7b   | Buy
+0x77   | Train unit (Human) -- TODO
+0x78   | Rally point -- TODO
+0x7a   | Sell -- TODO
+0x7b   | Buy -- TODO
 0x7e   | Drop relic
-0x7f   | Toggle townbell
-0x80   | Back to work
+0x7f   | Toggle townbell -- TODO
+0x80   | Back to work -- TODO
 
 When the game is recorded, the UDP data stream of a `0x3e` packet (without the header) is also written straight into the .mgx files with few changes. Viewing the recording will therefore simulate the exact actions that were done by the players. For more information on this check the **Further Reading** section below.
 
