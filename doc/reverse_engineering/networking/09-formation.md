@@ -147,7 +147,7 @@ Used for patrolling units.
 ### Definition
 
 ```ruby
-def Follow
+def Patrol
   int8 :action_identifier
   int8 :selection_count
   int8 :patrol_waypoint_count
@@ -175,7 +175,7 @@ Number of selected units.
 *:patrol_waypoint_count*  
 Number of waypoints set (with `SHIFT + Mouse-Button`).
 
-*:zero*
+*:zero*  
 The byte after *:patrol_waypoint_count* is always zero.
 
 *:x_coords*  
@@ -229,7 +229,7 @@ The IDs of the units that are patrolling.
 
 Used for changing the formation type.
 
-## Definition
+### Definition
 
 ```ruby
 def Formation
@@ -245,7 +245,7 @@ def Formation
 end
 ```
 
-## Description
+### Description
 
 *:action_identifier*  
 Always has the value `0x17`.
@@ -275,7 +275,7 @@ The 3 bytes after *:formation_type* are always zero.
 *:selected_ids*  
 The IDs of the units whos formation type are changed.
 
-## Examples
+### Examples
 
 `17 02 02 00 07 00 00 00 40 18 00 00 43 18 00 00`
 
@@ -283,7 +283,7 @@ The IDs of the units whos formation type are changed.
 >`02` &mdash; selection_count  
 >`02` &mdash; player_id  
 >`00` &mdash; zero  
->`07` &mdash; formation_type
->`00 00 00` &mdash; zero2   
+>`07` &mdash; formation_type  
+>`00 00 00` &mdash; zero2  
 >`40 18 00 00` &mdash; selected_id  
 >`43 18 00 00` &mdash; selected_id

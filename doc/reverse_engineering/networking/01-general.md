@@ -50,14 +50,14 @@ Action | Purpose
 0x02   | Move (AI) ? -- TODO
 0x03   | Move
 0x10   | Set waypoint
-0x12   | Stance -- TODO
-0x13   | Guard -- TODO
-0x14   | Follow -- TODO
-0x15   | Patrol -- TODO
-0x17   | Formation -- TODO
+0x12   | Stance
+0x13   | Guard
+0x14   | Follow
+0x15   | Patrol
+0x17   | Formation
 0x18   | Save -- TODO
 0x1b   | Save & Exit -- TODO
-0x1f   | ??? (AI) -- TODO
+0x1f   | Attack move (AI) -- TODO
 0x64   | Train unit (AI) -- TODO
 0x65   | Research -- TODO
 0x66   | Build -- TODO
