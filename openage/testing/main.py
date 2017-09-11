@@ -3,6 +3,7 @@
 """ CLI module for running all tests. """
 
 import argparse
+import sys
 
 from ..util.strings import format_progress
 
@@ -140,11 +141,11 @@ def main(args, error):
                 failed,
                 len(args.test)))
 
-            exit(1)
+            sys.exit(1)
 
     if args.demo:
         _, _, _, demofun = test_list[args.demo[0], 'demo']
-        exit(demofun(args.demo[1:]))
+        sys.exit(demofun(args.demo[1:]))
 
     if args.benchmark:
         _, _, _, benchmarktest = test_list[args.benchmark[0], 'benchmark']

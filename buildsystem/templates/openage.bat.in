@@ -7,4 +7,4 @@ set INST_DIR=%CD%
 set PATH=%INST_DIR%\@CMAKE_INSTALL_BINDIR@;%INST_DIR%\@CMAKE_PY_INSTALL_PREFIX@
 set XDG_DATA_HOME=%INST_DIR%\share
 
-python.exe @CMAKE_INSTALL_BINDIR@\openage
+python.exe -m openage

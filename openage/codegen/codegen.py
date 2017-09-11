@@ -5,6 +5,7 @@ Utility and driver module for C++ code generation.
 """
 
 import os
+import sys
 from sys import modules
 from datetime import datetime
 from enum import Enum
@@ -132,7 +133,7 @@ def codegen(projectdir, mode):
             err("code generation issue with output file " +
                 b'/'.join(parts).decode(errors='replace') +
                 ":\n" + str(exc.args[0]))
-            exit(1)
+            sys.exit(1)
 
         if mode == CodegenMode.codegen:
             # skip writing if the file already has that exact content
@@ -159,7 +160,7 @@ def codegen(projectdir, mode):
                 wpath.unlink()
         else:
             err("unknown codegen mode: " + str(mode))
-            exit(1)
+            sys.exit(1)
 
     generated = {os.path.abspath(path).decode() for path in generated}
     depends = {os.path.abspath(path) for path in get_codegen_depends(wrapper)}
@@ -228,7 +229,7 @@ def get_codegen_depends(outputwrapper):
 
             if 'openage' in module.__name__:
                 print("codegeneration depends on non-.py module " + filename)
-                exit(1)
+                sys.exit(1)
 
         yield filename
 

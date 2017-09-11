@@ -12,10 +12,10 @@ import itertools
 import logging
 import numpy
 cimport numpy
+import sys
 
 from collections import namedtuple
 from PIL import Image
-from sys import exit
 
 
 TOOL_DESCRIPTION = """Python translation of the visgrep v1.09
@@ -461,7 +461,7 @@ def main():
         if result[1] != -1:
             exit_status = 0
 
-    exit(exit_status)
+    sys.exit(exit_status)
 
 
 if __name__ == "__main__":

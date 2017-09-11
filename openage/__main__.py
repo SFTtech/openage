@@ -11,6 +11,7 @@ import argparse
 # TODO remove this once all multiprocessing has been eliminated:
 import multiprocessing
 import os
+import sys
 
 from .log.logging import set_loglevel, verbosity_to_level, ENV_VERBOSITY
 
@@ -26,7 +27,7 @@ class PrintVersion(argparse.Action):
 
         from . import LONGVERSION
         print(LONGVERSION)
-        exit(0)
+        sys.exit(0)
 
 
 def main(argv=None):
@@ -129,4 +130,4 @@ if __name__ == '__main__':
     # openage is complicated and multithreaded; better not use fork.
     multiprocessing.set_start_method('spawn')
 
-    exit(main())
+    sys.exit(main())

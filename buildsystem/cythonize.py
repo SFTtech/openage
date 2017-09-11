@@ -8,6 +8,7 @@ Runs Cython on all modules that were listed via add_cython_module.
 
 import argparse
 import os
+import sys
 
 
 def read_list_from_file(filename):
@@ -59,7 +60,7 @@ def main():
             module = os.path.splitext(module)[0]
             remove_if_exists(module + '.cpp')
             remove_if_exists(module + '.html')
-        exit(0)
+        sys.exit(0)
 
     from Cython.Compiler import Options
     Options.annotate = True
@@ -90,7 +91,7 @@ def main():
 
             if os.path.abspath(filename) not in depends:
                 print("\x1b[31mERR\x1b[m unlisted dependency: " + filename)
-                exit(1)
+                sys.exit(1)
 
 
 if __name__ == '__main__':

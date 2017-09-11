@@ -10,6 +10,7 @@ import importlib
 import importlib.abc
 import os
 import shutil
+import sys
 
 
 def copy_module(name, destination):
@@ -17,7 +18,7 @@ def copy_module(name, destination):
     loader = importlib.find_loader(name)
     if not isinstance(loader, importlib.abc.FileLoader):
         print('Loader for module %s is not handled', name)
-        exit(1)
+        sys.exit(1)
 
     print('Copying "%s" to "%s"' % (name, destination))
     filename = loader.get_filename(name)

@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 """
 Codegen interface to the build system.
@@ -48,6 +48,7 @@ depending on the specified invocation commands,
 """
 
 import os
+import sys
 
 from ..util.fslike.directory import Directory
 
@@ -161,4 +162,4 @@ def main(args, error):
                   "\n\n\n")
 
             # fail
-            exit(1)
+            sys.exit(1)

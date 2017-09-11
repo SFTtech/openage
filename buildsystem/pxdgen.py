@@ -9,6 +9,7 @@ Invoked via cmake during the regular build process.
 import argparse
 import os
 import re
+import sys
 
 from pygments.token import Token
 from pygments.lexers import get_lexer_for_filename
@@ -416,7 +417,7 @@ def main():
         filename = os.path.abspath(filename)
         if not filename.startswith(cppdir):
             print("pxdgen source file is not in " + cppdir + ": " + filename)
-            exit(1)
+            sys.exit(1)
 
         if args.verbose:
             print("creating .pxd for '{}':".format(filename))
