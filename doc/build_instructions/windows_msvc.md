@@ -1,4 +1,4 @@
-# Prerequisite steps for Microsoft Windows users (Windows 10)
+# Procedure for Microsoft Windows users (Windows 10)
 
  Since Windows doesn't offer a native package manager, we use a mixture of manual and automated steps to get the dependencies for openage. *Please remember to replace the directories referenced below (written in <...>) with the appropriate values.*
 
@@ -50,7 +50,7 @@
      cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
      cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
 
-## Running openage
+## Running openage (in devmode)
  While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
   - Install the [DejaVu Book Font](https://dejavu-fonts.github.io/Download.html).
     - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\conf.d`.
@@ -65,5 +65,13 @@
   - Append the following to the environment `PATH`:
     - `<vcpkg directory>\installed\<relevant config>\bin`
     - Path to `opusenc.exe`
----
+
  Now, execute `<openage directory>/run.exe` and enjoy!
+
+ ## Packaging
+ Open a command prompt at `<openage directory>\build` (or use the one from the building step):
+
+    cpack -C RelWithDebInfo
+
+ The installer (`openage-<version>-win32.exe`) will be generated in the same directory.<br>
+ _Hint_: Append `-V` to the `cpack` command for verbose output (it takes time to package all dependencies).
