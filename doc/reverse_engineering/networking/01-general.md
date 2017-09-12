@@ -40,23 +40,24 @@ Command | Purpose
 0x53    | Sync
 0x5a    | Lobby
 
-All packets with command `0x3e` have a second "command byte" after the header that represents the command a player has given ingame. To avoid confusion, we will call all player-issued commands "actions" and reserve the term "commands" for the actual network commands seen above. To align with this, the identifier for a player's action will be called "action byte". 31 of these can be found in network packets.
+All packets with command `0x3e` have a second "command byte" after the header that represents the command a player has given ingame. To avoid confusion, we will call all player-issued commands "actions" and reserve the term "commands" for the actual network commands seen above. To align with this, the identifier for a player's action will be called "action byte". 34 of these can be found in network packets.
 
 Action | Purpose
 -------|------------
-0x00   | Several Actions (Attacking, Resource gathering, Boarding Transport Ship)
-0x0b   | Resign
+0x00   | Primary Action (Attacking, Resource gathering, Boarding Transport Ship)
 0x01   | Stop
-0x02   | Move (AI) ? -- TODO
+0x02   | Primary Action (AI)
 0x03   | Move
+0x0a   | Move (AI)
+0x0b   | Resign
 0x10   | Set waypoint
 0x12   | Stance
 0x13   | Guard
 0x14   | Follow
 0x15   | Patrol
 0x17   | Formation
-0x1b   | Save & Exit -- TODO
-0x1f   | Attack move (AI) -- TODO
+0x1b   | Save & Exit
+0x1f   | Coordinated Move (AI)
 0x64   | Train unit (AI)
 0x65   | Research
 0x66   | Build
@@ -91,6 +92,7 @@ In this document, we will assume that AoC uses a carthesian coordinate system wi
 - How IDs are used to describe every object_id
 - little endian notation
 - secret coop mode specifics
+- player_number vs. player_id
 
 ## Further Reading
 

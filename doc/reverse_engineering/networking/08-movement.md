@@ -7,7 +7,7 @@ This action stops the selected units from doing their currently active task (mov
 ### Definition
 
 ```ruby
-class Stop
+def Stop
   int8 :action_identifier
   int8 :selection_count
   array :selected_ids,

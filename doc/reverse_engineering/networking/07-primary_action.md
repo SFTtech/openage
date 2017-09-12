@@ -9,7 +9,7 @@ Action that classify as a primary action include attacking, gathering, repairing
 ## Definition
 
 ```ruby
-def Attack
+def PrimaryAction
     int8 :action_identifier
     int8 :player_id
     int16 :zero
@@ -66,8 +66,8 @@ Gathering stone with villager.
 >`92 17 00 00` &mdash; target_id  
 >`01` &mdash; selection_count  
 >`00 00 00` &mdash; zero2  
->`00 80 33 43` &mdash; x-coord  
->`00 80 16 43` &mdash; y-coord  
+>`00 80 33 43` &mdash; x_coord  
+>`00 80 16 43` &mdash; y_coord  
 >`4d 17 00 00` &mdash; selected_id  
 
 Attacking a building.
@@ -80,8 +80,8 @@ Attacking a building.
 >`38 1a 00 00` &mdash; target_id  
 >`02` &mdash; selection_count  
 >`00 00 00` &mdash; zero2  
->`00 00 40 42` &mdash; x-coord  
->`00 00 0b 43` &mdash; y-coord  
+>`00 00 40 42` &mdash; x_coord  
+>`00 00 0b 43` &mdash; y_coord  
 >`5e 1a 00 00` &mdash; selected_id  
 >`62 1a 00 00` &mdash; selected_id
 
