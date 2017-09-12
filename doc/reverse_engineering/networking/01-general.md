@@ -45,7 +45,7 @@ All packets with command `0x3e` have a second "command byte" after the header th
 Action | Purpose
 -------|------------
 0x00   | Several Actions (Attacking, Resource gathering, Boarding Transport Ship)
-0x0b   | Resign -- TODO
+0x0b   | Resign
 0x01   | Stop
 0x02   | Move (AI) ? -- TODO
 0x03   | Move
@@ -55,21 +55,20 @@ Action | Purpose
 0x14   | Follow
 0x15   | Patrol
 0x17   | Formation
-0x18   | Save -- TODO
 0x1b   | Save & Exit -- TODO
 0x1f   | Attack move (AI) -- TODO
 0x64   | Train unit (AI)
 0x65   | Research
 0x66   | Build
-0x67   | Diplomacy/Cheats/Change Speed -- TODO
+0x67   | Diplomacy/Cheats/Change Speed
 0x69   | Build wall
 0x6a   | Delete
 0x6b   | Attack ground
-0x6c   | Tribute -- TODO
+0x6c   | Tribute
 0x6e   | Repair
 0x6f   | Unboard/Ungarrison
 0x72   | Toggle gate
-0x73   | Flare -- TODO
+0x73   | Flare
 0x75   | Garrison/Stop building unit
 0x77   | Train unit (Human)
 0x78   | Rally point
@@ -87,12 +86,11 @@ Much of the actions where already figured out by Stefan Kolb as part of his [.mg
 
 In this document, we will assume that AoC uses a carthesian coordinate system with the left corner as an origin point. Keep in mind, that AoC uses a **Quadrant 4** representation for its coordinates, which means that the y-axis is represented by the edge in the bottom left and the x-axis by the top left edge.
 
-## IDs
-
-TODO:
+## TODO
 
 - How IDs are used to describe every object_id
 - little endian notation
+- secret coop mode specifics
 
 ## Further Reading
 
