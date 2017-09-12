@@ -11,8 +11,8 @@ class Stop
   int8 :action_identifier
   int8 :selection_count
   array :selected_ids,
-        type :int32,
-        initial_length :selection_count
+        type => :int32,
+        initial_length => :selection_count
 end
 ```
 
@@ -131,7 +131,7 @@ Used for setting a waypoint.
 ```ruby
 def Waypoint
   int8 :action_identifier
-  int8 :waypoint_count (?)
+  int8 :player_id
   int8 :selection_count
   int8 :x_coord
   int8 :y_coord
@@ -146,8 +146,8 @@ end
 *:action_identifier*  
 Always has the value `0x10`.
 
-*:waypoint_count* (??)  
-Could be the number of waypoints that are set. Is always `0x01`.
+*:player_id*  
+The ID of the player who the unit belongs to (`0x01` - `0x08`).
 
 *:selection_count*  
 The number of selected units. When the value of this field is `0xFF`, the action is executed for the units referenced in the previous command.
@@ -168,7 +168,7 @@ Set a waypoint.
 `10 01 01 34 16 a0 06 00 00`
 
 >`10` &mdash; action_identifier  
->`01` &mdash; waypoint_count  
+>`01` &mdash; player_id  
 >`01 `&mdash; selection_count  
 >`34` &mdash; x_coord  
 >`16` &mdash; y_coord  
@@ -179,7 +179,7 @@ Set consecutive waypoints.
 `10 01 ff 31 17`
 
 >`10` &mdash; action_identifier  
->`01` &mdash; waypoint_count  
+>`01` &mdash; player_id  
 >`ff `&mdash; selection_count  
 >`31` &mdash; x_coord  
 >`17` &mdash; y_coord

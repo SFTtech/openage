@@ -59,25 +59,25 @@ Action | Purpose
 0x1b   | Save & Exit -- TODO
 0x1f   | Attack move (AI) -- TODO
 0x64   | Train unit (AI)
-0x65   | Research -- TODO
-0x66   | Build -- TODO
+0x65   | Research
+0x66   | Build
 0x67   | Diplomacy/Cheats/Change Speed -- TODO
-0x69   | Build wall -- TODO
+0x69   | Build wall
 0x6a   | Delete
 0x6b   | Attack ground
 0x6c   | Tribute -- TODO
-0x6e   | Repair -- TODO
+0x6e   | Repair
 0x6f   | Unboard/Ungarrison
-0x72   | Toggle gate -- TODO
+0x72   | Toggle gate
 0x73   | Flare -- TODO
 0x75   | Garrison/Stop building unit
 0x77   | Train unit (Human)
 0x78   | Rally point
-0x7a   | Sell -- TODO
-0x7b   | Buy -- TODO
+0x7a   | Sell
+0x7b   | Buy
 0x7e   | Drop relic
-0x7f   | Toggle townbell -- TODO
-0x80   | Back to work -- TODO
+0x7f   | Toggle townbell
+0x80   | Back to work
 
 When the game is recorded, the UDP data stream of a `0x3e` packet (without the header) is also written straight into the .mgx files with few changes. Viewing the recording will therefore simulate the exact actions that were done by the players. For more information on this check the **Further Reading** section below.
 
@@ -86,6 +86,13 @@ Much of the actions where already figured out by Stefan Kolb as part of his [.mg
 ## Coordinate system
 
 In this document, we will assume that AoC uses a carthesian coordinate system with the left corner as an origin point. Keep in mind, that AoC uses a **Quadrant 4** representation for its coordinates, which means that the y-axis is represented by the edge in the bottom left and the x-axis by the top left edge.
+
+## IDs
+
+TODO:
+
+- How IDs are used to describe every object_id
+- little endian notation
 
 ## Further Reading
 
