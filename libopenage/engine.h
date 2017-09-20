@@ -158,13 +158,6 @@ public:
 	void end_game();
 
 	/**
-	 * draw the current frames per second number on screen.
-	 * save the current framebuffer to a given png file.
-	 * @param filename the file where the picture will be saved to.
-	 */
-	void save_screenshot(const char* filename);
-
-	/**
 	 * Draw the game version and the current FPS on screen.
 	 */
 	bool draw_debug_overlay();
