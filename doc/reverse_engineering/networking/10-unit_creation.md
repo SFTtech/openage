@@ -7,7 +7,7 @@ Used for training units with human player.
 ### Definition
 
 ```ruby
-class TrainHM
+def TrainHM
   int8 :action_identifier
   byte24 :zero
   int32 :building_id

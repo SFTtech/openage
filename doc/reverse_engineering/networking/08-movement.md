@@ -195,7 +195,7 @@ def Delete
   int8 :action_identifier
   byte24 :zero
   int32 :object_id
-  int8 :player_id
+  int8 :player_number
   byte24 :zero
 end
 ```
@@ -211,8 +211,8 @@ The 3 bytes following *:action_identifier* and *player_id* are unused.
 *:object_id*  
 ID of the unit or building that will be deleted.
 
-*:player_id*  
-The ID of the player who the unit belongs to (`0x01` - `0x08`).
+*:player_number*  
+The number of the player who the unit belongs to (`0x01` - `0x08`).
 
 ### Examples
 
@@ -221,7 +221,7 @@ The ID of the player who the unit belongs to (`0x01` - `0x08`).
 >`6a` &mdash; action_identifier  
 >`00 00 00` &mdash; zero  
 >`9f 06 00 00` &mdash; object_id  
->`02` &mdash; player_id  
+>`02` &mdash; player_number  
 >`00 00 00` &mdash; zero  
 
 

@@ -11,7 +11,7 @@ def Research
   int8 :action_identifier
   int24 :zero
   int32 :building_id
-  int8 :player_id
+  int8 :player_number
   int8 :zero2
   int16 :technology_id
   int32 :const
@@ -29,11 +29,11 @@ The 3 bytes after *:action_identifier* are always zero.
 *:building_id*  
 The ID of the building where the technology is researched.
 
-*:player_id*  
-The ID of the player who researches the technology (`0x01` - `0x08`).
+*:player_number*  
+The number of the player for whom the technology is researched (`0x01` - `0x08`).
 
 *:zero2*  
-The byte after *:player_id* is always zero.
+The byte after *:player_number* is always zero.
 
 *:technology_id*  
 The [ID of the technology](technology_ids.md) that is researched.
@@ -48,7 +48,7 @@ This value is always `0xFFFFFFFF`.
 >`65` &mdash; action_identifier  
 >`00 00 00` &mdash; zero  
 >`63 1a 00 00` &mdash; building_id  
->`01` &mdash; player_id  
+>`01` &mdash; player_number  
 >`00` &mdash; zero2  
 >`d9 00` &mdash; technology_id  
 >`ff ff ff ff` &mdash; const
@@ -63,7 +63,7 @@ Used for building everything except walls.
 def Build
   int8 :action_identifier
   int8 :selection_count
-  int8 :player_id
+  int8 :player_number
   int8 :zero
   float :x_coord
   float :y_coord
@@ -85,11 +85,11 @@ Always has the value `0x66`.
 *:selection_count*  
 The number of selected units.
 
-*:player_id*  
-The ID of the player who the building belongs to (`0x01` - `0x08`).
+*:player_number*  
+The number of the player who the building belongs to (`0x01` - `0x08`).
 
 *:zero*  
-The byte after *:player_id* is always zero.
+The byte after *:player_number* is always zero.
 
 *:x_coord*  
 The x-coordinate of the construction site.
@@ -118,7 +118,7 @@ The IDs of the selected builders.
 
 >`65` &mdash; action_identifier  
 >`02` &mdash; selection_count  
->`01` &mdash; player_id  
+>`01` &mdash; player_number  
 >`00` &mdash; zero  
 >`00 00 10 43` &mdash; x_coord  
 >`00 00 88 42` &mdash; y_coord  
@@ -139,7 +139,7 @@ Used for building walls.
 def BuildWall
   int8 :action_identifier
   int8 :selection_count
-  int8 :player_id
+  int8 :player_number
   int8 :start_x_coord
   int8 :start_y_coord
   int8 :end_x_coord
@@ -162,11 +162,11 @@ Always has the value `0x69`.
 *:selection_count*  
 The number of selected units.
 
-*:player_id*  
-The ID of the player who the building belongs to (`0x01` - `0x08`).
+*:player_number*  
+The number of the player who the wall belongs to (`0x01` - `0x08`).
 
 *:zero*  
-The byte after *:player_id* is always zero.
+The byte after *:player_number* is always zero.
 
 *:start_x_coord*  
 The x-coordinate of the starting tile of the wall.
@@ -198,7 +198,7 @@ The IDs of the selected builders.
 
 >`69` &mdash; action_identifier  
 >`02` &mdash; selection_count  
->`01` &mdash; player_id  
+>`01` &mdash; player_number  
 >`a0` &mdash; start_x_coord  
 >`4a` &mdash; start_y_coord  
 >`ac` &mdash; end_x_coord  

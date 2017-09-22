@@ -235,7 +235,7 @@ Used for changing the formation type.
 def Formation
   int8 :action_identifier
   int8 :selection_count
-  int8 :player_id
+  int8 :player_number
   int8 :zero
   int8 :formation_type
   byte24 :zero2
@@ -253,11 +253,11 @@ Always has the value `0x17`.
 *:selection_count*  
 The number of selected units.
 
-*:player_id*  
-The ID of the player who changes the formation (`0x01` - `0x08`).
+*:player_number*  
+The number of the player for whom the formation is changed (`0x01` - `0x08`).
 
 *:zero*  
-The byte after *:player_id* is always zero.
+The byte after *:player_number* is always zero.
 
 *:formation_type*  
 The formation type that is selected. AoC supports 4 formation types.
@@ -281,7 +281,7 @@ The IDs of the units whos formation type are changed.
 
 >`17` &mdash; action_identifier  
 >`02` &mdash; selection_count  
->`02` &mdash; player_id  
+>`02` &mdash; player_number  
 >`00` &mdash; zero  
 >`07` &mdash; formation_type  
 >`00 00 00` &mdash; zero2  

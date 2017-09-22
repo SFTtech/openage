@@ -9,7 +9,7 @@ Used for selling resources at the market.
 ```ruby
 def Sell
   int8 :action_identifier
-  int8 :player_id
+  int8 :player_number
   int8 :resource_type
   int8 :amount
   int32 :market_id
@@ -21,7 +21,7 @@ end
 *:action_identifier*  
 Always has the value `0x7a`.
 
-*:player_id*  
+*:player_number*  
 The ID of the player who sells the resources (`0x01` - `0x08`).
 
 *:resource_type*  
@@ -44,7 +44,7 @@ The ID of the market.
 `7a 01 02 01 46 1a 00 00`
 
 >`7b` &mdash; action_identifier  
->`01` &mdash; player_id  
+>`01` &mdash; player_number  
 >`02` &mdash; resource_type  
 >`01` &mdash; amount    
 >`46 1a 00 00` &mdash; market_id  
@@ -58,7 +58,7 @@ Used for buying resources at the market.
 ```ruby
 def Buy
   int8 :action_identifier
-  int8 :player_id
+  int8 :player_number
   int8 :resource_type
   int8 :amount
   int32 :market_id
@@ -70,7 +70,7 @@ end
 *:action_identifier*  
 Always has the value `0x7b`.
 
-*:player_id*  
+*:player_number*  
 The ID of the player who buys the resources (`0x01` - `0x08`).
 
 *:resource_type*  
