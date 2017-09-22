@@ -7,7 +7,7 @@ Used for changing the stance of units.
 ### Definition
 
 ```ruby
-class Stance
+def Stance
   int8 :action_identifier
   int8 :selection_count
   int8 :stance
