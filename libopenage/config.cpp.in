@@ -7,7 +7,6 @@
 namespace openage {
 namespace config {
 
-const char *const global_asset_dir = "${GLOBAL_ASSET_DIR}";
 const char *const version = "${PROJECT_VERSION}";
 const char *const config_option_string = "${CONFIG_OPTION_STRING}";
 

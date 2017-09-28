@@ -6,13 +6,13 @@ add_subdirectory(textures/)
 
 
 install(FILES
-	"${CMAKE_CURRENT_SOURCE_DIR}/missing.png"
-	"${CMAKE_CURRENT_SOURCE_DIR}/gaben.png"
-	DESTINATION "${GLOBAL_ASSET_DIR}"
+	"missing.png"
+	"gaben.png"
+	DESTINATION "${ASSET_DIR}"
 )
 
 install(DIRECTORY "qml"
-	DESTINATION "${GLOBAL_ASSET_DIR}"
+	DESTINATION "${ASSET_DIR}"
 )
 
 # To show QML files in the QtCreator.

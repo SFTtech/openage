@@ -198,4 +198,6 @@ target_link_libraries(libopenage
 		Qt5::Quick
 )
 
-install(TARGETS libopenage DESTINATION ${CMAKE_INSTALL_LIBDIR} LIBRARY)
+install(TARGETS libopenage
+	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})

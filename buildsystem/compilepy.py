@@ -8,6 +8,7 @@ import argparse
 import importlib.util
 import os
 import py_compile
+import sys
 
 
 def main():
@@ -59,7 +60,7 @@ def main():
         except py_compile.PyCompileError as exc:
             print("FAILED to compile '%s':" % exc.file)
             print(exc.msg)
-            exit(1)
+            sys.exit(1)
 
 
 if __name__ == '__main__':

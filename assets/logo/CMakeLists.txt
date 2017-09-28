@@ -6,5 +6,5 @@ install(
 
 install(
 	FILES "banner.svg"
-	DESTINATION "${GLOBAL_ASSET_DIR}"
+	DESTINATION "${ASSET_DIR}"
 )

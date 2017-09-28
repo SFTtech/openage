@@ -12,6 +12,7 @@ import itertools
 import logging
 import numpy
 cimport numpy
+import sys
 
 from collections import namedtuple
 from PIL import Image
@@ -460,7 +461,7 @@ def main():
         if result[1] != -1:
             exit_status = 0
 
-    exit(exit_status)
+    sys.exit(exit_status)
 
 
 if __name__ == "__main__":

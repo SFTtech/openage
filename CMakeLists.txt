@@ -64,11 +64,21 @@ endif()
 
 # static content filesystem locations
 if(NOT DEFINED GLOBAL_ASSET_DIR)
-	set(GLOBAL_ASSET_DIR "${CMAKE_INSTALL_PREFIX}/share/openage")
+	set(ASSET_DIR "share/openage")
+	if(MSVC)
+		set(GLOBAL_ASSET_DIR "${ASSET_DIR}")
+	else()
+		set(GLOBAL_ASSET_DIR "${CMAKE_INSTALL_PREFIX}/${ASSET_DIR}")
+	endif()
 endif()
 
 if(NOT DEFINED GLOBAL_CONFIG_DIR)
-	set(GLOBAL_CONFIG_DIR "/etc/openage")
+	set(CONFIG_DIR "etc/openage")
+	if(MSVC)
+		set(GLOBAL_CONFIG_DIR "${CONFIG_DIR}")
+	else()
+		set(GLOBAL_CONFIG_DIR "/${CONFIG_DIR}")
+	endif()
 endif()
 
 
@@ -143,6 +153,9 @@ add_py_modules(BININSTALL run.py AS openage)
 add_subdirectory(openage/)
 
 python_finalize()
+
+# Ensure that packaging is always the last step.
+add_subdirectory(packaging)
 
 message("")
 

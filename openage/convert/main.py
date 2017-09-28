@@ -6,6 +6,7 @@ import os
 # importing readline enables the input() calls to have history etc.
 import readline  # pylint: disable=unused-import
 import subprocess
+import sys
 from configparser import ConfigParser
 from pathlib import Path
 from tempfile import NamedTemporaryFile
@@ -334,10 +335,10 @@ def acquire_conversion_source_dir():
 
         except KeyboardInterrupt:
             print("\nInterrupted, aborting")
-            exit(0)
+            sys.exit(0)
         except EOFError:
             print("\nEOF, aborting")
-            exit(0)
+            sys.exit(0)
 
     print("converting from '%s'" % sourcedir)
 

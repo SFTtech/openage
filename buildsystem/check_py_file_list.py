@@ -7,6 +7,7 @@ Tests whether the files listed via add_py_module are consistent with the
 
 import argparse
 import os
+import sys
 
 
 def main():
@@ -52,4 +53,4 @@ def main():
 
 
 if __name__ == '__main__':
-    exit(main())
+    sys.exit(main())

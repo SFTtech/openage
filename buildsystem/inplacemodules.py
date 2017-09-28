@@ -9,6 +9,7 @@ Attemts to use OS facilities such as hardlinking, and falls back to copying.
 
 import argparse
 import os
+import sys
 
 
 def main():
@@ -36,7 +37,7 @@ def main():
 
     if not os.path.isdir(args.binary_dir):
         print("not a directory: " + args.binary_dir)
-        exit(1)
+        sys.exit(1)
 
     for module in modules:
         sourcefile = module

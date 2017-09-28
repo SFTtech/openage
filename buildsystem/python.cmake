@@ -372,6 +372,7 @@ function(python_finalize)
 		list(GET py_compiled_files ${idx} pycfile)
 		list(GET py_files_srcdirs ${idx} pyrelsrcdir)
 		list(GET py_install_names ${idx} pyinstallname)
+		file(TO_CMAKE_PATH ${pycfile} pycfile)
 
 		list(FIND py_files_noinstall "${pyfile}" do_install)
 		list(FIND py_files_bininstall "${pyfile}" do_bininstall)
@@ -391,14 +392,14 @@ function(python_finalize)
 			if("${pyinstallname}" STREQUAL "__nope")
 				install(
 					PROGRAMS "${pyfile}"
-					DESTINATION "bin"
+					DESTINATION "${CMAKE_INSTALL_BINDIR}"
 				)
 			else()
 				# optionally, rename the file:
 				install(
 					PROGRAMS "${pyfile}"
 					RENAME "${pyinstallname}"
-					DESTINATION "bin"
+					DESTINATION "${CMAKE_INSTALL_BINDIR}"
 				)
 			endif()
 		endif()

@@ -8,6 +8,7 @@ import argparse
 import importlib
 import os
 import shutil
+import sys
 from subprocess import Popen, PIPE
 
 
@@ -205,6 +206,6 @@ def find_all_issues(args, check_files=None):
 
 if __name__ == '__main__':
     if main(parse_args()):
-        exit(0)
+        sys.exit(0)
     else:
-        exit(1)
+        sys.exit(1)

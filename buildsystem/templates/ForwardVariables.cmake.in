@@ -1,0 +1,23 @@
+# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+
+# @AUTOGEN_WARNING@
+
+# This script passes (forwards) variables generated at CMake configuration
+# to be made available in CPack - install(SCRIPT ...) scripts.
+
+# NOTE: the following variables should never be forwarded:
+#  - `CMAKE_INSTALL_PREFIX`: defined separately by CPack; should not be overwritten.
+
+# The following variables are defined at cmake generation time
+set(asset_dir "@ASSET_DIR@")
+set(buildsystem_dir "@BUILDSYSTEM_DIR@")
+set(cmake_linker "@CMAKE_LINKER@")
+set(downloads_dir "@CMAKE_BINARY_DIR@/downloads")
+set(python "@PYTHON@")
+set(py_install_prefix "@CMAKE_PY_INSTALL_PREFIX@")
+set(py_version "@PYTHONLIBS_VERSION_STRING@")
+set(vcpkg_dir "@vcpkg_dir@")
+set(windeployqt "@windeployqt@")
+
+# the following denotes inclusion of this script.
+set(forward_variables 1)
