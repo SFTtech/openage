@@ -374,25 +374,24 @@ void Engine::loop() {
 			float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
 			Uint32 win_flags = SDL_GetWindowFlags(this->window);
 			bool inp_focus = win_flags & SDL_WINDOW_INPUT_FOCUS;
-			bool mouse_focus = win_flags & SDL_WINDOW_MOUSE_FOCUS;
 
 			input::InputManager &input = this->get_input_manager();
 			using Edge = input::InputManager::Edge;
 
-			if ((inp_focus and input.is_down(SDLK_LEFT)) or
-			    (mouse_focus and input.is_mouse_at_edge(Edge::LEFT, coord.window_size.x))) {
+			if (inp_focus and (input.is_down(SDLK_LEFT) or
+			    input.is_mouse_at_edge(Edge::LEFT, coord.window_size.x))) {
 				mov_x = -cam_movement_speed_keyboard;
 			}
-			if ((inp_focus and input.is_down(SDLK_RIGHT)) or
-			    (mouse_focus and input.is_mouse_at_edge(Edge::RIGHT, coord.window_size.x))) {
+			if (inp_focus and (input.is_down(SDLK_RIGHT) or
+			    input.is_mouse_at_edge(Edge::RIGHT, coord.window_size.x))) {
 				mov_x = cam_movement_speed_keyboard;
 			}
-			if ((inp_focus and input.is_down(SDLK_DOWN)) or
-			    (mouse_focus and input.is_mouse_at_edge(Edge::DOWN, coord.window_size.y))) {
+			if (inp_focus and (input.is_down(SDLK_DOWN) or
+			    input.is_mouse_at_edge(Edge::DOWN, coord.window_size.y))) {
 				mov_y = cam_movement_speed_keyboard;
 			}
-			if ((inp_focus and input.is_down(SDLK_UP)) or
-			    (mouse_focus and input.is_mouse_at_edge(Edge::UP, coord.window_size.y))) {
+			if (inp_focus and (input.is_down(SDLK_UP) or
+			    input.is_mouse_at_edge(Edge::UP, coord.window_size.y))) {
 				mov_y = -cam_movement_speed_keyboard;
 			}
 
