@@ -273,7 +273,7 @@ class PXDGenerator:
                 if namespace != previous_namespace:
                     yield (
                         "cdef extern "
-                        "from r\"" + self.filename + "\" "
+                        "from r\"" + self.filename.replace('\\', '/') + "\" "
                         "namespace \"" + namespace + "\" "
                         "nogil"
                         ":"
