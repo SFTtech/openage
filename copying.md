@@ -118,6 +118,7 @@ _the openage authors_ are:
 | Charles Offenbacher         | coffenbacher                | charles.offenbacher à gmail dawt com              |
 | Ilia Vladimirskiy           | ivvory                      | ivv.evol à gmail dawt com                         |
 | Nicholas Schmidt            | schmidtnicholas             | schmidtnicholas111 à gmail dawt com               |
+| Martin Sandsmark            | martin                      | martin dawt sandsmark à kde dawt org              |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
