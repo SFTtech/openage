@@ -120,14 +120,14 @@ signals:
 	void viewFrameRectChanged();
 
 protected:
-    /**
-     * Update textures and geometry buffers.
-     * Running in the render thread while the GUI thread is blocked.
-     */
-    virtual QSGNode* updatePaintNode(QSGNode *node, UpdatePaintNodeData*) override;
+	/**
+	 * Update textures and geometry buffers.
+	 * Running in the render thread while the GUI thread is blocked.
+	 */
+	virtual QSGNode* updatePaintNode(QSGNode *node, UpdatePaintNodeData*) override;
 
-    virtual void mousePressEvent(QMouseEvent *event) override;
-    virtual void mouseMoveEvent(QMouseEvent *event) override;
+	virtual void mousePressEvent(QMouseEvent *event) override;
+	virtual void mouseMoveEvent(QMouseEvent *event) override;
 
 private:
 	/**
@@ -170,10 +170,10 @@ private:
 	 */
 	std::function<void(const std::vector<ColoredTexturedPoint2D>&)> update_marker_points;
 
-    /**
-     * Move the camera based on mouse click/drag
-     */
-    std::function<void(QMouseEvent *)> mouse_move_camera;
+	/**
+	 * Move the camera based on mouse click/drag
+	 */
+	std::function<void(QMouseEvent *)> mouse_move_camera;
 
 	/**
 	 * Don't destroy the minimap's scenegraph subtree when the minimap becomes inactive.
@@ -216,3 +216,5 @@ private:
 };
 
 }} // namespace openage::gui
+
+/* vim: set ts=4 sw=4 tw=0 noexpandtab cindent softtabstop=4 :*/
