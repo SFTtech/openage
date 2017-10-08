@@ -72,12 +72,6 @@ public:
 	virtual ~Minimap();
 
 	/**
-	 * Update textures and geometry buffers.
-	 * Running in the render thread while the GUI thread is blocked.
-	 */
-	virtual QSGNode* updatePaintNode(QSGNode *node, UpdatePaintNodeData*) override;
-
-	/**
 	 * Extract necessary data from the game logic.
 	 * Running in the GUI thread.
 	 */
@@ -125,6 +119,16 @@ public:
 signals:
 	void viewFrameRectChanged();
 
+protected:
+    /**
+     * Update textures and geometry buffers.
+     * Running in the render thread while the GUI thread is blocked.
+     */
+    virtual QSGNode* updatePaintNode(QSGNode *node, UpdatePaintNodeData*) override;
+
+    virtual void mousePressEvent(QMouseEvent *event) override;
+    virtual void mouseMoveEvent(QMouseEvent *event) override;
+
 private:
 	/**
 	 * Create a subtree that draws a minimap for Qt scenegraph.
@@ -165,6 +169,11 @@ private:
 	 * Update positions of the markers.
 	 */
 	std::function<void(const std::vector<ColoredTexturedPoint2D>&)> update_marker_points;
+
+    /**
+     * Move the camera based on mouse click/drag
+     */
+    std::function<void(QMouseEvent *)> mouse_move_camera;
 
 	/**
 	 * Don't destroy the minimap's scenegraph subtree when the minimap becomes inactive.

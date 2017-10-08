@@ -67,6 +67,7 @@ Minimap::Minimap(QQuickItem *parent)
 	Q_UNUSED(registration);
 
 	this->setFlag(QQuickItem::ItemHasContents, true);
+    this->setAcceptedMouseButtons(Qt::LeftButton);
 }
 
 Minimap::~Minimap() {
@@ -292,6 +293,16 @@ std::unique_ptr<QSGNode> Minimap::create_tree() {
 		foreground->markDirty(QSGNode::DirtyGeometry);
 	};
 
+    this->mouse_move_camera = [this, world_to_background, turn] (QMouseEvent *mouseEvent) {
+        const QMatrix4x4 local_to_world_transform = (turn->matrix() * world_to_background->matrix()).inverted();
+        const QPointF pos = local_to_world_transform.map(mouseEvent->localPos());
+
+        if (Engine *engine = unwrap(game->get_engine())) {
+            engine->get_coord_data()->camgame_phys.ne = pos.x();
+            engine->get_coord_data()->camgame_phys.se = pos.y();
+        }
+    };
+
 	foreground->setMaterial(material_ptr.release());
 	foreground->setGeometry(geometry_ptr.release());
 	background->appendChildNode(world_to_background_ptr.release());
@@ -343,7 +354,17 @@ QSGNode* Minimap::updatePaintNode(QSGNode *node, UpdatePaintNodeData*) {
 
 	this->update();
 
-	return root.release();
+    return root.release();
+}
+
+void Minimap::mousePressEvent(QMouseEvent *event)
+{
+    this->mouse_move_camera(event);
+}
+
+void Minimap::mouseMoveEvent(QMouseEvent *event)
+{
+    this->mouse_move_camera(event);
 }
 
 void Minimap::updatePolish() {
