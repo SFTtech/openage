@@ -57,7 +57,7 @@ def main(args, error):
 
     # ensure that the assets have been converted
     if conversion_required(root["assets"], args):
-        if not convert_assets(root["assets"], args):
+        if not convert_assets(root, args):
             err("game asset conversion failed")
             return 1
 
