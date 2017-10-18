@@ -18,22 +18,21 @@ def free_memory():
     >>> free_memory() > 0
     True
     """
+    memory = INF
+
     if platform.startswith('linux'):
         pattern = re.compile('^MemAvailable: +([0-9]+) kB\n$')
         with open('/proc/meminfo') as meminfo:
             for line in meminfo:
                 match = pattern.match(line)
-                if not match:
-                    continue
-                return 1024 * int(match.group(1))
-        return INF
-
-    if platform == "darwin":
+                if match:
+                    memory = 1024 * int(match.group(1))
+                    break
+    elif platform == "darwin":
         # TODO
-        return INF
-    if platform == "win32":
+        pass
+    elif platform == "win32":
         # TODO
-        return INF
+        pass
 
-    # unknown platform
-    return INF
+    return memory
