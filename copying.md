@@ -106,6 +106,7 @@ _the openage authors_ are:
 | Tushar Maheshwari           | tusharpm                    | tushar27192 à gmail dawt com                      |
 | Piotr Szpetkowski           | piotr-szpetkowski           | piotr dawt szpetkowski à pyquest dawt space       |
 | Julian Guillotel            | arialwhite                  | julian dawt gullotel à gmail dawt com             |
+| Arne Sellmann               | PythonicChemist             | arne dawt sellmann à gmx dawt de                  |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
