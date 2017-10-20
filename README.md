@@ -138,7 +138,7 @@ Contributing
 
 Guidelines:
 
-* No **bugreports** or **feature requests**, the game is perfect as is.
+* No **bug reports** or **feature requests**, the game is perfect as is.
 * Don't try to **fix any bugs**, see above.
 * Don't implement any features, your code is crap.
 * Don't even think about sending a **pull request**.
