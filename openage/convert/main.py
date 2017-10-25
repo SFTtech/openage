@@ -87,14 +87,14 @@ def mount_drs_archives(srcdir, game_versions=None):
     return result
 
 
-def mount_input(srcdir=None):
+def mount_input(srcdir=None, root=None):
     """
     Mount the input folders for conversion.
     """
 
     # acquire conversion source directory
     if srcdir is None:
-        srcdir = acquire_conversion_source_dir()
+        srcdir = acquire_conversion_source_dir(root)
 
     game_versions = set(get_game_versions(srcdir))
     if not game_versions:
@@ -140,7 +140,7 @@ def mount_input(srcdir=None):
     return (output, game_versions)
 
 
-def convert_assets(assets, args, srcdir=None):
+def convert_assets(root, args, srcdir=None):
     """
     Perform asset conversion.
 
@@ -156,7 +156,7 @@ def convert_assets(assets, args, srcdir=None):
     conversion experience, then passes them to .driver.convert().
     """
 
-    data_dir, game_versions = mount_input(srcdir)
+    data_dir, game_versions = mount_input(srcdir, root)
 
     if not data_dir:
         return False
@@ -164,6 +164,7 @@ def convert_assets(assets, args, srcdir=None):
     # make versions available easily
     args.game_versions = game_versions
 
+    assets = root["assets"]
     converted_path = assets / "converted"
     converted_path.mkdirs()
     targetdir = DirectoryCreator(converted_path).root
@@ -204,6 +205,11 @@ def convert_assets(assets, args, srcdir=None):
             ))
 
         converted_count += 1
+
+    # Remember the asset location
+    asset_location_path = root["cfg"] / "asset_location"
+    with asset_location_path.open("wb") as file_obj:
+        file_obj.write(data_dir.resolve_native_path())
 
     # clean args
     del args.srcdir
@@ -307,7 +313,7 @@ def query_source_dir(proposals):
             warn("No valid existing directory: {}".format(sourcedir))
 
 
-def acquire_conversion_source_dir():
+def acquire_conversion_source_dir(root=None):
     """
     Acquires source dir for the asset conversion.
 
@@ -322,14 +328,28 @@ def acquire_conversion_source_dir():
             # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
             #       probably best if directly integrated into the main GUI.
 
-            call_wine = wanna_use_wine()
+            prev_source_dir = None
+            if root is not None:
+                asset_location_path = root["cfg"] / "asset_location"
+                try:
+                    with asset_location_path.open("rb") as file_obj:
+                        prev_source_dir = CaseIgnoringDirectory(file_obj.read().strip()).root
+                except FileNotFoundError:
+                    pass
 
-            if call_wine:
-                set_custom_wineprefix()
+            if prev_source_dir is not None:
+                proposals = {
+                    prev_source_dir.resolve_native_path().decode('utf-8', errors='replace')
+                }
+            else:
+                call_wine = wanna_use_wine()
 
-            proposals = set(proposal for proposal in
-                            source_dir_proposals(call_wine)
-                            if Path(expand_relative_path(proposal)).is_dir())
+                if call_wine:
+                    set_custom_wineprefix()
+
+                proposals = set(proposal for proposal in
+                                source_dir_proposals(call_wine)
+                                if Path(expand_relative_path(proposal)).is_dir())
 
             sourcedir = query_source_dir(proposals)
 
