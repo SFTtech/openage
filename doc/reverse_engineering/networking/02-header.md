@@ -35,7 +35,7 @@ These are options with unknown effects.
 The communication turn where the command is executed. Packets that contain a communication turn that has already passed are discarded.
 
 *:individual_counter*  
-The individual counter of the player who sent the packet. It increments by 1 with every 16BC41 sync command. For individual players this counter starts with values that are 2000 (`0x7d0`) apart from each other. Therefore, player 1 starts with the value `0x7d0`, player 2 with `0xfa0` and player 3 with `0x1770`. If the differences between these values is not a multiple of 2000, this indicates a de-sync.
+The individual counter of the player who sent the packet. It increments by 1 with every 16BC41 sync command. For individual players, this counter starts with values that are 1200 units (two players) or 2000 units (three players, `0x7d0`) apart from each other. In the latter example player 1 starts with the value `0x7d0`, player 2 with `0xfa0` and player 3 with `0x1770`. If the differences between these values is not a multiple of 2000, this indicates a de-sync.
 
 ## Examples
 
