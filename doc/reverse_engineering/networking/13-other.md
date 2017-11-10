@@ -49,7 +49,10 @@ def Save
   int8 :action_identifier
   int8 :exit
   int8 :player_id
-  unknown :data
+  array :filename,
+        type => :int8
+  unknown :memory
+  int32 :checksum
 end
 ```
 
@@ -64,8 +67,14 @@ Represents whether this action is a normal Save (`0x00`) or a Save & Exit (`0x01
 *:player_id*  
 The ID of the player saving the game.
 
-*:data*  
-A 253 byte long data field which cannot be parsed easily. Contains filename and presumably a checksum.
+*:filename*  
+The filename of the savegame in ASCII characters.
+
+*:memory*  
+The space between filename and checksum is filled with uninitialized memory.
+
+*:checksum*  
+The last 4 bytes are a checksum.
 
 ### Examples
 
@@ -92,7 +101,9 @@ A 253 byte long data field which cannot be parsed easily. Contains filename and 
 >`1b` &mdash; action_identifier  
 >`00` &mdash; exit  
 >`01` &mdash; player_id  
-> data
+> `78 79 7a 2e 6d 73 78`  &mdash; filename  
+> memory  
+> `2c 00 00 00`  &mdash; checksum  
 
 ## Diplomacy, Cheats and Gamespeed
 
@@ -126,13 +137,14 @@ Hex Value | Action
 ----------|-------
 0x00      | Diplomacy
 0x01      | Change Game Speed
-0x04      | Cheat Response (if cheat is activated for all players, e.g. "aegis")
+0x04      | Cheat Response (if cheat is activated for all players; only "aegis")
+0x05      | Allied Victory
 0x06      | Cheat
-
-Cheat responses always have the value `0x00` in all subsequent fields.
+0x0a      | Research Treason (only Regicide)
+0x0b      | AI policy
 
 *:source_player_number*  
-The player number of the player who has executed the action.
+The player number of the player who has executed the action. In Cheat Responses, the value is `0x01` when "aegis" was turned on and `0x00` when it is turned off.
 
 *:zero*  
 The byte after *:source_player_number* is always zero.

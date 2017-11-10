@@ -226,4 +226,4 @@ Anyway, here you can see the bits that you can reveal by adding one character at
 0040 00 YY YY YY
 ```
 
-The value `XX` is the length of the message. These last 3 bytes `YY YY YY` are the first 3 bytes of the message in uppercase letters.
+The value `XX` is the length of the message. These last 3 bytes `YY YY YY` are the first 3 bytes of the message in uppercase letters and are probably a result of the game checking for cheat codes.
