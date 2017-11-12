@@ -294,13 +294,21 @@ std::unique_ptr<QSGNode> Minimap::create_tree() {
 	};
 
 	this->mouse_move_camera = [this, world_to_background, turn] (QMouseEvent *mouseEvent) {
+		if (!this->game) {
+			return;
+		}
+		Engine *engine = unwrap(game->get_engine());
+		if (!engine) {
+			return;
+		}
+
 		const QMatrix4x4 local_to_world_transform = (turn->matrix() * world_to_background->matrix()).inverted();
 		const QPointF pos = local_to_world_transform.map(mouseEvent->localPos());
 
-		if (Engine *engine = unwrap(game->get_engine())) {
-			engine->get_coord_data()->camgame_phys.ne = pos.x();
-			engine->get_coord_data()->camgame_phys.se = pos.y();
-		}
+		emit this->game->in_game_logic_thread_blocking([engine, pos] {
+				engine->get_coord_data()->camgame_phys.ne = pos.x();
+				engine->get_coord_data()->camgame_phys.se = pos.y();
+				});
 	};
 
 	foreground->setMaterial(material_ptr.release());
