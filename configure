@@ -69,6 +69,8 @@ def getenv_bool(varname):
 OPTIONS = {
     "backtrace": "if_available",
     "inotify": "if_available",
+    "opengl": "if_available",
+    "vulkan": "if_available",
     "gperftools-tcmalloc": False,
     "gperftools-profiler": "if_available",
 }
@@ -80,7 +82,6 @@ def features(args, parser):
     If a feature is not explicitly enabled/disabled,
     the defaults below will be used.
     """
-
 
     def sanitize_option_name(option):
         """ Check if the given feature exists """

@@ -37,8 +37,8 @@ add_subdirectory("gui")
 add_subdirectory("error")
 add_subdirectory("gamestate")
 add_subdirectory("input")
-add_subdirectory("log")
 add_subdirectory("job")
+add_subdirectory("log")
 add_subdirectory("pathfinding")
 add_subdirectory("pyinterface")
 add_subdirectory("renderer")
@@ -48,7 +48,6 @@ add_subdirectory("terrain")
 add_subdirectory("testing")
 add_subdirectory("unit")
 add_subdirectory("util")
-
 
 # run codegen, add files to executable
 codegen_run()
@@ -149,6 +148,35 @@ if(WANT_INOTIFY AND INOTIFY_FOUND)
 else()
 	have_config_option(inotify INOTIFY false)
 endif()
+
+# opengl support
+if(WANT_OPENGL)
+	find_package(OpenGL)
+endif()
+
+# vulkan support
+if(WANT_VULKAN)
+	find_package(Vulkan)
+endif()
+
+if(WANT_OPENGL AND OPENGL_FOUND)
+	have_config_option(opengl OPENGL true)
+	include_directories(${OPENGL_INCLUDE_DIR})
+else()
+	have_config_option(opengl OPENGL false)
+endif()
+
+if(WANT_VULKAN AND VULKAN_FOUND)
+	have_config_option(vulkan VULKAN true)
+	include_directories(${VULKAN_INCLUDE_DIR})
+else()
+	have_config_option(vulkan VULKAN false)
+endif()
+
+if(NOT (OPENGL_FOUND OR VULKAN_FOUND))
+	message(FATAL_ERROR "One of OpenGL or Vulkan is required!")
+endif()
+
 
 get_config_option_string()
 

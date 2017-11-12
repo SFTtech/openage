@@ -1,6 +1,19 @@
 add_sources(libopenage
-	color.cpp
-	text.cpp
+  color.cpp
+  geometry.cpp
+  renderer.h
+  shader_program.h
+  tests.cpp
+  text.cpp
+  texture.cpp
+  window.cpp
 )
 
-add_subdirectory(font)
+pxdgen(
+	tests.h
+)
+
+add_subdirectory(font/)
+add_subdirectory(opengl/)
+add_subdirectory(resources/)
+#add_subdirectory(shaders/)
