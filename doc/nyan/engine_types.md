@@ -51,6 +51,11 @@ Unit(): # WIP
 	hp : float
 	idleLook : animation
 
+	haveLimit : int # The max number of units of this type that a player can 
+	                # have at an instance.
+	hadLimit : int  # The max number of units of this type that a player can
+	                # create.
+
 Resource():
 	name : text
 	icon : file
@@ -139,19 +144,31 @@ AttackAbility(Ability):
 	# Every attack shall inherit from this.
 	# WIP: how will damage calculation work in oa?
 
-	range : float
+	maxRange : float
+	minRange : float = 0
 	rate : float
 	damage : float # rename to baseDamage ?
+	friendlyFire : bool
+	effectArea : float
 
 
-HealingAbility(Ability): #WIP
-	# Workers can repair buildings, ships and siege weapons. Buildings heal contained Units, Priests can heal moving units (including siege weapons?)
-	# WIP: priests and workers need an animation for this, buildings not.
-	# Should we write that as an attack with negative
+HealAbility(Ability, Animation): #WIP
+	# Priests can heal moving units.
+
+	range : float
+	rate : float # Absolute or relative values?
+
+RepairAbility(Ability, Animation): #WIP
+	# Workers can repair buildings, ships and siege weapons.
 
 	range : float
 	rate : float
-	damage/reversedamage
+	cost : orderedset(int) # cost per rate.
+
+RestAbility(Shelter): #WIP different name?
+	# Buildings heal contained Units.
+
+	rate : float
 
 ResourceGenerator():
 	# creates constantly resource. Used by relicts.
@@ -177,7 +194,9 @@ Open nyan implementation questions:
 
   -> We need a unified way/member-name to add a new animation to an 'Ability' -> let the ability inherit from 'Animation'
 
-  -> animations are stored in one big picture (or allow one file per frame?). How do we tell where in the picture is which frame? How can you tell to mirror a frame?
+  -> animations are stored in one big picture (or allow one file per frame?). How do we tell where in the picture is which frame? How can you tell to mirror a frame? -> either keep the current docx format or add a new one to just contain frame position and ids.
+
+
 5. Of what type are the ingame objects, that don't move and give ressources? goldmine, fish, dead deer? How are deer and dead deer connected?
 
 Mod questions:
