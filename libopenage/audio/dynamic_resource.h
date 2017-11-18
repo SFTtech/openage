@@ -39,7 +39,7 @@ struct chunk_info_t {
 	/** The chunk's current state. */
 	std::atomic<state_t> state;
 
-	/** The chunk's actual size. */
+	/** The chunk's count of valid entries (samples). */
 	size_t size;
 
 	/** The chunk's buffer. */
