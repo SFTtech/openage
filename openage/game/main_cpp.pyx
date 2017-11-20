@@ -16,7 +16,7 @@ cdef extern from "Python.h":
 
 def run_game(args, root_path):
     """
-    Lauches the game after arguments were translated.
+    Launches the game after arguments were translated.
     """
 
     # argument translation
