@@ -17,5 +17,4 @@ def denote_last(iterable):
         yield current, False
         current = future
 
-    """Exhausted iterator so current is the last item."""
     yield current, True
