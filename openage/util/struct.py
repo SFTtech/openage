@@ -9,7 +9,6 @@ from collections import OrderedDict
 from struct import Struct
 
 from ..util.files import read_guaranteed
-from .iterators import ListIterator
 
 
 class NamedStructMeta(type):
@@ -191,7 +190,7 @@ class NamedStruct(metaclass=NamedStructMeta):
         return {attr: getattr(self, attr) for attr in self._attributes}
 
     def __iter__(self):
-        return ListIterator(self)
+        return iter(self)
 
     def __repr__(self):
         return str(type(self)) + ": " + repr(self.as_dict())
