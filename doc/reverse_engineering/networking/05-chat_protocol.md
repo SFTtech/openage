@@ -1,21 +1,15 @@
-# Messaging Protocol
+# Chat messages
 
-AoE2's game structure has always been a little bit messy for today's standards, with units cramped into .slp files and cracks and flaws in the game engine that become more apparent with every expansion. But what about the old network protocol? Can something that works with a 28.8 modem be messy too? Well, the answer is yes but explaining every detail is kind of complicated. For that reason, we will focus on analyzing just the chat protocol because it actually is the most understandable aspect of the multiplayer network communication.
+Chat messages can deliver an extended ASCII string to other players (Korean version?). The maximum length of a message can differ from 65 characters (in-game chat) to 247 characters (lobby chat). The data fields used for a chat message contain a lot of information that is not interpreted by the game, including the fields for message length and player number. It should be noted that unlike all other packets, chat messages are not validated for errors or malicious behavior. This makes AoC vulnerable to [message spoofing](05-chat_protocol.md).
 
-## Structure and length
-
-The chat message data field in AoC has a minimum length of 43 bytes (for 1 character) and a maximum length of 107 bytes (65 characters). These 65 bytes difference is used for the message text. Characters are encoded in extended ASCII, so they support most of the American and European alphabets. The other (mandatory) 42 bytes form the header that is interpreted by the network engine of the game.
-
-An example of the UDP data field (51 bytes) for the message "abcdefghi" is below. Keep in mind that a hexadecimal representation is used.
+# Example
 
 ```
-0000   13 8c 46 01 00 00 00 00 43 02 7b 00 9f 56 00 00
-0010   9d 68 00 00 02 00 4e 59 59 4e 4e 4e 4e 4e 32 00
-0020   09 00 00 00 00 61 62 63 64 65 66 67 68 69 00 00
-0030   18 dc 32
+0000   02 00 4e 59 59 4e 4e 4e 4e 4e 32 00 09 00 00 00
+0010   00 61 62 63 64 65 66 67 68 69 00 00 18 dc 32
 ```
 
-We will now try to separate the field to learn more about the logical structure of the underlying protocol.
+>`02` &mdash;  
 
 ## Analyzing the data field
 
