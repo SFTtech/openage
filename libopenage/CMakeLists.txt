@@ -43,6 +43,7 @@ add_subdirectory("pathfinding")
 add_subdirectory("pyinterface")
 add_subdirectory("renderer")
 add_subdirectory("rng")
+add_subdirectory("simulation")
 add_subdirectory("shader")
 add_subdirectory("terrain")
 add_subdirectory("testing")
@@ -106,6 +107,29 @@ find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
 
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
+endif()
+
+# nyan integration
+find_package(nyan CONFIG)
+
+if(NOT nyan_FOUND)
+	message(FATAL_ERROR "
+  Could not find the cmake package configuration file \"nyanConfig.cmake\".
+  To find it, you have several options:
+
+  * If your distribution provides it, install \"nyan\" through the package manager.
+
+  * If did not build nyan manually yet, follow the build instructions:
+      [[  doc/building.md#nyan-installation  ]]
+
+  * If you already built nyan but it still can't be found (cmake package repo fails):
+    * Try to set \"nyan_DIR\" to the nyan build directory (it contains nyanConfig.cmake)
+      either through:  \"./configure $youroptions -- -Dnyan_DIR=/home/dev/nyan/build\"
+      or:              \"cmake $yourotheroptions -Dnyan_DIR=/home/dev/nyan/build ..\"
+
+  In case of other problems, please try to figure them out (and tell us what you did).
+  Contact information is in README.md.
+")
 endif()
 
 if(GCCBacktrace_FOUND)
@@ -188,6 +212,7 @@ target_link_libraries(libopenage
 		${RT_LIB}
 		${OGG_LIB}
 		${EXECINFO_LIB}
+		nyan::nyan
 	# TODO: change to PUBLIC (or, alternatively, remove all keywords
 	# of this type) when qt cmake scripts change declarations of the
 	# IMPORTED libraries to GLOBAL.

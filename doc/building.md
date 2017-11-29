@@ -39,6 +39,7 @@ Dependency list:
     CR    freetype2
     CR    fontconfig
     CR    harfbuzz >= 1.0.0
+    CR    nyan  (https://github.com/SFTtech/nyan)
     CR    sdl2
     CR    sdl2_image
     CR    opusfile
@@ -73,7 +74,35 @@ described below for some of the most common ones:
 - [Microsoft Windows 10](build_instructions/windows_msvc.md)
 
 
+### nyan installation
+
+`openage` depends on [`nyan`](https://github.com/SFTtech/nyan), which is the
+engine configuration language.
+
+
+* For development, `nyan` can be built and used **without installation** (->
+no "`make install`"). Just clone the repo somewhere and [follow the `nyan`
+build instructions](https://github.com/SFTtech/nyan/blob/master/doc/building.md)).
+
+* Alternatively, `openage` can download `nyan` automatically. This is
+  activated with `./configure --download-nyan ...` or `cmake
+  -DDOWNLOAD_NYAN=YES ...`.
+
+**Only install** `nyan` when packaging it. You don't need to clobber your
+filesystem.
+
+`cmake` looks for `nyan` in the user package registry
+(`~/.cmake/packages/nyan/`) and the system package registry
+(`/usr/lib/cmake/nyan/`) for `nyanConfig.cmake`.
+
+If `nyan` cannot be found but you know where it is, you can hint the
+location of the `nyanConfig.cmake` with
+`-Dnyan_DIR=/directory/where/nyanConfig/is/in/`.
+
+
 ## Build procedure
+
+Make sure you have all the dependencies installed.
 
 ### Development
 

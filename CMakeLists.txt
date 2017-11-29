@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.1.0)
 # main build configuration file
 
 # text art: figlet -f rounded "[SFT] openage" | sed -e 's/\\/\\\\/g'
-message("(running cmake...)
+message("
 
  ___  ______ _______ _______ ___
 |  _)/ _____|_______|_______|_  |
@@ -22,7 +22,10 @@ You have chosen, or been chosen, to attempt the daring task of building openage.
 If you have installed all the dependencies that are conveniently listed in
 [doc/building.md], this _might_ just work!
 
-If it doesn't, consider reporting the issue/asking for help in #sfttech on freenode.net.
+If it doesn't, consider reporting the issue: https://github.com/SFTtech/openage
+Or ask for help:
+  * Matrix: #sfttech:matrix.org
+  * IRC:    #sfttech on freenode.net
 ")
 
 # cmake < 3.4.0 has problems with projects that use C++ but not C,
