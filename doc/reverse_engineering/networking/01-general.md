@@ -32,13 +32,13 @@ Command | Purpose
 0x35    | Sync (Lobby)
 0x3e    | Player-issued
 0x41    | Sync
-0x43    | Chat Message --TBD
+0x43    | Chat Message
 0x44    | Sync --TBD
 0x4d    | Sync --TBD
 0x51    | De-Sync --TBD
 0x52    | Readying (Lobby)
 0x53    | Sync --TBD
-0x5a    | Lobby --TBD
+0x5a    | Lobby
 
 All packets with command `0x3e` have a second "command byte" after the header that represents the command a player has given ingame. To avoid confusion, we will call all player-issued commands "actions" and reserve the term "commands" for the actual network commands seen above. To align with this, the identifier for a player's action will be called "action byte". 34 of these can be found in network packets.
 

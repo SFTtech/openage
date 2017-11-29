@@ -171,6 +171,7 @@ def 24BC52
   int32 :unknown3
 end
 ```
+
 *:network_source_id*  
 Works the same way as outlined in [02-header.md](02-header.md).
 

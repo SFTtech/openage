@@ -42,7 +42,7 @@ def LobbySettings
   int16 :zero
   int8 :map_description_length
   array :map_description,
-        type => :int8,
+        type => :char,
         initial_length => :map_description_length + 6
 end
 ```
