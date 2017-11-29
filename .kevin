@@ -4,6 +4,21 @@
 # https://github.com/SFTtech/kevin
 
 
+get_nyan:
+	- hidden
+	git clone https://github.com/SFTtech/nyan ~/nyan_src
+	mkdir ~/nyan
+
+nyan: get_nyan
+	- env: buildtype="Debug"     (? if job != "debian" ?)
+	- env: buildtype="Release"   (? if job == "debian" ?)
+	- cwd: ~/nyan
+
+	cmake -DCMAKE_BUILD_TYPE=${buildtype} -DCMAKE_INSTALL_PREFIX=/usr ~/nyan_src
+	cmake --build .
+	sudo cmake --build . --target install
+	cd .. && rm -rf nyan/
+
 sanity_check:
 	- skip              (? if job == "debian" ?)
 	make checkall
@@ -11,7 +26,7 @@ sanity_check:
 # Various optimisation options can affect warnings compiler generates.
 # Make sure both release and debug are tested. Arch job has more checks,
 # so it should run debug, while Debian can test build in release.
-configure:
+configure: nyan
 	./configure --mode=debug   (? if job != "debian" ?)
 	./configure --mode=release (? if job == "debian" ?)
 
