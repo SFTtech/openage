@@ -5,4 +5,6 @@
 namespace openage {
 namespace curve {
 
+// This file is intended to be empty
+
 }} // namespace openage::curve

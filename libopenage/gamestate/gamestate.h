@@ -19,7 +19,7 @@ class NyanObserver : curve::EventTarget {
 public:
 	NyanObserver(const EventManager &mgr, const nyan::Object &object) :
 		EventTarget(mgr) {
-		object.onchange([this](const curve::curve_time_t &at){
+		object.onchange([this](const curve::curve_time_t &at) {
 				this->onchange(at);
 			});
 	}

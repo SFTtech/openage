@@ -4,6 +4,8 @@
 
 #include "curve.h"
 
+#include <limits>
+
 namespace openage {
 namespace curve {
 

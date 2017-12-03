@@ -2,13 +2,33 @@
 
 #pragma once
 
-#include "event.h"
-#include "eventclass.h"
-#include "eventmanager.h"
-#include "eventqueue.h"
-#include "eventtarget.h"
+#include "../curve.h"
+
+#include "../../util/hash.h"
+
+#include <list>
+#include <memory>
+#include <queue>
+#include <unordered_set>
+#include <map>
+
+// Forward declarations
+namespace openage {
+class State;
+namespace curvepong {
+int demo();
+}
+}
 
 namespace openage {
 namespace curve {
 
-}}
+class Event;
+class EventQueue;
+class EventClass;
+class EventManager;
+
+
+
+
+}} // openage::curve

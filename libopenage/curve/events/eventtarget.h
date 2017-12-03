@@ -4,6 +4,7 @@
 
 #include "../curve.h"
 
+#include <functional>
 #include <list>
 #include <memory>
 

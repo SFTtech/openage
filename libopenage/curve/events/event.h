@@ -25,7 +25,7 @@ public:
 
 	Event(const std::shared_ptr<EventTarget> &trgt,
 	      const std::shared_ptr<EventClass> &eventclass,
-          const EventClass::param_map &params);
+	      const EventClass::param_map &params);
 
 	std::weak_ptr<EventTarget> &target() { return _target; }
 	std::shared_ptr<EventClass> &eventclass() {return _eventclass; }

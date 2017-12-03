@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include "../curve.h"
-
 #include "eventqueue.h"
+
+#include "../curve.h"
 
 #include <functional>
 #include <memory>
