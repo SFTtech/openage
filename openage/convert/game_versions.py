@@ -22,6 +22,16 @@ class GameVersion(enum.Enum):
     and TC). We should usually distinguish versions only as far as we're
     concerned (i.e. assets changed).
     """
+    age_1 = (
+        "Age of Empires 1",
+        Support.nope,
+        {'empires.exe', 'data/empires.dat'},
+    )
+    age_ror = (
+        "Age of Empires 1: The Rise of Rome",
+        Support.nope,
+        {'empiresx.exe', 'data2/empires2.dat'},
+    )
     age2_aok = (
         "Age of Empires 2: The Age of Kings",
         Support.nope,
@@ -36,6 +46,21 @@ class GameVersion(enum.Enum):
         "Age of Empires 2: The Conquerors, Patch 1.0c",
         Support.yes,
         {'age2_x1/age2_x1.exe', 'data/empires2_x1_p1.dat'},
+    )
+    swgb_10 = (
+        "Star Wars: Galactic Battlegrounds",
+        Support.nope,
+        {'GAME/Battlegrounds.exe', 'game/data/genie.dat'},
+    )
+    swgb_cc = (
+        "Star Wars: Galactic Battlegrounds: Clone Campaigns",
+        Support.nope,
+        {'GAME/battlegrounds_x1.exe', 'game/data/genie_x1.dat'},
+    )
+    swgb_exfronts = (
+        "Star Wars: Galactic Battlegrounds: Expanding Fronts",
+        Support.nope,
+        {'GAME/battlegrounds_x2.exe', 'game/data/genie_x2.dat'},
     )
     age2_tc_fe = (
         "Age of Empires 2: Forgotten Empires",
