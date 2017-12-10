@@ -116,4 +116,4 @@ Set rally point on object.
 >`66 00 00 00` &mdash; target_unit_id  
 >`00 80 29 43` &mdash; x_coord  
 >`00 00 1a 42` &mdash; y_coord  
->`43 17 00 00` &mdash; selected_id  
+>`43 17 00 00` &mdash; selected_id

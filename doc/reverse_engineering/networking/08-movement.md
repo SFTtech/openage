@@ -283,7 +283,7 @@ Used for unloading units from transport ships or rams and ungarrisoning units.
 ### Definition
 
 ```ruby
-class Ungarrison
+def Ungarrison
   int8 :action_identifier
   int8 :selection_count
   int16 :zero
@@ -487,7 +487,7 @@ Garrisoning units into a building.
 >`6f 1a 00 00` &mdash; selected_id  
 >`6d 1a 00 00` &mdash; selected_id
 
-## Drop relic action
+## Drop relic
 
 Dropping a relic on the ground.
 

@@ -45,7 +45,7 @@ The IDs of the selected units.
 >`12` &mdash; action_identifier  
 >`01` &mdash; selection_count  
 >`02` &mdash; stance  
->`4b 15 00 00` &mdash; selected_id   
+>`4b 15 00 00` &mdash; selected_id
 
 ## Guard action
 
@@ -153,10 +153,10 @@ def Patrol
   int8 :patrol_waypoint_count
   int8 :zero
   array :x_coords,
-    type => :int32,
+    type => :float,
     length => 10
   array :y_coords,
-    type => :int32,
+    type => :float,
     length => 10
   array :selection_ids,
     type => :int32,
@@ -182,7 +182,7 @@ The byte after *:patrol_waypoint_count* is always zero.
 The x-coordinates of the patrol waypoints. Always has a length of 10 which is also the maximum number of patrol waypoints. For every waypoint that is not set, a placeholder value of `0x00000000` is used.
 
 *:y_coords*  
-The x-coordinates of the patrol waypoints. Always has a length of 10 which is also the maximum number of patrol waypoints. For every waypoint that is not set, a placeholder value of `0x00000000` is used.
+The y-coordinates of the patrol waypoints. Always has a length of 10 which is also the maximum number of patrol waypoints. For every waypoint that is not set, a placeholder value of `0x00000000` is used.
 
 *:selection_ids*  
 The IDs of the units that are patrolling.

@@ -41,7 +41,7 @@ The [ID of the technology](technology_ids.md) that is researched.
 *:const*  
 This value is always `0xFFFFFFFF`.
 
-## Examples
+### Examples
 
 `65 00 00 00 63 1a 00 00 01 00 d9 00 ff ff ff ff`
 
@@ -70,7 +70,7 @@ def Build
   int16 :building_id
   int16 :zero2
   int32 :const
-  int32 :sprite_id
+  int8 :sprite_id
   array :selected_ids,
         type => :int32,
         initial_length => :selection_count
@@ -107,7 +107,7 @@ The two bytes after *:building_id* are always zero.
 This value is always `0xFFFFFFFF`.
 
 *:sprite_id*  
-Represents which sprite is used for the building (only used for houses, which have several variations).
+Represents which sprite is used for the building (only used for houses, which have several variations per civ).
 
 *:selected_ids*  
 The IDs of the selected builders.
@@ -256,7 +256,7 @@ The IDs of the selected repairmen.
 >`a0 1a 00 00` &mdash; selected_id  
 >`9f 1a 00 00` &mdash; selected_id
 
-## Toggle gate action
+## Toggle gate
 
 Used for setting a gate to closed/open.
 
@@ -317,7 +317,7 @@ The 3 bytes after *:action_identifier* are always zero.
 The ID of the town center where the bell is rung.
 
 *:active*  
-Represents if the townbell is active (`0x00`) or not active (`0x01`).
+Represents whether the townbell is active (`0x01`) or not active (`0x00`).
 
 *:zero2*  
 The 3 bytes after *:active* are always zero.
@@ -330,7 +330,7 @@ The 3 bytes after *:active* are always zero.
 >`00 00 00` &mdash; zero  
 >`68 17 00 00` &mdash; building_id  
 >`01` &mdash; active  
->`00 00 00 00` &mdash; zero2
+>`00 00 00` &mdash; zero2
 
 ## Back to work
 
