@@ -170,9 +170,7 @@ void Profiler::draw_legend() {
 		glRecti(box_x, box_y, box_x + PROFILER_COM_BOX_WIDTH, box_y + PROFILER_COM_BOX_HEIGHT);
 
 		glColor4f(0.2, 0.2, 0.2, 1);
-		coord::window position = coord::window();
-		position.x = box_x + PROFILER_COM_BOX_WIDTH + 2;
-		position.y = box_y + 2;
+		coord::window position = coord::window{box_x + PROFILER_COM_BOX_WIDTH + 2, box_y + 2};
 		this->engine->render_text(position, 12, "%s", com.second.display_name.c_str());
 
 		offset += PROFILER_COM_BOX_HEIGHT + 2;

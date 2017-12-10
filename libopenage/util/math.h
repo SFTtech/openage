@@ -12,7 +12,7 @@ namespace math {
 /**
  * Approximate a float square root by magic.
  */
-float reciprocal_sqrt(float x) {
+inline float reciprocal_sqrt(float x) {
 	long i;
 	float y, r;
 
@@ -22,6 +22,16 @@ float reciprocal_sqrt(float x) {
 	r = *(float *)(&i);
 	r = r * (1.5f - (r * r * y));
 	return r;
+}
+
+template<typename T>
+T square(T arg) {
+	return arg * arg;
+}
+
+template<typename T>
+T hypot3(T x, T y, T z) {
+	return sqrt(x * x + y * y + z * z);
 }
 
 }} // openage::util

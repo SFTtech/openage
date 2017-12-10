@@ -129,17 +129,17 @@ public:
 	 *
 	 * this function should be used for most draw purposes
 	 */
-	void draw();
+	void draw(const Engine &engine);
 
 	/**
 	 * an generalized draw function which is useful for drawing annexes
 	 */
-	void draw(TerrainObject *loc, const graphic_set &graphics);
+	void draw(TerrainObject *loc, const graphic_set &graphics, const Engine &engine);
 
 	/**
 	 * draws with a specific graphic and frame
 	 */
-	void draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame);
+	void draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame, const Engine &engine);
 
 	/**
 	 * adds an available ability to this unit

@@ -1,51 +1,62 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "../util/fixed_point.h"
 #include "../util/misc.h"
 
+#include "declarations.h"
 #include "coord_nese.gen.h"
 #include "coord_neseup.gen.h"
 
 namespace openage {
+
+class Terrain;
+
 namespace coord {
-
-constexpr unsigned int phys_t_radix_pos = 16;
-constexpr unsigned int phys_per_tile = (1 << phys_t_radix_pos);
-
-using phys_t = util::FixedPoint<int64_t, 16>;
-
-
-struct phys2_delta;
-struct phys2;
-struct phys3_delta;
-struct phys3;
 
 
 struct phys2_delta : CoordNeSeRelative<phys_t, phys2, phys2_delta> {
 	using CoordNeSeRelative<phys_t, phys2, phys2_delta>::CoordNeSeRelative;
 
-	phys3_delta to_phys3(phys_t up=0) const;
+	double length() const;
+	phys2_delta normalize(double length=1) const;
+	phys3_delta to_phys3() const;
 };
 
 struct phys2 : CoordNeSeAbsolute<phys_t, phys2, phys2_delta> {
 	using CoordNeSeAbsolute<phys_t, phys2, phys2_delta>::CoordNeSeAbsolute;
-};
 
+	tile to_tile() const;
+	phys3 to_phys3(const Terrain &terrain, phys_t altitude=0) const;
+
+	double distance(phys2 other) const;
+};
 
 struct phys3_delta : CoordNeSeUpRelative<phys_t, phys3, phys3_delta> {
 	using CoordNeSeUpRelative<phys_t, phys3, phys3_delta>::CoordNeSeUpRelative;
+
+	// there's no converter to convert phys3 deltas to tile3 deltas because
+	// phys3_delta{0.5, 0, 0} might result in tile3_delta{0, 0, 0} or
+	// tile3_delta{1, 0, 0} depending on the absolute position.
+	// we don't allow ambiguous conversions.
+
+	camgame_delta to_camgame(const CoordManager &mgr) const;
+	phys2_delta to_phys2() const;
+
+	double length() const;
 };
 
 struct phys3 : CoordNeSeUpAbsolute<phys_t, phys3, phys3_delta> {
 	using CoordNeSeUpAbsolute<phys_t, phys3, phys3_delta>::CoordNeSeUpAbsolute;
+
+	tile3 to_tile3() const;
+	tile to_tile() const;
+	phys2 to_phys2() const;
+
+	camgame to_camgame(const CoordManager &mgr) const;
+	window to_window(const CoordManager &mgr) const;
+	camhud to_camhud(const CoordManager &mgr) const;
 };
-
-
-phys3_delta phys2_delta::to_phys3(phys_t up) const {
-	return phys3_delta(this->ne, this->se, up);
-}
 
 
 } // namespace coord

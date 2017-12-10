@@ -120,6 +120,10 @@ private:
 
 	friend std::hash<openage::util::FixedPoint<int_type, fractional_bits>>;
 
+	static constexpr int_type raw_value_from_double(double n) {
+		return static_cast<int_type>(n * from_double_factor);
+	}
+
 public:
 	// obligatory copy constructor / assignment operator.
 	constexpr FixedPoint(const FixedPoint &other) : raw_value(other.raw_value) {}
@@ -137,11 +141,11 @@ public:
 	/**
 	 * floating-point constructor. Initializes the number from a double.
 	 */
-	constexpr FixedPoint(double n) {
-		// implicitly construct from double.
-		// for other creations, use the factory methods below.
-		*this = FixedPoint::from_double(n);
-	}
+	// implicitly construct from double.
+	// for other creations, use the factory methods below.
+	constexpr FixedPoint(double n) : raw_value(FixedPoint::raw_value_from_double(n)) {}
+
+	static constexpr FixedPoint zero = FixedPoint::from_int(0);
 
 	/**
 	 * Factory function to get a fixed-point number from an integer.
@@ -161,7 +165,7 @@ public:
 	 * Factory function to get a fixed-point number from a double.
 	 */
 	static constexpr FixedPoint from_double(double n) {
-		return FixedPoint::from_raw_value(static_cast<int_type>(n * from_double_factor));
+		return FixedPoint::from_raw_value(FixedPoint::raw_value_from_double(n));
 	}
 
 	/**
@@ -293,14 +297,24 @@ public:
 		return FixedPoint::this_type::from_raw_value(-this->raw_value);
 	}
 
+	template<typename I, unsigned F>
+	constexpr double hypot(const FixedPoint<I, F> rhs) {
+		return std::hypot(this->to_double(), rhs.to_double());
+	}
+
+	template<typename I, unsigned F>
+	constexpr FixedPoint<I, F> hypotfp(const FixedPoint<I, F> rhs) {
+		return FixedPoint<I, F>(this->hypot(rhs));
+	}
+
 	// Basic operators
 	constexpr FixedPoint &operator +=(const FixedPoint &n) {
-		raw_value += n.raw_value;
+		this->raw_value += n.raw_value;
 		return *this;
 	}
 
 	constexpr FixedPoint &operator -=(const FixedPoint &n) {
-		raw_value -= n.raw_value;
+		this->raw_value -= n.raw_value;
 		return *this;
 	}
 
@@ -347,11 +361,9 @@ constexpr operator *(const FixedPoint<I, F> lhs, const N &rhs) {
 }
 
 template<typename I, unsigned F, typename N>
-typename std::enable_if<std::is_arithmetic<N>::value, FixedPoint<I, F>>::type
-constexpr operator /(const FixedPoint<I, F> lhs, const N &rhs) {
-	return FixedPoint<I, F>::from_raw_value(div(lhs.get_raw_value(), rhs));
+constexpr FixedPoint<I, F> operator /(const FixedPoint<I, F> lhs, const N &rhs) {
+	return FixedPoint<I, F>::from_raw_value(div(lhs.get_raw_value(), static_cast<I>(rhs)));
 }
-
 
 } // namespace util
 } // namespace openage
@@ -360,6 +372,7 @@ constexpr operator /(const FixedPoint<I, F> lhs, const N &rhs) {
 // std function overloads
 namespace std {
 
+// TODO ASDF fix this, globally pollutes the std namespace
 using openage::util::FixedPoint;
 
 template<typename I, unsigned F>
@@ -384,7 +397,7 @@ constexpr FixedPoint<I, F> abs(FixedPoint<I, F> n) {
 
 template<typename I, unsigned F>
 constexpr double hypot(FixedPoint<I, F> x, FixedPoint<I, F> y) {
-	return std::hypot(x.to_double(), y.to_double());
+	return x.hypot(y);
 }
 
 template<typename I, unsigned F>

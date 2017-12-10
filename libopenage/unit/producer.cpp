@@ -2,12 +2,13 @@
 
 #include <initializer_list>
 
+#include "../engine.h"
+#include "../log/log.h"
 #include "../gamedata/unit.gen.h"
 #include "../terrain/terrain.h"
 #include "../terrain/terrain_object.h"
 #include "../terrain/terrain_outline.h"
 #include "../util/strings.h"
-#include "../log/log.h"
 #include "ability.h"
 #include "action.h"
 #include "producer.h"
@@ -278,7 +279,7 @@ TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, 
 		auto terrain = terrain_ptr.lock();
 
 		// look at all tiles in the bases range
-		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos))) {
+		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos, *terrain))) {
 			TileContent *tc = terrain->get_data(check_pos);
 
 			// invalid tile types
@@ -299,11 +300,11 @@ TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, 
 		return true;
 	};
 
-	u->location->draw = [u, obj_ptr]() {
+	u->location->draw = [u, obj_ptr](const Engine &e) {
 		if (u->selected) {
-			obj_ptr->draw_outline();
+			obj_ptr->draw_outline(e.coord);
 		}
-		u->draw();
+		u->draw(e);
 	};
 
 	// try to place the obj, it knows best whether it will fit.
@@ -374,7 +375,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	 * distance per millisecond -- consider original game speed
 	 * where 1.5 in game seconds pass in 1 real second
 	 */
-	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;
+	coord::phys_t sp = this->unit_data.speed / 666;
 	unit->add_attribute(std::make_shared<Attribute<attr_type::speed>>(sp));
 
 	// projectile of melee attacks
@@ -383,7 +384,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
 
 		// calculate requirements for ranged attacks
-		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
+		coord::phys_t range_phys = this->unit_data.max_range;
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 48000, 1, reset_type));
 	}
 	else {
@@ -545,11 +546,12 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	unit->add_attribute(player_attr);
 
 	// building specific attribute
-	auto build_attr = std::make_shared<Attribute<attr_type::building>>();
-	build_attr->foundation_terrain = this->foundation_terrain;
-	build_attr->pp = this->owner.get_type(trainable2);
-	build_attr->gather_point = unit->location->pos.draw;
-	build_attr->completion_state = this->enable_collisions? object_state::placed : object_state::placed_no_collision;
+	auto build_attr = std::make_shared<Attribute<attr_type::building>>(
+		this->foundation_terrain,
+		this->owner.get_type(trainable2),
+		unit->location->pos.draw
+	);
+	build_attr->completion_state = this->enable_collisions ? object_state::placed : object_state::placed_no_collision;
 	unit->add_attribute(build_attr);
 
 	// garrison and hp for all buildings
@@ -561,7 +563,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 
 	UnitType *proj_type = this->owner.get_type(this->projectile);
 	if (this->unit_data.projectile_unit_id > 0 && proj_type) {
-		coord::phys_t range_phys = coord::settings::phys_per_tile * this->unit_data.max_range;
+		coord::phys_t range_phys = this->unit_data.max_range;
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1, this));
 		unit->give_ability(std::make_shared<AttackAbility>());
 	}
@@ -618,7 +620,7 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 		auto terrain = terrain_ptr.lock();
 
 		// look at all tiles in the bases range
-		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos))) {
+		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos, *terrain))) {
 			TileContent *tc = terrain->get_data(check_pos);
 			if (!tc) {
 				return false;
@@ -632,11 +634,11 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 
 	// drawing function
 	bool draw_outline = this->enable_collisions;
-	u->location->draw = [u, obj_ptr, draw_outline]() {
+	u->location->draw = [u, obj_ptr, draw_outline](const Engine &e) {
 		if (u->selected && draw_outline) {
-			obj_ptr->draw_outline();
+			obj_ptr->draw_outline(e.coord);
 		}
-		u->draw();
+		u->draw(e);
 	};
 
 	// try to place the obj, it knows best whether it will fit.
@@ -652,8 +654,8 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 
 			// make objects for annex
 			coord::phys3 a_pos = u->location->pos.draw;
-			a_pos.ne += annex.misplaced0 * coord::settings::phys_per_tile;
-			a_pos.se += annex.misplaced1 * coord::settings::phys_per_tile;
+			a_pos.ne += annex.misplaced0;
+			a_pos.se += annex.misplaced1;
 			this->make_annex(*u, terrain, annex.unit_id, a_pos, i == 0);
 		}
 	}
@@ -679,8 +681,8 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 
 	// producers place by the nw tile
 	coord::phys3 start_tile = annex_pos;
-	start_tile.ne -= annex_foundation.ne * coord::settings::phys_per_tile / 2;
-	start_tile.se -= annex_foundation.se * coord::settings::phys_per_tile / 2;
+	start_tile.ne -= annex_foundation.ne / 2.0;
+	start_tile.se -= annex_foundation.se / 2.0;
 
 	// create and place on terrain
 	TerrainObject *annex_loc = u.location->make_annex<SquareObject>(annex_foundation);
@@ -688,18 +690,18 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	annex_loc->place(t, start_tile, state);
 
 	// create special drawing functions for annexes,
-	annex_loc->draw = [annex_loc, annex_type, &u, c]() {
+	annex_loc->draw = [annex_loc, annex_type, &u, c](const Engine &e) {
 
 		// hack which draws the outline in the right order
 		// removable once rendering system is improved
 		if (c && u.selected) {
-			annex_loc->get_parent()->draw_outline();
+			annex_loc->get_parent()->draw_outline(e.coord);
 		}
 
 		// only draw if building is completed
 		if (u.has_attribute(attr_type::building) &&
 		    u.get_attribute<attr_type::building>().completed >= 1.0f) {
-			u.draw(annex_loc, annex_type->graphics);
+			u.draw(annex_loc, annex_type->graphics, e);
 		}
 	};
 	return annex_loc;
@@ -748,7 +750,7 @@ void ProjectileProducer::initialise(Unit *unit, Player &player) {
 	unit->unit_type = this;
 
 	// projectile speed
-	coord::phys_t sp = this->unit_data.speed * coord::settings::phys_per_tile / 666;
+	coord::phys_t sp = this->unit_data.speed / 666;
 	unit->add_attribute(std::make_shared<Attribute<attr_type::speed>>(sp));
 	unit->add_attribute(std::make_shared<Attribute<attr_type::projectile>>(this->unit_data.projectile_arc));
 	unit->add_attribute(std::make_shared<Attribute<attr_type::direction>>(coord::phys3_delta{ 1, 0, 0 }));
@@ -789,7 +791,7 @@ TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terra
 		}
 
 		// look at all tiles in the bases range
-		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos))) {
+		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos, *terrain))) {
 			TileContent *tc = terrain->get_data(check_pos);
 			if (!tc) return false;
 
@@ -806,8 +808,8 @@ TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terra
 		return true;
 	};
 
-	u->location->draw = [u]() {
-		u->draw();
+	u->location->draw = [u](const Engine &e) {
+		u->draw(e);
 	};
 
 	// try to place the obj, it knows best whether it will fit.

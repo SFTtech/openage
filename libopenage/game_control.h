@@ -232,8 +232,12 @@ private:
 
 	// a selected type for placement
 	UnitType *type_focus;
-	coord::phys3 mousepos_phys3;
-	coord::tile mousepos_tile;
+
+	// TODO these shouldn't be here. remove them ASAP.
+	//      ASDF maybe even before commit?
+	//      for now, just initialize them to 0,  0
+	coord::phys3 mousepos_phys3{0, 0, 0};
+	coord::tile mousepos_tile{0, 0};
 	bool selecting;
 
 	ActionButtonsType buttons_type;

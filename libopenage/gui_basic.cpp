@@ -66,7 +66,7 @@ void GuiBasic::process_events() {
 	this->application.processEvents();
 }
 
-bool GuiBasic::on_resize(coord::window new_size) {
+bool GuiBasic::on_resize(coord::window_delta new_size) {
 	this->renderer.resize(new_size.x, new_size.y);
 	return true;
 }

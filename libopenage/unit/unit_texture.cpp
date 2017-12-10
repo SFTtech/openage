@@ -7,6 +7,7 @@
 #include "../coord/pixel.h"
 #include "../gamestate/game_spec.h"
 #include "../texture.h"
+#include "../util/math.h"
 #include "../util/math_constants.h"
 #include "unit_texture.h"
 
@@ -41,42 +42,42 @@ coord::window UnitTexture::size() const {
 	return coord::window{this->texture->w, this->texture->h};
 }
 
-void UnitTexture::sample(const coord::camhud &draw_pos, unsigned color) const {
+void UnitTexture::sample(const coord::CoordManager &coord, const coord::camhud &draw_pos, unsigned color) const {
 
 	// draw delta list first
 	for (auto &d : this->deltas) {
 		coord::camhud_delta dlt = coord::camhud_delta{d.second.x, d.second.y};
-		d.first->sample(draw_pos + dlt, color);
+		d.first->sample(coord, draw_pos + dlt, color);
 	}
 
 	// draw texture
 	if (this->draw_this) {
-		this->texture->draw(draw_pos, PLAYERCOLORED, false, 0, color);
+		this->texture->draw(coord, draw_pos, PLAYERCOLORED, false, 0, color);
 	}
 }
 
-void UnitTexture::draw(const coord::camgame &draw_pos, unsigned int frame, unsigned color) const {
+void UnitTexture::draw(const coord::CoordManager &coord, const coord::camgame &draw_pos, unsigned int frame, unsigned color) const {
 
 	// draw delta list first
 	for (auto &d : this->deltas) {
-		d.first->draw(draw_pos + d.second, frame, color);
+		d.first->draw(coord, draw_pos + d.second, frame, color);
 	}
 
 	// draw texture
 	if (this->draw_this) {
 		unsigned int to_draw = frame % this->texture->get_subtexture_count();
-		this->texture->draw(draw_pos, PLAYERCOLORED, false, to_draw, color);
+		this->texture->draw(coord, draw_pos, PLAYERCOLORED, false, to_draw, color);
 	}
 }
 
-void UnitTexture::draw(const coord::camgame &draw_pos, coord::phys3_delta &dir, unsigned int frame, unsigned color) const {
+void UnitTexture::draw(const coord::CoordManager &coord, const coord::camgame &draw_pos, coord::phys3_delta &dir, unsigned int frame, unsigned color) const {
 	unsigned int frame_to_use = frame;
 	if (this->use_up_angles) {
 		// up  1 => tilt 0
 		// up -1 => tilt 1
 		// up has a scale 5 times smaller
-		double len = sqrt(dir.ne*dir.ne + dir.se*dir.se + dir.up*dir.up/25);
-		double up = static_cast<double>(dir.up/5.0) / len;
+		double len = math::hypot3(dir.ne.to_double(), dir.se.to_double(), dir.up.to_double()/5);
+		double up = dir.up.to_double()/(5.0 * len);
 		frame_to_use = (0.5 - (0.5 * up)) * this->frame_count;
 	}
 	else if (this->sound && frame == 0.0) {
@@ -98,12 +99,12 @@ void UnitTexture::draw(const coord::camgame &draw_pos, coord::phys3_delta &dir, 
 
 	// draw delta list first
 	for (auto &d : this->deltas) {
-		 d.first->draw(draw_pos + d.second, dir, frame, color);
+		 d.first->draw(coord, draw_pos + d.second, dir, frame, color);
 	}
 
 	if (this->draw_this) {
 		unsigned int to_draw = this->subtexture(this->texture, angle, frame_to_use);
-		this->texture->draw(draw_pos, PLAYERCOLORED, mirror, to_draw, color);
+		this->texture->draw(coord, draw_pos, PLAYERCOLORED, mirror, to_draw, color);
 	}
 }
 

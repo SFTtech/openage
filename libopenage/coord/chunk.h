@@ -2,19 +2,12 @@
 
 #pragma once
 
+#include "declarations.h"
 #include "coord_nese.gen.h"
 #include "coord_neseup.gen.h"
 
 namespace openage {
 namespace coord {
-
-using chunk_t = int32_t;
-
-
-struct chunk_delta;
-struct chunk;
-struct chunk3_delta;
-struct chunk3;
 
 
 struct chunk_delta : CoordNeSeRelative<chunk_t, chunk, chunk_delta> {

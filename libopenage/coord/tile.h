@@ -2,20 +2,18 @@
 
 #pragma once
 
-#include "../util/misc.h"
+#include "declarations.h"
 #include "coord_nese.gen.h"
 #include "coord_neseup.gen.h"
+#include "../util/misc.h"
 
 namespace openage {
+
+class Terrain;
+
 namespace coord {
 
-using tile_t = int64_t;
-
-
-struct tile_delta;
-struct tile;
-struct tile3_delta;
-struct tile3;
+class CoordManager;
 
 
 struct tile_delta : CoordNeSeRelative<tile_t, tile, tile_delta> {
@@ -24,14 +22,39 @@ struct tile_delta : CoordNeSeRelative<tile_t, tile, tile_delta> {
 
 struct tile : CoordNeSeAbsolute<tile_t, tile, tile_delta> {
 	using CoordNeSeAbsolute<tile_t, tile, tile_delta>::CoordNeSeAbsolute;
+
+	/**
+	 * adds an UP component to the coordinate.
+	 * the resulting UP component will be 'altitude' tiles above ground
+	 * elevation.
+	 */
+	tile3 to_tile3(const Terrain &terrain, tile_t altitude=0) const;
+	phys2 to_phys2() const;
+	phys3 to_phys3(const Terrain &terrain, tile_t altitude=0) const;
+	camgame to_camgame(const CoordManager &mgr, const Terrain &terrain, tile_t altitude=0) const;
+	chunk to_chunk() const;
+	tile_delta get_pos_on_chunk() const;
 };
 
 struct tile3_delta : CoordNeSeUpRelative<tile_t, tile3, tile3_delta> {
 	using CoordNeSeUpRelative<tile_t, tile3, tile3_delta>::CoordNeSeUpRelative;
+
+	// simply discards the UP component of the coordinate delta.
+	constexpr tile_delta to_tile() const {
+		return tile_delta{this->ne, this->se};
+	}
 };
 
 struct tile3 : CoordNeSeUpAbsolute<tile_t, tile3, tile3_delta> {
 	using CoordNeSeUpAbsolute<tile_t, tile3, tile3_delta>::CoordNeSeUpAbsolute;
+
+	// simply discards the UP component of the coordinate.
+	constexpr tile to_tile() const {
+		return tile{this->ne, this->se};
+	}
+
+	phys2 to_phys2() const;
+	phys3 to_phys3() const;
 };
 
 

@@ -14,6 +14,11 @@
 
 
 namespace openage {
+
+namespace coord {
+class CoordManager;
+}
+
 namespace path {
 
 class Node;
@@ -51,23 +56,21 @@ using heap_t = datastructure::PairingHeap<node_pt, compare_node_cost>;
 
 /**
  * Size of phys-coord grid for path nodes.
- *
- * This equals a node grid size of (phys/tile) / 8.
  */
-constexpr int path_grid_size = coord::settings::phys_per_tile >> 3;
+constexpr coord::phys_t path_grid_size{1.f/8};
 
 /**
  * Phys3 delta coordinates to select for path neighbors.
  */
 constexpr coord::phys3_delta const neigh_phys[] = {
-	{ 1 * path_grid_size, -1 * path_grid_size, 0},
-	{ 1 * path_grid_size,  0 * path_grid_size, 0},
-	{ 1 * path_grid_size,  1 * path_grid_size, 0},
-	{ 0 * path_grid_size,  1 * path_grid_size, 0},
-	{-1 * path_grid_size,  1 * path_grid_size, 0},
-	{-1 * path_grid_size,  0 * path_grid_size, 0},
-	{-1 * path_grid_size, -1 * path_grid_size, 0},
-	{ 0 * path_grid_size, -1 * path_grid_size, 0}
+	{path_grid_size *  1, path_grid_size * -1, 0},
+	{path_grid_size *  1, path_grid_size *  0, 0},
+	{path_grid_size *  1, path_grid_size *  1, 0},
+	{path_grid_size *  0, path_grid_size *  1, 0},
+	{path_grid_size * -1, path_grid_size *  1, 0},
+	{path_grid_size * -1, path_grid_size *  0, 0},
+	{path_grid_size * -1, path_grid_size * -1, 0},
+	{path_grid_size *  0, path_grid_size * -1, 0}
 };
 
 /**
@@ -179,7 +182,7 @@ public:
 	Path() = default;
 	Path(const std::vector<Node> &nodes);
 
-	void draw_path();
+	void draw_path(const coord::CoordManager &mgr);
 
 	/**
 	 * These are the waypoints to navigate in order.

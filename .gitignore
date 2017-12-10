@@ -45,3 +45,6 @@ Makefile
 callgrind.out.*
 perf.data*
 .gdb_history
+
+# IDEs
+.vscode

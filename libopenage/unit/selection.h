@@ -14,7 +14,7 @@ namespace openage {
 class Engine;
 class Terrain;
 
-std::vector<coord::tile> tiles_in_range(coord::camgame p1, coord::camgame p2);
+std::vector<coord::tile> tiles_in_range(coord::camgame p1, coord::camgame p2, const coord::CoordManager &coord);
 
 /**
  * A selection of units always has a type
@@ -103,7 +103,8 @@ private:
 	selection_type_t selection_type;
 
 	bool drag_active;
-	coord::camgame start, end;
+	// TODO: turn these into a C++17 optional
+	coord::camgame start = {0, 0}, end = {0, 0};
 	int font_size;
 
 	/**

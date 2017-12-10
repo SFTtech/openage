@@ -1,11 +1,12 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+
+#include "game_control.h"
 
 #include "engine.h"
 #include "error/error.h"
 #include "gamestate/game_spec.h"
 #include "util/strings.h"
 #include "terrain/terrain_chunk.h"
-#include "game_control.h"
 
 namespace openage {
 
@@ -67,8 +68,9 @@ void ActionModeSignals::on_action(const std::string &action_name) {
 
 		input::action_arg_t action_arg{
 			input::Event{input::event_class::ANY, 0, input::modset_t{}},
-			coord::window{},
-			coord::window_delta{},
+			// TODO: do we need to figure out the correct mouse coordinates here?
+			coord::window{0, 0},
+			coord::window_delta{0, 0},
 			{action}
 		};
 		top_ctxt->execute_if_bound(action_arg);
@@ -86,7 +88,6 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link)
 	gui_signals{this} {}
 
 
-
 void ActionMode::on_game_control_set() {
 
 	ENSURE(this->game_control != nullptr, "no control was actually set");
@@ -96,6 +97,7 @@ void ActionMode::on_game_control_set() {
 
 	auto &action = engine->get_action_manager();
 	auto input = &engine->get_input_manager();
+	coord::CoordManager &coord = engine->coord;
 
 	// TODO: the selection should not be used in here!
 	this->selection = engine->get_unit_selection();
@@ -252,11 +254,10 @@ void ActionMode::on_game_control_set() {
 		this->type_focus = nullptr;
 	});
 
-	auto bind_build = [this, input](input::action_t action, const bool increase) {
-		this->building_context.bind(action, [this, increase, input](const input::action_arg_t &arg) {
-			auto mousepos_camgame = arg.mouse.to_camgame();
-			this->mousepos_phys3 = mousepos_camgame.to_phys3();
-			this->mousepos_tile = this->mousepos_phys3.to_tile3().to_tile();
+	auto bind_build = [this, input, &coord](input::action_t action, const bool increase) {
+		this->building_context.bind(action, [this, increase, input, &coord](const input::action_arg_t &arg) {
+			this->mousepos_phys3 = arg.mouse.to_phys3(coord, 0);
+			this->mousepos_tile = this->mousepos_phys3.to_tile();
 
 			this->place_selection(this->mousepos_phys3);
 
@@ -273,7 +274,7 @@ void ActionMode::on_game_control_set() {
 
 	auto bind_select = [this, input, engine](input::action_t action, const bool increase) {
 		this->bind(action, [this, increase, input, engine](const input::action_arg_t &arg) {
-			auto mousepos_camgame = arg.mouse.to_camgame();
+			auto mousepos_camgame = arg.mouse.to_camgame(engine->coord);
 			Terrain *terrain = engine->get_game()->terrain.get();
 			this->selection->drag_update(mousepos_camgame);
 			this->selection->drag_release(*this->game_control->get_current_player(), terrain, increase);
@@ -293,17 +294,15 @@ void ActionMode::on_game_control_set() {
 	bind_select(action.get("SELECT"), false);
 	bind_select(action.get("INCREASE_SELECTION"), true);
 
-	this->bind(action.get("ORDER_SELECT"), [this, input](const input::action_arg_t &arg) {
+	this->bind(action.get("ORDER_SELECT"), [this, input, &coord](const input::action_arg_t &arg) {
 		if (this->type_focus) {
 			// right click can cancel building placement
 			this->type_focus = nullptr;
 			input->remove_context(&this->building_context);
 			this->announce_buttons_type();
 		}
-		auto mousepos_camgame = arg.mouse.to_camgame();
-		auto mousepos_phys3 = mousepos_camgame.to_phys3();
 
-		auto cmd = this->get_action(mousepos_phys3);
+		auto cmd = this->get_action(arg.mouse.to_phys3(coord));
 		cmd.add_flag(command_flag::direct);
 		this->selection->all_invoke(cmd);
 		this->use_set_ability = false;
@@ -317,10 +316,10 @@ void ActionMode::on_game_control_set() {
 		this->selecting = false;
 	});
 
-	this->bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
-		auto mousepos_camgame = arg.mouse.to_camgame();
-		this->mousepos_phys3 = mousepos_camgame.to_phys3();
-		this->mousepos_tile = this->mousepos_phys3.to_tile3().to_tile();
+	this->bind(input::event_class::MOUSE, [this, &coord](const input::action_arg_t &arg) {
+		auto mousepos_camgame = arg.mouse.to_camgame(coord);
+		this->mousepos_phys3 = mousepos_camgame.to_phys3(coord);
+		this->mousepos_tile = this->mousepos_phys3.to_tile();
 
 		// drag selection box
 		if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_MOTION, 0) &&
@@ -417,7 +416,7 @@ void ActionMode::render() {
 
 	ENSURE(engine != nullptr, "engine is needed to render ActionMode");
 
-	if (engine->get_game()) {
+	if (GameMain *game = engine->get_game()) {
 		Player *player = this->game_control->get_current_player();
 
 		this->announce_resources();
@@ -426,9 +425,9 @@ void ActionMode::render() {
 		if (this->type_focus) {
 			auto txt = this->type_focus->default_texture();
 			auto size = this->type_focus->foundation_size;
-			tile_range center = building_center(this->mousepos_phys3, size);
-			txt->sample(center.draw.to_camgame().to_window().to_camhud(),
-			            player->color);
+
+			tile_range center = building_center(this->mousepos_phys3, size, *game->terrain);
+			txt->sample(engine->coord, center.draw.to_camhud(engine->coord), player->color);
 		}
 	}
 	else {
@@ -583,28 +582,26 @@ void EditorMode::paint_terrain_at(const coord::window &point) {
 	Engine *engine = this->game_control->get_engine();
 	Terrain *terrain = engine->get_game()->terrain.get();
 
-	auto mousepos_camgame = point.to_camgame();
-	auto mousepos_phys3 = mousepos_camgame.to_phys3();
-	auto mousepos_tile = mousepos_phys3.to_tile3().to_tile();
+	auto mousepos_tile = point.to_tile(engine->coord);
 
 	TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
-	chunk->get_data(mousepos_tile)->terrain_id = editor_current_terrain;
+	chunk->get_data(mousepos_tile.get_pos_on_chunk())->terrain_id = editor_current_terrain;
 }
 
 void EditorMode::paint_entity_at(const coord::window &point, const bool del) {
-	GameMain *game = this->game_control->get_engine()->get_game();
+	Engine *engine = this->game_control->get_engine();
+	GameMain *game = engine->get_game();
 	Terrain *terrain = game->terrain.get();
 
-	auto mousepos_camgame = point.to_camgame();
-	auto mousepos_phys3 = mousepos_camgame.to_phys3();
-	auto mousepos_tile = mousepos_phys3.to_tile3().to_tile();
+	auto mousepos_phys3 = point.to_phys3(engine->coord);
+	auto mousepos_tile = mousepos_phys3.to_tile();
 
 	TerrainChunk *chunk = terrain->get_create_chunk(mousepos_tile);
 	// TODO : better detection of presence of unit
-	if (!chunk->get_data(mousepos_tile)->obj.empty()) {
+	if (!chunk->get_data(mousepos_tile.get_pos_on_chunk())->obj.empty()) {
 		if (del) {
 			// delete first object currently standing at the clicked position
-			TerrainObject *obj = chunk->get_data(mousepos_tile)->obj[0];
+			TerrainObject *obj = chunk->get_data(mousepos_tile.get_pos_on_chunk())->obj[0];
 			obj->remove();
 		}
 	} else if (!del && this->current_type_id != -1) {

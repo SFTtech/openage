@@ -43,15 +43,19 @@ TerrainChunk::~TerrainChunk() {
 	delete[] this->data;
 }
 
-TileContent *TerrainChunk::get_data(coord::tile pos) {
-	return this->get_data(this->tile_position_neigh(pos));
+TileContent *TerrainChunk::get_data(coord::tile abspos) {
+	return this->get_data(abspos.get_pos_on_chunk());
+}
+
+TileContent *TerrainChunk::get_data(coord::tile_delta pos) {
+	return this->get_data(this->tile_position(pos));
 }
 
 TileContent *TerrainChunk::get_data(size_t pos) {
 	return &this->data[pos];
 }
 
-TileContent *TerrainChunk::get_data_neigh(coord::tile pos) {
+TileContent *TerrainChunk::get_data_neigh(coord::tile_delta pos) {
 	// determine the neighbor id by the given position
 	int neighbor_id = this->neighbor_id_by_pos(pos);
 
@@ -94,7 +98,7 @@ TileContent *TerrainChunk::get_data_neigh(coord::tile pos) {
  * --
  *   se
  */
-int TerrainChunk::neighbor_id_by_pos(coord::tile pos) {
+int TerrainChunk::neighbor_id_by_pos(coord::tile_delta pos) {
 	int neigh_id = -1;
 
 	if (pos.ne < 0) {
@@ -153,7 +157,7 @@ int TerrainChunk::neighbor_id_by_pos(coord::tile pos) {
  * for example, * is at position (2, 1)
  * the returned index would be 6 (count for each ne row, starting at se=0)
  */
-size_t TerrainChunk::tile_position(coord::tile pos) {
+size_t TerrainChunk::tile_position(coord::tile_delta pos) {
 	if (this->neighbor_id_by_pos(pos) != -1) {
 		throw Error(MSG(err) << "Tile "
 			"(" << pos.ne << ", " << pos.se << ") "
@@ -163,7 +167,7 @@ size_t TerrainChunk::tile_position(coord::tile pos) {
 	return pos.se * chunk_size + pos.ne;
 }
 
-size_t TerrainChunk::tile_position_neigh(coord::tile pos) {
+size_t TerrainChunk::tile_position_neigh(coord::tile_delta pos) {
 	// get position of tile on neighbor
 	pos.ne = util::mod<coord::tile_t, chunk_size>(pos.ne);
 	pos.se = util::mod<coord::tile_t, chunk_size>(pos.se);

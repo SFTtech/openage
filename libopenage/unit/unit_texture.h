@@ -68,17 +68,17 @@ public:
 	/**
 	 * a sample drawing for hud
 	 */
-	void sample(const coord::camhud &draw_pos, unsigned color=1) const;
+	void sample(const coord::CoordManager &coord, const coord::camhud &draw_pos, unsigned color=1) const;
 
 	/**
 	 * draw object with no direction
 	 */
-	void draw(const coord::camgame &draw_pos, unsigned int frame, unsigned color) const;
+	void draw(const coord::CoordManager &coord, const coord::camgame &draw_pos, unsigned int frame, unsigned color) const;
 
 	/**
 	 * draw object with direction
 	 */
-	void draw(const coord::camgame &draw_pos, coord::phys3_delta &dir, unsigned int frame, unsigned color) const;
+	void draw(const coord::CoordManager &coord, const coord::camgame &draw_pos, coord::phys3_delta &dir, unsigned int frame, unsigned color) const;
 
 	/**
 	 * initialise graphic data

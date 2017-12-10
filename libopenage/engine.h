@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,6 +15,8 @@
 #include "log/log.h"
 #include "log/file_logsink.h"
 #include "audio/audio_manager.h"
+// pxd: from libopenage.coord.coordmanager cimport CoordManager
+#include "coord/coordmanager.h"
 #include "coord/phys.h"
 #include "coord/pixel.h"
 // pxd: from libopenage.cvar cimport CVarManager
@@ -61,21 +63,6 @@ class GuiItemLink;
 
 
 /**
- * Default settings for the coordinate system.
- */
-struct coord_data {
-	coord::window_delta window_size{800, 600};
-	coord::phys3 camgame_phys{10 * coord::phys_per_tile,
-	                          10 * coord::phys_per_tile, 0};
-	coord::window camgame_window{400, 300};
-	coord::window camhud_window{0, 600};
-	coord::camgame_delta tile_halfsize{48, 24};  // TODO: get from convert script
-};
-
-extern coord_data coord_global_tmp_TODO;
-
-
-/**
  * Qt signals for the engine.
  */
 class EngineSignals : public QObject {
@@ -98,6 +85,7 @@ signals:
  *
  *     InputManager get_input_manager() except +
  *     CVarManager get_cvar_manager() except +
+ *     CoordManager coord
  */
 class Engine : public ResizeHandler, public options::OptionNode {
 	friend class GameMain;
@@ -135,12 +123,6 @@ public:
 	 * deletes opengl context, the SDL window, and engine variables.
 	 */
 	virtual ~Engine();
-
-	/*
-	 * epic hack that will be replaced once the coordinate system is non-global
-	 * TODO: mic_e: remove it. ASDF
-	 */
-	static coord_data *get_coord_data() { return &coord_global_tmp_TODO; }
 
 	/**
 	 * starts the engine loop.
@@ -305,6 +287,11 @@ public:
 	 */
 	util::ExternalProfiler external_profiler;
 
+	/**
+	 * this engine's coordinate manager.
+	 */
+	coord::CoordManager coord;
+
 private:
 	/**
 	 * main engine loop function.
@@ -446,13 +433,6 @@ private:
 	 * 2d text renderer
 	 */
 	std::unique_ptr<renderer::TextRenderer> text_renderer;
-
-	/**
-	 * Holds the data for the coord system.
-	 * TODO: currently references the global coordinate struct
-	 * TODO: mic_e replace it ASDF
-	 */
-	coord_data &coord;
 
 	/**
 	 * Logsink to store messages to the filesystem.

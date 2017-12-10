@@ -1,5 +1,8 @@
 add_sources(libopenage
 	chunk.cpp
+	coord_test.cpp
+	coordmanager.cpp
+	declarations.cpp
 	phys.cpp
 	pixel.cpp
 	term.cpp

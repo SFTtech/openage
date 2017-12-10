@@ -39,13 +39,6 @@
 namespace openage {
 
 
-/*
- * temporary global coord struct as used by the coord subsystem
- * TODO: remove and deglobalize!
- */
-coord_data coord_global_tmp_TODO;
-
-
 Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle)
 	:
 	OptionNode{"Engine"},
@@ -60,7 +53,6 @@ Engine::Engine(util::Dir *data_dir, int32_t fps_limit, bool gl_debug, const char
 	audio_manager{&this->job_manager},
 	input_manager{&this->action_manager},
 	profiler{this},
-	coord{coord_global_tmp_TODO},
 	gui_link{} {
 
 	using namespace std::string_literals;
@@ -411,43 +403,31 @@ void Engine::loop() {
 		glClearColor(0.0, 0.0, 0.0, 0.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-		glPushMatrix(); {
-			// set the framebuffer up for camgame rendering
-			glTranslatef(coord.camgame_window.x, coord.camgame_window.y, 0);
+		// invoke all game drawing handlers
+		for (auto &action : this->on_drawgame) {
+			if (false == action->on_draw()) {
+				break;
+			}
+		}
 
-			// invoke all game drawing handlers
-			for (auto &action : this->on_drawgame) {
-				if (false == action->on_draw()) {
+		util::gl_check_error();
+
+		// draw the fps overlay
+		if (this->drawing_debug_overlay.value) {
+			this->draw_debug_overlay();
+
+		}
+
+		// invoke all hud drawing callback methods
+		if (this->drawing_huds.value) {
+			for (auto &action : this->on_drawhud) {
+				if (false == action->on_drawhud()) {
 					break;
 				}
 			}
 		}
-		glPopMatrix();
 
-		util::gl_check_error();
-
-		glPushMatrix(); {
-			// the hud coordinate system is automatically established
-
-			// draw the fps overlay
-
-			if (this->drawing_debug_overlay.value) {
-				this->draw_debug_overlay();
-
-			}
-
-			if (this->drawing_huds.value) {
-				// invoke all hud drawing callback methods
-				for (auto &action : this->on_drawhud) {
-					if (false == action->on_drawhud()) {
-						break;
-					}
-				}
-			}
-
-			this->text_renderer->render();
-		}
-		glPopMatrix();
+		this->text_renderer->render();
 
 		util::gl_check_error();
 
@@ -568,7 +548,7 @@ void Engine::move_phys_camera(float x, float y, float amount) {
 	};
 
 	// update camera phys position
-	this->coord.camgame_phys += cam_delta.to_phys3();
+	this->coord.camgame_phys += cam_delta.to_phys3(this->coord, 0);
 }
 
 void Engine::start_game(std::unique_ptr<GameMain> &&game) {

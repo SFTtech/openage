@@ -30,7 +30,7 @@ namespace openage {
 RenderOptions::RenderOptions()
 	:
 	OptionNode{"RendererOptions"},
-	draw_grid{this, "draw_grid", false},
+	draw_grid{this, "draw_grid", true},
 	draw_debug{this, "draw_debug", false},
 	terrain_blending{this, "terrain_blending", true} {
 }
@@ -203,7 +203,7 @@ bool GameRenderer::on_draw() {
 
 	if (game) {
 		// draw gaben, our great and holy protector, bringer of the half-life 3.
-		gaben->draw(coord::camgame{0, 0});
+		gaben->draw(this->engine->coord, coord::camgame{0, 0});
 
 		// TODO move render code out of terrain
 		if (game->terrain) {
@@ -218,13 +218,13 @@ bool GameRenderer::on_draw() {
 }
 
 void GameRenderer::draw_debug_grid() {
-	coord::camgame camera = coord::tile{0, 0}.to_tile3().to_phys3().to_camgame();
+	coord::camgame camera = coord::tile{0, 0}.to_camgame(this->engine->coord, *this->game()->terrain);
 
-	int cam_offset_x = util::mod(camera.x, this->engine->get_coord_data()->tile_halfsize.x * 2);
-	int cam_offset_y = util::mod(camera.y, this->engine->get_coord_data()->tile_halfsize.y * 2);
+	int cam_offset_x = util::mod(camera.x, this->engine->coord.tile_halfsize.x * 2);
+	int cam_offset_y = util::mod(camera.y, this->engine->coord.tile_halfsize.y * 2);
 
-	int line_half_width = this->engine->get_coord_data()->window_size.x / 2;
-	int line_half_height = this->engine->get_coord_data()->window_size.y / 2;
+	int line_half_width = this->engine->coord.window_size.x / 2;
+	int line_half_height = this->engine->coord.window_size.y / 2;
 
 	// rounding so we get 2:1 proportion needed for the isometric perspective
 
@@ -241,10 +241,10 @@ void GameRenderer::draw_debug_grid() {
 	}
 
 	// quantity of lines to draw to each side from the center
-	int k = line_half_width / (this->engine->get_coord_data()->tile_halfsize.x);
+	int k = line_half_width / (this->engine->coord.tile_halfsize.x);
 
-	int tilesize_x = this->engine->get_coord_data()->tile_halfsize.x * 2;
-	int common_x   = cam_offset_x + this->engine->get_coord_data()->tile_halfsize.x;
+	int tilesize_x = this->engine->coord.tile_halfsize.x * 2;
+	int common_x   = cam_offset_x + this->engine->coord.tile_halfsize.x;
 	int x0         = common_x     - line_half_width;
 	int x1         = common_x     + line_half_width;
 	int y0         = cam_offset_y - line_half_height;

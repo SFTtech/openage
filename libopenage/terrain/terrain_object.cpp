@@ -10,7 +10,7 @@
 #include "../texture.h"
 #include "../coord/tile.h"
 #include "../coord/phys.h"
-#include "../coord/camgame.h"
+#include "../coord/pixel.h"
 #include "../unit/unit.h"
 
 #include "terrain.h"
@@ -23,7 +23,7 @@ TerrainObject::TerrainObject(Unit &u)
 	:
 	unit(u),
 	passable{[](const coord::phys3 &) -> bool {return true;}},
-	draw{[]() {}},
+	draw{[](const Engine &/*e*/) {}},
 	state{object_state::removed},
 	occupied_chunk_count{0},
 	parent{nullptr} {
@@ -64,8 +64,8 @@ bool TerrainObject::check_collisions() const {
 	return this->state == object_state::placed;
 }
 
-void TerrainObject::draw_outline() const {
-	this->outline_texture->draw(this->pos.draw.to_camgame());
+void TerrainObject::draw_outline(const coord::CoordManager &coord) const {
+	this->outline_texture->draw(coord, this->pos.draw);
 }
 
 bool TerrainObject::place(object_state init_state) {
@@ -115,7 +115,7 @@ bool TerrainObject::place(object_state init_state) {
 	return true;
 }
 
-bool TerrainObject::place(std::shared_ptr<Terrain> t, coord::phys3 &position, object_state init_state) {
+bool TerrainObject::place(const std::shared_ptr<Terrain> &t, coord::phys3 &position, object_state init_state) {
 	if (this->state != object_state::removed) {
 		throw Error(MSG(err) << "This object has already been placed.");
 	}
@@ -171,8 +171,7 @@ void TerrainObject::remove() {
 			continue;
 		}
 
-		int tile_pos = chunk->tile_position_neigh(temp_pos);
-		auto &v = chunk->get_data(tile_pos)->obj;
+		auto &v = chunk->get_data(temp_pos.get_pos_on_chunk())->obj;
 		auto position_it = std::remove_if(
 			std::begin(v),
 			std::end(v),
@@ -202,8 +201,7 @@ void TerrainObject::set_ground(int id, int additional) {
 				continue;
 			}
 
-			size_t tile_pos = chunk->tile_position_neigh(temp_pos);
-			chunk->get_data(tile_pos)->terrain_id = id;
+			chunk->get_data(temp_pos.get_pos_on_chunk())->terrain_id = id;
 			temp_pos.se++;
 		}
 		temp_pos.se = this->pos.start.se - additional;
@@ -256,9 +254,9 @@ bool TerrainObject::operator <(const TerrainObject &other) {
 	return true;
 }
 
-void TerrainObject::place_unchecked(std::shared_ptr<Terrain> t, coord::phys3 &position) {
+void TerrainObject::place_unchecked(const std::shared_ptr<Terrain> &t, coord::phys3 &position) {
 	// storing the position:
-	this->pos = get_range(position);
+	this->pos = get_range(position, *t);
 	this->terrain = t;
 	this->occupied_chunk_count = 0;
 
@@ -287,8 +285,7 @@ void TerrainObject::place_unchecked(std::shared_ptr<Terrain> t, coord::phys3 &po
 			chunk_known = false;
 		}
 
-		int tile_pos = chunk->tile_position_neigh(temp_pos);
-		chunk->get_data(tile_pos)->obj.push_back(this);
+		chunk->get_data(temp_pos.get_pos_on_chunk())->obj.push_back(this);
 	}
 }
 
@@ -306,14 +303,14 @@ SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size, std::shar
 
 SquareObject::~SquareObject() {}
 
-tile_range SquareObject::get_range(const coord::phys3 &pos) const {
-	return building_center(pos, this->size);
+tile_range SquareObject::get_range(const coord::phys3 &pos, const Terrain &terrain) const {
+	return building_center(pos, this->size, terrain);
 }
 
 coord::phys_t SquareObject::from_edge(const coord::phys3 &point) const {
 	// clamp between start and end
-	coord::phys3 start_phys = this->pos.start.to_phys2().to_phys3() - phys_half_tile;
-	coord::phys3 end_phys = this->pos.end.to_phys2().to_phys3() - phys_half_tile;
+	coord::phys2 start_phys = this->pos.start.to_phys2() - phys_half_tile;
+	coord::phys2 end_phys = this->pos.end.to_phys2() - phys_half_tile;
 	coord::phys_t cx = std::max(start_phys.ne, std::min(end_phys.ne, point.ne));
 	coord::phys_t cy = std::max(start_phys.se, std::min(end_phys.se, point.se));
 
@@ -323,10 +320,11 @@ coord::phys_t SquareObject::from_edge(const coord::phys3 &point) const {
 	return std::hypot(dx, dy);
 }
 
-coord::phys3 SquareObject::on_edge(const coord::phys3 &angle, coord::phys_t) const {
+coord::phys3 SquareObject::on_edge(const coord::phys3 &angle, coord::phys_t /* extra */) const {
 	// clamp between start and end
-	coord::phys3 start_phys = this->pos.start.to_phys2().to_phys3() - phys_half_tile;
-	coord::phys3 end_phys = this->pos.end.to_phys2().to_phys3() - phys_half_tile;
+	// TODO extra is unused
+	coord::phys2 start_phys = this->pos.start.to_phys2() - phys_half_tile;
+	coord::phys2 end_phys = this->pos.end.to_phys2() - phys_half_tile;
 	coord::phys_t cx = std::max(start_phys.ne, std::min(end_phys.ne, angle.ne));
 	coord::phys_t cy = std::max(start_phys.se, std::min(end_phys.se, angle.se));
 
@@ -347,30 +345,39 @@ bool SquareObject::contains(const coord::phys3 &other) const {
 
 bool SquareObject::intersects(const TerrainObject &other, const coord::phys3 &position) const {
 	if (const SquareObject *sq = dynamic_cast<const SquareObject *>(&other)) {
-		tile_range rng = this->get_range(position);
+		auto terrain_ptr = this->terrain.lock();
+		if (not terrain_ptr) {
+			throw Error{ERR << "object is not associated to a valid terrain"};
+		}
+
+		tile_range rng = this->get_range(position, *terrain_ptr);
 		return this->pos.end.ne < rng.start.ne
 		       || rng.end.ne < sq->pos.start.ne
 		       || rng.end.se < sq->pos.start.se
 		       || rng.end.se < sq->pos.start.se;
 	}
 	else if (const RadialObject *rad = dynamic_cast<const RadialObject *>(&other)) {
+		auto terrain_ptr = this->terrain.lock();
+		if (not terrain_ptr) {
+			throw Error{ERR << "object is not associated to a valid terrain"};
+		}
 		// clamp between start and end
-		tile_range rng = this->get_range(position);
-		coord::phys3 start_phys = rng.start.to_phys2().to_phys3() - phys_half_tile;
-		coord::phys3 end_phys = rng.end.to_phys2().to_phys3() - phys_half_tile;
+		tile_range rng = this->get_range(position, *terrain_ptr);
+		coord::phys2 start_phys = rng.start.to_phys2() - phys_half_tile;
+		coord::phys2 end_phys = rng.end.to_phys2() - phys_half_tile;
 		coord::phys_t cx = std::max(start_phys.ne, std::min(end_phys.ne, rad->pos.draw.ne));
 		coord::phys_t cy = std::max(start_phys.se, std::min(end_phys.se, rad->pos.draw.se));
 
 		// distance to square object base
 		coord::phys_t dx = rad->pos.draw.ne - cx;
 		coord::phys_t dy = rad->pos.draw.se - cy;
-		return std::hypot(dx, dy) < rad->phys_radius;
+		return std::hypot(dx, dy) < rad->phys_radius.to_double();
 	}
 	return false;
 }
 
 coord::phys_t SquareObject::min_axis() const {
-	return std::min( this->size.ne, this->size.se ) * coord::settings::phys_per_tile;
+	return std::min(this->size.ne, this->size.se);
 }
 
 RadialObject::RadialObject(Unit &u, float rad)
@@ -381,13 +388,13 @@ RadialObject::RadialObject(Unit &u, float rad)
 RadialObject::RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex)
 	:
 	TerrainObject(u),
-	phys_radius(coord::settings::phys_per_tile * rad) {
+	phys_radius(rad) {
 	this->outline_texture = out_tex;
 }
 
 RadialObject::~RadialObject() {}
 
-tile_range RadialObject::get_range(const coord::phys3 &pos) const {
+tile_range RadialObject::get_range(const coord::phys3 &pos, const Terrain &/*terrain*/) const {
 	tile_range result;
 
 	// create bounds
@@ -405,16 +412,15 @@ tile_range RadialObject::get_range(const coord::phys3 &pos) const {
 }
 
 coord::phys_t RadialObject::from_edge(const coord::phys3 &point) const {
-	return std::max(distance(point, this->pos.draw) - this->phys_radius, static_cast<coord::phys_t>(0));
+	return std::max(coord::phys_t(point.to_phys2().distance(this->pos.draw.to_phys2())) - this->phys_radius, static_cast<coord::phys_t>(0));
 }
 
 coord::phys3 RadialObject::on_edge(const coord::phys3 &angle, coord::phys_t extra) const {
-	coord::phys3_delta d = normalize(angle - this->pos.draw, this->phys_radius + extra);
-	return this->pos.draw + d;
+	return this->pos.draw + (angle - this->pos.draw).to_phys2().normalize((this->phys_radius + extra).to_double()).to_phys3();
 }
 
 bool RadialObject::contains(const coord::phys3 &other) const {
-	return distance(this->pos.draw, other) < this->phys_radius;
+	return this->pos.draw.to_phys2().distance(other.to_phys2()) < this->phys_radius.to_double();
 }
 
 bool RadialObject::intersects(const TerrainObject &other, const coord::phys3 &position) const {
@@ -422,7 +428,7 @@ bool RadialObject::intersects(const TerrainObject &other, const coord::phys3 &po
 		return sq->from_edge(position) < this->phys_radius;
 	}
 	else if (const RadialObject *rad = dynamic_cast<const RadialObject *>(&other)) {
-		return distance(position, rad->pos.draw) < this->phys_radius + rad->phys_radius;
+		return position.to_phys2().distance(rad->pos.draw.to_phys2()) < (this->phys_radius + rad->phys_radius).to_double();
 	}
 	return false;
 }
@@ -449,20 +455,25 @@ std::vector<coord::tile> tile_list(const tile_range &rng) {
 		tiles.push_back(rng.start);
 	}
 	return tiles;
+	// a case when the objects radius is zero
+	if (tiles.empty()) {
+		tiles.push_back(rng.start);
+	}
+	return tiles;
 }
 
-tile_range building_center(coord::phys3 west, coord::tile_delta size) {
+tile_range building_center(coord::phys3 west, coord::tile_delta size, const Terrain &terrain) {
 	tile_range result;
-	result.start = west.to_tile3().to_tile();
+	result.start = west.to_tile();
 	result.end   = result.start + size;
 
 	// TODO temporary hacky solution until openage::coord has been properly fixed.
 	coord::phys2 draw_pos = result.start.to_phys2();
 
-	draw_pos.ne += ((size.ne - 1) * coord::settings::phys_per_tile) / 2;
-	draw_pos.se += ((size.se - 1) * coord::settings::phys_per_tile) / 2;
+	draw_pos.ne += coord::phys_t((size.ne - 1) / 2);
+	draw_pos.se += coord::phys_t((size.se - 1) / 2);
 
-	result.draw  = draw_pos.to_phys3();
+	result.draw  = draw_pos.to_phys3(terrain);
 	return result;
 }
 

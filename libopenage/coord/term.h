@@ -3,15 +3,10 @@
 #pragma once
 
 #include "coord_xy.gen.h"
+#include "declarations.h"
 
 namespace openage {
 namespace coord {
-
-using term_t = int;
-
-
-struct term_delta;
-struct term;
 
 
 struct term_delta : CoordXYRelative<term_t, term, term_delta> {

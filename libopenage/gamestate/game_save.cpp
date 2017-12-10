@@ -30,17 +30,17 @@ void save_unit(std::ofstream &file, Unit *unit) {
 	}
 }
 
-void load_unit(std::ifstream &file, openage::GameMain *game) {
+void load_unit(std::ifstream &file, GameMain *game) {
 	int pr_id;
 	int player_no;
-	coord::phys_t ne, se;
+	coord::tile_t ne, se;
 	file >> pr_id;
 	file >> player_no;
 	file >> ne;
 	file >> se;
 
 	UnitType &saved_type = *game->get_player(player_no)->get_type(pr_id);
-	auto ref = game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys2().to_phys3());
+	auto ref = game->placed_units.new_unit(saved_type, game->players[player_no], coord::tile{ne, se}.to_phys3(*game->terrain));
 
 	bool has_building_attr;
 	file >> has_building_attr;

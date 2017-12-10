@@ -11,6 +11,7 @@
 #include "log/log.h"
 #include "error/error.h"
 #include "util/file.h"
+#include "coord/phys.h"
 
 namespace openage {
 
@@ -185,23 +186,27 @@ void Texture::fix_hotspots(unsigned x, unsigned y) {
 }
 
 
-void Texture::draw(coord::camhud pos, unsigned int mode, bool mirrored, int subid, unsigned player) const {
-	this->draw(pos.x, pos.y, mode, mirrored, subid, player, nullptr, -1);
+void Texture::draw(const coord::CoordManager &mgr, const coord::camhud pos, unsigned int mode, bool mirrored, int subid, unsigned player) const {
+	this->draw(pos.to_window(mgr), mode, mirrored, subid, player, nullptr, -1);
 }
 
 
-void Texture::draw(coord::camgame pos, unsigned int mode,  bool mirrored, int subid, unsigned player) const {
-	this->draw(pos.x, pos.y, mode, mirrored, subid, player, nullptr, -1);
+void Texture::draw(const coord::CoordManager &mgr, coord::camgame pos, unsigned int mode,  bool mirrored, int subid, unsigned player) const {
+	this->draw(pos.to_window(mgr), mode, mirrored, subid, player, nullptr, -1);
 }
 
 
-void Texture::draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture, int alpha_subid) const {
-	coord::camgame draw_pos = pos.to_tile3().to_phys3().to_camgame();
-	this->draw(draw_pos.x, draw_pos.y, mode, false, subid, 0, alpha_texture, alpha_subid);
+void Texture::draw(const coord::CoordManager &mgr, coord::phys3 pos, unsigned int mode,  bool mirrored, int subid, unsigned player) const {
+	this->draw(pos.to_window(mgr), mode, mirrored, subid, player, nullptr, -1);
 }
 
 
-void Texture::draw(coord::pixel_t x, coord::pixel_t y,
+void Texture::draw(const coord::CoordManager &mgr, const Terrain &terrain, coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture, int alpha_subid) const {
+	this->draw(pos.to_camgame(mgr, terrain).to_window(mgr), mode, false, subid, 0, alpha_texture, alpha_subid);
+}
+
+
+void Texture::draw(coord::window pos,
                    unsigned int mode, bool mirrored,
                    int subid, unsigned player,
                    Texture *alpha_texture, int alpha_subid) const {
@@ -256,14 +261,14 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
 	int left, right, top, bottom;
 
 	// coordinates where the texture will be drawn on screen.
-	bottom  = y      - (tx->h - tx->cy);
+	bottom  = pos.y      - (tx->h - tx->cy);
 	top     = bottom + tx->h;
 
 	if (not mirrored) {
-		left  = x    - tx->cx;
+		left  = pos.x - tx->cx;
 		right = left + tx->w;
 	} else {
-		left  = x    + tx->cx;
+		left  = pos.x + tx->cx;
 		right = left - tx->w;
 	}
 

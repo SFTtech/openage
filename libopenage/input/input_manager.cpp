@@ -375,6 +375,7 @@ std::vector<std::string> InputManager::active_binds(const std::unordered_map<act
 		// this is only possible if the action is registered,
 		// then this->input_manager != nullptr.
 		// TODO: try to purge the action manager access here.
+		// TODO: get_name takes O(n) time
 		std::string action_type_str = this->get_action_manager()->get_name(action.first);
 
 		result.push_back(keyboard_key + " : " + action_type_str);

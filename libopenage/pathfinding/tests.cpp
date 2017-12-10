@@ -126,64 +126,36 @@ void node_cost_to_0() {
 void node_cost_to_1() {
 	// Set up coords so that n1 will have a direction of ne = 1
 	// but n0 with not be in n1s neighbors
-	coord::phys3 p0{-8192, 0, 0};
-	coord::phys3 p1{8192, 0, 0};
+	coord::phys3 p0{-0.125, 0, 0};
+	coord::phys3 p1{0.125, 0, 0};
+
+	log::log(INFO << "p0: " << p0 << ", p1: " << p1);
 
 	node_pt n0 = std::make_unique<Node>(p0, nullptr);
 	node_pt n1 = std::make_unique<Node>(p1, n0);
 
-	// We wxpect twice the normal cost since n0 had not direction
+	// We expect twice the normal cost since n0 had not direction
 	// thus we get a factor of 2 on n1
-	(n0->cost_to(*n1) == 32768) or TESTFAIL;
-	(n1->cost_to(*n0) == 32768) or TESTFAIL;
+	TESTEQUALS_FLOAT(n0->cost_to(*n1), 0.5, 0.001);
+	TESTEQUALS_FLOAT(n1->cost_to(*n0), 0.5, 0.001);
 
 	nodemap_t visited_tiles;
 	visited_tiles[n0->position] = n0;
-	std::vector<float> costs;
 
 	// Collect the costs to go to all the neighbors of n1
+	std::vector<float> costs;
 	for (node_pt neighbor : n1->get_neighbors(visited_tiles, 1)) {
 		costs.push_back(n1->cost_to(*neighbor));
 	}
 
-	cost_t cost = costs.back();
-	costs.pop_back();
-	(cost == 32768) or TESTFAIL;
-
-	cost = costs.back();
-	costs.pop_back();
-	// TODO find a better way to check the float values
-	(cost <= 62725) or TESTFAIL;
-	(cost >= 62723) or TESTFAIL;
-
-	cost = costs.back();
-	costs.pop_back();
-	(cost == 49152) or TESTFAIL;
-
-	cost = costs.back();
-	costs.pop_back();
-	(cost <= 62725) or TESTFAIL;
-	(cost >= 62723) or TESTFAIL;
-
-	cost = costs.back();
-	costs.pop_back();
-	(cost == 32768) or TESTFAIL;
-
-	cost = costs.back();
-	costs.pop_back();
-	(cost <= 29957) or TESTFAIL;
-	(cost >= 29955) or TESTFAIL;
-
-	cost = costs.back();
-	costs.pop_back();
-	// We expect this to be the cheapest since it is in the same
-	// direction that n1 is going
-	(cost == 16384) or TESTFAIL;
-
-	cost = costs.back();
-	costs.pop_back();
-	(cost <= 29957) or TESTFAIL;
-	(cost >= 29955) or TESTFAIL;
+	TESTEQUALS_FLOAT(costs[0], 0.45711, 0.001);
+	TESTEQUALS_FLOAT(costs[1], 0.25, 0.001);
+	TESTEQUALS_FLOAT(costs[2], 0.45711, 0.001);
+	TESTEQUALS_FLOAT(costs[3], 0.5, 0.001);
+	TESTEQUALS_FLOAT(costs[4], 0.95709, 0.001);
+	TESTEQUALS_FLOAT(costs[5], 0.75, 0.001);
+	TESTEQUALS_FLOAT(costs[6], 0.95709, 0.001);
+	TESTEQUALS_FLOAT(costs[7], 0.5, 0.001);
 }
 
 /**
@@ -222,62 +194,59 @@ void node_get_neighbors_0() {
 	// a factor of 1
 
 	std::vector<node_pt> neighbors = n0->get_neighbors(map, 1);
+	TESTEQUALS(neighbors.size(), 8);
 
-	(neighbors[0]->position.ne == 8192) or TESTFAIL;
-	(neighbors[0]->position.se == -8192) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[0]->position.ne.to_double(), 0.125, 0.001);
+	TESTEQUALS_FLOAT(neighbors[0]->position.se.to_double(), -0.125, 0.001);
 
-	(neighbors[1]->position.ne == 8192) or TESTFAIL;
-	(neighbors[1]->position.se == 0) or  TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[1]->position.ne.to_double(), 0.125, 0.001);
+	TESTEQUALS_FLOAT(neighbors[1]->position.se.to_double(), 0, 0.001);
 
-	(neighbors[2]->position.ne == 8192) or TESTFAIL;
-	(neighbors[2]->position.se == 8192) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[2]->position.ne.to_double(), 0.125, 0.001);
+	TESTEQUALS_FLOAT(neighbors[2]->position.se.to_double(), 0.125, 0.001);
 
-	(neighbors[3]->position.ne == 0) or TESTFAIL;
-	(neighbors[3]->position.se == 8192) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[3]->position.ne.to_double(), 0, 0.001);
+	TESTEQUALS_FLOAT(neighbors[3]->position.se.to_double(), 0.125, 0.001);
 
-	(neighbors[4]->position.ne == -8192) or TESTFAIL;
-	(neighbors[4]->position.se == 8192) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[4]->position.ne.to_double(), -0.125, 0.001);
+	TESTEQUALS_FLOAT(neighbors[4]->position.se.to_double(), 0.125, 0.001);
 
-	(neighbors[5]->position.ne == -8192) or TESTFAIL;
-	(neighbors[5]->position.se == 0) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[5]->position.ne.to_double(), -0.125, 0.001);
+	TESTEQUALS_FLOAT(neighbors[5]->position.se.to_double(), 0, 0.001);
 
-	(neighbors[6]->position.ne == -8192) or TESTFAIL;
-	(neighbors[6]->position.se == -8192) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[6]->position.ne.to_double(), -0.125, 0.001);
+	TESTEQUALS_FLOAT(neighbors[6]->position.se.to_double(), -0.125, 0.001);
 
-	(neighbors[7]->position.ne == 0) or TESTFAIL;
-	(neighbors[7]->position.se == -8192) or TESTFAIL;
-
-	(neighbors.size() == 8) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[7]->position.ne.to_double(), 0, 0.001);
+	TESTEQUALS_FLOAT(neighbors[7]->position.se.to_double(), -0.125, 0.001);
 
 	// Testing how a larger scale changes the neighbors generated
-
 	neighbors = n0->get_neighbors(map, 2);
+	TESTEQUALS(neighbors.size(), 8);
 
-	(neighbors[0]->position.ne == 16384) or TESTFAIL;
-	(neighbors[0]->position.se == -16384) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[0]->position.ne.to_double(), 0.25, 0.001);
+	TESTEQUALS_FLOAT(neighbors[0]->position.se.to_double(), -0.25, 0.001);
 
-	(neighbors[1]->position.ne == 16384) or TESTFAIL;
-	(neighbors[1]->position.se == 0) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[1]->position.ne.to_double(), 0.25, 0.001);
+	TESTEQUALS_FLOAT(neighbors[1]->position.se.to_double(), 0, 0.001);
 
-	(neighbors[2]->position.ne == 16384) or TESTFAIL;
-	(neighbors[2]->position.se == 16384) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[2]->position.ne.to_double(), 0.25, 0.001);
+	TESTEQUALS_FLOAT(neighbors[2]->position.se.to_double(), 0.25, 0.001);
 
-	(neighbors[3]->position.ne == 0) or TESTFAIL;
-	(neighbors[3]->position.se == 16384) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[3]->position.ne.to_double(), 0, 0.001);
+	TESTEQUALS_FLOAT(neighbors[3]->position.se.to_double(), 0.25, 0.001);
 
-	(neighbors[4]->position.ne == -16384) or TESTFAIL;
-	(neighbors[4]->position.se == 16384) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[4]->position.ne.to_double(), -0.25, 0.001);
+	TESTEQUALS_FLOAT(neighbors[4]->position.se.to_double(), 0.25, 0.001);
 
-	(neighbors[5]->position.ne == -16384) or TESTFAIL;
-	(neighbors[5]->position.se == 0) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[5]->position.ne.to_double(), -0.25, 0.001);
+	TESTEQUALS_FLOAT(neighbors[5]->position.se.to_double(), 0, 0.001);
 
-	(neighbors[6]->position.ne == -16384) or TESTFAIL;
-	(neighbors[6]->position.se == -16384) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[6]->position.ne.to_double(), -0.25, 0.001);
+	TESTEQUALS_FLOAT(neighbors[6]->position.se.to_double(), -0.25, 0.001);
 
-	(neighbors[7]->position.ne == 0) or TESTFAIL;
-	(neighbors[7]->position.se == -16384) or TESTFAIL;
-
-	(neighbors.size() == 8) or TESTFAIL;
+	TESTEQUALS_FLOAT(neighbors[7]->position.ne.to_double(), 0, 0.001);
+	TESTEQUALS_FLOAT(neighbors[7]->position.se.to_double(), -0.25, 0.001);
 }
 
 /**

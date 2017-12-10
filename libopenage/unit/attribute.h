@@ -315,12 +315,14 @@ public:
 
 template<> class Attribute<attr_type::building>: public AttributeContainer {
 public:
-	Attribute()
+	Attribute(int foundation_terrain, UnitType *pp, coord::phys3 gather_point)
 		:
 		AttributeContainer{attr_type::building},
 		completed{.0f},
 		is_dropsite{true},
-		foundation_terrain{0} {}
+		foundation_terrain{foundation_terrain},
+		pp{pp},
+		gather_point{gather_point} {}
 
 	bool shared() const override {
 		return false;

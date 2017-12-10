@@ -189,7 +189,7 @@ bool Console::on_input(SDL_Event *e) {
 	return true;
 }
 
-bool Console::on_resize(coord::window new_size) {
+bool Console::on_resize(coord::window_delta new_size) {
 	coord::pixel_t w = this->buf.get_dims().x * this->charsize.x;
 	coord::pixel_t h = this->buf.get_dims().y * this->charsize.y;
 

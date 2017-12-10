@@ -236,7 +236,7 @@ std::shared_ptr<Terrain> Generator::terrain() const {
 	for (auto &r : this->regions) {
 		for (auto &tile : r.get_tiles()) {
 			TerrainChunk *chunk = terrain->get_create_chunk(tile);
-			chunk->get_data(tile)->terrain_id = r.terrain_id;
+			chunk->get_data(tile.get_pos_on_chunk())->terrain_id = r.terrain_id;
 		}
 	}
 	return terrain;
@@ -254,7 +254,7 @@ void Generator::add_units(GameMain &m) const {
 				break;
 			}
 			for (auto &tile : r.get_tiles()) {
-				m.placed_units.new_unit(*otype, p, tile.to_tile3().to_phys3());
+				m.placed_units.new_unit(*otype, p, tile.to_phys3(*m.terrain));
 			}
 		}
 
@@ -273,18 +273,18 @@ void Generator::add_units(GameMain &m) const {
 			tile.se -= 1;
 
 			// Place a completed town center
-			auto ref = m.placed_units.new_unit(*tctype, p, tile.to_tile3().to_phys3());
+			auto ref = m.placed_units.new_unit(*tctype, p, tile.to_phys3(*m.terrain));
 			if (ref.is_valid()) {
 				complete_building(*ref.get());
 			}
 
 			// Place three villagers
 			tile.ne -= 1;
-			m.placed_units.new_unit(*fvtype, p, tile.to_tile3().to_phys3());
+			m.placed_units.new_unit(*fvtype, p, tile.to_phys3(*m.terrain));
 			tile.se += 1;
-			m.placed_units.new_unit(*mvtype, p, tile.to_tile3().to_phys3());
+			m.placed_units.new_unit(*mvtype, p, tile.to_phys3(*m.terrain));
 			tile.se += 1;
-			m.placed_units.new_unit(*fvtype, p, tile.to_tile3().to_phys3());
+			m.placed_units.new_unit(*fvtype, p, tile.to_phys3(*m.terrain));
 		}
 	}
 }

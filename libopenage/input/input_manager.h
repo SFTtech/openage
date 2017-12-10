@@ -224,7 +224,7 @@ private:
 	/**
 	 * mouse position in the window
 	 */
-	coord::window mouse_position;
+	coord::window mouse_position {0, 0};
 
 	/**
 	 * mouse position relative to the last frame position.

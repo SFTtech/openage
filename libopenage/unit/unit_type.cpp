@@ -60,7 +60,7 @@ TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const
 			continue;
 		}
 
-		auto placed = this->place(u, terrain, temp_pos.to_phys2().to_phys3());
+		auto placed = this->place(u, terrain, temp_pos.to_phys3(*terrain));
 		if (placed) {
 			return placed;
 		}

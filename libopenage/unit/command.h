@@ -125,7 +125,7 @@ private:
 
 	bool has_pos;
 	Unit *u;
-	coord::phys3 pos;
+	coord::phys3 pos = {0, 0, 0}; // TODO: make pos a c++17 optional
 	UnitType *unit_type;
 
 	/**
