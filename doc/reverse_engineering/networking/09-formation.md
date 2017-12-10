@@ -77,7 +77,7 @@ The number of selected units that are put on guard.
 The two bytes after *:selection_count* are always zero.
 
 *:guarded_id*  
-The ID of the unit that will be guarded.  
+The ID of the unit that will be guarded.
 
 *:selected_ids*  
 The IDs of the guarding units.

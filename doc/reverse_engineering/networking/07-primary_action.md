@@ -28,7 +28,7 @@ end
 ## Description
 
 *:action_identifier*  
-Always has the value `0x01`.
+Always has the value `0x00`.
 
 *:player_id*  
 The ID of the player who executes the action (`0x01` - `0x08`).

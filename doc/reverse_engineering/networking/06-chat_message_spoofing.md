@@ -8,7 +8,7 @@ The test environment consisted of 2 hosts and one router to simulate a 2-player 
 * Age of Empires 2: The Conquerors 1.0c
 * Wine 1.8.7
 
-The router was placed as a central point between the two hosts and used for capturing the network traffic. In this example, we also use the router to send the forged UDP packet to one of the host, though in practice, the packet could be spoofed by one of the hosts as well. The setup looked like this:
+The router was placed as a central point between the two hosts and used for capturing the network traffic. In this example, we also use the router to send the forged UDP packet to one of the host, though in practice, the packet could be spoofed by one of the hosts as well. The setup for our router looks like this:
 
 * Ubuntu 17.04
 * Wireshark 2.2.6
@@ -16,39 +16,38 @@ The router was placed as a central point between the two hosts and used for capt
 
 ## Preparation
 
-To construct a message you need to know the following parameters:
+To construct a message the following parameters are needed:
 
-* Valid Sender ID of the Player who is going to be spoofed
-* Game ID
-* Current value of Counter 2 of the spoofed sender
+* Valid Network ID of the Player who is going to be spoofed
+* Current communication turn of the game in progress
 * Player number of the spoofed sender
 * Player number of the receiver(s)
 
-An attacker that is in game with other players will have no problems getting to know the player numbers. As the game is constantly synced up, he can easily get the value for Counter 2 and Game ID.
+An attacker that is in game with other players will have no problems getting to know the player numbers. As the game is constantly synced, he can easily get the value for *:communication_turn*.
 
-Deriving the valid Sender ID of the receiving player is more difficult, depending on the time the attacker starts capturing the network traffic. The easiest way to discover all Player IDs is by capturing the 196 byte packets that are sent in the lobby. There the IDs of Players 1-8 have a fixed byte position in the data stream. The IDs can also be determined by looking at other packet types, but we will not discuss this here.
+Deriving the valid Sender ID of the receiving player is more difficult and depends on the attacker's ability to capture network traffic. The easiest way to discover all Player IDs is by capturing a few packets of normal gameplay beforehand. The IDs of Players 1-8 have a fixed byte position in the data stream.
 
 ## Forging the packet
 
-With the above knowledge and the protocol structure in mind, we are now able to create a packet to our liking. We will use Packet Sender for this purpose, but you can use similar tools too, for example if you also want to spoof the IP address. We will limit our efforts to the UDP part of the packet.
+With the above knowledge and the protocol structure in mind, we are now able to handcraft a message ourselves. We will use the tool Packet Sender for this purpose.
 
-First of all, we grab a sample packet, since we just need to change a few values. The Sender ID and Game ID will be replaced with our spoofed values. The command byte has to be left at value `43`, otherwise the packet will not be recognized as a message. The 3 control bytes after should contain values that fit the message command, but it's not necessary to set them to a specific value. `02 7b 00` and `02 00 00` worked fine for me.
+Few values need to be changes, so one can use a sample message packet as a starting point. The Network ID will be replaced with the one of our target. The command byte has to remain at value `0x43`, otherwise the packet will not be recognized as a message. The 3 control bytes after should contain values that fit the message command, but it's not necessary to set them to a specific value. `02 7b 00` and `02 00 00` will work.
 
-The value of Counter 1 is irrelevant but Counter 2 must have a greater value than the one of the latest 32 byte sync packet (command byte: `44`). If the value of Counter 2 is smaller, the message will not display. The value of Counter 2 determines when the message is displayed or more precisely: The message will be displayed as soon as the values of Counter 2 in the sync packet and of Counter 2 in the message packet are equal. With today's internet connection speeds, a sync packet is sent every 120 ms, which you can use to anticipate the time the forged message will display.
+The value of *:individual_counter* does not have to be changed, but the *:communication_turn* must have a greater value than the one of the latest 32 byte sync packet (command byte: `0x44`). If the value of *:communication_turn* is smaller, the message will not display. The value of *:communication_turn* determines when the message is displayed or - more precisely - the message will be displayed as soon as the values of *:communication_turn* in the sync packet and of *:communication_turn* in the message packet are equal.
 
-The Player Number has to be set to spoofed player number. The 8 bytes of the *String of intended receivers* also must change accordingly: The value at position X should be `59` when player X is supposed to see the message.
+*:player_id* has to be set to spoofed player's ID. The 8 bytes of *intended_receivers* also must change accordingly. The value at position X should be `0x59` when player X is supposed to see the message.
 
-The last thing to change are the message bytes. They will have to be converted to extended ASCII and then placed at the correct location within the data stream. It also has to be stressed that you don't have to change the value of the message length byte to the exact length of the message, since AoC doesn't seem to check that and it has no effect when the message is displayed. Forged messages can be longer than the maximum of 65 characters.
+The last thing to change are the message bytes. They will have to be converted to extended ASCII and then placed at the correct location within the data stream. It also has to be stressed that the value for *:message_length* does not have to be changed to the exact length of the message. It has no effect when the message is displayed. Forged messages can be longer than the ingame maximum of 65 characters.
 
 ## Execution
 
-Once the data bytes of the packet are ready, we can simply copy them into the HEX field of Packet Sender. Then we set the target IP address and port number to the receiver's address and port. The AoC standard port is `2350`, but can vary depending on which services run on the receivers computer. Before sending, the port should be checked in Wireshark first.
+Once the data bytes of the packet are ready, one can simply copy them into the HEX field of Packet Sender. We set the target IP address and port number to the receiver's address and port. The AoC standard port is `2350`, but can vary depending on which services run on the receivers computer.
 
-After sending the packet, the receiver will see the message on screen when Counter 2 of the sync packet reaches the value chosen in the message packet. The player which IDs and player number was spoofed will not see the message, if it is not also sent to him.
+After sending the packet, the receiver will see the message on screen when *:communication_turn* of the sync packet reaches the value in the message packet. The player that we masquerade as will not see the message, unless it is specified in *:communication_turn*.
 
 ## Example
 
-As an example we want to send the german original first formulation of the categorical imperative by Immanuel Kant to Player 1. This is not achievable when in game, since our message is 110 characters long (AoC limit: 65 characters). Hence, if Player 1 sees this message, we know that spoofing is possible.
+As an example we want to send the german original first formulation of the categorical imperative by Immanuel Kant to Player 1. This is not achievable when in game, since the message is 110 characters long (AoC limit: 65 characters). Hence, if Player 1 sees this message, we know that spoofing is possible.
 
 1. Firstly, we create our message with the spoofed parameters:
 
@@ -69,7 +68,7 @@ As an example we want to send the german original first formulation of the categ
 
 ![Screenshot](images/aoe2-message-spoofing1.png)
 
-3. We will see the packet in Wireshark when it is sent. The value of Counter 2 is about 128 ticks behind the one in the latest sync packet. It will therefore take another 16 seconds to be displayed.
+3. We will see the packet in Wireshark when it is sent. The value of *:communication_turn* is about 128 ticks behind the one in the latest sync packet. It will therefore take another 16 seconds to be displayed.
 
 ![Screenshot](images/aoe2-message-spoofing2.png)
 
